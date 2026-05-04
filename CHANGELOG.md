@@ -22,7 +22,7 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - **`Modal` backdrop is now presentational** — was an interactive `<button
-  aria-label="Close modal">` (assistive tech announced "Close modal
+aria-label="Close modal">` (assistive tech announced "Close modal
   button"), now a `<div aria-hidden="true">` with `data-testid="modal-backdrop"`.
   Click-to-close still works; the real `<button aria-label="Close">` inside
   the modal is the AT-discoverable close affordance.
@@ -36,7 +36,7 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   internal layout shifts (sidebar toggle, panel resize). Falls back to the
   legacy `window` listener when `ResizeObserver` is unavailable.
 - **`no-console` ESLint rule enforced as `error`** with `allow: ['warn',
-  'error', 'debug']`. Casual `console.log` / `console.info` now break
+'error', 'debug']`. Casual `console.log` / `console.info` now break
   CI; existing structural `console.warn` + `console.debug` paths in the
   WebSocket client and store stay.
 
