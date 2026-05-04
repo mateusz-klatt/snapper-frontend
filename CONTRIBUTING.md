@@ -12,12 +12,15 @@ Thanks for your interest. This is a single-maintainer project but PRs and issues
 
 ## Local setup
 
+Prerequisites: **Node 22+**, **pnpm 10** (auto-installed via Corepack from `packageManager` in `package.json`).
+
 ```bash
+corepack enable        # one-time
 pnpm install
-pnpm dev          # vite at http://localhost:5173
+pnpm dev               # vite at http://localhost:3000
 ```
 
-Most UI changes can be developed against a mocked backend. For features that exercise live WebSocket frames or REST endpoints, point at a real backend with `VITE_API_BASE_URL=http://localhost:8000 pnpm dev`.
+The dev server proxies `/api`, `/api/ws`, `/docs`, `/redoc`, `/openapi.json` to a backend at `http://localhost:8000` (configured in `vite.config.ts`). Most UI changes can be developed against test fixtures; for features that exercise live WebSocket frames or REST endpoints, run a real Snapper backend on `:8000`.
 
 ## Code style
 

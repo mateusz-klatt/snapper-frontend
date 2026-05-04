@@ -13,7 +13,8 @@ import {
   Wheat,
 } from 'lucide-react'
 import type { CSSProperties } from 'react'
-import { CIRCLE_FLAGS_CDN, CRYPTO_ICONS_CDN, RemoteSvg, isVendored } from './RemoteSvg'
+import { RemoteSvg } from './RemoteSvg'
+import { CIRCLE_FLAGS_CDN, CRYPTO_ICONS_CDN, isVendored } from './iconLookup'
 import type { IconSpec, LucideName } from './types'
 
 const LUCIDE_MAP: Record<

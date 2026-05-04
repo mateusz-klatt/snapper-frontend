@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { fireEvent, render } from '@testing-library/react'
-import { RemoteSvg, CIRCLE_FLAGS_CDN, CRYPTO_ICONS_CDN, isVendored } from './RemoteSvg'
+import { RemoteSvg } from './RemoteSvg'
+import { CIRCLE_FLAGS_CDN, CRYPTO_ICONS_CDN, isVendored } from './iconLookup'
 
 describe('RemoteSvg', () => {
   it('renders an img with the given src and label as alt', () => {

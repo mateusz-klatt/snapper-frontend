@@ -1,14 +1,23 @@
 {
-  "name": "snapper-ui",
+  "name": "snapper-frontend",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateusz-klatt/snapper-frontend.git"
+  },
+  "homepage": "https://github.com/mateusz-klatt/snapper-frontend#readme",
+  "bugs": {
+    "url": "https://github.com/mateusz-klatt/snapper-frontend/issues"
+  },
   "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint --cache .",
+    "lint": "eslint --cache --max-warnings=0 .",
     "lint:fix": "eslint --cache . --fix",
     "preview": "vite preview",
     "format": "prettier --write .",

@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
-import { CIRCLE_FLAGS_CDN, CRYPTO_ICONS_CDN, RemoteSvg, isVendored } from './RemoteSvg'
+import { RemoteSvg } from './RemoteSvg'
+import { CIRCLE_FLAGS_CDN, CRYPTO_ICONS_CDN, isVendored } from './iconLookup'
 import { SingleAssetIcon } from './SingleAssetIcon'
 import type { IconSpec } from './types'
 
