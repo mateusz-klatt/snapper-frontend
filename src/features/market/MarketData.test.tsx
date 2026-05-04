@@ -132,19 +132,6 @@ describe('MarketData', () => {
       expect(screen.getAllByText('kraken').length).toBeGreaterThanOrEqual(2)
     })
   })
-  it('displays instrument dropdown with options', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await waitFor(() => {
-      expect(screen.getByText('EUR-USD')).toBeInTheDocument()
-      expect(screen.getByText('GBP-USD')).toBeInTheDocument()
-      expect(screen.getByText('BTC-USD')).toBeInTheDocument()
-    })
-  })
   it('displays timeframe dropdown with options', async () => {
     const user = userEvent.setup()
 
@@ -345,149 +332,83 @@ describe('MarketData', () => {
     await user.click(screen.getByText('binance'))
     expect(mockSetSelectedExchange).toHaveBeenCalledWith('binance')
   })
-  it('calls setSelectedInstrument when instrument is changed', async () => {
-    const user = userEvent.setup()
-
+  it('calls setSelectedInstrument when a known symbol is typed into the input', async () => {
     renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
+    const input = screen.getByLabelText('Instrument:') as HTMLInputElement
 
-    await user.click(input)
-    await waitFor(() => {
-      expect(screen.getByText('GBP-USD')).toBeInTheDocument()
-    })
-    await user.click(screen.getByText('GBP-USD'))
+    fireEvent.change(input, { target: { value: 'GBP-USD' } })
     expect(mockSetSelectedInstrument).toHaveBeenCalledWith('GBP-USD')
   })
-  it('exposes the instrument picker as an ARIA combobox', async () => {
-    const user = userEvent.setup()
-
+  it('does not commit selection while the input value is a partial match', async () => {
     renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
+    const input = screen.getByLabelText('Instrument:') as HTMLInputElement
 
-    expect(input.getAttribute('role')).toBe('combobox')
-    expect(input.getAttribute('aria-expanded')).toBe('false')
-    expect(input.getAttribute('aria-controls')).toBe('instrument-listbox')
-    expect(input.getAttribute('aria-autocomplete')).toBe('list')
-    await user.click(input)
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('true')
-      expect(screen.getByRole('listbox', { name: 'Instruments' })).toBeInTheDocument()
-    })
+    fireEvent.change(input, { target: { value: 'GBP' } })
+    expect(mockSetSelectedInstrument).not.toHaveBeenCalled()
   })
-  it('navigates instruments with ArrowDown/ArrowUp/Enter and closes with Escape', async () => {
-    const user = userEvent.setup()
-
+  it('reverts the input on blur if the typed value is not a known symbol', async () => {
     renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
+    const input = screen.getByLabelText('Instrument:') as HTMLInputElement
 
-    await user.click(input)
-    await waitFor(() => {
-      expect(screen.getByRole('listbox', { name: 'Instruments' })).toBeInTheDocument()
-    })
-    await user.keyboard('{ArrowDown}')
-    expect(input.getAttribute('aria-activedescendant')).toBe('instrument-option-0')
-    await user.keyboard('{ArrowDown}')
-    expect(input.getAttribute('aria-activedescendant')).toBe('instrument-option-1')
-    await user.keyboard('{ArrowUp}')
-    expect(input.getAttribute('aria-activedescendant')).toBe('instrument-option-0')
-    await user.keyboard('{Enter}')
-    expect(mockSetSelectedInstrument).toHaveBeenCalled()
-    expect(input.getAttribute('aria-expanded')).toBe('false')
+    fireEvent.change(input, { target: { value: 'NOT-A-SYMBOL' } })
+    expect(input.value).toBe('NOT-A-SYMBOL')
+    fireEvent.blur(input)
+    expect(input.value).toBe('EUR-USD')
   })
-  it('Escape closes the instrument dropdown', async () => {
-    const user = userEvent.setup()
-
+  it('keeps the input on blur when the typed value is a known symbol', async () => {
     renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
+    const input = screen.getByLabelText('Instrument:') as HTMLInputElement
 
-    await user.click(input)
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('true')
-    })
-    await user.keyboard('{Escape}')
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('false')
-    })
+    fireEvent.change(input, { target: { value: 'GBP-USD' } })
+    fireEvent.blur(input)
+    expect(input.value).toBe('GBP-USD')
   })
-  it('ArrowUp wraps to last instrument from start position', async () => {
-    const user = userEvent.setup()
+  it('reverts to empty string on blur when no instrument is currently selected', async () => {
+    const { useMarketStore } = await import('../../stores/market')
 
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('true')
+    vi.mocked(useMarketStore).mockReturnValue({
+      selectedExchange: 'kraken',
+      selectedInstrument: null,
+      selectedTimeframe: '1h',
+      setSelectedExchange: mockSetSelectedExchange,
+      setSelectedInstrument: mockSetSelectedInstrument,
+      setSelectedTimeframe: mockSetSelectedTimeframe,
     })
-    await user.keyboard('{ArrowUp}')
-    expect(input.getAttribute('aria-activedescendant')).toMatch(/^instrument-option-\d+$/)
+
+    try {
+      renderWithProviders(<MarketData />)
+      const input = screen.getByLabelText('Instrument:') as HTMLInputElement
+
+      fireEvent.change(input, { target: { value: 'NOT-A-SYMBOL' } })
+      fireEvent.blur(input)
+      expect(input.value).toBe('')
+    } finally {
+      vi.mocked(useMarketStore).mockReturnValue({
+        selectedExchange: 'kraken',
+        selectedInstrument: 'EUR-USD',
+        selectedTimeframe: '1h',
+        setSelectedExchange: mockSetSelectedExchange,
+        setSelectedInstrument: mockSetSelectedInstrument,
+        setSelectedTimeframe: mockSetSelectedTimeframe,
+      })
+    }
   })
-  it('ArrowDown opens dropdown when closed', async () => {
-    const user = userEvent.setup()
-
+  it('exposes a datalist of all available instrument symbols', () => {
     renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
+    const datalist = document.getElementById('instrument-options')
 
-    await user.click(input)
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('true')
-    })
-    fireEvent.mouseDown(document.body)
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('false')
-    })
-    fireEvent.keyDown(input, { key: 'ArrowDown' })
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('true')
-    })
+    expect(datalist).not.toBeNull()
+    const optionValues = Array.from(
+      datalist?.querySelectorAll<HTMLOptionElement>('option') ?? []
+    ).map(o => o.value)
+
+    expect(optionValues).toEqual(expect.arrayContaining(['EUR-USD', 'GBP-USD', 'BTC-USD']))
   })
-  it('Enter without active option does not close dropdown', async () => {
-    const user = userEvent.setup()
-
+  it('input is wired to the datalist via the list attribute', () => {
     renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
+    const input = screen.getByLabelText('Instrument:') as HTMLInputElement
 
-    await user.click(input)
-    await waitFor(() => {
-      expect(input.getAttribute('aria-expanded')).toBe('true')
-    })
-    await user.keyboard('{Enter}')
-    expect(input.getAttribute('aria-expanded')).toBe('true')
-  })
-  it('shows no-instruments message when search yields zero matches', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await user.type(input, 'zzznomatch')
-    await waitFor(() => {
-      expect(screen.getByText('No instruments found')).toBeInTheDocument()
-    })
-  })
-  it('ArrowDown/ArrowUp are no-ops when filtered list is empty', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await user.type(input, 'zzznomatch')
-    await waitFor(() => {
-      expect(screen.getByText('No instruments found')).toBeInTheDocument()
-    })
-    fireEvent.keyDown(input, { key: 'ArrowDown' })
-    fireEvent.keyDown(input, { key: 'ArrowUp' })
-    expect(input.getAttribute('aria-activedescendant')).toBeNull()
-  })
-  it('Escape on already-closed dropdown is a no-op', async () => {
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    expect(input.getAttribute('aria-expanded')).toBe('false')
-    fireEvent.keyDown(input, { key: 'Escape' })
-    expect(input.getAttribute('aria-expanded')).toBe('false')
+    expect(input.getAttribute('list')).toBe('instrument-options')
   })
   it('calls setSelectedTimeframe when timeframe is changed', async () => {
     const user = userEvent.setup()
@@ -558,61 +479,7 @@ describe('MarketData', () => {
       expect(screen.getAllByText('Current Price').length).toBeGreaterThan(0)
     })
   })
-  it('filters instruments on typing', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await user.type(input, 'BTC')
-    await waitFor(() => {
-      expect(screen.getByText('BTC-USD')).toBeInTheDocument()
-      expect(screen.queryByText('EUR-USD')).not.toBeInTheDocument()
-      expect(screen.queryByText('GBP-USD')).not.toBeInTheDocument()
-    })
-  })
-  it('shows all instruments when input is focused with no search', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await waitFor(() => {
-      expect(screen.getByText('EUR-USD')).toBeInTheDocument()
-      expect(screen.getByText('GBP-USD')).toBeInTheDocument()
-      expect(screen.getByText('BTC-USD')).toBeInTheDocument()
-    })
-  })
-  it('closes instrument dropdown on click outside', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await waitFor(() => {
-      expect(screen.getByText('GBP-USD')).toBeInTheDocument()
-    })
-    fireEvent.mouseDown(document.body)
-    await waitFor(() => {
-      expect(screen.queryByText('GBP-USD')).not.toBeInTheDocument()
-    })
-  })
-  it('shows no instruments found when search matches nothing', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<MarketData />)
-    const input = screen.getByLabelText('Instrument:')
-
-    await user.click(input)
-    await user.type(input, 'ZZZZZ')
-    await waitFor(() => {
-      expect(screen.getByText('No instruments found')).toBeInTheDocument()
-    })
-  })
-  it('shows selected instrument in input when dropdown is closed', async () => {
+  it('shows selected instrument in input', async () => {
     renderWithProviders(<MarketData />)
     const input = screen.getByLabelText('Instrument:') as HTMLInputElement
 
@@ -738,8 +605,9 @@ describe('MarketData', () => {
     expect(screen.queryByTestId('market-data-only-badge')).toBeNull()
   })
 
-  it('marks market-data-only rows in the instrument dropdown with a badge', async () => {
+  it('shows the market-data-only badge in the header when selected instrument cannot trade', async () => {
     const { useExchangeInstrumentsDetail } = await import('../../hooks/queries')
+    const { useMarketStore } = await import('../../stores/market')
 
     vi.mocked(useExchangeInstrumentsDetail).mockImplementation((() => ({
       data: {
@@ -752,12 +620,17 @@ describe('MarketData', () => {
       isLoading: false,
       error: null,
     })) as never)
+    vi.mocked(useMarketStore).mockReturnValue({
+      selectedExchange: 'kraken_futures',
+      selectedInstrument: 'MNQM6-CME',
+      selectedTimeframe: '1h',
+      setSelectedExchange: mockSetSelectedExchange,
+      setSelectedInstrument: mockSetSelectedInstrument,
+      setSelectedTimeframe: mockSetSelectedTimeframe,
+    })
 
     try {
       renderWithProviders(<MarketData />)
-      const search = screen.getByPlaceholderText('Search instrument...') as HTMLInputElement
-
-      fireEvent.focus(search)
       const badges = await screen.findAllByTestId('market-data-only-badge')
 
       expect(badges.length).toBeGreaterThan(0)
@@ -774,6 +647,14 @@ describe('MarketData', () => {
         isLoading: false,
         error: null,
       })) as never)
+      vi.mocked(useMarketStore).mockReturnValue({
+        selectedExchange: 'kraken',
+        selectedInstrument: 'EUR-USD',
+        selectedTimeframe: '1h',
+        setSelectedExchange: mockSetSelectedExchange,
+        setSelectedInstrument: mockSetSelectedInstrument,
+        setSelectedTimeframe: mockSetSelectedTimeframe,
+      })
     }
   })
 })

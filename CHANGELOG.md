@@ -4,6 +4,40 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] — 2026-05-05
+
+### Changed
+
+- **MarketData instrument picker switched from custom W3C ARIA APG
+  combobox/listbox to native `<input list>` + `<datalist>`.** Closes
+  the last-standing SonarCloud finding (S6819 on `role="listbox"`)
+  that we'd been carrying as accepted tooling-noise since v1.0.0.
+  Browser handles filtering, dropdown rendering, keyboard navigation,
+  and "no matches" state — saves ~70 lines of state + handlers
+  (`instrumentDropdownOpen`, `instrumentActiveIndex`,
+  `instrumentListboxId`, `handleInstrumentInputKeyDown`, click-outside
+  effect) in `MarketData.tsx`. Bundle: 272 kB gzip (was 273).
+
+  Lost UX (intentional, baseline a11y > custom polish):
+  - Per-option InstrumentIcon next to each symbol in the dropdown —
+    redundant; the icon is already shown in the page header next to
+    the selected instrument.
+  - Per-option `<MarketDataOnlyBadge>` flagging non-tradable
+    instruments — moved to header (was already there for the SELECTED
+    instrument; still missing for the in-flight pre-commit preview).
+  - Highlighted "active" row styling — browser-controlled.
+
+  Gained:
+  - Native `role="combobox"` semantics for free (the input element).
+  - Browser-native filtering (substring match).
+  - Browser-native keyboard navigation matching OS conventions.
+  - Mobile picker on iOS / Android (system-styled).
+  - Sonar S6819 silenced.
+
+  E2E coverage retained: `cancel order` flow exercises the same input.
+  The 12 unit tests for the old listbox keyboard navigation are
+  removed (browser handles it; can't unit-test in JSDOM anyway).
+
 ## [1.3.0] — 2026-05-04
 
 ### Added
