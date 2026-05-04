@@ -877,8 +877,8 @@ describe('Batch Transformers', () => {
     const result = ordersFromAPI(apiOrders)
 
     expect(result).toHaveLength(2)
-    expect(result[0].clientOrderId).toBe('client-1')
-    expect(result[1].clientOrderId).toBe('client-2')
+    expect(result[0]?.clientOrderId).toBe('client-1')
+    expect(result[1]?.clientOrderId).toBe('client-2')
   })
   it('transforms array of executions', () => {
     const apiExecutions: ExecutionData[] = [
@@ -905,7 +905,7 @@ describe('Batch Transformers', () => {
     const result = executionsFromAPI(apiExecutions)
 
     expect(result).toHaveLength(1)
-    expect(result[0].clientOrderId).toBe('client-10')
+    expect(result[0]?.clientOrderId).toBe('client-10')
   })
   it('transforms array of signals', () => {
     const apiSignals: SignalData[] = [
@@ -928,7 +928,7 @@ describe('Batch Transformers', () => {
     const result = signalsFromAPI(apiSignals)
 
     expect(result).toHaveLength(1)
-    expect(result[0].strategyName).toBe('momentum_v1')
+    expect(result[0]?.strategyName).toBe('momentum_v1')
   })
   it('transforms array of positions', () => {
     const apiPositions: PositionData[] = [
@@ -952,7 +952,7 @@ describe('Batch Transformers', () => {
     const result = positionsFromAPI(apiPositions)
 
     expect(result).toHaveLength(1)
-    expect(result[0].averagePrice).toBe(48000)
+    expect(result[0]?.averagePrice).toBe(48000)
   })
   it('transforms array of candles', () => {
     const apiCandles: CandleData[] = [
@@ -976,7 +976,7 @@ describe('Batch Transformers', () => {
     const result = candlesFromAPI(apiCandles)
 
     expect(result).toHaveLength(1)
-    expect(result[0].timeframe).toBe('1h')
+    expect(result[0]?.timeframe).toBe('1h')
   })
 })
 describe('Type Guards', () => {

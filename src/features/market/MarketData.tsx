@@ -154,13 +154,11 @@ export function MarketData() {
         setInstrumentActiveIndex(prev => (prev <= 0 ? filteredInstruments.length - 1 : prev - 1))
       }
     } else if (e.key === 'Enter') {
-      if (
-        instrumentDropdownOpen &&
-        instrumentActiveIndex >= 0 &&
-        instrumentActiveIndex < filteredInstruments.length
-      ) {
+      const candidate = filteredInstruments[instrumentActiveIndex]
+
+      if (instrumentDropdownOpen && instrumentActiveIndex >= 0 && candidate !== undefined) {
         e.preventDefault()
-        commitInstrument(filteredInstruments[instrumentActiveIndex])
+        commitInstrument(candidate)
       }
     } else if (e.key === 'Escape') {
       if (instrumentDropdownOpen) {

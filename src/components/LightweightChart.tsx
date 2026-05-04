@@ -145,7 +145,7 @@ export const LightweightChart = ({
         const uniqueData = data.filter((item, index, arr) => {
           if (index === 0) return true
 
-          return item.time !== arr[index - 1].time
+          return item.time !== arr[index - 1]?.time
         })
 
         if (uniqueData.length > 0) {

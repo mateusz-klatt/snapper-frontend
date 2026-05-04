@@ -114,8 +114,8 @@ describe('NewOrderModal', () => {
 
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
 
     await waitFor(() => {
@@ -133,8 +133,8 @@ describe('NewOrderModal', () => {
 
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
 
     await waitFor(() => {
@@ -157,8 +157,8 @@ describe('NewOrderModal', () => {
 
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
 
     await waitFor(() => {
@@ -181,8 +181,8 @@ describe('NewOrderModal', () => {
 
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
@@ -200,8 +200,8 @@ describe('NewOrderModal', () => {
 
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
 
     await waitFor(() => {
@@ -221,7 +221,7 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[3], { target: { value: 'stop' } })
+    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'stop' } })
     expect(screen.getByText('Stop Price')).toBeTruthy()
   })
 
@@ -231,8 +231,8 @@ describe('NewOrderModal', () => {
     })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
     expect(screen.getByText('Quantity must be a positive number')).toBeTruthy()
   })
@@ -243,8 +243,8 @@ describe('NewOrderModal', () => {
     })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '1' } })
-    fireEvent.change(inputs[1], { target: { value: '-5' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '-5' } })
     await userEvent.click(screen.getByText('Review Order'))
     expect(screen.getByText('Price must be a positive number')).toBeTruthy()
   })
@@ -255,8 +255,8 @@ describe('NewOrderModal', () => {
     })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '1' } })
-    fireEvent.change(inputs[1], { target: { value: '' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '' } })
     await userEvent.click(screen.getByText('Review Order'))
     expect(screen.getByText('Price is required for this order type')).toBeTruthy()
   })
@@ -267,10 +267,10 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[3], { target: { value: 'stop' } })
+    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'stop' } })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '1' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
     await userEvent.click(screen.getByText('Review Order'))
     expect(screen.getByText('Stop price is required for this order type')).toBeTruthy()
   })
@@ -281,11 +281,11 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[3], { target: { value: 'stop' } })
+    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'stop' } })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '1' } })
-    fireEvent.change(inputs[1], { target: { value: '0' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '0' } })
     await userEvent.click(screen.getByText('Review Order'))
     expect(screen.getByText('Stop price must be a positive number')).toBeTruthy()
   })
@@ -320,12 +320,12 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[3], { target: { value: 'stop_limit' } })
+    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'stop_limit' } })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
-    fireEvent.change(inputs[2], { target: { value: '48000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
+    fireEvent.change(inputs[2] as HTMLElement, { target: { value: '48000' } })
     await userEvent.click(screen.getByText('Review Order'))
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
@@ -334,7 +334,7 @@ describe('NewOrderModal', () => {
     await waitFor(() => {
       expect(mockMutateAsync).toHaveBeenCalledTimes(1)
     })
-    const body = mockMutateAsync.mock.calls[0][0] as Record<string, unknown>
+    const body = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
 
     expect(body.price).toBe(50000)
     expect(body.stop_price).toBe(48000)
@@ -347,10 +347,10 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[3], { target: { value: 'market' } })
+    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'market' } })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
     await userEvent.click(screen.getByText('Review Order'))
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
@@ -359,7 +359,7 @@ describe('NewOrderModal', () => {
     await waitFor(() => {
       expect(mockMutateAsync).toHaveBeenCalledTimes(1)
     })
-    const body = mockMutateAsync.mock.calls[0][0] as Record<string, unknown>
+    const body = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
 
     expect(body.price).toBeNull()
     expect(body.stop_price).toBeNull()
@@ -371,11 +371,11 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[2], { target: { value: 'sell' } })
+    fireEvent.change(selects[2] as HTMLElement, { target: { value: 'sell' } })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
@@ -392,8 +392,8 @@ describe('NewOrderModal', () => {
       })
       const inputs = screen.getAllByPlaceholderText('0.00')
 
-      fireEvent.change(inputs[0], { target: { value: '0.5' } })
-      fireEvent.change(inputs[1], { target: { value: '50000' } })
+      fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+      fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
       await userEvent.click(screen.getByText('Review Order'))
       await waitFor(() => {
         expect(screen.getByText('Submitting...')).toBeTruthy()
@@ -409,11 +409,11 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[3], { target: { value: 'stop' } })
+    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'stop' } })
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '1' } })
-    fireEvent.change(inputs[1], { target: { value: '48000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '48000' } })
     await userEvent.click(screen.getByText('Review Order'))
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
@@ -429,7 +429,7 @@ describe('NewOrderModal', () => {
     const selects = screen.getAllByRole('combobox')
 
     expect(() => {
-      fireEvent.change(selects[1], { target: { value: 'ETH-USD' } })
+      fireEvent.change(selects[1] as HTMLElement, { target: { value: 'ETH-USD' } })
     }).not.toThrow()
     expect((selects[1] as HTMLSelectElement).value).toBe('ETH-USD')
   })
@@ -500,8 +500,8 @@ describe('NewOrderModal', () => {
 
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
@@ -531,8 +531,8 @@ describe('NewOrderModal', () => {
 
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0], { target: { value: '0.5' } })
-    fireEvent.change(inputs[1], { target: { value: '50000' } })
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
     await userEvent.click(screen.getByText('Review Order'))
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)

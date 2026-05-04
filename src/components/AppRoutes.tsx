@@ -62,16 +62,18 @@ function RouteFallback(): React.ReactElement {
 function BacktestsRouter(): React.ReactElement {
   const subpath = useHashSubpath('backtests')
 
-  if (subpath[0] === 'compare') {
-    if (subpath.length === 2) {
-      return <ComparePage comparisonPublicId={subpath[1]} />
+  const [head, second] = subpath
+
+  if (head === 'compare') {
+    if (second !== undefined) {
+      return <ComparePage comparisonPublicId={second} />
     }
 
     return <Backtests />
   }
 
-  if (subpath.length === 1) {
-    return <BacktestDetailPage runPublicId={subpath[0]} />
+  if (head !== undefined && second === undefined) {
+    return <BacktestDetailPage runPublicId={head} />
   }
 
   return <Backtests />

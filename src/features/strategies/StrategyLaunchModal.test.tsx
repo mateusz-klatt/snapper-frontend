@@ -408,7 +408,7 @@ describe('StrategyLaunchModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    await user.selectOptions(selects[0], 'strategy_rsi')
+    await user.selectOptions(selects[0] as HTMLElement, 'strategy_rsi')
     await waitFor(() => {
       expect(selects[0]).toHaveValue('strategy_rsi')
     })
@@ -553,7 +553,7 @@ describe('StrategyLaunchModal', () => {
     const selects = screen.getAllByRole('combobox')
     const executionModeSelect = selects[1]
 
-    await user.selectOptions(executionModeSelect, 'process')
+    await user.selectOptions(executionModeSelect as HTMLElement, 'process')
     expect(executionModeSelect).toHaveValue('process')
   })
   it('uses default mode from schema', async () => {

@@ -67,9 +67,9 @@ describe('EquityOverlayChart', () => {
     const { getByText } = render(<EquityOverlayChart points={[]} />)
 
     expect(mockAddSeries).toHaveBeenCalledTimes(2)
-    expect(mockAddSeries.mock.calls[0][0]).toBe('LineSeries')
-    expect(mockAddSeries.mock.calls[0][1]).toMatchObject({ color: '#3b82f6', lineWidth: 2 })
-    expect(mockAddSeries.mock.calls[1][1]).toMatchObject({ color: '#f97316', lineWidth: 2 })
+    expect(mockAddSeries.mock.calls[0]?.[0]).toBe('LineSeries')
+    expect(mockAddSeries.mock.calls[0]?.[1]).toMatchObject({ color: '#3b82f6', lineWidth: 2 })
+    expect(mockAddSeries.mock.calls[1]?.[1]).toMatchObject({ color: '#f97316', lineWidth: 2 })
     expect(getByText('Run A')).toBeDefined()
     expect(getByText('Run B')).toBeDefined()
   })
@@ -85,8 +85,8 @@ describe('EquityOverlayChart', () => {
     expect(setDataA).toHaveBeenCalledTimes(1)
     expect(setDataB).toHaveBeenCalledTimes(1)
 
-    const aData = setDataA.mock.calls[0][0]
-    const bData = setDataB.mock.calls[0][0]
+    const aData = setDataA.mock.calls[0]?.[0]
+    const bData = setDataB.mock.calls[0]?.[0]
 
     expect(aData).toHaveLength(2)
     expect(aData.map((p: { value: number }) => p.value)).toEqual([100, 110])
@@ -99,8 +99,8 @@ describe('EquityOverlayChart', () => {
     const points = [point('2026-01-01T00:00:00Z', undefined, 50)]
 
     render(<EquityOverlayChart points={points} />)
-    expect(setDataA.mock.calls[0][0]).toEqual([])
-    expect(setDataB.mock.calls[0][0]).toHaveLength(1)
+    expect(setDataA.mock.calls[0]?.[0]).toEqual([])
+    expect(setDataB.mock.calls[0]?.[0]).toHaveLength(1)
   })
 
   it('skips fitContent when points are empty', () => {

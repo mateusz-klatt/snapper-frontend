@@ -664,7 +664,7 @@ describe('queries', () => {
         expect(result.current.isLoading).toBe(false)
       })
       expect(result.current.data?.payload).toHaveLength(1)
-      expect(result.current.data?.payload[0].can_trade).toBe(false)
+      expect(result.current.data?.payload[0]?.can_trade).toBe(false)
     })
     it('does not fetch when exchange is null', async () => {
       const { result } = renderHook(() => useExchangeInstrumentsDetail(null), {
@@ -793,8 +793,8 @@ describe('queries', () => {
         expect(result.current.isLoading).toBe(false)
       })
       expect(result.current.data).toHaveLength(2)
-      expect(result.current.data?.[0].reason).toBe('newest')
-      expect(result.current.data?.[1].reason).toBe('middle')
+      expect(result.current.data?.[0]?.reason).toBe('newest')
+      expect(result.current.data?.[1]?.reason).toBe('middle')
     })
     it('handles signals with undefined timestamp in sorting', async () => {
       mockedApiClient.getSignals.mockResolvedValueOnce(
@@ -840,9 +840,9 @@ describe('queries', () => {
         expect(result.current.isLoading).toBe(false)
       })
       expect(result.current.data).toHaveLength(3)
-      expect(result.current.data?.[0].reason).toBe('newer-timestamp')
-      expect(result.current.data?.[1].reason).toBe('with-timestamp')
-      expect(result.current.data?.[2].reason).toBe('no-timestamp')
+      expect(result.current.data?.[0]?.reason).toBe('newer-timestamp')
+      expect(result.current.data?.[1]?.reason).toBe('with-timestamp')
+      expect(result.current.data?.[2]?.reason).toBe('no-timestamp')
     })
   })
   describe('useAvailableProcesses', () => {
@@ -885,7 +885,7 @@ describe('queries', () => {
       })
       expect(result.current.data).toBeDefined()
       expect(result.current.data?.payload).toHaveLength(1)
-      expect(result.current.data?.payload[0].name).toBe('strategy_test')
+      expect(result.current.data?.payload[0]?.name).toBe('strategy_test')
     })
   })
   describe('useProcessSchema', () => {
@@ -1973,7 +1973,7 @@ describe('queries', () => {
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(result.current.data?.count).toBe(1)
-      expect(result.current.data?.payload[0].label).toBe('Alpha')
+      expect(result.current.data?.payload[0]?.label).toBe('Alpha')
     })
     it('useAiDelegate stays disabled when publicId is null', () => {
       const { result } = renderHook(() => useAiDelegate(null), { wrapper: createWrapper() })
@@ -2182,7 +2182,7 @@ describe('queries', () => {
       await waitFor(() => {
         expect(result.current).toHaveLength(1)
       })
-      expect(result.current[0].review_public_id).toBe('r-1')
+      expect(result.current[0]?.review_public_id).toBe('r-1')
     })
     it('useAiReviewActivity ignores unrelated query cache events', async () => {
       vi.mocked(useAuth).mockReturnValue({
@@ -2216,7 +2216,7 @@ describe('queries', () => {
       await waitFor(() => {
         expect(result.current).toHaveLength(1)
       })
-      expect(result.current[0].review_public_id).toBe('r-orphan')
+      expect(result.current[0]?.review_public_id).toBe('r-orphan')
     })
     it('useAiReviewActivity ignores cache events for a different user public_id', async () => {
       vi.mocked(useAuth).mockReturnValue({

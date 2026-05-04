@@ -39,7 +39,7 @@ function useHashRouting<T extends string>(
     // Match first segment before "/" so `#backtests/{uuid7}` resolves to
     // the "backtests" tab. Strip "?query" before route matching so that
     // `#backtests?wallet=X` (scope-persistence params) also resolves.
-    const firstSegment = hash.split('/')[0].split('?')[0]
+    const firstSegment = (hash.split('/')[0] as string).split('?')[0] as string
 
     return validRoutes.includes(firstSegment as T) ? (firstSegment as T) : defaultRoute
   }, [validRoutes, defaultRoute])

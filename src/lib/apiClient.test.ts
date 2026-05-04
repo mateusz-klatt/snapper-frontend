@@ -99,7 +99,7 @@ describe('APIClient', () => {
         method: 'POST',
         body: JSON.stringify({ test: 'data' }),
       })
-      const callArgs = mockFetch.mock.calls[0][1]
+      const callArgs = mockFetch.mock.calls[0]?.[1]
       const headers = callArgs.headers as Headers
 
       expect(headers.get('Content-Type')).toBe('application/json')
@@ -114,7 +114,7 @@ describe('APIClient', () => {
         skipCSRF: true,
         body: JSON.stringify({ test: 'data' }),
       })
-      const callArgs = mockFetch.mock.calls[0][1]
+      const callArgs = mockFetch.mock.calls[0]?.[1]
       const headers = callArgs.headers as Headers
 
       expect(headers.get('X-CSRF-Token')).toBeNull()
@@ -129,7 +129,7 @@ describe('APIClient', () => {
         method: 'POST',
         body: JSON.stringify({ test: 'data' }),
       })
-      const callArgs = mockFetch.mock.calls[0][1]
+      const callArgs = mockFetch.mock.calls[0]?.[1]
       const headers = callArgs.headers as Headers
 
       expect(headers.get('X-CSRF-Token')).toBeNull()
@@ -140,7 +140,7 @@ describe('APIClient', () => {
         status: 200,
       })
       await apiClient.request('/test')
-      const callArgs = mockFetch.mock.calls[0][1]
+      const callArgs = mockFetch.mock.calls[0]?.[1]
       const headers = callArgs.headers as Headers
 
       expect(callArgs.method).toBeUndefined()
@@ -329,7 +329,7 @@ describe('APIClient', () => {
         status: 200,
       })
       await apiClient.post('/test')
-      const callArgs = mockFetch.mock.calls[0][1]
+      const callArgs = mockFetch.mock.calls[0]?.[1]
 
       expect(callArgs.body).toBeUndefined()
     })
@@ -1138,7 +1138,7 @@ describe('domain API methods', () => {
       }),
     })
     await apiClient.getSignals()
-    const url = mockFetch.mock.calls[0][0] as string
+    const url = mockFetch.mock.calls[0]?.[0] as string
 
     expect(url).toContain('limit=100')
     expect(url).toContain('hours=24')
@@ -1160,7 +1160,7 @@ describe('domain API methods', () => {
       }),
     })
     await apiClient.getSignals('momentum', 50, 'BTC/USD', 48, 'kraken')
-    const url = mockFetch.mock.calls[0][0] as string
+    const url = mockFetch.mock.calls[0]?.[0] as string
 
     expect(url).toContain('exchange=kraken')
   })
@@ -1179,7 +1179,7 @@ describe('domain API methods', () => {
       }),
     })
     await apiClient.getOrders('BTC/USD', 50, 10, 'kraken')
-    const url = mockFetch.mock.calls[0][0] as string
+    const url = mockFetch.mock.calls[0]?.[0] as string
 
     expect(url).toContain('exchange=kraken')
   })
@@ -1261,8 +1261,8 @@ describe('domain API methods', () => {
     const result = await apiClient.getExchangeInstrumentsDetail('kraken_equities')
 
     expect(result.payload).toHaveLength(1)
-    expect(result.payload[0].symbol).toBe('MNQM6-CME')
-    expect(result.payload[0].can_trade).toBe(false)
+    expect(result.payload[0]?.symbol).toBe('MNQM6-CME')
+    expect(result.payload[0]?.can_trade).toBe(false)
     expect(mockFetch).toHaveBeenCalledWith(
       expect.stringContaining('/api/exchanges/kraken_equities/instruments/detail'),
       expect.any(Object)
@@ -1745,9 +1745,9 @@ describe('domain API methods', () => {
     })
     const call = mockFetch.mock.calls[0]
 
-    expect(call[0]).toBe('/api/auth/users/testuser/change-password')
-    expect(call[1].method).toBe('POST')
-    const body = JSON.parse(call[1].body)
+    expect(call?.[0]).toBe('/api/auth/users/testuser/change-password')
+    expect(call?.[1]?.method).toBe('POST')
+    const body = JSON.parse(call?.[1]?.body as string)
 
     expect(body.payload.current_password).toBe('oldPassword')
     expect(body.payload.new_password).toBe('newPassword')
@@ -2066,7 +2066,7 @@ describe('cacheWsTicketFromResponse', () => {
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.post('/api/test', { key: 'value' })
       const call = mockFetch.mock.calls[0]
-      const body = JSON.parse(call[1].body)
+      const body = JSON.parse(call?.[1]?.body as string)
 
       expect(body.payload.key).toBe('value')
       expect(body.public_id).toBeDefined()
@@ -2079,20 +2079,20 @@ describe('cacheWsTicketFromResponse', () => {
       await apiClient.get('/api/test')
       const call = mockFetch.mock.calls[0]
 
-      expect(call[1].body).toBeUndefined()
+      expect(call?.[1]?.body).toBeUndefined()
     })
     it('does not stamp POST without body', async () => {
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.post('/api/test')
       const call = mockFetch.mock.calls[0]
 
-      expect(call[1].body).toBeUndefined()
+      expect(call?.[1]?.body).toBeUndefined()
     })
     it('does not stamp array bodies', async () => {
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.post('/api/test', [1, 2, 3])
       const call = mockFetch.mock.calls[0]
-      const body = JSON.parse(call[1].body)
+      const body = JSON.parse(call?.[1]?.body as string)
 
       expect(Array.isArray(body)).toBe(true)
       expect(body).toEqual([1, 2, 3])
@@ -2102,7 +2102,7 @@ describe('cacheWsTicketFromResponse', () => {
       await apiClient.post('/api/test', null)
       const call = mockFetch.mock.calls[0]
 
-      expect(call[1].body).toBeUndefined()
+      expect(call?.[1]?.body).toBeUndefined()
     })
   })
   describe('time-travel mode', () => {
@@ -2113,7 +2113,7 @@ describe('cacheWsTicketFromResponse', () => {
       apiClient.setTimeTravelAsOf('2026-03-15T10:00:00Z')
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/positions')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('as_of=2026-03-15T10%3A00%3A00Z')
     })
@@ -2121,14 +2121,14 @@ describe('cacheWsTicketFromResponse', () => {
       apiClient.setTimeTravelAsOf('2026-03-15T10:00:00Z')
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/candles?instrument=BTC-USD')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('&as_of=')
     })
     it('does not append as_of when not time-traveling', async () => {
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/positions')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).not.toContain('as_of')
     })
@@ -2207,7 +2207,7 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.getOperators()
 
       expect(result.payload).toHaveLength(1)
-      expect(result.payload[0].label).toBe('alice')
+      expect(result.payload[0]?.label).toBe('alice')
     })
   })
   describe('getWallets', () => {
@@ -2236,7 +2236,7 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.getWallets()
 
       expect(result.payload).toHaveLength(1)
-      expect(result.payload[0].is_paper).toBe(false)
+      expect(result.payload[0]?.is_paper).toBe(false)
     })
   })
   describe('multi-tenant scope query params', () => {
@@ -2248,7 +2248,7 @@ describe('cacheWsTicketFromResponse', () => {
       apiClient.setOperatorScope('op-123')
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/orders')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('operator_public_id=op-123')
     })
@@ -2256,7 +2256,7 @@ describe('cacheWsTicketFromResponse', () => {
       apiClient.setWalletScope('wallet-456')
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/positions')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('wallet_public_id=wallet-456')
     })
@@ -2265,7 +2265,7 @@ describe('cacheWsTicketFromResponse', () => {
       apiClient.setWalletScope('wallet-456')
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/orders')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('operator_public_id=op-123')
       expect(url).toContain('wallet_public_id=wallet-456')
@@ -2273,7 +2273,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('does not append scope params when both are null', async () => {
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/orders')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).not.toContain('operator_public_id')
       expect(url).not.toContain('wallet_public_id')
@@ -2291,7 +2291,7 @@ describe('cacheWsTicketFromResponse', () => {
       apiClient.setOperatorScope('op-99')
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
       await apiClient.get('/api/orders')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('as_of=')
       expect(url).toContain('operator_public_id=op-99')
@@ -2330,8 +2330,8 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.getScopeGrants('w-1')
 
       expect(result.payload).toHaveLength(1)
-      expect(result.payload[0].scope_kind).toBe('underlying')
-      const url = mockFetch.mock.calls[0][0] as string
+      expect(result.payload[0]?.scope_kind).toBe('underlying')
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('wallet_public_id=w-1')
     })
@@ -2361,7 +2361,7 @@ describe('cacheWsTicketFromResponse', () => {
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
       await apiClient.getScopeGrants('w-1')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('as_of=')
       expect(url).toContain('wallet_public_id=w-1')
@@ -2382,7 +2382,7 @@ describe('cacheWsTicketFromResponse', () => {
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
       await apiClient.getScopeGrants('w-admin')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('wallet_public_id=w-admin')
       expect(url).not.toContain('w-global')
@@ -2499,8 +2499,8 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.getCredentials('w-1')
 
       expect(result.payload).toHaveLength(1)
-      expect(result.payload[0].exchange).toBe('kraken')
-      const url = mockFetch.mock.calls[0][0] as string
+      expect(result.payload[0]?.exchange).toBe('kraken')
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('/api/wallets/w-1/credentials')
     })
@@ -2530,7 +2530,7 @@ describe('cacheWsTicketFromResponse', () => {
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
       await apiClient.getCredentials('w-1')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('as_of=')
       expect(url).toContain('/api/wallets/w-1/credentials')
@@ -2551,7 +2551,7 @@ describe('cacheWsTicketFromResponse', () => {
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
       await apiClient.getCredentials('w-admin')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('/api/wallets/w-admin/credentials')
       expect(url).not.toContain('w-global')
@@ -2622,7 +2622,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       expect(result.payload.public_id).toBe('cred-rotated')
-      const url = mockFetch.mock.calls[0][0] as string
+      const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('/api/wallets/w-1/credentials/cred-1/rotate')
     })
@@ -3017,11 +3017,11 @@ describe('cacheWsTicketFromResponse', () => {
         anchor_run_public_id: 'r1',
       })
 
-      const [url, init] = mockFetch.mock.calls[0]
+      const [url, init] = mockFetch.mock.calls[0] ?? []
 
       expect(url).toContain('/api/backtests/compare')
-      expect(init.method).toBe('POST')
-      const sentBody = JSON.parse(init.body as string)
+      expect(init?.method).toBe('POST')
+      const sentBody = JSON.parse(init?.body as string)
 
       expect(sentBody.payload).toEqual({
         mode: 'auto',
@@ -3431,7 +3431,7 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.listAiDelegates()
 
       expect(result.count).toBe(1)
-      expect(result.payload[0].label).toBe('Alpha')
+      expect(result.payload[0]?.label).toBe('Alpha')
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/ai-delegates'),
         expect.any(Object)
@@ -3537,7 +3537,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       expect(result.payload.access_token).toBe('a')
-      expect(mockFetch.mock.calls[0][1].method).toBe('POST')
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('POST')
     })
     it('createAiDelegate throws APIError on non-ok response', async () => {
       const jsonFn = async () => ({ detail: 'label too long' })
@@ -3589,8 +3589,8 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       expect(result.payload.caps.max_open_orders).toBe(25)
-      expect(mockFetch.mock.calls[0][1].method).toBe('PATCH')
-      expect(mockFetch.mock.calls[0][0]).toEqual(expect.stringContaining('/api/ai-delegates/d-1'))
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('PATCH')
+      expect(mockFetch.mock.calls[0]?.[0]).toEqual(expect.stringContaining('/api/ai-delegates/d-1'))
     })
     it('updateAiDelegateCaps throws APIError on non-ok response', async () => {
       const jsonFn = async () => ({ detail: 'forbidden' })
@@ -3642,10 +3642,10 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.deactivateAiDelegate('d-1')
 
       expect(result.payload.is_active).toBe(false)
-      expect(mockFetch.mock.calls[0][0]).toEqual(
+      expect(mockFetch.mock.calls[0]?.[0]).toEqual(
         expect.stringContaining('/api/ai-delegates/d-1/deactivate')
       )
-      expect(mockFetch.mock.calls[0][1].method).toBe('POST')
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('POST')
     })
     it('deactivateAiDelegate throws APIError on non-ok response', async () => {
       const jsonFn = async () => ({ detail: 'database is locked' })
@@ -3681,7 +3681,7 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.listPendingAiReviews()
 
       expect(result.count).toBe(1)
-      expect(result.items[0].review_public_id).toBe('r-1')
+      expect(result.items[0]?.review_public_id).toBe('r-1')
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringMatching(/\/api\/ai-reviews\/pending$/),
         expect.any(Object)
@@ -3694,7 +3694,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: async () => ({ items: [], count: 0 }),
       })
       await apiClient.listPendingAiReviews({ wallet_public_id: 'wal-77', limit: 25 })
-      const calledUrl = mockFetch.mock.calls[0][0] as string
+      const calledUrl = mockFetch.mock.calls[0]?.[0] as string
 
       expect(calledUrl).toContain('wallet_public_id=wal-77')
       expect(calledUrl).toContain('limit=25')
@@ -3722,7 +3722,7 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.patchJSON('/api/custom-patch', { x: 1 })
 
       expect(result).toEqual({ ok: 1 })
-      expect(mockFetch.mock.calls[0][1].method).toBe('PATCH')
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('PATCH')
     })
     it('sends PATCH without body', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3733,8 +3733,8 @@ describe('cacheWsTicketFromResponse', () => {
       const result = await apiClient.patchJSON('/api/custom-patch')
 
       expect(result).toEqual({ ok: 1 })
-      expect(mockFetch.mock.calls[0][1].method).toBe('PATCH')
-      expect(mockFetch.mock.calls[0][1].body).toBeUndefined()
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('PATCH')
+      expect(mockFetch.mock.calls[0]?.[1].body).toBeUndefined()
     })
     it('throws APIError on non-ok response', async () => {
       const jsonFn = async () => ({ detail: 'bad patch' })

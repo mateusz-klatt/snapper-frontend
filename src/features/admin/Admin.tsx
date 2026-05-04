@@ -19,12 +19,16 @@ const TAB_DISPLAY_NAMES: Record<string, string> = {
   settings: 'Settings',
 }
 
-const ROLE_PERMISSIONS = Object.entries(TAB_DISPLAY_NAMES).map(([tabId, label]) => ({
-  resource: label,
-  viewer: RESOURCE_ACCESS[tabId].includes('viewer'),
-  operator: RESOURCE_ACCESS[tabId].includes('operator'),
-  admin: RESOURCE_ACCESS[tabId].includes('admin'),
-}))
+const ROLE_PERMISSIONS = Object.entries(TAB_DISPLAY_NAMES).map(([tabId, label]) => {
+  const roles = RESOURCE_ACCESS[tabId] as readonly string[]
+
+  return {
+    resource: label,
+    viewer: roles.includes('viewer'),
+    operator: roles.includes('operator'),
+    admin: roles.includes('admin'),
+  }
+})
 
 export const Admin: React.FC = () => {
   const readOnly = useIsReadOnly()

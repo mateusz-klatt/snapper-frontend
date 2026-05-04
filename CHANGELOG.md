@@ -4,6 +4,34 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-05-04
+
+### Changed
+
+- **`noUncheckedIndexedAccess` enabled.** Every array/Record index access
+  now returns `T | undefined`; the compiler surfaced 210 unchecked
+  accesses (28 in production code, 182 in tests) which were latent
+  potential `undefined.foo` crashes. Each one was either guarded with a
+  real undefined check (where the path is reachable, e.g. dropdown
+  candidate selection, focus-trap edge cases, dynamic route segments)
+  or narrowed via an `as` cast at the precondition boundary (where a
+  Set membership check or earlier length guard already proves
+  presence — these are genuinely dead branches that the compiler
+  couldn't prove). Sister flag `exactOptionalPropertyTypes` is parked
+  for v1.3.0 alongside the apiClient/queries domain split.
+
+### Fixed
+
+- **`getHeartbeat` type-mismatched fallback** — the "unknown" placeholder
+  shape `{ status: 'unknown', healthy: false, timestamp: 0 }` didn't
+  match the `HeartbeatData` union (`'healthy' | 'warning' | 'error'`),
+  but `noUncheckedIndexedAccess=false` masked the gap. Fixed by adding
+  `'unknown'` to the status union, so the placeholder is now type-safe
+  and the UI keeps showing the existing "no heartbeat yet" badge.
+- **Sonar S7764 (×2)** in `apiClient.setCsrfToken` — `window.*` reads
+  switched to `globalThis.window.*` so the SSR/test-stub path is still
+  exercised the same way but the access is portable.
+
 ## [1.1.0] — 2026-05-04
 
 ### Fixed

@@ -378,7 +378,7 @@ class APIClient {
     if (
       this.timeTravelAsOf &&
       MUTATING_METHODS.has(method) &&
-      !APIClient.AUTH_PATHS.has(url.split('?')[0])
+      !APIClient.AUTH_PATHS.has(url.split('?')[0] as string)
     ) {
       throw new Error('Write operations are disabled in time-travel mode')
     }
@@ -515,8 +515,7 @@ class APIClient {
     }
 
     const name = 'csrf_token'
-    const secureFlag =
-      typeof window !== 'undefined' && window.location.protocol === 'https:' ? '; Secure' : ''
+    const secureFlag = globalThis.window?.location.protocol === 'https:' ? '; Secure' : ''
 
     if (!token) {
       document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax${secureFlag}`

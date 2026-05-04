@@ -153,7 +153,7 @@ describe('AIIntegration — end-to-end create flow', () => {
     const wizardSubmit = submitButtons[submitButtons.length - 1]
 
     await act(async () => {
-      await user.click(wizardSubmit)
+      await user.click(wizardSubmit as HTMLElement)
     })
 
     expect(mockApiClient.createAiDelegate).toHaveBeenCalledWith({
@@ -270,7 +270,7 @@ describe('AIIntegration — end-to-end create flow', () => {
     const dialogConfirm = confirmButtons[confirmButtons.length - 1]
 
     await act(async () => {
-      await user.click(dialogConfirm)
+      await user.click(dialogConfirm as HTMLElement)
     })
 
     await waitFor(() => {
@@ -377,7 +377,7 @@ describe('AIIntegration — end-to-end create flow', () => {
     const wizardSubmit = submitButtons[submitButtons.length - 1]
 
     await act(async () => {
-      await user.click(wizardSubmit)
+      await user.click(wizardSubmit as HTMLElement)
     })
 
     await waitFor(() => {

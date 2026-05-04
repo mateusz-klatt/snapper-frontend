@@ -55,7 +55,7 @@ describe('ExecutionModeModal', () => {
     )
     const startButton = screen.getAllByRole('button', { name: /Start Test Component/i })[0]
 
-    await user.click(startButton)
+    await user.click(startButton as HTMLElement)
     expect(mockOnStart).toHaveBeenCalledWith({
       executionMode: 'thread',
     })
@@ -78,7 +78,7 @@ describe('ExecutionModeModal', () => {
     await user.click(processRadio)
     const startButton = screen.getAllByRole('button', { name: /Start Test Component/i })[0]
 
-    await user.click(startButton)
+    await user.click(startButton as HTMLElement)
     expect(mockOnStart).toHaveBeenCalledWith({
       executionMode: 'process',
     })

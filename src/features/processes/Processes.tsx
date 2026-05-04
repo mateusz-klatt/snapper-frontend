@@ -17,6 +17,12 @@ import { ProcessesSkeleton } from '../../components/Skeleton'
 import type { ConfiguredProcess, AvailableProcess, ProcessRun } from '../../types/api'
 import { noop } from '../../lib/noop'
 
+const UNKNOWN_HEARTBEAT: HeartbeatData = {
+  status: 'unknown',
+  healthy: false,
+  timestamp: 0,
+}
+
 const resolveStatusBadge = (process: ConfiguredProcess): string => {
   if (process.is_one_shot) return 'one-shot'
   if (process.enabled) return 'auto-start'
@@ -184,19 +190,13 @@ export const Processes: React.FC = () => {
   const getHeartbeat = React.useCallback(
     (processName: string): HeartbeatData | undefined => {
       if (processName.startsWith('executor_')) {
-        return allHeartbeats[processName] ?? { status: 'unknown', healthy: false, timestamp: 0 }
+        return allHeartbeats[processName] ?? UNKNOWN_HEARTBEAT
       }
 
       if (processName.includes('feed_publisher')) {
         const exchangeName = processName.replace('_feed_publisher', '')
 
-        return (
-          allHeartbeats[`feed.${exchangeName}`] ?? {
-            status: 'unknown',
-            healthy: false,
-            timestamp: 0,
-          }
-        )
+        return allHeartbeats[`feed.${exchangeName}`] ?? UNKNOWN_HEARTBEAT
       }
 
       return undefined

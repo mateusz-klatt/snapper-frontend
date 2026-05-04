@@ -21,14 +21,14 @@ describe('csvExport', () => {
   it('creates CSV with headers and rows', () => {
     exportToCSV('test.csv', ['Name', 'Age'], [['Alice', '30']])
     expect(mockCreateObjectURL).toHaveBeenCalledWith(expect.any(Blob))
-    const blob = mockCreateObjectURL.mock.calls[0][0] as Blob
+    const blob = mockCreateObjectURL.mock.calls[0]?.[0] as Blob
 
     expect(blob.type).toBe('text/csv;charset=utf-8;')
   })
   it('sets download filename and triggers click', () => {
     exportToCSV('orders.csv', ['ID'], [['1']])
     const results = (document.createElement as ReturnType<typeof vi.fn>).mock.results
-    const link = results[results.length - 1].value
+    const link = results[results.length - 1]?.value
 
     expect(link.download).toBe('orders.csv')
     expect(link.href).toBe('blob:mock-url')
@@ -40,25 +40,25 @@ describe('csvExport', () => {
   })
   it('escapes fields containing commas', () => {
     exportToCSV('test.csv', ['Field'], [['value, with comma']])
-    const blob = mockCreateObjectURL.mock.calls[0][0] as Blob
+    const blob = mockCreateObjectURL.mock.calls[0]?.[0] as Blob
 
     expect(blob).toBeInstanceOf(Blob)
   })
   it('escapes fields containing double quotes', () => {
     exportToCSV('test.csv', ['Field'], [['value "quoted"']])
-    const blob = mockCreateObjectURL.mock.calls[0][0] as Blob
+    const blob = mockCreateObjectURL.mock.calls[0]?.[0] as Blob
 
     expect(blob).toBeInstanceOf(Blob)
   })
   it('escapes fields containing newlines', () => {
     exportToCSV('test.csv', ['Field'], [['line1\nline2']])
-    const blob = mockCreateObjectURL.mock.calls[0][0] as Blob
+    const blob = mockCreateObjectURL.mock.calls[0]?.[0] as Blob
 
     expect(blob).toBeInstanceOf(Blob)
   })
   it('does not escape plain fields', () => {
     exportToCSV('test.csv', ['Name'], [['Alice']])
-    const blob = mockCreateObjectURL.mock.calls[0][0] as Blob
+    const blob = mockCreateObjectURL.mock.calls[0]?.[0] as Blob
 
     expect(blob).toBeInstanceOf(Blob)
   })

@@ -165,7 +165,8 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   }
 
   const handleAddItem = () => {
-    const defaultValue = arrayValue.length > 0 ? getDefaultValueForType(arrayValue[0]) : ''
+    const head = arrayValue[0]
+    const defaultValue = head === undefined ? '' : getDefaultValueForType(head)
 
     onChange([...arrayValue, defaultValue])
   }

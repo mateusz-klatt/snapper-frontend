@@ -89,8 +89,10 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
       return
     }
 
-    if (!selectedTemplate && templates.length > 0) {
-      setSelectedTemplate(templates[0].name)
+    const head = templates[0]
+
+    if (!selectedTemplate && head !== undefined) {
+      setSelectedTemplate(head.name)
     }
   }, [open, selectedTemplate, templates])
   useEffect(() => {

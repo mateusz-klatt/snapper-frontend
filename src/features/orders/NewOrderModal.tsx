@@ -74,16 +74,20 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const selectedIsMarketDataOnly = instrument.length > 0 && capabilityMap.get(instrument) === false
 
   useEffect(() => {
-    if (exchanges?.payload && exchanges.payload.length > 0 && !exchange) {
-      setExchange(exchanges.payload[0])
+    const head = exchanges?.payload?.[0]
+
+    if (head !== undefined && !exchange) {
+      setExchange(head)
     }
   }, [exchanges, exchange])
 
   const wallets = walletsResponse?.payload
 
   useEffect(() => {
-    if (wallets && wallets.length > 0 && !walletPublicId) {
-      setWalletPublicId(wallets[0].public_id)
+    const head = wallets?.[0]
+
+    if (head !== undefined && !walletPublicId) {
+      setWalletPublicId(head.public_id)
     }
   }, [wallets, walletPublicId])
 
@@ -93,9 +97,9 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   }, [exchange])
 
   useEffect(() => {
-    if (instruments?.payload && instruments.payload.length > 0 && !instrument) {
-      const first = instruments.payload[0]
+    const first = instruments?.payload?.[0]
 
+    if (first !== undefined && !instrument) {
       setInstrument(first.symbol)
       setInstrumentPublicId(first.symbol)
     }
