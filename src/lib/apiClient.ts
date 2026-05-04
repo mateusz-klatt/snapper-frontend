@@ -55,11 +55,18 @@ import {
   BacktestComparisonDetailResponseSchema,
   BacktestComparisonListResponseSchema,
 } from './schemas/api.generated.zod'
+import { CandleDataSchema } from './schemas/ws.generated.zod'
 
 const TrailingStopByCycleResultSchema = z.union([
   TrailingStopStateResponseSchema,
   MessageResponseSchema,
 ])
+
+const CandleListResponseSchema = z
+  .object({
+    payload: z.array(CandleDataSchema).optional(),
+  })
+  .passthrough()
 
 import type { PendingReviewListResponse } from './schemas/api.generated.zod'
 import type {
@@ -497,16 +504,18 @@ class APIClient {
   }
   public setCsrfToken(token: string | null): void {
     const name = 'csrf_token'
+    const secureFlag =
+      typeof window !== 'undefined' && window.location.protocol === 'https:' ? '; Secure' : ''
 
     if (!token) {
-      document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax`
+      document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax${secureFlag}`
 
       return
     }
 
     const encoded = encodeURIComponent(token)
 
-    document.cookie = `${name}=${encoded}; Path=/; SameSite=Lax`
+    document.cookie = `${name}=${encoded}; Path=/; SameSite=Lax${secureFlag}`
   }
   public hasAuthCookies(): boolean {
     const cookies = document.cookie.split(';')
@@ -565,8 +574,9 @@ class APIClient {
     }
 
     const data = await response.json()
+    const validated = validateResponse(data, CandleListResponseSchema, '/candles')
 
-    return data.payload ?? []
+    return (validated.payload as CandleData[] | undefined) ?? []
   }
   async getOrders(
     symbol?: string,
@@ -756,14 +766,18 @@ class APIClient {
 
     return validateResponse(data, ProcessCreateResponseSchema, '/processes')
   }
-  async createOrder(body: Record<string, unknown>): Promise<Record<string, unknown>> {
-    return this.postJSON('/api/orders', body)
+  async createOrder(body: Record<string, unknown>): Promise<ExecutionPlanResponse> {
+    const data = await this.postJSON('/api/orders', body)
+
+    return validateResponse(data, ExecutionPlanResponseSchema, '/orders POST')
   }
-  async cancelOrder(clientOrderId: string): Promise<Record<string, unknown>> {
-    return this.postJSON(
+  async cancelOrder(clientOrderId: string): Promise<ExecutionPlanResponse> {
+    const data = await this.postJSON(
       `/api/orders/by-client-order-id/${encodeURIComponent(clientOrderId)}/cancel`,
       {}
     )
+
+    return validateResponse(data, ExecutionPlanResponseSchema, '/orders/by-client-order-id/cancel')
   }
   async createBracket(body: BracketCreateBody): Promise<ExecutionPlanResponse> {
     const data = await this.postJSON('/api/execution-plans', body)

@@ -1464,7 +1464,7 @@ describe('queries', () => {
     it('calls apiClient.createOrder and invalidates orders', async () => {
       const responseBody = { type: 'execution_plan_response', payload: {} }
 
-      vi.mocked(apiClient.createOrder).mockResolvedValueOnce(responseBody)
+      vi.mocked(apiClient.createOrder).mockResolvedValueOnce(responseBody as never)
 
       const { result } = renderHook(() => useCreateOrder(), { wrapper: createWrapper() })
 
@@ -1482,7 +1482,7 @@ describe('queries', () => {
     it('calls apiClient.cancelOrder with the client_order_id', async () => {
       const responseBody = { type: 'execution_plan_response', payload: {} }
 
-      vi.mocked(apiClient.cancelOrder).mockResolvedValueOnce(responseBody)
+      vi.mocked(apiClient.cancelOrder).mockResolvedValueOnce(responseBody as never)
 
       const { result } = renderHook(() => useCancelOrder(), { wrapper: createWrapper() })
 

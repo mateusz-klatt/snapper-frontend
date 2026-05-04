@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import App from './App'
 import { AuthenticatedApp } from './components/AuthenticatedApp'
 import AuthErrorBoundary from './components/auth/AuthErrorBoundary'
-import { useAuth } from './stores/auth'
+import { useAuth, useAuthStore } from './stores/auth'
 import { useAppStore } from './stores/app'
 import { apiClient } from './lib/apiClient'
 
@@ -32,8 +32,9 @@ function AppWithAuth() {
       }
 
       const hasAuthCookies = apiClient.hasAuthCookies()
+      const hasPersistedUser = useAuthStore.getState().user !== null
 
-      if (!hasAuthCookies) {
+      if (!hasAuthCookies && !hasPersistedUser) {
         return
       }
 

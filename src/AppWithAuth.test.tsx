@@ -21,6 +21,7 @@ vi.mock('./components/auth/AuthErrorBoundary', () => ({
 }))
 vi.mock('./stores/auth', () => ({
   useAuth: vi.fn(),
+  useAuthStore: { getState: vi.fn(() => ({ user: null })) },
 }))
 vi.mock('./stores/app', () => ({
   useAppStore: vi.fn(),
@@ -34,6 +35,7 @@ describe('AppWithAuth', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     document.documentElement.classList.remove('dark')
+    vi.mocked(stores.useAuthStore.getState).mockReturnValue({ user: null } as never)
     vi.mocked(useAppStore).mockImplementation((selector?: unknown) => {
       const state = { isDarkMode: false }
 
@@ -68,7 +70,7 @@ describe('AppWithAuth', () => {
       expect(refreshToken).not.toHaveBeenCalled()
     })
   })
-  it('skips initialization when no auth cookies present', async () => {
+  it('skips initialization when no auth cookies and no persisted user', async () => {
     const refreshToken = vi.fn()
 
     vi.mocked(stores.useAuth).mockReturnValue({
@@ -77,9 +79,27 @@ describe('AppWithAuth', () => {
       silentLogout: vi.fn(),
     } as never)
     vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    vi.mocked(stores.useAuthStore.getState).mockReturnValue({ user: null } as never)
     render(<AppWithAuth />)
     await waitFor(() => {
       expect(refreshToken).not.toHaveBeenCalled()
+    })
+  })
+  it('attempts token refresh when persisted user exists without cookies', async () => {
+    const refreshToken = vi.fn().mockResolvedValue(undefined)
+
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken,
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    vi.mocked(stores.useAuthStore.getState).mockReturnValue({
+      user: { public_id: 'u-1' },
+    } as never)
+    render(<AppWithAuth />)
+    await waitFor(() => {
+      expect(refreshToken).toHaveBeenCalledTimes(1)
     })
   })
   it('attempts token refresh when auth cookies present', async () => {

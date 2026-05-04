@@ -1,7 +1,7 @@
 {
   "name": "snapper-frontend",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -39,7 +39,8 @@
     "gen:ws-types": "json2ts build/ws-schemas.json -o src/types/ws.generated.ts --additionalProperties false",
     "gen:ws-types:from-monorepo": "json2ts ../build/ws-schemas.json -o src/types/ws.generated.ts --additionalProperties false",
     "gen": "bash scripts/gen-from-backend.sh",
-    "icons:vendor": "bash scripts/vendor-icons.sh"
+    "icons:vendor": "bash scripts/vendor-icons.sh",
+    "bundle:check": "node scripts/check-bundle-budget.mjs"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.2.6",
