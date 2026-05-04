@@ -142,6 +142,7 @@ export const Settings = () => {
           </div>
           <div>
             <ThemeSelect
+              ariaLabel='Filter settings by category'
               value={selectedCategory}
               onChange={setSelectedCategory}
               options={categories.map(category => ({

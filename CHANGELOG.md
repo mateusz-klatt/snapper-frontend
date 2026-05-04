@@ -4,6 +4,54 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] — 2026-05-04
+
+### Added
+
+- **Playwright E2E suite** (12 tests, ~7s wall clock) with scripted fake
+  backend.
+  - REST mocks via `page.route()` + a default-OK layer keyed against
+    the strict Zod response schemas (`api.generated.zod.ts`); any
+    unmocked `/api/*` returns a loud `404 unmocked: <method> <url>` so
+    forgotten endpoints surface as test failures.
+  - WS mocks via `page.routeWebSocket()` accept the connection and stay
+    silent until a test scripts a frame (`pushFrame()` helper).
+  - Pre-authenticated `authedContext` fixture injects `csrf_token`
+    cookie + zustand-persist user record so non-login tests skip the
+    login form (saves ~2s per test).
+  - Five flows green: auth bootstrap with valid cookies, logout,
+    cancel order, market data tab render, navigate-all-tabs without
+    console errors. Login form test exercises the un-authed flow
+    end-to-end.
+  - axe a11y smoke on six landing routes (Overview, Market Data, Orders,
+    Positions, Backtests, Settings) — fails on `critical` WCAG 2.1 AA
+    violations. `serious` is intentionally excluded in v1.3 (existing
+    color-contrast + scrollable-region debt; tackled in v1.4).
+- **`pnpm e2e` / `pnpm e2e:ui` / `pnpm e2e:debug` / `pnpm e2e:report`**
+  scripts.
+- **`e2e.yml` CI workflow** runs on every PR + push to master against
+  `vite preview` of the production build, caches Playwright browsers
+  via `actions/cache@v4`, uploads HTML report + trace bundle on
+  failure.
+
+### Fixed (a11y, found by the new smoke)
+
+- **`OperatorPicker` / `WalletPicker` Radix Select trigger** — added
+  `aria-label` ("Active operator" / "Active wallet") so screen readers
+  announce the role of the otherwise icon-only combobox.
+- **`Settings` category filter** — added `aria-label`
+  ("Filter settings by category") on the bare `<ThemeSelect>`.
+- **`Backtests` status filter `<select>`** — added `aria-label`
+  ("Filter backtests by status").
+
+### Deferred
+
+- **`places a market order via NewOrderModal happy path`** test is
+  authored but `test.skip`-ped — the form has Radix Select dropdowns
+  with auto-populated fields (exchange, instrument, mode) that need
+  deterministic selectOption interaction. Tackled in v1.4 alongside
+  the apiClient/queries domain split.
+
 ## [1.2.0] — 2026-05-04
 
 ### Changed

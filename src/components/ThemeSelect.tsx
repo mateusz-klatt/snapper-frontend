@@ -16,6 +16,7 @@ interface ThemeSelectProps {
   readonly placeholder?: string
   readonly disabled?: boolean
   readonly className?: string
+  readonly ariaLabel?: string
 }
 
 export const ThemeSelect: React.FC<Readonly<ThemeSelectProps>> = ({
@@ -26,10 +27,12 @@ export const ThemeSelect: React.FC<Readonly<ThemeSelectProps>> = ({
   placeholder,
   disabled,
   className,
+  ariaLabel,
 }) => (
   <Select.Root value={value || undefined} onValueChange={onChange} disabled={disabled}>
     <Select.Trigger
       id={id}
+      aria-label={ariaLabel}
       className={clsx(
         'inline-flex cursor-pointer items-center justify-between rounded-xl border border-dark-600 bg-alpine-50 px-3 py-2 text-sm text-alpine-900',
         'hover:bg-dark-50 focus:border-brand-500 focus:outline-hidden focus:ring-2 focus:ring-brand-500',
