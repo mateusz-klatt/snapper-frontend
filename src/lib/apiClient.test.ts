@@ -424,6 +424,18 @@ describe('APIClient', () => {
       expect(typeof apiClient.setCsrfToken).toBe('function')
       apiClient.setCsrfToken('test-token')
     })
+    it('returns early when document is undefined (SSR-like)', () => {
+      const originalDocument = globalThis.document
+
+      vi.stubGlobal('document', undefined)
+
+      try {
+        expect(() => apiClient.setCsrfToken('token')).not.toThrow()
+        expect(() => apiClient.setCsrfToken(null)).not.toThrow()
+      } finally {
+        vi.stubGlobal('document', originalDocument)
+      }
+    })
     it('exercises HTTPS branch of Secure flag (set + clear)', () => {
       const originalLocation = window.location
 

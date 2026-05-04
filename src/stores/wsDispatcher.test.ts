@@ -225,7 +225,7 @@ describe('WSDispatcher', () => {
         },
       ]
 
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', null], existingCandles)
+      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 100, null], existingCandles)
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -253,11 +253,85 @@ describe('WSDispatcher', () => {
         'BTC-USD',
         'kraken',
         '1m',
+        100,
         null,
       ])
 
       expect(cached).toHaveLength(1)
       expect(cached?.[0]).toMatchObject({ close: 50500, volume: 100 })
+    })
+    it('candle message merges into all live caches regardless of limit', () => {
+      const nowIso = new Date().toISOString()
+      const baseCandle = {
+        instrument: 'BTC-USD',
+        exchange: 'kraken',
+        timeframe: '1m',
+        open_at: nowIso,
+        open: 49000,
+        high: 50000,
+        low: 48000,
+        close: 49500,
+        volume: 50,
+        vwap: null,
+        trades: null,
+      }
+
+      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 100, null], [baseCandle])
+      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 500, null], [baseCandle])
+      queryClient.setQueryData(
+        ['candles', 'BTC-USD', 'kraken', '1m', 100, '2024-01-01T00:00:00Z'],
+        [baseCandle]
+      )
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      const candleMessage: CandleData = {
+        type: 'candle',
+        sequence_id: 0,
+        public_id: 'test-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'test-sid',
+        instrument: 'BTC-USD',
+        exchange: 'kraken',
+        timeframe: '1m',
+        open: 50000,
+        high: 51000,
+        low: 49000,
+        close: 50500,
+        volume: 100,
+        open_at: nowIso,
+      }
+      const candleHandler = messageHandlers.get('candle')
+
+      candleHandler?.(candleMessage)
+      const live100 = queryClient.getQueryData<unknown[]>([
+        'candles',
+        'BTC-USD',
+        'kraken',
+        '1m',
+        100,
+        null,
+      ])
+      const live500 = queryClient.getQueryData<unknown[]>([
+        'candles',
+        'BTC-USD',
+        'kraken',
+        '1m',
+        500,
+        null,
+      ])
+      const timeTravel = queryClient.getQueryData<unknown[]>([
+        'candles',
+        'BTC-USD',
+        'kraken',
+        '1m',
+        100,
+        '2024-01-01T00:00:00Z',
+      ])
+
+      expect(live100?.[0]).toMatchObject({ close: 50500 })
+      expect(live500?.[0]).toMatchObject({ close: 50500 })
+      expect(timeTravel?.[0]).toMatchObject({ close: 49500 })
     })
     it('order message merges new order into cache', () => {
       const existingOrders = [

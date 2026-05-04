@@ -503,6 +503,10 @@ class APIClient {
     this.setCsrfToken(null)
   }
   public setCsrfToken(token: string | null): void {
+    if (typeof document === 'undefined') {
+      return
+    }
+
     const name = 'csrf_token'
     const secureFlag =
       typeof window !== 'undefined' && window.location.protocol === 'https:' ? '; Secure' : ''

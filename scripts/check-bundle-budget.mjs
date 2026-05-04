@@ -2,13 +2,14 @@
 
 import { readdirSync, statSync, readFileSync } from 'node:fs'
 import { gzipSync } from 'node:zlib'
+import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
 
-const ROOT = new URL('..', import.meta.url).pathname
+const ROOT = fileURLToPath(new URL('..', import.meta.url))
 const ASSETS_DIR = join(ROOT, 'dist', 'assets')
 
-const BUDGET_LARGEST_CHUNK_GZIP_KB = 80
-const BUDGET_TOTAL_JS_GZIP_KB = 350
+const BUDGET_LARGEST_CHUNK_GZIP_BYTES = 80 * 1024
+const BUDGET_TOTAL_JS_GZIP_BYTES = 350 * 1024
 
 function bytesToKb(bytes) {
   return Math.round(bytes / 1024)
@@ -59,17 +60,15 @@ console.log('')
 
 let failed = false
 
-if (bytesToKb(largestGzip) > BUDGET_LARGEST_CHUNK_GZIP_KB) {
+if (largestGzip > BUDGET_LARGEST_CHUNK_GZIP_BYTES) {
   console.error(
-    `FAIL: largest chunk ${bytesToKb(largestGzip)} kB exceeds budget ${BUDGET_LARGEST_CHUNK_GZIP_KB} kB gzip`
+    `FAIL: largest chunk ${largestGzip} B exceeds budget ${BUDGET_LARGEST_CHUNK_GZIP_BYTES} B gzip`
   )
   failed = true
 }
 
-if (bytesToKb(totalGzip) > BUDGET_TOTAL_JS_GZIP_KB) {
-  console.error(
-    `FAIL: total JS ${bytesToKb(totalGzip)} kB exceeds budget ${BUDGET_TOTAL_JS_GZIP_KB} kB gzip`
-  )
+if (totalGzip > BUDGET_TOTAL_JS_GZIP_BYTES) {
+  console.error(`FAIL: total JS ${totalGzip} B exceeds budget ${BUDGET_TOTAL_JS_GZIP_BYTES} B gzip`)
   failed = true
 }
 

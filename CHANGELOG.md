@@ -14,6 +14,15 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   collided on a single cache entry — the second caller observed the
   first's bar count. Latent today (only `MarketData.tsx` calls with
   `limit=100`); the fix is preventative.
+- **`WSDispatcher.mergeCandleIntoCache` follows the new query-key shape.**
+  After the `useCandles` key change above, the dispatcher's hard-coded
+  5-element write key would have orphaned WS frames — live charts would
+  stop updating after the initial REST fetch landed under the new
+  6-element key. The merger now scans all `['candles', instrument,
+exchange, timeframe, …]` caches via `getQueriesData` and writes to each
+  live entry (last key element `=== null`), mirroring the existing
+  `mergeOrderIntoCache` pattern. Time-travel caches (non-null `asOf`)
+  are skipped so historical views aren't corrupted by live frames.
 - **Wallet-scoped credential and scope-grant invalidations.**
   `useCreateCredential`, `useRotateCredential`, and `useCreateScopeGrant`
   invalidated the broad `['credentials']` / `['scope-grants']` prefix,
