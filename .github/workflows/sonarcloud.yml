@@ -20,7 +20,6 @@ jobs:
     name: SonarCloud scan
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    if: ${{ vars.SONAR_ENABLED == 'true' }}
     steps:
       - uses: actions/checkout@v6
         with:
