@@ -27,7 +27,7 @@ const ROUTES_TO_AUDIT: Array<{ tab: string; expectHeading: RegExp }> = [
 ]
 
 for (const { tab, expectHeading } of ROUTES_TO_AUDIT) {
-  test(`a11y: ${tab} has no serious/critical WCAG 2.1 AA violations`, async ({ browser }) => {
+  test(`a11y: ${tab} has no critical WCAG 2.1 AA violations`, async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
 

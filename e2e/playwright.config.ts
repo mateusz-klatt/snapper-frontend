@@ -10,9 +10,7 @@ export default defineConfig({
   forbidOnly: isCi,
   retries: isCi ? 2 : 0,
   workers: isCi ? 2 : undefined,
-  reporter: isCi
-    ? [['list'], ['html', { open: 'never', outputFolder: '../playwright-report' }]]
-    : [['list']],
+  reporter: [['list'], ['html', { open: 'never', outputFolder: '../playwright-report' }]],
   use: {
     baseURL: 'http://localhost:4173',
     trace: 'retain-on-failure',

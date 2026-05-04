@@ -17,14 +17,17 @@ type RouteOverride = (route: Route) => Promise<void> | void
  *   common routes (auth bootstrap, market data, orders, settings,
  *   admin, ai-reviews).
  * - Each handler returns a sane minimum response so the UI doesn't
- *   crash; tests override per-call via `overrides` map keyed by URL
- *   pattern.
+ *   crash; tests override per-call via `overrides` map keyed by glob
+ *   URL patterns (Playwright glob, e.g. `**\/api/orders*`).
  * - Anything not mocked → 404 with `{ detail: 'unmocked: <url>' }` so a
  *   forgotten endpoint shows up as a visible failure rather than a
  *   silent network hang.
+ *
+ * Override keys are glob patterns only — for regex-based routing,
+ * register directly via `page.route(/regex/, handler)` after `mockApi`.
  */
 export interface ApiOverrides {
-  [pattern: string]: RouteOverride
+  [globPattern: string]: RouteOverride
 }
 
 const BASE_URL = 'http://localhost:4173'
@@ -38,8 +41,13 @@ function json(route: Route, body: unknown, status = 200) {
 }
 
 function refreshOk(route: Route) {
+  // Type literal `refresh_response` matches RefreshResponseSchema in
+  // src/lib/schemas/api.generated.zod.ts. The endpoint isn't currently
+  // wrapped in validateResponse (auth-store calls postJSON directly)
+  // but that may change — keep the mock contract aligned with the
+  // generated schema so the E2E layer doesn't drift.
   return json(route, {
-    type: 'auth_refresh_response',
+    type: 'refresh_response',
     sequence_id: 0,
     public_id: 'auth-pid',
     timestamp: '2026-01-01T00:00:00Z',
@@ -68,7 +76,8 @@ const DEFAULTS: Array<[string | RegExp, RouteOverride]> = [
   ['**/api/auth/me', route => json(route, envelope('user_response', { payload: TEST_USER }))],
   [
     '**/api/auth/logout',
-    route => json(route, envelope('refresh_response', { payload: { message: 'logged out' } })),
+    // OpenAPI spec returns MessageResponse — `{type: "message", payload: string}`.
+    route => json(route, envelope('message', { payload: 'logged out' })),
   ],
   [
     '**/api/health',
