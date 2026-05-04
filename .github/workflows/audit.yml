@@ -8,6 +8,7 @@ on:
     paths:
       - 'package.json'
       - 'pnpm-lock.yaml'
+      - '.github/workflows/audit.yml'
   workflow_dispatch:
 
 concurrency:

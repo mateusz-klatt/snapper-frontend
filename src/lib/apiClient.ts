@@ -64,9 +64,16 @@ const TrailingStopByCycleResultSchema = z.union([
 
 const CandleListResponseSchema = z
   .object({
+    type: z.literal('candle_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
     payload: z.array(CandleDataSchema).optional(),
+    count: z.number().int().optional(),
   })
-  .passthrough()
+  .strict()
 
 import type { PendingReviewListResponse } from './schemas/api.generated.zod'
 import type {

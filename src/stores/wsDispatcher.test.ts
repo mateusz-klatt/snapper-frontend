@@ -333,6 +333,74 @@ describe('WSDispatcher', () => {
       expect(live500?.[0]).toMatchObject({ close: 50500 })
       expect(timeTravel?.[0]).toMatchObject({ close: 49500 })
     })
+    it('appended candle respects per-cache limit (key[4]), not dispatcher max', () => {
+      const baseCandle = (openAtIso: string, close: number) => ({
+        instrument: 'BTC-USD',
+        exchange: 'kraken' as const,
+        timeframe: '1m' as const,
+        open_at: openAtIso,
+        open: close - 100,
+        high: close + 100,
+        low: close - 200,
+        close,
+        volume: 1,
+        vwap: null,
+        trades: null,
+      })
+      const seed100 = Array.from({ length: 100 }, (_, i) =>
+        baseCandle(new Date(60_000 * i).toISOString(), 1000 + i)
+      )
+      const seed500 = Array.from({ length: 500 }, (_, i) =>
+        baseCandle(new Date(60_000 * i).toISOString(), 1000 + i)
+      )
+
+      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 100, null], seed100)
+      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 500, null], seed500)
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      const newerOpenAt = new Date(60_000 * 1000).toISOString()
+      const newer: CandleData = {
+        type: 'candle',
+        sequence_id: 1,
+        public_id: 'new-pid',
+        timestamp: newerOpenAt,
+        session_id: 'sess',
+        instrument: 'BTC-USD',
+        exchange: 'kraken',
+        timeframe: '1m',
+        open_at: newerOpenAt,
+        open: 9000,
+        high: 9100,
+        low: 8900,
+        close: 9050,
+        volume: 1,
+      }
+      const candleHandler = messageHandlers.get('candle')
+
+      candleHandler?.(newer)
+      const cached100 = queryClient.getQueryData<unknown[]>([
+        'candles',
+        'BTC-USD',
+        'kraken',
+        '1m',
+        100,
+        null,
+      ])
+      const cached500 = queryClient.getQueryData<unknown[]>([
+        'candles',
+        'BTC-USD',
+        'kraken',
+        '1m',
+        500,
+        null,
+      ])
+
+      expect(cached100?.length).toBe(100)
+      expect(cached500?.length).toBe(500)
+      expect((cached100 as { close: number }[])?.[(cached100?.length ?? 0) - 1]?.close).toBe(9050)
+      expect((cached500 as { close: number }[])?.[(cached500?.length ?? 0) - 1]?.close).toBe(9050)
+    })
     it('order message merges new order into cache', () => {
       const existingOrders = [
         {

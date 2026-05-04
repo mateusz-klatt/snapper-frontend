@@ -271,8 +271,8 @@ export class WSDispatcher {
         this.queryClient.setQueryData<CandleData[]>(key, updated)
       } else if (incomingTime > lastTime) {
         const appended = [...existing, envelope]
-        const trimmed =
-          appended.length > this.maxCandles ? appended.slice(-this.maxCandles) : appended
+        const cap = typeof key[4] === 'number' ? key[4] : this.maxCandles
+        const trimmed = appended.length > cap ? appended.slice(-cap) : appended
 
         this.queryClient.setQueryData<CandleData[]>(key, trimmed)
       }

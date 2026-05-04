@@ -773,6 +773,8 @@ describe('domain API methods', () => {
         type: 'candle_list',
         session_id: '',
         sequence_id: 0,
+        public_id: 'env-pid',
+        timestamp: '2024-01-01T00:00:00Z',
         payload: [],
         count: 0,
       }),
@@ -785,7 +787,14 @@ describe('domain API methods', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       status: 200,
-      json: async () => ({ type: 'candle_list', session_id: '', sequence_id: 0, count: 0 }),
+      json: async () => ({
+        type: 'candle_list',
+        session_id: '',
+        sequence_id: 0,
+        public_id: 'env-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        count: 0,
+      }),
     })
     const result = await apiClient.getCandles('BTC/USD', 'kraken', '1h', 50)
 
