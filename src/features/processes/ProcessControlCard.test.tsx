@@ -281,6 +281,9 @@ describe('ProcessControlCard', () => {
         onStop={mockOnStop}
       />
     )
-    await user.click(screen.getByText('Restart'))
+    const restartButton = screen.getByText('Restart')
+
+    await expect(user.click(restartButton)).resolves.not.toThrow()
+    expect(restartButton).toBeInTheDocument()
   })
 })

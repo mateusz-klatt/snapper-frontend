@@ -873,7 +873,9 @@ describe('Signals', () => {
         <Signals />
       </QueryClientProvider>
     )
-    await screen.findByText('30m ago')
+    const relativeTime = await screen.findByText('30m ago')
+
+    expect(relativeTime).toBeInTheDocument()
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: Record<string, unknown>) => unknown
     ) => selector({ asOf: null, isTimeTraveling: false })) as never)

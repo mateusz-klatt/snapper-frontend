@@ -428,7 +428,10 @@ describe('NewOrderModal', () => {
     })
     const selects = screen.getAllByRole('combobox')
 
-    fireEvent.change(selects[1], { target: { value: 'ETH-USD' } })
+    expect(() => {
+      fireEvent.change(selects[1], { target: { value: 'ETH-USD' } })
+    }).not.toThrow()
+    expect((selects[1] as HTMLSelectElement).value).toBe('ETH-USD')
   })
 
   it('resets state on close', async () => {

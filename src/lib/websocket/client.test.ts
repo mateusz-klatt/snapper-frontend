@@ -296,7 +296,9 @@ describe('WebSocketClient', () => {
       expect((client as any).ws.send).toHaveBeenCalledWith('{"type":"test","data":"value"}')
     })
     it('does not send when not connected', () => {
-      client.send('test')
+      expect(() => {
+        client.send('test')
+      }).not.toThrow()
     })
     it('skips sending when ws is missing even if connected', () => {
       const isConnectedSpy = vi.spyOn(client, 'isConnected').mockReturnValue(true)
@@ -455,8 +457,10 @@ describe('WebSocketClient', () => {
       const handler = vi.fn()
       const unsubscribe = client.onMessage('candle', handler)
 
-      unsubscribe()
-      unsubscribe()
+      expect(() => {
+        unsubscribe()
+        unsubscribe()
+      }).not.toThrow()
     })
     it('handles unsubscription when handler is missing', () => {
       const handler = vi.fn()
@@ -511,8 +515,10 @@ describe('WebSocketClient', () => {
       const handler = vi.fn()
       const unsubscribe = client.onConnection(handler)
 
-      unsubscribe()
-      unsubscribe()
+      expect(() => {
+        unsubscribe()
+        unsubscribe()
+      }).not.toThrow()
     })
     it('handles unsubscription when handler is missing', () => {
       const handler = vi.fn()
