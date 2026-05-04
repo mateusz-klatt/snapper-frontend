@@ -4,6 +4,34 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] — 2026-05-04
+
+First stable release. Subsequent breaking changes will follow Semantic
+Versioning — i.e. a `2.0.0` for breaking, `1.x.0` for new features, `1.0.x`
+for fixes. See README "Release contract" for the support semantics.
+
+### Fixed
+
+- **`NewOrderModal` no longer double-wraps the order payload.** Manual
+  order entry was building a full `create_order_command` envelope locally,
+  then `apiClient.post()` wrapped it again via `stampProvenance`, so the
+  backend received the order body nested at `payload.payload.*`. Now sends
+  raw fields (matches the bracket / trailing-stop / strategy-launch
+  callers); the single envelope built by `stampProvenance` is the only
+  one. Could have masked failed manual-order submissions in production.
+
+### Changed
+
+- **MarketData combobox markup is now W3C ARIA APG-compliant** — listbox
+  is a `<div role="listbox" tabindex="-1">` (was `<ul>`), each option is a
+  `<div role="option">` with click + hover handlers directly on the
+  option (no nested interactive `<button>`), `aria-selected` reflects the
+  committed instrument (was the keyboard-active row, which announced
+  every keypress as "selected" to screen readers). Empty-state changed to
+  `role="status"` (was `role="option" aria-disabled="true"`, missing
+  `aria-selected`). Closes 5 SonarCloud findings (S6819, S6842 ×3,
+  S6807).
+
 ## [0.4.0] — 2026-05-04
 
 ### Added

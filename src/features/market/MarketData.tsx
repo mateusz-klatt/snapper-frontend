@@ -300,48 +300,50 @@ export function MarketData() {
               className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50'
             />
             {instrumentDropdownOpen && (
-              <ul
+              <div
                 id={instrumentListboxId}
                 role='listbox'
                 aria-label='Instruments'
-                className='absolute top-full left-0 mt-1 w-full min-w-48 max-h-60 overflow-y-auto z-50 bg-alpine-50 rounded-md shadow-lg border border-dark-600 list-none p-0 m-0'
+                tabIndex={-1}
+                className='absolute top-full left-0 mt-1 w-full min-w-48 max-h-60 overflow-y-auto z-50 bg-alpine-50 rounded-md shadow-lg border border-dark-600'
               >
                 {filteredInstruments.length > 0 ? (
                   filteredInstruments.map((inst, idx) => {
                     const canTrade = capabilityMap.get(inst)
                     const isMarketDataOnly = canTrade === false
                     const isActive = idx === instrumentActiveIndex
+                    const isSelected = inst === selectedInstrument
 
                     return (
-                      <li
+                      <div
                         key={inst}
                         id={instrumentOptionId(idx)}
                         role='option'
-                        aria-selected={isActive}
+                        tabIndex={-1}
+                        aria-selected={isSelected}
+                        onMouseDown={e => {
+                          e.preventDefault()
+                          commitInstrument(inst)
+                        }}
+                        onMouseEnter={() => setInstrumentActiveIndex(idx)}
+                        className={`flex w-full select-none items-center justify-between gap-3 px-3 py-2 text-sm text-alpine-900 rounded-sm cursor-pointer ${isActive ? 'bg-dark-700' : 'hover:bg-dark-700'}`}
                       >
-                        <button
-                          type='button'
-                          onClick={() => commitInstrument(inst)}
-                          onMouseEnter={() => setInstrumentActiveIndex(idx)}
-                          className={`flex w-full select-none items-center justify-between gap-3 px-3 py-2 text-sm text-alpine-900 rounded-sm cursor-pointer ${isActive ? 'bg-dark-700' : 'hover:bg-dark-700'}`}
-                        >
-                          <span className='flex items-center gap-2'>
-                            {selectedExchange !== null && (
-                              <InstrumentIcon symbol={inst} exchange={selectedExchange} size={20} />
-                            )}
-                            {inst}
-                          </span>
-                          {isMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
-                        </button>
-                      </li>
+                        <span className='flex items-center gap-2'>
+                          {selectedExchange !== null && (
+                            <InstrumentIcon symbol={inst} exchange={selectedExchange} size={20} />
+                          )}
+                          {inst}
+                        </span>
+                        {isMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
+                      </div>
                     )
                   })
                 ) : (
-                  <li role='option' aria-disabled='true' className='list-none'>
-                    <div className='px-3 py-2 text-sm text-muted-500'>No instruments found</div>
-                  </li>
+                  <div role='status' className='px-3 py-2 text-sm text-muted-500'>
+                    No instruments found
+                  </div>
                 )}
-              </ul>
+              </div>
             )}
           </div>
         </div>

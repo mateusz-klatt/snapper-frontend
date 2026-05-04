@@ -334,10 +334,10 @@ describe('NewOrderModal', () => {
     await waitFor(() => {
       expect(mockMutateAsync).toHaveBeenCalledTimes(1)
     })
-    const body = mockMutateAsync.mock.calls[0][0] as { payload: Record<string, unknown> }
+    const body = mockMutateAsync.mock.calls[0][0] as Record<string, unknown>
 
-    expect(body.payload.price).toBe(50000)
-    expect(body.payload.stop_price).toBe(48000)
+    expect(body.price).toBe(50000)
+    expect(body.stop_price).toBe(48000)
   })
 
   it('submits market order with null price and null stop_price', async () => {
@@ -359,10 +359,10 @@ describe('NewOrderModal', () => {
     await waitFor(() => {
       expect(mockMutateAsync).toHaveBeenCalledTimes(1)
     })
-    const body = mockMutateAsync.mock.calls[0][0] as { payload: Record<string, unknown> }
+    const body = mockMutateAsync.mock.calls[0][0] as Record<string, unknown>
 
-    expect(body.payload.price).toBeNull()
-    expect(body.payload.stop_price).toBeNull()
+    expect(body.price).toBeNull()
+    expect(body.stop_price).toBeNull()
   })
 
   it('shows sell side styling in confirmation view', async () => {

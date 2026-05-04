@@ -75,6 +75,54 @@ Sources are tracked in `scripts/vendor-icons.sh` and the manifest is regenerated
 - **`taxRules.ts`** — Polish PIT / DE / FR cost-basis rules cite their source statutes (Ustawa o PIT art. 17 ust. 1f pkt 11, KIS interpretation lineage, EU equivalents). Update with caution; tax-treatment changes need legal review.
 - **`useHashSubpath`** — strips `?query` before splitting on `/`, fixing the deep-route + scope-query collision (e.g. `#backtests/<uuid>?wallet=X` correctly returns `["<uuid>"]` not `["<uuid>?wallet=X"]`).
 
+## Release contract (1.0+)
+
+Stable from `1.0.0` onward; subsequent releases follow Semantic Versioning:
+
+- **`MAJOR` (`2.0.0`, `3.0.0`, …)** — breaking changes to user-facing UI flows or to the assumed backend API/WebSocket contract. Breaking changes are announced in `CHANGELOG.md` and accompanied by an `UPGRADING-N.md` note.
+- **`MINOR` (`1.1.0`, `1.2.0`, …)** — new screens, new feature surfaces, new accepted backend frames. Backwards-compatible by default.
+- **`PATCH` (`1.0.1`, …)** — bug fixes, accessibility tightening, security patches. No behaviour changes for existing flows.
+
+### Supported runtime
+
+- **Browsers** — current and previous major release of Chrome, Edge, Firefox, Safari (so 2 versions back from "latest"). Other browsers may work but are not gated by CI. Open an issue if you hit a regression in scope.
+- **Node + pnpm (for contributors)** — Node `>=22`, pnpm `>=10`, enforced via `engines` + `engine-strict`.
+- **Backend pairing** — this frontend release pairs with the `mateusz-klatt/snapper` backend at the submodule pointer recorded against the matching frontend tag. Generated types (`src/types/*.generated.ts`, `src/lib/schemas/*.generated.zod.ts`) are committed; regenerate with `make gen` against a local backend if you point at a different commit.
+
+### Accessibility target
+
+Targets **WCAG 2.1 AA** for the shipped UI flows (login, navigation, market data, orders, backtests, modals). The picker controls follow the W3C ARIA APG combobox/listbox pattern. Found a regression? File an issue with reproduction + screen reader/version.
+
+### Internationalisation
+
+**English only** for `1.0.x`. UI strings are not externalised. Locale-aware number/date rendering uses `Intl.NumberFormat`/`Intl.DateTimeFormat` with the browser locale, and a few user-facing strings are localised inside specific datepickers (PL labels). A future minor version may add a translation layer; this is not on the `1.0.x` roadmap.
+
+### Privacy + storage
+
+The frontend does not load third-party trackers, analytics, or fonts. Local browser storage is limited to:
+
+- `sessionStorage`: `snapper_sequence_tracker` (per-session UUIDv7 + per-table sequence counter, used for control-frame provenance). Cleared when the tab closes.
+- `localStorage`: scope-persistence (last selected wallet/operator) — UUID strings only.
+- `cookies`: backend-issued auth + CSRF cookies. Lifecycle is owned by the backend.
+
+No telemetry is sent from the browser. All network traffic goes to the same origin (`/api/*`, `/api/ws`).
+
+### Self-hosting security guidance
+
+When hosting `snapper-frontend` behind a reverse proxy (recommended), set:
+
+- `Strict-Transport-Security: max-age=31536000; includeSubDomains` (HTTPS only)
+- `Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; connect-src 'self' wss:`
+- `X-Frame-Options: DENY` (or CSP `frame-ancestors 'none'`)
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+
+For HTTPS deployments, mark the backend's auth + CSRF cookies `Secure` + `HttpOnly` (auth) / `SameSite=Lax`.
+
+### Deprecation policy
+
+Public-facing features (UI flows, route paths, hash-subroute schemes, backend frame contracts) marked deprecated in a `MINOR` release will be removed in the **next** `MAJOR` release at the earliest. The `CHANGELOG.md` lists deprecations under a `### Deprecated` heading.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Forks welcome; PRs get reviewed against `master`.

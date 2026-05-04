@@ -167,28 +167,20 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   }
 
   const handleConfirm = async () => {
-    const now = new Date().toISOString()
-    const publicId = uuid7()
+    const idempotencyKey = uuid7()
 
     const body = {
-      type: 'create_order_command',
-      session_id: 'ui',
-      sequence_id: 0,
-      public_id: publicId,
-      timestamp: now,
-      payload: {
-        instrument,
-        instrument_public_id: instrumentPublicId,
-        exchange,
-        mode,
-        side,
-        order_type: orderType,
-        quantity: Number.parseFloat(quantity),
-        price: needsPrice ? Number.parseFloat(price) : null,
-        stop_price: needsStopPrice ? Number.parseFloat(stopPrice) : null,
-        wallet_public_id: walletPublicId,
-        idempotency_key: publicId,
-      },
+      instrument,
+      instrument_public_id: instrumentPublicId,
+      exchange,
+      mode,
+      side,
+      order_type: orderType,
+      quantity: Number.parseFloat(quantity),
+      price: needsPrice ? Number.parseFloat(price) : null,
+      stop_price: needsStopPrice ? Number.parseFloat(stopPrice) : null,
+      wallet_public_id: walletPublicId,
+      idempotency_key: idempotencyKey,
     }
 
     try {
