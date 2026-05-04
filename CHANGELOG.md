@@ -4,6 +4,66 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-05-04
+
+### Fixed
+
+- **`useCandles` query key now includes `limit`.** The TanStack Query cache
+  was keyed by `(instrument, exchange, timeframe, asOf)` only, so two
+  consumers asking for the same instrument with different `limit` values
+  collided on a single cache entry — the second caller observed the
+  first's bar count. Latent today (only `MarketData.tsx` calls with
+  `limit=100`); the fix is preventative.
+- **`WSDispatcher.mergeCandleIntoCache` follows the new query-key shape.**
+  After the `useCandles` key change above, the dispatcher's hard-coded
+  5-element write key would have orphaned WS frames — live charts would
+  stop updating after the initial REST fetch landed under the new
+  6-element key. The merger now scans all `['candles', instrument,
+exchange, timeframe, …]` caches via `getQueriesData` and writes to each
+  live entry (last key element `=== null`), mirroring the existing
+  `mergeOrderIntoCache` pattern. Time-travel caches (non-null `asOf`)
+  are skipped so historical views aren't corrupted by live frames.
+- **Wallet-scoped credential and scope-grant invalidations.**
+  `useCreateCredential`, `useRotateCredential`, and `useCreateScopeGrant`
+  invalidated the broad `['credentials']` / `['scope-grants']` prefix,
+  which forced refetches of every wallet's cached list. They now scope
+  to the mutated `walletPublicId` from mutation variables; other wallets'
+  data stays warm.
+- **Auth bootstrap survives browser restart with a session-cleared CSRF
+  cookie.** `AppWithAuth` gated the cold-start `/api/auth/refresh` probe
+  on `apiClient.hasAuthCookies()`, which only sees the (session-scoped)
+  `csrf_token` cookie — never the HttpOnly `refresh_token`. After a
+  restart that cleared session cookies, valid users were forced to
+  re-login. The bootstrap now also accepts a persisted user
+  (`useAuthStore.getState().user !== null`) as a "may be logged in"
+  signal.
+
+### Added
+
+- **Runtime Zod validation for three more endpoints** — `getCandles`,
+  `createOrder`, `cancelOrder` now `validateResponse(...)` against
+  generated schemas (`CandleDataSchema`, `ExecutionPlanResponseSchema`).
+  Response types narrowed from `Record<string, unknown>` to
+  `ExecutionPlanResponse` for the order mutations. Closes the last gap
+  in the apiClient validation coverage matrix.
+- **CSRF cookie carries `Secure` over HTTPS.** `setCsrfToken` now appends
+  `; Secure` when `window.location.protocol === 'https:'`, preventing
+  the cookie from leaking over a downgraded plaintext connection.
+  Plain-HTTP localhost dev still works (no `Secure` is appended).
+- **Bundle budget CI gate.** `pnpm bundle:check` (run after `pnpm build`)
+  fails the build if any single chunk exceeds 80 kB gzip or the total
+  exceeds 350 kB gzip. Current state: 59 kB largest, 273 kB total.
+- **Weekly `pnpm audit` workflow.** `audit.yml` runs every Monday at 05:17
+  UTC and on any PR that touches `package.json` / `pnpm-lock.yaml`,
+  failing on `high` or `critical` advisories. Manual dispatch supported.
+
+### Deferred
+
+- `noUncheckedIndexedAccess` (210 type errors at flag-flip time, 28 of
+  them in production code) deferred to **1.2.0**, where it will land
+  alongside the apiClient/queries domain split that should reduce the
+  surface area of array-index callers.
+
 ## [1.0.0] — 2026-05-04
 
 First stable release. Subsequent breaking changes will follow Semantic

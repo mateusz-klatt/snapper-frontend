@@ -123,6 +123,18 @@ export default [
   },
 
   {
+    files: ['scripts/**/*.{mjs,js}'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      'no-console': 'off',
+    },
+  },
+
+  {
     ignores: [
       'dist/**',
       'node_modules/**',

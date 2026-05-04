@@ -424,6 +424,36 @@ describe('APIClient', () => {
       expect(typeof apiClient.setCsrfToken).toBe('function')
       apiClient.setCsrfToken('test-token')
     })
+    it('returns early when document is undefined (SSR-like)', () => {
+      const originalDocument = globalThis.document
+
+      vi.stubGlobal('document', undefined)
+
+      try {
+        expect(() => apiClient.setCsrfToken('token')).not.toThrow()
+        expect(() => apiClient.setCsrfToken(null)).not.toThrow()
+      } finally {
+        vi.stubGlobal('document', originalDocument)
+      }
+    })
+    it('exercises HTTPS branch of Secure flag (set + clear)', () => {
+      const originalLocation = window.location
+
+      Object.defineProperty(window, 'location', {
+        configurable: true,
+        value: { ...originalLocation, protocol: 'https:' },
+      })
+
+      try {
+        expect(() => apiClient.setCsrfToken('https-token')).not.toThrow()
+        expect(() => apiClient.setCsrfToken(null)).not.toThrow()
+      } finally {
+        Object.defineProperty(window, 'location', {
+          configurable: true,
+          value: originalLocation,
+        })
+      }
+    })
   })
 })
 describe('domain API methods', () => {
@@ -700,11 +730,15 @@ describe('domain API methods', () => {
         type: 'candle_list',
         session_id: '',
         sequence_id: 0,
+        public_id: 'env-pid',
+        timestamp: '2024-01-01T00:00:00Z',
         payload: [
           {
             type: 'candle',
             session_id: '',
             sequence_id: 0,
+            public_id: 'cdl-1',
+            timestamp: '2024-01-01T00:00:00Z',
             instrument: 'BTC/USD',
             exchange: 'kraken',
             timeframe: '1h',
@@ -739,6 +773,8 @@ describe('domain API methods', () => {
         type: 'candle_list',
         session_id: '',
         sequence_id: 0,
+        public_id: 'env-pid',
+        timestamp: '2024-01-01T00:00:00Z',
         payload: [],
         count: 0,
       }),
@@ -751,7 +787,14 @@ describe('domain API methods', () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       status: 200,
-      json: async () => ({ type: 'candle_list', session_id: '', sequence_id: 0, count: 0 }),
+      json: async () => ({
+        type: 'candle_list',
+        session_id: '',
+        sequence_id: 0,
+        public_id: 'env-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        count: 0,
+      }),
     })
     const result = await apiClient.getCandles('BTC/USD', 'kraken', '1h', 50)
 
@@ -915,7 +958,37 @@ describe('domain API methods', () => {
     expect(mockFetch).toHaveBeenCalledWith(expect.stringContaining('limit=100'), expect.any(Object))
   })
   it('createOrder posts order body', async () => {
-    const responseBody = { type: 'execution_plan_response', payload: {} }
+    const responseBody = {
+      type: 'execution_plan_response',
+      sequence_id: 1,
+      public_id: 'plan-1',
+      timestamp: '2026-04-12T00:00:00Z',
+      session_id: 'sess-1',
+      payload: {
+        type: 'execution_plan',
+        sequence_id: 1,
+        public_id: 'plan-1',
+        timestamp: '2026-04-12T00:00:00Z',
+        session_id: 'sess-1',
+        plan_type: 'order',
+        status: 'armed',
+        instrument_public_id: 'inst-1',
+        exchange: 'kraken',
+        mode: 'paper',
+        side: 'buy',
+        total_quantity: 1.0,
+        filled_quantity: 0,
+        created_at: '2026-04-12T00:00:00Z',
+        created_via: 'api',
+        wallet_public_id: 'w-1',
+        operator_public_id: null,
+        params: {},
+        position_cycle_public_id: null,
+        parent_plan_public_id: null,
+        last_error: null,
+        idempotency_key: null,
+      },
+    }
 
     mockFetch.mockResolvedValueOnce({
       ok: true,
@@ -931,7 +1004,37 @@ describe('domain API methods', () => {
     )
   })
   it('cancelOrder posts to /api/orders/by-client-order-id/{cid}/cancel', async () => {
-    const responseBody = { type: 'execution_plan_response', payload: {} }
+    const responseBody = {
+      type: 'execution_plan_response',
+      sequence_id: 2,
+      public_id: 'plan-2',
+      timestamp: '2026-04-12T00:00:00Z',
+      session_id: 'sess-1',
+      payload: {
+        type: 'execution_plan',
+        sequence_id: 2,
+        public_id: 'plan-2',
+        timestamp: '2026-04-12T00:00:00Z',
+        session_id: 'sess-1',
+        plan_type: 'order',
+        status: 'cancelled',
+        instrument_public_id: 'inst-1',
+        exchange: 'kraken',
+        mode: 'paper',
+        side: 'buy',
+        total_quantity: 1.0,
+        filled_quantity: 0,
+        created_at: '2026-04-12T00:00:00Z',
+        created_via: 'api',
+        wallet_public_id: 'w-1',
+        operator_public_id: null,
+        params: {},
+        position_cycle_public_id: null,
+        parent_plan_public_id: null,
+        last_error: null,
+        idempotency_key: null,
+      },
+    }
 
     mockFetch.mockResolvedValueOnce({
       ok: true,

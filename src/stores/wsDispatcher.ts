@@ -238,10 +238,16 @@ export class WSDispatcher {
     this.signalBuffer = null
   }
   private mergeCandleIntoCache(envelope: CandleData): void {
-    const queryKey = ['candles', envelope.instrument, envelope.exchange, envelope.timeframe, null]
-    const existing = this.queryClient.getQueryData<CandleData[]>(queryKey)
+    const populated = this.queryClient
+      .getQueriesData<CandleData[]>({
+        queryKey: ['candles', envelope.instrument, envelope.exchange, envelope.timeframe],
+      })
+      .filter(
+        (entry): entry is [readonly unknown[], CandleData[]] =>
+          entry[0][entry[0].length - 1] === null && entry[1] !== undefined
+      )
 
-    if (!existing) {
+    if (populated.length === 0) {
       const bufferKey = `${envelope.instrument}:${envelope.exchange}:${envelope.timeframe}`
       const buffer = this.candleBuffers.get(bufferKey)
 
@@ -253,20 +259,23 @@ export class WSDispatcher {
     }
 
     const incomingTime = new Date(envelope.open_at).getTime()
-    const lastCandle = existing[existing.length - 1]
-    const lastTime = lastCandle ? new Date(lastCandle.open_at).getTime() : 0
 
-    if (incomingTime === lastTime) {
-      const updated = [...existing]
+    for (const [key, existing] of populated) {
+      const lastCandle = existing[existing.length - 1]
+      const lastTime = lastCandle ? new Date(lastCandle.open_at).getTime() : 0
 
-      updated[updated.length - 1] = envelope
-      this.queryClient.setQueryData<CandleData[]>(queryKey, updated)
-    } else if (incomingTime > lastTime) {
-      const appended = [...existing, envelope]
-      const trimmed =
-        appended.length > this.maxCandles ? appended.slice(-this.maxCandles) : appended
+      if (incomingTime === lastTime) {
+        const updated = [...existing]
 
-      this.queryClient.setQueryData<CandleData[]>(queryKey, trimmed)
+        updated[updated.length - 1] = envelope
+        this.queryClient.setQueryData<CandleData[]>(key, updated)
+      } else if (incomingTime > lastTime) {
+        const appended = [...existing, envelope]
+        const cap = typeof key[4] === 'number' ? key[4] : this.maxCandles
+        const trimmed = appended.length > cap ? appended.slice(-cap) : appended
+
+        this.queryClient.setQueryData<CandleData[]>(key, trimmed)
+      }
     }
   }
   private mergeOrderIntoCache(envelope: OrderData): void {

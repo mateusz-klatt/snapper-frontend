@@ -59,8 +59,13 @@ const queryKeys = {
   processSchema: (name: string) => ['processes', 'schema', name] as const,
   processRuns: (name?: string, limit?: number, asOf?: string | null) =>
     ['processes', 'runs', name ?? 'all', limit ?? 50, asOf] as const,
-  candles: (instrument: string, exchange: string, timeframe: string, asOf: string | null) =>
-    ['candles', instrument, exchange, timeframe, asOf] as const,
+  candles: (
+    instrument: string,
+    exchange: string,
+    timeframe: string,
+    limit: number,
+    asOf: string | null
+  ) => ['candles', instrument, exchange, timeframe, limit, asOf] as const,
   exchanges: (asOf: string | null) => ['exchanges', asOf] as const,
   exchangeInstruments: (exchange: string, asOf: string | null) =>
     ['exchanges', exchange, 'instruments', asOf] as const,
@@ -185,7 +190,7 @@ export const useCandles = (
   const asOf = useAppStore(s => s.asOf)
 
   return useQuery({
-    queryKey: queryKeys.candles(instrument, exchange, timeframe, asOf),
+    queryKey: queryKeys.candles(instrument, exchange, timeframe, limit, asOf),
     queryFn: () => apiClient.getCandles(instrument, exchange, timeframe, limit),
     enabled: enabled && !!instrument && !!exchange && isAuthenticated,
     staleTime: 2000,
@@ -280,8 +285,10 @@ export const useCreateScopeGrant = () => {
 
   return useMutation<ScopeGrantResponse, Error, CreateScopeGrantBody>({
     mutationFn: data => apiClient.createScopeGrant(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['scope-grants'] })
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ['scope-grants', variables.wallet_public_id],
+      })
     },
   })
 }
@@ -319,8 +326,10 @@ export const useCreateCredential = () => {
     { walletPublicId: string; data: CreateCredentialBody }
   >({
     mutationFn: ({ walletPublicId, data }) => apiClient.createCredential(walletPublicId, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['credentials'] })
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ['credentials', variables.walletPublicId],
+      })
     },
   })
 }
@@ -335,8 +344,10 @@ export const useRotateCredential = () => {
   >({
     mutationFn: ({ walletPublicId, credentialPublicId, data }) =>
       apiClient.rotateCredential(walletPublicId, credentialPublicId, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['credentials'] })
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: ['credentials', variables.walletPublicId],
+      })
     },
   })
 }
@@ -384,7 +395,7 @@ export const useExecutions = (filters?: { limit?: number }) => {
 export const useCreateOrder = () => {
   const queryClient = useQueryClient()
 
-  return useMutation<Record<string, unknown>, Error, Record<string, unknown>>({
+  return useMutation<ExecutionPlanResponse, Error, Record<string, unknown>>({
     mutationFn: body => apiClient.createOrder(body),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['orders'] })
@@ -395,7 +406,7 @@ export const useCreateOrder = () => {
 export const useCancelOrder = () => {
   const queryClient = useQueryClient()
 
-  return useMutation<Record<string, unknown>, Error, string>({
+  return useMutation<ExecutionPlanResponse, Error, string>({
     mutationFn: clientOrderId => apiClient.cancelOrder(clientOrderId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['orders'] })

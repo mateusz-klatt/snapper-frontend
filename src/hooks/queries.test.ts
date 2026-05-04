@@ -1462,7 +1462,37 @@ describe('queries', () => {
 
   describe('useCreateOrder', () => {
     it('calls apiClient.createOrder and invalidates orders', async () => {
-      const responseBody = { type: 'execution_plan_response', payload: {} }
+      const responseBody = {
+        type: 'execution_plan_response' as const,
+        sequence_id: 1,
+        public_id: 'plan-1',
+        timestamp: '2026-04-12T00:00:00Z',
+        session_id: 'sess-1',
+        payload: {
+          type: 'execution_plan' as const,
+          sequence_id: 1,
+          public_id: 'plan-1',
+          timestamp: '2026-04-12T00:00:00Z',
+          session_id: 'sess-1',
+          plan_type: 'order',
+          status: 'armed',
+          instrument_public_id: 'inst-1',
+          exchange: 'kraken' as const,
+          mode: 'paper' as const,
+          side: 'buy' as const,
+          total_quantity: 1.0,
+          filled_quantity: 0,
+          created_at: '2026-04-12T00:00:00Z',
+          created_via: 'api',
+          wallet_public_id: 'w-1',
+          operator_public_id: null,
+          params: {},
+          position_cycle_public_id: null,
+          parent_plan_public_id: null,
+          last_error: null,
+          idempotency_key: null,
+        },
+      }
 
       vi.mocked(apiClient.createOrder).mockResolvedValueOnce(responseBody)
 
@@ -1480,7 +1510,37 @@ describe('queries', () => {
 
   describe('useCancelOrder', () => {
     it('calls apiClient.cancelOrder with the client_order_id', async () => {
-      const responseBody = { type: 'execution_plan_response', payload: {} }
+      const responseBody = {
+        type: 'execution_plan_response' as const,
+        sequence_id: 2,
+        public_id: 'plan-2',
+        timestamp: '2026-04-12T00:00:00Z',
+        session_id: 'sess-1',
+        payload: {
+          type: 'execution_plan' as const,
+          sequence_id: 2,
+          public_id: 'plan-2',
+          timestamp: '2026-04-12T00:00:00Z',
+          session_id: 'sess-1',
+          plan_type: 'order',
+          status: 'cancelled',
+          instrument_public_id: 'inst-1',
+          exchange: 'kraken' as const,
+          mode: 'paper' as const,
+          side: 'buy' as const,
+          total_quantity: 1.0,
+          filled_quantity: 0,
+          created_at: '2026-04-12T00:00:00Z',
+          created_via: 'api',
+          wallet_public_id: 'w-1',
+          operator_public_id: null,
+          params: {},
+          position_cycle_public_id: null,
+          parent_plan_public_id: null,
+          last_error: null,
+          idempotency_key: null,
+        },
+      }
 
       vi.mocked(apiClient.cancelOrder).mockResolvedValueOnce(responseBody)
 
