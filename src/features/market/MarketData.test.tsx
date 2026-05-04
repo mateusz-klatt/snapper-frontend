@@ -149,9 +149,9 @@ describe('MarketData', () => {
     const user = userEvent.setup()
 
     renderWithProviders(<MarketData />)
-    const triggers = screen.getAllByRole('combobox')
+    const trigger = screen.getByLabelText('Timeframe:')
 
-    await user.click(triggers[1])
+    await user.click(trigger)
     await waitFor(() => {
       expect(screen.getAllByText('1 Hour').length).toBeGreaterThanOrEqual(2)
     })
@@ -358,13 +358,144 @@ describe('MarketData', () => {
     await user.click(screen.getByText('GBP-USD'))
     expect(mockSetSelectedInstrument).toHaveBeenCalledWith('GBP-USD')
   })
+  it('exposes the instrument picker as an ARIA combobox', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    expect(input.getAttribute('role')).toBe('combobox')
+    expect(input.getAttribute('aria-expanded')).toBe('false')
+    expect(input.getAttribute('aria-controls')).toBe('instrument-listbox')
+    expect(input.getAttribute('aria-autocomplete')).toBe('list')
+    await user.click(input)
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('true')
+      expect(screen.getByRole('listbox', { name: 'Instruments' })).toBeInTheDocument()
+    })
+  })
+  it('navigates instruments with ArrowDown/ArrowUp/Enter and closes with Escape', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    await user.click(input)
+    await waitFor(() => {
+      expect(screen.getByRole('listbox', { name: 'Instruments' })).toBeInTheDocument()
+    })
+    await user.keyboard('{ArrowDown}')
+    expect(input.getAttribute('aria-activedescendant')).toBe('instrument-option-0')
+    await user.keyboard('{ArrowDown}')
+    expect(input.getAttribute('aria-activedescendant')).toBe('instrument-option-1')
+    await user.keyboard('{ArrowUp}')
+    expect(input.getAttribute('aria-activedescendant')).toBe('instrument-option-0')
+    await user.keyboard('{Enter}')
+    expect(mockSetSelectedInstrument).toHaveBeenCalled()
+    expect(input.getAttribute('aria-expanded')).toBe('false')
+  })
+  it('Escape closes the instrument dropdown', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    await user.click(input)
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('true')
+    })
+    await user.keyboard('{Escape}')
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('false')
+    })
+  })
+  it('ArrowUp wraps to last instrument from start position', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    await user.click(input)
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('true')
+    })
+    await user.keyboard('{ArrowUp}')
+    expect(input.getAttribute('aria-activedescendant')).toMatch(/^instrument-option-\d+$/)
+  })
+  it('ArrowDown opens dropdown when closed', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    await user.click(input)
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('true')
+    })
+    fireEvent.mouseDown(document.body)
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('false')
+    })
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('true')
+    })
+  })
+  it('Enter without active option does not close dropdown', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    await user.click(input)
+    await waitFor(() => {
+      expect(input.getAttribute('aria-expanded')).toBe('true')
+    })
+    await user.keyboard('{Enter}')
+    expect(input.getAttribute('aria-expanded')).toBe('true')
+  })
+  it('shows no-instruments message when search yields zero matches', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    await user.click(input)
+    await user.type(input, 'zzznomatch')
+    await waitFor(() => {
+      expect(screen.getByText('No instruments found')).toBeInTheDocument()
+    })
+  })
+  it('ArrowDown/ArrowUp are no-ops when filtered list is empty', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    await user.click(input)
+    await user.type(input, 'zzznomatch')
+    await waitFor(() => {
+      expect(screen.getByText('No instruments found')).toBeInTheDocument()
+    })
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireEvent.keyDown(input, { key: 'ArrowUp' })
+    expect(input.getAttribute('aria-activedescendant')).toBeNull()
+  })
+  it('Escape on already-closed dropdown is a no-op', async () => {
+    renderWithProviders(<MarketData />)
+    const input = screen.getByLabelText('Instrument:')
+
+    expect(input.getAttribute('aria-expanded')).toBe('false')
+    fireEvent.keyDown(input, { key: 'Escape' })
+    expect(input.getAttribute('aria-expanded')).toBe('false')
+  })
   it('calls setSelectedTimeframe when timeframe is changed', async () => {
     const user = userEvent.setup()
 
     renderWithProviders(<MarketData />)
-    const triggers = screen.getAllByRole('combobox')
+    const trigger = screen.getByLabelText('Timeframe:')
 
-    await user.click(triggers[1])
+    await user.click(trigger)
     await waitFor(() => {
       expect(screen.getByText('15 Minutes')).toBeInTheDocument()
     })

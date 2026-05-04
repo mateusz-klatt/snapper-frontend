@@ -69,7 +69,7 @@ export default [
       'react-hooks/exhaustive-deps': 'error',
       'react-hooks/set-state-in-effect': 'off',
 
-      'no-console': 'off',
+      'no-console': ['error', { allow: ['warn', 'error', 'debug'] }],
       'no-debugger': 'error',
 
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],

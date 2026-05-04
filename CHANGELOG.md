@@ -4,6 +4,48 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] — 2026-05-04
+
+### Added
+
+- **ARIA combobox semantics on the MarketData instrument picker** —
+  `role="combobox"`, `aria-expanded`, `aria-controls`, `aria-autocomplete="list"`,
+  `aria-activedescendant`; listbox/option roles on the dropdown; ArrowUp/
+  ArrowDown navigation, Enter to select, Escape to close.
+- **Loading affordances** — `LoadingSpinner` now exposes `role="status"` +
+  `aria-live="polite"` + `aria-label="Loading"`; `Button` sets
+  `aria-busy={loading}`.
+- **`engines` + `engine-strict`** — `package.json` declares `node >=22` and
+  `pnpm >=10`; `.npmrc` flips `engine-strict=true` so contributors get a
+  loud failure on mismatched runtimes.
+
+### Changed
+
+- **`Modal` backdrop is now presentational** — was an interactive `<button
+  aria-label="Close modal">` (assistive tech announced "Close modal
+  button"), now a `<div aria-hidden="true">` with `data-testid="modal-backdrop"`.
+  Click-to-close still works; the real `<button aria-label="Close">` inside
+  the modal is the AT-discoverable close affordance.
+- **`sequenceTracker` JSON parse hardening** — `getTracker()` now wraps
+  `JSON.parse(sessionStorage.getItem(...))` in a try/catch + shape guard
+  (`typeof sessionId === 'string'`, `counters` has only number values).
+  Corrupted sessionStorage entries no longer crash app startup; we fall
+  back to a fresh tracker.
+- **`LightweightChart` switched to `ResizeObserver`** — was polling
+  `window.resize`, which only fires on viewport changes and missed app-
+  internal layout shifts (sidebar toggle, panel resize). Falls back to the
+  legacy `window` listener when `ResizeObserver` is unavailable.
+- **`no-console` ESLint rule enforced as `error`** with `allow: ['warn',
+  'error', 'debug']`. Casual `console.log` / `console.info` now break
+  CI; existing structural `console.warn` + `console.debug` paths in the
+  WebSocket client and store stay.
+
+### Removed
+
+- **`auth_user_id` localStorage write** — was set on login + token refresh
+  but never read anywhere. Pure dead write that left stale usernames in
+  localStorage on shared browsers.
+
 ## [0.3.0] — 2026-05-04
 
 ### Fixed

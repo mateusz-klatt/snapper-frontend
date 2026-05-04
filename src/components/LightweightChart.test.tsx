@@ -310,6 +310,40 @@ describe('LightweightChart', () => {
       selector: (s: { isDarkMode: boolean }) => boolean
     ) => selector({ isDarkMode: false })) as never)
   })
+  it('observes the container with ResizeObserver and disconnects on unmount', () => {
+    const observe = vi.fn()
+    const disconnect = vi.fn()
+    const originalResizeObserver = globalThis.ResizeObserver
+
+    class FakeResizeObserver {
+      observe = observe
+      disconnect = disconnect
+      unobserve = vi.fn()
+    }
+
+    globalThis.ResizeObserver = FakeResizeObserver as never
+    const { unmount } = render(<LightweightChart data={sampleData} />)
+
+    expect(observe).toHaveBeenCalled()
+    unmount()
+    expect(disconnect).toHaveBeenCalled()
+    globalThis.ResizeObserver = originalResizeObserver
+  })
+  it('falls back to window resize listener when ResizeObserver is missing', () => {
+    const originalResizeObserver = globalThis.ResizeObserver
+    const addSpy = vi.spyOn(globalThis, 'addEventListener')
+    const removeSpy = vi.spyOn(globalThis, 'removeEventListener')
+
+    ;(globalThis as { ResizeObserver?: unknown }).ResizeObserver = undefined
+    const { unmount } = render(<LightweightChart data={sampleData} />)
+
+    expect(addSpy).toHaveBeenCalledWith('resize', expect.any(Function))
+    unmount()
+    expect(removeSpy).toHaveBeenCalledWith('resize', expect.any(Function))
+    globalThis.ResizeObserver = originalResizeObserver
+    addSpy.mockRestore()
+    removeSpy.mockRestore()
+  })
   it('applies theme changes without recreating chart', () => {
     const { rerender } = render(<LightweightChart data={sampleData} />)
     const initialCreateCount = mockCreateChart.mock.calls.length

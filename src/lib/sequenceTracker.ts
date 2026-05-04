@@ -37,14 +37,37 @@ class SequenceTracker {
 
 let tracker: SequenceTracker | null = null
 
+function isValidTrackerState(value: unknown): value is TrackerState {
+  if (typeof value !== 'object' || value === null) return false
+  const obj = value as Record<string, unknown>
+
+  if (typeof obj.sessionId !== 'string') return false
+  if (typeof obj.counters !== 'object' || obj.counters === null) return false
+
+  for (const v of Object.values(obj.counters as Record<string, unknown>)) {
+    if (typeof v !== 'number') return false
+  }
+
+  return true
+}
+
+function tryParseStored(stored: string): TrackerState | null {
+  try {
+    const parsed: unknown = JSON.parse(stored)
+
+    return isValidTrackerState(parsed) ? parsed : null
+  } catch {
+    return null
+  }
+}
+
 export function getTracker(): SequenceTracker {
   if (tracker) return tracker
 
   const stored = sessionStorage.getItem(STORAGE_KEY)
+  const state = stored ? tryParseStored(stored) : null
 
-  if (stored) {
-    const state: TrackerState = JSON.parse(stored) as TrackerState
-
+  if (state) {
     tracker = new SequenceTracker(state.sessionId, new Map(Object.entries(state.counters)))
   } else {
     tracker = new SequenceTracker(uuid7())

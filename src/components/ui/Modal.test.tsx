@@ -43,14 +43,10 @@ describe('Modal', () => {
         <div>Modal content</div>
       </Modal>
     )
-    const backdrop = screen.getByRole('button', { name: 'Close modal' })
+    const backdrop = screen.getByTestId('modal-backdrop')
 
     expect(backdrop).toBeInTheDocument()
-
-    if (backdrop) {
-      fireEvent.click(backdrop)
-    }
-
+    fireEvent.click(backdrop)
     expect(onClose).toHaveBeenCalledOnce()
   })
   it('calls onClose when close button is clicked', () => {

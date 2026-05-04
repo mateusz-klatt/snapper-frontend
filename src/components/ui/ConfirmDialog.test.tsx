@@ -57,7 +57,7 @@ describe('ConfirmDialog', () => {
     const onCancel = vi.fn()
 
     render(<ConfirmDialog {...defaultProps} onCancel={onCancel} />)
-    const backdrop = screen.getByRole('button', { name: 'Close modal' })
+    const backdrop = screen.getByTestId('modal-backdrop')
 
     expect(backdrop).toBeInTheDocument()
 

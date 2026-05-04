@@ -404,8 +404,8 @@ describe('CreateDelegateWizard', () => {
     const onClose = vi.fn()
 
     render(<CreateDelegateWizard open onClose={onClose} />)
-    // Modal renders an aria-label="Close modal" backdrop; clicking it should NOT invoke parent onClose
-    const backdrop = screen.getByRole('button', { name: 'Close modal' })
+    // Modal renders a presentational backdrop div; clicking it should NOT invoke parent onClose
+    const backdrop = screen.getByTestId('modal-backdrop')
 
     await act(async () => {
       backdrop.click()

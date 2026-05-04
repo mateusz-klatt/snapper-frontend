@@ -107,6 +107,54 @@ describe('getTracker', () => {
   })
 })
 
+describe('getTracker shape guard', () => {
+  beforeEach(() => {
+    sessionStorage.clear()
+    resetTracker()
+  })
+  it('falls back to fresh tracker on malformed JSON', () => {
+    sessionStorage.setItem(STORAGE_KEY, '{not valid json')
+    const tracker = getTracker()
+
+    expect(tracker.sessionId).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
+    )
+  })
+  it('falls back when JSON is not an object', () => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify('not-an-object'))
+    const tracker = getTracker()
+
+    expect(tracker).toBeInstanceOf(SequenceTracker)
+  })
+  it('falls back when sessionId is missing', () => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ counters: {} }))
+    const tracker = getTracker()
+
+    expect(tracker).toBeInstanceOf(SequenceTracker)
+  })
+  it('falls back when counters is missing', () => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ sessionId: 's' }))
+    const tracker = getTracker()
+
+    expect(tracker).toBeInstanceOf(SequenceTracker)
+  })
+  it('falls back when counters has non-number values', () => {
+    sessionStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ sessionId: 's', counters: { control: 'not-a-number' } })
+    )
+    const tracker = getTracker()
+
+    expect(tracker).toBeInstanceOf(SequenceTracker)
+  })
+  it('falls back when value is null', () => {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(null))
+    const tracker = getTracker()
+
+    expect(tracker).toBeInstanceOf(SequenceTracker)
+  })
+})
+
 describe('resetTracker', () => {
   beforeEach(() => {
     sessionStorage.clear()

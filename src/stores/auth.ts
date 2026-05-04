@@ -90,7 +90,6 @@ export const useAuthStore = create<AuthState>()(
               isLoading: false,
               error: null,
             })
-            localStorage.setItem('auth_user_id', data.user.username)
           } catch (error) {
             set({
               isLoading: false,
@@ -203,10 +202,6 @@ export const useAuthStore = create<AuthState>()(
               isAuthenticated: true,
               csrfToken: data.csrf_token ?? null,
             })
-
-            if (userData) {
-              localStorage.setItem('auth_user_id', userData.username)
-            }
           } catch (error) {
             console.error('Token refresh failed:', error)
             get().logout()

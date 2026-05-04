@@ -95,7 +95,10 @@ export function MarketData() {
   }, [candles, isFetching, dispatcher, selectedInstrument, selectedExchange, selectedTimeframe])
   const [instrumentSearch, setInstrumentSearch] = useState('')
   const [instrumentDropdownOpen, setInstrumentDropdownOpen] = useState(false)
+  const [instrumentActiveIndex, setInstrumentActiveIndex] = useState<number>(-1)
   const instrumentRef = useRef<HTMLDivElement>(null)
+  const instrumentListboxId = 'instrument-listbox'
+  const instrumentOptionId = (idx: number) => `instrument-option-${idx}`
   const filteredInstruments = useMemo(() => {
     const list = (instruments?.payload ?? []).map(row => row.symbol)
 
@@ -103,6 +106,10 @@ export function MarketData() {
 
     return list.filter(inst => inst.toLowerCase().includes(instrumentSearch.toLowerCase()))
   }, [instruments, instrumentSearch])
+
+  useEffect(() => {
+    setInstrumentActiveIndex(-1)
+  }, [instrumentSearch, instrumentDropdownOpen])
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -119,6 +126,50 @@ export function MarketData() {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [instrumentDropdownOpen])
+
+  const commitInstrument = (inst: string) => {
+    setSelectedInstrument(inst)
+    setInstrumentDropdownOpen(false)
+    setInstrumentSearch('')
+    setInstrumentActiveIndex(-1)
+  }
+
+  const handleInstrumentInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+
+      if (!instrumentDropdownOpen) {
+        setInstrumentDropdownOpen(true)
+
+        return
+      }
+
+      if (filteredInstruments.length > 0) {
+        setInstrumentActiveIndex(prev => (prev + 1) % filteredInstruments.length)
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+
+      if (filteredInstruments.length > 0) {
+        setInstrumentActiveIndex(prev => (prev <= 0 ? filteredInstruments.length - 1 : prev - 1))
+      }
+    } else if (e.key === 'Enter') {
+      if (
+        instrumentDropdownOpen &&
+        instrumentActiveIndex >= 0 &&
+        instrumentActiveIndex < filteredInstruments.length
+      ) {
+        e.preventDefault()
+        commitInstrument(filteredInstruments[instrumentActiveIndex])
+      }
+    } else if (e.key === 'Escape') {
+      if (instrumentDropdownOpen) {
+        e.preventDefault()
+        setInstrumentDropdownOpen(false)
+        setInstrumentActiveIndex(-1)
+      }
+    }
+  }
 
   const chartData: FormattedCandle[] = useMemo(() => {
     if (!candles || isFetching) return []
@@ -228,48 +279,69 @@ export function MarketData() {
             <input
               id='instrument-search'
               type='text'
+              role='combobox'
+              aria-expanded={instrumentDropdownOpen}
+              aria-controls={instrumentListboxId}
+              aria-autocomplete='list'
+              aria-activedescendant={
+                instrumentDropdownOpen && instrumentActiveIndex >= 0
+                  ? instrumentOptionId(instrumentActiveIndex)
+                  : undefined
+              }
               value={instrumentDropdownOpen ? instrumentSearch : (selectedInstrument ?? '')}
               onChange={e => setInstrumentSearch(e.target.value)}
               onFocus={() => {
                 setInstrumentDropdownOpen(true)
                 setInstrumentSearch('')
               }}
+              onKeyDown={handleInstrumentInputKeyDown}
               placeholder='Search instrument...'
               disabled={!selectedExchange}
               className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50'
             />
             {instrumentDropdownOpen && (
-              <div className='absolute top-full left-0 mt-1 w-full min-w-48 max-h-60 overflow-y-auto z-50 bg-alpine-50 rounded-md shadow-lg border border-dark-600'>
+              <ul
+                id={instrumentListboxId}
+                role='listbox'
+                aria-label='Instruments'
+                className='absolute top-full left-0 mt-1 w-full min-w-48 max-h-60 overflow-y-auto z-50 bg-alpine-50 rounded-md shadow-lg border border-dark-600 list-none p-0 m-0'
+              >
                 {filteredInstruments.length > 0 ? (
-                  filteredInstruments.map(inst => {
+                  filteredInstruments.map((inst, idx) => {
                     const canTrade = capabilityMap.get(inst)
                     const isMarketDataOnly = canTrade === false
+                    const isActive = idx === instrumentActiveIndex
 
                     return (
-                      <button
+                      <li
                         key={inst}
-                        type='button'
-                        onClick={() => {
-                          setSelectedInstrument(inst)
-                          setInstrumentDropdownOpen(false)
-                          setInstrumentSearch('')
-                        }}
-                        className='flex w-full select-none items-center justify-between gap-3 px-3 py-2 text-sm text-alpine-900 rounded-sm hover:bg-dark-700 cursor-pointer'
+                        id={instrumentOptionId(idx)}
+                        role='option'
+                        aria-selected={isActive}
                       >
-                        <span className='flex items-center gap-2'>
-                          {selectedExchange !== null && (
-                            <InstrumentIcon symbol={inst} exchange={selectedExchange} size={20} />
-                          )}
-                          {inst}
-                        </span>
-                        {isMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
-                      </button>
+                        <button
+                          type='button'
+                          onClick={() => commitInstrument(inst)}
+                          onMouseEnter={() => setInstrumentActiveIndex(idx)}
+                          className={`flex w-full select-none items-center justify-between gap-3 px-3 py-2 text-sm text-alpine-900 rounded-sm cursor-pointer ${isActive ? 'bg-dark-700' : 'hover:bg-dark-700'}`}
+                        >
+                          <span className='flex items-center gap-2'>
+                            {selectedExchange !== null && (
+                              <InstrumentIcon symbol={inst} exchange={selectedExchange} size={20} />
+                            )}
+                            {inst}
+                          </span>
+                          {isMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
+                        </button>
+                      </li>
                     )
                   })
                 ) : (
-                  <div className='px-3 py-2 text-sm text-muted-500'>No instruments found</div>
+                  <li role='option' aria-disabled='true' className='list-none'>
+                    <div className='px-3 py-2 text-sm text-muted-500'>No instruments found</div>
+                  </li>
                 )}
-              </div>
+              </ul>
             )}
           </div>
         </div>

@@ -187,7 +187,7 @@ describe('AIIntegration', () => {
     fireEvent.click(screen.getByRole('button', { name: /Create delegate/ }))
     expect(screen.getByRole('heading', { name: 'Create AI delegate' })).toBeInTheDocument()
     // Click the close-modal backdrop which wires up to onClose → setWizardOpen(false)
-    const closeBackdrop = screen.getByRole('button', { name: 'Close modal' })
+    const closeBackdrop = screen.getByTestId('modal-backdrop')
 
     fireEvent.click(closeBackdrop)
     expect(screen.queryByRole('heading', { name: 'Create AI delegate' })).not.toBeInTheDocument()

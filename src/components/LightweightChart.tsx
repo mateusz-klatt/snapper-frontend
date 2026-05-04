@@ -90,10 +90,22 @@ export const LightweightChart = ({
       }
     }
 
-    globalThis.addEventListener('resize', handleResize)
+    let observer: ResizeObserver | null = null
+
+    if (typeof ResizeObserver !== 'undefined' && chartContainerRef.current) {
+      observer = new ResizeObserver(handleResize)
+      observer.observe(chartContainerRef.current)
+    } else {
+      globalThis.addEventListener('resize', handleResize)
+    }
 
     return () => {
-      globalThis.removeEventListener('resize', handleResize)
+      if (observer) {
+        observer.disconnect()
+      } else {
+        globalThis.removeEventListener('resize', handleResize)
+      }
+
       chartRef.current?.remove()
       chartRef.current = null
       seriesRef.current = null

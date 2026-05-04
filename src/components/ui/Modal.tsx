@@ -116,11 +116,11 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
       className='fixed inset-0 z-50 m-0 h-full max-h-none w-full max-w-none overflow-y-auto bg-transparent p-0 backdrop:bg-muted-900/40'
       aria-labelledby={title ? titleId : undefined}
     >
-      <button
-        type='button'
-        aria-label='Close modal'
+      <div
+        data-testid='modal-backdrop'
+        aria-hidden='true'
         onClick={onClose}
-        className='fixed inset-0 w-full h-full cursor-default border-none bg-transparent'
+        className='fixed inset-0 w-full h-full cursor-default'
       />
       <div className='relative flex min-h-full items-center justify-center p-4'>
         <div
