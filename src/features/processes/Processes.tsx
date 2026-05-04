@@ -183,20 +183,20 @@ export const Processes: React.FC = () => {
 
   const getHeartbeat = React.useCallback(
     (processName: string): HeartbeatData | undefined => {
+      const unknownFallback: HeartbeatData = {
+        status: 'unknown',
+        healthy: false,
+        timestamp: 0,
+      }
+
       if (processName.startsWith('executor_')) {
-        return allHeartbeats[processName] ?? { status: 'unknown', healthy: false, timestamp: 0 }
+        return allHeartbeats[processName] ?? unknownFallback
       }
 
       if (processName.includes('feed_publisher')) {
         const exchangeName = processName.replace('_feed_publisher', '')
 
-        return (
-          allHeartbeats[`feed.${exchangeName}`] ?? {
-            status: 'unknown',
-            healthy: false,
-            timestamp: 0,
-          }
-        )
+        return allHeartbeats[`feed.${exchangeName}`] ?? unknownFallback
       }
 
       return undefined

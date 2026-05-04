@@ -332,7 +332,7 @@ describe('Strategies', () => {
     })
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
-    await user.click(startButtons[0])
+    await user.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -452,7 +452,7 @@ describe('Strategies', () => {
     })
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
-    await user.click(startButtons[0])
+    await user.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -484,7 +484,7 @@ describe('Strategies', () => {
     })
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
-    await user.click(startButtons[0])
+    await user.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -516,7 +516,7 @@ describe('Strategies', () => {
     })
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
-    await user.click(startButtons[0])
+    await user.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -548,7 +548,7 @@ describe('Strategies', () => {
     })
     const stopButtons = screen.getAllByRole('button', { name: /stop/i })
 
-    await user.click(stopButtons[0])
+    await user.click(stopButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -631,7 +631,7 @@ describe('Strategies', () => {
     })
     const stopButtons = screen.getAllByRole('button', { name: /stop/i })
 
-    await user.click(stopButtons[0])
+    await user.click(stopButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -663,7 +663,7 @@ describe('Strategies', () => {
     })
     const stopButtons = screen.getAllByRole('button', { name: /stop/i })
 
-    await user.click(stopButtons[0])
+    await user.click(stopButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -762,7 +762,7 @@ describe('Strategies', () => {
     const submitButton =
       buttons.find(btn => btn.getAttribute('type') === 'submit') || buttons[buttons.length - 1]
 
-    await user.click(submitButton)
+    await user.click(submitButton as HTMLElement)
     await waitFor(() => {
       expect(mockMutateAsync).toHaveBeenCalled()
     })
@@ -841,7 +841,7 @@ describe('Strategies', () => {
       submitButtons.find(btn => btn.getAttribute('type') === 'submit') ||
       submitButtons[submitButtons.length - 1]
 
-    await user.click(submitButton)
+    await user.click(submitButton as HTMLElement)
     await waitFor(() => {
       expect(mockMutateAsync).toHaveBeenCalled()
     })
@@ -909,7 +909,7 @@ describe('Strategies', () => {
     const submitButton =
       buttons.find(btn => btn.getAttribute('type') === 'submit') || buttons[buttons.length - 1]
 
-    await user.click(submitButton)
+    await user.click(submitButton as HTMLElement)
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith(
         expect.stringContaining('Failed to register strategy')
@@ -971,7 +971,7 @@ describe('Strategies', () => {
     const submitButton =
       buttons.find(btn => btn.getAttribute('type') === 'submit') || buttons[buttons.length - 1]
 
-    await user.click(submitButton)
+    await user.click(submitButton as HTMLElement)
     await waitFor(() => {
       expect(toast.error).toHaveBeenCalledWith(
         expect.stringContaining('Failed to register strategy: Unknown error')
@@ -1003,7 +1003,7 @@ describe('Strategies', () => {
     })
     const stopButtons = screen.getAllByRole('button', { name: /stop/i })
 
-    await user.click(stopButtons[0])
+    await user.click(stopButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -1035,7 +1035,7 @@ describe('Strategies', () => {
     })
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
-    await user.click(startButtons[0])
+    await user.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -1193,12 +1193,17 @@ describe('Strategies', () => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
     await user.click(screen.getByText('Confirm'))
-    mockStrategies = [
-      {
-        ...mockStrategies[0],
-        running: true,
-      },
-    ]
+    const head0 = mockStrategies[0]
+
+    if (head0 !== undefined) {
+      mockStrategies = [
+        {
+          ...head0,
+          running: true,
+        },
+      ]
+    }
+
     rerender(
       <QueryClientProvider client={queryClient}>
         <Strategies />
@@ -1453,7 +1458,7 @@ describe('Strategies', () => {
     })
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
-    await user.click(startButtons[0])
+    await user.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
@@ -1478,7 +1483,7 @@ describe('Strategies', () => {
     })
     const registerButtons = screen.getAllByText('Register Strategy')
 
-    await user.click(registerButtons[registerButtons.length - 1])
+    await user.click(registerButtons[registerButtons.length - 1] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Register Strategy Process')).toBeTruthy()
     })

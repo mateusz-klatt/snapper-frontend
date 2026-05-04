@@ -197,7 +197,11 @@ function parseKrakenEquitiesSymbol(symbol: string): ParsedInstrument {
 function extractAlphaPrefix(code: string): string {
   let i = 0
 
-  while (i < code.length && /[A-Z0-9]/.test(code[i]) && !/^[FGHJKMNQUVXZ]\d/.test(code.slice(i))) {
+  while (
+    i < code.length &&
+    /[A-Z0-9]/.test(code.charAt(i)) &&
+    !/^[FGHJKMNQUVXZ]\d/.test(code.slice(i))
+  ) {
     i++
   }
 
@@ -229,11 +233,11 @@ const INDEX_UNDERLYING: Record<string, string> = {
 }
 
 function yieldUnderlyingFromPrefix(prefix: string): string {
-  return YIELD_UNDERLYING[prefix]
+  return YIELD_UNDERLYING[prefix] as string
 }
 
 function indexUnderlyingFromPrefix(prefix: string): string {
-  return INDEX_UNDERLYING[prefix]
+  return INDEX_UNDERLYING[prefix] as string
 }
 
 const COMMODITY_UNDERLYING: Record<string, string> = {
@@ -283,9 +287,9 @@ const FOREX_PREFIX_PAIR: Record<string, { base: string; quote: string }> = {
 }
 
 function commodityUnderlyingFromPrefix(prefix: string): string {
-  return COMMODITY_UNDERLYING[prefix]
+  return COMMODITY_UNDERLYING[prefix] as string
 }
 
 function forexPairFromPrefix(prefix: string): { base: string; quote: string } {
-  return FOREX_PREFIX_PAIR[prefix]
+  return FOREX_PREFIX_PAIR[prefix] as { base: string; quote: string }
 }

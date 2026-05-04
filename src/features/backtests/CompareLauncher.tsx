@@ -101,10 +101,10 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
           {comboboxLabel}
         </span>
       </div>
-      {configHash !== null && sameConfigCandidates.length >= 1 && (
+      {configHash !== null && sameConfigCandidates[0] !== undefined && (
         <button
           type='button'
-          onClick={() => submit('auto', sameConfigCandidates[0])}
+          onClick={() => submit('auto', sameConfigCandidates[0] as BacktestRunData)}
           className='rounded-lg border border-brand-500 px-3 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20'
           data-testid='compare-auto-pair'
         >

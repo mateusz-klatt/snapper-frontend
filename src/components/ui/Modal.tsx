@@ -48,9 +48,7 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
     document.body.style.overflow = 'hidden'
     const focusable = getFocusableElements(contentRef.current as HTMLElement)
 
-    if (focusable.length > 0) {
-      focusable[0].focus()
-    }
+    focusable[0]?.focus()
 
     return () => {
       document.body.style.overflow = 'unset'
@@ -83,7 +81,7 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
         return
       }
 
-      const first = focusable[0]
+      const first = focusable[0] as HTMLElement
       const last = focusable.at(-1) as HTMLElement
       const active = document.activeElement
 

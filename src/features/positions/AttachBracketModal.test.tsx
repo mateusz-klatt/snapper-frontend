@@ -262,7 +262,7 @@ describe('AttachBracketModal', () => {
     await user.type(screen.getByTestId('sl-price-input'), '48000')
     await user.click(screen.getByTestId('bracket-submit'))
     await user.click(screen.getByTestId('bracket-confirm'))
-    const opts = mockMutate.mock.calls[0][1] as { onSuccess: () => void }
+    const opts = mockMutate.mock.calls[0]?.[1] as { onSuccess: () => void }
 
     act(() => opts.onSuccess())
     expect(onClose).toHaveBeenCalled()
@@ -275,7 +275,7 @@ describe('AttachBracketModal', () => {
     await user.type(screen.getByTestId('sl-price-input'), '48000')
     await user.click(screen.getByTestId('bracket-submit'))
     await user.click(screen.getByTestId('bracket-confirm'))
-    const opts = mockMutate.mock.calls[0][1] as { onError: (e: Error) => void }
+    const opts = mockMutate.mock.calls[0]?.[1] as { onError: (e: Error) => void }
 
     act(() => opts.onError(new Error('Duplicate bracket')))
     expect(screen.getByTestId('bracket-error')).toHaveTextContent('Duplicate bracket')

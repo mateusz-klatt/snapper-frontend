@@ -71,7 +71,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
     const payload: Record<string, string> = {}
 
     for (const field of requiredFields) {
-      payload[field] = fields[field].trim()
+      payload[field] = (fields[field] as string).trim()
     }
 
     rotateMutation.mutate(

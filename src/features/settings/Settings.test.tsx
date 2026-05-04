@@ -259,7 +259,7 @@ describe('Settings', () => {
     })
     const editButtons = screen.getAllByText('Edit')
 
-    await userEvent.click(editButtons[0])
+    await userEvent.click(editButtons[0] as HTMLElement)
     const textarea = screen.getByPlaceholderText('Enter setting value...')
 
     await userEvent.clear(textarea)
@@ -1599,7 +1599,7 @@ describe('Settings', () => {
       await userEvent.type(screen.getByPlaceholderText(/Setting value/i), 'test value')
       const comboboxes = screen.getAllByRole('combobox')
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       await userEvent.type(screen.getByPlaceholderText(/Optional description/i), 'Test description')
       const createButton = screen.getByRole('button', { name: /Create Setting/i })
 
@@ -1740,7 +1740,7 @@ describe('Settings', () => {
       await userEvent.type(screen.getByPlaceholderText(/Setting value/i), 'new value')
       const comboboxes = screen.getAllByRole('combobox')
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       await userEvent.click(screen.getByRole('button', { name: /Create Setting/i }))
       await waitFor(() => {
         expect(screen.getByText(/already exists/i)).toBeTruthy()
@@ -1781,7 +1781,7 @@ describe('Settings', () => {
       await userEvent.type(screen.getByPlaceholderText(/Setting value/i), 'value')
       const comboboxes = screen.getAllByRole('combobox')
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       await userEvent.click(screen.getByRole('button', { name: /Create Setting/i }))
       await waitFor(() => {
         expect(screen.getAllByText('Server error').length).toBeGreaterThan(0)
@@ -1830,7 +1830,7 @@ describe('Settings', () => {
       expect(newCategoryInput.value).toBe('new-cat')
       const comboboxes = screen.getAllByRole('combobox')
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       expect(newCategoryInput.value).toBe('')
     })
     it('does not clear new category when selecting empty option', async () => {
@@ -1851,11 +1851,11 @@ describe('Settings', () => {
       await userEvent.type(newCategoryInput, 'new-cat')
       const comboboxes = screen.getAllByRole('combobox')
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       expect(newCategoryInput.value).toBe('')
       await userEvent.type(newCategoryInput, 'another-cat')
       expect(newCategoryInput.value).toBe('another-cat')
-      await userEvent.selectOptions(comboboxes[1], '')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, '')
       expect(newCategoryInput.value).toBe('another-cat')
     })
     it('clears selected category when typing new category', async () => {
@@ -1871,7 +1871,7 @@ describe('Settings', () => {
       })
       const comboboxes = screen.getAllByRole('combobox')
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       expect((comboboxes[1] as HTMLSelectElement).value).toBe('api')
       const newCategoryInput = screen.getByPlaceholderText(/Or enter new category name/i)
 
@@ -1894,7 +1894,7 @@ describe('Settings', () => {
         /Or enter new category name/i
       ) as HTMLInputElement
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       expect((comboboxes[1] as HTMLSelectElement).value).toBe('api')
       await userEvent.type(newCategoryInput, 'x')
       expect(newCategoryInput.value).toBe('x')
@@ -1922,7 +1922,7 @@ describe('Settings', () => {
       await userEvent.type(screen.getByPlaceholderText(/Setting value/i), 'value')
       const comboboxes = screen.getAllByRole('combobox')
 
-      await userEvent.selectOptions(comboboxes[1], 'api')
+      await userEvent.selectOptions(comboboxes[1] as HTMLElement, 'api')
       await userEvent.click(screen.getByRole('button', { name: /Create Setting/i }))
       await waitFor(() => {
         expect(screen.getByText('Failed to create setting')).toBeTruthy()

@@ -4,7 +4,7 @@ import { useAppStore } from '../stores/app'
 import { HEARTBEAT_STALE_THRESHOLD_MS, HEARTBEAT_PRUNE_INTERVAL_MS } from '../lib/constants'
 
 export interface HeartbeatData {
-  status: 'healthy' | 'warning' | 'error'
+  status: 'healthy' | 'warning' | 'error' | 'unknown'
   lag_ms?: number
   timestamp: number
   healthy: boolean
@@ -51,7 +51,9 @@ export function useHeartbeats(topics: string[]): Record<string, HeartbeatData> {
       const updated = { ...prev }
 
       Object.keys(updated).forEach(key => {
-        if (now - updated[key].timestamp > HEARTBEAT_STALE_THRESHOLD_MS) {
+        const entry = updated[key]
+
+        if (entry !== undefined && now - entry.timestamp > HEARTBEAT_STALE_THRESHOLD_MS) {
           delete updated[key]
         }
       })

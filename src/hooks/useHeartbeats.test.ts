@@ -103,7 +103,7 @@ describe('useHeartbeats', () => {
       })
     })
 
-    expect(result.current['feed.walutomat'].healthy).toBe(false)
+    expect(result.current['feed.walutomat']?.healthy).toBe(false)
   })
 
   it('defaults lag_ms to 0 when missing', () => {
@@ -116,7 +116,7 @@ describe('useHeartbeats', () => {
       })
     })
 
-    expect(result.current['feed.test'].lag_ms).toBe(0)
+    expect(result.current['feed.test']?.lag_ms).toBe(0)
   })
 
   it('prunes stale heartbeats after threshold', () => {

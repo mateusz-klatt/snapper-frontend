@@ -207,7 +207,7 @@ describe('JsonEditor', () => {
 
     await userEvent.click(addButton)
     expect(mockOnChange).toHaveBeenCalled()
-    const call = mockOnChange.mock.calls[0][0]
+    const call = mockOnChange.mock.calls[0]?.[0]
 
     expect(call).toHaveLength(2)
   })
@@ -224,7 +224,7 @@ describe('JsonEditor', () => {
     renderWithMocks(<JsonEditor value={value} onChange={mockOnChange} />)
     const removeButtons = screen.getAllByRole('button', { name: /Remove/i })
 
-    await userEvent.click(removeButtons[0])
+    await userEvent.click(removeButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(mockOnChange).toHaveBeenCalledWith(['item2', 'item3'])
     })
@@ -428,7 +428,7 @@ describe('JsonEditor', () => {
     await userEvent.click(addButton)
     await waitFor(() => {
       expect(mockOnChange).toHaveBeenCalled()
-      const call = mockOnChange.mock.calls[0][0]
+      const call = mockOnChange.mock.calls[0]?.[0]
 
       expect(call).toHaveLength(2)
     })
@@ -442,7 +442,7 @@ describe('JsonEditor', () => {
     await userEvent.click(addButton)
     await waitFor(() => {
       expect(mockOnChange).toHaveBeenCalled()
-      const call = mockOnChange.mock.calls[0][0]
+      const call = mockOnChange.mock.calls[0]?.[0]
 
       expect(call).toHaveLength(3)
       expect(call[2]).toBe(false)
@@ -457,7 +457,7 @@ describe('JsonEditor', () => {
     await userEvent.click(addButton)
     await waitFor(() => {
       expect(mockOnChange).toHaveBeenCalled()
-      const call = mockOnChange.mock.calls[0][0]
+      const call = mockOnChange.mock.calls[0]?.[0]
 
       expect(call).toHaveLength(4)
       expect(call[3]).toBe(0)
@@ -469,10 +469,10 @@ describe('JsonEditor', () => {
     renderWithMocks(<JsonEditor value={value} onChange={mockOnChange} />)
     const addButtons = screen.getAllByRole('button', { name: /Add Item/i })
 
-    await userEvent.click(addButtons[0])
+    await userEvent.click(addButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(mockOnChange).toHaveBeenCalled()
-      const call = mockOnChange.mock.calls[0][0]
+      const call = mockOnChange.mock.calls[0]?.[0]
 
       expect(call).toHaveLength(2)
       expect(Array.isArray(call[1])).toBe(true)

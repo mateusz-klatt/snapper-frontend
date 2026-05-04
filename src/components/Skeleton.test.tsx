@@ -146,7 +146,7 @@ describe('TableSkeleton', () => {
     const rows = table.querySelectorAll('.space-y-3 > div')
 
     expect(rows).toHaveLength(10)
-    const firstRowCells = rows[0].querySelectorAll('[data-testid="skeleton"]')
+    const firstRowCells = rows[0]?.querySelectorAll('[data-testid="skeleton"]')
 
     expect(firstRowCells).toHaveLength(3)
   })

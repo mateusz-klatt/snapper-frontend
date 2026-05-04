@@ -96,7 +96,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
     const payload: Record<string, string> = {}
 
     for (const field of requiredFields) {
-      payload[field] = fields[field].trim()
+      payload[field] = (fields[field] as string).trim()
     }
 
     createMutation.mutate(

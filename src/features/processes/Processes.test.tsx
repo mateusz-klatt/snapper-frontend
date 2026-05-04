@@ -801,7 +801,7 @@ describe('Processes', () => {
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
     expect(startButtons.length).toBeGreaterThan(0)
-    fireEvent.click(startButtons[0])
+    fireEvent.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Execution Mode:')).toBeTruthy()
     })
@@ -899,7 +899,7 @@ describe('Processes', () => {
     const stopButtons = screen.getAllByRole('button', { name: /stop/i })
 
     expect(stopButtons.length).toBeGreaterThan(0)
-    fireEvent.click(stopButtons[0])
+    fireEvent.click(stopButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
     })
@@ -1115,7 +1115,7 @@ describe('Processes', () => {
     })
     const stopButtons = screen.getAllByRole('button', { name: /stop/i })
 
-    fireEvent.click(stopButtons[0])
+    fireEvent.click(stopButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /cancel/i })).toBeTruthy()
     })
@@ -1151,7 +1151,7 @@ describe('Processes', () => {
     })
     const startButtons = screen.getAllByRole('button', { name: /start/i })
 
-    fireEvent.click(startButtons[0])
+    fireEvent.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('Execution Mode:')).toBeTruthy()
     })
@@ -1859,7 +1859,7 @@ describe('Processes', () => {
     const restartButtons = screen.getAllByRole('button', { name: /restart/i })
 
     expect(restartButtons.length).toBeGreaterThan(0)
-    fireEvent.click(restartButtons[0])
+    fireEvent.click(restartButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText(/Restart my_service/i)).toBeTruthy()
     })
@@ -1905,7 +1905,7 @@ describe('Processes', () => {
     })
     const restartButtons = screen.getAllByRole('button', { name: /restart/i })
 
-    fireEvent.click(restartButtons[0])
+    fireEvent.click(restartButtons[0] as HTMLElement)
     fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
     expect(capturedOnSuccess).toBeDefined()
     act(() => {
@@ -1960,7 +1960,7 @@ describe('Processes', () => {
     const restartButtons = screen.getAllByRole('button', { name: /restart/i })
 
     expect(restartButtons.length).toBeGreaterThan(0)
-    fireEvent.click(restartButtons[0])
+    fireEvent.click(restartButtons[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText(/Restart sync_task/i)).toBeTruthy()
     })
@@ -2006,7 +2006,7 @@ describe('Processes', () => {
     })
     const restartButtons = screen.getAllByRole('button', { name: /restart/i })
 
-    fireEvent.click(restartButtons[0])
+    fireEvent.click(restartButtons[0] as HTMLElement)
     fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
     expect(capturedOnSuccess).toBeDefined()
     act(() => {

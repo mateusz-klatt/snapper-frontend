@@ -1141,7 +1141,7 @@ describe('WebSocketClient', () => {
 
       if (calls.length > 0) {
         const lastCall = calls[calls.length - 1]
-        const callback = lastCall[3] as (msg: unknown) => void
+        const callback = lastCall?.[3] as (msg: unknown) => void
         const tickMsg = createTick()
 
         callback(tickMsg)
@@ -1851,8 +1851,8 @@ describe('WebSocketClient secure mode', () => {
       data: JSON.stringify(createReauthRequired()),
     })
     await vi.advanceTimersByTimeAsync(100)
-    const reauthCalls = mockWs.send.mock.calls.filter((call: string[]) =>
-      call[0].includes('reauth')
+    const reauthCalls = mockWs.send.mock.calls.filter(
+      (call: string[]) => call[0]?.includes('reauth') ?? false
     )
 
     expect(reauthCalls.length).toBe(0)
@@ -2015,10 +2015,10 @@ describe('WebSocketClient secure mode', () => {
     localClient.subscribe(['topic1'])
     localClient.unsubscribe(['topic1'])
     await Promise.resolve()
-    const sent = mockWs.send.mock.calls.find((c: string[]) => c[0].includes('"unsubscribe"'))
+    const sent = mockWs.send.mock.calls.find((c: string[]) => c[0]?.includes('"unsubscribe"'))
 
     expect(sent).toBeDefined()
-    const parsed = JSON.parse((sent as string[])[0])
+    const parsed = JSON.parse((sent as string[])[0] as string)
 
     expect(parsed.type).toBe('unsubscribe')
     expect(parsed.topics).toEqual(['topic1'])

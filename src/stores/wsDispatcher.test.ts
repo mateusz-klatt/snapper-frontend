@@ -1090,7 +1090,7 @@ describe('WSDispatcher', () => {
       ])
 
       expect(cached).toHaveLength(1)
-      expect((cached as { close: number }[])[0].close).toBe(51000)
+      expect((cached as { close: number }[])[0]?.close).toBe(51000)
     })
     it('flushBuffer is a no-op when no buffer exists', () => {
       const setQueryDataSpy = vi.spyOn(queryClient, 'setQueryData')

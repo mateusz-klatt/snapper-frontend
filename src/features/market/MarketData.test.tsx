@@ -127,7 +127,7 @@ describe('MarketData', () => {
     renderWithProviders(<MarketData />)
     const trigger = screen.getAllByRole('combobox')[0]
 
-    await user.click(trigger)
+    await user.click(trigger as HTMLElement)
     await waitFor(() => {
       expect(screen.getAllByText('kraken').length).toBeGreaterThanOrEqual(2)
     })
@@ -151,7 +151,7 @@ describe('MarketData', () => {
     renderWithProviders(<MarketData />)
     const trigger = screen.getByLabelText('Timeframe:')
 
-    await user.click(trigger)
+    await user.click(trigger as HTMLElement)
     await waitFor(() => {
       expect(screen.getAllByText('1 Hour').length).toBeGreaterThanOrEqual(2)
     })
@@ -338,7 +338,7 @@ describe('MarketData', () => {
     renderWithProviders(<MarketData />)
     const triggers = screen.getAllByRole('combobox')
 
-    await user.click(triggers[0])
+    await user.click(triggers[0] as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('binance')).toBeInTheDocument()
     })
@@ -495,7 +495,7 @@ describe('MarketData', () => {
     renderWithProviders(<MarketData />)
     const trigger = screen.getByLabelText('Timeframe:')
 
-    await user.click(trigger)
+    await user.click(trigger as HTMLElement)
     await waitFor(() => {
       expect(screen.getByText('15 Minutes')).toBeInTheDocument()
     })
