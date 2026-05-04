@@ -31,7 +31,9 @@
     "test:coverage": "vitest run --coverage",
     "test:coverage:serial": "vitest run --coverage --maxWorkers=1 --no-file-parallelism",
     "gen:api-types": "openapi-typescript build/openapi.json -o src/types/api.generated.ts --export-type",
+    "gen:api-types:from-monorepo": "openapi-typescript ../build/openapi.json -o src/types/api.generated.ts --export-type",
     "gen:ws-types": "json2ts build/ws-schemas.json -o src/types/ws.generated.ts --additionalProperties false",
+    "gen:ws-types:from-monorepo": "json2ts ../build/ws-schemas.json -o src/types/ws.generated.ts --additionalProperties false",
     "gen": "bash scripts/gen-from-backend.sh",
     "icons:vendor": "bash scripts/vendor-icons.sh"
   },
