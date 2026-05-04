@@ -93,79 +93,29 @@ export function MarketData() {
       flushedRef.current = true
     }
   }, [candles, isFetching, dispatcher, selectedInstrument, selectedExchange, selectedTimeframe])
-  const [instrumentSearch, setInstrumentSearch] = useState('')
-  const [instrumentDropdownOpen, setInstrumentDropdownOpen] = useState(false)
-  const [instrumentActiveIndex, setInstrumentActiveIndex] = useState<number>(-1)
-  const instrumentRef = useRef<HTMLDivElement>(null)
-  const instrumentListboxId = 'instrument-listbox'
-  const instrumentOptionId = (idx: number) => `instrument-option-${idx}`
-  const filteredInstruments = useMemo(() => {
-    const list = (instruments?.payload ?? []).map(row => row.symbol)
-
-    if (!instrumentSearch) return list
-
-    return list.filter(inst => inst.toLowerCase().includes(instrumentSearch.toLowerCase()))
-  }, [instruments, instrumentSearch])
+  const allInstrumentSymbols = useMemo(
+    () => (instruments?.payload ?? []).map(row => row.symbol),
+    [instruments]
+  )
+  const [instrumentInput, setInstrumentInput] = useState(selectedInstrument ?? '')
 
   useEffect(() => {
-    setInstrumentActiveIndex(-1)
-  }, [instrumentSearch, instrumentDropdownOpen])
+    setInstrumentInput(selectedInstrument ?? '')
+  }, [selectedInstrument])
 
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (instrumentRef.current && !instrumentRef.current.contains(e.target as Node)) {
-        setInstrumentDropdownOpen(false)
-      }
+  const handleInstrumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+
+    setInstrumentInput(value)
+
+    if (allInstrumentSymbols.includes(value)) {
+      setSelectedInstrument(value)
     }
-
-    if (instrumentDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [instrumentDropdownOpen])
-
-  const commitInstrument = (inst: string) => {
-    setSelectedInstrument(inst)
-    setInstrumentDropdownOpen(false)
-    setInstrumentSearch('')
-    setInstrumentActiveIndex(-1)
   }
 
-  const handleInstrumentInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'ArrowDown') {
-      e.preventDefault()
-
-      if (!instrumentDropdownOpen) {
-        setInstrumentDropdownOpen(true)
-
-        return
-      }
-
-      if (filteredInstruments.length > 0) {
-        setInstrumentActiveIndex(prev => (prev + 1) % filteredInstruments.length)
-      }
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault()
-
-      if (filteredInstruments.length > 0) {
-        setInstrumentActiveIndex(prev => (prev <= 0 ? filteredInstruments.length - 1 : prev - 1))
-      }
-    } else if (e.key === 'Enter') {
-      const candidate = filteredInstruments[instrumentActiveIndex]
-
-      if (instrumentDropdownOpen && instrumentActiveIndex >= 0 && candidate !== undefined) {
-        e.preventDefault()
-        commitInstrument(candidate)
-      }
-    } else if (e.key === 'Escape') {
-      if (instrumentDropdownOpen) {
-        e.preventDefault()
-        setInstrumentDropdownOpen(false)
-        setInstrumentActiveIndex(-1)
-      }
+  const handleInstrumentBlur = () => {
+    if (!allInstrumentSymbols.includes(instrumentInput)) {
+      setInstrumentInput(selectedInstrument ?? '')
     }
   }
 
@@ -273,77 +223,22 @@ export function MarketData() {
           <label htmlFor='instrument-search' className='text-sm font-medium text-muted-600'>
             Instrument:
           </label>
-          <div ref={instrumentRef} className='relative'>
-            <input
-              id='instrument-search'
-              type='text'
-              role='combobox'
-              aria-expanded={instrumentDropdownOpen}
-              aria-controls={instrumentListboxId}
-              aria-autocomplete='list'
-              aria-activedescendant={
-                instrumentDropdownOpen && instrumentActiveIndex >= 0
-                  ? instrumentOptionId(instrumentActiveIndex)
-                  : undefined
-              }
-              value={instrumentDropdownOpen ? instrumentSearch : (selectedInstrument ?? '')}
-              onChange={e => setInstrumentSearch(e.target.value)}
-              onFocus={() => {
-                setInstrumentDropdownOpen(true)
-                setInstrumentSearch('')
-              }}
-              onKeyDown={handleInstrumentInputKeyDown}
-              placeholder='Search instrument...'
-              disabled={!selectedExchange}
-              className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50'
-            />
-            {instrumentDropdownOpen && (
-              <div
-                id={instrumentListboxId}
-                role='listbox'
-                aria-label='Instruments'
-                tabIndex={-1}
-                className='absolute top-full left-0 mt-1 w-full min-w-48 max-h-60 overflow-y-auto z-50 bg-alpine-50 rounded-md shadow-lg border border-dark-600'
-              >
-                {filteredInstruments.length > 0 ? (
-                  filteredInstruments.map((inst, idx) => {
-                    const canTrade = capabilityMap.get(inst)
-                    const isMarketDataOnly = canTrade === false
-                    const isActive = idx === instrumentActiveIndex
-                    const isSelected = inst === selectedInstrument
-
-                    return (
-                      <div
-                        key={inst}
-                        id={instrumentOptionId(idx)}
-                        role='option'
-                        tabIndex={-1}
-                        aria-selected={isSelected}
-                        onMouseDown={e => {
-                          e.preventDefault()
-                          commitInstrument(inst)
-                        }}
-                        onMouseEnter={() => setInstrumentActiveIndex(idx)}
-                        className={`flex w-full select-none items-center justify-between gap-3 px-3 py-2 text-sm text-alpine-900 rounded-sm cursor-pointer ${isActive ? 'bg-dark-700' : 'hover:bg-dark-700'}`}
-                      >
-                        <span className='flex items-center gap-2'>
-                          {selectedExchange !== null && (
-                            <InstrumentIcon symbol={inst} exchange={selectedExchange} size={20} />
-                          )}
-                          {inst}
-                        </span>
-                        {isMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
-                      </div>
-                    )
-                  })
-                ) : (
-                  <output className='block px-3 py-2 text-sm text-muted-500'>
-                    No instruments found
-                  </output>
-                )}
-              </div>
-            )}
-          </div>
+          <input
+            id='instrument-search'
+            type='text'
+            list='instrument-options'
+            value={instrumentInput}
+            onChange={handleInstrumentChange}
+            onBlur={handleInstrumentBlur}
+            placeholder='Search instrument...'
+            disabled={!selectedExchange}
+            className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50'
+          />
+          <datalist id='instrument-options'>
+            {allInstrumentSymbols.map(sym => (
+              <option key={sym} value={sym} />
+            ))}
+          </datalist>
         </div>
         <div className='flex items-center gap-2'>
           <label htmlFor='timeframe-select' className='text-sm font-medium text-muted-600'>
