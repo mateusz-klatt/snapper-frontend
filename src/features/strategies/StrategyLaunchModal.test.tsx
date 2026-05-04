@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
@@ -452,6 +452,35 @@ describe('StrategyLaunchModal', () => {
       )
     })
   })
+  it('strips leading/trailing underscore artefacts from sanitised names', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    const processNameInput = await screen.findByPlaceholderText('strategy_macd_custom')
+    const strategyNameInput = screen.getByPlaceholderText('macd_custom')
+
+    fireEvent.change(processNameInput, { target: { value: '  custom name  ' } })
+    fireEvent.change(strategyNameInput, { target: { value: '__macd alpha__' } })
+    const submitButton = screen.getByText('Register strategy')
+
+    await user.click(submitButton)
+    await waitFor(() => {
+      expect(mockOnSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          processName: 'custom_name',
+          strategyName: 'macd_alpha',
+        })
+      )
+    })
+  })
+
   it('allows toggling autostart checkbox', async () => {
     const user = userEvent.setup()
 

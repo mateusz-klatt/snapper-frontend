@@ -72,7 +72,9 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
   }
 
   const base = upper.slice(0, dash)
-  const quote = upper.slice(dash + 1).replace(/:.*$/, '')
+  const rawQuote = upper.slice(dash + 1)
+  const colonIdx = rawQuote.indexOf(':')
+  const quote = colonIdx === -1 ? rawQuote : rawQuote.slice(0, colonIdx)
   const assetClass = classifyPair(base, quote)
   const underlyingTicker = derivePairUnderlying(base, quote, assetClass)
 

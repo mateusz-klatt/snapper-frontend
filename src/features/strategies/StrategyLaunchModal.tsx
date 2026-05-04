@@ -21,11 +21,19 @@ interface StrategyLaunchModalProps {
   onSubmit: (data: StrategyLaunchData) => Promise<void>
   isSubmitting?: boolean
 }
+
+const stripUnderscores = (value: string): string => {
+  let start = 0
+  let end = value.length
+
+  while (start < end && value.charCodeAt(start) === 95) start++
+  while (end > start && value.charCodeAt(end - 1) === 95) end--
+
+  return value.slice(start, end)
+}
+
 const sanitizeName = (value: string) =>
-  value
-    .toLowerCase()
-    .replaceAll(/[^a-z0-9_]+/g, '_')
-    .replaceAll(/(?:^_+)|(?:_+$)/g, '')
+  stripUnderscores(value.toLowerCase().replaceAll(/[^a-z0-9_]+/g, '_'))
 
 export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> = ({
   open,
