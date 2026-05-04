@@ -339,9 +339,9 @@ export function MarketData() {
                     )
                   })
                 ) : (
-                  <div role='status' className='px-3 py-2 text-sm text-muted-500'>
+                  <output className='block px-3 py-2 text-sm text-muted-500'>
                     No instruments found
-                  </div>
+                  </output>
                 )}
               </div>
             )}
