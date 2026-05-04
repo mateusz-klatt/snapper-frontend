@@ -647,6 +647,14 @@ describe('MarketData', () => {
         isLoading: false,
         error: null,
       })) as never)
+      vi.mocked(useMarketStore).mockReturnValue({
+        selectedExchange: 'kraken',
+        selectedInstrument: 'EUR-USD',
+        selectedTimeframe: '1h',
+        setSelectedExchange: mockSetSelectedExchange,
+        setSelectedInstrument: mockSetSelectedInstrument,
+        setSelectedTimeframe: mockSetSelectedTimeframe,
+      })
     }
   })
 })

@@ -97,6 +97,10 @@ export function MarketData() {
     () => (instruments?.payload ?? []).map(row => row.symbol),
     [instruments]
   )
+  const allInstrumentSymbolsSet = useMemo(
+    () => new Set(allInstrumentSymbols),
+    [allInstrumentSymbols]
+  )
   const [instrumentInput, setInstrumentInput] = useState(selectedInstrument ?? '')
 
   useEffect(() => {
@@ -108,13 +112,13 @@ export function MarketData() {
 
     setInstrumentInput(value)
 
-    if (allInstrumentSymbols.includes(value)) {
+    if (allInstrumentSymbolsSet.has(value)) {
       setSelectedInstrument(value)
     }
   }
 
   const handleInstrumentBlur = () => {
-    if (!allInstrumentSymbols.includes(instrumentInput)) {
+    if (!allInstrumentSymbolsSet.has(instrumentInput)) {
       setInstrumentInput(selectedInstrument ?? '')
     }
   }
