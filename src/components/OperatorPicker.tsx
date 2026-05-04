@@ -17,6 +17,7 @@ export const OperatorPicker: React.FC = () => {
   return (
     <ThemeSelect
       id='operator-picker'
+      ariaLabel='Active operator'
       value={currentId ?? '__all__'}
       onChange={v => setId(v === '__all__' ? null : v)}
       options={options}

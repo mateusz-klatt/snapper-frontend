@@ -20,6 +20,7 @@ export const WalletPicker: React.FC = () => {
   return (
     <ThemeSelect
       id='wallet-picker'
+      ariaLabel='Active wallet'
       value={currentId ?? '__all__'}
       onChange={v => {
         // Picker change mints a new JWT with the selected wallet

@@ -69,6 +69,8 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
     testTimeout: 10000,
     hookTimeout: 10000,
+    include: ['src/**/*.test.{ts,tsx}'],
+    exclude: ['e2e/**', 'node_modules/**', 'dist/**'],
     coverage: {
       provider: 'istanbul',
       reporter: ['text', 'lcov', 'html'],

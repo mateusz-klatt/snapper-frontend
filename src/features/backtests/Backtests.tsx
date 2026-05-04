@@ -129,6 +129,7 @@ export const Backtests: React.FC = () => {
         <h2 className='text-xl font-semibold text-alpine-900'>Backtests</h2>
         <div className='flex items-center gap-2'>
           <select
+            aria-label='Filter backtests by status'
             className='rounded-lg border border-dark-600 bg-alpine-50 px-3 py-1 text-sm text-alpine-900'
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value)}
