@@ -374,6 +374,7 @@ describe('MarketData', () => {
       setSelectedInstrument: mockSetSelectedInstrument,
       setSelectedTimeframe: mockSetSelectedTimeframe,
     })
+
     try {
       renderWithProviders(<MarketData />)
       const input = screen.getByLabelText('Instrument:') as HTMLInputElement
