@@ -431,6 +431,7 @@ describe('APIClient', () => {
         configurable: true,
         value: { ...originalLocation, protocol: 'https:' },
       })
+
       try {
         expect(() => apiClient.setCsrfToken('https-token')).not.toThrow()
         expect(() => apiClient.setCsrfToken(null)).not.toThrow()
