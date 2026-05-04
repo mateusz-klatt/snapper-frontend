@@ -118,4 +118,32 @@ describe('ConfigSnippetGenerator', () => {
       vi.useRealTimers()
     }
   })
+
+  it('clears the previous timer when copy is clicked twice quickly', async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true })
+    const clearSpy = vi.spyOn(globalThis, 'clearTimeout')
+
+    try {
+      const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
+
+      render(<ConfigSnippetGenerator payload={payload} />)
+      const button = screen.getByRole('button', { name: /Copy config snippet to clipboard/ })
+
+      await act(async () => {
+        await user.click(button)
+      })
+      const callsAfterFirst = clearSpy.mock.calls.length
+
+      await act(async () => {
+        vi.advanceTimersByTime(500)
+        await user.click(button)
+      })
+
+      expect(clearSpy.mock.calls.length).toBeGreaterThan(callsAfterFirst)
+      expect(screen.getByText('Copied')).toBeInTheDocument()
+    } finally {
+      clearSpy.mockRestore()
+      vi.useRealTimers()
+    }
+  })
 })

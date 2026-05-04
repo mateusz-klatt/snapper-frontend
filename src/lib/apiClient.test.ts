@@ -2634,14 +2634,23 @@ describe('cacheWsTicketFromResponse', () => {
       )
     })
     it('getTrailingStopByCycle fetches /api/trailing-stops/by-cycle/{id}', async () => {
+      const messageEnv = {
+        type: 'message',
+        sequence_id: 0,
+        public_id: 'msg-1',
+        timestamp: '2026-05-04T00:00:00Z',
+        session_id: 'test-sid',
+        payload: 'none',
+      }
+
       mockFetch.mockResolvedValueOnce({
         ok: true,
         status: 200,
-        json: async () => ({ type: 'message', payload: 'none' }),
+        json: async () => messageEnv,
       })
       const result = await apiClient.getTrailingStopByCycle('cycle-1')
 
-      expect(result).toEqual({ type: 'message', payload: 'none' })
+      expect(result).toEqual(messageEnv)
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/trailing-stops/by-cycle/cycle-1'),
         expect.objectContaining({ method: 'GET' })
@@ -2650,10 +2659,104 @@ describe('cacheWsTicketFromResponse', () => {
   })
 
   describe('backtests', () => {
+    const baseEnv = {
+      sequence_id: 0,
+      public_id: 'test-pid',
+      timestamp: '2026-05-04T00:00:00Z',
+      session_id: 'test-sid',
+    }
+
+    const baseRun = {
+      type: 'backtest_run',
+      ...baseEnv,
+      wallet_public_id: 'wallet-1',
+      strategy_name: 'sma',
+      strategy_params: {},
+      instrument_public_id: 'BTC-USD',
+      exchange: 'kraken',
+      timeframe: '1h',
+      start_date: '2026-01-01T00:00:00Z',
+      end_date: '2026-06-01T00:00:00Z',
+      initial_cash: 10000,
+      status: 'pending',
+      execution_mode: 'sim',
+      fill_model: 'next_open',
+      slippage_bps: 0,
+      commission_bps: 0,
+    }
+
+    const runListEnv = (
+      payload: Array<typeof baseRun> = [],
+      count = 0
+    ): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_run_list',
+      payload,
+      count,
+    })
+
+    const runEnv = (overrides?: Partial<typeof baseRun>): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_run_response',
+      payload: { ...baseRun, ...overrides },
+    })
+
+    const tradeListEnv = (): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_trade_list',
+      payload: [],
+      count: 0,
+    })
+
+    const signalListEnv = (): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_signal_list',
+      payload: [],
+      count: 0,
+    })
+
+    const baseComparison = {
+      ...baseEnv,
+      type: 'backtest_comparison',
+      wallet_public_id: 'wallet-1',
+      run_a_public_id: 'r1',
+      run_b_public_id: 'r2',
+      pairing_mode: 'auto',
+    }
+
+    const compEnv = (publicId = 'cmp-1'): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_comparison_response',
+      payload: { ...baseComparison, public_id: publicId },
+    })
+
+    const compDetailEnv = (publicId = 'cmp-1'): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_comparison_detail_response',
+      payload: {
+        ...baseEnv,
+        type: 'backtest_comparison_detail',
+        comparison: { ...baseComparison, public_id: publicId },
+        run_a: { ...baseRun, public_id: 'r1' },
+        run_b: { ...baseRun, public_id: 'r2' },
+        metrics_diff: [],
+        equity_overlay: [],
+        trades_diff: [],
+        signals_diff: [],
+      },
+    })
+
+    const compListEnv = (): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_comparison_list',
+      payload: [],
+      count: 0,
+    })
+
     it('getBacktests sends GET without optional filters', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_run_list', payload: [], count: 0 }),
+        json: async () => runListEnv(),
       })
       await apiClient.getBacktests()
 
@@ -2666,7 +2769,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktests sends GET with query params', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_run_list', payload: [], count: 0 }),
+        json: async () => runListEnv(),
       })
       const result = await apiClient.getBacktests(10, 5, 'sma', 'completed')
 
@@ -2680,7 +2783,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktests appends config_hash when provided', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_run_list', payload: [], count: 0 }),
+        json: async () => runListEnv(),
       })
       await apiClient.getBacktests(20, 0, undefined, undefined, 'cfg-hash-abc')
 
@@ -2693,7 +2796,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktest sends GET by ID', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_run_response', payload: { public_id: 'r1' } }),
+        json: async () => runEnv({ public_id: 'r1' }),
       })
       await apiClient.getBacktest('r1')
 
@@ -2706,7 +2809,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('createBacktest sends POST with body', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_run_response', payload: { public_id: 'r2' } }),
+        json: async () => runEnv({ public_id: 'r2' }),
       })
       await apiClient.createBacktest({
         strategy_class: 'sma',
@@ -2725,7 +2828,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('cancelBacktest sends POST cancel', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_run_response', payload: {} }),
+        json: async () => runEnv({ public_id: 'r1', status: 'cancelled' }),
       })
       await apiClient.cancelBacktest('r1')
 
@@ -2738,7 +2841,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('rerunBacktest sends POST rerun', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_run_response', payload: {} }),
+        json: async () => runEnv({ public_id: 'r1', status: 'pending' }),
       })
       await apiClient.rerunBacktest('r1')
 
@@ -2751,7 +2854,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktestTrades sends GET with default limit', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_trade_list', payload: [], count: 0 }),
+        json: async () => tradeListEnv(),
       })
       await apiClient.getBacktestTrades('r1')
 
@@ -2764,7 +2867,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktestTrades sends GET with limit', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_trade_list', payload: [], count: 0 }),
+        json: async () => tradeListEnv(),
       })
       await apiClient.getBacktestTrades('r1', 50)
 
@@ -2777,7 +2880,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktestSignals sends GET with default limit', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_signal_list', payload: [], count: 0 }),
+        json: async () => signalListEnv(),
       })
       await apiClient.getBacktestSignals('r1')
 
@@ -2790,7 +2893,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktestSignals sends GET with limit', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_signal_list', payload: [], count: 0 }),
+        json: async () => signalListEnv(),
       })
       await apiClient.getBacktestSignals('r1', 50)
 
@@ -2803,10 +2906,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('createBacktestComparison sends POST with auto-mode body', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({
-          type: 'backtest_comparison_response',
-          payload: { public_id: 'cmp-1' },
-        }),
+        json: async () => compEnv('cmp-1'),
       })
       await apiClient.createBacktestComparison({
         mode: 'auto',
@@ -2832,10 +2932,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktestComparison sends GET by id (URL-encoded)', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({
-          type: 'backtest_comparison_detail_response',
-          payload: { comparison: { public_id: 'cmp 1' } },
-        }),
+        json: async () => compDetailEnv('cmp 1'),
       })
       await apiClient.getBacktestComparison('cmp 1')
 
@@ -2848,7 +2945,7 @@ describe('cacheWsTicketFromResponse', () => {
     it('getBacktestComparisons sends GET with default + custom paging', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_comparison_list', payload: [], count: 0 }),
+        json: async () => compListEnv(),
       })
       await apiClient.getBacktestComparisons()
       expect(mockFetch).toHaveBeenLastCalledWith(
@@ -2858,7 +2955,7 @@ describe('cacheWsTicketFromResponse', () => {
 
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({ type: 'backtest_comparison_list', payload: [], count: 0 }),
+        json: async () => compListEnv(),
       })
       await apiClient.getBacktestComparisons(50, 100)
       expect(mockFetch).toHaveBeenLastCalledWith(

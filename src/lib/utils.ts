@@ -1,9 +1,11 @@
 export function getCookie(name: string): string {
+  const prefix = name + '='
+
   return (
     document.cookie
       .split('; ')
-      .find(c => c.startsWith(name + '='))
-      ?.split('=')[1] ?? ''
+      .find(c => c.startsWith(prefix))
+      ?.slice(prefix.length) ?? ''
   )
 }
 

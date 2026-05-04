@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { AlertTriangle, Check, Clipboard } from 'lucide-react'
 import { Button } from '../../components/ui'
 import { buildMcpConfigSnippet } from './buildMcpConfigSnippet'
@@ -8,15 +8,33 @@ export function ConfigSnippetGenerator({
   payload,
 }: Readonly<{ payload: DelegateCreatedPayload }>): React.ReactElement {
   const [copied, setCopied] = useState(false)
+  const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
   const snippet = useMemo(
     () => buildMcpConfigSnippet(payload, globalThis.location.origin),
     [payload]
   )
 
+  useEffect(() => {
+    return () => {
+      if (copiedTimerRef.current !== null) {
+        globalThis.clearTimeout(copiedTimerRef.current)
+      }
+    }
+  }, [])
+
   const handleCopy = async (): Promise<void> => {
     await navigator.clipboard.writeText(snippet)
     setCopied(true)
-    globalThis.setTimeout(() => setCopied(false), 2000)
+
+    if (copiedTimerRef.current !== null) {
+      globalThis.clearTimeout(copiedTimerRef.current)
+    }
+
+    copiedTimerRef.current = globalThis.setTimeout(() => {
+      setCopied(false)
+      copiedTimerRef.current = null
+    }, 2000)
   }
 
   return (

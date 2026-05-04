@@ -1,0 +1,49 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Warsaw
+    open-pull-requests-limit: 5
+    versioning-strategy: increase-if-necessary
+    labels:
+      - dependencies
+      - npm
+    groups:
+      vendor-react:
+        patterns:
+          - react
+          - react-dom
+          - '@types/react*'
+      vendor-build:
+        patterns:
+          - vite
+          - '@vitejs/*'
+          - vitest
+          - '@vitest/*'
+      vendor-lint:
+        patterns:
+          - eslint
+          - eslint-*
+          - '@eslint/*'
+          - prettier
+          - typescript-eslint
+      vendor-tooling:
+        patterns:
+          - knip
+          - typescript
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Warsaw
+    open-pull-requests-limit: 3
+    labels:
+      - dependencies
+      - github-actions

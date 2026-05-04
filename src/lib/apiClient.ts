@@ -3,6 +3,7 @@ import { getCookie } from './utils'
 import { storeWsTicket } from './wsTicketCache'
 import { validateResponse } from './schemas/api'
 import { getTracker } from './sequenceTracker'
+import { z } from 'zod'
 import {
   ScopeGrantListResponseSchema,
   ScopeGrantResponseSchema,
@@ -45,7 +46,21 @@ import {
   DelegateResponseSchema,
   DelegateCreatedResponseSchema,
   PendingReviewListResponseSchema,
+  TrailingStopStateResponseSchema,
+  BacktestRunListResponseSchema,
+  BacktestRunResponseSchema,
+  BacktestTradeListResponseSchema,
+  BacktestSignalListResponseSchema,
+  BacktestComparisonResponseSchema,
+  BacktestComparisonDetailResponseSchema,
+  BacktestComparisonListResponseSchema,
 } from './schemas/api.generated.zod'
+
+const TrailingStopByCycleResultSchema = z.union([
+  TrailingStopStateResponseSchema,
+  MessageResponseSchema,
+])
+
 import type { PendingReviewListResponse } from './schemas/api.generated.zod'
 import type {
   ScopeGrantListResponse,
@@ -337,7 +352,7 @@ class APIClient {
       .json()
       .catch(() => ({}))
 
-    if (errorData.detail?.includes('CSRF')) {
+    if (typeof errorData.detail === 'string' && errorData.detail.includes('CSRF')) {
       return this.request(url, { ...options, skipRetry: true, skipCSRF: true })
     }
 
@@ -792,7 +807,11 @@ class APIClient {
       `/api/trailing-stops/by-cycle/${encodeURIComponent(cyclePublicId)}`
     )
 
-    return data as TrailingStopByCycleResult
+    return validateResponse(
+      data,
+      TrailingStopByCycleResultSchema,
+      '/trailing-stops/by-cycle/:id'
+    ) as TrailingStopByCycleResult
   }
   async getConfiguredProcesses(): Promise<ConfiguredProcessesResponse> {
     const data = await this.getJSON('/api/processes/configured')
@@ -903,48 +922,80 @@ class APIClient {
     if (configHash) params.set('config_hash', configHash)
     const data = await this.getJSON(`/api/backtests?${params.toString()}`)
 
-    return data as BacktestRunListResponse
+    return validateResponse(
+      data,
+      BacktestRunListResponseSchema,
+      '/backtests'
+    ) as BacktestRunListResponse
   }
   async getBacktest(runId: string): Promise<BacktestRunResponse> {
     const data = await this.getJSON(`/api/backtests/${encodeURIComponent(runId)}`)
 
-    return data as BacktestRunResponse
+    return validateResponse(
+      data,
+      BacktestRunResponseSchema,
+      '/backtests/:id'
+    ) as BacktestRunResponse
   }
   async createBacktest(body: BacktestCreateBody): Promise<BacktestRunResponse> {
     const data = await this.postJSON('/api/backtests', body)
 
-    return data as BacktestRunResponse
+    return validateResponse(
+      data,
+      BacktestRunResponseSchema,
+      '/backtests POST'
+    ) as BacktestRunResponse
   }
   async cancelBacktest(runId: string): Promise<BacktestRunResponse> {
     const data = await this.postJSON(`/api/backtests/${encodeURIComponent(runId)}/cancel`, {
       reason: '',
     })
 
-    return data as BacktestRunResponse
+    return validateResponse(
+      data,
+      BacktestRunResponseSchema,
+      '/backtests/:id/cancel'
+    ) as BacktestRunResponse
   }
   async rerunBacktest(runId: string): Promise<BacktestRunResponse> {
     const data = await this.postJSON(`/api/backtests/${encodeURIComponent(runId)}/rerun`, {})
 
-    return data as BacktestRunResponse
+    return validateResponse(
+      data,
+      BacktestRunResponseSchema,
+      '/backtests/:id/rerun'
+    ) as BacktestRunResponse
   }
   async getBacktestTrades(runId: string, limit = 100): Promise<BacktestTradeListResponse> {
     const data = await this.getJSON(
       `/api/backtests/${encodeURIComponent(runId)}/trades?limit=${limit}`
     )
 
-    return data as BacktestTradeListResponse
+    return validateResponse(
+      data,
+      BacktestTradeListResponseSchema,
+      '/backtests/:id/trades'
+    ) as BacktestTradeListResponse
   }
   async getBacktestSignals(runId: string, limit = 100): Promise<BacktestSignalListResponse> {
     const data = await this.getJSON(
       `/api/backtests/${encodeURIComponent(runId)}/signals?limit=${limit}`
     )
 
-    return data as BacktestSignalListResponse
+    return validateResponse(
+      data,
+      BacktestSignalListResponseSchema,
+      '/backtests/:id/signals'
+    ) as BacktestSignalListResponse
   }
   async createBacktestComparison(body: BacktestCompareBody): Promise<BacktestComparisonResponse> {
     const data = await this.postJSON('/api/backtests/compare', body)
 
-    return data as BacktestComparisonResponse
+    return validateResponse(
+      data,
+      BacktestComparisonResponseSchema,
+      '/backtests/compare POST'
+    ) as BacktestComparisonResponse
   }
   async getBacktestComparison(
     comparisonPublicId: string
@@ -953,7 +1004,11 @@ class APIClient {
       `/api/backtests/compare/${encodeURIComponent(comparisonPublicId)}`
     )
 
-    return data as BacktestComparisonDetailResponse
+    return validateResponse(
+      data,
+      BacktestComparisonDetailResponseSchema,
+      '/backtests/compare/:id'
+    ) as BacktestComparisonDetailResponse
   }
   async getBacktestComparisons(limit = 20, offset = 0): Promise<BacktestComparisonListResponse> {
     const params = new URLSearchParams()
@@ -962,7 +1017,11 @@ class APIClient {
     params.set('offset', String(offset))
     const data = await this.getJSON(`/api/backtests/compare?${params.toString()}`)
 
-    return data as BacktestComparisonListResponse
+    return validateResponse(
+      data,
+      BacktestComparisonListResponseSchema,
+      '/backtests/compare'
+    ) as BacktestComparisonListResponse
   }
   async getFeatureFlags(): Promise<FeatureFlagsResponse> {
     const data = await this.getJSON('/api/settings/features')

@@ -20,7 +20,7 @@ attribution — you may use, modify, and redistribute these files freely.
 - **Upstream**: <https://github.com/HatScripts/circle-flags>
 - **License**: MIT
 - **Vendored subset**: the country codes referenced in
-  `frontend/src/components/InstrumentIcon/registry/fiat.ts`.
+  `src/components/InstrumentIcon/registry/fiat.ts`.
 
 The MIT license text required for redistribution is reproduced below.
 
@@ -55,7 +55,10 @@ SOFTWARE.
 pnpm icons:vendor
 ```
 
-The script is `frontend/scripts/vendor-icons.sh`. It clones both upstream
-repos to a temporary directory, copies the requested subset, and updates
-this LICENSE file with the current upstream copyright year. Run it after
-adding new entries to `registry/crypto.ts` or `registry/fiat.ts`.
+The script is `scripts/vendor-icons.sh`. It clones both upstream repos to
+a temporary directory and copies the requested subset of SVGs. Run it
+after adding new entries to `src/components/InstrumentIcon/registry/crypto.ts`
+or `src/components/InstrumentIcon/registry/fiat.ts`.
+
+Upstream license texts are reproduced manually in this file; if either
+upstream changes its license, update the relevant section here as well.

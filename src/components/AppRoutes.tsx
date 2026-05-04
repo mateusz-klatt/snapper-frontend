@@ -1,25 +1,58 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import ErrorBoundary from './ErrorBoundary'
 import ProtectedRoute from './auth/ProtectedRoute'
-import { Overview } from '../features/overview/Overview'
-import { MarketData } from '../features/market/MarketData'
-import { Processes } from '../features/processes/Processes'
-import { Strategies } from '../features/strategies/Strategies'
-import { Orders } from '../features/orders/Orders'
-import { Positions } from '../features/positions/Positions'
-import { Signals } from '../features/signals/Signals'
-import { Backtests } from '../features/backtests/Backtests'
-import { BacktestDetailPage } from '../features/backtests/BacktestDetailPage'
-import { ComparePage } from '../features/backtests/ComparePage'
 import { useHashSubpath } from '../hooks/useHashRouting'
-import { Health } from '../features/health/Health'
-import { Admin } from '../features/admin/Admin'
-import { AIIntegration } from '../features/ai-integration/AIIntegration'
-import { AiReviewInbox } from '../features/ai-reviews/AiReviewInbox'
-import { Settings } from '../features/settings/Settings'
+
+const Overview = lazy(() =>
+  import('../features/overview/Overview').then(m => ({ default: m.Overview }))
+)
+const MarketData = lazy(() =>
+  import('../features/market/MarketData').then(m => ({ default: m.MarketData }))
+)
+const Processes = lazy(() =>
+  import('../features/processes/Processes').then(m => ({ default: m.Processes }))
+)
+const Strategies = lazy(() =>
+  import('../features/strategies/Strategies').then(m => ({ default: m.Strategies }))
+)
+const Orders = lazy(() => import('../features/orders/Orders').then(m => ({ default: m.Orders })))
+const Positions = lazy(() =>
+  import('../features/positions/Positions').then(m => ({ default: m.Positions }))
+)
+const Signals = lazy(() =>
+  import('../features/signals/Signals').then(m => ({ default: m.Signals }))
+)
+const Backtests = lazy(() =>
+  import('../features/backtests/Backtests').then(m => ({ default: m.Backtests }))
+)
+const BacktestDetailPage = lazy(() =>
+  import('../features/backtests/BacktestDetailPage').then(m => ({ default: m.BacktestDetailPage }))
+)
+const ComparePage = lazy(() =>
+  import('../features/backtests/ComparePage').then(m => ({ default: m.ComparePage }))
+)
+const Health = lazy(() => import('../features/health/Health').then(m => ({ default: m.Health })))
+const Admin = lazy(() => import('../features/admin/Admin').then(m => ({ default: m.Admin })))
+const AIIntegration = lazy(() =>
+  import('../features/ai-integration/AIIntegration').then(m => ({ default: m.AIIntegration }))
+)
+const AiReviewInbox = lazy(() =>
+  import('../features/ai-reviews/AiReviewInbox').then(m => ({ default: m.AiReviewInbox }))
+)
+const Settings = lazy(() =>
+  import('../features/settings/Settings').then(m => ({ default: m.Settings }))
+)
 
 interface AppRoutesProps {
   activeTab: string
+}
+
+function RouteFallback(): React.ReactElement {
+  return (
+    <div className='flex h-full items-center justify-center p-8' role='status' aria-live='polite'>
+      <span className='text-sm text-muted-600'>Loading…</span>
+    </div>
+  )
 }
 
 /**
@@ -44,7 +77,7 @@ function BacktestsRouter(): React.ReactElement {
   return <Backtests />
 }
 
-export function AppRoutes({ activeTab }: Readonly<AppRoutesProps>): React.ReactElement {
+function renderRoute(activeTab: string): React.ReactElement {
   switch (activeTab) {
     case 'market':
       return (
@@ -152,4 +185,8 @@ export function AppRoutes({ activeTab }: Readonly<AppRoutesProps>): React.ReactE
         </ErrorBoundary>
       )
   }
+}
+
+export function AppRoutes({ activeTab }: Readonly<AppRoutesProps>): React.ReactElement {
+  return <Suspense fallback={<RouteFallback />}>{renderRoute(activeTab)}</Suspense>
 }

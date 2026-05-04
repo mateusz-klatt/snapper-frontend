@@ -39,7 +39,29 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: process.env.SOURCEMAP === 'true' ? true : 'hidden',
+    rollupOptions: {
+      output: {
+        manualChunks(id: string): string | undefined {
+          if (!id.includes('node_modules')) return undefined
+          if (id.includes('lightweight-charts')) return 'vendor-charts'
+          if (id.includes('zod')) return 'vendor-validation'
+          if (id.includes('@radix-ui')) return 'vendor-radix'
+          if (id.includes('@tanstack/react-query') || id.includes('zustand')) {
+            return 'vendor-query'
+          }
+          if (
+            id.includes('react-dom') ||
+            id.includes('scheduler') ||
+            /[\\/]react[\\/]/.exec(id) !== null
+          ) {
+            return 'vendor-react'
+          }
+
+          return undefined
+        },
+      },
+    },
   },
   test: {
     globals: true,

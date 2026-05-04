@@ -44,6 +44,7 @@ function App() {
         />
       )}
       <aside
+        aria-label='Sidebar'
         className={`fixed inset-y-0 left-0 z-50 flex w-72 shrink-0 flex-col border-r border-dark-600 bg-alpine-50 px-4 py-6 transition-transform duration-200 md:static md:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className='mb-4 flex shrink-0 items-center justify-between px-2 md:mb-8'>
@@ -62,14 +63,16 @@ function App() {
             <X size={20} />
           </button>
         </div>
-        <nav className='flex-1 space-y-1.5 overflow-y-auto pr-1'>
+        <nav aria-label='Main navigation' className='flex-1 space-y-1.5 overflow-y-auto pr-1'>
           {tabs.map(tab => {
             const Icon = tab.icon
 
             return (
               <button
                 key={tab.id}
+                type='button'
                 onClick={() => handleNavigate(tab.id)}
+                aria-current={activeTab === tab.id ? 'page' : undefined}
                 className={
                   activeTab === tab.id
                     ? 'flex w-full items-center gap-3 rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-sm font-medium text-brand-700 transition-all duration-200'
