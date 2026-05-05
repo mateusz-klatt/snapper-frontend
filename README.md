@@ -19,6 +19,30 @@ Highlights:
 - **WebSocket envelope minter** — per-app session ID, separate control / telemetry counters, ms-precision ISO-8601 provenance stamping.
 - **Order entry** — bracket and trailing-stop dialogs with capability-guard error mapping.
 
+## Screenshots
+
+Snapshots from a local instance running against the [snapper](https://github.com/mateusz-klatt/snapper) backend with a seeded paper-mode portfolio: long BTC-USD-PERP + short ETH-USD-PERP on Kraken Futures, four completed backtests spanning crypto and CME / NYMEX commodity futures, a multi-commodity 1h research panel (June WTI crude, June Gold, June Brent, June Copper), a Hormuz-driven AI review pending in the delegate inbox.
+
+![Overview — portfolio summary +$2,652 unrealized (+10.97%), 1 open order, process status, recent executions](docs/screenshots/01-overview.png)
+
+![Positions — wallet-scoped LONG BTC-USD-PERP + SHORT ETH-USD-PERP with unrealized P&L per leg](docs/screenshots/03-positions.png)
+
+![Orders & Executions — full lifecycle: 1 open BTC limit + 1 cancelled ETH stop + 2 filled market orders with fees and timestamps](docs/screenshots/04-orders-executions.png)
+
+![Backtests — cross-asset multi-strategy: RSI mean-reversion + MACD trend on BTC perp (1h), RSI on June WTI crude + MACD on June Gold (1d)](docs/screenshots/05-backtests.png)
+
+![System Health — production observability: process metrics, DB stats, retention scheduler, notification sidecar](docs/screenshots/06-health.png)
+
+![Market Data — June WTI crude (CLM6-NYMEX) 1h candle chart capturing the early-May Strait-of-Hormuz volatility spike (intraday range $99.30 – $109.86)](docs/screenshots/02-market-data.png)
+
+![Market Data — June Gold (GCM6-COMEX) 1h candle chart, intraday range $4,520 – $4,654](docs/screenshots/08-market-gold.png)
+
+![Market Data — June Brent crude (BZN6-NYMEX) 1h candle chart, intraday range $103.85 – $114.83 in lockstep with the WTI Hormuz move](docs/screenshots/09-market-brent.png)
+
+![Market Data — June Copper (HGM6-COMEX) 1h candle chart, intraday range $5.81 – $6.03](docs/screenshots/10-market-copper.png)
+
+![AI Reviews — pending CONSULT review in the AI delegate inbox: HormuzCrudeShock signal awaiting decision against the seeded WTI trade thesis](docs/screenshots/07-ai-reviews.png)
+
 ## Getting started
 
 Prerequisites: **Node 22+**, **pnpm 10** (auto-installed via Corepack from `packageManager` in `package.json` — run `corepack enable` once), a running Snapper backend at `http://localhost:8000`.
