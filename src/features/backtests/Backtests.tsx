@@ -48,7 +48,9 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
           data-testid={`open-${run.public_id}`}
         >
           <span className='font-semibold text-alpine-900'>{run.strategy_name}</span>
-          <span className='text-sm text-muted-500'>{run.instrument_public_id}</span>
+          <span className='font-mono text-sm text-alpine-700'>
+            {run.instrument ?? run.instrument_public_id}
+          </span>
           <span className='text-sm text-muted-500'>
             {run.exchange}
             {run.target_execution_exchange && (

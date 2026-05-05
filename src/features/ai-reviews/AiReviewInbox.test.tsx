@@ -146,6 +146,90 @@ describe('AiReviewInbox', () => {
     expect(screen.getByTestId('ai-review-activity-row-rev-2')).toBeTruthy()
   })
 
+  it('renders instrument ticker, side badge, and full thesis when supplied', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    const shortThesis = 'Breakout continuation above $104 after Hormuz tape.'
+
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-thesis-short',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+            instrument: 'CLM6-NYMEX',
+            signal_envelope: { thesis: shortThesis, side: 'buy' },
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByText('CLM6-NYMEX')).toBeTruthy()
+    expect(screen.getByText('buy')).toBeTruthy()
+    expect(screen.getByText(shortThesis)).toBeTruthy()
+  })
+
+  it('truncates thesis to 120 chars with ellipsis when longer', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    const longThesis = 'A'.repeat(150)
+
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-thesis-long',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+            instrument: 'BTC-USD-PERP',
+            signal_envelope: { thesis: longThesis },
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByText(`${'A'.repeat(120)}…`)).toBeTruthy()
+  })
+
+  it('renders em-dash placeholders when instrument and signal_envelope are absent', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-empty',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    const dashes = screen.getAllByText('—')
+
+    expect(dashes.length).toBeGreaterThanOrEqual(2)
+  })
+
   it('caps the activity stream rendering at 50 frames even if buffer holds more', () => {
     mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
     const frames: AiReviewActivityFrame[] = Array.from({ length: 60 }, (_, i) => ({

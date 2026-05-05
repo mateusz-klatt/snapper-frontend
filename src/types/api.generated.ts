@@ -1717,6 +1717,7 @@ export type Components = {
             strategy_name: string;
             strategy_params: Record<string, unknown>;
             instrument_public_id: string;
+            instrument?: string | null;
             exchange: string;
             timeframe: string;
             start_date: string;
@@ -1744,6 +1745,7 @@ export type Components = {
             strategy_name: string;
             strategy_params: Record<string, unknown>;
             instrument_public_id: string;
+            instrument?: string | null;
             exchange: string;
             timeframe: string;
             start_date: string;
@@ -2539,6 +2541,8 @@ export type Components = {
             status: string;
             deadline: string;
             fanout_after: string;
+            instrument?: string | null;
+            signal_envelope?: Record<string, unknown> | null;
         };
         PositionCycleData: {
             type: "position_cycle";

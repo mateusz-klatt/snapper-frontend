@@ -84,6 +84,8 @@ function PendingReviewsSection({
     status: string
     deadline: string | Date
     fanout_after: string | Date
+    instrument?: string | null
+    signal_envelope?: Record<string, unknown> | null
   }>
 }>): React.ReactElement {
   let content: React.ReactNode
@@ -115,28 +117,48 @@ function PendingReviewsSection({
         <table className='min-w-full text-sm'>
           <thead className='bg-dark-700 text-muted-700 text-left'>
             <tr>
-              <th className='px-4 py-2 font-semibold'>Review</th>
-              <th className='px-4 py-2 font-semibold'>Wallet</th>
+              <th className='px-4 py-2 font-semibold'>Instrument</th>
+              <th className='px-4 py-2 font-semibold'>Thesis</th>
               <th className='px-4 py-2 font-semibold'>Status</th>
               <th className='px-4 py-2 font-semibold'>Dispatch</th>
               <th className='px-4 py-2 font-semibold'>Deadline</th>
             </tr>
           </thead>
           <tbody className='divide-y divide-dark-600'>
-            {items.map(item => (
-              <tr
-                key={item.review_public_id}
-                data-testid={`pending-review-row-${item.review_public_id}`}
-              >
-                <td className='px-4 py-2 font-mono text-xs'>{item.review_public_id}</td>
-                <td className='px-4 py-2 font-mono text-xs'>{item.wallet_public_id}</td>
-                <td className='px-4 py-2'>{item.status}</td>
-                <td className='px-4 py-2 font-mono text-xs'>v{item.dispatch_version}</td>
-                <td className='px-4 py-2 text-muted-600'>
-                  {new Date(item.deadline).toLocaleString()}
-                </td>
-              </tr>
-            ))}
+            {items.map(item => {
+              const thesis = (item.signal_envelope?.['thesis'] ?? null) as string | null
+              const side = (item.signal_envelope?.['side'] ?? null) as string | null
+
+              return (
+                <tr
+                  key={item.review_public_id}
+                  data-testid={`pending-review-row-${item.review_public_id}`}
+                >
+                  <td className='px-4 py-2 font-mono text-xs text-alpine-900'>
+                    {item.instrument ?? <span className='text-muted-500'>—</span>}
+                    {side !== null && (
+                      <span className='ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-[10px] uppercase text-brand-700'>
+                        {side}
+                      </span>
+                    )}
+                  </td>
+                  <td className='px-4 py-2 max-w-md text-xs text-alpine-700'>
+                    {thesis !== null ? (
+                      <span title={thesis}>
+                        {thesis.length > 120 ? `${thesis.slice(0, 120)}…` : thesis}
+                      </span>
+                    ) : (
+                      <span className='text-muted-500'>—</span>
+                    )}
+                  </td>
+                  <td className='px-4 py-2'>{item.status}</td>
+                  <td className='px-4 py-2 font-mono text-xs'>v{item.dispatch_version}</td>
+                  <td className='px-4 py-2 text-muted-600'>
+                    {new Date(item.deadline).toLocaleString()}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
