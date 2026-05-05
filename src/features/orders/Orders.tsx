@@ -163,7 +163,7 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
         </div>
         {fees > 0 && (
           <div>
-            <div className='text-dark-400'>Fees</div>
+            <div className='text-muted-500'>Fees</div>
             <div className='text-loss-400 text-xs font-mono'>
               ${fees.toFixed(2)} {execution.feeAsset}
             </div>

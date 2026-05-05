@@ -163,7 +163,7 @@ const PortfolioCardContent: React.FC<
   if (loading) return <CardSkeleton showTitle={false} contentLines={4} className='border-0 p-0' />
   if (summary) return <PortfolioContent {...summary} />
 
-  return <div className='text-center py-8 text-dark-400'>No positions data available</div>
+  return <div className='text-center py-8 text-muted-500'>No positions data available</div>
 }
 
 const SignalsCardContent: React.FC<
@@ -182,7 +182,7 @@ const SignalsCardContent: React.FC<
       </div>
     )
 
-  return <div className='text-center py-8 text-dark-400'>No recent signals</div>
+  return <div className='text-center py-8 text-muted-500'>No recent signals</div>
 }
 
 const zeroCounts = { running: 0, total: 0 }
@@ -275,7 +275,7 @@ export const Overview: React.FC = () => {
               ))}
             </div>
           ) : (
-            <div className='text-center py-8 text-dark-400'>No recent executions</div>
+            <div className='text-center py-8 text-muted-500'>No recent executions</div>
           )}
         </Card>
       </div>
