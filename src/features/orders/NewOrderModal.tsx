@@ -238,15 +238,15 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
           <div className='space-y-3'>
             <div className='rounded-xl border border-dark-600 bg-dark-700 p-4 space-y-2 text-sm'>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Instrument</span>
+                <span className='text-muted-600'>Instrument</span>
                 <span className='text-alpine-900 font-medium'>{instrument}</span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Exchange</span>
+                <span className='text-muted-600'>Exchange</span>
                 <span className='text-alpine-900'>{exchange}</span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Side</span>
+                <span className='text-muted-600'>Side</span>
                 <span
                   className={
                     side === 'buy' ? 'text-gain-400 font-medium' : 'text-loss-400 font-medium'
@@ -256,27 +256,27 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 </span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Type</span>
+                <span className='text-muted-600'>Type</span>
                 <span className='text-alpine-900'>{orderType}</span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Quantity</span>
+                <span className='text-muted-600'>Quantity</span>
                 <span className='text-alpine-900 font-medium'>{quantity}</span>
               </div>
               {needsPrice && (
                 <div className='flex justify-between'>
-                  <span className='text-muted-500'>Price</span>
+                  <span className='text-muted-600'>Price</span>
                   <span className='text-alpine-900'>${price}</span>
                 </div>
               )}
               {needsStopPrice && (
                 <div className='flex justify-between'>
-                  <span className='text-muted-500'>Stop Price</span>
+                  <span className='text-muted-600'>Stop Price</span>
                   <span className='text-alpine-900'>${stopPrice}</span>
                 </div>
               )}
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Mode</span>
+                <span className='text-muted-600'>Mode</span>
                 <span className='text-alpine-900'>{mode}</span>
               </div>
             </div>
@@ -300,7 +300,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
           <div className='space-y-4'>
             <div className='grid grid-cols-2 gap-4'>
               <div>
-                <label htmlFor={exchangeSelectId} className='block text-xs text-muted-500 mb-1'>
+                <label htmlFor={exchangeSelectId} className='block text-xs text-muted-600 mb-1'>
                   Exchange
                 </label>
                 <ThemeSelect
@@ -313,7 +313,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               <div>
                 <label
                   htmlFor={instrumentSelectId}
-                  className='flex items-center gap-2 text-xs text-muted-500 mb-1'
+                  className='flex items-center gap-2 text-xs text-muted-600 mb-1'
                 >
                   <span>Instrument</span>
                   {selectedIsMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
@@ -333,7 +333,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             )}
             <div className='grid grid-cols-2 gap-4'>
               <div>
-                <label htmlFor={sideSelectId} className='block text-xs text-muted-500 mb-1'>
+                <label htmlFor={sideSelectId} className='block text-xs text-muted-600 mb-1'>
                   Side
                 </label>
                 <ThemeSelect
@@ -344,7 +344,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 />
               </div>
               <div>
-                <label htmlFor={orderTypeSelectId} className='block text-xs text-muted-500 mb-1'>
+                <label htmlFor={orderTypeSelectId} className='block text-xs text-muted-600 mb-1'>
                   Order Type
                 </label>
                 <ThemeSelect
@@ -356,7 +356,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               </div>
             </div>
             <div>
-              <label htmlFor={quantityInputId} className='block text-xs text-muted-500 mb-1'>
+              <label htmlFor={quantityInputId} className='block text-xs text-muted-600 mb-1'>
                 Quantity
               </label>
               <input
@@ -372,7 +372,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             </div>
             {needsPrice && (
               <div>
-                <label htmlFor={priceInputId} className='block text-xs text-muted-500 mb-1'>
+                <label htmlFor={priceInputId} className='block text-xs text-muted-600 mb-1'>
                   Price
                 </label>
                 <input
@@ -389,7 +389,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             )}
             {needsStopPrice && (
               <div>
-                <label htmlFor={stopPriceInputId} className='block text-xs text-muted-500 mb-1'>
+                <label htmlFor={stopPriceInputId} className='block text-xs text-muted-600 mb-1'>
                   Stop Price
                 </label>
                 <input
@@ -406,7 +406,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             )}
             <div className='grid grid-cols-2 gap-4'>
               <div>
-                <label htmlFor={modeSelectId} className='block text-xs text-muted-500 mb-1'>
+                <label htmlFor={modeSelectId} className='block text-xs text-muted-600 mb-1'>
                   Mode
                 </label>
                 <ThemeSelect
@@ -417,7 +417,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 />
               </div>
               <div>
-                <label htmlFor={walletSelectId} className='block text-xs text-muted-500 mb-1'>
+                <label htmlFor={walletSelectId} className='block text-xs text-muted-600 mb-1'>
                   Wallet
                 </label>
                 <ThemeSelect

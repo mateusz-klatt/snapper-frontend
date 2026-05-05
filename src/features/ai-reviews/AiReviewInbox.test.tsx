@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { AiReviewInbox } from './AiReviewInbox'
+import { pendingReviewThesisSnippet } from './thesisSnippet'
 import type { AiReviewActivityFrame } from '../../stores/wsDispatcher'
 
 const mockUseAuth = vi.fn()
@@ -159,5 +160,68 @@ describe('AiReviewInbox', () => {
     expect(screen.getByText('Showing 50 of 60 buffered')).toBeTruthy()
     expect(screen.queryByTestId('ai-review-activity-row-rev-0')).toBeNull()
     expect(screen.getByTestId('ai-review-activity-row-rev-59')).toBeTruthy()
+  })
+
+  it('surfaces resolved instrument ticker + thesis on pending review rows', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-rich',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+            instrument: 'BTC-USD',
+            signal_envelope: {
+              thesis: 'Bullish breakout above 70k after Fed pause',
+              side: 'buy',
+            },
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByText('BTC-USD')).toBeTruthy()
+    expect(screen.getByText(/Bullish breakout above 70k/)).toBeTruthy()
+  })
+})
+
+describe('pendingReviewThesisSnippet', () => {
+  it('returns null for null / undefined envelopes', () => {
+    expect(pendingReviewThesisSnippet(null)).toBeNull()
+    expect(pendingReviewThesisSnippet(undefined)).toBeNull()
+  })
+
+  it('returns the thesis when present and non-empty', () => {
+    expect(pendingReviewThesisSnippet({ thesis: 'BTC long' })).toBe('BTC long')
+  })
+
+  it('falls back to side when no thesis', () => {
+    expect(pendingReviewThesisSnippet({ side: 'sell' })).toBe('SELL')
+  })
+
+  it('truncates long theses with an ellipsis at 140 chars', () => {
+    const long = 'x'.repeat(200)
+    const result = pendingReviewThesisSnippet({ thesis: long })
+
+    expect(result).not.toBeNull()
+    expect(result ?? '').toMatch(/x{140}…$/)
+    expect((result ?? '').length).toBeLessThanOrEqual(141)
+  })
+
+  it('returns null when neither thesis nor side is set', () => {
+    expect(pendingReviewThesisSnippet({})).toBeNull()
+    expect(pendingReviewThesisSnippet({ unrelated: 'value' })).toBeNull()
+  })
+
+  it('treats empty / whitespace-only thesis as missing and falls back to side', () => {
+    expect(pendingReviewThesisSnippet({ thesis: '   ', side: 'buy' })).toBe('BUY')
   })
 })

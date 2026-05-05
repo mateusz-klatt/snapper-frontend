@@ -238,7 +238,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
                     <button
                       type='button'
                       onClick={() => setShowPassword(!showPassword)}
-                      className='absolute inset-y-0 right-0 flex items-center pr-3 text-muted-400 hover:text-muted-600'
+                      className='absolute inset-y-0 right-0 flex items-center pr-3 text-muted-600 hover:text-muted-600'
                     >
                       {showPassword ? <EyeOff className='w-4 h-4' /> : <Eye className='w-4 h-4' />}
                     </button>
@@ -270,7 +270,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
                 <button
                   type='button'
                   onClick={() => setShowPassword(!showPassword)}
-                  className='absolute inset-y-0 right-0 flex items-center pr-3 text-muted-400 hover:text-muted-600'
+                  className='absolute inset-y-0 right-0 flex items-center pr-3 text-muted-600 hover:text-muted-600'
                 >
                   {showPassword ? <EyeOff className='w-4 h-4' /> : <Eye className='w-4 h-4' />}
                 </button>

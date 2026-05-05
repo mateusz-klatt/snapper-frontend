@@ -190,13 +190,13 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               ))}
             </select>
             {selectedTemplate && (
-              <p className='mt-1 text-xs text-muted-500'>
+              <p className='mt-1 text-xs text-muted-600'>
                 {sortedTemplates.find(template => template.name === selectedTemplate)
                   ?.description || 'Strategy registered in backend'}
               </p>
             )}
             {processSchema.isLoading && (
-              <p className='mt-2 text-xs text-muted-400'>Loading template defaults…</p>
+              <p className='mt-2 text-xs text-muted-600'>Loading template defaults…</p>
             )}
             {processSchema.error && (
               <p className='mt-2 text-xs text-warning-400'>
@@ -221,7 +221,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
                 required
               />
-              <p className='mt-1 text-xs text-muted-400'>
+              <p className='mt-1 text-xs text-muted-600'>
                 Allowed characters: lowercase letters, numbers, underscores
               </p>
             </div>
@@ -241,7 +241,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
                 required
               />
-              <p className='mt-1 text-xs text-muted-400'>
+              <p className='mt-1 text-xs text-muted-600'>
                 Used within strategy configuration and output topics
               </p>
             </div>
@@ -263,7 +263,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 <option value='thread'>Embedded thread</option>
                 <option value='process'>Isolated process</option>
               </select>
-              <p className='mt-1 text-xs text-muted-400'>
+              <p className='mt-1 text-xs text-muted-600'>
                 Threads share memory, processes provide stronger isolation.
               </p>
             </div>
@@ -305,7 +305,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
               placeholder='Describe purpose or parameters of this strategy instance.'
             />
-            <p className='mt-1 text-xs text-muted-400'>
+            <p className='mt-1 text-xs text-muted-600'>
               Stored alongside configuration to help identify this process.
             </p>
           </div>

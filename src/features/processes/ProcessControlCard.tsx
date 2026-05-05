@@ -65,7 +65,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
   const isRunning = status === 'running'
   const statusColor = {
     running: 'text-accent-400 bg-accent-400/10',
-    stopped: 'text-muted-400 bg-muted-400/10',
+    stopped: 'text-muted-600 bg-muted-400/10',
     error: 'text-loss-400 bg-loss-400/10',
   }[status]
 
@@ -98,7 +98,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
         <div className='space-y-1'>
           {Object.entries(details).map(([key, value]) => (
             <div key={key} className='flex gap-2 text-xs'>
-              <span className='text-muted-400 font-medium shrink-0'>{formatDetailKey(key)}:</span>
+              <span className='text-muted-600 font-medium shrink-0'>{formatDetailKey(key)}:</span>
               <span className='text-muted-600 break-all'>{formatDetailValue(value)}</span>
             </div>
           ))}

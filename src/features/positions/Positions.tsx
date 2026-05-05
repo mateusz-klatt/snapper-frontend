@@ -28,7 +28,7 @@ const getSideBadgeClass = (side: PositionSide): string => {
       return 'text-loss-400 bg-loss-900/20'
     case 'FLAT':
     default:
-      return 'text-muted-400 bg-muted-900/20'
+      return 'text-muted-600 bg-muted-900/20'
   }
 }
 
@@ -36,7 +36,7 @@ const getPnlClass = (value: number): string => {
   if (value > 0) return 'text-gain-400'
   if (value < 0) return 'text-loss-400'
 
-  return 'text-muted-400'
+  return 'text-muted-600'
 }
 
 const formatPrice = (value: number): string => `$${value.toFixed(2)}`
@@ -100,7 +100,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
         <div className='flex items-center space-x-3'>
           <InstrumentIcon symbol={position.instrument} exchange={position.exchange} size={28} />
           <span className='font-semibold text-alpine-900'>{position.instrument}</span>
-          <span className='text-sm text-muted-500'>{position.exchange}</span>
+          <span className='text-sm text-muted-600'>{position.exchange}</span>
           <span
             className={clsx('rounded-full px-2 py-1 text-xs font-medium', getSideBadgeClass(side))}
             data-testid={`position-side-${suffix}`}
@@ -138,15 +138,15 @@ const PositionRow: React.FC<PositionRowProps> = ({
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-4'>
         <div>
-          <div className='text-muted-500'>Quantity</div>
+          <div className='text-muted-600'>Quantity</div>
           <div className='font-mono text-alpine-900'>{absQuantity.toFixed(4)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Avg Entry</div>
+          <div className='text-muted-600'>Avg Entry</div>
           <div className='font-mono text-alpine-900'>{formatPrice(position.averagePrice)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Unrealized P&amp;L</div>
+          <div className='text-muted-600'>Unrealized P&amp;L</div>
           <div
             className={clsx('font-mono', getPnlClass(position.unrealizedPnl))}
             data-testid={`position-unrealized-${suffix}`}
@@ -155,7 +155,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Realized P&amp;L</div>
+          <div className='text-muted-600'>Realized P&amp;L</div>
           <div
             className={clsx('font-mono', getPnlClass(position.realizedPnl))}
             data-testid={`position-realized-${suffix}`}
@@ -165,7 +165,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
         </div>
       </div>
       {position.timestamp && (
-        <div className='mt-3 text-xs text-muted-500'>
+        <div className='mt-3 text-xs text-muted-600'>
           Updated {position.timestamp.toLocaleString()}
         </div>
       )}

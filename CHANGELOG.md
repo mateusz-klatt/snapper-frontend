@@ -4,6 +4,91 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] — 2026-05-05
+
+E2E completion + a11y `serious|critical` gate + ticker / thesis
+surfacing on the read APIs that grew the field in
+mateusz-klatt/snapper backend commit `b68d7346`.
+
+### Added
+
+- **Place-order E2E test un-skipped**
+  (`e2e/tests/orders.spec.ts`). Drives the `NewOrderModal` happy
+  path through to a successful POST `/api/orders`, with the new
+  order surfacing in the orders list refetch. The "place market
+  order" variant is deferred — under Playwright the host
+  `Modal` uses native `<dialog>.showModal()` which puts the
+  dialog on the browser top layer, while Radix Select renders
+  its dropdown via Portal into `document.body`; a synthetic
+  click on a "Market" option is intercepted by the dialog
+  backdrop. The limit + price path exercises the same envelope
+  shape through to the backend POST; the market path will be
+  re-added once `Modal` moves the dropdown content into the
+  dialog subtree (separate v1.4.x).
+- **Backtests row + detail page surface the resolved native
+  ticker** (`run.instrument`) instead of the raw
+  `instrument_public_id` UUID. Falls through to the public_id
+  for legacy rows where the backend `Instrument`+`Symbol`
+  lookup didn't match.
+- **AI Review pending list surfaces resolved instrument ticker
+  and thesis snippet.** New `Instrument` and `Thesis` columns
+  on the delegate inbox table; a pure-helper
+  `pendingReviewThesisSnippet` truncates long theses at 140
+  chars with an ellipsis, falls back to `side` (e.g. "BUY") when
+  only direction is recorded, and returns `null` for
+  legacy / empty envelopes so the cell renders a "—"
+  placeholder. Lives in its own module (`thesisSnippet.ts`)
+  so `AiReviewInbox.tsx` only exports React components — Vite
+  Fast Refresh requires single-export-kind boundaries.
+
+### Changed
+
+- **Axe a11y smoke gate tightened from `critical`-only to
+  `serious|critical`.** Catches contrast and scrollable-region
+  regressions that v1.3 left as accepted baseline. Test names
+  updated to "no serious or critical WCAG 2.1 AA violations".
+- **Light-mode body text contrast bumped to meet 4.5:1.** Three
+  Tailwind text token classes (`text-muted-400`,
+  `text-muted-500`, `text-dark-400`) replaced wholesale with
+  `text-muted-600` (236 occurrences across the codebase). The
+  prior tokens rendered at 1.28–3.27:1 contrast against the
+  alpine-50 background — `text-dark-400` was effectively
+  invisible at 1.28:1.
+- **Main content region given an accessible name + skip-link
+  target.** `<main id="main-content" aria-label="Main content">`
+  plus an `sr-only focus:not-sr-only` "Skip to main content"
+  anchor inside it. Gives the scrollable region a
+  keyboard-reachable descendant so axe
+  `scrollable-region-focusable` passes without putting
+  `tabIndex` on a non-interactive element (which both
+  `jsx-a11y/no-noninteractive-tabindex` and Sonar S6845 flag).
+
+### Fixed
+
+- **E2E api fixture `'**/api/exchanges'` glob now trails with
+  `*` to match the `?wallet_public_id=…` query strings that
+  `apiClient.getJSON` auto-appends to every multi-tenant GET.**
+  Without the wildcard, the exchanges fetch fell through to the
+  default 404 catch-all in the new-order modal, leaving the
+  Exchange dropdown empty and racing the auto-populate
+  useEffect chain. Surface symptom in v1.3 was the place-order
+  test having to be `test.skip`-ped.
+
+### Tooling
+
+- ESLint config `ignores` now lists `playwright-report/**` and
+  `test-results/**` so generated trace artifacts don't poison
+  the lint pass.
+
+### Test counts
+
+- Unit: 113 files / 2401 tests passing (2392 → 2401, +9 for
+  ticker + thesis + Backtests instrument fall-through coverage).
+- E2E: 13 / 13 passing, 0 skipped (was 12 + 1 skipped).
+- Coverage: 100% statements / branches / functions / lines.
+- Bundle: stable at 272 kB / 59 kB gzip (no production logic
+  added beyond a Tailwind class flip + two new strings).
+
 ## [1.3.1] — 2026-05-05
 
 ### Changed

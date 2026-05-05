@@ -97,6 +97,44 @@ describe('Backtests', () => {
     expect(screen.getByText('completed')).toBeInTheDocument()
   })
 
+  it('prefers the resolved native ticker (`instrument`) over `instrument_public_id`', async () => {
+    mockGetBacktests.mockResolvedValue({
+      type: 'backtest_run_list',
+      session_id: 's1',
+      sequence_id: 1,
+      public_id: 'resp-1',
+      timestamp: NOW,
+      payload: [
+        makeRun({
+          instrument_public_id: '01961234-5678-7000-8000-aaaaaaaaaaaa',
+          instrument: 'ETH-USD',
+        }),
+      ],
+      count: 1,
+    })
+
+    renderWithQuery(<Backtests />)
+    expect(await screen.findByText('ETH-USD')).toBeInTheDocument()
+    expect(
+      screen.queryByText('01961234-5678-7000-8000-aaaaaaaaaaaa')
+    ).not.toBeInTheDocument()
+  })
+
+  it('falls through to `instrument_public_id` when `instrument` is null', async () => {
+    mockGetBacktests.mockResolvedValue({
+      type: 'backtest_run_list',
+      session_id: 's1',
+      sequence_id: 1,
+      public_id: 'resp-1',
+      timestamp: NOW,
+      payload: [makeRun({ instrument: null })],
+      count: 1,
+    })
+
+    renderWithQuery(<Backtests />)
+    expect(await screen.findByText('BTC-USD')).toBeInTheDocument()
+  })
+
   it('renders cross-asset attribution arrow when target_execution_exchange is set', async () => {
     mockGetBacktests.mockResolvedValue({
       type: 'backtest_run_list',

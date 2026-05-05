@@ -33,14 +33,14 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
       case 'cancelled':
       case 'canceled':
       case 'closed':
-        return 'text-muted-400 bg-muted-900/20'
+        return 'text-muted-600 bg-muted-900/20'
       case 'rejected':
       case 'error':
         return 'text-loss-400 bg-loss-900/20'
       case 'partially_filled':
         return 'text-warning-400 bg-warning-900/20'
       default:
-        return 'text-muted-400 bg-muted-900/20'
+        return 'text-muted-600 bg-muted-900/20'
     }
   }
 
@@ -60,7 +60,7 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
           <span className={clsx('text-sm font-medium', order.side ? getSideColor(order.side) : '')}>
             {order.side?.toUpperCase() ?? 'N/A'}
           </span>
-          <span className='text-sm text-muted-500'>{order.orderType}</span>
+          <span className='text-sm text-muted-600'>{order.orderType}</span>
         </div>
         <div className='flex items-center gap-2'>
           <span
@@ -88,26 +88,26 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm'>
         <div>
-          <div className='text-muted-500'>Quantity</div>
+          <div className='text-muted-600'>Quantity</div>
           <div className='font-mono text-alpine-900'>{order.size.toFixed(4)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Price</div>
+          <div className='text-muted-600'>Price</div>
           <div className='font-mono text-alpine-900'>{formatPrice(order.price)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Created</div>
+          <div className='text-muted-600'>Created</div>
           <div className='text-xs text-alpine-900'>
             {order.createdAt ? order.createdAt.toLocaleString() : 'N/A'}
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Order ID</div>
+          <div className='text-muted-600'>Order ID</div>
           <div className='text-xs font-mono text-alpine-900'>{order.clientOrderId}</div>
         </div>
         {order.leverage != null && (
           <div>
-            <div className='text-muted-500'>Leverage</div>
+            <div className='text-muted-600'>Leverage</div>
             <div
               className='font-mono text-alpine-900'
               data-testid={`order-leverage-${order.clientOrderId}`}
@@ -142,28 +142,28 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
           <span className='font-semibold text-alpine-900'>Order #{execution.clientOrderId}</span>
           <span className='rounded-full bg-gain-50 px-2 py-1 text-xs text-gain-600'>FILLED</span>
         </div>
-        <div className='text-sm text-muted-500'>Order {execution.clientOrderId}</div>
+        <div className='text-sm text-muted-600'>Order {execution.clientOrderId}</div>
       </div>
       <div className='grid grid-cols-3 gap-4 text-sm'>
         <div>
-          <div className='text-muted-500'>Size</div>
+          <div className='text-muted-600'>Size</div>
           <div className='font-mono text-alpine-900'>{execution.size.toFixed(4)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Price</div>
+          <div className='text-muted-600'>Price</div>
           <div className='font-mono text-alpine-900'>${execution.price.toFixed(2)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Total</div>
+          <div className='text-muted-600'>Total</div>
           <div className='font-mono text-alpine-900'>${totalCost.toFixed(2)}</div>
         </div>
         <div className='col-span-2'>
-          <div className='text-muted-500'>Executed</div>
+          <div className='text-muted-600'>Executed</div>
           <div className='text-xs text-alpine-900'>{execution.executedAt.toLocaleString()}</div>
         </div>
         {fees > 0 && (
           <div>
-            <div className='text-dark-400'>Fees</div>
+            <div className='text-muted-600'>Fees</div>
             <div className='text-loss-400 text-xs font-mono'>
               ${fees.toFixed(2)} {execution.feeAsset}
             </div>

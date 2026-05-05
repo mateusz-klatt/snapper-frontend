@@ -68,29 +68,29 @@ const SignalCard: React.FC<{ signal: Signal }> = ({ signal }) => {
             </span>
           )}
         </div>
-        <div className='text-xs text-muted-500'>{formatTime(signal.firedAt)}</div>
+        <div className='text-xs text-muted-600'>{formatTime(signal.firedAt)}</div>
       </div>
       <div className='grid grid-cols-3 gap-4 text-sm mb-3'>
         <div>
-          <div className='text-muted-500'>Strength</div>
+          <div className='text-muted-600'>Strength</div>
           <div className={clsx('font-medium', getStrengthColor(signal.strength))}>
             {getStrengthLabel(signal.strength)} ({(signal.strength * 100).toFixed(0)}%)
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Price</div>
+          <div className='text-muted-600'>Price</div>
           <div className='font-mono text-alpine-900'>
             {signal.price ? `$${signal.price.toFixed(2)}` : 'N/A'}
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Exchange</div>
+          <div className='text-muted-600'>Exchange</div>
           <div className='text-xs font-mono text-alpine-900'>{signal.exchange}</div>
         </div>
       </div>
       {signal.reason && (
         <div className='rounded-lg border border-dark-600 bg-dark-700 p-2 text-xs text-muted-700'>
-          <div className='mb-1 text-muted-500'>Reason:</div>
+          <div className='mb-1 text-muted-600'>Reason:</div>
           {signal.reason}
         </div>
       )}
@@ -184,21 +184,21 @@ export const Signals: React.FC = () => {
       <div className='grid grid-cols-2 sm:grid-cols-4 gap-3'>
         <div className='rounded-xl border border-dark-600 bg-alpine-50 p-4 text-center'>
           <div className='text-2xl font-bold text-alpine-900'>{totalSignals}</div>
-          <div className='text-xs text-muted-500'>Total</div>
+          <div className='text-xs text-muted-600'>Total</div>
         </div>
         <div className='rounded-xl border border-dark-600 bg-alpine-50 p-4 text-center'>
           <div className='text-2xl font-bold text-gain-400'>{buySignals}</div>
-          <div className='text-xs text-muted-500'>Buy</div>
+          <div className='text-xs text-muted-600'>Buy</div>
         </div>
         <div className='rounded-xl border border-dark-600 bg-alpine-50 p-4 text-center'>
           <div className='text-2xl font-bold text-loss-400'>{sellSignals}</div>
-          <div className='text-xs text-muted-500'>Sell</div>
+          <div className='text-xs text-muted-600'>Sell</div>
         </div>
         <div className='rounded-xl border border-dark-600 bg-alpine-50 p-4 text-center'>
           <div className='text-2xl font-bold text-alpine-900'>
             {(avgStrength * 100).toFixed(0)}%
           </div>
-          <div className='text-xs text-muted-500'>Avg Strength</div>
+          <div className='text-xs text-muted-600'>Avg Strength</div>
         </div>
       </div>
       {}

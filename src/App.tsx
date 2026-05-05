@@ -49,7 +49,7 @@ function App() {
       >
         <div className='mb-4 flex shrink-0 items-center justify-between px-2 md:mb-8'>
           <div>
-            <div className='text-xs font-semibold tracking-[0.16em] text-muted-500 uppercase'>
+            <div className='text-xs font-semibold tracking-[0.16em] text-muted-600 uppercase'>
               Snapper
             </div>
             <h1 className='mt-1 text-xl font-semibold text-alpine-900 md:mt-2'>Trading Console</h1>
@@ -153,7 +153,24 @@ function App() {
               <span>Time Travel Mode — viewing historical data (read-only)</span>
             </div>
           )}
-        <main className='flex-1 overflow-y-auto p-4 sm:p-6'>
+        <main
+          id='main-content'
+          className='flex-1 overflow-y-auto p-4 sm:p-6'
+          aria-label='Main content'
+        >
+          {/*
+            Skip-link target — gives the scrollable `<main>` region a
+            keyboard-reachable descendant so axe `scrollable-region-focusable`
+            passes without putting `tabIndex` on a non-interactive
+            element (which jsx-a11y / Sonar S6845 flag). The visible
+            sidebar nav is the canonical entry point for keyboard
+            users; this anchor stays in the tab order so the scrollable
+            region is reachable even on routes whose content has no
+            other focusable elements (e.g. empty Overview).
+          */}
+          <a href='#main-content' className='sr-only focus:not-sr-only'>
+            Skip to main content
+          </a>
           <div className='mx-auto w-full max-w-screen-2xl'>
             <AppRoutes activeTab={activeTab} />
           </div>

@@ -174,7 +174,7 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   return (
     <div className='space-y-2'>
       <div className='flex items-center justify-between'>
-        <span className='text-xs text-muted-500'>Array ({arrayValue.length} items)</span>
+        <span className='text-xs text-muted-600'>Array ({arrayValue.length} items)</span>
         {!readOnly && (
           <button
             onClick={handleAddItem}
@@ -189,7 +189,7 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
         {arrayValue.map((item, index) => (
           <div key={`${path}-array-item-${index}`} className='flex items-start gap-2'>
             <div className='flex-1'>
-              <div className='text-xs text-muted-500 mb-1'>[{index}]</div>
+              <div className='text-xs text-muted-600 mb-1'>[{index}]</div>
               <JsonValueEditor
                 value={item}
                 onChange={newValue => handleItemChange(index, newValue)}
@@ -243,9 +243,9 @@ const ObjectEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
                 onClick={() => toggleExpanded(key)}
                 className='text-sm font-medium text-alpine-900 hover:text-alpine-900 flex items-center gap-2'
               >
-                {isComplex && <span className='text-muted-500'>{isExpanded ? '▼' : '▶'}</span>}
+                {isComplex && <span className='text-muted-600'>{isExpanded ? '▼' : '▶'}</span>}
                 <span>{key}</span>
-                <span className='text-xs text-muted-500'>
+                <span className='text-xs text-muted-600'>
                   {(() => {
                     if (Array.isArray(val)) return '(array)'
                     if (typeof val === 'object') return '(object)'

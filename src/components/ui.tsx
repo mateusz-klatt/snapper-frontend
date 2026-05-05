@@ -160,7 +160,7 @@ interface EmptyStateProps {
 
 export const EmptyState: React.FC<Readonly<EmptyStateProps>> = ({ icon, title, message }) => {
   return (
-    <div className='py-8 text-center text-muted-500'>
+    <div className='py-8 text-center text-muted-600'>
       <div className='mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-dark-700'>
         {icon}
       </div>

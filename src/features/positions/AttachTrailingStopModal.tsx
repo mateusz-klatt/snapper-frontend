@@ -85,18 +85,18 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
         <div className='space-y-4'>
           <div className='rounded-lg border border-dark-600 bg-dark-700 p-3 text-sm'>
             <div className='flex justify-between'>
-              <span className='text-muted-500'>Position</span>
+              <span className='text-muted-600'>Position</span>
               <span className='text-alpine-900'>
                 {side} {instrument}
               </span>
             </div>
             <div className='mt-1 flex justify-between'>
-              <span className='text-muted-500'>Entry Price</span>
+              <span className='text-muted-600'>Entry Price</span>
               <span className='font-mono text-alpine-900'>${averagePrice.toFixed(2)}</span>
             </div>
           </div>
           <div>
-            <label htmlFor='trailing-pct' className='mb-1 block text-sm text-muted-500'>
+            <label htmlFor='trailing-pct' className='mb-1 block text-sm text-muted-600'>
               Trailing Distance (%)
             </label>
             <input
@@ -113,7 +113,7 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
             />
           </div>
           <div>
-            <label htmlFor='min-lock-pct' className='mb-1 block text-sm text-muted-500'>
+            <label htmlFor='min-lock-pct' className='mb-1 block text-sm text-muted-600'>
               Min Lock Profit (%) — optional
             </label>
             <input
@@ -141,7 +141,7 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
             <button
               type='button'
               onClick={handleClose}
-              className='rounded-lg border border-dark-600 px-4 py-2 text-sm text-muted-500 transition-colors hover:bg-muted-200'
+              className='rounded-lg border border-dark-600 px-4 py-2 text-sm text-muted-600 transition-colors hover:bg-muted-200'
             >
               Cancel
             </button>
@@ -161,20 +161,20 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
             <div className='font-medium text-alpine-900'>Confirm Trailing Stop</div>
             <div className='mt-2 space-y-1'>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Position</span>
+                <span className='text-muted-600'>Position</span>
                 <span className='text-alpine-900'>
                   {side} {instrument}
                 </span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Trailing Distance</span>
+                <span className='text-muted-600'>Trailing Distance</span>
                 <span className='font-mono text-brand-400'>
                   {Number.parseFloat(trailingPct).toFixed(1)}%
                 </span>
               </div>
               {minLockPct && Number.parseFloat(minLockPct) > 0 ? (
                 <div className='flex justify-between'>
-                  <span className='text-muted-500'>Min Lock Profit</span>
+                  <span className='text-muted-600'>Min Lock Profit</span>
                   <span className='font-mono text-gain-400'>
                     {Number.parseFloat(minLockPct).toFixed(1)}%
                   </span>
@@ -192,7 +192,7 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
               type='button'
               onClick={() => setConfirming(false)}
               disabled={createTrailingStop.isPending}
-              className='rounded-lg border border-dark-600 px-4 py-2 text-sm text-muted-500 transition-colors hover:bg-muted-200 disabled:opacity-50'
+              className='rounded-lg border border-dark-600 px-4 py-2 text-sm text-muted-600 transition-colors hover:bg-muted-200 disabled:opacity-50'
             >
               Back
             </button>

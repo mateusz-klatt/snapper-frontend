@@ -109,21 +109,21 @@ const ProcessCard: React.FC<{
     <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'>
       <div className='flex items-center justify-between mb-3'>
         <div className='flex items-center space-x-3'>
-          <div className='text-muted-500'>{getProcessIcon(name, type)}</div>
+          <div className='text-muted-600'>{getProcessIcon(name, type)}</div>
           <div>
             <h3 className='font-medium text-alpine-900'>{name}</h3>
-            <p className='text-xs capitalize text-muted-500'>{type}</p>
+            <p className='text-xs capitalize text-muted-600'>{type}</p>
           </div>
         </div>
         <StatusIndicator status={status.status} showLabel />
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm'>
         <div>
-          <div className='text-muted-500'>PID</div>
+          <div className='text-muted-600'>PID</div>
           <div className='font-mono text-alpine-900'>{status.pid || 'N/A'}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Uptime</div>
+          <div className='text-muted-600'>Uptime</div>
           <div className='text-alpine-900'>{formatUptime(status.started_at ?? undefined)}</div>
         </div>
       </div>
@@ -133,7 +133,7 @@ const ProcessCard: React.FC<{
         </div>
       )}
       {status.exit_code !== undefined && status.status !== 'running' && (
-        <div className='mt-2 text-xs text-muted-500'>Exit code: {status.exit_code}</div>
+        <div className='mt-2 text-xs text-muted-600'>Exit code: {status.exit_code}</div>
       )}
     </div>
   )
@@ -268,28 +268,28 @@ export const Health: React.FC = () => {
           <button
             disabled
             title='Feature not yet implemented'
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
+            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-600'
           >
             Restart Services
           </button>
           <button
             disabled
             title='Feature not yet implemented'
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
+            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-600'
           >
             Run Health Check
           </button>
           <button
             disabled
             title='Feature not yet implemented'
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
+            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-600'
           >
             View Logs
           </button>
           <button
             disabled
             title='Feature not yet implemented'
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
+            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-600'
           >
             Export Report
           </button>

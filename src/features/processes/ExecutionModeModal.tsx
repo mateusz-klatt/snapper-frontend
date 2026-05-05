@@ -55,7 +55,7 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
               />
               <div>
                 <div className='text-alpine-900 font-medium'>Thread Mode</div>
-                <div className='text-sm text-muted-500'>
+                <div className='text-sm text-muted-600'>
                   Runs as embedded task within web server. Faster startup, shared memory.
                 </div>
               </div>
@@ -77,7 +77,7 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
               />
               <div>
                 <div className='text-alpine-900 font-medium'>Process Mode</div>
-                <div className='text-sm text-muted-500'>
+                <div className='text-sm text-muted-600'>
                   Runs as separate Python process. Isolated, fault-tolerant, detailed monitoring.
                 </div>
               </div>

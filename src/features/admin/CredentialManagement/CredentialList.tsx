@@ -84,9 +84,9 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
       </div>
       {!selectedWallet && (
         <div className='text-center py-12'>
-          <KeyRound className='mx-auto h-12 w-12 text-muted-400' />
+          <KeyRound className='mx-auto h-12 w-12 text-muted-600' />
           <h3 className='mt-2 text-sm font-medium text-alpine-900'>Select a wallet</h3>
-          <p className='mt-1 text-sm text-muted-500'>
+          <p className='mt-1 text-sm text-muted-600'>
             Choose a wallet above to view its credentials.
           </p>
         </div>
@@ -103,9 +103,9 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
       )}
       {selectedWallet && !isLoading && !error && credentials.length === 0 && (
         <div className='text-center py-12'>
-          <KeyRound className='mx-auto h-12 w-12 text-muted-400' />
+          <KeyRound className='mx-auto h-12 w-12 text-muted-600' />
           <h3 className='mt-2 text-sm font-medium text-alpine-900'>No credentials found</h3>
-          <p className='mt-1 text-sm text-muted-500'>This wallet has no active credentials.</p>
+          <p className='mt-1 text-sm text-muted-600'>This wallet has no active credentials.</p>
         </div>
       )}
       {selectedWallet && !isLoading && !error && credentials.length > 0 && (
@@ -145,7 +145,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
                     <td className='px-3 py-4 whitespace-nowrap text-sm text-alpine-900'>
                       {cred.label ?? '-'}
                     </td>
-                    <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-500'>
+                    <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-600'>
                       {formatDate(cred.timestamp)}
                     </td>
                     <td className='px-3 py-4 whitespace-nowrap text-right text-sm font-medium'>

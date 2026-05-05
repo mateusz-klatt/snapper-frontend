@@ -17,7 +17,7 @@ const UserManagement: React.FC<UserManagementProps> = ({ readOnly }) => {
   if (!hasPermission('manage:users')) {
     return (
       <div className='flex flex-col items-center justify-center min-h-[60vh] text-center'>
-        <Users className='w-16 h-16 text-muted-400 mb-4' />
+        <Users className='w-16 h-16 text-muted-600 mb-4' />
         <h2 className='text-xl font-semibold text-alpine-900 mb-2'>Access Denied</h2>
         <p className='text-muted-600 max-w-md'>
           You don&apos;t have permission to manage users. Please contact your system administrator.

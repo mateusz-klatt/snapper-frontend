@@ -173,7 +173,7 @@ describe('ComparePage', () => {
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)
     const labelA = await screen.findByTestId('compare-run-a-label')
 
-    expect(labelA.className).toContain('text-muted-400')
+    expect(labelA.className).toContain('text-muted-600')
   })
 
   it('renders unknown run_b status with default muted color', async () => {
@@ -183,6 +183,6 @@ describe('ComparePage', () => {
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)
     const labelB = await screen.findByTestId('compare-run-b-label')
 
-    expect(labelB.className).toContain('text-muted-400')
+    expect(labelB.className).toContain('text-muted-600')
   })
 })

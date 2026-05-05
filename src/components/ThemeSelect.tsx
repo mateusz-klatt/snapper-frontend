@@ -41,7 +41,7 @@ export const ThemeSelect: React.FC<Readonly<ThemeSelectProps>> = ({
       )}
     >
       <Select.Value placeholder={placeholder} />
-      <Select.Icon className='ml-2 text-muted-500'>
+      <Select.Icon className='ml-2 text-muted-600'>
         <ChevronDownIcon size={14} />
       </Select.Icon>
     </Select.Trigger>

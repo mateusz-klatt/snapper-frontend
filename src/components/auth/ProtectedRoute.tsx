@@ -38,10 +38,10 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
         <div className='text-center'>
           <div className='text-6xl mb-4'>🚫</div>
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>Access Denied</h1>
-          <p className='text-muted-600 dark:text-dark-400 mb-4'>
+          <p className='text-muted-600 dark:text-muted-600 mb-4'>
             You need {requiredRole} access or higher to view this resource.
           </p>
-          <p className='text-sm text-muted-500 dark:text-muted-500'>
+          <p className='text-sm text-muted-600 dark:text-muted-600'>
             Your current role: <span className='font-medium'>{user.role}</span>
           </p>
         </div>
@@ -57,10 +57,10 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
             Insufficient Permissions
           </h1>
-          <p className='text-muted-600 dark:text-dark-400 mb-4'>
+          <p className='text-muted-600 dark:text-muted-600 mb-4'>
             You don&apos;t have the required permission: <code>{requiredPermission}</code>
           </p>
-          <p className='text-sm text-muted-500 dark:text-muted-500'>
+          <p className='text-sm text-muted-600 dark:text-muted-600'>
             Your current role: <span className='font-medium'>{user.role}</span>
           </p>
         </div>
@@ -76,10 +76,10 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
             Resource Restricted
           </h1>
-          <p className='text-muted-600 dark:text-dark-400 mb-4'>
+          <p className='text-muted-600 dark:text-muted-600 mb-4'>
             You don&apos;t have access to the <code>{resource}</code> resource.
           </p>
-          <p className='text-sm text-muted-500 dark:text-muted-500'>
+          <p className='text-sm text-muted-600 dark:text-muted-600'>
             Your current role: <span className='font-medium'>{user.role}</span>
           </p>
         </div>

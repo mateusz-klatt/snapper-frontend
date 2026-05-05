@@ -48,7 +48,7 @@ const FeedPublisherEntry: React.FC<Readonly<{ feedKey: string; feed: FeedHealth 
           {feed.status}
         </span>
       </div>
-      <div className='grid grid-cols-2 gap-2 text-xs text-muted-500'>
+      <div className='grid grid-cols-2 gap-2 text-xs text-muted-600'>
         <div>Feed lag: {feed.lag_ms}ms</div>
         <div>HB age: {Math.round(feed.heartbeat_age_ms / 1000)}s</div>
       </div>
@@ -136,7 +136,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     const healthLabel = resolveHealthLabel(health)
     const statusColor = {
       running: 'text-accent-400 bg-accent-400/10',
-      stopped: 'text-muted-400 bg-muted-400/10',
+      stopped: 'text-muted-600 bg-muted-400/10',
       starting: 'text-info-400 bg-info-400/10',
     }[resolveStatusKey(isStarting, isRunning)]
     const statusText = resolveStatusText(isStarting, isStopping, isRunning)
@@ -160,7 +160,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             <div>
               <h3 className='text-lg font-semibold text-alpine-900'>{displayName}</h3>
               <p className='text-sm text-muted-600 mt-1'>Mode: {mode}</p>
-              <p className='text-xs text-muted-500 mt-0.5'>
+              <p className='text-xs text-muted-600 mt-0.5'>
                 Autostart: {autoStartEnabled ? 'enabled' : 'disabled'}
               </p>
             </div>
@@ -188,7 +188,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             {}
             <div className='grid grid-cols-3 gap-3 text-xs'>
               <div className='bg-dark-700 rounded p-2'>
-                <div className='text-muted-500 mb-1'>Status</div>
+                <div className='text-muted-600 mb-1'>Status</div>
                 <div
                   className={clsx('font-medium', {
                     'text-accent-400': health.status === 'healthy',
@@ -200,18 +200,18 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 </div>
               </div>
               <div className='bg-dark-700 rounded p-2'>
-                <div className='text-muted-500 mb-1'>Data Lag</div>
+                <div className='text-muted-600 mb-1'>Data Lag</div>
                 <div className='text-alpine-900 font-medium'>{health.lag_ms}ms</div>
               </div>
               <div className='bg-dark-700 rounded p-2'>
-                <div className='text-muted-500 mb-1'>Heartbeat</div>
+                <div className='text-muted-600 mb-1'>Heartbeat</div>
                 <div className='text-alpine-900 font-medium'>#{health.seq || '?'}</div>
               </div>
             </div>
             {}
             <button
               onClick={() => setExpanded(!expanded)}
-              className='w-full text-xs text-muted-500 hover:text-alpine-900 transition-colors flex items-center justify-center space-x-1'
+              className='w-full text-xs text-muted-600 hover:text-alpine-900 transition-colors flex items-center justify-center space-x-1'
             >
               <span>{expanded ? 'Hide Details' : 'Show Details'}</span>
               <svg
@@ -235,7 +235,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                   <div className='space-y-2'>
                     {health.inputs && health.inputs.length > 0 && (
                       <div>
-                        <div className='text-xs font-medium text-muted-500 mb-1'>
+                        <div className='text-xs font-medium text-muted-600 mb-1'>
                           Inputs ({health.inputs.length})
                         </div>
                         <div className='space-y-1'>
@@ -252,7 +252,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                     )}
                     {health.outputs && health.outputs.length > 0 && (
                       <div>
-                        <div className='text-xs font-medium text-muted-500 mb-1'>
+                        <div className='text-xs font-medium text-muted-600 mb-1'>
                           Outputs ({health.outputs.length})
                         </div>
                         <div className='flex flex-wrap gap-1'>
@@ -272,7 +272,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 {}
                 {health.feed_health && Object.keys(health.feed_health).length > 0 && (
                   <div>
-                    <div className='text-xs font-medium text-muted-500 mb-2'>
+                    <div className='text-xs font-medium text-muted-600 mb-2'>
                       Feed Publishers ({Object.keys(health.feed_health).length})
                     </div>
                     <div className='space-y-2'>
@@ -283,7 +283,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                   </div>
                 )}
                 {}
-                <div className='text-xs text-muted-400 text-center pt-2 border-t border-dark-600'>
+                <div className='text-xs text-muted-600 text-center pt-2 border-t border-dark-600'>
                   Last update: {new Date(health.timestamp).toLocaleTimeString()}
                 </div>
               </div>
@@ -291,7 +291,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
           </div>
         )}
         {!health && isRunning && (
-          <div className='text-xs text-muted-400 text-center py-2'>Waiting for heartbeat...</div>
+          <div className='text-xs text-muted-600 text-center py-2'>Waiting for heartbeat...</div>
         )}
         {}
         {(onStart || onStop) && (

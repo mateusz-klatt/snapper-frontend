@@ -51,7 +51,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
 
   if (!isTerminal) {
     return (
-      <div className='rounded-lg border border-dark-600 bg-alpine-50 p-3 text-sm text-muted-500'>
+      <div className='rounded-lg border border-dark-600 bg-alpine-50 p-3 text-sm text-muted-600'>
         compare available once this run reaches a terminal status
       </div>
     )
@@ -96,7 +96,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
       <div className='flex items-center justify-between'>
         <h3 className='font-semibold text-alpine-900'>Compare</h3>
         <span
-          className='rounded bg-dark-600 px-2 py-0.5 text-xs text-muted-400'
+          className='rounded bg-dark-600 px-2 py-0.5 text-xs text-muted-600'
           data-testid='compare-source-chip'
         >
           {comboboxLabel}
@@ -113,12 +113,12 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
         </button>
       )}
       {configHash !== null && sameConfigCandidates.length === 0 && (
-        <div className='text-xs text-muted-500' data-testid='compare-no-siblings'>
+        <div className='text-xs text-muted-600' data-testid='compare-no-siblings'>
           no other runs with this config
         </div>
       )}
       {sameConfigCandidates.length >= SAME_CONFIG_LIMIT && (
-        <div className='text-xs text-muted-500'>
+        <div className='text-xs text-muted-600'>
           showing {SAME_CONFIG_LIMIT} most recent — use manual pair for older runs
         </div>
       )}
@@ -146,7 +146,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
         </button>
       </div>
       {configHash !== null && (
-        <label className='flex items-center gap-2 text-xs text-muted-500'>
+        <label className='flex items-center gap-2 text-xs text-muted-600'>
           <input
             type='checkbox'
             checked={showAllToggled}

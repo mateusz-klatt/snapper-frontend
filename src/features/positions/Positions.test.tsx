@@ -159,7 +159,7 @@ describe('Positions', () => {
     const sideBadge = screen.getByTestId('position-side-SOL-USD-kraken-live')
 
     expect(sideBadge).toHaveTextContent('FLAT')
-    expect(sideBadge.className).toContain('text-muted-400')
+    expect(sideBadge.className).toContain('text-muted-600')
     expect(screen.getByTestId('position-unrealized-SOL-USD-kraken-live')).toHaveTextContent('$0.00')
   })
 

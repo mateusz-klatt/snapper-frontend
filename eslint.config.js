@@ -139,6 +139,8 @@ export default [
       'dist/**',
       'node_modules/**',
       'coverage/**',
+      'playwright-report/**',
+      'test-results/**',
       'vite.config.ts',
       'src/types/*.generated.ts',
     ],

@@ -139,7 +139,7 @@ describe('BacktestDetailPage', () => {
     renderWithQuery(<BacktestDetailPage runPublicId={VALID_RUN} />)
     const statusEl = await screen.findByText('mystery')
 
-    expect(statusEl.className).toContain('text-muted-400')
+    expect(statusEl.className).toContain('text-muted-600')
   })
   it('renders cross-asset attribution row when target_execution_exchange is set', async () => {
     ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({

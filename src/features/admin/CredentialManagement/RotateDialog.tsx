@@ -101,15 +101,15 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
         {credential && (
           <div className='bg-dark-700 rounded-lg p-4 space-y-2'>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Exchange</span>
+              <span className='text-muted-600'>Exchange</span>
               <span className='text-alpine-900 font-medium'>{credential.exchange}</span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Type</span>
+              <span className='text-muted-600'>Type</span>
               <span className='text-alpine-900'>{credential.credential_type}</span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Label</span>
+              <span className='text-muted-600'>Label</span>
               <span className='text-alpine-900'>{credential.label ?? '-'}</span>
             </div>
           </div>

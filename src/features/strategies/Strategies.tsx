@@ -272,7 +272,7 @@ export const Strategies: React.FC = () => {
             </button>
           )}
         </div>
-        <p className='text-xs text-muted-500'>
+        <p className='text-xs text-muted-600'>
           {canManage
             ? 'Register new strategy processes directly from the UI. Autostart keeps the process enabled across restarts.'
             : 'View configured strategies and their status. Contact an operator or admin to manage strategies.'}
@@ -326,7 +326,7 @@ export const Strategies: React.FC = () => {
         )}
         {filteredStrategies.length === 0 && strategies.length > 0 && (
           <div className='bg-alpine-50 border border-dark-600 rounded-2xl p-6 text-center'>
-            <p className='text-muted-500'>No strategies match your filters</p>
+            <p className='text-muted-600'>No strategies match your filters</p>
             <button
               onClick={() => {
                 setSearchTerm('')
@@ -341,10 +341,10 @@ export const Strategies: React.FC = () => {
         {filteredStrategies.length === 0 && strategies.length === 0 && (
           <div className='bg-alpine-50 border border-dark-600 rounded-2xl p-8 text-center'>
             <div className='mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-dark-700'>
-              <Gauge className='text-muted-500' size={24} />
+              <Gauge className='text-muted-600' size={24} />
             </div>
-            <p className='text-muted-500 font-medium'>No strategies configured</p>
-            <p className='text-sm text-muted-400 mt-1'>
+            <p className='text-muted-600 font-medium'>No strategies configured</p>
+            <p className='text-sm text-muted-600 mt-1'>
               {canManage
                 ? 'Register a strategy to start algorithmic trading'
                 : 'No strategies have been configured yet'}

@@ -14,9 +14,9 @@ interface Props {
 const STATUS_COLOR: Record<string, string> = {
   completed: 'text-gain-400',
   failed: 'text-loss-400',
-  cancelled: 'text-muted-400',
+  cancelled: 'text-muted-600',
   running: 'text-brand-400',
-  pending: 'text-muted-400',
+  pending: 'text-muted-600',
 }
 
 const labelRun = (label: 'A' | 'B', publicId: string, status: string): string =>
@@ -35,7 +35,7 @@ export const ComparePage: React.FC<Props> = ({ comparisonPublicId }) => {
 
   if (isLoading) {
     return (
-      <div className='p-4 text-sm text-muted-500' data-testid='compare-page'>
+      <div className='p-4 text-sm text-muted-600' data-testid='compare-page'>
         Loading comparison…
       </div>
     )
@@ -80,26 +80,26 @@ export const ComparePage: React.FC<Props> = ({ comparisonPublicId }) => {
       </div>
       <div className='flex flex-wrap items-center gap-3 text-sm'>
         <span
-          className={clsx('font-medium', STATUS_COLOR[run_a.status] ?? 'text-muted-400')}
+          className={clsx('font-medium', STATUS_COLOR[run_a.status] ?? 'text-muted-600')}
           data-testid='compare-run-a-label'
         >
           {labelRun('A', run_a.public_id, run_a.status)}
         </span>
-        <span className='text-muted-500'>vs</span>
+        <span className='text-muted-600'>vs</span>
         <span
-          className={clsx('font-medium', STATUS_COLOR[run_b.status] ?? 'text-muted-400')}
+          className={clsx('font-medium', STATUS_COLOR[run_b.status] ?? 'text-muted-600')}
           data-testid='compare-run-b-label'
         >
           {labelRun('B', run_b.public_id, run_b.status)}
         </span>
         <span
-          className='rounded bg-dark-600 px-2 py-0.5 text-xs text-muted-400'
+          className='rounded bg-dark-600 px-2 py-0.5 text-xs text-muted-600'
           data-testid='compare-pairing-mode'
         >
           {comparison.pairing_mode}
         </span>
         {comparison.config_hash && (
-          <code className='font-mono text-xs text-muted-400'>{comparison.config_hash}</code>
+          <code className='font-mono text-xs text-muted-600'>{comparison.config_hash}</code>
         )}
       </div>
       <section>

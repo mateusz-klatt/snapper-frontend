@@ -4,6 +4,7 @@ import { EmptyState } from '../../components/ui'
 import { useAuth } from '../../stores/auth'
 import { useAiReviewActivity, usePendingAiReviews } from '../../hooks/queries'
 import { AiReviewActivityRow } from './AiReviewActivityRow'
+import { pendingReviewThesisSnippet } from './thesisSnippet'
 
 const ACTIVITY_DISPLAY_LIMIT = 50
 
@@ -53,7 +54,7 @@ export function AiReviewInbox(): React.ReactElement {
     <div className='p-6 space-y-6'>
       <header>
         <h1 className='text-2xl font-bold'>AI Review Inbox</h1>
-        <p className='text-sm text-muted-500'>
+        <p className='text-sm text-muted-600'>
           Pending CONSULT reviews routed to this delegate plus the live event stream.
         </p>
       </header>
@@ -84,13 +85,27 @@ function PendingReviewsSection({
     status: string
     deadline: string | Date
     fanout_after: string | Date
+    /**
+     * Resolved native ticker for the row's underlying instrument
+     * (e.g. "BTC-USD"), if the backend's `Instrument`+`Symbol`
+     * lookup matched. Falls through to ``null`` for legacy rows.
+     */
+    instrument?: string | null
+    /**
+     * Raw signal payload — strategy thesis, side, news anchors —
+     * surfaced inline so the delegate can read the gist without
+     * opening the detail page. Shape is intentionally loose
+     * (`Record<string, unknown>`) because the strategies that
+     * populate it evolve faster than the schema.
+     */
+    signal_envelope?: Record<string, unknown> | null
   }>
 }>): React.ReactElement {
   let content: React.ReactNode
 
   if (loading) {
     content = (
-      <div className='flex items-center gap-2 text-muted-500 text-sm'>
+      <div className='flex items-center gap-2 text-muted-600 text-sm'>
         <Loader2 className='w-4 h-4 animate-spin' />
         Loading pending reviews…
       </div>
@@ -116,7 +131,8 @@ function PendingReviewsSection({
           <thead className='bg-dark-700 text-muted-700 text-left'>
             <tr>
               <th className='px-4 py-2 font-semibold'>Review</th>
-              <th className='px-4 py-2 font-semibold'>Wallet</th>
+              <th className='px-4 py-2 font-semibold'>Instrument</th>
+              <th className='px-4 py-2 font-semibold'>Thesis</th>
               <th className='px-4 py-2 font-semibold'>Status</th>
               <th className='px-4 py-2 font-semibold'>Dispatch</th>
               <th className='px-4 py-2 font-semibold'>Deadline</th>
@@ -129,7 +145,12 @@ function PendingReviewsSection({
                 data-testid={`pending-review-row-${item.review_public_id}`}
               >
                 <td className='px-4 py-2 font-mono text-xs'>{item.review_public_id}</td>
-                <td className='px-4 py-2 font-mono text-xs'>{item.wallet_public_id}</td>
+                <td className='px-4 py-2 font-mono text-xs'>
+                  {item.instrument ?? <span className='text-muted-600'>—</span>}
+                </td>
+                <td className='px-4 py-2 max-w-md truncate text-muted-600'>
+                  {pendingReviewThesisSnippet(item.signal_envelope) ?? '—'}
+                </td>
                 <td className='px-4 py-2'>{item.status}</td>
                 <td className='px-4 py-2 font-mono text-xs'>v{item.dispatch_version}</td>
                 <td className='px-4 py-2 text-muted-600'>
@@ -200,7 +221,7 @@ function ActivitySection({
           <Activity className='w-4 h-4 text-brand-600' />
           <h2 className='text-sm font-semibold text-muted-800'>Recent activity</h2>
         </div>
-        <span className='text-xs text-muted-500'>{summary}</span>
+        <span className='text-xs text-muted-600'>{summary}</span>
       </div>
       {content}
     </section>

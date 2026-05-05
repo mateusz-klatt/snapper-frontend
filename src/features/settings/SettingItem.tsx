@@ -29,7 +29,7 @@ const JSON_TOKEN_COLORS: Record<JsonTokenType, string> = {
   string: 'text-accent-600',
   number: 'text-info-400',
   boolean: 'text-warning-500',
-  null: 'text-muted-500',
+  null: 'text-muted-600',
   punctuation: 'text-muted-600',
   whitespace: '',
 }
@@ -265,7 +265,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
               Delete
             </button>
           </div>
-          <div className='text-xs text-muted-500'>
+          <div className='text-xs text-muted-600'>
             {new Date(setting.updated_at).toLocaleString()}
             {setting.updated_by && ` • ${setting.updated_by}`}
           </div>
@@ -341,7 +341,7 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
           </button>
           <span className='font-mono text-sm text-alpine-900'>{isOn ? 'true' : 'false'}</span>
         </div>
-        <div className='text-xs text-muted-500'>
+        <div className='text-xs text-muted-600'>
           {new Date(setting.updated_at).toLocaleString()}
           {setting.updated_by && ` • ${setting.updated_by}`}
         </div>

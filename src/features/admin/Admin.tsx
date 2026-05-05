@@ -48,9 +48,9 @@ export const Admin: React.FC = () => {
         >
           <h2 className='text-lg font-semibold text-alpine-900'>Role Permissions</h2>
           {showRoleInfo ? (
-            <ChevronUp size={20} className='text-muted-500' />
+            <ChevronUp size={20} className='text-muted-600' />
           ) : (
-            <ChevronDown size={20} className='text-muted-500' />
+            <ChevronDown size={20} className='text-muted-600' />
           )}
         </button>
         {showRoleInfo && (
@@ -113,14 +113,14 @@ export const Admin: React.FC = () => {
                         {row.viewer ? (
                           <span className='text-accent-600'>&#10003;</span>
                         ) : (
-                          <span className='text-muted-400'>&#8212;</span>
+                          <span className='text-muted-600'>&#8212;</span>
                         )}
                       </td>
                       <td className='py-2 px-3 text-center'>
                         {row.operator ? (
                           <span className='text-accent-600'>&#10003;</span>
                         ) : (
-                          <span className='text-muted-400'>&#8212;</span>
+                          <span className='text-muted-600'>&#8212;</span>
                         )}
                       </td>
                       <td className='py-2 px-3 text-center'>

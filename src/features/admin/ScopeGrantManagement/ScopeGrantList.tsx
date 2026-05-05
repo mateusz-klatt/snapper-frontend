@@ -74,9 +74,9 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
       </div>
       {!selectedWallet && (
         <div className='text-center py-12'>
-          <Link2 className='mx-auto h-12 w-12 text-muted-400' />
+          <Link2 className='mx-auto h-12 w-12 text-muted-600' />
           <h3 className='mt-2 text-sm font-medium text-alpine-900'>Select a wallet</h3>
-          <p className='mt-1 text-sm text-muted-500'>
+          <p className='mt-1 text-sm text-muted-600'>
             Choose a wallet above to view its scope grants.
           </p>
         </div>
@@ -93,9 +93,9 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
       )}
       {selectedWallet && !isLoading && !error && grants.length === 0 && (
         <div className='text-center py-12'>
-          <Link2 className='mx-auto h-12 w-12 text-muted-400' />
+          <Link2 className='mx-auto h-12 w-12 text-muted-600' />
           <h3 className='mt-2 text-sm font-medium text-alpine-900'>No grants found</h3>
-          <p className='mt-1 text-sm text-muted-500'>This wallet has no active scope grants.</p>
+          <p className='mt-1 text-sm text-muted-600'>This wallet has no active scope grants.</p>
         </div>
       )}
       {selectedWallet && !isLoading && !error && grants.length > 0 && (
@@ -128,7 +128,7 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                       <div className='text-sm font-medium text-alpine-900'>
                         {operatorLabel(grant.operator_public_id)}
                       </div>
-                      <div className='text-xs text-muted-500'>{grant.operator_public_id}</div>
+                      <div className='text-xs text-muted-600'>{grant.operator_public_id}</div>
                     </td>
                     <td className='px-3 py-4 whitespace-nowrap'>
                       <span className='inline-flex items-center rounded-full border border-brand-200 bg-brand-100 px-2.5 py-0.5 text-xs font-medium text-brand-800'>
@@ -140,7 +140,7 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                         ? grant.underlying_public_id
                         : grant.instrument_public_id}
                     </td>
-                    <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-500'>
+                    <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-600'>
                       {formatDate(grant.timestamp)}
                     </td>
                     <td className='px-3 py-4 whitespace-nowrap text-right text-sm font-medium'>

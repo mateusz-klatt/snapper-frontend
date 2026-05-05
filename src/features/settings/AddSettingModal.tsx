@@ -92,7 +92,7 @@ export const AddSettingModal = ({
             placeholder='e.g., walutomat.api_key'
             className='w-full px-3 py-2 text-sm bg-alpine-50 border border-dark-600 rounded-lg text-alpine-900 placeholder-muted-400 focus:outline-none focus:border-brand-500'
           />
-          <p className='mt-1 text-xs text-muted-500'>
+          <p className='mt-1 text-xs text-muted-600'>
             Use dot notation for nested settings (e.g., category.subcategory.name)
           </p>
         </div>

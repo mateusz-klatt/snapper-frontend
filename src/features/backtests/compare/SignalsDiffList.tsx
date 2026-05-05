@@ -11,7 +11,7 @@ const SignalCard: React.FC<{ signal: SignalDiffEntry }> = ({ signal }) => (
   <div className='rounded-lg border border-dark-600 bg-alpine-50 p-2 text-xs'>
     <div className='flex items-center justify-between'>
       <span className='font-mono text-alpine-900'>{signal.instrument}</span>
-      <span className='text-muted-500'>{formatTime(signal.signal_time)}</span>
+      <span className='text-muted-600'>{formatTime(signal.signal_time)}</span>
     </div>
     <div className='mt-1 font-mono text-alpine-900'>{signal.signal_type}</div>
   </div>
@@ -26,10 +26,10 @@ interface ColumnProps {
 const Column: React.FC<ColumnProps> = ({ title, entries, testId }) => (
   <div className='space-y-2' data-testid={testId}>
     <h4 className='text-sm font-semibold text-alpine-900'>
-      {title} <span className='text-muted-500'>({entries.length})</span>
+      {title} <span className='text-muted-600'>({entries.length})</span>
     </h4>
     {entries.length === 0 ? (
-      <div className='text-xs text-muted-500'>—</div>
+      <div className='text-xs text-muted-600'>—</div>
     ) : (
       entries.map(s => <SignalCard key={`${s.instrument}-${s.signal_time}-${s.leg}`} signal={s} />)
     )}

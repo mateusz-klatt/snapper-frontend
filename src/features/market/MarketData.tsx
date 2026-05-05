@@ -281,14 +281,14 @@ export function MarketData() {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
           <Card title='Current Price' className='p-4'>
             <div>
-              <p className='text-sm text-muted-500'>Current Price</p>
+              <p className='text-sm text-muted-600'>Current Price</p>
               <p className='text-lg font-semibold'>{stats.price.toFixed(5)}</p>
             </div>
           </Card>
           <Card title='24h Change' className='p-4'>
             <div className='flex items-center justify-between'>
               <div>
-                <p className='text-sm text-muted-500'>24h Change</p>
+                <p className='text-sm text-muted-600'>24h Change</p>
                 <p
                   className={`text-lg font-semibold ${stats.change >= 0 ? 'text-gain-600' : 'text-loss-600'}`}
                 >
@@ -300,13 +300,13 @@ export function MarketData() {
           </Card>
           <Card title='24h High' className='p-4'>
             <div>
-              <p className='text-sm text-muted-500'>24h High</p>
+              <p className='text-sm text-muted-600'>24h High</p>
               <p className='text-lg font-semibold text-gain-600'>{stats.high24h.toFixed(5)}</p>
             </div>
           </Card>
           <Card title='24h Low' className='p-4'>
             <div>
-              <p className='text-sm text-muted-500'>24h Low</p>
+              <p className='text-sm text-muted-600'>24h Low</p>
               <p className='text-lg font-semibold text-loss-600'>{stats.low24h.toFixed(5)}</p>
             </div>
           </Card>
@@ -332,8 +332,8 @@ export function MarketData() {
         {!isLoading && !error && chartData.length === 0 && (
           <div className='flex items-center justify-center h-full'>
             <div className='text-center'>
-              <p className='text-muted-500 mb-2'>No data available for {selectedInstrument}</p>
-              <p className='text-sm text-muted-400'>
+              <p className='text-muted-600 mb-2'>No data available for {selectedInstrument}</p>
+              <p className='text-sm text-muted-600'>
                 The instrument may not exist or has no{' '}
                 {timeframes.find(t => t.value === selectedTimeframe)?.label.toLowerCase()} data
               </p>

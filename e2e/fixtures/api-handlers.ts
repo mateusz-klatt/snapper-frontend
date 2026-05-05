@@ -129,7 +129,11 @@ const DEFAULTS: Array<[string | RegExp, RouteOverride]> = [
   ],
   ['**/api/wallets*', route => json(route, listEnvelope('wallet_list_response', [TEST_WALLET]))],
   [
-    '**/api/exchanges',
+    // Trailing `*` so the glob also matches the
+    // `?wallet_public_id=…` / `?operator_public_id=…` query strings
+    // that `apiClient.getJSON` auto-appends to every GET when those
+    // multi-tenant scopes are set.
+    '**/api/exchanges*',
     route =>
       json(
         route,

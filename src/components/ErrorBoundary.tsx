@@ -32,10 +32,10 @@ export function ErrorFallback({
         </svg>
       </div>
       <h3 className='text-lg font-semibold text-loss-400 mb-2'>{title}</h3>
-      <p className='text-sm text-muted-400 mb-4 text-center max-w-md'>{error.message}</p>
+      <p className='text-sm text-muted-600 mb-4 text-center max-w-md'>{error.message}</p>
       {import.meta.env.DEV && (
-        <details className='text-xs text-muted-500 mb-4 max-w-full overflow-auto'>
-          <summary className='cursor-pointer hover:text-muted-400'>Stack trace</summary>
+        <details className='text-xs text-muted-600 mb-4 max-w-full overflow-auto'>
+          <summary className='cursor-pointer hover:text-muted-600'>Stack trace</summary>
           <pre className='mt-2 p-2 bg-black/30 rounded text-left whitespace-pre-wrap break-all'>
             {error.stack}
           </pre>

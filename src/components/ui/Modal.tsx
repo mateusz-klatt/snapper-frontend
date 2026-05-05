@@ -135,7 +135,7 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
               </h3>
               <button
                 onClick={onClose}
-                className='text-muted-500 transition-colors hover:text-alpine-900'
+                className='text-muted-600 transition-colors hover:text-alpine-900'
                 aria-label='Close'
               >
                 <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>

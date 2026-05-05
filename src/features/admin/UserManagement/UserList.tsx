@@ -145,7 +145,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
             <div className='flex items-start justify-between gap-2'>
               <div className='min-w-0'>
                 <div className='text-sm font-medium text-alpine-900'>{user.username}</div>
-                <div className='text-xs text-muted-500 truncate'>{user.email}</div>
+                <div className='text-xs text-muted-600 truncate'>{user.email}</div>
               </div>
               <div className='flex items-center gap-1 shrink-0'>
                 <Button
@@ -217,7 +217,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                   <td className='px-3 py-4 whitespace-nowrap'>
                     <div>
                       <div className='text-sm font-medium text-alpine-900'>{user.username}</div>
-                      <div className='text-sm text-muted-500'>{user.email}</div>
+                      <div className='text-sm text-muted-600'>{user.email}</div>
                     </div>
                   </td>
                   <td className='px-3 py-4 whitespace-nowrap'>
@@ -239,7 +239,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                       {user.is_active ? 'Active' : 'Inactive'}
                     </span>
                   </td>
-                  <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-500'>
+                  <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-600'>
                     {user.created_at ? formatDate(user.created_at) : 'Unknown'}
                   </td>
                   <td className='px-3 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2'>
@@ -270,9 +270,9 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
       </div>
       {users.length === 0 && (
         <div className='text-center py-12'>
-          <Users className='mx-auto h-12 w-12 text-muted-400' />
+          <Users className='mx-auto h-12 w-12 text-muted-600' />
           <h3 className='mt-2 text-sm font-medium text-alpine-900'>No users found</h3>
-          <p className='mt-1 text-sm text-muted-500'>
+          <p className='mt-1 text-sm text-muted-600'>
             {searchTerm && 'No users match your search criteria.'}
             {!searchTerm && includeInactive && 'No users found.'}
             {!searchTerm && !includeInactive && 'No active users found.'}

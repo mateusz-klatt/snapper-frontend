@@ -25,7 +25,7 @@ export function DelegateDetailView({
   const delegate = detailQuery.data?.payload
 
   if (detailQuery.isLoading) {
-    return <div className='p-6 text-muted-500'>Loading delegate…</div>
+    return <div className='p-6 text-muted-600'>Loading delegate…</div>
   }
 
   if (delegate === undefined) {
@@ -113,26 +113,26 @@ export function DelegateDetailView({
 
       <section>
         <h1 className='text-2xl font-bold'>{delegate.label}</h1>
-        <p className='text-sm text-muted-500 font-mono'>{delegate.username}</p>
+        <p className='text-sm text-muted-600 font-mono'>{delegate.username}</p>
       </section>
 
       <dl className='grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm'>
         <div>
-          <dt className='text-muted-500'>Status</dt>
+          <dt className='text-muted-600'>Status</dt>
           <dd className={delegate.is_active ? 'text-gain-700' : 'text-muted-600'}>
             {delegate.is_active ? 'Active' : 'Revoked'}
           </dd>
         </div>
         <div>
-          <dt className='text-muted-500'>Created at</dt>
+          <dt className='text-muted-600'>Created at</dt>
           <dd>{new Date(delegate.created_at).toLocaleString()}</dd>
         </div>
         <div>
-          <dt className='text-muted-500'>Created by (user public_id)</dt>
+          <dt className='text-muted-600'>Created by (user public_id)</dt>
           <dd className='font-mono text-xs'>{delegate.created_by_user_public_id}</dd>
         </div>
         <div>
-          <dt className='text-muted-500'>Public ID</dt>
+          <dt className='text-muted-600'>Public ID</dt>
           <dd className='font-mono text-xs'>{delegate.public_id}</dd>
         </div>
       </dl>
@@ -183,19 +183,19 @@ export function DelegateDetailView({
         ) : (
           <dl className='grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm'>
             <div>
-              <dt className='text-muted-500'>Max open orders</dt>
+              <dt className='text-muted-600'>Max open orders</dt>
               <dd>{delegate.caps.max_open_orders ?? '(default)'}</dd>
             </div>
             <div>
-              <dt className='text-muted-500'>Max daily notional USD</dt>
+              <dt className='text-muted-600'>Max daily notional USD</dt>
               <dd>{delegate.caps.max_daily_notional_usd ?? '(default)'}</dd>
             </div>
             <div>
-              <dt className='text-muted-500'>Max cancels per minute</dt>
+              <dt className='text-muted-600'>Max cancels per minute</dt>
               <dd>{delegate.caps.max_cancels_per_minute ?? '(default)'}</dd>
             </div>
             <div>
-              <dt className='text-muted-500'>Per-instrument max quantity</dt>
+              <dt className='text-muted-600'>Per-instrument max quantity</dt>
               <dd className='font-mono text-xs'>
                 {delegate.caps.max_order_quantity_per_instrument
                   ? JSON.stringify(delegate.caps.max_order_quantity_per_instrument)

@@ -5,17 +5,20 @@ import { mockApi } from '../fixtures/api-handlers'
 import { mockWebSocket } from '../fixtures/ws-handlers'
 
 /**
- * Axe smoke — no `critical` WCAG 2.1 AA violations on the authenticated
- * landing routes. Catches regressions like missing `aria-label` on
- * icon-only buttons, broken form semantics.
+ * Axe smoke — no `serious|critical` WCAG 2.1 AA violations on the
+ * authenticated landing routes. Catches regressions like missing
+ * `aria-label` on icon-only buttons, broken form semantics, and
+ * color-contrast / scrollable-region issues.
  *
- * `serious` is intentionally NOT blocking in v1.3 — the surface has
- * pre-existing color-contrast and scrollable-region findings that will
- * be tackled as a dedicated pass in v1.4. Tightening to `serious`+
- * before fixing those would lock the baseline at "broken".
+ * v1.4 tightened the gate from `critical`-only to `serious|critical`
+ * after the baseline cleanup pass: bumped `text-muted-400/500` and
+ * `text-dark-400` token classes to `text-muted-600` so light-mode
+ * body text meets 4.5:1 against white, and added `tabIndex=0` /
+ * `aria-label="Main content"` on the scrollable `<main>` region so
+ * keyboard-only users can scroll the content area.
  *
- * `moderate` / `minor` are noise; tighten in a follow-up after the
- * `serious` pass.
+ * `moderate` / `minor` are noise; tighten in a follow-up if the
+ * surface stabilises.
  */
 const ROUTES_TO_AUDIT: Array<{ tab: string; expectHeading: RegExp }> = [
   { tab: 'Overview', expectHeading: /Overview/i },
@@ -27,7 +30,7 @@ const ROUTES_TO_AUDIT: Array<{ tab: string; expectHeading: RegExp }> = [
 ]
 
 for (const { tab, expectHeading } of ROUTES_TO_AUDIT) {
-  test(`a11y: ${tab} has no critical WCAG 2.1 AA violations`, async ({ browser }) => {
+  test(`a11y: ${tab} has no serious or critical WCAG 2.1 AA violations`, async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
 
@@ -50,7 +53,9 @@ for (const { tab, expectHeading } of ROUTES_TO_AUDIT) {
 
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()
 
-    const blocking = results.violations.filter(v => v.impact === 'critical')
+    const blocking = results.violations.filter(
+      v => v.impact === 'critical' || v.impact === 'serious'
+    )
 
     if (blocking.length > 0) {
       console.warn(

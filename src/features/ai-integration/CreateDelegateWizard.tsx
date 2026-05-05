@@ -256,10 +256,10 @@ function StepIndicator({ step }: Readonly<{ step: WizardStep }>): React.ReactEle
   const currentIndex = steps.findIndex(s => s.id === step)
 
   const stepClass = (idx: number): string => {
-    if (step === 'done') return 'text-muted-400'
+    if (step === 'done') return 'text-muted-600'
     if (idx <= currentIndex) return 'font-semibold text-brand-600'
 
-    return 'text-muted-500'
+    return 'text-muted-600'
   }
 
   return (
@@ -269,7 +269,7 @@ function StepIndicator({ step }: Readonly<{ step: WizardStep }>): React.ReactEle
           {s.label}
         </li>
       ))}
-      <li className={step === 'done' ? 'font-semibold text-gain-600' : 'text-muted-400'}>✓ Done</li>
+      <li className={step === 'done' ? 'font-semibold text-gain-600' : 'text-muted-600'}>✓ Done</li>
     </ol>
   )
 }
@@ -301,7 +301,7 @@ function IdentityStep({
           placeholder='e.g. Alpha prop desk'
           className='w-full px-3 py-2 rounded-lg border border-dark-600 bg-alpine-50 text-muted-900'
         />
-        <p className='mt-1 text-xs text-muted-500'>
+        <p className='mt-1 text-xs text-muted-600'>
           The delegate&apos;s username will be derived server-side as <code>ai-&lt;label&gt;</code>.
         </p>
       </div>

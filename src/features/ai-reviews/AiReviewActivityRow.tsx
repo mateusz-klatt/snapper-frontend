@@ -101,10 +101,10 @@ function RowShell({
       <div className='flex-1 text-sm space-y-1'>
         <div className='flex items-center justify-between'>
           <span className='font-semibold text-muted-900'>{label}</span>
-          <span className='text-xs text-muted-500'>{new Date(timestamp).toLocaleTimeString()}</span>
+          <span className='text-xs text-muted-600'>{new Date(timestamp).toLocaleTimeString()}</span>
         </div>
         <div>{children}</div>
-        <div className='font-mono text-[11px] text-muted-500'>review {reviewPublicId}</div>
+        <div className='font-mono text-[11px] text-muted-600'>review {reviewPublicId}</div>
       </div>
     </li>
   )

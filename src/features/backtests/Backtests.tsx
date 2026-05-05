@@ -6,7 +6,7 @@ import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
 import type { BacktestRunData } from '../../types/api'
 
-type StatusColor = 'text-gain-400' | 'text-loss-400' | 'text-brand-400' | 'text-muted-400'
+type StatusColor = 'text-gain-400' | 'text-loss-400' | 'text-brand-400' | 'text-muted-600'
 
 const getStatusColor = (status: string): StatusColor => {
   switch (status) {
@@ -17,7 +17,7 @@ const getStatusColor = (status: string): StatusColor => {
     case 'running':
       return 'text-brand-400'
     default:
-      return 'text-muted-400'
+      return 'text-muted-600'
   }
 }
 
@@ -48,8 +48,8 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
           data-testid={`open-${run.public_id}`}
         >
           <span className='font-semibold text-alpine-900'>{run.strategy_name}</span>
-          <span className='text-sm text-muted-500'>{run.instrument_public_id}</span>
-          <span className='text-sm text-muted-500'>
+          <span className='text-sm text-muted-600'>{run.instrument ?? run.instrument_public_id}</span>
+          <span className='text-sm text-muted-600'>
             {run.exchange}
             {run.target_execution_exchange && (
               <span className='ml-1 text-brand-500'>→ {run.target_execution_exchange}</span>
@@ -84,22 +84,22 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-4'>
         <div>
-          <div className='text-muted-500'>Timeframe</div>
+          <div className='text-muted-600'>Timeframe</div>
           <div className='font-mono text-alpine-900'>{run.timeframe}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Period</div>
+          <div className='text-muted-600'>Period</div>
           <div className='font-mono text-alpine-900'>
             {formatDate(run.start_date)} - {formatDate(run.end_date)}
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Initial Cash</div>
+          <div className='text-muted-600'>Initial Cash</div>
           <div className='font-mono text-alpine-900'>${run.initial_cash.toFixed(2)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>ID</div>
-          <div className='font-mono text-xs text-muted-400'>{run.public_id.slice(0, 12)}</div>
+          <div className='text-muted-600'>ID</div>
+          <div className='font-mono text-xs text-muted-600'>{run.public_id.slice(0, 12)}</div>
         </div>
       </div>
       {run.error && <div className='mt-3 text-xs text-loss-400'>Error: {run.error}</div>}

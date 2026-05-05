@@ -19,7 +19,7 @@ const formatPct = (v: number | null | undefined): string => {
 }
 
 const deltaColor = (v: number | null | undefined): string => {
-  if (v === null || v === undefined || v === 0) return 'text-muted-400'
+  if (v === null || v === undefined || v === 0) return 'text-muted-600'
 
   return v > 0 ? 'text-gain-400' : 'text-loss-400'
 }
@@ -33,7 +33,7 @@ const deltaColor = (v: number | null | undefined): string => {
 export const MetricsDiffTable: React.FC<Props> = ({ rows }) => {
   if (rows.length === 0) {
     return (
-      <div className='text-sm text-muted-500' data-testid='metrics-diff-empty'>
+      <div className='text-sm text-muted-600' data-testid='metrics-diff-empty'>
         No comparable metrics — both runs had no recorded values.
       </div>
     )
@@ -42,7 +42,7 @@ export const MetricsDiffTable: React.FC<Props> = ({ rows }) => {
   return (
     <table className='w-full text-sm' data-testid='metrics-diff-table'>
       <thead>
-        <tr className='text-left text-muted-500'>
+        <tr className='text-left text-muted-600'>
           <th className='py-1'>Metric</th>
           <th className='py-1 text-right'>Run A</th>
           <th className='py-1 text-right'>Run B</th>

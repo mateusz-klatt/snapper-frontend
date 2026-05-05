@@ -128,7 +128,7 @@ export const EquityOverlayChart: React.FC<Props> = ({ points, height = 300, clas
   return (
     <div className={`relative ${className}`} data-testid='equity-overlay-chart'>
       <div ref={containerRef} style={{ height: `${height}px` }} />
-      <div className='mt-2 flex items-center gap-4 text-xs text-muted-500'>
+      <div className='mt-2 flex items-center gap-4 text-xs text-muted-600'>
         <span className='flex items-center gap-1'>
           <span
             className='inline-block h-2 w-3 rounded-sm'

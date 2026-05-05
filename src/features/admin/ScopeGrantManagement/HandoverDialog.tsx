@@ -78,19 +78,19 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
         {grant && (
           <div className='bg-dark-700 rounded-lg p-4 space-y-2'>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Current holder</span>
+              <span className='text-muted-600'>Current holder</span>
               <span className='text-alpine-900 font-medium'>
                 {operatorLabel(grant.operator_public_id)}
               </span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Scope</span>
+              <span className='text-muted-600'>Scope</span>
               <span className='text-alpine-900'>
                 {grant.scope_kind}: {scopeTarget}
               </span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Wallet</span>
+              <span className='text-muted-600'>Wallet</span>
               <span className='text-alpine-900'>{grant.wallet_public_id}</span>
             </div>
           </div>

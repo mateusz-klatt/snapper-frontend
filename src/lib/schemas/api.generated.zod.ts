@@ -517,18 +517,6 @@ export const OrphanSweepResultDataSchema = z
   })
   .strict()
 
-export const PendingReviewSummaryItemSchema = z
-  .object({
-    review_public_id: z.string(),
-    selected_delegate_public_id: z.string(),
-    wallet_public_id: z.string(),
-    dispatch_version: z.number().int(),
-    status: z.string(),
-    deadline: z.iso.datetime(),
-    fanout_after: z.iso.datetime(),
-  })
-  .strict()
-
 export const PositionCycleDataSchema = z
   .object({
     type: z.literal('position_cycle'),
@@ -1509,13 +1497,6 @@ export const OrphanSweepResponseSchema = z
     session_id: z.string(),
     topic: z.string().nullable().optional(),
     payload: OrphanSweepResultDataSchema,
-  })
-  .strict()
-
-export const PendingReviewListResponseSchema = z
-  .object({
-    items: z.array(PendingReviewSummaryItemSchema),
-    count: z.number().int(),
   })
   .strict()
 
@@ -2615,6 +2596,7 @@ export const BacktestRunDataSchema = z
     strategy_name: z.string(),
     strategy_params: z.record(z.string(), z.any()),
     instrument_public_id: z.string(),
+    instrument: z.string().nullable().optional(),
     exchange: z.string(),
     timeframe: z.string(),
     start_date: z.iso.datetime(),
@@ -2664,6 +2646,20 @@ export const DelegateCapsBodySchema = z
     max_open_orders: z.number().int().nullable().optional(),
     max_daily_notional_usd: z.number().nullable().optional(),
     max_cancels_per_minute: z.number().int().nullable().optional(),
+  })
+  .strict()
+
+export const PendingReviewSummaryItemSchema = z
+  .object({
+    review_public_id: z.string(),
+    selected_delegate_public_id: z.string(),
+    wallet_public_id: z.string(),
+    dispatch_version: z.number().int(),
+    status: z.string(),
+    deadline: z.iso.datetime(),
+    fanout_after: z.iso.datetime(),
+    instrument: z.string().nullable().optional(),
+    signal_envelope: z.record(z.string(), z.any()).nullable().optional(),
   })
   .strict()
 
@@ -2836,6 +2832,7 @@ export const BacktestRunDetailDataSchema = z
     strategy_name: z.string(),
     strategy_params: z.record(z.string(), z.any()),
     instrument_public_id: z.string(),
+    instrument: z.string().nullable().optional(),
     exchange: z.string(),
     timeframe: z.string(),
     start_date: z.iso.datetime(),
@@ -2934,6 +2931,13 @@ export const DelegateCreateBodySchema = z
 export const DelegateCapsUpdateBodySchema = z
   .object({
     caps: DelegateCapsBodySchema,
+  })
+  .strict()
+
+export const PendingReviewListResponseSchema = z
+  .object({
+    items: z.array(PendingReviewSummaryItemSchema),
+    count: z.number().int(),
   })
   .strict()
 
@@ -3153,7 +3157,6 @@ export type NotificationMetricsData = z.infer<typeof NotificationMetricsDataSche
 export type OperatorInfo = z.infer<typeof OperatorInfoSchema>
 export type OrderData = z.infer<typeof OrderDataSchema>
 export type OrphanSweepResultData = z.infer<typeof OrphanSweepResultDataSchema>
-export type PendingReviewSummaryItem = z.infer<typeof PendingReviewSummaryItemSchema>
 export type PositionCycleData = z.infer<typeof PositionCycleDataSchema>
 export type PositionData = z.infer<typeof PositionDataSchema>
 export type ProcessCategoryCount = z.infer<typeof ProcessCategoryCountSchema>
@@ -3244,7 +3247,6 @@ export type NotificationMetricsResponse = z.infer<typeof NotificationMetricsResp
 export type OperatorListResponse = z.infer<typeof OperatorListResponseSchema>
 export type OrderListResponse = z.infer<typeof OrderListResponseSchema>
 export type OrphanSweepResponse = z.infer<typeof OrphanSweepResponseSchema>
-export type PendingReviewListResponse = z.infer<typeof PendingReviewListResponseSchema>
 export type PositionCycleListResponse = z.infer<typeof PositionCycleListResponseSchema>
 export type PositionListResponse = z.infer<typeof PositionListResponseSchema>
 export type ProcessSummaryData = z.infer<typeof ProcessSummaryDataSchema>
@@ -3334,6 +3336,7 @@ export type BacktestResultInline = z.infer<typeof BacktestResultInlineSchema>
 export type BacktestRunData = z.infer<typeof BacktestRunDataSchema>
 export type ConfiguredProcess = z.infer<typeof ConfiguredProcessSchema>
 export type DelegateCapsBody = z.infer<typeof DelegateCapsBodySchema>
+export type PendingReviewSummaryItem = z.infer<typeof PendingReviewSummaryItemSchema>
 export type ProcessRun = z.infer<typeof ProcessRunSchema>
 export type ProcessSchemaData = z.infer<typeof ProcessSchemaDataSchema>
 export type StrategyStatusPayload = z.infer<typeof StrategyStatusPayloadSchema>
@@ -3355,6 +3358,7 @@ export type ConfiguredProcessesResponse = z.infer<typeof ConfiguredProcessesResp
 export type DelegateRead = z.infer<typeof DelegateReadSchema>
 export type DelegateCreateBody = z.infer<typeof DelegateCreateBodySchema>
 export type DelegateCapsUpdateBody = z.infer<typeof DelegateCapsUpdateBodySchema>
+export type PendingReviewListResponse = z.infer<typeof PendingReviewListResponseSchema>
 export type ProcessRunsResponse = z.infer<typeof ProcessRunsResponseSchema>
 export type ProcessSchemaResponse = z.infer<typeof ProcessSchemaResponseSchema>
 export type SystemStatusData = z.infer<typeof SystemStatusDataSchema>

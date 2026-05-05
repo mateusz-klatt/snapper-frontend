@@ -74,7 +74,7 @@ export function ConfigSnippetGenerator({
       </div>
 
       <div className='flex items-center justify-between'>
-        <p className='text-xs text-muted-500'>
+        <p className='text-xs text-muted-600'>
           Base URL is derived from this browser&apos;s origin + <code>/api/mcp</code>.
         </p>
         <Button

@@ -20,7 +20,7 @@ export function AIIntegration(): React.ReactElement {
 
 function LoadingShell(): React.ReactElement {
   return (
-    <div className='flex items-center justify-center p-8 text-muted-500'>
+    <div className='flex items-center justify-center p-8 text-muted-600'>
       <Loader2 className='w-5 h-5 mr-2 animate-spin' />
       <span>Loading AI integration…</span>
     </div>
@@ -59,7 +59,7 @@ function EnabledShell(): React.ReactElement {
       <header className='flex items-center justify-between'>
         <div>
           <h1 className='text-2xl font-bold'>AI Integration</h1>
-          <p className='text-sm text-muted-500'>
+          <p className='text-sm text-muted-600'>
             Manage AI delegates that connect to Snapper via MCP.
           </p>
         </div>
@@ -90,7 +90,7 @@ function DelegateList({
 }>): React.ReactElement {
   if (isLoading) {
     return (
-      <div className='flex items-center justify-center p-8 text-muted-500'>
+      <div className='flex items-center justify-center p-8 text-muted-600'>
         <Loader2 className='w-5 h-5 mr-2 animate-spin' />
         <span>Loading delegates…</span>
       </div>

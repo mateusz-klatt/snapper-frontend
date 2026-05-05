@@ -45,7 +45,7 @@ describe('MetricsDiffTable', () => {
 
     const mddDelta = screen.getByText('0.0000')
 
-    expect(mddDelta.className).toContain('text-muted-400')
+    expect(mddDelta.className).toContain('text-muted-600')
 
     const sortinoDelta = screen.getByText('-0.5500')
 

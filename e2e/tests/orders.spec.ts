@@ -5,13 +5,7 @@ import { mockWebSocket } from '../fixtures/ws-handlers'
 import { listEnvelope, makeOrder, makeExecutionPlanResponse } from '../fixtures/envelopes'
 
 test.describe('order flows', () => {
-  // The full "place market order" flow exercises Radix Select dropdowns
-  // with auto-populated fields (exchange, instrument, mode), which need
-  // explicit deterministic interaction. Skipped pending v1.4 follow-up
-  // that tackles Radix Select via `selectOption` semantics — the
-  // current cancel test plus the market-data flow already cover the
-  // happy-path REST mock + UI integration surface.
-  test.skip('places a market order via NewOrderModal happy path', async ({ browser }) => {
+  test('places a limit order via NewOrderModal happy path', async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
     let createdOrder = false
@@ -55,44 +49,44 @@ test.describe('order flows', () => {
 
     await page.getByRole('button', { name: /^New Order$/i }).click()
 
-    // Modal opens. Wait for the auto-population of the Exchange dropdown
-    // (the form's useEffect picks the first exchange once data loads).
     const dialog = page.getByRole('dialog')
 
     await expect(dialog).toBeVisible()
 
-    // Use Order Type = market to skip the price requirement.
-    const orderTypeSelect = dialog.getByRole('combobox', { name: 'Order Type' })
+    // Wait for the auto-populate chain to settle. The form's
+    // useEffect picks the first exchange once `useExchanges` lands,
+    // then the first instrument once that exchange's instruments
+    // fetch lands. Once Instrument shows BTC-USD the form is in
+    // the same state a user would see after the API responses race
+    // resolves on slow network.
+    const instrumentSelect = dialog.getByRole('combobox', { name: /Instrument/i })
 
-    await orderTypeSelect.click()
-    await page.getByRole('option', { name: /^Market$/ }).click()
+    await expect(instrumentSelect).toContainText('BTC-USD', { timeout: 5_000 })
 
-    const quantityField = dialog.getByRole('spinbutton', { name: /Quantity/i })
-
-    await quantityField.fill('0.5')
-
-    // Fill in instrument symbol manually if the auto-populate didn't fire.
-    // Modal auto-fills instrument from the loaded list; if Exchange combobox
-    // shows no value, the effect hasn't completed — give it a beat.
-    await expect
-      .poll(
-        async () => {
-          const exchangeBox = dialog.getByRole('combobox', { name: 'Exchange' })
-
-          return (await exchangeBox.textContent())?.trim() ?? ''
-        },
-        { timeout: 5_000 }
-      )
-      .not.toBe('')
+    // Use the default order type `limit` so the path stays inside
+    // pointer-driven inputs only. Driving the Radix Select dropdown
+    // to `market` would require a hit-test bypass: the host Modal
+    // uses native `<dialog>.showModal()` which puts the dialog on
+    // the browser top layer, while Radix Select renders its
+    // dropdown via Portal into document.body. A real user clicks
+    // through fine because the browser hit-tests against the
+    // visible pixel; in Playwright the synthetic click is
+    // intercepted by the top-layer dialog backdrop. The market
+    // path can be re-added once Modal moves the dropdown content
+    // into the dialog subtree (separate v1.4.x). For coverage
+    // purposes, limit + price exercises the same envelope path
+    // through to POST /api/orders.
+    await dialog.getByRole('spinbutton', { name: /Quantity/i }).fill('0.5')
+    await dialog.getByRole('spinbutton', { name: /^Price$/i }).fill('50000')
 
     await page.getByRole('button', { name: /Review Order/i }).click()
-
-    // Confirmation step.
     await page.getByRole('button', { name: /Confirm Order/i }).click()
 
-    // Modal closes; orders list refetches with the new order present.
+    // POST fired; modal closes; orders list refetches with the new
+    // order present. Assert via the cli-e2e-1 client_order_id which
+    // is unique to this test's makeOrder fixture.
+    await expect.poll(() => createdOrder, { timeout: 5_000 }).toBe(true)
     await expect(page.getByText(/cli-e2e-1/i)).toBeVisible({ timeout: 10_000 })
-    expect(createdOrder).toBe(true)
 
     await context.close()
   })
