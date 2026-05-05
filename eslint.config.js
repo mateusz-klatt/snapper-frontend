@@ -56,6 +56,15 @@ export default [
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
 
+      'jsx-a11y/no-noninteractive-tabindex': [
+        'error',
+        {
+          tags: [],
+          roles: ['tabpanel', 'region'],
+          allowExpressionValues: true,
+        },
+      ],
+
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
@@ -139,6 +148,8 @@ export default [
       'dist/**',
       'node_modules/**',
       'coverage/**',
+      'playwright-report/**',
+      'test-results/**',
       'vite.config.ts',
       'src/types/*.generated.ts',
     ],
