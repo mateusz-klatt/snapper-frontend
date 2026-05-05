@@ -119,10 +119,10 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
         )}
       </td>
       <td className='px-4 py-2 max-w-md text-xs text-alpine-700'>
-        {thesis !== null ? (
-          <span title={thesis}>{thesis.length > 120 ? `${thesis.slice(0, 120)}…` : thesis}</span>
-        ) : (
+        {thesis === null ? (
           <span className='text-muted-500'>—</span>
+        ) : (
+          <span title={thesis}>{thesis.length > 120 ? `${thesis.slice(0, 120)}…` : thesis}</span>
         )}
       </td>
       <td className='px-4 py-2'>{item.status}</td>
