@@ -526,6 +526,8 @@ export const PendingReviewSummaryItemSchema = z
     status: z.string(),
     deadline: z.iso.datetime(),
     fanout_after: z.iso.datetime(),
+    instrument: z.string().nullable().optional(),
+    signal_envelope: z.record(z.string(), z.any()).nullable().optional(),
   })
   .strict()
 
@@ -2615,6 +2617,7 @@ export const BacktestRunDataSchema = z
     strategy_name: z.string(),
     strategy_params: z.record(z.string(), z.any()),
     instrument_public_id: z.string(),
+    instrument: z.string().nullable().optional(),
     exchange: z.string(),
     timeframe: z.string(),
     start_date: z.iso.datetime(),
@@ -2836,6 +2839,7 @@ export const BacktestRunDetailDataSchema = z
     strategy_name: z.string(),
     strategy_params: z.record(z.string(), z.any()),
     instrument_public_id: z.string(),
+    instrument: z.string().nullable().optional(),
     exchange: z.string(),
     timeframe: z.string(),
     start_date: z.iso.datetime(),

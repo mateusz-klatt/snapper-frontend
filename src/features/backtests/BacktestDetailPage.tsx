@@ -81,7 +81,9 @@ export const BacktestDetailPage: React.FC<Props> = ({ runPublicId }) => {
         </div>
         <div>
           <div className='text-muted-500'>Instrument</div>
-          <div className='font-mono text-alpine-900'>{run.instrument_public_id}</div>
+          <div className='font-mono text-alpine-900'>
+            {run.instrument ?? run.instrument_public_id}
+          </div>
         </div>
         <div>
           <div className='text-muted-500'>Status</div>
