@@ -8,10 +8,12 @@ interface AppShellState {
   subscribedTopicsCount: number
 }
 
+const APP_SHELL_TOPICS: readonly string[] = Object.freeze(['ai_reviews.'])
+
 export function useAppShell(): AppShellState {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
 
-  useWSDispatcher({ enabled: !isTimeTraveling })
+  useWSDispatcher({ enabled: !isTimeTraveling, topics: APP_SHELL_TOPICS as string[] })
   useWebSocketConnection(undefined, { autoDisconnect: true })
   const { isConnected, connectionLag, subscribedTopics } = useAppStore()
 
