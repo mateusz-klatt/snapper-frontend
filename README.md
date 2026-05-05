@@ -65,6 +65,15 @@ make cov          # vitest with coverage (100% threshold)
 make check-all    # lint + format + typecheck + test + dead-code + cov + build
 ```
 
+Before opening / pushing a PR run the local CI gauntlet — the script
+mirrors the GitHub Actions `check` workflow exactly so a green
+`prepush` is a strong signal CI will pass on first attempt:
+
+```bash
+pnpm prepush      # format:check + lint + typecheck + test:coverage
+pnpm prepush:fix  # auto-fix format + lint, then typecheck + test:coverage
+```
+
 ## Generated types
 
 The following files are generated from the Snapper backend's OpenAPI / WebSocket / Pydantic / RBAC schemas and committed so the repo builds out of the box:
