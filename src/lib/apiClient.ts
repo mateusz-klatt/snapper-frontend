@@ -1120,26 +1120,10 @@ class APIClient {
       body.rationale = rationale
     }
 
-    // Backend's ``AiReviewDecisionRequest`` extends ``StrictBody``
-    // (``extra='forbid'``) and accepts the plain ``{ decision,
-    // rationale }`` shape directly — without the provenance envelope
-    // ``post()`` wraps mutating bodies in. Calling ``request()``
-    // directly with the JSON-stringified body keeps the StrictBody
-    // contract intact while still threading CSRF / retry / time-
-    // travel guards.
-    const response = await this.request(
+    const data = await this.postJSON(
       `/api/ai-reviews/${encodeURIComponent(reviewPublicId)}/decision`,
-      {
-        method: 'POST',
-        body: JSON.stringify(body),
-      }
+      body
     )
-
-    if (!response.ok) {
-      await this.raiseHttpError(response)
-    }
-
-    const data = await response.json()
 
     return validateResponse(data, AiReviewDecisionResponseSchema, '/ai-reviews/decision POST')
   }
