@@ -3729,12 +3729,19 @@ describe('cacheWsTicketFromResponse', () => {
         expect.stringMatching(/\/api\/ai-reviews\/rev-1\/decision$/),
         expect.objectContaining({ method: 'POST' })
       )
-      const envelope = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
-        payload: { decision: string; rationale?: string }
+      const body = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
+        decision: string
+        rationale?: string
+        public_id?: string
+        payload?: unknown
       }
 
-      expect(envelope.payload.decision).toBe('approve')
-      expect(envelope.payload.rationale).toBe('looks good')
+      expect(body.decision).toBe('approve')
+      expect(body.rationale).toBe('looks good')
+      // ``StrictBody`` rejects extra fields, so the call MUST go out plain
+      // — without the provenance envelope ``post()`` would otherwise wrap.
+      expect(body.public_id).toBeUndefined()
+      expect(body.payload).toBeUndefined()
     })
     it('submitAiReviewDecision omits rationale field when not supplied', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3748,12 +3755,13 @@ describe('cacheWsTicketFromResponse', () => {
         }),
       })
       await apiClient.submitAiReviewDecision('rev-2', 'reject')
-      const envelope = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
-        payload: Record<string, unknown>
-      }
+      const body = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as Record<
+        string,
+        unknown
+      >
 
-      expect(envelope.payload['decision']).toBe('reject')
-      expect(envelope.payload['rationale']).toBeUndefined()
+      expect(body['decision']).toBe('reject')
+      expect(body['rationale']).toBeUndefined()
     })
     it('submitAiReviewDecision omits rationale field when empty string', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3767,11 +3775,12 @@ describe('cacheWsTicketFromResponse', () => {
         }),
       })
       await apiClient.submitAiReviewDecision('rev-3', 'approve', '')
-      const envelope = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
-        payload: Record<string, unknown>
-      }
+      const body = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as Record<
+        string,
+        unknown
+      >
 
-      expect(envelope.payload['rationale']).toBeUndefined()
+      expect(body['rationale']).toBeUndefined()
     })
     it('submitAiReviewDecision throws APIError on 422 (invalid decision)', async () => {
       const jsonFn = async () => ({
