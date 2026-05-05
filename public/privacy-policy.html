@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Snapper</title>
+    <meta
+      name="description"
+      content="Snapper privacy policy: zero third-party SDKs, no analytics, no telemetry. Data flows only between your device, your self-hosted backend, and Apple Push Notification service."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/inter-latin.woff2') format('woff2');
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+          U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+        unicode-range:
+          U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 100 800;
+        font-display: swap;
+        src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+        unicode-range:
+          U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+          U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 100 800;
+        font-display: swap;
+        src: url('/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
+        unicode-range:
+          U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+      :root {
+        --color-bg: #ffffff;
+        --color-surface: #f7f6f2;
+        --color-text: #2e2b26;
+        --color-text-muted: #6f695f;
+        --color-border: #e6e3dc;
+        --color-link: #0f6b3a;
+        --color-link-hover: #0a4a28;
+        --max-width: 760px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+      body {
+        margin: 0;
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .page {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 3rem 1.5rem 4rem;
+      }
+      header.brand {
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      header.brand .eyebrow {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+        margin-bottom: 0.5rem;
+      }
+      header.brand h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      .meta {
+        font-size: 0.875rem;
+        color: var(--color-text-muted);
+        margin: 1.5rem 0 2rem;
+      }
+      .meta dl {
+        margin: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.25rem 1rem;
+      }
+      .meta dt {
+        font-weight: 600;
+        color: var(--color-text);
+      }
+      .meta dd {
+        margin: 0;
+      }
+      .tldr {
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 0.75rem;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .tldr h2 {
+        margin-top: 0;
+      }
+      h2 {
+        font-size: 1.375rem;
+        font-weight: 700;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        letter-spacing: -0.01em;
+      }
+      h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+      }
+      p {
+        margin: 0 0 1rem;
+      }
+      ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      ul li {
+        margin-bottom: 0.5rem;
+      }
+      strong {
+        font-weight: 600;
+      }
+      a {
+        color: var(--color-link);
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+      }
+      a:hover {
+        color: var(--color-link-hover);
+      }
+      code {
+        font-family: 'JetBrains Mono', Monaco, Menlo, Consolas, monospace;
+        font-size: 0.875em;
+        padding: 0.125em 0.35em;
+        background-color: var(--color-surface);
+        border-radius: 0.25rem;
+      }
+      footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--color-border);
+        font-size: 0.875rem;
+        color: var(--color-text-muted);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-bg: #111214;
+          --color-surface: #1a1c1f;
+          --color-text: #f5f1e8;
+          --color-text-muted: #a89c87;
+          --color-border: #2a2c30;
+          --color-link: #4ade80;
+          --color-link-hover: #86efac;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page" role="main">
+      <header class="brand">
+        <div class="eyebrow">Snapper</div>
+        <h1>Privacy Policy</h1>
+      </header>
+
+      <div class="meta">
+        <dl>
+          <dt>Effective date:</dt>
+          <dd>2026-05-05</dd>
+          <dt>Last updated:</dt>
+          <dd>2026-05-05</dd>
+          <dt>App:</dt>
+          <dd>Snapper (iOS)</dd>
+          <dt>Source:</dt>
+          <dd>
+            <a href="https://github.com/mateusz-klatt/snapper-ios"
+              >github.com/mateusz-klatt/snapper-ios</a
+            >
+          </dd>
+          <dt>Contact:</dt>
+          <dd><a href="mailto:mateusz@klatt.ie">mateusz@klatt.ie</a></dd>
+        </dl>
+      </div>
+
+      <section class="tldr">
+        <h2>TL;DR</h2>
+        <p>
+          Snapper is a self-hosted trading client.
+          <strong>You run your own backend; the app talks to that backend, not to us.</strong> This
+          privacy policy describes what the app does on your device and which third parties (Apple,
+          your own backend) the app communicates with.
+        </p>
+        <ul>
+          <li>
+            <strong>No analytics.</strong> No third-party SDKs. No telemetry sent to anyone except
+            your own backend.
+          </li>
+          <li>
+            <strong>No advertising.</strong> No ad networks. No cross-site / cross-app tracking.
+          </li>
+          <li>
+            <strong>No accounts on our infrastructure.</strong> Your account lives on your
+            self-hosted backend.
+          </li>
+          <li>
+            <strong>No location data.</strong> No microphone / camera / contacts / photos / health
+            access.
+          </li>
+          <li>
+            <strong>The only data leaving your device</strong> goes to your own backend (URL you
+            configured) and to Apple's APNs servers (for push notifications, if you opted in).
+          </li>
+        </ul>
+      </section>
+
+      <h2>Who we are</h2>
+      <p>
+        The Snapper iOS app is open-source software published at
+        <a href="https://github.com/mateusz-klatt/snapper-ios"
+          >github.com/mateusz-klatt/snapper-ios</a
+        >
+        under the MIT license. The app is distributed via the Apple App Store and TestFlight by
+        Mateusz Klatt as the App Store developer of record.
+      </p>
+      <p>
+        The app is a thin client — it has no server-side component operated by us. All of your data
+        (orders, positions, alerts, credentials) is stored on the backend you (or your operator)
+        run. We have no access to that backend.
+      </p>
+
+      <h2>Data the app handles</h2>
+      <p>
+        The app processes the following categories of data <strong>on your device</strong> so it can
+        do its job. None of this is uploaded to any service operated by us.
+      </p>
+
+      <h3>Authentication credentials</h3>
+      <ul>
+        <li>
+          <strong>What:</strong> username, password (during the login form), and the session tokens
+          / cookies (<code>access_token</code>, <code>refresh_token</code>, <code>ws_token</code>,
+          <code>csrf_token</code>) returned by your backend.
+        </li>
+        <li>
+          <strong>How stored:</strong> the backend's HTTP session cookies are accepted and replayed
+          by the system <code>URLSession</code> (the app uses <code>URLSession.shared</code> and
+          lets iOS handle cookie storage). The short-lived WebSocket token is held in memory only —
+          never written to disk by the app. The plaintext password is held in memory inside
+          <code>LoginViewModel</code> only for the duration of the login request —
+          <code>LoginViewModel.login()</code> overwrites it with an empty string the moment the
+          login call resolves (success or failure), so it does not persist for the rest of the
+          session.
+        </li>
+        <li>
+          <strong>Where it goes:</strong> sent to your backend (the URL you configured) over HTTPS
+          during login and refresh requests. Never sent anywhere else.
+        </li>
+      </ul>
+
+      <h3>Trade-related data</h3>
+      <ul>
+        <li>
+          <strong>What:</strong> orders, positions, executions, alerts, wallet balances, instrument
+          metadata, AI review payloads. All of this originates from your backend and is rendered
+          locally for display.
+        </li>
+        <li>
+          <strong>How stored:</strong> in-memory only during the app session. Some derived state
+          (selected wallet, time-travel cursor, theme) is persisted to <code>UserDefaults</code> so
+          the app can restore it on next launch.
+        </li>
+        <li>
+          <strong>Where it goes:</strong> never leaves your device except as part of the trading
+          commands you submit back to your own backend.
+        </li>
+      </ul>
+
+      <h3>Push notification token (APNs)</h3>
+      <ul>
+        <li>
+          <strong>What:</strong> an opaque identifier issued by Apple Push Notification service
+          (APNs) that lets your backend send notifications to your device. Generated by iOS only
+          after you grant the notification permission.
+        </li>
+        <li>
+          <strong>How stored:</strong> held in memory + relayed to your backend via
+          <code>POST /api/devices</code> so your backend knows where to send alerts.
+        </li>
+        <li>
+          <strong>Where it goes:</strong> to Apple (APNs is an Apple service) and to your own
+          backend. Apple's APNs handling is governed by
+          <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. Your backend
+          can revoke or re-register your device at any time.
+        </li>
+      </ul>
+
+      <h3>Device identifier (IDFV)</h3>
+      <ul>
+        <li>
+          <strong>What:</strong> Apple's <code>identifierForVendor</code> — a UUID that identifies
+          <em>your</em> device for <em>this</em> developer (Mateusz Klatt). Different developer =
+          different IDFV. Resets if you uninstall every app from this developer.
+        </li>
+        <li>
+          <strong>Why:</strong> the backend uses it as a per-device key to disambiguate multiple
+          installs (e.g. iPhone + iPad would be two separate device rows). This is the standard
+          Apple-recommended privacy-friendly device identifier — see
+          <a href="https://developer.apple.com/documentation/uikit/uidevice/identifierforvendor"
+            >Apple's "Identifying a device" docs</a
+          >.
+        </li>
+        <li>
+          <strong>Fallback:</strong> in the rare case where iOS returns no
+          <code>identifierForVendor</code> (e.g. very early in the launch lifecycle, before the
+          system has assigned one), the app generates a fresh random <code>UUID()</code> as a
+          one-shot replacement for that registration call. That fallback id is NOT stable across
+          launches — a subsequent registration would generate a new one — so the backend may see
+          your device as a new row in that edge case. The IDFV path is the steady-state behavior on
+          every supported device.
+        </li>
+        <li>
+          <strong>How stored:</strong> held in memory + sent to your backend with each
+          device-registration call.
+        </li>
+        <li><strong>Where it goes:</strong> to your own backend only.</li>
+        <li>
+          <strong>Disclosed in <code>PrivacyInfo.xcprivacy</code></strong> as
+          <code>NSPrivacyCollectedDataTypeDeviceID</code> with purpose
+          <code>AppFunctionality</code> and <code>Tracking = false</code>.
+        </li>
+      </ul>
+
+      <h3>App preferences</h3>
+      <ul>
+        <li>
+          <strong>What:</strong> UI choices like selected wallet, theme, and time-travel cursor.
+        </li>
+        <li>
+          <strong>How stored:</strong> Apple <code>UserDefaults</code> (declared in
+          <code>PrivacyInfo.xcprivacy</code> under <code>CA92.1</code>).
+        </li>
+        <li><strong>Where it goes:</strong> stays on your device.</li>
+      </ul>
+
+      <h2>Data we do NOT collect</h2>
+      <ul>
+        <li>We do not run any analytics, crash reporting, or telemetry SDK.</li>
+        <li>We do not run an ad network or any cross-site / cross-app tracker.</li>
+        <li>
+          We do not access your location, contacts, microphone, camera, photos, or health data. The
+          app does not request any of these permissions.
+        </li>
+        <li>We do not share your data with third parties for advertising or marketing.</li>
+        <li>
+          We do not maintain any server that holds your data — the only servers in the loop are your
+          own backend and Apple's APNs.
+        </li>
+      </ul>
+
+      <h2>Third parties</h2>
+      <p>The app communicates with exactly two parties beyond your device:</p>
+      <ol>
+        <li>
+          <strong>Your own backend.</strong> You (or your operator) configure the URL in the app's
+          settings. All trading data flows here. Snapper is open source — you can read the wire
+          protocol at
+          <a href="https://github.com/mateusz-klatt/snapper-ios"
+            >github.com/mateusz-klatt/snapper-ios</a
+          >.
+        </li>
+        <li>
+          <strong>Apple Push Notification service (APNs).</strong> Used only if you opted in to
+          notifications. Subject to
+          <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.
+        </li>
+      </ol>
+      <p>
+        There are no other network endpoints. The app does not embed any third-party SDK, analytics
+        library, ad network, or tracking pixel.
+      </p>
+
+      <h2>Children's privacy</h2>
+      <p>
+        The app is rated 17+ on the App Store and is not intended for children under 17. We do not
+        knowingly collect data from children.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        Because we do not operate any servers that hold your data, requests for access, correction,
+        deletion, or portability of your data should be directed to your backend operator (the
+        operator of the backend URL you configured in the app).
+      </p>
+      <p>
+        If you have privacy questions about the app's on-device behavior or its source code, contact
+        us via the email below or open a public issue on the GitHub repository.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>Material changes will be announced via:</p>
+      <ul>
+        <li>An updated "Last updated" date at the top of this document.</li>
+        <li>A new commit to the source repository with a clear changelog entry.</li>
+        <li>
+          For App Store-relevant changes, an updated "Privacy Policy URL" in App Store Connect.
+        </li>
+      </ul>
+      <p>
+        There is no in-app notification mechanism for privacy policy changes — the change history is
+        the git log of the source repository.
+      </p>
+
+      <h2>Contact</h2>
+      <ul>
+        <li>Email: <a href="mailto:mateusz@klatt.ie">mateusz@klatt.ie</a></li>
+        <li>
+          GitHub issues:
+          <a href="https://github.com/mateusz-klatt/snapper-ios/issues"
+            >github.com/mateusz-klatt/snapper-ios/issues</a
+          >
+        </li>
+        <li>
+          Source code:
+          <a href="https://github.com/mateusz-klatt/snapper-ios"
+            >github.com/mateusz-klatt/snapper-ios</a
+          >
+        </li>
+      </ul>
+
+      <footer>
+        <p>← Back to <a href="/">Trading Console</a></p>
+      </footer>
+    </main>
+  </body>
+</html>
