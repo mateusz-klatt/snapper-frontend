@@ -333,7 +333,7 @@ export function MarketData() {
           <div className='flex items-center justify-center h-full'>
             <div className='text-center'>
               <p className='text-muted-500 mb-2'>No data available for {selectedInstrument}</p>
-              <p className='text-sm text-muted-400'>
+              <p className='text-sm text-muted-500'>
                 The instrument may not exist or has no{' '}
                 {timeframes.find(t => t.value === selectedTimeframe)?.label.toLowerCase()} data
               </p>

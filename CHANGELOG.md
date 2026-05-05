@@ -4,6 +4,54 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] — 2026-05-05
+
+E2E completion + a11y `serious|critical` gate. Builds on the
+ticker/thesis surfacing in PR #7 and the contrast-token bumps in
+PR #8 to close the v1.3 deferred items.
+
+### Added
+
+- **Place-order E2E test un-skipped**
+  (`e2e/tests/orders.spec.ts`). Drives the `NewOrderModal` happy
+  path through to a successful POST `/api/orders`, with the new
+  order surfacing in the orders list refetch. 5/5 stable under
+  `--repeat-each 5`.
+- **Skip-link in App shell.** `<main id="main-content"
+  aria-label="Main content">` now wraps an `sr-only
+  focus:not-sr-only` "Skip to main content" anchor as its first
+  descendant. Gives the scrollable region a keyboard-reachable
+  child so axe `scrollable-region-focusable` passes without
+  putting `tabIndex` on a non-interactive element (which both
+  `jsx-a11y/no-noninteractive-tabindex` and Sonar S6845 flag).
+
+### Changed
+
+- **Axe smoke gate tightened from `critical`-only to
+  `critical|serious`.** All 6 audited routes (Overview, Market
+  Data, Orders & Executions, Positions, Backtests, Settings)
+  now pass the stricter gate.
+- **Market Data empty-state copy moved from `text-muted-400` to
+  `text-muted-500`** ("The instrument may not exist or has no
+  X data") — the only `text-muted-400` use over a light
+  background that PR #8's contrast pass did not catch.
+
+### Fixed
+
+- **E2E api fixture `'**/api/exchanges'` glob now trails with
+  `*` to match the `?wallet_public_id=…` query strings that
+  `apiClient.getJSON` auto-appends to every multi-tenant GET.**
+  Without the wildcard, the exchanges fetch fell through to the
+  default 404 catch-all when the new-order modal mounted —
+  surface symptom in v1.3 was the place-order test having to be
+  `test.skip`-ped.
+
+### Tooling
+
+- ESLint config `ignores` now lists `playwright-report/**` and
+  `test-results/**` so generated trace artefacts don't poison
+  the lint pass.
+
 ## [1.3.1] — 2026-05-05
 
 ### Changed

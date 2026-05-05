@@ -153,7 +153,23 @@ function App() {
               <span>Time Travel Mode — viewing historical data (read-only)</span>
             </div>
           )}
-        <main className='flex-1 overflow-y-auto p-4 sm:p-6'>
+        <main
+          id='main-content'
+          className='flex-1 overflow-y-auto p-4 sm:p-6'
+          aria-label='Main content'
+        >
+          {/*
+            Skip-link target — gives the scrollable `<main>` region a
+            keyboard-reachable descendant so axe
+            `scrollable-region-focusable` passes without putting
+            `tabIndex` on a non-interactive element (which jsx-a11y /
+            Sonar S6845 flag). Routes whose body has no other
+            focusable elements (e.g. empty Overview) still satisfy
+            WCAG 2.1.1 SC because this anchor stays in the tab order.
+          */}
+          <a href='#main-content' className='sr-only focus:not-sr-only'>
+            Skip to main content
+          </a>
           <div className='mx-auto w-full max-w-screen-2xl'>
             <AppRoutes activeTab={activeTab} />
           </div>

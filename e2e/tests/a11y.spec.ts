@@ -5,21 +5,21 @@ import { mockApi } from '../fixtures/api-handlers'
 import { mockWebSocket } from '../fixtures/ws-handlers'
 
 /**
- * Axe smoke — no ``critical`` WCAG 2.1 AA violations on the
+ * Axe smoke — no ``serious|critical`` WCAG 2.1 AA violations on the
  * authenticated landing routes. Catches regressions like missing
- * ``aria-label`` on icon-only buttons, broken form semantics.
+ * ``aria-label`` on icon-only buttons, broken form semantics, and
+ * color-contrast / scrollable-region issues.
  *
- * ``serious`` (notably ``scrollable-region-focusable`` on the main
- * scroll container and a few residual ``color-contrast`` lints on
- * Market Data tiles) is intentionally NOT blocking yet — fixing
- * ``scrollable-region-focusable`` cleanly without a ``tabIndex``
- * eslint bypass requires a structural refactor of the App shell that
- * a v1.4 contrast-only pass should not gate on.
+ * v1.4 tightened the gate from ``critical``-only after the cleanup
+ * pass: ``--color-muted-500`` lifted, ``text-dark-400`` empty-state
+ * placeholders replaced (#8), Market Data empty-state copy moved
+ * from ``text-muted-400`` to ``text-muted-500``, and the App shell
+ * ``<main>`` region given an accessible name + skip-link descendant
+ * so axe ``scrollable-region-focusable`` passes without a
+ * ``tabIndex`` eslint/Sonar bypass.
  *
- * v1.4 reduced the residual surface to ~2 routes by lifting
- * ``--color-muted-500`` and replacing ``text-dark-400`` empty-state
- * placeholders with ``text-muted-500``; the remaining ``serious``
- * violations are tracked for v1.5.
+ * ``moderate`` / ``minor`` are noise; tighten in a follow-up if the
+ * surface stabilises.
  */
 const ROUTES_TO_AUDIT: Array<{ tab: string; expectHeading: RegExp }> = [
   { tab: 'Overview', expectHeading: /Overview/i },
@@ -31,7 +31,7 @@ const ROUTES_TO_AUDIT: Array<{ tab: string; expectHeading: RegExp }> = [
 ]
 
 for (const { tab, expectHeading } of ROUTES_TO_AUDIT) {
-  test(`a11y: ${tab} has no critical WCAG 2.1 AA violations`, async ({ browser }) => {
+  test(`a11y: ${tab} has no serious or critical WCAG 2.1 AA violations`, async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
 
@@ -54,7 +54,9 @@ for (const { tab, expectHeading } of ROUTES_TO_AUDIT) {
 
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()
 
-    const blocking = results.violations.filter(v => v.impact === 'critical')
+    const blocking = results.violations.filter(
+      v => v.impact === 'critical' || v.impact === 'serious'
+    )
 
     if (blocking.length > 0) {
       console.warn(
