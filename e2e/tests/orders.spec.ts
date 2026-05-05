@@ -5,12 +5,19 @@ import { mockWebSocket } from '../fixtures/ws-handlers'
 import { listEnvelope, makeOrder, makeExecutionPlanResponse } from '../fixtures/envelopes'
 
 test.describe('order flows', () => {
-  // The full "place market order" flow exercises Radix Select dropdowns
-  // with auto-populated fields (exchange, instrument, mode), which need
-  // explicit deterministic interaction. Skipped pending v1.4 follow-up
-  // that tackles Radix Select via `selectOption` semantics — the
-  // current cancel test plus the market-data flow already cover the
-  // happy-path REST mock + UI integration surface.
+  // The full place-market-order flow drives two Radix Select triggers
+  // (Exchange + Order Type). The listbox renders in a portal outside
+  // the dialog DOM tree and a Playwright-driven click on the trigger
+  // does not always fire the listbox open in headless Chromium —
+  // every iteration on the un-skip surfaces a different timing flake
+  // (auto-fill race on Exchange, listbox not visible after click on
+  // Order Type, or the trigger label not reflecting the chosen value
+  // before the next assertion). The cancel test plus the market-data
+  // candle smoke already cover the happy-path REST mock + UI surface.
+  // Tracking the un-skip as a follow-up; the proven path is to swap
+  // the Radix Select in NewOrderModal for a native ``<select>`` (or a
+  // wrapper that exposes ``selectOption`` semantics) — that's a UX
+  // change, not a test-only fix, so it carries its own design call.
   test.skip('places a market order via NewOrderModal happy path', async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
@@ -61,29 +68,32 @@ test.describe('order flows', () => {
 
     await expect(dialog).toBeVisible()
 
-    // Use Order Type = market to skip the price requirement.
-    const orderTypeSelect = dialog.getByRole('combobox', { name: 'Order Type' })
+    // Helper: drive a Radix Select trigger deterministically. The
+    // listbox renders in a portal outside the dialog DOM tree, so
+    // option queries originate from ``page``. After the option click
+    // we wait for the trigger to reflect the chosen label so the next
+    // step doesn't race the pop-out animation.
+    const pickRadixOption = async (
+      triggerName: string,
+      optionLabel: RegExp,
+      labelMatcher: RegExp
+    ): Promise<void> => {
+      const trigger = dialog.getByRole('combobox', { name: triggerName })
 
-    await orderTypeSelect.click()
-    await page.getByRole('option', { name: /^Market$/ }).click()
+      await trigger.click()
+      const option = page.getByRole('option', { name: optionLabel })
+
+      await expect(option).toBeVisible({ timeout: 5_000 })
+      await option.click()
+      await expect(trigger).toHaveText(labelMatcher, { timeout: 5_000 })
+    }
+
+    await pickRadixOption('Exchange', /^kraken$/, /kraken/)
+    await pickRadixOption('Order Type', /^Market$/, /Market/)
 
     const quantityField = dialog.getByRole('spinbutton', { name: /Quantity/i })
 
     await quantityField.fill('0.5')
-
-    // Fill in instrument symbol manually if the auto-populate didn't fire.
-    // Modal auto-fills instrument from the loaded list; if Exchange combobox
-    // shows no value, the effect hasn't completed — give it a beat.
-    await expect
-      .poll(
-        async () => {
-          const exchangeBox = dialog.getByRole('combobox', { name: 'Exchange' })
-
-          return (await exchangeBox.textContent())?.trim() ?? ''
-        },
-        { timeout: 5_000 }
-      )
-      .not.toBe('')
 
     await page.getByRole('button', { name: /Review Order/i }).click()
 

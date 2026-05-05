@@ -153,9 +153,16 @@ function App() {
               <span>Time Travel Mode — viewing historical data (read-only)</span>
             </div>
           )}
-        <main className='flex-1 overflow-y-auto p-4 sm:p-6'>
-          <div className='mx-auto w-full max-w-screen-2xl'>
-            <AppRoutes activeTab={activeTab} />
+        <main className='flex-1 flex flex-col min-h-0'>
+          <div
+            role='region'
+            aria-label='Trading content'
+            tabIndex={0}
+            className='flex-1 overflow-y-auto p-4 sm:p-6'
+          >
+            <div className='mx-auto w-full max-w-screen-2xl'>
+              <AppRoutes activeTab={activeTab} />
+            </div>
           </div>
         </main>
       </section>

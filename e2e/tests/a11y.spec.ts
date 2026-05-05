@@ -5,21 +5,26 @@ import { mockApi } from '../fixtures/api-handlers'
 import { mockWebSocket } from '../fixtures/ws-handlers'
 
 /**
- * Axe smoke — no ``critical`` WCAG 2.1 AA violations on the
- * authenticated landing routes. Catches regressions like missing
- * ``aria-label`` on icon-only buttons, broken form semantics.
+ * Axe smoke — no ``critical`` or ``serious`` WCAG 2.1 AA violations on
+ * the authenticated landing routes. Catches regressions like missing
+ * ``aria-label`` on icon-only buttons, insufficient text-vs-background
+ * contrast, and inaccessible scroll containers.
  *
- * ``serious`` (notably ``scrollable-region-focusable`` on the main
- * scroll container and a few residual ``color-contrast`` lints on
- * Market Data tiles) is intentionally NOT blocking yet — fixing
- * ``scrollable-region-focusable`` cleanly without a ``tabIndex``
- * eslint bypass requires a structural refactor of the App shell that
- * a v1.4 contrast-only pass should not gate on.
+ * v1.5 tightened the gate from ``critical``-only to ``serious +
+ * critical`` after:
+ * - the ``--color-muted-500`` token bump cleared baseline contrast
+ *   (5.83:1 light, 5.65:1 dark — both above WCAG 2.1 AA 4.5:1);
+ * - ``text-dark-400`` empty-state placeholders moved to
+ *   ``text-muted-500`` (was rendering at 1.28:1 ≈ white-on-white in
+ *   light mode);
+ * - the App-shell scroll container is now a ``<div role="region">``
+ *   wrapper inside ``<main>``, with ``tabIndex={0}`` + accessible
+ *   name, satisfying ``scrollable-region-focusable`` without an
+ *   eslint bypass.
  *
- * v1.4 reduced the residual surface to ~2 routes by lifting
- * ``--color-muted-500`` and replacing ``text-dark-400`` empty-state
- * placeholders with ``text-muted-500``; the remaining ``serious``
- * violations are tracked for v1.5.
+ * ``moderate`` / ``minor`` remain non-blocking — they cover stylistic
+ * niceties (duplicate landmark labels, etc.) that are expensive to
+ * fully eliminate without UX regressions.
  */
 const ROUTES_TO_AUDIT: Array<{ tab: string; expectHeading: RegExp }> = [
   { tab: 'Overview', expectHeading: /Overview/i },
@@ -31,7 +36,7 @@ const ROUTES_TO_AUDIT: Array<{ tab: string; expectHeading: RegExp }> = [
 ]
 
 for (const { tab, expectHeading } of ROUTES_TO_AUDIT) {
-  test(`a11y: ${tab} has no critical WCAG 2.1 AA violations`, async ({ browser }) => {
+  test(`a11y: ${tab} has no critical/serious WCAG 2.1 AA violations`, async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
 
@@ -54,7 +59,9 @@ for (const { tab, expectHeading } of ROUTES_TO_AUDIT) {
 
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze()
 
-    const blocking = results.violations.filter(v => v.impact === 'critical')
+    const blocking = results.violations.filter(v =>
+      ['serious', 'critical'].includes(v.impact ?? 'minor')
+    )
 
     if (blocking.length > 0) {
       console.warn(
