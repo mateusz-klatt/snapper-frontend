@@ -3642,6 +3642,15 @@ export type Components = {
         DelegateDeactivateBody: {
             reason?: string | null;
         };
+        AiReviewDecisionCommand: {
+            type?: "ai_review_decision_command";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["AiReviewDecisionRequest"];
+        };
         AiReviewDecisionRequest: {
             decision: string;
             rationale?: string | null;
@@ -4572,7 +4581,7 @@ export interface Operations {
         };
         requestBody: {
             content: {
-                "application/json": Components["schemas"]["AiReviewDecisionRequest"];
+                "application/json": Components["schemas"]["AiReviewDecisionCommand"];
             };
         };
         responses: {
