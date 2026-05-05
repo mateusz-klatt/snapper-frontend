@@ -5,19 +5,19 @@ import { mockWebSocket } from '../fixtures/ws-handlers'
 import { listEnvelope, makeOrder, makeExecutionPlanResponse } from '../fixtures/envelopes'
 
 test.describe('order flows', () => {
-  // The full place-market-order flow drives two Radix Select triggers
-  // (Exchange + Order Type). The listbox renders in a portal outside
-  // the dialog DOM tree and a Playwright-driven click on the trigger
-  // does not always fire the listbox open in headless Chromium —
-  // every iteration on the un-skip surfaces a different timing flake
-  // (auto-fill race on Exchange, listbox not visible after click on
-  // Order Type, or the trigger label not reflecting the chosen value
-  // before the next assertion). The cancel test plus the market-data
-  // candle smoke already cover the happy-path REST mock + UI surface.
-  // Tracking the un-skip as a follow-up; the proven path is to swap
-  // the Radix Select in NewOrderModal for a native ``<select>`` (or a
-  // wrapper that exposes ``selectOption`` semantics) — that's a UX
-  // change, not a test-only fix, so it carries its own design call.
+  // ``NewOrderModal`` was migrated from Radix Select to native
+  // ``<select>`` in the v1.5 a11y track so options are now picked via
+  // Playwright's ``selectOption`` semantic. The un-skip surfaced a
+  // separate timing issue: the Exchange ``<select>`` renders empty
+  // until the ``/api/exchanges`` mock resolves, and the initial
+  // dropdown render races the ``expect.toBeAttached`` wait under
+  // headless Chromium even though the mock is registered before
+  // ``page.goto``. The proven path forward is to either pre-resolve
+  // the modal's queries via a fixture-driven warm-up, or split the
+  // happy-path assertion into the visible REST + UI integration that
+  // the cancel test + market-data smoke already cover. Tracking the
+  // un-skip as a follow-up in v1.6 — the migrated native ``<select>``
+  // is itself the long-pole improvement and is shipping in this PR.
   test.skip('places a market order via NewOrderModal happy path', async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
@@ -68,28 +68,22 @@ test.describe('order flows', () => {
 
     await expect(dialog).toBeVisible()
 
-    // Helper: drive a Radix Select trigger deterministically. The
-    // listbox renders in a portal outside the dialog DOM tree, so
-    // option queries originate from ``page``. After the option click
-    // we wait for the trigger to reflect the chosen label so the next
-    // step doesn't race the pop-out animation.
-    const pickRadixOption = async (
-      triggerName: string,
-      optionLabel: RegExp,
-      labelMatcher: RegExp
-    ): Promise<void> => {
-      const trigger = dialog.getByRole('combobox', { name: triggerName })
+    // ``NewOrderModal`` uses native ``<select>`` (the testable path
+    // documented in the v1.5 a11y PR), so options are picked by value
+    // via ``selectOption`` instead of clicking a Radix portal listbox.
+    const exchangeSelect = dialog.getByRole('combobox', { name: 'Exchange' })
+    const orderTypeSelect = dialog.getByRole('combobox', { name: 'Order Type' })
 
-      await trigger.click()
-      const option = page.getByRole('option', { name: optionLabel })
-
-      await expect(option).toBeVisible({ timeout: 5_000 })
-      await option.click()
-      await expect(trigger).toHaveText(labelMatcher, { timeout: 5_000 })
-    }
-
-    await pickRadixOption('Exchange', /^kraken$/, /kraken/)
-    await pickRadixOption('Order Type', /^Market$/, /Market/)
+    // Wait for the /api/exchanges mock to populate the Exchange
+    // dropdown — without this the next ``selectOption`` races the
+    // initial empty render and times out.
+    await expect(exchangeSelect.locator('option[value="kraken"]')).toBeAttached({
+      timeout: 5_000,
+    })
+    await exchangeSelect.selectOption('kraken')
+    await expect(exchangeSelect).toHaveValue('kraken')
+    await orderTypeSelect.selectOption('market')
+    await expect(orderTypeSelect).toHaveValue('market')
 
     const quantityField = dialog.getByRole('spinbutton', { name: /Quantity/i })
 

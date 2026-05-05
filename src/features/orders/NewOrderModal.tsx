@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { v7 as uuid7 } from 'uuid'
 import { Modal } from '../../components/ui/Modal'
-import { ThemeSelect } from '../../components/ThemeSelect'
+import { NativeSelect } from '../../components/NativeSelect'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
 import {
   useExchanges,
@@ -303,7 +303,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 <label htmlFor={exchangeSelectId} className='block text-xs text-muted-500 mb-1'>
                   Exchange
                 </label>
-                <ThemeSelect
+                <NativeSelect
                   id={exchangeSelectId}
                   value={exchange}
                   onChange={setExchange}
@@ -318,7 +318,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                   <span>Instrument</span>
                   {selectedIsMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
                 </label>
-                <ThemeSelect
+                <NativeSelect
                   id={instrumentSelectId}
                   value={instrument}
                   onChange={handleInstrumentChange}
@@ -336,7 +336,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 <label htmlFor={sideSelectId} className='block text-xs text-muted-500 mb-1'>
                   Side
                 </label>
-                <ThemeSelect
+                <NativeSelect
                   id={sideSelectId}
                   value={side}
                   onChange={setSide}
@@ -347,7 +347,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 <label htmlFor={orderTypeSelectId} className='block text-xs text-muted-500 mb-1'>
                   Order Type
                 </label>
-                <ThemeSelect
+                <NativeSelect
                   id={orderTypeSelectId}
                   value={orderType}
                   onChange={setOrderType}
@@ -409,7 +409,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 <label htmlFor={modeSelectId} className='block text-xs text-muted-500 mb-1'>
                   Mode
                 </label>
-                <ThemeSelect
+                <NativeSelect
                   id={modeSelectId}
                   value={mode}
                   onChange={setMode}
@@ -420,7 +420,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 <label htmlFor={walletSelectId} className='block text-xs text-muted-500 mb-1'>
                   Wallet
                 </label>
-                <ThemeSelect
+                <NativeSelect
                   id={walletSelectId}
                   value={walletPublicId}
                   onChange={setWalletPublicId}
