@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { AiReviewInbox } from './AiReviewInbox'
@@ -8,6 +8,21 @@ import type { AiReviewActivityFrame } from '../../stores/wsDispatcher'
 const mockUseAuth = vi.fn()
 const mockUsePendingAiReviews = vi.fn()
 const mockUseAiReviewActivity = vi.fn()
+const mockSubmitMutate = vi.fn()
+
+interface MockSubmitState {
+  mutate: typeof mockSubmitMutate
+  isPending: boolean
+  isError: boolean
+  error: Error | null
+}
+
+const mockUseSubmitAiReviewDecision = vi.fn<() => MockSubmitState>(() => ({
+  mutate: mockSubmitMutate,
+  isPending: false,
+  isError: false,
+  error: null,
+}))
 
 vi.mock('../../stores/auth', () => ({
   useAuth: () => mockUseAuth(),
@@ -16,6 +31,7 @@ vi.mock('../../stores/auth', () => ({
 vi.mock('../../hooks/queries', () => ({
   usePendingAiReviews: () => mockUsePendingAiReviews(),
   useAiReviewActivity: () => mockUseAiReviewActivity(),
+  useSubmitAiReviewDecision: () => mockUseSubmitAiReviewDecision(),
 }))
 
 const renderWithProviders = (ui: ReactNode): ReturnType<typeof render> => {
@@ -228,6 +244,133 @@ describe('AiReviewInbox', () => {
     const dashes = screen.getAllByText('—')
 
     expect(dashes.length).toBeGreaterThanOrEqual(2)
+  })
+
+  it('approve button submits decision with rationale via the mutation hook', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-approve',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+            instrument: 'CLM6-NYMEX',
+            signal_envelope: { thesis: 'breakout', side: 'buy' },
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    const rationaleInput = screen.getByLabelText(/Rationale for review rev-approve/i)
+
+    fireEvent.change(rationaleInput, { target: { value: 'looks tight' } })
+    fireEvent.click(screen.getByTestId('approve-rev-approve'))
+    expect(mockSubmitMutate).toHaveBeenCalledWith({
+      reviewPublicId: 'rev-approve',
+      decision: 'approve',
+      rationale: 'looks tight',
+    })
+  })
+
+  it('reject button submits decision without rationale when input left empty', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-reject',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+            instrument: 'BTC-USD-PERP',
+            signal_envelope: { thesis: 'continuation' },
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    fireEvent.click(screen.getByTestId('reject-rev-reject'))
+    expect(mockSubmitMutate).toHaveBeenCalledWith({
+      reviewPublicId: 'rev-reject',
+      decision: 'reject',
+      rationale: undefined,
+    })
+  })
+
+  it('disables decision controls while the mutation is in flight', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseSubmitAiReviewDecision.mockReturnValueOnce({
+      mutate: mockSubmitMutate,
+      isPending: true,
+      isError: false,
+      error: null,
+    })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-pending-mut',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByTestId('approve-rev-pending-mut')).toBeDisabled()
+    expect(screen.getByTestId('reject-rev-pending-mut')).toBeDisabled()
+    expect(screen.getByLabelText(/Rationale for review rev-pending-mut/i)).toBeDisabled()
+  })
+
+  it('renders mutation error inline with role=alert', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseSubmitAiReviewDecision.mockReturnValueOnce({
+      mutate: mockSubmitMutate,
+      isPending: false,
+      isError: true,
+      error: new Error('upstream 500'),
+    })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-err',
+            selected_delegate_public_id: 'del-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByRole('alert')).toHaveTextContent(/upstream 500/)
   })
 
   it('caps the activity stream rendering at 50 frames even if buffer holds more', () => {
