@@ -5,20 +5,17 @@ import { mockWebSocket } from '../fixtures/ws-handlers'
 import { listEnvelope, makeOrder, makeExecutionPlanResponse } from '../fixtures/envelopes'
 
 test.describe('order flows', () => {
-  // ``NewOrderModal`` was migrated from Radix Select to native
-  // ``<select>`` in the v1.5 a11y track so options are now picked via
-  // Playwright's ``selectOption`` semantic. The un-skip surfaced a
-  // separate timing issue: the Exchange ``<select>`` renders empty
-  // until the ``/api/exchanges`` mock resolves, and the initial
-  // dropdown render races the ``expect.toBeAttached`` wait under
-  // headless Chromium even though the mock is registered before
-  // ``page.goto``. The proven path forward is to either pre-resolve
-  // the modal's queries via a fixture-driven warm-up, or split the
-  // happy-path assertion into the visible REST + UI integration that
-  // the cancel test + market-data smoke already cover. Tracking the
-  // un-skip as a follow-up in v1.6 — the migrated native ``<select>``
-  // is itself the long-pole improvement and is shipping in this PR.
-  test.skip('places a market order via NewOrderModal happy path', async ({ browser }) => {
+  // ``NewOrderModal`` is on the native ``<select>`` path so options
+  // are picked via Playwright's ``selectOption`` semantic. Earlier
+  // un-skip attempts looked like a race because the Exchange
+  // ``<select>`` stayed empty in the dialog snapshot — but the real
+  // bug was a fixture glob: ``mockApi`` registered ``**/api/exchanges``
+  // (no trailing wildcard) while every authenticated GET goes through
+  // the apiClient interceptor that appends ``?wallet_public_id=...``,
+  // turning the URL into ``/api/exchanges?wallet_public_id=wal-e2e``
+  // and missing the mock. Pattern is now ``**/api/exchanges*`` and
+  // the test runs sub-2s deterministically.
+  test('places a market order via NewOrderModal happy path', async ({ browser }) => {
     const context = await authedContext(browser)
     const page = await context.newPage()
     let createdOrder = false

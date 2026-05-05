@@ -129,7 +129,7 @@ const DEFAULTS: Array<[string | RegExp, RouteOverride]> = [
   ],
   ['**/api/wallets*', route => json(route, listEnvelope('wallet_list_response', [TEST_WALLET]))],
   [
-    '**/api/exchanges',
+    '**/api/exchanges*',
     route =>
       json(
         route,
