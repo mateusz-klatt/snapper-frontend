@@ -4,6 +4,20 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- **Privacy policy page** at `/privacy-policy.html`. Standalone
+  static HTML in `public/` (no JS dependency, no SPA route),
+  styled to match the brand with light + dark mode via
+  `prefers-color-scheme`. Serves the policy content for the iOS
+  app's App Store submission, which requires a publicly reachable
+  HTML privacy policy URL. Apple gets
+  `https://snapper.ch/privacy-policy.html`; the markdown
+  source-of-truth lives at `docs/privacy-policy.md` in the
+  `mateusz-klatt/snapper-ios` repo.
+
 ## [1.3.1] — 2026-05-05
 
 ### Changed
