@@ -1058,8 +1058,8 @@ export const useSubmitAiReviewDecision = () => {
       decision: 'approve' | 'reject'
       rationale?: string
     }) => apiClient.submitAiReviewDecision(reviewPublicId, decision, rationale),
-    onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ['pending-ai-reviews'] })
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['pending-ai-reviews'] })
     },
   })
 }
