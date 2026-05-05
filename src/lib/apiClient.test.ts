@@ -3711,6 +3711,82 @@ describe('cacheWsTicketFromResponse', () => {
       })
       await expect(apiClient.listPendingAiReviews()).rejects.toThrow('not_a_delegate')
     })
+    it('submitAiReviewDecision posts decision with rationale', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({
+          success: true,
+          error_code: null,
+          message: 'recorded',
+          details: {},
+        }),
+      })
+      const result = await apiClient.submitAiReviewDecision('rev-1', 'approve', 'looks good')
+
+      expect(result.success).toBe(true)
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringMatching(/\/api\/ai-reviews\/rev-1\/decision$/),
+        expect.objectContaining({ method: 'POST' })
+      )
+      const envelope = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
+        payload: { decision: string; rationale?: string }
+      }
+
+      expect(envelope.payload.decision).toBe('approve')
+      expect(envelope.payload.rationale).toBe('looks good')
+    })
+    it('submitAiReviewDecision omits rationale field when not supplied', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({
+          success: true,
+          error_code: null,
+          message: 'recorded',
+          details: {},
+        }),
+      })
+      await apiClient.submitAiReviewDecision('rev-2', 'reject')
+      const envelope = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
+        payload: Record<string, unknown>
+      }
+
+      expect(envelope.payload['decision']).toBe('reject')
+      expect(envelope.payload['rationale']).toBeUndefined()
+    })
+    it('submitAiReviewDecision omits rationale field when empty string', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({
+          success: true,
+          error_code: null,
+          message: 'recorded',
+          details: {},
+        }),
+      })
+      await apiClient.submitAiReviewDecision('rev-3', 'approve', '')
+      const envelope = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
+        payload: Record<string, unknown>
+      }
+
+      expect(envelope.payload['rationale']).toBeUndefined()
+    })
+    it('submitAiReviewDecision throws APIError on 422 (invalid decision)', async () => {
+      const jsonFn = async () => ({
+        detail: { success: false, error_code: 'invalid_decision', message: 'bad', details: {} },
+      })
+
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 422,
+        statusText: 'Unprocessable Content',
+        json: jsonFn,
+        clone: () => ({ json: jsonFn }),
+      })
+      await expect(apiClient.submitAiReviewDecision('rev-4', 'approve')).rejects.toThrow()
+    })
   })
   describe('patchJSON helper', () => {
     it('sends PATCH with body', async () => {

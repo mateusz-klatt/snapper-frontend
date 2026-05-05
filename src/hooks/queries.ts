@@ -1037,6 +1037,34 @@ export const usePendingAiReviews = (
 }
 
 /**
+ * Submit an AI delegate's approve/reject decision on a pending review.
+ *
+ * Optimistically invalidates the pending-reviews snapshot on success so
+ * the inbox visibly drops the resolved row before the next 5s poll
+ * refetches the authoritative list. The WS-driven activity stream
+ * receives the ``ai_review.decision_ack`` frame independently so the
+ * Recent Activity panel updates without invalidation here.
+ */
+export const useSubmitAiReviewDecision = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: ({
+      reviewPublicId,
+      decision,
+      rationale,
+    }: {
+      reviewPublicId: string
+      decision: 'approve' | 'reject'
+      rationale?: string
+    }) => apiClient.submitAiReviewDecision(reviewPublicId, decision, rationale),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['pending-ai-reviews'] })
+    },
+  })
+}
+
+/**
  * Read-only view onto the WS-driven AI review activity ring buffer
  * maintained by :class:`WSDispatcher`.
  *

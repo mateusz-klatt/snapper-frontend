@@ -1,8 +1,20 @@
-import React, { useMemo } from 'react'
-import { Activity, Inbox as InboxIcon, Loader2, MailOpen, ShieldAlert } from 'lucide-react'
+import React, { useMemo, useState } from 'react'
+import {
+  Activity,
+  Check,
+  Inbox as InboxIcon,
+  Loader2,
+  MailOpen,
+  ShieldAlert,
+  X,
+} from 'lucide-react'
 import { EmptyState } from '../../components/ui'
 import { useAuth } from '../../stores/auth'
-import { useAiReviewActivity, usePendingAiReviews } from '../../hooks/queries'
+import {
+  useAiReviewActivity,
+  usePendingAiReviews,
+  useSubmitAiReviewDecision,
+} from '../../hooks/queries'
 import { AiReviewActivityRow } from './AiReviewActivityRow'
 
 const ACTIVITY_DISPLAY_LIMIT = 50
@@ -69,6 +81,96 @@ export function AiReviewInbox(): React.ReactElement {
   )
 }
 
+interface PendingReviewItem {
+  review_public_id: string
+  selected_delegate_public_id: string
+  wallet_public_id: string
+  dispatch_version: number
+  status: string
+  deadline: string | Date
+  fanout_after: string | Date
+  instrument?: string | null
+  signal_envelope?: Record<string, unknown> | null
+}
+
+function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): React.ReactElement {
+  const [rationale, setRationale] = useState('')
+  const submit = useSubmitAiReviewDecision()
+  const thesis = (item.signal_envelope?.['thesis'] ?? null) as string | null
+  const side = (item.signal_envelope?.['side'] ?? null) as string | null
+  const isSubmitting = submit.isPending
+
+  const submitDecision = (decision: 'approve' | 'reject'): void => {
+    submit.mutate({
+      reviewPublicId: item.review_public_id,
+      decision,
+      rationale: rationale.length > 0 ? rationale : undefined,
+    })
+  }
+
+  return (
+    <tr data-testid={`pending-review-row-${item.review_public_id}`}>
+      <td className='px-4 py-2 font-mono text-xs text-alpine-900'>
+        {item.instrument ?? <span className='text-muted-500'>—</span>}
+        {side !== null && (
+          <span className='ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-[10px] uppercase text-brand-700'>
+            {side}
+          </span>
+        )}
+      </td>
+      <td className='px-4 py-2 max-w-md text-xs text-alpine-700'>
+        {thesis !== null ? (
+          <span title={thesis}>{thesis.length > 120 ? `${thesis.slice(0, 120)}…` : thesis}</span>
+        ) : (
+          <span className='text-muted-500'>—</span>
+        )}
+      </td>
+      <td className='px-4 py-2'>{item.status}</td>
+      <td className='px-4 py-2 text-muted-600'>{new Date(item.deadline).toLocaleString()}</td>
+      <td className='px-4 py-2'>
+        <div className='flex flex-col gap-2 min-w-[12rem]'>
+          <input
+            type='text'
+            placeholder='Rationale (optional)'
+            value={rationale}
+            onChange={event => setRationale(event.target.value)}
+            disabled={isSubmitting}
+            aria-label={`Rationale for review ${item.review_public_id}`}
+            className='rounded border border-dark-600 bg-alpine-50 px-2 py-1 text-xs text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500 disabled:opacity-50'
+          />
+          <div className='flex gap-2'>
+            <button
+              type='button'
+              onClick={() => submitDecision('approve')}
+              disabled={isSubmitting}
+              data-testid={`approve-${item.review_public_id}`}
+              className='inline-flex items-center gap-1 rounded border border-gain-500 px-2 py-1 text-xs font-medium text-gain-700 hover:bg-gain-50 disabled:cursor-not-allowed disabled:opacity-50'
+            >
+              <Check size={12} />
+              Approve
+            </button>
+            <button
+              type='button'
+              onClick={() => submitDecision('reject')}
+              disabled={isSubmitting}
+              data-testid={`reject-${item.review_public_id}`}
+              className='inline-flex items-center gap-1 rounded border border-loss-500 px-2 py-1 text-xs font-medium text-loss-700 hover:bg-loss-50 disabled:cursor-not-allowed disabled:opacity-50'
+            >
+              <X size={12} />
+              Reject
+            </button>
+          </div>
+          {submit.isError && (
+            <span className='text-[10px] text-loss-700' role='alert'>
+              Submit failed: {submit.error.message}
+            </span>
+          )}
+        </div>
+      </td>
+    </tr>
+  )
+}
+
 function PendingReviewsSection({
   loading,
   error,
@@ -120,45 +222,14 @@ function PendingReviewsSection({
               <th className='px-4 py-2 font-semibold'>Instrument</th>
               <th className='px-4 py-2 font-semibold'>Thesis</th>
               <th className='px-4 py-2 font-semibold'>Status</th>
-              <th className='px-4 py-2 font-semibold'>Dispatch</th>
               <th className='px-4 py-2 font-semibold'>Deadline</th>
+              <th className='px-4 py-2 font-semibold'>Decision</th>
             </tr>
           </thead>
           <tbody className='divide-y divide-dark-600'>
-            {items.map(item => {
-              const thesis = (item.signal_envelope?.['thesis'] ?? null) as string | null
-              const side = (item.signal_envelope?.['side'] ?? null) as string | null
-
-              return (
-                <tr
-                  key={item.review_public_id}
-                  data-testid={`pending-review-row-${item.review_public_id}`}
-                >
-                  <td className='px-4 py-2 font-mono text-xs text-alpine-900'>
-                    {item.instrument ?? <span className='text-muted-500'>—</span>}
-                    {side !== null && (
-                      <span className='ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-[10px] uppercase text-brand-700'>
-                        {side}
-                      </span>
-                    )}
-                  </td>
-                  <td className='px-4 py-2 max-w-md text-xs text-alpine-700'>
-                    {thesis !== null ? (
-                      <span title={thesis}>
-                        {thesis.length > 120 ? `${thesis.slice(0, 120)}…` : thesis}
-                      </span>
-                    ) : (
-                      <span className='text-muted-500'>—</span>
-                    )}
-                  </td>
-                  <td className='px-4 py-2'>{item.status}</td>
-                  <td className='px-4 py-2 font-mono text-xs'>v{item.dispatch_version}</td>
-                  <td className='px-4 py-2 text-muted-600'>
-                    {new Date(item.deadline).toLocaleString()}
-                  </td>
-                </tr>
-              )
-            })}
+            {items.map(item => (
+              <PendingReviewRow key={item.review_public_id} item={item} />
+            ))}
           </tbody>
         </table>
       </div>

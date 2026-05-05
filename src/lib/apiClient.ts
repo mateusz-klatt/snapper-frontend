@@ -46,6 +46,7 @@ import {
   DelegateResponseSchema,
   DelegateCreatedResponseSchema,
   PendingReviewListResponseSchema,
+  AiReviewDecisionResponseSchema,
   TrailingStopStateResponseSchema,
   BacktestRunListResponseSchema,
   BacktestRunResponseSchema,
@@ -75,7 +76,10 @@ const CandleListResponseSchema = z
   })
   .strict()
 
-import type { PendingReviewListResponse } from './schemas/api.generated.zod'
+import type {
+  PendingReviewListResponse,
+  AiReviewDecisionResponse,
+} from './schemas/api.generated.zod'
 import type {
   ScopeGrantListResponse,
   ScopeGrantResponse,
@@ -1104,6 +1108,24 @@ class APIClient {
     const data = await response.json()
 
     return validateResponse(data, PendingReviewListResponseSchema, '/ai-reviews/pending')
+  }
+  async submitAiReviewDecision(
+    reviewPublicId: string,
+    decision: 'approve' | 'reject',
+    rationale?: string
+  ): Promise<AiReviewDecisionResponse> {
+    const body: { decision: string; rationale?: string } = { decision }
+
+    if (rationale !== undefined && rationale.length > 0) {
+      body.rationale = rationale
+    }
+
+    const data = await this.postJSON(
+      `/api/ai-reviews/${encodeURIComponent(reviewPublicId)}/decision`,
+      body
+    )
+
+    return validateResponse(data, AiReviewDecisionResponseSchema, '/ai-reviews/decision POST')
   }
 }
 

@@ -55,6 +55,7 @@ import {
   useUpdateAiDelegateCaps,
   useDeactivateAiDelegate,
   usePendingAiReviews,
+  useSubmitAiReviewDecision,
   useAiReviewActivity,
 } from './queries'
 import { aiReviewActivityQueryKey, type AiReviewActivityFrame } from '../stores/wsDispatcher'
@@ -451,6 +452,9 @@ vi.mock('../lib/apiClient', () => ({
       Promise.resolve(envelope('delegate_response', { payload: {} }))
     ),
     listPendingAiReviews: vi.fn(() => Promise.resolve({ items: [], count: 0 })),
+    submitAiReviewDecision: vi.fn(() =>
+      Promise.resolve({ success: true, error_code: null, message: 'recorded', details: {} })
+    ),
   },
   APIError: class APIError extends Error {
     constructor(
@@ -521,6 +525,7 @@ const mockedApiClient = apiClient as unknown as {
   updateAiDelegateCaps: Mock
   deactivateAiDelegate: Mock
   listPendingAiReviews: Mock
+  submitAiReviewDecision: Mock
 }
 const createQueryClient = () =>
   new QueryClient({
@@ -2138,6 +2143,34 @@ describe('queries', () => {
           limit: 25,
         })
       )
+    })
+    it('useSubmitAiReviewDecision posts decision via apiClient + invalidates pending list on success', async () => {
+      vi.mocked(useAuth).mockReturnValue({
+        isAuthenticated: true,
+        user: { role: 'ai_delegate', public_id: 'user-del-1' },
+      } as ReturnType<typeof useAuth>)
+      mockedApiClient.submitAiReviewDecision = vi.fn().mockResolvedValue({
+        success: true,
+        error_code: null,
+        message: 'recorded',
+        details: {},
+      }) as unknown as typeof mockedApiClient.submitAiReviewDecision
+      const { queryClient, wrapper } = createWrapperWithClient()
+      const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries')
+      const { result } = renderHook(() => useSubmitAiReviewDecision(), { wrapper })
+
+      result.current.mutate({
+        reviewPublicId: 'rev-9',
+        decision: 'approve',
+        rationale: 'looks tight',
+      })
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(mockedApiClient.submitAiReviewDecision).toHaveBeenCalledWith(
+        'rev-9',
+        'approve',
+        'looks tight'
+      )
+      expect(invalidateSpy).toHaveBeenCalledWith({ queryKey: ['pending-ai-reviews'] })
     })
     it('useAiReviewActivity returns empty array when cache is empty', () => {
       vi.mocked(useAuth).mockReturnValue({
