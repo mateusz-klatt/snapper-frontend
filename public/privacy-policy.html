@@ -64,8 +64,10 @@
       * {
         box-sizing: border-box;
       }
-      html {
-        scroll-behavior: smooth;
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
       }
       body {
         margin: 0;
@@ -282,13 +284,14 @@
           <code>csrf_token</code>) returned by your backend.
         </li>
         <li>
-          <strong>How stored:</strong> the backend's HTTP session cookies are managed by the system
-          <code>URLSession</code> cookie storage (<code>HTTPCookieStorage.shared</code>), which iOS
-          encrypts at rest as part of the app sandbox. The short-lived WebSocket token is held in
-          memory only — never written to disk. The plaintext password is held in memory inside
-          <code>LoginViewModel</code> for the duration of the login flow and is released when the
-          view is torn down (typically when the user logs in or backgrounds the app for long enough
-          that iOS reclaims the view).
+          <strong>How stored:</strong> the backend's HTTP session cookies are accepted and replayed
+          by the system <code>URLSession</code> (the app uses <code>URLSession.shared</code> and
+          lets iOS handle cookie storage). The short-lived WebSocket token is held in memory only —
+          never written to disk by the app. The plaintext password is held in memory inside
+          <code>LoginViewModel</code> only for the duration of the login request —
+          <code>LoginViewModel.login()</code> overwrites it with an empty string the moment the
+          login call resolves (success or failure), so it does not persist for the rest of the
+          session.
         </li>
         <li>
           <strong>Where it goes:</strong> sent to your backend (the URL you configured) over HTTPS
@@ -341,12 +344,21 @@
           different IDFV. Resets if you uninstall every app from this developer.
         </li>
         <li>
-          <strong>Why:</strong> the backend uses it as a stable per-device key to disambiguate
-          multiple installs (e.g. iPhone + iPad would be two separate device rows). This is the
-          standard Apple-recommended privacy-friendly device identifier — see
+          <strong>Why:</strong> the backend uses it as a per-device key to disambiguate multiple
+          installs (e.g. iPhone + iPad would be two separate device rows). This is the standard
+          Apple-recommended privacy-friendly device identifier — see
           <a href="https://developer.apple.com/documentation/uikit/uidevice/identifierforvendor"
             >Apple's "Identifying a device" docs</a
           >.
+        </li>
+        <li>
+          <strong>Fallback:</strong> in the rare case where iOS returns no
+          <code>identifierForVendor</code> (e.g. very early in the launch lifecycle, before the
+          system has assigned one), the app generates a fresh random <code>UUID()</code> as a
+          one-shot replacement for that registration call. That fallback id is NOT stable across
+          launches — a subsequent registration would generate a new one — so the backend may see
+          your device as a new row in that edge case. The IDFV path is the steady-state behavior on
+          every supported device.
         </li>
         <li>
           <strong>How stored:</strong> held in memory + sent to your backend with each

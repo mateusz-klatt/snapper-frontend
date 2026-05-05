@@ -13,9 +13,11 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   styled to match the brand with light + dark mode via
   `prefers-color-scheme`. Serves the policy content for the iOS
   app's App Store submission, which requires a publicly reachable
-  HTML privacy policy URL. Apple gets
-  `https://snapper.ch/privacy-policy.html`; the markdown
-  source-of-truth lives at `docs/privacy-policy.md` in the
+  HTML privacy policy URL — the maintainer points App Store
+  Connect at whichever domain hosts the deployed frontend. The
+  page itself has no hardcoded host references in its body, so
+  it works under any deploy target. The markdown source-of-truth
+  lives at `docs/privacy-policy.md` in the
   `mateusz-klatt/snapper-ios` repo.
 
 ## [1.3.1] — 2026-05-05
