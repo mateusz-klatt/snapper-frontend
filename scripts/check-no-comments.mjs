@@ -45,14 +45,14 @@ const SKIP_DIRS = new Set([
   '.cache',
 ])
 const FILE_EXTENSIONS = new Set(['.ts', '.tsx', '.mts', '.cts'])
-const GENERATED_SUFFIXES = ['.generated.ts', '.generated.tsx']
+const GENERATED_MARKER = '.generated.'
 
 function shouldSkipPath(filepath) {
   const parts = filepath.split(path.sep)
   if (parts.some(part => SKIP_DIRS.has(part))) {
     return true
   }
-  return GENERATED_SUFFIXES.some(suffix => filepath.endsWith(suffix))
+  return path.basename(filepath).includes(GENERATED_MARKER)
 }
 
 async function iterTypeScriptFiles(root, relativeRoots) {
