@@ -35,15 +35,7 @@ import path from 'node:path'
 import process from 'node:process'
 
 const DEFAULT_RELATIVE_ROOTS = ['src']
-const SKIP_DIRS = new Set([
-  'node_modules',
-  'dist',
-  'build',
-  'coverage',
-  '.git',
-  '.vite',
-  '.cache',
-])
+const SKIP_DIRS = new Set(['node_modules', 'dist', 'build', 'coverage', '.git', '.vite', '.cache'])
 const FILE_EXTENSIONS = new Set(['.ts', '.tsx', '.mts', '.cts'])
 const GENERATED_RE = /\.generated(?:\.\w+)*\.(ts|tsx|mts|cts)$/
 
@@ -335,7 +327,7 @@ async function main() {
   console.log(`\n  TypeScript non-doc comments: ${total}`)
   if (total > 0) {
     console.log(
-      "\nFound non-doc comments. Move rationale and guidance into JSDoc blocks (`/** ... */`) or remove them."
+      '\nFound non-doc comments. Move rationale and guidance into JSDoc blocks (`/** ... */`) or remove them.'
     )
     if (strictMode) {
       console.log('\nSTRICT MODE: Failing due to comments found.')
