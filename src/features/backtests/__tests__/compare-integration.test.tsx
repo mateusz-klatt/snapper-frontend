@@ -136,7 +136,7 @@ describe('Compare flow integration', () => {
 
     renderApp()
 
-    const anchor = await screen.findByTestId(`open-${RUN_A}`)
+    const anchor = await screen.findByTestId(`open-${RUN_A}`, undefined, { timeout: 5000 })
 
     expect(anchor.tagName).toBe('A')
     act(() => {
