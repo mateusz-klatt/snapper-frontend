@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/mateusz-klatt/snapper-frontend/issues"
   },
-  "packageManager": "pnpm@10.33.3",
+  "packageManager": "pnpm@10.33.4",
   "engines": {
     "node": ">=22",
     "pnpm": ">=10"
@@ -94,11 +94,11 @@
     "jsdom": "26.1.0",
     "json-schema-to-typescript": "15.0.4",
     "json-schema-to-zod": "^2.8.1",
-    "knip": "^6.11.0",
+    "knip": "^6.12.0",
     "openapi-typescript": "^7.13.0",
     "postcss": "^8.5.14",
     "prettier": "^3.8.3",
-    "puppeteer": "^24.42.0",
+    "puppeteer": "^24.43.0",
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.2",
