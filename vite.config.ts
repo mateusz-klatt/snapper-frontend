@@ -76,7 +76,7 @@ export default defineConfig({
       reporter: ['text', 'lcov', 'html'],
       all: true,
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.test.{ts,tsx}', 'src/test/**', '**/*.d.ts', '**/types/**'],
+      exclude: ['src/**/*.test.{ts,tsx}', 'src/test/**', '**/*.d.ts', 'src/types/*.generated.ts'],
       thresholds: {
         lines: 100,
         functions: 100,
