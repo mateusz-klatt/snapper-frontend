@@ -9,7 +9,7 @@ const mockRotateMutation = {
   isPending: false,
 }
 
-vi.mock('../../../hooks/queries', () => ({
+vi.mock('../../../hooks/queries/credentials', () => ({
   useRotateCredential: () => mockRotateMutation,
 }))
 vi.mock('../../../components/ui/Modal', () => ({

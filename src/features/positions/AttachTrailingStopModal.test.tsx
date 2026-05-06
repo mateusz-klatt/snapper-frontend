@@ -8,7 +8,7 @@ import { validateTrailingStopParams } from './validation'
 const mockMutate = vi.fn()
 const mockReset = vi.fn()
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/positions', () => ({
   useCreateTrailingStop: vi.fn(() => ({
     mutate: mockMutate,
     isPending: false,
@@ -185,7 +185,7 @@ describe('AttachTrailingStopModal', () => {
   })
 
   it('shows Creating text when pending', async () => {
-    const { useCreateTrailingStop } = vi.mocked(await import('../../hooks/queries'))
+    const { useCreateTrailingStop } = vi.mocked(await import('../../hooks/queries/positions'))
 
     useCreateTrailingStop.mockReturnValue({
       mutate: mockMutate,

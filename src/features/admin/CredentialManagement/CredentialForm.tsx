@@ -4,7 +4,8 @@ import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
 import { Modal } from '../../../components/ui/Modal'
 import { ThemeSelect } from '../../../components/ThemeSelect'
-import { useWallets, useCreateCredential } from '../../../hooks/queries'
+import { useCreateCredential } from '../../../hooks/queries/credentials'
+import { useWallets } from '../../../hooks/queries/wallets'
 import type { WalletInfo } from '../../../types/api'
 
 const CREDENTIAL_TYPES = [

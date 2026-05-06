@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { useNotificationMetrics } from '../../hooks/queries'
+import { useNotificationMetrics } from '../../hooks/queries/system'
 import { formatNumber } from '../../lib/utils'
 
 interface CounterCellProps {

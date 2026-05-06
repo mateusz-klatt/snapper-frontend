@@ -55,19 +55,23 @@ const mockHookState: {
   ],
 }
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/market', () => ({
   useExchanges: () => ({
     data: mockHookState.exchanges,
   }),
   useExchangeInstrumentsDetail: () => ({
     data: mockHookState.instruments,
   }),
-  useWallets: () => ({
-    data: mockHookState.wallets ? { payload: mockHookState.wallets } : undefined,
-  }),
+}))
+vi.mock('../../hooks/queries/orders', () => ({
   useCreateOrder: () => ({
     mutateAsync: mockMutateAsync,
     isPending: mockCreateOrderState.isPending,
+  }),
+}))
+vi.mock('../../hooks/queries/wallets', () => ({
+  useWallets: () => ({
+    data: mockHookState.wallets ? { payload: mockHookState.wallets } : undefined,
   }),
 }))
 

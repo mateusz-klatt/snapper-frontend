@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { useDbStats } from '../../hooks/queries'
+import { useDbStats } from '../../hooks/queries/system'
 import { formatNumber } from '../../lib/utils'
 
 import type { TableStatsItem } from '../../types/api'

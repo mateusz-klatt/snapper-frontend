@@ -11,7 +11,7 @@ vi.mock('../../stores/app', () => ({
   ),
 }))
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/positions', () => ({
   usePositions: vi.fn(() => ({
     data: [],
     isLoading: false,
@@ -70,7 +70,7 @@ describe('Positions', () => {
   })
 
   it('renders empty state when no positions are returned', async () => {
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [],
@@ -81,7 +81,7 @@ describe('Positions', () => {
   })
 
   it('renders skeletons while loading', async () => {
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: undefined,
@@ -101,7 +101,7 @@ describe('Positions', () => {
       unrealizedPnl: 1000,
       realizedPnl: 0,
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [long],
@@ -123,7 +123,7 @@ describe('Positions', () => {
       unrealizedPnl: -150,
       realizedPnl: 50,
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [short],
@@ -149,7 +149,7 @@ describe('Positions', () => {
       unrealizedPnl: 0,
       realizedPnl: 0,
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [flat],
@@ -175,7 +175,7 @@ describe('Positions', () => {
       unrealizedPnl: -50,
       publicId: 'pos-2',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [long, short],
@@ -201,7 +201,7 @@ describe('Positions', () => {
       quantity: -1,
       publicId: 'pos-k-paper',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [krakenLive, krakenPaper],
@@ -217,7 +217,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -232,7 +232,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: null,
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -247,7 +247,7 @@ describe('Positions', () => {
       quantity: 0,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -262,7 +262,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -278,7 +278,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -296,7 +296,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -311,7 +311,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: null,
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -326,7 +326,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -342,7 +342,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -365,7 +365,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions } = await import('../../hooks/queries')
+    const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -386,7 +386,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries')
+    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -406,7 +406,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries')
+    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -426,7 +426,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries')
+    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],
@@ -446,7 +446,7 @@ describe('Positions', () => {
       quantity: 1.5,
       positionCyclePublicId: 'cycle-123',
     })
-    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries')
+    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({
       data: [pos],

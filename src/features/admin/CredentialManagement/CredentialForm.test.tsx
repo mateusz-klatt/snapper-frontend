@@ -10,9 +10,11 @@ const mockCreateMutation = {
 
 const mockUseWallets = vi.fn()
 
-vi.mock('../../../hooks/queries', () => ({
-  useWallets: () => mockUseWallets(),
+vi.mock('../../../hooks/queries/credentials', () => ({
   useCreateCredential: () => mockCreateMutation,
+}))
+vi.mock('../../../hooks/queries/wallets', () => ({
+  useWallets: () => mockUseWallets(),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({

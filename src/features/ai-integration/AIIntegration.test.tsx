@@ -18,13 +18,15 @@ const mockUseAiDelegate = vi.fn<() => AiDelegateQueryShape>(() => ({
 }))
 const mockUseIsReadOnly = vi.fn()
 
-vi.mock('../../hooks/queries', () => ({
-  useFeatureFlags: () => mockUseFeatureFlags(),
+vi.mock('../../hooks/queries/ai-delegates', () => ({
   useAiDelegates: () => mockUseAiDelegates(),
   useAiDelegate: (_id: string | null) => mockUseAiDelegate(),
   useUpdateAiDelegateCaps: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
   useDeactivateAiDelegate: vi.fn(() => ({ mutateAsync: vi.fn() })),
   useCreateAiDelegate: vi.fn(() => ({ mutateAsync: vi.fn(), reset: vi.fn(), isPending: false })),
+}))
+vi.mock('../../hooks/queries/feature-flags', () => ({
+  useFeatureFlags: () => mockUseFeatureFlags(),
 }))
 
 vi.mock('../../hooks/useIsReadOnly', () => ({

@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { useBacktest } from '../../hooks/queries'
+import { useBacktest } from '../../hooks/queries/backtests'
 import { useBacktestProgressSubscription } from './hooks/useBacktestProgressSubscription'
 import { BacktestProgressBar } from './BacktestProgressBar'
 import { CompareLauncher } from './CompareLauncher'

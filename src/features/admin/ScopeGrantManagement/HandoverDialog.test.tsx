@@ -11,9 +11,11 @@ const mockHandoverMutation = {
 
 const mockUseOperators = vi.fn()
 
-vi.mock('../../../hooks/queries', () => ({
-  useOperators: () => mockUseOperators(),
+vi.mock('../../../hooks/queries/scope-grants', () => ({
   useHandoverScopeGrant: () => mockHandoverMutation,
+}))
+vi.mock('../../../hooks/queries/wallets', () => ({
+  useOperators: () => mockUseOperators(),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({

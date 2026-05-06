@@ -7,7 +7,7 @@ import { DbStatsCard } from './DbStatsCard'
 
 import type { DbStatsResponse } from '../../types/api'
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/system', () => ({
   useDbStats: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -67,7 +67,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders the card title without data during loading', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
 
     vi.mocked(useDbStats).mockReturnValue({
       data: undefined,
@@ -80,7 +80,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders an error fallback when the query fails', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
 
     vi.mocked(useDbStats).mockReturnValue({
       data: undefined,
@@ -94,7 +94,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders the table when data is available', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
 
     vi.mocked(useDbStats).mockReturnValue({
       data: sampleSnapshot,
@@ -111,7 +111,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders em-dashes for null SCD2 columns on event tables', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
 
     vi.mocked(useDbStats).mockReturnValue({
       data: sampleSnapshot,
@@ -123,7 +123,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders relative age for the snapshot timestamp', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
     const recent = new Date(Date.now() - 30 * 1000).toISOString()
 
     vi.mocked(useDbStats).mockReturnValue({
@@ -139,7 +139,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders the just-now badge for snapshots taken instantly', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
     const future = new Date(Date.now() + 1_000).toISOString()
 
     vi.mocked(useDbStats).mockReturnValue({
@@ -155,7 +155,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders relative age in minutes between one minute and one hour', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
     const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString()
 
     vi.mocked(useDbStats).mockReturnValue({
@@ -171,7 +171,7 @@ describe('DbStatsCard', () => {
   })
 
   it('renders relative age in hours for older snapshots', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
     const twoHoursAgo = new Date(Date.now() - 2 * 3600 * 1000).toISOString()
 
     vi.mocked(useDbStats).mockReturnValue({
@@ -187,7 +187,7 @@ describe('DbStatsCard', () => {
   })
 
   it('falls back to a generic error message for non-Error throwables', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
 
     vi.mocked(useDbStats).mockReturnValue({
       data: undefined,
@@ -201,7 +201,7 @@ describe('DbStatsCard', () => {
   })
 
   it('does not show the stale badge for fresh rows', async () => {
-    const { useDbStats } = await import('../../hooks/queries')
+    const { useDbStats } = await import('../../hooks/queries/system')
 
     vi.mocked(useDbStats).mockReturnValue({
       data: {

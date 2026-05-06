@@ -9,7 +9,7 @@ const mockSetSelectedExchange = vi.fn()
 const mockSetSelectedInstrument = vi.fn()
 const mockSetSelectedTimeframe = vi.fn()
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/market', () => ({
   useCandles: vi.fn(() => ({
     data: [],
     isLoading: false,
@@ -109,7 +109,7 @@ describe('MarketData', () => {
     expect(screen.queryByText(/Current Price/)).not.toBeInTheDocument()
   })
   it('shows loading state while fetching candles', async () => {
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: undefined,
@@ -145,7 +145,7 @@ describe('MarketData', () => {
   })
   it('passes empty strings when no exchange or instrument selected', async () => {
     const { useMarketStore } = await import('../../stores/market')
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useMarketStore).mockReturnValueOnce({
       selectedExchange: null,
@@ -159,7 +159,7 @@ describe('MarketData', () => {
     expect(useCandles).toHaveBeenCalledWith('', '', '1h', 100, true)
   })
   it('enables snapshot when WebSocket is disconnected (fallback)', async () => {
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
     const { useMarketSubscription } = await import('../../hooks/useMarketSubscription')
     const { useWebSocketStore } = await import('../../stores/websocket')
 
@@ -170,7 +170,7 @@ describe('MarketData', () => {
     expect(useCandles).toHaveBeenCalledWith('EUR-USD', 'kraken', '1h', 100, true)
   })
   it('shows unknown error message when error has no message', async () => {
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: [],
@@ -189,7 +189,7 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.082, high: 1.086, low: 1.081, close: 1.085 },
     ]
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: mockCandles,
@@ -211,7 +211,7 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.082, high: 1.086, low: 1.081, close: 1.085 },
     ]
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: mockCandles,
@@ -231,7 +231,7 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.0825, high: 1.0855, low: 1.08, close: 1.084 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.084, high: 1.087, low: 1.083, close: 1.086 },
     ]
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: mockCandles,
@@ -250,7 +250,7 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.08 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.08, high: 1.086, low: 1.079, close: 1.085 },
     ]
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: mockCandles,
@@ -272,7 +272,7 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.085 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.085, high: 1.086, low: 1.079, close: 1.08 },
     ]
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: mockCandles,
@@ -290,7 +290,7 @@ describe('MarketData', () => {
     })
   })
   it('displays error message when error occurs', async () => {
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: undefined,
@@ -305,7 +305,7 @@ describe('MarketData', () => {
     })
   })
   it('displays no data message when selected instrument has no data', async () => {
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: [],
@@ -427,7 +427,7 @@ describe('MarketData', () => {
     const mockCandles = [
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
     ]
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: mockCandles,
@@ -440,7 +440,7 @@ describe('MarketData', () => {
     expect(screen.queryByText('Current Price')).not.toBeInTheDocument()
   })
   it('handles undefined exchanges data', async () => {
-    const { useExchanges } = await import('../../hooks/queries')
+    const { useExchanges } = await import('../../hooks/queries/market')
 
     vi.mocked(useExchanges).mockReturnValueOnce({
       data: undefined,
@@ -451,7 +451,7 @@ describe('MarketData', () => {
     expect(screen.getByText(/Market Data/i)).toBeInTheDocument()
   })
   it('handles undefined instruments data', async () => {
-    const { useExchangeInstrumentsDetail } = await import('../../hooks/queries')
+    const { useExchangeInstrumentsDetail } = await import('../../hooks/queries/market')
 
     vi.mocked(useExchangeInstrumentsDetail).mockReturnValueOnce({
       data: undefined,
@@ -465,7 +465,7 @@ describe('MarketData', () => {
     const mockCandles = [
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
     ]
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCandles).mockReturnValue({
       data: mockCandles,
@@ -504,7 +504,7 @@ describe('MarketData', () => {
   })
   it('disables candle fetch when not subscribed and connected in live mode', async () => {
     const { useMarketSubscription } = await import('../../hooks/useMarketSubscription')
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
     const { useWebSocketStore } = await import('../../stores/websocket')
 
     vi.mocked(useMarketSubscription).mockReturnValue(false)
@@ -527,7 +527,7 @@ describe('MarketData', () => {
       selector: (s: Record<string, unknown>) => unknown
     ) => selector({ asOf: '2024-01-01T00:00:00Z', isTimeTraveling: true })) as never)
     vi.mocked(useMarketSubscription).mockReturnValue(false)
-    const { useCandles } = await import('../../hooks/queries')
+    const { useCandles } = await import('../../hooks/queries/market')
 
     renderWithProviders(<MarketData />)
     await waitFor(() => {
@@ -546,7 +546,7 @@ describe('MarketData', () => {
   })
 
   it('renders the market-data-only badge next to the title when the selected instrument is observation-only', async () => {
-    const queries = await import('../../hooks/queries')
+    const queries = await import('../../hooks/queries/market')
     const marketStore = await import('../../stores/market')
 
     vi.mocked(marketStore.useMarketStore).mockReturnValue({
@@ -606,7 +606,7 @@ describe('MarketData', () => {
   })
 
   it('shows the market-data-only badge in the header when selected instrument cannot trade', async () => {
-    const { useExchangeInstrumentsDetail } = await import('../../hooks/queries')
+    const { useExchangeInstrumentsDetail } = await import('../../hooks/queries/market')
     const { useMarketStore } = await import('../../stores/market')
 
     vi.mocked(useExchangeInstrumentsDetail).mockImplementation((() => ({

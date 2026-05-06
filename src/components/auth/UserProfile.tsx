@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../stores/auth'
-import { useChangePassword } from '../../hooks/queries'
+import { useChangePassword } from '../../hooks/queries/users'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { Modal } from '../ui/Modal'
 

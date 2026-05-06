@@ -14,7 +14,7 @@ import {
   useAiReviewActivity,
   usePendingAiReviews,
   useSubmitAiReviewDecision,
-} from '../../hooks/queries'
+} from '../../hooks/queries/ai-reviews'
 import { AiReviewActivityRow } from './AiReviewActivityRow'
 
 const ACTIVITY_DISPLAY_LIMIT = 50

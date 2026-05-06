@@ -6,6 +6,15 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.2] — 2026-05-06
+
+### Refactor
+
+- **Direct per-domain query hook imports.** Migrated the remaining
+  callsites off the `src/hooks/queries.ts` compat shim and into the
+  corresponding `src/hooks/queries/<domain>.ts` modules, then removed
+  the obsolete shim.
+
 ## [1.5.1] — 2026-05-06
 
 ### Refactor

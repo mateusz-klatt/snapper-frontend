@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 
-import { useSystemMetrics } from '../../hooks/queries'
+import { useSystemMetrics } from '../../hooks/queries/system'
 import { formatNumber } from '../../lib/utils'
 
 import type { SystemMetricsData } from '../../types/api'

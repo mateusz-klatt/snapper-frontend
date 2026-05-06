@@ -7,7 +7,7 @@ import { SystemMetricsCard } from './SystemMetricsCard'
 
 import type { SystemMetricsResponse } from '../../types/api'
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/system', () => ({
   useSystemMetrics: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -92,7 +92,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders the card title without metrics during loading', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: undefined,
@@ -105,7 +105,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders an error fallback when the query fails', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: undefined,
@@ -119,7 +119,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders the metrics grid when data is available', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: sampleSnapshot,
@@ -143,7 +143,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders the raw JSON debug view when expanded', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: sampleSnapshot,
@@ -160,7 +160,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('handles cold-start tracemalloc-active state', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: { ...sampleSnapshot, payload: { ...sampleSnapshot.payload, tracemalloc_active: true } },
@@ -172,7 +172,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders multi-day uptime in days', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: {
@@ -190,7 +190,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders memory >= 1 GiB in GB units', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: {
@@ -211,7 +211,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders relative age in different time ranges based on bus_time', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
     const recent = new Date(Date.now() - 30 * 1000).toISOString()
 
     vi.mocked(useSystemMetrics).mockReturnValue({
@@ -224,7 +224,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders relative age for hour-old snapshots', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
     const oneHourAgo = new Date(Date.now() - 3600 * 1000).toISOString()
 
     vi.mocked(useSystemMetrics).mockReturnValue({
@@ -237,7 +237,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('shows the just-now badge for snapshots that bus-time as the current instant', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
     const future = new Date(Date.now() + 1_000).toISOString()
 
     vi.mocked(useSystemMetrics).mockReturnValue({
@@ -250,7 +250,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('falls back to a generic error message for non-Error throwables', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: undefined,
@@ -264,7 +264,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('toggles the raw JSON details when summary is clicked', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: sampleSnapshot,
@@ -281,7 +281,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders uptime in seconds for very young processes', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: {
@@ -299,7 +299,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders uptime in minutes between one minute and one hour', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: {
@@ -317,7 +317,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders relative age in minutes between one minute and one hour', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
     const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString()
 
     vi.mocked(useSystemMetrics).mockReturnValue({
@@ -330,7 +330,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('renders em-dash when threads saturation is null', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: {
@@ -348,7 +348,7 @@ describe('SystemMetricsCard', () => {
   })
 
   it('shows em-dash placeholders when DB pool sizes are null', async () => {
-    const { useSystemMetrics } = await import('../../hooks/queries')
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemMetrics).mockReturnValue({
       data: {

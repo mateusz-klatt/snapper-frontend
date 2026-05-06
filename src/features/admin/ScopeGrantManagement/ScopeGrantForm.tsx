@@ -4,7 +4,8 @@ import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
 import { Modal } from '../../../components/ui/Modal'
 import { ThemeSelect } from '../../../components/ThemeSelect'
-import { useOperators, useWallets, useCreateScopeGrant } from '../../../hooks/queries'
+import { useCreateScopeGrant } from '../../../hooks/queries/scope-grants'
+import { useOperators, useWallets } from '../../../hooks/queries/wallets'
 import type { OperatorInfo, WalletInfo } from '../../../types/api'
 
 interface ScopeGrantFormProps {

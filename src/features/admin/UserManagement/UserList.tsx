@@ -3,7 +3,7 @@ import { Trash2, Edit, UserPlus, Eye, EyeOff, Shield, Users } from 'lucide-react
 import { toast } from 'react-hot-toast'
 import { Button, Badge } from '../../../components/ui'
 import { ConfirmDialog } from '../../../components/ui/ConfirmDialog'
-import { useUsers, useDeactivateUser } from '../../../hooks/queries'
+import { useUsers, useDeactivateUser } from '../../../hooks/queries/users'
 import type { UserProfile } from '../../../types/api'
 
 interface UserListProps {

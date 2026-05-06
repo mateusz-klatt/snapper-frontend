@@ -47,9 +47,11 @@ const mockCredentials = {
 const mockUseCredentials = vi.fn()
 const mockUseWallets = vi.fn()
 
-vi.mock('../../../hooks/queries', () => ({
-  useWallets: () => mockUseWallets(),
+vi.mock('../../../hooks/queries/credentials', () => ({
   useCredentials: () => mockUseCredentials(),
+}))
+vi.mock('../../../hooks/queries/wallets', () => ({
+  useWallets: () => mockUseWallets(),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({

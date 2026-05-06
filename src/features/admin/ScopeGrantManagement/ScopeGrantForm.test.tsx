@@ -11,10 +11,12 @@ const mockCreateMutation = {
 const mockUseOperators = vi.fn()
 const mockUseWallets = vi.fn()
 
-vi.mock('../../../hooks/queries', () => ({
+vi.mock('../../../hooks/queries/scope-grants', () => ({
+  useCreateScopeGrant: () => mockCreateMutation,
+}))
+vi.mock('../../../hooks/queries/wallets', () => ({
   useOperators: () => mockUseOperators(),
   useWallets: () => mockUseWallets(),
-  useCreateScopeGrant: () => mockCreateMutation,
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({

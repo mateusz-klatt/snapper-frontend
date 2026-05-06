@@ -7,7 +7,7 @@ import {
   useSettingCategories,
   useUpdateSetting,
   useDeleteSetting,
-} from '../../hooks/queries'
+} from '../../hooks/queries/settings'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 
 export const Settings = () => {

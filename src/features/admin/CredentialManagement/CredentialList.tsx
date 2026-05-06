@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Plus, RotateCw, KeyRound } from 'lucide-react'
 import { Button, Badge } from '../../../components/ui'
-import { useWallets, useCredentials } from '../../../hooks/queries'
+import { useCredentials } from '../../../hooks/queries/credentials'
+import { useWallets } from '../../../hooks/queries/wallets'
 import { ThemeSelect } from '../../../components/ThemeSelect'
 import type { CredentialSummary, WalletInfo } from '../../../types/api'
 

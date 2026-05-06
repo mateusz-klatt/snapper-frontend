@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
 import { Modal } from '../../../components/ui/Modal'
 import { ThemeSelect } from '../../../components/ThemeSelect'
-import { useCreateUser, useUpdateUser, useAdminResetPassword } from '../../../hooks/queries'
+import { useCreateUser, useUpdateUser, useAdminResetPassword } from '../../../hooks/queries/users'
 import type { UserProfile, UserRole } from '../../../types/api'
 
 interface UserFormProps {

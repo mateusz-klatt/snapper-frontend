@@ -7,7 +7,7 @@ import { RetentionCard } from './RetentionCard'
 
 import type { RetentionRunResponse } from '../../types/api'
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/system', () => ({
   useRetentionRun: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -69,7 +69,7 @@ describe('RetentionCard', () => {
   })
 
   it('renders the card title without metrics during loading', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: undefined,
@@ -82,7 +82,7 @@ describe('RetentionCard', () => {
   })
 
   it('renders an error fallback when the query fails', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: undefined,
@@ -94,7 +94,7 @@ describe('RetentionCard', () => {
   })
 
   it('renders the policy table when data is available', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: sampleSnapshot,
@@ -113,7 +113,7 @@ describe('RetentionCard', () => {
   })
 
   it('shows a dry-run banner when dry_run is true', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: { ...sampleSnapshot, payload: { ...sampleSnapshot.payload, dry_run: true } },
@@ -125,7 +125,7 @@ describe('RetentionCard', () => {
   })
 
   it('does not show a dry-run banner when dry_run is false', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: sampleSnapshot,
@@ -137,7 +137,7 @@ describe('RetentionCard', () => {
   })
 
   it('renders em-dash when archived window is null', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: sampleSnapshot,
@@ -149,7 +149,7 @@ describe('RetentionCard', () => {
   })
 
   it('exposes the policy error string as a tooltip', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: sampleSnapshot,
@@ -163,7 +163,7 @@ describe('RetentionCard', () => {
   })
 
   it('renders relative age across all four time ranges', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     const cases = [
       { offsetMs: 1_000, regex: /just now/ },
@@ -189,7 +189,7 @@ describe('RetentionCard', () => {
   })
 
   it('falls back to a generic error message for non-Error throwables', async () => {
-    const { useRetentionRun } = await import('../../hooks/queries')
+    const { useRetentionRun } = await import('../../hooks/queries/system')
 
     vi.mocked(useRetentionRun).mockReturnValue({
       data: undefined,

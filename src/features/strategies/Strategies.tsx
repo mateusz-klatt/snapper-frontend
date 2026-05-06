@@ -6,10 +6,10 @@ import { ThemeSelect } from '../../components/ThemeSelect'
 import {
   useStartProcessByName,
   useStopProcessByName,
-  useStrategies,
   useAvailableProcesses,
   useCreateProcessConfig,
-} from '../../hooks/queries'
+} from '../../hooks/queries/processes'
+import { useStrategies } from '../../hooks/queries/strategies'
 import { useWebSocketStore } from '../../stores/websocket'
 import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'

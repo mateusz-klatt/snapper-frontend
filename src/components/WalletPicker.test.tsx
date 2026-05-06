@@ -30,7 +30,7 @@ let mockWalletsData: unknown = {
   ],
 }
 
-vi.mock('../hooks/queries', () => ({
+vi.mock('../hooks/queries/wallets', () => ({
   useWallets: () => ({
     data: mockWalletsData,
     isLoading: false,

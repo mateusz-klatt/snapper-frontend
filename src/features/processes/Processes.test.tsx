@@ -33,7 +33,7 @@ const mockStartProcessMutate = vi.fn()
 const mockStopProcessMutate = vi.fn()
 const mockCreateProcessConfig = vi.fn()
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/processes', () => ({
   useConfiguredProcesses: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -89,7 +89,7 @@ describe('Processes', () => {
     expect(screen.getByText('Process Control')).toBeTruthy()
   })
   it('displays loading state', async () => {
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: null,
@@ -117,7 +117,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -145,7 +145,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -158,7 +158,7 @@ describe('Processes', () => {
     })
   })
   it('handles empty process list', async () => {
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', []),
@@ -171,7 +171,7 @@ describe('Processes', () => {
     })
   })
   it('displays available processes registry', async () => {
-    const { useAvailableProcesses } = await import('../../hooks/queries')
+    const { useAvailableProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
       data: makeListEnvelope('available_processes', [
@@ -205,7 +205,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -232,7 +232,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -259,7 +259,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -298,7 +298,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -311,7 +311,7 @@ describe('Processes', () => {
     })
   })
   it('displays process runs history', async () => {
-    const { useProcessRuns } = await import('../../hooks/queries')
+    const { useProcessRuns } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessRuns).mockReturnValue({
       data: makeListEnvelope('process_runs', [
@@ -332,7 +332,7 @@ describe('Processes', () => {
     })
   })
   it('keeps latest run when earlier run appears later in list', async () => {
-    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', [
@@ -380,7 +380,7 @@ describe('Processes', () => {
     })
   })
   it('renders last run with null timestamp when missing', async () => {
-    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', [
@@ -435,7 +435,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -463,7 +463,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -497,7 +497,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -548,7 +548,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -577,7 +577,7 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -618,7 +618,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -648,7 +648,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -681,7 +681,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -715,7 +715,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -755,7 +755,8 @@ describe('Processes', () => {
         parameters_schema: null,
       }),
     ]
-    const { useConfiguredProcesses, useAvailableProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useAvailableProcesses } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -787,7 +788,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -835,7 +836,8 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses, useAvailableProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useAvailableProcesses } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -885,7 +887,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -955,7 +957,7 @@ describe('Processes', () => {
       }),
     ]
     const { useConfiguredProcesses, useAvailableProcesses, useProcessRuns } =
-      await import('../../hooks/queries')
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -993,7 +995,8 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses, useAvailableProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useAvailableProcesses } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
       data: null,
@@ -1054,7 +1057,8 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses, useAvailableProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useAvailableProcesses } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
       data: null,
@@ -1102,7 +1106,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1138,7 +1142,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1178,7 +1182,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1217,7 +1221,7 @@ describe('Processes', () => {
           is_one_shot: false,
         }),
       ]
-      const { useConfiguredProcesses } = await import('../../hooks/queries')
+      const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
       vi.mocked(useConfiguredProcesses).mockReturnValue({
         data: makeListEnvelope('configured_processes', items),
@@ -1257,7 +1261,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1315,7 +1319,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1369,7 +1373,7 @@ describe('Processes', () => {
         completed_at: '2024-06-15T10:35:00Z',
       }),
     ]
-    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1411,7 +1415,7 @@ describe('Processes', () => {
         started_at: 'invalid-date',
       }),
     ]
-    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useProcessRuns } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1443,7 +1447,8 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses, useAvailableProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useAvailableProcesses } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1481,7 +1486,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1513,7 +1518,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1548,7 +1553,8 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses, useStartProcessByName } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useStartProcessByName } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1582,7 +1588,8 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses, useStartProcessByName } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useStartProcessByName } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1616,7 +1623,8 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses, useStartProcessByName } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useStartProcessByName } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1663,7 +1671,8 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses, useStopProcessByName } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useStopProcessByName } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1697,7 +1706,8 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses, useStopProcessByName } = await import('../../hooks/queries')
+    const { useConfiguredProcesses, useStopProcessByName } =
+      await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1731,7 +1741,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1785,7 +1795,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1845,7 +1855,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1892,7 +1902,7 @@ describe('Processes', () => {
         is_one_shot: false,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1946,7 +1956,7 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),
@@ -1993,7 +2003,7 @@ describe('Processes', () => {
         is_one_shot: true,
       }),
     ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useConfiguredProcesses).mockReturnValue({
       data: makeListEnvelope('configured_processes', items),

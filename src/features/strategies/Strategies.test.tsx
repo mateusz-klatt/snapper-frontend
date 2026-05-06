@@ -44,11 +44,7 @@ const mockWsClient = {
   }),
 }
 
-vi.mock('../../hooks/queries', () => ({
-  useStrategies: vi.fn(() => ({
-    data: null,
-    isLoading: false,
-  })),
+vi.mock('../../hooks/queries/processes', () => ({
   useAvailableProcesses: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -62,6 +58,12 @@ vi.mock('../../hooks/queries', () => ({
   useCreateProcessConfig: vi.fn(() => ({
     mutateAsync: mockCreateProcessConfig,
     isPending: false,
+  })),
+}))
+vi.mock('../../hooks/queries/strategies', () => ({
+  useStrategies: vi.fn(() => ({
+    data: null,
+    isLoading: false,
   })),
 }))
 vi.mock('../../stores/websocket', () => ({
@@ -110,7 +112,7 @@ describe('Strategies', () => {
     expect(screen.getAllByText('Register Strategy').length).toBeGreaterThanOrEqual(1)
   })
   it('shows saving state when create process config is pending', async () => {
-    const { useCreateProcessConfig } = await import('../../hooks/queries')
+    const { useCreateProcessConfig } = await import('../../hooks/queries/processes')
 
     vi.mocked(useCreateProcessConfig).mockReturnValueOnce({
       mutateAsync: mockCreateProcessConfig,
@@ -120,7 +122,7 @@ describe('Strategies', () => {
     expect(screen.getByText(/Saving/i)).toBeTruthy()
   })
   it('displays empty state when no strategies configured', async () => {
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', []),
@@ -134,7 +136,7 @@ describe('Strategies', () => {
   })
   it('displays configured strategies', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_macd_btc' })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -148,7 +150,7 @@ describe('Strategies', () => {
   })
   it('subscribes to heartbeat topics for strategies', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_macd_btc', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -162,7 +164,7 @@ describe('Strategies', () => {
   })
   it('filters only strategy role processes', async () => {
     const mockProcesses = [makeStrategyProcess({ name: 'strategy_macd_btc' })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockProcesses),
@@ -181,7 +183,7 @@ describe('Strategies', () => {
     })
   })
   it('displays available strategy templates', async () => {
-    const { useAvailableProcesses } = await import('../../hooks/queries')
+    const { useAvailableProcesses } = await import('../../hooks/queries/processes')
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
       data: {
@@ -207,7 +209,7 @@ describe('Strategies', () => {
   })
   it('handles websocket connection callback', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -221,7 +223,7 @@ describe('Strategies', () => {
   })
   it('resubscribes to heartbeats on reconnect', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -237,7 +239,7 @@ describe('Strategies', () => {
   })
   it('does not resubscribe when connection callback is false', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -255,7 +257,7 @@ describe('Strategies', () => {
   })
   it('unsubscribes heartbeat topics on unmount', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -272,7 +274,7 @@ describe('Strategies', () => {
   })
   it('handles heartbeat messages', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -297,7 +299,7 @@ describe('Strategies', () => {
     })
   })
   it('shows loading skeleton while loading', async () => {
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: null,
@@ -309,7 +311,8 @@ describe('Strategies', () => {
   })
   it('handles start strategy with success', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName } = await import('../../hooks/queries')
+    const { useStartProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -346,7 +349,8 @@ describe('Strategies', () => {
     const mockStrategies = [
       makeStrategyProcess({ name: 'strategy_test', mode: '' as 'thread' | 'process' }),
     ]
-    const { useStrategies, useStartProcessByName } = await import('../../hooks/queries')
+    const { useStartProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -379,8 +383,9 @@ describe('Strategies', () => {
   })
   it('shows starting state while start mutation is pending', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName, useStopProcessByName } =
-      await import('../../hooks/queries')
+    const { useStartProcessByName, useStopProcessByName } =
+      await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -429,7 +434,8 @@ describe('Strategies', () => {
   })
   it('handles start strategy error - already running', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName } = await import('../../hooks/queries')
+    const { useStartProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -461,7 +467,8 @@ describe('Strategies', () => {
   })
   it('handles start strategy error - not found', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName } = await import('../../hooks/queries')
+    const { useStartProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -493,7 +500,8 @@ describe('Strategies', () => {
   })
   it('handles start strategy error - network error', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName } = await import('../../hooks/queries')
+    const { useStartProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -525,7 +533,8 @@ describe('Strategies', () => {
   })
   it('handles stop strategy with success', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies, useStopProcessByName } = await import('../../hooks/queries')
+    const { useStopProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -557,8 +566,9 @@ describe('Strategies', () => {
   })
   it('disables stop button while stop mutation is pending for active strategy', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName, useStopProcessByName } =
-      await import('../../hooks/queries')
+    const { useStartProcessByName, useStopProcessByName } =
+      await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -608,7 +618,8 @@ describe('Strategies', () => {
   })
   it('handles stop strategy error - not running', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies, useStopProcessByName } = await import('../../hooks/queries')
+    const { useStopProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -640,7 +651,8 @@ describe('Strategies', () => {
   })
   it('handles stop strategy error - network error', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies, useStopProcessByName } = await import('../../hooks/queries')
+    const { useStopProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -696,7 +708,7 @@ describe('Strategies', () => {
       useCreateProcessConfig,
       useStartProcessByName,
       useProcessSchema,
-    } = await import('../../hooks/queries')
+    } = await import('../../hooks/queries/processes')
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
       data: {
@@ -779,7 +791,7 @@ describe('Strategies', () => {
       useCreateProcessConfig,
       useStartProcessByName,
       useProcessSchema,
-    } = await import('../../hooks/queries')
+    } = await import('../../hooks/queries/processes')
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
       data: {
@@ -852,7 +864,7 @@ describe('Strategies', () => {
   })
   it('handles strategy launch error', async () => {
     const { useAvailableProcesses, useCreateProcessConfig, useProcessSchema } =
-      await import('../../hooks/queries')
+      await import('../../hooks/queries/processes')
     const toast = (await import('react-hot-toast')).default
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
@@ -921,7 +933,7 @@ describe('Strategies', () => {
   })
   it('handles strategy launch error for non-Error rejection', async () => {
     const { useAvailableProcesses, useCreateProcessConfig, useProcessSchema } =
-      await import('../../hooks/queries')
+      await import('../../hooks/queries/processes')
     const toast = (await import('react-hot-toast')).default
 
     vi.mocked(useAvailableProcesses).mockReturnValue({
@@ -983,7 +995,8 @@ describe('Strategies', () => {
   })
   it('handles stop strategy error - generic error', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies, useStopProcessByName } = await import('../../hooks/queries')
+    const { useStopProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1015,7 +1028,8 @@ describe('Strategies', () => {
   })
   it('handles start strategy error - generic error', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName } = await import('../../hooks/queries')
+    const { useStartProcessByName } = await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1047,7 +1061,7 @@ describe('Strategies', () => {
   })
   it('handles heartbeat message for warn status', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1073,7 +1087,7 @@ describe('Strategies', () => {
   })
   it('handles heartbeat message for error status', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1091,7 +1105,7 @@ describe('Strategies', () => {
   })
   it('handles heartbeat message for ok status', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1109,7 +1123,7 @@ describe('Strategies', () => {
   })
   it('defaults lag_ms to 0 when missing from heartbeat', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1131,7 +1145,7 @@ describe('Strategies', () => {
   })
   it('ignores heartbeat messages for unknown strategies', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_known', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1149,8 +1163,9 @@ describe('Strategies', () => {
   })
   it('clears activeStrategyProcess when stopping process that is not running', async () => {
     let mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies, useStartProcessByName, useStopProcessByName } =
-      await import('../../hooks/queries')
+    const { useStartProcessByName, useStopProcessByName } =
+      await import('../../hooks/queries/processes')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockImplementation(
       () =>
@@ -1237,7 +1252,7 @@ describe('Strategies', () => {
       wsClient: null,
     } as never)
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1254,7 +1269,7 @@ describe('Strategies', () => {
     } as never)
   })
   it('does not subscribe when no strategies configured', async () => {
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', []),
@@ -1269,7 +1284,7 @@ describe('Strategies', () => {
   })
   it('handles heartbeat with warn status', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1287,7 +1302,7 @@ describe('Strategies', () => {
   })
   it('handles heartbeat with error status', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1313,7 +1328,7 @@ describe('Strategies', () => {
   })
   it('handles heartbeat with warning status alternative', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1331,7 +1346,7 @@ describe('Strategies', () => {
   })
   it('triggers connection callback and resubscribes', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1350,7 +1365,7 @@ describe('Strategies', () => {
   })
   it('ignores heartbeat messages for non-strategy components', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1371,7 +1386,7 @@ describe('Strategies', () => {
       makeStrategyProcess({ name: 'strategy_running', running: true }),
       makeStrategyProcess({ name: 'strategy_stopped' }),
     ]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1395,7 +1410,7 @@ describe('Strategies', () => {
       makeStrategyProcess({ name: 'strategy_running', running: true }),
       makeStrategyProcess({ name: 'strategy_stopped' }),
     ]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1418,7 +1433,7 @@ describe('Strategies', () => {
   })
   it('shows no match state and clears filters', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1446,7 +1461,7 @@ describe('Strategies', () => {
   })
   it('cancels confirm dialog', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1471,7 +1486,7 @@ describe('Strategies', () => {
     })
   })
   it('opens register modal from empty state button', async () => {
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', []),
@@ -1498,7 +1513,7 @@ describe('Strategies', () => {
       hasPermission: () => false,
     } as never)
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', mockStrategies),
@@ -1523,7 +1538,7 @@ describe('Strategies', () => {
     vi.mocked(useAuth).mockReturnValue({
       hasPermission: () => false,
     } as never)
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useStrategies).mockReturnValue({
       data: makeListEnvelope('strategy_list', []),
@@ -1542,7 +1557,7 @@ describe('Strategies', () => {
   })
   it('does not subscribe to heartbeats when time traveling', async () => {
     const { useAppStore } = await import('../../stores/app')
-    const { useStrategies } = await import('../../hooks/queries')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
 
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: Record<string, unknown>) => unknown
