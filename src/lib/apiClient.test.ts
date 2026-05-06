@@ -1,5 +1,75 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { getCookie } from './utils'
+import { apiClient as sharedApiClient, APIError as SharedAPIError } from './apiClient'
+import { getHealth } from './api/health'
+import {
+  getSystemStatus,
+  getSystemMetrics,
+  getDbStats,
+  getNotificationMetrics,
+  getRetentionRun,
+} from './api/system'
+import {
+  getCandles,
+  getExchanges,
+  getExchangeInstruments,
+  getExchangeInstrumentsDetail,
+} from './api/market'
+import { getOrders, getExecutions, createOrder, cancelOrder } from './api/orders'
+import {
+  getPositions,
+  createBracket,
+  cancelBracket,
+  getBracket,
+  createTrailingStop,
+  cancelTrailingStop,
+  getTrailingStopByCycle,
+} from './api/positions'
+import { getSignals } from './api/signals'
+import { getOperators, getWallets } from './api/wallets'
+import { getScopeGrants, createScopeGrant, handoverScopeGrant } from './api/scope-grants'
+import { getCredentials, createCredential, rotateCredential } from './api/credentials'
+import { getSettings, getSettingCategories, updateSetting, removeSetting } from './api/settings'
+import {
+  getProcessSchema,
+  createProcessConfig,
+  getConfiguredProcesses,
+  getProcessSummary,
+  getAvailableProcesses,
+  getProcessRuns,
+  startProcessByName,
+  stopProcessByName,
+} from './api/processes'
+import { getStrategies } from './api/strategies'
+import {
+  changePassword,
+  listUsers,
+  createUser,
+  updateUser,
+  deactivateUser,
+  adminResetPassword,
+} from './api/users'
+import {
+  getBacktests,
+  getBacktest,
+  createBacktest,
+  cancelBacktest,
+  rerunBacktest,
+  getBacktestTrades,
+  getBacktestSignals,
+  createBacktestComparison,
+  getBacktestComparison,
+  getBacktestComparisons,
+} from './api/backtests'
+import { getFeatureFlags } from './api/feature-flags'
+import {
+  listAiDelegates,
+  getAiDelegate,
+  createAiDelegate,
+  updateAiDelegateCaps,
+  deactivateAiDelegate,
+} from './api/ai-delegates'
+import { listPendingAiReviews, submitAiReviewDecision } from './api/ai-reviews'
 
 vi.mock('./utils', () => ({
   getCookie: vi.fn(() => 'test-csrf-token'),
@@ -390,6 +460,25 @@ describe('APIClient', () => {
       })
       await expect(apiClient.getJSON('/test')).rejects.toThrow('HTTP 500: Internal Server Error')
     })
+    it('requestJSON returns parsed body without explicit options', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ data: 'value' }),
+      })
+      const data = await apiClient.requestJSON<{ data: string }>('/api/raw')
+
+      expect(data).toEqual({ data: 'value' })
+    })
+    it('requestJSON throws APIError when response is non-ok', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 404,
+        statusText: 'Not Found',
+        json: vi.fn().mockResolvedValue({ detail: 'missing' }),
+      })
+      await expect(apiClient.requestJSON('/api/raw', { method: 'GET' })).rejects.toThrow('missing')
+    })
     it('provides postJSON method', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
@@ -457,17 +546,17 @@ describe('APIClient', () => {
   })
 })
 describe('domain API methods', () => {
-  let apiClient: typeof import('./apiClient').apiClient
+  const apiClient = sharedApiClient
   let mockFetch: ReturnType<typeof vi.fn>
 
-  beforeEach(async () => {
+  beforeEach(() => {
     vi.clearAllMocks()
     vi.mocked(getCookie).mockReturnValue('test-csrf')
     mockFetch = vi.fn()
     ;(globalThis as any).fetch = mockFetch
-    const mod = await import('./apiClient')
-
-    apiClient = mod.apiClient
+    apiClient.setTimeTravelAsOf(null)
+    apiClient.setOperatorScope(null)
+    apiClient.setWalletScope(null)
   })
   it('getHealth returns health data', async () => {
     mockFetch.mockResolvedValueOnce({
@@ -510,7 +599,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.getHealth()
+    const result = await getHealth()
 
     expect(result.payload.status).toBe('healthy')
     expect(result.timestamp).toBe('2024-01-01T00:00:00Z')
@@ -540,7 +629,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.getSystemStatus()
+    const result = await getSystemStatus()
 
     expect(result.payload.trader.status).toBe('running')
     expect(result.payload.backtests).toEqual({})
@@ -607,7 +696,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.getSystemMetrics()
+    const result = await getSystemMetrics()
 
     expect(result.payload.process.pid).toBe(100)
     expect(result.payload.cpu.process_percent).toBeCloseTo(1.5)
@@ -646,7 +735,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.getDbStats()
+    const result = await getDbStats()
 
     expect(result.payload.tables).toHaveLength(1)
     expect(result.payload.tables[0]?.table).toBe('orders')
@@ -676,7 +765,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.getNotificationMetrics()
+    const result = await getNotificationMetrics()
 
     expect(result.payload.delivery_success_total).toBe(100)
     expect(result.payload.outbox_queued_depth).toBe(5)
@@ -716,7 +805,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.getRetentionRun()
+    const result = await getRetentionRun()
 
     expect(result.payload.dry_run).toBe(true)
     expect(result.payload.results).toHaveLength(1)
@@ -753,7 +842,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getCandles('BTC/USD', 'kraken', '1h', 50)
+    const result = await getCandles('BTC/USD', 'kraken', '1h', 50)
 
     expect(result).toHaveLength(1)
     expect(mockFetch).toHaveBeenCalledWith(
@@ -779,7 +868,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    const result = await apiClient.getCandles('BTC/USD', 'kraken')
+    const result = await getCandles('BTC/USD', 'kraken')
 
     expect(result).toEqual([])
   })
@@ -796,7 +885,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    const result = await apiClient.getCandles('BTC/USD', 'kraken', '1h', 50)
+    const result = await getCandles('BTC/USD', 'kraken', '1h', 50)
 
     expect(result).toEqual([])
   })
@@ -806,9 +895,7 @@ describe('domain API methods', () => {
       status: 500,
       statusText: 'Server Error',
     })
-    await expect(apiClient.getCandles('BTC/USD', 'kraken')).rejects.toThrow(
-      'HTTP 500: Server Error'
-    )
+    await expect(getCandles('BTC/USD', 'kraken')).rejects.toThrow('HTTP 500: Server Error')
   })
   it('getOrders returns orders with optional symbol filter', async () => {
     mockFetch.mockResolvedValueOnce({
@@ -847,7 +934,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getOrders('BTC/USD', 50, 10)
+    const result = await getOrders('BTC/USD', 50, 10)
 
     expect(result.payload).toHaveLength(1)
     expect(mockFetch).toHaveBeenCalledWith(
@@ -869,7 +956,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    await apiClient.getOrders()
+    await getOrders()
     expect(mockFetch).toHaveBeenCalledWith(
       expect.not.stringContaining('symbol='),
       expect.any(Object)
@@ -911,7 +998,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getExecutions(50)
+    const result = await getExecutions(50)
 
     expect(result.payload).toHaveLength(1)
     expect(mockFetch).toHaveBeenCalledWith(expect.stringContaining('limit=50'), expect.any(Object))
@@ -952,7 +1039,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getExecutions()
+    const result = await getExecutions()
 
     expect(result.payload).toHaveLength(1)
     expect(mockFetch).toHaveBeenCalledWith(expect.stringContaining('limit=100'), expect.any(Object))
@@ -995,7 +1082,7 @@ describe('domain API methods', () => {
       status: 200,
       json: async () => responseBody,
     })
-    const result = await apiClient.createOrder({ type: 'create_order_command' })
+    const result = await createOrder({ type: 'create_order_command' })
 
     expect(result).toEqual(responseBody)
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1041,7 +1128,7 @@ describe('domain API methods', () => {
       status: 200,
       json: async () => responseBody,
     })
-    const result = await apiClient.cancelOrder('cid 42/with special')
+    const result = await cancelOrder('cid 42/with special')
 
     expect(result).toEqual(responseBody)
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1080,7 +1167,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getPositions()
+    const result = await getPositions()
 
     expect(result.payload).toHaveLength(1)
   })
@@ -1115,7 +1202,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getSignals('momentum', 50, 'BTC/USD', 48)
+    const result = await getSignals('momentum', 50, 'BTC/USD', 48)
 
     expect(result.payload).toHaveLength(1)
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1137,7 +1224,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    await apiClient.getSignals()
+    await getSignals()
     const url = mockFetch.mock.calls[0]?.[0] as string
 
     expect(url).toContain('limit=100')
@@ -1159,7 +1246,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    await apiClient.getSignals('momentum', 50, 'BTC/USD', 48, 'kraken')
+    await getSignals('momentum', 50, 'BTC/USD', 48, 'kraken')
     const url = mockFetch.mock.calls[0]?.[0] as string
 
     expect(url).toContain('exchange=kraken')
@@ -1178,7 +1265,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    await apiClient.getOrders('BTC/USD', 50, 10, 'kraken')
+    await getOrders('BTC/USD', 50, 10, 'kraken')
     const url = mockFetch.mock.calls[0]?.[0] as string
 
     expect(url).toContain('exchange=kraken')
@@ -1197,7 +1284,7 @@ describe('domain API methods', () => {
         count: 2,
       }),
     })
-    const result = await apiClient.getExchanges()
+    const result = await getExchanges()
 
     expect(result.payload).toEqual(['kraken', 'binance'])
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1219,7 +1306,7 @@ describe('domain API methods', () => {
         count: 2,
       }),
     })
-    const result = await apiClient.getExchangeInstruments('kraken')
+    const result = await getExchangeInstruments('kraken')
 
     expect(result.payload).toEqual(['BTC/USD', 'ETH/USD'])
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1258,7 +1345,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getExchangeInstrumentsDetail('kraken_equities')
+    const result = await getExchangeInstrumentsDetail('kraken_equities')
 
     expect(result.payload).toHaveLength(1)
     expect(result.payload[0]?.symbol).toBe('MNQM6-CME')
@@ -1294,7 +1381,7 @@ describe('domain API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.getSettings('trading')
+    const result = await getSettings('trading')
 
     expect(result.payload).toHaveLength(1)
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1316,7 +1403,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    await apiClient.getSettings()
+    await getSettings()
     expect(mockFetch).toHaveBeenCalledWith(
       expect.not.stringContaining('category='),
       expect.any(Object)
@@ -1336,7 +1423,7 @@ describe('domain API methods', () => {
         count: 2,
       }),
     })
-    const result = await apiClient.getSettingCategories()
+    const result = await getSettingCategories()
 
     expect(result).toEqual(['trading', 'system'])
   })
@@ -1363,7 +1450,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.updateSetting('setting1', {
+    const result = await updateSetting('setting1', {
       value: 'new-value',
       category: 'general',
     })
@@ -1384,7 +1471,7 @@ describe('domain API methods', () => {
         payload: 'Setting deleted successfully',
       }),
     })
-    const result = await apiClient.removeSetting('setting1')
+    const result = await removeSetting('setting1')
 
     expect(result).toEqual({
       type: 'message',
@@ -1426,7 +1513,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.getProcessSchema('test-process')
+    const result = await getProcessSchema('test-process')
 
     expect(result.payload.name).toBe('test')
     expect(result.payload.lifecycle).toBe('long_running')
@@ -1455,7 +1542,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    const result = await apiClient.createProcessConfig({
+    const result = await createProcessConfig({
       name: 'new-process',
       template: 'test-template',
     })
@@ -1477,7 +1564,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    const result = await apiClient.getConfiguredProcesses()
+    const result = await getConfiguredProcesses()
 
     expect(result).toEqual({
       type: 'configured_processes',
@@ -1526,7 +1613,7 @@ describe('domain API methods', () => {
       status: 200,
       json: async () => responseData,
     })
-    const result = await apiClient.getProcessSummary()
+    const result = await getProcessSummary()
 
     expect(result).toEqual(responseData)
   })
@@ -1558,7 +1645,7 @@ describe('domain API methods', () => {
       status: 200,
       json: async () => strategiesResponse,
     })
-    const result = await apiClient.getStrategies()
+    const result = await getStrategies()
 
     expect(result).toEqual(strategiesResponse)
   })
@@ -1576,7 +1663,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    const result = await apiClient.getAvailableProcesses()
+    const result = await getAvailableProcesses()
 
     expect(result).toEqual({
       type: 'available_processes',
@@ -1602,7 +1689,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    const result = await apiClient.getProcessRuns({ limit: 10, name: 'test' })
+    const result = await getProcessRuns({ limit: 10, name: 'test' })
 
     expect(result).toEqual({
       type: 'process_runs',
@@ -1630,7 +1717,7 @@ describe('domain API methods', () => {
         count: 0,
       }),
     })
-    await apiClient.getProcessRuns()
+    await getProcessRuns()
     expect(mockFetch).toHaveBeenCalledWith(
       expect.stringContaining('/processes/runs'),
       expect.any(Object)
@@ -1660,7 +1747,7 @@ describe('domain API methods', () => {
       status: 200,
       json: async () => responseData,
     })
-    const result = await apiClient.startProcessByName('test-process', {
+    const result = await startProcessByName('test-process', {
       mode: 'live' as 'thread',
       parameters: { param: 'value' },
     })
@@ -1689,7 +1776,7 @@ describe('domain API methods', () => {
         },
       }),
     })
-    await apiClient.startProcessByName('test-process')
+    await startProcessByName('test-process')
     expect(mockFetch).toHaveBeenCalled()
   })
   it('stopProcessByName stops a process', async () => {
@@ -1716,7 +1803,7 @@ describe('domain API methods', () => {
       status: 200,
       json: async () => responseData,
     })
-    const result = await apiClient.stopProcessByName('test-process')
+    const result = await stopProcessByName('test-process')
 
     expect(result).toEqual(responseData)
   })
@@ -1733,7 +1820,7 @@ describe('domain API methods', () => {
         payload: 'Password changed successfully',
       }),
     })
-    const result = await apiClient.changePassword('testuser', 'oldPassword', 'newPassword')
+    const result = await changePassword('testuser', 'oldPassword', 'newPassword')
 
     expect(result).toEqual({
       type: 'message',
@@ -1757,17 +1844,17 @@ describe('domain API methods', () => {
   })
 })
 describe('user management API methods', () => {
-  let apiClient: typeof import('./apiClient').apiClient
+  const apiClient = sharedApiClient
   let mockFetch: ReturnType<typeof vi.fn>
 
-  beforeEach(async () => {
+  beforeEach(() => {
     vi.clearAllMocks()
     vi.mocked(getCookie).mockReturnValue('test-csrf')
     mockFetch = vi.fn()
     ;(globalThis as any).fetch = mockFetch
-    const mod = await import('./apiClient')
-
-    apiClient = mod.apiClient
+    apiClient.setTimeTravelAsOf(null)
+    apiClient.setOperatorScope(null)
+    apiClient.setWalletScope(null)
   })
   it('listUsers fetches users', async () => {
     mockFetch.mockResolvedValueOnce({
@@ -1795,7 +1882,7 @@ describe('user management API methods', () => {
         count: 1,
       }),
     })
-    const result = await apiClient.listUsers(true)
+    const result = await listUsers(true)
 
     expect(result.payload).toHaveLength(1)
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1817,7 +1904,7 @@ describe('user management API methods', () => {
         count: 0,
       }),
     })
-    await apiClient.listUsers(false)
+    await listUsers(false)
 
     expect(mockFetch).toHaveBeenCalledWith(
       '/api/auth/users?include_inactive=false&as_of=2024-06-01T12%3A00%3A00Z',
@@ -1848,7 +1935,7 @@ describe('user management API methods', () => {
         },
       }),
     })
-    const result = await apiClient.createUser({
+    const result = await createUser({
       username: 'new',
       password: 'pass',
       email: 'e@e.com',
@@ -1885,7 +1972,7 @@ describe('user management API methods', () => {
         },
       }),
     })
-    const result = await apiClient.updateUser('admin', {
+    const result = await updateUser('admin', {
       email: 'new@e.com',
       role: 'admin',
       is_active: true,
@@ -1909,7 +1996,7 @@ describe('user management API methods', () => {
         payload: 'User deactivated',
       }),
     })
-    const result = await apiClient.deactivateUser('testuser')
+    const result = await deactivateUser('testuser')
 
     expect(result.payload).toBe('User deactivated')
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1929,7 +2016,7 @@ describe('user management API methods', () => {
         payload: 'Password reset',
       }),
     })
-    const result = await apiClient.adminResetPassword('admin', { new_password: 'newpass123' })
+    const result = await adminResetPassword('admin', { new_password: 'newpass123' })
 
     expect(result.payload).toBe('Password reset')
     expect(mockFetch).toHaveBeenCalledWith(
@@ -1939,7 +2026,7 @@ describe('user management API methods', () => {
   })
 })
 describe('cacheWsTicketFromResponse', () => {
-  let apiClient: typeof import('./apiClient').apiClient
+  const apiClient = sharedApiClient
   let mockFetch: ReturnType<typeof vi.fn>
   let storeWsTicket: ReturnType<typeof vi.fn>
 
@@ -1951,9 +2038,9 @@ describe('cacheWsTicketFromResponse', () => {
     const wsTicketCacheMod = await import('./wsTicketCache')
 
     storeWsTicket = wsTicketCacheMod.storeWsTicket as unknown as ReturnType<typeof vi.fn>
-    const mod = await import('./apiClient')
-
-    apiClient = mod.apiClient
+    apiClient.setTimeTravelAsOf(null)
+    apiClient.setOperatorScope(null)
+    apiClient.setWalletScope(null)
   })
   it('stores ws ticket from valid refresh response', async () => {
     const expDate = new Date('2026-01-07T12:00:00Z')
@@ -2204,7 +2291,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      const result = await apiClient.getOperators()
+      const result = await getOperators()
 
       expect(result.payload).toHaveLength(1)
       expect(result.payload[0]?.label).toBe('alice')
@@ -2233,7 +2320,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      const result = await apiClient.getWallets()
+      const result = await getWallets()
 
       expect(result.payload).toHaveLength(1)
       expect(result.payload[0]?.is_paper).toBe(false)
@@ -2327,7 +2414,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      const result = await apiClient.getScopeGrants('w-1')
+      const result = await getScopeGrants('w-1')
 
       expect(result.payload).toHaveLength(1)
       expect(result.payload[0]?.scope_kind).toBe('underlying')
@@ -2345,7 +2432,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.getScopeGrants('w-missing')).rejects.toThrow('Wallet not found')
+      await expect(getScopeGrants('w-missing')).rejects.toThrow('Wallet not found')
     })
     it('appends as_of when time-traveling', async () => {
       apiClient.setTimeTravelAsOf('2026-03-15T10:00:00Z')
@@ -2360,7 +2447,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      await apiClient.getScopeGrants('w-1')
+      await getScopeGrants('w-1')
       const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('as_of=')
@@ -2381,7 +2468,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      await apiClient.getScopeGrants('w-admin')
+      await getScopeGrants('w-admin')
       const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('wallet_public_id=w-admin')
@@ -2418,7 +2505,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => response })
-      const result = await apiClient.createScopeGrant({
+      const result = await createScopeGrant({
         operator_public_id: 'op-1',
         wallet_public_id: 'w-1',
         scope_kind: 'underlying',
@@ -2461,7 +2548,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => response })
-      const result = await apiClient.handoverScopeGrant({
+      const result = await handoverScopeGrant({
         from_grant_public_id: 'sg-old',
         to_operator_public_id: 'op-2',
         reason: 'shift change',
@@ -2496,7 +2583,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      const result = await apiClient.getCredentials('w-1')
+      const result = await getCredentials('w-1')
 
       expect(result.payload).toHaveLength(1)
       expect(result.payload[0]?.exchange).toBe('kraken')
@@ -2514,7 +2601,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.getCredentials('w-missing')).rejects.toThrow('Wallet not found')
+      await expect(getCredentials('w-missing')).rejects.toThrow('Wallet not found')
     })
     it('appends as_of when time-traveling', async () => {
       apiClient.setTimeTravelAsOf('2026-03-15T10:00:00Z')
@@ -2529,7 +2616,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      await apiClient.getCredentials('w-1')
+      await getCredentials('w-1')
       const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('as_of=')
@@ -2550,7 +2637,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
-      await apiClient.getCredentials('w-admin')
+      await getCredentials('w-admin')
       const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('/api/wallets/w-admin/credentials')
@@ -2583,7 +2670,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => response })
-      const result = await apiClient.createCredential('w-1', {
+      const result = await createCredential('w-1', {
         exchange: 'kraken',
         credential_type: 'api_key_secret',
         credential_payload: { api_key: 'k', api_secret: 's' },
@@ -2616,7 +2703,7 @@ describe('cacheWsTicketFromResponse', () => {
       }
 
       mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => response })
-      const result = await apiClient.rotateCredential('w-1', 'cred-1', {
+      const result = await rotateCredential('w-1', 'cred-1', {
         credential_payload: { api_key: 'new-k', api_secret: 'new-s' },
         label: 'rotated-key',
       })
@@ -2666,7 +2753,7 @@ describe('cacheWsTicketFromResponse', () => {
         status: 200,
         json: async () => planResponse,
       })
-      const result = await apiClient.createBracket({
+      const result = await createBracket({
         position_cycle_public_id: 'cycle-1',
         sl_price: 48000,
       })
@@ -2683,7 +2770,7 @@ describe('cacheWsTicketFromResponse', () => {
         status: 200,
         json: async () => planResponse,
       })
-      const result = await apiClient.cancelBracket('plan-1')
+      const result = await cancelBracket('plan-1')
 
       expect(result.payload.public_id).toBe('plan-1')
       expect(mockFetch).toHaveBeenCalledWith(
@@ -2697,7 +2784,7 @@ describe('cacheWsTicketFromResponse', () => {
         status: 200,
         json: async () => planResponse,
       })
-      const result = await apiClient.getBracket('plan-1')
+      const result = await getBracket('plan-1')
 
       expect(result.payload.plan_type).toBe('bracket')
       expect(mockFetch).toHaveBeenCalledWith(
@@ -2711,7 +2798,7 @@ describe('cacheWsTicketFromResponse', () => {
         status: 200,
         json: async () => planResponse,
       })
-      const result = await apiClient.createTrailingStop({
+      const result = await createTrailingStop({
         position_cycle_public_id: 'cycle-1',
         trailing_pct: 5,
       })
@@ -2728,7 +2815,7 @@ describe('cacheWsTicketFromResponse', () => {
         status: 200,
         json: async () => planResponse,
       })
-      const result = await apiClient.cancelTrailingStop('ts-1')
+      const result = await cancelTrailingStop('ts-1')
 
       expect(result.payload.public_id).toBe('plan-1')
       expect(mockFetch).toHaveBeenCalledWith(
@@ -2751,7 +2838,7 @@ describe('cacheWsTicketFromResponse', () => {
         status: 200,
         json: async () => messageEnv,
       })
-      const result = await apiClient.getTrailingStopByCycle('cycle-1')
+      const result = await getTrailingStopByCycle('cycle-1')
 
       expect(result).toEqual(messageEnv)
       expect(mockFetch).toHaveBeenCalledWith(
@@ -2861,7 +2948,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => runListEnv(),
       })
-      await apiClient.getBacktests()
+      await getBacktests()
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests?limit=20&offset=0'),
@@ -2874,7 +2961,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => runListEnv(),
       })
-      const result = await apiClient.getBacktests(10, 5, 'sma', 'completed')
+      const result = await getBacktests(10, 5, 'sma', 'completed')
 
       expect(result.count).toBe(0)
       expect(mockFetch).toHaveBeenCalledWith(
@@ -2888,7 +2975,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => runListEnv(),
       })
-      await apiClient.getBacktests(20, 0, undefined, undefined, 'cfg-hash-abc')
+      await getBacktests(20, 0, undefined, undefined, 'cfg-hash-abc')
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('config_hash=cfg-hash-abc'),
@@ -2901,7 +2988,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => runEnv({ public_id: 'r1' }),
       })
-      await apiClient.getBacktest('r1')
+      await getBacktest('r1')
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/r1'),
@@ -2914,7 +3001,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => runEnv({ public_id: 'r2' }),
       })
-      await apiClient.createBacktest({
+      await createBacktest({
         strategy_class: 'sma',
         instrument_public_id: 'BTC-USD',
         exchange: 'kraken',
@@ -2933,7 +3020,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => runEnv({ public_id: 'r1', status: 'cancelled' }),
       })
-      await apiClient.cancelBacktest('r1')
+      await cancelBacktest('r1')
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/r1/cancel'),
@@ -2946,7 +3033,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => runEnv({ public_id: 'r1', status: 'pending' }),
       })
-      await apiClient.rerunBacktest('r1')
+      await rerunBacktest('r1')
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/r1/rerun'),
@@ -2959,7 +3046,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => tradeListEnv(),
       })
-      await apiClient.getBacktestTrades('r1')
+      await getBacktestTrades('r1')
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/r1/trades?limit=100'),
@@ -2972,7 +3059,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => tradeListEnv(),
       })
-      await apiClient.getBacktestTrades('r1', 50)
+      await getBacktestTrades('r1', 50)
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/r1/trades?limit=50'),
@@ -2985,7 +3072,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => signalListEnv(),
       })
-      await apiClient.getBacktestSignals('r1')
+      await getBacktestSignals('r1')
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/r1/signals?limit=100'),
@@ -2998,7 +3085,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => signalListEnv(),
       })
-      await apiClient.getBacktestSignals('r1', 50)
+      await getBacktestSignals('r1', 50)
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/r1/signals?limit=50'),
@@ -3011,7 +3098,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => compEnv('cmp-1'),
       })
-      await apiClient.createBacktestComparison({
+      await createBacktestComparison({
         mode: 'auto',
         config_hash: 'cfg-hash-abc',
         anchor_run_public_id: 'r1',
@@ -3037,7 +3124,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => compDetailEnv('cmp 1'),
       })
-      await apiClient.getBacktestComparison('cmp 1')
+      await getBacktestComparison('cmp 1')
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('/api/backtests/compare/cmp%201'),
@@ -3050,7 +3137,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => compListEnv(),
       })
-      await apiClient.getBacktestComparisons()
+      await getBacktestComparisons()
       expect(mockFetch).toHaveBeenLastCalledWith(
         expect.stringContaining('/api/backtests/compare?limit=20&offset=0'),
         expect.objectContaining({ method: 'GET' })
@@ -3060,7 +3147,7 @@ describe('cacheWsTicketFromResponse', () => {
         ok: true,
         json: async () => compListEnv(),
       })
-      await apiClient.getBacktestComparisons(50, 100)
+      await getBacktestComparisons(50, 100)
       expect(mockFetch).toHaveBeenLastCalledWith(
         expect.stringContaining('/api/backtests/compare?limit=50&offset=100'),
         expect.objectContaining({ method: 'GET' })
@@ -3074,7 +3161,7 @@ describe('cacheWsTicketFromResponse', () => {
         statusText: 'Not Found',
         json: vi.fn().mockResolvedValue({ detail: 'Comparison not found' }),
       })
-      await expect(apiClient.getBacktestComparison('missing')).rejects.toMatchObject({
+      await expect(getBacktestComparison('missing')).rejects.toMatchObject({
         name: 'APIError',
         message: 'Comparison not found',
         status: 404,
@@ -3090,7 +3177,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: vi.fn().mockResolvedValue({ detail: 'cannot compare a run with itself' }),
       })
       await expect(
-        apiClient.createBacktestComparison({
+        createBacktestComparison({
           mode: 'manual',
           run_a_public_id: 'r1',
           run_b_public_id: 'r1',
@@ -3110,7 +3197,7 @@ describe('cacheWsTicketFromResponse', () => {
         statusText: 'Bad Request',
         json: vi.fn().mockResolvedValue({ detail: 42 }),
       })
-      await expect(apiClient.getBacktestComparison('numeric-detail')).rejects.toMatchObject({
+      await expect(getBacktestComparison('numeric-detail')).rejects.toMatchObject({
         name: 'APIError',
         message: '42',
         status: 400,
@@ -3134,14 +3221,12 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('kraken_equities')
+        await getExchangeInstrumentsDetail('kraken_equities')
         throw new Error('expected request to fail')
       } catch (err) {
-        const { APIError } = await import('./apiClient')
+        expect(err).toBeInstanceOf(SharedAPIError)
 
-        expect(err).toBeInstanceOf(APIError)
-
-        const typed = err as InstanceType<typeof APIError>
+        const typed = err as InstanceType<typeof SharedAPIError>
 
         expect(typed.status).toBe(422)
         expect(typed.message).toMatch(/can_trade is False/)
@@ -3163,7 +3248,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string; details?: unknown }
@@ -3182,7 +3267,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string }
@@ -3200,7 +3285,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string }
@@ -3220,7 +3305,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string }
@@ -3238,7 +3323,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string }
@@ -3259,7 +3344,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string }
@@ -3279,7 +3364,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string }
@@ -3297,7 +3382,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string }
@@ -3315,7 +3400,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string; details?: unknown }
@@ -3336,7 +3421,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string; details?: unknown }
@@ -3355,7 +3440,7 @@ describe('cacheWsTicketFromResponse', () => {
       })
 
       try {
-        await apiClient.getExchangeInstrumentsDetail('y')
+        await getExchangeInstrumentsDetail('y')
         throw new Error('expected request to fail')
       } catch (err) {
         const typed = err as { message: string; details?: unknown }
@@ -3379,7 +3464,7 @@ describe('cacheWsTicketFromResponse', () => {
           payload: { ai_integration_enabled: true },
         }),
       })
-      const result = await apiClient.getFeatureFlags()
+      const result = await getFeatureFlags()
 
       expect(result.payload.ai_integration_enabled).toBe(true)
       expect(mockFetch).toHaveBeenCalledWith(
@@ -3397,7 +3482,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.getFeatureFlags()).rejects.toThrow('server error')
+      await expect(getFeatureFlags()).rejects.toThrow('server error')
     })
     it('listAiDelegates returns validated delegate list', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3428,7 +3513,7 @@ describe('cacheWsTicketFromResponse', () => {
           count: 1,
         }),
       })
-      const result = await apiClient.listAiDelegates()
+      const result = await listAiDelegates()
 
       expect(result.count).toBe(1)
       expect(result.payload[0]?.label).toBe('Alpha')
@@ -3447,7 +3532,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.listAiDelegates()).rejects.toThrow('delegates endpoint unavailable')
+      await expect(listAiDelegates()).rejects.toThrow('delegates endpoint unavailable')
     })
     it('getAiDelegate returns validated detail response', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3475,7 +3560,7 @@ describe('cacheWsTicketFromResponse', () => {
           },
         }),
       })
-      const result = await apiClient.getAiDelegate('d-1')
+      const result = await getAiDelegate('d-1')
 
       expect(result.payload.public_id).toBe('d-1')
       expect(mockFetch).toHaveBeenCalledWith(
@@ -3493,7 +3578,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.getAiDelegate('missing')).rejects.toThrow('not found')
+      await expect(getAiDelegate('missing')).rejects.toThrow('not found')
     })
     it('createAiDelegate posts body and returns created payload', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3525,7 +3610,7 @@ describe('cacheWsTicketFromResponse', () => {
           },
         }),
       })
-      const result = await apiClient.createAiDelegate({
+      const result = await createAiDelegate({
         label: 'Alpha',
         caps: {
           max_open_orders: null,
@@ -3550,7 +3635,7 @@ describe('cacheWsTicketFromResponse', () => {
         clone: () => ({ json: jsonFn }),
       })
       await expect(
-        apiClient.createAiDelegate({ label: 'x'.repeat(1000), operator_public_id: null })
+        createAiDelegate({ label: 'x'.repeat(1000), operator_public_id: null })
       ).rejects.toThrow('label too long')
     })
     it('updateAiDelegateCaps patches and returns updated delegate', async () => {
@@ -3579,7 +3664,7 @@ describe('cacheWsTicketFromResponse', () => {
           },
         }),
       })
-      const result = await apiClient.updateAiDelegateCaps('d-1', {
+      const result = await updateAiDelegateCaps('d-1', {
         caps: {
           max_open_orders: 25,
           max_daily_notional_usd: null,
@@ -3603,7 +3688,7 @@ describe('cacheWsTicketFromResponse', () => {
         clone: () => ({ json: jsonFn }),
       })
       await expect(
-        apiClient.updateAiDelegateCaps('d-1', {
+        updateAiDelegateCaps('d-1', {
           caps: {
             max_open_orders: null,
             max_daily_notional_usd: null,
@@ -3639,7 +3724,7 @@ describe('cacheWsTicketFromResponse', () => {
           },
         }),
       })
-      const result = await apiClient.deactivateAiDelegate('d-1')
+      const result = await deactivateAiDelegate('d-1')
 
       expect(result.payload.is_active).toBe(false)
       expect(mockFetch.mock.calls[0]?.[0]).toEqual(
@@ -3657,7 +3742,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.deactivateAiDelegate('d-1')).rejects.toThrow('database is locked')
+      await expect(deactivateAiDelegate('d-1')).rejects.toThrow('database is locked')
     })
     it('listPendingAiReviews returns validated pending list with no params', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3678,7 +3763,7 @@ describe('cacheWsTicketFromResponse', () => {
           count: 1,
         }),
       })
-      const result = await apiClient.listPendingAiReviews()
+      const result = await listPendingAiReviews()
 
       expect(result.count).toBe(1)
       expect(result.items[0]?.review_public_id).toBe('r-1')
@@ -3693,7 +3778,7 @@ describe('cacheWsTicketFromResponse', () => {
         status: 200,
         json: async () => ({ items: [], count: 0 }),
       })
-      await apiClient.listPendingAiReviews({ wallet_public_id: 'wal-77', limit: 25 })
+      await listPendingAiReviews({ wallet_public_id: 'wal-77', limit: 25 })
       const calledUrl = mockFetch.mock.calls[0]?.[0] as string
 
       expect(calledUrl).toContain('wallet_public_id=wal-77')
@@ -3709,7 +3794,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.listPendingAiReviews()).rejects.toThrow('not_a_delegate')
+      await expect(listPendingAiReviews()).rejects.toThrow('not_a_delegate')
     })
     it('submitAiReviewDecision posts decision wrapped in provenance envelope', async () => {
       mockFetch.mockResolvedValueOnce({
@@ -3722,7 +3807,7 @@ describe('cacheWsTicketFromResponse', () => {
           details: {},
         }),
       })
-      const result = await apiClient.submitAiReviewDecision('rev-1', 'approve', 'looks good')
+      const result = await submitAiReviewDecision('rev-1', 'approve', 'looks good')
 
       expect(result.success).toBe(true)
       expect(mockFetch).toHaveBeenCalledWith(
@@ -3759,7 +3844,7 @@ describe('cacheWsTicketFromResponse', () => {
           details: {},
         }),
       })
-      await apiClient.submitAiReviewDecision('rev-2', 'reject')
+      await submitAiReviewDecision('rev-2', 'reject')
       const body = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
         payload?: Record<string, unknown>
       }
@@ -3778,7 +3863,7 @@ describe('cacheWsTicketFromResponse', () => {
           details: {},
         }),
       })
-      await apiClient.submitAiReviewDecision('rev-3', 'approve', '')
+      await submitAiReviewDecision('rev-3', 'approve', '')
       const body = JSON.parse((mockFetch.mock.calls[0]?.[1].body as string) ?? '{}') as {
         payload?: Record<string, unknown>
       }
@@ -3797,7 +3882,7 @@ describe('cacheWsTicketFromResponse', () => {
         json: jsonFn,
         clone: () => ({ json: jsonFn }),
       })
-      await expect(apiClient.submitAiReviewDecision('rev-4', 'approve')).rejects.toThrow()
+      await expect(submitAiReviewDecision('rev-4', 'approve')).rejects.toThrow()
     })
   })
   describe('patchJSON helper', () => {

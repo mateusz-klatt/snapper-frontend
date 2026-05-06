@@ -3,19 +3,13 @@ import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createElement, type ReactNode } from 'react'
 import { ComparePage } from './ComparePage'
-import { apiClient, APIError } from '../../lib/apiClient'
+import { getBacktestComparison } from '../../lib/api/backtests'
+import { APIError } from '../../lib/api/error'
 import { useAppStore } from '../../stores/app'
 
-vi.mock('../../lib/apiClient', async () => {
-  const actual = await vi.importActual('../../lib/apiClient')
-
-  return {
-    ...actual,
-    apiClient: {
-      getBacktestComparison: vi.fn(),
-    },
-  }
-})
+vi.mock('../../lib/api/backtests', () => ({
+  getBacktestComparison: vi.fn(),
+}))
 
 vi.mock('./compare/MetricsDiffTable', () => ({
   MetricsDiffTable: ({ rows }: { rows: unknown[] }) => (
@@ -98,15 +92,13 @@ beforeEach(() => {
 
 describe('ComparePage', () => {
   it('renders loading state while query is in flight', () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockReturnValue(
-      new Promise(() => {})
-    )
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockReturnValue(new Promise(() => {}))
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)
     expect(screen.getByText(/Loading comparison/i)).toBeDefined()
   })
 
   it('renders all 4 panels when query succeeds', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(makeDetail())
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(makeDetail())
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)
     expect(await screen.findByTestId('mock-metrics')).toBeDefined()
     expect(screen.getByTestId('mock-equity')).toBeDefined()
@@ -118,7 +110,7 @@ describe('ComparePage', () => {
   })
 
   it('shows "not found in current wallet" message on APIError 404', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockRejectedValue(
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockRejectedValue(
       new APIError('Comparison not found', 404, 'Not Found')
     )
     renderWithClient(<ComparePage comparisonPublicId='cmp-missing' />)
@@ -128,7 +120,7 @@ describe('ComparePage', () => {
   })
 
   it('shows generic error fallback on non-404 error', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockRejectedValue(
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockRejectedValue(
       new APIError('Server boom', 500, 'Internal Server Error')
     )
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)
@@ -136,13 +128,13 @@ describe('ComparePage', () => {
   })
 
   it('shows generic error fallback on non-Error throw (covers "unknown error" branch)', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockRejectedValue('string-error')
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockRejectedValue('string-error')
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)
     expect(await screen.findByText(/Failed to load comparison.*unknown error/i)).toBeDefined()
   })
 
   it('shows empty-payload fallback when payload is null', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_comparison_detail_response',
       payload: null,
     })
@@ -151,7 +143,7 @@ describe('ComparePage', () => {
   })
 
   it('renders config_hash badge when present and skips when null', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(
       makeDetail({
         comparison: {
           type: 'backtest_comparison',
@@ -167,7 +159,7 @@ describe('ComparePage', () => {
   })
 
   it('renders unknown run status with default muted color', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(
       makeDetail({ run_a: makeRun({ public_id: 'run-aaaaaaaa', status: 'mystery' }) })
     )
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)
@@ -177,7 +169,7 @@ describe('ComparePage', () => {
   })
 
   it('renders unknown run_b status with default muted color', async () => {
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue(
       makeDetail({ run_b: makeRun({ public_id: 'run-bbbbbbbb', status: 'unicorn' }) })
     )
     renderWithClient(<ComparePage comparisonPublicId='cmp-1' />)

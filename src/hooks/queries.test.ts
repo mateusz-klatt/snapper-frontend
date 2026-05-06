@@ -60,7 +60,45 @@ import {
 } from './queries'
 import { aiReviewActivityQueryKey, type AiReviewActivityFrame } from '../stores/wsDispatcher'
 import { useAuth } from '../stores/auth'
-import { apiClient, APIError } from '../lib/apiClient'
+import {
+  createBacktest,
+  createBacktestComparison,
+  getBacktest,
+  getBacktestComparison,
+  getBacktestComparisons,
+  getBacktestSignals,
+  getBacktestTrades,
+  getBacktests,
+} from '../lib/api/backtests'
+import { cancelOrder, createOrder, getExecutions, getOrders } from '../lib/api/orders'
+import {
+  createBracket,
+  createTrailingStop,
+  getPositions,
+  getTrailingStopByCycle,
+} from '../lib/api/positions'
+import { APIError } from '../lib/api/error'
+import {
+  createAiDelegate,
+  deactivateAiDelegate,
+  getAiDelegate,
+  listAiDelegates,
+  updateAiDelegateCaps,
+} from '../lib/api/ai-delegates'
+import { listPendingAiReviews, submitAiReviewDecision } from '../lib/api/ai-reviews'
+import { createCredential, getCredentials, rotateCredential } from '../lib/api/credentials'
+import { getFeatureFlags } from '../lib/api/feature-flags'
+import { getCandles, getExchangeInstruments } from '../lib/api/market'
+import {
+  createProcessConfig,
+  getProcessRuns,
+  startProcessByName,
+  stopProcessByName,
+} from '../lib/api/processes'
+import { createScopeGrant, getScopeGrants, handoverScopeGrant } from '../lib/api/scope-grants'
+import { getSignals } from '../lib/api/signals'
+import { getSystemStatus } from '../lib/api/system'
+import { getOperators, getWallets } from '../lib/api/wallets'
 
 const ENV = {
   seq: 0,
@@ -80,261 +118,251 @@ function envelope<T extends string>(type: T, extra: Record<string, unknown> = {}
   }
 }
 
-vi.mock('../lib/apiClient', () => ({
-  apiClient: {
-    getSystemStatus: vi.fn(() =>
-      Promise.resolve(
-        envelope('system_status_response', {
-          payload: envelope('system_status', {
-            trader: { status: 'running' },
-            backtests: {},
-          }),
-        })
-      )
-    ),
-    getSystemMetrics: vi.fn(() =>
-      Promise.resolve(
-        envelope('system_metrics_response', {
-          payload: envelope('system_metrics', {
-            bus_time: '2026-05-02T17:00:00Z',
-            process: {
-              pid: 1,
-              uptime_seconds: 1,
-              status: 'running',
-              num_threads: 1,
-              num_fds: 1,
-              num_connections: 0,
-            },
-            cpu: {
-              process_percent: 0,
-              user_time_seconds: 0,
-              system_time_seconds: 0,
-              cgroup_quota_microseconds: null,
-              cgroup_throttled_count: null,
-            },
-            memory: {
-              rss_bytes: 0,
-              rss_peak_bytes: 0,
-              vms_bytes: 0,
-              python_traced_bytes: null,
-              native_bytes: null,
-              cgroup_limit_bytes: null,
-              cgroup_current_bytes: null,
-              saturation_pct: null,
-            },
-            asyncio: { active_tasks: 0, pending_tasks: 0 },
-            gc: {
-              collections_gen0: 0,
-              collections_gen1: 0,
-              collections_gen2: 0,
-              uncollectable: 0,
-              current_objects: 0,
-            },
-            limits: { rlimit_nproc: 0, rlimit_nofile: 0, rlimit_as_bytes: 0 },
-            saturation: { threads_pct: null, fds_pct: null },
-            db_internal: {
-              aiosqlite_live_connections: 0,
-              pool_size: null,
-              pool_checked_out: null,
-            },
-            tracemalloc_active: false,
-            cgroup_version: null,
-          }),
-        })
-      )
-    ),
-    getDbStats: vi.fn(() =>
-      Promise.resolve(
-        envelope('db_stats_response', {
-          payload: envelope('db_stats', {
-            snapshot_started_at: '2026-05-02T17:00:00Z',
-            snapshot_completed_at: '2026-05-02T17:00:01Z',
-            interval_seconds: 60,
-            tables: [
-              {
-                table: 'orders',
-                table_kind: 'state',
-                total: 10,
-                current: 5,
-                closed: 5,
-                archivable: 1,
-                is_stale: false,
-                last_sampled_at: '2026-05-02T17:00:01Z',
-              },
-            ],
-          }),
-        })
-      )
-    ),
-    getNotificationMetrics: vi.fn(() =>
-      Promise.resolve(
-        envelope('notification_metrics_response', {
-          payload: envelope('notification_metrics', {
-            delivery_success_total: 0,
-            delivery_failed_total: 0,
-            delivery_410_unregistered_total: 0,
-            delivery_cancelled_scope_total: 0,
-            outbox_queued_depth: 0,
-          }),
-        })
-      )
-    ),
-    getRetentionRun: vi.fn(() =>
-      Promise.resolve(
-        envelope('retention_run_response', {
-          payload: envelope('retention_run', {
-            run_started_at: '2026-05-02T17:00:00Z',
-            run_completed_at: '2026-05-02T17:00:01Z',
-            dry_run: false,
-            results: [],
-          }),
-        })
-      )
-    ),
-    getCandles: vi.fn(() => Promise.resolve([])),
-    getExchanges: vi.fn(() =>
-      Promise.resolve(envelope('exchange_list', { payload: ['kraken', 'binance'], count: 2 }))
-    ),
-    getExchangeInstruments: vi.fn(() =>
-      Promise.resolve(envelope('instrument_list', { payload: ['BTC/USD', 'ETH/USD'], count: 2 }))
-    ),
-    getExchangeInstrumentsDetail: vi.fn(() =>
-      Promise.resolve(
-        envelope('instrument_detail_list', {
-          payload: [
-            {
-              type: 'instrument_detail',
-              sequence_id: 0,
-              public_id: 'row-1',
-              timestamp: '2026-04-21T00:00:00Z',
-              session_id: 'sid',
-              instrument_public_id: 'inst-1',
-              symbol_public_id: 'sym-1',
-              symbol: 'MNQM6-CME',
-              exchange: 'kraken_equities',
-              can_trade: false,
-              can_market_data: true,
-              instrument_kind: 'future',
-              expiry_at: null,
-            },
-          ],
-          count: 1,
-        })
-      )
-    ),
-    getOperators: vi.fn(() =>
-      Promise.resolve(envelope('operator_list', { payload: [], count: 0 }))
-    ),
-    getWallets: vi.fn(() => Promise.resolve(envelope('wallet_list', { payload: [], count: 0 }))),
-    createOrder: vi.fn(() => Promise.resolve({ type: 'execution_plan_response', payload: {} })),
-    cancelOrder: vi.fn(() => Promise.resolve({ type: 'execution_plan_response', payload: {} })),
-    createBracket: vi.fn(() => Promise.resolve({ type: 'execution_plan_response', payload: {} })),
-    createTrailingStop: vi.fn(() =>
-      Promise.resolve({ type: 'execution_plan_response', payload: {} })
-    ),
-    cancelTrailingStop: vi.fn(() =>
-      Promise.resolve({ type: 'execution_plan_response', payload: {} })
-    ),
-    getTrailingStopByCycle: vi.fn(() => Promise.resolve({ type: 'message', payload: 'none' })),
-    getOrders: vi.fn(() => Promise.resolve(envelope('order_list', { payload: [], count: 0 }))),
-    getExecutions: vi.fn(() =>
-      Promise.resolve(envelope('execution_list', { payload: [], count: 0 }))
-    ),
-    getPositions: vi.fn(() =>
-      Promise.resolve(envelope('position_list', { payload: [], count: 0 }))
-    ),
-    getSignals: vi.fn(() => Promise.resolve(envelope('signal_list', { payload: [], count: 0 }))),
-    getAvailableProcesses: vi.fn(() =>
-      Promise.resolve(envelope('available_processes', { payload: [], count: 0 }))
-    ),
-    getConfiguredProcesses: vi.fn(() =>
-      Promise.resolve(envelope('configured_processes', { payload: [], count: 0 }))
-    ),
-    getProcessSummary: vi.fn(() =>
-      Promise.resolve(
-        envelope('process_summary_response', {
-          payload: envelope('process_summary', {
-            feeds: { running: 0, total: 0 },
-            strategies: { running: 0, total: 0 },
-            executors: { running: 0, total: 0 },
-            brokers: { running: 0, total: 0 },
-          }),
-        })
-      )
-    ),
-    getStrategies: vi.fn(() =>
-      Promise.resolve(
-        envelope('strategy_list', {
-          payload: [
-            envelope('strategy_process', {
-              name: 'strategy_test',
-              running: false,
-              enabled: true,
-              mode: 'thread',
-            }),
-          ],
-          count: 1,
-        })
-      )
-    ),
-    getProcessSchema: vi.fn(() =>
-      Promise.resolve(
-        envelope('process_schema_response', {
-          payload: envelope('process_schema', {
-            name: 'collector',
-            description: '',
-            class_path: '',
-            method: '',
-            default_enabled: true,
-            default_mode: 'thread',
-            lifecycle: 'long_running',
-          }),
-        })
-      )
-    ),
-    getProcessRuns: vi.fn(() =>
-      Promise.resolve(envelope('process_runs', { payload: [], count: 0 }))
-    ),
-    startProcessByName: vi.fn(() =>
-      Promise.resolve(
-        envelope('process_start_response', {
-          payload: envelope('process_start', {
-            status: 'success',
-            name: 'collector',
-            message: 'started',
-          }),
-        })
-      )
-    ),
-    stopProcessByName: vi.fn(() =>
-      Promise.resolve(
-        envelope('process_stop_response', {
-          payload: envelope('process_stop', {
-            status: 'success',
-            name: 'collector',
-            message: 'stopped',
-          }),
-        })
-      )
-    ),
-    createProcessConfig: vi.fn(() =>
-      Promise.resolve(
-        envelope('process_create_response', {
-          payload: envelope('process_create', {
-            status: 'created',
-            process: { name: 'test', template: 'test-template' },
-          }),
-        })
-      )
-    ),
-    getScopeGrants: vi.fn(() =>
-      Promise.resolve(envelope('scope_grant_list_response', { payload: [], count: 0 }))
-    ),
-    createScopeGrant: vi.fn(() =>
-      Promise.resolve(
-        envelope('scope_grant_response', {
-          payload: envelope('scope_grant_info', {
+vi.mock('../lib/api/ai-delegates', () => ({
+  createAiDelegate: vi.fn(() =>
+    Promise.resolve(envelope('delegate_created_response', { payload: {} }))
+  ),
+  deactivateAiDelegate: vi.fn(() =>
+    Promise.resolve(envelope('delegate_response', { payload: {} }))
+  ),
+  getAiDelegate: vi.fn(() => Promise.resolve(envelope('delegate_response', { payload: {} }))),
+  listAiDelegates: vi.fn(() =>
+    Promise.resolve(envelope('delegate_list', { payload: [], count: 0 }))
+  ),
+  updateAiDelegateCaps: vi.fn(() =>
+    Promise.resolve(envelope('delegate_response', { payload: {} }))
+  ),
+}))
+vi.mock('../lib/api/ai-reviews', () => ({
+  listPendingAiReviews: vi.fn(() => Promise.resolve({ items: [], count: 0 })),
+  submitAiReviewDecision: vi.fn(() =>
+    Promise.resolve({ success: true, error_code: null, message: 'recorded', details: {} })
+  ),
+}))
+vi.mock('../lib/api/backtests', () => ({
+  cancelBacktest: vi.fn(() => Promise.resolve({ type: 'backtest_run_response', payload: {} })),
+  createBacktest: vi.fn(() =>
+    Promise.resolve({ type: 'backtest_run_response', payload: { public_id: 'r-new' } })
+  ),
+  createBacktestComparison: vi.fn(() =>
+    Promise.resolve({
+      type: 'backtest_comparison_response',
+      payload: { public_id: 'cmp-new' },
+    })
+  ),
+  getBacktest: vi.fn(() => Promise.resolve({ type: 'backtest_run_response', payload: {} })),
+  getBacktestComparison: vi.fn(() =>
+    Promise.resolve({
+      type: 'backtest_comparison_detail_response',
+      payload: { comparison: {}, run_a: {}, run_b: {} },
+    })
+  ),
+  getBacktestComparisons: vi.fn(() =>
+    Promise.resolve({ type: 'backtest_comparison_list', payload: [], count: 0 })
+  ),
+  getBacktestSignals: vi.fn(() =>
+    Promise.resolve({ type: 'backtest_signal_list', payload: [], count: 0 })
+  ),
+  getBacktestTrades: vi.fn(() =>
+    Promise.resolve({ type: 'backtest_trade_list', payload: [], count: 0 })
+  ),
+  getBacktests: vi.fn(() => Promise.resolve({ type: 'backtest_run_list', payload: [], count: 0 })),
+  rerunBacktest: vi.fn(() => Promise.resolve({ type: 'backtest_run_response', payload: {} })),
+}))
+vi.mock('../lib/api/credentials', () => ({
+  createCredential: vi.fn(() =>
+    Promise.resolve(
+      envelope('credential_response', {
+        payload: envelope('credential_summary', {
+          wallet_public_id: 'w-1',
+          exchange: 'kraken',
+          credential_type: 'api_key_secret',
+          label: 'main',
+        }),
+      })
+    )
+  ),
+  getCredentials: vi.fn(() =>
+    Promise.resolve(envelope('credential_list_response', { payload: [], count: 0 }))
+  ),
+  rotateCredential: vi.fn(() =>
+    Promise.resolve(
+      envelope('credential_response', {
+        payload: envelope('credential_summary', {
+          wallet_public_id: 'w-1',
+          exchange: 'kraken',
+          credential_type: 'api_key_secret',
+          label: 'rotated',
+        }),
+      })
+    )
+  ),
+}))
+vi.mock('../lib/api/feature-flags', () => ({
+  getFeatureFlags: vi.fn(() =>
+    Promise.resolve(
+      envelope('feature_flags_response', {
+        payload: { ai_integration_enabled: true },
+      })
+    )
+  ),
+}))
+vi.mock('../lib/api/market', () => ({
+  getCandles: vi.fn(() => Promise.resolve([])),
+  getExchangeInstruments: vi.fn(() =>
+    Promise.resolve(envelope('instrument_list', { payload: ['BTC/USD', 'ETH/USD'], count: 2 }))
+  ),
+  getExchangeInstrumentsDetail: vi.fn(() =>
+    Promise.resolve(
+      envelope('instrument_detail_list', {
+        payload: [
+          {
+            type: 'instrument_detail',
+            sequence_id: 0,
+            public_id: 'row-1',
+            timestamp: '2026-04-21T00:00:00Z',
+            session_id: 'sid',
+            instrument_public_id: 'inst-1',
+            symbol_public_id: 'sym-1',
+            symbol: 'MNQM6-CME',
+            exchange: 'kraken_equities',
+            can_trade: false,
+            can_market_data: true,
+            instrument_kind: 'future',
+            expiry_at: null,
+          },
+        ],
+        count: 1,
+      })
+    )
+  ),
+  getExchanges: vi.fn(() =>
+    Promise.resolve(envelope('exchange_list', { payload: ['kraken', 'binance'], count: 2 }))
+  ),
+}))
+vi.mock('../lib/api/orders', () => ({
+  cancelOrder: vi.fn(() => Promise.resolve({ type: 'execution_plan_response', payload: {} })),
+  createOrder: vi.fn(() => Promise.resolve({ type: 'execution_plan_response', payload: {} })),
+  getExecutions: vi.fn(() =>
+    Promise.resolve(envelope('execution_list', { payload: [], count: 0 }))
+  ),
+  getOrders: vi.fn(() => Promise.resolve(envelope('order_list', { payload: [], count: 0 }))),
+}))
+vi.mock('../lib/api/positions', () => ({
+  cancelTrailingStop: vi.fn(() =>
+    Promise.resolve({ type: 'execution_plan_response', payload: {} })
+  ),
+  createBracket: vi.fn(() => Promise.resolve({ type: 'execution_plan_response', payload: {} })),
+  createTrailingStop: vi.fn(() =>
+    Promise.resolve({ type: 'execution_plan_response', payload: {} })
+  ),
+  getPositions: vi.fn(() => Promise.resolve(envelope('position_list', { payload: [], count: 0 }))),
+  getTrailingStopByCycle: vi.fn(() => Promise.resolve({ type: 'message', payload: 'none' })),
+}))
+vi.mock('../lib/api/processes', () => ({
+  createProcessConfig: vi.fn(() =>
+    Promise.resolve(
+      envelope('process_create_response', {
+        payload: envelope('process_create', {
+          status: 'created',
+          process: { name: 'test', template: 'test-template' },
+        }),
+      })
+    )
+  ),
+  getAvailableProcesses: vi.fn(() =>
+    Promise.resolve(envelope('available_processes', { payload: [], count: 0 }))
+  ),
+  getConfiguredProcesses: vi.fn(() =>
+    Promise.resolve(envelope('configured_processes', { payload: [], count: 0 }))
+  ),
+  getProcessRuns: vi.fn(() => Promise.resolve(envelope('process_runs', { payload: [], count: 0 }))),
+  getProcessSchema: vi.fn(() =>
+    Promise.resolve(
+      envelope('process_schema_response', {
+        payload: envelope('process_schema', {
+          name: 'collector',
+          description: '',
+          class_path: '',
+          method: '',
+          default_enabled: true,
+          default_mode: 'thread',
+          lifecycle: 'long_running',
+        }),
+      })
+    )
+  ),
+  getProcessSummary: vi.fn(() =>
+    Promise.resolve(
+      envelope('process_summary_response', {
+        payload: envelope('process_summary', {
+          feeds: { running: 0, total: 0 },
+          strategies: { running: 0, total: 0 },
+          executors: { running: 0, total: 0 },
+          brokers: { running: 0, total: 0 },
+        }),
+      })
+    )
+  ),
+  startProcessByName: vi.fn(() =>
+    Promise.resolve(
+      envelope('process_start_response', {
+        payload: envelope('process_start', {
+          status: 'success',
+          name: 'collector',
+          message: 'started',
+        }),
+      })
+    )
+  ),
+  stopProcessByName: vi.fn(() =>
+    Promise.resolve(
+      envelope('process_stop_response', {
+        payload: envelope('process_stop', {
+          status: 'success',
+          name: 'collector',
+          message: 'stopped',
+        }),
+      })
+    )
+  ),
+}))
+vi.mock('../lib/api/scope-grants', () => ({
+  createScopeGrant: vi.fn(() =>
+    Promise.resolve(
+      envelope('scope_grant_response', {
+        payload: envelope('scope_grant_info', {
+          operator_public_id: 'op-1',
+          wallet_public_id: 'w-1',
+          granted_by_user_public_id: 'u-1',
+          scope_kind: 'underlying',
+          underlying_public_id: 'BTC',
+          instrument_public_id: null,
+          note: null,
+          known_to: '9999-12-31T23:59:59.999999Z',
+        }),
+      })
+    )
+  ),
+  getScopeGrants: vi.fn(() =>
+    Promise.resolve(envelope('scope_grant_list_response', { payload: [], count: 0 }))
+  ),
+  handoverScopeGrant: vi.fn(() =>
+    Promise.resolve(
+      envelope('handover_scope_grant_response', {
+        payload: {
+          closed_grant: envelope('scope_grant_info', {
             operator_public_id: 'op-1',
+            wallet_public_id: 'w-1',
+            granted_by_user_public_id: 'u-1',
+            scope_kind: 'underlying',
+            underlying_public_id: 'BTC',
+            instrument_public_id: null,
+            note: null,
+            known_to: '2026-01-01T00:00:00Z',
+          }),
+          new_grant: envelope('scope_grant_info', {
+            operator_public_id: 'op-2',
             wallet_public_id: 'w-1',
             granted_by_user_public_id: 'u-1',
             scope_kind: 'underlying',
@@ -343,119 +371,148 @@ vi.mock('../lib/apiClient', () => ({
             note: null,
             known_to: '9999-12-31T23:59:59.999999Z',
           }),
-        })
-      )
-    ),
-    handoverScopeGrant: vi.fn(() =>
-      Promise.resolve(
-        envelope('handover_scope_grant_response', {
-          payload: {
-            closed_grant: envelope('scope_grant_info', {
-              operator_public_id: 'op-1',
-              wallet_public_id: 'w-1',
-              granted_by_user_public_id: 'u-1',
-              scope_kind: 'underlying',
-              underlying_public_id: 'BTC',
-              instrument_public_id: null,
-              note: null,
-              known_to: '2026-01-01T00:00:00Z',
-            }),
-            new_grant: envelope('scope_grant_info', {
-              operator_public_id: 'op-2',
-              wallet_public_id: 'w-1',
-              granted_by_user_public_id: 'u-1',
-              scope_kind: 'underlying',
-              underlying_public_id: 'BTC',
-              instrument_public_id: null,
-              note: null,
-              known_to: '9999-12-31T23:59:59.999999Z',
-            }),
+        },
+      })
+    )
+  ),
+}))
+vi.mock('../lib/api/signals', () => ({
+  getSignals: vi.fn(() => Promise.resolve(envelope('signal_list', { payload: [], count: 0 }))),
+}))
+vi.mock('../lib/api/strategies', () => ({
+  getStrategies: vi.fn(() =>
+    Promise.resolve(
+      envelope('strategy_list', {
+        payload: [
+          envelope('strategy_process', {
+            name: 'strategy_test',
+            running: false,
+            enabled: true,
+            mode: 'thread',
+          }),
+        ],
+        count: 1,
+      })
+    )
+  ),
+}))
+vi.mock('../lib/api/system', () => ({
+  getDbStats: vi.fn(() =>
+    Promise.resolve(
+      envelope('db_stats_response', {
+        payload: envelope('db_stats', {
+          snapshot_started_at: '2026-05-02T17:00:00Z',
+          snapshot_completed_at: '2026-05-02T17:00:01Z',
+          interval_seconds: 60,
+          tables: [
+            {
+              table: 'orders',
+              table_kind: 'state',
+              total: 10,
+              current: 5,
+              closed: 5,
+              archivable: 1,
+              is_stale: false,
+              last_sampled_at: '2026-05-02T17:00:01Z',
+            },
+          ],
+        }),
+      })
+    )
+  ),
+  getNotificationMetrics: vi.fn(() =>
+    Promise.resolve(
+      envelope('notification_metrics_response', {
+        payload: envelope('notification_metrics', {
+          delivery_success_total: 0,
+          delivery_failed_total: 0,
+          delivery_410_unregistered_total: 0,
+          delivery_cancelled_scope_total: 0,
+          outbox_queued_depth: 0,
+        }),
+      })
+    )
+  ),
+  getRetentionRun: vi.fn(() =>
+    Promise.resolve(
+      envelope('retention_run_response', {
+        payload: envelope('retention_run', {
+          run_started_at: '2026-05-02T17:00:00Z',
+          run_completed_at: '2026-05-02T17:00:01Z',
+          dry_run: false,
+          results: [],
+        }),
+      })
+    )
+  ),
+  getSystemMetrics: vi.fn(() =>
+    Promise.resolve(
+      envelope('system_metrics_response', {
+        payload: envelope('system_metrics', {
+          bus_time: '2026-05-02T17:00:00Z',
+          process: {
+            pid: 1,
+            uptime_seconds: 1,
+            status: 'running',
+            num_threads: 1,
+            num_fds: 1,
+            num_connections: 0,
           },
-        })
-      )
-    ),
-    getCredentials: vi.fn(() =>
-      Promise.resolve(envelope('credential_list_response', { payload: [], count: 0 }))
-    ),
-    createCredential: vi.fn(() =>
-      Promise.resolve(
-        envelope('credential_response', {
-          payload: envelope('credential_summary', {
-            wallet_public_id: 'w-1',
-            exchange: 'kraken',
-            credential_type: 'api_key_secret',
-            label: 'main',
-          }),
-        })
-      )
-    ),
-    rotateCredential: vi.fn(() =>
-      Promise.resolve(
-        envelope('credential_response', {
-          payload: envelope('credential_summary', {
-            wallet_public_id: 'w-1',
-            exchange: 'kraken',
-            credential_type: 'api_key_secret',
-            label: 'rotated',
-          }),
-        })
-      )
-    ),
-    getBacktests: vi.fn(() =>
-      Promise.resolve({ type: 'backtest_run_list', payload: [], count: 0 })
-    ),
-    getBacktest: vi.fn(() => Promise.resolve({ type: 'backtest_run_response', payload: {} })),
-    createBacktest: vi.fn(() =>
-      Promise.resolve({ type: 'backtest_run_response', payload: { public_id: 'r-new' } })
-    ),
-    cancelBacktest: vi.fn(() => Promise.resolve({ type: 'backtest_run_response', payload: {} })),
-    rerunBacktest: vi.fn(() => Promise.resolve({ type: 'backtest_run_response', payload: {} })),
-    getBacktestTrades: vi.fn(() =>
-      Promise.resolve({ type: 'backtest_trade_list', payload: [], count: 0 })
-    ),
-    getBacktestSignals: vi.fn(() =>
-      Promise.resolve({ type: 'backtest_signal_list', payload: [], count: 0 })
-    ),
-    createBacktestComparison: vi.fn(() =>
-      Promise.resolve({
-        type: 'backtest_comparison_response',
-        payload: { public_id: 'cmp-new' },
+          cpu: {
+            process_percent: 0,
+            user_time_seconds: 0,
+            system_time_seconds: 0,
+            cgroup_quota_microseconds: null,
+            cgroup_throttled_count: null,
+          },
+          memory: {
+            rss_bytes: 0,
+            rss_peak_bytes: 0,
+            vms_bytes: 0,
+            python_traced_bytes: null,
+            native_bytes: null,
+            cgroup_limit_bytes: null,
+            cgroup_current_bytes: null,
+            saturation_pct: null,
+          },
+          asyncio: { active_tasks: 0, pending_tasks: 0 },
+          gc: {
+            collections_gen0: 0,
+            collections_gen1: 0,
+            collections_gen2: 0,
+            uncollectable: 0,
+            current_objects: 0,
+          },
+          limits: { rlimit_nproc: 0, rlimit_nofile: 0, rlimit_as_bytes: 0 },
+          saturation: { threads_pct: null, fds_pct: null },
+          db_internal: {
+            aiosqlite_live_connections: 0,
+            pool_size: null,
+            pool_checked_out: null,
+          },
+          tracemalloc_active: false,
+          cgroup_version: null,
+        }),
       })
-    ),
-    getBacktestComparison: vi.fn(() =>
-      Promise.resolve({
-        type: 'backtest_comparison_detail_response',
-        payload: { comparison: {}, run_a: {}, run_b: {} },
+    )
+  ),
+  getSystemStatus: vi.fn(() =>
+    Promise.resolve(
+      envelope('system_status_response', {
+        payload: envelope('system_status', {
+          trader: { status: 'running' },
+          backtests: {},
+        }),
       })
-    ),
-    getBacktestComparisons: vi.fn(() =>
-      Promise.resolve({ type: 'backtest_comparison_list', payload: [], count: 0 })
-    ),
-    getFeatureFlags: vi.fn(() =>
-      Promise.resolve(
-        envelope('feature_flags_response', {
-          payload: { ai_integration_enabled: true },
-        })
-      )
-    ),
-    listAiDelegates: vi.fn(() =>
-      Promise.resolve(envelope('delegate_list', { payload: [], count: 0 }))
-    ),
-    getAiDelegate: vi.fn(() => Promise.resolve(envelope('delegate_response', { payload: {} }))),
-    createAiDelegate: vi.fn(() =>
-      Promise.resolve(envelope('delegate_created_response', { payload: {} }))
-    ),
-    updateAiDelegateCaps: vi.fn(() =>
-      Promise.resolve(envelope('delegate_response', { payload: {} }))
-    ),
-    deactivateAiDelegate: vi.fn(() =>
-      Promise.resolve(envelope('delegate_response', { payload: {} }))
-    ),
-    listPendingAiReviews: vi.fn(() => Promise.resolve({ items: [], count: 0 })),
-    submitAiReviewDecision: vi.fn(() =>
-      Promise.resolve({ success: true, error_code: null, message: 'recorded', details: {} })
-    ),
-  },
+    )
+  ),
+}))
+vi.mock('../lib/api/wallets', () => ({
+  getOperators: vi.fn(() => Promise.resolve(envelope('operator_list', { payload: [], count: 0 }))),
+  getWallets: vi.fn(() => Promise.resolve(envelope('wallet_list', { payload: [], count: 0 }))),
+}))
+vi.mock('../lib/apiClient', () => ({
+  apiClient: {},
   APIError: class APIError extends Error {
     constructor(
       message: string,
@@ -488,45 +545,6 @@ vi.mock('../lib/transforms', () => ({
     realizedPnl: p.realized_pnl ?? 0,
   })),
 }))
-const mockedApiClient = apiClient as unknown as {
-  getSystemStatus: Mock
-  getCandles: Mock
-  getExchanges: Mock
-  getExchangeInstruments: Mock
-  getExchangeInstrumentsDetail: Mock
-  getOperators: Mock
-  getWallets: Mock
-  getOrders: Mock
-  getExecutions: Mock
-  getPositions: Mock
-  getSignals: Mock
-  getAvailableProcesses: Mock
-  getConfiguredProcesses: Mock
-  getProcessSummary: Mock
-  getStrategies: Mock
-  getProcessSchema: Mock
-  getProcessRuns: Mock
-  startProcessByName: Mock
-  stopProcessByName: Mock
-  createProcessConfig: Mock
-  getScopeGrants: Mock
-  createScopeGrant: Mock
-  handoverScopeGrant: Mock
-  getCredentials: Mock
-  createCredential: Mock
-  rotateCredential: Mock
-  createBacktestComparison: Mock
-  getBacktestComparison: Mock
-  getBacktestComparisons: Mock
-  getFeatureFlags: Mock
-  listAiDelegates: Mock
-  getAiDelegate: Mock
-  createAiDelegate: Mock
-  updateAiDelegateCaps: Mock
-  deactivateAiDelegate: Mock
-  listPendingAiReviews: Mock
-  submitAiReviewDecision: Mock
-}
 const createQueryClient = () =>
   new QueryClient({
     defaultOptions: {
@@ -656,7 +674,7 @@ describe('queries', () => {
         expect(result.current.isLoading).toBe(false)
       })
       expect(result.current.data).toBeUndefined()
-      expect(mockedApiClient.getExchangeInstruments).not.toHaveBeenCalled()
+      expect(vi.mocked(getExchangeInstruments)).not.toHaveBeenCalled()
     })
   })
   describe('useExchangeInstrumentsDetail', () => {
@@ -684,8 +702,11 @@ describe('queries', () => {
   })
   describe('useOperators', () => {
     it('returns data when authenticated', async () => {
-      mockedApiClient.getOperators.mockResolvedValueOnce(
-        envelope('operator_list', { payload: [{ public_id: 'op-1', label: 'alice' }], count: 1 })
+      vi.mocked(getOperators).mockResolvedValueOnce(
+        envelope('operator_list', {
+          payload: [{ public_id: 'op-1', label: 'alice' }],
+          count: 1,
+        }) as never
       )
       const { result } = renderHook(() => useOperators(), { wrapper: createWrapper() })
 
@@ -697,11 +718,11 @@ describe('queries', () => {
   })
   describe('useWallets', () => {
     it('returns data when authenticated', async () => {
-      mockedApiClient.getWallets.mockResolvedValueOnce(
+      vi.mocked(getWallets).mockResolvedValueOnce(
         envelope('wallet_list', {
           payload: [{ public_id: 'w-1', label: 'default', is_paper: false }],
           count: 1,
-        })
+        }) as never
       )
       const { result } = renderHook(() => useWallets(), { wrapper: createWrapper() })
 
@@ -723,11 +744,11 @@ describe('queries', () => {
   })
   describe('useExecutions', () => {
     it('returns data when authenticated', async () => {
-      mockedApiClient.getExecutions.mockResolvedValueOnce(
+      vi.mocked(getExecutions).mockResolvedValueOnce(
         envelope('execution_list', {
           payload: [null, { public_id: 'exec-1' }],
           count: 2,
-        })
+        }) as never
       )
       const { result } = renderHook(() => useExecutions(), { wrapper: createWrapper() })
 
@@ -755,7 +776,7 @@ describe('queries', () => {
       expect(result.current.data).toBeDefined()
     })
     it('sorts signals by timestamp and applies limit', async () => {
-      mockedApiClient.getSignals.mockResolvedValueOnce(
+      vi.mocked(getSignals).mockResolvedValueOnce(
         envelope('signal_list', {
           payload: [
             {
@@ -802,7 +823,7 @@ describe('queries', () => {
       expect(result.current.data?.[1]?.reason).toBe('middle')
     })
     it('handles signals with undefined timestamp in sorting', async () => {
-      mockedApiClient.getSignals.mockResolvedValueOnce(
+      vi.mocked(getSignals).mockResolvedValueOnce(
         envelope('signal_list', {
           payload: [
             {
@@ -930,12 +951,12 @@ describe('queries', () => {
       await waitFor(() => {
         expect(result.current.isLoading).toBe(false)
       })
-      expect(mockedApiClient.getProcessRuns).not.toHaveBeenCalled()
+      expect(vi.mocked(getProcessRuns)).not.toHaveBeenCalled()
     })
   })
   describe('useOrdersGrouped', () => {
     it('groups orders by status', async () => {
-      mockedApiClient.getOrders.mockResolvedValueOnce(
+      vi.mocked(getOrders).mockResolvedValueOnce(
         envelope('order_list', {
           payload: [
             {
@@ -988,7 +1009,7 @@ describe('queries', () => {
             },
           ],
           count: 6,
-        })
+        }) as never
       )
       const { result } = renderHook(() => useOrdersGrouped(), { wrapper: createWrapper() })
 
@@ -1004,7 +1025,7 @@ describe('queries', () => {
       expect(result.current.data?.rejected).toHaveLength(1)
     })
     it('returns null when no orders', async () => {
-      mockedApiClient.getOrders.mockResolvedValueOnce(null as never)
+      vi.mocked(getOrders).mockResolvedValueOnce(null as never)
       const { result } = renderHook(() => useOrdersGrouped(), { wrapper: createWrapper() })
 
       await waitFor(() => {
@@ -1015,7 +1036,7 @@ describe('queries', () => {
   })
   describe('usePositionsSummary', () => {
     it('calculates summary for all-long positions', async () => {
-      mockedApiClient.getPositions.mockResolvedValueOnce(
+      vi.mocked(getPositions).mockResolvedValueOnce(
         envelope('position_list', {
           payload: [
             {
@@ -1042,7 +1063,7 @@ describe('queries', () => {
             },
           ],
           count: 2,
-        })
+        }) as never
       )
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
@@ -1060,7 +1081,7 @@ describe('queries', () => {
       expect(result.current.data?.pnlPercent).toBeCloseTo(4.5, 5)
     })
     it('calculates summary for all-short positions (regression: pnlPercent must not be hidden)', async () => {
-      mockedApiClient.getPositions.mockResolvedValueOnce(
+      vi.mocked(getPositions).mockResolvedValueOnce(
         envelope('position_list', {
           payload: [
             {
@@ -1087,7 +1108,7 @@ describe('queries', () => {
             },
           ],
           count: 2,
-        })
+        }) as never
       )
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
@@ -1102,7 +1123,7 @@ describe('queries', () => {
       expect(result.current.data?.pnlPercent).toBeCloseTo(5.0, 5)
     })
     it('calculates summary for mixed long and short positions', async () => {
-      mockedApiClient.getPositions.mockResolvedValueOnce(
+      vi.mocked(getPositions).mockResolvedValueOnce(
         envelope('position_list', {
           payload: [
             {
@@ -1129,7 +1150,7 @@ describe('queries', () => {
             },
           ],
           count: 2,
-        })
+        }) as never
       )
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
@@ -1144,7 +1165,7 @@ describe('queries', () => {
       expect(result.current.data?.pnlPercent).toBeCloseTo(3.75, 5)
     })
     it('returns null when positions data is unavailable', async () => {
-      mockedApiClient.getPositions.mockResolvedValueOnce(null as never)
+      vi.mocked(getPositions).mockResolvedValueOnce(null as never)
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
       await waitFor(() => {
@@ -1153,7 +1174,7 @@ describe('queries', () => {
       expect(result.current.data).toBeNull()
     })
     it('handles zero exposure (flat position) without dividing by zero', async () => {
-      mockedApiClient.getPositions.mockResolvedValueOnce(
+      vi.mocked(getPositions).mockResolvedValueOnce(
         envelope('position_list', {
           payload: [
             {
@@ -1166,7 +1187,7 @@ describe('queries', () => {
             },
           ],
           count: 1,
-        })
+        }) as never
       )
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
@@ -1190,7 +1211,7 @@ describe('queries', () => {
           parameters: { key: 'value' },
         })
       })
-      expect(mockedApiClient.startProcessByName).toHaveBeenCalledWith('collector', {
+      expect(vi.mocked(startProcessByName)).toHaveBeenCalledWith('collector', {
         mode: 'thread',
         parameters: { key: 'value' },
       })
@@ -1222,7 +1243,7 @@ describe('queries', () => {
       await act(async () => {
         await result.current.mutateAsync({ name: 'collector' })
       })
-      expect(mockedApiClient.stopProcessByName).toHaveBeenCalledWith('collector')
+      expect(vi.mocked(stopProcessByName)).toHaveBeenCalledWith('collector')
     })
     it('uses exponential retryDelay', async () => {
       const { queryClient, wrapper } = createWrapperWithClient()
@@ -1251,7 +1272,7 @@ describe('queries', () => {
       await act(async () => {
         await result.current.mutateAsync({ name: 'new-process', template: 'test-template' })
       })
-      expect(mockedApiClient.createProcessConfig).toHaveBeenCalledWith({
+      expect(vi.mocked(createProcessConfig)).toHaveBeenCalledWith({
         name: 'new-process',
         template: 'test-template',
       })
@@ -1265,7 +1286,7 @@ describe('queries', () => {
       await waitFor(() => {
         expect(result.current.isLoading).toBe(false)
       })
-      expect(mockedApiClient.getSystemStatus).not.toHaveBeenCalled()
+      expect(vi.mocked(getSystemStatus)).not.toHaveBeenCalled()
       vi.mocked(useAuth).mockReturnValue({ isAuthenticated: true } as ReturnType<typeof useAuth>)
     })
     it('useCandles does not fetch when not authenticated', async () => {
@@ -1277,7 +1298,7 @@ describe('queries', () => {
       await waitFor(() => {
         expect(result.current.isLoading).toBe(false)
       })
-      expect(mockedApiClient.getCandles).not.toHaveBeenCalled()
+      expect(vi.mocked(getCandles)).not.toHaveBeenCalled()
       vi.mocked(useAuth).mockReturnValue({ isAuthenticated: true } as ReturnType<typeof useAuth>)
     })
     it('usePositionsSummary does not fetch when not authenticated', async () => {
@@ -1289,7 +1310,7 @@ describe('queries', () => {
       await waitFor(() => {
         expect(result.current.isLoading).toBe(false)
       })
-      expect(mockedApiClient.getPositions).not.toHaveBeenCalled()
+      expect(vi.mocked(getPositions)).not.toHaveBeenCalled()
       vi.mocked(useAuth).mockReturnValue({ isAuthenticated: true } as ReturnType<typeof useAuth>)
     })
   })
@@ -1298,13 +1319,13 @@ describe('queries', () => {
       const { result } = renderHook(() => useScopeGrants('w-1'), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isLoading).toBe(false))
-      expect(mockedApiClient.getScopeGrants).toHaveBeenCalledWith('w-1')
+      expect(vi.mocked(getScopeGrants)).toHaveBeenCalledWith('w-1')
     })
     it('does not fetch with empty wallet id', async () => {
       const { result } = renderHook(() => useScopeGrants(''), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isLoading).toBe(false))
-      expect(mockedApiClient.getScopeGrants).not.toHaveBeenCalled()
+      expect(vi.mocked(getScopeGrants)).not.toHaveBeenCalled()
     })
   })
   describe('useCreateScopeGrant', () => {
@@ -1321,7 +1342,7 @@ describe('queries', () => {
           underlying_public_id: 'BTC',
         })
       })
-      expect(mockedApiClient.createScopeGrant).toHaveBeenCalled()
+      expect(vi.mocked(createScopeGrant)).toHaveBeenCalled()
       expect(spy).toHaveBeenCalled()
     })
   })
@@ -1337,7 +1358,7 @@ describe('queries', () => {
           to_operator_public_id: 'op-2',
         })
       })
-      expect(mockedApiClient.handoverScopeGrant).toHaveBeenCalled()
+      expect(vi.mocked(handoverScopeGrant)).toHaveBeenCalled()
       expect(spy).toHaveBeenCalled()
     })
   })
@@ -1346,13 +1367,13 @@ describe('queries', () => {
       const { result } = renderHook(() => useCredentials('w-1'), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isLoading).toBe(false))
-      expect(mockedApiClient.getCredentials).toHaveBeenCalledWith('w-1')
+      expect(vi.mocked(getCredentials)).toHaveBeenCalledWith('w-1')
     })
     it('does not fetch with empty wallet id', async () => {
       const { result } = renderHook(() => useCredentials(''), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isLoading).toBe(false))
-      expect(mockedApiClient.getCredentials).not.toHaveBeenCalled()
+      expect(vi.mocked(getCredentials)).not.toHaveBeenCalled()
     })
   })
   describe('useCreateCredential', () => {
@@ -1371,7 +1392,7 @@ describe('queries', () => {
           },
         })
       })
-      expect(mockedApiClient.createCredential).toHaveBeenCalledWith('w-1', {
+      expect(vi.mocked(createCredential)).toHaveBeenCalledWith('w-1', {
         exchange: 'kraken',
         credential_type: 'api_key_secret',
         credential_payload: { api_key: 'k', api_secret: 's' },
@@ -1394,7 +1415,7 @@ describe('queries', () => {
           },
         })
       })
-      expect(mockedApiClient.rotateCredential).toHaveBeenCalledWith('w-1', 'cred-1', {
+      expect(vi.mocked(rotateCredential)).toHaveBeenCalledWith('w-1', 'cred-1', {
         credential_payload: { api_key: 'new-k', api_secret: 'new-s' },
       })
       expect(spy).toHaveBeenCalled()
@@ -1466,7 +1487,7 @@ describe('queries', () => {
   })
 
   describe('useCreateOrder', () => {
-    it('calls apiClient.createOrder and invalidates orders', async () => {
+    it('calls createOrder and invalidates orders', async () => {
       const responseBody = {
         type: 'execution_plan_response' as const,
         sequence_id: 1,
@@ -1499,7 +1520,7 @@ describe('queries', () => {
         },
       }
 
-      vi.mocked(apiClient.createOrder).mockResolvedValueOnce(responseBody)
+      vi.mocked(createOrder).mockResolvedValueOnce(responseBody)
 
       const { result } = renderHook(() => useCreateOrder(), { wrapper: createWrapper() })
 
@@ -1507,14 +1528,14 @@ describe('queries', () => {
         await result.current.mutateAsync({ type: 'create_order_command' })
       })
 
-      expect(apiClient.createOrder).toHaveBeenCalledWith({
+      expect(createOrder).toHaveBeenCalledWith({
         type: 'create_order_command',
       })
     })
   })
 
   describe('useCancelOrder', () => {
-    it('calls apiClient.cancelOrder with the client_order_id', async () => {
+    it('calls cancelOrder with the client_order_id', async () => {
       const responseBody = {
         type: 'execution_plan_response' as const,
         sequence_id: 2,
@@ -1547,7 +1568,7 @@ describe('queries', () => {
         },
       }
 
-      vi.mocked(apiClient.cancelOrder).mockResolvedValueOnce(responseBody)
+      vi.mocked(cancelOrder).mockResolvedValueOnce(responseBody)
 
       const { result } = renderHook(() => useCancelOrder(), { wrapper: createWrapper() })
 
@@ -1555,12 +1576,12 @@ describe('queries', () => {
         await result.current.mutateAsync('cid-42')
       })
 
-      expect(apiClient.cancelOrder).toHaveBeenCalledWith('cid-42')
+      expect(cancelOrder).toHaveBeenCalledWith('cid-42')
     })
   })
 
   describe('useCreateBracket', () => {
-    it('calls apiClient.createBracket and invalidates positions + orders', async () => {
+    it('calls createBracket and invalidates positions + orders', async () => {
       const responseBody = {
         type: 'execution_plan_response' as const,
         sequence_id: 1,
@@ -1593,7 +1614,7 @@ describe('queries', () => {
         },
       }
 
-      vi.mocked(apiClient.createBracket).mockResolvedValueOnce(responseBody)
+      vi.mocked(createBracket).mockResolvedValueOnce(responseBody)
 
       const { result } = renderHook(() => useCreateBracket(), { wrapper: createWrapper() })
 
@@ -1604,7 +1625,7 @@ describe('queries', () => {
         })
       })
 
-      expect(apiClient.createBracket).toHaveBeenCalledWith({
+      expect(createBracket).toHaveBeenCalledWith({
         position_cycle_public_id: 'cycle-1',
         sl_price: 48000,
       })
@@ -1612,7 +1633,7 @@ describe('queries', () => {
   })
 
   describe('useCreateTrailingStop', () => {
-    it('calls apiClient.createTrailingStop and invalidates queries', async () => {
+    it('calls createTrailingStop and invalidates queries', async () => {
       const responseBody = {
         type: 'execution_plan_response' as const,
         sequence_id: 1,
@@ -1645,7 +1666,7 @@ describe('queries', () => {
         },
       }
 
-      vi.mocked(apiClient.createTrailingStop).mockResolvedValueOnce(responseBody)
+      vi.mocked(createTrailingStop).mockResolvedValueOnce(responseBody)
 
       const { result } = renderHook(() => useCreateTrailingStop(), { wrapper: createWrapper() })
 
@@ -1656,7 +1677,7 @@ describe('queries', () => {
         })
       })
 
-      expect(apiClient.createTrailingStop).toHaveBeenCalledWith({
+      expect(createTrailingStop).toHaveBeenCalledWith({
         position_cycle_public_id: 'cycle-1',
         trailing_pct: 5,
       })
@@ -1665,7 +1686,7 @@ describe('queries', () => {
 
   describe('useTrailingStopForCycle', () => {
     it('fetches trailing stop state for a cycle', async () => {
-      vi.mocked(apiClient.getTrailingStopByCycle).mockResolvedValueOnce({
+      vi.mocked(getTrailingStopByCycle).mockResolvedValueOnce({
         type: 'message',
         payload: 'none',
       })
@@ -1678,7 +1699,7 @@ describe('queries', () => {
         expect(result.current.isSuccess).toBe(true)
       })
 
-      expect(apiClient.getTrailingStopByCycle).toHaveBeenCalledWith('cycle-1')
+      expect(getTrailingStopByCycle).toHaveBeenCalledWith('cycle-1')
     })
 
     it('is disabled when cyclePublicId is undefined', () => {
@@ -1697,7 +1718,7 @@ describe('queries', () => {
       })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktests).toHaveBeenCalled()
+      expect(getBacktests).toHaveBeenCalled()
     })
   })
 
@@ -1716,13 +1737,13 @@ describe('queries', () => {
       })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktests).toHaveBeenCalledWith(5, 0, undefined, undefined, 'cfg-1')
+      expect(getBacktests).toHaveBeenCalledWith(5, 0, undefined, undefined, 'cfg-1')
     })
   })
 
   describe('useBacktest', () => {
     it('fetches backtest detail when runId is provided', async () => {
-      ;(apiClient.getBacktest as Mock).mockResolvedValue({
+      ;(getBacktest as Mock).mockResolvedValue({
         type: 'backtest_run_response',
         payload: { public_id: 'run-1' },
       })
@@ -1732,7 +1753,7 @@ describe('queries', () => {
       })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktest).toHaveBeenCalledWith('run-1')
+      expect(getBacktest).toHaveBeenCalledWith('run-1')
     })
 
     it('is disabled when runId is undefined', () => {
@@ -1746,7 +1767,7 @@ describe('queries', () => {
 
   describe('useBacktestTrades', () => {
     it('fetches trades when runId is provided', async () => {
-      ;(apiClient.getBacktestTrades as Mock).mockResolvedValue({
+      ;(getBacktestTrades as Mock).mockResolvedValue({
         type: 'backtest_trade_list',
         payload: [],
         count: 0,
@@ -1757,7 +1778,7 @@ describe('queries', () => {
       })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktestTrades).toHaveBeenCalledWith('run-1')
+      expect(getBacktestTrades).toHaveBeenCalledWith('run-1')
     })
 
     it('is disabled when runId is undefined', () => {
@@ -1771,7 +1792,7 @@ describe('queries', () => {
 
   describe('useBacktestSignals', () => {
     it('fetches signals when runId is provided', async () => {
-      ;(apiClient.getBacktestSignals as Mock).mockResolvedValue({
+      ;(getBacktestSignals as Mock).mockResolvedValue({
         type: 'backtest_signal_list',
         payload: [],
         count: 0,
@@ -1782,13 +1803,13 @@ describe('queries', () => {
       })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktestSignals).toHaveBeenCalledWith('run-1')
+      expect(getBacktestSignals).toHaveBeenCalledWith('run-1')
     })
   })
 
   describe('useCreateBacktest', () => {
     it('calls createBacktest and invalidates queries', async () => {
-      ;(apiClient.createBacktest as Mock).mockResolvedValue({
+      ;(createBacktest as Mock).mockResolvedValue({
         type: 'backtest_run_response',
         payload: { public_id: 'r-new' },
       })
@@ -1808,7 +1829,7 @@ describe('queries', () => {
       })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.createBacktest).toHaveBeenCalled()
+      expect(createBacktest).toHaveBeenCalled()
     })
   })
 
@@ -1828,7 +1849,7 @@ describe('queries', () => {
       const { result } = renderHook(() => useBacktestComparison('cmp-1'), { wrapper })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktestComparison).toHaveBeenCalledWith('cmp-1')
+      expect(getBacktestComparison).toHaveBeenCalledWith('cmp-1')
       expect(
         queryClient.getQueryCache().find({ queryKey: ['backtest-compare', 'wallet-1', 'cmp-1'] })
       ).toBeDefined()
@@ -1845,20 +1866,20 @@ describe('queries', () => {
     it('useBacktestComparison does NOT retry on 404', async () => {
       const error = new APIError('Comparison not found', 404, 'Not Found')
 
-      ;(apiClient.getBacktestComparison as Mock).mockRejectedValue(error)
+      ;(getBacktestComparison as Mock).mockRejectedValue(error)
       const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 3 } } })
       const wrapper = ({ children }: { children: ReactNode }) =>
         createElement(QueryClientProvider, { client: queryClient }, children)
       const { result } = renderHook(() => useBacktestComparison('cmp-missing'), { wrapper })
 
       await waitFor(() => expect(result.current.isError).toBe(true))
-      expect((apiClient.getBacktestComparison as Mock).mock.calls.length).toBe(1)
+      expect((getBacktestComparison as Mock).mock.calls.length).toBe(1)
     })
 
     it('useBacktestComparison retries up to 3 times on 500', async () => {
       const error = new APIError('Server error', 500, 'Internal Server Error')
 
-      ;(apiClient.getBacktestComparison as Mock).mockRejectedValue(error)
+      ;(getBacktestComparison as Mock).mockRejectedValue(error)
       const queryClient = new QueryClient({
         defaultOptions: { queries: { retry: 3, retryDelay: 0 } },
       })
@@ -1867,7 +1888,7 @@ describe('queries', () => {
       const { result } = renderHook(() => useBacktestComparison('cmp-flake'), { wrapper })
 
       await waitFor(() => expect(result.current.isError).toBe(true), { timeout: 2000 })
-      expect((apiClient.getBacktestComparison as Mock).mock.calls.length).toBe(4)
+      expect((getBacktestComparison as Mock).mock.calls.length).toBe(4)
     })
 
     it('useBacktestComparisons fetches list with default + custom paging + scoped key', async () => {
@@ -1875,7 +1896,7 @@ describe('queries', () => {
       const { result: defaultResult } = renderHook(() => useBacktestComparisons(), { wrapper })
 
       await waitFor(() => expect(defaultResult.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktestComparisons).toHaveBeenCalledWith(20, 0)
+      expect(getBacktestComparisons).toHaveBeenCalledWith(20, 0)
       expect(
         queryClient
           .getQueryCache()
@@ -1887,7 +1908,7 @@ describe('queries', () => {
       })
 
       await waitFor(() => expect(customResult.current.isSuccess).toBe(true))
-      expect(apiClient.getBacktestComparisons).toHaveBeenCalledWith(50, 100)
+      expect(getBacktestComparisons).toHaveBeenCalledWith(50, 100)
       expect(
         queryClient
           .getQueryCache()
@@ -1908,7 +1929,7 @@ describe('queries', () => {
         })
       })
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(apiClient.createBacktestComparison).toHaveBeenCalledWith({
+      expect(createBacktestComparison).toHaveBeenCalledWith({
         mode: 'auto',
         config_hash: 'cfg-1',
         anchor_run_public_id: 'r1',
@@ -1935,10 +1956,10 @@ describe('queries', () => {
   })
   describe('AI integration hooks', () => {
     it('useFeatureFlags returns isEnabled=true when backend says ai_integration_enabled=true', async () => {
-      mockedApiClient.getFeatureFlags.mockResolvedValueOnce(
+      vi.mocked(getFeatureFlags).mockResolvedValueOnce(
         envelope('feature_flags_response', {
           payload: { ai_integration_enabled: true },
-        })
+        }) as never
       )
       const { result } = renderHook(() => useFeatureFlags(), { wrapper: createWrapper() })
 
@@ -1946,14 +1967,14 @@ describe('queries', () => {
       expect(result.current.isEnabled).toBe(true)
     })
     it('useFeatureFlags returns isEnabled=false on fetch error (fail-closed)', async () => {
-      mockedApiClient.getFeatureFlags.mockRejectedValueOnce(new Error('server down'))
+      vi.mocked(getFeatureFlags).mockRejectedValueOnce(new Error('server down'))
       const { result } = renderHook(() => useFeatureFlags(), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isLoading).toBe(false))
       expect(result.current.isEnabled).toBe(false)
     })
     it('useAiDelegates returns delegate list', async () => {
-      mockedApiClient.listAiDelegates.mockResolvedValueOnce(
+      vi.mocked(listAiDelegates).mockResolvedValueOnce(
         envelope('delegate_list', {
           payload: [
             {
@@ -1972,7 +1993,7 @@ describe('queries', () => {
             },
           ],
           count: 1,
-        })
+        }) as never
       )
       const { result } = renderHook(() => useAiDelegates(), { wrapper: createWrapper() })
 
@@ -1984,10 +2005,10 @@ describe('queries', () => {
       const { result } = renderHook(() => useAiDelegate(null), { wrapper: createWrapper() })
 
       expect(result.current.isPending).toBe(true)
-      expect(mockedApiClient.getAiDelegate).not.toHaveBeenCalled()
+      expect(vi.mocked(getAiDelegate)).not.toHaveBeenCalled()
     })
     it('useAiDelegate fetches detail when publicId provided', async () => {
-      mockedApiClient.getAiDelegate.mockResolvedValueOnce(
+      vi.mocked(getAiDelegate).mockResolvedValueOnce(
         envelope('delegate_response', {
           payload: {
             public_id: 'd-1',
@@ -2003,20 +2024,20 @@ describe('queries', () => {
               max_order_quantity_per_instrument: null,
             },
           },
-        })
+        }) as never
       )
       const { result } = renderHook(() => useAiDelegate('d-1'), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(result.current.data?.payload.public_id).toBe('d-1')
-      expect(mockedApiClient.getAiDelegate).toHaveBeenCalledWith('d-1')
+      expect(vi.mocked(getAiDelegate)).toHaveBeenCalledWith('d-1')
     })
     it('useCreateAiDelegate invalidates ai-delegates list on success', async () => {
       const { queryClient, wrapper } = createWrapperWithClient()
       const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries')
 
-      mockedApiClient.createAiDelegate.mockResolvedValueOnce(
-        envelope('delegate_created_response', { payload: {} })
+      vi.mocked(createAiDelegate).mockResolvedValueOnce(
+        envelope('delegate_created_response', { payload: {} }) as never
       )
       const { result } = renderHook(() => useCreateAiDelegate(), { wrapper })
 
@@ -2039,8 +2060,8 @@ describe('queries', () => {
       const { queryClient, wrapper } = createWrapperWithClient()
       const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries')
 
-      mockedApiClient.updateAiDelegateCaps.mockResolvedValueOnce(
-        envelope('delegate_response', { payload: {} })
+      vi.mocked(updateAiDelegateCaps).mockResolvedValueOnce(
+        envelope('delegate_response', { payload: {} }) as never
       )
       const { result } = renderHook(() => useUpdateAiDelegateCaps(), { wrapper })
 
@@ -2065,8 +2086,8 @@ describe('queries', () => {
       const { queryClient, wrapper } = createWrapperWithClient()
       const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries')
 
-      mockedApiClient.deactivateAiDelegate.mockResolvedValueOnce(
-        envelope('delegate_response', { payload: {} })
+      vi.mocked(deactivateAiDelegate).mockResolvedValueOnce(
+        envelope('delegate_response', { payload: {} }) as never
       )
       const { result } = renderHook(() => useDeactivateAiDelegate(), { wrapper })
 
@@ -2087,7 +2108,7 @@ describe('queries', () => {
       const { result } = renderHook(() => usePendingAiReviews(), { wrapper: createWrapper() })
 
       expect(result.current.isPending).toBe(true)
-      expect(mockedApiClient.listPendingAiReviews).not.toHaveBeenCalled()
+      expect(vi.mocked(listPendingAiReviews)).not.toHaveBeenCalled()
     })
     it('usePendingAiReviews stays disabled when no user is authenticated', () => {
       vi.mocked(useAuth).mockReturnValueOnce({
@@ -2097,14 +2118,14 @@ describe('queries', () => {
       const { result } = renderHook(() => usePendingAiReviews(), { wrapper: createWrapper() })
 
       expect(result.current.isPending).toBe(true)
-      expect(mockedApiClient.listPendingAiReviews).not.toHaveBeenCalled()
+      expect(vi.mocked(listPendingAiReviews)).not.toHaveBeenCalled()
     })
     it('usePendingAiReviews fetches when caller is ai_delegate', async () => {
       vi.mocked(useAuth).mockReturnValue({
         isAuthenticated: true,
         user: { role: 'ai_delegate', public_id: 'user-del-1' },
       } as ReturnType<typeof useAuth>)
-      mockedApiClient.listPendingAiReviews.mockResolvedValueOnce({
+      vi.mocked(listPendingAiReviews).mockResolvedValueOnce({
         items: [
           {
             review_public_id: 'r-1',
@@ -2122,7 +2143,7 @@ describe('queries', () => {
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(result.current.data?.count).toBe(1)
-      expect(mockedApiClient.listPendingAiReviews).toHaveBeenCalledWith({
+      expect(vi.mocked(listPendingAiReviews)).toHaveBeenCalledWith({
         wallet_public_id: undefined,
         limit: undefined,
       })
@@ -2132,13 +2153,13 @@ describe('queries', () => {
         isAuthenticated: true,
         user: { role: 'ai_delegate', public_id: 'user-del-1' },
       } as ReturnType<typeof useAuth>)
-      mockedApiClient.listPendingAiReviews.mockResolvedValueOnce({ items: [], count: 0 })
+      vi.mocked(listPendingAiReviews).mockResolvedValueOnce({ items: [], count: 0 })
       renderHook(() => usePendingAiReviews({ walletPublicId: 'wal-99', limit: 25 }), {
         wrapper: createWrapper(),
       })
 
       await waitFor(() =>
-        expect(mockedApiClient.listPendingAiReviews).toHaveBeenCalledWith({
+        expect(vi.mocked(listPendingAiReviews)).toHaveBeenCalledWith({
           wallet_public_id: 'wal-99',
           limit: 25,
         })
@@ -2149,12 +2170,12 @@ describe('queries', () => {
         isAuthenticated: true,
         user: { role: 'ai_delegate', public_id: 'user-del-1' },
       } as ReturnType<typeof useAuth>)
-      mockedApiClient.submitAiReviewDecision = vi.fn().mockResolvedValue({
+      vi.mocked(submitAiReviewDecision).mockResolvedValueOnce({
         success: true,
         error_code: null,
         message: 'recorded',
         details: {},
-      }) as unknown as typeof mockedApiClient.submitAiReviewDecision
+      } as never)
       const { queryClient, wrapper } = createWrapperWithClient()
       const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries')
       const { result } = renderHook(() => useSubmitAiReviewDecision(), { wrapper })
@@ -2165,12 +2186,12 @@ describe('queries', () => {
         rationale: 'looks tight',
       })
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(mockedApiClient.submitAiReviewDecision).toHaveBeenCalledWith(
+      expect(vi.mocked(submitAiReviewDecision)).toHaveBeenCalledWith(
         'rev-9',
         'approve',
         'looks tight'
       )
-      expect(invalidateSpy).toHaveBeenCalledWith({ queryKey: ['pending-ai-reviews'] })
+      expect(invalidateSpy).toHaveBeenCalledWith({ queryKey: ['ai-reviews', 'pending'] })
     })
     it('useAiReviewActivity returns empty array when cache is empty', () => {
       vi.mocked(useAuth).mockReturnValue({

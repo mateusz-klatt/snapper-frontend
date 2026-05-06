@@ -6,6 +6,44 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.0] — 2026-05-06
+
+### Refactor
+
+- **`apiClient` + `queries` domain split.** The 1168-line
+  `src/lib/apiClient.ts` singleton is now transport-only (~480 lines):
+  request/get/post/JSON helpers, scope/CSRF/auth state, error
+  handling, provenance stamping. All 67 RPC methods extracted to
+  per-domain modules under `src/lib/api/<domain>.ts` (17 files plus
+  `error.ts`) as plain async functions: `health`, `system`, `market`,
+  `orders`, `positions`, `signals`, `wallets`, `scope-grants`,
+  `credentials`, `settings`, `processes`, `strategies`, `users`,
+  `backtests`, `feature-flags`, `ai-delegates`, `ai-reviews`. New
+  public `apiClient.requestJSON(...)` helper exposes a typed
+  request-with-error path for the three endpoints (scope-grants /
+  credentials / pending AI reviews) that intentionally bypass the
+  scope-injecting `get()` shortcut.
+- **`src/hooks/queries.ts` split mirroring the API domains.** The
+  1113-line monolith is now a 17-line compat re-export shim; the
+  ~80 React Query hooks live in `src/hooks/queries/<domain>.ts`
+  alongside a centralised `src/hooks/queries/keys.ts` registry.
+  Imports from `'@/hooks/queries'` keep working unchanged (the 37
+  callsite migration to direct `'@/hooks/queries/<domain>'`
+  imports is queued for a follow-up).
+- **`APIError` extracted to `src/lib/api/error.ts`** so domain
+  modules consume it directly. `apiClient.ts` re-exports it for
+  callers that import from `'@/lib/apiClient'`.
+
+### Fixed
+
+- **AI review decision invalidation now actually drops the row.**
+  `useSubmitAiReviewDecision.onSuccess` previously invalidated the
+  literal `['pending-ai-reviews']` query key, but the actual
+  `usePendingAiReviews` query lives under `['ai-reviews', 'pending',
+...]`. The mismatch silently meant the inbox waited a full 5s
+  poll cycle before the resolved row disappeared. Centralised
+  `keys.ts` exposes a `pendingAiReviewsAll` prefix that matches.
+
 ### Added
 
 - **Privacy policy page** at `/privacy-policy.html`. Standalone

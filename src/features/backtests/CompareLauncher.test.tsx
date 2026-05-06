@@ -3,15 +3,13 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { CompareLauncher } from './CompareLauncher'
-import { apiClient } from '../../lib/apiClient'
+import { createBacktestComparison, getBacktests } from '../../lib/api/backtests'
 import { useAppStore } from '../../stores/app'
 import type { BacktestRunData } from '../../types/api'
 
-vi.mock('../../lib/apiClient', () => ({
-  apiClient: {
-    getBacktests: vi.fn(),
-    createBacktestComparison: vi.fn(),
-  },
+vi.mock('../../lib/api/backtests', () => ({
+  getBacktests: vi.fn(),
+  createBacktestComparison: vi.fn(),
 }))
 
 const makeRun = (overrides: Partial<BacktestRunData> = {}): BacktestRunData =>
@@ -47,7 +45,7 @@ const renderWithClient = (ui: ReactNode) => {
 }
 
 const mockSameConfig = (runs: BacktestRunData[]) => {
-  ;(apiClient.getBacktests as ReturnType<typeof vi.fn>).mockImplementation(
+  ;(getBacktests as ReturnType<typeof vi.fn>).mockImplementation(
     (_l: number, _o: number, _strategy?: string, _status?: string, configHash?: string | null) => {
       if (configHash) {
         return Promise.resolve({ type: 'backtest_run_list', payload: runs, count: runs.length })
@@ -74,7 +72,7 @@ describe('CompareLauncher', () => {
     expect(
       screen.getByText(/compare available once this run reaches a terminal status/i)
     ).toBeDefined()
-    expect(apiClient.getBacktests).not.toHaveBeenCalled()
+    expect(getBacktests).not.toHaveBeenCalled()
   })
 
   it('(a) renders auto-pair when hash present + candidates.length >= 1 (post-exclusion)', async () => {
@@ -83,7 +81,7 @@ describe('CompareLauncher', () => {
     mockSameConfig([sibling])
     renderWithClient(<CompareLauncher currentRun={makeRun()} />)
     expect(await screen.findByTestId('compare-auto-pair')).toBeDefined()
-    expect(apiClient.getBacktests).toHaveBeenCalledWith(20, 0, undefined, undefined, 'cfg-deadbeef')
+    expect(getBacktests).toHaveBeenCalledWith(20, 0, undefined, undefined, 'cfg-deadbeef')
   })
 
   it('(b) hides auto-pair + shows "no other runs" when candidates.length === 0', async () => {
@@ -94,7 +92,7 @@ describe('CompareLauncher', () => {
   })
 
   it('(c) shows manual-only (no auto-pair, no chip "same config") when config_hash is null', async () => {
-    ;(apiClient.getBacktests as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktests as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_list',
       payload: [makeRun({ public_id: 'r-other', timestamp: '2026-02-01T00:00:00Z' })],
       count: 1,
@@ -111,8 +109,8 @@ describe('CompareLauncher', () => {
     mockSameConfig([])
     renderWithClient(<CompareLauncher currentRun={makeRun()} />)
     await waitFor(() => expect(screen.getByTestId('compare-no-siblings')).toBeDefined())
-    expect((apiClient.getBacktests as ReturnType<typeof vi.fn>).mock.calls.length).toBe(1)
-    expect(apiClient.getBacktests).toHaveBeenCalledWith(20, 0, undefined, undefined, 'cfg-deadbeef')
+    expect((getBacktests as ReturnType<typeof vi.fn>).mock.calls.length).toBe(1)
+    expect(getBacktests).toHaveBeenCalledWith(20, 0, undefined, undefined, 'cfg-deadbeef')
   })
 
   it('(e) "show all runs" toggle fires three parallel typed queries + excludes current run + excludes pending sibling', async () => {
@@ -133,7 +131,7 @@ describe('CompareLauncher', () => {
     })
     const sibling = makeRun({ public_id: 'r-sib', status: 'completed' })
 
-    ;(apiClient.getBacktests as ReturnType<typeof vi.fn>).mockImplementation(
+    ;(getBacktests as ReturnType<typeof vi.fn>).mockImplementation(
       (_l: number, _o: number, _s, status?: string, hash?: string | null) => {
         if (hash) {
           return Promise.resolve({ type: 'backtest_run_list', payload: [sibling], count: 1 })
@@ -168,7 +166,7 @@ describe('CompareLauncher', () => {
     )
     await screen.findByText(/r-c/)
 
-    const allCalls = (apiClient.getBacktests as ReturnType<typeof vi.fn>).mock.calls
+    const allCalls = (getBacktests as ReturnType<typeof vi.fn>).mock.calls
     const statuses = allCalls.filter(c => c[3]).map(c => c[3])
 
     expect(statuses).toEqual(expect.arrayContaining(['completed', 'failed', 'cancelled']))
@@ -202,14 +200,14 @@ describe('CompareLauncher', () => {
     const sibling = makeRun({ public_id: 'run-sibling' })
 
     mockSameConfig([sibling])
-    ;(apiClient.createBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(createBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_comparison_response',
       payload: { public_id: 'cmp-new' },
     })
     renderWithClient(<CompareLauncher currentRun={makeRun()} />)
     fireEvent.click(await screen.findByTestId('compare-auto-pair'))
     await waitFor(() => expect(globalThis.location.hash).toBe('#backtests/compare/cmp-new'))
-    expect(apiClient.createBacktestComparison).toHaveBeenCalledWith({
+    expect(createBacktestComparison).toHaveBeenCalledWith({
       mode: 'auto',
       config_hash: 'cfg-deadbeef',
       anchor_run_public_id: 'run-current',
@@ -223,14 +221,14 @@ describe('CompareLauncher', () => {
     expect(screen.getByTestId('compare-client-error').textContent).toBe(
       'select a run from the list'
     )
-    expect(apiClient.createBacktestComparison).not.toHaveBeenCalled()
+    expect(createBacktestComparison).not.toHaveBeenCalled()
   })
 
   it('manual submit POSTs run_a + run_b body shape', async () => {
     const other = makeRun({ public_id: 'r-other' })
 
     mockSameConfig([other])
-    ;(apiClient.createBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(createBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_comparison_response',
       payload: { public_id: 'cmp-manual' },
     })
@@ -239,7 +237,7 @@ describe('CompareLauncher', () => {
     fireEvent.change(screen.getByTestId('compare-combobox'), { target: { value: 'r-other' } })
     fireEvent.click(screen.getByTestId('compare-manual-submit'))
     await waitFor(() => expect(globalThis.location.hash).toBe('#backtests/compare/cmp-manual'))
-    expect(apiClient.createBacktestComparison).toHaveBeenCalledWith({
+    expect(createBacktestComparison).toHaveBeenCalledWith({
       mode: 'manual',
       run_a_public_id: 'run-current',
       run_b_public_id: 'r-other',

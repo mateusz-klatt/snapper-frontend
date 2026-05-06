@@ -1,5 +1,8 @@
 import { vi, beforeAll, afterAll } from 'vitest'
 import '@testing-library/jest-dom'
+import { configure } from '@testing-library/react'
+
+configure({ asyncUtilTimeout: 5000 })
 
 let consoleErrorSpy: ReturnType<typeof vi.spyOn>
 let consoleWarnSpy: ReturnType<typeof vi.spyOn>

@@ -18,12 +18,10 @@ const mockGetBacktests = vi.fn()
 const mockCancelBacktest = vi.fn()
 const mockRerunBacktest = vi.fn()
 
-vi.mock('../../lib/apiClient', () => ({
-  apiClient: {
-    getBacktests: (...args: unknown[]) => mockGetBacktests(...args),
-    cancelBacktest: (...args: unknown[]) => mockCancelBacktest(...args),
-    rerunBacktest: (...args: unknown[]) => mockRerunBacktest(...args),
-  },
+vi.mock('../../lib/api/backtests', () => ({
+  getBacktests: (...args: unknown[]) => mockGetBacktests(...args),
+  cancelBacktest: (...args: unknown[]) => mockCancelBacktest(...args),
+  rerunBacktest: (...args: unknown[]) => mockRerunBacktest(...args),
 }))
 
 const NOW = new Date().toISOString()

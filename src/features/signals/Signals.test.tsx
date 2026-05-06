@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Signals } from './Signals'
 import { useAuth } from '../../stores/auth'
+import { getSignals } from '../../lib/api/signals'
 
 vi.mock('../../components/ThemeSelect', () => ({
   ThemeSelect: ({
@@ -52,52 +53,50 @@ vi.mock('../../stores/app', () => ({
     selector({ asOf: null, isTimeTraveling: false })
   ),
 }))
-vi.mock('../../lib/apiClient', () => ({
-  apiClient: {
-    getSignals: vi.fn(async () => ({
-      type: 'signal_list',
-      session_id: '',
-      sequence_id: 0,
-      payload: [
-        {
-          type: 'signal',
-          instrument: 'BTC-USD',
-          exchange: 'kraken',
-          timestamp: new Date().toISOString(),
-          fired_at: new Date().toISOString(),
-          side: 'buy',
-          strength: 0.85,
-          reason: 'Strong momentum breakout',
-          strategy_name: 'macd',
-          price: 42000,
-        },
-        {
-          type: 'signal',
-          instrument: 'ETH-USD',
-          exchange: 'kraken',
-          timestamp: new Date().toISOString(),
-          fired_at: new Date().toISOString(),
-          side: 'sell',
-          strength: 0.65,
-          reason: 'Overbought RSI',
-          strategy_name: 'rsi',
-          price: 2800,
-        },
-        {
-          type: 'signal',
-          instrument: 'SOL-USD',
-          exchange: 'kraken',
-          timestamp: new Date().toISOString(),
-          side: 'sell',
-          strength: 0.5,
-          reason: 'Test without fired_at',
-          strategy_name: 'test',
-          price: 100,
-        },
-      ],
-      count: 2,
-    })),
-  },
+vi.mock('../../lib/api/signals', () => ({
+  getSignals: vi.fn(async () => ({
+    type: 'signal_list',
+    session_id: '',
+    sequence_id: 0,
+    payload: [
+      {
+        type: 'signal',
+        instrument: 'BTC-USD',
+        exchange: 'kraken',
+        timestamp: new Date().toISOString(),
+        fired_at: new Date().toISOString(),
+        side: 'buy',
+        strength: 0.85,
+        reason: 'Strong momentum breakout',
+        strategy_name: 'macd',
+        price: 42000,
+      },
+      {
+        type: 'signal',
+        instrument: 'ETH-USD',
+        exchange: 'kraken',
+        timestamp: new Date().toISOString(),
+        fired_at: new Date().toISOString(),
+        side: 'sell',
+        strength: 0.65,
+        reason: 'Overbought RSI',
+        strategy_name: 'rsi',
+        price: 2800,
+      },
+      {
+        type: 'signal',
+        instrument: 'SOL-USD',
+        exchange: 'kraken',
+        timestamp: new Date().toISOString(),
+        side: 'sell',
+        strength: 0.5,
+        reason: 'Test without fired_at',
+        strategy_name: 'test',
+        price: 100,
+      },
+    ],
+    count: 2,
+  })),
 }))
 const createTestQueryClient = () =>
   new QueryClient({
@@ -221,9 +220,7 @@ describe('Signals', () => {
     expect(screen.getAllByText('1').length).toBeGreaterThanOrEqual(1)
   })
   it('displays all buy stats when buy signals dominate', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -264,9 +261,7 @@ describe('Signals', () => {
     expect(screen.getAllByText('BUY').length).toBe(2)
   })
   it('displays all sell stats when sell signals dominate', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -319,9 +314,7 @@ describe('Signals', () => {
     expect(screen.getByText('Medium (65%)')).toBeInTheDocument()
   })
   it('displays weak strength label', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -349,9 +342,7 @@ describe('Signals', () => {
     expect(screen.getByText('Weak (45%)')).toBeInTheDocument()
   })
   it('displays very weak strength label', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -379,9 +370,7 @@ describe('Signals', () => {
     expect(screen.getByText('Very Weak (25%)')).toBeInTheDocument()
   })
   it('displays time as Just now for recent signals', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -409,10 +398,9 @@ describe('Signals', () => {
     expect(screen.getByText('Just now')).toBeInTheDocument()
   })
   it('displays time as minutes ago', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
     const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000).toISOString()
 
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -440,10 +428,9 @@ describe('Signals', () => {
     expect(screen.getByText('15m ago')).toBeInTheDocument()
   })
   it('displays time as hours ago', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
     const threeHoursAgo = new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString()
 
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -471,10 +458,9 @@ describe('Signals', () => {
     expect(screen.getByText('3h ago')).toBeInTheDocument()
   })
   it('displays date for old signals', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
     const twoDaysAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString()
 
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -502,9 +488,7 @@ describe('Signals', () => {
     expect(screen.queryByText(/ago/)).not.toBeInTheDocument()
   })
   it('shows empty state when no signals are available', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({ payload: [], count: 0 } as never)
+    vi.mocked(getSignals).mockResolvedValueOnce({ payload: [], count: 0 } as never)
     const queryClient = createTestQueryClient()
 
     render(
@@ -516,11 +500,10 @@ describe('Signals', () => {
     expect(screen.getByText('No trading signals match your current filters.')).toBeInTheDocument()
   })
   it('shows empty state for filtered strategy with no results', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
     const userEventModule = await import('@testing-library/user-event')
     const user = userEventModule.default.setup()
 
-    vi.mocked(apiClient.getSignals)
+    vi.mocked(getSignals)
       .mockResolvedValueOnce({
         payload: [
           {
@@ -566,11 +549,10 @@ describe('Signals', () => {
     expect(screen.getByText('No trading signals match your current filters.')).toBeInTheDocument()
   })
   it('filters signals by strategy', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
     const userEventModule = await import('@testing-library/user-event')
     const user = userEventModule.default.setup()
 
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -613,9 +595,7 @@ describe('Signals', () => {
     expect(screen.getByText('BTC-USD')).toBeInTheDocument()
   })
   it('displays N/A for null price', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -643,8 +623,6 @@ describe('Signals', () => {
     expect(screen.getByText('N/A')).toBeInTheDocument()
   })
   it('does not request signals when not authenticated', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
     vi.mocked(useAuth).mockReturnValue({
       isAuthenticated: false,
     } as never)
@@ -655,12 +633,10 @@ describe('Signals', () => {
         <Signals />
       </QueryClientProvider>
     )
-    expect(apiClient.getSignals).not.toHaveBeenCalled()
+    expect(getSignals).not.toHaveBeenCalled()
   })
   it('omits strategy badge when strategy name is missing', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -710,9 +686,7 @@ describe('Signals', () => {
     )
   })
   it('disables export button when no signals', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({ payload: [], count: 0 } as never)
+    vi.mocked(getSignals).mockResolvedValueOnce({ payload: [], count: 0 } as never)
     const queryClient = createTestQueryClient()
 
     render(
@@ -726,9 +700,7 @@ describe('Signals', () => {
     expect(exportButton).toBeDisabled()
   })
   it('renders signal with undefined fired_at as Just now', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
-
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -756,12 +728,11 @@ describe('Signals', () => {
     expect(screen.getByText('Just now')).toBeInTheDocument()
   })
   it('exports signals with undefined fired_at', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
     const { exportToCSV } = await import('../../lib/csvExport')
     const userEventModule = await import('@testing-library/user-event')
     const user = userEventModule.default.setup()
 
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -796,12 +767,11 @@ describe('Signals', () => {
     )
   })
   it('exports signals with null price and null strategy_name', async () => {
-    const { apiClient } = await import('../../lib/apiClient')
     const { exportToCSV } = await import('../../lib/csvExport')
     const userEventModule = await import('@testing-library/user-event')
     const user = userEventModule.default.setup()
 
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [
         {
           type: 'signal',
@@ -837,14 +807,13 @@ describe('Signals', () => {
   })
   it('shows relative time based on asOf when time traveling', async () => {
     const { useAppStore } = await import('../../stores/app')
-    const { apiClient } = await import('../../lib/apiClient')
     const asOfDate = '2024-06-15T12:00:00Z'
     const firedAt = '2024-06-15T11:30:00Z'
 
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: Record<string, unknown>) => unknown
     ) => selector({ asOf: asOfDate, isTimeTraveling: true })) as never)
-    vi.mocked(apiClient.getSignals).mockResolvedValueOnce({
+    vi.mocked(getSignals).mockResolvedValueOnce({
       type: 'signal_list',
       session_id: '',
       sequence_id: 0,

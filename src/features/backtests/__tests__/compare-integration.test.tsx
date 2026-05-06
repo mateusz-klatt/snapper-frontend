@@ -2,26 +2,25 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AppRoutes } from '../../../components/AppRoutes'
-import { apiClient, APIError } from '../../../lib/apiClient'
+import {
+  createBacktestComparison,
+  getBacktest,
+  getBacktestComparison,
+  getBacktests,
+} from '../../../lib/api/backtests'
+import { apiClient } from '../../../lib/apiClient'
+import { APIError } from '../../../lib/api/error'
 import { useAppStore } from '../../../stores/app'
 import type { BacktestRunData } from '../../../types/api'
 
-vi.mock('../../../lib/apiClient', async () => {
-  const actual = await vi.importActual('../../../lib/apiClient')
-
-  return {
-    ...actual,
-    apiClient: {
-      getBacktests: vi.fn(),
-      getBacktest: vi.fn(),
-      getBacktestComparison: vi.fn(),
-      createBacktestComparison: vi.fn(),
-      cancelBacktest: vi.fn(),
-      rerunBacktest: vi.fn(),
-      setWalletScope: vi.fn(),
-    },
-  }
-})
+vi.mock('../../../lib/api/backtests', () => ({
+  getBacktests: vi.fn(),
+  getBacktest: vi.fn(),
+  getBacktestComparison: vi.fn(),
+  createBacktestComparison: vi.fn(),
+  cancelBacktest: vi.fn(),
+  rerunBacktest: vi.fn(),
+}))
 
 vi.mock('../hooks/useBacktestProgressSubscription', () => ({
   useBacktestProgressSubscription: () => null,
@@ -90,12 +89,19 @@ const renderApp = () => {
 
 beforeEach(() => {
   vi.clearAllMocks()
+  vi.spyOn(apiClient, 'setWalletScope')
+  apiClient.setTimeTravelAsOf(null)
+  apiClient.setOperatorScope(null)
   useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
   globalThis.location.hash = '#backtests'
 })
 
 afterEach(() => {
+  vi.restoreAllMocks()
   useAppStore.setState({ currentWalletPublicId: null })
+  apiClient.setWalletScope(null)
+  apiClient.setTimeTravelAsOf(null)
+  apiClient.setOperatorScope(null)
   globalThis.location.hash = ''
 })
 
@@ -104,7 +110,7 @@ describe('Compare flow integration', () => {
     const runA = makeRun({ public_id: RUN_A })
     const runB = makeRun({ public_id: RUN_B, timestamp: '2026-02-15T00:00:00Z' })
 
-    ;(apiClient.getBacktests as ReturnType<typeof vi.fn>).mockImplementation(
+    ;(getBacktests as ReturnType<typeof vi.fn>).mockImplementation(
       (_l: number, _o: number, _s, _status, hash?: string | null) => {
         if (hash === CONFIG_HASH) {
           return Promise.resolve({ type: 'backtest_run_list', payload: [runA, runB], count: 2 })
@@ -113,15 +119,15 @@ describe('Compare flow integration', () => {
         return Promise.resolve({ type: 'backtest_run_list', payload: [runA, runB], count: 2 })
       }
     )
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_response',
       payload: runA,
     })
-    ;(apiClient.createBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(createBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_comparison_response',
       payload: { public_id: 'cmp-new' },
     })
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_comparison_detail_response',
       payload: {
         comparison: { public_id: 'cmp-new', pairing_mode: 'auto', config_hash: CONFIG_HASH },
@@ -144,13 +150,13 @@ describe('Compare flow integration', () => {
       globalThis.dispatchEvent(new HashChangeEvent('hashchange'))
     })
 
-    await waitFor(() => expect(apiClient.getBacktest).toHaveBeenCalledWith(RUN_A))
+    await waitFor(() => expect(getBacktest).toHaveBeenCalledWith(RUN_A))
     const autoPair = await screen.findByTestId('compare-auto-pair')
 
     fireEvent.click(autoPair)
 
     await waitFor(() =>
-      expect(apiClient.createBacktestComparison).toHaveBeenCalledWith({
+      expect(createBacktestComparison).toHaveBeenCalledWith({
         mode: 'auto',
         config_hash: CONFIG_HASH,
         anchor_run_public_id: RUN_A,
@@ -179,7 +185,7 @@ describe('Compare flow integration', () => {
     // compare hooks already scope by walletId so the key-change path alone
     // proves wallet isolation. Test here uses a fresh QueryClient to pin
     // the key-change behaviour deterministically.
-    ;(apiClient.getBacktestComparison as ReturnType<typeof vi.fn>)
+    ;(getBacktestComparison as ReturnType<typeof vi.fn>)
       .mockResolvedValueOnce({
         type: 'backtest_comparison_detail_response',
         payload: {
@@ -198,14 +204,14 @@ describe('Compare flow integration', () => {
     renderApp()
 
     await waitFor(() => expect(screen.getByTestId('compare-pairing-mode')).toBeDefined())
-    expect(apiClient.getBacktestComparison).toHaveBeenCalledTimes(1)
+    expect(getBacktestComparison).toHaveBeenCalledTimes(1)
 
     act(() => {
       useAppStore.getState().setCurrentWalletPublicId('wallet-other')
     })
 
     await waitFor(() => expect(apiClient.setWalletScope).toHaveBeenCalledWith('wallet-other'))
-    await waitFor(() => expect(apiClient.getBacktestComparison).toHaveBeenCalledTimes(2))
+    await waitFor(() => expect(getBacktestComparison).toHaveBeenCalledTimes(2))
     expect(await screen.findByText(/Comparison not found in current wallet/i)).toBeDefined()
   })
 })

@@ -3,13 +3,11 @@ import { renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createElement, type ReactNode } from 'react'
 import { useAllTerminalRuns } from './useAllTerminalRuns'
-import { apiClient } from '../../../lib/apiClient'
+import { getBacktests } from '../../../lib/api/backtests'
 import { useAppStore } from '../../../stores/app'
 
-vi.mock('../../../lib/apiClient', () => ({
-  apiClient: {
-    getBacktests: vi.fn(),
-  },
+vi.mock('../../../lib/api/backtests', () => ({
+  getBacktests: vi.fn(),
 }))
 
 const makeRun = (publicId: string, ts: string) => ({
@@ -52,7 +50,7 @@ describe('useAllTerminalRuns', () => {
   })
 
   it('fires three parallel typed queries (completed/failed/cancelled) merged + sorted desc', async () => {
-    const mock = apiClient.getBacktests as ReturnType<typeof vi.fn>
+    const mock = getBacktests as ReturnType<typeof vi.fn>
 
     mock.mockImplementation((_l: number, _o: number, _s, status: string) => {
       if (status === 'completed') {
@@ -101,11 +99,11 @@ describe('useAllTerminalRuns', () => {
     const { result } = renderHook(() => useAllTerminalRuns({ enabled: false }), { wrapper })
 
     expect(result.current.fetchStatus).toBe('idle')
-    expect(apiClient.getBacktests).not.toHaveBeenCalled()
+    expect(getBacktests).not.toHaveBeenCalled()
   })
 
   it('handles empty payloads gracefully (defensive .payload ?? [])', async () => {
-    ;(apiClient.getBacktests as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktests as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_list',
       payload: undefined,
       count: 0,
@@ -118,7 +116,7 @@ describe('useAllTerminalRuns', () => {
   })
 
   it('scopes the query key by walletId', async () => {
-    ;(apiClient.getBacktests as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktests as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_list',
       payload: [],
       count: 0,

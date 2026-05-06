@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { BacktestDetailPage } from './BacktestDetailPage'
-import { apiClient } from '../../lib/apiClient'
+import { getBacktest } from '../../lib/api/backtests'
 
 vi.mock('./hooks/useBacktestProgressSubscription', () => ({
   useBacktestProgressSubscription: (runId: string | null) => {
@@ -28,10 +28,8 @@ vi.mock('./hooks/useBacktestProgressSubscription', () => ({
   },
 }))
 
-vi.mock('../../lib/apiClient', () => ({
-  apiClient: {
-    getBacktest: vi.fn(),
-  },
+vi.mock('../../lib/api/backtests', () => ({
+  getBacktest: vi.fn(),
 }))
 
 vi.mock('./CompareLauncher', () => ({
@@ -82,10 +80,10 @@ describe('BacktestDetailPage', () => {
     renderWithQuery(<BacktestDetailPage runPublicId='not-a-uuid' />)
     expect(screen.getByText(/Invalid run id/i)).toBeDefined()
     expect(screen.getByText(/not-a-uuid/)).toBeDefined()
-    expect(apiClient.getBacktest).not.toHaveBeenCalled()
+    expect(getBacktest).not.toHaveBeenCalled()
   })
   it('renders progress bar + UUID while loading the run', () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockReturnValue(new Promise(() => {}))
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockReturnValue(new Promise(() => {}))
     renderWithQuery(<BacktestDetailPage runPublicId={VALID_RUN} />)
     expect(screen.getByText('Backtest run')).toBeDefined()
     expect(screen.getByText(VALID_RUN)).toBeDefined()
@@ -93,7 +91,7 @@ describe('BacktestDetailPage', () => {
     expect(screen.queryByTestId('compare-launcher-mount')).toBeNull()
   })
   it('shows run summary + mounts CompareLauncher with run data when fetch succeeds', async () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_response',
       payload: makeRunPayload(),
     })
@@ -108,14 +106,14 @@ describe('BacktestDetailPage', () => {
     expect(screen.getByText('cfg-hash-deadbeef')).toBeDefined()
   })
   it('renders error fallback when fetch fails', async () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockRejectedValue(new Error('boom'))
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockRejectedValue(new Error('boom'))
     renderWithQuery(<BacktestDetailPage runPublicId={VALID_RUN} />)
     expect(await screen.findByText(/Failed to load run.*boom/i)).toBeDefined()
     expect(screen.getByText(/Back to backtests/i)).toBeDefined()
     expect(screen.queryByTestId('compare-launcher-mount')).toBeNull()
   })
   it('omits config_hash row when run carries no hash (pre-0006 run)', async () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_response',
       payload: makeRunPayload({ config_hash: null }),
     })
@@ -124,7 +122,7 @@ describe('BacktestDetailPage', () => {
     expect(screen.queryByText('Config hash')).toBeNull()
   })
   it('renders fallback when payload is empty', async () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_response',
       payload: null,
     })
@@ -132,7 +130,7 @@ describe('BacktestDetailPage', () => {
     expect(await screen.findByText(/Failed to load run.*not found/i)).toBeDefined()
   })
   it('renders unknown-status with default styling', async () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_response',
       payload: makeRunPayload({ status: 'mystery' }),
     })
@@ -142,7 +140,7 @@ describe('BacktestDetailPage', () => {
     expect(statusEl.className).toContain('text-muted-400')
   })
   it('renders cross-asset attribution row when target_execution_exchange is set', async () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_response',
       payload: makeRunPayload({
         exchange: 'kraken_futures',
@@ -155,7 +153,7 @@ describe('BacktestDetailPage', () => {
     expect(screen.getByText(/kraken_futures feed → kraken fills/)).toBeDefined()
   })
   it('omits the cross-asset row when target_execution_exchange is null', async () => {
-    ;(apiClient.getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
+    ;(getBacktest as ReturnType<typeof vi.fn>).mockResolvedValue({
       type: 'backtest_run_response',
       payload: makeRunPayload({ target_execution_exchange: null }),
     })
