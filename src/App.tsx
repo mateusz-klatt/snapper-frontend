@@ -154,16 +154,11 @@ function App() {
             </div>
           )}
         <main className='flex-1 flex flex-col min-h-0'>
-          <div
-            role='region'
-            aria-label='Trading content'
-            tabIndex={0}
-            className='flex-1 overflow-y-auto p-4 sm:p-6'
-          >
+          <section aria-label='Trading content' className='flex-1 overflow-y-auto p-4 sm:p-6'>
             <div className='mx-auto w-full max-w-screen-2xl'>
               <AppRoutes activeTab={activeTab} />
             </div>
-          </div>
+          </section>
         </main>
       </section>
     </div>
