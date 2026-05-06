@@ -398,7 +398,7 @@ describe('Signals', () => {
     expect(screen.getByText('Just now')).toBeInTheDocument()
   })
   it('displays time as minutes ago', async () => {
-    const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000).toISOString()
+    const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000 - 30 * 1000).toISOString()
 
     vi.mocked(getSignals).mockResolvedValueOnce({
       payload: [

@@ -8,10 +8,10 @@ import { useCreateUser, useUpdateUser, useAdminResetPassword } from '../../../ho
 import type { UserProfile, UserRole } from '../../../types/api'
 
 interface UserFormProps {
-  user?: UserProfile
+  user?: UserProfile | undefined
   open: boolean
   onClose: () => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, readOnly }) => {

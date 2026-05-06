@@ -34,7 +34,7 @@ const FIELD_LABELS: Record<string, string> = {
 interface CredentialFormProps {
   open: boolean
   onClose: () => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose, readOnly }) => {
@@ -99,6 +99,8 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
       payload[field] = (fields[field] as string).trim()
     }
 
+    const trimmedLabel = label.trim()
+
     createMutation.mutate(
       {
         walletPublicId: walletId,
@@ -106,7 +108,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
           exchange: exchange.trim(),
           credential_type: credentialType as 'api_key_secret' | 'rsa_pem' | 'oauth' | 'paper',
           credential_payload: payload,
-          label: label.trim() || undefined,
+          ...(trimmedLabel ? { label: trimmedLabel } : {}),
         },
       },
       {

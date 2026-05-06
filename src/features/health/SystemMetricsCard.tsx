@@ -43,7 +43,7 @@ function formatRelativeAge(busTime: string, now: Date): string {
 interface MetricCellProps {
   readonly label: string
   readonly value: string
-  readonly description?: string
+  readonly description?: string | undefined
 }
 
 const MetricCell: React.FC<MetricCellProps> = ({ label, value, description }) => (

@@ -11,7 +11,7 @@ export interface StrategyLaunchData {
   executionMode: 'thread' | 'process'
   autostart: boolean
   startImmediately: boolean
-  note?: string
+  note?: string | undefined
   parameters: Record<string, unknown>
 }
 interface StrategyLaunchModalProps {
@@ -132,6 +132,8 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
     }
 
     try {
+      const trimmedNote = note.trim()
+
       await onSubmit({
         template,
         processName: sanitizeName(processName),
@@ -139,7 +141,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
         executionMode,
         autostart,
         startImmediately,
-        note: note.trim() || undefined,
+        ...(trimmedNote ? { note: trimmedNote } : {}),
         parameters: params,
       })
     } catch (error) {

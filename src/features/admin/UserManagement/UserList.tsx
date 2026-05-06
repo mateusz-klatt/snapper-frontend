@@ -9,7 +9,7 @@ import type { UserProfile } from '../../../types/api'
 interface UserListProps {
   onCreateUser: () => void
   onEditUser: (user: UserProfile) => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser, readOnly }) => {

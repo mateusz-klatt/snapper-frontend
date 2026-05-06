@@ -8,7 +8,7 @@ import type { CredentialSummary, WalletInfo } from '../../../types/api'
 interface CredentialListProps {
   onCreateCredential: () => void
   onRotate: (credential: CredentialSummary) => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const CredentialList: React.FC<Readonly<CredentialListProps>> = ({

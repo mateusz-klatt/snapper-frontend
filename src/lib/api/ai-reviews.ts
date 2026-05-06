@@ -8,7 +8,7 @@ import {
 } from '../schemas/api.generated.zod'
 
 export async function listPendingAiReviews(
-  params: Readonly<{ wallet_public_id?: string; limit?: number }> = {}
+  params: Readonly<{ wallet_public_id?: string | undefined; limit?: number | undefined }> = {}
 ): Promise<PendingReviewListResponse> {
   const search = new URLSearchParams()
 

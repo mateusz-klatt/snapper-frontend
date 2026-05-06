@@ -10,7 +10,7 @@ import type { OperatorInfo, WalletInfo } from '../../../types/api'
 interface ScopeGrantFormProps {
   open: boolean
   onClose: () => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose, readOnly }) => {
@@ -58,14 +58,17 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
 
     if (!validateForm()) return
 
+    const trimmedTarget = targetId.trim()
+    const trimmedNote = note.trim()
+
     createMutation.mutate(
       {
         operator_public_id: operatorId,
         wallet_public_id: walletId,
         scope_kind: scopeKind,
-        underlying_public_id: scopeKind === 'underlying' ? targetId.trim() : undefined,
-        instrument_public_id: scopeKind === 'instrument' ? targetId.trim() : undefined,
-        note: note.trim() || undefined,
+        ...(scopeKind === 'underlying' ? { underlying_public_id: trimmedTarget } : {}),
+        ...(scopeKind === 'instrument' ? { instrument_public_id: trimmedTarget } : {}),
+        ...(trimmedNote ? { note: trimmedNote } : {}),
       },
       {
         onSuccess: () => {

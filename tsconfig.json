@@ -18,6 +18,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
     /* Path mapping */
     "paths": {
       "@/*": ["./src/*"]

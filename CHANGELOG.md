@@ -6,6 +6,17 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.1] — 2026-05-06
+
+### Refactor
+
+- **`exactOptionalPropertyTypes` flag flip.** Enabled the TypeScript flag
+  after `noUncheckedIndexedAccess`, widened dependent hand-written
+  component and transport prop surfaces to accept explicit `undefined`
+  where callers already produce it, and fixed request-body callsites by
+  coercing or omitting absent optional values without widening request
+  schemas.
+
 ## [1.5.0] — 2026-05-06
 
 ### Refactor

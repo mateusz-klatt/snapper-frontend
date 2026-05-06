@@ -449,7 +449,6 @@ describe('Signal Transformers', () => {
       side: 'buy',
       strength: 0.85,
       reason: 'RSI oversold',
-      strategy_name: 'momentum_v1',
       price: 49500,
       timestamp: '2026-01-15T10:30:00Z',
     } as unknown as SignalData
@@ -457,6 +456,7 @@ describe('Signal Transformers', () => {
 
     expect(result.firedAt).toBeDefined()
     expect(result.firedAt).toEqual(new Date('2026-01-15T10:30:00Z'))
+    expect(result.strategyName).toBeNull()
   })
   it('falls back to timestamp when fired_at is undefined in WS signal', () => {
     const wsSignal = {
@@ -603,13 +603,16 @@ describe('Candle Transformers', () => {
       low: 2980,
       close: 3020,
       volume: 500,
+      vwap: 3010,
+      trades: 25,
       open_at: '2026-01-15T10:00:00Z',
     }
     const result = candleFromWS(wsCandle)
 
     expect(result.instrument).toBe('ETH/USD')
     expect(result.timeframe).toBe('5m')
-    expect(result.vwap).toBeUndefined()
+    expect(result.vwap).toBe(3010)
+    expect(result.trades).toBe(25)
     expect(result.openAt).toEqual(new Date('2026-01-15T10:00:00Z'))
     expect(result.timestamp).toEqual(new Date('2026-01-15T10:00:00Z'))
   })
@@ -1168,6 +1171,31 @@ describe('Safe API Transformers', () => {
     expect(data.time_in_force).toBe('GTC')
     expect(data.type).toBe('order')
     expect(data.timestamp).toBe('2026-01-15T10:00:00Z')
+
+    const optionalEnvelope: OrderData = {
+      type: 'order',
+      sequence_id: 0,
+      public_id: 'uuid-optional',
+      timestamp: '2026-01-15T10:00:00Z',
+      session_id: 'test-sid',
+      client_order_id: 'client-optional',
+      instrument: 'BTC/USD',
+      exchange: 'kraken',
+      side: 'buy',
+      status: 'new',
+      order_type: 'limit',
+      size: 1,
+      filled_size: 0,
+      leverage: 2,
+      reduce_only: true,
+      created_at: '2026-01-15T10:00:00Z',
+    }
+    const optionalData = orderDataFromEnvelope(optionalEnvelope)
+
+    expect(optionalData).not.toHaveProperty('price')
+    expect(optionalData).not.toHaveProperty('updated_at')
+    expect(optionalData.leverage).toBe(2)
+    expect(optionalData.reduce_only).toBe(true)
   })
   it('executionDataFromEnvelope converts to ExecutionData preserving type', () => {
     const envelope: ExecutionData = {

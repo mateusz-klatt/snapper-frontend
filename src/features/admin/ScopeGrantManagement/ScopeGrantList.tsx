@@ -8,7 +8,7 @@ import type { ScopeGrantInfo, WalletInfo, OperatorInfo } from '../../../types/ap
 interface ScopeGrantListProps {
   onCreateGrant: () => void
   onHandover: (grant: ScopeGrantInfo) => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({

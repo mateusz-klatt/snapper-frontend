@@ -6,12 +6,64 @@ export type OrderData = Components['schemas']['OrderData']
 export type ExecutionData = Components['schemas']['ExecutionData']
 export type SignalData = Components['schemas']['SignalData']
 export type PositionData = Components['schemas']['PositionData']
+type GeneratedUserProfile = Components['schemas']['UserProfile']
+type GeneratedDelegateRead = Components['schemas']['DelegateRead']
+type DelegateCapsRead = {
+  max_order_quantity_per_instrument?: Record<string, unknown> | null | undefined
+  max_open_orders?: number | null | undefined
+  max_daily_notional_usd?: number | null | undefined
+  max_cancels_per_minute?: number | null | undefined
+}
+
+export type UserProfile = Omit<
+  GeneratedUserProfile,
+  | 'topic'
+  | 'email'
+  | 'operator_public_ids'
+  | 'primary_operator_public_id'
+  | 'active_wallet_public_id'
+> & {
+  topic?: string | null | undefined
+  email?: string | null | undefined
+  operator_public_ids?: string[] | undefined
+  primary_operator_public_id?: string | null | undefined
+  active_wallet_public_id?: string | null | undefined
+}
+export type UserResponse = Omit<Components['schemas']['UserResponse'], 'payload'> & {
+  payload: UserProfile
+}
+export type UserListResponse = Omit<Components['schemas']['UserListResponse'], 'payload'> & {
+  payload: UserProfile[]
+}
+export type DelegateRead = Omit<GeneratedDelegateRead, 'caps'> & {
+  caps: DelegateCapsRead
+}
+export type DelegateListResponse = Omit<
+  Components['schemas']['DelegateListResponse'],
+  'payload'
+> & {
+  payload: DelegateRead[]
+}
+export type DelegateResponse = Omit<Components['schemas']['DelegateResponse'], 'payload'> & {
+  payload: DelegateRead
+}
+export type DelegateCreatedPayload = Omit<
+  Components['schemas']['DelegateCreatedPayload'],
+  'delegate'
+> & {
+  delegate: DelegateRead
+}
+export type DelegateCreatedResponse = Omit<
+  Components['schemas']['DelegateCreatedResponse'],
+  'payload'
+> & {
+  payload: DelegateCreatedPayload
+}
 export type SettingRead = Components['schemas']['SettingRead']
 export type SettingUpdate = Components['schemas']['SettingUpdate']
 export type SettingUpdateBody = Components['schemas']['SettingUpdateBody']
 export type SettingResponse = Components['schemas']['SettingResponse']
 export type SettingListResponse = Components['schemas']['SettingListResponse']
-export type UserResponse = Components['schemas']['UserResponse']
 export type ExchangeListResponse = Components['schemas']['ExchangeListResponse']
 export type InstrumentListResponse = Components['schemas']['InstrumentListResponse']
 export type InstrumentDetailData = Components['schemas']['InstrumentDetailData']
@@ -35,8 +87,6 @@ export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type ExecutionListResponse = Components['schemas']['ExecutionListResponse']
 export type PositionListResponse = Components['schemas']['PositionListResponse']
 export type SignalListResponse = Components['schemas']['SignalListResponse']
-export type UserProfile = Components['schemas']['UserProfile']
-export type UserListResponse = Components['schemas']['UserListResponse']
 export type UserRole = Components['schemas']['UserRole']
 export type LoginRequest = Components['schemas']['LoginRequest']
 export type LoginBody = Components['schemas']['LoginBody']
@@ -112,11 +162,6 @@ export type TradeDiffEntry = Components['schemas']['TradeDiffEntry']
 export type SignalDiffEntry = Components['schemas']['SignalDiffEntry']
 
 export type FeatureFlagsResponse = Components['schemas']['FeatureFlagsResponse']
-export type DelegateRead = Components['schemas']['DelegateRead']
-export type DelegateListResponse = Components['schemas']['DelegateListResponse']
-export type DelegateResponse = Components['schemas']['DelegateResponse']
-export type DelegateCreatedResponse = Components['schemas']['DelegateCreatedResponse']
-export type DelegateCreatedPayload = Components['schemas']['DelegateCreatedPayload']
 export type DelegateCreateBody = Components['schemas']['DelegateCreateBody']
 export type DelegateCapsBody = Components['schemas']['DelegateCapsBody']
 export type DelegateCapsUpdateBody = Components['schemas']['DelegateCapsUpdateBody']

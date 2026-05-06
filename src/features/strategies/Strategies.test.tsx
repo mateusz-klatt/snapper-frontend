@@ -758,13 +758,16 @@ describe('Strategies', () => {
 
       expect(processNameInput.value).toBeTruthy()
     })
+    await user.type(screen.getByPlaceholderText(/Describe purpose or parameters/i), 'covered note')
     const buttons = screen.getAllByRole('button', { name: /Register strategy/i })
     const submitButton =
       buttons.find(btn => btn.getAttribute('type') === 'submit') || buttons[buttons.length - 1]
 
     await user.click(submitButton as HTMLElement)
     await waitFor(() => {
-      expect(mockMutateAsync).toHaveBeenCalled()
+      expect(mockMutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({ note: 'covered note' })
+      )
     })
     await waitFor(() => {
       expect(mockStartMutateAsync).toHaveBeenCalled()

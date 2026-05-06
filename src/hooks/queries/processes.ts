@@ -31,9 +31,13 @@ export const useStartProcessByName = () => {
       parameters,
     }: {
       name: string
-      mode?: 'thread' | 'process'
-      parameters?: Record<string, unknown>
-    }) => startProcessByName(name, { mode, parameters }),
+      mode?: 'thread' | 'process' | undefined
+      parameters?: Record<string, unknown> | undefined
+    }) =>
+      startProcessByName(name, {
+        ...(mode !== undefined ? { mode } : {}),
+        ...(parameters !== undefined ? { parameters } : {}),
+      }),
     retry: 2,
     retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
     onSuccess: (_data, variables) => {
@@ -97,13 +101,21 @@ export const useAvailableProcesses = () => {
   })
 }
 
-export const useProcessRuns = (options?: { name?: string; limit?: number; enabled?: boolean }) => {
+export const useProcessRuns = (options?: {
+  name?: string | undefined
+  limit?: number | undefined
+  enabled?: boolean
+}) => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const asOf = useAppStore(s => s.asOf)
 
   return useQuery<ProcessRunsResponse>({
     queryKey: queryKeys.processRuns(options?.name, options?.limit, asOf),
-    queryFn: () => getProcessRuns({ name: options?.name, limit: options?.limit }),
+    queryFn: () =>
+      getProcessRuns({
+        ...(options?.name !== undefined ? { name: options.name } : {}),
+        ...(options?.limit !== undefined ? { limit: options.limit } : {}),
+      }),
     refetchInterval: isTimeTraveling ? false : 5000,
     enabled: options?.enabled ?? true,
   })

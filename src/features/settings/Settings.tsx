@@ -47,7 +47,10 @@ export const Settings = () => {
     description?: string | null
   ) => {
     try {
-      await updateMutation.mutateAsync({ key, data: { value, category, description } })
+      await updateMutation.mutateAsync({
+        key,
+        data: { value, category, description: description ?? null },
+      })
     } catch {
       /* error is captured in updateMutation.error */
     }

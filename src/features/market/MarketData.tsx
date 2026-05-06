@@ -196,7 +196,10 @@ export function MarketData() {
           <label htmlFor='exchange-select' className='text-sm font-medium text-muted-600'>
             Exchange:
           </label>
-          <Select.Root value={selectedExchange ?? undefined} onValueChange={setSelectedExchange}>
+          <Select.Root
+            {...(selectedExchange !== null ? { value: selectedExchange } : {})}
+            onValueChange={setSelectedExchange}
+          >
             <Select.Trigger
               id='exchange-select'
               className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500'
