@@ -11,7 +11,7 @@ interface RequestOptions {
   skipRetry?: boolean
   method?: string
   headers?: Record<string, string> | Headers
-  body?: string | FormData | URLSearchParams | null
+  body?: string | FormData | URLSearchParams | null | undefined
 }
 
 interface ErrorPayload {
@@ -223,17 +223,18 @@ class APIClient {
       throw new Error('Write operations are disabled in time-travel mode')
     }
 
-    const { skipCSRF = false, skipRetry = false, ...fetchOptions } = options
+    const { skipCSRF = false, skipRetry = false, body, ...fetchOptions } = options
     const headers = new Headers(fetchOptions.headers)
 
     this.applyCSRFHeader(headers, skipCSRF, options.method)
 
-    if (fetchOptions.body && !headers.has('Content-Type')) {
+    if (body && !headers.has('Content-Type')) {
       headers.set('Content-Type', 'application/json')
     }
 
     const response = await fetch(url, {
       ...fetchOptions,
+      ...(body !== undefined ? { body } : {}),
       headers,
       credentials: 'include',
     })

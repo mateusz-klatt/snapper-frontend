@@ -173,11 +173,11 @@ describe('ScopeGrantForm', () => {
         expect.objectContaining({
           scope_kind: 'instrument',
           instrument_public_id: 'BTC-USD-PERP',
-          underlying_public_id: undefined,
         }),
         expect.anything()
       )
     })
+    expect(mockCreateMutation.mutate.mock.calls[0]?.[0]).not.toHaveProperty('underlying_public_id')
   })
   it('includes note when provided', async () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)

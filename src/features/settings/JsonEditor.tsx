@@ -5,7 +5,7 @@ type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string
 interface JsonEditorProps {
   value: JsonValue
   onChange: (value: JsonValue) => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
   className?: string
 }
 
@@ -122,7 +122,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
 interface JsonValueEditorProps {
   value: JsonValue
   onChange: (value: JsonValue) => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
   path: string
 }
 

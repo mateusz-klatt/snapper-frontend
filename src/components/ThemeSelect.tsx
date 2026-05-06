@@ -29,7 +29,11 @@ export const ThemeSelect: React.FC<Readonly<ThemeSelectProps>> = ({
   className,
   ariaLabel,
 }) => (
-  <Select.Root value={value || undefined} onValueChange={onChange} disabled={disabled}>
+  <Select.Root
+    {...(value ? { value } : {})}
+    onValueChange={onChange}
+    {...(disabled !== undefined ? { disabled } : {})}
+  >
     <Select.Trigger
       id={id}
       aria-label={ariaLabel}

@@ -258,9 +258,13 @@ describe('HandoverDialog', () => {
     fireEvent.click(screen.getByText('Handover'))
     await waitFor(() => {
       expect(mockHandoverMutation.mutate).toHaveBeenCalledWith(
-        expect.objectContaining({ reason: undefined }),
+        expect.objectContaining({
+          from_grant_public_id: 'sg-1',
+          to_operator_public_id: 'op-2',
+        }),
         expect.anything()
       )
     })
+    expect(mockHandoverMutation.mutate.mock.calls[0]?.[0]).not.toHaveProperty('reason')
   })
 })

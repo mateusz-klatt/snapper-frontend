@@ -69,7 +69,7 @@ interface SaveCancelButtonsProps {
   readonly onSave: () => Promise<void>
   readonly onCancel: () => void
   readonly isSaving: boolean
-  readonly readOnly?: boolean
+  readonly readOnly?: boolean | undefined
 }
 
 const SaveCancelButtons: React.FC<SaveCancelButtonsProps> = ({
@@ -106,7 +106,7 @@ interface EditingViewProps {
   readonly onSave: () => Promise<void>
   readonly onCancel: () => void
   readonly isSaving: boolean
-  readonly readOnly?: boolean
+  readonly readOnly?: boolean | undefined
 }
 
 const EditingView: React.FC<EditingViewProps> = ({
@@ -166,7 +166,7 @@ interface DisplayViewProps {
   readonly setIsEditing: (v: boolean) => void
   readonly onDelete: (key: string) => Promise<void>
   readonly isSaving: boolean
-  readonly readOnly?: boolean
+  readonly readOnly?: boolean | undefined
 }
 
 const DisplayView: React.FC<DisplayViewProps> = ({
@@ -281,11 +281,11 @@ interface BooleanToggleProps {
     key: string,
     value: string,
     category: string,
-    description?: string | null
+    description?: string | null | undefined
   ) => Promise<void>
   readonly onDelete: (key: string) => Promise<void>
   readonly isSaving: boolean
-  readonly readOnly?: boolean
+  readonly readOnly?: boolean | undefined
 }
 
 const BooleanToggle: React.FC<BooleanToggleProps> = ({
@@ -390,11 +390,11 @@ interface SettingItemProps {
     key: string,
     value: string,
     category: string,
-    description?: string | null
+    description?: string | null | undefined
   ) => Promise<void>
   onDelete: (key: string) => Promise<void>
   isSaving: boolean
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 export const SettingItem = ({

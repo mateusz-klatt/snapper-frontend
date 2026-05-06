@@ -7,8 +7,8 @@ import type { IconSpec } from './types'
 type PairIconProps = {
   base: IconSpec
   quote: IconSpec
-  size?: number
-  borderColor?: string
+  size?: number | undefined
+  borderColor?: string | undefined
 }
 
 export function PairIcon({

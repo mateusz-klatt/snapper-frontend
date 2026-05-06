@@ -10,6 +10,11 @@ import {
   removeSetting,
   updateSetting,
 } from '../../lib/api/settings'
+import { makeEnvelope, makeSettingRead } from '../../test/factories'
+import type { SettingResponse } from '../../types/api'
+
+const updateSettingResponse = (key: string, value: string): SettingResponse =>
+  makeEnvelope('setting_response', makeSettingRead({ key, value })) as SettingResponse
 
 vi.mock('../../components/ThemeSelect', () => ({
   ThemeSelect: ({
@@ -633,7 +638,9 @@ describe('Settings', () => {
       payload: mockSettings,
       count: mockSettings.length,
     } as never)
-    vi.mocked(updateSetting).mockResolvedValue({} as never)
+    vi.mocked(updateSetting).mockResolvedValue(
+      updateSettingResponse('trading.allow_short_selling', 'true')
+    )
     renderSettings(<Settings />)
     await waitFor(() => {
       expect(screen.getByText('allow_short_selling')).toBeTruthy()
@@ -1262,6 +1269,20 @@ describe('Settings', () => {
       expect(screen.getByText('app.nodesc')).toBeTruthy()
     })
     expect(screen.getByText('value')).toBeTruthy()
+    vi.mocked(updateSetting).mockResolvedValue(updateSettingResponse('app.nodesc', 'new-value'))
+    await userEvent.click(screen.getByText('Edit'))
+    const textarea = screen.getByPlaceholderText('Enter setting value...')
+
+    await userEvent.clear(textarea)
+    await userEvent.type(textarea, 'new-value')
+    await userEvent.click(screen.getByText('Save'))
+    await waitFor(() => {
+      expect(updateSetting).toHaveBeenCalledWith('app.nodesc', {
+        value: 'new-value',
+        category: 'general',
+        description: null,
+      })
+    })
   })
   it('shows setting without updated_by', async () => {
     const mockSettings = [

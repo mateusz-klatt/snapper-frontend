@@ -25,7 +25,7 @@ const PENDING_AI_REVIEWS_REFETCH_MS = 5_000
  * disconnect / reconnect.
  */
 export const usePendingAiReviews = (
-  params: Readonly<{ walletPublicId?: string | null; limit?: number }> = {}
+  params: Readonly<{ walletPublicId?: string | null; limit?: number | undefined }> = {}
 ) => {
   const { isAuthenticated, user } = useAuth()
   const walletPublicId = params.walletPublicId ?? null
@@ -37,8 +37,8 @@ export const usePendingAiReviews = (
     queryKey: queryKeys.pendingAiReviews(userPublicId, walletPublicId, limit),
     queryFn: () =>
       listPendingAiReviews({
-        wallet_public_id: walletPublicId ?? undefined,
-        limit: limit ?? undefined,
+        ...(walletPublicId !== null ? { wallet_public_id: walletPublicId } : {}),
+        ...(limit !== null ? { limit } : {}),
       }),
     enabled: isAuthenticated && isDelegate && userPublicId !== null,
     refetchInterval: PENDING_AI_REVIEWS_REFETCH_MS,
@@ -71,7 +71,7 @@ export const useSubmitAiReviewDecision = () => {
     }: {
       reviewPublicId: string
       decision: 'approve' | 'reject'
-      rationale?: string
+      rationale?: string | undefined
     }) => submitAiReviewDecision(reviewPublicId, decision, rationale),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: queryKeys.pendingAiReviewsAll })

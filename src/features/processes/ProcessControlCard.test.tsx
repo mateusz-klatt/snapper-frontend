@@ -203,7 +203,7 @@ describe('ProcessControlCard', () => {
         title='Test Process'
         description='Test description'
         status='running'
-        heartbeat={{ status: 'error', lag_ms: undefined, timestamp: Date.now(), healthy: false }}
+        heartbeat={{ status: 'error', timestamp: Date.now(), healthy: false }}
         onStart={mockOnStart}
         onStop={mockOnStop}
       />
@@ -218,7 +218,6 @@ describe('ProcessControlCard', () => {
         status='running'
         heartbeat={{
           status: 'unknown' as 'healthy',
-          lag_ms: undefined,
           timestamp: 0,
           healthy: false,
         }}

@@ -3,7 +3,7 @@ import React, { Component, ReactNode } from 'react'
 interface ErrorFallbackProps {
   error: Error
   resetError: () => void
-  componentName?: string
+  componentName?: string | undefined
 }
 
 export function ErrorFallback({
@@ -54,7 +54,7 @@ export function ErrorFallback({
 interface Props {
   children: ReactNode
   fallback?: ReactNode | ((props: ErrorFallbackProps) => ReactNode)
-  componentName?: string
+  componentName?: string | undefined
   onError?: (error: Error, errorInfo: React.ErrorInfo) => void
 }
 interface State {

@@ -70,7 +70,7 @@ export function DelegateDetailView({
         max_open_orders: parsedOpen,
         max_daily_notional_usd: parsedDaily,
         max_cancels_per_minute: parsedCancels,
-        max_order_quantity_per_instrument: delegate.caps.max_order_quantity_per_instrument,
+        max_order_quantity_per_instrument: delegate.caps.max_order_quantity_per_instrument ?? null,
       },
     }
 

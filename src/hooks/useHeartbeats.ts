@@ -5,7 +5,7 @@ import { HEARTBEAT_STALE_THRESHOLD_MS, HEARTBEAT_PRUNE_INTERVAL_MS } from '../li
 
 export interface HeartbeatData {
   status: 'healthy' | 'warning' | 'error' | 'unknown'
-  lag_ms?: number
+  lag_ms?: number | undefined
   timestamp: number
   healthy: boolean
 }

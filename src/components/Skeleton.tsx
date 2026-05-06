@@ -7,7 +7,7 @@ interface SkeletonProps {
   height?: string | number
   rounded?: 'none' | 'sm' | 'md' | 'lg' | 'full'
   animate?: boolean
-  style?: React.CSSProperties
+  style?: React.CSSProperties | undefined
 }
 
 export const Skeleton: React.FC<Readonly<SkeletonProps>> = ({

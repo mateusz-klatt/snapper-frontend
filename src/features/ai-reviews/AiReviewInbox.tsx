@@ -89,8 +89,8 @@ interface PendingReviewItem {
   status: string
   deadline: string | Date
   fanout_after: string | Date
-  instrument?: string | null
-  signal_envelope?: Record<string, unknown> | null
+  instrument?: string | null | undefined
+  signal_envelope?: Record<string, unknown> | null | undefined
 }
 
 function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): React.ReactElement {
@@ -104,7 +104,7 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
     submit.mutate({
       reviewPublicId: item.review_public_id,
       decision,
-      rationale: rationale.length > 0 ? rationale : undefined,
+      ...(rationale.length > 0 ? { rationale } : {}),
     })
   }
 
@@ -186,8 +186,8 @@ function PendingReviewsSection({
     status: string
     deadline: string | Date
     fanout_after: string | Date
-    instrument?: string | null
-    signal_envelope?: Record<string, unknown> | null
+    instrument?: string | null | undefined
+    signal_envelope?: Record<string, unknown> | null | undefined
   }>
 }>): React.ReactElement {
   let content: React.ReactNode

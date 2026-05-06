@@ -12,10 +12,10 @@ export interface HealthStatus {
   status: 'healthy' | 'warning' | 'error'
   lag_ms: number
   timestamp: number
-  seq?: number
-  feed_health?: Record<string, FeedHealth>
-  inputs?: string[]
-  outputs?: string[]
+  seq?: number | undefined
+  feed_health?: Record<string, FeedHealth> | undefined
+  inputs?: string[] | undefined
+  outputs?: string[] | undefined
 }
 
 const FeedPublisherEntry: React.FC<Readonly<{ feedKey: string; feed: FeedHealth }>> = ({
@@ -108,12 +108,12 @@ interface StrategyCardProps {
   running: boolean
   autoStartEnabled: boolean
   mode: 'thread' | 'process'
-  health?: HealthStatus
-  onStart?: () => void
-  onStop?: () => void
+  health?: HealthStatus | undefined
+  onStart?: (() => void) | undefined
+  onStop?: (() => void) | undefined
   isStarting?: boolean
   isStopping?: boolean
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(

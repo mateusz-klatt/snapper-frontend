@@ -8,14 +8,14 @@ interface ProcessControlCardProps {
   description: string
   status: 'running' | 'stopped' | 'error'
   statusBadge?: string
-  details?: Record<string, unknown>
+  details?: Record<string, unknown> | undefined
   onStart: () => void
   onStop: () => void
   onRestart?: () => void
   isStarting?: boolean
   isStopping?: boolean
-  readOnly?: boolean
-  heartbeat?: HeartbeatData
+  readOnly?: boolean | undefined
+  heartbeat?: HeartbeatData | undefined
 }
 
 const formatDetailKey = (key: string): string =>

@@ -1,8 +1,8 @@
 import type { PositionData } from '../types/api'
 import type {
-  OrderData,
-  ExecutionData,
-  SignalData,
+  OrderData as WsOrderData,
+  ExecutionData as WsExecutionData,
+  SignalData as WsSignalData,
   CandleData,
   TickData,
   HeartbeatData,
@@ -18,6 +18,67 @@ import type {
   OrderType,
   TradeSide,
 } from '../types/entities'
+
+interface OrderApiInput {
+  sequence_id: number
+  public_id: string
+  timestamp: string
+  session_id: string
+  client_order_id: string
+  exchange_order_id?: string | null | undefined
+  instrument: string
+  exchange: Order['exchange']
+  side: string
+  order_type: string
+  size: number
+  filled_size: number
+  price?: number | null | undefined
+  average_price?: number | null | undefined
+  status: string
+  reason?: string | null | undefined
+  time_in_force?: string | null | undefined
+  error?: string | null | undefined
+  leverage?: number | null | undefined
+  reduce_only?: boolean | undefined
+  created_at?: string | undefined
+  updated_at?: string | null | undefined
+}
+
+interface ExecutionApiInput {
+  sequence_id: number
+  public_id: string
+  timestamp: string
+  session_id: string
+  client_order_id: string
+  trade_id?: string | null | undefined
+  exchange_order_id?: string | null | undefined
+  exchange: Execution['exchange']
+  instrument: string
+  side: string
+  size: number
+  price: number
+  last_size: number
+  last_price: number
+  fee: number
+  fee_asset: string
+  status: Execution['status']
+  executed_at?: string | undefined
+}
+
+interface SignalApiInput {
+  sequence_id: number
+  public_id: string
+  timestamp: string
+  session_id: string
+  exchange: Signal['exchange']
+  instrument: string
+  side: string
+  strength: number
+  reason: string
+  strategy_name?: string | null | undefined
+  price?: number | null | undefined
+  fired_at?: string | undefined
+}
 
 function requireTimestamp(value: unknown, context: string): string {
   if (typeof value !== 'string' || value.length === 0) {
@@ -37,7 +98,7 @@ function normalizeSide(side: string): TradeSide {
   throw new Error(`Invalid trade side: "${side}". Expected "buy" or "sell".`)
 }
 
-export function orderFromAPI(api: OrderData): Order {
+export function orderFromAPI(api: OrderApiInput): Order {
   const ts = requireTimestamp(api.timestamp, 'OrderData')
 
   return {
@@ -66,7 +127,7 @@ export function orderFromAPI(api: OrderData): Order {
   }
 }
 
-export function orderFromWS(ws: OrderData): Order {
+export function orderFromWS(ws: WsOrderData): Order {
   const ts = requireTimestamp(ws.timestamp, 'OrderData')
 
   if (!ws.created_at) {
@@ -114,7 +175,7 @@ function normalizeOrderType(type: string): OrderType {
   )
 }
 
-export function executionFromAPI(api: ExecutionData): Execution {
+export function executionFromAPI(api: ExecutionApiInput): Execution {
   const ts = requireTimestamp(api.timestamp, 'ExecutionData')
 
   return {
@@ -139,7 +200,7 @@ export function executionFromAPI(api: ExecutionData): Execution {
   }
 }
 
-export function executionFromWS(ws: ExecutionData): Execution {
+export function executionFromWS(ws: WsExecutionData): Execution {
   const ts = requireTimestamp(ws.timestamp, 'ExecutionData')
 
   if (!ws.executed_at) {
@@ -168,7 +229,7 @@ export function executionFromWS(ws: ExecutionData): Execution {
   }
 }
 
-export function signalFromAPI(api: SignalData): Signal {
+export function signalFromAPI(api: SignalApiInput): Signal {
   const ts = requireTimestamp(api.timestamp, 'SignalData')
 
   return {
@@ -187,7 +248,7 @@ export function signalFromAPI(api: SignalData): Signal {
   }
 }
 
-export function signalFromWS(ws: SignalData): Signal {
+export function signalFromWS(ws: WsSignalData): Signal {
   const ts = requireTimestamp(ws.timestamp, 'SignalData')
   const firedAtSource = ws.fired_at ?? ts
 
@@ -242,8 +303,8 @@ export function candleFromAPI(api: CandleData): Candle {
     low: api.low,
     close: api.close,
     volume: api.volume,
-    vwap: api.vwap ?? undefined,
-    trades: api.trades ?? undefined,
+    ...(api.vwap !== null && api.vwap !== undefined ? { vwap: api.vwap } : {}),
+    ...(api.trades !== null && api.trades !== undefined ? { trades: api.trades } : {}),
     openAt: new Date(api.open_at),
   }
 }
@@ -283,8 +344,8 @@ export function candleFromWS(ws: CandleData): Candle {
     low: ws.low,
     close: ws.close,
     volume: ws.volume,
-    vwap: ws.vwap ?? undefined,
-    trades: ws.trades ?? undefined,
+    ...(ws.vwap !== null && ws.vwap !== undefined ? { vwap: ws.vwap } : {}),
+    ...(ws.trades !== null && ws.trades !== undefined ? { trades: ws.trades } : {}),
     openAt: new Date(ws.open_at),
     exchange: ws.exchange,
   }
@@ -301,7 +362,7 @@ export function tickFromWS(ws: TickData): Tick {
     instrument: ws.instrument,
     bid: ws.bid ?? null,
     ask: ws.ask ?? null,
-    last: ws.last ?? undefined,
+    ...(ws.last !== null && ws.last !== undefined ? { last: ws.last } : {}),
     volume: ws.volume,
     exchange: ws.exchange,
   }
@@ -322,14 +383,14 @@ export function heartbeatFromWS(ws: HeartbeatData): Heartbeat {
   }
 }
 
-export function orderDataFromEnvelope(env: OrderData): OrderData {
+export function orderDataFromEnvelope(env: WsOrderData): WsOrderData {
   return {
     type: env.type,
     sequence_id: env.sequence_id,
     public_id: env.public_id,
     timestamp: env.timestamp,
     session_id: env.session_id,
-    exchange_order_id: env.exchange_order_id,
+    ...(env.exchange_order_id !== undefined ? { exchange_order_id: env.exchange_order_id } : {}),
     client_order_id: env.client_order_id,
     instrument: env.instrument,
     exchange: env.exchange,
@@ -338,27 +399,27 @@ export function orderDataFromEnvelope(env: OrderData): OrderData {
     order_type: env.order_type,
     size: env.size,
     filled_size: env.filled_size,
-    price: env.price,
-    average_price: env.average_price,
-    reason: env.reason,
-    time_in_force: env.time_in_force,
-    error: env.error,
-    leverage: env.leverage,
-    reduce_only: env.reduce_only,
+    ...(env.price !== undefined ? { price: env.price } : {}),
+    ...(env.average_price !== undefined ? { average_price: env.average_price } : {}),
+    ...(env.reason !== undefined ? { reason: env.reason } : {}),
+    ...(env.time_in_force !== undefined ? { time_in_force: env.time_in_force } : {}),
+    ...(env.error !== undefined ? { error: env.error } : {}),
+    ...(env.leverage !== undefined ? { leverage: env.leverage } : {}),
+    ...(env.reduce_only !== undefined ? { reduce_only: env.reduce_only } : {}),
     created_at: env.created_at,
-    updated_at: env.updated_at,
+    ...(env.updated_at !== undefined ? { updated_at: env.updated_at } : {}),
   }
 }
 
-export function executionDataFromEnvelope(env: ExecutionData): ExecutionData {
+export function executionDataFromEnvelope(env: WsExecutionData): WsExecutionData {
   return {
     type: env.type,
     sequence_id: env.sequence_id,
     public_id: env.public_id,
     timestamp: env.timestamp,
     session_id: env.session_id,
-    trade_id: env.trade_id,
-    exchange_order_id: env.exchange_order_id,
+    ...(env.trade_id !== undefined ? { trade_id: env.trade_id } : {}),
+    ...(env.exchange_order_id !== undefined ? { exchange_order_id: env.exchange_order_id } : {}),
     client_order_id: env.client_order_id,
     instrument: env.instrument,
     exchange: env.exchange,
@@ -374,7 +435,7 @@ export function executionDataFromEnvelope(env: ExecutionData): ExecutionData {
   }
 }
 
-export function signalDataFromEnvelope(env: SignalData): SignalData {
+export function signalDataFromEnvelope(env: WsSignalData): WsSignalData {
   return {
     type: env.type,
     sequence_id: env.sequence_id,
@@ -386,21 +447,21 @@ export function signalDataFromEnvelope(env: SignalData): SignalData {
     side: env.side,
     strength: env.strength,
     reason: env.reason,
-    price: env.price,
-    strategy_name: env.strategy_name,
+    ...(env.price !== undefined ? { price: env.price } : {}),
+    ...(env.strategy_name !== undefined ? { strategy_name: env.strategy_name } : {}),
     fired_at: env.fired_at,
   }
 }
 
-export function ordersFromAPI(apis: OrderData[]): Order[] {
+export function ordersFromAPI(apis: OrderApiInput[]): Order[] {
   return apis.map(orderFromAPI)
 }
 
-export function executionsFromAPI(apis: ExecutionData[]): Execution[] {
+export function executionsFromAPI(apis: ExecutionApiInput[]): Execution[] {
   return apis.map(executionFromAPI)
 }
 
-export function signalsFromAPI(apis: SignalData[]): Signal[] {
+export function signalsFromAPI(apis: SignalApiInput[]): Signal[] {
   return apis.map(signalFromAPI)
 }
 
@@ -432,7 +493,7 @@ export function isOrderType(value: unknown): value is OrderType {
   return value === 'market' || value === 'limit' || value === 'stop' || value === 'stop_limit'
 }
 
-export function safeOrderFromAPI(api: OrderData): Order | null {
+export function safeOrderFromAPI(api: OrderApiInput): Order | null {
   try {
     return orderFromAPI(api)
   } catch (error) {
@@ -442,7 +503,7 @@ export function safeOrderFromAPI(api: OrderData): Order | null {
   }
 }
 
-export function safeExecutionFromAPI(api: ExecutionData): Execution | null {
+export function safeExecutionFromAPI(api: ExecutionApiInput): Execution | null {
   try {
     return executionFromAPI(api)
   } catch (error) {
@@ -452,7 +513,7 @@ export function safeExecutionFromAPI(api: ExecutionData): Execution | null {
   }
 }
 
-export function safeSignalFromAPI(api: SignalData): Signal | null {
+export function safeSignalFromAPI(api: SignalApiInput): Signal | null {
   try {
     return signalFromAPI(api)
   } catch (error) {

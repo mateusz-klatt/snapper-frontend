@@ -27,7 +27,7 @@ interface RotateDialogProps {
   credential: CredentialSummary | null
   open: boolean
   onClose: () => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
@@ -74,13 +74,15 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
       payload[field] = (fields[field] as string).trim()
     }
 
+    const trimmedLabel = label.trim()
+
     rotateMutation.mutate(
       {
         walletPublicId: credential.wallet_public_id,
         credentialPublicId: credential.public_id,
         data: {
           credential_payload: payload,
-          label: label.trim() || undefined,
+          ...(trimmedLabel ? { label: trimmedLabel } : {}),
         },
       },
       {

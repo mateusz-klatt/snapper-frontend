@@ -9,6 +9,7 @@ import {
   Hexagon,
   Landmark,
   Leaf,
+  type LucideIcon,
   TrendingUp,
   Wheat,
 } from 'lucide-react'
@@ -17,10 +18,7 @@ import { RemoteSvg } from './RemoteSvg'
 import { CIRCLE_FLAGS_CDN, CRYPTO_ICONS_CDN, isVendored } from './iconLookup'
 import type { IconSpec, LucideName } from './types'
 
-const LUCIDE_MAP: Record<
-  LucideName,
-  React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>
-> = {
+const LUCIDE_MAP: Record<LucideName, LucideIcon> = {
   'building-2': Building2,
   'chart-line': ChartLine,
   coins: Coins,
@@ -37,7 +35,7 @@ const LUCIDE_MAP: Record<
 
 type SingleAssetIconProps = {
   spec: IconSpec
-  size?: number
+  size?: number | undefined
 }
 
 export function SingleAssetIcon({
@@ -69,7 +67,13 @@ export function SingleAssetIcon({
   if (spec.kind === 'lucide') {
     const Icon = LUCIDE_MAP[spec.name]
 
-    return <Icon size={size} color={spec.color} strokeWidth={1.8} />
+    return (
+      <Icon
+        size={size}
+        strokeWidth={1.8}
+        {...(spec.color !== undefined ? { color: spec.color } : {})}
+      />
+    )
   }
 
   const fallbackStyle: CSSProperties = {

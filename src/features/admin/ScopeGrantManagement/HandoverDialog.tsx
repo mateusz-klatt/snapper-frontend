@@ -11,7 +11,7 @@ interface HandoverDialogProps {
   grant: ScopeGrantInfo | null
   open: boolean
   onClose: () => void
-  readOnly?: boolean
+  readOnly?: boolean | undefined
 }
 
 const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
@@ -42,12 +42,13 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
 
   const handleHandover = () => {
     if (!grant || !toOperatorId) return
+    const trimmedReason = reason.trim()
 
     handoverMutation.mutate(
       {
         from_grant_public_id: grant.public_id,
         to_operator_public_id: toOperatorId,
-        reason: reason.trim() || undefined,
+        ...(trimmedReason ? { reason: trimmedReason } : {}),
       },
       {
         onSuccess: () => {
