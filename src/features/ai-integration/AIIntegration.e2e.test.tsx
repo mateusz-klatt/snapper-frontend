@@ -15,8 +15,20 @@ const mockApiClient = vi.hoisted(() => ({
   deactivateAiDelegate: vi.fn(),
 }))
 
+vi.mock('../../lib/api/feature-flags', () => ({
+  getFeatureFlags: mockApiClient.getFeatureFlags,
+}))
+
+vi.mock('../../lib/api/ai-delegates', () => ({
+  listAiDelegates: mockApiClient.listAiDelegates,
+  createAiDelegate: mockApiClient.createAiDelegate,
+  getAiDelegate: mockApiClient.getAiDelegate,
+  updateAiDelegateCaps: mockApiClient.updateAiDelegateCaps,
+  deactivateAiDelegate: mockApiClient.deactivateAiDelegate,
+}))
+
 vi.mock('../../lib/apiClient', () => ({
-  apiClient: mockApiClient,
+  apiClient: {},
   APIError: class APIError extends Error {},
 }))
 

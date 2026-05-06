@@ -4,14 +4,12 @@ import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import UserList from './UserList'
-import { apiClient } from '../../../lib/apiClient'
+import { deactivateUser, listUsers } from '../../../lib/api/users'
 import { makeUserProfile, makeListEnvelope } from '../../../test/factories'
 
-vi.mock('../../../lib/apiClient', () => ({
-  apiClient: {
-    listUsers: vi.fn(),
-    deactivateUser: vi.fn(),
-  },
+vi.mock('../../../lib/api/users', () => ({
+  listUsers: vi.fn(),
+  deactivateUser: vi.fn(),
 }))
 vi.mock('../../../stores/auth', () => ({
   useAuth: vi.fn(() => ({ isAuthenticated: true })),
@@ -36,7 +34,7 @@ describe('UserList', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
-    vi.mocked(apiClient.listUsers).mockResolvedValue(makeListEnvelope('user_list', []) as never)
+    vi.mocked(listUsers).mockResolvedValue(makeListEnvelope('user_list', []) as never)
   })
   it('renders user list', async () => {
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
@@ -75,7 +73,7 @@ describe('UserList', () => {
     })
   })
   it('displays users list', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'admin',
@@ -92,7 +90,7 @@ describe('UserList', () => {
     })
   })
   it('displays user roles with badges', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'testuser',
@@ -109,7 +107,7 @@ describe('UserList', () => {
     })
   })
   it('displays inactive users badge', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'inactive_user',
@@ -126,7 +124,7 @@ describe('UserList', () => {
     })
   })
   it('calls onEditUser when edit button clicked', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'testuser',
@@ -143,14 +141,14 @@ describe('UserList', () => {
     })
   })
   it('shows error state', async () => {
-    vi.mocked(apiClient.listUsers).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
+    vi.mocked(listUsers).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     await waitFor(() => {
       expect(screen.getByText(/Error loading users/i)).toBeTruthy()
     })
   })
   it('shows unknown error message when error is not an Error instance', async () => {
-    vi.mocked(apiClient.listUsers).mockRejectedValue('boom')
+    vi.mocked(listUsers).mockRejectedValue('boom')
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     await waitFor(() => {
       expect(screen.getByText(/Unknown error/i)).toBeTruthy()
@@ -163,7 +161,7 @@ describe('UserList', () => {
     })
   })
   it('formats dates correctly', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'testuser',
@@ -180,7 +178,7 @@ describe('UserList', () => {
     })
   })
   it('cancels user deletion when cancel clicked in dialog', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValueOnce(
+    vi.mocked(listUsers).mockResolvedValueOnce(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'canceluser',
@@ -208,10 +206,10 @@ describe('UserList', () => {
       expect(screen.getByText('Deactivate User')).toBeTruthy()
     })
     await userEvent.click(screen.getByText('Cancel'))
-    expect(vi.mocked(apiClient.deactivateUser)).not.toHaveBeenCalled()
+    expect(vi.mocked(deactivateUser)).not.toHaveBeenCalled()
   })
   it('calls delete API when user confirms deletion', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'deleteuser',
@@ -222,7 +220,7 @@ describe('UserList', () => {
         }),
       ]) as never
     )
-    vi.mocked(apiClient.deactivateUser).mockResolvedValue({ payload: 'deactivated' })
+    vi.mocked(deactivateUser).mockResolvedValue({ payload: 'deactivated' })
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     const table = await screen.findByRole('table')
 
@@ -241,11 +239,11 @@ describe('UserList', () => {
     })
     await userEvent.click(screen.getByText('Deactivate'))
     await waitFor(() => {
-      expect(vi.mocked(apiClient.deactivateUser)).toHaveBeenCalledWith('deleteuser')
+      expect(vi.mocked(deactivateUser)).toHaveBeenCalledWith('deleteuser')
     })
   })
   it('handles delete API error', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'failuser',
@@ -256,9 +254,7 @@ describe('UserList', () => {
         }),
       ]) as never
     )
-    vi.mocked(apiClient.deactivateUser).mockRejectedValue(
-      new Error('HTTP 500: Internal Server Error')
-    )
+    vi.mocked(deactivateUser).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     const table = await screen.findByRole('table')
 
@@ -277,18 +273,18 @@ describe('UserList', () => {
     })
     await userEvent.click(screen.getByText('Deactivate'))
     await waitFor(() => {
-      expect(vi.mocked(apiClient.deactivateUser)).toHaveBeenCalledWith('failuser')
+      expect(vi.mocked(deactivateUser)).toHaveBeenCalledWith('failuser')
     })
   })
   it('falls back to empty users list when response has no users field', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue({} as never)
+    vi.mocked(listUsers).mockResolvedValue({} as never)
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     await waitFor(() => {
       expect(screen.getByText('No users found')).toBeTruthy()
     })
   })
   it('handles delete error with empty message', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'emptyerror',
@@ -299,7 +295,7 @@ describe('UserList', () => {
         }),
       ]) as never
     )
-    vi.mocked(apiClient.deactivateUser).mockRejectedValue(new Error(''))
+    vi.mocked(deactivateUser).mockRejectedValue(new Error(''))
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     const table = await screen.findByRole('table')
 
@@ -318,11 +314,11 @@ describe('UserList', () => {
     })
     await userEvent.click(screen.getByText('Deactivate'))
     await waitFor(() => {
-      expect(vi.mocked(apiClient.deactivateUser)).toHaveBeenCalledWith('emptyerror')
+      expect(vi.mocked(deactivateUser)).toHaveBeenCalledWith('emptyerror')
     })
   })
   it('displays operator role badge', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'operator_user',
@@ -339,7 +335,7 @@ describe('UserList', () => {
     })
   })
   it('displays viewer role badge', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'viewer_user',
@@ -356,7 +352,7 @@ describe('UserList', () => {
     })
   })
   it('displays unknown role badge with default styling', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'unknown_user',
@@ -373,7 +369,7 @@ describe('UserList', () => {
     })
   })
   it('formats dates correctly', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'dateuser',
@@ -424,7 +420,7 @@ describe('UserList', () => {
     }
   })
   it('displays user count badge', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'user1',
@@ -448,7 +444,7 @@ describe('UserList', () => {
     })
   })
   it('calls edit when edit button clicked', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'editableuser',
@@ -477,7 +473,7 @@ describe('UserList', () => {
     expect(mockOnEditUser).toHaveBeenCalled()
   })
   it('shows Unknown when user created_at is null', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'nocreated',
@@ -494,7 +490,7 @@ describe('UserList', () => {
     })
   })
   it('filters users by search term', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'alice',
@@ -526,7 +522,7 @@ describe('UserList', () => {
     })
   })
   it('shows no match message when search finds nothing', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'alice',
@@ -549,7 +545,7 @@ describe('UserList', () => {
     })
   })
   it('calls onEditUser from mobile card view', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'carduser',
@@ -576,7 +572,7 @@ describe('UserList', () => {
     expect(mockOnEditUser).toHaveBeenCalledWith(expect.objectContaining({ username: 'carduser' }))
   })
   it('opens deactivate dialog from mobile card view', async () => {
-    vi.mocked(apiClient.listUsers).mockResolvedValue(
+    vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({
           username: 'carddelete',

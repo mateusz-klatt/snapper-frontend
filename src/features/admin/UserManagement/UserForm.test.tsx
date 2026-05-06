@@ -6,7 +6,7 @@ import type { ReactNode } from 'react'
 import { toast } from 'react-hot-toast'
 import UserForm from './UserForm'
 import type { UserProfile } from '../../../types/api'
-import { apiClient } from '../../../lib/apiClient'
+import { adminResetPassword, createUser, updateUser } from '../../../lib/api/users'
 import { makeUserProfile, makeEnvelope } from '../../../test/factories'
 
 vi.mock('../../../components/ThemeSelect', () => ({
@@ -44,12 +44,10 @@ vi.mock('../../../components/ThemeSelect', () => ({
   ),
 }))
 
-vi.mock('../../../lib/apiClient', () => ({
-  apiClient: {
-    createUser: vi.fn(),
-    updateUser: vi.fn(),
-    adminResetPassword: vi.fn(),
-  },
+vi.mock('../../../lib/api/users', () => ({
+  createUser: vi.fn(),
+  updateUser: vi.fn(),
+  adminResetPassword: vi.fn(),
 }))
 vi.mock('../../../stores/auth', () => ({
   useAuth: vi.fn(() => ({ isAuthenticated: true })),
@@ -79,13 +77,13 @@ describe('UserForm', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
-    vi.mocked(apiClient.createUser).mockResolvedValue(
+    vi.mocked(createUser).mockResolvedValue(
       makeEnvelope('user_response', makeUserProfile({ username: 'created' })) as never
     )
-    vi.mocked(apiClient.updateUser).mockResolvedValue(
+    vi.mocked(updateUser).mockResolvedValue(
       makeEnvelope('user_response', makeUserProfile({ username: 'updated' })) as never
     )
-    vi.mocked(apiClient.adminResetPassword).mockResolvedValue({ payload: 'reset' })
+    vi.mocked(adminResetPassword).mockResolvedValue({ payload: 'reset' })
   })
   it('renders user form when open', () => {
     renderWithProviders(<UserForm open={true} onClose={mockOnClose} />)
@@ -159,15 +157,13 @@ describe('UserForm', () => {
 
     await userEvent.click(submitButton)
     await waitFor(() => {
-      expect(apiClient.createUser).toHaveBeenCalledWith(
-        expect.objectContaining({ username: 'newuser' })
-      )
+      expect(createUser).toHaveBeenCalledWith(expect.objectContaining({ username: 'newuser' }))
       expect(toast.success).toHaveBeenCalledWith('User has been created')
       expect(mockOnClose).toHaveBeenCalled()
     })
   })
   it('handles create user error', async () => {
-    vi.mocked(apiClient.createUser).mockRejectedValue(new Error('HTTP 400: Bad Request'))
+    vi.mocked(createUser).mockRejectedValue(new Error('HTTP 400: Bad Request'))
     renderWithProviders(<UserForm open={true} onClose={mockOnClose} />)
     await userEvent.type(screen.getByLabelText(/username/i), 'newuser')
     await userEvent.type(screen.getByLabelText(/email/i), 'new@example.com')
@@ -197,7 +193,7 @@ describe('UserForm', () => {
 
     await userEvent.click(submitButton)
     await waitFor(() => {
-      expect(apiClient.updateUser).toHaveBeenCalledWith(
+      expect(updateUser).toHaveBeenCalledWith(
         'testuser',
         expect.objectContaining({ email: 'updated@example.com' })
       )
@@ -238,7 +234,7 @@ describe('UserForm', () => {
 
     await userEvent.click(submitButton)
     await waitFor(() => {
-      expect(apiClient.adminResetPassword).toHaveBeenCalledWith(
+      expect(adminResetPassword).toHaveBeenCalledWith(
         'testuser',
         expect.objectContaining({ new_password: 'newpassword123' })
       )
@@ -327,7 +323,7 @@ describe('UserForm', () => {
     expect(activeCheckbox).toBeChecked()
   })
   it('validates invalid email format', async () => {
-    vi.mocked(apiClient.createUser).mockClear()
+    vi.mocked(createUser).mockClear()
     renderWithProviders(<UserForm open={true} onClose={mockOnClose} />)
     const usernameInput = screen.getByLabelText(/username/i)
     const emailInput = screen.getByLabelText(/email/i)
@@ -347,7 +343,7 @@ describe('UserForm', () => {
     await waitFor(() => {
       expect(screen.getByText(/invalid email format/i)).toBeTruthy()
     })
-    expect(apiClient.createUser).not.toHaveBeenCalled()
+    expect(createUser).not.toHaveBeenCalled()
   })
   it('validates password length when resetting in edit mode', async () => {
     const existingUser: UserProfile = makeUserProfile({
@@ -394,7 +390,7 @@ describe('UserForm', () => {
     })
   })
   it('handles update user error', async () => {
-    vi.mocked(apiClient.updateUser).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
+    vi.mocked(updateUser).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
     const existingUser: UserProfile = makeUserProfile({
       username: 'testuser',
       email: 'test@example.com',
@@ -416,9 +412,7 @@ describe('UserForm', () => {
     })
   })
   it('handles password reset error', async () => {
-    vi.mocked(apiClient.adminResetPassword).mockRejectedValue(
-      new Error('HTTP 500: Internal Server Error')
-    )
+    vi.mocked(adminResetPassword).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
     const existingUser: UserProfile = makeUserProfile({
       username: 'testuser',
       email: 'test@example.com',
@@ -440,7 +434,7 @@ describe('UserForm', () => {
     })
   })
   it('uses fallback toast message on create error without message', async () => {
-    vi.mocked(apiClient.createUser).mockRejectedValue(new Error(''))
+    vi.mocked(createUser).mockRejectedValue(new Error(''))
     renderWithProviders(<UserForm open={true} onClose={mockOnClose} />)
     await userEvent.type(screen.getByLabelText(/username/i), 'newuser')
     await userEvent.type(screen.getByLabelText(/email/i), 'new@example.com')
@@ -453,7 +447,7 @@ describe('UserForm', () => {
     })
   })
   it('uses fallback toast message on update error without message', async () => {
-    vi.mocked(apiClient.updateUser).mockRejectedValue(new Error(''))
+    vi.mocked(updateUser).mockRejectedValue(new Error(''))
     const existingUser: UserProfile = makeUserProfile({
       username: 'testuser',
       email: 'test@example.com',
@@ -471,7 +465,7 @@ describe('UserForm', () => {
     })
   })
   it('uses fallback toast message on reset error without message', async () => {
-    vi.mocked(apiClient.adminResetPassword).mockRejectedValue(new Error(''))
+    vi.mocked(adminResetPassword).mockRejectedValue(new Error(''))
     const existingUser: UserProfile = makeUserProfile({
       username: 'testuser',
       email: 'test@example.com',

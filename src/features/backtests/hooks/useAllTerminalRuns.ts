@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { apiClient } from '../../../lib/apiClient'
+import { getBacktests } from '../../../lib/api/backtests'
 import { useAppStore } from '../../../stores/app'
 import type { BacktestRunData } from '../../../types/api'
 
@@ -26,7 +26,7 @@ export function useAllTerminalRuns({ enabled }: Options) {
     queryKey: ['backtests', 'all-terminal', walletId],
     queryFn: async (): Promise<BacktestRunData[]> => {
       const responses = await Promise.all(
-        TERMINAL_STATUSES.map(status => apiClient.getBacktests(50, 0, undefined, status))
+        TERMINAL_STATUSES.map(status => getBacktests(50, 0, undefined, status))
       )
       const merged: BacktestRunData[] = responses.flatMap(r => r.payload ?? [])
 

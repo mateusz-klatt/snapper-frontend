@@ -5,18 +5,16 @@ import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import UserProfile from './UserProfile'
 import { useAuth } from '../../stores/auth'
-import { apiClient } from '../../lib/apiClient'
+import { changePassword } from '../../lib/api/users'
 
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(),
 }))
-vi.mock('../../lib/apiClient', () => ({
-  apiClient: {
-    changePassword: vi.fn(),
-  },
+vi.mock('../../lib/api/users', () => ({
+  changePassword: vi.fn(),
 }))
 const mockUseAuth = vi.mocked(useAuth)
-const mockChangePassword = vi.mocked(apiClient.changePassword)
+const mockChangePassword = vi.mocked(changePassword)
 
 const renderWithMocks = (ui: ReactNode) => {
   const queryClient = new QueryClient({
