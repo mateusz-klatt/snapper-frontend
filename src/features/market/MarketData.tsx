@@ -197,7 +197,7 @@ export function MarketData() {
             Exchange:
           </label>
           <Select.Root
-            {...(selectedExchange !== null ? { value: selectedExchange } : {})}
+            {...(selectedExchange === null ? {} : { value: selectedExchange })}
             onValueChange={setSelectedExchange}
           >
             <Select.Trigger

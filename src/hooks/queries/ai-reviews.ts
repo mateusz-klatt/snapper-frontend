@@ -37,8 +37,8 @@ export const usePendingAiReviews = (
     queryKey: queryKeys.pendingAiReviews(userPublicId, walletPublicId, limit),
     queryFn: () =>
       listPendingAiReviews({
-        ...(walletPublicId !== null ? { wallet_public_id: walletPublicId } : {}),
-        ...(limit !== null ? { limit } : {}),
+        ...(walletPublicId === null ? {} : { wallet_public_id: walletPublicId }),
+        ...(limit === null ? {} : { limit }),
       }),
     enabled: isAuthenticated && isDelegate && userPublicId !== null,
     refetchInterval: PENDING_AI_REVIEWS_REFETCH_MS,
