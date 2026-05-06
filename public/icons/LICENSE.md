@@ -51,11 +51,11 @@ SOFTWARE.
 ## Updating the vendored subset
 
 ```sh
-# Re-sync from upstream (requires git + curl):
+# Re-sync from upstream (requires git):
 pnpm icons:vendor
 ```
 
-The script is `scripts/vendor-icons.sh`. It clones both upstream repos to
+The script is `scripts/vendor-icons.mjs`. It clones both upstream repos to
 a temporary directory and copies the requested subset of SVGs. Run it
 after adding new entries to `src/components/InstrumentIcon/registry/crypto.ts`
 or `src/components/InstrumentIcon/registry/fiat.ts`.

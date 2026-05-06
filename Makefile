@@ -78,7 +78,7 @@ dead-code-fix:
 	$(PNPM) dead-code:fix
 
 gen:
-	./scripts/gen-from-backend.sh
+	node scripts/gen-from-backend.mjs
 
 icons-vendor:
 	$(PNPM) icons:vendor
