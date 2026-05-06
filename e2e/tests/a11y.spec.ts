@@ -17,10 +17,9 @@ import { mockWebSocket } from '../fixtures/ws-handlers'
  * - ``text-dark-400`` empty-state placeholders moved to
  *   ``text-muted-500`` (was rendering at 1.28:1 ≈ white-on-white in
  *   light mode);
- * - the App-shell scroll container is now a ``<div role="region">``
- *   wrapper inside ``<main>``, with ``tabIndex={0}`` + accessible
- *   name, satisfying ``scrollable-region-focusable`` without an
- *   eslint bypass.
+ * - the App-shell scroll container is a labelled ``<section>`` inside
+ *   ``<main>`` with focusable skip content, satisfying
+ *   ``scrollable-region-focusable`` without an eslint bypass.
  *
  * ``moderate`` / ``minor`` remain non-blocking — they cover stylistic
  * niceties (duplicate landmark labels, etc.) that are expensive to
