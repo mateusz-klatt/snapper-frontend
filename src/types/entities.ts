@@ -7,7 +7,6 @@
  */
 
 export type {
-  // WS Data entities (backend naming)
   Candle,
   Execution,
   Heartbeat,
@@ -21,7 +20,6 @@ export type {
   SymbolAliasUpdate,
   Tick,
   Trade,
-  // Request entities
   AdminResetPassword,
   ChangePassword,
   CreateUser,
@@ -29,7 +27,6 @@ export type {
   ProcessCreate,
   ProcessStart,
   UpdateUser,
-  // Re-exported common types
   TradeSide,
   OrderType,
   HeartbeatStatus,

@@ -70,6 +70,13 @@ export function writeUrlScope(wallet: string | null, operator: string | null): v
   }
 }
 
+/**
+ * Best-effort persistence of the active scope (wallet + operator) into
+ * `localStorage`. Failure is silently swallowed because the URL hash
+ * remains the primary source of truth — `localStorage` is only a
+ * cross-tab convenience and may be unavailable in private mode or under
+ * quota pressure.
+ */
 export function writeLocalStorageScope(wallet: string | null, operator: string | null): void {
   try {
     if (wallet) {
@@ -84,8 +91,7 @@ export function writeLocalStorageScope(wallet: string | null, operator: string |
       globalThis.localStorage.removeItem(STORAGE_KEY_OPERATOR)
     }
   } catch {
-    // localStorage unavailable (private mode, quota) — silently ignore;
-    // URL hash is still the primary source of truth.
+    void 0
   }
 }
 

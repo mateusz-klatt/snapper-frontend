@@ -30,15 +30,20 @@ const VALID_TABS: ValidTab[] = [
   'settings',
 ]
 
+/**
+ * Hash-based route hook returning the current top-level segment.
+ *
+ * The active route is the first segment of `location.hash` before any
+ * `/` separator and before any `?query` string. That mapping lets
+ * `#backtests/{uuid7}` resolve to the `backtests` tab, and lets
+ * `#backtests?wallet=X` (scope-persistence params) resolve the same.
+ */
 function useHashRouting<T extends string>(
   validRoutes: readonly T[],
   defaultRoute: T
 ): [T, (route: T) => void] {
   const getRouteFromHash = useCallback((): T => {
     const hash = globalThis.location.hash.slice(1)
-    // Match first segment before "/" so `#backtests/{uuid7}` resolves to
-    // the "backtests" tab. Strip "?query" before route matching so that
-    // `#backtests?wallet=X` (scope-persistence params) also resolves.
     const firstSegment = (hash.split('/')[0] as string).split('?')[0] as string
 
     return validRoutes.includes(firstSegment as T) ? (firstSegment as T) : defaultRoute

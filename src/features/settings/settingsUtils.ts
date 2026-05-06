@@ -75,7 +75,7 @@ export const getMaskedValue = (key: string, value: string): string => {
       return JSON.stringify(parsed, null, 2)
     }
   } catch {
-    /* not JSON — return as-is */
+    void 0
   }
 
   return value

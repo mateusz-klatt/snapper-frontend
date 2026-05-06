@@ -47,7 +47,7 @@ const JsonSyntaxHighlight: React.FC<JsonSyntaxHighlightProps> = ({ value }) => {
         return JSON.stringify(parsed, null, 2)
       }
     } catch {
-      /* not valid JSON */
+      void 0
     }
 
     return value
@@ -189,7 +189,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
             return JSON.stringify(parsed, null, 2).split('\n').length
           }
         } catch {
-          /* not valid JSON */
+          void 0
         }
 
         return 1
