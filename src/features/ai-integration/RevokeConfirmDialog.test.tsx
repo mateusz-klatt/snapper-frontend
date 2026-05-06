@@ -6,7 +6,7 @@ import type { DelegateRead } from '../../types/api'
 
 const mockDeactivate = { mutateAsync: vi.fn() }
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/ai-delegates', () => ({
   useDeactivateAiDelegate: () => mockDeactivate,
 }))
 

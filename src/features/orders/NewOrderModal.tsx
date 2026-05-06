@@ -3,12 +3,9 @@ import { v7 as uuid7 } from 'uuid'
 import { Modal } from '../../components/ui/Modal'
 import { NativeSelect } from '../../components/NativeSelect'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
-import {
-  useExchanges,
-  useExchangeInstrumentsDetail,
-  useWallets,
-  useCreateOrder,
-} from '../../hooks/queries'
+import { useExchanges, useExchangeInstrumentsDetail } from '../../hooks/queries/market'
+import { useCreateOrder } from '../../hooks/queries/orders'
+import { useWallets } from '../../hooks/queries/wallets'
 import { APIError } from '../../lib/apiClient'
 import { lookupOrderErrorMessage } from './errorMessages'
 

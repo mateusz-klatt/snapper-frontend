@@ -28,7 +28,7 @@ vi.mock('../../stores/auth', () => ({
   useAuth: () => mockUseAuth(),
 }))
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/ai-reviews', () => ({
   usePendingAiReviews: () => mockUsePendingAiReviews(),
   useAiReviewActivity: () => mockUseAiReviewActivity(),
   useSubmitAiReviewDecision: () => mockUseSubmitAiReviewDecision(),

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Plus, ArrowRightLeft, Link2 } from 'lucide-react'
 import { Button, Badge } from '../../../components/ui'
-import { useWallets, useScopeGrants, useOperators } from '../../../hooks/queries'
+import { useScopeGrants } from '../../../hooks/queries/scope-grants'
+import { useWallets, useOperators } from '../../../hooks/queries/wallets'
 import { ThemeSelect } from '../../../components/ThemeSelect'
 import type { ScopeGrantInfo, WalletInfo, OperatorInfo } from '../../../types/api'
 

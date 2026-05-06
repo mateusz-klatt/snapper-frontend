@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
 import { Play, RotateCcw, XCircle } from 'lucide-react'
-import { useBacktests, useCancelBacktest, useRerunBacktest } from '../../hooks/queries'
+import { useBacktests, useCancelBacktest, useRerunBacktest } from '../../hooks/queries/backtests'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
 import type { BacktestRunData } from '../../types/api'

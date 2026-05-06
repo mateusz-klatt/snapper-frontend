@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Download, Plus, X } from 'lucide-react'
-import { useOrders, useExecutions, useCancelOrder } from '../../hooks/queries'
+import { useOrders, useExecutions, useCancelOrder } from '../../hooks/queries/orders'
 import { NewOrderModal } from './NewOrderModal'
 import type { Order, Execution } from '../../types/entities'
 import { OrderCardSkeleton } from '../../components/Skeleton'

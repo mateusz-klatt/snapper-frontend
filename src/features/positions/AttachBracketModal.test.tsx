@@ -9,7 +9,7 @@ import { validateBracketPrices } from './validation'
 const mockMutate = vi.fn()
 const mockReset = vi.fn()
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/positions', () => ({
   useCreateBracket: vi.fn(() => ({
     mutate: mockMutate,
     isPending: false,
@@ -42,7 +42,7 @@ const defaultProps = {
 describe('AttachBracketModal', () => {
   beforeEach(async () => {
     vi.clearAllMocks()
-    const { useCreateBracket } = await import('../../hooks/queries')
+    const { useCreateBracket } = await import('../../hooks/queries/positions')
 
     vi.mocked(useCreateBracket).mockReturnValue({
       mutate: mockMutate,
@@ -219,7 +219,7 @@ describe('AttachBracketModal', () => {
 
   it('shows Creating text when pending', async () => {
     const user = userEvent.setup()
-    const { useCreateBracket } = await import('../../hooks/queries')
+    const { useCreateBracket } = await import('../../hooks/queries/positions')
 
     vi.mocked(useCreateBracket).mockReturnValue({
       mutate: mockMutate,

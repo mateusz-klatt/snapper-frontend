@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Modal } from '../../components/ui/Modal'
 import type { AvailableProcess } from '../../types/api'
-import { useProcessSchema } from '../../hooks/queries'
+import { useProcessSchema } from '../../hooks/queries/processes'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 
 export interface StrategyLaunchData {

@@ -9,7 +9,7 @@ const mockUseIsReadOnly = vi.fn()
 const mockUpdateMutation = { mutateAsync: vi.fn(), isPending: false }
 const mockDeactivateMutation = { mutateAsync: vi.fn() }
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/ai-delegates', () => ({
   useAiDelegate: (publicId: string | null) => mockUseAiDelegate(publicId),
   useUpdateAiDelegateCaps: () => mockUpdateMutation,
   useDeactivateAiDelegate: () => mockDeactivateMutation,

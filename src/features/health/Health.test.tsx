@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Health } from './Health'
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/system', () => ({
   useSystemStatus: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -53,7 +53,7 @@ describe('Health', () => {
     expect(screen.getByText(/System Health/i) || screen.getByText(/Health/i)).toBeInTheDocument()
   })
   it('displays loading state', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: null,
@@ -71,7 +71,7 @@ describe('Health', () => {
     expect(screen.getByText(/Run Health Check/i)).toBeInTheDocument()
   })
   it('displays system status when data is available', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -100,7 +100,7 @@ describe('Health', () => {
     })
   })
   it('shows process status indicators', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -122,7 +122,7 @@ describe('Health', () => {
     })
   })
   it('displays backtest section when backtests exist', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -153,7 +153,7 @@ describe('Health', () => {
     expect(screen.getByText(/Export Report/i)).toBeInTheDocument()
   })
   it('displays stopped process status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -173,7 +173,7 @@ describe('Health', () => {
     })
   })
   it('displays error process status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -193,7 +193,7 @@ describe('Health', () => {
     })
   })
   it('displays completed backtest status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -215,7 +215,7 @@ describe('Health', () => {
     })
   })
   it('displays exit code when process has stopped with error', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -236,7 +236,7 @@ describe('Health', () => {
     })
   })
   it('displays error state from query', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: null,
@@ -250,7 +250,7 @@ describe('Health', () => {
     })
   })
   it('displays backtest with error status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -278,7 +278,7 @@ describe('Health', () => {
     })
   })
   it('displays multiple backtests', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -303,7 +303,7 @@ describe('Health', () => {
     })
   })
   it('displays default process icon for unknown process type', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -328,7 +328,7 @@ describe('Health', () => {
     })
   })
   it('displays metrics with different status colors', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -356,7 +356,7 @@ describe('Health', () => {
     })
   })
   it('displays analyzer process with chart icon', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -381,7 +381,7 @@ describe('Health', () => {
     })
   })
   it('displays critical overall health when any metric is critical', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -401,7 +401,7 @@ describe('Health', () => {
     })
   })
   it('formats uptime correctly for minutes', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
     const now = new Date()
     const thirtyMinsAgo = new Date(now.getTime() - 30 * 60 * 1000)
 
@@ -422,7 +422,7 @@ describe('Health', () => {
     })
   })
   it('formats uptime correctly for hours', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
     const now = new Date()
     const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000)
 
@@ -443,7 +443,7 @@ describe('Health', () => {
     })
   })
   it('displays metric card with warning status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -463,7 +463,7 @@ describe('Health', () => {
     })
   })
   it('displays metric card with critical status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
@@ -486,7 +486,7 @@ describe('Health', () => {
     })
   })
   it('displays Unknown label for unrecognized trader status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries')
+    const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {

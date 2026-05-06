@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeSelect } from './ThemeSelect'
 import { useAppStore } from '../stores/app'
-import { useWallets } from '../hooks/queries'
+import { useWallets } from '../hooks/queries/wallets'
 import type { WalletInfo } from '../types/api'
 
 export const WalletPicker: React.FC = () => {

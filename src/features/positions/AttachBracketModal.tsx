@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from '../../components/ui/Modal'
-import { useCreateBracket } from '../../hooks/queries'
+import { useCreateBracket } from '../../hooks/queries/positions'
 import { validateBracketPrices } from './validation'
 
 interface AttachBracketModalProps {

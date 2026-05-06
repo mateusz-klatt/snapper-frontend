@@ -56,7 +56,7 @@ vi.mock('../../components/ThemeSelect', () => ({
 
 const cancelMutate = vi.fn()
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/orders', () => ({
   useOrders: vi.fn(() => ({
     data: [],
     isLoading: false,
@@ -112,7 +112,7 @@ describe('Orders', () => {
     })
   })
   it('handles undefined data from hooks', async () => {
-    const { useOrders, useExecutions } = await import('../../hooks/queries')
+    const { useOrders, useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: undefined,
@@ -149,7 +149,7 @@ describe('Orders', () => {
         updatedAt: new Date('2024-01-01T00:00:00Z'),
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -162,7 +162,7 @@ describe('Orders', () => {
     })
   })
   it('displays loading state for orders', async () => {
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: [],
@@ -195,7 +195,7 @@ describe('Orders', () => {
         status: 'filled',
       },
     ]
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: mockExecutions,
@@ -233,7 +233,7 @@ describe('Orders', () => {
         updatedAt: new Date('2024-01-01T00:00:00Z'),
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -266,7 +266,7 @@ describe('Orders', () => {
         status: 'filled',
       },
     ]
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: mockExecutions,
@@ -279,7 +279,7 @@ describe('Orders', () => {
     })
   })
   it('displays loading state for executions', async () => {
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: [],
@@ -293,7 +293,7 @@ describe('Orders', () => {
   })
   it('shows executions loading state when executions tab is active', async () => {
     const user = userEvent.setup()
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: [],
@@ -316,7 +316,7 @@ describe('Orders', () => {
   })
   it('shows executions empty state when no executions', async () => {
     const user = userEvent.setup()
-    const { useOrders, useExecutions } = await import('../../hooks/queries')
+    const { useOrders, useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: [],
@@ -362,7 +362,7 @@ describe('Orders', () => {
         updatedAt: new Date('2024-01-01T00:00:00Z'),
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -396,7 +396,7 @@ describe('Orders', () => {
         updatedAt: new Date('2024-01-01T00:00:00Z'),
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -430,7 +430,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -462,7 +462,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -494,7 +494,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -527,7 +527,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -561,7 +561,7 @@ describe('Orders', () => {
         status: 'filled',
       },
     ]
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: mockExecutions,
@@ -615,7 +615,7 @@ describe('Orders', () => {
         status: 'filled',
       },
     ]
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: mockExecutions,
@@ -669,7 +669,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -691,7 +691,7 @@ describe('Orders', () => {
   })
   it('shows filtered empty state for orders', async () => {
     const user = userEvent.setup()
-    const { useOrders, useExecutions } = await import('../../hooks/queries')
+    const { useOrders, useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: [],
@@ -731,7 +731,7 @@ describe('Orders', () => {
         updatedAt: new Date('2024-01-01T00:00:00Z'),
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -764,7 +764,7 @@ describe('Orders', () => {
         updatedAt: new Date('2024-01-01T00:00:00Z'),
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -797,7 +797,7 @@ describe('Orders', () => {
         updatedAt: new Date('2024-01-01T00:00:00Z'),
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -830,7 +830,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -862,7 +862,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -895,7 +895,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -931,7 +931,7 @@ describe('Orders', () => {
         status: 'filled',
       },
     ]
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: mockExecutions,
@@ -969,7 +969,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1022,7 +1022,7 @@ describe('Orders', () => {
         status: 'filled',
       },
     ]
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: mockExecutions,
@@ -1067,7 +1067,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1121,7 +1121,7 @@ describe('Orders', () => {
         status: 'filled',
       },
     ]
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: mockExecutions,
@@ -1178,7 +1178,7 @@ describe('Orders', () => {
         reduceOnly: false,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1213,7 +1213,7 @@ describe('Orders', () => {
         reduceOnly: true,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1246,7 +1246,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1285,7 +1285,7 @@ describe('Orders', () => {
         reduceOnly: true,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1362,7 +1362,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1396,7 +1396,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1430,7 +1430,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1464,7 +1464,7 @@ describe('Orders', () => {
         updatedAt: null,
       },
     ]
-    const { useOrders } = await import('../../hooks/queries')
+    const { useOrders } = await import('../../hooks/queries/orders')
 
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
@@ -1476,7 +1476,7 @@ describe('Orders', () => {
   })
 
   it('cancel button is disabled while the mutation is pending', async () => {
-    const { useOrders, useCancelOrder } = await import('../../hooks/queries')
+    const { useOrders, useCancelOrder } = await import('../../hooks/queries/orders')
     const mockOrders: Order[] = [
       {
         sequenceId: 0,

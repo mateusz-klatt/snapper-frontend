@@ -6,7 +6,7 @@ import type { ReactNode } from 'react'
 import { StrategyLaunchModal } from './StrategyLaunchModal'
 import type { AvailableProcess } from '../../types/api'
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/processes', () => ({
   useProcessSchema: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -203,7 +203,7 @@ describe('StrategyLaunchModal', () => {
     expect(mockOnClose).toHaveBeenCalled()
   })
   it('shows loading state when schema is loading', async () => {
-    const { useProcessSchema } = await import('../../hooks/queries')
+    const { useProcessSchema } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSchema).mockReturnValue({
       data: null,
@@ -223,7 +223,7 @@ describe('StrategyLaunchModal', () => {
     })
   })
   it('shows error when schema fails to load', async () => {
-    const { useProcessSchema } = await import('../../hooks/queries')
+    const { useProcessSchema } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSchema).mockReturnValue({
       data: null,
@@ -275,7 +275,7 @@ describe('StrategyLaunchModal', () => {
     const user = userEvent.setup()
 
     mockOnSubmit.mockResolvedValue(undefined)
-    const { useProcessSchema } = await import('../../hooks/queries')
+    const { useProcessSchema } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSchema).mockReturnValue({
       data: {
@@ -417,7 +417,7 @@ describe('StrategyLaunchModal', () => {
     const user = userEvent.setup()
 
     mockOnSubmit.mockResolvedValue(undefined)
-    const { useProcessSchema } = await import('../../hooks/queries')
+    const { useProcessSchema } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSchema).mockReturnValue({
       data: {
@@ -557,7 +557,7 @@ describe('StrategyLaunchModal', () => {
     expect(executionModeSelect).toHaveValue('process')
   })
   it('uses default mode from schema', async () => {
-    const { useProcessSchema } = await import('../../hooks/queries')
+    const { useProcessSchema } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSchema).mockReturnValue({
       data: {
@@ -589,7 +589,7 @@ describe('StrategyLaunchModal', () => {
     const user = userEvent.setup()
 
     mockOnSubmit.mockResolvedValue(undefined)
-    const { useProcessSchema } = await import('../../hooks/queries')
+    const { useProcessSchema } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSchema).mockReturnValue({
       data: {
@@ -630,7 +630,7 @@ describe('StrategyLaunchModal', () => {
     const user = userEvent.setup()
 
     mockOnSubmit.mockResolvedValue(undefined)
-    const { useProcessSchema } = await import('../../hooks/queries')
+    const { useProcessSchema } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSchema).mockReturnValue({
       data: {

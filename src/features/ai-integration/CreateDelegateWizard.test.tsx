@@ -12,7 +12,7 @@ const mockMutation = {
 }
 const mockUseIsReadOnly = vi.fn()
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/ai-delegates', () => ({
   useCreateAiDelegate: () => mockMutation,
 }))
 

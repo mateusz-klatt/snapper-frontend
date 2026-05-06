@@ -9,10 +9,14 @@ vi.mock('../../stores/app', () => ({
   ),
 }))
 
-vi.mock('../../hooks/queries', () => ({
-  usePositionsSummary: vi.fn(() => ({ data: null, isLoading: false })),
-  useLatestSignals: vi.fn(() => ({ data: [], isLoading: false })),
+vi.mock('../../hooks/queries/orders', () => ({
   useOrdersGrouped: vi.fn(() => ({ data: null })),
+  useExecutions: vi.fn(() => ({ data: [], isLoading: false })),
+}))
+vi.mock('../../hooks/queries/positions', () => ({
+  usePositionsSummary: vi.fn(() => ({ data: null, isLoading: false })),
+}))
+vi.mock('../../hooks/queries/processes', () => ({
   useProcessSummary: vi.fn(() => ({
     isLoading: false,
     data: {
@@ -24,7 +28,9 @@ vi.mock('../../hooks/queries', () => ({
       },
     },
   })),
-  useExecutions: vi.fn(() => ({ data: [], isLoading: false })),
+}))
+vi.mock('../../hooks/queries/signals', () => ({
+  useLatestSignals: vi.fn(() => ({ data: [], isLoading: false })),
 }))
 
 const renderWithMocks = (ui: ReactNode) => {
@@ -74,7 +80,8 @@ describe('Overview', () => {
     expect(screen.getByText('No recent executions')).toBeInTheDocument()
   })
   it('handles undefined store values with defaults', async () => {
-    const { useProcessSummary, useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
+    const { useProcessSummary } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSummary).mockReturnValue({
       isLoading: false,
@@ -88,7 +95,7 @@ describe('Overview', () => {
     expect(screen.getByText('Feeds Running')).toBeInTheDocument()
   })
   it('displays loading spinner for process status', async () => {
-    const { useProcessSummary } = await import('../../hooks/queries')
+    const { useProcessSummary } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSummary).mockReturnValue({
       isLoading: true,
@@ -98,7 +105,7 @@ describe('Overview', () => {
     expect(screen.getByText('Process Status')).toBeInTheDocument()
   })
   it('displays loading spinner for portfolio', async () => {
-    const { usePositionsSummary } = await import('../../hooks/queries')
+    const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositionsSummary).mockReturnValue({
       isLoading: true,
@@ -108,7 +115,7 @@ describe('Overview', () => {
     expect(screen.getByText('Portfolio Summary')).toBeInTheDocument()
   })
   it('displays loading spinner for signals', async () => {
-    const { useLatestSignals } = await import('../../hooks/queries')
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
 
     vi.mocked(useLatestSignals).mockReturnValue({
       isLoading: true,
@@ -118,7 +125,7 @@ describe('Overview', () => {
     expect(screen.getByText('Recent Signals')).toBeInTheDocument()
   })
   it('displays portfolio data when available', async () => {
-    const { usePositionsSummary } = await import('../../hooks/queries')
+    const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositionsSummary).mockReturnValue({
       isLoading: false,
@@ -139,7 +146,7 @@ describe('Overview', () => {
   })
 
   it('shows negative net delta as red when net short', async () => {
-    const { usePositionsSummary } = await import('../../hooks/queries')
+    const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositionsSummary).mockReturnValue({
       isLoading: false,
@@ -159,7 +166,7 @@ describe('Overview', () => {
     expect(netDelta.className).toContain('text-loss-600')
   })
   it('displays running feeds status', async () => {
-    const { useProcessSummary } = await import('../../hooks/queries')
+    const { useProcessSummary } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSummary).mockReturnValue({
       isLoading: false,
@@ -176,7 +183,7 @@ describe('Overview', () => {
     expect(screen.getByText('1 Running')).toBeInTheDocument()
   })
   it('displays running strategies status', async () => {
-    const { useProcessSummary } = await import('../../hooks/queries')
+    const { useProcessSummary } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSummary).mockReturnValue({
       isLoading: false,
@@ -193,7 +200,7 @@ describe('Overview', () => {
     expect(screen.getByText('1 Active')).toBeInTheDocument()
   })
   it('displays executor status', async () => {
-    const { useProcessSummary } = await import('../../hooks/queries')
+    const { useProcessSummary } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSummary).mockReturnValue({
       isLoading: false,
@@ -210,7 +217,7 @@ describe('Overview', () => {
     expect(screen.getByText('1/1 Running')).toBeInTheDocument()
   })
   it('displays broker status', async () => {
-    const { useProcessSummary } = await import('../../hooks/queries')
+    const { useProcessSummary } = await import('../../hooks/queries/processes')
 
     vi.mocked(useProcessSummary).mockReturnValue({
       isLoading: false,
@@ -227,7 +234,7 @@ describe('Overview', () => {
     expect(screen.getAllByText('1/1 Running').length).toBeGreaterThan(0)
   })
   it('displays recent signals when available', async () => {
-    const { useLatestSignals } = await import('../../hooks/queries')
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
 
     vi.mocked(useLatestSignals).mockReturnValue({
       isLoading: false,
@@ -244,7 +251,7 @@ describe('Overview', () => {
     expect(screen.getByText('BTC/USD')).toBeInTheDocument()
   })
   it('displays recent executions when available', async () => {
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: [
@@ -263,7 +270,7 @@ describe('Overview', () => {
     expect(screen.getByText('ETH/USD')).toBeInTheDocument()
   })
   it('counts today executions correctly', async () => {
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     const today = new Date()
     const yesterday = new Date(Date.now() - 86400000)
@@ -301,7 +308,7 @@ describe('Overview', () => {
     expect(screen.getByText("Today's Executions")).toBeInTheDocument()
   })
   it('displays sell signal with error status', async () => {
-    const { useLatestSignals } = await import('../../hooks/queries')
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
 
     vi.mocked(useLatestSignals).mockReturnValue({
       isLoading: false,
@@ -318,7 +325,7 @@ describe('Overview', () => {
     expect(screen.getAllByText('SELL').length).toBeGreaterThan(0)
   })
   it('displays execution with sell side', async () => {
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useExecutions).mockReturnValue({
       data: [
@@ -337,7 +344,7 @@ describe('Overview', () => {
     expect(screen.getAllByText('SELL').length).toBeGreaterThan(0)
   })
   it('displays negative PnL with correct styling', async () => {
-    const { usePositionsSummary } = await import('../../hooks/queries')
+    const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositionsSummary).mockReturnValue({
       isLoading: false,
@@ -355,7 +362,7 @@ describe('Overview', () => {
     expect(screen.getByText('P&L %')).toBeInTheDocument()
   })
   it('uses timestamp as key when signal id is null', async () => {
-    const { useLatestSignals } = await import('../../hooks/queries')
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
 
     vi.mocked(useLatestSignals).mockReturnValue({
       isLoading: false,
@@ -372,7 +379,7 @@ describe('Overview', () => {
     expect(screen.getByText('XRP/USD')).toBeInTheDocument()
   })
   it('uses index as key when signal id is null and timestamp is undefined', async () => {
-    const { useLatestSignals } = await import('../../hooks/queries')
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
 
     vi.mocked(useLatestSignals).mockReturnValue({
       isLoading: false,
@@ -389,7 +396,7 @@ describe('Overview', () => {
     expect(screen.getByText('AVAX/USD')).toBeInTheDocument()
   })
   it('shows N/A when signal timestamp is undefined', async () => {
-    const { useLatestSignals } = await import('../../hooks/queries')
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
 
     vi.mocked(useLatestSignals).mockReturnValue({
       isLoading: false,
@@ -407,7 +414,8 @@ describe('Overview', () => {
     expect(screen.getByText('N/A')).toBeInTheDocument()
   })
   it('shows N/A when execution executedAt is undefined', async () => {
-    const { useLatestSignals, useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
 
     vi.mocked(useLatestSignals).mockReturnValue({
       isLoading: false,
@@ -432,7 +440,7 @@ describe('Overview', () => {
   })
   it('shows date-specific execution label when time traveling', async () => {
     const { useAppStore } = await import('../../stores/app')
-    const { useExecutions } = await import('../../hooks/queries')
+    const { useExecutions } = await import('../../hooks/queries/orders')
 
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: Record<string, unknown>) => unknown

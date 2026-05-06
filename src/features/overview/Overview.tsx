@@ -2,13 +2,10 @@ import React from 'react'
 import { Card, MetricCard, StatusBadge } from '../../components/ui'
 import { CardSkeleton } from '../../components/Skeleton'
 import { useAppStore } from '../../stores/app'
-import {
-  usePositionsSummary,
-  useLatestSignals,
-  useOrdersGrouped,
-  useProcessSummary,
-  useExecutions,
-} from '../../hooks/queries'
+import { useOrdersGrouped, useExecutions } from '../../hooks/queries/orders'
+import { usePositionsSummary } from '../../hooks/queries/positions'
+import { useProcessSummary } from '../../hooks/queries/processes'
+import { useLatestSignals } from '../../hooks/queries/signals'
 import type { Signal, Execution } from '../../types/entities'
 
 const CURRENCY_FORMAT = { minimumFractionDigits: 2, maximumFractionDigits: 2 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { useBacktestComparison } from '../../hooks/queries'
+import { useBacktestComparison } from '../../hooks/queries/backtests'
 import { APIError } from '../../lib/apiClient'
 import { MetricsDiffTable } from './compare/MetricsDiffTable'
 import { EquityOverlayChart } from './compare/EquityOverlayChart'

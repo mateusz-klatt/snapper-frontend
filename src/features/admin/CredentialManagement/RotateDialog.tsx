@@ -3,7 +3,7 @@ import { RotateCw, X } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
 import { Modal } from '../../../components/ui/Modal'
-import { useRotateCredential } from '../../../hooks/queries'
+import { useRotateCredential } from '../../../hooks/queries/credentials'
 import type { CredentialSummary } from '../../../types/api'
 
 const REQUIRED_FIELDS: Record<string, string[]> = {

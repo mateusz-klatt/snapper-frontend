@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeSelect } from './ThemeSelect'
 import { useAppStore } from '../stores/app'
-import { useOperators } from '../hooks/queries'
+import { useOperators } from '../hooks/queries/wallets'
 import type { OperatorInfo } from '../types/api'
 
 export const OperatorPicker: React.FC = () => {

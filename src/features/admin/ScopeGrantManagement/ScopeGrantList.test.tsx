@@ -66,9 +66,11 @@ const mockUseScopeGrants = vi.fn()
 const mockUseWallets = vi.fn()
 const mockUseOperators = vi.fn()
 
-vi.mock('../../../hooks/queries', () => ({
-  useWallets: () => mockUseWallets(),
+vi.mock('../../../hooks/queries/scope-grants', () => ({
   useScopeGrants: () => mockUseScopeGrants(),
+}))
+vi.mock('../../../hooks/queries/wallets', () => ({
+  useWallets: () => mockUseWallets(),
   useOperators: () => mockUseOperators(),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({

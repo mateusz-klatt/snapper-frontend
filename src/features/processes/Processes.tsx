@@ -6,7 +6,7 @@ import {
   useConfiguredProcesses,
   useAvailableProcesses,
   useProcessRuns,
-} from '../../hooks/queries'
+} from '../../hooks/queries/processes'
 import { useHeartbeats, type HeartbeatData } from '../../hooks/useHeartbeats'
 import { useConfirmDialog } from '../../hooks/useConfirmDialog'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'

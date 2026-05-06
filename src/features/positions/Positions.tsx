@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
 import { Shield, TrendingDown } from 'lucide-react'
-import { usePositions, useTrailingStopForCycle } from '../../hooks/queries'
+import { usePositions, useTrailingStopForCycle } from '../../hooks/queries/positions'
 import { useAppStore } from '../../stores/app'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { OrderCardSkeleton } from '../../components/Skeleton'

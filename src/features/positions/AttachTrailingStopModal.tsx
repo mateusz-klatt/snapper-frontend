@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from '../../components/ui/Modal'
-import { useCreateTrailingStop } from '../../hooks/queries'
+import { useCreateTrailingStop } from '../../hooks/queries/positions'
 import { validateTrailingStopParams } from './validation'
 
 interface AttachTrailingStopModalProps {

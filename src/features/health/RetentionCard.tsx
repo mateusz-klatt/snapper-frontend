@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { useRetentionRun } from '../../hooks/queries'
+import { useRetentionRun } from '../../hooks/queries/system'
 import { formatNumber } from '../../lib/utils'
 
 import type { RetentionPolicyResult } from '../../types/api'

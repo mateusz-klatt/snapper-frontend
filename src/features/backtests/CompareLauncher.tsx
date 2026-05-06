@@ -1,5 +1,8 @@
 import React, { useMemo, useState } from 'react'
-import { useBacktestRunsByConfigHash, useCreateBacktestComparison } from '../../hooks/queries'
+import {
+  useBacktestRunsByConfigHash,
+  useCreateBacktestComparison,
+} from '../../hooks/queries/backtests'
 import { useAllTerminalRuns } from './hooks/useAllTerminalRuns'
 import type { BacktestCompareBody, BacktestRunData } from '../../types/api'
 

@@ -10,7 +10,7 @@ import {
   useScopePersistence,
 } from './useScopePersistence'
 
-vi.mock('./queries', () => ({
+vi.mock('./queries/wallets', () => ({
   useWallets: vi.fn(() => ({ data: { payload: [] } })),
   useOperators: vi.fn(() => ({ data: { payload: [] } })),
 }))
@@ -33,7 +33,7 @@ vi.mock('../stores/auth', () => ({
   },
 }))
 
-import { useWallets, useOperators } from './queries'
+import { useWallets, useOperators } from './queries/wallets'
 import { useAppStore } from '../stores/app'
 
 const wrapper = ({ children }: { children: ReactNode }): ReactNode => {

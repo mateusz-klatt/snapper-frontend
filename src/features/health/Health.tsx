@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSystemStatus } from '../../hooks/queries'
+import { useSystemStatus } from '../../hooks/queries/system'
 import { HealthSkeleton } from '../../components/Skeleton'
 import { LiveOnlyNotice } from '../../components/LiveOnlyNotice'
 import { SystemMetricsCard } from './SystemMetricsCard'

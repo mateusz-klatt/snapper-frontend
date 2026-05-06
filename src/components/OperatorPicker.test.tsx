@@ -27,7 +27,7 @@ let mockOperatorsData: unknown = {
   ],
 }
 
-vi.mock('../hooks/queries', () => ({
+vi.mock('../hooks/queries/wallets', () => ({
   useOperators: () => ({
     data: mockOperatorsData,
     isLoading: false,

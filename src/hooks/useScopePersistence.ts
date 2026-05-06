@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { useAppStore } from '../stores/app'
-import { useOperators, useWallets } from './queries'
+import { useOperators, useWallets } from './queries/wallets'
 
 const STORAGE_KEY_WALLET = 'snapper-current-wallet'
 const STORAGE_KEY_OPERATOR = 'snapper-current-operator'

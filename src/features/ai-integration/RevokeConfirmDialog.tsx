@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { toast } from 'react-hot-toast'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
-import { useDeactivateAiDelegate } from '../../hooks/queries'
+import { useDeactivateAiDelegate } from '../../hooks/queries/ai-delegates'
 import type { DelegateRead } from '../../types/api'
 
 export function RevokeConfirmDialog({

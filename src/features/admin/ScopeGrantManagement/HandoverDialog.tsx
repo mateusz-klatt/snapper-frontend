@@ -4,7 +4,8 @@ import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
 import { Modal } from '../../../components/ui/Modal'
 import { ThemeSelect } from '../../../components/ThemeSelect'
-import { useOperators, useHandoverScopeGrant } from '../../../hooks/queries'
+import { useHandoverScopeGrant } from '../../../hooks/queries/scope-grants'
+import { useOperators } from '../../../hooks/queries/wallets'
 import type { ScopeGrantInfo, OperatorInfo } from '../../../types/api'
 
 interface HandoverDialogProps {

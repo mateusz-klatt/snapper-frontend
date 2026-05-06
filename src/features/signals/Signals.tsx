@@ -5,7 +5,7 @@ import { SignalCardSkeleton } from '../../components/Skeleton'
 import { ThemeSelect } from '../../components/ThemeSelect'
 import { exportToCSV } from '../../lib/csvExport'
 import { EmptyState } from '../../components/ui'
-import { useSignals } from '../../hooks/queries'
+import { useSignals } from '../../hooks/queries/signals'
 import type { Signal } from '../../types/entities'
 import clsx from 'clsx'
 import {

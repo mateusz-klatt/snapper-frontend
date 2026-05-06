@@ -7,7 +7,7 @@ import { NotificationMetricsCard } from './NotificationMetricsCard'
 
 import type { NotificationMetricsResponse } from '../../types/api'
 
-vi.mock('../../hooks/queries', () => ({
+vi.mock('../../hooks/queries/system', () => ({
   useNotificationMetrics: vi.fn(() => ({
     data: null,
     isLoading: false,
@@ -47,7 +47,7 @@ describe('NotificationMetricsCard', () => {
   })
 
   it('renders the card title without metrics during loading', async () => {
-    const { useNotificationMetrics } = await import('../../hooks/queries')
+    const { useNotificationMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useNotificationMetrics).mockReturnValue({
       data: undefined,
@@ -60,7 +60,7 @@ describe('NotificationMetricsCard', () => {
   })
 
   it('renders an error fallback when the query fails', async () => {
-    const { useNotificationMetrics } = await import('../../hooks/queries')
+    const { useNotificationMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useNotificationMetrics).mockReturnValue({
       data: undefined,
@@ -74,7 +74,7 @@ describe('NotificationMetricsCard', () => {
   })
 
   it('renders the counters grid when data is available', async () => {
-    const { useNotificationMetrics } = await import('../../hooks/queries')
+    const { useNotificationMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useNotificationMetrics).mockReturnValue({
       data: sampleSnapshot,
@@ -93,7 +93,7 @@ describe('NotificationMetricsCard', () => {
   })
 
   it('applies loss tone when failures exceed zero', async () => {
-    const { useNotificationMetrics } = await import('../../hooks/queries')
+    const { useNotificationMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useNotificationMetrics).mockReturnValue({
       data: {
@@ -110,7 +110,7 @@ describe('NotificationMetricsCard', () => {
   })
 
   it('applies warning tone when outbox depth exceeds zero', async () => {
-    const { useNotificationMetrics } = await import('../../hooks/queries')
+    const { useNotificationMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useNotificationMetrics).mockReturnValue({
       data: {
@@ -127,7 +127,7 @@ describe('NotificationMetricsCard', () => {
   })
 
   it('falls back to a generic error message for non-Error throwables', async () => {
-    const { useNotificationMetrics } = await import('../../hooks/queries')
+    const { useNotificationMetrics } = await import('../../hooks/queries/system')
 
     vi.mocked(useNotificationMetrics).mockReturnValue({
       data: undefined,
