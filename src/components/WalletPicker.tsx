@@ -23,9 +23,6 @@ export const WalletPicker: React.FC = () => {
       ariaLabel='Active wallet'
       value={currentId ?? '__all__'}
       onChange={v => {
-        // Picker change mints a new JWT with the selected wallet
-        // claim before swapping client scope, so REST + WS both
-        // authorise against the same wallet.
         void selectWalletAndRefresh(v === '__all__' ? null : v)
       }}
       options={options}

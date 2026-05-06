@@ -59,6 +59,26 @@ export const getCategoryColor = (category: string): string =>
 
 export const SENSITIVE_MASK = '••••••••'
 
+/**
+ * Pretty-print `value` if it parses as a JSON object, otherwise return `null`.
+ *
+ * Centralises the try/catch + object-typeof guard so callers can use it
+ * via `?? fallback` without duplicating the empty-catch boilerplate.
+ */
+export const formatJsonObject = (value: string): string | null => {
+  try {
+    const parsed = JSON.parse(value)
+
+    if (typeof parsed === 'object' && parsed !== null) {
+      return JSON.stringify(parsed, null, 2)
+    }
+
+    return null
+  } catch {
+    return null
+  }
+}
+
 export const getMaskedValue = (key: string, value: string): string => {
   if (isSensitive(key) && value) {
     return SENSITIVE_MASK
@@ -68,17 +88,7 @@ export const getMaskedValue = (key: string, value: string): string => {
     return '(empty)'
   }
 
-  try {
-    const parsed = JSON.parse(value)
-
-    if (typeof parsed === 'object' && parsed !== null) {
-      return JSON.stringify(parsed, null, 2)
-    }
-  } catch {
-    /* not JSON — return as-is */
-  }
-
-  return value
+  return formatJsonObject(value) ?? value
 }
 
 export type JsonTokenType =

@@ -182,8 +182,6 @@ class WebSocketClient {
         return
       }
 
-      // Zod's inferred optional properties include `undefined`; the generated WS
-      // interfaces model the same wire contract as omitted optional keys.
       const message = validated as WebSocketMessages
 
       if (isAuthControlMessage(message)) {

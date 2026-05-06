@@ -52,7 +52,7 @@ export const Settings = () => {
         data: { value, category, description: description ?? null },
       })
     } catch {
-      /* error is captured in updateMutation.error */
+      void 0
     }
   }
 
@@ -73,7 +73,7 @@ export const Settings = () => {
     try {
       await deleteMutation.mutateAsync(key)
     } catch {
-      /* error is captured in deleteMutation.error */
+      void 0
     }
   }
 

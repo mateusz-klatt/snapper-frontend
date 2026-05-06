@@ -11,6 +11,7 @@ import {
   getCategoryColor,
   getMaskedValue,
   tokenizeJson,
+  formatJsonObject,
   type JsonValue,
   type JsonTokenType,
 } from './settingsUtils'
@@ -39,19 +40,7 @@ interface JsonSyntaxHighlightProps {
 }
 
 const JsonSyntaxHighlight: React.FC<JsonSyntaxHighlightProps> = ({ value }) => {
-  const formatted = (() => {
-    try {
-      const parsed = JSON.parse(value)
-
-      if (typeof parsed === 'object' && parsed !== null) {
-        return JSON.stringify(parsed, null, 2)
-      }
-    } catch {
-      /* not valid JSON */
-    }
-
-    return value
-  })()
+  const formatted = formatJsonObject(value) ?? value
   const tokens = tokenizeJson(formatted)
 
   return (
@@ -180,21 +169,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const isJson = isJsonString(setting.value) && !isSensitive(setting.key)
-  const lineCount = isJson
-    ? (() => {
-        try {
-          const parsed = JSON.parse(setting.value)
-
-          if (typeof parsed === 'object' && parsed !== null) {
-            return JSON.stringify(parsed, null, 2).split('\n').length
-          }
-        } catch {
-          /* not valid JSON */
-        }
-
-        return 1
-      })()
-    : 0
+  const lineCount = isJson ? (formatJsonObject(setting.value)?.split('\n').length ?? 1) : 0
   const isLongJson = isJson && lineCount > 3
 
   return (

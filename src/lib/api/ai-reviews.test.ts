@@ -88,6 +88,12 @@ describe('ai-reviews API methods', () => {
       })
       await expect(listPendingAiReviews()).rejects.toThrow('not_a_delegate')
     })
+    /**
+     * The decision endpoint follows the same envelope contract as every
+     * other mutating REST call (orders, brackets, trailing stops,
+     * backtests): provenance fields on the envelope, domain payload
+     * nested under `payload`. This test pins the contract.
+     */
     it('submitAiReviewDecision posts decision wrapped in provenance envelope', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
@@ -114,10 +120,6 @@ describe('ai-reviews API methods', () => {
         payload?: { decision?: string; rationale?: string }
       }
 
-      // The decision endpoint follows the same envelope contract as
-      // every other mutating REST call (orders, brackets, trailing
-      // stops, backtests): provenance fields on the envelope, domain
-      // payload nested under ``payload``.
       expect(typeof body.public_id).toBe('string')
       expect(typeof body.session_id).toBe('string')
       expect(typeof body.sequence_id).toBe('number')

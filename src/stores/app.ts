@@ -73,16 +73,18 @@ export const useAppStore = create<AppStore>()(
       set({ currentWalletPublicId: id })
       queryClient.invalidateQueries()
     },
+    /**
+     * Wallet-picker sync. Mints a new JWT with the chosen wallet claim
+     * BEFORE swapping the client scope, so the next REST/WS call
+     * authorises against the new wallet. Uses `useAuthStore.getState()`
+     * (not the `useAuth()` hook — Zustand actions run outside React's
+     * hook context).
+     *
+     * On refresh failure the picker state is left unchanged so the user
+     * stays on the previous wallet; the refresh failure handler in
+     * `useAuthStore` logs + throws so the caller sees the error.
+     */
     selectWalletAndRefresh: async (nextWalletId: string | null) => {
-      // Wallet-picker sync: mint a new
-      // JWT with the chosen wallet claim BEFORE swapping the client
-      // scope, so the next REST/WS call authorises against the new
-      // wallet. Using useAuthStore.getState() (not useAuth() hook —
-      // Zustand actions run outside React's hook context).
-      //
-      // On refresh failure the picker state is left unchanged so the
-      // user stays on the previous wallet; the refresh failure handler
-      // in auth store logs + throws so the caller sees the error.
       const hint = nextWalletId === null ? { clear: true as const } : { walletId: nextWalletId }
 
       await useAuthStore.getState().refreshToken(hint)

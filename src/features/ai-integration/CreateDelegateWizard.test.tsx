@@ -232,7 +232,6 @@ describe('CreateDelegateWizard', () => {
     await act(async () => {
       await user.click(screen.getByRole('button', { name: 'Next' }))
     })
-    // loading={true} replaces button text with "Loading..." per Button component contract
     expect(screen.getByRole('button', { name: /Loading/ })).toBeDisabled()
   })
 
@@ -331,7 +330,6 @@ describe('CreateDelegateWizard', () => {
 
     expect(screen.getByText('1. Identity')).toBeInTheDocument()
     rerender(<CreateDelegateWizard open={false} onClose={vi.fn()} />)
-    // wizard still reducer-controlled; reset call is internal
     rerender(<CreateDelegateWizard open onClose={vi.fn()} />)
     expect((screen.getByLabelText('Label') as HTMLInputElement).value).toBe('')
   })
@@ -367,7 +365,6 @@ describe('CreateDelegateWizard', () => {
       if (rejectFn !== null) rejectFn(new Error('boom'))
       await pendingPromise.catch(() => {})
     })
-    // Wizard was unmounted before rejection — toast should not fire
     expect(toast.error).not.toHaveBeenCalled()
   })
 
@@ -395,7 +392,6 @@ describe('CreateDelegateWizard', () => {
       await pendingPromise
     })
     expect(mockResetFn).toHaveBeenCalled()
-    // Wizard is gone, Done step cannot render
     expect(screen.queryByText(/Save these credentials now/)).not.toBeInTheDocument()
   })
 
@@ -404,7 +400,6 @@ describe('CreateDelegateWizard', () => {
     const onClose = vi.fn()
 
     render(<CreateDelegateWizard open onClose={onClose} />)
-    // Modal renders a presentational backdrop div; clicking it should NOT invoke parent onClose
     const backdrop = screen.getByTestId('modal-backdrop')
 
     await act(async () => {
@@ -428,8 +423,6 @@ describe('CreateDelegateWizard', () => {
 
   it('Next button on scope-and-caps disabled when read-only', async () => {
     const user = userEvent.setup()
-    // First render (identity step): readonly=false so user can advance
-    // Second render onward: readonly=true so scope-and-caps Next is blocked
     let renderCount = 0
 
     mockUseIsReadOnly.mockImplementation(() => {
@@ -446,7 +439,6 @@ describe('CreateDelegateWizard', () => {
     await act(async () => {
       await user.click(screen.getByRole('button', { name: 'Next' }))
     })
-    // On scope-and-caps step the read-only is now true; Next is disabled
     expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled()
   })
 })

@@ -175,16 +175,21 @@ describe('Compare flow integration', () => {
     expect(screen.getByTestId('signals-diff-list')).toBeDefined()
   })
 
+  /**
+   * Wallet switch re-fires the compare query via the wallet-scoped key.
+   *
+   * Mechanism: `setCurrentWalletPublicId` updates Zustand state and calls
+   * `apiClient.setWalletScope(id)`. `useBacktestComparison` subscribes to
+   * `currentWalletPublicId`; when it changes, the queryKey
+   * `['backtest-compare', walletId, id]` changes → TanStack Query
+   * registers a new query entry and fires it. The singleton
+   * `queryClient.invalidate` inside the action is belt-and-suspenders for
+   * non-wallet-keyed queries; compare hooks already scope by `walletId`,
+   * so the key-change path alone proves wallet isolation. The test uses
+   * a fresh `QueryClient` to pin the key-change behaviour
+   * deterministically.
+   */
   it('wallet switch re-fires compare query via wallet-scoped key + surfaces 404', async () => {
-    // Mechanism: setCurrentWalletPublicId(action) updates zustand state +
-    // calls apiClient.setWalletScope(id). useBacktestComparison subscribes
-    // to currentWalletPublicId; when it changes, the queryKey
-    // ['backtest-compare', walletId, id] changes -> TanStack Query registers
-    // a NEW query entry and fires it. The singleton queryClient.invalidate
-    // inside the action is belt-and-suspenders for non-wallet-keyed queries;
-    // compare hooks already scope by walletId so the key-change path alone
-    // proves wallet isolation. Test here uses a fresh QueryClient to pin
-    // the key-change behaviour deterministically.
     ;(getBacktestComparison as ReturnType<typeof vi.fn>)
       .mockResolvedValueOnce({
         type: 'backtest_comparison_detail_response',
