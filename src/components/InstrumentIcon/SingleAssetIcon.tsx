@@ -71,7 +71,7 @@ export function SingleAssetIcon({
       <Icon
         size={size}
         strokeWidth={1.8}
-        {...(spec.color !== undefined ? { color: spec.color } : {})}
+        {...(spec.color === undefined ? {} : { color: spec.color })}
       />
     )
   }

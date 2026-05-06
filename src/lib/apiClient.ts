@@ -234,7 +234,7 @@ class APIClient {
 
     const response = await fetch(url, {
       ...fetchOptions,
-      ...(body !== undefined ? { body } : {}),
+      ...(body === undefined ? {} : { body }),
       headers,
       credentials: 'include',
     })

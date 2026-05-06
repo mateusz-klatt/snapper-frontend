@@ -115,7 +115,7 @@ export const Strategies: React.FC = () => {
         enabled: data.autostart,
         mode: data.executionMode,
         parameters: data.parameters,
-        ...(data.note !== undefined ? { note: data.note } : {}),
+        ...(data.note === undefined ? {} : { note: data.note }),
       })
       toast.success(`Strategy ${data.processName} saved`)
 

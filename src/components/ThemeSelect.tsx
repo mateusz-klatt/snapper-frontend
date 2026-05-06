@@ -32,7 +32,7 @@ export const ThemeSelect: React.FC<Readonly<ThemeSelectProps>> = ({
   <Select.Root
     {...(value ? { value } : {})}
     onValueChange={onChange}
-    {...(disabled !== undefined ? { disabled } : {})}
+    {...(disabled === undefined ? {} : { disabled })}
   >
     <Select.Trigger
       id={id}

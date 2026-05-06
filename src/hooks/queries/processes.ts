@@ -35,8 +35,8 @@ export const useStartProcessByName = () => {
       parameters?: Record<string, unknown> | undefined
     }) =>
       startProcessByName(name, {
-        ...(mode !== undefined ? { mode } : {}),
-        ...(parameters !== undefined ? { parameters } : {}),
+        ...(mode === undefined ? {} : { mode }),
+        ...(parameters === undefined ? {} : { parameters }),
       }),
     retry: 2,
     retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
@@ -113,8 +113,8 @@ export const useProcessRuns = (options?: {
     queryKey: queryKeys.processRuns(options?.name, options?.limit, asOf),
     queryFn: () =>
       getProcessRuns({
-        ...(options?.name !== undefined ? { name: options.name } : {}),
-        ...(options?.limit !== undefined ? { limit: options.limit } : {}),
+        ...(options?.name === undefined ? {} : { name: options.name }),
+        ...(options?.limit === undefined ? {} : { limit: options.limit }),
       }),
     refetchInterval: isTimeTraveling ? false : 5000,
     enabled: options?.enabled ?? true,
