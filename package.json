@@ -28,6 +28,8 @@
     "format:check": "prettier --check .",
     "dead-code": "knip",
     "dead-code:fix": "knip --fix",
+    "check:no-comments": "node scripts/check-no-comments.mjs",
+    "check:no-comments:strict": "node scripts/check-no-comments.mjs --strict",
     "test": "vitest",
     "test:run": "vitest run",
     "test:run:serial": "vitest run --maxWorkers=1 --no-file-parallelism",
