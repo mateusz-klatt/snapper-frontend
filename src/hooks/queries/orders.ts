@@ -53,7 +53,7 @@ export const useCreateOrder = () => {
   return useMutation<ExecutionPlanResponse, Error, Record<string, unknown>>({
     mutationFn: body => createOrder(body),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['orders'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.ordersAll })
     },
   })
 }
@@ -64,7 +64,7 @@ export const useCancelOrder = () => {
   return useMutation<ExecutionPlanResponse, Error, string>({
     mutationFn: clientOrderId => cancelOrder(clientOrderId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['orders'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.ordersAll })
     },
   })
 }

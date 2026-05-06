@@ -38,12 +38,12 @@ export const useStartProcessByName = () => {
     retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.processStatus })
-      queryClient.invalidateQueries({ queryKey: ['process', 'runtime', variables.name] })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'configured'] })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'summary'] })
-      queryClient.invalidateQueries({ queryKey: ['strategies'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processRuntimeForName(variables.name) })
+      queryClient.invalidateQueries({ queryKey: queryKeys.configuredProcessesAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processSummaryAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.strategiesAll })
       queryClient.invalidateQueries({ queryKey: queryKeys.availableProcesses })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'runs'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processRunsAll })
     },
   })
 }
@@ -57,12 +57,12 @@ export const useStopProcessByName = () => {
     retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.processStatus })
-      queryClient.invalidateQueries({ queryKey: ['process', 'runtime', variables.name] })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'configured'] })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'summary'] })
-      queryClient.invalidateQueries({ queryKey: ['strategies'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processRuntimeForName(variables.name) })
+      queryClient.invalidateQueries({ queryKey: queryKeys.configuredProcessesAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processSummaryAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.strategiesAll })
       queryClient.invalidateQueries({ queryKey: queryKeys.availableProcesses })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'runs'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processRunsAll })
     },
   })
 }
@@ -124,11 +124,11 @@ export const useCreateProcessConfig = () => {
   return useMutation<ProcessCreateResponse, Error, ProcessCreateBody>({
     mutationFn: body => createProcessConfig(body),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['processes', 'configured'] })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'summary'] })
-      queryClient.invalidateQueries({ queryKey: ['strategies'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.configuredProcessesAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processSummaryAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.strategiesAll })
       queryClient.invalidateQueries({ queryKey: queryKeys.availableProcesses })
-      queryClient.invalidateQueries({ queryKey: ['processes', 'runs'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processRunsAll })
     },
   })
 }

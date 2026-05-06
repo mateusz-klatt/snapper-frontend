@@ -31,7 +31,7 @@ export const useCreateScopeGrant = () => {
     mutationFn: data => createScopeGrant(data),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({
-        queryKey: ['scope-grants', variables.wallet_public_id],
+        queryKey: queryKeys.scopeGrantsForWallet(variables.wallet_public_id),
       })
     },
   })
@@ -43,7 +43,7 @@ export const useHandoverScopeGrant = () => {
   return useMutation<HandoverScopeGrantResponse, Error, HandoverScopeGrantBody>({
     mutationFn: data => handoverScopeGrant(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['scope-grants'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.scopeGrantsAll })
     },
   })
 }

@@ -14,10 +14,11 @@ import {
 import { APIError } from '../../lib/api/error'
 import { useAppStore } from '../../stores/app'
 import type { BacktestCompareBody } from '../../types/api'
+import { queryKeys } from './keys'
 
 export const useBacktests = (strategy?: string, status?: string) => {
   return useQuery({
-    queryKey: ['backtests', strategy, status],
+    queryKey: queryKeys.backtestsByStrategyStatus(strategy, status),
     queryFn: () => getBacktests(50, 0, strategy, status),
   })
 }
@@ -33,7 +34,7 @@ export const useBacktests = (strategy?: string, status?: string) => {
  */
 export const useBacktestRunsByConfigHash = (configHash: string | null, limit: number = 20) => {
   return useQuery({
-    queryKey: ['backtests', 'by-hash', configHash, limit],
+    queryKey: queryKeys.backtestsByConfigHash(configHash, limit),
     queryFn: () => getBacktests(limit, 0, undefined, undefined, configHash),
     enabled: configHash !== null,
   })
@@ -41,7 +42,7 @@ export const useBacktestRunsByConfigHash = (configHash: string | null, limit: nu
 
 export const useBacktest = (runId: string | undefined) => {
   return useQuery({
-    queryKey: ['backtests', runId],
+    queryKey: queryKeys.backtest(runId),
     queryFn: () => getBacktest(runId as string),
     enabled: !!runId,
   })
@@ -49,7 +50,7 @@ export const useBacktest = (runId: string | undefined) => {
 
 export const useBacktestTrades = (runId: string | undefined) => {
   return useQuery({
-    queryKey: ['backtests', runId, 'trades'],
+    queryKey: queryKeys.backtestTrades(runId),
     queryFn: () => getBacktestTrades(runId as string),
     enabled: !!runId,
   })
@@ -57,7 +58,7 @@ export const useBacktestTrades = (runId: string | undefined) => {
 
 export const useBacktestSignals = (runId: string | undefined) => {
   return useQuery({
-    queryKey: ['backtests', runId, 'signals'],
+    queryKey: queryKeys.backtestSignals(runId),
     queryFn: () => getBacktestSignals(runId as string),
     enabled: !!runId,
   })
@@ -69,7 +70,7 @@ export const useCreateBacktest = () => {
   return useMutation({
     mutationFn: (body: Parameters<typeof createBacktest>[0]) => createBacktest(body),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['backtests'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.backtestsAll })
     },
   })
 }
@@ -78,7 +79,7 @@ export const useBacktestComparison = (comparisonId: string | undefined) => {
   const walletId = useAppStore(s => s.currentWalletPublicId)
 
   return useQuery({
-    queryKey: ['backtest-compare', walletId, comparisonId],
+    queryKey: queryKeys.backtestCompare(walletId, comparisonId),
     queryFn: () => getBacktestComparison(comparisonId as string),
     enabled: !!comparisonId,
     retry: (failureCount, error) => {
@@ -93,7 +94,7 @@ export const useBacktestComparisons = (limit: number = 20, offset: number = 0) =
   const walletId = useAppStore(s => s.currentWalletPublicId)
 
   return useQuery({
-    queryKey: ['backtest-compare', 'list', walletId, limit, offset],
+    queryKey: queryKeys.backtestCompareList(walletId, limit, offset),
     queryFn: () => getBacktestComparisons(limit, offset),
   })
 }
@@ -105,7 +106,7 @@ export const useCreateBacktestComparison = () => {
   return useMutation({
     mutationFn: (body: BacktestCompareBody) => createBacktestComparison(body),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['backtest-compare', 'list', walletId] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.backtestCompareListForWallet(walletId) })
     },
   })
 }
@@ -116,7 +117,7 @@ export const useCancelBacktest = () => {
   return useMutation({
     mutationFn: (runId: string) => cancelBacktest(runId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['backtests'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.backtestsAll })
     },
   })
 }
@@ -127,7 +128,7 @@ export const useRerunBacktest = () => {
   return useMutation({
     mutationFn: (runId: string) => rerunBacktest(runId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['backtests'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.backtestsAll })
     },
   })
 }

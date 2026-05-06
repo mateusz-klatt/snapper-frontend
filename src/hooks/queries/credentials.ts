@@ -34,7 +34,7 @@ export const useCreateCredential = () => {
     mutationFn: ({ walletPublicId, data }) => createCredential(walletPublicId, data),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({
-        queryKey: ['credentials', variables.walletPublicId],
+        queryKey: queryKeys.credentialsForWallet(variables.walletPublicId),
       })
     },
   })
@@ -52,7 +52,7 @@ export const useRotateCredential = () => {
       rotateCredential(walletPublicId, credentialPublicId, data),
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({
-        queryKey: ['credentials', variables.walletPublicId],
+        queryKey: queryKeys.credentialsForWallet(variables.walletPublicId),
       })
     },
   })

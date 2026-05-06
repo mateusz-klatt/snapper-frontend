@@ -75,8 +75,8 @@ export const useCreateBracket = () => {
   return useMutation<ExecutionPlanResponse, Error, BracketCreateBody>({
     mutationFn: body => createBracket(body),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['positions'] })
-      queryClient.invalidateQueries({ queryKey: ['orders'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.positionsAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.ordersAll })
     },
   })
 }
@@ -87,9 +87,9 @@ export const useCreateTrailingStop = () => {
   return useMutation<ExecutionPlanResponse, Error, TrailingStopCreateBody>({
     mutationFn: body => createTrailingStop(body),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['positions'] })
-      queryClient.invalidateQueries({ queryKey: ['orders'] })
-      queryClient.invalidateQueries({ queryKey: ['trailingStopState'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.positionsAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.ordersAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.trailingStopAll })
     },
   })
 }
@@ -98,7 +98,7 @@ export const useTrailingStopForCycle = (cyclePublicId: string | undefined) => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
 
   return useQuery({
-    queryKey: ['trailingStopState', cyclePublicId],
+    queryKey: queryKeys.trailingStopForCycle(cyclePublicId),
     queryFn: () => getTrailingStopByCycle(cyclePublicId as string),
     enabled: !!cyclePublicId && !isTimeTraveling,
     refetchInterval: 5000,

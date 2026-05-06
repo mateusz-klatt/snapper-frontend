@@ -28,7 +28,7 @@ export const useSystemMetrics = () => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
 
   return useQuery({
-    queryKey: ['system', 'metrics'] as const,
+    queryKey: queryKeys.systemMetrics,
     queryFn: () => getSystemMetrics(),
     refetchInterval: isAuthenticated && !isTimeTraveling ? 10000 : false,
     enabled: isAuthenticated,
@@ -41,7 +41,7 @@ export const useDbStats = () => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
 
   return useQuery({
-    queryKey: ['system', 'db-stats'] as const,
+    queryKey: queryKeys.systemDbStats,
     queryFn: () => getDbStats(),
     refetchInterval: isAuthenticated && !isTimeTraveling ? 30000 : false,
     enabled: isAuthenticated,
@@ -54,7 +54,7 @@ export const useNotificationMetrics = () => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
 
   return useQuery({
-    queryKey: ['system', 'notification-metrics'] as const,
+    queryKey: queryKeys.systemNotificationMetrics,
     queryFn: () => getNotificationMetrics(),
     refetchInterval: isAuthenticated && !isTimeTraveling ? 30000 : false,
     enabled: isAuthenticated,
@@ -67,7 +67,7 @@ export const useRetentionRun = () => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
 
   return useQuery({
-    queryKey: ['system', 'retention'] as const,
+    queryKey: queryKeys.systemRetention,
     queryFn: () => getRetentionRun(),
     refetchInterval: isAuthenticated && !isTimeTraveling ? 60000 : false,
     enabled: isAuthenticated,

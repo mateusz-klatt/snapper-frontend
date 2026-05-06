@@ -36,7 +36,7 @@ export const useCreateUser = () => {
   return useMutation<UserResponse, Error, CreateUserBody>({
     mutationFn: data => createUser(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.usersAll })
     },
   })
 }
@@ -47,7 +47,7 @@ export const useUpdateUser = () => {
   return useMutation<UserResponse, Error, { userId: string; data: UpdateUserBody }>({
     mutationFn: ({ userId, data }) => updateUser(userId, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.usersAll })
     },
   })
 }
@@ -58,7 +58,7 @@ export const useDeactivateUser = () => {
   return useMutation<{ payload: string }, Error, string>({
     mutationFn: userId => deactivateUser(userId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.usersAll })
     },
   })
 }
@@ -69,7 +69,7 @@ export const useAdminResetPassword = () => {
   return useMutation<{ payload: string }, Error, { userId: string; data: AdminResetPasswordBody }>({
     mutationFn: ({ userId, data }) => adminResetPassword(userId, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.usersAll })
     },
   })
 }

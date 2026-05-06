@@ -9,6 +9,10 @@
 
 export const queryKeys = {
   systemStatus: ['system', 'status'] as const,
+  systemMetrics: ['system', 'metrics'] as const,
+  systemDbStats: ['system', 'db-stats'] as const,
+  systemNotificationMetrics: ['system', 'notification-metrics'] as const,
+  systemRetention: ['system', 'retention'] as const,
   processStatus: ['process', 'status'] as const,
   availableProcesses: ['processes', 'available'] as const,
   configuredProcesses: (asOf: string | null) => ['processes', 'configured', asOf] as const,
@@ -81,4 +85,35 @@ export const queryKeys = {
    * 5-second refetch.
    */
   pendingAiReviewsAll: ['ai-reviews', 'pending'] as const,
+
+  ordersAll: ['orders'] as const,
+  positionsAll: ['positions'] as const,
+  usersAll: ['users'] as const,
+  settingsAll: ['settings'] as const,
+  scopeGrantsAll: ['scope-grants'] as const,
+  scopeGrantsForWallet: (walletPublicId: string) => ['scope-grants', walletPublicId] as const,
+  credentialsForWallet: (walletPublicId: string) => ['credentials', walletPublicId] as const,
+  trailingStopAll: ['trailingStopState'] as const,
+  trailingStopForCycle: (cyclePublicId: string | undefined) =>
+    ['trailingStopState', cyclePublicId] as const,
+  backtestsAll: ['backtests'] as const,
+  backtestsByStrategyStatus: (strategy?: string, status?: string) =>
+    ['backtests', strategy, status] as const,
+  backtestsByConfigHash: (configHash: string | null, limit: number) =>
+    ['backtests', 'by-hash', configHash, limit] as const,
+  backtest: (runId: string | undefined) => ['backtests', runId] as const,
+  backtestTrades: (runId: string | undefined) => ['backtests', runId, 'trades'] as const,
+  backtestSignals: (runId: string | undefined) => ['backtests', runId, 'signals'] as const,
+  backtestCompare: (walletId: string | null, comparisonId: string | undefined) =>
+    ['backtest-compare', walletId, comparisonId] as const,
+  backtestCompareList: (walletId: string | null, limit: number, offset: number) =>
+    ['backtest-compare', 'list', walletId, limit, offset] as const,
+  backtestCompareListForWallet: (walletId: string | null) =>
+    ['backtest-compare', 'list', walletId] as const,
+  processStatusAll: ['process', 'status'] as const,
+  processRuntimeForName: (name: string) => ['process', 'runtime', name] as const,
+  configuredProcessesAll: ['processes', 'configured'] as const,
+  processSummaryAll: ['processes', 'summary'] as const,
+  strategiesAll: ['strategies'] as const,
+  processRunsAll: ['processes', 'runs'] as const,
 }

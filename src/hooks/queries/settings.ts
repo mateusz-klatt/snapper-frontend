@@ -41,7 +41,7 @@ export const useUpdateSetting = () => {
   return useMutation<SettingResponse, Error, { key: string; data: SettingUpdateBody }>({
     mutationFn: ({ key, data }) => updateSetting(key, data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['settings'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.settingsAll })
     },
   })
 }
@@ -52,7 +52,7 @@ export const useDeleteSetting = () => {
   return useMutation<{ payload: string }, Error, string>({
     mutationFn: key => removeSetting(key),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['settings'] })
+      queryClient.invalidateQueries({ queryKey: queryKeys.settingsAll })
     },
   })
 }
