@@ -1524,19 +1524,19 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             user_public_id: string;
-            operator_public_id?: string | null;
-            wallet_public_id?: string | null;
+            operator_public_id?: string | null | undefined;
+            wallet_public_id?: string | null | undefined;
             alert_type: string;
             priority: string;
             is_safety_critical: boolean;
             title: string;
             body: string;
-            payload?: Record<string, unknown> | null;
-            dedup_key?: string | null;
-            thread_key?: string | null;
-            source_topic?: string | null;
+            payload?: Record<string, unknown> | null | undefined;
+            dedup_key?: string | null | undefined;
+            thread_key?: string | null | undefined;
+            source_topic?: string | null | undefined;
         };
         AlertEventResponse: {
             type: "alert_event_response";
@@ -1544,7 +1544,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["AlertEventInfo"];
         };
         AlertHistoryResponse: {
@@ -1553,10 +1553,10 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["AlertEventInfo"][];
             count: number;
-            next_cursor?: string | null;
+            next_cursor?: string | null | undefined;
         };
         AsyncioMetrics: {
             active_tasks: number;
@@ -1568,7 +1568,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             name: string;
             class_path: string;
             method: string;
@@ -1576,7 +1576,7 @@ export type Components = {
             lifecycle: "long_running" | "one_shot";
             role: "core" | "task" | "strategy" | "backtest";
             tags: string[];
-            parameters_schema?: Record<string, unknown> | null;
+            parameters_schema?: Record<string, unknown> | null | undefined;
         };
         AvailableProcessesResponse: {
             type: "available_processes";
@@ -1584,7 +1584,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["AvailableProcess"][];
             count: number;
         };
@@ -1594,13 +1594,13 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             wallet_public_id: string;
             run_a_public_id: string;
             run_b_public_id: string;
-            config_hash?: string | null;
+            config_hash?: string | null | undefined;
             pairing_mode: string;
-            anchor_run_public_id?: string | null;
+            anchor_run_public_id?: string | null | undefined;
         };
         BacktestComparisonDetailResponse: {
             type: "backtest_comparison_detail_response";
@@ -1608,7 +1608,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestComparisonDetailResponseData"];
         };
         BacktestComparisonDetailResponseData: {
@@ -1617,7 +1617,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             comparison: Components["schemas"]["BacktestComparisonData"];
             run_a: Components["schemas"]["BacktestRunData"];
             run_b: Components["schemas"]["BacktestRunData"];
@@ -1632,7 +1632,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestComparisonData"][];
             count: number;
         };
@@ -1642,7 +1642,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestComparisonData"];
         };
         BacktestEquityPointInline: {
@@ -1658,7 +1658,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestEquityPointInline"][];
             count: number;
         };
@@ -1668,7 +1668,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             run_public_id: string;
             event_type: string;
             detail?: {
@@ -1681,7 +1681,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestEventData"][];
             count: number;
         };
@@ -1691,19 +1691,19 @@ export type Components = {
             losing_trades: number;
             total_pnl: number;
             max_drawdown: number;
-            sharpe_ratio?: number | null;
-            win_rate?: number | null;
-            profit_factor?: number | null;
+            sharpe_ratio?: number | null | undefined;
+            win_rate?: number | null | undefined;
+            profit_factor?: number | null | undefined;
             final_equity: number;
             max_equity: number;
-            sortino_ratio?: number | null;
-            cagr?: number | null;
-            calmar_ratio?: number | null;
-            expectancy?: number | null;
-            avg_trade_pnl?: number | null;
-            max_drawdown_duration_seconds?: number | null;
-            exposure_ratio?: number | null;
-            turnover_ratio?: number | null;
+            sortino_ratio?: number | null | undefined;
+            cagr?: number | null | undefined;
+            calmar_ratio?: number | null | undefined;
+            expectancy?: number | null | undefined;
+            avg_trade_pnl?: number | null | undefined;
+            max_drawdown_duration_seconds?: number | null | undefined;
+            exposure_ratio?: number | null | undefined;
+            turnover_ratio?: number | null | undefined;
             extra_metrics?: Record<string, unknown>;
         };
         BacktestRunData: {
@@ -1712,12 +1712,12 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             wallet_public_id: string;
             strategy_name: string;
             strategy_params: Record<string, unknown>;
             instrument_public_id: string;
-            instrument?: string | null;
+            instrument?: string | null | undefined;
             exchange: string;
             timeframe: string;
             start_date: string;
@@ -1728,11 +1728,11 @@ export type Components = {
             fill_model: string;
             slippage_bps: number;
             commission_bps: number;
-            config_hash?: string | null;
-            target_execution_exchange?: string | null;
-            started_at?: string | null;
-            completed_at?: string | null;
-            error?: string | null;
+            config_hash?: string | null | undefined;
+            target_execution_exchange?: string | null | undefined;
+            started_at?: string | null | undefined;
+            completed_at?: string | null | undefined;
+            error?: string | null | undefined;
         };
         BacktestRunDetailData: {
             type: "backtest_run";
@@ -1740,12 +1740,12 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             wallet_public_id: string;
             strategy_name: string;
             strategy_params: Record<string, unknown>;
             instrument_public_id: string;
-            instrument?: string | null;
+            instrument?: string | null | undefined;
             exchange: string;
             timeframe: string;
             start_date: string;
@@ -1756,12 +1756,12 @@ export type Components = {
             fill_model: string;
             slippage_bps: number;
             commission_bps: number;
-            config_hash?: string | null;
-            target_execution_exchange?: string | null;
-            started_at?: string | null;
-            completed_at?: string | null;
-            error?: string | null;
-            result?: Components["schemas"]["BacktestResultInline"] | null;
+            config_hash?: string | null | undefined;
+            target_execution_exchange?: string | null | undefined;
+            started_at?: string | null | undefined;
+            completed_at?: string | null | undefined;
+            error?: string | null | undefined;
+            result?: Components["schemas"]["BacktestResultInline"] | null | undefined;
         };
         BacktestRunDetailResponse: {
             type: "backtest_run_detail_response";
@@ -1769,7 +1769,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestRunDetailData"];
         };
         BacktestRunListResponse: {
@@ -1778,7 +1778,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestRunData"][];
             count: number;
         };
@@ -1788,7 +1788,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestRunData"];
         };
         BacktestSignalData: {
@@ -1797,7 +1797,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             run_public_id: string;
             signal_time: string;
             signal_type: string;
@@ -1813,7 +1813,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestSignalData"][];
             count: number;
         };
@@ -1823,7 +1823,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             run_public_id: string;
             executed_at: string;
             instrument: string;
@@ -1831,9 +1831,9 @@ export type Components = {
             quantity: number;
             price: number;
             fee: number;
-            pnl?: number | null;
+            pnl?: number | null | undefined;
             position_after: number;
-            signal_public_id?: string | null;
+            signal_public_id?: string | null | undefined;
         };
         BacktestTradeListResponse: {
             type: "backtest_trade_list";
@@ -1841,7 +1841,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestTradeData"][];
             count: number;
         };
@@ -1851,7 +1851,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             name: string;
             enabled: boolean;
             running: boolean;
@@ -1859,13 +1859,13 @@ export type Components = {
             class_path: string;
             method: string;
             parameters: Record<string, unknown>;
-            note?: string | null;
+            note?: string | null | undefined;
             lifecycle: "long_running" | "one_shot";
             role: "core" | "task" | "strategy" | "backtest";
             tags: string[];
-            parameters_schema?: Record<string, unknown> | null;
+            parameters_schema?: Record<string, unknown> | null | undefined;
             is_one_shot: boolean;
-            active_public_id?: string | null;
+            active_public_id?: string | null | undefined;
         };
         ConfiguredProcessesResponse: {
             type: "configured_processes";
@@ -1873,7 +1873,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ConfiguredProcess"][];
             count: number;
         };
@@ -1890,7 +1890,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             open_at: string;
             timeframe: string;
             open: number;
@@ -1909,7 +1909,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ContinuousCandleData"][];
             count: number;
         };
@@ -1919,7 +1919,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ContinuousCandleData"][];
             count: number;
             failed_roll: Components["schemas"]["RollPointDetail"];
@@ -1931,7 +1931,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             instrument_public_id: string;
             native_symbol: string;
             exchange: string;
@@ -1947,7 +1947,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ContractData"][];
             count: number;
         };
@@ -1964,7 +1964,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["CredentialSummary"][];
             count: number;
         };
@@ -1974,7 +1974,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["CredentialSummary"];
         };
         CredentialSummary: {
@@ -1983,11 +1983,11 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             wallet_public_id: string;
             exchange: string;
             credential_type: string;
-            label?: string | null;
+            label?: string | null | undefined;
         };
         DbInternalMetrics: {
             aiosqlite_live_connections: number;
@@ -2000,7 +2000,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             snapshot_started_at: string;
             snapshot_completed_at: string;
             interval_seconds: number;
@@ -2012,7 +2012,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["DbStatsData"];
         };
         DelegateCapsBody: {
@@ -2032,7 +2032,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["DelegateCreatedPayload"];
         };
         DelegateListResponse: {
@@ -2041,7 +2041,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["DelegateRead"][];
             count: number;
         };
@@ -2060,7 +2060,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["DelegateRead"];
         };
         DeviceAlertPrefBody: {
@@ -2080,16 +2080,16 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             device_public_id: string;
             alert_type: string;
-            operator_public_id?: string | null;
-            wallet_public_id?: string | null;
+            operator_public_id?: string | null | undefined;
+            wallet_public_id?: string | null | undefined;
             enabled: boolean;
             min_priority: string;
-            quiet_hours_start_min?: number | null;
-            quiet_hours_end_min?: number | null;
-            mute_until?: string | null;
+            quiet_hours_start_min?: number | null | undefined;
+            quiet_hours_end_min?: number | null | undefined;
+            mute_until?: string | null | undefined;
             timezone: string;
         };
         DeviceAlertPrefListResponse: {
@@ -2098,7 +2098,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["DeviceAlertPrefInfo"][];
             count: number;
         };
@@ -2108,13 +2108,13 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["DeviceAlertPrefInfo"];
         };
         EquityOverlayPoint: {
             point_time: string;
-            equity_a?: number | null;
-            equity_b?: number | null;
+            equity_a?: number | null | undefined;
+            equity_b?: number | null | undefined;
         };
         ExchangeListResponse: {
             type: "exchange_list";
@@ -2122,7 +2122,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: string[];
             count: number;
         };
@@ -2132,9 +2132,9 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
-            trade_id?: string | null;
-            exchange_order_id?: string | null;
+            topic?: string | null | undefined;
+            trade_id?: string | null | undefined;
+            exchange_order_id?: string | null | undefined;
             client_order_id: string;
             instrument: string;
             exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -2148,8 +2148,8 @@ export type Components = {
             status: "filled" | "partial";
             executed_at: string;
             wallet_public_id: string;
-            operator_public_id?: string | null;
-            user_public_id?: string | null;
+            operator_public_id?: string | null | undefined;
+            user_public_id?: string | null | undefined;
             liquidity_role: string;
         };
         ExecutionListResponse: {
@@ -2158,7 +2158,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ExecutionData"][];
             count: number;
         };
@@ -2168,7 +2168,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             plan_type: string;
             status: string;
             instrument_public_id: string;
@@ -2195,7 +2195,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ExecutionPlanData"];
         };
         FeatureFlagsPayload: {
@@ -2207,7 +2207,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["FeatureFlagsPayload"];
         };
         FrontMonthData: {
@@ -2216,7 +2216,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             instrument_public_id: string;
             native_symbol: string;
             exchange: string;
@@ -2230,7 +2230,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["FrontMonthData"];
         };
         GapDetectionStats: {
@@ -2262,7 +2262,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["HandoverScopeGrantResult"];
         };
         HandoverScopeGrantResult: {
@@ -2275,7 +2275,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             status: "healthy" | "warning" | "error";
             version: string;
             connections: Components["schemas"]["ConnectionStats"];
@@ -2288,7 +2288,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["HealthCheckData"];
         };
         HealthTopics: {
@@ -2300,7 +2300,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             instrument_public_id: string;
             symbol_public_id: string;
             symbol: string;
@@ -2317,7 +2317,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["InstrumentDetailData"][];
             count: number;
         };
@@ -2327,7 +2327,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: string[];
             count: number;
         };
@@ -2349,12 +2349,12 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             message: string;
             expires_in: number;
             user: Components["schemas"]["UserProfile"];
-            access_token?: string | null;
-            refresh_token?: string | null;
+            access_token?: string | null | undefined;
+            refresh_token?: string | null | undefined;
         };
         LoginResponse: {
             type: "login_response";
@@ -2362,7 +2362,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["LoginData"];
         };
         MemoryMetrics: {
@@ -2381,15 +2381,15 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: string;
         };
         MetricDiffRow: {
             name: string;
-            run_a?: number | null;
-            run_b?: number | null;
-            delta?: number | null;
-            pct?: number | null;
+            run_a?: number | null | undefined;
+            run_b?: number | null | undefined;
+            delta?: number | null | undefined;
+            pct?: number | null | undefined;
         };
         NotificationDeviceInfo: {
             type: "notification_device_info";
@@ -2397,16 +2397,16 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             user_public_id: string;
             device_token: string;
             device_id: string;
             platform: string;
             env: string;
-            app_version?: string | null;
+            app_version?: string | null | undefined;
             previews_mode: string;
             registered_at: string;
-            last_seen_at?: string | null;
+            last_seen_at?: string | null | undefined;
         };
         NotificationDeviceListResponse: {
             type: "notification_device_list_response";
@@ -2414,7 +2414,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["NotificationDeviceInfo"][];
             count: number;
         };
@@ -2424,7 +2424,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["NotificationDeviceInfo"];
         };
         NotificationMetricsData: {
@@ -2433,7 +2433,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             delivery_success_total: number;
             delivery_failed_total: number;
             delivery_410_unregistered_total: number;
@@ -2446,7 +2446,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["NotificationMetricsData"];
         };
         OperatorInfo: {
@@ -2455,9 +2455,9 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             label: string;
-            description?: string | null;
+            description?: string | null | undefined;
         };
         OperatorListResponse: {
             type: "operator_list_response";
@@ -2465,7 +2465,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["OperatorInfo"][];
             count: number;
         };
@@ -2475,8 +2475,8 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
-            exchange_order_id?: string | null;
+            topic?: string | null | undefined;
+            exchange_order_id?: string | null | undefined;
             client_order_id: string;
             instrument: string;
             exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -2486,19 +2486,19 @@ export type Components = {
             order_type: "market" | "limit" | "stop" | "stop_limit";
             size: number;
             filled_size: number;
-            price?: number | null;
-            average_price?: number | null;
-            reason?: string | null;
-            time_in_force?: string | null;
-            error?: string | null;
+            price?: number | null | undefined;
+            average_price?: number | null | undefined;
+            reason?: string | null | undefined;
+            time_in_force?: string | null | undefined;
+            error?: string | null | undefined;
             created_at: string;
-            updated_at?: string | null;
-            leverage?: number | null;
+            updated_at?: string | null | undefined;
+            leverage?: number | null | undefined;
             reduce_only: boolean;
             wallet_public_id: string;
-            operator_public_id?: string | null;
-            user_public_id?: string | null;
-            plan_public_id?: string | null;
+            operator_public_id?: string | null | undefined;
+            user_public_id?: string | null | undefined;
+            plan_public_id?: string | null | undefined;
         };
         OrderListResponse: {
             type: "order_list";
@@ -2506,7 +2506,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["OrderData"][];
             count: number;
         };
@@ -2516,7 +2516,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["OrphanSweepResultData"];
         };
         OrphanSweepResultData: {
@@ -2525,7 +2525,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             closed_count: number;
             closed_cycle_ids: string[];
         };
@@ -2541,8 +2541,8 @@ export type Components = {
             status: string;
             deadline: string;
             fanout_after: string;
-            instrument?: string | null;
-            signal_envelope?: Record<string, unknown> | null;
+            instrument?: string | null | undefined;
+            signal_envelope?: Record<string, unknown> | null | undefined;
         };
         PositionCycleData: {
             type: "position_cycle";
@@ -2550,7 +2550,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             cycle_public_id: string;
             shard_key: string;
             instrument_public_id: string;
@@ -2569,7 +2569,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["PositionCycleData"][];
             count: number;
         };
@@ -2579,7 +2579,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             instrument: string;
             instrument_public_id: string;
             exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -2588,7 +2588,7 @@ export type Components = {
             average_price: number;
             unrealized_pnl: number;
             realized_pnl: number;
-            position_cycle_public_id?: string | null;
+            position_cycle_public_id?: string | null | undefined;
             wallet_public_id: string;
         };
         PositionListResponse: {
@@ -2597,7 +2597,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["PositionData"][];
             count: number;
         };
@@ -2611,7 +2611,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             status: "created";
             process: Components["schemas"]["ProcessCreatedInfo"];
         };
@@ -2621,7 +2621,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ProcessCreateData"];
         };
         ProcessCreatedInfo: {
@@ -2642,17 +2642,17 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             process_name: string;
             status: "running" | "succeeded" | "failed" | "cancelled";
             role: "core" | "task" | "strategy" | "backtest";
             lifecycle: "long_running" | "one_shot";
-            parameters?: Record<string, unknown> | null;
-            result?: Record<string, unknown> | null;
-            error?: string | null;
+            parameters?: Record<string, unknown> | null | undefined;
+            result?: Record<string, unknown> | null | undefined;
+            error?: string | null | undefined;
             tags: string[];
             started_at: string;
-            completed_at?: string | null;
+            completed_at?: string | null | undefined;
         };
         ProcessRunsResponse: {
             type: "process_runs";
@@ -2660,7 +2660,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ProcessRun"][];
             count: number;
         };
@@ -2670,7 +2670,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             name: string;
             description: string;
             class_path: string;
@@ -2686,7 +2686,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ProcessSchemaData"];
         };
         ProcessStartData: {
@@ -2695,11 +2695,11 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             status: "success" | "already_running" | "error";
             name: string;
-            process_public_id?: string | null;
-            message?: string | null;
+            process_public_id?: string | null | undefined;
+            message?: string | null | undefined;
         };
         ProcessStartResponse: {
             type: "process_start_response";
@@ -2707,16 +2707,16 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ProcessStartData"];
         };
         ProcessStatus: {
             status: "not_running" | "running" | "stopped" | "completed" | "error";
-            pid?: number | null;
-            started_at?: string | null;
-            command?: string | null;
-            exit_code?: number | null;
-            error?: string | null;
+            pid?: number | null | undefined;
+            started_at?: string | null | undefined;
+            command?: string | null | undefined;
+            exit_code?: number | null | undefined;
+            error?: string | null | undefined;
         };
         ProcessStopData: {
             type: "process_stop";
@@ -2724,10 +2724,10 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             status: "success" | "not_running" | "error";
             name: string;
-            message?: string | null;
+            message?: string | null | undefined;
         };
         ProcessStopResponse: {
             type: "process_stop_response";
@@ -2735,7 +2735,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ProcessStopData"];
         };
         ProcessSummaryData: {
@@ -2744,7 +2744,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             feeds: Components["schemas"]["ProcessCategoryCount"];
             strategies: Components["schemas"]["ProcessCategoryCount"];
             executors: Components["schemas"]["ProcessCategoryCount"];
@@ -2756,7 +2756,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ProcessSummaryData"];
         };
         PushBetaConfigRead: {
@@ -2765,7 +2765,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             enabled: boolean;
             user_public_ids: string[];
         };
@@ -2775,7 +2775,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["PushBetaConfigRead"];
         };
         RefreshData: {
@@ -2784,14 +2784,14 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             message: string;
             ws_token: string;
             ws_token_exp: string;
             csrf_token: string;
             user: Components["schemas"]["UserProfile"];
-            access_token?: string | null;
-            refresh_token?: string | null;
+            access_token?: string | null | undefined;
+            refresh_token?: string | null | undefined;
         };
         RefreshResponse: {
             type: "refresh_response";
@@ -2799,7 +2799,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["RefreshData"];
         };
         RegisterDeviceBody: {
@@ -2825,7 +2825,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             exchanges: {
                 [key: string]: Components["schemas"]["RestRateExchangeStats"];
             };
@@ -2834,8 +2834,8 @@ export type Components = {
             rps_1s: number;
             rps_10s: number;
             rps_60s: number;
-            limit_rps?: number | null;
-            utilization?: number | null;
+            limit_rps?: number | null | undefined;
+            utilization?: number | null | undefined;
         };
         RestRateResponse: {
             type: "rest_rate_response";
@@ -2843,7 +2843,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["RestRateData"];
         };
         RetentionPolicyResult: {
@@ -2863,7 +2863,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             run_started_at: string;
             run_completed_at: string;
             dry_run: boolean;
@@ -2875,7 +2875,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["RetentionRunData"];
         };
         RevokeScopeGrantResponse: {
@@ -2884,7 +2884,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ScopeGrantInfo"];
         };
         RollPointDetail: {
@@ -2902,14 +2902,14 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             operator_public_id: string;
             wallet_public_id: string;
             granted_by_user_public_id: string;
             scope_kind: string;
-            underlying_public_id?: string | null;
-            instrument_public_id?: string | null;
-            note?: string | null;
+            underlying_public_id?: string | null | undefined;
+            instrument_public_id?: string | null | undefined;
+            note?: string | null | undefined;
             known_to: string;
         };
         ScopeGrantListResponse: {
@@ -2918,7 +2918,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ScopeGrantInfo"][];
             count: number;
         };
@@ -2928,7 +2928,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ScopeGrantInfo"];
         };
         SettingCategoriesResponse: {
@@ -2937,7 +2937,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: string[];
             count: number;
         };
@@ -2947,7 +2947,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["SettingRead"][];
             count: number;
         };
@@ -2957,13 +2957,13 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             key: string;
             value: string;
             category: string;
-            description?: string | null;
+            description?: string | null | undefined;
             updated_at: string;
-            updated_by?: string | null;
+            updated_by?: string | null | undefined;
         };
         SettingResponse: {
             type: "setting_response";
@@ -2971,7 +2971,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["SettingRead"];
         };
         SignalData: {
@@ -2980,20 +2980,20 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             instrument: string;
             exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
             side: "buy" | "sell";
             strength: number;
             reason: string;
-            price?: number | null;
-            strategy_name?: string | null;
+            price?: number | null | undefined;
+            strategy_name?: string | null | undefined;
             fired_at: string;
             wallet_public_id: string;
-            operator_public_id?: string | null;
-            user_public_id?: string | null;
-            ai_review_public_id?: string | null;
-            ai_review_dispatch_version?: number | null;
+            operator_public_id?: string | null | undefined;
+            user_public_id?: string | null | undefined;
+            ai_review_public_id?: string | null | undefined;
+            ai_review_dispatch_version?: number | null | undefined;
         };
         SignalDiffEntry: {
             instrument: string;
@@ -3007,7 +3007,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["SignalData"][];
             count: number;
         };
@@ -3017,7 +3017,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["StrategyProcess"][];
             count: number;
         };
@@ -3027,7 +3027,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             name: string;
             running: boolean;
             enabled: boolean;
@@ -3037,13 +3037,13 @@ export type Components = {
             strategy_name: string;
             status: string;
             details: Record<string, unknown>;
-            signals_generated?: number | null;
-            trades_executed?: number | null;
-            last_signal?: string | null;
-            last_signal_time?: string | null;
-            pnl?: number | null;
-            pid?: number | null;
-            uptime?: string | null;
+            signals_generated?: number | null | undefined;
+            trades_executed?: number | null | undefined;
+            last_signal?: string | null | undefined;
+            last_signal_time?: string | null | undefined;
+            pnl?: number | null | undefined;
+            pid?: number | null | undefined;
+            uptime?: string | null | undefined;
         };
         SubscriptionsStats: {
             per_topic: {
@@ -3059,7 +3059,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             bus_time: string;
             process: Components["schemas"]["ProcessMetrics"];
             cpu: Components["schemas"]["CpuMetrics"];
@@ -3078,7 +3078,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             bus_time: string;
             process: Components["schemas"]["ProcessMetrics"];
             cpu: Components["schemas"]["CpuMetrics"];
@@ -3097,7 +3097,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["SystemMetricsHistoryItem"][];
             count: number;
         };
@@ -3107,7 +3107,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["SystemMetricsData"];
         };
         SystemStatusData: {
@@ -3116,7 +3116,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             trader: Components["schemas"]["ProcessStatus"];
             backtests: {
                 [key: string]: Components["schemas"]["ProcessStatus"];
@@ -3129,7 +3129,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["SystemStatusData"];
         };
         TableStatsItem: {
@@ -3152,8 +3152,8 @@ export type Components = {
             errors: number;
             invalid_messages: number;
             last_message_ts: number;
-            throttle_ms?: number | null;
-            pattern?: string | null;
+            throttle_ms?: number | null | undefined;
+            pattern?: string | null | undefined;
         };
         TracemallocState: {
             active: boolean;
@@ -3165,7 +3165,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["TracemallocState"];
         };
         TradeDiffEntry: {
@@ -3175,9 +3175,9 @@ export type Components = {
             quantity: number;
             price: number;
             leg: "a" | "b" | "common";
-            pnl_a?: number | null;
-            pnl_b?: number | null;
-            pnl_delta?: number | null;
+            pnl_a?: number | null | undefined;
+            pnl_b?: number | null | undefined;
+            pnl_delta?: number | null | undefined;
         };
         TrailingStopStateData: {
             type: "trailing_stop_state";
@@ -3185,7 +3185,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             plan_public_id: string;
             status: string;
             trailing_pct: number;
@@ -3201,7 +3201,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["TrailingStopStateData"];
         };
         UnderlyingAssetData: {
@@ -3210,7 +3210,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             ticker: string;
             name: string;
             asset_class: string;
@@ -3223,7 +3223,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["UnderlyingAssetData"][];
             count: number;
         };
@@ -3233,7 +3233,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             instrument_public_id: string;
             native_symbol: string;
             exchange: string;
@@ -3247,7 +3247,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["UnderlyingInstrumentData"][];
             count: number;
         };
@@ -3280,7 +3280,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             user_public_id: string;
             alert_type: string;
             enabled: boolean;
@@ -3292,7 +3292,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["UserAlertDefaultInfo"][];
             count: number;
         };
@@ -3302,7 +3302,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["UserAlertDefaultInfo"];
         };
         UserListResponse: {
@@ -3311,7 +3311,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["UserProfile"][];
             count: number;
         };
@@ -3321,15 +3321,15 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             username: string;
-            email?: string | null;
+            email?: string | null | undefined;
             role: Components["schemas"]["UserRole"];
             is_active: boolean;
             created_at: string;
             operator_public_ids?: string[];
-            primary_operator_public_id?: string | null;
-            active_wallet_public_id?: string | null;
+            primary_operator_public_id?: string | null | undefined;
+            active_wallet_public_id?: string | null | undefined;
         };
         UserResponse: {
             type: "user_response";
@@ -3337,7 +3337,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["UserProfile"];
         };
         UserRole: "ai_delegate" | "viewer" | "operator" | "admin";
@@ -3354,9 +3354,9 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             label: string;
-            description?: string | null;
+            description?: string | null | undefined;
             is_paper: boolean;
         };
         WalletListResponse: {
@@ -3365,7 +3365,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["WalletInfo"][];
             count: number;
         };
@@ -3375,7 +3375,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["WalletInfo"];
         };
         WebSocketStats: {
@@ -3395,7 +3395,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             websocket: Components["schemas"]["WebSocketStats"];
             zmq_bridge: Components["schemas"]["ZmqBridgeStats"];
             connections: Components["schemas"]["ConnectionStats"];
@@ -3411,7 +3411,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["WsStatsData"];
         };
         WsTokenData: {
@@ -3420,7 +3420,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             message: string;
             ws_token: string;
             ws_token_exp: string;
@@ -3432,7 +3432,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["WsTokenData"];
         };
         ZmqBridgeStats: {
@@ -3454,7 +3454,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             status: "healthy" | "warning" | "error";
             components: Components["schemas"]["ZmqComponents"];
             config: Components["schemas"]["ZmqConfig"];
@@ -3470,7 +3470,7 @@ export type Components = {
             public_id: string;
             timestamp: string;
             session_id: string;
-            topic?: string | null;
+            topic?: string | null | undefined;
             payload: Components["schemas"]["ZmqHealthData"];
         };
         LoginRequest: {
@@ -4036,7 +4036,7 @@ export interface Operations {
         parameters: {
             query?: {
                 include_inactive?: boolean;
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -4239,8 +4239,8 @@ export interface Operations {
     get_all_settings_api_settings_get: {
         parameters: {
             query?: {
-                category?: string | null;
-                as_of?: string | null;
+                category?: string | null | undefined;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -4269,7 +4269,7 @@ export interface Operations {
     get_setting_categories_api_settings_categories_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -4629,7 +4629,7 @@ export interface Operations {
         parameters: {
             query?: {
                 limit?: number;
-                wallet_public_id?: string | null;
+                wallet_public_id?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -4870,7 +4870,7 @@ export interface Operations {
         parameters: {
             query?: {
                 limit?: number;
-                name?: string | null;
+                name?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -5183,13 +5183,13 @@ export interface Operations {
     get_orders_api_orders_get: {
         parameters: {
             query?: {
-                symbol?: string | null;
-                exchange?: ("paper" | "kraken" | "kraken_futures" | "walutomat") | null;
+                symbol?: string | null | undefined;
+                exchange?: ("paper" | "kraken" | "kraken_futures" | "walutomat") | null | undefined;
                 limit?: number;
                 offset?: number;
-                as_of?: string | null;
-                operator_public_id?: string | null;
-                wallet_public_id?: string | null;
+                as_of?: string | null | undefined;
+                operator_public_id?: string | null | undefined;
+                wallet_public_id?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -5404,7 +5404,7 @@ export interface Operations {
     list_bracket_decisions_api_execution_plans__plan_public_id__decisions_get: {
         parameters: {
             query?: {
-                importance?: string | null;
+                importance?: string | null | undefined;
                 limit?: number;
                 offset?: number;
             };
@@ -5611,7 +5611,7 @@ export interface Operations {
     list_trailing_stop_decisions_api_trailing_stops__plan_public_id__decisions_get: {
         parameters: {
             query?: {
-                importance?: string | null;
+                importance?: string | null | undefined;
                 limit?: number;
                 offset?: number;
             };
@@ -5677,10 +5677,10 @@ export interface Operations {
     list_backtests_api_backtests_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
-                strategy?: string | null;
-                status?: string | null;
-                config_hash?: string | null;
+                as_of?: string | null | undefined;
+                strategy?: string | null | undefined;
+                status?: string | null | undefined;
+                config_hash?: string | null | undefined;
                 limit?: number;
                 offset?: number;
             };
@@ -5752,7 +5752,7 @@ export interface Operations {
     list_comparisons_api_backtests_compare_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
                 limit?: number;
                 offset?: number;
             };
@@ -5842,7 +5842,7 @@ export interface Operations {
     get_comparison_api_backtests_compare__comparison_public_id__get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -5885,7 +5885,7 @@ export interface Operations {
     get_backtest_api_backtests__run_id__get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -6026,7 +6026,7 @@ export interface Operations {
     get_backtest_trades_api_backtests__run_id__trades_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
                 limit?: number;
                 offset?: number;
             };
@@ -6071,7 +6071,7 @@ export interface Operations {
     get_backtest_signals_api_backtests__run_id__signals_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
                 limit?: number;
                 offset?: number;
             };
@@ -6116,7 +6116,7 @@ export interface Operations {
     get_backtest_events_api_backtests__run_id__events_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -6159,9 +6159,9 @@ export interface Operations {
     get_backtest_equity_api_backtests__run_id__equity_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
                 limit?: number;
-                after?: string | null;
+                after?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -6433,8 +6433,8 @@ export interface Operations {
     get_system_metrics_history_api_metrics_system_history_get: {
         parameters: {
             query?: {
-                since?: string | null;
-                until?: string | null;
+                since?: string | null | undefined;
+                until?: string | null | undefined;
                 limit?: number;
             };
             header?: never;
@@ -6551,7 +6551,7 @@ export interface Operations {
         parameters: {
             query?: {
                 limit?: number;
-                before?: string | null;
+                before?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -6613,7 +6613,7 @@ export interface Operations {
                 exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
                 timeframe: string;
                 limit?: number;
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -6648,14 +6648,14 @@ export interface Operations {
     get_signals_api_signals_get: {
         parameters: {
             query?: {
-                instrument?: string | null;
-                strategy?: string | null;
-                exchange?: ("paper" | "kraken" | "kraken_futures" | "walutomat") | null;
+                instrument?: string | null | undefined;
+                strategy?: string | null | undefined;
+                exchange?: ("paper" | "kraken" | "kraken_futures" | "walutomat") | null | undefined;
                 hours?: number;
                 limit?: number;
-                as_of?: string | null;
-                operator_public_id?: string | null;
-                wallet_public_id?: string | null;
+                as_of?: string | null | undefined;
+                operator_public_id?: string | null | undefined;
+                wallet_public_id?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -6690,7 +6690,7 @@ export interface Operations {
     get_exchanges_api_exchanges_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -6725,7 +6725,7 @@ export interface Operations {
     get_exchange_instruments_api_exchanges__exchange__instruments_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -6762,7 +6762,7 @@ export interface Operations {
     get_exchange_instruments_detail_api_exchanges__exchange__instruments_detail_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -6799,7 +6799,7 @@ export interface Operations {
     _get_underlyings_api_underlyings_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -6834,8 +6834,8 @@ export interface Operations {
     _get_underlying_instruments_api_underlyings__ticker__instruments_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
-                relationship_type?: Components["schemas"]["RelationshipTypeEnum"] | null;
+                as_of?: string | null | undefined;
+                relationship_type?: Components["schemas"]["RelationshipTypeEnum"] | null | undefined;
             };
             header?: never;
             path: {
@@ -6878,9 +6878,9 @@ export interface Operations {
     _get_front_month_api_underlyings__ticker__front_month_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
-                exchange?: string | null;
-                contract_family?: string | null;
+                as_of?: string | null | undefined;
+                exchange?: string | null | undefined;
+                contract_family?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -6923,9 +6923,9 @@ export interface Operations {
     _get_contracts_api_underlyings__ticker__contracts_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
-                exchange?: string | null;
-                contract_family?: string | null;
+                as_of?: string | null | undefined;
+                exchange?: string | null | undefined;
+                contract_family?: string | null | undefined;
                 include_expired?: boolean;
             };
             header?: never;
@@ -6976,7 +6976,7 @@ export interface Operations {
                 end: string;
                 method?: string;
                 rollover_days_before?: number;
-                as_of?: string | null;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path: {
@@ -7026,9 +7026,9 @@ export interface Operations {
         parameters: {
             query?: {
                 limit?: number;
-                as_of?: string | null;
-                operator_public_id?: string | null;
-                wallet_public_id?: string | null;
+                as_of?: string | null | undefined;
+                operator_public_id?: string | null | undefined;
+                wallet_public_id?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -7063,9 +7063,9 @@ export interface Operations {
     get_positions_api_positions_get: {
         parameters: {
             query?: {
-                as_of?: string | null;
-                operator_public_id?: string | null;
-                wallet_public_id?: string | null;
+                as_of?: string | null | undefined;
+                operator_public_id?: string | null | undefined;
+                wallet_public_id?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -7100,9 +7100,9 @@ export interface Operations {
     get_instrument_capabilities_api_instrument_capabilities_get: {
         parameters: {
             query?: {
-                exchange?: string | null;
-                instrument_public_id?: string | null;
-                as_of?: string | null;
+                exchange?: string | null | undefined;
+                instrument_public_id?: string | null | undefined;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -7137,8 +7137,8 @@ export interface Operations {
     get_venue_fee_schedules_api_venue_fee_schedules_get: {
         parameters: {
             query?: {
-                exchange?: string | null;
-                as_of?: string | null;
+                exchange?: string | null | undefined;
+                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
