@@ -1,11 +1,11 @@
 import { QueryClient } from '@tanstack/react-query'
-import { calculateRetryDelay } from './queryRetry'
+import { calculateRetryDelay, shouldRetryQuery } from './queryRetry'
 
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 5,
-      retry: 3,
+      retry: shouldRetryQuery,
       retryDelay: calculateRetryDelay,
     },
   },

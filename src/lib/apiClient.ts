@@ -210,7 +210,7 @@ class APIClient {
       return this.request(url, { ...options, skipRetry: true, skipCSRF: true })
     }
 
-    throw new Error('Access denied')
+    return this.raiseHttpError(response)
   }
   public async request(url: string, options: RequestOptions = {}): Promise<Response> {
     const method = (options.method ?? 'GET').toUpperCase()

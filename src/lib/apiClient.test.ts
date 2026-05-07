@@ -299,13 +299,17 @@ describe('APIClient', () => {
       mockFetch.mockResolvedValueOnce({
         ok: false,
         status: 403,
+        statusText: 'Forbidden',
         clone: function () {
           return {
             json: async () => ({ detail: 'Access denied' }),
           }
         },
+        json: async () => ({ detail: 'Access denied' }),
       })
-      await expect(apiClient.request('/test', { method: 'GET' })).rejects.toThrow('Access denied')
+      await expect(apiClient.request('/test', { method: 'GET' })).rejects.toThrow(
+        expect.objectContaining({ name: 'APIError', status: 403, message: 'Access denied' })
+      )
     })
   })
   describe('convenience methods', () => {

@@ -3,6 +3,7 @@ import { validateResponse } from '../schemas/api'
 import {
   BacktestRunListResponseSchema,
   BacktestRunResponseSchema,
+  BacktestRunDetailResponseSchema,
   BacktestTradeListResponseSchema,
   BacktestSignalListResponseSchema,
   BacktestComparisonResponseSchema,
@@ -12,6 +13,7 @@ import {
 import type {
   BacktestRunListResponse,
   BacktestRunResponse,
+  BacktestRunDetailResponse,
   BacktestTradeListResponse,
   BacktestSignalListResponse,
   BacktestCreateBody,
@@ -44,10 +46,14 @@ export async function getBacktests(
   ) as BacktestRunListResponse
 }
 
-export async function getBacktest(runId: string): Promise<BacktestRunResponse> {
+export async function getBacktest(runId: string): Promise<BacktestRunDetailResponse> {
   const data = await apiClient.getJSON(`/api/backtests/${encodeURIComponent(runId)}`)
 
-  return validateResponse(data, BacktestRunResponseSchema, '/backtests/:id') as BacktestRunResponse
+  return validateResponse(
+    data,
+    BacktestRunDetailResponseSchema,
+    '/backtests/:id'
+  ) as BacktestRunDetailResponse
 }
 
 export async function createBacktest(body: BacktestCreateBody): Promise<BacktestRunResponse> {

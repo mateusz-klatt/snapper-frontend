@@ -16,9 +16,9 @@ import type {
 } from '../../types/api'
 
 export async function getSystemStatus(): Promise<SystemStatusResponse> {
-  const data = await apiClient.getJSON('/api/health/status')
+  const data = await apiClient.getJSON('/api/status')
 
-  return validateResponse(data, SystemStatusResponseSchema, '/health/status')
+  return validateResponse(data, SystemStatusResponseSchema, '/status')
 }
 
 export async function getSystemMetrics(): Promise<SystemMetricsResponse> {

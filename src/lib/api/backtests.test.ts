@@ -91,6 +91,12 @@ describe('backtests API methods', () => {
       payload: { ...baseRun, ...overrides },
     })
 
+    const runDetailEnv = (overrides?: Partial<typeof baseRun>): Record<string, unknown> => ({
+      ...baseEnv,
+      type: 'backtest_run_detail_response',
+      payload: { ...baseRun, ...overrides },
+    })
+
     const tradeListEnv = (): Record<string, unknown> => ({
       ...baseEnv,
       type: 'backtest_trade_list',
@@ -186,7 +192,7 @@ describe('backtests API methods', () => {
     it('getBacktest sends GET by ID', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => runEnv({ public_id: 'r1' }),
+        json: async () => runDetailEnv({ public_id: 'r1' }),
       })
       await getBacktest('r1')
 
