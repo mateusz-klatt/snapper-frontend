@@ -175,26 +175,6 @@ export const DbInternalMetricsSchema = z
   })
   .strict()
 
-export const DeviceAlertPrefBodySchema = z
-  .object({
-    alert_type: z.enum([
-      'order_fill_full',
-      'order_rejected',
-      'position_stop_loss_fired',
-      'margin_warning',
-      'critical_system_error',
-    ]),
-    operator_public_id: z.string().nullable().optional(),
-    wallet_public_id: z.string().nullable().optional(),
-    enabled: z.boolean(),
-    min_priority: z.enum(['low', 'medium', 'high']),
-    quiet_hours_start_min: z.number().int().nullable().optional(),
-    quiet_hours_end_min: z.number().int().nullable().optional(),
-    mute_until: z.iso.datetime().nullable().optional(),
-    timezone: z.string().max(64),
-  })
-  .strict()
-
 export const DeviceAlertPrefInfoSchema = z
   .object({
     type: z.literal('device_alert_pref_info'),
@@ -638,16 +618,6 @@ export const PushBetaConfigReadSchema = z
   })
   .strict()
 
-export const RegisterDeviceBodySchema = z
-  .object({
-    device_token: z.string().min(64).max(64),
-    device_id: z.string().min(1).max(64),
-    env: z.enum(['sandbox', 'prod']),
-    app_version: z.string().max(32).nullable().optional(),
-    previews_mode: z.enum(['private', 'public']),
-  })
-  .strict()
-
 export const RelationshipTypeEnumSchema = z.enum(['exact', 'derivative', 'proxy'])
 
 export const RestRateExchangeStatsSchema = z
@@ -895,20 +865,6 @@ export const UnderlyingInstrumentDataSchema = z
   })
   .strict()
 
-export const UserAlertDefaultBodySchema = z
-  .object({
-    alert_type: z.enum([
-      'order_fill_full',
-      'order_rejected',
-      'position_stop_loss_fired',
-      'margin_warning',
-      'critical_system_error',
-    ]),
-    enabled: z.boolean(),
-    min_priority: z.enum(['low', 'medium', 'high']),
-  })
-  .strict()
-
 export const UserAlertDefaultInfoSchema = z
   .object({
     type: z.literal('user_alert_default_info'),
@@ -1066,6 +1022,20 @@ export const AiReviewDecisionRequestSchema = z
   })
   .strict()
 
+export const UserAlertDefaultBodySchema = z
+  .object({
+    alert_type: z.enum([
+      'order_fill_full',
+      'order_rejected',
+      'position_stop_loss_fired',
+      'margin_warning',
+      'critical_system_error',
+    ]),
+    enabled: z.boolean().optional(),
+    min_priority: z.enum(['low', 'medium', 'high']).optional(),
+  })
+  .strict()
+
 export const BacktestCompareBodySchema = z
   .object({
     mode: z.enum(['manual', 'auto']),
@@ -1095,6 +1065,42 @@ export const RotateCredentialBodySchema = z
   .object({
     credential_payload: z.record(z.string(), z.string()),
     label: z.string().max(128).nullable().optional(),
+  })
+  .strict()
+
+export const RegisterDeviceBodySchema = z
+  .object({
+    device_token: z.string().min(64).max(64),
+    device_id: z.string().min(1).max(64),
+    env: z.enum(['sandbox', 'prod']),
+    app_version: z.string().max(32).nullable().optional(),
+    previews_mode: z.enum(['private', 'public']).optional(),
+  })
+  .strict()
+
+export const DeviceAlertPrefBodySchema = z
+  .object({
+    alert_type: z.enum([
+      'order_fill_full',
+      'order_rejected',
+      'position_stop_loss_fired',
+      'margin_warning',
+      'critical_system_error',
+    ]),
+    operator_public_id: z.string().nullable().optional(),
+    wallet_public_id: z.string().nullable().optional(),
+    enabled: z.boolean().optional(),
+    min_priority: z.enum(['low', 'medium', 'high']).optional(),
+    quiet_hours_start_min: z.number().int().nullable().optional(),
+    quiet_hours_end_min: z.number().int().nullable().optional(),
+    mute_until: z.iso.datetime().nullable().optional(),
+    timezone: z.string().max(64).optional(),
+  })
+  .strict()
+
+export const RevokeDevicePrefBodySchema = z
+  .object({
+    reason: z.string().max(512).nullable().optional(),
   })
   .strict()
 
@@ -1317,18 +1323,6 @@ export const CredentialResponseSchema = z
   })
   .strict()
 
-export const UpdateDevicePrefCommandSchema = z
-  .object({
-    type: z.literal('update_device_pref_command'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: DeviceAlertPrefBodySchema,
-  })
-  .strict()
-
 export const DeviceAlertPrefListResponseSchema = z
   .object({
     type: z.literal('device_alert_pref_list_response'),
@@ -1345,6 +1339,18 @@ export const DeviceAlertPrefListResponseSchema = z
 export const DeviceAlertPrefResponseSchema = z
   .object({
     type: z.literal('device_alert_pref_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: DeviceAlertPrefInfoSchema,
+  })
+  .strict()
+
+export const RevokeDevicePrefResponseSchema = z
+  .object({
+    type: z.literal('revoke_device_pref_response'),
     sequence_id: z.number().int(),
     public_id: z.string(),
     timestamp: z.iso.datetime(),
@@ -1587,18 +1593,6 @@ export const PushBetaConfigResponseSchema = z
     session_id: z.string(),
     topic: z.string().nullable().optional(),
     payload: PushBetaConfigReadSchema,
-  })
-  .strict()
-
-export const RegisterDeviceCommandSchema = z
-  .object({
-    type: z.literal('register_device_command'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: RegisterDeviceBodySchema,
   })
   .strict()
 
@@ -1845,18 +1839,6 @@ export const UnderlyingInstrumentListResponseSchema = z
     topic: z.string().nullable().optional(),
     payload: z.array(UnderlyingInstrumentDataSchema),
     count: z.number().int(),
-  })
-  .strict()
-
-export const UpdateUserAlertDefaultCommandSchema = z
-  .object({
-    type: z.literal('update_user_alert_default_command'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: UserAlertDefaultBodySchema,
   })
   .strict()
 
@@ -2119,6 +2101,18 @@ export const AiReviewDecisionCommandSchema = z
   })
   .strict()
 
+export const UpdateUserAlertDefaultCommandSchema = z
+  .object({
+    type: z.literal('update_user_alert_default_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: UserAlertDefaultBodySchema,
+  })
+  .strict()
+
 export const BacktestCompareRequestSchema = z
   .object({
     type: z.literal('backtest_compare_request').optional(),
@@ -2164,6 +2158,42 @@ export const RotateCredentialCommandSchema = z
     session_id: z.string(),
     topic: z.string().nullable().optional(),
     payload: RotateCredentialBodySchema,
+  })
+  .strict()
+
+export const RegisterDeviceCommandSchema = z
+  .object({
+    type: z.literal('register_device_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: RegisterDeviceBodySchema,
+  })
+  .strict()
+
+export const UpdateDevicePrefCommandSchema = z
+  .object({
+    type: z.literal('update_device_pref_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: DeviceAlertPrefBodySchema,
+  })
+  .strict()
+
+export const RevokeDevicePrefCommandSchema = z
+  .object({
+    type: z.literal('revoke_device_pref_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: RevokeDevicePrefBodySchema,
   })
   .strict()
 
@@ -3146,7 +3176,6 @@ export type ContractData = z.infer<typeof ContractDataSchema>
 export type CpuMetrics = z.infer<typeof CpuMetricsSchema>
 export type CredentialSummary = z.infer<typeof CredentialSummarySchema>
 export type DbInternalMetrics = z.infer<typeof DbInternalMetricsSchema>
-export type DeviceAlertPrefBody = z.infer<typeof DeviceAlertPrefBodySchema>
 export type DeviceAlertPrefInfo = z.infer<typeof DeviceAlertPrefInfoSchema>
 export type EquityOverlayPoint = z.infer<typeof EquityOverlayPointSchema>
 export type ExchangeListResponse = z.infer<typeof ExchangeListResponseSchema>
@@ -3178,7 +3207,6 @@ export type ProcessStartData = z.infer<typeof ProcessStartDataSchema>
 export type ProcessStatus = z.infer<typeof ProcessStatusSchema>
 export type ProcessStopData = z.infer<typeof ProcessStopDataSchema>
 export type PushBetaConfigRead = z.infer<typeof PushBetaConfigReadSchema>
-export type RegisterDeviceBody = z.infer<typeof RegisterDeviceBodySchema>
 export type RelationshipTypeEnum = z.infer<typeof RelationshipTypeEnumSchema>
 export type RestRateExchangeStats = z.infer<typeof RestRateExchangeStatsSchema>
 export type RetentionPolicyResult = z.infer<typeof RetentionPolicyResultSchema>
@@ -3198,7 +3226,6 @@ export type TradeDiffEntry = z.infer<typeof TradeDiffEntrySchema>
 export type TrailingStopStateData = z.infer<typeof TrailingStopStateDataSchema>
 export type UnderlyingAssetData = z.infer<typeof UnderlyingAssetDataSchema>
 export type UnderlyingInstrumentData = z.infer<typeof UnderlyingInstrumentDataSchema>
-export type UserAlertDefaultBody = z.infer<typeof UserAlertDefaultBodySchema>
 export type UserAlertDefaultInfo = z.infer<typeof UserAlertDefaultInfoSchema>
 export type UserRole = z.infer<typeof UserRoleSchema>
 export type ValidationError = z.infer<typeof ValidationErrorSchema>
@@ -3219,10 +3246,14 @@ export type PushBetaUsersBody = z.infer<typeof PushBetaUsersBodySchema>
 export type RemoveSettingBody = z.infer<typeof RemoveSettingBodySchema>
 export type DelegateDeactivateBody = z.infer<typeof DelegateDeactivateBodySchema>
 export type AiReviewDecisionRequest = z.infer<typeof AiReviewDecisionRequestSchema>
+export type UserAlertDefaultBody = z.infer<typeof UserAlertDefaultBodySchema>
 export type BacktestCompareBody = z.infer<typeof BacktestCompareBodySchema>
 export type BacktestCancelBody = z.infer<typeof BacktestCancelBodySchema>
 export type CreateCredentialBody = z.infer<typeof CreateCredentialBodySchema>
 export type RotateCredentialBody = z.infer<typeof RotateCredentialBodySchema>
+export type RegisterDeviceBody = z.infer<typeof RegisterDeviceBodySchema>
+export type DeviceAlertPrefBody = z.infer<typeof DeviceAlertPrefBodySchema>
+export type RevokeDevicePrefBody = z.infer<typeof RevokeDevicePrefBodySchema>
 export type BracketCreateBody = z.infer<typeof BracketCreateBodySchema>
 export type BracketCancelBody = z.infer<typeof BracketCancelBodySchema>
 export type CreateOrderBody = z.infer<typeof CreateOrderBodySchema>
@@ -3243,9 +3274,9 @@ export type ContinuousCandleListResponse = z.infer<typeof ContinuousCandleListRe
 export type ContractListResponse = z.infer<typeof ContractListResponseSchema>
 export type CredentialListResponse = z.infer<typeof CredentialListResponseSchema>
 export type CredentialResponse = z.infer<typeof CredentialResponseSchema>
-export type UpdateDevicePrefCommand = z.infer<typeof UpdateDevicePrefCommandSchema>
 export type DeviceAlertPrefListResponse = z.infer<typeof DeviceAlertPrefListResponseSchema>
 export type DeviceAlertPrefResponse = z.infer<typeof DeviceAlertPrefResponseSchema>
+export type RevokeDevicePrefResponse = z.infer<typeof RevokeDevicePrefResponseSchema>
 export type ExecutionListResponse = z.infer<typeof ExecutionListResponseSchema>
 export type ExecutionPlanResponse = z.infer<typeof ExecutionPlanResponseSchema>
 export type FeatureFlagsResponse = z.infer<typeof FeatureFlagsResponseSchema>
@@ -3266,7 +3297,6 @@ export type ProcessCreateData = z.infer<typeof ProcessCreateDataSchema>
 export type ProcessStartResponse = z.infer<typeof ProcessStartResponseSchema>
 export type ProcessStopResponse = z.infer<typeof ProcessStopResponseSchema>
 export type PushBetaConfigResponse = z.infer<typeof PushBetaConfigResponseSchema>
-export type RegisterDeviceCommand = z.infer<typeof RegisterDeviceCommandSchema>
 export type RestRateData = z.infer<typeof RestRateDataSchema>
 export type RetentionRunData = z.infer<typeof RetentionRunDataSchema>
 export type ContinuousSeriesPartialResponse = z.infer<typeof ContinuousSeriesPartialResponseSchema>
@@ -3287,7 +3317,6 @@ export type UnderlyingAssetListResponse = z.infer<typeof UnderlyingAssetListResp
 export type UnderlyingInstrumentListResponse = z.infer<
   typeof UnderlyingInstrumentListResponseSchema
 >
-export type UpdateUserAlertDefaultCommand = z.infer<typeof UpdateUserAlertDefaultCommandSchema>
 export type UserAlertDefaultListResponse = z.infer<typeof UserAlertDefaultListResponseSchema>
 export type UserAlertDefaultResponse = z.infer<typeof UserAlertDefaultResponseSchema>
 export type UserProfile = z.infer<typeof UserProfileSchema>
@@ -3309,10 +3338,14 @@ export type UpdatePushBetaUsersCommand = z.infer<typeof UpdatePushBetaUsersComma
 export type RemoveSettingRequest = z.infer<typeof RemoveSettingRequestSchema>
 export type DelegateDeactivateRequest = z.infer<typeof DelegateDeactivateRequestSchema>
 export type AiReviewDecisionCommand = z.infer<typeof AiReviewDecisionCommandSchema>
+export type UpdateUserAlertDefaultCommand = z.infer<typeof UpdateUserAlertDefaultCommandSchema>
 export type BacktestCompareRequest = z.infer<typeof BacktestCompareRequestSchema>
 export type BacktestCancelCommand = z.infer<typeof BacktestCancelCommandSchema>
 export type CreateCredentialCommand = z.infer<typeof CreateCredentialCommandSchema>
 export type RotateCredentialCommand = z.infer<typeof RotateCredentialCommandSchema>
+export type RegisterDeviceCommand = z.infer<typeof RegisterDeviceCommandSchema>
+export type UpdateDevicePrefCommand = z.infer<typeof UpdateDevicePrefCommandSchema>
+export type RevokeDevicePrefCommand = z.infer<typeof RevokeDevicePrefCommandSchema>
 export type BracketCreateCommand = z.infer<typeof BracketCreateCommandSchema>
 export type BracketCancelCommand = z.infer<typeof BracketCancelCommandSchema>
 export type CreateOrderCommand = z.infer<typeof CreateOrderCommandSchema>
