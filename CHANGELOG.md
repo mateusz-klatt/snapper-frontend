@@ -6,6 +6,65 @@ uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.6] — 2026-05-07
+
+Roll-up of the post-v1.5.2 chore / tooling / dependency work that
+landed without individual version bumps. No runtime API changes; all
+changes are developer-experience, build pipeline, dependency
+freshness, and code-quality enforcement.
+
+### Added
+
+- **TypeScript / TSX non-doc comment scanner.** `scripts/check-no-comments.mjs`
+  is a hand-rolled state-machine scanner that rejects `//` line comments
+  and `/* */` block comments while allowing `///` line-doc and
+  `/** */` JSDoc forms. Wired through `pnpm check:no-comments` (report)
+  and `pnpm check:no-comments:strict` (fail). Mirrors the parent-monorepo
+  Python scanner and the iOS Swift scanner.
+- **`prepush:strict` chain.** `pnpm prepush` now includes
+  `check:no-comments:strict`, locking the no-non-doc-comments rule into
+  the local pre-push gate alongside format / lint / typecheck / coverage.
+
+### Changed
+
+- **Bash release scripts migrated to Node (`.mjs`).** `gen-from-backend.sh`
+  → `gen-from-backend.mjs` (built-in `fetch` + `child_process.spawnSync`
+  with `pnpm.cmd`-on-Windows handling) and `vendor-icons.sh` →
+  `vendor-icons.mjs` (`node:fs` / `node:os` / `mkdtempSync` + a
+  `process.on('exit')` cleanup hook + explicit `Array.sort + localeCompare`
+  for cross-platform manifest determinism). Smoke-tested end-to-end:
+  output is byte-identical to the prior bash modulo the script-name
+  comment. iOS `xccov-to-sonarqube-generic.sh` is left untouched
+  (SonarSource SHA-pinned, `xcrun xccov`-bound, macOS-only anyway).
+- **Coverage exclusion narrowed to generated files only.** `vitest.config`
+  previously excluded the entire `src/types/` tree; the new pattern only
+  excludes `src/types/api.generated.*` so any future hand-written types
+  in `src/types/` get coverage scrutiny by default.
+- **GitHub Actions versions refreshed** (across all five workflows) to
+  current majors, including the SonarSource scan action upgrade carried
+  by the same PR.
+- **npm dependencies refreshed** (two batches: PR #31 and PR #38). Lockfile
+  trimmed by ~70 lines in the first pass; second pass updated 200+ pinned
+  versions across direct + transitive deps.
+
+### Fixed
+
+- **Sonar S7735 — negated conditional spreads (24 findings).** Flipped
+  29 ternary arms across 8 files from `expr !== X ? {A} : {}` to the
+  positive-arm-spread form. Five compound guards
+  (`EXPR !== null && EXPR !== undefined ? {A} : {}`) needed a De Morgan
+  rewrite to `EXPR == null ? {} : {A}` (`==` covers both null and
+  undefined) so semantics held — caught at final-gate review before
+  merge.
+
+### Internal cleanup
+
+- **48 legacy non-doc comments → 0.** Pre-scanner rationale comments lifted
+  to JSDoc, section-header `// ===…===` markers deleted, empty-catch
+  patterns refactored to a `formatJsonObject(value): string | null`
+  helper instead of a `void 0` no-op (fixes a coverage drop the initial
+  cleanup introduced by leaving `void 0` statements untested).
+
 ## [1.5.2] — 2026-05-06
 
 ### Refactor
