@@ -59,7 +59,7 @@ export const DbStatsCard: React.FC = () => {
   }, [error])
 
   return (
-    <section className='space-y-3 rounded-lg border border-dark-600 bg-white p-4'>
+    <section className='space-y-3 rounded-lg border border-dark-600 bg-alpine-50 p-4'>
       <header className='flex items-center justify-between'>
         <h3 className='text-lg font-medium text-alpine-900'>Database Statistics</h3>
         {data?.payload && (
