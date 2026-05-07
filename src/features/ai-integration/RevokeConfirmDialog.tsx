@@ -16,12 +16,13 @@ export function RevokeConfirmDialog({
   const deactivate = useDeactivateAiDelegate()
   const mountedRef = useRef(true)
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    mountedRef.current = true
+
+    return () => {
       mountedRef.current = false
-    },
-    []
-  )
+    }
+  }, [])
 
   const handleConfirm = async (): Promise<void> => {
     try {
