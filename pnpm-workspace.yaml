@@ -1,0 +1,12 @@
+packages: []
+
+overrides:
+  lodash-es: '>=4.17.23'
+  jsdom: 26.1.0
+  uuid: 14.0.0
+
+onlyBuiltDependencies:
+  - puppeteer
+
+allowBuilds:
+  puppeteer: true
