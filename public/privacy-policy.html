@@ -6,7 +6,7 @@
     <title>Privacy Policy — Snapper</title>
     <meta
       name="description"
-      content="Snapper privacy policy: zero third-party SDKs, no analytics, no telemetry. Data flows only between your device, your self-hosted backend, and Apple Push Notification service."
+      content="Snapper privacy policy: zero third-party SDKs, no analytics, no telemetry. Data flows only between your device, the backend you configured, and Apple Push Notification service."
     />
     <meta name="robots" content="index,follow" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -210,7 +210,7 @@
           <dt>Effective date:</dt>
           <dd>2026-05-05</dd>
           <dt>Last updated:</dt>
-          <dd>2026-05-05</dd>
+          <dd>2026-05-07</dd>
           <dt>App:</dt>
           <dd>Snapper (iOS)</dd>
           <dt>Source:</dt>
@@ -219,6 +219,8 @@
               >github.com/mateusz-klatt/snapper-ios</a
             >
           </dd>
+          <dt>Controller:</dt>
+          <dd>Mateusz Klatt, Poland</dd>
           <dt>Contact:</dt>
           <dd><a href="mailto:mateusz@klatt.ie">mateusz@klatt.ie</a></dd>
         </dl>
@@ -227,48 +229,122 @@
       <section class="tldr">
         <h2>TL;DR</h2>
         <p>
-          Snapper is a self-hosted trading client.
-          <strong>You run your own backend; the app talks to that backend, not to us.</strong> This
-          privacy policy describes what the app does on your device and which third parties (Apple,
-          your own backend) the app communicates with.
+          Snapper is an open-source iOS client for a backend URL you configure and control.
+          <strong
+            >We do not provide financial services, investment advice, brokerage, portfolio
+            management, custody, cryptocurrency exchange, or crypto-asset services.</strong
+          >
+          We do not create trading accounts, hold funds or crypto-assets, receive exchange API keys,
+          wallet private keys, or seed phrases, or execute trades on infrastructure controlled by
+          us.
         </p>
         <ul>
           <li>
             <strong>No analytics.</strong> No third-party SDKs. No telemetry sent to anyone except
-            your own backend.
+            the backend you configured.
           </li>
           <li>
             <strong>No advertising.</strong> No ad networks. No cross-site / cross-app tracking.
           </li>
           <li>
-            <strong>No accounts on our infrastructure.</strong> Your account lives on your
-            self-hosted backend.
+            <strong>No accounts on our infrastructure.</strong> Your account lives on the backend
+            URL you configured.
           </li>
           <li>
             <strong>No location data.</strong> No microphone / camera / contacts / photos / health
             access.
           </li>
           <li>
-            <strong>The only data leaving your device</strong> goes to your own backend (URL you
-            configured) and to Apple's APNs servers (for push notifications, if you opted in).
+            <strong>The only runtime data leaving your device</strong> goes to the backend URL you
+            configured and to Apple's APNs servers for push notifications, if you opted in.
           </li>
         </ul>
       </section>
 
       <h2>Who we are</h2>
       <p>
+        The controller for this privacy policy is Mateusz Klatt, Poland. Contact:
+        <a href="mailto:mateusz@klatt.ie">mateusz@klatt.ie</a>.
+      </p>
+      <p>
         The Snapper iOS app is open-source software published at
         <a href="https://github.com/mateusz-klatt/snapper-ios"
           >github.com/mateusz-klatt/snapper-ios</a
         >
         under the MIT license. The app is distributed via the Apple App Store and TestFlight by
-        Mateusz Klatt as the App Store developer of record.
+        Mateusz Klatt as the Apple Developer Program account holder for the Snapper iOS app.
       </p>
       <p>
-        The app is a thin client — it has no server-side component operated by us. All of your data
-        (orders, positions, alerts, credentials) is stored on the backend you (or your operator)
-        run. We have no access to that backend.
+        The app is a thin client. We do not operate a backend for Snapper users. In the default
+        single-tenant deployment, the person using Snapper controls the backend URL configured in
+        the app. If you connect Snapper to a backend controlled by someone else, that person or
+        entity is responsible for the data stored and processed by that backend.
       </p>
+
+      <h2>Nature of the app — no financial service</h2>
+      <p>
+        Snapper is not a public trading platform, brokerage, crypto-asset service provider,
+        exchange, custodian, portfolio manager, or investment adviser. We do not register public
+        accounts, custody funds or crypto-assets, execute orders for third parties, transmit orders
+        to exchanges on infrastructure controlled by us, or collect exchange API keys, wallet
+        private keys, or seed phrases.
+      </p>
+      <p>
+        Any order, alert, wallet, position, execution, or analysis content shown in the app is data
+        returned by the backend you configured. The iOS app does not provide investment advice,
+        personalised recommendations, or any regulated service within the meaning of Regulation (EU)
+        2023/1114 (MiCA) or Directive 2014/65/EU (MiFID II). The app only sends instructions or
+        requests you intentionally submit to the backend you configured.
+      </p>
+
+      <h2>Legal bases for processing (GDPR Art 6)</h2>
+      <ul>
+        <li>
+          <strong>Authentication credentials and trade-related data</strong> — processed on the
+          basis of <strong>Art 6(1)(b)</strong>: necessary to provide the app functionality you
+          requested when configuring and using the app.
+        </li>
+        <li>
+          <strong>Device identifier (IDFV)</strong> — processed on the basis of
+          <strong>Art 6(1)(f)</strong>: legitimate interest in disambiguating your device
+          registrations so the backend you configured can route alerts correctly. This interest is
+          not overridden by your rights, given that the IDFV is sent only to infrastructure you
+          control and never to any third party.
+        </li>
+        <li>
+          <strong>APNs device token</strong> — processed on the basis of
+          <strong>Art 6(1)(a)</strong>: your explicit consent given when iOS requests notification
+          permission. You may withdraw consent at any time in
+          <strong>iOS Settings → Notifications → Snapper</strong>.
+        </li>
+        <li>
+          <strong>App preferences</strong> — processed on the basis of <strong>Art 6(1)(b)</strong>:
+          necessary to restore your UI state between sessions.
+        </li>
+      </ul>
+
+      <h2>Retention periods (GDPR Art 13(2)(a))</h2>
+      <ul>
+        <li>
+          <strong>Authentication tokens and session cookies</strong> — retained for the active
+          session. iOS's <code>URLSession</code> cookie storage persists cookies as directed by your
+          backend's <code>Set-Cookie</code> headers; uninstalling the app clears them.
+        </li>
+        <li>
+          <strong>App preferences (UserDefaults)</strong> — retained until you uninstall the app or
+          reset it via iOS Settings → General → Transfer or Reset iPhone.
+        </li>
+        <li>
+          <strong>Device identifier (IDFV)</strong> — held in memory for the registration call. iOS
+          resets the IDFV when all apps from this developer are uninstalled. The corresponding
+          device row on your backend is governed by your backend's own retention rules.
+        </li>
+        <li>
+          <strong>APNs device token</strong> — held in memory for the duration of the app session;
+          relayed to the backend you configured, which controls its own retention. Revoking
+          notification permission in iOS Settings removes the basis for further token relays.
+        </li>
+      </ul>
 
       <h2>Data the app handles</h2>
       <p>
@@ -294,8 +370,8 @@
           session.
         </li>
         <li>
-          <strong>Where it goes:</strong> sent to your backend (the URL you configured) over HTTPS
-          during login and refresh requests. Never sent anywhere else.
+          <strong>Where it goes:</strong> sent to the backend URL you configured over HTTPS during
+          login and refresh requests. Never sent anywhere else.
         </li>
       </ul>
 
@@ -303,36 +379,52 @@
       <ul>
         <li>
           <strong>What:</strong> orders, positions, executions, alerts, wallet balances, instrument
-          metadata, AI review payloads. All of this originates from your backend and is rendered
-          locally for display.
+          metadata, and backend-generated analytics or review content. All of this originates from
+          the backend URL you configured and is rendered locally for display.
         </li>
         <li>
           <strong>How stored:</strong> in-memory only during the app session. Some derived state
-          (selected wallet, time-travel cursor, theme) is persisted to <code>UserDefaults</code> so
-          the app can restore it on next launch.
+          (selected wallet, time-travel cursor, theme) is persisted to <code>UserDefaults</code>
+          so the app can restore it on next launch.
         </li>
         <li>
-          <strong>Where it goes:</strong> never leaves your device except as part of the trading
-          commands you submit back to your own backend.
+          <strong>Where it goes:</strong> never leaves your device except as instructions or
+          requests you intentionally send to the backend you configured.
         </li>
       </ul>
+      <p>
+        <strong>No investment advice.</strong> Any analytics, alerts, signals, or review content
+        displayed by Snapper are informational outputs from the backend you configured. The iOS app
+        does not generate personalised recommendations, rank assets, or tell you whether to buy,
+        sell, or hold. Mateusz Klatt does not provide investment, financial, tax, legal, or
+        crypto-asset advice through the app.
+      </p>
 
       <h3>Push notification token (APNs)</h3>
       <ul>
         <li>
-          <strong>What:</strong> an opaque identifier issued by Apple Push Notification service
-          (APNs) that lets your backend send notifications to your device. Generated by iOS only
-          after you grant the notification permission.
+          <strong>What:</strong> an opaque device token issued by Apple Push Notification service
+          (APNs) that lets the backend you configured send notifications to this app on this device.
+          APNs also processes the notification payload needed to deliver alerts.
+        </li>
+        <li><strong>When:</strong> only after you grant iOS notification permission.</li>
+        <li>
+          <strong>How stored:</strong> held in memory and relayed to the backend you configured via
+          <code>POST /api/devices</code>. The app does not cache APNs tokens in local storage.
         </li>
         <li>
-          <strong>How stored:</strong> held in memory + relayed to your backend via
-          <code>POST /api/devices</code> so your backend knows where to send alerts.
+          <strong>Where it goes:</strong> to Apple/APNs (operated by Apple Inc., USA) and to the
+          backend you configured. Apple's APNs handling is governed by
+          <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. Apple states
+          that EEA, UK, and Swiss personal data is controlled by Apple Distribution International
+          Limited (Ireland) and that Apple's international transfers are governed by Standard
+          Contractual Clauses; where Apple's US recipient is certified, the EU-US Data Privacy
+          Framework adequacy decision (Commission Implementing Decision (EU) 2023/1795) may also be
+          relevant.
         </li>
         <li>
-          <strong>Where it goes:</strong> to Apple (APNs is an Apple service) and to your own
-          backend. Apple's APNs handling is governed by
-          <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. Your backend
-          can revoke or re-register your device at any time.
+          <strong>How to stop:</strong> disable notifications in iOS Settings and remove or revoke
+          the device registration on the backend you configured.
         </li>
       </ul>
 
@@ -340,31 +432,32 @@
       <ul>
         <li>
           <strong>What:</strong> Apple's <code>identifierForVendor</code> — a UUID that identifies
-          <em>your</em> device for <em>this</em> developer (Mateusz Klatt). Different developer =
-          different IDFV. Resets if you uninstall every app from this developer.
+          your device for this developer (Mateusz Klatt). Different developer = different IDFV.
         </li>
         <li>
           <strong>Why:</strong> the backend uses it as a per-device key to disambiguate multiple
-          installs (e.g. iPhone + iPad would be two separate device rows). This is the standard
-          Apple-recommended privacy-friendly device identifier — see
+          installs, such as iPhone and iPad device rows. See
           <a href="https://developer.apple.com/documentation/uikit/uidevice/identifierforvendor"
-            >Apple's "Identifying a device" docs</a
+            >Apple's identifierForVendor docs</a
           >.
         </li>
         <li>
-          <strong>Fallback:</strong> in the rare case where iOS returns no
-          <code>identifierForVendor</code> (e.g. very early in the launch lifecycle, before the
-          system has assigned one), the app generates a fresh random <code>UUID()</code> as a
-          one-shot replacement for that registration call. That fallback id is NOT stable across
-          launches — a subsequent registration would generate a new one — so the backend may see
-          your device as a new row in that edge case. The IDFV path is the steady-state behavior on
-          every supported device.
+          <strong>Fallback:</strong> if iOS returns no <code>identifierForVendor</code>, the app
+          generates a fresh random <code>UUID()</code> for that registration call only. That
+          fallback is not stable across launches.
         </li>
         <li>
-          <strong>How stored:</strong> held in memory + sent to your backend with each
-          device-registration call.
+          <strong>How stored:</strong> held in memory and sent to the backend you configured with
+          device-registration calls. The app does not write the IDFV to disk.
         </li>
-        <li><strong>Where it goes:</strong> to your own backend only.</li>
+        <li><strong>Where it goes:</strong> to the backend you configured only.</li>
+        <li>
+          <strong>Deletion / reset:</strong> uninstalling Snapper removes its
+          <code>UserDefaults</code> state from the device. iOS resets the IDFV when every app from
+          Mateusz Klatt is uninstalled; if Snapper is installed again later, iOS may provide a new
+          IDFV. The corresponding device row on your backend persists until you delete it through
+          your backend's own interface.
+        </li>
         <li>
           <strong>Disclosed in <code>PrivacyInfo.xcprivacy</code></strong> as
           <code>NSPrivacyCollectedDataTypeDeviceID</code> with purpose
@@ -386,7 +479,7 @@
 
       <h2>Data we do NOT collect</h2>
       <ul>
-        <li>We do not run any analytics, crash reporting, or telemetry SDK.</li>
+        <li>The app does not run any analytics, telemetry, or crash-reporting SDK.</li>
         <li>We do not run an ad network or any cross-site / cross-app tracker.</li>
         <li>
           We do not access your location, contacts, microphone, camera, photos, or health data. The
@@ -394,48 +487,100 @@
         </li>
         <li>We do not share your data with third parties for advertising or marketing.</li>
         <li>
-          We do not maintain any server that holds your data — the only servers in the loop are your
-          own backend and Apple's APNs.
+          We do not collect exchange API keys, wallet private keys, seed phrases, or custody
+          credentials.
+        </li>
+        <li>
+          We do not receive, match, route, execute, settle, custody, exchange, or advise on trades
+          on infrastructure controlled by us.
+        </li>
+        <li>
+          We do not maintain any server that holds your Snapper data. Runtime traffic is limited to
+          the backend URL you configured and Apple's APNs if notifications are enabled.
         </li>
       </ul>
 
-      <h2>Third parties</h2>
-      <p>The app communicates with exactly two parties beyond your device:</p>
+      <h2>Recipients</h2>
+      <p>The production app has two runtime network destinations beyond your device:</p>
       <ol>
         <li>
-          <strong>Your own backend.</strong> You (or your operator) configure the URL in the app's
-          settings. All trading data flows here. Snapper is open source — you can read the wire
-          protocol at
-          <a href="https://github.com/mateusz-klatt/snapper-ios"
-            >github.com/mateusz-klatt/snapper-ios</a
-          >.
+          <strong>The backend URL you configured.</strong> You configure and control this URL in the
+          app's settings. Account data, session data, trading display data, and device registrations
+          flow here. We cannot access this backend unless you separately give us access.
         </li>
         <li>
           <strong>Apple Push Notification service (APNs).</strong> Used only if you opted in to
-          notifications. Subject to
-          <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.
+          notifications. APNs receives the device token and the notification payload needed to
+          deliver alerts.
         </li>
       </ol>
       <p>
-        There are no other network endpoints. The app does not embed any third-party SDK, analytics
-        library, ad network, or tracking pixel.
+        Apple also processes distribution and beta-testing data for the App Store and TestFlight. If
+        you install a TestFlight build, Apple may make tester status, device model, OS version,
+        sessions, crashes, and screenshot or written feedback available in App Store Connect. This
+        is Apple beta-distribution data, not an analytics SDK embedded in Snapper.
+      </p>
+      <p>
+        There are no other runtime network endpoints. The app does not embed any third-party SDK,
+        analytics library, ad network, or tracking pixel.
       </p>
 
-      <h2>Children's privacy</h2>
+      <h2>Security</h2>
       <p>
-        The app is rated 17+ on the App Store and is not intended for children under 17. We do not
-        knowingly collect data from children.
+        The supported backend configuration uses HTTPS for REST requests and WSS for WebSocket
+        connections. iOS App Transport Security applies to <code>URLSession</code> connections by
+        default and requires TLS 1.2 or later unless an explicit ATS exception is present. Do not
+        use a plaintext HTTP or WS backend URL with real data.
       </p>
 
       <h2>Your rights</h2>
       <p>
-        Because we do not operate any servers that hold your data, requests for access, correction,
-        deletion, or portability of your data should be directed to your backend operator (the
-        operator of the backend URL you configured in the app).
+        Under the GDPR you have the following rights with respect to personal data processed by this
+        app (i.e. on-device data and the APNs token relay — not data stored on the backend you
+        configured):
+      </p>
+      <ul>
+        <li><strong>Access</strong> (Art 15) — request a copy of the data we process.</li>
+        <li><strong>Rectification</strong> (Art 16) — correct inaccurate data.</li>
+        <li><strong>Erasure</strong> (Art 17) — request deletion of your data.</li>
+        <li><strong>Restriction</strong> (Art 18) — limit how your data is processed.</li>
+        <li><strong>Portability</strong> (Art 20) — receive your data in machine-readable form.</li>
+        <li>
+          <strong>Object</strong> (Art 21) — object to processing based on legitimate interests;
+          applies to IDFV processing.
+        </li>
+        <li>
+          <strong>Withdraw consent</strong> (Art 7(3)) — for push notifications, by disabling
+          notifications for Snapper in iOS Settings. Withdrawal does not affect processing carried
+          out before withdrawal.
+        </li>
+      </ul>
+      <p>
+        Because we operate no servers that store your data, most of the above rights are exercised
+        by uninstalling the app (which removes all on-device data) or by revoking notification
+        permission in iOS Settings. For any privacy question contact
+        <a href="mailto:mateusz@klatt.ie">mateusz@klatt.ie</a> or open a public issue on the GitHub
+        repository.
       </p>
       <p>
-        If you have privacy questions about the app's on-device behavior or its source code, contact
-        us via the email below or open a public issue on the GitHub repository.
+        For data stored on the backend you configured, exercise your rights through that backend. We
+        do not operate that backend and cannot access, correct, export, or delete its data.
+      </p>
+      <p>
+        <strong>Right to lodge a complaint (Art 77).</strong> If you believe your GDPR rights have
+        been infringed, you have the right to lodge a complaint with the Polish supervisory
+        authority: <strong>Urząd Ochrony Danych Osobowych (UODO)</strong>, ul. Stawki 2, 00-193
+        Warsaw, Poland — <a href="https://uodo.gov.pl/en">uodo.gov.pl</a>. This right does not
+        affect any judicial remedy available to you under Art 79.
+      </p>
+
+      <h2>Children's privacy</h2>
+      <p>
+        The app is rated 17+ on the App Store and is not intended for use by minors. Under GDPR Art
+        8, as implemented in Polish law, the minimum age of consent for an information society
+        service offered directly to a child is 16 years. We do not knowingly process personal data
+        of persons under 16. If you believe a minor has used the app, contact
+        <a href="mailto:mateusz@klatt.ie">mateusz@klatt.ie</a> so we can take appropriate action.
       </p>
 
       <h2>Changes to this policy</h2>
@@ -454,6 +599,7 @@
 
       <h2>Contact</h2>
       <ul>
+        <li>Controller: Mateusz Klatt, Poland</li>
         <li>Email: <a href="mailto:mateusz@klatt.ie">mateusz@klatt.ie</a></li>
         <li>
           GitHub issues:
