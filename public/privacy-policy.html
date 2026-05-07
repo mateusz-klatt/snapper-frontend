@@ -308,8 +308,8 @@
           <strong>Device identifier (IDFV)</strong> — processed on the basis of
           <strong>Art 6(1)(f)</strong>: legitimate interest in disambiguating your device
           registrations so the backend you configured can route alerts correctly. This interest is
-          not overridden by your rights, given that the IDFV is sent only to infrastructure you
-          control and never to any third party.
+          not overridden by your rights, given that the IDFV is sent only to the backend URL you
+          configured for app functionality and is not used for tracking, advertising, or analytics.
         </li>
         <li>
           <strong>APNs device token</strong> — processed on the basis of
@@ -320,6 +320,27 @@
         <li>
           <strong>App preferences</strong> — processed on the basis of <strong>Art 6(1)(b)</strong>:
           necessary to restore your UI state between sessions.
+        </li>
+      </ul>
+
+      <h2>Whether providing data is required (GDPR Art 13(2)(e))</h2>
+      <ul>
+        <li>
+          <strong>Authentication credentials and backend requests</strong> — not required by law,
+          but necessary to authenticate with and use the backend you configured.
+        </li>
+        <li>
+          <strong>APNs device token</strong> — optional. If you deny or withdraw notification
+          permission, push alerts will not work, but the rest of the app remains available.
+        </li>
+        <li>
+          <strong>Device identifier (IDFV)</strong> — not required by law; used for device
+          registration and alert routing. If unavailable, the app uses a fresh random UUID for that
+          registration call.
+        </li>
+        <li>
+          <strong>App preferences</strong> — not required by law; without them the app may not
+          restore selected UI state between sessions.
         </li>
       </ul>
 
