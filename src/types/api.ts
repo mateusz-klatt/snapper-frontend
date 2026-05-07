@@ -138,7 +138,9 @@ export type TrailingStopByCycleResult =
   | { type: 'message'; payload: string }
 
 export type BacktestRunData = Components['schemas']['BacktestRunData']
+export type BacktestRunDetailData = Components['schemas']['BacktestRunDetailData']
 export type BacktestRunResponse = Components['schemas']['BacktestRunResponse']
+export type BacktestRunDetailResponse = Components['schemas']['BacktestRunDetailResponse']
 export type BacktestRunListResponse = Components['schemas']['BacktestRunListResponse']
 export type BacktestTradeData = Components['schemas']['BacktestTradeData']
 export type BacktestTradeListResponse = Components['schemas']['BacktestTradeListResponse']
