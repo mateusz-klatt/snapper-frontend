@@ -158,8 +158,16 @@ describe('orders queries', () => {
               price: 100,
               quantity: 1,
             },
+            {
+              public_id: '7',
+              status: 'EXPIRED',
+              instrument: 'BTC/USD',
+              side: 'buy',
+              price: 100,
+              quantity: 1,
+            },
           ],
-          count: 6,
+          count: 7,
         }) as never
       )
       const { result } = renderHook(() => useOrdersGrouped(), { wrapper: createWrapper() })
@@ -174,6 +182,7 @@ describe('orders queries', () => {
       expect(result.current.data?.partially_filled).toHaveLength(1)
       expect(result.current.data?.cancelled).toHaveLength(1)
       expect(result.current.data?.rejected).toHaveLength(1)
+      expect(Object.values(result.current.data ?? {}).flat()).toHaveLength(6)
     })
     it('returns null when no orders', async () => {
       vi.mocked(getOrders).mockResolvedValueOnce(null as never)
