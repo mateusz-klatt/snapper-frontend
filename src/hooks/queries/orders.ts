@@ -5,7 +5,37 @@ import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
 import { safeOrderFromAPI, safeExecutionFromAPI } from '../../lib/transforms'
 import type { ExecutionPlanResponse } from '../../types/api'
+import type { Order } from '../../types/entities'
 import { queryKeys } from './keys'
+
+const ORDER_GROUP_STATUSES = [
+  'new',
+  'open',
+  'filled',
+  'partially_filled',
+  'cancelled',
+  'rejected',
+] as const
+
+type OrderGroupStatus = (typeof ORDER_GROUP_STATUSES)[number]
+type GroupedOrders = Record<OrderGroupStatus, Order[]>
+
+const ORDER_GROUP_STATUS_SET: ReadonlySet<string> = new Set(ORDER_GROUP_STATUSES)
+
+function isOrderGroupStatus(status: string): status is OrderGroupStatus {
+  return ORDER_GROUP_STATUS_SET.has(status)
+}
+
+function createEmptyOrderGroups(): GroupedOrders {
+  return {
+    new: [],
+    open: [],
+    filled: [],
+    partially_filled: [],
+    cancelled: [],
+    rejected: [],
+  }
+}
 
 export const useOrders = (filters?: { symbol?: string; limit?: number; offset?: number }) => {
   const { isAuthenticated } = useAuth()
@@ -78,14 +108,17 @@ export const useOrdersGrouped = (filters?: {
   const groupedData = React.useMemo(() => {
     if (!orders) return null
 
-    return {
-      new: orders.filter(o => o.status.toLowerCase() === 'new'),
-      open: orders.filter(o => o.status.toLowerCase() === 'open'),
-      filled: orders.filter(o => o.status.toLowerCase() === 'filled'),
-      partially_filled: orders.filter(o => o.status.toLowerCase() === 'partially_filled'),
-      cancelled: orders.filter(o => o.status.toLowerCase() === 'cancelled'),
-      rejected: orders.filter(o => o.status.toLowerCase() === 'rejected'),
+    const grouped = createEmptyOrderGroups()
+
+    for (const order of orders) {
+      const status = order.status.toLowerCase()
+
+      if (isOrderGroupStatus(status)) {
+        grouped[status].push(order)
+      }
     }
+
+    return grouped
   }, [orders])
 
   return {
