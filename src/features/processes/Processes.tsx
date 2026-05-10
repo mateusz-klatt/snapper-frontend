@@ -95,7 +95,24 @@ export const Processes: React.FC = () => {
       process =>
         process.lifecycle === 'long_running' &&
         process.role !== 'strategy' &&
-        process.role !== 'backtest'
+        process.role !== 'backtest' &&
+        process.kind !== 'template' &&
+        !process.parent_template
+    )
+  }, [configuredProcesses])
+  const executorTemplates = React.useMemo<ConfiguredProcess[]>(() => {
+    if (!configuredProcesses) return []
+
+    return configuredProcesses.payload.filter(process => process.kind === 'template')
+  }, [configuredProcesses])
+  const walletInstances = React.useMemo<(ConfiguredProcess & { parent_template: string })[]>(() => {
+    if (!configuredProcesses) return []
+
+    return configuredProcesses.payload.filter(
+      (process): process is ConfiguredProcess & { parent_template: string } =>
+        process.kind === 'instance' &&
+        typeof process.parent_template === 'string' &&
+        process.parent_template.length > 0
     )
   }, [configuredProcesses])
   const taskProcesses = React.useMemo<ConfiguredProcess[]>(() => {
@@ -190,7 +207,13 @@ export const Processes: React.FC = () => {
   const getHeartbeat = React.useCallback(
     (processName: string): HeartbeatData | undefined => {
       if (processName.startsWith('executor_')) {
-        return allHeartbeats[processName] ?? UNKNOWN_HEARTBEAT
+        const withoutPrefix = processName.slice('executor_'.length)
+        const instanceMatch = withoutPrefix.match(/^(.+)_w([a-f0-9]{12})$/)
+        const componentKey = instanceMatch
+          ? `executor.${instanceMatch[1]}.${instanceMatch[2]}`
+          : `executor.${withoutPrefix}`
+
+        return allHeartbeats[componentKey] ?? UNKNOWN_HEARTBEAT
       }
 
       if (processName.includes('feed_publisher')) {
@@ -254,6 +277,102 @@ export const Processes: React.FC = () => {
           })}
         </div>
       </div>
+      {executorTemplates.length > 0 && (
+        <div className='space-y-4'>
+          <div>
+            <h2 className='text-lg font-semibold text-primary-600'>Executor Templates</h2>
+            <p className='text-sm text-muted-600 mt-1'>
+              Editing template config affects all wallets on this exchange after restart. Templates
+              are config-only — start the per-wallet instance below to run an executor.
+            </p>
+          </div>
+          <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
+            {executorTemplates.map(template => {
+              const description = getDescription(template)
+              const paramSummary = Object.keys(template.parameters).length
+                ? `${Object.keys(template.parameters).length} parameter(s)`
+                : 'no parameters set'
+
+              return (
+                <div
+                  key={template.name}
+                  data-testid={`executor-template-${template.name}`}
+                  className='bg-alpine-50 border border-dark-600 rounded-2xl p-6 flex flex-col gap-3'
+                >
+                  <div className='flex items-start justify-between gap-3'>
+                    <div className='min-w-0 flex-1'>
+                      <h3 className='text-lg font-semibold text-alpine-900 leading-snug'>
+                        {description || template.name}
+                      </h3>
+                      <p className='text-xs text-muted-400 mt-1 font-mono'>{template.name}</p>
+                    </div>
+                    <span className='px-2 py-1 rounded-md text-xs font-medium text-info-400 bg-info-400/10 shrink-0'>
+                      template
+                    </span>
+                  </div>
+                  <div className='space-y-1 text-xs'>
+                    <div className='flex gap-2'>
+                      <span className='text-muted-400 font-medium shrink-0'>Mode:</span>
+                      <span className='text-muted-600'>{template.mode}</span>
+                    </div>
+                    <div className='flex gap-2'>
+                      <span className='text-muted-400 font-medium shrink-0'>Parameters:</span>
+                      <span className='text-muted-600'>{paramSummary}</span>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
+      {walletInstances.length > 0 && (
+        <div className='space-y-4'>
+          <h2 className='text-lg font-semibold text-primary-600'>Wallet Instances</h2>
+          <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
+            {walletInstances.map(instance => {
+              const description = getDescription(instance)
+              const heartbeat = getHeartbeat(instance.name)
+              const walletShort = instance.wallet_public_id
+                ? `${instance.wallet_public_id.slice(0, 8)}…`
+                : 'unknown'
+              const details: Record<string, string> = {
+                wallet: walletShort,
+                template: instance.parent_template,
+              }
+
+              return (
+                <ProcessControlCard
+                  key={instance.name}
+                  title={description || instance.name}
+                  description=''
+                  status={instance.running ? 'running' : 'stopped'}
+                  details={details}
+                  heartbeat={heartbeat}
+                  onStart={() => handleStart(instance.name, description)}
+                  onStop={() =>
+                    handleStop(instance.name, `This will stop the ${instance.name} process.`)
+                  }
+                  onRestart={() =>
+                    handleRestart(
+                      instance.name,
+                      `This will restart the ${instance.name} process.`,
+                      () => handleStart(instance.name, description)
+                    )
+                  }
+                  isStarting={
+                    startProcess.isPending && startProcess.variables?.name === instance.name
+                  }
+                  isStopping={
+                    stopProcess.isPending && stopProcess.variables?.name === instance.name
+                  }
+                  readOnly={readOnly}
+                />
+              )
+            })}
+          </div>
+        </div>
+      )}
       {}
       {taskProcesses.length > 0 && (
         <div className='space-y-4'>

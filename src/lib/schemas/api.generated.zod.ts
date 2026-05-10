@@ -2679,6 +2679,9 @@ export const ConfiguredProcessSchema = z
     parameters_schema: z.record(z.string(), z.any()).nullable().optional(),
     is_one_shot: z.boolean(),
     active_public_id: z.string().nullable().optional(),
+    kind: z.enum(['template', 'instance']),
+    wallet_public_id: z.string().nullable().optional(),
+    parent_template: z.string().nullable().optional(),
   })
   .strict()
 

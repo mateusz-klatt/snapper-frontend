@@ -64,6 +64,7 @@ export function makeConfiguredProcess(
     role: 'core' as const,
     tags: [],
     is_one_shot: false,
+    kind: 'instance' as const,
     ...overrides,
   }) as Components['schemas']['ConfiguredProcess']
 }

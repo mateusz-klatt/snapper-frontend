@@ -477,7 +477,7 @@ describe('Processes', () => {
 
     if (heartbeatCallback) {
       heartbeatCallback(
-        makeHeartbeat({ component: 'executor_kraken', status: 'healthy', lag_ms: 10 })
+        makeHeartbeat({ component: 'executor.kraken', status: 'healthy', lag_ms: 10 })
       )
     }
   })
@@ -509,13 +509,13 @@ describe('Processes', () => {
       expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
     })
     act(() => {
-      heartbeatCallback?.(makeHeartbeat({ component: 'executor_kraken', status: 'healthy' }))
+      heartbeatCallback?.(makeHeartbeat({ component: 'executor.kraken', status: 'healthy' }))
     })
     await waitFor(() => {
       expect(screen.getByText('(0ms)')).toBeTruthy()
     })
     act(() => {
-      heartbeatCallback?.(makeHeartbeat({ component: 'executor_kraken', status: 'error' }))
+      heartbeatCallback?.(makeHeartbeat({ component: 'executor.kraken', status: 'error' }))
     })
     expect(screen.getByText('error')).toBeTruthy()
   })
@@ -1197,7 +1197,7 @@ describe('Processes', () => {
     expect(heartbeatCallback).toBeDefined()
     act(() => {
       heartbeatCallback?.(
-        makeHeartbeat({ component: 'executor_kraken', status: 'healthy', lag_ms: 10 })
+        makeHeartbeat({ component: 'executor.kraken', status: 'healthy', lag_ms: 10 })
       )
     })
   })
@@ -1233,7 +1233,7 @@ describe('Processes', () => {
       expect(screen.getByText(/unknown/i)).toBeTruthy()
       act(() => {
         heartbeatCallback?.(
-          makeHeartbeat({ component: 'executor_kraken', status: 'healthy', lag_ms: 10 })
+          makeHeartbeat({ component: 'executor.kraken', status: 'healthy', lag_ms: 10 })
         )
       })
       expect(screen.queryByText(/unknown/i)).toBeNull()
@@ -1532,7 +1532,7 @@ describe('Processes', () => {
     })
     act(() => {
       heartbeatCallback?.(
-        makeHeartbeat({ component: 'executor_kraken', status: 'healthy', lag_ms: 10 })
+        makeHeartbeat({ component: 'executor.kraken', status: 'healthy', lag_ms: 10 })
       )
     })
     unmount()
@@ -2025,5 +2025,302 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Execution Mode:')).toBeTruthy()
     })
+  })
+  it('renders Executor Templates section without Start/Stop buttons', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_kraken',
+        kind: 'template',
+        running: false,
+        enabled: false,
+        class_path: 'snapper.executor',
+        method: 'main',
+        parameters: { throttle: 5 },
+        note: 'Kraken Executor Template',
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Executor Templates')).toBeTruthy()
+    })
+    expect(screen.getByTestId('executor-template-executor_kraken')).toBeTruthy()
+    expect(
+      screen.getByText(
+        'Editing template config affects all wallets on this exchange after restart. Templates are config-only — start the per-wallet instance below to run an executor.'
+      )
+    ).toBeTruthy()
+    expect(screen.getByText('1 parameter(s)')).toBeTruthy()
+  })
+  it('clicking Start on a stopped Wallet Instance opens execution mode modal', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_kraken_w000000000003',
+        kind: 'instance',
+        wallet_public_id: '00000000-0000-7000-8000-000000000003',
+        parent_template: 'executor_kraken',
+        running: false,
+        enabled: true,
+        class_path: 'snapper.executor',
+        method: 'main',
+        parameters: { wallet_public_id: '00000000-0000-7000-8000-000000000003' },
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Wallet Instances')).toBeTruthy()
+    })
+    const startButton = screen
+      .getAllByRole('button', { name: /start/i })
+      .find(btn => btn instanceof HTMLElement) as HTMLElement | undefined
+
+    expect(startButton).toBeDefined()
+    fireEvent.click(startButton as HTMLElement)
+    await waitFor(() => {
+      expect(screen.getByText('Execution Mode:')).toBeTruthy()
+    })
+  })
+  it('clicking Stop on a Wallet Instance opens confirm and stops the process', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_kraken_w000000000001',
+        kind: 'instance',
+        wallet_public_id: '00000000-0000-7000-8000-000000000001',
+        parent_template: 'executor_kraken',
+        running: true,
+        enabled: true,
+        class_path: 'snapper.executor',
+        method: 'main',
+        parameters: { wallet_public_id: '00000000-0000-7000-8000-000000000001' },
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Wallet Instances')).toBeTruthy()
+    })
+    const stopButton = screen.getAllByRole('button', { name: /stop/i })[0] as HTMLElement
+
+    fireEvent.click(stopButton)
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    await waitFor(() => {
+      expect(mockStopProcessMutate).toHaveBeenCalledWith(
+        expect.objectContaining({ name: 'executor_kraken_w000000000001' })
+      )
+    })
+  })
+  it('clicking Restart on a Wallet Instance triggers stop then start mode modal', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_kraken_w000000000002',
+        kind: 'instance',
+        wallet_public_id: '00000000-0000-7000-8000-000000000002',
+        parent_template: 'executor_kraken',
+        running: true,
+        enabled: true,
+        class_path: 'snapper.executor',
+        method: 'main',
+        parameters: {},
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    let capturedOnSuccess: (() => void) | undefined
+
+    mockStopProcessMutate.mockImplementation(
+      (_vars: unknown, options: { onSuccess?: () => void }) => {
+        capturedOnSuccess = options?.onSuccess
+      }
+    )
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Wallet Instances')).toBeTruthy()
+    })
+    const restartButton = screen
+      .getAllByRole('button', { name: /restart/i })
+      .find(btn => btn instanceof HTMLElement) as HTMLElement | undefined
+
+    expect(restartButton).toBeDefined()
+    fireEvent.click(restartButton as HTMLElement)
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    expect(capturedOnSuccess).toBeDefined()
+    act(() => {
+      capturedOnSuccess?.()
+    })
+    await waitFor(() => {
+      expect(screen.getByText('Execution Mode:')).toBeTruthy()
+    })
+  })
+  it('renders Wallet Instances section with Start/Stop buttons', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_kraken_w000000000000',
+        kind: 'instance',
+        wallet_public_id: '00000000-0000-7000-8000-000000000001',
+        parent_template: 'executor_kraken',
+        running: true,
+        enabled: true,
+        class_path: 'snapper.executor',
+        method: 'main',
+        parameters: { wallet_public_id: '00000000-0000-7000-8000-000000000001' },
+        note: 'Per-wallet executor for exchange=kraken',
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Wallet Instances')).toBeTruthy()
+    })
+    expect(screen.getAllByRole('button', { name: /stop/i }).length).toBeGreaterThan(0)
+    expect(screen.getByText('00000000…')).toBeTruthy()
+    expect(screen.getByText('Executor_kraken')).toBeTruthy()
+  })
+  it('renders Wallet Instance with null wallet_public_id falling back to "unknown"', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_kraken_w000000000004',
+        kind: 'instance',
+        wallet_public_id: null,
+        parent_template: 'executor_kraken',
+        running: false,
+        enabled: true,
+        class_path: 'snapper.executor',
+        method: 'main',
+        parameters: {},
+        note: null,
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Wallet Instances')).toBeTruthy()
+    })
+    expect(screen.getByText('Unknown')).toBeTruthy()
+  })
+  it('renders executor template with empty description falling back to name', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_paper',
+        kind: 'template',
+        running: false,
+        enabled: false,
+        class_path: 'snapper.executor.paper',
+        method: 'main',
+        parameters: {},
+        note: null,
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Executor Templates')).toBeTruthy()
+    })
+    const templateCard = screen.getByTestId('executor-template-executor_paper')
+
+    expect(templateCard.textContent).toContain('executor_paper')
+    expect(screen.getByText('no parameters set')).toBeTruthy()
+  })
+  it('hides Executor Templates section when no templates present', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'zmq_broker',
+        kind: 'instance',
+        running: true,
+        enabled: true,
+        class_path: 'snapper.broker',
+        method: 'run',
+        parameters: {},
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Long-Running Processes')).toBeTruthy()
+    })
+    expect(screen.queryByText('Executor Templates')).toBeNull()
+    expect(screen.queryByText('Wallet Instances')).toBeNull()
   })
 })

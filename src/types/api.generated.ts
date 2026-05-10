@@ -1882,6 +1882,9 @@ export type Components = {
             parameters_schema?: Record<string, unknown> | null | undefined;
             is_one_shot: boolean;
             active_public_id?: string | null | undefined;
+            kind: "template" | "instance";
+            wallet_public_id?: string | null | undefined;
+            parent_template?: string | null | undefined;
         };
         ConfiguredProcessesResponse: {
             type: "configured_processes";
@@ -4868,9 +4871,7 @@ export interface Operations {
                 headers: {
                     [name: string]: unknown;
                 };
-                content: {
-                    "application/json": Components["schemas"]["HTTPValidationError"];
-                };
+                content?: never;
             };
         };
     };
