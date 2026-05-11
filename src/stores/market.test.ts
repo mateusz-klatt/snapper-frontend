@@ -66,6 +66,34 @@ describe('useMarketStore', () => {
       expect(useMarketStore.getState().selectedTimeframe).toBe('4h')
     })
   })
+  describe('setSelectedMarket', () => {
+    it('sets exchange + instrument atomically and resets lastPrice', () => {
+      useMarketStore.setState({ lastPrice: 50000 })
+      useMarketStore
+        .getState()
+        .setSelectedMarket({ exchange: 'kraken_futures', instrument: 'BTC-USD-PERP' })
+      const state = useMarketStore.getState()
+
+      expect(state.selectedExchange).toBe('kraken_futures')
+      expect(state.selectedInstrument).toBe('BTC-USD-PERP')
+      expect(state.lastPrice).toBeNull()
+    })
+    it('avoids the transient null instrument that setSelectedExchange produces', () => {
+      useMarketStore.setState({ selectedExchange: 'kraken', selectedInstrument: 'BTC-USD' })
+      const observed: Array<string | null> = []
+      const unsubscribe = useMarketStore.subscribe(
+        s => s.selectedInstrument,
+        instrument => observed.push(instrument)
+      )
+
+      useMarketStore
+        .getState()
+        .setSelectedMarket({ exchange: 'kraken_futures', instrument: 'BTC-USD-PERP' })
+      unsubscribe()
+      expect(observed).not.toContain(null)
+      expect(observed).toEqual(['BTC-USD-PERP'])
+    })
+  })
   describe('updateLastPrice', () => {
     it('updates last price', () => {
       useMarketStore.getState().updateLastPrice(45000)

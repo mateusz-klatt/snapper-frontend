@@ -33,6 +33,8 @@ export const queryKeys = {
     ['exchanges', exchange, 'instruments', asOf] as const,
   exchangeInstrumentsDetail: (exchange: string, asOf: string | null) =>
     ['exchanges', exchange, 'instruments', 'detail', asOf] as const,
+  relatedInstruments: (exchange: string, nativeSymbol: string, asOf: string | null) =>
+    ['market', 'related', exchange, nativeSymbol, asOf] as const,
   orders: (
     filters?: { symbol?: string; limit?: number; offset?: number },
     asOf?: string | null,

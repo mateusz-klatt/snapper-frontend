@@ -7,6 +7,7 @@ import { MarketData } from './MarketData'
 
 const mockSetSelectedExchange = vi.fn()
 const mockSetSelectedInstrument = vi.fn()
+const mockSetSelectedMarket = vi.fn()
 const mockSetSelectedTimeframe = vi.fn()
 
 vi.mock('../../hooks/queries/market', () => ({
@@ -33,6 +34,10 @@ vi.mock('../../hooks/queries/market', () => ({
     isLoading: false,
     error: null,
   })),
+  useRelatedInstruments: vi.fn(() => ({
+    data: undefined,
+    isFetching: false,
+  })),
 }))
 vi.mock('../../stores/market', () => ({
   useMarketStore: vi.fn(() => ({
@@ -41,6 +46,7 @@ vi.mock('../../stores/market', () => ({
     selectedTimeframe: '1h',
     setSelectedExchange: mockSetSelectedExchange,
     setSelectedInstrument: mockSetSelectedInstrument,
+    setSelectedMarket: mockSetSelectedMarket,
     setSelectedTimeframe: mockSetSelectedTimeframe,
   })),
 }))
@@ -655,6 +661,79 @@ describe('MarketData', () => {
         setSelectedInstrument: mockSetSelectedInstrument,
         setSelectedTimeframe: mockSetSelectedTimeframe,
       })
+    }
+  })
+
+  it('clicking a related-instrument chip calls setSelectedMarket atomically', async () => {
+    const { useRelatedInstruments } = await import('../../hooks/queries/market')
+    const { useMarketStore } = await import('../../stores/market')
+
+    vi.mocked(useMarketStore).mockReturnValue({
+      selectedExchange: 'kraken',
+      selectedInstrument: 'EUR-USD',
+      selectedTimeframe: '1h',
+      setSelectedExchange: mockSetSelectedExchange,
+      setSelectedInstrument: mockSetSelectedInstrument,
+      setSelectedMarket: mockSetSelectedMarket,
+      setSelectedTimeframe: mockSetSelectedTimeframe,
+    } as never)
+    vi.mocked(useRelatedInstruments).mockReturnValue({
+      data: {
+        type: 'related_instruments',
+        sequence_id: 0,
+        public_id: 'ri-env-1',
+        timestamp: '2026-04-21T00:00:00Z',
+        session_id: 'sid',
+        payload: {
+          selected: { exchange: 'kraken', native_symbol: 'EUR-USD' },
+          underlying: {
+            public_id: 'ua-eur-usd',
+            ticker: 'EUR',
+            name: 'Euro / US Dollar',
+            asset_class: 'forex',
+            sector: null,
+          },
+          groups: [
+            {
+              relationship_type: 'derivative',
+              label: 'Derivatives',
+              items: [
+                {
+                  type: 'related_instrument',
+                  sequence_id: 1,
+                  public_id: 'ri-perp',
+                  timestamp: '2026-04-21T00:00:00Z',
+                  session_id: 'sid',
+                  instrument_public_id: 'inst-eur-usd-perp',
+                  native_symbol: 'EUR-USD-PERP',
+                  exchange: 'kraken_futures',
+                  asset_type: 'forex',
+                  relationship_type: 'derivative',
+                  contract_family: 'EUR',
+                  is_selected: false,
+                },
+              ],
+            },
+          ],
+        },
+      },
+      isFetching: false,
+    } as never)
+
+    try {
+      renderWithProviders(<MarketData />)
+      const chip = await screen.findByRole('button', { name: /EUR-USD-PERP.*kraken_futures/i })
+
+      fireEvent.click(chip)
+      expect(mockSetSelectedMarket).toHaveBeenCalledWith({
+        exchange: 'kraken_futures',
+        instrument: 'EUR-USD-PERP',
+      })
+    } finally {
+      vi.mocked(useRelatedInstruments).mockReturnValue({
+        data: undefined,
+        isFetching: false,
+      } as never)
     }
   })
 })

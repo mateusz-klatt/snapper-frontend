@@ -1380,6 +1380,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/instruments/{exchange}/{native_symbol}/related": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["_get_related_instruments_api_instruments__exchange___native_symbol__related_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/executions": {
         parameters: {
             query?: never;
@@ -2809,6 +2825,51 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             payload: Components["schemas"]["RefreshData"];
+        };
+        RelatedInstrumentData: {
+            type: "related_instrument";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            instrument_public_id: string;
+            native_symbol: string;
+            exchange: string;
+            asset_type: string;
+            relationship_type: string;
+            contract_family: string | null;
+            is_selected: boolean;
+        };
+        RelatedInstrumentsGroup: {
+            relationship_type: string;
+            label: string;
+            items: Components["schemas"]["RelatedInstrumentData"][];
+        };
+        RelatedInstrumentsPayloadData: {
+            selected: Components["schemas"]["RelatedInstrumentsSelected"];
+            underlying: Components["schemas"]["RelatedInstrumentsUnderlying"] | null;
+            groups: Components["schemas"]["RelatedInstrumentsGroup"][];
+        };
+        RelatedInstrumentsResponse: {
+            type: "related_instruments";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["RelatedInstrumentsPayloadData"];
+        };
+        RelatedInstrumentsSelected: {
+            exchange: string;
+            native_symbol: string;
+        };
+        RelatedInstrumentsUnderlying: {
+            public_id: string;
+            ticker: string;
+            name: string;
+            asset_class: string;
+            sector: string | null;
         };
         RelationshipTypeEnum: "exact" | "derivative" | "proxy";
         RestRateData: {
@@ -7061,6 +7122,44 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    _get_related_instruments_api_instruments__exchange___native_symbol__related_get: {
+        parameters: {
+            query?: {
+                as_of?: string | null | undefined;
+            };
+            header?: never;
+            path: {
+                exchange: string;
+                native_symbol: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["RelatedInstrumentsResponse"];
+                };
             };
             422: {
                 headers: {
