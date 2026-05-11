@@ -83,5 +83,9 @@ export async function getRelatedInstruments(
   )}/related`
   const data = await apiClient.getJSON(path)
 
-  return validateResponse(data, RelatedInstrumentsResponseSchema, path)
+  return validateResponse(
+    data,
+    RelatedInstrumentsResponseSchema,
+    '/instruments/:exchange/:native_symbol/related'
+  )
 }

@@ -267,4 +267,30 @@ describe('market API methods', () => {
       expect.any(Object)
     )
   })
+
+  it('getRelatedInstruments percent-encodes reserved characters in path params', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'related_instruments',
+        sequence_id: 0,
+        public_id: 'ri-env-1',
+        timestamp: '2026-04-21T00:00:00Z',
+        session_id: 'test-sid',
+        payload: {
+          selected: { exchange: 'kraken', native_symbol: 'BTC/USD' },
+          underlying: null,
+          groups: [],
+        },
+      }),
+    })
+
+    await getRelatedInstruments('kraken', 'BTC/USD')
+
+    const requestedUrl = mockFetch.mock.calls[0]?.[0]
+
+    expect(requestedUrl).toContain('/api/instruments/kraken/BTC%2FUSD/related')
+    expect(requestedUrl).not.toContain('/api/instruments/kraken/BTC/USD/related')
+  })
 })
