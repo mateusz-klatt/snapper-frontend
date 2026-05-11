@@ -7,7 +7,11 @@ interface Props {
   onSelect: (selection: { exchange: string; symbol: string }) => void
 }
 
-export function RelatedInstrumentsRow({ selectedExchange, selectedInstrument, onSelect }: Props) {
+export function RelatedInstrumentsRow({
+  selectedExchange,
+  selectedInstrument,
+  onSelect,
+}: Readonly<Props>) {
   const { data, isFetching } = useRelatedInstruments(selectedExchange, selectedInstrument)
 
   if (selectedExchange === null || selectedInstrument === null) {
