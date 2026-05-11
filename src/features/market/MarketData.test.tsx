@@ -719,6 +719,7 @@ describe('MarketData', () => {
       },
       isFetching: false,
     } as never)
+
     try {
       renderWithProviders(<MarketData />)
       const chip = await screen.findByRole('button', { name: /EUR-USD-PERP.*kraken_futures/i })
