@@ -159,12 +159,10 @@ export function parseWsMessage(raw: unknown): WsMessageUnion | null {
     return unionResult.data
   }
 
+  const rawObject = typeof raw === 'object' && raw !== null ? raw : null
   const rawType =
-    typeof raw === 'object' &&
-    raw !== null &&
-    'type' in raw &&
-    typeof (raw as { type: unknown }).type === 'string'
-      ? (raw as { type: string }).type
+    rawObject !== null && 'type' in rawObject && typeof rawObject.type === 'string'
+      ? rawObject.type
       : '<no type>'
 
   if (KNOWN_MESSAGE_TYPES.has(rawType)) {

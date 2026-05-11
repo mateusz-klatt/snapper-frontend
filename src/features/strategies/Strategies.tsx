@@ -82,7 +82,7 @@ export const Strategies: React.FC = () => {
         const strategy = strategies.find(s => s.name === strategyName)
 
         if (strategy) {
-          const status = message.status as HealthStatus['status']
+          const status = message.status
 
           setHealthStatuses(prev => ({
             ...prev,

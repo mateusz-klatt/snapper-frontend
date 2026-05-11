@@ -96,6 +96,24 @@ const mockCanvasContext = {
   resetTransform: vi.fn(),
 } as unknown as CanvasRenderingContext2D
 
-HTMLCanvasElement.prototype.getContext = vi.fn(
-  () => mockCanvasContext
-) as unknown as typeof HTMLCanvasElement.prototype.getContext
+function getMockCanvasContext(
+  contextId: '2d',
+  options?: CanvasRenderingContext2DSettings
+): CanvasRenderingContext2D | null
+function getMockCanvasContext(
+  contextId: 'bitmaprenderer',
+  options?: ImageBitmapRenderingContextSettings
+): ImageBitmapRenderingContext | null
+function getMockCanvasContext(
+  contextId: 'webgl',
+  options?: WebGLContextAttributes
+): WebGLRenderingContext | null
+function getMockCanvasContext(
+  contextId: 'webgl2',
+  options?: WebGLContextAttributes
+): WebGL2RenderingContext | null
+function getMockCanvasContext(contextId: string, _options?: unknown): RenderingContext | null {
+  return contextId === '2d' ? mockCanvasContext : null
+}
+
+HTMLCanvasElement.prototype.getContext = getMockCanvasContext
