@@ -5,6 +5,7 @@ import { MarketDataState } from '../types/ui'
 interface MarketDataStore extends MarketDataState {
   setSelectedExchange: (exchange: string | null) => void
   setSelectedInstrument: (instrument: string | null) => void
+  setSelectedMarket: (selection: { exchange: string; instrument: string }) => void
   setSelectedTimeframe: (timeframe: string) => void
   updateLastPrice: (price: number) => void
 }
@@ -25,6 +26,13 @@ export const useMarketStore = create<MarketDataStore>()(
     },
     setSelectedInstrument: instrument => {
       set({
+        selectedInstrument: instrument,
+        lastPrice: null,
+      })
+    },
+    setSelectedMarket: ({ exchange, instrument }) => {
+      set({
+        selectedExchange: exchange,
         selectedInstrument: instrument,
         lastPrice: null,
       })

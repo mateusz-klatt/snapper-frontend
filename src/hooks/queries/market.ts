@@ -4,6 +4,7 @@ import {
   getExchanges,
   getExchangeInstruments,
   getExchangeInstrumentsDetail,
+  getRelatedInstruments,
 } from '../../lib/api/market'
 import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
@@ -66,6 +67,21 @@ export const useExchangeInstrumentsDetail = (exchange: string | null) => {
     queryFn: () => getExchangeInstrumentsDetail(exchangeKey),
     enabled: isAuthenticated && !!exchange,
     staleTime: 5 * 60 * 1000,
+    throwOnError: false,
+  })
+}
+
+export const useRelatedInstruments = (exchange: string | null, nativeSymbol: string | null) => {
+  const { isAuthenticated } = useAuth()
+  const asOf = useAppStore(s => s.asOf)
+  const exchangeKey = exchange ?? ''
+  const symbolKey = nativeSymbol ?? ''
+
+  return useQuery({
+    queryKey: queryKeys.relatedInstruments(exchangeKey, symbolKey, asOf),
+    queryFn: () => getRelatedInstruments(exchangeKey, symbolKey),
+    enabled: isAuthenticated && !!exchange && !!nativeSymbol,
+    staleTime: 60 * 1000,
     throwOnError: false,
   })
 }

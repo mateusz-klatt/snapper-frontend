@@ -7,9 +7,10 @@ import {
   useExchanges,
   useExchangeInstruments,
   useExchangeInstrumentsDetail,
+  useRelatedInstruments,
 } from './market'
 import { useAuth } from '../../stores/auth'
-import { getCandles, getExchangeInstruments } from '../../lib/api/market'
+import { getCandles, getExchangeInstruments, getRelatedInstruments } from '../../lib/api/market'
 
 const ENV = {
   seq: 0,
@@ -33,6 +34,44 @@ vi.mock('../../lib/api/market', () => ({
   getCandles: vi.fn(() => Promise.resolve([])),
   getExchangeInstruments: vi.fn(() =>
     Promise.resolve(envelope('instrument_list', { payload: ['BTC/USD', 'ETH/USD'], count: 2 }))
+  ),
+  getRelatedInstruments: vi.fn(() =>
+    Promise.resolve(
+      envelope('related_instruments', {
+        payload: {
+          selected: { exchange: 'kraken', native_symbol: 'BTC-USD' },
+          underlying: {
+            public_id: 'ua-1',
+            ticker: 'BTC',
+            name: 'Bitcoin',
+            asset_class: 'crypto',
+            sector: null,
+          },
+          groups: [
+            {
+              relationship_type: 'exact',
+              label: 'Same underlying',
+              items: [
+                {
+                  type: 'related_instrument',
+                  sequence_id: 1,
+                  public_id: 'r-1',
+                  timestamp: '2026-04-21T00:00:00Z',
+                  session_id: 'sid',
+                  instrument_public_id: 'inst-btc-kraken',
+                  native_symbol: 'BTC-USD',
+                  exchange: 'kraken',
+                  asset_type: 'crypto',
+                  relationship_type: 'exact',
+                  contract_family: null,
+                  is_selected: true,
+                },
+              ],
+            },
+          ],
+        },
+      })
+    )
   ),
   getExchangeInstrumentsDetail: vi.fn(() =>
     Promise.resolve(
@@ -165,6 +204,41 @@ describe('market queries', () => {
         expect(result.current.isLoading).toBe(false)
       })
       expect(result.current.data).toBeUndefined()
+    })
+  })
+  describe('useRelatedInstruments', () => {
+    it('returns grouped payload when exchange + symbol provided', async () => {
+      const { result } = renderHook(() => useRelatedInstruments('kraken', 'BTC-USD'), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(result.current.data?.payload.underlying?.ticker).toBe('BTC')
+      expect(result.current.data?.payload.groups[0]?.items[0]?.is_selected).toBe(true)
+    })
+    it('does not fetch when exchange is null', async () => {
+      const { result } = renderHook(() => useRelatedInstruments(null, 'BTC-USD'), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(result.current.data).toBeUndefined()
+      expect(vi.mocked(getRelatedInstruments)).not.toHaveBeenCalled()
+    })
+    it('does not fetch when symbol is null', async () => {
+      const { result } = renderHook(() => useRelatedInstruments('kraken', null), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(result.current.data).toBeUndefined()
+      expect(vi.mocked(getRelatedInstruments)).not.toHaveBeenCalled()
     })
   })
   describe('authentication behavior', () => {

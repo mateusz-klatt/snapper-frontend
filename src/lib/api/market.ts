@@ -5,12 +5,14 @@ import {
   ExchangeListResponseSchema,
   InstrumentDetailListResponseSchema,
   InstrumentListResponseSchema,
+  RelatedInstrumentsResponseSchema,
 } from '../schemas/api.generated.zod'
 import { CandleDataSchema } from '../schemas/ws.generated.zod'
 import type {
   ExchangeListResponse,
   InstrumentDetailListResponse,
   InstrumentListResponse,
+  RelatedInstrumentsResponse,
   CandleData,
 } from '../../types/api'
 
@@ -70,4 +72,16 @@ export async function getExchangeInstrumentsDetail(
     InstrumentDetailListResponseSchema,
     `/exchanges/${exchange}/instruments/detail`
   )
+}
+
+export async function getRelatedInstruments(
+  exchange: string,
+  nativeSymbol: string
+): Promise<RelatedInstrumentsResponse> {
+  const path = `/api/instruments/${encodeURIComponent(exchange)}/${encodeURIComponent(
+    nativeSymbol
+  )}/related`
+  const data = await apiClient.getJSON(path)
+
+  return validateResponse(data, RelatedInstrumentsResponseSchema, path)
 }

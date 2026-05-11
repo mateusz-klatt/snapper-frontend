@@ -618,6 +618,41 @@ export const PushBetaConfigReadSchema = z
   })
   .strict()
 
+export const RelatedInstrumentDataSchema = z
+  .object({
+    type: z.literal('related_instrument'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    instrument_public_id: z.string(),
+    native_symbol: z.string(),
+    exchange: z.string(),
+    asset_type: z.string(),
+    relationship_type: z.string(),
+    contract_family: z.string().nullable(),
+    is_selected: z.boolean(),
+  })
+  .strict()
+
+export const RelatedInstrumentsSelectedSchema = z
+  .object({
+    exchange: z.string(),
+    native_symbol: z.string(),
+  })
+  .strict()
+
+export const RelatedInstrumentsUnderlyingSchema = z
+  .object({
+    public_id: z.string(),
+    ticker: z.string(),
+    name: z.string(),
+    asset_class: z.string(),
+    sector: z.string().nullable(),
+  })
+  .strict()
+
 export const RelationshipTypeEnumSchema = z.enum(['exact', 'derivative', 'proxy'])
 
 export const RestRateExchangeStatsSchema = z
@@ -1596,6 +1631,14 @@ export const PushBetaConfigResponseSchema = z
   })
   .strict()
 
+export const RelatedInstrumentsGroupSchema = z
+  .object({
+    relationship_type: z.string(),
+    label: z.string(),
+    items: z.array(RelatedInstrumentDataSchema),
+  })
+  .strict()
+
 export const RestRateDataSchema = z
   .object({
     type: z.literal('rest_rate'),
@@ -2359,6 +2402,14 @@ export const ProcessCreateResponseSchema = z
   })
   .strict()
 
+export const RelatedInstrumentsPayloadDataSchema = z
+  .object({
+    selected: RelatedInstrumentsSelectedSchema,
+    underlying: RelatedInstrumentsUnderlyingSchema.nullable(),
+    groups: z.array(RelatedInstrumentsGroupSchema),
+  })
+  .strict()
+
 export const RestRateResponseSchema = z
   .object({
     type: z.literal('rest_rate_response'),
@@ -2802,6 +2853,18 @@ export const ProcessStartBodySchema = z
   })
   .strict()
 
+export const RelatedInstrumentsResponseSchema = z
+  .object({
+    type: z.literal('related_instruments'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: RelatedInstrumentsPayloadDataSchema,
+  })
+  .strict()
+
 export const LoginResponseSchema = z
   .object({
     type: z.literal('login_response'),
@@ -3210,6 +3273,9 @@ export type ProcessStartData = z.infer<typeof ProcessStartDataSchema>
 export type ProcessStatus = z.infer<typeof ProcessStatusSchema>
 export type ProcessStopData = z.infer<typeof ProcessStopDataSchema>
 export type PushBetaConfigRead = z.infer<typeof PushBetaConfigReadSchema>
+export type RelatedInstrumentData = z.infer<typeof RelatedInstrumentDataSchema>
+export type RelatedInstrumentsSelected = z.infer<typeof RelatedInstrumentsSelectedSchema>
+export type RelatedInstrumentsUnderlying = z.infer<typeof RelatedInstrumentsUnderlyingSchema>
 export type RelationshipTypeEnum = z.infer<typeof RelationshipTypeEnumSchema>
 export type RestRateExchangeStats = z.infer<typeof RestRateExchangeStatsSchema>
 export type RetentionPolicyResult = z.infer<typeof RetentionPolicyResultSchema>
@@ -3300,6 +3366,7 @@ export type ProcessCreateData = z.infer<typeof ProcessCreateDataSchema>
 export type ProcessStartResponse = z.infer<typeof ProcessStartResponseSchema>
 export type ProcessStopResponse = z.infer<typeof ProcessStopResponseSchema>
 export type PushBetaConfigResponse = z.infer<typeof PushBetaConfigResponseSchema>
+export type RelatedInstrumentsGroup = z.infer<typeof RelatedInstrumentsGroupSchema>
 export type RestRateData = z.infer<typeof RestRateDataSchema>
 export type RetentionRunData = z.infer<typeof RetentionRunDataSchema>
 export type ContinuousSeriesPartialResponse = z.infer<typeof ContinuousSeriesPartialResponseSchema>
@@ -3363,6 +3430,7 @@ export type HealthCheckData = z.infer<typeof HealthCheckDataSchema>
 export type JsonObject = z.infer<typeof JsonObjectSchema>
 export type ProcessSummaryResponse = z.infer<typeof ProcessSummaryResponseSchema>
 export type ProcessCreateResponse = z.infer<typeof ProcessCreateResponseSchema>
+export type RelatedInstrumentsPayloadData = z.infer<typeof RelatedInstrumentsPayloadDataSchema>
 export type RestRateResponse = z.infer<typeof RestRateResponseSchema>
 export type RetentionRunResponse = z.infer<typeof RetentionRunResponseSchema>
 export type SystemMetricsResponse = z.infer<typeof SystemMetricsResponseSchema>
@@ -3392,6 +3460,7 @@ export type StrategyStatusPayload = z.infer<typeof StrategyStatusPayloadSchema>
 export type BacktestCreateBody = z.infer<typeof BacktestCreateBodySchema>
 export type ProcessCreateBody = z.infer<typeof ProcessCreateBodySchema>
 export type ProcessStartBody = z.infer<typeof ProcessStartBodySchema>
+export type RelatedInstrumentsResponse = z.infer<typeof RelatedInstrumentsResponseSchema>
 export type LoginResponse = z.infer<typeof LoginResponseSchema>
 export type RefreshResponse = z.infer<typeof RefreshResponseSchema>
 export type AlertEventResponse = z.infer<typeof AlertEventResponseSchema>

@@ -3,6 +3,7 @@ import { Card, LoadingSpinner } from '../../components/ui'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
 import { LightweightChart } from '../../components/LightweightChart'
+import { RelatedInstrumentsRow } from './RelatedInstrumentsRow'
 import { useCandles, useExchanges, useExchangeInstrumentsDetail } from '../../hooks/queries/market'
 import { useAppStore } from '../../stores/app'
 import { useMarketStore } from '../../stores/market'
@@ -37,6 +38,7 @@ export function MarketData() {
     selectedTimeframe,
     setSelectedExchange,
     setSelectedInstrument,
+    setSelectedMarket,
     setSelectedTimeframe,
   } = useMarketStore()
 
@@ -279,6 +281,11 @@ export function MarketData() {
           </Select.Root>
         </div>
       </div>
+      <RelatedInstrumentsRow
+        selectedExchange={selectedExchange}
+        selectedInstrument={selectedInstrument}
+        onSelect={({ exchange, symbol }) => setSelectedMarket({ exchange, instrument: symbol })}
+      />
       {}
       {stats && (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>

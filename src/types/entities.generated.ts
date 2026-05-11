@@ -582,6 +582,25 @@ export interface Position {
 }
 
 /**
+ * Canonical RelatedInstrument entity.
+ * From WebSocket RelatedInstrumentData.
+ */
+export interface RelatedInstrument {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  instrumentPublicId: string
+  nativeSymbol: string
+  exchange: string
+  assetType: string
+  relationshipType: string
+  contractFamily: string | null
+  isSelected: boolean
+}
+
+/**
  * Canonical ReplayEnd entity.
  * From WebSocket ReplayEndData.
  */

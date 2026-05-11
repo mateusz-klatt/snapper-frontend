@@ -6,6 +6,7 @@ import {
   getExchanges,
   getExchangeInstruments,
   getExchangeInstrumentsDetail,
+  getRelatedInstruments,
 } from './market'
 
 vi.mock('../utils', () => ({
@@ -209,6 +210,60 @@ describe('market API methods', () => {
     expect(result.payload[0]?.can_trade).toBe(false)
     expect(mockFetch).toHaveBeenCalledWith(
       expect.stringContaining('/api/exchanges/kraken_equities/instruments/detail'),
+      expect.any(Object)
+    )
+  })
+  it('getRelatedInstruments returns the grouped payload', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'related_instruments',
+        sequence_id: 0,
+        public_id: 'ri-env-1',
+        timestamp: '2026-04-21T00:00:00Z',
+        session_id: 'test-sid',
+        payload: {
+          selected: { exchange: 'kraken', native_symbol: 'BTC-USD' },
+          underlying: {
+            public_id: 'ua-1',
+            ticker: 'BTC',
+            name: 'Bitcoin',
+            asset_class: 'crypto',
+            sector: null,
+          },
+          groups: [
+            {
+              relationship_type: 'exact',
+              label: 'Same underlying',
+              items: [
+                {
+                  type: 'related_instrument',
+                  sequence_id: 1,
+                  public_id: 'ri-1',
+                  timestamp: '2026-04-21T00:00:00Z',
+                  session_id: 'test-sid',
+                  instrument_public_id: 'inst-btc-kraken',
+                  native_symbol: 'BTC-USD',
+                  exchange: 'kraken',
+                  asset_type: 'crypto',
+                  relationship_type: 'exact',
+                  contract_family: null,
+                  is_selected: true,
+                },
+              ],
+            },
+          ],
+        },
+      }),
+    })
+
+    const result = await getRelatedInstruments('kraken', 'BTC-USD')
+
+    expect(result.payload.underlying?.ticker).toBe('BTC')
+    expect(result.payload.groups[0]?.items[0]?.is_selected).toBe(true)
+    expect(mockFetch).toHaveBeenCalledWith(
+      expect.stringContaining('/api/instruments/kraken/BTC-USD/related'),
       expect.any(Object)
     )
   })

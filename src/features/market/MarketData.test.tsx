@@ -7,6 +7,7 @@ import { MarketData } from './MarketData'
 
 const mockSetSelectedExchange = vi.fn()
 const mockSetSelectedInstrument = vi.fn()
+const mockSetSelectedMarket = vi.fn()
 const mockSetSelectedTimeframe = vi.fn()
 
 vi.mock('../../hooks/queries/market', () => ({
@@ -33,6 +34,10 @@ vi.mock('../../hooks/queries/market', () => ({
     isLoading: false,
     error: null,
   })),
+  useRelatedInstruments: vi.fn(() => ({
+    data: undefined,
+    isFetching: false,
+  })),
 }))
 vi.mock('../../stores/market', () => ({
   useMarketStore: vi.fn(() => ({
@@ -41,6 +46,7 @@ vi.mock('../../stores/market', () => ({
     selectedTimeframe: '1h',
     setSelectedExchange: mockSetSelectedExchange,
     setSelectedInstrument: mockSetSelectedInstrument,
+    setSelectedMarket: mockSetSelectedMarket,
     setSelectedTimeframe: mockSetSelectedTimeframe,
   })),
 }))

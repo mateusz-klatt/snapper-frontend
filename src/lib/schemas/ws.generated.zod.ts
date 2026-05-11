@@ -495,6 +495,24 @@ export const PositionDataSchema = z
   })
   .strict()
 
+export const RelatedInstrumentDataSchema = z
+  .object({
+    type: z.literal('related_instrument'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    instrument_public_id: z.string(),
+    native_symbol: z.string(),
+    exchange: z.string(),
+    asset_type: z.string(),
+    relationship_type: z.string(),
+    contract_family: z.string().nullable(),
+    is_selected: z.boolean(),
+  })
+  .strict()
+
 export const ReplayEndDataSchema = z
   .object({
     type: z.literal('replay_end'),
