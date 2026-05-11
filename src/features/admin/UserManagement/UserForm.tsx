@@ -303,7 +303,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
             <ThemeSelect
               id='role'
               value={formData.role}
-              onChange={val => handleInputChange('role', val as 'admin' | 'operator' | 'viewer')}
+              onChange={val => handleInputChange('role', val)}
               options={[
                 { value: 'viewer', label: 'Viewer' },
                 { value: 'operator', label: 'Operator' },

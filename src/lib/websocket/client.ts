@@ -297,13 +297,13 @@ class WebSocketClient {
       this.scheduleReauthFromMs(expirationMs)
     }
 
-    this.notifyHandlers({ ...message, type: 'auth_ok' } as WebSocketMessages)
+    this.notifyHandlers({ ...message, type: 'auth_ok' })
   }
   private handleAuthComplete(message: WSAuthCompleteResponse): void {
     this.sessionExpiresAt = message.session_expires_at ?? null
     this.isAuthenticated = true
     this.onConnectionReady()
-    this.notifyHandlers({ ...message, type: 'auth_complete' } as WebSocketMessages)
+    this.notifyHandlers({ ...message, type: 'auth_complete' })
   }
   private handleAuthFailure(message: WSAuthFailedResponse): void {
     console.error('WebSocket authentication failed:', message)
@@ -311,7 +311,7 @@ class WebSocketClient {
     this.isAuthenticated = false
     this.clearReauthTimer()
     this.reconnectAttempts = this.maxReconnectAttempts
-    this.notifyHandlers({ ...message, type: 'auth_failed' } as WebSocketMessages)
+    this.notifyHandlers({ ...message, type: 'auth_failed' })
 
     const authCallback = (globalThis as { authLogoutCallback?: () => void }).authLogoutCallback
 
@@ -366,7 +366,7 @@ class WebSocketClient {
       this.scheduleReauthFromMs(expirationMs)
     }
 
-    this.notifyHandlers({ ...message, type: 'reauth_ok' } as WebSocketMessages)
+    this.notifyHandlers({ ...message, type: 'reauth_ok' })
   }
   private handleAuthExpired(): void {
     console.warn('WebSocket authentication expired - awaiting reconnect')

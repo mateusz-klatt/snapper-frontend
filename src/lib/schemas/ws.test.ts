@@ -22,6 +22,12 @@ describe('parseWsMessage', () => {
     expect(result).toBeNull()
     expect(console.warn).toHaveBeenCalledWith(expect.stringContaining('<no type>'))
   })
+  it('returns null for non-object messages', () => {
+    const result = parseWsMessage('not-json')
+
+    expect(result).toBeNull()
+    expect(console.warn).toHaveBeenCalledWith(expect.stringContaining('<no type>'))
+  })
   it('returns data for valid messages', () => {
     const message = createCandle()
     const result = parseWsMessage(message)

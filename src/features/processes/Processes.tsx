@@ -23,6 +23,8 @@ const UNKNOWN_HEARTBEAT: HeartbeatData = {
   timestamp: 0,
 }
 
+const EXECUTOR_INSTANCE_PATTERN = /^(.+)_w([a-f0-9]{12})$/
+
 const resolveStatusBadge = (process: ConfiguredProcess): string => {
   if (process.is_one_shot) return 'one-shot'
   if (process.enabled) return 'auto-start'
@@ -208,7 +210,7 @@ export const Processes: React.FC = () => {
     (processName: string): HeartbeatData | undefined => {
       if (processName.startsWith('executor_')) {
         const withoutPrefix = processName.slice('executor_'.length)
-        const instanceMatch = withoutPrefix.match(/^(.+)_w([a-f0-9]{12})$/)
+        const instanceMatch = EXECUTOR_INSTANCE_PATTERN.exec(withoutPrefix)
         const componentKey = instanceMatch
           ? `executor.${instanceMatch[1]}.${instanceMatch[2]}`
           : `executor.${withoutPrefix}`

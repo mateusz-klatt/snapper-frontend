@@ -66,7 +66,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
       mode === 'auto'
         ? {
             mode: 'auto',
-            config_hash: configHash as string,
+            config_hash: configHash,
             anchor_run_public_id: currentRun.public_id,
           }
         : {
