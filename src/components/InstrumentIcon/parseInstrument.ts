@@ -3,7 +3,10 @@ import { isFiat, isStablecoin } from './taxRules'
 
 const PERP_SUFFIX = '-PERP'
 const PERP_INV_SUFFIX = '-PERP-INV'
+const BTNL_SUFFIX = '-BTNL'
 const FUTURE_DATE_RE = /-\d{6}(-INV)?$/
+
+type StrippableSuffix = typeof PERP_SUFFIX | typeof PERP_INV_SUFFIX | typeof BTNL_SUFFIX
 
 const KNOWN_INDICES = new Set(['SPX', 'NDX', 'DJI', 'RUT', 'EMD', 'NK', 'MNK'])
 const KNOWN_YIELDS = new Set(['US2Y', 'US5Y', 'US10Y', 'US30Y'])
@@ -51,10 +54,18 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
     return parseKrakenEquitiesSymbol(upper)
   }
 
-  const perpMatch = matchPerpStrip(upper)
+  const suffixMatch = matchInstrumentSuffix(upper)
 
-  if (perpMatch !== null) {
-    return { ...perpMatch, assetClass: 'crypto-perp', underlyingTicker: perpMatch.base }
+  if (suffixMatch !== null) {
+    const assetClass: AssetClass =
+      suffixMatch.suffix === BTNL_SUFFIX ? 'crypto-spot' : 'crypto-perp'
+
+    return {
+      base: suffixMatch.base,
+      quote: suffixMatch.quote,
+      assetClass,
+      underlyingTicker: suffixMatch.base,
+    }
   }
 
   const dash = upper.indexOf('-')
@@ -81,29 +92,47 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
   return { base, quote, assetClass, underlyingTicker }
 }
 
-function matchPerpStrip(upper: string): { base: string; quote: string } | null {
-  const suffix = pickPerpSuffix(upper)
+function matchInstrumentSuffix(
+  upper: string
+): { base: string; quote: string; suffix: StrippableSuffix | null } | null {
+  const suffix = pickInstrumentSuffix(upper)
 
   if (suffix !== null) {
-    return splitFirstDash(upper.slice(0, -suffix.length))
+    const stripped = splitFirstDash(upper.slice(0, -suffix.length))
+
+    if (stripped === null) {
+      return null
+    }
+
+    return { ...stripped, suffix }
   }
 
   const futureMatch = FUTURE_DATE_RE.exec(upper)
 
   if (futureMatch !== null) {
-    return splitFirstDash(upper.slice(0, futureMatch.index))
+    const stripped = splitFirstDash(upper.slice(0, futureMatch.index))
+
+    if (stripped === null) {
+      return null
+    }
+
+    return { ...stripped, suffix: null }
   }
 
   return null
 }
 
-function pickPerpSuffix(upper: string): string | null {
+function pickInstrumentSuffix(upper: string): StrippableSuffix | null {
   if (upper.endsWith(PERP_INV_SUFFIX)) {
     return PERP_INV_SUFFIX
   }
 
   if (upper.endsWith(PERP_SUFFIX)) {
     return PERP_SUFFIX
+  }
+
+  if (upper.endsWith(BTNL_SUFFIX)) {
+    return BTNL_SUFFIX
   }
 
   return null
