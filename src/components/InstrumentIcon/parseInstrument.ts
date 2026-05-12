@@ -3,8 +3,10 @@ import { isFiat, isStablecoin } from './taxRules'
 
 const PERP_SUFFIX = '-PERP'
 const PERP_INV_SUFFIX = '-PERP-INV'
-const PERP_BTNL_SUFFIX = '-BTNL'
+const BTNL_SUFFIX = '-BTNL'
 const FUTURE_DATE_RE = /-\d{6}(-INV)?$/
+
+type StrippableSuffix = typeof PERP_SUFFIX | typeof PERP_INV_SUFFIX | typeof BTNL_SUFFIX
 
 const KNOWN_INDICES = new Set(['SPX', 'NDX', 'DJI', 'RUT', 'EMD', 'NK', 'MNK'])
 const KNOWN_YIELDS = new Set(['US2Y', 'US5Y', 'US10Y', 'US30Y'])
@@ -52,17 +54,17 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
     return parseKrakenEquitiesSymbol(upper)
   }
 
-  const perpMatch = matchPerpStrip(upper)
+  const suffixMatch = matchInstrumentSuffix(upper)
 
-  if (perpMatch !== null) {
+  if (suffixMatch !== null) {
     const assetClass: AssetClass =
-      perpMatch.suffix === PERP_BTNL_SUFFIX ? 'crypto-spot' : 'crypto-perp'
+      suffixMatch.suffix === BTNL_SUFFIX ? 'crypto-spot' : 'crypto-perp'
 
     return {
-      base: perpMatch.base,
-      quote: perpMatch.quote,
+      base: suffixMatch.base,
+      quote: suffixMatch.quote,
       assetClass,
-      underlyingTicker: perpMatch.base,
+      underlyingTicker: suffixMatch.base,
     }
   }
 
@@ -90,10 +92,10 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
   return { base, quote, assetClass, underlyingTicker }
 }
 
-function matchPerpStrip(
+function matchInstrumentSuffix(
   upper: string
-): { base: string; quote: string; suffix: string | null } | null {
-  const suffix = pickPerpSuffix(upper)
+): { base: string; quote: string; suffix: StrippableSuffix | null } | null {
+  const suffix = pickInstrumentSuffix(upper)
 
   if (suffix !== null) {
     const stripped = splitFirstDash(upper.slice(0, -suffix.length))
@@ -120,7 +122,7 @@ function matchPerpStrip(
   return null
 }
 
-function pickPerpSuffix(upper: string): string | null {
+function pickInstrumentSuffix(upper: string): StrippableSuffix | null {
   if (upper.endsWith(PERP_INV_SUFFIX)) {
     return PERP_INV_SUFFIX
   }
@@ -129,8 +131,8 @@ function pickPerpSuffix(upper: string): string | null {
     return PERP_SUFFIX
   }
 
-  if (upper.endsWith(PERP_BTNL_SUFFIX)) {
-    return PERP_BTNL_SUFFIX
+  if (upper.endsWith(BTNL_SUFFIX)) {
+    return BTNL_SUFFIX
   }
 
   return null

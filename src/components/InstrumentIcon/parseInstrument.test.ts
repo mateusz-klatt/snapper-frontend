@@ -87,8 +87,10 @@ describe('parseInstrument', () => {
     it('parses inverse dated future BTC-USD-260925-INV', (): void => {
       expect(parseInstrument('BTC-USD-260925-INV', 'kraken_futures').underlyingTicker).toBe('BTC')
     })
+  })
 
-    it('parses BTC-USD-BTNL as Bitnomial spot venue (CFTC-regulated US relay via Kraken WS)', (): void => {
+  describe('venue suffix (-BTNL)', () => {
+    it('parses BTC-USD-BTNL as crypto-spot', (): void => {
       expect(parseInstrument('BTC-USD-BTNL', 'kraken')).toEqual({
         base: 'BTC',
         quote: 'USD',
@@ -97,7 +99,7 @@ describe('parseInstrument', () => {
       })
     })
 
-    it('parses ETH-USD-BTNL as Bitnomial spot venue', (): void => {
+    it('parses ETH-USD-BTNL as crypto-spot', (): void => {
       expect(parseInstrument('ETH-USD-BTNL', 'kraken')).toEqual({
         base: 'ETH',
         quote: 'USD',
