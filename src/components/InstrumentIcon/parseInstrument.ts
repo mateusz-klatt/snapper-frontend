@@ -3,6 +3,7 @@ import { isFiat, isStablecoin } from './taxRules'
 
 const PERP_SUFFIX = '-PERP'
 const PERP_INV_SUFFIX = '-PERP-INV'
+const PERP_BTNL_SUFFIX = '-BTNL'
 const FUTURE_DATE_RE = /-\d{6}(-INV)?$/
 
 const KNOWN_INDICES = new Set(['SPX', 'NDX', 'DJI', 'RUT', 'EMD', 'NK', 'MNK'])
@@ -54,7 +55,15 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
   const perpMatch = matchPerpStrip(upper)
 
   if (perpMatch !== null) {
-    return { ...perpMatch, assetClass: 'crypto-perp', underlyingTicker: perpMatch.base }
+    const assetClass: AssetClass =
+      perpMatch.suffix === PERP_BTNL_SUFFIX ? 'crypto-spot' : 'crypto-perp'
+
+    return {
+      base: perpMatch.base,
+      quote: perpMatch.quote,
+      assetClass,
+      underlyingTicker: perpMatch.base,
+    }
   }
 
   const dash = upper.indexOf('-')
@@ -81,17 +90,31 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
   return { base, quote, assetClass, underlyingTicker }
 }
 
-function matchPerpStrip(upper: string): { base: string; quote: string } | null {
+function matchPerpStrip(
+  upper: string
+): { base: string; quote: string; suffix: string | null } | null {
   const suffix = pickPerpSuffix(upper)
 
   if (suffix !== null) {
-    return splitFirstDash(upper.slice(0, -suffix.length))
+    const stripped = splitFirstDash(upper.slice(0, -suffix.length))
+
+    if (stripped === null) {
+      return null
+    }
+
+    return { ...stripped, suffix }
   }
 
   const futureMatch = FUTURE_DATE_RE.exec(upper)
 
   if (futureMatch !== null) {
-    return splitFirstDash(upper.slice(0, futureMatch.index))
+    const stripped = splitFirstDash(upper.slice(0, futureMatch.index))
+
+    if (stripped === null) {
+      return null
+    }
+
+    return { ...stripped, suffix: null }
   }
 
   return null
@@ -104,6 +127,10 @@ function pickPerpSuffix(upper: string): string | null {
 
   if (upper.endsWith(PERP_SUFFIX)) {
     return PERP_SUFFIX
+  }
+
+  if (upper.endsWith(PERP_BTNL_SUFFIX)) {
+    return PERP_BTNL_SUFFIX
   }
 
   return null
