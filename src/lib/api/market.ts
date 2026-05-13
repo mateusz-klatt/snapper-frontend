@@ -158,7 +158,6 @@ const CacheHealthResponseSchema = z
   })
   .strict()
 
-export type CachedCandle = z.infer<typeof CachedCandleSchema>
 export type CachedCandlesResponse = z.infer<typeof CachedCandlesResponseSchema>
 export type CachedStatsResponse = z.infer<typeof CachedStatsResponseSchema>
 export type CacheHealthResponse = z.infer<typeof CacheHealthResponseSchema>
