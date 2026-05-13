@@ -329,6 +329,7 @@ describe('market cache fetchers', () => {
     await getCachedCandles('kraken', 'BTC-USD')
 
     const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
+
     expect(requestedUrl).toContain('timeframe=1m')
     expect(requestedUrl).toContain('limit=100')
   })
@@ -351,6 +352,7 @@ describe('market cache fetchers', () => {
 
     expect(result.type).toBe('cached_candles')
     const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
+
     expect(requestedUrl).toContain('/api/market/cache/candles/kraken/BTC%2FUSD')
     expect(requestedUrl).toContain('timeframe=1m')
     expect(requestedUrl).toContain('limit=100')
@@ -382,8 +384,10 @@ describe('market cache fetchers', () => {
     })
 
     const result = await getCachedPairStats('kraken', 'BTC-USD', 'kraken', 'ETH-USD')
+
     expect(result.payload.is_warm).toBe(true)
     const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
+
     expect(requestedUrl).toContain(
       '/api/market/cache/stats/kraken/BTC-USD/kraken/ETH-USD'
     )
@@ -408,6 +412,7 @@ describe('market cache fetchers', () => {
     })
 
     const result = await getCacheHealth()
+
     expect(result.payload.instruments_cached).toBe(7)
     expect(result.payload.pairs_cached).toBe(2)
     expect(result.payload.persist_universe_size).toBe(14)
