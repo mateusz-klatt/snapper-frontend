@@ -43,7 +43,7 @@ vi.mock('../../lib/api/positions', () => ({
     Promise.resolve({ type: 'execution_plan_response', payload: {} })
   ),
   getPositions: vi.fn(() => Promise.resolve(envelope('position_list', { payload: [], count: 0 }))),
-  getTrailingStopByCycle: vi.fn(() => Promise.resolve({ type: 'message', payload: 'none' })),
+  getTrailingStopByCycle: vi.fn(() => Promise.resolve(envelope('message', { payload: 'none' }))),
 }))
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(() => ({
@@ -362,6 +362,10 @@ describe('positions queries', () => {
     it('fetches trailing stop state for a cycle', async () => {
       vi.mocked(getTrailingStopByCycle).mockResolvedValueOnce({
         type: 'message',
+        sequence_id: ENV.seq,
+        public_id: ENV.pid,
+        timestamp: ENV.ts,
+        session_id: ENV.sid,
         payload: 'none',
       })
 

@@ -32,6 +32,7 @@ export function makeUserProfile(
     role: 'viewer' as const,
     is_active: true,
     created_at: overrides.created_at ?? '2026-01-01T00:00:00Z',
+    operator_public_ids: overrides.operator_public_ids ?? [],
     ...overrides,
   })
 }

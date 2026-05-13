@@ -106,23 +106,6 @@ describe('market API methods', () => {
 
     expect(result).toEqual([])
   })
-  it('getCandles returns empty array when items is missing', async () => {
-    mockFetch.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: async () => ({
-        type: 'candle_list',
-        session_id: '',
-        sequence_id: 0,
-        public_id: 'env-pid',
-        timestamp: '2024-01-01T00:00:00Z',
-        count: 0,
-      }),
-    })
-    const result = await getCandles('BTC/USD', 'kraken', '1h', 50)
-
-    expect(result).toEqual([])
-  })
   it('getCandles throws on non-ok response', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: false,

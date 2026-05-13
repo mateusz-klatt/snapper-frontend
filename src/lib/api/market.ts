@@ -1,16 +1,15 @@
-import { z } from 'zod'
 import { apiClient } from '../apiClient'
 import { validateResponse } from '../schemas/api'
 import {
   CacheHealthResponseSchema,
   CachedCandlesResponseSchema,
   CachedStatsResponseSchema,
+  CandleListResponseSchema,
   ExchangeListResponseSchema,
   InstrumentDetailListResponseSchema,
   InstrumentListResponseSchema,
   RelatedInstrumentsResponseSchema,
 } from '../schemas/api.generated.zod'
-import { CandleDataSchema } from '../schemas/ws.generated.zod'
 import type {
   CacheHealthResponse,
   CachedCandlesResponse,
@@ -21,19 +20,6 @@ import type {
   RelatedInstrumentsResponse,
   CandleData,
 } from '../../types/api'
-
-const CandleListResponseSchema = z
-  .object({
-    type: z.literal('candle_list'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: z.array(CandleDataSchema).optional(),
-    count: z.number().int().optional(),
-  })
-  .strict()
 
 export async function getCandles(
   instrument: string,
@@ -51,7 +37,7 @@ export async function getCandles(
   const data = await response.json()
   const validated = validateResponse(data, CandleListResponseSchema, '/candles')
 
-  return (validated.payload as CandleData[] | undefined) ?? []
+  return validated.payload
 }
 
 export async function getExchanges(): Promise<ExchangeListResponse> {

@@ -1,64 +1,19 @@
 export type { Components, Operations, Paths } from './api.generated'
 import type { Components } from './api.generated'
 
-export type { CandleData } from './ws.generated'
+export type CandleData = Components['schemas']['CandleData']
 export type OrderData = Components['schemas']['OrderData']
 export type ExecutionData = Components['schemas']['ExecutionData']
 export type SignalData = Components['schemas']['SignalData']
 export type PositionData = Components['schemas']['PositionData']
-type GeneratedUserProfile = Components['schemas']['UserProfile']
-type GeneratedDelegateRead = Components['schemas']['DelegateRead']
-type DelegateCapsRead = {
-  max_order_quantity_per_instrument?: Record<string, unknown> | null | undefined
-  max_open_orders?: number | null | undefined
-  max_daily_notional_usd?: number | null | undefined
-  max_cancels_per_minute?: number | null | undefined
-}
-
-export type UserProfile = Omit<
-  GeneratedUserProfile,
-  | 'topic'
-  | 'email'
-  | 'operator_public_ids'
-  | 'primary_operator_public_id'
-  | 'active_wallet_public_id'
-> & {
-  topic?: string | null | undefined
-  email?: string | null | undefined
-  operator_public_ids?: string[] | undefined
-  primary_operator_public_id?: string | null | undefined
-  active_wallet_public_id?: string | null | undefined
-}
-export type UserResponse = Omit<Components['schemas']['UserResponse'], 'payload'> & {
-  payload: UserProfile
-}
-export type UserListResponse = Omit<Components['schemas']['UserListResponse'], 'payload'> & {
-  payload: UserProfile[]
-}
-export type DelegateRead = Omit<GeneratedDelegateRead, 'caps'> & {
-  caps: DelegateCapsRead
-}
-export type DelegateListResponse = Omit<
-  Components['schemas']['DelegateListResponse'],
-  'payload'
-> & {
-  payload: DelegateRead[]
-}
-export type DelegateResponse = Omit<Components['schemas']['DelegateResponse'], 'payload'> & {
-  payload: DelegateRead
-}
-export type DelegateCreatedPayload = Omit<
-  Components['schemas']['DelegateCreatedPayload'],
-  'delegate'
-> & {
-  delegate: DelegateRead
-}
-export type DelegateCreatedResponse = Omit<
-  Components['schemas']['DelegateCreatedResponse'],
-  'payload'
-> & {
-  payload: DelegateCreatedPayload
-}
+export type UserProfile = Components['schemas']['UserProfile']
+export type UserResponse = Components['schemas']['UserResponse']
+export type UserListResponse = Components['schemas']['UserListResponse']
+export type DelegateRead = Components['schemas']['DelegateRead']
+export type DelegateListResponse = Components['schemas']['DelegateListResponse']
+export type DelegateResponse = Components['schemas']['DelegateResponse']
+export type DelegateCreatedPayload = Components['schemas']['DelegateCreatedPayload']
+export type DelegateCreatedResponse = Components['schemas']['DelegateCreatedResponse']
 export type SettingRead = Components['schemas']['SettingRead']
 export type SettingUpdate = Components['schemas']['SettingUpdate']
 export type SettingUpdateBody = Components['schemas']['SettingUpdateBody']
@@ -146,9 +101,7 @@ export type TrailingStopCancelBody = Components['schemas']['TrailingStopCancelBo
 export type TrailingStopStateData = Components['schemas']['TrailingStopStateData']
 export type TrailingStopStateResponse = Components['schemas']['TrailingStopStateResponse']
 
-export type TrailingStopByCycleResult =
-  | TrailingStopStateResponse
-  | { type: 'message'; payload: string }
+export type TrailingStopByCycleResult = TrailingStopStateResponse | MessageResponse
 
 export type BacktestRunData = Components['schemas']['BacktestRunData']
 export type BacktestRunDetailData = Components['schemas']['BacktestRunDetailData']

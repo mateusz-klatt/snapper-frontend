@@ -312,6 +312,28 @@ export interface ExecutionPlan {
 }
 
 /**
+ * Canonical ExecutionPlanDecision entity.
+ * From WebSocket ExecutionPlanDecisionData.
+ */
+export interface ExecutionPlanDecision {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  planPublicId: string
+  decisionType: string
+  decidedAt: Date
+  triggerType: string
+  evidence?: Record<string, unknown>
+  emittedCommandPublicId?: string | null
+  newStatus?: string | null
+  reason: string
+  decisionImportance: string
+  sourceSurface: string
+}
+
+/**
  * Canonical ExecutionPlanDecisionEvent entity.
  * From WebSocket ExecutionPlanDecisionEventData.
  */
