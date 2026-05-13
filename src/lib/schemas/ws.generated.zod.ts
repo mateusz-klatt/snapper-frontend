@@ -536,6 +536,47 @@ export const ReplayStartDataSchema = z
   })
   .strict()
 
+export const ScopeGrantedDataSchema = z
+  .object({
+    type: z.literal('scope_granted'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    grant_public_id: z.string(),
+    operator_public_id: z.string(),
+    wallet_public_id: z.string(),
+    scope_kind: z.enum(['underlying', 'instrument']),
+    underlying_public_id: z.string().nullable().optional(),
+    instrument_public_id: z.string().nullable().optional(),
+    granted_at: z.iso.datetime(),
+    granted_by_user_public_id: z.string(),
+    reason: z.string().nullable().optional(),
+  })
+  .strict()
+
+export const ScopeHandedOverDataSchema = z
+  .object({
+    type: z.literal('scope_handed_over'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    grant_public_id: z.string(),
+    from_operator_public_id: z.string(),
+    to_operator_public_id: z.string(),
+    wallet_public_id: z.string(),
+    scope_kind: z.enum(['underlying', 'instrument']),
+    underlying_public_id: z.string().nullable().optional(),
+    instrument_public_id: z.string().nullable().optional(),
+    handover_at: z.iso.datetime(),
+    handover_by_user_public_id: z.string(),
+    reason: z.string().nullable().optional(),
+  })
+  .strict()
+
 export const ScopeRevokedDataSchema = z
   .object({
     type: z.literal('scope_revoked'),

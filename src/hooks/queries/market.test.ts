@@ -3,6 +3,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
+  useCachedCandles,
+  useCachedPairStats,
+  useCacheHealth,
   useCandles,
   useExchanges,
   useExchangeInstruments,
@@ -10,7 +13,14 @@ import {
   useRelatedInstruments,
 } from './market'
 import { useAuth } from '../../stores/auth'
-import { getCandles, getExchangeInstruments, getRelatedInstruments } from '../../lib/api/market'
+import {
+  getCachedCandles,
+  getCachedPairStats,
+  getCacheHealth,
+  getCandles,
+  getExchangeInstruments,
+  getRelatedInstruments,
+} from '../../lib/api/market'
 
 const ENV = {
   seq: 0,
@@ -99,6 +109,38 @@ vi.mock('../../lib/api/market', () => ({
   ),
   getExchanges: vi.fn(() =>
     Promise.resolve(envelope('exchange_list', { payload: ['kraken', 'binance'], count: 2 }))
+  ),
+  getCachedCandles: vi.fn(() =>
+    Promise.resolve(
+      envelope('cached_candles', {
+        payload: { candles: [], sample_count: 0, is_warm: false, source: 'cache' },
+      })
+    )
+  ),
+  getCachedPairStats: vi.fn(() =>
+    Promise.resolve(
+      envelope('cached_stats', {
+        payload: {
+          left: 'kraken:BTC-USD',
+          right: 'kraken:ETH-USD',
+          pearson_r: null,
+          pearson_n: 0,
+          coint_t: null,
+          coint_pvalue: null,
+          coint_critical_values: null,
+          computed_at: null,
+          sample_count: 0,
+          is_warm: false,
+        },
+      })
+    )
+  ),
+  getCacheHealth: vi.fn(() =>
+    Promise.resolve(
+      envelope('cache_health', {
+        payload: { instruments_cached: 0, pairs_cached: 0, persist_universe_size: 0 },
+      })
+    )
   ),
 }))
 vi.mock('../../stores/auth', () => ({
@@ -253,6 +295,100 @@ describe('market queries', () => {
       })
       expect(vi.mocked(getCandles)).not.toHaveBeenCalled()
       vi.mocked(useAuth).mockReturnValue({ isAuthenticated: true } as ReturnType<typeof useAuth>)
+    })
+  })
+
+  describe('useCachedCandles', () => {
+    it('fetches when exchange and symbol are provided', async () => {
+      const { result } = renderHook(() => useCachedCandles('kraken', 'BTC-USD', '1m', 100), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isFetched).toBe(true)
+      })
+      expect(vi.mocked(getCachedCandles)).toHaveBeenCalledWith('kraken', 'BTC-USD', '1m', 100)
+    })
+
+    it('does not fetch when exchange is null', async () => {
+      vi.mocked(getCachedCandles).mockClear()
+      const { result } = renderHook(() => useCachedCandles(null, 'BTC-USD'), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getCachedCandles)).not.toHaveBeenCalled()
+    })
+
+    it('does not fetch when nativeSymbol is null', async () => {
+      vi.mocked(getCachedCandles).mockClear()
+      const { result } = renderHook(() => useCachedCandles('kraken', null), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getCachedCandles)).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('useCachedPairStats', () => {
+    it('fetches when all four parameters are provided', async () => {
+      const { result } = renderHook(
+        () => useCachedPairStats('kraken', 'BTC-USD', 'kraken', 'ETH-USD'),
+        { wrapper: createWrapper() }
+      )
+
+      await waitFor(() => {
+        expect(result.current.isFetched).toBe(true)
+      })
+      expect(vi.mocked(getCachedPairStats)).toHaveBeenCalled()
+    })
+
+    it('does not fetch when any leg is null', async () => {
+      vi.mocked(getCachedPairStats).mockClear()
+      const { result } = renderHook(() => useCachedPairStats('kraken', null, 'kraken', 'ETH-USD'), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getCachedPairStats)).not.toHaveBeenCalled()
+    })
+
+    it.each([
+      [null, 'BTC-USD', 'kraken', 'ETH-USD'] as const,
+      ['kraken', 'BTC-USD', null, 'ETH-USD'] as const,
+      ['kraken', 'BTC-USD', 'kraken', null] as const,
+      [null, null, null, null] as const,
+    ])(
+      'does not fetch when any single leg is null (a=%s sa=%s b=%s sb=%s)',
+      async (a, sa, b, sb) => {
+        vi.mocked(getCachedPairStats).mockClear()
+        const { result } = renderHook(() => useCachedPairStats(a, sa, b, sb), {
+          wrapper: createWrapper(),
+        })
+
+        await waitFor(() => {
+          expect(result.current.isLoading).toBe(false)
+        })
+        expect(vi.mocked(getCachedPairStats)).not.toHaveBeenCalled()
+      }
+    )
+  })
+
+  describe('useCacheHealth', () => {
+    it('fetches when authenticated', async () => {
+      const { result } = renderHook(() => useCacheHealth(), { wrapper: createWrapper() })
+
+      await waitFor(() => {
+        expect(result.current.isFetched).toBe(true)
+      })
+      expect(vi.mocked(getCacheHealth)).toHaveBeenCalled()
     })
   })
 })

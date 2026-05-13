@@ -18,6 +18,7 @@ type Exchange = 'kraken' | 'kraken_futures' | 'kraken_equities' | 'walutomat' | 
 type Exchange2 = 'paper' | 'kraken' | 'kraken_futures' | 'walutomat'
 type TradeSide = 'buy' | 'sell'
 type Mode = 'live' | 'paper'
+type ScopeKind = 'underlying' | 'instrument'
 
 /**
  * Canonical AiReviewCapsViolationFrame entity.
@@ -626,6 +627,49 @@ export interface ReplayStart {
 }
 
 /**
+ * Canonical ScopeGranted entity.
+ * From WebSocket ScopeGrantedData.
+ */
+export interface ScopeGranted {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  grantPublicId: string
+  operatorPublicId: string
+  walletPublicId: string
+  scopeKind: ScopeKind
+  underlyingPublicId?: string | null
+  instrumentPublicId?: string | null
+  grantedAt: Date
+  grantedByUserPublicId: string
+  reason?: string | null
+}
+
+/**
+ * Canonical ScopeHandedOver entity.
+ * From WebSocket ScopeHandedOverData.
+ */
+export interface ScopeHandedOver {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  grantPublicId: string
+  fromOperatorPublicId: string
+  toOperatorPublicId: string
+  walletPublicId: string
+  scopeKind: ScopeKind
+  underlyingPublicId?: string | null
+  instrumentPublicId?: string | null
+  handoverAt: Date
+  handoverByUserPublicId: string
+  reason?: string | null
+}
+
+/**
  * Canonical ScopeRevoked entity.
  * From WebSocket ScopeRevokedData.
  */
@@ -638,7 +682,7 @@ export interface ScopeRevoked {
   grantPublicId: string
   operatorPublicId: string
   walletPublicId: string
-  scopeKind: 'underlying' | 'instrument'
+  scopeKind: ScopeKind
   underlyingPublicId?: string | null
   instrumentPublicId?: string | null
   revokedAt: Date
