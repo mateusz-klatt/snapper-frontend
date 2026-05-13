@@ -2,6 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
 import {
+  getCachedCandles,
+  getCachedPairStats,
+  getCacheHealth,
   getCandles,
   getExchanges,
   getExchangeInstruments,
@@ -292,5 +295,121 @@ describe('market API methods', () => {
 
     expect(requestedUrl).toContain('/api/instruments/kraken/BTC%2FUSD/related')
     expect(requestedUrl).not.toContain('/api/instruments/kraken/BTC/USD/related')
+  })
+})
+
+describe('market cache fetchers', () => {
+  const apiClient = sharedApiClient
+  let mockFetch: ReturnType<typeof vi.fn>
+
+  beforeEach(() => {
+    vi.clearAllMocks()
+    vi.mocked(getCookie).mockReturnValue('test-csrf')
+    mockFetch = vi.fn()
+    ;(globalThis as any).fetch = mockFetch
+    apiClient.setTimeTravelAsOf(null)
+    apiClient.setOperatorScope(null)
+    apiClient.setWalletScope(null)
+  })
+
+  it('getCachedCandles uses default timeframe + limit when omitted', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'cached_candles',
+        sequence_id: 0,
+        public_id: 'cc-default',
+        timestamp: '2026-05-13T10:00:00Z',
+        session_id: 'test-sid',
+        payload: { candles: [], sample_count: 0, is_warm: false, source: 'cache' },
+      }),
+    })
+
+    await getCachedCandles('kraken', 'BTC-USD')
+
+    const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
+    expect(requestedUrl).toContain('timeframe=1m')
+    expect(requestedUrl).toContain('limit=100')
+  })
+
+  it('getCachedCandles encodes path params and serializes timeframe + limit', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'cached_candles',
+        sequence_id: 0,
+        public_id: 'cc-1',
+        timestamp: '2026-05-13T10:00:00Z',
+        session_id: 'test-sid',
+        payload: { candles: [], sample_count: 0, is_warm: false, source: 'cache' },
+      }),
+    })
+
+    const result = await getCachedCandles('kraken', 'BTC/USD', '1m', 100)
+
+    expect(result.type).toBe('cached_candles')
+    const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
+    expect(requestedUrl).toContain('/api/market/cache/candles/kraken/BTC%2FUSD')
+    expect(requestedUrl).toContain('timeframe=1m')
+    expect(requestedUrl).toContain('limit=100')
+  })
+
+  it('getCachedPairStats encodes all four path params', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'cached_stats',
+        sequence_id: 0,
+        public_id: 'cs-1',
+        timestamp: '2026-05-13T10:00:00Z',
+        session_id: 'test-sid',
+        payload: {
+          left: 'kraken:BTC-USD',
+          right: 'kraken:ETH-USD',
+          pearson_r: 0.95,
+          pearson_n: 60,
+          coint_t: -3.5,
+          coint_pvalue: 0.01,
+          coint_critical_values: [-3.9, -3.3, -3.0],
+          computed_at: '2026-05-13T10:00:00Z',
+          sample_count: 60,
+          is_warm: true,
+        },
+      }),
+    })
+
+    const result = await getCachedPairStats('kraken', 'BTC-USD', 'kraken', 'ETH-USD')
+    expect(result.payload.is_warm).toBe(true)
+    const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
+    expect(requestedUrl).toContain(
+      '/api/market/cache/stats/kraken/BTC-USD/kraken/ETH-USD'
+    )
+  })
+
+  it('getCacheHealth returns the diagnostic envelope', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'cache_health',
+        sequence_id: 0,
+        public_id: 'h-1',
+        timestamp: '2026-05-13T10:00:00Z',
+        session_id: 'test-sid',
+        payload: {
+          instruments_cached: 7,
+          pairs_cached: 2,
+          persist_universe_size: 14,
+        },
+      }),
+    })
+
+    const result = await getCacheHealth()
+    expect(result.payload.instruments_cached).toBe(7)
+    expect(result.payload.pairs_cached).toBe(2)
+    expect(result.payload.persist_universe_size).toBe(14)
   })
 })

@@ -118,16 +118,14 @@ export const useCachedPairStats = (
   enabled: boolean = true
 ) => {
   const { isAuthenticated } = useAuth()
+  const left = exchangeA ?? ''
+  const symbolLeft = symbolA ?? ''
+  const right = exchangeB ?? ''
+  const symbolRight = symbolB ?? ''
 
   return useQuery({
-    queryKey: queryKeys.cachedPairStats(
-      exchangeA ?? '',
-      symbolA ?? '',
-      exchangeB ?? '',
-      symbolB ?? ''
-    ),
-    queryFn: () =>
-      getCachedPairStats(exchangeA ?? '', symbolA ?? '', exchangeB ?? '', symbolB ?? ''),
+    queryKey: queryKeys.cachedPairStats(left, symbolLeft, right, symbolRight),
+    queryFn: () => getCachedPairStats(left, symbolLeft, right, symbolRight),
     enabled: enabled && isAuthenticated && !!exchangeA && !!symbolA && !!exchangeB && !!symbolB,
     staleTime: 30 * 1000,
     throwOnError: false,

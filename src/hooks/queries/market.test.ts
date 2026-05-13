@@ -321,6 +321,18 @@ describe('market queries', () => {
       })
       expect(vi.mocked(getCachedCandles)).not.toHaveBeenCalled()
     })
+
+    it('does not fetch when nativeSymbol is null', async () => {
+      vi.mocked(getCachedCandles).mockClear()
+      const { result } = renderHook(() => useCachedCandles('kraken', null), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getCachedCandles)).not.toHaveBeenCalled()
+    })
   })
 
   describe('useCachedPairStats', () => {
@@ -347,6 +359,26 @@ describe('market queries', () => {
       })
       expect(vi.mocked(getCachedPairStats)).not.toHaveBeenCalled()
     })
+
+    it.each([
+      [null, 'BTC-USD', 'kraken', 'ETH-USD'] as const,
+      ['kraken', 'BTC-USD', null, 'ETH-USD'] as const,
+      ['kraken', 'BTC-USD', 'kraken', null] as const,
+      [null, null, null, null] as const,
+    ])(
+      'does not fetch when any single leg is null (a=%s sa=%s b=%s sb=%s)',
+      async (a, sa, b, sb) => {
+        vi.mocked(getCachedPairStats).mockClear()
+        const { result } = renderHook(() => useCachedPairStats(a, sa, b, sb), {
+          wrapper: createWrapper(),
+        })
+
+        await waitFor(() => {
+          expect(result.current.isLoading).toBe(false)
+        })
+        expect(vi.mocked(getCachedPairStats)).not.toHaveBeenCalled()
+      }
+    )
   })
 
   describe('useCacheHealth', () => {
