@@ -388,9 +388,7 @@ describe('market cache fetchers', () => {
     expect(result.payload.is_warm).toBe(true)
     const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
 
-    expect(requestedUrl).toContain(
-      '/api/market/cache/stats/kraken/BTC-USD/kraken/ETH-USD'
-    )
+    expect(requestedUrl).toContain('/api/market/cache/stats/kraken/BTC-USD/kraken/ETH-USD')
   })
 
   it('getCacheHealth returns the diagnostic envelope', async () => {
