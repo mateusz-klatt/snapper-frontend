@@ -1018,6 +1018,27 @@ export const AlertEventDataSchema = z
   })
   .strict()
 
+export const ExecutionPlanDecisionDataSchema = z
+  .object({
+    type: z.literal('execution_plan_decision'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    plan_public_id: z.string(),
+    decision_type: z.string(),
+    decided_at: z.iso.datetime(),
+    trigger_type: z.string(),
+    evidence: z.record(z.string(), z.any()),
+    emitted_command_public_id: z.string().nullable().optional(),
+    new_status: z.string().nullable().optional(),
+    reason: z.string(),
+    decision_importance: z.string(),
+    source_surface: z.string(),
+  })
+  .strict()
+
 export const HeartbeatDataSchema = z
   .object({
     type: z.literal('heartbeat'),

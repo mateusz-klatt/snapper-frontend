@@ -113,6 +113,7 @@ describe('user management API methods', () => {
             role: 'admin',
             is_active: true,
             created_at: '2024-01-01T00:00:00Z',
+            operator_public_ids: [],
           },
         ],
         count: 1,
@@ -168,6 +169,7 @@ describe('user management API methods', () => {
           role: 'viewer',
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
         },
       }),
     })
@@ -205,6 +207,7 @@ describe('user management API methods', () => {
           role: 'admin',
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
         },
       }),
     })

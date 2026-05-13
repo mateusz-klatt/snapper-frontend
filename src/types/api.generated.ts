@@ -1751,7 +1751,7 @@ export type Components = {
             topic?: string | null | undefined;
             run_public_id: string;
             event_type: string;
-            detail?: {
+            detail: {
                 [key: string]: unknown;
             };
         };
@@ -1784,7 +1784,7 @@ export type Components = {
             max_drawdown_duration_seconds?: number | null | undefined;
             exposure_ratio?: number | null | undefined;
             turnover_ratio?: number | null | undefined;
-            extra_metrics?: Record<string, unknown>;
+            extra_metrics: Record<string, unknown>;
         };
         BacktestRunData: {
             type: "backtest_run";
@@ -1883,7 +1883,7 @@ export type Components = {
             signal_type: string;
             instrument: string;
             price: number;
-            indicators?: {
+            indicators: {
                 [key: string]: unknown;
             };
         };
@@ -1987,6 +1987,35 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             payload: Components["schemas"]["CachedStatsPayload"];
+        };
+        CandleData: {
+            type: "candle";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            instrument: string;
+            exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+            timeframe: string;
+            open_at: string;
+            open: number;
+            high: number;
+            low: number;
+            close: number;
+            volume: number;
+            vwap?: number | null | undefined;
+            trades?: number | null | undefined;
+        };
+        CandleListResponse: {
+            type: "candle_list";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["CandleData"][];
+            count: number;
         };
         ConfiguredProcess: {
             type: "configured_process";
@@ -2324,6 +2353,34 @@ export type Components = {
             last_error: string | null;
             idempotency_key: string | null;
         };
+        ExecutionPlanDecisionData: {
+            type: "execution_plan_decision";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            plan_public_id: string;
+            decision_type: string;
+            decided_at: string;
+            trigger_type: string;
+            evidence: Record<string, unknown>;
+            emitted_command_public_id?: string | null | undefined;
+            new_status?: string | null | undefined;
+            reason: string;
+            decision_importance: string;
+            source_surface: string;
+        };
+        ExecutionPlanDecisionListResponse: {
+            type: "execution_plan_decision_list";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["ExecutionPlanDecisionData"][];
+            count: number;
+        };
         ExecutionPlanResponse: {
             type: "execution_plan_response";
             sequence_id: number;
@@ -2428,6 +2485,41 @@ export type Components = {
         };
         HealthTopics: {
             active: number;
+        };
+        InstrumentCapabilityData: {
+            type: "instrument_capability";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            instrument_public_id: string;
+            exchange: string;
+            supported_order_types: string[];
+            supports_post_only: boolean;
+            supports_reduce_only: boolean;
+            supports_amend_in_place: boolean;
+            supports_native_stop_loss: boolean;
+            supports_native_take_profit: boolean;
+            supports_trailing_stop_client_side: boolean;
+            supports_market_making: boolean;
+            supports_short_selling: boolean;
+            supports_leverage: boolean;
+            max_leverage_long: number;
+            max_leverage_short: number;
+            min_notional: number | null;
+            max_order_size: number | null;
+            top_of_book_quality: string;
+        };
+        InstrumentCapabilityListResponse: {
+            type: "instrument_capability_list";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["InstrumentCapabilityData"][];
+            count: number;
         };
         InstrumentDetailData: {
             type: "instrument_detail";
@@ -3477,7 +3569,7 @@ export type Components = {
             role: Components["schemas"]["UserRole"];
             is_active: boolean;
             created_at: string;
-            operator_public_ids?: string[];
+            operator_public_ids: string[];
             primary_operator_public_id?: string | null | undefined;
             active_wallet_public_id?: string | null | undefined;
         };
@@ -3497,6 +3589,31 @@ export type Components = {
             type: string;
             input?: unknown;
             ctx?: Record<string, never>;
+        };
+        VenueFeeScheduleData: {
+            type: "venue_fee_schedule";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            exchange: string;
+            instrument_public_id: string | null;
+            fee_tier: string;
+            maker_bps: number;
+            taker_bps: number;
+            min_volume_30d: number | null;
+            currency: string;
+        };
+        VenueFeeScheduleListResponse: {
+            type: "venue_fee_schedule_list";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["VenueFeeScheduleData"][];
+            count: number;
         };
         WalletInfo: {
             type: "wallet_info";
@@ -5715,9 +5832,7 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": {
-                        [key: string]: unknown;
-                    };
+                    "application/json": Components["schemas"]["ExecutionPlanDecisionListResponse"];
                 };
             };
             422: {
@@ -5922,9 +6037,7 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": {
-                        [key: string]: unknown;
-                    };
+                    "application/json": Components["schemas"]["ExecutionPlanDecisionListResponse"];
                 };
             };
             422: {
@@ -5953,9 +6066,7 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": Components["schemas"]["TrailingStopStateResponse"] | {
-                        [key: string]: unknown;
-                    };
+                    "application/json": Components["schemas"]["TrailingStopStateResponse"] | Components["schemas"]["MessageResponse"];
                 };
             };
             422: {
@@ -6938,7 +7049,7 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": unknown;
+                    "application/json": Components["schemas"]["CandleListResponse"];
                 };
             };
             422: {
@@ -7465,7 +7576,7 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": unknown;
+                    "application/json": Components["schemas"]["InstrumentCapabilityListResponse"];
                 };
             };
             422: {
@@ -7501,7 +7612,7 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": unknown;
+                    "application/json": Components["schemas"]["VenueFeeScheduleListResponse"];
                 };
             };
             422: {

@@ -88,6 +88,7 @@ describe('auth store', () => {
         role: 'viewer',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
       isLoading: false,
@@ -117,6 +118,7 @@ describe('auth store', () => {
         role: 'admin',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -136,6 +138,7 @@ describe('auth store', () => {
         role: 'admin',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -156,6 +159,7 @@ describe('auth store', () => {
         role: 'operator',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -181,6 +185,7 @@ describe('auth store', () => {
         role: 'admin',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -202,6 +207,7 @@ describe('auth store', () => {
         role: 'operator',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -223,6 +229,7 @@ describe('auth store', () => {
         role: 'viewer',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -244,6 +251,7 @@ describe('auth store', () => {
         role: 'unknown' as unknown as 'viewer',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -268,6 +276,7 @@ describe('auth store', () => {
         role: 'admin',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -289,6 +298,7 @@ describe('auth store', () => {
         role: 'operator',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -311,6 +321,7 @@ describe('auth store', () => {
         role: 'viewer',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
       },
       isAuthenticated: true,
     })
@@ -415,6 +426,7 @@ describe('auth store', () => {
                       role: 'admin',
                       is_active: true,
                       created_at: '2026-01-01T00:00:00Z',
+                      operator_public_ids: [],
                     },
                   },
                 }),
@@ -440,6 +452,7 @@ describe('auth store', () => {
           role: 'admin',
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
         },
         isAuthenticated: true,
         csrfToken: 'test-csrf',
@@ -509,6 +522,7 @@ describe('auth store', () => {
           role: 'admin',
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
         },
         isAuthenticated: true,
       })
@@ -563,6 +577,7 @@ describe('auth store', () => {
               role: 'admin',
               is_active: true,
               created_at: '2026-01-01T00:00:00Z',
+              operator_public_ids: [],
             },
           }),
       } as Response)
@@ -596,6 +611,7 @@ describe('auth store', () => {
             role: 'admin',
             is_active: true,
             created_at: '2026-01-01T00:00:00Z',
+            operator_public_ids: [],
           },
         },
       })
@@ -621,6 +637,7 @@ describe('auth store', () => {
             role: 'admin',
             is_active: true,
             created_at: '2026-01-01T00:00:00Z',
+            operator_public_ids: [],
           },
         },
       })
@@ -711,6 +728,7 @@ describe('auth store', () => {
             role: 'admin' as const,
             is_active: true,
             created_at: '2026-01-01T00:00:00Z',
+            operator_public_ids: [],
           },
         },
       })
@@ -738,6 +756,7 @@ describe('auth store', () => {
             role: 'admin' as const,
             is_active: true,
             created_at: '2026-01-01T00:00:00Z',
+            operator_public_ids: [],
           },
         },
       })
@@ -770,6 +789,7 @@ describe('auth store', () => {
           role: 'admin',
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
         },
         isAuthenticated: true,
         csrfToken: 'test-csrf',
@@ -820,6 +840,7 @@ describe('auth store', () => {
           role: 'admin',
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
         },
         isAuthenticated: true,
       })
@@ -853,6 +874,7 @@ describe('auth store', () => {
           role: 'admin',
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
         },
         isAuthenticated: true,
       })

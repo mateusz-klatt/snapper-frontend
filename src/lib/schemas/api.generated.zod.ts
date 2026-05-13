@@ -1,18 +1,35 @@
 /**
  * Generated Zod schemas for REST API validation.
  * DO NOT EDIT - regenerate with: make ui-gen-api-zod
+ *
+ * Each `NameSchema` export is cast to
+ * `z.ZodType<Components['schemas'][Name]>` so the inferred output type
+ * matches openapi-typescript's exact-optional emission (key-level `?:`
+ * for nullable / default-None fields). Without the cast Zod's `.optional()`
+ * would infer `T | undefined` at the value level and clash with the
+ * OpenAPI-derived contract used everywhere else in the SPA under
+ * `tsconfig.json` `exactOptionalPropertyTypes: true`.
+ *
+ * Each `Name` type export is sourced from `api.generated.ts` so the
+ * SPA-facing type is exactly the openapi-typescript emission.
  */
 
 import { z } from 'zod'
 
-export const AsyncioMetricsSchema = z
+import type { Components } from '../../types/api.generated'
+
+const _AsyncioMetricsRawSchema = z
   .object({
     active_tasks: z.number().int(),
     pending_tasks: z.number().int(),
   })
   .strict()
 
-export const BacktestComparisonDataSchema = z
+export const AsyncioMetricsSchema = _AsyncioMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['AsyncioMetrics']
+>
+
+const _BacktestComparisonDataRawSchema = z
   .object({
     type: z.literal('backtest_comparison'),
     sequence_id: z.number().int(),
@@ -29,7 +46,12 @@ export const BacktestComparisonDataSchema = z
   })
   .strict()
 
-export const BacktestEquityPointInlineSchema = z
+export const BacktestComparisonDataSchema =
+  _BacktestComparisonDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestComparisonData']
+  >
+
+const _BacktestEquityPointInlineRawSchema = z
   .object({
     point_time: z.iso.datetime(),
     equity: z.number(),
@@ -39,7 +61,12 @@ export const BacktestEquityPointInlineSchema = z
   })
   .strict()
 
-export const BacktestEventDataSchema = z
+export const BacktestEquityPointInlineSchema =
+  _BacktestEquityPointInlineRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestEquityPointInline']
+  >
+
+const _BacktestEventDataRawSchema = z
   .object({
     type: z.literal('backtest_event'),
     sequence_id: z.number().int(),
@@ -49,11 +76,15 @@ export const BacktestEventDataSchema = z
     topic: z.string().nullable().optional(),
     run_public_id: z.string(),
     event_type: z.string(),
-    detail: z.record(z.string(), z.unknown()).optional(),
+    detail: z.record(z.string(), z.unknown()),
   })
   .strict()
 
-export const BacktestSignalDataSchema = z
+export const BacktestEventDataSchema = _BacktestEventDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestEventData']
+>
+
+const _BacktestSignalDataRawSchema = z
   .object({
     type: z.literal('backtest_signal'),
     sequence_id: z.number().int(),
@@ -66,11 +97,15 @@ export const BacktestSignalDataSchema = z
     signal_type: z.string(),
     instrument: z.string(),
     price: z.number(),
-    indicators: z.record(z.string(), z.unknown()).optional(),
+    indicators: z.record(z.string(), z.unknown()),
   })
   .strict()
 
-export const BacktestTradeDataSchema = z
+export const BacktestSignalDataSchema = _BacktestSignalDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestSignalData']
+>
+
+const _BacktestTradeDataRawSchema = z
   .object({
     type: z.literal('backtest_trade'),
     sequence_id: z.number().int(),
@@ -91,7 +126,11 @@ export const BacktestTradeDataSchema = z
   })
   .strict()
 
-export const CacheHealthPayloadSchema = z
+export const BacktestTradeDataSchema = _BacktestTradeDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestTradeData']
+>
+
+const _CacheHealthPayloadRawSchema = z
   .object({
     instruments_cached: z.number().int(),
     pairs_cached: z.number().int(),
@@ -99,7 +138,11 @@ export const CacheHealthPayloadSchema = z
   })
   .strict()
 
-export const CachedCandleSchema = z
+export const CacheHealthPayloadSchema = _CacheHealthPayloadRawSchema as unknown as z.ZodType<
+  Components['schemas']['CacheHealthPayload']
+>
+
+const _CachedCandleRawSchema = z
   .object({
     open_at_ms: z.number().int(),
     timeframe: z.string(),
@@ -111,7 +154,11 @@ export const CachedCandleSchema = z
   })
   .strict()
 
-export const CachedStatsPayloadSchema = z
+export const CachedCandleSchema = _CachedCandleRawSchema as unknown as z.ZodType<
+  Components['schemas']['CachedCandle']
+>
+
+const _CachedStatsPayloadRawSchema = z
   .object({
     left: z.string(),
     right: z.string(),
@@ -126,7 +173,37 @@ export const CachedStatsPayloadSchema = z
   })
   .strict()
 
-export const ConnectionStatsSchema = z
+export const CachedStatsPayloadSchema = _CachedStatsPayloadRawSchema as unknown as z.ZodType<
+  Components['schemas']['CachedStatsPayload']
+>
+
+const _CandleDataRawSchema = z
+  .object({
+    type: z.literal('candle'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    instrument: z.string(),
+    exchange: z.enum(['kraken', 'kraken_futures', 'kraken_equities', 'walutomat', 'polygon']),
+    timeframe: z.string(),
+    open_at: z.iso.datetime(),
+    open: z.number(),
+    high: z.number(),
+    low: z.number(),
+    close: z.number(),
+    volume: z.number(),
+    vwap: z.number().nullable().optional(),
+    trades: z.number().int().nullable().optional(),
+  })
+  .strict()
+
+export const CandleDataSchema = _CandleDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['CandleData']
+>
+
+const _ConnectionStatsRawSchema = z
   .object({
     active_connections: z.number().int(),
     zmq_subscribers: z.number().int(),
@@ -136,7 +213,11 @@ export const ConnectionStatsSchema = z
   })
   .strict()
 
-export const ContinuousCandleDataSchema = z
+export const ConnectionStatsSchema = _ConnectionStatsRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConnectionStats']
+>
+
+const _ContinuousCandleDataRawSchema = z
   .object({
     type: z.literal('continuous_candle'),
     sequence_id: z.number().int(),
@@ -158,7 +239,11 @@ export const ContinuousCandleDataSchema = z
   })
   .strict()
 
-export const ContractDataSchema = z
+export const ContinuousCandleDataSchema = _ContinuousCandleDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ContinuousCandleData']
+>
+
+const _ContractDataRawSchema = z
   .object({
     type: z.literal('contract'),
     sequence_id: z.number().int(),
@@ -177,7 +262,11 @@ export const ContractDataSchema = z
   })
   .strict()
 
-export const CpuMetricsSchema = z
+export const ContractDataSchema = _ContractDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ContractData']
+>
+
+const _CpuMetricsRawSchema = z
   .object({
     process_percent: z.number(),
     user_time_seconds: z.number(),
@@ -187,7 +276,11 @@ export const CpuMetricsSchema = z
   })
   .strict()
 
-export const CredentialSummarySchema = z
+export const CpuMetricsSchema = _CpuMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['CpuMetrics']
+>
+
+const _CredentialSummaryRawSchema = z
   .object({
     type: z.literal('credential_summary'),
     sequence_id: z.number().int(),
@@ -202,7 +295,11 @@ export const CredentialSummarySchema = z
   })
   .strict()
 
-export const DbInternalMetricsSchema = z
+export const CredentialSummarySchema = _CredentialSummaryRawSchema as unknown as z.ZodType<
+  Components['schemas']['CredentialSummary']
+>
+
+const _DbInternalMetricsRawSchema = z
   .object({
     aiosqlite_live_connections: z.number().int(),
     pool_size: z.number().int().nullable(),
@@ -210,7 +307,11 @@ export const DbInternalMetricsSchema = z
   })
   .strict()
 
-export const DeviceAlertPrefInfoSchema = z
+export const DbInternalMetricsSchema = _DbInternalMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['DbInternalMetrics']
+>
+
+const _DeviceAlertPrefInfoRawSchema = z
   .object({
     type: z.literal('device_alert_pref_info'),
     sequence_id: z.number().int(),
@@ -231,7 +332,11 @@ export const DeviceAlertPrefInfoSchema = z
   })
   .strict()
 
-export const EquityOverlayPointSchema = z
+export const DeviceAlertPrefInfoSchema = _DeviceAlertPrefInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['DeviceAlertPrefInfo']
+>
+
+const _EquityOverlayPointRawSchema = z
   .object({
     point_time: z.iso.datetime(),
     equity_a: z.number().nullable().optional(),
@@ -239,7 +344,11 @@ export const EquityOverlayPointSchema = z
   })
   .strict()
 
-export const ExchangeListResponseSchema = z
+export const EquityOverlayPointSchema = _EquityOverlayPointRawSchema as unknown as z.ZodType<
+  Components['schemas']['EquityOverlayPoint']
+>
+
+const _ExchangeListResponseRawSchema = z
   .object({
     type: z.literal('exchange_list'),
     sequence_id: z.number().int(),
@@ -252,7 +361,11 @@ export const ExchangeListResponseSchema = z
   })
   .strict()
 
-export const ExecutionDataSchema = z
+export const ExchangeListResponseSchema = _ExchangeListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ExchangeListResponse']
+>
+
+const _ExecutionDataRawSchema = z
   .object({
     type: z.literal('execution'),
     sequence_id: z.number().int(),
@@ -281,7 +394,11 @@ export const ExecutionDataSchema = z
   })
   .strict()
 
-export const ExecutionPlanDataSchema = z
+export const ExecutionDataSchema = _ExecutionDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ExecutionData']
+>
+
+const _ExecutionPlanDataRawSchema = z
   .object({
     type: z.literal('execution_plan'),
     sequence_id: z.number().int(),
@@ -309,13 +426,21 @@ export const ExecutionPlanDataSchema = z
   })
   .strict()
 
-export const FeatureFlagsPayloadSchema = z
+export const ExecutionPlanDataSchema = _ExecutionPlanDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ExecutionPlanData']
+>
+
+const _FeatureFlagsPayloadRawSchema = z
   .object({
     ai_integration_enabled: z.boolean(),
   })
   .strict()
 
-export const FrontMonthDataSchema = z
+export const FeatureFlagsPayloadSchema = _FeatureFlagsPayloadRawSchema as unknown as z.ZodType<
+  Components['schemas']['FeatureFlagsPayload']
+>
+
+const _FrontMonthDataRawSchema = z
   .object({
     type: z.literal('front_month'),
     sequence_id: z.number().int(),
@@ -332,7 +457,11 @@ export const FrontMonthDataSchema = z
   })
   .strict()
 
-export const GapStatsSchema = z
+export const FrontMonthDataSchema = _FrontMonthDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['FrontMonthData']
+>
+
+const _GapStatsRawSchema = z
   .object({
     gaps_detected: z.number().int(),
     session_resets: z.number().int(),
@@ -342,7 +471,11 @@ export const GapStatsSchema = z
   })
   .strict()
 
-export const GcMetricsSchema = z
+export const GapStatsSchema = _GapStatsRawSchema as unknown as z.ZodType<
+  Components['schemas']['GapStats']
+>
+
+const _GcMetricsRawSchema = z
   .object({
     collections_gen0: z.number().int(),
     collections_gen1: z.number().int(),
@@ -352,13 +485,54 @@ export const GcMetricsSchema = z
   })
   .strict()
 
-export const HealthTopicsSchema = z
+export const GcMetricsSchema = _GcMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['GcMetrics']
+>
+
+const _HealthTopicsRawSchema = z
   .object({
     active: z.number().int(),
   })
   .strict()
 
-export const InstrumentDetailDataSchema = z
+export const HealthTopicsSchema = _HealthTopicsRawSchema as unknown as z.ZodType<
+  Components['schemas']['HealthTopics']
+>
+
+const _InstrumentCapabilityDataRawSchema = z
+  .object({
+    type: z.literal('instrument_capability'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    instrument_public_id: z.string(),
+    exchange: z.string(),
+    supported_order_types: z.array(z.string()),
+    supports_post_only: z.boolean(),
+    supports_reduce_only: z.boolean(),
+    supports_amend_in_place: z.boolean(),
+    supports_native_stop_loss: z.boolean(),
+    supports_native_take_profit: z.boolean(),
+    supports_trailing_stop_client_side: z.boolean(),
+    supports_market_making: z.boolean(),
+    supports_short_selling: z.boolean(),
+    supports_leverage: z.boolean(),
+    max_leverage_long: z.number(),
+    max_leverage_short: z.number(),
+    min_notional: z.number().nullable(),
+    max_order_size: z.number().nullable(),
+    top_of_book_quality: z.string(),
+  })
+  .strict()
+
+export const InstrumentCapabilityDataSchema =
+  _InstrumentCapabilityDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['InstrumentCapabilityData']
+  >
+
+const _InstrumentDetailDataRawSchema = z
   .object({
     type: z.literal('instrument_detail'),
     sequence_id: z.number().int(),
@@ -378,7 +552,11 @@ export const InstrumentDetailDataSchema = z
   })
   .strict()
 
-export const InstrumentListResponseSchema = z
+export const InstrumentDetailDataSchema = _InstrumentDetailDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['InstrumentDetailData']
+>
+
+const _InstrumentListResponseRawSchema = z
   .object({
     type: z.literal('instrument_list'),
     sequence_id: z.number().int(),
@@ -391,9 +569,18 @@ export const InstrumentListResponseSchema = z
   })
   .strict()
 
-export const JsonPrimitiveSchema = z.unknown()
+export const InstrumentListResponseSchema =
+  _InstrumentListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['InstrumentListResponse']
+  >
 
-export const LimitsMetricsSchema = z
+const _JsonPrimitiveRawSchema = z.unknown()
+
+export const JsonPrimitiveSchema = _JsonPrimitiveRawSchema as unknown as z.ZodType<
+  Components['schemas']['JsonPrimitive']
+>
+
+const _LimitsMetricsRawSchema = z
   .object({
     rlimit_nproc: z.number().int(),
     rlimit_nofile: z.number().int(),
@@ -401,7 +588,11 @@ export const LimitsMetricsSchema = z
   })
   .strict()
 
-export const MemoryMetricsSchema = z
+export const LimitsMetricsSchema = _LimitsMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['LimitsMetrics']
+>
+
+const _MemoryMetricsRawSchema = z
   .object({
     rss_bytes: z.number().int(),
     rss_peak_bytes: z.number().int(),
@@ -414,7 +605,11 @@ export const MemoryMetricsSchema = z
   })
   .strict()
 
-export const MessageResponseSchema = z
+export const MemoryMetricsSchema = _MemoryMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['MemoryMetrics']
+>
+
+const _MessageResponseRawSchema = z
   .object({
     type: z.literal('message'),
     sequence_id: z.number().int(),
@@ -426,7 +621,11 @@ export const MessageResponseSchema = z
   })
   .strict()
 
-export const MetricDiffRowSchema = z
+export const MessageResponseSchema = _MessageResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['MessageResponse']
+>
+
+const _MetricDiffRowRawSchema = z
   .object({
     name: z.string(),
     run_a: z.number().nullable().optional(),
@@ -436,7 +635,11 @@ export const MetricDiffRowSchema = z
   })
   .strict()
 
-export const NotificationDeviceInfoSchema = z
+export const MetricDiffRowSchema = _MetricDiffRowRawSchema as unknown as z.ZodType<
+  Components['schemas']['MetricDiffRow']
+>
+
+const _NotificationDeviceInfoRawSchema = z
   .object({
     type: z.literal('notification_device_info'),
     sequence_id: z.number().int(),
@@ -456,7 +659,12 @@ export const NotificationDeviceInfoSchema = z
   })
   .strict()
 
-export const NotificationMetricsDataSchema = z
+export const NotificationDeviceInfoSchema =
+  _NotificationDeviceInfoRawSchema as unknown as z.ZodType<
+    Components['schemas']['NotificationDeviceInfo']
+  >
+
+const _NotificationMetricsDataRawSchema = z
   .object({
     type: z.literal('notification_metrics'),
     sequence_id: z.number().int(),
@@ -472,7 +680,12 @@ export const NotificationMetricsDataSchema = z
   })
   .strict()
 
-export const OperatorInfoSchema = z
+export const NotificationMetricsDataSchema =
+  _NotificationMetricsDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['NotificationMetricsData']
+  >
+
+const _OperatorInfoRawSchema = z
   .object({
     type: z.literal('operator_info'),
     sequence_id: z.number().int(),
@@ -485,7 +698,11 @@ export const OperatorInfoSchema = z
   })
   .strict()
 
-export const OrderDataSchema = z
+export const OperatorInfoSchema = _OperatorInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['OperatorInfo']
+>
+
+const _OrderDataRawSchema = z
   .object({
     type: z.literal('order'),
     sequence_id: z.number().int(),
@@ -519,7 +736,11 @@ export const OrderDataSchema = z
   })
   .strict()
 
-export const OrphanSweepResultDataSchema = z
+export const OrderDataSchema = _OrderDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['OrderData']
+>
+
+const _OrphanSweepResultDataRawSchema = z
   .object({
     type: z.literal('orphan_sweep_result'),
     sequence_id: z.number().int(),
@@ -532,7 +753,11 @@ export const OrphanSweepResultDataSchema = z
   })
   .strict()
 
-export const PositionCycleDataSchema = z
+export const OrphanSweepResultDataSchema = _OrphanSweepResultDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['OrphanSweepResultData']
+>
+
+const _PositionCycleDataRawSchema = z
   .object({
     type: z.literal('position_cycle'),
     sequence_id: z.number().int(),
@@ -554,7 +779,11 @@ export const PositionCycleDataSchema = z
   })
   .strict()
 
-export const PositionDataSchema = z
+export const PositionCycleDataSchema = _PositionCycleDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PositionCycleData']
+>
+
+const _PositionDataRawSchema = z
   .object({
     type: z.literal('position'),
     sequence_id: z.number().int(),
@@ -575,21 +804,33 @@ export const PositionDataSchema = z
   })
   .strict()
 
-export const ProcessCategoryCountSchema = z
+export const PositionDataSchema = _PositionDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PositionData']
+>
+
+const _ProcessCategoryCountRawSchema = z
   .object({
     running: z.number().int(),
     total: z.number().int(),
   })
   .strict()
 
-export const ProcessCreatedInfoSchema = z
+export const ProcessCategoryCountSchema = _ProcessCategoryCountRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessCategoryCount']
+>
+
+const _ProcessCreatedInfoRawSchema = z
   .object({
     name: z.string(),
     template: z.string(),
   })
   .strict()
 
-export const ProcessMetricsSchema = z
+export const ProcessCreatedInfoSchema = _ProcessCreatedInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessCreatedInfo']
+>
+
+const _ProcessMetricsRawSchema = z
   .object({
     pid: z.number().int(),
     uptime_seconds: z.number(),
@@ -600,7 +841,11 @@ export const ProcessMetricsSchema = z
   })
   .strict()
 
-export const ProcessStartDataSchema = z
+export const ProcessMetricsSchema = _ProcessMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessMetrics']
+>
+
+const _ProcessStartDataRawSchema = z
   .object({
     type: z.literal('process_start'),
     sequence_id: z.number().int(),
@@ -615,7 +860,11 @@ export const ProcessStartDataSchema = z
   })
   .strict()
 
-export const ProcessStatusSchema = z
+export const ProcessStartDataSchema = _ProcessStartDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessStartData']
+>
+
+const _ProcessStatusRawSchema = z
   .object({
     status: z.enum(['not_running', 'running', 'stopped', 'completed', 'error']),
     pid: z.number().int().nullable().optional(),
@@ -626,7 +875,11 @@ export const ProcessStatusSchema = z
   })
   .strict()
 
-export const ProcessStopDataSchema = z
+export const ProcessStatusSchema = _ProcessStatusRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessStatus']
+>
+
+const _ProcessStopDataRawSchema = z
   .object({
     type: z.literal('process_stop'),
     sequence_id: z.number().int(),
@@ -640,7 +893,11 @@ export const ProcessStopDataSchema = z
   })
   .strict()
 
-export const PushBetaConfigReadSchema = z
+export const ProcessStopDataSchema = _ProcessStopDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessStopData']
+>
+
+const _PushBetaConfigReadRawSchema = z
   .object({
     type: z.literal('push_beta_config_read'),
     sequence_id: z.number().int(),
@@ -653,7 +910,11 @@ export const PushBetaConfigReadSchema = z
   })
   .strict()
 
-export const RelatedInstrumentDataSchema = z
+export const PushBetaConfigReadSchema = _PushBetaConfigReadRawSchema as unknown as z.ZodType<
+  Components['schemas']['PushBetaConfigRead']
+>
+
+const _RelatedInstrumentDataRawSchema = z
   .object({
     type: z.literal('related_instrument'),
     sequence_id: z.number().int(),
@@ -671,14 +932,23 @@ export const RelatedInstrumentDataSchema = z
   })
   .strict()
 
-export const RelatedInstrumentsSelectedSchema = z
+export const RelatedInstrumentDataSchema = _RelatedInstrumentDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['RelatedInstrumentData']
+>
+
+const _RelatedInstrumentsSelectedRawSchema = z
   .object({
     exchange: z.string(),
     native_symbol: z.string(),
   })
   .strict()
 
-export const RelatedInstrumentsUnderlyingSchema = z
+export const RelatedInstrumentsSelectedSchema =
+  _RelatedInstrumentsSelectedRawSchema as unknown as z.ZodType<
+    Components['schemas']['RelatedInstrumentsSelected']
+  >
+
+const _RelatedInstrumentsUnderlyingRawSchema = z
   .object({
     public_id: z.string(),
     ticker: z.string(),
@@ -688,9 +958,18 @@ export const RelatedInstrumentsUnderlyingSchema = z
   })
   .strict()
 
-export const RelationshipTypeEnumSchema = z.enum(['exact', 'derivative', 'proxy'])
+export const RelatedInstrumentsUnderlyingSchema =
+  _RelatedInstrumentsUnderlyingRawSchema as unknown as z.ZodType<
+    Components['schemas']['RelatedInstrumentsUnderlying']
+  >
 
-export const RestRateExchangeStatsSchema = z
+const _RelationshipTypeEnumRawSchema = z.enum(['exact', 'derivative', 'proxy'])
+
+export const RelationshipTypeEnumSchema = _RelationshipTypeEnumRawSchema as unknown as z.ZodType<
+  Components['schemas']['RelationshipTypeEnum']
+>
+
+const _RestRateExchangeStatsRawSchema = z
   .object({
     rps_1s: z.number(),
     rps_10s: z.number(),
@@ -700,7 +979,11 @@ export const RestRateExchangeStatsSchema = z
   })
   .strict()
 
-export const RetentionPolicyResultSchema = z
+export const RestRateExchangeStatsSchema = _RestRateExchangeStatsRawSchema as unknown as z.ZodType<
+  Components['schemas']['RestRateExchangeStats']
+>
+
+const _RetentionPolicyResultRawSchema = z
   .object({
     table: z.string(),
     retain_days: z.number().int(),
@@ -714,7 +997,11 @@ export const RetentionPolicyResultSchema = z
   })
   .strict()
 
-export const RollPointDetailSchema = z
+export const RetentionPolicyResultSchema = _RetentionPolicyResultRawSchema as unknown as z.ZodType<
+  Components['schemas']['RetentionPolicyResult']
+>
+
+const _RollPointDetailRawSchema = z
   .object({
     from_contract: z.string(),
     to_contract: z.string(),
@@ -722,14 +1009,22 @@ export const RollPointDetailSchema = z
   })
   .strict()
 
-export const SaturationMetricsSchema = z
+export const RollPointDetailSchema = _RollPointDetailRawSchema as unknown as z.ZodType<
+  Components['schemas']['RollPointDetail']
+>
+
+const _SaturationMetricsRawSchema = z
   .object({
     threads_pct: z.number().nullable(),
     fds_pct: z.number().nullable(),
   })
   .strict()
 
-export const ScopeGrantInfoSchema = z
+export const SaturationMetricsSchema = _SaturationMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['SaturationMetrics']
+>
+
+const _ScopeGrantInfoRawSchema = z
   .object({
     type: z.literal('scope_grant_info'),
     sequence_id: z.number().int(),
@@ -748,7 +1043,11 @@ export const ScopeGrantInfoSchema = z
   })
   .strict()
 
-export const SettingCategoriesResponseSchema = z
+export const ScopeGrantInfoSchema = _ScopeGrantInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['ScopeGrantInfo']
+>
+
+const _SettingCategoriesResponseRawSchema = z
   .object({
     type: z.literal('setting_categories'),
     sequence_id: z.number().int(),
@@ -761,7 +1060,12 @@ export const SettingCategoriesResponseSchema = z
   })
   .strict()
 
-export const SettingReadSchema = z
+export const SettingCategoriesResponseSchema =
+  _SettingCategoriesResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['SettingCategoriesResponse']
+  >
+
+const _SettingReadRawSchema = z
   .object({
     type: z.literal('setting_read'),
     sequence_id: z.number().int(),
@@ -778,7 +1082,11 @@ export const SettingReadSchema = z
   })
   .strict()
 
-export const SignalDataSchema = z
+export const SettingReadSchema = _SettingReadRawSchema as unknown as z.ZodType<
+  Components['schemas']['SettingRead']
+>
+
+const _SignalDataRawSchema = z
   .object({
     type: z.literal('signal'),
     sequence_id: z.number().int(),
@@ -802,7 +1110,11 @@ export const SignalDataSchema = z
   })
   .strict()
 
-export const SignalDiffEntrySchema = z
+export const SignalDataSchema = _SignalDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['SignalData']
+>
+
+const _SignalDiffEntryRawSchema = z
   .object({
     instrument: z.string(),
     signal_time: z.iso.datetime(),
@@ -811,7 +1123,11 @@ export const SignalDiffEntrySchema = z
   })
   .strict()
 
-export const StrategyProcessSchema = z
+export const SignalDiffEntrySchema = _SignalDiffEntryRawSchema as unknown as z.ZodType<
+  Components['schemas']['SignalDiffEntry']
+>
+
+const _StrategyProcessRawSchema = z
   .object({
     type: z.literal('strategy_process'),
     sequence_id: z.number().int(),
@@ -826,14 +1142,22 @@ export const StrategyProcessSchema = z
   })
   .strict()
 
-export const SubscriptionsStatsSchema = z
+export const StrategyProcessSchema = _StrategyProcessRawSchema as unknown as z.ZodType<
+  Components['schemas']['StrategyProcess']
+>
+
+const _SubscriptionsStatsRawSchema = z
   .object({
     per_topic: z.record(z.string(), z.number().int()),
     per_client: z.record(z.string(), z.array(z.string())),
   })
   .strict()
 
-export const TableStatsItemSchema = z
+export const SubscriptionsStatsSchema = _SubscriptionsStatsRawSchema as unknown as z.ZodType<
+  Components['schemas']['SubscriptionsStats']
+>
+
+const _TableStatsItemRawSchema = z
   .object({
     table: z.string(),
     table_kind: z.enum(['event', 'state']),
@@ -846,7 +1170,11 @@ export const TableStatsItemSchema = z
   })
   .strict()
 
-export const TopicMetricSnapshotSchema = z
+export const TableStatsItemSchema = _TableStatsItemRawSchema as unknown as z.ZodType<
+  Components['schemas']['TableStatsItem']
+>
+
+const _TopicMetricSnapshotRawSchema = z
   .object({
     active_subscribers: z.number().int(),
     received: z.number().int(),
@@ -862,14 +1190,22 @@ export const TopicMetricSnapshotSchema = z
   })
   .strict()
 
-export const TracemallocStateSchema = z
+export const TopicMetricSnapshotSchema = _TopicMetricSnapshotRawSchema as unknown as z.ZodType<
+  Components['schemas']['TopicMetricSnapshot']
+>
+
+const _TracemallocStateRawSchema = z
   .object({
     active: z.boolean(),
     requested_duration_seconds: z.number().nullable(),
   })
   .strict()
 
-export const TradeDiffEntrySchema = z
+export const TracemallocStateSchema = _TracemallocStateRawSchema as unknown as z.ZodType<
+  Components['schemas']['TracemallocState']
+>
+
+const _TradeDiffEntryRawSchema = z
   .object({
     instrument: z.string(),
     executed_at: z.iso.datetime(),
@@ -883,7 +1219,11 @@ export const TradeDiffEntrySchema = z
   })
   .strict()
 
-export const TrailingStopStateDataSchema = z
+export const TradeDiffEntrySchema = _TradeDiffEntryRawSchema as unknown as z.ZodType<
+  Components['schemas']['TradeDiffEntry']
+>
+
+const _TrailingStopStateDataRawSchema = z
   .object({
     type: z.literal('trailing_stop_state'),
     sequence_id: z.number().int(),
@@ -902,7 +1242,11 @@ export const TrailingStopStateDataSchema = z
   })
   .strict()
 
-export const UnderlyingAssetDataSchema = z
+export const TrailingStopStateDataSchema = _TrailingStopStateDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['TrailingStopStateData']
+>
+
+const _UnderlyingAssetDataRawSchema = z
   .object({
     type: z.literal('underlying_asset'),
     sequence_id: z.number().int(),
@@ -918,7 +1262,11 @@ export const UnderlyingAssetDataSchema = z
   })
   .strict()
 
-export const UnderlyingInstrumentDataSchema = z
+export const UnderlyingAssetDataSchema = _UnderlyingAssetDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['UnderlyingAssetData']
+>
+
+const _UnderlyingInstrumentDataRawSchema = z
   .object({
     type: z.literal('underlying_instrument'),
     sequence_id: z.number().int(),
@@ -935,7 +1283,12 @@ export const UnderlyingInstrumentDataSchema = z
   })
   .strict()
 
-export const UserAlertDefaultInfoSchema = z
+export const UnderlyingInstrumentDataSchema =
+  _UnderlyingInstrumentDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['UnderlyingInstrumentData']
+  >
+
+const _UserAlertDefaultInfoRawSchema = z
   .object({
     type: z.literal('user_alert_default_info'),
     sequence_id: z.number().int(),
@@ -950,9 +1303,17 @@ export const UserAlertDefaultInfoSchema = z
   })
   .strict()
 
-export const UserRoleSchema = z.enum(['ai_delegate', 'viewer', 'operator', 'admin'])
+export const UserAlertDefaultInfoSchema = _UserAlertDefaultInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['UserAlertDefaultInfo']
+>
 
-export const ValidationErrorSchema = z
+const _UserRoleRawSchema = z.enum(['ai_delegate', 'viewer', 'operator', 'admin'])
+
+export const UserRoleSchema = _UserRoleRawSchema as unknown as z.ZodType<
+  Components['schemas']['UserRole']
+>
+
+const _ValidationErrorRawSchema = z
   .object({
     loc: z.array(z.union([z.string(), z.number().int()])),
     msg: z.string(),
@@ -962,7 +1323,33 @@ export const ValidationErrorSchema = z
   })
   .strict()
 
-export const WalletInfoSchema = z
+export const ValidationErrorSchema = _ValidationErrorRawSchema as unknown as z.ZodType<
+  Components['schemas']['ValidationError']
+>
+
+const _VenueFeeScheduleDataRawSchema = z
+  .object({
+    type: z.literal('venue_fee_schedule'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    exchange: z.string(),
+    instrument_public_id: z.string().nullable(),
+    fee_tier: z.string(),
+    maker_bps: z.number(),
+    taker_bps: z.number(),
+    min_volume_30d: z.number().nullable(),
+    currency: z.string(),
+  })
+  .strict()
+
+export const VenueFeeScheduleDataSchema = _VenueFeeScheduleDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['VenueFeeScheduleData']
+>
+
+const _WalletInfoRawSchema = z
   .object({
     type: z.literal('wallet_info'),
     sequence_id: z.number().int(),
@@ -976,7 +1363,11 @@ export const WalletInfoSchema = z
   })
   .strict()
 
-export const WebSocketStatsSchema = z
+export const WalletInfoSchema = _WalletInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['WalletInfo']
+>
+
+const _WebSocketStatsRawSchema = z
   .object({
     active_connections: z.number().int(),
     topic_subscribers: z.record(z.string(), z.number().int()),
@@ -984,14 +1375,22 @@ export const WebSocketStatsSchema = z
   })
   .strict()
 
-export const WsStatsConfigSchema = z
+export const WebSocketStatsSchema = _WebSocketStatsRawSchema as unknown as z.ZodType<
+  Components['schemas']['WebSocketStats']
+>
+
+const _WsStatsConfigRawSchema = z
   .object({
     broker_xpub: z.string(),
     heartbeat_interval_ms: z.number().int(),
   })
   .strict()
 
-export const WsTokenDataSchema = z
+export const WsStatsConfigSchema = _WsStatsConfigRawSchema as unknown as z.ZodType<
+  Components['schemas']['WsStatsConfig']
+>
+
+const _WsTokenDataRawSchema = z
   .object({
     type: z.literal('ws_token'),
     sequence_id: z.number().int(),
@@ -1006,7 +1405,11 @@ export const WsTokenDataSchema = z
   })
   .strict()
 
-export const ZmqBridgeStatsSchema = z
+export const WsTokenDataSchema = _WsTokenDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['WsTokenData']
+>
+
+const _ZmqBridgeStatsRawSchema = z
   .object({
     active_topics: z.number().int(),
     subscriber_tasks: z.number().int(),
@@ -1014,7 +1417,11 @@ export const ZmqBridgeStatsSchema = z
   })
   .strict()
 
-export const ZmqComponentsSchema = z
+export const ZmqBridgeStatsSchema = _ZmqBridgeStatsRawSchema as unknown as z.ZodType<
+  Components['schemas']['ZmqBridgeStats']
+>
+
+const _ZmqComponentsRawSchema = z
   .object({
     zmq_context: z.enum(['ok', 'error']),
     websocket_manager: z.enum(['ok', 'error']),
@@ -1022,13 +1429,21 @@ export const ZmqComponentsSchema = z
   })
   .strict()
 
-export const ZmqConfigSchema = z
+export const ZmqComponentsSchema = _ZmqComponentsRawSchema as unknown as z.ZodType<
+  Components['schemas']['ZmqComponents']
+>
+
+const _ZmqConfigRawSchema = z
   .object({
     available_topics: z.array(z.string()),
   })
   .strict()
 
-export const LoginBodySchema = z
+export const ZmqConfigSchema = _ZmqConfigRawSchema as unknown as z.ZodType<
+  Components['schemas']['ZmqConfig']
+>
+
+const _LoginBodyRawSchema = z
   .object({
     username: z.string(),
     password: z.string(),
@@ -1036,33 +1451,54 @@ export const LoginBodySchema = z
   })
   .strict()
 
-export const RefreshTokenPayloadSchema = z
+export const LoginBodySchema = _LoginBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginBody']
+>
+
+const _RefreshTokenPayloadRawSchema = z
   .object({
     active_wallet_public_id: z.string().nullable().optional(),
     clear_active_wallet: z.boolean().optional(),
   })
   .strict()
 
-export const DeactivateUserBodySchema = z
+export const RefreshTokenPayloadSchema = _RefreshTokenPayloadRawSchema as unknown as z.ZodType<
+  Components['schemas']['RefreshTokenPayload']
+>
+
+const _DeactivateUserBodyRawSchema = z
   .object({
     reason: z.string().nullable().optional(),
   })
   .strict()
 
-export const ChangePasswordBodySchema = z
+export const DeactivateUserBodySchema = _DeactivateUserBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['DeactivateUserBody']
+>
+
+const _ChangePasswordBodyRawSchema = z
   .object({
     current_password: z.string(),
     new_password: z.string().min(8),
   })
   .strict()
 
-export const AdminResetPasswordBodySchema = z
+export const ChangePasswordBodySchema = _ChangePasswordBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['ChangePasswordBody']
+>
+
+const _AdminResetPasswordBodyRawSchema = z
   .object({
     new_password: z.string().min(8),
   })
   .strict()
 
-export const SettingUpdateBodySchema = z
+export const AdminResetPasswordBodySchema =
+  _AdminResetPasswordBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['AdminResetPasswordBody']
+  >
+
+const _SettingUpdateBodyRawSchema = z
   .object({
     value: z.string(),
     category: z.string().optional(),
@@ -1070,29 +1506,51 @@ export const SettingUpdateBodySchema = z
   })
   .strict()
 
-export const PushBetaUsersBodySchema = z
+export const SettingUpdateBodySchema = _SettingUpdateBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['SettingUpdateBody']
+>
+
+const _PushBetaUsersBodyRawSchema = z
   .object({
     enabled: z.boolean(),
     user_public_ids: z.array(z.string()).optional(),
   })
   .strict()
 
-export const RemoveSettingBodySchema = z.object({}).strict()
+export const PushBetaUsersBodySchema = _PushBetaUsersBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['PushBetaUsersBody']
+>
 
-export const DelegateDeactivateBodySchema = z
+const _RemoveSettingBodyRawSchema = z.object({}).strict()
+
+export const RemoveSettingBodySchema = _RemoveSettingBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['RemoveSettingBody']
+>
+
+const _DelegateDeactivateBodyRawSchema = z
   .object({
     reason: z.string().max(120).nullable().optional(),
   })
   .strict()
 
-export const AiReviewDecisionRequestSchema = z
+export const DelegateDeactivateBodySchema =
+  _DelegateDeactivateBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['DelegateDeactivateBody']
+  >
+
+const _AiReviewDecisionRequestRawSchema = z
   .object({
     decision: z.string(),
     rationale: z.string().nullable().optional(),
   })
   .strict()
 
-export const UserAlertDefaultBodySchema = z
+export const AiReviewDecisionRequestSchema =
+  _AiReviewDecisionRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewDecisionRequest']
+  >
+
+const _UserAlertDefaultBodyRawSchema = z
   .object({
     alert_type: z.enum([
       'order_fill_full',
@@ -1106,7 +1564,11 @@ export const UserAlertDefaultBodySchema = z
   })
   .strict()
 
-export const BacktestCompareBodySchema = z
+export const UserAlertDefaultBodySchema = _UserAlertDefaultBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['UserAlertDefaultBody']
+>
+
+const _BacktestCompareBodyRawSchema = z
   .object({
     mode: z.enum(['manual', 'auto']),
     run_a_public_id: z.string().nullable().optional(),
@@ -1116,13 +1578,21 @@ export const BacktestCompareBodySchema = z
   })
   .strict()
 
-export const BacktestCancelBodySchema = z
+export const BacktestCompareBodySchema = _BacktestCompareBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestCompareBody']
+>
+
+const _BacktestCancelBodyRawSchema = z
   .object({
     reason: z.string().optional(),
   })
   .strict()
 
-export const CreateCredentialBodySchema = z
+export const BacktestCancelBodySchema = _BacktestCancelBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestCancelBody']
+>
+
+const _CreateCredentialBodyRawSchema = z
   .object({
     exchange: z.string().min(1).max(20),
     credential_type: z.enum(['api_key_secret', 'rsa_pem', 'oauth', 'paper']),
@@ -1131,14 +1601,22 @@ export const CreateCredentialBodySchema = z
   })
   .strict()
 
-export const RotateCredentialBodySchema = z
+export const CreateCredentialBodySchema = _CreateCredentialBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateCredentialBody']
+>
+
+const _RotateCredentialBodyRawSchema = z
   .object({
     credential_payload: z.record(z.string(), z.string()),
     label: z.string().max(128).nullable().optional(),
   })
   .strict()
 
-export const RegisterDeviceBodySchema = z
+export const RotateCredentialBodySchema = _RotateCredentialBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['RotateCredentialBody']
+>
+
+const _RegisterDeviceBodyRawSchema = z
   .object({
     device_token: z.string().min(64).max(64),
     device_id: z.string().min(1).max(64),
@@ -1148,7 +1626,11 @@ export const RegisterDeviceBodySchema = z
   })
   .strict()
 
-export const DeviceAlertPrefBodySchema = z
+export const RegisterDeviceBodySchema = _RegisterDeviceBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['RegisterDeviceBody']
+>
+
+const _DeviceAlertPrefBodyRawSchema = z
   .object({
     alert_type: z.enum([
       'order_fill_full',
@@ -1168,13 +1650,21 @@ export const DeviceAlertPrefBodySchema = z
   })
   .strict()
 
-export const RevokeDevicePrefBodySchema = z
+export const DeviceAlertPrefBodySchema = _DeviceAlertPrefBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['DeviceAlertPrefBody']
+>
+
+const _RevokeDevicePrefBodyRawSchema = z
   .object({
     reason: z.string().max(512).nullable().optional(),
   })
   .strict()
 
-export const BracketCreateBodySchema = z
+export const RevokeDevicePrefBodySchema = _RevokeDevicePrefBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['RevokeDevicePrefBody']
+>
+
+const _BracketCreateBodyRawSchema = z
   .object({
     position_cycle_public_id: z.string(),
     sl_price: z.number().nullable().optional(),
@@ -1183,13 +1673,21 @@ export const BracketCreateBodySchema = z
   })
   .strict()
 
-export const BracketCancelBodySchema = z
+export const BracketCreateBodySchema = _BracketCreateBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['BracketCreateBody']
+>
+
+const _BracketCancelBodyRawSchema = z
   .object({
     reason: z.string().nullable().optional(),
   })
   .strict()
 
-export const CreateOrderBodySchema = z
+export const BracketCancelBodySchema = _BracketCancelBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['BracketCancelBody']
+>
+
+const _CreateOrderBodyRawSchema = z
   .object({
     instrument: z.string(),
     instrument_public_id: z.string(),
@@ -1211,13 +1709,21 @@ export const CreateOrderBodySchema = z
   })
   .strict()
 
-export const CancelOrderBodySchema = z
+export const CreateOrderBodySchema = _CreateOrderBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateOrderBody']
+>
+
+const _CancelOrderBodyRawSchema = z
   .object({
     reason: z.string().nullable().optional(),
   })
   .strict()
 
-export const CreateScopeGrantBodySchema = z
+export const CancelOrderBodySchema = _CancelOrderBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CancelOrderBody']
+>
+
+const _CreateScopeGrantBodyRawSchema = z
   .object({
     operator_public_id: z.string().min(1).max(64),
     wallet_public_id: z.string().min(1).max(64),
@@ -1228,7 +1734,11 @@ export const CreateScopeGrantBodySchema = z
   })
   .strict()
 
-export const HandoverScopeGrantBodySchema = z
+export const CreateScopeGrantBodySchema = _CreateScopeGrantBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateScopeGrantBody']
+>
+
+const _HandoverScopeGrantBodyRawSchema = z
   .object({
     from_grant_public_id: z.string().min(1).max(64),
     to_operator_public_id: z.string().min(1).max(64),
@@ -1236,13 +1746,22 @@ export const HandoverScopeGrantBodySchema = z
   })
   .strict()
 
-export const RevokeScopeGrantBodySchema = z
+export const HandoverScopeGrantBodySchema =
+  _HandoverScopeGrantBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['HandoverScopeGrantBody']
+  >
+
+const _RevokeScopeGrantBodyRawSchema = z
   .object({
     reason: z.string().max(512).nullable().optional(),
   })
   .strict()
 
-export const TrailingStopCreateBodySchema = z
+export const RevokeScopeGrantBodySchema = _RevokeScopeGrantBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['RevokeScopeGrantBody']
+>
+
+const _TrailingStopCreateBodyRawSchema = z
   .object({
     position_cycle_public_id: z.string(),
     trailing_pct: z.number(),
@@ -1251,13 +1770,23 @@ export const TrailingStopCreateBodySchema = z
   })
   .strict()
 
-export const TrailingStopCancelBodySchema = z
+export const TrailingStopCreateBodySchema =
+  _TrailingStopCreateBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['TrailingStopCreateBody']
+  >
+
+const _TrailingStopCancelBodyRawSchema = z
   .object({
     reason: z.string().nullable().optional(),
   })
   .strict()
 
-export const CreateWalletBodySchema = z
+export const TrailingStopCancelBodySchema =
+  _TrailingStopCancelBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['TrailingStopCancelBody']
+  >
+
+const _CreateWalletBodyRawSchema = z
   .object({
     label: z.string().min(1).max(128),
     description: z.string().max(512).nullable().optional(),
@@ -1265,7 +1794,11 @@ export const CreateWalletBodySchema = z
   })
   .strict()
 
-export const BacktestComparisonListResponseSchema = z
+export const CreateWalletBodySchema = _CreateWalletBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateWalletBody']
+>
+
+const _BacktestComparisonListResponseRawSchema = z
   .object({
     type: z.literal('backtest_comparison_list'),
     sequence_id: z.number().int(),
@@ -1278,7 +1811,12 @@ export const BacktestComparisonListResponseSchema = z
   })
   .strict()
 
-export const BacktestComparisonResponseSchema = z
+export const BacktestComparisonListResponseSchema =
+  _BacktestComparisonListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestComparisonListResponse']
+  >
+
+const _BacktestComparisonResponseRawSchema = z
   .object({
     type: z.literal('backtest_comparison_response'),
     sequence_id: z.number().int(),
@@ -1290,7 +1828,12 @@ export const BacktestComparisonResponseSchema = z
   })
   .strict()
 
-export const BacktestEquityPointListResponseSchema = z
+export const BacktestComparisonResponseSchema =
+  _BacktestComparisonResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestComparisonResponse']
+  >
+
+const _BacktestEquityPointListResponseRawSchema = z
   .object({
     type: z.literal('backtest_equity_point_list'),
     sequence_id: z.number().int(),
@@ -1303,7 +1846,12 @@ export const BacktestEquityPointListResponseSchema = z
   })
   .strict()
 
-export const BacktestEventListResponseSchema = z
+export const BacktestEquityPointListResponseSchema =
+  _BacktestEquityPointListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestEquityPointListResponse']
+  >
+
+const _BacktestEventListResponseRawSchema = z
   .object({
     type: z.literal('backtest_event_list'),
     sequence_id: z.number().int(),
@@ -1316,7 +1864,12 @@ export const BacktestEventListResponseSchema = z
   })
   .strict()
 
-export const BacktestSignalListResponseSchema = z
+export const BacktestEventListResponseSchema =
+  _BacktestEventListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestEventListResponse']
+  >
+
+const _BacktestSignalListResponseRawSchema = z
   .object({
     type: z.literal('backtest_signal_list'),
     sequence_id: z.number().int(),
@@ -1329,7 +1882,12 @@ export const BacktestSignalListResponseSchema = z
   })
   .strict()
 
-export const BacktestTradeListResponseSchema = z
+export const BacktestSignalListResponseSchema =
+  _BacktestSignalListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestSignalListResponse']
+  >
+
+const _BacktestTradeListResponseRawSchema = z
   .object({
     type: z.literal('backtest_trade_list'),
     sequence_id: z.number().int(),
@@ -1342,7 +1900,12 @@ export const BacktestTradeListResponseSchema = z
   })
   .strict()
 
-export const CacheHealthResponseSchema = z
+export const BacktestTradeListResponseSchema =
+  _BacktestTradeListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestTradeListResponse']
+  >
+
+const _CacheHealthResponseRawSchema = z
   .object({
     type: z.literal('cache_health'),
     sequence_id: z.number().int(),
@@ -1354,7 +1917,11 @@ export const CacheHealthResponseSchema = z
   })
   .strict()
 
-export const CachedCandlesPayloadSchema = z
+export const CacheHealthResponseSchema = _CacheHealthResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['CacheHealthResponse']
+>
+
+const _CachedCandlesPayloadRawSchema = z
   .object({
     candles: z.array(CachedCandleSchema),
     sample_count: z.number().int(),
@@ -1363,7 +1930,11 @@ export const CachedCandlesPayloadSchema = z
   })
   .strict()
 
-export const CachedStatsResponseSchema = z
+export const CachedCandlesPayloadSchema = _CachedCandlesPayloadRawSchema as unknown as z.ZodType<
+  Components['schemas']['CachedCandlesPayload']
+>
+
+const _CachedStatsResponseRawSchema = z
   .object({
     type: z.literal('cached_stats'),
     sequence_id: z.number().int(),
@@ -1375,7 +1946,28 @@ export const CachedStatsResponseSchema = z
   })
   .strict()
 
-export const ContinuousCandleListResponseSchema = z
+export const CachedStatsResponseSchema = _CachedStatsResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['CachedStatsResponse']
+>
+
+const _CandleListResponseRawSchema = z
+  .object({
+    type: z.literal('candle_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(CandleDataSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const CandleListResponseSchema = _CandleListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['CandleListResponse']
+>
+
+const _ContinuousCandleListResponseRawSchema = z
   .object({
     type: z.literal('continuous_candle_list'),
     sequence_id: z.number().int(),
@@ -1388,7 +1980,12 @@ export const ContinuousCandleListResponseSchema = z
   })
   .strict()
 
-export const ContractListResponseSchema = z
+export const ContinuousCandleListResponseSchema =
+  _ContinuousCandleListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ContinuousCandleListResponse']
+  >
+
+const _ContractListResponseRawSchema = z
   .object({
     type: z.literal('contract_list'),
     sequence_id: z.number().int(),
@@ -1401,7 +1998,11 @@ export const ContractListResponseSchema = z
   })
   .strict()
 
-export const CredentialListResponseSchema = z
+export const ContractListResponseSchema = _ContractListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ContractListResponse']
+>
+
+const _CredentialListResponseRawSchema = z
   .object({
     type: z.literal('credential_list_response'),
     sequence_id: z.number().int(),
@@ -1414,7 +2015,12 @@ export const CredentialListResponseSchema = z
   })
   .strict()
 
-export const CredentialResponseSchema = z
+export const CredentialListResponseSchema =
+  _CredentialListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['CredentialListResponse']
+  >
+
+const _CredentialResponseRawSchema = z
   .object({
     type: z.literal('credential_response'),
     sequence_id: z.number().int(),
@@ -1426,7 +2032,11 @@ export const CredentialResponseSchema = z
   })
   .strict()
 
-export const DeviceAlertPrefListResponseSchema = z
+export const CredentialResponseSchema = _CredentialResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['CredentialResponse']
+>
+
+const _DeviceAlertPrefListResponseRawSchema = z
   .object({
     type: z.literal('device_alert_pref_list_response'),
     sequence_id: z.number().int(),
@@ -1439,7 +2049,12 @@ export const DeviceAlertPrefListResponseSchema = z
   })
   .strict()
 
-export const DeviceAlertPrefResponseSchema = z
+export const DeviceAlertPrefListResponseSchema =
+  _DeviceAlertPrefListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['DeviceAlertPrefListResponse']
+  >
+
+const _DeviceAlertPrefResponseRawSchema = z
   .object({
     type: z.literal('device_alert_pref_response'),
     sequence_id: z.number().int(),
@@ -1451,7 +2066,12 @@ export const DeviceAlertPrefResponseSchema = z
   })
   .strict()
 
-export const RevokeDevicePrefResponseSchema = z
+export const DeviceAlertPrefResponseSchema =
+  _DeviceAlertPrefResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['DeviceAlertPrefResponse']
+  >
+
+const _RevokeDevicePrefResponseRawSchema = z
   .object({
     type: z.literal('revoke_device_pref_response'),
     sequence_id: z.number().int(),
@@ -1463,7 +2083,12 @@ export const RevokeDevicePrefResponseSchema = z
   })
   .strict()
 
-export const ExecutionListResponseSchema = z
+export const RevokeDevicePrefResponseSchema =
+  _RevokeDevicePrefResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['RevokeDevicePrefResponse']
+  >
+
+const _ExecutionListResponseRawSchema = z
   .object({
     type: z.literal('execution_list'),
     sequence_id: z.number().int(),
@@ -1476,7 +2101,11 @@ export const ExecutionListResponseSchema = z
   })
   .strict()
 
-export const ExecutionPlanResponseSchema = z
+export const ExecutionListResponseSchema = _ExecutionListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ExecutionListResponse']
+>
+
+const _ExecutionPlanResponseRawSchema = z
   .object({
     type: z.literal('execution_plan_response'),
     sequence_id: z.number().int(),
@@ -1488,7 +2117,11 @@ export const ExecutionPlanResponseSchema = z
   })
   .strict()
 
-export const FeatureFlagsResponseSchema = z
+export const ExecutionPlanResponseSchema = _ExecutionPlanResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ExecutionPlanResponse']
+>
+
+const _FeatureFlagsResponseRawSchema = z
   .object({
     type: z.literal('feature_flags_response'),
     sequence_id: z.number().int(),
@@ -1500,7 +2133,11 @@ export const FeatureFlagsResponseSchema = z
   })
   .strict()
 
-export const FrontMonthResponseSchema = z
+export const FeatureFlagsResponseSchema = _FeatureFlagsResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['FeatureFlagsResponse']
+>
+
+const _FrontMonthResponseRawSchema = z
   .object({
     type: z.literal('front_month'),
     sequence_id: z.number().int(),
@@ -1512,14 +2149,40 @@ export const FrontMonthResponseSchema = z
   })
   .strict()
 
-export const GapDetectionStatsSchema = z
+export const FrontMonthResponseSchema = _FrontMonthResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['FrontMonthResponse']
+>
+
+const _GapDetectionStatsRawSchema = z
   .object({
     bridge: GapStatsSchema,
     rest_clients: z.record(z.string(), GapStatsSchema),
   })
   .strict()
 
-export const InstrumentDetailListResponseSchema = z
+export const GapDetectionStatsSchema = _GapDetectionStatsRawSchema as unknown as z.ZodType<
+  Components['schemas']['GapDetectionStats']
+>
+
+const _InstrumentCapabilityListResponseRawSchema = z
+  .object({
+    type: z.literal('instrument_capability_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(InstrumentCapabilityDataSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const InstrumentCapabilityListResponseSchema =
+  _InstrumentCapabilityListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['InstrumentCapabilityListResponse']
+  >
+
+const _InstrumentDetailListResponseRawSchema = z
   .object({
     type: z.literal('instrument_detail_list'),
     sequence_id: z.number().int(),
@@ -1532,9 +2195,18 @@ export const InstrumentDetailListResponseSchema = z
   })
   .strict()
 
-export const JsonValueSchema = z.unknown()
+export const InstrumentDetailListResponseSchema =
+  _InstrumentDetailListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['InstrumentDetailListResponse']
+  >
 
-export const NotificationDeviceListResponseSchema = z
+const _JsonValueRawSchema = z.unknown()
+
+export const JsonValueSchema = _JsonValueRawSchema as unknown as z.ZodType<
+  Components['schemas']['JsonValue']
+>
+
+const _NotificationDeviceListResponseRawSchema = z
   .object({
     type: z.literal('notification_device_list_response'),
     sequence_id: z.number().int(),
@@ -1547,7 +2219,12 @@ export const NotificationDeviceListResponseSchema = z
   })
   .strict()
 
-export const NotificationDeviceResponseSchema = z
+export const NotificationDeviceListResponseSchema =
+  _NotificationDeviceListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['NotificationDeviceListResponse']
+  >
+
+const _NotificationDeviceResponseRawSchema = z
   .object({
     type: z.literal('notification_device_response'),
     sequence_id: z.number().int(),
@@ -1559,7 +2236,12 @@ export const NotificationDeviceResponseSchema = z
   })
   .strict()
 
-export const NotificationMetricsResponseSchema = z
+export const NotificationDeviceResponseSchema =
+  _NotificationDeviceResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['NotificationDeviceResponse']
+  >
+
+const _NotificationMetricsResponseRawSchema = z
   .object({
     type: z.literal('notification_metrics_response'),
     sequence_id: z.number().int(),
@@ -1571,7 +2253,12 @@ export const NotificationMetricsResponseSchema = z
   })
   .strict()
 
-export const OperatorListResponseSchema = z
+export const NotificationMetricsResponseSchema =
+  _NotificationMetricsResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['NotificationMetricsResponse']
+  >
+
+const _OperatorListResponseRawSchema = z
   .object({
     type: z.literal('operator_list_response'),
     sequence_id: z.number().int(),
@@ -1584,7 +2271,11 @@ export const OperatorListResponseSchema = z
   })
   .strict()
 
-export const OrderListResponseSchema = z
+export const OperatorListResponseSchema = _OperatorListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['OperatorListResponse']
+>
+
+const _OrderListResponseRawSchema = z
   .object({
     type: z.literal('order_list'),
     sequence_id: z.number().int(),
@@ -1597,7 +2288,11 @@ export const OrderListResponseSchema = z
   })
   .strict()
 
-export const OrphanSweepResponseSchema = z
+export const OrderListResponseSchema = _OrderListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['OrderListResponse']
+>
+
+const _OrphanSweepResponseRawSchema = z
   .object({
     type: z.literal('orphan_sweep_result'),
     sequence_id: z.number().int(),
@@ -1609,7 +2304,11 @@ export const OrphanSweepResponseSchema = z
   })
   .strict()
 
-export const PositionCycleListResponseSchema = z
+export const OrphanSweepResponseSchema = _OrphanSweepResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['OrphanSweepResponse']
+>
+
+const _PositionCycleListResponseRawSchema = z
   .object({
     type: z.literal('position_cycles'),
     sequence_id: z.number().int(),
@@ -1622,7 +2321,12 @@ export const PositionCycleListResponseSchema = z
   })
   .strict()
 
-export const PositionListResponseSchema = z
+export const PositionCycleListResponseSchema =
+  _PositionCycleListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PositionCycleListResponse']
+  >
+
+const _PositionListResponseRawSchema = z
   .object({
     type: z.literal('position_list'),
     sequence_id: z.number().int(),
@@ -1635,7 +2339,11 @@ export const PositionListResponseSchema = z
   })
   .strict()
 
-export const ProcessSummaryDataSchema = z
+export const PositionListResponseSchema = _PositionListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['PositionListResponse']
+>
+
+const _ProcessSummaryDataRawSchema = z
   .object({
     type: z.literal('process_summary'),
     sequence_id: z.number().int(),
@@ -1650,7 +2358,11 @@ export const ProcessSummaryDataSchema = z
   })
   .strict()
 
-export const ProcessCreateDataSchema = z
+export const ProcessSummaryDataSchema = _ProcessSummaryDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessSummaryData']
+>
+
+const _ProcessCreateDataRawSchema = z
   .object({
     type: z.literal('process_create'),
     sequence_id: z.number().int(),
@@ -1663,7 +2375,11 @@ export const ProcessCreateDataSchema = z
   })
   .strict()
 
-export const ProcessStartResponseSchema = z
+export const ProcessCreateDataSchema = _ProcessCreateDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessCreateData']
+>
+
+const _ProcessStartResponseRawSchema = z
   .object({
     type: z.literal('process_start_response'),
     sequence_id: z.number().int(),
@@ -1675,7 +2391,11 @@ export const ProcessStartResponseSchema = z
   })
   .strict()
 
-export const ProcessStopResponseSchema = z
+export const ProcessStartResponseSchema = _ProcessStartResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessStartResponse']
+>
+
+const _ProcessStopResponseRawSchema = z
   .object({
     type: z.literal('process_stop_response'),
     sequence_id: z.number().int(),
@@ -1687,7 +2407,11 @@ export const ProcessStopResponseSchema = z
   })
   .strict()
 
-export const PushBetaConfigResponseSchema = z
+export const ProcessStopResponseSchema = _ProcessStopResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessStopResponse']
+>
+
+const _PushBetaConfigResponseRawSchema = z
   .object({
     type: z.literal('push_beta_config_response'),
     sequence_id: z.number().int(),
@@ -1699,7 +2423,12 @@ export const PushBetaConfigResponseSchema = z
   })
   .strict()
 
-export const RelatedInstrumentsGroupSchema = z
+export const PushBetaConfigResponseSchema =
+  _PushBetaConfigResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PushBetaConfigResponse']
+  >
+
+const _RelatedInstrumentsGroupRawSchema = z
   .object({
     relationship_type: z.string(),
     label: z.string(),
@@ -1707,7 +2436,12 @@ export const RelatedInstrumentsGroupSchema = z
   })
   .strict()
 
-export const RestRateDataSchema = z
+export const RelatedInstrumentsGroupSchema =
+  _RelatedInstrumentsGroupRawSchema as unknown as z.ZodType<
+    Components['schemas']['RelatedInstrumentsGroup']
+  >
+
+const _RestRateDataRawSchema = z
   .object({
     type: z.literal('rest_rate'),
     sequence_id: z.number().int(),
@@ -1719,7 +2453,11 @@ export const RestRateDataSchema = z
   })
   .strict()
 
-export const RetentionRunDataSchema = z
+export const RestRateDataSchema = _RestRateDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['RestRateData']
+>
+
+const _RetentionRunDataRawSchema = z
   .object({
     type: z.literal('retention_run'),
     sequence_id: z.number().int(),
@@ -1734,7 +2472,11 @@ export const RetentionRunDataSchema = z
   })
   .strict()
 
-export const ContinuousSeriesPartialResponseSchema = z
+export const RetentionRunDataSchema = _RetentionRunDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['RetentionRunData']
+>
+
+const _ContinuousSeriesPartialResponseRawSchema = z
   .object({
     type: z.literal('continuous_partial'),
     sequence_id: z.number().int(),
@@ -1749,7 +2491,12 @@ export const ContinuousSeriesPartialResponseSchema = z
   })
   .strict()
 
-export const SystemMetricsDataSchema = z
+export const ContinuousSeriesPartialResponseSchema =
+  _ContinuousSeriesPartialResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ContinuousSeriesPartialResponse']
+  >
+
+const _SystemMetricsDataRawSchema = z
   .object({
     type: z.literal('system_metrics'),
     sequence_id: z.number().int(),
@@ -1771,7 +2518,11 @@ export const SystemMetricsDataSchema = z
   })
   .strict()
 
-export const SystemMetricsHistoryItemSchema = z
+export const SystemMetricsDataSchema = _SystemMetricsDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['SystemMetricsData']
+>
+
+const _SystemMetricsHistoryItemRawSchema = z
   .object({
     type: z.literal('system_metrics_history_item'),
     sequence_id: z.number().int(),
@@ -1793,14 +2544,24 @@ export const SystemMetricsHistoryItemSchema = z
   })
   .strict()
 
-export const HandoverScopeGrantResultSchema = z
+export const SystemMetricsHistoryItemSchema =
+  _SystemMetricsHistoryItemRawSchema as unknown as z.ZodType<
+    Components['schemas']['SystemMetricsHistoryItem']
+  >
+
+const _HandoverScopeGrantResultRawSchema = z
   .object({
     closed_grant: ScopeGrantInfoSchema,
     new_grant: ScopeGrantInfoSchema,
   })
   .strict()
 
-export const RevokeScopeGrantResponseSchema = z
+export const HandoverScopeGrantResultSchema =
+  _HandoverScopeGrantResultRawSchema as unknown as z.ZodType<
+    Components['schemas']['HandoverScopeGrantResult']
+  >
+
+const _RevokeScopeGrantResponseRawSchema = z
   .object({
     type: z.literal('revoke_scope_grant_response'),
     sequence_id: z.number().int(),
@@ -1812,7 +2573,12 @@ export const RevokeScopeGrantResponseSchema = z
   })
   .strict()
 
-export const ScopeGrantListResponseSchema = z
+export const RevokeScopeGrantResponseSchema =
+  _RevokeScopeGrantResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['RevokeScopeGrantResponse']
+  >
+
+const _ScopeGrantListResponseRawSchema = z
   .object({
     type: z.literal('scope_grant_list_response'),
     sequence_id: z.number().int(),
@@ -1825,7 +2591,12 @@ export const ScopeGrantListResponseSchema = z
   })
   .strict()
 
-export const ScopeGrantResponseSchema = z
+export const ScopeGrantListResponseSchema =
+  _ScopeGrantListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ScopeGrantListResponse']
+  >
+
+const _ScopeGrantResponseRawSchema = z
   .object({
     type: z.literal('scope_grant_response'),
     sequence_id: z.number().int(),
@@ -1837,7 +2608,11 @@ export const ScopeGrantResponseSchema = z
   })
   .strict()
 
-export const SettingListResponseSchema = z
+export const ScopeGrantResponseSchema = _ScopeGrantResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ScopeGrantResponse']
+>
+
+const _SettingListResponseRawSchema = z
   .object({
     type: z.literal('setting_list'),
     sequence_id: z.number().int(),
@@ -1850,7 +2625,11 @@ export const SettingListResponseSchema = z
   })
   .strict()
 
-export const SettingResponseSchema = z
+export const SettingListResponseSchema = _SettingListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['SettingListResponse']
+>
+
+const _SettingResponseRawSchema = z
   .object({
     type: z.literal('setting_response'),
     sequence_id: z.number().int(),
@@ -1862,7 +2641,11 @@ export const SettingResponseSchema = z
   })
   .strict()
 
-export const SignalListResponseSchema = z
+export const SettingResponseSchema = _SettingResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['SettingResponse']
+>
+
+const _SignalListResponseRawSchema = z
   .object({
     type: z.literal('signal_list'),
     sequence_id: z.number().int(),
@@ -1875,7 +2658,11 @@ export const SignalListResponseSchema = z
   })
   .strict()
 
-export const StrategyListResponseSchema = z
+export const SignalListResponseSchema = _SignalListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['SignalListResponse']
+>
+
+const _StrategyListResponseRawSchema = z
   .object({
     type: z.literal('strategy_list'),
     sequence_id: z.number().int(),
@@ -1888,7 +2675,11 @@ export const StrategyListResponseSchema = z
   })
   .strict()
 
-export const DbStatsDataSchema = z
+export const StrategyListResponseSchema = _StrategyListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['StrategyListResponse']
+>
+
+const _DbStatsDataRawSchema = z
   .object({
     type: z.literal('db_stats'),
     sequence_id: z.number().int(),
@@ -1903,7 +2694,11 @@ export const DbStatsDataSchema = z
   })
   .strict()
 
-export const TracemallocStateResponseSchema = z
+export const DbStatsDataSchema = _DbStatsDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['DbStatsData']
+>
+
+const _TracemallocStateResponseRawSchema = z
   .object({
     type: z.literal('tracemalloc_state_response'),
     sequence_id: z.number().int(),
@@ -1915,7 +2710,12 @@ export const TracemallocStateResponseSchema = z
   })
   .strict()
 
-export const TrailingStopStateResponseSchema = z
+export const TracemallocStateResponseSchema =
+  _TracemallocStateResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['TracemallocStateResponse']
+  >
+
+const _TrailingStopStateResponseRawSchema = z
   .object({
     type: z.literal('trailing_stop_state'),
     sequence_id: z.number().int(),
@@ -1927,7 +2727,12 @@ export const TrailingStopStateResponseSchema = z
   })
   .strict()
 
-export const UnderlyingAssetListResponseSchema = z
+export const TrailingStopStateResponseSchema =
+  _TrailingStopStateResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['TrailingStopStateResponse']
+  >
+
+const _UnderlyingAssetListResponseRawSchema = z
   .object({
     type: z.literal('underlying_asset_list'),
     sequence_id: z.number().int(),
@@ -1940,7 +2745,12 @@ export const UnderlyingAssetListResponseSchema = z
   })
   .strict()
 
-export const UnderlyingInstrumentListResponseSchema = z
+export const UnderlyingAssetListResponseSchema =
+  _UnderlyingAssetListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['UnderlyingAssetListResponse']
+  >
+
+const _UnderlyingInstrumentListResponseRawSchema = z
   .object({
     type: z.literal('underlying_instrument_list'),
     sequence_id: z.number().int(),
@@ -1953,7 +2763,12 @@ export const UnderlyingInstrumentListResponseSchema = z
   })
   .strict()
 
-export const UserAlertDefaultListResponseSchema = z
+export const UnderlyingInstrumentListResponseSchema =
+  _UnderlyingInstrumentListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['UnderlyingInstrumentListResponse']
+  >
+
+const _UserAlertDefaultListResponseRawSchema = z
   .object({
     type: z.literal('user_alert_default_list_response'),
     sequence_id: z.number().int(),
@@ -1966,7 +2781,12 @@ export const UserAlertDefaultListResponseSchema = z
   })
   .strict()
 
-export const UserAlertDefaultResponseSchema = z
+export const UserAlertDefaultListResponseSchema =
+  _UserAlertDefaultListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['UserAlertDefaultListResponse']
+  >
+
+const _UserAlertDefaultResponseRawSchema = z
   .object({
     type: z.literal('user_alert_default_response'),
     sequence_id: z.number().int(),
@@ -1978,7 +2798,12 @@ export const UserAlertDefaultResponseSchema = z
   })
   .strict()
 
-export const UserProfileSchema = z
+export const UserAlertDefaultResponseSchema =
+  _UserAlertDefaultResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['UserAlertDefaultResponse']
+  >
+
+const _UserProfileRawSchema = z
   .object({
     type: z.literal('user_profile'),
     sequence_id: z.number().int(),
@@ -1991,13 +2816,17 @@ export const UserProfileSchema = z
     role: UserRoleSchema,
     is_active: z.boolean(),
     created_at: z.iso.datetime(),
-    operator_public_ids: z.array(z.string()).optional(),
+    operator_public_ids: z.array(z.string()),
     primary_operator_public_id: z.string().nullable().optional(),
     active_wallet_public_id: z.string().nullable().optional(),
   })
   .strict()
 
-export const CreateUserBodySchema = z
+export const UserProfileSchema = _UserProfileRawSchema as unknown as z.ZodType<
+  Components['schemas']['UserProfile']
+>
+
+const _CreateUserBodyRawSchema = z
   .object({
     username: z.string().min(3).max(64),
     email: z.string().max(255).nullable().optional(),
@@ -2007,7 +2836,11 @@ export const CreateUserBodySchema = z
   })
   .strict()
 
-export const UpdateUserBodySchema = z
+export const CreateUserBodySchema = _CreateUserBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateUserBody']
+>
+
+const _UpdateUserBodyRawSchema = z
   .object({
     email: z.string().max(255).nullable().optional(),
     role: UserRoleSchema.nullable().optional(),
@@ -2015,13 +2848,39 @@ export const UpdateUserBodySchema = z
   })
   .strict()
 
-export const HTTPValidationErrorSchema = z
+export const UpdateUserBodySchema = _UpdateUserBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['UpdateUserBody']
+>
+
+const _HTTPValidationErrorRawSchema = z
   .object({
     detail: z.array(ValidationErrorSchema).optional(),
   })
   .strict()
 
-export const WalletListResponseSchema = z
+export const HTTPValidationErrorSchema = _HTTPValidationErrorRawSchema as unknown as z.ZodType<
+  Components['schemas']['HTTPValidationError']
+>
+
+const _VenueFeeScheduleListResponseRawSchema = z
+  .object({
+    type: z.literal('venue_fee_schedule_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(VenueFeeScheduleDataSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const VenueFeeScheduleListResponseSchema =
+  _VenueFeeScheduleListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['VenueFeeScheduleListResponse']
+  >
+
+const _WalletListResponseRawSchema = z
   .object({
     type: z.literal('wallet_list_response'),
     sequence_id: z.number().int(),
@@ -2034,7 +2893,11 @@ export const WalletListResponseSchema = z
   })
   .strict()
 
-export const WalletResponseSchema = z
+export const WalletListResponseSchema = _WalletListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['WalletListResponse']
+>
+
+const _WalletResponseRawSchema = z
   .object({
     type: z.literal('wallet_response'),
     sequence_id: z.number().int(),
@@ -2046,7 +2909,11 @@ export const WalletResponseSchema = z
   })
   .strict()
 
-export const WsTokenResponseSchema = z
+export const WalletResponseSchema = _WalletResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['WalletResponse']
+>
+
+const _WsTokenResponseRawSchema = z
   .object({
     type: z.literal('ws_token_response'),
     sequence_id: z.number().int(),
@@ -2058,7 +2925,11 @@ export const WsTokenResponseSchema = z
   })
   .strict()
 
-export const WsStatsDataSchema = z
+export const WsTokenResponseSchema = _WsTokenResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['WsTokenResponse']
+>
+
+const _WsStatsDataRawSchema = z
   .object({
     type: z.literal('ws_stats'),
     sequence_id: z.number().int(),
@@ -2075,7 +2946,11 @@ export const WsStatsDataSchema = z
   })
   .strict()
 
-export const ZmqHealthDataSchema = z
+export const WsStatsDataSchema = _WsStatsDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['WsStatsData']
+>
+
+const _ZmqHealthDataRawSchema = z
   .object({
     type: z.literal('zmq_health'),
     sequence_id: z.number().int(),
@@ -2092,7 +2967,11 @@ export const ZmqHealthDataSchema = z
   })
   .strict()
 
-export const LoginRequestSchema = z
+export const ZmqHealthDataSchema = _ZmqHealthDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ZmqHealthData']
+>
+
+const _LoginRequestRawSchema = z
   .object({
     type: z.literal('login_request').optional(),
     sequence_id: z.number().int(),
@@ -2104,7 +2983,11 @@ export const LoginRequestSchema = z
   })
   .strict()
 
-export const RefreshTokenRequestSchema = z
+export const LoginRequestSchema = _LoginRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginRequest']
+>
+
+const _RefreshTokenRequestRawSchema = z
   .object({
     type: z.literal('refresh_token_request').optional(),
     sequence_id: z.number().int(),
@@ -2116,7 +2999,11 @@ export const RefreshTokenRequestSchema = z
   })
   .strict()
 
-export const DeactivateUserRequestSchema = z
+export const RefreshTokenRequestSchema = _RefreshTokenRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['RefreshTokenRequest']
+>
+
+const _DeactivateUserRequestRawSchema = z
   .object({
     type: z.literal('deactivate_user_request').optional(),
     sequence_id: z.number().int(),
@@ -2128,7 +3015,11 @@ export const DeactivateUserRequestSchema = z
   })
   .strict()
 
-export const ChangePasswordRequestSchema = z
+export const DeactivateUserRequestSchema = _DeactivateUserRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['DeactivateUserRequest']
+>
+
+const _ChangePasswordRequestRawSchema = z
   .object({
     type: z.literal('change_password_request').optional(),
     sequence_id: z.number().int(),
@@ -2140,7 +3031,11 @@ export const ChangePasswordRequestSchema = z
   })
   .strict()
 
-export const AdminResetPasswordRequestSchema = z
+export const ChangePasswordRequestSchema = _ChangePasswordRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['ChangePasswordRequest']
+>
+
+const _AdminResetPasswordRequestRawSchema = z
   .object({
     type: z.literal('admin_reset_password_request').optional(),
     sequence_id: z.number().int(),
@@ -2152,7 +3047,12 @@ export const AdminResetPasswordRequestSchema = z
   })
   .strict()
 
-export const SettingUpdateSchema = z
+export const AdminResetPasswordRequestSchema =
+  _AdminResetPasswordRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['AdminResetPasswordRequest']
+  >
+
+const _SettingUpdateRawSchema = z
   .object({
     type: z.literal('setting_update').optional(),
     sequence_id: z.number().int(),
@@ -2164,7 +3064,11 @@ export const SettingUpdateSchema = z
   })
   .strict()
 
-export const UpdatePushBetaUsersCommandSchema = z
+export const SettingUpdateSchema = _SettingUpdateRawSchema as unknown as z.ZodType<
+  Components['schemas']['SettingUpdate']
+>
+
+const _UpdatePushBetaUsersCommandRawSchema = z
   .object({
     type: z.literal('update_push_beta_users_command').optional(),
     sequence_id: z.number().int(),
@@ -2176,7 +3080,12 @@ export const UpdatePushBetaUsersCommandSchema = z
   })
   .strict()
 
-export const RemoveSettingRequestSchema = z
+export const UpdatePushBetaUsersCommandSchema =
+  _UpdatePushBetaUsersCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['UpdatePushBetaUsersCommand']
+  >
+
+const _RemoveSettingRequestRawSchema = z
   .object({
     type: z.literal('remove_setting_request').optional(),
     sequence_id: z.number().int(),
@@ -2188,7 +3097,11 @@ export const RemoveSettingRequestSchema = z
   })
   .strict()
 
-export const DelegateDeactivateRequestSchema = z
+export const RemoveSettingRequestSchema = _RemoveSettingRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['RemoveSettingRequest']
+>
+
+const _DelegateDeactivateRequestRawSchema = z
   .object({
     type: z.literal('delegate_deactivate_request').optional(),
     sequence_id: z.number().int(),
@@ -2200,7 +3113,12 @@ export const DelegateDeactivateRequestSchema = z
   })
   .strict()
 
-export const AiReviewDecisionCommandSchema = z
+export const DelegateDeactivateRequestSchema =
+  _DelegateDeactivateRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['DelegateDeactivateRequest']
+  >
+
+const _AiReviewDecisionCommandRawSchema = z
   .object({
     type: z.literal('ai_review_decision_command').optional(),
     sequence_id: z.number().int(),
@@ -2212,7 +3130,12 @@ export const AiReviewDecisionCommandSchema = z
   })
   .strict()
 
-export const UpdateUserAlertDefaultCommandSchema = z
+export const AiReviewDecisionCommandSchema =
+  _AiReviewDecisionCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewDecisionCommand']
+  >
+
+const _UpdateUserAlertDefaultCommandRawSchema = z
   .object({
     type: z.literal('update_user_alert_default_command').optional(),
     sequence_id: z.number().int(),
@@ -2224,7 +3147,12 @@ export const UpdateUserAlertDefaultCommandSchema = z
   })
   .strict()
 
-export const BacktestCompareRequestSchema = z
+export const UpdateUserAlertDefaultCommandSchema =
+  _UpdateUserAlertDefaultCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['UpdateUserAlertDefaultCommand']
+  >
+
+const _BacktestCompareRequestRawSchema = z
   .object({
     type: z.literal('backtest_compare_request').optional(),
     sequence_id: z.number().int(),
@@ -2236,7 +3164,12 @@ export const BacktestCompareRequestSchema = z
   })
   .strict()
 
-export const BacktestCancelCommandSchema = z
+export const BacktestCompareRequestSchema =
+  _BacktestCompareRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestCompareRequest']
+  >
+
+const _BacktestCancelCommandRawSchema = z
   .object({
     type: z.literal('backtest_cancel_command').optional(),
     sequence_id: z.number().int(),
@@ -2248,7 +3181,11 @@ export const BacktestCancelCommandSchema = z
   })
   .strict()
 
-export const CreateCredentialCommandSchema = z
+export const BacktestCancelCommandSchema = _BacktestCancelCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestCancelCommand']
+>
+
+const _CreateCredentialCommandRawSchema = z
   .object({
     type: z.literal('create_credential_command').optional(),
     sequence_id: z.number().int(),
@@ -2260,7 +3197,12 @@ export const CreateCredentialCommandSchema = z
   })
   .strict()
 
-export const RotateCredentialCommandSchema = z
+export const CreateCredentialCommandSchema =
+  _CreateCredentialCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['CreateCredentialCommand']
+  >
+
+const _RotateCredentialCommandRawSchema = z
   .object({
     type: z.literal('rotate_credential_command').optional(),
     sequence_id: z.number().int(),
@@ -2272,7 +3214,12 @@ export const RotateCredentialCommandSchema = z
   })
   .strict()
 
-export const RegisterDeviceCommandSchema = z
+export const RotateCredentialCommandSchema =
+  _RotateCredentialCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['RotateCredentialCommand']
+  >
+
+const _RegisterDeviceCommandRawSchema = z
   .object({
     type: z.literal('register_device_command').optional(),
     sequence_id: z.number().int(),
@@ -2284,7 +3231,11 @@ export const RegisterDeviceCommandSchema = z
   })
   .strict()
 
-export const UpdateDevicePrefCommandSchema = z
+export const RegisterDeviceCommandSchema = _RegisterDeviceCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['RegisterDeviceCommand']
+>
+
+const _UpdateDevicePrefCommandRawSchema = z
   .object({
     type: z.literal('update_device_pref_command').optional(),
     sequence_id: z.number().int(),
@@ -2296,7 +3247,12 @@ export const UpdateDevicePrefCommandSchema = z
   })
   .strict()
 
-export const RevokeDevicePrefCommandSchema = z
+export const UpdateDevicePrefCommandSchema =
+  _UpdateDevicePrefCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['UpdateDevicePrefCommand']
+  >
+
+const _RevokeDevicePrefCommandRawSchema = z
   .object({
     type: z.literal('revoke_device_pref_command').optional(),
     sequence_id: z.number().int(),
@@ -2308,7 +3264,12 @@ export const RevokeDevicePrefCommandSchema = z
   })
   .strict()
 
-export const BracketCreateCommandSchema = z
+export const RevokeDevicePrefCommandSchema =
+  _RevokeDevicePrefCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['RevokeDevicePrefCommand']
+  >
+
+const _BracketCreateCommandRawSchema = z
   .object({
     type: z.literal('create_bracket_command').optional(),
     sequence_id: z.number().int(),
@@ -2320,7 +3281,11 @@ export const BracketCreateCommandSchema = z
   })
   .strict()
 
-export const BracketCancelCommandSchema = z
+export const BracketCreateCommandSchema = _BracketCreateCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['BracketCreateCommand']
+>
+
+const _BracketCancelCommandRawSchema = z
   .object({
     type: z.literal('cancel_bracket_command').optional(),
     sequence_id: z.number().int(),
@@ -2332,7 +3297,11 @@ export const BracketCancelCommandSchema = z
   })
   .strict()
 
-export const CreateOrderCommandSchema = z
+export const BracketCancelCommandSchema = _BracketCancelCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['BracketCancelCommand']
+>
+
+const _CreateOrderCommandRawSchema = z
   .object({
     type: z.literal('create_order_command').optional(),
     sequence_id: z.number().int(),
@@ -2344,7 +3313,11 @@ export const CreateOrderCommandSchema = z
   })
   .strict()
 
-export const CancelOrderCommandSchema = z
+export const CreateOrderCommandSchema = _CreateOrderCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateOrderCommand']
+>
+
+const _CancelOrderCommandRawSchema = z
   .object({
     type: z.literal('cancel_order_command').optional(),
     sequence_id: z.number().int(),
@@ -2356,7 +3329,11 @@ export const CancelOrderCommandSchema = z
   })
   .strict()
 
-export const CreateScopeGrantCommandSchema = z
+export const CancelOrderCommandSchema = _CancelOrderCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['CancelOrderCommand']
+>
+
+const _CreateScopeGrantCommandRawSchema = z
   .object({
     type: z.literal('create_scope_grant_command').optional(),
     sequence_id: z.number().int(),
@@ -2368,7 +3345,12 @@ export const CreateScopeGrantCommandSchema = z
   })
   .strict()
 
-export const HandoverScopeGrantCommandSchema = z
+export const CreateScopeGrantCommandSchema =
+  _CreateScopeGrantCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['CreateScopeGrantCommand']
+  >
+
+const _HandoverScopeGrantCommandRawSchema = z
   .object({
     type: z.literal('handover_scope_grant_command').optional(),
     sequence_id: z.number().int(),
@@ -2380,7 +3362,12 @@ export const HandoverScopeGrantCommandSchema = z
   })
   .strict()
 
-export const RevokeScopeGrantCommandSchema = z
+export const HandoverScopeGrantCommandSchema =
+  _HandoverScopeGrantCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['HandoverScopeGrantCommand']
+  >
+
+const _RevokeScopeGrantCommandRawSchema = z
   .object({
     type: z.literal('revoke_scope_grant_command').optional(),
     sequence_id: z.number().int(),
@@ -2392,7 +3379,12 @@ export const RevokeScopeGrantCommandSchema = z
   })
   .strict()
 
-export const TrailingStopCreateCommandSchema = z
+export const RevokeScopeGrantCommandSchema =
+  _RevokeScopeGrantCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['RevokeScopeGrantCommand']
+  >
+
+const _TrailingStopCreateCommandRawSchema = z
   .object({
     type: z.literal('create_trailing_stop_command').optional(),
     sequence_id: z.number().int(),
@@ -2404,7 +3396,12 @@ export const TrailingStopCreateCommandSchema = z
   })
   .strict()
 
-export const TrailingStopCancelCommandSchema = z
+export const TrailingStopCreateCommandSchema =
+  _TrailingStopCreateCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['TrailingStopCreateCommand']
+  >
+
+const _TrailingStopCancelCommandRawSchema = z
   .object({
     type: z.literal('cancel_trailing_stop_command').optional(),
     sequence_id: z.number().int(),
@@ -2416,7 +3413,12 @@ export const TrailingStopCancelCommandSchema = z
   })
   .strict()
 
-export const CreateWalletCommandSchema = z
+export const TrailingStopCancelCommandSchema =
+  _TrailingStopCancelCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['TrailingStopCancelCommand']
+  >
+
+const _CreateWalletCommandRawSchema = z
   .object({
     type: z.literal('create_wallet_command').optional(),
     sequence_id: z.number().int(),
@@ -2428,7 +3430,11 @@ export const CreateWalletCommandSchema = z
   })
   .strict()
 
-export const CachedCandlesResponseSchema = z
+export const CreateWalletCommandSchema = _CreateWalletCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateWalletCommand']
+>
+
+const _CachedCandlesResponseRawSchema = z
   .object({
     type: z.literal('cached_candles'),
     sequence_id: z.number().int(),
@@ -2440,7 +3446,11 @@ export const CachedCandlesResponseSchema = z
   })
   .strict()
 
-export const HealthCheckDataSchema = z
+export const CachedCandlesResponseSchema = _CachedCandlesResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['CachedCandlesResponse']
+>
+
+const _HealthCheckDataRawSchema = z
   .object({
     type: z.literal('health_check'),
     sequence_id: z.number().int(),
@@ -2456,9 +3466,17 @@ export const HealthCheckDataSchema = z
   })
   .strict()
 
-export const JsonObjectSchema = z.record(z.string(), z.any())
+export const HealthCheckDataSchema = _HealthCheckDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['HealthCheckData']
+>
 
-export const ProcessSummaryResponseSchema = z
+const _JsonObjectRawSchema = z.record(z.string(), z.any())
+
+export const JsonObjectSchema = _JsonObjectRawSchema as unknown as z.ZodType<
+  Components['schemas']['JsonObject']
+>
+
+const _ProcessSummaryResponseRawSchema = z
   .object({
     type: z.literal('process_summary_response'),
     sequence_id: z.number().int(),
@@ -2470,7 +3488,12 @@ export const ProcessSummaryResponseSchema = z
   })
   .strict()
 
-export const ProcessCreateResponseSchema = z
+export const ProcessSummaryResponseSchema =
+  _ProcessSummaryResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessSummaryResponse']
+  >
+
+const _ProcessCreateResponseRawSchema = z
   .object({
     type: z.literal('process_create_response'),
     sequence_id: z.number().int(),
@@ -2482,7 +3505,11 @@ export const ProcessCreateResponseSchema = z
   })
   .strict()
 
-export const RelatedInstrumentsPayloadDataSchema = z
+export const ProcessCreateResponseSchema = _ProcessCreateResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessCreateResponse']
+>
+
+const _RelatedInstrumentsPayloadDataRawSchema = z
   .object({
     selected: RelatedInstrumentsSelectedSchema,
     underlying: RelatedInstrumentsUnderlyingSchema.nullable(),
@@ -2490,7 +3517,12 @@ export const RelatedInstrumentsPayloadDataSchema = z
   })
   .strict()
 
-export const RestRateResponseSchema = z
+export const RelatedInstrumentsPayloadDataSchema =
+  _RelatedInstrumentsPayloadDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['RelatedInstrumentsPayloadData']
+  >
+
+const _RestRateResponseRawSchema = z
   .object({
     type: z.literal('rest_rate_response'),
     sequence_id: z.number().int(),
@@ -2502,7 +3534,11 @@ export const RestRateResponseSchema = z
   })
   .strict()
 
-export const RetentionRunResponseSchema = z
+export const RestRateResponseSchema = _RestRateResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['RestRateResponse']
+>
+
+const _RetentionRunResponseRawSchema = z
   .object({
     type: z.literal('retention_run_response'),
     sequence_id: z.number().int(),
@@ -2514,7 +3550,11 @@ export const RetentionRunResponseSchema = z
   })
   .strict()
 
-export const SystemMetricsResponseSchema = z
+export const RetentionRunResponseSchema = _RetentionRunResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['RetentionRunResponse']
+>
+
+const _SystemMetricsResponseRawSchema = z
   .object({
     type: z.literal('system_metrics_response'),
     sequence_id: z.number().int(),
@@ -2526,7 +3566,11 @@ export const SystemMetricsResponseSchema = z
   })
   .strict()
 
-export const SystemMetricsHistoryResponseSchema = z
+export const SystemMetricsResponseSchema = _SystemMetricsResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['SystemMetricsResponse']
+>
+
+const _SystemMetricsHistoryResponseRawSchema = z
   .object({
     type: z.literal('system_metrics_history_response'),
     sequence_id: z.number().int(),
@@ -2539,7 +3583,12 @@ export const SystemMetricsHistoryResponseSchema = z
   })
   .strict()
 
-export const HandoverScopeGrantResponseSchema = z
+export const SystemMetricsHistoryResponseSchema =
+  _SystemMetricsHistoryResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['SystemMetricsHistoryResponse']
+  >
+
+const _HandoverScopeGrantResponseRawSchema = z
   .object({
     type: z.literal('handover_scope_grant_response'),
     sequence_id: z.number().int(),
@@ -2551,7 +3600,12 @@ export const HandoverScopeGrantResponseSchema = z
   })
   .strict()
 
-export const DbStatsResponseSchema = z
+export const HandoverScopeGrantResponseSchema =
+  _HandoverScopeGrantResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['HandoverScopeGrantResponse']
+  >
+
+const _DbStatsResponseRawSchema = z
   .object({
     type: z.literal('db_stats_response'),
     sequence_id: z.number().int(),
@@ -2563,7 +3617,11 @@ export const DbStatsResponseSchema = z
   })
   .strict()
 
-export const LoginDataSchema = z
+export const DbStatsResponseSchema = _DbStatsResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['DbStatsResponse']
+>
+
+const _LoginDataRawSchema = z
   .object({
     type: z.literal('login'),
     sequence_id: z.number().int(),
@@ -2579,7 +3637,11 @@ export const LoginDataSchema = z
   })
   .strict()
 
-export const RefreshDataSchema = z
+export const LoginDataSchema = _LoginDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginData']
+>
+
+const _RefreshDataRawSchema = z
   .object({
     type: z.literal('refresh'),
     sequence_id: z.number().int(),
@@ -2597,7 +3659,11 @@ export const RefreshDataSchema = z
   })
   .strict()
 
-export const UserListResponseSchema = z
+export const RefreshDataSchema = _RefreshDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['RefreshData']
+>
+
+const _UserListResponseRawSchema = z
   .object({
     type: z.literal('user_list'),
     sequence_id: z.number().int(),
@@ -2610,7 +3676,11 @@ export const UserListResponseSchema = z
   })
   .strict()
 
-export const UserResponseSchema = z
+export const UserListResponseSchema = _UserListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['UserListResponse']
+>
+
+const _UserResponseRawSchema = z
   .object({
     type: z.literal('user_response'),
     sequence_id: z.number().int(),
@@ -2622,7 +3692,11 @@ export const UserResponseSchema = z
   })
   .strict()
 
-export const CreateUserRequestSchema = z
+export const UserResponseSchema = _UserResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['UserResponse']
+>
+
+const _CreateUserRequestRawSchema = z
   .object({
     type: z.literal('create_user_request').optional(),
     sequence_id: z.number().int(),
@@ -2634,7 +3708,11 @@ export const CreateUserRequestSchema = z
   })
   .strict()
 
-export const UpdateUserRequestSchema = z
+export const CreateUserRequestSchema = _CreateUserRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateUserRequest']
+>
+
+const _UpdateUserRequestRawSchema = z
   .object({
     type: z.literal('update_user_request').optional(),
     sequence_id: z.number().int(),
@@ -2646,7 +3724,11 @@ export const UpdateUserRequestSchema = z
   })
   .strict()
 
-export const WsStatsResponseSchema = z
+export const UpdateUserRequestSchema = _UpdateUserRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['UpdateUserRequest']
+>
+
+const _WsStatsResponseRawSchema = z
   .object({
     type: z.literal('ws_stats_response'),
     sequence_id: z.number().int(),
@@ -2658,7 +3740,11 @@ export const WsStatsResponseSchema = z
   })
   .strict()
 
-export const ZmqHealthResponseSchema = z
+export const WsStatsResponseSchema = _WsStatsResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['WsStatsResponse']
+>
+
+const _ZmqHealthResponseRawSchema = z
   .object({
     type: z.literal('zmq_health_response'),
     sequence_id: z.number().int(),
@@ -2670,7 +3756,11 @@ export const ZmqHealthResponseSchema = z
   })
   .strict()
 
-export const HealthCheckResponseSchema = z
+export const ZmqHealthResponseSchema = _ZmqHealthResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ZmqHealthResponse']
+>
+
+const _HealthCheckResponseRawSchema = z
   .object({
     type: z.literal('health_check_response'),
     sequence_id: z.number().int(),
@@ -2682,7 +3772,11 @@ export const HealthCheckResponseSchema = z
   })
   .strict()
 
-export const AiReviewDecisionResponseSchema = z
+export const HealthCheckResponseSchema = _HealthCheckResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['HealthCheckResponse']
+>
+
+const _AiReviewDecisionResponseRawSchema = z
   .object({
     success: z.boolean(),
     error_code: z.string().nullable(),
@@ -2691,7 +3785,12 @@ export const AiReviewDecisionResponseSchema = z
   })
   .strict()
 
-export const AlertEventInfoSchema = z
+export const AiReviewDecisionResponseSchema =
+  _AiReviewDecisionResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewDecisionResponse']
+  >
+
+const _AlertEventInfoRawSchema = z
   .object({
     type: z.literal('alert_event_info'),
     sequence_id: z.number().int(),
@@ -2714,7 +3813,11 @@ export const AlertEventInfoSchema = z
   })
   .strict()
 
-export const AvailableProcessSchema = z
+export const AlertEventInfoSchema = _AlertEventInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['AlertEventInfo']
+>
+
+const _AvailableProcessRawSchema = z
   .object({
     type: z.literal('available_process'),
     sequence_id: z.number().int(),
@@ -2733,7 +3836,11 @@ export const AvailableProcessSchema = z
   })
   .strict()
 
-export const BacktestResultInlineSchema = z
+export const AvailableProcessSchema = _AvailableProcessRawSchema as unknown as z.ZodType<
+  Components['schemas']['AvailableProcess']
+>
+
+const _BacktestResultInlineRawSchema = z
   .object({
     total_trades: z.number().int(),
     winning_trades: z.number().int(),
@@ -2753,11 +3860,15 @@ export const BacktestResultInlineSchema = z
     max_drawdown_duration_seconds: z.number().nullable().optional(),
     exposure_ratio: z.number().nullable().optional(),
     turnover_ratio: z.number().nullable().optional(),
-    extra_metrics: z.record(z.string(), z.any()).optional(),
+    extra_metrics: z.record(z.string(), z.any()),
   })
   .strict()
 
-export const BacktestRunDataSchema = z
+export const BacktestResultInlineSchema = _BacktestResultInlineRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestResultInline']
+>
+
+const _BacktestRunDataRawSchema = z
   .object({
     type: z.literal('backtest_run'),
     sequence_id: z.number().int(),
@@ -2788,7 +3899,11 @@ export const BacktestRunDataSchema = z
   })
   .strict()
 
-export const ConfiguredProcessSchema = z
+export const BacktestRunDataSchema = _BacktestRunDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestRunData']
+>
+
+const _ConfiguredProcessRawSchema = z
   .object({
     type: z.literal('configured_process'),
     sequence_id: z.number().int(),
@@ -2816,7 +3931,11 @@ export const ConfiguredProcessSchema = z
   })
   .strict()
 
-export const DelegateCapsBodySchema = z
+export const ConfiguredProcessSchema = _ConfiguredProcessRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConfiguredProcess']
+>
+
+const _DelegateCapsBodyRawSchema = z
   .object({
     max_order_quantity_per_instrument: z.record(z.string(), z.any()).nullable().optional(),
     max_open_orders: z.number().int().nullable().optional(),
@@ -2825,7 +3944,37 @@ export const DelegateCapsBodySchema = z
   })
   .strict()
 
-export const PendingReviewSummaryItemSchema = z
+export const DelegateCapsBodySchema = _DelegateCapsBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['DelegateCapsBody']
+>
+
+const _ExecutionPlanDecisionDataRawSchema = z
+  .object({
+    type: z.literal('execution_plan_decision'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    plan_public_id: z.string(),
+    decision_type: z.string(),
+    decided_at: z.iso.datetime(),
+    trigger_type: z.string(),
+    evidence: z.record(z.string(), z.any()),
+    emitted_command_public_id: z.string().nullable().optional(),
+    new_status: z.string().nullable().optional(),
+    reason: z.string(),
+    decision_importance: z.string(),
+    source_surface: z.string(),
+  })
+  .strict()
+
+export const ExecutionPlanDecisionDataSchema =
+  _ExecutionPlanDecisionDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['ExecutionPlanDecisionData']
+  >
+
+const _PendingReviewSummaryItemRawSchema = z
   .object({
     review_public_id: z.string(),
     selected_delegate_public_id: z.string(),
@@ -2839,7 +3988,12 @@ export const PendingReviewSummaryItemSchema = z
   })
   .strict()
 
-export const ProcessRunSchema = z
+export const PendingReviewSummaryItemSchema =
+  _PendingReviewSummaryItemRawSchema as unknown as z.ZodType<
+    Components['schemas']['PendingReviewSummaryItem']
+  >
+
+const _ProcessRunRawSchema = z
   .object({
     type: z.literal('process_run'),
     sequence_id: z.number().int(),
@@ -2860,7 +4014,11 @@ export const ProcessRunSchema = z
   })
   .strict()
 
-export const ProcessSchemaDataSchema = z
+export const ProcessRunSchema = _ProcessRunRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessRun']
+>
+
+const _ProcessSchemaDataRawSchema = z
   .object({
     type: z.literal('process_schema'),
     sequence_id: z.number().int(),
@@ -2879,7 +4037,11 @@ export const ProcessSchemaDataSchema = z
   })
   .strict()
 
-export const StrategyStatusPayloadSchema = z
+export const ProcessSchemaDataSchema = _ProcessSchemaDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessSchemaData']
+>
+
+const _StrategyStatusPayloadRawSchema = z
   .object({
     strategy_name: z.string(),
     status: z.string(),
@@ -2894,7 +4056,11 @@ export const StrategyStatusPayloadSchema = z
   })
   .strict()
 
-export const BacktestCreateBodySchema = z
+export const StrategyStatusPayloadSchema = _StrategyStatusPayloadRawSchema as unknown as z.ZodType<
+  Components['schemas']['StrategyStatusPayload']
+>
+
+const _BacktestCreateBodyRawSchema = z
   .object({
     strategy_class: z.string(),
     instrument_public_id: z.string(),
@@ -2915,7 +4081,11 @@ export const BacktestCreateBodySchema = z
   })
   .strict()
 
-export const ProcessCreateBodySchema = z
+export const BacktestCreateBodySchema = _BacktestCreateBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestCreateBody']
+>
+
+const _ProcessCreateBodyRawSchema = z
   .object({
     name: z.string().min(3).max(64),
     template: z.string(),
@@ -2926,14 +4096,22 @@ export const ProcessCreateBodySchema = z
   })
   .strict()
 
-export const ProcessStartBodySchema = z
+export const ProcessCreateBodySchema = _ProcessCreateBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessCreateBody']
+>
+
+const _ProcessStartBodyRawSchema = z
   .object({
     mode: z.enum(['thread', 'process']).nullable().optional(),
     parameters: z.record(z.string(), z.any()).nullable().optional(),
   })
   .strict()
 
-export const RelatedInstrumentsResponseSchema = z
+export const ProcessStartBodySchema = _ProcessStartBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessStartBody']
+>
+
+const _RelatedInstrumentsResponseRawSchema = z
   .object({
     type: z.literal('related_instruments'),
     sequence_id: z.number().int(),
@@ -2945,7 +4123,12 @@ export const RelatedInstrumentsResponseSchema = z
   })
   .strict()
 
-export const LoginResponseSchema = z
+export const RelatedInstrumentsResponseSchema =
+  _RelatedInstrumentsResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['RelatedInstrumentsResponse']
+  >
+
+const _LoginResponseRawSchema = z
   .object({
     type: z.literal('login_response'),
     sequence_id: z.number().int(),
@@ -2957,7 +4140,11 @@ export const LoginResponseSchema = z
   })
   .strict()
 
-export const RefreshResponseSchema = z
+export const LoginResponseSchema = _LoginResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginResponse']
+>
+
+const _RefreshResponseRawSchema = z
   .object({
     type: z.literal('refresh_response'),
     sequence_id: z.number().int(),
@@ -2969,7 +4156,11 @@ export const RefreshResponseSchema = z
   })
   .strict()
 
-export const AlertEventResponseSchema = z
+export const RefreshResponseSchema = _RefreshResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['RefreshResponse']
+>
+
+const _AlertEventResponseRawSchema = z
   .object({
     type: z.literal('alert_event_response'),
     sequence_id: z.number().int(),
@@ -2981,7 +4172,11 @@ export const AlertEventResponseSchema = z
   })
   .strict()
 
-export const AlertHistoryResponseSchema = z
+export const AlertEventResponseSchema = _AlertEventResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['AlertEventResponse']
+>
+
+const _AlertHistoryResponseRawSchema = z
   .object({
     type: z.literal('alert_history_response'),
     sequence_id: z.number().int(),
@@ -2995,7 +4190,11 @@ export const AlertHistoryResponseSchema = z
   })
   .strict()
 
-export const AvailableProcessesResponseSchema = z
+export const AlertHistoryResponseSchema = _AlertHistoryResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['AlertHistoryResponse']
+>
+
+const _AvailableProcessesResponseRawSchema = z
   .object({
     type: z.literal('available_processes'),
     sequence_id: z.number().int(),
@@ -3008,7 +4207,12 @@ export const AvailableProcessesResponseSchema = z
   })
   .strict()
 
-export const BacktestRunDetailDataSchema = z
+export const AvailableProcessesResponseSchema =
+  _AvailableProcessesResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['AvailableProcessesResponse']
+  >
+
+const _BacktestRunDetailDataRawSchema = z
   .object({
     type: z.literal('backtest_run'),
     sequence_id: z.number().int(),
@@ -3040,7 +4244,11 @@ export const BacktestRunDetailDataSchema = z
   })
   .strict()
 
-export const BacktestComparisonDetailResponseDataSchema = z
+export const BacktestRunDetailDataSchema = _BacktestRunDetailDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestRunDetailData']
+>
+
+const _BacktestComparisonDetailResponseDataRawSchema = z
   .object({
     type: z.literal('backtest_comparison_detail'),
     sequence_id: z.number().int(),
@@ -3058,7 +4266,12 @@ export const BacktestComparisonDetailResponseDataSchema = z
   })
   .strict()
 
-export const BacktestRunListResponseSchema = z
+export const BacktestComparisonDetailResponseDataSchema =
+  _BacktestComparisonDetailResponseDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestComparisonDetailResponseData']
+  >
+
+const _BacktestRunListResponseRawSchema = z
   .object({
     type: z.literal('backtest_run_list'),
     sequence_id: z.number().int(),
@@ -3071,7 +4284,12 @@ export const BacktestRunListResponseSchema = z
   })
   .strict()
 
-export const BacktestRunResponseSchema = z
+export const BacktestRunListResponseSchema =
+  _BacktestRunListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestRunListResponse']
+  >
+
+const _BacktestRunResponseRawSchema = z
   .object({
     type: z.literal('backtest_run_response'),
     sequence_id: z.number().int(),
@@ -3083,7 +4301,11 @@ export const BacktestRunResponseSchema = z
   })
   .strict()
 
-export const ConfiguredProcessesResponseSchema = z
+export const BacktestRunResponseSchema = _BacktestRunResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestRunResponse']
+>
+
+const _ConfiguredProcessesResponseRawSchema = z
   .object({
     type: z.literal('configured_processes'),
     sequence_id: z.number().int(),
@@ -3096,7 +4318,12 @@ export const ConfiguredProcessesResponseSchema = z
   })
   .strict()
 
-export const DelegateReadSchema = z
+export const ConfiguredProcessesResponseSchema =
+  _ConfiguredProcessesResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ConfiguredProcessesResponse']
+  >
+
+const _DelegateReadRawSchema = z
   .object({
     public_id: z.string(),
     username: z.string(),
@@ -3108,7 +4335,11 @@ export const DelegateReadSchema = z
   })
   .strict()
 
-export const DelegateCreateBodySchema = z
+export const DelegateReadSchema = _DelegateReadRawSchema as unknown as z.ZodType<
+  Components['schemas']['DelegateRead']
+>
+
+const _DelegateCreateBodyRawSchema = z
   .object({
     label: z.string().min(1).max(48),
     caps: DelegateCapsBodySchema.optional(),
@@ -3116,20 +4347,52 @@ export const DelegateCreateBodySchema = z
   })
   .strict()
 
-export const DelegateCapsUpdateBodySchema = z
+export const DelegateCreateBodySchema = _DelegateCreateBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['DelegateCreateBody']
+>
+
+const _DelegateCapsUpdateBodyRawSchema = z
   .object({
     caps: DelegateCapsBodySchema,
   })
   .strict()
 
-export const PendingReviewListResponseSchema = z
+export const DelegateCapsUpdateBodySchema =
+  _DelegateCapsUpdateBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['DelegateCapsUpdateBody']
+  >
+
+const _ExecutionPlanDecisionListResponseRawSchema = z
+  .object({
+    type: z.literal('execution_plan_decision_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(ExecutionPlanDecisionDataSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const ExecutionPlanDecisionListResponseSchema =
+  _ExecutionPlanDecisionListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ExecutionPlanDecisionListResponse']
+  >
+
+const _PendingReviewListResponseRawSchema = z
   .object({
     items: z.array(PendingReviewSummaryItemSchema),
     count: z.number().int(),
   })
   .strict()
 
-export const ProcessRunsResponseSchema = z
+export const PendingReviewListResponseSchema =
+  _PendingReviewListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PendingReviewListResponse']
+  >
+
+const _ProcessRunsResponseRawSchema = z
   .object({
     type: z.literal('process_runs'),
     sequence_id: z.number().int(),
@@ -3142,7 +4405,11 @@ export const ProcessRunsResponseSchema = z
   })
   .strict()
 
-export const ProcessSchemaResponseSchema = z
+export const ProcessRunsResponseSchema = _ProcessRunsResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessRunsResponse']
+>
+
+const _ProcessSchemaResponseRawSchema = z
   .object({
     type: z.literal('process_schema_response'),
     sequence_id: z.number().int(),
@@ -3154,7 +4421,11 @@ export const ProcessSchemaResponseSchema = z
   })
   .strict()
 
-export const SystemStatusDataSchema = z
+export const ProcessSchemaResponseSchema = _ProcessSchemaResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessSchemaResponse']
+>
+
+const _SystemStatusDataRawSchema = z
   .object({
     type: z.literal('system_status'),
     sequence_id: z.number().int(),
@@ -3168,7 +4439,11 @@ export const SystemStatusDataSchema = z
   })
   .strict()
 
-export const BacktestCreateCommandSchema = z
+export const SystemStatusDataSchema = _SystemStatusDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['SystemStatusData']
+>
+
+const _BacktestCreateCommandRawSchema = z
   .object({
     type: z.literal('backtest_create_command').optional(),
     sequence_id: z.number().int(),
@@ -3180,7 +4455,11 @@ export const BacktestCreateCommandSchema = z
   })
   .strict()
 
-export const ProcessCreateRequestSchema = z
+export const BacktestCreateCommandSchema = _BacktestCreateCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['BacktestCreateCommand']
+>
+
+const _ProcessCreateRequestRawSchema = z
   .object({
     type: z.literal('process_create_request').optional(),
     sequence_id: z.number().int(),
@@ -3192,7 +4471,11 @@ export const ProcessCreateRequestSchema = z
   })
   .strict()
 
-export const ProcessStartRequestSchema = z
+export const ProcessCreateRequestSchema = _ProcessCreateRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessCreateRequest']
+>
+
+const _ProcessStartRequestRawSchema = z
   .object({
     type: z.literal('process_start_request').optional(),
     sequence_id: z.number().int(),
@@ -3204,7 +4487,11 @@ export const ProcessStartRequestSchema = z
   })
   .strict()
 
-export const BacktestRunDetailResponseSchema = z
+export const ProcessStartRequestSchema = _ProcessStartRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessStartRequest']
+>
+
+const _BacktestRunDetailResponseRawSchema = z
   .object({
     type: z.literal('backtest_run_detail_response'),
     sequence_id: z.number().int(),
@@ -3216,7 +4503,12 @@ export const BacktestRunDetailResponseSchema = z
   })
   .strict()
 
-export const BacktestComparisonDetailResponseSchema = z
+export const BacktestRunDetailResponseSchema =
+  _BacktestRunDetailResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestRunDetailResponse']
+  >
+
+const _BacktestComparisonDetailResponseRawSchema = z
   .object({
     type: z.literal('backtest_comparison_detail_response'),
     sequence_id: z.number().int(),
@@ -3228,7 +4520,12 @@ export const BacktestComparisonDetailResponseSchema = z
   })
   .strict()
 
-export const DelegateCreatedPayloadSchema = z
+export const BacktestComparisonDetailResponseSchema =
+  _BacktestComparisonDetailResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestComparisonDetailResponse']
+  >
+
+const _DelegateCreatedPayloadRawSchema = z
   .object({
     delegate: DelegateReadSchema,
     access_token: z.string(),
@@ -3236,7 +4533,12 @@ export const DelegateCreatedPayloadSchema = z
   })
   .strict()
 
-export const DelegateListResponseSchema = z
+export const DelegateCreatedPayloadSchema =
+  _DelegateCreatedPayloadRawSchema as unknown as z.ZodType<
+    Components['schemas']['DelegateCreatedPayload']
+  >
+
+const _DelegateListResponseRawSchema = z
   .object({
     type: z.literal('delegate_list'),
     sequence_id: z.number().int(),
@@ -3249,7 +4551,11 @@ export const DelegateListResponseSchema = z
   })
   .strict()
 
-export const DelegateResponseSchema = z
+export const DelegateListResponseSchema = _DelegateListResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['DelegateListResponse']
+>
+
+const _DelegateResponseRawSchema = z
   .object({
     type: z.literal('delegate_response'),
     sequence_id: z.number().int(),
@@ -3261,7 +4567,11 @@ export const DelegateResponseSchema = z
   })
   .strict()
 
-export const DelegateCreateRequestSchema = z
+export const DelegateResponseSchema = _DelegateResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['DelegateResponse']
+>
+
+const _DelegateCreateRequestRawSchema = z
   .object({
     type: z.literal('delegate_create_request').optional(),
     sequence_id: z.number().int(),
@@ -3273,7 +4583,11 @@ export const DelegateCreateRequestSchema = z
   })
   .strict()
 
-export const DelegateCapsUpdateRequestSchema = z
+export const DelegateCreateRequestSchema = _DelegateCreateRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['DelegateCreateRequest']
+>
+
+const _DelegateCapsUpdateRequestRawSchema = z
   .object({
     type: z.literal('delegate_caps_update_request').optional(),
     sequence_id: z.number().int(),
@@ -3285,7 +4599,12 @@ export const DelegateCapsUpdateRequestSchema = z
   })
   .strict()
 
-export const SystemStatusResponseSchema = z
+export const DelegateCapsUpdateRequestSchema =
+  _DelegateCapsUpdateRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['DelegateCapsUpdateRequest']
+  >
+
+const _SystemStatusResponseRawSchema = z
   .object({
     type: z.literal('system_status_response'),
     sequence_id: z.number().int(),
@@ -3297,7 +4616,11 @@ export const SystemStatusResponseSchema = z
   })
   .strict()
 
-export const DelegateCreatedResponseSchema = z
+export const SystemStatusResponseSchema = _SystemStatusResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['SystemStatusResponse']
+>
+
+const _DelegateCreatedResponseRawSchema = z
   .object({
     type: z.literal('delegate_created_response'),
     sequence_id: z.number().int(),
@@ -3309,275 +4632,289 @@ export const DelegateCreatedResponseSchema = z
   })
   .strict()
 
+export const DelegateCreatedResponseSchema =
+  _DelegateCreatedResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['DelegateCreatedResponse']
+  >
+
 // Type exports
-export type AsyncioMetrics = z.infer<typeof AsyncioMetricsSchema>
-export type BacktestComparisonData = z.infer<typeof BacktestComparisonDataSchema>
-export type BacktestEquityPointInline = z.infer<typeof BacktestEquityPointInlineSchema>
-export type BacktestEventData = z.infer<typeof BacktestEventDataSchema>
-export type BacktestSignalData = z.infer<typeof BacktestSignalDataSchema>
-export type BacktestTradeData = z.infer<typeof BacktestTradeDataSchema>
-export type CacheHealthPayload = z.infer<typeof CacheHealthPayloadSchema>
-export type CachedCandle = z.infer<typeof CachedCandleSchema>
-export type CachedStatsPayload = z.infer<typeof CachedStatsPayloadSchema>
-export type ConnectionStats = z.infer<typeof ConnectionStatsSchema>
-export type ContinuousCandleData = z.infer<typeof ContinuousCandleDataSchema>
-export type ContractData = z.infer<typeof ContractDataSchema>
-export type CpuMetrics = z.infer<typeof CpuMetricsSchema>
-export type CredentialSummary = z.infer<typeof CredentialSummarySchema>
-export type DbInternalMetrics = z.infer<typeof DbInternalMetricsSchema>
-export type DeviceAlertPrefInfo = z.infer<typeof DeviceAlertPrefInfoSchema>
-export type EquityOverlayPoint = z.infer<typeof EquityOverlayPointSchema>
-export type ExchangeListResponse = z.infer<typeof ExchangeListResponseSchema>
-export type ExecutionData = z.infer<typeof ExecutionDataSchema>
-export type ExecutionPlanData = z.infer<typeof ExecutionPlanDataSchema>
-export type FeatureFlagsPayload = z.infer<typeof FeatureFlagsPayloadSchema>
-export type FrontMonthData = z.infer<typeof FrontMonthDataSchema>
-export type GapStats = z.infer<typeof GapStatsSchema>
-export type GcMetrics = z.infer<typeof GcMetricsSchema>
-export type HealthTopics = z.infer<typeof HealthTopicsSchema>
-export type InstrumentDetailData = z.infer<typeof InstrumentDetailDataSchema>
-export type InstrumentListResponse = z.infer<typeof InstrumentListResponseSchema>
-export type JsonPrimitive = z.infer<typeof JsonPrimitiveSchema>
-export type LimitsMetrics = z.infer<typeof LimitsMetricsSchema>
-export type MemoryMetrics = z.infer<typeof MemoryMetricsSchema>
-export type MessageResponse = z.infer<typeof MessageResponseSchema>
-export type MetricDiffRow = z.infer<typeof MetricDiffRowSchema>
-export type NotificationDeviceInfo = z.infer<typeof NotificationDeviceInfoSchema>
-export type NotificationMetricsData = z.infer<typeof NotificationMetricsDataSchema>
-export type OperatorInfo = z.infer<typeof OperatorInfoSchema>
-export type OrderData = z.infer<typeof OrderDataSchema>
-export type OrphanSweepResultData = z.infer<typeof OrphanSweepResultDataSchema>
-export type PositionCycleData = z.infer<typeof PositionCycleDataSchema>
-export type PositionData = z.infer<typeof PositionDataSchema>
-export type ProcessCategoryCount = z.infer<typeof ProcessCategoryCountSchema>
-export type ProcessCreatedInfo = z.infer<typeof ProcessCreatedInfoSchema>
-export type ProcessMetrics = z.infer<typeof ProcessMetricsSchema>
-export type ProcessStartData = z.infer<typeof ProcessStartDataSchema>
-export type ProcessStatus = z.infer<typeof ProcessStatusSchema>
-export type ProcessStopData = z.infer<typeof ProcessStopDataSchema>
-export type PushBetaConfigRead = z.infer<typeof PushBetaConfigReadSchema>
-export type RelatedInstrumentData = z.infer<typeof RelatedInstrumentDataSchema>
-export type RelatedInstrumentsSelected = z.infer<typeof RelatedInstrumentsSelectedSchema>
-export type RelatedInstrumentsUnderlying = z.infer<typeof RelatedInstrumentsUnderlyingSchema>
-export type RelationshipTypeEnum = z.infer<typeof RelationshipTypeEnumSchema>
-export type RestRateExchangeStats = z.infer<typeof RestRateExchangeStatsSchema>
-export type RetentionPolicyResult = z.infer<typeof RetentionPolicyResultSchema>
-export type RollPointDetail = z.infer<typeof RollPointDetailSchema>
-export type SaturationMetrics = z.infer<typeof SaturationMetricsSchema>
-export type ScopeGrantInfo = z.infer<typeof ScopeGrantInfoSchema>
-export type SettingCategoriesResponse = z.infer<typeof SettingCategoriesResponseSchema>
-export type SettingRead = z.infer<typeof SettingReadSchema>
-export type SignalData = z.infer<typeof SignalDataSchema>
-export type SignalDiffEntry = z.infer<typeof SignalDiffEntrySchema>
-export type StrategyProcess = z.infer<typeof StrategyProcessSchema>
-export type SubscriptionsStats = z.infer<typeof SubscriptionsStatsSchema>
-export type TableStatsItem = z.infer<typeof TableStatsItemSchema>
-export type TopicMetricSnapshot = z.infer<typeof TopicMetricSnapshotSchema>
-export type TracemallocState = z.infer<typeof TracemallocStateSchema>
-export type TradeDiffEntry = z.infer<typeof TradeDiffEntrySchema>
-export type TrailingStopStateData = z.infer<typeof TrailingStopStateDataSchema>
-export type UnderlyingAssetData = z.infer<typeof UnderlyingAssetDataSchema>
-export type UnderlyingInstrumentData = z.infer<typeof UnderlyingInstrumentDataSchema>
-export type UserAlertDefaultInfo = z.infer<typeof UserAlertDefaultInfoSchema>
-export type UserRole = z.infer<typeof UserRoleSchema>
-export type ValidationError = z.infer<typeof ValidationErrorSchema>
-export type WalletInfo = z.infer<typeof WalletInfoSchema>
-export type WebSocketStats = z.infer<typeof WebSocketStatsSchema>
-export type WsStatsConfig = z.infer<typeof WsStatsConfigSchema>
-export type WsTokenData = z.infer<typeof WsTokenDataSchema>
-export type ZmqBridgeStats = z.infer<typeof ZmqBridgeStatsSchema>
-export type ZmqComponents = z.infer<typeof ZmqComponentsSchema>
-export type ZmqConfig = z.infer<typeof ZmqConfigSchema>
-export type LoginBody = z.infer<typeof LoginBodySchema>
-export type RefreshTokenPayload = z.infer<typeof RefreshTokenPayloadSchema>
-export type DeactivateUserBody = z.infer<typeof DeactivateUserBodySchema>
-export type ChangePasswordBody = z.infer<typeof ChangePasswordBodySchema>
-export type AdminResetPasswordBody = z.infer<typeof AdminResetPasswordBodySchema>
-export type SettingUpdateBody = z.infer<typeof SettingUpdateBodySchema>
-export type PushBetaUsersBody = z.infer<typeof PushBetaUsersBodySchema>
-export type RemoveSettingBody = z.infer<typeof RemoveSettingBodySchema>
-export type DelegateDeactivateBody = z.infer<typeof DelegateDeactivateBodySchema>
-export type AiReviewDecisionRequest = z.infer<typeof AiReviewDecisionRequestSchema>
-export type UserAlertDefaultBody = z.infer<typeof UserAlertDefaultBodySchema>
-export type BacktestCompareBody = z.infer<typeof BacktestCompareBodySchema>
-export type BacktestCancelBody = z.infer<typeof BacktestCancelBodySchema>
-export type CreateCredentialBody = z.infer<typeof CreateCredentialBodySchema>
-export type RotateCredentialBody = z.infer<typeof RotateCredentialBodySchema>
-export type RegisterDeviceBody = z.infer<typeof RegisterDeviceBodySchema>
-export type DeviceAlertPrefBody = z.infer<typeof DeviceAlertPrefBodySchema>
-export type RevokeDevicePrefBody = z.infer<typeof RevokeDevicePrefBodySchema>
-export type BracketCreateBody = z.infer<typeof BracketCreateBodySchema>
-export type BracketCancelBody = z.infer<typeof BracketCancelBodySchema>
-export type CreateOrderBody = z.infer<typeof CreateOrderBodySchema>
-export type CancelOrderBody = z.infer<typeof CancelOrderBodySchema>
-export type CreateScopeGrantBody = z.infer<typeof CreateScopeGrantBodySchema>
-export type HandoverScopeGrantBody = z.infer<typeof HandoverScopeGrantBodySchema>
-export type RevokeScopeGrantBody = z.infer<typeof RevokeScopeGrantBodySchema>
-export type TrailingStopCreateBody = z.infer<typeof TrailingStopCreateBodySchema>
-export type TrailingStopCancelBody = z.infer<typeof TrailingStopCancelBodySchema>
-export type CreateWalletBody = z.infer<typeof CreateWalletBodySchema>
-export type BacktestComparisonListResponse = z.infer<typeof BacktestComparisonListResponseSchema>
-export type BacktestComparisonResponse = z.infer<typeof BacktestComparisonResponseSchema>
-export type BacktestEquityPointListResponse = z.infer<typeof BacktestEquityPointListResponseSchema>
-export type BacktestEventListResponse = z.infer<typeof BacktestEventListResponseSchema>
-export type BacktestSignalListResponse = z.infer<typeof BacktestSignalListResponseSchema>
-export type BacktestTradeListResponse = z.infer<typeof BacktestTradeListResponseSchema>
-export type CacheHealthResponse = z.infer<typeof CacheHealthResponseSchema>
-export type CachedCandlesPayload = z.infer<typeof CachedCandlesPayloadSchema>
-export type CachedStatsResponse = z.infer<typeof CachedStatsResponseSchema>
-export type ContinuousCandleListResponse = z.infer<typeof ContinuousCandleListResponseSchema>
-export type ContractListResponse = z.infer<typeof ContractListResponseSchema>
-export type CredentialListResponse = z.infer<typeof CredentialListResponseSchema>
-export type CredentialResponse = z.infer<typeof CredentialResponseSchema>
-export type DeviceAlertPrefListResponse = z.infer<typeof DeviceAlertPrefListResponseSchema>
-export type DeviceAlertPrefResponse = z.infer<typeof DeviceAlertPrefResponseSchema>
-export type RevokeDevicePrefResponse = z.infer<typeof RevokeDevicePrefResponseSchema>
-export type ExecutionListResponse = z.infer<typeof ExecutionListResponseSchema>
-export type ExecutionPlanResponse = z.infer<typeof ExecutionPlanResponseSchema>
-export type FeatureFlagsResponse = z.infer<typeof FeatureFlagsResponseSchema>
-export type FrontMonthResponse = z.infer<typeof FrontMonthResponseSchema>
-export type GapDetectionStats = z.infer<typeof GapDetectionStatsSchema>
-export type InstrumentDetailListResponse = z.infer<typeof InstrumentDetailListResponseSchema>
-export type JsonValue = z.infer<typeof JsonValueSchema>
-export type NotificationDeviceListResponse = z.infer<typeof NotificationDeviceListResponseSchema>
-export type NotificationDeviceResponse = z.infer<typeof NotificationDeviceResponseSchema>
-export type NotificationMetricsResponse = z.infer<typeof NotificationMetricsResponseSchema>
-export type OperatorListResponse = z.infer<typeof OperatorListResponseSchema>
-export type OrderListResponse = z.infer<typeof OrderListResponseSchema>
-export type OrphanSweepResponse = z.infer<typeof OrphanSweepResponseSchema>
-export type PositionCycleListResponse = z.infer<typeof PositionCycleListResponseSchema>
-export type PositionListResponse = z.infer<typeof PositionListResponseSchema>
-export type ProcessSummaryData = z.infer<typeof ProcessSummaryDataSchema>
-export type ProcessCreateData = z.infer<typeof ProcessCreateDataSchema>
-export type ProcessStartResponse = z.infer<typeof ProcessStartResponseSchema>
-export type ProcessStopResponse = z.infer<typeof ProcessStopResponseSchema>
-export type PushBetaConfigResponse = z.infer<typeof PushBetaConfigResponseSchema>
-export type RelatedInstrumentsGroup = z.infer<typeof RelatedInstrumentsGroupSchema>
-export type RestRateData = z.infer<typeof RestRateDataSchema>
-export type RetentionRunData = z.infer<typeof RetentionRunDataSchema>
-export type ContinuousSeriesPartialResponse = z.infer<typeof ContinuousSeriesPartialResponseSchema>
-export type SystemMetricsData = z.infer<typeof SystemMetricsDataSchema>
-export type SystemMetricsHistoryItem = z.infer<typeof SystemMetricsHistoryItemSchema>
-export type HandoverScopeGrantResult = z.infer<typeof HandoverScopeGrantResultSchema>
-export type RevokeScopeGrantResponse = z.infer<typeof RevokeScopeGrantResponseSchema>
-export type ScopeGrantListResponse = z.infer<typeof ScopeGrantListResponseSchema>
-export type ScopeGrantResponse = z.infer<typeof ScopeGrantResponseSchema>
-export type SettingListResponse = z.infer<typeof SettingListResponseSchema>
-export type SettingResponse = z.infer<typeof SettingResponseSchema>
-export type SignalListResponse = z.infer<typeof SignalListResponseSchema>
-export type StrategyListResponse = z.infer<typeof StrategyListResponseSchema>
-export type DbStatsData = z.infer<typeof DbStatsDataSchema>
-export type TracemallocStateResponse = z.infer<typeof TracemallocStateResponseSchema>
-export type TrailingStopStateResponse = z.infer<typeof TrailingStopStateResponseSchema>
-export type UnderlyingAssetListResponse = z.infer<typeof UnderlyingAssetListResponseSchema>
-export type UnderlyingInstrumentListResponse = z.infer<
-  typeof UnderlyingInstrumentListResponseSchema
->
-export type UserAlertDefaultListResponse = z.infer<typeof UserAlertDefaultListResponseSchema>
-export type UserAlertDefaultResponse = z.infer<typeof UserAlertDefaultResponseSchema>
-export type UserProfile = z.infer<typeof UserProfileSchema>
-export type CreateUserBody = z.infer<typeof CreateUserBodySchema>
-export type UpdateUserBody = z.infer<typeof UpdateUserBodySchema>
-export type HTTPValidationError = z.infer<typeof HTTPValidationErrorSchema>
-export type WalletListResponse = z.infer<typeof WalletListResponseSchema>
-export type WalletResponse = z.infer<typeof WalletResponseSchema>
-export type WsTokenResponse = z.infer<typeof WsTokenResponseSchema>
-export type WsStatsData = z.infer<typeof WsStatsDataSchema>
-export type ZmqHealthData = z.infer<typeof ZmqHealthDataSchema>
-export type LoginRequest = z.infer<typeof LoginRequestSchema>
-export type RefreshTokenRequest = z.infer<typeof RefreshTokenRequestSchema>
-export type DeactivateUserRequest = z.infer<typeof DeactivateUserRequestSchema>
-export type ChangePasswordRequest = z.infer<typeof ChangePasswordRequestSchema>
-export type AdminResetPasswordRequest = z.infer<typeof AdminResetPasswordRequestSchema>
-export type SettingUpdate = z.infer<typeof SettingUpdateSchema>
-export type UpdatePushBetaUsersCommand = z.infer<typeof UpdatePushBetaUsersCommandSchema>
-export type RemoveSettingRequest = z.infer<typeof RemoveSettingRequestSchema>
-export type DelegateDeactivateRequest = z.infer<typeof DelegateDeactivateRequestSchema>
-export type AiReviewDecisionCommand = z.infer<typeof AiReviewDecisionCommandSchema>
-export type UpdateUserAlertDefaultCommand = z.infer<typeof UpdateUserAlertDefaultCommandSchema>
-export type BacktestCompareRequest = z.infer<typeof BacktestCompareRequestSchema>
-export type BacktestCancelCommand = z.infer<typeof BacktestCancelCommandSchema>
-export type CreateCredentialCommand = z.infer<typeof CreateCredentialCommandSchema>
-export type RotateCredentialCommand = z.infer<typeof RotateCredentialCommandSchema>
-export type RegisterDeviceCommand = z.infer<typeof RegisterDeviceCommandSchema>
-export type UpdateDevicePrefCommand = z.infer<typeof UpdateDevicePrefCommandSchema>
-export type RevokeDevicePrefCommand = z.infer<typeof RevokeDevicePrefCommandSchema>
-export type BracketCreateCommand = z.infer<typeof BracketCreateCommandSchema>
-export type BracketCancelCommand = z.infer<typeof BracketCancelCommandSchema>
-export type CreateOrderCommand = z.infer<typeof CreateOrderCommandSchema>
-export type CancelOrderCommand = z.infer<typeof CancelOrderCommandSchema>
-export type CreateScopeGrantCommand = z.infer<typeof CreateScopeGrantCommandSchema>
-export type HandoverScopeGrantCommand = z.infer<typeof HandoverScopeGrantCommandSchema>
-export type RevokeScopeGrantCommand = z.infer<typeof RevokeScopeGrantCommandSchema>
-export type TrailingStopCreateCommand = z.infer<typeof TrailingStopCreateCommandSchema>
-export type TrailingStopCancelCommand = z.infer<typeof TrailingStopCancelCommandSchema>
-export type CreateWalletCommand = z.infer<typeof CreateWalletCommandSchema>
-export type CachedCandlesResponse = z.infer<typeof CachedCandlesResponseSchema>
-export type HealthCheckData = z.infer<typeof HealthCheckDataSchema>
-export type JsonObject = z.infer<typeof JsonObjectSchema>
-export type ProcessSummaryResponse = z.infer<typeof ProcessSummaryResponseSchema>
-export type ProcessCreateResponse = z.infer<typeof ProcessCreateResponseSchema>
-export type RelatedInstrumentsPayloadData = z.infer<typeof RelatedInstrumentsPayloadDataSchema>
-export type RestRateResponse = z.infer<typeof RestRateResponseSchema>
-export type RetentionRunResponse = z.infer<typeof RetentionRunResponseSchema>
-export type SystemMetricsResponse = z.infer<typeof SystemMetricsResponseSchema>
-export type SystemMetricsHistoryResponse = z.infer<typeof SystemMetricsHistoryResponseSchema>
-export type HandoverScopeGrantResponse = z.infer<typeof HandoverScopeGrantResponseSchema>
-export type DbStatsResponse = z.infer<typeof DbStatsResponseSchema>
-export type LoginData = z.infer<typeof LoginDataSchema>
-export type RefreshData = z.infer<typeof RefreshDataSchema>
-export type UserListResponse = z.infer<typeof UserListResponseSchema>
-export type UserResponse = z.infer<typeof UserResponseSchema>
-export type CreateUserRequest = z.infer<typeof CreateUserRequestSchema>
-export type UpdateUserRequest = z.infer<typeof UpdateUserRequestSchema>
-export type WsStatsResponse = z.infer<typeof WsStatsResponseSchema>
-export type ZmqHealthResponse = z.infer<typeof ZmqHealthResponseSchema>
-export type HealthCheckResponse = z.infer<typeof HealthCheckResponseSchema>
-export type AiReviewDecisionResponse = z.infer<typeof AiReviewDecisionResponseSchema>
-export type AlertEventInfo = z.infer<typeof AlertEventInfoSchema>
-export type AvailableProcess = z.infer<typeof AvailableProcessSchema>
-export type BacktestResultInline = z.infer<typeof BacktestResultInlineSchema>
-export type BacktestRunData = z.infer<typeof BacktestRunDataSchema>
-export type ConfiguredProcess = z.infer<typeof ConfiguredProcessSchema>
-export type DelegateCapsBody = z.infer<typeof DelegateCapsBodySchema>
-export type PendingReviewSummaryItem = z.infer<typeof PendingReviewSummaryItemSchema>
-export type ProcessRun = z.infer<typeof ProcessRunSchema>
-export type ProcessSchemaData = z.infer<typeof ProcessSchemaDataSchema>
-export type StrategyStatusPayload = z.infer<typeof StrategyStatusPayloadSchema>
-export type BacktestCreateBody = z.infer<typeof BacktestCreateBodySchema>
-export type ProcessCreateBody = z.infer<typeof ProcessCreateBodySchema>
-export type ProcessStartBody = z.infer<typeof ProcessStartBodySchema>
-export type RelatedInstrumentsResponse = z.infer<typeof RelatedInstrumentsResponseSchema>
-export type LoginResponse = z.infer<typeof LoginResponseSchema>
-export type RefreshResponse = z.infer<typeof RefreshResponseSchema>
-export type AlertEventResponse = z.infer<typeof AlertEventResponseSchema>
-export type AlertHistoryResponse = z.infer<typeof AlertHistoryResponseSchema>
-export type AvailableProcessesResponse = z.infer<typeof AvailableProcessesResponseSchema>
-export type BacktestRunDetailData = z.infer<typeof BacktestRunDetailDataSchema>
-export type BacktestComparisonDetailResponseData = z.infer<
-  typeof BacktestComparisonDetailResponseDataSchema
->
-export type BacktestRunListResponse = z.infer<typeof BacktestRunListResponseSchema>
-export type BacktestRunResponse = z.infer<typeof BacktestRunResponseSchema>
-export type ConfiguredProcessesResponse = z.infer<typeof ConfiguredProcessesResponseSchema>
-export type DelegateRead = z.infer<typeof DelegateReadSchema>
-export type DelegateCreateBody = z.infer<typeof DelegateCreateBodySchema>
-export type DelegateCapsUpdateBody = z.infer<typeof DelegateCapsUpdateBodySchema>
-export type PendingReviewListResponse = z.infer<typeof PendingReviewListResponseSchema>
-export type ProcessRunsResponse = z.infer<typeof ProcessRunsResponseSchema>
-export type ProcessSchemaResponse = z.infer<typeof ProcessSchemaResponseSchema>
-export type SystemStatusData = z.infer<typeof SystemStatusDataSchema>
-export type BacktestCreateCommand = z.infer<typeof BacktestCreateCommandSchema>
-export type ProcessCreateRequest = z.infer<typeof ProcessCreateRequestSchema>
-export type ProcessStartRequest = z.infer<typeof ProcessStartRequestSchema>
-export type BacktestRunDetailResponse = z.infer<typeof BacktestRunDetailResponseSchema>
-export type BacktestComparisonDetailResponse = z.infer<
-  typeof BacktestComparisonDetailResponseSchema
->
-export type DelegateCreatedPayload = z.infer<typeof DelegateCreatedPayloadSchema>
-export type DelegateListResponse = z.infer<typeof DelegateListResponseSchema>
-export type DelegateResponse = z.infer<typeof DelegateResponseSchema>
-export type DelegateCreateRequest = z.infer<typeof DelegateCreateRequestSchema>
-export type DelegateCapsUpdateRequest = z.infer<typeof DelegateCapsUpdateRequestSchema>
-export type SystemStatusResponse = z.infer<typeof SystemStatusResponseSchema>
-export type DelegateCreatedResponse = z.infer<typeof DelegateCreatedResponseSchema>
+export type AsyncioMetrics = Components['schemas']['AsyncioMetrics']
+export type BacktestComparisonData = Components['schemas']['BacktestComparisonData']
+export type BacktestEquityPointInline = Components['schemas']['BacktestEquityPointInline']
+export type BacktestEventData = Components['schemas']['BacktestEventData']
+export type BacktestSignalData = Components['schemas']['BacktestSignalData']
+export type BacktestTradeData = Components['schemas']['BacktestTradeData']
+export type CacheHealthPayload = Components['schemas']['CacheHealthPayload']
+export type CachedCandle = Components['schemas']['CachedCandle']
+export type CachedStatsPayload = Components['schemas']['CachedStatsPayload']
+export type CandleData = Components['schemas']['CandleData']
+export type ConnectionStats = Components['schemas']['ConnectionStats']
+export type ContinuousCandleData = Components['schemas']['ContinuousCandleData']
+export type ContractData = Components['schemas']['ContractData']
+export type CpuMetrics = Components['schemas']['CpuMetrics']
+export type CredentialSummary = Components['schemas']['CredentialSummary']
+export type DbInternalMetrics = Components['schemas']['DbInternalMetrics']
+export type DeviceAlertPrefInfo = Components['schemas']['DeviceAlertPrefInfo']
+export type EquityOverlayPoint = Components['schemas']['EquityOverlayPoint']
+export type ExchangeListResponse = Components['schemas']['ExchangeListResponse']
+export type ExecutionData = Components['schemas']['ExecutionData']
+export type ExecutionPlanData = Components['schemas']['ExecutionPlanData']
+export type FeatureFlagsPayload = Components['schemas']['FeatureFlagsPayload']
+export type FrontMonthData = Components['schemas']['FrontMonthData']
+export type GapStats = Components['schemas']['GapStats']
+export type GcMetrics = Components['schemas']['GcMetrics']
+export type HealthTopics = Components['schemas']['HealthTopics']
+export type InstrumentCapabilityData = Components['schemas']['InstrumentCapabilityData']
+export type InstrumentDetailData = Components['schemas']['InstrumentDetailData']
+export type InstrumentListResponse = Components['schemas']['InstrumentListResponse']
+export type JsonPrimitive = Components['schemas']['JsonPrimitive']
+export type LimitsMetrics = Components['schemas']['LimitsMetrics']
+export type MemoryMetrics = Components['schemas']['MemoryMetrics']
+export type MessageResponse = Components['schemas']['MessageResponse']
+export type MetricDiffRow = Components['schemas']['MetricDiffRow']
+export type NotificationDeviceInfo = Components['schemas']['NotificationDeviceInfo']
+export type NotificationMetricsData = Components['schemas']['NotificationMetricsData']
+export type OperatorInfo = Components['schemas']['OperatorInfo']
+export type OrderData = Components['schemas']['OrderData']
+export type OrphanSweepResultData = Components['schemas']['OrphanSweepResultData']
+export type PositionCycleData = Components['schemas']['PositionCycleData']
+export type PositionData = Components['schemas']['PositionData']
+export type ProcessCategoryCount = Components['schemas']['ProcessCategoryCount']
+export type ProcessCreatedInfo = Components['schemas']['ProcessCreatedInfo']
+export type ProcessMetrics = Components['schemas']['ProcessMetrics']
+export type ProcessStartData = Components['schemas']['ProcessStartData']
+export type ProcessStatus = Components['schemas']['ProcessStatus']
+export type ProcessStopData = Components['schemas']['ProcessStopData']
+export type PushBetaConfigRead = Components['schemas']['PushBetaConfigRead']
+export type RelatedInstrumentData = Components['schemas']['RelatedInstrumentData']
+export type RelatedInstrumentsSelected = Components['schemas']['RelatedInstrumentsSelected']
+export type RelatedInstrumentsUnderlying = Components['schemas']['RelatedInstrumentsUnderlying']
+export type RelationshipTypeEnum = Components['schemas']['RelationshipTypeEnum']
+export type RestRateExchangeStats = Components['schemas']['RestRateExchangeStats']
+export type RetentionPolicyResult = Components['schemas']['RetentionPolicyResult']
+export type RollPointDetail = Components['schemas']['RollPointDetail']
+export type SaturationMetrics = Components['schemas']['SaturationMetrics']
+export type ScopeGrantInfo = Components['schemas']['ScopeGrantInfo']
+export type SettingCategoriesResponse = Components['schemas']['SettingCategoriesResponse']
+export type SettingRead = Components['schemas']['SettingRead']
+export type SignalData = Components['schemas']['SignalData']
+export type SignalDiffEntry = Components['schemas']['SignalDiffEntry']
+export type StrategyProcess = Components['schemas']['StrategyProcess']
+export type SubscriptionsStats = Components['schemas']['SubscriptionsStats']
+export type TableStatsItem = Components['schemas']['TableStatsItem']
+export type TopicMetricSnapshot = Components['schemas']['TopicMetricSnapshot']
+export type TracemallocState = Components['schemas']['TracemallocState']
+export type TradeDiffEntry = Components['schemas']['TradeDiffEntry']
+export type TrailingStopStateData = Components['schemas']['TrailingStopStateData']
+export type UnderlyingAssetData = Components['schemas']['UnderlyingAssetData']
+export type UnderlyingInstrumentData = Components['schemas']['UnderlyingInstrumentData']
+export type UserAlertDefaultInfo = Components['schemas']['UserAlertDefaultInfo']
+export type UserRole = Components['schemas']['UserRole']
+export type ValidationError = Components['schemas']['ValidationError']
+export type VenueFeeScheduleData = Components['schemas']['VenueFeeScheduleData']
+export type WalletInfo = Components['schemas']['WalletInfo']
+export type WebSocketStats = Components['schemas']['WebSocketStats']
+export type WsStatsConfig = Components['schemas']['WsStatsConfig']
+export type WsTokenData = Components['schemas']['WsTokenData']
+export type ZmqBridgeStats = Components['schemas']['ZmqBridgeStats']
+export type ZmqComponents = Components['schemas']['ZmqComponents']
+export type ZmqConfig = Components['schemas']['ZmqConfig']
+export type LoginBody = Components['schemas']['LoginBody']
+export type RefreshTokenPayload = Components['schemas']['RefreshTokenPayload']
+export type DeactivateUserBody = Components['schemas']['DeactivateUserBody']
+export type ChangePasswordBody = Components['schemas']['ChangePasswordBody']
+export type AdminResetPasswordBody = Components['schemas']['AdminResetPasswordBody']
+export type SettingUpdateBody = Components['schemas']['SettingUpdateBody']
+export type PushBetaUsersBody = Components['schemas']['PushBetaUsersBody']
+export type RemoveSettingBody = Components['schemas']['RemoveSettingBody']
+export type DelegateDeactivateBody = Components['schemas']['DelegateDeactivateBody']
+export type AiReviewDecisionRequest = Components['schemas']['AiReviewDecisionRequest']
+export type UserAlertDefaultBody = Components['schemas']['UserAlertDefaultBody']
+export type BacktestCompareBody = Components['schemas']['BacktestCompareBody']
+export type BacktestCancelBody = Components['schemas']['BacktestCancelBody']
+export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
+export type RotateCredentialBody = Components['schemas']['RotateCredentialBody']
+export type RegisterDeviceBody = Components['schemas']['RegisterDeviceBody']
+export type DeviceAlertPrefBody = Components['schemas']['DeviceAlertPrefBody']
+export type RevokeDevicePrefBody = Components['schemas']['RevokeDevicePrefBody']
+export type BracketCreateBody = Components['schemas']['BracketCreateBody']
+export type BracketCancelBody = Components['schemas']['BracketCancelBody']
+export type CreateOrderBody = Components['schemas']['CreateOrderBody']
+export type CancelOrderBody = Components['schemas']['CancelOrderBody']
+export type CreateScopeGrantBody = Components['schemas']['CreateScopeGrantBody']
+export type HandoverScopeGrantBody = Components['schemas']['HandoverScopeGrantBody']
+export type RevokeScopeGrantBody = Components['schemas']['RevokeScopeGrantBody']
+export type TrailingStopCreateBody = Components['schemas']['TrailingStopCreateBody']
+export type TrailingStopCancelBody = Components['schemas']['TrailingStopCancelBody']
+export type CreateWalletBody = Components['schemas']['CreateWalletBody']
+export type BacktestComparisonListResponse = Components['schemas']['BacktestComparisonListResponse']
+export type BacktestComparisonResponse = Components['schemas']['BacktestComparisonResponse']
+export type BacktestEquityPointListResponse =
+  Components['schemas']['BacktestEquityPointListResponse']
+export type BacktestEventListResponse = Components['schemas']['BacktestEventListResponse']
+export type BacktestSignalListResponse = Components['schemas']['BacktestSignalListResponse']
+export type BacktestTradeListResponse = Components['schemas']['BacktestTradeListResponse']
+export type CacheHealthResponse = Components['schemas']['CacheHealthResponse']
+export type CachedCandlesPayload = Components['schemas']['CachedCandlesPayload']
+export type CachedStatsResponse = Components['schemas']['CachedStatsResponse']
+export type CandleListResponse = Components['schemas']['CandleListResponse']
+export type ContinuousCandleListResponse = Components['schemas']['ContinuousCandleListResponse']
+export type ContractListResponse = Components['schemas']['ContractListResponse']
+export type CredentialListResponse = Components['schemas']['CredentialListResponse']
+export type CredentialResponse = Components['schemas']['CredentialResponse']
+export type DeviceAlertPrefListResponse = Components['schemas']['DeviceAlertPrefListResponse']
+export type DeviceAlertPrefResponse = Components['schemas']['DeviceAlertPrefResponse']
+export type RevokeDevicePrefResponse = Components['schemas']['RevokeDevicePrefResponse']
+export type ExecutionListResponse = Components['schemas']['ExecutionListResponse']
+export type ExecutionPlanResponse = Components['schemas']['ExecutionPlanResponse']
+export type FeatureFlagsResponse = Components['schemas']['FeatureFlagsResponse']
+export type FrontMonthResponse = Components['schemas']['FrontMonthResponse']
+export type GapDetectionStats = Components['schemas']['GapDetectionStats']
+export type InstrumentCapabilityListResponse =
+  Components['schemas']['InstrumentCapabilityListResponse']
+export type InstrumentDetailListResponse = Components['schemas']['InstrumentDetailListResponse']
+export type JsonValue = Components['schemas']['JsonValue']
+export type NotificationDeviceListResponse = Components['schemas']['NotificationDeviceListResponse']
+export type NotificationDeviceResponse = Components['schemas']['NotificationDeviceResponse']
+export type NotificationMetricsResponse = Components['schemas']['NotificationMetricsResponse']
+export type OperatorListResponse = Components['schemas']['OperatorListResponse']
+export type OrderListResponse = Components['schemas']['OrderListResponse']
+export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
+export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
+export type PositionListResponse = Components['schemas']['PositionListResponse']
+export type ProcessSummaryData = Components['schemas']['ProcessSummaryData']
+export type ProcessCreateData = Components['schemas']['ProcessCreateData']
+export type ProcessStartResponse = Components['schemas']['ProcessStartResponse']
+export type ProcessStopResponse = Components['schemas']['ProcessStopResponse']
+export type PushBetaConfigResponse = Components['schemas']['PushBetaConfigResponse']
+export type RelatedInstrumentsGroup = Components['schemas']['RelatedInstrumentsGroup']
+export type RestRateData = Components['schemas']['RestRateData']
+export type RetentionRunData = Components['schemas']['RetentionRunData']
+export type ContinuousSeriesPartialResponse =
+  Components['schemas']['ContinuousSeriesPartialResponse']
+export type SystemMetricsData = Components['schemas']['SystemMetricsData']
+export type SystemMetricsHistoryItem = Components['schemas']['SystemMetricsHistoryItem']
+export type HandoverScopeGrantResult = Components['schemas']['HandoverScopeGrantResult']
+export type RevokeScopeGrantResponse = Components['schemas']['RevokeScopeGrantResponse']
+export type ScopeGrantListResponse = Components['schemas']['ScopeGrantListResponse']
+export type ScopeGrantResponse = Components['schemas']['ScopeGrantResponse']
+export type SettingListResponse = Components['schemas']['SettingListResponse']
+export type SettingResponse = Components['schemas']['SettingResponse']
+export type SignalListResponse = Components['schemas']['SignalListResponse']
+export type StrategyListResponse = Components['schemas']['StrategyListResponse']
+export type DbStatsData = Components['schemas']['DbStatsData']
+export type TracemallocStateResponse = Components['schemas']['TracemallocStateResponse']
+export type TrailingStopStateResponse = Components['schemas']['TrailingStopStateResponse']
+export type UnderlyingAssetListResponse = Components['schemas']['UnderlyingAssetListResponse']
+export type UnderlyingInstrumentListResponse =
+  Components['schemas']['UnderlyingInstrumentListResponse']
+export type UserAlertDefaultListResponse = Components['schemas']['UserAlertDefaultListResponse']
+export type UserAlertDefaultResponse = Components['schemas']['UserAlertDefaultResponse']
+export type UserProfile = Components['schemas']['UserProfile']
+export type CreateUserBody = Components['schemas']['CreateUserBody']
+export type UpdateUserBody = Components['schemas']['UpdateUserBody']
+export type HTTPValidationError = Components['schemas']['HTTPValidationError']
+export type VenueFeeScheduleListResponse = Components['schemas']['VenueFeeScheduleListResponse']
+export type WalletListResponse = Components['schemas']['WalletListResponse']
+export type WalletResponse = Components['schemas']['WalletResponse']
+export type WsTokenResponse = Components['schemas']['WsTokenResponse']
+export type WsStatsData = Components['schemas']['WsStatsData']
+export type ZmqHealthData = Components['schemas']['ZmqHealthData']
+export type LoginRequest = Components['schemas']['LoginRequest']
+export type RefreshTokenRequest = Components['schemas']['RefreshTokenRequest']
+export type DeactivateUserRequest = Components['schemas']['DeactivateUserRequest']
+export type ChangePasswordRequest = Components['schemas']['ChangePasswordRequest']
+export type AdminResetPasswordRequest = Components['schemas']['AdminResetPasswordRequest']
+export type SettingUpdate = Components['schemas']['SettingUpdate']
+export type UpdatePushBetaUsersCommand = Components['schemas']['UpdatePushBetaUsersCommand']
+export type RemoveSettingRequest = Components['schemas']['RemoveSettingRequest']
+export type DelegateDeactivateRequest = Components['schemas']['DelegateDeactivateRequest']
+export type AiReviewDecisionCommand = Components['schemas']['AiReviewDecisionCommand']
+export type UpdateUserAlertDefaultCommand = Components['schemas']['UpdateUserAlertDefaultCommand']
+export type BacktestCompareRequest = Components['schemas']['BacktestCompareRequest']
+export type BacktestCancelCommand = Components['schemas']['BacktestCancelCommand']
+export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
+export type RotateCredentialCommand = Components['schemas']['RotateCredentialCommand']
+export type RegisterDeviceCommand = Components['schemas']['RegisterDeviceCommand']
+export type UpdateDevicePrefCommand = Components['schemas']['UpdateDevicePrefCommand']
+export type RevokeDevicePrefCommand = Components['schemas']['RevokeDevicePrefCommand']
+export type BracketCreateCommand = Components['schemas']['BracketCreateCommand']
+export type BracketCancelCommand = Components['schemas']['BracketCancelCommand']
+export type CreateOrderCommand = Components['schemas']['CreateOrderCommand']
+export type CancelOrderCommand = Components['schemas']['CancelOrderCommand']
+export type CreateScopeGrantCommand = Components['schemas']['CreateScopeGrantCommand']
+export type HandoverScopeGrantCommand = Components['schemas']['HandoverScopeGrantCommand']
+export type RevokeScopeGrantCommand = Components['schemas']['RevokeScopeGrantCommand']
+export type TrailingStopCreateCommand = Components['schemas']['TrailingStopCreateCommand']
+export type TrailingStopCancelCommand = Components['schemas']['TrailingStopCancelCommand']
+export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
+export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
+export type HealthCheckData = Components['schemas']['HealthCheckData']
+export type JsonObject = Components['schemas']['JsonObject']
+export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
+export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
+export type RelatedInstrumentsPayloadData = Components['schemas']['RelatedInstrumentsPayloadData']
+export type RestRateResponse = Components['schemas']['RestRateResponse']
+export type RetentionRunResponse = Components['schemas']['RetentionRunResponse']
+export type SystemMetricsResponse = Components['schemas']['SystemMetricsResponse']
+export type SystemMetricsHistoryResponse = Components['schemas']['SystemMetricsHistoryResponse']
+export type HandoverScopeGrantResponse = Components['schemas']['HandoverScopeGrantResponse']
+export type DbStatsResponse = Components['schemas']['DbStatsResponse']
+export type LoginData = Components['schemas']['LoginData']
+export type RefreshData = Components['schemas']['RefreshData']
+export type UserListResponse = Components['schemas']['UserListResponse']
+export type UserResponse = Components['schemas']['UserResponse']
+export type CreateUserRequest = Components['schemas']['CreateUserRequest']
+export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
+export type WsStatsResponse = Components['schemas']['WsStatsResponse']
+export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
+export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
+export type AiReviewDecisionResponse = Components['schemas']['AiReviewDecisionResponse']
+export type AlertEventInfo = Components['schemas']['AlertEventInfo']
+export type AvailableProcess = Components['schemas']['AvailableProcess']
+export type BacktestResultInline = Components['schemas']['BacktestResultInline']
+export type BacktestRunData = Components['schemas']['BacktestRunData']
+export type ConfiguredProcess = Components['schemas']['ConfiguredProcess']
+export type DelegateCapsBody = Components['schemas']['DelegateCapsBody']
+export type ExecutionPlanDecisionData = Components['schemas']['ExecutionPlanDecisionData']
+export type PendingReviewSummaryItem = Components['schemas']['PendingReviewSummaryItem']
+export type ProcessRun = Components['schemas']['ProcessRun']
+export type ProcessSchemaData = Components['schemas']['ProcessSchemaData']
+export type StrategyStatusPayload = Components['schemas']['StrategyStatusPayload']
+export type BacktestCreateBody = Components['schemas']['BacktestCreateBody']
+export type ProcessCreateBody = Components['schemas']['ProcessCreateBody']
+export type ProcessStartBody = Components['schemas']['ProcessStartBody']
+export type RelatedInstrumentsResponse = Components['schemas']['RelatedInstrumentsResponse']
+export type LoginResponse = Components['schemas']['LoginResponse']
+export type RefreshResponse = Components['schemas']['RefreshResponse']
+export type AlertEventResponse = Components['schemas']['AlertEventResponse']
+export type AlertHistoryResponse = Components['schemas']['AlertHistoryResponse']
+export type AvailableProcessesResponse = Components['schemas']['AvailableProcessesResponse']
+export type BacktestRunDetailData = Components['schemas']['BacktestRunDetailData']
+export type BacktestComparisonDetailResponseData =
+  Components['schemas']['BacktestComparisonDetailResponseData']
+export type BacktestRunListResponse = Components['schemas']['BacktestRunListResponse']
+export type BacktestRunResponse = Components['schemas']['BacktestRunResponse']
+export type ConfiguredProcessesResponse = Components['schemas']['ConfiguredProcessesResponse']
+export type DelegateRead = Components['schemas']['DelegateRead']
+export type DelegateCreateBody = Components['schemas']['DelegateCreateBody']
+export type DelegateCapsUpdateBody = Components['schemas']['DelegateCapsUpdateBody']
+export type ExecutionPlanDecisionListResponse =
+  Components['schemas']['ExecutionPlanDecisionListResponse']
+export type PendingReviewListResponse = Components['schemas']['PendingReviewListResponse']
+export type ProcessRunsResponse = Components['schemas']['ProcessRunsResponse']
+export type ProcessSchemaResponse = Components['schemas']['ProcessSchemaResponse']
+export type SystemStatusData = Components['schemas']['SystemStatusData']
+export type BacktestCreateCommand = Components['schemas']['BacktestCreateCommand']
+export type ProcessCreateRequest = Components['schemas']['ProcessCreateRequest']
+export type ProcessStartRequest = Components['schemas']['ProcessStartRequest']
+export type BacktestRunDetailResponse = Components['schemas']['BacktestRunDetailResponse']
+export type BacktestComparisonDetailResponse =
+  Components['schemas']['BacktestComparisonDetailResponse']
+export type DelegateCreatedPayload = Components['schemas']['DelegateCreatedPayload']
+export type DelegateListResponse = Components['schemas']['DelegateListResponse']
+export type DelegateResponse = Components['schemas']['DelegateResponse']
+export type DelegateCreateRequest = Components['schemas']['DelegateCreateRequest']
+export type DelegateCapsUpdateRequest = Components['schemas']['DelegateCapsUpdateRequest']
+export type SystemStatusResponse = Components['schemas']['SystemStatusResponse']
+export type DelegateCreatedResponse = Components['schemas']['DelegateCreatedResponse']
