@@ -86,7 +86,7 @@
     "jsdom": "^29.1.1",
     "json-schema-to-typescript": "^15.0.4",
     "json-schema-to-zod": "^2.8.1",
-    "knip": "^6.12.2",
+    "knip": "^6.13.1",
     "openapi-typescript": "^7.13.0",
     "postcss": "^8.5.14",
     "prettier": "^3.8.3",

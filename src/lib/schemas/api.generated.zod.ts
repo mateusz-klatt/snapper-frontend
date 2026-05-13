@@ -91,6 +91,41 @@ export const BacktestTradeDataSchema = z
   })
   .strict()
 
+export const CacheHealthPayloadSchema = z
+  .object({
+    instruments_cached: z.number().int(),
+    pairs_cached: z.number().int(),
+    persist_universe_size: z.number().int(),
+  })
+  .strict()
+
+export const CachedCandleSchema = z
+  .object({
+    open_at_ms: z.number().int(),
+    timeframe: z.string(),
+    open: z.number(),
+    high: z.number(),
+    low: z.number(),
+    close: z.number(),
+    volume: z.number(),
+  })
+  .strict()
+
+export const CachedStatsPayloadSchema = z
+  .object({
+    left: z.string(),
+    right: z.string(),
+    pearson_r: z.number().nullable(),
+    pearson_n: z.number().int(),
+    coint_t: z.number().nullable(),
+    coint_pvalue: z.number().nullable(),
+    coint_critical_values: z.array(z.unknown()).nullable(),
+    computed_at: z.iso.datetime().nullable(),
+    sample_count: z.number().int(),
+    is_warm: z.boolean(),
+  })
+  .strict()
+
 export const ConnectionStatsSchema = z
   .object({
     active_connections: z.number().int(),
@@ -1307,6 +1342,39 @@ export const BacktestTradeListResponseSchema = z
   })
   .strict()
 
+export const CacheHealthResponseSchema = z
+  .object({
+    type: z.literal('cache_health'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: CacheHealthPayloadSchema,
+  })
+  .strict()
+
+export const CachedCandlesPayloadSchema = z
+  .object({
+    candles: z.array(CachedCandleSchema),
+    sample_count: z.number().int(),
+    is_warm: z.boolean(),
+    source: z.enum(['cache', 'derived', 'db']),
+  })
+  .strict()
+
+export const CachedStatsResponseSchema = z
+  .object({
+    type: z.literal('cached_stats'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: CachedStatsPayloadSchema,
+  })
+  .strict()
+
 export const ContinuousCandleListResponseSchema = z
   .object({
     type: z.literal('continuous_candle_list'),
@@ -2360,6 +2428,18 @@ export const CreateWalletCommandSchema = z
   })
   .strict()
 
+export const CachedCandlesResponseSchema = z
+  .object({
+    type: z.literal('cached_candles'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: CachedCandlesPayloadSchema,
+  })
+  .strict()
+
 export const HealthCheckDataSchema = z
   .object({
     type: z.literal('health_check'),
@@ -3236,6 +3316,9 @@ export type BacktestEquityPointInline = z.infer<typeof BacktestEquityPointInline
 export type BacktestEventData = z.infer<typeof BacktestEventDataSchema>
 export type BacktestSignalData = z.infer<typeof BacktestSignalDataSchema>
 export type BacktestTradeData = z.infer<typeof BacktestTradeDataSchema>
+export type CacheHealthPayload = z.infer<typeof CacheHealthPayloadSchema>
+export type CachedCandle = z.infer<typeof CachedCandleSchema>
+export type CachedStatsPayload = z.infer<typeof CachedStatsPayloadSchema>
 export type ConnectionStats = z.infer<typeof ConnectionStatsSchema>
 export type ContinuousCandleData = z.infer<typeof ContinuousCandleDataSchema>
 export type ContractData = z.infer<typeof ContractDataSchema>
@@ -3339,6 +3422,9 @@ export type BacktestEquityPointListResponse = z.infer<typeof BacktestEquityPoint
 export type BacktestEventListResponse = z.infer<typeof BacktestEventListResponseSchema>
 export type BacktestSignalListResponse = z.infer<typeof BacktestSignalListResponseSchema>
 export type BacktestTradeListResponse = z.infer<typeof BacktestTradeListResponseSchema>
+export type CacheHealthResponse = z.infer<typeof CacheHealthResponseSchema>
+export type CachedCandlesPayload = z.infer<typeof CachedCandlesPayloadSchema>
+export type CachedStatsResponse = z.infer<typeof CachedStatsResponseSchema>
 export type ContinuousCandleListResponse = z.infer<typeof ContinuousCandleListResponseSchema>
 export type ContractListResponse = z.infer<typeof ContractListResponseSchema>
 export type CredentialListResponse = z.infer<typeof CredentialListResponseSchema>
@@ -3426,6 +3512,7 @@ export type RevokeScopeGrantCommand = z.infer<typeof RevokeScopeGrantCommandSche
 export type TrailingStopCreateCommand = z.infer<typeof TrailingStopCreateCommandSchema>
 export type TrailingStopCancelCommand = z.infer<typeof TrailingStopCancelCommandSchema>
 export type CreateWalletCommand = z.infer<typeof CreateWalletCommandSchema>
+export type CachedCandlesResponse = z.infer<typeof CachedCandlesResponseSchema>
 export type HealthCheckData = z.infer<typeof HealthCheckDataSchema>
 export type JsonObject = z.infer<typeof JsonObjectSchema>
 export type ProcessSummaryResponse = z.infer<typeof ProcessSummaryResponseSchema>
