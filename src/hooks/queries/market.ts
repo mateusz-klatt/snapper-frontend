@@ -1,5 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import {
+  getCachedCandles,
+  getCachedPairStats,
+  getCacheHealth,
   getCandles,
   getExchanges,
   getExchangeInstruments,
@@ -82,6 +85,65 @@ export const useRelatedInstruments = (exchange: string | null, nativeSymbol: str
     queryFn: () => getRelatedInstruments(exchangeKey, symbolKey),
     enabled: isAuthenticated && !!exchange && !!nativeSymbol,
     staleTime: 60 * 1000,
+    throwOnError: false,
+  })
+}
+
+export const useCachedCandles = (
+  exchange: string | null,
+  nativeSymbol: string | null,
+  timeframe: string = '1m',
+  limit: number = 100,
+  enabled: boolean = true
+) => {
+  const { isAuthenticated } = useAuth()
+  const exchangeKey = exchange ?? ''
+  const symbolKey = nativeSymbol ?? ''
+
+  return useQuery({
+    queryKey: queryKeys.cachedCandles(exchangeKey, symbolKey, timeframe, limit),
+    queryFn: () => getCachedCandles(exchangeKey, symbolKey, timeframe, limit),
+    enabled: enabled && isAuthenticated && !!exchange && !!nativeSymbol,
+    staleTime: 5 * 1000,
+    throwOnError: false,
+    retry: 1,
+  })
+}
+
+export const useCachedPairStats = (
+  exchangeA: string | null,
+  symbolA: string | null,
+  exchangeB: string | null,
+  symbolB: string | null,
+  enabled: boolean = true
+) => {
+  const { isAuthenticated } = useAuth()
+
+  return useQuery({
+    queryKey: queryKeys.cachedPairStats(
+      exchangeA ?? '',
+      symbolA ?? '',
+      exchangeB ?? '',
+      symbolB ?? ''
+    ),
+    queryFn: () =>
+      getCachedPairStats(exchangeA ?? '', symbolA ?? '', exchangeB ?? '', symbolB ?? ''),
+    enabled:
+      enabled && isAuthenticated && !!exchangeA && !!symbolA && !!exchangeB && !!symbolB,
+    staleTime: 30 * 1000,
+    throwOnError: false,
+    retry: 1,
+  })
+}
+
+export const useCacheHealth = (enabled: boolean = true) => {
+  const { isAuthenticated } = useAuth()
+
+  return useQuery({
+    queryKey: queryKeys.cacheHealth(),
+    queryFn: () => getCacheHealth(),
+    enabled: enabled && isAuthenticated,
+    staleTime: 10 * 1000,
     throwOnError: false,
   })
 }
