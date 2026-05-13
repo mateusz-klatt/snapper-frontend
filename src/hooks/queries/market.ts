@@ -97,11 +97,12 @@ export const useCachedCandles = (
   enabled: boolean = true
 ) => {
   const { isAuthenticated } = useAuth()
+  const asOf = useAppStore(s => s.asOf)
   const exchangeKey = exchange ?? ''
   const symbolKey = nativeSymbol ?? ''
 
   return useQuery({
-    queryKey: queryKeys.cachedCandles(exchangeKey, symbolKey, timeframe, limit),
+    queryKey: queryKeys.cachedCandles(exchangeKey, symbolKey, timeframe, limit, asOf),
     queryFn: () => getCachedCandles(exchangeKey, symbolKey, timeframe, limit),
     enabled: enabled && isAuthenticated && !!exchange && !!nativeSymbol,
     staleTime: 5 * 1000,
@@ -118,13 +119,14 @@ export const useCachedPairStats = (
   enabled: boolean = true
 ) => {
   const { isAuthenticated } = useAuth()
+  const asOf = useAppStore(s => s.asOf)
   const left = exchangeA ?? ''
   const symbolLeft = symbolA ?? ''
   const right = exchangeB ?? ''
   const symbolRight = symbolB ?? ''
 
   return useQuery({
-    queryKey: queryKeys.cachedPairStats(left, symbolLeft, right, symbolRight),
+    queryKey: queryKeys.cachedPairStats(left, symbolLeft, right, symbolRight, asOf),
     queryFn: () => getCachedPairStats(left, symbolLeft, right, symbolRight),
     enabled: enabled && isAuthenticated && !!exchangeA && !!symbolA && !!exchangeB && !!symbolB,
     staleTime: 30 * 1000,
@@ -135,9 +137,10 @@ export const useCachedPairStats = (
 
 export const useCacheHealth = (enabled: boolean = true) => {
   const { isAuthenticated } = useAuth()
+  const asOf = useAppStore(s => s.asOf)
 
   return useQuery({
-    queryKey: queryKeys.cacheHealth(),
+    queryKey: queryKeys.cacheHealth(asOf),
     queryFn: () => getCacheHealth(),
     enabled: enabled && isAuthenticated,
     staleTime: 10 * 1000,
