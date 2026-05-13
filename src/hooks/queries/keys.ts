@@ -35,11 +35,21 @@ export const queryKeys = {
     ['exchanges', exchange, 'instruments', 'detail', asOf] as const,
   relatedInstruments: (exchange: string, nativeSymbol: string, asOf: string | null) =>
     ['market', 'related', exchange, nativeSymbol, asOf] as const,
-  cachedCandles: (exchange: string, nativeSymbol: string, timeframe: string, limit: number) =>
-    ['market', 'cache', 'candles', exchange, nativeSymbol, timeframe, limit] as const,
-  cachedPairStats: (exchangeA: string, symbolA: string, exchangeB: string, symbolB: string) =>
-    ['market', 'cache', 'stats', exchangeA, symbolA, exchangeB, symbolB] as const,
-  cacheHealth: () => ['market', 'cache', 'health'] as const,
+  cachedCandles: (
+    exchange: string,
+    nativeSymbol: string,
+    timeframe: string,
+    limit: number,
+    asOf: string | null
+  ) => ['market', 'cache', 'candles', exchange, nativeSymbol, timeframe, limit, asOf] as const,
+  cachedPairStats: (
+    exchangeA: string,
+    symbolA: string,
+    exchangeB: string,
+    symbolB: string,
+    asOf: string | null
+  ) => ['market', 'cache', 'stats', exchangeA, symbolA, exchangeB, symbolB, asOf] as const,
+  cacheHealth: (asOf: string | null) => ['market', 'cache', 'health', asOf] as const,
   orders: (
     filters?: { symbol?: string; limit?: number; offset?: number },
     asOf?: string | null,

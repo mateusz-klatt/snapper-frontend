@@ -2,6 +2,9 @@ import { z } from 'zod'
 import { apiClient } from '../apiClient'
 import { validateResponse } from '../schemas/api'
 import {
+  CacheHealthResponseSchema,
+  CachedCandlesResponseSchema,
+  CachedStatsResponseSchema,
   ExchangeListResponseSchema,
   InstrumentDetailListResponseSchema,
   InstrumentListResponseSchema,
@@ -9,6 +12,9 @@ import {
 } from '../schemas/api.generated.zod'
 import { CandleDataSchema } from '../schemas/ws.generated.zod'
 import type {
+  CacheHealthResponse,
+  CachedCandlesResponse,
+  CachedStatsResponse,
   ExchangeListResponse,
   InstrumentDetailListResponse,
   InstrumentListResponse,
@@ -89,78 +95,6 @@ export async function getRelatedInstruments(
     '/instruments/:exchange/:native_symbol/related'
   )
 }
-
-const CachedCandleSchema = z
-  .object({
-    open_at_ms: z.number().int(),
-    timeframe: z.string(),
-    open: z.number(),
-    high: z.number(),
-    low: z.number(),
-    close: z.number(),
-    volume: z.number(),
-  })
-  .strict()
-
-const CachedCandlesResponseSchema = z
-  .object({
-    type: z.literal('cached_candles'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: z.object({
-      candles: z.array(CachedCandleSchema),
-      sample_count: z.number().int(),
-      is_warm: z.boolean(),
-      source: z.union([z.literal('cache'), z.literal('derived'), z.literal('db')]),
-    }),
-  })
-  .strict()
-
-const CachedStatsResponseSchema = z
-  .object({
-    type: z.literal('cached_stats'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: z.object({
-      left: z.string(),
-      right: z.string(),
-      pearson_r: z.number().nullable(),
-      pearson_n: z.number().int(),
-      coint_t: z.number().nullable(),
-      coint_pvalue: z.number().nullable(),
-      coint_critical_values: z.tuple([z.number(), z.number(), z.number()]).nullable(),
-      computed_at: z.iso.datetime().nullable(),
-      sample_count: z.number().int(),
-      is_warm: z.boolean(),
-    }),
-  })
-  .strict()
-
-const CacheHealthResponseSchema = z
-  .object({
-    type: z.literal('cache_health'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: z.object({
-      instruments_cached: z.number().int(),
-      pairs_cached: z.number().int(),
-      persist_universe_size: z.number().int(),
-    }),
-  })
-  .strict()
-
-export type CachedCandlesResponse = z.infer<typeof CachedCandlesResponseSchema>
-export type CachedStatsResponse = z.infer<typeof CachedStatsResponseSchema>
-export type CacheHealthResponse = z.infer<typeof CacheHealthResponseSchema>
 
 export async function getCachedCandles(
   exchange: string,

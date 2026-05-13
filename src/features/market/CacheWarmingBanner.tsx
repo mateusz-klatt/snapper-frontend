@@ -19,8 +19,12 @@ export function CacheWarmingBanner({ isWarm, sampleCount, expected, source }: Re
     return null
   }
 
-  const sourceLabel =
-    source === 'derived' ? '(derived from 1m)' : source === 'db' ? '(from DB)' : ''
+  const SOURCE_LABELS: Record<Props['source'], string> = {
+    cache: '',
+    derived: '(derived from 1m)',
+    db: '(from DB)',
+  }
+  const sourceLabel = SOURCE_LABELS[source]
 
   return (
     <div
