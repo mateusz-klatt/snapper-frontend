@@ -4,7 +4,8 @@ import { validateResponse } from '../schemas/api'
 import {
   CacheHealthResponseSchema,
   CachedCandlesResponseSchema,
-  CachedStatsResponseSchema,
+  CachedStatsPayloadSchema as GeneratedCachedStatsPayloadSchema,
+  CachedStatsResponseSchema as GeneratedCachedStatsResponseSchema,
   ExchangeListResponseSchema,
   InstrumentDetailListResponseSchema,
   InstrumentListResponseSchema,
@@ -95,6 +96,29 @@ export async function getRelatedInstruments(
     '/instruments/:exchange/:native_symbol/related'
   )
 }
+
+/**
+ * Tight runtime override for `coint_critical_values`.
+ *
+ * The upstream `tuple[float, float, float] | None` Pydantic field emits
+ * OpenAPI `prefixItems` / `minItems` / `maxItems`, but the
+ * `json-schema-to-zod` converter currently drops those facets and ends
+ * up with `z.array(z.unknown()).nullable()`. That's looser than the
+ * `[number, number, number] | null` shape `openapi-typescript` keeps in
+ * `api.generated.ts`, so the auto-inferred Zod result is unassignable
+ * to the OpenAPI-derived `CachedStatsResponse` type.
+ *
+ * We layer a strict tuple back on top of the generated payload schema
+ * so runtime validation matches the OpenAPI contract. Drop this once
+ * `json-schema-to-zod` honours `prefixItems`.
+ */
+const CachedStatsPayloadSchema = GeneratedCachedStatsPayloadSchema.extend({
+  coint_critical_values: z.tuple([z.number(), z.number(), z.number()]).nullable(),
+})
+
+const CachedStatsResponseSchema = GeneratedCachedStatsResponseSchema.extend({
+  payload: CachedStatsPayloadSchema,
+})
 
 export async function getCachedCandles(
   exchange: string,
