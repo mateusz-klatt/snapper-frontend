@@ -119,7 +119,7 @@ export const CachedStatsPayloadSchema = z
     pearson_n: z.number().int(),
     coint_t: z.number().nullable(),
     coint_pvalue: z.number().nullable(),
-    coint_critical_values: z.array(z.unknown()).nullable(),
+    coint_critical_values: z.tuple([z.number(), z.number(), z.number()]).nullable(),
     computed_at: z.iso.datetime().nullable(),
     sample_count: z.number().int(),
     is_warm: z.boolean(),
