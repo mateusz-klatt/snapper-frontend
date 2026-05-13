@@ -300,20 +300,14 @@ describe('market queries', () => {
 
   describe('useCachedCandles', () => {
     it('fetches when exchange and symbol are provided', async () => {
-      const { result } = renderHook(
-        () => useCachedCandles('kraken', 'BTC-USD', '1m', 100),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => useCachedCandles('kraken', 'BTC-USD', '1m', 100), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
         expect(result.current.isFetched).toBe(true)
       })
-      expect(vi.mocked(getCachedCandles)).toHaveBeenCalledWith(
-        'kraken',
-        'BTC-USD',
-        '1m',
-        100
-      )
+      expect(vi.mocked(getCachedCandles)).toHaveBeenCalledWith('kraken', 'BTC-USD', '1m', 100)
     })
 
     it('does not fetch when exchange is null', async () => {
@@ -344,10 +338,9 @@ describe('market queries', () => {
 
     it('does not fetch when any leg is null', async () => {
       vi.mocked(getCachedPairStats).mockClear()
-      const { result } = renderHook(
-        () => useCachedPairStats('kraken', null, 'kraken', 'ETH-USD'),
-        { wrapper: createWrapper() }
-      )
+      const { result } = renderHook(() => useCachedPairStats('kraken', null, 'kraken', 'ETH-USD'), {
+        wrapper: createWrapper(),
+      })
 
       await waitFor(() => {
         expect(result.current.isLoading).toBe(false)

@@ -14,17 +14,13 @@ interface Props {
  * than the chart requested. Hidden when ``isWarm === true`` so the
  * chart canvas does not see a layout shift once the cache catches up.
  */
-export function CacheWarmingBanner({
-  isWarm,
-  sampleCount,
-  expected,
-  source,
-}: Readonly<Props>) {
+export function CacheWarmingBanner({ isWarm, sampleCount, expected, source }: Readonly<Props>) {
   if (isWarm) {
     return null
   }
 
-  const sourceLabel = source === 'derived' ? '(derived from 1m)' : source === 'db' ? '(from DB)' : ''
+  const sourceLabel =
+    source === 'derived' ? '(derived from 1m)' : source === 'db' ? '(from DB)' : ''
 
   return (
     <div

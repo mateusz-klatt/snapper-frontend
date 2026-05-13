@@ -12,16 +12,12 @@ describe('CacheWarmingBanner', () => {
   })
 
   it('shows sample count and expected total when cold', () => {
-    render(
-      <CacheWarmingBanner isWarm={false} sampleCount={40} expected={100} source='cache' />
-    )
+    render(<CacheWarmingBanner isWarm={false} sampleCount={40} expected={100} source='cache' />)
     expect(screen.getByRole('status')).toHaveTextContent('40 / 100 candles')
   })
 
   it('annotates derived source with the "derived from 1m" hint', () => {
-    render(
-      <CacheWarmingBanner isWarm={false} sampleCount={3} expected={20} source='derived' />
-    )
+    render(<CacheWarmingBanner isWarm={false} sampleCount={3} expected={20} source='derived' />)
     expect(screen.getByRole('status')).toHaveTextContent('(derived from 1m)')
   })
 

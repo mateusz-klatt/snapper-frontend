@@ -37,12 +37,8 @@ export const queryKeys = {
     ['market', 'related', exchange, nativeSymbol, asOf] as const,
   cachedCandles: (exchange: string, nativeSymbol: string, timeframe: string, limit: number) =>
     ['market', 'cache', 'candles', exchange, nativeSymbol, timeframe, limit] as const,
-  cachedPairStats: (
-    exchangeA: string,
-    symbolA: string,
-    exchangeB: string,
-    symbolB: string
-  ) => ['market', 'cache', 'stats', exchangeA, symbolA, exchangeB, symbolB] as const,
+  cachedPairStats: (exchangeA: string, symbolA: string, exchangeB: string, symbolB: string) =>
+    ['market', 'cache', 'stats', exchangeA, symbolA, exchangeB, symbolB] as const,
   cacheHealth: () => ['market', 'cache', 'health'] as const,
   orders: (
     filters?: { symbol?: string; limit?: number; offset?: number },

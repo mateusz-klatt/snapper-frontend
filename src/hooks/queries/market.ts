@@ -128,8 +128,7 @@ export const useCachedPairStats = (
     ),
     queryFn: () =>
       getCachedPairStats(exchangeA ?? '', symbolA ?? '', exchangeB ?? '', symbolB ?? ''),
-    enabled:
-      enabled && isAuthenticated && !!exchangeA && !!symbolA && !!exchangeB && !!symbolB,
+    enabled: enabled && isAuthenticated && !!exchangeA && !!symbolA && !!exchangeB && !!symbolB,
     staleTime: 30 * 1000,
     throwOnError: false,
     retry: 1,
