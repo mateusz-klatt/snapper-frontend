@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import type { SignalDiffEntry } from '../../../types/api'
 
 interface Props {
@@ -43,6 +44,7 @@ const Column: React.FC<ColumnProps> = ({ title, entries, testId }) => (
  * NO confidence field.
  */
 export const SignalsDiffList: React.FC<Props> = ({ entries }) => {
+  const { t } = useTranslation('backtests')
   const { common, onlyA, onlyB } = useMemo(() => {
     const c: SignalDiffEntry[] = []
     const a: SignalDiffEntry[] = []
@@ -59,9 +61,13 @@ export const SignalsDiffList: React.FC<Props> = ({ entries }) => {
 
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-3' data-testid='signals-diff-list'>
-      <Column title='Common' entries={common} testId='signals-diff-common' />
-      <Column title='Only in A' entries={onlyA} testId='signals-diff-only-a' />
-      <Column title='Only in B' entries={onlyB} testId='signals-diff-only-b' />
+      <Column
+        title={t('compare.diffColumns.common')}
+        entries={common}
+        testId='signals-diff-common'
+      />
+      <Column title={t('compare.diffColumns.onlyA')} entries={onlyA} testId='signals-diff-only-a' />
+      <Column title={t('compare.diffColumns.onlyB')} entries={onlyB} testId='signals-diff-only-b' />
     </div>
   )
 }

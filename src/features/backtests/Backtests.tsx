@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 import { Play, RotateCcw, XCircle } from 'lucide-react'
 import { useBacktests, useCancelBacktest, useRerunBacktest } from '../../hooks/queries/backtests'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
 import type { BacktestRunData } from '../../types/api'
+
+const BACKTEST_STATUS_KEYS = ['pending', 'running', 'completed', 'failed', 'cancelled'] as const
 
 type StatusColor = 'text-gain-400' | 'text-loss-400' | 'text-brand-400' | 'text-muted-400'
 
@@ -34,7 +37,9 @@ interface BacktestRowProps {
 }
 
 const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => {
+  const { t } = useTranslation('backtests')
   const canCancel = run.status === 'pending' || run.status === 'running'
+  const statusLabel = t(`status.${run.status}`, { defaultValue: run.status })
 
   return (
     <div
@@ -58,7 +63,7 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
             )}
           </span>
           <span className={clsx('text-sm font-medium', getStatusColor(run.status))}>
-            {run.status}
+            {statusLabel}
           </span>
         </a>
         <div className='flex items-center gap-2'>
@@ -70,7 +75,7 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
               data-testid={`cancel-${run.public_id}`}
             >
               <XCircle size={12} />
-              Cancel
+              {t('list.actions.cancel')}
             </button>
           )}
           <button
@@ -80,36 +85,41 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
             data-testid={`rerun-${run.public_id}`}
           >
             <RotateCcw size={12} />
-            Rerun
+            {t('list.actions.rerun')}
           </button>
         </div>
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-4'>
         <div>
-          <div className='text-muted-500'>Timeframe</div>
+          <div className='text-muted-500'>{t('list.fields.timeframe')}</div>
           <div className='font-mono text-alpine-900'>{run.timeframe}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Period</div>
+          <div className='text-muted-500'>{t('list.fields.period')}</div>
           <div className='font-mono text-alpine-900'>
             {formatDate(run.start_date)} - {formatDate(run.end_date)}
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Initial Cash</div>
+          <div className='text-muted-500'>{t('list.fields.initialCash')}</div>
           <div className='font-mono text-alpine-900'>${run.initial_cash.toFixed(2)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>ID</div>
+          <div className='text-muted-500'>{t('list.fields.id')}</div>
           <div className='font-mono text-xs text-muted-400'>{run.public_id.slice(0, 12)}</div>
         </div>
       </div>
-      {run.error && <div className='mt-3 text-xs text-loss-400'>Error: {run.error}</div>}
+      {run.error && (
+        <div className='mt-3 text-xs text-loss-400'>
+          {t('list.errorPrefix', { message: run.error })}
+        </div>
+      )}
     </div>
   )
 }
 
 export const Backtests: React.FC = () => {
+  const { t } = useTranslation('backtests')
   const [statusFilter, setStatusFilter] = useState<string>('')
   const { data, isLoading } = useBacktests(undefined, statusFilter || undefined)
   const cancelMutation = useCancelBacktest()
@@ -128,21 +138,21 @@ export const Backtests: React.FC = () => {
   return (
     <div className='space-y-6'>
       <div className='flex items-center justify-between'>
-        <h2 className='text-xl font-semibold text-alpine-900'>Backtests</h2>
+        <h2 className='text-xl font-semibold text-alpine-900'>{t('list.title')}</h2>
         <div className='flex items-center gap-2'>
           <select
-            aria-label='Filter backtests by status'
+            aria-label={t('list.filter.ariaLabel')}
             className='rounded-lg border border-dark-600 bg-alpine-50 px-3 py-1 text-sm text-alpine-900'
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value)}
             data-testid='status-filter'
           >
-            <option value=''>All statuses</option>
-            <option value='pending'>Pending</option>
-            <option value='running'>Running</option>
-            <option value='completed'>Completed</option>
-            <option value='failed'>Failed</option>
-            <option value='cancelled'>Cancelled</option>
+            <option value=''>{t('list.filter.options.all')}</option>
+            {BACKTEST_STATUS_KEYS.map(status => (
+              <option key={status} value={status}>
+                {t(`list.filter.options.${status}`)}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -156,8 +166,8 @@ export const Backtests: React.FC = () => {
         {!isLoading && runs.length === 0 && (
           <EmptyState
             icon={<Play className='h-6 w-6' />}
-            title='No backtests'
-            message='Run a backtest via the CLI or API to see results here.'
+            title={t('list.empty.title')}
+            message={t('list.empty.message')}
           />
         )}
         {!isLoading && runs.length > 0 && (

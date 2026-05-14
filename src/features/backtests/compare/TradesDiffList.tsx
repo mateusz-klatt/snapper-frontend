@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 import type { TradeDiffEntry } from '../../../types/api'
 
 interface Props {
@@ -20,30 +21,37 @@ const pnlColor = (v: number | null | undefined): string => {
   return v > 0 ? 'text-gain-400' : 'text-loss-400'
 }
 
-const TradeCard: React.FC<{ trade: TradeDiffEntry }> = ({ trade }) => (
-  <div className='rounded-lg border border-dark-600 bg-alpine-50 p-2 text-xs'>
-    <div className='flex items-center justify-between'>
-      <span className='font-mono text-alpine-900'>{trade.instrument}</span>
-      <span className='text-muted-500'>{formatTime(trade.executed_at)}</span>
+const TradeCard: React.FC<{ trade: TradeDiffEntry }> = ({ trade }) => {
+  const { t } = useTranslation('backtests')
+
+  return (
+    <div className='rounded-lg border border-dark-600 bg-alpine-50 p-2 text-xs'>
+      <div className='flex items-center justify-between'>
+        <span className='font-mono text-alpine-900'>{trade.instrument}</span>
+        <span className='text-muted-500'>{formatTime(trade.executed_at)}</span>
+      </div>
+      <div className='mt-1 flex items-center gap-2 font-mono text-alpine-900'>
+        <span>{trade.side}</span>
+        <span>{trade.quantity}</span>
+        <span>@ {trade.price}</span>
+      </div>
+      <div className='mt-1 flex items-center gap-2 text-xs'>
+        <span>
+          {t('compare.trades.card.pnlA')}{' '}
+          <span className={pnlColor(trade.pnl_a)}>{formatPnl(trade.pnl_a)}</span>
+        </span>
+        <span>
+          {t('compare.trades.card.pnlB')}{' '}
+          <span className={pnlColor(trade.pnl_b)}>{formatPnl(trade.pnl_b)}</span>
+        </span>
+        <span>
+          {t('compare.trades.card.delta')}{' '}
+          <span className={pnlColor(trade.pnl_delta)}>{formatPnl(trade.pnl_delta)}</span>
+        </span>
+      </div>
     </div>
-    <div className='mt-1 flex items-center gap-2 font-mono text-alpine-900'>
-      <span>{trade.side}</span>
-      <span>{trade.quantity}</span>
-      <span>@ {trade.price}</span>
-    </div>
-    <div className='mt-1 flex items-center gap-2 text-xs'>
-      <span>
-        A pnl <span className={pnlColor(trade.pnl_a)}>{formatPnl(trade.pnl_a)}</span>
-      </span>
-      <span>
-        B pnl <span className={pnlColor(trade.pnl_b)}>{formatPnl(trade.pnl_b)}</span>
-      </span>
-      <span>
-        Δ <span className={pnlColor(trade.pnl_delta)}>{formatPnl(trade.pnl_delta)}</span>
-      </span>
-    </div>
-  </div>
-)
+  )
+}
 
 interface ColumnProps {
   title: string
@@ -69,6 +77,7 @@ const Column: React.FC<ColumnProps> = ({ title, entries, testId }) => (
  * (`common`, `a` ↔ only_in_a, `b` ↔ only_in_b). Counts in headers.
  */
 export const TradesDiffList: React.FC<Props> = ({ entries }) => {
+  const { t } = useTranslation('backtests')
   const { common, onlyA, onlyB } = useMemo(() => {
     const c: TradeDiffEntry[] = []
     const a: TradeDiffEntry[] = []
@@ -85,9 +94,13 @@ export const TradesDiffList: React.FC<Props> = ({ entries }) => {
 
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-3' data-testid='trades-diff-list'>
-      <Column title='Common' entries={common} testId='trades-diff-common' />
-      <Column title='Only in A' entries={onlyA} testId='trades-diff-only-a' />
-      <Column title='Only in B' entries={onlyB} testId='trades-diff-only-b' />
+      <Column
+        title={t('compare.diffColumns.common')}
+        entries={common}
+        testId='trades-diff-common'
+      />
+      <Column title={t('compare.diffColumns.onlyA')} entries={onlyA} testId='trades-diff-only-a' />
+      <Column title={t('compare.diffColumns.onlyB')} entries={onlyB} testId='trades-diff-only-b' />
     </div>
   )
 }

@@ -1,1 +1,142 @@
-{}
+{
+  "nav": {
+    "back": "← Wstecz",
+    "backToList": "← Wróć do backtestów"
+  },
+  "status": {
+    "pending": "Oczekuje",
+    "running": "W trakcie",
+    "completed": "Zakończony",
+    "failed": "Błąd",
+    "cancelled": "Anulowany"
+  },
+  "list": {
+    "title": "Backtesty",
+    "actions": {
+      "cancel": "Anuluj",
+      "rerun": "Uruchom ponownie"
+    },
+    "fields": {
+      "timeframe": "Interwał",
+      "period": "Okres",
+      "initialCash": "Kapitał początkowy",
+      "id": "ID"
+    },
+    "errorPrefix": "Błąd: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtruj backtesty po statusie",
+      "options": {
+        "all": "Wszystkie statusy",
+        "pending": "Oczekuje",
+        "running": "W trakcie",
+        "completed": "Zakończony",
+        "failed": "Błąd",
+        "cancelled": "Anulowany"
+      }
+    },
+    "empty": {
+      "title": "Brak backtestów",
+      "message": "Uruchom backtest przez CLI lub API, aby zobaczyć wyniki tutaj."
+    }
+  },
+  "detail": {
+    "title": "Backtest",
+    "fields": {
+      "strategy": "Strategia",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Okres",
+      "crossAsset": "Atrybucja cross-asset",
+      "configHash": "Hash konfiguracji"
+    },
+    "crossAssetFlow": "dane z {{source}} → wykonanie na {{target}}",
+    "errors": {
+      "invalidRunId": "Nieprawidłowe ID — wymagany UUID7 (otrzymano \"{{id}}\").",
+      "loadFailed": "Nie udało się załadować: {{message}}",
+      "notFound": "nie znaleziono"
+    }
+  },
+  "compare": {
+    "title": "Porównaj",
+    "headingFull": "Porównanie backtestów",
+    "loading": "Ładowanie porównania…",
+    "vs": "vs",
+    "runLabel": "Przebieg {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metryki",
+      "equityOverlay": "Krzywa kapitału",
+      "trades": "Transakcje",
+      "signals": "Sygnały"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manualne"
+    },
+    "errors": {
+      "notFound": "Porównanie nie istnieje w bieżącym portfelu.",
+      "loadFailed": "Nie udało się załadować porównania: {{message}}",
+      "unknown": "nieznany błąd",
+      "emptyResponse": "Pusta odpowiedź porównania."
+    },
+    "launcher": {
+      "title": "Porównaj",
+      "submit": "Porównaj",
+      "autoPair": "Porównaj z najnowszym",
+      "terminalGate": "porównanie dostępne po osiągnięciu stanu końcowego",
+      "noSiblings": "brak innych przebiegów z tą konfiguracją",
+      "limitNotice": "pokazano {{count}} najnowszych — użyj wyboru ręcznego dla starszych",
+      "pickPlaceholder": "— wybierz przebieg do porównania —",
+      "showAllLabel": "Pokaż wszystkie przebiegi (nie tylko z tą samą konfiguracją)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "wszystkie przebiegi",
+        "sameConfig": "ta sama konfiguracja"
+      },
+      "errors": {
+        "pickRequired": "wybierz przebieg z listy"
+      }
+    },
+    "diffColumns": {
+      "common": "Wspólne",
+      "onlyA": "Tylko w A",
+      "onlyB": "Tylko w B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Brak porównywalnych metryk — żaden z przebiegów nie zarejestrował wartości.",
+      "columns": {
+        "name": "Metryka",
+        "runA": "Przebieg A",
+        "runB": "Przebieg B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Przebieg A",
+        "runB": "Przebieg B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Oczekiwanie na postęp…",
+    "candles": "{{done}} / {{total}} świec",
+    "candlesNoTotal": "{{done}} świec",
+    "equity": "kapitał {{value}}",
+    "signalsTrades": "{{signals}} sygn. / {{trades}} transakcji",
+    "milestoneLine": "kamień milowy {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

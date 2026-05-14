@@ -1,5 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 import { useBacktestComparison } from '../../hooks/queries/backtests'
 import { APIError } from '../../lib/apiClient'
 import { MetricsDiffTable } from './compare/MetricsDiffTable'
@@ -19,8 +21,16 @@ const STATUS_COLOR: Record<string, string> = {
   pending: 'text-muted-400',
 }
 
-const labelRun = (label: 'A' | 'B', publicId: string, status: string): string =>
-  `Run ${label} · ${publicId.slice(0, 8)} · ${status}`
+const labelRun = (
+  t: TFunction<'backtests'>,
+  label: 'A' | 'B',
+  publicId: string,
+  status: string
+): string => {
+  const statusText = t(`status.${status}`, { defaultValue: status })
+
+  return t('compare.runLabel', { label, id: publicId.slice(0, 8), status: statusText })
+}
 
 /**
  * Compare page — full implementation. Branches:
@@ -31,29 +41,30 @@ const labelRun = (label: 'A' | 'B', publicId: string, status: string): string =>
  * - success: header + 4 panels (metrics, equity overlay, trades, signals).
  */
 export const ComparePage: React.FC<Props> = ({ comparisonPublicId }) => {
+  const { t } = useTranslation('backtests')
   const { data, isLoading, error } = useBacktestComparison(comparisonPublicId)
 
   if (isLoading) {
     return (
       <div className='p-4 text-sm text-muted-500' data-testid='compare-page'>
-        Loading comparison…
+        {t('compare.loading')}
       </div>
     )
   }
 
   if (error) {
     const isNotFound = error instanceof APIError && error.status === 404
-    const errorMessage = error instanceof Error ? error.message : 'unknown error'
+    const errorMessage = error instanceof Error ? error.message : t('compare.errors.unknown')
     const message = isNotFound
-      ? 'Comparison not found in current wallet.'
-      : `Failed to load comparison: ${errorMessage}`
+      ? t('compare.errors.notFound')
+      : t('compare.errors.loadFailed', { message: errorMessage })
 
     return (
       <div className='space-y-3 p-4' data-testid='compare-page'>
-        <h2 className='text-lg font-semibold'>Compare</h2>
+        <h2 className='text-lg font-semibold'>{t('compare.title')}</h2>
         <div className='text-sm text-loss-400'>{message}</div>
         <a href='#backtests' className='text-sm text-brand-400 hover:underline'>
-          ← Back to backtests
+          {t('nav.backToList')}
         </a>
       </div>
     )
@@ -62,7 +73,7 @@ export const ComparePage: React.FC<Props> = ({ comparisonPublicId }) => {
   if (!data?.payload) {
     return (
       <div className='p-4 text-sm text-loss-400' data-testid='compare-page'>
-        Empty comparison response.
+        {t('compare.errors.emptyResponse')}
       </div>
     )
   }
@@ -73,9 +84,9 @@ export const ComparePage: React.FC<Props> = ({ comparisonPublicId }) => {
   return (
     <div className='space-y-6 p-4' data-testid='compare-page'>
       <div className='flex items-center justify-between'>
-        <h2 className='text-lg font-semibold'>Backtest comparison</h2>
+        <h2 className='text-lg font-semibold'>{t('compare.headingFull')}</h2>
         <a href='#backtests' className='text-sm text-brand-400 hover:underline'>
-          ← Back
+          {t('nav.back')}
         </a>
       </div>
       <div className='flex flex-wrap items-center gap-3 text-sm'>
@@ -83,39 +94,49 @@ export const ComparePage: React.FC<Props> = ({ comparisonPublicId }) => {
           className={clsx('font-medium', STATUS_COLOR[run_a.status] ?? 'text-muted-400')}
           data-testid='compare-run-a-label'
         >
-          {labelRun('A', run_a.public_id, run_a.status)}
+          {labelRun(t, 'A', run_a.public_id, run_a.status)}
         </span>
-        <span className='text-muted-500'>vs</span>
+        <span className='text-muted-500'>{t('compare.vs')}</span>
         <span
           className={clsx('font-medium', STATUS_COLOR[run_b.status] ?? 'text-muted-400')}
           data-testid='compare-run-b-label'
         >
-          {labelRun('B', run_b.public_id, run_b.status)}
+          {labelRun(t, 'B', run_b.public_id, run_b.status)}
         </span>
         <span
           className='rounded bg-dark-600 px-2 py-0.5 text-xs text-muted-400'
           data-testid='compare-pairing-mode'
         >
-          {comparison.pairing_mode}
+          {t(`compare.pairingMode.${comparison.pairing_mode}`, {
+            defaultValue: comparison.pairing_mode,
+          })}
         </span>
         {comparison.config_hash && (
           <code className='font-mono text-xs text-muted-400'>{comparison.config_hash}</code>
         )}
       </div>
       <section>
-        <h3 className='mb-2 text-base font-semibold text-alpine-900'>Metrics</h3>
+        <h3 className='mb-2 text-base font-semibold text-alpine-900'>
+          {t('compare.sections.metrics')}
+        </h3>
         <MetricsDiffTable rows={metrics_diff} />
       </section>
       <section>
-        <h3 className='mb-2 text-base font-semibold text-alpine-900'>Equity overlay</h3>
+        <h3 className='mb-2 text-base font-semibold text-alpine-900'>
+          {t('compare.sections.equityOverlay')}
+        </h3>
         <EquityOverlayChart points={equity_overlay} />
       </section>
       <section>
-        <h3 className='mb-2 text-base font-semibold text-alpine-900'>Trades</h3>
+        <h3 className='mb-2 text-base font-semibold text-alpine-900'>
+          {t('compare.sections.trades')}
+        </h3>
         <TradesDiffList entries={trades_diff} />
       </section>
       <section>
-        <h3 className='mb-2 text-base font-semibold text-alpine-900'>Signals</h3>
+        <h3 className='mb-2 text-base font-semibold text-alpine-900'>
+          {t('compare.sections.signals')}
+        </h3>
         <SignalsDiffList entries={signals_diff} />
       </section>
     </div>

@@ -56,4 +56,10 @@ describe('BacktestProgressBar', () => {
 
     expect(fill.style.width).toBe('0%')
   })
+  it('renders empty equity value when equity is null', () => {
+    const snap = { ...baseSnapshot, equity: null } as unknown as BacktestProgressSnapshot
+
+    render(<BacktestProgressBar snapshot={snap} />)
+    expect(screen.getByText(/^equity\s*$/)).toBeDefined()
+  })
 })
