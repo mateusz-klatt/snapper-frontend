@@ -10,9 +10,43 @@ const mockSetSelectedInstrument = vi.fn()
 const mockSetSelectedMarket = vi.fn()
 const mockSetSelectedTimeframe = vi.fn()
 
+interface BareCandle {
+  open_at: string
+  open: number
+  high: number
+  low: number
+  close: number
+}
+
+const buildCachedEnvelope = (
+  bare: BareCandle[],
+  options: { isWarm?: boolean; source?: 'cache' | 'derived' | 'db' } = {}
+) => ({
+  type: 'cached_candles' as const,
+  sequence_id: 0,
+  public_id: 'env-pid',
+  timestamp: '2024-01-01T00:00:00Z',
+  session_id: 'sid',
+  topic: null,
+  payload: {
+    candles: bare.map(c => ({
+      open_at_ms: new Date(c.open_at).getTime(),
+      timeframe: '1h',
+      open: c.open,
+      high: c.high,
+      low: c.low,
+      close: c.close,
+      volume: 0,
+    })),
+    sample_count: bare.length,
+    is_warm: options.isWarm ?? true,
+    source: options.source ?? 'cache',
+  },
+})
+
 vi.mock('../../hooks/queries/market', () => ({
-  useCandles: vi.fn(() => ({
-    data: [],
+  useCachedCandles: vi.fn(() => ({
+    data: undefined,
     isLoading: false,
     error: null,
     isFetching: false,
@@ -115,9 +149,9 @@ describe('MarketData', () => {
     expect(screen.queryByText(/Current Price/)).not.toBeInTheDocument()
   })
   it('shows loading state while fetching candles', async () => {
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
+    vi.mocked(useCachedCandles).mockReturnValue({
       data: undefined,
       isLoading: true,
       error: null,
@@ -149,9 +183,9 @@ describe('MarketData', () => {
       expect(screen.getAllByText('1 Hour').length).toBeGreaterThanOrEqual(2)
     })
   })
-  it('passes empty strings when no exchange or instrument selected', async () => {
+  it('passes null when no exchange or instrument selected', async () => {
     const { useMarketStore } = await import('../../stores/market')
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useMarketStore).mockReturnValueOnce({
       selectedExchange: null,
@@ -162,10 +196,10 @@ describe('MarketData', () => {
       setSelectedTimeframe: mockSetSelectedTimeframe,
     })
     renderWithProviders(<MarketData />)
-    expect(useCandles).toHaveBeenCalledWith('', '', '1h', 100, true)
+    expect(useCachedCandles).toHaveBeenCalledWith(null, null, '1h', 100, true)
   })
   it('enables snapshot when WebSocket is disconnected (fallback)', async () => {
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
     const { useMarketSubscription } = await import('../../hooks/useMarketSubscription')
     const { useWebSocketStore } = await import('../../stores/websocket')
 
@@ -173,13 +207,13 @@ describe('MarketData', () => {
     vi.mocked(useWebSocketStore).mockReturnValue({ isConnected: false } as never)
     renderWithProviders(<MarketData />)
 
-    expect(useCandles).toHaveBeenCalledWith('EUR-USD', 'kraken', '1h', 100, true)
+    expect(useCachedCandles).toHaveBeenCalledWith('kraken', 'EUR-USD', '1h', 100, true)
   })
   it('shows unknown error message when error has no message', async () => {
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: [],
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope([]),
       isLoading: false,
       error: new Error(''),
       isFetching: false,
@@ -195,10 +229,10 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.082, high: 1.086, low: 1.081, close: 1.085 },
     ]
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: mockCandles,
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(mockCandles),
       isLoading: false,
       error: null,
       isFetching: false,
@@ -217,10 +251,10 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.082, high: 1.086, low: 1.081, close: 1.085 },
     ]
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: mockCandles,
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(mockCandles),
       isLoading: false,
       error: null,
       isFetching: false,
@@ -237,10 +271,10 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.0825, high: 1.0855, low: 1.08, close: 1.084 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.084, high: 1.087, low: 1.083, close: 1.086 },
     ]
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: mockCandles,
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(mockCandles),
       isLoading: false,
       error: null,
       isFetching: false,
@@ -256,10 +290,10 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.08 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.08, high: 1.086, low: 1.079, close: 1.085 },
     ]
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: mockCandles,
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(mockCandles),
       isLoading: false,
       error: null,
       isFetching: false,
@@ -278,10 +312,10 @@ describe('MarketData', () => {
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.085 },
       { open_at: '2024-01-01T01:00:00Z', open: 1.085, high: 1.086, low: 1.079, close: 1.08 },
     ]
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: mockCandles,
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(mockCandles),
       isLoading: false,
       error: null,
       isFetching: false,
@@ -296,9 +330,9 @@ describe('MarketData', () => {
     })
   })
   it('displays error message when error occurs', async () => {
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
+    vi.mocked(useCachedCandles).mockReturnValue({
       data: undefined,
       isLoading: false,
       error: { message: 'Failed to fetch data' },
@@ -311,10 +345,10 @@ describe('MarketData', () => {
     })
   })
   it('displays no data message when selected instrument has no data', async () => {
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: [],
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope([]),
       isLoading: false,
       error: null,
       isFetching: false,
@@ -433,10 +467,10 @@ describe('MarketData', () => {
     const mockCandles = [
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
     ]
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: mockCandles,
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(mockCandles),
       isLoading: false,
       error: null,
       isFetching: true,
@@ -471,10 +505,10 @@ describe('MarketData', () => {
     const mockCandles = [
       { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
     ]
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCandles).mockReturnValue({
-      data: mockCandles,
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(mockCandles),
       isLoading: false,
       error: null,
       isFetching: false,
@@ -502,7 +536,7 @@ describe('MarketData', () => {
       setSelectedTimeframe: mockSetSelectedTimeframe,
     }
 
-    vi.mocked(useMarketStore).mockReturnValue(nullExchangeState)
+    vi.mocked(useMarketStore).mockReturnValueOnce(nullExchangeState)
     renderWithProviders(<MarketData />)
     const input = screen.getByLabelText('Instrument:')
 
@@ -510,14 +544,14 @@ describe('MarketData', () => {
   })
   it('disables candle fetch when not subscribed and connected in live mode', async () => {
     const { useMarketSubscription } = await import('../../hooks/useMarketSubscription')
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
     const { useWebSocketStore } = await import('../../stores/websocket')
 
     vi.mocked(useMarketSubscription).mockReturnValue(false)
     vi.mocked(useWebSocketStore).mockReturnValue({ isConnected: true } as never)
     renderWithProviders(<MarketData />)
 
-    expect(vi.mocked(useCandles)).toHaveBeenCalledWith(
+    expect(vi.mocked(useCachedCandles)).toHaveBeenCalledWith(
       expect.any(String),
       expect.any(String),
       expect.any(String),
@@ -533,11 +567,11 @@ describe('MarketData', () => {
       selector: (s: Record<string, unknown>) => unknown
     ) => selector({ asOf: '2024-01-01T00:00:00Z', isTimeTraveling: true })) as never)
     vi.mocked(useMarketSubscription).mockReturnValue(false)
-    const { useCandles } = await import('../../hooks/queries/market')
+    const { useCachedCandles } = await import('../../hooks/queries/market')
 
     renderWithProviders(<MarketData />)
     await waitFor(() => {
-      expect(vi.mocked(useCandles)).toHaveBeenCalledWith(
+      expect(vi.mocked(useCachedCandles)).toHaveBeenCalledWith(
         expect.any(String),
         expect.any(String),
         expect.any(String),
@@ -662,6 +696,26 @@ describe('MarketData', () => {
         setSelectedTimeframe: mockSetSelectedTimeframe,
       })
     }
+  })
+
+  it('renders the cache-warming banner when the cache has not reached the requested limit', async () => {
+    const mockCandles = [
+      { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
+    ]
+    const { useCachedCandles } = await import('../../hooks/queries/market')
+
+    vi.mocked(useCachedCandles).mockReturnValueOnce({
+      data: buildCachedEnvelope(mockCandles, { isWarm: false, source: 'derived' }),
+      isLoading: false,
+      error: null,
+      isFetching: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<MarketData />)
+    await waitFor(() => {
+      expect(screen.getByText(/Cache warming up/)).toBeInTheDocument()
+      expect(screen.getByText(/\(derived from 1m\)/)).toBeInTheDocument()
+    })
   })
 
   it('clicking a related-instrument chip calls setSelectedMarket atomically', async () => {

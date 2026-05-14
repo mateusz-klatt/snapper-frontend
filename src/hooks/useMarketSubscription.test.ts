@@ -1,6 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { createElement, type ReactNode } from 'react'
 import { useMarketSubscription } from './useMarketSubscription'
+
+let queryClient: QueryClient
+
+const wrapper = ({ children }: { children: ReactNode }) =>
+  createElement(QueryClientProvider, { client: queryClient }, children)
 
 const mockSubscribe = vi.fn()
 const mockUnsubscribe = vi.fn()
@@ -47,6 +54,7 @@ import { useAppStore } from '../stores/app'
 describe('useMarketSubscription', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
   })
   it('subscribes to candle topic when connected with valid params', () => {
     const mockClient = createMockWsClient()
@@ -55,12 +63,14 @@ describe('useMarketSubscription', () => {
       wsClient: mockClient,
       isConnected: true,
     } as never)
-    renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(mockSubscribe).toHaveBeenCalledWith(['market.kraken.BTC-USD.candles.1m'])
@@ -72,12 +82,14 @@ describe('useMarketSubscription', () => {
       wsClient: mockClient,
       isConnected: true,
     } as never)
-    const { result } = renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    const { result } = renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(result.current).toBe(false)
@@ -94,12 +106,14 @@ describe('useMarketSubscription', () => {
       wsClient: createMockWsClient(),
       isConnected: true,
     } as never)
-    renderHook(() =>
-      useMarketSubscription({
-        instrument: null,
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: null,
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(mockSubscribe).not.toHaveBeenCalled()
@@ -109,12 +123,14 @@ describe('useMarketSubscription', () => {
       wsClient: createMockWsClient(),
       isConnected: true,
     } as never)
-    renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: null,
-        timeframe: '1m',
-      })
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: null,
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(mockSubscribe).not.toHaveBeenCalled()
@@ -124,12 +140,14 @@ describe('useMarketSubscription', () => {
       wsClient: createMockWsClient(),
       isConnected: false,
     } as never)
-    renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(mockSubscribe).not.toHaveBeenCalled()
@@ -139,12 +157,14 @@ describe('useMarketSubscription', () => {
       wsClient: null,
       isConnected: true,
     } as never)
-    renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(mockSubscribe).not.toHaveBeenCalled()
@@ -161,6 +181,7 @@ describe('useMarketSubscription', () => {
         useMarketSubscription(props),
       {
         initialProps: { instrument: 'BTC-USD', exchange: 'kraken', timeframe: '1m' },
+        wrapper,
       }
     )
 
@@ -179,12 +200,14 @@ describe('useMarketSubscription', () => {
       wsClient: mockClient,
       isConnected: true,
     } as never)
-    const { unmount } = renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    const { unmount } = renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     unmount()
@@ -203,6 +226,7 @@ describe('useMarketSubscription', () => {
         useMarketSubscription(props),
       {
         initialProps: { instrument: 'BTC-USD', exchange: 'kraken', timeframe: '1m' },
+        wrapper,
       }
     )
 
@@ -229,6 +253,7 @@ describe('useMarketSubscription', () => {
         useMarketSubscription(props),
       {
         initialProps: { instrument: 'BTC-USD', exchange: 'kraken', timeframe: '1m' },
+        wrapper,
       }
     )
 
@@ -247,12 +272,14 @@ describe('useMarketSubscription', () => {
       wsClient: mockClient,
       isConnected: true,
     } as never)
-    const { unmount } = renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    const { unmount } = renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(messageHandlers.get('subscription_success')?.length).toBe(1)
@@ -272,13 +299,15 @@ describe('useMarketSubscription', () => {
       wsClient: mockClient,
       isConnected: true,
     } as never)
-    renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-        dispatcher: mockDispatcher as never,
-      })
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+          dispatcher: mockDispatcher as never,
+        }),
+      { wrapper }
     )
 
     expect(mockDispatcher.startBuffering).toHaveBeenCalledWith('BTC-USD', 'kraken', '1m')
@@ -295,18 +324,43 @@ describe('useMarketSubscription', () => {
       wsClient: mockClient,
       isConnected: true,
     } as never)
-    const { unmount } = renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-        dispatcher: mockDispatcher as never,
-      })
+    const { unmount } = renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+          dispatcher: mockDispatcher as never,
+        }),
+      { wrapper }
     )
 
     unmount()
 
     expect(mockDispatcher.stopBuffering).toHaveBeenCalledWith('BTC-USD', 'kraken', '1m')
+  })
+  it('invalidates the cached candles query before re-subscribing on reconnect', () => {
+    const mockClient = createMockWsClient()
+
+    vi.mocked(useWebSocketStore).mockReturnValue({
+      wsClient: mockClient,
+      isConnected: true,
+    } as never)
+    const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries')
+
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
+    )
+
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: ['market', 'cache', 'candles', 'kraken', 'BTC-USD', '1m'],
+    })
   })
   it('does not subscribe when time traveling', () => {
     vi.mocked(useAppStore).mockImplementation(((
@@ -316,12 +370,14 @@ describe('useMarketSubscription', () => {
       wsClient: createMockWsClient(),
       isConnected: true,
     } as never)
-    renderHook(() =>
-      useMarketSubscription({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
-      })
+    renderHook(
+      () =>
+        useMarketSubscription({
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+        }),
+      { wrapper }
     )
 
     expect(mockSubscribe).not.toHaveBeenCalled()

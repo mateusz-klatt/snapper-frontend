@@ -4,7 +4,12 @@ import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
 import { LightweightChart } from '../../components/LightweightChart'
 import { RelatedInstrumentsRow } from './RelatedInstrumentsRow'
-import { useCandles, useExchanges, useExchangeInstrumentsDetail } from '../../hooks/queries/market'
+import { CacheWarmingBanner } from './CacheWarmingBanner'
+import {
+  useCachedCandles,
+  useExchanges,
+  useExchangeInstrumentsDetail,
+} from '../../hooks/queries/market'
 import { useAppStore } from '../../stores/app'
 import { useMarketStore } from '../../stores/market'
 import { useMarketSubscription } from '../../hooks/useMarketSubscription'
@@ -66,22 +71,31 @@ export function MarketData() {
   const isSelectedMarketDataOnly =
     selectedInstrument !== null && capabilityMap.get(selectedInstrument) === false
   const {
-    data: candles,
+    data: cachedResponse,
     isLoading,
     error,
     isFetching,
-  } = useCandles(
-    selectedInstrument ?? '',
-    selectedExchange ?? '',
+  } = useCachedCandles(
+    selectedExchange,
+    selectedInstrument,
     selectedTimeframe,
     100,
     snapshotEnabled
   )
+  const candles = cachedResponse?.payload.candles
+  const isWarm = cachedResponse?.payload.is_warm ?? true
+  const sampleCount = cachedResponse?.payload.sample_count ?? 0
+  const cacheSource = cachedResponse?.payload.source ?? 'cache'
   const flushedRef = useRef(false)
 
   useEffect(() => {
     flushedRef.current = false
   }, [selectedInstrument, selectedExchange, selectedTimeframe])
+  useEffect(() => {
+    if (subscribed) {
+      flushedRef.current = false
+    }
+  }, [subscribed])
   useEffect(() => {
     if (
       candles &&
@@ -127,16 +141,11 @@ export function MarketData() {
 
   const chartData: FormattedCandle[] = useMemo(() => {
     if (!candles || isFetching) return []
-    const sortedCandles = [...candles].sort((a, b) => {
-      const timeA = new Date(a.open_at).getTime()
-      const timeB = new Date(b.open_at).getTime()
-
-      return timeA - timeB
-    })
+    const sortedCandles = [...candles].sort((a, b) => a.open_at_ms - b.open_at_ms)
     const deduped: FormattedCandle[] = []
 
     for (const candle of sortedCandles) {
-      const unixTime = Math.floor(new Date(candle.open_at).getTime() / 1000)
+      const unixTime = Math.floor(candle.open_at_ms / 1000)
       const previous = deduped.at(-1)
 
       if (previous?.time === unixTime) {
@@ -324,6 +333,12 @@ export function MarketData() {
       )}
       {}
       <Card title='Price Chart' className='flex-1 p-6'>
+        <CacheWarmingBanner
+          isWarm={isWarm}
+          sampleCount={sampleCount}
+          expected={100}
+          source={cacheSource}
+        />
         {isLoading && (
           <div className='flex items-center justify-center h-full'>
             <LoadingSpinner />

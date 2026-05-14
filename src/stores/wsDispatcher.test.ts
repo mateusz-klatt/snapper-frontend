@@ -23,6 +23,47 @@ import type {
   AiReviewDecisionAckFrameData,
   AiReviewCapsViolationFrameData,
 } from '../types/ws'
+import type { CachedCandle, CachedCandlesResponse } from '../types/api'
+
+interface SeedRow {
+  open_at: string
+  open: number
+  high: number
+  low: number
+  close: number
+  volume: number
+}
+
+const cachedKey = (limit: number | null, asOf: string | null) =>
+  ['market', 'cache', 'candles', 'kraken', 'BTC-USD', '1m', limit, asOf] as const
+
+const cachedEnv = (
+  rows: SeedRow[],
+  options: { isWarm?: boolean; source?: 'cache' | 'derived' | 'db' } = {}
+): CachedCandlesResponse => ({
+  type: 'cached_candles',
+  sequence_id: 0,
+  public_id: 'env-pid',
+  timestamp: '2024-01-01T00:00:00Z',
+  session_id: 'sid',
+  topic: null,
+  payload: {
+    candles: rows.map(
+      (r): CachedCandle => ({
+        open_at_ms: new Date(r.open_at).getTime(),
+        timeframe: '1m',
+        open: r.open,
+        high: r.high,
+        low: r.low,
+        close: r.close,
+        volume: r.volume,
+      })
+    ),
+    sample_count: rows.length,
+    is_warm: options.isWarm ?? true,
+    source: options.source ?? 'cache',
+  },
+})
 
 vi.mock('./market', () => ({
   useMarketStore: {
@@ -209,23 +250,13 @@ describe('WSDispatcher', () => {
     })
     it('handles candle message with instrument/timeframe - merges into cache', () => {
       const nowIso = new Date().toISOString()
-      const existingCandles = [
-        {
-          instrument: 'BTC-USD',
-          exchange: 'kraken',
-          timeframe: '1m',
-          open_at: nowIso,
-          open: 49000,
-          high: 50000,
-          low: 48000,
-          close: 49500,
-          volume: 50,
-          vwap: null,
-          trades: null,
-        },
-      ]
 
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 100, null], existingCandles)
+      queryClient.setQueryData(
+        cachedKey(100, null),
+        cachedEnv([
+          { open_at: nowIso, open: 49000, high: 50000, low: 48000, close: 49500, volume: 50 },
+        ])
+      )
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -248,40 +279,25 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(candleMessage)
-      const cached = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        100,
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(100, null))
 
-      expect(cached).toHaveLength(1)
-      expect(cached?.[0]).toMatchObject({ close: 50500, volume: 100 })
+      expect(cached?.payload.candles).toHaveLength(1)
+      expect(cached?.payload.candles[0]).toMatchObject({ close: 50500, volume: 100 })
     })
     it('candle message merges into all live caches regardless of limit', () => {
       const nowIso = new Date().toISOString()
-      const baseCandle = {
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
+      const seedRow: SeedRow = {
         open_at: nowIso,
         open: 49000,
         high: 50000,
         low: 48000,
         close: 49500,
         volume: 50,
-        vwap: null,
-        trades: null,
       }
 
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 100, null], [baseCandle])
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 500, null], [baseCandle])
-      queryClient.setQueryData(
-        ['candles', 'BTC-USD', 'kraken', '1m', 100, '2024-01-01T00:00:00Z'],
-        [baseCandle]
-      )
+      queryClient.setQueryData(cachedKey(100, null), cachedEnv([seedRow]))
+      queryClient.setQueryData(cachedKey(500, null), cachedEnv([seedRow]))
+      queryClient.setQueryData(cachedKey(100, '2024-01-01T00:00:00Z'), cachedEnv([seedRow]))
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -304,58 +320,34 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(candleMessage)
-      const live100 = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        100,
-        null,
-      ])
-      const live500 = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        500,
-        null,
-      ])
-      const timeTravel = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        100,
-        '2024-01-01T00:00:00Z',
-      ])
+      const live100 = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(100, null))
+      const live500 = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(500, null))
+      const timeTravel = queryClient.getQueryData<CachedCandlesResponse>(
+        cachedKey(100, '2024-01-01T00:00:00Z')
+      )
 
-      expect(live100?.[0]).toMatchObject({ close: 50500 })
-      expect(live500?.[0]).toMatchObject({ close: 50500 })
-      expect(timeTravel?.[0]).toMatchObject({ close: 49500 })
+      expect(live100?.payload.candles[0]).toMatchObject({ close: 50500 })
+      expect(live500?.payload.candles[0]).toMatchObject({ close: 50500 })
+      expect(timeTravel?.payload.candles[0]).toMatchObject({ close: 49500 })
     })
-    it('appended candle respects per-cache limit (key[4]), not dispatcher max', () => {
-      const baseCandle = (openAtIso: string, close: number) => ({
-        instrument: 'BTC-USD',
-        exchange: 'kraken' as const,
-        timeframe: '1m' as const,
+    it('appended candle respects per-cache limit (key[6]), not dispatcher max', () => {
+      const seedRow = (openAtIso: string, close: number): SeedRow => ({
         open_at: openAtIso,
         open: close - 100,
         high: close + 100,
         low: close - 200,
         close,
         volume: 1,
-        vwap: null,
-        trades: null,
       })
       const seed100 = Array.from({ length: 100 }, (_, i) =>
-        baseCandle(new Date(60_000 * i).toISOString(), 1000 + i)
+        seedRow(new Date(60_000 * i).toISOString(), 1000 + i)
       )
       const seed500 = Array.from({ length: 500 }, (_, i) =>
-        baseCandle(new Date(60_000 * i).toISOString(), 1000 + i)
+        seedRow(new Date(60_000 * i).toISOString(), 1000 + i)
       )
 
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 100, null], seed100)
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', 500, null], seed500)
+      queryClient.setQueryData(cachedKey(100, null), cachedEnv(seed100))
+      queryClient.setQueryData(cachedKey(500, null), cachedEnv(seed500))
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -379,27 +371,13 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(newer)
-      const cached100 = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        100,
-        null,
-      ])
-      const cached500 = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        500,
-        null,
-      ])
+      const cached100 = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(100, null))
+      const cached500 = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(500, null))
 
-      expect(cached100?.length).toBe(100)
-      expect(cached500?.length).toBe(500)
-      expect((cached100 as { close: number }[])?.[(cached100?.length ?? 0) - 1]?.close).toBe(9050)
-      expect((cached500 as { close: number }[])?.[(cached500?.length ?? 0) - 1]?.close).toBe(9050)
+      expect(cached100?.payload.candles.length).toBe(100)
+      expect(cached500?.payload.candles.length).toBe(500)
+      expect(cached100?.payload.candles[cached100.payload.candles.length - 1]?.close).toBe(9050)
+      expect(cached500?.payload.candles[cached500.payload.candles.length - 1]?.close).toBe(9050)
     })
     it('order message merges new order into cache', () => {
       const existingOrders = [
@@ -700,23 +678,13 @@ describe('WSDispatcher', () => {
     it('candle message appends new candle when open_at is newer', () => {
       const oldTime = '2026-01-15T10:00:00Z'
       const newTime = '2026-01-15T10:01:00Z'
-      const existingCandles = [
-        {
-          instrument: 'BTC-USD',
-          exchange: 'kraken',
-          timeframe: '1m',
-          open_at: oldTime,
-          open: 49000,
-          high: 50000,
-          low: 48000,
-          close: 49500,
-          volume: 50,
-          vwap: null,
-          trades: null,
-        },
-      ]
 
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', null], existingCandles)
+      queryClient.setQueryData(
+        cachedKey(null, null),
+        cachedEnv([
+          { open_at: oldTime, open: 49000, high: 50000, low: 48000, close: 49500, volume: 50 },
+        ])
+      )
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -739,32 +707,21 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(candleMessage)
-      const cached = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(null, null))
 
-      expect(cached).toHaveLength(2)
+      expect(cached?.payload.candles).toHaveLength(2)
     })
     it('candle message trims cache to maxCandles sliding window', () => {
-      const existingCandles = Array.from({ length: 5 }, (_, i) => ({
-        instrument: 'BTC-USD',
-        exchange: 'kraken',
-        timeframe: '1m',
+      const existingRows: SeedRow[] = Array.from({ length: 5 }, (_, i) => ({
         open_at: new Date(Date.UTC(2026, 0, 15, 10, i)).toISOString(),
         open: 49000 + i * 100,
         high: 49500 + i * 100,
         low: 48500 + i * 100,
         close: 49200 + i * 100,
         volume: 50,
-        vwap: null,
-        trades: null,
       }))
 
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', null], existingCandles)
+      queryClient.setQueryData(cachedKey(null, null), cachedEnv(existingRows))
       const dispatcher = new WSDispatcher({ queryClient, maxCandles: 5 })
 
       dispatcher.attach(mockWsClient)
@@ -787,17 +744,11 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(candleMessage)
-      const cached = queryClient.getQueryData<{ close: number }[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(null, null))
 
-      expect(cached).toHaveLength(5)
-      expect(cached?.[0]?.close).toBe(49300)
-      expect(cached?.[4]?.close).toBe(50500)
+      expect(cached?.payload.candles).toHaveLength(5)
+      expect(cached?.payload.candles[0]?.close).toBe(49300)
+      expect(cached?.payload.candles[4]?.close).toBe(50500)
     })
     it('candle message without instrument/timeframe does not update cache', () => {
       const setQueryDataSpy = vi.spyOn(queryClient, 'setQueryData')
@@ -858,23 +809,13 @@ describe('WSDispatcher', () => {
     it('candle message ignores old candle open_at', () => {
       const oldTime = '2026-01-15T10:01:00Z'
       const olderTime = '2026-01-15T10:00:00Z'
-      const existingCandles = [
-        {
-          instrument: 'BTC-USD',
-          exchange: 'kraken',
-          timeframe: '1m',
-          open_at: oldTime,
-          open: 49000,
-          high: 50000,
-          low: 48000,
-          close: 49500,
-          volume: 50,
-          vwap: null,
-          trades: null,
-        },
-      ]
 
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', null], existingCandles)
+      queryClient.setQueryData(
+        cachedKey(null, null),
+        cachedEnv([
+          { open_at: oldTime, open: 49000, high: 50000, low: 48000, close: 49500, volume: 50 },
+        ])
+      )
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -897,35 +838,25 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(candleMessage)
-      const cached = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(null, null))
 
-      expect(cached).toHaveLength(1)
-      expect(cached?.[0]).toMatchObject({ close: 49500 })
+      expect(cached?.payload.candles).toHaveLength(1)
+      expect(cached?.payload.candles[0]).toMatchObject({ close: 49500 })
     })
-    it('candle message includes open_at on merged candle', () => {
-      const existingCandles = [
-        {
-          instrument: 'BTC-USD',
-          exchange: 'kraken',
-          timeframe: '1m',
-          open_at: '2020-01-01T00:00:00Z',
-          open: 49000,
-          high: 50000,
-          low: 48000,
-          close: 49500,
-          volume: 50,
-          vwap: null,
-          trades: null,
-        },
-      ]
-
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', null], existingCandles)
+    it('candle message includes open_at_ms on merged candle', () => {
+      queryClient.setQueryData(
+        cachedKey(null, null),
+        cachedEnv([
+          {
+            open_at: '2020-01-01T00:00:00Z',
+            open: 49000,
+            high: 50000,
+            low: 48000,
+            close: 49500,
+            volume: 50,
+          },
+        ])
+      )
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -948,19 +879,50 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(candleMessage)
-      const cached = queryClient.getQueryData<{ open_at: string }[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(null, null))
 
-      expect(cached).toHaveLength(2)
-      expect(cached?.[1]?.open_at).toBeDefined()
+      expect(cached?.payload.candles).toHaveLength(2)
+      expect(cached?.payload.candles[1]?.open_at_ms).toBe(
+        new Date('2020-01-01T00:01:00Z').getTime()
+      )
+    })
+    it('keeps is_warm false when the seeded cache is cold and updated length stays below cap', () => {
+      queryClient.setQueryData(
+        cachedKey(100, null),
+        cachedEnv(
+          [{ open_at: '2026-01-15T10:00:00Z', open: 1, high: 2, low: 0, close: 1.5, volume: 1 }],
+          { isWarm: false }
+        )
+      )
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      const candleMessage: CandleData = {
+        type: 'candle',
+        sequence_id: 0,
+        public_id: 'test-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'test-sid',
+        instrument: 'BTC-USD',
+        exchange: 'kraken',
+        timeframe: '1m',
+        open: 1.5,
+        high: 2.5,
+        low: 1,
+        close: 2,
+        volume: 1,
+        open_at: '2026-01-15T10:01:00Z',
+      }
+      const candleHandler = messageHandlers.get('candle')
+
+      candleHandler?.(candleMessage)
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(100, null))
+
+      expect(cached?.payload.candles).toHaveLength(2)
+      expect(cached?.payload.is_warm).toBe(false)
     })
     it('candle message handles empty existing cache array', () => {
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', null], [])
+      queryClient.setQueryData(cachedKey(null, null), cachedEnv([]))
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -983,15 +945,9 @@ describe('WSDispatcher', () => {
       const candleHandler = messageHandlers.get('candle')
 
       candleHandler?.(candleMessage)
-      const cached = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(null, null))
 
-      expect(cached).toHaveLength(1)
+      expect(cached?.payload.candles).toHaveLength(1)
     })
     it('buffers candle messages when buffering is active and no cache exists', () => {
       const setQueryDataSpy = vi.spyOn(queryClient, 'setQueryData')
@@ -1021,7 +977,7 @@ describe('WSDispatcher', () => {
       expect(setQueryDataSpy).not.toHaveBeenCalled()
       setQueryDataSpy.mockRestore()
     })
-    it('flushBuffer replays buffered candles onto cache', () => {
+    it('flushBuffer replays buffered candles onto cache after snapshot lands', () => {
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
@@ -1063,34 +1019,23 @@ describe('WSDispatcher', () => {
       candleHandler?.(candle1)
       candleHandler?.(candle2)
       queryClient.setQueryData(
-        ['candles', 'BTC-USD', 'kraken', '1m', null],
-        [
+        cachedKey(null, null),
+        cachedEnv([
           {
-            instrument: 'BTC-USD',
-            exchange: 'kraken',
-            timeframe: '1m',
             open_at: '2026-01-15T10:00:00Z',
             open: 50000,
             high: 50800,
             low: 49500,
             close: 50200,
             volume: 80,
-            vwap: null,
-            trades: null,
           },
-        ]
+        ])
       )
       dispatcher.flushBuffer('BTC-USD', 'kraken', '1m')
-      const cached = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(null, null))
 
-      expect(cached).toHaveLength(1)
-      expect((cached as { close: number }[])[0]?.close).toBe(51000)
+      expect(cached?.payload.candles).toHaveLength(1)
+      expect(cached?.payload.candles[0]?.close).toBe(51000)
     })
     it('flushBuffer is a no-op when no buffer exists', () => {
       const setQueryDataSpy = vi.spyOn(queryClient, 'setQueryData')
@@ -1133,17 +1078,11 @@ describe('WSDispatcher', () => {
         open_at: '2026-01-15T10:00:00Z',
       })
       dispatcher.stopBuffering('BTC-USD', 'kraken', '1m')
-      queryClient.setQueryData(['candles', 'BTC-USD', 'kraken', '1m', null], [])
+      queryClient.setQueryData(cachedKey(null, null), cachedEnv([]))
       dispatcher.flushBuffer('BTC-USD', 'kraken', '1m')
-      const cached = queryClient.getQueryData<unknown[]>([
-        'candles',
-        'BTC-USD',
-        'kraken',
-        '1m',
-        null,
-      ])
+      const cached = queryClient.getQueryData<CachedCandlesResponse>(cachedKey(null, null))
 
-      expect(cached).toHaveLength(0)
+      expect(cached?.payload.candles).toHaveLength(0)
     })
     it('tick handler updates market store with mid price from bid/ask', () => {
       const dispatcher = new WSDispatcher({ queryClient })
