@@ -88,17 +88,15 @@ export async function getCachedCandles(
   timeframe: string = '1m',
   limit: number = 100
 ): Promise<CachedCandlesResponse> {
-  const params = new URLSearchParams({ timeframe, limit: String(limit) })
-  const path = `/api/market/cache/candles/${encodeURIComponent(exchange)}/${encodeURIComponent(
-    nativeSymbol
-  )}?${params}`
-  const data = await apiClient.getJSON(path)
+  const params = new URLSearchParams({
+    instrument: nativeSymbol,
+    exchange,
+    timeframe,
+    limit: String(limit),
+  })
+  const data = await apiClient.getJSON(`/api/candles/cache?${params}`)
 
-  return validateResponse(
-    data,
-    CachedCandlesResponseSchema,
-    '/market/cache/candles/:exchange/:native_symbol'
-  )
+  return validateResponse(data, CachedCandlesResponseSchema, '/candles/cache')
 }
 
 export async function getCachedPairStats(
