@@ -1,1 +1,119 @@
-{}
+{
+  "page": {
+    "title": "Strategy Management",
+    "register": "Register Strategy",
+    "saving": "Saving…",
+    "descriptionCanManage": "Register new strategy processes directly from the UI. Autostart keeps the process enabled across restarts.",
+    "descriptionViewer": "View configured strategies and their status. Contact an operator or admin to manage strategies.",
+    "searchPlaceholder": "Search strategies...",
+    "filter": {
+      "all": "All statuses",
+      "running": "Running",
+      "stopped": "Stopped"
+    },
+    "configuredHeading": "Configured Strategies",
+    "noMatches": "No strategies match your filters",
+    "clearFilters": "Clear filters",
+    "emptyTitle": "No strategies configured",
+    "emptyCanManage": "Register a strategy to start algorithmic trading",
+    "emptyViewer": "No strategies have been configured yet"
+  },
+  "confirm": {
+    "startTitle": "Start {{name}}",
+    "startMessage": "This will start the {{name}} strategy. It may begin live trading operations.",
+    "stopTitle": "Stop {{name}}",
+    "stopMessage": "This will stop the {{name}} strategy. Active positions will not be automatically closed."
+  },
+  "toast": {
+    "saved": "Strategy {{name}} saved",
+    "started": "Strategy {{name}} started",
+    "registerFailed": "Failed to register strategy: {{message}}",
+    "startSuccess": "Strategy started successfully",
+    "stopSuccess": "Strategy stopped successfully",
+    "alreadyRunning": "Strategy is already running",
+    "notRunning": "Strategy is not running",
+    "configNotFound": "Strategy configuration not found. Please check database settings.",
+    "networkError": "Network error. Please check connection and try again.",
+    "startFailed": "Failed to start strategy: {{message}}",
+    "stopFailed": "Failed to stop strategy: {{message}}",
+    "unknownError": "Unknown error"
+  },
+  "card": {
+    "ariaLabel": "Strategy: {{name}}",
+    "modeLabel": "Mode: {{mode}}",
+    "autostartEnabled": "Autostart: enabled",
+    "autostartDisabled": "Autostart: disabled",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Data lag: {{seconds}} seconds",
+    "lagBadge": "lag: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "HB age: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Data Lag",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Show Details",
+    "hideDetails": "Hide Details",
+    "inputs": "Inputs ({{count}})",
+    "outputs": "Outputs ({{count}})",
+    "feedPublishers": "Feed Publishers ({{count}})",
+    "lastUpdate": "Last update: {{time}}",
+    "waiting": "Waiting for heartbeat...",
+    "startAriaLabel": "Start {{name}} strategy",
+    "stopAriaLabel": "Stop {{name}} strategy",
+    "start": "Start",
+    "stop": "Stop",
+    "starting": "Starting...",
+    "stopping": "Stopping...",
+    "status": {
+      "starting": "starting",
+      "stopping": "stopping",
+      "running": "running",
+      "stopped": "stopped"
+    },
+    "health": {
+      "healthy": "Healthy - receiving fresh data",
+      "warning": "Warning - data is stale",
+      "error": "Error - no recent data",
+      "unknown": "Unknown - no heartbeat data"
+    },
+    "healthShort": {
+      "healthy": "HEALTHY",
+      "warning": "WARNING",
+      "error": "ERROR"
+    }
+  },
+  "launchModal": {
+    "title": "Register Strategy Process",
+    "emptyTemplates": "No strategy templates registered in backend. Define at least one strategy process.",
+    "close": "Close",
+    "templateLabel": "Strategy template",
+    "templatePlaceholder": "Choose template...",
+    "templateFallbackDescription": "Strategy registered in backend",
+    "loadingDefaults": "Loading template defaults…",
+    "loadDefaultsError": "Unable to load template defaults. Please check backend logs.",
+    "processNameLabel": "Process name",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Allowed characters: lowercase letters, numbers, underscores",
+    "instanceNameLabel": "Strategy instance name",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Used within strategy configuration and output topics",
+    "executionModeLabel": "Execution mode",
+    "executionModeThread": "Embedded thread",
+    "executionModeProcess": "Isolated process",
+    "executionModeHelp": "Threads share memory, processes provide stronger isolation.",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart on server boot",
+    "startImmediatelyLabel": "Start immediately after registration",
+    "noteLabel": "Note (optional)",
+    "notePlaceholder": "Describe purpose or parameters of this strategy instance.",
+    "noteHelp": "Stored alongside configuration to help identify this process.",
+    "cancel": "Cancel",
+    "submit": "Register strategy",
+    "submitting": "Registering…"
+  }
+}

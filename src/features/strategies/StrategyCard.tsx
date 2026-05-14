@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 import { LoadingSpinner } from '../../components/ui'
 
 export interface FeedHealth {
@@ -22,6 +23,7 @@ const FeedPublisherEntry: React.FC<Readonly<{ feedKey: string; feed: FeedHealth 
   feedKey,
   feed,
 }) => {
+  const { t } = useTranslation('strategies')
   const isHealthy = feed.healthy
   const isFresh = feed.heartbeat_age_ms < 5000
 
@@ -49,8 +51,8 @@ const FeedPublisherEntry: React.FC<Readonly<{ feedKey: string; feed: FeedHealth 
         </span>
       </div>
       <div className='grid grid-cols-2 gap-2 text-xs text-muted-500'>
-        <div>Feed lag: {feed.lag_ms}ms</div>
-        <div>HB age: {Math.round(feed.heartbeat_age_ms / 1000)}s</div>
+        <div>{t('card.feedLag', { ms: feed.lag_ms })}</div>
+        <div>{t('card.heartbeatAge', { seconds: Math.round(feed.heartbeat_age_ms / 1000) })}</div>
       </div>
     </div>
   )
@@ -62,17 +64,8 @@ const HEALTH_COLOR: Record<HealthStatus['status'], string> = {
   error: 'bg-loss-500',
 }
 
-const HEALTH_LABEL: Record<HealthStatus['status'], string> = {
-  healthy: 'Healthy - receiving fresh data',
-  warning: 'Warning - data is stale',
-  error: 'Error - no recent data',
-}
-
 const resolveHealthColor = (health: HealthStatus | undefined): string =>
   health ? HEALTH_COLOR[health.status] : 'bg-muted-400'
-
-const resolveHealthLabel = (health: HealthStatus | undefined): string =>
-  health ? HEALTH_LABEL[health.status] : 'Unknown - no heartbeat data'
 
 const resolveDisplayName = (name: string): string =>
   name
@@ -86,18 +79,6 @@ const resolveStatusKey = (
   isRunning: boolean
 ): 'starting' | 'running' | 'stopped' => {
   if (isStarting) return 'starting'
-  if (isRunning) return 'running'
-
-  return 'stopped'
-}
-
-const resolveStatusText = (
-  isStarting: boolean,
-  isStopping: boolean,
-  isRunning: boolean
-): string => {
-  if (isStarting) return 'starting'
-  if (isStopping) return 'stopping'
   if (isRunning) return 'running'
 
   return 'stopped'
@@ -129,24 +110,38 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     isStopping = false,
     readOnly = false,
   }) => {
+    const { t } = useTranslation('strategies')
     const [expanded, setExpanded] = useState(false)
     const isRunning = running || isStarting
     const showStopButton = running || isStopping
     const healthColor = resolveHealthColor(health)
-    const healthLabel = resolveHealthLabel(health)
+    const healthLabel = health
+      ? t(`card.health.${health.status}` as const)
+      : t('card.health.unknown')
     const statusColor = {
       running: 'text-accent-400 bg-accent-400/10',
       stopped: 'text-muted-400 bg-muted-400/10',
       starting: 'text-info-400 bg-info-400/10',
     }[resolveStatusKey(isStarting, isRunning)]
-    const statusText = resolveStatusText(isStarting, isStopping, isRunning)
+
+    const resolveStatusText = (): string => {
+      if (isStarting) return t('card.status.starting')
+      if (isStopping) return t('card.status.stopping')
+      if (isRunning) return t('card.status.running')
+
+      return t('card.status.stopped')
+    }
+
+    const statusText = resolveStatusText()
     const showLagBadge = health && health.lag_ms > 2000
     const displayName = resolveDisplayName(name)
+    const healthStatusShort = (status: HealthStatus['status']): string =>
+      t(`card.healthShort.${status}` as const)
 
     return (
       <article
         className='bg-alpine-50 border border-dark-600 rounded-2xl p-6 space-y-4'
-        aria-label={`Strategy: ${displayName}`}
+        aria-label={t('card.ariaLabel', { name: displayName })}
       >
         {}
         <div className='flex items-start justify-between'>
@@ -159,25 +154,27 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             />
             <div>
               <h3 className='text-lg font-semibold text-alpine-900'>{displayName}</h3>
-              <p className='text-sm text-muted-600 mt-1'>Mode: {mode}</p>
+              <p className='text-sm text-muted-600 mt-1'>{t('card.modeLabel', { mode })}</p>
               <p className='text-xs text-muted-500 mt-0.5'>
-                Autostart: {autoStartEnabled ? 'enabled' : 'disabled'}
+                {autoStartEnabled ? t('card.autostartEnabled') : t('card.autostartDisabled')}
               </p>
             </div>
           </div>
           <div className='flex items-center space-x-2'>
             <output
               className={clsx('px-2 py-1 rounded-md text-xs font-medium', statusColor)}
-              aria-label={`Status: ${statusText}`}
+              aria-label={t('card.statusAriaLabel', { status: statusText })}
             >
               {statusText}
             </output>
             {showLagBadge && (
               <output
                 className='px-2 py-1 rounded-md text-xs font-medium text-warning-400 bg-warning-400/10'
-                aria-label={`Data lag: ${Math.round(health.lag_ms / 1000)} seconds`}
+                aria-label={t('card.dataLagAriaLabel', {
+                  seconds: Math.round(health.lag_ms / 1000),
+                })}
               >
-                lag: {Math.round(health.lag_ms / 1000)}s
+                {t('card.lagBadge', { seconds: Math.round(health.lag_ms / 1000) })}
               </output>
             )}
           </div>
@@ -188,7 +185,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             {}
             <div className='grid grid-cols-3 gap-3 text-xs'>
               <div className='bg-dark-700 rounded p-2'>
-                <div className='text-muted-500 mb-1'>Status</div>
+                <div className='text-muted-500 mb-1'>{t('card.metrics.status')}</div>
                 <div
                   className={clsx('font-medium', {
                     'text-accent-400': health.status === 'healthy',
@@ -196,16 +193,22 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                     'text-loss-400': health.status === 'error',
                   })}
                 >
-                  {health.status.toUpperCase()}
+                  {healthStatusShort(health.status)}
                 </div>
               </div>
               <div className='bg-dark-700 rounded p-2'>
-                <div className='text-muted-500 mb-1'>Data Lag</div>
-                <div className='text-alpine-900 font-medium'>{health.lag_ms}ms</div>
+                <div className='text-muted-500 mb-1'>{t('card.metrics.dataLag')}</div>
+                <div className='text-alpine-900 font-medium'>
+                  {t('card.metrics.dataLagValue', { ms: health.lag_ms })}
+                </div>
               </div>
               <div className='bg-dark-700 rounded p-2'>
-                <div className='text-muted-500 mb-1'>Heartbeat</div>
-                <div className='text-alpine-900 font-medium'>#{health.seq || '?'}</div>
+                <div className='text-muted-500 mb-1'>{t('card.metrics.heartbeat')}</div>
+                <div className='text-alpine-900 font-medium'>
+                  {health.seq
+                    ? t('card.metrics.heartbeatValue', { seq: health.seq })
+                    : t('card.metrics.heartbeatUnknown')}
+                </div>
               </div>
             </div>
             {}
@@ -213,7 +216,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
               onClick={() => setExpanded(!expanded)}
               className='w-full text-xs text-muted-500 hover:text-alpine-900 transition-colors flex items-center justify-center space-x-1'
             >
-              <span>{expanded ? 'Hide Details' : 'Show Details'}</span>
+              <span>{expanded ? t('card.hideDetails') : t('card.showDetails')}</span>
               <svg
                 className={clsx('w-4 h-4 transition-transform', { 'rotate-180': expanded })}
                 fill='none'
@@ -236,7 +239,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                     {health.inputs && health.inputs.length > 0 && (
                       <div>
                         <div className='text-xs font-medium text-muted-500 mb-1'>
-                          Inputs ({health.inputs.length})
+                          {t('card.inputs', { count: health.inputs.length })}
                         </div>
                         <div className='space-y-1'>
                           {health.inputs.map(input => (
@@ -253,7 +256,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                     {health.outputs && health.outputs.length > 0 && (
                       <div>
                         <div className='text-xs font-medium text-muted-500 mb-1'>
-                          Outputs ({health.outputs.length})
+                          {t('card.outputs', { count: health.outputs.length })}
                         </div>
                         <div className='flex flex-wrap gap-1'>
                           {health.outputs.map(output => (
@@ -273,7 +276,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 {health.feed_health && Object.keys(health.feed_health).length > 0 && (
                   <div>
                     <div className='text-xs font-medium text-muted-500 mb-2'>
-                      Feed Publishers ({Object.keys(health.feed_health).length})
+                      {t('card.feedPublishers', { count: Object.keys(health.feed_health).length })}
                     </div>
                     <div className='space-y-2'>
                       {Object.entries(health.feed_health).map(([feedKey, feed]) => (
@@ -284,14 +287,16 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 )}
                 {}
                 <div className='text-xs text-muted-400 text-center pt-2 border-t border-dark-600'>
-                  Last update: {new Date(health.timestamp).toLocaleTimeString()}
+                  {t('card.lastUpdate', {
+                    time: new Date(health.timestamp).toLocaleTimeString(),
+                  })}
                 </div>
               </div>
             )}
           </div>
         )}
         {!health && isRunning && (
-          <div className='text-xs text-muted-400 text-center py-2'>Waiting for heartbeat...</div>
+          <div className='text-xs text-muted-400 text-center py-2'>{t('card.waiting')}</div>
         )}
         {}
         {(onStart || onStop) && (
@@ -300,7 +305,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
               <button
                 onClick={onStop}
                 disabled={isStopping || isStarting || readOnly}
-                aria-label={`Stop ${displayName} strategy`}
+                aria-label={t('card.stopAriaLabel', { name: displayName })}
                 className={clsx(
                   'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
                   isStopping || isStarting || readOnly
@@ -311,17 +316,17 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 {isStopping ? (
                   <>
                     <LoadingSpinner size='sm' className='inline-block mr-2' />
-                    Stopping...
+                    {t('card.stopping')}
                   </>
                 ) : (
-                  'Stop'
+                  t('card.stop')
                 )}
               </button>
             ) : (
               <button
                 onClick={onStart}
                 disabled={isStarting || isStopping || readOnly}
-                aria-label={`Start ${displayName} strategy`}
+                aria-label={t('card.startAriaLabel', { name: displayName })}
                 className={clsx(
                   'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
                   isStarting || isStopping || readOnly
@@ -332,10 +337,10 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 {isStarting ? (
                   <>
                     <LoadingSpinner size='sm' className='inline-block mr-2' />
-                    Starting...
+                    {t('card.starting')}
                   </>
                 ) : (
-                  'Start'
+                  t('card.start')
                 )}
               </button>
             )}

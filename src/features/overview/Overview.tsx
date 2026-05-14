@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Card, MetricCard, StatusBadge } from '../../components/ui'
 import { CardSkeleton } from '../../components/Skeleton'
 import { useAppStore } from '../../stores/app'
@@ -22,27 +23,24 @@ const countChangeType = (count: number): 'positive' | 'neutral' =>
 
 const sideStatus = (side: string): 'connected' | 'error' => (side === 'buy' ? 'connected' : 'error')
 
-const statusBadgeLabel = (
-  running: number,
-  total: number | undefined,
-  activeLabel: string
-): string => {
-  if (running <= 0) return 'Stopped'
-  if (total !== undefined) return `${running}/${total} ${activeLabel}`
-
-  return `${running} ${activeLabel}`
-}
-
 const ProcessStatusRow: React.FC<
   Readonly<{ label: string; running: number; total?: number; activeLabel: string }>
-> = ({ label, running, total, activeLabel }) => (
-  <div className='flex items-center justify-between'>
-    <span className='text-sm font-medium'>{label}</span>
-    <StatusBadge status={runningBadgeStatus(running)}>
-      {statusBadgeLabel(running, total, activeLabel)}
-    </StatusBadge>
-  </div>
-)
+> = ({ label, running, total, activeLabel }) => {
+  const { t } = useTranslation('overview')
+  const badgeLabel = ((): string => {
+    if (running <= 0) return t('status.stopped')
+    if (total !== undefined) return t('status.ratioActive', { running, total, label: activeLabel })
+
+    return t('status.countActive', { running, label: activeLabel })
+  })()
+
+  return (
+    <div className='flex items-center justify-between'>
+      <span className='text-sm font-medium'>{label}</span>
+      <StatusBadge status={runningBadgeStatus(running)}>{badgeLabel}</StatusBadge>
+    </div>
+  )
+}
 
 interface PortfolioContentProps {
   readonly totalValue: number
@@ -61,29 +59,30 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
   longCost,
   shortCost,
 }) => {
+  const { t } = useTranslation('overview')
   const pnlColorClass = (value: number): string => (value >= 0 ? 'text-gain-600' : 'text-loss-600')
   const netDelta = longCost - shortCost
 
   return (
     <div className='space-y-3'>
       <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>Total Value</span>
+        <span className='text-sm font-medium'>{t('portfolio.totalValue')}</span>
         <span className='font-mono text-right'>${formatCurrency(totalValue)}</span>
       </div>
       <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>Long exposure</span>
+        <span className='text-sm font-medium'>{t('portfolio.longExposure')}</span>
         <span className='font-mono text-right text-gain-600' data-testid='overview-long-exposure'>
           ${formatCurrency(longCost)}
         </span>
       </div>
       <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>Short exposure</span>
+        <span className='text-sm font-medium'>{t('portfolio.shortExposure')}</span>
         <span className='font-mono text-right text-loss-600' data-testid='overview-short-exposure'>
           ${formatCurrency(shortCost)}
         </span>
       </div>
       <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>Net delta</span>
+        <span className='text-sm font-medium'>{t('portfolio.netDelta')}</span>
         <span
           className={`font-mono text-right ${pnlColorClass(netDelta)}`}
           data-testid='overview-net-delta'
@@ -92,21 +91,21 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
         </span>
       </div>
       <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>Unrealized P&L</span>
+        <span className='text-sm font-medium'>{t('portfolio.unrealizedPnl')}</span>
         <span className={`font-mono text-right ${pnlColorClass(totalPnL)}`}>
           {pnlSign(totalPnL)}${formatCurrency(totalPnL)}
         </span>
       </div>
       <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>P&L %</span>
+        <span className='text-sm font-medium'>{t('portfolio.pnlPercent')}</span>
         <span className={`font-mono text-right ${pnlColorClass(pnlPercent)}`}>
           {pnlSign(pnlPercent)}
           {pnlPercent.toFixed(2)}%
         </span>
       </div>
       <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>Positions</span>
-        <span className='font-mono text-right'>{count} instruments</span>
+        <span className='text-sm font-medium'>{t('portfolio.positions')}</span>
+        <span className='font-mono text-right'>{t('portfolio.instrumentsCount', { count })}</span>
       </div>
     </div>
   )
@@ -116,6 +115,7 @@ const signalKey = (signal: Signal, index: number): string | number =>
   signal.firedAt?.getTime() ?? `signal-${index}`
 
 const SignalRow: React.FC<Readonly<{ signal: Signal; index: number }>> = ({ signal, index }) => {
+  const { t } = useTranslation('overview')
   const normalizedSide = signal.side.toLowerCase()
 
   return (
@@ -129,27 +129,33 @@ const SignalRow: React.FC<Readonly<{ signal: Signal; index: number }>> = ({ sign
         </StatusBadge>
         <span className='text-sm font-medium'>{signal.instrument}</span>
       </div>
-      <div className='text-xs text-dark-300'>{signal.firedAt?.toLocaleTimeString() ?? 'N/A'}</div>
+      <div className='text-xs text-dark-300'>
+        {signal.firedAt?.toLocaleTimeString() ?? t('signals.noTime')}
+      </div>
     </div>
   )
 }
 
-const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution }) => (
-  <div className='flex items-center justify-between p-2 bg-dark-700 rounded-sm'>
-    <div className='flex items-center gap-3'>
-      <StatusBadge status={execution.side === 'sell' ? 'error' : 'connected'}>
-        {execution.side.toUpperCase()}
-      </StatusBadge>
-      <span className='text-sm font-medium'>{execution.instrument}</span>
-      <span className='text-xs text-dark-300'>
-        {execution.size} @ ${execution.price}
-      </span>
+const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution }) => {
+  const { t } = useTranslation('overview')
+
+  return (
+    <div className='flex items-center justify-between p-2 bg-dark-700 rounded-sm'>
+      <div className='flex items-center gap-3'>
+        <StatusBadge status={execution.side === 'sell' ? 'error' : 'connected'}>
+          {execution.side.toUpperCase()}
+        </StatusBadge>
+        <span className='text-sm font-medium'>{execution.instrument}</span>
+        <span className='text-xs text-dark-300'>
+          {execution.size} @ ${execution.price}
+        </span>
+      </div>
+      <div className='text-xs text-dark-300'>
+        {execution.executedAt?.toLocaleTimeString() ?? t('executions.noTime')}
+      </div>
     </div>
-    <div className='text-xs text-dark-300'>
-      {execution.executedAt?.toLocaleTimeString() ?? 'N/A'}
-    </div>
-  </div>
-)
+  )
+}
 
 const PortfolioCardContent: React.FC<
   Readonly<{
@@ -157,10 +163,12 @@ const PortfolioCardContent: React.FC<
     summary: PortfolioContentProps | null
   }>
 > = ({ loading, summary }) => {
+  const { t } = useTranslation('overview')
+
   if (loading) return <CardSkeleton showTitle={false} contentLines={4} className='border-0 p-0' />
   if (summary) return <PortfolioContent {...summary} />
 
-  return <div className='text-center py-8 text-muted-500'>No positions data available</div>
+  return <div className='text-center py-8 text-muted-500'>{t('portfolio.empty')}</div>
 }
 
 const SignalsCardContent: React.FC<
@@ -169,6 +177,8 @@ const SignalsCardContent: React.FC<
     signals: readonly Signal[] | undefined
   }>
 > = ({ loading, signals }) => {
+  const { t } = useTranslation('overview')
+
   if (loading) return <CardSkeleton showTitle={false} contentLines={5} className='border-0 p-0' />
   if (signals && signals.length > 0)
     return (
@@ -179,12 +189,13 @@ const SignalsCardContent: React.FC<
       </div>
     )
 
-  return <div className='text-center py-8 text-muted-500'>No recent signals</div>
+  return <div className='text-center py-8 text-muted-500'>{t('signals.empty')}</div>
 }
 
 const zeroCounts = { running: 0, total: 0 }
 
 export const Overview: React.FC = () => {
+  const { t } = useTranslation('overview')
   const asOf = useAppStore(s => s.asOf)
   const { data: processSummary, isLoading: processLoading } = useProcessSummary()
   const { data: positionsSummary, isLoading: positionsLoading } = usePositionsSummary()
@@ -205,66 +216,74 @@ export const Overview: React.FC = () => {
 
   return (
     <div className='space-y-6'>
-      <h2 className='text-xl font-semibold text-alpine-900'>Overview</h2>
+      <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
       {}
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
         <MetricCard
-          label='Feeds Running'
+          label={t('metrics.feedsRunning')}
           value={`${feeds.running}/${feeds.total}`}
           changeType={countChangeType(feeds.running)}
         />
         <MetricCard
-          label='Strategies Active'
+          label={t('metrics.strategiesActive')}
           value={`${strategies.running}/${strategies.total}`}
           changeType={countChangeType(strategies.running)}
         />
-        <MetricCard label='Open Orders' value={openOrdersCount} changeType='neutral' />
+        <MetricCard label={t('metrics.openOrders')} value={openOrdersCount} changeType='neutral' />
         <MetricCard
-          label={asOf ? `Executions (${referenceDate.toLocaleDateString()})` : "Today's Executions"}
+          label={
+            asOf
+              ? t('metrics.executionsOn', { date: referenceDate.toLocaleDateString() })
+              : t('metrics.todaysExecutions')
+          }
           value={todayExecutionsCount}
           changeType='positive'
         />
       </div>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
         {}
-        <Card title='Process Status'>
+        <Card title={t('processStatus.title')}>
           {processLoading ? (
             <CardSkeleton showTitle={false} contentLines={4} className='border-0 p-0' />
           ) : (
             <div className='space-y-3'>
-              <ProcessStatusRow label='Feeds' running={feeds.running} activeLabel='Running' />
               <ProcessStatusRow
-                label='Strategies'
-                running={strategies.running}
-                activeLabel='Active'
+                label={t('processStatus.feeds')}
+                running={feeds.running}
+                activeLabel={t('labels.running')}
               />
               <ProcessStatusRow
-                label='Executors'
+                label={t('processStatus.strategies')}
+                running={strategies.running}
+                activeLabel={t('labels.active')}
+              />
+              <ProcessStatusRow
+                label={t('processStatus.executors')}
                 running={executors.running}
                 total={executors.total}
-                activeLabel='Running'
+                activeLabel={t('labels.running')}
               />
               <ProcessStatusRow
-                label='Brokers'
+                label={t('processStatus.brokers')}
                 running={brokers.running}
                 total={brokers.total}
-                activeLabel='Running'
+                activeLabel={t('labels.running')}
               />
             </div>
           )}
         </Card>
         {}
-        <Card title='Portfolio Summary'>
+        <Card title={t('portfolio.title')}>
           <PortfolioCardContent loading={positionsLoading} summary={positionsSummary ?? null} />
         </Card>
       </div>
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
         {}
-        <Card title='Recent Signals'>
+        <Card title={t('signals.title')}>
           <SignalsCardContent loading={signalsLoading} signals={latestSignals} />
         </Card>
         {}
-        <Card title='Recent Executions'>
+        <Card title={t('executions.title')}>
           {recentExecutions.length > 0 ? (
             <div className='space-y-2'>
               {recentExecutions.map(execution => (
@@ -272,7 +291,7 @@ export const Overview: React.FC = () => {
               ))}
             </div>
           ) : (
-            <div className='text-center py-8 text-muted-500'>No recent executions</div>
+            <div className='text-center py-8 text-muted-500'>{t('executions.empty')}</div>
           )}
         </Card>
       </div>

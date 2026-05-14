@@ -1,4 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Card, LoadingSpinner } from '../../components/ui'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
@@ -26,17 +27,11 @@ interface FormattedCandle {
   low: number
   close: number
 }
-const timeframes = [
-  { value: '1m', label: '1 Minute' },
-  { value: '5m', label: '5 Minutes' },
-  { value: '15m', label: '15 Minutes' },
-  { value: '30m', label: '30 Minutes' },
-  { value: '1h', label: '1 Hour' },
-  { value: '4h', label: '4 Hours' },
-  { value: '1d', label: '1 Day' },
-]
+
+const TIMEFRAME_VALUES = ['1m', '5m', '15m', '30m', '1h', '4h', '1d'] as const
 
 export function MarketData() {
+  const { t } = useTranslation('market')
   const {
     selectedExchange,
     selectedInstrument,
@@ -46,6 +41,11 @@ export function MarketData() {
     setSelectedMarket,
     setSelectedTimeframe,
   } = useMarketStore()
+
+  const timeframes = useMemo(
+    () => TIMEFRAME_VALUES.map(value => ({ value, label: t(`timeframes.${value}`) })),
+    [t]
+  )
 
   const { isConnected } = useWebSocketStore()
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
@@ -197,7 +197,7 @@ export function MarketData() {
           {selectedInstrument !== null && selectedExchange !== null && (
             <InstrumentIcon symbol={selectedInstrument} exchange={selectedExchange} size={32} />
           )}
-          <h2 className='text-xl font-bold'>Market Data</h2>
+          <h2 className='text-xl font-bold'>{t('page.title')}</h2>
           {isSelectedMarketDataOnly && <MarketDataOnlyBadge size='md' />}
         </div>
       </div>
@@ -205,7 +205,7 @@ export function MarketData() {
       <div className='flex flex-wrap items-center gap-4'>
         <div className='flex items-center gap-2'>
           <label htmlFor='exchange-select' className='text-sm font-medium text-muted-600'>
-            Exchange:
+            {t('controls.exchange')}
           </label>
           <Select.Root
             {...(selectedExchange === null ? {} : { value: selectedExchange })}
@@ -215,7 +215,7 @@ export function MarketData() {
               id='exchange-select'
               className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500'
             >
-              <Select.Value placeholder='Select exchange' />
+              <Select.Value placeholder={t('controls.selectExchange')} />
               <Select.Icon className='ml-2'>
                 <ChevronDownIcon size={16} />
               </Select.Icon>
@@ -239,7 +239,7 @@ export function MarketData() {
         </div>
         <div className='flex items-center gap-2'>
           <label htmlFor='instrument-search' className='text-sm font-medium text-muted-600'>
-            Instrument:
+            {t('controls.instrument')}
           </label>
           <input
             id='instrument-search'
@@ -248,7 +248,7 @@ export function MarketData() {
             value={instrumentInput}
             onChange={handleInstrumentChange}
             onBlur={handleInstrumentBlur}
-            placeholder='Search instrument...'
+            placeholder={t('controls.searchInstrument')}
             disabled={!selectedExchange}
             className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500 disabled:opacity-50'
           />
@@ -260,7 +260,7 @@ export function MarketData() {
         </div>
         <div className='flex items-center gap-2'>
           <label htmlFor='timeframe-select' className='text-sm font-medium text-muted-600'>
-            Timeframe:
+            {t('controls.timeframe')}
           </label>
           <Select.Root value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
             <Select.Trigger
@@ -298,16 +298,16 @@ export function MarketData() {
       {}
       {stats && (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
-          <Card title='Current Price' className='p-4'>
+          <Card title={t('stats.currentPrice')} className='p-4'>
             <div>
-              <p className='text-sm text-muted-500'>Current Price</p>
+              <p className='text-sm text-muted-500'>{t('stats.currentPrice')}</p>
               <p className='text-lg font-semibold'>{stats.price.toFixed(5)}</p>
             </div>
           </Card>
-          <Card title='24h Change' className='p-4'>
+          <Card title={t('stats.change24h')} className='p-4'>
             <div className='flex items-center justify-between'>
               <div>
-                <p className='text-sm text-muted-500'>24h Change</p>
+                <p className='text-sm text-muted-500'>{t('stats.change24h')}</p>
                 <p
                   className={`text-lg font-semibold ${stats.change >= 0 ? 'text-gain-600' : 'text-loss-600'}`}
                 >
@@ -317,22 +317,22 @@ export function MarketData() {
               </div>
             </div>
           </Card>
-          <Card title='24h High' className='p-4'>
+          <Card title={t('stats.high24h')} className='p-4'>
             <div>
-              <p className='text-sm text-muted-500'>24h High</p>
+              <p className='text-sm text-muted-500'>{t('stats.high24h')}</p>
               <p className='text-lg font-semibold text-gain-600'>{stats.high24h.toFixed(5)}</p>
             </div>
           </Card>
-          <Card title='24h Low' className='p-4'>
+          <Card title={t('stats.low24h')} className='p-4'>
             <div>
-              <p className='text-sm text-muted-500'>24h Low</p>
+              <p className='text-sm text-muted-500'>{t('stats.low24h')}</p>
               <p className='text-lg font-semibold text-loss-600'>{stats.low24h.toFixed(5)}</p>
             </div>
           </Card>
         </div>
       )}
       {}
-      <Card title='Price Chart' className='flex-1 p-6'>
+      <Card title={t('chart.title')} className='flex-1 p-6'>
         <CacheWarmingBanner
           isWarm={isWarm}
           sampleCount={sampleCount}
@@ -347,7 +347,7 @@ export function MarketData() {
         {!isLoading && error && (
           <div className='flex items-center justify-center h-full'>
             <p className='text-loss-600'>
-              Error loading chart data: {error?.message || 'Unknown error'}
+              {t('chart.errorPrefix')} {error?.message || t('chart.unknownError')}
             </p>
           </div>
         )}
@@ -357,10 +357,13 @@ export function MarketData() {
         {!isLoading && !error && chartData.length === 0 && (
           <div className='flex items-center justify-center h-full'>
             <div className='text-center'>
-              <p className='text-muted-500 mb-2'>No data available for {selectedInstrument}</p>
+              <p className='text-muted-500 mb-2'>
+                {t('chart.noDataTitle', { instrument: selectedInstrument ?? '' })}
+              </p>
               <p className='text-sm text-muted-500'>
-                The instrument may not exist or has no{' '}
-                {timeframes.find(t => t.value === selectedTimeframe)?.label.toLowerCase()} data
+                {t('chart.noDataHint', {
+                  timeframe: t(`timeframes.${selectedTimeframe}` as 'timeframes.1m').toLowerCase(),
+                })}
               </p>
             </div>
           </div>

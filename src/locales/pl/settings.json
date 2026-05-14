@@ -1,1 +1,72 @@
-{}
+{
+  "page": {
+    "title": "Ustawienia",
+    "subtitle": "Skonfiguruj ustawienia i parametry aplikacji",
+    "addButton": "Dodaj ustawienie",
+    "searchPlaceholder": "Szukaj ustawień...",
+    "noResults": "Nie znaleziono ustawień pasujących do kryteriów.",
+    "allCategories": "Wszystkie kategorie",
+    "categoryFilterAriaLabel": "Filtruj ustawienia według kategorii"
+  },
+  "errors": {
+    "loadFailed": "Nie udało się załadować ustawień",
+    "updateFailed": "Nie udało się zaktualizować ustawienia",
+    "deleteFailed": "Nie udało się usunąć ustawienia",
+    "createFailed": "Nie udało się utworzyć ustawienia",
+    "alreadyExists": "Ustawienie z kluczem \"{{key}}\" już istnieje"
+  },
+  "item": {
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "save": "Zapisz",
+    "saving": "Zapisywanie...",
+    "cancel": "Anuluj",
+    "yesDelete": "Tak, usuń",
+    "deleting": "Usuwanie...",
+    "deleteConfirm": "Usunąć to ustawienie?",
+    "valuePlaceholder": "Wprowadź wartość ustawienia...",
+    "showMore": "Pokaż więcej",
+    "showLess": "Pokaż mniej",
+    "toggleAriaLabel": "Przełącz {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Wrażliwe"
+    },
+    "helpText": {
+      "allowShortSelling": "Pozwól silnikowi otwierać pozycje krótkie. Sygnały SELL wygenerują ujemne desired_units; przy wyłączeniu wartości są przycinane do 0.",
+      "allowManualOrders": "Włącz przycisk Nowe zlecenie na karcie Zlecenia. Po wyłączeniu POST /api/orders zwraca 403."
+    }
+  },
+  "addModal": {
+    "title": "Dodaj nowe ustawienie",
+    "keyLabel": "Klucz",
+    "valueLabel": "Wartość",
+    "categoryLabel": "Kategoria",
+    "descriptionLabel": "Opis",
+    "keyPlaceholder": "np. walutomat.api_key",
+    "keyHint": "Użyj notacji kropkowej dla ustawień zagnieżdżonych (np. kategoria.podkategoria.nazwa)",
+    "valuePlaceholder": "Wartość ustawienia",
+    "categorySelectPlaceholder": "Wybierz istniejącą lub utwórz nową",
+    "newCategoryPlaceholder": "Lub wprowadź nazwę nowej kategorii",
+    "descriptionPlaceholder": "Opcjonalny opis",
+    "cancel": "Anuluj",
+    "create": "Utwórz ustawienie",
+    "creating": "Tworzenie...",
+    "validation": {
+      "keyRequired": "Klucz jest wymagany",
+      "valueRequired": "Wartość jest wymagana",
+      "categoryRequired": "Kategoria jest wymagana"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Edytor formularza",
+    "rawEditor": "Edytor surowego JSON",
+    "rawJson": "Surowy JSON",
+    "switchToForm": "Przełącz na formularz",
+    "importToForm": "Importuj do formularza",
+    "parseError": "Błąd parsowania: {{message}}",
+    "arraySummary": "Tablica ({{length}} elementów)",
+    "addItem": "Dodaj element",
+    "remove": "Usuń"
+  }
+}

@@ -1,1 +1,296 @@
-{}
+{
+  "page": {
+    "title": "Administracja",
+    "subtitle": "Zarządzaj użytkownikami i konfiguracją systemu"
+  },
+  "rolePermissions": {
+    "title": "Uprawnienia ról",
+    "viewer": {
+      "label": "Obserwator",
+      "description": "Dostęp tylko do odczytu do Przeglądu i Danych Rynkowych. Nie może zarządzać procesami, strategiami ani ustawieniami systemu."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Wszystkie uprawnienia Obserwatora oraz operacje handlowe, wykonywanie strategii, zarządzanie procesami i monitorowanie kondycji systemu."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Pełny dostęp do systemu, w tym zarządzanie użytkownikami, ustawienia systemu, konfiguracja kluczy API oraz wszystkie uprawnienia Operatora."
+    },
+    "table": {
+      "resource": "Zasób",
+      "viewer": "Obserwator",
+      "operator": "Operator",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Przegląd",
+      "market": "Dane Rynkowe",
+      "processes": "Procesy",
+      "strategies": "Strategie",
+      "orders": "Zlecenia i realizacje",
+      "positions": "Pozycje",
+      "signals": "Sygnały",
+      "health": "Kondycja",
+      "admin": "Administracja",
+      "settings": "Ustawienia"
+    }
+  },
+  "common": {
+    "cancel": "Anuluj",
+    "selectWallet": "Wybierz portfel",
+    "selectAWallet": "Wybierz portfel",
+    "chooseWalletPlaceholder": "Wybierz portfel...",
+    "selectWalletPlaceholder": "Wybierz portfel...",
+    "walletLabel": "Portfel",
+    "paperAnnotation": " (papierowy)",
+    "unknownError": "Nieznany błąd",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Brak dostępu",
+      "message": "Nie masz uprawnień do zarządzania użytkownikami. Skontaktuj się z administratorem systemu."
+    },
+    "list": {
+      "title": "Zarządzanie użytkownikami",
+      "countLabel": "{{count}} użytkowników",
+      "showInactive": "Pokaż nieaktywne",
+      "hideInactive": "Ukryj nieaktywne",
+      "addUser": "Dodaj użytkownika",
+      "searchPlaceholder": "Szukaj po nazwie użytkownika, emailu lub roli...",
+      "columns": {
+        "user": "Użytkownik",
+        "role": "Rola",
+        "status": "Status",
+        "createdAt": "Utworzone",
+        "actions": "Akcje"
+      },
+      "status": {
+        "active": "Aktywne",
+        "inactive": "Nieaktywne"
+      },
+      "unknown": "Nieznane",
+      "empty": {
+        "title": "Nie znaleziono użytkowników",
+        "noMatch": "Żaden użytkownik nie spełnia kryteriów wyszukiwania.",
+        "noUsers": "Nie znaleziono użytkowników.",
+        "noActive": "Nie znaleziono aktywnych użytkowników."
+      },
+      "errorLoading": "Błąd ładowania użytkowników: {{message}}",
+      "deactivate": {
+        "title": "Dezaktywuj użytkownika",
+        "message": "Czy na pewno chcesz dezaktywować użytkownika \"{{username}}\"? Nie będzie mógł się już zalogować.",
+        "confirm": "Dezaktywuj"
+      },
+      "toast": {
+        "deactivated": "Użytkownik został dezaktywowany",
+        "deactivateError": "Błąd dezaktywacji użytkownika"
+      }
+    },
+    "form": {
+      "titleEdit": "Edytuj użytkownika",
+      "titleAdd": "Dodaj użytkownika",
+      "fields": {
+        "username": "Nazwa użytkownika",
+        "usernamePlaceholder": "Wprowadź nazwę użytkownika",
+        "password": "Hasło",
+        "passwordPlaceholder": "Wprowadź hasło",
+        "newPassword": "Nowe hasło",
+        "newPasswordPlaceholder": "Wprowadź nowe hasło",
+        "email": "Email",
+        "emailPlaceholder": "Wprowadź email",
+        "role": "Rola",
+        "accountActive": "Konto aktywne",
+        "resetUserPassword": "Zresetuj hasło użytkownika"
+      },
+      "roles": {
+        "viewer": "Obserwator",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Nazwa użytkownika jest wymagana",
+        "usernameMinLength": "Nazwa użytkownika musi mieć co najmniej 3 znaki",
+        "emailRequired": "Email jest wymagany",
+        "emailInvalid": "Nieprawidłowy format emaila",
+        "passwordRequired": "Hasło jest wymagane",
+        "passwordMinLength": "Hasło musi mieć co najmniej 8 znaków",
+        "passwordRequiredWhenResetting": "Hasło jest wymagane przy resetowaniu"
+      },
+      "actions": {
+        "saveChanges": "Zapisz zmiany",
+        "createUser": "Utwórz użytkownika"
+      },
+      "toast": {
+        "created": "Użytkownik został utworzony",
+        "createError": "Błąd tworzenia użytkownika",
+        "updated": "Użytkownik został zaktualizowany",
+        "updateError": "Błąd aktualizacji użytkownika",
+        "passwordReset": "Hasło użytkownika zostało zresetowane",
+        "resetError": "Błąd resetowania hasła"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Brak dostępu",
+      "message": "Nie masz uprawnień do zarządzania przyznaniami zakresów. Skontaktuj się z administratorem systemu."
+    },
+    "list": {
+      "title": "Przyznania zakresów",
+      "countLabel": "{{count}} przyznań",
+      "createGrant": "Utwórz przyznanie",
+      "selectWalletPrompt": "Wybierz portfel powyżej, aby zobaczyć jego przyznania zakresów.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Zakres",
+        "target": "Cel",
+        "grantedAt": "Przyznano",
+        "actions": "Akcje"
+      },
+      "empty": {
+        "noGrants": "Nie znaleziono przyznań",
+        "noGrantsHint": "Ten portfel nie ma aktywnych przyznań zakresów."
+      },
+      "errorLoading": "Błąd ładowania przyznań: {{message}}",
+      "handover": "Przekaż"
+    },
+    "form": {
+      "title": "Utwórz przyznanie zakresu",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Wybierz operatora...",
+        "wallet": "Portfel",
+        "scopeKind": "Rodzaj zakresu",
+        "underlyingPublicId": "Public ID instrumentu bazowego",
+        "instrumentPublicId": "Public ID instrumentu",
+        "underlyingPlaceholder": "np. BTC",
+        "instrumentPlaceholder": "np. BTC-USD-PERP",
+        "note": "Notatka (opcjonalna)",
+        "notePlaceholder": "Opcjonalna notatka"
+      },
+      "scopeKinds": {
+        "underlying": "Instrument bazowy",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operator jest wymagany",
+        "walletRequired": "Portfel jest wymagany",
+        "targetRequired": "Identyfikator celu jest wymagany"
+      },
+      "actions": {
+        "createGrant": "Utwórz przyznanie"
+      },
+      "toast": {
+        "created": "Przyznanie zakresu zostało utworzone",
+        "conflictError": "Konflikt: inny operator posiada już przyznanie dla tego zakresu",
+        "createError": "Błąd tworzenia przyznania zakresu"
+      }
+    },
+    "handover": {
+      "title": "Przekaż przyznanie zakresu",
+      "fields": {
+        "currentHolder": "Obecny posiadacz",
+        "scope": "Zakres",
+        "wallet": "Portfel",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Przekaż operatorowi",
+        "transferToPlaceholder": "Wybierz operatora docelowego...",
+        "reason": "Powód (opcjonalny)",
+        "reasonPlaceholder": "np. Zmiana zmiany"
+      },
+      "actions": {
+        "handover": "Przekaż"
+      },
+      "toast": {
+        "completed": "Przyznanie zakresu zostało przekazane",
+        "conflictError": "Konflikt: operator docelowy posiada już przyznanie powodujące konflikt",
+        "handoverError": "Błąd przekazywania przyznania zakresu"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Brak dostępu",
+      "message": "Nie masz uprawnień do zarządzania poświadczeniami portfeli. Skontaktuj się z administratorem systemu."
+    },
+    "list": {
+      "title": "Poświadczenia portfela",
+      "countLabel": "{{count}} poświadczeń",
+      "addCredential": "Dodaj poświadczenie",
+      "selectWalletPrompt": "Wybierz portfel powyżej, aby zobaczyć jego poświadczenia.",
+      "columns": {
+        "exchange": "Giełda",
+        "type": "Typ",
+        "label": "Etykieta",
+        "createdAt": "Utworzone",
+        "actions": "Akcje"
+      },
+      "empty": {
+        "noCredentials": "Nie znaleziono poświadczeń",
+        "noCredentialsHint": "Ten portfel nie ma aktywnych poświadczeń."
+      },
+      "errorLoading": "Błąd ładowania poświadczeń: {{message}}",
+      "rotate": "Rotuj"
+    },
+    "form": {
+      "title": "Dodaj poświadczenie",
+      "fields": {
+        "wallet": "Portfel",
+        "exchange": "Giełda",
+        "exchangePlaceholder": "np. kraken",
+        "credentialType": "Typ poświadczenia",
+        "label": "Etykieta (opcjonalna)",
+        "labelPlaceholder": "np. Główny klucz handlowy",
+        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+      },
+      "fieldLabels": {
+        "api_key": "Klucz API",
+        "api_secret": "Sekret API",
+        "private_key_pem": "Klucz prywatny (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Saldo początkowe"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Klucz API + Sekret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Papierowe"
+      },
+      "validation": {
+        "walletRequired": "Portfel jest wymagany",
+        "exchangeRequired": "Giełda jest wymagana",
+        "fieldRequired": "{{field}} jest wymagane"
+      },
+      "actions": {
+        "addCredential": "Dodaj poświadczenie"
+      },
+      "toast": {
+        "created": "Poświadczenie zostało utworzone",
+        "conflictError": "Konflikt: ten portfel ma już aktywne poświadczenie dla tej giełdy",
+        "createError": "Błąd tworzenia poświadczenia"
+      }
+    },
+    "rotate": {
+      "title": "Rotuj poświadczenie",
+      "fields": {
+        "exchange": "Giełda",
+        "type": "Typ",
+        "label": "Etykieta",
+        "newLabel": "Nowa etykieta (opcjonalna)",
+        "newLabelPlaceholder": "np. Rotowany klucz 2026-04",
+        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+      },
+      "actions": {
+        "rotate": "Rotuj"
+      },
+      "toast": {
+        "rotated": "Poświadczenie zostało rotowane",
+        "rotateError": "Błąd rotacji poświadczenia"
+      }
+    }
+  }
+}

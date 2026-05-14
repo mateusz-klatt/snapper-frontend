@@ -1,1 +1,47 @@
-{}
+{
+  "page": {
+    "title": "Dane rynkowe"
+  },
+  "controls": {
+    "exchange": "Giełda:",
+    "instrument": "Instrument:",
+    "timeframe": "Interwał:",
+    "selectExchange": "Wybierz giełdę",
+    "searchInstrument": "Szukaj instrumentu..."
+  },
+  "timeframes": {
+    "1m": "1 minuta",
+    "5m": "5 minut",
+    "15m": "15 minut",
+    "30m": "30 minut",
+    "1h": "1 godzina",
+    "4h": "4 godziny",
+    "1d": "1 dzień"
+  },
+  "stats": {
+    "currentPrice": "Aktualna cena",
+    "change24h": "Zmiana 24h",
+    "high24h": "Maks. 24h",
+    "low24h": "Min. 24h"
+  },
+  "chart": {
+    "title": "Wykres cenowy",
+    "errorPrefix": "Błąd ładowania danych wykresu:",
+    "unknownError": "Nieznany błąd",
+    "noDataTitle": "Brak danych dla {{instrument}}",
+    "noDataHint": "Instrument może nie istnieć lub nie ma danych {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Brak skonfigurowanych powiązanych instrumentów dla {{instrument}} na {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache rozgrzewa się: {{sampleCount}} / {{expected}} świec dostępnych {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(wyprowadzone z 1m)",
+      "db": "(z bazy danych)"
+    }
+  }
+}

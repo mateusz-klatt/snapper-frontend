@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Download, Plus, X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useOrders, useExecutions, useCancelOrder } from '../../hooks/queries/orders'
 import { NewOrderModal } from './NewOrderModal'
 import type { Order, Execution } from '../../types/entities'
@@ -20,6 +21,7 @@ const TERMINAL_ORDER_STATUSES = new Set([
 ])
 
 const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
+  const { t } = useTranslation('orders')
   const cancelOrder = useCancelOrder()
   const isTerminal = TERMINAL_ORDER_STATUSES.has(order.status.toLowerCase())
 
@@ -49,7 +51,7 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
   }
 
   const formatPrice = (price: number | null | undefined) => {
-    return price ? `$${price.toFixed(2)}` : 'Market'
+    return price ? `$${price.toFixed(2)}` : t('orderCard.priceMarket')
   }
 
   return (
@@ -58,7 +60,7 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
         <div className='flex items-center space-x-3'>
           <span className='font-semibold text-alpine-900'>{order.instrument}</span>
           <span className={clsx('text-sm font-medium', order.side ? getSideColor(order.side) : '')}>
-            {order.side?.toUpperCase() ?? 'N/A'}
+            {order.side?.toUpperCase() ?? t('orderCard.sideUnknown')}
           </span>
           <span className='text-sm text-muted-500'>{order.orderType}</span>
         </div>
@@ -76,43 +78,43 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
               type='button'
               onClick={() => cancelOrder.mutate(order.clientOrderId)}
               disabled={cancelOrder.isPending}
-              aria-label={`Cancel order ${order.clientOrderId}`}
+              aria-label={t('orderCard.cancelAriaLabel', { orderId: order.clientOrderId })}
               data-testid={`cancel-order-${order.clientOrderId}`}
               className='flex items-center gap-1 rounded-lg border border-loss-500 px-2 py-1 text-xs font-medium text-loss-500 transition-colors hover:bg-loss-900/20 disabled:opacity-50 disabled:cursor-not-allowed'
             >
               <X size={12} />
-              {cancelOrder.isPending ? 'Cancelling…' : 'Cancel'}
+              {cancelOrder.isPending ? t('orderCard.cancelling') : t('orderCard.cancel')}
             </button>
           )}
         </div>
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm'>
         <div>
-          <div className='text-muted-500'>Quantity</div>
+          <div className='text-muted-500'>{t('orderCard.quantity')}</div>
           <div className='font-mono text-alpine-900'>{order.size.toFixed(4)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Price</div>
+          <div className='text-muted-500'>{t('orderCard.price')}</div>
           <div className='font-mono text-alpine-900'>{formatPrice(order.price)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Created</div>
+          <div className='text-muted-500'>{t('orderCard.created')}</div>
           <div className='text-xs text-alpine-900'>
-            {order.createdAt ? order.createdAt.toLocaleString() : 'N/A'}
+            {order.createdAt ? order.createdAt.toLocaleString() : t('orderCard.createdUnknown')}
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Order ID</div>
+          <div className='text-muted-500'>{t('orderCard.orderId')}</div>
           <div className='text-xs font-mono text-alpine-900'>{order.clientOrderId}</div>
         </div>
         {order.leverage != null && (
           <div>
-            <div className='text-muted-500'>Leverage</div>
+            <div className='text-muted-500'>{t('orderCard.leverage')}</div>
             <div
               className='font-mono text-alpine-900'
               data-testid={`order-leverage-${order.clientOrderId}`}
             >
-              {order.leverage}x
+              {t('orderCard.leverageValue', { leverage: order.leverage })}
             </div>
           </div>
         )}
@@ -122,7 +124,7 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
               className='inline-block rounded-full bg-info-900/20 px-2 py-1 text-xs font-medium text-info-400'
               data-testid={`order-reduce-only-${order.clientOrderId}`}
             >
-              REDUCE-ONLY
+              {t('orderCard.reduceOnly')}
             </span>
           </div>
         )}
@@ -132,6 +134,7 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
 }
 
 const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
+  const { t } = useTranslation('orders')
   const totalCost = execution.price * execution.size
   const fees = execution.fee || 0
 
@@ -139,31 +142,37 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
     <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5 transition-colors hover:border-muted-400'>
       <div className='flex items-center justify-between mb-3'>
         <div className='flex items-center space-x-3'>
-          <span className='font-semibold text-alpine-900'>Order #{execution.clientOrderId}</span>
-          <span className='rounded-full bg-gain-50 px-2 py-1 text-xs text-gain-600'>FILLED</span>
+          <span className='font-semibold text-alpine-900'>
+            {t('executionCard.orderNumber', { orderId: execution.clientOrderId })}
+          </span>
+          <span className='rounded-full bg-gain-50 px-2 py-1 text-xs text-gain-600'>
+            {t('executionCard.filled')}
+          </span>
         </div>
-        <div className='text-sm text-muted-500'>Order {execution.clientOrderId}</div>
+        <div className='text-sm text-muted-500'>
+          {t('executionCard.orderLabel', { orderId: execution.clientOrderId })}
+        </div>
       </div>
       <div className='grid grid-cols-3 gap-4 text-sm'>
         <div>
-          <div className='text-muted-500'>Size</div>
+          <div className='text-muted-500'>{t('executionCard.size')}</div>
           <div className='font-mono text-alpine-900'>{execution.size.toFixed(4)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Price</div>
+          <div className='text-muted-500'>{t('executionCard.price')}</div>
           <div className='font-mono text-alpine-900'>${execution.price.toFixed(2)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Total</div>
+          <div className='text-muted-500'>{t('executionCard.total')}</div>
           <div className='font-mono text-alpine-900'>${totalCost.toFixed(2)}</div>
         </div>
         <div className='col-span-2'>
-          <div className='text-muted-500'>Executed</div>
+          <div className='text-muted-500'>{t('executionCard.executed')}</div>
           <div className='text-xs text-alpine-900'>{execution.executedAt.toLocaleString()}</div>
         </div>
         {fees > 0 && (
           <div>
-            <div className='text-muted-500'>Fees</div>
+            <div className='text-muted-500'>{t('executionCard.fees')}</div>
             <div className='text-loss-400 text-xs font-mono'>
               ${fees.toFixed(2)} {execution.feeAsset}
             </div>
@@ -175,6 +184,7 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
 }
 
 export const Orders: React.FC = () => {
+  const { t } = useTranslation('orders')
   const [activeTab, setActiveTab] = useState<'orders' | 'executions'>('orders')
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [showNewOrder, setShowNewOrder] = useState(false)
@@ -186,15 +196,15 @@ export const Orders: React.FC = () => {
 
   const handleExportOrders = () => {
     const headers = [
-      'Instrument',
-      'Side',
-      'Type',
-      'Status',
-      'Quantity',
-      'Price',
-      'Leverage',
-      'Reduce Only',
-      'Created',
+      t('csv.orders.instrument'),
+      t('csv.orders.side'),
+      t('csv.orders.type'),
+      t('csv.orders.status'),
+      t('csv.orders.quantity'),
+      t('csv.orders.price'),
+      t('csv.orders.leverage'),
+      t('csv.orders.reduceOnly'),
+      t('csv.orders.created'),
     ]
     const rows = filteredOrders.map((o: Order) => [
       o.instrument,
@@ -202,7 +212,7 @@ export const Orders: React.FC = () => {
       o.orderType,
       o.status,
       o.size.toFixed(4),
-      o.price ? o.price.toFixed(2) : 'Market',
+      o.price ? o.price.toFixed(2) : t('orderCard.priceMarket'),
       o.leverage?.toString() ?? '',
       o.reduceOnly === true ? 'true' : 'false',
       o.createdAt ? o.createdAt.toLocaleString() : '',
@@ -213,15 +223,15 @@ export const Orders: React.FC = () => {
 
   const handleExportExecutions = () => {
     const headers = [
-      'Order ID',
-      'Instrument',
-      'Side',
-      'Size',
-      'Price',
-      'Total',
-      'Fee',
-      'Fee Asset',
-      'Executed',
+      t('csv.executions.orderId'),
+      t('csv.executions.instrument'),
+      t('csv.executions.side'),
+      t('csv.executions.size'),
+      t('csv.executions.price'),
+      t('csv.executions.total'),
+      t('csv.executions.fee'),
+      t('csv.executions.feeAsset'),
+      t('csv.executions.executed'),
     ]
     const rows = executions.map((e: Execution) => [
       e.clientOrderId,
@@ -239,27 +249,27 @@ export const Orders: React.FC = () => {
   }
 
   const statusOptions = [
-    { value: 'all', label: 'All Orders' },
-    { value: 'new', label: 'New' },
-    { value: 'open', label: 'Open' },
-    { value: 'partially_filled', label: 'Partially Filled' },
-    { value: 'filled', label: 'Filled' },
-    { value: 'cancelled', label: 'Cancelled' },
-    { value: 'rejected', label: 'Rejected' },
+    { value: 'all', label: t('filters.options.all') },
+    { value: 'new', label: t('filters.options.new') },
+    { value: 'open', label: t('filters.options.open') },
+    { value: 'partially_filled', label: t('filters.options.partiallyFilled') },
+    { value: 'filled', label: t('filters.options.filled') },
+    { value: 'cancelled', label: t('filters.options.cancelled') },
+    { value: 'rejected', label: t('filters.options.rejected') },
   ]
 
   return (
     <div className='space-y-6'>
       <NewOrderModal open={showNewOrder} onClose={() => setShowNewOrder(false)} />
       <div className='flex items-center justify-between'>
-        <h2 className='text-xl font-semibold text-alpine-900'>Orders & Executions</h2>
+        <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
         <div className='flex items-center gap-2'>
           <button
             onClick={() => setShowNewOrder(true)}
             className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-brand-600 text-white hover:bg-brand-500 rounded-lg transition-colors'
           >
             <Plus size={14} />
-            New Order
+            {t('page.newOrder')}
           </button>
           <button
             onClick={activeTab === 'orders' ? handleExportOrders : handleExportExecutions}
@@ -269,7 +279,7 @@ export const Orders: React.FC = () => {
             className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-dark-600 bg-alpine-50 hover:bg-muted-200 disabled:opacity-50 disabled:cursor-not-allowed text-alpine-900 rounded-lg transition-colors'
           >
             <Download size={14} />
-            Export CSV
+            {t('page.exportCsv')}
           </button>
         </div>
       </div>
@@ -283,7 +293,7 @@ export const Orders: React.FC = () => {
               : 'text-muted-600 hover:bg-alpine-50 hover:text-alpine-900'
           )}
         >
-          Orders ({orders.length})
+          {t('tabs.orders', { total: orders.length })}
         </button>
         <button
           onClick={() => setActiveTab('executions')}
@@ -294,13 +304,13 @@ export const Orders: React.FC = () => {
               : 'text-muted-600 hover:bg-alpine-50 hover:text-alpine-900'
           )}
         >
-          Executions ({executions.length})
+          {t('tabs.executions', { total: executions.length })}
         </button>
       </div>
       {activeTab === 'orders' && (
         <div className='flex items-center space-x-4 rounded-xl border border-dark-600 bg-alpine-50 px-4 py-3'>
           <label htmlFor='status-filter' className='text-sm text-muted-600'>
-            Filter by status:
+            {t('filters.byStatus')}
           </label>
           <ThemeSelect
             id='status-filter'
@@ -334,11 +344,11 @@ export const Orders: React.FC = () => {
                     />
                   </svg>
                 }
-                title='No orders found'
+                title={t('empty.ordersTitle')}
                 message={
                   statusFilter === 'all'
-                    ? 'Start trading to see orders here'
-                    : `No ${statusFilter} orders`
+                    ? t('empty.ordersStartTrading')
+                    : t('empty.ordersFilterless', { status: statusFilter })
                 }
               />
             )}
@@ -373,8 +383,8 @@ export const Orders: React.FC = () => {
                     />
                   </svg>
                 }
-                title='No executions found'
-                message='Trade executions will appear here'
+                title={t('empty.executionsTitle')}
+                message={t('empty.executionsMessage')}
               />
             )}
             {!executionsLoading && executions.length > 0 && (

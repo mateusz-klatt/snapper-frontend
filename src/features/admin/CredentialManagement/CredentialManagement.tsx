@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { KeyRound } from 'lucide-react'
 import { useAuthStore } from '../../../stores/auth'
 import CredentialList from './CredentialList'
@@ -11,6 +12,7 @@ interface CredentialManagementProps {
 }
 
 const CredentialManagement: React.FC<Readonly<CredentialManagementProps>> = ({ readOnly }) => {
+  const { t } = useTranslation('admin')
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [rotateCredential, setRotateCredential] = useState<CredentialSummary | null>(null)
   const { hasPermission } = useAuthStore()
@@ -19,11 +21,10 @@ const CredentialManagement: React.FC<Readonly<CredentialManagementProps>> = ({ r
     return (
       <div className='flex flex-col items-center justify-center min-h-[40vh] text-center'>
         <KeyRound className='w-16 h-16 text-muted-400 mb-4' />
-        <h2 className='text-xl font-semibold text-alpine-900 mb-2'>Access Denied</h2>
-        <p className='text-muted-600 max-w-md'>
-          You don&apos;t have permission to manage wallet credentials. Please contact your system
-          administrator.
-        </p>
+        <h2 className='text-xl font-semibold text-alpine-900 mb-2'>
+          {t('credentials.accessDenied.title')}
+        </h2>
+        <p className='text-muted-600 max-w-md'>{t('credentials.accessDenied.message')}</p>
       </div>
     )
   }

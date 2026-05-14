@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Plus, ArrowRightLeft, Link2 } from 'lucide-react'
 import { Button, Badge } from '../../../components/ui'
 import { useScopeGrants } from '../../../hooks/queries/scope-grants'
@@ -17,6 +18,7 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
   onHandover,
   readOnly,
 }) => {
+  const { t } = useTranslation('admin')
   const [selectedWallet, setSelectedWallet] = useState<string>('')
   const { data: walletsData } = useWallets()
   const { data: operatorsData } = useOperators()
@@ -46,21 +48,21 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
     <div className='space-y-4'>
       <div className='flex flex-wrap items-center justify-between gap-2'>
         <div className='flex items-center space-x-4'>
-          <h2 className='text-2xl font-bold text-alpine-900'>Scope Grants</h2>
+          <h2 className='text-2xl font-bold text-alpine-900'>{t('scopeGrants.list.title')}</h2>
           {selectedWallet && (
             <Badge variant='outline' className='text-sm'>
-              {grants.length} grants
+              {t('scopeGrants.list.countLabel', { count: grants.length })}
             </Badge>
           )}
         </div>
         <Button onClick={onCreateGrant} disabled={readOnly} className='flex items-center space-x-2'>
           <Plus className='w-4 h-4' />
-          <span>Create Grant</span>
+          <span>{t('scopeGrants.list.createGrant')}</span>
         </Button>
       </div>
       <div className='max-w-xs'>
         <label htmlFor='wallet-filter' className='block text-sm font-medium text-alpine-900 mb-1'>
-          Select wallet
+          {t('common.selectWallet')}
         </label>
         <ThemeSelect
           id='wallet-filter'
@@ -68,18 +70,16 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
           onChange={val => setSelectedWallet(val)}
           options={wallets.map(w => ({
             value: w.public_id,
-            label: `${w.label}${w.is_paper ? ' (paper)' : ''}`,
+            label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
           }))}
-          placeholder='Choose a wallet...'
+          placeholder={t('common.chooseWalletPlaceholder')}
         />
       </div>
       {!selectedWallet && (
         <div className='text-center py-12'>
           <Link2 className='mx-auto h-12 w-12 text-muted-400' />
-          <h3 className='mt-2 text-sm font-medium text-alpine-900'>Select a wallet</h3>
-          <p className='mt-1 text-sm text-muted-500'>
-            Choose a wallet above to view its scope grants.
-          </p>
+          <h3 className='mt-2 text-sm font-medium text-alpine-900'>{t('common.selectAWallet')}</h3>
+          <p className='mt-1 text-sm text-muted-500'>{t('scopeGrants.list.selectWalletPrompt')}</p>
         </div>
       )}
       {selectedWallet && isLoading && (
@@ -89,14 +89,18 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
       )}
       {selectedWallet && error && (
         <div className='p-4 text-loss-600 bg-loss-50 rounded-lg'>
-          Error loading grants: {error instanceof Error ? error.message : 'Unknown error'}
+          {t('scopeGrants.list.errorLoading', {
+            message: error instanceof Error ? error.message : t('common.unknownError'),
+          })}
         </div>
       )}
       {selectedWallet && !isLoading && !error && grants.length === 0 && (
         <div className='text-center py-12'>
           <Link2 className='mx-auto h-12 w-12 text-muted-400' />
-          <h3 className='mt-2 text-sm font-medium text-alpine-900'>No grants found</h3>
-          <p className='mt-1 text-sm text-muted-500'>This wallet has no active scope grants.</p>
+          <h3 className='mt-2 text-sm font-medium text-alpine-900'>
+            {t('scopeGrants.list.empty.noGrants')}
+          </h3>
+          <p className='mt-1 text-sm text-muted-500'>{t('scopeGrants.list.empty.noGrantsHint')}</p>
         </div>
       )}
       {selectedWallet && !isLoading && !error && grants.length > 0 && (
@@ -106,19 +110,19 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
               <thead className='bg-dark-700'>
                 <tr>
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Operator
+                    {t('scopeGrants.list.columns.operator')}
                   </th>
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Scope
+                    {t('scopeGrants.list.columns.scope')}
                   </th>
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Target
+                    {t('scopeGrants.list.columns.target')}
                   </th>
                   <th className='hidden xl:table-cell px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Granted At
+                    {t('scopeGrants.list.columns.grantedAt')}
                   </th>
                   <th className='px-3 py-3 text-right text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Actions
+                    {t('scopeGrants.list.columns.actions')}
                   </th>
                 </tr>
               </thead>
@@ -153,7 +157,7 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                         className='text-brand-600 hover:text-brand-900'
                       >
                         <ArrowRightLeft className='w-4 h-4' />
-                        <span className='ml-1'>Handover</span>
+                        <span className='ml-1'>{t('scopeGrants.list.handover')}</span>
                       </Button>
                     </td>
                   </tr>

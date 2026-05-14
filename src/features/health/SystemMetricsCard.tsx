@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { useSystemMetrics } from '../../hooks/queries/system'
 import { formatNumber } from '../../lib/utils'
@@ -7,37 +8,10 @@ import type { SystemMetricsData } from '../../types/api'
 
 const BYTES_PER_MB = 1024 * 1024
 
-function formatBytes(bytes: number): string {
-  const mb = bytes / BYTES_PER_MB
-
-  if (mb < 1024) return `${mb.toFixed(1)} MB`
-
-  return `${(mb / 1024).toFixed(2)} GB`
-}
-
-function formatUptime(seconds: number): string {
-  if (seconds < 60) return `${seconds.toFixed(0)}s`
-  if (seconds < 3600) return `${(seconds / 60).toFixed(1)}min`
-  if (seconds < 86400) return `${(seconds / 3600).toFixed(1)}h`
-
-  return `${(seconds / 86400).toFixed(1)}d`
-}
-
 function formatPercent(value: number | null | undefined): string {
   if (value === null || value === undefined) return '—'
 
   return `${(value * 100).toFixed(1)}%`
-}
-
-function formatRelativeAge(busTime: string, now: Date): string {
-  const ageMs = now.getTime() - new Date(busTime).getTime()
-  const ageS = ageMs / 1000
-
-  if (ageS < 1) return 'just now'
-  if (ageS < 60) return `${ageS.toFixed(0)}s ago`
-  if (ageS < 3600) return `${(ageS / 60).toFixed(1)}min ago`
-
-  return `${(ageS / 3600).toFixed(1)}h ago`
 }
 
 interface MetricCellProps {
@@ -61,6 +35,7 @@ interface ProcessHealthGridProps {
 }
 
 const ProcessHealthGrid: React.FC<ProcessHealthGridProps> = ({ snapshot }) => {
+  const { t } = useTranslation('health')
   const { process, cpu, memory, asyncio, gc, db_internal, saturation, tracemalloc_active } =
     snapshot
   const memorySaturation = memory.saturation_pct
@@ -69,78 +44,125 @@ const ProcessHealthGrid: React.FC<ProcessHealthGridProps> = ({ snapshot }) => {
       ? '—'
       : `${db_internal.pool_checked_out} / ${db_internal.pool_size}`
 
+  const formatBytes = (bytes: number): string => {
+    const mb = bytes / BYTES_PER_MB
+
+    if (mb < 1024) return t('memory.mb', { value: mb.toFixed(1) })
+
+    return t('memory.gb', { value: (mb / 1024).toFixed(2) })
+  }
+
+  const formatUptime = (seconds: number): string => {
+    if (seconds < 60) return t('duration.seconds', { seconds: seconds.toFixed(0) })
+    if (seconds < 3600) return t('duration.minutes', { minutes: (seconds / 60).toFixed(1) })
+    if (seconds < 86400) return t('duration.hours', { hours: (seconds / 3600).toFixed(1) })
+
+    return t('duration.days', { days: (seconds / 86400).toFixed(1) })
+  }
+
   return (
     <div className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4'>
       <MetricCell
-        label='PID'
+        label={t('systemMetrics.pid')}
         value={process.pid.toString()}
-        description={`Status: ${process.status}`}
+        description={t('systemMetrics.statusValue', { status: process.status })}
       />
-      <MetricCell label='Uptime' value={formatUptime(process.uptime_seconds)} />
-      <MetricCell label='Threads' value={process.num_threads.toString()} />
-      <MetricCell label='Open FDs' value={process.num_fds.toString()} />
+      <MetricCell label={t('systemMetrics.uptime')} value={formatUptime(process.uptime_seconds)} />
+      <MetricCell label={t('systemMetrics.threads')} value={process.num_threads.toString()} />
+      <MetricCell label={t('systemMetrics.openFds')} value={process.num_fds.toString()} />
       <MetricCell
-        label='CPU'
-        value={`${cpu.process_percent.toFixed(1)}%`}
+        label={t('systemMetrics.cpu')}
+        value={t('systemMetrics.cpuValue', { percent: cpu.process_percent.toFixed(1) })}
         description={
           cpu.cgroup_throttled_count !== null && cpu.cgroup_throttled_count > 0
-            ? `Throttled ${cpu.cgroup_throttled_count.toString()}×`
+            ? t('systemMetrics.throttled', { count: cpu.cgroup_throttled_count })
             : undefined
         }
       />
       <MetricCell
-        label='Memory'
+        label={t('systemMetrics.memory')}
         value={formatBytes(memory.rss_bytes)}
         description={
-          memorySaturation === null ? undefined : `Saturation ${formatPercent(memorySaturation)}`
+          memorySaturation === null
+            ? undefined
+            : t('systemMetrics.saturation', { percent: formatPercent(memorySaturation) })
         }
       />
       <MetricCell
-        label='Asyncio Tasks'
-        value={`${asyncio.active_tasks.toString()} active`}
-        description={`+ ${asyncio.pending_tasks.toString()} pending`}
+        label={t('systemMetrics.asyncioTasks')}
+        value={t('systemMetrics.asyncioActive', { count: asyncio.active_tasks })}
+        description={t('systemMetrics.asyncioPending', { count: asyncio.pending_tasks })}
       />
       <MetricCell
-        label='DB Pool'
+        label={t('systemMetrics.dbPool')}
         value={dbPoolDepth}
-        description={`Live conns: ${db_internal.aiosqlite_live_connections.toString()}`}
+        description={t('systemMetrics.liveConns', {
+          count: db_internal.aiosqlite_live_connections,
+        })}
       />
       <MetricCell
-        label='GC Gen0/1/2'
+        label={t('systemMetrics.gcGenerations')}
         value={`${gc.collections_gen0.toString()} / ${gc.collections_gen1.toString()} / ${gc.collections_gen2.toString()}`}
-        description={`Objects: ${formatNumber(gc.current_objects)}`}
+        description={t('systemMetrics.gcObjects', { value: formatNumber(gc.current_objects) })}
       />
-      <MetricCell label='Threads %' value={formatPercent(saturation.threads_pct)} />
-      <MetricCell label='Network conns' value={process.num_connections.toString()} />
-      <MetricCell label='Tracemalloc' value={tracemalloc_active ? 'Active' : 'Idle'} />
+      <MetricCell
+        label={t('systemMetrics.threadsPercent')}
+        value={formatPercent(saturation.threads_pct)}
+      />
+      <MetricCell
+        label={t('systemMetrics.networkConns')}
+        value={process.num_connections.toString()}
+      />
+      <MetricCell
+        label={t('systemMetrics.tracemalloc')}
+        value={
+          tracemalloc_active
+            ? t('systemMetrics.tracemallocActive')
+            : t('systemMetrics.tracemallocIdle')
+        }
+      />
     </div>
   )
 }
 
 export const SystemMetricsCard: React.FC = () => {
+  const { t } = useTranslation('health')
   const { data, isLoading, error } = useSystemMetrics()
   const [debugOpen, setDebugOpen] = useState(false)
+
+  const formatRelativeAge = (busTime: string, now: Date): string => {
+    const ageMs = now.getTime() - new Date(busTime).getTime()
+    const ageS = ageMs / 1000
+
+    if (ageS < 1) return t('relativeAge.justNow')
+    if (ageS < 60) return t('relativeAge.seconds', { seconds: ageS.toFixed(0) })
+    if (ageS < 3600) return t('relativeAge.minutes', { minutes: (ageS / 60).toFixed(1) })
+
+    return t('relativeAge.hours', { hours: (ageS / 3600).toFixed(1) })
+  }
 
   const errorMessage = useMemo(() => {
     if (!error) return null
     if (error instanceof Error) return error.message
 
-    return 'Failed to load process health metrics.'
-  }, [error])
+    return t('systemMetrics.fallbackError')
+  }, [error, t])
 
   return (
     <section className='space-y-3 rounded-lg border border-dark-600 bg-alpine-50 p-4'>
       <header className='flex items-center justify-between'>
-        <h3 className='text-lg font-medium text-alpine-900'>Process Health</h3>
+        <h3 className='text-lg font-medium text-alpine-900'>{t('systemMetrics.title')}</h3>
         {data?.payload && (
           <span className='text-xs text-muted-600'>
             {formatRelativeAge(data.payload.bus_time, new Date())}
           </span>
         )}
       </header>
-      {isLoading && <p className='text-sm text-muted-600'>Loading process metrics…</p>}
+      {isLoading && <p className='text-sm text-muted-600'>{t('systemMetrics.loading')}</p>}
       {errorMessage !== null && (
-        <p className='text-sm text-loss-600'>Process metrics unavailable: {errorMessage}</p>
+        <p className='text-sm text-loss-600'>
+          {t('systemMetrics.unavailable', { message: errorMessage })}
+        </p>
       )}
       {data?.payload && <ProcessHealthGrid snapshot={data.payload} />}
       {data?.payload && (
@@ -151,7 +173,7 @@ export const SystemMetricsCard: React.FC = () => {
             setDebugOpen((event.target as HTMLDetailsElement).open)
           }}
         >
-          <summary className='cursor-pointer select-none'>Raw JSON</summary>
+          <summary className='cursor-pointer select-none'>{t('systemMetrics.rawJson')}</summary>
           <pre className='mt-2 max-h-64 overflow-auto rounded-md bg-muted-100 p-3 font-mono text-xs'>
             {JSON.stringify(data.payload, null, 2)}
           </pre>

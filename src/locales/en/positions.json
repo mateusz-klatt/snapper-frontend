@@ -1,1 +1,81 @@
-{}
+{
+  "page": {
+    "title": "Positions"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: pending",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Quantity",
+    "averageEntry": "Avg Entry",
+    "unrealizedPnl": "Unrealized P&L",
+    "realizedPnl": "Realized P&L",
+    "updated": "Updated {{timestamp}}"
+  },
+  "empty": {
+    "title": "No open positions",
+    "message": "Long, short, and flat positions will appear here once trades are executed."
+  },
+  "bracketModal": {
+    "title": "Attach SL/TP — {{instrument}}",
+    "confirmTitle": "Confirm Bracket",
+    "position": "Position",
+    "entryPrice": "Entry Price",
+    "stopLossLabel": "Stop-Loss Price",
+    "takeProfitLabel": "Take-Profit Price",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Below ${{price}}",
+      "slShort": "Above ${{price}}",
+      "tpLong": "Above ${{price}}",
+      "tpShort": "Below ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "review": "Review",
+      "back": "Back",
+      "confirm": "Confirm",
+      "creating": "Creating…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Attach Trailing Stop — {{instrument}}",
+    "confirmTitle": "Confirm Trailing Stop",
+    "position": "Position",
+    "entryPrice": "Entry Price",
+    "trailingDistanceLabel": "Trailing Distance (%)",
+    "minLockLabel": "Min Lock Profit (%) — optional",
+    "trailingDistance": "Trailing Distance",
+    "minLockProfit": "Min Lock Profit",
+    "placeholders": {
+      "trailingPct": "e.g. 5.0",
+      "minLockPct": "0 = start immediately"
+    },
+    "minLockWarning": "Trailing stop will not activate until price moves {{minLockPct}}% in your favor.",
+    "buttons": {
+      "cancel": "Cancel",
+      "review": "Review",
+      "back": "Back",
+      "confirm": "Confirm",
+      "creating": "Creating..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "At least one of SL or TP price is required",
+    "invalidSlPrice": "Invalid stop-loss price",
+    "slPricePositive": "Stop-loss price must be positive",
+    "invalidTpPrice": "Invalid take-profit price",
+    "tpPricePositive": "Take-profit price must be positive",
+    "slLongBelowEntry": "SL price must be below entry price ({{price}})",
+    "tpLongAboveEntry": "TP price must be above entry price ({{price}})",
+    "slShortAboveEntry": "SL price must be above entry price ({{price}})",
+    "tpShortBelowEntry": "TP price must be below entry price ({{price}})",
+    "trailingRequired": "Trailing percentage is required",
+    "trailingInvalid": "Invalid trailing percentage",
+    "trailingRange": "Trailing percentage must be between 0 and 100",
+    "minLockInvalid": "Invalid min lock percentage",
+    "minLockRange": "Min lock percentage must be between 0 and 100"
+  }
+}

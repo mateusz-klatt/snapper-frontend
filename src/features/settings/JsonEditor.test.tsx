@@ -1,11 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import { screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import type { ReactNode } from 'react'
+import type { ReactElement } from 'react'
 import { JsonEditor } from './JsonEditor'
+import { renderWithI18n } from '../../test/renderWithI18n'
 
-const renderWithMocks = (ui: ReactNode) => {
-  return render(ui)
+const renderWithMocks = (ui: ReactElement) => {
+  return renderWithI18n(ui)
 }
 
 describe('JsonEditor', () => {

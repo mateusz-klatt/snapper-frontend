@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import type { SettingRead } from '../../types/api'
 import { JsonEditor } from './JsonEditor'
@@ -16,13 +17,11 @@ import {
   type JsonTokenType,
 } from './settingsUtils'
 
-const SETTING_HELP_TEXT: Record<string, string> = {
-  allow_short_selling:
-    'Allow the engine to open short positions. SELL signals will produce ' +
-    'negative desired_units; clamps to 0 when disabled.',
-  allow_manual_orders:
-    'Enable the New Order button on the Orders tab. When disabled, ' +
-    'POST /api/orders returns 403.',
+type SettingHelpTextKey = 'item.helpText.allowShortSelling' | 'item.helpText.allowManualOrders'
+
+const SETTING_HELP_TEXT_KEYS: Record<string, SettingHelpTextKey> = {
+  allow_short_selling: 'item.helpText.allowShortSelling',
+  allow_manual_orders: 'item.helpText.allowManualOrders',
 }
 
 const JSON_TOKEN_COLORS: Record<JsonTokenType, string> = {
@@ -66,24 +65,28 @@ const SaveCancelButtons: React.FC<SaveCancelButtonsProps> = ({
   onCancel,
   isSaving,
   readOnly,
-}) => (
-  <div className='flex gap-2'>
-    <button
-      onClick={onSave}
-      disabled={isSaving || readOnly}
-      className='px-3 py-1 text-xs bg-brand-600 hover:bg-brand-700 disabled:bg-brand-800 disabled:cursor-not-allowed text-white rounded transition-colors'
-    >
-      {isSaving ? 'Saving...' : 'Save'}
-    </button>
-    <button
-      onClick={onCancel}
-      disabled={isSaving}
-      className='px-3 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 disabled:bg-muted-100 disabled:cursor-not-allowed text-alpine-900 rounded transition-colors'
-    >
-      Cancel
-    </button>
-  </div>
-)
+}) => {
+  const { t } = useTranslation('settings')
+
+  return (
+    <div className='flex gap-2'>
+      <button
+        onClick={onSave}
+        disabled={isSaving || readOnly}
+        className='px-3 py-1 text-xs bg-brand-600 hover:bg-brand-700 disabled:bg-brand-800 disabled:cursor-not-allowed text-white rounded transition-colors'
+      >
+        {isSaving ? t('item.saving') : t('item.save')}
+      </button>
+      <button
+        onClick={onCancel}
+        disabled={isSaving}
+        className='px-3 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 disabled:bg-muted-100 disabled:cursor-not-allowed text-alpine-900 rounded transition-colors'
+      >
+        {t('item.cancel')}
+      </button>
+    </div>
+  )
+}
 
 interface EditingViewProps {
   readonly isJson: boolean
@@ -110,6 +113,8 @@ const EditingView: React.FC<EditingViewProps> = ({
   isSaving,
   readOnly,
 }) => {
+  const { t } = useTranslation('settings')
+
   if (isJson && jsonValue !== null) {
     return (
       <div className='space-y-2'>
@@ -136,7 +141,7 @@ const EditingView: React.FC<EditingViewProps> = ({
         onChange={e => setLocalValue(e.target.value)}
         readOnly={readOnly}
         className='w-full px-2 py-1.5 text-sm bg-alpine-50 border border-dark-600 rounded text-alpine-900 focus:outline-none focus:border-brand-500 resize-vertical min-h-[60px]'
-        placeholder='Enter setting value...'
+        placeholder={t('item.valuePlaceholder')}
       />
       <SaveCancelButtons
         onSave={onSave}
@@ -167,6 +172,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
   isSaving,
   readOnly,
 }) => {
+  const { t } = useTranslation('settings')
   const [isCollapsed, setIsCollapsed] = useState(true)
   const isJson = isJsonString(setting.value) && !isSensitive(setting.key)
   const lineCount = isJson ? (formatJsonObject(setting.value)?.split('\n').length ?? 1) : 0
@@ -191,11 +197,11 @@ const DisplayView: React.FC<DisplayViewProps> = ({
           >
             {isCollapsed ? (
               <>
-                <ChevronDown size={14} /> Show more
+                <ChevronDown size={14} /> {t('item.showMore')}
               </>
             ) : (
               <>
-                <ChevronUp size={14} /> Show less
+                <ChevronUp size={14} /> {t('item.showLess')}
               </>
             )}
           </button>
@@ -203,7 +209,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
       </div>
       {showDeleteConfirm ? (
         <div className='flex items-center gap-2 p-2 bg-loss-50 border border-loss-700 rounded'>
-          <span className='text-xs text-loss-700'>Delete this setting?</span>
+          <span className='text-xs text-loss-700'>{t('item.deleteConfirm')}</span>
           <button
             onClick={async () => {
               await onDelete(setting.key)
@@ -212,14 +218,14 @@ const DisplayView: React.FC<DisplayViewProps> = ({
             disabled={isSaving || readOnly}
             className='px-2 py-1 text-xs bg-loss-600 hover:bg-loss-700 disabled:bg-loss-800 disabled:cursor-not-allowed text-white rounded transition-colors'
           >
-            {isSaving ? 'Deleting...' : 'Yes, Delete'}
+            {isSaving ? t('item.deleting') : t('item.yesDelete')}
           </button>
           <button
             onClick={() => setShowDeleteConfirm(false)}
             disabled={isSaving}
             className='px-2 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 disabled:cursor-not-allowed text-alpine-900 rounded transition-colors'
           >
-            Cancel
+            {t('item.cancel')}
           </button>
         </div>
       ) : (
@@ -230,14 +236,14 @@ const DisplayView: React.FC<DisplayViewProps> = ({
               disabled={readOnly}
               className='px-3 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 text-alpine-900 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
             >
-              Edit
+              {t('item.edit')}
             </button>
             <button
               onClick={() => setShowDeleteConfirm(true)}
               disabled={readOnly}
               className='px-3 py-1 text-xs bg-loss-50 hover:bg-loss-800 text-loss-700 hover:text-white rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
             >
-              Delete
+              {t('item.delete')}
             </button>
           </div>
           <div className='text-xs text-muted-500'>
@@ -270,6 +276,7 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
   isSaving,
   readOnly,
 }) => {
+  const { t } = useTranslation('settings')
   const isOn = parseBooleanString(setting.value)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
@@ -291,7 +298,8 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
     }
   }
 
-  const helpText = SETTING_HELP_TEXT[setting.key]
+  const helpTextKey = SETTING_HELP_TEXT_KEYS[setting.key]
+  const helpText = helpTextKey ? t(helpTextKey) : ''
 
   return (
     <div className='space-y-2'>
@@ -303,7 +311,7 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
             disabled={isSaving || isDeleting || readOnly}
             data-testid={`setting-toggle-${setting.key}`}
             aria-pressed={isOn}
-            aria-label={`Toggle ${setting.key}`}
+            aria-label={t('item.toggleAriaLabel', { key: setting.key })}
             className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
               isOn ? 'bg-brand-600' : 'bg-muted-300'
             }`}
@@ -324,14 +332,14 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
       {helpText && <p className='text-xs text-muted-600'>{helpText}</p>}
       {showDeleteConfirm ? (
         <div className='flex items-center gap-2 rounded border border-loss-700 bg-loss-50 p-2'>
-          <span className='text-xs text-loss-700'>Delete this setting?</span>
+          <span className='text-xs text-loss-700'>{t('item.deleteConfirm')}</span>
           <button
             type='button'
             onClick={handleConfirmDelete}
             disabled={isDeleting || readOnly}
             className='rounded bg-loss-600 px-2 py-1 text-xs text-white transition-colors hover:bg-loss-700 disabled:cursor-not-allowed disabled:bg-loss-800'
           >
-            {isDeleting ? 'Deleting...' : 'Yes, Delete'}
+            {isDeleting ? t('item.deleting') : t('item.yesDelete')}
           </button>
           <button
             type='button'
@@ -339,7 +347,7 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
             disabled={isDeleting}
             className='rounded border border-dark-600 bg-alpine-50 px-2 py-1 text-xs text-alpine-900 transition-colors hover:bg-muted-200 disabled:cursor-not-allowed'
           >
-            Cancel
+            {t('item.cancel')}
           </button>
         </div>
       ) : (
@@ -351,7 +359,7 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
             data-testid={`setting-delete-${setting.key}`}
             className='rounded bg-loss-50 px-3 py-1 text-xs text-loss-700 transition-colors hover:bg-loss-800 hover:text-white disabled:cursor-not-allowed disabled:opacity-50'
           >
-            Delete
+            {t('item.delete')}
           </button>
         </div>
       )}
@@ -379,6 +387,7 @@ export const SettingItem = ({
   isSaving,
   readOnly,
 }: SettingItemProps) => {
+  const { t } = useTranslation('settings')
   const [localValue, setLocalValue] = useState(setting.value)
   const [isEditing, setIsEditing] = useState(false)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
@@ -484,12 +493,12 @@ export const SettingItem = ({
             </span>
             {isJson && (
               <span className='px-1.5 py-0.5 rounded text-xs font-medium bg-purple-50 text-purple-700'>
-                📋 JSON
+                {t('item.badges.json')}
               </span>
             )}
             {isSensitive(setting.key) && (
               <span className='px-1.5 py-0.5 rounded text-xs font-medium bg-warning-50 text-warning-700'>
-                🔒 Sensitive
+                {t('item.badges.sensitive')}
               </span>
             )}
           </div>

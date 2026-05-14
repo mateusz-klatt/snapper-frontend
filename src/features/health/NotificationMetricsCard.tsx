@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { useNotificationMetrics } from '../../hooks/queries/system'
 import { formatNumber } from '../../lib/utils'
@@ -36,51 +37,54 @@ const CounterCell: React.FC<CounterCellProps> = ({
 }
 
 export const NotificationMetricsCard: React.FC = () => {
+  const { t } = useTranslation('health')
   const { data, isLoading, error } = useNotificationMetrics()
 
   const errorMessage = useMemo(() => {
     if (!error) return null
     if (error instanceof Error) return error.message
 
-    return 'Failed to load notification metrics.'
-  }, [error])
+    return t('notification.fallbackError')
+  }, [error, t])
 
   return (
     <section className='space-y-3 rounded-lg border border-dark-600 bg-alpine-50 p-4'>
       <header>
-        <h3 className='text-lg font-medium text-alpine-900'>Notification Sidecar</h3>
+        <h3 className='text-lg font-medium text-alpine-900'>{t('notification.title')}</h3>
       </header>
-      {isLoading && <p className='text-sm text-muted-600'>Loading notification metrics…</p>}
+      {isLoading && <p className='text-sm text-muted-600'>{t('notification.loading')}</p>}
       {errorMessage !== null && (
-        <p className='text-sm text-loss-600'>Notification metrics unavailable: {errorMessage}</p>
+        <p className='text-sm text-loss-600'>
+          {t('notification.unavailable', { message: errorMessage })}
+        </p>
       )}
       {data?.payload && (
         <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5'>
           <CounterCell
-            label='Sent'
+            label={t('notification.sent')}
             value={data.payload.delivery_success_total}
-            description='Terminal: sent'
+            description={t('notification.sentDescription')}
           />
           <CounterCell
-            label='Failed'
+            label={t('notification.failed')}
             value={data.payload.delivery_failed_total}
-            description='Retry budget exhausted'
+            description={t('notification.failedDescription')}
             tone={data.payload.delivery_failed_total > 0 ? 'loss' : 'neutral'}
           />
           <CounterCell
-            label='Unregistered'
+            label={t('notification.unregistered')}
             value={data.payload.delivery_410_unregistered_total}
-            description='APNs 410 (BadDeviceToken)'
+            description={t('notification.unregisteredDescription')}
           />
           <CounterCell
-            label='Cancelled (scope)'
+            label={t('notification.cancelledScope')}
             value={data.payload.delivery_cancelled_scope_total}
-            description='Scope revoke / user deactivate'
+            description={t('notification.cancelledScopeDescription')}
           />
           <CounterCell
-            label='Outbox depth'
+            label={t('notification.outboxDepth')}
             value={data.payload.outbox_queued_depth}
-            description='Queued, awaiting retry'
+            description={t('notification.outboxDepthDescription')}
             tone={data.payload.outbox_queued_depth > 0 ? 'warning' : 'neutral'}
           />
         </div>

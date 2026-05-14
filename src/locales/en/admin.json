@@ -1,1 +1,296 @@
-{}
+{
+  "page": {
+    "title": "Administration",
+    "subtitle": "Manage users and system configuration"
+  },
+  "rolePermissions": {
+    "title": "Role Permissions",
+    "viewer": {
+      "label": "Viewer",
+      "description": "Read-only access to Overview and Market Data. Cannot manage processes, strategies, or system settings."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "All Viewer permissions plus trading operations, strategy execution, process management, and system health monitoring."
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "Full system access including user management, system settings, API key configuration, and all Operator permissions."
+    },
+    "table": {
+      "resource": "Resource",
+      "viewer": "Viewer",
+      "operator": "Operator",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "Overview",
+      "market": "Market Data",
+      "processes": "Processes",
+      "strategies": "Strategies",
+      "orders": "Orders & Fills",
+      "positions": "Positions",
+      "signals": "Signals",
+      "health": "Health",
+      "admin": "Administration",
+      "settings": "Settings"
+    }
+  },
+  "common": {
+    "cancel": "Cancel",
+    "selectWallet": "Select wallet",
+    "selectAWallet": "Select a wallet",
+    "chooseWalletPlaceholder": "Choose a wallet...",
+    "selectWalletPlaceholder": "Select wallet...",
+    "walletLabel": "Wallet",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Unknown error",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Access Denied",
+      "message": "You don't have permission to manage users. Please contact your system administrator."
+    },
+    "list": {
+      "title": "User Management",
+      "countLabel": "{{count}} users",
+      "showInactive": "Show inactive",
+      "hideInactive": "Hide inactive",
+      "addUser": "Add User",
+      "searchPlaceholder": "Search by username, email, or role...",
+      "columns": {
+        "user": "User",
+        "role": "Role",
+        "status": "Status",
+        "createdAt": "Created At",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "unknown": "Unknown",
+      "empty": {
+        "title": "No users found",
+        "noMatch": "No users match your search criteria.",
+        "noUsers": "No users found.",
+        "noActive": "No active users found."
+      },
+      "errorLoading": "Error loading users: {{message}}",
+      "deactivate": {
+        "title": "Deactivate User",
+        "message": "Are you sure you want to deactivate user \"{{username}}\"? They will no longer be able to sign in.",
+        "confirm": "Deactivate"
+      },
+      "toast": {
+        "deactivated": "User has been deactivated",
+        "deactivateError": "Error deactivating user"
+      }
+    },
+    "form": {
+      "titleEdit": "Edit User",
+      "titleAdd": "Add User",
+      "fields": {
+        "username": "Username",
+        "usernamePlaceholder": "Enter username",
+        "password": "Password",
+        "passwordPlaceholder": "Enter password",
+        "newPassword": "New Password",
+        "newPasswordPlaceholder": "Enter new password",
+        "email": "Email",
+        "emailPlaceholder": "Enter email",
+        "role": "Role",
+        "accountActive": "Account active",
+        "resetUserPassword": "Reset user password"
+      },
+      "roles": {
+        "viewer": "Viewer",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Username is required",
+        "usernameMinLength": "Username must be at least 3 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email format",
+        "passwordRequired": "Password is required",
+        "passwordMinLength": "Password must be at least 8 characters",
+        "passwordRequiredWhenResetting": "Password is required when resetting"
+      },
+      "actions": {
+        "saveChanges": "Save Changes",
+        "createUser": "Create User"
+      },
+      "toast": {
+        "created": "User has been created",
+        "createError": "Error creating user",
+        "updated": "User has been updated",
+        "updateError": "Error updating user",
+        "passwordReset": "User password has been reset",
+        "resetError": "Error resetting password"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Access Denied",
+      "message": "You don't have permission to manage scope grants. Please contact your system administrator."
+    },
+    "list": {
+      "title": "Scope Grants",
+      "countLabel": "{{count}} grants",
+      "createGrant": "Create Grant",
+      "selectWalletPrompt": "Choose a wallet above to view its scope grants.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Scope",
+        "target": "Target",
+        "grantedAt": "Granted At",
+        "actions": "Actions"
+      },
+      "empty": {
+        "noGrants": "No grants found",
+        "noGrantsHint": "This wallet has no active scope grants."
+      },
+      "errorLoading": "Error loading grants: {{message}}",
+      "handover": "Handover"
+    },
+    "form": {
+      "title": "Create Scope Grant",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Select operator...",
+        "wallet": "Wallet",
+        "scopeKind": "Scope Kind",
+        "underlyingPublicId": "Underlying Public ID",
+        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPlaceholder": "e.g. BTC",
+        "instrumentPlaceholder": "e.g. BTC-USD-PERP",
+        "note": "Note (optional)",
+        "notePlaceholder": "Optional note"
+      },
+      "scopeKinds": {
+        "underlying": "Underlying",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operator is required",
+        "walletRequired": "Wallet is required",
+        "targetRequired": "Target ID is required"
+      },
+      "actions": {
+        "createGrant": "Create Grant"
+      },
+      "toast": {
+        "created": "Scope grant created",
+        "conflictError": "Conflict: another operator already holds a grant on this scope",
+        "createError": "Error creating scope grant"
+      }
+    },
+    "handover": {
+      "title": "Handover Scope Grant",
+      "fields": {
+        "currentHolder": "Current holder",
+        "scope": "Scope",
+        "wallet": "Wallet",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Transfer to operator",
+        "transferToPlaceholder": "Select destination operator...",
+        "reason": "Reason (optional)",
+        "reasonPlaceholder": "e.g. Shift change"
+      },
+      "actions": {
+        "handover": "Handover"
+      },
+      "toast": {
+        "completed": "Scope grant handed over",
+        "conflictError": "Conflict: the destination operator already holds a conflicting grant",
+        "handoverError": "Error handing over scope grant"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Access Denied",
+      "message": "You don't have permission to manage wallet credentials. Please contact your system administrator."
+    },
+    "list": {
+      "title": "Wallet Credentials",
+      "countLabel": "{{count}} credentials",
+      "addCredential": "Add Credential",
+      "selectWalletPrompt": "Choose a wallet above to view its credentials.",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "createdAt": "Created At",
+        "actions": "Actions"
+      },
+      "empty": {
+        "noCredentials": "No credentials found",
+        "noCredentialsHint": "This wallet has no active credentials."
+      },
+      "errorLoading": "Error loading credentials: {{message}}",
+      "rotate": "Rotate"
+    },
+    "form": {
+      "title": "Add Credential",
+      "fields": {
+        "wallet": "Wallet",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "e.g. kraken",
+        "credentialType": "Credential Type",
+        "label": "Label (optional)",
+        "labelPlaceholder": "e.g. Main trading key",
+        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "Private Key (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Initial Balance"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Wallet is required",
+        "exchangeRequired": "Exchange is required",
+        "fieldRequired": "{{field}} is required"
+      },
+      "actions": {
+        "addCredential": "Add Credential"
+      },
+      "toast": {
+        "created": "Credential created",
+        "conflictError": "Conflict: this wallet already has an active credential for this exchange",
+        "createError": "Error creating credential"
+      }
+    },
+    "rotate": {
+      "title": "Rotate Credential",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "newLabel": "New Label (optional)",
+        "newLabelPlaceholder": "e.g. Rotated key 2026-04",
+        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+      },
+      "actions": {
+        "rotate": "Rotate"
+      },
+      "toast": {
+        "rotated": "Credential rotated",
+        "rotateError": "Error rotating credential"
+      }
+    }
+  }
+}

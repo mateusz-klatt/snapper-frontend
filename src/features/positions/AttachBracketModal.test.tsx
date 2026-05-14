@@ -284,25 +284,25 @@ describe('AttachBracketModal', () => {
 
 describe('validateBracketPrices', () => {
   it('returns error when both prices are null', () => {
-    expect(validateBracketPrices(null, null, 'LONG', 50000)).toBe(
-      'At least one of SL or TP price is required'
-    )
+    expect(validateBracketPrices(null, null, 'LONG', 50000)).toEqual({ key: 'bracketRequired' })
   })
 
   it('rejects non-finite SL (Infinity)', () => {
-    expect(validateBracketPrices(Infinity, null, 'LONG', 50000)).toBe('Invalid stop-loss price')
+    expect(validateBracketPrices(Infinity, null, 'LONG', 50000)).toEqual({ key: 'invalidSlPrice' })
   })
 
   it('rejects non-finite SL (NaN)', () => {
-    expect(validateBracketPrices(NaN, null, 'LONG', 50000)).toBe('Invalid stop-loss price')
+    expect(validateBracketPrices(NaN, null, 'LONG', 50000)).toEqual({ key: 'invalidSlPrice' })
   })
 
   it('rejects non-finite TP (Infinity)', () => {
-    expect(validateBracketPrices(48000, Infinity, 'LONG', 50000)).toBe('Invalid take-profit price')
+    expect(validateBracketPrices(48000, Infinity, 'LONG', 50000)).toEqual({
+      key: 'invalidTpPrice',
+    })
   })
 
   it('rejects non-finite TP (NaN)', () => {
-    expect(validateBracketPrices(48000, NaN, 'LONG', 50000)).toBe('Invalid take-profit price')
+    expect(validateBracketPrices(48000, NaN, 'LONG', 50000)).toEqual({ key: 'invalidTpPrice' })
   })
 
   it('returns null for valid LONG SL+TP', () => {

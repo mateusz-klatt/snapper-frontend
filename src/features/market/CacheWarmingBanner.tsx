@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 interface Props {
   /** True when the cache has served the full requested limit (no banner shown). */
   isWarm: boolean
@@ -15,16 +17,13 @@ interface Props {
  * chart canvas does not see a layout shift once the cache catches up.
  */
 export function CacheWarmingBanner({ isWarm, sampleCount, expected, source }: Readonly<Props>) {
+  const { t } = useTranslation('market')
+
   if (isWarm) {
     return null
   }
 
-  const SOURCE_LABELS: Record<Props['source'], string> = {
-    cache: '',
-    derived: '(derived from 1m)',
-    db: '(from DB)',
-  }
-  const sourceLabel = SOURCE_LABELS[source]
+  const sourceLabel = t(`cacheBanner.sources.${source}`)
 
   return (
     <div
@@ -32,9 +31,7 @@ export function CacheWarmingBanner({ isWarm, sampleCount, expected, source }: Re
       aria-live='polite'
       className='flex items-center justify-between px-3 py-1 text-xs text-amber-700 bg-amber-50 border-b border-amber-200'
     >
-      <span>
-        Cache warming up: {sampleCount} / {expected} candles available {sourceLabel}
-      </span>
+      <span>{t('cacheBanner.message', { sampleCount, expected, sourceLabel })}</span>
       <span className='font-mono text-[10px] opacity-70'>{source}</span>
     </div>
   )

@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { I18nextProvider } from 'react-i18next'
+import i18n from '../../i18n/config'
 import { Signals } from './Signals'
 import { useAuth } from '../../stores/auth'
 import { getSignals } from '../../lib/api/signals'
@@ -107,6 +109,18 @@ const createTestQueryClient = () =>
     },
   })
 
+const renderSignals = (queryClient: QueryClient): ReturnType<typeof render> => {
+  void i18n.changeLanguage('en')
+
+  return render(
+    <I18nextProvider i18n={i18n}>
+      <QueryClientProvider client={queryClient}>
+        <Signals />
+      </QueryClientProvider>
+    </I18nextProvider>
+  )
+}
+
 describe('Signals', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -117,21 +131,13 @@ describe('Signals', () => {
   it('renders header', () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     expect(screen.getByText('Signals')).toBeInTheDocument()
   })
   it('displays stats cards with correct labels', async () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('Total')
     expect(screen.getByText('Total')).toBeInTheDocument()
     expect(screen.getByText('Buy')).toBeInTheDocument()
@@ -141,11 +147,7 @@ describe('Signals', () => {
   it('renders strategy filter dropdown', async () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     const select = screen.getByRole('combobox')
 
@@ -155,21 +157,13 @@ describe('Signals', () => {
   it('displays loading state initially', () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     expect(screen.getAllByTestId('signal-card-skeleton').length).toBeGreaterThan(0)
   })
   it('displays signal cards after loading', async () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     const btcSignal = await screen.findByText('BTC-USD')
 
     expect(btcSignal).toBeInTheDocument()
@@ -180,11 +174,7 @@ describe('Signals', () => {
   it('displays signal details correctly', async () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getAllByText('BUY').length).toBeGreaterThan(0)
     expect(screen.getAllByText('SELL').length).toBeGreaterThan(0)
@@ -196,11 +186,7 @@ describe('Signals', () => {
   it('calculates and displays correct stats', async () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     const totalSignals = screen.getByText('3')
 
@@ -211,11 +197,7 @@ describe('Signals', () => {
   it('displays balanced stats when signal distribution is even', async () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getAllByText('1').length).toBeGreaterThanOrEqual(1)
   })
@@ -251,11 +233,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getAllByText('2').length).toBeGreaterThanOrEqual(1)
     expect(screen.getAllByText('BUY').length).toBe(2)
@@ -292,11 +270,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getAllByText('2').length).toBeGreaterThanOrEqual(1)
     expect(screen.getAllByText('SELL').length).toBe(2)
@@ -304,11 +278,7 @@ describe('Signals', () => {
   it('displays strength label based on strength value', async () => {
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getByText('Strong (85%)')).toBeInTheDocument()
     expect(screen.getByText('Medium (65%)')).toBeInTheDocument()
@@ -333,11 +303,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('SOL-USD')
     expect(screen.getByText('Weak (45%)')).toBeInTheDocument()
   })
@@ -361,11 +327,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('XRP-USD')
     expect(screen.getByText('Very Weak (25%)')).toBeInTheDocument()
   })
@@ -389,11 +351,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('ADA-USD')
     expect(screen.getByText('Just now')).toBeInTheDocument()
   })
@@ -419,11 +377,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('DOT-USD')
     expect(screen.getByText('15m ago')).toBeInTheDocument()
   })
@@ -449,11 +403,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('LINK-USD')
     expect(screen.getByText('3h ago')).toBeInTheDocument()
   })
@@ -479,11 +429,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('AVAX-USD')
     expect(screen.queryByText(/ago/)).not.toBeInTheDocument()
   })
@@ -491,11 +437,7 @@ describe('Signals', () => {
     vi.mocked(getSignals).mockResolvedValueOnce({ payload: [], count: 0 } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('No signals found')
     expect(screen.getByText('No trading signals match your current filters.')).toBeInTheDocument()
   })
@@ -536,11 +478,7 @@ describe('Signals', () => {
       .mockResolvedValueOnce({ payload: [], count: 0 } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     const select = screen.getByRole('combobox')
 
@@ -583,11 +521,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     const select = screen.getByRole('combobox')
 
@@ -614,11 +548,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getByText('N/A')).toBeInTheDocument()
   })
@@ -628,11 +558,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     expect(getSignals).not.toHaveBeenCalled()
   })
   it('omits strategy badge when strategy name is missing', async () => {
@@ -655,11 +581,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.queryByText('macd')).not.toBeInTheDocument()
     expect(screen.queryByText('rsi')).not.toBeInTheDocument()
@@ -670,11 +592,7 @@ describe('Signals', () => {
     const user = userEventModule.default.setup()
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     const exportButton = screen.getByRole('button', { name: /Export/i })
 
@@ -689,11 +607,7 @@ describe('Signals', () => {
     vi.mocked(getSignals).mockResolvedValueOnce({ payload: [], count: 0 } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('No signals found')
     const exportButton = screen.getByRole('button', { name: /Export/i })
 
@@ -719,11 +633,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('SOL-USD')
     expect(screen.getByText('Just now')).toBeInTheDocument()
   })
@@ -751,11 +661,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('SOL-USD')
     const exportButton = screen.getByRole('button', { name: /Export/i })
 
@@ -790,11 +696,7 @@ describe('Signals', () => {
     } as never)
     const queryClient = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={queryClient}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     const exportButton = screen.getByRole('button', { name: /Export/i })
 
@@ -837,11 +739,7 @@ describe('Signals', () => {
     } as never)
     const qc = createTestQueryClient()
 
-    render(
-      <QueryClientProvider client={qc}>
-        <Signals />
-      </QueryClientProvider>
-    )
+    renderSignals(qc)
     const relativeTime = await screen.findByText('30m ago')
 
     expect(relativeTime).toBeInTheDocument()

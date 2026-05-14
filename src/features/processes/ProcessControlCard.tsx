@@ -1,5 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 import type { HeartbeatData } from '../../hooks/useHeartbeats'
 import { LoadingSpinner } from '../../components/ui'
 
@@ -62,6 +63,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
   readOnly = false,
   heartbeat,
 }) => {
+  const { t } = useTranslation('processes')
   const isRunning = status === 'running'
   const statusColor = {
     running: 'text-accent-400 bg-accent-400/10',
@@ -121,10 +123,10 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
               {isStopping ? (
                 <>
                   <LoadingSpinner size='sm' className='inline-block mr-2' />
-                  Stopping...
+                  {t('card.stopping')}
                 </>
               ) : (
-                'Stop'
+                t('card.stop')
               )}
             </button>
           ) : (
@@ -141,10 +143,10 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
               {isStarting ? (
                 <>
                   <LoadingSpinner size='sm' className='inline-block mr-2' />
-                  Starting...
+                  {t('card.starting')}
                 </>
               ) : (
-                'Start'
+                t('card.start')
               )}
             </button>
           )}
@@ -155,7 +157,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
               disabled={readOnly}
               className='flex-1 px-4 py-2 rounded-md text-sm font-medium bg-info-600 text-white hover:bg-info-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
             >
-              Restart
+              {t('card.restart')}
             </button>
           )}
         </div>

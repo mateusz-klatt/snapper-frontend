@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { useRelatedInstruments } from '../../hooks/queries/market'
 
@@ -12,6 +13,7 @@ export function RelatedInstrumentsRow({
   selectedInstrument,
   onSelect,
 }: Readonly<Props>) {
+  const { t } = useTranslation('market')
   const { data, isFetching } = useRelatedInstruments(selectedExchange, selectedInstrument)
 
   if (selectedExchange === null || selectedInstrument === null) {
@@ -31,7 +33,7 @@ export function RelatedInstrumentsRow({
   if (groups.length === 0 && underlying === null) {
     return (
       <div className='flex items-center px-3 py-2 text-xs text-muted-500'>
-        No related instruments configured for {selectedInstrument} on {selectedExchange}.
+        {t('related.empty', { instrument: selectedInstrument, exchange: selectedExchange })}
       </div>
     )
   }
@@ -43,7 +45,9 @@ export function RelatedInstrumentsRow({
     >
       {groups.map(group => (
         <div key={group.relationship_type} className='flex items-center gap-2'>
-          <span className='text-xs text-muted-500 mr-1'>{group.label}:</span>
+          <span className='text-xs text-muted-500 mr-1'>
+            {t('related.labelSeparator', { label: group.label })}
+          </span>
           {group.items.map(item => {
             const baseClass =
               'inline-flex items-center gap-1 bg-alpine-50 border rounded-sm px-2 py-1 text-xs text-alpine-900'
@@ -61,7 +65,9 @@ export function RelatedInstrumentsRow({
               >
                 <InstrumentIcon symbol={item.native_symbol} exchange={item.exchange} size={14} />
                 <span>{item.native_symbol}</span>
-                <span className='text-muted-500'>· {item.exchange}</span>
+                <span className='text-muted-500'>
+                  {t('related.exchangeSeparator', { exchange: item.exchange })}
+                </span>
               </button>
             )
           })}

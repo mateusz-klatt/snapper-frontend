@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 
@@ -17,6 +18,7 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
   componentName,
   description,
 }) => {
+  const { t } = useTranslation('processes')
   const readOnly = useIsReadOnly()
   const [executionMode, setExecutionMode] = useState<'thread' | 'process'>('thread')
 
@@ -32,15 +34,20 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
   }
 
   return (
-    <Modal open={open} onClose={onClose} title={`Start ${componentName}`} size='md'>
+    <Modal
+      open={open}
+      onClose={onClose}
+      title={t('executionMode.title', { name: componentName })}
+      size='md'
+    >
       <div className='space-y-6'>
         <p className='text-muted-600'>{description}</p>
         <div className='space-y-4'>
-          <h4 className='text-sm font-medium text-muted-700'>Execution Mode:</h4>
+          <h4 className='text-sm font-medium text-muted-700'>{t('executionMode.label')}</h4>
           <div className='space-y-3'>
             <label
               htmlFor='exec-mode-thread'
-              aria-label='Thread Mode'
+              aria-label={t('executionMode.threadAriaLabel')}
               className='flex items-start cursor-pointer p-3 rounded border border-dark-600 hover:border-muted-400'
             >
               <input
@@ -54,15 +61,13 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
                 className='mr-3 mt-1'
               />
               <div>
-                <div className='text-alpine-900 font-medium'>Thread Mode</div>
-                <div className='text-sm text-muted-500'>
-                  Runs as embedded task within web server. Faster startup, shared memory.
-                </div>
+                <div className='text-alpine-900 font-medium'>{t('executionMode.threadName')}</div>
+                <div className='text-sm text-muted-500'>{t('executionMode.threadDescription')}</div>
               </div>
             </label>
             <label
               htmlFor='exec-mode-process'
-              aria-label='Process Mode'
+              aria-label={t('executionMode.processAriaLabel')}
               className='flex items-start cursor-pointer p-3 rounded border border-dark-600 hover:border-muted-400'
             >
               <input
@@ -76,9 +81,9 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
                 className='mr-3 mt-1'
               />
               <div>
-                <div className='text-alpine-900 font-medium'>Process Mode</div>
+                <div className='text-alpine-900 font-medium'>{t('executionMode.processName')}</div>
                 <div className='text-sm text-muted-500'>
-                  Runs as separate Python process. Isolated, fault-tolerant, detailed monitoring.
+                  {t('executionMode.processDescription')}
                 </div>
               </div>
             </label>
@@ -89,14 +94,14 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
             onClick={onClose}
             className='px-4 py-2 text-muted-600 hover:text-alpine-900 transition-colors'
           >
-            Cancel
+            {t('executionMode.cancel')}
           </button>
           <button
             onClick={handleStart}
             disabled={readOnly}
             className='px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
           >
-            Start {componentName}
+            {t('executionMode.start', { name: componentName })}
           </button>
         </div>
       </div>

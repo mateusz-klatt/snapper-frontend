@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
 import { Shield, TrendingDown } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { usePositions, useTrailingStopForCycle } from '../../hooks/queries/positions'
 import { useAppStore } from '../../stores/app'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
@@ -61,6 +62,7 @@ interface PositionRowProps {
 }
 
 const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined }> = ({ cyclePublicId }) => {
+  const { t } = useTranslation('positions')
   const { data } = useTrailingStopForCycle(cyclePublicId)
 
   if (!data) return null
@@ -74,7 +76,9 @@ const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined }> = ({ cy
       className='rounded-full bg-brand-900/20 px-2 py-1 text-xs font-medium text-brand-400'
       data-testid='trailing-stop-badge'
     >
-      {currentStop > 0 ? `TS: $${currentStop.toFixed(2)}` : 'TS: pending'}
+      {currentStop > 0
+        ? t('row.trailingStopBadge', { stop: currentStop.toFixed(2) })
+        : t('row.trailingStopPending')}
     </span>
   )
 }
@@ -85,6 +89,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
   onAttachTrailingStop,
   isTimeTraveling,
 }) => {
+  const { t } = useTranslation('positions')
   const side = getPositionSide(position.quantity)
   const absQuantity = Math.abs(position.quantity)
   const suffix = positionIdSuffix(position)
@@ -120,7 +125,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
               data-testid={`attach-bracket-${suffix}`}
             >
               <Shield size={12} />
-              SL/TP
+              {t('row.slTpButton')}
             </button>
           )}
           {canAttach && (
@@ -131,22 +136,22 @@ const PositionRow: React.FC<PositionRowProps> = ({
               data-testid={`attach-trailing-stop-${suffix}`}
             >
               <TrendingDown size={12} />
-              Trail
+              {t('row.trailButton')}
             </button>
           )}
         </div>
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-4'>
         <div>
-          <div className='text-muted-500'>Quantity</div>
+          <div className='text-muted-500'>{t('row.quantity')}</div>
           <div className='font-mono text-alpine-900'>{absQuantity.toFixed(4)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Avg Entry</div>
+          <div className='text-muted-500'>{t('row.averageEntry')}</div>
           <div className='font-mono text-alpine-900'>{formatPrice(position.averagePrice)}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Unrealized P&amp;L</div>
+          <div className='text-muted-500'>{t('row.unrealizedPnl')}</div>
           <div
             className={clsx('font-mono', getPnlClass(position.unrealizedPnl))}
             data-testid={`position-unrealized-${suffix}`}
@@ -155,7 +160,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Realized P&amp;L</div>
+          <div className='text-muted-500'>{t('row.realizedPnl')}</div>
           <div
             className={clsx('font-mono', getPnlClass(position.realizedPnl))}
             data-testid={`position-realized-${suffix}`}
@@ -166,7 +171,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
       </div>
       {position.timestamp && (
         <div className='mt-3 text-xs text-muted-500'>
-          Updated {position.timestamp.toLocaleString()}
+          {t('row.updated', { timestamp: position.timestamp.toLocaleString() })}
         </div>
       )}
     </div>
@@ -174,6 +179,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
 }
 
 export const Positions: React.FC = () => {
+  const { t } = useTranslation('positions')
   const { data: positions = [], isLoading } = usePositions()
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const [bracketTarget, setBracketTarget] = useState<Position | null>(null)
@@ -215,7 +221,7 @@ export const Positions: React.FC = () => {
         />
       )}
       <div className='flex items-center justify-between'>
-        <h2 className='text-xl font-semibold text-alpine-900'>Positions</h2>
+        <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
       </div>
       <div className='space-y-4'>
         {isLoading && (
@@ -237,8 +243,8 @@ export const Positions: React.FC = () => {
                 />
               </svg>
             }
-            title='No open positions'
-            message='Long, short, and flat positions will appear here once trades are executed.'
+            title={t('empty.title')}
+            message={t('empty.message')}
           />
         )}
         {!isLoading && positions.length > 0 && (

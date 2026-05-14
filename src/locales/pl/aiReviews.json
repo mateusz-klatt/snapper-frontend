@@ -1,1 +1,53 @@
-{}
+{
+  "activityRow": {
+    "request": "Żądanie",
+    "decision": "Decyzja",
+    "capsViolation": "Naruszenie limitu",
+    "selectedDelegate": "Wybrany delegat",
+    "instrument": "instrument",
+    "deadline": "termin {{time}}",
+    "decidedBy": "przez",
+    "newStatus": "status",
+    "mode": "tryb",
+    "capAttempted": "próba",
+    "capLimit": "vs limit",
+    "capOn": "dla instrumentu",
+    "reviewLabel": "przegląd {{reviewId}}",
+    "unhandledFrame": "Nieobsłużona ramka aktywności przeglądu AI: {{frame}}"
+  },
+  "page": {
+    "title": "Skrzynka przeglądów AI",
+    "subtitle": "Oczekujące przeglądy CONSULT skierowane do tego delegata oraz strumień zdarzeń na żywo."
+  },
+  "roleNotice": {
+    "title": "Zarezerwowane dla delegatów AI",
+    "message": "Ta skrzynka pokazuje przeglądy CONSULT skierowane do delegata AI. Zaloguj się na konto delegata AI, aby zobaczyć oczekujące przeglądy i strumień aktywności na żywo. Twoja bieżąca rola to",
+    "unknownRole": "nieznana"
+  },
+  "pending": {
+    "title": "Oczekujące przeglądy",
+    "loading": "Ładowanie oczekujących przeglądów…",
+    "loadError": "Nie udało się załadować oczekujących przeglądów: {{message}}",
+    "emptyTitle": "Brak oczekujących przeglądów",
+    "emptyMessage": "Nowe żądania CONSULT skierowane do tego delegata pojawią się tutaj.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Teza",
+      "status": "Status",
+      "deadline": "Termin",
+      "decision": "Decyzja"
+    },
+    "rationalePlaceholder": "Uzasadnienie (opcjonalne)",
+    "rationaleAriaLabel": "Uzasadnienie dla przeglądu {{reviewId}}",
+    "approve": "Zatwierdź",
+    "reject": "Odrzuć",
+    "submitError": "Wysyłka nie powiodła się: {{message}}"
+  },
+  "activity": {
+    "title": "Ostatnia aktywność",
+    "emptyTitle": "Brak aktywności",
+    "emptyMessage": "Ramki żądań przeglądów AI, decyzji i naruszeń limitów pojawią się tutaj.",
+    "summaryEmpty": "Nie otrzymano ramek",
+    "summaryCount": "Wyświetlanie {{shown}} z {{total}} buforowanych"
+  }
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Plus, RotateCw, KeyRound } from 'lucide-react'
 import { Button, Badge } from '../../../components/ui'
 import { useCredentials } from '../../../hooks/queries/credentials'
@@ -17,6 +18,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
   onRotate,
   readOnly,
 }) => {
+  const { t } = useTranslation('admin')
   const [selectedWallet, setSelectedWallet] = useState<string>('')
   const { data: walletsData } = useWallets()
   const { data: credentialsData, isLoading, error } = useCredentials(selectedWallet)
@@ -35,24 +37,25 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
   }
 
   const credentialTypeLabel = (type: string): string => {
-    const labels: Record<string, string> = {
-      api_key_secret: 'API Key + Secret',
-      rsa_pem: 'RSA PEM',
-      oauth: 'OAuth',
-      paper: 'Paper',
+    const knownTypes = ['api_key_secret', 'rsa_pem', 'oauth', 'paper']
+
+    if (knownTypes.includes(type)) {
+      return t(
+        `credentials.form.credentialTypes.${type}` as 'credentials.form.credentialTypes.api_key_secret'
+      )
     }
 
-    return labels[type] ?? type
+    return type
   }
 
   return (
     <div className='space-y-4'>
       <div className='flex flex-wrap items-center justify-between gap-2'>
         <div className='flex items-center space-x-4'>
-          <h2 className='text-2xl font-bold text-alpine-900'>Wallet Credentials</h2>
+          <h2 className='text-2xl font-bold text-alpine-900'>{t('credentials.list.title')}</h2>
           {selectedWallet && (
             <Badge variant='outline' className='text-sm'>
-              {credentials.length} credentials
+              {t('credentials.list.countLabel', { count: credentials.length })}
             </Badge>
           )}
         </div>
@@ -62,7 +65,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
           className='flex items-center space-x-2'
         >
           <Plus className='w-4 h-4' />
-          <span>Add Credential</span>
+          <span>{t('credentials.list.addCredential')}</span>
         </Button>
       </div>
       <div className='max-w-xs'>
@@ -70,7 +73,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
           htmlFor='cred-wallet-filter'
           className='block text-sm font-medium text-alpine-900 mb-1'
         >
-          Select wallet
+          {t('common.selectWallet')}
         </label>
         <ThemeSelect
           id='cred-wallet-filter'
@@ -78,18 +81,16 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
           onChange={val => setSelectedWallet(val)}
           options={wallets.map(w => ({
             value: w.public_id,
-            label: `${w.label}${w.is_paper ? ' (paper)' : ''}`,
+            label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
           }))}
-          placeholder='Choose a wallet...'
+          placeholder={t('common.chooseWalletPlaceholder')}
         />
       </div>
       {!selectedWallet && (
         <div className='text-center py-12'>
           <KeyRound className='mx-auto h-12 w-12 text-muted-400' />
-          <h3 className='mt-2 text-sm font-medium text-alpine-900'>Select a wallet</h3>
-          <p className='mt-1 text-sm text-muted-500'>
-            Choose a wallet above to view its credentials.
-          </p>
+          <h3 className='mt-2 text-sm font-medium text-alpine-900'>{t('common.selectAWallet')}</h3>
+          <p className='mt-1 text-sm text-muted-500'>{t('credentials.list.selectWalletPrompt')}</p>
         </div>
       )}
       {selectedWallet && isLoading && (
@@ -99,14 +100,20 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
       )}
       {selectedWallet && error && (
         <div className='p-4 text-loss-600 bg-loss-50 rounded-lg'>
-          Error loading credentials: {error instanceof Error ? error.message : 'Unknown error'}
+          {t('credentials.list.errorLoading', {
+            message: error instanceof Error ? error.message : t('common.unknownError'),
+          })}
         </div>
       )}
       {selectedWallet && !isLoading && !error && credentials.length === 0 && (
         <div className='text-center py-12'>
           <KeyRound className='mx-auto h-12 w-12 text-muted-400' />
-          <h3 className='mt-2 text-sm font-medium text-alpine-900'>No credentials found</h3>
-          <p className='mt-1 text-sm text-muted-500'>This wallet has no active credentials.</p>
+          <h3 className='mt-2 text-sm font-medium text-alpine-900'>
+            {t('credentials.list.empty.noCredentials')}
+          </h3>
+          <p className='mt-1 text-sm text-muted-500'>
+            {t('credentials.list.empty.noCredentialsHint')}
+          </p>
         </div>
       )}
       {selectedWallet && !isLoading && !error && credentials.length > 0 && (
@@ -116,19 +123,19 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
               <thead className='bg-dark-700'>
                 <tr>
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Exchange
+                    {t('credentials.list.columns.exchange')}
                   </th>
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Type
+                    {t('credentials.list.columns.type')}
                   </th>
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Label
+                    {t('credentials.list.columns.label')}
                   </th>
                   <th className='hidden xl:table-cell px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Created At
+                    {t('credentials.list.columns.createdAt')}
                   </th>
                   <th className='px-3 py-3 text-right text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                    Actions
+                    {t('credentials.list.columns.actions')}
                   </th>
                 </tr>
               </thead>
@@ -144,7 +151,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
                       </span>
                     </td>
                     <td className='px-3 py-4 whitespace-nowrap text-sm text-alpine-900'>
-                      {cred.label ?? '-'}
+                      {cred.label ?? t('common.dash')}
                     </td>
                     <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-500'>
                       {formatDate(cred.timestamp)}
@@ -158,7 +165,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
                         className='text-brand-600 hover:text-brand-900'
                       >
                         <RotateCw className='w-4 h-4' />
-                        <span className='ml-1'>Rotate</span>
+                        <span className='ml-1'>{t('credentials.list.rotate')}</span>
                       </Button>
                     </td>
                   </tr>

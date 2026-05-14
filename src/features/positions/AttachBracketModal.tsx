@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useCreateBracket } from '../../hooks/queries/positions'
 import { validateBracketPrices } from './validation'
@@ -20,6 +21,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
   side,
   averagePrice,
 }) => {
+  const { t } = useTranslation('positions')
   const createBracket = useCreateBracket()
   const [slPrice, setSlPrice] = useState('')
   const [tpPrice, setTpPrice] = useState('')
@@ -42,7 +44,9 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
     const validationError = validateBracketPrices(sl, tp, side, averagePrice)
 
     if (validationError) {
-      setError(validationError)
+      const key = `validation.${validationError.key}` as 'validation.bracketRequired'
+
+      setError(t(key, validationError.params ?? {}))
 
       return
     }
@@ -75,24 +79,29 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
   const isEditingStep = !confirming
 
   return (
-    <Modal open={open} onClose={handleClose} title={`Attach SL/TP — ${instrument}`} size='sm'>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      title={t('bracketModal.title', { instrument })}
+      size='sm'
+    >
       {isEditingStep ? (
         <div className='space-y-4'>
           <div className='rounded-lg border border-dark-600 bg-dark-700 p-3 text-sm'>
             <div className='flex justify-between'>
-              <span className='text-muted-500'>Position</span>
+              <span className='text-muted-500'>{t('bracketModal.position')}</span>
               <span className='text-alpine-900'>
                 {side} {instrument}
               </span>
             </div>
             <div className='mt-1 flex justify-between'>
-              <span className='text-muted-500'>Entry Price</span>
+              <span className='text-muted-500'>{t('bracketModal.entryPrice')}</span>
               <span className='font-mono text-alpine-900'>${averagePrice.toFixed(2)}</span>
             </div>
           </div>
           <div>
             <label htmlFor='sl-price' className='mb-1 block text-sm text-muted-500'>
-              Stop-Loss Price
+              {t('bracketModal.stopLossLabel')}
             </label>
             <input
               id='sl-price'
@@ -102,8 +111,8 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               onChange={e => setSlPrice(e.target.value)}
               placeholder={
                 side === 'LONG'
-                  ? `Below $${averagePrice.toFixed(2)}`
-                  : `Above $${averagePrice.toFixed(2)}`
+                  ? t('bracketModal.placeholders.slLong', { price: averagePrice.toFixed(2) })
+                  : t('bracketModal.placeholders.slShort', { price: averagePrice.toFixed(2) })
               }
               className='w-full rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-none'
               data-testid='sl-price-input'
@@ -111,7 +120,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
           </div>
           <div>
             <label htmlFor='tp-price' className='mb-1 block text-sm text-muted-500'>
-              Take-Profit Price
+              {t('bracketModal.takeProfitLabel')}
             </label>
             <input
               id='tp-price'
@@ -121,8 +130,8 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               onChange={e => setTpPrice(e.target.value)}
               placeholder={
                 side === 'LONG'
-                  ? `Above $${averagePrice.toFixed(2)}`
-                  : `Below $${averagePrice.toFixed(2)}`
+                  ? t('bracketModal.placeholders.tpLong', { price: averagePrice.toFixed(2) })
+                  : t('bracketModal.placeholders.tpShort', { price: averagePrice.toFixed(2) })
               }
               className='w-full rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-none'
               data-testid='tp-price-input'
@@ -142,7 +151,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               onClick={handleClose}
               className='rounded-lg border border-dark-600 px-4 py-2 text-sm text-muted-500 transition-colors hover:bg-muted-200'
             >
-              Cancel
+              {t('bracketModal.buttons.cancel')}
             </button>
             <button
               type='button'
@@ -150,24 +159,24 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               className='rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-500'
               data-testid='bracket-submit'
             >
-              Review
+              {t('bracketModal.buttons.review')}
             </button>
           </div>
         </div>
       ) : (
         <div className='space-y-4'>
           <div className='rounded-lg border border-dark-600 bg-dark-700 p-3 text-sm'>
-            <div className='font-medium text-alpine-900'>Confirm Bracket</div>
+            <div className='font-medium text-alpine-900'>{t('bracketModal.confirmTitle')}</div>
             <div className='mt-2 space-y-1'>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Position</span>
+                <span className='text-muted-500'>{t('bracketModal.position')}</span>
                 <span className='text-alpine-900'>
                   {side} {instrument}
                 </span>
               </div>
               {slPrice && (
                 <div className='flex justify-between'>
-                  <span className='text-muted-500'>Stop-Loss</span>
+                  <span className='text-muted-500'>{t('bracketModal.stopLoss')}</span>
                   <span className='font-mono text-loss-400'>
                     ${Number.parseFloat(slPrice).toFixed(2)}
                   </span>
@@ -175,7 +184,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               )}
               {tpPrice && (
                 <div className='flex justify-between'>
-                  <span className='text-muted-500'>Take-Profit</span>
+                  <span className='text-muted-500'>{t('bracketModal.takeProfit')}</span>
                   <span className='font-mono text-gain-400'>
                     ${Number.parseFloat(tpPrice).toFixed(2)}
                   </span>
@@ -190,7 +199,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               disabled={createBracket.isPending}
               className='rounded-lg border border-dark-600 px-4 py-2 text-sm text-muted-500 transition-colors hover:bg-muted-200 disabled:opacity-50'
             >
-              Back
+              {t('bracketModal.buttons.back')}
             </button>
             <button
               type='button'
@@ -199,7 +208,9 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               className='rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-500 disabled:opacity-50'
               data-testid='bracket-confirm'
             >
-              {createBracket.isPending ? 'Creating…' : 'Confirm'}
+              {createBracket.isPending
+                ? t('bracketModal.buttons.creating')
+                : t('bracketModal.buttons.confirm')}
             </button>
           </div>
         </div>

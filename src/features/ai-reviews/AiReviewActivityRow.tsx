@@ -1,5 +1,6 @@
 import React from 'react'
 import { AlertTriangle, Inbox, ShieldCheck } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { AiReviewActivityFrame } from '../../stores/wsDispatcher'
 
 /**
@@ -19,21 +20,24 @@ import type { AiReviewActivityFrame } from '../../stores/wsDispatcher'
 export function AiReviewActivityRow({
   frame,
 }: Readonly<{ frame: AiReviewActivityFrame }>): React.ReactElement {
+  const { t } = useTranslation('aiReviews')
+
   switch (frame.type) {
     case 'ai_review.request':
       return (
         <RowShell
           icon={<Inbox className='w-4 h-4 text-brand-600' />}
-          label='Request'
+          label={t('activityRow.request')}
           tone='neutral'
           timestamp={frame.timestamp}
           reviewPublicId={frame.review_public_id}
         >
           <span className='text-muted-700'>
-            Selected delegate{' '}
-            <span className='font-mono text-xs'>{frame.selected_delegate_public_id}</span> ·
-            instrument <span className='font-mono text-xs'>{frame.instrument_public_id}</span> ·
-            deadline {new Date(frame.deadline).toLocaleTimeString()}
+            {t('activityRow.selectedDelegate')}{' '}
+            <span className='font-mono text-xs'>{frame.selected_delegate_public_id}</span> ·{' '}
+            {t('activityRow.instrument')}{' '}
+            <span className='font-mono text-xs'>{frame.instrument_public_id}</span> ·{' '}
+            {t('activityRow.deadline', { time: new Date(frame.deadline).toLocaleTimeString() })}
           </span>
         </RowShell>
       )
@@ -41,15 +45,16 @@ export function AiReviewActivityRow({
       return (
         <RowShell
           icon={<ShieldCheck className='w-4 h-4 text-gain-600' />}
-          label='Decision'
+          label={t('activityRow.decision')}
           tone={frame.decision === 'approve' ? 'positive' : 'negative'}
           timestamp={frame.timestamp}
           reviewPublicId={frame.review_public_id}
         >
           <span className='text-muted-700'>
-            <span className='font-semibold'>{frame.decision}</span> by{' '}
+            <span className='font-semibold'>{frame.decision}</span> {t('activityRow.decidedBy')}{' '}
             <span className='font-mono text-xs'>{frame.responding_delegate_public_id}</span> →{' '}
-            status <span className='font-semibold'>{frame.new_status}</span> · mode{' '}
+            {t('activityRow.newStatus')} <span className='font-semibold'>{frame.new_status}</span> ·{' '}
+            {t('activityRow.mode')}{' '}
             <span className='font-mono text-xs'>{frame.resolution_mode}</span>
           </span>
         </RowShell>
@@ -58,21 +63,25 @@ export function AiReviewActivityRow({
       return (
         <RowShell
           icon={<AlertTriangle className='w-4 h-4 text-warn-600' />}
-          label='Caps violation'
+          label={t('activityRow.capsViolation')}
           tone='warning'
           timestamp={frame.timestamp}
           reviewPublicId={frame.review_public_id}
         >
           <span className='text-muted-700'>
-            <span className='font-semibold'>{frame.cap_type}</span>: attempted{' '}
-            <span className='font-mono'>{frame.attempted}</span> vs limit{' '}
-            <span className='font-mono'>{frame.limit}</span> on instrument{' '}
+            <span className='font-semibold'>{frame.cap_type}</span>: {t('activityRow.capAttempted')}{' '}
+            <span className='font-mono'>{frame.attempted}</span> {t('activityRow.capLimit')}{' '}
+            <span className='font-mono'>{frame.limit}</span> {t('activityRow.capOn')}{' '}
             <span className='font-mono text-xs'>{frame.instrument_public_id}</span>
           </span>
         </RowShell>
       )
-    default:
-      return assertUnreachable(frame)
+
+    default: {
+      const exhaustiveCheck: never = frame
+
+      throw new Error(t('activityRow.unhandledFrame', { frame: JSON.stringify(exhaustiveCheck) }))
+    }
   }
 }
 
@@ -91,6 +100,8 @@ function RowShell({
   reviewPublicId: string
   children: React.ReactNode
 }>): React.ReactElement {
+  const { t } = useTranslation('aiReviews')
+
   return (
     <li
       data-testid={`ai-review-activity-row-${reviewPublicId}`}
@@ -104,12 +115,10 @@ function RowShell({
           <span className='text-xs text-muted-500'>{new Date(timestamp).toLocaleTimeString()}</span>
         </div>
         <div>{children}</div>
-        <div className='font-mono text-[11px] text-muted-500'>review {reviewPublicId}</div>
+        <div className='font-mono text-[11px] text-muted-500'>
+          {t('activityRow.reviewLabel', { reviewId: reviewPublicId })}
+        </div>
       </div>
     </li>
   )
-}
-
-function assertUnreachable(value: never): never {
-  throw new Error(`Unhandled AI review activity frame: ${JSON.stringify(value)}`)
 }

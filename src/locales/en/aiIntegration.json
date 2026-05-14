@@ -1,1 +1,133 @@
-{}
+{
+  "page": {
+    "title": "AI Integration",
+    "subtitle": "Manage AI delegates that connect to Snapper via MCP.",
+    "loading": "Loading AI integration…",
+    "createDelegate": "Create delegate"
+  },
+  "disabled": {
+    "title": "AI Integration is disabled",
+    "message": "Enable the feature flag in Settings → Feature Flags to manage AI delegates."
+  },
+  "list": {
+    "loadingDelegates": "Loading delegates…",
+    "emptyTitle": "No AI delegates yet",
+    "emptyMessage": "Click “Create delegate” to mint one and generate its MCP config snippet.",
+    "columns": {
+      "label": "Label",
+      "username": "Username",
+      "created": "Created",
+      "maxOpenOrders": "Max open orders",
+      "maxDailyUsd": "Max daily USD",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Active",
+      "revoked": "Revoked"
+    },
+    "default": "default",
+    "details": "Details",
+    "viewAriaLabel": "View delegate {{label}}"
+  },
+  "wizard": {
+    "title": "Create AI delegate",
+    "step1": "1. Identity",
+    "step2": "2. Scope & caps",
+    "step3": "3. Review",
+    "stepDone": "✓ Done",
+    "identity": {
+      "labelField": "Label",
+      "labelPlaceholder": "e.g. Alpha prop desk",
+      "labelHelpPrefix": "The delegate's username will be derived server-side as ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Scope",
+      "operatorLabel": "Operator public_id (optional)",
+      "operatorPlaceholder": "Leave empty to inherit caller primary operator"
+    },
+    "caps": {
+      "heading": "Trading caps (all optional)",
+      "maxOpenOrders": "Max open orders",
+      "maxDailyNotionalUsd": "Max daily notional USD",
+      "maxCancelsPerMinute": "Max cancels per minute",
+      "perInstrument": "Per-instrument max quantity (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "default",
+      "errorInvalidJson": "max_order_quantity_per_instrument must be valid JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument must be a JSON object or empty",
+      "errorNegative": "Caps must be non-negative integers or empty."
+    },
+    "review": {
+      "heading": "Review & create",
+      "rowLabel": "Label",
+      "rowOperator": "Operator public_id",
+      "rowMaxOpenOrders": "Max open orders",
+      "rowMaxDailyNotional": "Max daily notional USD",
+      "rowMaxCancelsPerMinute": "Max cancels per minute",
+      "rowPerInstrument": "Per-instrument max quantity",
+      "operatorDefault": "(caller primary operator)",
+      "defaultValue": "(default)"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "next": "Next",
+      "back": "Back",
+      "createDelegate": "Create delegate",
+      "iSavedClose": "I have saved these — close"
+    },
+    "toast": {
+      "delegateCreated": "Delegate created",
+      "failedToCreate": "Failed to create delegate"
+    }
+  },
+  "detail": {
+    "loading": "Loading delegate…",
+    "notFound": "Delegate not found or unavailable.",
+    "back": "Back",
+    "backToList": "Back to list",
+    "updateCaps": "Update caps",
+    "revoke": "Revoke",
+    "save": "Save",
+    "cancel": "Cancel",
+    "tradingCaps": "Trading caps",
+    "status": "Status",
+    "active": "Active",
+    "revoked": "Revoked",
+    "createdAt": "Created at",
+    "createdBy": "Created by (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Max open orders",
+    "maxDailyNotionalUsd": "Max daily notional USD",
+    "maxCancelsPerMinute": "Max cancels per minute",
+    "perInstrument": "Per-instrument max quantity",
+    "defaultValue": "(default)",
+    "editorPlaceholder": "(default)",
+    "toast": {
+      "capsUpdated": "Caps updated",
+      "failedToUpdateCaps": "Failed to update caps",
+      "negativeIntegersError": "Caps must be non-negative integers or empty."
+    }
+  },
+  "revokeDialog": {
+    "title": "Revoke delegate \"{{label}}\"?",
+    "message": "This revokes the delegate tokens and stops its MCP subscriptions. This cannot be undone.",
+    "confirm": "Revoke",
+    "cancel": "Cancel",
+    "toast": {
+      "delegateRevoked": "Delegate revoked",
+      "failedToRevoke": "Failed to revoke delegate"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Save these credentials now",
+    "warningMessage": "They will not be shown again. Snapper does not store the raw tokens; once you close this wizard, the only copy will be in your MCP client config.",
+    "snippetHelp": "Long-lived AI delegate token (~10 years). The same token authenticates both the proxy MCP server and the watch monitor. To rotate, deactivate this delegate and create a new one.",
+    "baseUrlHelpPrefix": "Base URL is derived from this browser's origin + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Copy config snippet to clipboard",
+    "copy": "Copy to clipboard",
+    "copied": "Copied"
+  }
+}

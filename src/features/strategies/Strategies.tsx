@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { Gauge } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { ThemeSelect } from '../../components/ThemeSelect'
 import {
   useStartProcessByName,
@@ -23,6 +24,7 @@ import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
 import { useConfirmDialog } from '../../hooks/useConfirmDialog'
 
 export const Strategies: React.FC = () => {
+  const { t } = useTranslation('strategies')
   const { hasPermission } = useAuth()
   const readOnly = useIsReadOnly()
   const canManage = hasPermission(Permission.MANAGE_PROCESSES)
@@ -117,30 +119,30 @@ export const Strategies: React.FC = () => {
         parameters: data.parameters,
         ...(data.note === undefined ? {} : { note: data.note }),
       })
-      toast.success(`Strategy ${data.processName} saved`)
+      toast.success(t('toast.saved', { name: data.processName }))
 
       if (data.startImmediately) {
         await startProcess.mutateAsync({
           name: data.processName,
           mode: data.executionMode,
         })
-        toast.success(`Strategy ${data.processName} started`)
+        toast.success(t('toast.started', { name: data.processName }))
         setActiveStrategyProcess(data.processName)
       }
 
       setStrategyModalOpen(false)
       queryClient.invalidateQueries({ queryKey: ['strategies'] })
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Unknown error'
+      const message = error instanceof Error ? error.message : t('toast.unknownError')
 
-      toast.error(`Failed to register strategy: ${message}`)
+      toast.error(t('toast.registerFailed', { message }))
     }
   }
 
   const requestStartStrategy = (processName: string, mode: string) => {
     openConfirm({
-      title: `Start ${processName}`,
-      message: `This will start the ${processName} strategy. It may begin live trading operations.`,
+      title: t('confirm.startTitle', { name: processName }),
+      message: t('confirm.startMessage', { name: processName }),
       variant: 'default',
       onConfirm: () => handleStartStrategy(processName, mode),
     })
@@ -148,8 +150,8 @@ export const Strategies: React.FC = () => {
 
   const requestStopStrategy = (processName: string) => {
     openConfirm({
-      title: `Stop ${processName}`,
-      message: `This will stop the ${processName} strategy. Active positions will not be automatically closed.`,
+      title: t('confirm.stopTitle', { name: processName }),
+      message: t('confirm.stopMessage', { name: processName }),
       variant: 'danger',
       onConfirm: () => handleStopStrategy(processName),
     })
@@ -164,7 +166,7 @@ export const Strategies: React.FC = () => {
       },
       {
         onSuccess: () => {
-          toast.success(`Strategy started successfully`, {
+          toast.success(t('toast.startSuccess'), {
             duration: 3000,
             icon: '🚀',
           })
@@ -175,22 +177,22 @@ export const Strategies: React.FC = () => {
           const errorMessage = error.message.toLowerCase()
 
           if (errorMessage.includes('already running')) {
-            toast.error('Strategy is already running', {
+            toast.error(t('toast.alreadyRunning'), {
               duration: 4000,
               icon: '⚠️',
             })
           } else if (errorMessage.includes('not found')) {
-            toast.error('Strategy configuration not found. Please check database settings.', {
+            toast.error(t('toast.configNotFound'), {
               duration: 5000,
               icon: '❌',
             })
           } else if (errorMessage.includes('network') || errorMessage.includes('timeout')) {
-            toast.error('Network error. Please check connection and try again.', {
+            toast.error(t('toast.networkError'), {
               duration: 5000,
               icon: '🌐',
             })
           } else {
-            toast.error(`Failed to start strategy: ${error.message}`, {
+            toast.error(t('toast.startFailed', { message: error.message }), {
               duration: 5000,
               icon: '⚠️',
             })
@@ -206,7 +208,7 @@ export const Strategies: React.FC = () => {
       {
         onSuccess: () => {
           setActiveStrategyProcess(null)
-          toast.success(`Strategy stopped successfully`, {
+          toast.success(t('toast.stopSuccess'), {
             duration: 3000,
             icon: '✋',
           })
@@ -216,7 +218,7 @@ export const Strategies: React.FC = () => {
           const errorMessage = error.message.toLowerCase()
 
           if (errorMessage.includes('not running')) {
-            toast.error('Strategy is not running', {
+            toast.error(t('toast.notRunning'), {
               duration: 4000,
               icon: '⚠️',
             })
@@ -225,12 +227,12 @@ export const Strategies: React.FC = () => {
               setActiveStrategyProcess(null)
             }
           } else if (errorMessage.includes('network') || errorMessage.includes('timeout')) {
-            toast.error('Network error. Please check connection and try again.', {
+            toast.error(t('toast.networkError'), {
               duration: 5000,
               icon: '🌐',
             })
           } else {
-            toast.error(`Failed to stop strategy: ${error.message}`, {
+            toast.error(t('toast.stopFailed', { message: error.message }), {
               duration: 5000,
               icon: '⚠️',
             })
@@ -261,21 +263,19 @@ export const Strategies: React.FC = () => {
       <LiveOnlyNotice />
       <div className='space-y-2'>
         <div className='flex flex-wrap items-center justify-between gap-2'>
-          <h2 className='text-xl font-bold text-alpine-900'>Strategy Management</h2>
+          <h2 className='text-xl font-bold text-alpine-900'>{t('page.title')}</h2>
           {canManage && (
             <button
               onClick={() => setStrategyModalOpen(true)}
               disabled={createProcessConfig.isPending || startProcess.isPending || readOnly}
               className='px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-md hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed'
             >
-              {createProcessConfig.isPending ? 'Saving…' : 'Register Strategy'}
+              {createProcessConfig.isPending ? t('page.saving') : t('page.register')}
             </button>
           )}
         </div>
         <p className='text-xs text-muted-500'>
-          {canManage
-            ? 'Register new strategy processes directly from the UI. Autostart keeps the process enabled across restarts.'
-            : 'View configured strategies and their status. Contact an operator or admin to manage strategies.'}
+          {canManage ? t('page.descriptionCanManage') : t('page.descriptionViewer')}
         </p>
       </div>
       {}
@@ -283,7 +283,7 @@ export const Strategies: React.FC = () => {
         <div className='flex-1'>
           <input
             type='text'
-            placeholder='Search strategies...'
+            placeholder={t('page.searchPlaceholder')}
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
             className='input'
@@ -293,16 +293,16 @@ export const Strategies: React.FC = () => {
           value={statusFilter}
           onChange={value => setStatusFilter(value as 'all' | 'running' | 'stopped')}
           options={[
-            { value: 'all', label: 'All statuses' },
-            { value: 'running', label: 'Running' },
-            { value: 'stopped', label: 'Stopped' },
+            { value: 'all', label: t('page.filter.all') },
+            { value: 'running', label: t('page.filter.running') },
+            { value: 'stopped', label: t('page.filter.stopped') },
           ]}
           className='max-w-48'
         />
       </div>
       {}
       <div className='space-y-4'>
-        <h3 className='text-lg font-medium text-alpine-900'>Configured Strategies</h3>
+        <h3 className='text-lg font-medium text-alpine-900'>{t('page.configuredHeading')}</h3>
         {filteredStrategies.length > 0 && (
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
             {filteredStrategies.map(strategy => (
@@ -326,7 +326,7 @@ export const Strategies: React.FC = () => {
         )}
         {filteredStrategies.length === 0 && strategies.length > 0 && (
           <div className='bg-alpine-50 border border-dark-600 rounded-2xl p-6 text-center'>
-            <p className='text-muted-500'>No strategies match your filters</p>
+            <p className='text-muted-500'>{t('page.noMatches')}</p>
             <button
               onClick={() => {
                 setSearchTerm('')
@@ -334,7 +334,7 @@ export const Strategies: React.FC = () => {
               }}
               className='mt-2 text-sm text-brand-600 hover:text-brand-700'
             >
-              Clear filters
+              {t('page.clearFilters')}
             </button>
           </div>
         )}
@@ -343,11 +343,9 @@ export const Strategies: React.FC = () => {
             <div className='mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-dark-700'>
               <Gauge className='text-muted-500' size={24} />
             </div>
-            <p className='text-muted-500 font-medium'>No strategies configured</p>
+            <p className='text-muted-500 font-medium'>{t('page.emptyTitle')}</p>
             <p className='text-sm text-muted-400 mt-1'>
-              {canManage
-                ? 'Register a strategy to start algorithmic trading'
-                : 'No strategies have been configured yet'}
+              {canManage ? t('page.emptyCanManage') : t('page.emptyViewer')}
             </p>
             {canManage && (
               <button
@@ -355,7 +353,7 @@ export const Strategies: React.FC = () => {
                 disabled={readOnly}
                 className='mt-3 px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-md hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed'
               >
-                Register Strategy
+                {t('page.register')}
               </button>
             )}
           </div>

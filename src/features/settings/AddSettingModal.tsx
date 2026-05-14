@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { ThemeSelect } from '../../components/ThemeSelect'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
@@ -16,6 +17,7 @@ export const AddSettingModal = ({
   onSave,
   existingCategories,
 }: AddSettingModalProps) => {
+  const { t } = useTranslation('settings')
   const readOnly = useIsReadOnly()
   const [key, setKey] = useState('')
   const [value, setValue] = useState('')
@@ -41,13 +43,13 @@ export const AddSettingModal = ({
 
   const handleSave = async () => {
     if (!key.trim()) {
-      setError('Key is required')
+      setError(t('addModal.validation.keyRequired'))
 
       return
     }
 
     if (!value.trim()) {
-      setError('Value is required')
+      setError(t('addModal.validation.valueRequired'))
 
       return
     }
@@ -55,7 +57,7 @@ export const AddSettingModal = ({
     const finalCategory = newCategory.trim() || category
 
     if (!finalCategory) {
-      setError('Category is required')
+      setError(t('addModal.validation.categoryRequired'))
 
       return
     }
@@ -66,14 +68,14 @@ export const AddSettingModal = ({
       await onSave(key.trim(), value, finalCategory, description.trim())
       handleClose()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to create setting')
+      setError(err instanceof Error ? err.message : t('errors.createFailed'))
     } finally {
       setSaving(false)
     }
   }
 
   return (
-    <Modal open={open} onClose={handleClose} title='Add New Setting' size='md'>
+    <Modal open={open} onClose={handleClose} title={t('addModal.title')} size='md'>
       <div className='space-y-4'>
         {error && (
           <div className='p-3 bg-loss-50 border border-loss-500 rounded-lg'>
@@ -82,29 +84,27 @@ export const AddSettingModal = ({
         )}
         <div>
           <label htmlFor='setting-key' className='block text-sm font-medium text-muted-700 mb-1'>
-            Key <span className='text-loss-400'>*</span>
+            {t('addModal.keyLabel')} <span className='text-loss-400'>*</span>
           </label>
           <input
             id='setting-key'
             type='text'
             value={key}
             onChange={e => setKey(e.target.value)}
-            placeholder='e.g., walutomat.api_key'
+            placeholder={t('addModal.keyPlaceholder')}
             className='w-full px-3 py-2 text-sm bg-alpine-50 border border-dark-600 rounded-lg text-alpine-900 placeholder-muted-400 focus:outline-none focus:border-brand-500'
           />
-          <p className='mt-1 text-xs text-muted-500'>
-            Use dot notation for nested settings (e.g., category.subcategory.name)
-          </p>
+          <p className='mt-1 text-xs text-muted-500'>{t('addModal.keyHint')}</p>
         </div>
         <div>
           <label htmlFor='setting-value' className='block text-sm font-medium text-muted-700 mb-1'>
-            Value <span className='text-loss-400'>*</span>
+            {t('addModal.valueLabel')} <span className='text-loss-400'>*</span>
           </label>
           <textarea
             id='setting-value'
             value={value}
             onChange={e => setValue(e.target.value)}
-            placeholder='Setting value'
+            placeholder={t('addModal.valuePlaceholder')}
             rows={3}
             className='w-full px-3 py-2 text-sm bg-alpine-50 border border-dark-600 rounded-lg text-alpine-900 placeholder-muted-400 focus:outline-none focus:border-brand-500 font-mono'
           />
@@ -114,7 +114,7 @@ export const AddSettingModal = ({
             htmlFor='setting-category'
             className='block text-sm font-medium text-muted-700 mb-1'
           >
-            Category <span className='text-loss-400'>*</span>
+            {t('addModal.categoryLabel')} <span className='text-loss-400'>*</span>
           </label>
           <div className='flex gap-2'>
             <ThemeSelect
@@ -125,7 +125,7 @@ export const AddSettingModal = ({
                 if (val) setNewCategory('')
               }}
               options={existingCategories.map(cat => ({ value: cat, label: cat }))}
-              placeholder='Select existing or create new'
+              placeholder={t('addModal.categorySelectPlaceholder')}
               className='flex-1'
             />
           </div>
@@ -137,7 +137,7 @@ export const AddSettingModal = ({
                 setNewCategory(e.target.value)
                 if (e.target.value) setCategory('')
               }}
-              placeholder='Or enter new category name'
+              placeholder={t('addModal.newCategoryPlaceholder')}
               className='w-full px-3 py-2 text-sm bg-alpine-50 border border-dark-600 rounded-lg text-alpine-900 placeholder-muted-400 focus:outline-none focus:border-brand-500'
             />
           </div>
@@ -147,13 +147,13 @@ export const AddSettingModal = ({
             htmlFor='setting-description'
             className='block text-sm font-medium text-muted-700 mb-1'
           >
-            Description
+            {t('addModal.descriptionLabel')}
           </label>
           <textarea
             id='setting-description'
             value={description}
             onChange={e => setDescription(e.target.value)}
-            placeholder='Optional description'
+            placeholder={t('addModal.descriptionPlaceholder')}
             rows={2}
             className='w-full px-3 py-2 text-sm bg-alpine-50 border border-dark-600 rounded-lg text-alpine-900 placeholder-muted-400 focus:outline-none focus:border-brand-500'
           />
@@ -163,14 +163,14 @@ export const AddSettingModal = ({
             onClick={handleClose}
             className='px-4 py-2 text-sm bg-muted-100 hover:bg-muted-200 text-alpine-900 rounded-lg transition-colors'
           >
-            Cancel
+            {t('addModal.cancel')}
           </button>
           <button
             onClick={handleSave}
             disabled={saving || readOnly}
             className='px-4 py-2 text-sm bg-brand-600 hover:bg-brand-700 disabled:bg-brand-800 disabled:cursor-not-allowed text-white rounded-lg transition-colors'
           >
-            {saving ? 'Creating...' : 'Create Setting'}
+            {saving ? t('addModal.creating') : t('addModal.create')}
           </button>
         </div>
       </div>

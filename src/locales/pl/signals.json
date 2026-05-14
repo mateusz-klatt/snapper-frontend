@@ -1,1 +1,39 @@
-{}
+{
+  "page": {
+    "title": "Sygnały"
+  },
+  "filters": {
+    "allStrategies": "Wszystkie strategie"
+  },
+  "actions": {
+    "export": "Eksportuj"
+  },
+  "stats": {
+    "total": "Suma",
+    "buy": "Kupno",
+    "sell": "Sprzedaż",
+    "avgStrength": "Średnia siła"
+  },
+  "card": {
+    "strength": "Siła",
+    "price": "Cena",
+    "exchange": "Giełda",
+    "reason": "Powód:",
+    "noPrice": "N/D"
+  },
+  "strength": {
+    "strong": "Silny",
+    "medium": "Średni",
+    "weak": "Słaby",
+    "veryWeak": "Bardzo słaby"
+  },
+  "time": {
+    "justNow": "Przed chwilą",
+    "minutesAgo": "{{count}} min temu",
+    "hoursAgo": "{{count}} godz. temu"
+  },
+  "empty": {
+    "title": "Nie znaleziono sygnałów",
+    "message": "Żadne sygnały transakcyjne nie pasują do bieżących filtrów."
+  }
+}

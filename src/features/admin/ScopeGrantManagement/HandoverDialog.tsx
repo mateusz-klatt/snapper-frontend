@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ArrowRightLeft, X } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
@@ -21,6 +22,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
   onClose,
   readOnly,
 }) => {
+  const { t } = useTranslation('admin')
   const [toOperatorId, setToOperatorId] = useState('')
   const [reason, setReason] = useState('')
   const { data: operatorsData } = useOperators()
@@ -53,7 +55,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
       },
       {
         onSuccess: () => {
-          toast.success('Scope grant handed over')
+          toast.success(t('scopeGrants.handover.toast.completed'))
           handleClose()
         },
         onError: (err: Error) => {
@@ -62,9 +64,9 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             err.message.toLowerCase().includes('conflict') ||
             err.message.toLowerCase().includes('already')
           ) {
-            toast.error('Conflict: the destination operator already holds a conflicting grant')
+            toast.error(t('scopeGrants.handover.toast.conflictError'))
           } else {
-            toast.error(err.message || 'Error handing over scope grant')
+            toast.error(err.message || t('scopeGrants.handover.toast.handoverError'))
           }
         },
       }
@@ -75,24 +77,29 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
     grant?.scope_kind === 'underlying' ? grant.underlying_public_id : grant?.instrument_public_id
 
   return (
-    <Modal open={open} onClose={handleClose} title='Handover Scope Grant' size='md'>
+    <Modal open={open} onClose={handleClose} title={t('scopeGrants.handover.title')} size='md'>
       <div className='space-y-6'>
         {grant && (
           <div className='bg-dark-700 rounded-lg p-4 space-y-2'>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Current holder</span>
+              <span className='text-muted-500'>
+                {t('scopeGrants.handover.fields.currentHolder')}
+              </span>
               <span className='text-alpine-900 font-medium'>
                 {operatorLabel(grant.operator_public_id)}
               </span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Scope</span>
+              <span className='text-muted-500'>{t('scopeGrants.handover.fields.scope')}</span>
               <span className='text-alpine-900'>
-                {grant.scope_kind}: {scopeTarget}
+                {t('scopeGrants.handover.fields.scopeValue', {
+                  kind: grant.scope_kind,
+                  target: scopeTarget,
+                })}
               </span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Wallet</span>
+              <span className='text-muted-500'>{t('scopeGrants.handover.fields.wallet')}</span>
               <span className='text-alpine-900'>{grant.wallet_public_id}</span>
             </div>
           </div>
@@ -102,14 +109,14 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             htmlFor='handover-operator'
             className='block text-sm font-medium text-alpine-900 mb-2'
           >
-            Transfer to operator
+            {t('scopeGrants.handover.fields.transferTo')}
           </label>
           <ThemeSelect
             id='handover-operator'
             value={toOperatorId}
             onChange={setToOperatorId}
             options={availableOperators.map(o => ({ value: o.public_id, label: o.label }))}
-            placeholder='Select destination operator...'
+            placeholder={t('scopeGrants.handover.fields.transferToPlaceholder')}
           />
         </div>
         <div>
@@ -117,7 +124,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             htmlFor='handover-reason'
             className='block text-sm font-medium text-alpine-900 mb-2'
           >
-            Reason (optional)
+            {t('scopeGrants.handover.fields.reason')}
           </label>
           <input
             type='text'
@@ -125,7 +132,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             value={reason}
             onChange={e => setReason(e.target.value)}
             className='w-full rounded-md border border-dark-600 bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500'
-            placeholder='e.g. Shift change'
+            placeholder={t('scopeGrants.handover.fields.reasonPlaceholder')}
           />
         </div>
         <div className='flex justify-end space-x-3 pt-4 border-t border-dark-600'>
@@ -137,7 +144,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             disabled={handoverMutation.isPending}
           >
             <X className='w-3.5 h-3.5' />
-            Cancel
+            {t('common.cancel')}
           </Button>
           <Button
             type='button'
@@ -148,7 +155,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             onClick={handleHandover}
           >
             <ArrowRightLeft className='w-3.5 h-3.5' />
-            Handover
+            {t('scopeGrants.handover.actions.handover')}
           </Button>
         </div>
       </div>

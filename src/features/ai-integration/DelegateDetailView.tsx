@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { ChevronLeft, Edit3, PowerOff, Save } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../../components/ui'
 import { useAiDelegate, useUpdateAiDelegateCaps } from '../../hooks/queries/ai-delegates'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
@@ -11,6 +12,7 @@ export function DelegateDetailView({
   publicId,
   onBack,
 }: Readonly<{ publicId: string; onBack: () => void }>): React.ReactElement {
+  const { t } = useTranslation('aiIntegration')
   const detailQuery = useAiDelegate(publicId)
   const readOnly = useIsReadOnly()
   const updateMutation = useUpdateAiDelegateCaps()
@@ -25,7 +27,7 @@ export function DelegateDetailView({
   const delegate = detailQuery.data?.payload
 
   if (detailQuery.isLoading) {
-    return <div className='p-6 text-muted-500'>Loading delegate…</div>
+    return <div className='p-6 text-muted-500'>{t('detail.loading')}</div>
   }
 
   if (delegate === undefined) {
@@ -33,9 +35,9 @@ export function DelegateDetailView({
       <div className='p-6 space-y-3'>
         <Button variant='secondary' onClick={onBack}>
           <ChevronLeft className='w-4 h-4 mr-1 inline' />
-          Back
+          {t('detail.back')}
         </Button>
-        <p className='text-sm text-muted-600'>Delegate not found or unavailable.</p>
+        <p className='text-sm text-muted-600'>{t('detail.notFound')}</p>
       </div>
     )
   }
@@ -60,7 +62,7 @@ export function DelegateDetailView({
     const parsedCancels = parseNullableInt(activeDraft.maxCancelsPerMinute)
 
     if (parsedOpen === 'error' || parsedDaily === 'error' || parsedCancels === 'error') {
-      toast.error('Caps must be non-negative integers or empty.')
+      toast.error(t('detail.toast.negativeIntegersError'))
 
       return
     }
@@ -76,11 +78,11 @@ export function DelegateDetailView({
 
     try {
       await updateMutation.mutateAsync({ publicId, body })
-      toast.success('Caps updated')
+      toast.success(t('detail.toast.capsUpdated'))
       setEditing(false)
       setDraft(null)
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : 'Failed to update caps')
+      toast.error(err instanceof Error ? err.message : t('detail.toast.failedToUpdateCaps'))
     }
   }
 
@@ -89,7 +91,7 @@ export function DelegateDetailView({
       <div className='flex items-center justify-between'>
         <Button variant='secondary' onClick={onBack}>
           <ChevronLeft className='w-4 h-4 mr-1 inline' />
-          Back to list
+          {t('detail.backToList')}
         </Button>
         <div className='flex items-center gap-2'>
           {!editing && (
@@ -99,13 +101,13 @@ export function DelegateDetailView({
               disabled={readOnly || !delegate.is_active}
             >
               <Edit3 className='w-4 h-4 mr-1 inline' />
-              Update caps
+              {t('detail.updateCaps')}
             </Button>
           )}
           {delegate.is_active && (
             <Button variant='danger' onClick={() => setRevokeOpen(true)} disabled={readOnly}>
               <PowerOff className='w-4 h-4 mr-1 inline' />
-              Revoke
+              {t('detail.revoke')}
             </Button>
           )}
         </div>
@@ -118,45 +120,45 @@ export function DelegateDetailView({
 
       <dl className='grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm'>
         <div>
-          <dt className='text-muted-500'>Status</dt>
+          <dt className='text-muted-500'>{t('detail.status')}</dt>
           <dd className={delegate.is_active ? 'text-gain-700' : 'text-muted-600'}>
-            {delegate.is_active ? 'Active' : 'Revoked'}
+            {delegate.is_active ? t('detail.active') : t('detail.revoked')}
           </dd>
         </div>
         <div>
-          <dt className='text-muted-500'>Created at</dt>
+          <dt className='text-muted-500'>{t('detail.createdAt')}</dt>
           <dd>{new Date(delegate.created_at).toLocaleString()}</dd>
         </div>
         <div>
-          <dt className='text-muted-500'>Created by (user public_id)</dt>
+          <dt className='text-muted-500'>{t('detail.createdBy')}</dt>
           <dd className='font-mono text-xs'>{delegate.created_by_user_public_id}</dd>
         </div>
         <div>
-          <dt className='text-muted-500'>Public ID</dt>
+          <dt className='text-muted-500'>{t('detail.publicId')}</dt>
           <dd className='font-mono text-xs'>{delegate.public_id}</dd>
         </div>
       </dl>
 
       <section className='border-t border-dark-600 pt-4'>
-        <h2 className='text-sm font-semibold text-muted-800 mb-2'>Trading caps</h2>
+        <h2 className='text-sm font-semibold text-muted-800 mb-2'>{t('detail.tradingCaps')}</h2>
         {editing ? (
           draft !== null && (
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
               <CapEditor
                 id='edit-max-open'
-                label='Max open orders'
+                label={t('detail.maxOpenOrders')}
                 value={draft.maxOpenOrders}
                 onChange={v => setDraft({ ...draft, maxOpenOrders: v })}
               />
               <CapEditor
                 id='edit-max-daily'
-                label='Max daily notional USD'
+                label={t('detail.maxDailyNotionalUsd')}
                 value={draft.maxDailyNotionalUsd}
                 onChange={v => setDraft({ ...draft, maxDailyNotionalUsd: v })}
               />
               <CapEditor
                 id='edit-max-cancels'
-                label='Max cancels per minute'
+                label={t('detail.maxCancelsPerMinute')}
                 value={draft.maxCancelsPerMinute}
                 onChange={v => setDraft({ ...draft, maxCancelsPerMinute: v })}
               />
@@ -166,7 +168,7 @@ export function DelegateDetailView({
                   onClick={cancelEditing}
                   disabled={updateMutation.isPending}
                 >
-                  Cancel
+                  {t('detail.cancel')}
                 </Button>
                 <Button
                   variant='primary'
@@ -175,7 +177,7 @@ export function DelegateDetailView({
                   loading={updateMutation.isPending}
                 >
                   <Save className='w-4 h-4 mr-1 inline' />
-                  Save
+                  {t('detail.save')}
                 </Button>
               </div>
             </div>
@@ -183,23 +185,23 @@ export function DelegateDetailView({
         ) : (
           <dl className='grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-sm'>
             <div>
-              <dt className='text-muted-500'>Max open orders</dt>
-              <dd>{delegate.caps.max_open_orders ?? '(default)'}</dd>
+              <dt className='text-muted-500'>{t('detail.maxOpenOrders')}</dt>
+              <dd>{delegate.caps.max_open_orders ?? t('detail.defaultValue')}</dd>
             </div>
             <div>
-              <dt className='text-muted-500'>Max daily notional USD</dt>
-              <dd>{delegate.caps.max_daily_notional_usd ?? '(default)'}</dd>
+              <dt className='text-muted-500'>{t('detail.maxDailyNotionalUsd')}</dt>
+              <dd>{delegate.caps.max_daily_notional_usd ?? t('detail.defaultValue')}</dd>
             </div>
             <div>
-              <dt className='text-muted-500'>Max cancels per minute</dt>
-              <dd>{delegate.caps.max_cancels_per_minute ?? '(default)'}</dd>
+              <dt className='text-muted-500'>{t('detail.maxCancelsPerMinute')}</dt>
+              <dd>{delegate.caps.max_cancels_per_minute ?? t('detail.defaultValue')}</dd>
             </div>
             <div>
-              <dt className='text-muted-500'>Per-instrument max quantity</dt>
+              <dt className='text-muted-500'>{t('detail.perInstrument')}</dt>
               <dd className='font-mono text-xs'>
                 {delegate.caps.max_order_quantity_per_instrument
                   ? JSON.stringify(delegate.caps.max_order_quantity_per_instrument)
-                  : '(default)'}
+                  : t('detail.defaultValue')}
               </dd>
             </div>
           </dl>
@@ -226,6 +228,8 @@ function CapEditor({
   value: string
   onChange: (v: string) => void
 }>): React.ReactElement {
+  const { t } = useTranslation('aiIntegration')
+
   return (
     <div>
       <label htmlFor={id} className='block text-sm mb-1'>
@@ -237,7 +241,7 @@ function CapEditor({
         min={0}
         value={value}
         onChange={e => onChange(e.target.value)}
-        placeholder='(default)'
+        placeholder={t('detail.editorPlaceholder')}
         className='w-full px-3 py-2 rounded-lg border border-dark-600 bg-alpine-50'
       />
     </div>
