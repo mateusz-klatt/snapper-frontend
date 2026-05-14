@@ -1,18 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import LoginForm from './LoginForm'
 import { useAuth } from '../../stores/auth'
+import { renderWithI18n } from '../../test/renderWithI18n'
+import { useAppStore } from '../../stores/app'
 
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(),
 }))
 const mockUseAuth = vi.mocked(useAuth)
 
-const renderWithMocks = (ui: ReactNode) => {
-  return render(ui)
-}
+const renderWithMocks = (ui: ReactNode) => renderWithI18n(ui as never)
 
 describe('LoginForm', () => {
   const mockLogin = vi.fn()
@@ -20,6 +20,7 @@ describe('LoginForm', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
+    useAppStore.setState({ locale: 'ie' })
     mockUseAuth.mockReturnValue({
       login: mockLogin,
       isLoading: false,
@@ -35,16 +36,34 @@ describe('LoginForm', () => {
       canAccess: vi.fn(),
     } as never)
   })
-  it('renders login form', () => {
+
+  it('renders login form labels (English)', () => {
     renderWithMocks(<LoginForm />)
     expect(screen.getByLabelText(/username/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument()
     expect(screen.getByRole('button', { name: /sign in/i })).toBeInTheDocument()
   })
+
+  it('renders the Snapper Trading title', () => {
+    renderWithMocks(<LoginForm />)
+    expect(screen.getByRole('heading', { name: /snapper trading login/i })).toBeInTheDocument()
+  })
+
+  it('renders Polish copy when locale is pl', async () => {
+    useAppStore.setState({ locale: 'pl' })
+    renderWithI18n(<LoginForm />, 'pl')
+    await waitFor(() => {
+      expect(
+        screen.getByRole('heading', { name: /logowanie snapper trading/i })
+      ).toBeInTheDocument()
+    })
+  })
+
   it('disables submit button when fields are empty', () => {
     renderWithMocks(<LoginForm />)
     expect(screen.getByRole('button', { name: /sign in/i })).toBeDisabled()
   })
+
   it('enables submit button when fields are filled', async () => {
     const user = userEvent.setup()
 
@@ -53,6 +72,7 @@ describe('LoginForm', () => {
     await user.type(screen.getByLabelText(/password/i), 'password123')
     expect(screen.getByRole('button', { name: /sign in/i })).not.toBeDisabled()
   })
+
   it('calls login on form submit', async () => {
     const user = userEvent.setup()
     const onSuccess = vi.fn()
@@ -70,6 +90,7 @@ describe('LoginForm', () => {
       })
     })
   })
+
   it('displays error message', () => {
     mockUseAuth.mockReturnValue({
       login: mockLogin,
@@ -88,6 +109,7 @@ describe('LoginForm', () => {
     renderWithMocks(<LoginForm />)
     expect(screen.getByText('Invalid credentials')).toBeInTheDocument()
   })
+
   it('shows loading state', () => {
     mockUseAuth.mockReturnValue({
       login: mockLogin,
@@ -106,6 +128,7 @@ describe('LoginForm', () => {
     renderWithMocks(<LoginForm />)
     expect(screen.getByText(/signing in/i)).toBeInTheDocument()
   })
+
   it('renders documentation PDF link', () => {
     renderWithMocks(<LoginForm />)
     const link = screen.getByRole('link', { name: /documentation \(pdf\)/i })
@@ -114,6 +137,12 @@ describe('LoginForm', () => {
     expect(link).toHaveAttribute('target', '_blank')
     expect(link).toHaveAttribute('rel', 'noopener noreferrer')
   })
+
+  it('renders the locale switcher trigger', () => {
+    renderWithMocks(<LoginForm />)
+    expect(screen.getByRole('button', { name: /switch language/i })).toBeInTheDocument()
+  })
+
   it('handles login error gracefully', async () => {
     const loginError = new Error('Network error')
 

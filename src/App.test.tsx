@@ -78,6 +78,8 @@ const defaultAppState = {
   currentWalletPublicId: null as string | null,
   setCurrentOperatorPublicId: vi.fn(),
   setCurrentWalletPublicId: vi.fn(),
+  locale: 'ie' as const,
+  setLocale: vi.fn(),
 }
 
 type AppState = typeof defaultAppState
