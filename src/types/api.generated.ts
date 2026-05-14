@@ -7035,6 +7035,12 @@ export interface Operations {
                     "application/json": Components["schemas"]["CandleListResponse"];
                 };
             };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -7073,6 +7079,12 @@ export interface Operations {
                 content: {
                     "application/json": Components["schemas"]["CandleListResponse"];
                 };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             422: {
                 headers: {
@@ -7125,6 +7137,12 @@ export interface Operations {
                 content: {
                     "application/json": Components["schemas"]["HTTPValidationError"];
                 };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             503: {
                 headers: {
