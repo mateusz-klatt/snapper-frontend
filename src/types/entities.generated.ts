@@ -605,6 +605,52 @@ export interface Position {
 }
 
 /**
+ * Canonical ProcessConfiguredEvent entity.
+ * From WebSocket ProcessConfiguredEventData.
+ */
+export interface ProcessConfiguredEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  processNames: string[]
+  snapshotAt: Date
+}
+
+/**
+ * Canonical ProcessRunEvent entity.
+ * From WebSocket ProcessRunEventData.
+ */
+export interface ProcessRunEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  processName: string
+  runId: string
+  status: string
+  startedAt: Date
+  completedAt?: Date | null
+  exitCode?: number | null
+}
+
+/**
+ * Canonical ProcessSummaryEvent entity.
+ * From WebSocket ProcessSummaryEventData.
+ */
+export interface ProcessSummaryEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  processes: Record<string, unknown>[]
+  snapshotAt: Date
+}
+
+/**
  * Canonical RelatedInstrument entity.
  * From WebSocket RelatedInstrumentData.
  */
@@ -751,6 +797,20 @@ export interface Signal {
   userPublicId?: string | null
   aiReviewPublicId?: string | null
   aiReviewDispatchVersion?: number | null
+}
+
+/**
+ * Canonical StrategyListEvent entity.
+ * From WebSocket StrategyListEventData.
+ */
+export interface StrategyListEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  strategyClasses: string[]
+  snapshotAt: Date
 }
 
 /**

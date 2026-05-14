@@ -72,24 +72,26 @@ export const useStopProcessByName = () => {
 }
 
 export const useConfiguredProcesses = () => {
-  const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const asOf = useAppStore(s => s.asOf)
 
   return useQuery<ConfiguredProcessesResponse>({
     queryKey: queryKeys.configuredProcesses(asOf),
     queryFn: () => getConfiguredProcesses(),
-    refetchInterval: isTimeTraveling ? false : 5000,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   })
 }
 
 export const useProcessSummary = () => {
-  const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const asOf = useAppStore(s => s.asOf)
 
   return useQuery<ProcessSummaryResponse>({
     queryKey: queryKeys.processSummary(asOf),
     queryFn: () => getProcessSummary(),
-    refetchInterval: isTimeTraveling ? false : 5000,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   })
 }
 
@@ -106,7 +108,6 @@ export const useProcessRuns = (options?: {
   limit?: number | undefined
   enabled?: boolean
 }) => {
-  const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const asOf = useAppStore(s => s.asOf)
 
   return useQuery<ProcessRunsResponse>({
@@ -116,7 +117,9 @@ export const useProcessRuns = (options?: {
         ...(options?.name === undefined ? {} : { name: options.name }),
         ...(options?.limit === undefined ? {} : { limit: options.limit }),
       }),
-    refetchInterval: isTimeTraveling ? false : 5000,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     enabled: options?.enabled ?? true,
   })
 }

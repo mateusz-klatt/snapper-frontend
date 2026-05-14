@@ -5,12 +5,13 @@ import type { StrategyListResponse } from '../../types/api'
 import { queryKeys } from './keys'
 
 export const useStrategies = () => {
-  const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const asOf = useAppStore(s => s.asOf)
 
   return useQuery<StrategyListResponse>({
     queryKey: queryKeys.strategies(asOf),
     queryFn: () => getStrategies(),
-    refetchInterval: isTimeTraveling ? false : 5000,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   })
 }

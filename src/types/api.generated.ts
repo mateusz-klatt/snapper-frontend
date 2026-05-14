@@ -564,22 +564,6 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
-    "/api/market/cache/candles/{exchange}/{native_symbol}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_cached_candles_api_market_cache_candles__exchange___native_symbol__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/api/market/cache/stats/{exchange_a}/{symbol_a}/{exchange_b}/{symbol_b}": {
         parameters: {
             query?: never;
@@ -1276,6 +1260,38 @@ export type Paths = {
             cookie?: never;
         };
         get: Operations["get_candles_api_candles_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/candles/db": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_candles_db_api_candles_db_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/candles/cache": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_candles_cache_api_candles_cache_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -5411,39 +5427,6 @@ export interface Operations {
             };
         };
     };
-    get_cached_candles_api_market_cache_candles__exchange___native_symbol__get: {
-        parameters: {
-            query?: {
-                timeframe?: string;
-                limit?: number;
-            };
-            header?: never;
-            path: {
-                exchange: string;
-                native_symbol: string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": Components["schemas"]["CachedCandlesResponse"];
-                };
-            };
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": Components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
-    };
     get_cached_pair_stats_api_market_cache_stats__exchange_a___symbol_a___exchange_b___symbol_b__get: {
         parameters: {
             query?: never;
@@ -7061,6 +7044,89 @@ export interface Operations {
                 };
             };
             500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_candles_db_api_candles_db_get: {
+        parameters: {
+            query: {
+                instrument: string;
+                exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+                timeframe: string;
+                limit?: number;
+                as_of?: string | null | undefined;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["CandleListResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_candles_cache_api_candles_cache_get: {
+        parameters: {
+            query: {
+                instrument: string;
+                exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+                timeframe?: string;
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["CachedCandlesResponse"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+            503: {
                 headers: {
                     [name: string]: unknown;
                 };

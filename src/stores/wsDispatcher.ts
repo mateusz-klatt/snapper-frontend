@@ -23,6 +23,10 @@ import {
   isAiReviewRequest,
   isAiReviewDecisionAck,
   isAiReviewCapsViolation,
+  isProcessSummaryEvent,
+  isProcessConfiguredEvent,
+  isProcessRunEvent,
+  isStrategyListEvent,
 } from '../types/ws'
 import type { CachedCandle, CachedCandlesResponse } from '../types/api'
 import {
@@ -30,6 +34,7 @@ import {
   executionDataFromEnvelope,
   signalDataFromEnvelope,
 } from '../lib/transforms'
+import { queryKeys } from '../hooks/queries/keys'
 
 export type AiReviewActivityFrame =
   | AiReviewRequestFrameData
@@ -116,6 +121,10 @@ export class WSDispatcher {
       client.onMessage('ai_review.request', this.handleAiReviewActivityMessage.bind(this)),
       client.onMessage('ai_review.decision_ack', this.handleAiReviewActivityMessage.bind(this)),
       client.onMessage('ai_review.caps_violation', this.handleAiReviewActivityMessage.bind(this)),
+      client.onMessage('process_summary_event', this.handleProcessSummaryEvent.bind(this)),
+      client.onMessage('process_configured_event', this.handleProcessConfiguredEvent.bind(this)),
+      client.onMessage('process_run_event', this.handleProcessRunEvent.bind(this)),
+      client.onMessage('strategy_list_event', this.handleStrategyListEvent.bind(this)),
       client.onMessage('subscription_success', () => {
         useAppStore.getState().setSubscribedTopics(client.getSubscribedTopics())
       }),
@@ -134,6 +143,10 @@ export class WSDispatcher {
         }
 
         useAppStore.getState().setConnected(connected)
+
+        if (connected) {
+          this.invalidateOnReconnect()
+        }
       })
     )
 
@@ -144,7 +157,27 @@ export class WSDispatcher {
 
       useAppStore.getState().setConnected(true)
       useAppStore.getState().setSubscribedTopics(client.getSubscribedTopics())
+      this.invalidateOnReconnect()
     }
+  }
+  /**
+   * Mirror the reconnect-invalidation block both branches share.
+   *
+   * `useWSDispatcher` detaches the dispatcher when the connection
+   * drops; on reconnect the `attach()` already-connected branch runs
+   * INSTEAD of the `onConnection(true)` callback. The Codex Q2
+   * post-commit review caught that asymmetry — both paths must
+   * invalidate the same set of caches or hooks that dropped polling
+   * will go stale until the next manual refresh.
+   */
+  private invalidateOnReconnect(): void {
+    this.invalidateActive(queryKeys.pendingAiReviewsAll)
+    this.invalidateActive(queryKeys.positionsAll)
+    this.invalidateActive(queryKeys.trailingStopAll)
+    this.invalidateActive(queryKeys.processSummaryAll)
+    this.invalidateActive(queryKeys.configuredProcessesAll)
+    this.invalidateActive(queryKeys.processRunsAll)
+    this.invalidateActive(queryKeys.strategiesAll)
   }
   detach(): void {
     this.unsubscribers.forEach(unsub => unsub())
@@ -309,6 +342,7 @@ export class WSDispatcher {
     }
   }
   private mergeOrderIntoCache(envelope: OrderData): void {
+    this.invalidateActive(queryKeys.positionsAll)
     const queries = this.queryClient
       .getQueriesData<OrderData[]>({ queryKey: ['orders'] })
       .filter(([key]) => key[key.length - 1] === null)
@@ -339,6 +373,8 @@ export class WSDispatcher {
     }
   }
   private mergeExecutionIntoCache(envelope: ExecutionData): void {
+    this.invalidateActive(queryKeys.positionsAll)
+    this.invalidateActive(queryKeys.trailingStopAll)
     const queries = this.queryClient
       .getQueriesData<ExecutionData[]>({ queryKey: ['executions'] })
       .filter(([key]) => key[key.length - 1] === null)
@@ -440,6 +476,51 @@ export class WSDispatcher {
     }
 
     this.mergeAiReviewActivity(message)
+    this.invalidateActive(queryKeys.pendingAiReviewsAll)
+  }
+  /**
+   * Invalidate paths the four 2026-05-14 emit-site topics drive.
+   *
+   * Backend `ProcessLauncherService` publishes a full snapshot on
+   * each topic, but the event payloads do not match the REST cache
+   * shapes 1:1 (summary returns aggregated category counts, configured
+   * is a `ConfiguredProcess` list, etc.) so we invalidate and let
+   * React Query refetch via the existing REST path. `refetchType:
+   * 'active'` keeps background tabs from re-fetching unnecessarily.
+   */
+  private handleProcessSummaryEvent(message: WebSocketMessages): void {
+    if (!isProcessSummaryEvent(message)) return
+
+    this.invalidateActive(queryKeys.processSummaryAll)
+  }
+  private handleProcessConfiguredEvent(message: WebSocketMessages): void {
+    if (!isProcessConfiguredEvent(message)) return
+
+    this.invalidateActive(queryKeys.configuredProcessesAll)
+  }
+  private handleProcessRunEvent(message: WebSocketMessages): void {
+    if (!isProcessRunEvent(message)) return
+
+    this.invalidateActive(queryKeys.processRunsAll)
+  }
+  private handleStrategyListEvent(message: WebSocketMessages): void {
+    if (!isStrategyListEvent(message)) return
+
+    this.invalidateActive(queryKeys.strategiesAll)
+  }
+  /**
+   * Mark a query family stale and re-fetch only mounted observers.
+   *
+   * The polling sweep on 2026-05-14 dropped ``refetchInterval`` from
+   * ``usePendingAiReviews`` / ``usePositions`` /
+   * ``useTrailingStopForCycle`` in favour of snapshot-only REST plus
+   * this invalidate-on-WS-frame hook. ``refetchType: 'active'`` keeps
+   * the refetch off background tabs and unmounted hooks; React Query
+   * coalesces concurrent invalidations on the same key, so a burst of
+   * order/execution frames does not multiply REST calls.
+   */
+  private invalidateActive(queryKey: readonly unknown[]): void {
+    void this.queryClient.invalidateQueries({ queryKey, refetchType: 'active' })
   }
   private mergeAiReviewActivity(frame: AiReviewActivityFrame): void {
     const userPublicId = useAuthStore.getState().user?.public_id ?? null

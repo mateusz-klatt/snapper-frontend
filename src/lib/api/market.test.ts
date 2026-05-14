@@ -317,7 +317,7 @@ describe('market cache fetchers', () => {
     expect(requestedUrl).toContain('limit=100')
   })
 
-  it('getCachedCandles encodes path params and serializes timeframe + limit', async () => {
+  it('getCachedCandles hits /api/candles/cache with all params on the query string', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       status: 200,
@@ -336,7 +336,9 @@ describe('market cache fetchers', () => {
     expect(result.type).toBe('cached_candles')
     const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
 
-    expect(requestedUrl).toContain('/api/market/cache/candles/kraken/BTC%2FUSD')
+    expect(requestedUrl).toContain('/api/candles/cache')
+    expect(requestedUrl).toContain('instrument=BTC%2FUSD')
+    expect(requestedUrl).toContain('exchange=kraken')
     expect(requestedUrl).toContain('timeframe=1m')
     expect(requestedUrl).toContain('limit=100')
   })

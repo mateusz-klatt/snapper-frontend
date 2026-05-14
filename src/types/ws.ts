@@ -15,6 +15,10 @@ export type {
   ExecutionData,
   HeartbeatData,
   PositionData,
+  ProcessConfiguredEventData,
+  ProcessRunEventData,
+  ProcessSummaryEventData,
+  StrategyListEventData,
   ReplayEndData,
   ReplayStartData,
   SettingChangedData,
@@ -54,6 +58,10 @@ import type {
   ExecutionData,
   HeartbeatData,
   PositionData,
+  ProcessConfiguredEventData,
+  ProcessRunEventData,
+  ProcessSummaryEventData,
+  StrategyListEventData,
   ReplayEndData,
   ReplayStartData,
   SettingChangedData,
@@ -94,6 +102,10 @@ export type WebSocketMessages =
   | ExecutionData
   | HeartbeatData
   | PositionData
+  | ProcessConfiguredEventData
+  | ProcessRunEventData
+  | ProcessSummaryEventData
+  | StrategyListEventData
   | ReplayEndData
   | ReplayStartData
   | SettingChangedData
@@ -158,4 +170,22 @@ export function isAiReviewCapsViolation(
   msg: WebSocketMessages
 ): msg is AiReviewCapsViolationFrameData {
   return msg.type === 'ai_review.caps_violation'
+}
+
+export function isProcessSummaryEvent(msg: WebSocketMessages): msg is ProcessSummaryEventData {
+  return msg.type === 'process_summary_event'
+}
+
+export function isProcessConfiguredEvent(
+  msg: WebSocketMessages
+): msg is ProcessConfiguredEventData {
+  return msg.type === 'process_configured_event'
+}
+
+export function isProcessRunEvent(msg: WebSocketMessages): msg is ProcessRunEventData {
+  return msg.type === 'process_run_event'
+}
+
+export function isStrategyListEvent(msg: WebSocketMessages): msg is StrategyListEventData {
+  return msg.type === 'strategy_list_event'
 }

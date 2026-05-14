@@ -16,6 +16,16 @@ import type {
 } from '../../types/api'
 import { queryKeys } from './keys'
 
+/**
+ * List wallet positions for the current scope.
+ *
+ * Snapshot-only REST: a single fetch on mount, then refreshes are
+ * driven exclusively by the WSDispatcher's invalidation hook on
+ * ``order`` / ``execution`` frames (positions are a server-side
+ * derived projection of those two streams, so any frame that mutates
+ * them is a valid invalidation trigger). Reconnect invalidates the
+ * prefix to catch missed frames.
+ */
 export const usePositions = () => {
   const { isAuthenticated } = useAuth()
   const asOf = useAppStore(s => s.asOf)
@@ -29,8 +39,10 @@ export const usePositions = () => {
 
       return data.payload.map(positionFromAPI)
     },
-    refetchInterval: isAuthenticated && !asOf ? 10000 : false,
     enabled: isAuthenticated,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     throwOnError: false,
   })
 }
@@ -94,6 +106,17 @@ export const useCreateTrailingStop = () => {
   })
 }
 
+/**
+ * Trailing stop state for one position cycle.
+ *
+ * Snapshot-only REST: a single fetch on mount, then refreshes are
+ * driven by the WSDispatcher's invalidation hook on ``execution``
+ * frames (a trail trigger surfaces as a fill execution). Reconnect
+ * invalidates the prefix to catch missed frames. Trail-active state
+ * transitions that don't fill (e.g. trigger-price moving with the
+ * market) do not currently emit a dedicated WS frame and are
+ * therefore eventually consistent via reconnect / mount-refetch.
+ */
 export const useTrailingStopForCycle = (cyclePublicId: string | undefined) => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
 
@@ -101,6 +124,8 @@ export const useTrailingStopForCycle = (cyclePublicId: string | undefined) => {
     queryKey: queryKeys.trailingStopForCycle(cyclePublicId),
     queryFn: () => getTrailingStopByCycle(cyclePublicId as string),
     enabled: !!cyclePublicId && !isTimeTraveling,
-    refetchInterval: 5000,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   })
 }

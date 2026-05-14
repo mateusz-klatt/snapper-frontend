@@ -8,7 +8,13 @@ interface AppShellState {
   subscribedTopicsCount: number
 }
 
-const APP_SHELL_TOPICS: readonly string[] = Object.freeze(['ai_reviews.'])
+const APP_SHELL_TOPICS: readonly string[] = Object.freeze([
+  'ai_reviews.',
+  'processes.events.summary.',
+  'processes.events.configured.',
+  'processes.events.runs.',
+  'strategies.events.list.',
+])
 
 export function useAppShell(): AppShellState {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)

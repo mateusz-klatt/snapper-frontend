@@ -495,6 +495,47 @@ export const PositionDataSchema = z
   })
   .strict()
 
+export const ProcessConfiguredEventDataSchema = z
+  .object({
+    type: z.literal('process_configured_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    process_names: z.array(z.string()),
+    snapshot_at: z.iso.datetime(),
+  })
+  .strict()
+
+export const ProcessRunEventDataSchema = z
+  .object({
+    type: z.literal('process_run_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    process_name: z.string(),
+    run_id: z.string(),
+    status: z.string(),
+    started_at: z.iso.datetime(),
+    completed_at: z.iso.datetime().nullable().optional(),
+    exit_code: z.number().int().nullable().optional(),
+  })
+  .strict()
+
+export const ProcessSummaryItemSchema = z
+  .object({
+    name: z.string(),
+    running: z.boolean(),
+    enabled: z.boolean(),
+    role: z.string(),
+    lifecycle: z.string(),
+    active_public_id: z.string().nullable().optional(),
+  })
+  .strict()
+
 export const RelatedInstrumentDataSchema = z
   .object({
     type: z.literal('related_instrument'),
@@ -633,6 +674,19 @@ export const SignalDataSchema = z
     user_public_id: z.string().nullable().optional(),
     ai_review_public_id: z.string().nullable().optional(),
     ai_review_dispatch_version: z.number().int().nullable().optional(),
+  })
+  .strict()
+
+export const StrategyListEventDataSchema = z
+  .object({
+    type: z.literal('strategy_list_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    strategy_classes: z.array(z.string()),
+    snapshot_at: z.iso.datetime(),
   })
   .strict()
 
@@ -950,6 +1004,19 @@ export const WSUnsubscribeRequestSchema = z
   .strict()
 
 export const JsonValueSchema = z.unknown()
+
+export const ProcessSummaryEventDataSchema = z
+  .object({
+    type: z.literal('process_summary_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    processes: z.array(ProcessSummaryItemSchema),
+    snapshot_at: z.iso.datetime(),
+  })
+  .strict()
 
 export const WSAuthCompleteResponseSchema = z
   .object({
