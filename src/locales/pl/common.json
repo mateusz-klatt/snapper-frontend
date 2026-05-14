@@ -11,5 +11,43 @@
     "triggerAriaLabel": "Zmień język",
     "flagAriaLabel": "Przełącz na {{country}}",
     "currentAriaLabel": "Bieżący język: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Konsola tradingowa",
+    "tagline": "Precyzyjne stanowisko",
+    "openSidebar": "Otwórz panel boczny",
+    "closeSidebar": "Zamknij panel boczny",
+    "sidebar": "Panel boczny",
+    "mainNavigation": "Nawigacja główna",
+    "tradingContent": "Treść tradingowa",
+    "skipToContent": "Przejdź do treści",
+    "lag": "Opóźnienie:",
+    "lagTitle": "Czas pakietu w obie strony do serwera WebSocket",
+    "topics": "Tematy:",
+    "topicsTitle": "Liczba subskrybowanych tematów WebSocket",
+    "connected": "Połączono",
+    "disconnected": "Rozłączono",
+    "connectedTitle": "Połączono z WebSocket",
+    "disconnectedTitle": "Rozłączono z WebSocket",
+    "switchToLightMode": "Przełącz na tryb jasny",
+    "switchToDarkMode": "Przełącz na tryb ciemny",
+    "timeTravelBanner": "Tryb podróży w czasie — przeglądanie danych historycznych (tylko do odczytu)",
+    "lagUnknown": "Nieznane"
+  },
+  "nav": {
+    "overview": "Przegląd",
+    "market": "Dane rynkowe",
+    "processes": "Procesy",
+    "strategies": "Strategie",
+    "orders": "Zlecenia i transakcje",
+    "positions": "Pozycje",
+    "signals": "Sygnały",
+    "backtests": "Backtesty",
+    "health": "Kondycja",
+    "admin": "Administracja",
+    "aiIntegration": "Integracja AI",
+    "aiReviews": "Recenzje AI",
+    "settings": "Ustawienia"
   }
 }
