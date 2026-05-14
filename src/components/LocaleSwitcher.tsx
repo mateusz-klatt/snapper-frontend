@@ -161,11 +161,15 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
           side='bottom'
           align={align}
           sideOffset={6}
+          onOpenAutoFocus={event => {
+            event.preventDefault()
+            buttonRefs.current.get(locale)?.focus()
+          }}
           className='z-50 rounded-xl border border-dark-600 bg-alpine-50 p-2 shadow-lg'
         >
-          <div className='flex max-w-[480px] flex-col gap-1 overflow-x-auto'>
+          <div className='flex flex-col gap-0.5'>
             {ROWS.map(row => (
-              <div key={row.join('-')} className='flex flex-nowrap gap-1'>
+              <div key={row.join('-')} className='flex flex-nowrap gap-0.5'>
                 {row.map(code => {
                   const isCurrent = code === locale
                   const country = countryName(code, displayLanguage)
@@ -192,10 +196,10 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
                       aria-current={isCurrent ? 'true' : undefined}
                       data-current={isCurrent ? 'true' : undefined}
                       className={clsx(
-                        'flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-lg',
+                        'flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-base',
                         'hover:bg-dark-700 transition-colors',
                         'focus:outline-hidden focus:ring-2 focus:ring-brand-500',
-                        isCurrent && 'ring-2 ring-brand-500 bg-dark-700'
+                        isCurrent && 'bg-brand-500/15 ring-1 ring-brand-500'
                       )}
                     >
                       <span aria-hidden='true'>{LOCALES[code].flag}</span>

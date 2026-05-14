@@ -4,8 +4,11 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
 import AppWithAuth from './AppWithAuth'
 import { queryClient } from './lib/queryClient'
+import { initFlagPolyfill } from './i18n/flagPolyfill'
 import './i18n/config'
 import './index.css'
+
+initFlagPolyfill()
 
 const rootElement = document.getElementById('root')
 
