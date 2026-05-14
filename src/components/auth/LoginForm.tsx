@@ -87,6 +87,16 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
           )}
         </button>
       </form>
+      <p className='mt-5 text-center text-xs text-muted-600'>
+        <a
+          href='/snapper.pdf'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='text-brand-600 underline-offset-2 hover:text-brand-700 hover:underline focus:outline-hidden focus:ring-2 focus:ring-brand-500 focus:ring-offset-2'
+        >
+          Documentation (PDF)
+        </a>
+      </p>
     </div>
   )
 }
