@@ -1,7 +1,60 @@
 import { vi, beforeAll, afterAll } from 'vitest'
 import '@testing-library/jest-dom'
 import { configure } from '@testing-library/react'
-import '../i18n/config'
+import i18n from '../i18n/config'
+import enOverview from '../locales/en/overview.json'
+import plOverview from '../locales/pl/overview.json'
+import enOrders from '../locales/en/orders.json'
+import plOrders from '../locales/pl/orders.json'
+import enPositions from '../locales/en/positions.json'
+import plPositions from '../locales/pl/positions.json'
+import enStrategies from '../locales/en/strategies.json'
+import plStrategies from '../locales/pl/strategies.json'
+import enSignals from '../locales/en/signals.json'
+import plSignals from '../locales/pl/signals.json'
+import enBacktests from '../locales/en/backtests.json'
+import plBacktests from '../locales/pl/backtests.json'
+import enMarket from '../locales/en/market.json'
+import plMarket from '../locales/pl/market.json'
+import enProcesses from '../locales/en/processes.json'
+import plProcesses from '../locales/pl/processes.json'
+import enHealth from '../locales/en/health.json'
+import plHealth from '../locales/pl/health.json'
+import enAiIntegration from '../locales/en/aiIntegration.json'
+import plAiIntegration from '../locales/pl/aiIntegration.json'
+import enAiReviews from '../locales/en/aiReviews.json'
+import plAiReviews from '../locales/pl/aiReviews.json'
+import enAdmin from '../locales/en/admin.json'
+import plAdmin from '../locales/pl/admin.json'
+import enSettings from '../locales/en/settings.json'
+import plSettings from '../locales/pl/settings.json'
+
+i18n.addResourceBundle('en', 'overview', enOverview, true, true)
+i18n.addResourceBundle('pl', 'overview', plOverview, true, true)
+i18n.addResourceBundle('en', 'orders', enOrders, true, true)
+i18n.addResourceBundle('pl', 'orders', plOrders, true, true)
+i18n.addResourceBundle('en', 'positions', enPositions, true, true)
+i18n.addResourceBundle('pl', 'positions', plPositions, true, true)
+i18n.addResourceBundle('en', 'strategies', enStrategies, true, true)
+i18n.addResourceBundle('pl', 'strategies', plStrategies, true, true)
+i18n.addResourceBundle('en', 'signals', enSignals, true, true)
+i18n.addResourceBundle('pl', 'signals', plSignals, true, true)
+i18n.addResourceBundle('en', 'backtests', enBacktests, true, true)
+i18n.addResourceBundle('pl', 'backtests', plBacktests, true, true)
+i18n.addResourceBundle('en', 'market', enMarket, true, true)
+i18n.addResourceBundle('pl', 'market', plMarket, true, true)
+i18n.addResourceBundle('en', 'processes', enProcesses, true, true)
+i18n.addResourceBundle('pl', 'processes', plProcesses, true, true)
+i18n.addResourceBundle('en', 'health', enHealth, true, true)
+i18n.addResourceBundle('pl', 'health', plHealth, true, true)
+i18n.addResourceBundle('en', 'aiIntegration', enAiIntegration, true, true)
+i18n.addResourceBundle('pl', 'aiIntegration', plAiIntegration, true, true)
+i18n.addResourceBundle('en', 'aiReviews', enAiReviews, true, true)
+i18n.addResourceBundle('pl', 'aiReviews', plAiReviews, true, true)
+i18n.addResourceBundle('en', 'admin', enAdmin, true, true)
+i18n.addResourceBundle('pl', 'admin', plAdmin, true, true)
+i18n.addResourceBundle('en', 'settings', enSettings, true, true)
+i18n.addResourceBundle('pl', 'settings', plSettings, true, true)
 
 configure({ asyncUtilTimeout: 5000 })
 
