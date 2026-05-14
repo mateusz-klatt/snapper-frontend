@@ -9,8 +9,6 @@ import {
 } from '../../stores/wsDispatcher'
 import { queryKeys } from './keys'
 
-const PENDING_AI_REVIEWS_REFETCH_MS = 5_000
-
 /**
  * List pending CONSULT reviews for the authenticated AI delegate.
  *
@@ -20,9 +18,12 @@ const PENDING_AI_REVIEWS_REFETCH_MS = 5_000
  * is only populated for delegate principals. Pre-empting the call
  * client-side keeps non-delegate UIs free of misleading 422 errors.
  *
- * Refetches every 5s plus on window focus so the inbox stays
- * eventually consistent with the WS-driven activity stream after
- * disconnect / reconnect.
+ * Snapshot-only REST: a single fetch on mount, then refreshes are
+ * driven exclusively by the WSDispatcher's invalidation hook on
+ * ``ai_review.request`` / ``ai_review.decision_ack`` /
+ * ``ai_review.caps_violation`` frames (`refetchType: 'active'` so
+ * only mounted observers re-pull). Reconnect invalidates the prefix
+ * to catch missed frames.
  */
 export const usePendingAiReviews = (
   params: Readonly<{ walletPublicId?: string | null; limit?: number | undefined }> = {}
@@ -41,8 +42,9 @@ export const usePendingAiReviews = (
         ...(limit === null ? {} : { limit }),
       }),
     enabled: isAuthenticated && isDelegate && userPublicId !== null,
-    refetchInterval: PENDING_AI_REVIEWS_REFETCH_MS,
-    refetchOnWindowFocus: true,
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     throwOnError: false,
   })
 }

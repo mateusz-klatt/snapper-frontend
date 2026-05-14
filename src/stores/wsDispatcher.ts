@@ -30,6 +30,7 @@ import {
   executionDataFromEnvelope,
   signalDataFromEnvelope,
 } from '../lib/transforms'
+import { queryKeys } from '../hooks/queries/keys'
 
 export type AiReviewActivityFrame =
   | AiReviewRequestFrameData
@@ -134,6 +135,12 @@ export class WSDispatcher {
         }
 
         useAppStore.getState().setConnected(connected)
+
+        if (connected) {
+          this.invalidateActive(queryKeys.pendingAiReviewsAll)
+          this.invalidateActive(queryKeys.positionsAll)
+          this.invalidateActive(queryKeys.trailingStopAll)
+        }
       })
     )
 
@@ -309,6 +316,7 @@ export class WSDispatcher {
     }
   }
   private mergeOrderIntoCache(envelope: OrderData): void {
+    this.invalidateActive(queryKeys.positionsAll)
     const queries = this.queryClient
       .getQueriesData<OrderData[]>({ queryKey: ['orders'] })
       .filter(([key]) => key[key.length - 1] === null)
@@ -339,6 +347,8 @@ export class WSDispatcher {
     }
   }
   private mergeExecutionIntoCache(envelope: ExecutionData): void {
+    this.invalidateActive(queryKeys.positionsAll)
+    this.invalidateActive(queryKeys.trailingStopAll)
     const queries = this.queryClient
       .getQueriesData<ExecutionData[]>({ queryKey: ['executions'] })
       .filter(([key]) => key[key.length - 1] === null)
@@ -440,6 +450,21 @@ export class WSDispatcher {
     }
 
     this.mergeAiReviewActivity(message)
+    this.invalidateActive(queryKeys.pendingAiReviewsAll)
+  }
+  /**
+   * Mark a query family stale and re-fetch only mounted observers.
+   *
+   * The polling sweep on 2026-05-14 dropped ``refetchInterval`` from
+   * ``usePendingAiReviews`` / ``usePositions`` /
+   * ``useTrailingStopForCycle`` in favour of snapshot-only REST plus
+   * this invalidate-on-WS-frame hook. ``refetchType: 'active'`` keeps
+   * the refetch off background tabs and unmounted hooks; React Query
+   * coalesces concurrent invalidations on the same key, so a burst of
+   * order/execution frames does not multiply REST calls.
+   */
+  private invalidateActive(queryKey: readonly unknown[]): void {
+    void this.queryClient.invalidateQueries({ queryKey, refetchType: 'active' })
   }
   private mergeAiReviewActivity(frame: AiReviewActivityFrame): void {
     const userPublicId = useAuthStore.getState().user?.public_id ?? null
