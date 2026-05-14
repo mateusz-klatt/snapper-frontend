@@ -22,6 +22,7 @@ import type {
   AiReviewRequestFrameData,
   AiReviewDecisionAckFrameData,
   AiReviewCapsViolationFrameData,
+  WebSocketMessages,
 } from '../types/ws'
 import type { CachedCandle, CachedCandlesResponse } from '../types/api'
 
@@ -2267,6 +2268,160 @@ describe('WSDispatcher', () => {
 
       dispatcher.attach(mockWsClient)
       expect(invalidate).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('Q3 processes/strategies events (2026-05-14)', () => {
+    const makeProcessSummary = () =>
+      ({
+        type: 'process_summary_event',
+        public_id: 'summary-pub-1',
+        timestamp: '2026-05-14T12:00:00Z',
+        session_id: 'sid',
+        sequence_id: 1,
+        processes: [
+          {
+            name: 'trader_coordinator',
+            running: true,
+            enabled: true,
+            role: 'core',
+            lifecycle: 'long_running',
+          },
+        ],
+        snapshot_at: '2026-05-14T12:00:00Z',
+      }) as unknown as WebSocketMessages
+
+    const makeProcessConfigured = () =>
+      ({
+        type: 'process_configured_event',
+        public_id: 'configured-pub-1',
+        timestamp: '2026-05-14T12:00:00Z',
+        session_id: 'sid',
+        sequence_id: 1,
+        process_names: ['trader_coordinator'],
+        snapshot_at: '2026-05-14T12:00:00Z',
+      }) as unknown as WebSocketMessages
+
+    const makeProcessRun = () =>
+      ({
+        type: 'process_run_event',
+        public_id: 'run-pub-1',
+        timestamp: '2026-05-14T12:00:00Z',
+        session_id: 'sid',
+        sequence_id: 1,
+        process_name: 'trader_coordinator',
+        run_id: 'run-42',
+        status: 'running',
+        started_at: '2026-05-14T12:00:00Z',
+      }) as unknown as WebSocketMessages
+
+    const makeStrategyList = () =>
+      ({
+        type: 'strategy_list_event',
+        public_id: 'strategy-pub-1',
+        timestamp: '2026-05-14T12:00:00Z',
+        session_id: 'sid',
+        sequence_id: 1,
+        strategy_classes: ['snapper.strategies.momentum.Momentum'],
+        snapshot_at: '2026-05-14T12:00:00Z',
+      }) as unknown as WebSocketMessages
+
+    it('process_summary_event invalidates the process-summary prefix', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      messageHandlers.get('process_summary_event')?.(makeProcessSummary())
+      const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
+
+      expect(callKeys).toContainEqual(['processes', 'summary'])
+    })
+
+    it('process_configured_event invalidates the configured-processes prefix', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      messageHandlers.get('process_configured_event')?.(makeProcessConfigured())
+      const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
+
+      expect(callKeys).toContainEqual(['processes', 'configured'])
+    })
+
+    it('process_run_event invalidates the process-runs prefix', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      messageHandlers.get('process_run_event')?.(makeProcessRun())
+      const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
+
+      expect(callKeys).toContainEqual(['processes', 'runs'])
+    })
+
+    it('strategy_list_event invalidates the strategies prefix', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      messageHandlers.get('strategy_list_event')?.(makeStrategyList())
+      const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
+
+      expect(callKeys).toContainEqual(['strategies'])
+    })
+
+    it('mismatched type discriminator is dropped by each Q3 handler', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      messageHandlers.get('process_summary_event')?.({
+        type: 'not_summary',
+      } as unknown as WebSocketMessages)
+      messageHandlers.get('process_configured_event')?.({
+        type: 'not_configured',
+      } as unknown as WebSocketMessages)
+      messageHandlers.get('process_run_event')?.({
+        type: 'not_run',
+      } as unknown as WebSocketMessages)
+      messageHandlers.get('strategy_list_event')?.({
+        type: 'not_strategy',
+      } as unknown as WebSocketMessages)
+      expect(invalidate).not.toHaveBeenCalled()
+    })
+
+    it('reconnect (connection true) invalidates the four Q3 prefixes too', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      connectionHandlers.forEach(h => h(true))
+      const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
+
+      expect(callKeys).toContainEqual(['processes', 'summary'])
+      expect(callKeys).toContainEqual(['processes', 'configured'])
+      expect(callKeys).toContainEqual(['processes', 'runs'])
+      expect(callKeys).toContainEqual(['strategies'])
+    })
+
+    it('attach onto an already-connected client invalidates the four Q3 prefixes', () => {
+      vi.mocked(mockWsClient.isConnected).mockReturnValue(true)
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
+
+      expect(callKeys).toContainEqual(['processes', 'summary'])
+      expect(callKeys).toContainEqual(['processes', 'configured'])
+      expect(callKeys).toContainEqual(['processes', 'runs'])
+      expect(callKeys).toContainEqual(['strategies'])
     })
   })
 })
