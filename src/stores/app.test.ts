@@ -198,4 +198,45 @@ describe('useAppStore', () => {
       expect(freshStore.getState().isDarkMode).toBe(false)
     })
   })
+  describe('setLocale', () => {
+    afterEach(() => {
+      localStorage.removeItem('snapper-locale')
+      document.documentElement.lang = ''
+      document.documentElement.dir = ''
+    })
+    it('updates the store locale', () => {
+      useAppStore.getState().setLocale('pl')
+      expect(useAppStore.getState().locale).toBe('pl')
+    })
+    it('persists locale to localStorage', () => {
+      useAppStore.getState().setLocale('pl')
+      expect(localStorage.getItem('snapper-locale')).toBe('pl')
+    })
+    it('sets document.documentElement.lang to the catalog language', () => {
+      useAppStore.getState().setLocale('pl')
+      expect(document.documentElement.lang).toBe('pl')
+      useAppStore.getState().setLocale('de')
+      expect(document.documentElement.lang).toBe('en')
+    })
+    it('sets document.documentElement.dir to ltr for ltr locales', () => {
+      useAppStore.getState().setLocale('pl')
+      expect(document.documentElement.dir).toBe('ltr')
+    })
+    it('sets document.documentElement.dir to rtl for rtl locales', () => {
+      useAppStore.getState().setLocale('ae')
+      expect(document.documentElement.dir).toBe('rtl')
+    })
+    it('falls back gracefully when localStorage.setItem throws', () => {
+      const spy = vi.spyOn(window.localStorage, 'setItem').mockImplementation(() => {
+        throw new Error('quota exceeded')
+      })
+
+      try {
+        expect(() => useAppStore.getState().setLocale('pl')).not.toThrow()
+        expect(useAppStore.getState().locale).toBe('pl')
+      } finally {
+        spy.mockRestore()
+      }
+    })
+  })
 })

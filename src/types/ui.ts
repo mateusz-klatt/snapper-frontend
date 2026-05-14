@@ -1,3 +1,5 @@
+import type { AppLocale } from '../i18n/types'
+
 export interface AppState {
   isDarkMode: boolean
   subscribedTopics: string[]
@@ -8,6 +10,7 @@ export interface AppState {
   isTimeTraveling: boolean
   currentOperatorPublicId: string | null
   currentWalletPublicId: string | null
+  locale: AppLocale
 }
 export interface MarketDataState {
   selectedExchange: string | null
