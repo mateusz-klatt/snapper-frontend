@@ -1,1 +1,142 @@
-{}
+{
+  "nav": {
+    "back": "← Back",
+    "backToList": "← Back to backtests"
+  },
+  "status": {
+    "pending": "Pending",
+    "running": "Running",
+    "completed": "Completed",
+    "failed": "Failed",
+    "cancelled": "Cancelled"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Cancel",
+      "rerun": "Rerun"
+    },
+    "fields": {
+      "timeframe": "Timeframe",
+      "period": "Period",
+      "initialCash": "Initial Cash",
+      "id": "ID"
+    },
+    "errorPrefix": "Error: {{message}}",
+    "filter": {
+      "ariaLabel": "Filter backtests by status",
+      "options": {
+        "all": "All statuses",
+        "pending": "Pending",
+        "running": "Running",
+        "completed": "Completed",
+        "failed": "Failed",
+        "cancelled": "Cancelled"
+      }
+    },
+    "empty": {
+      "title": "No backtests",
+      "message": "Run a backtest via the CLI or API to see results here."
+    }
+  },
+  "detail": {
+    "title": "Backtest run",
+    "fields": {
+      "strategy": "Strategy",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Period",
+      "crossAsset": "Cross-asset attribution",
+      "configHash": "Config hash"
+    },
+    "crossAssetFlow": "{{source}} feed → {{target}} fills",
+    "errors": {
+      "invalidRunId": "Invalid run id — must be a UUID7 (got \"{{id}}\").",
+      "loadFailed": "Failed to load run: {{message}}",
+      "notFound": "not found"
+    }
+  },
+  "compare": {
+    "title": "Compare",
+    "headingFull": "Backtest comparison",
+    "loading": "Loading comparison…",
+    "vs": "vs",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrics",
+      "equityOverlay": "Equity overlay",
+      "trades": "Trades",
+      "signals": "Signals"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Comparison not found in current wallet.",
+      "loadFailed": "Failed to load comparison: {{message}}",
+      "unknown": "unknown error",
+      "emptyResponse": "Empty comparison response."
+    },
+    "launcher": {
+      "title": "Compare",
+      "submit": "Compare",
+      "autoPair": "Compare with most recent",
+      "terminalGate": "compare available once this run reaches a terminal status",
+      "noSiblings": "no other runs with this config",
+      "limitNotice": "showing {{count}} most recent — use manual pair for older runs",
+      "pickPlaceholder": "— pick a run to compare —",
+      "showAllLabel": "Show all runs (not just same config)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "all runs",
+        "sameConfig": "same config"
+      },
+      "errors": {
+        "pickRequired": "select a run from the list"
+      }
+    },
+    "diffColumns": {
+      "common": "Common",
+      "onlyA": "Only in A",
+      "onlyB": "Only in B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "No comparable metrics — both runs had no recorded values.",
+      "columns": {
+        "name": "Metric",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Waiting for progress…",
+    "candles": "{{done}} / {{total}} candles",
+    "candlesNoTotal": "{{done}} candles",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} trades",
+    "milestoneLine": "milestone {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 import {
   useBacktestRunsByConfigHash,
   useCreateBacktestComparison,
@@ -13,8 +15,15 @@ interface Props {
 const TERMINAL_STATUSES = new Set(['completed', 'failed', 'cancelled'])
 const SAME_CONFIG_LIMIT = 20
 
-const formatLabel = (run: BacktestRunData): string =>
-  `${run.public_id.slice(0, 8)} · ${run.strategy_name} · ${run.status}`
+const formatOptionLabel = (t: TFunction<'backtests'>, run: BacktestRunData): string => {
+  const statusText = t(`status.${run.status}`, { defaultValue: run.status })
+
+  return t('compare.launcher.optionLabel', {
+    id: run.public_id.slice(0, 8),
+    strategy: run.strategy_name,
+    status: statusText,
+  })
+}
 
 /**
  * CompareLauncher.
@@ -25,6 +34,7 @@ const formatLabel = (run: BacktestRunData): string =>
  * mix — chip shows which is active.
  */
 export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
+  const { t } = useTranslation('backtests')
   const isTerminal = TERMINAL_STATUSES.has(currentRun.status)
   const configHash = currentRun.config_hash ?? null
   const sameConfigQuery = useBacktestRunsByConfigHash(
@@ -49,13 +59,15 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
     return raw.filter(r => r.public_id !== currentRun.public_id)
   }, [allRunsQuery.data, currentRun.public_id])
   const comboboxSource = showAll ? allRunsCandidates : sameConfigCandidates
-  const comboboxLabel = showAll ? 'all runs' : 'same config'
+  const comboboxLabel = showAll
+    ? t('compare.launcher.source.allRuns')
+    : t('compare.launcher.source.sameConfig')
   const autoPairCandidate = sameConfigCandidates[0]
 
   if (!isTerminal) {
     return (
       <div className='rounded-lg border border-dark-600 bg-alpine-50 p-3 text-sm text-muted-500'>
-        compare available once this run reaches a terminal status
+        {t('compare.launcher.terminalGate')}
       </div>
     )
   }
@@ -86,7 +98,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
     const picked = comboboxSource.find(r => r.public_id === pickedOther)
 
     if (!picked) {
-      setClientError('select a run from the list')
+      setClientError(t('compare.launcher.errors.pickRequired'))
 
       return
     }
@@ -97,7 +109,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
   return (
     <div className='space-y-3 rounded-lg border border-dark-600 bg-alpine-50 p-3 text-sm'>
       <div className='flex items-center justify-between'>
-        <h3 className='font-semibold text-alpine-900'>Compare</h3>
+        <h3 className='font-semibold text-alpine-900'>{t('compare.launcher.title')}</h3>
         <span
           className='rounded bg-dark-600 px-2 py-0.5 text-xs text-muted-400'
           data-testid='compare-source-chip'
@@ -112,17 +124,17 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
           className='rounded-lg border border-brand-500 px-3 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20'
           data-testid='compare-auto-pair'
         >
-          Compare with most recent
+          {t('compare.launcher.autoPair')}
         </button>
       )}
       {configHash !== null && sameConfigCandidates.length === 0 && (
         <div className='text-xs text-muted-500' data-testid='compare-no-siblings'>
-          no other runs with this config
+          {t('compare.launcher.noSiblings')}
         </div>
       )}
       {sameConfigCandidates.length >= SAME_CONFIG_LIMIT && (
         <div className='text-xs text-muted-500'>
-          showing {SAME_CONFIG_LIMIT} most recent — use manual pair for older runs
+          {t('compare.launcher.limitNotice', { count: SAME_CONFIG_LIMIT })}
         </div>
       )}
       <div className='flex items-center gap-2'>
@@ -132,10 +144,10 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
           onChange={e => setPickedOther(e.target.value)}
           data-testid='compare-combobox'
         >
-          <option value=''>— pick a run to compare —</option>
+          <option value=''>{t('compare.launcher.pickPlaceholder')}</option>
           {comboboxSource.map(r => (
             <option key={r.public_id} value={r.public_id}>
-              {formatLabel(r)}
+              {formatOptionLabel(t, r)}
             </option>
           ))}
         </select>
@@ -145,7 +157,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
           className='rounded-lg border border-brand-500 px-3 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20'
           data-testid='compare-manual-submit'
         >
-          Compare
+          {t('compare.launcher.submit')}
         </button>
       </div>
       {configHash !== null && (
@@ -159,7 +171,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
             }}
             data-testid='compare-show-all'
           />
-          <span>Show all runs (not just same config)</span>
+          <span>{t('compare.launcher.showAllLabel')}</span>
         </label>
       )}
       {clientError && (

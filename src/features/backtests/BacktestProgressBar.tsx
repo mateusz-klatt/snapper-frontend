@@ -1,14 +1,9 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import type { BacktestProgressSnapshot } from './hooks/useBacktestProgressSubscription'
 
 interface Props {
   snapshot: BacktestProgressSnapshot | null
-}
-
-const MILESTONE_LABELS: Record<string, string> = {
-  '25pct': '25 %',
-  '50pct': '50 %',
-  '75pct': '75 %',
 }
 
 /**
@@ -17,15 +12,20 @@ const MILESTONE_LABELS: Record<string, string> = {
  * when no event has arrived.
  */
 export const BacktestProgressBar: React.FC<Props> = ({ snapshot }) => {
+  const { t } = useTranslation('backtests')
+
   if (!snapshot) {
-    return <div className='text-sm opacity-60'>Waiting for progress…</div>
+    return <div className='text-sm opacity-60'>{t('progress.waiting')}</div>
   }
 
   const pct = Math.round((snapshot.progress_pct ?? 0) * 100)
   const milestoneLabel =
     snapshot.event === 'milestone' && snapshot.milestone
-      ? MILESTONE_LABELS[snapshot.milestone]
+      ? t(`progress.milestone.${snapshot.milestone}`, { defaultValue: snapshot.milestone })
       : null
+  const candlesLine = snapshot.total_candles
+    ? t('progress.candles', { done: snapshot.candles_done, total: snapshot.total_candles })
+    : t('progress.candlesNoTotal', { done: snapshot.candles_done })
 
   return (
     <div className='space-y-1'>
@@ -37,17 +37,19 @@ export const BacktestProgressBar: React.FC<Props> = ({ snapshot }) => {
         />
       </div>
       <div className='text-xs flex justify-between'>
+        <span>{candlesLine}</span>
+        <span>{t('progress.equity', { value: snapshot.equity?.toFixed(2) ?? '' })}</span>
         <span>
-          {snapshot.candles_done}
-          {snapshot.total_candles ? ` / ${snapshot.total_candles}` : ''} candles
-        </span>
-        <span>equity {snapshot.equity?.toFixed(2)}</span>
-        <span>
-          {snapshot.signals_count} sig / {snapshot.trades_count} trades
+          {t('progress.signalsTrades', {
+            signals: snapshot.signals_count,
+            trades: snapshot.trades_count,
+          })}
         </span>
       </div>
       {milestoneLabel ? (
-        <div className='text-xs italic opacity-80'>milestone {milestoneLabel}</div>
+        <div className='text-xs italic opacity-80'>
+          {t('progress.milestoneLine', { label: milestoneLabel })}
+        </div>
       ) : null}
     </div>
   )

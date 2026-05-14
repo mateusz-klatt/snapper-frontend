@@ -92,7 +92,7 @@ describe('Backtests', () => {
     renderWithQuery(<Backtests />)
     expect(await screen.findByText('sma_cross')).toBeInTheDocument()
     expect(screen.getByText('BTC-USD')).toBeInTheDocument()
-    expect(screen.getByText('completed')).toBeInTheDocument()
+    expect(screen.getAllByText('Completed').length).toBeGreaterThan(0)
   })
 
   it('renders cross-asset attribution arrow when target_execution_exchange is set', async () => {
@@ -213,7 +213,8 @@ describe('Backtests', () => {
     })
 
     renderWithQuery(<Backtests />)
-    expect(await screen.findByText('pending')).toBeInTheDocument()
+    expect(await screen.findByText('sma_cross')).toBeInTheDocument()
+    expect(screen.getAllByText('Pending').length).toBeGreaterThan(0)
   })
 
   it('shows error message for failed backtests', async () => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
+import { useTranslation } from 'react-i18next'
 import { useBacktest } from '../../hooks/queries/backtests'
 import { useBacktestProgressSubscription } from './hooks/useBacktestProgressSubscription'
 import { BacktestProgressBar } from './BacktestProgressBar'
@@ -28,6 +29,7 @@ const formatDate = (iso: string): string => new Date(iso).toLocaleDateString()
  * without an extra round trip.
  */
 export const BacktestDetailPage: React.FC<Props> = ({ runPublicId }) => {
+  const { t } = useTranslation('backtests')
   const validRun = isUuid7(runPublicId)
   const snapshot = useBacktestProgressSubscription(validRun ? runPublicId : null)
   const { data, isLoading, error } = useBacktest(validRun ? runPublicId : undefined)
@@ -35,7 +37,7 @@ export const BacktestDetailPage: React.FC<Props> = ({ runPublicId }) => {
   if (!validRun) {
     return (
       <div className='p-4 text-sm text-red-600'>
-        Invalid run id — must be a UUID7 (got &quot;{runPublicId}&quot;).
+        {t('detail.errors.invalidRunId', { id: runPublicId })}
       </div>
     )
   }
@@ -43,7 +45,7 @@ export const BacktestDetailPage: React.FC<Props> = ({ runPublicId }) => {
   if (isLoading) {
     return (
       <div className='space-y-4 p-4'>
-        <h2 className='text-lg font-semibold'>Backtest run</h2>
+        <h2 className='text-lg font-semibold'>{t('detail.title')}</h2>
         <code className='text-xs opacity-70'>{runPublicId}</code>
         <BacktestProgressBar snapshot={snapshot} />
       </div>
@@ -51,63 +53,67 @@ export const BacktestDetailPage: React.FC<Props> = ({ runPublicId }) => {
   }
 
   if (error || !data?.payload) {
+    const message = error instanceof Error ? error.message : t('detail.errors.notFound')
+
     return (
       <div className='space-y-3 p-4'>
-        <h2 className='text-lg font-semibold'>Backtest run</h2>
-        <div className='text-sm text-red-600'>
-          Failed to load run: {error instanceof Error ? error.message : 'not found'}
-        </div>
+        <h2 className='text-lg font-semibold'>{t('detail.title')}</h2>
+        <div className='text-sm text-red-600'>{t('detail.errors.loadFailed', { message })}</div>
         <a href='#backtests' className='text-sm text-brand-400 hover:underline'>
-          ← Back to backtests
+          {t('nav.backToList')}
         </a>
       </div>
     )
   }
 
   const run = data.payload
+  const statusLabel = t(`status.${run.status}`, { defaultValue: run.status })
 
   return (
     <div className='space-y-4 p-4'>
       <div className='flex items-center justify-between'>
-        <h2 className='text-lg font-semibold'>Backtest run</h2>
+        <h2 className='text-lg font-semibold'>{t('detail.title')}</h2>
         <a href='#backtests' className='text-sm text-brand-400 hover:underline'>
-          ← Back
+          {t('nav.back')}
         </a>
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-4'>
         <div>
-          <div className='text-muted-500'>Strategy</div>
+          <div className='text-muted-500'>{t('detail.fields.strategy')}</div>
           <div className='text-alpine-900'>{run.strategy_name}</div>
         </div>
         <div>
-          <div className='text-muted-500'>Instrument</div>
+          <div className='text-muted-500'>{t('detail.fields.instrument')}</div>
           <div className='font-mono text-alpine-900'>
             {run.instrument ?? run.instrument_public_id}
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Status</div>
+          <div className='text-muted-500'>{t('detail.fields.status')}</div>
           <div className={clsx('font-medium', STATUS_COLOR[run.status] ?? 'text-muted-400')}>
-            {run.status}
+            {statusLabel}
           </div>
         </div>
         <div>
-          <div className='text-muted-500'>Period</div>
+          <div className='text-muted-500'>{t('detail.fields.period')}</div>
           <div className='font-mono text-alpine-900'>
             {formatDate(run.start_date)} — {formatDate(run.end_date)}
           </div>
         </div>
         {run.target_execution_exchange && (
           <div className='col-span-2 md:col-span-4'>
-            <div className='text-muted-500'>Cross-asset attribution</div>
+            <div className='text-muted-500'>{t('detail.fields.crossAsset')}</div>
             <div className='font-mono text-alpine-900'>
-              {run.exchange} feed → {run.target_execution_exchange} fills
+              {t('detail.crossAssetFlow', {
+                source: run.exchange,
+                target: run.target_execution_exchange,
+              })}
             </div>
           </div>
         )}
         {run.config_hash && (
           <div className='col-span-2 md:col-span-4'>
-            <div className='text-muted-500'>Config hash</div>
+            <div className='text-muted-500'>{t('detail.fields.configHash')}</div>
             <code className='font-mono text-xs text-muted-400'>{run.config_hash}</code>
           </div>
         )}

@@ -102,7 +102,7 @@ describe('BacktestDetailPage', () => {
     expect(launcher.textContent).toBe(`${VALID_RUN}|completed`)
     expect(screen.getByText('sma')).toBeDefined()
     expect(screen.getByText('BTC-USD')).toBeDefined()
-    expect(screen.getByText('completed')).toBeDefined()
+    expect(screen.getByText('Completed')).toBeDefined()
     expect(screen.getByText('cfg-hash-deadbeef')).toBeDefined()
   })
   it('renders error fallback when fetch fails', async () => {

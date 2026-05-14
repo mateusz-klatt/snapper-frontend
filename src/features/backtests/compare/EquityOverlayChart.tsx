@@ -8,6 +8,7 @@ import {
   UTCTimestamp,
   createChart,
 } from 'lightweight-charts'
+import { useTranslation } from 'react-i18next'
 import { useAppStore } from '../../../stores/app'
 import type { EquityOverlayPoint } from '../../../types/api'
 
@@ -51,6 +52,7 @@ const buildSeriesData = (
  * Theme-aware via useAppStore.
  */
 export const EquityOverlayChart: React.FC<Props> = ({ points, height = 300, className = '' }) => {
+  const { t } = useTranslation('backtests')
   const containerRef = useRef<HTMLDivElement>(null)
   const chartRef = useRef<IChartApi | null>(null)
   const seriesARef = useRef<ISeriesApi<'Line'> | null>(null)
@@ -134,14 +136,14 @@ export const EquityOverlayChart: React.FC<Props> = ({ points, height = 300, clas
             className='inline-block h-2 w-3 rounded-sm'
             style={{ backgroundColor: SERIES_A_COLOR }}
           />
-          <span>Run A</span>
+          <span>{t('compare.equity.legend.runA')}</span>
         </span>
         <span className='flex items-center gap-1'>
           <span
             className='inline-block h-2 w-3 rounded-sm'
             style={{ backgroundColor: SERIES_B_COLOR }}
           />
-          <span>Run B</span>
+          <span>{t('compare.equity.legend.runB')}</span>
         </span>
       </div>
     </div>
