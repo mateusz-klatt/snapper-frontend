@@ -1,7 +1,7 @@
 import i18n from 'i18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import { initReactI18next } from 'react-i18next'
-import { BOOT_RESOURCES } from './bootResources'
+import { BOOT_NAMESPACES, BOOT_RESOURCES } from './bootResources'
 import { DEFAULT_LOCALE, isLocale } from './types'
 import { getCatalogLanguage } from './countryLanguages'
 import type { AppLocale, CatalogLanguage } from './types'
@@ -57,8 +57,7 @@ void i18n
     fallbackNS: 'common',
     defaultNS: 'common',
     ns: [
-      'common',
-      'auth',
+      ...BOOT_NAMESPACES,
       'overview',
       'orders',
       'positions',
