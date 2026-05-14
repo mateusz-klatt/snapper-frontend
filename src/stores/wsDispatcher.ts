@@ -151,6 +151,9 @@ export class WSDispatcher {
 
       useAppStore.getState().setConnected(true)
       useAppStore.getState().setSubscribedTopics(client.getSubscribedTopics())
+      this.invalidateActive(queryKeys.pendingAiReviewsAll)
+      this.invalidateActive(queryKeys.positionsAll)
+      this.invalidateActive(queryKeys.trailingStopAll)
     }
   }
   detach(): void {

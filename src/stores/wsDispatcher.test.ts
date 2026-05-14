@@ -2246,5 +2246,27 @@ describe('WSDispatcher', () => {
       connectionHandlers.forEach(h => h(false))
       expect(invalidate).not.toHaveBeenCalled()
     })
+
+    it('attach onto an already-connected client invalidates all three prefixes', () => {
+      vi.mocked(mockWsClient.isConnected).mockReturnValue(true)
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
+
+      expect(callKeys).toContainEqual(['ai-reviews', 'pending'])
+      expect(callKeys).toContainEqual(['positions'])
+      expect(callKeys).toContainEqual(['trailingStopState'])
+    })
+
+    it('attach onto a disconnected client does not invalidate (defers to onConnection)', () => {
+      vi.mocked(mockWsClient.isConnected).mockReturnValue(false)
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      expect(invalidate).not.toHaveBeenCalled()
+    })
   })
 })
