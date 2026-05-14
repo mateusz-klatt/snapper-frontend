@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../stores/auth'
 import type { Permission } from '../../types/permissions.generated'
 import LoginForm from './LoginForm'
@@ -19,6 +20,7 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
   fallback,
 }) => {
   const { isAuthenticated, user, hasRole, hasPermission, canAccess } = useAuth()
+  const { t } = useTranslation('auth')
 
   if (!isAuthenticated || !user) {
     if (fallback) {
@@ -37,12 +39,14 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
       <div className='min-h-screen flex items-center justify-center bg-alpine-100 dark:bg-dark-900 px-4'>
         <div className='text-center'>
           <div className='text-6xl mb-4'>🚫</div>
-          <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>Access Denied</h1>
+          <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
+            {t('errors.accessDenied.title')}
+          </h1>
           <p className='text-muted-600 dark:text-dark-400 mb-4'>
-            You need {requiredRole} access or higher to view this resource.
+            {t('errors.accessDenied.message', { role: requiredRole })}
           </p>
           <p className='text-sm text-muted-500 dark:text-muted-500'>
-            Your current role: <span className='font-medium'>{user.role}</span>
+            {t('errors.currentRoleLabel')} <span className='font-medium'>{user.role}</span>
           </p>
         </div>
       </div>
@@ -55,13 +59,13 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
         <div className='text-center'>
           <div className='text-6xl mb-4'>🔒</div>
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
-            Insufficient Permissions
+            {t('errors.insufficientPermissions.title')}
           </h1>
           <p className='text-muted-600 dark:text-dark-400 mb-4'>
-            You don&apos;t have the required permission: <code>{requiredPermission}</code>
+            {t('errors.insufficientPermissions.message')} <code>{requiredPermission}</code>
           </p>
           <p className='text-sm text-muted-500 dark:text-muted-500'>
-            Your current role: <span className='font-medium'>{user.role}</span>
+            {t('errors.currentRoleLabel')} <span className='font-medium'>{user.role}</span>
           </p>
         </div>
       </div>
@@ -74,13 +78,13 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
         <div className='text-center'>
           <div className='text-6xl mb-4'>🚪</div>
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
-            Resource Restricted
+            {t('errors.resourceRestricted.title')}
           </h1>
           <p className='text-muted-600 dark:text-dark-400 mb-4'>
-            You don&apos;t have access to the <code>{resource}</code> resource.
+            {t('errors.resourceRestricted.message')} <code>{resource}</code>
           </p>
           <p className='text-sm text-muted-500 dark:text-muted-500'>
-            Your current role: <span className='font-medium'>{user.role}</span>
+            {t('errors.currentRoleLabel')} <span className='font-medium'>{user.role}</span>
           </p>
         </div>
       </div>

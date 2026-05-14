@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../stores/auth'
 import { useChangePassword } from '../../hooks/queries/users'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
@@ -21,6 +22,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
   const [isChangingPassword, setIsChangingPassword] = useState(false)
   const { user, logout, isLoading } = useAuth()
   const changePasswordMutation = useChangePassword()
+  const { t } = useTranslation('auth')
 
   if (!user) return null
 
@@ -45,13 +47,13 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
     setPasswordSuccess('')
 
     if (newPassword !== confirmPassword) {
-      setPasswordError('New passwords do not match')
+      setPasswordError(t('profile.changePasswordModal.errors.mismatch'))
 
       return
     }
 
     if (newPassword.length < 8) {
-      setPasswordError('Password must be at least 8 characters')
+      setPasswordError(t('profile.changePasswordModal.errors.tooShort'))
 
       return
     }
@@ -60,7 +62,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
       { userId: user.username, currentPassword, newPassword },
       {
         onSuccess: () => {
-          setPasswordSuccess('Password changed successfully')
+          setPasswordSuccess(t('profile.changePasswordModal.success'))
           resetPasswordForm()
           setTimeout(() => {
             setShowPasswordForm(false)
@@ -68,7 +70,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
           }, 2000)
         },
         onError: (error: Error) => {
-          setPasswordError(error.message || 'Failed to change password')
+          setPasswordError(error.message || t('profile.changePasswordModal.errors.failed'))
         },
         onSettled: () => {
           setIsChangingPassword(false)
@@ -147,18 +149,18 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
           </div>
           <div className='py-2'>
             <div className='px-4 py-2 text-sm text-muted-600'>
-              <div className='font-medium mb-1'>Permissions:</div>
+              <div className='font-medium mb-1'>{t('profile.permissionsLabel')}</div>
               <div className='text-xs space-y-1'>
                 {user.role === 'admin' && (
-                  <div className='text-loss-600'>• Full system administration</div>
+                  <div className='text-loss-600'>• {t('profile.fullAdmin')}</div>
                 )}
                 {(user.role === 'admin' || user.role === 'operator') && (
                   <>
-                    <div className='text-brand-600'>• Trading operations</div>
-                    <div className='text-brand-600'>• Strategy execution</div>
+                    <div className='text-brand-600'>• {t('profile.tradingOperations')}</div>
+                    <div className='text-brand-600'>• {t('profile.strategyExecution')}</div>
                   </>
                 )}
-                <div className='text-accent-600'>• Market data access</div>
+                <div className='text-accent-600'>• {t('profile.marketDataAccess')}</div>
               </div>
             </div>
             <div className='border-t border-dark-600 mt-2 pt-2'>
@@ -170,7 +172,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                 disabled={readOnly}
                 className='w-full text-left px-4 py-2 text-sm text-muted-600 hover:bg-dark-700 disabled:opacity-50 disabled:cursor-not-allowed'
               >
-                Change password
+                {t('profile.changePassword')}
               </button>
               <button
                 onClick={() => {
@@ -179,7 +181,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                 }}
                 className='w-full text-left px-4 py-2 text-sm text-muted-600 hover:bg-dark-700'
               >
-                Help &amp; Documentation
+                {t('profile.helpDocumentation')}
               </button>
               <button
                 onClick={handleLogout}
@@ -189,10 +191,10 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                 {isLoading ? (
                   <div className='flex items-center'>
                     <div className='animate-spin rounded-full h-3 w-3 border-b-2 border-loss-600 mr-2'></div>
-                    Signing out...
+                    {t('profile.signingOut')}
                   </div>
                 ) : (
-                  'Sign out'
+                  t('profile.signOut')
                 )}
               </button>
             </div>
@@ -203,7 +205,9 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
       {showPasswordForm && (
         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/50'>
           <div className='bg-alpine-50 border border-dark-600 rounded-lg shadow-xl w-full max-w-md p-6'>
-            <h2 className='text-lg font-semibold text-alpine-900 mb-4'>Change Password</h2>
+            <h2 className='text-lg font-semibold text-alpine-900 mb-4'>
+              {t('profile.changePasswordModal.title')}
+            </h2>
             {passwordError && (
               <div className='mb-4 p-3 bg-loss-100 text-loss-700 rounded-lg text-sm'>
                 {passwordError}
@@ -220,7 +224,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                   htmlFor='current-password'
                   className='block text-sm font-medium text-muted-700 mb-1'
                 >
-                  Current Password
+                  {t('profile.changePasswordModal.currentPasswordLabel')}
                 </label>
                 <input
                   id='current-password'
@@ -236,7 +240,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                   htmlFor='new-password'
                   className='block text-sm font-medium text-muted-700 mb-1'
                 >
-                  New Password
+                  {t('profile.changePasswordModal.newPasswordLabel')}
                 </label>
                 <input
                   id='new-password'
@@ -253,7 +257,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                   htmlFor='confirm-password'
                   className='block text-sm font-medium text-muted-700 mb-1'
                 >
-                  Confirm New Password
+                  {t('profile.changePasswordModal.confirmPasswordLabel')}
                 </label>
                 <input
                   id='confirm-password'
@@ -274,14 +278,16 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                   }}
                   className='px-4 py-2 text-sm text-muted-600 hover:bg-dark-700 rounded-lg transition-colors'
                 >
-                  Cancel
+                  {t('profile.changePasswordModal.cancel')}
                 </button>
                 <button
                   type='submit'
                   disabled={isChangingPassword || readOnly}
                   className='px-4 py-2 text-sm bg-brand-600 text-white rounded-lg hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
                 >
-                  {isChangingPassword ? 'Changing...' : 'Change Password'}
+                  {isChangingPassword
+                    ? t('profile.changePasswordModal.submitting')
+                    : t('profile.changePasswordModal.submit')}
                 </button>
               </div>
             </form>
@@ -292,37 +298,49 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
       <Modal
         open={showHelpDialog}
         onClose={() => setShowHelpDialog(false)}
-        title='Help & Documentation'
+        title={t('profile.help.title')}
       >
         <div className='space-y-4 text-sm'>
           <section>
-            <h4 className='font-semibold text-alpine-900 mb-2'>Role Capabilities</h4>
+            <h4 className='font-semibold text-alpine-900 mb-2'>
+              {t('profile.help.roleCapabilities.title')}
+            </h4>
             <div className='space-y-2 text-muted-600'>
               <div>
-                <span className='font-medium text-loss-600'>Admin</span> — Full system access
-                including user management, system settings, and all Operator permissions.
+                <span className='font-medium text-loss-600'>
+                  {t('profile.help.roleCapabilities.adminPrefix')}
+                </span>{' '}
+                {t('profile.help.roleCapabilities.adminDescription')}
               </div>
               <div>
-                <span className='font-medium text-brand-600'>Operator</span> — Trading operations,
-                strategy execution, process management, and system health monitoring.
+                <span className='font-medium text-brand-600'>
+                  {t('profile.help.roleCapabilities.operatorPrefix')}
+                </span>{' '}
+                {t('profile.help.roleCapabilities.operatorDescription')}
               </div>
               <div>
-                <span className='font-medium text-accent-600'>Viewer</span> — Read-only access to
-                Overview and Market Data.
+                <span className='font-medium text-accent-600'>
+                  {t('profile.help.roleCapabilities.viewerPrefix')}
+                </span>{' '}
+                {t('profile.help.roleCapabilities.viewerDescription')}
               </div>
             </div>
           </section>
           <section>
-            <h4 className='font-semibold text-alpine-900 mb-2'>Quick Reference</h4>
+            <h4 className='font-semibold text-alpine-900 mb-2'>
+              {t('profile.help.quickReference.title')}
+            </h4>
             <ul className='list-disc list-inside text-muted-600 space-y-1'>
-              <li>Use the sidebar menu to navigate between sections</li>
-              <li>Dark mode toggle is available in the header bar</li>
-              <li>Export data to CSV from Orders and Signals pages</li>
-              <li>Strategy start/stop actions require confirmation</li>
+              <li>{t('profile.help.quickReference.navigation')}</li>
+              <li>{t('profile.help.quickReference.darkMode')}</li>
+              <li>{t('profile.help.quickReference.exportData')}</li>
+              <li>{t('profile.help.quickReference.strategyConfirm')}</li>
             </ul>
           </section>
           <section>
-            <h4 className='font-semibold text-alpine-900 mb-2'>API Documentation</h4>
+            <h4 className='font-semibold text-alpine-900 mb-2'>
+              {t('profile.help.apiDocs.title')}
+            </h4>
             <ul className='list-disc list-inside space-y-1 text-muted-600'>
               <li>
                 <a
@@ -331,9 +349,9 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                   rel='noreferrer'
                   className='text-primary-500 hover:text-primary-400 underline'
                 >
-                  Swagger UI
+                  {t('profile.help.apiDocs.swagger')}
                 </a>{' '}
-                — interactive API explorer
+                {t('profile.help.apiDocs.swaggerDescription')}
               </li>
               <li>
                 <a
@@ -342,9 +360,9 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                   rel='noreferrer'
                   className='text-primary-500 hover:text-primary-400 underline'
                 >
-                  ReDoc
+                  {t('profile.help.apiDocs.redoc')}
                 </a>{' '}
-                — API reference documentation
+                {t('profile.help.apiDocs.redocDescription')}
               </li>
             </ul>
           </section>
@@ -356,7 +374,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
           type='button'
           className='fixed inset-0 z-40 w-full h-full cursor-default bg-transparent border-none'
           onClick={() => setShowDropdown(false)}
-          aria-label='Close dropdown'
+          aria-label={t('profile.closeDropdownLabel')}
         />
       )}
     </div>
