@@ -15,6 +15,11 @@ vi.mock('react-dom/client', () => ({
   },
   createRoot: mockCreateRoot,
 }))
+vi.mock('./i18n/config', () => ({
+  default: {},
+  LOCALE_STORAGE_KEY: 'snapper-locale',
+  detectInitialLocale: () => 'ie',
+}))
 describe('main', () => {
   let rootElement: HTMLDivElement | null = null
 

@@ -1,0 +1,15 @@
+{
+  "loading": "Loading...",
+  "error": "Error",
+  "retry": "Retry",
+  "close": "Close",
+  "cancel": "Cancel",
+  "confirm": "Confirm",
+  "save": "Save",
+  "documentation": "Documentation (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Switch language",
+    "flagAriaLabel": "Switch to {{country}}",
+    "currentAriaLabel": "Current language: {{country}}"
+  }
+}

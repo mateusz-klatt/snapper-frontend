@@ -4,6 +4,10 @@ import { apiClient } from '../lib/apiClient'
 import { queryClient } from '../lib/queryClient'
 import { useAuthStore } from './auth'
 import { AppState } from '../types/ui'
+import i18n, { LOCALE_STORAGE_KEY, detectInitialLocale } from '../i18n/config'
+import { LOCALES } from '../i18n/locales'
+import { getCatalogLanguage } from '../i18n/countryLanguages'
+import type { AppLocale } from '../i18n/types'
 
 const DARK_MODE_KEY = 'snapper-dark-mode'
 
@@ -17,6 +21,18 @@ const loadDarkModePreference = (): boolean => {
   return false
 }
 
+const applyLocaleSideEffects = (locale: AppLocale): void => {
+  try {
+    localStorage.setItem(LOCALE_STORAGE_KEY, locale)
+  } catch {
+    void 0
+  }
+
+  void i18n.changeLanguage(getCatalogLanguage(locale))
+  document.documentElement.lang = getCatalogLanguage(locale)
+  document.documentElement.dir = LOCALES[locale].dir
+}
+
 interface AppStore extends AppState {
   setConnected: (connected: boolean) => void
   setConnectionLag: (lag: number) => void
@@ -28,6 +44,7 @@ interface AppStore extends AppState {
   setCurrentOperatorPublicId: (id: string | null) => void
   setCurrentWalletPublicId: (id: string | null) => void
   selectWalletAndRefresh: (nextWalletId: string | null) => Promise<void>
+  setLocale: (locale: AppLocale) => void
 }
 
 export const useAppStore = create<AppStore>()(
@@ -41,6 +58,7 @@ export const useAppStore = create<AppStore>()(
     isTimeTraveling: false,
     currentOperatorPublicId: null,
     currentWalletPublicId: null,
+    locale: detectInitialLocale(),
     setConnected: connected => set({ isConnected: connected }),
     setConnectionLag: lag => set({ connectionLag: lag }),
     setSubscribedTopics: topics => set({ subscribedTopics: topics }),
@@ -91,6 +109,10 @@ export const useAppStore = create<AppStore>()(
       apiClient.setWalletScope(nextWalletId)
       set({ currentWalletPublicId: nextWalletId })
       queryClient.invalidateQueries()
+    },
+    setLocale: (locale: AppLocale) => {
+      applyLocaleSideEffects(locale)
+      set({ locale })
     },
   }))
 )

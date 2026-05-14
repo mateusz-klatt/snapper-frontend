@@ -1,0 +1,15 @@
+{
+  "loading": "Ładowanie...",
+  "error": "Błąd",
+  "retry": "Spróbuj ponownie",
+  "close": "Zamknij",
+  "cancel": "Anuluj",
+  "confirm": "Potwierdź",
+  "save": "Zapisz",
+  "documentation": "Dokumentacja (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Zmień język",
+    "flagAriaLabel": "Przełącz na {{country}}",
+    "currentAriaLabel": "Bieżący język: {{country}}"
+  }
+}
