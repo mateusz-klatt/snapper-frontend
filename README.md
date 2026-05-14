@@ -163,3 +163,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Forks welcome; PRs get reviewed against 
 ## License
 
 [MIT](LICENSE) — Mateusz Klatt, 2026.
+
+### Bundled assets
+
+- `public/TwemojiCountryFlags.woff2` — derived from [Twemoji](https://github.com/twitter/twemoji) via [`country-flag-emoji-polyfill`](https://github.com/talkjs/country-flag-emoji-polyfill). Twemoji graphics are licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/). Loaded only on browsers that lack native flag emoji (e.g. Windows Chrome/Edge); other platforms use their system flag glyphs.
