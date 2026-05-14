@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { SettingItem } from './SettingItem'
 import { AddSettingModal } from './AddSettingModal'
 import { ThemeSelect } from '../../components/ThemeSelect'
+import LocaleSwitcher from '../../components/LocaleSwitcher'
 import {
   useSettings,
   useSettingCategories,
@@ -133,7 +134,7 @@ export const Settings = () => {
           </div>
         )}
         {}
-        <div className='flex flex-col sm:flex-row gap-3'>
+        <div className='flex flex-col sm:flex-row gap-3 items-stretch sm:items-center'>
           <div className='flex-1'>
             <input
               type='text'
@@ -142,6 +143,9 @@ export const Settings = () => {
               onChange={e => setSearchTerm(e.target.value)}
               className='input text-sm'
             />
+          </div>
+          <div>
+            <LocaleSwitcher />
           </div>
           <div>
             <ThemeSelect

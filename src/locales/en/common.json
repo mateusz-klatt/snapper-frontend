@@ -11,5 +11,43 @@
     "triggerAriaLabel": "Switch language",
     "flagAriaLabel": "Switch to {{country}}",
     "currentAriaLabel": "Current language: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Trading Console",
+    "tagline": "Precision workstation",
+    "openSidebar": "Open sidebar",
+    "closeSidebar": "Close sidebar",
+    "sidebar": "Sidebar",
+    "mainNavigation": "Main navigation",
+    "tradingContent": "Trading content",
+    "skipToContent": "Skip trading content",
+    "lag": "Lag:",
+    "lagTitle": "Round-trip latency to the WebSocket server",
+    "topics": "Topics:",
+    "topicsTitle": "Number of subscribed WebSocket topics",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "connectedTitle": "Connected to WebSocket",
+    "disconnectedTitle": "Disconnected from WebSocket",
+    "switchToLightMode": "Switch to light mode",
+    "switchToDarkMode": "Switch to dark mode",
+    "timeTravelBanner": "Time Travel Mode — viewing historical data (read-only)",
+    "lagUnknown": "Unknown"
+  },
+  "nav": {
+    "overview": "Overview",
+    "market": "Market Data",
+    "processes": "Processes",
+    "strategies": "Strategies",
+    "orders": "Orders & Executions",
+    "positions": "Positions",
+    "signals": "Signals",
+    "backtests": "Backtests",
+    "health": "Health",
+    "admin": "Administration",
+    "aiIntegration": "AI Integration",
+    "aiReviews": "AI Reviews",
+    "settings": "Settings"
   }
 }
