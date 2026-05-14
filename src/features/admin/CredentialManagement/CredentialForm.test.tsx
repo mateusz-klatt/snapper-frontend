@@ -336,6 +336,18 @@ describe('CredentialForm', () => {
     expect(screen.queryByLabelText('API Key')).toBeNull()
     expect(screen.queryByLabelText('API Secret')).toBeNull()
   })
+  it('does not submit an unknown credential type', () => {
+    renderWithQuery(<CredentialForm open onClose={onClose} />)
+    fireEvent.change(screen.getByTestId('cred-wallet'), { target: { value: 'w-1' } })
+    fireEvent.change(screen.getByLabelText('Exchange'), { target: { value: 'kraken' } })
+    fireEvent.change(screen.getByTestId('cred-type'), { target: { value: 'unknown_type' } })
+    const form = screen
+      .getByText('Add Credential', { selector: 'button' })
+      .closest('form') as HTMLFormElement
+
+    fireEvent.submit(form)
+    expect(mockCreateMutation.mutate).not.toHaveBeenCalled()
+  })
   it('handles undefined wallets data gracefully', () => {
     mockUseWallets.mockReturnValue({ data: undefined })
     renderWithQuery(<CredentialForm open onClose={onClose} />)

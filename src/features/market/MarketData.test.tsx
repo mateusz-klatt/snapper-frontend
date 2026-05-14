@@ -359,6 +359,31 @@ describe('MarketData', () => {
       expect(screen.getByText(/No data available for/i)).toBeInTheDocument()
     })
   })
+  it('uses raw timeframe text when selected timeframe is unknown', async () => {
+    const { useCachedCandles } = await import('../../hooks/queries/market')
+    const { useMarketStore } = await import('../../stores/market')
+
+    vi.mocked(useMarketStore).mockReturnValueOnce({
+      selectedExchange: 'kraken',
+      selectedInstrument: 'EUR-USD',
+      selectedTimeframe: 'custom',
+      setSelectedExchange: mockSetSelectedExchange,
+      setSelectedInstrument: mockSetSelectedInstrument,
+      setSelectedMarket: mockSetSelectedMarket,
+      setSelectedTimeframe: mockSetSelectedTimeframe,
+    })
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope([]),
+      isLoading: false,
+      error: null,
+      isFetching: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<MarketData />)
+    await waitFor(() => {
+      expect(screen.getByText(/custom data/i)).toBeInTheDocument()
+    })
+  })
   it('calls setSelectedExchange when exchange is changed', async () => {
     const user = userEvent.setup()
 

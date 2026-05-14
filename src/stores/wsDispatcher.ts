@@ -520,7 +520,9 @@ export class WSDispatcher {
    * order/execution frames does not multiply REST calls.
    */
   private invalidateActive(queryKey: readonly unknown[]): void {
-    void this.queryClient.invalidateQueries({ queryKey, refetchType: 'active' })
+    this.queryClient
+      .invalidateQueries({ queryKey, refetchType: 'active' })
+      .catch(error => console.error('Failed to invalidate active query:', error))
   }
   private mergeAiReviewActivity(frame: AiReviewActivityFrame): void {
     const userPublicId = useAuthStore.getState().user?.public_id ?? null

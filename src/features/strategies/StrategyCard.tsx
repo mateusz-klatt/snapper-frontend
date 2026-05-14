@@ -97,6 +97,77 @@ interface StrategyCardProps {
   readOnly?: boolean | undefined
 }
 
+interface StrategyActionControlsProps {
+  displayName: string
+  showStopButton: boolean
+  onStart?: (() => void) | undefined
+  onStop?: (() => void) | undefined
+  isStarting: boolean
+  isStopping: boolean
+  readOnly: boolean
+}
+
+const StrategyActionControls: React.FC<Readonly<StrategyActionControlsProps>> = ({
+  displayName,
+  showStopButton,
+  onStart,
+  onStop,
+  isStarting,
+  isStopping,
+  readOnly,
+}) => {
+  const { t } = useTranslation('strategies')
+  const controlsDisabled = isStopping || isStarting || readOnly
+
+  if (showStopButton) {
+    return (
+      <button
+        onClick={onStop}
+        disabled={controlsDisabled}
+        aria-label={t('card.stopAriaLabel', { name: displayName })}
+        className={clsx(
+          'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
+          controlsDisabled
+            ? 'bg-loss-400/20 text-loss-600 cursor-not-allowed'
+            : 'bg-loss-600 text-white hover:bg-loss-700 focus:outline-none focus:ring-2 focus:ring-loss-500'
+        )}
+      >
+        {isStopping ? (
+          <>
+            <LoadingSpinner size='sm' className='inline-block mr-2' />
+            {t('card.stopping')}
+          </>
+        ) : (
+          t('card.stop')
+        )}
+      </button>
+    )
+  }
+
+  return (
+    <button
+      onClick={onStart}
+      disabled={controlsDisabled}
+      aria-label={t('card.startAriaLabel', { name: displayName })}
+      className={clsx(
+        'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
+        controlsDisabled
+          ? 'bg-accent-400/20 text-accent-300 cursor-not-allowed'
+          : 'bg-accent-600 text-white hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-accent-500'
+      )}
+    >
+      {isStarting ? (
+        <>
+          <LoadingSpinner size='sm' className='inline-block mr-2' />
+          {t('card.starting')}
+        </>
+      ) : (
+        t('card.start')
+      )}
+    </button>
+  )
+}
+
 export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
   ({
     name,
@@ -301,49 +372,15 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
         {}
         {(onStart || onStop) && (
           <div className='flex space-x-2 pt-2 border-t border-dark-600'>
-            {showStopButton ? (
-              <button
-                onClick={onStop}
-                disabled={isStopping || isStarting || readOnly}
-                aria-label={t('card.stopAriaLabel', { name: displayName })}
-                className={clsx(
-                  'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
-                  isStopping || isStarting || readOnly
-                    ? 'bg-loss-400/20 text-loss-600 cursor-not-allowed'
-                    : 'bg-loss-600 text-white hover:bg-loss-700 focus:outline-none focus:ring-2 focus:ring-loss-500'
-                )}
-              >
-                {isStopping ? (
-                  <>
-                    <LoadingSpinner size='sm' className='inline-block mr-2' />
-                    {t('card.stopping')}
-                  </>
-                ) : (
-                  t('card.stop')
-                )}
-              </button>
-            ) : (
-              <button
-                onClick={onStart}
-                disabled={isStarting || isStopping || readOnly}
-                aria-label={t('card.startAriaLabel', { name: displayName })}
-                className={clsx(
-                  'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
-                  isStarting || isStopping || readOnly
-                    ? 'bg-accent-400/20 text-accent-300 cursor-not-allowed'
-                    : 'bg-accent-600 text-white hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-accent-500'
-                )}
-              >
-                {isStarting ? (
-                  <>
-                    <LoadingSpinner size='sm' className='inline-block mr-2' />
-                    {t('card.starting')}
-                  </>
-                ) : (
-                  t('card.start')
-                )}
-              </button>
-            )}
+            <StrategyActionControls
+              displayName={displayName}
+              showStopButton={showStopButton}
+              onStart={onStart}
+              onStop={onStop}
+              isStarting={isStarting}
+              isStopping={isStopping}
+              readOnly={readOnly}
+            />
           </div>
         )}
       </article>

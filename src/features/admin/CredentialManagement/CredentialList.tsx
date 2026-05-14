@@ -5,6 +5,7 @@ import { Button, Badge } from '../../../components/ui'
 import { useCredentials } from '../../../hooks/queries/credentials'
 import { useWallets } from '../../../hooks/queries/wallets'
 import { ThemeSelect } from '../../../components/ThemeSelect'
+import { isCredentialType } from './credentialTypes'
 import type { CredentialSummary, WalletInfo } from '../../../types/api'
 
 interface CredentialListProps {
@@ -37,12 +38,8 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
   }
 
   const credentialTypeLabel = (type: string): string => {
-    const knownTypes = ['api_key_secret', 'rsa_pem', 'oauth', 'paper']
-
-    if (knownTypes.includes(type)) {
-      return t(
-        `credentials.form.credentialTypes.${type}` as 'credentials.form.credentialTypes.api_key_secret'
-      )
+    if (isCredentialType(type)) {
+      return t(`credentials.form.credentialTypes.${type}`)
     }
 
     return type
