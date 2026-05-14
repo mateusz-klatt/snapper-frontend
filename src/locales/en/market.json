@@ -1,1 +1,47 @@
-{}
+{
+  "page": {
+    "title": "Market Data"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrument:",
+    "timeframe": "Timeframe:",
+    "selectExchange": "Select exchange",
+    "searchInstrument": "Search instrument..."
+  },
+  "timeframes": {
+    "1m": "1 Minute",
+    "5m": "5 Minutes",
+    "15m": "15 Minutes",
+    "30m": "30 Minutes",
+    "1h": "1 Hour",
+    "4h": "4 Hours",
+    "1d": "1 Day"
+  },
+  "stats": {
+    "currentPrice": "Current Price",
+    "change24h": "24h Change",
+    "high24h": "24h High",
+    "low24h": "24h Low"
+  },
+  "chart": {
+    "title": "Price Chart",
+    "errorPrefix": "Error loading chart data:",
+    "unknownError": "Unknown error",
+    "noDataTitle": "No data available for {{instrument}}",
+    "noDataHint": "The instrument may not exist or has no {{timeframe}} data"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "No related instruments configured for {{instrument}} on {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache warming up: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(derived from 1m)",
+      "db": "(from DB)"
+    }
+  }
+}

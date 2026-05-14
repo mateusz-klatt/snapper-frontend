@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import type { AvailableProcess } from '../../types/api'
 import { useProcessSchema } from '../../hooks/queries/processes'
@@ -42,6 +43,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
   onSubmit,
   isSubmitting = false,
 }) => {
+  const { t } = useTranslation('strategies')
   const readOnly = useIsReadOnly()
   const sortedTemplates = useMemo(
     () => [...templates].sort((a, b) => a.name.localeCompare(b.name)),
@@ -150,17 +152,17 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
   }
 
   return (
-    <Modal open={open} onClose={onClose} title='Register Strategy Process' size='lg'>
+    <Modal open={open} onClose={onClose} title={t('launchModal.title')} size='lg'>
       {templates.length === 0 ? (
         <div className='space-y-3 text-sm text-muted-600'>
-          <p>No strategy templates registered in backend. Define at least one strategy process.</p>
+          <p>{t('launchModal.emptyTemplates')}</p>
           <div className='flex justify-end pt-2'>
             <button
               type='button'
               onClick={onClose}
               className='px-4 py-2 text-sm text-muted-600 hover:text-alpine-900'
             >
-              Close
+              {t('launchModal.close')}
             </button>
           </div>
         </div>
@@ -171,7 +173,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               htmlFor='strategy-template'
               className='block text-sm font-medium text-muted-700 mb-2'
             >
-              Strategy template
+              {t('launchModal.templateLabel')}
             </label>
             <select
               id='strategy-template'
@@ -184,7 +186,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
               required
             >
-              <option value=''>Choose template...</option>
+              <option value=''>{t('launchModal.templatePlaceholder')}</option>
               {sortedTemplates.map(template => (
                 <option key={template.name} value={template.name}>
                   {template.name}
@@ -194,16 +196,14 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
             {selectedTemplate && (
               <p className='mt-1 text-xs text-muted-500'>
                 {sortedTemplates.find(template => template.name === selectedTemplate)
-                  ?.description || 'Strategy registered in backend'}
+                  ?.description || t('launchModal.templateFallbackDescription')}
               </p>
             )}
             {processSchema.isLoading && (
-              <p className='mt-2 text-xs text-muted-400'>Loading template defaults…</p>
+              <p className='mt-2 text-xs text-muted-400'>{t('launchModal.loadingDefaults')}</p>
             )}
             {processSchema.error && (
-              <p className='mt-2 text-xs text-warning-400'>
-                Unable to load template defaults. Please check backend logs.
-              </p>
+              <p className='mt-2 text-xs text-warning-400'>{t('launchModal.loadDefaultsError')}</p>
             )}
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
@@ -212,40 +212,36 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 htmlFor='process-name'
                 className='block text-sm font-medium text-muted-700 mb-2'
               >
-                Process name
+                {t('launchModal.processNameLabel')}
               </label>
               <input
                 id='process-name'
                 type='text'
                 value={processName}
                 onChange={e => setProcessName(e.target.value)}
-                placeholder='strategy_macd_custom'
+                placeholder={t('launchModal.processNamePlaceholder')}
                 className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
                 required
               />
-              <p className='mt-1 text-xs text-muted-400'>
-                Allowed characters: lowercase letters, numbers, underscores
-              </p>
+              <p className='mt-1 text-xs text-muted-400'>{t('launchModal.processNameHelp')}</p>
             </div>
             <div>
               <label
                 htmlFor='strategy-instance-name'
                 className='block text-sm font-medium text-muted-700 mb-2'
               >
-                Strategy instance name
+                {t('launchModal.instanceNameLabel')}
               </label>
               <input
                 id='strategy-instance-name'
                 type='text'
                 value={strategyName}
                 onChange={e => setStrategyName(e.target.value)}
-                placeholder='macd_custom'
+                placeholder={t('launchModal.instanceNamePlaceholder')}
                 className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
                 required
               />
-              <p className='mt-1 text-xs text-muted-400'>
-                Used within strategy configuration and output topics
-              </p>
+              <p className='mt-1 text-xs text-muted-400'>{t('launchModal.instanceNameHelp')}</p>
             </div>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
@@ -254,7 +250,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 htmlFor='execution-mode'
                 className='block text-sm font-medium text-muted-700 mb-2'
               >
-                Execution mode
+                {t('launchModal.executionModeLabel')}
               </label>
               <select
                 id='execution-mode'
@@ -262,15 +258,15 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 onChange={e => setExecutionMode(e.target.value as 'thread' | 'process')}
                 className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
               >
-                <option value='thread'>Embedded thread</option>
-                <option value='process'>Isolated process</option>
+                <option value='thread'>{t('launchModal.executionModeThread')}</option>
+                <option value='process'>{t('launchModal.executionModeProcess')}</option>
               </select>
-              <p className='mt-1 text-xs text-muted-400'>
-                Threads share memory, processes provide stronger isolation.
-              </p>
+              <p className='mt-1 text-xs text-muted-400'>{t('launchModal.executionModeHelp')}</p>
             </div>
             <div className='space-y-2'>
-              <span className='block text-sm font-medium text-muted-700 mb-2'>Flags</span>
+              <span className='block text-sm font-medium text-muted-700 mb-2'>
+                {t('launchModal.flagsLabel')}
+              </span>
               <label className='flex items-center text-sm text-muted-600'>
                 <input
                   type='checkbox'
@@ -278,7 +274,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                   checked={autostart}
                   onChange={e => setAutostart(e.target.checked)}
                 />{' '}
-                Autostart on server boot
+                {t('launchModal.autostartLabel')}
               </label>
               <label className='flex items-center text-sm text-muted-600'>
                 <input
@@ -287,7 +283,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                   checked={startImmediately}
                   onChange={e => setStartImmediately(e.target.checked)}
                 />{' '}
-                Start immediately after registration
+                {t('launchModal.startImmediatelyLabel')}
               </label>
             </div>
           </div>
@@ -296,7 +292,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               htmlFor='strategy-note'
               className='block text-sm font-medium text-muted-700 mb-2'
             >
-              Note (optional)
+              {t('launchModal.noteLabel')}
             </label>
             <textarea
               id='strategy-note'
@@ -305,11 +301,9 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               maxLength={512}
               rows={2}
               className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
-              placeholder='Describe purpose or parameters of this strategy instance.'
+              placeholder={t('launchModal.notePlaceholder')}
             />
-            <p className='mt-1 text-xs text-muted-400'>
-              Stored alongside configuration to help identify this process.
-            </p>
+            <p className='mt-1 text-xs text-muted-400'>{t('launchModal.noteHelp')}</p>
           </div>
           <div className='flex justify-end space-x-3 pt-4'>
             <button
@@ -318,7 +312,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               className='px-4 py-2 text-sm text-muted-600 hover:text-alpine-900'
               disabled={isSubmitting}
             >
-              Cancel
+              {t('launchModal.cancel')}
             </button>
             <button
               type='submit'
@@ -333,7 +327,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               }
               className='px-4 py-2 bg-info-600 text-white text-sm font-medium rounded-md hover:bg-info-700 disabled:opacity-50 disabled:cursor-not-allowed'
             >
-              {isSubmitting ? 'Registering…' : 'Register strategy'}
+              {isSubmitting ? t('launchModal.submitting') : t('launchModal.submit')}
             </button>
           </div>
         </form>

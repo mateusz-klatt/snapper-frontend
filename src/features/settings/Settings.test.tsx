@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -11,6 +11,7 @@ import {
   updateSetting,
 } from '../../lib/api/settings'
 import { makeEnvelope, makeSettingRead } from '../../test/factories'
+import { renderWithI18n } from '../../test/renderWithI18n'
 import type { SettingResponse } from '../../types/api'
 
 const updateSettingResponse = (key: string, value: string): SettingResponse =>
@@ -72,7 +73,7 @@ const createQueryClient = () =>
 const renderSettings = (ui: ReactNode) => {
   const queryClient = createQueryClient()
 
-  return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
+  return renderWithI18n(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
 }
 
 describe('Settings', () => {

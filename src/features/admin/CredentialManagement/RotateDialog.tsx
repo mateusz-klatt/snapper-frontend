@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { RotateCw, X } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
@@ -11,16 +12,6 @@ const REQUIRED_FIELDS: Record<string, string[]> = {
   rsa_pem: ['api_key', 'private_key_pem'],
   oauth: ['client_id', 'client_secret', 'refresh_token'],
   paper: ['initial_balance'],
-}
-
-const FIELD_LABELS: Record<string, string> = {
-  api_key: 'API Key',
-  api_secret: 'API Secret',
-  private_key_pem: 'Private Key (PEM)',
-  client_id: 'Client ID',
-  client_secret: 'Client Secret',
-  refresh_token: 'Refresh Token',
-  initial_balance: 'Initial Balance',
 }
 
 interface RotateDialogProps {
@@ -36,12 +27,16 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
   onClose,
   readOnly,
 }) => {
+  const { t } = useTranslation('admin')
   const [fields, setFields] = useState<Record<string, string>>({})
   const [label, setLabel] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const rotateMutation = useRotateCredential()
 
   const requiredFields = REQUIRED_FIELDS[credential?.credential_type ?? ''] ?? []
+
+  const fieldLabel = (field: string): string =>
+    t(`credentials.form.fieldLabels.${field}` as 'credentials.form.fieldLabels.api_key')
 
   const handleClose = () => {
     setFields({})
@@ -55,7 +50,9 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
 
     for (const field of requiredFields) {
       if (!fields[field]?.trim()) {
-        newErrors[field] = `${FIELD_LABELS[field]} is required`
+        newErrors[field] = t('credentials.form.validation.fieldRequired', {
+          field: fieldLabel(field),
+        })
       }
     }
 
@@ -87,32 +84,32 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
       },
       {
         onSuccess: () => {
-          toast.success('Credential rotated')
+          toast.success(t('credentials.rotate.toast.rotated'))
           handleClose()
         },
         onError: (err: Error) => {
-          toast.error(err.message || 'Error rotating credential')
+          toast.error(err.message || t('credentials.rotate.toast.rotateError'))
         },
       }
     )
   }
 
   return (
-    <Modal open={open} onClose={handleClose} title='Rotate Credential' size='md'>
+    <Modal open={open} onClose={handleClose} title={t('credentials.rotate.title')} size='md'>
       <div className='space-y-6'>
         {credential && (
           <div className='bg-dark-700 rounded-lg p-4 space-y-2'>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Exchange</span>
+              <span className='text-muted-500'>{t('credentials.rotate.fields.exchange')}</span>
               <span className='text-alpine-900 font-medium'>{credential.exchange}</span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Type</span>
+              <span className='text-muted-500'>{t('credentials.rotate.fields.type')}</span>
               <span className='text-alpine-900'>{credential.credential_type}</span>
             </div>
             <div className='flex justify-between text-sm'>
-              <span className='text-muted-500'>Label</span>
-              <span className='text-alpine-900'>{credential.label ?? '-'}</span>
+              <span className='text-muted-500'>{t('credentials.rotate.fields.label')}</span>
+              <span className='text-alpine-900'>{credential.label ?? t('common.dash')}</span>
             </div>
           </div>
         )}
@@ -122,7 +119,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
               htmlFor={`rotate-field-${field}`}
               className='block text-sm font-medium text-alpine-900 mb-2'
             >
-              {FIELD_LABELS[field]}
+              {fieldLabel(field)}
             </label>
             {field === 'private_key_pem' ? (
               <textarea
@@ -137,7 +134,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
                 className={`w-full rounded-md border bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 font-mono text-xs ${
                   errors[field] ? 'border-loss-500' : 'border-dark-600'
                 }`}
-                placeholder='-----BEGIN RSA PRIVATE KEY-----'
+                placeholder={t('credentials.rotate.fields.pemPlaceholder')}
               />
             ) : (
               <input
@@ -163,7 +160,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
         ))}
         <div>
           <label htmlFor='rotate-label' className='block text-sm font-medium text-alpine-900 mb-2'>
-            New Label (optional)
+            {t('credentials.rotate.fields.newLabel')}
           </label>
           <input
             type='text'
@@ -171,7 +168,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
             value={label}
             onChange={e => setLabel(e.target.value)}
             className='w-full rounded-md border border-dark-600 bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500'
-            placeholder='e.g. Rotated key 2026-04'
+            placeholder={t('credentials.rotate.fields.newLabelPlaceholder')}
           />
         </div>
         <div className='flex justify-end space-x-3 pt-4 border-t border-dark-600'>
@@ -183,7 +180,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
             disabled={rotateMutation.isPending}
           >
             <X className='w-3.5 h-3.5' />
-            Cancel
+            {t('common.cancel')}
           </Button>
           <Button
             type='button'
@@ -194,7 +191,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
             onClick={handleRotate}
           >
             <RotateCw className='w-3.5 h-3.5' />
-            Rotate
+            {t('credentials.rotate.actions.rotate')}
           </Button>
         </div>
       </div>

@@ -1,1 +1,72 @@
-{}
+{
+  "page": {
+    "title": "Settings",
+    "subtitle": "Configure application settings and parameters",
+    "addButton": "Add Setting",
+    "searchPlaceholder": "Search settings...",
+    "noResults": "No settings found matching your criteria.",
+    "allCategories": "All Categories",
+    "categoryFilterAriaLabel": "Filter settings by category"
+  },
+  "errors": {
+    "loadFailed": "Failed to load settings",
+    "updateFailed": "Failed to update setting",
+    "deleteFailed": "Failed to delete setting",
+    "createFailed": "Failed to create setting",
+    "alreadyExists": "Setting with key \"{{key}}\" already exists"
+  },
+  "item": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "yesDelete": "Yes, Delete",
+    "deleting": "Deleting...",
+    "deleteConfirm": "Delete this setting?",
+    "valuePlaceholder": "Enter setting value...",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "toggleAriaLabel": "Toggle {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensitive"
+    },
+    "helpText": {
+      "allowShortSelling": "Allow the engine to open short positions. SELL signals will produce negative desired_units; clamps to 0 when disabled.",
+      "allowManualOrders": "Enable the New Order button on the Orders tab. When disabled, POST /api/orders returns 403."
+    }
+  },
+  "addModal": {
+    "title": "Add New Setting",
+    "keyLabel": "Key",
+    "valueLabel": "Value",
+    "categoryLabel": "Category",
+    "descriptionLabel": "Description",
+    "keyPlaceholder": "e.g., walutomat.api_key",
+    "keyHint": "Use dot notation for nested settings (e.g., category.subcategory.name)",
+    "valuePlaceholder": "Setting value",
+    "categorySelectPlaceholder": "Select existing or create new",
+    "newCategoryPlaceholder": "Or enter new category name",
+    "descriptionPlaceholder": "Optional description",
+    "cancel": "Cancel",
+    "create": "Create Setting",
+    "creating": "Creating...",
+    "validation": {
+      "keyRequired": "Key is required",
+      "valueRequired": "Value is required",
+      "categoryRequired": "Category is required"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Form Editor",
+    "rawEditor": "Raw JSON Editor",
+    "rawJson": "Raw JSON",
+    "switchToForm": "Switch to Form",
+    "importToForm": "Import to Form",
+    "parseError": "Parse error: {{message}}",
+    "arraySummary": "Array ({{length}} items)",
+    "addItem": "Add Item",
+    "remove": "Remove"
+  }
+}

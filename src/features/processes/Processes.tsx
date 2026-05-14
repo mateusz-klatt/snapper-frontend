@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { LiveOnlyNotice } from '../../components/LiveOnlyNotice'
 import {
   useStartProcessByName,
@@ -25,16 +26,18 @@ const UNKNOWN_HEARTBEAT: HeartbeatData = {
 
 const EXECUTOR_INSTANCE_PATTERN = /^(.+)_w([a-f0-9]{12})$/
 
-const resolveStatusBadge = (process: ConfiguredProcess): string => {
-  if (process.is_one_shot) return 'one-shot'
-  if (process.enabled) return 'auto-start'
-
-  return 'manual'
-}
-
 export const Processes: React.FC = () => {
+  const { t } = useTranslation('processes')
   const readOnly = useIsReadOnly()
   const { openConfirm, dialogProps: confirmDialogProps } = useConfirmDialog()
+
+  const resolveStatusBadge = (process: ConfiguredProcess): string => {
+    if (process.is_one_shot) return t('badges.oneShot')
+    if (process.enabled) return t('badges.autoStart')
+
+    return t('badges.manual')
+  }
+
   const [executionModeModal, setExecutionModeModal] = useState<{
     open: boolean
     componentName: string
@@ -187,23 +190,23 @@ export const Processes: React.FC = () => {
   const handleStop = React.useCallback(
     (processName: string, message: string) => {
       openConfirm({
-        title: `Stop ${processName}`,
+        title: t('actions.stopTitle', { name: processName }),
         message,
         onConfirm: () => stopProcess.mutate({ name: processName }),
       })
     },
-    [stopProcess, openConfirm]
+    [stopProcess, openConfirm, t]
   )
 
   const handleRestart = React.useCallback(
     (processName: string, stopMessage: string, openStartModal: () => void) => {
       openConfirm({
-        title: `Restart ${processName}`,
+        title: t('actions.restartTitle', { name: processName }),
         message: stopMessage,
         onConfirm: () => stopProcess.mutate({ name: processName }, { onSuccess: openStartModal }),
       })
     },
-    [stopProcess, openConfirm]
+    [stopProcess, openConfirm, t]
   )
 
   const getHeartbeat = React.useCallback(
@@ -241,12 +244,12 @@ export const Processes: React.FC = () => {
     <div className='space-y-6'>
       <LiveOnlyNotice />
       <div className='flex items-center justify-between'>
-        <h1 className='text-2xl font-bold text-alpine-900'>Process Control</h1>
-        <div className='text-sm text-muted-600'>Real-time process monitoring and control</div>
+        <h1 className='text-2xl font-bold text-alpine-900'>{t('page.title')}</h1>
+        <div className='text-sm text-muted-600'>{t('page.subtitle')}</div>
       </div>
       {}
       <div className='space-y-4'>
-        <h2 className='text-lg font-semibold text-primary-600'>Long-Running Processes</h2>
+        <h2 className='text-lg font-semibold text-primary-600'>{t('sections.longRunning')}</h2>
         <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
           {longRunningProcesses.map(process => {
             const description = getDescription(process)
@@ -262,12 +265,12 @@ export const Processes: React.FC = () => {
                 heartbeat={heartbeat}
                 onStart={() => handleStart(process.name, description)}
                 onStop={() =>
-                  handleStop(process.name, `This will stop the ${process.name} process.`)
+                  handleStop(process.name, t('actions.stopMessage', { name: process.name }))
                 }
                 onRestart={() =>
                   handleRestart(
                     process.name,
-                    `This will restart the ${process.name} process.`,
+                    t('actions.restartMessage', { name: process.name }),
                     () => handleStart(process.name, description)
                   )
                 }
@@ -282,18 +285,17 @@ export const Processes: React.FC = () => {
       {executorTemplates.length > 0 && (
         <div className='space-y-4'>
           <div>
-            <h2 className='text-lg font-semibold text-primary-600'>Executor Templates</h2>
-            <p className='text-sm text-muted-600 mt-1'>
-              Editing template config affects all wallets on this exchange after restart. Templates
-              are config-only — start the per-wallet instance below to run an executor.
-            </p>
+            <h2 className='text-lg font-semibold text-primary-600'>
+              {t('sections.executorTemplates')}
+            </h2>
+            <p className='text-sm text-muted-600 mt-1'>{t('sections.executorTemplatesHint')}</p>
           </div>
           <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
             {executorTemplates.map(template => {
               const description = getDescription(template)
               const paramSummary = Object.keys(template.parameters).length
-                ? `${Object.keys(template.parameters).length} parameter(s)`
-                : 'no parameters set'
+                ? t('template.paramCount', { count: Object.keys(template.parameters).length })
+                : t('template.noParams')
 
               return (
                 <div
@@ -309,16 +311,20 @@ export const Processes: React.FC = () => {
                       <p className='text-xs text-muted-400 mt-1 font-mono'>{template.name}</p>
                     </div>
                     <span className='px-2 py-1 rounded-md text-xs font-medium text-info-400 bg-info-400/10 shrink-0'>
-                      template
+                      {t('template.badge')}
                     </span>
                   </div>
                   <div className='space-y-1 text-xs'>
                     <div className='flex gap-2'>
-                      <span className='text-muted-400 font-medium shrink-0'>Mode:</span>
+                      <span className='text-muted-400 font-medium shrink-0'>
+                        {t('template.mode')}
+                      </span>
                       <span className='text-muted-600'>{template.mode}</span>
                     </div>
                     <div className='flex gap-2'>
-                      <span className='text-muted-400 font-medium shrink-0'>Parameters:</span>
+                      <span className='text-muted-400 font-medium shrink-0'>
+                        {t('template.parameters')}
+                      </span>
                       <span className='text-muted-600'>{paramSummary}</span>
                     </div>
                   </div>
@@ -330,7 +336,9 @@ export const Processes: React.FC = () => {
       )}
       {walletInstances.length > 0 && (
         <div className='space-y-4'>
-          <h2 className='text-lg font-semibold text-primary-600'>Wallet Instances</h2>
+          <h2 className='text-lg font-semibold text-primary-600'>
+            {t('sections.walletInstances')}
+          </h2>
           <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
             {walletInstances.map(instance => {
               const description = getDescription(instance)
@@ -353,12 +361,12 @@ export const Processes: React.FC = () => {
                   heartbeat={heartbeat}
                   onStart={() => handleStart(instance.name, description)}
                   onStop={() =>
-                    handleStop(instance.name, `This will stop the ${instance.name} process.`)
+                    handleStop(instance.name, t('actions.stopMessage', { name: instance.name }))
                   }
                   onRestart={() =>
                     handleRestart(
                       instance.name,
-                      `This will restart the ${instance.name} process.`,
+                      t('actions.restartMessage', { name: instance.name }),
                       () => handleStart(instance.name, description)
                     )
                   }
@@ -378,7 +386,7 @@ export const Processes: React.FC = () => {
       {}
       {taskProcesses.length > 0 && (
         <div className='space-y-4'>
-          <h2 className='text-lg font-semibold text-primary-600'>Task Processes</h2>
+          <h2 className='text-lg font-semibold text-primary-600'>{t('sections.taskProcesses')}</h2>
           <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4'>
             {taskProcesses.map(process => {
               const status: 'running' | 'stopped' | 'error' = process.running
@@ -405,12 +413,12 @@ export const Processes: React.FC = () => {
                   readOnly={readOnly}
                   onStart={() => handleStart(process.name, description)}
                   onStop={() =>
-                    handleStop(process.name, `This will stop the ${process.name} process.`)
+                    handleStop(process.name, t('actions.stopMessage', { name: process.name }))
                   }
                   onRestart={() =>
                     handleRestart(
                       process.name,
-                      `This will restart the ${process.name} process.`,
+                      t('actions.restartMessage', { name: process.name }),
                       () => handleStart(process.name, description)
                     )
                   }

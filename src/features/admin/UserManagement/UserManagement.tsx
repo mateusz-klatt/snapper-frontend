@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Users } from 'lucide-react'
 import UserList from './UserList'
 import UserForm from './UserForm'
@@ -10,6 +11,7 @@ interface UserManagementProps {
 }
 
 const UserManagement: React.FC<UserManagementProps> = ({ readOnly }) => {
+  const { t } = useTranslation('admin')
   const [showUserForm, setShowUserForm] = useState(false)
   const [editingUser, setEditingUser] = useState<UserProfile | undefined>(undefined)
   const { hasPermission } = useAuthStore()
@@ -18,10 +20,10 @@ const UserManagement: React.FC<UserManagementProps> = ({ readOnly }) => {
     return (
       <div className='flex flex-col items-center justify-center min-h-[60vh] text-center'>
         <Users className='w-16 h-16 text-muted-400 mb-4' />
-        <h2 className='text-xl font-semibold text-alpine-900 mb-2'>Access Denied</h2>
-        <p className='text-muted-600 max-w-md'>
-          You don&apos;t have permission to manage users. Please contact your system administrator.
-        </p>
+        <h2 className='text-xl font-semibold text-alpine-900 mb-2'>
+          {t('users.accessDenied.title')}
+        </h2>
+        <p className='text-muted-600 max-w-md'>{t('users.accessDenied.message')}</p>
       </div>
     )
   }

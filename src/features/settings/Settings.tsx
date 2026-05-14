@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { SettingItem } from './SettingItem'
 import { AddSettingModal } from './AddSettingModal'
 import { ThemeSelect } from '../../components/ThemeSelect'
@@ -12,6 +13,7 @@ import {
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 
 export const Settings = () => {
+  const { t } = useTranslation('settings')
   const readOnly = useIsReadOnly()
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState('')
@@ -27,10 +29,10 @@ export const Settings = () => {
   const error = (() => {
     if (!displayError) return null
     if (displayError instanceof Error) return displayError.message
-    if (updateMutation.error) return 'Failed to update setting'
-    if (deleteMutation.error) return 'Failed to delete setting'
+    if (updateMutation.error) return t('errors.updateFailed')
+    if (deleteMutation.error) return t('errors.deleteFailed')
 
-    return 'Failed to load settings'
+    return t('errors.loadFailed')
   })()
 
   let savingKey: string | null = null
@@ -64,7 +66,7 @@ export const Settings = () => {
     description: string
   ) => {
     if (settings.some(s => s.key === key)) {
-      throw new Error(`Setting with key "${key}" already exists`)
+      throw new Error(t('errors.alreadyExists', { key }))
     }
 
     await updateMutation.mutateAsync({ key, data: { value, category, description } })
@@ -109,8 +111,8 @@ export const Settings = () => {
       <div className='pb-4 border-b border-dark-600'>
         <div className='mb-4 flex justify-between items-start'>
           <div>
-            <h1 className='text-2xl font-bold text-alpine-900 mb-1'>Settings</h1>
-            <p className='text-muted-600 text-sm'>Configure application settings and parameters</p>
+            <h1 className='text-2xl font-bold text-alpine-900 mb-1'>{t('page.title')}</h1>
+            <p className='text-muted-600 text-sm'>{t('page.subtitle')}</p>
           </div>
           <button
             onClick={() => setShowAddModal(true)}
@@ -125,7 +127,7 @@ export const Settings = () => {
                 d='M12 4v16m8-8H4'
               />
             </svg>
-            Add Setting
+            {t('page.addButton')}
           </button>
         </div>
         {error && (
@@ -138,7 +140,7 @@ export const Settings = () => {
           <div className='flex-1'>
             <input
               type='text'
-              placeholder='Search settings...'
+              placeholder={t('page.searchPlaceholder')}
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
               className='input text-sm'
@@ -149,14 +151,14 @@ export const Settings = () => {
           </div>
           <div>
             <ThemeSelect
-              ariaLabel='Filter settings by category'
+              ariaLabel={t('page.categoryFilterAriaLabel')}
               value={selectedCategory}
               onChange={setSelectedCategory}
               options={categories.map(category => ({
                 value: category,
                 label:
                   category === 'all'
-                    ? 'All Categories'
+                    ? t('page.allCategories')
                     : category.charAt(0).toUpperCase() + category.slice(1),
               }))}
             />
@@ -168,7 +170,7 @@ export const Settings = () => {
         <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3'>
           {filteredSettings.length === 0 ? (
             <div className='col-span-full text-center py-12 text-muted-500'>
-              <p>No settings found matching your criteria.</p>
+              <p>{t('page.noResults')}</p>
             </div>
           ) : (
             filteredSettings.map(setting => (

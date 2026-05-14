@@ -1,1 +1,137 @@
-{}
+{
+  "page": {
+    "title": "Zlecenia i wykonania",
+    "newOrder": "Nowe zlecenie",
+    "exportCsv": "Eksportuj CSV"
+  },
+  "tabs": {
+    "orders": "Zlecenia ({{total}})",
+    "executions": "Wykonania ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtruj według statusu:",
+    "options": {
+      "all": "Wszystkie zlecenia",
+      "new": "Nowe",
+      "open": "Otwarte",
+      "partiallyFilled": "Częściowo zrealizowane",
+      "filled": "Zrealizowane",
+      "cancelled": "Anulowane",
+      "rejected": "Odrzucone"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/D",
+    "priceMarket": "Market",
+    "quantity": "Ilość",
+    "price": "Cena",
+    "created": "Utworzone",
+    "createdUnknown": "N/D",
+    "orderId": "ID zlecenia",
+    "leverage": "Dźwignia",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "TYLKO-REDUKCJA",
+    "cancel": "Anuluj",
+    "cancelling": "Anulowanie…",
+    "cancelAriaLabel": "Anuluj zlecenie {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Zlecenie #{{orderId}}",
+    "filled": "ZREALIZOWANE",
+    "orderLabel": "Zlecenie {{orderId}}",
+    "size": "Wielkość",
+    "price": "Cena",
+    "total": "Suma",
+    "executed": "Wykonane",
+    "fees": "Opłaty"
+  },
+  "empty": {
+    "ordersTitle": "Nie znaleziono zleceń",
+    "ordersStartTrading": "Rozpocznij handel, aby zobaczyć tu zlecenia",
+    "ordersFilterless": "Brak zleceń o statusie {{status}}",
+    "executionsTitle": "Nie znaleziono wykonań",
+    "executionsMessage": "Wykonania transakcji pojawią się tutaj"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Strona",
+      "type": "Typ",
+      "status": "Status",
+      "quantity": "Ilość",
+      "price": "Cena",
+      "leverage": "Dźwignia",
+      "reduceOnly": "Tylko redukcja",
+      "created": "Utworzone"
+    },
+    "executions": {
+      "orderId": "ID zlecenia",
+      "instrument": "Instrument",
+      "side": "Strona",
+      "size": "Wielkość",
+      "price": "Cena",
+      "total": "Suma",
+      "fee": "Opłata",
+      "feeAsset": "Aktywo opłaty",
+      "executed": "Wykonane"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Nowe zlecenie ręczne",
+    "titleConfirm": "Potwierdź zlecenie",
+    "fields": {
+      "exchange": "Giełda",
+      "instrument": "Instrument",
+      "side": "Strona",
+      "orderType": "Typ zlecenia",
+      "quantity": "Ilość",
+      "price": "Cena",
+      "stopPrice": "Cena stop",
+      "mode": "Tryb",
+      "wallet": "Portfel",
+      "type": "Typ"
+    },
+    "sideOptions": {
+      "buy": "Kup",
+      "sell": "Sprzedaj"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — tylko dane rynkowe",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Anuluj",
+      "reviewOrder": "Sprawdź zlecenie",
+      "back": "Wstecz",
+      "confirmOrder": "Potwierdź zlecenie",
+      "submitting": "Wysyłanie..."
+    },
+    "errors": {
+      "missingRequired": "Wszystkie wymagane pola muszą być wypełnione",
+      "quantityPositive": "Ilość musi być liczbą dodatnią",
+      "priceRequired": "Cena jest wymagana dla tego typu zlecenia",
+      "pricePositive": "Cena musi być liczbą dodatnią",
+      "stopPriceRequired": "Cena stop jest wymagana dla tego typu zlecenia",
+      "stopPricePositive": "Cena stop musi być liczbą dodatnią",
+      "createFailed": "Utworzenie zlecenia nie powiodło się"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Ten instrument służy tylko do obserwacji — składaj zlecenia na instrumencie z możliwością wykonania.",
+      "unknownInstrument": "Ten instrument nie jest rozpoznany. Odśwież listę i spróbuj ponownie.",
+      "capsViolation": "To zlecenie przekroczyłoby limity bezpieczeństwa konta. Sprawdź ustawienia ryzyka i spróbuj ponownie."
+    }
+  }
+}

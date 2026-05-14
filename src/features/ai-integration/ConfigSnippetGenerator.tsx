@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { AlertTriangle, Check, Clipboard } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../../components/ui'
 import { buildMcpConfigSnippet } from './buildMcpConfigSnippet'
 import type { DelegateCreatedPayload } from '../../types/api'
@@ -7,6 +8,7 @@ import type { DelegateCreatedPayload } from '../../types/api'
 export function ConfigSnippetGenerator({
   payload,
 }: Readonly<{ payload: DelegateCreatedPayload }>): React.ReactElement {
+  const { t } = useTranslation('aiIntegration')
   const [copied, setCopied] = useState(false)
   const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -45,11 +47,8 @@ export function ConfigSnippetGenerator({
       >
         <AlertTriangle className='w-5 h-5 shrink-0 mt-0.5' />
         <div>
-          <h3 className='font-semibold'>Save these credentials now</h3>
-          <p className='text-sm'>
-            They will not be shown again. Snapper does not store the raw tokens; once you close this
-            wizard, the only copy will be in your MCP client config.
-          </p>
+          <h3 className='font-semibold'>{t('snippet.warningTitle')}</h3>
+          <p className='text-sm'>{t('snippet.warningMessage')}</p>
         </div>
       </div>
 
@@ -67,30 +66,25 @@ export function ConfigSnippetGenerator({
           value={snippet}
           className='w-full font-mono text-xs p-3 rounded-lg border border-dark-600 bg-dark-700 text-muted-100'
         />
-        <p className='mt-2 text-xs text-muted-600'>
-          Long-lived AI delegate token (~10 years). The same token authenticates both the proxy MCP
-          server and the watch monitor. To rotate, deactivate this delegate and create a new one.
-        </p>
+        <p className='mt-2 text-xs text-muted-600'>{t('snippet.snippetHelp')}</p>
       </div>
 
       <div className='flex items-center justify-between'>
         <p className='text-xs text-muted-500'>
-          Base URL is derived from this browser&apos;s origin + <code>/api/mcp</code>.
+          {t('snippet.baseUrlHelpPrefix')}
+          <code>/api/mcp</code>
+          {t('snippet.baseUrlHelpSuffix')}
         </p>
-        <Button
-          variant='primary'
-          onClick={handleCopy}
-          aria-label='Copy config snippet to clipboard'
-        >
+        <Button variant='primary' onClick={handleCopy} aria-label={t('snippet.copyAriaLabel')}>
           {copied ? (
             <>
               <Check className='w-4 h-4 mr-1 inline' />
-              Copied
+              {t('snippet.copied')}
             </>
           ) : (
             <>
               <Clipboard className='w-4 h-4 mr-1 inline' />
-              Copy to clipboard
+              {t('snippet.copy')}
             </>
           )}
         </Button>

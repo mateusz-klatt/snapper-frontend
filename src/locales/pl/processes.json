@@ -1,1 +1,50 @@
-{}
+{
+  "page": {
+    "title": "Kontrola procesów",
+    "subtitle": "Monitorowanie i kontrola procesów w czasie rzeczywistym"
+  },
+  "sections": {
+    "longRunning": "Procesy długotrwałe",
+    "executorTemplates": "Szablony wykonawców",
+    "executorTemplatesHint": "Edycja konfiguracji szablonu wpływa na wszystkie portfele tej giełdy po ponownym uruchomieniu. Szablony służą wyłącznie konfiguracji — uruchom poniższą instancję per-portfel, aby wystartować wykonawcę.",
+    "walletInstances": "Instancje portfeli",
+    "taskProcesses": "Procesy zadań"
+  },
+  "card": {
+    "stop": "Zatrzymaj",
+    "start": "Uruchom",
+    "restart": "Uruchom ponownie",
+    "starting": "Uruchamianie...",
+    "stopping": "Zatrzymywanie..."
+  },
+  "template": {
+    "badge": "szablon",
+    "mode": "Tryb:",
+    "parameters": "Parametry:",
+    "paramCount": "{{count}} parametr(ów)",
+    "noParams": "brak ustawionych parametrów"
+  },
+  "badges": {
+    "oneShot": "jednorazowy",
+    "autoStart": "auto-start",
+    "manual": "ręczny"
+  },
+  "actions": {
+    "stopTitle": "Zatrzymaj {{name}}",
+    "stopMessage": "Spowoduje to zatrzymanie procesu {{name}}.",
+    "restartTitle": "Uruchom ponownie {{name}}",
+    "restartMessage": "Spowoduje to ponowne uruchomienie procesu {{name}}."
+  },
+  "executionMode": {
+    "title": "Uruchom {{name}}",
+    "label": "Tryb wykonania:",
+    "threadName": "Tryb wątkowy",
+    "threadDescription": "Działa jako osadzone zadanie w serwerze webowym. Szybszy start, współdzielona pamięć.",
+    "processName": "Tryb procesowy",
+    "processDescription": "Działa jako oddzielny proces Pythona. Izolowany, odporny na awarie, szczegółowy monitoring.",
+    "cancel": "Anuluj",
+    "start": "Uruchom {{name}}",
+    "threadAriaLabel": "Tryb wątkowy",
+    "processAriaLabel": "Tryb procesowy"
+  }
+}

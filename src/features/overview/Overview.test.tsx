@@ -1,7 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
-import type { ReactNode } from 'react'
+import { screen } from '@testing-library/react'
+import type { ReactElement } from 'react'
 import { Overview } from './Overview'
+import { renderWithI18n } from '../../test/renderWithI18n'
 
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn((selector: (s: Record<string, unknown>) => unknown) =>
@@ -33,8 +34,8 @@ vi.mock('../../hooks/queries/signals', () => ({
   useLatestSignals: vi.fn(() => ({ data: [], isLoading: false })),
 }))
 
-const renderWithMocks = (ui: ReactNode) => {
-  return render(ui)
+const renderWithMocks = (ui: ReactElement) => {
+  return renderWithI18n(ui)
 }
 
 describe('Overview', () => {

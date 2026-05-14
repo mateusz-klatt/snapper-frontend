@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Save, X } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
@@ -15,6 +16,7 @@ interface ScopeGrantFormProps {
 }
 
 const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose, readOnly }) => {
+  const { t } = useTranslation('admin')
   const [operatorId, setOperatorId] = useState('')
   const [walletId, setWalletId] = useState('')
   const [scopeKind, setScopeKind] = useState<'underlying' | 'instrument'>('underlying')
@@ -46,9 +48,9 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
 
-    if (!operatorId) newErrors.operator = 'Operator is required'
-    if (!walletId) newErrors.wallet = 'Wallet is required'
-    if (!targetId.trim()) newErrors.target = 'Target ID is required'
+    if (!operatorId) newErrors.operator = t('scopeGrants.form.validation.operatorRequired')
+    if (!walletId) newErrors.wallet = t('scopeGrants.form.validation.walletRequired')
+    if (!targetId.trim()) newErrors.target = t('scopeGrants.form.validation.targetRequired')
     setErrors(newErrors)
 
     return Object.keys(newErrors).length === 0
@@ -73,7 +75,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
       },
       {
         onSuccess: () => {
-          toast.success('Scope grant created')
+          toast.success(t('scopeGrants.form.toast.created'))
           handleClose()
         },
         onError: (err: Error) => {
@@ -82,9 +84,9 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
             err.message.toLowerCase().includes('conflict') ||
             err.message.toLowerCase().includes('already')
           ) {
-            toast.error('Conflict: another operator already holds a grant on this scope')
+            toast.error(t('scopeGrants.form.toast.conflictError'))
           } else {
-            toast.error(err.message || 'Error creating scope grant')
+            toast.error(err.message || t('scopeGrants.form.toast.createError'))
           }
         },
       }
@@ -92,25 +94,25 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
   }
 
   return (
-    <Modal open={open} onClose={handleClose} title='Create Scope Grant' size='md'>
+    <Modal open={open} onClose={handleClose} title={t('scopeGrants.form.title')} size='md'>
       <form onSubmit={handleSubmit} className='space-y-6'>
         <fieldset disabled={readOnly} className='space-y-6'>
           <div>
             <label htmlFor='sg-operator' className='block text-sm font-medium text-alpine-900 mb-2'>
-              Operator
+              {t('scopeGrants.form.fields.operator')}
             </label>
             <ThemeSelect
               id='sg-operator'
               value={operatorId}
               onChange={setOperatorId}
               options={operators.map(o => ({ value: o.public_id, label: o.label }))}
-              placeholder='Select operator...'
+              placeholder={t('scopeGrants.form.fields.operatorPlaceholder')}
             />
             {errors.operator && <p className='mt-1 text-sm text-loss-600'>{errors.operator}</p>}
           </div>
           <div>
             <label htmlFor='sg-wallet' className='block text-sm font-medium text-alpine-900 mb-2'>
-              Wallet
+              {t('scopeGrants.form.fields.wallet')}
             </label>
             <ThemeSelect
               id='sg-wallet'
@@ -118,9 +120,9 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
               onChange={setWalletId}
               options={wallets.map(w => ({
                 value: w.public_id,
-                label: `${w.label}${w.is_paper ? ' (paper)' : ''}`,
+                label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
               }))}
-              placeholder='Select wallet...'
+              placeholder={t('common.selectWalletPlaceholder')}
             />
             {errors.wallet && <p className='mt-1 text-sm text-loss-600'>{errors.wallet}</p>}
           </div>
@@ -129,21 +131,23 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
               htmlFor='sg-scope-kind'
               className='block text-sm font-medium text-alpine-900 mb-2'
             >
-              Scope Kind
+              {t('scopeGrants.form.fields.scopeKind')}
             </label>
             <ThemeSelect
               id='sg-scope-kind'
               value={scopeKind}
               onChange={val => setScopeKind(val as 'underlying' | 'instrument')}
               options={[
-                { value: 'underlying', label: 'Underlying' },
-                { value: 'instrument', label: 'Instrument' },
+                { value: 'underlying', label: t('scopeGrants.form.scopeKinds.underlying') },
+                { value: 'instrument', label: t('scopeGrants.form.scopeKinds.instrument') },
               ]}
             />
           </div>
           <div>
             <label htmlFor='sg-target' className='block text-sm font-medium text-alpine-900 mb-2'>
-              {scopeKind === 'underlying' ? 'Underlying Public ID' : 'Instrument Public ID'}
+              {scopeKind === 'underlying'
+                ? t('scopeGrants.form.fields.underlyingPublicId')
+                : t('scopeGrants.form.fields.instrumentPublicId')}
             </label>
             <input
               type='text'
@@ -157,13 +161,17 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
               className={`w-full rounded-md border bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 ${
                 errors.target ? 'border-loss-500' : 'border-dark-600'
               }`}
-              placeholder={scopeKind === 'underlying' ? 'e.g. BTC' : 'e.g. BTC-USD-PERP'}
+              placeholder={
+                scopeKind === 'underlying'
+                  ? t('scopeGrants.form.fields.underlyingPlaceholder')
+                  : t('scopeGrants.form.fields.instrumentPlaceholder')
+              }
             />
             {errors.target && <p className='mt-1 text-sm text-loss-600'>{errors.target}</p>}
           </div>
           <div>
             <label htmlFor='sg-note' className='block text-sm font-medium text-alpine-900 mb-2'>
-              Note (optional)
+              {t('scopeGrants.form.fields.note')}
             </label>
             <input
               type='text'
@@ -171,7 +179,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
               value={note}
               onChange={e => setNote(e.target.value)}
               className='w-full rounded-md border border-dark-600 bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500'
-              placeholder='Optional note'
+              placeholder={t('scopeGrants.form.fields.notePlaceholder')}
             />
           </div>
         </fieldset>
@@ -184,7 +192,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
             disabled={createMutation.isPending}
           >
             <X className='w-3.5 h-3.5' />
-            Cancel
+            {t('common.cancel')}
           </Button>
           <Button
             type='submit'
@@ -194,7 +202,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
             disabled={readOnly}
           >
             <Save className='w-3.5 h-3.5' />
-            Create Grant
+            {t('scopeGrants.form.actions.createGrant')}
           </Button>
         </div>
       </form>

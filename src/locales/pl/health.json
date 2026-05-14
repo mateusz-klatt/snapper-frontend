@@ -1,1 +1,143 @@
-{}
+{
+  "page": {
+    "title": "Kondycja systemu",
+    "healthMetricsHeading": "Metryki kondycji",
+    "processStatusHeading": "Status procesów",
+    "activeBacktestsHeading": "Aktywne backtesty",
+    "quickActionsHeading": "Szybkie akcje",
+    "featureNotImplemented": "Funkcja jeszcze nie wdrożona",
+    "restartServices": "Zrestartuj usługi",
+    "runHealthCheck": "Uruchom test kondycji",
+    "viewLogs": "Wyświetl logi",
+    "exportReport": "Eksportuj raport"
+  },
+  "status": {
+    "healthy": "Sprawne",
+    "stopped": "Zatrzymane",
+    "error": "Błąd",
+    "warning": "Ostrzeżenie",
+    "completed": "Zakończone",
+    "unknown": "Nieznane"
+  },
+  "metrics": {
+    "tradingEngine": "Silnik tradingowy",
+    "tradingEngineDescription": "Silnik wykonawczy strategii",
+    "activeBacktests": "Aktywne backtesty",
+    "activeBacktestsDescription": "Działające procesy backtestów",
+    "active": "Aktywne",
+    "inactive": "Nieaktywne"
+  },
+  "process": {
+    "uptimeNotAvailable": "brak",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "brak",
+    "uptimeLabel": "Czas działania",
+    "exitCode": "Kod wyjścia: {{code}}",
+    "service": "usługa",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Statystyki bazy danych",
+    "loading": "Ładowanie statystyk bazy…",
+    "unavailable": "Statystyki bazy niedostępne: {{message}}",
+    "fallbackError": "Nie udało się załadować statystyk bazy danych.",
+    "sampled": "próbkowane {{age}}",
+    "samplerSummary": "Interwał próbkowania: {{seconds}}s · {{count}} tabel",
+    "columns": {
+      "table": "Tabela",
+      "kind": "Rodzaj",
+      "total": "Łącznie",
+      "current": "Bieżące",
+      "closed": "Zamknięte",
+      "archivable": "Do archiwizacji",
+      "status": "Status"
+    },
+    "stale": "przestarzałe"
+  },
+  "notification": {
+    "title": "Sidecar powiadomień",
+    "loading": "Ładowanie metryk powiadomień…",
+    "unavailable": "Metryki powiadomień niedostępne: {{message}}",
+    "fallbackError": "Nie udało się załadować metryk powiadomień.",
+    "sent": "Wysłane",
+    "sentDescription": "Terminalne: wysłane",
+    "failed": "Nieudane",
+    "failedDescription": "Budżet ponownych prób wyczerpany",
+    "unregistered": "Niezarejestrowane",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Anulowane (zakres)",
+    "cancelledScopeDescription": "Odebranie zakresu / dezaktywacja użytkownika",
+    "outboxDepth": "Głębokość outboxa",
+    "outboxDepthDescription": "W kolejce, oczekujące na ponowną próbę"
+  },
+  "retention": {
+    "title": "Harmonogram retencji",
+    "loading": "Ładowanie przebiegu retencji…",
+    "unavailable": "Przebieg retencji niedostępny: {{message}}",
+    "fallbackError": "Nie udało się załadować przebiegu retencji.",
+    "lastRun": "ostatni przebieg {{age}}",
+    "dryRunNotice": "Tryb dry-run: wiersze są archiwizowane, ale nie usuwane z bazy.",
+    "columns": {
+      "table": "Tabela",
+      "retain": "Zachowaj",
+      "archivedWindow": "Okno archiwizacji",
+      "archived": "Zarchiwizowane",
+      "purged": "Usunięte",
+      "files": "Pliki",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "błąd"
+  },
+  "systemMetrics": {
+    "title": "Kondycja procesu",
+    "loading": "Ładowanie metryk procesu…",
+    "unavailable": "Metryki procesu niedostępne: {{message}}",
+    "fallbackError": "Nie udało się załadować metryk kondycji procesu.",
+    "rawJson": "Surowy JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Czas działania",
+    "threads": "Wątki",
+    "openFds": "Otwarte FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Ograniczone {{count}}×",
+    "memory": "Pamięć",
+    "saturation": "Nasycenie {{percent}}",
+    "asyncioTasks": "Zadania asyncio",
+    "asyncioActive": "{{count}} aktywnych",
+    "asyncioPending": "+ {{count}} oczekujących",
+    "dbPool": "Pula DB",
+    "liveConns": "Aktywne połączenia: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Obiekty: {{value}}",
+    "threadsPercent": "Wątki %",
+    "networkConns": "Połączenia sieciowe",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktywne",
+    "tracemallocIdle": "Bezczynne"
+  },
+  "relativeAge": {
+    "justNow": "przed chwilą",
+    "seconds": "{{seconds}}s temu",
+    "minutes": "{{minutes}}min temu",
+    "hours": "{{hours}}h temu",
+    "days": "{{days}}d temu"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

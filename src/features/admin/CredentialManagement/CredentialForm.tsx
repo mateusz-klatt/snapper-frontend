@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Save, X } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
@@ -8,28 +9,13 @@ import { useCreateCredential } from '../../../hooks/queries/credentials'
 import { useWallets } from '../../../hooks/queries/wallets'
 import type { WalletInfo } from '../../../types/api'
 
-const CREDENTIAL_TYPES = [
-  { value: 'api_key_secret', label: 'API Key + Secret' },
-  { value: 'rsa_pem', label: 'RSA PEM' },
-  { value: 'oauth', label: 'OAuth' },
-  { value: 'paper', label: 'Paper' },
-]
+const CREDENTIAL_TYPE_VALUES = ['api_key_secret', 'rsa_pem', 'oauth', 'paper'] as const
 
 const REQUIRED_FIELDS: Record<string, string[]> = {
   api_key_secret: ['api_key', 'api_secret'],
   rsa_pem: ['api_key', 'private_key_pem'],
   oauth: ['client_id', 'client_secret', 'refresh_token'],
   paper: ['initial_balance'],
-}
-
-const FIELD_LABELS: Record<string, string> = {
-  api_key: 'API Key',
-  api_secret: 'API Secret',
-  private_key_pem: 'Private Key (PEM)',
-  client_id: 'Client ID',
-  client_secret: 'Client Secret',
-  refresh_token: 'Refresh Token',
-  initial_balance: 'Initial Balance',
 }
 
 interface CredentialFormProps {
@@ -39,6 +25,7 @@ interface CredentialFormProps {
 }
 
 const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose, readOnly }) => {
+  const { t } = useTranslation('admin')
   const [walletId, setWalletId] = useState('')
   const [exchange, setExchange] = useState('')
   const [credentialType, setCredentialType] = useState('api_key_secret')
@@ -51,6 +38,16 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
 
   const wallets: WalletInfo[] = walletsData?.payload ?? []
   const requiredFields = REQUIRED_FIELDS[credentialType] ?? []
+
+  const fieldLabel = (field: string): string =>
+    t(`credentials.form.fieldLabels.${field}` as 'credentials.form.fieldLabels.api_key')
+
+  const credentialTypeOptions = CREDENTIAL_TYPE_VALUES.map(value => ({
+    value,
+    label: t(
+      `credentials.form.credentialTypes.${value}` as 'credentials.form.credentialTypes.api_key_secret'
+    ),
+  }))
 
   const resetForm = () => {
     setWalletId('')
@@ -75,12 +72,14 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
 
-    if (!walletId) newErrors.wallet = 'Wallet is required'
-    if (!exchange.trim()) newErrors.exchange = 'Exchange is required'
+    if (!walletId) newErrors.wallet = t('credentials.form.validation.walletRequired')
+    if (!exchange.trim()) newErrors.exchange = t('credentials.form.validation.exchangeRequired')
 
     for (const field of requiredFields) {
       if (!fields[field]?.trim()) {
-        newErrors[field] = `${FIELD_LABELS[field]} is required`
+        newErrors[field] = t('credentials.form.validation.fieldRequired', {
+          field: fieldLabel(field),
+        })
       }
     }
 
@@ -114,14 +113,14 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
       },
       {
         onSuccess: () => {
-          toast.success('Credential created')
+          toast.success(t('credentials.form.toast.created'))
           handleClose()
         },
         onError: (err: Error) => {
           if (err.message.includes('409') || err.message.toLowerCase().includes('already exists')) {
-            toast.error('Conflict: this wallet already has an active credential for this exchange')
+            toast.error(t('credentials.form.toast.conflictError'))
           } else {
-            toast.error(err.message || 'Error creating credential')
+            toast.error(err.message || t('credentials.form.toast.createError'))
           }
         },
       }
@@ -129,12 +128,12 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
   }
 
   return (
-    <Modal open={open} onClose={handleClose} title='Add Credential' size='md'>
+    <Modal open={open} onClose={handleClose} title={t('credentials.form.title')} size='md'>
       <form onSubmit={handleSubmit} className='space-y-6'>
         <fieldset disabled={readOnly} className='space-y-6'>
           <div>
             <label htmlFor='cred-wallet' className='block text-sm font-medium text-alpine-900 mb-2'>
-              Wallet
+              {t('credentials.form.fields.wallet')}
             </label>
             <ThemeSelect
               id='cred-wallet'
@@ -142,9 +141,9 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
               onChange={setWalletId}
               options={wallets.map(w => ({
                 value: w.public_id,
-                label: `${w.label}${w.is_paper ? ' (paper)' : ''}`,
+                label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
               }))}
-              placeholder='Select wallet...'
+              placeholder={t('common.selectWalletPlaceholder')}
             />
             {errors.wallet && <p className='mt-1 text-sm text-loss-600'>{errors.wallet}</p>}
           </div>
@@ -153,7 +152,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
               htmlFor='cred-exchange'
               className='block text-sm font-medium text-alpine-900 mb-2'
             >
-              Exchange
+              {t('credentials.form.fields.exchange')}
             </label>
             <input
               type='text'
@@ -167,19 +166,19 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
               className={`w-full rounded-md border bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 ${
                 errors.exchange ? 'border-loss-500' : 'border-dark-600'
               }`}
-              placeholder='e.g. kraken'
+              placeholder={t('credentials.form.fields.exchangePlaceholder')}
             />
             {errors.exchange && <p className='mt-1 text-sm text-loss-600'>{errors.exchange}</p>}
           </div>
           <div>
             <label htmlFor='cred-type' className='block text-sm font-medium text-alpine-900 mb-2'>
-              Credential Type
+              {t('credentials.form.fields.credentialType')}
             </label>
             <ThemeSelect
               id='cred-type'
               value={credentialType}
               onChange={handleTypeChange}
-              options={CREDENTIAL_TYPES}
+              options={credentialTypeOptions}
             />
           </div>
           {requiredFields.map(field => (
@@ -188,7 +187,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
                 htmlFor={`cred-field-${field}`}
                 className='block text-sm font-medium text-alpine-900 mb-2'
               >
-                {FIELD_LABELS[field]}
+                {fieldLabel(field)}
               </label>
               {field === 'private_key_pem' ? (
                 <textarea
@@ -203,7 +202,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
                   className={`w-full rounded-md border bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 font-mono text-xs ${
                     errors[field] ? 'border-loss-500' : 'border-dark-600'
                   }`}
-                  placeholder='-----BEGIN RSA PRIVATE KEY-----'
+                  placeholder={t('credentials.form.fields.pemPlaceholder')}
                 />
               ) : (
                 <input
@@ -229,7 +228,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
           ))}
           <div>
             <label htmlFor='cred-label' className='block text-sm font-medium text-alpine-900 mb-2'>
-              Label (optional)
+              {t('credentials.form.fields.label')}
             </label>
             <input
               type='text'
@@ -237,7 +236,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
               value={label}
               onChange={e => setLabel(e.target.value)}
               className='w-full rounded-md border border-dark-600 bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500'
-              placeholder='e.g. Main trading key'
+              placeholder={t('credentials.form.fields.labelPlaceholder')}
             />
           </div>
         </fieldset>
@@ -250,7 +249,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
             disabled={createMutation.isPending}
           >
             <X className='w-3.5 h-3.5' />
-            Cancel
+            {t('common.cancel')}
           </Button>
           <Button
             type='submit'
@@ -260,7 +259,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
             disabled={readOnly}
           >
             <Save className='w-3.5 h-3.5' />
-            Add Credential
+            {t('credentials.form.actions.addCredential')}
           </Button>
         </div>
       </form>

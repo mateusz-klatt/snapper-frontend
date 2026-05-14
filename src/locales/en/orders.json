@@ -1,1 +1,137 @@
-{}
+{
+  "page": {
+    "title": "Orders & Executions",
+    "newOrder": "New Order",
+    "exportCsv": "Export CSV"
+  },
+  "tabs": {
+    "orders": "Orders ({{total}})",
+    "executions": "Executions ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filter by status:",
+    "options": {
+      "all": "All Orders",
+      "new": "New",
+      "open": "Open",
+      "partiallyFilled": "Partially Filled",
+      "filled": "Filled",
+      "cancelled": "Cancelled",
+      "rejected": "Rejected"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Quantity",
+    "price": "Price",
+    "created": "Created",
+    "createdUnknown": "N/A",
+    "orderId": "Order ID",
+    "leverage": "Leverage",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Cancel",
+    "cancelling": "Cancelling…",
+    "cancelAriaLabel": "Cancel order {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Order #{{orderId}}",
+    "filled": "FILLED",
+    "orderLabel": "Order {{orderId}}",
+    "size": "Size",
+    "price": "Price",
+    "total": "Total",
+    "executed": "Executed",
+    "fees": "Fees"
+  },
+  "empty": {
+    "ordersTitle": "No orders found",
+    "ordersStartTrading": "Start trading to see orders here",
+    "ordersFilterless": "No {{status}} orders",
+    "executionsTitle": "No executions found",
+    "executionsMessage": "Trade executions will appear here"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Side",
+      "type": "Type",
+      "status": "Status",
+      "quantity": "Quantity",
+      "price": "Price",
+      "leverage": "Leverage",
+      "reduceOnly": "Reduce Only",
+      "created": "Created"
+    },
+    "executions": {
+      "orderId": "Order ID",
+      "instrument": "Instrument",
+      "side": "Side",
+      "size": "Size",
+      "price": "Price",
+      "total": "Total",
+      "fee": "Fee",
+      "feeAsset": "Fee Asset",
+      "executed": "Executed"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "New Manual Order",
+    "titleConfirm": "Confirm Order",
+    "fields": {
+      "exchange": "Exchange",
+      "instrument": "Instrument",
+      "side": "Side",
+      "orderType": "Order Type",
+      "quantity": "Quantity",
+      "price": "Price",
+      "stopPrice": "Stop Price",
+      "mode": "Mode",
+      "wallet": "Wallet",
+      "type": "Type"
+    },
+    "sideOptions": {
+      "buy": "Buy",
+      "sell": "Sell"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — market-data only",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "reviewOrder": "Review Order",
+      "back": "Back",
+      "confirmOrder": "Confirm Order",
+      "submitting": "Submitting..."
+    },
+    "errors": {
+      "missingRequired": "All required fields must be filled",
+      "quantityPositive": "Quantity must be a positive number",
+      "priceRequired": "Price is required for this order type",
+      "pricePositive": "Price must be a positive number",
+      "stopPriceRequired": "Stop price is required for this order type",
+      "stopPricePositive": "Stop price must be a positive number",
+      "createFailed": "Order creation failed"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "This instrument is observation-only — place orders on an execution-capable instrument.",
+      "unknownInstrument": "This instrument is not recognised. Reload the list and try again.",
+      "capsViolation": "This order would exceed your account safety caps. Review your risk settings and retry."
+    }
+  }
+}

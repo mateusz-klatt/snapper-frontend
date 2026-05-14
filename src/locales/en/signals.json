@@ -1,1 +1,39 @@
-{}
+{
+  "page": {
+    "title": "Signals"
+  },
+  "filters": {
+    "allStrategies": "All Strategies"
+  },
+  "actions": {
+    "export": "Export"
+  },
+  "stats": {
+    "total": "Total",
+    "buy": "Buy",
+    "sell": "Sell",
+    "avgStrength": "Avg Strength"
+  },
+  "card": {
+    "strength": "Strength",
+    "price": "Price",
+    "exchange": "Exchange",
+    "reason": "Reason:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Strong",
+    "medium": "Medium",
+    "weak": "Weak",
+    "veryWeak": "Very Weak"
+  },
+  "time": {
+    "justNow": "Just now",
+    "minutesAgo": "{{count}}m ago",
+    "hoursAgo": "{{count}}h ago"
+  },
+  "empty": {
+    "title": "No signals found",
+    "message": "No trading signals match your current filters."
+  }
+}

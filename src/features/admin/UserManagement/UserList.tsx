@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Trash2, Edit, UserPlus, Eye, EyeOff, Shield, Users } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { Button, Badge } from '../../../components/ui'
@@ -13,6 +14,7 @@ interface UserListProps {
 }
 
 const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser, readOnly }) => {
+  const { t } = useTranslation('admin')
   const [includeInactive, setIncludeInactive] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [userToDelete, setUserToDelete] = useState<UserProfile | null>(null)
@@ -21,8 +23,8 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
   const deleteUserMutation = {
     mutate: (userId: string) => {
       deactivateMutation.mutate(userId, {
-        onSuccess: () => toast.success('User has been deactivated'),
-        onError: (err: Error) => toast.error(err.message || 'Error deactivating user'),
+        onSuccess: () => toast.success(t('users.list.toast.deactivated')),
+        onError: (err: Error) => toast.error(err.message || t('users.list.toast.deactivateError')),
       })
     },
     isPending: deactivateMutation.isPending,
@@ -77,11 +79,11 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
   }
 
   if (error) {
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorMessage = error instanceof Error ? error.message : t('common.unknownError')
 
     return (
       <div className='p-4 text-loss-600 bg-loss-50 rounded-lg'>
-        Error loading users: {errorMessage}
+        {t('users.list.errorLoading', { message: errorMessage })}
       </div>
     )
   }
@@ -103,9 +105,9 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
       {}
       <div className='flex flex-wrap items-center justify-between gap-2'>
         <div className='flex items-center space-x-4'>
-          <h2 className='text-2xl font-bold text-alpine-900'>User Management</h2>
+          <h2 className='text-2xl font-bold text-alpine-900'>{t('users.list.title')}</h2>
           <Badge variant='outline' className='text-sm'>
-            {userListData?.count || 0} users
+            {t('users.list.countLabel', { count: userListData?.count || 0 })}
           </Badge>
         </div>
         <div className='flex items-center space-x-2'>
@@ -116,7 +118,9 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
             className='flex items-center space-x-2'
           >
             {includeInactive ? <EyeOff className='w-4 h-4' /> : <Eye className='w-4 h-4' />}
-            <span>{includeInactive ? 'Hide inactive' : 'Show inactive'}</span>
+            <span>
+              {includeInactive ? t('users.list.hideInactive') : t('users.list.showInactive')}
+            </span>
           </Button>
           <Button
             onClick={onCreateUser}
@@ -124,7 +128,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
             className='flex items-center space-x-2'
           >
             <UserPlus className='w-4 h-4' />
-            <span>Add User</span>
+            <span>{t('users.list.addUser')}</span>
           </Button>
         </div>
       </div>
@@ -132,7 +136,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
       <div>
         <input
           type='text'
-          placeholder='Search by username, email, or role...'
+          placeholder={t('users.list.searchPlaceholder')}
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
           className='input'
@@ -182,7 +186,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                     : 'inline-flex items-center rounded-full border border-muted-300 bg-muted-200 px-2 py-0.5 text-xs font-medium text-muted-700'
                 }
               >
-                {user.is_active ? 'Active' : 'Inactive'}
+                {user.is_active ? t('users.list.status.active') : t('users.list.status.inactive')}
               </span>
             </div>
           </div>
@@ -195,19 +199,19 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
             <thead className='bg-dark-700'>
               <tr>
                 <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                  User
+                  {t('users.list.columns.user')}
                 </th>
                 <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                  Role
+                  {t('users.list.columns.role')}
                 </th>
                 <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                  Status
+                  {t('users.list.columns.status')}
                 </th>
                 <th className='hidden xl:table-cell px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                  Created At
+                  {t('users.list.columns.createdAt')}
                 </th>
                 <th className='px-3 py-3 text-right text-xs font-medium text-muted-600 uppercase tracking-wider'>
-                  Actions
+                  {t('users.list.columns.actions')}
                 </th>
               </tr>
             </thead>
@@ -236,11 +240,13 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                           : 'inline-flex items-center rounded-full border border-muted-300 bg-muted-200 px-2.5 py-0.5 text-xs font-medium text-muted-700'
                       }
                     >
-                      {user.is_active ? 'Active' : 'Inactive'}
+                      {user.is_active
+                        ? t('users.list.status.active')
+                        : t('users.list.status.inactive')}
                     </span>
                   </td>
                   <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-500'>
-                    {user.created_at ? formatDate(user.created_at) : 'Unknown'}
+                    {user.created_at ? formatDate(user.created_at) : t('users.list.unknown')}
                   </td>
                   <td className='px-3 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2'>
                     <Button
@@ -271,20 +277,24 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
       {users.length === 0 && (
         <div className='text-center py-12'>
           <Users className='mx-auto h-12 w-12 text-muted-400' />
-          <h3 className='mt-2 text-sm font-medium text-alpine-900'>No users found</h3>
+          <h3 className='mt-2 text-sm font-medium text-alpine-900'>
+            {t('users.list.empty.title')}
+          </h3>
           <p className='mt-1 text-sm text-muted-500'>
-            {searchTerm && 'No users match your search criteria.'}
-            {!searchTerm && includeInactive && 'No users found.'}
-            {!searchTerm && !includeInactive && 'No active users found.'}
+            {searchTerm && t('users.list.empty.noMatch')}
+            {!searchTerm && includeInactive && t('users.list.empty.noUsers')}
+            {!searchTerm && !includeInactive && t('users.list.empty.noActive')}
           </p>
         </div>
       )}
       {}
       <ConfirmDialog
         open={userToDelete !== null}
-        title='Deactivate User'
-        message={`Are you sure you want to deactivate user "${userToDelete?.username ?? ''}"? They will no longer be able to sign in.`}
-        confirmText='Deactivate'
+        title={t('users.list.deactivate.title')}
+        message={t('users.list.deactivate.message', {
+          username: userToDelete?.username ?? '',
+        })}
+        confirmText={t('users.list.deactivate.confirm')}
         variant='danger'
         onConfirm={() => {
           deleteUserMutation.mutate((userToDelete as UserProfile).username)

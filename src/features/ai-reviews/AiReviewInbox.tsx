@@ -8,6 +8,7 @@ import {
   ShieldAlert,
   X,
 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { EmptyState } from '../../components/ui'
 import { useAuth } from '../../stores/auth'
 import {
@@ -37,6 +38,7 @@ const ACTIVITY_DISPLAY_LIMIT = 50
  * frame, so the page renders a role-aware notice instead.
  */
 export function AiReviewInbox(): React.ReactElement {
+  const { t } = useTranslation('aiReviews')
   const { user } = useAuth()
   const isDelegate = user?.role === 'ai_delegate'
   const pendingQuery = usePendingAiReviews()
@@ -49,11 +51,10 @@ export function AiReviewInbox(): React.ReactElement {
         <div className='flex items-start gap-3 p-4 rounded-lg bg-warn-50 border border-warn-200 text-warn-800'>
           <ShieldAlert className='w-5 h-5 shrink-0 mt-0.5' />
           <div>
-            <h2 className='font-semibold mb-1'>Reserved for AI delegates</h2>
+            <h2 className='font-semibold mb-1'>{t('roleNotice.title')}</h2>
             <p className='text-sm'>
-              This inbox surfaces CONSULT reviews routed to an AI delegate principal. Sign in with
-              an AI delegate account to see pending reviews and the live activity stream. Your
-              current role is <span className='font-semibold'>{user?.role ?? 'unknown'}</span>.
+              {t('roleNotice.message')}{' '}
+              <span className='font-semibold'>{user?.role ?? t('roleNotice.unknownRole')}</span>.
             </p>
           </div>
         </div>
@@ -64,10 +65,8 @@ export function AiReviewInbox(): React.ReactElement {
   return (
     <div className='p-6 space-y-6'>
       <header>
-        <h1 className='text-2xl font-bold'>AI Review Inbox</h1>
-        <p className='text-sm text-muted-500'>
-          Pending CONSULT reviews routed to this delegate plus the live event stream.
-        </p>
+        <h1 className='text-2xl font-bold'>{t('page.title')}</h1>
+        <p className='text-sm text-muted-500'>{t('page.subtitle')}</p>
       </header>
 
       <PendingReviewsSection
@@ -94,6 +93,7 @@ interface PendingReviewItem {
 }
 
 function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): React.ReactElement {
+  const { t } = useTranslation('aiReviews')
   const [rationale, setRationale] = useState('')
   const submit = useSubmitAiReviewDecision()
   const thesis = (item.signal_envelope?.['thesis'] ?? null) as string | null
@@ -131,11 +131,11 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
         <div className='flex flex-col gap-2 min-w-[12rem]'>
           <input
             type='text'
-            placeholder='Rationale (optional)'
+            placeholder={t('pending.rationalePlaceholder')}
             value={rationale}
             onChange={event => setRationale(event.target.value)}
             disabled={isSubmitting}
-            aria-label={`Rationale for review ${item.review_public_id}`}
+            aria-label={t('pending.rationaleAriaLabel', { reviewId: item.review_public_id })}
             className='rounded border border-dark-600 bg-alpine-50 px-2 py-1 text-xs text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500 disabled:opacity-50'
           />
           <div className='flex gap-2'>
@@ -147,7 +147,7 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
               className='inline-flex items-center gap-1 rounded border border-gain-500 px-2 py-1 text-xs font-medium text-gain-700 hover:bg-gain-50 disabled:cursor-not-allowed disabled:opacity-50'
             >
               <Check size={12} />
-              Approve
+              {t('pending.approve')}
             </button>
             <button
               type='button'
@@ -157,12 +157,12 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
               className='inline-flex items-center gap-1 rounded border border-loss-500 px-2 py-1 text-xs font-medium text-loss-700 hover:bg-loss-50 disabled:cursor-not-allowed disabled:opacity-50'
             >
               <X size={12} />
-              Reject
+              {t('pending.reject')}
             </button>
           </div>
           {submit.isError && (
             <span className='text-[10px] text-loss-700' role='alert'>
-              Submit failed: {submit.error.message}
+              {t('pending.submitError', { message: submit.error.message })}
             </span>
           )}
         </div>
@@ -190,27 +190,28 @@ function PendingReviewsSection({
     signal_envelope?: Record<string, unknown> | null | undefined
   }>
 }>): React.ReactElement {
+  const { t } = useTranslation('aiReviews')
   let content: React.ReactNode
 
   if (loading) {
     content = (
       <div className='flex items-center gap-2 text-muted-500 text-sm'>
         <Loader2 className='w-4 h-4 animate-spin' />
-        Loading pending reviews…
+        {t('pending.loading')}
       </div>
     )
   } else if (error !== null) {
     content = (
       <div className='p-3 rounded-lg bg-loss-50 border border-loss-200 text-loss-800 text-sm'>
-        Failed to load pending reviews: {error.message}
+        {t('pending.loadError', { message: error.message })}
       </div>
     )
   } else if (items.length === 0) {
     content = (
       <EmptyState
         icon={<MailOpen className='w-5 h-5' />}
-        title='No pending reviews'
-        message='New CONSULT requests routed to this delegate will appear here.'
+        title={t('pending.emptyTitle')}
+        message={t('pending.emptyMessage')}
       />
     )
   } else {
@@ -219,11 +220,11 @@ function PendingReviewsSection({
         <table className='min-w-full text-sm'>
           <thead className='bg-dark-700 text-muted-700 text-left'>
             <tr>
-              <th className='px-4 py-2 font-semibold'>Instrument</th>
-              <th className='px-4 py-2 font-semibold'>Thesis</th>
-              <th className='px-4 py-2 font-semibold'>Status</th>
-              <th className='px-4 py-2 font-semibold'>Deadline</th>
-              <th className='px-4 py-2 font-semibold'>Decision</th>
+              <th className='px-4 py-2 font-semibold'>{t('pending.columns.instrument')}</th>
+              <th className='px-4 py-2 font-semibold'>{t('pending.columns.thesis')}</th>
+              <th className='px-4 py-2 font-semibold'>{t('pending.columns.status')}</th>
+              <th className='px-4 py-2 font-semibold'>{t('pending.columns.deadline')}</th>
+              <th className='px-4 py-2 font-semibold'>{t('pending.columns.decision')}</th>
             </tr>
           </thead>
           <tbody className='divide-y divide-dark-600'>
@@ -240,7 +241,7 @@ function PendingReviewsSection({
     <section>
       <div className='flex items-center gap-2 mb-3'>
         <InboxIcon className='w-4 h-4 text-brand-600' />
-        <h2 className='text-sm font-semibold text-muted-800'>Pending reviews</h2>
+        <h2 className='text-sm font-semibold text-muted-800'>{t('pending.title')}</h2>
       </div>
       {content}
     </section>
@@ -254,10 +255,11 @@ function ActivitySection({
   frames: ReadonlyArray<Parameters<typeof AiReviewActivityRow>[0]['frame']>
   totalBuffered: number
 }>): React.ReactElement {
-  let summary = 'No frames received'
+  const { t } = useTranslation('aiReviews')
+  let summary = t('activity.summaryEmpty')
 
   if (totalBuffered > 0) {
-    summary = `Showing ${frames.length} of ${totalBuffered} buffered`
+    summary = t('activity.summaryCount', { shown: frames.length, total: totalBuffered })
   }
 
   let content: React.ReactNode
@@ -266,8 +268,8 @@ function ActivitySection({
     content = (
       <EmptyState
         icon={<Activity className='w-5 h-5' />}
-        title='No activity yet'
-        message='AI review request, decision, and caps-violation frames will stream in here.'
+        title={t('activity.emptyTitle')}
+        message={t('activity.emptyMessage')}
       />
     )
   } else {
@@ -291,7 +293,7 @@ function ActivitySection({
       <div className='flex items-center justify-between mb-3'>
         <div className='flex items-center gap-2'>
           <Activity className='w-4 h-4 text-brand-600' />
-          <h2 className='text-sm font-semibold text-muted-800'>Recent activity</h2>
+          <h2 className='text-sm font-semibold text-muted-800'>{t('activity.title')}</h2>
         </div>
         <span className='text-xs text-muted-500'>{summary}</span>
       </div>

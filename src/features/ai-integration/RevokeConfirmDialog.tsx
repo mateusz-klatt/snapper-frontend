@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { toast } from 'react-hot-toast'
+import { useTranslation } from 'react-i18next'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
 import { useDeactivateAiDelegate } from '../../hooks/queries/ai-delegates'
 import type { DelegateRead } from '../../types/api'
@@ -13,6 +14,7 @@ export function RevokeConfirmDialog({
   open: boolean
   onClose: () => void
 }>): React.ReactElement {
+  const { t } = useTranslation('aiIntegration')
   const deactivate = useDeactivateAiDelegate()
   const mountedRef = useRef(true)
 
@@ -29,11 +31,11 @@ export function RevokeConfirmDialog({
       await deactivate.mutateAsync(delegate.public_id)
 
       if (!mountedRef.current) return
-      toast.success('Delegate revoked')
+      toast.success(t('revokeDialog.toast.delegateRevoked'))
       onClose()
     } catch (err) {
       if (!mountedRef.current) return
-      const msg = err instanceof Error ? err.message : 'Failed to revoke delegate'
+      const msg = err instanceof Error ? err.message : t('revokeDialog.toast.failedToRevoke')
 
       toast.error(msg)
     }
@@ -42,10 +44,10 @@ export function RevokeConfirmDialog({
   return (
     <ConfirmDialog
       open={open}
-      title={`Revoke delegate "${delegate.label}"?`}
-      message='This revokes the delegate tokens and stops its MCP subscriptions. This cannot be undone.'
-      confirmText='Revoke'
-      cancelText='Cancel'
+      title={t('revokeDialog.title', { label: delegate.label })}
+      message={t('revokeDialog.message')}
+      confirmText={t('revokeDialog.confirm')}
+      cancelText={t('revokeDialog.cancel')}
       variant='danger'
       onConfirm={handleConfirm}
       onCancel={onClose}

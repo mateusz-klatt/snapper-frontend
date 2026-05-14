@@ -1,10 +1,17 @@
+export interface ValidationError {
+  /** i18n key suffix under ``positions:validation`` */
+  key: string
+  /** Optional interpolation values for the translated message */
+  params?: Record<string, string | number>
+}
+
 const validateBracketField = (
   value: number | null,
-  invalidMessage: string,
-  nonPositiveMessage: string
-): string | null => {
-  if (value !== null && !Number.isFinite(value)) return invalidMessage
-  if (value !== null && value <= 0) return nonPositiveMessage
+  invalidKey: string,
+  nonPositiveKey: string
+): ValidationError | null => {
+  if (value !== null && !Number.isFinite(value)) return { key: invalidKey }
+  if (value !== null && value <= 0) return { key: nonPositiveKey }
 
   return null
 }
@@ -14,13 +21,13 @@ const validateLongBracketRelation = (
   tp: number | null,
   averagePrice: number,
   formattedPrice: string
-): string | null => {
+): ValidationError | null => {
   if (sl !== null && sl >= averagePrice) {
-    return `SL price must be below entry price (${formattedPrice})`
+    return { key: 'slLongBelowEntry', params: { price: formattedPrice } }
   }
 
   if (tp !== null && tp <= averagePrice) {
-    return `TP price must be above entry price (${formattedPrice})`
+    return { key: 'tpLongAboveEntry', params: { price: formattedPrice } }
   }
 
   return null
@@ -31,13 +38,13 @@ const validateShortBracketRelation = (
   tp: number | null,
   averagePrice: number,
   formattedPrice: string
-): string | null => {
+): ValidationError | null => {
   if (sl !== null && sl <= averagePrice) {
-    return `SL price must be above entry price (${formattedPrice})`
+    return { key: 'slShortAboveEntry', params: { price: formattedPrice } }
   }
 
   if (tp !== null && tp >= averagePrice) {
-    return `TP price must be below entry price (${formattedPrice})`
+    return { key: 'tpShortBelowEntry', params: { price: formattedPrice } }
   }
 
   return null
@@ -48,22 +55,14 @@ export const validateBracketPrices = (
   tp: number | null,
   side: 'LONG' | 'SHORT',
   averagePrice: number
-): string | null => {
-  if (sl === null && tp === null) return 'At least one of SL or TP price is required'
+): ValidationError | null => {
+  if (sl === null && tp === null) return { key: 'bracketRequired' }
 
-  const stopLossError = validateBracketField(
-    sl,
-    'Invalid stop-loss price',
-    'Stop-loss price must be positive'
-  )
+  const stopLossError = validateBracketField(sl, 'invalidSlPrice', 'slPricePositive')
 
   if (stopLossError !== null) return stopLossError
 
-  const takeProfitError = validateBracketField(
-    tp,
-    'Invalid take-profit price',
-    'Take-profit price must be positive'
-  )
+  const takeProfitError = validateBracketField(tp, 'invalidTpPrice', 'tpPricePositive')
 
   if (takeProfitError !== null) return takeProfitError
 
@@ -79,14 +78,14 @@ export const validateBracketPrices = (
 export const validateTrailingStopParams = (
   trailingPct: number | null,
   minLockPct: number | null
-): string | null => {
-  if (trailingPct === null) return 'Trailing percentage is required'
-  if (!Number.isFinite(trailingPct)) return 'Invalid trailing percentage'
-  if (trailingPct <= 0 || trailingPct >= 100) return 'Trailing percentage must be between 0 and 100'
+): ValidationError | null => {
+  if (trailingPct === null) return { key: 'trailingRequired' }
+  if (!Number.isFinite(trailingPct)) return { key: 'trailingInvalid' }
+  if (trailingPct <= 0 || trailingPct >= 100) return { key: 'trailingRange' }
 
   if (minLockPct !== null) {
-    if (!Number.isFinite(minLockPct)) return 'Invalid min lock percentage'
-    if (minLockPct < 0 || minLockPct >= 100) return 'Min lock percentage must be between 0 and 100'
+    if (!Number.isFinite(minLockPct)) return { key: 'minLockInvalid' }
+    if (minLockPct < 0 || minLockPct >= 100) return { key: 'minLockRange' }
   }
 
   return null

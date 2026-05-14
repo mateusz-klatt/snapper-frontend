@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { XCircle, Edit3, Code, Plus, Trash2 } from 'lucide-react'
 
 type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue }
@@ -15,6 +16,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
   readOnly = false,
   className = '',
 }) => {
+  const { t } = useTranslation('settings')
   const [mode, setMode] = useState<'form' | 'raw'>('form')
   const [rawJson, setRawJson] = useState('')
   const [parseError, setParseError] = useState<string | null>(null)
@@ -62,7 +64,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
         <div className='flex items-center justify-between mb-3'>
           <h3 className='text-sm font-medium text-alpine-900 flex items-center gap-2'>
             <Code className='w-4 h-4' />
-            Raw JSON Editor
+            {t('jsonEditor.rawEditor')}
           </h3>
           <div className='flex gap-2'>
             <button
@@ -70,13 +72,13 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
               disabled={parseError !== null || readOnly}
               className='px-3 py-1 text-xs rounded bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed'
             >
-              Import to Form
+              {t('jsonEditor.importToForm')}
             </button>
             <button
               onClick={() => setMode('form')}
               className='px-3 py-1 text-xs rounded bg-muted-100 text-alpine-900 hover:bg-muted-200'
             >
-              Switch to Form
+              {t('jsonEditor.switchToForm')}
             </button>
           </div>
         </div>
@@ -84,7 +86,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
           <div className='mb-3 p-2 rounded bg-loss-500/10 border border-loss-500/30 text-loss-400 text-xs'>
             <div className='flex items-center gap-2'>
               <XCircle className='w-4 h-4' />
-              <span>Parse error: {parseError}</span>
+              <span>{t('jsonEditor.parseError', { message: parseError })}</span>
             </div>
           </div>
         )}
@@ -104,14 +106,14 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
       <div className='flex items-center justify-between mb-3'>
         <h3 className='text-sm font-medium text-alpine-900 flex items-center gap-2'>
           <Edit3 className='w-4 h-4' />
-          Form Editor
+          {t('jsonEditor.formEditor')}
         </h3>
         <button
           onClick={() => setMode('raw')}
           className='px-3 py-1 text-xs rounded bg-muted-100 text-alpine-900 hover:bg-muted-200 flex items-center gap-1'
         >
           <Code className='w-3 h-3' />
-          Raw JSON
+          {t('jsonEditor.rawJson')}
         </button>
       </div>
       <JsonValueEditor value={value} onChange={onChange} readOnly={readOnly} path='' />
@@ -149,6 +151,7 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   readOnly,
   path,
 }) => {
+  const { t } = useTranslation('settings')
   const arrayValue = value as JsonValue[]
 
   const handleItemChange = (index: number, newValue: JsonValue) => {
@@ -174,14 +177,16 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   return (
     <div className='space-y-2'>
       <div className='flex items-center justify-between'>
-        <span className='text-xs text-muted-500'>Array ({arrayValue.length} items)</span>
+        <span className='text-xs text-muted-500'>
+          {t('jsonEditor.arraySummary', { length: arrayValue.length })}
+        </span>
         {!readOnly && (
           <button
             onClick={handleAddItem}
             className='text-xs px-2 py-1 rounded bg-muted-100 text-alpine-900 hover:bg-muted-200 flex items-center gap-1'
           >
             <Plus className='w-3 h-3' />
-            Add Item
+            {t('jsonEditor.addItem')}
           </button>
         )}
       </div>
@@ -203,7 +208,7 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
                 className='mt-6 text-xs px-2 py-1 rounded bg-loss-500/10 text-loss-400 hover:bg-loss-500/20 flex items-center gap-1'
               >
                 <Trash2 className='w-3 h-3' />
-                Remove
+                {t('jsonEditor.remove')}
               </button>
             )}
           </div>

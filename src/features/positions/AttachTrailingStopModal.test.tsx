@@ -50,30 +50,24 @@ describe('validateTrailingStopParams', () => {
   })
 
   it('rejects null trailing_pct', () => {
-    expect(validateTrailingStopParams(null, null)).toBe('Trailing percentage is required')
+    expect(validateTrailingStopParams(null, null)).toEqual({ key: 'trailingRequired' })
   })
 
   it('rejects non-finite trailing_pct', () => {
-    expect(validateTrailingStopParams(NaN, null)).toBe('Invalid trailing percentage')
-    expect(validateTrailingStopParams(Infinity, null)).toBe('Invalid trailing percentage')
+    expect(validateTrailingStopParams(NaN, null)).toEqual({ key: 'trailingInvalid' })
+    expect(validateTrailingStopParams(Infinity, null)).toEqual({ key: 'trailingInvalid' })
   })
 
   it('rejects out-of-range trailing_pct', () => {
-    expect(validateTrailingStopParams(0, null)).toBe(
-      'Trailing percentage must be between 0 and 100'
-    )
-    expect(validateTrailingStopParams(100, null)).toBe(
-      'Trailing percentage must be between 0 and 100'
-    )
-    expect(validateTrailingStopParams(-1, null)).toBe(
-      'Trailing percentage must be between 0 and 100'
-    )
+    expect(validateTrailingStopParams(0, null)).toEqual({ key: 'trailingRange' })
+    expect(validateTrailingStopParams(100, null)).toEqual({ key: 'trailingRange' })
+    expect(validateTrailingStopParams(-1, null)).toEqual({ key: 'trailingRange' })
   })
 
   it('rejects invalid min_lock_pct', () => {
-    expect(validateTrailingStopParams(5, NaN)).toBe('Invalid min lock percentage')
-    expect(validateTrailingStopParams(5, -1)).toBe('Min lock percentage must be between 0 and 100')
-    expect(validateTrailingStopParams(5, 100)).toBe('Min lock percentage must be between 0 and 100')
+    expect(validateTrailingStopParams(5, NaN)).toEqual({ key: 'minLockInvalid' })
+    expect(validateTrailingStopParams(5, -1)).toEqual({ key: 'minLockRange' })
+    expect(validateTrailingStopParams(5, 100)).toEqual({ key: 'minLockRange' })
   })
 })
 

@@ -1,1 +1,50 @@
-{}
+{
+  "page": {
+    "title": "Process Control",
+    "subtitle": "Real-time process monitoring and control"
+  },
+  "sections": {
+    "longRunning": "Long-Running Processes",
+    "executorTemplates": "Executor Templates",
+    "executorTemplatesHint": "Editing template config affects all wallets on this exchange after restart. Templates are config-only — start the per-wallet instance below to run an executor.",
+    "walletInstances": "Wallet Instances",
+    "taskProcesses": "Task Processes"
+  },
+  "card": {
+    "stop": "Stop",
+    "start": "Start",
+    "restart": "Restart",
+    "starting": "Starting...",
+    "stopping": "Stopping..."
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Mode:",
+    "parameters": "Parameters:",
+    "paramCount": "{{count}} parameter(s)",
+    "noParams": "no parameters set"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Stop {{name}}",
+    "stopMessage": "This will stop the {{name}} process.",
+    "restartTitle": "Restart {{name}}",
+    "restartMessage": "This will restart the {{name}} process."
+  },
+  "executionMode": {
+    "title": "Start {{name}}",
+    "label": "Execution Mode:",
+    "threadName": "Thread Mode",
+    "threadDescription": "Runs as embedded task within web server. Faster startup, shared memory.",
+    "processName": "Process Mode",
+    "processDescription": "Runs as separate Python process. Isolated, fault-tolerant, detailed monitoring.",
+    "cancel": "Cancel",
+    "start": "Start {{name}}",
+    "threadAriaLabel": "Thread Mode",
+    "processAriaLabel": "Process Mode"
+  }
+}

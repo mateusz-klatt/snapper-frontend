@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSystemStatus } from '../../hooks/queries/system'
 import { HealthSkeleton } from '../../components/Skeleton'
 import { LiveOnlyNotice } from '../../components/LiveOnlyNotice'
@@ -9,12 +10,12 @@ import { RetentionCard } from './RetentionCard'
 import clsx from 'clsx'
 import type { ProcessStatus } from '../../types/api'
 
-type HealthStatus = 'healthy' | 'warning' | 'error'
+type HealthStatusKind = 'healthy' | 'warning' | 'error'
 
 interface HealthMetric {
   name: string
   value: string | number
-  status: HealthStatus
+  status: HealthStatusKind
   description: string
   icon: React.ReactNode
 }
@@ -23,23 +24,33 @@ const StatusIndicator: React.FC<{ status: string; showLabel: boolean }> = ({
   status,
   showLabel,
 }) => {
-  const getStatusConfig = (status: string) => {
-    switch (status.toLowerCase()) {
+  const { t } = useTranslation('health')
+
+  const getStatusConfig = (s: string) => {
+    switch (s.toLowerCase()) {
       case 'running':
       case 'healthy':
-        return { color: 'bg-accent-500', label: 'Healthy', textColor: 'text-gain-600' }
+        return { color: 'bg-accent-500', label: t('status.healthy'), textColor: 'text-gain-600' }
       case 'stopped':
       case 'not_running':
-        return { color: 'bg-muted-400', label: 'Stopped', textColor: 'text-muted-600' }
+        return { color: 'bg-muted-400', label: t('status.stopped'), textColor: 'text-muted-600' }
       case 'error':
       case 'failed':
-        return { color: 'bg-loss-500', label: 'Error', textColor: 'text-loss-600' }
+        return { color: 'bg-loss-500', label: t('status.error'), textColor: 'text-loss-600' }
       case 'warning':
-        return { color: 'bg-warning-500', label: 'Warning', textColor: 'text-warning-600' }
+        return {
+          color: 'bg-warning-500',
+          label: t('status.warning'),
+          textColor: 'text-warning-600',
+        }
       case 'completed':
-        return { color: 'bg-info-500', label: 'Completed', textColor: 'text-info-600' }
+        return { color: 'bg-info-500', label: t('status.completed'), textColor: 'text-info-600' }
       default:
-        return { color: 'bg-warning-500', label: 'Unknown', textColor: 'text-warning-600' }
+        return {
+          color: 'bg-warning-500',
+          label: t('status.unknown'),
+          textColor: 'text-warning-600',
+        }
     }
   }
 
@@ -66,21 +77,30 @@ const ProcessCard: React.FC<{
   status: ProcessStatus
   type: 'service' | 'backtest'
 }> = ({ name, status, type }) => {
-  const formatUptime = (startedAt?: string) => {
-    if (!startedAt) return 'N/A'
+  const { t } = useTranslation('health')
+
+  const formatUptime = (startedAt?: string): string => {
+    if (!startedAt) return t('process.uptimeNotAvailable')
     const start = new Date(startedAt)
     const now = new Date()
     const diffMs = now.getTime() - start.getTime()
     const diffMins = Math.floor(diffMs / 60000)
 
-    if (diffMins < 60) return `${diffMins}m`
-    if (diffMins < 1440) return `${Math.floor(diffMins / 60)}h ${diffMins % 60}m`
+    if (diffMins < 60) return t('process.uptimeMinutes', { minutes: diffMins })
+    if (diffMins < 1440)
+      return t('process.uptimeHours', {
+        hours: Math.floor(diffMins / 60),
+        minutes: diffMins % 60,
+      })
 
-    return `${Math.floor(diffMins / 1440)}d ${Math.floor((diffMins % 1440) / 60)}h`
+    return t('process.uptimeDays', {
+      days: Math.floor(diffMins / 1440),
+      hours: Math.floor((diffMins % 1440) / 60),
+    })
   }
 
-  const getProcessIcon = (_name: string, type: string) => {
-    if (type === 'backtest') {
+  const getProcessIcon = (_name: string, t2: string) => {
+    if (t2 === 'backtest') {
       return (
         <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
           <path
@@ -105,6 +125,8 @@ const ProcessCard: React.FC<{
     )
   }
 
+  const typeLabel = type === 'backtest' ? t('process.backtest') : t('process.service')
+
   return (
     <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'>
       <div className='flex items-center justify-between mb-3'>
@@ -112,18 +134,20 @@ const ProcessCard: React.FC<{
           <div className='text-muted-500'>{getProcessIcon(name, type)}</div>
           <div>
             <h3 className='font-medium text-alpine-900'>{name}</h3>
-            <p className='text-xs capitalize text-muted-500'>{type}</p>
+            <p className='text-xs capitalize text-muted-500'>{typeLabel}</p>
           </div>
         </div>
         <StatusIndicator status={status.status} showLabel />
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm'>
         <div>
-          <div className='text-muted-500'>PID</div>
-          <div className='font-mono text-alpine-900'>{status.pid || 'N/A'}</div>
+          <div className='text-muted-500'>{t('process.pidLabel')}</div>
+          <div className='font-mono text-alpine-900'>
+            {status.pid || t('process.pidNotAvailable')}
+          </div>
         </div>
         <div>
-          <div className='text-muted-500'>Uptime</div>
+          <div className='text-muted-500'>{t('process.uptimeLabel')}</div>
           <div className='text-alpine-900'>{formatUptime(status.started_at ?? undefined)}</div>
         </div>
       </div>
@@ -133,7 +157,9 @@ const ProcessCard: React.FC<{
         </div>
       )}
       {status.exit_code !== undefined && status.status !== 'running' && (
-        <div className='mt-2 text-xs text-muted-500'>Exit code: {status.exit_code}</div>
+        <div className='mt-2 text-xs text-muted-500'>
+          {t('process.exitCode', { code: status.exit_code })}
+        </div>
       )}
     </div>
   )
@@ -162,18 +188,20 @@ const MetricCard: React.FC<{ metric: HealthMetric }> = ({ metric }) => {
 }
 
 export const Health: React.FC = () => {
+  const { t } = useTranslation('health')
   const { data: systemStatus, isLoading } = useSystemStatus()
   const statusPayload = systemStatus?.payload
   const backtestsList = Object.values(statusPayload?.backtests || {})
   const runningBacktests = backtestsList.filter(b => b.status === 'running').length
   const hasErroredBacktest = backtestsList.some(b => b.status === 'error')
-  const backtestStatus: HealthStatus = hasErroredBacktest ? 'error' : 'healthy'
+  const backtestStatus: HealthStatusKind = hasErroredBacktest ? 'error' : 'healthy'
   const healthMetrics: HealthMetric[] = [
     {
-      name: 'Trading Engine',
-      value: statusPayload?.trader?.status === 'running' ? 'Active' : 'Inactive',
+      name: t('metrics.tradingEngine'),
+      value:
+        statusPayload?.trader?.status === 'running' ? t('metrics.active') : t('metrics.inactive'),
       status: statusPayload?.trader?.status === 'running' ? 'healthy' : 'warning',
-      description: 'Strategy execution engine',
+      description: t('metrics.tradingEngineDescription'),
       icon: (
         <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
           <path
@@ -186,10 +214,10 @@ export const Health: React.FC = () => {
       ),
     },
     {
-      name: 'Active Backtests',
+      name: t('metrics.activeBacktests'),
       value: runningBacktests,
       status: backtestStatus,
-      description: 'Running backtest processes',
+      description: t('metrics.activeBacktestsDescription'),
       icon: (
         <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
           <path
@@ -203,7 +231,7 @@ export const Health: React.FC = () => {
     },
   ]
 
-  const resolveOverallHealth = (): HealthStatus => {
+  const resolveOverallHealth = (): HealthStatusKind => {
     if (healthMetrics.every(m => m.status === 'healthy')) return 'healthy'
     if (healthMetrics.some(m => m.status === 'error')) return 'error'
 
@@ -216,11 +244,13 @@ export const Health: React.FC = () => {
     <div className='space-y-6'>
       <LiveOnlyNotice />
       <div className='flex items-center justify-between'>
-        <h2 className='text-xl font-semibold text-alpine-900'>System Health</h2>
+        <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
         <StatusIndicator status={overallHealth} showLabel />
       </div>
       <div>
-        <h3 className='mb-4 text-lg font-medium text-alpine-900'>Health Metrics</h3>
+        <h3 className='mb-4 text-lg font-medium text-alpine-900'>
+          {t('page.healthMetricsHeading')}
+        </h3>
         <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'>
           {healthMetrics.map(metric => (
             <MetricCard key={metric.name} metric={metric} />
@@ -228,26 +258,30 @@ export const Health: React.FC = () => {
         </div>
       </div>
       <div>
-        <h3 className='mb-4 text-lg font-medium text-alpine-900'>Process Status</h3>
+        <h3 className='mb-4 text-lg font-medium text-alpine-900'>
+          {t('page.processStatusHeading')}
+        </h3>
         {isLoading ? (
           <HealthSkeleton className='mt-0 p-0' />
         ) : (
           <div className='grid gap-4'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
               <ProcessCard
-                name='Trading Engine'
+                name={t('metrics.tradingEngine')}
                 status={statusPayload?.trader || { status: 'not_running' }}
                 type='service'
               />
             </div>
             {statusPayload?.backtests && Object.keys(statusPayload.backtests).length > 0 && (
               <div>
-                <h4 className='mb-3 text-md font-medium text-alpine-900'>Active Backtests</h4>
+                <h4 className='mb-3 text-md font-medium text-alpine-900'>
+                  {t('page.activeBacktestsHeading')}
+                </h4>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                   {Object.entries(statusPayload.backtests).map(([id, status]) => (
                     <ProcessCard
                       key={id}
-                      name={`Backtest ${id.slice(0, 8)}`}
+                      name={t('process.backtestName', { id: id.slice(0, 8) })}
                       status={status}
                       type='backtest'
                     />
@@ -263,35 +297,37 @@ export const Health: React.FC = () => {
       <NotificationMetricsCard />
       <RetentionCard />
       <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'>
-        <h3 className='mb-3 text-lg font-medium text-alpine-900'>Quick Actions</h3>
+        <h3 className='mb-3 text-lg font-medium text-alpine-900'>
+          {t('page.quickActionsHeading')}
+        </h3>
         <div className='flex flex-wrap gap-3'>
           <button
             disabled
-            title='Feature not yet implemented'
+            title={t('page.featureNotImplemented')}
             className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
           >
-            Restart Services
+            {t('page.restartServices')}
           </button>
           <button
             disabled
-            title='Feature not yet implemented'
+            title={t('page.featureNotImplemented')}
             className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
           >
-            Run Health Check
+            {t('page.runHealthCheck')}
           </button>
           <button
             disabled
-            title='Feature not yet implemented'
+            title={t('page.featureNotImplemented')}
             className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
           >
-            View Logs
+            {t('page.viewLogs')}
           </button>
           <button
             disabled
-            title='Feature not yet implemented'
+            title={t('page.featureNotImplemented')}
             className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
           >
-            Export Report
+            {t('page.exportReport')}
           </button>
         </div>
       </div>

@@ -1,1 +1,50 @@
-{}
+{
+  "page": {
+    "title": "Przegląd"
+  },
+  "metrics": {
+    "feedsRunning": "Uruchomione kanały",
+    "strategiesActive": "Aktywne strategie",
+    "openOrders": "Otwarte zlecenia",
+    "todaysExecutions": "Dzisiejsze wykonania",
+    "executionsOn": "Wykonania ({{date}})"
+  },
+  "status": {
+    "stopped": "Zatrzymane",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Uruchomione",
+    "active": "Aktywne"
+  },
+  "processStatus": {
+    "title": "Status procesów",
+    "feeds": "Kanały",
+    "strategies": "Strategie",
+    "executors": "Wykonawcy",
+    "brokers": "Brokerzy"
+  },
+  "portfolio": {
+    "title": "Podsumowanie portfela",
+    "totalValue": "Wartość całkowita",
+    "longExposure": "Ekspozycja długa",
+    "shortExposure": "Ekspozycja krótka",
+    "netDelta": "Delta netto",
+    "unrealizedPnl": "Niezrealizowany P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Pozycje",
+    "instrumentsCount": "{{count}} instrumentów",
+    "empty": "Brak danych o pozycjach"
+  },
+  "signals": {
+    "title": "Ostatnie sygnały",
+    "empty": "Brak ostatnich sygnałów",
+    "noTime": "N/D"
+  },
+  "executions": {
+    "title": "Ostatnie wykonania",
+    "empty": "Brak ostatnich wykonań",
+    "noTime": "N/D"
+  }
+}

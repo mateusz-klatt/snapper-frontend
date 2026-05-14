@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { v7 as uuid7 } from 'uuid'
+import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { NativeSelect } from '../../components/NativeSelect'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
@@ -7,31 +8,15 @@ import { useExchanges, useExchangeInstrumentsDetail } from '../../hooks/queries/
 import { useCreateOrder } from '../../hooks/queries/orders'
 import { useWallets } from '../../hooks/queries/wallets'
 import { APIError } from '../../lib/apiClient'
-import { lookupOrderErrorMessage } from './errorMessages'
+import { lookupOrderErrorMessageKey } from './errorMessages'
 
 interface NewOrderModalProps {
   open: boolean
   onClose: () => void
 }
 
-const SIDE_OPTIONS = [
-  { value: 'buy', label: 'Buy' },
-  { value: 'sell', label: 'Sell' },
-]
-
-const ORDER_TYPE_OPTIONS = [
-  { value: 'market', label: 'Market' },
-  { value: 'limit', label: 'Limit' },
-  { value: 'stop', label: 'Stop' },
-  { value: 'stop_limit', label: 'Stop Limit' },
-]
-
-const MODE_OPTIONS = [
-  { value: 'live', label: 'Live' },
-  { value: 'paper', label: 'Paper' },
-]
-
 export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) => {
+  const { t } = useTranslation('orders')
   const exchangeSelectId = 'new-order-exchange'
   const instrumentSelectId = 'new-order-instrument'
   const sideSelectId = 'new-order-side'
@@ -44,6 +29,32 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const { data: exchanges } = useExchanges()
   const { data: walletsResponse } = useWallets()
   const createOrder = useCreateOrder()
+
+  const SIDE_OPTIONS = useMemo(
+    () => [
+      { value: 'buy', label: t('newOrderModal.sideOptions.buy') },
+      { value: 'sell', label: t('newOrderModal.sideOptions.sell') },
+    ],
+    [t]
+  )
+
+  const ORDER_TYPE_OPTIONS = useMemo(
+    () => [
+      { value: 'market', label: t('newOrderModal.orderTypeOptions.market') },
+      { value: 'limit', label: t('newOrderModal.orderTypeOptions.limit') },
+      { value: 'stop', label: t('newOrderModal.orderTypeOptions.stop') },
+      { value: 'stop_limit', label: t('newOrderModal.orderTypeOptions.stopLimit') },
+    ],
+    [t]
+  )
+
+  const MODE_OPTIONS = useMemo(
+    () => [
+      { value: 'live', label: t('newOrderModal.modeOptions.live') },
+      { value: 'paper', label: t('newOrderModal.modeOptions.paper') },
+    ],
+    [t]
+  )
 
   const [exchange, setExchange] = useState('')
   const [instrument, setInstrument] = useState('')
@@ -105,11 +116,13 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const exchangeOptions = (exchanges?.payload ?? []).map(e => ({ value: e, label: e }))
   const instrumentOptions = (instruments?.payload ?? []).map(row => ({
     value: row.symbol,
-    label: row.can_trade ? row.symbol : `${row.symbol} — market-data only`,
+    label: row.can_trade
+      ? row.symbol
+      : t('newOrderModal.instrumentMarketDataOnlySuffix', { symbol: row.symbol }),
   }))
   const walletOptions = (wallets ?? []).map(w => ({
     value: w.public_id,
-    label: `${w.label}${w.is_paper ? ' (paper)' : ''}`,
+    label: w.is_paper ? t('newOrderModal.walletPaperSuffix', { label: w.label }) : w.label,
   }))
 
   const needsPrice = orderType === 'limit' || orderType === 'stop_limit'
@@ -120,11 +133,23 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     setInstrumentPublicId(val)
   }
 
+  const translateErrorCode = (details: unknown): string | null => {
+    const key = lookupOrderErrorMessageKey(details)
+
+    if (key === null) {
+      return null
+    }
+
+    return t(
+      `newOrderModal.errorCodes.${key}` as 'newOrderModal.errorCodes.instrumentMarketDataOnly'
+    )
+  }
+
   const handleSubmit = () => {
     setError('')
 
     if (!exchange || !instrument || !quantity || !walletPublicId) {
-      setError('All required fields must be filled')
+      setError(t('newOrderModal.errors.missingRequired'))
 
       return
     }
@@ -132,25 +157,25 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     const qty = Number.parseFloat(quantity)
 
     if (Number.isNaN(qty) || qty <= 0) {
-      setError('Quantity must be a positive number')
+      setError(t('newOrderModal.errors.quantityPositive'))
 
       return
     }
 
     if (needsPrice && !price) {
-      setError('Price is required for this order type')
+      setError(t('newOrderModal.errors.priceRequired'))
 
       return
     }
 
     if (needsPrice && (Number.isNaN(Number.parseFloat(price)) || Number.parseFloat(price) <= 0)) {
-      setError('Price must be a positive number')
+      setError(t('newOrderModal.errors.pricePositive'))
 
       return
     }
 
     if (needsStopPrice && !stopPrice) {
-      setError('Stop price is required for this order type')
+      setError(t('newOrderModal.errors.stopPriceRequired'))
 
       return
     }
@@ -159,7 +184,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
       needsStopPrice &&
       (Number.isNaN(Number.parseFloat(stopPrice)) || Number.parseFloat(stopPrice) <= 0)
     ) {
-      setError('Stop price must be a positive number')
+      setError(t('newOrderModal.errors.stopPricePositive'))
 
       return
     }
@@ -191,14 +216,14 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
       setConfirming(false)
 
       if (err instanceof APIError) {
-        const mapped = lookupOrderErrorMessage(err.details)
+        const mapped = translateErrorCode(err.details)
 
         setError(mapped ?? err.message)
 
         return
       }
 
-      setError(err instanceof Error ? err.message : 'Order creation failed')
+      setError(err instanceof Error ? err.message : t('newOrderModal.errors.createFailed'))
     }
   }
 
@@ -222,7 +247,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     <Modal open={open} onClose={handleClose}>
       <div className='p-6 max-w-lg w-full'>
         <h3 className='text-lg font-semibold text-alpine-900 mb-4'>
-          {confirming ? 'Confirm Order' : 'New Manual Order'}
+          {confirming ? t('newOrderModal.titleConfirm') : t('newOrderModal.titleEdit')}
         </h3>
 
         {error && (
@@ -235,15 +260,15 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
           <div className='space-y-3'>
             <div className='rounded-xl border border-dark-600 bg-dark-700 p-4 space-y-2 text-sm'>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Instrument</span>
+                <span className='text-muted-500'>{t('newOrderModal.fields.instrument')}</span>
                 <span className='text-alpine-900 font-medium'>{instrument}</span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Exchange</span>
+                <span className='text-muted-500'>{t('newOrderModal.fields.exchange')}</span>
                 <span className='text-alpine-900'>{exchange}</span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Side</span>
+                <span className='text-muted-500'>{t('newOrderModal.fields.side')}</span>
                 <span
                   className={
                     side === 'buy' ? 'text-gain-400 font-medium' : 'text-loss-400 font-medium'
@@ -253,27 +278,27 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 </span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Type</span>
+                <span className='text-muted-500'>{t('newOrderModal.fields.type')}</span>
                 <span className='text-alpine-900'>{orderType}</span>
               </div>
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Quantity</span>
+                <span className='text-muted-500'>{t('newOrderModal.fields.quantity')}</span>
                 <span className='text-alpine-900 font-medium'>{quantity}</span>
               </div>
               {needsPrice && (
                 <div className='flex justify-between'>
-                  <span className='text-muted-500'>Price</span>
+                  <span className='text-muted-500'>{t('newOrderModal.fields.price')}</span>
                   <span className='text-alpine-900'>${price}</span>
                 </div>
               )}
               {needsStopPrice && (
                 <div className='flex justify-between'>
-                  <span className='text-muted-500'>Stop Price</span>
+                  <span className='text-muted-500'>{t('newOrderModal.fields.stopPrice')}</span>
                   <span className='text-alpine-900'>${stopPrice}</span>
                 </div>
               )}
               <div className='flex justify-between'>
-                <span className='text-muted-500'>Mode</span>
+                <span className='text-muted-500'>{t('newOrderModal.fields.mode')}</span>
                 <span className='text-alpine-900'>{mode}</span>
               </div>
             </div>
@@ -282,14 +307,16 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 onClick={() => setConfirming(false)}
                 className='px-4 py-2 text-sm text-muted-600 hover:text-alpine-900 transition-colors'
               >
-                Back
+                {t('newOrderModal.buttons.back')}
               </button>
               <button
                 onClick={handleConfirm}
                 disabled={createOrder.isPending}
                 className='px-4 py-2 text-sm font-medium rounded-lg bg-brand-600 text-white hover:bg-brand-500 disabled:opacity-50 transition-colors'
               >
-                {createOrder.isPending ? 'Submitting...' : 'Confirm Order'}
+                {createOrder.isPending
+                  ? t('newOrderModal.buttons.submitting')
+                  : t('newOrderModal.buttons.confirmOrder')}
               </button>
             </div>
           </div>
@@ -298,7 +325,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             <div className='grid grid-cols-2 gap-4'>
               <div>
                 <label htmlFor={exchangeSelectId} className='block text-xs text-muted-500 mb-1'>
-                  Exchange
+                  {t('newOrderModal.fields.exchange')}
                 </label>
                 <NativeSelect
                   id={exchangeSelectId}
@@ -312,7 +339,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                   htmlFor={instrumentSelectId}
                   className='flex items-center gap-2 text-xs text-muted-500 mb-1'
                 >
-                  <span>Instrument</span>
+                  <span>{t('newOrderModal.fields.instrument')}</span>
                   {selectedIsMarketDataOnly && <MarketDataOnlyBadge size='sm' />}
                 </label>
                 <NativeSelect
@@ -325,13 +352,13 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             </div>
             {selectedIsMarketDataOnly && (
               <div className='rounded-lg border border-warning-500/40 bg-warning-500/10 px-3 py-2 text-xs text-warning-600'>
-                {lookupOrderErrorMessage({ error_code: 'instrument_market_data_only' })}
+                {translateErrorCode({ error_code: 'instrument_market_data_only' })}
               </div>
             )}
             <div className='grid grid-cols-2 gap-4'>
               <div>
                 <label htmlFor={sideSelectId} className='block text-xs text-muted-500 mb-1'>
-                  Side
+                  {t('newOrderModal.fields.side')}
                 </label>
                 <NativeSelect
                   id={sideSelectId}
@@ -342,7 +369,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               </div>
               <div>
                 <label htmlFor={orderTypeSelectId} className='block text-xs text-muted-500 mb-1'>
-                  Order Type
+                  {t('newOrderModal.fields.orderType')}
                 </label>
                 <NativeSelect
                   id={orderTypeSelectId}
@@ -354,7 +381,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             </div>
             <div>
               <label htmlFor={quantityInputId} className='block text-xs text-muted-500 mb-1'>
-                Quantity
+                {t('newOrderModal.fields.quantity')}
               </label>
               <input
                 id={quantityInputId}
@@ -364,13 +391,13 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 value={quantity}
                 onChange={e => setQuantity(e.target.value)}
                 className='w-full rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900 focus:border-brand-500 focus:outline-none'
-                placeholder='0.00'
+                placeholder={t('newOrderModal.placeholders.quantity')}
               />
             </div>
             {needsPrice && (
               <div>
                 <label htmlFor={priceInputId} className='block text-xs text-muted-500 mb-1'>
-                  Price
+                  {t('newOrderModal.fields.price')}
                 </label>
                 <input
                   id={priceInputId}
@@ -380,14 +407,14 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                   value={price}
                   onChange={e => setPrice(e.target.value)}
                   className='w-full rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900 focus:border-brand-500 focus:outline-none'
-                  placeholder='0.00'
+                  placeholder={t('newOrderModal.placeholders.price')}
                 />
               </div>
             )}
             {needsStopPrice && (
               <div>
                 <label htmlFor={stopPriceInputId} className='block text-xs text-muted-500 mb-1'>
-                  Stop Price
+                  {t('newOrderModal.fields.stopPrice')}
                 </label>
                 <input
                   id={stopPriceInputId}
@@ -397,14 +424,14 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                   value={stopPrice}
                   onChange={e => setStopPrice(e.target.value)}
                   className='w-full rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900 focus:border-brand-500 focus:outline-none'
-                  placeholder='0.00'
+                  placeholder={t('newOrderModal.placeholders.stopPrice')}
                 />
               </div>
             )}
             <div className='grid grid-cols-2 gap-4'>
               <div>
                 <label htmlFor={modeSelectId} className='block text-xs text-muted-500 mb-1'>
-                  Mode
+                  {t('newOrderModal.fields.mode')}
                 </label>
                 <NativeSelect
                   id={modeSelectId}
@@ -415,7 +442,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               </div>
               <div>
                 <label htmlFor={walletSelectId} className='block text-xs text-muted-500 mb-1'>
-                  Wallet
+                  {t('newOrderModal.fields.wallet')}
                 </label>
                 <NativeSelect
                   id={walletSelectId}
@@ -430,14 +457,14 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 onClick={handleClose}
                 className='px-4 py-2 text-sm text-muted-600 hover:text-alpine-900 transition-colors'
               >
-                Cancel
+                {t('newOrderModal.buttons.cancel')}
               </button>
               <button
                 onClick={handleSubmit}
                 disabled={selectedIsMarketDataOnly}
                 className='px-4 py-2 text-sm font-medium rounded-lg bg-brand-600 text-white hover:bg-brand-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
               >
-                Review Order
+                {t('newOrderModal.buttons.reviewOrder')}
               </button>
             </div>
           </div>

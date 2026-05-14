@@ -1,1 +1,53 @@
-{}
+{
+  "activityRow": {
+    "request": "Request",
+    "decision": "Decision",
+    "capsViolation": "Caps violation",
+    "selectedDelegate": "Selected delegate",
+    "instrument": "instrument",
+    "deadline": "deadline {{time}}",
+    "decidedBy": "by",
+    "newStatus": "status",
+    "mode": "mode",
+    "capAttempted": "attempted",
+    "capLimit": "vs limit",
+    "capOn": "on instrument",
+    "reviewLabel": "review {{reviewId}}",
+    "unhandledFrame": "Unhandled AI review activity frame: {{frame}}"
+  },
+  "page": {
+    "title": "AI Review Inbox",
+    "subtitle": "Pending CONSULT reviews routed to this delegate plus the live event stream."
+  },
+  "roleNotice": {
+    "title": "Reserved for AI delegates",
+    "message": "This inbox surfaces CONSULT reviews routed to an AI delegate principal. Sign in with an AI delegate account to see pending reviews and the live activity stream. Your current role is",
+    "unknownRole": "unknown"
+  },
+  "pending": {
+    "title": "Pending reviews",
+    "loading": "Loading pending reviews…",
+    "loadError": "Failed to load pending reviews: {{message}}",
+    "emptyTitle": "No pending reviews",
+    "emptyMessage": "New CONSULT requests routed to this delegate will appear here.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Thesis",
+      "status": "Status",
+      "deadline": "Deadline",
+      "decision": "Decision"
+    },
+    "rationalePlaceholder": "Rationale (optional)",
+    "rationaleAriaLabel": "Rationale for review {{reviewId}}",
+    "approve": "Approve",
+    "reject": "Reject",
+    "submitError": "Submit failed: {{message}}"
+  },
+  "activity": {
+    "title": "Recent activity",
+    "emptyTitle": "No activity yet",
+    "emptyMessage": "AI review request, decision, and caps-violation frames will stream in here.",
+    "summaryEmpty": "No frames received",
+    "summaryCount": "Showing {{shown}} of {{total}} buffered"
+  }
+}
