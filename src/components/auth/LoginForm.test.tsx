@@ -106,6 +106,14 @@ describe('LoginForm', () => {
     renderWithMocks(<LoginForm />)
     expect(screen.getByText(/signing in/i)).toBeInTheDocument()
   })
+  it('renders documentation PDF link', () => {
+    renderWithMocks(<LoginForm />)
+    const link = screen.getByRole('link', { name: /documentation \(pdf\)/i })
+
+    expect(link).toHaveAttribute('href', '/snapper.pdf')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer')
+  })
   it('handles login error gracefully', async () => {
     const loginError = new Error('Network error')
 
