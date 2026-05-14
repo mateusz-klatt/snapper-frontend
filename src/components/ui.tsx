@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { clsx } from 'clsx'
 
 interface StatusBadgeProps {
@@ -60,6 +61,7 @@ export const Button: React.FC<Readonly<ButtonProps>> = ({
   disabled,
   ...props
 }) => {
+  const { t } = useTranslation('common')
   const baseClasses =
     'btn focus:outline-hidden focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-900'
   const variantClasses = {
@@ -92,7 +94,7 @@ export const Button: React.FC<Readonly<ButtonProps>> = ({
             aria-hidden='true'
             className='w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin'
           />
-          Loading...
+          {t('loading')}
         </div>
       ) : (
         children
@@ -132,6 +134,7 @@ export const LoadingSpinner: React.FC<Readonly<LoadingSpinnerProps>> = ({
   size = 'md',
   className,
 }) => {
+  const { t } = useTranslation('common')
   const sizeClasses = {
     sm: 'w-4 h-4',
     md: 'w-6 h-6',
@@ -142,7 +145,7 @@ export const LoadingSpinner: React.FC<Readonly<LoadingSpinnerProps>> = ({
     <div
       role='status'
       aria-live='polite'
-      aria-label='Loading'
+      aria-label={t('loading')}
       className={clsx(
         'border-2 border-current border-t-transparent rounded-full animate-spin',
         sizeClasses[size],
