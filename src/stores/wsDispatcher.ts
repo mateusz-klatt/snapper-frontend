@@ -24,6 +24,7 @@ import {
   isAiReviewDecisionAck,
   isAiReviewCapsViolation,
 } from '../types/ws'
+import type { CachedCandle, CachedCandlesResponse } from '../types/api'
 import {
   orderDataFromEnvelope,
   executionDataFromEnvelope,
@@ -238,44 +239,73 @@ export class WSDispatcher {
     this.signalBuffer = null
   }
   private mergeCandleIntoCache(envelope: CandleData): void {
-    const populated = this.queryClient
-      .getQueriesData<CandleData[]>({
-        queryKey: ['candles', envelope.instrument, envelope.exchange, envelope.timeframe],
-      })
-      .filter(
-        (entry): entry is [readonly unknown[], CandleData[]] =>
-          entry[0][entry[0].length - 1] === null && entry[1] !== undefined
-      )
+    const bufferKey = `${envelope.instrument}:${envelope.exchange}:${envelope.timeframe}`
+    const buffer = this.candleBuffers.get(bufferKey)
 
-    if (populated.length === 0) {
-      const bufferKey = `${envelope.instrument}:${envelope.exchange}:${envelope.timeframe}`
-      const buffer = this.candleBuffers.get(bufferKey)
-
-      if (buffer) {
-        buffer.push(envelope)
-      }
+    if (buffer) {
+      buffer.push(envelope)
 
       return
     }
 
-    const incomingTime = new Date(envelope.open_at).getTime()
+    const cachedPopulated = this.queryClient
+      .getQueriesData<CachedCandlesResponse>({
+        queryKey: [
+          'market',
+          'cache',
+          'candles',
+          envelope.exchange,
+          envelope.instrument,
+          envelope.timeframe,
+        ],
+      })
+      .filter(
+        (entry): entry is [readonly unknown[], CachedCandlesResponse] =>
+          entry[0][entry[0].length - 1] === null && entry[1] !== undefined
+      )
 
-    for (const [key, existing] of populated) {
-      const lastCandle = existing[existing.length - 1]
-      const lastTime = lastCandle ? new Date(lastCandle.open_at).getTime() : 0
+    if (cachedPopulated.length === 0) {
+      return
+    }
 
-      if (incomingTime === lastTime) {
-        const updated = [...existing]
+    const incomingMs = new Date(envelope.open_at).getTime()
+    const incomingSnap: CachedCandle = {
+      open_at_ms: incomingMs,
+      timeframe: envelope.timeframe,
+      open: envelope.open,
+      high: envelope.high,
+      low: envelope.low,
+      close: envelope.close,
+      volume: envelope.volume,
+    }
 
-        updated[updated.length - 1] = envelope
-        this.queryClient.setQueryData<CandleData[]>(key, updated)
-      } else if (incomingTime > lastTime) {
-        const appended = [...existing, envelope]
-        const cap = typeof key[4] === 'number' ? key[4] : this.maxCandles
-        const trimmed = appended.length > cap ? appended.slice(-cap) : appended
+    for (const [key, existing] of cachedPopulated) {
+      const candles = existing.payload.candles
+      const lastCandle = candles[candles.length - 1]
+      const lastMs = lastCandle?.open_at_ms ?? 0
+      const cap = typeof key[6] === 'number' ? key[6] : this.maxCandles
+      let updated: CachedCandle[]
 
-        this.queryClient.setQueryData<CandleData[]>(key, trimmed)
+      if (incomingMs === lastMs) {
+        updated = [...candles]
+        updated[updated.length - 1] = incomingSnap
+      } else if (incomingMs > lastMs) {
+        const appended = [...candles, incomingSnap]
+
+        updated = appended.length > cap ? appended.slice(-cap) : appended
+      } else {
+        continue
       }
+
+      this.queryClient.setQueryData<CachedCandlesResponse>(key, {
+        ...existing,
+        payload: {
+          ...existing.payload,
+          candles: updated,
+          sample_count: updated.length,
+          is_warm: existing.payload.is_warm || updated.length >= cap,
+        },
+      })
     }
   }
   private mergeOrderIntoCache(envelope: OrderData): void {

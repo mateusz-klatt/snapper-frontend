@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import { useWebSocketStore } from '../stores/websocket'
 import { useAppStore } from '../stores/app'
 import { buildMarketTopic } from '../lib/websocket/topics'
@@ -15,6 +16,7 @@ export function useMarketSubscription(options: MarketSubscriptionOptions): boole
   const { instrument, exchange, timeframe, dispatcher } = options
   const { wsClient, isConnected } = useWebSocketStore()
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
+  const queryClient = useQueryClient()
   const [subscribed, setSubscribed] = useState(false)
 
   useEffect(() => {
@@ -25,6 +27,10 @@ export function useMarketSubscription(options: MarketSubscriptionOptions): boole
     }
 
     const topic = buildMarketTopic('candles', instrument, exchange, timeframe)
+
+    queryClient.invalidateQueries({
+      queryKey: ['market', 'cache', 'candles', exchange, instrument, timeframe],
+    })
 
     if (dispatcher) {
       dispatcher.startBuffering(instrument, exchange, timeframe)
@@ -46,7 +52,16 @@ export function useMarketSubscription(options: MarketSubscriptionOptions): boole
 
       setSubscribed(false)
     }
-  }, [instrument, exchange, timeframe, isConnected, wsClient, dispatcher, isTimeTraveling])
+  }, [
+    instrument,
+    exchange,
+    timeframe,
+    isConnected,
+    wsClient,
+    dispatcher,
+    isTimeTraveling,
+    queryClient,
+  ])
 
   return subscribed
 }

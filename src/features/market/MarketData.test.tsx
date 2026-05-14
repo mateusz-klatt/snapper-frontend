@@ -704,7 +704,7 @@ describe('MarketData', () => {
     ]
     const { useCachedCandles } = await import('../../hooks/queries/market')
 
-    vi.mocked(useCachedCandles).mockReturnValue({
+    vi.mocked(useCachedCandles).mockReturnValueOnce({
       data: buildCachedEnvelope(mockCandles, { isWarm: false, source: 'derived' }),
       isLoading: false,
       error: null,

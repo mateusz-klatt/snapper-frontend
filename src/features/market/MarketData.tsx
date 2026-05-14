@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState, useRef, useEffect } from 'react'
 import { Card, LoadingSpinner } from '../../components/ui'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
@@ -86,6 +86,29 @@ export function MarketData() {
   const isWarm = cachedResponse?.payload.is_warm ?? true
   const sampleCount = cachedResponse?.payload.sample_count ?? 0
   const cacheSource = cachedResponse?.payload.source ?? 'cache'
+  const flushedRef = useRef(false)
+
+  useEffect(() => {
+    flushedRef.current = false
+  }, [selectedInstrument, selectedExchange, selectedTimeframe])
+  useEffect(() => {
+    if (subscribed) {
+      flushedRef.current = false
+    }
+  }, [subscribed])
+  useEffect(() => {
+    if (
+      candles &&
+      !isFetching &&
+      dispatcher &&
+      selectedInstrument &&
+      selectedExchange &&
+      !flushedRef.current
+    ) {
+      dispatcher.flushBuffer(selectedInstrument, selectedExchange, selectedTimeframe)
+      flushedRef.current = true
+    }
+  }, [candles, isFetching, dispatcher, selectedInstrument, selectedExchange, selectedTimeframe])
   const allInstrumentSymbols = useMemo(
     () => (instruments?.payload ?? []).map(row => row.symbol),
     [instruments]
