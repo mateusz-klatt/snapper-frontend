@@ -105,7 +105,8 @@ export const useCachedCandles = (
     queryKey: queryKeys.cachedCandles(exchangeKey, symbolKey, timeframe, limit, asOf),
     queryFn: () => getCachedCandles(exchangeKey, symbolKey, timeframe, limit),
     enabled: enabled && isAuthenticated && !!exchange && !!nativeSymbol,
-    staleTime: 5 * 1000,
+    staleTime: 2 * 1000,
+    refetchInterval: 3 * 1000,
     throwOnError: false,
     retry: 1,
   })
