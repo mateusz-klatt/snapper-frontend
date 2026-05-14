@@ -10,6 +10,7 @@ import UserProfile from './components/auth/UserProfile'
 import { TimeTravelPicker } from './components/TimeTravelPicker'
 import { OperatorPicker } from './components/OperatorPicker'
 import { WalletPicker } from './components/WalletPicker'
+import LocaleSwitcher from './components/LocaleSwitcher'
 import { Menu, Wifi, WifiOff, X, Sun, Moon, Clock } from 'lucide-react'
 
 function App() {
@@ -132,6 +133,7 @@ function App() {
                   {isConnected ? 'Connected' : 'Disconnected'}
                 </span>
               </span>
+              <LocaleSwitcher />
               <button
                 onClick={toggleDarkMode}
                 className='rounded-lg p-2 text-muted-600 hover:bg-dark-700 transition-colors'

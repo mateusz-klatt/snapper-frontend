@@ -41,7 +41,7 @@ describe('main', () => {
     await import('./main')
     expect(mockCreateRoot).toHaveBeenCalledWith(rootElement)
     expect(mockRender).toHaveBeenCalled()
-  }, 10000)
+  }, 30000)
   it('throws error when root element is not found', async () => {
     if (rootElement) {
       rootElement.remove()

@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../stores/auth'
+import LocaleSwitcher from '../LocaleSwitcher'
 
 interface LoginFormProps {
   onSuccess?: () => void
@@ -10,6 +12,7 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const { login, isLoading, error, clearError } = useAuth()
+  const { t } = useTranslation(['auth', 'common'])
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -25,16 +28,15 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
 
   return (
     <div
-      className={`mx-auto w-full max-w-md rounded-2xl border border-dark-600 bg-alpine-50 p-7 shadow-sm ${className}`}
+      className={`relative mx-auto w-full max-w-md rounded-2xl border border-dark-600 bg-alpine-50 p-7 shadow-sm ${className}`}
     >
+      <div className='absolute right-3 top-3'>
+        <LocaleSwitcher align='end' />
+      </div>
       <div className='mb-7'>
         <img src='/logo.png' alt='Snapper' className='mx-auto mb-4 h-14 w-14 rounded-2xl' />
-        <h2 className='text-center text-2xl font-semibold text-alpine-900'>
-          Snapper Trading Login
-        </h2>
-        <p className='mt-2 text-center text-sm text-muted-600'>
-          Sign in to access the trading dashboard
-        </p>
+        <h2 className='text-center text-2xl font-semibold text-alpine-900'>{t('login.title')}</h2>
+        <p className='mt-2 text-center text-sm text-muted-600'>{t('login.subtitle')}</p>
       </div>
       {error && (
         <div className='mb-4 rounded-lg border border-loss-200 bg-loss-50 p-3 text-sm text-loss-800'>
@@ -44,7 +46,7 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
       <form onSubmit={handleSubmit} className='space-y-4'>
         <div>
           <label htmlFor='username' className='block text-sm font-medium text-muted-700'>
-            Username
+            {t('login.usernameLabel')}
           </label>
           <input
             id='username'
@@ -54,12 +56,12 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
             required
             disabled={isLoading}
             className='mt-1 block w-full rounded-xl border border-dark-600 bg-alpine-50 px-3 py-2 text-alpine-900 shadow-xs focus:border-brand-500 focus:outline-hidden focus:ring-2 focus:ring-brand-500 disabled:bg-dark-700'
-            placeholder='Enter your username'
+            placeholder={t('login.usernamePlaceholder')}
           />
         </div>
         <div>
           <label htmlFor='password' className='block text-sm font-medium text-muted-700'>
-            Password
+            {t('login.passwordLabel')}
           </label>
           <input
             id='password'
@@ -69,7 +71,7 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
             required
             disabled={isLoading}
             className='mt-1 block w-full rounded-xl border border-dark-600 bg-alpine-50 px-3 py-2 text-alpine-900 shadow-xs focus:border-brand-500 focus:outline-hidden focus:ring-2 focus:ring-brand-500 disabled:bg-dark-700'
-            placeholder='Enter your password'
+            placeholder={t('login.passwordPlaceholder')}
           />
         </div>
         <button
@@ -80,10 +82,10 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
           {isLoading ? (
             <div className='flex items-center gap-2'>
               <div className='h-2.5 w-10 rounded-full bg-white/60 animate-pulse' />
-              Signing in...
+              {t('login.submitLoading')}
             </div>
           ) : (
-            'Sign In'
+            t('login.submit')
           )}
         </button>
       </form>
@@ -94,7 +96,7 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
           rel='noopener noreferrer'
           className='text-brand-600 underline-offset-2 hover:text-brand-700 hover:underline focus:outline-hidden focus:ring-2 focus:ring-brand-500 focus:ring-offset-2'
         >
-          Documentation (PDF)
+          {t('common:documentation')}
         </a>
       </p>
     </div>
