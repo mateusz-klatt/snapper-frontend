@@ -5,14 +5,8 @@ import { toast } from 'react-hot-toast'
 import { Button } from '../../../components/ui'
 import { Modal } from '../../../components/ui/Modal'
 import { useRotateCredential } from '../../../hooks/queries/credentials'
+import { credentialFieldsFor, type CredentialField } from './credentialTypes'
 import type { CredentialSummary } from '../../../types/api'
-
-const REQUIRED_FIELDS: Record<string, string[]> = {
-  api_key_secret: ['api_key', 'api_secret'],
-  rsa_pem: ['api_key', 'private_key_pem'],
-  oauth: ['client_id', 'client_secret', 'refresh_token'],
-  paper: ['initial_balance'],
-}
 
 interface RotateDialogProps {
   credential: CredentialSummary | null
@@ -33,10 +27,9 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
   const [errors, setErrors] = useState<Record<string, string>>({})
   const rotateMutation = useRotateCredential()
 
-  const requiredFields = REQUIRED_FIELDS[credential?.credential_type ?? ''] ?? []
+  const requiredFields = credentialFieldsFor(credential?.credential_type)
 
-  const fieldLabel = (field: string): string =>
-    t(`credentials.form.fieldLabels.${field}` as 'credentials.form.fieldLabels.api_key')
+  const fieldLabel = (field: CredentialField): string => t(`credentials.form.fieldLabels.${field}`)
 
   const handleClose = () => {
     setFields({})

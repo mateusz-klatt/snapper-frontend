@@ -140,9 +140,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
       return null
     }
 
-    return t(
-      `newOrderModal.errorCodes.${key}` as 'newOrderModal.errorCodes.instrumentMarketDataOnly'
-    )
+    return t(`newOrderModal.errorCodes.${key}`)
   }
 
   const handleSubmit = () => {

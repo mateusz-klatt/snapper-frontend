@@ -2201,6 +2201,24 @@ describe('WSDispatcher', () => {
       )
     })
 
+    it('logs active invalidation failures', async () => {
+      vi.mocked(mockWsClient.isConnected).mockReturnValue(false)
+      const error = new Error('invalidate failed')
+      const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined)
+
+      vi.spyOn(queryClient, 'invalidateQueries').mockRejectedValue(error)
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      try {
+        dispatcher.attach(mockWsClient)
+        messageHandlers.get('order')?.(makeOrder('coid-err'))
+        await Promise.resolve()
+        expect(consoleError).toHaveBeenCalledWith('Failed to invalidate active query:', error)
+      } finally {
+        consoleError.mockRestore()
+      }
+    })
+
     it('execution frame invalidates positions + trailing-stop prefixes', () => {
       const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
       const dispatcher = new WSDispatcher({ queryClient })

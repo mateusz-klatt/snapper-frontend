@@ -30,6 +30,12 @@ interface FormattedCandle {
 
 const TIMEFRAME_VALUES = ['1m', '5m', '15m', '30m', '1h', '4h', '1d'] as const
 
+type TimeframeValue = (typeof TIMEFRAME_VALUES)[number]
+
+const TIMEFRAME_SET: ReadonlySet<string> = new Set(TIMEFRAME_VALUES)
+
+const isTimeframeValue = (value: string): value is TimeframeValue => TIMEFRAME_SET.has(value)
+
 export function MarketData() {
   const { t } = useTranslation('market')
   const {
@@ -46,6 +52,9 @@ export function MarketData() {
     () => TIMEFRAME_VALUES.map(value => ({ value, label: t(`timeframes.${value}`) })),
     [t]
   )
+  const selectedTimeframeLabel = isTimeframeValue(selectedTimeframe)
+    ? t(`timeframes.${selectedTimeframe}`)
+    : selectedTimeframe
 
   const { isConnected } = useWebSocketStore()
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
@@ -362,7 +371,7 @@ export function MarketData() {
               </p>
               <p className='text-sm text-muted-500'>
                 {t('chart.noDataHint', {
-                  timeframe: t(`timeframes.${selectedTimeframe}` as 'timeframes.1m').toLowerCase(),
+                  timeframe: selectedTimeframeLabel.toLowerCase(),
                 })}
               </p>
             </div>

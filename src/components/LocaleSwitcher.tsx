@@ -164,8 +164,8 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
           className='z-50 rounded-xl border border-dark-600 bg-alpine-50 p-2 shadow-lg'
         >
           <div className='flex max-w-[480px] flex-col gap-1 overflow-x-auto'>
-            {ROWS.map((row, rowIdx) => (
-              <div key={`row-${rowIdx}`} className='flex flex-nowrap gap-1'>
+            {ROWS.map(row => (
+              <div key={row.join('-')} className='flex flex-nowrap gap-1'>
                 {row.map(code => {
                   const isCurrent = code === locale
                   const country = countryName(code, displayLanguage)
@@ -177,8 +177,13 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
                     <button
                       key={code}
                       ref={el => {
-                        if (el !== null) buttonRefs.current.set(code, el)
-                        else buttonRefs.current.delete(code)
+                        if (el === null) {
+                          buttonRefs.current.delete(code)
+
+                          return
+                        }
+
+                        buttonRefs.current.set(code, el)
                       }}
                       type='button'
                       onClick={() => handleSelect(code)}

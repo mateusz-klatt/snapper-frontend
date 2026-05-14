@@ -11,11 +11,19 @@
  * codes fall back to ``APIError.message`` which already carries the
  * ``reason`` from the structured 422 detail.
  */
-export const ORDER_ERROR_CODE_KEYS: Readonly<Record<string, string>> = {
+export const ORDER_ERROR_CODE_KEYS = {
   instrument_market_data_only: 'instrumentMarketDataOnly',
   unknown_instrument: 'unknownInstrument',
   caps_violation: 'capsViolation',
-}
+} as const
+
+type OrderErrorCode = keyof typeof ORDER_ERROR_CODE_KEYS
+
+export type OrderErrorMessageKey = (typeof ORDER_ERROR_CODE_KEYS)[OrderErrorCode]
+
+const ORDER_ERROR_CODE_SET: ReadonlySet<string> = new Set(Object.keys(ORDER_ERROR_CODE_KEYS))
+
+const isOrderErrorCode = (code: string): code is OrderErrorCode => ORDER_ERROR_CODE_SET.has(code)
 
 /**
  * Extract the ``error_code`` from an ``APIError.details`` object, if present.
@@ -41,12 +49,12 @@ export function extractErrorCode(details: unknown): string | null {
  * Returns ``null`` when the code is unknown so the caller can fall back to
  * ``APIError.message``.
  */
-export function lookupOrderErrorMessageKey(details: unknown): string | null {
+export function lookupOrderErrorMessageKey(details: unknown): OrderErrorMessageKey | null {
   const code = extractErrorCode(details)
 
   if (code === null) {
     return null
   }
 
-  return ORDER_ERROR_CODE_KEYS[code] ?? null
+  return isOrderErrorCode(code) ? ORDER_ERROR_CODE_KEYS[code] : null
 }

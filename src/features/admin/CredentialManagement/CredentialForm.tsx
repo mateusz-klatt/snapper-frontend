@@ -7,16 +7,13 @@ import { Modal } from '../../../components/ui/Modal'
 import { ThemeSelect } from '../../../components/ThemeSelect'
 import { useCreateCredential } from '../../../hooks/queries/credentials'
 import { useWallets } from '../../../hooks/queries/wallets'
+import {
+  CREDENTIAL_TYPE_VALUES,
+  credentialFieldsFor,
+  isCredentialType,
+  type CredentialField,
+} from './credentialTypes'
 import type { WalletInfo } from '../../../types/api'
-
-const CREDENTIAL_TYPE_VALUES = ['api_key_secret', 'rsa_pem', 'oauth', 'paper'] as const
-
-const REQUIRED_FIELDS: Record<string, string[]> = {
-  api_key_secret: ['api_key', 'api_secret'],
-  rsa_pem: ['api_key', 'private_key_pem'],
-  oauth: ['client_id', 'client_secret', 'refresh_token'],
-  paper: ['initial_balance'],
-}
 
 interface CredentialFormProps {
   open: boolean
@@ -28,7 +25,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
   const { t } = useTranslation('admin')
   const [walletId, setWalletId] = useState('')
   const [exchange, setExchange] = useState('')
-  const [credentialType, setCredentialType] = useState('api_key_secret')
+  const [credentialType, setCredentialType] = useState<string>('api_key_secret')
   const [fields, setFields] = useState<Record<string, string>>({})
   const [label, setLabel] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -37,16 +34,13 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
   const createMutation = useCreateCredential()
 
   const wallets: WalletInfo[] = walletsData?.payload ?? []
-  const requiredFields = REQUIRED_FIELDS[credentialType] ?? []
+  const requiredFields = credentialFieldsFor(credentialType)
 
-  const fieldLabel = (field: string): string =>
-    t(`credentials.form.fieldLabels.${field}` as 'credentials.form.fieldLabels.api_key')
+  const fieldLabel = (field: CredentialField): string => t(`credentials.form.fieldLabels.${field}`)
 
   const credentialTypeOptions = CREDENTIAL_TYPE_VALUES.map(value => ({
     value,
-    label: t(
-      `credentials.form.credentialTypes.${value}` as 'credentials.form.credentialTypes.api_key_secret'
-    ),
+    label: t(`credentials.form.credentialTypes.${value}`),
   }))
 
   const resetForm = () => {
@@ -92,6 +86,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
     e.preventDefault()
 
     if (!validateForm()) return
+    if (!isCredentialType(credentialType)) return
 
     const payload: Record<string, string> = {}
 
@@ -106,7 +101,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
         walletPublicId: walletId,
         data: {
           exchange: exchange.trim(),
-          credential_type: credentialType as 'api_key_secret' | 'rsa_pem' | 'oauth' | 'paper',
+          credential_type: credentialType,
           credential_payload: payload,
           ...(trimmedLabel ? { label: trimmedLabel } : {}),
         },

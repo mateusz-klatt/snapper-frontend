@@ -29,7 +29,7 @@ export const Admin: React.FC = () => {
     const roles = RESOURCE_ACCESS[tabId] as readonly string[]
 
     return {
-      resource: t(`rolePermissions.resources.${tabId}` as 'rolePermissions.resources.overview'),
+      resource: t(`rolePermissions.resources.${tabId}`),
       viewer: roles.includes('viewer'),
       operator: roles.includes('operator'),
       admin: roles.includes('admin'),
