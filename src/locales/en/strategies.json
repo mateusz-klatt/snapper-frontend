@@ -76,10 +76,10 @@
       "stopped": "stopped"
     },
     "health": {
-      "healthy": "Healthy - receiving fresh data",
-      "warning": "Warning - data is stale",
-      "error": "Error - no recent data",
-      "unknown": "Unknown - no heartbeat data"
+      "healthy": "Healthy — receiving fresh data",
+      "warning": "Warning — data is stale",
+      "error": "Error — no recent data",
+      "unknown": "Unknown — no heartbeat data"
     },
     "healthShort": {
       "healthy": "HEALTHY",
