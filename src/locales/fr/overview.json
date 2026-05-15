@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Vue d'ensemble"
+  },
+  "metrics": {
+    "feedsRunning": "Flux actifs",
+    "strategiesActive": "Stratégies actives",
+    "openOrders": "Ordres ouverts",
+    "todaysExecutions": "Exécutions du jour",
+    "executionsOn": "Exécutions ({{date}})"
+  },
+  "status": {
+    "stopped": "Arrêtés",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "En cours",
+    "active": "Actifs"
+  },
+  "processStatus": {
+    "title": "État des processus",
+    "feeds": "Flux",
+    "strategies": "Stratégies",
+    "executors": "Exécuteurs",
+    "brokers": "Courtiers"
+  },
+  "portfolio": {
+    "title": "Synthèse du portefeuille",
+    "totalValue": "Valeur totale",
+    "longExposure": "Exposition longue",
+    "shortExposure": "Exposition courte",
+    "netDelta": "Delta net",
+    "unrealizedPnl": "P&L latent",
+    "pnlPercent": "P&L %",
+    "positions": "Positions",
+    "instrumentsCount": "{{count}} instruments",
+    "empty": "Aucune donnée de position disponible"
+  },
+  "signals": {
+    "title": "Signaux récents",
+    "empty": "Aucun signal récent",
+    "noTime": "N/D"
+  },
+  "executions": {
+    "title": "Exécutions récentes",
+    "empty": "Aucune exécution récente",
+    "noTime": "N/D"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Gestion des stratégies",
+    "register": "Enregistrer une stratégie",
+    "saving": "Enregistrement…",
+    "descriptionCanManage": "Enregistrez de nouveaux processus de stratégie directement depuis l'interface. Le démarrage automatique maintient le processus actif après redémarrage.",
+    "descriptionViewer": "Consultez les stratégies configurées et leur statut. Contactez un opérateur ou un administrateur pour gérer les stratégies.",
+    "searchPlaceholder": "Rechercher des stratégies...",
+    "filter": {
+      "all": "Tous les statuts",
+      "running": "En cours",
+      "stopped": "Arrêtées"
+    },
+    "configuredHeading": "Stratégies configurées",
+    "noMatches": "Aucune stratégie ne correspond à vos filtres",
+    "clearFilters": "Effacer les filtres",
+    "emptyTitle": "Aucune stratégie configurée",
+    "emptyCanManage": "Enregistrez une stratégie pour démarrer le trading algorithmique",
+    "emptyViewer": "Aucune stratégie n'a encore été configurée"
+  },
+  "confirm": {
+    "startTitle": "Démarrer {{name}}",
+    "startMessage": "Cela démarrera la stratégie {{name}}. Elle peut lancer des opérations de trading en direct.",
+    "stopTitle": "Arrêter {{name}}",
+    "stopMessage": "Cela arrêtera la stratégie {{name}}. Les positions actives ne seront pas fermées automatiquement."
+  },
+  "toast": {
+    "saved": "Stratégie {{name}} enregistrée",
+    "started": "Stratégie {{name}} démarrée",
+    "registerFailed": "Échec de l'enregistrement de la stratégie : {{message}}",
+    "startSuccess": "Stratégie démarrée avec succès",
+    "stopSuccess": "Stratégie arrêtée avec succès",
+    "alreadyRunning": "La stratégie est déjà en cours d'exécution",
+    "notRunning": "La stratégie n'est pas en cours d'exécution",
+    "configNotFound": "Configuration de stratégie introuvable. Vérifiez les paramètres de la base de données.",
+    "networkError": "Erreur réseau. Vérifiez la connexion et réessayez.",
+    "startFailed": "Échec du démarrage de la stratégie : {{message}}",
+    "stopFailed": "Échec de l'arrêt de la stratégie : {{message}}",
+    "unknownError": "Erreur inconnue"
+  },
+  "card": {
+    "ariaLabel": "Stratégie : {{name}}",
+    "modeLabel": "Mode : {{mode}}",
+    "autostartEnabled": "Démarrage auto : activé",
+    "autostartDisabled": "Démarrage auto : désactivé",
+    "statusAriaLabel": "Statut : {{status}}",
+    "dataLagAriaLabel": "Latence des données : {{seconds}} secondes",
+    "lagBadge": "latence : {{seconds}}s",
+    "feedLag": "Latence du flux : {{ms}}ms",
+    "heartbeatAge": "Âge HB : {{seconds}}s",
+    "metrics": {
+      "status": "Statut",
+      "dataLag": "Latence des données",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Afficher les détails",
+    "hideDetails": "Masquer les détails",
+    "inputs": "Entrées ({{count}})",
+    "outputs": "Sorties ({{count}})",
+    "feedPublishers": "Publicateurs de flux ({{count}})",
+    "lastUpdate": "Dernière mise à jour : {{time}}",
+    "waiting": "En attente du heartbeat...",
+    "startAriaLabel": "Démarrer la stratégie {{name}}",
+    "stopAriaLabel": "Arrêter la stratégie {{name}}",
+    "start": "Démarrer",
+    "stop": "Arrêter",
+    "starting": "Démarrage...",
+    "stopping": "Arrêt...",
+    "status": {
+      "starting": "démarrage",
+      "stopping": "arrêt",
+      "running": "en cours",
+      "stopped": "arrêtée"
+    },
+    "health": {
+      "healthy": "Sain — réception de données fraîches",
+      "warning": "Avertissement — données obsolètes",
+      "error": "Erreur — aucune donnée récente",
+      "unknown": "Inconnu — aucune donnée de heartbeat"
+    },
+    "healthShort": {
+      "healthy": "SAIN",
+      "warning": "AVERTISSEMENT",
+      "error": "ERREUR"
+    }
+  },
+  "launchModal": {
+    "title": "Enregistrer un processus de stratégie",
+    "emptyTemplates": "Aucun modèle de stratégie enregistré côté backend. Définissez au moins un processus de stratégie.",
+    "close": "Fermer",
+    "templateLabel": "Modèle de stratégie",
+    "templatePlaceholder": "Choisir un modèle...",
+    "templateFallbackDescription": "Stratégie enregistrée côté backend",
+    "loadingDefaults": "Chargement des valeurs par défaut du modèle…",
+    "loadDefaultsError": "Impossible de charger les valeurs par défaut du modèle. Vérifiez les logs du backend.",
+    "processNameLabel": "Nom du processus",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Caractères autorisés : minuscules, chiffres, tirets bas",
+    "instanceNameLabel": "Nom de l'instance de stratégie",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Utilisé dans la configuration de la stratégie et les topics de sortie",
+    "executionModeLabel": "Mode d'exécution",
+    "executionModeThread": "Thread embarqué",
+    "executionModeProcess": "Processus isolé",
+    "executionModeHelp": "Les threads partagent la mémoire, les processus offrent une isolation plus forte.",
+    "flagsLabel": "Drapeaux",
+    "autostartLabel": "Démarrage automatique au lancement du serveur",
+    "startImmediatelyLabel": "Démarrer immédiatement après l'enregistrement",
+    "noteLabel": "Note (optionnelle)",
+    "notePlaceholder": "Décrivez l'objectif ou les paramètres de cette instance de stratégie.",
+    "noteHelp": "Conservée avec la configuration pour faciliter l'identification de ce processus.",
+    "cancel": "Annuler",
+    "submit": "Enregistrer la stratégie",
+    "submitting": "Enregistrement…"
+  }
+}

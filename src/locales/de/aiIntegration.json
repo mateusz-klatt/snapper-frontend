@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "KI-Integration",
+    "subtitle": "KI-Delegierte verwalten, die sich über MCP mit Snapper verbinden.",
+    "loading": "KI-Integration wird geladen…",
+    "createDelegate": "Delegierten erstellen"
+  },
+  "disabled": {
+    "title": "KI-Integration ist deaktiviert",
+    "message": "Aktivieren Sie das Feature-Flag unter Einstellungen → Feature-Flags, um KI-Delegierte zu verwalten."
+  },
+  "list": {
+    "loadingDelegates": "Delegierte werden geladen…",
+    "emptyTitle": "Noch keine KI-Delegierten",
+    "emptyMessage": "Klicken Sie auf „Delegierten erstellen“, um einen anzulegen und den MCP-Konfigurations-Snippet zu generieren.",
+    "columns": {
+      "label": "Bezeichnung",
+      "username": "Benutzername",
+      "created": "Erstellt",
+      "maxOpenOrders": "Max. offene Aufträge",
+      "maxDailyUsd": "Max. täglich USD",
+      "status": "Status",
+      "actions": "Aktionen"
+    },
+    "status": {
+      "active": "Aktiv",
+      "revoked": "Widerrufen"
+    },
+    "default": "Standard",
+    "details": "Details",
+    "viewAriaLabel": "Delegierten {{label}} anzeigen"
+  },
+  "wizard": {
+    "title": "KI-Delegierten erstellen",
+    "step1": "1. Identität",
+    "step2": "2. Scope & Limits",
+    "step3": "3. Überprüfen",
+    "stepDone": "✓ Fertig",
+    "identity": {
+      "labelField": "Bezeichnung",
+      "labelPlaceholder": "z. B. Alpha Prop Desk",
+      "labelHelpPrefix": "Der Benutzername des Delegierten wird serverseitig abgeleitet als ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Scope",
+      "operatorLabel": "Operator public_id (optional)",
+      "operatorPlaceholder": "Leer lassen, um den primären Operator des Aufrufers zu erben"
+    },
+    "caps": {
+      "heading": "Trading-Limits (alle optional)",
+      "maxOpenOrders": "Max. offene Aufträge",
+      "maxDailyNotionalUsd": "Max. tägliches Nominal in USD",
+      "maxCancelsPerMinute": "Max. Stornierungen pro Minute",
+      "perInstrument": "Max. Menge pro Instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "Standard",
+      "errorInvalidJson": "max_order_quantity_per_instrument muss gültiges JSON sein",
+      "errorJsonObject": "max_order_quantity_per_instrument muss ein JSON-Objekt oder leer sein",
+      "errorNegative": "Limits müssen nicht-negative ganze Zahlen oder leer sein."
+    },
+    "review": {
+      "heading": "Prüfen & erstellen",
+      "rowLabel": "Bezeichnung",
+      "rowOperator": "Operator public_id",
+      "rowMaxOpenOrders": "Max. offene Aufträge",
+      "rowMaxDailyNotional": "Max. tägliches Nominal in USD",
+      "rowMaxCancelsPerMinute": "Max. Stornierungen pro Minute",
+      "rowPerInstrument": "Max. Menge pro Instrument",
+      "operatorDefault": "(primärer Operator des Aufrufers)",
+      "defaultValue": "(Standard)"
+    },
+    "buttons": {
+      "cancel": "Abbrechen",
+      "next": "Weiter",
+      "back": "Zurück",
+      "createDelegate": "Delegierten erstellen",
+      "iSavedClose": "Daten gespeichert — schließen"
+    },
+    "toast": {
+      "delegateCreated": "Delegierter erstellt",
+      "failedToCreate": "Delegierter konnte nicht erstellt werden"
+    }
+  },
+  "detail": {
+    "loading": "Delegierter wird geladen…",
+    "notFound": "Delegierter nicht gefunden oder nicht verfügbar.",
+    "back": "Zurück",
+    "backToList": "Zurück zur Liste",
+    "updateCaps": "Limits aktualisieren",
+    "revoke": "Widerrufen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "tradingCaps": "Trading-Limits",
+    "status": "Status",
+    "active": "Aktiv",
+    "revoked": "Widerrufen",
+    "createdAt": "Erstellt am",
+    "createdBy": "Erstellt von (public_id des Benutzers)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Max. offene Aufträge",
+    "maxDailyNotionalUsd": "Max. tägliches Nominal in USD",
+    "maxCancelsPerMinute": "Max. Stornierungen pro Minute",
+    "perInstrument": "Max. Menge pro Instrument",
+    "defaultValue": "(Standard)",
+    "editorPlaceholder": "(Standard)",
+    "toast": {
+      "capsUpdated": "Limits aktualisiert",
+      "failedToUpdateCaps": "Limits konnten nicht aktualisiert werden",
+      "negativeIntegersError": "Limits müssen nicht-negative ganze Zahlen oder leer sein."
+    }
+  },
+  "revokeDialog": {
+    "title": "Delegierten \"{{label}}\" widerrufen?",
+    "message": "Dies widerruft die Token des Delegierten und stoppt seine MCP-Abonnements. Dies kann nicht rückgängig gemacht werden.",
+    "confirm": "Widerrufen",
+    "cancel": "Abbrechen",
+    "toast": {
+      "delegateRevoked": "Delegierter widerrufen",
+      "failedToRevoke": "Delegierter konnte nicht widerrufen werden"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Diese Zugangsdaten jetzt speichern",
+    "warningMessage": "Sie werden nicht erneut angezeigt. Snapper speichert die rohen Token nicht; sobald Sie diesen Assistenten schließen, befindet sich die einzige Kopie in Ihrer MCP-Client-Konfiguration.",
+    "snippetHelp": "Langlebiger KI-Delegierten-Token (~10 Jahre). Derselbe Token authentifiziert sowohl den MCP-Proxy-Server als auch den Watch-Monitor. Zum Rotieren deaktivieren Sie diesen Delegierten und erstellen einen neuen.",
+    "baseUrlHelpPrefix": "Base URL wird abgeleitet aus dem Origin dieses Browsers + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Konfigurations-Snippet in die Zwischenablage kopieren",
+    "copy": "In Zwischenablage kopieren",
+    "copied": "Kopiert"
+  }
+}

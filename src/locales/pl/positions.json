@@ -19,7 +19,7 @@
   },
   "bracketModal": {
     "title": "Dołącz SL/TP — {{instrument}}",
-    "confirmTitle": "Potwierdź bracket",
+    "confirmTitle": "Potwierdź SL/TP",
     "position": "Pozycja",
     "entryPrice": "Cena wejścia",
     "stopLossLabel": "Cena Stop Loss",
@@ -46,7 +46,7 @@
     "position": "Pozycja",
     "entryPrice": "Cena wejścia",
     "trailingDistanceLabel": "Odległość trailing (%)",
-    "minLockLabel": "Minimalny zysk blokady (%) — opcjonalny",
+    "minLockLabel": "Minimalny zysk przed aktywacją (%) — opcjonalnie",
     "trailingDistance": "Odległość trailing",
     "minLockProfit": "Minimalny zysk blokady",
     "placeholders": {

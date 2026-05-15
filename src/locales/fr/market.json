@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Données de marché"
+  },
+  "controls": {
+    "exchange": "Plateforme :",
+    "instrument": "Instrument :",
+    "timeframe": "Intervalle :",
+    "selectExchange": "Sélectionner une plateforme",
+    "searchInstrument": "Rechercher un instrument..."
+  },
+  "timeframes": {
+    "1m": "1 minute",
+    "5m": "5 minutes",
+    "15m": "15 minutes",
+    "30m": "30 minutes",
+    "1h": "1 heure",
+    "4h": "4 heures",
+    "1d": "1 jour"
+  },
+  "stats": {
+    "currentPrice": "Prix actuel",
+    "change24h": "Variation 24h",
+    "high24h": "Plus haut 24h",
+    "low24h": "Plus bas 24h"
+  },
+  "chart": {
+    "title": "Graphique de prix",
+    "errorPrefix": "Erreur lors du chargement des données du graphique :",
+    "unknownError": "Erreur inconnue",
+    "noDataTitle": "Aucune donnée disponible pour {{instrument}}",
+    "noDataHint": "L'instrument n'existe peut-être pas ou n'a pas de données {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}} :",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Aucun instrument associé configuré pour {{instrument}} sur {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Préchauffage du cache : {{sampleCount}} / {{expected}} bougies disponibles {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(dérivé du 1m)",
+      "db": "(depuis la base de données)"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Übersicht"
+  },
+  "metrics": {
+    "feedsRunning": "Laufende Feeds",
+    "strategiesActive": "Aktive Strategien",
+    "openOrders": "Offene Aufträge",
+    "todaysExecutions": "Heutige Ausführungen",
+    "executionsOn": "Ausführungen ({{date}})"
+  },
+  "status": {
+    "stopped": "Gestoppt",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Laufend",
+    "active": "Aktiv"
+  },
+  "processStatus": {
+    "title": "Prozessstatus",
+    "feeds": "Feeds",
+    "strategies": "Strategien",
+    "executors": "Executors",
+    "brokers": "Broker"
+  },
+  "portfolio": {
+    "title": "Portfolio-Übersicht",
+    "totalValue": "Gesamtwert",
+    "longExposure": "Long-Exposure",
+    "shortExposure": "Short-Exposure",
+    "netDelta": "Netto-Delta",
+    "unrealizedPnl": "Unrealisierter P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Positionen",
+    "instrumentsCount": "{{count}} Instrumente",
+    "empty": "Keine Positionsdaten verfügbar"
+  },
+  "signals": {
+    "title": "Letzte Signale",
+    "empty": "Keine aktuellen Signale",
+    "noTime": "n. v."
+  },
+  "executions": {
+    "title": "Letzte Ausführungen",
+    "empty": "Keine aktuellen Ausführungen",
+    "noTime": "n. v."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Richiesta",
+    "decision": "Decisione",
+    "capsViolation": "Violazione dei limiti",
+    "selectedDelegate": "Delegato selezionato",
+    "instrument": "strumento",
+    "deadline": "scadenza {{time}}",
+    "decidedBy": "da",
+    "newStatus": "stato",
+    "mode": "modalità",
+    "capAttempted": "tentato",
+    "capLimit": "vs limite",
+    "capOn": "sullo strumento",
+    "reviewLabel": "revisione {{reviewId}}",
+    "unhandledFrame": "Frame di attività della revisione AI non gestito: {{frame}}"
+  },
+  "page": {
+    "title": "Inbox revisioni AI",
+    "subtitle": "Revisioni CONSULT in attesa instradate a questo delegato e flusso di eventi live."
+  },
+  "roleNotice": {
+    "title": "Riservato ai delegati AI",
+    "message": "Questa inbox mostra le revisioni CONSULT instradate a un principal delegato AI. Accedi con un account delegato AI per visualizzare le revisioni in attesa e il flusso di attività live. Il tuo ruolo attuale è",
+    "unknownRole": "sconosciuto"
+  },
+  "pending": {
+    "title": "Revisioni in attesa",
+    "loading": "Caricamento revisioni in attesa…",
+    "loadError": "Caricamento delle revisioni in attesa non riuscito: {{message}}",
+    "emptyTitle": "Nessuna revisione in attesa",
+    "emptyMessage": "Le nuove richieste CONSULT instradate a questo delegato appariranno qui.",
+    "columns": {
+      "instrument": "Strumento",
+      "thesis": "Tesi",
+      "status": "Stato",
+      "deadline": "Scadenza",
+      "decision": "Decisione"
+    },
+    "rationalePlaceholder": "Motivazione (opzionale)",
+    "rationaleAriaLabel": "Motivazione per la revisione {{reviewId}}",
+    "approve": "Approva",
+    "reject": "Rifiuta",
+    "submitError": "Invio non riuscito: {{message}}"
+  },
+  "activity": {
+    "title": "Attività recente",
+    "emptyTitle": "Nessuna attività",
+    "emptyMessage": "I frame di richiesta, decisione e violazione dei limiti delle revisioni AI verranno trasmessi qui.",
+    "summaryEmpty": "Nessun frame ricevuto",
+    "summaryCount": "Mostrati {{shown}} di {{total}} bufferizzati"
+  }
+}

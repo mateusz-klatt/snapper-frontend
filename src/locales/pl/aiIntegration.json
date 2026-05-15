@@ -7,7 +7,7 @@
   },
   "disabled": {
     "title": "Integracja AI jest wyłączona",
-    "message": "Włącz flagę funkcji w Ustawienia → Flagi funkcji, aby zarządzać delegatami AI."
+    "message": "Włącz flagę funkcji w Ustawieniach → Flagi funkcji, aby zarządzać delegatami AI."
   },
   "list": {
     "loadingDelegates": "Ładowanie delegatów…",
@@ -50,7 +50,7 @@
     "caps": {
       "heading": "Limity tradingowe (wszystkie opcjonalne)",
       "maxOpenOrders": "Maks. otwartych zleceń",
-      "maxDailyNotionalUsd": "Maks. dzienny nominał USD",
+      "maxDailyNotionalUsd": "Maks. dzienna wartość nominalna w USD",
       "maxCancelsPerMinute": "Maks. anulowań na minutę",
       "perInstrument": "Maks. ilość na instrument (JSON)",
       "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
@@ -64,7 +64,7 @@
       "rowLabel": "Etykieta",
       "rowOperator": "public_id operatora",
       "rowMaxOpenOrders": "Maks. otwartych zleceń",
-      "rowMaxDailyNotional": "Maks. dzienny nominał USD",
+      "rowMaxDailyNotional": "Maks. dzienna wartość nominalna w USD",
       "rowMaxCancelsPerMinute": "Maks. anulowań na minutę",
       "rowPerInstrument": "Maks. ilość na instrument",
       "operatorDefault": "(główny operator wywołujący)",
@@ -99,7 +99,7 @@
     "createdBy": "Utworzone przez (public_id użytkownika)",
     "publicId": "Public ID",
     "maxOpenOrders": "Maks. otwartych zleceń",
-    "maxDailyNotionalUsd": "Maks. dzienny nominał USD",
+    "maxDailyNotionalUsd": "Maks. dzienna wartość nominalna w USD",
     "maxCancelsPerMinute": "Maks. anulowań na minutę",
     "perInstrument": "Maks. ilość na instrument",
     "defaultValue": "(domyślnie)",
@@ -123,7 +123,7 @@
   "snippet": {
     "warningTitle": "Zapisz teraz te dane uwierzytelniające",
     "warningMessage": "Nie zostaną pokazane ponownie. Snapper nie przechowuje surowych tokenów; po zamknięciu tego kreatora jedyną kopię będziesz mieć w konfiguracji klienta MCP.",
-    "snippetHelp": "Długotrwały token delegata AI (~10 lat). Ten sam token uwierzytelnia zarówno serwer proxy MCP, jak i monitor watch. Aby zrotować, dezaktywuj tego delegata i utwórz nowego.",
+    "snippetHelp": "Długoterminowy token delegata AI (~10 lat). Ten sam token uwierzytelnia serwer proxy MCP i monitor obserwujący. Aby go wymienić, dezaktywuj tego delegata i utwórz nowego.",
     "baseUrlHelpPrefix": "Base URL pochodzi z origin tej przeglądarki + ",
     "baseUrlHelpSuffix": ".",
     "copyAriaLabel": "Skopiuj fragment konfiguracji do schowka",

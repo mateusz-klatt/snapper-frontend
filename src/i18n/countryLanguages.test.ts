@@ -7,14 +7,26 @@ import {
 } from './countryLanguages'
 import { SUPPORTED_LOCALES } from './types'
 
+const NATIVE_LANGUAGE_COUNTRIES = ['pl', 'de', 'fr', 'es', 'it', 'nl'] as const
+
 describe('COUNTRY_TO_LANGUAGE', () => {
-  it('maps pl → pl, all other 44 codes → en', () => {
+  it('maps native-language countries to their own catalog', () => {
     expect(COUNTRY_TO_LANGUAGE.pl).toBe('pl')
-    const otherCodes = SUPPORTED_LOCALES.filter(code => code !== 'pl')
+    expect(COUNTRY_TO_LANGUAGE.de).toBe('de')
+    expect(COUNTRY_TO_LANGUAGE.fr).toBe('fr')
+    expect(COUNTRY_TO_LANGUAGE.es).toBe('es')
+    expect(COUNTRY_TO_LANGUAGE.it).toBe('it')
+    expect(COUNTRY_TO_LANGUAGE.nl).toBe('nl')
+  })
 
-    expect(otherCodes.length).toBe(44)
+  it('maps countries without a native catalog to en', () => {
+    const fallbackCodes = SUPPORTED_LOCALES.filter(
+      code => !(NATIVE_LANGUAGE_COUNTRIES as readonly string[]).includes(code)
+    )
 
-    for (const code of otherCodes) {
+    expect(fallbackCodes.length).toBe(SUPPORTED_LOCALES.length - NATIVE_LANGUAGE_COUNTRIES.length)
+
+    for (const code of fallbackCodes) {
       expect(COUNTRY_TO_LANGUAGE[code]).toBe('en')
     }
   })
@@ -29,7 +41,11 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
     expect(COUNTRY_TO_INTL_LOCALE.ie).toBe('en-IE')
     expect(COUNTRY_TO_INTL_LOCALE.us).toBe('en-US')
     expect(COUNTRY_TO_INTL_LOCALE.pl).toBe('pl-PL')
-    expect(COUNTRY_TO_INTL_LOCALE.de).toBe('en-DE')
+    expect(COUNTRY_TO_INTL_LOCALE.de).toBe('de-DE')
+    expect(COUNTRY_TO_INTL_LOCALE.fr).toBe('fr-FR')
+    expect(COUNTRY_TO_INTL_LOCALE.es).toBe('es-ES')
+    expect(COUNTRY_TO_INTL_LOCALE.it).toBe('it-IT')
+    expect(COUNTRY_TO_INTL_LOCALE.nl).toBe('nl-NL')
     expect(COUNTRY_TO_INTL_LOCALE.ae).toBe('en-AE')
     expect(COUNTRY_TO_INTL_LOCALE.cn).toBe('en-CN')
   })
@@ -43,11 +59,14 @@ describe('helpers', () => {
   it('getCatalogLanguage returns the mapped language', () => {
     expect(getCatalogLanguage('pl')).toBe('pl')
     expect(getCatalogLanguage('ie')).toBe('en')
-    expect(getCatalogLanguage('de')).toBe('en')
+    expect(getCatalogLanguage('de')).toBe('de')
+    expect(getCatalogLanguage('fr')).toBe('fr')
+    expect(getCatalogLanguage('us')).toBe('en')
   })
 
   it('getIntlLocale returns the BCP-47 tag', () => {
     expect(getIntlLocale('pl')).toBe('pl-PL')
     expect(getIntlLocale('ie')).toBe('en-IE')
+    expect(getIntlLocale('de')).toBe('de-DE')
   })
 })

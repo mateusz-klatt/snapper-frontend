@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Zurück",
+    "backToList": "← Zurück zu Backtests"
+  },
+  "status": {
+    "pending": "Ausstehend",
+    "running": "Läuft",
+    "completed": "Abgeschlossen",
+    "failed": "Fehlgeschlagen",
+    "cancelled": "Abgebrochen"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Abbrechen",
+      "rerun": "Erneut ausführen"
+    },
+    "fields": {
+      "timeframe": "Zeitrahmen",
+      "period": "Zeitraum",
+      "initialCash": "Anfangskapital",
+      "id": "ID"
+    },
+    "errorPrefix": "Fehler: {{message}}",
+    "filter": {
+      "ariaLabel": "Backtests nach Status filtern",
+      "options": {
+        "all": "Alle Status",
+        "pending": "Ausstehend",
+        "running": "Läuft",
+        "completed": "Abgeschlossen",
+        "failed": "Fehlgeschlagen",
+        "cancelled": "Abgebrochen"
+      }
+    },
+    "empty": {
+      "title": "Keine Backtests",
+      "message": "Führen Sie einen Backtest über die CLI oder API aus, um hier Ergebnisse zu sehen."
+    }
+  },
+  "detail": {
+    "title": "Backtest-Lauf",
+    "fields": {
+      "strategy": "Strategie",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Zeitraum",
+      "crossAsset": "Cross-Asset-Attribution",
+      "configHash": "Konfigurations-Hash"
+    },
+    "crossAssetFlow": "{{source}}-Feed → Ausführungen auf {{target}}",
+    "errors": {
+      "invalidRunId": "Ungültige Lauf-ID — muss eine UUID7 sein (erhalten \"{{id}}\").",
+      "loadFailed": "Lauf konnte nicht geladen werden: {{message}}",
+      "notFound": "nicht gefunden"
+    }
+  },
+  "compare": {
+    "title": "Vergleichen",
+    "headingFull": "Backtest-Vergleich",
+    "loading": "Vergleich wird geladen…",
+    "vs": "vs.",
+    "runLabel": "Lauf {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metriken",
+      "equityOverlay": "Equity-Overlay",
+      "trades": "Trades",
+      "signals": "Signale"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manuell"
+    },
+    "errors": {
+      "notFound": "Vergleich im aktuellen Wallet nicht gefunden.",
+      "loadFailed": "Vergleich konnte nicht geladen werden: {{message}}",
+      "unknown": "unbekannter Fehler",
+      "emptyResponse": "Leere Vergleichsantwort."
+    },
+    "launcher": {
+      "title": "Vergleichen",
+      "submit": "Vergleichen",
+      "autoPair": "Mit neuestem vergleichen",
+      "terminalGate": "Vergleich verfügbar, sobald dieser Lauf einen Endstatus erreicht",
+      "noSiblings": "keine anderen Läufe mit dieser Konfiguration",
+      "limitNotice": "zeige die {{count}} neuesten — manuelle Paarung für ältere verwenden",
+      "pickPlaceholder": "— Lauf zum Vergleich wählen —",
+      "showAllLabel": "Alle Läufe anzeigen (nicht nur gleiche Konfiguration)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "alle Läufe",
+        "sameConfig": "gleiche Konfiguration"
+      },
+      "errors": {
+        "pickRequired": "Lauf aus der Liste auswählen"
+      }
+    },
+    "diffColumns": {
+      "common": "Gemeinsam",
+      "onlyA": "Nur in A",
+      "onlyB": "Nur in B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "PnL A",
+        "pnlB": "PnL B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Keine vergleichbaren Metriken — beide Läufe haben keine Werte aufgezeichnet.",
+      "columns": {
+        "name": "Metrik",
+        "runA": "Lauf A",
+        "runB": "Lauf B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Lauf A",
+        "runB": "Lauf B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Warte auf Fortschritt…",
+    "candles": "{{done}} / {{total}} Kerzen",
+    "candlesNoTotal": "{{done}} Kerzen",
+    "equity": "Equity {{value}}",
+    "signalsTrades": "{{signals}} Sig. / {{trades}} Trades",
+    "milestoneLine": "Meilenstein {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

@@ -49,7 +49,7 @@
       "crossAsset": "Atrybucja cross-asset",
       "configHash": "Hash konfiguracji"
     },
-    "crossAssetFlow": "dane z {{source}} → wykonanie na {{target}}",
+    "crossAssetFlow": "dane z {{source}} → realizacje na {{target}}",
     "errors": {
       "invalidRunId": "Nieprawidłowe ID — wymagany UUID7 (otrzymano \"{{id}}\").",
       "loadFailed": "Nie udało się załadować: {{message}}",

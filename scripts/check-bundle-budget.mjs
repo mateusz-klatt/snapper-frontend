@@ -11,6 +11,28 @@ const ASSETS_DIR = join(ROOT, 'dist', 'assets')
 const BUDGET_LARGEST_CHUNK_GZIP_BYTES = 80 * 1024
 const BUDGET_TOTAL_JS_GZIP_BYTES = 350 * 1024
 
+const LOCALE_NAMESPACES = [
+  'admin',
+  'aiIntegration',
+  'aiReviews',
+  'auth',
+  'backtests',
+  'common',
+  'health',
+  'market',
+  'orders',
+  'overview',
+  'positions',
+  'processes',
+  'settings',
+  'signals',
+  'strategies',
+]
+const LOCALE_CHUNK_RE = new RegExp(
+  String.raw`^(?:${LOCALE_NAMESPACES.join('|')})-[A-Za-z0-9_-]+\.js$`
+)
+const isLocaleChunk = name => LOCALE_CHUNK_RE.test(name)
+
 function bytesToKb(bytes) {
   return Math.round(bytes / 1024)
 }
@@ -30,6 +52,7 @@ if (files.length === 0) {
 }
 
 let totalGzip = 0
+let localeGzip = 0
 let largestGzip = 0
 let largestName = ''
 const breakdown = []
@@ -38,24 +61,40 @@ for (const name of files) {
   const path = join(ASSETS_DIR, name)
   const buf = readFileSync(path)
   const gzipBytes = gzipSync(buf).byteLength
+  const locale = isLocaleChunk(name)
 
-  totalGzip += gzipBytes
-  if (gzipBytes > largestGzip) {
-    largestGzip = gzipBytes
-    largestName = name
+  if (locale) {
+    localeGzip += gzipBytes
+  } else {
+    totalGzip += gzipBytes
+    if (gzipBytes > largestGzip) {
+      largestGzip = gzipBytes
+      largestName = name
+    }
   }
-  breakdown.push({ name, gzipKb: bytesToKb(gzipBytes), rawKb: bytesToKb(statSync(path).size) })
+
+  breakdown.push({
+    name,
+    gzipKb: bytesToKb(gzipBytes),
+    rawKb: bytesToKb(statSync(path).size),
+    locale,
+  })
 }
 
 breakdown.sort((a, b) => b.gzipKb - a.gzipKb)
 
 console.log('Bundle size report (gzipped):')
 for (const entry of breakdown) {
-  console.log(`  ${entry.gzipKb.toString().padStart(4)} kB  ${entry.name}  (raw ${entry.rawKb} kB)`)
+  const tag = entry.locale ? ' [locale]' : ''
+
+  console.log(
+    `  ${entry.gzipKb.toString().padStart(4)} kB  ${entry.name}  (raw ${entry.rawKb} kB)${tag}`
+  )
 }
 console.log('')
 console.log(`Largest chunk: ${bytesToKb(largestGzip)} kB gzip  (${largestName})`)
-console.log(`Total JS:      ${bytesToKb(totalGzip)} kB gzip`)
+console.log(`Total JS (excl. locales): ${bytesToKb(totalGzip)} kB gzip`)
+console.log(`Locale chunks (lazy):     ${bytesToKb(localeGzip)} kB gzip`)
 console.log('')
 
 let failed = false

@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI-integratie",
+    "subtitle": "Beheer AI-delegates die via MCP met Snapper verbinden.",
+    "loading": "AI-integratie laden…",
+    "createDelegate": "Delegate aanmaken"
+  },
+  "disabled": {
+    "title": "AI-integratie is uitgeschakeld",
+    "message": "Schakel de feature flag in Instellingen → Feature Flags in om AI-delegates te beheren."
+  },
+  "list": {
+    "loadingDelegates": "Delegates laden…",
+    "emptyTitle": "Nog geen AI-delegates",
+    "emptyMessage": "Klik op “Delegate aanmaken” om er een aan te maken en het MCP-configsnippet te genereren.",
+    "columns": {
+      "label": "Label",
+      "username": "Gebruikersnaam",
+      "created": "Aangemaakt",
+      "maxOpenOrders": "Max. openstaande orders",
+      "maxDailyUsd": "Max. dagelijks USD",
+      "status": "Status",
+      "actions": "Acties"
+    },
+    "status": {
+      "active": "Actief",
+      "revoked": "Ingetrokken"
+    },
+    "default": "standaard",
+    "details": "Details",
+    "viewAriaLabel": "Bekijk delegate {{label}}"
+  },
+  "wizard": {
+    "title": "AI-delegate aanmaken",
+    "step1": "1. Identiteit",
+    "step2": "2. Scope en caps",
+    "step3": "3. Controleren",
+    "stepDone": "✓ Gereed",
+    "identity": {
+      "labelField": "Label",
+      "labelPlaceholder": "bijv. Alpha prop desk",
+      "labelHelpPrefix": "De gebruikersnaam van de delegate wordt server-side afgeleid als ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Scope",
+      "operatorLabel": "Operator public_id (optioneel)",
+      "operatorPlaceholder": "Laat leeg om de primaire operator van de aanroeper over te nemen"
+    },
+    "caps": {
+      "heading": "Tradingcaps (allemaal optioneel)",
+      "maxOpenOrders": "Max. openstaande orders",
+      "maxDailyNotionalUsd": "Max. dagelijkse notional USD",
+      "maxCancelsPerMinute": "Max. annuleringen per minuut",
+      "perInstrument": "Max. aantal per instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "standaard",
+      "errorInvalidJson": "max_order_quantity_per_instrument moet geldige JSON zijn",
+      "errorJsonObject": "max_order_quantity_per_instrument moet een JSON-object of leeg zijn",
+      "errorNegative": "Caps moeten niet-negatieve gehele getallen of leeg zijn."
+    },
+    "review": {
+      "heading": "Controleren en aanmaken",
+      "rowLabel": "Label",
+      "rowOperator": "Operator public_id",
+      "rowMaxOpenOrders": "Max. openstaande orders",
+      "rowMaxDailyNotional": "Max. dagelijkse notional USD",
+      "rowMaxCancelsPerMinute": "Max. annuleringen per minuut",
+      "rowPerInstrument": "Max. aantal per instrument",
+      "operatorDefault": "(primaire operator van aanroeper)",
+      "defaultValue": "(standaard)"
+    },
+    "buttons": {
+      "cancel": "Annuleren",
+      "next": "Volgende",
+      "back": "Terug",
+      "createDelegate": "Delegate aanmaken",
+      "iSavedClose": "Ik heb deze opgeslagen — sluiten"
+    },
+    "toast": {
+      "delegateCreated": "Delegate aangemaakt",
+      "failedToCreate": "Aanmaken delegate mislukt"
+    }
+  },
+  "detail": {
+    "loading": "Delegate laden…",
+    "notFound": "Delegate niet gevonden of niet beschikbaar.",
+    "back": "Terug",
+    "backToList": "Terug naar lijst",
+    "updateCaps": "Caps bijwerken",
+    "revoke": "Intrekken",
+    "save": "Opslaan",
+    "cancel": "Annuleren",
+    "tradingCaps": "Tradingcaps",
+    "status": "Status",
+    "active": "Actief",
+    "revoked": "Ingetrokken",
+    "createdAt": "Aangemaakt op",
+    "createdBy": "Aangemaakt door (gebruiker public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Max. openstaande orders",
+    "maxDailyNotionalUsd": "Max. dagelijkse notional USD",
+    "maxCancelsPerMinute": "Max. annuleringen per minuut",
+    "perInstrument": "Max. aantal per instrument",
+    "defaultValue": "(standaard)",
+    "editorPlaceholder": "(standaard)",
+    "toast": {
+      "capsUpdated": "Caps bijgewerkt",
+      "failedToUpdateCaps": "Bijwerken caps mislukt",
+      "negativeIntegersError": "Caps moeten niet-negatieve gehele getallen of leeg zijn."
+    }
+  },
+  "revokeDialog": {
+    "title": "Delegate \"{{label}}\" intrekken?",
+    "message": "Dit trekt de delegate-tokens in en stopt zijn MCP-abonnementen. Dit kan niet ongedaan worden gemaakt.",
+    "confirm": "Intrekken",
+    "cancel": "Annuleren",
+    "toast": {
+      "delegateRevoked": "Delegate ingetrokken",
+      "failedToRevoke": "Intrekken delegate mislukt"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Sla deze credentials nu op",
+    "warningMessage": "Ze worden niet opnieuw getoond. Snapper bewaart de ruwe tokens niet; zodra u deze wizard sluit, bestaat de enige kopie in uw MCP-clientconfiguratie.",
+    "snippetHelp": "Langlopend AI-delegatetoken (~10 jaar). Hetzelfde token authentiseert zowel de proxy-MCP-server als de watchmonitor. Om te roteren: deactiveer deze delegate en maak een nieuwe aan.",
+    "baseUrlHelpPrefix": "Base URL wordt afgeleid van de origin van deze browser + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Configsnippet naar klembord kopiëren",
+    "copy": "Kopieer naar klembord",
+    "copied": "Gekopieerd"
+  }
+}

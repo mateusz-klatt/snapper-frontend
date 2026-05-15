@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Amministrazione",
+    "subtitle": "Gestisci utenti e configurazione del sistema"
+  },
+  "rolePermissions": {
+    "title": "Permessi dei ruoli",
+    "viewer": {
+      "label": "Osservatore",
+      "description": "Accesso in sola lettura a Panoramica e Dati di mercato. Non può gestire processi, strategie o impostazioni di sistema."
+    },
+    "operator": {
+      "label": "Operatore",
+      "description": "Tutti i permessi dell'Osservatore più operazioni di trading, esecuzione delle strategie, gestione dei processi e monitoraggio della salute del sistema."
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "Accesso completo al sistema, inclusa la gestione utenti, le impostazioni di sistema, la configurazione delle chiavi API e tutti i permessi dell'Operatore."
+    },
+    "table": {
+      "resource": "Risorsa",
+      "viewer": "Osservatore",
+      "operator": "Operatore",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "Panoramica",
+      "market": "Dati di mercato",
+      "processes": "Processi",
+      "strategies": "Strategie",
+      "orders": "Ordini ed esecuzioni",
+      "positions": "Posizioni",
+      "signals": "Segnali",
+      "health": "Salute",
+      "admin": "Amministrazione",
+      "settings": "Impostazioni"
+    }
+  },
+  "common": {
+    "cancel": "Annulla",
+    "selectWallet": "Seleziona portafoglio",
+    "selectAWallet": "Seleziona un portafoglio",
+    "chooseWalletPlaceholder": "Scegli un portafoglio...",
+    "selectWalletPlaceholder": "Seleziona portafoglio...",
+    "walletLabel": "Portafoglio",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Errore sconosciuto",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Accesso negato",
+      "message": "Non hai i permessi per gestire gli utenti. Contatta l'amministratore di sistema."
+    },
+    "list": {
+      "title": "Gestione utenti",
+      "countLabel": "{{count}} utenti",
+      "showInactive": "Mostra inattivi",
+      "hideInactive": "Nascondi inattivi",
+      "addUser": "Aggiungi utente",
+      "searchPlaceholder": "Cerca per nome utente, email o ruolo...",
+      "columns": {
+        "user": "Utente",
+        "role": "Ruolo",
+        "status": "Stato",
+        "createdAt": "Creato il",
+        "actions": "Azioni"
+      },
+      "status": {
+        "active": "Attivo",
+        "inactive": "Inattivo"
+      },
+      "unknown": "Sconosciuto",
+      "empty": {
+        "title": "Nessun utente trovato",
+        "noMatch": "Nessun utente corrisponde ai criteri di ricerca.",
+        "noUsers": "Nessun utente trovato.",
+        "noActive": "Nessun utente attivo trovato."
+      },
+      "errorLoading": "Errore nel caricamento degli utenti: {{message}}",
+      "deactivate": {
+        "title": "Disattiva utente",
+        "message": "Vuoi davvero disattivare l'utente \"{{username}}\"? Non potrà più accedere.",
+        "confirm": "Disattiva"
+      },
+      "toast": {
+        "deactivated": "L'utente è stato disattivato",
+        "deactivateError": "Errore nella disattivazione dell'utente"
+      }
+    },
+    "form": {
+      "titleEdit": "Modifica utente",
+      "titleAdd": "Aggiungi utente",
+      "fields": {
+        "username": "Nome utente",
+        "usernamePlaceholder": "Inserisci il nome utente",
+        "password": "Password",
+        "passwordPlaceholder": "Inserisci la password",
+        "newPassword": "Nuova password",
+        "newPasswordPlaceholder": "Inserisci la nuova password",
+        "email": "Email",
+        "emailPlaceholder": "Inserisci l'email",
+        "role": "Ruolo",
+        "accountActive": "Account attivo",
+        "resetUserPassword": "Reimposta password utente"
+      },
+      "roles": {
+        "viewer": "Osservatore",
+        "operator": "Operatore",
+        "admin": "Amministratore"
+      },
+      "validation": {
+        "usernameRequired": "Il nome utente è obbligatorio",
+        "usernameMinLength": "Il nome utente deve contenere almeno 3 caratteri",
+        "emailRequired": "L'email è obbligatoria",
+        "emailInvalid": "Formato email non valido",
+        "passwordRequired": "La password è obbligatoria",
+        "passwordMinLength": "La password deve contenere almeno 8 caratteri",
+        "passwordRequiredWhenResetting": "La password è obbligatoria per il reset"
+      },
+      "actions": {
+        "saveChanges": "Salva modifiche",
+        "createUser": "Crea utente"
+      },
+      "toast": {
+        "created": "L'utente è stato creato",
+        "createError": "Errore nella creazione dell'utente",
+        "updated": "L'utente è stato aggiornato",
+        "updateError": "Errore nell'aggiornamento dell'utente",
+        "passwordReset": "La password dell'utente è stata reimpostata",
+        "resetError": "Errore nel reset della password"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Accesso negato",
+      "message": "Non hai i permessi per gestire i grant degli scope. Contatta l'amministratore di sistema."
+    },
+    "list": {
+      "title": "Grant degli scope",
+      "countLabel": "{{count}} grant",
+      "createGrant": "Crea grant",
+      "selectWalletPrompt": "Scegli un portafoglio sopra per visualizzare i suoi grant degli scope.",
+      "columns": {
+        "operator": "Operatore",
+        "scope": "Scope",
+        "target": "Target",
+        "grantedAt": "Concesso il",
+        "actions": "Azioni"
+      },
+      "empty": {
+        "noGrants": "Nessun grant trovato",
+        "noGrantsHint": "Questo portafoglio non ha grant degli scope attivi."
+      },
+      "errorLoading": "Errore nel caricamento dei grant: {{message}}",
+      "handover": "Trasferisci"
+    },
+    "form": {
+      "title": "Crea grant di scope",
+      "fields": {
+        "operator": "Operatore",
+        "operatorPlaceholder": "Seleziona operatore...",
+        "wallet": "Portafoglio",
+        "scopeKind": "Tipo di scope",
+        "underlyingPublicId": "Public ID del sottostante",
+        "instrumentPublicId": "Public ID dello strumento",
+        "underlyingPlaceholder": "es. BTC",
+        "instrumentPlaceholder": "es. BTC-USD-PERP",
+        "note": "Nota (opzionale)",
+        "notePlaceholder": "Nota opzionale"
+      },
+      "scopeKinds": {
+        "underlying": "Sottostante",
+        "instrument": "Strumento"
+      },
+      "validation": {
+        "operatorRequired": "L'operatore è obbligatorio",
+        "walletRequired": "Il portafoglio è obbligatorio",
+        "targetRequired": "L'ID del target è obbligatorio"
+      },
+      "actions": {
+        "createGrant": "Crea grant"
+      },
+      "toast": {
+        "created": "Grant di scope creato",
+        "conflictError": "Conflitto: un altro operatore detiene già un grant su questo scope",
+        "createError": "Errore nella creazione del grant di scope"
+      }
+    },
+    "handover": {
+      "title": "Trasferisci grant di scope",
+      "fields": {
+        "currentHolder": "Titolare attuale",
+        "scope": "Scope",
+        "wallet": "Portafoglio",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Trasferisci all'operatore",
+        "transferToPlaceholder": "Seleziona operatore di destinazione...",
+        "reason": "Motivo (opzionale)",
+        "reasonPlaceholder": "es. Cambio turno"
+      },
+      "actions": {
+        "handover": "Trasferisci"
+      },
+      "toast": {
+        "completed": "Grant di scope trasferito",
+        "conflictError": "Conflitto: l'operatore di destinazione detiene già un grant in conflitto",
+        "handoverError": "Errore nel trasferimento del grant di scope"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Accesso negato",
+      "message": "Non hai i permessi per gestire le credenziali del portafoglio. Contatta l'amministratore di sistema."
+    },
+    "list": {
+      "title": "Credenziali del portafoglio",
+      "countLabel": "{{count}} credenziali",
+      "addCredential": "Aggiungi credenziale",
+      "selectWalletPrompt": "Scegli un portafoglio sopra per visualizzare le sue credenziali.",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Tipo",
+        "label": "Etichetta",
+        "createdAt": "Creato il",
+        "actions": "Azioni"
+      },
+      "empty": {
+        "noCredentials": "Nessuna credenziale trovata",
+        "noCredentialsHint": "Questo portafoglio non ha credenziali attive."
+      },
+      "errorLoading": "Errore nel caricamento delle credenziali: {{message}}",
+      "rotate": "Ruota"
+    },
+    "form": {
+      "title": "Aggiungi credenziale",
+      "fields": {
+        "wallet": "Portafoglio",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "es. kraken",
+        "credentialType": "Tipo di credenziale",
+        "label": "Etichetta (opzionale)",
+        "labelPlaceholder": "es. Chiave principale di trading",
+        "pemPlaceholder": "Incolla qui la chiave privata in formato PEM"
+      },
+      "fieldLabels": {
+        "api_key": "Chiave API",
+        "api_secret": "Secret API",
+        "private_key_pem": "Chiave privata (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Saldo iniziale"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Chiave API + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Il portafoglio è obbligatorio",
+        "exchangeRequired": "L'exchange è obbligatorio",
+        "fieldRequired": "{{field}} è obbligatorio"
+      },
+      "actions": {
+        "addCredential": "Aggiungi credenziale"
+      },
+      "toast": {
+        "created": "Credenziale creata",
+        "conflictError": "Conflitto: questo portafoglio ha già una credenziale attiva per questo exchange",
+        "createError": "Errore nella creazione della credenziale"
+      }
+    },
+    "rotate": {
+      "title": "Ruota credenziale",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Tipo",
+        "label": "Etichetta",
+        "newLabel": "Nuova etichetta (opzionale)",
+        "newLabelPlaceholder": "es. Chiave ruotata 2026-04",
+        "pemPlaceholder": "Incolla qui la chiave privata in formato PEM"
+      },
+      "actions": {
+        "rotate": "Ruota"
+      },
+      "toast": {
+        "rotated": "Credenziale ruotata",
+        "rotateError": "Errore nella rotazione della credenziale"
+      }
+    }
+  }
+}

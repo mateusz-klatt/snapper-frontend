@@ -45,7 +45,7 @@
     "loading": "Ładowanie statystyk bazy…",
     "unavailable": "Statystyki bazy niedostępne: {{message}}",
     "fallbackError": "Nie udało się załadować statystyk bazy danych.",
-    "sampled": "próbkowane {{age}}",
+    "sampled": "próbka sprzed {{age}}",
     "samplerSummary": "Interwał próbkowania: {{seconds}}s · {{count}} tabel",
     "columns": {
       "table": "Tabela",
@@ -70,8 +70,8 @@
     "unregistered": "Niezarejestrowane",
     "unregisteredDescription": "APNs 410 (BadDeviceToken)",
     "cancelledScope": "Anulowane (zakres)",
-    "cancelledScopeDescription": "Odebranie zakresu / dezaktywacja użytkownika",
-    "outboxDepth": "Głębokość outboxa",
+    "cancelledScopeDescription": "Cofnięcie zakresu / dezaktywacja użytkownika",
+    "outboxDepth": "Długość kolejki wysyłkowej",
     "outboxDepthDescription": "W kolejce, oczekujące na ponowną próbę"
   },
   "retention": {

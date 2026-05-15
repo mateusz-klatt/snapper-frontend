@@ -243,7 +243,7 @@
         "credentialType": "Credential Type",
         "label": "Label (optional)",
         "labelPlaceholder": "e.g. Main trading key",
-        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+        "pemPlaceholder": "Paste PEM-formatted private key here"
       },
       "fieldLabels": {
         "api_key": "API Key",
@@ -282,7 +282,7 @@
         "label": "Label",
         "newLabel": "New Label (optional)",
         "newLabelPlaceholder": "e.g. Rotated key 2026-04",
-        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+        "pemPlaceholder": "Paste PEM-formatted private key here"
       },
       "actions": {
         "rotate": "Rotate"

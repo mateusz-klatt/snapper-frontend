@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Anfrage",
+    "decision": "Entscheidung",
+    "capsViolation": "Limit-Verletzung",
+    "selectedDelegate": "Ausgewählter Delegierter",
+    "instrument": "Instrument",
+    "deadline": "Frist {{time}}",
+    "decidedBy": "von",
+    "newStatus": "Status",
+    "mode": "Modus",
+    "capAttempted": "Versuch",
+    "capLimit": "vs. Limit",
+    "capOn": "für Instrument",
+    "reviewLabel": "Review {{reviewId}}",
+    "unhandledFrame": "Unbehandelter KI-Review-Aktivitäts-Frame: {{frame}}"
+  },
+  "page": {
+    "title": "KI-Review-Posteingang",
+    "subtitle": "Ausstehende CONSULT-Reviews, die an diesen Delegierten geroutet wurden, plus der Live-Ereignisstrom."
+  },
+  "roleNotice": {
+    "title": "Reserviert für KI-Delegierte",
+    "message": "Dieser Posteingang zeigt CONSULT-Reviews, die an ein KI-Delegierten-Prinzipal geroutet wurden. Melden Sie sich mit einem KI-Delegierten-Konto an, um ausstehende Reviews und den Live-Aktivitätsstrom zu sehen. Ihre aktuelle Rolle ist",
+    "unknownRole": "unbekannt"
+  },
+  "pending": {
+    "title": "Ausstehende Reviews",
+    "loading": "Ausstehende Reviews werden geladen…",
+    "loadError": "Ausstehende Reviews konnten nicht geladen werden: {{message}}",
+    "emptyTitle": "Keine ausstehenden Reviews",
+    "emptyMessage": "Neue CONSULT-Anfragen, die an diesen Delegierten geroutet werden, erscheinen hier.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "These",
+      "status": "Status",
+      "deadline": "Frist",
+      "decision": "Entscheidung"
+    },
+    "rationalePlaceholder": "Begründung (optional)",
+    "rationaleAriaLabel": "Begründung für Review {{reviewId}}",
+    "approve": "Genehmigen",
+    "reject": "Ablehnen",
+    "submitError": "Übermittlung fehlgeschlagen: {{message}}"
+  },
+  "activity": {
+    "title": "Letzte Aktivität",
+    "emptyTitle": "Noch keine Aktivität",
+    "emptyMessage": "Frames für KI-Review-Anfragen, -Entscheidungen und Limit-Verletzungen werden hier eingehen.",
+    "summaryEmpty": "Keine Frames empfangen",
+    "summaryCount": "Zeige {{shown}} von {{total}} im Puffer"
+  }
+}

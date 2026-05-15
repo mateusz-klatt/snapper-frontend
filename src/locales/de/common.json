@@ -1,0 +1,83 @@
+{
+  "loading": "Wird geladen...",
+  "error": "Fehler",
+  "retry": "Erneut versuchen",
+  "close": "Schließen",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "save": "Speichern",
+  "documentation": "Dokumentation (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Sprache wechseln",
+    "flagAriaLabel": "Zu {{country}} wechseln",
+    "currentAriaLabel": "Aktuelle Sprache: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Trading-Konsole",
+    "tagline": "Präzisions-Arbeitsplatz",
+    "openSidebar": "Seitenleiste öffnen",
+    "closeSidebar": "Seitenleiste schließen",
+    "sidebar": "Seitenleiste",
+    "mainNavigation": "Hauptnavigation",
+    "tradingContent": "Trading-Inhalt",
+    "skipToContent": "Zum Trading-Inhalt springen",
+    "lag": "Latenz:",
+    "lagTitle": "Round-Trip-Latenz zum WebSocket-Server",
+    "topics": "Topics:",
+    "topicsTitle": "Anzahl der abonnierten WebSocket-Topics",
+    "connected": "Verbunden",
+    "disconnected": "Getrennt",
+    "connectedTitle": "Mit WebSocket verbunden",
+    "disconnectedTitle": "Vom WebSocket getrennt",
+    "switchToLightMode": "Zum hellen Modus wechseln",
+    "switchToDarkMode": "Zum dunklen Modus wechseln",
+    "timeTravelBanner": "Zeitreise-Modus — historische Daten werden angezeigt (nur lesen)",
+    "lagUnknown": "Unbekannt",
+    "walletPicker": {
+      "ariaLabel": "Aktives Wallet",
+      "placeholder": "Wallet",
+      "allWallets": "Alle Wallets",
+      "optionPaper": "{{label}} (Paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktiver Operator",
+      "placeholder": "Operator",
+      "allOperators": "Alle Operatoren"
+    },
+    "timeTravel": {
+      "pickerTitle": "Zeitreise: einen historischen Zeitpunkt auswählen",
+      "exitAriaLabel": "Zeitreise-Modus verlassen",
+      "exitTitle": "Zurück zum Live-Modus"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument nur zur Beobachtung. Snapper empfängt Marktdaten, kann aber für dieses (Symbol, Börse)-Paar keine Aufträge platzieren.",
+      "ariaLabel": "Instrument nur mit Marktdaten",
+      "badge": "Nur Marktdaten"
+    },
+    "liveOnly": {
+      "notice": "Dieser Tab zeigt den aktuellen Stand — historische Ansicht ist nicht verfügbar."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Etwas ist schiefgelaufen",
+    "titleWithComponent": "Fehler in {{componentName}}",
+    "stackTrace": "Stack-Trace",
+    "tryAgain": "Erneut versuchen"
+  },
+  "nav": {
+    "overview": "Übersicht",
+    "market": "Marktdaten",
+    "processes": "Prozesse",
+    "strategies": "Strategien",
+    "orders": "Aufträge & Ausführungen",
+    "positions": "Positionen",
+    "signals": "Signale",
+    "backtests": "Backtests",
+    "health": "Systemzustand",
+    "admin": "Administration",
+    "aiIntegration": "KI-Integration",
+    "aiReviews": "KI-Reviews",
+    "settings": "Einstellungen"
+  }
+}

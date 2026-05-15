@@ -1,0 +1,83 @@
+{
+  "loading": "Cargando...",
+  "error": "Error",
+  "retry": "Reintentar",
+  "close": "Cerrar",
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+  "save": "Guardar",
+  "documentation": "Documentación (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Cambiar idioma",
+    "flagAriaLabel": "Cambiar a {{country}}",
+    "currentAriaLabel": "Idioma actual: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Consola de trading",
+    "tagline": "Estación de precisión",
+    "openSidebar": "Abrir panel lateral",
+    "closeSidebar": "Cerrar panel lateral",
+    "sidebar": "Panel lateral",
+    "mainNavigation": "Navegación principal",
+    "tradingContent": "Contenido de trading",
+    "skipToContent": "Saltar al contenido de trading",
+    "lag": "Latencia:",
+    "lagTitle": "Latencia de ida y vuelta al servidor WebSocket",
+    "topics": "Temas:",
+    "topicsTitle": "Número de temas WebSocket suscritos",
+    "connected": "Conectado",
+    "disconnected": "Desconectado",
+    "connectedTitle": "Conectado a WebSocket",
+    "disconnectedTitle": "Desconectado de WebSocket",
+    "switchToLightMode": "Cambiar a modo claro",
+    "switchToDarkMode": "Cambiar a modo oscuro",
+    "timeTravelBanner": "Modo viaje en el tiempo — visualizando datos históricos (solo lectura)",
+    "lagUnknown": "Desconocida",
+    "walletPicker": {
+      "ariaLabel": "Cartera activa",
+      "placeholder": "Cartera",
+      "allWallets": "Todas las carteras",
+      "optionPaper": "{{label}} (papel)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operador activo",
+      "placeholder": "Operador",
+      "allOperators": "Todos los operadores"
+    },
+    "timeTravel": {
+      "pickerTitle": "Viaje en el tiempo: seleccione un punto histórico",
+      "exitAriaLabel": "Salir del modo viaje en el tiempo",
+      "exitTitle": "Volver al modo en vivo"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrumento solo de observación. Snapper recibe datos de mercado, pero no puede enviar órdenes para este par (símbolo, exchange).",
+      "ariaLabel": "Instrumento solo con datos de mercado",
+      "badge": "Solo datos de mercado"
+    },
+    "liveOnly": {
+      "notice": "Esta pestaña muestra el estado actual — la vista histórica no está disponible."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Algo salió mal",
+    "titleWithComponent": "Error en {{componentName}}",
+    "stackTrace": "Traza de pila",
+    "tryAgain": "Intentar de nuevo"
+  },
+  "nav": {
+    "overview": "Resumen",
+    "market": "Datos de mercado",
+    "processes": "Procesos",
+    "strategies": "Estrategias",
+    "orders": "Órdenes y ejecuciones",
+    "positions": "Posiciones",
+    "signals": "Señales",
+    "backtests": "Backtests",
+    "health": "Estado",
+    "admin": "Administración",
+    "aiIntegration": "Integración con IA",
+    "aiReviews": "Revisiones de IA",
+    "settings": "Configuración"
+  }
+}

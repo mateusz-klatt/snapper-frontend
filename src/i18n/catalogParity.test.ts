@@ -1,12 +1,32 @@
 import { describe, it, expect } from 'vitest'
-import enCommon from '../locales/en/common.json'
-import enAuth from '../locales/en/auth.json'
-import plCommon from '../locales/pl/common.json'
-import plAuth from '../locales/pl/auth.json'
 
 type Catalog = Record<string, unknown>
 
-const PLURAL_SUFFIXES = ['_one', '_few', '_many', '_other'] as const
+const catalogModules = import.meta.glob('../locales/*/*.json', {
+  eager: true,
+  import: 'default',
+}) as Record<string, Catalog>
+
+const CATALOG_PATH_RE = /locales\/([^/]+)\/([^/]+)\.json$/
+
+const indexedCatalogs: Record<string, Record<string, Catalog>> = {}
+
+for (const [path, content] of Object.entries(catalogModules)) {
+  const match = CATALOG_PATH_RE.exec(path)
+
+  if (match === null) continue
+  const [, lng, ns] = match as unknown as [string, string, string]
+
+  if (indexedCatalogs[lng] === undefined) {
+    indexedCatalogs[lng] = {}
+  }
+
+  indexedCatalogs[lng][ns] = content
+}
+
+const BASE_LANGUAGE = 'en'
+
+const PLURAL_SUFFIXES = ['_zero', '_one', '_two', '_few', '_many', '_other'] as const
 
 const stripPluralSuffix = (key: string): string => {
   for (const suffix of PLURAL_SUFFIXES) {
@@ -79,53 +99,85 @@ const setsEqual = <T>(a: Set<T>, b: Set<T>): boolean => {
   return true
 }
 
-const checkParity = (en: Catalog, pl: Catalog, namespace: string): void => {
+const checkParity = (en: Catalog, target: Catalog, targetLang: string, namespace: string): void => {
+  const tag = `${namespace} (${targetLang.toUpperCase()})`
   const enKeys = flattenKeys(en)
-  const plKeys = flattenKeys(pl)
+  const targetKeys = flattenKeys(target)
 
   const enBaseKeys = new Set(enKeys.filter(k => !isPluralized(k)))
-  const plBaseKeys = new Set(plKeys.filter(k => !isPluralized(k)))
+  const targetBaseKeys = new Set(targetKeys.filter(k => !isPluralized(k)))
 
   for (const k of enBaseKeys) {
-    expect(plBaseKeys, `${namespace}: PL is missing non-plural key '${k}'`).toContain(k)
+    expect(targetBaseKeys, `${tag}: missing non-plural key '${k}'`).toContain(k)
   }
 
-  for (const k of plBaseKeys) {
-    expect(enBaseKeys, `${namespace}: EN is missing non-plural key '${k}'`).toContain(k)
+  for (const k of targetBaseKeys) {
+    expect(enBaseKeys, `${tag}: EN is missing non-plural key '${k}' present in target`).toContain(k)
   }
 
   const enPluralBases = new Set(enKeys.filter(isPluralized).map(stripPluralSuffix))
-  const plPluralBases = new Set(plKeys.filter(isPluralized).map(stripPluralSuffix))
+  const targetPluralBases = new Set(targetKeys.filter(isPluralized).map(stripPluralSuffix))
 
   for (const b of enPluralBases) {
-    expect(plPluralBases.has(b), `${namespace}: PL is missing plural family for '${b}'`).toBe(true)
+    expect(targetPluralBases.has(b), `${tag}: missing plural family for '${b}'`).toBe(true)
   }
 
-  for (const b of plPluralBases) {
-    expect(enPluralBases.has(b), `${namespace}: EN is missing plural family for '${b}'`).toBe(true)
+  for (const b of targetPluralBases) {
+    expect(
+      enPluralBases.has(b),
+      `${tag}: EN is missing plural family for '${b}' present in target`
+    ).toBe(true)
   }
 
   for (const k of enBaseKeys) {
     const enPh = placeholderSet(getValueAtPath(en, k))
-    const plPh = placeholderSet(getValueAtPath(pl, k))
+    const targetPh = placeholderSet(getValueAtPath(target, k))
 
     expect(
-      setsEqual(enPh, plPh),
-      `${namespace}: placeholder mismatch on '${k}' — EN has ${JSON.stringify([
+      setsEqual(enPh, targetPh),
+      `${tag}: placeholder mismatch on '${k}' — EN has ${JSON.stringify([
         ...enPh,
-      ])}, PL has ${JSON.stringify([...plPh])}`
+      ])}, target has ${JSON.stringify([...targetPh])}`
     ).toBe(true)
   }
 }
 
-describe('catalog parity', () => {
-  it('common: EN ↔ PL', () => {
-    checkParity(enCommon as Catalog, plCommon as Catalog, 'common')
-  })
+const baseCatalog = indexedCatalogs[BASE_LANGUAGE]
 
-  it('auth: EN ↔ PL', () => {
-    checkParity(enAuth as Catalog, plAuth as Catalog, 'auth')
-  })
+if (baseCatalog === undefined) {
+  throw new Error(`Missing base catalog for language '${BASE_LANGUAGE}'`)
+}
+
+const byLocale = (a: string, b: string): number => a.localeCompare(b)
+const targetLanguages = Object.keys(indexedCatalogs)
+  .filter(lng => lng !== BASE_LANGUAGE)
+  .sort(byLocale)
+const namespaces = Object.keys(baseCatalog).sort(byLocale)
+
+describe('catalog parity', () => {
+  for (const lng of targetLanguages) {
+    const targetCatalog = indexedCatalogs[lng]
+
+    if (targetCatalog === undefined) continue
+
+    for (const ns of namespaces) {
+      it(`${ns}: ${BASE_LANGUAGE.toUpperCase()} ↔ ${lng.toUpperCase()}`, () => {
+        const enNamespace = baseCatalog[ns]
+        const targetNamespace = targetCatalog[ns]
+
+        expect(
+          enNamespace,
+          `Base language '${BASE_LANGUAGE}' is missing namespace '${ns}'`
+        ).toBeDefined()
+        expect(
+          targetNamespace,
+          `Target language '${lng}' is missing namespace '${ns}'`
+        ).toBeDefined()
+
+        checkParity(enNamespace as Catalog, targetNamespace as Catalog, lng, ns)
+      })
+    }
+  }
 })
 
 describe('Polish plural boundary cases', () => {

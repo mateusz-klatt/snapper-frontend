@@ -216,6 +216,8 @@ describe('useAppStore', () => {
       useAppStore.getState().setLocale('pl')
       expect(document.documentElement.lang).toBe('pl')
       useAppStore.getState().setLocale('de')
+      expect(document.documentElement.lang).toBe('de')
+      useAppStore.getState().setLocale('us')
       expect(document.documentElement.lang).toBe('en')
     })
     it('sets document.documentElement.dir to ltr for ltr locales', () => {

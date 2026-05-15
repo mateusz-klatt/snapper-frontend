@@ -1,0 +1,83 @@
+{
+  "loading": "Chargement...",
+  "error": "Erreur",
+  "retry": "Réessayer",
+  "close": "Fermer",
+  "cancel": "Annuler",
+  "confirm": "Confirmer",
+  "save": "Enregistrer",
+  "documentation": "Documentation (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Changer de langue",
+    "flagAriaLabel": "Passer à {{country}}",
+    "currentAriaLabel": "Langue actuelle : {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Console de trading",
+    "tagline": "Poste de travail de précision",
+    "openSidebar": "Ouvrir le panneau latéral",
+    "closeSidebar": "Fermer le panneau latéral",
+    "sidebar": "Panneau latéral",
+    "mainNavigation": "Navigation principale",
+    "tradingContent": "Contenu de trading",
+    "skipToContent": "Aller au contenu de trading",
+    "lag": "Latence :",
+    "lagTitle": "Latence aller-retour vers le serveur WebSocket",
+    "topics": "Topics :",
+    "topicsTitle": "Nombre de topics WebSocket souscrits",
+    "connected": "Connecté",
+    "disconnected": "Déconnecté",
+    "connectedTitle": "Connecté au WebSocket",
+    "disconnectedTitle": "Déconnecté du WebSocket",
+    "switchToLightMode": "Passer en mode clair",
+    "switchToDarkMode": "Passer en mode sombre",
+    "timeTravelBanner": "Mode voyage dans le temps — consultation de données historiques (lecture seule)",
+    "lagUnknown": "Inconnue",
+    "walletPicker": {
+      "ariaLabel": "Wallet actif",
+      "placeholder": "Wallet",
+      "allWallets": "Tous les wallets",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Opérateur actif",
+      "placeholder": "Opérateur",
+      "allOperators": "Tous les opérateurs"
+    },
+    "timeTravel": {
+      "pickerTitle": "Voyage dans le temps : sélectionnez un point historique",
+      "exitAriaLabel": "Quitter le mode voyage dans le temps",
+      "exitTitle": "Retour au mode direct"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument en observation uniquement. Snapper reçoit les données de marché mais ne peut pas passer d'ordres pour cette paire (symbole, plateforme).",
+      "ariaLabel": "Instrument en données de marché uniquement",
+      "badge": "Données de marché uniquement"
+    },
+    "liveOnly": {
+      "notice": "Cet onglet affiche l'état courant — la vue historique n'est pas disponible."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Une erreur est survenue",
+    "titleWithComponent": "Erreur dans {{componentName}}",
+    "stackTrace": "Trace de la pile",
+    "tryAgain": "Réessayer"
+  },
+  "nav": {
+    "overview": "Vue d'ensemble",
+    "market": "Données de marché",
+    "processes": "Processus",
+    "strategies": "Stratégies",
+    "orders": "Ordres et exécutions",
+    "positions": "Positions",
+    "signals": "Signaux",
+    "backtests": "Backtests",
+    "health": "État du système",
+    "admin": "Administration",
+    "aiIntegration": "Intégration IA",
+    "aiReviews": "Revues IA",
+    "settings": "Paramètres"
+  }
+}

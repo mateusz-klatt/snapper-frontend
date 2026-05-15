@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Gestione strategie",
+    "register": "Registra strategia",
+    "saving": "Salvataggio in corso…",
+    "descriptionCanManage": "Registra nuovi processi di strategia direttamente dall'interfaccia. L'autostart mantiene il processo attivo dopo i riavvii.",
+    "descriptionViewer": "Visualizza le strategie configurate e il loro stato. Contatta un operatore o un amministratore per gestire le strategie.",
+    "searchPlaceholder": "Cerca strategie...",
+    "filter": {
+      "all": "Tutti gli stati",
+      "running": "In esecuzione",
+      "stopped": "Arrestata"
+    },
+    "configuredHeading": "Strategie configurate",
+    "noMatches": "Nessuna strategia corrisponde ai filtri",
+    "clearFilters": "Cancella filtri",
+    "emptyTitle": "Nessuna strategia configurata",
+    "emptyCanManage": "Registra una strategia per avviare il trading algoritmico",
+    "emptyViewer": "Nessuna strategia è ancora stata configurata"
+  },
+  "confirm": {
+    "startTitle": "Avvia {{name}}",
+    "startMessage": "Questa azione avvierà la strategia {{name}}. Potrebbe iniziare operazioni di trading live.",
+    "stopTitle": "Arresta {{name}}",
+    "stopMessage": "Questa azione arresterà la strategia {{name}}. Le posizioni attive non verranno chiuse automaticamente."
+  },
+  "toast": {
+    "saved": "Strategia {{name}} salvata",
+    "started": "Strategia {{name}} avviata",
+    "registerFailed": "Registrazione della strategia non riuscita: {{message}}",
+    "startSuccess": "Strategia avviata con successo",
+    "stopSuccess": "Strategia arrestata con successo",
+    "alreadyRunning": "La strategia è già in esecuzione",
+    "notRunning": "La strategia non è in esecuzione",
+    "configNotFound": "Configurazione della strategia non trovata. Controlla le impostazioni del database.",
+    "networkError": "Errore di rete. Verifica la connessione e riprova.",
+    "startFailed": "Avvio della strategia non riuscito: {{message}}",
+    "stopFailed": "Arresto della strategia non riuscito: {{message}}",
+    "unknownError": "Errore sconosciuto"
+  },
+  "card": {
+    "ariaLabel": "Strategia: {{name}}",
+    "modeLabel": "Modalità: {{mode}}",
+    "autostartEnabled": "Autostart: abilitato",
+    "autostartDisabled": "Autostart: disabilitato",
+    "statusAriaLabel": "Stato: {{status}}",
+    "dataLagAriaLabel": "Latenza dati: {{seconds}} secondi",
+    "lagBadge": "latenza: {{seconds}}s",
+    "feedLag": "Latenza feed: {{ms}}ms",
+    "heartbeatAge": "Età HB: {{seconds}}s",
+    "metrics": {
+      "status": "Stato",
+      "dataLag": "Latenza dati",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Mostra dettagli",
+    "hideDetails": "Nascondi dettagli",
+    "inputs": "Input ({{count}})",
+    "outputs": "Output ({{count}})",
+    "feedPublishers": "Publisher dei feed ({{count}})",
+    "lastUpdate": "Ultimo aggiornamento: {{time}}",
+    "waiting": "In attesa di heartbeat...",
+    "startAriaLabel": "Avvia strategia {{name}}",
+    "stopAriaLabel": "Arresta strategia {{name}}",
+    "start": "Avvia",
+    "stop": "Arresta",
+    "starting": "Avvio in corso...",
+    "stopping": "Arresto in corso...",
+    "status": {
+      "starting": "avvio",
+      "stopping": "arresto",
+      "running": "in esecuzione",
+      "stopped": "arrestata"
+    },
+    "health": {
+      "healthy": "Sana — ricezione di dati aggiornati",
+      "warning": "Avviso — i dati sono obsoleti",
+      "error": "Errore — nessun dato recente",
+      "unknown": "Sconosciuto — nessun dato di heartbeat"
+    },
+    "healthShort": {
+      "healthy": "SANA",
+      "warning": "AVVISO",
+      "error": "ERRORE"
+    }
+  },
+  "launchModal": {
+    "title": "Registra processo di strategia",
+    "emptyTemplates": "Nessun template di strategia registrato nel backend. Definisci almeno un processo di strategia.",
+    "close": "Chiudi",
+    "templateLabel": "Template di strategia",
+    "templatePlaceholder": "Scegli un template...",
+    "templateFallbackDescription": "Strategia registrata nel backend",
+    "loadingDefaults": "Caricamento valori predefiniti del template…",
+    "loadDefaultsError": "Impossibile caricare i valori predefiniti del template. Controlla i log del backend.",
+    "processNameLabel": "Nome del processo",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Caratteri ammessi: lettere minuscole, numeri, underscore",
+    "instanceNameLabel": "Nome dell'istanza di strategia",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Usato nella configurazione della strategia e nei topic di output",
+    "executionModeLabel": "Modalità di esecuzione",
+    "executionModeThread": "Thread embedded",
+    "executionModeProcess": "Processo isolato",
+    "executionModeHelp": "I thread condividono la memoria, i processi offrono un isolamento più forte.",
+    "flagsLabel": "Flag",
+    "autostartLabel": "Autostart all'avvio del server",
+    "startImmediatelyLabel": "Avvia subito dopo la registrazione",
+    "noteLabel": "Nota (opzionale)",
+    "notePlaceholder": "Descrivi lo scopo o i parametri di questa istanza di strategia.",
+    "noteHelp": "Salvata insieme alla configurazione per identificare questo processo.",
+    "cancel": "Annulla",
+    "submit": "Registra strategia",
+    "submitting": "Registrazione in corso…"
+  }
+}

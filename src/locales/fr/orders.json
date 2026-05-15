@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Ordres et exécutions",
+    "newOrder": "Nouvel ordre",
+    "exportCsv": "Exporter en CSV"
+  },
+  "tabs": {
+    "orders": "Ordres ({{total}})",
+    "executions": "Exécutions ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrer par statut :",
+    "options": {
+      "all": "Tous les ordres",
+      "new": "Nouveaux",
+      "open": "Ouverts",
+      "partiallyFilled": "Partiellement exécutés",
+      "partially_filled": "Partiellement exécutés",
+      "filled": "Exécutés",
+      "cancelled": "Annulés",
+      "rejected": "Rejetés"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/D",
+    "priceMarket": "Market",
+    "quantity": "Quantité",
+    "price": "Prix",
+    "created": "Créé",
+    "createdUnknown": "N/D",
+    "orderId": "ID de l'ordre",
+    "leverage": "Levier",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "RÉDUCTION SEULE",
+    "cancel": "Annuler",
+    "cancelling": "Annulation…",
+    "cancelAriaLabel": "Annuler l'ordre {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Ordre #{{orderId}}",
+    "filled": "EXÉCUTÉ",
+    "orderLabel": "Ordre {{orderId}}",
+    "size": "Taille",
+    "price": "Prix",
+    "total": "Total",
+    "executed": "Exécuté",
+    "fees": "Frais"
+  },
+  "empty": {
+    "ordersTitle": "Aucun ordre trouvé",
+    "ordersStartTrading": "Commencez à trader pour voir des ordres ici",
+    "ordersFilterless": "Aucun ordre {{status}}",
+    "executionsTitle": "Aucune exécution trouvée",
+    "executionsMessage": "Les exécutions de transactions apparaîtront ici"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Sens",
+      "type": "Type",
+      "status": "Statut",
+      "quantity": "Quantité",
+      "price": "Prix",
+      "leverage": "Levier",
+      "reduceOnly": "Réduction seule",
+      "created": "Créé"
+    },
+    "executions": {
+      "orderId": "ID de l'ordre",
+      "instrument": "Instrument",
+      "side": "Sens",
+      "size": "Taille",
+      "price": "Prix",
+      "total": "Total",
+      "fee": "Frais",
+      "feeAsset": "Actif des frais",
+      "executed": "Exécuté"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Nouvel ordre manuel",
+    "titleConfirm": "Confirmer l'ordre",
+    "fields": {
+      "exchange": "Plateforme",
+      "instrument": "Instrument",
+      "side": "Sens",
+      "orderType": "Type d'ordre",
+      "quantity": "Quantité",
+      "price": "Prix",
+      "stopPrice": "Prix stop",
+      "mode": "Mode",
+      "wallet": "Wallet",
+      "type": "Type"
+    },
+    "sideOptions": {
+      "buy": "Achat",
+      "sell": "Vente"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — données de marché uniquement",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "reviewOrder": "Vérifier l'ordre",
+      "back": "Retour",
+      "confirmOrder": "Confirmer l'ordre",
+      "submitting": "Envoi..."
+    },
+    "errors": {
+      "missingRequired": "Tous les champs requis doivent être remplis",
+      "quantityPositive": "La quantité doit être un nombre positif",
+      "priceRequired": "Le prix est requis pour ce type d'ordre",
+      "pricePositive": "Le prix doit être un nombre positif",
+      "stopPriceRequired": "Le prix stop est requis pour ce type d'ordre",
+      "stopPricePositive": "Le prix stop doit être un nombre positif",
+      "createFailed": "Échec de la création de l'ordre"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Cet instrument est en observation uniquement — passez vos ordres sur un instrument capable d'exécution.",
+      "unknownInstrument": "Cet instrument n'est pas reconnu. Rechargez la liste et réessayez.",
+      "capsViolation": "Cet ordre dépasserait les plafonds de sécurité de votre compte. Vérifiez vos paramètres de risque et réessayez."
+    }
+  }
+}

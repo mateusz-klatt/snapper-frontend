@@ -1,0 +1,83 @@
+{
+  "loading": "Caricamento...",
+  "error": "Errore",
+  "retry": "Riprova",
+  "close": "Chiudi",
+  "cancel": "Annulla",
+  "confirm": "Conferma",
+  "save": "Salva",
+  "documentation": "Documentazione (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Cambia lingua",
+    "flagAriaLabel": "Passa a {{country}}",
+    "currentAriaLabel": "Lingua corrente: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Console di trading",
+    "tagline": "Postazione di precisione",
+    "openSidebar": "Apri barra laterale",
+    "closeSidebar": "Chiudi barra laterale",
+    "sidebar": "Barra laterale",
+    "mainNavigation": "Navigazione principale",
+    "tradingContent": "Contenuto di trading",
+    "skipToContent": "Vai al contenuto di trading",
+    "lag": "Latenza:",
+    "lagTitle": "Latenza di andata e ritorno verso il server WebSocket",
+    "topics": "Topic:",
+    "topicsTitle": "Numero di topic WebSocket sottoscritti",
+    "connected": "Connesso",
+    "disconnected": "Disconnesso",
+    "connectedTitle": "Connesso al WebSocket",
+    "disconnectedTitle": "Disconnesso dal WebSocket",
+    "switchToLightMode": "Passa al tema chiaro",
+    "switchToDarkMode": "Passa al tema scuro",
+    "timeTravelBanner": "Modalità viaggio nel tempo — visualizzazione di dati storici (sola lettura)",
+    "lagUnknown": "Sconosciuto",
+    "walletPicker": {
+      "ariaLabel": "Portafoglio attivo",
+      "placeholder": "Portafoglio",
+      "allWallets": "Tutti i portafogli",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operatore attivo",
+      "placeholder": "Operatore",
+      "allOperators": "Tutti gli operatori"
+    },
+    "timeTravel": {
+      "pickerTitle": "Viaggio nel tempo: seleziona un punto storico nel tempo",
+      "exitAriaLabel": "Esci dalla modalità viaggio nel tempo",
+      "exitTitle": "Torna alla modalità live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Strumento di sola osservazione. Snapper riceve i dati di mercato ma non può inviare ordini per questa coppia (simbolo, exchange).",
+      "ariaLabel": "Strumento solo dati di mercato",
+      "badge": "Solo dati di mercato"
+    },
+    "liveOnly": {
+      "notice": "Questa scheda mostra lo stato corrente — la vista storica non è disponibile."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Si è verificato un problema",
+    "titleWithComponent": "Errore in {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Riprova"
+  },
+  "nav": {
+    "overview": "Panoramica",
+    "market": "Dati di mercato",
+    "processes": "Processi",
+    "strategies": "Strategie",
+    "orders": "Ordini ed esecuzioni",
+    "positions": "Posizioni",
+    "signals": "Segnali",
+    "backtests": "Backtest",
+    "health": "Salute",
+    "admin": "Amministrazione",
+    "aiIntegration": "Integrazione AI",
+    "aiReviews": "Revisioni AI",
+    "settings": "Impostazioni"
+  }
+}

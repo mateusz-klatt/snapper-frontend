@@ -29,7 +29,7 @@
     "errorPrefix": "Błąd ładowania danych wykresu:",
     "unknownError": "Nieznany błąd",
     "noDataTitle": "Brak danych dla {{instrument}}",
-    "noDataHint": "Instrument może nie istnieć lub nie ma danych {{timeframe}}"
+    "noDataHint": "Instrument może nie istnieć albo nie mieć danych dla interwału {{timeframe}}"
   },
   "related": {
     "labelSeparator": "{{label}}:",
@@ -37,10 +37,10 @@
     "empty": "Brak skonfigurowanych powiązanych instrumentów dla {{instrument}} na {{exchange}}."
   },
   "cacheBanner": {
-    "message": "Cache rozgrzewa się: {{sampleCount}} / {{expected}} świec dostępnych {{sourceLabel}}",
+    "message": "Wypełnianie cache’u: dostępne {{sampleCount}} / {{expected}} świec {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(wyprowadzone z 1m)",
+      "derived": "(zagregowane z 1m)",
       "db": "(z bazy danych)"
     }
   }

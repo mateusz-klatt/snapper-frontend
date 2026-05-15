@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administration",
+    "subtitle": "Benutzer und Systemkonfiguration verwalten"
+  },
+  "rolePermissions": {
+    "title": "Rollenberechtigungen",
+    "viewer": {
+      "label": "Betrachter",
+      "description": "Lesezugriff auf Übersicht und Marktdaten. Kann keine Prozesse, Strategien oder Systemeinstellungen verwalten."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Alle Betrachter-Berechtigungen sowie Trading-Operationen, Strategieausführung, Prozessverwaltung und Überwachung des Systemzustands."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Voller Systemzugriff inklusive Benutzerverwaltung, Systemeinstellungen, API-Schlüsselkonfiguration und allen Operator-Berechtigungen."
+    },
+    "table": {
+      "resource": "Ressource",
+      "viewer": "Betrachter",
+      "operator": "Operator",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Übersicht",
+      "market": "Marktdaten",
+      "processes": "Prozesse",
+      "strategies": "Strategien",
+      "orders": "Aufträge & Ausführungen",
+      "positions": "Positionen",
+      "signals": "Signale",
+      "health": "Systemzustand",
+      "admin": "Administration",
+      "settings": "Einstellungen"
+    }
+  },
+  "common": {
+    "cancel": "Abbrechen",
+    "selectWallet": "Wallet auswählen",
+    "selectAWallet": "Ein Wallet auswählen",
+    "chooseWalletPlaceholder": "Wallet wählen...",
+    "selectWalletPlaceholder": "Wallet auswählen...",
+    "walletLabel": "Wallet",
+    "paperAnnotation": " (Paper)",
+    "unknownError": "Unbekannter Fehler",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Zugriff verweigert",
+      "message": "Sie haben keine Berechtigung zur Benutzerverwaltung. Bitte wenden Sie sich an Ihren Systemadministrator."
+    },
+    "list": {
+      "title": "Benutzerverwaltung",
+      "countLabel": "{{count}} Benutzer",
+      "showInactive": "Inaktive anzeigen",
+      "hideInactive": "Inaktive ausblenden",
+      "addUser": "Benutzer hinzufügen",
+      "searchPlaceholder": "Suche nach Benutzername, E-Mail oder Rolle...",
+      "columns": {
+        "user": "Benutzer",
+        "role": "Rolle",
+        "status": "Status",
+        "createdAt": "Erstellt am",
+        "actions": "Aktionen"
+      },
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "unknown": "Unbekannt",
+      "empty": {
+        "title": "Keine Benutzer gefunden",
+        "noMatch": "Kein Benutzer entspricht den Suchkriterien.",
+        "noUsers": "Keine Benutzer gefunden.",
+        "noActive": "Keine aktiven Benutzer gefunden."
+      },
+      "errorLoading": "Fehler beim Laden der Benutzer: {{message}}",
+      "deactivate": {
+        "title": "Benutzer deaktivieren",
+        "message": "Möchten Sie den Benutzer \"{{username}}\" wirklich deaktivieren? Er wird sich nicht mehr anmelden können.",
+        "confirm": "Deaktivieren"
+      },
+      "toast": {
+        "deactivated": "Benutzer wurde deaktiviert",
+        "deactivateError": "Fehler beim Deaktivieren des Benutzers"
+      }
+    },
+    "form": {
+      "titleEdit": "Benutzer bearbeiten",
+      "titleAdd": "Benutzer hinzufügen",
+      "fields": {
+        "username": "Benutzername",
+        "usernamePlaceholder": "Benutzername eingeben",
+        "password": "Passwort",
+        "passwordPlaceholder": "Passwort eingeben",
+        "newPassword": "Neues Passwort",
+        "newPasswordPlaceholder": "Neues Passwort eingeben",
+        "email": "E-Mail",
+        "emailPlaceholder": "E-Mail eingeben",
+        "role": "Rolle",
+        "accountActive": "Konto aktiv",
+        "resetUserPassword": "Passwort des Benutzers zurücksetzen"
+      },
+      "roles": {
+        "viewer": "Betrachter",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Benutzername ist erforderlich",
+        "usernameMinLength": "Benutzername muss mindestens 3 Zeichen lang sein",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Ungültiges E-Mail-Format",
+        "passwordRequired": "Passwort ist erforderlich",
+        "passwordMinLength": "Passwort muss mindestens 8 Zeichen lang sein",
+        "passwordRequiredWhenResetting": "Passwort ist beim Zurücksetzen erforderlich"
+      },
+      "actions": {
+        "saveChanges": "Änderungen speichern",
+        "createUser": "Benutzer erstellen"
+      },
+      "toast": {
+        "created": "Benutzer wurde erstellt",
+        "createError": "Fehler beim Erstellen des Benutzers",
+        "updated": "Benutzer wurde aktualisiert",
+        "updateError": "Fehler beim Aktualisieren des Benutzers",
+        "passwordReset": "Passwort des Benutzers wurde zurückgesetzt",
+        "resetError": "Fehler beim Zurücksetzen des Passworts"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Zugriff verweigert",
+      "message": "Sie haben keine Berechtigung zur Verwaltung von Scope-Grants. Bitte wenden Sie sich an Ihren Systemadministrator."
+    },
+    "list": {
+      "title": "Scope-Grants",
+      "countLabel": "{{count}} Grants",
+      "createGrant": "Grant erstellen",
+      "selectWalletPrompt": "Wählen Sie oben ein Wallet aus, um dessen Scope-Grants anzuzeigen.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Scope",
+        "target": "Ziel",
+        "grantedAt": "Erteilt am",
+        "actions": "Aktionen"
+      },
+      "empty": {
+        "noGrants": "Keine Grants gefunden",
+        "noGrantsHint": "Dieses Wallet hat keine aktiven Scope-Grants."
+      },
+      "errorLoading": "Fehler beim Laden der Grants: {{message}}",
+      "handover": "Übergeben"
+    },
+    "form": {
+      "title": "Scope-Grant erstellen",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Operator auswählen...",
+        "wallet": "Wallet",
+        "scopeKind": "Scope-Art",
+        "underlyingPublicId": "Public ID des Basiswerts",
+        "instrumentPublicId": "Public ID des Instruments",
+        "underlyingPlaceholder": "z. B. BTC",
+        "instrumentPlaceholder": "z. B. BTC-USD-PERP",
+        "note": "Notiz (optional)",
+        "notePlaceholder": "Optionale Notiz"
+      },
+      "scopeKinds": {
+        "underlying": "Basiswert",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operator ist erforderlich",
+        "walletRequired": "Wallet ist erforderlich",
+        "targetRequired": "Ziel-ID ist erforderlich"
+      },
+      "actions": {
+        "createGrant": "Grant erstellen"
+      },
+      "toast": {
+        "created": "Scope-Grant erstellt",
+        "conflictError": "Konflikt: ein anderer Operator hält bereits einen Grant für diesen Scope",
+        "createError": "Fehler beim Erstellen des Scope-Grants"
+      }
+    },
+    "handover": {
+      "title": "Scope-Grant übergeben",
+      "fields": {
+        "currentHolder": "Aktueller Inhaber",
+        "scope": "Scope",
+        "wallet": "Wallet",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "An Operator übertragen",
+        "transferToPlaceholder": "Ziel-Operator auswählen...",
+        "reason": "Grund (optional)",
+        "reasonPlaceholder": "z. B. Schichtwechsel"
+      },
+      "actions": {
+        "handover": "Übergeben"
+      },
+      "toast": {
+        "completed": "Scope-Grant übergeben",
+        "conflictError": "Konflikt: der Ziel-Operator hält bereits einen kollidierenden Grant",
+        "handoverError": "Fehler bei der Übergabe des Scope-Grants"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Zugriff verweigert",
+      "message": "Sie haben keine Berechtigung zur Verwaltung der Wallet-Anmeldedaten. Bitte wenden Sie sich an Ihren Systemadministrator."
+    },
+    "list": {
+      "title": "Wallet-Anmeldedaten",
+      "countLabel": "{{count}} Anmeldedaten",
+      "addCredential": "Anmeldedaten hinzufügen",
+      "selectWalletPrompt": "Wählen Sie oben ein Wallet aus, um dessen Anmeldedaten anzuzeigen.",
+      "columns": {
+        "exchange": "Börse",
+        "type": "Typ",
+        "label": "Bezeichnung",
+        "createdAt": "Erstellt am",
+        "actions": "Aktionen"
+      },
+      "empty": {
+        "noCredentials": "Keine Anmeldedaten gefunden",
+        "noCredentialsHint": "Dieses Wallet hat keine aktiven Anmeldedaten."
+      },
+      "errorLoading": "Fehler beim Laden der Anmeldedaten: {{message}}",
+      "rotate": "Rotieren"
+    },
+    "form": {
+      "title": "Anmeldedaten hinzufügen",
+      "fields": {
+        "wallet": "Wallet",
+        "exchange": "Börse",
+        "exchangePlaceholder": "z. B. kraken",
+        "credentialType": "Anmeldedaten-Typ",
+        "label": "Bezeichnung (optional)",
+        "labelPlaceholder": "z. B. Hauptschlüssel Trading",
+        "pemPlaceholder": "Privaten Schlüssel im PEM-Format hier einfügen"
+      },
+      "fieldLabels": {
+        "api_key": "API-Schlüssel",
+        "api_secret": "API-Secret",
+        "private_key_pem": "Privater Schlüssel (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Anfangsguthaben"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-Schlüssel + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Wallet ist erforderlich",
+        "exchangeRequired": "Börse ist erforderlich",
+        "fieldRequired": "{{field}} ist erforderlich"
+      },
+      "actions": {
+        "addCredential": "Anmeldedaten hinzufügen"
+      },
+      "toast": {
+        "created": "Anmeldedaten erstellt",
+        "conflictError": "Konflikt: dieses Wallet hat bereits aktive Anmeldedaten für diese Börse",
+        "createError": "Fehler beim Erstellen der Anmeldedaten"
+      }
+    },
+    "rotate": {
+      "title": "Anmeldedaten rotieren",
+      "fields": {
+        "exchange": "Börse",
+        "type": "Typ",
+        "label": "Bezeichnung",
+        "newLabel": "Neue Bezeichnung (optional)",
+        "newLabelPlaceholder": "z. B. Rotierter Schlüssel 2026-04",
+        "pemPlaceholder": "Privaten Schlüssel im PEM-Format hier einfügen"
+      },
+      "actions": {
+        "rotate": "Rotieren"
+      },
+      "toast": {
+        "rotated": "Anmeldedaten rotiert",
+        "rotateError": "Fehler beim Rotieren der Anmeldedaten"
+      }
+    }
+  }
+}

@@ -77,7 +77,7 @@
     },
     "health": {
       "healthy": "Sprawne — otrzymywanie świeżych danych",
-      "warning": "Ostrzeżenie — dane są przestarzałe",
+      "warning": "Ostrzeżenie — dane są nieświeże",
       "error": "Błąd — brak ostatnich danych",
       "unknown": "Nieznane — brak danych heartbeat"
     },
@@ -101,7 +101,7 @@
     "processNameHelp": "Dozwolone znaki: małe litery, cyfry, podkreślenia",
     "instanceNameLabel": "Nazwa instancji strategii",
     "instanceNamePlaceholder": "macd_custom",
-    "instanceNameHelp": "Używana w konfiguracji strategii i topicach wyjściowych",
+    "instanceNameHelp": "Używana w konfiguracji strategii i tematach wyjściowych",
     "executionModeLabel": "Tryb wykonania",
     "executionModeThread": "Osadzony wątek",
     "executionModeProcess": "Izolowany proces",

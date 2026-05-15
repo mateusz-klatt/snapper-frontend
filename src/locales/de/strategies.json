@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strategieverwaltung",
+    "register": "Strategie registrieren",
+    "saving": "Wird gespeichert…",
+    "descriptionCanManage": "Registrieren Sie neue Strategieprozesse direkt aus der Oberfläche. Autostart hält den Prozess über Neustarts hinweg aktiviert.",
+    "descriptionViewer": "Konfigurierte Strategien und deren Status anzeigen. Wenden Sie sich an einen Operator oder Administrator, um Strategien zu verwalten.",
+    "searchPlaceholder": "Strategien suchen...",
+    "filter": {
+      "all": "Alle Status",
+      "running": "Läuft",
+      "stopped": "Gestoppt"
+    },
+    "configuredHeading": "Konfigurierte Strategien",
+    "noMatches": "Keine Strategie entspricht Ihren Filtern",
+    "clearFilters": "Filter zurücksetzen",
+    "emptyTitle": "Keine Strategien konfiguriert",
+    "emptyCanManage": "Registrieren Sie eine Strategie, um mit dem algorithmischen Trading zu beginnen",
+    "emptyViewer": "Es wurden noch keine Strategien konfiguriert"
+  },
+  "confirm": {
+    "startTitle": "{{name}} starten",
+    "startMessage": "Dies startet die Strategie {{name}}. Sie kann Live-Trading-Operationen aufnehmen.",
+    "stopTitle": "{{name}} stoppen",
+    "stopMessage": "Dies stoppt die Strategie {{name}}. Aktive Positionen werden nicht automatisch geschlossen."
+  },
+  "toast": {
+    "saved": "Strategie {{name}} gespeichert",
+    "started": "Strategie {{name}} gestartet",
+    "registerFailed": "Strategie konnte nicht registriert werden: {{message}}",
+    "startSuccess": "Strategie erfolgreich gestartet",
+    "stopSuccess": "Strategie erfolgreich gestoppt",
+    "alreadyRunning": "Strategie läuft bereits",
+    "notRunning": "Strategie läuft nicht",
+    "configNotFound": "Strategie-Konfiguration nicht gefunden. Bitte Datenbankeinstellungen prüfen.",
+    "networkError": "Netzwerkfehler. Bitte Verbindung prüfen und erneut versuchen.",
+    "startFailed": "Strategie konnte nicht gestartet werden: {{message}}",
+    "stopFailed": "Strategie konnte nicht gestoppt werden: {{message}}",
+    "unknownError": "Unbekannter Fehler"
+  },
+  "card": {
+    "ariaLabel": "Strategie: {{name}}",
+    "modeLabel": "Modus: {{mode}}",
+    "autostartEnabled": "Autostart: aktiviert",
+    "autostartDisabled": "Autostart: deaktiviert",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Datenverzögerung: {{seconds}} Sekunden",
+    "lagBadge": "Lag: {{seconds}}s",
+    "feedLag": "Feed-Lag: {{ms}}ms",
+    "heartbeatAge": "HB-Alter: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Datenverzögerung",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Details anzeigen",
+    "hideDetails": "Details ausblenden",
+    "inputs": "Eingänge ({{count}})",
+    "outputs": "Ausgänge ({{count}})",
+    "feedPublishers": "Feed-Publisher ({{count}})",
+    "lastUpdate": "Letzte Aktualisierung: {{time}}",
+    "waiting": "Warte auf Heartbeat...",
+    "startAriaLabel": "Strategie {{name}} starten",
+    "stopAriaLabel": "Strategie {{name}} stoppen",
+    "start": "Starten",
+    "stop": "Stoppen",
+    "starting": "Wird gestartet...",
+    "stopping": "Wird gestoppt...",
+    "status": {
+      "starting": "wird gestartet",
+      "stopping": "wird gestoppt",
+      "running": "läuft",
+      "stopped": "gestoppt"
+    },
+    "health": {
+      "healthy": "Gesund — frische Daten werden empfangen",
+      "warning": "Warnung — Daten sind veraltet",
+      "error": "Fehler — keine aktuellen Daten",
+      "unknown": "Unbekannt — keine Heartbeat-Daten"
+    },
+    "healthShort": {
+      "healthy": "GESUND",
+      "warning": "WARNUNG",
+      "error": "FEHLER"
+    }
+  },
+  "launchModal": {
+    "title": "Strategieprozess registrieren",
+    "emptyTemplates": "Keine Strategie-Vorlagen im Backend registriert. Definieren Sie mindestens einen Strategieprozess.",
+    "close": "Schließen",
+    "templateLabel": "Strategie-Vorlage",
+    "templatePlaceholder": "Vorlage wählen...",
+    "templateFallbackDescription": "Im Backend registrierte Strategie",
+    "loadingDefaults": "Standardwerte der Vorlage werden geladen…",
+    "loadDefaultsError": "Standardwerte der Vorlage können nicht geladen werden. Bitte Backend-Logs prüfen.",
+    "processNameLabel": "Prozessname",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Erlaubte Zeichen: Kleinbuchstaben, Ziffern, Unterstriche",
+    "instanceNameLabel": "Name der Strategie-Instanz",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Wird in der Strategie-Konfiguration und in Output-Topics verwendet",
+    "executionModeLabel": "Ausführungsmodus",
+    "executionModeThread": "Eingebetteter Thread",
+    "executionModeProcess": "Isolierter Prozess",
+    "executionModeHelp": "Threads teilen sich den Speicher, Prozesse bieten stärkere Isolation.",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart beim Serverstart",
+    "startImmediatelyLabel": "Sofort nach Registrierung starten",
+    "noteLabel": "Notiz (optional)",
+    "notePlaceholder": "Beschreiben Sie Zweck oder Parameter dieser Strategie-Instanz.",
+    "noteHelp": "Wird zusammen mit der Konfiguration gespeichert, um diesen Prozess identifizieren zu können.",
+    "cancel": "Abbrechen",
+    "submit": "Strategie registrieren",
+    "submitting": "Wird registriert…"
+  }
+}

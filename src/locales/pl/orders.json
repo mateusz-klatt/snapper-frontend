@@ -1,12 +1,12 @@
 {
   "page": {
-    "title": "Zlecenia i wykonania",
+    "title": "Zlecenia i realizacje",
     "newOrder": "Nowe zlecenie",
     "exportCsv": "Eksportuj CSV"
   },
   "tabs": {
     "orders": "Zlecenia ({{total}})",
-    "executions": "Wykonania ({{total}})"
+    "executions": "Realizacje ({{total}})"
   },
   "filters": {
     "byStatus": "Filtruj według statusu:",
@@ -43,15 +43,15 @@
     "size": "Wielkość",
     "price": "Cena",
     "total": "Suma",
-    "executed": "Wykonane",
+    "executed": "Zrealizowano",
     "fees": "Opłaty"
   },
   "empty": {
     "ordersTitle": "Nie znaleziono zleceń",
     "ordersStartTrading": "Rozpocznij handel, aby zobaczyć tu zlecenia",
     "ordersFilterless": "Brak zleceń o statusie {{status}}",
-    "executionsTitle": "Nie znaleziono wykonań",
-    "executionsMessage": "Wykonania transakcji pojawią się tutaj"
+    "executionsTitle": "Nie znaleziono realizacji",
+    "executionsMessage": "Realizacje zleceń pojawią się tutaj"
   },
   "csv": {
     "orders": {
@@ -74,7 +74,7 @@
       "total": "Suma",
       "fee": "Opłata",
       "feeAsset": "Aktywo opłaty",
-      "executed": "Wykonane"
+      "executed": "Zrealizowano"
     }
   },
   "newOrderModal": {
@@ -131,7 +131,7 @@
       "createFailed": "Utworzenie zlecenia nie powiodło się"
     },
     "errorCodes": {
-      "instrumentMarketDataOnly": "Ten instrument służy tylko do obserwacji — składaj zlecenia na instrumencie z możliwością wykonania.",
+      "instrumentMarketDataOnly": "Ten instrument służy tylko do obserwacji — wybierz instrument, na którym można składać zlecenia.",
       "unknownInstrument": "Ten instrument nie jest rozpoznany. Odśwież listę i spróbuj ponownie.",
       "capsViolation": "To zlecenie przekroczyłoby limity bezpieczeństwa konta. Sprawdź ustawienia ryzyka i spróbuj ponownie."
     }

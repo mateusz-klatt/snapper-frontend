@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Marktdata"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrument:",
+    "timeframe": "Tijdframe:",
+    "selectExchange": "Selecteer exchange",
+    "searchInstrument": "Instrument zoeken..."
+  },
+  "timeframes": {
+    "1m": "1 minuut",
+    "5m": "5 minuten",
+    "15m": "15 minuten",
+    "30m": "30 minuten",
+    "1h": "1 uur",
+    "4h": "4 uur",
+    "1d": "1 dag"
+  },
+  "stats": {
+    "currentPrice": "Huidige prijs",
+    "change24h": "24u-verandering",
+    "high24h": "24u-hoog",
+    "low24h": "24u-laag"
+  },
+  "chart": {
+    "title": "Prijsgrafiek",
+    "errorPrefix": "Fout bij laden grafiekdata:",
+    "unknownError": "Onbekende fout",
+    "noDataTitle": "Geen data beschikbaar voor {{instrument}}",
+    "noDataHint": "Het instrument bestaat mogelijk niet of heeft geen {{timeframe}}-data"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Geen gerelateerde instrumenten geconfigureerd voor {{instrument}} op {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache aan het opwarmen: {{sampleCount}} / {{expected}} candles beschikbaar {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(afgeleid van 1m)",
+      "db": "(uit DB)"
+    }
+  }
+}

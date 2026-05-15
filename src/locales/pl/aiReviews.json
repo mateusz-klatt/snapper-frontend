@@ -16,7 +16,7 @@
     "unhandledFrame": "Nieobsłużona ramka aktywności przeglądu AI: {{frame}}"
   },
   "page": {
-    "title": "Skrzynka przeglądów AI",
+    "title": "Skrzynka weryfikacji AI",
     "subtitle": "Oczekujące przeglądy CONSULT skierowane do tego delegata oraz strumień zdarzeń na żywo."
   },
   "roleNotice": {

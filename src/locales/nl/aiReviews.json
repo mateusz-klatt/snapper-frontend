@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Verzoek",
+    "decision": "Beslissing",
+    "capsViolation": "Caps-overtreding",
+    "selectedDelegate": "Geselecteerde delegate",
+    "instrument": "instrument",
+    "deadline": "deadline {{time}}",
+    "decidedBy": "door",
+    "newStatus": "status",
+    "mode": "modus",
+    "capAttempted": "geprobeerd",
+    "capLimit": "vs. limiet",
+    "capOn": "op instrument",
+    "reviewLabel": "beoordeling {{reviewId}}",
+    "unhandledFrame": "Niet-afgehandeld AI-beoordelingsactiviteitframe: {{frame}}"
+  },
+  "page": {
+    "title": "AI-beoordelingen inbox",
+    "subtitle": "Openstaande CONSULT-beoordelingen die naar deze delegate zijn gerouteerd, plus de live-eventstream."
+  },
+  "roleNotice": {
+    "title": "Gereserveerd voor AI-delegates",
+    "message": "Deze inbox toont CONSULT-beoordelingen die naar een AI-delegate-principal zijn gerouteerd. Log in met een AI-delegate-account om openstaande beoordelingen en de live-activiteitenstream te zien. Uw huidige rol is",
+    "unknownRole": "onbekend"
+  },
+  "pending": {
+    "title": "Openstaande beoordelingen",
+    "loading": "Openstaande beoordelingen laden…",
+    "loadError": "Laden openstaande beoordelingen mislukt: {{message}}",
+    "emptyTitle": "Geen openstaande beoordelingen",
+    "emptyMessage": "Nieuwe CONSULT-verzoeken die naar deze delegate worden gerouteerd, verschijnen hier.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "These",
+      "status": "Status",
+      "deadline": "Deadline",
+      "decision": "Beslissing"
+    },
+    "rationalePlaceholder": "Toelichting (optioneel)",
+    "rationaleAriaLabel": "Toelichting voor beoordeling {{reviewId}}",
+    "approve": "Goedkeuren",
+    "reject": "Afwijzen",
+    "submitError": "Verzenden mislukt: {{message}}"
+  },
+  "activity": {
+    "title": "Recente activiteit",
+    "emptyTitle": "Nog geen activiteit",
+    "emptyMessage": "AI-beoordelingsverzoeken, beslissingen en caps-overtredingsframes stromen hier binnen.",
+    "summaryEmpty": "Geen frames ontvangen",
+    "summaryCount": "Toont {{shown}} van {{total}} in buffer"
+  }
+}

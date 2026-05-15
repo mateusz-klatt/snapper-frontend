@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Configuración",
+    "subtitle": "Configure los ajustes y parámetros de la aplicación",
+    "addButton": "Añadir ajuste",
+    "searchPlaceholder": "Buscar ajustes...",
+    "noResults": "No se encontraron ajustes que coincidan con sus criterios.",
+    "allCategories": "Todas las categorías",
+    "categoryFilterAriaLabel": "Filtrar ajustes por categoría"
+  },
+  "errors": {
+    "loadFailed": "Error al cargar los ajustes",
+    "updateFailed": "Error al actualizar el ajuste",
+    "deleteFailed": "Error al eliminar el ajuste",
+    "createFailed": "Error al crear el ajuste",
+    "alreadyExists": "Ya existe un ajuste con la clave \"{{key}}\""
+  },
+  "item": {
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "cancel": "Cancelar",
+    "yesDelete": "Sí, eliminar",
+    "deleting": "Eliminando...",
+    "deleteConfirm": "¿Eliminar este ajuste?",
+    "valuePlaceholder": "Introduzca el valor del ajuste...",
+    "showMore": "Mostrar más",
+    "showLess": "Mostrar menos",
+    "toggleAriaLabel": "Alternar {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensible"
+    },
+    "helpText": {
+      "allowShortSelling": "Permitir al motor abrir posiciones cortas. Las señales SELL producirán desired_units negativos; se ajusta a 0 cuando está deshabilitado.",
+      "allowManualOrders": "Habilita el botón Nueva orden en la pestaña Órdenes. Cuando está deshabilitado, POST /api/orders devuelve 403."
+    }
+  },
+  "addModal": {
+    "title": "Añadir nuevo ajuste",
+    "keyLabel": "Clave",
+    "valueLabel": "Valor",
+    "categoryLabel": "Categoría",
+    "descriptionLabel": "Descripción",
+    "keyPlaceholder": "p. ej. walutomat.api_key",
+    "keyHint": "Use notación de puntos para ajustes anidados (p. ej. categoria.subcategoria.nombre)",
+    "valuePlaceholder": "Valor del ajuste",
+    "categorySelectPlaceholder": "Seleccione una existente o cree una nueva",
+    "newCategoryPlaceholder": "O introduzca el nombre de una nueva categoría",
+    "descriptionPlaceholder": "Descripción opcional",
+    "cancel": "Cancelar",
+    "create": "Crear ajuste",
+    "creating": "Creando...",
+    "validation": {
+      "keyRequired": "La clave es obligatoria",
+      "valueRequired": "El valor es obligatorio",
+      "categoryRequired": "La categoría es obligatoria"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor de formulario",
+    "rawEditor": "Editor JSON en bruto",
+    "rawJson": "JSON en bruto",
+    "switchToForm": "Cambiar a formulario",
+    "importToForm": "Importar al formulario",
+    "parseError": "Error de análisis: {{message}}",
+    "arraySummary": "Array ({{length}} elementos)",
+    "addItem": "Añadir elemento",
+    "remove": "Eliminar",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(objeto)",
+      "string": "(cadena)",
+      "number": "(número)",
+      "boolean": "(booleano)",
+      "bigint": "(bigint)",
+      "function": "(función)",
+      "symbol": "(símbolo)",
+      "undefined": "(indefinido)"
+    }
+  },
+  "booleanValue": {
+    "true": "verdadero",
+    "false": "falso"
+  }
+}

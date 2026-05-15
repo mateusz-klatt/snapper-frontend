@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Integrazione AI",
+    "subtitle": "Gestisci i delegati AI che si connettono a Snapper tramite MCP.",
+    "loading": "Caricamento integrazione AI…",
+    "createDelegate": "Crea delegato"
+  },
+  "disabled": {
+    "title": "L'integrazione AI è disabilitata",
+    "message": "Abilita il feature flag in Impostazioni → Feature Flag per gestire i delegati AI."
+  },
+  "list": {
+    "loadingDelegates": "Caricamento delegati…",
+    "emptyTitle": "Nessun delegato AI",
+    "emptyMessage": "Clicca su “Crea delegato” per generarne uno e ottenere il relativo snippet di configurazione MCP.",
+    "columns": {
+      "label": "Etichetta",
+      "username": "Nome utente",
+      "created": "Creato",
+      "maxOpenOrders": "Max ordini aperti",
+      "maxDailyUsd": "Max USD giornaliero",
+      "status": "Stato",
+      "actions": "Azioni"
+    },
+    "status": {
+      "active": "Attivo",
+      "revoked": "Revocato"
+    },
+    "default": "predefinito",
+    "details": "Dettagli",
+    "viewAriaLabel": "Visualizza delegato {{label}}"
+  },
+  "wizard": {
+    "title": "Crea delegato AI",
+    "step1": "1. Identità",
+    "step2": "2. Scope e limiti",
+    "step3": "3. Revisione",
+    "stepDone": "✓ Fatto",
+    "identity": {
+      "labelField": "Etichetta",
+      "labelPlaceholder": "es. Alpha prop desk",
+      "labelHelpPrefix": "Il nome utente del delegato verrà generato lato server come ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Scope",
+      "operatorLabel": "public_id dell'operatore (opzionale)",
+      "operatorPlaceholder": "Lascia vuoto per ereditare l'operatore principale del chiamante"
+    },
+    "caps": {
+      "heading": "Limiti di trading (tutti opzionali)",
+      "maxOpenOrders": "Max ordini aperti",
+      "maxDailyNotionalUsd": "Max nozionale giornaliero USD",
+      "maxCancelsPerMinute": "Max annullamenti al minuto",
+      "perInstrument": "Quantità massima per strumento (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "predefinito",
+      "errorInvalidJson": "max_order_quantity_per_instrument deve essere un JSON valido",
+      "errorJsonObject": "max_order_quantity_per_instrument deve essere un oggetto JSON o vuoto",
+      "errorNegative": "I limiti devono essere numeri interi non negativi o vuoti."
+    },
+    "review": {
+      "heading": "Rivedi e crea",
+      "rowLabel": "Etichetta",
+      "rowOperator": "public_id dell'operatore",
+      "rowMaxOpenOrders": "Max ordini aperti",
+      "rowMaxDailyNotional": "Max nozionale giornaliero USD",
+      "rowMaxCancelsPerMinute": "Max annullamenti al minuto",
+      "rowPerInstrument": "Quantità massima per strumento",
+      "operatorDefault": "(operatore principale del chiamante)",
+      "defaultValue": "(predefinito)"
+    },
+    "buttons": {
+      "cancel": "Annulla",
+      "next": "Avanti",
+      "back": "Indietro",
+      "createDelegate": "Crea delegato",
+      "iSavedClose": "Ho salvato i dati — chiudi"
+    },
+    "toast": {
+      "delegateCreated": "Delegato creato",
+      "failedToCreate": "Creazione del delegato non riuscita"
+    }
+  },
+  "detail": {
+    "loading": "Caricamento delegato…",
+    "notFound": "Delegato non trovato o non disponibile.",
+    "back": "Indietro",
+    "backToList": "Torna alla lista",
+    "updateCaps": "Aggiorna limiti",
+    "revoke": "Revoca",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "tradingCaps": "Limiti di trading",
+    "status": "Stato",
+    "active": "Attivo",
+    "revoked": "Revocato",
+    "createdAt": "Creato il",
+    "createdBy": "Creato da (public_id utente)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Max ordini aperti",
+    "maxDailyNotionalUsd": "Max nozionale giornaliero USD",
+    "maxCancelsPerMinute": "Max annullamenti al minuto",
+    "perInstrument": "Quantità massima per strumento",
+    "defaultValue": "(predefinito)",
+    "editorPlaceholder": "(predefinito)",
+    "toast": {
+      "capsUpdated": "Limiti aggiornati",
+      "failedToUpdateCaps": "Aggiornamento dei limiti non riuscito",
+      "negativeIntegersError": "I limiti devono essere numeri interi non negativi o vuoti."
+    }
+  },
+  "revokeDialog": {
+    "title": "Revocare il delegato \"{{label}}\"?",
+    "message": "Questa azione revoca i token del delegato e interrompe le sue sottoscrizioni MCP. L'operazione non può essere annullata.",
+    "confirm": "Revoca",
+    "cancel": "Annulla",
+    "toast": {
+      "delegateRevoked": "Delegato revocato",
+      "failedToRevoke": "Revoca del delegato non riuscita"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Salva ora queste credenziali",
+    "warningMessage": "Non verranno più mostrate. Snapper non memorizza i token grezzi; una volta chiuso questo wizard, l'unica copia sarà nella configurazione del client MCP.",
+    "snippetHelp": "Token a lunga durata del delegato AI (~10 anni). Lo stesso token autentica sia il server MCP proxy sia il monitor watch. Per ruotarlo, disattiva questo delegato e creane uno nuovo.",
+    "baseUrlHelpPrefix": "L'URL di base deriva dall'origin di questo browser + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Copia lo snippet di configurazione negli appunti",
+    "copy": "Copia negli appunti",
+    "copied": "Copiato"
+  }
+}

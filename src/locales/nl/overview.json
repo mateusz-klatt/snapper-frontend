@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Overzicht"
+  },
+  "metrics": {
+    "feedsRunning": "Lopende feeds",
+    "strategiesActive": "Actieve strategieën",
+    "openOrders": "Openstaande orders",
+    "todaysExecutions": "Executies van vandaag",
+    "executionsOn": "Executies ({{date}})"
+  },
+  "status": {
+    "stopped": "Gestopt",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Loopt",
+    "active": "Actief"
+  },
+  "processStatus": {
+    "title": "Processtatus",
+    "feeds": "Feeds",
+    "strategies": "Strategieën",
+    "executors": "Executors",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "Portfolio-overzicht",
+    "totalValue": "Totale waarde",
+    "longExposure": "Long-exposure",
+    "shortExposure": "Short-exposure",
+    "netDelta": "Netto delta",
+    "unrealizedPnl": "Niet-gerealiseerde P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Posities",
+    "instrumentsCount": "{{count}} instrumenten",
+    "empty": "Geen positiedata beschikbaar"
+  },
+  "signals": {
+    "title": "Recente signalen",
+    "empty": "Geen recente signalen",
+    "noTime": "N.v.t."
+  },
+  "executions": {
+    "title": "Recente executies",
+    "empty": "Geen recente executies",
+    "noTime": "N.v.t."
+  }
+}

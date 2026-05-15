@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Contrôle des processus",
+    "subtitle": "Supervision et contrôle des processus en temps réel"
+  },
+  "sections": {
+    "longRunning": "Processus de longue durée",
+    "executorTemplates": "Modèles d'exécuteur",
+    "executorTemplatesHint": "La modification de la configuration du modèle affecte tous les wallets de cette plateforme après redémarrage. Les modèles servent uniquement à la configuration — démarrez l'instance par wallet ci-dessous pour lancer un exécuteur.",
+    "walletInstances": "Instances par wallet",
+    "taskProcesses": "Processus de tâches"
+  },
+  "card": {
+    "stop": "Arrêter",
+    "start": "Démarrer",
+    "restart": "Redémarrer",
+    "starting": "Démarrage...",
+    "stopping": "Arrêt...",
+    "status": {
+      "running": "en cours",
+      "stopped": "arrêté",
+      "error": "erreur",
+      "starting": "démarrage",
+      "stopping": "arrêt"
+    }
+  },
+  "template": {
+    "badge": "modèle",
+    "mode": "Mode :",
+    "parameters": "Paramètres :",
+    "paramCount": "{{count}} paramètre(s)",
+    "noParams": "aucun paramètre défini"
+  },
+  "badges": {
+    "oneShot": "ponctuel",
+    "autoStart": "démarrage auto",
+    "manual": "manuel"
+  },
+  "actions": {
+    "stopTitle": "Arrêter {{name}}",
+    "stopMessage": "Cela arrêtera le processus {{name}}.",
+    "restartTitle": "Redémarrer {{name}}",
+    "restartMessage": "Cela redémarrera le processus {{name}}."
+  },
+  "executionMode": {
+    "title": "Démarrer {{name}}",
+    "label": "Mode d'exécution :",
+    "threadName": "Mode thread",
+    "threadDescription": "S'exécute comme tâche embarquée dans le serveur web. Démarrage plus rapide, mémoire partagée.",
+    "processName": "Mode processus",
+    "processDescription": "S'exécute comme processus Python séparé. Isolé, tolérant aux pannes, supervision détaillée.",
+    "cancel": "Annuler",
+    "start": "Démarrer {{name}}",
+    "threadAriaLabel": "Mode thread",
+    "processAriaLabel": "Mode processus"
+  }
+}

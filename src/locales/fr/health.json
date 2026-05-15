@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "État du système",
+    "healthMetricsHeading": "Métriques de santé",
+    "processStatusHeading": "État des processus",
+    "activeBacktestsHeading": "Backtests actifs",
+    "quickActionsHeading": "Actions rapides",
+    "featureNotImplemented": "Fonctionnalité pas encore implémentée",
+    "restartServices": "Redémarrer les services",
+    "runHealthCheck": "Lancer un contrôle de santé",
+    "viewLogs": "Voir les logs",
+    "exportReport": "Exporter le rapport"
+  },
+  "status": {
+    "healthy": "Sain",
+    "stopped": "Arrêté",
+    "error": "Erreur",
+    "warning": "Avertissement",
+    "completed": "Terminé",
+    "unknown": "Inconnu"
+  },
+  "metrics": {
+    "tradingEngine": "Moteur de trading",
+    "tradingEngineDescription": "Moteur d'exécution des stratégies",
+    "activeBacktests": "Backtests actifs",
+    "activeBacktestsDescription": "Processus de backtests en cours",
+    "active": "Actif",
+    "inactive": "Inactif"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/D",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}j {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/D",
+    "uptimeLabel": "Temps de fonctionnement",
+    "exitCode": "Code de sortie : {{code}}",
+    "service": "service",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Statistiques de la base de données",
+    "loading": "Chargement des statistiques de la base…",
+    "unavailable": "Statistiques de la base indisponibles : {{message}}",
+    "fallbackError": "Échec du chargement des statistiques de la base de données.",
+    "sampled": "échantillonné {{age}}",
+    "samplerSummary": "Intervalle d'échantillonnage : {{seconds}}s · {{count}} tables",
+    "columns": {
+      "table": "Table",
+      "kind": "Type",
+      "total": "Total",
+      "current": "Courant",
+      "closed": "Fermé",
+      "archivable": "Archivable",
+      "status": "Statut"
+    },
+    "stale": "obsolète"
+  },
+  "notification": {
+    "title": "Sidecar de notifications",
+    "loading": "Chargement des métriques de notifications…",
+    "unavailable": "Métriques de notifications indisponibles : {{message}}",
+    "fallbackError": "Échec du chargement des métriques de notifications.",
+    "sent": "Envoyées",
+    "sentDescription": "Terminal : envoyées",
+    "failed": "Échouées",
+    "failedDescription": "Budget de réessais épuisé",
+    "unregistered": "Non enregistrées",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Annulées (scope)",
+    "cancelledScopeDescription": "Révocation de scope / désactivation utilisateur",
+    "outboxDepth": "Profondeur de la file d'envoi",
+    "outboxDepthDescription": "En file, en attente de réessai"
+  },
+  "retention": {
+    "title": "Planificateur de rétention",
+    "loading": "Chargement de l'exécution de rétention…",
+    "unavailable": "Exécution de rétention indisponible : {{message}}",
+    "fallbackError": "Échec du chargement de l'exécution de rétention.",
+    "lastRun": "dernière exécution {{age}}",
+    "dryRunNotice": "Mode dry-run : les lignes sont archivées mais ne sont pas purgées de la base.",
+    "columns": {
+      "table": "Table",
+      "retain": "Rétention",
+      "archivedWindow": "Fenêtre d'archivage",
+      "archived": "Archivées",
+      "purged": "Purgées",
+      "files": "Fichiers",
+      "status": "Statut"
+    },
+    "retainDays": "{{days}}j",
+    "ok": "ok",
+    "error": "erreur"
+  },
+  "systemMetrics": {
+    "title": "Santé du processus",
+    "loading": "Chargement des métriques du processus…",
+    "unavailable": "Métriques du processus indisponibles : {{message}}",
+    "fallbackError": "Échec du chargement des métriques de santé du processus.",
+    "rawJson": "JSON brut",
+    "pid": "PID",
+    "statusValue": "Statut : {{status}}",
+    "uptime": "Temps de fonctionnement",
+    "threads": "Threads",
+    "openFds": "FD ouverts",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttlé {{count}}×",
+    "memory": "Mémoire",
+    "saturation": "Saturation {{percent}}",
+    "asyncioTasks": "Tâches asyncio",
+    "asyncioActive": "{{count}} actives",
+    "asyncioPending": "+ {{count}} en attente",
+    "dbPool": "Pool DB",
+    "liveConns": "Connexions actives : {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objets : {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Connexions réseau",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Actif",
+    "tracemallocIdle": "Inactif"
+  },
+  "relativeAge": {
+    "justNow": "à l'instant",
+    "seconds": "il y a {{seconds}}s",
+    "minutes": "il y a {{minutes}}min",
+    "hours": "il y a {{hours}}h",
+    "days": "il y a {{days}}j"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}j"
+  },
+  "memory": {
+    "mb": "{{value}} Mo",
+    "gb": "{{value}} Go"
+  }
+}

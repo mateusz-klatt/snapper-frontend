@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Requête",
+    "decision": "Décision",
+    "capsViolation": "Violation de plafond",
+    "selectedDelegate": "Délégué sélectionné",
+    "instrument": "instrument",
+    "deadline": "échéance {{time}}",
+    "decidedBy": "par",
+    "newStatus": "statut",
+    "mode": "mode",
+    "capAttempted": "tenté",
+    "capLimit": "vs limite",
+    "capOn": "sur instrument",
+    "reviewLabel": "revue {{reviewId}}",
+    "unhandledFrame": "Trame d'activité de revue IA non gérée : {{frame}}"
+  },
+  "page": {
+    "title": "Boîte de revues IA",
+    "subtitle": "Revues CONSULT en attente routées vers ce délégué, ainsi que le flux d'événements en direct."
+  },
+  "roleNotice": {
+    "title": "Réservé aux délégués IA",
+    "message": "Cette boîte affiche les revues CONSULT routées vers un principal délégué IA. Connectez-vous avec un compte de délégué IA pour voir les revues en attente et le flux d'activité en direct. Votre rôle actuel est",
+    "unknownRole": "inconnu"
+  },
+  "pending": {
+    "title": "Revues en attente",
+    "loading": "Chargement des revues en attente…",
+    "loadError": "Échec du chargement des revues en attente : {{message}}",
+    "emptyTitle": "Aucune revue en attente",
+    "emptyMessage": "Les nouvelles requêtes CONSULT routées vers ce délégué apparaîtront ici.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Thèse",
+      "status": "Statut",
+      "deadline": "Échéance",
+      "decision": "Décision"
+    },
+    "rationalePlaceholder": "Justification (optionnelle)",
+    "rationaleAriaLabel": "Justification pour la revue {{reviewId}}",
+    "approve": "Approuver",
+    "reject": "Rejeter",
+    "submitError": "Échec de l'envoi : {{message}}"
+  },
+  "activity": {
+    "title": "Activité récente",
+    "emptyTitle": "Aucune activité pour le moment",
+    "emptyMessage": "Les trames de requête, de décision et de violation de plafonds des revues IA apparaîtront ici en flux.",
+    "summaryEmpty": "Aucune trame reçue",
+    "summaryCount": "Affichage de {{shown}} sur {{total}} mises en buffer"
+  }
+}

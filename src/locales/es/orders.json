@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Órdenes y ejecuciones",
+    "newOrder": "Nueva orden",
+    "exportCsv": "Exportar CSV"
+  },
+  "tabs": {
+    "orders": "Órdenes ({{total}})",
+    "executions": "Ejecuciones ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrar por estado:",
+    "options": {
+      "all": "Todas las órdenes",
+      "new": "Nuevas",
+      "open": "Abiertas",
+      "partiallyFilled": "Parcialmente ejecutadas",
+      "partially_filled": "Parcialmente ejecutadas",
+      "filled": "Ejecutadas",
+      "cancelled": "Canceladas",
+      "rejected": "Rechazadas"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/D",
+    "priceMarket": "Mercado",
+    "quantity": "Cantidad",
+    "price": "Precio",
+    "created": "Creada",
+    "createdUnknown": "N/D",
+    "orderId": "ID de orden",
+    "leverage": "Apalancamiento",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "SOLO-REDUCCIÓN",
+    "cancel": "Cancelar",
+    "cancelling": "Cancelando…",
+    "cancelAriaLabel": "Cancelar orden {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Orden #{{orderId}}",
+    "filled": "EJECUTADA",
+    "orderLabel": "Orden {{orderId}}",
+    "size": "Tamaño",
+    "price": "Precio",
+    "total": "Total",
+    "executed": "Ejecutada",
+    "fees": "Comisiones"
+  },
+  "empty": {
+    "ordersTitle": "No se encontraron órdenes",
+    "ordersStartTrading": "Comience a operar para ver las órdenes aquí",
+    "ordersFilterless": "No hay órdenes en estado {{status}}",
+    "executionsTitle": "No se encontraron ejecuciones",
+    "executionsMessage": "Las ejecuciones de operaciones aparecerán aquí"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrumento",
+      "side": "Lado",
+      "type": "Tipo",
+      "status": "Estado",
+      "quantity": "Cantidad",
+      "price": "Precio",
+      "leverage": "Apalancamiento",
+      "reduceOnly": "Solo reducción",
+      "created": "Creada"
+    },
+    "executions": {
+      "orderId": "ID de orden",
+      "instrument": "Instrumento",
+      "side": "Lado",
+      "size": "Tamaño",
+      "price": "Precio",
+      "total": "Total",
+      "fee": "Comisión",
+      "feeAsset": "Activo de comisión",
+      "executed": "Ejecutada"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Nueva orden manual",
+    "titleConfirm": "Confirmar orden",
+    "fields": {
+      "exchange": "Exchange",
+      "instrument": "Instrumento",
+      "side": "Lado",
+      "orderType": "Tipo de orden",
+      "quantity": "Cantidad",
+      "price": "Precio",
+      "stopPrice": "Precio stop",
+      "mode": "Modo",
+      "wallet": "Cartera",
+      "type": "Tipo"
+    },
+    "sideOptions": {
+      "buy": "Compra",
+      "sell": "Venta"
+    },
+    "orderTypeOptions": {
+      "market": "Mercado",
+      "limit": "Límite",
+      "stop": "Stop",
+      "stopLimit": "Stop Límite",
+      "stop_limit": "Stop Límite"
+    },
+    "modeOptions": {
+      "live": "En vivo",
+      "paper": "Papel"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — solo datos de mercado",
+    "walletPaperSuffix": "{{label}} (papel)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "reviewOrder": "Revisar orden",
+      "back": "Atrás",
+      "confirmOrder": "Confirmar orden",
+      "submitting": "Enviando..."
+    },
+    "errors": {
+      "missingRequired": "Todos los campos obligatorios deben estar rellenados",
+      "quantityPositive": "La cantidad debe ser un número positivo",
+      "priceRequired": "El precio es obligatorio para este tipo de orden",
+      "pricePositive": "El precio debe ser un número positivo",
+      "stopPriceRequired": "El precio stop es obligatorio para este tipo de orden",
+      "stopPricePositive": "El precio stop debe ser un número positivo",
+      "createFailed": "Error al crear la orden"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Este instrumento es solo de observación — envíe órdenes en un instrumento con capacidad de ejecución.",
+      "unknownInstrument": "Este instrumento no se reconoce. Recargue la lista e inténtelo de nuevo.",
+      "capsViolation": "Esta orden superaría los límites de seguridad de su cuenta. Revise su configuración de riesgo e inténtelo de nuevo."
+    }
+  }
+}
