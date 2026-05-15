@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Instellingen",
+    "subtitle": "Configureer applicatie-instellingen en parameters",
+    "addButton": "Instelling toevoegen",
+    "searchPlaceholder": "Instellingen zoeken...",
+    "noResults": "Geen instellingen gevonden die aan uw criteria voldoen.",
+    "allCategories": "Alle categorieën",
+    "categoryFilterAriaLabel": "Filter instellingen op categorie"
+  },
+  "errors": {
+    "loadFailed": "Laden instellingen mislukt",
+    "updateFailed": "Bijwerken instelling mislukt",
+    "deleteFailed": "Verwijderen instelling mislukt",
+    "createFailed": "Aanmaken instelling mislukt",
+    "alreadyExists": "Instelling met sleutel \"{{key}}\" bestaat al"
+  },
+  "item": {
+    "edit": "Bewerken",
+    "delete": "Verwijderen",
+    "save": "Opslaan",
+    "saving": "Opslaan...",
+    "cancel": "Annuleren",
+    "yesDelete": "Ja, verwijderen",
+    "deleting": "Verwijderen...",
+    "deleteConfirm": "Deze instelling verwijderen?",
+    "valuePlaceholder": "Voer waarde van instelling in...",
+    "showMore": "Meer tonen",
+    "showLess": "Minder tonen",
+    "toggleAriaLabel": "{{key}} omschakelen",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Gevoelig"
+    },
+    "helpText": {
+      "allowShortSelling": "Sta de engine toe om short-posities te openen. SELL-signalen produceren negatieve desired_units; klemt op 0 wanneer uitgeschakeld.",
+      "allowManualOrders": "Schakel de knop Nieuwe order op het tabblad Orders in. Wanneer uitgeschakeld retourneert POST /api/orders 403."
+    }
+  },
+  "addModal": {
+    "title": "Nieuwe instelling toevoegen",
+    "keyLabel": "Sleutel",
+    "valueLabel": "Waarde",
+    "categoryLabel": "Categorie",
+    "descriptionLabel": "Beschrijving",
+    "keyPlaceholder": "bijv. walutomat.api_key",
+    "keyHint": "Gebruik puntnotatie voor geneste instellingen (bijv. category.subcategory.name)",
+    "valuePlaceholder": "Waarde van instelling",
+    "categorySelectPlaceholder": "Selecteer bestaande of maak nieuwe aan",
+    "newCategoryPlaceholder": "Of voer nieuwe categorienaam in",
+    "descriptionPlaceholder": "Optionele beschrijving",
+    "cancel": "Annuleren",
+    "create": "Instelling aanmaken",
+    "creating": "Aanmaken...",
+    "validation": {
+      "keyRequired": "Sleutel is verplicht",
+      "valueRequired": "Waarde is verplicht",
+      "categoryRequired": "Categorie is verplicht"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Formuliereditor",
+    "rawEditor": "Ruwe JSON-editor",
+    "rawJson": "Ruwe JSON",
+    "switchToForm": "Naar formulier wisselen",
+    "importToForm": "Naar formulier importeren",
+    "parseError": "Parsefout: {{message}}",
+    "arraySummary": "Array ({{length}} items)",
+    "addItem": "Item toevoegen",
+    "remove": "Verwijderen",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

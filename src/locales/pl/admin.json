@@ -54,7 +54,7 @@
     },
     "list": {
       "title": "Zarządzanie użytkownikami",
-      "countLabel": "{{count}} użytkowników",
+      "countLabel": "Użytkownicy: {{count}}",
       "showInactive": "Pokaż nieaktywne",
       "hideInactive": "Ukryj nieaktywne",
       "addUser": "Dodaj użytkownika",
@@ -138,9 +138,9 @@
       "message": "Nie masz uprawnień do zarządzania przyznaniami zakresów. Skontaktuj się z administratorem systemu."
     },
     "list": {
-      "title": "Przyznania zakresów",
-      "countLabel": "{{count}} przyznań",
-      "createGrant": "Utwórz przyznanie",
+      "title": "Uprawnienia zakresowe",
+      "countLabel": "Uprawnienia zakresowe: {{count}}",
+      "createGrant": "Nadaj zakres",
       "selectWalletPrompt": "Wybierz portfel powyżej, aby zobaczyć jego przyznania zakresów.",
       "columns": {
         "operator": "Operator",
@@ -157,7 +157,7 @@
       "handover": "Przekaż"
     },
     "form": {
-      "title": "Utwórz przyznanie zakresu",
+      "title": "Nadaj uprawnienie zakresowe",
       "fields": {
         "operator": "Operator",
         "operatorPlaceholder": "Wybierz operatora...",
@@ -180,7 +180,7 @@
         "targetRequired": "Identyfikator celu jest wymagany"
       },
       "actions": {
-        "createGrant": "Utwórz przyznanie"
+        "createGrant": "Nadaj zakres"
       },
       "toast": {
         "created": "Przyznanie zakresu zostało utworzone",
@@ -189,7 +189,7 @@
       }
     },
     "handover": {
-      "title": "Przekaż przyznanie zakresu",
+      "title": "Przekaż uprawnienie zakresowe",
       "fields": {
         "currentHolder": "Obecny posiadacz",
         "scope": "Zakres",
@@ -243,7 +243,7 @@
         "credentialType": "Typ poświadczenia",
         "label": "Etykieta (opcjonalna)",
         "labelPlaceholder": "np. Główny klucz handlowy",
-        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+        "pemPlaceholder": "Wklej klucz prywatny w formacie PEM"
       },
       "fieldLabels": {
         "api_key": "Klucz API",
@@ -275,20 +275,20 @@
       }
     },
     "rotate": {
-      "title": "Rotuj poświadczenie",
+      "title": "Wymień poświadczenie",
       "fields": {
         "exchange": "Giełda",
         "type": "Typ",
         "label": "Etykieta",
         "newLabel": "Nowa etykieta (opcjonalna)",
         "newLabelPlaceholder": "np. Rotowany klucz 2026-04",
-        "pemPlaceholder": "-----BEGIN RSA PRIVATE KEY-----"
+        "pemPlaceholder": "Wklej klucz prywatny w formacie PEM"
       },
       "actions": {
         "rotate": "Rotuj"
       },
       "toast": {
-        "rotated": "Poświadczenie zostało rotowane",
+        "rotated": "Poświadczenie zostało wymienione",
         "rotateError": "Błąd rotacji poświadczenia"
       }
     }

@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Beheer",
+    "subtitle": "Beheer gebruikers en systeemconfiguratie"
+  },
+  "rolePermissions": {
+    "title": "Rolrechten",
+    "viewer": {
+      "label": "Kijker",
+      "description": "Alleen-leestoegang tot Overzicht en Marktdata. Kan processen, strategieën of systeeminstellingen niet beheren."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Alle Kijker-rechten plus tradingoperaties, strategie-uitvoering, procesbeheer en systeemstatusbewaking."
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "Volledige systeemtoegang inclusief gebruikersbeheer, systeeminstellingen, API-sleutelconfiguratie en alle Operator-rechten."
+    },
+    "table": {
+      "resource": "Bron",
+      "viewer": "Kijker",
+      "operator": "Operator",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "Overzicht",
+      "market": "Marktdata",
+      "processes": "Processen",
+      "strategies": "Strategieën",
+      "orders": "Orders en fills",
+      "positions": "Posities",
+      "signals": "Signalen",
+      "health": "Status",
+      "admin": "Beheer",
+      "settings": "Instellingen"
+    }
+  },
+  "common": {
+    "cancel": "Annuleren",
+    "selectWallet": "Portefeuille selecteren",
+    "selectAWallet": "Selecteer een portefeuille",
+    "chooseWalletPlaceholder": "Kies een portefeuille...",
+    "selectWalletPlaceholder": "Selecteer portefeuille...",
+    "walletLabel": "Portefeuille",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Onbekende fout",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Toegang geweigerd",
+      "message": "U hebt geen rechten om gebruikers te beheren. Neem contact op met uw systeembeheerder."
+    },
+    "list": {
+      "title": "Gebruikersbeheer",
+      "countLabel": "{{count}} gebruikers",
+      "showInactive": "Inactieve tonen",
+      "hideInactive": "Inactieve verbergen",
+      "addUser": "Gebruiker toevoegen",
+      "searchPlaceholder": "Zoek op gebruikersnaam, e-mail of rol...",
+      "columns": {
+        "user": "Gebruiker",
+        "role": "Rol",
+        "status": "Status",
+        "createdAt": "Aangemaakt op",
+        "actions": "Acties"
+      },
+      "status": {
+        "active": "Actief",
+        "inactive": "Inactief"
+      },
+      "unknown": "Onbekend",
+      "empty": {
+        "title": "Geen gebruikers gevonden",
+        "noMatch": "Geen gebruikers voldoen aan uw zoekcriteria.",
+        "noUsers": "Geen gebruikers gevonden.",
+        "noActive": "Geen actieve gebruikers gevonden."
+      },
+      "errorLoading": "Fout bij laden gebruikers: {{message}}",
+      "deactivate": {
+        "title": "Gebruiker deactiveren",
+        "message": "Weet u zeker dat u gebruiker \"{{username}}\" wilt deactiveren? Deze kan dan niet meer inloggen.",
+        "confirm": "Deactiveren"
+      },
+      "toast": {
+        "deactivated": "Gebruiker is gedeactiveerd",
+        "deactivateError": "Fout bij deactiveren gebruiker"
+      }
+    },
+    "form": {
+      "titleEdit": "Gebruiker bewerken",
+      "titleAdd": "Gebruiker toevoegen",
+      "fields": {
+        "username": "Gebruikersnaam",
+        "usernamePlaceholder": "Voer gebruikersnaam in",
+        "password": "Wachtwoord",
+        "passwordPlaceholder": "Voer wachtwoord in",
+        "newPassword": "Nieuw wachtwoord",
+        "newPasswordPlaceholder": "Voer nieuw wachtwoord in",
+        "email": "E-mail",
+        "emailPlaceholder": "Voer e-mail in",
+        "role": "Rol",
+        "accountActive": "Account actief",
+        "resetUserPassword": "Wachtwoord gebruiker resetten"
+      },
+      "roles": {
+        "viewer": "Kijker",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Gebruikersnaam is verplicht",
+        "usernameMinLength": "Gebruikersnaam moet minstens 3 tekens bevatten",
+        "emailRequired": "E-mail is verplicht",
+        "emailInvalid": "Ongeldig e-mailformaat",
+        "passwordRequired": "Wachtwoord is verplicht",
+        "passwordMinLength": "Wachtwoord moet minstens 8 tekens bevatten",
+        "passwordRequiredWhenResetting": "Wachtwoord is verplicht bij resetten"
+      },
+      "actions": {
+        "saveChanges": "Wijzigingen opslaan",
+        "createUser": "Gebruiker aanmaken"
+      },
+      "toast": {
+        "created": "Gebruiker is aangemaakt",
+        "createError": "Fout bij aanmaken gebruiker",
+        "updated": "Gebruiker is bijgewerkt",
+        "updateError": "Fout bij bijwerken gebruiker",
+        "passwordReset": "Wachtwoord van gebruiker is gereset",
+        "resetError": "Fout bij resetten wachtwoord"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Toegang geweigerd",
+      "message": "U hebt geen rechten om scope grants te beheren. Neem contact op met uw systeembeheerder."
+    },
+    "list": {
+      "title": "Scope grants",
+      "countLabel": "{{count}} grants",
+      "createGrant": "Grant aanmaken",
+      "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende scope grants te bekijken.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Scope",
+        "target": "Doel",
+        "grantedAt": "Verleend op",
+        "actions": "Acties"
+      },
+      "empty": {
+        "noGrants": "Geen grants gevonden",
+        "noGrantsHint": "Deze portefeuille heeft geen actieve scope grants."
+      },
+      "errorLoading": "Fout bij laden grants: {{message}}",
+      "handover": "Overdracht"
+    },
+    "form": {
+      "title": "Scope grant aanmaken",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Selecteer operator...",
+        "wallet": "Portefeuille",
+        "scopeKind": "Soort scope",
+        "underlyingPublicId": "Public ID onderliggende waarde",
+        "instrumentPublicId": "Public ID instrument",
+        "underlyingPlaceholder": "bijv. BTC",
+        "instrumentPlaceholder": "bijv. BTC-USD-PERP",
+        "note": "Notitie (optioneel)",
+        "notePlaceholder": "Optionele notitie"
+      },
+      "scopeKinds": {
+        "underlying": "Onderliggende waarde",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operator is verplicht",
+        "walletRequired": "Portefeuille is verplicht",
+        "targetRequired": "Doel-ID is verplicht"
+      },
+      "actions": {
+        "createGrant": "Grant aanmaken"
+      },
+      "toast": {
+        "created": "Scope grant aangemaakt",
+        "conflictError": "Conflict: een andere operator bezit al een grant op deze scope",
+        "createError": "Fout bij aanmaken scope grant"
+      }
+    },
+    "handover": {
+      "title": "Scope grant overdragen",
+      "fields": {
+        "currentHolder": "Huidige houder",
+        "scope": "Scope",
+        "wallet": "Portefeuille",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Overdragen aan operator",
+        "transferToPlaceholder": "Selecteer doeloperator...",
+        "reason": "Reden (optioneel)",
+        "reasonPlaceholder": "bijv. Dienstwissel"
+      },
+      "actions": {
+        "handover": "Overdracht"
+      },
+      "toast": {
+        "completed": "Scope grant overgedragen",
+        "conflictError": "Conflict: de doeloperator bezit al een conflicterende grant",
+        "handoverError": "Fout bij overdragen scope grant"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Toegang geweigerd",
+      "message": "U hebt geen rechten om portefeuillecredentials te beheren. Neem contact op met uw systeembeheerder."
+    },
+    "list": {
+      "title": "Portefeuillecredentials",
+      "countLabel": "{{count}} credentials",
+      "addCredential": "Credential toevoegen",
+      "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende credentials te bekijken.",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "createdAt": "Aangemaakt op",
+        "actions": "Acties"
+      },
+      "empty": {
+        "noCredentials": "Geen credentials gevonden",
+        "noCredentialsHint": "Deze portefeuille heeft geen actieve credentials."
+      },
+      "errorLoading": "Fout bij laden credentials: {{message}}",
+      "rotate": "Roteren"
+    },
+    "form": {
+      "title": "Credential toevoegen",
+      "fields": {
+        "wallet": "Portefeuille",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "bijv. kraken",
+        "credentialType": "Soort credential",
+        "label": "Label (optioneel)",
+        "labelPlaceholder": "bijv. Hoofdsleutel trading",
+        "pemPlaceholder": "Plak hier de privésleutel in PEM-formaat"
+      },
+      "fieldLabels": {
+        "api_key": "API-sleutel",
+        "api_secret": "API-secret",
+        "private_key_pem": "Privésleutel (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Beginsaldo"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-sleutel + secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Portefeuille is verplicht",
+        "exchangeRequired": "Exchange is verplicht",
+        "fieldRequired": "{{field}} is verplicht"
+      },
+      "actions": {
+        "addCredential": "Credential toevoegen"
+      },
+      "toast": {
+        "created": "Credential aangemaakt",
+        "conflictError": "Conflict: deze portefeuille heeft al een actieve credential voor deze exchange",
+        "createError": "Fout bij aanmaken credential"
+      }
+    },
+    "rotate": {
+      "title": "Credential roteren",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "newLabel": "Nieuw label (optioneel)",
+        "newLabelPlaceholder": "bijv. Geroteerde sleutel 2026-04",
+        "pemPlaceholder": "Plak hier de privésleutel in PEM-formaat"
+      },
+      "actions": {
+        "rotate": "Roteren"
+      },
+      "toast": {
+        "rotated": "Credential geroteerd",
+        "rotateError": "Fout bij roteren credential"
+      }
+    }
+  }
+}

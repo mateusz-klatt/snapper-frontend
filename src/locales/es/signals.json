@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Señales"
+  },
+  "filters": {
+    "allStrategies": "Todas las estrategias"
+  },
+  "actions": {
+    "export": "Exportar"
+  },
+  "stats": {
+    "total": "Total",
+    "buy": "Compra",
+    "sell": "Venta",
+    "avgStrength": "Fuerza media"
+  },
+  "card": {
+    "strength": "Fuerza",
+    "price": "Precio",
+    "exchange": "Exchange",
+    "reason": "Motivo:",
+    "noPrice": "N/D"
+  },
+  "strength": {
+    "strong": "Fuerte",
+    "medium": "Media",
+    "weak": "Débil",
+    "veryWeak": "Muy débil"
+  },
+  "time": {
+    "justNow": "Justo ahora",
+    "minutesAgo": "hace {{count}}m",
+    "hoursAgo": "hace {{count}}h"
+  },
+  "empty": {
+    "title": "No se encontraron señales",
+    "message": "Ninguna señal de trading coincide con sus filtros actuales."
+  }
+}

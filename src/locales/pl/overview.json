@@ -6,8 +6,8 @@
     "feedsRunning": "Uruchomione kanały",
     "strategiesActive": "Aktywne strategie",
     "openOrders": "Otwarte zlecenia",
-    "todaysExecutions": "Dzisiejsze wykonania",
-    "executionsOn": "Wykonania ({{date}})"
+    "todaysExecutions": "Dzisiejsze realizacje",
+    "executionsOn": "Realizacje ({{date}})"
   },
   "status": {
     "stopped": "Zatrzymane",
@@ -34,7 +34,7 @@
     "unrealizedPnl": "Niezrealizowany P&L",
     "pnlPercent": "P&L %",
     "positions": "Pozycje",
-    "instrumentsCount": "{{count}} instrumentów",
+    "instrumentsCount": "Instrumenty: {{count}}",
     "empty": "Brak danych o pozycjach"
   },
   "signals": {
@@ -43,8 +43,8 @@
     "noTime": "N/D"
   },
   "executions": {
-    "title": "Ostatnie wykonania",
-    "empty": "Brak ostatnich wykonań",
+    "title": "Ostatnie realizacje",
+    "empty": "Brak ostatnich realizacji",
     "noTime": "N/D"
   }
 }

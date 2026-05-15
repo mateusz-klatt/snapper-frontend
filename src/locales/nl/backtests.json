@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Terug",
+    "backToList": "← Terug naar backtests"
+  },
+  "status": {
+    "pending": "In afwachting",
+    "running": "Loopt",
+    "completed": "Voltooid",
+    "failed": "Mislukt",
+    "cancelled": "Geannuleerd"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Annuleren",
+      "rerun": "Opnieuw uitvoeren"
+    },
+    "fields": {
+      "timeframe": "Tijdframe",
+      "period": "Periode",
+      "initialCash": "Beginkapitaal",
+      "id": "ID"
+    },
+    "errorPrefix": "Fout: {{message}}",
+    "filter": {
+      "ariaLabel": "Filter backtests op status",
+      "options": {
+        "all": "Alle statussen",
+        "pending": "In afwachting",
+        "running": "Loopt",
+        "completed": "Voltooid",
+        "failed": "Mislukt",
+        "cancelled": "Geannuleerd"
+      }
+    },
+    "empty": {
+      "title": "Geen backtests",
+      "message": "Voer een backtest uit via de CLI of API om hier resultaten te zien."
+    }
+  },
+  "detail": {
+    "title": "Backtest-run",
+    "fields": {
+      "strategy": "Strategie",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Periode",
+      "crossAsset": "Cross-asset-attributie",
+      "configHash": "Confighash"
+    },
+    "crossAssetFlow": "{{source}}-feed → {{target}}-fills",
+    "errors": {
+      "invalidRunId": "Ongeldige run-id — moet een UUID7 zijn (ontvangen \"{{id}}\").",
+      "loadFailed": "Laden run mislukt: {{message}}",
+      "notFound": "niet gevonden"
+    }
+  },
+  "compare": {
+    "title": "Vergelijken",
+    "headingFull": "Backtest-vergelijking",
+    "loading": "Vergelijking laden…",
+    "vs": "vs.",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrieken",
+      "equityOverlay": "Equity-overlay",
+      "trades": "Trades",
+      "signals": "Signalen"
+    },
+    "pairingMode": {
+      "auto": "automatisch",
+      "manual": "handmatig"
+    },
+    "errors": {
+      "notFound": "Vergelijking niet gevonden in huidige portefeuille.",
+      "loadFailed": "Laden vergelijking mislukt: {{message}}",
+      "unknown": "onbekende fout",
+      "emptyResponse": "Leeg vergelijkingsantwoord."
+    },
+    "launcher": {
+      "title": "Vergelijken",
+      "submit": "Vergelijken",
+      "autoPair": "Vergelijken met meest recente",
+      "terminalGate": "vergelijken beschikbaar zodra deze run een terminale status bereikt",
+      "noSiblings": "geen andere runs met deze configuratie",
+      "limitNotice": "toont {{count}} meest recente — gebruik handmatige paring voor oudere runs",
+      "pickPlaceholder": "— kies een run om te vergelijken —",
+      "showAllLabel": "Alle runs tonen (niet alleen dezelfde configuratie)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "alle runs",
+        "sameConfig": "zelfde configuratie"
+      },
+      "errors": {
+        "pickRequired": "selecteer een run uit de lijst"
+      }
+    },
+    "diffColumns": {
+      "common": "Gemeenschappelijk",
+      "onlyA": "Alleen in A",
+      "onlyB": "Alleen in B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Geen vergelijkbare metrieken — beide runs hadden geen geregistreerde waarden.",
+      "columns": {
+        "name": "Metriek",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Wachten op voortgang…",
+    "candles": "{{done}} / {{total}} candles",
+    "candlesNoTotal": "{{done}} candles",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} trades",
+    "milestoneLine": "mijlpaal {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

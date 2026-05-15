@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Orders en executies",
+    "newOrder": "Nieuwe order",
+    "exportCsv": "Exporteer CSV"
+  },
+  "tabs": {
+    "orders": "Orders ({{total}})",
+    "executions": "Executies ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filter op status:",
+    "options": {
+      "all": "Alle orders",
+      "new": "Nieuw",
+      "open": "Open",
+      "partiallyFilled": "Gedeeltelijk gevuld",
+      "partially_filled": "Gedeeltelijk gevuld",
+      "filled": "Gevuld",
+      "cancelled": "Geannuleerd",
+      "rejected": "Afgewezen"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N.v.t.",
+    "priceMarket": "Market",
+    "quantity": "Aantal",
+    "price": "Prijs",
+    "created": "Aangemaakt",
+    "createdUnknown": "N.v.t.",
+    "orderId": "Order-ID",
+    "leverage": "Hefboom",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "ALLEEN-REDUCEREN",
+    "cancel": "Annuleren",
+    "cancelling": "Annuleren…",
+    "cancelAriaLabel": "Order {{orderId}} annuleren"
+  },
+  "executionCard": {
+    "orderNumber": "Order #{{orderId}}",
+    "filled": "GEVULD",
+    "orderLabel": "Order {{orderId}}",
+    "size": "Omvang",
+    "price": "Prijs",
+    "total": "Totaal",
+    "executed": "Uitgevoerd",
+    "fees": "Kosten"
+  },
+  "empty": {
+    "ordersTitle": "Geen orders gevonden",
+    "ordersStartTrading": "Begin met traden om hier orders te zien",
+    "ordersFilterless": "Geen {{status}}-orders",
+    "executionsTitle": "Geen executies gevonden",
+    "executionsMessage": "Trade-executies verschijnen hier"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Zijde",
+      "type": "Type",
+      "status": "Status",
+      "quantity": "Aantal",
+      "price": "Prijs",
+      "leverage": "Hefboom",
+      "reduceOnly": "Alleen reduceren",
+      "created": "Aangemaakt"
+    },
+    "executions": {
+      "orderId": "Order-ID",
+      "instrument": "Instrument",
+      "side": "Zijde",
+      "size": "Omvang",
+      "price": "Prijs",
+      "total": "Totaal",
+      "fee": "Kosten",
+      "feeAsset": "Kostenactivum",
+      "executed": "Uitgevoerd"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Nieuwe handmatige order",
+    "titleConfirm": "Order bevestigen",
+    "fields": {
+      "exchange": "Exchange",
+      "instrument": "Instrument",
+      "side": "Zijde",
+      "orderType": "Ordertype",
+      "quantity": "Aantal",
+      "price": "Prijs",
+      "stopPrice": "Stopprijs",
+      "mode": "Modus",
+      "wallet": "Portefeuille",
+      "type": "Type"
+    },
+    "sideOptions": {
+      "buy": "Kopen",
+      "sell": "Verkopen"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — alleen marktdata",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Annuleren",
+      "reviewOrder": "Order controleren",
+      "back": "Terug",
+      "confirmOrder": "Order bevestigen",
+      "submitting": "Verzenden..."
+    },
+    "errors": {
+      "missingRequired": "Alle vereiste velden moeten worden ingevuld",
+      "quantityPositive": "Aantal moet een positief getal zijn",
+      "priceRequired": "Prijs is verplicht voor dit ordertype",
+      "pricePositive": "Prijs moet een positief getal zijn",
+      "stopPriceRequired": "Stopprijs is verplicht voor dit ordertype",
+      "stopPricePositive": "Stopprijs moet een positief getal zijn",
+      "createFailed": "Aanmaken order mislukt"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Dit instrument is alleen voor observatie — plaats orders op een uitvoerbaar instrument.",
+      "unknownInstrument": "Dit instrument wordt niet herkend. Herlaad de lijst en probeer opnieuw.",
+      "capsViolation": "Deze order zou uw account-veiligheidscaps overschrijden. Controleer uw risico-instellingen en probeer opnieuw."
+    }
+  }
+}

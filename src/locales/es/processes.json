@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Control de procesos",
+    "subtitle": "Monitorización y control de procesos en tiempo real"
+  },
+  "sections": {
+    "longRunning": "Procesos de larga duración",
+    "executorTemplates": "Plantillas de ejecutor",
+    "executorTemplatesHint": "Editar la configuración de la plantilla afecta a todas las carteras de este exchange tras reiniciar. Las plantillas son solo de configuración — inicie la instancia por cartera abajo para ejecutar un ejecutor.",
+    "walletInstances": "Instancias por cartera",
+    "taskProcesses": "Procesos de tareas"
+  },
+  "card": {
+    "stop": "Detener",
+    "start": "Iniciar",
+    "restart": "Reiniciar",
+    "starting": "Iniciando...",
+    "stopping": "Deteniendo...",
+    "status": {
+      "running": "en ejecución",
+      "stopped": "detenido",
+      "error": "error",
+      "starting": "iniciando",
+      "stopping": "deteniendo"
+    }
+  },
+  "template": {
+    "badge": "plantilla",
+    "mode": "Modo:",
+    "parameters": "Parámetros:",
+    "paramCount": "{{count}} parámetro(s)",
+    "noParams": "no se han definido parámetros"
+  },
+  "badges": {
+    "oneShot": "una vez",
+    "autoStart": "inicio automático",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Detener {{name}}",
+    "stopMessage": "Esto detendrá el proceso {{name}}.",
+    "restartTitle": "Reiniciar {{name}}",
+    "restartMessage": "Esto reiniciará el proceso {{name}}."
+  },
+  "executionMode": {
+    "title": "Iniciar {{name}}",
+    "label": "Modo de ejecución:",
+    "threadName": "Modo hilo",
+    "threadDescription": "Se ejecuta como tarea integrada dentro del servidor web. Inicio más rápido, memoria compartida.",
+    "processName": "Modo proceso",
+    "processDescription": "Se ejecuta como un proceso Python separado. Aislado, tolerante a fallos, con monitorización detallada.",
+    "cancel": "Cancelar",
+    "start": "Iniciar {{name}}",
+    "threadAriaLabel": "Modo hilo",
+    "processAriaLabel": "Modo proceso"
+  }
+}

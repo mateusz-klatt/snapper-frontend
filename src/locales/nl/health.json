@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Systeemstatus",
+    "healthMetricsHeading": "Statusmetrieken",
+    "processStatusHeading": "Processtatus",
+    "activeBacktestsHeading": "Actieve backtests",
+    "quickActionsHeading": "Snelle acties",
+    "featureNotImplemented": "Functie nog niet geïmplementeerd",
+    "restartServices": "Services herstarten",
+    "runHealthCheck": "Statuscontrole uitvoeren",
+    "viewLogs": "Logs bekijken",
+    "exportReport": "Rapport exporteren"
+  },
+  "status": {
+    "healthy": "Gezond",
+    "stopped": "Gestopt",
+    "error": "Fout",
+    "warning": "Waarschuwing",
+    "completed": "Voltooid",
+    "unknown": "Onbekend"
+  },
+  "metrics": {
+    "tradingEngine": "Trading-engine",
+    "tradingEngineDescription": "Engine voor strategie-uitvoering",
+    "activeBacktests": "Actieve backtests",
+    "activeBacktestsDescription": "Lopende backtestprocessen",
+    "active": "Actief",
+    "inactive": "Inactief"
+  },
+  "process": {
+    "uptimeNotAvailable": "N.v.t.",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}u {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}u",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N.v.t.",
+    "uptimeLabel": "Uptime",
+    "exitCode": "Exitcode: {{code}}",
+    "service": "service",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Databasestatistieken",
+    "loading": "Databasestatistieken laden…",
+    "unavailable": "Databasestatistieken niet beschikbaar: {{message}}",
+    "fallbackError": "Laden databasestatistieken mislukt.",
+    "sampled": "bemonsterd {{age}}",
+    "samplerSummary": "Sampler-interval: {{seconds}}s · {{count}} tabellen",
+    "columns": {
+      "table": "Tabel",
+      "kind": "Soort",
+      "total": "Totaal",
+      "current": "Huidig",
+      "closed": "Gesloten",
+      "archivable": "Archiveerbaar",
+      "status": "Status"
+    },
+    "stale": "verouderd"
+  },
+  "notification": {
+    "title": "Notificatie-sidecar",
+    "loading": "Notificatiemetrieken laden…",
+    "unavailable": "Notificatiemetrieken niet beschikbaar: {{message}}",
+    "fallbackError": "Laden notificatiemetrieken mislukt.",
+    "sent": "Verzonden",
+    "sentDescription": "Terminaal: verzonden",
+    "failed": "Mislukt",
+    "failedDescription": "Retry-budget uitgeput",
+    "unregistered": "Niet geregistreerd",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Geannuleerd (scope)",
+    "cancelledScopeDescription": "Scope ingetrokken / gebruiker gedeactiveerd",
+    "outboxDepth": "Outbox-diepte",
+    "outboxDepthDescription": "In wachtrij, wacht op retry"
+  },
+  "retention": {
+    "title": "Retention-scheduler",
+    "loading": "Retention-run laden…",
+    "unavailable": "Retention-run niet beschikbaar: {{message}}",
+    "fallbackError": "Laden retention-run mislukt.",
+    "lastRun": "laatste run {{age}}",
+    "dryRunNotice": "Dry-runmodus: rijen worden gearchiveerd maar niet uit de DB verwijderd.",
+    "columns": {
+      "table": "Tabel",
+      "retain": "Behouden",
+      "archivedWindow": "Gearchiveerd venster",
+      "archived": "Gearchiveerd",
+      "purged": "Verwijderd",
+      "files": "Bestanden",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "fout"
+  },
+  "systemMetrics": {
+    "title": "Processtatus",
+    "loading": "Procesmetrieken laden…",
+    "unavailable": "Procesmetrieken niet beschikbaar: {{message}}",
+    "fallbackError": "Laden procesmetrieken mislukt.",
+    "rawJson": "Ruwe JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Uptime",
+    "threads": "Threads",
+    "openFds": "Open FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttled {{count}}×",
+    "memory": "Geheugen",
+    "saturation": "Verzadiging {{percent}}",
+    "asyncioTasks": "Asyncio-taken",
+    "asyncioActive": "{{count}} actief",
+    "asyncioPending": "+ {{count}} in afwachting",
+    "dbPool": "DB-pool",
+    "liveConns": "Live verbindingen: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objecten: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Netwerkverbindingen",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Actief",
+    "tracemallocIdle": "Inactief"
+  },
+  "relativeAge": {
+    "justNow": "zojuist",
+    "seconds": "{{seconds}}s geleden",
+    "minutes": "{{minutes}}min geleden",
+    "hours": "{{hours}}u geleden",
+    "days": "{{days}}d geleden"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}u",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

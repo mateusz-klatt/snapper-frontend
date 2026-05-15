@@ -73,7 +73,7 @@
       "object": "(obiekt)",
       "string": "(tekst)",
       "number": "(liczba)",
-      "boolean": "(logiczna)",
+      "boolean": "(wartość logiczna)",
       "bigint": "(bigint)",
       "function": "(funkcja)",
       "symbol": "(symbol)",
@@ -81,7 +81,7 @@
     }
   },
   "booleanValue": {
-    "true": "prawda",
-    "false": "fałsz"
+    "true": "true",
+    "false": "false"
   }
 }

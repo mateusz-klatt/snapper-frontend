@@ -1,0 +1,83 @@
+{
+  "loading": "Laden...",
+  "error": "Fout",
+  "retry": "Opnieuw proberen",
+  "close": "Sluiten",
+  "cancel": "Annuleren",
+  "confirm": "Bevestigen",
+  "save": "Opslaan",
+  "documentation": "Documentatie (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Taal wijzigen",
+    "flagAriaLabel": "Schakel naar {{country}}",
+    "currentAriaLabel": "Huidige taal: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Tradingconsole",
+    "tagline": "Precisiewerkstation",
+    "openSidebar": "Zijbalk openen",
+    "closeSidebar": "Zijbalk sluiten",
+    "sidebar": "Zijbalk",
+    "mainNavigation": "Hoofdnavigatie",
+    "tradingContent": "Tradinginhoud",
+    "skipToContent": "Tradinginhoud overslaan",
+    "lag": "Vertraging:",
+    "lagTitle": "Round-triplatentie naar de WebSocket-server",
+    "topics": "Topics:",
+    "topicsTitle": "Aantal geabonneerde WebSocket-topics",
+    "connected": "Verbonden",
+    "disconnected": "Verbinding verbroken",
+    "connectedTitle": "Verbonden met WebSocket",
+    "disconnectedTitle": "Verbinding met WebSocket verbroken",
+    "switchToLightMode": "Schakel naar lichte modus",
+    "switchToDarkMode": "Schakel naar donkere modus",
+    "timeTravelBanner": "Tijdreismodus — historische data bekijken (alleen-lezen)",
+    "lagUnknown": "Onbekend",
+    "walletPicker": {
+      "ariaLabel": "Actieve portefeuille",
+      "placeholder": "Portefeuille",
+      "allWallets": "Alle portefeuilles",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Actieve operator",
+      "placeholder": "Operator",
+      "allOperators": "Alle operators"
+    },
+    "timeTravel": {
+      "pickerTitle": "Tijdreis: kies een historisch tijdstip",
+      "exitAriaLabel": "Tijdreismodus verlaten",
+      "exitTitle": "Terug naar livemodus"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument alleen voor observatie. Snapper ontvangt marktdata, maar kan geen orders plaatsen voor dit (symbool, exchange)-paar.",
+      "ariaLabel": "Instrument alleen met marktdata",
+      "badge": "Alleen marktdata"
+    },
+    "liveOnly": {
+      "notice": "Dit tabblad toont de huidige status — een historische weergave is niet beschikbaar."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Er is iets misgegaan",
+    "titleWithComponent": "Fout in {{componentName}}",
+    "stackTrace": "Stacktrace",
+    "tryAgain": "Opnieuw proberen"
+  },
+  "nav": {
+    "overview": "Overzicht",
+    "market": "Marktdata",
+    "processes": "Processen",
+    "strategies": "Strategieën",
+    "orders": "Orders en executies",
+    "positions": "Posities",
+    "signals": "Signalen",
+    "backtests": "Backtests",
+    "health": "Status",
+    "admin": "Beheer",
+    "aiIntegration": "AI-integratie",
+    "aiReviews": "AI-beoordelingen",
+    "settings": "Instellingen"
+  }
+}

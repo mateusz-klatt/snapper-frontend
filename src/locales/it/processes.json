@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Controllo processi",
+    "subtitle": "Monitoraggio e controllo dei processi in tempo reale"
+  },
+  "sections": {
+    "longRunning": "Processi a esecuzione prolungata",
+    "executorTemplates": "Template degli executor",
+    "executorTemplatesHint": "La modifica della configurazione del template influisce su tutti i portafogli di questo exchange dopo il riavvio. I template sono solo configurazione — avvia l'istanza per portafoglio qui sotto per eseguire un executor.",
+    "walletInstances": "Istanze portafoglio",
+    "taskProcesses": "Processi task"
+  },
+  "card": {
+    "stop": "Arresta",
+    "start": "Avvia",
+    "restart": "Riavvia",
+    "starting": "Avvio in corso...",
+    "stopping": "Arresto in corso...",
+    "status": {
+      "running": "in esecuzione",
+      "stopped": "arrestato",
+      "error": "errore",
+      "starting": "avvio",
+      "stopping": "arresto"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Modalità:",
+    "parameters": "Parametri:",
+    "paramCount": "{{count}} parametro(i)",
+    "noParams": "nessun parametro impostato"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manuale"
+  },
+  "actions": {
+    "stopTitle": "Arresta {{name}}",
+    "stopMessage": "Questa azione arresterà il processo {{name}}.",
+    "restartTitle": "Riavvia {{name}}",
+    "restartMessage": "Questa azione riavvierà il processo {{name}}."
+  },
+  "executionMode": {
+    "title": "Avvia {{name}}",
+    "label": "Modalità di esecuzione:",
+    "threadName": "Modalità thread",
+    "threadDescription": "Eseguito come task embedded nel web server. Avvio più rapido, memoria condivisa.",
+    "processName": "Modalità processo",
+    "processDescription": "Eseguito come processo Python separato. Isolato, tollerante ai guasti, monitoraggio dettagliato.",
+    "cancel": "Annulla",
+    "start": "Avvia {{name}}",
+    "threadAriaLabel": "Modalità thread",
+    "processAriaLabel": "Modalità processo"
+  }
+}

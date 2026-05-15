@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signale"
+  },
+  "filters": {
+    "allStrategies": "Alle Strategien"
+  },
+  "actions": {
+    "export": "Exportieren"
+  },
+  "stats": {
+    "total": "Gesamt",
+    "buy": "Kauf",
+    "sell": "Verkauf",
+    "avgStrength": "Ø Stärke"
+  },
+  "card": {
+    "strength": "Stärke",
+    "price": "Preis",
+    "exchange": "Börse",
+    "reason": "Grund:",
+    "noPrice": "n. v."
+  },
+  "strength": {
+    "strong": "Stark",
+    "medium": "Mittel",
+    "weak": "Schwach",
+    "veryWeak": "Sehr schwach"
+  },
+  "time": {
+    "justNow": "Gerade eben",
+    "minutesAgo": "vor {{count}} min",
+    "hoursAgo": "vor {{count}} h"
+  },
+  "empty": {
+    "title": "Keine Signale gefunden",
+    "message": "Keine Trading-Signale entsprechen den aktuellen Filtern."
+  }
+}

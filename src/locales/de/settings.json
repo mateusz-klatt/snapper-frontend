@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Einstellungen",
+    "subtitle": "Anwendungseinstellungen und Parameter konfigurieren",
+    "addButton": "Einstellung hinzufügen",
+    "searchPlaceholder": "Einstellungen suchen...",
+    "noResults": "Keine Einstellungen entsprechen Ihren Kriterien.",
+    "allCategories": "Alle Kategorien",
+    "categoryFilterAriaLabel": "Einstellungen nach Kategorie filtern"
+  },
+  "errors": {
+    "loadFailed": "Einstellungen konnten nicht geladen werden",
+    "updateFailed": "Einstellung konnte nicht aktualisiert werden",
+    "deleteFailed": "Einstellung konnte nicht gelöscht werden",
+    "createFailed": "Einstellung konnte nicht erstellt werden",
+    "alreadyExists": "Einstellung mit Schlüssel \"{{key}}\" existiert bereits"
+  },
+  "item": {
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "save": "Speichern",
+    "saving": "Speichere...",
+    "cancel": "Abbrechen",
+    "yesDelete": "Ja, löschen",
+    "deleting": "Wird gelöscht...",
+    "deleteConfirm": "Diese Einstellung löschen?",
+    "valuePlaceholder": "Wert der Einstellung eingeben...",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "toggleAriaLabel": "{{key}} umschalten",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Vertraulich"
+    },
+    "helpText": {
+      "allowShortSelling": "Erlaubt der Engine das Eröffnen von Short-Positionen. SELL-Signale erzeugen negative desired_units; bei Deaktivierung werden Werte auf 0 begrenzt.",
+      "allowManualOrders": "Aktiviert die Schaltfläche „Neuer Auftrag“ auf dem Aufträge-Tab. Bei Deaktivierung liefert POST /api/orders 403 zurück."
+    }
+  },
+  "addModal": {
+    "title": "Neue Einstellung hinzufügen",
+    "keyLabel": "Schlüssel",
+    "valueLabel": "Wert",
+    "categoryLabel": "Kategorie",
+    "descriptionLabel": "Beschreibung",
+    "keyPlaceholder": "z. B. walutomat.api_key",
+    "keyHint": "Verwenden Sie Punktnotation für verschachtelte Einstellungen (z. B. kategorie.unterkategorie.name)",
+    "valuePlaceholder": "Wert der Einstellung",
+    "categorySelectPlaceholder": "Vorhandene wählen oder neue erstellen",
+    "newCategoryPlaceholder": "Oder neuen Kategorienamen eingeben",
+    "descriptionPlaceholder": "Optionale Beschreibung",
+    "cancel": "Abbrechen",
+    "create": "Einstellung erstellen",
+    "creating": "Wird erstellt...",
+    "validation": {
+      "keyRequired": "Schlüssel ist erforderlich",
+      "valueRequired": "Wert ist erforderlich",
+      "categoryRequired": "Kategorie ist erforderlich"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Formular-Editor",
+    "rawEditor": "Roh-JSON-Editor",
+    "rawJson": "Roh-JSON",
+    "switchToForm": "Zum Formular wechseln",
+    "importToForm": "In Formular importieren",
+    "parseError": "Parse-Fehler: {{message}}",
+    "arraySummary": "Array ({{length}} Elemente)",
+    "addItem": "Element hinzufügen",
+    "remove": "Entfernen",
+    "typeHint": {
+      "array": "(Array)",
+      "object": "(Objekt)",
+      "string": "(Zeichenkette)",
+      "number": "(Zahl)",
+      "boolean": "(Boolesch)",
+      "bigint": "(bigint)",
+      "function": "(Funktion)",
+      "symbol": "(Symbol)",
+      "undefined": "(undefiniert)"
+    }
+  },
+  "booleanValue": {
+    "true": "wahr",
+    "false": "falsch"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Paramètres",
+    "subtitle": "Configurez les paramètres et les options de l'application",
+    "addButton": "Ajouter un paramètre",
+    "searchPlaceholder": "Rechercher des paramètres...",
+    "noResults": "Aucun paramètre ne correspond à vos critères.",
+    "allCategories": "Toutes les catégories",
+    "categoryFilterAriaLabel": "Filtrer les paramètres par catégorie"
+  },
+  "errors": {
+    "loadFailed": "Échec du chargement des paramètres",
+    "updateFailed": "Échec de la mise à jour du paramètre",
+    "deleteFailed": "Échec de la suppression du paramètre",
+    "createFailed": "Échec de la création du paramètre",
+    "alreadyExists": "Un paramètre avec la clé \"{{key}}\" existe déjà"
+  },
+  "item": {
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "saving": "Enregistrement...",
+    "cancel": "Annuler",
+    "yesDelete": "Oui, supprimer",
+    "deleting": "Suppression...",
+    "deleteConfirm": "Supprimer ce paramètre ?",
+    "valuePlaceholder": "Saisissez la valeur du paramètre...",
+    "showMore": "Afficher plus",
+    "showLess": "Afficher moins",
+    "toggleAriaLabel": "Basculer {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensible"
+    },
+    "helpText": {
+      "allowShortSelling": "Autoriser le moteur à ouvrir des positions courtes. Les signaux SELL produiront des desired_units négatifs ; ramené à 0 lorsque désactivé.",
+      "allowManualOrders": "Active le bouton Nouvel ordre sur l'onglet Ordres. Lorsque désactivé, POST /api/orders renvoie 403."
+    }
+  },
+  "addModal": {
+    "title": "Ajouter un nouveau paramètre",
+    "keyLabel": "Clé",
+    "valueLabel": "Valeur",
+    "categoryLabel": "Catégorie",
+    "descriptionLabel": "Description",
+    "keyPlaceholder": "p. ex. walutomat.api_key",
+    "keyHint": "Utilisez la notation pointée pour les paramètres imbriqués (p. ex. catégorie.souscategorie.nom)",
+    "valuePlaceholder": "Valeur du paramètre",
+    "categorySelectPlaceholder": "Sélectionner une existante ou en créer une nouvelle",
+    "newCategoryPlaceholder": "Ou saisissez le nom d'une nouvelle catégorie",
+    "descriptionPlaceholder": "Description optionnelle",
+    "cancel": "Annuler",
+    "create": "Créer le paramètre",
+    "creating": "Création...",
+    "validation": {
+      "keyRequired": "La clé est requise",
+      "valueRequired": "La valeur est requise",
+      "categoryRequired": "La catégorie est requise"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Éditeur de formulaire",
+    "rawEditor": "Éditeur JSON brut",
+    "rawJson": "JSON brut",
+    "switchToForm": "Basculer vers le formulaire",
+    "importToForm": "Importer dans le formulaire",
+    "parseError": "Erreur d'analyse : {{message}}",
+    "arraySummary": "Tableau ({{length}} éléments)",
+    "addItem": "Ajouter un élément",
+    "remove": "Supprimer",
+    "typeHint": {
+      "array": "(tableau)",
+      "object": "(objet)",
+      "string": "(chaîne)",
+      "number": "(nombre)",
+      "boolean": "(booléen)",
+      "bigint": "(bigint)",
+      "function": "(fonction)",
+      "symbol": "(symbole)",
+      "undefined": "(indéfini)"
+    }
+  },
+  "booleanValue": {
+    "true": "vrai",
+    "false": "faux"
+  }
+}

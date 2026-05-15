@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Prozesssteuerung",
+    "subtitle": "Echtzeit-Überwachung und Steuerung von Prozessen"
+  },
+  "sections": {
+    "longRunning": "Langlaufende Prozesse",
+    "executorTemplates": "Executor-Vorlagen",
+    "executorTemplatesHint": "Das Bearbeiten der Vorlagenkonfiguration wirkt sich nach einem Neustart auf alle Wallets dieser Börse aus. Vorlagen dienen nur der Konfiguration — starten Sie die Wallet-Instanz unten, um einen Executor auszuführen.",
+    "walletInstances": "Wallet-Instanzen",
+    "taskProcesses": "Task-Prozesse"
+  },
+  "card": {
+    "stop": "Stoppen",
+    "start": "Starten",
+    "restart": "Neu starten",
+    "starting": "Wird gestartet...",
+    "stopping": "Wird gestoppt...",
+    "status": {
+      "running": "läuft",
+      "stopped": "gestoppt",
+      "error": "Fehler",
+      "starting": "wird gestartet",
+      "stopping": "wird gestoppt"
+    }
+  },
+  "template": {
+    "badge": "Vorlage",
+    "mode": "Modus:",
+    "parameters": "Parameter:",
+    "paramCount": "{{count}} Parameter",
+    "noParams": "keine Parameter gesetzt"
+  },
+  "badges": {
+    "oneShot": "einmalig",
+    "autoStart": "Autostart",
+    "manual": "manuell"
+  },
+  "actions": {
+    "stopTitle": "{{name}} stoppen",
+    "stopMessage": "Dies stoppt den Prozess {{name}}.",
+    "restartTitle": "{{name}} neu starten",
+    "restartMessage": "Dies startet den Prozess {{name}} neu."
+  },
+  "executionMode": {
+    "title": "{{name}} starten",
+    "label": "Ausführungsmodus:",
+    "threadName": "Thread-Modus",
+    "threadDescription": "Läuft als eingebettete Task im Webserver. Schnellerer Start, geteilter Speicher.",
+    "processName": "Prozess-Modus",
+    "processDescription": "Läuft als separater Python-Prozess. Isoliert, fehlertolerant, detailliertes Monitoring.",
+    "cancel": "Abbrechen",
+    "start": "{{name}} starten",
+    "threadAriaLabel": "Thread-Modus",
+    "processAriaLabel": "Prozess-Modus"
+  }
+}

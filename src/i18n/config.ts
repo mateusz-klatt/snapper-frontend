@@ -72,7 +72,7 @@ void i18n
       'admin',
       'settings',
     ],
-    supportedLngs: ['en', 'pl'],
+    supportedLngs: ['en', 'pl', 'de', 'fr', 'es', 'it', 'nl'],
     partialBundledLanguages: true,
     interpolation: { escapeValue: false },
     react: { useSuspense: false },

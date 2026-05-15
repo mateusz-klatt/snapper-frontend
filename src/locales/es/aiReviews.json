@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Solicitud",
+    "decision": "Decisión",
+    "capsViolation": "Violación de límites",
+    "selectedDelegate": "Delegado seleccionado",
+    "instrument": "instrumento",
+    "deadline": "fecha límite {{time}}",
+    "decidedBy": "por",
+    "newStatus": "estado",
+    "mode": "modo",
+    "capAttempted": "intentado",
+    "capLimit": "frente al límite",
+    "capOn": "en el instrumento",
+    "reviewLabel": "revisión {{reviewId}}",
+    "unhandledFrame": "Marco de actividad de revisión de IA no procesado: {{frame}}"
+  },
+  "page": {
+    "title": "Bandeja de revisiones de IA",
+    "subtitle": "Revisiones CONSULT pendientes enrutadas a este delegado, junto con el flujo de eventos en vivo."
+  },
+  "roleNotice": {
+    "title": "Reservado para delegados de IA",
+    "message": "Esta bandeja muestra las revisiones CONSULT enrutadas a un principal de delegado de IA. Inicie sesión con una cuenta de delegado de IA para ver las revisiones pendientes y el flujo de actividad en vivo. Su rol actual es",
+    "unknownRole": "desconocido"
+  },
+  "pending": {
+    "title": "Revisiones pendientes",
+    "loading": "Cargando revisiones pendientes…",
+    "loadError": "Error al cargar las revisiones pendientes: {{message}}",
+    "emptyTitle": "Sin revisiones pendientes",
+    "emptyMessage": "Las nuevas solicitudes CONSULT enrutadas a este delegado aparecerán aquí.",
+    "columns": {
+      "instrument": "Instrumento",
+      "thesis": "Tesis",
+      "status": "Estado",
+      "deadline": "Fecha límite",
+      "decision": "Decisión"
+    },
+    "rationalePlaceholder": "Justificación (opcional)",
+    "rationaleAriaLabel": "Justificación para la revisión {{reviewId}}",
+    "approve": "Aprobar",
+    "reject": "Rechazar",
+    "submitError": "Error al enviar: {{message}}"
+  },
+  "activity": {
+    "title": "Actividad reciente",
+    "emptyTitle": "Aún no hay actividad",
+    "emptyMessage": "Los marcos de solicitud, decisión y violación de límites de revisión de IA se transmitirán aquí.",
+    "summaryEmpty": "No se recibieron marcos",
+    "summaryCount": "Mostrando {{shown}} de {{total}} en búfer"
+  }
+}

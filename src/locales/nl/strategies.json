@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strategiebeheer",
+    "register": "Strategie registreren",
+    "saving": "Opslaan…",
+    "descriptionCanManage": "Registreer nieuwe strategieprocessen rechtstreeks vanuit de UI. Autostart houdt het proces actief over herstarten heen.",
+    "descriptionViewer": "Bekijk geconfigureerde strategieën en hun status. Neem contact op met een operator of admin om strategieën te beheren.",
+    "searchPlaceholder": "Strategieën zoeken...",
+    "filter": {
+      "all": "Alle statussen",
+      "running": "Loopt",
+      "stopped": "Gestopt"
+    },
+    "configuredHeading": "Geconfigureerde strategieën",
+    "noMatches": "Geen strategieën voldoen aan uw filters",
+    "clearFilters": "Filters wissen",
+    "emptyTitle": "Geen strategieën geconfigureerd",
+    "emptyCanManage": "Registreer een strategie om met algoritmisch traden te beginnen",
+    "emptyViewer": "Er zijn nog geen strategieën geconfigureerd"
+  },
+  "confirm": {
+    "startTitle": "{{name}} starten",
+    "startMessage": "Dit start de strategie {{name}}. Mogelijk begint live tradingactiviteit.",
+    "stopTitle": "{{name}} stoppen",
+    "stopMessage": "Dit stopt de strategie {{name}}. Actieve posities worden niet automatisch gesloten."
+  },
+  "toast": {
+    "saved": "Strategie {{name}} opgeslagen",
+    "started": "Strategie {{name}} gestart",
+    "registerFailed": "Registreren strategie mislukt: {{message}}",
+    "startSuccess": "Strategie succesvol gestart",
+    "stopSuccess": "Strategie succesvol gestopt",
+    "alreadyRunning": "Strategie loopt al",
+    "notRunning": "Strategie loopt niet",
+    "configNotFound": "Strategieconfiguratie niet gevonden. Controleer de database-instellingen.",
+    "networkError": "Netwerkfout. Controleer de verbinding en probeer opnieuw.",
+    "startFailed": "Starten strategie mislukt: {{message}}",
+    "stopFailed": "Stoppen strategie mislukt: {{message}}",
+    "unknownError": "Onbekende fout"
+  },
+  "card": {
+    "ariaLabel": "Strategie: {{name}}",
+    "modeLabel": "Modus: {{mode}}",
+    "autostartEnabled": "Autostart: ingeschakeld",
+    "autostartDisabled": "Autostart: uitgeschakeld",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Datavertraging: {{seconds}} seconden",
+    "lagBadge": "vertraging: {{seconds}}s",
+    "feedLag": "Feedvertraging: {{ms}}ms",
+    "heartbeatAge": "HB-leeftijd: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Datavertraging",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Details tonen",
+    "hideDetails": "Details verbergen",
+    "inputs": "Inputs ({{count}})",
+    "outputs": "Outputs ({{count}})",
+    "feedPublishers": "Feedpublishers ({{count}})",
+    "lastUpdate": "Laatste update: {{time}}",
+    "waiting": "Wachten op heartbeat...",
+    "startAriaLabel": "Strategie {{name}} starten",
+    "stopAriaLabel": "Strategie {{name}} stoppen",
+    "start": "Starten",
+    "stop": "Stoppen",
+    "starting": "Starten...",
+    "stopping": "Stoppen...",
+    "status": {
+      "starting": "starten",
+      "stopping": "stoppen",
+      "running": "loopt",
+      "stopped": "gestopt"
+    },
+    "health": {
+      "healthy": "Gezond — ontvangt verse data",
+      "warning": "Waarschuwing — data is verouderd",
+      "error": "Fout — geen recente data",
+      "unknown": "Onbekend — geen heartbeat-data"
+    },
+    "healthShort": {
+      "healthy": "GEZOND",
+      "warning": "WAARSCHUWING",
+      "error": "FOUT"
+    }
+  },
+  "launchModal": {
+    "title": "Strategieproces registreren",
+    "emptyTemplates": "Geen strategietemplates geregistreerd in de backend. Definieer minstens één strategieproces.",
+    "close": "Sluiten",
+    "templateLabel": "Strategietemplate",
+    "templatePlaceholder": "Kies template...",
+    "templateFallbackDescription": "Strategie geregistreerd in de backend",
+    "loadingDefaults": "Standaardwaarden van template laden…",
+    "loadDefaultsError": "Kan standaardwaarden van template niet laden. Controleer de backendlogs.",
+    "processNameLabel": "Procesnaam",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Toegestane tekens: kleine letters, cijfers, underscores",
+    "instanceNameLabel": "Naam strategie-instantie",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Gebruikt in de strategieconfiguratie en outputtopics",
+    "executionModeLabel": "Uitvoeringsmodus",
+    "executionModeThread": "Ingebedde thread",
+    "executionModeProcess": "Geïsoleerd proces",
+    "executionModeHelp": "Threads delen geheugen, processen bieden sterkere isolatie.",
+    "flagsLabel": "Vlaggen",
+    "autostartLabel": "Autostart bij serverstart",
+    "startImmediatelyLabel": "Direct starten na registratie",
+    "noteLabel": "Notitie (optioneel)",
+    "notePlaceholder": "Beschrijf doel of parameters van deze strategie-instantie.",
+    "noteHelp": "Opgeslagen naast de configuratie om dit proces te helpen identificeren.",
+    "cancel": "Annuleren",
+    "submit": "Strategie registreren",
+    "submitting": "Registreren…"
+  }
+}

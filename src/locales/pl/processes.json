@@ -6,7 +6,7 @@
   "sections": {
     "longRunning": "Procesy długotrwałe",
     "executorTemplates": "Szablony wykonawców",
-    "executorTemplatesHint": "Edycja konfiguracji szablonu wpływa na wszystkie portfele tej giełdy po ponownym uruchomieniu. Szablony służą wyłącznie konfiguracji — uruchom poniższą instancję per-portfel, aby wystartować wykonawcę.",
+    "executorTemplatesHint": "Edycja konfiguracji szablonu wpływa po ponownym uruchomieniu na wszystkie portfele tej giełdy. Szablony służą wyłącznie do konfiguracji — uruchom poniżej instancję dla portfela, aby włączyć wykonawcę.",
     "walletInstances": "Instancje portfeli",
     "taskProcesses": "Procesy zadań"
   },
@@ -28,7 +28,7 @@
     "badge": "szablon",
     "mode": "Tryb:",
     "parameters": "Parametry:",
-    "paramCount": "{{count}} parametr(ów)",
+    "paramCount": "Parametry: {{count}}",
     "noParams": "brak ustawionych parametrów"
   },
   "badges": {

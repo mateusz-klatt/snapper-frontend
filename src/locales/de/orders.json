@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Aufträge & Ausführungen",
+    "newOrder": "Neuer Auftrag",
+    "exportCsv": "CSV exportieren"
+  },
+  "tabs": {
+    "orders": "Aufträge ({{total}})",
+    "executions": "Ausführungen ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Nach Status filtern:",
+    "options": {
+      "all": "Alle Aufträge",
+      "new": "Neu",
+      "open": "Offen",
+      "partiallyFilled": "Teilweise ausgeführt",
+      "partially_filled": "Teilweise ausgeführt",
+      "filled": "Ausgeführt",
+      "cancelled": "Storniert",
+      "rejected": "Abgelehnt"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "n. v.",
+    "priceMarket": "Market",
+    "quantity": "Menge",
+    "price": "Preis",
+    "created": "Erstellt",
+    "createdUnknown": "n. v.",
+    "orderId": "Auftrags-ID",
+    "leverage": "Hebel",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "NUR-REDUKTION",
+    "cancel": "Stornieren",
+    "cancelling": "Storniere…",
+    "cancelAriaLabel": "Auftrag {{orderId}} stornieren"
+  },
+  "executionCard": {
+    "orderNumber": "Auftrag #{{orderId}}",
+    "filled": "AUSGEFÜHRT",
+    "orderLabel": "Auftrag {{orderId}}",
+    "size": "Größe",
+    "price": "Preis",
+    "total": "Gesamt",
+    "executed": "Ausgeführt",
+    "fees": "Gebühren"
+  },
+  "empty": {
+    "ordersTitle": "Keine Aufträge gefunden",
+    "ordersStartTrading": "Starten Sie den Handel, um hier Aufträge zu sehen",
+    "ordersFilterless": "Keine {{status}}-Aufträge",
+    "executionsTitle": "Keine Ausführungen gefunden",
+    "executionsMessage": "Trade-Ausführungen erscheinen hier"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Seite",
+      "type": "Typ",
+      "status": "Status",
+      "quantity": "Menge",
+      "price": "Preis",
+      "leverage": "Hebel",
+      "reduceOnly": "Nur Reduktion",
+      "created": "Erstellt"
+    },
+    "executions": {
+      "orderId": "Auftrags-ID",
+      "instrument": "Instrument",
+      "side": "Seite",
+      "size": "Größe",
+      "price": "Preis",
+      "total": "Gesamt",
+      "fee": "Gebühr",
+      "feeAsset": "Gebühren-Asset",
+      "executed": "Ausgeführt"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Neuer manueller Auftrag",
+    "titleConfirm": "Auftrag bestätigen",
+    "fields": {
+      "exchange": "Börse",
+      "instrument": "Instrument",
+      "side": "Seite",
+      "orderType": "Auftragstyp",
+      "quantity": "Menge",
+      "price": "Preis",
+      "stopPrice": "Stop-Preis",
+      "mode": "Modus",
+      "wallet": "Wallet",
+      "type": "Typ"
+    },
+    "sideOptions": {
+      "buy": "Kauf",
+      "sell": "Verkauf"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — nur Marktdaten",
+    "walletPaperSuffix": "{{label}} (Paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Abbrechen",
+      "reviewOrder": "Auftrag prüfen",
+      "back": "Zurück",
+      "confirmOrder": "Auftrag bestätigen",
+      "submitting": "Wird gesendet..."
+    },
+    "errors": {
+      "missingRequired": "Alle Pflichtfelder müssen ausgefüllt sein",
+      "quantityPositive": "Menge muss eine positive Zahl sein",
+      "priceRequired": "Preis ist für diesen Auftragstyp erforderlich",
+      "pricePositive": "Preis muss eine positive Zahl sein",
+      "stopPriceRequired": "Stop-Preis ist für diesen Auftragstyp erforderlich",
+      "stopPricePositive": "Stop-Preis muss eine positive Zahl sein",
+      "createFailed": "Auftragserstellung fehlgeschlagen"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Dieses Instrument dient nur zur Beobachtung — platzieren Sie Aufträge auf einem ausführungsfähigen Instrument.",
+      "unknownInstrument": "Dieses Instrument wird nicht erkannt. Liste neu laden und erneut versuchen.",
+      "capsViolation": "Dieser Auftrag würde die Sicherheitslimits Ihres Kontos überschreiten. Prüfen Sie Ihre Risikoeinstellungen und versuchen Sie es erneut."
+    }
+  }
+}

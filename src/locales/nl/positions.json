@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Posities"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: in afwachting",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Aantal",
+    "averageEntry": "Gem. instap",
+    "unrealizedPnl": "Niet-gerealiseerde P&L",
+    "realizedPnl": "Gerealiseerde P&L",
+    "updated": "Bijgewerkt {{timestamp}}"
+  },
+  "empty": {
+    "title": "Geen open posities",
+    "message": "Long-, short- en flat-posities verschijnen hier zodra trades worden uitgevoerd."
+  },
+  "bracketModal": {
+    "title": "SL/TP toevoegen — {{instrument}}",
+    "confirmTitle": "Bracket bevestigen",
+    "position": "Positie",
+    "entryPrice": "Instapprijs",
+    "stopLossLabel": "Stop-Loss-prijs",
+    "takeProfitLabel": "Take-Profit-prijs",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Onder ${{price}}",
+      "slShort": "Boven ${{price}}",
+      "tpLong": "Boven ${{price}}",
+      "tpShort": "Onder ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Annuleren",
+      "review": "Controleren",
+      "back": "Terug",
+      "confirm": "Bevestigen",
+      "creating": "Aanmaken…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Trailing Stop toevoegen — {{instrument}}",
+    "confirmTitle": "Trailing Stop bevestigen",
+    "position": "Positie",
+    "entryPrice": "Instapprijs",
+    "trailingDistanceLabel": "Trailing-afstand (%)",
+    "minLockLabel": "Min. winstvergrendeling (%) — optioneel",
+    "trailingDistance": "Trailing-afstand",
+    "minLockProfit": "Min. winstvergrendeling",
+    "placeholders": {
+      "trailingPct": "bijv. 5.0",
+      "minLockPct": "0 = direct starten"
+    },
+    "minLockWarning": "Trailing stop activeert pas wanneer de prijs {{minLockPct}}% in uw voordeel beweegt.",
+    "buttons": {
+      "cancel": "Annuleren",
+      "review": "Controleren",
+      "back": "Terug",
+      "confirm": "Bevestigen",
+      "creating": "Aanmaken..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Minstens één SL- of TP-prijs is verplicht",
+    "invalidSlPrice": "Ongeldige stop-loss-prijs",
+    "slPricePositive": "Stop-loss-prijs moet positief zijn",
+    "invalidTpPrice": "Ongeldige take-profit-prijs",
+    "tpPricePositive": "Take-profit-prijs moet positief zijn",
+    "slLongBelowEntry": "SL-prijs moet onder de instapprijs liggen ({{price}})",
+    "tpLongAboveEntry": "TP-prijs moet boven de instapprijs liggen ({{price}})",
+    "slShortAboveEntry": "SL-prijs moet boven de instapprijs liggen ({{price}})",
+    "tpShortBelowEntry": "TP-prijs moet onder de instapprijs liggen ({{price}})",
+    "trailingRequired": "Trailing-percentage is verplicht",
+    "trailingInvalid": "Ongeldig trailing-percentage",
+    "trailingRange": "Trailing-percentage moet tussen 0 en 100 liggen",
+    "minLockInvalid": "Ongeldig min. vergrendelingspercentage",
+    "minLockRange": "Min. vergrendelingspercentage moet tussen 0 en 100 liggen"
+  }
+}

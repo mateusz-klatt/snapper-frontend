@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Systemzustand",
+    "healthMetricsHeading": "Zustandsmetriken",
+    "processStatusHeading": "Prozessstatus",
+    "activeBacktestsHeading": "Aktive Backtests",
+    "quickActionsHeading": "Schnellaktionen",
+    "featureNotImplemented": "Funktion noch nicht implementiert",
+    "restartServices": "Dienste neu starten",
+    "runHealthCheck": "Zustandsprüfung ausführen",
+    "viewLogs": "Logs anzeigen",
+    "exportReport": "Bericht exportieren"
+  },
+  "status": {
+    "healthy": "Gesund",
+    "stopped": "Gestoppt",
+    "error": "Fehler",
+    "warning": "Warnung",
+    "completed": "Abgeschlossen",
+    "unknown": "Unbekannt"
+  },
+  "metrics": {
+    "tradingEngine": "Trading-Engine",
+    "tradingEngineDescription": "Ausführungs-Engine für Strategien",
+    "activeBacktests": "Aktive Backtests",
+    "activeBacktestsDescription": "Laufende Backtest-Prozesse",
+    "active": "Aktiv",
+    "inactive": "Inaktiv"
+  },
+  "process": {
+    "uptimeNotAvailable": "n. v.",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}T {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "n. v.",
+    "uptimeLabel": "Laufzeit",
+    "exitCode": "Exit-Code: {{code}}",
+    "service": "Dienst",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Datenbank-Statistiken",
+    "loading": "Datenbank-Statistiken werden geladen…",
+    "unavailable": "Datenbank-Statistiken nicht verfügbar: {{message}}",
+    "fallbackError": "Datenbank-Statistiken konnten nicht geladen werden.",
+    "sampled": "abgetastet {{age}}",
+    "samplerSummary": "Abtastintervall: {{seconds}}s · {{count}} Tabellen",
+    "columns": {
+      "table": "Tabelle",
+      "kind": "Art",
+      "total": "Gesamt",
+      "current": "Aktuell",
+      "closed": "Geschlossen",
+      "archivable": "Archivierbar",
+      "status": "Status"
+    },
+    "stale": "veraltet"
+  },
+  "notification": {
+    "title": "Benachrichtigungs-Sidecar",
+    "loading": "Benachrichtigungsmetriken werden geladen…",
+    "unavailable": "Benachrichtigungsmetriken nicht verfügbar: {{message}}",
+    "fallbackError": "Benachrichtigungsmetriken konnten nicht geladen werden.",
+    "sent": "Gesendet",
+    "sentDescription": "Terminal: gesendet",
+    "failed": "Fehlgeschlagen",
+    "failedDescription": "Wiederholungsbudget erschöpft",
+    "unregistered": "Nicht registriert",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Abgebrochen (Scope)",
+    "cancelledScopeDescription": "Scope-Widerruf / Benutzerdeaktivierung",
+    "outboxDepth": "Outbox-Tiefe",
+    "outboxDepthDescription": "In Warteschlange, warten auf Wiederholung"
+  },
+  "retention": {
+    "title": "Retention-Scheduler",
+    "loading": "Retention-Lauf wird geladen…",
+    "unavailable": "Retention-Lauf nicht verfügbar: {{message}}",
+    "fallbackError": "Retention-Lauf konnte nicht geladen werden.",
+    "lastRun": "letzter Lauf {{age}}",
+    "dryRunNotice": "Dry-Run-Modus: Zeilen werden archiviert, aber nicht aus der DB gelöscht.",
+    "columns": {
+      "table": "Tabelle",
+      "retain": "Behalten",
+      "archivedWindow": "Archiviertes Fenster",
+      "archived": "Archiviert",
+      "purged": "Gelöscht",
+      "files": "Dateien",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}T",
+    "ok": "ok",
+    "error": "Fehler"
+  },
+  "systemMetrics": {
+    "title": "Prozessgesundheit",
+    "loading": "Prozessmetriken werden geladen…",
+    "unavailable": "Prozessmetriken nicht verfügbar: {{message}}",
+    "fallbackError": "Prozessgesundheitsmetriken konnten nicht geladen werden.",
+    "rawJson": "Roh-JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Laufzeit",
+    "threads": "Threads",
+    "openFds": "Offene FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Gedrosselt {{count}}×",
+    "memory": "Speicher",
+    "saturation": "Auslastung {{percent}}",
+    "asyncioTasks": "Asyncio-Tasks",
+    "asyncioActive": "{{count}} aktiv",
+    "asyncioPending": "+ {{count}} ausstehend",
+    "dbPool": "DB-Pool",
+    "liveConns": "Aktive Verbindungen: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekte: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Netzwerkverbindungen",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktiv",
+    "tracemallocIdle": "Inaktiv"
+  },
+  "relativeAge": {
+    "justNow": "gerade eben",
+    "seconds": "vor {{seconds}}s",
+    "minutes": "vor {{minutes}}min",
+    "hours": "vor {{hours}}h",
+    "days": "vor {{days}}T"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}T"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

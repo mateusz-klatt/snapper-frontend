@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Intégration IA",
+    "subtitle": "Gérez les délégués IA qui se connectent à Snapper via MCP.",
+    "loading": "Chargement de l'intégration IA…",
+    "createDelegate": "Créer un délégué"
+  },
+  "disabled": {
+    "title": "L'intégration IA est désactivée",
+    "message": "Activez le feature flag dans Paramètres → Feature Flags pour gérer les délégués IA."
+  },
+  "list": {
+    "loadingDelegates": "Chargement des délégués…",
+    "emptyTitle": "Aucun délégué IA pour le moment",
+    "emptyMessage": "Cliquez sur « Créer un délégué » pour en générer un et obtenir son extrait de configuration MCP.",
+    "columns": {
+      "label": "Libellé",
+      "username": "Nom d'utilisateur",
+      "created": "Créé",
+      "maxOpenOrders": "Max. ordres ouverts",
+      "maxDailyUsd": "Max. journalier USD",
+      "status": "Statut",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Actif",
+      "revoked": "Révoqué"
+    },
+    "default": "défaut",
+    "details": "Détails",
+    "viewAriaLabel": "Afficher le délégué {{label}}"
+  },
+  "wizard": {
+    "title": "Créer un délégué IA",
+    "step1": "1. Identité",
+    "step2": "2. Scope et plafonds",
+    "step3": "3. Revue",
+    "stepDone": "✓ Terminé",
+    "identity": {
+      "labelField": "Libellé",
+      "labelPlaceholder": "p. ex. Alpha prop desk",
+      "labelHelpPrefix": "Le nom d'utilisateur du délégué sera dérivé côté serveur en ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Scope",
+      "operatorLabel": "public_id de l'opérateur (optionnel)",
+      "operatorPlaceholder": "Laissez vide pour hériter de l'opérateur principal de l'appelant"
+    },
+    "caps": {
+      "heading": "Plafonds de trading (tous optionnels)",
+      "maxOpenOrders": "Max. ordres ouverts",
+      "maxDailyNotionalUsd": "Max. notionnel journalier USD",
+      "maxCancelsPerMinute": "Max. annulations par minute",
+      "perInstrument": "Quantité max. par instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "défaut",
+      "errorInvalidJson": "max_order_quantity_per_instrument doit être un JSON valide",
+      "errorJsonObject": "max_order_quantity_per_instrument doit être un objet JSON ou vide",
+      "errorNegative": "Les plafonds doivent être des entiers non négatifs ou vides."
+    },
+    "review": {
+      "heading": "Revue et création",
+      "rowLabel": "Libellé",
+      "rowOperator": "public_id de l'opérateur",
+      "rowMaxOpenOrders": "Max. ordres ouverts",
+      "rowMaxDailyNotional": "Max. notionnel journalier USD",
+      "rowMaxCancelsPerMinute": "Max. annulations par minute",
+      "rowPerInstrument": "Quantité max. par instrument",
+      "operatorDefault": "(opérateur principal de l'appelant)",
+      "defaultValue": "(défaut)"
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "next": "Suivant",
+      "back": "Retour",
+      "createDelegate": "Créer le délégué",
+      "iSavedClose": "Je les ai enregistrés — fermer"
+    },
+    "toast": {
+      "delegateCreated": "Délégué créé",
+      "failedToCreate": "Échec de la création du délégué"
+    }
+  },
+  "detail": {
+    "loading": "Chargement du délégué…",
+    "notFound": "Délégué introuvable ou indisponible.",
+    "back": "Retour",
+    "backToList": "Retour à la liste",
+    "updateCaps": "Mettre à jour les plafonds",
+    "revoke": "Révoquer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "tradingCaps": "Plafonds de trading",
+    "status": "Statut",
+    "active": "Actif",
+    "revoked": "Révoqué",
+    "createdAt": "Créé le",
+    "createdBy": "Créé par (public_id de l'utilisateur)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Max. ordres ouverts",
+    "maxDailyNotionalUsd": "Max. notionnel journalier USD",
+    "maxCancelsPerMinute": "Max. annulations par minute",
+    "perInstrument": "Quantité max. par instrument",
+    "defaultValue": "(défaut)",
+    "editorPlaceholder": "(défaut)",
+    "toast": {
+      "capsUpdated": "Plafonds mis à jour",
+      "failedToUpdateCaps": "Échec de la mise à jour des plafonds",
+      "negativeIntegersError": "Les plafonds doivent être des entiers non négatifs ou vides."
+    }
+  },
+  "revokeDialog": {
+    "title": "Révoquer le délégué « {{label}} » ?",
+    "message": "Cela révoque les tokens du délégué et arrête ses abonnements MCP. Cette action est irréversible.",
+    "confirm": "Révoquer",
+    "cancel": "Annuler",
+    "toast": {
+      "delegateRevoked": "Délégué révoqué",
+      "failedToRevoke": "Échec de la révocation du délégué"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Enregistrez ces identifiants maintenant",
+    "warningMessage": "Ils ne seront plus affichés. Snapper ne conserve pas les tokens bruts ; une fois ce wizard fermé, la seule copie se trouvera dans la configuration de votre client MCP.",
+    "snippetHelp": "Token de délégué IA de longue durée (~10 ans). Le même token authentifie à la fois le serveur MCP proxy et le moniteur watch. Pour effectuer une rotation, désactivez ce délégué et créez-en un nouveau.",
+    "baseUrlHelpPrefix": "L'URL de base est dérivée de l'origine de ce navigateur + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Copier l'extrait de configuration dans le presse-papiers",
+    "copy": "Copier dans le presse-papiers",
+    "copied": "Copié"
+  }
+}

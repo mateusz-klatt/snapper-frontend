@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signalen"
+  },
+  "filters": {
+    "allStrategies": "Alle strategieën"
+  },
+  "actions": {
+    "export": "Exporteren"
+  },
+  "stats": {
+    "total": "Totaal",
+    "buy": "Kopen",
+    "sell": "Verkopen",
+    "avgStrength": "Gem. sterkte"
+  },
+  "card": {
+    "strength": "Sterkte",
+    "price": "Prijs",
+    "exchange": "Exchange",
+    "reason": "Reden:",
+    "noPrice": "N.v.t."
+  },
+  "strength": {
+    "strong": "Sterk",
+    "medium": "Gemiddeld",
+    "weak": "Zwak",
+    "veryWeak": "Zeer zwak"
+  },
+  "time": {
+    "justNow": "Zojuist",
+    "minutesAgo": "{{count}}m geleden",
+    "hoursAgo": "{{count}}u geleden"
+  },
+  "empty": {
+    "title": "Geen signalen gevonden",
+    "message": "Geen tradingsignalen voldoen aan uw huidige filters."
+  }
+}

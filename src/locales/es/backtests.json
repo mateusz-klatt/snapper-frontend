@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Atrás",
+    "backToList": "← Volver a los backtests"
+  },
+  "status": {
+    "pending": "Pendiente",
+    "running": "En ejecución",
+    "completed": "Completado",
+    "failed": "Fallido",
+    "cancelled": "Cancelado"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Cancelar",
+      "rerun": "Reejecutar"
+    },
+    "fields": {
+      "timeframe": "Marco temporal",
+      "period": "Periodo",
+      "initialCash": "Efectivo inicial",
+      "id": "ID"
+    },
+    "errorPrefix": "Error: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrar backtests por estado",
+      "options": {
+        "all": "Todos los estados",
+        "pending": "Pendiente",
+        "running": "En ejecución",
+        "completed": "Completado",
+        "failed": "Fallido",
+        "cancelled": "Cancelado"
+      }
+    },
+    "empty": {
+      "title": "Sin backtests",
+      "message": "Ejecute un backtest desde la CLI o la API para ver los resultados aquí."
+    }
+  },
+  "detail": {
+    "title": "Ejecución de backtest",
+    "fields": {
+      "strategy": "Estrategia",
+      "instrument": "Instrumento",
+      "status": "Estado",
+      "period": "Periodo",
+      "crossAsset": "Atribución entre activos",
+      "configHash": "Hash de configuración"
+    },
+    "crossAssetFlow": "feed {{source}} → ejecuciones {{target}}",
+    "errors": {
+      "invalidRunId": "ID de ejecución no válido — debe ser un UUID7 (se recibió \"{{id}}\").",
+      "loadFailed": "Error al cargar la ejecución: {{message}}",
+      "notFound": "no encontrado"
+    }
+  },
+  "compare": {
+    "title": "Comparar",
+    "headingFull": "Comparación de backtests",
+    "loading": "Cargando comparación…",
+    "vs": "vs",
+    "runLabel": "Ejecución {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Métricas",
+      "equityOverlay": "Superposición de equity",
+      "trades": "Operaciones",
+      "signals": "Señales"
+    },
+    "pairingMode": {
+      "auto": "automático",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Comparación no encontrada en la cartera actual.",
+      "loadFailed": "Error al cargar la comparación: {{message}}",
+      "unknown": "error desconocido",
+      "emptyResponse": "Respuesta de comparación vacía."
+    },
+    "launcher": {
+      "title": "Comparar",
+      "submit": "Comparar",
+      "autoPair": "Comparar con la más reciente",
+      "terminalGate": "la comparación estará disponible cuando esta ejecución alcance un estado terminal",
+      "noSiblings": "no hay otras ejecuciones con esta configuración",
+      "limitNotice": "mostrando las {{count}} más recientes — use el emparejamiento manual para ejecuciones más antiguas",
+      "pickPlaceholder": "— elija una ejecución para comparar —",
+      "showAllLabel": "Mostrar todas las ejecuciones (no solo la misma configuración)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "todas las ejecuciones",
+        "sameConfig": "misma configuración"
+      },
+      "errors": {
+        "pickRequired": "seleccione una ejecución de la lista"
+      }
+    },
+    "diffColumns": {
+      "common": "Común",
+      "onlyA": "Solo en A",
+      "onlyB": "Solo en B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "No hay métricas comparables — ninguna de las ejecuciones registró valores.",
+      "columns": {
+        "name": "Métrica",
+        "runA": "Ejecución A",
+        "runB": "Ejecución B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Ejecución A",
+        "runB": "Ejecución B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Esperando progreso…",
+    "candles": "{{done}} / {{total}} velas",
+    "candlesNoTotal": "{{done}} velas",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} señ. / {{trades}} operaciones",
+    "milestoneLine": "hito {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

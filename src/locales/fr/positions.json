@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Positions"
+  },
+  "row": {
+    "trailingStopBadge": "TS : ${{stop}}",
+    "trailingStopPending": "TS : en attente",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trailing",
+    "quantity": "Quantité",
+    "averageEntry": "Prix moyen d'entrée",
+    "unrealizedPnl": "P&L latent",
+    "realizedPnl": "P&L réalisé",
+    "updated": "Mis à jour {{timestamp}}"
+  },
+  "empty": {
+    "title": "Aucune position ouverte",
+    "message": "Les positions longues, courtes et neutres apparaîtront ici dès que des transactions seront exécutées."
+  },
+  "bracketModal": {
+    "title": "Attacher SL/TP — {{instrument}}",
+    "confirmTitle": "Confirmer le bracket",
+    "position": "Position",
+    "entryPrice": "Prix d'entrée",
+    "stopLossLabel": "Prix Stop Loss",
+    "takeProfitLabel": "Prix Take Profit",
+    "stopLoss": "Stop Loss",
+    "takeProfit": "Take Profit",
+    "placeholders": {
+      "slLong": "Sous ${{price}}",
+      "slShort": "Au-dessus de ${{price}}",
+      "tpLong": "Au-dessus de ${{price}}",
+      "tpShort": "Sous ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "review": "Vérifier",
+      "back": "Retour",
+      "confirm": "Confirmer",
+      "creating": "Création…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Attacher un Trailing Stop — {{instrument}}",
+    "confirmTitle": "Confirmer le Trailing Stop",
+    "position": "Position",
+    "entryPrice": "Prix d'entrée",
+    "trailingDistanceLabel": "Distance de trailing (%)",
+    "minLockLabel": "Gain minimum verrouillé (%) — optionnel",
+    "trailingDistance": "Distance de trailing",
+    "minLockProfit": "Gain minimum verrouillé",
+    "placeholders": {
+      "trailingPct": "p. ex. 5.0",
+      "minLockPct": "0 = démarrer immédiatement"
+    },
+    "minLockWarning": "Le trailing stop ne s'activera pas tant que le prix n'aura pas évolué de {{minLockPct}}% en votre faveur.",
+    "buttons": {
+      "cancel": "Annuler",
+      "review": "Vérifier",
+      "back": "Retour",
+      "confirm": "Confirmer",
+      "creating": "Création..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Au moins un prix SL ou TP est requis",
+    "invalidSlPrice": "Prix stop-loss invalide",
+    "slPricePositive": "Le prix stop-loss doit être positif",
+    "invalidTpPrice": "Prix take-profit invalide",
+    "tpPricePositive": "Le prix take-profit doit être positif",
+    "slLongBelowEntry": "Le prix SL doit être inférieur au prix d'entrée ({{price}})",
+    "tpLongAboveEntry": "Le prix TP doit être supérieur au prix d'entrée ({{price}})",
+    "slShortAboveEntry": "Le prix SL doit être supérieur au prix d'entrée ({{price}})",
+    "tpShortBelowEntry": "Le prix TP doit être inférieur au prix d'entrée ({{price}})",
+    "trailingRequired": "Le pourcentage de trailing est requis",
+    "trailingInvalid": "Pourcentage de trailing invalide",
+    "trailingRange": "Le pourcentage de trailing doit être compris entre 0 et 100",
+    "minLockInvalid": "Pourcentage minimum de verrouillage invalide",
+    "minLockRange": "Le pourcentage minimum de verrouillage doit être compris entre 0 et 100"
+  }
+}

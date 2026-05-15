@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Marktdaten"
+  },
+  "controls": {
+    "exchange": "Börse:",
+    "instrument": "Instrument:",
+    "timeframe": "Zeitrahmen:",
+    "selectExchange": "Börse auswählen",
+    "searchInstrument": "Instrument suchen..."
+  },
+  "timeframes": {
+    "1m": "1 Minute",
+    "5m": "5 Minuten",
+    "15m": "15 Minuten",
+    "30m": "30 Minuten",
+    "1h": "1 Stunde",
+    "4h": "4 Stunden",
+    "1d": "1 Tag"
+  },
+  "stats": {
+    "currentPrice": "Aktueller Kurs",
+    "change24h": "Veränderung 24h",
+    "high24h": "Hoch 24h",
+    "low24h": "Tief 24h"
+  },
+  "chart": {
+    "title": "Kurschart",
+    "errorPrefix": "Fehler beim Laden der Chart-Daten:",
+    "unknownError": "Unbekannter Fehler",
+    "noDataTitle": "Keine Daten für {{instrument}} verfügbar",
+    "noDataHint": "Das Instrument existiert möglicherweise nicht oder hat keine {{timeframe}}-Daten"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Keine verwandten Instrumente für {{instrument}} auf {{exchange}} konfiguriert."
+  },
+  "cacheBanner": {
+    "message": "Cache wird aufgewärmt: {{sampleCount}} / {{expected}} Kerzen verfügbar {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(abgeleitet aus 1m)",
+      "db": "(aus DB)"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Procescontrole",
+    "subtitle": "Real-time procesbewaking en -besturing"
+  },
+  "sections": {
+    "longRunning": "Langlopende processen",
+    "executorTemplates": "Executor-templates",
+    "executorTemplatesHint": "Wijzigingen aan de templateconfiguratie zijn na een herstart van toepassing op alle portefeuilles op deze exchange. Templates zijn alleen configuratie — start hieronder de portefeuille-specifieke instantie om een executor te draaien.",
+    "walletInstances": "Portefeuille-instanties",
+    "taskProcesses": "Taakprocessen"
+  },
+  "card": {
+    "stop": "Stoppen",
+    "start": "Starten",
+    "restart": "Herstarten",
+    "starting": "Starten...",
+    "stopping": "Stoppen...",
+    "status": {
+      "running": "loopt",
+      "stopped": "gestopt",
+      "error": "fout",
+      "starting": "starten",
+      "stopping": "stoppen"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Modus:",
+    "parameters": "Parameters:",
+    "paramCount": "{{count}} parameter(s)",
+    "noParams": "geen parameters ingesteld"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "handmatig"
+  },
+  "actions": {
+    "stopTitle": "{{name}} stoppen",
+    "stopMessage": "Dit stopt het proces {{name}}.",
+    "restartTitle": "{{name}} herstarten",
+    "restartMessage": "Dit herstart het proces {{name}}."
+  },
+  "executionMode": {
+    "title": "{{name}} starten",
+    "label": "Uitvoeringsmodus:",
+    "threadName": "Threadmodus",
+    "threadDescription": "Draait als ingebedde taak binnen de webserver. Snellere start, gedeeld geheugen.",
+    "processName": "Procesmodus",
+    "processDescription": "Draait als apart Python-proces. Geïsoleerd, fouttolerant, gedetailleerde monitoring.",
+    "cancel": "Annuleren",
+    "start": "{{name}} starten",
+    "threadAriaLabel": "Threadmodus",
+    "processAriaLabel": "Procesmodus"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Impostazioni",
+    "subtitle": "Configura le impostazioni e i parametri dell'applicazione",
+    "addButton": "Aggiungi impostazione",
+    "searchPlaceholder": "Cerca impostazioni...",
+    "noResults": "Nessuna impostazione corrisponde ai criteri.",
+    "allCategories": "Tutte le categorie",
+    "categoryFilterAriaLabel": "Filtra impostazioni per categoria"
+  },
+  "errors": {
+    "loadFailed": "Caricamento delle impostazioni non riuscito",
+    "updateFailed": "Aggiornamento dell'impostazione non riuscito",
+    "deleteFailed": "Eliminazione dell'impostazione non riuscita",
+    "createFailed": "Creazione dell'impostazione non riuscita",
+    "alreadyExists": "Esiste già un'impostazione con la chiave \"{{key}}\""
+  },
+  "item": {
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "save": "Salva",
+    "saving": "Salvataggio in corso...",
+    "cancel": "Annulla",
+    "yesDelete": "Sì, elimina",
+    "deleting": "Eliminazione in corso...",
+    "deleteConfirm": "Eliminare questa impostazione?",
+    "valuePlaceholder": "Inserisci il valore dell'impostazione...",
+    "showMore": "Mostra di più",
+    "showLess": "Mostra di meno",
+    "toggleAriaLabel": "Attiva/disattiva {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensibile"
+    },
+    "helpText": {
+      "allowShortSelling": "Consente al motore di aprire posizioni short. I segnali SELL produrranno desired_units negativi; quando disabilitato il valore viene limitato a 0.",
+      "allowManualOrders": "Abilita il pulsante Nuovo ordine nella scheda Ordini. Se disabilitato, POST /api/orders restituisce 403."
+    }
+  },
+  "addModal": {
+    "title": "Aggiungi nuova impostazione",
+    "keyLabel": "Chiave",
+    "valueLabel": "Valore",
+    "categoryLabel": "Categoria",
+    "descriptionLabel": "Descrizione",
+    "keyPlaceholder": "es. walutomat.api_key",
+    "keyHint": "Usa la notazione a punti per impostazioni annidate (es. categoria.sottocategoria.nome)",
+    "valuePlaceholder": "Valore dell'impostazione",
+    "categorySelectPlaceholder": "Seleziona una esistente o creane una nuova",
+    "newCategoryPlaceholder": "Oppure inserisci il nome di una nuova categoria",
+    "descriptionPlaceholder": "Descrizione opzionale",
+    "cancel": "Annulla",
+    "create": "Crea impostazione",
+    "creating": "Creazione in corso...",
+    "validation": {
+      "keyRequired": "La chiave è obbligatoria",
+      "valueRequired": "Il valore è obbligatorio",
+      "categoryRequired": "La categoria è obbligatoria"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor a form",
+    "rawEditor": "Editor JSON grezzo",
+    "rawJson": "JSON grezzo",
+    "switchToForm": "Passa al form",
+    "importToForm": "Importa nel form",
+    "parseError": "Errore di parsing: {{message}}",
+    "arraySummary": "Array ({{length}} elementi)",
+    "addItem": "Aggiungi elemento",
+    "remove": "Rimuovi",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(oggetto)",
+      "string": "(stringa)",
+      "number": "(numero)",
+      "boolean": "(booleano)",
+      "bigint": "(bigint)",
+      "function": "(funzione)",
+      "symbol": "(simbolo)",
+      "undefined": "(non definito)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

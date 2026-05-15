@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Segnali"
+  },
+  "filters": {
+    "allStrategies": "Tutte le strategie"
+  },
+  "actions": {
+    "export": "Esporta"
+  },
+  "stats": {
+    "total": "Totale",
+    "buy": "Acquisto",
+    "sell": "Vendita",
+    "avgStrength": "Forza media"
+  },
+  "card": {
+    "strength": "Forza",
+    "price": "Prezzo",
+    "exchange": "Exchange",
+    "reason": "Motivo:",
+    "noPrice": "N/D"
+  },
+  "strength": {
+    "strong": "Forte",
+    "medium": "Medio",
+    "weak": "Debole",
+    "veryWeak": "Molto debole"
+  },
+  "time": {
+    "justNow": "Adesso",
+    "minutesAgo": "{{count}} min fa",
+    "hoursAgo": "{{count}} h fa"
+  },
+  "empty": {
+    "title": "Nessun segnale trovato",
+    "message": "Nessun segnale di trading corrisponde ai filtri correnti."
+  }
+}

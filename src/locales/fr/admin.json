@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administration",
+    "subtitle": "Gérez les utilisateurs et la configuration du système"
+  },
+  "rolePermissions": {
+    "title": "Permissions des rôles",
+    "viewer": {
+      "label": "Observateur",
+      "description": "Accès en lecture seule à la Vue d'ensemble et aux Données de marché. Ne peut pas gérer les processus, les stratégies ni les paramètres système."
+    },
+    "operator": {
+      "label": "Opérateur",
+      "description": "Toutes les permissions de l'Observateur, plus les opérations de trading, l'exécution des stratégies, la gestion des processus et la supervision de l'état du système."
+    },
+    "admin": {
+      "label": "Administrateur",
+      "description": "Accès complet au système, y compris la gestion des utilisateurs, les paramètres système, la configuration des clés API et toutes les permissions de l'Opérateur."
+    },
+    "table": {
+      "resource": "Ressource",
+      "viewer": "Observateur",
+      "operator": "Opérateur",
+      "admin": "Administrateur"
+    },
+    "resources": {
+      "overview": "Vue d'ensemble",
+      "market": "Données de marché",
+      "processes": "Processus",
+      "strategies": "Stratégies",
+      "orders": "Ordres et exécutions",
+      "positions": "Positions",
+      "signals": "Signaux",
+      "health": "État du système",
+      "admin": "Administration",
+      "settings": "Paramètres"
+    }
+  },
+  "common": {
+    "cancel": "Annuler",
+    "selectWallet": "Sélectionner un wallet",
+    "selectAWallet": "Sélectionnez un wallet",
+    "chooseWalletPlaceholder": "Choisir un wallet...",
+    "selectWalletPlaceholder": "Sélectionner un wallet...",
+    "walletLabel": "Wallet",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Erreur inconnue",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Accès refusé",
+      "message": "Vous n'avez pas l'autorisation de gérer les utilisateurs. Contactez votre administrateur système."
+    },
+    "list": {
+      "title": "Gestion des utilisateurs",
+      "countLabel": "{{count}} utilisateurs",
+      "showInactive": "Afficher les inactifs",
+      "hideInactive": "Masquer les inactifs",
+      "addUser": "Ajouter un utilisateur",
+      "searchPlaceholder": "Rechercher par nom d'utilisateur, e-mail ou rôle...",
+      "columns": {
+        "user": "Utilisateur",
+        "role": "Rôle",
+        "status": "Statut",
+        "createdAt": "Créé le",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Actif",
+        "inactive": "Inactif"
+      },
+      "unknown": "Inconnu",
+      "empty": {
+        "title": "Aucun utilisateur trouvé",
+        "noMatch": "Aucun utilisateur ne correspond à vos critères de recherche.",
+        "noUsers": "Aucun utilisateur trouvé.",
+        "noActive": "Aucun utilisateur actif trouvé."
+      },
+      "errorLoading": "Erreur lors du chargement des utilisateurs : {{message}}",
+      "deactivate": {
+        "title": "Désactiver l'utilisateur",
+        "message": "Êtes-vous sûr de vouloir désactiver l'utilisateur \"{{username}}\" ? Il ne pourra plus se connecter.",
+        "confirm": "Désactiver"
+      },
+      "toast": {
+        "deactivated": "L'utilisateur a été désactivé",
+        "deactivateError": "Erreur lors de la désactivation de l'utilisateur"
+      }
+    },
+    "form": {
+      "titleEdit": "Modifier l'utilisateur",
+      "titleAdd": "Ajouter un utilisateur",
+      "fields": {
+        "username": "Nom d'utilisateur",
+        "usernamePlaceholder": "Saisissez le nom d'utilisateur",
+        "password": "Mot de passe",
+        "passwordPlaceholder": "Saisissez le mot de passe",
+        "newPassword": "Nouveau mot de passe",
+        "newPasswordPlaceholder": "Saisissez le nouveau mot de passe",
+        "email": "E-mail",
+        "emailPlaceholder": "Saisissez l'e-mail",
+        "role": "Rôle",
+        "accountActive": "Compte actif",
+        "resetUserPassword": "Réinitialiser le mot de passe de l'utilisateur"
+      },
+      "roles": {
+        "viewer": "Observateur",
+        "operator": "Opérateur",
+        "admin": "Administrateur"
+      },
+      "validation": {
+        "usernameRequired": "Le nom d'utilisateur est requis",
+        "usernameMinLength": "Le nom d'utilisateur doit comporter au moins 3 caractères",
+        "emailRequired": "L'e-mail est requis",
+        "emailInvalid": "Format d'e-mail invalide",
+        "passwordRequired": "Le mot de passe est requis",
+        "passwordMinLength": "Le mot de passe doit comporter au moins 8 caractères",
+        "passwordRequiredWhenResetting": "Le mot de passe est requis lors de la réinitialisation"
+      },
+      "actions": {
+        "saveChanges": "Enregistrer les modifications",
+        "createUser": "Créer l'utilisateur"
+      },
+      "toast": {
+        "created": "L'utilisateur a été créé",
+        "createError": "Erreur lors de la création de l'utilisateur",
+        "updated": "L'utilisateur a été mis à jour",
+        "updateError": "Erreur lors de la mise à jour de l'utilisateur",
+        "passwordReset": "Le mot de passe de l'utilisateur a été réinitialisé",
+        "resetError": "Erreur lors de la réinitialisation du mot de passe"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Accès refusé",
+      "message": "Vous n'avez pas l'autorisation de gérer les attributions de scope. Contactez votre administrateur système."
+    },
+    "list": {
+      "title": "Attributions de scope",
+      "countLabel": "{{count}} attributions",
+      "createGrant": "Créer une attribution",
+      "selectWalletPrompt": "Choisissez un wallet ci-dessus pour afficher ses attributions de scope.",
+      "columns": {
+        "operator": "Opérateur",
+        "scope": "Scope",
+        "target": "Cible",
+        "grantedAt": "Attribué le",
+        "actions": "Actions"
+      },
+      "empty": {
+        "noGrants": "Aucune attribution trouvée",
+        "noGrantsHint": "Ce wallet n'a aucune attribution de scope active."
+      },
+      "errorLoading": "Erreur lors du chargement des attributions : {{message}}",
+      "handover": "Transférer"
+    },
+    "form": {
+      "title": "Créer une attribution de scope",
+      "fields": {
+        "operator": "Opérateur",
+        "operatorPlaceholder": "Sélectionner un opérateur...",
+        "wallet": "Wallet",
+        "scopeKind": "Type de scope",
+        "underlyingPublicId": "Public ID du sous-jacent",
+        "instrumentPublicId": "Public ID de l'instrument",
+        "underlyingPlaceholder": "p. ex. BTC",
+        "instrumentPlaceholder": "p. ex. BTC-USD-PERP",
+        "note": "Note (optionnelle)",
+        "notePlaceholder": "Note optionnelle"
+      },
+      "scopeKinds": {
+        "underlying": "Sous-jacent",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "L'opérateur est requis",
+        "walletRequired": "Le wallet est requis",
+        "targetRequired": "L'identifiant de cible est requis"
+      },
+      "actions": {
+        "createGrant": "Créer l'attribution"
+      },
+      "toast": {
+        "created": "Attribution de scope créée",
+        "conflictError": "Conflit : un autre opérateur détient déjà une attribution sur ce scope",
+        "createError": "Erreur lors de la création de l'attribution de scope"
+      }
+    },
+    "handover": {
+      "title": "Transférer l'attribution de scope",
+      "fields": {
+        "currentHolder": "Titulaire actuel",
+        "scope": "Scope",
+        "wallet": "Wallet",
+        "scopeValue": "{{kind}} : {{target}}",
+        "transferTo": "Transférer à l'opérateur",
+        "transferToPlaceholder": "Sélectionner l'opérateur destinataire...",
+        "reason": "Motif (optionnel)",
+        "reasonPlaceholder": "p. ex. Changement de quart"
+      },
+      "actions": {
+        "handover": "Transférer"
+      },
+      "toast": {
+        "completed": "Attribution de scope transférée",
+        "conflictError": "Conflit : l'opérateur destinataire détient déjà une attribution en conflit",
+        "handoverError": "Erreur lors du transfert de l'attribution de scope"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Accès refusé",
+      "message": "Vous n'avez pas l'autorisation de gérer les identifiants de wallet. Contactez votre administrateur système."
+    },
+    "list": {
+      "title": "Identifiants du wallet",
+      "countLabel": "{{count}} identifiants",
+      "addCredential": "Ajouter un identifiant",
+      "selectWalletPrompt": "Choisissez un wallet ci-dessus pour afficher ses identifiants.",
+      "columns": {
+        "exchange": "Plateforme",
+        "type": "Type",
+        "label": "Libellé",
+        "createdAt": "Créé le",
+        "actions": "Actions"
+      },
+      "empty": {
+        "noCredentials": "Aucun identifiant trouvé",
+        "noCredentialsHint": "Ce wallet n'a aucun identifiant actif."
+      },
+      "errorLoading": "Erreur lors du chargement des identifiants : {{message}}",
+      "rotate": "Faire pivoter"
+    },
+    "form": {
+      "title": "Ajouter un identifiant",
+      "fields": {
+        "wallet": "Wallet",
+        "exchange": "Plateforme",
+        "exchangePlaceholder": "p. ex. kraken",
+        "credentialType": "Type d'identifiant",
+        "label": "Libellé (optionnel)",
+        "labelPlaceholder": "p. ex. Clé de trading principale",
+        "pemPlaceholder": "Collez ici la clé privée au format PEM"
+      },
+      "fieldLabels": {
+        "api_key": "Clé API",
+        "api_secret": "Secret API",
+        "private_key_pem": "Clé privée (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Solde initial"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Clé API + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Le wallet est requis",
+        "exchangeRequired": "La plateforme est requise",
+        "fieldRequired": "{{field}} est requis"
+      },
+      "actions": {
+        "addCredential": "Ajouter l'identifiant"
+      },
+      "toast": {
+        "created": "Identifiant créé",
+        "conflictError": "Conflit : ce wallet a déjà un identifiant actif pour cette plateforme",
+        "createError": "Erreur lors de la création de l'identifiant"
+      }
+    },
+    "rotate": {
+      "title": "Faire pivoter l'identifiant",
+      "fields": {
+        "exchange": "Plateforme",
+        "type": "Type",
+        "label": "Libellé",
+        "newLabel": "Nouveau libellé (optionnel)",
+        "newLabelPlaceholder": "p. ex. Clé renouvelée 2026-04",
+        "pemPlaceholder": "Collez ici la clé privée au format PEM"
+      },
+      "actions": {
+        "rotate": "Faire pivoter"
+      },
+      "toast": {
+        "rotated": "Identifiant renouvelé",
+        "rotateError": "Erreur lors de la rotation de l'identifiant"
+      }
+    }
+  }
+}
