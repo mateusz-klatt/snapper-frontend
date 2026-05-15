@@ -137,7 +137,9 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                     </td>
                     <td className='px-3 py-4 whitespace-nowrap'>
                       <span className='inline-flex items-center rounded-full border border-brand-200 bg-brand-100 px-2.5 py-0.5 text-xs font-medium text-brand-800'>
-                        {grant.scope_kind}
+                        {t(`scopeGrants.form.scopeKinds.${grant.scope_kind}`, {
+                          defaultValue: grant.scope_kind,
+                        })}
                       </span>
                     </td>
                     <td className='px-3 py-4 whitespace-nowrap text-sm text-alpine-900'>

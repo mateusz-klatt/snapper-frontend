@@ -60,9 +60,17 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
         <div className='flex items-center space-x-3'>
           <span className='font-semibold text-alpine-900'>{order.instrument}</span>
           <span className={clsx('text-sm font-medium', order.side ? getSideColor(order.side) : '')}>
-            {order.side?.toUpperCase() ?? t('orderCard.sideUnknown')}
+            {order.side
+              ? t(`newOrderModal.sideOptions.${order.side}`, {
+                  defaultValue: order.side.toUpperCase(),
+                })
+              : t('orderCard.sideUnknown')}
           </span>
-          <span className='text-sm text-muted-500'>{order.orderType}</span>
+          <span className='text-sm text-muted-500'>
+            {t(`newOrderModal.orderTypeOptions.${order.orderType}`, {
+              defaultValue: order.orderType,
+            })}
+          </span>
         </div>
         <div className='flex items-center gap-2'>
           <span
@@ -71,7 +79,9 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
               getStatusColor(order.status)
             )}
           >
-            {order.status}
+            {t(`filters.options.${order.status.toLowerCase()}`, {
+              defaultValue: order.status,
+            })}
           </span>
           {!isTerminal && (
             <button

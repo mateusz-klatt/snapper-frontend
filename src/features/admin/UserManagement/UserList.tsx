@@ -177,7 +177,9 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                 className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium ${getRoleBadgeColor(user.role)}`}
               >
                 {getRoleIcon(user.role)}
-                <span className='capitalize'>{user.role}</span>
+                <span className='capitalize'>
+                  {t(`users.form.roles.${user.role}`, { defaultValue: user.role })}
+                </span>
               </span>
               <span
                 className={
