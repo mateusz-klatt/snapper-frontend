@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Podešavanja",
+    "subtitle": "Konfigurisanje podešavanja i parametara aplikacije",
+    "addButton": "Dodaj podešavanje",
+    "searchPlaceholder": "Pretraži podešavanja...",
+    "noResults": "Nema podešavanja koja odgovaraju zadatim kriterijumima.",
+    "allCategories": "Sve kategorije",
+    "categoryFilterAriaLabel": "Filtriraj podešavanja po kategoriji"
+  },
+  "errors": {
+    "loadFailed": "Učitavanje podešavanja nije uspelo",
+    "updateFailed": "Ažuriranje podešavanja nije uspelo",
+    "deleteFailed": "Brisanje podešavanja nije uspelo",
+    "createFailed": "Kreiranje podešavanja nije uspelo",
+    "alreadyExists": "Podešavanje sa ključem \"{{key}}\" već postoji"
+  },
+  "item": {
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "save": "Sačuvaj",
+    "saving": "Čuvanje...",
+    "cancel": "Otkaži",
+    "yesDelete": "Da, izbriši",
+    "deleting": "Brisanje...",
+    "deleteConfirm": "Izbrisati ovo podešavanje?",
+    "valuePlaceholder": "Unesite vrednost podešavanja...",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje",
+    "toggleAriaLabel": "Prebaci {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Osetljivo"
+    },
+    "helpText": {
+      "allowShortSelling": "Dozvoli engine-u da otvara short pozicije. SELL signali će generisati negativne desired_units; kada je onemogućeno, vrednosti se ograničavaju na 0.",
+      "allowManualOrders": "Omogući dugme Novi nalog na kartici Nalozi. Kada je onemogućeno, POST /api/orders vraća 403."
+    }
+  },
+  "addModal": {
+    "title": "Dodaj novo podešavanje",
+    "keyLabel": "Ključ",
+    "valueLabel": "Vrednost",
+    "categoryLabel": "Kategorija",
+    "descriptionLabel": "Opis",
+    "keyPlaceholder": "npr. walutomat.api_key",
+    "keyHint": "Koristite tačkastu notaciju za ugnežđena podešavanja (npr. kategorija.potkategorija.naziv)",
+    "valuePlaceholder": "Vrednost podešavanja",
+    "categorySelectPlaceholder": "Izaberite postojeću ili kreirajte novu",
+    "newCategoryPlaceholder": "Ili unesite naziv nove kategorije",
+    "descriptionPlaceholder": "Opcioni opis",
+    "cancel": "Otkaži",
+    "create": "Kreiraj podešavanje",
+    "creating": "Kreiranje...",
+    "validation": {
+      "keyRequired": "Ključ je obavezan",
+      "valueRequired": "Vrednost je obavezna",
+      "categoryRequired": "Kategorija je obavezna"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor obrasca",
+    "rawEditor": "Editor sirovog JSON-a",
+    "rawJson": "Sirovi JSON",
+    "switchToForm": "Prebaci na obrazac",
+    "importToForm": "Uvezi u obrazac",
+    "parseError": "Greška parsiranja: {{message}}",
+    "arraySummary": "Niz ({{length}} stavki)",
+    "addItem": "Dodaj stavku",
+    "remove": "Ukloni",
+    "typeHint": {
+      "array": "(niz)",
+      "object": "(objekat)",
+      "string": "(tekst)",
+      "number": "(broj)",
+      "boolean": "(logička vrednost)",
+      "bigint": "(bigint)",
+      "function": "(funkcija)",
+      "symbol": "(simbol)",
+      "undefined": "(nedefinisano)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Kontrola procesa",
+    "subtitle": "Nadzor i upravljanje procesima u realnom vremenu"
+  },
+  "sections": {
+    "longRunning": "Dugotrajni procesi",
+    "executorTemplates": "Šabloni izvršitelja",
+    "executorTemplatesHint": "Uređivanje konfiguracije šablona utiče na sve novčanike na ovoj berzi nakon ponovnog pokretanja. Šabloni su samo konfiguracija — pokrenite instancu po novčaniku ispod da biste pokrenuli izvršitelja.",
+    "walletInstances": "Instance novčanika",
+    "taskProcesses": "Procesi zadataka"
+  },
+  "card": {
+    "stop": "Zaustavi",
+    "start": "Pokreni",
+    "restart": "Ponovo pokreni",
+    "starting": "Pokretanje...",
+    "stopping": "Zaustavljanje...",
+    "status": {
+      "running": "pokrenuto",
+      "stopped": "zaustavljeno",
+      "error": "greška",
+      "starting": "pokretanje",
+      "stopping": "zaustavljanje"
+    }
+  },
+  "template": {
+    "badge": "šablon",
+    "mode": "Režim:",
+    "parameters": "Parametri:",
+    "paramCount": "{{count}} parametara",
+    "noParams": "nema podešenih parametara"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "ručno"
+  },
+  "actions": {
+    "stopTitle": "Zaustavi {{name}}",
+    "stopMessage": "Ovo će zaustaviti proces {{name}}.",
+    "restartTitle": "Ponovo pokreni {{name}}",
+    "restartMessage": "Ovo će ponovo pokrenuti proces {{name}}."
+  },
+  "executionMode": {
+    "title": "Pokreni {{name}}",
+    "label": "Režim izvršavanja:",
+    "threadName": "Thread režim",
+    "threadDescription": "Pokreće se kao ugrađeni zadatak unutar web servera. Brže pokretanje, deljena memorija.",
+    "processName": "Procesni režim",
+    "processDescription": "Pokreće se kao zaseban Python proces. Izolovano, otporno na greške, sa detaljnim nadzorom.",
+    "cancel": "Otkaži",
+    "start": "Pokreni {{name}}",
+    "threadAriaLabel": "Thread režim",
+    "processAriaLabel": "Procesni režim"
+  }
+}

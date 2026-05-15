@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Beállítások",
+    "subtitle": "Alkalmazásbeállítások és paraméterek konfigurálása",
+    "addButton": "Beállítás hozzáadása",
+    "searchPlaceholder": "Beállítások keresése...",
+    "noResults": "Nem találhatók a feltételeknek megfelelő beállítások.",
+    "allCategories": "Minden kategória",
+    "categoryFilterAriaLabel": "Beállítások szűrése kategória szerint"
+  },
+  "errors": {
+    "loadFailed": "Nem sikerült betölteni a beállításokat",
+    "updateFailed": "Nem sikerült frissíteni a beállítást",
+    "deleteFailed": "Nem sikerült törölni a beállítást",
+    "createFailed": "Nem sikerült létrehozni a beállítást",
+    "alreadyExists": "Már létezik beállítás ezzel a kulccsal: „{{key}}”"
+  },
+  "item": {
+    "edit": "Szerkesztés",
+    "delete": "Törlés",
+    "save": "Mentés",
+    "saving": "Mentés...",
+    "cancel": "Mégse",
+    "yesDelete": "Igen, törlés",
+    "deleting": "Törlés...",
+    "deleteConfirm": "Törli ezt a beállítást?",
+    "valuePlaceholder": "Adja meg a beállítás értékét...",
+    "showMore": "Több megjelenítése",
+    "showLess": "Kevesebb megjelenítése",
+    "toggleAriaLabel": "{{key}} kapcsolása",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Érzékeny"
+    },
+    "helpText": {
+      "allowShortSelling": "Engedélyezi, hogy a motor short pozíciókat nyisson. A SELL jelzések negatív desired_units értéket hoznak létre; letiltva 0-ra korlátoz.",
+      "allowManualOrders": "Engedélyezi az Új megbízás gombot a Megbízások lapon. Letiltva a POST /api/orders 403 választ ad."
+    }
+  },
+  "addModal": {
+    "title": "Új beállítás hozzáadása",
+    "keyLabel": "Kulcs",
+    "valueLabel": "Érték",
+    "categoryLabel": "Kategória",
+    "descriptionLabel": "Leírás",
+    "keyPlaceholder": "pl. walutomat.api_key",
+    "keyHint": "Pontozott jelölést használjon beágyazott beállításokhoz (pl. category.subcategory.name)",
+    "valuePlaceholder": "Beállítás értéke",
+    "categorySelectPlaceholder": "Meglévő kiválasztása vagy új létrehozása",
+    "newCategoryPlaceholder": "Vagy adjon meg új kategórianevet",
+    "descriptionPlaceholder": "Opcionális leírás",
+    "cancel": "Mégse",
+    "create": "Beállítás létrehozása",
+    "creating": "Létrehozás...",
+    "validation": {
+      "keyRequired": "A kulcs megadása kötelező",
+      "valueRequired": "Az érték megadása kötelező",
+      "categoryRequired": "A kategória megadása kötelező"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Űrlapszerkesztő",
+    "rawEditor": "Nyers JSON szerkesztő",
+    "rawJson": "Nyers JSON",
+    "switchToForm": "Váltás űrlapra",
+    "importToForm": "Importálás űrlapra",
+    "parseError": "Elemzési hiba: {{message}}",
+    "arraySummary": "Tömb (elemek: {{length}})",
+    "addItem": "Elem hozzáadása",
+    "remove": "Eltávolítás",
+    "typeHint": {
+      "array": "(tömb)",
+      "object": "(objektum)",
+      "string": "(karakterlánc)",
+      "number": "(szám)",
+      "boolean": "(logikai)",
+      "bigint": "(bigint)",
+      "function": "(függvény)",
+      "symbol": "(szimbólum)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

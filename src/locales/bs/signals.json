@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signali"
+  },
+  "filters": {
+    "allStrategies": "Sve strategije"
+  },
+  "actions": {
+    "export": "Izvezi"
+  },
+  "stats": {
+    "total": "Ukupno",
+    "buy": "Kupovina",
+    "sell": "Prodaja",
+    "avgStrength": "Prosj. jačina"
+  },
+  "card": {
+    "strength": "Jačina",
+    "price": "Cijena",
+    "exchange": "Berza",
+    "reason": "Razlog:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Jak",
+    "medium": "Srednji",
+    "weak": "Slab",
+    "veryWeak": "Vrlo slab"
+  },
+  "time": {
+    "justNow": "Upravo sada",
+    "minutesAgo": "{{count}}m prije",
+    "hoursAgo": "{{count}}h prije"
+  },
+  "empty": {
+    "title": "Nema pronađenih signala",
+    "message": "Nijedan trgovački signal ne odgovara trenutnim filterima."
+  }
+}

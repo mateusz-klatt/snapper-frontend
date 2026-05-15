@@ -1,0 +1,83 @@
+{
+  "loading": "Duke ngarkuar...",
+  "error": "Gabim",
+  "retry": "Riprovo",
+  "close": "Mbyll",
+  "cancel": "Anulo",
+  "confirm": "Konfirmo",
+  "save": "Ruaj",
+  "documentation": "Dokumentacion (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Ndërro gjuhën",
+    "flagAriaLabel": "Kalo në {{country}}",
+    "currentAriaLabel": "Gjuha aktuale: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Konsolë tregtimi",
+    "tagline": "Stacion pune preciz",
+    "openSidebar": "Hap shiritin anësor",
+    "closeSidebar": "Mbyll shiritin anësor",
+    "sidebar": "Shirit anësor",
+    "mainNavigation": "Navigimi kryesor",
+    "tradingContent": "Përmbajtje tregtimi",
+    "skipToContent": "Kalo te përmbajtja e tregtimit",
+    "lag": "Vonesë:",
+    "lagTitle": "Vonesa vajtje-ardhje drejt serverit WebSocket",
+    "topics": "Tema:",
+    "topicsTitle": "Numri i temave WebSocket të abonuara",
+    "connected": "Lidhur",
+    "disconnected": "Shkëputur",
+    "connectedTitle": "Lidhur me WebSocket",
+    "disconnectedTitle": "Shkëputur nga WebSocket",
+    "switchToLightMode": "Kalo në modalitetin e çelët",
+    "switchToDarkMode": "Kalo në modalitetin e errët",
+    "timeTravelBanner": "Modaliteti Time Travel — duke parë të dhëna historike (vetëm lexim)",
+    "lagUnknown": "E panjohur",
+    "walletPicker": {
+      "ariaLabel": "Portofoli aktiv",
+      "placeholder": "Portofol",
+      "allWallets": "Të gjitha portofolet",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operatori aktiv",
+      "placeholder": "Operator",
+      "allOperators": "Të gjithë operatorët"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: zgjidh një pikë historike në kohë",
+      "exitAriaLabel": "Dil nga modaliteti time travel",
+      "exitTitle": "Kthehu në modalitetin live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument vetëm për vëzhgim. Snapper merr të dhëna tregu, por nuk mund të vendosë urdhra për këtë çift (simbol, bursë).",
+      "ariaLabel": "Instrument vetëm me të dhëna tregu",
+      "badge": "Vetëm të dhëna tregu"
+    },
+    "liveOnly": {
+      "notice": "Kjo skedë shfaq gjendjen aktuale — pamja historike nuk është e disponueshme."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Diçka shkoi keq",
+    "titleWithComponent": "Gabim në {{componentName}}",
+    "stackTrace": "Gjurmë stack-u",
+    "tryAgain": "Provo përsëri"
+  },
+  "nav": {
+    "overview": "Përmbledhje",
+    "market": "Të dhëna tregu",
+    "processes": "Procese",
+    "strategies": "Strategji",
+    "orders": "Urdhra dhe Ekzekutimet",
+    "positions": "Pozicione",
+    "signals": "Sinjale",
+    "backtests": "Backtests",
+    "health": "Shëndeti",
+    "admin": "Administrim",
+    "aiIntegration": "Integrimi AI",
+    "aiReviews": "Rishikime AI",
+    "settings": "Cilësime"
+  }
+}

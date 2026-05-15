@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Megbízások és teljesítések",
+    "newOrder": "Új megbízás",
+    "exportCsv": "CSV exportálása"
+  },
+  "tabs": {
+    "orders": "Megbízások ({{total}})",
+    "executions": "Teljesítések ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Szűrés állapot szerint:",
+    "options": {
+      "all": "Minden megbízás",
+      "new": "Új",
+      "open": "Nyitott",
+      "partiallyFilled": "Részben teljesült",
+      "partially_filled": "Részben teljesült",
+      "filled": "Teljesült",
+      "cancelled": "Visszavonva",
+      "rejected": "Elutasítva"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Piaci",
+    "quantity": "Mennyiség",
+    "price": "Ár",
+    "created": "Létrehozva",
+    "createdUnknown": "N/A",
+    "orderId": "Megbízásazonosító",
+    "leverage": "Tőkeáttétel",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "CSAK CSÖKKENTÉS",
+    "cancel": "Visszavonás",
+    "cancelling": "Visszavonás…",
+    "cancelAriaLabel": "{{orderId}} megbízás visszavonása"
+  },
+  "executionCard": {
+    "orderNumber": "Megbízás #{{orderId}}",
+    "filled": "TELJESÜLT",
+    "orderLabel": "Megbízás {{orderId}}",
+    "size": "Méret",
+    "price": "Ár",
+    "total": "Összesen",
+    "executed": "Teljesítve",
+    "fees": "Díjak"
+  },
+  "empty": {
+    "ordersTitle": "Nem találhatók megbízások",
+    "ordersStartTrading": "Kezdjen kereskedni, hogy a megbízások itt megjelenjenek",
+    "ordersFilterless": "Nincs {{status}} megbízás",
+    "executionsTitle": "Nem találhatók teljesítések",
+    "executionsMessage": "A kereskedési teljesítések itt jelennek meg"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrumentum",
+      "side": "Oldal",
+      "type": "Típus",
+      "status": "Állapot",
+      "quantity": "Mennyiség",
+      "price": "Ár",
+      "leverage": "Tőkeáttétel",
+      "reduceOnly": "Csak csökkentés",
+      "created": "Létrehozva"
+    },
+    "executions": {
+      "orderId": "Megbízásazonosító",
+      "instrument": "Instrumentum",
+      "side": "Oldal",
+      "size": "Méret",
+      "price": "Ár",
+      "total": "Összesen",
+      "fee": "Díj",
+      "feeAsset": "Díjeszköz",
+      "executed": "Teljesítve"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Új kézi megbízás",
+    "titleConfirm": "Megbízás megerősítése",
+    "fields": {
+      "exchange": "Tőzsde",
+      "instrument": "Instrumentum",
+      "side": "Oldal",
+      "orderType": "Megbízástípus",
+      "quantity": "Mennyiség",
+      "price": "Ár",
+      "stopPrice": "Stop ár",
+      "mode": "Mód",
+      "wallet": "Pénztárca",
+      "type": "Típus"
+    },
+    "sideOptions": {
+      "buy": "Vétel",
+      "sell": "Eladás"
+    },
+    "orderTypeOptions": {
+      "market": "Piaci",
+      "limit": "Limitáras",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Élő",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — csak piaci adatos",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Mégse",
+      "reviewOrder": "Megbízás ellenőrzése",
+      "back": "Vissza",
+      "confirmOrder": "Megbízás megerősítése",
+      "submitting": "Beküldés..."
+    },
+    "errors": {
+      "missingRequired": "Minden kötelező mezőt ki kell tölteni",
+      "quantityPositive": "A mennyiségnek pozitív számnak kell lennie",
+      "priceRequired": "Ehhez a megbízástípushoz ár megadása kötelező",
+      "pricePositive": "Az árnak pozitív számnak kell lennie",
+      "stopPriceRequired": "Ehhez a megbízástípushoz Stop ár megadása kötelező",
+      "stopPricePositive": "A Stop árnak pozitív számnak kell lennie",
+      "createFailed": "A megbízás létrehozása sikertelen"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Ez az instrumentum csak megfigyelésre szolgál — megbízást végrehajtásra alkalmas instrumentumon helyezzen el.",
+      "unknownInstrument": "Ez az instrumentum nem ismert. Töltse újra a listát, majd próbálja újra.",
+      "capsViolation": "Ez a megbízás túllépné a fiók biztonsági limitjeit. Ellenőrizze a kockázati beállításokat, majd próbálja újra."
+    }
+  }
+}

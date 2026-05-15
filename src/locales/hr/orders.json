@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Nalozi i izvršenja",
+    "newOrder": "Novi nalog",
+    "exportCsv": "Izvezi CSV"
+  },
+  "tabs": {
+    "orders": "Nalozi ({{total}})",
+    "executions": "Izvršenja ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtriraj prema statusu:",
+    "options": {
+      "all": "Svi nalozi",
+      "new": "Novi",
+      "open": "Otvoreni",
+      "partiallyFilled": "Djelomično izvršeni",
+      "partially_filled": "Djelomično izvršeni",
+      "filled": "Izvršeni",
+      "cancelled": "Otkazani",
+      "rejected": "Odbijeni"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/D",
+    "priceMarket": "Tržišni",
+    "quantity": "Količina",
+    "price": "Cijena",
+    "created": "Stvoreno",
+    "createdUnknown": "N/D",
+    "orderId": "ID naloga",
+    "leverage": "Poluga",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "SAMO-SMANJENJE",
+    "cancel": "Otkaži",
+    "cancelling": "Otkazivanje…",
+    "cancelAriaLabel": "Otkaži nalog {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Nalog #{{orderId}}",
+    "filled": "IZVRŠENO",
+    "orderLabel": "Nalog {{orderId}}",
+    "size": "Veličina",
+    "price": "Cijena",
+    "total": "Ukupno",
+    "executed": "Izvršeno",
+    "fees": "Naknade"
+  },
+  "empty": {
+    "ordersTitle": "Nema pronađenih naloga",
+    "ordersStartTrading": "Započnite trgovanje za prikaz naloga ovdje",
+    "ordersFilterless": "Nema naloga sa statusom {{status}}",
+    "executionsTitle": "Nema pronađenih izvršenja",
+    "executionsMessage": "Izvršenja trgovanja pojavit će se ovdje"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Strana",
+      "type": "Vrsta",
+      "status": "Status",
+      "quantity": "Količina",
+      "price": "Cijena",
+      "leverage": "Poluga",
+      "reduceOnly": "Samo smanjenje",
+      "created": "Stvoreno"
+    },
+    "executions": {
+      "orderId": "ID naloga",
+      "instrument": "Instrument",
+      "side": "Strana",
+      "size": "Veličina",
+      "price": "Cijena",
+      "total": "Ukupno",
+      "fee": "Naknada",
+      "feeAsset": "Imovina naknade",
+      "executed": "Izvršeno"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Novi ručni nalog",
+    "titleConfirm": "Potvrdi nalog",
+    "fields": {
+      "exchange": "Burza",
+      "instrument": "Instrument",
+      "side": "Strana",
+      "orderType": "Vrsta naloga",
+      "quantity": "Količina",
+      "price": "Cijena",
+      "stopPrice": "Stop cijena",
+      "mode": "Način",
+      "wallet": "Novčanik",
+      "type": "Vrsta"
+    },
+    "sideOptions": {
+      "buy": "Kupnja",
+      "sell": "Prodaja"
+    },
+    "orderTypeOptions": {
+      "market": "Tržišni",
+      "limit": "Limit nalog",
+      "stop": "Stop nalog",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — samo tržišni podaci",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Odustani",
+      "reviewOrder": "Pregledaj nalog",
+      "back": "Natrag",
+      "confirmOrder": "Potvrdi nalog",
+      "submitting": "Slanje..."
+    },
+    "errors": {
+      "missingRequired": "Sva obvezna polja moraju biti popunjena",
+      "quantityPositive": "Količina mora biti pozitivan broj",
+      "priceRequired": "Cijena je obvezna za ovu vrstu naloga",
+      "pricePositive": "Cijena mora biti pozitivan broj",
+      "stopPriceRequired": "Stop cijena je obvezna za ovu vrstu naloga",
+      "stopPricePositive": "Stop cijena mora biti pozitivan broj",
+      "createFailed": "Stvaranje naloga nije uspjelo"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Ovaj instrument služi samo za promatranje — naloge šaljite na instrument koji podržava izvršenje.",
+      "unknownInstrument": "Ovaj instrument nije prepoznat. Ponovno učitajte popis i pokušajte ponovno.",
+      "capsViolation": "Ovaj nalog premašio bi sigurnosne limite računa. Pregledajte postavke rizika i pokušajte ponovno."
+    }
+  }
+}

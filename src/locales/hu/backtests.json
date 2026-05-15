@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Vissza",
+    "backToList": "← Vissza a Backtestekhez"
+  },
+  "status": {
+    "pending": "Függőben",
+    "running": "Fut",
+    "completed": "Befejezve",
+    "failed": "Sikertelen",
+    "cancelled": "Megszakítva"
+  },
+  "list": {
+    "title": "Backtestek",
+    "actions": {
+      "cancel": "Mégse",
+      "rerun": "Újrafuttatás"
+    },
+    "fields": {
+      "timeframe": "Idősík",
+      "period": "Időszak",
+      "initialCash": "Kezdő készpénz",
+      "id": "Azonosító"
+    },
+    "errorPrefix": "Hiba: {{message}}",
+    "filter": {
+      "ariaLabel": "Backtestek szűrése állapot szerint",
+      "options": {
+        "all": "Minden állapot",
+        "pending": "Függőben",
+        "running": "Fut",
+        "completed": "Befejezve",
+        "failed": "Sikertelen",
+        "cancelled": "Megszakítva"
+      }
+    },
+    "empty": {
+      "title": "Nincsenek Backtestek",
+      "message": "Futtasson Backtestet a CLI-n vagy API-n keresztül, hogy az eredmények itt megjelenjenek."
+    }
+  },
+  "detail": {
+    "title": "Backtest futtatás",
+    "fields": {
+      "strategy": "Stratégia",
+      "instrument": "Instrumentum",
+      "status": "Állapot",
+      "period": "Időszak",
+      "crossAsset": "Eszközök közötti attribúció",
+      "configHash": "Konfigurációs hash"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} teljesítések",
+    "errors": {
+      "invalidRunId": "Érvénytelen futtatási azonosító — UUID7 szükséges (kapott érték: „{{id}}”).",
+      "loadFailed": "Nem sikerült betölteni a futtatást: {{message}}",
+      "notFound": "nem található"
+    }
+  },
+  "compare": {
+    "title": "Összehasonlítás",
+    "headingFull": "Backtest összehasonlítás",
+    "loading": "Összehasonlítás betöltése…",
+    "vs": "vs",
+    "runLabel": "Futtatás {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrikák",
+      "equityOverlay": "Equity átfedés",
+      "trades": "Kötések",
+      "signals": "Jelzések"
+    },
+    "pairingMode": {
+      "auto": "automatikus",
+      "manual": "kézi"
+    },
+    "errors": {
+      "notFound": "Az összehasonlítás nem található a jelenlegi pénztárcában.",
+      "loadFailed": "Nem sikerült betölteni az összehasonlítást: {{message}}",
+      "unknown": "ismeretlen hiba",
+      "emptyResponse": "Üres összehasonlítási válasz."
+    },
+    "launcher": {
+      "title": "Összehasonlítás",
+      "submit": "Összehasonlítás",
+      "autoPair": "Összehasonlítás a legutóbbival",
+      "terminalGate": "az összehasonlítás akkor érhető el, ha ez a futtatás terminális állapotba kerül",
+      "noSiblings": "nincs más futtatás ezzel a konfigurációval",
+      "limitNotice": "a legutóbbiak megjelenítése: {{count}} — régebbi futtatásokhoz használjon kézi párosítást",
+      "pickPlaceholder": "— válasszon futtatást az összehasonlításhoz —",
+      "showAllLabel": "Minden futtatás megjelenítése (nem csak azonos konfiguráció)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "minden futtatás",
+        "sameConfig": "azonos konfiguráció"
+      },
+      "errors": {
+        "pickRequired": "válasszon futtatást a listából"
+      }
+    },
+    "diffColumns": {
+      "common": "Közös",
+      "onlyA": "Csak A-ban",
+      "onlyB": "Csak B-ben"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A PnL",
+        "pnlB": "B PnL",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Nincsenek összehasonlítható metrikák — egyik futtatásban sincs rögzített érték.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "A futtatás",
+        "runB": "B futtatás",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "A futtatás",
+        "runB": "B futtatás"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Várakozás az előrehaladásra…",
+    "candles": "Gyertyák: {{done}} / {{total}}",
+    "candlesNoTotal": "Gyertyák: {{done}}",
+    "equity": "equity {{value}}",
+    "signalsTrades": "jelzések: {{signals}} / kötések: {{trades}}",
+    "milestoneLine": "mérföldkő {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

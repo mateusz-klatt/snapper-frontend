@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Integrimi AI",
+    "subtitle": "Menaxhoni delegatët AI që lidhen me Snapper përmes MCP.",
+    "loading": "Duke ngarkuar integrimin AI…",
+    "createDelegate": "Krijo delegat"
+  },
+  "disabled": {
+    "title": "Integrimi AI është çaktivizuar",
+    "message": "Aktivizoni flamurin e veçorisë te Cilësime → Feature Flags për të menaxhuar delegatët AI."
+  },
+  "list": {
+    "loadingDelegates": "Duke ngarkuar delegatët…",
+    "emptyTitle": "Nuk ka ende delegatë AI",
+    "emptyMessage": "Klikoni “Krijo delegat” për të krijuar një dhe për të gjeneruar fragmentin e konfigurimit MCP.",
+    "columns": {
+      "label": "Etiketë",
+      "username": "Emër përdoruesi",
+      "created": "Krijuar",
+      "maxOpenOrders": "Maks. urdhra të hapur",
+      "maxDailyUsd": "Maks. ditor në USD",
+      "status": "Status",
+      "actions": "Veprime"
+    },
+    "status": {
+      "active": "Aktiv",
+      "revoked": "Revokuar"
+    },
+    "default": "parazgjedhur",
+    "details": "Detaje",
+    "viewAriaLabel": "Shiko delegatin {{label}}"
+  },
+  "wizard": {
+    "title": "Krijo delegat AI",
+    "step1": "1. Identiteti",
+    "step2": "2. Fushëveprimi dhe kufijtë",
+    "step3": "3. Rishikim",
+    "stepDone": "✓ U krye",
+    "identity": {
+      "labelField": "Etiketë",
+      "labelPlaceholder": "p.sh. Alpha prop desk",
+      "labelHelpPrefix": "Emri i përdoruesit i delegatit do të nxirret në server si ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Fushëveprim",
+      "operatorLabel": "public_id i operatorit (opsional)",
+      "operatorPlaceholder": "Lëreni bosh për të trashëguar operatorin primar të thirrësit"
+    },
+    "caps": {
+      "heading": "Kufijtë e tregtimit (të gjitha opsionale)",
+      "maxOpenOrders": "Maks. urdhra të hapur",
+      "maxDailyNotionalUsd": "Maks. nocional ditor në USD",
+      "maxCancelsPerMinute": "Maks. anulime për minutë",
+      "perInstrument": "Sasia maksimale për instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "parazgjedhur",
+      "errorInvalidJson": "max_order_quantity_per_instrument duhet të jetë JSON i vlefshëm",
+      "errorJsonObject": "max_order_quantity_per_instrument duhet të jetë objekt JSON ose bosh",
+      "errorNegative": "Kufijtë duhet të jenë numra të plotë jonegativë ose bosh."
+    },
+    "review": {
+      "heading": "Rishiko dhe krijo",
+      "rowLabel": "Etiketë",
+      "rowOperator": "public_id i operatorit",
+      "rowMaxOpenOrders": "Maks. urdhra të hapur",
+      "rowMaxDailyNotional": "Maks. nocional ditor në USD",
+      "rowMaxCancelsPerMinute": "Maks. anulime për minutë",
+      "rowPerInstrument": "Sasia maksimale për instrument",
+      "operatorDefault": "(operatori primar i thirrësit)",
+      "defaultValue": "(parazgjedhur)"
+    },
+    "buttons": {
+      "cancel": "Anulo",
+      "next": "Vazhdo",
+      "back": "Pas",
+      "createDelegate": "Krijo delegat",
+      "iSavedClose": "I kam ruajtur këto — mbyll"
+    },
+    "toast": {
+      "delegateCreated": "Delegati u krijua",
+      "failedToCreate": "Krijimi i delegatit dështoi"
+    }
+  },
+  "detail": {
+    "loading": "Duke ngarkuar delegatin…",
+    "notFound": "Delegati nuk u gjet ose nuk është i disponueshëm.",
+    "back": "Pas",
+    "backToList": "Kthehu te lista",
+    "updateCaps": "Përditëso kufijtë",
+    "revoke": "Revoko",
+    "save": "Ruaj",
+    "cancel": "Anulo",
+    "tradingCaps": "Kufijtë e tregtimit",
+    "status": "Status",
+    "active": "Aktiv",
+    "revoked": "Revokuar",
+    "createdAt": "Krijuar më",
+    "createdBy": "Krijuar nga (public_id i përdoruesit)",
+    "publicId": "ID publike",
+    "maxOpenOrders": "Maks. urdhra të hapur",
+    "maxDailyNotionalUsd": "Maks. nocional ditor në USD",
+    "maxCancelsPerMinute": "Maks. anulime për minutë",
+    "perInstrument": "Sasia maksimale për instrument",
+    "defaultValue": "(parazgjedhur)",
+    "editorPlaceholder": "(parazgjedhur)",
+    "toast": {
+      "capsUpdated": "Kufijtë u përditësuan",
+      "failedToUpdateCaps": "Përditësimi i kufijve dështoi",
+      "negativeIntegersError": "Kufijtë duhet të jenë numra të plotë jonegativë ose bosh."
+    }
+  },
+  "revokeDialog": {
+    "title": "Të revokohet delegati \"{{label}}\"?",
+    "message": "Kjo revokon tokenët e delegatit dhe ndalon abonimet e tij MCP. Ky veprim nuk mund të zhbëhet.",
+    "confirm": "Revoko",
+    "cancel": "Anulo",
+    "toast": {
+      "delegateRevoked": "Delegati u revokua",
+      "failedToRevoke": "Revokimi i delegatit dështoi"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Ruajini këto kredenciale tani",
+    "warningMessage": "Ato nuk do të shfaqen më. Snapper nuk i ruan tokenët e papërpunuar; pasi ta mbyllni këtë udhëzues, kopja e vetme do të jetë në konfigurimin e klientit tuaj MCP.",
+    "snippetHelp": "Token jetëgjatë i delegatit AI (~10 vjet). I njëjti token autentikon si serverin proxy MCP, ashtu edhe monitorin vëzhgues. Për zëvendësim, çaktivizoni këtë delegat dhe krijoni një të ri.",
+    "baseUrlHelpPrefix": "URL-ja bazë nxirret nga origjina e këtij shfletuesi + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopjo fragmentin e konfigurimit në kujtesë",
+    "copy": "Kopjo në kujtesë",
+    "copied": "U kopjua"
+  }
+}

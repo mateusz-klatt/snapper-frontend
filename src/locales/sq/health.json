@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Shëndeti i sistemit",
+    "healthMetricsHeading": "Metrikat e shëndetit",
+    "processStatusHeading": "Statusi i proceseve",
+    "activeBacktestsHeading": "Backtests aktive",
+    "quickActionsHeading": "Veprime të shpejta",
+    "featureNotImplemented": "Veçoria nuk është implementuar ende",
+    "restartServices": "Rinis shërbimet",
+    "runHealthCheck": "Ekzekuto kontroll shëndeti",
+    "viewLogs": "Shiko log-et",
+    "exportReport": "Eksporto raportin"
+  },
+  "status": {
+    "healthy": "I shëndetshëm",
+    "stopped": "Ndaluar",
+    "error": "Gabim",
+    "warning": "Paralajmërim",
+    "completed": "Përfunduar",
+    "unknown": "I panjohur"
+  },
+  "metrics": {
+    "tradingEngine": "Motori i tregtimit",
+    "tradingEngineDescription": "Motor për ekzekutimin e strategjive",
+    "activeBacktests": "Backtests aktive",
+    "activeBacktestsDescription": "Procese Backtest në ekzekutim",
+    "active": "Aktiv",
+    "inactive": "Joaktiv"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Kohë pune",
+    "exitCode": "Kodi i daljes: {{code}}",
+    "service": "shërbim",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Statistikat e bazës së të dhënave",
+    "loading": "Duke ngarkuar statistikat e bazës së të dhënave…",
+    "unavailable": "Statistikat e bazës së të dhënave nuk janë të disponueshme: {{message}}",
+    "fallbackError": "Ngarkimi i statistikave të bazës së të dhënave dështoi.",
+    "sampled": "mostruar {{age}}",
+    "samplerSummary": "Intervali i mostruesit: {{seconds}}s · {{count}} tabela",
+    "columns": {
+      "table": "Tabelë",
+      "kind": "Lloj",
+      "total": "Totali",
+      "current": "Aktuale",
+      "closed": "Mbyllur",
+      "archivable": "E arkivueshme",
+      "status": "Status"
+    },
+    "stale": "i vjetruar"
+  },
+  "notification": {
+    "title": "Sidecar i njoftimeve",
+    "loading": "Duke ngarkuar metrikat e njoftimeve…",
+    "unavailable": "Metrikat e njoftimeve nuk janë të disponueshme: {{message}}",
+    "fallbackError": "Ngarkimi i metrikave të njoftimeve dështoi.",
+    "sent": "Dërguar",
+    "sentDescription": "Terminal: dërguar",
+    "failed": "Dështoi",
+    "failedDescription": "Buxheti i riprovimit u shter",
+    "unregistered": "Çregjistruar",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Anuluar (fushëveprim)",
+    "cancelledScopeDescription": "Revokim fushëveprimi / çaktivizim përdoruesi",
+    "outboxDepth": "Thellësia e Outbox",
+    "outboxDepthDescription": "Në radhë, në pritje të riprovimit"
+  },
+  "retention": {
+    "title": "Planifikuesi i ruajtjes",
+    "loading": "Duke ngarkuar ekzekutimin e ruajtjes…",
+    "unavailable": "Ekzekutimi i ruajtjes nuk është i disponueshëm: {{message}}",
+    "fallbackError": "Ngarkimi i ekzekutimit të ruajtjes dështoi.",
+    "lastRun": "ekzekutimi i fundit {{age}}",
+    "dryRunNotice": "Modalitet Dry-run: rreshtat arkivohen, por nuk pastrohen nga DB.",
+    "columns": {
+      "table": "Tabelë",
+      "retain": "Ruaj",
+      "archivedWindow": "Dritarja e arkivuar",
+      "archived": "Arkivuar",
+      "purged": "Pastruar",
+      "files": "Skedarë",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "gabim"
+  },
+  "systemMetrics": {
+    "title": "Shëndeti i proceseve",
+    "loading": "Duke ngarkuar metrikat e proceseve…",
+    "unavailable": "Metrikat e proceseve nuk janë të disponueshme: {{message}}",
+    "fallbackError": "Ngarkimi i metrikave të shëndetit të proceseve dështoi.",
+    "rawJson": "JSON i papërpunuar",
+    "pid": "PID",
+    "statusValue": "Statusi: {{status}}",
+    "uptime": "Kohë pune",
+    "threads": "Threads",
+    "openFds": "FD të hapura",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttled {{count}}×",
+    "memory": "Memorie",
+    "saturation": "Ngopje {{percent}}",
+    "asyncioTasks": "Detyra Asyncio",
+    "asyncioActive": "{{count}} aktive",
+    "asyncioPending": "+ {{count}} në pritje",
+    "dbPool": "Pool DB",
+    "liveConns": "Lidhje live: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekte: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Lidhje rrjeti",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktive",
+    "tracemallocIdle": "Joaktive"
+  },
+  "relativeAge": {
+    "justNow": "tani sapo",
+    "seconds": "{{seconds}}s më parë",
+    "minutes": "{{minutes}}min më parë",
+    "hours": "{{hours}}h më parë",
+    "days": "{{days}}d më parë"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administracija",
+    "subtitle": "Upravljajte korisnicima i konfiguracijom sistema"
+  },
+  "rolePermissions": {
+    "title": "Dozvole uloga",
+    "viewer": {
+      "label": "Posmatrač",
+      "description": "Pristup samo za čitanje Pregledu i Tržišnim podacima. Ne može upravljati procesima, strategijama ni sistemskim postavkama."
+    },
+    "operator": {
+      "label": "Operater",
+      "description": "Sve dozvole Posmatrača plus trgovačke operacije, izvršavanje strategija, upravljanje procesima i praćenje stanja sistema."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Puni pristup sistemu, uključujući upravljanje korisnicima, sistemske postavke, konfiguraciju API ključeva i sve dozvole Operatera."
+    },
+    "table": {
+      "resource": "Resurs",
+      "viewer": "Posmatrač",
+      "operator": "Operater",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Pregled",
+      "market": "Tržišni podaci",
+      "processes": "Procesi",
+      "strategies": "Strategije",
+      "orders": "Nalozi i izvršenja",
+      "positions": "Pozicije",
+      "signals": "Signali",
+      "health": "Stanje",
+      "admin": "Administracija",
+      "settings": "Postavke"
+    }
+  },
+  "common": {
+    "cancel": "Otkaži",
+    "selectWallet": "Odaberite novčanik",
+    "selectAWallet": "Odaberite novčanik",
+    "chooseWalletPlaceholder": "Odaberite novčanik...",
+    "selectWalletPlaceholder": "Odaberite novčanik...",
+    "walletLabel": "Novčanik",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Nepoznata greška",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Pristup odbijen",
+      "message": "Nemate dozvolu za upravljanje korisnicima. Kontaktirajte administratora sistema."
+    },
+    "list": {
+      "title": "Upravljanje korisnicima",
+      "countLabel": "{{count}} korisnika",
+      "showInactive": "Prikaži neaktivne",
+      "hideInactive": "Sakrij neaktivne",
+      "addUser": "Dodaj korisnika",
+      "searchPlaceholder": "Pretraži po korisničkom imenu, e-mailu ili ulozi...",
+      "columns": {
+        "user": "Korisnik",
+        "role": "Uloga",
+        "status": "Status",
+        "createdAt": "Kreirano",
+        "actions": "Radnje"
+      },
+      "status": {
+        "active": "Aktivan",
+        "inactive": "Neaktivan"
+      },
+      "unknown": "Nepoznato",
+      "empty": {
+        "title": "Nema pronađenih korisnika",
+        "noMatch": "Nijedan korisnik ne odgovara kriterijima pretrage.",
+        "noUsers": "Nema pronađenih korisnika.",
+        "noActive": "Nema aktivnih korisnika."
+      },
+      "errorLoading": "Greška pri učitavanju korisnika: {{message}}",
+      "deactivate": {
+        "title": "Deaktiviraj korisnika",
+        "message": "Sigurno deaktivirati korisnika \"{{username}}\"? Prijava više neće biti moguća.",
+        "confirm": "Deaktiviraj"
+      },
+      "toast": {
+        "deactivated": "Korisnik je deaktiviran",
+        "deactivateError": "Greška pri deaktivaciji korisnika"
+      }
+    },
+    "form": {
+      "titleEdit": "Uredi korisnika",
+      "titleAdd": "Dodaj korisnika",
+      "fields": {
+        "username": "Korisničko ime",
+        "usernamePlaceholder": "Unesite korisničko ime",
+        "password": "Lozinka",
+        "passwordPlaceholder": "Unesite lozinku",
+        "newPassword": "Nova lozinka",
+        "newPasswordPlaceholder": "Unesite novu lozinku",
+        "email": "E-mail",
+        "emailPlaceholder": "Unesite e-mail",
+        "role": "Uloga",
+        "accountActive": "Račun aktivan",
+        "resetUserPassword": "Resetuj lozinku korisnika"
+      },
+      "roles": {
+        "viewer": "Posmatrač",
+        "operator": "Operater",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Korisničko ime je obavezno",
+        "usernameMinLength": "Korisničko ime mora imati najmanje 3 znaka",
+        "emailRequired": "E-mail je obavezan",
+        "emailInvalid": "Nevažeći format e-maila",
+        "passwordRequired": "Lozinka je obavezna",
+        "passwordMinLength": "Lozinka mora imati najmanje 8 znakova",
+        "passwordRequiredWhenResetting": "Lozinka je obavezna pri resetovanju"
+      },
+      "actions": {
+        "saveChanges": "Sačuvaj izmjene",
+        "createUser": "Kreiraj korisnika"
+      },
+      "toast": {
+        "created": "Korisnik je kreiran",
+        "createError": "Greška pri kreiranju korisnika",
+        "updated": "Korisnik je ažuriran",
+        "updateError": "Greška pri ažuriranju korisnika",
+        "passwordReset": "Lozinka korisnika je resetovana",
+        "resetError": "Greška pri resetovanju lozinke"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Pristup odbijen",
+      "message": "Nemate dozvolu za upravljanje opsezima ovlaštenja. Kontaktirajte administratora sistema."
+    },
+    "list": {
+      "title": "Opsezi ovlaštenja",
+      "countLabel": "{{count}} ovlaštenja",
+      "createGrant": "Dodijeli opseg",
+      "selectWalletPrompt": "Odaberite novčanik iznad za pregled njegovih opsega ovlaštenja.",
+      "columns": {
+        "operator": "Operater",
+        "scope": "Opseg",
+        "target": "Cilj",
+        "grantedAt": "Dodijeljeno",
+        "actions": "Radnje"
+      },
+      "empty": {
+        "noGrants": "Nema pronađenih ovlaštenja",
+        "noGrantsHint": "Ovaj novčanik nema aktivnih opsega ovlaštenja."
+      },
+      "errorLoading": "Greška pri učitavanju ovlaštenja: {{message}}",
+      "handover": "Prenesi"
+    },
+    "form": {
+      "title": "Dodijeli opseg",
+      "fields": {
+        "operator": "Operater",
+        "operatorPlaceholder": "Odaberite operatera...",
+        "wallet": "Novčanik",
+        "scopeKind": "Vrsta opsega",
+        "underlyingPublicId": "Javni ID osnovne imovine",
+        "instrumentPublicId": "Javni ID instrumenta",
+        "underlyingPlaceholder": "npr. BTC",
+        "instrumentPlaceholder": "npr. BTC-USD-PERP",
+        "note": "Napomena (opcionalno)",
+        "notePlaceholder": "Opcionalna napomena"
+      },
+      "scopeKinds": {
+        "underlying": "Osnovna imovina",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operater je obavezan",
+        "walletRequired": "Novčanik je obavezan",
+        "targetRequired": "ID cilja je obavezan"
+      },
+      "actions": {
+        "createGrant": "Dodijeli opseg"
+      },
+      "toast": {
+        "created": "Opseg ovlaštenja je kreiran",
+        "conflictError": "Sukob: drugi operater već ima ovlaštenje za ovaj opseg",
+        "createError": "Greška pri kreiranju opsega ovlaštenja"
+      }
+    },
+    "handover": {
+      "title": "Prenos opsega ovlaštenja",
+      "fields": {
+        "currentHolder": "Trenutni nosilac",
+        "scope": "Opseg",
+        "wallet": "Novčanik",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Prenesi operateru",
+        "transferToPlaceholder": "Odaberite odredišnog operatera...",
+        "reason": "Razlog (opcionalno)",
+        "reasonPlaceholder": "npr. promjena smjene"
+      },
+      "actions": {
+        "handover": "Prenesi"
+      },
+      "toast": {
+        "completed": "Opseg ovlaštenja je prenesen",
+        "conflictError": "Sukob: odredišni operater već ima ovlaštenje koje se sukobljava",
+        "handoverError": "Greška pri prenosu opsega ovlaštenja"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Pristup odbijen",
+      "message": "Nemate dozvolu za upravljanje vjerodajnicama novčanika. Kontaktirajte administratora sistema."
+    },
+    "list": {
+      "title": "Vjerodajnice novčanika",
+      "countLabel": "{{count}} vjerodajnica",
+      "addCredential": "Dodaj vjerodajnicu",
+      "selectWalletPrompt": "Odaberite novčanik iznad za pregled njegovih vjerodajnica.",
+      "columns": {
+        "exchange": "Berza",
+        "type": "Vrsta",
+        "label": "Oznaka",
+        "createdAt": "Kreirano",
+        "actions": "Radnje"
+      },
+      "empty": {
+        "noCredentials": "Nema pronađenih vjerodajnica",
+        "noCredentialsHint": "Ovaj novčanik nema aktivnih vjerodajnica."
+      },
+      "errorLoading": "Greška pri učitavanju vjerodajnica: {{message}}",
+      "rotate": "Zamijeni"
+    },
+    "form": {
+      "title": "Dodaj vjerodajnicu",
+      "fields": {
+        "wallet": "Novčanik",
+        "exchange": "Berza",
+        "exchangePlaceholder": "npr. kraken",
+        "credentialType": "Vrsta vjerodajnice",
+        "label": "Oznaka (opcionalno)",
+        "labelPlaceholder": "npr. Glavni trgovački ključ",
+        "pemPlaceholder": "Ovdje zalijepite privatni ključ u PEM formatu"
+      },
+      "fieldLabels": {
+        "api_key": "API ključ",
+        "api_secret": "API tajna",
+        "private_key_pem": "Privatni ključ (PEM)",
+        "client_id": "ID klijenta",
+        "client_secret": "Tajna klijenta",
+        "refresh_token": "Refresh token",
+        "initial_balance": "Početni saldo"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API ključ + tajna",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Novčanik je obavezan",
+        "exchangeRequired": "Berza je obavezna",
+        "fieldRequired": "{{field}} je obavezno"
+      },
+      "actions": {
+        "addCredential": "Dodaj vjerodajnicu"
+      },
+      "toast": {
+        "created": "Vjerodajnica je kreirana",
+        "conflictError": "Sukob: ovaj novčanik već ima aktivnu vjerodajnicu za ovu berzu",
+        "createError": "Greška pri kreiranju vjerodajnice"
+      }
+    },
+    "rotate": {
+      "title": "Zamjena vjerodajnice",
+      "fields": {
+        "exchange": "Berza",
+        "type": "Vrsta",
+        "label": "Oznaka",
+        "newLabel": "Nova oznaka (opcionalno)",
+        "newLabelPlaceholder": "npr. Zamijenjeni ključ 2026-04",
+        "pemPlaceholder": "Ovdje zalijepite privatni ključ u PEM formatu"
+      },
+      "actions": {
+        "rotate": "Zamijeni"
+      },
+      "toast": {
+        "rotated": "Vjerodajnica je zamijenjena",
+        "rotateError": "Greška pri zamjeni vjerodajnice"
+      }
+    }
+  }
+}

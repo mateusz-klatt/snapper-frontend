@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Nazad",
+    "backToList": "← Nazad na backtestove"
+  },
+  "status": {
+    "pending": "Na čekanju",
+    "running": "Pokrenuto",
+    "completed": "Završeno",
+    "failed": "Neuspešno",
+    "cancelled": "Otkazano"
+  },
+  "list": {
+    "title": "Backtestovi",
+    "actions": {
+      "cancel": "Otkaži",
+      "rerun": "Pokreni ponovo"
+    },
+    "fields": {
+      "timeframe": "Vremenski okvir",
+      "period": "Period",
+      "initialCash": "Početni kapital",
+      "id": "ID"
+    },
+    "errorPrefix": "Greška: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtriraj backtestove po statusu",
+      "options": {
+        "all": "Svi statusi",
+        "pending": "Na čekanju",
+        "running": "Pokrenuto",
+        "completed": "Završeno",
+        "failed": "Neuspešno",
+        "cancelled": "Otkazano"
+      }
+    },
+    "empty": {
+      "title": "Nema backtestova",
+      "message": "Pokrenite backtest preko CLI-ja ili API-ja da biste ovde videli rezultate."
+    }
+  },
+  "detail": {
+    "title": "Backtest run",
+    "fields": {
+      "strategy": "Strategija",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Period",
+      "crossAsset": "Cross-asset atribucija",
+      "configHash": "Hash konfiguracije"
+    },
+    "crossAssetFlow": "{{source}} feed → {{target}} izvršenja",
+    "errors": {
+      "invalidRunId": "Neispravan run id — mora biti UUID7 (dobijeno \"{{id}}\").",
+      "loadFailed": "Učitavanje runa nije uspelo: {{message}}",
+      "notFound": "nije pronađeno"
+    }
+  },
+  "compare": {
+    "title": "Uporedi",
+    "headingFull": "Poređenje backtestova",
+    "loading": "Učitavanje poređenja…",
+    "vs": "vs",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrike",
+      "equityOverlay": "Equity overlay",
+      "trades": "Trgovine",
+      "signals": "Signali"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "ručno"
+    },
+    "errors": {
+      "notFound": "Poređenje nije pronađeno u trenutnom novčaniku.",
+      "loadFailed": "Učitavanje poređenja nije uspelo: {{message}}",
+      "unknown": "nepoznata greška",
+      "emptyResponse": "Prazan odgovor poređenja."
+    },
+    "launcher": {
+      "title": "Uporedi",
+      "submit": "Uporedi",
+      "autoPair": "Uporedi sa najnovijim",
+      "terminalGate": "poređenje je dostupno kada ovaj run dostigne završni status",
+      "noSiblings": "nema drugih runova sa ovom konfiguracijom",
+      "limitNotice": "prikazuje se {{count}} najnovijih — koristite ručno uparivanje za starije runove",
+      "pickPlaceholder": "— izaberite run za poređenje —",
+      "showAllLabel": "Prikaži sve runove (ne samo istu konfiguraciju)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "svi runovi",
+        "sameConfig": "ista konfiguracija"
+      },
+      "errors": {
+        "pickRequired": "izaberite run sa liste"
+      }
+    },
+    "diffColumns": {
+      "common": "Zajedničko",
+      "onlyA": "Samo u A",
+      "onlyB": "Samo u B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Nema uporedivih metrika — nijedan run nije zabeležio vrednosti.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Čekanje napretka…",
+    "candles": "{{done}} / {{total}} sveća",
+    "candlesNoTotal": "{{done}} sveća",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} trgovina",
+    "milestoneLine": "milestone {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

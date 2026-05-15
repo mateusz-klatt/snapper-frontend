@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozicione"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: në pritje",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Sasi",
+    "averageEntry": "Hyrja mes.",
+    "unrealizedPnl": "P&L i parealizuar",
+    "realizedPnl": "P&L i realizuar",
+    "updated": "Përditësuar {{timestamp}}"
+  },
+  "empty": {
+    "title": "Nuk ka pozicione të hapura",
+    "message": "Pozicionet long, short dhe flat do të shfaqen këtu pasi të ekzekutohen tregtimet."
+  },
+  "bracketModal": {
+    "title": "Bashkëngjit SL/TP — {{instrument}}",
+    "confirmTitle": "Konfirmo Bracket",
+    "position": "Pozicion",
+    "entryPrice": "Çmimi i hyrjes",
+    "stopLossLabel": "Çmimi Stop-Loss",
+    "takeProfitLabel": "Çmimi Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Nën ${{price}}",
+      "slShort": "Mbi ${{price}}",
+      "tpLong": "Mbi ${{price}}",
+      "tpShort": "Nën ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Anulo",
+      "review": "Rishiko",
+      "back": "Pas",
+      "confirm": "Konfirmo",
+      "creating": "Duke krijuar…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Bashkëngjit Trailing Stop — {{instrument}}",
+    "confirmTitle": "Konfirmo Trailing Stop",
+    "position": "Pozicion",
+    "entryPrice": "Çmimi i hyrjes",
+    "trailingDistanceLabel": "Trailing Distance (%)",
+    "minLockLabel": "Min Lock Profit (%) — opsionale",
+    "trailingDistance": "Trailing Distance",
+    "minLockProfit": "Min Lock Profit",
+    "placeholders": {
+      "trailingPct": "p.sh. 5.0",
+      "minLockPct": "0 = nis menjëherë"
+    },
+    "minLockWarning": "Trailing Stop nuk do të aktivizohet derisa çmimi të lëvizë {{minLockPct}}% në favorin tuaj.",
+    "buttons": {
+      "cancel": "Anulo",
+      "review": "Rishiko",
+      "back": "Pas",
+      "confirm": "Konfirmo",
+      "creating": "Duke krijuar..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Kërkohet të paktën një çmim SL ose TP",
+    "invalidSlPrice": "Çmim Stop-Loss i pavlefshëm",
+    "slPricePositive": "Çmimi Stop-Loss duhet të jetë pozitiv",
+    "invalidTpPrice": "Çmim Take-Profit i pavlefshëm",
+    "tpPricePositive": "Çmimi Take-Profit duhet të jetë pozitiv",
+    "slLongBelowEntry": "Çmimi SL duhet të jetë nën çmimin e hyrjes ({{price}})",
+    "tpLongAboveEntry": "Çmimi TP duhet të jetë mbi çmimin e hyrjes ({{price}})",
+    "slShortAboveEntry": "Çmimi SL duhet të jetë mbi çmimin e hyrjes ({{price}})",
+    "tpShortBelowEntry": "Çmimi TP duhet të jetë nën çmimin e hyrjes ({{price}})",
+    "trailingRequired": "Përqindja trailing është e detyrueshme",
+    "trailingInvalid": "Përqindje trailing e pavlefshme",
+    "trailingRange": "Përqindja trailing duhet të jetë ndërmjet 0 dhe 100",
+    "minLockInvalid": "Përqindje min lock e pavlefshme",
+    "minLockRange": "Përqindja min lock duhet të jetë ndërmjet 0 dhe 100"
+  }
+}

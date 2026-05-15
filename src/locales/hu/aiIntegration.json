@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI-integráció",
+    "subtitle": "A Snapperhez MCP-n keresztül csatlakozó AI-delegáltak kezelése.",
+    "loading": "AI-integráció betöltése…",
+    "createDelegate": "Delegált létrehozása"
+  },
+  "disabled": {
+    "title": "Az AI-integráció le van tiltva",
+    "message": "Az AI-delegáltak kezeléséhez engedélyezze a funkciójelzőt a Beállítások → Funkciójelzők alatt."
+  },
+  "list": {
+    "loadingDelegates": "Delegáltak betöltése…",
+    "emptyTitle": "Még nincsenek AI-delegáltak",
+    "emptyMessage": "Kattintson a „Delegált létrehozása” elemre egy delegált létrehozásához és az MCP-konfigurációs részlet generálásához.",
+    "columns": {
+      "label": "Címke",
+      "username": "Felhasználónév",
+      "created": "Létrehozva",
+      "maxOpenOrders": "Nyitott megbízások max.",
+      "maxDailyUsd": "Napi USD max.",
+      "status": "Állapot",
+      "actions": "Műveletek"
+    },
+    "status": {
+      "active": "Aktív",
+      "revoked": "Visszavonva"
+    },
+    "default": "alapértelmezett",
+    "details": "Részletek",
+    "viewAriaLabel": "{{label}} delegált megtekintése"
+  },
+  "wizard": {
+    "title": "AI-delegált létrehozása",
+    "step1": "1. Identitás",
+    "step2": "2. Hatáskör és limitek",
+    "step3": "3. Ellenőrzés",
+    "stepDone": "✓ Kész",
+    "identity": {
+      "labelField": "Címke",
+      "labelPlaceholder": "pl. Alpha prop desk",
+      "labelHelpPrefix": "A delegált felhasználónevét a szerveroldal képezi ebből: ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Hatáskör",
+      "operatorLabel": "Operátor public_id (opcionális)",
+      "operatorPlaceholder": "Hagyja üresen a hívó elsődleges operátorának örökléséhez"
+    },
+    "caps": {
+      "heading": "Kereskedési limitek (mind opcionális)",
+      "maxOpenOrders": "Nyitott megbízások max.",
+      "maxDailyNotionalUsd": "Napi névleges USD max.",
+      "maxCancelsPerMinute": "Percenkénti visszavonások max.",
+      "perInstrument": "Instrumentumonkénti maximális mennyiség (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "alapértelmezett",
+      "errorInvalidJson": "A max_order_quantity_per_instrument értékének érvényes JSON-nak kell lennie",
+      "errorJsonObject": "A max_order_quantity_per_instrument értékének JSON objektumnak vagy üresnek kell lennie",
+      "errorNegative": "A limitek csak nem negatív egész számok vagy üresek lehetnek."
+    },
+    "review": {
+      "heading": "Ellenőrzés és létrehozás",
+      "rowLabel": "Címke",
+      "rowOperator": "Operátor public_id",
+      "rowMaxOpenOrders": "Nyitott megbízások max.",
+      "rowMaxDailyNotional": "Napi névleges USD max.",
+      "rowMaxCancelsPerMinute": "Percenkénti visszavonások max.",
+      "rowPerInstrument": "Instrumentumonkénti maximális mennyiség",
+      "operatorDefault": "(hívó elsődleges operátora)",
+      "defaultValue": "(alapértelmezett)"
+    },
+    "buttons": {
+      "cancel": "Mégse",
+      "next": "Tovább",
+      "back": "Vissza",
+      "createDelegate": "Delegált létrehozása",
+      "iSavedClose": "Ezek mentve — bezárás"
+    },
+    "toast": {
+      "delegateCreated": "Delegált létrehozva",
+      "failedToCreate": "Nem sikerült létrehozni a delegáltat"
+    }
+  },
+  "detail": {
+    "loading": "Delegált betöltése…",
+    "notFound": "A delegált nem található vagy nem érhető el.",
+    "back": "Vissza",
+    "backToList": "Vissza a listához",
+    "updateCaps": "Limitek frissítése",
+    "revoke": "Visszavonás",
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "tradingCaps": "Kereskedési limitek",
+    "status": "Állapot",
+    "active": "Aktív",
+    "revoked": "Visszavonva",
+    "createdAt": "Létrehozva",
+    "createdBy": "Létrehozta (felhasználói public_id)",
+    "publicId": "Nyilvános azonosító",
+    "maxOpenOrders": "Nyitott megbízások max.",
+    "maxDailyNotionalUsd": "Napi névleges USD max.",
+    "maxCancelsPerMinute": "Percenkénti visszavonások max.",
+    "perInstrument": "Instrumentumonkénti maximális mennyiség",
+    "defaultValue": "(alapértelmezett)",
+    "editorPlaceholder": "(alapértelmezett)",
+    "toast": {
+      "capsUpdated": "Limitek frissítve",
+      "failedToUpdateCaps": "Nem sikerült frissíteni a limiteket",
+      "negativeIntegersError": "A limitek csak nem negatív egész számok vagy üresek lehetnek."
+    }
+  },
+  "revokeDialog": {
+    "title": "„{{label}}” delegált visszavonása?",
+    "message": "Ez visszavonja a delegált tokenjeit, és leállítja az MCP-feliratkozásait. A művelet nem vonható vissza.",
+    "confirm": "Visszavonás",
+    "cancel": "Mégse",
+    "toast": {
+      "delegateRevoked": "Delegált visszavonva",
+      "failedToRevoke": "Nem sikerült visszavonni a delegáltat"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Mentse most ezeket a hitelesítő adatokat",
+    "warningMessage": "Később nem jelennek meg újra. A Snapper nem tárolja a nyers tokeneket; a varázsló bezárása után az egyetlen példány az MCP-kliens konfigurációjában lesz.",
+    "snippetHelp": "Hosszú élettartamú AI-delegált token (~10 év). Ugyanez a token hitelesíti a proxy MCP szervert és a watch monitort is. Cseréhez deaktiválja ezt a delegáltat, és hozzon létre újat.",
+    "baseUrlHelpPrefix": "Az alap URL ebből a böngésző originjéből és ebből származik: ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Konfigurációs részlet másolása a vágólapra",
+    "copy": "Másolás a vágólapra",
+    "copied": "Másolva"
+  }
+}

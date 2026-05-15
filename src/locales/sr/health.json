@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Zdravlje sistema",
+    "healthMetricsHeading": "Metrike zdravlja",
+    "processStatusHeading": "Status procesa",
+    "activeBacktestsHeading": "Aktivni backtestovi",
+    "quickActionsHeading": "Brze radnje",
+    "featureNotImplemented": "Funkcionalnost još nije implementirana",
+    "restartServices": "Ponovo pokreni servise",
+    "runHealthCheck": "Pokreni proveru zdravlja",
+    "viewLogs": "Prikaži logove",
+    "exportReport": "Izvezi izveštaj"
+  },
+  "status": {
+    "healthy": "Zdravo",
+    "stopped": "Zaustavljeno",
+    "error": "Greška",
+    "warning": "Upozorenje",
+    "completed": "Završeno",
+    "unknown": "Nepoznato"
+  },
+  "metrics": {
+    "tradingEngine": "Trgovinski engine",
+    "tradingEngineDescription": "Engine za izvršavanje strategija",
+    "activeBacktests": "Aktivni backtestovi",
+    "activeBacktestsDescription": "Pokrenuti backtest procesi",
+    "active": "Aktivno",
+    "inactive": "Neaktivno"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/D",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/D",
+    "uptimeLabel": "Vreme rada",
+    "exitCode": "Izlazni kod: {{code}}",
+    "service": "servis",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Statistika baze podataka",
+    "loading": "Učitavanje statistike baze podataka…",
+    "unavailable": "Statistika baze podataka nije dostupna: {{message}}",
+    "fallbackError": "Učitavanje statistike baze podataka nije uspelo.",
+    "sampled": "uzorkovano pre {{age}}",
+    "samplerSummary": "Interval uzorkovanja: {{seconds}}s · {{count}} tabela",
+    "columns": {
+      "table": "Tabela",
+      "kind": "Vrsta",
+      "total": "Ukupno",
+      "current": "Trenutno",
+      "closed": "Zatvoreno",
+      "archivable": "Za arhiviranje",
+      "status": "Status"
+    },
+    "stale": "zastarelo"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Učitavanje metrika obaveštenja…",
+    "unavailable": "Metrike obaveštenja nisu dostupne: {{message}}",
+    "fallbackError": "Učitavanje metrika obaveštenja nije uspelo.",
+    "sent": "Poslato",
+    "sentDescription": "Terminal: poslato",
+    "failed": "Neuspešno",
+    "failedDescription": "Budžet ponovnih pokušaja je iscrpljen",
+    "unregistered": "Neregistrovano",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Otkazano (opseg)",
+    "cancelledScopeDescription": "Opoziv opsega / deaktiviranje korisnika",
+    "outboxDepth": "Outbox dubina",
+    "outboxDepthDescription": "U redu čekanja, čeka ponovni pokušaj"
+  },
+  "retention": {
+    "title": "Retention Scheduler",
+    "loading": "Učitavanje retention runa…",
+    "unavailable": "Retention run nije dostupan: {{message}}",
+    "fallbackError": "Učitavanje retention runa nije uspelo.",
+    "lastRun": "poslednji run {{age}}",
+    "dryRunNotice": "Dry-run režim: redovi se arhiviraju, ali se ne brišu iz DB-a.",
+    "columns": {
+      "table": "Tabela",
+      "retain": "Zadrži",
+      "archivedWindow": "Prozor arhiviranja",
+      "archived": "Arhivirano",
+      "purged": "Obrisano",
+      "files": "Fajlovi",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "greška"
+  },
+  "systemMetrics": {
+    "title": "Zdravlje procesa",
+    "loading": "Učitavanje metrika procesa…",
+    "unavailable": "Metrike procesa nisu dostupne: {{message}}",
+    "fallbackError": "Učitavanje metrika zdravlja procesa nije uspelo.",
+    "rawJson": "Sirovi JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Vreme rada",
+    "threads": "Threadovi",
+    "openFds": "Otvoreni FD-ovi",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Ograničeno {{count}}×",
+    "memory": "Memorija",
+    "saturation": "Zasićenje {{percent}}",
+    "asyncioTasks": "Asyncio zadaci",
+    "asyncioActive": "{{count}} aktivno",
+    "asyncioPending": "+ {{count}} na čekanju",
+    "dbPool": "DB pool",
+    "liveConns": "Live veze: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekti: {{value}}",
+    "threadsPercent": "Threadovi %",
+    "networkConns": "Mrežne veze",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktivno",
+    "tracemallocIdle": "Neaktivno"
+  },
+  "relativeAge": {
+    "justNow": "upravo sada",
+    "seconds": "pre {{seconds}}s",
+    "minutes": "pre {{minutes}}min",
+    "hours": "pre {{hours}}h",
+    "days": "pre {{days}}d"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

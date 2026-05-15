@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Pregled"
+  },
+  "metrics": {
+    "feedsRunning": "Feedovi pokrenuti",
+    "strategiesActive": "Aktivne strategije",
+    "openOrders": "Otvoreni nalozi",
+    "todaysExecutions": "Današnja izvršenja",
+    "executionsOn": "Izvršenja ({{date}})"
+  },
+  "status": {
+    "stopped": "Zaustavljeno",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Pokrenuto",
+    "active": "Aktivno"
+  },
+  "processStatus": {
+    "title": "Status procesa",
+    "feeds": "Feedovi",
+    "strategies": "Strategije",
+    "executors": "Izvršitelji",
+    "brokers": "Brokeri"
+  },
+  "portfolio": {
+    "title": "Sažetak portfolija",
+    "totalValue": "Ukupna vrednost",
+    "longExposure": "Long izloženost",
+    "shortExposure": "Short izloženost",
+    "netDelta": "Neto delta",
+    "unrealizedPnl": "Nerealizovani P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Pozicije",
+    "instrumentsCount": "{{count}} instrumenata",
+    "empty": "Nema dostupnih podataka o pozicijama"
+  },
+  "signals": {
+    "title": "Nedavni signali",
+    "empty": "Nema nedavnih signala",
+    "noTime": "N/D"
+  },
+  "executions": {
+    "title": "Nedavna izvršenja",
+    "empty": "Nema nedavnih izvršenja",
+    "noTime": "N/D"
+  }
+}

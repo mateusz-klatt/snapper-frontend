@@ -1,0 +1,83 @@
+{
+  "loading": "Betöltés...",
+  "error": "Hiba",
+  "retry": "Újrapróbálkozás",
+  "close": "Bezárás",
+  "cancel": "Mégse",
+  "confirm": "Megerősítés",
+  "save": "Mentés",
+  "documentation": "Dokumentáció (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Nyelv váltása",
+    "flagAriaLabel": "Váltás erre: {{country}}",
+    "currentAriaLabel": "Jelenlegi nyelv: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Kereskedési konzol",
+    "tagline": "Precíziós munkaállomás",
+    "openSidebar": "Oldalsáv megnyitása",
+    "closeSidebar": "Oldalsáv bezárása",
+    "sidebar": "Oldalsáv",
+    "mainNavigation": "Fő navigáció",
+    "tradingContent": "Kereskedési tartalom",
+    "skipToContent": "Ugrás a kereskedési tartalomra",
+    "lag": "Késleltetés:",
+    "lagTitle": "Oda-vissza késleltetés a WebSocket szerverhez",
+    "topics": "Témák:",
+    "topicsTitle": "Feliratkozott WebSocket témák száma",
+    "connected": "Kapcsolódva",
+    "disconnected": "Nincs kapcsolat",
+    "connectedTitle": "Kapcsolódva a WebSockethez",
+    "disconnectedTitle": "Nincs kapcsolat a WebSockettel",
+    "switchToLightMode": "Váltás világos módra",
+    "switchToDarkMode": "Váltás sötét módra",
+    "timeTravelBanner": "Time Travel mód — előzményadatok megtekintése (csak olvasás)",
+    "lagUnknown": "Ismeretlen",
+    "walletPicker": {
+      "ariaLabel": "Aktív pénztárca",
+      "placeholder": "Pénztárca",
+      "allWallets": "Minden pénztárca",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktív operátor",
+      "placeholder": "Operátor",
+      "allOperators": "Minden operátor"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time Travel: előzménybeli időpont kiválasztása",
+      "exitAriaLabel": "Kilépés a Time Travel módból",
+      "exitTitle": "Visszatérés élő módba"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Csak megfigyelési instrumentum. A Snapper piaci adatokat fogad, de ennél a (szimbólum, tőzsde) párnál nem tud megbízásokat elhelyezni.",
+      "ariaLabel": "Csak piaci adatos instrumentum",
+      "badge": "Csak piaci adat"
+    },
+    "liveOnly": {
+      "notice": "Ez a lap az aktuális állapotot mutatja — előzmény nézet nem érhető el."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Valami hiba történt",
+    "titleWithComponent": "Hiba ebben a komponensben: {{componentName}}",
+    "stackTrace": "Veremnyom",
+    "tryAgain": "Újrapróbálkozás"
+  },
+  "nav": {
+    "overview": "Áttekintés",
+    "market": "Piaci adatok",
+    "processes": "Folyamatok",
+    "strategies": "Stratégiák",
+    "orders": "Megbízások és teljesítések",
+    "positions": "Pozíciók",
+    "signals": "Jelzések",
+    "backtests": "Backtestek",
+    "health": "Állapot",
+    "admin": "Adminisztráció",
+    "aiIntegration": "AI-integráció",
+    "aiReviews": "AI-felülvizsgálatok",
+    "settings": "Beállítások"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "loading": "Učitavanje...",
+  "error": "Greška",
+  "retry": "Pokušaj ponovo",
+  "close": "Zatvori",
+  "cancel": "Otkaži",
+  "confirm": "Potvrdi",
+  "save": "Sačuvaj",
+  "documentation": "Dokumentacija (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Promijeni jezik",
+    "flagAriaLabel": "Prebaci na {{country}}",
+    "currentAriaLabel": "Trenutni jezik: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Trgovačka konzola",
+    "tagline": "Precizna radna stanica",
+    "openSidebar": "Otvori bočnu traku",
+    "closeSidebar": "Zatvori bočnu traku",
+    "sidebar": "Bočna traka",
+    "mainNavigation": "Glavna navigacija",
+    "tradingContent": "Trgovački sadržaj",
+    "skipToContent": "Preskoči na trgovački sadržaj",
+    "lag": "Kašnjenje:",
+    "lagTitle": "Povratna latencija do WebSocket servera",
+    "topics": "Teme:",
+    "topicsTitle": "Broj pretplaćenih WebSocket tema",
+    "connected": "Povezano",
+    "disconnected": "Prekinuto",
+    "connectedTitle": "Povezano na WebSocket",
+    "disconnectedTitle": "Prekinuta veza s WebSocketom",
+    "switchToLightMode": "Prebaci na svijetli način",
+    "switchToDarkMode": "Prebaci na tamni način",
+    "timeTravelBanner": "Time Travel način — prikaz historijskih podataka (samo čitanje)",
+    "lagUnknown": "Nepoznato",
+    "walletPicker": {
+      "ariaLabel": "Aktivni novčanik",
+      "placeholder": "Novčanik",
+      "allWallets": "Svi novčanici",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktivni operater",
+      "placeholder": "Operater",
+      "allOperators": "Svi operateri"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: odaberite historijsku tačku u vremenu",
+      "exitAriaLabel": "Izađi iz time travel načina",
+      "exitTitle": "Vrati se u live način"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument samo za posmatranje. Snapper prima tržišne podatke, ali ne može postavljati naloge za ovaj par (simbol, berza).",
+      "ariaLabel": "Instrument samo za tržišne podatke",
+      "badge": "Samo tržišni podaci"
+    },
+    "liveOnly": {
+      "notice": "Ova kartica prikazuje trenutno stanje — historijski prikaz nije dostupan."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Nešto je pošlo po zlu",
+    "titleWithComponent": "Greška u {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Pokušaj ponovo"
+  },
+  "nav": {
+    "overview": "Pregled",
+    "market": "Tržišni podaci",
+    "processes": "Procesi",
+    "strategies": "Strategije",
+    "orders": "Nalozi i izvršenja",
+    "positions": "Pozicije",
+    "signals": "Signali",
+    "backtests": "Backtests",
+    "health": "Stanje",
+    "admin": "Administracija",
+    "aiIntegration": "AI integracija",
+    "aiReviews": "AI provjere",
+    "settings": "Postavke"
+  }
+}

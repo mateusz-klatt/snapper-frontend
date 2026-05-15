@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Pas",
+    "backToList": "← Kthehu te Backtests"
+  },
+  "status": {
+    "pending": "Në pritje",
+    "running": "Në ekzekutim",
+    "completed": "Përfunduar",
+    "failed": "Dështoi",
+    "cancelled": "Anuluar"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Anulo",
+      "rerun": "Riekzekuto"
+    },
+    "fields": {
+      "timeframe": "Korniza kohore",
+      "period": "Periudha",
+      "initialCash": "Kapitali fillestar",
+      "id": "ID"
+    },
+    "errorPrefix": "Gabim: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtro Backtests sipas statusit",
+      "options": {
+        "all": "Të gjitha statuset",
+        "pending": "Në pritje",
+        "running": "Në ekzekutim",
+        "completed": "Përfunduar",
+        "failed": "Dështoi",
+        "cancelled": "Anuluar"
+      }
+    },
+    "empty": {
+      "title": "Nuk ka Backtests",
+      "message": "Ekzekutoni një Backtest përmes CLI ose API për të parë rezultatet këtu."
+    }
+  },
+  "detail": {
+    "title": "Ekzekutim Backtest",
+    "fields": {
+      "strategy": "Strategji",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Periudha",
+      "crossAsset": "Atribuim ndër-asetesh",
+      "configHash": "Hash i konfigurimit"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} ekzekutime",
+    "errors": {
+      "invalidRunId": "ID e ekzekutimit është e pavlefshme — duhet të jetë UUID7 (u mor \"{{id}}\").",
+      "loadFailed": "Ngarkimi i ekzekutimit dështoi: {{message}}",
+      "notFound": "nuk u gjet"
+    }
+  },
+  "compare": {
+    "title": "Krahaso",
+    "headingFull": "Krahasim Backtest",
+    "loading": "Duke ngarkuar krahasimin…",
+    "vs": "vs",
+    "runLabel": "Ekzekutimi {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrika",
+      "equityOverlay": "Mbivendosje e kapitalit",
+      "trades": "Tregtime",
+      "signals": "Sinjale"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Krahasimi nuk u gjet në portofolin aktual.",
+      "loadFailed": "Ngarkimi i krahasimit dështoi: {{message}}",
+      "unknown": "gabim i panjohur",
+      "emptyResponse": "Përgjigje bosh e krahasimit."
+    },
+    "launcher": {
+      "title": "Krahaso",
+      "submit": "Krahaso",
+      "autoPair": "Krahaso me më të fundit",
+      "terminalGate": "krahasimi është i disponueshëm pasi ky ekzekutim të arrijë status terminal",
+      "noSiblings": "nuk ka ekzekutime të tjera me këtë konfigurim",
+      "limitNotice": "po shfaqen {{count}} më të fundit — përdorni çiftimin manual për ekzekutime më të vjetra",
+      "pickPlaceholder": "— zgjidhni një ekzekutim për krahasim —",
+      "showAllLabel": "Shfaq të gjitha ekzekutimet (jo vetëm të njëjtin konfigurim)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "të gjitha ekzekutimet",
+        "sameConfig": "i njëjti konfigurim"
+      },
+      "errors": {
+        "pickRequired": "zgjidhni një ekzekutim nga lista"
+      }
+    },
+    "diffColumns": {
+      "common": "Të përbashkëta",
+      "onlyA": "Vetëm në A",
+      "onlyB": "Vetëm në B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Nuk ka metrika të krahasueshme — të dy ekzekutimet nuk kishin vlera të regjistruara.",
+      "columns": {
+        "name": "Metrikë",
+        "runA": "Ekzekutimi A",
+        "runB": "Ekzekutimi B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Ekzekutimi A",
+        "runB": "Ekzekutimi B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Në pritje të progresit…",
+    "candles": "{{done}} / {{total}} qirinj",
+    "candlesNoTotal": "{{done}} qirinj",
+    "equity": "kapital {{value}}",
+    "signalsTrades": "{{signals}} sinjale / {{trades}} tregtime",
+    "milestoneLine": "pikë arritjeje {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

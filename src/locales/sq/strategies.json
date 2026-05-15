@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Menaxhimi i strategjive",
+    "register": "Regjistro strategji",
+    "saving": "Duke ruajtur…",
+    "descriptionCanManage": "Regjistroni procese të reja strategjie drejtpërdrejt nga UI. Nisja automatike e mban procesin të aktivizuar pas rinisjeve.",
+    "descriptionViewer": "Shikoni strategjitë e konfiguruara dhe statusin e tyre. Kontaktoni një operator ose administrator për të menaxhuar strategjitë.",
+    "searchPlaceholder": "Kërko strategji...",
+    "filter": {
+      "all": "Të gjitha statuset",
+      "running": "Në ekzekutim",
+      "stopped": "Ndaluar"
+    },
+    "configuredHeading": "Strategji të konfiguruara",
+    "noMatches": "Asnjë strategji nuk përputhet me filtrat tuaj",
+    "clearFilters": "Pastro filtrat",
+    "emptyTitle": "Nuk ka strategji të konfiguruara",
+    "emptyCanManage": "Regjistroni një strategji për të nisur tregtimin algoritmik",
+    "emptyViewer": "Ende nuk është konfiguruar asnjë strategji"
+  },
+  "confirm": {
+    "startTitle": "Nis {{name}}",
+    "startMessage": "Kjo do të nisë strategjinë {{name}}. Ajo mund të fillojë operacione tregtimi live.",
+    "stopTitle": "Ndalo {{name}}",
+    "stopMessage": "Kjo do të ndalojë strategjinë {{name}}. Pozicionet aktive nuk do të mbyllen automatikisht."
+  },
+  "toast": {
+    "saved": "Strategjia {{name}} u ruajt",
+    "started": "Strategjia {{name}} u nis",
+    "registerFailed": "Regjistrimi i strategjisë dështoi: {{message}}",
+    "startSuccess": "Strategjia u nis me sukses",
+    "stopSuccess": "Strategjia u ndal me sukses",
+    "alreadyRunning": "Strategjia është tashmë në ekzekutim",
+    "notRunning": "Strategjia nuk është në ekzekutim",
+    "configNotFound": "Konfigurimi i strategjisë nuk u gjet. Kontrolloni cilësimet e bazës së të dhënave.",
+    "networkError": "Gabim rrjeti. Kontrolloni lidhjen dhe provoni përsëri.",
+    "startFailed": "Nisja e strategjisë dështoi: {{message}}",
+    "stopFailed": "Ndalimi i strategjisë dështoi: {{message}}",
+    "unknownError": "Gabim i panjohur"
+  },
+  "card": {
+    "ariaLabel": "Strategji: {{name}}",
+    "modeLabel": "Modaliteti: {{mode}}",
+    "autostartEnabled": "Nisje automatike: aktivizuar",
+    "autostartDisabled": "Nisje automatike: çaktivizuar",
+    "statusAriaLabel": "Statusi: {{status}}",
+    "dataLagAriaLabel": "Vonesë të dhënash: {{seconds}} sekonda",
+    "lagBadge": "vonesë: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "Mosha e Heartbeat: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Vonesa e të dhënave",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Shfaq detajet",
+    "hideDetails": "Fshih detajet",
+    "inputs": "Inpute ({{count}})",
+    "outputs": "Outpute ({{count}})",
+    "feedPublishers": "Publikues Feed ({{count}})",
+    "lastUpdate": "Përditësimi i fundit: {{time}}",
+    "waiting": "Në pritje të Heartbeat...",
+    "startAriaLabel": "Nis strategjinë {{name}}",
+    "stopAriaLabel": "Ndalo strategjinë {{name}}",
+    "start": "Nis",
+    "stop": "Ndalo",
+    "starting": "Duke nisur...",
+    "stopping": "Duke ndaluar...",
+    "status": {
+      "starting": "duke nisur",
+      "stopping": "duke ndaluar",
+      "running": "në ekzekutim",
+      "stopped": "ndaluar"
+    },
+    "health": {
+      "healthy": "I shëndetshëm — po merr të dhëna të freskëta",
+      "warning": "Paralajmërim — të dhënat janë të vjetruara",
+      "error": "Gabim — nuk ka të dhëna të fundit",
+      "unknown": "I panjohur — nuk ka të dhëna Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "I SHËNDETSHËM",
+      "warning": "PARALAJMËRIM",
+      "error": "GABIM"
+    }
+  },
+  "launchModal": {
+    "title": "Regjistro proces strategjie",
+    "emptyTemplates": "Nuk ka modele strategjie të regjistruara në backend. Përcaktoni të paktën një proces strategjie.",
+    "close": "Mbyll",
+    "templateLabel": "Model strategjie",
+    "templatePlaceholder": "Zgjidh model...",
+    "templateFallbackDescription": "Strategji e regjistruar në backend",
+    "loadingDefaults": "Duke ngarkuar parazgjedhjet e modelit…",
+    "loadDefaultsError": "Nuk mund të ngarkohen parazgjedhjet e modelit. Kontrolloni log-et e backend-it.",
+    "processNameLabel": "Emri i procesit",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Karaktere të lejuara: shkronja të vogla, numra, nënvija",
+    "instanceNameLabel": "Emri i instancës së strategjisë",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Përdoret brenda konfigurimit të strategjisë dhe temave të output-it",
+    "executionModeLabel": "Modaliteti i ekzekutimit",
+    "executionModeThread": "Thread i integruar",
+    "executionModeProcess": "Proces i izoluar",
+    "executionModeHelp": "Threads ndajnë memorien, proceset ofrojnë izolim më të fortë.",
+    "flagsLabel": "Flamuj",
+    "autostartLabel": "Nisje automatike në ndezjen e serverit",
+    "startImmediatelyLabel": "Nis menjëherë pas regjistrimit",
+    "noteLabel": "Shënim (opsional)",
+    "notePlaceholder": "Përshkruani qëllimin ose parametrat e kësaj instance strategjie.",
+    "noteHelp": "Ruhet krahas konfigurimit për të ndihmuar në identifikimin e këtij procesi.",
+    "cancel": "Anulo",
+    "submit": "Regjistro strategjinë",
+    "submitting": "Duke regjistruar…"
+  }
+}

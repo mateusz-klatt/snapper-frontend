@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Urdhra dhe Ekzekutimet",
+    "newOrder": "Urdhër i ri",
+    "exportCsv": "Eksporto CSV"
+  },
+  "tabs": {
+    "orders": "Urdhra ({{total}})",
+    "executions": "Ekzekutimet ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtro sipas statusit:",
+    "options": {
+      "all": "Të gjithë urdhrat",
+      "new": "I ri",
+      "open": "I hapur",
+      "partiallyFilled": "Ekzekutuar pjesërisht",
+      "partially_filled": "Ekzekutuar pjesërisht",
+      "filled": "Ekzekutuar",
+      "cancelled": "Anuluar",
+      "rejected": "Refuzuar"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Sasi",
+    "price": "Çmim",
+    "created": "Krijuar",
+    "createdUnknown": "N/A",
+    "orderId": "ID e urdhrit",
+    "leverage": "Levë",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "VETËM-REDUKTIM",
+    "cancel": "Anulo",
+    "cancelling": "Duke anuluar…",
+    "cancelAriaLabel": "Anulo urdhrin {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Urdhri #{{orderId}}",
+    "filled": "EKZEKUTUAR",
+    "orderLabel": "Urdhri {{orderId}}",
+    "size": "Madhësi",
+    "price": "Çmim",
+    "total": "Totali",
+    "executed": "Ekzekutuar",
+    "fees": "Tarifa"
+  },
+  "empty": {
+    "ordersTitle": "Nuk u gjet asnjë urdhër",
+    "ordersStartTrading": "Filloni tregtimin për të parë urdhra këtu",
+    "ordersFilterless": "Nuk ka urdhra {{status}}",
+    "executionsTitle": "Nuk u gjet asnjë ekzekutim",
+    "executionsMessage": "Ekzekutimet e tregtimeve do të shfaqen këtu"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Anë",
+      "type": "Lloj",
+      "status": "Status",
+      "quantity": "Sasi",
+      "price": "Çmim",
+      "leverage": "Levë",
+      "reduceOnly": "Vetëm reduktim",
+      "created": "Krijuar"
+    },
+    "executions": {
+      "orderId": "ID e urdhrit",
+      "instrument": "Instrument",
+      "side": "Anë",
+      "size": "Madhësi",
+      "price": "Çmim",
+      "total": "Totali",
+      "fee": "Tarifë",
+      "feeAsset": "Aktivi i tarifës",
+      "executed": "Ekzekutuar"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Urdhër manual i ri",
+    "titleConfirm": "Konfirmo urdhrin",
+    "fields": {
+      "exchange": "Bursë",
+      "instrument": "Instrument",
+      "side": "Anë",
+      "orderType": "Lloji i urdhrit",
+      "quantity": "Sasi",
+      "price": "Çmim",
+      "stopPrice": "Çmim ndalimi",
+      "mode": "Modalitet",
+      "wallet": "Portofol",
+      "type": "Lloj"
+    },
+    "sideOptions": {
+      "buy": "Blerje",
+      "sell": "Shitje"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Urdhër limit",
+      "stop": "Urdhër ndalimi",
+      "stopLimit": "Urdhër stop-limit",
+      "stop_limit": "Urdhër stop-limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — vetëm të dhëna tregu",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Anulo",
+      "reviewOrder": "Rishiko urdhrin",
+      "back": "Pas",
+      "confirmOrder": "Konfirmo urdhrin",
+      "submitting": "Duke dërguar..."
+    },
+    "errors": {
+      "missingRequired": "Të gjitha fushat e detyrueshme duhet të plotësohen",
+      "quantityPositive": "Sasia duhet të jetë numër pozitiv",
+      "priceRequired": "Çmimi është i detyrueshëm për këtë lloj urdhri",
+      "pricePositive": "Çmimi duhet të jetë numër pozitiv",
+      "stopPriceRequired": "Çmimi i ndalimit është i detyrueshëm për këtë lloj urdhri",
+      "stopPricePositive": "Çmimi i ndalimit duhet të jetë numër pozitiv",
+      "createFailed": "Krijimi i urdhrit dështoi"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Ky instrument është vetëm për vëzhgim — vendosni urdhra në një instrument të aftë për ekzekutim.",
+      "unknownInstrument": "Ky instrument nuk njihet. Ringarkoni listën dhe provoni përsëri.",
+      "capsViolation": "Ky urdhër do të tejkalonte kufijtë e sigurisë së llogarisë. Rishikoni cilësimet e rrezikut dhe riprovoni."
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Piaci adatok"
+  },
+  "controls": {
+    "exchange": "Tőzsde:",
+    "instrument": "Instrumentum:",
+    "timeframe": "Idősík:",
+    "selectExchange": "Tőzsde kiválasztása",
+    "searchInstrument": "Instrumentum keresése..."
+  },
+  "timeframes": {
+    "1m": "1 perc",
+    "5m": "5 perc",
+    "15m": "15 perc",
+    "30m": "30 perc",
+    "1h": "1 óra",
+    "4h": "4 óra",
+    "1d": "1 nap"
+  },
+  "stats": {
+    "currentPrice": "Aktuális ár",
+    "change24h": "24 órás változás",
+    "high24h": "24 órás csúcs",
+    "low24h": "24 órás mélypont"
+  },
+  "chart": {
+    "title": "Árfolyamgrafikon",
+    "errorPrefix": "Hiba a grafikonadatok betöltésekor:",
+    "unknownError": "Ismeretlen hiba",
+    "noDataTitle": "Nincs elérhető adat ehhez: {{instrument}}",
+    "noDataHint": "Lehet, hogy az instrumentum nem létezik, vagy nincs {{timeframe}} adata"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Nincsenek kapcsolódó instrumentumok konfigurálva ehhez: {{instrument}} ezen a tőzsdén: {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache bemelegítése: elérhető gyertyák: {{sampleCount}} / {{expected}} {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(1m-ből származtatva)",
+      "db": "(DB-ből)"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Áttekintés"
+  },
+  "metrics": {
+    "feedsRunning": "Futó Feedek",
+    "strategiesActive": "Aktív stratégiák",
+    "openOrders": "Nyitott megbízások",
+    "todaysExecutions": "Mai teljesítések",
+    "executionsOn": "Teljesítések ({{date}})"
+  },
+  "status": {
+    "stopped": "Leállítva",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "Aktív: {{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Fut",
+    "active": "Aktív"
+  },
+  "processStatus": {
+    "title": "Folyamatállapot",
+    "feeds": "Feedek",
+    "strategies": "Stratégiák",
+    "executors": "Végrehajtók",
+    "brokers": "Brókerek"
+  },
+  "portfolio": {
+    "title": "Portfólió-összefoglaló",
+    "totalValue": "Teljes érték",
+    "longExposure": "Long kitettség",
+    "shortExposure": "Short kitettség",
+    "netDelta": "Nettó delta",
+    "unrealizedPnl": "Nem realizált P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Pozíciók",
+    "instrumentsCount": "Instrumentumok: {{count}}",
+    "empty": "Nem érhetők el pozícióadatok"
+  },
+  "signals": {
+    "title": "Legutóbbi jelzések",
+    "empty": "Nincsenek legutóbbi jelzések",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Legutóbbi teljesítések",
+    "empty": "Nincsenek legutóbbi teljesítések",
+    "noTime": "N/A"
+  }
+}

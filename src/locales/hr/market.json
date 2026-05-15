@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Tržišni podaci"
+  },
+  "controls": {
+    "exchange": "Burza:",
+    "instrument": "Instrument:",
+    "timeframe": "Vremenski okvir:",
+    "selectExchange": "Odaberite burzu",
+    "searchInstrument": "Pretraži instrument..."
+  },
+  "timeframes": {
+    "1m": "1 minuta",
+    "5m": "5 minuta",
+    "15m": "15 minuta",
+    "30m": "30 minuta",
+    "1h": "1 sat",
+    "4h": "4 sata",
+    "1d": "1 dan"
+  },
+  "stats": {
+    "currentPrice": "Trenutačna cijena",
+    "change24h": "Promjena 24 h",
+    "high24h": "Najviša 24 h",
+    "low24h": "Najniža 24 h"
+  },
+  "chart": {
+    "title": "Grafikon cijene",
+    "errorPrefix": "Pogreška pri učitavanju podataka grafikona:",
+    "unknownError": "Nepoznata pogreška",
+    "noDataTitle": "Nema dostupnih podataka za {{instrument}}",
+    "noDataHint": "Instrument možda ne postoji ili nema podatke za {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Nema konfiguriranih povezanih instrumenata za {{instrument}} na {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache se zagrijava: dostupno {{sampleCount}} / {{expected}} svijeća {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(izvedeno iz 1m)",
+      "db": "(iz DB)"
+    }
+  }
+}
