@@ -15,7 +15,14 @@
     "start": "Start",
     "restart": "Restart",
     "starting": "Starting...",
-    "stopping": "Stopping..."
+    "stopping": "Stopping...",
+    "status": {
+      "running": "running",
+      "stopped": "stopped",
+      "error": "error",
+      "starting": "starting",
+      "stopping": "stopping"
+    }
   },
   "template": {
     "badge": "template",

@@ -224,6 +224,7 @@ const ObjectEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   readOnly,
   path,
 }) => {
+  const { t } = useTranslation('settings')
   const objectValue = value as { [key: string]: JsonValue }
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
 
@@ -252,10 +253,12 @@ const ObjectEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
                 <span>{key}</span>
                 <span className='text-xs text-muted-500'>
                   {(() => {
-                    if (Array.isArray(val)) return '(array)'
-                    if (typeof val === 'object') return '(object)'
+                    if (Array.isArray(val)) return t('jsonEditor.typeHint.array')
+                    if (typeof val === 'object') return t('jsonEditor.typeHint.object')
 
-                    return `(${typeof val})`
+                    return t(`jsonEditor.typeHint.${typeof val}`, {
+                      defaultValue: `(${typeof val})`,
+                    })
                   })()}
                 </span>
               </button>
@@ -282,6 +285,8 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   onChange,
   readOnly,
 }) => {
+  const { t } = useTranslation('settings')
+
   if (typeof value === 'boolean') {
     return (
       <label className='flex items-center gap-2 cursor-pointer'>
@@ -292,7 +297,9 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
           disabled={readOnly}
           className='w-4 h-4 text-primary-500 bg-alpine-50 border-dark-600 rounded focus:ring-primary-500'
         />
-        <span className='text-sm text-muted-600'>{value ? 'true' : 'false'}</span>
+        <span className='text-sm text-muted-600'>
+          {value ? t('booleanValue.true') : t('booleanValue.false')}
+        </span>
       </label>
     )
   }

@@ -15,7 +15,14 @@
     "start": "Uruchom",
     "restart": "Uruchom ponownie",
     "starting": "Uruchamianie...",
-    "stopping": "Zatrzymywanie..."
+    "stopping": "Zatrzymywanie...",
+    "status": {
+      "running": "działa",
+      "stopped": "zatrzymany",
+      "error": "błąd",
+      "starting": "uruchamianie",
+      "stopping": "zatrzymywanie"
+    }
   },
   "template": {
     "badge": "szablon",

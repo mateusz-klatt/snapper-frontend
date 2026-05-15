@@ -67,6 +67,21 @@
     "parseError": "Błąd parsowania: {{message}}",
     "arraySummary": "Tablica ({{length}} elementów)",
     "addItem": "Dodaj element",
-    "remove": "Usuń"
+    "remove": "Usuń",
+    "typeHint": {
+      "array": "(tablica)",
+      "object": "(obiekt)",
+      "string": "(tekst)",
+      "number": "(liczba)",
+      "boolean": "(logiczna)",
+      "bigint": "(bigint)",
+      "function": "(funkcja)",
+      "symbol": "(symbol)",
+      "undefined": "(brak)"
+    }
+  },
+  "booleanValue": {
+    "true": "prawda",
+    "false": "fałsz"
   }
 }
