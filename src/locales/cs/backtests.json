@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Zpět",
+    "backToList": "← Zpět na backtesty"
+  },
+  "status": {
+    "pending": "Čeká",
+    "running": "Probíhá",
+    "completed": "Dokončeno",
+    "failed": "Selhalo",
+    "cancelled": "Zrušeno"
+  },
+  "list": {
+    "title": "Backtesty",
+    "actions": {
+      "cancel": "Zrušit",
+      "rerun": "Spustit znovu"
+    },
+    "fields": {
+      "timeframe": "Časový rámec",
+      "period": "Období",
+      "initialCash": "Počáteční kapitál",
+      "id": "ID"
+    },
+    "errorPrefix": "Chyba: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrovat backtesty podle stavu",
+      "options": {
+        "all": "Všechny stavy",
+        "pending": "Čeká",
+        "running": "Probíhá",
+        "completed": "Dokončeno",
+        "failed": "Selhalo",
+        "cancelled": "Zrušeno"
+      }
+    },
+    "empty": {
+      "title": "Žádné backtesty",
+      "message": "Spusťte backtest přes CLI nebo API a výsledky se zobrazí zde."
+    }
+  },
+  "detail": {
+    "title": "Běh backtestu",
+    "fields": {
+      "strategy": "Strategie",
+      "instrument": "Instrument",
+      "status": "Stav",
+      "period": "Období",
+      "crossAsset": "Atribuce mezi aktivy",
+      "configHash": "Hash konfigurace"
+    },
+    "crossAssetFlow": "{{source}} feed → provedení {{target}}",
+    "errors": {
+      "invalidRunId": "Neplatné ID běhu — musí být UUID7 (zadáno \"{{id}}\").",
+      "loadFailed": "Běh se nepodařilo načíst: {{message}}",
+      "notFound": "nenalezeno"
+    }
+  },
+  "compare": {
+    "title": "Porovnat",
+    "headingFull": "Porovnání backtestů",
+    "loading": "Načítání porovnání…",
+    "vs": "vs",
+    "runLabel": "Běh {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metriky",
+      "equityOverlay": "Překryv equity křivek",
+      "trades": "Obchody",
+      "signals": "Signály"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "ručně"
+    },
+    "errors": {
+      "notFound": "Porovnání nebylo v aktuální peněžence nalezeno.",
+      "loadFailed": "Porovnání se nepodařilo načíst: {{message}}",
+      "unknown": "neznámá chyba",
+      "emptyResponse": "Prázdná odpověď porovnání."
+    },
+    "launcher": {
+      "title": "Porovnat",
+      "submit": "Porovnat",
+      "autoPair": "Porovnat s nejnovějším",
+      "terminalGate": "porovnání je dostupné, jakmile tento běh dosáhne koncového stavu",
+      "noSiblings": "žádné další běhy s touto konfigurací",
+      "limitNotice": "zobrazeno {{count}} nejnovějších — pro starší běhy použijte ruční párování",
+      "pickPlaceholder": "— vyberte běh k porovnání —",
+      "showAllLabel": "Zobrazit všechny běhy (nejen se stejnou konfigurací)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "všechny běhy",
+        "sameConfig": "stejná konfigurace"
+      },
+      "errors": {
+        "pickRequired": "vyberte běh ze seznamu"
+      }
+    },
+    "diffColumns": {
+      "common": "Společné",
+      "onlyA": "Pouze v A",
+      "onlyB": "Pouze v B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Žádné porovnatelné metriky — oba běhy neměly zaznamenané hodnoty.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "Běh A",
+        "runB": "Běh B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Běh A",
+        "runB": "Běh B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Čeká se na průběh…",
+    "candles": "{{done}} / {{total}} svíček",
+    "candlesNoTotal": "{{done}} svíček",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} signálů / {{trades}} obchodů",
+    "milestoneLine": "milník {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

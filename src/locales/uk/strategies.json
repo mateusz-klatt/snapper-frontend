@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Керування стратегіями",
+    "register": "Зареєструвати стратегію",
+    "saving": "Збереження…",
+    "descriptionCanManage": "Реєструйте нові процеси стратегій безпосередньо з інтерфейсу. Автозапуск зберігає процес увімкненим після перезапусків.",
+    "descriptionViewer": "Переглядайте налаштовані стратегії та їхній статус. Для керування стратегіями зверніться до оператора або адміністратора.",
+    "searchPlaceholder": "Пошук стратегій...",
+    "filter": {
+      "all": "Усі статуси",
+      "running": "Виконується",
+      "stopped": "Зупинено"
+    },
+    "configuredHeading": "Налаштовані стратегії",
+    "noMatches": "Жодна стратегія не відповідає фільтрам",
+    "clearFilters": "Очистити фільтри",
+    "emptyTitle": "Стратегії не налаштовано",
+    "emptyCanManage": "Зареєструйте стратегію, щоб почати алгоритмічну торгівлю",
+    "emptyViewer": "Стратегії ще не налаштовано"
+  },
+  "confirm": {
+    "startTitle": "Запустити {{name}}",
+    "startMessage": "Це запустить стратегію {{name}}. Вона може почати live-торгові операції.",
+    "stopTitle": "Зупинити {{name}}",
+    "stopMessage": "Це зупинить стратегію {{name}}. Активні позиції не закриватимуться автоматично."
+  },
+  "toast": {
+    "saved": "Стратегію {{name}} збережено",
+    "started": "Стратегію {{name}} запущено",
+    "registerFailed": "Не вдалося зареєструвати стратегію: {{message}}",
+    "startSuccess": "Стратегію успішно запущено",
+    "stopSuccess": "Стратегію успішно зупинено",
+    "alreadyRunning": "Стратегія вже виконується",
+    "notRunning": "Стратегія не виконується",
+    "configNotFound": "Конфігурацію стратегії не знайдено. Перевірте налаштування бази даних.",
+    "networkError": "Помилка мережі. Перевірте з'єднання та спробуйте ще раз.",
+    "startFailed": "Не вдалося запустити стратегію: {{message}}",
+    "stopFailed": "Не вдалося зупинити стратегію: {{message}}",
+    "unknownError": "Невідома помилка"
+  },
+  "card": {
+    "ariaLabel": "Стратегія: {{name}}",
+    "modeLabel": "Режим: {{mode}}",
+    "autostartEnabled": "Автозапуск: увімкнено",
+    "autostartDisabled": "Автозапуск: вимкнено",
+    "statusAriaLabel": "Статус: {{status}}",
+    "dataLagAriaLabel": "Затримка даних: {{seconds}} секунд",
+    "lagBadge": "затримка: {{seconds}}с",
+    "feedLag": "Затримка Feed: {{ms}}мс",
+    "heartbeatAge": "Вік HB: {{seconds}}с",
+    "metrics": {
+      "status": "Статус",
+      "dataLag": "Затримка даних",
+      "dataLagValue": "{{ms}}мс",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Показати деталі",
+    "hideDetails": "Сховати деталі",
+    "inputs": "Входи ({{count}})",
+    "outputs": "Виходи ({{count}})",
+    "feedPublishers": "Публікатори Feed ({{count}})",
+    "lastUpdate": "Останнє оновлення: {{time}}",
+    "waiting": "Очікування Heartbeat...",
+    "startAriaLabel": "Запустити стратегію {{name}}",
+    "stopAriaLabel": "Зупинити стратегію {{name}}",
+    "start": "Запустити",
+    "stop": "Зупинити",
+    "starting": "Запуск...",
+    "stopping": "Зупинка...",
+    "status": {
+      "starting": "запуск",
+      "stopping": "зупинка",
+      "running": "виконується",
+      "stopped": "зупинено"
+    },
+    "health": {
+      "healthy": "Справно — надходять свіжі дані",
+      "warning": "Попередження — дані застаріли",
+      "error": "Помилка — немає свіжих даних",
+      "unknown": "Невідомо — немає даних Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "СПРАВНО",
+      "warning": "ПОПЕРЕДЖЕННЯ",
+      "error": "ПОМИЛКА"
+    }
+  },
+  "launchModal": {
+    "title": "Зареєструвати процес стратегії",
+    "emptyTemplates": "У backend не зареєстровано шаблонів стратегій. Визначте щонайменше один процес стратегії.",
+    "close": "Закрити",
+    "templateLabel": "Шаблон стратегії",
+    "templatePlaceholder": "Оберіть шаблон...",
+    "templateFallbackDescription": "Стратегію зареєстровано в backend",
+    "loadingDefaults": "Завантаження типових значень шаблону…",
+    "loadDefaultsError": "Не вдалося завантажити типові значення шаблону. Перевірте логи backend.",
+    "processNameLabel": "Назва процесу",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Дозволені символи: малі літери, цифри, підкреслення",
+    "instanceNameLabel": "Назва примірника стратегії",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Використовується в конфігурації стратегії та вихідних темах",
+    "executionModeLabel": "Режим виконання",
+    "executionModeThread": "Вбудований потік",
+    "executionModeProcess": "Ізольований процес",
+    "executionModeHelp": "Потоки мають спільну пам'ять, процеси забезпечують сильнішу ізоляцію.",
+    "flagsLabel": "Прапорці",
+    "autostartLabel": "Автозапуск під час старту сервера",
+    "startImmediatelyLabel": "Запустити одразу після реєстрації",
+    "noteLabel": "Примітка (необов'язково)",
+    "notePlaceholder": "Опишіть призначення або параметри цього примірника стратегії.",
+    "noteHelp": "Зберігається разом із конфігурацією, щоб допомогти ідентифікувати цей процес.",
+    "cancel": "Скасувати",
+    "submit": "Зареєструвати стратегію",
+    "submitting": "Реєстрація…"
+  }
+}

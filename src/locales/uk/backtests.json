@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Назад",
+    "backToList": "← Назад до Backtests"
+  },
+  "status": {
+    "pending": "Очікує",
+    "running": "Виконується",
+    "completed": "Завершено",
+    "failed": "Помилка",
+    "cancelled": "Скасовано"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Скасувати",
+      "rerun": "Запустити повторно"
+    },
+    "fields": {
+      "timeframe": "Таймфрейм",
+      "period": "Період",
+      "initialCash": "Початковий капітал",
+      "id": "ID"
+    },
+    "errorPrefix": "Помилка: {{message}}",
+    "filter": {
+      "ariaLabel": "Фільтр Backtests за статусом",
+      "options": {
+        "all": "Усі статуси",
+        "pending": "Очікує",
+        "running": "Виконується",
+        "completed": "Завершено",
+        "failed": "Помилка",
+        "cancelled": "Скасовано"
+      }
+    },
+    "empty": {
+      "title": "Backtests не знайдено",
+      "message": "Запустіть Backtest через CLI або API, щоб побачити результати тут."
+    }
+  },
+  "detail": {
+    "title": "Запуск Backtest",
+    "fields": {
+      "strategy": "Стратегія",
+      "instrument": "Інструмент",
+      "status": "Статус",
+      "period": "Період",
+      "crossAsset": "Крос-активна атрибуція",
+      "configHash": "Хеш конфігурації"
+    },
+    "crossAssetFlow": "{{source}} Feed → виконання {{target}}",
+    "errors": {
+      "invalidRunId": "Некоректний ідентифікатор запуску — має бути UUID7 (отримано \"{{id}}\").",
+      "loadFailed": "Не вдалося завантажити запуск: {{message}}",
+      "notFound": "не знайдено"
+    }
+  },
+  "compare": {
+    "title": "Порівняти",
+    "headingFull": "Порівняння Backtests",
+    "loading": "Завантаження порівняння…",
+    "vs": "vs",
+    "runLabel": "Запуск {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Метрики",
+      "equityOverlay": "Накладання еквіті",
+      "trades": "Угоди",
+      "signals": "Сигнали"
+    },
+    "pairingMode": {
+      "auto": "авто",
+      "manual": "ручний"
+    },
+    "errors": {
+      "notFound": "Порівняння не знайдено в поточному гаманці.",
+      "loadFailed": "Не вдалося завантажити порівняння: {{message}}",
+      "unknown": "невідома помилка",
+      "emptyResponse": "Порожня відповідь порівняння."
+    },
+    "launcher": {
+      "title": "Порівняти",
+      "submit": "Порівняти",
+      "autoPair": "Порівняти з найновішим",
+      "terminalGate": "порівняння доступне, коли цей запуск досягне кінцевого статусу",
+      "noSiblings": "немає інших запусків із цією конфігурацією",
+      "limitNotice": "показано {{count}} найновіших — для старіших запусків використовуйте ручну пару",
+      "pickPlaceholder": "— виберіть запуск для порівняння —",
+      "showAllLabel": "Показати всі запуски (не лише з тією самою конфігурацією)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "усі запуски",
+        "sameConfig": "та сама конфігурація"
+      },
+      "errors": {
+        "pickRequired": "виберіть запуск зі списку"
+      }
+    },
+    "diffColumns": {
+      "common": "Спільні",
+      "onlyA": "Лише в A",
+      "onlyB": "Лише в B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Немає порівнюваних метрик — в обох запусках немає записаних значень.",
+      "columns": {
+        "name": "Метрика",
+        "runA": "Запуск A",
+        "runB": "Запуск B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Запуск A",
+        "runB": "Запуск B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Очікування прогресу…",
+    "candles": "{{done}} / {{total}} свічок",
+    "candlesNoTotal": "{{done}} свічок",
+    "equity": "еквіті {{value}}",
+    "signalsTrades": "{{signals}} сигн. / {{trades}} угод",
+    "milestoneLine": "етап {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

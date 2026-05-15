@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Požiadavka",
+    "decision": "Rozhodnutie",
+    "capsViolation": "Porušenie limitov",
+    "selectedDelegate": "Vybraný delegát",
+    "instrument": "inštrument",
+    "deadline": "termín {{time}}",
+    "decidedBy": "od",
+    "newStatus": "stav",
+    "mode": "režim",
+    "capAttempted": "pokus",
+    "capLimit": "vs limit",
+    "capOn": "na inštrumente",
+    "reviewLabel": "kontrola {{reviewId}}",
+    "unhandledFrame": "Nespracovaný rámec aktivity kontroly AI: {{frame}}"
+  },
+  "page": {
+    "title": "Schránka kontrol AI",
+    "subtitle": "Čakajúce kontroly CONSULT smerované na tohto delegáta plus živý stream udalostí."
+  },
+  "roleNotice": {
+    "title": "Vyhradené pre delegátov AI",
+    "message": "Táto schránka zobrazuje kontroly CONSULT smerované na identitu delegáta AI. Prihláste sa účtom delegáta AI, aby sa zobrazili čakajúce kontroly a živý stream aktivít. Vaša aktuálna rola je",
+    "unknownRole": "neznáma"
+  },
+  "pending": {
+    "title": "Čakajúce kontroly",
+    "loading": "Načítavajú sa čakajúce kontroly…",
+    "loadError": "Čakajúce kontroly sa nepodarilo načítať: {{message}}",
+    "emptyTitle": "Žiadne čakajúce kontroly",
+    "emptyMessage": "Nové požiadavky CONSULT smerované na tohto delegáta sa zobrazia tu.",
+    "columns": {
+      "instrument": "Inštrument",
+      "thesis": "Téza",
+      "status": "Stav",
+      "deadline": "Termín",
+      "decision": "Rozhodnutie"
+    },
+    "rationalePlaceholder": "Odôvodnenie (voliteľné)",
+    "rationaleAriaLabel": "Odôvodnenie kontroly {{reviewId}}",
+    "approve": "Schváliť",
+    "reject": "Zamietnuť",
+    "submitError": "Odoslanie zlyhalo: {{message}}"
+  },
+  "activity": {
+    "title": "Nedávna aktivita",
+    "emptyTitle": "Zatiaľ žiadna aktivita",
+    "emptyMessage": "Rámce požiadaviek na kontrolu AI, rozhodnutí a porušení limitov sa budú streamovať sem.",
+    "summaryEmpty": "Neboli prijaté žiadne rámce",
+    "summaryCount": "Zobrazené {{shown}} z {{total}} vo vyrovnávacej pamäti"
+  }
+}

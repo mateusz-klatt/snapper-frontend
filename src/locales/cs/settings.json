@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Nastavení",
+    "subtitle": "Konfigurace nastavení a parametrů aplikace",
+    "addButton": "Přidat nastavení",
+    "searchPlaceholder": "Hledat nastavení...",
+    "noResults": "Nebyla nalezena žádná nastavení odpovídající kritériím.",
+    "allCategories": "Všechny kategorie",
+    "categoryFilterAriaLabel": "Filtrovat nastavení podle kategorie"
+  },
+  "errors": {
+    "loadFailed": "Nastavení se nepodařilo načíst",
+    "updateFailed": "Nastavení se nepodařilo aktualizovat",
+    "deleteFailed": "Nastavení se nepodařilo smazat",
+    "createFailed": "Nastavení se nepodařilo vytvořit",
+    "alreadyExists": "Nastavení s klíčem \"{{key}}\" již existuje"
+  },
+  "item": {
+    "edit": "Upravit",
+    "delete": "Smazat",
+    "save": "Uložit",
+    "saving": "Ukládání...",
+    "cancel": "Zrušit",
+    "yesDelete": "Ano, smazat",
+    "deleting": "Mazání...",
+    "deleteConfirm": "Smazat toto nastavení?",
+    "valuePlaceholder": "Zadejte hodnotu nastavení...",
+    "showMore": "Zobrazit více",
+    "showLess": "Zobrazit méně",
+    "toggleAriaLabel": "Přepnout {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Citlivé"
+    },
+    "helpText": {
+      "allowShortSelling": "Povolí enginu otevírat short pozice. Signály SELL vytvoří záporné desired_units; při vypnutí se hodnota omezí na 0.",
+      "allowManualOrders": "Povolí tlačítko Nový pokyn na kartě Pokyny. Při vypnutí POST /api/orders vrací 403."
+    }
+  },
+  "addModal": {
+    "title": "Přidat nové nastavení",
+    "keyLabel": "Klíč",
+    "valueLabel": "Hodnota",
+    "categoryLabel": "Kategorie",
+    "descriptionLabel": "Popis",
+    "keyPlaceholder": "např. walutomat.api_key",
+    "keyHint": "Pro vnořená nastavení použijte tečkovou notaci (např. category.subcategory.name)",
+    "valuePlaceholder": "Hodnota nastavení",
+    "categorySelectPlaceholder": "Vyberte existující nebo vytvořte novou",
+    "newCategoryPlaceholder": "Nebo zadejte název nové kategorie",
+    "descriptionPlaceholder": "Volitelný popis",
+    "cancel": "Zrušit",
+    "create": "Vytvořit nastavení",
+    "creating": "Vytváření...",
+    "validation": {
+      "keyRequired": "Klíč je povinný",
+      "valueRequired": "Hodnota je povinná",
+      "categoryRequired": "Kategorie je povinná"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor formuláře",
+    "rawEditor": "Raw JSON editor",
+    "rawJson": "Raw JSON",
+    "switchToForm": "Přepnout na formulář",
+    "importToForm": "Importovat do formuláře",
+    "parseError": "Chyba parsování: {{message}}",
+    "arraySummary": "Pole ({{length}} položek)",
+    "addItem": "Přidat položku",
+    "remove": "Odebrat",
+    "typeHint": {
+      "array": "(pole)",
+      "object": "(objekt)",
+      "string": "(řetězec)",
+      "number": "(číslo)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(funkce)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozície"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: čaká",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Množstvo",
+    "averageEntry": "Priemerný vstup",
+    "unrealizedPnl": "Nerealizovaný P&L",
+    "realizedPnl": "Realizovaný P&L",
+    "updated": "Aktualizované {{timestamp}}"
+  },
+  "empty": {
+    "title": "Žiadne otvorené pozície",
+    "message": "Long, short a flat pozície sa zobrazia tu po vykonaní obchodov."
+  },
+  "bracketModal": {
+    "title": "Pripojiť SL/TP — {{instrument}}",
+    "confirmTitle": "Potvrdiť Bracket",
+    "position": "Pozícia",
+    "entryPrice": "Vstupná cena",
+    "stopLossLabel": "Cena Stop-Loss",
+    "takeProfitLabel": "Cena Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Pod ${{price}}",
+      "slShort": "Nad ${{price}}",
+      "tpLong": "Nad ${{price}}",
+      "tpShort": "Pod ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Zrušiť",
+      "review": "Skontrolovať",
+      "back": "Späť",
+      "confirm": "Potvrdiť",
+      "creating": "Vytvára sa…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Pripojiť Trailing Stop — {{instrument}}",
+    "confirmTitle": "Potvrdiť Trailing Stop",
+    "position": "Pozícia",
+    "entryPrice": "Vstupná cena",
+    "trailingDistanceLabel": "Trailing vzdialenosť (%)",
+    "minLockLabel": "Min. uzamknutý zisk (%) — voliteľné",
+    "trailingDistance": "Trailing vzdialenosť",
+    "minLockProfit": "Min. uzamknutý zisk",
+    "placeholders": {
+      "trailingPct": "napr. 5.0",
+      "minLockPct": "0 = spustiť okamžite"
+    },
+    "minLockWarning": "Trailing Stop sa neaktivuje, kým sa cena neposunie o {{minLockPct}}% vo váš prospech.",
+    "buttons": {
+      "cancel": "Zrušiť",
+      "review": "Skontrolovať",
+      "back": "Späť",
+      "confirm": "Potvrdiť",
+      "creating": "Vytvára sa..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Vyžaduje sa aspoň jedna cena SL alebo TP",
+    "invalidSlPrice": "Neplatná cena Stop-Loss",
+    "slPricePositive": "Cena Stop-Loss musí byť kladná",
+    "invalidTpPrice": "Neplatná cena Take-Profit",
+    "tpPricePositive": "Cena Take-Profit musí byť kladná",
+    "slLongBelowEntry": "Cena SL musí byť pod vstupnou cenou ({{price}})",
+    "tpLongAboveEntry": "Cena TP musí byť nad vstupnou cenou ({{price}})",
+    "slShortAboveEntry": "Cena SL musí byť nad vstupnou cenou ({{price}})",
+    "tpShortBelowEntry": "Cena TP musí byť pod vstupnou cenou ({{price}})",
+    "trailingRequired": "Trailing percento je povinné",
+    "trailingInvalid": "Neplatné trailing percento",
+    "trailingRange": "Trailing percento musí byť medzi 0 a 100",
+    "minLockInvalid": "Neplatné percento min. uzamknutia",
+    "minLockRange": "Percento min. uzamknutia musí byť medzi 0 a 100"
+  }
+}

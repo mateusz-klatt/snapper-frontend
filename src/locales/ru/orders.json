@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Заявки и исполнения",
+    "newOrder": "Новая заявка",
+    "exportCsv": "Экспорт CSV"
+  },
+  "tabs": {
+    "orders": "Заявки ({{total}})",
+    "executions": "Исполнения ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Фильтр по статусу:",
+    "options": {
+      "all": "Все заявки",
+      "new": "Новая",
+      "open": "Открыта",
+      "partiallyFilled": "Частично исполнена",
+      "partially_filled": "Частично исполнена",
+      "filled": "Исполнена",
+      "cancelled": "Отменена",
+      "rejected": "Отклонена"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "Н/Д",
+    "priceMarket": "Рыночная",
+    "quantity": "Количество",
+    "price": "Цена",
+    "created": "Создана",
+    "createdUnknown": "Н/Д",
+    "orderId": "ID заявки",
+    "leverage": "Плечо",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Отменить",
+    "cancelling": "Отмена…",
+    "cancelAriaLabel": "Отменить заявку {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Заявка #{{orderId}}",
+    "filled": "ИСПОЛНЕНО",
+    "orderLabel": "Заявка {{orderId}}",
+    "size": "Объём",
+    "price": "Цена",
+    "total": "Сумма",
+    "executed": "Исполнено",
+    "fees": "Комиссии"
+  },
+  "empty": {
+    "ordersTitle": "Заявки не найдены",
+    "ordersStartTrading": "Заявки появятся здесь после начала торговли",
+    "ordersFilterless": "Нет заявок со статусом {{status}}",
+    "executionsTitle": "Исполнения не найдены",
+    "executionsMessage": "Исполнения заявок появятся здесь"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Инструмент",
+      "side": "Сторона",
+      "type": "Тип",
+      "status": "Статус",
+      "quantity": "Количество",
+      "price": "Цена",
+      "leverage": "Плечо",
+      "reduceOnly": "Только сокращение",
+      "created": "Создана"
+    },
+    "executions": {
+      "orderId": "ID заявки",
+      "instrument": "Инструмент",
+      "side": "Сторона",
+      "size": "Объём",
+      "price": "Цена",
+      "total": "Сумма",
+      "fee": "Комиссия",
+      "feeAsset": "Актив комиссии",
+      "executed": "Исполнено"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Новая ручная заявка",
+    "titleConfirm": "Подтвердить заявку",
+    "fields": {
+      "exchange": "Биржа",
+      "instrument": "Инструмент",
+      "side": "Сторона",
+      "orderType": "Тип заявки",
+      "quantity": "Количество",
+      "price": "Цена",
+      "stopPrice": "Стоп-цена",
+      "mode": "Режим",
+      "wallet": "Кошелёк",
+      "type": "Тип"
+    },
+    "sideOptions": {
+      "buy": "Покупка",
+      "sell": "Продажа"
+    },
+    "orderTypeOptions": {
+      "market": "Рыночная",
+      "limit": "Лимитная",
+      "stop": "Стоп-заявка",
+      "stopLimit": "Стоп-лимитная",
+      "stop_limit": "Стоп-лимитная"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — только рыночные данные",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Отменить",
+      "reviewOrder": "Проверить заявку",
+      "back": "Назад",
+      "confirmOrder": "Подтвердить заявку",
+      "submitting": "Отправка..."
+    },
+    "errors": {
+      "missingRequired": "Все обязательные поля должны быть заполнены",
+      "quantityPositive": "Количество должно быть положительным числом",
+      "priceRequired": "Для этого типа заявки требуется цена",
+      "pricePositive": "Цена должна быть положительным числом",
+      "stopPriceRequired": "Для этого типа заявки требуется стоп-цена",
+      "stopPricePositive": "Стоп-цена должна быть положительным числом",
+      "createFailed": "Не удалось создать заявку"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Этот инструмент доступен только для наблюдения — размещайте заявки на инструменте с поддержкой исполнения.",
+      "unknownInstrument": "Этот инструмент не распознан. Обновите список и повторите попытку.",
+      "capsViolation": "Эта заявка превысит лимиты безопасности счёта. Проверьте настройки риска и повторите попытку."
+    }
+  }
+}

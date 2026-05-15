@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrace",
+    "subtitle": "Správa uživatelů a konfigurace systému"
+  },
+  "rolePermissions": {
+    "title": "Oprávnění rolí",
+    "viewer": {
+      "label": "Pozorovatel",
+      "description": "Přístup pouze pro čtení k Přehledu a Tržním datům. Nemůže spravovat procesy, strategie ani systémová nastavení."
+    },
+    "operator": {
+      "label": "Operátor",
+      "description": "Všechna oprávnění Pozorovatele plus obchodní operace, spouštění strategií, správa procesů a monitorování stavu systému."
+    },
+    "admin": {
+      "label": "Administrátor",
+      "description": "Plný přístup k systému včetně správy uživatelů, systémových nastavení, konfigurace API klíčů a všech oprávnění Operátora."
+    },
+    "table": {
+      "resource": "Zdroj",
+      "viewer": "Pozorovatel",
+      "operator": "Operátor",
+      "admin": "Administrátor"
+    },
+    "resources": {
+      "overview": "Přehled",
+      "market": "Tržní data",
+      "processes": "Procesy",
+      "strategies": "Strategie",
+      "orders": "Pokyny a provedení",
+      "positions": "Pozice",
+      "signals": "Signály",
+      "health": "Stav",
+      "admin": "Administrace",
+      "settings": "Nastavení"
+    }
+  },
+  "common": {
+    "cancel": "Zrušit",
+    "selectWallet": "Vybrat peněženku",
+    "selectAWallet": "Vyberte peněženku",
+    "chooseWalletPlaceholder": "Vyberte peněženku...",
+    "selectWalletPlaceholder": "Vyberte peněženku...",
+    "walletLabel": "Peněženka",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Neznámá chyba",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Přístup odepřen",
+      "message": "Nemáte oprávnění spravovat uživatele. Kontaktujte správce systému."
+    },
+    "list": {
+      "title": "Správa uživatelů",
+      "countLabel": "Uživatelé: {{count}}",
+      "showInactive": "Zobrazit neaktivní",
+      "hideInactive": "Skrýt neaktivní",
+      "addUser": "Přidat uživatele",
+      "searchPlaceholder": "Hledat podle uživatelského jména, e-mailu nebo role...",
+      "columns": {
+        "user": "Uživatel",
+        "role": "Role",
+        "status": "Stav",
+        "createdAt": "Vytvořeno",
+        "actions": "Akce"
+      },
+      "status": {
+        "active": "Aktivní",
+        "inactive": "Neaktivní"
+      },
+      "unknown": "Neznámé",
+      "empty": {
+        "title": "Nenalezeni žádní uživatelé",
+        "noMatch": "Kritériím vyhledávání neodpovídá žádný uživatel.",
+        "noUsers": "Nenalezeni žádní uživatelé.",
+        "noActive": "Nenalezeni žádní aktivní uživatelé."
+      },
+      "errorLoading": "Chyba při načítání uživatelů: {{message}}",
+      "deactivate": {
+        "title": "Deaktivovat uživatele",
+        "message": "Opravdu chcete deaktivovat uživatele \"{{username}}\"? Již se nebude moci přihlásit.",
+        "confirm": "Deaktivovat"
+      },
+      "toast": {
+        "deactivated": "Uživatel byl deaktivován",
+        "deactivateError": "Chyba při deaktivaci uživatele"
+      }
+    },
+    "form": {
+      "titleEdit": "Upravit uživatele",
+      "titleAdd": "Přidat uživatele",
+      "fields": {
+        "username": "Uživatelské jméno",
+        "usernamePlaceholder": "Zadejte uživatelské jméno",
+        "password": "Heslo",
+        "passwordPlaceholder": "Zadejte heslo",
+        "newPassword": "Nové heslo",
+        "newPasswordPlaceholder": "Zadejte nové heslo",
+        "email": "E-mail",
+        "emailPlaceholder": "Zadejte e-mail",
+        "role": "Role",
+        "accountActive": "Účet aktivní",
+        "resetUserPassword": "Resetovat heslo uživatele"
+      },
+      "roles": {
+        "viewer": "Pozorovatel",
+        "operator": "Operátor",
+        "admin": "Administrátor"
+      },
+      "validation": {
+        "usernameRequired": "Uživatelské jméno je povinné",
+        "usernameMinLength": "Uživatelské jméno musí mít alespoň 3 znaky",
+        "emailRequired": "E-mail je povinný",
+        "emailInvalid": "Neplatný formát e-mailu",
+        "passwordRequired": "Heslo je povinné",
+        "passwordMinLength": "Heslo musí mít alespoň 8 znaků",
+        "passwordRequiredWhenResetting": "Při resetování je vyžadováno heslo"
+      },
+      "actions": {
+        "saveChanges": "Uložit změny",
+        "createUser": "Vytvořit uživatele"
+      },
+      "toast": {
+        "created": "Uživatel byl vytvořen",
+        "createError": "Chyba při vytváření uživatele",
+        "updated": "Uživatel byl aktualizován",
+        "updateError": "Chyba při aktualizaci uživatele",
+        "passwordReset": "Heslo uživatele bylo resetováno",
+        "resetError": "Chyba při resetování hesla"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Přístup odepřen",
+      "message": "Nemáte oprávnění spravovat rozsahy oprávnění. Kontaktujte správce systému."
+    },
+    "list": {
+      "title": "Rozsahy oprávnění",
+      "countLabel": "Rozsahy oprávnění: {{count}}",
+      "createGrant": "Udělit rozsah",
+      "selectWalletPrompt": "Vyberte výše peněženku pro zobrazení jejích rozsahů oprávnění.",
+      "columns": {
+        "operator": "Operátor",
+        "scope": "Rozsah",
+        "target": "Cíl",
+        "grantedAt": "Uděleno",
+        "actions": "Akce"
+      },
+      "empty": {
+        "noGrants": "Nenalezena žádná oprávnění",
+        "noGrantsHint": "Tato peněženka nemá žádné aktivní rozsahy oprávnění."
+      },
+      "errorLoading": "Chyba při načítání oprávnění: {{message}}",
+      "handover": "Předat"
+    },
+    "form": {
+      "title": "Udělit rozsah oprávnění",
+      "fields": {
+        "operator": "Operátor",
+        "operatorPlaceholder": "Vyberte operátora...",
+        "wallet": "Peněženka",
+        "scopeKind": "Druh rozsahu",
+        "underlyingPublicId": "Veřejné ID podkladového aktiva",
+        "instrumentPublicId": "Veřejné ID instrumentu",
+        "underlyingPlaceholder": "např. BTC",
+        "instrumentPlaceholder": "např. BTC-USD-PERP",
+        "note": "Poznámka (volitelné)",
+        "notePlaceholder": "Volitelná poznámka"
+      },
+      "scopeKinds": {
+        "underlying": "Podkladové aktivum",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operátor je povinný",
+        "walletRequired": "Peněženka je povinná",
+        "targetRequired": "ID cíle je povinné"
+      },
+      "actions": {
+        "createGrant": "Udělit rozsah"
+      },
+      "toast": {
+        "created": "Rozsah oprávnění byl udělen",
+        "conflictError": "Konflikt: jiný operátor již má oprávnění pro tento rozsah",
+        "createError": "Chyba při udělování rozsahu oprávnění"
+      }
+    },
+    "handover": {
+      "title": "Předat rozsah oprávnění",
+      "fields": {
+        "currentHolder": "Současný držitel",
+        "scope": "Rozsah",
+        "wallet": "Peněženka",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Předat operátorovi",
+        "transferToPlaceholder": "Vyberte cílového operátora...",
+        "reason": "Důvod (volitelné)",
+        "reasonPlaceholder": "např. střídání směny"
+      },
+      "actions": {
+        "handover": "Předat"
+      },
+      "toast": {
+        "completed": "Rozsah oprávnění byl předán",
+        "conflictError": "Konflikt: cílový operátor již má konfliktní oprávnění",
+        "handoverError": "Chyba při předávání rozsahu oprávnění"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Přístup odepřen",
+      "message": "Nemáte oprávnění spravovat pověření peněženky. Kontaktujte správce systému."
+    },
+    "list": {
+      "title": "Pověření peněženky",
+      "countLabel": "Pověření: {{count}}",
+      "addCredential": "Přidat pověření",
+      "selectWalletPrompt": "Vyberte výše peněženku pro zobrazení jejích pověření.",
+      "columns": {
+        "exchange": "Burza",
+        "type": "Typ",
+        "label": "Popisek",
+        "createdAt": "Vytvořeno",
+        "actions": "Akce"
+      },
+      "empty": {
+        "noCredentials": "Nenalezena žádná pověření",
+        "noCredentialsHint": "Tato peněženka nemá žádná aktivní pověření."
+      },
+      "errorLoading": "Chyba při načítání pověření: {{message}}",
+      "rotate": "Vyměnit"
+    },
+    "form": {
+      "title": "Přidat pověření",
+      "fields": {
+        "wallet": "Peněženka",
+        "exchange": "Burza",
+        "exchangePlaceholder": "např. kraken",
+        "credentialType": "Typ pověření",
+        "label": "Popisek (volitelné)",
+        "labelPlaceholder": "např. hlavní obchodní klíč",
+        "pemPlaceholder": "Vložte zde soukromý klíč ve formátu PEM"
+      },
+      "fieldLabels": {
+        "api_key": "Klíč API",
+        "api_secret": "Tajný klíč API",
+        "private_key_pem": "Soukromý klíč (PEM)",
+        "client_id": "ID klienta",
+        "client_secret": "Tajný klíč klienta",
+        "refresh_token": "Refresh token",
+        "initial_balance": "Počáteční zůstatek"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Klíč API + tajný klíč",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Peněženka je povinná",
+        "exchangeRequired": "Burza je povinná",
+        "fieldRequired": "{{field}} je povinné pole"
+      },
+      "actions": {
+        "addCredential": "Přidat pověření"
+      },
+      "toast": {
+        "created": "Pověření bylo vytvořeno",
+        "conflictError": "Konflikt: tato peněženka již má aktivní pověření pro tuto burzu",
+        "createError": "Chyba při vytváření pověření"
+      }
+    },
+    "rotate": {
+      "title": "Vyměnit pověření",
+      "fields": {
+        "exchange": "Burza",
+        "type": "Typ",
+        "label": "Popisek",
+        "newLabel": "Nový popisek (volitelné)",
+        "newLabelPlaceholder": "např. vyměněný klíč 2026-04",
+        "pemPlaceholder": "Vložte zde soukromý klíč ve formátu PEM"
+      },
+      "actions": {
+        "rotate": "Vyměnit"
+      },
+      "toast": {
+        "rotated": "Pověření bylo vyměněno",
+        "rotateError": "Chyba při výměně pověření"
+      }
+    }
+  }
+}

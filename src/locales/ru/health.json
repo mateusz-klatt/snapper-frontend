@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Состояние системы",
+    "healthMetricsHeading": "Метрики состояния",
+    "processStatusHeading": "Статус процессов",
+    "activeBacktestsHeading": "Активные Backtests",
+    "quickActionsHeading": "Быстрые действия",
+    "featureNotImplemented": "Функция пока не реализована",
+    "restartServices": "Перезапустить сервисы",
+    "runHealthCheck": "Запустить проверку состояния",
+    "viewLogs": "Открыть логи",
+    "exportReport": "Экспортировать отчёт"
+  },
+  "status": {
+    "healthy": "В норме",
+    "stopped": "Остановлено",
+    "error": "Ошибка",
+    "warning": "Предупреждение",
+    "completed": "Завершено",
+    "unknown": "Неизвестно"
+  },
+  "metrics": {
+    "tradingEngine": "Торговый движок",
+    "tradingEngineDescription": "Движок исполнения стратегий",
+    "activeBacktests": "Активные Backtests",
+    "activeBacktestsDescription": "Запущенные процессы Backtest",
+    "active": "Активно",
+    "inactive": "Неактивно"
+  },
+  "process": {
+    "uptimeNotAvailable": "Н/Д",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "Н/Д",
+    "uptimeLabel": "Время работы",
+    "exitCode": "Код выхода: {{code}}",
+    "service": "сервис",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Статистика базы данных",
+    "loading": "Загрузка статистики базы данных…",
+    "unavailable": "Статистика базы данных недоступна: {{message}}",
+    "fallbackError": "Не удалось загрузить статистику базы данных.",
+    "sampled": "выборка {{age}} назад",
+    "samplerSummary": "Интервал сэмплера: {{seconds}}s · таблиц: {{count}}",
+    "columns": {
+      "table": "Таблица",
+      "kind": "Тип",
+      "total": "Всего",
+      "current": "Текущие",
+      "closed": "Закрытые",
+      "archivable": "К архивации",
+      "status": "Статус"
+    },
+    "stale": "устарело"
+  },
+  "notification": {
+    "title": "Sidecar уведомлений",
+    "loading": "Загрузка метрик уведомлений…",
+    "unavailable": "Метрики уведомлений недоступны: {{message}}",
+    "fallbackError": "Не удалось загрузить метрики уведомлений.",
+    "sent": "Отправлено",
+    "sentDescription": "Терминально: отправлено",
+    "failed": "Ошибка",
+    "failedDescription": "Бюджет повторов исчерпан",
+    "unregistered": "Не зарегистрировано",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Отменено (область)",
+    "cancelledScopeDescription": "Отзыв области / деактивация пользователя",
+    "outboxDepth": "Глубина Outbox",
+    "outboxDepthDescription": "В очереди, ожидает повтора"
+  },
+  "retention": {
+    "title": "Планировщик ретенции",
+    "loading": "Загрузка запуска ретенции…",
+    "unavailable": "Запуск ретенции недоступен: {{message}}",
+    "fallbackError": "Не удалось загрузить запуск ретенции.",
+    "lastRun": "последний запуск {{age}} назад",
+    "dryRunNotice": "Режим dry-run: строки архивируются, но не удаляются из БД.",
+    "columns": {
+      "table": "Таблица",
+      "retain": "Хранить",
+      "archivedWindow": "Окно архивации",
+      "archived": "Архивировано",
+      "purged": "Удалено",
+      "files": "Файлы",
+      "status": "Статус"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "ошибка"
+  },
+  "systemMetrics": {
+    "title": "Состояние процесса",
+    "loading": "Загрузка метрик процесса…",
+    "unavailable": "Метрики процесса недоступны: {{message}}",
+    "fallbackError": "Не удалось загрузить метрики состояния процесса.",
+    "rawJson": "Исходный JSON",
+    "pid": "PID",
+    "statusValue": "Статус: {{status}}",
+    "uptime": "Время работы",
+    "threads": "Потоки",
+    "openFds": "Открытые FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Ограничено {{count}}×",
+    "memory": "Память",
+    "saturation": "Насыщение {{percent}}",
+    "asyncioTasks": "Задачи asyncio",
+    "asyncioActive": "активно: {{count}}",
+    "asyncioPending": "+ {{count}} ожидает",
+    "dbPool": "Пул БД",
+    "liveConns": "Активные подключения: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Объекты: {{value}}",
+    "threadsPercent": "Потоки %",
+    "networkConns": "Сетевые подключения",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Активно",
+    "tracemallocIdle": "Простой"
+  },
+  "relativeAge": {
+    "justNow": "только что",
+    "seconds": "{{seconds}}s назад",
+    "minutes": "{{minutes}}min назад",
+    "hours": "{{hours}}h назад",
+    "days": "{{days}}d назад"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

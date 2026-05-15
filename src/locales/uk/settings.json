@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Налаштування",
+    "subtitle": "Налаштування параметрів застосунку",
+    "addButton": "Додати налаштування",
+    "searchPlaceholder": "Пошук налаштувань...",
+    "noResults": "Налаштувань, що відповідають критеріям, не знайдено.",
+    "allCategories": "Усі категорії",
+    "categoryFilterAriaLabel": "Фільтр налаштувань за категорією"
+  },
+  "errors": {
+    "loadFailed": "Не вдалося завантажити налаштування",
+    "updateFailed": "Не вдалося оновити налаштування",
+    "deleteFailed": "Не вдалося видалити налаштування",
+    "createFailed": "Не вдалося створити налаштування",
+    "alreadyExists": "Налаштування з ключем \"{{key}}\" уже існує"
+  },
+  "item": {
+    "edit": "Редагувати",
+    "delete": "Видалити",
+    "save": "Зберегти",
+    "saving": "Збереження...",
+    "cancel": "Скасувати",
+    "yesDelete": "Так, видалити",
+    "deleting": "Видалення...",
+    "deleteConfirm": "Видалити це налаштування?",
+    "valuePlaceholder": "Введіть значення налаштування...",
+    "showMore": "Показати більше",
+    "showLess": "Показати менше",
+    "toggleAriaLabel": "Перемкнути {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Конфіденційне"
+    },
+    "helpText": {
+      "allowShortSelling": "Дозволити рушію відкривати короткі позиції. SELL-сигнали створюватимуть від'ємні desired_units; коли вимкнено, значення обмежується 0.",
+      "allowManualOrders": "Увімкнути кнопку «Новий ордер» на вкладці «Ордери». Якщо вимкнено, POST /api/orders повертає 403."
+    }
+  },
+  "addModal": {
+    "title": "Додати нове налаштування",
+    "keyLabel": "Ключ",
+    "valueLabel": "Значення",
+    "categoryLabel": "Категорія",
+    "descriptionLabel": "Опис",
+    "keyPlaceholder": "наприклад walutomat.api_key",
+    "keyHint": "Використовуйте крапкову нотацію для вкладених налаштувань (наприклад category.subcategory.name)",
+    "valuePlaceholder": "Значення налаштування",
+    "categorySelectPlaceholder": "Виберіть наявну або створіть нову",
+    "newCategoryPlaceholder": "Або введіть назву нової категорії",
+    "descriptionPlaceholder": "Необов'язковий опис",
+    "cancel": "Скасувати",
+    "create": "Створити налаштування",
+    "creating": "Створення...",
+    "validation": {
+      "keyRequired": "Ключ обов'язковий",
+      "valueRequired": "Значення обов'язкове",
+      "categoryRequired": "Категорія обов'язкова"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Редактор форми",
+    "rawEditor": "Редактор сирого JSON",
+    "rawJson": "Сирий JSON",
+    "switchToForm": "Перемкнути на форму",
+    "importToForm": "Імпортувати у форму",
+    "parseError": "Помилка парсингу: {{message}}",
+    "arraySummary": "Масив ({{length}} елементів)",
+    "addItem": "Додати елемент",
+    "remove": "Видалити",
+    "typeHint": {
+      "array": "(масив)",
+      "object": "(об'єкт)",
+      "string": "(рядок)",
+      "number": "(число)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

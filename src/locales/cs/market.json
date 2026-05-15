@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Tržní data"
+  },
+  "controls": {
+    "exchange": "Burza:",
+    "instrument": "Instrument:",
+    "timeframe": "Časový rámec:",
+    "selectExchange": "Vyberte burzu",
+    "searchInstrument": "Hledat instrument..."
+  },
+  "timeframes": {
+    "1m": "1 minuta",
+    "5m": "5 minut",
+    "15m": "15 minut",
+    "30m": "30 minut",
+    "1h": "1 hodina",
+    "4h": "4 hodiny",
+    "1d": "1 den"
+  },
+  "stats": {
+    "currentPrice": "Aktuální cena",
+    "change24h": "24h změna",
+    "high24h": "24h maximum",
+    "low24h": "24h minimum"
+  },
+  "chart": {
+    "title": "Cenový graf",
+    "errorPrefix": "Chyba při načítání dat grafu:",
+    "unknownError": "Neznámá chyba",
+    "noDataTitle": "Pro instrument {{instrument}} nejsou dostupná žádná data",
+    "noDataHint": "Instrument nemusí existovat nebo nemá data pro {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Pro instrument {{instrument}} na burze {{exchange}} nejsou nakonfigurovány žádné související instrumenty."
+  },
+  "cacheBanner": {
+    "message": "Cache se zahřívá: k dispozici {{sampleCount}} / {{expected}} svíček {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(odvozeno z 1m)",
+      "db": "(z DB)"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Správa stratégií",
+    "register": "Registrovať stratégiu",
+    "saving": "Ukladá sa…",
+    "descriptionCanManage": "Registrujte nové procesy stratégií priamo z UI. Autostart ponechá proces povolený aj po reštartoch.",
+    "descriptionViewer": "Zobrazte nakonfigurované stratégie a ich stav. Na správu stratégií kontaktujte operátora alebo administrátora.",
+    "searchPlaceholder": "Hľadať stratégie...",
+    "filter": {
+      "all": "Všetky stavy",
+      "running": "Beží",
+      "stopped": "Zastavené"
+    },
+    "configuredHeading": "Nakonfigurované stratégie",
+    "noMatches": "Filtre nezodpovedajú žiadnym stratégiám",
+    "clearFilters": "Vymazať filtre",
+    "emptyTitle": "Žiadne stratégie nie sú nakonfigurované",
+    "emptyCanManage": "Registrujte stratégiu na začatie algoritmického obchodovania",
+    "emptyViewer": "Zatiaľ neboli nakonfigurované žiadne stratégie"
+  },
+  "confirm": {
+    "startTitle": "Spustiť {{name}}",
+    "startMessage": "Týmto sa spustí stratégia {{name}}. Môže začať vykonávať live obchodné operácie.",
+    "stopTitle": "Zastaviť {{name}}",
+    "stopMessage": "Týmto sa zastaví stratégia {{name}}. Aktívne pozície nebudú automaticky uzavreté."
+  },
+  "toast": {
+    "saved": "Stratégia {{name}} bola uložená",
+    "started": "Stratégia {{name}} bola spustená",
+    "registerFailed": "Stratégiu sa nepodarilo zaregistrovať: {{message}}",
+    "startSuccess": "Stratégia bola úspešne spustená",
+    "stopSuccess": "Stratégia bola úspešne zastavená",
+    "alreadyRunning": "Stratégia už beží",
+    "notRunning": "Stratégia nebeží",
+    "configNotFound": "Konfigurácia stratégie sa nenašla. Skontrolujte nastavenia databázy.",
+    "networkError": "Chyba siete. Skontrolujte pripojenie a skúste to znova.",
+    "startFailed": "Stratégiu sa nepodarilo spustiť: {{message}}",
+    "stopFailed": "Stratégiu sa nepodarilo zastaviť: {{message}}",
+    "unknownError": "Neznáma chyba"
+  },
+  "card": {
+    "ariaLabel": "Stratégia: {{name}}",
+    "modeLabel": "Režim: {{mode}}",
+    "autostartEnabled": "Autostart: zapnutý",
+    "autostartDisabled": "Autostart: vypnutý",
+    "statusAriaLabel": "Stav: {{status}}",
+    "dataLagAriaLabel": "Oneskorenie dát: {{seconds}} sekúnd",
+    "lagBadge": "oneskorenie: {{seconds}}s",
+    "feedLag": "Oneskorenie Feedu: {{ms}}ms",
+    "heartbeatAge": "Vek HB: {{seconds}}s",
+    "metrics": {
+      "status": "Stav",
+      "dataLag": "Oneskorenie dát",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Zobraziť podrobnosti",
+    "hideDetails": "Skryť podrobnosti",
+    "inputs": "Vstupy ({{count}})",
+    "outputs": "Výstupy ({{count}})",
+    "feedPublishers": "Publikujúce Feedy ({{count}})",
+    "lastUpdate": "Posledná aktualizácia: {{time}}",
+    "waiting": "Čaká sa na Heartbeat...",
+    "startAriaLabel": "Spustiť stratégiu {{name}}",
+    "stopAriaLabel": "Zastaviť stratégiu {{name}}",
+    "start": "Spustiť",
+    "stop": "Zastaviť",
+    "starting": "Spúšťa sa...",
+    "stopping": "Zastavuje sa...",
+    "status": {
+      "starting": "spúšťa sa",
+      "stopping": "zastavuje sa",
+      "running": "beží",
+      "stopped": "zastavené"
+    },
+    "health": {
+      "healthy": "V poriadku — prijíma čerstvé dáta",
+      "warning": "Varovanie — dáta sú zastarané",
+      "error": "Chyba — chýbajú nedávne dáta",
+      "unknown": "Neznáme — nie sú dostupné dáta Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "V PORIADKU",
+      "warning": "VAROVANIE",
+      "error": "CHYBA"
+    }
+  },
+  "launchModal": {
+    "title": "Registrovať proces stratégie",
+    "emptyTemplates": "Na backende nie sú zaregistrované žiadne šablóny stratégií. Definujte aspoň jeden proces stratégie.",
+    "close": "Zavrieť",
+    "templateLabel": "Šablóna stratégie",
+    "templatePlaceholder": "Vyberte šablónu...",
+    "templateFallbackDescription": "Stratégia zaregistrovaná na backende",
+    "loadingDefaults": "Načítavajú sa predvolené hodnoty šablóny…",
+    "loadDefaultsError": "Predvolené hodnoty šablóny sa nepodarilo načítať. Skontrolujte logy backendu.",
+    "processNameLabel": "Názov procesu",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Povolené znaky: malé písmená, čísla, podčiarkovníky",
+    "instanceNameLabel": "Názov inštancie stratégie",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Používa sa v konfigurácii stratégie a výstupných témach",
+    "executionModeLabel": "Režim vykonania",
+    "executionModeThread": "Vložené vlákno",
+    "executionModeProcess": "Izolovaný proces",
+    "executionModeHelp": "Vlákna zdieľajú pamäť, procesy poskytujú silnejšiu izoláciu.",
+    "flagsLabel": "Príznaky",
+    "autostartLabel": "Autostart pri štarte servera",
+    "startImmediatelyLabel": "Spustiť ihneď po registrácii",
+    "noteLabel": "Poznámka (voliteľné)",
+    "notePlaceholder": "Popíšte účel alebo parametre tejto inštancie stratégie.",
+    "noteHelp": "Uložené spolu s konfiguráciou na identifikáciu tohto procesu.",
+    "cancel": "Zrušiť",
+    "submit": "Registrovať stratégiu",
+    "submitting": "Registruje sa…"
+  }
+}

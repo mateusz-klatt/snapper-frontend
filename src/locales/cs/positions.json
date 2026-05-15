@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozice"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: čeká",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trailing",
+    "quantity": "Množství",
+    "averageEntry": "Průměrný vstup",
+    "unrealizedPnl": "Nerealizovaný P&L",
+    "realizedPnl": "Realizovaný P&L",
+    "updated": "Aktualizováno {{timestamp}}"
+  },
+  "empty": {
+    "title": "Žádné otevřené pozice",
+    "message": "Long, short a flat pozice se zde zobrazí po provedení obchodů."
+  },
+  "bracketModal": {
+    "title": "Připojit SL/TP — {{instrument}}",
+    "confirmTitle": "Potvrdit Bracket",
+    "position": "Pozice",
+    "entryPrice": "Vstupní cena",
+    "stopLossLabel": "Stop-Loss cena",
+    "takeProfitLabel": "Take-Profit cena",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Pod ${{price}}",
+      "slShort": "Nad ${{price}}",
+      "tpLong": "Nad ${{price}}",
+      "tpShort": "Pod ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Zrušit",
+      "review": "Zkontrolovat",
+      "back": "Zpět",
+      "confirm": "Potvrdit",
+      "creating": "Vytváření…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Připojit Trailing Stop — {{instrument}}",
+    "confirmTitle": "Potvrdit Trailing Stop",
+    "position": "Pozice",
+    "entryPrice": "Vstupní cena",
+    "trailingDistanceLabel": "Trailing vzdálenost (%)",
+    "minLockLabel": "Min. uzamčený zisk (%) — volitelné",
+    "trailingDistance": "Trailing vzdálenost",
+    "minLockProfit": "Min. uzamčený zisk",
+    "placeholders": {
+      "trailingPct": "např. 5.0",
+      "minLockPct": "0 = spustit okamžitě"
+    },
+    "minLockWarning": "Trailing Stop se neaktivuje, dokud se cena nepohne o {{minLockPct}} % ve váš prospěch.",
+    "buttons": {
+      "cancel": "Zrušit",
+      "review": "Zkontrolovat",
+      "back": "Zpět",
+      "confirm": "Potvrdit",
+      "creating": "Vytváření..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Je vyžadována alespoň jedna cena SL nebo TP",
+    "invalidSlPrice": "Neplatná Stop-Loss cena",
+    "slPricePositive": "Stop-Loss cena musí být kladná",
+    "invalidTpPrice": "Neplatná Take-Profit cena",
+    "tpPricePositive": "Take-Profit cena musí být kladná",
+    "slLongBelowEntry": "Cena SL musí být pod vstupní cenou ({{price}})",
+    "tpLongAboveEntry": "Cena TP musí být nad vstupní cenou ({{price}})",
+    "slShortAboveEntry": "Cena SL musí být nad vstupní cenou ({{price}})",
+    "tpShortBelowEntry": "Cena TP musí být pod vstupní cenou ({{price}})",
+    "trailingRequired": "Trailing procento je povinné",
+    "trailingInvalid": "Neplatné trailing procento",
+    "trailingRange": "Trailing procento musí být mezi 0 a 100",
+    "minLockInvalid": "Neplatné procento min. uzamčení",
+    "minLockRange": "Procento min. uzamčení musí být mezi 0 a 100"
+  }
+}

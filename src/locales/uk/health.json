@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Стан системи",
+    "healthMetricsHeading": "Метрики стану",
+    "processStatusHeading": "Стан процесів",
+    "activeBacktestsHeading": "Активні Backtest",
+    "quickActionsHeading": "Швидкі дії",
+    "featureNotImplemented": "Функцію ще не реалізовано",
+    "restartServices": "Перезапустити сервіси",
+    "runHealthCheck": "Запустити перевірку стану",
+    "viewLogs": "Переглянути логи",
+    "exportReport": "Експортувати звіт"
+  },
+  "status": {
+    "healthy": "Справний",
+    "stopped": "Зупинено",
+    "error": "Помилка",
+    "warning": "Попередження",
+    "completed": "Завершено",
+    "unknown": "Невідомо"
+  },
+  "metrics": {
+    "tradingEngine": "Торговий рушій",
+    "tradingEngineDescription": "Рушій виконання стратегій",
+    "activeBacktests": "Активні Backtest",
+    "activeBacktestsDescription": "Запущені процеси Backtest",
+    "active": "Активний",
+    "inactive": "Неактивний"
+  },
+  "process": {
+    "uptimeNotAvailable": "Н/Д",
+    "uptimeMinutes": "{{minutes}} хв",
+    "uptimeHours": "{{hours}} год {{minutes}} хв",
+    "uptimeDays": "{{days}} д {{hours}} год",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "Н/Д",
+    "uptimeLabel": "Час роботи",
+    "exitCode": "Код виходу: {{code}}",
+    "service": "сервіс",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Статистика бази даних",
+    "loading": "Завантаження статистики бази даних…",
+    "unavailable": "Статистика бази даних недоступна: {{message}}",
+    "fallbackError": "Не вдалося завантажити статистику бази даних.",
+    "sampled": "вибірка {{age}}",
+    "samplerSummary": "Інтервал семплера: {{seconds}}с · {{count}} таблиць",
+    "columns": {
+      "table": "Таблиця",
+      "kind": "Тип",
+      "total": "Усього",
+      "current": "Поточні",
+      "closed": "Закриті",
+      "archivable": "До архівації",
+      "status": "Статус"
+    },
+    "stale": "застаріло"
+  },
+  "notification": {
+    "title": "Sidecar сповіщень",
+    "loading": "Завантаження метрик сповіщень…",
+    "unavailable": "Метрики сповіщень недоступні: {{message}}",
+    "fallbackError": "Не вдалося завантажити метрики сповіщень.",
+    "sent": "Надіслано",
+    "sentDescription": "Термінальні: надіслано",
+    "failed": "Не вдалося",
+    "failedDescription": "Бюджет повторів вичерпано",
+    "unregistered": "Скасовано реєстрацію",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Скасовано (область)",
+    "cancelledScopeDescription": "Відкликання області / деактивація користувача",
+    "outboxDepth": "Глибина Outbox",
+    "outboxDepthDescription": "У черзі, очікують повтору"
+  },
+  "retention": {
+    "title": "Планувальник зберігання",
+    "loading": "Завантаження запуску зберігання…",
+    "unavailable": "Запуск зберігання недоступний: {{message}}",
+    "fallbackError": "Не вдалося завантажити запуск зберігання.",
+    "lastRun": "останній запуск {{age}}",
+    "dryRunNotice": "Режим dry-run: рядки архівуються, але не очищаються з БД.",
+    "columns": {
+      "table": "Таблиця",
+      "retain": "Зберігати",
+      "archivedWindow": "Вікно архівації",
+      "archived": "Заархівовано",
+      "purged": "Очищено",
+      "files": "Файли",
+      "status": "Статус"
+    },
+    "retainDays": "{{days}} д",
+    "ok": "ok",
+    "error": "error"
+  },
+  "systemMetrics": {
+    "title": "Стан процесу",
+    "loading": "Завантаження метрик процесу…",
+    "unavailable": "Метрики процесу недоступні: {{message}}",
+    "fallbackError": "Не вдалося завантажити метрики стану процесу.",
+    "rawJson": "Сирий JSON",
+    "pid": "PID",
+    "statusValue": "Статус: {{status}}",
+    "uptime": "Час роботи",
+    "threads": "Потоки",
+    "openFds": "Відкриті FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Обмежено {{count}}×",
+    "memory": "Пам'ять",
+    "saturation": "Насичення {{percent}}",
+    "asyncioTasks": "Завдання asyncio",
+    "asyncioActive": "{{count}} активних",
+    "asyncioPending": "+ {{count}} очікують",
+    "dbPool": "Пул БД",
+    "liveConns": "Активні з'єднання: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Об'єкти: {{value}}",
+    "threadsPercent": "Потоки %",
+    "networkConns": "Мережеві з'єднання",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Активно",
+    "tracemallocIdle": "Простій"
+  },
+  "relativeAge": {
+    "justNow": "щойно",
+    "seconds": "{{seconds}}с тому",
+    "minutes": "{{minutes}}хв тому",
+    "hours": "{{hours}}год тому",
+    "days": "{{days}}д тому"
+  },
+  "duration": {
+    "seconds": "{{seconds}}с",
+    "minutes": "{{minutes}}хв",
+    "hours": "{{hours}}год",
+    "days": "{{days}}д"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

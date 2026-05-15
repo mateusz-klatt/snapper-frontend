@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Настройки",
+    "subtitle": "Конфигурация настроек и параметров приложения",
+    "addButton": "Добавить настройку",
+    "searchPlaceholder": "Поиск настроек...",
+    "noResults": "Настройки, соответствующие критериям, не найдены.",
+    "allCategories": "Все категории",
+    "categoryFilterAriaLabel": "Фильтр настроек по категории"
+  },
+  "errors": {
+    "loadFailed": "Не удалось загрузить настройки",
+    "updateFailed": "Не удалось обновить настройку",
+    "deleteFailed": "Не удалось удалить настройку",
+    "createFailed": "Не удалось создать настройку",
+    "alreadyExists": "Настройка с ключом \"{{key}}\" уже существует"
+  },
+  "item": {
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "save": "Сохранить",
+    "saving": "Сохранение...",
+    "cancel": "Отменить",
+    "yesDelete": "Да, удалить",
+    "deleting": "Удаление...",
+    "deleteConfirm": "Удалить эту настройку?",
+    "valuePlaceholder": "Введите значение настройки...",
+    "showMore": "Показать больше",
+    "showLess": "Показать меньше",
+    "toggleAriaLabel": "Переключить {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Чувствительные"
+    },
+    "helpText": {
+      "allowShortSelling": "Разрешить движку открывать короткие позиции. SELL-сигналы будут создавать отрицательные desired_units; при отключении значение ограничивается 0.",
+      "allowManualOrders": "Включить кнопку «Новая заявка» на вкладке «Заявки». При отключении POST /api/orders возвращает 403."
+    }
+  },
+  "addModal": {
+    "title": "Добавить новую настройку",
+    "keyLabel": "Ключ",
+    "valueLabel": "Значение",
+    "categoryLabel": "Категория",
+    "descriptionLabel": "Описание",
+    "keyPlaceholder": "например, walutomat.api_key",
+    "keyHint": "Используйте точечную нотацию для вложенных настроек (например, category.subcategory.name)",
+    "valuePlaceholder": "Значение настройки",
+    "categorySelectPlaceholder": "Выберите существующую или создайте новую",
+    "newCategoryPlaceholder": "Или введите название новой категории",
+    "descriptionPlaceholder": "Опциональное описание",
+    "cancel": "Отменить",
+    "create": "Создать настройку",
+    "creating": "Создание...",
+    "validation": {
+      "keyRequired": "Ключ обязателен",
+      "valueRequired": "Значение обязательно",
+      "categoryRequired": "Категория обязательна"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Редактор формы",
+    "rawEditor": "Редактор исходного JSON",
+    "rawJson": "Исходный JSON",
+    "switchToForm": "Перейти к форме",
+    "importToForm": "Импортировать в форму",
+    "parseError": "Ошибка парсинга: {{message}}",
+    "arraySummary": "Массив (элементов: {{length}})",
+    "addItem": "Добавить элемент",
+    "remove": "Удалить",
+    "typeHint": {
+      "array": "(массив)",
+      "object": "(объект)",
+      "string": "(строка)",
+      "number": "(число)",
+      "boolean": "(логическое)",
+      "bigint": "(bigint)",
+      "function": "(функция)",
+      "symbol": "(символ)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

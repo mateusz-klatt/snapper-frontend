@@ -1,0 +1,83 @@
+{
+  "loading": "Загрузка...",
+  "error": "Ошибка",
+  "retry": "Повторить",
+  "close": "Закрыть",
+  "cancel": "Отменить",
+  "confirm": "Подтвердить",
+  "save": "Сохранить",
+  "documentation": "Документация (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Сменить язык",
+    "flagAriaLabel": "Переключить на {{country}}",
+    "currentAriaLabel": "Текущий язык: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Торговая консоль",
+    "tagline": "Рабочее место для точной торговли",
+    "openSidebar": "Открыть боковую панель",
+    "closeSidebar": "Закрыть боковую панель",
+    "sidebar": "Боковая панель",
+    "mainNavigation": "Основная навигация",
+    "tradingContent": "Торговый раздел",
+    "skipToContent": "Перейти к торговому разделу",
+    "lag": "Задержка:",
+    "lagTitle": "Round-trip задержка до сервера WebSocket",
+    "topics": "Топики:",
+    "topicsTitle": "Количество подписанных топиков WebSocket",
+    "connected": "Подключено",
+    "disconnected": "Отключено",
+    "connectedTitle": "Подключено к WebSocket",
+    "disconnectedTitle": "Отключено от WebSocket",
+    "switchToLightMode": "Переключить на светлую тему",
+    "switchToDarkMode": "Переключить на тёмную тему",
+    "timeTravelBanner": "Режим Time Travel — просмотр исторических данных (только чтение)",
+    "lagUnknown": "Неизвестно",
+    "walletPicker": {
+      "ariaLabel": "Активный кошелёк",
+      "placeholder": "Кошелёк",
+      "allWallets": "Все кошельки",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Активный оператор",
+      "placeholder": "Оператор",
+      "allOperators": "Все операторы"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time Travel: выбрать историческую точку во времени",
+      "exitAriaLabel": "Выйти из режима Time Travel",
+      "exitTitle": "Вернуться в live-режим"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Инструмент только для наблюдения. Snapper получает рыночные данные, но не может размещать заявки по этой паре (символ, биржа).",
+      "ariaLabel": "Инструмент только с рыночными данными",
+      "badge": "Только рыночные данные"
+    },
+    "liveOnly": {
+      "notice": "Эта вкладка показывает текущее состояние — исторический просмотр недоступен."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Что-то пошло не так",
+    "titleWithComponent": "Ошибка в {{componentName}}",
+    "stackTrace": "Трассировка стека",
+    "tryAgain": "Повторить"
+  },
+  "nav": {
+    "overview": "Обзор",
+    "market": "Рыночные данные",
+    "processes": "Процессы",
+    "strategies": "Стратегии",
+    "orders": "Заявки и исполнения",
+    "positions": "Позиции",
+    "signals": "Сигналы",
+    "backtests": "Backtests",
+    "health": "Состояние",
+    "admin": "Администрирование",
+    "aiIntegration": "Интеграция AI",
+    "aiReviews": "Проверки AI",
+    "settings": "Настройки"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Администрирование",
+    "subtitle": "Управление пользователями и конфигурацией системы"
+  },
+  "rolePermissions": {
+    "title": "Права ролей",
+    "viewer": {
+      "label": "Наблюдатель",
+      "description": "Доступ только на чтение к Обзору и Рыночным данным. Управление процессами, стратегиями и системными настройками недоступно."
+    },
+    "operator": {
+      "label": "Оператор",
+      "description": "Все права Наблюдателя, а также торговые операции, запуск стратегий, управление процессами и мониторинг состояния системы."
+    },
+    "admin": {
+      "label": "Администратор",
+      "description": "Полный доступ к системе, включая управление пользователями, системные настройки, конфигурацию API-ключей и все права Оператора."
+    },
+    "table": {
+      "resource": "Ресурс",
+      "viewer": "Наблюдатель",
+      "operator": "Оператор",
+      "admin": "Администратор"
+    },
+    "resources": {
+      "overview": "Обзор",
+      "market": "Рыночные данные",
+      "processes": "Процессы",
+      "strategies": "Стратегии",
+      "orders": "Заявки и исполнения",
+      "positions": "Позиции",
+      "signals": "Сигналы",
+      "health": "Состояние",
+      "admin": "Администрирование",
+      "settings": "Настройки"
+    }
+  },
+  "common": {
+    "cancel": "Отменить",
+    "selectWallet": "Выбрать кошелёк",
+    "selectAWallet": "Выбрать кошелёк",
+    "chooseWalletPlaceholder": "Выберите кошелёк...",
+    "selectWalletPlaceholder": "Выберите кошелёк...",
+    "walletLabel": "Кошелёк",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Неизвестная ошибка",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Доступ запрещён",
+      "message": "Недостаточно прав для управления пользователями. Обратитесь к системному администратору."
+    },
+    "list": {
+      "title": "Управление пользователями",
+      "countLabel": "Пользователи: {{count}}",
+      "showInactive": "Показать неактивных",
+      "hideInactive": "Скрыть неактивных",
+      "addUser": "Добавить пользователя",
+      "searchPlaceholder": "Поиск по имени пользователя, email или роли...",
+      "columns": {
+        "user": "Пользователь",
+        "role": "Роль",
+        "status": "Статус",
+        "createdAt": "Создан",
+        "actions": "Действия"
+      },
+      "status": {
+        "active": "Активен",
+        "inactive": "Неактивен"
+      },
+      "unknown": "Неизвестно",
+      "empty": {
+        "title": "Пользователи не найдены",
+        "noMatch": "Нет пользователей, соответствующих критериям поиска.",
+        "noUsers": "Пользователи не найдены.",
+        "noActive": "Активные пользователи не найдены."
+      },
+      "errorLoading": "Ошибка загрузки пользователей: {{message}}",
+      "deactivate": {
+        "title": "Деактивировать пользователя",
+        "message": "Деактивировать пользователя «{{username}}»? Вход в систему для него будет недоступен.",
+        "confirm": "Деактивировать"
+      },
+      "toast": {
+        "deactivated": "Пользователь деактивирован",
+        "deactivateError": "Ошибка деактивации пользователя"
+      }
+    },
+    "form": {
+      "titleEdit": "Редактировать пользователя",
+      "titleAdd": "Добавить пользователя",
+      "fields": {
+        "username": "Имя пользователя",
+        "usernamePlaceholder": "Введите имя пользователя",
+        "password": "Пароль",
+        "passwordPlaceholder": "Введите пароль",
+        "newPassword": "Новый пароль",
+        "newPasswordPlaceholder": "Введите новый пароль",
+        "email": "Email",
+        "emailPlaceholder": "Введите email",
+        "role": "Роль",
+        "accountActive": "Аккаунт активен",
+        "resetUserPassword": "Сбросить пароль пользователя"
+      },
+      "roles": {
+        "viewer": "Наблюдатель",
+        "operator": "Оператор",
+        "admin": "Администратор"
+      },
+      "validation": {
+        "usernameRequired": "Имя пользователя обязательно",
+        "usernameMinLength": "Имя пользователя должно содержать не менее 3 символов",
+        "emailRequired": "Email обязателен",
+        "emailInvalid": "Некорректный формат email",
+        "passwordRequired": "Пароль обязателен",
+        "passwordMinLength": "Пароль должен содержать не менее 8 символов",
+        "passwordRequiredWhenResetting": "При сбросе требуется пароль"
+      },
+      "actions": {
+        "saveChanges": "Сохранить изменения",
+        "createUser": "Создать пользователя"
+      },
+      "toast": {
+        "created": "Пользователь создан",
+        "createError": "Ошибка создания пользователя",
+        "updated": "Пользователь обновлён",
+        "updateError": "Ошибка обновления пользователя",
+        "passwordReset": "Пароль пользователя сброшен",
+        "resetError": "Ошибка сброса пароля"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Доступ запрещён",
+      "message": "Недостаточно прав для управления областями доступа. Обратитесь к системному администратору."
+    },
+    "list": {
+      "title": "Области доступа",
+      "countLabel": "Области доступа: {{count}}",
+      "createGrant": "Выдать доступ",
+      "selectWalletPrompt": "Выберите кошелёк выше, чтобы посмотреть его области доступа.",
+      "columns": {
+        "operator": "Оператор",
+        "scope": "Область",
+        "target": "Цель",
+        "grantedAt": "Выдано",
+        "actions": "Действия"
+      },
+      "empty": {
+        "noGrants": "Области доступа не найдены",
+        "noGrantsHint": "У этого кошелька нет активных областей доступа."
+      },
+      "errorLoading": "Ошибка загрузки областей доступа: {{message}}",
+      "handover": "Передать"
+    },
+    "form": {
+      "title": "Выдать область доступа",
+      "fields": {
+        "operator": "Оператор",
+        "operatorPlaceholder": "Выберите оператора...",
+        "wallet": "Кошелёк",
+        "scopeKind": "Тип области",
+        "underlyingPublicId": "Public ID базового актива",
+        "instrumentPublicId": "Public ID инструмента",
+        "underlyingPlaceholder": "например, BTC",
+        "instrumentPlaceholder": "например, BTC-USD-PERP",
+        "note": "Примечание (опционально)",
+        "notePlaceholder": "Опциональное примечание"
+      },
+      "scopeKinds": {
+        "underlying": "Базовый актив",
+        "instrument": "Инструмент"
+      },
+      "validation": {
+        "operatorRequired": "Оператор обязателен",
+        "walletRequired": "Кошелёк обязателен",
+        "targetRequired": "ID цели обязателен"
+      },
+      "actions": {
+        "createGrant": "Выдать доступ"
+      },
+      "toast": {
+        "created": "Область доступа создана",
+        "conflictError": "Конфликт: другой оператор уже владеет доступом к этой области",
+        "createError": "Ошибка создания области доступа"
+      }
+    },
+    "handover": {
+      "title": "Передать область доступа",
+      "fields": {
+        "currentHolder": "Текущий владелец",
+        "scope": "Область",
+        "wallet": "Кошелёк",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Передать оператору",
+        "transferToPlaceholder": "Выберите оператора-получателя...",
+        "reason": "Причина (опционально)",
+        "reasonPlaceholder": "например, смена дежурства"
+      },
+      "actions": {
+        "handover": "Передать"
+      },
+      "toast": {
+        "completed": "Область доступа передана",
+        "conflictError": "Конфликт: оператор-получатель уже владеет конфликтующей областью доступа",
+        "handoverError": "Ошибка передачи области доступа"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Доступ запрещён",
+      "message": "Недостаточно прав для управления учётными данными кошельков. Обратитесь к системному администратору."
+    },
+    "list": {
+      "title": "Учётные данные кошельков",
+      "countLabel": "Учётные данные: {{count}}",
+      "addCredential": "Добавить учётные данные",
+      "selectWalletPrompt": "Выберите кошелёк выше, чтобы посмотреть его учётные данные.",
+      "columns": {
+        "exchange": "Биржа",
+        "type": "Тип",
+        "label": "Метка",
+        "createdAt": "Создано",
+        "actions": "Действия"
+      },
+      "empty": {
+        "noCredentials": "Учётные данные не найдены",
+        "noCredentialsHint": "У этого кошелька нет активных учётных данных."
+      },
+      "errorLoading": "Ошибка загрузки учётных данных: {{message}}",
+      "rotate": "Заменить"
+    },
+    "form": {
+      "title": "Добавить учётные данные",
+      "fields": {
+        "wallet": "Кошелёк",
+        "exchange": "Биржа",
+        "exchangePlaceholder": "например, kraken",
+        "credentialType": "Тип учётных данных",
+        "label": "Метка (опционально)",
+        "labelPlaceholder": "например, основной торговый ключ",
+        "pemPlaceholder": "Вставьте сюда закрытый ключ в формате PEM"
+      },
+      "fieldLabels": {
+        "api_key": "API-ключ",
+        "api_secret": "API-секрет",
+        "private_key_pem": "Закрытый ключ (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Начальный баланс"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-ключ + секрет",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Кошелёк обязателен",
+        "exchangeRequired": "Биржа обязательна",
+        "fieldRequired": "{{field}} обязательно"
+      },
+      "actions": {
+        "addCredential": "Добавить учётные данные"
+      },
+      "toast": {
+        "created": "Учётные данные созданы",
+        "conflictError": "Конфликт: у этого кошелька уже есть активные учётные данные для этой биржи",
+        "createError": "Ошибка создания учётных данных"
+      }
+    },
+    "rotate": {
+      "title": "Заменить учётные данные",
+      "fields": {
+        "exchange": "Биржа",
+        "type": "Тип",
+        "label": "Метка",
+        "newLabel": "Новая метка (опционально)",
+        "newLabelPlaceholder": "например, ключ после замены 2026-04",
+        "pemPlaceholder": "Вставьте сюда закрытый ключ в формате PEM"
+      },
+      "actions": {
+        "rotate": "Заменить"
+      },
+      "toast": {
+        "rotated": "Учётные данные заменены",
+        "rotateError": "Ошибка замены учётных данных"
+      }
+    }
+  }
+}

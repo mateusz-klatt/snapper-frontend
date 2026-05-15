@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Riadenie procesov",
+    "subtitle": "Monitorovanie a riadenie procesov v reálnom čase"
+  },
+  "sections": {
+    "longRunning": "Dlhodobo bežiace procesy",
+    "executorTemplates": "Šablóny executorov",
+    "executorTemplatesHint": "Úprava konfigurácie šablóny ovplyvní po reštarte všetky peňaženky na tejto burze. Šablóny slúžia iba na konfiguráciu — na spustenie executora spustite nižšie inštanciu pre konkrétnu peňaženku.",
+    "walletInstances": "Inštancie peňaženiek",
+    "taskProcesses": "Procesy úloh"
+  },
+  "card": {
+    "stop": "Zastaviť",
+    "start": "Spustiť",
+    "restart": "Reštartovať",
+    "starting": "Spúšťa sa...",
+    "stopping": "Zastavuje sa...",
+    "status": {
+      "running": "beží",
+      "stopped": "zastavené",
+      "error": "chyba",
+      "starting": "spúšťa sa",
+      "stopping": "zastavuje sa"
+    }
+  },
+  "template": {
+    "badge": "šablóna",
+    "mode": "Režim:",
+    "parameters": "Parametre:",
+    "paramCount": "{{count}} parametrov",
+    "noParams": "nie sú nastavené žiadne parametre"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manuálne"
+  },
+  "actions": {
+    "stopTitle": "Zastaviť {{name}}",
+    "stopMessage": "Týmto sa zastaví proces {{name}}.",
+    "restartTitle": "Reštartovať {{name}}",
+    "restartMessage": "Týmto sa reštartuje proces {{name}}."
+  },
+  "executionMode": {
+    "title": "Spustiť {{name}}",
+    "label": "Režim spustenia:",
+    "threadName": "Režim vlákna",
+    "threadDescription": "Beží ako vložená úloha vo webovom serveri. Rýchlejší štart, zdieľaná pamäť.",
+    "processName": "Režim procesu",
+    "processDescription": "Beží ako samostatný proces Pythonu. Izolovaný, odolný voči chybám, s podrobným monitoringom.",
+    "cancel": "Zrušiť",
+    "start": "Spustiť {{name}}",
+    "threadAriaLabel": "Režim vlákna",
+    "processAriaLabel": "Režim procesu"
+  }
+}

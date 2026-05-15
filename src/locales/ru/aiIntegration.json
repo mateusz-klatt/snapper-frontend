@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Интеграция AI",
+    "subtitle": "Управление AI-делегатами, подключающимися к Snapper через MCP.",
+    "loading": "Загрузка интеграции AI…",
+    "createDelegate": "Создать делегата"
+  },
+  "disabled": {
+    "title": "Интеграция AI отключена",
+    "message": "Включите флаг функции в Настройках → Флаги функций, чтобы управлять AI-делегатами."
+  },
+  "list": {
+    "loadingDelegates": "Загрузка делегатов…",
+    "emptyTitle": "AI-делегатов пока нет",
+    "emptyMessage": "Нажмите «Создать делегата», чтобы выпустить его и сгенерировать фрагмент конфигурации MCP.",
+    "columns": {
+      "label": "Метка",
+      "username": "Имя пользователя",
+      "created": "Создан",
+      "maxOpenOrders": "Макс. открытых заявок",
+      "maxDailyUsd": "Макс. дневной USD",
+      "status": "Статус",
+      "actions": "Действия"
+    },
+    "status": {
+      "active": "Активен",
+      "revoked": "Отозван"
+    },
+    "default": "по умолчанию",
+    "details": "Детали",
+    "viewAriaLabel": "Открыть делегата {{label}}"
+  },
+  "wizard": {
+    "title": "Создать AI-делегата",
+    "step1": "1. Идентификатор",
+    "step2": "2. Область и лимиты",
+    "step3": "3. Проверка",
+    "stepDone": "✓ Готово",
+    "identity": {
+      "labelField": "Метка",
+      "labelPlaceholder": "например, Alpha prop desk",
+      "labelHelpPrefix": "Имя пользователя делегата будет сформировано на сервере как ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Область",
+      "operatorLabel": "public_id оператора (опционально)",
+      "operatorPlaceholder": "Оставьте пустым, чтобы наследовать основного оператора вызывающего пользователя"
+    },
+    "caps": {
+      "heading": "Торговые лимиты (все опциональны)",
+      "maxOpenOrders": "Макс. открытых заявок",
+      "maxDailyNotionalUsd": "Макс. дневной номинал, USD",
+      "maxCancelsPerMinute": "Макс. отмен в минуту",
+      "perInstrument": "Макс. количество на инструмент (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "по умолчанию",
+      "errorInvalidJson": "max_order_quantity_per_instrument должен быть корректным JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument должен быть объектом JSON или пустым",
+      "errorNegative": "Лимиты должны быть неотрицательными целыми числами или пустыми."
+    },
+    "review": {
+      "heading": "Проверка и создание",
+      "rowLabel": "Метка",
+      "rowOperator": "public_id оператора",
+      "rowMaxOpenOrders": "Макс. открытых заявок",
+      "rowMaxDailyNotional": "Макс. дневной номинал, USD",
+      "rowMaxCancelsPerMinute": "Макс. отмен в минуту",
+      "rowPerInstrument": "Макс. количество на инструмент",
+      "operatorDefault": "(основной оператор вызывающего пользователя)",
+      "defaultValue": "(по умолчанию)"
+    },
+    "buttons": {
+      "cancel": "Отменить",
+      "next": "Далее",
+      "back": "Назад",
+      "createDelegate": "Создать делегата",
+      "iSavedClose": "Данные сохранены — закрыть"
+    },
+    "toast": {
+      "delegateCreated": "Делегат создан",
+      "failedToCreate": "Не удалось создать делегата"
+    }
+  },
+  "detail": {
+    "loading": "Загрузка делегата…",
+    "notFound": "Делегат не найден или недоступен.",
+    "back": "Назад",
+    "backToList": "Вернуться к списку",
+    "updateCaps": "Обновить лимиты",
+    "revoke": "Отозвать",
+    "save": "Сохранить",
+    "cancel": "Отменить",
+    "tradingCaps": "Торговые лимиты",
+    "status": "Статус",
+    "active": "Активен",
+    "revoked": "Отозван",
+    "createdAt": "Создан",
+    "createdBy": "Создано пользователем (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Макс. открытых заявок",
+    "maxDailyNotionalUsd": "Макс. дневной номинал, USD",
+    "maxCancelsPerMinute": "Макс. отмен в минуту",
+    "perInstrument": "Макс. количество на инструмент",
+    "defaultValue": "(по умолчанию)",
+    "editorPlaceholder": "(по умолчанию)",
+    "toast": {
+      "capsUpdated": "Лимиты обновлены",
+      "failedToUpdateCaps": "Не удалось обновить лимиты",
+      "negativeIntegersError": "Лимиты должны быть неотрицательными целыми числами или пустыми."
+    }
+  },
+  "revokeDialog": {
+    "title": "Отозвать делегата «{{label}}»?",
+    "message": "Это отзовёт токены делегата и остановит его подписки MCP. Действие нельзя отменить.",
+    "confirm": "Отозвать",
+    "cancel": "Отменить",
+    "toast": {
+      "delegateRevoked": "Делегат отозван",
+      "failedToRevoke": "Не удалось отозвать делегата"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Сохраните эти учётные данные сейчас",
+    "warningMessage": "Они больше не будут показаны. Snapper не хранит исходные токены; после закрытия этого мастера единственная копия останется в конфигурации клиента MCP.",
+    "snippetHelp": "Долгосрочный токен AI-делегата (~10 лет). Один и тот же токен аутентифицирует и proxy MCP server, и watch monitor. Для замены деактивируйте этого делегата и создайте нового.",
+    "baseUrlHelpPrefix": "Base URL формируется из origin этого браузера + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Скопировать фрагмент конфигурации в буфер обмена",
+    "copy": "Скопировать в буфер",
+    "copied": "Скопировано"
+  }
+}

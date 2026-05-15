@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Stav systému",
+    "healthMetricsHeading": "Metriky stavu",
+    "processStatusHeading": "Stav procesov",
+    "activeBacktestsHeading": "Aktívne backtesty",
+    "quickActionsHeading": "Rýchle akcie",
+    "featureNotImplemented": "Funkcia zatiaľ nie je implementovaná",
+    "restartServices": "Reštartovať služby",
+    "runHealthCheck": "Spustiť kontrolu stavu",
+    "viewLogs": "Zobraziť logy",
+    "exportReport": "Exportovať report"
+  },
+  "status": {
+    "healthy": "V poriadku",
+    "stopped": "Zastavené",
+    "error": "Chyba",
+    "warning": "Varovanie",
+    "completed": "Dokončené",
+    "unknown": "Neznáme"
+  },
+  "metrics": {
+    "tradingEngine": "Obchodný engine",
+    "tradingEngineDescription": "Engine na vykonávanie stratégií",
+    "activeBacktests": "Aktívne backtesty",
+    "activeBacktestsDescription": "Spustené procesy backtestov",
+    "active": "Aktívne",
+    "inactive": "Neaktívne"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Doba behu",
+    "exitCode": "Kód ukončenia: {{code}}",
+    "service": "služba",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Štatistiky databázy",
+    "loading": "Načítavajú sa štatistiky databázy…",
+    "unavailable": "Štatistiky databázy nie sú dostupné: {{message}}",
+    "fallbackError": "Štatistiky databázy sa nepodarilo načítať.",
+    "sampled": "vzorka pred {{age}}",
+    "samplerSummary": "Interval vzorkovania: {{seconds}}s · tabuľky: {{count}}",
+    "columns": {
+      "table": "Tabuľka",
+      "kind": "Typ",
+      "total": "Spolu",
+      "current": "Aktuálne",
+      "closed": "Uzavreté",
+      "archivable": "Na archiváciu",
+      "status": "Stav"
+    },
+    "stale": "zastarané"
+  },
+  "notification": {
+    "title": "Notifikačný Sidecar",
+    "loading": "Načítavajú sa metriky notifikácií…",
+    "unavailable": "Metriky notifikácií nie sú dostupné: {{message}}",
+    "fallbackError": "Metriky notifikácií sa nepodarilo načítať.",
+    "sent": "Odoslané",
+    "sentDescription": "Koncový stav: odoslané",
+    "failed": "Zlyhalo",
+    "failedDescription": "Rozpočet opakovaní vyčerpaný",
+    "unregistered": "Neregistrované",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Zrušené (rozsah)",
+    "cancelledScopeDescription": "Odvolanie rozsahu / deaktivácia používateľa",
+    "outboxDepth": "Hĺbka Outboxu",
+    "outboxDepthDescription": "Vo fronte, čaká na opakovanie"
+  },
+  "retention": {
+    "title": "Plánovač retencie",
+    "loading": "Načítava sa beh retencie…",
+    "unavailable": "Beh retencie nie je dostupný: {{message}}",
+    "fallbackError": "Beh retencie sa nepodarilo načítať.",
+    "lastRun": "posledný beh pred {{age}}",
+    "dryRunNotice": "Režim dry-run: riadky sa archivujú, ale z DB sa neodstraňujú.",
+    "columns": {
+      "table": "Tabuľka",
+      "retain": "Uchovať",
+      "archivedWindow": "Archivované okno",
+      "archived": "Archivované",
+      "purged": "Odstránené",
+      "files": "Súbory",
+      "status": "Stav"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "chyba"
+  },
+  "systemMetrics": {
+    "title": "Stav procesu",
+    "loading": "Načítavajú sa metriky procesu…",
+    "unavailable": "Metriky procesu nie sú dostupné: {{message}}",
+    "fallbackError": "Metriky stavu procesu sa nepodarilo načítať.",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "Stav: {{status}}",
+    "uptime": "Doba behu",
+    "threads": "Vlákna",
+    "openFds": "Otvorené FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Obmedzené {{count}}×",
+    "memory": "Pamäť",
+    "saturation": "Saturácia {{percent}}",
+    "asyncioTasks": "Úlohy asyncio",
+    "asyncioActive": "aktívne: {{count}}",
+    "asyncioPending": "+ čakajúce: {{count}}",
+    "dbPool": "DB pool",
+    "liveConns": "Aktívne spojenia: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekty: {{value}}",
+    "threadsPercent": "Vlákna %",
+    "networkConns": "Sieťové spojenia",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktívne",
+    "tracemallocIdle": "Nečinné"
+  },
+  "relativeAge": {
+    "justNow": "práve teraz",
+    "seconds": "pred {{seconds}}s",
+    "minutes": "pred {{minutes}}min",
+    "hours": "pred {{hours}}h",
+    "days": "pred {{days}}d"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

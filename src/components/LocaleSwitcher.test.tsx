@@ -155,15 +155,15 @@ describe('LocaleSwitcher', () => {
     useAppStore.setState({ locale: 'cz' })
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: /current language: czechia/i })).toBeInTheDocument()
-    )
-    const czButton = screen.getByRole('button', { name: /current language: czechia/i })
+    const currentRe = /current language: (czechia|česko)/i
+
+    await waitFor(() => expect(screen.getByRole('button', { name: currentRe })).toBeInTheDocument())
+    const czButton = screen.getByRole('button', { name: currentRe })
 
     czButton.focus()
     fireEvent.keyDown(czButton, { key: 'ArrowDown' })
     await waitFor(() => {
-      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/czechia/i)
+      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/czechia|česko/i)
     })
   })
 

@@ -1,0 +1,83 @@
+{
+  "loading": "Se încarcă...",
+  "error": "Eroare",
+  "retry": "Reîncercați",
+  "close": "Închideți",
+  "cancel": "Anulați",
+  "confirm": "Confirmați",
+  "save": "Salvați",
+  "documentation": "Documentație (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Schimbați limba",
+    "flagAriaLabel": "Schimbați în {{country}}",
+    "currentAriaLabel": "Limba curentă: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Consolă de trading",
+    "tagline": "Stație de lucru de precizie",
+    "openSidebar": "Deschideți bara laterală",
+    "closeSidebar": "Închideți bara laterală",
+    "sidebar": "Bară laterală",
+    "mainNavigation": "Navigare principală",
+    "tradingContent": "Conținut de trading",
+    "skipToContent": "Săriți la conținutul de trading",
+    "lag": "Întârziere:",
+    "lagTitle": "Latență round-trip către serverul WebSocket",
+    "topics": "Topicuri:",
+    "topicsTitle": "Numărul de topicuri WebSocket abonate",
+    "connected": "Conectat",
+    "disconnected": "Deconectat",
+    "connectedTitle": "Conectat la WebSocket",
+    "disconnectedTitle": "Deconectat de la WebSocket",
+    "switchToLightMode": "Comutați la modul luminos",
+    "switchToDarkMode": "Comutați la modul întunecat",
+    "timeTravelBanner": "Mod Time Travel — se vizualizează date istorice (doar citire)",
+    "lagUnknown": "Necunoscut",
+    "walletPicker": {
+      "ariaLabel": "Portofel activ",
+      "placeholder": "Portofel",
+      "allWallets": "Toate portofelele",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operator activ",
+      "placeholder": "Operator",
+      "allOperators": "Toți operatorii"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: selectați un moment istoric",
+      "exitAriaLabel": "Ieșiți din modul time travel",
+      "exitTitle": "Reveniți la modul live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument doar pentru observație. Snapper primește date de piață, dar nu poate plasa ordine pentru această pereche (simbol, exchange).",
+      "ariaLabel": "Instrument doar cu date de piață",
+      "badge": "Doar date de piață"
+    },
+    "liveOnly": {
+      "notice": "Această filă afișează starea curentă — vizualizarea istorică nu este disponibilă."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Ceva nu a mers bine",
+    "titleWithComponent": "Eroare în {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Încercați din nou"
+  },
+  "nav": {
+    "overview": "Prezentare generală",
+    "market": "Date de piață",
+    "processes": "Procese",
+    "strategies": "Strategii",
+    "orders": "Ordine și execuții",
+    "positions": "Poziții",
+    "signals": "Semnale",
+    "backtests": "Backtesturi",
+    "health": "Stare sistem",
+    "admin": "Administrare",
+    "aiIntegration": "Integrare AI",
+    "aiReviews": "Revizuiri AI",
+    "settings": "Setări"
+  }
+}

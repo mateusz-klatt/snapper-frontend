@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Control procese",
+    "subtitle": "Monitorizare și control al proceselor în timp real"
+  },
+  "sections": {
+    "longRunning": "Procese de lungă durată",
+    "executorTemplates": "Șabloane executor",
+    "executorTemplatesHint": "Editarea configurației șablonului afectează toate portofelele de pe acest exchange după repornire. Șabloanele țin doar de configurație — porniți instanța per-portofel de mai jos pentru a rula un executor.",
+    "walletInstances": "Instanțe portofel",
+    "taskProcesses": "Procese task"
+  },
+  "card": {
+    "stop": "Opriți",
+    "start": "Porniți",
+    "restart": "Reporniți",
+    "starting": "Se pornește...",
+    "stopping": "Se oprește...",
+    "status": {
+      "running": "în rulare",
+      "stopped": "oprit",
+      "error": "eroare",
+      "starting": "pornire",
+      "stopping": "oprire"
+    }
+  },
+  "template": {
+    "badge": "șablon",
+    "mode": "Mod:",
+    "parameters": "Parametri:",
+    "paramCount": "{{count}} parametri",
+    "noParams": "niciun parametru setat"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Opriți {{name}}",
+    "stopMessage": "Aceasta va opri procesul {{name}}.",
+    "restartTitle": "Reporniți {{name}}",
+    "restartMessage": "Aceasta va reporni procesul {{name}}."
+  },
+  "executionMode": {
+    "title": "Porniți {{name}}",
+    "label": "Mod de execuție:",
+    "threadName": "Mod thread",
+    "threadDescription": "Rulează ca task integrat în serverul web. Pornire mai rapidă, memorie partajată.",
+    "processName": "Mod proces",
+    "processDescription": "Rulează ca proces Python separat. Izolat, tolerant la erori, cu monitorizare detaliată.",
+    "cancel": "Anulați",
+    "start": "Porniți {{name}}",
+    "threadAriaLabel": "Mod thread",
+    "processAriaLabel": "Mod proces"
+  }
+}

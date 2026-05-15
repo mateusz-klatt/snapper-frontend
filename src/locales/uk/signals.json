@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Сигнали"
+  },
+  "filters": {
+    "allStrategies": "Усі стратегії"
+  },
+  "actions": {
+    "export": "Експортувати"
+  },
+  "stats": {
+    "total": "Усього",
+    "buy": "Купівля",
+    "sell": "Продаж",
+    "avgStrength": "Сер. сила"
+  },
+  "card": {
+    "strength": "Сила",
+    "price": "Ціна",
+    "exchange": "Біржа",
+    "reason": "Причина:",
+    "noPrice": "Н/Д"
+  },
+  "strength": {
+    "strong": "Сильний",
+    "medium": "Середній",
+    "weak": "Слабкий",
+    "veryWeak": "Дуже слабкий"
+  },
+  "time": {
+    "justNow": "Щойно",
+    "minutesAgo": "{{count}}хв тому",
+    "hoursAgo": "{{count}}год тому"
+  },
+  "empty": {
+    "title": "Сигналів не знайдено",
+    "message": "Жоден торговий сигнал не відповідає поточним фільтрам."
+  }
+}

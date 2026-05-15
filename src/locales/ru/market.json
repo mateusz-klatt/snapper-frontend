@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Рыночные данные"
+  },
+  "controls": {
+    "exchange": "Биржа:",
+    "instrument": "Инструмент:",
+    "timeframe": "Таймфрейм:",
+    "selectExchange": "Выберите биржу",
+    "searchInstrument": "Поиск инструмента..."
+  },
+  "timeframes": {
+    "1m": "1 минута",
+    "5m": "5 минут",
+    "15m": "15 минут",
+    "30m": "30 минут",
+    "1h": "1 час",
+    "4h": "4 часа",
+    "1d": "1 день"
+  },
+  "stats": {
+    "currentPrice": "Текущая цена",
+    "change24h": "Изменение за 24 ч",
+    "high24h": "Максимум за 24 ч",
+    "low24h": "Минимум за 24 ч"
+  },
+  "chart": {
+    "title": "График цены",
+    "errorPrefix": "Ошибка загрузки данных графика:",
+    "unknownError": "Неизвестная ошибка",
+    "noDataTitle": "Нет данных для {{instrument}}",
+    "noDataHint": "Инструмент может не существовать или не иметь данных для таймфрейма {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Для {{instrument}} на {{exchange}} не настроены связанные инструменты."
+  },
+  "cacheBanner": {
+    "message": "Прогрев кеша: доступно {{sampleCount}} / {{expected}} свечей {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(агрегировано из 1m)",
+      "db": "(из БД)"
+    }
+  }
+}

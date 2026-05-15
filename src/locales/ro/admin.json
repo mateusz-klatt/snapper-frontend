@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrare",
+    "subtitle": "Gestionați utilizatorii și configurația sistemului"
+  },
+  "rolePermissions": {
+    "title": "Permisiuni pe roluri",
+    "viewer": {
+      "label": "Observator",
+      "description": "Acces doar pentru citire la Prezentare generală și Date de piață. Nu poate gestiona procese, strategii sau setări de sistem."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Toate permisiunile Observatorului, plus operațiuni de trading, execuția strategiilor, gestionarea proceselor și monitorizarea stării sistemului."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Acces complet la sistem, inclusiv gestionarea utilizatorilor, setările de sistem, configurarea cheilor API și toate permisiunile Operatorului."
+    },
+    "table": {
+      "resource": "Resursă",
+      "viewer": "Observator",
+      "operator": "Operator",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Prezentare generală",
+      "market": "Date de piață",
+      "processes": "Procese",
+      "strategies": "Strategii",
+      "orders": "Ordine și execuții",
+      "positions": "Poziții",
+      "signals": "Semnale",
+      "health": "Stare sistem",
+      "admin": "Administrare",
+      "settings": "Setări"
+    }
+  },
+  "common": {
+    "cancel": "Anulați",
+    "selectWallet": "Selectați portofelul",
+    "selectAWallet": "Selectați un portofel",
+    "chooseWalletPlaceholder": "Alegeți un portofel...",
+    "selectWalletPlaceholder": "Selectați portofelul...",
+    "walletLabel": "Portofel",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Eroare necunoscută",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Acces refuzat",
+      "message": "Nu aveți permisiunea de a gestiona utilizatori. Contactați administratorul de sistem."
+    },
+    "list": {
+      "title": "Gestionare utilizatori",
+      "countLabel": "{{count}} utilizatori",
+      "showInactive": "Afișați inactivi",
+      "hideInactive": "Ascundeți inactivi",
+      "addUser": "Adăugați utilizator",
+      "searchPlaceholder": "Căutați după nume de utilizator, email sau rol...",
+      "columns": {
+        "user": "Utilizator",
+        "role": "Rol",
+        "status": "Status",
+        "createdAt": "Creat la",
+        "actions": "Acțiuni"
+      },
+      "status": {
+        "active": "Activ",
+        "inactive": "Inactiv"
+      },
+      "unknown": "Necunoscut",
+      "empty": {
+        "title": "Nu s-au găsit utilizatori",
+        "noMatch": "Niciun utilizator nu corespunde criteriilor de căutare.",
+        "noUsers": "Nu s-au găsit utilizatori.",
+        "noActive": "Nu s-au găsit utilizatori activi."
+      },
+      "errorLoading": "Eroare la încărcarea utilizatorilor: {{message}}",
+      "deactivate": {
+        "title": "Dezactivați utilizatorul",
+        "message": "Sigur doriți să dezactivați utilizatorul \"{{username}}\"? Acesta nu se va mai putea autentifica.",
+        "confirm": "Dezactivați"
+      },
+      "toast": {
+        "deactivated": "Utilizatorul a fost dezactivat",
+        "deactivateError": "Eroare la dezactivarea utilizatorului"
+      }
+    },
+    "form": {
+      "titleEdit": "Editați utilizatorul",
+      "titleAdd": "Adăugați utilizator",
+      "fields": {
+        "username": "Nume de utilizator",
+        "usernamePlaceholder": "Introduceți numele de utilizator",
+        "password": "Parolă",
+        "passwordPlaceholder": "Introduceți parola",
+        "newPassword": "Parolă nouă",
+        "newPasswordPlaceholder": "Introduceți parola nouă",
+        "email": "Email",
+        "emailPlaceholder": "Introduceți emailul",
+        "role": "Rol",
+        "accountActive": "Cont activ",
+        "resetUserPassword": "Resetați parola utilizatorului"
+      },
+      "roles": {
+        "viewer": "Observator",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Numele de utilizator este obligatoriu",
+        "usernameMinLength": "Numele de utilizator trebuie să aibă cel puțin 3 caractere",
+        "emailRequired": "Emailul este obligatoriu",
+        "emailInvalid": "Format de email invalid",
+        "passwordRequired": "Parola este obligatorie",
+        "passwordMinLength": "Parola trebuie să aibă cel puțin 8 caractere",
+        "passwordRequiredWhenResetting": "Parola este obligatorie la resetare"
+      },
+      "actions": {
+        "saveChanges": "Salvați modificările",
+        "createUser": "Creați utilizator"
+      },
+      "toast": {
+        "created": "Utilizatorul a fost creat",
+        "createError": "Eroare la crearea utilizatorului",
+        "updated": "Utilizatorul a fost actualizat",
+        "updateError": "Eroare la actualizarea utilizatorului",
+        "passwordReset": "Parola utilizatorului a fost resetată",
+        "resetError": "Eroare la resetarea parolei"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Acces refuzat",
+      "message": "Nu aveți permisiunea de a gestiona domenii de acces. Contactați administratorul de sistem."
+    },
+    "list": {
+      "title": "Domenii de acces",
+      "countLabel": "{{count}} domenii acordate",
+      "createGrant": "Acordați domeniu",
+      "selectWalletPrompt": "Alegeți un portofel mai sus pentru a vedea domeniile sale de acces.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Domeniu",
+        "target": "Țintă",
+        "grantedAt": "Acordat la",
+        "actions": "Acțiuni"
+      },
+      "empty": {
+        "noGrants": "Nu s-au găsit domenii acordate",
+        "noGrantsHint": "Acest portofel nu are domenii de acces active."
+      },
+      "errorLoading": "Eroare la încărcarea domeniilor: {{message}}",
+      "handover": "Transfer"
+    },
+    "form": {
+      "title": "Acordați domeniu de acces",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Selectați operatorul...",
+        "wallet": "Portofel",
+        "scopeKind": "Tip domeniu",
+        "underlyingPublicId": "ID public activ suport",
+        "instrumentPublicId": "ID public instrument",
+        "underlyingPlaceholder": "ex. BTC",
+        "instrumentPlaceholder": "ex. BTC-USD-PERP",
+        "note": "Notă (opțional)",
+        "notePlaceholder": "Notă opțională"
+      },
+      "scopeKinds": {
+        "underlying": "Activ suport",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operatorul este obligatoriu",
+        "walletRequired": "Portofelul este obligatoriu",
+        "targetRequired": "ID-ul țintei este obligatoriu"
+      },
+      "actions": {
+        "createGrant": "Acordați domeniu"
+      },
+      "toast": {
+        "created": "Domeniul de acces a fost acordat",
+        "conflictError": "Conflict: un alt operator deține deja un domeniu pentru acest acces",
+        "createError": "Eroare la acordarea domeniului de acces"
+      }
+    },
+    "handover": {
+      "title": "Transfer domeniu de acces",
+      "fields": {
+        "currentHolder": "Deținător curent",
+        "scope": "Domeniu",
+        "wallet": "Portofel",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Transferați către operator",
+        "transferToPlaceholder": "Selectați operatorul de destinație...",
+        "reason": "Motiv (opțional)",
+        "reasonPlaceholder": "ex. Schimb de tură"
+      },
+      "actions": {
+        "handover": "Transferați"
+      },
+      "toast": {
+        "completed": "Domeniul de acces a fost transferat",
+        "conflictError": "Conflict: operatorul de destinație deține deja un domeniu incompatibil",
+        "handoverError": "Eroare la transferul domeniului de acces"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Acces refuzat",
+      "message": "Nu aveți permisiunea de a gestiona credențialele portofelului. Contactați administratorul de sistem."
+    },
+    "list": {
+      "title": "Credențiale portofel",
+      "countLabel": "{{count}} credențiale",
+      "addCredential": "Adăugați credențială",
+      "selectWalletPrompt": "Alegeți un portofel mai sus pentru a vedea credențialele sale.",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Tip",
+        "label": "Etichetă",
+        "createdAt": "Creat la",
+        "actions": "Acțiuni"
+      },
+      "empty": {
+        "noCredentials": "Nu s-au găsit credențiale",
+        "noCredentialsHint": "Acest portofel nu are credențiale active."
+      },
+      "errorLoading": "Eroare la încărcarea credențialelor: {{message}}",
+      "rotate": "Schimbați"
+    },
+    "form": {
+      "title": "Adăugați credențială",
+      "fields": {
+        "wallet": "Portofel",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "ex. kraken",
+        "credentialType": "Tip credențială",
+        "label": "Etichetă (opțional)",
+        "labelPlaceholder": "ex. Cheie principală de trading",
+        "pemPlaceholder": "Lipiți aici cheia privată în format PEM"
+      },
+      "fieldLabels": {
+        "api_key": "Cheie API",
+        "api_secret": "Secret API",
+        "private_key_pem": "Cheie privată (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Sold inițial"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Cheie API + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Portofelul este obligatoriu",
+        "exchangeRequired": "Exchange-ul este obligatoriu",
+        "fieldRequired": "{{field}} este obligatoriu"
+      },
+      "actions": {
+        "addCredential": "Adăugați credențială"
+      },
+      "toast": {
+        "created": "Credențiala a fost creată",
+        "conflictError": "Conflict: acest portofel are deja o credențială activă pentru acest exchange",
+        "createError": "Eroare la crearea credențialei"
+      }
+    },
+    "rotate": {
+      "title": "Schimbare credențiale",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Tip",
+        "label": "Etichetă",
+        "newLabel": "Etichetă nouă (opțional)",
+        "newLabelPlaceholder": "ex. Cheie schimbată 2026-04",
+        "pemPlaceholder": "Lipiți aici cheia privată în format PEM"
+      },
+      "actions": {
+        "rotate": "Schimbați"
+      },
+      "toast": {
+        "rotated": "Credențialele au fost schimbate",
+        "rotateError": "Eroare la schimbarea credențialelor"
+      }
+    }
+  }
+}

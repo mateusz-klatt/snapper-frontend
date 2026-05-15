@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Ордери та виконання",
+    "newOrder": "Новий ордер",
+    "exportCsv": "Експортувати CSV"
+  },
+  "tabs": {
+    "orders": "Ордери ({{total}})",
+    "executions": "Виконання ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Фільтр за статусом:",
+    "options": {
+      "all": "Усі ордери",
+      "new": "Новий",
+      "open": "Відкритий",
+      "partiallyFilled": "Частково виконаний",
+      "partially_filled": "Частково виконаний",
+      "filled": "Виконаний",
+      "cancelled": "Скасований",
+      "rejected": "Відхилений"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "Н/Д",
+    "priceMarket": "Ринковий",
+    "quantity": "Кількість",
+    "price": "Ціна",
+    "created": "Створено",
+    "createdUnknown": "Н/Д",
+    "orderId": "ID ордера",
+    "leverage": "Плече",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Скасувати",
+    "cancelling": "Скасування…",
+    "cancelAriaLabel": "Скасувати ордер {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Ордер №{{orderId}}",
+    "filled": "ВИКОНАНО",
+    "orderLabel": "Ордер {{orderId}}",
+    "size": "Розмір",
+    "price": "Ціна",
+    "total": "Сума",
+    "executed": "Виконано",
+    "fees": "Комісії"
+  },
+  "empty": {
+    "ordersTitle": "Ордерів не знайдено",
+    "ordersStartTrading": "Почніть торгівлю, щоб бачити ордери тут",
+    "ordersFilterless": "Немає ордерів зі статусом {{status}}",
+    "executionsTitle": "Виконань не знайдено",
+    "executionsMessage": "Виконання угод з'являться тут"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Інструмент",
+      "side": "Сторона",
+      "type": "Тип",
+      "status": "Статус",
+      "quantity": "Кількість",
+      "price": "Ціна",
+      "leverage": "Плече",
+      "reduceOnly": "Reduce Only",
+      "created": "Створено"
+    },
+    "executions": {
+      "orderId": "ID ордера",
+      "instrument": "Інструмент",
+      "side": "Сторона",
+      "size": "Розмір",
+      "price": "Ціна",
+      "total": "Сума",
+      "fee": "Комісія",
+      "feeAsset": "Актив комісії",
+      "executed": "Виконано"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Новий ручний ордер",
+    "titleConfirm": "Підтвердити ордер",
+    "fields": {
+      "exchange": "Біржа",
+      "instrument": "Інструмент",
+      "side": "Сторона",
+      "orderType": "Тип ордера",
+      "quantity": "Кількість",
+      "price": "Ціна",
+      "stopPrice": "Стоп-ціна",
+      "mode": "Режим",
+      "wallet": "Гаманець",
+      "type": "Тип"
+    },
+    "sideOptions": {
+      "buy": "Купівля",
+      "sell": "Продаж"
+    },
+    "orderTypeOptions": {
+      "market": "Ринковий ордер",
+      "limit": "Лімітний ордер",
+      "stop": "Стоп-ордер",
+      "stopLimit": "Стоп-лімітний ордер",
+      "stop_limit": "Стоп-лімітний ордер"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — лише ринкові дані",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Скасувати",
+      "reviewOrder": "Переглянути ордер",
+      "back": "Назад",
+      "confirmOrder": "Підтвердити ордер",
+      "submitting": "Надсилання..."
+    },
+    "errors": {
+      "missingRequired": "Усі обов'язкові поля мають бути заповнені",
+      "quantityPositive": "Кількість має бути додатним числом",
+      "priceRequired": "Для цього типу ордера потрібна ціна",
+      "pricePositive": "Ціна має бути додатним числом",
+      "stopPriceRequired": "Для цього типу ордера потрібна стоп-ціна",
+      "stopPricePositive": "Стоп-ціна має бути додатним числом",
+      "createFailed": "Не вдалося створити ордер"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Цей інструмент лише для спостереження — розміщуйте ордери на інструменті, що підтримує виконання.",
+      "unknownInstrument": "Цей інструмент не розпізнано. Перезавантажте список і спробуйте ще раз.",
+      "capsViolation": "Цей ордер перевищить ризикові ліміти облікового запису. Перегляньте налаштування ризику та повторіть спробу."
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Stav systému",
+    "healthMetricsHeading": "Metriky stavu",
+    "processStatusHeading": "Stav procesů",
+    "activeBacktestsHeading": "Aktivní backtesty",
+    "quickActionsHeading": "Rychlé akce",
+    "featureNotImplemented": "Funkce zatím není implementována",
+    "restartServices": "Restartovat služby",
+    "runHealthCheck": "Spustit kontrolu stavu",
+    "viewLogs": "Zobrazit logy",
+    "exportReport": "Exportovat report"
+  },
+  "status": {
+    "healthy": "V pořádku",
+    "stopped": "Zastaveno",
+    "error": "Chyba",
+    "warning": "Varování",
+    "completed": "Dokončeno",
+    "unknown": "Neznámé"
+  },
+  "metrics": {
+    "tradingEngine": "Obchodní engine",
+    "tradingEngineDescription": "Engine pro provádění strategií",
+    "activeBacktests": "Aktivní backtesty",
+    "activeBacktestsDescription": "Běžící procesy backtestů",
+    "active": "Aktivní",
+    "inactive": "Neaktivní"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Doba běhu",
+    "exitCode": "Kód ukončení: {{code}}",
+    "service": "služba",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Statistiky databáze",
+    "loading": "Načítání statistik databáze…",
+    "unavailable": "Statistiky databáze nejsou dostupné: {{message}}",
+    "fallbackError": "Statistiky databáze se nepodařilo načíst.",
+    "sampled": "vzorek před {{age}}",
+    "samplerSummary": "Interval vzorkování: {{seconds}}s · {{count}} tabulek",
+    "columns": {
+      "table": "Tabulka",
+      "kind": "Typ",
+      "total": "Celkem",
+      "current": "Aktuální",
+      "closed": "Uzavřené",
+      "archivable": "K archivaci",
+      "status": "Stav"
+    },
+    "stale": "zastaralé"
+  },
+  "notification": {
+    "title": "Notifikační Sidecar",
+    "loading": "Načítání metrik notifikací…",
+    "unavailable": "Metriky notifikací nejsou dostupné: {{message}}",
+    "fallbackError": "Metriky notifikací se nepodařilo načíst.",
+    "sent": "Odesláno",
+    "sentDescription": "Koncový stav: odesláno",
+    "failed": "Selhalo",
+    "failedDescription": "Rozpočet opakování vyčerpán",
+    "unregistered": "Neregistrováno",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Zrušeno (rozsah)",
+    "cancelledScopeDescription": "Odvolání rozsahu / deaktivace uživatele",
+    "outboxDepth": "Hloubka Outboxu",
+    "outboxDepthDescription": "Ve frontě, čeká na opakování"
+  },
+  "retention": {
+    "title": "Plánovač retence",
+    "loading": "Načítání běhu retence…",
+    "unavailable": "Běh retence není dostupný: {{message}}",
+    "fallbackError": "Běh retence se nepodařilo načíst.",
+    "lastRun": "poslední běh před {{age}}",
+    "dryRunNotice": "Režim dry-run: řádky jsou archivovány, ale nejsou z DB odstraněny.",
+    "columns": {
+      "table": "Tabulka",
+      "retain": "Uchovat",
+      "archivedWindow": "Archivované okno",
+      "archived": "Archivováno",
+      "purged": "Odstraněno",
+      "files": "Soubory",
+      "status": "Stav"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "chyba"
+  },
+  "systemMetrics": {
+    "title": "Stav procesu",
+    "loading": "Načítání metrik procesu…",
+    "unavailable": "Metriky procesu nejsou dostupné: {{message}}",
+    "fallbackError": "Metriky stavu procesu se nepodařilo načíst.",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "Stav: {{status}}",
+    "uptime": "Doba běhu",
+    "threads": "Vlákna",
+    "openFds": "Otevřené FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Omezeno {{count}}×",
+    "memory": "Paměť",
+    "saturation": "Saturace {{percent}}",
+    "asyncioTasks": "Úlohy asyncio",
+    "asyncioActive": "{{count}} aktivních",
+    "asyncioPending": "+ {{count}} čekajících",
+    "dbPool": "DB pool",
+    "liveConns": "Aktivní spojení: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekty: {{value}}",
+    "threadsPercent": "Vlákna %",
+    "networkConns": "Síťová spojení",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktivní",
+    "tracemallocIdle": "Nečinné"
+  },
+  "relativeAge": {
+    "justNow": "právě teď",
+    "seconds": "před {{seconds}}s",
+    "minutes": "před {{minutes}}min",
+    "hours": "před {{hours}}h",
+    "days": "před {{days}}d"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Сигналы"
+  },
+  "filters": {
+    "allStrategies": "Все стратегии"
+  },
+  "actions": {
+    "export": "Экспорт"
+  },
+  "stats": {
+    "total": "Всего",
+    "buy": "Покупка",
+    "sell": "Продажа",
+    "avgStrength": "Средняя сила"
+  },
+  "card": {
+    "strength": "Сила",
+    "price": "Цена",
+    "exchange": "Биржа",
+    "reason": "Причина:",
+    "noPrice": "Н/Д"
+  },
+  "strength": {
+    "strong": "Сильный",
+    "medium": "Средний",
+    "weak": "Слабый",
+    "veryWeak": "Очень слабый"
+  },
+  "time": {
+    "justNow": "Только что",
+    "minutesAgo": "{{count}} мин назад",
+    "hoursAgo": "{{count}} ч назад"
+  },
+  "empty": {
+    "title": "Сигналы не найдены",
+    "message": "Нет торговых сигналов, соответствующих текущим фильтрам."
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Nastavenia",
+    "subtitle": "Konfigurácia nastavení a parametrov aplikácie",
+    "addButton": "Pridať nastavenie",
+    "searchPlaceholder": "Hľadať nastavenia...",
+    "noResults": "Nenašli sa žiadne nastavenia zodpovedajúce kritériám.",
+    "allCategories": "Všetky kategórie",
+    "categoryFilterAriaLabel": "Filtrovať nastavenia podľa kategórie"
+  },
+  "errors": {
+    "loadFailed": "Nastavenia sa nepodarilo načítať",
+    "updateFailed": "Nastavenie sa nepodarilo aktualizovať",
+    "deleteFailed": "Nastavenie sa nepodarilo odstrániť",
+    "createFailed": "Nastavenie sa nepodarilo vytvoriť",
+    "alreadyExists": "Nastavenie s kľúčom \"{{key}}\" už existuje"
+  },
+  "item": {
+    "edit": "Upraviť",
+    "delete": "Odstrániť",
+    "save": "Uložiť",
+    "saving": "Ukladá sa...",
+    "cancel": "Zrušiť",
+    "yesDelete": "Áno, odstrániť",
+    "deleting": "Odstraňuje sa...",
+    "deleteConfirm": "Odstrániť toto nastavenie?",
+    "valuePlaceholder": "Zadajte hodnotu nastavenia...",
+    "showMore": "Zobraziť viac",
+    "showLess": "Zobraziť menej",
+    "toggleAriaLabel": "Prepnúť {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Citlivé"
+    },
+    "helpText": {
+      "allowShortSelling": "Povoliť enginu otvárať short pozície. Signály SELL vytvoria záporné desired_units; pri vypnutí sa hodnota obmedzí na 0.",
+      "allowManualOrders": "Povoliť tlačidlo Nový pokyn na karte Pokyny. Pri vypnutí POST /api/orders vracia 403."
+    }
+  },
+  "addModal": {
+    "title": "Pridať nové nastavenie",
+    "keyLabel": "Kľúč",
+    "valueLabel": "Hodnota",
+    "categoryLabel": "Kategória",
+    "descriptionLabel": "Popis",
+    "keyPlaceholder": "napr. walutomat.api_key",
+    "keyHint": "Na vnorené nastavenia použite bodkovú notáciu (napr. category.subcategory.name)",
+    "valuePlaceholder": "Hodnota nastavenia",
+    "categorySelectPlaceholder": "Vyberte existujúcu alebo vytvorte novú",
+    "newCategoryPlaceholder": "Alebo zadajte názov novej kategórie",
+    "descriptionPlaceholder": "Voliteľný popis",
+    "cancel": "Zrušiť",
+    "create": "Vytvoriť nastavenie",
+    "creating": "Vytvára sa...",
+    "validation": {
+      "keyRequired": "Kľúč je povinný",
+      "valueRequired": "Hodnota je povinná",
+      "categoryRequired": "Kategória je povinná"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor formulára",
+    "rawEditor": "Editor Raw JSON",
+    "rawJson": "Raw JSON",
+    "switchToForm": "Prepnúť na formulár",
+    "importToForm": "Importovať do formulára",
+    "parseError": "Chyba parsovania: {{message}}",
+    "arraySummary": "Pole (položky: {{length}})",
+    "addItem": "Pridať položku",
+    "remove": "Odstrániť",
+    "typeHint": {
+      "array": "(pole)",
+      "object": "(objekt)",
+      "string": "(reťazec)",
+      "number": "(číslo)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(funkcia)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

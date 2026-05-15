@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Pokyny a provedení",
+    "newOrder": "Nový pokyn",
+    "exportCsv": "Export CSV"
+  },
+  "tabs": {
+    "orders": "Pokyny ({{total}})",
+    "executions": "Provedení ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrovat podle stavu:",
+    "options": {
+      "all": "Všechny pokyny",
+      "new": "Nový",
+      "open": "Otevřený",
+      "partiallyFilled": "Částečně provedený",
+      "partially_filled": "Částečně provedený",
+      "filled": "Provedený",
+      "cancelled": "Zrušený",
+      "rejected": "Odmítnutý"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Množství",
+    "price": "Cena",
+    "created": "Vytvořeno",
+    "createdUnknown": "N/A",
+    "orderId": "ID pokynu",
+    "leverage": "Páka",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "POUZE REDUKCE",
+    "cancel": "Zrušit",
+    "cancelling": "Ruší se…",
+    "cancelAriaLabel": "Zrušit pokyn {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Pokyn #{{orderId}}",
+    "filled": "PROVEDENO",
+    "orderLabel": "Pokyn {{orderId}}",
+    "size": "Velikost",
+    "price": "Cena",
+    "total": "Celkem",
+    "executed": "Provedeno",
+    "fees": "Poplatky"
+  },
+  "empty": {
+    "ordersTitle": "Nenalezeny žádné pokyny",
+    "ordersStartTrading": "Zahajte obchodování a pokyny se zobrazí zde",
+    "ordersFilterless": "Žádné pokyny ve stavu {{status}}",
+    "executionsTitle": "Nenalezena žádná provedení",
+    "executionsMessage": "Provedení obchodů se zobrazí zde"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Strana",
+      "type": "Typ",
+      "status": "Stav",
+      "quantity": "Množství",
+      "price": "Cena",
+      "leverage": "Páka",
+      "reduceOnly": "Pouze redukce",
+      "created": "Vytvořeno"
+    },
+    "executions": {
+      "orderId": "ID pokynu",
+      "instrument": "Instrument",
+      "side": "Strana",
+      "size": "Velikost",
+      "price": "Cena",
+      "total": "Celkem",
+      "fee": "Poplatek",
+      "feeAsset": "Aktivum poplatku",
+      "executed": "Provedeno"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Nový ruční pokyn",
+    "titleConfirm": "Potvrdit pokyn",
+    "fields": {
+      "exchange": "Burza",
+      "instrument": "Instrument",
+      "side": "Strana",
+      "orderType": "Typ pokynu",
+      "quantity": "Množství",
+      "price": "Cena",
+      "stopPrice": "Stop cena",
+      "mode": "Režim",
+      "wallet": "Peněženka",
+      "type": "Typ"
+    },
+    "sideOptions": {
+      "buy": "Nákup",
+      "sell": "Prodej"
+    },
+    "orderTypeOptions": {
+      "market": "Tržní pokyn",
+      "limit": "Limitní pokyn",
+      "stop": "Stop pokyn",
+      "stopLimit": "Stop-limitní pokyn",
+      "stop_limit": "Stop-limitní pokyn"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — pouze tržní data",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Zrušit",
+      "reviewOrder": "Zkontrolovat pokyn",
+      "back": "Zpět",
+      "confirmOrder": "Potvrdit pokyn",
+      "submitting": "Odesílání..."
+    },
+    "errors": {
+      "missingRequired": "Všechna povinná pole musí být vyplněna",
+      "quantityPositive": "Množství musí být kladné číslo",
+      "priceRequired": "Cena je pro tento typ pokynu povinná",
+      "pricePositive": "Cena musí být kladné číslo",
+      "stopPriceRequired": "Stop cena je pro tento typ pokynu povinná",
+      "stopPricePositive": "Stop cena musí být kladné číslo",
+      "createFailed": "Vytvoření pokynu selhalo"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Tento instrument je pouze pro sledování — pokyny zadávejte na instrumentu umožňujícím provedení.",
+      "unknownInstrument": "Tento instrument není rozpoznán. Načtěte seznam znovu a zkuste to znovu.",
+      "capsViolation": "Tento pokyn by překročil bezpečnostní limity účtu. Zkontrolujte nastavení rizika a zkuste to znovu."
+    }
+  }
+}

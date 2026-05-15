@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Požadavek",
+    "decision": "Rozhodnutí",
+    "capsViolation": "Porušení limitů",
+    "selectedDelegate": "Vybraný delegát",
+    "instrument": "instrument",
+    "deadline": "termín {{time}}",
+    "decidedBy": "od",
+    "newStatus": "stav",
+    "mode": "režim",
+    "capAttempted": "pokus",
+    "capLimit": "vs limit",
+    "capOn": "na instrumentu",
+    "reviewLabel": "kontrola {{reviewId}}",
+    "unhandledFrame": "Nezpracovaný rámec aktivity AI kontroly: {{frame}}"
+  },
+  "page": {
+    "title": "Schránka kontrol AI",
+    "subtitle": "Čekající kontroly CONSULT směrované na tohoto delegáta plus živý stream událostí."
+  },
+  "roleNotice": {
+    "title": "Vyhrazeno pro AI delegáty",
+    "message": "Tato schránka zobrazuje kontroly CONSULT směrované na principal AI delegáta. Pro zobrazení čekajících kontrol a živého streamu aktivit se přihlaste účtem AI delegáta. Vaše aktuální role je",
+    "unknownRole": "neznámá"
+  },
+  "pending": {
+    "title": "Čekající kontroly",
+    "loading": "Načítání čekajících kontrol…",
+    "loadError": "Čekající kontroly se nepodařilo načíst: {{message}}",
+    "emptyTitle": "Žádné čekající kontroly",
+    "emptyMessage": "Nové požadavky CONSULT směrované na tohoto delegáta se zobrazí zde.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Teze",
+      "status": "Stav",
+      "deadline": "Termín",
+      "decision": "Rozhodnutí"
+    },
+    "rationalePlaceholder": "Odůvodnění (volitelné)",
+    "rationaleAriaLabel": "Odůvodnění kontroly {{reviewId}}",
+    "approve": "Schválit",
+    "reject": "Zamítnout",
+    "submitError": "Odeslání selhalo: {{message}}"
+  },
+  "activity": {
+    "title": "Nedávná aktivita",
+    "emptyTitle": "Zatím žádná aktivita",
+    "emptyMessage": "Rámce požadavků na AI kontrolu, rozhodnutí a porušení limitů se budou streamovat sem.",
+    "summaryEmpty": "Nebyly přijaty žádné rámce",
+    "summaryCount": "Zobrazeno {{shown}} z {{total}} ve vyrovnávací paměti"
+  }
+}

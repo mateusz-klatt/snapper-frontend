@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Огляд"
+  },
+  "metrics": {
+    "feedsRunning": "Активні Feed",
+    "strategiesActive": "Активні стратегії",
+    "openOrders": "Відкриті ордери",
+    "todaysExecutions": "Сьогоднішні виконання",
+    "executionsOn": "Виконання ({{date}})"
+  },
+  "status": {
+    "stopped": "Зупинено",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Виконується",
+    "active": "Активні"
+  },
+  "processStatus": {
+    "title": "Стан процесів",
+    "feeds": "Feed",
+    "strategies": "Стратегії",
+    "executors": "Виконавці",
+    "brokers": "Брокери"
+  },
+  "portfolio": {
+    "title": "Огляд портфеля",
+    "totalValue": "Загальна вартість",
+    "longExposure": "Long-експозиція",
+    "shortExposure": "Short-експозиція",
+    "netDelta": "Чиста дельта",
+    "unrealizedPnl": "Нереалізований P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Позиції",
+    "instrumentsCount": "{{count}} інструментів",
+    "empty": "Дані позицій недоступні"
+  },
+  "signals": {
+    "title": "Останні сигнали",
+    "empty": "Немає останніх сигналів",
+    "noTime": "Н/Д"
+  },
+  "executions": {
+    "title": "Останні виконання",
+    "empty": "Немає останніх виконань",
+    "noTime": "Н/Д"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signály"
+  },
+  "filters": {
+    "allStrategies": "Všetky stratégie"
+  },
+  "actions": {
+    "export": "Exportovať"
+  },
+  "stats": {
+    "total": "Spolu",
+    "buy": "Nákup",
+    "sell": "Predaj",
+    "avgStrength": "Priem. sila"
+  },
+  "card": {
+    "strength": "Sila",
+    "price": "Cena",
+    "exchange": "Burza",
+    "reason": "Dôvod:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Silný",
+    "medium": "Stredný",
+    "weak": "Slabý",
+    "veryWeak": "Veľmi slabý"
+  },
+  "time": {
+    "justNow": "Práve teraz",
+    "minutesAgo": "pred {{count}}m",
+    "hoursAgo": "pred {{count}}h"
+  },
+  "empty": {
+    "title": "Nenašli sa žiadne signály",
+    "message": "Aktuálnym filtrom nezodpovedajú žiadne obchodné signály."
+  }
+}

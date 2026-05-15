@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Адміністрування",
+    "subtitle": "Керування користувачами та конфігурацією системи"
+  },
+  "rolePermissions": {
+    "title": "Права ролей",
+    "viewer": {
+      "label": "Спостерігач",
+      "description": "Доступ лише для читання до Огляду та Ринкових даних. Не може керувати процесами, стратегіями або системними налаштуваннями."
+    },
+    "operator": {
+      "label": "Оператор",
+      "description": "Усі права Спостерігача плюс торгові операції, виконання стратегій, керування процесами та моніторинг стану системи."
+    },
+    "admin": {
+      "label": "Адміністратор",
+      "description": "Повний системний доступ, зокрема керування користувачами, системні налаштування, конфігурація API-ключів і всі права Оператора."
+    },
+    "table": {
+      "resource": "Ресурс",
+      "viewer": "Спостерігач",
+      "operator": "Оператор",
+      "admin": "Адміністратор"
+    },
+    "resources": {
+      "overview": "Огляд",
+      "market": "Ринкові дані",
+      "processes": "Процеси",
+      "strategies": "Стратегії",
+      "orders": "Ордери та виконання",
+      "positions": "Позиції",
+      "signals": "Сигнали",
+      "health": "Стан",
+      "admin": "Адміністрування",
+      "settings": "Налаштування"
+    }
+  },
+  "common": {
+    "cancel": "Скасувати",
+    "selectWallet": "Вибрати гаманець",
+    "selectAWallet": "Виберіть гаманець",
+    "chooseWalletPlaceholder": "Оберіть гаманець...",
+    "selectWalletPlaceholder": "Виберіть гаманець...",
+    "walletLabel": "Гаманець",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Невідома помилка",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Доступ заборонено",
+      "message": "Немає прав для керування користувачами. Зверніться до системного адміністратора."
+    },
+    "list": {
+      "title": "Керування користувачами",
+      "countLabel": "{{count}} користувачів",
+      "showInactive": "Показати неактивних",
+      "hideInactive": "Сховати неактивних",
+      "addUser": "Додати користувача",
+      "searchPlaceholder": "Пошук за ім'ям користувача, email або роллю...",
+      "columns": {
+        "user": "Користувач",
+        "role": "Роль",
+        "status": "Статус",
+        "createdAt": "Створено",
+        "actions": "Дії"
+      },
+      "status": {
+        "active": "Активний",
+        "inactive": "Неактивний"
+      },
+      "unknown": "Невідомо",
+      "empty": {
+        "title": "Користувачів не знайдено",
+        "noMatch": "Жоден користувач не відповідає критеріям пошуку.",
+        "noUsers": "Користувачів не знайдено.",
+        "noActive": "Активних користувачів не знайдено."
+      },
+      "errorLoading": "Помилка завантаження користувачів: {{message}}",
+      "deactivate": {
+        "title": "Деактивувати користувача",
+        "message": "Деактивувати користувача \"{{username}}\"? Після цього вхід для цього користувача буде недоступний.",
+        "confirm": "Деактивувати"
+      },
+      "toast": {
+        "deactivated": "Користувача деактивовано",
+        "deactivateError": "Помилка деактивації користувача"
+      }
+    },
+    "form": {
+      "titleEdit": "Редагувати користувача",
+      "titleAdd": "Додати користувача",
+      "fields": {
+        "username": "Ім'я користувача",
+        "usernamePlaceholder": "Введіть ім'я користувача",
+        "password": "Пароль",
+        "passwordPlaceholder": "Введіть пароль",
+        "newPassword": "Новий пароль",
+        "newPasswordPlaceholder": "Введіть новий пароль",
+        "email": "Email",
+        "emailPlaceholder": "Введіть email",
+        "role": "Роль",
+        "accountActive": "Обліковий запис активний",
+        "resetUserPassword": "Скинути пароль користувача"
+      },
+      "roles": {
+        "viewer": "Спостерігач",
+        "operator": "Оператор",
+        "admin": "Адміністратор"
+      },
+      "validation": {
+        "usernameRequired": "Ім'я користувача обов'язкове",
+        "usernameMinLength": "Ім'я користувача має містити щонайменше 3 символи",
+        "emailRequired": "Email обов'язковий",
+        "emailInvalid": "Некоректний формат email",
+        "passwordRequired": "Пароль обов'язковий",
+        "passwordMinLength": "Пароль має містити щонайменше 8 символів",
+        "passwordRequiredWhenResetting": "Під час скидання потрібен пароль"
+      },
+      "actions": {
+        "saveChanges": "Зберегти зміни",
+        "createUser": "Створити користувача"
+      },
+      "toast": {
+        "created": "Користувача створено",
+        "createError": "Помилка створення користувача",
+        "updated": "Користувача оновлено",
+        "updateError": "Помилка оновлення користувача",
+        "passwordReset": "Пароль користувача скинуто",
+        "resetError": "Помилка скидання пароля"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Доступ заборонено",
+      "message": "Немає прав для керування областями доступу. Зверніться до системного адміністратора."
+    },
+    "list": {
+      "title": "Області доступу",
+      "countLabel": "{{count}} записів доступу",
+      "createGrant": "Надати доступ",
+      "selectWalletPrompt": "Оберіть гаманець вище, щоб переглянути його області доступу.",
+      "columns": {
+        "operator": "Оператор",
+        "scope": "Область",
+        "target": "Ціль",
+        "grantedAt": "Надано",
+        "actions": "Дії"
+      },
+      "empty": {
+        "noGrants": "Областей доступу не знайдено",
+        "noGrantsHint": "Цей гаманець не має активних областей доступу."
+      },
+      "errorLoading": "Помилка завантаження доступів: {{message}}",
+      "handover": "Передати"
+    },
+    "form": {
+      "title": "Надати доступ до області",
+      "fields": {
+        "operator": "Оператор",
+        "operatorPlaceholder": "Виберіть оператора...",
+        "wallet": "Гаманець",
+        "scopeKind": "Тип області",
+        "underlyingPublicId": "Public ID базового активу",
+        "instrumentPublicId": "Public ID інструмента",
+        "underlyingPlaceholder": "наприклад BTC",
+        "instrumentPlaceholder": "наприклад BTC-USD-PERP",
+        "note": "Примітка (необов'язково)",
+        "notePlaceholder": "Необов'язкова примітка"
+      },
+      "scopeKinds": {
+        "underlying": "Базовий актив",
+        "instrument": "Інструмент"
+      },
+      "validation": {
+        "operatorRequired": "Оператор обов'язковий",
+        "walletRequired": "Гаманець обов'язковий",
+        "targetRequired": "ID цілі обов'язковий"
+      },
+      "actions": {
+        "createGrant": "Надати доступ"
+      },
+      "toast": {
+        "created": "Доступ до області надано",
+        "conflictError": "Конфлікт: інший оператор уже має доступ до цієї області",
+        "createError": "Помилка надання доступу до області"
+      }
+    },
+    "handover": {
+      "title": "Передати область доступу",
+      "fields": {
+        "currentHolder": "Поточний власник",
+        "scope": "Область",
+        "wallet": "Гаманець",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Передати оператору",
+        "transferToPlaceholder": "Виберіть оператора-отримувача...",
+        "reason": "Причина (необов'язково)",
+        "reasonPlaceholder": "наприклад Зміна чергування"
+      },
+      "actions": {
+        "handover": "Передати"
+      },
+      "toast": {
+        "completed": "Область доступу передано",
+        "conflictError": "Конфлікт: оператор-отримувач уже має конфліктний доступ",
+        "handoverError": "Помилка передавання області доступу"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Доступ заборонено",
+      "message": "Немає прав для керування обліковими даними гаманців. Зверніться до системного адміністратора."
+    },
+    "list": {
+      "title": "Облікові дані гаманця",
+      "countLabel": "{{count}} облікових даних",
+      "addCredential": "Додати облікові дані",
+      "selectWalletPrompt": "Оберіть гаманець вище, щоб переглянути його облікові дані.",
+      "columns": {
+        "exchange": "Біржа",
+        "type": "Тип",
+        "label": "Мітка",
+        "createdAt": "Створено",
+        "actions": "Дії"
+      },
+      "empty": {
+        "noCredentials": "Облікових даних не знайдено",
+        "noCredentialsHint": "Цей гаманець не має активних облікових даних."
+      },
+      "errorLoading": "Помилка завантаження облікових даних: {{message}}",
+      "rotate": "Замінити"
+    },
+    "form": {
+      "title": "Додати облікові дані",
+      "fields": {
+        "wallet": "Гаманець",
+        "exchange": "Біржа",
+        "exchangePlaceholder": "наприклад kraken",
+        "credentialType": "Тип облікових даних",
+        "label": "Мітка (необов'язково)",
+        "labelPlaceholder": "наприклад Основний торговий ключ",
+        "pemPlaceholder": "Вставте сюди приватний ключ у форматі PEM"
+      },
+      "fieldLabels": {
+        "api_key": "API-ключ",
+        "api_secret": "API-секрет",
+        "private_key_pem": "Приватний ключ (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Початковий баланс"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-ключ + секрет",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Гаманець обов'язковий",
+        "exchangeRequired": "Біржа обов'язкова",
+        "fieldRequired": "Поле {{field}} обов'язкове"
+      },
+      "actions": {
+        "addCredential": "Додати облікові дані"
+      },
+      "toast": {
+        "created": "Облікові дані створено",
+        "conflictError": "Конфлікт: цей гаманець уже має активні облікові дані для цієї біржі",
+        "createError": "Помилка створення облікових даних"
+      }
+    },
+    "rotate": {
+      "title": "Замінити облікові дані",
+      "fields": {
+        "exchange": "Біржа",
+        "type": "Тип",
+        "label": "Мітка",
+        "newLabel": "Нова мітка (необов'язково)",
+        "newLabelPlaceholder": "наприклад Замінений ключ 2026-04",
+        "pemPlaceholder": "Вставте сюди приватний ключ у форматі PEM"
+      },
+      "actions": {
+        "rotate": "Замінити"
+      },
+      "toast": {
+        "rotated": "Облікові дані замінено",
+        "rotateError": "Помилка заміни облікових даних"
+      }
+    }
+  }
+}

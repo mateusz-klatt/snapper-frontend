@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Trhové dáta"
+  },
+  "controls": {
+    "exchange": "Burza:",
+    "instrument": "Inštrument:",
+    "timeframe": "Časový rámec:",
+    "selectExchange": "Vyberte burzu",
+    "searchInstrument": "Hľadať inštrument..."
+  },
+  "timeframes": {
+    "1m": "1 minúta",
+    "5m": "5 minút",
+    "15m": "15 minút",
+    "30m": "30 minút",
+    "1h": "1 hodina",
+    "4h": "4 hodiny",
+    "1d": "1 deň"
+  },
+  "stats": {
+    "currentPrice": "Aktuálna cena",
+    "change24h": "24h zmena",
+    "high24h": "24h maximum",
+    "low24h": "24h minimum"
+  },
+  "chart": {
+    "title": "Cenový graf",
+    "errorPrefix": "Chyba pri načítaní dát grafu:",
+    "unknownError": "Neznáma chyba",
+    "noDataTitle": "Pre inštrument {{instrument}} nie sú dostupné žiadne dáta",
+    "noDataHint": "Inštrument nemusí existovať alebo nemá dáta pre {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Pre inštrument {{instrument}} na burze {{exchange}} nie sú nakonfigurované žiadne súvisiace inštrumenty."
+  },
+  "cacheBanner": {
+    "message": "Cache sa zahrieva: k dispozícii je {{sampleCount}} / {{expected}} sviečok {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(odvodené z 1m)",
+      "db": "(z DB)"
+    }
+  }
+}
