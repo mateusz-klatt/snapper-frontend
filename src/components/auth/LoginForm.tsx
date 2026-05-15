@@ -34,7 +34,11 @@ const LoginForm: React.FC<Readonly<LoginFormProps>> = ({ onSuccess, className = 
         <LocaleSwitcher align='end' />
       </div>
       <div className='mb-7'>
-        <img src='/logo.png' alt='Snapper' className='mx-auto mb-4 h-14 w-14 rounded-2xl' />
+        <img
+          src='/logo.png'
+          alt={t('login.logoAlt')}
+          className='mx-auto mb-4 h-14 w-14 rounded-2xl'
+        />
         <h2 className='text-center text-2xl font-semibold text-alpine-900'>{t('login.title')}</h2>
         <p className='mt-2 text-center text-sm text-muted-600'>{t('login.subtitle')}</p>
       </div>

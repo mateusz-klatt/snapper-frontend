@@ -76,10 +76,10 @@
       "stopped": "zatrzymane"
     },
     "health": {
-      "healthy": "Sprawne - otrzymywanie świeżych danych",
-      "warning": "Ostrzeżenie - dane są przestarzałe",
-      "error": "Błąd - brak ostatnich danych",
-      "unknown": "Nieznane - brak danych heartbeat"
+      "healthy": "Sprawne — otrzymywanie świeżych danych",
+      "warning": "Ostrzeżenie — dane są przestarzałe",
+      "error": "Błąd — brak ostatnich danych",
+      "unknown": "Nieznane — brak danych heartbeat"
     },
     "healthShort": {
       "healthy": "SPRAWNE",
