@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signāli"
+  },
+  "filters": {
+    "allStrategies": "Visas stratēģijas"
+  },
+  "actions": {
+    "export": "Eksportēt"
+  },
+  "stats": {
+    "total": "Kopā",
+    "buy": "Pirkšana",
+    "sell": "Pārdošana",
+    "avgStrength": "Vid. stiprums"
+  },
+  "card": {
+    "strength": "Stiprums",
+    "price": "Cena",
+    "exchange": "Birža",
+    "reason": "Iemesls:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Spēcīgs",
+    "medium": "Vidējs",
+    "weak": "Vājš",
+    "veryWeak": "Ļoti vājš"
+  },
+  "time": {
+    "justNow": "Tikko",
+    "minutesAgo": "pirms {{count}} min",
+    "hoursAgo": "pirms {{count}} st."
+  },
+  "empty": {
+    "title": "Signāli nav atrasti",
+    "message": "Neviens tirdzniecības signāls neatbilst pašreizējiem filtriem."
+  }
+}

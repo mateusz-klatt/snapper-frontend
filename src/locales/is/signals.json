@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Merki"
+  },
+  "filters": {
+    "allStrategies": "Allar stefnur"
+  },
+  "actions": {
+    "export": "Flytja út"
+  },
+  "stats": {
+    "total": "Samtals",
+    "buy": "Kaup",
+    "sell": "Sala",
+    "avgStrength": "Meðalstyrkur"
+  },
+  "card": {
+    "strength": "Styrkur",
+    "price": "Verð",
+    "exchange": "Kauphöll",
+    "reason": "Ástæða:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Sterkt",
+    "medium": "Miðlungs",
+    "weak": "Veikt",
+    "veryWeak": "Mjög veikt"
+  },
+  "time": {
+    "justNow": "Rétt í þessu",
+    "minutesAgo": "fyrir {{count}} mín",
+    "hoursAgo": "fyrir {{count}} klst"
+  },
+  "empty": {
+    "title": "Engin merki fundust",
+    "message": "Engin viðskiptamerki passa við núverandi síur."
+  }
+}

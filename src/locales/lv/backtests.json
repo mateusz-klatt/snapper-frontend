@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Atpakaļ",
+    "backToList": "← Atpakaļ uz Backtests"
+  },
+  "status": {
+    "pending": "Gaida",
+    "running": "Darbojas",
+    "completed": "Pabeigts",
+    "failed": "Neizdevās",
+    "cancelled": "Atcelts"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Atcelt",
+      "rerun": "Palaist vēlreiz"
+    },
+    "fields": {
+      "timeframe": "Laika periods",
+      "period": "Periods",
+      "initialCash": "Sākuma kapitāls",
+      "id": "ID"
+    },
+    "errorPrefix": "Kļūda: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrēt Backtests pēc statusa",
+      "options": {
+        "all": "Visi statusi",
+        "pending": "Gaida",
+        "running": "Darbojas",
+        "completed": "Pabeigts",
+        "failed": "Neizdevās",
+        "cancelled": "Atcelts"
+      }
+    },
+    "empty": {
+      "title": "Backtests nav",
+      "message": "Palaidiet Backtest caur CLI vai API, lai šeit redzētu rezultātus."
+    }
+  },
+  "detail": {
+    "title": "Backtest izpilde",
+    "fields": {
+      "strategy": "Stratēģija",
+      "instrument": "Instruments",
+      "status": "Statuss",
+      "period": "Periods",
+      "crossAsset": "Starpaktīvu atribūcija",
+      "configHash": "Konfigurācijas jaucējvērtība"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} izpildes",
+    "errors": {
+      "invalidRunId": "Nederīgs izpildes ID — jābūt UUID7 (saņemts “{{id}}”).",
+      "loadFailed": "Neizdevās ielādēt izpildi: {{message}}",
+      "notFound": "nav atrasts"
+    }
+  },
+  "compare": {
+    "title": "Salīdzināt",
+    "headingFull": "Backtest salīdzinājums",
+    "loading": "Notiek salīdzinājuma ielāde…",
+    "vs": "pret",
+    "runLabel": "Izpilde {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrikas",
+      "equityOverlay": "Kapitāla līknes pārklājums",
+      "trades": "Darījumi",
+      "signals": "Signāli"
+    },
+    "pairingMode": {
+      "auto": "automātiski",
+      "manual": "manuāli"
+    },
+    "errors": {
+      "notFound": "Salīdzinājums pašreizējā makā nav atrasts.",
+      "loadFailed": "Neizdevās ielādēt salīdzinājumu: {{message}}",
+      "unknown": "nezināma kļūda",
+      "emptyResponse": "Tukša salīdzinājuma atbilde."
+    },
+    "launcher": {
+      "title": "Salīdzināt",
+      "submit": "Salīdzināt",
+      "autoPair": "Salīdzināt ar jaunāko",
+      "terminalGate": "salīdzinājums pieejams, kad šī izpilde sasniedz terminālu statusu",
+      "noSiblings": "nav citu izpilžu ar šo konfigurāciju",
+      "limitNotice": "rādīti {{count}} jaunākie — vecākām izpildēm izmantojiet manuālo pāri",
+      "pickPlaceholder": "— izvēlieties izpildi salīdzināšanai —",
+      "showAllLabel": "Rādīt visas izpildes (ne tikai ar to pašu konfigurāciju)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "visas izpildes",
+        "sameConfig": "tā pati konfigurācija"
+      },
+      "errors": {
+        "pickRequired": "izvēlieties izpildi no saraksta"
+      }
+    },
+    "diffColumns": {
+      "common": "Kopīgs",
+      "onlyA": "Tikai A",
+      "onlyB": "Tikai B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Nav salīdzināmu metriku — abās izpildēs nebija ierakstītu vērtību.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "Izpilde A",
+        "runB": "Izpilde B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Izpilde A",
+        "runB": "Izpilde B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Gaida progresu…",
+    "candles": "{{done}} / {{total}} sveces",
+    "candlesNoTotal": "{{done}} sveces",
+    "equity": "kapitāls {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} darījumi",
+    "milestoneLine": "posms {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Kerfisheilsa",
+    "healthMetricsHeading": "Heilsumælikvarðar",
+    "processStatusHeading": "Staða ferla",
+    "activeBacktestsHeading": "Virk Backtests",
+    "quickActionsHeading": "Flýtiaðgerðir",
+    "featureNotImplemented": "Eiginleiki hefur ekki verið útfærður enn",
+    "restartServices": "Endurræsa þjónustur",
+    "runHealthCheck": "Keyra heilsupróf",
+    "viewLogs": "Skoða annála",
+    "exportReport": "Flytja út skýrslu"
+  },
+  "status": {
+    "healthy": "Heilbrigt",
+    "stopped": "Stöðvað",
+    "error": "Villa",
+    "warning": "Viðvörun",
+    "completed": "Lokið",
+    "unknown": "Óþekkt"
+  },
+  "metrics": {
+    "tradingEngine": "Viðskiptavél",
+    "tradingEngineDescription": "Keyrsluvél stefna",
+    "activeBacktests": "Virk Backtests",
+    "activeBacktestsDescription": "Backtest ferli í keyrslu",
+    "active": "Virkt",
+    "inactive": "Óvirkt"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}} mín",
+    "uptimeHours": "{{hours}} klst {{minutes}} mín",
+    "uptimeDays": "{{days}} d {{hours}} klst",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Keyrslutími",
+    "exitCode": "Útgangskóði: {{code}}",
+    "service": "þjónusta",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Tölfræði gagnagrunns",
+    "loading": "Hleð tölfræði gagnagrunns…",
+    "unavailable": "Tölfræði gagnagrunns er ekki tiltæk: {{message}}",
+    "fallbackError": "Mistókst að hlaða tölfræði gagnagrunns.",
+    "sampled": "sýni tekið {{age}}",
+    "samplerSummary": "Sýnatökubil: {{seconds}}s · {{count}} töflur",
+    "columns": {
+      "table": "Tafla",
+      "kind": "Tegund",
+      "total": "Samtals",
+      "current": "Núverandi",
+      "closed": "Lokað",
+      "archivable": "Hægt að safnvista",
+      "status": "Staða"
+    },
+    "stale": "úrelt"
+  },
+  "notification": {
+    "title": "Tilkynninga Sidecar",
+    "loading": "Hleð tilkynningamælikvörðum…",
+    "unavailable": "Tilkynningamælikvarðar eru ekki tiltækir: {{message}}",
+    "fallbackError": "Mistókst að hlaða tilkynningamælikvörðum.",
+    "sent": "Sent",
+    "sentDescription": "Endastaða: sent",
+    "failed": "Mistókst",
+    "failedDescription": "Endurtilraunaforði uppurinn",
+    "unregistered": "Óskráð",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Hætt við (umfang)",
+    "cancelledScopeDescription": "Afturköllun umfangs / afvirkjun notanda",
+    "outboxDepth": "Outbox dýpt",
+    "outboxDepthDescription": "Í biðröð, bíður endurtilraunar"
+  },
+  "retention": {
+    "title": "Varðveisluáætlari",
+    "loading": "Hleð varðveislukeyrslu…",
+    "unavailable": "Varðveislukeyrsla er ekki tiltæk: {{message}}",
+    "fallbackError": "Mistókst að hlaða varðveislukeyrslu.",
+    "lastRun": "síðasta keyrsla {{age}}",
+    "dryRunNotice": "Dry-run hamur: raðir eru safnvistaðar en ekki hreinsaðar úr DB.",
+    "columns": {
+      "table": "Tafla",
+      "retain": "Varðveita",
+      "archivedWindow": "Safnvistaður gluggi",
+      "archived": "Safnvistað",
+      "purged": "Hreinsað",
+      "files": "Skrár",
+      "status": "Staða"
+    },
+    "retainDays": "{{days}} d",
+    "ok": "ok",
+    "error": "villa"
+  },
+  "systemMetrics": {
+    "title": "Heilsa ferla",
+    "loading": "Hleð ferlamælikvörðum…",
+    "unavailable": "Ferlamælikvarðar eru ekki tiltækir: {{message}}",
+    "fallbackError": "Mistókst að hlaða heilsumælikvörðum ferla.",
+    "rawJson": "Hrátt JSON",
+    "pid": "PID",
+    "statusValue": "Staða: {{status}}",
+    "uptime": "Keyrslutími",
+    "threads": "Þræðir",
+    "openFds": "Opin FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Takmarkað {{count}}×",
+    "memory": "Minni",
+    "saturation": "Mettun {{percent}}",
+    "asyncioTasks": "Asyncio verkefni",
+    "asyncioActive": "{{count}} virk",
+    "asyncioPending": "+ {{count}} í bið",
+    "dbPool": "DB Pool",
+    "liveConns": "Lifandi tengingar: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Hlutir: {{value}}",
+    "threadsPercent": "Þræðir %",
+    "networkConns": "Nettengingar",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Virkt",
+    "tracemallocIdle": "Óvirkt"
+  },
+  "relativeAge": {
+    "justNow": "rétt í þessu",
+    "seconds": "fyrir {{seconds}}s",
+    "minutes": "fyrir {{minutes}} mín",
+    "hours": "fyrir {{hours}} klst",
+    "days": "fyrir {{days}} d"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}} mín",
+    "hours": "{{hours}} klst",
+    "days": "{{days}} d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

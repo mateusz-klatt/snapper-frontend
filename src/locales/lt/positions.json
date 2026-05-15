@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozicijos"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: laukiama",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Kiekis",
+    "averageEntry": "Vid. įėjimas",
+    "unrealizedPnl": "Nerealizuotas P&L",
+    "realizedPnl": "Realizuotas P&L",
+    "updated": "Atnaujinta {{timestamp}}"
+  },
+  "empty": {
+    "title": "Atvirų pozicijų nėra",
+    "message": "Ilgosios, trumposios ir neutralios pozicijos bus rodomos čia, kai bus įvykdyti sandoriai."
+  },
+  "bracketModal": {
+    "title": "Pridėti SL/TP — {{instrument}}",
+    "confirmTitle": "Patvirtinti Bracket",
+    "position": "Pozicija",
+    "entryPrice": "Įėjimo kaina",
+    "stopLossLabel": "Stop-Loss kaina",
+    "takeProfitLabel": "Take-Profit kaina",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Žemiau ${{price}}",
+      "slShort": "Aukščiau ${{price}}",
+      "tpLong": "Aukščiau ${{price}}",
+      "tpShort": "Žemiau ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Atšaukti",
+      "review": "Peržiūrėti",
+      "back": "Atgal",
+      "confirm": "Patvirtinti",
+      "creating": "Kuriama…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Pridėti Trailing Stop — {{instrument}}",
+    "confirmTitle": "Patvirtinti Trailing Stop",
+    "position": "Pozicija",
+    "entryPrice": "Įėjimo kaina",
+    "trailingDistanceLabel": "Trailing atstumas (%)",
+    "minLockLabel": "Min. fiksuojamas pelnas (%) — neprivaloma",
+    "trailingDistance": "Trailing atstumas",
+    "minLockProfit": "Min. fiksuojamas pelnas",
+    "placeholders": {
+      "trailingPct": "pvz., 5.0",
+      "minLockPct": "0 = pradėti iš karto"
+    },
+    "minLockWarning": "Trailing Stop nebus aktyvuotas, kol kaina pajudės {{minLockPct}}% jums palankia kryptimi.",
+    "buttons": {
+      "cancel": "Atšaukti",
+      "review": "Peržiūrėti",
+      "back": "Atgal",
+      "confirm": "Patvirtinti",
+      "creating": "Kuriama..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Reikia bent vienos SL arba TP kainos",
+    "invalidSlPrice": "Netinkama Stop-Loss kaina",
+    "slPricePositive": "Stop-Loss kaina turi būti teigiama",
+    "invalidTpPrice": "Netinkama Take-Profit kaina",
+    "tpPricePositive": "Take-Profit kaina turi būti teigiama",
+    "slLongBelowEntry": "SL kaina turi būti žemiau įėjimo kainos ({{price}})",
+    "tpLongAboveEntry": "TP kaina turi būti aukščiau įėjimo kainos ({{price}})",
+    "slShortAboveEntry": "SL kaina turi būti aukščiau įėjimo kainos ({{price}})",
+    "tpShortBelowEntry": "TP kaina turi būti žemiau įėjimo kainos ({{price}})",
+    "trailingRequired": "Trailing procentas privalomas",
+    "trailingInvalid": "Netinkamas Trailing procentas",
+    "trailingRange": "Trailing procentas turi būti nuo 0 iki 100",
+    "minLockInvalid": "Netinkamas min. fiksavimo procentas",
+    "minLockRange": "Min. fiksavimo procentas turi būti nuo 0 iki 100"
+  }
+}

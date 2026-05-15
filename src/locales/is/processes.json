@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Ferlastýring",
+    "subtitle": "Rauntímavöktun og stýring ferla"
+  },
+  "sections": {
+    "longRunning": "Langkeyrandi ferli",
+    "executorTemplates": "Sniðmát framkvæmdaraðila",
+    "executorTemplatesHint": "Breyting á sniðmátsstillingu hefur áhrif á öll veski á þessari kauphöll eftir endurræsingu. Sniðmát eru aðeins stillingar — ræstu veski-tilvik hér að neðan til að keyra framkvæmdaraðila.",
+    "walletInstances": "Veski-tilvik",
+    "taskProcesses": "Verkferli"
+  },
+  "card": {
+    "stop": "Stöðva",
+    "start": "Ræsa",
+    "restart": "Endurræsa",
+    "starting": "Ræsi...",
+    "stopping": "Stöðva...",
+    "status": {
+      "running": "keyrir",
+      "stopped": "stöðvað",
+      "error": "villa",
+      "starting": "ræsir",
+      "stopping": "stöðvar"
+    }
+  },
+  "template": {
+    "badge": "sniðmát",
+    "mode": "Hamur:",
+    "parameters": "Færibreytur:",
+    "paramCount": "{{count}} færibreyta/-ur",
+    "noParams": "engar færibreytur stilltar"
+  },
+  "badges": {
+    "oneShot": "einu sinni",
+    "autoStart": "auto-start",
+    "manual": "handvirkt"
+  },
+  "actions": {
+    "stopTitle": "Stöðva {{name}}",
+    "stopMessage": "Þetta stöðvar ferlið {{name}}.",
+    "restartTitle": "Endurræsa {{name}}",
+    "restartMessage": "Þetta endurræsir ferlið {{name}}."
+  },
+  "executionMode": {
+    "title": "Ræsa {{name}}",
+    "label": "Keyrsluhamur:",
+    "threadName": "Þráðarhamur",
+    "threadDescription": "Keyrir sem innfellt verk í vefþjóni. Hraðari ræsing, sameiginlegt minni.",
+    "processName": "Ferlishamur",
+    "processDescription": "Keyrir sem aðskilið Python ferli. Einangrað, bilanaþolið, með ítarlegri vöktun.",
+    "cancel": "Hætta við",
+    "start": "Ræsa {{name}}",
+    "threadAriaLabel": "Þráðarhamur",
+    "processAriaLabel": "Ferlishamur"
+  }
+}

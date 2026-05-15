@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Համակարգի առողջություն",
+    "healthMetricsHeading": "Առողջության մետրիկաներ",
+    "processStatusHeading": "Գործընթացների վիճակ",
+    "activeBacktestsHeading": "Ակտիվ Backtests",
+    "quickActionsHeading": "Արագ գործողություններ",
+    "featureNotImplemented": "Գործառույթը դեռ ներդրված չէ",
+    "restartServices": "Վերագործարկել ծառայությունները",
+    "runHealthCheck": "Գործարկել առողջության ստուգում",
+    "viewLogs": "Դիտել մատյանները",
+    "exportReport": "Արտահանել հաշվետվություն"
+  },
+  "status": {
+    "healthy": "Առողջ",
+    "stopped": "Դադարեցված",
+    "error": "Սխալ",
+    "warning": "Նախազգուշացում",
+    "completed": "Ավարտված",
+    "unknown": "Անհայտ"
+  },
+  "metrics": {
+    "tradingEngine": "Առևտրային շարժիչ",
+    "tradingEngineDescription": "Ռազմավարության կատարման շարժիչ",
+    "activeBacktests": "Ակտիվ Backtests",
+    "activeBacktestsDescription": "Գործարկվող Backtest գործընթացներ",
+    "active": "Ակտիվ",
+    "inactive": "Ոչ ակտիվ"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}} ր",
+    "uptimeHours": "{{hours}} ժ {{minutes}} ր",
+    "uptimeDays": "{{days}} օ {{hours}} ժ",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Աշխատաժամանակ",
+    "exitCode": "Ելքի կոդ՝ {{code}}",
+    "service": "ծառայություն",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Տվյալների բազայի վիճակագրություն",
+    "loading": "Տվյալների բազայի վիճակագրությունը բեռնվում է…",
+    "unavailable": "Տվյալների բազայի վիճակագրությունը հասանելի չէ՝ {{message}}",
+    "fallbackError": "Չհաջողվեց բեռնել տվյալների բազայի վիճակագրությունը։",
+    "sampled": "նմուշառվել է {{age}}",
+    "samplerSummary": "Նմուշառման միջակայք՝ {{seconds}}s · {{count}} աղյուսակ",
+    "columns": {
+      "table": "Աղյուսակ",
+      "kind": "Տեսակ",
+      "total": "Ընդամենը",
+      "current": "Ընթացիկ",
+      "closed": "Փակված",
+      "archivable": "Արխիվացվող",
+      "status": "Վիճակ"
+    },
+    "stale": "հնացած"
+  },
+  "notification": {
+    "title": "Ծանուցումների Sidecar",
+    "loading": "Ծանուցումների մետրիկաները բեռնվում են…",
+    "unavailable": "Ծանուցումների մետրիկաները հասանելի չեն՝ {{message}}",
+    "fallbackError": "Չհաջողվեց բեռնել ծանուցումների մետրիկաները։",
+    "sent": "Ուղարկված",
+    "sentDescription": "Տերմինալ՝ ուղարկված",
+    "failed": "Ձախողված",
+    "failedDescription": "Կրկնափորձերի բյուջեն սպառվել է",
+    "unregistered": "Չգրանցված",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Չեղարկված (շրջանակ)",
+    "cancelledScopeDescription": "Շրջանակի չեղարկում / օգտատիրոջ ապաակտիվացում",
+    "outboxDepth": "Outbox խորություն",
+    "outboxDepthDescription": "Հերթում է, սպասում է կրկնափորձի"
+  },
+  "retention": {
+    "title": "Պահպանման պլանավորիչ",
+    "loading": "Պահպանման գործարկումը բեռնվում է…",
+    "unavailable": "Պահպանման գործարկումը հասանելի չէ՝ {{message}}",
+    "fallbackError": "Չհաջողվեց բեռնել պահպանման գործարկումը։",
+    "lastRun": "վերջին գործարկում {{age}}",
+    "dryRunNotice": "Dry-run ռեժիմ՝ տողերը արխիվացվում են, բայց DB-ից չեն մաքրվում։",
+    "columns": {
+      "table": "Աղյուսակ",
+      "retain": "Պահպանել",
+      "archivedWindow": "Արխիվացված պատուհան",
+      "archived": "Արխիվացված",
+      "purged": "Մաքրված",
+      "files": "Ֆայլեր",
+      "status": "Վիճակ"
+    },
+    "retainDays": "{{days}} օ",
+    "ok": "ok",
+    "error": "սխալ"
+  },
+  "systemMetrics": {
+    "title": "Գործընթացների առողջություն",
+    "loading": "Գործընթացների մետրիկաները բեռնվում են…",
+    "unavailable": "Գործընթացների մետրիկաները հասանելի չեն՝ {{message}}",
+    "fallbackError": "Չհաջողվեց բեռնել գործընթացների առողջության մետրիկաները։",
+    "rawJson": "Հում JSON",
+    "pid": "PID",
+    "statusValue": "Վիճակ՝ {{status}}",
+    "uptime": "Աշխատաժամանակ",
+    "threads": "Թելեր",
+    "openFds": "Բաց FD-ներ",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Սահմանափակվել է {{count}}×",
+    "memory": "Հիշողություն",
+    "saturation": "Հագեցում {{percent}}",
+    "asyncioTasks": "Asyncio առաջադրանքներ",
+    "asyncioActive": "{{count}} ակտիվ",
+    "asyncioPending": "+ {{count}} սպասող",
+    "dbPool": "DB Pool",
+    "liveConns": "Live միացումներ՝ {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Օբյեկտներ՝ {{value}}",
+    "threadsPercent": "Թելեր %",
+    "networkConns": "Ցանցային միացումներ",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Ակտիվ",
+    "tracemallocIdle": "Ոչ ակտիվ"
+  },
+  "relativeAge": {
+    "justNow": "հենց հիմա",
+    "seconds": "{{seconds}}s առաջ",
+    "minutes": "{{minutes}} ր առաջ",
+    "hours": "{{hours}} ժ առաջ",
+    "days": "{{days}} օ առաջ"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}} ր",
+    "hours": "{{hours}} ժ",
+    "days": "{{days}} օ"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

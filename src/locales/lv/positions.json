@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozīcijas"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: gaida",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Daudzums",
+    "averageEntry": "Vid. ieeja",
+    "unrealizedPnl": "Nerealizētais P&L",
+    "realizedPnl": "Realizētais P&L",
+    "updated": "Atjaunināts {{timestamp}}"
+  },
+  "empty": {
+    "title": "Atvērtu pozīciju nav",
+    "message": "Garās, īsās un plakanās pozīcijas parādīsies šeit pēc darījumu izpildes."
+  },
+  "bracketModal": {
+    "title": "Pievienot SL/TP — {{instrument}}",
+    "confirmTitle": "Apstiprināt Bracket",
+    "position": "Pozīcija",
+    "entryPrice": "Ieejas cena",
+    "stopLossLabel": "Stop-Loss cena",
+    "takeProfitLabel": "Take-Profit cena",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Zem ${{price}}",
+      "slShort": "Virs ${{price}}",
+      "tpLong": "Virs ${{price}}",
+      "tpShort": "Zem ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Atcelt",
+      "review": "Pārskatīt",
+      "back": "Atpakaļ",
+      "confirm": "Apstiprināt",
+      "creating": "Notiek izveide…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Pievienot Trailing Stop — {{instrument}}",
+    "confirmTitle": "Apstiprināt Trailing Stop",
+    "position": "Pozīcija",
+    "entryPrice": "Ieejas cena",
+    "trailingDistanceLabel": "Trailing distance (%)",
+    "minLockLabel": "Min. fiksējamā peļņa (%) — neobligāti",
+    "trailingDistance": "Trailing distance",
+    "minLockProfit": "Min. fiksējamā peļņa",
+    "placeholders": {
+      "trailingPct": "piem., 5.0",
+      "minLockPct": "0 = sākt nekavējoties"
+    },
+    "minLockWarning": "Trailing Stop netiks aktivizēts, līdz cena pārvietosies {{minLockPct}}% jums labvēlīgā virzienā.",
+    "buttons": {
+      "cancel": "Atcelt",
+      "review": "Pārskatīt",
+      "back": "Atpakaļ",
+      "confirm": "Apstiprināt",
+      "creating": "Notiek izveide..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Nepieciešama vismaz viena SL vai TP cena",
+    "invalidSlPrice": "Nederīga Stop-Loss cena",
+    "slPricePositive": "Stop-Loss cenai jābūt pozitīvai",
+    "invalidTpPrice": "Nederīga Take-Profit cena",
+    "tpPricePositive": "Take-Profit cenai jābūt pozitīvai",
+    "slLongBelowEntry": "SL cenai jābūt zem ieejas cenas ({{price}})",
+    "tpLongAboveEntry": "TP cenai jābūt virs ieejas cenas ({{price}})",
+    "slShortAboveEntry": "SL cenai jābūt virs ieejas cenas ({{price}})",
+    "tpShortBelowEntry": "TP cenai jābūt zem ieejas cenas ({{price}})",
+    "trailingRequired": "Trailing procenti ir obligāti",
+    "trailingInvalid": "Nederīgi Trailing procenti",
+    "trailingRange": "Trailing procentiem jābūt no 0 līdz 100",
+    "minLockInvalid": "Nederīgi min. fiksēšanas procenti",
+    "minLockRange": "Min. fiksēšanas procentiem jābūt no 0 līdz 100"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Iestatījumi",
+    "subtitle": "Konfigurējiet lietotnes iestatījumus un parametrus",
+    "addButton": "Pievienot iestatījumu",
+    "searchPlaceholder": "Meklēt iestatījumus...",
+    "noResults": "Nav atrasti iestatījumi, kas atbilst kritērijiem.",
+    "allCategories": "Visas kategorijas",
+    "categoryFilterAriaLabel": "Filtrēt iestatījumus pēc kategorijas"
+  },
+  "errors": {
+    "loadFailed": "Neizdevās ielādēt iestatījumus",
+    "updateFailed": "Neizdevās atjaunināt iestatījumu",
+    "deleteFailed": "Neizdevās dzēst iestatījumu",
+    "createFailed": "Neizdevās izveidot iestatījumu",
+    "alreadyExists": "Iestatījums ar atslēgu “{{key}}” jau pastāv"
+  },
+  "item": {
+    "edit": "Rediģēt",
+    "delete": "Dzēst",
+    "save": "Saglabāt",
+    "saving": "Notiek saglabāšana...",
+    "cancel": "Atcelt",
+    "yesDelete": "Jā, dzēst",
+    "deleting": "Notiek dzēšana...",
+    "deleteConfirm": "Dzēst šo iestatījumu?",
+    "valuePlaceholder": "Ievadiet iestatījuma vērtību...",
+    "showMore": "Rādīt vairāk",
+    "showLess": "Rādīt mazāk",
+    "toggleAriaLabel": "Pārslēgt {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensitīvs"
+    },
+    "helpText": {
+      "allowShortSelling": "Atļaut dzinējam atvērt īsās pozīcijas. SELL signāli radīs negatīvus desired_units; kad izslēgts, tiek ierobežots līdz 0.",
+      "allowManualOrders": "Ieslēgt pogu Jauns rīkojums rīkojumu cilnē. Kad izslēgts, POST /api/orders atgriež 403."
+    }
+  },
+  "addModal": {
+    "title": "Pievienot jaunu iestatījumu",
+    "keyLabel": "Atslēga",
+    "valueLabel": "Vērtība",
+    "categoryLabel": "Kategorija",
+    "descriptionLabel": "Apraksts",
+    "keyPlaceholder": "piem., walutomat.api_key",
+    "keyHint": "Ligzdotiem iestatījumiem izmantojiet punktu notāciju (piem., category.subcategory.name)",
+    "valuePlaceholder": "Iestatījuma vērtība",
+    "categorySelectPlaceholder": "Izvēlieties esošu vai izveidojiet jaunu",
+    "newCategoryPlaceholder": "Vai ievadiet jaunas kategorijas nosaukumu",
+    "descriptionPlaceholder": "Neobligāts apraksts",
+    "cancel": "Atcelt",
+    "create": "Izveidot iestatījumu",
+    "creating": "Notiek izveide...",
+    "validation": {
+      "keyRequired": "Atslēga ir obligāta",
+      "valueRequired": "Vērtība ir obligāta",
+      "categoryRequired": "Kategorija ir obligāta"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Formas redaktors",
+    "rawEditor": "Neapstrādāta JSON redaktors",
+    "rawJson": "Neapstrādāts JSON",
+    "switchToForm": "Pārslēgt uz formu",
+    "importToForm": "Importēt formā",
+    "parseError": "Parsēšanas kļūda: {{message}}",
+    "arraySummary": "Masīvs ({{length}} vienumi)",
+    "addItem": "Pievienot vienumu",
+    "remove": "Noņemt",
+    "typeHint": {
+      "array": "(masīvs)",
+      "object": "(objekts)",
+      "string": "(virkne)",
+      "number": "(skaitlis)",
+      "boolean": "(Būla vērtība)",
+      "bigint": "(bigint)",
+      "function": "(funkcija)",
+      "symbol": "(simbols)",
+      "undefined": "(nenoteikts)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Rīkojumi un izpildes",
+    "newOrder": "Jauns rīkojums",
+    "exportCsv": "Eksportēt CSV"
+  },
+  "tabs": {
+    "orders": "Rīkojumi ({{total}})",
+    "executions": "Izpildes ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrēt pēc statusa:",
+    "options": {
+      "all": "Visi rīkojumi",
+      "new": "Jauns",
+      "open": "Atvērts",
+      "partiallyFilled": "Daļēji izpildīts",
+      "partially_filled": "Daļēji izpildīts",
+      "filled": "Izpildīts",
+      "cancelled": "Atcelts",
+      "rejected": "Noraidīts"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Tirgus",
+    "quantity": "Daudzums",
+    "price": "Cena",
+    "created": "Izveidots",
+    "createdUnknown": "N/A",
+    "orderId": "Rīkojuma ID",
+    "leverage": "Sviras efekts",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "TIKAI SAMAZINĀT",
+    "cancel": "Atcelt",
+    "cancelling": "Notiek atcelšana…",
+    "cancelAriaLabel": "Atcelt rīkojumu {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Rīkojums #{{orderId}}",
+    "filled": "IZPILDĪTS",
+    "orderLabel": "Rīkojums {{orderId}}",
+    "size": "Apjoms",
+    "price": "Cena",
+    "total": "Kopā",
+    "executed": "Izpildīts",
+    "fees": "Komisijas"
+  },
+  "empty": {
+    "ordersTitle": "Rīkojumi nav atrasti",
+    "ordersStartTrading": "Sāciet tirdzniecību, lai šeit redzētu rīkojumus",
+    "ordersFilterless": "Nav {{status}} rīkojumu",
+    "executionsTitle": "Izpildes nav atrastas",
+    "executionsMessage": "Darījumu izpildes parādīsies šeit"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instruments",
+      "side": "Puse",
+      "type": "Tips",
+      "status": "Statuss",
+      "quantity": "Daudzums",
+      "price": "Cena",
+      "leverage": "Sviras efekts",
+      "reduceOnly": "Tikai samazināt",
+      "created": "Izveidots"
+    },
+    "executions": {
+      "orderId": "Rīkojuma ID",
+      "instrument": "Instruments",
+      "side": "Puse",
+      "size": "Apjoms",
+      "price": "Cena",
+      "total": "Kopā",
+      "fee": "Komisija",
+      "feeAsset": "Komisijas aktīvs",
+      "executed": "Izpildīts"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Jauns manuāls rīkojums",
+    "titleConfirm": "Apstiprināt rīkojumu",
+    "fields": {
+      "exchange": "Birža",
+      "instrument": "Instruments",
+      "side": "Puse",
+      "orderType": "Rīkojuma tips",
+      "quantity": "Daudzums",
+      "price": "Cena",
+      "stopPrice": "Stop cena",
+      "mode": "Režīms",
+      "wallet": "Maks",
+      "type": "Tips"
+    },
+    "sideOptions": {
+      "buy": "Pirkšana",
+      "sell": "Pārdošana"
+    },
+    "orderTypeOptions": {
+      "market": "Tirgus",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Tiešraide",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — tikai tirgus dati",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Atcelt",
+      "reviewOrder": "Pārskatīt rīkojumu",
+      "back": "Atpakaļ",
+      "confirmOrder": "Apstiprināt rīkojumu",
+      "submitting": "Notiek iesniegšana..."
+    },
+    "errors": {
+      "missingRequired": "Visi obligātie lauki ir jāaizpilda",
+      "quantityPositive": "Daudzumam jābūt pozitīvam skaitlim",
+      "priceRequired": "Šim rīkojuma tipam cena ir obligāta",
+      "pricePositive": "Cenai jābūt pozitīvam skaitlim",
+      "stopPriceRequired": "Šim rīkojuma tipam Stop cena ir obligāta",
+      "stopPricePositive": "Stop cenai jābūt pozitīvam skaitlim",
+      "createFailed": "Rīkojuma izveide neizdevās"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Šis instruments ir tikai novērošanai — izvietojiet rīkojumus instrumentā, kas atbalsta izpildi.",
+      "unknownInstrument": "Šis instruments nav atpazīts. Pārlādējiet sarakstu un mēģiniet vēlreiz.",
+      "capsViolation": "Šis rīkojums pārsniegtu konta drošības limitus. Pārskatiet riska iestatījumus un mēģiniet vēlreiz."
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Rinkos duomenys"
+  },
+  "controls": {
+    "exchange": "Birža:",
+    "instrument": "Instrumentas:",
+    "timeframe": "Laiko intervalas:",
+    "selectExchange": "Pasirinkite biržą",
+    "searchInstrument": "Ieškoti instrumento..."
+  },
+  "timeframes": {
+    "1m": "1 minutė",
+    "5m": "5 minutės",
+    "15m": "15 minučių",
+    "30m": "30 minučių",
+    "1h": "1 valanda",
+    "4h": "4 valandos",
+    "1d": "1 diena"
+  },
+  "stats": {
+    "currentPrice": "Dabartinė kaina",
+    "change24h": "24 val. pokytis",
+    "high24h": "24 val. maksimumas",
+    "low24h": "24 val. minimumas"
+  },
+  "chart": {
+    "title": "Kainos grafikas",
+    "errorPrefix": "Klaida įkeliant grafiko duomenis:",
+    "unknownError": "Nežinoma klaida",
+    "noDataTitle": "Nėra duomenų apie {{instrument}}",
+    "noDataHint": "Instrumento gali nebūti arba jis neturi {{timeframe}} duomenų"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Susijusių instrumentų {{instrument}} biržoje {{exchange}} nesukonfigūruota."
+  },
+  "cacheBanner": {
+    "message": "Talpykla šildoma: pasiekiama {{sampleCount}} / {{expected}} žvakių {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(išvesta iš 1m)",
+      "db": "(iš DB)"
+    }
+  }
+}

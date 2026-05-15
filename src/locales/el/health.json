@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Υγεία συστήματος",
+    "healthMetricsHeading": "Μετρικές υγείας",
+    "processStatusHeading": "Κατάσταση διεργασιών",
+    "activeBacktestsHeading": "Ενεργά Backtests",
+    "quickActionsHeading": "Γρήγορες ενέργειες",
+    "featureNotImplemented": "Η λειτουργία δεν έχει υλοποιηθεί ακόμη",
+    "restartServices": "Επανεκκίνηση υπηρεσιών",
+    "runHealthCheck": "Εκτέλεση ελέγχου υγείας",
+    "viewLogs": "Προβολή αρχείων καταγραφής",
+    "exportReport": "Εξαγωγή αναφοράς"
+  },
+  "status": {
+    "healthy": "Υγιές",
+    "stopped": "Σταματημένο",
+    "error": "Σφάλμα",
+    "warning": "Προειδοποίηση",
+    "completed": "Ολοκληρώθηκε",
+    "unknown": "Άγνωστο"
+  },
+  "metrics": {
+    "tradingEngine": "Μηχανή συναλλαγών",
+    "tradingEngineDescription": "Μηχανή εκτέλεσης στρατηγικών",
+    "activeBacktests": "Ενεργά Backtests",
+    "activeBacktestsDescription": "Διεργασίες Backtest σε εκτέλεση",
+    "active": "Ενεργό",
+    "inactive": "Ανενεργό"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}} λεπ.",
+    "uptimeHours": "{{hours}} ώ. {{minutes}} λεπ.",
+    "uptimeDays": "{{days}} ημ. {{hours}} ώ.",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Χρόνος λειτουργίας",
+    "exitCode": "Κωδικός εξόδου: {{code}}",
+    "service": "υπηρεσία",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Στατιστικά βάσης δεδομένων",
+    "loading": "Φόρτωση στατιστικών βάσης δεδομένων…",
+    "unavailable": "Τα στατιστικά βάσης δεδομένων δεν είναι διαθέσιμα: {{message}}",
+    "fallbackError": "Αποτυχία φόρτωσης στατιστικών βάσης δεδομένων.",
+    "sampled": "δειγματολήφθηκε {{age}}",
+    "samplerSummary": "Διάστημα δειγματολήπτη: {{seconds}}s · {{count}} πίνακες",
+    "columns": {
+      "table": "Πίνακας",
+      "kind": "Είδος",
+      "total": "Σύνολο",
+      "current": "Τρέχοντα",
+      "closed": "Κλειστά",
+      "archivable": "Αρχειοθετήσιμα",
+      "status": "Κατάσταση"
+    },
+    "stale": "παρωχημένο"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Φόρτωση μετρικών ειδοποιήσεων…",
+    "unavailable": "Οι μετρικές ειδοποιήσεων δεν είναι διαθέσιμες: {{message}}",
+    "fallbackError": "Αποτυχία φόρτωσης μετρικών ειδοποιήσεων.",
+    "sent": "Απεσταλμένα",
+    "sentDescription": "Τερματικό: απεσταλμένα",
+    "failed": "Απέτυχαν",
+    "failedDescription": "Ο προϋπολογισμός επανάληψης εξαντλήθηκε",
+    "unregistered": "Μη καταχωρημένα",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Ακυρωμένο (εμβέλεια)",
+    "cancelledScopeDescription": "Ανάκληση εμβέλειας / απενεργοποίηση χρήστη",
+    "outboxDepth": "Βάθος Outbox",
+    "outboxDepthDescription": "Σε ουρά, αναμονή επανάληψης"
+  },
+  "retention": {
+    "title": "Χρονοπρογραμματιστής διατήρησης",
+    "loading": "Φόρτωση εκτέλεσης διατήρησης…",
+    "unavailable": "Η εκτέλεση διατήρησης δεν είναι διαθέσιμη: {{message}}",
+    "fallbackError": "Αποτυχία φόρτωσης εκτέλεσης διατήρησης.",
+    "lastRun": "τελευταία εκτέλεση {{age}}",
+    "dryRunNotice": "Λειτουργία dry-run: οι γραμμές αρχειοθετούνται αλλά δεν εκκαθαρίζονται από τη DB.",
+    "columns": {
+      "table": "Πίνακας",
+      "retain": "Διατήρηση",
+      "archivedWindow": "Αρχειοθετημένο παράθυρο",
+      "archived": "Αρχειοθετήθηκαν",
+      "purged": "Εκκαθαρίστηκαν",
+      "files": "Αρχεία",
+      "status": "Κατάσταση"
+    },
+    "retainDays": "{{days}} ημ.",
+    "ok": "ok",
+    "error": "σφάλμα"
+  },
+  "systemMetrics": {
+    "title": "Υγεία διεργασιών",
+    "loading": "Φόρτωση μετρικών διεργασιών…",
+    "unavailable": "Οι μετρικές διεργασιών δεν είναι διαθέσιμες: {{message}}",
+    "fallbackError": "Αποτυχία φόρτωσης μετρικών υγείας διεργασιών.",
+    "rawJson": "Ακατέργαστο JSON",
+    "pid": "PID",
+    "statusValue": "Κατάσταση: {{status}}",
+    "uptime": "Χρόνος λειτουργίας",
+    "threads": "Νήματα",
+    "openFds": "Ανοικτά FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Περιορίστηκε {{count}}×",
+    "memory": "Μνήμη",
+    "saturation": "Κορεσμός {{percent}}",
+    "asyncioTasks": "Εργασίες Asyncio",
+    "asyncioActive": "{{count}} ενεργές",
+    "asyncioPending": "+ {{count}} σε εκκρεμότητα",
+    "dbPool": "DB Pool",
+    "liveConns": "Ζωντανές συνδέσεις: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Αντικείμενα: {{value}}",
+    "threadsPercent": "Νήματα %",
+    "networkConns": "Συνδέσεις δικτύου",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Ενεργό",
+    "tracemallocIdle": "Αδρανές"
+  },
+  "relativeAge": {
+    "justNow": "μόλις τώρα",
+    "seconds": "πριν από {{seconds}}s",
+    "minutes": "πριν από {{minutes}} λεπ.",
+    "hours": "πριν από {{hours}} ώ.",
+    "days": "πριν από {{days}} ημ."
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}} λεπ.",
+    "hours": "{{hours}} ώ.",
+    "days": "{{days}} ημ."
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Ρυθμίσεις",
+    "subtitle": "Διαμορφώστε τις ρυθμίσεις και τις παραμέτρους της εφαρμογής",
+    "addButton": "Προσθήκη ρύθμισης",
+    "searchPlaceholder": "Αναζήτηση ρυθμίσεων...",
+    "noResults": "Δεν βρέθηκαν ρυθμίσεις που να ταιριάζουν με τα κριτήριά σας.",
+    "allCategories": "Όλες οι κατηγορίες",
+    "categoryFilterAriaLabel": "Φιλτράρισμα ρυθμίσεων κατά κατηγορία"
+  },
+  "errors": {
+    "loadFailed": "Αποτυχία φόρτωσης ρυθμίσεων",
+    "updateFailed": "Αποτυχία ενημέρωσης ρύθμισης",
+    "deleteFailed": "Αποτυχία διαγραφής ρύθμισης",
+    "createFailed": "Αποτυχία δημιουργίας ρύθμισης",
+    "alreadyExists": "Η ρύθμιση με κλειδί «{{key}}» υπάρχει ήδη"
+  },
+  "item": {
+    "edit": "Επεξεργασία",
+    "delete": "Διαγραφή",
+    "save": "Αποθήκευση",
+    "saving": "Αποθήκευση...",
+    "cancel": "Ακύρωση",
+    "yesDelete": "Ναι, διαγραφή",
+    "deleting": "Διαγραφή...",
+    "deleteConfirm": "Να διαγραφεί αυτή η ρύθμιση;",
+    "valuePlaceholder": "Εισαγάγετε τιμή ρύθμισης...",
+    "showMore": "Εμφάνιση περισσότερων",
+    "showLess": "Εμφάνιση λιγότερων",
+    "toggleAriaLabel": "Εναλλαγή {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Ευαίσθητο"
+    },
+    "helpText": {
+      "allowShortSelling": "Επιτρέψτε στη μηχανή να ανοίγει short θέσεις. Τα σήματα SELL θα παράγουν αρνητικά desired_units· όταν είναι απενεργοποιημένο, περιορίζονται στο 0.",
+      "allowManualOrders": "Ενεργοποιήστε το κουμπί Νέα εντολή στην καρτέλα εντολών. Όταν είναι απενεργοποιημένο, το POST /api/orders επιστρέφει 403."
+    }
+  },
+  "addModal": {
+    "title": "Προσθήκη νέας ρύθμισης",
+    "keyLabel": "Κλειδί",
+    "valueLabel": "Τιμή",
+    "categoryLabel": "Κατηγορία",
+    "descriptionLabel": "Περιγραφή",
+    "keyPlaceholder": "π.χ., walutomat.api_key",
+    "keyHint": "Χρησιμοποιήστε σημειογραφία με τελείες για ένθετες ρυθμίσεις (π.χ., category.subcategory.name)",
+    "valuePlaceholder": "Τιμή ρύθμισης",
+    "categorySelectPlaceholder": "Επιλέξτε υπάρχουσα ή δημιουργήστε νέα",
+    "newCategoryPlaceholder": "Ή εισαγάγετε νέο όνομα κατηγορίας",
+    "descriptionPlaceholder": "Προαιρετική περιγραφή",
+    "cancel": "Ακύρωση",
+    "create": "Δημιουργία ρύθμισης",
+    "creating": "Δημιουργία...",
+    "validation": {
+      "keyRequired": "Το κλειδί είναι υποχρεωτικό",
+      "valueRequired": "Η τιμή είναι υποχρεωτική",
+      "categoryRequired": "Η κατηγορία είναι υποχρεωτική"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Επεξεργαστής φόρμας",
+    "rawEditor": "Επεξεργαστής ακατέργαστου JSON",
+    "rawJson": "Ακατέργαστο JSON",
+    "switchToForm": "Μετάβαση σε φόρμα",
+    "importToForm": "Εισαγωγή στη φόρμα",
+    "parseError": "Σφάλμα ανάλυσης: {{message}}",
+    "arraySummary": "Πίνακας ({{length}} στοιχεία)",
+    "addItem": "Προσθήκη στοιχείου",
+    "remove": "Αφαίρεση",
+    "typeHint": {
+      "array": "(πίνακας)",
+      "object": "(αντικείμενο)",
+      "string": "(συμβολοσειρά)",
+      "number": "(αριθμός)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(συνάρτηση)",
+      "symbol": "(σύμβολο)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

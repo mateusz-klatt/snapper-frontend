@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Yfirlit"
+  },
+  "metrics": {
+    "feedsRunning": "Feed í gangi",
+    "strategiesActive": "Virkar stefnur",
+    "openOrders": "Opnar pantanir",
+    "todaysExecutions": "Framkvæmdir dagsins",
+    "executionsOn": "Framkvæmdir ({{date}})"
+  },
+  "status": {
+    "stopped": "Stöðvað",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Keyrir",
+    "active": "Virkt"
+  },
+  "processStatus": {
+    "title": "Staða ferla",
+    "feeds": "Feeds",
+    "strategies": "Stefnur",
+    "executors": "Framkvæmendur",
+    "brokers": "Miðlarar"
+  },
+  "portfolio": {
+    "title": "Yfirlit eignasafns",
+    "totalValue": "Heildarvirði",
+    "longExposure": "Long áhætta",
+    "shortExposure": "Short áhætta",
+    "netDelta": "Nettó delta",
+    "unrealizedPnl": "Óinnleyst P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Stöður",
+    "instrumentsCount": "{{count}} gerningar",
+    "empty": "Engin stöðugögn tiltæk"
+  },
+  "signals": {
+    "title": "Nýleg merki",
+    "empty": "Engin nýleg merki",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Nýlegar framkvæmdir",
+    "empty": "Engar nýlegar framkvæmdir",
+    "noTime": "N/A"
+  }
+}

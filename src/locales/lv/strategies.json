@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Stratēģiju pārvaldība",
+    "register": "Reģistrēt stratēģiju",
+    "saving": "Notiek saglabāšana…",
+    "descriptionCanManage": "Reģistrējiet jaunus stratēģiju procesus tieši no UI. Autostart saglabā procesu iespējotu pēc restartēšanām.",
+    "descriptionViewer": "Skatiet konfigurētās stratēģijas un to statusu. Lai pārvaldītu stratēģijas, sazinieties ar operatoru vai administratoru.",
+    "searchPlaceholder": "Meklēt stratēģijas...",
+    "filter": {
+      "all": "Visi statusi",
+      "running": "Darbojas",
+      "stopped": "Apturēts"
+    },
+    "configuredHeading": "Konfigurētās stratēģijas",
+    "noMatches": "Neviena stratēģija neatbilst filtriem",
+    "clearFilters": "Notīrīt filtrus",
+    "emptyTitle": "Stratēģijas nav konfigurētas",
+    "emptyCanManage": "Reģistrējiet stratēģiju, lai sāktu algoritmisko tirdzniecību",
+    "emptyViewer": "Stratēģijas vēl nav konfigurētas"
+  },
+  "confirm": {
+    "startTitle": "Palaist {{name}}",
+    "startMessage": "Tas palaidīs stratēģiju {{name}}. Tā var sākt tiešās tirdzniecības operācijas.",
+    "stopTitle": "Apturēt {{name}}",
+    "stopMessage": "Tas apturēs stratēģiju {{name}}. Aktīvās pozīcijas netiks automātiski aizvērtas."
+  },
+  "toast": {
+    "saved": "Stratēģija {{name}} saglabāta",
+    "started": "Stratēģija {{name}} palaista",
+    "registerFailed": "Neizdevās reģistrēt stratēģiju: {{message}}",
+    "startSuccess": "Stratēģija veiksmīgi palaista",
+    "stopSuccess": "Stratēģija veiksmīgi apturēta",
+    "alreadyRunning": "Stratēģija jau darbojas",
+    "notRunning": "Stratēģija nedarbojas",
+    "configNotFound": "Stratēģijas konfigurācija nav atrasta. Pārbaudiet datubāzes iestatījumus.",
+    "networkError": "Tīkla kļūda. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
+    "startFailed": "Neizdevās palaist stratēģiju: {{message}}",
+    "stopFailed": "Neizdevās apturēt stratēģiju: {{message}}",
+    "unknownError": "Nezināma kļūda"
+  },
+  "card": {
+    "ariaLabel": "Stratēģija: {{name}}",
+    "modeLabel": "Režīms: {{mode}}",
+    "autostartEnabled": "Autostart: ieslēgts",
+    "autostartDisabled": "Autostart: izslēgts",
+    "statusAriaLabel": "Statuss: {{status}}",
+    "dataLagAriaLabel": "Datu aizture: {{seconds}} sekundes",
+    "lagBadge": "aizture: {{seconds}} s",
+    "feedLag": "Feed aizture: {{ms}} ms",
+    "heartbeatAge": "Heartbeat vecums: {{seconds}} s",
+    "metrics": {
+      "status": "Statuss",
+      "dataLag": "Datu aizture",
+      "dataLagValue": "{{ms}} ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Rādīt informāciju",
+    "hideDetails": "Slēpt informāciju",
+    "inputs": "Ievades ({{count}})",
+    "outputs": "Izvades ({{count}})",
+    "feedPublishers": "Feed publicētāji ({{count}})",
+    "lastUpdate": "Pēdējais atjauninājums: {{time}}",
+    "waiting": "Gaida Heartbeat...",
+    "startAriaLabel": "Palaist stratēģiju {{name}}",
+    "stopAriaLabel": "Apturēt stratēģiju {{name}}",
+    "start": "Palaist",
+    "stop": "Apturēt",
+    "starting": "Notiek palaišana...",
+    "stopping": "Notiek apturēšana...",
+    "status": {
+      "starting": "tiek palaista",
+      "stopping": "tiek apturēta",
+      "running": "darbojas",
+      "stopped": "apturēta"
+    },
+    "health": {
+      "healthy": "Vesela — tiek saņemti svaigi dati",
+      "warning": "Brīdinājums — dati ir novecojuši",
+      "error": "Kļūda — nav nesenu datu",
+      "unknown": "Nezināms — nav Heartbeat datu"
+    },
+    "healthShort": {
+      "healthy": "VESELA",
+      "warning": "BRĪDINĀJUMS",
+      "error": "KĻŪDA"
+    }
+  },
+  "launchModal": {
+    "title": "Reģistrēt stratēģijas procesu",
+    "emptyTemplates": "Backend nav reģistrētu stratēģiju veidņu. Definējiet vismaz vienu stratēģijas procesu.",
+    "close": "Aizvērt",
+    "templateLabel": "Stratēģijas veidne",
+    "templatePlaceholder": "Izvēlieties veidni...",
+    "templateFallbackDescription": "Stratēģija reģistrēta backend",
+    "loadingDefaults": "Notiek veidnes noklusējumu ielāde…",
+    "loadDefaultsError": "Neizdevās ielādēt veidnes noklusējumus. Pārbaudiet backend žurnālus.",
+    "processNameLabel": "Procesa nosaukums",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Atļautās rakstzīmes: mazie burti, skaitļi, pasvītras",
+    "instanceNameLabel": "Stratēģijas instances nosaukums",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Tiek izmantots stratēģijas konfigurācijā un izvades tēmās",
+    "executionModeLabel": "Izpildes režīms",
+    "executionModeThread": "Iegults pavediens",
+    "executionModeProcess": "Izolēts process",
+    "executionModeHelp": "Pavedieni koplieto atmiņu, procesi nodrošina spēcīgāku izolāciju.",
+    "flagsLabel": "Karogi",
+    "autostartLabel": "Autostart servera palaišanas laikā",
+    "startImmediatelyLabel": "Palaist uzreiz pēc reģistrācijas",
+    "noteLabel": "Piezīme (neobligāti)",
+    "notePlaceholder": "Aprakstiet šīs stratēģijas instances mērķi vai parametrus.",
+    "noteHelp": "Glabāts kopā ar konfigurāciju, lai palīdzētu identificēt šo procesu.",
+    "cancel": "Atcelt",
+    "submit": "Reģistrēt stratēģiju",
+    "submitting": "Notiek reģistrācija…"
+  }
+}

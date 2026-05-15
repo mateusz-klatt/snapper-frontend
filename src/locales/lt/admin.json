@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administravimas",
+    "subtitle": "Valdykite naudotojus ir sistemos konfigūraciją"
+  },
+  "rolePermissions": {
+    "title": "Rolių teisės",
+    "viewer": {
+      "label": "Stebėtojas",
+      "description": "Tik skaitymo prieiga prie apžvalgos ir rinkos duomenų. Negali valdyti procesų, strategijų ar sistemos nustatymų."
+    },
+    "operator": {
+      "label": "Operatorius",
+      "description": "Visos stebėtojo teisės, taip pat prekybos operacijos, strategijų vykdymas, procesų valdymas ir sistemos būklės stebėsena."
+    },
+    "admin": {
+      "label": "Administratorius",
+      "description": "Visa sistemos prieiga, įskaitant naudotojų valdymą, sistemos nustatymus, API raktų konfigūraciją ir visas operatoriaus teises."
+    },
+    "table": {
+      "resource": "Išteklius",
+      "viewer": "Stebėtojas",
+      "operator": "Operatorius",
+      "admin": "Administratorius"
+    },
+    "resources": {
+      "overview": "Apžvalga",
+      "market": "Rinkos duomenys",
+      "processes": "Procesai",
+      "strategies": "Strategijos",
+      "orders": "Pavedimai ir vykdymai",
+      "positions": "Pozicijos",
+      "signals": "Signalai",
+      "health": "Būklė",
+      "admin": "Administravimas",
+      "settings": "Nustatymai"
+    }
+  },
+  "common": {
+    "cancel": "Atšaukti",
+    "selectWallet": "Pasirinkite piniginę",
+    "selectAWallet": "Pasirinkite piniginę",
+    "chooseWalletPlaceholder": "Pasirinkite piniginę...",
+    "selectWalletPlaceholder": "Pasirinkti piniginę...",
+    "walletLabel": "Piniginė",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Nežinoma klaida",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Prieiga atmesta",
+      "message": "Neturite teisės valdyti naudotojų. Susisiekite su sistemos administratoriumi."
+    },
+    "list": {
+      "title": "Naudotojų valdymas",
+      "countLabel": "{{count}} naudotojų",
+      "showInactive": "Rodyti neaktyvius",
+      "hideInactive": "Slėpti neaktyvius",
+      "addUser": "Pridėti naudotoją",
+      "searchPlaceholder": "Ieškoti pagal naudotojo vardą, el. paštą arba rolę...",
+      "columns": {
+        "user": "Naudotojas",
+        "role": "Rolė",
+        "status": "Būsena",
+        "createdAt": "Sukurta",
+        "actions": "Veiksmai"
+      },
+      "status": {
+        "active": "Aktyvus",
+        "inactive": "Neaktyvus"
+      },
+      "unknown": "Nežinoma",
+      "empty": {
+        "title": "Naudotojų nerasta",
+        "noMatch": "Pagal paieškos kriterijus naudotojų nerasta.",
+        "noUsers": "Naudotojų nerasta.",
+        "noActive": "Aktyvių naudotojų nerasta."
+      },
+      "errorLoading": "Klaida įkeliant naudotojus: {{message}}",
+      "deactivate": {
+        "title": "Deaktyvuoti naudotoją",
+        "message": "Ar tikrai deaktyvuoti naudotoją „{{username}}“? Jis nebegalės prisijungti.",
+        "confirm": "Deaktyvuoti"
+      },
+      "toast": {
+        "deactivated": "Naudotojas deaktyvuotas",
+        "deactivateError": "Klaida deaktyvuojant naudotoją"
+      }
+    },
+    "form": {
+      "titleEdit": "Redaguoti naudotoją",
+      "titleAdd": "Pridėti naudotoją",
+      "fields": {
+        "username": "Naudotojo vardas",
+        "usernamePlaceholder": "Įveskite naudotojo vardą",
+        "password": "Slaptažodis",
+        "passwordPlaceholder": "Įveskite slaptažodį",
+        "newPassword": "Naujas slaptažodis",
+        "newPasswordPlaceholder": "Įveskite naują slaptažodį",
+        "email": "El. paštas",
+        "emailPlaceholder": "Įveskite el. paštą",
+        "role": "Rolė",
+        "accountActive": "Paskyra aktyvi",
+        "resetUserPassword": "Atstatyti naudotojo slaptažodį"
+      },
+      "roles": {
+        "viewer": "Stebėtojas",
+        "operator": "Operatorius",
+        "admin": "Administratorius"
+      },
+      "validation": {
+        "usernameRequired": "Naudotojo vardas privalomas",
+        "usernameMinLength": "Naudotojo vardą turi sudaryti bent 3 simboliai",
+        "emailRequired": "El. paštas privalomas",
+        "emailInvalid": "Netinkamas el. pašto formatas",
+        "passwordRequired": "Slaptažodis privalomas",
+        "passwordMinLength": "Slaptažodį turi sudaryti bent 8 simboliai",
+        "passwordRequiredWhenResetting": "Atstatant slaptažodis privalomas"
+      },
+      "actions": {
+        "saveChanges": "Išsaugoti pakeitimus",
+        "createUser": "Sukurti naudotoją"
+      },
+      "toast": {
+        "created": "Naudotojas sukurtas",
+        "createError": "Klaida kuriant naudotoją",
+        "updated": "Naudotojas atnaujintas",
+        "updateError": "Klaida atnaujinant naudotoją",
+        "passwordReset": "Naudotojo slaptažodis atstatytas",
+        "resetError": "Klaida atstatant slaptažodį"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Prieiga atmesta",
+      "message": "Neturite teisės valdyti prieigos sričių. Susisiekite su sistemos administratoriumi."
+    },
+    "list": {
+      "title": "Prieigos sritys",
+      "countLabel": "{{count}} sričių",
+      "createGrant": "Suteikti sritį",
+      "selectWalletPrompt": "Pasirinkite piniginę aukščiau, kad peržiūrėtumėte jos prieigos sritis.",
+      "columns": {
+        "operator": "Operatorius",
+        "scope": "Sritis",
+        "target": "Tikslas",
+        "grantedAt": "Suteikta",
+        "actions": "Veiksmai"
+      },
+      "empty": {
+        "noGrants": "Suteiktų sričių nerasta",
+        "noGrantsHint": "Ši piniginė neturi aktyvių prieigos sričių."
+      },
+      "errorLoading": "Klaida įkeliant sritis: {{message}}",
+      "handover": "Perduoti"
+    },
+    "form": {
+      "title": "Suteikti prieigos sritį",
+      "fields": {
+        "operator": "Operatorius",
+        "operatorPlaceholder": "Pasirinkite operatorių...",
+        "wallet": "Piniginė",
+        "scopeKind": "Srities tipas",
+        "underlyingPublicId": "Bazinio aktyvo viešasis ID",
+        "instrumentPublicId": "Instrumento viešasis ID",
+        "underlyingPlaceholder": "pvz., BTC",
+        "instrumentPlaceholder": "pvz., BTC-USD-PERP",
+        "note": "Pastaba (neprivaloma)",
+        "notePlaceholder": "Neprivaloma pastaba"
+      },
+      "scopeKinds": {
+        "underlying": "Bazinis aktyvas",
+        "instrument": "Instrumentas"
+      },
+      "validation": {
+        "operatorRequired": "Operatorius privalomas",
+        "walletRequired": "Piniginė privaloma",
+        "targetRequired": "Tikslo ID privalomas"
+      },
+      "actions": {
+        "createGrant": "Suteikti sritį"
+      },
+      "toast": {
+        "created": "Prieigos sritis suteikta",
+        "conflictError": "Konfliktas: kitas operatorius jau turi suteiktą šią sritį",
+        "createError": "Klaida suteikiant prieigos sritį"
+      }
+    },
+    "handover": {
+      "title": "Perduoti prieigos sritį",
+      "fields": {
+        "currentHolder": "Dabartinis turėtojas",
+        "scope": "Sritis",
+        "wallet": "Piniginė",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Perduoti operatoriui",
+        "transferToPlaceholder": "Pasirinkite paskirties operatorių...",
+        "reason": "Priežastis (neprivaloma)",
+        "reasonPlaceholder": "pvz., pamainos keitimas"
+      },
+      "actions": {
+        "handover": "Perduoti"
+      },
+      "toast": {
+        "completed": "Prieigos sritis perduota",
+        "conflictError": "Konfliktas: paskirties operatorius jau turi konfliktuojančią sritį",
+        "handoverError": "Klaida perduodant prieigos sritį"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Prieiga atmesta",
+      "message": "Neturite teisės valdyti piniginės kredencialų. Susisiekite su sistemos administratoriumi."
+    },
+    "list": {
+      "title": "Piniginės kredencialai",
+      "countLabel": "{{count}} kredencialų",
+      "addCredential": "Pridėti kredencialą",
+      "selectWalletPrompt": "Pasirinkite piniginę aukščiau, kad peržiūrėtumėte jos kredencialus.",
+      "columns": {
+        "exchange": "Birža",
+        "type": "Tipas",
+        "label": "Etiketė",
+        "createdAt": "Sukurta",
+        "actions": "Veiksmai"
+      },
+      "empty": {
+        "noCredentials": "Kredencialų nerasta",
+        "noCredentialsHint": "Ši piniginė neturi aktyvių kredencialų."
+      },
+      "errorLoading": "Klaida įkeliant kredencialus: {{message}}",
+      "rotate": "Keisti"
+    },
+    "form": {
+      "title": "Pridėti kredencialą",
+      "fields": {
+        "wallet": "Piniginė",
+        "exchange": "Birža",
+        "exchangePlaceholder": "pvz., kraken",
+        "credentialType": "Kredencialo tipas",
+        "label": "Etiketė (neprivaloma)",
+        "labelPlaceholder": "pvz., pagrindinis prekybos raktas",
+        "pemPlaceholder": "Įklijuokite PEM formato privatųjį raktą čia"
+      },
+      "fieldLabels": {
+        "api_key": "API raktas",
+        "api_secret": "API paslaptis",
+        "private_key_pem": "Privatusis raktas (PEM)",
+        "client_id": "Kliento ID",
+        "client_secret": "Kliento paslaptis",
+        "refresh_token": "Atnaujinimo prieigos raktas",
+        "initial_balance": "Pradinis balansas"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API raktas + paslaptis",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Piniginė privaloma",
+        "exchangeRequired": "Birža privaloma",
+        "fieldRequired": "{{field}} privaloma"
+      },
+      "actions": {
+        "addCredential": "Pridėti kredencialą"
+      },
+      "toast": {
+        "created": "Kredencialas sukurtas",
+        "conflictError": "Konfliktas: ši piniginė jau turi aktyvų kredencialą šiai biržai",
+        "createError": "Klaida kuriant kredencialą"
+      }
+    },
+    "rotate": {
+      "title": "Kredencialų keitimas",
+      "fields": {
+        "exchange": "Birža",
+        "type": "Tipas",
+        "label": "Etiketė",
+        "newLabel": "Nauja etiketė (neprivaloma)",
+        "newLabelPlaceholder": "pvz., pakeistas raktas 2026-04",
+        "pemPlaceholder": "Įklijuokite PEM formato privatųjį raktą čia"
+      },
+      "actions": {
+        "rotate": "Keisti"
+      },
+      "toast": {
+        "rotated": "Kredencialas pakeistas",
+        "rotateError": "Klaida keičiant kredencialą"
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Կարգավորումներ",
+    "subtitle": "Կազմաձևեք հավելվածի կարգավորումներն ու պարամետրերը",
+    "addButton": "Ավելացնել կարգավորում",
+    "searchPlaceholder": "Որոնել կարգավորումներ...",
+    "noResults": "Ձեր չափանիշներին համապատասխանող կարգավորումներ չեն գտնվել։",
+    "allCategories": "Բոլոր կատեգորիաները",
+    "categoryFilterAriaLabel": "Զտել կարգավորումները ըստ կատեգորիայի"
+  },
+  "errors": {
+    "loadFailed": "Չհաջողվեց բեռնել կարգավորումները",
+    "updateFailed": "Չհաջողվեց թարմացնել կարգավորումը",
+    "deleteFailed": "Չհաջողվեց ջնջել կարգավորումը",
+    "createFailed": "Չհաջողվեց ստեղծել կարգավորումը",
+    "alreadyExists": "«{{key}}» բանալիով կարգավորումն արդեն գոյություն ունի"
+  },
+  "item": {
+    "edit": "Խմբագրել",
+    "delete": "Ջնջել",
+    "save": "Պահել",
+    "saving": "Պահվում է...",
+    "cancel": "Չեղարկել",
+    "yesDelete": "Այո, ջնջել",
+    "deleting": "Ջնջվում է...",
+    "deleteConfirm": "Ջնջե՞լ այս կարգավորումը։",
+    "valuePlaceholder": "Մուտքագրեք կարգավորման արժեքը...",
+    "showMore": "Ցույց տալ ավելին",
+    "showLess": "Ցույց տալ պակաս",
+    "toggleAriaLabel": "Փոխարկել {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Զգայուն"
+    },
+    "helpText": {
+      "allowShortSelling": "Թույլ տալ շարժիչին բացել short դիրքեր։ SELL ազդանշանները կստեղծեն բացասական desired_units. անջատված լինելու դեպքում սահմանափակվում է 0-ով։",
+      "allowManualOrders": "Միացնել Նոր հանձնարարական կոճակը Հանձնարարականներ ներդիրում։ Անջատված լինելու դեպքում POST /api/orders-ը վերադարձնում է 403։"
+    }
+  },
+  "addModal": {
+    "title": "Ավելացնել նոր կարգավորում",
+    "keyLabel": "Բանալի",
+    "valueLabel": "Արժեք",
+    "categoryLabel": "Կատեգորիա",
+    "descriptionLabel": "Նկարագրություն",
+    "keyPlaceholder": "օր.՝ walutomat.api_key",
+    "keyHint": "Ներդրված կարգավորումների համար օգտագործեք կետային նոտացիա (օր.՝ category.subcategory.name)",
+    "valuePlaceholder": "Կարգավորման արժեք",
+    "categorySelectPlaceholder": "Ընտրեք գոյություն ունեցողը կամ ստեղծեք նորը",
+    "newCategoryPlaceholder": "Կամ մուտքագրեք նոր կատեգորիայի անուն",
+    "descriptionPlaceholder": "Ըստ ցանկության նկարագրություն",
+    "cancel": "Չեղարկել",
+    "create": "Ստեղծել կարգավորում",
+    "creating": "Ստեղծվում է...",
+    "validation": {
+      "keyRequired": "Բանալին պարտադիր է",
+      "valueRequired": "Արժեքը պարտադիր է",
+      "categoryRequired": "Կատեգորիան պարտադիր է"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Ձևի խմբագիր",
+    "rawEditor": "Հում JSON խմբագիր",
+    "rawJson": "Հում JSON",
+    "switchToForm": "Փոխարկել ձևի",
+    "importToForm": "Ներմուծել ձևի մեջ",
+    "parseError": "Վերլուծման սխալ՝ {{message}}",
+    "arraySummary": "Զանգված ({{length}} տարր)",
+    "addItem": "Ավելացնել տարր",
+    "remove": "Հեռացնել",
+    "typeHint": {
+      "array": "(զանգված)",
+      "object": "(օբյեկտ)",
+      "string": "(տող)",
+      "number": "(թիվ)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(ֆունկցիա)",
+      "symbol": "(նշան)",
+      "undefined": "(սահմանված չէ)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

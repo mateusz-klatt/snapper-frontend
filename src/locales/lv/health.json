@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Sistēmas veselība",
+    "healthMetricsHeading": "Veselības metrikas",
+    "processStatusHeading": "Procesu statuss",
+    "activeBacktestsHeading": "Aktīvi Backtests",
+    "quickActionsHeading": "Ātrās darbības",
+    "featureNotImplemented": "Funkcija vēl nav ieviesta",
+    "restartServices": "Restartēt servisus",
+    "runHealthCheck": "Palaist veselības pārbaudi",
+    "viewLogs": "Skatīt žurnālus",
+    "exportReport": "Eksportēt pārskatu"
+  },
+  "status": {
+    "healthy": "Vesels",
+    "stopped": "Apturēts",
+    "error": "Kļūda",
+    "warning": "Brīdinājums",
+    "completed": "Pabeigts",
+    "unknown": "Nezināms"
+  },
+  "metrics": {
+    "tradingEngine": "Tirdzniecības dzinējs",
+    "tradingEngineDescription": "Stratēģiju izpildes dzinējs",
+    "activeBacktests": "Aktīvi Backtests",
+    "activeBacktestsDescription": "Darbojošies Backtest procesi",
+    "active": "Aktīvs",
+    "inactive": "Neaktīvs"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} st. {{minutes}} min",
+    "uptimeDays": "{{days}} d. {{hours}} st.",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Darbības laiks",
+    "exitCode": "Izejas kods: {{code}}",
+    "service": "serviss",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Datubāzes statistika",
+    "loading": "Notiek datubāzes statistikas ielāde…",
+    "unavailable": "Datubāzes statistika nav pieejama: {{message}}",
+    "fallbackError": "Neizdevās ielādēt datubāzes statistiku.",
+    "sampled": "paraugs ņemts {{age}}",
+    "samplerSummary": "Paraugošanas intervāls: {{seconds}} s · {{count}} tabulas",
+    "columns": {
+      "table": "Tabula",
+      "kind": "Veids",
+      "total": "Kopā",
+      "current": "Pašreizējie",
+      "closed": "Slēgtie",
+      "archivable": "Arhivējami",
+      "status": "Statuss"
+    },
+    "stale": "novecojis"
+  },
+  "notification": {
+    "title": "Paziņojumu Sidecar",
+    "loading": "Notiek paziņojumu metriku ielāde…",
+    "unavailable": "Paziņojumu metrikas nav pieejamas: {{message}}",
+    "fallbackError": "Neizdevās ielādēt paziņojumu metrikas.",
+    "sent": "Nosūtīts",
+    "sentDescription": "Termināls: nosūtīts",
+    "failed": "Neizdevās",
+    "failedDescription": "Atkārtojumu budžets izsmelts",
+    "unregistered": "Nereģistrēts",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Atcelts (joma)",
+    "cancelledScopeDescription": "Jomas atsaukšana / lietotāja deaktivizēšana",
+    "outboxDepth": "Outbox dziļums",
+    "outboxDepthDescription": "Rindā, gaida atkārtojumu"
+  },
+  "retention": {
+    "title": "Saglabāšanas plānotājs",
+    "loading": "Notiek saglabāšanas izpildes ielāde…",
+    "unavailable": "Saglabāšanas izpilde nav pieejama: {{message}}",
+    "fallbackError": "Neizdevās ielādēt saglabāšanas izpildi.",
+    "lastRun": "pēdējā izpilde {{age}}",
+    "dryRunNotice": "Dry-run režīms: rindas tiek arhivētas, bet netiek dzēstas no DB.",
+    "columns": {
+      "table": "Tabula",
+      "retain": "Saglabāt",
+      "archivedWindow": "Arhivētais logs",
+      "archived": "Arhivēts",
+      "purged": "Iztīrīts",
+      "files": "Faili",
+      "status": "Statuss"
+    },
+    "retainDays": "{{days}} d.",
+    "ok": "ok",
+    "error": "kļūda"
+  },
+  "systemMetrics": {
+    "title": "Procesu veselība",
+    "loading": "Notiek procesu metriku ielāde…",
+    "unavailable": "Procesu metrikas nav pieejamas: {{message}}",
+    "fallbackError": "Neizdevās ielādēt procesu veselības metrikas.",
+    "rawJson": "Neapstrādāts JSON",
+    "pid": "PID",
+    "statusValue": "Statuss: {{status}}",
+    "uptime": "Darbības laiks",
+    "threads": "Pavedieni",
+    "openFds": "Atvērti FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Ierobežots {{count}}×",
+    "memory": "Atmiņa",
+    "saturation": "Piesātinājums {{percent}}",
+    "asyncioTasks": "Asyncio uzdevumi",
+    "asyncioActive": "{{count}} aktīvi",
+    "asyncioPending": "+ {{count}} gaida",
+    "dbPool": "DB pūls",
+    "liveConns": "Aktīvi savienojumi: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekti: {{value}}",
+    "threadsPercent": "Pavedieni %",
+    "networkConns": "Tīkla savienojumi",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktīvs",
+    "tracemallocIdle": "Neaktīvs"
+  },
+  "relativeAge": {
+    "justNow": "tikko",
+    "seconds": "pirms {{seconds}} s",
+    "minutes": "pirms {{minutes}} min",
+    "hours": "pirms {{hours}} st.",
+    "days": "pirms {{days}} d."
+  },
+  "duration": {
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} st.",
+    "days": "{{days}} d."
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

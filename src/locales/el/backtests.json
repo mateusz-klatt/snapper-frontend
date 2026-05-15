@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Πίσω",
+    "backToList": "← Πίσω στα Backtests"
+  },
+  "status": {
+    "pending": "Σε εκκρεμότητα",
+    "running": "Εκτελείται",
+    "completed": "Ολοκληρώθηκε",
+    "failed": "Απέτυχε",
+    "cancelled": "Ακυρώθηκε"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Ακύρωση",
+      "rerun": "Επανεκτέλεση"
+    },
+    "fields": {
+      "timeframe": "Χρονικό πλαίσιο",
+      "period": "Περίοδος",
+      "initialCash": "Αρχικό κεφάλαιο",
+      "id": "ID"
+    },
+    "errorPrefix": "Σφάλμα: {{message}}",
+    "filter": {
+      "ariaLabel": "Φιλτράρισμα Backtests κατά κατάσταση",
+      "options": {
+        "all": "Όλες οι καταστάσεις",
+        "pending": "Σε εκκρεμότητα",
+        "running": "Εκτελείται",
+        "completed": "Ολοκληρώθηκε",
+        "failed": "Απέτυχε",
+        "cancelled": "Ακυρώθηκε"
+      }
+    },
+    "empty": {
+      "title": "Δεν υπάρχουν Backtests",
+      "message": "Εκτελέστε Backtest μέσω CLI ή API για να δείτε αποτελέσματα εδώ."
+    }
+  },
+  "detail": {
+    "title": "Εκτέλεση Backtest",
+    "fields": {
+      "strategy": "Στρατηγική",
+      "instrument": "Μέσο",
+      "status": "Κατάσταση",
+      "period": "Περίοδος",
+      "crossAsset": "Απόδοση μεταξύ ενεργητικών",
+      "configHash": "Hash διαμόρφωσης"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} εκτελέσεις",
+    "errors": {
+      "invalidRunId": "Μη έγκυρο ID εκτέλεσης — πρέπει να είναι UUID7 (λήφθηκε «{{id}}»).",
+      "loadFailed": "Αποτυχία φόρτωσης εκτέλεσης: {{message}}",
+      "notFound": "δεν βρέθηκε"
+    }
+  },
+  "compare": {
+    "title": "Σύγκριση",
+    "headingFull": "Σύγκριση Backtest",
+    "loading": "Φόρτωση σύγκρισης…",
+    "vs": "έναντι",
+    "runLabel": "Εκτέλεση {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Μετρικές",
+      "equityOverlay": "Επικάλυψη καμπύλης κεφαλαίου",
+      "trades": "Συναλλαγές",
+      "signals": "Σήματα"
+    },
+    "pairingMode": {
+      "auto": "αυτόματο",
+      "manual": "χειροκίνητο"
+    },
+    "errors": {
+      "notFound": "Η σύγκριση δεν βρέθηκε στο τρέχον πορτοφόλι.",
+      "loadFailed": "Αποτυχία φόρτωσης σύγκρισης: {{message}}",
+      "unknown": "άγνωστο σφάλμα",
+      "emptyResponse": "Κενή απόκριση σύγκρισης."
+    },
+    "launcher": {
+      "title": "Σύγκριση",
+      "submit": "Σύγκριση",
+      "autoPair": "Σύγκριση με το πιο πρόσφατο",
+      "terminalGate": "η σύγκριση είναι διαθέσιμη μόλις αυτή η εκτέλεση φτάσει σε τελική κατάσταση",
+      "noSiblings": "δεν υπάρχουν άλλες εκτελέσεις με αυτή τη διαμόρφωση",
+      "limitNotice": "εμφανίζονται οι {{count}} πιο πρόσφατες — χρησιμοποιήστε χειροκίνητο ζεύγος για παλαιότερες εκτελέσεις",
+      "pickPlaceholder": "— επιλέξτε εκτέλεση για σύγκριση —",
+      "showAllLabel": "Εμφάνιση όλων των εκτελέσεων (όχι μόνο ίδιας διαμόρφωσης)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "όλες οι εκτελέσεις",
+        "sameConfig": "ίδια διαμόρφωση"
+      },
+      "errors": {
+        "pickRequired": "επιλέξτε εκτέλεση από τη λίστα"
+      }
+    },
+    "diffColumns": {
+      "common": "Κοινά",
+      "onlyA": "Μόνο στο A",
+      "onlyB": "Μόνο στο B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Δεν υπάρχουν συγκρίσιμες μετρικές — καμία από τις δύο εκτελέσεις δεν είχε καταγεγραμμένες τιμές.",
+      "columns": {
+        "name": "Μετρική",
+        "runA": "Εκτέλεση A",
+        "runB": "Εκτέλεση B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Εκτέλεση A",
+        "runB": "Εκτέλεση B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Αναμονή προόδου…",
+    "candles": "{{done}} / {{total}} κεριά",
+    "candlesNoTotal": "{{done}} κεριά",
+    "equity": "κεφάλαιο {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} συναλλαγές",
+    "milestoneLine": "ορόσημο {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

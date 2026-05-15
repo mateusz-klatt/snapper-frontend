@@ -1,0 +1,83 @@
+{
+  "loading": "Notiek ielāde...",
+  "error": "Kļūda",
+  "retry": "Mēģināt vēlreiz",
+  "close": "Aizvērt",
+  "cancel": "Atcelt",
+  "confirm": "Apstiprināt",
+  "save": "Saglabāt",
+  "documentation": "Dokumentācija (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Mainīt valodu",
+    "flagAriaLabel": "Pārslēgt uz {{country}}",
+    "currentAriaLabel": "Pašreizējā valoda: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Tirdzniecības konsole",
+    "tagline": "Precīza darba vieta",
+    "openSidebar": "Atvērt sānu paneli",
+    "closeSidebar": "Aizvērt sānu paneli",
+    "sidebar": "Sānu panelis",
+    "mainNavigation": "Galvenā navigācija",
+    "tradingContent": "Tirdzniecības saturs",
+    "skipToContent": "Pāriet uz tirdzniecības saturu",
+    "lag": "Aizture:",
+    "lagTitle": "Turp-atpakaļ aizture līdz WebSocket serverim",
+    "topics": "Tēmas:",
+    "topicsTitle": "Abonēto WebSocket tēmu skaits",
+    "connected": "Savienots",
+    "disconnected": "Atvienots",
+    "connectedTitle": "Savienots ar WebSocket",
+    "disconnectedTitle": "Atvienots no WebSocket",
+    "switchToLightMode": "Pārslēgt uz gaišo režīmu",
+    "switchToDarkMode": "Pārslēgt uz tumšo režīmu",
+    "timeTravelBanner": "Laika ceļošanas režīms — tiek skatīti vēsturiskie dati (tikai lasīšanai)",
+    "lagUnknown": "Nezināms",
+    "walletPicker": {
+      "ariaLabel": "Aktīvais maks",
+      "placeholder": "Maks",
+      "allWallets": "Visi maki",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktīvais operators",
+      "placeholder": "Operators",
+      "allOperators": "Visi operatori"
+    },
+    "timeTravel": {
+      "pickerTitle": "Laika ceļošana: izvēlieties vēsturisku laika punktu",
+      "exitAriaLabel": "Iziet no laika ceļošanas režīma",
+      "exitTitle": "Atgriezties tiešsaistes režīmā"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Tikai novērošanai paredzēts instruments. Snapper saņem tirgus datus, bet nevar izvietot rīkojumus šim (simbols, birža) pārim.",
+      "ariaLabel": "Instruments tikai ar tirgus datiem",
+      "badge": "Tikai tirgus dati"
+    },
+    "liveOnly": {
+      "notice": "Šī cilne rāda pašreizējo stāvokli — vēsturiskais skats nav pieejams."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Kaut kas nogāja greizi",
+    "titleWithComponent": "Kļūda komponentā {{componentName}}",
+    "stackTrace": "Steka izsekojums",
+    "tryAgain": "Mēģināt vēlreiz"
+  },
+  "nav": {
+    "overview": "Pārskats",
+    "market": "Tirgus dati",
+    "processes": "Procesi",
+    "strategies": "Stratēģijas",
+    "orders": "Rīkojumi un izpildes",
+    "positions": "Pozīcijas",
+    "signals": "Signāli",
+    "backtests": "Backtests",
+    "health": "Veselība",
+    "admin": "Administrēšana",
+    "aiIntegration": "AI integrācija",
+    "aiReviews": "AI pārskati",
+    "settings": "Iestatījumi"
+  }
+}

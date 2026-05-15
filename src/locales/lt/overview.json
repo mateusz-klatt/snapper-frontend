@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Apžvalga"
+  },
+  "metrics": {
+    "feedsRunning": "Veikiantys Feed",
+    "strategiesActive": "Aktyvios strategijos",
+    "openOrders": "Atviri pavedimai",
+    "todaysExecutions": "Šiandienos vykdymai",
+    "executionsOn": "Vykdymai ({{date}})"
+  },
+  "status": {
+    "stopped": "Sustabdyta",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Vykdoma",
+    "active": "Aktyvu"
+  },
+  "processStatus": {
+    "title": "Procesų būsena",
+    "feeds": "Feeds",
+    "strategies": "Strategijos",
+    "executors": "Vykdytojai",
+    "brokers": "Brokeriai"
+  },
+  "portfolio": {
+    "title": "Portfelio suvestinė",
+    "totalValue": "Bendra vertė",
+    "longExposure": "Ilgoji ekspozicija",
+    "shortExposure": "Trumpoji ekspozicija",
+    "netDelta": "Grynoji delta",
+    "unrealizedPnl": "Nerealizuotas P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Pozicijos",
+    "instrumentsCount": "{{count}} instrumentų",
+    "empty": "Pozicijų duomenų nėra"
+  },
+  "signals": {
+    "title": "Naujausi signalai",
+    "empty": "Naujausių signalų nėra",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Naujausi vykdymai",
+    "empty": "Naujausių vykdymų nėra",
+    "noTime": "N/A"
+  }
+}

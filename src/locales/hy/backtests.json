@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Հետ",
+    "backToList": "← Հետ դեպի Backtests"
+  },
+  "status": {
+    "pending": "Սպասում է",
+    "running": "Ընթացքի մեջ է",
+    "completed": "Ավարտված է",
+    "failed": "Ձախողվել է",
+    "cancelled": "Չեղարկված է"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Չեղարկել",
+      "rerun": "Գործարկել կրկին"
+    },
+    "fields": {
+      "timeframe": "Ժամանակահատված",
+      "period": "Ժամանակաշրջան",
+      "initialCash": "Սկզբնական կանխիկ",
+      "id": "ID"
+    },
+    "errorPrefix": "Սխալ՝ {{message}}",
+    "filter": {
+      "ariaLabel": "Զտել Backtests-ը ըստ վիճակի",
+      "options": {
+        "all": "Բոլոր վիճակները",
+        "pending": "Սպասում է",
+        "running": "Ընթացքի մեջ է",
+        "completed": "Ավարտված է",
+        "failed": "Ձախողվել է",
+        "cancelled": "Չեղարկված է"
+      }
+    },
+    "empty": {
+      "title": "Backtests չկան",
+      "message": "Գործարկեք Backtest CLI-ի կամ API-ի միջոցով՝ արդյունքները այստեղ տեսնելու համար։"
+    }
+  },
+  "detail": {
+    "title": "Backtest գործարկում",
+    "fields": {
+      "strategy": "Ռազմավարություն",
+      "instrument": "Գործիք",
+      "status": "Վիճակ",
+      "period": "Ժամանակաշրջան",
+      "crossAsset": "Միջակտիվային վերագրում",
+      "configHash": "Կազմաձևման hash"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} կատարումներ",
+    "errors": {
+      "invalidRunId": "Անվավեր գործարկման ID — պետք է լինի UUID7 (ստացվել է «{{id}}»)։",
+      "loadFailed": "Չհաջողվեց բեռնել գործարկումը՝ {{message}}",
+      "notFound": "չի գտնվել"
+    }
+  },
+  "compare": {
+    "title": "Համեմատել",
+    "headingFull": "Backtest համեմատություն",
+    "loading": "Համեմատությունը բեռնվում է…",
+    "vs": "ընդդեմ",
+    "runLabel": "Գործարկում {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Մետրիկաներ",
+      "equityOverlay": "Կապիտալի կորի վերադրում",
+      "trades": "Գործարքներ",
+      "signals": "Ազդանշաններ"
+    },
+    "pairingMode": {
+      "auto": "ավտո",
+      "manual": "ձեռքով"
+    },
+    "errors": {
+      "notFound": "Համեմատությունը ընթացիկ դրամապանակում չի գտնվել։",
+      "loadFailed": "Չհաջողվեց բեռնել համեմատությունը՝ {{message}}",
+      "unknown": "անհայտ սխալ",
+      "emptyResponse": "Համեմատության դատարկ պատասխան։"
+    },
+    "launcher": {
+      "title": "Համեմատել",
+      "submit": "Համեմատել",
+      "autoPair": "Համեմատել ամենավերջինի հետ",
+      "terminalGate": "համեմատությունը հասանելի է, երբ այս գործարկումը հասնում է վերջնական վիճակի",
+      "noSiblings": "այս կազմաձևմամբ այլ գործարկումներ չկան",
+      "limitNotice": "ցուցադրվում է {{count}} ամենավերջինը — ավելի հին գործարկումների համար օգտագործեք ձեռքով զույգ",
+      "pickPlaceholder": "— ընտրեք գործարկում համեմատելու համար —",
+      "showAllLabel": "Ցույց տալ բոլոր գործարկումները (ոչ միայն նույն կազմաձևմամբ)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "բոլոր գործարկումները",
+        "sameConfig": "նույն կազմաձևը"
+      },
+      "errors": {
+        "pickRequired": "ընտրեք գործարկում ցուցակից"
+      }
+    },
+    "diffColumns": {
+      "common": "Ընդհանուր",
+      "onlyA": "Միայն A-ում",
+      "onlyB": "Միայն B-ում"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Համեմատելի մետրիկաներ չկան — երկու գործարկումներում էլ գրանցված արժեքներ չկային։",
+      "columns": {
+        "name": "Մետրիկա",
+        "runA": "Գործարկում A",
+        "runB": "Գործարկում B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Գործարկում A",
+        "runB": "Գործարկում B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Սպասում է առաջընթացի…",
+    "candles": "{{done}} / {{total}} մոմ",
+    "candlesNoTotal": "{{done}} մոմ",
+    "equity": "կապիտալ {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} գործարք",
+    "milestoneLine": "նշաձող {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

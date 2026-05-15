@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Հանձնարարականներ և կատարումներ",
+    "newOrder": "Նոր հանձնարարական",
+    "exportCsv": "Արտահանել CSV"
+  },
+  "tabs": {
+    "orders": "Հանձնարարականներ ({{total}})",
+    "executions": "Կատարումներ ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Զտել ըստ վիճակի՝",
+    "options": {
+      "all": "Բոլոր հանձնարարականները",
+      "new": "Նոր",
+      "open": "Բաց",
+      "partiallyFilled": "Մասամբ կատարված",
+      "partially_filled": "Մասամբ կատարված",
+      "filled": "Կատարված",
+      "cancelled": "Չեղարկված",
+      "rejected": "Մերժված"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Շուկայական",
+    "quantity": "Քանակ",
+    "price": "Գին",
+    "created": "Ստեղծվել է",
+    "createdUnknown": "N/A",
+    "orderId": "Հանձնարարականի ID",
+    "leverage": "Լծակ",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "ՄԻԱՅՆ ՆՎԱԶԵՑՆԵԼ",
+    "cancel": "Չեղարկել",
+    "cancelling": "Չեղարկվում է…",
+    "cancelAriaLabel": "Չեղարկել {{orderId}} հանձնարարականը"
+  },
+  "executionCard": {
+    "orderNumber": "Հանձնարարական #{{orderId}}",
+    "filled": "ԿԱՏԱՐՎԱԾ",
+    "orderLabel": "Հանձնարարական {{orderId}}",
+    "size": "Չափ",
+    "price": "Գին",
+    "total": "Ընդամենը",
+    "executed": "Կատարվել է",
+    "fees": "Վճարներ"
+  },
+  "empty": {
+    "ordersTitle": "Հանձնարարականներ չեն գտնվել",
+    "ordersStartTrading": "Սկսեք առևտուրը՝ հանձնարարականները այստեղ տեսնելու համար",
+    "ordersFilterless": "{{status}} հանձնարարականներ չկան",
+    "executionsTitle": "Կատարումներ չեն գտնվել",
+    "executionsMessage": "Գործարքների կատարումները կհայտնվեն այստեղ"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Գործիք",
+      "side": "Կողմ",
+      "type": "Տեսակ",
+      "status": "Վիճակ",
+      "quantity": "Քանակ",
+      "price": "Գին",
+      "leverage": "Լծակ",
+      "reduceOnly": "Միայն նվազեցնել",
+      "created": "Ստեղծվել է"
+    },
+    "executions": {
+      "orderId": "Հանձնարարականի ID",
+      "instrument": "Գործիք",
+      "side": "Կողմ",
+      "size": "Չափ",
+      "price": "Գին",
+      "total": "Ընդամենը",
+      "fee": "Վճար",
+      "feeAsset": "Վճարի ակտիվ",
+      "executed": "Կատարվել է"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Նոր ձեռքով հանձնարարական",
+    "titleConfirm": "Հաստատել հանձնարարականը",
+    "fields": {
+      "exchange": "Բորսա",
+      "instrument": "Գործիք",
+      "side": "Կողմ",
+      "orderType": "Հանձնարարականի տեսակ",
+      "quantity": "Քանակ",
+      "price": "Գին",
+      "stopPrice": "Stop գին",
+      "mode": "Ռեժիմ",
+      "wallet": "Դրամապանակ",
+      "type": "Տեսակ"
+    },
+    "sideOptions": {
+      "buy": "Գնում",
+      "sell": "Վաճառք"
+    },
+    "orderTypeOptions": {
+      "market": "Շուկայական",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — միայն շուկայի տվյալներ",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Չեղարկել",
+      "reviewOrder": "Վերանայել հանձնարարականը",
+      "back": "Հետ",
+      "confirmOrder": "Հաստատել հանձնարարականը",
+      "submitting": "Ուղարկվում է..."
+    },
+    "errors": {
+      "missingRequired": "Բոլոր պարտադիր դաշտերը պետք է լրացվեն",
+      "quantityPositive": "Քանակը պետք է լինի դրական թիվ",
+      "priceRequired": "Այս հանձնարարականի տեսակի համար գինը պարտադիր է",
+      "pricePositive": "Գինը պետք է լինի դրական թիվ",
+      "stopPriceRequired": "Այս հանձնարարականի տեսակի համար Stop գինը պարտադիր է",
+      "stopPricePositive": "Stop գինը պետք է լինի դրական թիվ",
+      "createFailed": "Հանձնարարականի ստեղծումը ձախողվեց"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Այս գործիքը միայն դիտարկման համար է — հանձնարարականները տեղադրեք կատարում ապահովող գործիքի վրա։",
+      "unknownInstrument": "Այս գործիքը ճանաչված չէ։ Վերբեռնեք ցուցակը և փորձեք կրկին։",
+      "capsViolation": "Այս հանձնարարականը կգերազանցի հաշվի անվտանգության սահմանաչափերը։ Վերանայեք ռիսկի կարգավորումները և փորձեք կրկին։"
+    }
+  }
+}

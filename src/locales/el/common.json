@@ -1,0 +1,83 @@
+{
+  "loading": "Φόρτωση...",
+  "error": "Σφάλμα",
+  "retry": "Δοκιμάστε ξανά",
+  "close": "Κλείσιμο",
+  "cancel": "Ακύρωση",
+  "confirm": "Επιβεβαίωση",
+  "save": "Αποθήκευση",
+  "documentation": "Τεκμηρίωση (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Αλλαγή γλώσσας",
+    "flagAriaLabel": "Μετάβαση σε {{country}}",
+    "currentAriaLabel": "Τρέχουσα γλώσσα: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Κονσόλα συναλλαγών",
+    "tagline": "Σταθμός εργασίας ακριβείας",
+    "openSidebar": "Άνοιγμα πλευρικής γραμμής",
+    "closeSidebar": "Κλείσιμο πλευρικής γραμμής",
+    "sidebar": "Πλευρική γραμμή",
+    "mainNavigation": "Κύρια πλοήγηση",
+    "tradingContent": "Περιεχόμενο συναλλαγών",
+    "skipToContent": "Μετάβαση στο περιεχόμενο συναλλαγών",
+    "lag": "Καθυστέρηση:",
+    "lagTitle": "Καθυστέρηση μετ' επιστροφής προς τον διακομιστή WebSocket",
+    "topics": "Θέματα:",
+    "topicsTitle": "Αριθμός εγγεγραμμένων θεμάτων WebSocket",
+    "connected": "Συνδεδεμένο",
+    "disconnected": "Αποσυνδεδεμένο",
+    "connectedTitle": "Συνδεδεμένο στο WebSocket",
+    "disconnectedTitle": "Αποσυνδεδεμένο από το WebSocket",
+    "switchToLightMode": "Μετάβαση σε φωτεινή λειτουργία",
+    "switchToDarkMode": "Μετάβαση σε σκοτεινή λειτουργία",
+    "timeTravelBanner": "Λειτουργία ταξιδιού στον χρόνο — προβολή ιστορικών δεδομένων (μόνο για ανάγνωση)",
+    "lagUnknown": "Άγνωστο",
+    "walletPicker": {
+      "ariaLabel": "Ενεργό πορτοφόλι",
+      "placeholder": "Πορτοφόλι",
+      "allWallets": "Όλα τα πορτοφόλια",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Ενεργός χειριστής",
+      "placeholder": "Χειριστής",
+      "allOperators": "Όλοι οι χειριστές"
+    },
+    "timeTravel": {
+      "pickerTitle": "Ταξίδι στον χρόνο: επιλέξτε ιστορικό χρονικό σημείο",
+      "exitAriaLabel": "Έξοδος από τη λειτουργία ταξιδιού στον χρόνο",
+      "exitTitle": "Επιστροφή σε ζωντανή λειτουργία"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Μέσο μόνο για παρατήρηση. Το Snapper λαμβάνει δεδομένα αγοράς αλλά δεν μπορεί να υποβάλει εντολές για αυτό το ζεύγος (σύμβολο, αγορά).",
+      "ariaLabel": "Μέσο μόνο με δεδομένα αγοράς",
+      "badge": "Μόνο δεδομένα αγοράς"
+    },
+    "liveOnly": {
+      "notice": "Αυτή η καρτέλα εμφανίζει την τρέχουσα κατάσταση — η ιστορική προβολή δεν είναι διαθέσιμη."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Κάτι πήγε στραβά",
+    "titleWithComponent": "Σφάλμα στο {{componentName}}",
+    "stackTrace": "Ίχνος στοίβας",
+    "tryAgain": "Δοκιμάστε ξανά"
+  },
+  "nav": {
+    "overview": "Επισκόπηση",
+    "market": "Δεδομένα αγοράς",
+    "processes": "Διεργασίες",
+    "strategies": "Στρατηγικές",
+    "orders": "Εντολές και εκτελέσεις",
+    "positions": "Θέσεις",
+    "signals": "Σήματα",
+    "backtests": "Backtests",
+    "health": "Υγεία",
+    "admin": "Διαχείριση",
+    "aiIntegration": "Ενσωμάτωση AI",
+    "aiReviews": "Αξιολογήσεις AI",
+    "settings": "Ρυθμίσεις"
+  }
+}

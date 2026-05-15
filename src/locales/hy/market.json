@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Շուկայի տվյալներ"
+  },
+  "controls": {
+    "exchange": "Բորսա՝",
+    "instrument": "Գործիք՝",
+    "timeframe": "Ժամանակահատված՝",
+    "selectExchange": "Ընտրել բորսա",
+    "searchInstrument": "Որոնել գործիք..."
+  },
+  "timeframes": {
+    "1m": "1 րոպե",
+    "5m": "5 րոպե",
+    "15m": "15 րոպե",
+    "30m": "30 րոպե",
+    "1h": "1 ժամ",
+    "4h": "4 ժամ",
+    "1d": "1 օր"
+  },
+  "stats": {
+    "currentPrice": "Ընթացիկ գին",
+    "change24h": "24ժ փոփոխություն",
+    "high24h": "24ժ առավելագույն",
+    "low24h": "24ժ նվազագույն"
+  },
+  "chart": {
+    "title": "Գնի գրաֆիկ",
+    "errorPrefix": "Գրաֆիկի տվյալները բեռնելիս սխալ՝",
+    "unknownError": "Անհայտ սխալ",
+    "noDataTitle": "{{instrument}} գործիքի համար տվյալներ չկան",
+    "noDataHint": "Գործիքը կարող է գոյություն չունենալ կամ չունենալ {{timeframe}} տվյալներ"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{exchange}} բորսայում {{instrument}} գործիքի համար հարակից գործիքներ կազմաձևված չեն։"
+  },
+  "cacheBanner": {
+    "message": "Քեշը տաքացվում է՝ հասանելի է {{sampleCount}} / {{expected}} մոմ {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(ստացված է 1m-ից)",
+      "db": "(DB-ից)"
+    }
+  }
+}

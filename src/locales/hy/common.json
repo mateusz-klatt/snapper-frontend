@@ -1,0 +1,83 @@
+{
+  "loading": "Բեռնվում է...",
+  "error": "Սխալ",
+  "retry": "Կրկնել",
+  "close": "Փակել",
+  "cancel": "Չեղարկել",
+  "confirm": "Հաստատել",
+  "save": "Պահել",
+  "documentation": "Փաստաթղթեր (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Փոխել լեզուն",
+    "flagAriaLabel": "Փոխարկել դեպի {{country}}",
+    "currentAriaLabel": "Ընթացիկ լեզու՝ {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Առևտրային կոնսոլ",
+    "tagline": "Ճշգրիտ աշխատանքային կայան",
+    "openSidebar": "Բացել կողային վահանակը",
+    "closeSidebar": "Փակել կողային վահանակը",
+    "sidebar": "Կողային վահանակ",
+    "mainNavigation": "Հիմնական նավիգացիա",
+    "tradingContent": "Առևտրային բովանդակություն",
+    "skipToContent": "Անցնել առևտրային բովանդակությանը",
+    "lag": "Ուշացում՝",
+    "lagTitle": "Երկկողմանի ուշացում մինչև WebSocket սերվեր",
+    "topics": "Թեմաներ՝",
+    "topicsTitle": "Բաժանորդագրված WebSocket թեմաների քանակ",
+    "connected": "Միացված է",
+    "disconnected": "Անջատված է",
+    "connectedTitle": "Միացված է WebSocket-ին",
+    "disconnectedTitle": "Անջատված է WebSocket-ից",
+    "switchToLightMode": "Փոխարկել բաց ռեժիմի",
+    "switchToDarkMode": "Փոխարկել մուգ ռեժիմի",
+    "timeTravelBanner": "Ժամանակային ճանապարհորդության ռեժիմ — դիտվում են պատմական տվյալներ (միայն կարդալու)",
+    "lagUnknown": "Անհայտ",
+    "walletPicker": {
+      "ariaLabel": "Ակտիվ դրամապանակ",
+      "placeholder": "Դրամապանակ",
+      "allWallets": "Բոլոր դրամապանակները",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Ակտիվ օպերատոր",
+      "placeholder": "Օպերատոր",
+      "allOperators": "Բոլոր օպերատորները"
+    },
+    "timeTravel": {
+      "pickerTitle": "Ժամանակային ճանապարհորդություն. ընտրեք պատմական ժամանակակետ",
+      "exitAriaLabel": "Դուրս գալ ժամանակային ճանապարհորդության ռեժիմից",
+      "exitTitle": "Վերադառնալ live ռեժիմ"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Միայն դիտարկման գործիք։ Snapper-ը ստանում է շուկայի տվյալներ, բայց չի կարող հանձնարարականներ տեղադրել այս (նշան, բորսա) զույգի համար։",
+      "ariaLabel": "Միայն շուկայի տվյալների գործիք",
+      "badge": "Միայն շուկայի տվյալներ"
+    },
+    "liveOnly": {
+      "notice": "Այս ներդիրը ցուցադրում է ընթացիկ վիճակը — պատմական դիտումը հասանելի չէ։"
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Ինչ-որ բան սխալ է տեղի ունեցել",
+    "titleWithComponent": "Սխալ {{componentName}} բաղադրիչում",
+    "stackTrace": "Ստեկի հետագիծ",
+    "tryAgain": "Կրկնել"
+  },
+  "nav": {
+    "overview": "Ակնարկ",
+    "market": "Շուկայի տվյալներ",
+    "processes": "Գործընթացներ",
+    "strategies": "Ռազմավարություններ",
+    "orders": "Հանձնարարականներ և կատարումներ",
+    "positions": "Դիրքեր",
+    "signals": "Ազդանշաններ",
+    "backtests": "Backtests",
+    "health": "Առողջություն",
+    "admin": "Ադմինիստրացիա",
+    "aiIntegration": "AI ինտեգրում",
+    "aiReviews": "AI վերանայումներ",
+    "settings": "Կարգավորումներ"
+  }
+}

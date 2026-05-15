@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Beiðni",
+    "decision": "Ákvörðun",
+    "capsViolation": "Brot á mörkum",
+    "selectedDelegate": "Valinn delegate",
+    "instrument": "gerningur",
+    "deadline": "frestur {{time}}",
+    "decidedBy": "af",
+    "newStatus": "staða",
+    "mode": "hamur",
+    "capAttempted": "reynt",
+    "capLimit": "á móti marki",
+    "capOn": "á gerningi",
+    "reviewLabel": "yfirferð {{reviewId}}",
+    "unhandledFrame": "Ómeðhöndlaður AI yfirferðarvirknirammi: {{frame}}"
+  },
+  "page": {
+    "title": "AI yfirferðarinnhólf",
+    "subtitle": "Biðliggjandi CONSULT yfirferðir sem sendar eru til þessa delegate ásamt lifandi atburðastraumi."
+  },
+  "roleNotice": {
+    "title": "Frátekið fyrir AI delegates",
+    "message": "Þetta innhólf birtir CONSULT yfirferðir sem sendar eru til AI delegate principal. Skráðu þig inn með AI delegate reikningi til að sjá biðliggjandi yfirferðir og lifandi virknistraum. Núverandi hlutverk þitt er",
+    "unknownRole": "óþekkt"
+  },
+  "pending": {
+    "title": "Biðliggjandi yfirferðir",
+    "loading": "Hleð biðliggjandi yfirferðum…",
+    "loadError": "Mistókst að hlaða biðliggjandi yfirferðum: {{message}}",
+    "emptyTitle": "Engar biðliggjandi yfirferðir",
+    "emptyMessage": "Nýjar CONSULT beiðnir sem sendar eru til þessa delegate birtast hér.",
+    "columns": {
+      "instrument": "Gerningur",
+      "thesis": "Tilgáta",
+      "status": "Staða",
+      "deadline": "Frestur",
+      "decision": "Ákvörðun"
+    },
+    "rationalePlaceholder": "Rökstuðningur (valfrjálst)",
+    "rationaleAriaLabel": "Rökstuðningur fyrir yfirferð {{reviewId}}",
+    "approve": "Samþykkja",
+    "reject": "Hafna",
+    "submitError": "Innsending mistókst: {{message}}"
+  },
+  "activity": {
+    "title": "Nýleg virkni",
+    "emptyTitle": "Engin virkni enn",
+    "emptyMessage": "Rammar fyrir AI yfirferðarbeiðnir, ákvarðanir og brot á mörkum munu streyma hingað.",
+    "summaryEmpty": "Engir rammar mótteknir",
+    "summaryCount": "Sýni {{shown}} af {{total}} í biðminni"
+  }
+}

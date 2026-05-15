@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Procesu vadība",
+    "subtitle": "Procesu uzraudzība un vadība reāllaikā"
+  },
+  "sections": {
+    "longRunning": "Ilgstoši procesi",
+    "executorTemplates": "Izpildītāju veidnes",
+    "executorTemplatesHint": "Veidnes konfigurācijas rediģēšana pēc restartēšanas ietekmē visus makus šajā biržā. Veidnes ir tikai konfigurācija — palaidiet zemāk esošo katra maka instanci, lai darbinātu izpildītāju.",
+    "walletInstances": "Maku instances",
+    "taskProcesses": "Uzdevumu procesi"
+  },
+  "card": {
+    "stop": "Apturēt",
+    "start": "Palaist",
+    "restart": "Restartēt",
+    "starting": "Notiek palaišana...",
+    "stopping": "Notiek apturēšana...",
+    "status": {
+      "running": "darbojas",
+      "stopped": "apturēts",
+      "error": "kļūda",
+      "starting": "tiek palaists",
+      "stopping": "tiek apturēts"
+    }
+  },
+  "template": {
+    "badge": "veidne",
+    "mode": "Režīms:",
+    "parameters": "Parametri:",
+    "paramCount": "{{count}} parametrs(-i)",
+    "noParams": "parametri nav iestatīti"
+  },
+  "badges": {
+    "oneShot": "vienreizējs",
+    "autoStart": "auto-start",
+    "manual": "manuāls"
+  },
+  "actions": {
+    "stopTitle": "Apturēt {{name}}",
+    "stopMessage": "Tas apturēs procesu {{name}}.",
+    "restartTitle": "Restartēt {{name}}",
+    "restartMessage": "Tas restartēs procesu {{name}}."
+  },
+  "executionMode": {
+    "title": "Palaist {{name}}",
+    "label": "Izpildes režīms:",
+    "threadName": "Pavediena režīms",
+    "threadDescription": "Darbojas kā iegults uzdevums tīmekļa serverī. Ātrāka palaišana, koplietota atmiņa.",
+    "processName": "Procesa režīms",
+    "processDescription": "Darbojas kā atsevišķs Python process. Izolēts, noturīgs pret kļūmēm, detalizēta uzraudzība.",
+    "cancel": "Atcelt",
+    "start": "Palaist {{name}}",
+    "threadAriaLabel": "Pavediena režīms",
+    "processAriaLabel": "Procesa režīms"
+  }
+}

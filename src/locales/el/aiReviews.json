@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Αίτημα",
+    "decision": "Απόφαση",
+    "capsViolation": "Παραβίαση ορίων",
+    "selectedDelegate": "Επιλεγμένο delegate",
+    "instrument": "μέσο",
+    "deadline": "προθεσμία {{time}}",
+    "decidedBy": "από",
+    "newStatus": "κατάσταση",
+    "mode": "λειτουργία",
+    "capAttempted": "επιχειρήθηκε",
+    "capLimit": "έναντι ορίου",
+    "capOn": "στο μέσο",
+    "reviewLabel": "αξιολόγηση {{reviewId}}",
+    "unhandledFrame": "Μη χειριζόμενο πλαίσιο δραστηριότητας αξιολόγησης AI: {{frame}}"
+  },
+  "page": {
+    "title": "Εισερχόμενα αξιολογήσεων AI",
+    "subtitle": "Εκκρεμείς αξιολογήσεις CONSULT που δρομολογούνται σε αυτό το delegate και η ζωντανή ροή συμβάντων."
+  },
+  "roleNotice": {
+    "title": "Δεσμευμένο για AI delegates",
+    "message": "Αυτά τα εισερχόμενα εμφανίζουν αξιολογήσεις CONSULT που δρομολογούνται σε principal AI delegate. Συνδεθείτε με λογαριασμό AI delegate για να δείτε εκκρεμείς αξιολογήσεις και τη ζωντανή ροή δραστηριότητας. Ο τρέχων ρόλος σας είναι",
+    "unknownRole": "άγνωστος"
+  },
+  "pending": {
+    "title": "Εκκρεμείς αξιολογήσεις",
+    "loading": "Φόρτωση εκκρεμών αξιολογήσεων…",
+    "loadError": "Αποτυχία φόρτωσης εκκρεμών αξιολογήσεων: {{message}}",
+    "emptyTitle": "Δεν υπάρχουν εκκρεμείς αξιολογήσεις",
+    "emptyMessage": "Νέα αιτήματα CONSULT που δρομολογούνται σε αυτό το delegate θα εμφανίζονται εδώ.",
+    "columns": {
+      "instrument": "Μέσο",
+      "thesis": "Θέση",
+      "status": "Κατάσταση",
+      "deadline": "Προθεσμία",
+      "decision": "Απόφαση"
+    },
+    "rationalePlaceholder": "Αιτιολόγηση (προαιρετικά)",
+    "rationaleAriaLabel": "Αιτιολόγηση για την αξιολόγηση {{reviewId}}",
+    "approve": "Έγκριση",
+    "reject": "Απόρριψη",
+    "submitError": "Η υποβολή απέτυχε: {{message}}"
+  },
+  "activity": {
+    "title": "Πρόσφατη δραστηριότητα",
+    "emptyTitle": "Δεν υπάρχει ακόμη δραστηριότητα",
+    "emptyMessage": "Πλαίσια αιτημάτων αξιολόγησης AI, αποφάσεων και παραβιάσεων ορίων θα μεταδίδονται εδώ.",
+    "summaryEmpty": "Δεν ελήφθησαν πλαίσια",
+    "summaryCount": "Εμφανίζονται {{shown}} από {{total}} αποθηκευμένα στο buffer"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI samþætting",
+    "subtitle": "Stýra AI delegates sem tengjast Snapper í gegnum MCP.",
+    "loading": "Hleð AI samþættingu…",
+    "createDelegate": "Búa til delegate"
+  },
+  "disabled": {
+    "title": "AI samþætting er óvirk",
+    "message": "Virkjaðu feature flag í Stillingar → Feature Flags til að stýra AI delegates."
+  },
+  "list": {
+    "loadingDelegates": "Hleð delegates…",
+    "emptyTitle": "Engir AI delegates enn",
+    "emptyMessage": "Smelltu á „Búa til delegate“ til að búa einn til og mynda MCP stillingabút.",
+    "columns": {
+      "label": "Merki",
+      "username": "Notandanafn",
+      "created": "Búið til",
+      "maxOpenOrders": "Hámarks opnar pantanir",
+      "maxDailyUsd": "Hámarks daglegt USD",
+      "status": "Staða",
+      "actions": "Aðgerðir"
+    },
+    "status": {
+      "active": "Virkt",
+      "revoked": "Afturkallað"
+    },
+    "default": "sjálfgefið",
+    "details": "Upplýsingar",
+    "viewAriaLabel": "Skoða delegate {{label}}"
+  },
+  "wizard": {
+    "title": "Búa til AI delegate",
+    "step1": "1. Auðkenni",
+    "step2": "2. Umfang og mörk",
+    "step3": "3. Yfirferð",
+    "stepDone": "✓ Lokið",
+    "identity": {
+      "labelField": "Merki",
+      "labelPlaceholder": "t.d. Alpha prop desk",
+      "labelHelpPrefix": "Notandanafn delegate verður leitt út á netþjónshlið sem ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Umfang",
+      "operatorLabel": "public_id operators (valfrjálst)",
+      "operatorPlaceholder": "Skildu eftir autt til að erfa aðaloperator kallanda"
+    },
+    "caps": {
+      "heading": "Viðskiptamörk (öll valfrjáls)",
+      "maxOpenOrders": "Hámarks opnar pantanir",
+      "maxDailyNotionalUsd": "Hámarks daglegt nafnverð USD",
+      "maxCancelsPerMinute": "Hámarks afturkallanir á mínútu",
+      "perInstrument": "Hámarksmagn á gerning (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "sjálfgefið",
+      "errorInvalidJson": "max_order_quantity_per_instrument verður að vera gilt JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument verður að vera JSON hlutur eða autt",
+      "errorNegative": "Mörk verða að vera ekki-neikvæðar heiltölur eða tóm."
+    },
+    "review": {
+      "heading": "Yfirfara og búa til",
+      "rowLabel": "Merki",
+      "rowOperator": "public_id operators",
+      "rowMaxOpenOrders": "Hámarks opnar pantanir",
+      "rowMaxDailyNotional": "Hámarks daglegt nafnverð USD",
+      "rowMaxCancelsPerMinute": "Hámarks afturkallanir á mínútu",
+      "rowPerInstrument": "Hámarksmagn á gerning",
+      "operatorDefault": "(aðaloperator kallanda)",
+      "defaultValue": "(sjálfgefið)"
+    },
+    "buttons": {
+      "cancel": "Hætta við",
+      "next": "Næst",
+      "back": "Til baka",
+      "createDelegate": "Búa til delegate",
+      "iSavedClose": "Þetta hefur verið vistað — loka"
+    },
+    "toast": {
+      "delegateCreated": "Delegate búinn til",
+      "failedToCreate": "Mistókst að búa til delegate"
+    }
+  },
+  "detail": {
+    "loading": "Hleð delegate…",
+    "notFound": "Delegate fannst ekki eða er ekki tiltækur.",
+    "back": "Til baka",
+    "backToList": "Til baka í lista",
+    "updateCaps": "Uppfæra mörk",
+    "revoke": "Afturkalla",
+    "save": "Vista",
+    "cancel": "Hætta við",
+    "tradingCaps": "Viðskiptamörk",
+    "status": "Staða",
+    "active": "Virkt",
+    "revoked": "Afturkallað",
+    "createdAt": "Búið til",
+    "createdBy": "Búið til af (public_id notanda)",
+    "publicId": "Opinbert ID",
+    "maxOpenOrders": "Hámarks opnar pantanir",
+    "maxDailyNotionalUsd": "Hámarks daglegt nafnverð USD",
+    "maxCancelsPerMinute": "Hámarks afturkallanir á mínútu",
+    "perInstrument": "Hámarksmagn á gerning",
+    "defaultValue": "(sjálfgefið)",
+    "editorPlaceholder": "(sjálfgefið)",
+    "toast": {
+      "capsUpdated": "Mörk uppfærð",
+      "failedToUpdateCaps": "Mistókst að uppfæra mörk",
+      "negativeIntegersError": "Mörk verða að vera ekki-neikvæðar heiltölur eða tóm."
+    }
+  },
+  "revokeDialog": {
+    "title": "Afturkalla delegate „{{label}}“?",
+    "message": "Þetta afturkallar token delegate og stöðvar MCP áskriftir hans. Ekki er hægt að afturkalla þessa aðgerð.",
+    "confirm": "Afturkalla",
+    "cancel": "Hætta við",
+    "toast": {
+      "delegateRevoked": "Delegate afturkallaður",
+      "failedToRevoke": "Mistókst að afturkalla delegate"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Vistaðu þessi skilríki núna",
+    "warningMessage": "Þau verða ekki sýnd aftur. Snapper geymir ekki hrá token; þegar þessum leiðarvísi er lokað verður eina afritið í MCP client stillingunum þínum.",
+    "snippetHelp": "Langlíft AI delegate token (~10 ár). Sama token auðkennir bæði proxy MCP server og watch monitor. Til að endurnýja skal afvirkja þennan delegate og búa til nýjan.",
+    "baseUrlHelpPrefix": "Grunn-URL er leitt út frá origin þessa vafra + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Afrita stillingabút á klemmuspjald",
+    "copy": "Afrita á klemmuspjald",
+    "copied": "Afritað"
+  }
+}

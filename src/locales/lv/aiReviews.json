@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Pieprasījums",
+    "decision": "Lēmums",
+    "capsViolation": "Limitu pārkāpums",
+    "selectedDelegate": "Izvēlētais delegāts",
+    "instrument": "instruments",
+    "deadline": "termiņš {{time}}",
+    "decidedBy": "pēc",
+    "newStatus": "statuss",
+    "mode": "režīms",
+    "capAttempted": "mēģināts",
+    "capLimit": "pret limitu",
+    "capOn": "instrumentā",
+    "reviewLabel": "pārskats {{reviewId}}",
+    "unhandledFrame": "Neapstrādāts AI pārskata aktivitātes kadrs: {{frame}}"
+  },
+  "page": {
+    "title": "AI pārskatu iesūtne",
+    "subtitle": "Gaidāmie CONSULT pārskati, kas maršrutēti šim delegātam, un tiešraides notikumu plūsma."
+  },
+  "roleNotice": {
+    "title": "Rezervēts AI delegātiem",
+    "message": "Šī iesūtne parāda CONSULT pārskatus, kas maršrutēti AI delegāta principālim. Pierakstieties ar AI delegāta kontu, lai skatītu gaidāmos pārskatus un tiešraides aktivitātes plūsmu. Jūsu pašreizējā loma ir",
+    "unknownRole": "nezināma"
+  },
+  "pending": {
+    "title": "Gaidāmie pārskati",
+    "loading": "Notiek gaidāmo pārskatu ielāde…",
+    "loadError": "Neizdevās ielādēt gaidāmos pārskatus: {{message}}",
+    "emptyTitle": "Gaidāmu pārskatu nav",
+    "emptyMessage": "Jauni CONSULT pieprasījumi, kas maršrutēti šim delegātam, parādīsies šeit.",
+    "columns": {
+      "instrument": "Instruments",
+      "thesis": "Tēze",
+      "status": "Statuss",
+      "deadline": "Termiņš",
+      "decision": "Lēmums"
+    },
+    "rationalePlaceholder": "Pamatojums (neobligāti)",
+    "rationaleAriaLabel": "Pārskata {{reviewId}} pamatojums",
+    "approve": "Apstiprināt",
+    "reject": "Noraidīt",
+    "submitError": "Iesniegšana neizdevās: {{message}}"
+  },
+  "activity": {
+    "title": "Nesenā aktivitāte",
+    "emptyTitle": "Aktivitātes vēl nav",
+    "emptyMessage": "AI pārskata pieprasījumu, lēmumu un limitu pārkāpumu kadri tiks straumēti šeit.",
+    "summaryEmpty": "Kadri nav saņemti",
+    "summaryCount": "Rādīti {{shown}} no {{total}} buferētajiem"
+  }
+}

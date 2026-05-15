@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Θέσεις"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: σε εκκρεμότητα",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Ποσότητα",
+    "averageEntry": "Μέση είσοδος",
+    "unrealizedPnl": "Μη πραγματοποιημένο P&L",
+    "realizedPnl": "Πραγματοποιημένο P&L",
+    "updated": "Ενημερώθηκε {{timestamp}}"
+  },
+  "empty": {
+    "title": "Δεν υπάρχουν ανοικτές θέσεις",
+    "message": "Long, short και flat θέσεις θα εμφανιστούν εδώ μόλις εκτελεστούν συναλλαγές."
+  },
+  "bracketModal": {
+    "title": "Προσθήκη SL/TP — {{instrument}}",
+    "confirmTitle": "Επιβεβαίωση Bracket",
+    "position": "Θέση",
+    "entryPrice": "Τιμή εισόδου",
+    "stopLossLabel": "Τιμή Stop-Loss",
+    "takeProfitLabel": "Τιμή Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Κάτω από ${{price}}",
+      "slShort": "Πάνω από ${{price}}",
+      "tpLong": "Πάνω από ${{price}}",
+      "tpShort": "Κάτω από ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Ακύρωση",
+      "review": "Έλεγχος",
+      "back": "Πίσω",
+      "confirm": "Επιβεβαίωση",
+      "creating": "Δημιουργία…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Προσθήκη Trailing Stop — {{instrument}}",
+    "confirmTitle": "Επιβεβαίωση Trailing Stop",
+    "position": "Θέση",
+    "entryPrice": "Τιμή εισόδου",
+    "trailingDistanceLabel": "Trailing απόσταση (%)",
+    "minLockLabel": "Ελάχιστο κλείδωμα κέρδους (%) — προαιρετικά",
+    "trailingDistance": "Trailing απόσταση",
+    "minLockProfit": "Ελάχιστο κλείδωμα κέρδους",
+    "placeholders": {
+      "trailingPct": "π.χ. 5.0",
+      "minLockPct": "0 = έναρξη άμεσα"
+    },
+    "minLockWarning": "Το Trailing Stop δεν θα ενεργοποιηθεί μέχρι η τιμή να κινηθεί {{minLockPct}}% υπέρ σας.",
+    "buttons": {
+      "cancel": "Ακύρωση",
+      "review": "Έλεγχος",
+      "back": "Πίσω",
+      "confirm": "Επιβεβαίωση",
+      "creating": "Δημιουργία..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Απαιτείται τουλάχιστον μία τιμή SL ή TP",
+    "invalidSlPrice": "Μη έγκυρη τιμή Stop-Loss",
+    "slPricePositive": "Η τιμή Stop-Loss πρέπει να είναι θετική",
+    "invalidTpPrice": "Μη έγκυρη τιμή Take-Profit",
+    "tpPricePositive": "Η τιμή Take-Profit πρέπει να είναι θετική",
+    "slLongBelowEntry": "Η τιμή SL πρέπει να είναι κάτω από την τιμή εισόδου ({{price}})",
+    "tpLongAboveEntry": "Η τιμή TP πρέπει να είναι πάνω από την τιμή εισόδου ({{price}})",
+    "slShortAboveEntry": "Η τιμή SL πρέπει να είναι πάνω από την τιμή εισόδου ({{price}})",
+    "tpShortBelowEntry": "Η τιμή TP πρέπει να είναι κάτω από την τιμή εισόδου ({{price}})",
+    "trailingRequired": "Το ποσοστό Trailing είναι υποχρεωτικό",
+    "trailingInvalid": "Μη έγκυρο ποσοστό Trailing",
+    "trailingRange": "Το ποσοστό Trailing πρέπει να είναι μεταξύ 0 και 100",
+    "minLockInvalid": "Μη έγκυρο ελάχιστο ποσοστό κλειδώματος",
+    "minLockRange": "Το ελάχιστο ποσοστό κλειδώματος πρέπει να είναι μεταξύ 0 και 100"
+  }
+}
