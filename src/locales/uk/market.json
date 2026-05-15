@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Ринкові дані"
+  },
+  "controls": {
+    "exchange": "Біржа:",
+    "instrument": "Інструмент:",
+    "timeframe": "Таймфрейм:",
+    "selectExchange": "Виберіть біржу",
+    "searchInstrument": "Пошук інструмента..."
+  },
+  "timeframes": {
+    "1m": "1 хвилина",
+    "5m": "5 хвилин",
+    "15m": "15 хвилин",
+    "30m": "30 хвилин",
+    "1h": "1 година",
+    "4h": "4 години",
+    "1d": "1 день"
+  },
+  "stats": {
+    "currentPrice": "Поточна ціна",
+    "change24h": "Зміна за 24 год",
+    "high24h": "Максимум за 24 год",
+    "low24h": "Мінімум за 24 год"
+  },
+  "chart": {
+    "title": "Графік ціни",
+    "errorPrefix": "Помилка завантаження даних графіка:",
+    "unknownError": "Невідома помилка",
+    "noDataTitle": "Немає даних для {{instrument}}",
+    "noDataHint": "Інструмент може не існувати або не мати даних за {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Для {{instrument}} на {{exchange}} не налаштовано пов'язаних інструментів."
+  },
+  "cacheBanner": {
+    "message": "Прогрів кешу: доступно {{sampleCount}} / {{expected}} свічок {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(похідні з 1m)",
+      "db": "(з БД)"
+    }
+  }
+}

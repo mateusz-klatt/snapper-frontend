@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Управление стратегиями",
+    "register": "Зарегистрировать стратегию",
+    "saving": "Сохранение…",
+    "descriptionCanManage": "Регистрируйте новые процессы стратегий прямо из интерфейса. Автостарт сохраняет процесс включённым после перезапусков.",
+    "descriptionViewer": "Просмотр настроенных стратегий и их статуса. Для управления стратегиями обратитесь к оператору или администратору.",
+    "searchPlaceholder": "Поиск стратегий...",
+    "filter": {
+      "all": "Все статусы",
+      "running": "Выполняется",
+      "stopped": "Остановлена"
+    },
+    "configuredHeading": "Настроенные стратегии",
+    "noMatches": "Нет стратегий, соответствующих фильтрам",
+    "clearFilters": "Очистить фильтры",
+    "emptyTitle": "Стратегии не настроены",
+    "emptyCanManage": "Зарегистрируйте стратегию, чтобы начать алготрейдинг",
+    "emptyViewer": "Стратегии пока не настроены"
+  },
+  "confirm": {
+    "startTitle": "Запустить {{name}}",
+    "startMessage": "Это запустит стратегию {{name}}. Она может начать торговые операции в live-режиме.",
+    "stopTitle": "Остановить {{name}}",
+    "stopMessage": "Это остановит стратегию {{name}}. Активные позиции не будут закрыты автоматически."
+  },
+  "toast": {
+    "saved": "Стратегия {{name}} сохранена",
+    "started": "Стратегия {{name}} запущена",
+    "registerFailed": "Не удалось зарегистрировать стратегию: {{message}}",
+    "startSuccess": "Стратегия успешно запущена",
+    "stopSuccess": "Стратегия успешно остановлена",
+    "alreadyRunning": "Стратегия уже выполняется",
+    "notRunning": "Стратегия не выполняется",
+    "configNotFound": "Конфигурация стратегии не найдена. Проверьте настройки базы данных.",
+    "networkError": "Ошибка сети. Проверьте подключение и повторите попытку.",
+    "startFailed": "Не удалось запустить стратегию: {{message}}",
+    "stopFailed": "Не удалось остановить стратегию: {{message}}",
+    "unknownError": "Неизвестная ошибка"
+  },
+  "card": {
+    "ariaLabel": "Стратегия: {{name}}",
+    "modeLabel": "Режим: {{mode}}",
+    "autostartEnabled": "Автостарт: включён",
+    "autostartDisabled": "Автостарт: выключен",
+    "statusAriaLabel": "Статус: {{status}}",
+    "dataLagAriaLabel": "Задержка данных: {{seconds}} секунд",
+    "lagBadge": "задержка: {{seconds}}s",
+    "feedLag": "Задержка Feed: {{ms}}ms",
+    "heartbeatAge": "Возраст HB: {{seconds}}s",
+    "metrics": {
+      "status": "Статус",
+      "dataLag": "Задержка данных",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Показать детали",
+    "hideDetails": "Скрыть детали",
+    "inputs": "Входы ({{count}})",
+    "outputs": "Выходы ({{count}})",
+    "feedPublishers": "Публикаторы Feed ({{count}})",
+    "lastUpdate": "Последнее обновление: {{time}}",
+    "waiting": "Ожидание Heartbeat...",
+    "startAriaLabel": "Запустить стратегию {{name}}",
+    "stopAriaLabel": "Остановить стратегию {{name}}",
+    "start": "Запустить",
+    "stop": "Остановить",
+    "starting": "Запуск...",
+    "stopping": "Остановка...",
+    "status": {
+      "starting": "запуск",
+      "stopping": "остановка",
+      "running": "выполняется",
+      "stopped": "остановлена"
+    },
+    "health": {
+      "healthy": "В норме — поступают свежие данные",
+      "warning": "Предупреждение — данные устарели",
+      "error": "Ошибка — нет последних данных",
+      "unknown": "Неизвестно — нет данных Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "В НОРМЕ",
+      "warning": "ПРЕДУПРЕЖДЕНИЕ",
+      "error": "ОШИБКА"
+    }
+  },
+  "launchModal": {
+    "title": "Регистрация процесса стратегии",
+    "emptyTemplates": "В backend нет зарегистрированных шаблонов стратегий. Определите хотя бы один процесс стратегии.",
+    "close": "Закрыть",
+    "templateLabel": "Шаблон стратегии",
+    "templatePlaceholder": "Выберите шаблон...",
+    "templateFallbackDescription": "Стратегия зарегистрирована в backend",
+    "loadingDefaults": "Загрузка значений шаблона по умолчанию…",
+    "loadDefaultsError": "Не удалось загрузить значения шаблона по умолчанию. Проверьте логи backend.",
+    "processNameLabel": "Имя процесса",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Разрешённые символы: строчные буквы, цифры, подчёркивания",
+    "instanceNameLabel": "Имя экземпляра стратегии",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Используется в конфигурации стратегии и выходных топиках",
+    "executionModeLabel": "Режим выполнения",
+    "executionModeThread": "Встроенный поток",
+    "executionModeProcess": "Изолированный процесс",
+    "executionModeHelp": "Потоки разделяют память, процессы обеспечивают более сильную изоляцию.",
+    "flagsLabel": "Флаги",
+    "autostartLabel": "Автостарт при запуске сервера",
+    "startImmediatelyLabel": "Запустить сразу после регистрации",
+    "noteLabel": "Примечание (опционально)",
+    "notePlaceholder": "Опишите назначение или параметры этого экземпляра стратегии.",
+    "noteHelp": "Сохраняется вместе с конфигурацией, чтобы помочь идентифицировать этот процесс.",
+    "cancel": "Отменить",
+    "submit": "Зарегистрировать стратегию",
+    "submitting": "Регистрация…"
+  }
+}

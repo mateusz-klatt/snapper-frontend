@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrácia",
+    "subtitle": "Správa používateľov a konfigurácie systému"
+  },
+  "rolePermissions": {
+    "title": "Oprávnenia rolí",
+    "viewer": {
+      "label": "Pozorovateľ",
+      "description": "Prístup iba na čítanie k Prehľadu a Trhovým dátam. Nemôže spravovať procesy, stratégie ani systémové nastavenia."
+    },
+    "operator": {
+      "label": "Operátor",
+      "description": "Všetky oprávnenia Pozorovateľa plus obchodné operácie, vykonávanie stratégií, správa procesov a monitorovanie stavu systému."
+    },
+    "admin": {
+      "label": "Administrátor",
+      "description": "Plný prístup k systému vrátane správy používateľov, systémových nastavení, konfigurácie API kľúčov a všetkých oprávnení Operátora."
+    },
+    "table": {
+      "resource": "Zdroj",
+      "viewer": "Pozorovateľ",
+      "operator": "Operátor",
+      "admin": "Administrátor"
+    },
+    "resources": {
+      "overview": "Prehľad",
+      "market": "Trhové dáta",
+      "processes": "Procesy",
+      "strategies": "Stratégie",
+      "orders": "Pokyny a plnenia",
+      "positions": "Pozície",
+      "signals": "Signály",
+      "health": "Stav",
+      "admin": "Administrácia",
+      "settings": "Nastavenia"
+    }
+  },
+  "common": {
+    "cancel": "Zrušiť",
+    "selectWallet": "Vybrať peňaženku",
+    "selectAWallet": "Vyberte peňaženku",
+    "chooseWalletPlaceholder": "Vyberte peňaženku...",
+    "selectWalletPlaceholder": "Vyberte peňaženku...",
+    "walletLabel": "Peňaženka",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Neznáma chyba",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Prístup zamietnutý",
+      "message": "Nemáte oprávnenie spravovať používateľov. Kontaktujte správcu systému."
+    },
+    "list": {
+      "title": "Správa používateľov",
+      "countLabel": "Používatelia: {{count}}",
+      "showInactive": "Zobraziť neaktívnych",
+      "hideInactive": "Skryť neaktívnych",
+      "addUser": "Pridať používateľa",
+      "searchPlaceholder": "Hľadať podľa používateľského mena, e-mailu alebo roly...",
+      "columns": {
+        "user": "Používateľ",
+        "role": "Rola",
+        "status": "Stav",
+        "createdAt": "Vytvorené",
+        "actions": "Akcie"
+      },
+      "status": {
+        "active": "Aktívny",
+        "inactive": "Neaktívny"
+      },
+      "unknown": "Neznáme",
+      "empty": {
+        "title": "Nenašli sa žiadni používatelia",
+        "noMatch": "Vyhľadávacím kritériám nezodpovedá žiadny používateľ.",
+        "noUsers": "Nenašli sa žiadni používatelia.",
+        "noActive": "Nenašli sa žiadni aktívni používatelia."
+      },
+      "errorLoading": "Chyba pri načítaní používateľov: {{message}}",
+      "deactivate": {
+        "title": "Deaktivovať používateľa",
+        "message": "Naozaj chcete deaktivovať používateľa \"{{username}}\"? Už sa nebude môcť prihlásiť.",
+        "confirm": "Deaktivovať"
+      },
+      "toast": {
+        "deactivated": "Používateľ bol deaktivovaný",
+        "deactivateError": "Chyba pri deaktivácii používateľa"
+      }
+    },
+    "form": {
+      "titleEdit": "Upraviť používateľa",
+      "titleAdd": "Pridať používateľa",
+      "fields": {
+        "username": "Používateľské meno",
+        "usernamePlaceholder": "Zadajte používateľské meno",
+        "password": "Heslo",
+        "passwordPlaceholder": "Zadajte heslo",
+        "newPassword": "Nové heslo",
+        "newPasswordPlaceholder": "Zadajte nové heslo",
+        "email": "E-mail",
+        "emailPlaceholder": "Zadajte e-mail",
+        "role": "Rola",
+        "accountActive": "Účet aktívny",
+        "resetUserPassword": "Resetovať heslo používateľa"
+      },
+      "roles": {
+        "viewer": "Pozorovateľ",
+        "operator": "Operátor",
+        "admin": "Administrátor"
+      },
+      "validation": {
+        "usernameRequired": "Používateľské meno je povinné",
+        "usernameMinLength": "Používateľské meno musí mať aspoň 3 znaky",
+        "emailRequired": "E-mail je povinný",
+        "emailInvalid": "Neplatný formát e-mailu",
+        "passwordRequired": "Heslo je povinné",
+        "passwordMinLength": "Heslo musí mať aspoň 8 znakov",
+        "passwordRequiredWhenResetting": "Pri resetovaní je heslo povinné"
+      },
+      "actions": {
+        "saveChanges": "Uložiť zmeny",
+        "createUser": "Vytvoriť používateľa"
+      },
+      "toast": {
+        "created": "Používateľ bol vytvorený",
+        "createError": "Chyba pri vytváraní používateľa",
+        "updated": "Používateľ bol aktualizovaný",
+        "updateError": "Chyba pri aktualizácii používateľa",
+        "passwordReset": "Heslo používateľa bolo resetované",
+        "resetError": "Chyba pri resetovaní hesla"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Prístup zamietnutý",
+      "message": "Nemáte oprávnenie spravovať rozsahy oprávnení. Kontaktujte správcu systému."
+    },
+    "list": {
+      "title": "Rozsahy oprávnení",
+      "countLabel": "Rozsahy oprávnení: {{count}}",
+      "createGrant": "Udeliť rozsah",
+      "selectWalletPrompt": "Vyberte vyššie peňaženku na zobrazenie jej rozsahov oprávnení.",
+      "columns": {
+        "operator": "Operátor",
+        "scope": "Rozsah",
+        "target": "Cieľ",
+        "grantedAt": "Udelené",
+        "actions": "Akcie"
+      },
+      "empty": {
+        "noGrants": "Nenašli sa žiadne oprávnenia",
+        "noGrantsHint": "Táto peňaženka nemá žiadne aktívne rozsahy oprávnení."
+      },
+      "errorLoading": "Chyba pri načítaní oprávnení: {{message}}",
+      "handover": "Odovzdať"
+    },
+    "form": {
+      "title": "Udeliť rozsah oprávnení",
+      "fields": {
+        "operator": "Operátor",
+        "operatorPlaceholder": "Vyberte operátora...",
+        "wallet": "Peňaženka",
+        "scopeKind": "Druh rozsahu",
+        "underlyingPublicId": "Verejné ID podkladového aktíva",
+        "instrumentPublicId": "Verejné ID inštrumentu",
+        "underlyingPlaceholder": "napr. BTC",
+        "instrumentPlaceholder": "napr. BTC-USD-PERP",
+        "note": "Poznámka (voliteľné)",
+        "notePlaceholder": "Voliteľná poznámka"
+      },
+      "scopeKinds": {
+        "underlying": "Podkladové aktívum",
+        "instrument": "Inštrument"
+      },
+      "validation": {
+        "operatorRequired": "Operátor je povinný",
+        "walletRequired": "Peňaženka je povinná",
+        "targetRequired": "ID cieľa je povinné"
+      },
+      "actions": {
+        "createGrant": "Udeliť rozsah"
+      },
+      "toast": {
+        "created": "Rozsah oprávnení bol udelený",
+        "conflictError": "Konflikt: iný operátor už má oprávnenie na tento rozsah",
+        "createError": "Chyba pri udeľovaní rozsahu oprávnení"
+      }
+    },
+    "handover": {
+      "title": "Odovzdať rozsah oprávnení",
+      "fields": {
+        "currentHolder": "Aktuálny držiteľ",
+        "scope": "Rozsah",
+        "wallet": "Peňaženka",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Odovzdať operátorovi",
+        "transferToPlaceholder": "Vyberte cieľového operátora...",
+        "reason": "Dôvod (voliteľné)",
+        "reasonPlaceholder": "napr. zmena služby"
+      },
+      "actions": {
+        "handover": "Odovzdať"
+      },
+      "toast": {
+        "completed": "Rozsah oprávnení bol odovzdaný",
+        "conflictError": "Konflikt: cieľový operátor už má konfliktné oprávnenie",
+        "handoverError": "Chyba pri odovzdávaní rozsahu oprávnení"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Prístup zamietnutý",
+      "message": "Nemáte oprávnenie spravovať poverenia peňaženky. Kontaktujte správcu systému."
+    },
+    "list": {
+      "title": "Poverenia peňaženky",
+      "countLabel": "Poverenia: {{count}}",
+      "addCredential": "Pridať poverenie",
+      "selectWalletPrompt": "Vyberte vyššie peňaženku na zobrazenie jej poverení.",
+      "columns": {
+        "exchange": "Burza",
+        "type": "Typ",
+        "label": "Označenie",
+        "createdAt": "Vytvorené",
+        "actions": "Akcie"
+      },
+      "empty": {
+        "noCredentials": "Nenašli sa žiadne poverenia",
+        "noCredentialsHint": "Táto peňaženka nemá žiadne aktívne poverenia."
+      },
+      "errorLoading": "Chyba pri načítaní poverení: {{message}}",
+      "rotate": "Vymeniť"
+    },
+    "form": {
+      "title": "Pridať poverenie",
+      "fields": {
+        "wallet": "Peňaženka",
+        "exchange": "Burza",
+        "exchangePlaceholder": "napr. kraken",
+        "credentialType": "Typ poverenia",
+        "label": "Označenie (voliteľné)",
+        "labelPlaceholder": "napr. hlavný obchodný kľúč",
+        "pemPlaceholder": "Sem vložte súkromný kľúč vo formáte PEM"
+      },
+      "fieldLabels": {
+        "api_key": "API kľúč",
+        "api_secret": "Tajný API kľúč",
+        "private_key_pem": "Súkromný kľúč (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Počiatočný zostatok"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API kľúč + tajný kľúč",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Peňaženka je povinná",
+        "exchangeRequired": "Burza je povinná",
+        "fieldRequired": "{{field}} je povinné"
+      },
+      "actions": {
+        "addCredential": "Pridať poverenie"
+      },
+      "toast": {
+        "created": "Poverenie bolo vytvorené",
+        "conflictError": "Konflikt: táto peňaženka už má aktívne poverenie pre túto burzu",
+        "createError": "Chyba pri vytváraní poverenia"
+      }
+    },
+    "rotate": {
+      "title": "Vymeniť poverenie",
+      "fields": {
+        "exchange": "Burza",
+        "type": "Typ",
+        "label": "Označenie",
+        "newLabel": "Nové označenie (voliteľné)",
+        "newLabelPlaceholder": "napr. vymenený kľúč 2026-04",
+        "pemPlaceholder": "Sem vložte súkromný kľúč vo formáte PEM"
+      },
+      "actions": {
+        "rotate": "Vymeniť"
+      },
+      "toast": {
+        "rotated": "Poverenie bolo vymenené",
+        "rotateError": "Chyba pri výmene poverenia"
+      }
+    }
+  }
+}

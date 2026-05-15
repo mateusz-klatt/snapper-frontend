@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Poziții"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: în așteptare",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trailing",
+    "quantity": "Cantitate",
+    "averageEntry": "Intrare medie",
+    "unrealizedPnl": "P&L nerealizat",
+    "realizedPnl": "P&L realizat",
+    "updated": "Actualizat {{timestamp}}"
+  },
+  "empty": {
+    "title": "Nu există poziții deschise",
+    "message": "Pozițiile long, short și flat vor apărea aici după executarea tranzacțiilor."
+  },
+  "bracketModal": {
+    "title": "Atașați SL/TP — {{instrument}}",
+    "confirmTitle": "Confirmare Bracket",
+    "position": "Poziție",
+    "entryPrice": "Preț de intrare",
+    "stopLossLabel": "Preț Stop-Loss",
+    "takeProfitLabel": "Preț Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Sub ${{price}}",
+      "slShort": "Peste ${{price}}",
+      "tpLong": "Peste ${{price}}",
+      "tpShort": "Sub ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Anulați",
+      "review": "Revizuiți",
+      "back": "Înapoi",
+      "confirm": "Confirmați",
+      "creating": "Se creează…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Atașați Trailing Stop — {{instrument}}",
+    "confirmTitle": "Confirmare Trailing Stop",
+    "position": "Poziție",
+    "entryPrice": "Preț de intrare",
+    "trailingDistanceLabel": "Distanță Trailing (%)",
+    "minLockLabel": "Profit minim blocat (%) — opțional",
+    "trailingDistance": "Distanță Trailing",
+    "minLockProfit": "Profit minim blocat",
+    "placeholders": {
+      "trailingPct": "ex. 5.0",
+      "minLockPct": "0 = pornește imediat"
+    },
+    "minLockWarning": "Trailing Stop nu se va activa până când prețul nu se mișcă {{minLockPct}}% în favoarea dvs.",
+    "buttons": {
+      "cancel": "Anulați",
+      "review": "Revizuiți",
+      "back": "Înapoi",
+      "confirm": "Confirmați",
+      "creating": "Se creează..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Este necesar cel puțin un preț SL sau TP",
+    "invalidSlPrice": "Preț Stop-Loss invalid",
+    "slPricePositive": "Prețul Stop-Loss trebuie să fie pozitiv",
+    "invalidTpPrice": "Preț Take-Profit invalid",
+    "tpPricePositive": "Prețul Take-Profit trebuie să fie pozitiv",
+    "slLongBelowEntry": "Prețul SL trebuie să fie sub prețul de intrare ({{price}})",
+    "tpLongAboveEntry": "Prețul TP trebuie să fie peste prețul de intrare ({{price}})",
+    "slShortAboveEntry": "Prețul SL trebuie să fie peste prețul de intrare ({{price}})",
+    "tpShortBelowEntry": "Prețul TP trebuie să fie sub prețul de intrare ({{price}})",
+    "trailingRequired": "Procentul Trailing este obligatoriu",
+    "trailingInvalid": "Procent Trailing invalid",
+    "trailingRange": "Procentul Trailing trebuie să fie între 0 și 100",
+    "minLockInvalid": "Procent minim blocat invalid",
+    "minLockRange": "Procentul minim blocat trebuie să fie între 0 și 100"
+  }
+}

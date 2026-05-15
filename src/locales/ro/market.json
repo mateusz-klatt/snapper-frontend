@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Date de piață"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrument:",
+    "timeframe": "Interval:",
+    "selectExchange": "Selectați exchange-ul",
+    "searchInstrument": "Căutați instrument..."
+  },
+  "timeframes": {
+    "1m": "1 minut",
+    "5m": "5 minute",
+    "15m": "15 minute",
+    "30m": "30 minute",
+    "1h": "1 oră",
+    "4h": "4 ore",
+    "1d": "1 zi"
+  },
+  "stats": {
+    "currentPrice": "Preț curent",
+    "change24h": "Variație 24h",
+    "high24h": "Maxim 24h",
+    "low24h": "Minim 24h"
+  },
+  "chart": {
+    "title": "Grafic preț",
+    "errorPrefix": "Eroare la încărcarea datelor graficului:",
+    "unknownError": "Eroare necunoscută",
+    "noDataTitle": "Nu există date disponibile pentru {{instrument}}",
+    "noDataHint": "Instrumentul poate să nu existe sau să nu aibă date pentru intervalul {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Nu există instrumente asociate configurate pentru {{instrument}} pe {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache în încălzire: {{sampleCount}} / {{expected}} lumânări disponibile {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(derivat din 1m)",
+      "db": "(din DB)"
+    }
+  }
+}

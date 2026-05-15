@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Позиції"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: очікує",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trailing",
+    "quantity": "Кількість",
+    "averageEntry": "Сер. вхід",
+    "unrealizedPnl": "Нереалізований P&L",
+    "realizedPnl": "Реалізований P&L",
+    "updated": "Оновлено {{timestamp}}"
+  },
+  "empty": {
+    "title": "Немає відкритих позицій",
+    "message": "Довгі, короткі та нульові позиції з'являться тут після виконання угод."
+  },
+  "bracketModal": {
+    "title": "Додати SL/TP — {{instrument}}",
+    "confirmTitle": "Підтвердити Bracket",
+    "position": "Позиція",
+    "entryPrice": "Ціна входу",
+    "stopLossLabel": "Ціна Stop-Loss",
+    "takeProfitLabel": "Ціна Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Нижче ${{price}}",
+      "slShort": "Вище ${{price}}",
+      "tpLong": "Вище ${{price}}",
+      "tpShort": "Нижче ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Скасувати",
+      "review": "Переглянути",
+      "back": "Назад",
+      "confirm": "Підтвердити",
+      "creating": "Створення…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Додати Trailing Stop — {{instrument}}",
+    "confirmTitle": "Підтвердити Trailing Stop",
+    "position": "Позиція",
+    "entryPrice": "Ціна входу",
+    "trailingDistanceLabel": "Дистанція Trailing (%)",
+    "minLockLabel": "Мін. фіксація прибутку (%) — необов'язково",
+    "trailingDistance": "Дистанція Trailing",
+    "minLockProfit": "Мін. фіксація прибутку",
+    "placeholders": {
+      "trailingPct": "наприклад 5.0",
+      "minLockPct": "0 = почати негайно"
+    },
+    "minLockWarning": "Trailing Stop не активується, доки ціна не пройде {{minLockPct}}% у сприятливому напрямку.",
+    "buttons": {
+      "cancel": "Скасувати",
+      "review": "Переглянути",
+      "back": "Назад",
+      "confirm": "Підтвердити",
+      "creating": "Створення..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Потрібна хоча б одна ціна SL або TP",
+    "invalidSlPrice": "Некоректна ціна Stop-Loss",
+    "slPricePositive": "Ціна Stop-Loss має бути додатною",
+    "invalidTpPrice": "Некоректна ціна Take-Profit",
+    "tpPricePositive": "Ціна Take-Profit має бути додатною",
+    "slLongBelowEntry": "Ціна SL має бути нижчою за ціну входу ({{price}})",
+    "tpLongAboveEntry": "Ціна TP має бути вищою за ціну входу ({{price}})",
+    "slShortAboveEntry": "Ціна SL має бути вищою за ціну входу ({{price}})",
+    "tpShortBelowEntry": "Ціна TP має бути нижчою за ціну входу ({{price}})",
+    "trailingRequired": "Потрібен відсоток Trailing",
+    "trailingInvalid": "Некоректний відсоток Trailing",
+    "trailingRange": "Відсоток Trailing має бути від 0 до 100",
+    "minLockInvalid": "Некоректний відсоток мін. фіксації",
+    "minLockRange": "Відсоток мін. фіксації має бути від 0 до 100"
+  }
+}

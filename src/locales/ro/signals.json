@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Semnale"
+  },
+  "filters": {
+    "allStrategies": "Toate strategiile"
+  },
+  "actions": {
+    "export": "Exportați"
+  },
+  "stats": {
+    "total": "Total",
+    "buy": "Cumpărare",
+    "sell": "Vânzare",
+    "avgStrength": "Forță medie"
+  },
+  "card": {
+    "strength": "Forță",
+    "price": "Preț",
+    "exchange": "Exchange",
+    "reason": "Motiv:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Puternic",
+    "medium": "Mediu",
+    "weak": "Slab",
+    "veryWeak": "Foarte slab"
+  },
+  "time": {
+    "justNow": "Chiar acum",
+    "minutesAgo": "{{count}}m în urmă",
+    "hoursAgo": "{{count}}h în urmă"
+  },
+  "empty": {
+    "title": "Nu s-au găsit semnale",
+    "message": "Niciun semnal de trading nu corespunde filtrelor curente."
+  }
+}

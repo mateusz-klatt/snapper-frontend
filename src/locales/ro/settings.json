@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Setări",
+    "subtitle": "Configurați setările și parametrii aplicației",
+    "addButton": "Adăugați setare",
+    "searchPlaceholder": "Căutați setări...",
+    "noResults": "Nu s-au găsit setări care să corespundă criteriilor.",
+    "allCategories": "Toate categoriile",
+    "categoryFilterAriaLabel": "Filtrați setările după categorie"
+  },
+  "errors": {
+    "loadFailed": "Încărcarea setărilor a eșuat",
+    "updateFailed": "Actualizarea setării a eșuat",
+    "deleteFailed": "Ștergerea setării a eșuat",
+    "createFailed": "Crearea setării a eșuat",
+    "alreadyExists": "Setarea cu cheia \"{{key}}\" există deja"
+  },
+  "item": {
+    "edit": "Editați",
+    "delete": "Ștergeți",
+    "save": "Salvați",
+    "saving": "Se salvează...",
+    "cancel": "Anulați",
+    "yesDelete": "Da, ștergeți",
+    "deleting": "Se șterge...",
+    "deleteConfirm": "Ștergeți această setare?",
+    "valuePlaceholder": "Introduceți valoarea setării...",
+    "showMore": "Afișați mai mult",
+    "showLess": "Afișați mai puțin",
+    "toggleAriaLabel": "Comutați {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensibil"
+    },
+    "helpText": {
+      "allowShortSelling": "Permite motorului să deschidă poziții short. Semnalele SELL vor produce desired_units negative; se limitează la 0 când este dezactivat.",
+      "allowManualOrders": "Activați butonul Ordin nou în fila Ordine. Când este dezactivat, POST /api/orders returnează 403."
+    }
+  },
+  "addModal": {
+    "title": "Adăugați setare nouă",
+    "keyLabel": "Cheie",
+    "valueLabel": "Valoare",
+    "categoryLabel": "Categorie",
+    "descriptionLabel": "Descriere",
+    "keyPlaceholder": "ex. walutomat.api_key",
+    "keyHint": "Folosiți notația cu punct pentru setări imbricate (ex. categorie.subcategorie.nume)",
+    "valuePlaceholder": "Valoarea setării",
+    "categorySelectPlaceholder": "Selectați existentă sau creați nouă",
+    "newCategoryPlaceholder": "Sau introduceți un nume nou de categorie",
+    "descriptionPlaceholder": "Descriere opțională",
+    "cancel": "Anulați",
+    "create": "Creați setare",
+    "creating": "Se creează...",
+    "validation": {
+      "keyRequired": "Cheia este obligatorie",
+      "valueRequired": "Valoarea este obligatorie",
+      "categoryRequired": "Categoria este obligatorie"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor formular",
+    "rawEditor": "Editor JSON brut",
+    "rawJson": "JSON brut",
+    "switchToForm": "Comutați la formular",
+    "importToForm": "Importați în formular",
+    "parseError": "Eroare de parsare: {{message}}",
+    "arraySummary": "Array ({{length}} elemente)",
+    "addItem": "Adăugați element",
+    "remove": "Eliminați",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(obiect)",
+      "string": "(șir)",
+      "number": "(număr)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(funcție)",
+      "symbol": "(simbol)",
+      "undefined": "(nedefinit)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

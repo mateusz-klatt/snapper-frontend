@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Обзор"
+  },
+  "metrics": {
+    "feedsRunning": "Активные Feed",
+    "strategiesActive": "Активные стратегии",
+    "openOrders": "Открытые заявки",
+    "todaysExecutions": "Исполнения за сегодня",
+    "executionsOn": "Исполнения ({{date}})"
+  },
+  "status": {
+    "stopped": "Остановлено",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Выполняется",
+    "active": "Активно"
+  },
+  "processStatus": {
+    "title": "Статус процессов",
+    "feeds": "Feed",
+    "strategies": "Стратегии",
+    "executors": "Исполнители",
+    "brokers": "Брокеры"
+  },
+  "portfolio": {
+    "title": "Сводка портфеля",
+    "totalValue": "Общая стоимость",
+    "longExposure": "Длинная экспозиция",
+    "shortExposure": "Короткая экспозиция",
+    "netDelta": "Нетто-дельта",
+    "unrealizedPnl": "Нереализованный P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Позиции",
+    "instrumentsCount": "Инструменты: {{count}}",
+    "empty": "Нет данных по позициям"
+  },
+  "signals": {
+    "title": "Последние сигналы",
+    "empty": "Последних сигналов нет",
+    "noTime": "Н/Д"
+  },
+  "executions": {
+    "title": "Последние исполнения",
+    "empty": "Последних исполнений нет",
+    "noTime": "Н/Д"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Înapoi",
+    "backToList": "← Înapoi la backtesturi"
+  },
+  "status": {
+    "pending": "În așteptare",
+    "running": "În rulare",
+    "completed": "Finalizat",
+    "failed": "Eșuat",
+    "cancelled": "Anulat"
+  },
+  "list": {
+    "title": "Backtesturi",
+    "actions": {
+      "cancel": "Anulați",
+      "rerun": "Rulați din nou"
+    },
+    "fields": {
+      "timeframe": "Interval",
+      "period": "Perioadă",
+      "initialCash": "Capital inițial",
+      "id": "ID"
+    },
+    "errorPrefix": "Eroare: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrați backtesturile după status",
+      "options": {
+        "all": "Toate statusurile",
+        "pending": "În așteptare",
+        "running": "În rulare",
+        "completed": "Finalizat",
+        "failed": "Eșuat",
+        "cancelled": "Anulat"
+      }
+    },
+    "empty": {
+      "title": "Nu există backtesturi",
+      "message": "Rulați un backtest prin CLI sau API pentru a vedea rezultatele aici."
+    }
+  },
+  "detail": {
+    "title": "Rulare backtest",
+    "fields": {
+      "strategy": "Strategie",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Perioadă",
+      "crossAsset": "Atribuire cross-asset",
+      "configHash": "Hash configurație"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} execuții",
+    "errors": {
+      "invalidRunId": "ID rulare invalid — trebuie să fie UUID7 (primit \"{{id}}\").",
+      "loadFailed": "Încărcarea rulării a eșuat: {{message}}",
+      "notFound": "nu a fost găsit"
+    }
+  },
+  "compare": {
+    "title": "Comparați",
+    "headingFull": "Comparație backtesturi",
+    "loading": "Se încarcă comparația…",
+    "vs": "vs",
+    "runLabel": "Rulare {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrici",
+      "equityOverlay": "Suprapunere equity",
+      "trades": "Tranzacții",
+      "signals": "Semnale"
+    },
+    "pairingMode": {
+      "auto": "automat",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Comparația nu a fost găsită în portofelul curent.",
+      "loadFailed": "Încărcarea comparației a eșuat: {{message}}",
+      "unknown": "eroare necunoscută",
+      "emptyResponse": "Răspuns de comparație gol."
+    },
+    "launcher": {
+      "title": "Comparați",
+      "submit": "Comparați",
+      "autoPair": "Comparați cu cea mai recentă rulare",
+      "terminalGate": "comparația este disponibilă după ce această rulare ajunge la un status terminal",
+      "noSiblings": "nu există alte rulări cu această configurație",
+      "limitNotice": "se afișează cele mai recente {{count}} — folosiți pereche manuală pentru rulări mai vechi",
+      "pickPlaceholder": "— alegeți o rulare pentru comparație —",
+      "showAllLabel": "Afișați toate rulările (nu doar aceeași configurație)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "toate rulările",
+        "sameConfig": "aceeași configurație"
+      },
+      "errors": {
+        "pickRequired": "selectați o rulare din listă"
+      }
+    },
+    "diffColumns": {
+      "common": "Comune",
+      "onlyA": "Doar în A",
+      "onlyB": "Doar în B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Nu există metrici comparabile — ambele rulări nu au valori înregistrate.",
+      "columns": {
+        "name": "Metrică",
+        "runA": "Rulare A",
+        "runB": "Rulare B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Rulare A",
+        "runB": "Rulare B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Se așteaptă progresul…",
+    "candles": "{{done}} / {{total}} lumânări",
+    "candlesNoTotal": "{{done}} lumânări",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} semnale / {{trades}} tranzacții",
+    "milestoneLine": "reper {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

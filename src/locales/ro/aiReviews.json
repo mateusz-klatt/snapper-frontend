@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Solicitare",
+    "decision": "Decizie",
+    "capsViolation": "Încălcare limite",
+    "selectedDelegate": "Delegat selectat",
+    "instrument": "instrument",
+    "deadline": "termen {{time}}",
+    "decidedBy": "de",
+    "newStatus": "status",
+    "mode": "mod",
+    "capAttempted": "încercat",
+    "capLimit": "vs limită",
+    "capOn": "pe instrument",
+    "reviewLabel": "revizuire {{reviewId}}",
+    "unhandledFrame": "Cadru de activitate AI review negestionat: {{frame}}"
+  },
+  "page": {
+    "title": "Inbox revizuiri AI",
+    "subtitle": "Revizuiri CONSULT în așteptare direcționate către acest delegat, plus fluxul live de evenimente."
+  },
+  "roleNotice": {
+    "title": "Rezervat delegaților AI",
+    "message": "Acest inbox afișează revizuirile CONSULT direcționate către un principal de delegat AI. Autentificați-vă cu un cont de delegat AI pentru a vedea revizuirile în așteptare și fluxul live de activitate. Rolul dvs. curent este",
+    "unknownRole": "necunoscut"
+  },
+  "pending": {
+    "title": "Revizuiri în așteptare",
+    "loading": "Se încarcă revizuirile în așteptare…",
+    "loadError": "Încărcarea revizuirilor în așteptare a eșuat: {{message}}",
+    "emptyTitle": "Nu există revizuiri în așteptare",
+    "emptyMessage": "Solicitările CONSULT noi direcționate către acest delegat vor apărea aici.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Teză",
+      "status": "Status",
+      "deadline": "Termen",
+      "decision": "Decizie"
+    },
+    "rationalePlaceholder": "Raționament (opțional)",
+    "rationaleAriaLabel": "Raționament pentru revizuirea {{reviewId}}",
+    "approve": "Aprobați",
+    "reject": "Respingeți",
+    "submitError": "Trimiterea a eșuat: {{message}}"
+  },
+  "activity": {
+    "title": "Activitate recentă",
+    "emptyTitle": "Nu există încă activitate",
+    "emptyMessage": "Cadrele de solicitare AI review, decizie și încălcare de limite vor fi transmise aici.",
+    "summaryEmpty": "Nu s-au primit cadre",
+    "summaryCount": "Se afișează {{shown}} din {{total}} în buffer"
+  }
+}

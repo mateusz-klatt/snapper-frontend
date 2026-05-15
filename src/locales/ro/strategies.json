@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Gestionare strategii",
+    "register": "Înregistrați strategie",
+    "saving": "Se salvează…",
+    "descriptionCanManage": "Înregistrați procese noi de strategie direct din interfață. Autostart menține procesul activ după reporniri.",
+    "descriptionViewer": "Vizualizați strategiile configurate și statusul lor. Contactați un operator sau administrator pentru a gestiona strategii.",
+    "searchPlaceholder": "Căutați strategii...",
+    "filter": {
+      "all": "Toate statusurile",
+      "running": "În rulare",
+      "stopped": "Oprite"
+    },
+    "configuredHeading": "Strategii configurate",
+    "noMatches": "Nicio strategie nu corespunde filtrelor",
+    "clearFilters": "Ștergeți filtrele",
+    "emptyTitle": "Nu există strategii configurate",
+    "emptyCanManage": "Înregistrați o strategie pentru a începe tradingul algoritmic",
+    "emptyViewer": "Nu a fost configurată încă nicio strategie"
+  },
+  "confirm": {
+    "startTitle": "Porniți {{name}}",
+    "startMessage": "Aceasta va porni strategia {{name}}. Poate începe operațiuni de trading live.",
+    "stopTitle": "Opriți {{name}}",
+    "stopMessage": "Aceasta va opri strategia {{name}}. Pozițiile active nu vor fi închise automat."
+  },
+  "toast": {
+    "saved": "Strategia {{name}} a fost salvată",
+    "started": "Strategia {{name}} a fost pornită",
+    "registerFailed": "Înregistrarea strategiei a eșuat: {{message}}",
+    "startSuccess": "Strategia a fost pornită cu succes",
+    "stopSuccess": "Strategia a fost oprită cu succes",
+    "alreadyRunning": "Strategia rulează deja",
+    "notRunning": "Strategia nu rulează",
+    "configNotFound": "Configurația strategiei nu a fost găsită. Verificați setările bazei de date.",
+    "networkError": "Eroare de rețea. Verificați conexiunea și încercați din nou.",
+    "startFailed": "Pornirea strategiei a eșuat: {{message}}",
+    "stopFailed": "Oprirea strategiei a eșuat: {{message}}",
+    "unknownError": "Eroare necunoscută"
+  },
+  "card": {
+    "ariaLabel": "Strategie: {{name}}",
+    "modeLabel": "Mod: {{mode}}",
+    "autostartEnabled": "Autostart: activat",
+    "autostartDisabled": "Autostart: dezactivat",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Întârziere date: {{seconds}} secunde",
+    "lagBadge": "întârziere: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "Vârstă HB: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Întârziere date",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Afișați detalii",
+    "hideDetails": "Ascundeți detalii",
+    "inputs": "Intrări ({{count}})",
+    "outputs": "Ieșiri ({{count}})",
+    "feedPublishers": "Publicatori Feed ({{count}})",
+    "lastUpdate": "Ultima actualizare: {{time}}",
+    "waiting": "Se așteaptă Heartbeat...",
+    "startAriaLabel": "Porniți strategia {{name}}",
+    "stopAriaLabel": "Opriți strategia {{name}}",
+    "start": "Porniți",
+    "stop": "Opriți",
+    "starting": "Se pornește...",
+    "stopping": "Se oprește...",
+    "status": {
+      "starting": "pornire",
+      "stopping": "oprire",
+      "running": "în rulare",
+      "stopped": "oprită"
+    },
+    "health": {
+      "healthy": "Sănătos — primește date proaspete",
+      "warning": "Avertisment — datele sunt învechite",
+      "error": "Eroare — lipsesc date recente",
+      "unknown": "Necunoscut — nu există date Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "SĂNĂTOS",
+      "warning": "AVERTISMENT",
+      "error": "EROARE"
+    }
+  },
+  "launchModal": {
+    "title": "Înregistrare proces de strategie",
+    "emptyTemplates": "Nu există șabloane de strategie înregistrate în backend. Definiți cel puțin un proces de strategie.",
+    "close": "Închideți",
+    "templateLabel": "Șablon strategie",
+    "templatePlaceholder": "Alegeți șablon...",
+    "templateFallbackDescription": "Strategie înregistrată în backend",
+    "loadingDefaults": "Se încarcă valorile implicite ale șablonului…",
+    "loadDefaultsError": "Nu se pot încărca valorile implicite ale șablonului. Verificați logurile backendului.",
+    "processNameLabel": "Nume proces",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Caractere permise: litere mici, cifre, underscore",
+    "instanceNameLabel": "Nume instanță strategie",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Folosit în configurația strategiei și în topicurile de ieșire",
+    "executionModeLabel": "Mod de execuție",
+    "executionModeThread": "Thread integrat",
+    "executionModeProcess": "Proces izolat",
+    "executionModeHelp": "Threadurile partajează memoria, procesele oferă izolare mai puternică.",
+    "flagsLabel": "Flaguri",
+    "autostartLabel": "Autostart la pornirea serverului",
+    "startImmediatelyLabel": "Porniți imediat după înregistrare",
+    "noteLabel": "Notă (opțional)",
+    "notePlaceholder": "Descrieți scopul sau parametrii acestei instanțe de strategie.",
+    "noteHelp": "Stocată împreună cu configurația pentru a ajuta la identificarea acestui proces.",
+    "cancel": "Anulați",
+    "submit": "Înregistrați strategia",
+    "submitting": "Se înregistrează…"
+  }
+}

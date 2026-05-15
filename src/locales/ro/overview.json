@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Prezentare generală"
+  },
+  "metrics": {
+    "feedsRunning": "Feed în rulare",
+    "strategiesActive": "Strategii active",
+    "openOrders": "Ordine deschise",
+    "todaysExecutions": "Execuțiile de azi",
+    "executionsOn": "Execuții ({{date}})"
+  },
+  "status": {
+    "stopped": "Oprit",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "În rulare",
+    "active": "Activ"
+  },
+  "processStatus": {
+    "title": "Stare procese",
+    "feeds": "Feed",
+    "strategies": "Strategii",
+    "executors": "Executori",
+    "brokers": "Brokeri"
+  },
+  "portfolio": {
+    "title": "Sumar portofoliu",
+    "totalValue": "Valoare totală",
+    "longExposure": "Expunere long",
+    "shortExposure": "Expunere short",
+    "netDelta": "Delta netă",
+    "unrealizedPnl": "P&L nerealizat",
+    "pnlPercent": "P&L %",
+    "positions": "Poziții",
+    "instrumentsCount": "{{count}} instrumente",
+    "empty": "Nu există date disponibile despre poziții"
+  },
+  "signals": {
+    "title": "Semnale recente",
+    "empty": "Nu există semnale recente",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Execuții recente",
+    "empty": "Nu există execuții recente",
+    "noTime": "N/A"
+  }
+}

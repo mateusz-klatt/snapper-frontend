@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Integrácia AI",
+    "subtitle": "Správa delegátov AI, ktorí sa pripájajú k Snapperu cez MCP.",
+    "loading": "Načítava sa integrácia AI…",
+    "createDelegate": "Vytvoriť delegáta"
+  },
+  "disabled": {
+    "title": "Integrácia AI je vypnutá",
+    "message": "Na správu delegátov AI zapnite feature flag v Nastaveniach → Feature Flags."
+  },
+  "list": {
+    "loadingDelegates": "Načítavajú sa delegáti…",
+    "emptyTitle": "Zatiaľ nie sú žiadni delegáti AI",
+    "emptyMessage": "Kliknutím na „Vytvoriť delegáta“ ho vytvoríte a vygenerujete úryvok konfigurácie MCP.",
+    "columns": {
+      "label": "Označenie",
+      "username": "Používateľské meno",
+      "created": "Vytvorené",
+      "maxOpenOrders": "Max. počet otvorených pokynov",
+      "maxDailyUsd": "Max. denný USD",
+      "status": "Stav",
+      "actions": "Akcie"
+    },
+    "status": {
+      "active": "Aktívny",
+      "revoked": "Odvolaný"
+    },
+    "default": "predvolené",
+    "details": "Podrobnosti",
+    "viewAriaLabel": "Zobraziť delegáta {{label}}"
+  },
+  "wizard": {
+    "title": "Vytvoriť delegáta AI",
+    "step1": "1. Identita",
+    "step2": "2. Rozsah a limity",
+    "step3": "3. Kontrola",
+    "stepDone": "✓ Hotovo",
+    "identity": {
+      "labelField": "Označenie",
+      "labelPlaceholder": "napr. Alpha prop desk",
+      "labelHelpPrefix": "Používateľské meno delegáta bude na serveri odvodené ako ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Rozsah",
+      "operatorLabel": "public_id operátora (voliteľné)",
+      "operatorPlaceholder": "Ponechajte prázdne na zdedenie primárneho operátora volajúceho"
+    },
+    "caps": {
+      "heading": "Obchodné limity (všetko voliteľné)",
+      "maxOpenOrders": "Max. počet otvorených pokynov",
+      "maxDailyNotionalUsd": "Max. denná nominálna hodnota v USD",
+      "maxCancelsPerMinute": "Max. počet zrušení za minútu",
+      "perInstrument": "Max. množstvo na inštrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "predvolené",
+      "errorInvalidJson": "max_order_quantity_per_instrument musí byť platný JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument musí byť objekt JSON alebo prázdna hodnota",
+      "errorNegative": "Limity musia byť nezáporné celé čísla alebo prázdne."
+    },
+    "review": {
+      "heading": "Skontrolovať a vytvoriť",
+      "rowLabel": "Označenie",
+      "rowOperator": "public_id operátora",
+      "rowMaxOpenOrders": "Max. počet otvorených pokynov",
+      "rowMaxDailyNotional": "Max. denná nominálna hodnota v USD",
+      "rowMaxCancelsPerMinute": "Max. počet zrušení za minútu",
+      "rowPerInstrument": "Max. množstvo na inštrument",
+      "operatorDefault": "(primárny operátor volajúceho)",
+      "defaultValue": "(predvolené)"
+    },
+    "buttons": {
+      "cancel": "Zrušiť",
+      "next": "Ďalej",
+      "back": "Späť",
+      "createDelegate": "Vytvoriť delegáta",
+      "iSavedClose": "Uložené — zatvoriť"
+    },
+    "toast": {
+      "delegateCreated": "Delegát bol vytvorený",
+      "failedToCreate": "Delegáta sa nepodarilo vytvoriť"
+    }
+  },
+  "detail": {
+    "loading": "Načítava sa delegát…",
+    "notFound": "Delegát sa nenašiel alebo nie je dostupný.",
+    "back": "Späť",
+    "backToList": "Späť na zoznam",
+    "updateCaps": "Aktualizovať limity",
+    "revoke": "Odvolať",
+    "save": "Uložiť",
+    "cancel": "Zrušiť",
+    "tradingCaps": "Obchodné limity",
+    "status": "Stav",
+    "active": "Aktívny",
+    "revoked": "Odvolaný",
+    "createdAt": "Vytvorené",
+    "createdBy": "Vytvoril (public_id používateľa)",
+    "publicId": "Verejné ID",
+    "maxOpenOrders": "Max. počet otvorených pokynov",
+    "maxDailyNotionalUsd": "Max. denná nominálna hodnota v USD",
+    "maxCancelsPerMinute": "Max. počet zrušení za minútu",
+    "perInstrument": "Max. množstvo na inštrument",
+    "defaultValue": "(predvolené)",
+    "editorPlaceholder": "(predvolené)",
+    "toast": {
+      "capsUpdated": "Limity boli aktualizované",
+      "failedToUpdateCaps": "Limity sa nepodarilo aktualizovať",
+      "negativeIntegersError": "Limity musia byť nezáporné celé čísla alebo prázdne."
+    }
+  },
+  "revokeDialog": {
+    "title": "Odvolať delegáta \"{{label}}\"?",
+    "message": "Týmto sa odvolajú tokeny delegáta a zastavia sa jeho odbery MCP. Túto akciu nemožno vrátiť späť.",
+    "confirm": "Odvolať",
+    "cancel": "Zrušiť",
+    "toast": {
+      "delegateRevoked": "Delegát bol odvolaný",
+      "failedToRevoke": "Delegáta sa nepodarilo odvolať"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Uložte tieto poverenia teraz",
+    "warningMessage": "Už sa nezobrazia. Snapper neukladá nespracované tokeny; po zatvorení tohto sprievodcu bude jediná kópia v konfigurácii vášho MCP klienta.",
+    "snippetHelp": "Dlhodobý token delegáta AI (~10 rokov). Rovnaký token autentifikuje proxy server MCP aj watch monitor. Na výmenu deaktivujte tohto delegáta a vytvorte nového.",
+    "baseUrlHelpPrefix": "Base URL je odvodená z originu tohto prehliadača + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Skopírovať úryvok konfigurácie do schránky",
+    "copy": "Skopírovať do schránky",
+    "copied": "Skopírované"
+  }
+}

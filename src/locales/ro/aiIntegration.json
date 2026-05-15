@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Integrare AI",
+    "subtitle": "Gestionați delegații AI care se conectează la Snapper prin MCP.",
+    "loading": "Se încarcă integrarea AI…",
+    "createDelegate": "Creați delegat"
+  },
+  "disabled": {
+    "title": "Integrarea AI este dezactivată",
+    "message": "Activați feature flagul din Setări → Feature Flags pentru a gestiona delegații AI."
+  },
+  "list": {
+    "loadingDelegates": "Se încarcă delegații…",
+    "emptyTitle": "Nu există încă delegați AI",
+    "emptyMessage": "Apăsați „Creați delegat” pentru a emite unul și a genera fragmentul său de configurare MCP.",
+    "columns": {
+      "label": "Etichetă",
+      "username": "Nume de utilizator",
+      "created": "Creat",
+      "maxOpenOrders": "Ordine deschise max.",
+      "maxDailyUsd": "USD zilnic max.",
+      "status": "Status",
+      "actions": "Acțiuni"
+    },
+    "status": {
+      "active": "Activ",
+      "revoked": "Revocat"
+    },
+    "default": "implicit",
+    "details": "Detalii",
+    "viewAriaLabel": "Vizualizați delegatul {{label}}"
+  },
+  "wizard": {
+    "title": "Creați delegat AI",
+    "step1": "1. Identitate",
+    "step2": "2. Domeniu și limite",
+    "step3": "3. Revizuire",
+    "stepDone": "✓ Gata",
+    "identity": {
+      "labelField": "Etichetă",
+      "labelPlaceholder": "ex. Alpha prop desk",
+      "labelHelpPrefix": "Numele de utilizator al delegatului va fi derivat pe server ca ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Domeniu",
+      "operatorLabel": "public_id operator (opțional)",
+      "operatorPlaceholder": "Lăsați necompletat pentru a moșteni operatorul principal al apelantului"
+    },
+    "caps": {
+      "heading": "Limite de trading (toate opționale)",
+      "maxOpenOrders": "Număr maxim de ordine deschise",
+      "maxDailyNotionalUsd": "Noțional zilnic maxim USD",
+      "maxCancelsPerMinute": "Anulări maxime pe minut",
+      "perInstrument": "Cantitate maximă per instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "implicit",
+      "errorInvalidJson": "max_order_quantity_per_instrument trebuie să fie JSON valid",
+      "errorJsonObject": "max_order_quantity_per_instrument trebuie să fie un obiect JSON sau gol",
+      "errorNegative": "Limitele trebuie să fie numere întregi nenegative sau câmpuri goale."
+    },
+    "review": {
+      "heading": "Revizuiți și creați",
+      "rowLabel": "Etichetă",
+      "rowOperator": "public_id operator",
+      "rowMaxOpenOrders": "Număr maxim de ordine deschise",
+      "rowMaxDailyNotional": "Noțional zilnic maxim USD",
+      "rowMaxCancelsPerMinute": "Anulări maxime pe minut",
+      "rowPerInstrument": "Cantitate maximă per instrument",
+      "operatorDefault": "(operatorul principal al apelantului)",
+      "defaultValue": "(implicit)"
+    },
+    "buttons": {
+      "cancel": "Anulați",
+      "next": "Înainte",
+      "back": "Înapoi",
+      "createDelegate": "Creați delegat",
+      "iSavedClose": "Am salvat acestea — închideți"
+    },
+    "toast": {
+      "delegateCreated": "Delegatul a fost creat",
+      "failedToCreate": "Crearea delegatului a eșuat"
+    }
+  },
+  "detail": {
+    "loading": "Se încarcă delegatul…",
+    "notFound": "Delegatul nu a fost găsit sau nu este disponibil.",
+    "back": "Înapoi",
+    "backToList": "Înapoi la listă",
+    "updateCaps": "Actualizați limitele",
+    "revoke": "Revocați",
+    "save": "Salvați",
+    "cancel": "Anulați",
+    "tradingCaps": "Limite de trading",
+    "status": "Status",
+    "active": "Activ",
+    "revoked": "Revocat",
+    "createdAt": "Creat la",
+    "createdBy": "Creat de (public_id utilizator)",
+    "publicId": "ID public",
+    "maxOpenOrders": "Număr maxim de ordine deschise",
+    "maxDailyNotionalUsd": "Noțional zilnic maxim USD",
+    "maxCancelsPerMinute": "Anulări maxime pe minut",
+    "perInstrument": "Cantitate maximă per instrument",
+    "defaultValue": "(implicit)",
+    "editorPlaceholder": "(implicit)",
+    "toast": {
+      "capsUpdated": "Limitele au fost actualizate",
+      "failedToUpdateCaps": "Actualizarea limitelor a eșuat",
+      "negativeIntegersError": "Limitele trebuie să fie numere întregi nenegative sau câmpuri goale."
+    }
+  },
+  "revokeDialog": {
+    "title": "Revocați delegatul \"{{label}}\"?",
+    "message": "Această acțiune revocă tokenurile delegatului și oprește abonamentele sale MCP. Nu poate fi anulată.",
+    "confirm": "Revocați",
+    "cancel": "Anulați",
+    "toast": {
+      "delegateRevoked": "Delegatul a fost revocat",
+      "failedToRevoke": "Revocarea delegatului a eșuat"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Salvați aceste credențiale acum",
+    "warningMessage": "Nu vor mai fi afișate din nou. Snapper nu stochează tokenurile brute; după ce închideți acest wizard, singura copie va fi în configurația clientului MCP.",
+    "snippetHelp": "Token de delegat AI cu durată lungă (~10 ani). Același token autentifică atât serverul proxy MCP, cât și monitorul de watch. Pentru schimbare, dezactivați acest delegat și creați unul nou.",
+    "baseUrlHelpPrefix": "URL-ul de bază este derivat din originea acestui browser + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Copiați fragmentul de configurare în clipboard",
+    "copy": "Copiați în clipboard",
+    "copied": "Copiat"
+  }
+}

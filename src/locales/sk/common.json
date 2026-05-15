@@ -1,0 +1,83 @@
+{
+  "loading": "Načítava sa...",
+  "error": "Chyba",
+  "retry": "Skúsiť znova",
+  "close": "Zavrieť",
+  "cancel": "Zrušiť",
+  "confirm": "Potvrdiť",
+  "save": "Uložiť",
+  "documentation": "Dokumentácia (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Zmeniť jazyk",
+    "flagAriaLabel": "Prepnúť na {{country}}",
+    "currentAriaLabel": "Aktuálny jazyk: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Obchodná konzola",
+    "tagline": "Precízna pracovná stanica",
+    "openSidebar": "Otvoriť bočný panel",
+    "closeSidebar": "Zavrieť bočný panel",
+    "sidebar": "Bočný panel",
+    "mainNavigation": "Hlavná navigácia",
+    "tradingContent": "Obchodný obsah",
+    "skipToContent": "Prejsť na obchodný obsah",
+    "lag": "Oneskorenie:",
+    "lagTitle": "Obojsmerná latencia k serveru WebSocket",
+    "topics": "Témy:",
+    "topicsTitle": "Počet odoberaných tém WebSocket",
+    "connected": "Pripojené",
+    "disconnected": "Odpojené",
+    "connectedTitle": "Pripojené k WebSocket",
+    "disconnectedTitle": "Odpojené od WebSocket",
+    "switchToLightMode": "Prepnúť na svetlý režim",
+    "switchToDarkMode": "Prepnúť na tmavý režim",
+    "timeTravelBanner": "Režim cestovania v čase — zobrazenie historických dát (iba na čítanie)",
+    "lagUnknown": "Neznáme",
+    "walletPicker": {
+      "ariaLabel": "Aktívna peňaženka",
+      "placeholder": "Peňaženka",
+      "allWallets": "Všetky peňaženky",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktívny operátor",
+      "placeholder": "Operátor",
+      "allOperators": "Všetci operátori"
+    },
+    "timeTravel": {
+      "pickerTitle": "Cestovanie v čase: vyberte historický okamih",
+      "exitAriaLabel": "Ukončiť režim cestovania v čase",
+      "exitTitle": "Vrátiť sa do live režimu"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Inštrument iba na pozorovanie. Snapper prijíma trhové dáta, ale pre túto dvojicu (symbol, burza) nemôže zadávať pokyny.",
+      "ariaLabel": "Inštrument iba s trhovými dátami",
+      "badge": "Iba trhové dáta"
+    },
+    "liveOnly": {
+      "notice": "Táto karta zobrazuje aktuálny stav — historický pohľad nie je dostupný."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Niečo sa pokazilo",
+    "titleWithComponent": "Chyba v {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Skúsiť znova"
+  },
+  "nav": {
+    "overview": "Prehľad",
+    "market": "Trhové dáta",
+    "processes": "Procesy",
+    "strategies": "Stratégie",
+    "orders": "Pokyny a plnenia",
+    "positions": "Pozície",
+    "signals": "Signály",
+    "backtests": "Backtesty",
+    "health": "Stav",
+    "admin": "Administrácia",
+    "aiIntegration": "Integrácia AI",
+    "aiReviews": "Kontroly AI",
+    "settings": "Nastavenia"
+  }
+}

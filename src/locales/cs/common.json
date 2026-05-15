@@ -1,0 +1,83 @@
+{
+  "loading": "Načítání...",
+  "error": "Chyba",
+  "retry": "Zkusit znovu",
+  "close": "Zavřít",
+  "cancel": "Zrušit",
+  "confirm": "Potvrdit",
+  "save": "Uložit",
+  "documentation": "Dokumentace (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Změnit jazyk",
+    "flagAriaLabel": "Přepnout na {{country}}",
+    "currentAriaLabel": "Aktuální jazyk: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Obchodní konzole",
+    "tagline": "Precizní pracovní stanice",
+    "openSidebar": "Otevřít postranní panel",
+    "closeSidebar": "Zavřít postranní panel",
+    "sidebar": "Postranní panel",
+    "mainNavigation": "Hlavní navigace",
+    "tradingContent": "Obchodní obsah",
+    "skipToContent": "Přejít na obchodní obsah",
+    "lag": "Zpoždění:",
+    "lagTitle": "Obousměrná latence k WebSocket serveru",
+    "topics": "Témata:",
+    "topicsTitle": "Počet odebíraných WebSocket témat",
+    "connected": "Připojeno",
+    "disconnected": "Odpojeno",
+    "connectedTitle": "Připojeno k WebSocket",
+    "disconnectedTitle": "Odpojeno od WebSocket",
+    "switchToLightMode": "Přepnout na světlý režim",
+    "switchToDarkMode": "Přepnout na tmavý režim",
+    "timeTravelBanner": "Režim cestování v čase — zobrazení historických dat (jen pro čtení)",
+    "lagUnknown": "Neznámé",
+    "walletPicker": {
+      "ariaLabel": "Aktivní peněženka",
+      "placeholder": "Peněženka",
+      "allWallets": "Všechny peněženky",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktivní operátor",
+      "placeholder": "Operátor",
+      "allOperators": "Všichni operátoři"
+    },
+    "timeTravel": {
+      "pickerTitle": "Cestování v čase: vyberte historický okamžik",
+      "exitAriaLabel": "Ukončit režim cestování v čase",
+      "exitTitle": "Vrátit se do live režimu"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument pouze pro sledování. Snapper přijímá tržní data, ale pro tuto dvojici (symbol, burza) nemůže zadávat pokyny.",
+      "ariaLabel": "Instrument pouze s tržními daty",
+      "badge": "Pouze tržní data"
+    },
+    "liveOnly": {
+      "notice": "Tato karta zobrazuje aktuální stav — historický pohled není dostupný."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Něco se pokazilo",
+    "titleWithComponent": "Chyba v {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Zkusit znovu"
+  },
+  "nav": {
+    "overview": "Přehled",
+    "market": "Tržní data",
+    "processes": "Procesy",
+    "strategies": "Strategie",
+    "orders": "Pokyny a provedení",
+    "positions": "Pozice",
+    "signals": "Signály",
+    "backtests": "Backtesty",
+    "health": "Stav",
+    "admin": "Administrace",
+    "aiIntegration": "Integrace AI",
+    "aiReviews": "Kontroly AI",
+    "settings": "Nastavení"
+  }
+}

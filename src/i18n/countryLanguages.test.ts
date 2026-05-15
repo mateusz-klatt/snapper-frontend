@@ -25,6 +25,11 @@ const NATIVE_LANGUAGE_COUNTRIES = [
   'kr',
   'vn',
   'id',
+  'cz',
+  'sk',
+  'ro',
+  'ua',
+  'ru',
 ] as const
 
 describe('COUNTRY_TO_LANGUAGE', () => {
@@ -46,6 +51,11 @@ describe('COUNTRY_TO_LANGUAGE', () => {
     expect(COUNTRY_TO_LANGUAGE.kr).toBe('ko')
     expect(COUNTRY_TO_LANGUAGE.vn).toBe('vi')
     expect(COUNTRY_TO_LANGUAGE.id).toBe('id')
+    expect(COUNTRY_TO_LANGUAGE.cz).toBe('cs')
+    expect(COUNTRY_TO_LANGUAGE.sk).toBe('sk')
+    expect(COUNTRY_TO_LANGUAGE.ro).toBe('ro')
+    expect(COUNTRY_TO_LANGUAGE.ua).toBe('uk')
+    expect(COUNTRY_TO_LANGUAGE.ru).toBe('ru')
   })
 
   it('maps countries without a native catalog to en', () => {
@@ -85,6 +95,11 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
     expect(COUNTRY_TO_INTL_LOCALE.kr).toBe('ko-KR')
     expect(COUNTRY_TO_INTL_LOCALE.vn).toBe('vi-VN')
     expect(COUNTRY_TO_INTL_LOCALE.id).toBe('id-ID')
+    expect(COUNTRY_TO_INTL_LOCALE.cz).toBe('cs-CZ')
+    expect(COUNTRY_TO_INTL_LOCALE.sk).toBe('sk-SK')
+    expect(COUNTRY_TO_INTL_LOCALE.ro).toBe('ro-RO')
+    expect(COUNTRY_TO_INTL_LOCALE.ua).toBe('uk-UA')
+    expect(COUNTRY_TO_INTL_LOCALE.ru).toBe('ru-RU')
     expect(COUNTRY_TO_INTL_LOCALE.ae).toBe('en-AE')
   })
 

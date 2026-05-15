@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Prehľad"
+  },
+  "metrics": {
+    "feedsRunning": "Spustené Feedy",
+    "strategiesActive": "Aktívne stratégie",
+    "openOrders": "Otvorené pokyny",
+    "todaysExecutions": "Dnešné plnenia",
+    "executionsOn": "Plnenia ({{date}})"
+  },
+  "status": {
+    "stopped": "Zastavené",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Beží",
+    "active": "Aktívne"
+  },
+  "processStatus": {
+    "title": "Stav procesov",
+    "feeds": "Feedy",
+    "strategies": "Stratégie",
+    "executors": "Executory",
+    "brokers": "Brokeri"
+  },
+  "portfolio": {
+    "title": "Súhrn portfólia",
+    "totalValue": "Celková hodnota",
+    "longExposure": "Long expozícia",
+    "shortExposure": "Short expozícia",
+    "netDelta": "Čistá delta",
+    "unrealizedPnl": "Nerealizovaný P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Pozície",
+    "instrumentsCount": "Inštrumenty: {{count}}",
+    "empty": "Nie sú dostupné žiadne dáta o pozíciách"
+  },
+  "signals": {
+    "title": "Nedávne signály",
+    "empty": "Žiadne nedávne signály",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Nedávne plnenia",
+    "empty": "Žiadne nedávne plnenia",
+    "noTime": "N/A"
+  }
+}

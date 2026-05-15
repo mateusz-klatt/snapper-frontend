@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Späť",
+    "backToList": "← Späť na backtesty"
+  },
+  "status": {
+    "pending": "Čaká",
+    "running": "Prebieha",
+    "completed": "Dokončené",
+    "failed": "Zlyhalo",
+    "cancelled": "Zrušené"
+  },
+  "list": {
+    "title": "Backtesty",
+    "actions": {
+      "cancel": "Zrušiť",
+      "rerun": "Spustiť znova"
+    },
+    "fields": {
+      "timeframe": "Časový rámec",
+      "period": "Obdobie",
+      "initialCash": "Počiatočný kapitál",
+      "id": "ID"
+    },
+    "errorPrefix": "Chyba: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrovať backtesty podľa stavu",
+      "options": {
+        "all": "Všetky stavy",
+        "pending": "Čaká",
+        "running": "Prebieha",
+        "completed": "Dokončené",
+        "failed": "Zlyhalo",
+        "cancelled": "Zrušené"
+      }
+    },
+    "empty": {
+      "title": "Žiadne backtesty",
+      "message": "Spustite backtest cez CLI alebo API a výsledky sa zobrazia tu."
+    }
+  },
+  "detail": {
+    "title": "Beh backtestu",
+    "fields": {
+      "strategy": "Stratégia",
+      "instrument": "Inštrument",
+      "status": "Stav",
+      "period": "Obdobie",
+      "crossAsset": "Atribúcia medzi aktívami",
+      "configHash": "Hash konfigurácie"
+    },
+    "crossAssetFlow": "{{source}} Feed → plnenia {{target}}",
+    "errors": {
+      "invalidRunId": "Neplatné ID behu — musí byť UUID7 (zadané \"{{id}}\").",
+      "loadFailed": "Beh sa nepodarilo načítať: {{message}}",
+      "notFound": "nenájdené"
+    }
+  },
+  "compare": {
+    "title": "Porovnať",
+    "headingFull": "Porovnanie backtestov",
+    "loading": "Načítava sa porovnanie…",
+    "vs": "vs",
+    "runLabel": "Beh {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metriky",
+      "equityOverlay": "Prekrytie equity kriviek",
+      "trades": "Obchody",
+      "signals": "Signály"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manuálne"
+    },
+    "errors": {
+      "notFound": "Porovnanie sa v aktuálnej peňaženke nenašlo.",
+      "loadFailed": "Porovnanie sa nepodarilo načítať: {{message}}",
+      "unknown": "neznáma chyba",
+      "emptyResponse": "Prázdna odpoveď porovnania."
+    },
+    "launcher": {
+      "title": "Porovnať",
+      "submit": "Porovnať",
+      "autoPair": "Porovnať s najnovším",
+      "terminalGate": "porovnanie je dostupné, keď tento beh dosiahne terminálny stav",
+      "noSiblings": "žiadne ďalšie behy s touto konfiguráciou",
+      "limitNotice": "zobrazuje sa {{count}} najnovších — pre staršie behy použite manuálne párovanie",
+      "pickPlaceholder": "— vyberte beh na porovnanie —",
+      "showAllLabel": "Zobraziť všetky behy (nielen s rovnakou konfiguráciou)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "všetky behy",
+        "sameConfig": "rovnaká konfigurácia"
+      },
+      "errors": {
+        "pickRequired": "vyberte beh zo zoznamu"
+      }
+    },
+    "diffColumns": {
+      "common": "Spoločné",
+      "onlyA": "Iba v A",
+      "onlyB": "Iba v B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Žiadne porovnateľné metriky — oba behy nemali zaznamenané hodnoty.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "Beh A",
+        "runB": "Beh B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Beh A",
+        "runB": "Beh B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Čaká sa na priebeh…",
+    "candles": "{{done}} / {{total}} sviečok",
+    "candlesNoTotal": "{{done}} sviečok",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} signálov / {{trades}} obchodov",
+    "milestoneLine": "míľnik {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

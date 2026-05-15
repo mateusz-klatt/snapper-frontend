@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Stare sistem",
+    "healthMetricsHeading": "Metrici de sănătate",
+    "processStatusHeading": "Stare procese",
+    "activeBacktestsHeading": "Backtesturi active",
+    "quickActionsHeading": "Acțiuni rapide",
+    "featureNotImplemented": "Funcționalitate neimplementată încă",
+    "restartServices": "Reporniți serviciile",
+    "runHealthCheck": "Rulați verificarea de sănătate",
+    "viewLogs": "Vizualizați logurile",
+    "exportReport": "Exportați raportul"
+  },
+  "status": {
+    "healthy": "Sănătos",
+    "stopped": "Oprit",
+    "error": "Eroare",
+    "warning": "Avertisment",
+    "completed": "Finalizat",
+    "unknown": "Necunoscut"
+  },
+  "metrics": {
+    "tradingEngine": "Motor de trading",
+    "tradingEngineDescription": "Motor de execuție a strategiilor",
+    "activeBacktests": "Backtesturi active",
+    "activeBacktestsDescription": "Procese de backtest în rulare",
+    "active": "Activ",
+    "inactive": "Inactiv"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}z {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Uptime",
+    "exitCode": "Cod ieșire: {{code}}",
+    "service": "serviciu",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Statistici bază de date",
+    "loading": "Se încarcă statisticile bazei de date…",
+    "unavailable": "Statisticile bazei de date nu sunt disponibile: {{message}}",
+    "fallbackError": "Încărcarea statisticilor bazei de date a eșuat.",
+    "sampled": "eșantionat {{age}}",
+    "samplerSummary": "Interval sampler: {{seconds}}s · {{count}} tabele",
+    "columns": {
+      "table": "Tabel",
+      "kind": "Tip",
+      "total": "Total",
+      "current": "Curent",
+      "closed": "Închis",
+      "archivable": "Arhivabil",
+      "status": "Status"
+    },
+    "stale": "învechit"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Se încarcă metricile de notificări…",
+    "unavailable": "Metricile de notificări nu sunt disponibile: {{message}}",
+    "fallbackError": "Încărcarea metricilor de notificări a eșuat.",
+    "sent": "Trimise",
+    "sentDescription": "Terminal: trimise",
+    "failed": "Eșuate",
+    "failedDescription": "Buget de reîncercare epuizat",
+    "unregistered": "Neînregistrate",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Anulate (domeniu)",
+    "cancelledScopeDescription": "Revocare domeniu / dezactivare utilizator",
+    "outboxDepth": "Adâncime Outbox",
+    "outboxDepthDescription": "În coadă, în așteptarea reîncercării"
+  },
+  "retention": {
+    "title": "Scheduler retenție",
+    "loading": "Se încarcă rularea de retenție…",
+    "unavailable": "Rularea de retenție nu este disponibilă: {{message}}",
+    "fallbackError": "Încărcarea rulării de retenție a eșuat.",
+    "lastRun": "ultima rulare {{age}}",
+    "dryRunNotice": "Mod dry-run: rândurile sunt arhivate, dar nu sunt șterse din DB.",
+    "columns": {
+      "table": "Tabel",
+      "retain": "Păstrare",
+      "archivedWindow": "Fereastră arhivată",
+      "archived": "Arhivate",
+      "purged": "Șterse",
+      "files": "Fișiere",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}z",
+    "ok": "ok",
+    "error": "eroare"
+  },
+  "systemMetrics": {
+    "title": "Sănătate proces",
+    "loading": "Se încarcă metricile proceselor…",
+    "unavailable": "Metricile de sănătate ale proceselor nu sunt disponibile: {{message}}",
+    "fallbackError": "Încărcarea metricilor de sănătate ale proceselor a eșuat.",
+    "rawJson": "JSON brut",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Uptime",
+    "threads": "Threaduri",
+    "openFds": "FD-uri deschise",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Limitat {{count}}×",
+    "memory": "Memorie",
+    "saturation": "Saturație {{percent}}",
+    "asyncioTasks": "Taskuri Asyncio",
+    "asyncioActive": "{{count}} active",
+    "asyncioPending": "+ {{count}} în așteptare",
+    "dbPool": "DB Pool",
+    "liveConns": "Conexiuni live: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Obiecte: {{value}}",
+    "threadsPercent": "Threaduri %",
+    "networkConns": "Conexiuni rețea",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Activ",
+    "tracemallocIdle": "Inactiv"
+  },
+  "relativeAge": {
+    "justNow": "chiar acum",
+    "seconds": "{{seconds}}s în urmă",
+    "minutes": "{{minutes}}min în urmă",
+    "hours": "{{hours}}h în urmă",
+    "days": "{{days}}z în urmă"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}z"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

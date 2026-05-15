@@ -1,0 +1,83 @@
+{
+  "loading": "Завантаження...",
+  "error": "Помилка",
+  "retry": "Повторити",
+  "close": "Закрити",
+  "cancel": "Скасувати",
+  "confirm": "Підтвердити",
+  "save": "Зберегти",
+  "documentation": "Документація (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Змінити мову",
+    "flagAriaLabel": "Перемкнути на {{country}}",
+    "currentAriaLabel": "Поточна мова: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Торгова консоль",
+    "tagline": "Точна робоча станція",
+    "openSidebar": "Відкрити бічну панель",
+    "closeSidebar": "Закрити бічну панель",
+    "sidebar": "Бічна панель",
+    "mainNavigation": "Головна навігація",
+    "tradingContent": "Торговий контент",
+    "skipToContent": "Перейти до торгового контенту",
+    "lag": "Затримка:",
+    "lagTitle": "Round-trip затримка до сервера WebSocket",
+    "topics": "Теми:",
+    "topicsTitle": "Кількість підписаних тем WebSocket",
+    "connected": "Підключено",
+    "disconnected": "Відключено",
+    "connectedTitle": "Підключено до WebSocket",
+    "disconnectedTitle": "Відключено від WebSocket",
+    "switchToLightMode": "Перемкнути на світлий режим",
+    "switchToDarkMode": "Перемкнути на темний режим",
+    "timeTravelBanner": "Режим Time Travel — перегляд історичних даних (лише читання)",
+    "lagUnknown": "Невідомо",
+    "walletPicker": {
+      "ariaLabel": "Активний гаманець",
+      "placeholder": "Гаманець",
+      "allWallets": "Усі гаманці",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Активний оператор",
+      "placeholder": "Оператор",
+      "allOperators": "Усі оператори"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time Travel: виберіть історичний момент часу",
+      "exitAriaLabel": "Вийти з режиму Time Travel",
+      "exitTitle": "Повернутися до live-режиму"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Інструмент лише для спостереження. Snapper отримує ринкові дані, але не може розміщувати ордери для цієї пари (символ, біржа).",
+      "ariaLabel": "Інструмент лише для ринкових даних",
+      "badge": "Лише ринкові дані"
+    },
+    "liveOnly": {
+      "notice": "Ця вкладка показує поточний стан — історичний перегляд недоступний."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Щось пішло не так",
+    "titleWithComponent": "Помилка в {{componentName}}",
+    "stackTrace": "Трасування стеку",
+    "tryAgain": "Спробувати ще раз"
+  },
+  "nav": {
+    "overview": "Огляд",
+    "market": "Ринкові дані",
+    "processes": "Процеси",
+    "strategies": "Стратегії",
+    "orders": "Ордери та виконання",
+    "positions": "Позиції",
+    "signals": "Сигнали",
+    "backtests": "Backtests",
+    "health": "Стан",
+    "admin": "Адміністрування",
+    "aiIntegration": "AI-інтеграція",
+    "aiReviews": "AI-перевірки",
+    "settings": "Налаштування"
+  }
+}

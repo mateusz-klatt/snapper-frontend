@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Ordine și execuții",
+    "newOrder": "Plasați ordin",
+    "exportCsv": "Exportați CSV"
+  },
+  "tabs": {
+    "orders": "Ordine ({{total}})",
+    "executions": "Execuții ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrați după status:",
+    "options": {
+      "all": "Toate ordinele",
+      "new": "Nou",
+      "open": "Deschis",
+      "partiallyFilled": "Executat parțial",
+      "partially_filled": "Executat parțial",
+      "filled": "Executat",
+      "cancelled": "Anulat",
+      "rejected": "Respins"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Cantitate",
+    "price": "Preț",
+    "created": "Creat",
+    "createdUnknown": "N/A",
+    "orderId": "ID ordin",
+    "leverage": "Levier",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "DOAR-REDUCERE",
+    "cancel": "Anulați",
+    "cancelling": "Se anulează…",
+    "cancelAriaLabel": "Anulați ordinul {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Ordin #{{orderId}}",
+    "filled": "EXECUTAT",
+    "orderLabel": "Ordin {{orderId}}",
+    "size": "Dimensiune",
+    "price": "Preț",
+    "total": "Total",
+    "executed": "Executat",
+    "fees": "Comisioane"
+  },
+  "empty": {
+    "ordersTitle": "Nu s-au găsit ordine",
+    "ordersStartTrading": "Începeți tradingul pentru a vedea ordinele aici",
+    "ordersFilterless": "Niciun ordin {{status}}",
+    "executionsTitle": "Nu s-au găsit execuții",
+    "executionsMessage": "Execuțiile tranzacțiilor vor apărea aici"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Sens",
+      "type": "Tip",
+      "status": "Status",
+      "quantity": "Cantitate",
+      "price": "Preț",
+      "leverage": "Levier",
+      "reduceOnly": "Doar reducere",
+      "created": "Creat"
+    },
+    "executions": {
+      "orderId": "ID ordin",
+      "instrument": "Instrument",
+      "side": "Sens",
+      "size": "Dimensiune",
+      "price": "Preț",
+      "total": "Total",
+      "fee": "Comision",
+      "feeAsset": "Activ comision",
+      "executed": "Executat"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Ordin manual nou",
+    "titleConfirm": "Confirmați ordinul",
+    "fields": {
+      "exchange": "Exchange",
+      "instrument": "Instrument",
+      "side": "Sens",
+      "orderType": "Tip ordin",
+      "quantity": "Cantitate",
+      "price": "Preț",
+      "stopPrice": "Preț stop",
+      "mode": "Mod",
+      "wallet": "Portofel",
+      "type": "Tip"
+    },
+    "sideOptions": {
+      "buy": "Cumpărare",
+      "sell": "Vânzare"
+    },
+    "orderTypeOptions": {
+      "market": "Ordin market",
+      "limit": "Ordin limită",
+      "stop": "Ordin stop",
+      "stopLimit": "Ordin stop-limit",
+      "stop_limit": "Ordin stop-limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — doar date de piață",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Anulați",
+      "reviewOrder": "Revizuiți ordinul",
+      "back": "Înapoi",
+      "confirmOrder": "Confirmați ordinul",
+      "submitting": "Se trimite..."
+    },
+    "errors": {
+      "missingRequired": "Toate câmpurile obligatorii trebuie completate",
+      "quantityPositive": "Cantitatea trebuie să fie un număr pozitiv",
+      "priceRequired": "Prețul este obligatoriu pentru acest tip de ordin",
+      "pricePositive": "Prețul trebuie să fie un număr pozitiv",
+      "stopPriceRequired": "Prețul stop este obligatoriu pentru acest tip de ordin",
+      "stopPricePositive": "Prețul stop trebuie să fie un număr pozitiv",
+      "createFailed": "Crearea ordinului a eșuat"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Acest instrument este doar pentru observație — plasați ordine pe un instrument care permite execuții.",
+      "unknownInstrument": "Acest instrument nu este recunoscut. Reîncărcați lista și încercați din nou.",
+      "capsViolation": "Acest ordin ar depăși limitele de siguranță ale contului. Revizuiți setările de risc și încercați din nou."
+    }
+  }
+}

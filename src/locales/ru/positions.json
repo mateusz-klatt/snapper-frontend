@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Позиции"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: ожидает",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trailing",
+    "quantity": "Количество",
+    "averageEntry": "Средняя цена входа",
+    "unrealizedPnl": "Нереализованный P&L",
+    "realizedPnl": "Реализованный P&L",
+    "updated": "Обновлено {{timestamp}}"
+  },
+  "empty": {
+    "title": "Открытых позиций нет",
+    "message": "Длинные, короткие и нулевые позиции появятся здесь после исполнения сделок."
+  },
+  "bracketModal": {
+    "title": "Добавить SL/TP — {{instrument}}",
+    "confirmTitle": "Подтвердить Bracket",
+    "position": "Позиция",
+    "entryPrice": "Цена входа",
+    "stopLossLabel": "Цена Stop-Loss",
+    "takeProfitLabel": "Цена Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Ниже ${{price}}",
+      "slShort": "Выше ${{price}}",
+      "tpLong": "Выше ${{price}}",
+      "tpShort": "Ниже ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Отменить",
+      "review": "Проверить",
+      "back": "Назад",
+      "confirm": "Подтвердить",
+      "creating": "Создание…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Добавить Trailing Stop — {{instrument}}",
+    "confirmTitle": "Подтвердить Trailing Stop",
+    "position": "Позиция",
+    "entryPrice": "Цена входа",
+    "trailingDistanceLabel": "Дистанция Trailing (%)",
+    "minLockLabel": "Мин. фиксация прибыли (%) — опционально",
+    "trailingDistance": "Дистанция Trailing",
+    "minLockProfit": "Мин. фиксация прибыли",
+    "placeholders": {
+      "trailingPct": "например, 5.0",
+      "minLockPct": "0 = начать сразу"
+    },
+    "minLockWarning": "Trailing Stop не активируется, пока цена не пройдёт {{minLockPct}}% в благоприятном направлении.",
+    "buttons": {
+      "cancel": "Отменить",
+      "review": "Проверить",
+      "back": "Назад",
+      "confirm": "Подтвердить",
+      "creating": "Создание..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Требуется хотя бы одна цена SL или TP",
+    "invalidSlPrice": "Некорректная цена Stop-Loss",
+    "slPricePositive": "Цена Stop-Loss должна быть положительной",
+    "invalidTpPrice": "Некорректная цена Take-Profit",
+    "tpPricePositive": "Цена Take-Profit должна быть положительной",
+    "slLongBelowEntry": "Цена SL должна быть ниже цены входа ({{price}})",
+    "tpLongAboveEntry": "Цена TP должна быть выше цены входа ({{price}})",
+    "slShortAboveEntry": "Цена SL должна быть выше цены входа ({{price}})",
+    "tpShortBelowEntry": "Цена TP должна быть ниже цены входа ({{price}})",
+    "trailingRequired": "Процент Trailing обязателен",
+    "trailingInvalid": "Некорректный процент Trailing",
+    "trailingRange": "Процент Trailing должен быть от 0 до 100",
+    "minLockInvalid": "Некорректный процент мин. фиксации",
+    "minLockRange": "Процент мин. фиксации должен быть от 0 до 100"
+  }
+}
