@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Solicitação",
+    "decision": "Decisão",
+    "capsViolation": "Violação de limites",
+    "selectedDelegate": "Delegado selecionado",
+    "instrument": "instrumento",
+    "deadline": "prazo {{time}}",
+    "decidedBy": "por",
+    "newStatus": "status",
+    "mode": "modo",
+    "capAttempted": "tentado",
+    "capLimit": "vs limite",
+    "capOn": "no instrumento",
+    "reviewLabel": "revisão {{reviewId}}",
+    "unhandledFrame": "Frame de atividade de revisão de IA não tratado: {{frame}}"
+  },
+  "page": {
+    "title": "Caixa de entrada de revisões de IA",
+    "subtitle": "Revisões CONSULT pendentes roteadas para este delegado, mais o stream de eventos ao vivo."
+  },
+  "roleNotice": {
+    "title": "Reservado para delegados de IA",
+    "message": "Esta caixa mostra revisões CONSULT roteadas para um principal de delegado de IA. Entre com uma conta de delegado de IA para ver revisões pendentes e o stream de atividade ao vivo. Sua função atual é",
+    "unknownRole": "desconhecida"
+  },
+  "pending": {
+    "title": "Revisões pendentes",
+    "loading": "Carregando revisões pendentes…",
+    "loadError": "Falha ao carregar revisões pendentes: {{message}}",
+    "emptyTitle": "Nenhuma revisão pendente",
+    "emptyMessage": "Novas solicitações CONSULT roteadas para este delegado aparecerão aqui.",
+    "columns": {
+      "instrument": "Instrumento",
+      "thesis": "Tese",
+      "status": "Status",
+      "deadline": "Prazo",
+      "decision": "Decisão"
+    },
+    "rationalePlaceholder": "Justificativa (opcional)",
+    "rationaleAriaLabel": "Justificativa da revisão {{reviewId}}",
+    "approve": "Aprovar",
+    "reject": "Rejeitar",
+    "submitError": "Envio falhou: {{message}}"
+  },
+  "activity": {
+    "title": "Atividade recente",
+    "emptyTitle": "Ainda não há atividade",
+    "emptyMessage": "Frames de solicitação de revisão de IA, decisão e violação de limites aparecerão aqui em stream.",
+    "summaryEmpty": "Nenhum frame recebido",
+    "summaryCount": "Mostrando {{shown}} de {{total}} em buffer"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Forespørsel",
+    "decision": "Beslutning",
+    "capsViolation": "Grensebrudd",
+    "selectedDelegate": "Valgt delegat",
+    "instrument": "instrument",
+    "deadline": "frist {{time}}",
+    "decidedBy": "av",
+    "newStatus": "status",
+    "mode": "modus",
+    "capAttempted": "forsøkt",
+    "capLimit": "mot grense",
+    "capOn": "på instrument",
+    "reviewLabel": "gjennomgang {{reviewId}}",
+    "unhandledFrame": "Uhåndtert aktivitetsframe for AI-gjennomgang: {{frame}}"
+  },
+  "page": {
+    "title": "AI-gjennomgangsinnboks",
+    "subtitle": "Ventende CONSULT-gjennomganger rutet til denne delegaten pluss live hendelsesstrøm."
+  },
+  "roleNotice": {
+    "title": "Reservert for AI-delegater",
+    "message": "Denne innboksen viser CONSULT-gjennomganger rutet til en AI-delegatprinsipal. Logg inn med en AI-delegatkonto for å se ventende gjennomganger og live aktivitetsstrøm. Gjeldende rolle er",
+    "unknownRole": "ukjent"
+  },
+  "pending": {
+    "title": "Ventende gjennomganger",
+    "loading": "Laster ventende gjennomganger…",
+    "loadError": "Kunne ikke laste ventende gjennomganger: {{message}}",
+    "emptyTitle": "Ingen ventende gjennomganger",
+    "emptyMessage": "Nye CONSULT-forespørsler rutet til denne delegaten vises her.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Tese",
+      "status": "Status",
+      "deadline": "Frist",
+      "decision": "Beslutning"
+    },
+    "rationalePlaceholder": "Begrunnelse (valgfritt)",
+    "rationaleAriaLabel": "Begrunnelse for gjennomgang {{reviewId}}",
+    "approve": "Godkjenn",
+    "reject": "Avvis",
+    "submitError": "Innsending mislyktes: {{message}}"
+  },
+  "activity": {
+    "title": "Siste aktivitet",
+    "emptyTitle": "Ingen aktivitet ennå",
+    "emptyMessage": "AI-gjennomgangsforespørsler, beslutninger og grensebrudd-frames strømmer inn her.",
+    "summaryEmpty": "Ingen frames mottatt",
+    "summaryCount": "Viser {{shown}} av {{total}} bufrede"
+  }
+}

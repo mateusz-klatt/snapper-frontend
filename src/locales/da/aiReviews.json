@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Anmodning",
+    "decision": "Beslutning",
+    "capsViolation": "Grænseoverskridelse",
+    "selectedDelegate": "Valgt delegat",
+    "instrument": "instrument",
+    "deadline": "deadline {{time}}",
+    "decidedBy": "af",
+    "newStatus": "status",
+    "mode": "tilstand",
+    "capAttempted": "forsøgt",
+    "capLimit": "mod grænse",
+    "capOn": "på instrument",
+    "reviewLabel": "review {{reviewId}}",
+    "unhandledFrame": "Uhåndteret aktivitetsframe for AI-review: {{frame}}"
+  },
+  "page": {
+    "title": "AI Review-indbakke",
+    "subtitle": "Ventende CONSULT-reviews sendt til denne delegat plus live event-streamen."
+  },
+  "roleNotice": {
+    "title": "Reserveret til AI-delegater",
+    "message": "Denne indbakke viser CONSULT-reviews sendt til en AI-delegatprincipal. Log ind med en AI-delegatkonto for at se ventende reviews og live aktivitetsstreamen. Aktuel rolle er",
+    "unknownRole": "ukendt"
+  },
+  "pending": {
+    "title": "Ventende reviews",
+    "loading": "Indlæser ventende reviews…",
+    "loadError": "Kunne ikke indlæse ventende reviews: {{message}}",
+    "emptyTitle": "Ingen ventende reviews",
+    "emptyMessage": "Nye CONSULT-anmodninger sendt til denne delegat vises her.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Tese",
+      "status": "Status",
+      "deadline": "Deadline",
+      "decision": "Beslutning"
+    },
+    "rationalePlaceholder": "Begrundelse (valgfri)",
+    "rationaleAriaLabel": "Begrundelse for review {{reviewId}}",
+    "approve": "Godkend",
+    "reject": "Afvis",
+    "submitError": "Afsendelse mislykkedes: {{message}}"
+  },
+  "activity": {
+    "title": "Seneste aktivitet",
+    "emptyTitle": "Ingen aktivitet endnu",
+    "emptyMessage": "Frames for AI-reviewanmodninger, beslutninger og grænseoverskridelser streames hertil.",
+    "summaryEmpty": "Ingen frames modtaget",
+    "summaryCount": "Viser {{shown}} af {{total}} bufferlagrede"
+  }
+}

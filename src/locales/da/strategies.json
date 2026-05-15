@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strategiadministration",
+    "register": "Registrer strategi",
+    "saving": "Gemmer…",
+    "descriptionCanManage": "Registrer nye strategiprocesser direkte fra brugerfladen. Autostart holder processen aktiveret på tværs af genstarter.",
+    "descriptionViewer": "Vis konfigurerede strategier og deres status. Kontakt en operatør eller administrator for at administrere strategier.",
+    "searchPlaceholder": "Søg strategier...",
+    "filter": {
+      "all": "Alle statusser",
+      "running": "Kører",
+      "stopped": "Stoppet"
+    },
+    "configuredHeading": "Konfigurerede strategier",
+    "noMatches": "Ingen strategier matcher filtrene",
+    "clearFilters": "Ryd filtre",
+    "emptyTitle": "Ingen strategier konfigureret",
+    "emptyCanManage": "Registrer en strategi for at starte algoritmisk trading",
+    "emptyViewer": "Ingen strategier er konfigureret endnu"
+  },
+  "confirm": {
+    "startTitle": "Start {{name}}",
+    "startMessage": "Dette starter strategien {{name}}. Den kan begynde live trading.",
+    "stopTitle": "Stop {{name}}",
+    "stopMessage": "Dette stopper strategien {{name}}. Aktive positioner lukkes ikke automatisk."
+  },
+  "toast": {
+    "saved": "Strategien {{name}} gemt",
+    "started": "Strategien {{name}} startet",
+    "registerFailed": "Kunne ikke registrere strategi: {{message}}",
+    "startSuccess": "Strategi startet",
+    "stopSuccess": "Strategi stoppet",
+    "alreadyRunning": "Strategien kører allerede",
+    "notRunning": "Strategien kører ikke",
+    "configNotFound": "Strategikonfiguration ikke fundet. Kontrollér databaseindstillingerne.",
+    "networkError": "Netværksfejl. Kontrollér forbindelsen, og prøv igen.",
+    "startFailed": "Kunne ikke starte strategi: {{message}}",
+    "stopFailed": "Kunne ikke stoppe strategi: {{message}}",
+    "unknownError": "Ukendt fejl"
+  },
+  "card": {
+    "ariaLabel": "Strategi: {{name}}",
+    "modeLabel": "Tilstand: {{mode}}",
+    "autostartEnabled": "Autostart: aktiveret",
+    "autostartDisabled": "Autostart: deaktiveret",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Dataforsinkelse: {{seconds}} sekunder",
+    "lagBadge": "forsinkelse: {{seconds}}s",
+    "feedLag": "Feed-forsinkelse: {{ms}}ms",
+    "heartbeatAge": "HB-alder: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Dataforsinkelse",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Vis detaljer",
+    "hideDetails": "Skjul detaljer",
+    "inputs": "Inputs ({{count}})",
+    "outputs": "Outputs ({{count}})",
+    "feedPublishers": "Feed Publishers ({{count}})",
+    "lastUpdate": "Seneste opdatering: {{time}}",
+    "waiting": "Afventer heartbeat...",
+    "startAriaLabel": "Start strategien {{name}}",
+    "stopAriaLabel": "Stop strategien {{name}}",
+    "start": "Start",
+    "stop": "Stop",
+    "starting": "Starter...",
+    "stopping": "Stopper...",
+    "status": {
+      "starting": "starter",
+      "stopping": "stopper",
+      "running": "kører",
+      "stopped": "stoppet"
+    },
+    "health": {
+      "healthy": "Sund — modtager friske data",
+      "warning": "Advarsel — data er forældede",
+      "error": "Fejl — ingen seneste data",
+      "unknown": "Ukendt — ingen heartbeat-data"
+    },
+    "healthShort": {
+      "healthy": "SUND",
+      "warning": "ADVARSEL",
+      "error": "FEJL"
+    }
+  },
+  "launchModal": {
+    "title": "Registrer strategiproces",
+    "emptyTemplates": "Ingen strategitemplates registreret i backend. Definér mindst én strategiproces.",
+    "close": "Luk",
+    "templateLabel": "Strategitemplate",
+    "templatePlaceholder": "Vælg template...",
+    "templateFallbackDescription": "Strategi registreret i backend",
+    "loadingDefaults": "Indlæser template-standarder…",
+    "loadDefaultsError": "Kunne ikke indlæse template-standarder. Kontrollér backend-logs.",
+    "processNameLabel": "Procesnavn",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Tilladte tegn: små bogstaver, tal, understregninger",
+    "instanceNameLabel": "Navn på strategiinstans",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Bruges i strategikonfiguration og output-topics",
+    "executionModeLabel": "Udførselstilstand",
+    "executionModeThread": "Indlejret thread",
+    "executionModeProcess": "Isoleret proces",
+    "executionModeHelp": "Threads deler hukommelse, processer giver stærkere isolation.",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart ved serverstart",
+    "startImmediatelyLabel": "Start straks efter registrering",
+    "noteLabel": "Note (valgfri)",
+    "notePlaceholder": "Beskriv formål eller parametre for denne strategiinstans.",
+    "noteHelp": "Gemmes sammen med konfigurationen for at identificere processen.",
+    "cancel": "Annuller",
+    "submit": "Registrer strategi",
+    "submitting": "Registrerer…"
+  }
+}

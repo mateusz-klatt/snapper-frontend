@@ -7,7 +7,19 @@ import {
 } from './countryLanguages'
 import { SUPPORTED_LOCALES } from './types'
 
-const NATIVE_LANGUAGE_COUNTRIES = ['pl', 'de', 'fr', 'es', 'it', 'nl'] as const
+const NATIVE_LANGUAGE_COUNTRIES = [
+  'pl',
+  'de',
+  'fr',
+  'es',
+  'it',
+  'nl',
+  'br',
+  'se',
+  'dk',
+  'no',
+  'fi',
+] as const
 
 describe('COUNTRY_TO_LANGUAGE', () => {
   it('maps native-language countries to their own catalog', () => {
@@ -17,6 +29,11 @@ describe('COUNTRY_TO_LANGUAGE', () => {
     expect(COUNTRY_TO_LANGUAGE.es).toBe('es')
     expect(COUNTRY_TO_LANGUAGE.it).toBe('it')
     expect(COUNTRY_TO_LANGUAGE.nl).toBe('nl')
+    expect(COUNTRY_TO_LANGUAGE.br).toBe('pt')
+    expect(COUNTRY_TO_LANGUAGE.se).toBe('sv')
+    expect(COUNTRY_TO_LANGUAGE.dk).toBe('da')
+    expect(COUNTRY_TO_LANGUAGE.no).toBe('no')
+    expect(COUNTRY_TO_LANGUAGE.fi).toBe('fi')
   })
 
   it('maps countries without a native catalog to en', () => {
@@ -46,6 +63,11 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
     expect(COUNTRY_TO_INTL_LOCALE.es).toBe('es-ES')
     expect(COUNTRY_TO_INTL_LOCALE.it).toBe('it-IT')
     expect(COUNTRY_TO_INTL_LOCALE.nl).toBe('nl-NL')
+    expect(COUNTRY_TO_INTL_LOCALE.br).toBe('pt-BR')
+    expect(COUNTRY_TO_INTL_LOCALE.se).toBe('sv-SE')
+    expect(COUNTRY_TO_INTL_LOCALE.dk).toBe('da-DK')
+    expect(COUNTRY_TO_INTL_LOCALE.no).toBe('no-NO')
+    expect(COUNTRY_TO_INTL_LOCALE.fi).toBe('fi-FI')
     expect(COUNTRY_TO_INTL_LOCALE.ae).toBe('en-AE')
     expect(COUNTRY_TO_INTL_LOCALE.cn).toBe('en-CN')
   })

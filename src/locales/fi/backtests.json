@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Takaisin",
+    "backToList": "← Takaisin backtesteihin"
+  },
+  "status": {
+    "pending": "Odottaa",
+    "running": "Käynnissä",
+    "completed": "Valmis",
+    "failed": "Epäonnistui",
+    "cancelled": "Peruttu"
+  },
+  "list": {
+    "title": "Backtestit",
+    "actions": {
+      "cancel": "Peruuta",
+      "rerun": "Aja uudelleen"
+    },
+    "fields": {
+      "timeframe": "Aikaväli",
+      "period": "Jakso",
+      "initialCash": "Alkukassa",
+      "id": "ID"
+    },
+    "errorPrefix": "Virhe: {{message}}",
+    "filter": {
+      "ariaLabel": "Suodata backtestit statuksen mukaan",
+      "options": {
+        "all": "Kaikki statukset",
+        "pending": "Odottaa",
+        "running": "Käynnissä",
+        "completed": "Valmis",
+        "failed": "Epäonnistui",
+        "cancelled": "Peruttu"
+      }
+    },
+    "empty": {
+      "title": "Ei backtestejä",
+      "message": "Aja backtest CLI:llä tai API:n kautta nähdäksesi tulokset täällä."
+    }
+  },
+  "detail": {
+    "title": "Backtest-ajo",
+    "fields": {
+      "strategy": "Strategia",
+      "instrument": "Instrumentti",
+      "status": "Tila",
+      "period": "Jakso",
+      "crossAsset": "Instrumenttien välinen attribuutio",
+      "configHash": "Konfiguraation hash"
+    },
+    "crossAssetFlow": "{{source}} feed → {{target}} toteutukset",
+    "errors": {
+      "invalidRunId": "Virheellinen ajon ID — oltava UUID7 (saatu \"{{id}}\").",
+      "loadFailed": "Ajon lataus epäonnistui: {{message}}",
+      "notFound": "ei löytynyt"
+    }
+  },
+  "compare": {
+    "title": "Vertaa",
+    "headingFull": "Backtest-vertailu",
+    "loading": "Ladataan vertailua…",
+    "vs": "vs",
+    "runLabel": "Ajo {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metriikat",
+      "equityOverlay": "Equity-overlay",
+      "trades": "Treidit",
+      "signals": "Signaalit"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manuaali"
+    },
+    "errors": {
+      "notFound": "Vertailua ei löytynyt nykyisestä lompakosta.",
+      "loadFailed": "Vertailun lataus epäonnistui: {{message}}",
+      "unknown": "tuntematon virhe",
+      "emptyResponse": "Tyhjä vertailuvastaus."
+    },
+    "launcher": {
+      "title": "Vertaa",
+      "submit": "Vertaa",
+      "autoPair": "Vertaa uusimpaan",
+      "terminalGate": "vertailu käytettävissä, kun tämä ajo saavuttaa päätösstatuksen",
+      "noSiblings": "ei muita ajoja tällä konfiguraatiolla",
+      "limitNotice": "Uusimmat ajot: {{count}} — käytä manuaalista paria vanhemmille ajoille",
+      "pickPlaceholder": "— valitse vertailtava ajo —",
+      "showAllLabel": "Näytä kaikki ajot (ei vain sama konfiguraatio)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "kaikki ajot",
+        "sameConfig": "sama konfiguraatio"
+      },
+      "errors": {
+        "pickRequired": "valitse ajo listasta"
+      }
+    },
+    "diffColumns": {
+      "common": "Yhteiset",
+      "onlyA": "Vain A:ssa",
+      "onlyB": "Vain B:ssä"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Ei vertailukelpoisia metriikoita — kummassakaan ajossa ei ollut kirjattuja arvoja.",
+      "columns": {
+        "name": "Metriikka",
+        "runA": "Ajo A",
+        "runB": "Ajo B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Ajo A",
+        "runB": "Ajo B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Odotetaan edistymistä…",
+    "candles": "Kynttilät: {{done}} / {{total}}",
+    "candlesNoTotal": "Kynttilät: {{done}}",
+    "equity": "equity {{value}}",
+    "signalsTrades": "Signaalit: {{signals}} / treidit: {{trades}}",
+    "milestoneLine": "milestone {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "loading": "Indlæser...",
+  "error": "Fejl",
+  "retry": "Prøv igen",
+  "close": "Luk",
+  "cancel": "Annuller",
+  "confirm": "Bekræft",
+  "save": "Gem",
+  "documentation": "Dokumentation (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Skift sprog",
+    "flagAriaLabel": "Skift til {{country}}",
+    "currentAriaLabel": "Aktuelt sprog: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Tradingkonsol",
+    "tagline": "Præcisionsarbejdsstation",
+    "openSidebar": "Åbn sidepanel",
+    "closeSidebar": "Luk sidepanel",
+    "sidebar": "Sidepanel",
+    "mainNavigation": "Hovednavigation",
+    "tradingContent": "Tradingindhold",
+    "skipToContent": "Spring til tradingindhold",
+    "lag": "Forsinkelse:",
+    "lagTitle": "Round-trip-latency til WebSocket-serveren",
+    "topics": "Topics:",
+    "topicsTitle": "Antal abonnerede WebSocket-topics",
+    "connected": "Forbundet",
+    "disconnected": "Afbrudt",
+    "connectedTitle": "Forbundet til WebSocket",
+    "disconnectedTitle": "Afbrudt fra WebSocket",
+    "switchToLightMode": "Skift til lys tilstand",
+    "switchToDarkMode": "Skift til mørk tilstand",
+    "timeTravelBanner": "Time Travel Mode — viser historiske data (skrivebeskyttet)",
+    "lagUnknown": "Ukendt",
+    "walletPicker": {
+      "ariaLabel": "Aktiv wallet",
+      "placeholder": "Wallet",
+      "allWallets": "Alle wallets",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktiv operatør",
+      "placeholder": "Operatør",
+      "allOperators": "Alle operatører"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: vælg et historisk tidspunkt",
+      "exitAriaLabel": "Afslut time travel-tilstand",
+      "exitTitle": "Tilbage til live-tilstand"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Observation-only instrument. Snapper modtager markedsdata, men kan ikke placere ordrer for dette (symbol, børs)-par.",
+      "ariaLabel": "Instrument kun til markedsdata",
+      "badge": "Kun markedsdata"
+    },
+    "liveOnly": {
+      "notice": "Denne fane viser aktuel status — historisk visning er ikke tilgængelig."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Noget gik galt",
+    "titleWithComponent": "Fejl i {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Prøv igen"
+  },
+  "nav": {
+    "overview": "Overblik",
+    "market": "Markedsdata",
+    "processes": "Processer",
+    "strategies": "Strategier",
+    "orders": "Ordrer og udførsler",
+    "positions": "Positioner",
+    "signals": "Signaler",
+    "backtests": "Backtests",
+    "health": "Sundhed",
+    "admin": "Administration",
+    "aiIntegration": "AI-integration",
+    "aiReviews": "AI Reviews",
+    "settings": "Indstillinger"
+  }
+}

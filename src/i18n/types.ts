@@ -55,7 +55,19 @@ export const ROW_3 = [
 export const SUPPORTED_LOCALES = [...ROW_1, ...ROW_2, ...ROW_3] as const
 export type AppLocale = (typeof SUPPORTED_LOCALES)[number]
 
-export type CatalogLanguage = 'en' | 'pl' | 'de' | 'fr' | 'es' | 'it' | 'nl'
+export type CatalogLanguage =
+  | 'en'
+  | 'pl'
+  | 'de'
+  | 'fr'
+  | 'es'
+  | 'it'
+  | 'nl'
+  | 'pt'
+  | 'sv'
+  | 'da'
+  | 'no'
+  | 'fi'
 
 export interface LocaleMeta {
   readonly code: AppLocale

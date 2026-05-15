@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Posisjoner"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: venter",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Antall",
+    "averageEntry": "Snitt inngang",
+    "unrealizedPnl": "Urealisert P&L",
+    "realizedPnl": "Realisert P&L",
+    "updated": "Oppdatert {{timestamp}}"
+  },
+  "empty": {
+    "title": "Ingen åpne posisjoner",
+    "message": "Long-, short- og flate posisjoner vises her når handler er utført."
+  },
+  "bracketModal": {
+    "title": "Legg til SL/TP — {{instrument}}",
+    "confirmTitle": "Bekreft Bracket",
+    "position": "Posisjon",
+    "entryPrice": "Inngangspris",
+    "stopLossLabel": "Stop-Loss-pris",
+    "takeProfitLabel": "Take-Profit-pris",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Under ${{price}}",
+      "slShort": "Over ${{price}}",
+      "tpLong": "Over ${{price}}",
+      "tpShort": "Under ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Avbryt",
+      "review": "Gjennomgå",
+      "back": "Tilbake",
+      "confirm": "Bekreft",
+      "creating": "Oppretter…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Legg til Trailing Stop — {{instrument}}",
+    "confirmTitle": "Bekreft Trailing Stop",
+    "position": "Posisjon",
+    "entryPrice": "Inngangspris",
+    "trailingDistanceLabel": "Trailing-avstand (%)",
+    "minLockLabel": "Min. låst gevinst (%) — valgfritt",
+    "trailingDistance": "Trailing-avstand",
+    "minLockProfit": "Min. låst gevinst",
+    "placeholders": {
+      "trailingPct": "f.eks. 5.0",
+      "minLockPct": "0 = start umiddelbart"
+    },
+    "minLockWarning": "Trailing Stop aktiveres først når prisen beveger seg {{minLockPct}}% i positiv retning.",
+    "buttons": {
+      "cancel": "Avbryt",
+      "review": "Gjennomgå",
+      "back": "Tilbake",
+      "confirm": "Bekreft",
+      "creating": "Oppretter..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Minst én av SL- eller TP-pris er påkrevd",
+    "invalidSlPrice": "Ugyldig Stop-Loss-pris",
+    "slPricePositive": "Stop-Loss-pris må være positiv",
+    "invalidTpPrice": "Ugyldig Take-Profit-pris",
+    "tpPricePositive": "Take-Profit-pris må være positiv",
+    "slLongBelowEntry": "SL-pris må være under inngangspris ({{price}})",
+    "tpLongAboveEntry": "TP-pris må være over inngangspris ({{price}})",
+    "slShortAboveEntry": "SL-pris må være over inngangspris ({{price}})",
+    "tpShortBelowEntry": "TP-pris må være under inngangspris ({{price}})",
+    "trailingRequired": "Trailing-prosent er påkrevd",
+    "trailingInvalid": "Ugyldig trailing-prosent",
+    "trailingRange": "Trailing-prosent må være mellom 0 og 100",
+    "minLockInvalid": "Ugyldig min. låst prosent",
+    "minLockRange": "Min. låst prosent må være mellom 0 og 100"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Tillbaka",
+    "backToList": "← Tillbaka till backtester"
+  },
+  "status": {
+    "pending": "Väntar",
+    "running": "Körs",
+    "completed": "Slutförd",
+    "failed": "Misslyckad",
+    "cancelled": "Avbruten"
+  },
+  "list": {
+    "title": "Backtester",
+    "actions": {
+      "cancel": "Avbryt",
+      "rerun": "Kör igen"
+    },
+    "fields": {
+      "timeframe": "Tidsupplösning",
+      "period": "Period",
+      "initialCash": "Startkapital",
+      "id": "ID"
+    },
+    "errorPrefix": "Fel: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrera backtester efter status",
+      "options": {
+        "all": "Alla statusar",
+        "pending": "Väntar",
+        "running": "Körs",
+        "completed": "Slutförd",
+        "failed": "Misslyckad",
+        "cancelled": "Avbruten"
+      }
+    },
+    "empty": {
+      "title": "Inga backtester",
+      "message": "Kör en backtest via CLI eller API för att se resultat här."
+    }
+  },
+  "detail": {
+    "title": "Backtestkörning",
+    "fields": {
+      "strategy": "Strategi",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Period",
+      "crossAsset": "Attribution över tillgångar",
+      "configHash": "Konfigurationshash"
+    },
+    "crossAssetFlow": "{{source}}-feed → {{target}}-utföranden",
+    "errors": {
+      "invalidRunId": "Ogiltigt körnings-ID — måste vara en UUID7 (fick \"{{id}}\").",
+      "loadFailed": "Det gick inte att ladda körning: {{message}}",
+      "notFound": "hittades inte"
+    }
+  },
+  "compare": {
+    "title": "Jämför",
+    "headingFull": "Backtestjämförelse",
+    "loading": "Laddar jämförelse…",
+    "vs": "mot",
+    "runLabel": "Körning {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Mätvärden",
+      "equityOverlay": "Equity-overlay",
+      "trades": "Affärer",
+      "signals": "Signaler"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manuell"
+    },
+    "errors": {
+      "notFound": "Jämförelsen hittades inte i aktuell plånbok.",
+      "loadFailed": "Det gick inte att ladda jämförelse: {{message}}",
+      "unknown": "okänt fel",
+      "emptyResponse": "Tomt jämförelsesvar."
+    },
+    "launcher": {
+      "title": "Jämför",
+      "submit": "Jämför",
+      "autoPair": "Jämför med senaste",
+      "terminalGate": "jämförelse är tillgänglig när denna körning når slutstatus",
+      "noSiblings": "inga andra körningar med denna konfiguration",
+      "limitNotice": "visar {{count}} senaste — använd manuell parning för äldre körningar",
+      "pickPlaceholder": "— välj en körning att jämföra —",
+      "showAllLabel": "Visa alla körningar (inte bara samma konfiguration)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "alla körningar",
+        "sameConfig": "samma konfiguration"
+      },
+      "errors": {
+        "pickRequired": "välj en körning från listan"
+      }
+    },
+    "diffColumns": {
+      "common": "Gemensamt",
+      "onlyA": "Endast i A",
+      "onlyB": "Endast i B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Inga jämförbara mätvärden — båda körningarna saknade registrerade värden.",
+      "columns": {
+        "name": "Mätvärde",
+        "runA": "Körning A",
+        "runB": "Körning B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Körning A",
+        "runB": "Körning B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Väntar på framsteg…",
+    "candles": "{{done}} / {{total}} candles",
+    "candlesNoTotal": "{{done}} candles",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} affärer",
+    "milestoneLine": "milstolpe {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

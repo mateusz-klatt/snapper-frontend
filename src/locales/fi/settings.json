@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Asetukset",
+    "subtitle": "Määritä sovelluksen asetukset ja parametrit",
+    "addButton": "Lisää asetus",
+    "searchPlaceholder": "Hae asetuksia...",
+    "noResults": "Hakuehtoihin sopivia asetuksia ei löytynyt.",
+    "allCategories": "Kaikki kategoriat",
+    "categoryFilterAriaLabel": "Suodata asetuksia kategorian mukaan"
+  },
+  "errors": {
+    "loadFailed": "Asetusten lataus epäonnistui",
+    "updateFailed": "Asetuksen päivitys epäonnistui",
+    "deleteFailed": "Asetuksen poisto epäonnistui",
+    "createFailed": "Asetuksen luonti epäonnistui",
+    "alreadyExists": "Asetus avaimella \"{{key}}\" on jo olemassa"
+  },
+  "item": {
+    "edit": "Muokkaa",
+    "delete": "Poista",
+    "save": "Tallenna",
+    "saving": "Tallennetaan...",
+    "cancel": "Peruuta",
+    "yesDelete": "Kyllä, poista",
+    "deleting": "Poistetaan...",
+    "deleteConfirm": "Poistetaanko tämä asetus?",
+    "valuePlaceholder": "Anna asetuksen arvo...",
+    "showMore": "Näytä lisää",
+    "showLess": "Näytä vähemmän",
+    "toggleAriaLabel": "Vaihda {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Arkaluonteinen"
+    },
+    "helpText": {
+      "allowShortSelling": "Salli moottorin avata short-positioita. SELL-signaalit tuottavat negatiivisia desired_units-arvoja; arvo rajataan nollaan, kun tämä ei ole käytössä.",
+      "allowManualOrders": "Ota Uusi toimeksianto -painike käyttöön Toimeksiannot-välilehdellä. Kun tämä ei ole käytössä, POST /api/orders palauttaa 403."
+    }
+  },
+  "addModal": {
+    "title": "Lisää uusi asetus",
+    "keyLabel": "Avain",
+    "valueLabel": "Arvo",
+    "categoryLabel": "Kategoria",
+    "descriptionLabel": "Kuvaus",
+    "keyPlaceholder": "esim. walutomat.api_key",
+    "keyHint": "Käytä pistenotaatiota sisäkkäisille asetuksille (esim. kategoria.alikategoria.nimi)",
+    "valuePlaceholder": "Asetuksen arvo",
+    "categorySelectPlaceholder": "Valitse olemassa oleva tai luo uusi",
+    "newCategoryPlaceholder": "Tai anna uuden kategorian nimi",
+    "descriptionPlaceholder": "Valinnainen kuvaus",
+    "cancel": "Peruuta",
+    "create": "Luo asetus",
+    "creating": "Luodaan...",
+    "validation": {
+      "keyRequired": "Avain vaaditaan",
+      "valueRequired": "Arvo vaaditaan",
+      "categoryRequired": "Kategoria vaaditaan"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Lomake-editori",
+    "rawEditor": "Raaka JSON -editori",
+    "rawJson": "Raaka JSON",
+    "switchToForm": "Vaihda lomakkeeseen",
+    "importToForm": "Tuo lomakkeeseen",
+    "parseError": "Jäsennysvirhe: {{message}}",
+    "arraySummary": "Taulukko: {{length}} alkiota",
+    "addItem": "Lisää alkio",
+    "remove": "Poista",
+    "typeHint": {
+      "array": "(taulukko)",
+      "object": "(objekti)",
+      "string": "(merkkijono)",
+      "number": "(numero)",
+      "boolean": "(totuusarvo)",
+      "bigint": "(bigint)",
+      "function": "(funktio)",
+      "symbol": "(symboli)",
+      "undefined": "(määrittämätön)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

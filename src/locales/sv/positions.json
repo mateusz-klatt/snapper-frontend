@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Positioner"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: väntar",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Kvantitet",
+    "averageEntry": "Snittinträde",
+    "unrealizedPnl": "Orealiserad P&L",
+    "realizedPnl": "Realiserad P&L",
+    "updated": "Uppdaterad {{timestamp}}"
+  },
+  "empty": {
+    "title": "Inga öppna positioner",
+    "message": "Långa, korta och flat positioner visas här när affärer har utförts."
+  },
+  "bracketModal": {
+    "title": "Lägg till SL/TP — {{instrument}}",
+    "confirmTitle": "Bekräfta Bracket",
+    "position": "Position",
+    "entryPrice": "Inträdespris",
+    "stopLossLabel": "Stop-Loss-pris",
+    "takeProfitLabel": "Take-Profit-pris",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Under ${{price}}",
+      "slShort": "Över ${{price}}",
+      "tpLong": "Över ${{price}}",
+      "tpShort": "Under ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Avbryt",
+      "review": "Granska",
+      "back": "Tillbaka",
+      "confirm": "Bekräfta",
+      "creating": "Skapar…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Lägg till Trailing Stop — {{instrument}}",
+    "confirmTitle": "Bekräfta Trailing Stop",
+    "position": "Position",
+    "entryPrice": "Inträdespris",
+    "trailingDistanceLabel": "Trailing-avstånd (%)",
+    "minLockLabel": "Min. låst vinst (%) — valfritt",
+    "trailingDistance": "Trailing-avstånd",
+    "minLockProfit": "Min. låst vinst",
+    "placeholders": {
+      "trailingPct": "t.ex. 5.0",
+      "minLockPct": "0 = starta direkt"
+    },
+    "minLockWarning": "Trailing Stop aktiveras först när priset rör sig {{minLockPct}}% i gynnsam riktning.",
+    "buttons": {
+      "cancel": "Avbryt",
+      "review": "Granska",
+      "back": "Tillbaka",
+      "confirm": "Bekräfta",
+      "creating": "Skapar..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Minst ett SL- eller TP-pris krävs",
+    "invalidSlPrice": "Ogiltigt Stop-Loss-pris",
+    "slPricePositive": "Stop-Loss-pris måste vara positivt",
+    "invalidTpPrice": "Ogiltigt Take-Profit-pris",
+    "tpPricePositive": "Take-Profit-pris måste vara positivt",
+    "slLongBelowEntry": "SL-pris måste ligga under inträdespris ({{price}})",
+    "tpLongAboveEntry": "TP-pris måste ligga över inträdespris ({{price}})",
+    "slShortAboveEntry": "SL-pris måste ligga över inträdespris ({{price}})",
+    "tpShortBelowEntry": "TP-pris måste ligga under inträdespris ({{price}})",
+    "trailingRequired": "Trailing-procent krävs",
+    "trailingInvalid": "Ogiltig trailing-procent",
+    "trailingRange": "Trailing-procent måste vara mellan 0 och 100",
+    "minLockInvalid": "Ogiltig min. låsprocent",
+    "minLockRange": "Min. låsprocent måste vara mellan 0 och 100"
+  }
+}

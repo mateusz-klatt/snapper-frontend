@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Configurações",
+    "subtitle": "Configure parâmetros e ajustes da aplicação",
+    "addButton": "Adicionar configuração",
+    "searchPlaceholder": "Buscar configurações...",
+    "noResults": "Nenhuma configuração encontrada com estes critérios.",
+    "allCategories": "Todas as categorias",
+    "categoryFilterAriaLabel": "Filtrar configurações por categoria"
+  },
+  "errors": {
+    "loadFailed": "Falha ao carregar configurações",
+    "updateFailed": "Falha ao atualizar configuração",
+    "deleteFailed": "Falha ao excluir configuração",
+    "createFailed": "Falha ao criar configuração",
+    "alreadyExists": "Configuração com a chave \"{{key}}\" já existe"
+  },
+  "item": {
+    "edit": "Editar",
+    "delete": "Excluir",
+    "save": "Salvar",
+    "saving": "Salvando...",
+    "cancel": "Cancelar",
+    "yesDelete": "Sim, excluir",
+    "deleting": "Excluindo...",
+    "deleteConfirm": "Excluir esta configuração?",
+    "valuePlaceholder": "Digite o valor da configuração...",
+    "showMore": "Mostrar mais",
+    "showLess": "Mostrar menos",
+    "toggleAriaLabel": "Alternar {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensível"
+    },
+    "helpText": {
+      "allowShortSelling": "Permite que o motor abra posições vendidas. Sinais de VENDA gerarão desired_units negativos; trava em 0 quando desativado.",
+      "allowManualOrders": "Habilita o botão Nova ordem na aba Ordens. Quando desativado, POST /api/orders retorna 403."
+    }
+  },
+  "addModal": {
+    "title": "Adicionar nova configuração",
+    "keyLabel": "Chave",
+    "valueLabel": "Valor",
+    "categoryLabel": "Categoria",
+    "descriptionLabel": "Descrição",
+    "keyPlaceholder": "ex. walutomat.api_key",
+    "keyHint": "Use notação por pontos para configurações aninhadas (ex. categoria.subcategoria.nome)",
+    "valuePlaceholder": "Valor da configuração",
+    "categorySelectPlaceholder": "Selecione existente ou crie nova",
+    "newCategoryPlaceholder": "Ou digite o nome da nova categoria",
+    "descriptionPlaceholder": "Descrição opcional",
+    "cancel": "Cancelar",
+    "create": "Criar configuração",
+    "creating": "Criando...",
+    "validation": {
+      "keyRequired": "Chave é obrigatória",
+      "valueRequired": "Valor é obrigatório",
+      "categoryRequired": "Categoria é obrigatória"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor de formulário",
+    "rawEditor": "Editor de JSON bruto",
+    "rawJson": "JSON bruto",
+    "switchToForm": "Alternar para formulário",
+    "importToForm": "Importar para formulário",
+    "parseError": "Erro de parsing: {{message}}",
+    "arraySummary": "Array ({{length}} itens)",
+    "addItem": "Adicionar item",
+    "remove": "Remover",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(objeto)",
+      "string": "(string)",
+      "number": "(número)",
+      "boolean": "(booleano)",
+      "bigint": "(bigint)",
+      "function": "(função)",
+      "symbol": "(símbolo)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

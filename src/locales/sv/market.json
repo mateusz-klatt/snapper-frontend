@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Marknadsdata"
+  },
+  "controls": {
+    "exchange": "Börs:",
+    "instrument": "Instrument:",
+    "timeframe": "Tidsupplösning:",
+    "selectExchange": "Välj börs",
+    "searchInstrument": "Sök instrument..."
+  },
+  "timeframes": {
+    "1m": "1 minut",
+    "5m": "5 minuter",
+    "15m": "15 minuter",
+    "30m": "30 minuter",
+    "1h": "1 timme",
+    "4h": "4 timmar",
+    "1d": "1 dag"
+  },
+  "stats": {
+    "currentPrice": "Aktuellt pris",
+    "change24h": "24 h-förändring",
+    "high24h": "24 h-högsta",
+    "low24h": "24 h-lägsta"
+  },
+  "chart": {
+    "title": "Prisdiagram",
+    "errorPrefix": "Fel vid laddning av diagramdata:",
+    "unknownError": "Okänt fel",
+    "noDataTitle": "Inga data tillgängliga för {{instrument}}",
+    "noDataHint": "Instrumentet kanske inte finns eller saknar {{timeframe}}-data"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Inga relaterade instrument konfigurerade för {{instrument}} på {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache värms upp: {{sampleCount}} / {{expected}} candles tillgängliga {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(härlett från 1m)",
+      "db": "(från DB)"
+    }
+  }
+}

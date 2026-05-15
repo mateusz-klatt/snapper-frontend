@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signaalit"
+  },
+  "filters": {
+    "allStrategies": "Kaikki strategiat"
+  },
+  "actions": {
+    "export": "Vie"
+  },
+  "stats": {
+    "total": "Yhteensä",
+    "buy": "Osto",
+    "sell": "Myynti",
+    "avgStrength": "Keskim. vahvuus"
+  },
+  "card": {
+    "strength": "Vahvuus",
+    "price": "Hinta",
+    "exchange": "Pörssi",
+    "reason": "Syy:",
+    "noPrice": "Ei saatavilla"
+  },
+  "strength": {
+    "strong": "Vahva",
+    "medium": "Keskitaso",
+    "weak": "Heikko",
+    "veryWeak": "Erittäin heikko"
+  },
+  "time": {
+    "justNow": "Juuri nyt",
+    "minutesAgo": "{{count}} min sitten",
+    "hoursAgo": "{{count}}h sitten"
+  },
+  "empty": {
+    "title": "Signaaleja ei löytynyt",
+    "message": "Nykyisiin suodattimiin sopivia trading-signaaleja ei ole."
+  }
+}

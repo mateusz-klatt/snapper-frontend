@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signaler"
+  },
+  "filters": {
+    "allStrategies": "Alla strategier"
+  },
+  "actions": {
+    "export": "Exportera"
+  },
+  "stats": {
+    "total": "Totalt",
+    "buy": "Köp",
+    "sell": "Sälj",
+    "avgStrength": "Snittstyrka"
+  },
+  "card": {
+    "strength": "Styrka",
+    "price": "Pris",
+    "exchange": "Börs",
+    "reason": "Orsak:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Stark",
+    "medium": "Medel",
+    "weak": "Svag",
+    "veryWeak": "Mycket svag"
+  },
+  "time": {
+    "justNow": "Just nu",
+    "minutesAgo": "{{count}} min sedan",
+    "hoursAgo": "{{count}}h sedan"
+  },
+  "empty": {
+    "title": "Inga signaler hittades",
+    "message": "Inga tradingsignaler matchar aktuella filter."
+  }
+}

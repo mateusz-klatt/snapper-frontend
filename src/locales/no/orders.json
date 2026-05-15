@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Ordre og utførelser",
+    "newOrder": "Ny ordre",
+    "exportCsv": "Eksporter CSV"
+  },
+  "tabs": {
+    "orders": "Ordre ({{total}})",
+    "executions": "Utførelser ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrer etter status:",
+    "options": {
+      "all": "Alle ordre",
+      "new": "Ny",
+      "open": "Åpen",
+      "partiallyFilled": "Delvis utført",
+      "partially_filled": "Delvis utført",
+      "filled": "Utført",
+      "cancelled": "Kansellert",
+      "rejected": "Avvist"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "I/T",
+    "priceMarket": "Marked",
+    "quantity": "Antall",
+    "price": "Pris",
+    "created": "Opprettet",
+    "createdUnknown": "I/T",
+    "orderId": "Ordre-ID",
+    "leverage": "Giring",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Kanseller",
+    "cancelling": "Kansellerer…",
+    "cancelAriaLabel": "Kanseller ordre {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Ordre #{{orderId}}",
+    "filled": "UTFØRT",
+    "orderLabel": "Ordre {{orderId}}",
+    "size": "Størrelse",
+    "price": "Pris",
+    "total": "Totalt",
+    "executed": "Utført",
+    "fees": "Gebyrer"
+  },
+  "empty": {
+    "ordersTitle": "Ingen ordre funnet",
+    "ordersStartTrading": "Start trading for å se ordre her",
+    "ordersFilterless": "Ingen {{status}} ordre",
+    "executionsTitle": "Ingen utførelser funnet",
+    "executionsMessage": "Trade-utførelser vises her"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Side",
+      "type": "Type",
+      "status": "Status",
+      "quantity": "Antall",
+      "price": "Pris",
+      "leverage": "Giring",
+      "reduceOnly": "Reduce Only",
+      "created": "Opprettet"
+    },
+    "executions": {
+      "orderId": "Ordre-ID",
+      "instrument": "Instrument",
+      "side": "Side",
+      "size": "Størrelse",
+      "price": "Pris",
+      "total": "Totalt",
+      "fee": "Gebyr",
+      "feeAsset": "Gebyraktivum",
+      "executed": "Utført"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Ny manuell ordre",
+    "titleConfirm": "Bekreft ordre",
+    "fields": {
+      "exchange": "Børs",
+      "instrument": "Instrument",
+      "side": "Side",
+      "orderType": "Ordretype",
+      "quantity": "Antall",
+      "price": "Pris",
+      "stopPrice": "Stoppris",
+      "mode": "Modus",
+      "wallet": "Lommebok",
+      "type": "Type"
+    },
+    "sideOptions": {
+      "buy": "Kjøp",
+      "sell": "Salg"
+    },
+    "orderTypeOptions": {
+      "market": "Marked",
+      "limit": "Limitordre",
+      "stop": "Stoppordre",
+      "stopLimit": "Stop-limitordre",
+      "stop_limit": "Stop-limitordre"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — kun markedsdata",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Avbryt",
+      "reviewOrder": "Gjennomgå ordre",
+      "back": "Tilbake",
+      "confirmOrder": "Bekreft ordre",
+      "submitting": "Sender..."
+    },
+    "errors": {
+      "missingRequired": "Alle påkrevde felt må fylles ut",
+      "quantityPositive": "Antall må være et positivt tall",
+      "priceRequired": "Pris er påkrevd for denne ordretypen",
+      "pricePositive": "Pris må være et positivt tall",
+      "stopPriceRequired": "Stoppris er påkrevd for denne ordretypen",
+      "stopPricePositive": "Stoppris må være et positivt tall",
+      "createFailed": "Oppretting av ordre mislyktes"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Dette instrumentet er kun for observasjon — legg inn ordre på et instrument som støtter utførelse.",
+      "unknownInstrument": "Dette instrumentet gjenkjennes ikke. Last inn listen på nytt og prøv igjen.",
+      "capsViolation": "Denne ordren ville overskride kontoens sikkerhetsgrenser. Gå gjennom risikoinnstillingene og prøv igjen."
+    }
+  }
+}

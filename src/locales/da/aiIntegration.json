@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI-integration",
+    "subtitle": "Administrer AI-delegater, der forbinder til Snapper via MCP.",
+    "loading": "Indlæser AI-integration…",
+    "createDelegate": "Opret delegat"
+  },
+  "disabled": {
+    "title": "AI-integration er deaktiveret",
+    "message": "Aktivér feature flaget under Indstillinger → Feature Flags for at administrere AI-delegater."
+  },
+  "list": {
+    "loadingDelegates": "Indlæser delegater…",
+    "emptyTitle": "Ingen AI-delegater endnu",
+    "emptyMessage": "Klik på “Opret delegat” for at oprette en og generere dens MCP-konfigurationsudsnit.",
+    "columns": {
+      "label": "Label",
+      "username": "Brugernavn",
+      "created": "Oprettet",
+      "maxOpenOrders": "Maks. åbne ordrer",
+      "maxDailyUsd": "Maks. daglig USD",
+      "status": "Status",
+      "actions": "Handlinger"
+    },
+    "status": {
+      "active": "Aktiv",
+      "revoked": "Tilbagekaldt"
+    },
+    "default": "standard",
+    "details": "Detaljer",
+    "viewAriaLabel": "Vis delegat {{label}}"
+  },
+  "wizard": {
+    "title": "Opret AI-delegat",
+    "step1": "1. Identitet",
+    "step2": "2. Omfang og grænser",
+    "step3": "3. Gennemse",
+    "stepDone": "✓ Færdig",
+    "identity": {
+      "labelField": "Label",
+      "labelPlaceholder": "f.eks. Alpha prop desk",
+      "labelHelpPrefix": "Delegatens brugernavn udledes server-side som ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Omfang",
+      "operatorLabel": "Operatør public_id (valgfri)",
+      "operatorPlaceholder": "Lad være tom for at arve kalderens primære operatør"
+    },
+    "caps": {
+      "heading": "Tradinggrænser (alle valgfrie)",
+      "maxOpenOrders": "Maks. åbne ordrer",
+      "maxDailyNotionalUsd": "Maks. daglig nominel USD",
+      "maxCancelsPerMinute": "Maks. annulleringer pr. minut",
+      "perInstrument": "Maks. mængde pr. instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "standard",
+      "errorInvalidJson": "max_order_quantity_per_instrument skal være gyldig JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument skal være et JSON-objekt eller tom",
+      "errorNegative": "Grænser skal være ikke-negative heltal eller tomme."
+    },
+    "review": {
+      "heading": "Gennemse og opret",
+      "rowLabel": "Label",
+      "rowOperator": "Operatør public_id",
+      "rowMaxOpenOrders": "Maks. åbne ordrer",
+      "rowMaxDailyNotional": "Maks. daglig nominel USD",
+      "rowMaxCancelsPerMinute": "Maks. annulleringer pr. minut",
+      "rowPerInstrument": "Maks. mængde pr. instrument",
+      "operatorDefault": "(kalderens primære operatør)",
+      "defaultValue": "(standard)"
+    },
+    "buttons": {
+      "cancel": "Annuller",
+      "next": "Næste",
+      "back": "Tilbage",
+      "createDelegate": "Opret delegat",
+      "iSavedClose": "Gemt — luk"
+    },
+    "toast": {
+      "delegateCreated": "Delegat oprettet",
+      "failedToCreate": "Kunne ikke oprette delegat"
+    }
+  },
+  "detail": {
+    "loading": "Indlæser delegat…",
+    "notFound": "Delegat ikke fundet eller ikke tilgængelig.",
+    "back": "Tilbage",
+    "backToList": "Tilbage til listen",
+    "updateCaps": "Opdater grænser",
+    "revoke": "Tilbagekald",
+    "save": "Gem",
+    "cancel": "Annuller",
+    "tradingCaps": "Tradinggrænser",
+    "status": "Status",
+    "active": "Aktiv",
+    "revoked": "Tilbagekaldt",
+    "createdAt": "Oprettet",
+    "createdBy": "Oprettet af (bruger public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Maks. åbne ordrer",
+    "maxDailyNotionalUsd": "Maks. daglig nominel USD",
+    "maxCancelsPerMinute": "Maks. annulleringer pr. minut",
+    "perInstrument": "Maks. mængde pr. instrument",
+    "defaultValue": "(standard)",
+    "editorPlaceholder": "(standard)",
+    "toast": {
+      "capsUpdated": "Grænser opdateret",
+      "failedToUpdateCaps": "Kunne ikke opdatere grænser",
+      "negativeIntegersError": "Grænser skal være ikke-negative heltal eller tomme."
+    }
+  },
+  "revokeDialog": {
+    "title": "Tilbagekald delegat \"{{label}}\"?",
+    "message": "Dette tilbagekalder delegatens tokens og stopper dens MCP-abonnementer. Handlingen kan ikke fortrydes.",
+    "confirm": "Tilbagekald",
+    "cancel": "Annuller",
+    "toast": {
+      "delegateRevoked": "Delegat tilbagekaldt",
+      "failedToRevoke": "Kunne ikke tilbagekalde delegat"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Gem disse legitimationsoplysninger nu",
+    "warningMessage": "De vises ikke igen. Snapper gemmer ikke rå tokenværdier; når denne guide lukkes, findes den eneste kopi i MCP-klientens konfiguration.",
+    "snippetHelp": "Langlivet AI-delegattoken (~10 år). Samme token autentificerer både proxy-MCP-serveren og watch-monitoren. For at udskifte den skal delegaten deaktiveres og en ny oprettes.",
+    "baseUrlHelpPrefix": "Base URL udledes fra denne browsers origin + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopiér konfigurationsudsnit til udklipsholder",
+    "copy": "Kopiér til udklipsholder",
+    "copied": "Kopieret"
+  }
+}

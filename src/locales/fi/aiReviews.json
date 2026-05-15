@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Pyyntö",
+    "decision": "Päätös",
+    "capsViolation": "Rajarikkomus",
+    "selectedDelegate": "Valittu delegaatti",
+    "instrument": "instrumentti",
+    "deadline": "määräaika {{time}}",
+    "decidedBy": "tekijä",
+    "newStatus": "tila",
+    "mode": "tila",
+    "capAttempted": "yritetty",
+    "capLimit": "vs. raja",
+    "capOn": "instrumentilla",
+    "reviewLabel": "tarkistus {{reviewId}}",
+    "unhandledFrame": "Käsittelemätön AI-tarkistuksen aktiviteettiframe: {{frame}}"
+  },
+  "page": {
+    "title": "AI-tarkistusten inbox",
+    "subtitle": "Tälle delegaatille reititetyt odottavat CONSULT-tarkistukset ja live-tapahtumavirta."
+  },
+  "roleNotice": {
+    "title": "Varattu AI-delegaateille",
+    "message": "Tämä inbox näyttää AI-delegaattiprincipalille reititetyt CONSULT-tarkistukset. Kirjaudu AI-delegaattitilillä nähdäksesi odottavat tarkistukset ja live-aktiviteettivirran. Nykyinen roolisi on",
+    "unknownRole": "tuntematon"
+  },
+  "pending": {
+    "title": "Odottavat tarkistukset",
+    "loading": "Ladataan odottavia tarkistuksia…",
+    "loadError": "Odottavien tarkistusten lataus epäonnistui: {{message}}",
+    "emptyTitle": "Ei odottavia tarkistuksia",
+    "emptyMessage": "Tälle delegaatille reititetyt uudet CONSULT-pyynnöt ilmestyvät tähän.",
+    "columns": {
+      "instrument": "Instrumentti",
+      "thesis": "Teesi",
+      "status": "Tila",
+      "deadline": "Määräaika",
+      "decision": "Päätös"
+    },
+    "rationalePlaceholder": "Perustelu (valinnainen)",
+    "rationaleAriaLabel": "Perustelu tarkistukselle {{reviewId}}",
+    "approve": "Hyväksy",
+    "reject": "Hylkää",
+    "submitError": "Lähetys epäonnistui: {{message}}"
+  },
+  "activity": {
+    "title": "Viimeaikainen aktiviteetti",
+    "emptyTitle": "Ei aktiviteettia vielä",
+    "emptyMessage": "AI-tarkistuspyynnöt, päätökset ja rajarikkomusframet virtaavat tähän.",
+    "summaryEmpty": "Frameja ei vastaanotettu",
+    "summaryCount": "Puskuroidut: {{shown}} / {{total}}"
+  }
+}

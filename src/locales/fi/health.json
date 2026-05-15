@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Järjestelmän tila",
+    "healthMetricsHeading": "Tilan metriikat",
+    "processStatusHeading": "Prosessien tila",
+    "activeBacktestsHeading": "Aktiiviset backtestit",
+    "quickActionsHeading": "Pikatoiminnot",
+    "featureNotImplemented": "Ominaisuutta ei ole vielä toteutettu",
+    "restartServices": "Käynnistä palvelut uudelleen",
+    "runHealthCheck": "Aja tilatarkistus",
+    "viewLogs": "Näytä lokit",
+    "exportReport": "Vie raportti"
+  },
+  "status": {
+    "healthy": "Kunnossa",
+    "stopped": "Pysäytetty",
+    "error": "Virhe",
+    "warning": "Varoitus",
+    "completed": "Valmis",
+    "unknown": "Tuntematon"
+  },
+  "metrics": {
+    "tradingEngine": "Trading-moottori",
+    "tradingEngineDescription": "Strategioiden suoritusmoottori",
+    "activeBacktests": "Aktiiviset backtestit",
+    "activeBacktestsDescription": "Käynnissä olevat backtest-prosessit",
+    "active": "Aktiivinen",
+    "inactive": "Passiivinen"
+  },
+  "process": {
+    "uptimeNotAvailable": "Ei saatavilla",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "Ei saatavilla",
+    "uptimeLabel": "Käyntiaika",
+    "exitCode": "Poistumiskoodi: {{code}}",
+    "service": "palvelu",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Tietokannan tilastot",
+    "loading": "Ladataan tietokantatilastoja…",
+    "unavailable": "Tietokantatilastot eivät ole saatavilla: {{message}}",
+    "fallbackError": "Tietokantatilastojen lataus epäonnistui.",
+    "sampled": "näyte {{age}}",
+    "samplerSummary": "Näytteenottoväli: {{seconds}}s · taulut: {{count}}",
+    "columns": {
+      "table": "Taulu",
+      "kind": "Tyyppi",
+      "total": "Yhteensä",
+      "current": "Nykyiset",
+      "closed": "Suljetut",
+      "archivable": "Arkistoitavat",
+      "status": "Tila"
+    },
+    "stale": "vanhentunut"
+  },
+  "notification": {
+    "title": "Ilmoitusten sidecar",
+    "loading": "Ladataan ilmoitusmetriikoita…",
+    "unavailable": "Ilmoitusmetriikat eivät ole saatavilla: {{message}}",
+    "fallbackError": "Ilmoitusmetriikoiden lataus epäonnistui.",
+    "sent": "Lähetetty",
+    "sentDescription": "Päätetila: lähetetty",
+    "failed": "Epäonnistunut",
+    "failedDescription": "Uudelleenyritysbudjetti käytetty",
+    "unregistered": "Rekisteröimätön",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Peruttu (alue)",
+    "cancelledScopeDescription": "Alueen peruutus / käyttäjän käytöstä poisto",
+    "outboxDepth": "Outboxin syvyys",
+    "outboxDepthDescription": "Jonossa, odottaa uudelleenyritystä"
+  },
+  "retention": {
+    "title": "Retention-ajastin",
+    "loading": "Ladataan retention-ajoa…",
+    "unavailable": "Retention-ajo ei ole saatavilla: {{message}}",
+    "fallbackError": "Retention-ajon lataus epäonnistui.",
+    "lastRun": "viimeisin ajo {{age}}",
+    "dryRunNotice": "Dry-run-tila: rivit arkistoidaan mutta niitä ei poisteta tietokannasta.",
+    "columns": {
+      "table": "Taulu",
+      "retain": "Säilytä",
+      "archivedWindow": "Arkistoitu ikkuna",
+      "archived": "Arkistoitu",
+      "purged": "Poistettu",
+      "files": "Tiedostot",
+      "status": "Tila"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "virhe"
+  },
+  "systemMetrics": {
+    "title": "Prosessin tila",
+    "loading": "Ladataan prosessimetriikoita…",
+    "unavailable": "Prosessimetriikat eivät ole saatavilla: {{message}}",
+    "fallbackError": "Prosessin tilametriikoiden lataus epäonnistui.",
+    "rawJson": "Raaka JSON",
+    "pid": "PID",
+    "statusValue": "Tila: {{status}}",
+    "uptime": "Käyntiaika",
+    "threads": "Säikeet",
+    "openFds": "Avoimet FD:t",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Kuristuksia {{count}}×",
+    "memory": "Muisti",
+    "saturation": "Saturaatio {{percent}}",
+    "asyncioTasks": "Asyncio-tehtävät",
+    "asyncioActive": "Aktiiviset: {{count}}",
+    "asyncioPending": "+ odottaa: {{count}}",
+    "dbPool": "DB-pooli",
+    "liveConns": "Live-yhteydet: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objektit: {{value}}",
+    "threadsPercent": "Säikeet %",
+    "networkConns": "Verkkoyhteydet",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktiivinen",
+    "tracemallocIdle": "Idle"
+  },
+  "relativeAge": {
+    "justNow": "juuri nyt",
+    "seconds": "{{seconds}}s sitten",
+    "minutes": "{{minutes}}min sitten",
+    "hours": "{{hours}}h sitten",
+    "days": "{{days}}d sitten"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

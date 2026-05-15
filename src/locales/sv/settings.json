@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Inställningar",
+    "subtitle": "Konfigurera applikationsinställningar och parametrar",
+    "addButton": "Lägg till inställning",
+    "searchPlaceholder": "Sök inställningar...",
+    "noResults": "Inga inställningar matchar kriterierna.",
+    "allCategories": "Alla kategorier",
+    "categoryFilterAriaLabel": "Filtrera inställningar efter kategori"
+  },
+  "errors": {
+    "loadFailed": "Det gick inte att ladda inställningar",
+    "updateFailed": "Det gick inte att uppdatera inställning",
+    "deleteFailed": "Det gick inte att ta bort inställning",
+    "createFailed": "Det gick inte att skapa inställning",
+    "alreadyExists": "Inställning med nyckeln \"{{key}}\" finns redan"
+  },
+  "item": {
+    "edit": "Redigera",
+    "delete": "Ta bort",
+    "save": "Spara",
+    "saving": "Sparar...",
+    "cancel": "Avbryt",
+    "yesDelete": "Ja, ta bort",
+    "deleting": "Tar bort...",
+    "deleteConfirm": "Ta bort den här inställningen?",
+    "valuePlaceholder": "Ange inställningsvärde...",
+    "showMore": "Visa mer",
+    "showLess": "Visa mindre",
+    "toggleAriaLabel": "Växla {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Känslig"
+    },
+    "helpText": {
+      "allowShortSelling": "Tillåt motorn att öppna korta positioner. SELL-signaler ger negativ desired_units; begränsas till 0 när avstängt.",
+      "allowManualOrders": "Aktivera knappen Ny order på fliken Ordrar. När avstängt returnerar POST /api/orders 403."
+    }
+  },
+  "addModal": {
+    "title": "Lägg till ny inställning",
+    "keyLabel": "Nyckel",
+    "valueLabel": "Värde",
+    "categoryLabel": "Kategori",
+    "descriptionLabel": "Beskrivning",
+    "keyPlaceholder": "t.ex. walutomat.api_key",
+    "keyHint": "Använd punktnotation för nästlade inställningar (t.ex. category.subcategory.name)",
+    "valuePlaceholder": "Inställningsvärde",
+    "categorySelectPlaceholder": "Välj befintlig eller skapa ny",
+    "newCategoryPlaceholder": "Eller ange nytt kategorinamn",
+    "descriptionPlaceholder": "Valfri beskrivning",
+    "cancel": "Avbryt",
+    "create": "Skapa inställning",
+    "creating": "Skapar...",
+    "validation": {
+      "keyRequired": "Nyckel krävs",
+      "valueRequired": "Värde krävs",
+      "categoryRequired": "Kategori krävs"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Formulärredigerare",
+    "rawEditor": "Rå JSON-redigerare",
+    "rawJson": "Rå JSON",
+    "switchToForm": "Byt till formulär",
+    "importToForm": "Importera till formulär",
+    "parseError": "Tolkningsfel: {{message}}",
+    "arraySummary": "Array ({{length}} objekt)",
+    "addItem": "Lägg till objekt",
+    "remove": "Ta bort",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(objekt)",
+      "string": "(sträng)",
+      "number": "(nummer)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(funktion)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

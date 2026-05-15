@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Prosessien ohjaus",
+    "subtitle": "Reaaliaikainen prosessien valvonta ja ohjaus"
+  },
+  "sections": {
+    "longRunning": "Pitkäkestoiset prosessit",
+    "executorTemplates": "Executor-mallit",
+    "executorTemplatesHint": "Mallikonfiguraation muokkaus vaikuttaa uudelleenkäynnistyksen jälkeen kaikkiin tämän pörssin lompakoihin. Mallit ovat vain konfiguraatiota — käynnistä alla lompakkokohtainen instanssi ajaaksesi executorin.",
+    "walletInstances": "Lompakkoinstanssit",
+    "taskProcesses": "Tehtäväprosessit"
+  },
+  "card": {
+    "stop": "Pysäytä",
+    "start": "Käynnistä",
+    "restart": "Käynnistä uudelleen",
+    "starting": "Käynnistetään...",
+    "stopping": "Pysäytetään...",
+    "status": {
+      "running": "käynnissä",
+      "stopped": "pysäytetty",
+      "error": "virhe",
+      "starting": "käynnistyy",
+      "stopping": "pysähtyy"
+    }
+  },
+  "template": {
+    "badge": "malli",
+    "mode": "Tila:",
+    "parameters": "Parametrit:",
+    "paramCount": "Parametrit: {{count}}",
+    "noParams": "parametreja ei asetettu"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "autostart",
+    "manual": "manuaali"
+  },
+  "actions": {
+    "stopTitle": "Pysäytä {{name}}",
+    "stopMessage": "Tämä pysäyttää prosessin {{name}}.",
+    "restartTitle": "Käynnistä {{name}} uudelleen",
+    "restartMessage": "Tämä käynnistää prosessin {{name}} uudelleen."
+  },
+  "executionMode": {
+    "title": "Käynnistä {{name}}",
+    "label": "Suoritustila:",
+    "threadName": "Säietila",
+    "threadDescription": "Ajetaan upotettuna tehtävänä web-palvelimessa. Nopeampi käynnistys, jaettu muisti.",
+    "processName": "Prosessitila",
+    "processDescription": "Ajetaan erillisenä Python-prosessina. Eristetty, vikasietoinen, tarkka valvonta.",
+    "cancel": "Peruuta",
+    "start": "Käynnistä {{name}}",
+    "threadAriaLabel": "Säietila",
+    "processAriaLabel": "Prosessitila"
+  }
+}

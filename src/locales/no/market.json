@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Markedsdata"
+  },
+  "controls": {
+    "exchange": "Børs:",
+    "instrument": "Instrument:",
+    "timeframe": "Tidsramme:",
+    "selectExchange": "Velg børs",
+    "searchInstrument": "Søk etter instrument..."
+  },
+  "timeframes": {
+    "1m": "1 minutt",
+    "5m": "5 minutter",
+    "15m": "15 minutter",
+    "30m": "30 minutter",
+    "1h": "1 time",
+    "4h": "4 timer",
+    "1d": "1 dag"
+  },
+  "stats": {
+    "currentPrice": "Gjeldende pris",
+    "change24h": "24t endring",
+    "high24h": "24t høy",
+    "low24h": "24t lav"
+  },
+  "chart": {
+    "title": "Prischart",
+    "errorPrefix": "Feil ved lasting av chartdata:",
+    "unknownError": "Ukjent feil",
+    "noDataTitle": "Ingen data tilgjengelig for {{instrument}}",
+    "noDataHint": "Instrumentet finnes kanskje ikke eller mangler {{timeframe}}-data"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Ingen relaterte instrumenter konfigurert for {{instrument}} på {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache varmes opp: {{sampleCount}} / {{expected}} candles tilgjengelig {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(avledet fra 1m)",
+      "db": "(fra DB)"
+    }
+  }
+}

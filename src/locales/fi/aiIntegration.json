@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI-integraatio",
+    "subtitle": "Hallitse AI-delegaatteja, jotka yhdistyvät Snapperiin MCP:n kautta.",
+    "loading": "Ladataan AI-integraatiota…",
+    "createDelegate": "Luo delegaatti"
+  },
+  "disabled": {
+    "title": "AI-integraatio on poistettu käytöstä",
+    "message": "Ota ominaisuuslippu käyttöön kohdassa Asetukset → Ominaisuusliput, jotta voit hallita AI-delegaatteja."
+  },
+  "list": {
+    "loadingDelegates": "Ladataan delegaatteja…",
+    "emptyTitle": "Ei AI-delegaatteja vielä",
+    "emptyMessage": "Klikkaa “Luo delegaatti” luodaksesi delegaatin ja generoidaksesi sen MCP-konfiguraatiokatkelman.",
+    "columns": {
+      "label": "Tunniste",
+      "username": "Käyttäjänimi",
+      "created": "Luotu",
+      "maxOpenOrders": "Avoimet toimeksiannot enintään",
+      "maxDailyUsd": "Päivittäinen USD enintään",
+      "status": "Tila",
+      "actions": "Toiminnot"
+    },
+    "status": {
+      "active": "Aktiivinen",
+      "revoked": "Peruttu"
+    },
+    "default": "oletus",
+    "details": "Tiedot",
+    "viewAriaLabel": "Näytä delegaatti {{label}}"
+  },
+  "wizard": {
+    "title": "Luo AI-delegaatti",
+    "step1": "1. Identiteetti",
+    "step2": "2. Alue ja rajat",
+    "step3": "3. Tarkistus",
+    "stepDone": "✓ Valmis",
+    "identity": {
+      "labelField": "Tunniste",
+      "labelPlaceholder": "esim. Alpha prop desk",
+      "labelHelpPrefix": "Delegaatin käyttäjänimi muodostetaan palvelimella muodossa ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Alue",
+      "operatorLabel": "Operaattorin public_id (valinnainen)",
+      "operatorPlaceholder": "Jätä tyhjäksi periäksesi kutsujan ensisijaisen operaattorin"
+    },
+    "caps": {
+      "heading": "Trading-rajat (kaikki valinnaisia)",
+      "maxOpenOrders": "Avoimet toimeksiannot enintään",
+      "maxDailyNotionalUsd": "Päivittäinen nimellisarvo USD enintään",
+      "maxCancelsPerMinute": "Peruutuksia minuutissa enintään",
+      "perInstrument": "Instrumenttikohtainen enimmäismäärä (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "oletus",
+      "errorInvalidJson": "max_order_quantity_per_instrument on oltava kelvollista JSONia",
+      "errorJsonObject": "max_order_quantity_per_instrument on oltava JSON-objekti tai tyhjä",
+      "errorNegative": "Rajojen on oltava ei-negatiivisia kokonaislukuja tai tyhjiä."
+    },
+    "review": {
+      "heading": "Tarkista ja luo",
+      "rowLabel": "Tunniste",
+      "rowOperator": "Operaattorin public_id",
+      "rowMaxOpenOrders": "Avoimet toimeksiannot enintään",
+      "rowMaxDailyNotional": "Päivittäinen nimellisarvo USD enintään",
+      "rowMaxCancelsPerMinute": "Peruutuksia minuutissa enintään",
+      "rowPerInstrument": "Instrumenttikohtainen enimmäismäärä",
+      "operatorDefault": "(kutsujan ensisijainen operaattori)",
+      "defaultValue": "(oletus)"
+    },
+    "buttons": {
+      "cancel": "Peruuta",
+      "next": "Seuraava",
+      "back": "Takaisin",
+      "createDelegate": "Luo delegaatti",
+      "iSavedClose": "Olen tallentanut nämä — sulje"
+    },
+    "toast": {
+      "delegateCreated": "Delegaatti luotu",
+      "failedToCreate": "Delegaatin luonti epäonnistui"
+    }
+  },
+  "detail": {
+    "loading": "Ladataan delegaattia…",
+    "notFound": "Delegaattia ei löytynyt tai se ei ole saatavilla.",
+    "back": "Takaisin",
+    "backToList": "Takaisin listaan",
+    "updateCaps": "Päivitä rajat",
+    "revoke": "Peru",
+    "save": "Tallenna",
+    "cancel": "Peruuta",
+    "tradingCaps": "Trading-rajat",
+    "status": "Tila",
+    "active": "Aktiivinen",
+    "revoked": "Peruttu",
+    "createdAt": "Luotu",
+    "createdBy": "Luonut (käyttäjän public_id)",
+    "publicId": "Julkinen ID",
+    "maxOpenOrders": "Avoimet toimeksiannot enintään",
+    "maxDailyNotionalUsd": "Päivittäinen nimellisarvo USD enintään",
+    "maxCancelsPerMinute": "Peruutuksia minuutissa enintään",
+    "perInstrument": "Instrumenttikohtainen enimmäismäärä",
+    "defaultValue": "(oletus)",
+    "editorPlaceholder": "(oletus)",
+    "toast": {
+      "capsUpdated": "Rajat päivitetty",
+      "failedToUpdateCaps": "Rajojen päivitys epäonnistui",
+      "negativeIntegersError": "Rajojen on oltava ei-negatiivisia kokonaislukuja tai tyhjiä."
+    }
+  },
+  "revokeDialog": {
+    "title": "Perutaanko delegaatti \"{{label}}\"?",
+    "message": "Tämä peruu delegaatin tokenit ja pysäyttää sen MCP-tilaukset. Toimintoa ei voi kumota.",
+    "confirm": "Peru",
+    "cancel": "Peruuta",
+    "toast": {
+      "delegateRevoked": "Delegaatti peruttu",
+      "failedToRevoke": "Delegaatin peruminen epäonnistui"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Tallenna nämä tunnistetiedot nyt",
+    "warningMessage": "Niitä ei näytetä uudelleen. Snapper ei tallenna raakatokeneita; kun suljet tämän ohjatun toiminnon, ainoa kopio on MCP-asiakkaasi konfiguraatiossa.",
+    "snippetHelp": "Pitkäikäinen AI-delegaatin token (~10 vuotta). Sama token tunnistaa sekä MCP-välityspalvelimen että watch monitorin. Vaihda token poistamalla tämä delegaatti käytöstä ja luomalla uusi.",
+    "baseUrlHelpPrefix": "Base URL muodostetaan tämän selaimen originista + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopioi konfiguraatiokatkelma leikepöydälle",
+    "copy": "Kopioi leikepöydälle",
+    "copied": "Kopioitu"
+  }
+}

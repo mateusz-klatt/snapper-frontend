@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Processtyring",
+    "subtitle": "Procesovervågning og -styring i realtid"
+  },
+  "sections": {
+    "longRunning": "Langvarige processer",
+    "executorTemplates": "Executor-templates",
+    "executorTemplatesHint": "Redigering af template-config påvirker alle wallets på denne børs efter genstart. Templates er kun config — start walletinstansen nedenfor for at køre en executor.",
+    "walletInstances": "Wallet-instanser",
+    "taskProcesses": "Task-processer"
+  },
+  "card": {
+    "stop": "Stop",
+    "start": "Start",
+    "restart": "Genstart",
+    "starting": "Starter...",
+    "stopping": "Stopper...",
+    "status": {
+      "running": "kører",
+      "stopped": "stoppet",
+      "error": "fejl",
+      "starting": "starter",
+      "stopping": "stopper"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Tilstand:",
+    "parameters": "Parametre:",
+    "paramCount": "{{count}} parameter/parametre",
+    "noParams": "ingen parametre sat"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manuel"
+  },
+  "actions": {
+    "stopTitle": "Stop {{name}}",
+    "stopMessage": "Dette stopper processen {{name}}.",
+    "restartTitle": "Genstart {{name}}",
+    "restartMessage": "Dette genstarter processen {{name}}."
+  },
+  "executionMode": {
+    "title": "Start {{name}}",
+    "label": "Udførselstilstand:",
+    "threadName": "Thread-tilstand",
+    "threadDescription": "Kører som indlejret task i webserveren. Hurtigere start, delt hukommelse.",
+    "processName": "Procestilstand",
+    "processDescription": "Kører som separat Python-proces. Isoleret, fejltolerant, detaljeret overvågning.",
+    "cancel": "Annuller",
+    "start": "Start {{name}}",
+    "threadAriaLabel": "Thread-tilstand",
+    "processAriaLabel": "Procestilstand"
+  }
+}

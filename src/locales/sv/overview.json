@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Översikt"
+  },
+  "metrics": {
+    "feedsRunning": "Aktiva feeds",
+    "strategiesActive": "Aktiva strategier",
+    "openOrders": "Öppna ordrar",
+    "todaysExecutions": "Dagens utföranden",
+    "executionsOn": "Utföranden ({{date}})"
+  },
+  "status": {
+    "stopped": "Stoppad",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Körs",
+    "active": "Aktiv"
+  },
+  "processStatus": {
+    "title": "Processtatus",
+    "feeds": "Feeds",
+    "strategies": "Strategier",
+    "executors": "Exekverare",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "Portföljsammanfattning",
+    "totalValue": "Totalvärde",
+    "longExposure": "Lång exponering",
+    "shortExposure": "Kort exponering",
+    "netDelta": "Nettodelta",
+    "unrealizedPnl": "Orealiserad P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Positioner",
+    "instrumentsCount": "{{count}} instrument",
+    "empty": "Inga positionsdata tillgängliga"
+  },
+  "signals": {
+    "title": "Senaste signaler",
+    "empty": "Inga nya signaler",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Senaste utföranden",
+    "empty": "Inga nya utföranden",
+    "noTime": "N/A"
+  }
+}

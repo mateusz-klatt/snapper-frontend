@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Ordrer og udførsler",
+    "newOrder": "Ny ordre",
+    "exportCsv": "Eksportér CSV"
+  },
+  "tabs": {
+    "orders": "Ordrer ({{total}})",
+    "executions": "Udførsler ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrer efter status:",
+    "options": {
+      "all": "Alle ordrer",
+      "new": "Ny",
+      "open": "Åben",
+      "partiallyFilled": "Delvist udført",
+      "partially_filled": "Delvist udført",
+      "filled": "Udført",
+      "cancelled": "Annulleret",
+      "rejected": "Afvist"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Marked",
+    "quantity": "Mængde",
+    "price": "Pris",
+    "created": "Oprettet",
+    "createdUnknown": "N/A",
+    "orderId": "Ordre-ID",
+    "leverage": "Gearing",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Annuller",
+    "cancelling": "Annullerer…",
+    "cancelAriaLabel": "Annuller ordre {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Ordre #{{orderId}}",
+    "filled": "UDFØRT",
+    "orderLabel": "Ordre {{orderId}}",
+    "size": "Størrelse",
+    "price": "Pris",
+    "total": "Total",
+    "executed": "Udført",
+    "fees": "Gebyrer"
+  },
+  "empty": {
+    "ordersTitle": "Ingen ordrer fundet",
+    "ordersStartTrading": "Start trading for at se ordrer her",
+    "ordersFilterless": "Ingen {{status}} ordrer",
+    "executionsTitle": "Ingen udførsler fundet",
+    "executionsMessage": "Handelsudførsler vises her"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Side",
+      "type": "Type",
+      "status": "Status",
+      "quantity": "Mængde",
+      "price": "Pris",
+      "leverage": "Gearing",
+      "reduceOnly": "Reduce Only",
+      "created": "Oprettet"
+    },
+    "executions": {
+      "orderId": "Ordre-ID",
+      "instrument": "Instrument",
+      "side": "Side",
+      "size": "Størrelse",
+      "price": "Pris",
+      "total": "Total",
+      "fee": "Gebyr",
+      "feeAsset": "Gebyraktiv",
+      "executed": "Udført"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Ny manuel ordre",
+    "titleConfirm": "Bekræft ordre",
+    "fields": {
+      "exchange": "Børs",
+      "instrument": "Instrument",
+      "side": "Side",
+      "orderType": "Ordretype",
+      "quantity": "Mængde",
+      "price": "Pris",
+      "stopPrice": "Stoppris",
+      "mode": "Tilstand",
+      "wallet": "Wallet",
+      "type": "Type"
+    },
+    "sideOptions": {
+      "buy": "Køb",
+      "sell": "Salg"
+    },
+    "orderTypeOptions": {
+      "market": "Markedsordre",
+      "limit": "Limitordre",
+      "stop": "Stopordre",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — kun markedsdata",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Annuller",
+      "reviewOrder": "Gennemse ordre",
+      "back": "Tilbage",
+      "confirmOrder": "Bekræft ordre",
+      "submitting": "Sender..."
+    },
+    "errors": {
+      "missingRequired": "Alle påkrævede felter skal udfyldes",
+      "quantityPositive": "Mængde skal være et positivt tal",
+      "priceRequired": "Pris er påkrævet for denne ordretype",
+      "pricePositive": "Pris skal være et positivt tal",
+      "stopPriceRequired": "Stoppris er påkrævet for denne ordretype",
+      "stopPricePositive": "Stoppris skal være et positivt tal",
+      "createFailed": "Oprettelse af ordre mislykkedes"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Dette instrument er observation-only — placér ordrer på et instrument med ordreudførsel.",
+      "unknownInstrument": "Dette instrument genkendes ikke. Genindlæs listen, og prøv igen.",
+      "capsViolation": "Denne ordre vil overskride kontoens sikkerhedsgrænser. Gennemgå risikoindstillingerne, og prøv igen."
+    }
+  }
+}

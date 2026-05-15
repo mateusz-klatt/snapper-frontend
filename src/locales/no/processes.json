@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Prosesskontroll",
+    "subtitle": "Sanntidsovervåking og kontroll av prosesser"
+  },
+  "sections": {
+    "longRunning": "Langvarige prosesser",
+    "executorTemplates": "Executor-maler",
+    "executorTemplatesHint": "Endring av malkonfigurasjon påvirker alle lommebøker på denne børsen etter omstart. Maler er kun konfigurasjon — start lommebokinstansen nedenfor for å kjøre en executor.",
+    "walletInstances": "Lommebokinstanser",
+    "taskProcesses": "Oppgaveprosesser"
+  },
+  "card": {
+    "stop": "Stopp",
+    "start": "Start",
+    "restart": "Start på nytt",
+    "starting": "Starter...",
+    "stopping": "Stopper...",
+    "status": {
+      "running": "kjører",
+      "stopped": "stoppet",
+      "error": "feil",
+      "starting": "starter",
+      "stopping": "stopper"
+    }
+  },
+  "template": {
+    "badge": "mal",
+    "mode": "Modus:",
+    "parameters": "Parametere:",
+    "paramCount": "{{count}} parameter(e)",
+    "noParams": "ingen parametere satt"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "autostart",
+    "manual": "manuell"
+  },
+  "actions": {
+    "stopTitle": "Stopp {{name}}",
+    "stopMessage": "Dette stopper prosessen {{name}}.",
+    "restartTitle": "Start {{name}} på nytt",
+    "restartMessage": "Dette starter prosessen {{name}} på nytt."
+  },
+  "executionMode": {
+    "title": "Start {{name}}",
+    "label": "Utførelsesmodus:",
+    "threadName": "Trådmodus",
+    "threadDescription": "Kjører som innebygd oppgave i webserveren. Raskere oppstart, delt minne.",
+    "processName": "Prosessmodus",
+    "processDescription": "Kjører som separat Python-prosess. Isolert, feiltolerant, detaljert overvåking.",
+    "cancel": "Avbryt",
+    "start": "Start {{name}}",
+    "threadAriaLabel": "Trådmodus",
+    "processAriaLabel": "Prosessmodus"
+  }
+}
