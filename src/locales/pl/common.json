@@ -33,7 +33,37 @@
     "switchToLightMode": "Przełącz na tryb jasny",
     "switchToDarkMode": "Przełącz na tryb ciemny",
     "timeTravelBanner": "Tryb podróży w czasie — przeglądanie danych historycznych (tylko do odczytu)",
-    "lagUnknown": "Nieznane"
+    "lagUnknown": "Nieznane",
+    "walletPicker": {
+      "ariaLabel": "Aktywny portfel",
+      "placeholder": "Portfel",
+      "allWallets": "Wszystkie portfele",
+      "optionPaper": "{{label}} (papierowy)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktywny operator",
+      "placeholder": "Operator",
+      "allOperators": "Wszyscy operatorzy"
+    },
+    "timeTravel": {
+      "pickerTitle": "Podróż w czasie: wybierz historyczny punkt w czasie",
+      "exitAriaLabel": "Wyjdź z trybu podróży w czasie",
+      "exitTitle": "Powrót do trybu na żywo"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument tylko do obserwacji. Snapper otrzymuje dane rynkowe, ale nie może składać zleceń dla tej pary (symbol, giełda).",
+      "ariaLabel": "Instrument tylko z danymi rynkowymi",
+      "badge": "Tylko dane rynkowe"
+    },
+    "liveOnly": {
+      "notice": "Ta zakładka pokazuje bieżący stan — widok historyczny nie jest dostępny."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Coś poszło nie tak",
+    "titleWithComponent": "Błąd w {{componentName}}",
+    "stackTrace": "Ślad stosu",
+    "tryAgain": "Spróbuj ponownie"
   },
   "nav": {
     "overview": "Przegląd",

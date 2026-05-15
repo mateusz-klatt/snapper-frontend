@@ -33,7 +33,37 @@
     "switchToLightMode": "Switch to light mode",
     "switchToDarkMode": "Switch to dark mode",
     "timeTravelBanner": "Time Travel Mode — viewing historical data (read-only)",
-    "lagUnknown": "Unknown"
+    "lagUnknown": "Unknown",
+    "walletPicker": {
+      "ariaLabel": "Active wallet",
+      "placeholder": "Wallet",
+      "allWallets": "All wallets",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Active operator",
+      "placeholder": "Operator",
+      "allOperators": "All operators"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: select a historical point in time",
+      "exitAriaLabel": "Exit time travel mode",
+      "exitTitle": "Return to live mode"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Observation-only instrument. Snapper receives market data but cannot place orders for this (symbol, exchange) pair.",
+      "ariaLabel": "Market-data only instrument",
+      "badge": "Market-data only"
+    },
+    "liveOnly": {
+      "notice": "This tab shows current state — historical view is not available."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Something went wrong",
+    "titleWithComponent": "Error in {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Try again"
   },
   "nav": {
     "overview": "Overview",
