@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← بازگشت",
+    "backToList": "← بازگشت به Backtests"
+  },
+  "status": {
+    "pending": "در انتظار",
+    "running": "در حال اجرا",
+    "completed": "تکمیل شد",
+    "failed": "ناموفق",
+    "cancelled": "لغو شد"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "لغو",
+      "rerun": "اجرای دوباره"
+    },
+    "fields": {
+      "timeframe": "بازه زمانی",
+      "period": "دوره",
+      "initialCash": "وجه نقد اولیه",
+      "id": "ID"
+    },
+    "errorPrefix": "خطا: {{message}}",
+    "filter": {
+      "ariaLabel": "فیلتر Backtests بر اساس وضعیت",
+      "options": {
+        "all": "همه وضعیت‌ها",
+        "pending": "در انتظار",
+        "running": "در حال اجرا",
+        "completed": "تکمیل شد",
+        "failed": "ناموفق",
+        "cancelled": "لغو شد"
+      }
+    },
+    "empty": {
+      "title": "Backtest وجود ندارد",
+      "message": "برای دیدن نتایج، یک Backtest را از طریق CLI یا API اجرا کنید."
+    }
+  },
+  "detail": {
+    "title": "اجرای Backtest",
+    "fields": {
+      "strategy": "استراتژی",
+      "instrument": "ابزار",
+      "status": "وضعیت",
+      "period": "دوره",
+      "crossAsset": "اسناد بین‌دارایی",
+      "configHash": "هش پیکربندی"
+    },
+    "crossAssetFlow": "Feed {{source}} → اجراهای {{target}}",
+    "errors": {
+      "invalidRunId": "شناسه اجرا نامعتبر است — باید UUID7 باشد (دریافت شد \"{{id}}\").",
+      "loadFailed": "بارگذاری اجرا ناموفق بود: {{message}}",
+      "notFound": "یافت نشد"
+    }
+  },
+  "compare": {
+    "title": "مقایسه",
+    "headingFull": "مقایسه Backtest",
+    "loading": "در حال بارگذاری مقایسه…",
+    "vs": "در برابر",
+    "runLabel": "اجرا {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "معیارها",
+      "equityOverlay": "هم‌پوشانی equity",
+      "trades": "معاملات",
+      "signals": "سیگنال‌ها"
+    },
+    "pairingMode": {
+      "auto": "خودکار",
+      "manual": "دستی"
+    },
+    "errors": {
+      "notFound": "مقایسه در کیف پول فعلی یافت نشد.",
+      "loadFailed": "بارگذاری مقایسه ناموفق بود: {{message}}",
+      "unknown": "خطای نامشخص",
+      "emptyResponse": "پاسخ مقایسه خالی است."
+    },
+    "launcher": {
+      "title": "مقایسه",
+      "submit": "مقایسه",
+      "autoPair": "مقایسه با جدیدترین",
+      "terminalGate": "مقایسه زمانی در دسترس است که این اجرا به وضعیت نهایی برسد",
+      "noSiblings": "اجرای دیگری با این پیکربندی وجود ندارد",
+      "limitNotice": "{{count}} مورد جدیدتر نمایش داده می‌شود — برای اجراهای قدیمی‌تر از جفت‌سازی دستی استفاده کنید",
+      "pickPlaceholder": "— یک اجرا برای مقایسه انتخاب کنید —",
+      "showAllLabel": "نمایش همه اجراها (نه فقط همان پیکربندی)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "همه اجراها",
+        "sameConfig": "همان پیکربندی"
+      },
+      "errors": {
+        "pickRequired": "یک اجرا از فهرست انتخاب کنید"
+      }
+    },
+    "diffColumns": {
+      "common": "مشترک",
+      "onlyA": "فقط در A",
+      "onlyB": "فقط در B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "معیار قابل مقایسه‌ای وجود ندارد — هیچ‌یک از اجراها مقدار ثبت‌شده ندارد.",
+      "columns": {
+        "name": "معیار",
+        "runA": "اجرا A",
+        "runB": "اجرا B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "اجرا A",
+        "runB": "اجرا B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "در انتظار پیشرفت…",
+    "candles": "{{done}} / {{total}} کندل",
+    "candlesNoTotal": "{{done}} کندل",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} سیگنال / {{trades}} معامله",
+    "milestoneLine": "نقطه عطف {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

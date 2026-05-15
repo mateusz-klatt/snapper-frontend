@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Yönetim",
+    "subtitle": "Kullanıcıları ve sistem yapılandırmasını yönetin"
+  },
+  "rolePermissions": {
+    "title": "Rol İzinleri",
+    "viewer": {
+      "label": "Görüntüleyici",
+      "description": "Genel Bakış ve Piyasa verilerine salt okunur erişim. Süreçleri, stratejileri veya sistem ayarlarını yönetemez."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Tüm Görüntüleyici izinlerine ek olarak trading işlemleri, strateji yürütme, süreç yönetimi ve sistem sağlığı izleme."
+    },
+    "admin": {
+      "label": "Yönetici",
+      "description": "Kullanıcı yönetimi, sistem ayarları, API anahtarı yapılandırması ve tüm Operator izinleri dahil tam sistem erişimi."
+    },
+    "table": {
+      "resource": "Kaynak",
+      "viewer": "Görüntüleyici",
+      "operator": "Operator",
+      "admin": "Yönetici"
+    },
+    "resources": {
+      "overview": "Genel Bakış",
+      "market": "Piyasa verileri",
+      "processes": "Süreçler",
+      "strategies": "Stratejiler",
+      "orders": "Emirler ve Gerçekleşmeler",
+      "positions": "Pozisyonlar",
+      "signals": "Sinyaller",
+      "health": "Sağlık",
+      "admin": "Yönetim",
+      "settings": "Ayarlar"
+    }
+  },
+  "common": {
+    "cancel": "İptal",
+    "selectWallet": "Cüzdan seç",
+    "selectAWallet": "Bir cüzdan seç",
+    "chooseWalletPlaceholder": "Bir cüzdan seç...",
+    "selectWalletPlaceholder": "Cüzdan seç...",
+    "walletLabel": "Cüzdan",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Bilinmeyen hata",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Erişim Reddedildi",
+      "message": "Kullanıcıları yönetme izniniz yok. Lütfen sistem yöneticinizle iletişime geçin."
+    },
+    "list": {
+      "title": "Kullanıcı Yönetimi",
+      "countLabel": "{{count}} kullanıcı",
+      "showInactive": "Pasifleri göster",
+      "hideInactive": "Pasifleri gizle",
+      "addUser": "Kullanıcı ekle",
+      "searchPlaceholder": "Kullanıcı adı, e-posta veya role göre ara...",
+      "columns": {
+        "user": "Kullanıcı",
+        "role": "Rol",
+        "status": "Durum",
+        "createdAt": "Oluşturulma",
+        "actions": "Eylemler"
+      },
+      "status": {
+        "active": "Aktif",
+        "inactive": "Pasif"
+      },
+      "unknown": "Bilinmiyor",
+      "empty": {
+        "title": "Kullanıcı bulunamadı",
+        "noMatch": "Arama ölçütlerinize uyan kullanıcı yok.",
+        "noUsers": "Kullanıcı bulunamadı.",
+        "noActive": "Aktif kullanıcı bulunamadı."
+      },
+      "errorLoading": "Kullanıcılar yüklenirken hata: {{message}}",
+      "deactivate": {
+        "title": "Kullanıcıyı pasifleştir",
+        "message": "\"{{username}}\" kullanıcısını pasifleştirmek istediğinizden emin misiniz? Artık oturum açamayacak.",
+        "confirm": "Pasifleştir"
+      },
+      "toast": {
+        "deactivated": "Kullanıcı pasifleştirildi",
+        "deactivateError": "Kullanıcı pasifleştirme hatası"
+      }
+    },
+    "form": {
+      "titleEdit": "Kullanıcıyı düzenle",
+      "titleAdd": "Kullanıcı ekle",
+      "fields": {
+        "username": "Kullanıcı adı",
+        "usernamePlaceholder": "Kullanıcı adını girin",
+        "password": "Şifre",
+        "passwordPlaceholder": "Şifreyi girin",
+        "newPassword": "Yeni Şifre",
+        "newPasswordPlaceholder": "Yeni şifreyi girin",
+        "email": "E-posta",
+        "emailPlaceholder": "E-posta girin",
+        "role": "Rol",
+        "accountActive": "Hesap aktif",
+        "resetUserPassword": "Kullanıcı şifresini sıfırla"
+      },
+      "roles": {
+        "viewer": "Görüntüleyici",
+        "operator": "Operator",
+        "admin": "Yönetici"
+      },
+      "validation": {
+        "usernameRequired": "Kullanıcı adı gerekli",
+        "usernameMinLength": "Kullanıcı adı en az 3 karakter olmalı",
+        "emailRequired": "E-posta gerekli",
+        "emailInvalid": "Geçersiz e-posta biçimi",
+        "passwordRequired": "Şifre gerekli",
+        "passwordMinLength": "Şifre en az 8 karakter olmalı",
+        "passwordRequiredWhenResetting": "Sıfırlama sırasında şifre gerekli"
+      },
+      "actions": {
+        "saveChanges": "Değişiklikleri kaydet",
+        "createUser": "Kullanıcı oluştur"
+      },
+      "toast": {
+        "created": "Kullanıcı oluşturuldu",
+        "createError": "Kullanıcı oluşturma hatası",
+        "updated": "Kullanıcı güncellendi",
+        "updateError": "Kullanıcı güncelleme hatası",
+        "passwordReset": "Kullanıcı şifresi sıfırlandı",
+        "resetError": "Şifre sıfırlama hatası"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Erişim Reddedildi",
+      "message": "Kapsam yetkilerini yönetme izniniz yok. Lütfen sistem yöneticinizle iletişime geçin."
+    },
+    "list": {
+      "title": "Kapsam yetkileri",
+      "countLabel": "{{count}} yetki",
+      "createGrant": "Kapsam ata",
+      "selectWalletPrompt": "Kapsam yetkilerini görmek için yukarıdan bir cüzdan seçin.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Kapsam",
+        "target": "Hedef",
+        "grantedAt": "Atanma",
+        "actions": "Eylemler"
+      },
+      "empty": {
+        "noGrants": "Yetki bulunamadı",
+        "noGrantsHint": "Bu cüzdanın aktif kapsam yetkisi yok."
+      },
+      "errorLoading": "Yetkiler yüklenirken hata: {{message}}",
+      "handover": "Devret"
+    },
+    "form": {
+      "title": "Kapsam yetkisi oluştur",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Operator seç...",
+        "wallet": "Cüzdan",
+        "scopeKind": "Kapsam türü",
+        "underlyingPublicId": "Dayanak Public ID",
+        "instrumentPublicId": "Enstrüman Public ID",
+        "underlyingPlaceholder": "örn. BTC",
+        "instrumentPlaceholder": "örn. BTC-USD-PERP",
+        "note": "Not (isteğe bağlı)",
+        "notePlaceholder": "İsteğe bağlı not"
+      },
+      "scopeKinds": {
+        "underlying": "Dayanak",
+        "instrument": "Enstrüman"
+      },
+      "validation": {
+        "operatorRequired": "Operator gerekli",
+        "walletRequired": "Cüzdan gerekli",
+        "targetRequired": "Hedef ID gerekli"
+      },
+      "actions": {
+        "createGrant": "Kapsam ata"
+      },
+      "toast": {
+        "created": "Kapsam yetkisi oluşturuldu",
+        "conflictError": "Çakışma: başka bir operator bu kapsam için zaten yetki sahibi",
+        "createError": "Kapsam yetkisi oluşturma hatası"
+      }
+    },
+    "handover": {
+      "title": "Kapsam yetkisini devret",
+      "fields": {
+        "currentHolder": "Geçerli sahip",
+        "scope": "Kapsam",
+        "wallet": "Cüzdan",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Operatore devret",
+        "transferToPlaceholder": "Hedef operator seç...",
+        "reason": "Neden (isteğe bağlı)",
+        "reasonPlaceholder": "örn. Vardiya değişimi"
+      },
+      "actions": {
+        "handover": "Devret"
+      },
+      "toast": {
+        "completed": "Kapsam yetkisi devredildi",
+        "conflictError": "Çakışma: hedef operator zaten çakışan bir yetkiye sahip",
+        "handoverError": "Kapsam yetkisi devretme hatası"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Erişim Reddedildi",
+      "message": "Cüzdan kimlik bilgilerini yönetme izniniz yok. Lütfen sistem yöneticinizle iletişime geçin."
+    },
+    "list": {
+      "title": "Cüzdan Kimlik Bilgileri",
+      "countLabel": "{{count}} kimlik bilgisi",
+      "addCredential": "Kimlik bilgisi ekle",
+      "selectWalletPrompt": "Kimlik bilgilerini görmek için yukarıdan bir cüzdan seçin.",
+      "columns": {
+        "exchange": "Borsa",
+        "type": "Tür",
+        "label": "Etiket",
+        "createdAt": "Oluşturulma",
+        "actions": "Eylemler"
+      },
+      "empty": {
+        "noCredentials": "Kimlik bilgisi bulunamadı",
+        "noCredentialsHint": "Bu cüzdanın aktif kimlik bilgisi yok."
+      },
+      "errorLoading": "Kimlik bilgileri yüklenirken hata: {{message}}",
+      "rotate": "Değiştir"
+    },
+    "form": {
+      "title": "Kimlik bilgisi ekle",
+      "fields": {
+        "wallet": "Cüzdan",
+        "exchange": "Borsa",
+        "exchangePlaceholder": "örn. kraken",
+        "credentialType": "Kimlik bilgisi türü",
+        "label": "Etiket (isteğe bağlı)",
+        "labelPlaceholder": "örn. Ana trading anahtarı",
+        "pemPlaceholder": "PEM biçimli özel anahtarı buraya yapıştırın"
+      },
+      "fieldLabels": {
+        "api_key": "API Anahtarı",
+        "api_secret": "API Sırrı",
+        "private_key_pem": "Özel Anahtar (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Başlangıç Bakiyesi"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Anahtarı + Sır",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Cüzdan gerekli",
+        "exchangeRequired": "Borsa gerekli",
+        "fieldRequired": "{{field}} gerekli"
+      },
+      "actions": {
+        "addCredential": "Kimlik bilgisi ekle"
+      },
+      "toast": {
+        "created": "Kimlik bilgisi oluşturuldu",
+        "conflictError": "Çakışma: bu cüzdanın bu borsa için zaten aktif kimlik bilgisi var",
+        "createError": "Kimlik bilgisi oluşturma hatası"
+      }
+    },
+    "rotate": {
+      "title": "Kimlik bilgisini değiştir",
+      "fields": {
+        "exchange": "Borsa",
+        "type": "Tür",
+        "label": "Etiket",
+        "newLabel": "Yeni Etiket (isteğe bağlı)",
+        "newLabelPlaceholder": "örn. Değiştirilen anahtar 2026-04",
+        "pemPlaceholder": "PEM biçimli özel anahtarı buraya yapıştırın"
+      },
+      "actions": {
+        "rotate": "Değiştir"
+      },
+      "toast": {
+        "rotated": "Kimlik bilgisi değiştirildi",
+        "rotateError": "Kimlik bilgisi değiştirme hatası"
+      }
+    }
+  }
+}

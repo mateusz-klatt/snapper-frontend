@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strateji Yönetimi",
+    "register": "Strateji Kaydet",
+    "saving": "Kaydediliyor…",
+    "descriptionCanManage": "Yeni strateji süreçlerini doğrudan arayüzden kaydedin. Otomatik başlatma, yeniden başlatmalar boyunca süreci etkin tutar.",
+    "descriptionViewer": "Yapılandırılmış stratejileri ve durumlarını görüntüleyin. Stratejileri yönetmek için bir operator veya yöneticiyle iletişime geçin.",
+    "searchPlaceholder": "Stratejilerde ara...",
+    "filter": {
+      "all": "Tüm durumlar",
+      "running": "Çalışıyor",
+      "stopped": "Durduruldu"
+    },
+    "configuredHeading": "Yapılandırılmış Stratejiler",
+    "noMatches": "Filtrelerinize uyan strateji yok",
+    "clearFilters": "Filtreleri temizle",
+    "emptyTitle": "Yapılandırılmış strateji yok",
+    "emptyCanManage": "Algoritmik trading başlatmak için bir strateji kaydedin",
+    "emptyViewer": "Henüz strateji yapılandırılmadı"
+  },
+  "confirm": {
+    "startTitle": "{{name}} başlat",
+    "startMessage": "Bu, {{name}} stratejisini başlatır. Canlı trading işlemleri başlayabilir.",
+    "stopTitle": "{{name}} durdur",
+    "stopMessage": "Bu, {{name}} stratejisini durdurur. Aktif pozisyonlar otomatik kapatılmaz."
+  },
+  "toast": {
+    "saved": "{{name}} stratejisi kaydedildi",
+    "started": "{{name}} stratejisi başlatıldı",
+    "registerFailed": "Strateji kaydedilemedi: {{message}}",
+    "startSuccess": "Strateji başarıyla başlatıldı",
+    "stopSuccess": "Strateji başarıyla durduruldu",
+    "alreadyRunning": "Strateji zaten çalışıyor",
+    "notRunning": "Strateji çalışmıyor",
+    "configNotFound": "Strateji yapılandırması bulunamadı. Lütfen veritabanı ayarlarını kontrol edin.",
+    "networkError": "Ağ hatası. Lütfen bağlantıyı kontrol edip tekrar deneyin.",
+    "startFailed": "Strateji başlatılamadı: {{message}}",
+    "stopFailed": "Strateji durdurulamadı: {{message}}",
+    "unknownError": "Bilinmeyen hata"
+  },
+  "card": {
+    "ariaLabel": "Strateji: {{name}}",
+    "modeLabel": "Mod: {{mode}}",
+    "autostartEnabled": "Otomatik başlatma: etkin",
+    "autostartDisabled": "Otomatik başlatma: devre dışı",
+    "statusAriaLabel": "Durum: {{status}}",
+    "dataLagAriaLabel": "Veri gecikmesi: {{seconds}} saniye",
+    "lagBadge": "gecikme: {{seconds}}s",
+    "feedLag": "Feed gecikmesi: {{ms}}ms",
+    "heartbeatAge": "Heartbeat yaşı: {{seconds}}s",
+    "metrics": {
+      "status": "Durum",
+      "dataLag": "Veri Gecikmesi",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Ayrıntıları göster",
+    "hideDetails": "Ayrıntıları gizle",
+    "inputs": "Girdiler ({{count}})",
+    "outputs": "Çıktılar ({{count}})",
+    "feedPublishers": "Feed Yayıncıları ({{count}})",
+    "lastUpdate": "Son güncelleme: {{time}}",
+    "waiting": "Heartbeat bekleniyor...",
+    "startAriaLabel": "{{name}} stratejisini başlat",
+    "stopAriaLabel": "{{name}} stratejisini durdur",
+    "start": "Başlat",
+    "stop": "Durdur",
+    "starting": "Başlatılıyor...",
+    "stopping": "Durduruluyor...",
+    "status": {
+      "starting": "başlatılıyor",
+      "stopping": "durduruluyor",
+      "running": "çalışıyor",
+      "stopped": "durduruldu"
+    },
+    "health": {
+      "healthy": "Sağlıklı — taze veri alınıyor",
+      "warning": "Uyarı — veri bayat",
+      "error": "Hata — yakın tarihli veri yok",
+      "unknown": "Bilinmiyor — Heartbeat verisi yok"
+    },
+    "healthShort": {
+      "healthy": "SAĞLIKLI",
+      "warning": "UYARI",
+      "error": "HATA"
+    }
+  },
+  "launchModal": {
+    "title": "Strateji Süreci Kaydet",
+    "emptyTemplates": "Backend'de kayıtlı strateji şablonu yok. En az bir strateji süreci tanımlayın.",
+    "close": "Kapat",
+    "templateLabel": "Strateji şablonu",
+    "templatePlaceholder": "Şablon seç...",
+    "templateFallbackDescription": "Backend'de kayıtlı strateji",
+    "loadingDefaults": "Şablon varsayılanları yükleniyor…",
+    "loadDefaultsError": "Şablon varsayılanları yüklenemiyor. Lütfen backend loglarını kontrol edin.",
+    "processNameLabel": "Süreç adı",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "İzin verilen karakterler: küçük harfler, sayılar, alt çizgiler",
+    "instanceNameLabel": "Strateji örneği adı",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Strateji yapılandırması ve çıktı konuları içinde kullanılır",
+    "executionModeLabel": "Yürütme modu",
+    "executionModeThread": "Gömülü thread",
+    "executionModeProcess": "İzole süreç",
+    "executionModeHelp": "Thread'ler belleği paylaşır, süreçler daha güçlü izolasyon sağlar.",
+    "flagsLabel": "Bayraklar",
+    "autostartLabel": "Sunucu açılışında otomatik başlat",
+    "startImmediatelyLabel": "Kayıttan hemen sonra başlat",
+    "noteLabel": "Not (isteğe bağlı)",
+    "notePlaceholder": "Bu strateji örneğinin amacını veya parametrelerini açıklayın.",
+    "noteHelp": "Bu süreci tanımlamaya yardımcı olmak için yapılandırmanın yanında saklanır.",
+    "cancel": "İptal",
+    "submit": "Strateji kaydet",
+    "submitting": "Kaydediliyor…"
+  }
+}

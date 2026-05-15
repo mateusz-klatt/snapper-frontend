@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "نظرة عامة"
+  },
+  "metrics": {
+    "feedsRunning": "Feed قيد التشغيل",
+    "strategiesActive": "استراتيجيات نشطة",
+    "openOrders": "أوامر مفتوحة",
+    "todaysExecutions": "تنفيذات اليوم",
+    "executionsOn": "تنفيذات ({{date}})"
+  },
+  "status": {
+    "stopped": "متوقف",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "قيد التشغيل",
+    "active": "نشط"
+  },
+  "processStatus": {
+    "title": "حالة العمليات",
+    "feeds": "Feed",
+    "strategies": "الاستراتيجيات",
+    "executors": "المنفذون",
+    "brokers": "الوسطاء"
+  },
+  "portfolio": {
+    "title": "ملخص المحفظة الاستثمارية",
+    "totalValue": "القيمة الإجمالية",
+    "longExposure": "تعرض Long",
+    "shortExposure": "تعرض Short",
+    "netDelta": "صافي دلتا",
+    "unrealizedPnl": "P&L غير محقق",
+    "pnlPercent": "P&L %",
+    "positions": "المراكز",
+    "instrumentsCount": "{{count}} أدوات",
+    "empty": "لا توجد بيانات مراكز متاحة"
+  },
+  "signals": {
+    "title": "الإشارات الأخيرة",
+    "empty": "لا توجد إشارات حديثة",
+    "noTime": "غير متاح"
+  },
+  "executions": {
+    "title": "التنفيذات الأخيرة",
+    "empty": "لا توجد تنفيذات حديثة",
+    "noTime": "غير متاح"
+  }
+}

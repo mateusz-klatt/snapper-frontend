@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "الإدارة",
+    "subtitle": "إدارة المستخدمين وتكوين النظام"
+  },
+  "rolePermissions": {
+    "title": "صلاحيات الأدوار",
+    "viewer": {
+      "label": "مشاهد",
+      "description": "وصول للقراءة فقط إلى النظرة العامة وبيانات السوق. لا يمكنه إدارة العمليات أو الاستراتيجيات أو إعدادات النظام."
+    },
+    "operator": {
+      "label": "مشغّل",
+      "description": "كل صلاحيات المشاهد بالإضافة إلى عمليات التداول، وتنفيذ الاستراتيجية، وإدارة العمليات، ومراقبة صحة النظام."
+    },
+    "admin": {
+      "label": "مسؤول",
+      "description": "وصول كامل إلى النظام بما في ذلك إدارة المستخدمين، وإعدادات النظام، وتكوين مفاتيح API، وكل صلاحيات المشغّل."
+    },
+    "table": {
+      "resource": "المورد",
+      "viewer": "مشاهد",
+      "operator": "مشغّل",
+      "admin": "مسؤول"
+    },
+    "resources": {
+      "overview": "نظرة عامة",
+      "market": "بيانات السوق",
+      "processes": "العمليات",
+      "strategies": "الاستراتيجيات",
+      "orders": "الأوامر والتنفيذات",
+      "positions": "المراكز",
+      "signals": "الإشارات",
+      "health": "الصحة",
+      "admin": "الإدارة",
+      "settings": "الإعدادات"
+    }
+  },
+  "common": {
+    "cancel": "إلغاء",
+    "selectWallet": "اختر محفظة",
+    "selectAWallet": "اختر محفظة",
+    "chooseWalletPlaceholder": "اختر محفظة...",
+    "selectWalletPlaceholder": "اختر محفظة...",
+    "walletLabel": "محفظة",
+    "paperAnnotation": " (paper)",
+    "unknownError": "خطأ غير معروف",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "تم رفض الوصول",
+      "message": "ليس لديك إذن لإدارة المستخدمين. يرجى الاتصال بمسؤول النظام."
+    },
+    "list": {
+      "title": "إدارة المستخدمين",
+      "countLabel": "{{count}} مستخدمين",
+      "showInactive": "إظهار غير النشطين",
+      "hideInactive": "إخفاء غير النشطين",
+      "addUser": "إضافة مستخدم",
+      "searchPlaceholder": "ابحث باسم المستخدم أو البريد الإلكتروني أو الدور...",
+      "columns": {
+        "user": "المستخدم",
+        "role": "الدور",
+        "status": "الحالة",
+        "createdAt": "تاريخ الإنشاء",
+        "actions": "الإجراءات"
+      },
+      "status": {
+        "active": "نشط",
+        "inactive": "غير نشط"
+      },
+      "unknown": "غير معروف",
+      "empty": {
+        "title": "لم يتم العثور على مستخدمين",
+        "noMatch": "لا يوجد مستخدمون يطابقون معايير البحث.",
+        "noUsers": "لم يتم العثور على مستخدمين.",
+        "noActive": "لم يتم العثور على مستخدمين نشطين."
+      },
+      "errorLoading": "خطأ في تحميل المستخدمين: {{message}}",
+      "deactivate": {
+        "title": "تعطيل المستخدم",
+        "message": "هل أنت متأكد أنك تريد تعطيل المستخدم \"{{username}}\"؟ لن يتمكن من تسجيل الدخول بعد ذلك.",
+        "confirm": "تعطيل"
+      },
+      "toast": {
+        "deactivated": "تم تعطيل المستخدم",
+        "deactivateError": "خطأ في تعطيل المستخدم"
+      }
+    },
+    "form": {
+      "titleEdit": "تحرير المستخدم",
+      "titleAdd": "إضافة مستخدم",
+      "fields": {
+        "username": "اسم المستخدم",
+        "usernamePlaceholder": "أدخل اسم المستخدم",
+        "password": "كلمة المرور",
+        "passwordPlaceholder": "أدخل كلمة المرور",
+        "newPassword": "كلمة مرور جديدة",
+        "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+        "email": "البريد الإلكتروني",
+        "emailPlaceholder": "أدخل البريد الإلكتروني",
+        "role": "الدور",
+        "accountActive": "الحساب نشط",
+        "resetUserPassword": "إعادة تعيين كلمة مرور المستخدم"
+      },
+      "roles": {
+        "viewer": "مشاهد",
+        "operator": "مشغّل",
+        "admin": "مسؤول"
+      },
+      "validation": {
+        "usernameRequired": "اسم المستخدم مطلوب",
+        "usernameMinLength": "يجب أن يتكون اسم المستخدم من 3 أحرف على الأقل",
+        "emailRequired": "البريد الإلكتروني مطلوب",
+        "emailInvalid": "تنسيق البريد الإلكتروني غير صالح",
+        "passwordRequired": "كلمة المرور مطلوبة",
+        "passwordMinLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+        "passwordRequiredWhenResetting": "كلمة المرور مطلوبة عند إعادة التعيين"
+      },
+      "actions": {
+        "saveChanges": "حفظ التغييرات",
+        "createUser": "إنشاء مستخدم"
+      },
+      "toast": {
+        "created": "تم إنشاء المستخدم",
+        "createError": "خطأ في إنشاء المستخدم",
+        "updated": "تم تحديث المستخدم",
+        "updateError": "خطأ في تحديث المستخدم",
+        "passwordReset": "تمت إعادة تعيين كلمة مرور المستخدم",
+        "resetError": "خطأ في إعادة تعيين كلمة المرور"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "تم رفض الوصول",
+      "message": "ليس لديك إذن لإدارة نطاقات الصلاحيات. يرجى الاتصال بمسؤول النظام."
+    },
+    "list": {
+      "title": "نطاقات الصلاحيات",
+      "countLabel": "{{count}} منح",
+      "createGrant": "منح نطاق",
+      "selectWalletPrompt": "اختر محفظة أعلاه لعرض نطاقات صلاحياتها.",
+      "columns": {
+        "operator": "المشغّل",
+        "scope": "النطاق",
+        "target": "الهدف",
+        "grantedAt": "تاريخ المنح",
+        "actions": "الإجراءات"
+      },
+      "empty": {
+        "noGrants": "لم يتم العثور على منح",
+        "noGrantsHint": "لا تحتوي هذه المحفظة على نطاقات صلاحيات نشطة."
+      },
+      "errorLoading": "خطأ في تحميل المنح: {{message}}",
+      "handover": "تسليم"
+    },
+    "form": {
+      "title": "إنشاء منح نطاق",
+      "fields": {
+        "operator": "المشغّل",
+        "operatorPlaceholder": "اختر مشغّلاً...",
+        "wallet": "محفظة",
+        "scopeKind": "نوع النطاق",
+        "underlyingPublicId": "Public ID للأصل الأساسي",
+        "instrumentPublicId": "Public ID للأداة",
+        "underlyingPlaceholder": "مثلاً BTC",
+        "instrumentPlaceholder": "مثلاً BTC-USD-PERP",
+        "note": "ملاحظة (اختيارية)",
+        "notePlaceholder": "ملاحظة اختيارية"
+      },
+      "scopeKinds": {
+        "underlying": "الأصل الأساسي",
+        "instrument": "الأداة"
+      },
+      "validation": {
+        "operatorRequired": "المشغّل مطلوب",
+        "walletRequired": "المحفظة مطلوبة",
+        "targetRequired": "معرّف الهدف مطلوب"
+      },
+      "actions": {
+        "createGrant": "منح نطاق"
+      },
+      "toast": {
+        "created": "تم إنشاء منح النطاق",
+        "conflictError": "تعارض: يوجد مشغّل آخر لديه بالفعل منح على هذا النطاق",
+        "createError": "خطأ في إنشاء منح النطاق"
+      }
+    },
+    "handover": {
+      "title": "تسليم منح النطاق",
+      "fields": {
+        "currentHolder": "الحامل الحالي",
+        "scope": "النطاق",
+        "wallet": "محفظة",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "نقل إلى مشغّل",
+        "transferToPlaceholder": "اختر المشغّل الوجهة...",
+        "reason": "السبب (اختياري)",
+        "reasonPlaceholder": "مثلاً تغيير الوردية"
+      },
+      "actions": {
+        "handover": "تسليم"
+      },
+      "toast": {
+        "completed": "تم تسليم منح النطاق",
+        "conflictError": "تعارض: المشغّل الوجهة لديه بالفعل منح متعارض",
+        "handoverError": "خطأ في تسليم منح النطاق"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "تم رفض الوصول",
+      "message": "ليس لديك إذن لإدارة بيانات اعتماد المحافظ. يرجى الاتصال بمسؤول النظام."
+    },
+    "list": {
+      "title": "بيانات اعتماد المحفظة",
+      "countLabel": "{{count}} بيانات اعتماد",
+      "addCredential": "إضافة بيانات اعتماد",
+      "selectWalletPrompt": "اختر محفظة أعلاه لعرض بيانات اعتمادها.",
+      "columns": {
+        "exchange": "البورصة",
+        "type": "النوع",
+        "label": "التسمية",
+        "createdAt": "تاريخ الإنشاء",
+        "actions": "الإجراءات"
+      },
+      "empty": {
+        "noCredentials": "لم يتم العثور على بيانات اعتماد",
+        "noCredentialsHint": "لا تحتوي هذه المحفظة على بيانات اعتماد نشطة."
+      },
+      "errorLoading": "خطأ في تحميل بيانات الاعتماد: {{message}}",
+      "rotate": "استبدال"
+    },
+    "form": {
+      "title": "إضافة بيانات اعتماد",
+      "fields": {
+        "wallet": "محفظة",
+        "exchange": "البورصة",
+        "exchangePlaceholder": "مثلاً kraken",
+        "credentialType": "نوع بيانات الاعتماد",
+        "label": "التسمية (اختيارية)",
+        "labelPlaceholder": "مثلاً مفتاح التداول الرئيسي",
+        "pemPlaceholder": "الصق المفتاح الخاص بتنسيق PEM هنا"
+      },
+      "fieldLabels": {
+        "api_key": "مفتاح API",
+        "api_secret": "سر API",
+        "private_key_pem": "المفتاح الخاص (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "الرصيد الأولي"
+      },
+      "credentialTypes": {
+        "api_key_secret": "مفتاح API + السر",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "المحفظة مطلوبة",
+        "exchangeRequired": "البورصة مطلوبة",
+        "fieldRequired": "{{field}} مطلوب"
+      },
+      "actions": {
+        "addCredential": "إضافة بيانات اعتماد"
+      },
+      "toast": {
+        "created": "تم إنشاء بيانات الاعتماد",
+        "conflictError": "تعارض: تحتوي هذه المحفظة بالفعل على بيانات اعتماد نشطة لهذه البورصة",
+        "createError": "خطأ في إنشاء بيانات الاعتماد"
+      }
+    },
+    "rotate": {
+      "title": "استبدال بيانات الاعتماد",
+      "fields": {
+        "exchange": "البورصة",
+        "type": "النوع",
+        "label": "التسمية",
+        "newLabel": "تسمية جديدة (اختيارية)",
+        "newLabelPlaceholder": "مثلاً مفتاح مستبدل 2026-04",
+        "pemPlaceholder": "الصق المفتاح الخاص بتنسيق PEM هنا"
+      },
+      "actions": {
+        "rotate": "استبدال"
+      },
+      "toast": {
+        "rotated": "تم استبدال بيانات الاعتماد",
+        "rotateError": "خطأ في استبدال بيانات الاعتماد"
+      }
+    }
+  }
+}

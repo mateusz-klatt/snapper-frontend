@@ -40,6 +40,11 @@ const NATIVE_LANGUAGE_COUNTRIES = [
   'gr',
   'is',
   'am',
+  'tr',
+  'ae',
+  'il',
+  'ir',
+  'in',
 ] as const
 
 describe('COUNTRY_TO_LANGUAGE', () => {
@@ -76,6 +81,11 @@ describe('COUNTRY_TO_LANGUAGE', () => {
     expect(COUNTRY_TO_LANGUAGE.gr).toBe('el')
     expect(COUNTRY_TO_LANGUAGE.is).toBe('is')
     expect(COUNTRY_TO_LANGUAGE.am).toBe('hy')
+    expect(COUNTRY_TO_LANGUAGE.tr).toBe('tr')
+    expect(COUNTRY_TO_LANGUAGE.ae).toBe('ar')
+    expect(COUNTRY_TO_LANGUAGE.il).toBe('he')
+    expect(COUNTRY_TO_LANGUAGE.ir).toBe('fa')
+    expect(COUNTRY_TO_LANGUAGE.in).toBe('hi')
   })
 
   it('maps countries without a native catalog to en', () => {
@@ -130,7 +140,11 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
     expect(COUNTRY_TO_INTL_LOCALE.gr).toBe('el-GR')
     expect(COUNTRY_TO_INTL_LOCALE.is).toBe('is-IS')
     expect(COUNTRY_TO_INTL_LOCALE.am).toBe('hy-AM')
-    expect(COUNTRY_TO_INTL_LOCALE.ae).toBe('en-AE')
+    expect(COUNTRY_TO_INTL_LOCALE.tr).toBe('tr-TR')
+    expect(COUNTRY_TO_INTL_LOCALE.ae).toBe('ar-AE')
+    expect(COUNTRY_TO_INTL_LOCALE.il).toBe('he-IL')
+    expect(COUNTRY_TO_INTL_LOCALE.ir).toBe('fa-IR')
+    expect(COUNTRY_TO_INTL_LOCALE.in).toBe('hi-IN')
   })
 
   it('covers all 45 codes', () => {

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "الإشارات"
+  },
+  "filters": {
+    "allStrategies": "كل الاستراتيجيات"
+  },
+  "actions": {
+    "export": "تصدير"
+  },
+  "stats": {
+    "total": "الإجمالي",
+    "buy": "شراء",
+    "sell": "بيع",
+    "avgStrength": "متوسط القوة"
+  },
+  "card": {
+    "strength": "القوة",
+    "price": "السعر",
+    "exchange": "البورصة",
+    "reason": "السبب:",
+    "noPrice": "غير متاح"
+  },
+  "strength": {
+    "strong": "قوي",
+    "medium": "متوسط",
+    "weak": "ضعيف",
+    "veryWeak": "ضعيف جداً"
+  },
+  "time": {
+    "justNow": "الآن",
+    "minutesAgo": "قبل {{count}}د",
+    "hoursAgo": "قبل {{count}}س"
+  },
+  "empty": {
+    "title": "لم يتم العثور على إشارات",
+    "message": "لا توجد إشارات تداول تطابق عوامل التصفية الحالية."
+  }
+}

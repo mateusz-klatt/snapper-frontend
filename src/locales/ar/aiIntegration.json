@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "تكامل AI",
+    "subtitle": "إدارة مفوضي AI الذين يتصلون بـ Snapper عبر MCP.",
+    "loading": "جارٍ تحميل تكامل AI…",
+    "createDelegate": "إنشاء مفوض"
+  },
+  "disabled": {
+    "title": "تكامل AI معطّل",
+    "message": "فعّل علم الميزة في الإعدادات → أعلام الميزات لإدارة مفوضي AI."
+  },
+  "list": {
+    "loadingDelegates": "جارٍ تحميل المفوضين…",
+    "emptyTitle": "لا يوجد مفوضو AI بعد",
+    "emptyMessage": "انقر على “إنشاء مفوض” لإنشاء واحد وتوليد مقتطف تكوين MCP الخاص به.",
+    "columns": {
+      "label": "التسمية",
+      "username": "اسم المستخدم",
+      "created": "تم الإنشاء",
+      "maxOpenOrders": "الحد الأقصى للأوامر المفتوحة",
+      "maxDailyUsd": "الحد الأقصى اليومي بالدولار",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    },
+    "status": {
+      "active": "نشط",
+      "revoked": "ملغى"
+    },
+    "default": "افتراضي",
+    "details": "التفاصيل",
+    "viewAriaLabel": "عرض المفوض {{label}}"
+  },
+  "wizard": {
+    "title": "إنشاء مفوض AI",
+    "step1": "1. الهوية",
+    "step2": "2. النطاق والحدود",
+    "step3": "3. المراجعة",
+    "stepDone": "✓ تم",
+    "identity": {
+      "labelField": "التسمية",
+      "labelPlaceholder": "مثلاً Alpha prop desk",
+      "labelHelpPrefix": "سيتم اشتقاق اسم مستخدم المفوض من جهة الخادم على أنه ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "النطاق",
+      "operatorLabel": "public_id للمشغّل (اختياري)",
+      "operatorPlaceholder": "اتركه فارغاً لوراثة المشغّل الأساسي للطالب"
+    },
+    "caps": {
+      "heading": "حدود التداول (كلها اختيارية)",
+      "maxOpenOrders": "الحد الأقصى للأوامر المفتوحة",
+      "maxDailyNotionalUsd": "الحد الأقصى اليومي الاسمي بالدولار",
+      "maxCancelsPerMinute": "الحد الأقصى للإلغاءات في الدقيقة",
+      "perInstrument": "الكمية القصوى لكل أداة (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "افتراضي",
+      "errorInvalidJson": "يجب أن يكون max_order_quantity_per_instrument بصيغة JSON صالحة",
+      "errorJsonObject": "يجب أن يكون max_order_quantity_per_instrument كائن JSON أو فارغاً",
+      "errorNegative": "يجب أن تكون الحدود أعداداً صحيحة غير سالبة أو فارغة."
+    },
+    "review": {
+      "heading": "المراجعة والإنشاء",
+      "rowLabel": "التسمية",
+      "rowOperator": "public_id للمشغّل",
+      "rowMaxOpenOrders": "الحد الأقصى للأوامر المفتوحة",
+      "rowMaxDailyNotional": "الحد الأقصى اليومي الاسمي بالدولار",
+      "rowMaxCancelsPerMinute": "الحد الأقصى للإلغاءات في الدقيقة",
+      "rowPerInstrument": "الكمية القصوى لكل أداة",
+      "operatorDefault": "(المشغّل الأساسي للطالب)",
+      "defaultValue": "(افتراضي)"
+    },
+    "buttons": {
+      "cancel": "إلغاء",
+      "next": "التالي",
+      "back": "رجوع",
+      "createDelegate": "إنشاء مفوض",
+      "iSavedClose": "لقد حفظت هذه — إغلاق"
+    },
+    "toast": {
+      "delegateCreated": "تم إنشاء المفوض",
+      "failedToCreate": "فشل إنشاء المفوض"
+    }
+  },
+  "detail": {
+    "loading": "جارٍ تحميل المفوض…",
+    "notFound": "لم يتم العثور على المفوض أو أنه غير متاح.",
+    "back": "رجوع",
+    "backToList": "العودة إلى القائمة",
+    "updateCaps": "تحديث الحدود",
+    "revoke": "إلغاء",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "tradingCaps": "حدود التداول",
+    "status": "الحالة",
+    "active": "نشط",
+    "revoked": "ملغى",
+    "createdAt": "تم الإنشاء في",
+    "createdBy": "أنشأه (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "الحد الأقصى للأوامر المفتوحة",
+    "maxDailyNotionalUsd": "الحد الأقصى اليومي الاسمي بالدولار",
+    "maxCancelsPerMinute": "الحد الأقصى للإلغاءات في الدقيقة",
+    "perInstrument": "الكمية القصوى لكل أداة",
+    "defaultValue": "(افتراضي)",
+    "editorPlaceholder": "(افتراضي)",
+    "toast": {
+      "capsUpdated": "تم تحديث الحدود",
+      "failedToUpdateCaps": "فشل تحديث الحدود",
+      "negativeIntegersError": "يجب أن تكون الحدود أعداداً صحيحة غير سالبة أو فارغة."
+    }
+  },
+  "revokeDialog": {
+    "title": "إلغاء المفوض \"{{label}}\"؟",
+    "message": "سيؤدي هذا إلى إلغاء رموز المفوض وإيقاف اشتراكاته في MCP. لا يمكن التراجع عن ذلك.",
+    "confirm": "إلغاء",
+    "cancel": "إلغاء",
+    "toast": {
+      "delegateRevoked": "تم إلغاء المفوض",
+      "failedToRevoke": "فشل إلغاء المفوض"
+    }
+  },
+  "snippet": {
+    "warningTitle": "احفظ بيانات الاعتماد هذه الآن",
+    "warningMessage": "لن تظهر مرة أخرى. لا يخزن Snapper الرموز الخام؛ بعد إغلاق هذا المعالج ستكون النسخة الوحيدة في تكوين عميل MCP لديك.",
+    "snippetHelp": "رمز مفوض AI طويل الأجل (~10 سنوات). يصدّق الرمز نفسه كلاً من خادم proxy MCP ومراقب المشاهدة. للاستبدال، عطّل هذا المفوض وأنشئ مفوضاً جديداً.",
+    "baseUrlHelpPrefix": "يتم اشتقاق Base URL من أصل هذا المتصفح + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "نسخ مقتطف التكوين إلى الحافظة",
+    "copy": "نسخ إلى الحافظة",
+    "copied": "تم النسخ"
+  }
+}

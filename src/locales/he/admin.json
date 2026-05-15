@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "ניהול",
+    "subtitle": "ניהול משתמשים ותצורת מערכת"
+  },
+  "rolePermissions": {
+    "title": "הרשאות תפקידים",
+    "viewer": {
+      "label": "צופה",
+      "description": "גישה לקריאה בלבד לסקירה ולנתוני שוק. לא ניתן לנהל תהליכים, אסטרטגיות או הגדרות מערכת."
+    },
+    "operator": {
+      "label": "מפעיל",
+      "description": "כל הרשאות הצופה בתוספת פעולות מסחר, ביצוע אסטרטגיה, ניהול תהליכים ומעקב אחר בריאות המערכת."
+    },
+    "admin": {
+      "label": "מנהל",
+      "description": "גישה מלאה למערכת כולל ניהול משתמשים, הגדרות מערכת, תצורת מפתחות API וכל הרשאות המפעיל."
+    },
+    "table": {
+      "resource": "משאב",
+      "viewer": "צופה",
+      "operator": "מפעיל",
+      "admin": "מנהל"
+    },
+    "resources": {
+      "overview": "סקירה",
+      "market": "נתוני שוק",
+      "processes": "תהליכים",
+      "strategies": "אסטרטגיות",
+      "orders": "פקודות וביצועים",
+      "positions": "פוזיציות",
+      "signals": "אותות",
+      "health": "בריאות",
+      "admin": "ניהול",
+      "settings": "הגדרות"
+    }
+  },
+  "common": {
+    "cancel": "בטל",
+    "selectWallet": "בחר ארנק",
+    "selectAWallet": "בחר ארנק",
+    "chooseWalletPlaceholder": "בחר ארנק...",
+    "selectWalletPlaceholder": "בחר ארנק...",
+    "walletLabel": "ארנק",
+    "paperAnnotation": " (paper)",
+    "unknownError": "שגיאה לא ידועה",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "הגישה נדחתה",
+      "message": "אין לך הרשאה לנהל משתמשים. פנה למנהל המערכת."
+    },
+    "list": {
+      "title": "ניהול משתמשים",
+      "countLabel": "{{count}} משתמשים",
+      "showInactive": "הצג לא פעילים",
+      "hideInactive": "הסתר לא פעילים",
+      "addUser": "הוסף משתמש",
+      "searchPlaceholder": "חפש לפי שם משתמש, אימייל או תפקיד...",
+      "columns": {
+        "user": "משתמש",
+        "role": "תפקיד",
+        "status": "סטטוס",
+        "createdAt": "נוצר בתאריך",
+        "actions": "פעולות"
+      },
+      "status": {
+        "active": "פעיל",
+        "inactive": "לא פעיל"
+      },
+      "unknown": "לא ידוע",
+      "empty": {
+        "title": "לא נמצאו משתמשים",
+        "noMatch": "אין משתמשים שתואמים לקריטריוני החיפוש שלך.",
+        "noUsers": "לא נמצאו משתמשים.",
+        "noActive": "לא נמצאו משתמשים פעילים."
+      },
+      "errorLoading": "שגיאה בטעינת משתמשים: {{message}}",
+      "deactivate": {
+        "title": "השבת משתמש",
+        "message": "האם אתה בטוח שברצונך להשבית את המשתמש \"{{username}}\"? הוא לא יוכל להיכנס יותר.",
+        "confirm": "השבת"
+      },
+      "toast": {
+        "deactivated": "המשתמש הושבת",
+        "deactivateError": "שגיאה בהשבתת משתמש"
+      }
+    },
+    "form": {
+      "titleEdit": "ערוך משתמש",
+      "titleAdd": "הוסף משתמש",
+      "fields": {
+        "username": "שם משתמש",
+        "usernamePlaceholder": "הזן שם משתמש",
+        "password": "סיסמה",
+        "passwordPlaceholder": "הזן סיסמה",
+        "newPassword": "סיסמה חדשה",
+        "newPasswordPlaceholder": "הזן סיסמה חדשה",
+        "email": "אימייל",
+        "emailPlaceholder": "הזן אימייל",
+        "role": "תפקיד",
+        "accountActive": "חשבון פעיל",
+        "resetUserPassword": "אפס סיסמת משתמש"
+      },
+      "roles": {
+        "viewer": "צופה",
+        "operator": "מפעיל",
+        "admin": "מנהל"
+      },
+      "validation": {
+        "usernameRequired": "שם משתמש הוא חובה",
+        "usernameMinLength": "שם המשתמש חייב להכיל לפחות 3 תווים",
+        "emailRequired": "אימייל הוא חובה",
+        "emailInvalid": "פורמט אימייל לא תקין",
+        "passwordRequired": "סיסמה היא חובה",
+        "passwordMinLength": "הסיסמה חייבת להכיל לפחות 8 תווים",
+        "passwordRequiredWhenResetting": "סיסמה נדרשת בעת איפוס"
+      },
+      "actions": {
+        "saveChanges": "שמור שינויים",
+        "createUser": "צור משתמש"
+      },
+      "toast": {
+        "created": "המשתמש נוצר",
+        "createError": "שגיאה ביצירת משתמש",
+        "updated": "המשתמש עודכן",
+        "updateError": "שגיאה בעדכון משתמש",
+        "passwordReset": "סיסמת המשתמש אופסה",
+        "resetError": "שגיאה באיפוס סיסמה"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "הגישה נדחתה",
+      "message": "אין לך הרשאה לנהל טווחי הרשאות. פנה למנהל המערכת."
+    },
+    "list": {
+      "title": "טווחי הרשאות",
+      "countLabel": "{{count}} הענקות",
+      "createGrant": "הענק טווח",
+      "selectWalletPrompt": "בחר ארנק למעלה כדי להציג את טווחי ההרשאות שלו.",
+      "columns": {
+        "operator": "מפעיל",
+        "scope": "טווח",
+        "target": "יעד",
+        "grantedAt": "הוענק בתאריך",
+        "actions": "פעולות"
+      },
+      "empty": {
+        "noGrants": "לא נמצאו הענקות",
+        "noGrantsHint": "לארנק זה אין טווחי הרשאות פעילים."
+      },
+      "errorLoading": "שגיאה בטעינת הענקות: {{message}}",
+      "handover": "העבר"
+    },
+    "form": {
+      "title": "צור הענקת טווח",
+      "fields": {
+        "operator": "מפעיל",
+        "operatorPlaceholder": "בחר מפעיל...",
+        "wallet": "ארנק",
+        "scopeKind": "סוג טווח",
+        "underlyingPublicId": "Public ID של נכס בסיס",
+        "instrumentPublicId": "Public ID של מכשיר",
+        "underlyingPlaceholder": "למשל BTC",
+        "instrumentPlaceholder": "למשל BTC-USD-PERP",
+        "note": "הערה (אופציונלי)",
+        "notePlaceholder": "הערה אופציונלית"
+      },
+      "scopeKinds": {
+        "underlying": "נכס בסיס",
+        "instrument": "מכשיר"
+      },
+      "validation": {
+        "operatorRequired": "מפעיל הוא חובה",
+        "walletRequired": "ארנק הוא חובה",
+        "targetRequired": "מזהה יעד הוא חובה"
+      },
+      "actions": {
+        "createGrant": "הענק טווח"
+      },
+      "toast": {
+        "created": "הענקת הטווח נוצרה",
+        "conflictError": "התנגשות: מפעיל אחר כבר מחזיק הענקה לטווח זה",
+        "createError": "שגיאה ביצירת הענקת טווח"
+      }
+    },
+    "handover": {
+      "title": "העבר הענקת טווח",
+      "fields": {
+        "currentHolder": "מחזיק נוכחי",
+        "scope": "טווח",
+        "wallet": "ארנק",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "העבר למפעיל",
+        "transferToPlaceholder": "בחר מפעיל יעד...",
+        "reason": "סיבה (אופציונלי)",
+        "reasonPlaceholder": "למשל החלפת משמרת"
+      },
+      "actions": {
+        "handover": "העבר"
+      },
+      "toast": {
+        "completed": "הענקת הטווח הועברה",
+        "conflictError": "התנגשות: מפעיל היעד כבר מחזיק הענקה מתנגשת",
+        "handoverError": "שגיאה בהעברת הענקת טווח"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "הגישה נדחתה",
+      "message": "אין לך הרשאה לנהל אישורי כניסה של ארנק. פנה למנהל המערכת."
+    },
+    "list": {
+      "title": "אישורי כניסה של ארנק",
+      "countLabel": "{{count}} אישורי כניסה",
+      "addCredential": "הוסף אישור כניסה",
+      "selectWalletPrompt": "בחר ארנק למעלה כדי להציג את אישורי הכניסה שלו.",
+      "columns": {
+        "exchange": "בורסה",
+        "type": "סוג",
+        "label": "תווית",
+        "createdAt": "נוצר בתאריך",
+        "actions": "פעולות"
+      },
+      "empty": {
+        "noCredentials": "לא נמצאו אישורי כניסה",
+        "noCredentialsHint": "לארנק זה אין אישורי כניסה פעילים."
+      },
+      "errorLoading": "שגיאה בטעינת אישורי כניסה: {{message}}",
+      "rotate": "החלף"
+    },
+    "form": {
+      "title": "הוסף אישור כניסה",
+      "fields": {
+        "wallet": "ארנק",
+        "exchange": "בורסה",
+        "exchangePlaceholder": "למשל kraken",
+        "credentialType": "סוג אישור כניסה",
+        "label": "תווית (אופציונלי)",
+        "labelPlaceholder": "למשל מפתח מסחר ראשי",
+        "pemPlaceholder": "הדבק כאן מפתח פרטי בפורמט PEM"
+      },
+      "fieldLabels": {
+        "api_key": "מפתח API",
+        "api_secret": "סוד API",
+        "private_key_pem": "מפתח פרטי (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "יתרת פתיחה"
+      },
+      "credentialTypes": {
+        "api_key_secret": "מפתח API + סוד",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "ארנק הוא חובה",
+        "exchangeRequired": "בורסה היא חובה",
+        "fieldRequired": "{{field}} הוא חובה"
+      },
+      "actions": {
+        "addCredential": "הוסף אישור כניסה"
+      },
+      "toast": {
+        "created": "אישור הכניסה נוצר",
+        "conflictError": "התנגשות: לארנק זה כבר יש אישור כניסה פעיל לבורסה זו",
+        "createError": "שגיאה ביצירת אישור כניסה"
+      }
+    },
+    "rotate": {
+      "title": "החלפת אישורי כניסה",
+      "fields": {
+        "exchange": "בורסה",
+        "type": "סוג",
+        "label": "תווית",
+        "newLabel": "תווית חדשה (אופציונלי)",
+        "newLabelPlaceholder": "למשל מפתח שהוחלף 2026-04",
+        "pemPlaceholder": "הדבק כאן מפתח פרטי בפורמט PEM"
+      },
+      "actions": {
+        "rotate": "החלף"
+      },
+      "toast": {
+        "rotated": "אישור הכניסה הוחלף",
+        "rotateError": "שגיאה בהחלפת אישור כניסה"
+      }
+    }
+  }
+}

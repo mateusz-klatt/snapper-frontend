@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "مدیریت استراتژی",
+    "register": "ثبت استراتژی",
+    "saving": "در حال ذخیره…",
+    "descriptionCanManage": "فرایندهای استراتژی جدید را مستقیم از UI ثبت کنید. شروع خودکار، فرایند را در راه‌اندازی‌های دوباره فعال نگه می‌دارد.",
+    "descriptionViewer": "استراتژی‌های پیکربندی‌شده و وضعیتشان را مشاهده کنید. برای مدیریت استراتژی‌ها با اپراتور یا مدیر تماس بگیرید.",
+    "searchPlaceholder": "جستجوی استراتژی‌ها...",
+    "filter": {
+      "all": "همه وضعیت‌ها",
+      "running": "در حال اجرا",
+      "stopped": "متوقف"
+    },
+    "configuredHeading": "استراتژی‌های پیکربندی‌شده",
+    "noMatches": "هیچ استراتژی با فیلترهای شما مطابقت ندارد",
+    "clearFilters": "پاک کردن فیلترها",
+    "emptyTitle": "استراتژی پیکربندی نشده است",
+    "emptyCanManage": "برای شروع معاملات الگوریتمی یک استراتژی ثبت کنید",
+    "emptyViewer": "هنوز هیچ استراتژی پیکربندی نشده است"
+  },
+  "confirm": {
+    "startTitle": "شروع {{name}}",
+    "startMessage": "این کار استراتژی {{name}} را شروع می‌کند. ممکن است عملیات معاملاتی زنده آغاز شود.",
+    "stopTitle": "توقف {{name}}",
+    "stopMessage": "این کار استراتژی {{name}} را متوقف می‌کند. موقعیت‌های فعال به‌طور خودکار بسته نمی‌شوند."
+  },
+  "toast": {
+    "saved": "استراتژی {{name}} ذخیره شد",
+    "started": "استراتژی {{name}} شروع شد",
+    "registerFailed": "ثبت استراتژی ناموفق بود: {{message}}",
+    "startSuccess": "استراتژی با موفقیت شروع شد",
+    "stopSuccess": "استراتژی با موفقیت متوقف شد",
+    "alreadyRunning": "استراتژی از قبل در حال اجراست",
+    "notRunning": "استراتژی در حال اجرا نیست",
+    "configNotFound": "پیکربندی استراتژی یافت نشد. لطفاً تنظیمات پایگاه داده را بررسی کنید.",
+    "networkError": "خطای شبکه. لطفاً اتصال را بررسی کنید و دوباره تلاش کنید.",
+    "startFailed": "شروع استراتژی ناموفق بود: {{message}}",
+    "stopFailed": "توقف استراتژی ناموفق بود: {{message}}",
+    "unknownError": "خطای نامشخص"
+  },
+  "card": {
+    "ariaLabel": "استراتژی: {{name}}",
+    "modeLabel": "حالت: {{mode}}",
+    "autostartEnabled": "شروع خودکار: فعال",
+    "autostartDisabled": "شروع خودکار: غیرفعال",
+    "statusAriaLabel": "وضعیت: {{status}}",
+    "dataLagAriaLabel": "تأخیر داده: {{seconds}} ثانیه",
+    "lagBadge": "تأخیر: {{seconds}}ث",
+    "feedLag": "تأخیر Feed: {{ms}}ms",
+    "heartbeatAge": "سن Heartbeat: {{seconds}}ث",
+    "metrics": {
+      "status": "وضعیت",
+      "dataLag": "تأخیر داده",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "نمایش جزئیات",
+    "hideDetails": "پنهان کردن جزئیات",
+    "inputs": "ورودی‌ها ({{count}})",
+    "outputs": "خروجی‌ها ({{count}})",
+    "feedPublishers": "ناشران Feed ({{count}})",
+    "lastUpdate": "آخرین به‌روزرسانی: {{time}}",
+    "waiting": "در انتظار Heartbeat...",
+    "startAriaLabel": "شروع استراتژی {{name}}",
+    "stopAriaLabel": "توقف استراتژی {{name}}",
+    "start": "شروع",
+    "stop": "توقف",
+    "starting": "در حال شروع...",
+    "stopping": "در حال توقف...",
+    "status": {
+      "starting": "در حال شروع",
+      "stopping": "در حال توقف",
+      "running": "در حال اجرا",
+      "stopped": "متوقف"
+    },
+    "health": {
+      "healthy": "سالم — داده تازه دریافت می‌شود",
+      "warning": "هشدار — داده کهنه است",
+      "error": "خطا — داده اخیر وجود ندارد",
+      "unknown": "نامشخص — داده Heartbeat وجود ندارد"
+    },
+    "healthShort": {
+      "healthy": "سالم",
+      "warning": "هشدار",
+      "error": "خطا"
+    }
+  },
+  "launchModal": {
+    "title": "ثبت فرایند استراتژی",
+    "emptyTemplates": "هیچ قالب استراتژی در backend ثبت نشده است. حداقل یک فرایند استراتژی تعریف کنید.",
+    "close": "بستن",
+    "templateLabel": "قالب استراتژی",
+    "templatePlaceholder": "قالب را انتخاب کنید...",
+    "templateFallbackDescription": "استراتژی ثبت‌شده در backend",
+    "loadingDefaults": "در حال بارگذاری پیش‌فرض‌های قالب…",
+    "loadDefaultsError": "بارگذاری پیش‌فرض‌های قالب ممکن نیست. لطفاً لاگ‌های backend را بررسی کنید.",
+    "processNameLabel": "نام فرایند",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "نویسه‌های مجاز: حروف کوچک، اعداد، زیرخط",
+    "instanceNameLabel": "نام نمونه استراتژی",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "در پیکربندی استراتژی و موضوعات خروجی استفاده می‌شود",
+    "executionModeLabel": "حالت اجرا",
+    "executionModeThread": "Thread جاسازی‌شده",
+    "executionModeProcess": "فرایند ایزوله",
+    "executionModeHelp": "Threadها حافظه را به اشتراک می‌گذارند، فرایندها ایزولاسیون قوی‌تری فراهم می‌کنند.",
+    "flagsLabel": "پرچم‌ها",
+    "autostartLabel": "شروع خودکار هنگام بوت سرور",
+    "startImmediatelyLabel": "شروع فوری پس از ثبت",
+    "noteLabel": "یادداشت (اختیاری)",
+    "notePlaceholder": "هدف یا پارامترهای این نمونه استراتژی را توضیح دهید.",
+    "noteHelp": "کنار پیکربندی ذخیره می‌شود تا این فرایند را بهتر شناسایی کند.",
+    "cancel": "لغو",
+    "submit": "ثبت استراتژی",
+    "submitting": "در حال ثبت…"
+  }
+}

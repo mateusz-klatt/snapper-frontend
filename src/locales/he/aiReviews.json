@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "בקשה",
+    "decision": "החלטה",
+    "capsViolation": "חריגה ממגבלות",
+    "selectedDelegate": "נציג נבחר",
+    "instrument": "מכשיר",
+    "deadline": "תאריך יעד {{time}}",
+    "decidedBy": "על ידי",
+    "newStatus": "סטטוס",
+    "mode": "מצב",
+    "capAttempted": "נוסה",
+    "capLimit": "מול מגבלה",
+    "capOn": "על מכשיר",
+    "reviewLabel": "סקירה {{reviewId}}",
+    "unhandledFrame": "מסגרת פעילות סקירת AI לא מטופלת: {{frame}}"
+  },
+  "page": {
+    "title": "תיבת סקירות AI",
+    "subtitle": "סקירות CONSULT ממתינות שמנותבות לנציג זה יחד עם זרם האירועים החי."
+  },
+  "roleNotice": {
+    "title": "שמור לנציגי AI",
+    "message": "תיבה זו מציגה סקירות CONSULT שמנותבות לישות נציג AI. היכנס עם חשבון נציג AI כדי לראות סקירות ממתינות ואת זרם הפעילות החי. התפקיד הנוכחי שלך הוא",
+    "unknownRole": "לא ידוע"
+  },
+  "pending": {
+    "title": "סקירות ממתינות",
+    "loading": "טוען סקירות ממתינות…",
+    "loadError": "טעינת סקירות ממתינות נכשלה: {{message}}",
+    "emptyTitle": "אין סקירות ממתינות",
+    "emptyMessage": "בקשות CONSULT חדשות שמנותבות לנציג זה יופיעו כאן.",
+    "columns": {
+      "instrument": "מכשיר",
+      "thesis": "תזה",
+      "status": "סטטוס",
+      "deadline": "תאריך יעד",
+      "decision": "החלטה"
+    },
+    "rationalePlaceholder": "נימוק (אופציונלי)",
+    "rationaleAriaLabel": "נימוק לסקירה {{reviewId}}",
+    "approve": "אשר",
+    "reject": "דחה",
+    "submitError": "השליחה נכשלה: {{message}}"
+  },
+  "activity": {
+    "title": "פעילות אחרונה",
+    "emptyTitle": "אין עדיין פעילות",
+    "emptyMessage": "בקשות סקירת AI, החלטות ומסגרות חריגה ממגבלות יוזרמו כאן.",
+    "summaryEmpty": "לא התקבלו מסגרות",
+    "summaryCount": "מציג {{shown}} מתוך {{total}} שנאגרו"
+  }
+}

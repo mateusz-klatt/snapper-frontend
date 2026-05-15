@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "פוזיציות"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: ממתין",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "כמות",
+    "averageEntry": "כניסה ממוצעת",
+    "unrealizedPnl": "P&L לא ממומש",
+    "realizedPnl": "P&L ממומש",
+    "updated": "עודכן {{timestamp}}"
+  },
+  "empty": {
+    "title": "אין פוזיציות פתוחות",
+    "message": "פוזיציות Long, Short ו-Flat יופיעו כאן לאחר ביצוע עסקאות."
+  },
+  "bracketModal": {
+    "title": "צרף SL/TP — {{instrument}}",
+    "confirmTitle": "אשר Bracket",
+    "position": "פוזיציה",
+    "entryPrice": "מחיר כניסה",
+    "stopLossLabel": "מחיר Stop-Loss",
+    "takeProfitLabel": "מחיר Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "מתחת ל-${{price}}",
+      "slShort": "מעל ${{price}}",
+      "tpLong": "מעל ${{price}}",
+      "tpShort": "מתחת ל-${{price}}"
+    },
+    "buttons": {
+      "cancel": "בטל",
+      "review": "בדוק",
+      "back": "חזרה",
+      "confirm": "אשר",
+      "creating": "יוצר…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "צרף Trailing Stop — {{instrument}}",
+    "confirmTitle": "אשר Trailing Stop",
+    "position": "פוזיציה",
+    "entryPrice": "מחיר כניסה",
+    "trailingDistanceLabel": "מרחק Trailing (%)",
+    "minLockLabel": "רווח נעילה מינימלי (%) — אופציונלי",
+    "trailingDistance": "מרחק Trailing",
+    "minLockProfit": "רווח נעילה מינימלי",
+    "placeholders": {
+      "trailingPct": "למשל 5.0",
+      "minLockPct": "0 = התחל מיד"
+    },
+    "minLockWarning": "Trailing Stop לא יופעל עד שהמחיר ינוע {{minLockPct}}% לטובתך.",
+    "buttons": {
+      "cancel": "בטל",
+      "review": "בדוק",
+      "back": "חזרה",
+      "confirm": "אשר",
+      "creating": "יוצר..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "נדרש לפחות מחיר SL או TP אחד",
+    "invalidSlPrice": "מחיר Stop-Loss לא תקין",
+    "slPricePositive": "מחיר Stop-Loss חייב להיות חיובי",
+    "invalidTpPrice": "מחיר Take-Profit לא תקין",
+    "tpPricePositive": "מחיר Take-Profit חייב להיות חיובי",
+    "slLongBelowEntry": "מחיר SL חייב להיות מתחת למחיר הכניסה ({{price}})",
+    "tpLongAboveEntry": "מחיר TP חייב להיות מעל מחיר הכניסה ({{price}})",
+    "slShortAboveEntry": "מחיר SL חייב להיות מעל מחיר הכניסה ({{price}})",
+    "tpShortBelowEntry": "מחיר TP חייב להיות מתחת למחיר הכניסה ({{price}})",
+    "trailingRequired": "נדרש אחוז Trailing",
+    "trailingInvalid": "אחוז Trailing לא תקין",
+    "trailingRange": "אחוז Trailing חייב להיות בין 0 ל-100",
+    "minLockInvalid": "אחוז נעילה מינימלי לא תקין",
+    "minLockRange": "אחוז נעילה מינימלי חייב להיות בין 0 ל-100"
+  }
+}

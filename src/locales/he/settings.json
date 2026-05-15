@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "הגדרות",
+    "subtitle": "הגדר הגדרות ופרמטרים של היישום",
+    "addButton": "הוסף הגדרה",
+    "searchPlaceholder": "חפש הגדרות...",
+    "noResults": "לא נמצאו הגדרות שתואמות לקריטריונים שלך.",
+    "allCategories": "כל הקטגוריות",
+    "categoryFilterAriaLabel": "סנן הגדרות לפי קטגוריה"
+  },
+  "errors": {
+    "loadFailed": "טעינת ההגדרות נכשלה",
+    "updateFailed": "עדכון ההגדרה נכשל",
+    "deleteFailed": "מחיקת ההגדרה נכשלה",
+    "createFailed": "יצירת ההגדרה נכשלה",
+    "alreadyExists": "הגדרה עם המפתח \"{{key}}\" כבר קיימת"
+  },
+  "item": {
+    "edit": "ערוך",
+    "delete": "מחק",
+    "save": "שמור",
+    "saving": "שומר...",
+    "cancel": "בטל",
+    "yesDelete": "כן, מחק",
+    "deleting": "מוחק...",
+    "deleteConfirm": "למחוק הגדרה זו?",
+    "valuePlaceholder": "הזן ערך הגדרה...",
+    "showMore": "הצג עוד",
+    "showLess": "הצג פחות",
+    "toggleAriaLabel": "החלף {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 רגיש"
+    },
+    "helpText": {
+      "allowShortSelling": "אפשר למנוע לפתוח פוזיציות Short. אותות SELL יפיקו desired_units שלילי; בעת השבתה הערך נחתך ל-0.",
+      "allowManualOrders": "הפעל את כפתור פקודה חדשה בלשונית פקודות. בעת השבתה, POST /api/orders מחזיר 403."
+    }
+  },
+  "addModal": {
+    "title": "הוסף הגדרה חדשה",
+    "keyLabel": "מפתח",
+    "valueLabel": "ערך",
+    "categoryLabel": "קטגוריה",
+    "descriptionLabel": "תיאור",
+    "keyPlaceholder": "למשל, walutomat.api_key",
+    "keyHint": "השתמש בסימון נקודות להגדרות מקוננות (למשל category.subcategory.name)",
+    "valuePlaceholder": "ערך הגדרה",
+    "categorySelectPlaceholder": "בחר קיים או צור חדש",
+    "newCategoryPlaceholder": "או הזן שם קטגוריה חדש",
+    "descriptionPlaceholder": "תיאור אופציונלי",
+    "cancel": "בטל",
+    "create": "צור הגדרה",
+    "creating": "יוצר...",
+    "validation": {
+      "keyRequired": "מפתח הוא חובה",
+      "valueRequired": "ערך הוא חובה",
+      "categoryRequired": "קטגוריה היא חובה"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "עורך טופס",
+    "rawEditor": "עורך JSON גולמי",
+    "rawJson": "JSON גולמי",
+    "switchToForm": "עבור לטופס",
+    "importToForm": "ייבא לטופס",
+    "parseError": "שגיאת ניתוח: {{message}}",
+    "arraySummary": "מערך ({{length}} פריטים)",
+    "addItem": "הוסף פריט",
+    "remove": "הסר",
+    "typeHint": {
+      "array": "(מערך)",
+      "object": "(אובייקט)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "درخواست",
+    "decision": "تصمیم",
+    "capsViolation": "نقض سقف‌ها",
+    "selectedDelegate": "نماینده انتخاب‌شده",
+    "instrument": "ابزار",
+    "deadline": "مهلت {{time}}",
+    "decidedBy": "توسط",
+    "newStatus": "وضعیت",
+    "mode": "حالت",
+    "capAttempted": "تلاش‌شده",
+    "capLimit": "در برابر سقف",
+    "capOn": "روی ابزار",
+    "reviewLabel": "بازبینی {{reviewId}}",
+    "unhandledFrame": "فریم فعالیت بازبینی AI پردازش‌نشده: {{frame}}"
+  },
+  "page": {
+    "title": "صندوق بازبینی AI",
+    "subtitle": "بازبینی‌های CONSULT در انتظار که به این نماینده هدایت شده‌اند به‌علاوه جریان زنده رویدادها."
+  },
+  "roleNotice": {
+    "title": "مختص نمایندگان AI",
+    "message": "این صندوق بازبینی‌های CONSULT هدایت‌شده به یک اصل نماینده AI را نمایش می‌دهد. برای دیدن بازبینی‌های در انتظار و جریان زنده فعالیت، با حساب نماینده AI وارد شوید. نقش فعلی شما",
+    "unknownRole": "نامشخص"
+  },
+  "pending": {
+    "title": "بازبینی‌های در انتظار",
+    "loading": "در حال بارگذاری بازبینی‌های در انتظار…",
+    "loadError": "بارگذاری بازبینی‌های در انتظار ناموفق بود: {{message}}",
+    "emptyTitle": "بازبینی در انتظار وجود ندارد",
+    "emptyMessage": "درخواست‌های CONSULT جدید که به این نماینده هدایت شوند اینجا ظاهر می‌شوند.",
+    "columns": {
+      "instrument": "ابزار",
+      "thesis": "تز",
+      "status": "وضعیت",
+      "deadline": "مهلت",
+      "decision": "تصمیم"
+    },
+    "rationalePlaceholder": "دلیل (اختیاری)",
+    "rationaleAriaLabel": "دلیل برای بازبینی {{reviewId}}",
+    "approve": "تأیید",
+    "reject": "رد",
+    "submitError": "ارسال ناموفق بود: {{message}}"
+  },
+  "activity": {
+    "title": "فعالیت اخیر",
+    "emptyTitle": "هنوز فعالیتی وجود ندارد",
+    "emptyMessage": "درخواست‌های بازبینی AI، تصمیم‌ها و فریم‌های نقض سقف‌ها اینجا جریان می‌یابند.",
+    "summaryEmpty": "فریمی دریافت نشده است",
+    "summaryCount": "نمایش {{shown}} از {{total}} بافرشده"
+  }
+}

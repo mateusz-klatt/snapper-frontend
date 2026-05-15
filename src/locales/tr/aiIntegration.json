@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI Entegrasyonu",
+    "subtitle": "MCP üzerinden Snapper'a bağlanan AI delegelerini yönetin.",
+    "loading": "AI entegrasyonu yükleniyor…",
+    "createDelegate": "Delege oluştur"
+  },
+  "disabled": {
+    "title": "AI Entegrasyonu devre dışı",
+    "message": "AI delegelerini yönetmek için Ayarlar → Özellik Bayrakları içinde özellik bayrağını etkinleştirin."
+  },
+  "list": {
+    "loadingDelegates": "Delegeler yükleniyor…",
+    "emptyTitle": "Henüz AI delegesi yok",
+    "emptyMessage": "Bir tane oluşturmak ve MCP yapılandırma parçasını üretmek için “Delege oluştur”a tıklayın.",
+    "columns": {
+      "label": "Etiket",
+      "username": "Kullanıcı adı",
+      "created": "Oluşturuldu",
+      "maxOpenOrders": "Maks. açık emir",
+      "maxDailyUsd": "Maks. günlük USD",
+      "status": "Durum",
+      "actions": "Eylemler"
+    },
+    "status": {
+      "active": "Aktif",
+      "revoked": "İptal edildi"
+    },
+    "default": "varsayılan",
+    "details": "Ayrıntılar",
+    "viewAriaLabel": "{{label}} delegesini görüntüle"
+  },
+  "wizard": {
+    "title": "AI delegesi oluştur",
+    "step1": "1. Kimlik",
+    "step2": "2. Kapsam ve limitler",
+    "step3": "3. İnceleme",
+    "stepDone": "✓ Tamam",
+    "identity": {
+      "labelField": "Etiket",
+      "labelPlaceholder": "örn. Alpha prop desk",
+      "labelHelpPrefix": "Delegenin kullanıcı adı sunucu tarafında şu şekilde türetilecek: ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Kapsam",
+      "operatorLabel": "Operator public_id (isteğe bağlı)",
+      "operatorPlaceholder": "Çağıranın birincil operatorünü devralmak için boş bırakın"
+    },
+    "caps": {
+      "heading": "Trading limitleri (tümü isteğe bağlı)",
+      "maxOpenOrders": "Maks. açık emir",
+      "maxDailyNotionalUsd": "Maks. günlük nominal USD",
+      "maxCancelsPerMinute": "Dakika başına maks. iptal",
+      "perInstrument": "Enstrüman başına maks. miktar (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "varsayılan",
+      "errorInvalidJson": "max_order_quantity_per_instrument geçerli JSON olmalı",
+      "errorJsonObject": "max_order_quantity_per_instrument bir JSON nesnesi olmalı veya boş olmalı",
+      "errorNegative": "Limitler negatif olmayan tam sayılar olmalı veya boş bırakılmalı."
+    },
+    "review": {
+      "heading": "Gözden geçir ve oluştur",
+      "rowLabel": "Etiket",
+      "rowOperator": "Operator public_id",
+      "rowMaxOpenOrders": "Maks. açık emir",
+      "rowMaxDailyNotional": "Maks. günlük nominal USD",
+      "rowMaxCancelsPerMinute": "Dakika başına maks. iptal",
+      "rowPerInstrument": "Enstrüman başına maks. miktar",
+      "operatorDefault": "(çağıranın birincil operatorü)",
+      "defaultValue": "(varsayılan)"
+    },
+    "buttons": {
+      "cancel": "İptal",
+      "next": "İleri",
+      "back": "Geri",
+      "createDelegate": "Delege oluştur",
+      "iSavedClose": "Bunları kaydettim — kapat"
+    },
+    "toast": {
+      "delegateCreated": "Delege oluşturuldu",
+      "failedToCreate": "Delege oluşturulamadı"
+    }
+  },
+  "detail": {
+    "loading": "Delege yükleniyor…",
+    "notFound": "Delege bulunamadı veya kullanılamıyor.",
+    "back": "Geri",
+    "backToList": "Listeye dön",
+    "updateCaps": "Limitleri güncelle",
+    "revoke": "İptal et",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "tradingCaps": "Trading limitleri",
+    "status": "Durum",
+    "active": "Aktif",
+    "revoked": "İptal edildi",
+    "createdAt": "Oluşturulma zamanı",
+    "createdBy": "Oluşturan (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Maks. açık emir",
+    "maxDailyNotionalUsd": "Maks. günlük nominal USD",
+    "maxCancelsPerMinute": "Dakika başına maks. iptal",
+    "perInstrument": "Enstrüman başına maks. miktar",
+    "defaultValue": "(varsayılan)",
+    "editorPlaceholder": "(varsayılan)",
+    "toast": {
+      "capsUpdated": "Limitler güncellendi",
+      "failedToUpdateCaps": "Limitler güncellenemedi",
+      "negativeIntegersError": "Limitler negatif olmayan tam sayılar olmalı veya boş bırakılmalı."
+    }
+  },
+  "revokeDialog": {
+    "title": "\"{{label}}\" delegesi iptal edilsin mi?",
+    "message": "Bu, delege tokenlarını iptal eder ve MCP aboneliklerini durdurur. Bu işlem geri alınamaz.",
+    "confirm": "İptal et",
+    "cancel": "İptal",
+    "toast": {
+      "delegateRevoked": "Delege iptal edildi",
+      "failedToRevoke": "Delege iptal edilemedi"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Bu kimlik bilgilerini şimdi kaydedin",
+    "warningMessage": "Tekrar gösterilmeyecekler. Snapper ham tokenları saklamaz; bu sihirbazı kapattığınızda tek kopya MCP istemci yapılandırmanızda olacaktır.",
+    "snippetHelp": "Uzun ömürlü AI delege tokenı (~10 yıl). Aynı token hem proxy MCP sunucusunu hem de izleme monitörünü doğrular. Değiştirmek için bu delegeyi devre dışı bırakın ve yeni bir tane oluşturun.",
+    "baseUrlHelpPrefix": "Base URL bu tarayıcının origin'i + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Yapılandırma parçasını panoya kopyala",
+    "copy": "Panoya kopyala",
+    "copied": "Kopyalandı"
+  }
+}

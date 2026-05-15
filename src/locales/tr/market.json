@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Piyasa verileri"
+  },
+  "controls": {
+    "exchange": "Borsa:",
+    "instrument": "Enstrüman:",
+    "timeframe": "Zaman aralığı:",
+    "selectExchange": "Borsa seç",
+    "searchInstrument": "Enstrüman ara..."
+  },
+  "timeframes": {
+    "1m": "1 Dakika",
+    "5m": "5 Dakika",
+    "15m": "15 Dakika",
+    "30m": "30 Dakika",
+    "1h": "1 Saat",
+    "4h": "4 Saat",
+    "1d": "1 Gün"
+  },
+  "stats": {
+    "currentPrice": "Güncel Fiyat",
+    "change24h": "24s Değişim",
+    "high24h": "24s En Yüksek",
+    "low24h": "24s En Düşük"
+  },
+  "chart": {
+    "title": "Fiyat Grafiği",
+    "errorPrefix": "Grafik verileri yüklenirken hata:",
+    "unknownError": "Bilinmeyen hata",
+    "noDataTitle": "{{instrument}} için veri yok",
+    "noDataHint": "Enstrüman mevcut olmayabilir veya {{timeframe}} verisi yok"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{instrument}} için {{exchange}} üzerinde ilişkili enstrüman yapılandırılmamış."
+  },
+  "cacheBanner": {
+    "message": "Önbellek ısınıyor: {{sampleCount}} / {{expected}} mum mevcut {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(1m'den türetildi)",
+      "db": "(DB'den)"
+    }
+  }
+}

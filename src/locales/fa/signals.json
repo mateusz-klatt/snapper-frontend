@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "سیگنال‌ها"
+  },
+  "filters": {
+    "allStrategies": "همه استراتژی‌ها"
+  },
+  "actions": {
+    "export": "صدور"
+  },
+  "stats": {
+    "total": "کل",
+    "buy": "خرید",
+    "sell": "فروش",
+    "avgStrength": "میانگین قدرت"
+  },
+  "card": {
+    "strength": "قدرت",
+    "price": "قیمت",
+    "exchange": "صرافی",
+    "reason": "دلیل:",
+    "noPrice": "ناموجود"
+  },
+  "strength": {
+    "strong": "قوی",
+    "medium": "متوسط",
+    "weak": "ضعیف",
+    "veryWeak": "بسیار ضعیف"
+  },
+  "time": {
+    "justNow": "همین حالا",
+    "minutesAgo": "{{count}}د قبل",
+    "hoursAgo": "{{count}}س قبل"
+  },
+  "empty": {
+    "title": "سیگنالی یافت نشد",
+    "message": "هیچ سیگنال معاملاتی با فیلترهای فعلی شما مطابقت ندارد."
+  }
+}

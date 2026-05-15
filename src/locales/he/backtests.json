@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← חזרה",
+    "backToList": "← חזרה ל-Backtests"
+  },
+  "status": {
+    "pending": "ממתין",
+    "running": "פועל",
+    "completed": "הושלם",
+    "failed": "נכשל",
+    "cancelled": "בוטל"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "בטל",
+      "rerun": "הרץ שוב"
+    },
+    "fields": {
+      "timeframe": "מסגרת זמן",
+      "period": "תקופה",
+      "initialCash": "מזומן התחלתי",
+      "id": "ID"
+    },
+    "errorPrefix": "שגיאה: {{message}}",
+    "filter": {
+      "ariaLabel": "סנן Backtests לפי סטטוס",
+      "options": {
+        "all": "כל הסטטוסים",
+        "pending": "ממתין",
+        "running": "פועל",
+        "completed": "הושלם",
+        "failed": "נכשל",
+        "cancelled": "בוטל"
+      }
+    },
+    "empty": {
+      "title": "אין Backtests",
+      "message": "הרץ Backtest דרך CLI או API כדי לראות כאן תוצאות."
+    }
+  },
+  "detail": {
+    "title": "הרצת Backtest",
+    "fields": {
+      "strategy": "אסטרטגיה",
+      "instrument": "מכשיר",
+      "status": "סטטוס",
+      "period": "תקופה",
+      "crossAsset": "ייחוס חוצה נכסים",
+      "configHash": "גיבוב תצורה"
+    },
+    "crossAssetFlow": "Feed {{source}} → ביצועי {{target}}",
+    "errors": {
+      "invalidRunId": "מזהה הרצה לא תקין — חייב להיות UUID7 (התקבל \"{{id}}\").",
+      "loadFailed": "טעינת ההרצה נכשלה: {{message}}",
+      "notFound": "לא נמצא"
+    }
+  },
+  "compare": {
+    "title": "השווה",
+    "headingFull": "השוואת Backtest",
+    "loading": "טוען השוואה…",
+    "vs": "מול",
+    "runLabel": "הרצה {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "מדדים",
+      "equityOverlay": "שכבת equity",
+      "trades": "עסקאות",
+      "signals": "אותות"
+    },
+    "pairingMode": {
+      "auto": "אוטומטי",
+      "manual": "ידני"
+    },
+    "errors": {
+      "notFound": "ההשוואה לא נמצאה בארנק הנוכחי.",
+      "loadFailed": "טעינת ההשוואה נכשלה: {{message}}",
+      "unknown": "שגיאה לא ידועה",
+      "emptyResponse": "תגובת השוואה ריקה."
+    },
+    "launcher": {
+      "title": "השווה",
+      "submit": "השווה",
+      "autoPair": "השווה עם העדכנית ביותר",
+      "terminalGate": "השוואה זמינה לאחר שהרצה זו מגיעה לסטטוס סופי",
+      "noSiblings": "אין הרצות אחרות עם תצורה זו",
+      "limitNotice": "מציג {{count}} אחרונות — השתמש בצימוד ידני להרצות ישנות יותר",
+      "pickPlaceholder": "— בחר הרצה להשוואה —",
+      "showAllLabel": "הצג את כל ההרצות (לא רק אותה תצורה)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "כל ההרצות",
+        "sameConfig": "אותה תצורה"
+      },
+      "errors": {
+        "pickRequired": "בחר הרצה מהרשימה"
+      }
+    },
+    "diffColumns": {
+      "common": "משותף",
+      "onlyA": "רק ב-A",
+      "onlyB": "רק ב-B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "אין מדדים בני השוואה — בשתי ההרצות לא נרשמו ערכים.",
+      "columns": {
+        "name": "מדד",
+        "runA": "הרצה A",
+        "runB": "הרצה B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "הרצה A",
+        "runB": "הרצה B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "ממתין להתקדמות…",
+    "candles": "{{done}} / {{total}} נרות",
+    "candlesNoTotal": "{{done}} נרות",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} אותות / {{trades}} עסקאות",
+    "milestoneLine": "אבן דרך {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

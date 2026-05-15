@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "داده‌های بازار"
+  },
+  "controls": {
+    "exchange": "صرافی:",
+    "instrument": "ابزار:",
+    "timeframe": "بازه زمانی:",
+    "selectExchange": "انتخاب صرافی",
+    "searchInstrument": "جستجوی ابزار..."
+  },
+  "timeframes": {
+    "1m": "1 دقیقه",
+    "5m": "5 دقیقه",
+    "15m": "15 دقیقه",
+    "30m": "30 دقیقه",
+    "1h": "1 ساعت",
+    "4h": "4 ساعت",
+    "1d": "1 روز"
+  },
+  "stats": {
+    "currentPrice": "قیمت فعلی",
+    "change24h": "تغییر 24ساعته",
+    "high24h": "بیشترین 24ساعته",
+    "low24h": "کمترین 24ساعته"
+  },
+  "chart": {
+    "title": "نمودار قیمت",
+    "errorPrefix": "خطا در بارگذاری داده‌های نمودار:",
+    "unknownError": "خطای نامشخص",
+    "noDataTitle": "داده‌ای برای {{instrument}} در دسترس نیست",
+    "noDataHint": "ممکن است ابزار وجود نداشته باشد یا داده {{timeframe}} نداشته باشد"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "هیچ ابزار مرتبطی برای {{instrument}} در {{exchange}} پیکربندی نشده است."
+  },
+  "cacheBanner": {
+    "message": "گرم‌سازی کش: {{sampleCount}} / {{expected}} کندل در دسترس است {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(مشتق‌شده از 1m)",
+      "db": "(از DB)"
+    }
+  }
+}

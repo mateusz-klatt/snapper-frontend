@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "سفارش‌ها و اجراها",
+    "newOrder": "سفارش جدید",
+    "exportCsv": "صدور CSV"
+  },
+  "tabs": {
+    "orders": "سفارش‌ها ({{total}})",
+    "executions": "اجراها ({{total}})"
+  },
+  "filters": {
+    "byStatus": "فیلتر بر اساس وضعیت:",
+    "options": {
+      "all": "همه سفارش‌ها",
+      "new": "جدید",
+      "open": "باز",
+      "partiallyFilled": "بخشی اجرا شده",
+      "partially_filled": "بخشی اجرا شده",
+      "filled": "اجرا شده",
+      "cancelled": "لغو شده",
+      "rejected": "رد شده"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "ناموجود",
+    "priceMarket": "Market",
+    "quantity": "مقدار",
+    "price": "قیمت",
+    "created": "ایجاد شد",
+    "createdUnknown": "ناموجود",
+    "orderId": "شناسه سفارش",
+    "leverage": "اهرم",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "فقط-کاهش",
+    "cancel": "لغو",
+    "cancelling": "در حال لغو…",
+    "cancelAriaLabel": "لغو سفارش {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "سفارش #{{orderId}}",
+    "filled": "اجرا شد",
+    "orderLabel": "سفارش {{orderId}}",
+    "size": "اندازه",
+    "price": "قیمت",
+    "total": "کل",
+    "executed": "اجرا شد",
+    "fees": "کارمزدها"
+  },
+  "empty": {
+    "ordersTitle": "سفارشی یافت نشد",
+    "ordersStartTrading": "برای دیدن سفارش‌ها اینجا، معامله را شروع کنید",
+    "ordersFilterless": "سفارشی با وضعیت {{status}} وجود ندارد",
+    "executionsTitle": "اجرایی یافت نشد",
+    "executionsMessage": "اجراهای معامله اینجا ظاهر می‌شوند"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "ابزار",
+      "side": "سمت",
+      "type": "نوع",
+      "status": "وضعیت",
+      "quantity": "مقدار",
+      "price": "قیمت",
+      "leverage": "اهرم",
+      "reduceOnly": "فقط کاهش",
+      "created": "ایجاد شد"
+    },
+    "executions": {
+      "orderId": "شناسه سفارش",
+      "instrument": "ابزار",
+      "side": "سمت",
+      "size": "اندازه",
+      "price": "قیمت",
+      "total": "کل",
+      "fee": "کارمزد",
+      "feeAsset": "دارایی کارمزد",
+      "executed": "اجرا شد"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "سفارش دستی جدید",
+    "titleConfirm": "تأیید سفارش",
+    "fields": {
+      "exchange": "صرافی",
+      "instrument": "ابزار",
+      "side": "سمت",
+      "orderType": "نوع سفارش",
+      "quantity": "مقدار",
+      "price": "قیمت",
+      "stopPrice": "قیمت Stop",
+      "mode": "حالت",
+      "wallet": "کیف پول",
+      "type": "نوع"
+    },
+    "sideOptions": {
+      "buy": "خرید",
+      "sell": "فروش"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — فقط داده‌های بازار",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "لغو",
+      "reviewOrder": "بازبینی سفارش",
+      "back": "بازگشت",
+      "confirmOrder": "تأیید سفارش",
+      "submitting": "در حال ارسال..."
+    },
+    "errors": {
+      "missingRequired": "همه فیلدهای الزامی باید پر شوند",
+      "quantityPositive": "مقدار باید عددی مثبت باشد",
+      "priceRequired": "قیمت برای این نوع سفارش الزامی است",
+      "pricePositive": "قیمت باید عددی مثبت باشد",
+      "stopPriceRequired": "قیمت Stop برای این نوع سفارش الزامی است",
+      "stopPricePositive": "قیمت Stop باید عددی مثبت باشد",
+      "createFailed": "ایجاد سفارش ناموفق بود"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "این ابزار فقط برای مشاهده است — سفارش‌ها را روی ابزاری ثبت کنید که قابلیت اجرا دارد.",
+      "unknownInstrument": "این ابزار شناخته نشد. فهرست را دوباره بارگذاری کنید و دوباره تلاش کنید.",
+      "capsViolation": "این سفارش از محدودیت‌های ایمنی حساب شما عبور می‌کند. تنظیمات ریسک را بازبینی کنید و دوباره تلاش کنید."
+    }
+  }
+}

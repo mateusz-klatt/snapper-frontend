@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "تنظیمات",
+    "subtitle": "پیکربندی تنظیمات و پارامترهای برنامه",
+    "addButton": "افزودن تنظیم",
+    "searchPlaceholder": "جستجو در تنظیمات...",
+    "noResults": "هیچ تنظیمی مطابق معیارهای شما یافت نشد.",
+    "allCategories": "همه دسته‌ها",
+    "categoryFilterAriaLabel": "فیلتر تنظیمات بر اساس دسته"
+  },
+  "errors": {
+    "loadFailed": "بارگذاری تنظیمات ناموفق بود",
+    "updateFailed": "به‌روزرسانی تنظیم ناموفق بود",
+    "deleteFailed": "حذف تنظیم ناموفق بود",
+    "createFailed": "ایجاد تنظیم ناموفق بود",
+    "alreadyExists": "تنظیم با کلید \"{{key}}\" از قبل وجود دارد"
+  },
+  "item": {
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "save": "ذخیره",
+    "saving": "در حال ذخیره...",
+    "cancel": "لغو",
+    "yesDelete": "بله، حذف کن",
+    "deleting": "در حال حذف...",
+    "deleteConfirm": "این تنظیم حذف شود؟",
+    "valuePlaceholder": "مقدار تنظیم را وارد کنید...",
+    "showMore": "نمایش بیشتر",
+    "showLess": "نمایش کمتر",
+    "toggleAriaLabel": "تغییر {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 حساس"
+    },
+    "helpText": {
+      "allowShortSelling": "به موتور اجازه می‌دهد موقعیت‌های Short باز کند. سیگنال‌های SELL مقدار desired_units منفی تولید می‌کنند؛ در حالت غیرفعال به 0 محدود می‌شود.",
+      "allowManualOrders": "دکمه سفارش جدید را در زبانه سفارش‌ها فعال می‌کند. در حالت غیرفعال، POST /api/orders مقدار 403 برمی‌گرداند."
+    }
+  },
+  "addModal": {
+    "title": "افزودن تنظیم جدید",
+    "keyLabel": "کلید",
+    "valueLabel": "مقدار",
+    "categoryLabel": "دسته",
+    "descriptionLabel": "توضیح",
+    "keyPlaceholder": "مثلاً، walutomat.api_key",
+    "keyHint": "برای تنظیمات تو در تو از نشانه‌گذاری نقطه‌ای استفاده کنید (مثلاً category.subcategory.name)",
+    "valuePlaceholder": "مقدار تنظیم",
+    "categorySelectPlaceholder": "موجود را انتخاب کنید یا جدید بسازید",
+    "newCategoryPlaceholder": "یا نام دسته جدید را وارد کنید",
+    "descriptionPlaceholder": "توضیح اختیاری",
+    "cancel": "لغو",
+    "create": "ایجاد تنظیم",
+    "creating": "در حال ایجاد...",
+    "validation": {
+      "keyRequired": "کلید الزامی است",
+      "valueRequired": "مقدار الزامی است",
+      "categoryRequired": "دسته الزامی است"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "ویرایشگر فرم",
+    "rawEditor": "ویرایشگر JSON خام",
+    "rawJson": "JSON خام",
+    "switchToForm": "تغییر به فرم",
+    "importToForm": "درون‌ریزی به فرم",
+    "parseError": "خطای تجزیه: {{message}}",
+    "arraySummary": "آرایه ({{length}} مورد)",
+    "addItem": "افزودن مورد",
+    "remove": "حذف",
+    "typeHint": {
+      "array": "(آرایه)",
+      "object": "(شیء)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

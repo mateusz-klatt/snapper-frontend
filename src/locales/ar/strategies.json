@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "إدارة الاستراتيجيات",
+    "register": "تسجيل استراتيجية",
+    "saving": "جارٍ الحفظ…",
+    "descriptionCanManage": "سجّل عمليات استراتيجية جديدة مباشرة من الواجهة. يحافظ التشغيل التلقائي على تمكين العملية عبر عمليات إعادة التشغيل.",
+    "descriptionViewer": "اعرض الاستراتيجيات المكوّنة وحالتها. اتصل بمشغّل أو مسؤول لإدارة الاستراتيجيات.",
+    "searchPlaceholder": "ابحث في الاستراتيجيات...",
+    "filter": {
+      "all": "كل الحالات",
+      "running": "قيد التشغيل",
+      "stopped": "متوقف"
+    },
+    "configuredHeading": "الاستراتيجيات المكوّنة",
+    "noMatches": "لا توجد استراتيجيات تطابق عوامل التصفية",
+    "clearFilters": "مسح عوامل التصفية",
+    "emptyTitle": "لا توجد استراتيجيات مكوّنة",
+    "emptyCanManage": "سجّل استراتيجية لبدء التداول الخوارزمي",
+    "emptyViewer": "لم يتم تكوين أي استراتيجيات بعد"
+  },
+  "confirm": {
+    "startTitle": "بدء {{name}}",
+    "startMessage": "سيؤدي هذا إلى بدء استراتيجية {{name}}. قد تبدأ عمليات تداول مباشرة.",
+    "stopTitle": "إيقاف {{name}}",
+    "stopMessage": "سيؤدي هذا إلى إيقاف استراتيجية {{name}}. لن تُغلق المراكز النشطة تلقائياً."
+  },
+  "toast": {
+    "saved": "تم حفظ استراتيجية {{name}}",
+    "started": "تم بدء استراتيجية {{name}}",
+    "registerFailed": "فشل تسجيل الاستراتيجية: {{message}}",
+    "startSuccess": "تم بدء الاستراتيجية بنجاح",
+    "stopSuccess": "تم إيقاف الاستراتيجية بنجاح",
+    "alreadyRunning": "الاستراتيجية قيد التشغيل بالفعل",
+    "notRunning": "الاستراتيجية ليست قيد التشغيل",
+    "configNotFound": "لم يتم العثور على تكوين الاستراتيجية. يرجى التحقق من إعدادات قاعدة البيانات.",
+    "networkError": "خطأ في الشبكة. يرجى التحقق من الاتصال والمحاولة مرة أخرى.",
+    "startFailed": "فشل بدء الاستراتيجية: {{message}}",
+    "stopFailed": "فشل إيقاف الاستراتيجية: {{message}}",
+    "unknownError": "خطأ غير معروف"
+  },
+  "card": {
+    "ariaLabel": "استراتيجية: {{name}}",
+    "modeLabel": "الوضع: {{mode}}",
+    "autostartEnabled": "التشغيل التلقائي: مفعّل",
+    "autostartDisabled": "التشغيل التلقائي: معطّل",
+    "statusAriaLabel": "الحالة: {{status}}",
+    "dataLagAriaLabel": "تأخير البيانات: {{seconds}} ثوانٍ",
+    "lagBadge": "تأخير: {{seconds}}ث",
+    "feedLag": "تأخير Feed: {{ms}}ms",
+    "heartbeatAge": "عمر Heartbeat: {{seconds}}ث",
+    "metrics": {
+      "status": "الحالة",
+      "dataLag": "تأخير البيانات",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "إظهار التفاصيل",
+    "hideDetails": "إخفاء التفاصيل",
+    "inputs": "المدخلات ({{count}})",
+    "outputs": "المخرجات ({{count}})",
+    "feedPublishers": "ناشرو Feed ({{count}})",
+    "lastUpdate": "آخر تحديث: {{time}}",
+    "waiting": "في انتظار Heartbeat...",
+    "startAriaLabel": "بدء استراتيجية {{name}}",
+    "stopAriaLabel": "إيقاف استراتيجية {{name}}",
+    "start": "بدء",
+    "stop": "إيقاف",
+    "starting": "جارٍ البدء...",
+    "stopping": "جارٍ الإيقاف...",
+    "status": {
+      "starting": "جارٍ البدء",
+      "stopping": "جارٍ الإيقاف",
+      "running": "قيد التشغيل",
+      "stopped": "متوقف"
+    },
+    "health": {
+      "healthy": "سليم — يتم تلقي بيانات حديثة",
+      "warning": "تحذير — البيانات قديمة",
+      "error": "خطأ — لا توجد بيانات حديثة",
+      "unknown": "غير معروف — لا توجد بيانات Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "سليم",
+      "warning": "تحذير",
+      "error": "خطأ"
+    }
+  },
+  "launchModal": {
+    "title": "تسجيل عملية استراتيجية",
+    "emptyTemplates": "لا توجد قوالب استراتيجية مسجلة في backend. عرّف عملية استراتيجية واحدة على الأقل.",
+    "close": "إغلاق",
+    "templateLabel": "قالب الاستراتيجية",
+    "templatePlaceholder": "اختر قالباً...",
+    "templateFallbackDescription": "استراتيجية مسجلة في backend",
+    "loadingDefaults": "جارٍ تحميل افتراضيات القالب…",
+    "loadDefaultsError": "تعذر تحميل افتراضيات القالب. يرجى فحص سجلات backend.",
+    "processNameLabel": "اسم العملية",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "الأحرف المسموحة: أحرف صغيرة، أرقام، شرطات سفلية",
+    "instanceNameLabel": "اسم نسخة الاستراتيجية",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "يُستخدم داخل تكوين الاستراتيجية وموضوعات الإخراج",
+    "executionModeLabel": "وضع التنفيذ",
+    "executionModeThread": "Thread مضمّن",
+    "executionModeProcess": "عملية معزولة",
+    "executionModeHelp": "تشارك Threads الذاكرة، وتوفر العمليات عزلاً أقوى.",
+    "flagsLabel": "الأعلام",
+    "autostartLabel": "تشغيل تلقائي عند إقلاع الخادم",
+    "startImmediatelyLabel": "البدء فوراً بعد التسجيل",
+    "noteLabel": "ملاحظة (اختيارية)",
+    "notePlaceholder": "صف الغرض أو معلمات نسخة الاستراتيجية هذه.",
+    "noteHelp": "تُحفظ بجانب التكوين للمساعدة في تحديد هذه العملية.",
+    "cancel": "إلغاء",
+    "submit": "تسجيل الاستراتيجية",
+    "submitting": "جارٍ التسجيل…"
+  }
+}

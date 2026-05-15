@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "کنترل فرایند",
+    "subtitle": "پایش و کنترل فرایندها به‌صورت بلادرنگ"
+  },
+  "sections": {
+    "longRunning": "فرایندهای بلندمدت",
+    "executorTemplates": "قالب‌های اجراکننده",
+    "executorTemplatesHint": "ویرایش پیکربندی قالب پس از راه‌اندازی دوباره بر همه کیف پول‌های این صرافی اثر می‌گذارد. قالب‌ها فقط پیکربندی هستند — برای اجرای یک اجراکننده، نمونه کیف پول زیر را شروع کنید.",
+    "walletInstances": "نمونه‌های کیف پول",
+    "taskProcesses": "فرایندهای وظیفه"
+  },
+  "card": {
+    "stop": "توقف",
+    "start": "شروع",
+    "restart": "راه‌اندازی دوباره",
+    "starting": "در حال شروع...",
+    "stopping": "در حال توقف...",
+    "status": {
+      "running": "در حال اجرا",
+      "stopped": "متوقف",
+      "error": "خطا",
+      "starting": "در حال شروع",
+      "stopping": "در حال توقف"
+    }
+  },
+  "template": {
+    "badge": "قالب",
+    "mode": "حالت:",
+    "parameters": "پارامترها:",
+    "paramCount": "{{count}} پارامتر",
+    "noParams": "پارامتری تنظیم نشده است"
+  },
+  "badges": {
+    "oneShot": "یک‌باره",
+    "autoStart": "شروع خودکار",
+    "manual": "دستی"
+  },
+  "actions": {
+    "stopTitle": "توقف {{name}}",
+    "stopMessage": "این کار فرایند {{name}} را متوقف می‌کند.",
+    "restartTitle": "راه‌اندازی دوباره {{name}}",
+    "restartMessage": "این کار فرایند {{name}} را دوباره راه‌اندازی می‌کند."
+  },
+  "executionMode": {
+    "title": "شروع {{name}}",
+    "label": "حالت اجرا:",
+    "threadName": "حالت Thread",
+    "threadDescription": "به‌صورت وظیفه جاسازی‌شده داخل وب‌سرور اجرا می‌شود. شروع سریع‌تر، حافظه مشترک.",
+    "processName": "حالت فرایند",
+    "processDescription": "به‌صورت فرایند جداگانه Python اجرا می‌شود. ایزوله، تحمل‌پذیر در برابر خطا، با پایش دقیق.",
+    "cancel": "لغو",
+    "start": "شروع {{name}}",
+    "threadAriaLabel": "حالت Thread",
+    "processAriaLabel": "حالت فرایند"
+  }
+}

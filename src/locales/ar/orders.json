@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "الأوامر والتنفيذات",
+    "newOrder": "أمر جديد",
+    "exportCsv": "تصدير CSV"
+  },
+  "tabs": {
+    "orders": "الأوامر ({{total}})",
+    "executions": "التنفيذات ({{total}})"
+  },
+  "filters": {
+    "byStatus": "تصفية حسب الحالة:",
+    "options": {
+      "all": "كل الأوامر",
+      "new": "جديد",
+      "open": "مفتوح",
+      "partiallyFilled": "منفذ جزئياً",
+      "partially_filled": "منفذ جزئياً",
+      "filled": "منفذ",
+      "cancelled": "ملغى",
+      "rejected": "مرفوض"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "غير متاح",
+    "priceMarket": "Market",
+    "quantity": "الكمية",
+    "price": "السعر",
+    "created": "تم الإنشاء",
+    "createdUnknown": "غير متاح",
+    "orderId": "معرّف الأمر",
+    "leverage": "الرافعة المالية",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "تقليل-فقط",
+    "cancel": "إلغاء",
+    "cancelling": "جارٍ الإلغاء…",
+    "cancelAriaLabel": "إلغاء الأمر {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "الأمر #{{orderId}}",
+    "filled": "منفذ",
+    "orderLabel": "الأمر {{orderId}}",
+    "size": "الحجم",
+    "price": "السعر",
+    "total": "الإجمالي",
+    "executed": "تم التنفيذ",
+    "fees": "الرسوم"
+  },
+  "empty": {
+    "ordersTitle": "لم يتم العثور على أوامر",
+    "ordersStartTrading": "ابدأ التداول لرؤية الأوامر هنا",
+    "ordersFilterless": "لا توجد أوامر بحالة {{status}}",
+    "executionsTitle": "لم يتم العثور على تنفيذات",
+    "executionsMessage": "ستظهر تنفيذات التداول هنا"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "الأداة",
+      "side": "الجانب",
+      "type": "النوع",
+      "status": "الحالة",
+      "quantity": "الكمية",
+      "price": "السعر",
+      "leverage": "الرافعة المالية",
+      "reduceOnly": "تقليل فقط",
+      "created": "تم الإنشاء"
+    },
+    "executions": {
+      "orderId": "معرّف الأمر",
+      "instrument": "الأداة",
+      "side": "الجانب",
+      "size": "الحجم",
+      "price": "السعر",
+      "total": "الإجمالي",
+      "fee": "الرسم",
+      "feeAsset": "أصل الرسم",
+      "executed": "تم التنفيذ"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "أمر يدوي جديد",
+    "titleConfirm": "تأكيد الأمر",
+    "fields": {
+      "exchange": "البورصة",
+      "instrument": "الأداة",
+      "side": "الجانب",
+      "orderType": "نوع الأمر",
+      "quantity": "الكمية",
+      "price": "السعر",
+      "stopPrice": "سعر الإيقاف",
+      "mode": "الوضع",
+      "wallet": "محفظة",
+      "type": "النوع"
+    },
+    "sideOptions": {
+      "buy": "شراء",
+      "sell": "بيع"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — بيانات السوق فقط",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "إلغاء",
+      "reviewOrder": "مراجعة الأمر",
+      "back": "رجوع",
+      "confirmOrder": "تأكيد الأمر",
+      "submitting": "جارٍ الإرسال..."
+    },
+    "errors": {
+      "missingRequired": "يجب ملء كل الحقول المطلوبة",
+      "quantityPositive": "يجب أن تكون الكمية رقماً موجباً",
+      "priceRequired": "السعر مطلوب لهذا النوع من الأوامر",
+      "pricePositive": "يجب أن يكون السعر رقماً موجباً",
+      "stopPriceRequired": "سعر الإيقاف مطلوب لهذا النوع من الأوامر",
+      "stopPricePositive": "يجب أن يكون سعر الإيقاف رقماً موجباً",
+      "createFailed": "فشل إنشاء الأمر"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "هذه الأداة للمراقبة فقط — ضع الأوامر على أداة قادرة على التنفيذ.",
+      "unknownInstrument": "هذه الأداة غير معروفة. أعد تحميل القائمة وحاول مرة أخرى.",
+      "capsViolation": "سيتجاوز هذا الأمر حدود أمان حسابك. راجع إعدادات المخاطر وحاول مجدداً."
+    }
+  }
+}

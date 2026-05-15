@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI इंटीग्रेशन",
+    "subtitle": "MCP के माध्यम से Snapper से जुड़ने वाले AI डेलीगेट प्रबंधित करें।",
+    "loading": "AI इंटीग्रेशन लोड हो रहा है…",
+    "createDelegate": "डेलीगेट बनाएँ"
+  },
+  "disabled": {
+    "title": "AI इंटीग्रेशन अक्षम है",
+    "message": "AI डेलीगेट प्रबंधित करने के लिए सेटिंग्स → फ़ीचर फ्लैग्स में फ़ीचर फ्लैग सक्षम करें।"
+  },
+  "list": {
+    "loadingDelegates": "डेलीगेट लोड हो रहे हैं…",
+    "emptyTitle": "अभी कोई AI डेलीगेट नहीं",
+    "emptyMessage": "एक बनाने और उसका MCP कॉन्फ़िग स्निपेट जनरेट करने के लिए “डेलीगेट बनाएँ” पर क्लिक करें।",
+    "columns": {
+      "label": "लेबल",
+      "username": "उपयोगकर्ता नाम",
+      "created": "बनाया गया",
+      "maxOpenOrders": "अधिकतम खुले ऑर्डर",
+      "maxDailyUsd": "अधिकतम दैनिक USD",
+      "status": "स्थिति",
+      "actions": "कार्रवाइयाँ"
+    },
+    "status": {
+      "active": "सक्रिय",
+      "revoked": "रद्द किया गया"
+    },
+    "default": "डिफ़ॉल्ट",
+    "details": "विवरण",
+    "viewAriaLabel": "डेलीगेट {{label}} देखें"
+  },
+  "wizard": {
+    "title": "AI डेलीगेट बनाएँ",
+    "step1": "1. पहचान",
+    "step2": "2. स्कोप और सीमाएँ",
+    "step3": "3. समीक्षा",
+    "stepDone": "✓ पूरा",
+    "identity": {
+      "labelField": "लेबल",
+      "labelPlaceholder": "जैसे Alpha prop desk",
+      "labelHelpPrefix": "डेलीगेट का उपयोगकर्ता नाम server-side इस रूप में निकलेगा ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "स्कोप",
+      "operatorLabel": "ऑपरेटर public_id (वैकल्पिक)",
+      "operatorPlaceholder": "कॉलर के primary ऑपरेटर को inherit करने के लिए खाली छोड़ें"
+    },
+    "caps": {
+      "heading": "ट्रेडिंग सीमाएँ (सभी वैकल्पिक)",
+      "maxOpenOrders": "अधिकतम खुले ऑर्डर",
+      "maxDailyNotionalUsd": "अधिकतम दैनिक notional USD",
+      "maxCancelsPerMinute": "प्रति मिनट अधिकतम रद्दीकरण",
+      "perInstrument": "प्रति-इंस्ट्रूमेंट अधिकतम मात्रा (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "डिफ़ॉल्ट",
+      "errorInvalidJson": "max_order_quantity_per_instrument वैध JSON होना चाहिए",
+      "errorJsonObject": "max_order_quantity_per_instrument JSON ऑब्जेक्ट या खाली होना चाहिए",
+      "errorNegative": "सीमाएँ गैर-ऋणात्मक पूर्णांक या खाली होनी चाहिए।"
+    },
+    "review": {
+      "heading": "समीक्षा और बनाएँ",
+      "rowLabel": "लेबल",
+      "rowOperator": "ऑपरेटर public_id",
+      "rowMaxOpenOrders": "अधिकतम खुले ऑर्डर",
+      "rowMaxDailyNotional": "अधिकतम दैनिक notional USD",
+      "rowMaxCancelsPerMinute": "प्रति मिनट अधिकतम रद्दीकरण",
+      "rowPerInstrument": "प्रति-इंस्ट्रूमेंट अधिकतम मात्रा",
+      "operatorDefault": "(कॉलर primary ऑपरेटर)",
+      "defaultValue": "(डिफ़ॉल्ट)"
+    },
+    "buttons": {
+      "cancel": "रद्द करें",
+      "next": "अगला",
+      "back": "वापस",
+      "createDelegate": "डेलीगेट बनाएँ",
+      "iSavedClose": "मैंने इन्हें सहेज लिया — बंद करें"
+    },
+    "toast": {
+      "delegateCreated": "डेलीगेट बनाया गया",
+      "failedToCreate": "डेलीगेट बनाने में विफल"
+    }
+  },
+  "detail": {
+    "loading": "डेलीगेट लोड हो रहा है…",
+    "notFound": "डेलीगेट नहीं मिला या उपलब्ध नहीं है।",
+    "back": "वापस",
+    "backToList": "सूची पर वापस",
+    "updateCaps": "सीमाएँ अपडेट करें",
+    "revoke": "रद्द करें",
+    "save": "सहेजें",
+    "cancel": "रद्द करें",
+    "tradingCaps": "ट्रेडिंग सीमाएँ",
+    "status": "स्थिति",
+    "active": "सक्रिय",
+    "revoked": "रद्द किया गया",
+    "createdAt": "बनाया गया",
+    "createdBy": "बनाने वाला (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "अधिकतम खुले ऑर्डर",
+    "maxDailyNotionalUsd": "अधिकतम दैनिक notional USD",
+    "maxCancelsPerMinute": "प्रति मिनट अधिकतम रद्दीकरण",
+    "perInstrument": "प्रति-इंस्ट्रूमेंट अधिकतम मात्रा",
+    "defaultValue": "(डिफ़ॉल्ट)",
+    "editorPlaceholder": "(डिफ़ॉल्ट)",
+    "toast": {
+      "capsUpdated": "सीमाएँ अपडेट की गईं",
+      "failedToUpdateCaps": "सीमाएँ अपडेट करने में विफल",
+      "negativeIntegersError": "सीमाएँ गैर-ऋणात्मक पूर्णांक या खाली होनी चाहिए।"
+    }
+  },
+  "revokeDialog": {
+    "title": "डेलीगेट \"{{label}}\" रद्द करें?",
+    "message": "यह डेलीगेट टोकन रद्द करता है और उसकी MCP subscriptions रोकता है। इसे वापस नहीं किया जा सकता।",
+    "confirm": "रद्द करें",
+    "cancel": "रद्द करें",
+    "toast": {
+      "delegateRevoked": "डेलीगेट रद्द किया गया",
+      "failedToRevoke": "डेलीगेट रद्द करने में विफल"
+    }
+  },
+  "snippet": {
+    "warningTitle": "इन क्रेडेंशियल को अभी सहेजें",
+    "warningMessage": "ये फिर नहीं दिखाए जाएँगे। Snapper raw tokens संग्रहीत नहीं करता; इस wizard को बंद करने के बाद केवल कॉपी आपके MCP client config में होगी।",
+    "snippetHelp": "लंबी अवधि वाला AI डेलीगेट token (~10 वर्ष)। वही token proxy MCP server और watch monitor दोनों को प्रमाणित करता है। बदलने के लिए, इस डेलीगेट को निष्क्रिय करें और नया बनाएँ।",
+    "baseUrlHelpPrefix": "Base URL इस ब्राउज़र के origin + से निकाला जाता है ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "कॉन्फ़िग स्निपेट क्लिपबोर्ड पर कॉपी करें",
+    "copy": "क्लिपबोर्ड पर कॉपी करें",
+    "copied": "कॉपी किया गया"
+  }
+}

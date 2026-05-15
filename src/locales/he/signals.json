@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "אותות"
+  },
+  "filters": {
+    "allStrategies": "כל האסטרטגיות"
+  },
+  "actions": {
+    "export": "ייצא"
+  },
+  "stats": {
+    "total": "סה״כ",
+    "buy": "קנייה",
+    "sell": "מכירה",
+    "avgStrength": "חוזק ממוצע"
+  },
+  "card": {
+    "strength": "חוזק",
+    "price": "מחיר",
+    "exchange": "בורסה",
+    "reason": "סיבה:",
+    "noPrice": "לא זמין"
+  },
+  "strength": {
+    "strong": "חזק",
+    "medium": "בינוני",
+    "weak": "חלש",
+    "veryWeak": "חלש מאוד"
+  },
+  "time": {
+    "justNow": "כרגע",
+    "minutesAgo": "לפני {{count}}ד׳",
+    "hoursAgo": "לפני {{count}}ש׳"
+  },
+  "empty": {
+    "title": "לא נמצאו אותות",
+    "message": "אין אותות מסחר שתואמים למסננים הנוכחיים שלך."
+  }
+}

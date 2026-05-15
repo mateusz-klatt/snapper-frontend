@@ -1,0 +1,83 @@
+{
+  "loading": "טוען...",
+  "error": "שגיאה",
+  "retry": "נסה שוב",
+  "close": "סגור",
+  "cancel": "בטל",
+  "confirm": "אשר",
+  "save": "שמור",
+  "documentation": "תיעוד (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "החלף שפה",
+    "flagAriaLabel": "החלף ל-{{country}}",
+    "currentAriaLabel": "שפה נוכחית: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "קונסולת מסחר",
+    "tagline": "עמדת עבודה מדויקת",
+    "openSidebar": "פתח סרגל צד",
+    "closeSidebar": "סגור סרגל צד",
+    "sidebar": "סרגל צד",
+    "mainNavigation": "ניווט ראשי",
+    "tradingContent": "תוכן מסחר",
+    "skipToContent": "דלג לתוכן המסחר",
+    "lag": "השהיה:",
+    "lagTitle": "השהיית הלוך-חזור לשרת WebSocket",
+    "topics": "נושאים:",
+    "topicsTitle": "מספר נושאי WebSocket שנרשמו אליהם",
+    "connected": "מחובר",
+    "disconnected": "מנותק",
+    "connectedTitle": "מחובר ל-WebSocket",
+    "disconnectedTitle": "מנותק מ-WebSocket",
+    "switchToLightMode": "עבור למצב בהיר",
+    "switchToDarkMode": "עבור למצב כהה",
+    "timeTravelBanner": "מצב מסע בזמן — הצגת נתונים היסטוריים (קריאה בלבד)",
+    "lagUnknown": "לא ידוע",
+    "walletPicker": {
+      "ariaLabel": "ארנק פעיל",
+      "placeholder": "ארנק",
+      "allWallets": "כל הארנקים",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "מפעיל פעיל",
+      "placeholder": "מפעיל",
+      "allOperators": "כל המפעילים"
+    },
+    "timeTravel": {
+      "pickerTitle": "מסע בזמן: בחר נקודת זמן היסטורית",
+      "exitAriaLabel": "צא ממצב מסע בזמן",
+      "exitTitle": "חזור למצב חי"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "מכשיר לתצפית בלבד. Snapper מקבל נתוני שוק אך אינו יכול לשלוח פקודות עבור זוג זה (סימול, בורסה).",
+      "ariaLabel": "מכשיר נתוני שוק בלבד",
+      "badge": "נתוני שוק בלבד"
+    },
+    "liveOnly": {
+      "notice": "לשונית זו מציגה מצב נוכחי — תצוגה היסטורית אינה זמינה."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "משהו השתבש",
+    "titleWithComponent": "שגיאה ב-{{componentName}}",
+    "stackTrace": "עקבת מחסנית",
+    "tryAgain": "נסה שוב"
+  },
+  "nav": {
+    "overview": "סקירה",
+    "market": "נתוני שוק",
+    "processes": "תהליכים",
+    "strategies": "אסטרטגיות",
+    "orders": "פקודות וביצועים",
+    "positions": "פוזיציות",
+    "signals": "אותות",
+    "backtests": "Backtests",
+    "health": "בריאות",
+    "admin": "ניהול",
+    "aiIntegration": "שילוב AI",
+    "aiReviews": "סקירות AI",
+    "settings": "הגדרות"
+  }
+}

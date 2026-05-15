@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Sistem Sağlığı",
+    "healthMetricsHeading": "Sağlık Metrikleri",
+    "processStatusHeading": "Süreç Durumu",
+    "activeBacktestsHeading": "Aktif Backtests",
+    "quickActionsHeading": "Hızlı Eylemler",
+    "featureNotImplemented": "Özellik henüz uygulanmadı",
+    "restartServices": "Servisleri yeniden başlat",
+    "runHealthCheck": "Sağlık kontrolü çalıştır",
+    "viewLogs": "Logları görüntüle",
+    "exportReport": "Raporu dışa aktar"
+  },
+  "status": {
+    "healthy": "Sağlıklı",
+    "stopped": "Durduruldu",
+    "error": "Hata",
+    "warning": "Uyarı",
+    "completed": "Tamamlandı",
+    "unknown": "Bilinmiyor"
+  },
+  "metrics": {
+    "tradingEngine": "Trading Motoru",
+    "tradingEngineDescription": "Strateji yürütme motoru",
+    "activeBacktests": "Aktif Backtests",
+    "activeBacktestsDescription": "Çalışan Backtest süreçleri",
+    "active": "Aktif",
+    "inactive": "Pasif"
+  },
+  "process": {
+    "uptimeNotAvailable": "Yok",
+    "uptimeMinutes": "{{minutes}}dk",
+    "uptimeHours": "{{hours}}s {{minutes}}dk",
+    "uptimeDays": "{{days}}g {{hours}}s",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "Yok",
+    "uptimeLabel": "Çalışma süresi",
+    "exitCode": "Çıkış kodu: {{code}}",
+    "service": "servis",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Veritabanı İstatistikleri",
+    "loading": "Veritabanı istatistikleri yükleniyor…",
+    "unavailable": "Veritabanı istatistikleri kullanılamıyor: {{message}}",
+    "fallbackError": "Veritabanı istatistikleri yüklenemedi.",
+    "sampled": "örneklendi {{age}}",
+    "samplerSummary": "Örnekleme aralığı: {{seconds}}s · {{count}} tablo",
+    "columns": {
+      "table": "Tablo",
+      "kind": "Tür",
+      "total": "Toplam",
+      "current": "Geçerli",
+      "closed": "Kapalı",
+      "archivable": "Arşivlenebilir",
+      "status": "Durum"
+    },
+    "stale": "bayat"
+  },
+  "notification": {
+    "title": "Bildirim Sidecar",
+    "loading": "Bildirim metrikleri yükleniyor…",
+    "unavailable": "Bildirim metrikleri kullanılamıyor: {{message}}",
+    "fallbackError": "Bildirim metrikleri yüklenemedi.",
+    "sent": "Gönderildi",
+    "sentDescription": "Terminal: gönderildi",
+    "failed": "Başarısız",
+    "failedDescription": "Yeniden deneme bütçesi tükendi",
+    "unregistered": "Kaydı silinmiş",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "İptal edildi (kapsam)",
+    "cancelledScopeDescription": "Kapsam iptali / kullanıcı pasifleştirme",
+    "outboxDepth": "Outbox derinliği",
+    "outboxDepthDescription": "Kuyrukta, yeniden deneme bekliyor"
+  },
+  "retention": {
+    "title": "Saklama Zamanlayıcısı",
+    "loading": "Saklama çalıştırması yükleniyor…",
+    "unavailable": "Saklama çalıştırması kullanılamıyor: {{message}}",
+    "fallbackError": "Saklama çalıştırması yüklenemedi.",
+    "lastRun": "son çalıştırma {{age}}",
+    "dryRunNotice": "Dry-run modu: satırlar arşivlenir ancak DB'den temizlenmez.",
+    "columns": {
+      "table": "Tablo",
+      "retain": "Sakla",
+      "archivedWindow": "Arşivlenen pencere",
+      "archived": "Arşivlendi",
+      "purged": "Temizlendi",
+      "files": "Dosyalar",
+      "status": "Durum"
+    },
+    "retainDays": "{{days}}g",
+    "ok": "tamam",
+    "error": "hata"
+  },
+  "systemMetrics": {
+    "title": "Süreç Sağlığı",
+    "loading": "Süreç metrikleri yükleniyor…",
+    "unavailable": "Süreç metrikleri kullanılamıyor: {{message}}",
+    "fallbackError": "Süreç sağlığı metrikleri yüklenemedi.",
+    "rawJson": "Ham JSON",
+    "pid": "PID",
+    "statusValue": "Durum: {{status}}",
+    "uptime": "Çalışma süresi",
+    "threads": "Thread'ler",
+    "openFds": "Açık FD'ler",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "{{count}}× kısıtlandı",
+    "memory": "Bellek",
+    "saturation": "Doygunluk {{percent}}",
+    "asyncioTasks": "Asyncio Görevleri",
+    "asyncioActive": "{{count}} aktif",
+    "asyncioPending": "+ {{count}} bekliyor",
+    "dbPool": "DB Pool",
+    "liveConns": "Canlı bağlantılar: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Nesneler: {{value}}",
+    "threadsPercent": "Thread %",
+    "networkConns": "Ağ bağlantıları",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktif",
+    "tracemallocIdle": "Boşta"
+  },
+  "relativeAge": {
+    "justNow": "az önce",
+    "seconds": "{{seconds}}s önce",
+    "minutes": "{{minutes}}dk önce",
+    "hours": "{{hours}}s önce",
+    "days": "{{days}}g önce"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}dk",
+    "hours": "{{hours}}s",
+    "days": "{{days}}g"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

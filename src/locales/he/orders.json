@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "פקודות וביצועים",
+    "newOrder": "פקודה חדשה",
+    "exportCsv": "ייצא CSV"
+  },
+  "tabs": {
+    "orders": "פקודות ({{total}})",
+    "executions": "ביצועים ({{total}})"
+  },
+  "filters": {
+    "byStatus": "סנן לפי סטטוס:",
+    "options": {
+      "all": "כל הפקודות",
+      "new": "חדש",
+      "open": "פתוח",
+      "partiallyFilled": "בוצע חלקית",
+      "partially_filled": "בוצע חלקית",
+      "filled": "בוצע",
+      "cancelled": "בוטל",
+      "rejected": "נדחה"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "לא זמין",
+    "priceMarket": "Market",
+    "quantity": "כמות",
+    "price": "מחיר",
+    "created": "נוצר",
+    "createdUnknown": "לא זמין",
+    "orderId": "מזהה פקודה",
+    "leverage": "מינוף",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "הפחתה-בלבד",
+    "cancel": "בטל",
+    "cancelling": "מבטל…",
+    "cancelAriaLabel": "בטל פקודה {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "פקודה #{{orderId}}",
+    "filled": "בוצע",
+    "orderLabel": "פקודה {{orderId}}",
+    "size": "גודל",
+    "price": "מחיר",
+    "total": "סה״כ",
+    "executed": "בוצע",
+    "fees": "עמלות"
+  },
+  "empty": {
+    "ordersTitle": "לא נמצאו פקודות",
+    "ordersStartTrading": "התחל לסחור כדי לראות כאן פקודות",
+    "ordersFilterless": "אין פקודות בסטטוס {{status}}",
+    "executionsTitle": "לא נמצאו ביצועים",
+    "executionsMessage": "ביצועי מסחר יופיעו כאן"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "מכשיר",
+      "side": "צד",
+      "type": "סוג",
+      "status": "סטטוס",
+      "quantity": "כמות",
+      "price": "מחיר",
+      "leverage": "מינוף",
+      "reduceOnly": "הפחתה בלבד",
+      "created": "נוצר"
+    },
+    "executions": {
+      "orderId": "מזהה פקודה",
+      "instrument": "מכשיר",
+      "side": "צד",
+      "size": "גודל",
+      "price": "מחיר",
+      "total": "סה״כ",
+      "fee": "עמלה",
+      "feeAsset": "נכס עמלה",
+      "executed": "בוצע"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "פקודה ידנית חדשה",
+    "titleConfirm": "אשר פקודה",
+    "fields": {
+      "exchange": "בורסה",
+      "instrument": "מכשיר",
+      "side": "צד",
+      "orderType": "סוג פקודה",
+      "quantity": "כמות",
+      "price": "מחיר",
+      "stopPrice": "מחיר Stop",
+      "mode": "מצב",
+      "wallet": "ארנק",
+      "type": "סוג"
+    },
+    "sideOptions": {
+      "buy": "קנייה",
+      "sell": "מכירה"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — נתוני שוק בלבד",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "בטל",
+      "reviewOrder": "בדוק פקודה",
+      "back": "חזרה",
+      "confirmOrder": "אשר פקודה",
+      "submitting": "שולח..."
+    },
+    "errors": {
+      "missingRequired": "יש למלא את כל שדות החובה",
+      "quantityPositive": "הכמות חייבת להיות מספר חיובי",
+      "priceRequired": "מחיר נדרש עבור סוג פקודה זה",
+      "pricePositive": "המחיר חייב להיות מספר חיובי",
+      "stopPriceRequired": "מחיר Stop נדרש עבור סוג פקודה זה",
+      "stopPricePositive": "מחיר Stop חייב להיות מספר חיובי",
+      "createFailed": "יצירת הפקודה נכשלה"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "מכשיר זה לתצפית בלבד — שלח פקודות על מכשיר שתומך בביצוע.",
+      "unknownInstrument": "מכשיר זה אינו מזוהה. טען מחדש את הרשימה ונסה שוב.",
+      "capsViolation": "פקודה זו תחרוג ממגבלות הבטיחות של החשבון. בדוק את הגדרות הסיכון ונסה שוב."
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "İstek",
+    "decision": "Karar",
+    "capsViolation": "Limit ihlali",
+    "selectedDelegate": "Seçilen delege",
+    "instrument": "enstrüman",
+    "deadline": "son tarih {{time}}",
+    "decidedBy": "tarafından",
+    "newStatus": "durum",
+    "mode": "mod",
+    "capAttempted": "denenen",
+    "capLimit": "limit ile",
+    "capOn": "enstrümanda",
+    "reviewLabel": "inceleme {{reviewId}}",
+    "unhandledFrame": "İşlenmeyen AI inceleme etkinliği çerçevesi: {{frame}}"
+  },
+  "page": {
+    "title": "AI İnceleme Gelen Kutusu",
+    "subtitle": "Bu delegeye yönlendirilen bekleyen CONSULT incelemeleri ve canlı olay akışı."
+  },
+  "roleNotice": {
+    "title": "AI delegeleri için ayrıldı",
+    "message": "Bu gelen kutusu, bir AI delege hesabına yönlendirilen CONSULT incelemelerini gösterir. Bekleyen incelemeleri ve canlı etkinlik akışını görmek için bir AI delege hesabıyla oturum açın. Geçerli rolünüz",
+    "unknownRole": "bilinmiyor"
+  },
+  "pending": {
+    "title": "Bekleyen incelemeler",
+    "loading": "Bekleyen incelemeler yükleniyor…",
+    "loadError": "Bekleyen incelemeler yüklenemedi: {{message}}",
+    "emptyTitle": "Bekleyen inceleme yok",
+    "emptyMessage": "Bu delegeye yönlendirilen yeni CONSULT istekleri burada görünecek.",
+    "columns": {
+      "instrument": "Enstrüman",
+      "thesis": "Tez",
+      "status": "Durum",
+      "deadline": "Son tarih",
+      "decision": "Karar"
+    },
+    "rationalePlaceholder": "Gerekçe (isteğe bağlı)",
+    "rationaleAriaLabel": "{{reviewId}} incelemesi için gerekçe",
+    "approve": "Onayla",
+    "reject": "Reddet",
+    "submitError": "Gönderim başarısız: {{message}}"
+  },
+  "activity": {
+    "title": "Son etkinlik",
+    "emptyTitle": "Henüz etkinlik yok",
+    "emptyMessage": "AI inceleme isteği, karar ve limit ihlali çerçeveleri burada akacak.",
+    "summaryEmpty": "Çerçeve alınmadı",
+    "summaryCount": "{{shown}} / {{total}} arabelleğe alınan gösteriliyor"
+  }
+}

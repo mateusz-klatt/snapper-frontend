@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "שילוב AI",
+    "subtitle": "נהל נציגי AI שמתחברים ל-Snapper דרך MCP.",
+    "loading": "טוען שילוב AI…",
+    "createDelegate": "צור נציג"
+  },
+  "disabled": {
+    "title": "שילוב AI מושבת",
+    "message": "הפעל את דגל הפיצ׳ר בהגדרות → דגלי פיצ׳רים כדי לנהל נציגי AI."
+  },
+  "list": {
+    "loadingDelegates": "טוען נציגים…",
+    "emptyTitle": "עדיין אין נציגי AI",
+    "emptyMessage": "לחץ על “צור נציג” כדי ליצור אחד ולהפיק מקטע תצורת MCP.",
+    "columns": {
+      "label": "תווית",
+      "username": "שם משתמש",
+      "created": "נוצר",
+      "maxOpenOrders": "מקסימום פקודות פתוחות",
+      "maxDailyUsd": "מקסימום USD יומי",
+      "status": "סטטוס",
+      "actions": "פעולות"
+    },
+    "status": {
+      "active": "פעיל",
+      "revoked": "בוטל"
+    },
+    "default": "ברירת מחדל",
+    "details": "פרטים",
+    "viewAriaLabel": "הצג נציג {{label}}"
+  },
+  "wizard": {
+    "title": "צור נציג AI",
+    "step1": "1. זהות",
+    "step2": "2. טווח ומגבלות",
+    "step3": "3. סקירה",
+    "stepDone": "✓ בוצע",
+    "identity": {
+      "labelField": "תווית",
+      "labelPlaceholder": "למשל Alpha prop desk",
+      "labelHelpPrefix": "שם המשתמש של הנציג ייגזר בצד השרת כ-",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "טווח",
+      "operatorLabel": "public_id של מפעיל (אופציונלי)",
+      "operatorPlaceholder": "השאר ריק כדי לרשת את המפעיל הראשי של הקורא"
+    },
+    "caps": {
+      "heading": "מגבלות מסחר (כולן אופציונליות)",
+      "maxOpenOrders": "מקסימום פקודות פתוחות",
+      "maxDailyNotionalUsd": "מקסימום נומינלי יומי ב-USD",
+      "maxCancelsPerMinute": "מקסימום ביטולים לדקה",
+      "perInstrument": "כמות מקסימלית לכל מכשיר (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "ברירת מחדל",
+      "errorInvalidJson": "max_order_quantity_per_instrument חייב להיות JSON תקין",
+      "errorJsonObject": "max_order_quantity_per_instrument חייב להיות אובייקט JSON או ריק",
+      "errorNegative": "המגבלות חייבות להיות מספרים שלמים לא שליליים או ריקות."
+    },
+    "review": {
+      "heading": "סקור וצור",
+      "rowLabel": "תווית",
+      "rowOperator": "public_id של מפעיל",
+      "rowMaxOpenOrders": "מקסימום פקודות פתוחות",
+      "rowMaxDailyNotional": "מקסימום נומינלי יומי ב-USD",
+      "rowMaxCancelsPerMinute": "מקסימום ביטולים לדקה",
+      "rowPerInstrument": "כמות מקסימלית לכל מכשיר",
+      "operatorDefault": "(המפעיל הראשי של הקורא)",
+      "defaultValue": "(ברירת מחדל)"
+    },
+    "buttons": {
+      "cancel": "בטל",
+      "next": "הבא",
+      "back": "חזרה",
+      "createDelegate": "צור נציג",
+      "iSavedClose": "שמרתי את אלה — סגור"
+    },
+    "toast": {
+      "delegateCreated": "הנציג נוצר",
+      "failedToCreate": "יצירת הנציג נכשלה"
+    }
+  },
+  "detail": {
+    "loading": "טוען נציג…",
+    "notFound": "הנציג לא נמצא או אינו זמין.",
+    "back": "חזרה",
+    "backToList": "חזרה לרשימה",
+    "updateCaps": "עדכן מגבלות",
+    "revoke": "בטל",
+    "save": "שמור",
+    "cancel": "בטל",
+    "tradingCaps": "מגבלות מסחר",
+    "status": "סטטוס",
+    "active": "פעיל",
+    "revoked": "בוטל",
+    "createdAt": "נוצר ב",
+    "createdBy": "נוצר על ידי (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "מקסימום פקודות פתוחות",
+    "maxDailyNotionalUsd": "מקסימום נומינלי יומי ב-USD",
+    "maxCancelsPerMinute": "מקסימום ביטולים לדקה",
+    "perInstrument": "כמות מקסימלית לכל מכשיר",
+    "defaultValue": "(ברירת מחדל)",
+    "editorPlaceholder": "(ברירת מחדל)",
+    "toast": {
+      "capsUpdated": "המגבלות עודכנו",
+      "failedToUpdateCaps": "עדכון המגבלות נכשל",
+      "negativeIntegersError": "המגבלות חייבות להיות מספרים שלמים לא שליליים או ריקות."
+    }
+  },
+  "revokeDialog": {
+    "title": "לבטל את הנציג \"{{label}}\"?",
+    "message": "פעולה זו מבטלת את אסימוני הנציג ועוצרת את מנויי MCP שלו. לא ניתן לבטל פעולה זו.",
+    "confirm": "בטל",
+    "cancel": "בטל",
+    "toast": {
+      "delegateRevoked": "הנציג בוטל",
+      "failedToRevoke": "ביטול הנציג נכשל"
+    }
+  },
+  "snippet": {
+    "warningTitle": "שמור את אישורי הכניסה האלה עכשיו",
+    "warningMessage": "הם לא יוצגו שוב. Snapper אינו שומר את האסימונים הגולמיים; לאחר סגירת האשף העותק היחיד יהיה בתצורת לקוח MCP שלך.",
+    "snippetHelp": "אסימון נציג AI ארוך-חיים (~10 שנים). אותו אסימון מאמת גם את שרת proxy MCP וגם את מוניטור הצפייה. להחלפה, השבת נציג זה וצור חדש.",
+    "baseUrlHelpPrefix": "Base URL נגזר מה-origin של הדפדפן הזה + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "העתק מקטע תצורה ללוח",
+    "copy": "העתק ללוח",
+    "copied": "הועתק"
+  }
+}

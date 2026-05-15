@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "طلب",
+    "decision": "قرار",
+    "capsViolation": "انتهاك الحدود",
+    "selectedDelegate": "المفوض المحدد",
+    "instrument": "الأداة",
+    "deadline": "الموعد النهائي {{time}}",
+    "decidedBy": "بواسطة",
+    "newStatus": "الحالة",
+    "mode": "الوضع",
+    "capAttempted": "تمت المحاولة",
+    "capLimit": "مقابل الحد",
+    "capOn": "على الأداة",
+    "reviewLabel": "مراجعة {{reviewId}}",
+    "unhandledFrame": "إطار نشاط مراجعة AI غير معالج: {{frame}}"
+  },
+  "page": {
+    "title": "صندوق وارد مراجعات AI",
+    "subtitle": "مراجعات CONSULT المعلقة الموجهة إلى هذا المفوض بالإضافة إلى بث الأحداث المباشر."
+  },
+  "roleNotice": {
+    "title": "مخصص لمفوضي AI",
+    "message": "يعرض هذا الصندوق مراجعات CONSULT الموجهة إلى كيان مفوض AI. سجّل الدخول بحساب مفوض AI لرؤية المراجعات المعلقة وبث النشاط المباشر. دورك الحالي هو",
+    "unknownRole": "غير معروف"
+  },
+  "pending": {
+    "title": "المراجعات المعلقة",
+    "loading": "جارٍ تحميل المراجعات المعلقة…",
+    "loadError": "فشل تحميل المراجعات المعلقة: {{message}}",
+    "emptyTitle": "لا توجد مراجعات معلقة",
+    "emptyMessage": "ستظهر هنا طلبات CONSULT الجديدة الموجهة إلى هذا المفوض.",
+    "columns": {
+      "instrument": "الأداة",
+      "thesis": "الأطروحة",
+      "status": "الحالة",
+      "deadline": "الموعد النهائي",
+      "decision": "القرار"
+    },
+    "rationalePlaceholder": "المبرر (اختياري)",
+    "rationaleAriaLabel": "مبرر المراجعة {{reviewId}}",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "submitError": "فشل الإرسال: {{message}}"
+  },
+  "activity": {
+    "title": "النشاط الأخير",
+    "emptyTitle": "لا يوجد نشاط بعد",
+    "emptyMessage": "سيتم بث طلبات مراجعة AI والقرارات وإطارات انتهاك الحدود هنا.",
+    "summaryEmpty": "لم يتم تلقي أي إطارات",
+    "summaryCount": "عرض {{shown}} من {{total}} مخزنة مؤقتاً"
+  }
+}

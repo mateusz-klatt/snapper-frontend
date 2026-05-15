@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "נתוני שוק"
+  },
+  "controls": {
+    "exchange": "בורסה:",
+    "instrument": "מכשיר:",
+    "timeframe": "מסגרת זמן:",
+    "selectExchange": "בחר בורסה",
+    "searchInstrument": "חפש מכשיר..."
+  },
+  "timeframes": {
+    "1m": "דקה אחת",
+    "5m": "5 דקות",
+    "15m": "15 דקות",
+    "30m": "30 דקות",
+    "1h": "שעה אחת",
+    "4h": "4 שעות",
+    "1d": "יום אחד"
+  },
+  "stats": {
+    "currentPrice": "מחיר נוכחי",
+    "change24h": "שינוי 24ש׳",
+    "high24h": "גבוה 24ש׳",
+    "low24h": "נמוך 24ש׳"
+  },
+  "chart": {
+    "title": "תרשים מחיר",
+    "errorPrefix": "שגיאה בטעינת נתוני תרשים:",
+    "unknownError": "שגיאה לא ידועה",
+    "noDataTitle": "אין נתונים זמינים עבור {{instrument}}",
+    "noDataHint": "ייתכן שהמכשיר אינו קיים או שאין לו נתוני {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "לא הוגדרו מכשירים קשורים עבור {{instrument}} ב-{{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "החימום של המטמון מתבצע: {{sampleCount}} / {{expected}} נרות זמינים {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(נגזר מ-1m)",
+      "db": "(מ-DB)"
+    }
+  }
+}

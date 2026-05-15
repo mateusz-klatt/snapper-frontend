@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "בריאות מערכת",
+    "healthMetricsHeading": "מדדי בריאות",
+    "processStatusHeading": "סטטוס תהליכים",
+    "activeBacktestsHeading": "Backtests פעילים",
+    "quickActionsHeading": "פעולות מהירות",
+    "featureNotImplemented": "הפיצ׳ר עדיין לא מומש",
+    "restartServices": "הפעל שירותים מחדש",
+    "runHealthCheck": "הרץ בדיקת בריאות",
+    "viewLogs": "הצג לוגים",
+    "exportReport": "ייצא דוח"
+  },
+  "status": {
+    "healthy": "בריא",
+    "stopped": "נעצר",
+    "error": "שגיאה",
+    "warning": "אזהרה",
+    "completed": "הושלם",
+    "unknown": "לא ידוע"
+  },
+  "metrics": {
+    "tradingEngine": "מנוע מסחר",
+    "tradingEngineDescription": "מנוע ביצוע אסטרטגיות",
+    "activeBacktests": "Backtests פעילים",
+    "activeBacktestsDescription": "תהליכי Backtest פועלים",
+    "active": "פעיל",
+    "inactive": "לא פעיל"
+  },
+  "process": {
+    "uptimeNotAvailable": "לא זמין",
+    "uptimeMinutes": "{{minutes}}ד׳",
+    "uptimeHours": "{{hours}}ש׳ {{minutes}}ד׳",
+    "uptimeDays": "{{days}}י׳ {{hours}}ש׳",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "לא זמין",
+    "uptimeLabel": "זמן פעילות",
+    "exitCode": "קוד יציאה: {{code}}",
+    "service": "שירות",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "סטטיסטיקות מסד נתונים",
+    "loading": "טוען סטטיסטיקות מסד נתונים…",
+    "unavailable": "סטטיסטיקות מסד נתונים אינן זמינות: {{message}}",
+    "fallbackError": "טעינת סטטיסטיקות מסד הנתונים נכשלה.",
+    "sampled": "נדגם {{age}}",
+    "samplerSummary": "מרווח דגימה: {{seconds}}ש׳ · {{count}} טבלאות",
+    "columns": {
+      "table": "טבלה",
+      "kind": "סוג",
+      "total": "סה״כ",
+      "current": "נוכחי",
+      "closed": "סגור",
+      "archivable": "ניתן לארכוב",
+      "status": "סטטוס"
+    },
+    "stale": "מיושן"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "טוען מדדי התראות…",
+    "unavailable": "מדדי התראות אינם זמינים: {{message}}",
+    "fallbackError": "טעינת מדדי התראות נכשלה.",
+    "sent": "נשלח",
+    "sentDescription": "סופי: נשלח",
+    "failed": "נכשל",
+    "failedDescription": "תקציב הניסיונות החוזרים אזל",
+    "unregistered": "לא רשום",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "בוטל (טווח)",
+    "cancelledScopeDescription": "ביטול טווח / השבתת משתמש",
+    "outboxDepth": "עומק Outbox",
+    "outboxDepthDescription": "בתור, ממתין לניסיון חוזר"
+  },
+  "retention": {
+    "title": "מתזמן שמירה",
+    "loading": "טוען הרצת שמירה…",
+    "unavailable": "הרצת שמירה אינה זמינה: {{message}}",
+    "fallbackError": "טעינת הרצת השמירה נכשלה.",
+    "lastRun": "הרצה אחרונה {{age}}",
+    "dryRunNotice": "מצב Dry-run: שורות מאורכבות אך אינן נמחקות מ-DB.",
+    "columns": {
+      "table": "טבלה",
+      "retain": "שמור",
+      "archivedWindow": "חלון שאורכב",
+      "archived": "אורכב",
+      "purged": "נמחק",
+      "files": "קבצים",
+      "status": "סטטוס"
+    },
+    "retainDays": "{{days}}י׳",
+    "ok": "תקין",
+    "error": "שגיאה"
+  },
+  "systemMetrics": {
+    "title": "בריאות תהליך",
+    "loading": "טוען מדדי תהליך…",
+    "unavailable": "מדדי תהליך אינם זמינים: {{message}}",
+    "fallbackError": "טעינת מדדי בריאות התהליך נכשלה.",
+    "rawJson": "JSON גולמי",
+    "pid": "PID",
+    "statusValue": "סטטוס: {{status}}",
+    "uptime": "זמן פעילות",
+    "threads": "Threads",
+    "openFds": "FDs פתוחים",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "הוגבל {{count}}×",
+    "memory": "זיכרון",
+    "saturation": "רוויה {{percent}}",
+    "asyncioTasks": "משימות Asyncio",
+    "asyncioActive": "{{count}} פעילות",
+    "asyncioPending": "+ {{count}} ממתינות",
+    "dbPool": "DB Pool",
+    "liveConns": "חיבורים חיים: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "אובייקטים: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "חיבורי רשת",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "פעיל",
+    "tracemallocIdle": "לא פעיל"
+  },
+  "relativeAge": {
+    "justNow": "כרגע",
+    "seconds": "לפני {{seconds}}ש׳",
+    "minutes": "לפני {{minutes}}ד׳",
+    "hours": "לפני {{hours}}ש׳",
+    "days": "לפני {{days}}י׳"
+  },
+  "duration": {
+    "seconds": "{{seconds}}ש׳",
+    "minutes": "{{minutes}}ד׳",
+    "hours": "{{hours}}ש׳",
+    "days": "{{days}}י׳"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

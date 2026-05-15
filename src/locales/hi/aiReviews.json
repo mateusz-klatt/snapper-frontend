@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "अनुरोध",
+    "decision": "निर्णय",
+    "capsViolation": "सीमा उल्लंघन",
+    "selectedDelegate": "चुना गया डेलीगेट",
+    "instrument": "इंस्ट्रूमेंट",
+    "deadline": "डेडलाइन {{time}}",
+    "decidedBy": "द्वारा",
+    "newStatus": "स्थिति",
+    "mode": "मोड",
+    "capAttempted": "प्रयास किया",
+    "capLimit": "सीमा के विरुद्ध",
+    "capOn": "इंस्ट्रूमेंट पर",
+    "reviewLabel": "समीक्षा {{reviewId}}",
+    "unhandledFrame": "अनहैंडल्ड AI समीक्षा गतिविधि फ्रेम: {{frame}}"
+  },
+  "page": {
+    "title": "AI समीक्षा इनबॉक्स",
+    "subtitle": "इस डेलीगेट को रूट की गई लंबित CONSULT समीक्षाएँ और लाइव इवेंट स्ट्रीम।"
+  },
+  "roleNotice": {
+    "title": "AI डेलीगेट के लिए आरक्षित",
+    "message": "यह इनबॉक्स AI डेलीगेट principal को रूट की गई CONSULT समीक्षाएँ दिखाता है। लंबित समीक्षाएँ और लाइव गतिविधि स्ट्रीम देखने के लिए AI डेलीगेट खाते से साइन इन करें। आपका वर्तमान रोल है",
+    "unknownRole": "अज्ञात"
+  },
+  "pending": {
+    "title": "लंबित समीक्षाएँ",
+    "loading": "लंबित समीक्षाएँ लोड हो रही हैं…",
+    "loadError": "लंबित समीक्षाएँ लोड करने में विफल: {{message}}",
+    "emptyTitle": "कोई लंबित समीक्षा नहीं",
+    "emptyMessage": "इस डेलीगेट को रूट किए गए नए CONSULT अनुरोध यहाँ दिखाई देंगे।",
+    "columns": {
+      "instrument": "इंस्ट्रूमेंट",
+      "thesis": "थीसिस",
+      "status": "स्थिति",
+      "deadline": "डेडलाइन",
+      "decision": "निर्णय"
+    },
+    "rationalePlaceholder": "तर्क (वैकल्पिक)",
+    "rationaleAriaLabel": "समीक्षा {{reviewId}} के लिए तर्क",
+    "approve": "मंज़ूर करें",
+    "reject": "अस्वीकार करें",
+    "submitError": "सबमिट विफल: {{message}}"
+  },
+  "activity": {
+    "title": "हाल की गतिविधि",
+    "emptyTitle": "अभी कोई गतिविधि नहीं",
+    "emptyMessage": "AI समीक्षा अनुरोध, निर्णय और सीमा-उल्लंघन फ्रेम यहाँ स्ट्रीम होंगे।",
+    "summaryEmpty": "कोई फ्रेम प्राप्त नहीं",
+    "summaryCount": "{{shown}} / {{total}} बफ़र किए गए दिखाए जा रहे हैं"
+  }
+}
