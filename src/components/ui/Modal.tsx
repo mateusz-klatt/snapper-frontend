@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useRef } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
 
 interface ModalProps {
@@ -31,6 +32,7 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
   children,
   size = 'md',
 }) => {
+  const { t } = useTranslation('common')
   const titleId = useId()
   const dialogRef = useRef<HTMLDialogElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
@@ -136,7 +138,7 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
               <button
                 onClick={onClose}
                 className='text-muted-500 transition-colors hover:text-alpine-900'
-                aria-label='Close'
+                aria-label={t('close')}
               >
                 <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path
