@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "সিগন্যাল"
+  },
+  "filters": {
+    "allStrategies": "সব কৌশল"
+  },
+  "actions": {
+    "export": "এক্সপোর্ট"
+  },
+  "stats": {
+    "total": "মোট",
+    "buy": "কেনা",
+    "sell": "বিক্রি",
+    "avgStrength": "গড় শক্তি"
+  },
+  "card": {
+    "strength": "শক্তি",
+    "price": "মূল্য",
+    "exchange": "এক্সচেঞ্জ",
+    "reason": "কারণ:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "শক্তিশালী",
+    "medium": "মাঝারি",
+    "weak": "দুর্বল",
+    "veryWeak": "খুব দুর্বল"
+  },
+  "time": {
+    "justNow": "এইমাত্র",
+    "minutesAgo": "{{count}}m আগে",
+    "hoursAgo": "{{count}}h আগে"
+  },
+  "empty": {
+    "title": "কোনো সিগন্যাল পাওয়া যায়নি",
+    "message": "বর্তমান ফিল্টারের সঙ্গে কোনো ট্রেডিং সিগন্যাল মেলে না।"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Isyarat"
+  },
+  "filters": {
+    "allStrategies": "Semua Strategi"
+  },
+  "actions": {
+    "export": "Eksport"
+  },
+  "stats": {
+    "total": "Jumlah",
+    "buy": "Beli",
+    "sell": "Jual",
+    "avgStrength": "Kekuatan Purata"
+  },
+  "card": {
+    "strength": "Kekuatan",
+    "price": "Harga",
+    "exchange": "Bursa",
+    "reason": "Sebab:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Kuat",
+    "medium": "Sederhana",
+    "weak": "Lemah",
+    "veryWeak": "Sangat Lemah"
+  },
+  "time": {
+    "justNow": "Baru sahaja",
+    "minutesAgo": "{{count}}m lalu",
+    "hoursAgo": "{{count}}j lalu"
+  },
+  "empty": {
+    "title": "Tiada isyarat ditemui",
+    "message": "Tiada isyarat dagangan sepadan dengan penapis semasa anda."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "คำขอ",
+    "decision": "การตัดสินใจ",
+    "capsViolation": "การละเมิดเพดาน",
+    "selectedDelegate": "ตัวแทนที่เลือก",
+    "instrument": "instrument",
+    "deadline": "กำหนดเวลา {{time}}",
+    "decidedBy": "โดย",
+    "newStatus": "สถานะ",
+    "mode": "โหมด",
+    "capAttempted": "พยายามใช้",
+    "capLimit": "เทียบกับลิมิต",
+    "capOn": "บน instrument",
+    "reviewLabel": "การตรวจทาน {{reviewId}}",
+    "unhandledFrame": "เฟรมกิจกรรมการตรวจทาน AI ที่ยังไม่รองรับ: {{frame}}"
+  },
+  "page": {
+    "title": "กล่องขาเข้าการตรวจทาน AI",
+    "subtitle": "การตรวจทาน CONSULT ที่รอดำเนินการซึ่งส่งมายังตัวแทนนี้ พร้อมสตรีมเหตุการณ์สด"
+  },
+  "roleNotice": {
+    "title": "สงวนไว้สำหรับตัวแทน AI",
+    "message": "กล่องขาเข้านี้แสดงการตรวจทาน CONSULT ที่ส่งมายัง principal ของตัวแทน AI ลงชื่อเข้าใช้ด้วยบัญชีตัวแทน AI เพื่อดูการตรวจทานที่รอดำเนินการและสตรีมกิจกรรมสด บทบาทปัจจุบันของคุณคือ",
+    "unknownRole": "ไม่ทราบ"
+  },
+  "pending": {
+    "title": "การตรวจทานที่รอดำเนินการ",
+    "loading": "กำลังโหลดการตรวจทานที่รอดำเนินการ…",
+    "loadError": "โหลดการตรวจทานที่รอดำเนินการไม่สำเร็จ: {{message}}",
+    "emptyTitle": "ไม่มีการตรวจทานที่รอดำเนินการ",
+    "emptyMessage": "คำขอ CONSULT ใหม่ที่ส่งมายังตัวแทนนี้จะแสดงที่นี่",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Thesis",
+      "status": "สถานะ",
+      "deadline": "กำหนดเวลา",
+      "decision": "การตัดสินใจ"
+    },
+    "rationalePlaceholder": "เหตุผล (ไม่บังคับ)",
+    "rationaleAriaLabel": "เหตุผลสำหรับการตรวจทาน {{reviewId}}",
+    "approve": "อนุมัติ",
+    "reject": "ปฏิเสธ",
+    "submitError": "ส่งไม่สำเร็จ: {{message}}"
+  },
+  "activity": {
+    "title": "กิจกรรมล่าสุด",
+    "emptyTitle": "ยังไม่มีกิจกรรม",
+    "emptyMessage": "เฟรมคำขอตรวจทาน AI การตัดสินใจ และการละเมิดเพดานจะสตรีมเข้ามาที่นี่",
+    "summaryEmpty": "ยังไม่ได้รับเฟรม",
+    "summaryCount": "แสดง {{shown}} จาก {{total}} ที่บัฟเฟอร์ไว้"
+  }
+}

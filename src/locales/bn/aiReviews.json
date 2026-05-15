@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "অনুরোধ",
+    "decision": "সিদ্ধান্ত",
+    "capsViolation": "ক্যাপ লঙ্ঘন",
+    "selectedDelegate": "নির্বাচিত ডেলিগেট",
+    "instrument": "ইনস্ট্রুমেন্ট",
+    "deadline": "ডেডলাইন {{time}}",
+    "decidedBy": "দ্বারা",
+    "newStatus": "স্ট্যাটাস",
+    "mode": "মোড",
+    "capAttempted": "চেষ্টা করা হয়েছে",
+    "capLimit": "লিমিটের বিপরীতে",
+    "capOn": "ইনস্ট্রুমেন্টে",
+    "reviewLabel": "রিভিউ {{reviewId}}",
+    "unhandledFrame": "অপরিচালিত AI review activity frame: {{frame}}"
+  },
+  "page": {
+    "title": "AI রিভিউ ইনবক্স",
+    "subtitle": "এই ডেলিগেটে রাউট হওয়া অপেক্ষমাণ CONSULT রিভিউ এবং লাইভ ইভেন্ট স্ট্রিম।"
+  },
+  "roleNotice": {
+    "title": "AI ডেলিগেটদের জন্য সংরক্ষিত",
+    "message": "এই ইনবক্স AI ডেলিগেট principal-এ রাউট হওয়া CONSULT রিভিউ দেখায়। অপেক্ষমাণ রিভিউ এবং লাইভ activity stream দেখতে AI ডেলিগেট অ্যাকাউন্ট দিয়ে সাইন ইন করুন। আপনার বর্তমান ভূমিকা",
+    "unknownRole": "অজানা"
+  },
+  "pending": {
+    "title": "অপেক্ষমাণ রিভিউ",
+    "loading": "অপেক্ষমাণ রিভিউ লোড হচ্ছে…",
+    "loadError": "অপেক্ষমাণ রিভিউ লোড করতে ব্যর্থ: {{message}}",
+    "emptyTitle": "কোনো অপেক্ষমাণ রিভিউ নেই",
+    "emptyMessage": "এই ডেলিগেটে রাউট হওয়া নতুন CONSULT অনুরোধ এখানে দেখাবে।",
+    "columns": {
+      "instrument": "ইনস্ট্রুমেন্ট",
+      "thesis": "থিসিস",
+      "status": "স্ট্যাটাস",
+      "deadline": "ডেডলাইন",
+      "decision": "সিদ্ধান্ত"
+    },
+    "rationalePlaceholder": "যুক্তি (ঐচ্ছিক)",
+    "rationaleAriaLabel": "{{reviewId}} রিভিউর যুক্তি",
+    "approve": "অনুমোদন করুন",
+    "reject": "প্রত্যাখ্যান করুন",
+    "submitError": "জমা ব্যর্থ: {{message}}"
+  },
+  "activity": {
+    "title": "সাম্প্রতিক কার্যকলাপ",
+    "emptyTitle": "এখনও কোনো কার্যকলাপ নেই",
+    "emptyMessage": "AI রিভিউ অনুরোধ, সিদ্ধান্ত এবং ক্যাপ-লঙ্ঘন frame এখানে স্ট্রিম হবে।",
+    "summaryEmpty": "কোনো frame পাওয়া যায়নি",
+    "summaryCount": "বাফার করা {{total}}-এর মধ্যে {{shown}} দেখানো হচ্ছে"
+  }
+}

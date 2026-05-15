@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "পজিশন"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: অপেক্ষমাণ",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "পরিমাণ",
+    "averageEntry": "গড় এন্ট্রি",
+    "unrealizedPnl": "অবাস্তবায়িত P&L",
+    "realizedPnl": "বাস্তবায়িত P&L",
+    "updated": "{{timestamp}} আপডেট হয়েছে"
+  },
+  "empty": {
+    "title": "কোনো খোলা পজিশন নেই",
+    "message": "ট্রেড নির্বাহ হলে long, short এবং flat পজিশন এখানে দেখাবে।"
+  },
+  "bracketModal": {
+    "title": "SL/TP সংযুক্ত করুন — {{instrument}}",
+    "confirmTitle": "Bracket নিশ্চিত করুন",
+    "position": "পজিশন",
+    "entryPrice": "এন্ট্রি মূল্য",
+    "stopLossLabel": "Stop-Loss মূল্য",
+    "takeProfitLabel": "Take-Profit মূল্য",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "${{price}}-এর নিচে",
+      "slShort": "${{price}}-এর উপরে",
+      "tpLong": "${{price}}-এর উপরে",
+      "tpShort": "${{price}}-এর নিচে"
+    },
+    "buttons": {
+      "cancel": "বাতিল",
+      "review": "পর্যালোচনা",
+      "back": "ফিরে যান",
+      "confirm": "নিশ্চিত করুন",
+      "creating": "তৈরি হচ্ছে…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Trailing Stop সংযুক্ত করুন — {{instrument}}",
+    "confirmTitle": "Trailing Stop নিশ্চিত করুন",
+    "position": "পজিশন",
+    "entryPrice": "এন্ট্রি মূল্য",
+    "trailingDistanceLabel": "Trailing Distance (%)",
+    "minLockLabel": "Min Lock Profit (%) — ঐচ্ছিক",
+    "trailingDistance": "Trailing Distance",
+    "minLockProfit": "Min Lock Profit",
+    "placeholders": {
+      "trailingPct": "যেমন 5.0",
+      "minLockPct": "0 = সঙ্গে সঙ্গে শুরু"
+    },
+    "minLockWarning": "মূল্য আপনার পক্ষে {{minLockPct}}% না সরলে Trailing Stop সক্রিয় হবে না।",
+    "buttons": {
+      "cancel": "বাতিল",
+      "review": "পর্যালোচনা",
+      "back": "ফিরে যান",
+      "confirm": "নিশ্চিত করুন",
+      "creating": "তৈরি হচ্ছে..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "SL বা TP মূল্যের অন্তত একটি আবশ্যক",
+    "invalidSlPrice": "Stop-Loss মূল্য সঠিক নয়",
+    "slPricePositive": "Stop-Loss মূল্য অবশ্যই ধনাত্মক হতে হবে",
+    "invalidTpPrice": "Take-Profit মূল্য সঠিক নয়",
+    "tpPricePositive": "Take-Profit মূল্য অবশ্যই ধনাত্মক হতে হবে",
+    "slLongBelowEntry": "SL মূল্য এন্ট্রি মূল্যের নিচে হতে হবে ({{price}})",
+    "tpLongAboveEntry": "TP মূল্য এন্ট্রি মূল্যের উপরে হতে হবে ({{price}})",
+    "slShortAboveEntry": "SL মূল্য এন্ট্রি মূল্যের উপরে হতে হবে ({{price}})",
+    "tpShortBelowEntry": "TP মূল্য এন্ট্রি মূল্যের নিচে হতে হবে ({{price}})",
+    "trailingRequired": "Trailing percentage আবশ্যক",
+    "trailingInvalid": "Trailing percentage সঠিক নয়",
+    "trailingRange": "Trailing percentage 0 থেকে 100-এর মধ্যে হতে হবে",
+    "minLockInvalid": "Min lock percentage সঠিক নয়",
+    "minLockRange": "Min lock percentage 0 থেকে 100-এর মধ্যে হতে হবে"
+  }
+}

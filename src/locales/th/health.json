@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "สุขภาพระบบ",
+    "healthMetricsHeading": "เมตริกสุขภาพ",
+    "processStatusHeading": "สถานะกระบวนการ",
+    "activeBacktestsHeading": "Backtests ที่ใช้งานอยู่",
+    "quickActionsHeading": "การดำเนินการด่วน",
+    "featureNotImplemented": "ยังไม่ได้ใช้งานฟีเจอร์นี้",
+    "restartServices": "รีสตาร์ทบริการ",
+    "runHealthCheck": "รันการตรวจสุขภาพ",
+    "viewLogs": "ดู log",
+    "exportReport": "ส่งออกรายงาน"
+  },
+  "status": {
+    "healthy": "สุขภาพดี",
+    "stopped": "หยุดแล้ว",
+    "error": "ข้อผิดพลาด",
+    "warning": "คำเตือน",
+    "completed": "เสร็จสมบูรณ์",
+    "unknown": "ไม่ทราบ"
+  },
+  "metrics": {
+    "tradingEngine": "เอนจินการเทรด",
+    "tradingEngineDescription": "เอนจินดำเนินกลยุทธ์",
+    "activeBacktests": "Backtests ที่ใช้งานอยู่",
+    "activeBacktestsDescription": "กระบวนการ Backtest ที่กำลังทำงาน",
+    "active": "ใช้งานอยู่",
+    "inactive": "ไม่ใช้งาน"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "เวลาทำงาน",
+    "exitCode": "รหัสออก: {{code}}",
+    "service": "บริการ",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "สถิติฐานข้อมูล",
+    "loading": "กำลังโหลดสถิติฐานข้อมูล…",
+    "unavailable": "สถิติฐานข้อมูลไม่พร้อมใช้งาน: {{message}}",
+    "fallbackError": "โหลดสถิติฐานข้อมูลไม่สำเร็จ",
+    "sampled": "สุ่มตัวอย่างเมื่อ {{age}}",
+    "samplerSummary": "ช่วงสุ่มตัวอย่าง: {{seconds}}s · {{count}} ตาราง",
+    "columns": {
+      "table": "ตาราง",
+      "kind": "ชนิด",
+      "total": "ทั้งหมด",
+      "current": "ปัจจุบัน",
+      "closed": "ปิดแล้ว",
+      "archivable": "เก็บถาวรได้",
+      "status": "สถานะ"
+    },
+    "stale": "เก่า"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "กำลังโหลดเมตริกการแจ้งเตือน…",
+    "unavailable": "เมตริกการแจ้งเตือนไม่พร้อมใช้งาน: {{message}}",
+    "fallbackError": "โหลดเมตริกการแจ้งเตือนไม่สำเร็จ",
+    "sent": "ส่งแล้ว",
+    "sentDescription": "Terminal: ส่งแล้ว",
+    "failed": "ล้มเหลว",
+    "failedDescription": "ใช้งบประมาณ retry หมดแล้ว",
+    "unregistered": "ไม่ได้ลงทะเบียน",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "ยกเลิกแล้ว (ขอบเขต)",
+    "cancelledScopeDescription": "เพิกถอนขอบเขต / ปิดใช้งานผู้ใช้",
+    "outboxDepth": "ความลึก Outbox",
+    "outboxDepthDescription": "อยู่ในคิว รอ retry"
+  },
+  "retention": {
+    "title": "Retention Scheduler",
+    "loading": "กำลังโหลด retention run…",
+    "unavailable": "retention run ไม่พร้อมใช้งาน: {{message}}",
+    "fallbackError": "โหลด retention run ไม่สำเร็จ",
+    "lastRun": "run ล่าสุด {{age}}",
+    "dryRunNotice": "โหมด dry-run: แถวถูกเก็บถาวรแต่ไม่ถูกลบออกจาก DB",
+    "columns": {
+      "table": "ตาราง",
+      "retain": "เก็บไว้",
+      "archivedWindow": "ช่วงที่เก็บถาวร",
+      "archived": "เก็บถาวรแล้ว",
+      "purged": "ล้างแล้ว",
+      "files": "ไฟล์",
+      "status": "สถานะ"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "ข้อผิดพลาด"
+  },
+  "systemMetrics": {
+    "title": "สุขภาพกระบวนการ",
+    "loading": "กำลังโหลดเมตริกกระบวนการ…",
+    "unavailable": "เมตริกกระบวนการไม่พร้อมใช้งาน: {{message}}",
+    "fallbackError": "โหลดเมตริกสุขภาพกระบวนการไม่สำเร็จ",
+    "rawJson": "JSON ดิบ",
+    "pid": "PID",
+    "statusValue": "สถานะ: {{status}}",
+    "uptime": "เวลาทำงาน",
+    "threads": "Threads",
+    "openFds": "Open FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "ถูก throttle {{count}}×",
+    "memory": "หน่วยความจำ",
+    "saturation": "Saturation {{percent}}",
+    "asyncioTasks": "Asyncio Tasks",
+    "asyncioActive": "ใช้งานอยู่ {{count}}",
+    "asyncioPending": "+ รอดำเนินการ {{count}}",
+    "dbPool": "DB Pool",
+    "liveConns": "Live conns: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objects: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Network conns",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Active",
+    "tracemallocIdle": "Idle"
+  },
+  "relativeAge": {
+    "justNow": "เมื่อครู่นี้",
+    "seconds": "{{seconds}}s ที่แล้ว",
+    "minutes": "{{minutes}}min ที่แล้ว",
+    "hours": "{{hours}}h ที่แล้ว",
+    "days": "{{days}}d ที่แล้ว"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

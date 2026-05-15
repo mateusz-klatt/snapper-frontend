@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← ย้อนกลับ",
+    "backToList": "← กลับไปยัง Backtests"
+  },
+  "status": {
+    "pending": "รอดำเนินการ",
+    "running": "กำลังทำงาน",
+    "completed": "เสร็จสมบูรณ์",
+    "failed": "ล้มเหลว",
+    "cancelled": "ยกเลิกแล้ว"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "ยกเลิก",
+      "rerun": "รันซ้ำ"
+    },
+    "fields": {
+      "timeframe": "กรอบเวลา",
+      "period": "ช่วงเวลา",
+      "initialCash": "เงินสดตั้งต้น",
+      "id": "ID"
+    },
+    "errorPrefix": "ข้อผิดพลาด: {{message}}",
+    "filter": {
+      "ariaLabel": "กรอง Backtests ตามสถานะ",
+      "options": {
+        "all": "ทุกสถานะ",
+        "pending": "รอดำเนินการ",
+        "running": "กำลังทำงาน",
+        "completed": "เสร็จสมบูรณ์",
+        "failed": "ล้มเหลว",
+        "cancelled": "ยกเลิกแล้ว"
+      }
+    },
+    "empty": {
+      "title": "ไม่มี Backtests",
+      "message": "รัน Backtest ผ่าน CLI หรือ API เพื่อดูผลลัพธ์ที่นี่"
+    }
+  },
+  "detail": {
+    "title": "การรัน Backtest",
+    "fields": {
+      "strategy": "กลยุทธ์",
+      "instrument": "Instrument",
+      "status": "สถานะ",
+      "period": "ช่วงเวลา",
+      "crossAsset": "การระบุที่มาแบบ cross-asset",
+      "configHash": "แฮชการกำหนดค่า"
+    },
+    "crossAssetFlow": "{{source}} Feed → การดำเนินการบน {{target}}",
+    "errors": {
+      "invalidRunId": "run id ไม่ถูกต้อง — ต้องเป็น UUID7 (ได้รับ \"{{id}}\")",
+      "loadFailed": "โหลด run ไม่สำเร็จ: {{message}}",
+      "notFound": "ไม่พบ"
+    }
+  },
+  "compare": {
+    "title": "เปรียบเทียบ",
+    "headingFull": "การเปรียบเทียบ Backtest",
+    "loading": "กำลังโหลดการเปรียบเทียบ…",
+    "vs": "เทียบกับ",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "เมตริก",
+      "equityOverlay": "เส้นทุนซ้อนทับ",
+      "trades": "การเทรด",
+      "signals": "สัญญาณ"
+    },
+    "pairingMode": {
+      "auto": "อัตโนมัติ",
+      "manual": "ด้วยตนเอง"
+    },
+    "errors": {
+      "notFound": "ไม่พบการเปรียบเทียบในกระเป๋าเงินปัจจุบัน",
+      "loadFailed": "โหลดการเปรียบเทียบไม่สำเร็จ: {{message}}",
+      "unknown": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ",
+      "emptyResponse": "การตอบกลับการเปรียบเทียบว่าง"
+    },
+    "launcher": {
+      "title": "เปรียบเทียบ",
+      "submit": "เปรียบเทียบ",
+      "autoPair": "เปรียบเทียบกับรายการล่าสุด",
+      "terminalGate": "การเปรียบเทียบพร้อมใช้เมื่อ run นี้ถึงสถานะสิ้นสุด",
+      "noSiblings": "ไม่มี run อื่นที่ใช้การกำหนดค่านี้",
+      "limitNotice": "แสดง {{count}} รายการล่าสุด — ใช้การจับคู่ด้วยตนเองสำหรับ run เก่ากว่า",
+      "pickPlaceholder": "— เลือก run เพื่อเปรียบเทียบ —",
+      "showAllLabel": "แสดง run ทั้งหมด (ไม่ใช่เฉพาะการกำหนดค่าเดียวกัน)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "run ทั้งหมด",
+        "sameConfig": "การกำหนดค่าเดียวกัน"
+      },
+      "errors": {
+        "pickRequired": "เลือก run จากรายการ"
+      }
+    },
+    "diffColumns": {
+      "common": "เหมือนกัน",
+      "onlyA": "เฉพาะใน A",
+      "onlyB": "เฉพาะใน B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "ไม่มีเมตริกที่เปรียบเทียบได้ — ทั้งสอง run ไม่มีค่าที่บันทึกไว้",
+      "columns": {
+        "name": "เมตริก",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "กำลังรอความคืบหน้า…",
+    "candles": "{{done}} / {{total}} แท่งเทียน",
+    "candlesNoTotal": "{{done}} แท่งเทียน",
+    "equity": "ทุน {{value}}",
+    "signalsTrades": "{{signals}} สัญญาณ / {{trades}} การเทรด",
+    "milestoneLine": "ไมล์สโตน {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

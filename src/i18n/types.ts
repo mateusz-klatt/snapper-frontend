@@ -93,6 +93,9 @@ export type CatalogLanguage =
   | 'he'
   | 'fa'
   | 'hi'
+  | 'th'
+  | 'bn'
+  | 'ms'
 
 export interface LocaleMeta {
   readonly code: AppLocale

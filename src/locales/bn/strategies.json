@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "কৌশল ব্যবস্থাপনা",
+    "register": "কৌশল নিবন্ধন করুন",
+    "saving": "সংরক্ষণ হচ্ছে…",
+    "descriptionCanManage": "UI থেকে সরাসরি নতুন কৌশল প্রসেস নিবন্ধন করুন। Autostart restart জুড়ে প্রসেস সক্রিয় রাখে।",
+    "descriptionViewer": "কনফিগার করা কৌশল এবং তাদের স্ট্যাটাস দেখুন। কৌশল পরিচালনা করতে অপারেটর বা অ্যাডমিনের সঙ্গে যোগাযোগ করুন।",
+    "searchPlaceholder": "কৌশল খুঁজুন...",
+    "filter": {
+      "all": "সব স্ট্যাটাস",
+      "running": "চলছে",
+      "stopped": "বন্ধ"
+    },
+    "configuredHeading": "কনফিগার করা কৌশল",
+    "noMatches": "আপনার ফিল্টারের সঙ্গে কোনো কৌশল মেলে না",
+    "clearFilters": "ফিল্টার পরিষ্কার করুন",
+    "emptyTitle": "কোনো কৌশল কনফিগার করা নেই",
+    "emptyCanManage": "অ্যালগরিদমিক ট্রেডিং শুরু করতে একটি কৌশল নিবন্ধন করুন",
+    "emptyViewer": "এখনও কোনো কৌশল কনফিগার করা হয়নি"
+  },
+  "confirm": {
+    "startTitle": "{{name}} শুরু করুন",
+    "startMessage": "এটি {{name}} কৌশল শুরু করবে। এটি live trading operations শুরু করতে পারে।",
+    "stopTitle": "{{name}} বন্ধ করুন",
+    "stopMessage": "এটি {{name}} কৌশল বন্ধ করবে। সক্রিয় পজিশন স্বয়ংক্রিয়ভাবে বন্ধ হবে না।"
+  },
+  "toast": {
+    "saved": "{{name}} কৌশল সংরক্ষিত",
+    "started": "{{name}} কৌশল শুরু হয়েছে",
+    "registerFailed": "কৌশল নিবন্ধন করতে ব্যর্থ: {{message}}",
+    "startSuccess": "কৌশল সফলভাবে শুরু হয়েছে",
+    "stopSuccess": "কৌশল সফলভাবে বন্ধ হয়েছে",
+    "alreadyRunning": "কৌশল ইতিমধ্যে চলছে",
+    "notRunning": "কৌশল চলছে না",
+    "configNotFound": "কৌশল কনফিগারেশন পাওয়া যায়নি। ডেটাবেস সেটিংস পরীক্ষা করুন।",
+    "networkError": "নেটওয়ার্ক ত্রুটি। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
+    "startFailed": "কৌশল শুরু করতে ব্যর্থ: {{message}}",
+    "stopFailed": "কৌশল বন্ধ করতে ব্যর্থ: {{message}}",
+    "unknownError": "অজানা ত্রুটি"
+  },
+  "card": {
+    "ariaLabel": "কৌশল: {{name}}",
+    "modeLabel": "মোড: {{mode}}",
+    "autostartEnabled": "Autostart: সক্রিয়",
+    "autostartDisabled": "Autostart: নিষ্ক্রিয়",
+    "statusAriaLabel": "স্ট্যাটাস: {{status}}",
+    "dataLagAriaLabel": "ডেটা ল্যাগ: {{seconds}} সেকেন্ড",
+    "lagBadge": "ল্যাগ: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "HB age: {{seconds}}s",
+    "metrics": {
+      "status": "স্ট্যাটাস",
+      "dataLag": "ডেটা ল্যাগ",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "বিস্তারিত দেখান",
+    "hideDetails": "বিস্তারিত লুকান",
+    "inputs": "Inputs ({{count}})",
+    "outputs": "Outputs ({{count}})",
+    "feedPublishers": "Feed Publishers ({{count}})",
+    "lastUpdate": "শেষ আপডেট: {{time}}",
+    "waiting": "Heartbeat-এর জন্য অপেক্ষা হচ্ছে...",
+    "startAriaLabel": "{{name}} কৌশল শুরু করুন",
+    "stopAriaLabel": "{{name}} কৌশল বন্ধ করুন",
+    "start": "শুরু করুন",
+    "stop": "বন্ধ করুন",
+    "starting": "শুরু হচ্ছে...",
+    "stopping": "বন্ধ হচ্ছে...",
+    "status": {
+      "starting": "শুরু হচ্ছে",
+      "stopping": "বন্ধ হচ্ছে",
+      "running": "চলছে",
+      "stopped": "বন্ধ"
+    },
+    "health": {
+      "healthy": "স্বাস্থ্যকর — নতুন ডেটা পাওয়া যাচ্ছে",
+      "warning": "সতর্কতা — ডেটা stale",
+      "error": "ত্রুটি — সাম্প্রতিক ডেটা নেই",
+      "unknown": "অজানা — Heartbeat ডেটা নেই"
+    },
+    "healthShort": {
+      "healthy": "HEALTHY",
+      "warning": "WARNING",
+      "error": "ERROR"
+    }
+  },
+  "launchModal": {
+    "title": "কৌশল প্রসেস নিবন্ধন",
+    "emptyTemplates": "Backend-এ কোনো কৌশল template নিবন্ধিত নেই। অন্তত একটি কৌশল প্রসেস define করুন।",
+    "close": "বন্ধ করুন",
+    "templateLabel": "কৌশল template",
+    "templatePlaceholder": "Template বেছে নিন...",
+    "templateFallbackDescription": "Backend-এ নিবন্ধিত কৌশল",
+    "loadingDefaults": "Template defaults লোড হচ্ছে…",
+    "loadDefaultsError": "Template defaults লোড করা যায়নি। Backend logs পরীক্ষা করুন।",
+    "processNameLabel": "প্রসেসের নাম",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "অনুমোদিত অক্ষর: lowercase letters, numbers, underscores",
+    "instanceNameLabel": "কৌশল instance নাম",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "কৌশল কনফিগারেশন এবং output topics-এ ব্যবহৃত",
+    "executionModeLabel": "Execution mode",
+    "executionModeThread": "Embedded thread",
+    "executionModeProcess": "Isolated process",
+    "executionModeHelp": "Threads memory share করে, processes শক্তিশালী isolation দেয়।",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Server boot-এ Autostart",
+    "startImmediatelyLabel": "নিবন্ধনের পর সঙ্গে সঙ্গে শুরু",
+    "noteLabel": "নোট (ঐচ্ছিক)",
+    "notePlaceholder": "এই কৌশল instance-এর উদ্দেশ্য বা প্যারামিটার বর্ণনা করুন।",
+    "noteHelp": "এই প্রসেস শনাক্ত করতে configuration-এর সঙ্গে সংরক্ষিত হয়।",
+    "cancel": "বাতিল",
+    "submit": "কৌশল নিবন্ধন করুন",
+    "submitting": "নিবন্ধন হচ্ছে…"
+  }
+}

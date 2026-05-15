@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "ภาพรวม"
+  },
+  "metrics": {
+    "feedsRunning": "Feed ที่กำลังทำงาน",
+    "strategiesActive": "กลยุทธ์ที่ใช้งานอยู่",
+    "openOrders": "คำสั่งเปิด",
+    "todaysExecutions": "การดำเนินการวันนี้",
+    "executionsOn": "การดำเนินการ ({{date}})"
+  },
+  "status": {
+    "stopped": "หยุดแล้ว",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "กำลังทำงาน",
+    "active": "ใช้งานอยู่"
+  },
+  "processStatus": {
+    "title": "สถานะกระบวนการ",
+    "feeds": "Feed",
+    "strategies": "กลยุทธ์",
+    "executors": "Executors",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "สรุปพอร์ต",
+    "totalValue": "มูลค่ารวม",
+    "longExposure": "Exposure ฝั่ง long",
+    "shortExposure": "Exposure ฝั่ง short",
+    "netDelta": "เดลตาสุทธิ",
+    "unrealizedPnl": "P&L ที่ยังไม่รับรู้",
+    "pnlPercent": "P&L %",
+    "positions": "สถานะ",
+    "instrumentsCount": "{{count}} instruments",
+    "empty": "ไม่มีข้อมูลสถานะ"
+  },
+  "signals": {
+    "title": "สัญญาณล่าสุด",
+    "empty": "ไม่มีสัญญาณล่าสุด",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "การดำเนินการล่าสุด",
+    "empty": "ไม่มีการดำเนินการล่าสุด",
+    "noTime": "N/A"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Gambaran keseluruhan"
+  },
+  "metrics": {
+    "feedsRunning": "Feed Berjalan",
+    "strategiesActive": "Strategi Aktif",
+    "openOrders": "Pesanan Terbuka",
+    "todaysExecutions": "Pelaksanaan Hari Ini",
+    "executionsOn": "Pelaksanaan ({{date}})"
+  },
+  "status": {
+    "stopped": "Dihentikan",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Berjalan",
+    "active": "Aktif"
+  },
+  "processStatus": {
+    "title": "Status Proses",
+    "feeds": "Feed",
+    "strategies": "Strategi",
+    "executors": "Pelaksana",
+    "brokers": "Broker"
+  },
+  "portfolio": {
+    "title": "Ringkasan Portfolio",
+    "totalValue": "Nilai Jumlah",
+    "longExposure": "Pendedahan long",
+    "shortExposure": "Pendedahan short",
+    "netDelta": "Delta bersih",
+    "unrealizedPnl": "P&L Belum Direalisasi",
+    "pnlPercent": "P&L %",
+    "positions": "Posisi",
+    "instrumentsCount": "{{count}} instrumen",
+    "empty": "Tiada data posisi tersedia"
+  },
+  "signals": {
+    "title": "Isyarat Terkini",
+    "empty": "Tiada isyarat terkini",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Pelaksanaan Terkini",
+    "empty": "Tiada pelaksanaan terkini",
+    "noTime": "N/A"
+  }
+}

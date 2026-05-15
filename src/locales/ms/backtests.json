@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Kembali",
+    "backToList": "← Kembali ke Backtests"
+  },
+  "status": {
+    "pending": "Tertunda",
+    "running": "Berjalan",
+    "completed": "Selesai",
+    "failed": "Gagal",
+    "cancelled": "Dibatalkan"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Batal",
+      "rerun": "Jalankan semula"
+    },
+    "fields": {
+      "timeframe": "Rangka masa",
+      "period": "Tempoh",
+      "initialCash": "Tunai Awal",
+      "id": "ID"
+    },
+    "errorPrefix": "Ralat: {{message}}",
+    "filter": {
+      "ariaLabel": "Tapis Backtests mengikut status",
+      "options": {
+        "all": "Semua status",
+        "pending": "Tertunda",
+        "running": "Berjalan",
+        "completed": "Selesai",
+        "failed": "Gagal",
+        "cancelled": "Dibatalkan"
+      }
+    },
+    "empty": {
+      "title": "Tiada Backtests",
+      "message": "Jalankan Backtest melalui CLI atau API untuk melihat keputusan di sini."
+    }
+  },
+  "detail": {
+    "title": "Larian Backtest",
+    "fields": {
+      "strategy": "Strategi",
+      "instrument": "Instrumen",
+      "status": "Status",
+      "period": "Tempoh",
+      "crossAsset": "Atribusi cross-asset",
+      "configHash": "Hash config"
+    },
+    "crossAssetFlow": "{{source}} Feed → pelaksanaan {{target}}",
+    "errors": {
+      "invalidRunId": "Run id tidak sah — mesti UUID7 (diterima \"{{id}}\").",
+      "loadFailed": "Gagal memuatkan run: {{message}}",
+      "notFound": "tidak ditemui"
+    }
+  },
+  "compare": {
+    "title": "Bandingkan",
+    "headingFull": "Perbandingan Backtest",
+    "loading": "Memuatkan perbandingan…",
+    "vs": "vs",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrik",
+      "equityOverlay": "Overlay ekuiti",
+      "trades": "Dagangan",
+      "signals": "Isyarat"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Perbandingan tidak ditemui dalam dompet semasa.",
+      "loadFailed": "Gagal memuatkan perbandingan: {{message}}",
+      "unknown": "ralat tidak diketahui",
+      "emptyResponse": "Respons perbandingan kosong."
+    },
+    "launcher": {
+      "title": "Bandingkan",
+      "submit": "Bandingkan",
+      "autoPair": "Bandingkan dengan yang paling terkini",
+      "terminalGate": "perbandingan tersedia apabila run ini mencapai status terminal",
+      "noSiblings": "tiada run lain dengan config ini",
+      "limitNotice": "memaparkan {{count}} paling terkini — gunakan pasangan manual untuk run lebih lama",
+      "pickPlaceholder": "— pilih run untuk dibandingkan —",
+      "showAllLabel": "Tunjuk semua run (bukan hanya config sama)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "semua run",
+        "sameConfig": "config sama"
+      },
+      "errors": {
+        "pickRequired": "pilih run daripada senarai"
+      }
+    },
+    "diffColumns": {
+      "common": "Sama",
+      "onlyA": "Hanya dalam A",
+      "onlyB": "Hanya dalam B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Tiada metrik boleh dibandingkan — kedua-dua run tiada nilai direkodkan.",
+      "columns": {
+        "name": "Metrik",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Menunggu kemajuan…",
+    "candles": "{{done}} / {{total}} lilin",
+    "candlesNoTotal": "{{done}} lilin",
+    "equity": "ekuiti {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} dagangan",
+    "milestoneLine": "milestone {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

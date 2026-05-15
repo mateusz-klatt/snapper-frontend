@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "การดูแลระบบ",
+    "subtitle": "จัดการผู้ใช้และการกำหนดค่าระบบ"
+  },
+  "rolePermissions": {
+    "title": "สิทธิ์ตามบทบาท",
+    "viewer": {
+      "label": "Viewer",
+      "description": "สิทธิ์อ่านอย่างเดียวสำหรับภาพรวมและข้อมูลตลาด ไม่สามารถจัดการกระบวนการ กลยุทธ์ หรือการตั้งค่าระบบได้"
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "สิทธิ์ทั้งหมดของ Viewer รวมถึงการดำเนินงานเทรด การดำเนินกลยุทธ์ การจัดการกระบวนการ และการติดตามสุขภาพระบบ"
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "เข้าถึงระบบเต็มรูปแบบ รวมถึงการจัดการผู้ใช้ การตั้งค่าระบบ การกำหนดค่า API key และสิทธิ์ Operator ทั้งหมด"
+    },
+    "table": {
+      "resource": "ทรัพยากร",
+      "viewer": "Viewer",
+      "operator": "Operator",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "ภาพรวม",
+      "market": "ข้อมูลตลาด",
+      "processes": "กระบวนการ",
+      "strategies": "กลยุทธ์",
+      "orders": "คำสั่งและการดำเนินการ",
+      "positions": "สถานะ",
+      "signals": "สัญญาณ",
+      "health": "สุขภาพระบบ",
+      "admin": "การดูแลระบบ",
+      "settings": "การตั้งค่า"
+    }
+  },
+  "common": {
+    "cancel": "ยกเลิก",
+    "selectWallet": "เลือกกระเป๋าเงิน",
+    "selectAWallet": "เลือกกระเป๋าเงิน",
+    "chooseWalletPlaceholder": "เลือกกระเป๋าเงิน...",
+    "selectWalletPlaceholder": "เลือกกระเป๋าเงิน...",
+    "walletLabel": "กระเป๋าเงิน",
+    "paperAnnotation": " (paper)",
+    "unknownError": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "ปฏิเสธการเข้าถึง",
+      "message": "คุณไม่มีสิทธิ์จัดการผู้ใช้ โปรดติดต่อผู้ดูแลระบบ"
+    },
+    "list": {
+      "title": "การจัดการผู้ใช้",
+      "countLabel": "{{count}} ผู้ใช้",
+      "showInactive": "แสดงผู้ใช้ที่ไม่ใช้งาน",
+      "hideInactive": "ซ่อนผู้ใช้ที่ไม่ใช้งาน",
+      "addUser": "เพิ่มผู้ใช้",
+      "searchPlaceholder": "ค้นหาตามชื่อผู้ใช้ อีเมล หรือบทบาท...",
+      "columns": {
+        "user": "ผู้ใช้",
+        "role": "บทบาท",
+        "status": "สถานะ",
+        "createdAt": "สร้างเมื่อ",
+        "actions": "การดำเนินการ"
+      },
+      "status": {
+        "active": "ใช้งานอยู่",
+        "inactive": "ไม่ใช้งาน"
+      },
+      "unknown": "ไม่ทราบ",
+      "empty": {
+        "title": "ไม่พบผู้ใช้",
+        "noMatch": "ไม่มีผู้ใช้ที่ตรงกับเกณฑ์การค้นหา",
+        "noUsers": "ไม่พบผู้ใช้",
+        "noActive": "ไม่พบผู้ใช้ที่ใช้งานอยู่"
+      },
+      "errorLoading": "ข้อผิดพลาดในการโหลดผู้ใช้: {{message}}",
+      "deactivate": {
+        "title": "ปิดใช้งานผู้ใช้",
+        "message": "แน่ใจหรือไม่ว่าต้องการปิดใช้งานผู้ใช้ \"{{username}}\"? ผู้ใช้นี้จะไม่สามารถลงชื่อเข้าใช้ได้อีก",
+        "confirm": "ปิดใช้งาน"
+      },
+      "toast": {
+        "deactivated": "ปิดใช้งานผู้ใช้แล้ว",
+        "deactivateError": "ข้อผิดพลาดในการปิดใช้งานผู้ใช้"
+      }
+    },
+    "form": {
+      "titleEdit": "แก้ไขผู้ใช้",
+      "titleAdd": "เพิ่มผู้ใช้",
+      "fields": {
+        "username": "ชื่อผู้ใช้",
+        "usernamePlaceholder": "ป้อนชื่อผู้ใช้",
+        "password": "รหัสผ่าน",
+        "passwordPlaceholder": "ป้อนรหัสผ่าน",
+        "newPassword": "รหัสผ่านใหม่",
+        "newPasswordPlaceholder": "ป้อนรหัสผ่านใหม่",
+        "email": "อีเมล",
+        "emailPlaceholder": "ป้อนอีเมล",
+        "role": "บทบาท",
+        "accountActive": "บัญชีใช้งานอยู่",
+        "resetUserPassword": "รีเซ็ตรหัสผ่านผู้ใช้"
+      },
+      "roles": {
+        "viewer": "Viewer",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "ต้องระบุชื่อผู้ใช้",
+        "usernameMinLength": "ชื่อผู้ใช้ต้องมีอย่างน้อย 3 อักขระ",
+        "emailRequired": "ต้องระบุอีเมล",
+        "emailInvalid": "รูปแบบอีเมลไม่ถูกต้อง",
+        "passwordRequired": "ต้องระบุรหัสผ่าน",
+        "passwordMinLength": "รหัสผ่านต้องมีอย่างน้อย 8 อักขระ",
+        "passwordRequiredWhenResetting": "ต้องระบุรหัสผ่านเมื่อรีเซ็ต"
+      },
+      "actions": {
+        "saveChanges": "บันทึกการเปลี่ยนแปลง",
+        "createUser": "สร้างผู้ใช้"
+      },
+      "toast": {
+        "created": "สร้างผู้ใช้แล้ว",
+        "createError": "ข้อผิดพลาดในการสร้างผู้ใช้",
+        "updated": "อัปเดตผู้ใช้แล้ว",
+        "updateError": "ข้อผิดพลาดในการอัปเดตผู้ใช้",
+        "passwordReset": "รีเซ็ตรหัสผ่านผู้ใช้แล้ว",
+        "resetError": "ข้อผิดพลาดในการรีเซ็ตรหัสผ่าน"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "ปฏิเสธการเข้าถึง",
+      "message": "คุณไม่มีสิทธิ์จัดการขอบเขตสิทธิ์ โปรดติดต่อผู้ดูแลระบบ"
+    },
+    "list": {
+      "title": "ขอบเขตสิทธิ์",
+      "countLabel": "{{count}} สิทธิ์",
+      "createGrant": "ให้ขอบเขต",
+      "selectWalletPrompt": "เลือกกระเป๋าเงินด้านบนเพื่อดูขอบเขตสิทธิ์ของกระเป๋านั้น",
+      "columns": {
+        "operator": "Operator",
+        "scope": "ขอบเขต",
+        "target": "เป้าหมาย",
+        "grantedAt": "ให้สิทธิ์เมื่อ",
+        "actions": "การดำเนินการ"
+      },
+      "empty": {
+        "noGrants": "ไม่พบสิทธิ์",
+        "noGrantsHint": "กระเป๋าเงินนี้ไม่มีขอบเขตสิทธิ์ที่ใช้งานอยู่"
+      },
+      "errorLoading": "ข้อผิดพลาดในการโหลดสิทธิ์: {{message}}",
+      "handover": "ส่งต่อ"
+    },
+    "form": {
+      "title": "สร้างขอบเขตสิทธิ์",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "เลือก Operator...",
+        "wallet": "กระเป๋าเงิน",
+        "scopeKind": "ประเภทขอบเขต",
+        "underlyingPublicId": "Public ID ของสินทรัพย์อ้างอิง",
+        "instrumentPublicId": "Public ID ของ Instrument",
+        "underlyingPlaceholder": "เช่น BTC",
+        "instrumentPlaceholder": "เช่น BTC-USD-PERP",
+        "note": "หมายเหตุ (ไม่บังคับ)",
+        "notePlaceholder": "หมายเหตุ (ไม่บังคับ)"
+      },
+      "scopeKinds": {
+        "underlying": "สินทรัพย์อ้างอิง",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "ต้องระบุ Operator",
+        "walletRequired": "ต้องระบุกระเป๋าเงิน",
+        "targetRequired": "ต้องระบุ ID เป้าหมาย"
+      },
+      "actions": {
+        "createGrant": "ให้ขอบเขต"
+      },
+      "toast": {
+        "created": "สร้างขอบเขตสิทธิ์แล้ว",
+        "conflictError": "ขัดแย้ง: Operator อื่นถือสิทธิ์ในขอบเขตนี้อยู่แล้ว",
+        "createError": "ข้อผิดพลาดในการสร้างขอบเขตสิทธิ์"
+      }
+    },
+    "handover": {
+      "title": "ส่งต่อขอบเขตสิทธิ์",
+      "fields": {
+        "currentHolder": "ผู้ถือปัจจุบัน",
+        "scope": "ขอบเขต",
+        "wallet": "กระเป๋าเงิน",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "ส่งต่อให้ Operator",
+        "transferToPlaceholder": "เลือก Operator ปลายทาง...",
+        "reason": "เหตุผล (ไม่บังคับ)",
+        "reasonPlaceholder": "เช่น เปลี่ยนกะ"
+      },
+      "actions": {
+        "handover": "ส่งต่อ"
+      },
+      "toast": {
+        "completed": "ส่งต่อขอบเขตสิทธิ์แล้ว",
+        "conflictError": "ขัดแย้ง: Operator ปลายทางถือสิทธิ์ที่ขัดแย้งอยู่แล้ว",
+        "handoverError": "ข้อผิดพลาดในการส่งต่อขอบเขตสิทธิ์"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "ปฏิเสธการเข้าถึง",
+      "message": "คุณไม่มีสิทธิ์จัดการข้อมูลรับรองของกระเป๋าเงิน โปรดติดต่อผู้ดูแลระบบ"
+    },
+    "list": {
+      "title": "ข้อมูลรับรองกระเป๋าเงิน",
+      "countLabel": "{{count}} ข้อมูลรับรอง",
+      "addCredential": "เพิ่มข้อมูลรับรอง",
+      "selectWalletPrompt": "เลือกกระเป๋าเงินด้านบนเพื่อดูข้อมูลรับรองของกระเป๋านั้น",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "ประเภท",
+        "label": "ป้ายกำกับ",
+        "createdAt": "สร้างเมื่อ",
+        "actions": "การดำเนินการ"
+      },
+      "empty": {
+        "noCredentials": "ไม่พบข้อมูลรับรอง",
+        "noCredentialsHint": "กระเป๋าเงินนี้ไม่มีข้อมูลรับรองที่ใช้งานอยู่"
+      },
+      "errorLoading": "ข้อผิดพลาดในการโหลดข้อมูลรับรอง: {{message}}",
+      "rotate": "เปลี่ยน"
+    },
+    "form": {
+      "title": "เพิ่มข้อมูลรับรอง",
+      "fields": {
+        "wallet": "กระเป๋าเงิน",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "เช่น kraken",
+        "credentialType": "ประเภทข้อมูลรับรอง",
+        "label": "ป้ายกำกับ (ไม่บังคับ)",
+        "labelPlaceholder": "เช่น คีย์เทรดหลัก",
+        "pemPlaceholder": "วางคีย์ส่วนตัวรูปแบบ PEM ที่นี่"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "คีย์ส่วนตัว (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "ยอดตั้งต้น"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "ต้องระบุกระเป๋าเงิน",
+        "exchangeRequired": "ต้องระบุ Exchange",
+        "fieldRequired": "ต้องระบุ {{field}}"
+      },
+      "actions": {
+        "addCredential": "เพิ่มข้อมูลรับรอง"
+      },
+      "toast": {
+        "created": "สร้างข้อมูลรับรองแล้ว",
+        "conflictError": "ขัดแย้ง: กระเป๋าเงินนี้มีข้อมูลรับรองที่ใช้งานอยู่สำหรับ Exchange นี้แล้ว",
+        "createError": "ข้อผิดพลาดในการสร้างข้อมูลรับรอง"
+      }
+    },
+    "rotate": {
+      "title": "เปลี่ยนข้อมูลรับรอง",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "ประเภท",
+        "label": "ป้ายกำกับ",
+        "newLabel": "ป้ายกำกับใหม่ (ไม่บังคับ)",
+        "newLabelPlaceholder": "เช่น คีย์ที่เปลี่ยน 2026-04",
+        "pemPlaceholder": "วางคีย์ส่วนตัวรูปแบบ PEM ที่นี่"
+      },
+      "actions": {
+        "rotate": "เปลี่ยน"
+      },
+      "toast": {
+        "rotated": "เปลี่ยนข้อมูลรับรองแล้ว",
+        "rotateError": "ข้อผิดพลาดในการเปลี่ยนข้อมูลรับรอง"
+      }
+    }
+  }
+}

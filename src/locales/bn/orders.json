@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "অর্ডার ও নির্বাহ",
+    "newOrder": "নতুন অর্ডার",
+    "exportCsv": "CSV এক্সপোর্ট"
+  },
+  "tabs": {
+    "orders": "অর্ডার ({{total}})",
+    "executions": "নির্বাহ ({{total}})"
+  },
+  "filters": {
+    "byStatus": "স্ট্যাটাস অনুযায়ী ফিল্টার:",
+    "options": {
+      "all": "সব অর্ডার",
+      "new": "নতুন",
+      "open": "খোলা",
+      "partiallyFilled": "আংশিক নির্বাহিত",
+      "partially_filled": "আংশিক নির্বাহিত",
+      "filled": "নির্বাহিত",
+      "cancelled": "বাতিল",
+      "rejected": "প্রত্যাখ্যাত"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "পরিমাণ",
+    "price": "মূল্য",
+    "created": "তৈরি হয়েছে",
+    "createdUnknown": "N/A",
+    "orderId": "Order ID",
+    "leverage": "লিভারেজ",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "বাতিল",
+    "cancelling": "বাতিল হচ্ছে…",
+    "cancelAriaLabel": "{{orderId}} অর্ডার বাতিল করুন"
+  },
+  "executionCard": {
+    "orderNumber": "অর্ডার #{{orderId}}",
+    "filled": "FILLED",
+    "orderLabel": "অর্ডার {{orderId}}",
+    "size": "সাইজ",
+    "price": "মূল্য",
+    "total": "মোট",
+    "executed": "নির্বাহিত",
+    "fees": "ফি"
+  },
+  "empty": {
+    "ordersTitle": "কোনো অর্ডার পাওয়া যায়নি",
+    "ordersStartTrading": "অর্ডার দেখতে ট্রেডিং শুরু করুন",
+    "ordersFilterless": "{{status}} অর্ডার নেই",
+    "executionsTitle": "কোনো নির্বাহ পাওয়া যায়নি",
+    "executionsMessage": "ট্রেড নির্বাহ এখানে দেখাবে"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "ইনস্ট্রুমেন্ট",
+      "side": "পক্ষ",
+      "type": "ধরন",
+      "status": "স্ট্যাটাস",
+      "quantity": "পরিমাণ",
+      "price": "মূল্য",
+      "leverage": "লিভারেজ",
+      "reduceOnly": "Reduce Only",
+      "created": "তৈরি হয়েছে"
+    },
+    "executions": {
+      "orderId": "Order ID",
+      "instrument": "ইনস্ট্রুমেন্ট",
+      "side": "পক্ষ",
+      "size": "সাইজ",
+      "price": "মূল্য",
+      "total": "মোট",
+      "fee": "ফি",
+      "feeAsset": "ফি অ্যাসেট",
+      "executed": "নির্বাহিত"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "নতুন ম্যানুয়াল অর্ডার",
+    "titleConfirm": "অর্ডার নিশ্চিত করুন",
+    "fields": {
+      "exchange": "এক্সচেঞ্জ",
+      "instrument": "ইনস্ট্রুমেন্ট",
+      "side": "পক্ষ",
+      "orderType": "অর্ডারের ধরন",
+      "quantity": "পরিমাণ",
+      "price": "মূল্য",
+      "stopPrice": "স্টপ মূল্য",
+      "mode": "মোড",
+      "wallet": "ওয়ালেট",
+      "type": "ধরন"
+    },
+    "sideOptions": {
+      "buy": "কেনা",
+      "sell": "বিক্রি"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "লিমিট অর্ডার",
+      "stop": "স্টপ অর্ডার",
+      "stopLimit": "স্টপ লিমিট অর্ডার",
+      "stop_limit": "স্টপ লিমিট অর্ডার"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — শুধু মার্কেট ডেটা",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "বাতিল",
+      "reviewOrder": "অর্ডার পর্যালোচনা",
+      "back": "ফিরে যান",
+      "confirmOrder": "অর্ডার নিশ্চিত করুন",
+      "submitting": "জমা হচ্ছে..."
+    },
+    "errors": {
+      "missingRequired": "সব আবশ্যক ক্ষেত্র পূরণ করতে হবে",
+      "quantityPositive": "পরিমাণ অবশ্যই ধনাত্মক সংখ্যা হতে হবে",
+      "priceRequired": "এই অর্ডার ধরনে মূল্য আবশ্যক",
+      "pricePositive": "মূল্য অবশ্যই ধনাত্মক সংখ্যা হতে হবে",
+      "stopPriceRequired": "এই অর্ডার ধরনে স্টপ মূল্য আবশ্যক",
+      "stopPricePositive": "স্টপ মূল্য অবশ্যই ধনাত্মক সংখ্যা হতে হবে",
+      "createFailed": "অর্ডার তৈরি ব্যর্থ হয়েছে"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "এই ইনস্ট্রুমেন্ট শুধু পর্যবেক্ষণের জন্য — নির্বাহ-সক্ষম ইনস্ট্রুমেন্টে অর্ডার দিন।",
+      "unknownInstrument": "এই ইনস্ট্রুমেন্ট স্বীকৃত নয়। তালিকা রিলোড করে আবার চেষ্টা করুন।",
+      "capsViolation": "এই অর্ডার আপনার অ্যাকাউন্টের safety cap ছাড়িয়ে যাবে। Risk settings পর্যালোচনা করে আবার চেষ্টা করুন।"
+    }
+  }
+}

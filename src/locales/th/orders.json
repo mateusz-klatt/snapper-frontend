@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "คำสั่งและการดำเนินการ",
+    "newOrder": "คำสั่งใหม่",
+    "exportCsv": "ส่งออก CSV"
+  },
+  "tabs": {
+    "orders": "คำสั่ง ({{total}})",
+    "executions": "การดำเนินการ ({{total}})"
+  },
+  "filters": {
+    "byStatus": "กรองตามสถานะ:",
+    "options": {
+      "all": "คำสั่งทั้งหมด",
+      "new": "ใหม่",
+      "open": "เปิด",
+      "partiallyFilled": "ดำเนินการบางส่วน",
+      "partially_filled": "ดำเนินการบางส่วน",
+      "filled": "ดำเนินการแล้ว",
+      "cancelled": "ยกเลิกแล้ว",
+      "rejected": "ถูกปฏิเสธ"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "ปริมาณ",
+    "price": "ราคา",
+    "created": "สร้างเมื่อ",
+    "createdUnknown": "N/A",
+    "orderId": "Order ID",
+    "leverage": "เลเวอเรจ",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "ยกเลิก",
+    "cancelling": "กำลังยกเลิก…",
+    "cancelAriaLabel": "ยกเลิกคำสั่ง {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "คำสั่ง #{{orderId}}",
+    "filled": "FILLED",
+    "orderLabel": "คำสั่ง {{orderId}}",
+    "size": "ขนาด",
+    "price": "ราคา",
+    "total": "รวม",
+    "executed": "ดำเนินการแล้ว",
+    "fees": "ค่าธรรมเนียม"
+  },
+  "empty": {
+    "ordersTitle": "ไม่พบคำสั่ง",
+    "ordersStartTrading": "เริ่มเทรดเพื่อดูคำสั่งที่นี่",
+    "ordersFilterless": "ไม่มีคำสั่งสถานะ {{status}}",
+    "executionsTitle": "ไม่พบการดำเนินการ",
+    "executionsMessage": "การดำเนินการเทรดจะแสดงที่นี่"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "ฝั่ง",
+      "type": "ประเภท",
+      "status": "สถานะ",
+      "quantity": "ปริมาณ",
+      "price": "ราคา",
+      "leverage": "เลเวอเรจ",
+      "reduceOnly": "Reduce Only",
+      "created": "สร้างเมื่อ"
+    },
+    "executions": {
+      "orderId": "Order ID",
+      "instrument": "Instrument",
+      "side": "ฝั่ง",
+      "size": "ขนาด",
+      "price": "ราคา",
+      "total": "รวม",
+      "fee": "ค่าธรรมเนียม",
+      "feeAsset": "สินทรัพย์ค่าธรรมเนียม",
+      "executed": "ดำเนินการแล้ว"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "คำสั่งด้วยตนเองใหม่",
+    "titleConfirm": "ยืนยันคำสั่ง",
+    "fields": {
+      "exchange": "Exchange",
+      "instrument": "Instrument",
+      "side": "ฝั่ง",
+      "orderType": "ประเภทคำสั่ง",
+      "quantity": "ปริมาณ",
+      "price": "ราคา",
+      "stopPrice": "ราคา stop",
+      "mode": "โหมด",
+      "wallet": "กระเป๋าเงิน",
+      "type": "ประเภท"
+    },
+    "sideOptions": {
+      "buy": "ซื้อ",
+      "sell": "ขาย"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "คำสั่ง limit",
+      "stop": "คำสั่ง stop",
+      "stopLimit": "คำสั่ง stop-limit",
+      "stop_limit": "คำสั่ง stop-limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — เฉพาะข้อมูลตลาด",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "ยกเลิก",
+      "reviewOrder": "ตรวจทานคำสั่ง",
+      "back": "ย้อนกลับ",
+      "confirmOrder": "ยืนยันคำสั่ง",
+      "submitting": "กำลังส่ง..."
+    },
+    "errors": {
+      "missingRequired": "ต้องกรอกช่องที่จำเป็นทั้งหมด",
+      "quantityPositive": "ปริมาณต้องเป็นตัวเลขบวก",
+      "priceRequired": "ต้องระบุราคาสำหรับคำสั่งประเภทนี้",
+      "pricePositive": "ราคาต้องเป็นตัวเลขบวก",
+      "stopPriceRequired": "ต้องระบุราคา stop สำหรับคำสั่งประเภทนี้",
+      "stopPricePositive": "ราคา stop ต้องเป็นตัวเลขบวก",
+      "createFailed": "สร้างคำสั่งไม่สำเร็จ"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Instrument นี้ใช้สังเกตการณ์เท่านั้น — ส่งคำสั่งบน instrument ที่รองรับการดำเนินการ",
+      "unknownInstrument": "ไม่รู้จัก instrument นี้ โหลดรายการใหม่แล้วลองอีกครั้ง",
+      "capsViolation": "คำสั่งนี้จะเกินเพดานความปลอดภัยของบัญชี ตรวจทานการตั้งค่าความเสี่ยงแล้วลองอีกครั้ง"
+    }
+  }
+}

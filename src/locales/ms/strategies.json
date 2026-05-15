@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Pengurusan Strategi",
+    "register": "Daftar Strategi",
+    "saving": "Menyimpan…",
+    "descriptionCanManage": "Daftar proses strategi baharu terus daripada UI. Autostart memastikan proses kekal didayakan merentas restart.",
+    "descriptionViewer": "Lihat strategi yang dikonfigurasikan dan statusnya. Hubungi operator atau admin untuk mengurus strategi.",
+    "searchPlaceholder": "Cari strategi...",
+    "filter": {
+      "all": "Semua status",
+      "running": "Berjalan",
+      "stopped": "Dihentikan"
+    },
+    "configuredHeading": "Strategi Dikonfigurasikan",
+    "noMatches": "Tiada strategi sepadan dengan penapis anda",
+    "clearFilters": "Kosongkan penapis",
+    "emptyTitle": "Tiada strategi dikonfigurasikan",
+    "emptyCanManage": "Daftar strategi untuk memulakan dagangan algoritma",
+    "emptyViewer": "Tiada strategi dikonfigurasikan lagi"
+  },
+  "confirm": {
+    "startTitle": "Mulakan {{name}}",
+    "startMessage": "Ini akan memulakan strategi {{name}}. Ia mungkin memulakan operasi dagangan live.",
+    "stopTitle": "Hentikan {{name}}",
+    "stopMessage": "Ini akan menghentikan strategi {{name}}. Posisi aktif tidak akan ditutup secara automatik."
+  },
+  "toast": {
+    "saved": "Strategi {{name}} disimpan",
+    "started": "Strategi {{name}} dimulakan",
+    "registerFailed": "Gagal mendaftar strategi: {{message}}",
+    "startSuccess": "Strategi berjaya dimulakan",
+    "stopSuccess": "Strategi berjaya dihentikan",
+    "alreadyRunning": "Strategi sudah berjalan",
+    "notRunning": "Strategi tidak berjalan",
+    "configNotFound": "Konfigurasi strategi tidak ditemui. Sila semak tetapan pangkalan data.",
+    "networkError": "Ralat rangkaian. Sila semak sambungan dan cuba lagi.",
+    "startFailed": "Gagal memulakan strategi: {{message}}",
+    "stopFailed": "Gagal menghentikan strategi: {{message}}",
+    "unknownError": "Ralat tidak diketahui"
+  },
+  "card": {
+    "ariaLabel": "Strategi: {{name}}",
+    "modeLabel": "Mod: {{mode}}",
+    "autostartEnabled": "Autostart: didayakan",
+    "autostartDisabled": "Autostart: dinyahdayakan",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Lengahan data: {{seconds}} saat",
+    "lagBadge": "lengahan: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "HB age: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Lengahan Data",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Tunjuk Butiran",
+    "hideDetails": "Sembunyikan Butiran",
+    "inputs": "Input ({{count}})",
+    "outputs": "Output ({{count}})",
+    "feedPublishers": "Feed Publishers ({{count}})",
+    "lastUpdate": "Kemas kini terakhir: {{time}}",
+    "waiting": "Menunggu Heartbeat...",
+    "startAriaLabel": "Mulakan strategi {{name}}",
+    "stopAriaLabel": "Hentikan strategi {{name}}",
+    "start": "Mula",
+    "stop": "Henti",
+    "starting": "Memulakan...",
+    "stopping": "Menghentikan...",
+    "status": {
+      "starting": "memulakan",
+      "stopping": "menghentikan",
+      "running": "berjalan",
+      "stopped": "dihentikan"
+    },
+    "health": {
+      "healthy": "Sihat — menerima data segar",
+      "warning": "Amaran — data lapuk",
+      "error": "Ralat — tiada data terkini",
+      "unknown": "Tidak diketahui — tiada data Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "HEALTHY",
+      "warning": "WARNING",
+      "error": "ERROR"
+    }
+  },
+  "launchModal": {
+    "title": "Daftar Proses Strategi",
+    "emptyTemplates": "Tiada templat strategi didaftarkan dalam backend. Takrifkan sekurang-kurangnya satu proses strategi.",
+    "close": "Tutup",
+    "templateLabel": "Templat strategi",
+    "templatePlaceholder": "Pilih templat...",
+    "templateFallbackDescription": "Strategi didaftarkan dalam backend",
+    "loadingDefaults": "Memuatkan default templat…",
+    "loadDefaultsError": "Tidak dapat memuatkan default templat. Sila semak log backend.",
+    "processNameLabel": "Nama proses",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Aksara dibenarkan: huruf kecil, nombor, garis bawah",
+    "instanceNameLabel": "Nama instance strategi",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Digunakan dalam konfigurasi strategi dan topik output",
+    "executionModeLabel": "Mod pelaksanaan",
+    "executionModeThread": "Thread terbenam",
+    "executionModeProcess": "Proses terasing",
+    "executionModeHelp": "Threads berkongsi memori, processes menyediakan pengasingan lebih kuat.",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart semasa server boot",
+    "startImmediatelyLabel": "Mula serta-merta selepas pendaftaran",
+    "noteLabel": "Nota (pilihan)",
+    "notePlaceholder": "Terangkan tujuan atau parameter instance strategi ini.",
+    "noteHelp": "Disimpan bersama konfigurasi untuk membantu mengenal pasti proses ini.",
+    "cancel": "Batal",
+    "submit": "Daftar strategi",
+    "submitting": "Mendaftar…"
+  }
+}

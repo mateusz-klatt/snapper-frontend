@@ -1,0 +1,83 @@
+{
+  "loading": "Memuatkan...",
+  "error": "Ralat",
+  "retry": "Cuba lagi",
+  "close": "Tutup",
+  "cancel": "Batal",
+  "confirm": "Sahkan",
+  "save": "Simpan",
+  "documentation": "Dokumentasi (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Tukar bahasa",
+    "flagAriaLabel": "Tukar kepada {{country}}",
+    "currentAriaLabel": "Bahasa semasa: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Konsol dagangan",
+    "tagline": "Stesen kerja presisi",
+    "openSidebar": "Buka bar sisi",
+    "closeSidebar": "Tutup bar sisi",
+    "sidebar": "Bar sisi",
+    "mainNavigation": "Navigasi utama",
+    "tradingContent": "Kandungan dagangan",
+    "skipToContent": "Langkau ke kandungan dagangan",
+    "lag": "Lengahan:",
+    "lagTitle": "Latensi pergi balik ke pelayan WebSocket",
+    "topics": "Topik:",
+    "topicsTitle": "Bilangan topik WebSocket yang dilanggan",
+    "connected": "Bersambung",
+    "disconnected": "Terputus",
+    "connectedTitle": "Bersambung ke WebSocket",
+    "disconnectedTitle": "Terputus daripada WebSocket",
+    "switchToLightMode": "Tukar kepada mod cerah",
+    "switchToDarkMode": "Tukar kepada mod gelap",
+    "timeTravelBanner": "Time Travel Mode — melihat data sejarah (baca sahaja)",
+    "lagUnknown": "Tidak diketahui",
+    "walletPicker": {
+      "ariaLabel": "Dompet aktif",
+      "placeholder": "Dompet",
+      "allWallets": "Semua dompet",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operator aktif",
+      "placeholder": "Operator",
+      "allOperators": "Semua operator"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: pilih titik masa sejarah",
+      "exitAriaLabel": "Keluar daripada Time Travel Mode",
+      "exitTitle": "Kembali kepada mod live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrumen pemerhatian sahaja. Snapper menerima data pasaran tetapi tidak boleh membuat pesanan untuk pasangan (symbol, exchange) ini.",
+      "ariaLabel": "Instrumen data pasaran sahaja",
+      "badge": "Data pasaran sahaja"
+    },
+    "liveOnly": {
+      "notice": "Tab ini menunjukkan keadaan semasa — paparan sejarah tidak tersedia."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Sesuatu telah berlaku",
+    "titleWithComponent": "Ralat dalam {{componentName}}",
+    "stackTrace": "Jejak tindanan",
+    "tryAgain": "Cuba lagi"
+  },
+  "nav": {
+    "overview": "Gambaran keseluruhan",
+    "market": "Data pasaran",
+    "processes": "Proses",
+    "strategies": "Strategi",
+    "orders": "Pesanan & Pelaksanaan",
+    "positions": "Posisi",
+    "signals": "Isyarat",
+    "backtests": "Backtests",
+    "health": "Kesihatan",
+    "admin": "Pentadbiran",
+    "aiIntegration": "Integrasi AI",
+    "aiReviews": "Semakan AI",
+    "settings": "Tetapan"
+  }
+}

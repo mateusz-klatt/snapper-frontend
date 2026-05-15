@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Pentadbiran",
+    "subtitle": "Urus pengguna dan konfigurasi sistem"
+  },
+  "rolePermissions": {
+    "title": "Kebenaran Peranan",
+    "viewer": {
+      "label": "Pemapar",
+      "description": "Akses baca sahaja kepada Gambaran Keseluruhan dan Data Pasaran. Tidak boleh mengurus proses, strategi atau tetapan sistem."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Semua kebenaran Pemapar serta operasi dagangan, pelaksanaan strategi, pengurusan proses dan pemantauan kesihatan sistem."
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "Akses sistem penuh termasuk pengurusan pengguna, tetapan sistem, konfigurasi API key dan semua kebenaran Operator."
+    },
+    "table": {
+      "resource": "Sumber",
+      "viewer": "Pemapar",
+      "operator": "Operator",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "Gambaran Keseluruhan",
+      "market": "Data Pasaran",
+      "processes": "Proses",
+      "strategies": "Strategi",
+      "orders": "Pesanan & Pelaksanaan",
+      "positions": "Posisi",
+      "signals": "Isyarat",
+      "health": "Kesihatan",
+      "admin": "Pentadbiran",
+      "settings": "Tetapan"
+    }
+  },
+  "common": {
+    "cancel": "Batal",
+    "selectWallet": "Pilih dompet",
+    "selectAWallet": "Pilih dompet",
+    "chooseWalletPlaceholder": "Pilih dompet...",
+    "selectWalletPlaceholder": "Pilih dompet...",
+    "walletLabel": "Dompet",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Ralat tidak diketahui",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Akses Ditolak",
+      "message": "Anda tidak mempunyai kebenaran untuk mengurus pengguna. Sila hubungi pentadbir sistem."
+    },
+    "list": {
+      "title": "Pengurusan Pengguna",
+      "countLabel": "{{count}} pengguna",
+      "showInactive": "Tunjuk tidak aktif",
+      "hideInactive": "Sembunyikan tidak aktif",
+      "addUser": "Tambah Pengguna",
+      "searchPlaceholder": "Cari mengikut nama pengguna, e-mel atau peranan...",
+      "columns": {
+        "user": "Pengguna",
+        "role": "Peranan",
+        "status": "Status",
+        "createdAt": "Dicipta Pada",
+        "actions": "Tindakan"
+      },
+      "status": {
+        "active": "Aktif",
+        "inactive": "Tidak aktif"
+      },
+      "unknown": "Tidak diketahui",
+      "empty": {
+        "title": "Tiada pengguna ditemui",
+        "noMatch": "Tiada pengguna sepadan dengan kriteria carian anda.",
+        "noUsers": "Tiada pengguna ditemui.",
+        "noActive": "Tiada pengguna aktif ditemui."
+      },
+      "errorLoading": "Ralat memuatkan pengguna: {{message}}",
+      "deactivate": {
+        "title": "Nyahaktifkan Pengguna",
+        "message": "Anda pasti mahu menyahaktifkan pengguna \"{{username}}\"? Mereka tidak lagi boleh mendaftar masuk.",
+        "confirm": "Nyahaktifkan"
+      },
+      "toast": {
+        "deactivated": "Pengguna telah dinyahaktifkan",
+        "deactivateError": "Ralat menyahaktifkan pengguna"
+      }
+    },
+    "form": {
+      "titleEdit": "Edit Pengguna",
+      "titleAdd": "Tambah Pengguna",
+      "fields": {
+        "username": "Nama pengguna",
+        "usernamePlaceholder": "Masukkan nama pengguna",
+        "password": "Kata laluan",
+        "passwordPlaceholder": "Masukkan kata laluan",
+        "newPassword": "Kata Laluan Baharu",
+        "newPasswordPlaceholder": "Masukkan kata laluan baharu",
+        "email": "E-mel",
+        "emailPlaceholder": "Masukkan e-mel",
+        "role": "Peranan",
+        "accountActive": "Akaun aktif",
+        "resetUserPassword": "Tetapkan semula kata laluan pengguna"
+      },
+      "roles": {
+        "viewer": "Pemapar",
+        "operator": "Operator",
+        "admin": "Pentadbir"
+      },
+      "validation": {
+        "usernameRequired": "Nama pengguna diperlukan",
+        "usernameMinLength": "Nama pengguna mesti sekurang-kurangnya 3 aksara",
+        "emailRequired": "E-mel diperlukan",
+        "emailInvalid": "Format e-mel tidak sah",
+        "passwordRequired": "Kata laluan diperlukan",
+        "passwordMinLength": "Kata laluan mesti sekurang-kurangnya 8 aksara",
+        "passwordRequiredWhenResetting": "Kata laluan diperlukan apabila menetapkan semula"
+      },
+      "actions": {
+        "saveChanges": "Simpan Perubahan",
+        "createUser": "Cipta Pengguna"
+      },
+      "toast": {
+        "created": "Pengguna telah dicipta",
+        "createError": "Ralat mencipta pengguna",
+        "updated": "Pengguna telah dikemas kini",
+        "updateError": "Ralat mengemas kini pengguna",
+        "passwordReset": "Kata laluan pengguna telah ditetapkan semula",
+        "resetError": "Ralat menetapkan semula kata laluan"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Akses Ditolak",
+      "message": "Anda tidak mempunyai kebenaran untuk mengurus skop kebenaran. Sila hubungi pentadbir sistem."
+    },
+    "list": {
+      "title": "Skop kebenaran",
+      "countLabel": "{{count}} kebenaran",
+      "createGrant": "Beri skop",
+      "selectWalletPrompt": "Pilih dompet di atas untuk melihat skop kebenarannya.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Skop",
+        "target": "Sasaran",
+        "grantedAt": "Diberi Pada",
+        "actions": "Tindakan"
+      },
+      "empty": {
+        "noGrants": "Tiada kebenaran ditemui",
+        "noGrantsHint": "Dompet ini tidak mempunyai skop kebenaran aktif."
+      },
+      "errorLoading": "Ralat memuatkan kebenaran: {{message}}",
+      "handover": "Serah"
+    },
+    "form": {
+      "title": "Cipta Skop Kebenaran",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Pilih operator...",
+        "wallet": "Dompet",
+        "scopeKind": "Jenis Skop",
+        "underlyingPublicId": "Underlying Public ID",
+        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPlaceholder": "cth. BTC",
+        "instrumentPlaceholder": "cth. BTC-USD-PERP",
+        "note": "Nota (pilihan)",
+        "notePlaceholder": "Nota pilihan"
+      },
+      "scopeKinds": {
+        "underlying": "Underlying",
+        "instrument": "Instrumen"
+      },
+      "validation": {
+        "operatorRequired": "Operator diperlukan",
+        "walletRequired": "Dompet diperlukan",
+        "targetRequired": "ID sasaran diperlukan"
+      },
+      "actions": {
+        "createGrant": "Beri skop"
+      },
+      "toast": {
+        "created": "Skop kebenaran dicipta",
+        "conflictError": "Konflik: operator lain sudah memegang kebenaran pada skop ini",
+        "createError": "Ralat mencipta skop kebenaran"
+      }
+    },
+    "handover": {
+      "title": "Serah Skop Kebenaran",
+      "fields": {
+        "currentHolder": "Pemegang semasa",
+        "scope": "Skop",
+        "wallet": "Dompet",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Pindahkan kepada operator",
+        "transferToPlaceholder": "Pilih operator destinasi...",
+        "reason": "Sebab (pilihan)",
+        "reasonPlaceholder": "cth. Pertukaran syif"
+      },
+      "actions": {
+        "handover": "Serah"
+      },
+      "toast": {
+        "completed": "Skop kebenaran telah diserahkan",
+        "conflictError": "Konflik: operator destinasi sudah memegang kebenaran yang bercanggah",
+        "handoverError": "Ralat menyerahkan skop kebenaran"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Akses Ditolak",
+      "message": "Anda tidak mempunyai kebenaran untuk mengurus kelayakan dompet. Sila hubungi pentadbir sistem."
+    },
+    "list": {
+      "title": "Kelayakan Dompet",
+      "countLabel": "{{count}} kelayakan",
+      "addCredential": "Tambah Kelayakan",
+      "selectWalletPrompt": "Pilih dompet di atas untuk melihat kelayakannya.",
+      "columns": {
+        "exchange": "Bursa",
+        "type": "Jenis",
+        "label": "Label",
+        "createdAt": "Dicipta Pada",
+        "actions": "Tindakan"
+      },
+      "empty": {
+        "noCredentials": "Tiada kelayakan ditemui",
+        "noCredentialsHint": "Dompet ini tidak mempunyai kelayakan aktif."
+      },
+      "errorLoading": "Ralat memuatkan kelayakan: {{message}}",
+      "rotate": "Tukar"
+    },
+    "form": {
+      "title": "Tambah Kelayakan",
+      "fields": {
+        "wallet": "Dompet",
+        "exchange": "Bursa",
+        "exchangePlaceholder": "cth. kraken",
+        "credentialType": "Jenis Kelayakan",
+        "label": "Label (pilihan)",
+        "labelPlaceholder": "cth. Kunci dagangan utama",
+        "pemPlaceholder": "Tampal kunci peribadi berformat PEM di sini"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "Private Key (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Baki Awal"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Dompet diperlukan",
+        "exchangeRequired": "Bursa diperlukan",
+        "fieldRequired": "{{field}} diperlukan"
+      },
+      "actions": {
+        "addCredential": "Tambah Kelayakan"
+      },
+      "toast": {
+        "created": "Kelayakan dicipta",
+        "conflictError": "Konflik: dompet ini sudah mempunyai kelayakan aktif untuk bursa ini",
+        "createError": "Ralat mencipta kelayakan"
+      }
+    },
+    "rotate": {
+      "title": "Tukar kelayakan",
+      "fields": {
+        "exchange": "Bursa",
+        "type": "Jenis",
+        "label": "Label",
+        "newLabel": "Label Baharu (pilihan)",
+        "newLabelPlaceholder": "cth. Kunci ditukar 2026-04",
+        "pemPlaceholder": "Tampal kunci peribadi berformat PEM di sini"
+      },
+      "actions": {
+        "rotate": "Tukar"
+      },
+      "toast": {
+        "rotated": "Kelayakan telah ditukar",
+        "rotateError": "Ralat menukar kelayakan"
+      }
+    }
+  }
+}

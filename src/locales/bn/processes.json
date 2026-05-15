@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "প্রসেস নিয়ন্ত্রণ",
+    "subtitle": "রিয়েল-টাইম প্রসেস পর্যবেক্ষণ ও নিয়ন্ত্রণ"
+  },
+  "sections": {
+    "longRunning": "দীর্ঘমেয়াদি প্রসেস",
+    "executorTemplates": "Executor Templates",
+    "executorTemplatesHint": "Template config সম্পাদনা করলে restart-এর পর এই exchange-এর সব ওয়ালেটে প্রভাব পড়ে। Templates config-only — executor চালাতে নিচের per-wallet instance শুরু করুন।",
+    "walletInstances": "ওয়ালেট ইনস্ট্যান্স",
+    "taskProcesses": "Task Processes"
+  },
+  "card": {
+    "stop": "বন্ধ করুন",
+    "start": "শুরু করুন",
+    "restart": "রিস্টার্ট",
+    "starting": "শুরু হচ্ছে...",
+    "stopping": "বন্ধ হচ্ছে...",
+    "status": {
+      "running": "চলছে",
+      "stopped": "বন্ধ",
+      "error": "ত্রুটি",
+      "starting": "শুরু হচ্ছে",
+      "stopping": "বন্ধ হচ্ছে"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "মোড:",
+    "parameters": "প্যারামিটার:",
+    "paramCount": "{{count}} parameter",
+    "noParams": "কোনো parameter সেট নেই"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "{{name}} বন্ধ করুন",
+    "stopMessage": "এটি {{name}} প্রসেস বন্ধ করবে।",
+    "restartTitle": "{{name}} রিস্টার্ট করুন",
+    "restartMessage": "এটি {{name}} প্রসেস রিস্টার্ট করবে।"
+  },
+  "executionMode": {
+    "title": "{{name}} শুরু করুন",
+    "label": "Execution Mode:",
+    "threadName": "Thread Mode",
+    "threadDescription": "ওয়েব সার্ভারের মধ্যে embedded task হিসেবে চলে। দ্রুত startup, shared memory।",
+    "processName": "Process Mode",
+    "processDescription": "আলাদা Python process হিসেবে চলে। Isolated, fault-tolerant, detailed monitoring।",
+    "cancel": "বাতিল",
+    "start": "{{name}} শুরু করুন",
+    "threadAriaLabel": "Thread Mode",
+    "processAriaLabel": "Process Mode"
+  }
+}

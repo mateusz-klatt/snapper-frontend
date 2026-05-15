@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "สถานะ"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: รอดำเนินการ",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "ปริมาณ",
+    "averageEntry": "ราคาเข้าเฉลี่ย",
+    "unrealizedPnl": "P&L ที่ยังไม่รับรู้",
+    "realizedPnl": "P&L ที่รับรู้แล้ว",
+    "updated": "อัปเดตเมื่อ {{timestamp}}"
+  },
+  "empty": {
+    "title": "ไม่มีสถานะเปิด",
+    "message": "สถานะ long, short และ flat จะแสดงที่นี่หลังการเทรดถูกดำเนินการ"
+  },
+  "bracketModal": {
+    "title": "แนบ SL/TP — {{instrument}}",
+    "confirmTitle": "ยืนยัน Bracket",
+    "position": "สถานะ",
+    "entryPrice": "ราคาเข้า",
+    "stopLossLabel": "ราคา Stop-Loss",
+    "takeProfitLabel": "ราคา Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "ต่ำกว่า ${{price}}",
+      "slShort": "สูงกว่า ${{price}}",
+      "tpLong": "สูงกว่า ${{price}}",
+      "tpShort": "ต่ำกว่า ${{price}}"
+    },
+    "buttons": {
+      "cancel": "ยกเลิก",
+      "review": "ตรวจทาน",
+      "back": "ย้อนกลับ",
+      "confirm": "ยืนยัน",
+      "creating": "กำลังสร้าง…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "แนบ Trailing Stop — {{instrument}}",
+    "confirmTitle": "ยืนยัน Trailing Stop",
+    "position": "สถานะ",
+    "entryPrice": "ราคาเข้า",
+    "trailingDistanceLabel": "ระยะ Trailing Stop (%)",
+    "minLockLabel": "กำไรล็อกขั้นต่ำ (%) — ไม่บังคับ",
+    "trailingDistance": "ระยะ Trailing Stop",
+    "minLockProfit": "กำไรล็อกขั้นต่ำ",
+    "placeholders": {
+      "trailingPct": "เช่น 5.0",
+      "minLockPct": "0 = เริ่มทันที"
+    },
+    "minLockWarning": "Trailing Stop จะยังไม่ทำงานจนกว่าราคาจะขยับ {{minLockPct}}% ในทิศทางที่เป็นประโยชน์",
+    "buttons": {
+      "cancel": "ยกเลิก",
+      "review": "ตรวจทาน",
+      "back": "ย้อนกลับ",
+      "confirm": "ยืนยัน",
+      "creating": "กำลังสร้าง..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "ต้องระบุราคา SL หรือ TP อย่างน้อยหนึ่งรายการ",
+    "invalidSlPrice": "ราคา Stop-Loss ไม่ถูกต้อง",
+    "slPricePositive": "ราคา Stop-Loss ต้องเป็นบวก",
+    "invalidTpPrice": "ราคา Take-Profit ไม่ถูกต้อง",
+    "tpPricePositive": "ราคา Take-Profit ต้องเป็นบวก",
+    "slLongBelowEntry": "ราคา SL ต้องต่ำกว่าราคาเข้า ({{price}})",
+    "tpLongAboveEntry": "ราคา TP ต้องสูงกว่าราคาเข้า ({{price}})",
+    "slShortAboveEntry": "ราคา SL ต้องสูงกว่าราคาเข้า ({{price}})",
+    "tpShortBelowEntry": "ราคา TP ต้องต่ำกว่าราคาเข้า ({{price}})",
+    "trailingRequired": "ต้องระบุเปอร์เซ็นต์ Trailing Stop",
+    "trailingInvalid": "เปอร์เซ็นต์ Trailing Stop ไม่ถูกต้อง",
+    "trailingRange": "เปอร์เซ็นต์ Trailing Stop ต้องอยู่ระหว่าง 0 ถึง 100",
+    "minLockInvalid": "เปอร์เซ็นต์กำไรล็อกขั้นต่ำไม่ถูกต้อง",
+    "minLockRange": "เปอร์เซ็นต์กำไรล็อกขั้นต่ำต้องอยู่ระหว่าง 0 ถึง 100"
+  }
+}

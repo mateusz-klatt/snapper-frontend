@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Kesihatan Sistem",
+    "healthMetricsHeading": "Metrik Kesihatan",
+    "processStatusHeading": "Status Proses",
+    "activeBacktestsHeading": "Backtests Aktif",
+    "quickActionsHeading": "Tindakan Pantas",
+    "featureNotImplemented": "Ciri belum dilaksanakan",
+    "restartServices": "Mulakan Semula Perkhidmatan",
+    "runHealthCheck": "Jalankan Pemeriksaan Kesihatan",
+    "viewLogs": "Lihat Log",
+    "exportReport": "Eksport Laporan"
+  },
+  "status": {
+    "healthy": "Sihat",
+    "stopped": "Dihentikan",
+    "error": "Ralat",
+    "warning": "Amaran",
+    "completed": "Selesai",
+    "unknown": "Tidak diketahui"
+  },
+  "metrics": {
+    "tradingEngine": "Enjin Dagangan",
+    "tradingEngineDescription": "Enjin pelaksanaan strategi",
+    "activeBacktests": "Backtests Aktif",
+    "activeBacktestsDescription": "Proses Backtest yang berjalan",
+    "active": "Aktif",
+    "inactive": "Tidak aktif"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Uptime",
+    "exitCode": "Kod keluar: {{code}}",
+    "service": "perkhidmatan",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Statistik Pangkalan Data",
+    "loading": "Memuatkan statistik pangkalan data…",
+    "unavailable": "Statistik pangkalan data tidak tersedia: {{message}}",
+    "fallbackError": "Gagal memuatkan statistik pangkalan data.",
+    "sampled": "disampel {{age}}",
+    "samplerSummary": "Selang pensampel: {{seconds}}s · {{count}} jadual",
+    "columns": {
+      "table": "Jadual",
+      "kind": "Jenis",
+      "total": "Jumlah",
+      "current": "Semasa",
+      "closed": "Ditutup",
+      "archivable": "Boleh diarkibkan",
+      "status": "Status"
+    },
+    "stale": "lapuk"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Memuatkan metrik notifikasi…",
+    "unavailable": "Metrik notifikasi tidak tersedia: {{message}}",
+    "fallbackError": "Gagal memuatkan metrik notifikasi.",
+    "sent": "Dihantar",
+    "sentDescription": "Terminal: dihantar",
+    "failed": "Gagal",
+    "failedDescription": "Bajet retry habis",
+    "unregistered": "Tidak berdaftar",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Dibatalkan (skop)",
+    "cancelledScopeDescription": "Pembatalan skop / nyahaktif pengguna",
+    "outboxDepth": "Kedalaman Outbox",
+    "outboxDepthDescription": "Dalam giliran, menunggu retry"
+  },
+  "retention": {
+    "title": "Retention Scheduler",
+    "loading": "Memuatkan retention run…",
+    "unavailable": "Retention run tidak tersedia: {{message}}",
+    "fallbackError": "Gagal memuatkan retention run.",
+    "lastRun": "run terakhir {{age}}",
+    "dryRunNotice": "Mod dry-run: baris diarkibkan tetapi tidak dipadam daripada DB.",
+    "columns": {
+      "table": "Jadual",
+      "retain": "Kekalkan",
+      "archivedWindow": "Tetingkap arkib",
+      "archived": "Diarkibkan",
+      "purged": "Dipadam",
+      "files": "Fail",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "ralat"
+  },
+  "systemMetrics": {
+    "title": "Kesihatan Proses",
+    "loading": "Memuatkan metrik proses…",
+    "unavailable": "Metrik proses tidak tersedia: {{message}}",
+    "fallbackError": "Gagal memuatkan metrik kesihatan proses.",
+    "rawJson": "JSON Mentah",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Uptime",
+    "threads": "Threads",
+    "openFds": "Open FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttled {{count}}×",
+    "memory": "Memori",
+    "saturation": "Saturation {{percent}}",
+    "asyncioTasks": "Asyncio Tasks",
+    "asyncioActive": "{{count}} aktif",
+    "asyncioPending": "+ {{count}} tertunda",
+    "dbPool": "DB Pool",
+    "liveConns": "Live conns: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objects: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Network conns",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Active",
+    "tracemallocIdle": "Idle"
+  },
+  "relativeAge": {
+    "justNow": "baru sahaja",
+    "seconds": "{{seconds}}s lalu",
+    "minutes": "{{minutes}}min lalu",
+    "hours": "{{hours}}j lalu",
+    "days": "{{days}}h lalu"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}j",
+    "days": "{{days}}h"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}
