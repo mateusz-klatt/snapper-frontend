@@ -1,0 +1,12 @@
+# Files / line-ranges exempt from `pnpm check:i18n`.
+# One `path:line` substring per line; matches as substring against the
+# emitted `<relative-path>:<line>` prefix. Add a rationale comment
+# above each entry so future maintainers know why the literal stays
+# hardcoded.
+#
+# Format example (uncomment + edit):
+#
+#   # SVG decorative title baked into icon component, not user-facing
+#   src/components/Icons/Foo.tsx:42
+#
+# Empty file = "no exceptions yet" — the lint must stay green.
