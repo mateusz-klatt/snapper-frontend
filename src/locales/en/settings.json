@@ -67,6 +67,21 @@
     "parseError": "Parse error: {{message}}",
     "arraySummary": "Array ({{length}} items)",
     "addItem": "Add Item",
-    "remove": "Remove"
+    "remove": "Remove",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
   }
 }

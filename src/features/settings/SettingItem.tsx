@@ -322,7 +322,9 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
               }`}
             />
           </button>
-          <span className='font-mono text-sm text-alpine-900'>{isOn ? 'true' : 'false'}</span>
+          <span className='font-mono text-sm text-alpine-900'>
+            {isOn ? t('booleanValue.true') : t('booleanValue.false')}
+          </span>
         </div>
         <div className='text-xs text-muted-500'>
           {new Date(setting.updated_at).toLocaleString()}

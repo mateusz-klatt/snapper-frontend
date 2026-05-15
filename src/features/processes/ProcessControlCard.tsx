@@ -33,6 +33,7 @@ const formatDetailValue = (value: unknown): string => {
 }
 
 const HeartbeatIndicator: React.FC<{ heartbeat: HeartbeatData }> = ({ heartbeat }) => {
+  const { t } = useTranslation('processes')
   const color = heartbeat.healthy ? 'text-accent-400' : 'text-loss-400'
   const dot = heartbeat.healthy ? 'bg-accent-400' : 'bg-loss-400'
 
@@ -40,7 +41,7 @@ const HeartbeatIndicator: React.FC<{ heartbeat: HeartbeatData }> = ({ heartbeat 
     <div className={clsx('flex items-center gap-1.5 text-xs', color)}>
       <span className={clsx('w-1.5 h-1.5 rounded-full shrink-0', dot)} />
       <span>
-        {heartbeat.status}
+        {t(`card.status.${heartbeat.status}`, { defaultValue: heartbeat.status })}
         {heartbeat.lag_ms !== undefined && (
           <span className='opacity-70 ml-1'>({heartbeat.lag_ms}ms)</span>
         )}
@@ -84,7 +85,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
         <div className='flex flex-col items-end gap-1 shrink-0'>
           <div className='flex items-center gap-1.5'>
             <span className={clsx('px-2 py-1 rounded-md text-xs font-medium', statusColor)}>
-              {status}
+              {t(`card.status.${status}`, { defaultValue: status })}
             </span>
             {statusBadge && (
               <span className='px-2 py-1 rounded-md text-xs font-medium text-info-400 bg-info-400/10'>
