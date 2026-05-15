@@ -69,7 +69,7 @@ describe('RotateDialog', () => {
     renderWithQuery(<RotateDialog credential={testCredential} open onClose={onClose} />)
     expect(screen.getByText('Rotate Credential')).toBeDefined()
     expect(screen.getByText('kraken')).toBeDefined()
-    expect(screen.getByText('api_key_secret')).toBeDefined()
+    expect(screen.getByText('API Key + Secret')).toBeDefined()
     expect(screen.getByText('main-key')).toBeDefined()
   })
   it('shows dash when label is null', () => {

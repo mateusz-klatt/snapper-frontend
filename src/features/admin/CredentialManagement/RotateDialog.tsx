@@ -98,7 +98,11 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
             </div>
             <div className='flex justify-between text-sm'>
               <span className='text-muted-500'>{t('credentials.rotate.fields.type')}</span>
-              <span className='text-alpine-900'>{credential.credential_type}</span>
+              <span className='text-alpine-900'>
+                {t(`credentials.form.credentialTypes.${credential.credential_type}`, {
+                  defaultValue: credential.credential_type,
+                })}
+              </span>
             </div>
             <div className='flex justify-between text-sm'>
               <span className='text-muted-500'>{t('credentials.rotate.fields.label')}</span>

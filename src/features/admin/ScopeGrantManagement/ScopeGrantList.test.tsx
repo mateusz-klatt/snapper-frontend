@@ -155,7 +155,7 @@ describe('ScopeGrantList', () => {
     fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
     expect(screen.getByText('alice')).toBeDefined()
     expect(screen.getByText('BTC')).toBeDefined()
-    expect(screen.getByText('underlying')).toBeDefined()
+    expect(screen.getByText('Underlying')).toBeDefined()
   })
   it('resolves operator label from operators list', () => {
     mockUseScopeGrants.mockReturnValue({

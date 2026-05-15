@@ -384,7 +384,7 @@ describe('NewOrderModal', () => {
     await waitFor(() => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
     })
-    expect(screen.getByText('SELL')).toBeTruthy()
+    expect(screen.getAllByText('Sell').length).toBeGreaterThan(0)
   })
 
   it('shows submitting label while create order mutation is pending', async () => {

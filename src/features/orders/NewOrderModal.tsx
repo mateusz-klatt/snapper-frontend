@@ -272,12 +272,16 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                     side === 'buy' ? 'text-gain-400 font-medium' : 'text-loss-400 font-medium'
                   }
                 >
-                  {side.toUpperCase()}
+                  {t(`newOrderModal.sideOptions.${side}`, { defaultValue: side.toUpperCase() })}
                 </span>
               </div>
               <div className='flex justify-between'>
                 <span className='text-muted-500'>{t('newOrderModal.fields.type')}</span>
-                <span className='text-alpine-900'>{orderType}</span>
+                <span className='text-alpine-900'>
+                  {t(`newOrderModal.orderTypeOptions.${orderType}`, {
+                    defaultValue: orderType,
+                  })}
+                </span>
               </div>
               <div className='flex justify-between'>
                 <span className='text-muted-500'>{t('newOrderModal.fields.quantity')}</span>
@@ -297,7 +301,9 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               )}
               <div className='flex justify-between'>
                 <span className='text-muted-500'>{t('newOrderModal.fields.mode')}</span>
-                <span className='text-alpine-900'>{mode}</span>
+                <span className='text-alpine-900'>
+                  {t(`newOrderModal.modeOptions.${mode}`, { defaultValue: mode })}
+                </span>
               </div>
             </div>
             <div className='flex justify-end gap-3 pt-2'>

@@ -47,7 +47,7 @@ const FeedPublisherEntry: React.FC<Readonly<{ feedKey: string; feed: FeedHealth 
             'text-loss-400': feed.status === 'error',
           })}
         >
-          {feed.status}
+          {t(`card.healthShort.${feed.status}`, { defaultValue: feed.status })}
         </span>
       </div>
       <div className='grid grid-cols-2 gap-2 text-xs text-muted-500'>

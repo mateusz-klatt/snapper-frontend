@@ -15,6 +15,7 @@
       "new": "New",
       "open": "Open",
       "partiallyFilled": "Partially Filled",
+      "partially_filled": "Partially Filled",
       "filled": "Filled",
       "cancelled": "Cancelled",
       "rejected": "Rejected"
@@ -99,7 +100,8 @@
       "market": "Market",
       "limit": "Limit",
       "stop": "Stop",
-      "stopLimit": "Stop Limit"
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
     },
     "modeOptions": {
       "live": "Live",

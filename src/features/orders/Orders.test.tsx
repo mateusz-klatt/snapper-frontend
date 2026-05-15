@@ -372,7 +372,7 @@ describe('Orders', () => {
     renderWithProviders(<Orders />)
     await waitFor(() => {
       expect(screen.getByText('BTC/USD')).toBeInTheDocument()
-      expect(screen.getByText('BUY')).toBeInTheDocument()
+      expect(screen.getByText('Buy')).toBeInTheDocument()
       expect(screen.getByText('$50000.00')).toBeInTheDocument()
     })
   })
@@ -405,9 +405,9 @@ describe('Orders', () => {
     } as never)
     renderWithProviders(<Orders />)
     await waitFor(() => {
-      expect(screen.getByText('SELL')).toBeInTheDocument()
-      expect(screen.getByText('Market')).toBeInTheDocument()
-      expect(screen.getByText('filled')).toBeInTheDocument()
+      expect(screen.getByText('Sell')).toBeInTheDocument()
+      expect(screen.getAllByText('Market').length).toBeGreaterThan(0)
+      expect(screen.getAllByText('Filled').length).toBeGreaterThan(0)
     })
   })
   it('displays order with different statuses', async () => {
@@ -439,7 +439,7 @@ describe('Orders', () => {
     } as never)
     renderWithProviders(<Orders />)
     await waitFor(() => {
-      expect(screen.getByText('cancelled')).toBeInTheDocument()
+      expect(screen.getAllByText('Cancelled').length).toBeGreaterThan(0)
     })
   })
   it('displays order with new status', async () => {
@@ -471,7 +471,7 @@ describe('Orders', () => {
     } as never)
     renderWithProviders(<Orders />)
     await waitFor(() => {
-      expect(screen.getByText('new')).toBeInTheDocument()
+      expect(screen.getAllByText('New').length).toBeGreaterThan(0)
     })
   })
   it('displays rejected order status', async () => {
@@ -503,7 +503,7 @@ describe('Orders', () => {
     } as never)
     renderWithProviders(<Orders />)
     await waitFor(() => {
-      expect(screen.getByText('rejected')).toBeInTheDocument()
+      expect(screen.getAllByText('Rejected').length).toBeGreaterThan(0)
       expect(screen.getByText('BTC/USD')).toBeInTheDocument()
     })
   })
@@ -536,7 +536,7 @@ describe('Orders', () => {
     } as never)
     renderWithProviders(<Orders />)
     await waitFor(() => {
-      expect(screen.getByText('partially_filled')).toBeInTheDocument()
+      expect(screen.getAllByText('Partially Filled').length).toBeGreaterThan(0)
     })
   })
   it('switches to executions tab and displays execution card', async () => {
@@ -741,7 +741,7 @@ describe('Orders', () => {
     renderWithProviders(<Orders />)
     await waitFor(() => {
       expect(screen.getByText('BTC/USD')).toBeInTheDocument()
-      expect(screen.getByText('rejected')).toBeInTheDocument()
+      expect(screen.getAllByText('Rejected').length).toBeGreaterThan(0)
     })
   })
   it('displays order with error status', async () => {
@@ -774,7 +774,7 @@ describe('Orders', () => {
     renderWithProviders(<Orders />)
     await waitFor(() => {
       expect(screen.getByText('ETH/USD')).toBeInTheDocument()
-      expect(screen.getByText('rejected')).toBeInTheDocument()
+      expect(screen.getAllByText('Rejected').length).toBeGreaterThan(0)
     })
   })
   it('displays order with partially_filled status', async () => {
@@ -807,7 +807,7 @@ describe('Orders', () => {
     renderWithProviders(<Orders />)
     await waitFor(() => {
       expect(screen.getByText('SOL/USD')).toBeInTheDocument()
-      expect(screen.getByText('partially_filled')).toBeInTheDocument()
+      expect(screen.getAllByText('Partially Filled').length).toBeGreaterThan(0)
     })
   })
   it('shows N/A when order created_at is missing', async () => {
@@ -1405,7 +1405,7 @@ describe('Orders', () => {
     } as never)
     renderWithProviders(<Orders />)
     await waitFor(() => {
-      expect(screen.getByText('filled')).toBeInTheDocument()
+      expect(screen.getAllByText('Filled').length).toBeGreaterThan(0)
     })
     expect(screen.queryByTestId('cancel-order-cid-filled')).not.toBeInTheDocument()
   })
