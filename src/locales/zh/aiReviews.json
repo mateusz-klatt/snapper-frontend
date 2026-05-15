@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "请求",
+    "decision": "决策",
+    "capsViolation": "上限违规",
+    "selectedDelegate": "已选委托",
+    "instrument": "品种",
+    "deadline": "截止 {{time}}",
+    "decidedBy": "由",
+    "newStatus": "状态",
+    "mode": "模式",
+    "capAttempted": "尝试值",
+    "capLimit": "对比上限",
+    "capOn": "品种",
+    "reviewLabel": "审核 {{reviewId}}",
+    "unhandledFrame": "未处理的 AI 审核活动帧: {{frame}}"
+  },
+  "page": {
+    "title": "AI 审核收件箱",
+    "subtitle": "路由到此委托的待处理 CONSULT 审核，以及实时事件流。"
+  },
+  "roleNotice": {
+    "title": "仅供 AI 委托使用",
+    "message": "此收件箱显示路由到 AI 委托主体的 CONSULT 审核。请使用 AI 委托账户登录，以查看待处理审核和实时活动流。你当前的角色是",
+    "unknownRole": "未知"
+  },
+  "pending": {
+    "title": "待处理审核",
+    "loading": "正在加载待处理审核…",
+    "loadError": "加载待处理审核失败: {{message}}",
+    "emptyTitle": "没有待处理审核",
+    "emptyMessage": "路由到此委托的新 CONSULT 请求将显示在这里。",
+    "columns": {
+      "instrument": "品种",
+      "thesis": "论点",
+      "status": "状态",
+      "deadline": "截止时间",
+      "decision": "决策"
+    },
+    "rationalePlaceholder": "理由（可选）",
+    "rationaleAriaLabel": "审核 {{reviewId}} 的理由",
+    "approve": "批准",
+    "reject": "拒绝",
+    "submitError": "提交失败: {{message}}"
+  },
+  "activity": {
+    "title": "最近活动",
+    "emptyTitle": "暂无活动",
+    "emptyMessage": "AI 审核请求、决策和上限违规帧将在这里实时显示。",
+    "summaryEmpty": "未收到帧",
+    "summaryCount": "显示 {{shown}} / {{total}} 条缓冲"
+  }
+}

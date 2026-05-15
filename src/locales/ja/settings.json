@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "設定",
+    "subtitle": "アプリケーション設定とパラメーターを構成",
+    "addButton": "設定を追加",
+    "searchPlaceholder": "設定を検索...",
+    "noResults": "条件に一致する設定が見つかりません。",
+    "allCategories": "すべてのカテゴリー",
+    "categoryFilterAriaLabel": "カテゴリーで設定を絞り込み"
+  },
+  "errors": {
+    "loadFailed": "設定の読み込みに失敗しました",
+    "updateFailed": "設定の更新に失敗しました",
+    "deleteFailed": "設定の削除に失敗しました",
+    "createFailed": "設定の作成に失敗しました",
+    "alreadyExists": "キー \"{{key}}\" の設定はすでに存在します"
+  },
+  "item": {
+    "edit": "編集",
+    "delete": "削除",
+    "save": "保存",
+    "saving": "保存中...",
+    "cancel": "キャンセル",
+    "yesDelete": "はい、削除",
+    "deleting": "削除中...",
+    "deleteConfirm": "この設定を削除しますか？",
+    "valuePlaceholder": "設定値を入力...",
+    "showMore": "さらに表示",
+    "showLess": "表示を減らす",
+    "toggleAriaLabel": "{{key}}を切り替え",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 機密"
+    },
+    "helpText": {
+      "allowShortSelling": "エンジンがショートポジションを建てることを許可します。売りシグナルは負の desired_units を生成し、無効時は0にクランプされます。",
+      "allowManualOrders": "注文タブの新規注文ボタンを有効にします。無効時、POST /api/orders は403を返します。"
+    }
+  },
+  "addModal": {
+    "title": "新しい設定を追加",
+    "keyLabel": "キー",
+    "valueLabel": "値",
+    "categoryLabel": "カテゴリー",
+    "descriptionLabel": "説明",
+    "keyPlaceholder": "例: walutomat.api_key",
+    "keyHint": "ネストした設定にはドット記法を使用してください（例: category.subcategory.name）",
+    "valuePlaceholder": "設定値",
+    "categorySelectPlaceholder": "既存を選択または新規作成",
+    "newCategoryPlaceholder": "または新しいカテゴリー名を入力",
+    "descriptionPlaceholder": "任意の説明",
+    "cancel": "キャンセル",
+    "create": "設定を作成",
+    "creating": "作成中...",
+    "validation": {
+      "keyRequired": "キーは必須です",
+      "valueRequired": "値は必須です",
+      "categoryRequired": "カテゴリーは必須です"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "フォームエディター",
+    "rawEditor": "Raw JSONエディター",
+    "rawJson": "Raw JSON",
+    "switchToForm": "フォームに切り替え",
+    "importToForm": "フォームに取り込み",
+    "parseError": "解析エラー: {{message}}",
+    "arraySummary": "配列 ({{length}}項目)",
+    "addItem": "項目を追加",
+    "remove": "削除",
+    "typeHint": {
+      "array": "（配列）",
+      "object": "（オブジェクト）",
+      "string": "（文字列）",
+      "number": "（数値）",
+      "boolean": "（真偽値）",
+      "bigint": "（bigint）",
+      "function": "（function）",
+      "symbol": "（symbol）",
+      "undefined": "（undefined）"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

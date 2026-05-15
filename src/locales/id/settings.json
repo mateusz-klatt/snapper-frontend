@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Pengaturan",
+    "subtitle": "Konfigurasikan pengaturan dan parameter aplikasi",
+    "addButton": "Tambah Pengaturan",
+    "searchPlaceholder": "Cari pengaturan...",
+    "noResults": "Tidak ada pengaturan yang cocok dengan kriteria Anda.",
+    "allCategories": "Semua Kategori",
+    "categoryFilterAriaLabel": "Filter pengaturan berdasarkan kategori"
+  },
+  "errors": {
+    "loadFailed": "Gagal memuat pengaturan",
+    "updateFailed": "Gagal memperbarui pengaturan",
+    "deleteFailed": "Gagal menghapus pengaturan",
+    "createFailed": "Gagal membuat pengaturan",
+    "alreadyExists": "Pengaturan dengan kunci \"{{key}}\" sudah ada"
+  },
+  "item": {
+    "edit": "Edit",
+    "delete": "Hapus",
+    "save": "Simpan",
+    "saving": "Menyimpan...",
+    "cancel": "Batal",
+    "yesDelete": "Ya, Hapus",
+    "deleting": "Menghapus...",
+    "deleteConfirm": "Hapus pengaturan ini?",
+    "valuePlaceholder": "Masukkan nilai pengaturan...",
+    "showMore": "Tampilkan lainnya",
+    "showLess": "Tampilkan lebih sedikit",
+    "toggleAriaLabel": "Alihkan {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensitif"
+    },
+    "helpText": {
+      "allowShortSelling": "Izinkan engine membuka posisi short. Sinyal SELL akan menghasilkan desired_units negatif; dibatasi ke 0 saat dinonaktifkan.",
+      "allowManualOrders": "Aktifkan tombol Pesanan Baru di tab Pesanan. Saat dinonaktifkan, POST /api/orders mengembalikan 403."
+    }
+  },
+  "addModal": {
+    "title": "Tambah Pengaturan Baru",
+    "keyLabel": "Kunci",
+    "valueLabel": "Nilai",
+    "categoryLabel": "Kategori",
+    "descriptionLabel": "Deskripsi",
+    "keyPlaceholder": "mis., walutomat.api_key",
+    "keyHint": "Gunakan notasi titik untuk pengaturan bertingkat (mis., category.subcategory.name)",
+    "valuePlaceholder": "Nilai pengaturan",
+    "categorySelectPlaceholder": "Pilih yang sudah ada atau buat baru",
+    "newCategoryPlaceholder": "Atau masukkan nama kategori baru",
+    "descriptionPlaceholder": "Deskripsi opsional",
+    "cancel": "Batal",
+    "create": "Buat Pengaturan",
+    "creating": "Membuat...",
+    "validation": {
+      "keyRequired": "Kunci wajib diisi",
+      "valueRequired": "Nilai wajib diisi",
+      "categoryRequired": "Kategori wajib diisi"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor Formulir",
+    "rawEditor": "Editor JSON Mentah",
+    "rawJson": "JSON Mentah",
+    "switchToForm": "Beralih ke Formulir",
+    "importToForm": "Impor ke Formulir",
+    "parseError": "Kesalahan parse: {{message}}",
+    "arraySummary": "Array ({{length}} item)",
+    "addItem": "Tambah Item",
+    "remove": "Hapus",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

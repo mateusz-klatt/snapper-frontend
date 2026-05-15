@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "リクエスト",
+    "decision": "判断",
+    "capsViolation": "上限違反",
+    "selectedDelegate": "選択されたデリゲート",
+    "instrument": "銘柄",
+    "deadline": "期限 {{time}}",
+    "decidedBy": "判断者",
+    "newStatus": "ステータス",
+    "mode": "モード",
+    "capAttempted": "試行値",
+    "capLimit": "上限比",
+    "capOn": "対象銘柄",
+    "reviewLabel": "レビュー {{reviewId}}",
+    "unhandledFrame": "未処理のAIレビューアクティビティフレーム: {{frame}}"
+  },
+  "page": {
+    "title": "AIレビュー受信箱",
+    "subtitle": "このデリゲートにルーティングされた保留中のCONSULTレビューとライブイベントストリーム。"
+  },
+  "roleNotice": {
+    "title": "AIデリゲート専用",
+    "message": "この受信箱には、AIデリゲートプリンシパルにルーティングされたCONSULTレビューが表示されます。保留中のレビューとライブアクティビティストリームを見るには、AIデリゲートアカウントでサインインしてください。現在の役割は",
+    "unknownRole": "不明"
+  },
+  "pending": {
+    "title": "保留中のレビュー",
+    "loading": "保留中のレビューを読み込み中…",
+    "loadError": "保留中のレビューの読み込みに失敗しました: {{message}}",
+    "emptyTitle": "保留中のレビューはありません",
+    "emptyMessage": "このデリゲートにルーティングされた新しいCONSULTリクエストがここに表示されます。",
+    "columns": {
+      "instrument": "銘柄",
+      "thesis": "投資仮説",
+      "status": "ステータス",
+      "deadline": "期限",
+      "decision": "判断"
+    },
+    "rationalePlaceholder": "根拠（任意）",
+    "rationaleAriaLabel": "レビュー {{reviewId}} の根拠",
+    "approve": "承認",
+    "reject": "却下",
+    "submitError": "送信に失敗しました: {{message}}"
+  },
+  "activity": {
+    "title": "最近のアクティビティ",
+    "emptyTitle": "アクティビティはまだありません",
+    "emptyMessage": "AIレビューリクエスト、判断、上限違反フレームがここにストリーム表示されます。",
+    "summaryEmpty": "受信したフレームはありません",
+    "summaryCount": "{{total}}件中{{shown}}件のバッファを表示"
+  }
+}

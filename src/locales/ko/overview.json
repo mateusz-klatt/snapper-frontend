@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "개요"
+  },
+  "metrics": {
+    "feedsRunning": "실행 중인 피드",
+    "strategiesActive": "활성 전략",
+    "openOrders": "미체결 주문",
+    "todaysExecutions": "오늘의 체결",
+    "executionsOn": "체결 ({{date}})"
+  },
+  "status": {
+    "stopped": "중지됨",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "실행 중",
+    "active": "활성"
+  },
+  "processStatus": {
+    "title": "프로세스 상태",
+    "feeds": "피드",
+    "strategies": "전략",
+    "executors": "실행기",
+    "brokers": "브로커"
+  },
+  "portfolio": {
+    "title": "포트폴리오 요약",
+    "totalValue": "총 가치",
+    "longExposure": "롱 익스포저",
+    "shortExposure": "숏 익스포저",
+    "netDelta": "순 델타",
+    "unrealizedPnl": "미실현 P&L",
+    "pnlPercent": "P&L %",
+    "positions": "포지션",
+    "instrumentsCount": "{{count}}개 종목",
+    "empty": "사용 가능한 포지션 데이터가 없습니다"
+  },
+  "signals": {
+    "title": "최근 시그널",
+    "empty": "최근 시그널 없음",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "최근 체결",
+    "empty": "최근 체결 없음",
+    "noTime": "N/A"
+  }
+}

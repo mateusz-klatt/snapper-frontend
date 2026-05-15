@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Sức khỏe hệ thống",
+    "healthMetricsHeading": "Chỉ số sức khỏe",
+    "processStatusHeading": "Trạng thái tiến trình",
+    "activeBacktestsHeading": "Backtest đang hoạt động",
+    "quickActionsHeading": "Tác vụ nhanh",
+    "featureNotImplemented": "Tính năng chưa được triển khai",
+    "restartServices": "Khởi động lại dịch vụ",
+    "runHealthCheck": "Chạy kiểm tra sức khỏe",
+    "viewLogs": "Xem log",
+    "exportReport": "Xuất báo cáo"
+  },
+  "status": {
+    "healthy": "Ổn định",
+    "stopped": "Đã dừng",
+    "error": "Lỗi",
+    "warning": "Cảnh báo",
+    "completed": "Đã hoàn tất",
+    "unknown": "Không xác định"
+  },
+  "metrics": {
+    "tradingEngine": "Trading Engine",
+    "tradingEngineDescription": "Engine thực thi chiến lược",
+    "activeBacktests": "Backtest đang hoạt động",
+    "activeBacktestsDescription": "Tiến trình Backtest đang chạy",
+    "active": "Đang hoạt động",
+    "inactive": "Không hoạt động"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}p",
+    "uptimeHours": "{{hours}}g {{minutes}}p",
+    "uptimeDays": "{{days}}n {{hours}}g",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Thời gian chạy",
+    "exitCode": "Mã thoát: {{code}}",
+    "service": "dịch vụ",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Thống kê cơ sở dữ liệu",
+    "loading": "Đang tải thống kê cơ sở dữ liệu…",
+    "unavailable": "Không có thống kê cơ sở dữ liệu: {{message}}",
+    "fallbackError": "Không tải được thống kê cơ sở dữ liệu.",
+    "sampled": "lấy mẫu {{age}}",
+    "samplerSummary": "Chu kỳ lấy mẫu: {{seconds}}s · {{count}} bảng",
+    "columns": {
+      "table": "Bảng",
+      "kind": "Loại",
+      "total": "Tổng",
+      "current": "Hiện tại",
+      "closed": "Đã đóng",
+      "archivable": "Có thể lưu trữ",
+      "status": "Trạng thái"
+    },
+    "stale": "quá hạn"
+  },
+  "notification": {
+    "title": "Sidecar thông báo",
+    "loading": "Đang tải chỉ số thông báo…",
+    "unavailable": "Không có chỉ số thông báo: {{message}}",
+    "fallbackError": "Không tải được chỉ số thông báo.",
+    "sent": "Đã gửi",
+    "sentDescription": "Trạng thái cuối: đã gửi",
+    "failed": "Thất bại",
+    "failedDescription": "Đã hết hạn mức thử lại",
+    "unregistered": "Chưa đăng ký",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Đã hủy (phạm vi)",
+    "cancelledScopeDescription": "Thu hồi phạm vi / vô hiệu hóa người dùng",
+    "outboxDepth": "Độ sâu Outbox",
+    "outboxDepthDescription": "Đang xếp hàng, chờ thử lại"
+  },
+  "retention": {
+    "title": "Bộ lập lịch lưu giữ",
+    "loading": "Đang tải lượt chạy lưu giữ…",
+    "unavailable": "Không có lượt chạy lưu giữ: {{message}}",
+    "fallbackError": "Không tải được lượt chạy lưu giữ.",
+    "lastRun": "lượt chạy gần nhất {{age}}",
+    "dryRunNotice": "Chế độ dry-run: các hàng được lưu trữ nhưng không bị xóa khỏi DB.",
+    "columns": {
+      "table": "Bảng",
+      "retain": "Giữ lại",
+      "archivedWindow": "Khoảng đã lưu trữ",
+      "archived": "Đã lưu trữ",
+      "purged": "Đã xóa",
+      "files": "Tệp",
+      "status": "Trạng thái"
+    },
+    "retainDays": "{{days}}n",
+    "ok": "ok",
+    "error": "lỗi"
+  },
+  "systemMetrics": {
+    "title": "Sức khỏe tiến trình",
+    "loading": "Đang tải chỉ số tiến trình…",
+    "unavailable": "Không có chỉ số tiến trình: {{message}}",
+    "fallbackError": "Không tải được chỉ số sức khỏe tiến trình.",
+    "rawJson": "JSON thô",
+    "pid": "PID",
+    "statusValue": "Trạng thái: {{status}}",
+    "uptime": "Thời gian chạy",
+    "threads": "Luồng",
+    "openFds": "FD đang mở",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Bị throttle {{count}}×",
+    "memory": "Bộ nhớ",
+    "saturation": "Bão hòa {{percent}}",
+    "asyncioTasks": "Tác vụ asyncio",
+    "asyncioActive": "{{count}} đang hoạt động",
+    "asyncioPending": "+ {{count}} đang chờ",
+    "dbPool": "DB Pool",
+    "liveConns": "Kết nối live: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Đối tượng: {{value}}",
+    "threadsPercent": "Luồng %",
+    "networkConns": "Kết nối mạng",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Đang hoạt động",
+    "tracemallocIdle": "Nhàn rỗi"
+  },
+  "relativeAge": {
+    "justNow": "vừa xong",
+    "seconds": "{{seconds}} giây trước",
+    "minutes": "{{minutes}} phút trước",
+    "hours": "{{hours}} giờ trước",
+    "days": "{{days}} ngày trước"
+  },
+  "duration": {
+    "seconds": "{{seconds}} giây",
+    "minutes": "{{minutes}} phút",
+    "hours": "{{hours}} giờ",
+    "days": "{{days}} ngày"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

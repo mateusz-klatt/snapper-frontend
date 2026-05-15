@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "设置",
+    "subtitle": "配置应用设置和参数",
+    "addButton": "添加设置",
+    "searchPlaceholder": "搜索设置...",
+    "noResults": "未找到符合条件的设置。",
+    "allCategories": "所有分类",
+    "categoryFilterAriaLabel": "按分类筛选设置"
+  },
+  "errors": {
+    "loadFailed": "加载设置失败",
+    "updateFailed": "更新设置失败",
+    "deleteFailed": "删除设置失败",
+    "createFailed": "创建设置失败",
+    "alreadyExists": "键 \"{{key}}\" 的设置已存在"
+  },
+  "item": {
+    "edit": "编辑",
+    "delete": "删除",
+    "save": "保存",
+    "saving": "保存中...",
+    "cancel": "取消",
+    "yesDelete": "是，删除",
+    "deleting": "删除中...",
+    "deleteConfirm": "删除此设置？",
+    "valuePlaceholder": "输入设置值...",
+    "showMore": "显示更多",
+    "showLess": "收起",
+    "toggleAriaLabel": "切换 {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 敏感"
+    },
+    "helpText": {
+      "allowShortSelling": "允许引擎开空仓。SELL 信号会生成负 desired_units；禁用时限制为 0。",
+      "allowManualOrders": "在订单标签页启用新建订单按钮。禁用时，POST /api/orders 返回 403。"
+    }
+  },
+  "addModal": {
+    "title": "添加新设置",
+    "keyLabel": "键",
+    "valueLabel": "值",
+    "categoryLabel": "分类",
+    "descriptionLabel": "描述",
+    "keyPlaceholder": "例如 walutomat.api_key",
+    "keyHint": "使用点号表示嵌套设置（例如 category.subcategory.name）",
+    "valuePlaceholder": "设置值",
+    "categorySelectPlaceholder": "选择已有分类或新建",
+    "newCategoryPlaceholder": "或输入新分类名称",
+    "descriptionPlaceholder": "可选描述",
+    "cancel": "取消",
+    "create": "创建设置",
+    "creating": "创建中...",
+    "validation": {
+      "keyRequired": "必须填写键",
+      "valueRequired": "必须填写值",
+      "categoryRequired": "必须填写分类"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "表单编辑器",
+    "rawEditor": "原始 JSON 编辑器",
+    "rawJson": "原始 JSON",
+    "switchToForm": "切换到表单",
+    "importToForm": "导入到表单",
+    "parseError": "解析错误: {{message}}",
+    "arraySummary": "数组 ({{length}} 项)",
+    "addItem": "添加项",
+    "remove": "移除",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

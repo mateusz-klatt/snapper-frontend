@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "시스템 상태",
+    "healthMetricsHeading": "상태 지표",
+    "processStatusHeading": "프로세스 상태",
+    "activeBacktestsHeading": "활성 백테스트",
+    "quickActionsHeading": "빠른 작업",
+    "featureNotImplemented": "아직 구현되지 않은 기능",
+    "restartServices": "서비스 재시작",
+    "runHealthCheck": "상태 점검 실행",
+    "viewLogs": "로그 보기",
+    "exportReport": "보고서 내보내기"
+  },
+  "status": {
+    "healthy": "정상",
+    "stopped": "중지됨",
+    "error": "오류",
+    "warning": "경고",
+    "completed": "완료",
+    "unknown": "알 수 없음"
+  },
+  "metrics": {
+    "tradingEngine": "트레이딩 엔진",
+    "tradingEngineDescription": "전략 실행 엔진",
+    "activeBacktests": "활성 백테스트",
+    "activeBacktestsDescription": "실행 중인 백테스트 프로세스",
+    "active": "활성",
+    "inactive": "비활성"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}분",
+    "uptimeHours": "{{hours}}시간 {{minutes}}분",
+    "uptimeDays": "{{days}}일 {{hours}}시간",
+    "backtestName": "백테스트 {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "가동 시간",
+    "exitCode": "종료 코드: {{code}}",
+    "service": "서비스",
+    "backtest": "백테스트"
+  },
+  "dbStats": {
+    "title": "데이터베이스 통계",
+    "loading": "데이터베이스 통계 로딩 중…",
+    "unavailable": "데이터베이스 통계를 사용할 수 없습니다: {{message}}",
+    "fallbackError": "데이터베이스 통계 로드 실패.",
+    "sampled": "{{age}} 샘플링",
+    "samplerSummary": "샘플러 간격: {{seconds}}초 · {{count}}개 테이블",
+    "columns": {
+      "table": "테이블",
+      "kind": "종류",
+      "total": "전체",
+      "current": "현재",
+      "closed": "종료됨",
+      "archivable": "아카이브 가능",
+      "status": "상태"
+    },
+    "stale": "오래됨"
+  },
+  "notification": {
+    "title": "알림 사이드카",
+    "loading": "알림 지표 로딩 중…",
+    "unavailable": "알림 지표를 사용할 수 없습니다: {{message}}",
+    "fallbackError": "알림 지표 로드 실패.",
+    "sent": "발송됨",
+    "sentDescription": "터미널: 발송됨",
+    "failed": "실패",
+    "failedDescription": "재시도 한도 소진",
+    "unregistered": "등록 해제됨",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "취소됨 (범위)",
+    "cancelledScopeDescription": "범위 해제 / 사용자 비활성화",
+    "outboxDepth": "아웃박스 깊이",
+    "outboxDepthDescription": "대기열에 있으며 재시도 대기 중"
+  },
+  "retention": {
+    "title": "보존 스케줄러",
+    "loading": "보존 실행 로딩 중…",
+    "unavailable": "보존 실행을 사용할 수 없습니다: {{message}}",
+    "fallbackError": "보존 실행 로드 실패.",
+    "lastRun": "마지막 실행 {{age}}",
+    "dryRunNotice": "Dry-run 모드: 행은 아카이브되지만 DB에서 삭제되지는 않습니다.",
+    "columns": {
+      "table": "테이블",
+      "retain": "보존",
+      "archivedWindow": "아카이브 구간",
+      "archived": "아카이브됨",
+      "purged": "삭제됨",
+      "files": "파일",
+      "status": "상태"
+    },
+    "retainDays": "{{days}}일",
+    "ok": "정상",
+    "error": "오류"
+  },
+  "systemMetrics": {
+    "title": "프로세스 상태",
+    "loading": "프로세스 지표 로딩 중…",
+    "unavailable": "프로세스 지표를 사용할 수 없습니다: {{message}}",
+    "fallbackError": "프로세스 상태 지표 로드 실패.",
+    "rawJson": "원시 JSON",
+    "pid": "PID",
+    "statusValue": "상태: {{status}}",
+    "uptime": "가동 시간",
+    "threads": "스레드",
+    "openFds": "열린 FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "스로틀 {{count}}×",
+    "memory": "메모리",
+    "saturation": "포화도 {{percent}}",
+    "asyncioTasks": "Asyncio 태스크",
+    "asyncioActive": "{{count}}개 활성",
+    "asyncioPending": "+ {{count}}개 대기 중",
+    "dbPool": "DB 풀",
+    "liveConns": "실시간 연결: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "객체: {{value}}",
+    "threadsPercent": "스레드 %",
+    "networkConns": "네트워크 연결",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "활성",
+    "tracemallocIdle": "유휴"
+  },
+  "relativeAge": {
+    "justNow": "방금 전",
+    "seconds": "{{seconds}}초 전",
+    "minutes": "{{minutes}}분 전",
+    "hours": "{{hours}}시간 전",
+    "days": "{{days}}일 전"
+  },
+  "duration": {
+    "seconds": "{{seconds}}초",
+    "minutes": "{{minutes}}분",
+    "hours": "{{hours}}시간",
+    "days": "{{days}}일"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

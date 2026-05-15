@@ -68,6 +68,11 @@ export type CatalogLanguage =
   | 'da'
   | 'no'
   | 'fi'
+  | 'zh'
+  | 'ja'
+  | 'ko'
+  | 'vi'
+  | 'id'
 
 export interface LocaleMeta {
   readonly code: AppLocale

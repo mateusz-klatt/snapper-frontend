@@ -19,6 +19,12 @@ const NATIVE_LANGUAGE_COUNTRIES = [
   'dk',
   'no',
   'fi',
+  'cn',
+  'hk',
+  'jp',
+  'kr',
+  'vn',
+  'id',
 ] as const
 
 describe('COUNTRY_TO_LANGUAGE', () => {
@@ -34,6 +40,12 @@ describe('COUNTRY_TO_LANGUAGE', () => {
     expect(COUNTRY_TO_LANGUAGE.dk).toBe('da')
     expect(COUNTRY_TO_LANGUAGE.no).toBe('no')
     expect(COUNTRY_TO_LANGUAGE.fi).toBe('fi')
+    expect(COUNTRY_TO_LANGUAGE.cn).toBe('zh')
+    expect(COUNTRY_TO_LANGUAGE.hk).toBe('zh')
+    expect(COUNTRY_TO_LANGUAGE.jp).toBe('ja')
+    expect(COUNTRY_TO_LANGUAGE.kr).toBe('ko')
+    expect(COUNTRY_TO_LANGUAGE.vn).toBe('vi')
+    expect(COUNTRY_TO_LANGUAGE.id).toBe('id')
   })
 
   it('maps countries without a native catalog to en', () => {
@@ -68,8 +80,12 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
     expect(COUNTRY_TO_INTL_LOCALE.dk).toBe('da-DK')
     expect(COUNTRY_TO_INTL_LOCALE.no).toBe('no-NO')
     expect(COUNTRY_TO_INTL_LOCALE.fi).toBe('fi-FI')
+    expect(COUNTRY_TO_INTL_LOCALE.cn).toBe('zh-CN')
+    expect(COUNTRY_TO_INTL_LOCALE.jp).toBe('ja-JP')
+    expect(COUNTRY_TO_INTL_LOCALE.kr).toBe('ko-KR')
+    expect(COUNTRY_TO_INTL_LOCALE.vn).toBe('vi-VN')
+    expect(COUNTRY_TO_INTL_LOCALE.id).toBe('id-ID')
     expect(COUNTRY_TO_INTL_LOCALE.ae).toBe('en-AE')
-    expect(COUNTRY_TO_INTL_LOCALE.cn).toBe('en-CN')
   })
 
   it('covers all 45 codes', () => {

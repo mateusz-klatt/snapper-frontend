@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Cài đặt",
+    "subtitle": "Cấu hình cài đặt và tham số ứng dụng",
+    "addButton": "Thêm cài đặt",
+    "searchPlaceholder": "Tìm cài đặt...",
+    "noResults": "Không tìm thấy cài đặt nào khớp với tiêu chí của bạn.",
+    "allCategories": "Tất cả danh mục",
+    "categoryFilterAriaLabel": "Lọc cài đặt theo danh mục"
+  },
+  "errors": {
+    "loadFailed": "Không tải được cài đặt",
+    "updateFailed": "Không cập nhật được cài đặt",
+    "deleteFailed": "Không xóa được cài đặt",
+    "createFailed": "Không tạo được cài đặt",
+    "alreadyExists": "Cài đặt với khóa \"{{key}}\" đã tồn tại"
+  },
+  "item": {
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "save": "Lưu",
+    "saving": "Đang lưu...",
+    "cancel": "Hủy",
+    "yesDelete": "Có, xóa",
+    "deleting": "Đang xóa...",
+    "deleteConfirm": "Xóa cài đặt này?",
+    "valuePlaceholder": "Nhập giá trị cài đặt...",
+    "showMore": "Hiển thị thêm",
+    "showLess": "Thu gọn",
+    "toggleAriaLabel": "Bật/tắt {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Nhạy cảm"
+    },
+    "helpText": {
+      "allowShortSelling": "Cho phép engine mở vị thế short. Tín hiệu SELL sẽ tạo desired_units âm; bị kẹp về 0 khi tắt.",
+      "allowManualOrders": "Bật nút Lệnh mới trên tab Lệnh. Khi tắt, POST /api/orders trả về 403."
+    }
+  },
+  "addModal": {
+    "title": "Thêm cài đặt mới",
+    "keyLabel": "Khóa",
+    "valueLabel": "Giá trị",
+    "categoryLabel": "Danh mục",
+    "descriptionLabel": "Mô tả",
+    "keyPlaceholder": "ví dụ: walutomat.api_key",
+    "keyHint": "Dùng ký pháp dấu chấm cho cài đặt lồng nhau (ví dụ: category.subcategory.name)",
+    "valuePlaceholder": "Giá trị cài đặt",
+    "categorySelectPlaceholder": "Chọn danh mục hiện có hoặc tạo mới",
+    "newCategoryPlaceholder": "Hoặc nhập tên danh mục mới",
+    "descriptionPlaceholder": "Mô tả tùy chọn",
+    "cancel": "Hủy",
+    "create": "Tạo cài đặt",
+    "creating": "Đang tạo...",
+    "validation": {
+      "keyRequired": "Bắt buộc nhập khóa",
+      "valueRequired": "Bắt buộc nhập giá trị",
+      "categoryRequired": "Bắt buộc nhập danh mục"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Trình sửa biểu mẫu",
+    "rawEditor": "Trình sửa JSON thô",
+    "rawJson": "JSON thô",
+    "switchToForm": "Chuyển sang biểu mẫu",
+    "importToForm": "Nhập vào biểu mẫu",
+    "parseError": "Lỗi phân tích: {{message}}",
+    "arraySummary": "Mảng ({{length}} mục)",
+    "addItem": "Thêm mục",
+    "remove": "Xóa",
+    "typeHint": {
+      "array": "(mảng)",
+      "object": "(đối tượng)",
+      "string": "(chuỗi)",
+      "number": "(số)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(hàm)",
+      "symbol": "(ký hiệu)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

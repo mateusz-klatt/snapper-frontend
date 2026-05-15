@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "시그널"
+  },
+  "filters": {
+    "allStrategies": "모든 전략"
+  },
+  "actions": {
+    "export": "내보내기"
+  },
+  "stats": {
+    "total": "전체",
+    "buy": "매수",
+    "sell": "매도",
+    "avgStrength": "평균 강도"
+  },
+  "card": {
+    "strength": "강도",
+    "price": "가격",
+    "exchange": "거래소",
+    "reason": "사유:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "강함",
+    "medium": "보통",
+    "weak": "약함",
+    "veryWeak": "매우 약함"
+  },
+  "time": {
+    "justNow": "방금 전",
+    "minutesAgo": "{{count}}분 전",
+    "hoursAgo": "{{count}}시간 전"
+  },
+  "empty": {
+    "title": "시그널이 없습니다",
+    "message": "현재 필터와 일치하는 트레이딩 시그널이 없습니다."
+  }
+}

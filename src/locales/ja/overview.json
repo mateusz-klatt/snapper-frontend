@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "概要"
+  },
+  "metrics": {
+    "feedsRunning": "稼働中のフィード",
+    "strategiesActive": "アクティブな戦略",
+    "openOrders": "未決注文",
+    "todaysExecutions": "本日の約定",
+    "executionsOn": "約定 ({{date}})"
+  },
+  "status": {
+    "stopped": "停止中",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "実行中",
+    "active": "アクティブ"
+  },
+  "processStatus": {
+    "title": "プロセスステータス",
+    "feeds": "フィード",
+    "strategies": "戦略",
+    "executors": "エグゼキューター",
+    "brokers": "ブローカー"
+  },
+  "portfolio": {
+    "title": "ポートフォリオ概要",
+    "totalValue": "総評価額",
+    "longExposure": "ロングエクスポージャー",
+    "shortExposure": "ショートエクスポージャー",
+    "netDelta": "ネットデルタ",
+    "unrealizedPnl": "未実現P&L",
+    "pnlPercent": "P&L %",
+    "positions": "ポジション",
+    "instrumentsCount": "{{count}}銘柄",
+    "empty": "ポジションデータはありません"
+  },
+  "signals": {
+    "title": "最近のシグナル",
+    "empty": "最近のシグナルはありません",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "最近の約定",
+    "empty": "最近の約定はありません",
+    "noTime": "N/A"
+  }
+}

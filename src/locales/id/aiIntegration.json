@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Integrasi AI",
+    "subtitle": "Kelola delegat AI yang terhubung ke Snapper melalui MCP.",
+    "loading": "Memuat integrasi AI…",
+    "createDelegate": "Buat delegat"
+  },
+  "disabled": {
+    "title": "Integrasi AI dinonaktifkan",
+    "message": "Aktifkan flag fitur di Pengaturan → Feature Flags untuk mengelola delegat AI."
+  },
+  "list": {
+    "loadingDelegates": "Memuat delegat…",
+    "emptyTitle": "Belum ada delegat AI",
+    "emptyMessage": "Klik “Buat delegat” untuk membuat delegat dan menghasilkan cuplikan konfigurasi MCP.",
+    "columns": {
+      "label": "Label",
+      "username": "Nama pengguna",
+      "created": "Dibuat",
+      "maxOpenOrders": "Maks pesanan terbuka",
+      "maxDailyUsd": "Maks USD harian",
+      "status": "Status",
+      "actions": "Tindakan"
+    },
+    "status": {
+      "active": "Aktif",
+      "revoked": "Dicabut"
+    },
+    "default": "default",
+    "details": "Detail",
+    "viewAriaLabel": "Lihat delegat {{label}}"
+  },
+  "wizard": {
+    "title": "Buat delegat AI",
+    "step1": "1. Identitas",
+    "step2": "2. Lingkup & batas",
+    "step3": "3. Tinjauan",
+    "stepDone": "✓ Selesai",
+    "identity": {
+      "labelField": "Label",
+      "labelPlaceholder": "mis. Alpha prop desk",
+      "labelHelpPrefix": "Nama pengguna delegat akan dibuat di sisi server sebagai ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Lingkup",
+      "operatorLabel": "public_id Operator (opsional)",
+      "operatorPlaceholder": "Kosongkan untuk mewarisi operator utama pemanggil"
+    },
+    "caps": {
+      "heading": "Batas trading (semua opsional)",
+      "maxOpenOrders": "Maks pesanan terbuka",
+      "maxDailyNotionalUsd": "Maks notional USD harian",
+      "maxCancelsPerMinute": "Maks pembatalan per menit",
+      "perInstrument": "Kuantitas maks per instrumen (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "default",
+      "errorInvalidJson": "max_order_quantity_per_instrument harus berupa JSON yang valid",
+      "errorJsonObject": "max_order_quantity_per_instrument harus berupa objek JSON atau kosong",
+      "errorNegative": "Batas harus berupa bilangan bulat non-negatif atau kosong."
+    },
+    "review": {
+      "heading": "Tinjau & buat",
+      "rowLabel": "Label",
+      "rowOperator": "public_id Operator",
+      "rowMaxOpenOrders": "Maks pesanan terbuka",
+      "rowMaxDailyNotional": "Maks notional USD harian",
+      "rowMaxCancelsPerMinute": "Maks pembatalan per menit",
+      "rowPerInstrument": "Kuantitas maks per instrumen",
+      "operatorDefault": "(operator utama pemanggil)",
+      "defaultValue": "(default)"
+    },
+    "buttons": {
+      "cancel": "Batal",
+      "next": "Lanjut",
+      "back": "Kembali",
+      "createDelegate": "Buat delegat",
+      "iSavedClose": "Saya sudah menyimpannya — tutup"
+    },
+    "toast": {
+      "delegateCreated": "Delegat dibuat",
+      "failedToCreate": "Gagal membuat delegat"
+    }
+  },
+  "detail": {
+    "loading": "Memuat delegat…",
+    "notFound": "Delegat tidak ditemukan atau tidak tersedia.",
+    "back": "Kembali",
+    "backToList": "Kembali ke daftar",
+    "updateCaps": "Perbarui batas",
+    "revoke": "Cabut",
+    "save": "Simpan",
+    "cancel": "Batal",
+    "tradingCaps": "Batas trading",
+    "status": "Status",
+    "active": "Aktif",
+    "revoked": "Dicabut",
+    "createdAt": "Dibuat pada",
+    "createdBy": "Dibuat oleh (public_id pengguna)",
+    "publicId": "ID Publik",
+    "maxOpenOrders": "Maks pesanan terbuka",
+    "maxDailyNotionalUsd": "Maks notional USD harian",
+    "maxCancelsPerMinute": "Maks pembatalan per menit",
+    "perInstrument": "Kuantitas maks per instrumen",
+    "defaultValue": "(default)",
+    "editorPlaceholder": "(default)",
+    "toast": {
+      "capsUpdated": "Batas diperbarui",
+      "failedToUpdateCaps": "Gagal memperbarui batas",
+      "negativeIntegersError": "Batas harus berupa bilangan bulat non-negatif atau kosong."
+    }
+  },
+  "revokeDialog": {
+    "title": "Cabut delegat \"{{label}}\"?",
+    "message": "Tindakan ini mencabut token delegat dan menghentikan langganan MCP-nya. Tindakan ini tidak dapat dibatalkan.",
+    "confirm": "Cabut",
+    "cancel": "Batal",
+    "toast": {
+      "delegateRevoked": "Delegat dicabut",
+      "failedToRevoke": "Gagal mencabut delegat"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Simpan kredensial ini sekarang",
+    "warningMessage": "Kredensial ini tidak akan ditampilkan lagi. Snapper tidak menyimpan token mentah; setelah Anda menutup wizard ini, satu-satunya salinan ada di konfigurasi klien MCP Anda.",
+    "snippetHelp": "Token delegat AI jangka panjang (~10 tahun). Token yang sama mengautentikasi server proxy MCP dan watch monitor. Untuk mengganti, nonaktifkan delegat ini dan buat yang baru.",
+    "baseUrlHelpPrefix": "Base URL berasal dari origin browser ini + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Salin cuplikan konfigurasi ke clipboard",
+    "copy": "Salin ke clipboard",
+    "copied": "Disalin"
+  }
+}

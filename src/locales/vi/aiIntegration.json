@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Tích hợp AI",
+    "subtitle": "Quản lý các delegate AI kết nối với Snapper qua MCP.",
+    "loading": "Đang tải tích hợp AI…",
+    "createDelegate": "Tạo delegate"
+  },
+  "disabled": {
+    "title": "Tích hợp AI đang bị tắt",
+    "message": "Bật feature flag trong Cài đặt → Feature Flags để quản lý delegate AI."
+  },
+  "list": {
+    "loadingDelegates": "Đang tải delegate…",
+    "emptyTitle": "Chưa có delegate AI",
+    "emptyMessage": "Bấm “Tạo delegate” để tạo một delegate và sinh đoạn cấu hình MCP của nó.",
+    "columns": {
+      "label": "Nhãn",
+      "username": "Tên người dùng",
+      "created": "Đã tạo",
+      "maxOpenOrders": "Số lệnh mở tối đa",
+      "maxDailyUsd": "USD tối đa/ngày",
+      "status": "Trạng thái",
+      "actions": "Thao tác"
+    },
+    "status": {
+      "active": "Đang hoạt động",
+      "revoked": "Đã thu hồi"
+    },
+    "default": "mặc định",
+    "details": "Chi tiết",
+    "viewAriaLabel": "Xem delegate {{label}}"
+  },
+  "wizard": {
+    "title": "Tạo delegate AI",
+    "step1": "1. Định danh",
+    "step2": "2. Phạm vi & giới hạn",
+    "step3": "3. Xem lại",
+    "stepDone": "✓ Hoàn tất",
+    "identity": {
+      "labelField": "Nhãn",
+      "labelPlaceholder": "ví dụ: Alpha prop desk",
+      "labelHelpPrefix": "Tên người dùng của delegate sẽ được máy chủ suy ra là ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Phạm vi",
+      "operatorLabel": "public_id người vận hành (tùy chọn)",
+      "operatorPlaceholder": "Để trống để kế thừa người vận hành chính của caller"
+    },
+    "caps": {
+      "heading": "Giới hạn giao dịch (đều tùy chọn)",
+      "maxOpenOrders": "Số lệnh mở tối đa",
+      "maxDailyNotionalUsd": "Giá trị danh nghĩa USD tối đa/ngày",
+      "maxCancelsPerMinute": "Số lần hủy tối đa mỗi phút",
+      "perInstrument": "Số lượng tối đa theo công cụ (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "mặc định",
+      "errorInvalidJson": "max_order_quantity_per_instrument phải là JSON hợp lệ",
+      "errorJsonObject": "max_order_quantity_per_instrument phải là đối tượng JSON hoặc để trống",
+      "errorNegative": "Giới hạn phải là số nguyên không âm hoặc để trống."
+    },
+    "review": {
+      "heading": "Xem lại & tạo",
+      "rowLabel": "Nhãn",
+      "rowOperator": "public_id người vận hành",
+      "rowMaxOpenOrders": "Số lệnh mở tối đa",
+      "rowMaxDailyNotional": "Giá trị danh nghĩa USD tối đa/ngày",
+      "rowMaxCancelsPerMinute": "Số lần hủy tối đa mỗi phút",
+      "rowPerInstrument": "Số lượng tối đa theo công cụ",
+      "operatorDefault": "(người vận hành chính của caller)",
+      "defaultValue": "(mặc định)"
+    },
+    "buttons": {
+      "cancel": "Hủy",
+      "next": "Tiếp",
+      "back": "Quay lại",
+      "createDelegate": "Tạo delegate",
+      "iSavedClose": "Tôi đã lưu các thông tin này — đóng"
+    },
+    "toast": {
+      "delegateCreated": "Đã tạo delegate",
+      "failedToCreate": "Không tạo được delegate"
+    }
+  },
+  "detail": {
+    "loading": "Đang tải delegate…",
+    "notFound": "Không tìm thấy delegate hoặc delegate không khả dụng.",
+    "back": "Quay lại",
+    "backToList": "Quay lại danh sách",
+    "updateCaps": "Cập nhật giới hạn",
+    "revoke": "Thu hồi",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "tradingCaps": "Giới hạn giao dịch",
+    "status": "Trạng thái",
+    "active": "Đang hoạt động",
+    "revoked": "Đã thu hồi",
+    "createdAt": "Tạo lúc",
+    "createdBy": "Tạo bởi (public_id người dùng)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Số lệnh mở tối đa",
+    "maxDailyNotionalUsd": "Giá trị danh nghĩa USD tối đa/ngày",
+    "maxCancelsPerMinute": "Số lần hủy tối đa mỗi phút",
+    "perInstrument": "Số lượng tối đa theo công cụ",
+    "defaultValue": "(mặc định)",
+    "editorPlaceholder": "(mặc định)",
+    "toast": {
+      "capsUpdated": "Đã cập nhật giới hạn",
+      "failedToUpdateCaps": "Không cập nhật được giới hạn",
+      "negativeIntegersError": "Giới hạn phải là số nguyên không âm hoặc để trống."
+    }
+  },
+  "revokeDialog": {
+    "title": "Thu hồi delegate \"{{label}}\"?",
+    "message": "Thao tác này thu hồi token delegate và dừng đăng ký MCP của delegate. Không thể hoàn tác.",
+    "confirm": "Thu hồi",
+    "cancel": "Hủy",
+    "toast": {
+      "delegateRevoked": "Đã thu hồi delegate",
+      "failedToRevoke": "Không thu hồi được delegate"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Lưu thông tin xác thực này ngay",
+    "warningMessage": "Chúng sẽ không được hiển thị lại. Snapper không lưu token thô; khi bạn đóng wizard này, bản sao duy nhất sẽ nằm trong cấu hình MCP client của bạn.",
+    "snippetHelp": "Token delegate AI dài hạn (~10 năm). Cùng một token xác thực cả máy chủ proxy MCP và trình giám sát watch. Để thay thế, hãy vô hiệu hóa delegate này và tạo delegate mới.",
+    "baseUrlHelpPrefix": "Base URL được suy ra từ origin của trình duyệt này + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Sao chép đoạn cấu hình vào clipboard",
+    "copy": "Sao chép vào clipboard",
+    "copied": "Đã sao chép"
+  }
+}

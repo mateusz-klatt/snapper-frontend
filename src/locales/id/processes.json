@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Kontrol Proses",
+    "subtitle": "Pemantauan dan kontrol proses real-time"
+  },
+  "sections": {
+    "longRunning": "Proses Berjalan Lama",
+    "executorTemplates": "Template Executor",
+    "executorTemplatesHint": "Mengedit konfigurasi template memengaruhi semua dompet di bursa ini setelah restart. Template hanya berupa konfigurasi — mulai instance per dompet di bawah untuk menjalankan executor.",
+    "walletInstances": "Instance Dompet",
+    "taskProcesses": "Proses Tugas"
+  },
+  "card": {
+    "stop": "Hentikan",
+    "start": "Mulai",
+    "restart": "Mulai ulang",
+    "starting": "Memulai...",
+    "stopping": "Menghentikan...",
+    "status": {
+      "running": "berjalan",
+      "stopped": "berhenti",
+      "error": "kesalahan",
+      "starting": "memulai",
+      "stopping": "menghentikan"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Mode:",
+    "parameters": "Parameter:",
+    "paramCount": "{{count}} parameter",
+    "noParams": "tidak ada parameter yang disetel"
+  },
+  "badges": {
+    "oneShot": "sekali jalan",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Hentikan {{name}}",
+    "stopMessage": "Tindakan ini akan menghentikan proses {{name}}.",
+    "restartTitle": "Mulai ulang {{name}}",
+    "restartMessage": "Tindakan ini akan memulai ulang proses {{name}}."
+  },
+  "executionMode": {
+    "title": "Mulai {{name}}",
+    "label": "Mode Eksekusi:",
+    "threadName": "Mode Thread",
+    "threadDescription": "Berjalan sebagai tugas tertanam di dalam server web. Startup lebih cepat, memori bersama.",
+    "processName": "Mode Proses",
+    "processDescription": "Berjalan sebagai proses Python terpisah. Terisolasi, toleran terhadap fault, pemantauan detail.",
+    "cancel": "Batal",
+    "start": "Mulai {{name}}",
+    "threadAriaLabel": "Mode Thread",
+    "processAriaLabel": "Mode Proses"
+  }
+}

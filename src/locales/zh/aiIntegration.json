@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI 集成",
+    "subtitle": "管理通过 MCP 连接到 Snapper 的 AI 委托身份。",
+    "loading": "正在加载 AI 集成…",
+    "createDelegate": "创建委托"
+  },
+  "disabled": {
+    "title": "AI 集成已禁用",
+    "message": "在 设置 → 功能开关 中启用此功能后，才能管理 AI 委托身份。"
+  },
+  "list": {
+    "loadingDelegates": "正在加载委托…",
+    "emptyTitle": "还没有 AI 委托",
+    "emptyMessage": "点击“创建委托”以生成一个委托并创建其 MCP 配置片段。",
+    "columns": {
+      "label": "标签",
+      "username": "用户名",
+      "created": "创建时间",
+      "maxOpenOrders": "最大未结订单数",
+      "maxDailyUsd": "每日最大 USD",
+      "status": "状态",
+      "actions": "操作"
+    },
+    "status": {
+      "active": "活跃",
+      "revoked": "已撤销"
+    },
+    "default": "默认",
+    "details": "详情",
+    "viewAriaLabel": "查看委托 {{label}}"
+  },
+  "wizard": {
+    "title": "创建 AI 委托",
+    "step1": "1. 身份",
+    "step2": "2. 范围和上限",
+    "step3": "3. 复核",
+    "stepDone": "✓ 完成",
+    "identity": {
+      "labelField": "标签",
+      "labelPlaceholder": "例如 Alpha prop desk",
+      "labelHelpPrefix": "委托用户名将由服务端生成为 ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "范围",
+      "operatorLabel": "操作员 public_id（可选）",
+      "operatorPlaceholder": "留空则继承调用者的主操作员"
+    },
+    "caps": {
+      "heading": "交易上限（均可选）",
+      "maxOpenOrders": "最大未结订单数",
+      "maxDailyNotionalUsd": "每日最大名义价值 USD",
+      "maxCancelsPerMinute": "每分钟最大撤单数",
+      "perInstrument": "单品种最大数量 (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "默认",
+      "errorInvalidJson": "max_order_quantity_per_instrument 必须是有效 JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument 必须是 JSON 对象或留空",
+      "errorNegative": "上限必须为非负整数或留空。"
+    },
+    "review": {
+      "heading": "复核并创建",
+      "rowLabel": "标签",
+      "rowOperator": "操作员 public_id",
+      "rowMaxOpenOrders": "最大未结订单数",
+      "rowMaxDailyNotional": "每日最大名义价值 USD",
+      "rowMaxCancelsPerMinute": "每分钟最大撤单数",
+      "rowPerInstrument": "单品种最大数量",
+      "operatorDefault": "(调用者主操作员)",
+      "defaultValue": "(默认)"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "next": "下一步",
+      "back": "返回",
+      "createDelegate": "创建委托",
+      "iSavedClose": "我已保存这些 — 关闭"
+    },
+    "toast": {
+      "delegateCreated": "委托已创建",
+      "failedToCreate": "创建委托失败"
+    }
+  },
+  "detail": {
+    "loading": "正在加载委托…",
+    "notFound": "未找到委托或委托不可用。",
+    "back": "返回",
+    "backToList": "返回列表",
+    "updateCaps": "更新上限",
+    "revoke": "撤销",
+    "save": "保存",
+    "cancel": "取消",
+    "tradingCaps": "交易上限",
+    "status": "状态",
+    "active": "活跃",
+    "revoked": "已撤销",
+    "createdAt": "创建时间",
+    "createdBy": "创建者 (用户 public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "最大未结订单数",
+    "maxDailyNotionalUsd": "每日最大名义价值 USD",
+    "maxCancelsPerMinute": "每分钟最大撤单数",
+    "perInstrument": "单品种最大数量",
+    "defaultValue": "(默认)",
+    "editorPlaceholder": "(默认)",
+    "toast": {
+      "capsUpdated": "上限已更新",
+      "failedToUpdateCaps": "更新上限失败",
+      "negativeIntegersError": "上限必须为非负整数或留空。"
+    }
+  },
+  "revokeDialog": {
+    "title": "撤销委托 \"{{label}}\"?",
+    "message": "这将撤销委托令牌并停止其 MCP 订阅。此操作无法撤销。",
+    "confirm": "撤销",
+    "cancel": "取消",
+    "toast": {
+      "delegateRevoked": "委托已撤销",
+      "failedToRevoke": "撤销委托失败"
+    }
+  },
+  "snippet": {
+    "warningTitle": "立即保存这些凭据",
+    "warningMessage": "这些凭据不会再次显示。Snapper 不保存原始令牌；关闭此向导后，唯一副本将保存在你的 MCP 客户端配置中。",
+    "snippetHelp": "长期有效的 AI 委托令牌（约 10 年）。同一令牌同时用于代理 MCP 服务器和监控器认证。如需更换，请停用此委托并创建一个新的。",
+    "baseUrlHelpPrefix": "Base URL 来自当前浏览器 origin + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "将配置片段复制到剪贴板",
+    "copy": "复制到剪贴板",
+    "copied": "已复制"
+  }
+}

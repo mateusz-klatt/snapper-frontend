@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Manajemen Strategi",
+    "register": "Daftarkan Strategi",
+    "saving": "Menyimpan…",
+    "descriptionCanManage": "Daftarkan proses strategi baru langsung dari UI. Autostart menjaga proses tetap aktif setelah restart.",
+    "descriptionViewer": "Lihat strategi yang dikonfigurasi beserta statusnya. Hubungi Operator atau Administrator untuk mengelola strategi.",
+    "searchPlaceholder": "Cari strategi...",
+    "filter": {
+      "all": "Semua status",
+      "running": "Berjalan",
+      "stopped": "Berhenti"
+    },
+    "configuredHeading": "Strategi Terkonfigurasi",
+    "noMatches": "Tidak ada strategi yang cocok dengan filter Anda",
+    "clearFilters": "Bersihkan filter",
+    "emptyTitle": "Tidak ada strategi yang dikonfigurasi",
+    "emptyCanManage": "Daftarkan strategi untuk memulai trading algoritmik",
+    "emptyViewer": "Belum ada strategi yang dikonfigurasi"
+  },
+  "confirm": {
+    "startTitle": "Mulai {{name}}",
+    "startMessage": "Tindakan ini akan memulai strategi {{name}}. Strategi ini dapat mulai menjalankan operasi trading live.",
+    "stopTitle": "Hentikan {{name}}",
+    "stopMessage": "Tindakan ini akan menghentikan strategi {{name}}. Posisi aktif tidak akan ditutup secara otomatis."
+  },
+  "toast": {
+    "saved": "Strategi {{name}} disimpan",
+    "started": "Strategi {{name}} dimulai",
+    "registerFailed": "Gagal mendaftarkan strategi: {{message}}",
+    "startSuccess": "Strategi berhasil dimulai",
+    "stopSuccess": "Strategi berhasil dihentikan",
+    "alreadyRunning": "Strategi sudah berjalan",
+    "notRunning": "Strategi tidak berjalan",
+    "configNotFound": "Konfigurasi strategi tidak ditemukan. Periksa pengaturan database.",
+    "networkError": "Kesalahan jaringan. Periksa koneksi lalu coba lagi.",
+    "startFailed": "Gagal memulai strategi: {{message}}",
+    "stopFailed": "Gagal menghentikan strategi: {{message}}",
+    "unknownError": "Kesalahan tidak diketahui"
+  },
+  "card": {
+    "ariaLabel": "Strategi: {{name}}",
+    "modeLabel": "Mode: {{mode}}",
+    "autostartEnabled": "Autostart: aktif",
+    "autostartDisabled": "Autostart: nonaktif",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Lag data: {{seconds}} detik",
+    "lagBadge": "lag: {{seconds}} dtk",
+    "feedLag": "Lag Feed: {{ms}}ms",
+    "heartbeatAge": "Usia HB: {{seconds}} dtk",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Lag Data",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Tampilkan Detail",
+    "hideDetails": "Sembunyikan Detail",
+    "inputs": "Input ({{count}})",
+    "outputs": "Output ({{count}})",
+    "feedPublishers": "Feed Publisher ({{count}})",
+    "lastUpdate": "Pembaruan terakhir: {{time}}",
+    "waiting": "Menunggu heartbeat...",
+    "startAriaLabel": "Mulai strategi {{name}}",
+    "stopAriaLabel": "Hentikan strategi {{name}}",
+    "start": "Mulai",
+    "stop": "Hentikan",
+    "starting": "Memulai...",
+    "stopping": "Menghentikan...",
+    "status": {
+      "starting": "memulai",
+      "stopping": "menghentikan",
+      "running": "berjalan",
+      "stopped": "berhenti"
+    },
+    "health": {
+      "healthy": "Sehat — menerima data baru",
+      "warning": "Peringatan — data sudah usang",
+      "error": "Kesalahan — tidak ada data terbaru",
+      "unknown": "Tidak diketahui — tidak ada data heartbeat"
+    },
+    "healthShort": {
+      "healthy": "SEHAT",
+      "warning": "PERINGATAN",
+      "error": "KESALAHAN"
+    }
+  },
+  "launchModal": {
+    "title": "Daftarkan Proses Strategi",
+    "emptyTemplates": "Tidak ada template strategi yang terdaftar di backend. Definisikan minimal satu proses strategi.",
+    "close": "Tutup",
+    "templateLabel": "Template strategi",
+    "templatePlaceholder": "Pilih template...",
+    "templateFallbackDescription": "Strategi terdaftar di backend",
+    "loadingDefaults": "Memuat default template…",
+    "loadDefaultsError": "Tidak dapat memuat default template. Periksa log backend.",
+    "processNameLabel": "Nama proses",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Karakter yang diizinkan: huruf kecil, angka, garis bawah",
+    "instanceNameLabel": "Nama instance strategi",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Digunakan dalam konfigurasi strategi dan topik output",
+    "executionModeLabel": "Mode eksekusi",
+    "executionModeThread": "Thread tertanam",
+    "executionModeProcess": "Proses terisolasi",
+    "executionModeHelp": "Thread berbagi memori, proses memberikan isolasi yang lebih kuat.",
+    "flagsLabel": "Flag",
+    "autostartLabel": "Autostart saat server boot",
+    "startImmediatelyLabel": "Mulai segera setelah pendaftaran",
+    "noteLabel": "Catatan (opsional)",
+    "notePlaceholder": "Jelaskan tujuan atau parameter instance strategi ini.",
+    "noteHelp": "Disimpan bersama konfigurasi untuk membantu mengidentifikasi proses ini.",
+    "cancel": "Batal",
+    "submit": "Daftarkan strategi",
+    "submitting": "Mendaftarkan…"
+  }
+}

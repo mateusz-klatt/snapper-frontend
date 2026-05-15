@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "戦略管理",
+    "register": "戦略を登録",
+    "saving": "保存中…",
+    "descriptionCanManage": "UIから新しい戦略プロセスを直接登録します。自動起動により、再起動後もプロセスは有効なまま維持されます。",
+    "descriptionViewer": "設定済みの戦略とステータスを表示します。戦略を管理するには、オペレーターまたは管理者に連絡してください。",
+    "searchPlaceholder": "戦略を検索...",
+    "filter": {
+      "all": "すべてのステータス",
+      "running": "実行中",
+      "stopped": "停止中"
+    },
+    "configuredHeading": "設定済み戦略",
+    "noMatches": "フィルターに一致する戦略はありません",
+    "clearFilters": "フィルターをクリア",
+    "emptyTitle": "戦略は設定されていません",
+    "emptyCanManage": "戦略を登録してアルゴリズム取引を開始します",
+    "emptyViewer": "戦略はまだ設定されていません"
+  },
+  "confirm": {
+    "startTitle": "{{name}}を開始",
+    "startMessage": "{{name}}戦略を開始します。ライブ取引操作が始まる可能性があります。",
+    "stopTitle": "{{name}}を停止",
+    "stopMessage": "{{name}}戦略を停止します。アクティブなポジションは自動的にはクローズされません。"
+  },
+  "toast": {
+    "saved": "戦略 {{name}} を保存しました",
+    "started": "戦略 {{name}} を開始しました",
+    "registerFailed": "戦略の登録に失敗しました: {{message}}",
+    "startSuccess": "戦略を開始しました",
+    "stopSuccess": "戦略を停止しました",
+    "alreadyRunning": "戦略はすでに実行中です",
+    "notRunning": "戦略は実行されていません",
+    "configNotFound": "戦略設定が見つかりません。データベース設定を確認してください。",
+    "networkError": "ネットワークエラーです。接続を確認して再試行してください。",
+    "startFailed": "戦略の開始に失敗しました: {{message}}",
+    "stopFailed": "戦略の停止に失敗しました: {{message}}",
+    "unknownError": "不明なエラー"
+  },
+  "card": {
+    "ariaLabel": "戦略: {{name}}",
+    "modeLabel": "モード: {{mode}}",
+    "autostartEnabled": "自動起動: 有効",
+    "autostartDisabled": "自動起動: 無効",
+    "statusAriaLabel": "ステータス: {{status}}",
+    "dataLagAriaLabel": "データ遅延: {{seconds}}秒",
+    "lagBadge": "遅延: {{seconds}}s",
+    "feedLag": "フィード遅延: {{ms}}ms",
+    "heartbeatAge": "HB経過: {{seconds}}s",
+    "metrics": {
+      "status": "ステータス",
+      "dataLag": "データ遅延",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "ハートビート",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "詳細を表示",
+    "hideDetails": "詳細を非表示",
+    "inputs": "入力 ({{count}})",
+    "outputs": "出力 ({{count}})",
+    "feedPublishers": "フィード発行元 ({{count}})",
+    "lastUpdate": "最終更新: {{time}}",
+    "waiting": "ハートビート待機中...",
+    "startAriaLabel": "{{name}}戦略を開始",
+    "stopAriaLabel": "{{name}}戦略を停止",
+    "start": "開始",
+    "stop": "停止",
+    "starting": "開始中...",
+    "stopping": "停止中...",
+    "status": {
+      "starting": "開始中",
+      "stopping": "停止中",
+      "running": "実行中",
+      "stopped": "停止中"
+    },
+    "health": {
+      "healthy": "正常 — 新鮮なデータを受信中",
+      "warning": "警告 — データが古くなっています",
+      "error": "エラー — 最近のデータがありません",
+      "unknown": "不明 — ハートビートデータがありません"
+    },
+    "healthShort": {
+      "healthy": "正常",
+      "warning": "警告",
+      "error": "エラー"
+    }
+  },
+  "launchModal": {
+    "title": "戦略プロセスを登録",
+    "emptyTemplates": "バックエンドに戦略テンプレートが登録されていません。少なくとも1つの戦略プロセスを定義してください。",
+    "close": "閉じる",
+    "templateLabel": "戦略テンプレート",
+    "templatePlaceholder": "テンプレートを選択...",
+    "templateFallbackDescription": "バックエンドに登録済みの戦略",
+    "loadingDefaults": "テンプレートのデフォルトを読み込み中…",
+    "loadDefaultsError": "テンプレートのデフォルトを読み込めません。バックエンドログを確認してください。",
+    "processNameLabel": "プロセス名",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "使用可能文字: 小文字英字、数字、アンダースコア",
+    "instanceNameLabel": "戦略インスタンス名",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "戦略設定と出力トピック内で使用されます",
+    "executionModeLabel": "実行モード",
+    "executionModeThread": "埋め込みスレッド",
+    "executionModeProcess": "分離プロセス",
+    "executionModeHelp": "スレッドはメモリを共有し、プロセスはより強い分離を提供します。",
+    "flagsLabel": "フラグ",
+    "autostartLabel": "サーバー起動時に自動起動",
+    "startImmediatelyLabel": "登録後すぐに開始",
+    "noteLabel": "メモ（任意）",
+    "notePlaceholder": "この戦略インスタンスの目的やパラメーターを記述します。",
+    "noteHelp": "このプロセスを識別しやすくするため、設定と一緒に保存されます。",
+    "cancel": "キャンセル",
+    "submit": "戦略を登録",
+    "submitting": "登録中…"
+  }
+}

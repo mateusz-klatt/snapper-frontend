@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "관리",
+    "subtitle": "사용자 및 시스템 설정 관리"
+  },
+  "rolePermissions": {
+    "title": "역할 권한",
+    "viewer": {
+      "label": "뷰어",
+      "description": "개요와 시장 데이터에 대한 읽기 전용 접근입니다. 프로세스, 전략, 시스템 설정은 관리할 수 없습니다."
+    },
+    "operator": {
+      "label": "운영자",
+      "description": "모든 뷰어 권한에 더해 트레이딩 작업, 전략 실행, 프로세스 관리, 시스템 상태 모니터링 권한을 가집니다."
+    },
+    "admin": {
+      "label": "관리자",
+      "description": "사용자 관리, 시스템 설정, API 키 설정, 모든 운영자 권한을 포함한 전체 시스템 접근 권한입니다."
+    },
+    "table": {
+      "resource": "리소스",
+      "viewer": "뷰어",
+      "operator": "운영자",
+      "admin": "관리자"
+    },
+    "resources": {
+      "overview": "개요",
+      "market": "시장 데이터",
+      "processes": "프로세스",
+      "strategies": "전략",
+      "orders": "주문 및 체결",
+      "positions": "포지션",
+      "signals": "시그널",
+      "health": "상태",
+      "admin": "관리",
+      "settings": "설정"
+    }
+  },
+  "common": {
+    "cancel": "취소",
+    "selectWallet": "지갑 선택",
+    "selectAWallet": "지갑 선택",
+    "chooseWalletPlaceholder": "지갑 선택...",
+    "selectWalletPlaceholder": "지갑 선택...",
+    "walletLabel": "지갑",
+    "paperAnnotation": " (페이퍼)",
+    "unknownError": "알 수 없는 오류",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "접근 거부",
+      "message": "사용자를 관리할 권한이 없습니다. 시스템 관리자에게 문의하세요."
+    },
+    "list": {
+      "title": "사용자 관리",
+      "countLabel": "{{count}}명 사용자",
+      "showInactive": "비활성 표시",
+      "hideInactive": "비활성 숨기기",
+      "addUser": "사용자 추가",
+      "searchPlaceholder": "사용자 이름, 이메일 또는 역할로 검색...",
+      "columns": {
+        "user": "사용자",
+        "role": "역할",
+        "status": "상태",
+        "createdAt": "생성일",
+        "actions": "작업"
+      },
+      "status": {
+        "active": "활성",
+        "inactive": "비활성"
+      },
+      "unknown": "알 수 없음",
+      "empty": {
+        "title": "사용자를 찾을 수 없음",
+        "noMatch": "검색 조건과 일치하는 사용자가 없습니다.",
+        "noUsers": "사용자를 찾을 수 없습니다.",
+        "noActive": "활성 사용자가 없습니다."
+      },
+      "errorLoading": "사용자 로딩 오류: {{message}}",
+      "deactivate": {
+        "title": "사용자 비활성화",
+        "message": "사용자 \"{{username}}\"을(를) 비활성화할까요? 더 이상 로그인할 수 없습니다.",
+        "confirm": "비활성화"
+      },
+      "toast": {
+        "deactivated": "사용자가 비활성화되었습니다",
+        "deactivateError": "사용자 비활성화 오류"
+      }
+    },
+    "form": {
+      "titleEdit": "사용자 수정",
+      "titleAdd": "사용자 추가",
+      "fields": {
+        "username": "사용자 이름",
+        "usernamePlaceholder": "사용자 이름 입력",
+        "password": "비밀번호",
+        "passwordPlaceholder": "비밀번호 입력",
+        "newPassword": "새 비밀번호",
+        "newPasswordPlaceholder": "새 비밀번호 입력",
+        "email": "이메일",
+        "emailPlaceholder": "이메일 입력",
+        "role": "역할",
+        "accountActive": "계정 활성",
+        "resetUserPassword": "사용자 비밀번호 재설정"
+      },
+      "roles": {
+        "viewer": "뷰어",
+        "operator": "운영자",
+        "admin": "관리자"
+      },
+      "validation": {
+        "usernameRequired": "사용자 이름은 필수입니다",
+        "usernameMinLength": "사용자 이름은 최소 3자 이상이어야 합니다",
+        "emailRequired": "이메일은 필수입니다",
+        "emailInvalid": "유효하지 않은 이메일 형식입니다",
+        "passwordRequired": "비밀번호는 필수입니다",
+        "passwordMinLength": "비밀번호는 최소 8자 이상이어야 합니다",
+        "passwordRequiredWhenResetting": "재설정 시 비밀번호는 필수입니다"
+      },
+      "actions": {
+        "saveChanges": "변경사항 저장",
+        "createUser": "사용자 생성"
+      },
+      "toast": {
+        "created": "사용자가 생성되었습니다",
+        "createError": "사용자 생성 오류",
+        "updated": "사용자가 업데이트되었습니다",
+        "updateError": "사용자 업데이트 오류",
+        "passwordReset": "사용자 비밀번호가 재설정되었습니다",
+        "resetError": "비밀번호 재설정 오류"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "접근 거부",
+      "message": "범위 부여를 관리할 권한이 없습니다. 시스템 관리자에게 문의하세요."
+    },
+    "list": {
+      "title": "범위 부여",
+      "countLabel": "{{count}}개 부여",
+      "createGrant": "범위 부여 생성",
+      "selectWalletPrompt": "위에서 지갑을 선택하면 해당 범위 부여를 볼 수 있습니다.",
+      "columns": {
+        "operator": "운영자",
+        "scope": "권한 범위",
+        "target": "대상",
+        "grantedAt": "부여일",
+        "actions": "작업"
+      },
+      "empty": {
+        "noGrants": "부여 내역 없음",
+        "noGrantsHint": "이 지갑에는 활성 범위 부여가 없습니다."
+      },
+      "errorLoading": "부여 내역 로딩 오류: {{message}}",
+      "handover": "인계"
+    },
+    "form": {
+      "title": "범위 부여 생성",
+      "fields": {
+        "operator": "운영자",
+        "operatorPlaceholder": "운영자 선택...",
+        "wallet": "지갑",
+        "scopeKind": "범위 유형",
+        "underlyingPublicId": "기초자산 Public ID",
+        "instrumentPublicId": "종목 Public ID",
+        "underlyingPlaceholder": "예: BTC",
+        "instrumentPlaceholder": "예: BTC-USD-PERP",
+        "note": "메모 (선택)",
+        "notePlaceholder": "선택 메모"
+      },
+      "scopeKinds": {
+        "underlying": "기초자산",
+        "instrument": "종목"
+      },
+      "validation": {
+        "operatorRequired": "운영자는 필수입니다",
+        "walletRequired": "지갑은 필수입니다",
+        "targetRequired": "대상 ID는 필수입니다"
+      },
+      "actions": {
+        "createGrant": "범위 부여 생성"
+      },
+      "toast": {
+        "created": "범위 부여가 생성되었습니다",
+        "conflictError": "충돌: 다른 운영자가 이미 이 범위의 부여를 보유하고 있습니다",
+        "createError": "범위 부여 생성 오류"
+      }
+    },
+    "handover": {
+      "title": "범위 부여 인계",
+      "fields": {
+        "currentHolder": "현재 보유자",
+        "scope": "권한 범위",
+        "wallet": "지갑",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "인계 대상 운영자",
+        "transferToPlaceholder": "대상 운영자 선택...",
+        "reason": "사유 (선택)",
+        "reasonPlaceholder": "예: 교대 근무"
+      },
+      "actions": {
+        "handover": "인계"
+      },
+      "toast": {
+        "completed": "범위 부여가 인계되었습니다",
+        "conflictError": "충돌: 대상 운영자가 이미 충돌하는 부여를 보유하고 있습니다",
+        "handoverError": "범위 부여 인계 오류"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "접근 거부",
+      "message": "지갑 자격 증명을 관리할 권한이 없습니다. 시스템 관리자에게 문의하세요."
+    },
+    "list": {
+      "title": "지갑 자격 증명",
+      "countLabel": "{{count}}개 자격 증명",
+      "addCredential": "자격 증명 추가",
+      "selectWalletPrompt": "위에서 지갑을 선택하면 해당 자격 증명을 볼 수 있습니다.",
+      "columns": {
+        "exchange": "거래소",
+        "type": "유형",
+        "label": "라벨",
+        "createdAt": "생성일",
+        "actions": "작업"
+      },
+      "empty": {
+        "noCredentials": "자격 증명 없음",
+        "noCredentialsHint": "이 지갑에는 활성 자격 증명이 없습니다."
+      },
+      "errorLoading": "자격 증명 로딩 오류: {{message}}",
+      "rotate": "교체"
+    },
+    "form": {
+      "title": "자격 증명 추가",
+      "fields": {
+        "wallet": "지갑",
+        "exchange": "거래소",
+        "exchangePlaceholder": "예: kraken",
+        "credentialType": "자격 증명 유형",
+        "label": "라벨 (선택)",
+        "labelPlaceholder": "예: 메인 트레이딩 키",
+        "pemPlaceholder": "PEM 형식 비밀 키를 여기에 붙여넣으세요"
+      },
+      "fieldLabels": {
+        "api_key": "API 키",
+        "api_secret": "API Secret",
+        "private_key_pem": "개인 키 (PEM)",
+        "client_id": "클라이언트 ID",
+        "client_secret": "클라이언트 Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "초기 잔고"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API 키 + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "페이퍼"
+      },
+      "validation": {
+        "walletRequired": "지갑은 필수입니다",
+        "exchangeRequired": "거래소는 필수입니다",
+        "fieldRequired": "{{field}}은(는) 필수입니다"
+      },
+      "actions": {
+        "addCredential": "자격 증명 추가"
+      },
+      "toast": {
+        "created": "자격 증명이 생성되었습니다",
+        "conflictError": "충돌: 이 지갑에는 해당 거래소의 활성 자격 증명이 이미 있습니다",
+        "createError": "자격 증명 생성 오류"
+      }
+    },
+    "rotate": {
+      "title": "자격 증명 교체",
+      "fields": {
+        "exchange": "거래소",
+        "type": "유형",
+        "label": "라벨",
+        "newLabel": "새 라벨 (선택)",
+        "newLabelPlaceholder": "예: 교체 키 2026-04",
+        "pemPlaceholder": "PEM 형식 비밀 키를 여기에 붙여넣으세요"
+      },
+      "actions": {
+        "rotate": "교체"
+      },
+      "toast": {
+        "rotated": "자격 증명이 교체되었습니다",
+        "rotateError": "자격 증명 교체 오류"
+      }
+    }
+  }
+}

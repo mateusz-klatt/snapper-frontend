@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "システムヘルス",
+    "healthMetricsHeading": "ヘルスメトリクス",
+    "processStatusHeading": "プロセスステータス",
+    "activeBacktestsHeading": "アクティブなバックテスト",
+    "quickActionsHeading": "クイック操作",
+    "featureNotImplemented": "機能はまだ実装されていません",
+    "restartServices": "サービスを再起動",
+    "runHealthCheck": "ヘルスチェックを実行",
+    "viewLogs": "ログを表示",
+    "exportReport": "レポートをエクスポート"
+  },
+  "status": {
+    "healthy": "正常",
+    "stopped": "停止中",
+    "error": "エラー",
+    "warning": "警告",
+    "completed": "完了",
+    "unknown": "不明"
+  },
+  "metrics": {
+    "tradingEngine": "取引エンジン",
+    "tradingEngineDescription": "戦略実行エンジン",
+    "activeBacktests": "アクティブなバックテスト",
+    "activeBacktestsDescription": "実行中のバックテストプロセス",
+    "active": "アクティブ",
+    "inactive": "非アクティブ"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "バックテスト {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "稼働時間",
+    "exitCode": "終了コード: {{code}}",
+    "service": "サービス",
+    "backtest": "バックテスト"
+  },
+  "dbStats": {
+    "title": "データベース統計",
+    "loading": "データベース統計を読み込み中…",
+    "unavailable": "データベース統計を利用できません: {{message}}",
+    "fallbackError": "データベース統計の読み込みに失敗しました。",
+    "sampled": "{{age}}にサンプリング",
+    "samplerSummary": "サンプラー間隔: {{seconds}}s · {{count}}テーブル",
+    "columns": {
+      "table": "テーブル",
+      "kind": "種別",
+      "total": "合計",
+      "current": "現在",
+      "closed": "クローズ済み",
+      "archivable": "アーカイブ可能",
+      "status": "ステータス"
+    },
+    "stale": "古い"
+  },
+  "notification": {
+    "title": "通知サイドカー",
+    "loading": "通知メトリクスを読み込み中…",
+    "unavailable": "通知メトリクスを利用できません: {{message}}",
+    "fallbackError": "通知メトリクスの読み込みに失敗しました。",
+    "sent": "送信済み",
+    "sentDescription": "終端: 送信済み",
+    "failed": "失敗",
+    "failedDescription": "リトライ予算を使い切りました",
+    "unregistered": "未登録",
+    "unregisteredDescription": "APNs 410（BadDeviceToken）",
+    "cancelledScope": "キャンセル済み（スコープ）",
+    "cancelledScopeDescription": "スコープ失効 / ユーザー無効化",
+    "outboxDepth": "アウトボックス深度",
+    "outboxDepthDescription": "キュー済み、リトライ待ち"
+  },
+  "retention": {
+    "title": "保持スケジューラー",
+    "loading": "保持実行を読み込み中…",
+    "unavailable": "保持実行を利用できません: {{message}}",
+    "fallbackError": "保持実行の読み込みに失敗しました。",
+    "lastRun": "前回実行 {{age}}",
+    "dryRunNotice": "ドライランモード: 行はアーカイブされますが、DBからは削除されません。",
+    "columns": {
+      "table": "テーブル",
+      "retain": "保持",
+      "archivedWindow": "アーカイブ対象期間",
+      "archived": "アーカイブ済み",
+      "purged": "削除済み",
+      "files": "ファイル",
+      "status": "ステータス"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "error"
+  },
+  "systemMetrics": {
+    "title": "プロセスヘルス",
+    "loading": "プロセスメトリクスを読み込み中…",
+    "unavailable": "プロセスメトリクスを利用できません: {{message}}",
+    "fallbackError": "プロセスヘルスメトリクスの読み込みに失敗しました。",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "ステータス: {{status}}",
+    "uptime": "稼働時間",
+    "threads": "スレッド",
+    "openFds": "オープンFD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "{{count}}× スロットル",
+    "memory": "メモリ",
+    "saturation": "飽和度 {{percent}}",
+    "asyncioTasks": "Asyncioタスク",
+    "asyncioActive": "{{count}}件アクティブ",
+    "asyncioPending": "+ {{count}}件保留中",
+    "dbPool": "DBプール",
+    "liveConns": "ライブ接続: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "オブジェクト: {{value}}",
+    "threadsPercent": "スレッド %",
+    "networkConns": "ネットワーク接続",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "アクティブ",
+    "tracemallocIdle": "アイドル"
+  },
+  "relativeAge": {
+    "justNow": "たった今",
+    "seconds": "{{seconds}}s前",
+    "minutes": "{{minutes}}min前",
+    "hours": "{{hours}}h前",
+    "days": "{{days}}d前"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

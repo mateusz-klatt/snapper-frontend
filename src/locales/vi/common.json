@@ -1,0 +1,83 @@
+{
+  "loading": "Đang tải...",
+  "error": "Lỗi",
+  "retry": "Thử lại",
+  "close": "Đóng",
+  "cancel": "Hủy",
+  "confirm": "Xác nhận",
+  "save": "Lưu",
+  "documentation": "Tài liệu (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Chuyển ngôn ngữ",
+    "flagAriaLabel": "Chuyển sang {{country}}",
+    "currentAriaLabel": "Ngôn ngữ hiện tại: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Bảng điều khiển giao dịch",
+    "tagline": "Trạm giao dịch chính xác",
+    "openSidebar": "Mở thanh bên",
+    "closeSidebar": "Đóng thanh bên",
+    "sidebar": "Thanh bên",
+    "mainNavigation": "Điều hướng chính",
+    "tradingContent": "Nội dung giao dịch",
+    "skipToContent": "Chuyển đến nội dung giao dịch",
+    "lag": "Độ trễ:",
+    "lagTitle": "Độ trễ khứ hồi đến máy chủ WebSocket",
+    "topics": "Chủ đề:",
+    "topicsTitle": "Số chủ đề WebSocket đã đăng ký",
+    "connected": "Đã kết nối",
+    "disconnected": "Đã ngắt kết nối",
+    "connectedTitle": "Đã kết nối với WebSocket",
+    "disconnectedTitle": "Đã ngắt kết nối khỏi WebSocket",
+    "switchToLightMode": "Chuyển sang chế độ sáng",
+    "switchToDarkMode": "Chuyển sang chế độ tối",
+    "timeTravelBanner": "Chế độ Time Travel — đang xem dữ liệu lịch sử (chỉ đọc)",
+    "lagUnknown": "Không xác định",
+    "walletPicker": {
+      "ariaLabel": "Ví đang hoạt động",
+      "placeholder": "Ví",
+      "allWallets": "Tất cả ví",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Người vận hành đang hoạt động",
+      "placeholder": "Người vận hành",
+      "allOperators": "Tất cả người vận hành"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: chọn một thời điểm lịch sử",
+      "exitAriaLabel": "Thoát chế độ time travel",
+      "exitTitle": "Quay lại chế độ live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Công cụ chỉ để quan sát. Snapper nhận dữ liệu thị trường nhưng không thể đặt lệnh cho cặp (ký hiệu, sàn) này.",
+      "ariaLabel": "Công cụ chỉ có dữ liệu thị trường",
+      "badge": "Chỉ dữ liệu thị trường"
+    },
+    "liveOnly": {
+      "notice": "Tab này hiển thị trạng thái hiện tại — không có chế độ xem lịch sử."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Đã xảy ra sự cố",
+    "titleWithComponent": "Lỗi trong {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Thử lại"
+  },
+  "nav": {
+    "overview": "Tổng quan",
+    "market": "Dữ liệu thị trường",
+    "processes": "Tiến trình",
+    "strategies": "Chiến lược",
+    "orders": "Lệnh & Khớp lệnh",
+    "positions": "Vị thế",
+    "signals": "Tín hiệu",
+    "backtests": "Backtest",
+    "health": "Sức khỏe hệ thống",
+    "admin": "Quản trị",
+    "aiIntegration": "Tích hợp AI",
+    "aiReviews": "Duyệt xét AI",
+    "settings": "Cài đặt"
+  }
+}

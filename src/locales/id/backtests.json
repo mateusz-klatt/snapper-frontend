@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Kembali",
+    "backToList": "← Kembali ke backtest"
+  },
+  "status": {
+    "pending": "Tertunda",
+    "running": "Berjalan",
+    "completed": "Selesai",
+    "failed": "Gagal",
+    "cancelled": "Dibatalkan"
+  },
+  "list": {
+    "title": "Backtest",
+    "actions": {
+      "cancel": "Batal",
+      "rerun": "Jalankan ulang"
+    },
+    "fields": {
+      "timeframe": "Timeframe",
+      "period": "Periode",
+      "initialCash": "Kas Awal",
+      "id": "ID"
+    },
+    "errorPrefix": "Kesalahan: {{message}}",
+    "filter": {
+      "ariaLabel": "Filter backtest berdasarkan status",
+      "options": {
+        "all": "Semua status",
+        "pending": "Tertunda",
+        "running": "Berjalan",
+        "completed": "Selesai",
+        "failed": "Gagal",
+        "cancelled": "Dibatalkan"
+      }
+    },
+    "empty": {
+      "title": "Tidak ada backtest",
+      "message": "Jalankan backtest melalui CLI atau API untuk melihat hasilnya di sini."
+    }
+  },
+  "detail": {
+    "title": "Sesi backtest",
+    "fields": {
+      "strategy": "Strategi",
+      "instrument": "Instrumen",
+      "status": "Status",
+      "period": "Periode",
+      "crossAsset": "Atribusi lintas aset",
+      "configHash": "Hash konfigurasi"
+    },
+    "crossAssetFlow": "{{source}} feed → eksekusi {{target}}",
+    "errors": {
+      "invalidRunId": "ID sesi tidak valid — harus berupa UUID7 (menerima \"{{id}}\").",
+      "loadFailed": "Gagal memuat sesi: {{message}}",
+      "notFound": "tidak ditemukan"
+    }
+  },
+  "compare": {
+    "title": "Bandingkan",
+    "headingFull": "Perbandingan backtest",
+    "loading": "Memuat perbandingan…",
+    "vs": "vs",
+    "runLabel": "Sesi {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrik",
+      "equityOverlay": "Overlay ekuitas",
+      "trades": "Trade",
+      "signals": "Sinyal"
+    },
+    "pairingMode": {
+      "auto": "otomatis",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Perbandingan tidak ditemukan di dompet saat ini.",
+      "loadFailed": "Gagal memuat perbandingan: {{message}}",
+      "unknown": "kesalahan tidak diketahui",
+      "emptyResponse": "Respons perbandingan kosong."
+    },
+    "launcher": {
+      "title": "Bandingkan",
+      "submit": "Bandingkan",
+      "autoPair": "Bandingkan dengan yang terbaru",
+      "terminalGate": "perbandingan tersedia setelah sesi ini mencapai status terminal",
+      "noSiblings": "tidak ada sesi lain dengan konfigurasi ini",
+      "limitNotice": "menampilkan {{count}} terbaru — gunakan pasangan manual untuk sesi yang lebih lama",
+      "pickPlaceholder": "— pilih sesi untuk dibandingkan —",
+      "showAllLabel": "Tampilkan semua sesi (bukan hanya konfigurasi sama)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "semua sesi",
+        "sameConfig": "konfigurasi sama"
+      },
+      "errors": {
+        "pickRequired": "pilih sesi dari daftar"
+      }
+    },
+    "diffColumns": {
+      "common": "Sama",
+      "onlyA": "Hanya di A",
+      "onlyB": "Hanya di B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Tidak ada metrik yang dapat dibandingkan — kedua sesi tidak memiliki nilai tercatat.",
+      "columns": {
+        "name": "Metrik",
+        "runA": "Sesi A",
+        "runB": "Sesi B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Sesi A",
+        "runB": "Sesi B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Menunggu progres…",
+    "candles": "{{done}} / {{total}} candle",
+    "candlesNoTotal": "{{done}} candle",
+    "equity": "ekuitas {{value}}",
+    "signalsTrades": "{{signals}} sinyal / {{trades}} trade",
+    "milestoneLine": "tonggak {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

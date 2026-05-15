@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "系统健康",
+    "healthMetricsHeading": "健康指标",
+    "processStatusHeading": "进程状态",
+    "activeBacktestsHeading": "活跃 Backtests",
+    "quickActionsHeading": "快捷操作",
+    "featureNotImplemented": "功能尚未实现",
+    "restartServices": "重启服务",
+    "runHealthCheck": "运行健康检查",
+    "viewLogs": "查看日志",
+    "exportReport": "导出报告"
+  },
+  "status": {
+    "healthy": "健康",
+    "stopped": "已停止",
+    "error": "错误",
+    "warning": "警告",
+    "completed": "已完成",
+    "unknown": "未知"
+  },
+  "metrics": {
+    "tradingEngine": "交易引擎",
+    "tradingEngineDescription": "策略执行引擎",
+    "activeBacktests": "活跃 Backtests",
+    "activeBacktestsDescription": "正在运行的 Backtest 进程",
+    "active": "活跃",
+    "inactive": "非活跃"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "运行时长",
+    "exitCode": "退出码: {{code}}",
+    "service": "服务",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "数据库统计",
+    "loading": "正在加载数据库统计…",
+    "unavailable": "数据库统计不可用: {{message}}",
+    "fallbackError": "加载数据库统计失败。",
+    "sampled": "采样于 {{age}}",
+    "samplerSummary": "采样间隔: {{seconds}}s · {{count}} 张表",
+    "columns": {
+      "table": "表",
+      "kind": "类型",
+      "total": "总数",
+      "current": "当前",
+      "closed": "已关闭",
+      "archivable": "可归档",
+      "status": "状态"
+    },
+    "stale": "已过期"
+  },
+  "notification": {
+    "title": "通知 Sidecar",
+    "loading": "正在加载通知指标…",
+    "unavailable": "通知指标不可用: {{message}}",
+    "fallbackError": "加载通知指标失败。",
+    "sent": "已发送",
+    "sentDescription": "终态：已发送",
+    "failed": "失败",
+    "failedDescription": "重试预算已耗尽",
+    "unregistered": "未注册",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "已取消（范围）",
+    "cancelledScopeDescription": "范围撤销 / 用户停用",
+    "outboxDepth": "Outbox 深度",
+    "outboxDepthDescription": "已排队，等待重试"
+  },
+  "retention": {
+    "title": "保留调度器",
+    "loading": "正在加载保留运行…",
+    "unavailable": "保留运行不可用: {{message}}",
+    "fallbackError": "加载保留运行失败。",
+    "lastRun": "上次运行 {{age}}",
+    "dryRunNotice": "Dry-run 模式：行会被归档，但不会从 DB 清除。",
+    "columns": {
+      "table": "表",
+      "retain": "保留",
+      "archivedWindow": "归档窗口",
+      "archived": "已归档",
+      "purged": "已清除",
+      "files": "文件",
+      "status": "状态"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "error"
+  },
+  "systemMetrics": {
+    "title": "进程健康",
+    "loading": "正在加载进程指标…",
+    "unavailable": "进程指标不可用: {{message}}",
+    "fallbackError": "加载进程健康指标失败。",
+    "rawJson": "原始 JSON",
+    "pid": "PID",
+    "statusValue": "状态: {{status}}",
+    "uptime": "运行时长",
+    "threads": "线程",
+    "openFds": "打开的 FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "被限流 {{count}}×",
+    "memory": "内存",
+    "saturation": "饱和度 {{percent}}",
+    "asyncioTasks": "Asyncio 任务",
+    "asyncioActive": "{{count}} 个活跃",
+    "asyncioPending": "+ {{count}} 个待处理",
+    "dbPool": "DB Pool",
+    "liveConns": "实时连接: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "对象: {{value}}",
+    "threadsPercent": "线程 %",
+    "networkConns": "网络连接",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "活跃",
+    "tracemallocIdle": "空闲"
+  },
+  "relativeAge": {
+    "justNow": "刚刚",
+    "seconds": "{{seconds}}s 前",
+    "minutes": "{{minutes}}min 前",
+    "hours": "{{hours}}h 前",
+    "days": "{{days}}d 前"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

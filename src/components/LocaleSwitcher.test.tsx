@@ -190,15 +190,17 @@ describe('LocaleSwitcher', () => {
     useAppStore.setState({ locale: 'cn' })
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: /current language: china/i })).toBeInTheDocument()
-    )
-    const cnButton = screen.getByRole('button', { name: /current language: china/i })
+    const currentRe = /current language: (china|中国)/i
+
+    await waitFor(() => expect(screen.getByRole('button', { name: currentRe })).toBeInTheDocument())
+    const cnButton = screen.getByRole('button', { name: currentRe })
 
     cnButton.focus()
     fireEvent.keyDown(cnButton, { key: 'ArrowUp' })
     await waitFor(() => {
-      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/ireland/i)
+      const label = document.activeElement?.getAttribute('aria-label') ?? ''
+
+      expect(label.toLowerCase()).toMatch(/ireland|爱尔兰|愛爾蘭/)
     })
   })
 

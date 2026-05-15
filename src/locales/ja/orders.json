@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "注文と約定",
+    "newOrder": "新規注文",
+    "exportCsv": "CSVエクスポート"
+  },
+  "tabs": {
+    "orders": "注文 ({{total}})",
+    "executions": "約定 ({{total}})"
+  },
+  "filters": {
+    "byStatus": "ステータスで絞り込み:",
+    "options": {
+      "all": "すべての注文",
+      "new": "新規",
+      "open": "オープン",
+      "partiallyFilled": "一部約定",
+      "partially_filled": "一部約定",
+      "filled": "約定済み",
+      "cancelled": "キャンセル済み",
+      "rejected": "拒否"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "成行",
+    "quantity": "数量",
+    "price": "価格",
+    "created": "作成日時",
+    "createdUnknown": "N/A",
+    "orderId": "注文ID",
+    "leverage": "レバレッジ",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "キャンセル",
+    "cancelling": "キャンセル中…",
+    "cancelAriaLabel": "注文 {{orderId}} をキャンセル"
+  },
+  "executionCard": {
+    "orderNumber": "注文 #{{orderId}}",
+    "filled": "約定済み",
+    "orderLabel": "注文 {{orderId}}",
+    "size": "サイズ",
+    "price": "価格",
+    "total": "合計",
+    "executed": "約定日時",
+    "fees": "手数料"
+  },
+  "empty": {
+    "ordersTitle": "注文が見つかりません",
+    "ordersStartTrading": "取引を開始すると注文がここに表示されます",
+    "ordersFilterless": "{{status}}の注文はありません",
+    "executionsTitle": "約定が見つかりません",
+    "executionsMessage": "取引の約定がここに表示されます"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "銘柄",
+      "side": "売買",
+      "type": "種類",
+      "status": "ステータス",
+      "quantity": "数量",
+      "price": "価格",
+      "leverage": "レバレッジ",
+      "reduceOnly": "Reduce Only",
+      "created": "作成日時"
+    },
+    "executions": {
+      "orderId": "注文ID",
+      "instrument": "銘柄",
+      "side": "売買",
+      "size": "サイズ",
+      "price": "価格",
+      "total": "合計",
+      "fee": "手数料",
+      "feeAsset": "手数料資産",
+      "executed": "約定日時"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "新規手動注文",
+    "titleConfirm": "注文確認",
+    "fields": {
+      "exchange": "取引所",
+      "instrument": "銘柄",
+      "side": "売買",
+      "orderType": "注文種別",
+      "quantity": "数量",
+      "price": "価格",
+      "stopPrice": "逆指値価格",
+      "mode": "モード",
+      "wallet": "ウォレット",
+      "type": "種類"
+    },
+    "sideOptions": {
+      "buy": "買い",
+      "sell": "売り"
+    },
+    "orderTypeOptions": {
+      "market": "成行",
+      "limit": "指値",
+      "stop": "逆指値",
+      "stopLimit": "ストップリミット",
+      "stop_limit": "ストップリミット"
+    },
+    "modeOptions": {
+      "live": "ライブ",
+      "paper": "ペーパー"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — マーケットデータ専用",
+    "walletPaperSuffix": "{{label}} (ペーパー)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "キャンセル",
+      "reviewOrder": "注文を確認",
+      "back": "戻る",
+      "confirmOrder": "注文を確定",
+      "submitting": "送信中..."
+    },
+    "errors": {
+      "missingRequired": "必須項目をすべて入力してください",
+      "quantityPositive": "数量は正の数である必要があります",
+      "priceRequired": "この注文種別では価格が必須です",
+      "pricePositive": "価格は正の数である必要があります",
+      "stopPriceRequired": "この注文種別では逆指値価格が必須です",
+      "stopPricePositive": "逆指値価格は正の数である必要があります",
+      "createFailed": "注文の作成に失敗しました"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "この銘柄は観測専用です — 発注可能な銘柄で注文してください。",
+      "unknownInstrument": "この銘柄は認識されていません。一覧を再読み込みしてから再試行してください。",
+      "capsViolation": "この注文はアカウントの安全上限を超過します。リスク設定を確認してから再試行してください。"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← 返回",
+    "backToList": "← 返回 Backtests"
+  },
+  "status": {
+    "pending": "待处理",
+    "running": "运行中",
+    "completed": "已完成",
+    "failed": "失败",
+    "cancelled": "已取消"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "取消",
+      "rerun": "重新运行"
+    },
+    "fields": {
+      "timeframe": "时间周期",
+      "period": "区间",
+      "initialCash": "初始资金",
+      "id": "ID"
+    },
+    "errorPrefix": "错误: {{message}}",
+    "filter": {
+      "ariaLabel": "按状态筛选 Backtest",
+      "options": {
+        "all": "所有状态",
+        "pending": "待处理",
+        "running": "运行中",
+        "completed": "已完成",
+        "failed": "失败",
+        "cancelled": "已取消"
+      }
+    },
+    "empty": {
+      "title": "没有 Backtest",
+      "message": "通过 CLI 或 API 运行 Backtest 后，可在这里查看结果。"
+    }
+  },
+  "detail": {
+    "title": "Backtest 运行",
+    "fields": {
+      "strategy": "策略",
+      "instrument": "品种",
+      "status": "状态",
+      "period": "区间",
+      "crossAsset": "跨资产归因",
+      "configHash": "配置哈希"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} 成交",
+    "errors": {
+      "invalidRunId": "无效 run id — 必须是 UUID7 (收到 \"{{id}}\")。",
+      "loadFailed": "加载运行失败: {{message}}",
+      "notFound": "未找到"
+    }
+  },
+  "compare": {
+    "title": "比较",
+    "headingFull": "Backtest 比较",
+    "loading": "正在加载比较…",
+    "vs": "vs",
+    "runLabel": "运行 {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "指标",
+      "equityOverlay": "权益叠加",
+      "trades": "交易",
+      "signals": "信号"
+    },
+    "pairingMode": {
+      "auto": "自动",
+      "manual": "手动"
+    },
+    "errors": {
+      "notFound": "当前钱包中未找到比较。",
+      "loadFailed": "加载比较失败: {{message}}",
+      "unknown": "未知错误",
+      "emptyResponse": "比较响应为空。"
+    },
+    "launcher": {
+      "title": "比较",
+      "submit": "比较",
+      "autoPair": "与最近一次比较",
+      "terminalGate": "此运行达到终态后可比较",
+      "noSiblings": "没有使用相同配置的其他运行",
+      "limitNotice": "显示最近 {{count}} 个 — 如需更早运行，请手动配对",
+      "pickPlaceholder": "— 选择要比较的运行 —",
+      "showAllLabel": "显示所有运行（不只相同配置）",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "所有运行",
+        "sameConfig": "相同配置"
+      },
+      "errors": {
+        "pickRequired": "请从列表中选择一个运行"
+      }
+    },
+    "diffColumns": {
+      "common": "共同",
+      "onlyA": "仅 A",
+      "onlyB": "仅 B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "没有可比较指标 — 两次运行均未记录数值。",
+      "columns": {
+        "name": "指标",
+        "runA": "运行 A",
+        "runB": "运行 B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "运行 A",
+        "runB": "运行 B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "等待进度…",
+    "candles": "{{done}} / {{total}} 根K线",
+    "candlesNoTotal": "{{done}} 根K线",
+    "equity": "权益 {{value}}",
+    "signalsTrades": "{{signals}} 个信号 / {{trades}} 笔交易",
+    "milestoneLine": "里程碑 {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}
