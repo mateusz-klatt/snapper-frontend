@@ -1,0 +1,83 @@
+{
+  "loading": "Laddar...",
+  "error": "Fel",
+  "retry": "Försök igen",
+  "close": "Stäng",
+  "cancel": "Avbryt",
+  "confirm": "Bekräfta",
+  "save": "Spara",
+  "documentation": "Dokumentation (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Byt språk",
+    "flagAriaLabel": "Byt till {{country}}",
+    "currentAriaLabel": "Aktuellt språk: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Tradingkonsol",
+    "tagline": "Precisionsarbetsstation",
+    "openSidebar": "Öppna sidopanel",
+    "closeSidebar": "Stäng sidopanel",
+    "sidebar": "Sidopanel",
+    "mainNavigation": "Huvudnavigering",
+    "tradingContent": "Tradinginnehåll",
+    "skipToContent": "Hoppa till tradinginnehåll",
+    "lag": "Fördröjning:",
+    "lagTitle": "Rundturstid till WebSocket-servern",
+    "topics": "Ämnen:",
+    "topicsTitle": "Antal prenumererade WebSocket-ämnen",
+    "connected": "Ansluten",
+    "disconnected": "Frånkopplad",
+    "connectedTitle": "Ansluten till WebSocket",
+    "disconnectedTitle": "Frånkopplad från WebSocket",
+    "switchToLightMode": "Byt till ljust läge",
+    "switchToDarkMode": "Byt till mörkt läge",
+    "timeTravelBanner": "Time Travel-läge — visar historiska data (skrivskyddat)",
+    "lagUnknown": "Okänd",
+    "walletPicker": {
+      "ariaLabel": "Aktiv plånbok",
+      "placeholder": "Plånbok",
+      "allWallets": "Alla plånböcker",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktiv operatör",
+      "placeholder": "Operatör",
+      "allOperators": "Alla operatörer"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time Travel: välj en historisk tidpunkt",
+      "exitAriaLabel": "Avsluta Time Travel-läge",
+      "exitTitle": "Återgå till live-läge"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument endast för observation. Snapper tar emot marknadsdata men kan inte lägga ordrar för detta par (symbol, börs).",
+      "ariaLabel": "Instrument endast för marknadsdata",
+      "badge": "Endast marknadsdata"
+    },
+    "liveOnly": {
+      "notice": "Den här fliken visar aktuellt läge — historisk vy är inte tillgänglig."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Något gick fel",
+    "titleWithComponent": "Fel i {{componentName}}",
+    "stackTrace": "Stacktrace",
+    "tryAgain": "Försök igen"
+  },
+  "nav": {
+    "overview": "Översikt",
+    "market": "Marknadsdata",
+    "processes": "Processer",
+    "strategies": "Strategier",
+    "orders": "Ordrar och utföranden",
+    "positions": "Positioner",
+    "signals": "Signaler",
+    "backtests": "Backtester",
+    "health": "Hälsa",
+    "admin": "Administration",
+    "aiIntegration": "AI-integration",
+    "aiReviews": "AI-granskningar",
+    "settings": "Inställningar"
+  }
+}

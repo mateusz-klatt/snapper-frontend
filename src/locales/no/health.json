@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Systemhelse",
+    "healthMetricsHeading": "Helsemetrikker",
+    "processStatusHeading": "Prosessstatus",
+    "activeBacktestsHeading": "Aktive backtests",
+    "quickActionsHeading": "Hurtighandlinger",
+    "featureNotImplemented": "Funksjon ikke implementert ennå",
+    "restartServices": "Start tjenester på nytt",
+    "runHealthCheck": "Kjør helsesjekk",
+    "viewLogs": "Vis logger",
+    "exportReport": "Eksporter rapport"
+  },
+  "status": {
+    "healthy": "Frisk",
+    "stopped": "Stoppet",
+    "error": "Feil",
+    "warning": "Advarsel",
+    "completed": "Fullført",
+    "unknown": "Ukjent"
+  },
+  "metrics": {
+    "tradingEngine": "Tradingmotor",
+    "tradingEngineDescription": "Motor for strategiutførelse",
+    "activeBacktests": "Aktive backtests",
+    "activeBacktestsDescription": "Kjørende backtest-prosesser",
+    "active": "Aktiv",
+    "inactive": "Inaktiv"
+  },
+  "process": {
+    "uptimeNotAvailable": "I/T",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}t {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}t",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "I/T",
+    "uptimeLabel": "Oppetid",
+    "exitCode": "Exitkode: {{code}}",
+    "service": "tjeneste",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Databasestatistikk",
+    "loading": "Laster databasestatistikk…",
+    "unavailable": "Databasestatistikk utilgjengelig: {{message}}",
+    "fallbackError": "Kunne ikke laste databasestatistikk.",
+    "sampled": "målt {{age}}",
+    "samplerSummary": "Samplerintervall: {{seconds}}s · {{count}} tabeller",
+    "columns": {
+      "table": "Tabell",
+      "kind": "Type",
+      "total": "Totalt",
+      "current": "Gjeldende",
+      "closed": "Lukket",
+      "archivable": "Arkiverbar",
+      "status": "Status"
+    },
+    "stale": "utdatert"
+  },
+  "notification": {
+    "title": "Varslings-sidecar",
+    "loading": "Laster varslingsmetrikker…",
+    "unavailable": "Varslingsmetrikker utilgjengelige: {{message}}",
+    "fallbackError": "Kunne ikke laste varslingsmetrikker.",
+    "sent": "Sendt",
+    "sentDescription": "Terminal: sendt",
+    "failed": "Mislyktes",
+    "failedDescription": "Retry-budsjett oppbrukt",
+    "unregistered": "Avregistrert",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Kansellert (omfang)",
+    "cancelledScopeDescription": "Omfang tilbakekalt / bruker deaktivert",
+    "outboxDepth": "Outbox-dybde",
+    "outboxDepthDescription": "I kø, venter på retry"
+  },
+  "retention": {
+    "title": "Retention-planlegger",
+    "loading": "Laster retention-kjøring…",
+    "unavailable": "Retention-kjøring utilgjengelig: {{message}}",
+    "fallbackError": "Kunne ikke laste retention-kjøring.",
+    "lastRun": "siste kjøring {{age}}",
+    "dryRunNotice": "Dry-run-modus: rader arkiveres, men slettes ikke fra DB.",
+    "columns": {
+      "table": "Tabell",
+      "retain": "Behold",
+      "archivedWindow": "Arkivert vindu",
+      "archived": "Arkivert",
+      "purged": "Slettet",
+      "files": "Filer",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "feil"
+  },
+  "systemMetrics": {
+    "title": "Prosesshelse",
+    "loading": "Laster prosessmetrikker…",
+    "unavailable": "Prosessmetrikker utilgjengelige: {{message}}",
+    "fallbackError": "Kunne ikke laste prosesshelsemetrikker.",
+    "rawJson": "Rå JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Oppetid",
+    "threads": "Tråder",
+    "openFds": "Åpne FDer",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Strupet {{count}}×",
+    "memory": "Minne",
+    "saturation": "Metning {{percent}}",
+    "asyncioTasks": "Asyncio-oppgaver",
+    "asyncioActive": "{{count}} aktive",
+    "asyncioPending": "+ {{count}} ventende",
+    "dbPool": "DB-pool",
+    "liveConns": "Live-tilk.: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekter: {{value}}",
+    "threadsPercent": "Tråder %",
+    "networkConns": "Nettverkstilk.",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktiv",
+    "tracemallocIdle": "Inaktiv"
+  },
+  "relativeAge": {
+    "justNow": "akkurat nå",
+    "seconds": "{{seconds}}s siden",
+    "minutes": "{{minutes}} min siden",
+    "hours": "{{hours}}t siden",
+    "days": "{{days}}d siden"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}}t",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

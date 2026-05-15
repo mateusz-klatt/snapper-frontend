@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administração",
+    "subtitle": "Gerencie usuários e a configuração do sistema"
+  },
+  "rolePermissions": {
+    "title": "Permissões por função",
+    "viewer": {
+      "label": "Visualizador",
+      "description": "Acesso somente leitura à Visão geral e aos Dados de mercado. Não pode gerenciar processos, estratégias nem configurações do sistema."
+    },
+    "operator": {
+      "label": "Operador",
+      "description": "Todas as permissões do Visualizador, além de operações de trading, execução de estratégias, gerenciamento de processos e monitoramento da saúde do sistema."
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "Acesso completo ao sistema, incluindo gerenciamento de usuários, configurações do sistema, configuração de chaves API e todas as permissões de Operador."
+    },
+    "table": {
+      "resource": "Recurso",
+      "viewer": "Visualizador",
+      "operator": "Operador",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "Visão geral",
+      "market": "Dados de mercado",
+      "processes": "Processos",
+      "strategies": "Estratégias",
+      "orders": "Ordens e execuções",
+      "positions": "Posições",
+      "signals": "Sinais",
+      "health": "Saúde",
+      "admin": "Administração",
+      "settings": "Configurações"
+    }
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "selectWallet": "Selecionar carteira",
+    "selectAWallet": "Selecione uma carteira",
+    "chooseWalletPlaceholder": "Escolha uma carteira...",
+    "selectWalletPlaceholder": "Selecionar carteira...",
+    "walletLabel": "Carteira",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Erro desconhecido",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Acesso negado",
+      "message": "Sem permissão para gerenciar usuários. Contate o administrador do sistema."
+    },
+    "list": {
+      "title": "Gerenciamento de usuários",
+      "countLabel": "{{count}} usuários",
+      "showInactive": "Mostrar inativos",
+      "hideInactive": "Ocultar inativos",
+      "addUser": "Adicionar usuário",
+      "searchPlaceholder": "Busque por nome de usuário, e-mail ou função...",
+      "columns": {
+        "user": "Usuário",
+        "role": "Função",
+        "status": "Status",
+        "createdAt": "Criado em",
+        "actions": "Ações"
+      },
+      "status": {
+        "active": "Ativo",
+        "inactive": "Inativo"
+      },
+      "unknown": "Desconhecido",
+      "empty": {
+        "title": "Nenhum usuário encontrado",
+        "noMatch": "Nenhum usuário corresponde aos critérios de busca.",
+        "noUsers": "Nenhum usuário encontrado.",
+        "noActive": "Nenhum usuário ativo encontrado."
+      },
+      "errorLoading": "Erro ao carregar usuários: {{message}}",
+      "deactivate": {
+        "title": "Desativar usuário",
+        "message": "Tem certeza de que deseja desativar o usuário \"{{username}}\"? Ele não poderá mais entrar.",
+        "confirm": "Desativar"
+      },
+      "toast": {
+        "deactivated": "Usuário desativado",
+        "deactivateError": "Erro ao desativar usuário"
+      }
+    },
+    "form": {
+      "titleEdit": "Editar usuário",
+      "titleAdd": "Adicionar usuário",
+      "fields": {
+        "username": "Nome de usuário",
+        "usernamePlaceholder": "Digite o nome de usuário",
+        "password": "Senha",
+        "passwordPlaceholder": "Digite a senha",
+        "newPassword": "Nova senha",
+        "newPasswordPlaceholder": "Digite a nova senha",
+        "email": "E-mail",
+        "emailPlaceholder": "Digite o e-mail",
+        "role": "Função",
+        "accountActive": "Conta ativa",
+        "resetUserPassword": "Redefinir senha do usuário"
+      },
+      "roles": {
+        "viewer": "Visualizador",
+        "operator": "Operador",
+        "admin": "Administrador"
+      },
+      "validation": {
+        "usernameRequired": "Nome de usuário é obrigatório",
+        "usernameMinLength": "Nome de usuário deve ter pelo menos 3 caracteres",
+        "emailRequired": "E-mail é obrigatório",
+        "emailInvalid": "Formato de e-mail inválido",
+        "passwordRequired": "Senha é obrigatória",
+        "passwordMinLength": "Senha deve ter pelo menos 8 caracteres",
+        "passwordRequiredWhenResetting": "Senha é obrigatória ao redefinir"
+      },
+      "actions": {
+        "saveChanges": "Salvar alterações",
+        "createUser": "Criar usuário"
+      },
+      "toast": {
+        "created": "Usuário criado",
+        "createError": "Erro ao criar usuário",
+        "updated": "Usuário atualizado",
+        "updateError": "Erro ao atualizar usuário",
+        "passwordReset": "Senha do usuário redefinida",
+        "resetError": "Erro ao redefinir senha"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Acesso negado",
+      "message": "Sem permissão para gerenciar permissões de escopo. Contate o administrador do sistema."
+    },
+    "list": {
+      "title": "Permissões de escopo",
+      "countLabel": "{{count}} permissões",
+      "createGrant": "Conceder escopo",
+      "selectWalletPrompt": "Escolha uma carteira acima para ver suas permissões de escopo.",
+      "columns": {
+        "operator": "Operador",
+        "scope": "Escopo",
+        "target": "Alvo",
+        "grantedAt": "Concedida em",
+        "actions": "Ações"
+      },
+      "empty": {
+        "noGrants": "Nenhuma permissão encontrada",
+        "noGrantsHint": "Esta carteira não tem permissões de escopo ativas."
+      },
+      "errorLoading": "Erro ao carregar permissões: {{message}}",
+      "handover": "Transferir"
+    },
+    "form": {
+      "title": "Criar permissão de escopo",
+      "fields": {
+        "operator": "Operador",
+        "operatorPlaceholder": "Selecione o operador...",
+        "wallet": "Carteira",
+        "scopeKind": "Tipo de escopo",
+        "underlyingPublicId": "ID público do subjacente",
+        "instrumentPublicId": "ID público do instrumento",
+        "underlyingPlaceholder": "ex. BTC",
+        "instrumentPlaceholder": "ex. BTC-USD-PERP",
+        "note": "Nota (opcional)",
+        "notePlaceholder": "Nota opcional"
+      },
+      "scopeKinds": {
+        "underlying": "Subjacente",
+        "instrument": "Instrumento"
+      },
+      "validation": {
+        "operatorRequired": "Operador é obrigatório",
+        "walletRequired": "Carteira é obrigatória",
+        "targetRequired": "ID do alvo é obrigatório"
+      },
+      "actions": {
+        "createGrant": "Conceder escopo"
+      },
+      "toast": {
+        "created": "Permissão de escopo criada",
+        "conflictError": "Conflito: outro operador já possui permissão para este escopo",
+        "createError": "Erro ao criar permissão de escopo"
+      }
+    },
+    "handover": {
+      "title": "Transferir permissão de escopo",
+      "fields": {
+        "currentHolder": "Titular atual",
+        "scope": "Escopo",
+        "wallet": "Carteira",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Transferir para operador",
+        "transferToPlaceholder": "Selecione o operador de destino...",
+        "reason": "Motivo (opcional)",
+        "reasonPlaceholder": "ex. Troca de turno"
+      },
+      "actions": {
+        "handover": "Transferir"
+      },
+      "toast": {
+        "completed": "Permissão de escopo transferida",
+        "conflictError": "Conflito: o operador de destino já possui uma permissão conflitante",
+        "handoverError": "Erro ao transferir permissão de escopo"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Acesso negado",
+      "message": "Sem permissão para gerenciar credenciais da carteira. Contate o administrador do sistema."
+    },
+    "list": {
+      "title": "Credenciais da carteira",
+      "countLabel": "{{count}} credenciais",
+      "addCredential": "Adicionar credencial",
+      "selectWalletPrompt": "Escolha uma carteira acima para ver suas credenciais.",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Tipo",
+        "label": "Rótulo",
+        "createdAt": "Criada em",
+        "actions": "Ações"
+      },
+      "empty": {
+        "noCredentials": "Nenhuma credencial encontrada",
+        "noCredentialsHint": "Esta carteira não tem credenciais ativas."
+      },
+      "errorLoading": "Erro ao carregar credenciais: {{message}}",
+      "rotate": "Substituir"
+    },
+    "form": {
+      "title": "Adicionar credencial",
+      "fields": {
+        "wallet": "Carteira",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "ex. kraken",
+        "credentialType": "Tipo de credencial",
+        "label": "Rótulo (opcional)",
+        "labelPlaceholder": "ex. Chave principal de trading",
+        "pemPlaceholder": "Cole aqui a chave privada em formato PEM"
+      },
+      "fieldLabels": {
+        "api_key": "Chave API",
+        "api_secret": "Segredo API",
+        "private_key_pem": "Chave privada (PEM)",
+        "client_id": "ID do cliente",
+        "client_secret": "Segredo do cliente",
+        "refresh_token": "Token de atualização",
+        "initial_balance": "Saldo inicial"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Chave API + Segredo",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Carteira é obrigatória",
+        "exchangeRequired": "Exchange é obrigatória",
+        "fieldRequired": "{{field}} é obrigatório"
+      },
+      "actions": {
+        "addCredential": "Adicionar credencial"
+      },
+      "toast": {
+        "created": "Credencial criada",
+        "conflictError": "Conflito: esta carteira já tem uma credencial ativa para esta exchange",
+        "createError": "Erro ao criar credencial"
+      }
+    },
+    "rotate": {
+      "title": "Substituir credencial",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Tipo",
+        "label": "Rótulo",
+        "newLabel": "Novo rótulo (opcional)",
+        "newLabelPlaceholder": "ex. Chave substituída 2026-04",
+        "pemPlaceholder": "Cole aqui a chave privada em formato PEM"
+      },
+      "actions": {
+        "rotate": "Substituir"
+      },
+      "toast": {
+        "rotated": "Credencial substituída",
+        "rotateError": "Erro ao substituir credencial"
+      }
+    }
+  }
+}

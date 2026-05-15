@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Ordrar och utföranden",
+    "newOrder": "Ny order",
+    "exportCsv": "Exportera CSV"
+  },
+  "tabs": {
+    "orders": "Ordrar ({{total}})",
+    "executions": "Utföranden ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtrera efter status:",
+    "options": {
+      "all": "Alla ordrar",
+      "new": "Ny",
+      "open": "Öppen",
+      "partiallyFilled": "Delvis fylld",
+      "partially_filled": "Delvis fylld",
+      "filled": "Fylld",
+      "cancelled": "Makulerad",
+      "rejected": "Avvisad"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Marknad",
+    "quantity": "Kvantitet",
+    "price": "Pris",
+    "created": "Skapad",
+    "createdUnknown": "N/A",
+    "orderId": "Order-ID",
+    "leverage": "Hävstång",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Makulera",
+    "cancelling": "Makulerar…",
+    "cancelAriaLabel": "Makulera order {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Order #{{orderId}}",
+    "filled": "FYLLD",
+    "orderLabel": "Order {{orderId}}",
+    "size": "Storlek",
+    "price": "Pris",
+    "total": "Totalt",
+    "executed": "Utförd",
+    "fees": "Avgifter"
+  },
+  "empty": {
+    "ordersTitle": "Inga ordrar hittades",
+    "ordersStartTrading": "Börja handla för att se ordrar här",
+    "ordersFilterless": "Inga {{status}} ordrar",
+    "executionsTitle": "Inga utföranden hittades",
+    "executionsMessage": "Handelsutföranden visas här"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Sida",
+      "type": "Typ",
+      "status": "Status",
+      "quantity": "Kvantitet",
+      "price": "Pris",
+      "leverage": "Hävstång",
+      "reduceOnly": "Reduce-only",
+      "created": "Skapad"
+    },
+    "executions": {
+      "orderId": "Order-ID",
+      "instrument": "Instrument",
+      "side": "Sida",
+      "size": "Storlek",
+      "price": "Pris",
+      "total": "Totalt",
+      "fee": "Avgift",
+      "feeAsset": "Avgiftstillgång",
+      "executed": "Utförd"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Ny manuell order",
+    "titleConfirm": "Bekräfta order",
+    "fields": {
+      "exchange": "Börs",
+      "instrument": "Instrument",
+      "side": "Sida",
+      "orderType": "Ordertyp",
+      "quantity": "Kvantitet",
+      "price": "Pris",
+      "stopPrice": "Stopppris",
+      "mode": "Läge",
+      "wallet": "Plånbok",
+      "type": "Typ"
+    },
+    "sideOptions": {
+      "buy": "Köp",
+      "sell": "Sälj"
+    },
+    "orderTypeOptions": {
+      "market": "Marknad",
+      "limit": "Limit",
+      "stop": "Stopp",
+      "stopLimit": "Stop-limit",
+      "stop_limit": "Stop-limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — endast marknadsdata",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Avbryt",
+      "reviewOrder": "Granska order",
+      "back": "Tillbaka",
+      "confirmOrder": "Bekräfta order",
+      "submitting": "Skickar..."
+    },
+    "errors": {
+      "missingRequired": "Alla obligatoriska fält måste fyllas i",
+      "quantityPositive": "Kvantitet måste vara ett positivt tal",
+      "priceRequired": "Pris krävs för denna ordertyp",
+      "pricePositive": "Pris måste vara ett positivt tal",
+      "stopPriceRequired": "Stopppris krävs för denna ordertyp",
+      "stopPricePositive": "Stopppris måste vara ett positivt tal",
+      "createFailed": "Det gick inte att skapa order"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Detta instrument är endast för observation — lägg ordrar på ett instrument med orderutförande.",
+      "unknownInstrument": "Instrumentet känns inte igen. Ladda om listan och försök igen.",
+      "capsViolation": "Den här ordern skulle överskrida kontots säkerhetslimiter. Granska riskinställningarna och försök igen."
+    }
+  }
+}

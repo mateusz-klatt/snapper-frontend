@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administration",
+    "subtitle": "Administrer brugere og systemkonfiguration"
+  },
+  "rolePermissions": {
+    "title": "Rolletilladelser",
+    "viewer": {
+      "label": "Læser",
+      "description": "Skrivebeskyttet adgang til Overblik og Markedsdata. Kan ikke administrere processer, strategier eller systemindstillinger."
+    },
+    "operator": {
+      "label": "Operatør",
+      "description": "Alle læsertilladelser plus tradingdrift, strategiudførsel, procesadministration og overvågning af systemsundhed."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Fuld systemadgang inklusive brugeradministration, systemindstillinger, API-nøglekonfiguration og alle operatørtilladelser."
+    },
+    "table": {
+      "resource": "Ressource",
+      "viewer": "Læser",
+      "operator": "Operatør",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Overblik",
+      "market": "Markedsdata",
+      "processes": "Processer",
+      "strategies": "Strategier",
+      "orders": "Ordrer og udførsler",
+      "positions": "Positioner",
+      "signals": "Signaler",
+      "health": "Sundhed",
+      "admin": "Administration",
+      "settings": "Indstillinger"
+    }
+  },
+  "common": {
+    "cancel": "Annuller",
+    "selectWallet": "Vælg wallet",
+    "selectAWallet": "Vælg en wallet",
+    "chooseWalletPlaceholder": "Vælg en wallet...",
+    "selectWalletPlaceholder": "Vælg wallet...",
+    "walletLabel": "Wallet",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Ukendt fejl",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Adgang nægtet",
+      "message": "Tilladelse til at administrere brugere mangler. Kontakt systemadministratoren."
+    },
+    "list": {
+      "title": "Brugeradministration",
+      "countLabel": "{{count}} brugere",
+      "showInactive": "Vis inaktive",
+      "hideInactive": "Skjul inaktive",
+      "addUser": "Tilføj bruger",
+      "searchPlaceholder": "Søg efter brugernavn, e-mail eller rolle...",
+      "columns": {
+        "user": "Bruger",
+        "role": "Rolle",
+        "status": "Status",
+        "createdAt": "Oprettet",
+        "actions": "Handlinger"
+      },
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "unknown": "Ukendt",
+      "empty": {
+        "title": "Ingen brugere fundet",
+        "noMatch": "Ingen brugere matcher søgekriterierne.",
+        "noUsers": "Ingen brugere fundet.",
+        "noActive": "Ingen aktive brugere fundet."
+      },
+      "errorLoading": "Fejl ved indlæsning af brugere: {{message}}",
+      "deactivate": {
+        "title": "Deaktiver bruger",
+        "message": "Deaktiver brugeren \"{{username}}\"? Brugeren kan derefter ikke logge ind.",
+        "confirm": "Deaktiver"
+      },
+      "toast": {
+        "deactivated": "Bruger deaktiveret",
+        "deactivateError": "Fejl ved deaktivering af bruger"
+      }
+    },
+    "form": {
+      "titleEdit": "Rediger bruger",
+      "titleAdd": "Tilføj bruger",
+      "fields": {
+        "username": "Brugernavn",
+        "usernamePlaceholder": "Indtast brugernavn",
+        "password": "Adgangskode",
+        "passwordPlaceholder": "Indtast adgangskode",
+        "newPassword": "Ny adgangskode",
+        "newPasswordPlaceholder": "Indtast ny adgangskode",
+        "email": "E-mail",
+        "emailPlaceholder": "Indtast e-mail",
+        "role": "Rolle",
+        "accountActive": "Konto aktiv",
+        "resetUserPassword": "Nulstil brugerens adgangskode"
+      },
+      "roles": {
+        "viewer": "Læser",
+        "operator": "Operatør",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Brugernavn er påkrævet",
+        "usernameMinLength": "Brugernavn skal være mindst 3 tegn",
+        "emailRequired": "E-mail er påkrævet",
+        "emailInvalid": "Ugyldigt e-mailformat",
+        "passwordRequired": "Adgangskode er påkrævet",
+        "passwordMinLength": "Adgangskoden skal være mindst 8 tegn",
+        "passwordRequiredWhenResetting": "Adgangskode er påkrævet ved nulstilling"
+      },
+      "actions": {
+        "saveChanges": "Gem ændringer",
+        "createUser": "Opret bruger"
+      },
+      "toast": {
+        "created": "Bruger oprettet",
+        "createError": "Fejl ved oprettelse af bruger",
+        "updated": "Bruger opdateret",
+        "updateError": "Fejl ved opdatering af bruger",
+        "passwordReset": "Brugerens adgangskode er nulstillet",
+        "resetError": "Fejl ved nulstilling af adgangskode"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Adgang nægtet",
+      "message": "Tilladelse til at administrere adgangsomfang mangler. Kontakt systemadministratoren."
+    },
+    "list": {
+      "title": "Adgangsomfang",
+      "countLabel": "{{count}} adgangsomfang",
+      "createGrant": "Tildel omfang",
+      "selectWalletPrompt": "Vælg en wallet ovenfor for at se dens adgangsomfang.",
+      "columns": {
+        "operator": "Operatør",
+        "scope": "Omfang",
+        "target": "Mål",
+        "grantedAt": "Tildelt",
+        "actions": "Handlinger"
+      },
+      "empty": {
+        "noGrants": "Ingen adgangsomfang fundet",
+        "noGrantsHint": "Denne wallet har ingen aktive adgangsomfang."
+      },
+      "errorLoading": "Fejl ved indlæsning af adgangsomfang: {{message}}",
+      "handover": "Overdrag"
+    },
+    "form": {
+      "title": "Tildel omfang",
+      "fields": {
+        "operator": "Operatør",
+        "operatorPlaceholder": "Vælg operatør...",
+        "wallet": "Wallet",
+        "scopeKind": "Omfangstype",
+        "underlyingPublicId": "Underliggende Public ID",
+        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPlaceholder": "f.eks. BTC",
+        "instrumentPlaceholder": "f.eks. BTC-USD-PERP",
+        "note": "Note (valgfri)",
+        "notePlaceholder": "Valgfri note"
+      },
+      "scopeKinds": {
+        "underlying": "Underliggende",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operatør er påkrævet",
+        "walletRequired": "Wallet er påkrævet",
+        "targetRequired": "Mål-ID er påkrævet"
+      },
+      "actions": {
+        "createGrant": "Tildel omfang"
+      },
+      "toast": {
+        "created": "Omfang tildelt",
+        "conflictError": "Konflikt: en anden operatør har allerede adgang til dette omfang",
+        "createError": "Fejl ved tildeling af omfang"
+      }
+    },
+    "handover": {
+      "title": "Overdrag adgangsomfang",
+      "fields": {
+        "currentHolder": "Nuværende indehaver",
+        "scope": "Omfang",
+        "wallet": "Wallet",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Overdrag til operatør",
+        "transferToPlaceholder": "Vælg destinationsoperatør...",
+        "reason": "Årsag (valgfri)",
+        "reasonPlaceholder": "f.eks. vagtskifte"
+      },
+      "actions": {
+        "handover": "Overdrag"
+      },
+      "toast": {
+        "completed": "Adgangsomfang overdraget",
+        "conflictError": "Konflikt: destinationsoperatøren har allerede et modstridende omfang",
+        "handoverError": "Fejl ved overdragelse af adgangsomfang"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Adgang nægtet",
+      "message": "Tilladelse til at administrere wallet-legitimationsoplysninger mangler. Kontakt systemadministratoren."
+    },
+    "list": {
+      "title": "Wallet-legitimationsoplysninger",
+      "countLabel": "{{count}} legitimationsoplysninger",
+      "addCredential": "Tilføj legitimationsoplysninger",
+      "selectWalletPrompt": "Vælg en wallet ovenfor for at se dens legitimationsoplysninger.",
+      "columns": {
+        "exchange": "Børs",
+        "type": "Type",
+        "label": "Label",
+        "createdAt": "Oprettet",
+        "actions": "Handlinger"
+      },
+      "empty": {
+        "noCredentials": "Ingen legitimationsoplysninger fundet",
+        "noCredentialsHint": "Denne wallet har ingen aktive legitimationsoplysninger."
+      },
+      "errorLoading": "Fejl ved indlæsning af legitimationsoplysninger: {{message}}",
+      "rotate": "Udskift"
+    },
+    "form": {
+      "title": "Tilføj legitimationsoplysninger",
+      "fields": {
+        "wallet": "Wallet",
+        "exchange": "Børs",
+        "exchangePlaceholder": "f.eks. kraken",
+        "credentialType": "Type af legitimationsoplysninger",
+        "label": "Label (valgfri)",
+        "labelPlaceholder": "f.eks. Primær tradingnøgle",
+        "pemPlaceholder": "Indsæt PEM-formateret privat nøgle her"
+      },
+      "fieldLabels": {
+        "api_key": "API-nøgle",
+        "api_secret": "API-secret",
+        "private_key_pem": "Privat nøgle (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Startsaldo"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-nøgle + secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Wallet er påkrævet",
+        "exchangeRequired": "Børs er påkrævet",
+        "fieldRequired": "{{field}} er påkrævet"
+      },
+      "actions": {
+        "addCredential": "Tilføj legitimationsoplysninger"
+      },
+      "toast": {
+        "created": "Legitimationsoplysninger oprettet",
+        "conflictError": "Konflikt: denne wallet har allerede aktive legitimationsoplysninger for denne børs",
+        "createError": "Fejl ved oprettelse af legitimationsoplysninger"
+      }
+    },
+    "rotate": {
+      "title": "Udskift legitimationsoplysninger",
+      "fields": {
+        "exchange": "Børs",
+        "type": "Type",
+        "label": "Label",
+        "newLabel": "Ny label (valgfri)",
+        "newLabelPlaceholder": "f.eks. Udskiftet nøgle 2026-04",
+        "pemPlaceholder": "Indsæt PEM-formateret privat nøgle her"
+      },
+      "actions": {
+        "rotate": "Udskift"
+      },
+      "toast": {
+        "rotated": "Legitimationsoplysninger udskiftet",
+        "rotateError": "Fejl ved udskiftning af legitimationsoplysninger"
+      }
+    }
+  }
+}

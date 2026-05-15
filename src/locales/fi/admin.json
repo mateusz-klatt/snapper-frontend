@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Hallinta",
+    "subtitle": "Hallitse käyttäjiä ja järjestelmäasetuksia"
+  },
+  "rolePermissions": {
+    "title": "Roolien oikeudet",
+    "viewer": {
+      "label": "Tarkkailija",
+      "description": "Vain lukuoikeus yleisnäkymään ja markkinatietoihin. Ei voi hallita prosesseja, strategioita tai järjestelmäasetuksia."
+    },
+    "operator": {
+      "label": "Operaattori",
+      "description": "Kaikki Tarkkailijan oikeudet sekä kaupankäyntitoiminnot, strategioiden suoritus, prosessien hallinta ja järjestelmän tilan valvonta."
+    },
+    "admin": {
+      "label": "Pääkäyttäjä",
+      "description": "Täydet järjestelmäoikeudet, mukaan lukien käyttäjähallinta, järjestelmäasetukset, API-avainten määritys ja kaikki Operaattorin oikeudet."
+    },
+    "table": {
+      "resource": "Resurssi",
+      "viewer": "Tarkkailija",
+      "operator": "Operaattori",
+      "admin": "Pääkäyttäjä"
+    },
+    "resources": {
+      "overview": "Yleisnäkymä",
+      "market": "Markkinatiedot",
+      "processes": "Prosessit",
+      "strategies": "Strategiat",
+      "orders": "Toimeksiannot ja toteutukset",
+      "positions": "Positiot",
+      "signals": "Signaalit",
+      "health": "Tila",
+      "admin": "Hallinta",
+      "settings": "Asetukset"
+    }
+  },
+  "common": {
+    "cancel": "Peruuta",
+    "selectWallet": "Valitse lompakko",
+    "selectAWallet": "Valitse lompakko",
+    "chooseWalletPlaceholder": "Valitse lompakko...",
+    "selectWalletPlaceholder": "Valitse lompakko...",
+    "walletLabel": "Lompakko",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Tuntematon virhe",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Pääsy evätty",
+      "message": "Sinulla ei ole oikeutta hallita käyttäjiä. Ota yhteyttä järjestelmän pääkäyttäjään."
+    },
+    "list": {
+      "title": "Käyttäjähallinta",
+      "countLabel": "Käyttäjät: {{count}}",
+      "showInactive": "Näytä passiiviset",
+      "hideInactive": "Piilota passiiviset",
+      "addUser": "Lisää käyttäjä",
+      "searchPlaceholder": "Hae käyttäjänimellä, sähköpostilla tai roolilla...",
+      "columns": {
+        "user": "Käyttäjä",
+        "role": "Rooli",
+        "status": "Tila",
+        "createdAt": "Luotu",
+        "actions": "Toiminnot"
+      },
+      "status": {
+        "active": "Aktiivinen",
+        "inactive": "Passiivinen"
+      },
+      "unknown": "Tuntematon",
+      "empty": {
+        "title": "Käyttäjiä ei löytynyt",
+        "noMatch": "Hakuehtoihin sopivia käyttäjiä ei löytynyt.",
+        "noUsers": "Käyttäjiä ei löytynyt.",
+        "noActive": "Aktiivisia käyttäjiä ei löytynyt."
+      },
+      "errorLoading": "Virhe käyttäjien latauksessa: {{message}}",
+      "deactivate": {
+        "title": "Poista käyttäjä käytöstä",
+        "message": "Haluatko varmasti poistaa käyttäjän \"{{username}}\" käytöstä? Hän ei voi enää kirjautua sisään.",
+        "confirm": "Poista käytöstä"
+      },
+      "toast": {
+        "deactivated": "Käyttäjä poistettu käytöstä",
+        "deactivateError": "Virhe käyttäjän käytöstä poistossa"
+      }
+    },
+    "form": {
+      "titleEdit": "Muokkaa käyttäjää",
+      "titleAdd": "Lisää käyttäjä",
+      "fields": {
+        "username": "Käyttäjänimi",
+        "usernamePlaceholder": "Anna käyttäjänimi",
+        "password": "Salasana",
+        "passwordPlaceholder": "Anna salasana",
+        "newPassword": "Uusi salasana",
+        "newPasswordPlaceholder": "Anna uusi salasana",
+        "email": "Sähköposti",
+        "emailPlaceholder": "Anna sähköposti",
+        "role": "Rooli",
+        "accountActive": "Tili aktiivinen",
+        "resetUserPassword": "Nollaa käyttäjän salasana"
+      },
+      "roles": {
+        "viewer": "Tarkkailija",
+        "operator": "Operaattori",
+        "admin": "Pääkäyttäjä"
+      },
+      "validation": {
+        "usernameRequired": "Käyttäjänimi vaaditaan",
+        "usernameMinLength": "Käyttäjänimessä on oltava vähintään 3 merkkiä",
+        "emailRequired": "Sähköposti vaaditaan",
+        "emailInvalid": "Virheellinen sähköpostimuoto",
+        "passwordRequired": "Salasana vaaditaan",
+        "passwordMinLength": "Salasanassa on oltava vähintään 8 merkkiä",
+        "passwordRequiredWhenResetting": "Salasana vaaditaan nollauksen yhteydessä"
+      },
+      "actions": {
+        "saveChanges": "Tallenna muutokset",
+        "createUser": "Luo käyttäjä"
+      },
+      "toast": {
+        "created": "Käyttäjä luotu",
+        "createError": "Virhe käyttäjän luonnissa",
+        "updated": "Käyttäjä päivitetty",
+        "updateError": "Virhe käyttäjän päivityksessä",
+        "passwordReset": "Käyttäjän salasana nollattu",
+        "resetError": "Virhe salasanan nollauksessa"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Pääsy evätty",
+      "message": "Sinulla ei ole oikeutta hallita käyttöoikeusalueita. Ota yhteyttä järjestelmän pääkäyttäjään."
+    },
+    "list": {
+      "title": "Käyttöoikeusalueet",
+      "countLabel": "Käyttöoikeusalueet: {{count}}",
+      "createGrant": "Myönnä alue",
+      "selectWalletPrompt": "Valitse yllä lompakko nähdäksesi sen käyttöoikeusalueet.",
+      "columns": {
+        "operator": "Operaattori",
+        "scope": "Alue",
+        "target": "Kohde",
+        "grantedAt": "Myönnetty",
+        "actions": "Toiminnot"
+      },
+      "empty": {
+        "noGrants": "Myönnettyjä alueita ei löytynyt",
+        "noGrantsHint": "Tällä lompakolla ei ole aktiivisia käyttöoikeusalueita."
+      },
+      "errorLoading": "Virhe alueiden latauksessa: {{message}}",
+      "handover": "Siirrä"
+    },
+    "form": {
+      "title": "Myönnä käyttöoikeusalue",
+      "fields": {
+        "operator": "Operaattori",
+        "operatorPlaceholder": "Valitse operaattori...",
+        "wallet": "Lompakko",
+        "scopeKind": "Alueen tyyppi",
+        "underlyingPublicId": "Kohde-etuuden julkinen ID",
+        "instrumentPublicId": "Instrumentin julkinen ID",
+        "underlyingPlaceholder": "esim. BTC",
+        "instrumentPlaceholder": "esim. BTC-USD-PERP",
+        "note": "Huomautus (valinnainen)",
+        "notePlaceholder": "Valinnainen huomautus"
+      },
+      "scopeKinds": {
+        "underlying": "Kohde-etuus",
+        "instrument": "Instrumentti"
+      },
+      "validation": {
+        "operatorRequired": "Operaattori vaaditaan",
+        "walletRequired": "Lompakko vaaditaan",
+        "targetRequired": "Kohde-ID vaaditaan"
+      },
+      "actions": {
+        "createGrant": "Myönnä alue"
+      },
+      "toast": {
+        "created": "Käyttöoikeusalue myönnetty",
+        "conflictError": "Ristiriita: toisella operaattorilla on jo myöntö tälle alueelle",
+        "createError": "Virhe käyttöoikeusalueen myönnössä"
+      }
+    },
+    "handover": {
+      "title": "Siirrä käyttöoikeusalue",
+      "fields": {
+        "currentHolder": "Nykyinen haltija",
+        "scope": "Alue",
+        "wallet": "Lompakko",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Siirrä operaattorille",
+        "transferToPlaceholder": "Valitse kohdeoperaattori...",
+        "reason": "Syy (valinnainen)",
+        "reasonPlaceholder": "esim. vuoronvaihto"
+      },
+      "actions": {
+        "handover": "Siirrä"
+      },
+      "toast": {
+        "completed": "Käyttöoikeusalue siirretty",
+        "conflictError": "Ristiriita: kohdeoperaattorilla on jo ristiriitainen myöntö",
+        "handoverError": "Virhe käyttöoikeusalueen siirrossa"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Pääsy evätty",
+      "message": "Sinulla ei ole oikeutta hallita lompakon tunnistetietoja. Ota yhteyttä järjestelmän pääkäyttäjään."
+    },
+    "list": {
+      "title": "Lompakon tunnistetiedot",
+      "countLabel": "Tunnistetiedot: {{count}}",
+      "addCredential": "Lisää tunnistetiedot",
+      "selectWalletPrompt": "Valitse yllä lompakko nähdäksesi sen tunnistetiedot.",
+      "columns": {
+        "exchange": "Pörssi",
+        "type": "Tyyppi",
+        "label": "Tunniste",
+        "createdAt": "Luotu",
+        "actions": "Toiminnot"
+      },
+      "empty": {
+        "noCredentials": "Tunnistetietoja ei löytynyt",
+        "noCredentialsHint": "Tällä lompakolla ei ole aktiivisia tunnistetietoja."
+      },
+      "errorLoading": "Virhe tunnistetietojen latauksessa: {{message}}",
+      "rotate": "Vaihda"
+    },
+    "form": {
+      "title": "Lisää tunnistetiedot",
+      "fields": {
+        "wallet": "Lompakko",
+        "exchange": "Pörssi",
+        "exchangePlaceholder": "esim. kraken",
+        "credentialType": "Tunnistetietojen tyyppi",
+        "label": "Tunniste (valinnainen)",
+        "labelPlaceholder": "esim. pääasiallinen trading-avain",
+        "pemPlaceholder": "Liitä PEM-muotoinen yksityinen avain tähän"
+      },
+      "fieldLabels": {
+        "api_key": "API-avain",
+        "api_secret": "API-salaisuus",
+        "private_key_pem": "Yksityinen avain (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Alkusaldo"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-avain + salaisuus",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Lompakko vaaditaan",
+        "exchangeRequired": "Pörssi vaaditaan",
+        "fieldRequired": "{{field}} vaaditaan"
+      },
+      "actions": {
+        "addCredential": "Lisää tunnistetiedot"
+      },
+      "toast": {
+        "created": "Tunnistetiedot luotu",
+        "conflictError": "Ristiriita: tällä lompakolla on jo aktiiviset tunnistetiedot tälle pörssille",
+        "createError": "Virhe tunnistetietojen luonnissa"
+      }
+    },
+    "rotate": {
+      "title": "Vaihda tunnistetiedot",
+      "fields": {
+        "exchange": "Pörssi",
+        "type": "Tyyppi",
+        "label": "Tunniste",
+        "newLabel": "Uusi tunniste (valinnainen)",
+        "newLabelPlaceholder": "esim. vaihdettu avain 2026-04",
+        "pemPlaceholder": "Liitä PEM-muotoinen yksityinen avain tähän"
+      },
+      "actions": {
+        "rotate": "Vaihda"
+      },
+      "toast": {
+        "rotated": "Tunnistetiedot vaihdettu",
+        "rotateError": "Virhe tunnistetietojen vaihdossa"
+      }
+    }
+  }
+}

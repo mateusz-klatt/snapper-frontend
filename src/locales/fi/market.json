@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Markkinatiedot"
+  },
+  "controls": {
+    "exchange": "Pörssi:",
+    "instrument": "Instrumentti:",
+    "timeframe": "Aikaväli:",
+    "selectExchange": "Valitse pörssi",
+    "searchInstrument": "Hae instrumenttia..."
+  },
+  "timeframes": {
+    "1m": "1 minuutti",
+    "5m": "5 minuuttia",
+    "15m": "15 minuuttia",
+    "30m": "30 minuuttia",
+    "1h": "1 tunti",
+    "4h": "4 tuntia",
+    "1d": "1 päivä"
+  },
+  "stats": {
+    "currentPrice": "Nykyhinta",
+    "change24h": "24h muutos",
+    "high24h": "24h ylin",
+    "low24h": "24h alin"
+  },
+  "chart": {
+    "title": "Hintakaavio",
+    "errorPrefix": "Virhe kaaviodatan latauksessa:",
+    "unknownError": "Tuntematon virhe",
+    "noDataTitle": "Dataa ei saatavilla instrumentille {{instrument}}",
+    "noDataHint": "Instrumenttia ei ehkä ole tai sillä ei ole {{timeframe}}-dataa"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Instrumentille {{instrument}} ei ole määritetty liittyviä instrumentteja pörssissä {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache lämpenee: kynttilät {{sampleCount}} / {{expected}} saatavilla {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(johdettu 1m-datasta)",
+      "db": "(DB:stä)"
+    }
+  }
+}

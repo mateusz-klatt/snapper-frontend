@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Dados de mercado"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrumento:",
+    "timeframe": "Timeframe:",
+    "selectExchange": "Selecionar exchange",
+    "searchInstrument": "Buscar instrumento..."
+  },
+  "timeframes": {
+    "1m": "1 minuto",
+    "5m": "5 minutos",
+    "15m": "15 minutos",
+    "30m": "30 minutos",
+    "1h": "1 hora",
+    "4h": "4 horas",
+    "1d": "1 dia"
+  },
+  "stats": {
+    "currentPrice": "Preço atual",
+    "change24h": "Variação 24h",
+    "high24h": "Máxima 24h",
+    "low24h": "Mínima 24h"
+  },
+  "chart": {
+    "title": "Gráfico de preço",
+    "errorPrefix": "Erro ao carregar dados do gráfico:",
+    "unknownError": "Erro desconhecido",
+    "noDataTitle": "Nenhum dado disponível para {{instrument}}",
+    "noDataHint": "O instrumento pode não existir ou não ter dados de {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Nenhum instrumento relacionado configurado para {{instrument}} em {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Aquecendo cache: {{sampleCount}} / {{expected}} candles disponíveis {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(derivado de 1m)",
+      "db": "(do DB)"
+    }
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administration",
+    "subtitle": "Hantera användare och systemkonfiguration"
+  },
+  "rolePermissions": {
+    "title": "Rollbehörigheter",
+    "viewer": {
+      "label": "Tittare",
+      "description": "Skrivskyddad åtkomst till Översikt och Marknadsdata. Kan inte hantera processer, strategier eller systeminställningar."
+    },
+    "operator": {
+      "label": "Operatör",
+      "description": "Alla behörigheter för Tittare plus tradingåtgärder, strategiutförande, processhantering och övervakning av systemhälsa."
+    },
+    "admin": {
+      "label": "Administratör",
+      "description": "Full systemåtkomst inklusive användarhantering, systeminställningar, API-nyckelkonfiguration och alla behörigheter för Operatör."
+    },
+    "table": {
+      "resource": "Resurs",
+      "viewer": "Tittare",
+      "operator": "Operatör",
+      "admin": "Administratör"
+    },
+    "resources": {
+      "overview": "Översikt",
+      "market": "Marknadsdata",
+      "processes": "Processer",
+      "strategies": "Strategier",
+      "orders": "Ordrar och utföranden",
+      "positions": "Positioner",
+      "signals": "Signaler",
+      "health": "Hälsa",
+      "admin": "Administration",
+      "settings": "Inställningar"
+    }
+  },
+  "common": {
+    "cancel": "Avbryt",
+    "selectWallet": "Välj plånbok",
+    "selectAWallet": "Välj en plånbok",
+    "chooseWalletPlaceholder": "Välj en plånbok...",
+    "selectWalletPlaceholder": "Välj plånbok...",
+    "walletLabel": "Plånbok",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Okänt fel",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Åtkomst nekad",
+      "message": "Behörighet saknas för att hantera användare. Kontakta systemadministratören."
+    },
+    "list": {
+      "title": "Användarhantering",
+      "countLabel": "{{count}} användare",
+      "showInactive": "Visa inaktiva",
+      "hideInactive": "Dölj inaktiva",
+      "addUser": "Lägg till användare",
+      "searchPlaceholder": "Sök efter användarnamn, e-post eller roll...",
+      "columns": {
+        "user": "Användare",
+        "role": "Roll",
+        "status": "Status",
+        "createdAt": "Skapad",
+        "actions": "Åtgärder"
+      },
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "unknown": "Okänd",
+      "empty": {
+        "title": "Inga användare hittades",
+        "noMatch": "Inga användare matchar sökkriterierna.",
+        "noUsers": "Inga användare hittades.",
+        "noActive": "Inga aktiva användare hittades."
+      },
+      "errorLoading": "Fel vid laddning av användare: {{message}}",
+      "deactivate": {
+        "title": "Inaktivera användare",
+        "message": "Inaktivera användaren \"{{username}}\"? Kontot kommer inte längre att kunna logga in.",
+        "confirm": "Inaktivera"
+      },
+      "toast": {
+        "deactivated": "Användaren har inaktiverats",
+        "deactivateError": "Fel vid inaktivering av användare"
+      }
+    },
+    "form": {
+      "titleEdit": "Redigera användare",
+      "titleAdd": "Lägg till användare",
+      "fields": {
+        "username": "Användarnamn",
+        "usernamePlaceholder": "Ange användarnamn",
+        "password": "Lösenord",
+        "passwordPlaceholder": "Ange lösenord",
+        "newPassword": "Nytt lösenord",
+        "newPasswordPlaceholder": "Ange nytt lösenord",
+        "email": "E-post",
+        "emailPlaceholder": "Ange e-post",
+        "role": "Roll",
+        "accountActive": "Konto aktivt",
+        "resetUserPassword": "Återställ användarens lösenord"
+      },
+      "roles": {
+        "viewer": "Tittare",
+        "operator": "Operatör",
+        "admin": "Administratör"
+      },
+      "validation": {
+        "usernameRequired": "Användarnamn krävs",
+        "usernameMinLength": "Användarnamn måste vara minst 3 tecken",
+        "emailRequired": "E-post krävs",
+        "emailInvalid": "Ogiltigt e-postformat",
+        "passwordRequired": "Lösenord krävs",
+        "passwordMinLength": "Lösenord måste vara minst 8 tecken",
+        "passwordRequiredWhenResetting": "Lösenord krävs vid återställning"
+      },
+      "actions": {
+        "saveChanges": "Spara ändringar",
+        "createUser": "Skapa användare"
+      },
+      "toast": {
+        "created": "Användaren har skapats",
+        "createError": "Fel vid skapande av användare",
+        "updated": "Användaren har uppdaterats",
+        "updateError": "Fel vid uppdatering av användare",
+        "passwordReset": "Användarens lösenord har återställts",
+        "resetError": "Fel vid återställning av lösenord"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Åtkomst nekad",
+      "message": "Behörighet saknas för att hantera behörighetsomfång. Kontakta systemadministratören."
+    },
+    "list": {
+      "title": "Behörighetsomfång",
+      "countLabel": "{{count}} omfång",
+      "createGrant": "Bevilja omfång",
+      "selectWalletPrompt": "Välj en plånbok ovan för att visa dess behörighetsomfång.",
+      "columns": {
+        "operator": "Operatör",
+        "scope": "Omfång",
+        "target": "Mål",
+        "grantedAt": "Beviljat",
+        "actions": "Åtgärder"
+      },
+      "empty": {
+        "noGrants": "Inga behörighetsomfång hittades",
+        "noGrantsHint": "Den här plånboken har inga aktiva behörighetsomfång."
+      },
+      "errorLoading": "Fel vid laddning av omfång: {{message}}",
+      "handover": "Överlämna"
+    },
+    "form": {
+      "title": "Bevilja behörighetsomfång",
+      "fields": {
+        "operator": "Operatör",
+        "operatorPlaceholder": "Välj operatör...",
+        "wallet": "Plånbok",
+        "scopeKind": "Typ av omfång",
+        "underlyingPublicId": "Underliggande Public ID",
+        "instrumentPublicId": "Instrumentets Public ID",
+        "underlyingPlaceholder": "t.ex. BTC",
+        "instrumentPlaceholder": "t.ex. BTC-USD-PERP",
+        "note": "Notering (valfritt)",
+        "notePlaceholder": "Valfri notering"
+      },
+      "scopeKinds": {
+        "underlying": "Underliggande",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operatör krävs",
+        "walletRequired": "Plånbok krävs",
+        "targetRequired": "Mål-ID krävs"
+      },
+      "actions": {
+        "createGrant": "Bevilja omfång"
+      },
+      "toast": {
+        "created": "Behörighetsomfång beviljat",
+        "conflictError": "Konflikt: en annan operatör har redan omfång för detta mål",
+        "createError": "Fel vid beviljande av behörighetsomfång"
+      }
+    },
+    "handover": {
+      "title": "Överlämna behörighetsomfång",
+      "fields": {
+        "currentHolder": "Nuvarande innehavare",
+        "scope": "Omfång",
+        "wallet": "Plånbok",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Överlämna till operatör",
+        "transferToPlaceholder": "Välj mottagande operatör...",
+        "reason": "Orsak (valfritt)",
+        "reasonPlaceholder": "t.ex. Skiftbyte"
+      },
+      "actions": {
+        "handover": "Överlämna"
+      },
+      "toast": {
+        "completed": "Behörighetsomfång överlämnat",
+        "conflictError": "Konflikt: mottagande operatör har redan ett motstridigt omfång",
+        "handoverError": "Fel vid överlämning av behörighetsomfång"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Åtkomst nekad",
+      "message": "Behörighet saknas för att hantera plånboksreferenser. Kontakta systemadministratören."
+    },
+    "list": {
+      "title": "Plånboksreferenser",
+      "countLabel": "{{count}} referenser",
+      "addCredential": "Lägg till referens",
+      "selectWalletPrompt": "Välj en plånbok ovan för att visa dess referenser.",
+      "columns": {
+        "exchange": "Börs",
+        "type": "Typ",
+        "label": "Etikett",
+        "createdAt": "Skapad",
+        "actions": "Åtgärder"
+      },
+      "empty": {
+        "noCredentials": "Inga referenser hittades",
+        "noCredentialsHint": "Den här plånboken har inga aktiva referenser."
+      },
+      "errorLoading": "Fel vid laddning av referenser: {{message}}",
+      "rotate": "Byt"
+    },
+    "form": {
+      "title": "Lägg till referens",
+      "fields": {
+        "wallet": "Plånbok",
+        "exchange": "Börs",
+        "exchangePlaceholder": "t.ex. kraken",
+        "credentialType": "Referenstyp",
+        "label": "Etikett (valfritt)",
+        "labelPlaceholder": "t.ex. Huvudnyckel för trading",
+        "pemPlaceholder": "Klistra in PEM-formaterad privat nyckel här"
+      },
+      "fieldLabels": {
+        "api_key": "API-nyckel",
+        "api_secret": "API-hemlighet",
+        "private_key_pem": "Privat nyckel (PEM)",
+        "client_id": "Klient-ID",
+        "client_secret": "Klienthemlighet",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Startsaldo"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-nyckel + hemlighet",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Plånbok krävs",
+        "exchangeRequired": "Börs krävs",
+        "fieldRequired": "{{field}} krävs"
+      },
+      "actions": {
+        "addCredential": "Lägg till referens"
+      },
+      "toast": {
+        "created": "Referens skapad",
+        "conflictError": "Konflikt: den här plånboken har redan en aktiv referens för denna börs",
+        "createError": "Fel vid skapande av referens"
+      }
+    },
+    "rotate": {
+      "title": "Byt referens",
+      "fields": {
+        "exchange": "Börs",
+        "type": "Typ",
+        "label": "Etikett",
+        "newLabel": "Ny etikett (valfritt)",
+        "newLabelPlaceholder": "t.ex. Bytt nyckel 2026-04",
+        "pemPlaceholder": "Klistra in PEM-formaterad privat nyckel här"
+      },
+      "actions": {
+        "rotate": "Byt"
+      },
+      "toast": {
+        "rotated": "Referens bytt",
+        "rotateError": "Fel vid byte av referens"
+      }
+    }
+  }
+}

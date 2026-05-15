@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strategiadministrasjon",
+    "register": "Registrer strategi",
+    "saving": "Lagrer…",
+    "descriptionCanManage": "Registrer nye strategiprosesser direkte fra UI. Autostart holder prosessen aktivert på tvers av omstarter.",
+    "descriptionViewer": "Vis konfigurerte strategier og status. Kontakt en operatør eller administrator for å administrere strategier.",
+    "searchPlaceholder": "Søk i strategier...",
+    "filter": {
+      "all": "Alle statuser",
+      "running": "Kjører",
+      "stopped": "Stoppet"
+    },
+    "configuredHeading": "Konfigurerte strategier",
+    "noMatches": "Ingen strategier samsvarer med filtrene",
+    "clearFilters": "Tøm filtre",
+    "emptyTitle": "Ingen strategier konfigurert",
+    "emptyCanManage": "Registrer en strategi for å starte algoritmisk trading",
+    "emptyViewer": "Ingen strategier er konfigurert ennå"
+  },
+  "confirm": {
+    "startTitle": "Start {{name}}",
+    "startMessage": "Dette starter strategien {{name}}. Den kan begynne live tradingoperasjoner.",
+    "stopTitle": "Stopp {{name}}",
+    "stopMessage": "Dette stopper strategien {{name}}. Aktive posisjoner lukkes ikke automatisk."
+  },
+  "toast": {
+    "saved": "Strategi {{name}} lagret",
+    "started": "Strategi {{name}} startet",
+    "registerFailed": "Kunne ikke registrere strategi: {{message}}",
+    "startSuccess": "Strategi startet",
+    "stopSuccess": "Strategi stoppet",
+    "alreadyRunning": "Strategien kjører allerede",
+    "notRunning": "Strategien kjører ikke",
+    "configNotFound": "Strategikonfigurasjon ikke funnet. Sjekk databaseinnstillingene.",
+    "networkError": "Nettverksfeil. Sjekk tilkoblingen og prøv igjen.",
+    "startFailed": "Kunne ikke starte strategi: {{message}}",
+    "stopFailed": "Kunne ikke stoppe strategi: {{message}}",
+    "unknownError": "Ukjent feil"
+  },
+  "card": {
+    "ariaLabel": "Strategi: {{name}}",
+    "modeLabel": "Modus: {{mode}}",
+    "autostartEnabled": "Autostart: aktivert",
+    "autostartDisabled": "Autostart: deaktivert",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Dataforsinkelse: {{seconds}} sekunder",
+    "lagBadge": "forsinkelse: {{seconds}}s",
+    "feedLag": "Feed-forsinkelse: {{ms}}ms",
+    "heartbeatAge": "HB-alder: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Dataforsinkelse",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Vis detaljer",
+    "hideDetails": "Skjul detaljer",
+    "inputs": "Inndata ({{count}})",
+    "outputs": "Utdata ({{count}})",
+    "feedPublishers": "Feed-publiserere ({{count}})",
+    "lastUpdate": "Siste oppdatering: {{time}}",
+    "waiting": "Venter på heartbeat...",
+    "startAriaLabel": "Start strategien {{name}}",
+    "stopAriaLabel": "Stopp strategien {{name}}",
+    "start": "Start",
+    "stop": "Stopp",
+    "starting": "Starter...",
+    "stopping": "Stopper...",
+    "status": {
+      "starting": "starter",
+      "stopping": "stopper",
+      "running": "kjører",
+      "stopped": "stoppet"
+    },
+    "health": {
+      "healthy": "Frisk — mottar ferske data",
+      "warning": "Advarsel — data er utdaterte",
+      "error": "Feil — ingen nylige data",
+      "unknown": "Ukjent — ingen heartbeat-data"
+    },
+    "healthShort": {
+      "healthy": "FRISK",
+      "warning": "ADVARSEL",
+      "error": "FEIL"
+    }
+  },
+  "launchModal": {
+    "title": "Registrer strategiprosess",
+    "emptyTemplates": "Ingen strategimaler registrert i backend. Definer minst én strategiprosess.",
+    "close": "Lukk",
+    "templateLabel": "Strategimal",
+    "templatePlaceholder": "Velg mal...",
+    "templateFallbackDescription": "Strategi registrert i backend",
+    "loadingDefaults": "Laster standardverdier for mal…",
+    "loadDefaultsError": "Kan ikke laste standardverdier for mal. Sjekk backend-logger.",
+    "processNameLabel": "Prosessnavn",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Tillatte tegn: små bokstaver, tall, understreker",
+    "instanceNameLabel": "Navn på strategiinstans",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Brukes i strategikonfigurasjon og output topics",
+    "executionModeLabel": "Utførelsesmodus",
+    "executionModeThread": "Innebygd tråd",
+    "executionModeProcess": "Isolert prosess",
+    "executionModeHelp": "Tråder deler minne, prosesser gir sterkere isolasjon.",
+    "flagsLabel": "Flagg",
+    "autostartLabel": "Autostart ved serveroppstart",
+    "startImmediatelyLabel": "Start umiddelbart etter registrering",
+    "noteLabel": "Notat (valgfritt)",
+    "notePlaceholder": "Beskriv formål eller parametere for denne strategiinstansen.",
+    "noteHelp": "Lagres sammen med konfigurasjonen for å identifisere prosessen.",
+    "cancel": "Avbryt",
+    "submit": "Registrer strategi",
+    "submitting": "Registrerer…"
+  }
+}

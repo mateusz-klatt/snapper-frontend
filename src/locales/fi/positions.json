@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Positiot"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: odottaa",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Määrä",
+    "averageEntry": "Keskim. avaushinta",
+    "unrealizedPnl": "Realisoitumaton P&L",
+    "realizedPnl": "Realisoitunut P&L",
+    "updated": "Päivitetty {{timestamp}}"
+  },
+  "empty": {
+    "title": "Ei avoimia positioita",
+    "message": "Long-, short- ja flat-positiot näkyvät täällä, kun treidejä toteutetaan."
+  },
+  "bracketModal": {
+    "title": "Liitä SL/TP — {{instrument}}",
+    "confirmTitle": "Vahvista Bracket",
+    "position": "Positio",
+    "entryPrice": "Avaushinta",
+    "stopLossLabel": "Stop-Loss-hinta",
+    "takeProfitLabel": "Take-Profit-hinta",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Alle ${{price}}",
+      "slShort": "Yli ${{price}}",
+      "tpLong": "Yli ${{price}}",
+      "tpShort": "Alle ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Peruuta",
+      "review": "Tarkista",
+      "back": "Takaisin",
+      "confirm": "Vahvista",
+      "creating": "Luodaan…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Liitä Trailing Stop — {{instrument}}",
+    "confirmTitle": "Vahvista Trailing Stop",
+    "position": "Positio",
+    "entryPrice": "Avaushinta",
+    "trailingDistanceLabel": "Trailing-etäisyys (%)",
+    "minLockLabel": "Min. lukittu voitto (%) — valinnainen",
+    "trailingDistance": "Trailing-etäisyys",
+    "minLockProfit": "Min. lukittu voitto",
+    "placeholders": {
+      "trailingPct": "esim. 5.0",
+      "minLockPct": "0 = aloita heti"
+    },
+    "minLockWarning": "Trailing Stop aktivoituu vasta, kun hinta liikkuu {{minLockPct}}% eduksesi.",
+    "buttons": {
+      "cancel": "Peruuta",
+      "review": "Tarkista",
+      "back": "Takaisin",
+      "confirm": "Vahvista",
+      "creating": "Luodaan..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Vähintään SL- tai TP-hinta vaaditaan",
+    "invalidSlPrice": "Virheellinen stop-loss-hinta",
+    "slPricePositive": "Stop-loss-hinnan on oltava positiivinen",
+    "invalidTpPrice": "Virheellinen take-profit-hinta",
+    "tpPricePositive": "Take-profit-hinnan on oltava positiivinen",
+    "slLongBelowEntry": "SL-hinnan on oltava alle avaushinnan ({{price}})",
+    "tpLongAboveEntry": "TP-hinnan on oltava yli avaushinnan ({{price}})",
+    "slShortAboveEntry": "SL-hinnan on oltava yli avaushinnan ({{price}})",
+    "tpShortBelowEntry": "TP-hinnan on oltava alle avaushinnan ({{price}})",
+    "trailingRequired": "Trailing-prosentti vaaditaan",
+    "trailingInvalid": "Virheellinen trailing-prosentti",
+    "trailingRange": "Trailing-prosentin on oltava välillä 0-100",
+    "minLockInvalid": "Virheellinen min. lukitusprosentti",
+    "minLockRange": "Min. lukitusprosentin on oltava välillä 0-100"
+  }
+}

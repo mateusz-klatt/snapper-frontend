@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strategihantering",
+    "register": "Registrera strategi",
+    "saving": "Sparar…",
+    "descriptionCanManage": "Registrera nya strategiprocesser direkt från gränssnittet. Autostart håller processen aktiverad över omstarter.",
+    "descriptionViewer": "Visa konfigurerade strategier och deras status. Kontakta en operatör eller administratör för att hantera strategier.",
+    "searchPlaceholder": "Sök strategier...",
+    "filter": {
+      "all": "Alla statusar",
+      "running": "Körs",
+      "stopped": "Stoppad"
+    },
+    "configuredHeading": "Konfigurerade strategier",
+    "noMatches": "Inga strategier matchar filtren",
+    "clearFilters": "Rensa filter",
+    "emptyTitle": "Inga strategier konfigurerade",
+    "emptyCanManage": "Registrera en strategi för att starta algoritmisk trading",
+    "emptyViewer": "Inga strategier har konfigurerats än"
+  },
+  "confirm": {
+    "startTitle": "Starta {{name}}",
+    "startMessage": "Detta startar strategin {{name}}. Den kan börja utföra live-trading.",
+    "stopTitle": "Stoppa {{name}}",
+    "stopMessage": "Detta stoppar strategin {{name}}. Aktiva positioner stängs inte automatiskt."
+  },
+  "toast": {
+    "saved": "Strategin {{name}} sparad",
+    "started": "Strategin {{name}} startad",
+    "registerFailed": "Det gick inte att registrera strategi: {{message}}",
+    "startSuccess": "Strategin startades",
+    "stopSuccess": "Strategin stoppades",
+    "alreadyRunning": "Strategin körs redan",
+    "notRunning": "Strategin körs inte",
+    "configNotFound": "Strategikonfiguration hittades inte. Kontrollera databasinställningarna.",
+    "networkError": "Nätverksfel. Kontrollera anslutningen och försök igen.",
+    "startFailed": "Det gick inte att starta strategi: {{message}}",
+    "stopFailed": "Det gick inte att stoppa strategi: {{message}}",
+    "unknownError": "Okänt fel"
+  },
+  "card": {
+    "ariaLabel": "Strategi: {{name}}",
+    "modeLabel": "Läge: {{mode}}",
+    "autostartEnabled": "Autostart: aktiverad",
+    "autostartDisabled": "Autostart: inaktiverad",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Datafördröjning: {{seconds}} sekunder",
+    "lagBadge": "fördröjning: {{seconds}}s",
+    "feedLag": "Feed-fördröjning: {{ms}}ms",
+    "heartbeatAge": "HB-ålder: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Datafördröjning",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Visa detaljer",
+    "hideDetails": "Dölj detaljer",
+    "inputs": "Indata ({{count}})",
+    "outputs": "Utdata ({{count}})",
+    "feedPublishers": "Feed-publicerare ({{count}})",
+    "lastUpdate": "Senaste uppdatering: {{time}}",
+    "waiting": "Väntar på heartbeat...",
+    "startAriaLabel": "Starta strategin {{name}}",
+    "stopAriaLabel": "Stoppa strategin {{name}}",
+    "start": "Starta",
+    "stop": "Stoppa",
+    "starting": "Startar...",
+    "stopping": "Stoppar...",
+    "status": {
+      "starting": "startar",
+      "stopping": "stoppar",
+      "running": "körs",
+      "stopped": "stoppad"
+    },
+    "health": {
+      "healthy": "Frisk — tar emot färska data",
+      "warning": "Varning — data är inaktuella",
+      "error": "Fel — inga nya data",
+      "unknown": "Okänd — inga heartbeat-data"
+    },
+    "healthShort": {
+      "healthy": "FRISK",
+      "warning": "VARNING",
+      "error": "FEL"
+    }
+  },
+  "launchModal": {
+    "title": "Registrera strategiprocess",
+    "emptyTemplates": "Inga strategimallar registrerade i backend. Definiera minst en strategiprocess.",
+    "close": "Stäng",
+    "templateLabel": "Strategimall",
+    "templatePlaceholder": "Välj mall...",
+    "templateFallbackDescription": "Strategi registrerad i backend",
+    "loadingDefaults": "Laddar mallstandardvärden…",
+    "loadDefaultsError": "Det gick inte att ladda mallstandardvärden. Kontrollera backend-loggarna.",
+    "processNameLabel": "Processnamn",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Tillåtna tecken: gemena bokstäver, siffror, understreck",
+    "instanceNameLabel": "Strategiinstansens namn",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Används i strategikonfiguration och output topics",
+    "executionModeLabel": "Körläge",
+    "executionModeThread": "Inbäddad tråd",
+    "executionModeProcess": "Isolerad process",
+    "executionModeHelp": "Trådar delar minne, processer ger starkare isolering.",
+    "flagsLabel": "Flaggor",
+    "autostartLabel": "Autostart vid serverstart",
+    "startImmediatelyLabel": "Starta direkt efter registrering",
+    "noteLabel": "Notering (valfritt)",
+    "notePlaceholder": "Beskriv syfte eller parametrar för denna strategiinstans.",
+    "noteHelp": "Sparas tillsammans med konfigurationen för att identifiera processen.",
+    "cancel": "Avbryt",
+    "submit": "Registrera strategi",
+    "submitting": "Registrerar…"
+  }
+}

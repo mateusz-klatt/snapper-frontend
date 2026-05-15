@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strategioiden hallinta",
+    "register": "Rekisteröi strategia",
+    "saving": "Tallennetaan…",
+    "descriptionCanManage": "Rekisteröi uusia strategiaprosesseja suoraan käyttöliittymästä. Autostart pitää prosessin käytössä uudelleenkäynnistysten yli.",
+    "descriptionViewer": "Näytä määritetyt strategiat ja niiden tila. Ota yhteyttä operaattoriin tai pääkäyttäjään strategioiden hallintaa varten.",
+    "searchPlaceholder": "Hae strategioita...",
+    "filter": {
+      "all": "Kaikki tilat",
+      "running": "Käynnissä",
+      "stopped": "Pysäytetty"
+    },
+    "configuredHeading": "Määritetyt strategiat",
+    "noMatches": "Mikään strategia ei vastaa suodattimia",
+    "clearFilters": "Tyhjennä suodattimet",
+    "emptyTitle": "Strategioita ei ole määritetty",
+    "emptyCanManage": "Rekisteröi strategia aloittaaksesi algoritmisen tradingin",
+    "emptyViewer": "Strategioita ei ole vielä määritetty"
+  },
+  "confirm": {
+    "startTitle": "Käynnistä {{name}}",
+    "startMessage": "Tämä käynnistää strategian {{name}}. Se voi aloittaa live-trading-toiminnot.",
+    "stopTitle": "Pysäytä {{name}}",
+    "stopMessage": "Tämä pysäyttää strategian {{name}}. Aktiivisia positioita ei suljeta automaattisesti."
+  },
+  "toast": {
+    "saved": "Strategia {{name}} tallennettu",
+    "started": "Strategia {{name}} käynnistetty",
+    "registerFailed": "Strategian rekisteröinti epäonnistui: {{message}}",
+    "startSuccess": "Strategia käynnistetty",
+    "stopSuccess": "Strategia pysäytetty",
+    "alreadyRunning": "Strategia on jo käynnissä",
+    "notRunning": "Strategia ei ole käynnissä",
+    "configNotFound": "Strategian konfiguraatiota ei löytynyt. Tarkista tietokanta-asetukset.",
+    "networkError": "Verkkovirhe. Tarkista yhteys ja yritä uudestaan.",
+    "startFailed": "Strategian käynnistys epäonnistui: {{message}}",
+    "stopFailed": "Strategian pysäytys epäonnistui: {{message}}",
+    "unknownError": "Tuntematon virhe"
+  },
+  "card": {
+    "ariaLabel": "Strategia: {{name}}",
+    "modeLabel": "Tila: {{mode}}",
+    "autostartEnabled": "Autostart: käytössä",
+    "autostartDisabled": "Autostart: pois käytöstä",
+    "statusAriaLabel": "Tila: {{status}}",
+    "dataLagAriaLabel": "Dataviive: {{seconds}} sekuntia",
+    "lagBadge": "viive: {{seconds}}s",
+    "feedLag": "Feed-viive: {{ms}}ms",
+    "heartbeatAge": "HB-ikä: {{seconds}}s",
+    "metrics": {
+      "status": "Tila",
+      "dataLag": "Dataviive",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Näytä tiedot",
+    "hideDetails": "Piilota tiedot",
+    "inputs": "Syötteet ({{count}})",
+    "outputs": "Ulostulot ({{count}})",
+    "feedPublishers": "Feed-julkaisijat ({{count}})",
+    "lastUpdate": "Viimeisin päivitys: {{time}}",
+    "waiting": "Odotetaan heartbeatia...",
+    "startAriaLabel": "Käynnistä strategia {{name}}",
+    "stopAriaLabel": "Pysäytä strategia {{name}}",
+    "start": "Käynnistä",
+    "stop": "Pysäytä",
+    "starting": "Käynnistetään...",
+    "stopping": "Pysäytetään...",
+    "status": {
+      "starting": "käynnistyy",
+      "stopping": "pysähtyy",
+      "running": "käynnissä",
+      "stopped": "pysäytetty"
+    },
+    "health": {
+      "healthy": "Kunnossa — vastaanottaa tuoretta dataa",
+      "warning": "Varoitus — data on vanhentunutta",
+      "error": "Virhe — ei tuoretta dataa",
+      "unknown": "Tuntematon — ei heartbeat-dataa"
+    },
+    "healthShort": {
+      "healthy": "KUNNOSSA",
+      "warning": "VAROITUS",
+      "error": "VIRHE"
+    }
+  },
+  "launchModal": {
+    "title": "Rekisteröi strategiaprosessi",
+    "emptyTemplates": "Backendissä ei ole rekisteröityjä strategiamalleja. Määritä vähintään yksi strategiaprosessi.",
+    "close": "Sulje",
+    "templateLabel": "Strategiamalli",
+    "templatePlaceholder": "Valitse malli...",
+    "templateFallbackDescription": "Backendissä rekisteröity strategia",
+    "loadingDefaults": "Ladataan mallin oletuksia…",
+    "loadDefaultsError": "Mallin oletusten lataus epäonnistui. Tarkista backend-lokit.",
+    "processNameLabel": "Prosessin nimi",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Sallitut merkit: pienet kirjaimet, numerot, alaviivat",
+    "instanceNameLabel": "Strategiainstanssin nimi",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Käytetään strategian konfiguraatiossa ja output-topiceissa",
+    "executionModeLabel": "Suoritustila",
+    "executionModeThread": "Upotettu säie",
+    "executionModeProcess": "Eristetty prosessi",
+    "executionModeHelp": "Säikeet jakavat muistin, prosessit tarjoavat vahvemman eristyksen.",
+    "flagsLabel": "Liput",
+    "autostartLabel": "Autostart palvelimen käynnistyessä",
+    "startImmediatelyLabel": "Käynnistä heti rekisteröinnin jälkeen",
+    "noteLabel": "Huomautus (valinnainen)",
+    "notePlaceholder": "Kuvaa tämän strategiainstanssin tarkoitus tai parametrit.",
+    "noteHelp": "Tallennetaan konfiguraation rinnalle prosessin tunnistamista varten.",
+    "cancel": "Peruuta",
+    "submit": "Rekisteröi strategia",
+    "submitting": "Rekisteröidään…"
+  }
+}

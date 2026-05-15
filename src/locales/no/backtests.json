@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Tilbake",
+    "backToList": "← Tilbake til backtests"
+  },
+  "status": {
+    "pending": "Venter",
+    "running": "Kjører",
+    "completed": "Fullført",
+    "failed": "Mislyktes",
+    "cancelled": "Kansellert"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Avbryt",
+      "rerun": "Kjør på nytt"
+    },
+    "fields": {
+      "timeframe": "Tidsramme",
+      "period": "Periode",
+      "initialCash": "Startkapital",
+      "id": "ID"
+    },
+    "errorPrefix": "Feil: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrer backtests etter status",
+      "options": {
+        "all": "Alle statuser",
+        "pending": "Venter",
+        "running": "Kjører",
+        "completed": "Fullført",
+        "failed": "Mislyktes",
+        "cancelled": "Kansellert"
+      }
+    },
+    "empty": {
+      "title": "Ingen backtests",
+      "message": "Kjør en backtest via CLI eller API for å se resultater her."
+    }
+  },
+  "detail": {
+    "title": "Backtest-kjøring",
+    "fields": {
+      "strategy": "Strategi",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Periode",
+      "crossAsset": "Cross-asset attribusjon",
+      "configHash": "Konfigurasjonshash"
+    },
+    "crossAssetFlow": "{{source}}-feed → {{target}}-utførelser",
+    "errors": {
+      "invalidRunId": "Ugyldig run-ID — må være en UUID7 (fikk \"{{id}}\").",
+      "loadFailed": "Kunne ikke laste kjøring: {{message}}",
+      "notFound": "ikke funnet"
+    }
+  },
+  "compare": {
+    "title": "Sammenlign",
+    "headingFull": "Backtest-sammenligning",
+    "loading": "Laster sammenligning…",
+    "vs": "mot",
+    "runLabel": "Kjøring {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrikker",
+      "equityOverlay": "Equity-overlay",
+      "trades": "Handler",
+      "signals": "Signaler"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manuell"
+    },
+    "errors": {
+      "notFound": "Sammenligning ikke funnet i gjeldende lommebok.",
+      "loadFailed": "Kunne ikke laste sammenligning: {{message}}",
+      "unknown": "ukjent feil",
+      "emptyResponse": "Tomt sammenligningssvar."
+    },
+    "launcher": {
+      "title": "Sammenlign",
+      "submit": "Sammenlign",
+      "autoPair": "Sammenlign med nyeste",
+      "terminalGate": "sammenligning er tilgjengelig når denne kjøringen får terminal status",
+      "noSiblings": "ingen andre kjøringer med denne konfigurasjonen",
+      "limitNotice": "viser {{count}} nyeste — bruk manuell paring for eldre kjøringer",
+      "pickPlaceholder": "— velg en kjøring å sammenligne —",
+      "showAllLabel": "Vis alle kjøringer (ikke bare samme konfigurasjon)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "alle kjøringer",
+        "sameConfig": "samme konfigurasjon"
+      },
+      "errors": {
+        "pickRequired": "velg en kjøring fra listen"
+      }
+    },
+    "diffColumns": {
+      "common": "Felles",
+      "onlyA": "Kun i A",
+      "onlyB": "Kun i B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Ingen sammenlignbare metrikker — begge kjøringer manglet registrerte verdier.",
+      "columns": {
+        "name": "Metrikk",
+        "runA": "Kjøring A",
+        "runB": "Kjøring B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Kjøring A",
+        "runB": "Kjøring B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Venter på fremdrift…",
+    "candles": "{{done}} / {{total}} candles",
+    "candlesNoTotal": "{{done}} candles",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} handler",
+    "milestoneLine": "milepæl {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

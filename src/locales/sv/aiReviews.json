@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Begäran",
+    "decision": "Beslut",
+    "capsViolation": "Limitöverträdelse",
+    "selectedDelegate": "Vald delegat",
+    "instrument": "instrument",
+    "deadline": "tidsfrist {{time}}",
+    "decidedBy": "av",
+    "newStatus": "status",
+    "mode": "läge",
+    "capAttempted": "försökt",
+    "capLimit": "mot limit",
+    "capOn": "på instrument",
+    "reviewLabel": "granskning {{reviewId}}",
+    "unhandledFrame": "Ohanterad aktivitetsframe för AI-granskning: {{frame}}"
+  },
+  "page": {
+    "title": "Inkorg för AI-granskningar",
+    "subtitle": "Väntande CONSULT-granskningar dirigerade till denna delegat plus livehändelseströmmen."
+  },
+  "roleNotice": {
+    "title": "Reserverad för AI-delegater",
+    "message": "Den här inkorgen visar CONSULT-granskningar dirigerade till en AI-delegatprincipal. Logga in med ett AI-delegatkonto för att se väntande granskningar och liveaktivitetsströmmen. Aktuell roll:",
+    "unknownRole": "okänd"
+  },
+  "pending": {
+    "title": "Väntande granskningar",
+    "loading": "Laddar väntande granskningar…",
+    "loadError": "Det gick inte att ladda väntande granskningar: {{message}}",
+    "emptyTitle": "Inga väntande granskningar",
+    "emptyMessage": "Nya CONSULT-begäranden dirigerade till denna delegat visas här.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Tes",
+      "status": "Status",
+      "deadline": "Tidsfrist",
+      "decision": "Beslut"
+    },
+    "rationalePlaceholder": "Motivering (valfritt)",
+    "rationaleAriaLabel": "Motivering för granskning {{reviewId}}",
+    "approve": "Godkänn",
+    "reject": "Avvisa",
+    "submitError": "Skickning misslyckades: {{message}}"
+  },
+  "activity": {
+    "title": "Senaste aktivitet",
+    "emptyTitle": "Ingen aktivitet än",
+    "emptyMessage": "Frames för AI-granskningsbegäranden, beslut och limitöverträdelser strömmas hit.",
+    "summaryEmpty": "Inga frames mottagna",
+    "summaryCount": "Visar {{shown}} av {{total}} buffrade"
+  }
+}

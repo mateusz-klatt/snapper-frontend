@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Gerenciamento de estratégias",
+    "register": "Registrar estratégia",
+    "saving": "Salvando…",
+    "descriptionCanManage": "Registre novos processos de estratégia diretamente pela UI. Autostart mantém o processo habilitado entre reinicializações.",
+    "descriptionViewer": "Veja estratégias configuradas e seus status. Contate um operador ou admin para gerenciar estratégias.",
+    "searchPlaceholder": "Buscar estratégias...",
+    "filter": {
+      "all": "Todos os status",
+      "running": "Em execução",
+      "stopped": "Parado"
+    },
+    "configuredHeading": "Estratégias configuradas",
+    "noMatches": "Nenhuma estratégia corresponde aos filtros",
+    "clearFilters": "Limpar filtros",
+    "emptyTitle": "Nenhuma estratégia configurada",
+    "emptyCanManage": "Registre uma estratégia para iniciar trading algorítmico",
+    "emptyViewer": "Nenhuma estratégia foi configurada ainda"
+  },
+  "confirm": {
+    "startTitle": "Iniciar {{name}}",
+    "startMessage": "Isto irá iniciar a estratégia {{name}}. Ela pode começar operações de trading live.",
+    "stopTitle": "Parar {{name}}",
+    "stopMessage": "Isto irá parar a estratégia {{name}}. Posições ativas não serão fechadas automaticamente."
+  },
+  "toast": {
+    "saved": "Estratégia {{name}} salva",
+    "started": "Estratégia {{name}} iniciada",
+    "registerFailed": "Falha ao registrar estratégia: {{message}}",
+    "startSuccess": "Estratégia iniciada com sucesso",
+    "stopSuccess": "Estratégia parada com sucesso",
+    "alreadyRunning": "Estratégia já está em execução",
+    "notRunning": "Estratégia não está em execução",
+    "configNotFound": "Configuração da estratégia não encontrada. Verifique as configurações do banco de dados.",
+    "networkError": "Erro de rede. Verifique a conexão e tente novamente.",
+    "startFailed": "Falha ao iniciar estratégia: {{message}}",
+    "stopFailed": "Falha ao parar estratégia: {{message}}",
+    "unknownError": "Erro desconhecido"
+  },
+  "card": {
+    "ariaLabel": "Estratégia: {{name}}",
+    "modeLabel": "Modo: {{mode}}",
+    "autostartEnabled": "Autostart: habilitado",
+    "autostartDisabled": "Autostart: desabilitado",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Atraso dos dados: {{seconds}} segundos",
+    "lagBadge": "lag: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "idade do HB: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Atraso dos dados",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Mostrar detalhes",
+    "hideDetails": "Ocultar detalhes",
+    "inputs": "Entradas ({{count}})",
+    "outputs": "Saídas ({{count}})",
+    "feedPublishers": "Publicadores de Feed ({{count}})",
+    "lastUpdate": "Última atualização: {{time}}",
+    "waiting": "Aguardando Heartbeat...",
+    "startAriaLabel": "Iniciar estratégia {{name}}",
+    "stopAriaLabel": "Parar estratégia {{name}}",
+    "start": "Iniciar",
+    "stop": "Parar",
+    "starting": "Iniciando...",
+    "stopping": "Parando...",
+    "status": {
+      "starting": "iniciando",
+      "stopping": "parando",
+      "running": "em execução",
+      "stopped": "parado"
+    },
+    "health": {
+      "healthy": "Saudável — recebendo dados recentes",
+      "warning": "Alerta — dados desatualizados",
+      "error": "Erro — sem dados recentes",
+      "unknown": "Desconhecido — sem dados de Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "SAUDÁVEL",
+      "warning": "ALERTA",
+      "error": "ERRO"
+    }
+  },
+  "launchModal": {
+    "title": "Registrar processo de estratégia",
+    "emptyTemplates": "Nenhum template de estratégia registrado no backend. Defina pelo menos um processo de estratégia.",
+    "close": "Fechar",
+    "templateLabel": "Template de estratégia",
+    "templatePlaceholder": "Escolha o template...",
+    "templateFallbackDescription": "Estratégia registrada no backend",
+    "loadingDefaults": "Carregando defaults do template…",
+    "loadDefaultsError": "Não foi possível carregar defaults do template. Verifique os logs do backend.",
+    "processNameLabel": "Nome do processo",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Caracteres permitidos: letras minúsculas, números e underscores",
+    "instanceNameLabel": "Nome da instância da estratégia",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Usado na configuração da estratégia e nos tópicos de saída",
+    "executionModeLabel": "Modo de execução",
+    "executionModeThread": "Thread embutida",
+    "executionModeProcess": "Processo isolado",
+    "executionModeHelp": "Threads compartilham memória; processos oferecem isolamento mais forte.",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart na inicialização do servidor",
+    "startImmediatelyLabel": "Iniciar imediatamente após o registro",
+    "noteLabel": "Nota (opcional)",
+    "notePlaceholder": "Descreva o objetivo ou os parâmetros desta instância de estratégia.",
+    "noteHelp": "Armazenada junto à configuração para ajudar a identificar este processo.",
+    "cancel": "Cancelar",
+    "submit": "Registrar estratégia",
+    "submitting": "Registrando…"
+  }
+}

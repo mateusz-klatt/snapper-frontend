@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Controle de processos",
+    "subtitle": "Monitoramento e controle de processos em tempo real"
+  },
+  "sections": {
+    "longRunning": "Processos de longa duração",
+    "executorTemplates": "Templates de executores",
+    "executorTemplatesHint": "Editar a configuração do template afeta todas as carteiras nesta exchange após a reinicialização. Templates são apenas configuração — inicie abaixo a instância por carteira para executar um executor.",
+    "walletInstances": "Instâncias de carteira",
+    "taskProcesses": "Processos de tarefa"
+  },
+  "card": {
+    "stop": "Parar",
+    "start": "Iniciar",
+    "restart": "Reiniciar",
+    "starting": "Iniciando...",
+    "stopping": "Parando...",
+    "status": {
+      "running": "em execução",
+      "stopped": "parado",
+      "error": "erro",
+      "starting": "iniciando",
+      "stopping": "parando"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Modo:",
+    "parameters": "Parâmetros:",
+    "paramCount": "{{count}} parâmetro(s)",
+    "noParams": "nenhum parâmetro definido"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Parar {{name}}",
+    "stopMessage": "Isto irá parar o processo {{name}}.",
+    "restartTitle": "Reiniciar {{name}}",
+    "restartMessage": "Isto irá reiniciar o processo {{name}}."
+  },
+  "executionMode": {
+    "title": "Iniciar {{name}}",
+    "label": "Modo de execução:",
+    "threadName": "Modo thread",
+    "threadDescription": "Executa como tarefa embutida no servidor web. Inicialização mais rápida, memória compartilhada.",
+    "processName": "Modo processo",
+    "processDescription": "Executa como processo Python separado. Isolado, tolerante a falhas, com monitoramento detalhado.",
+    "cancel": "Cancelar",
+    "start": "Iniciar {{name}}",
+    "threadAriaLabel": "Modo thread",
+    "processAriaLabel": "Modo processo"
+  }
+}

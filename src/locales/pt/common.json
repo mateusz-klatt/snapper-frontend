@@ -1,0 +1,83 @@
+{
+  "loading": "Carregando...",
+  "error": "Erro",
+  "retry": "Tentar novamente",
+  "close": "Fechar",
+  "cancel": "Cancelar",
+  "confirm": "Confirmar",
+  "save": "Salvar",
+  "documentation": "Documentação (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Trocar idioma",
+    "flagAriaLabel": "Trocar para {{country}}",
+    "currentAriaLabel": "Idioma atual: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Console de trading",
+    "tagline": "Estação de precisão",
+    "openSidebar": "Abrir barra lateral",
+    "closeSidebar": "Fechar barra lateral",
+    "sidebar": "Barra lateral",
+    "mainNavigation": "Navegação principal",
+    "tradingContent": "Conteúdo de trading",
+    "skipToContent": "Pular para o conteúdo de trading",
+    "lag": "Latência:",
+    "lagTitle": "Latência de ida e volta até o servidor WebSocket",
+    "topics": "Tópicos:",
+    "topicsTitle": "Número de tópicos WebSocket assinados",
+    "connected": "Conectado",
+    "disconnected": "Desconectado",
+    "connectedTitle": "Conectado ao WebSocket",
+    "disconnectedTitle": "Desconectado do WebSocket",
+    "switchToLightMode": "Alternar para modo claro",
+    "switchToDarkMode": "Alternar para modo escuro",
+    "timeTravelBanner": "Modo Time Travel — visualizando dados históricos (somente leitura)",
+    "lagUnknown": "Desconhecida",
+    "walletPicker": {
+      "ariaLabel": "Carteira ativa",
+      "placeholder": "Carteira",
+      "allWallets": "Todas as carteiras",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operador ativo",
+      "placeholder": "Operador",
+      "allOperators": "Todos os operadores"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: selecione um ponto histórico no tempo",
+      "exitAriaLabel": "Sair do modo time travel",
+      "exitTitle": "Retornar ao modo live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrumento apenas para observação. O Snapper recebe dados de mercado, mas não pode enviar ordens para este par (símbolo, exchange).",
+      "ariaLabel": "Instrumento apenas com dados de mercado",
+      "badge": "Somente dados de mercado"
+    },
+    "liveOnly": {
+      "notice": "Esta aba mostra o estado atual — a visualização histórica não está disponível."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Algo deu errado",
+    "titleWithComponent": "Erro em {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Tentar novamente"
+  },
+  "nav": {
+    "overview": "Visão geral",
+    "market": "Dados de mercado",
+    "processes": "Processos",
+    "strategies": "Estratégias",
+    "orders": "Ordens e execuções",
+    "positions": "Posições",
+    "signals": "Sinais",
+    "backtests": "Backtests",
+    "health": "Saúde",
+    "admin": "Administração",
+    "aiIntegration": "Integração de IA",
+    "aiReviews": "Revisões de IA",
+    "settings": "Configurações"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrasjon",
+    "subtitle": "Administrer brukere og systemkonfigurasjon"
+  },
+  "rolePermissions": {
+    "title": "Rollerettigheter",
+    "viewer": {
+      "label": "Tilskuer",
+      "description": "Skrivebeskyttet tilgang til Oversikt og Markedsdata. Kan ikke administrere prosesser, strategier eller systeminnstillinger."
+    },
+    "operator": {
+      "label": "Operatør",
+      "description": "Alle Tilskuer-rettigheter pluss tradingoperasjoner, strategiutførelse, prosessadministrasjon og overvåking av systemhelse."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Full systemtilgang, inkludert brukeradministrasjon, systeminnstillinger, API-nøkkelkonfigurasjon og alle Operatør-rettigheter."
+    },
+    "table": {
+      "resource": "Ressurs",
+      "viewer": "Tilskuer",
+      "operator": "Operatør",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Oversikt",
+      "market": "Markedsdata",
+      "processes": "Prosesser",
+      "strategies": "Strategier",
+      "orders": "Ordre og utførelser",
+      "positions": "Posisjoner",
+      "signals": "Signaler",
+      "health": "Helse",
+      "admin": "Administrasjon",
+      "settings": "Innstillinger"
+    }
+  },
+  "common": {
+    "cancel": "Avbryt",
+    "selectWallet": "Velg lommebok",
+    "selectAWallet": "Velg en lommebok",
+    "chooseWalletPlaceholder": "Velg en lommebok...",
+    "selectWalletPlaceholder": "Velg lommebok...",
+    "walletLabel": "Lommebok",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Ukjent feil",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Ingen tilgang",
+      "message": "Rettighet til å administrere brukere mangler. Kontakt systemadministrator."
+    },
+    "list": {
+      "title": "Brukeradministrasjon",
+      "countLabel": "{{count}} brukere",
+      "showInactive": "Vis inaktive",
+      "hideInactive": "Skjul inaktive",
+      "addUser": "Legg til bruker",
+      "searchPlaceholder": "Søk etter brukernavn, e-post eller rolle...",
+      "columns": {
+        "user": "Bruker",
+        "role": "Rolle",
+        "status": "Status",
+        "createdAt": "Opprettet",
+        "actions": "Handlinger"
+      },
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+      },
+      "unknown": "Ukjent",
+      "empty": {
+        "title": "Ingen brukere funnet",
+        "noMatch": "Ingen brukere samsvarer med søket.",
+        "noUsers": "Ingen brukere funnet.",
+        "noActive": "Ingen aktive brukere funnet."
+      },
+      "errorLoading": "Feil ved lasting av brukere: {{message}}",
+      "deactivate": {
+        "title": "Deaktiver bruker",
+        "message": "Deaktiver brukeren \"{{username}}\"? Kontoen kan ikke lenger logge inn.",
+        "confirm": "Deaktiver"
+      },
+      "toast": {
+        "deactivated": "Brukeren er deaktivert",
+        "deactivateError": "Feil ved deaktivering av bruker"
+      }
+    },
+    "form": {
+      "titleEdit": "Rediger bruker",
+      "titleAdd": "Legg til bruker",
+      "fields": {
+        "username": "Brukernavn",
+        "usernamePlaceholder": "Skriv inn brukernavn",
+        "password": "Passord",
+        "passwordPlaceholder": "Skriv inn passord",
+        "newPassword": "Nytt passord",
+        "newPasswordPlaceholder": "Skriv inn nytt passord",
+        "email": "E-post",
+        "emailPlaceholder": "Skriv inn e-post",
+        "role": "Rolle",
+        "accountActive": "Konto aktiv",
+        "resetUserPassword": "Tilbakestill brukerpassord"
+      },
+      "roles": {
+        "viewer": "Tilskuer",
+        "operator": "Operatør",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Brukernavn er påkrevd",
+        "usernameMinLength": "Brukernavnet må være minst 3 tegn",
+        "emailRequired": "E-post er påkrevd",
+        "emailInvalid": "Ugyldig e-postformat",
+        "passwordRequired": "Passord er påkrevd",
+        "passwordMinLength": "Passordet må være minst 8 tegn",
+        "passwordRequiredWhenResetting": "Passord er påkrevd ved tilbakestilling"
+      },
+      "actions": {
+        "saveChanges": "Lagre endringer",
+        "createUser": "Opprett bruker"
+      },
+      "toast": {
+        "created": "Brukeren er opprettet",
+        "createError": "Feil ved oppretting av bruker",
+        "updated": "Brukeren er oppdatert",
+        "updateError": "Feil ved oppdatering av bruker",
+        "passwordReset": "Brukerpassordet er tilbakestilt",
+        "resetError": "Feil ved tilbakestilling av passord"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Ingen tilgang",
+      "message": "Rettighet til å administrere tilgangsomfang mangler. Kontakt systemadministrator."
+    },
+    "list": {
+      "title": "Tilgangsomfang",
+      "countLabel": "{{count}} tilgangsomfang",
+      "createGrant": "Tildel omfang",
+      "selectWalletPrompt": "Velg en lommebok ovenfor for å vise tilgangsomfang.",
+      "columns": {
+        "operator": "Operatør",
+        "scope": "Omfang",
+        "target": "Mål",
+        "grantedAt": "Tildelt",
+        "actions": "Handlinger"
+      },
+      "empty": {
+        "noGrants": "Ingen tilgangsomfang funnet",
+        "noGrantsHint": "Denne lommeboken har ingen aktive tilgangsomfang."
+      },
+      "errorLoading": "Feil ved lasting av tilgangsomfang: {{message}}",
+      "handover": "Overfør"
+    },
+    "form": {
+      "title": "Tildel omfang",
+      "fields": {
+        "operator": "Operatør",
+        "operatorPlaceholder": "Velg operatør...",
+        "wallet": "Lommebok",
+        "scopeKind": "Omfangstype",
+        "underlyingPublicId": "Underliggende public_id",
+        "instrumentPublicId": "Instrument-public_id",
+        "underlyingPlaceholder": "f.eks. BTC",
+        "instrumentPlaceholder": "f.eks. BTC-USD-PERP",
+        "note": "Notat (valgfritt)",
+        "notePlaceholder": "Valgfritt notat"
+      },
+      "scopeKinds": {
+        "underlying": "Underliggende",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operatør er påkrevd",
+        "walletRequired": "Lommebok er påkrevd",
+        "targetRequired": "Mål-ID er påkrevd"
+      },
+      "actions": {
+        "createGrant": "Tildel omfang"
+      },
+      "toast": {
+        "created": "Tilgangsomfang tildelt",
+        "conflictError": "Konflikt: en annen operatør har allerede tilgang til dette omfanget",
+        "createError": "Feil ved tildeling av tilgangsomfang"
+      }
+    },
+    "handover": {
+      "title": "Overfør tilgangsomfang",
+      "fields": {
+        "currentHolder": "Gjeldende innehaver",
+        "scope": "Omfang",
+        "wallet": "Lommebok",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Overfør til operatør",
+        "transferToPlaceholder": "Velg mottakende operatør...",
+        "reason": "Årsak (valgfritt)",
+        "reasonPlaceholder": "f.eks. Skiftbytte"
+      },
+      "actions": {
+        "handover": "Overfør"
+      },
+      "toast": {
+        "completed": "Tilgangsomfang overført",
+        "conflictError": "Konflikt: mottakende operatør har allerede et motstridende omfang",
+        "handoverError": "Feil ved overføring av tilgangsomfang"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Ingen tilgang",
+      "message": "Rettighet til å administrere lommeboklegitimasjon mangler. Kontakt systemadministrator."
+    },
+    "list": {
+      "title": "Lommeboklegitimasjon",
+      "countLabel": "{{count}} legitimasjoner",
+      "addCredential": "Legg til legitimasjon",
+      "selectWalletPrompt": "Velg en lommebok ovenfor for å vise legitimasjonen.",
+      "columns": {
+        "exchange": "Børs",
+        "type": "Type",
+        "label": "Etikett",
+        "createdAt": "Opprettet",
+        "actions": "Handlinger"
+      },
+      "empty": {
+        "noCredentials": "Ingen legitimasjon funnet",
+        "noCredentialsHint": "Denne lommeboken har ingen aktiv legitimasjon."
+      },
+      "errorLoading": "Feil ved lasting av legitimasjon: {{message}}",
+      "rotate": "Bytt ut"
+    },
+    "form": {
+      "title": "Legg til legitimasjon",
+      "fields": {
+        "wallet": "Lommebok",
+        "exchange": "Børs",
+        "exchangePlaceholder": "f.eks. kraken",
+        "credentialType": "Legitimasjonstype",
+        "label": "Etikett (valgfritt)",
+        "labelPlaceholder": "f.eks. Hovednøkkel for trading",
+        "pemPlaceholder": "Lim inn PEM-formatert privat nøkkel her"
+      },
+      "fieldLabels": {
+        "api_key": "API-nøkkel",
+        "api_secret": "API-hemmelighet",
+        "private_key_pem": "Privat nøkkel (PEM)",
+        "client_id": "Klient-ID",
+        "client_secret": "Klienthemmelighet",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Startsaldo"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-nøkkel + hemmelighet",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Lommebok er påkrevd",
+        "exchangeRequired": "Børs er påkrevd",
+        "fieldRequired": "{{field}} er påkrevd"
+      },
+      "actions": {
+        "addCredential": "Legg til legitimasjon"
+      },
+      "toast": {
+        "created": "Legitimasjon opprettet",
+        "conflictError": "Konflikt: denne lommeboken har allerede aktiv legitimasjon for denne børsen",
+        "createError": "Feil ved oppretting av legitimasjon"
+      }
+    },
+    "rotate": {
+      "title": "Bytt ut legitimasjon",
+      "fields": {
+        "exchange": "Børs",
+        "type": "Type",
+        "label": "Etikett",
+        "newLabel": "Ny etikett (valgfritt)",
+        "newLabelPlaceholder": "f.eks. Ny nøkkel 2026-04",
+        "pemPlaceholder": "Lim inn PEM-formatert privat nøkkel her"
+      },
+      "actions": {
+        "rotate": "Bytt ut"
+      },
+      "toast": {
+        "rotated": "Legitimasjon byttet ut",
+        "rotateError": "Feil ved bytte av legitimasjon"
+      }
+    }
+  }
+}

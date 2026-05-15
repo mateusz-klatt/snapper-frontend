@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Toimeksiannot ja toteutukset",
+    "newOrder": "Uusi toimeksianto",
+    "exportCsv": "Vie CSV"
+  },
+  "tabs": {
+    "orders": "Toimeksiannot ({{total}})",
+    "executions": "Toteutukset ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Suodata tilan mukaan:",
+    "options": {
+      "all": "Kaikki toimeksiannot",
+      "new": "Uusi",
+      "open": "Avoin",
+      "partiallyFilled": "Osittain toteutunut",
+      "partially_filled": "Osittain toteutunut",
+      "filled": "Toteutunut",
+      "cancelled": "Peruttu",
+      "rejected": "Hylätty"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "Ei saatavilla",
+    "priceMarket": "Markkina",
+    "quantity": "Määrä",
+    "price": "Hinta",
+    "created": "Luotu",
+    "createdUnknown": "Ei saatavilla",
+    "orderId": "Toimeksiannon ID",
+    "leverage": "Vipuvaikutus",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "VAIN PIENENNYS",
+    "cancel": "Peruuta",
+    "cancelling": "Perutaan…",
+    "cancelAriaLabel": "Peruuta toimeksianto {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Toimeksianto #{{orderId}}",
+    "filled": "TOTEUTUNUT",
+    "orderLabel": "Toimeksianto {{orderId}}",
+    "size": "Koko",
+    "price": "Hinta",
+    "total": "Yhteensä",
+    "executed": "Toteutettu",
+    "fees": "Kulut"
+  },
+  "empty": {
+    "ordersTitle": "Toimeksiantoja ei löytynyt",
+    "ordersStartTrading": "Aloita trading nähdäksesi toimeksiannot täällä",
+    "ordersFilterless": "Ei toimeksiantoja tilalla {{status}}",
+    "executionsTitle": "Toteutuksia ei löytynyt",
+    "executionsMessage": "Treidien toteutukset näkyvät täällä"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrumentti",
+      "side": "Suunta",
+      "type": "Tyyppi",
+      "status": "Tila",
+      "quantity": "Määrä",
+      "price": "Hinta",
+      "leverage": "Vipuvaikutus",
+      "reduceOnly": "Vain pienennys",
+      "created": "Luotu"
+    },
+    "executions": {
+      "orderId": "Toimeksiannon ID",
+      "instrument": "Instrumentti",
+      "side": "Suunta",
+      "size": "Koko",
+      "price": "Hinta",
+      "total": "Yhteensä",
+      "fee": "Kulu",
+      "feeAsset": "Kulun valuutta",
+      "executed": "Toteutettu"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Uusi manuaalinen toimeksianto",
+    "titleConfirm": "Vahvista toimeksianto",
+    "fields": {
+      "exchange": "Pörssi",
+      "instrument": "Instrumentti",
+      "side": "Suunta",
+      "orderType": "Toimeksiannon tyyppi",
+      "quantity": "Määrä",
+      "price": "Hinta",
+      "stopPrice": "Stop-hinta",
+      "mode": "Tila",
+      "wallet": "Lompakko",
+      "type": "Tyyppi"
+    },
+    "sideOptions": {
+      "buy": "Osto",
+      "sell": "Myynti"
+    },
+    "orderTypeOptions": {
+      "market": "Markkina",
+      "limit": "Limit-toimeksianto",
+      "stop": "Stop-toimeksianto",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — vain markkinatiedot",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Peruuta",
+      "reviewOrder": "Tarkista toimeksianto",
+      "back": "Takaisin",
+      "confirmOrder": "Vahvista toimeksianto",
+      "submitting": "Lähetetään..."
+    },
+    "errors": {
+      "missingRequired": "Kaikki pakolliset kentät on täytettävä",
+      "quantityPositive": "Määrän on oltava positiivinen luku",
+      "priceRequired": "Hinta vaaditaan tälle toimeksiantotyypille",
+      "pricePositive": "Hinnan on oltava positiivinen luku",
+      "stopPriceRequired": "Stop-hinta vaaditaan tälle toimeksiantotyypille",
+      "stopPricePositive": "Stop-hinnan on oltava positiivinen luku",
+      "createFailed": "Toimeksiannon luonti epäonnistui"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Tämä instrumentti on vain havainnointiin — tee toimeksianto toteutuksia tukevalla instrumentilla.",
+      "unknownInstrument": "Tätä instrumenttia ei tunnisteta. Lataa lista uudelleen ja yritä uudestaan.",
+      "capsViolation": "Tämä toimeksianto ylittäisi tilisi turvarajat. Tarkista riskiasetukset ja yritä uudestaan."
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signaler"
+  },
+  "filters": {
+    "allStrategies": "Alle strategier"
+  },
+  "actions": {
+    "export": "Eksporter"
+  },
+  "stats": {
+    "total": "Totalt",
+    "buy": "Kjøp",
+    "sell": "Salg",
+    "avgStrength": "Snittstyrke"
+  },
+  "card": {
+    "strength": "Styrke",
+    "price": "Pris",
+    "exchange": "Børs",
+    "reason": "Årsak:",
+    "noPrice": "I/T"
+  },
+  "strength": {
+    "strong": "Sterk",
+    "medium": "Middels",
+    "weak": "Svak",
+    "veryWeak": "Svært svak"
+  },
+  "time": {
+    "justNow": "Akkurat nå",
+    "minutesAgo": "{{count}} min siden",
+    "hoursAgo": "{{count}}t siden"
+  },
+  "empty": {
+    "title": "Ingen signaler funnet",
+    "message": "Ingen trading-signaler samsvarer med gjeldende filtre."
+  }
+}

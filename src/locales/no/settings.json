@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Innstillinger",
+    "subtitle": "Konfigurer applikasjonsinnstillinger og parametere",
+    "addButton": "Legg til innstilling",
+    "searchPlaceholder": "Søk i innstillinger...",
+    "noResults": "Ingen innstillinger samsvarer med kriteriene.",
+    "allCategories": "Alle kategorier",
+    "categoryFilterAriaLabel": "Filtrer innstillinger etter kategori"
+  },
+  "errors": {
+    "loadFailed": "Kunne ikke laste innstillinger",
+    "updateFailed": "Kunne ikke oppdatere innstilling",
+    "deleteFailed": "Kunne ikke slette innstilling",
+    "createFailed": "Kunne ikke opprette innstilling",
+    "alreadyExists": "Innstilling med nøkkel \"{{key}}\" finnes allerede"
+  },
+  "item": {
+    "edit": "Rediger",
+    "delete": "Slett",
+    "save": "Lagre",
+    "saving": "Lagrer...",
+    "cancel": "Avbryt",
+    "yesDelete": "Ja, slett",
+    "deleting": "Sletter...",
+    "deleteConfirm": "Slette denne innstillingen?",
+    "valuePlaceholder": "Skriv inn innstillingsverdi...",
+    "showMore": "Vis mer",
+    "showLess": "Vis mindre",
+    "toggleAriaLabel": "Veksle {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensitiv"
+    },
+    "helpText": {
+      "allowShortSelling": "Tillat motoren å åpne short-posisjoner. SELL-signaler gir negative desired_units; begrenses til 0 når deaktivert.",
+      "allowManualOrders": "Aktiver knappen Ny ordre i Ordre-fanen. Når deaktivert returnerer POST /api/orders 403."
+    }
+  },
+  "addModal": {
+    "title": "Legg til ny innstilling",
+    "keyLabel": "Nøkkel",
+    "valueLabel": "Verdi",
+    "categoryLabel": "Kategori",
+    "descriptionLabel": "Beskrivelse",
+    "keyPlaceholder": "f.eks. walutomat.api_key",
+    "keyHint": "Bruk punktnotasjon for nestede innstillinger (f.eks. kategori.underkategori.navn)",
+    "valuePlaceholder": "Innstillingsverdi",
+    "categorySelectPlaceholder": "Velg eksisterende eller opprett ny",
+    "newCategoryPlaceholder": "Eller skriv inn nytt kategorinavn",
+    "descriptionPlaceholder": "Valgfri beskrivelse",
+    "cancel": "Avbryt",
+    "create": "Opprett innstilling",
+    "creating": "Oppretter...",
+    "validation": {
+      "keyRequired": "Nøkkel er påkrevd",
+      "valueRequired": "Verdi er påkrevd",
+      "categoryRequired": "Kategori er påkrevd"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Skjemaeditor",
+    "rawEditor": "Rå JSON-editor",
+    "rawJson": "Rå JSON",
+    "switchToForm": "Bytt til skjema",
+    "importToForm": "Importer til skjema",
+    "parseError": "Tolkningsfeil: {{message}}",
+    "arraySummary": "Array ({{length}} elementer)",
+    "addItem": "Legg til element",
+    "remove": "Fjern",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

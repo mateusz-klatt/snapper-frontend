@@ -1,0 +1,83 @@
+{
+  "loading": "Ladataan...",
+  "error": "Virhe",
+  "retry": "Yritä uudelleen",
+  "close": "Sulje",
+  "cancel": "Peruuta",
+  "confirm": "Vahvista",
+  "save": "Tallenna",
+  "documentation": "Dokumentaatio (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Vaihda kieli",
+    "flagAriaLabel": "Vaihda kieleen {{country}}",
+    "currentAriaLabel": "Nykyinen kieli: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Trading-konsoli",
+    "tagline": "Tarkkuustyöasema",
+    "openSidebar": "Avaa sivupalkki",
+    "closeSidebar": "Sulje sivupalkki",
+    "sidebar": "Sivupalkki",
+    "mainNavigation": "Päänavigaatio",
+    "tradingContent": "Trading-sisältö",
+    "skipToContent": "Siirry trading-sisältöön",
+    "lag": "Viive:",
+    "lagTitle": "Edestakainen viive WebSocket-palvelimeen",
+    "topics": "Topicit:",
+    "topicsTitle": "Tilattujen WebSocket-topicien määrä",
+    "connected": "Yhdistetty",
+    "disconnected": "Yhteys katkaistu",
+    "connectedTitle": "Yhdistetty WebSocketiin",
+    "disconnectedTitle": "WebSocket-yhteys katkaistu",
+    "switchToLightMode": "Vaihda vaaleaan tilaan",
+    "switchToDarkMode": "Vaihda tummaan tilaan",
+    "timeTravelBanner": "Time Travel -tila — näytetään historiallista dataa (vain luku)",
+    "lagUnknown": "Tuntematon",
+    "walletPicker": {
+      "ariaLabel": "Aktiivinen lompakko",
+      "placeholder": "Lompakko",
+      "allWallets": "Kaikki lompakot",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktiivinen operaattori",
+      "placeholder": "Operaattori",
+      "allOperators": "Kaikki operaattorit"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: valitse historiallinen ajanhetki",
+      "exitAriaLabel": "Poistu time travel -tilasta",
+      "exitTitle": "Palaa live-tilaan"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Vain havainnointiin tarkoitettu instrumentti. Snapper vastaanottaa markkinatietoja, mutta ei voi tehdä toimeksiantoja tälle (symboli, pörssi) -parille.",
+      "ariaLabel": "Vain markkinatietoinstrumentti",
+      "badge": "Vain markkinatiedot"
+    },
+    "liveOnly": {
+      "notice": "Tämä välilehti näyttää nykytilan — historiallinen näkymä ei ole käytettävissä."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Jokin meni pieleen",
+    "titleWithComponent": "Virhe komponentissa {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Yritä uudelleen"
+  },
+  "nav": {
+    "overview": "Yleisnäkymä",
+    "market": "Markkinatiedot",
+    "processes": "Prosessit",
+    "strategies": "Strategiat",
+    "orders": "Toimeksiannot ja toteutukset",
+    "positions": "Positiot",
+    "signals": "Signaalit",
+    "backtests": "Backtestit",
+    "health": "Tila",
+    "admin": "Hallinta",
+    "aiIntegration": "AI-integraatio",
+    "aiReviews": "AI-tarkistukset",
+    "settings": "Asetukset"
+  }
+}

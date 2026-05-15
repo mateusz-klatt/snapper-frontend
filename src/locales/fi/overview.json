@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Yleisnäkymä"
+  },
+  "metrics": {
+    "feedsRunning": "Feed-t käynnissä",
+    "strategiesActive": "Strategiat aktiivisina",
+    "openOrders": "Avoimet toimeksiannot",
+    "todaysExecutions": "Tämän päivän toteutukset",
+    "executionsOn": "Toteutukset ({{date}})"
+  },
+  "status": {
+    "stopped": "Pysäytetty",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Käynnissä",
+    "active": "Aktiivinen"
+  },
+  "processStatus": {
+    "title": "Prosessien tila",
+    "feeds": "Feed-t",
+    "strategies": "Strategiat",
+    "executors": "Executorit",
+    "brokers": "Brokerit"
+  },
+  "portfolio": {
+    "title": "Salkun yhteenveto",
+    "totalValue": "Kokonaisarvo",
+    "longExposure": "Long-altistus",
+    "shortExposure": "Short-altistus",
+    "netDelta": "Nettodelta",
+    "unrealizedPnl": "Realisoitumaton P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Positiot",
+    "instrumentsCount": "Instrumentit: {{count}}",
+    "empty": "Positiodataa ei ole saatavilla"
+  },
+  "signals": {
+    "title": "Viimeaikaiset signaalit",
+    "empty": "Ei viimeaikaisia signaaleja",
+    "noTime": "Ei saatavilla"
+  },
+  "executions": {
+    "title": "Viimeaikaiset toteutukset",
+    "empty": "Ei viimeaikaisia toteutuksia",
+    "noTime": "Ei saatavilla"
+  }
+}

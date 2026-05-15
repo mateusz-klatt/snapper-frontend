@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Voltar",
+    "backToList": "← Voltar aos backtests"
+  },
+  "status": {
+    "pending": "Pendente",
+    "running": "Em execução",
+    "completed": "Concluído",
+    "failed": "Falhou",
+    "cancelled": "Cancelado"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Cancelar",
+      "rerun": "Executar novamente"
+    },
+    "fields": {
+      "timeframe": "Timeframe",
+      "period": "Período",
+      "initialCash": "Capital inicial",
+      "id": "ID"
+    },
+    "errorPrefix": "Erro: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrar backtests por status",
+      "options": {
+        "all": "Todos os status",
+        "pending": "Pendente",
+        "running": "Em execução",
+        "completed": "Concluído",
+        "failed": "Falhou",
+        "cancelled": "Cancelado"
+      }
+    },
+    "empty": {
+      "title": "Nenhum backtest",
+      "message": "Execute um backtest via CLI ou API para ver os resultados aqui."
+    }
+  },
+  "detail": {
+    "title": "Execução de backtest",
+    "fields": {
+      "strategy": "Estratégia",
+      "instrument": "Instrumento",
+      "status": "Status",
+      "period": "Período",
+      "crossAsset": "Atribuição cross-asset",
+      "configHash": "Hash de configuração"
+    },
+    "crossAssetFlow": "feed {{source}} → execuções {{target}}",
+    "errors": {
+      "invalidRunId": "ID de execução inválido — deve ser um UUID7 (recebido \"{{id}}\").",
+      "loadFailed": "Falha ao carregar execução: {{message}}",
+      "notFound": "não encontrado"
+    }
+  },
+  "compare": {
+    "title": "Comparar",
+    "headingFull": "Comparação de backtests",
+    "loading": "Carregando comparação…",
+    "vs": "vs",
+    "runLabel": "Execução {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Métricas",
+      "equityOverlay": "Sobreposição de equity",
+      "trades": "Trades",
+      "signals": "Sinais"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Comparação não encontrada na carteira atual.",
+      "loadFailed": "Falha ao carregar comparação: {{message}}",
+      "unknown": "erro desconhecido",
+      "emptyResponse": "Resposta de comparação vazia."
+    },
+    "launcher": {
+      "title": "Comparar",
+      "submit": "Comparar",
+      "autoPair": "Comparar com o mais recente",
+      "terminalGate": "comparação disponível quando esta execução atingir um status terminal",
+      "noSiblings": "nenhuma outra execução com esta configuração",
+      "limitNotice": "mostrando {{count}} mais recentes — use pareamento manual para execuções mais antigas",
+      "pickPlaceholder": "— escolha uma execução para comparar —",
+      "showAllLabel": "Mostrar todas as execuções (não apenas a mesma configuração)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "todas as execuções",
+        "sameConfig": "mesma configuração"
+      },
+      "errors": {
+        "pickRequired": "selecione uma execução da lista"
+      }
+    },
+    "diffColumns": {
+      "common": "Comum",
+      "onlyA": "Somente em A",
+      "onlyB": "Somente em B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Sem métricas comparáveis — nenhuma das execuções registrou valores.",
+      "columns": {
+        "name": "Métrica",
+        "runA": "Execução A",
+        "runB": "Execução B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Execução A",
+        "runB": "Execução B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Aguardando progresso…",
+    "candles": "{{done}} / {{total}} candles",
+    "candlesNoTotal": "{{done}} candles",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sinais / {{trades}} trades",
+    "milestoneLine": "marco {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

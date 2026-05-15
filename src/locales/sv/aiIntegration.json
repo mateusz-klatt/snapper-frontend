@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI-integration",
+    "subtitle": "Hantera AI-delegater som ansluter till Snapper via MCP.",
+    "loading": "Laddar AI-integration…",
+    "createDelegate": "Skapa delegat"
+  },
+  "disabled": {
+    "title": "AI-integration är inaktiverad",
+    "message": "Aktivera feature flag i Inställningar → Feature Flags för att hantera AI-delegater."
+  },
+  "list": {
+    "loadingDelegates": "Laddar delegater…",
+    "emptyTitle": "Inga AI-delegater än",
+    "emptyMessage": "Klicka på “Skapa delegat” för att skapa en och generera dess MCP-konfigurationsutdrag.",
+    "columns": {
+      "label": "Etikett",
+      "username": "Användarnamn",
+      "created": "Skapad",
+      "maxOpenOrders": "Max öppna ordrar",
+      "maxDailyUsd": "Max dagligt USD",
+      "status": "Status",
+      "actions": "Åtgärder"
+    },
+    "status": {
+      "active": "Aktiv",
+      "revoked": "Återkallad"
+    },
+    "default": "standard",
+    "details": "Detaljer",
+    "viewAriaLabel": "Visa delegat {{label}}"
+  },
+  "wizard": {
+    "title": "Skapa AI-delegat",
+    "step1": "1. Identitet",
+    "step2": "2. Omfång och limiter",
+    "step3": "3. Granska",
+    "stepDone": "✓ Klar",
+    "identity": {
+      "labelField": "Etikett",
+      "labelPlaceholder": "t.ex. Alpha prop desk",
+      "labelHelpPrefix": "Delegatens användarnamn härleds på serversidan som ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Omfång",
+      "operatorLabel": "Operatör public_id (valfritt)",
+      "operatorPlaceholder": "Lämna tomt för att ärva anroparens primära operatör"
+    },
+    "caps": {
+      "heading": "Tradinglimiter (alla valfria)",
+      "maxOpenOrders": "Max öppna ordrar",
+      "maxDailyNotionalUsd": "Max dagligt nominellt USD-värde",
+      "maxCancelsPerMinute": "Max makuleringar per minut",
+      "perInstrument": "Max kvantitet per instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "standard",
+      "errorInvalidJson": "max_order_quantity_per_instrument måste vara giltig JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument måste vara ett JSON-objekt eller tomt",
+      "errorNegative": "Limiter måste vara icke-negativa heltal eller tomma."
+    },
+    "review": {
+      "heading": "Granska och skapa",
+      "rowLabel": "Etikett",
+      "rowOperator": "Operatör public_id",
+      "rowMaxOpenOrders": "Max öppna ordrar",
+      "rowMaxDailyNotional": "Max dagligt nominellt USD-värde",
+      "rowMaxCancelsPerMinute": "Max makuleringar per minut",
+      "rowPerInstrument": "Max kvantitet per instrument",
+      "operatorDefault": "(anroparens primära operatör)",
+      "defaultValue": "(standard)"
+    },
+    "buttons": {
+      "cancel": "Avbryt",
+      "next": "Nästa",
+      "back": "Tillbaka",
+      "createDelegate": "Skapa delegat",
+      "iSavedClose": "Referenserna är sparade — stäng"
+    },
+    "toast": {
+      "delegateCreated": "Delegat skapad",
+      "failedToCreate": "Det gick inte att skapa delegat"
+    }
+  },
+  "detail": {
+    "loading": "Laddar delegat…",
+    "notFound": "Delegaten hittades inte eller är inte tillgänglig.",
+    "back": "Tillbaka",
+    "backToList": "Tillbaka till listan",
+    "updateCaps": "Uppdatera limiter",
+    "revoke": "Återkalla",
+    "save": "Spara",
+    "cancel": "Avbryt",
+    "tradingCaps": "Tradinglimiter",
+    "status": "Status",
+    "active": "Aktiv",
+    "revoked": "Återkallad",
+    "createdAt": "Skapad",
+    "createdBy": "Skapad av (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Max öppna ordrar",
+    "maxDailyNotionalUsd": "Max dagligt nominellt USD-värde",
+    "maxCancelsPerMinute": "Max makuleringar per minut",
+    "perInstrument": "Max kvantitet per instrument",
+    "defaultValue": "(standard)",
+    "editorPlaceholder": "(standard)",
+    "toast": {
+      "capsUpdated": "Limiter uppdaterade",
+      "failedToUpdateCaps": "Det gick inte att uppdatera limiter",
+      "negativeIntegersError": "Limiter måste vara icke-negativa heltal eller tomma."
+    }
+  },
+  "revokeDialog": {
+    "title": "Återkalla delegat \"{{label}}\"?",
+    "message": "Detta återkallar delegatens tokens och stoppar dess MCP-prenumerationer. Åtgärden kan inte ångras.",
+    "confirm": "Återkalla",
+    "cancel": "Avbryt",
+    "toast": {
+      "delegateRevoked": "Delegat återkallad",
+      "failedToRevoke": "Det gick inte att återkalla delegat"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Spara dessa referenser nu",
+    "warningMessage": "De visas inte igen. Snapper lagrar inte råa tokenvärden; när guiden stängs finns den enda kopian i MCP-klientens konfiguration.",
+    "snippetHelp": "Långlivad AI-delegattoken (~10 år). Samma token autentiserar både proxy-MCP-servern och watch monitor. För att byta token, inaktivera delegaten och skapa en ny.",
+    "baseUrlHelpPrefix": "Bas-URL härleds från den här webbläsarens origin + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopiera konfigurationsutdrag till urklipp",
+    "copy": "Kopiera till urklipp",
+    "copied": "Kopierat"
+  }
+}

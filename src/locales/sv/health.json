@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Systemhälsa",
+    "healthMetricsHeading": "Hälsomätvärden",
+    "processStatusHeading": "Processtatus",
+    "activeBacktestsHeading": "Aktiva backtester",
+    "quickActionsHeading": "Snabbåtgärder",
+    "featureNotImplemented": "Funktionen är inte implementerad än",
+    "restartServices": "Starta om tjänster",
+    "runHealthCheck": "Kör hälsokontroll",
+    "viewLogs": "Visa loggar",
+    "exportReport": "Exportera rapport"
+  },
+  "status": {
+    "healthy": "Frisk",
+    "stopped": "Stoppad",
+    "error": "Fel",
+    "warning": "Varning",
+    "completed": "Slutförd",
+    "unknown": "Okänd"
+  },
+  "metrics": {
+    "tradingEngine": "Tradingmotor",
+    "tradingEngineDescription": "Motor för strategiutförande",
+    "activeBacktests": "Aktiva backtester",
+    "activeBacktestsDescription": "Körande backtestprocesser",
+    "active": "Aktiv",
+    "inactive": "Inaktiv"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Drifttid",
+    "exitCode": "Exitkod: {{code}}",
+    "service": "tjänst",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Databasstatistik",
+    "loading": "Laddar databasstatistik…",
+    "unavailable": "Databasstatistik inte tillgänglig: {{message}}",
+    "fallbackError": "Det gick inte att ladda databasstatistik.",
+    "sampled": "mätt {{age}}",
+    "samplerSummary": "Samplingsintervall: {{seconds}}s · {{count}} tabeller",
+    "columns": {
+      "table": "Tabell",
+      "kind": "Typ",
+      "total": "Totalt",
+      "current": "Aktuella",
+      "closed": "Stängda",
+      "archivable": "Arkiverbara",
+      "status": "Status"
+    },
+    "stale": "inaktuell"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Laddar notifieringsmätvärden…",
+    "unavailable": "Notifieringsmätvärden inte tillgängliga: {{message}}",
+    "fallbackError": "Det gick inte att ladda notifieringsmätvärden.",
+    "sent": "Skickade",
+    "sentDescription": "Terminal: skickad",
+    "failed": "Misslyckade",
+    "failedDescription": "Retry-budget förbrukad",
+    "unregistered": "Oregistrerade",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Avbruten (omfång)",
+    "cancelledScopeDescription": "Återkallat omfång / användare inaktiverad",
+    "outboxDepth": "Outbox-djup",
+    "outboxDepthDescription": "Köade, väntar på retry"
+  },
+  "retention": {
+    "title": "Retentionsschemaläggare",
+    "loading": "Laddar retentionskörning…",
+    "unavailable": "Retentionskörning inte tillgänglig: {{message}}",
+    "fallbackError": "Det gick inte att ladda retentionskörning.",
+    "lastRun": "senaste körning {{age}}",
+    "dryRunNotice": "Dry-run-läge: rader arkiveras men rensas inte från DB.",
+    "columns": {
+      "table": "Tabell",
+      "retain": "Behåll",
+      "archivedWindow": "Arkiverat fönster",
+      "archived": "Arkiverade",
+      "purged": "Rensade",
+      "files": "Filer",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "fel"
+  },
+  "systemMetrics": {
+    "title": "Processhälsa",
+    "loading": "Laddar processmätvärden…",
+    "unavailable": "Processmätvärden inte tillgängliga: {{message}}",
+    "fallbackError": "Det gick inte att ladda processhälsomätvärden.",
+    "rawJson": "Rå JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Drifttid",
+    "threads": "Trådar",
+    "openFds": "Öppna FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Strypningar {{count}}×",
+    "memory": "Minne",
+    "saturation": "Mättnad {{percent}}",
+    "asyncioTasks": "Asyncio-uppgifter",
+    "asyncioActive": "{{count}} aktiva",
+    "asyncioPending": "+ {{count}} väntande",
+    "dbPool": "DB-pool",
+    "liveConns": "Live-ansl.: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objekt: {{value}}",
+    "threadsPercent": "Trådar %",
+    "networkConns": "Nätverksanslutningar",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktiv",
+    "tracemallocIdle": "Inaktiv"
+  },
+  "relativeAge": {
+    "justNow": "just nu",
+    "seconds": "{{seconds}}s sedan",
+    "minutes": "{{minutes}} min sedan",
+    "hours": "{{hours}}h sedan",
+    "days": "{{days}}d sedan"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

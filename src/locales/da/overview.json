@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Overblik"
+  },
+  "metrics": {
+    "feedsRunning": "Kørende feeds",
+    "strategiesActive": "Aktive strategier",
+    "openOrders": "Åbne ordrer",
+    "todaysExecutions": "Dagens udførsler",
+    "executionsOn": "Udførsler ({{date}})"
+  },
+  "status": {
+    "stopped": "Stoppet",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Kører",
+    "active": "Aktiv"
+  },
+  "processStatus": {
+    "title": "Processtatus",
+    "feeds": "Feeds",
+    "strategies": "Strategier",
+    "executors": "Executors",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "Porteføljeoversigt",
+    "totalValue": "Samlet værdi",
+    "longExposure": "Long-eksponering",
+    "shortExposure": "Short-eksponering",
+    "netDelta": "Netto delta",
+    "unrealizedPnl": "Urealiseret P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Positioner",
+    "instrumentsCount": "{{count}} instrumenter",
+    "empty": "Ingen positionsdata tilgængelige"
+  },
+  "signals": {
+    "title": "Seneste signaler",
+    "empty": "Ingen seneste signaler",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Seneste udførsler",
+    "empty": "Ingen seneste udførsler",
+    "noTime": "N/A"
+  }
+}

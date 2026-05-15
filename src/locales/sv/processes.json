@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Processkontroll",
+    "subtitle": "Realtidsövervakning och kontroll av processer"
+  },
+  "sections": {
+    "longRunning": "Långkörande processer",
+    "executorTemplates": "Exekverarmallar",
+    "executorTemplatesHint": "Ändring av mallkonfiguration påverkar alla plånböcker på denna börs efter omstart. Mallar är endast konfiguration — starta plånboksinstansen nedan för att köra en exekverare.",
+    "walletInstances": "Plånboksinstanser",
+    "taskProcesses": "Uppgiftsprocesser"
+  },
+  "card": {
+    "stop": "Stoppa",
+    "start": "Starta",
+    "restart": "Starta om",
+    "starting": "Startar...",
+    "stopping": "Stoppar...",
+    "status": {
+      "running": "körs",
+      "stopped": "stoppad",
+      "error": "fel",
+      "starting": "startar",
+      "stopping": "stoppar"
+    }
+  },
+  "template": {
+    "badge": "mall",
+    "mode": "Läge:",
+    "parameters": "Parametrar:",
+    "paramCount": "{{count}} parameter/parametrar",
+    "noParams": "inga parametrar angivna"
+  },
+  "badges": {
+    "oneShot": "engångs",
+    "autoStart": "autostart",
+    "manual": "manuell"
+  },
+  "actions": {
+    "stopTitle": "Stoppa {{name}}",
+    "stopMessage": "Detta stoppar processen {{name}}.",
+    "restartTitle": "Starta om {{name}}",
+    "restartMessage": "Detta startar om processen {{name}}."
+  },
+  "executionMode": {
+    "title": "Starta {{name}}",
+    "label": "Körläge:",
+    "threadName": "Trådläge",
+    "threadDescription": "Körs som inbäddad uppgift i webbservern. Snabbare start, delat minne.",
+    "processName": "Processläge",
+    "processDescription": "Körs som separat Python-process. Isolerad, feltolerant, detaljerad övervakning.",
+    "cancel": "Avbryt",
+    "start": "Starta {{name}}",
+    "threadAriaLabel": "Trådläge",
+    "processAriaLabel": "Processläge"
+  }
+}

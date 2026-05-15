@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Tilbage",
+    "backToList": "← Tilbage til backtests"
+  },
+  "status": {
+    "pending": "Afventer",
+    "running": "Kører",
+    "completed": "Fuldført",
+    "failed": "Mislykket",
+    "cancelled": "Annulleret"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Annuller",
+      "rerun": "Kør igen"
+    },
+    "fields": {
+      "timeframe": "Tidsramme",
+      "period": "Periode",
+      "initialCash": "Startkapital",
+      "id": "ID"
+    },
+    "errorPrefix": "Fejl: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtrer backtests efter status",
+      "options": {
+        "all": "Alle statusser",
+        "pending": "Afventer",
+        "running": "Kører",
+        "completed": "Fuldført",
+        "failed": "Mislykket",
+        "cancelled": "Annulleret"
+      }
+    },
+    "empty": {
+      "title": "Ingen backtests",
+      "message": "Kør en backtest via CLI eller API for at se resultater her."
+    }
+  },
+  "detail": {
+    "title": "Backtest-kørsel",
+    "fields": {
+      "strategy": "Strategi",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Periode",
+      "crossAsset": "Cross-asset-attribution",
+      "configHash": "Config-hash"
+    },
+    "crossAssetFlow": "{{source}} feed → {{target}} udførsler",
+    "errors": {
+      "invalidRunId": "Ugyldigt run id — skal være en UUID7 (fik \"{{id}}\").",
+      "loadFailed": "Kunne ikke indlæse kørsel: {{message}}",
+      "notFound": "ikke fundet"
+    }
+  },
+  "compare": {
+    "title": "Sammenlign",
+    "headingFull": "Backtest-sammenligning",
+    "loading": "Indlæser sammenligning…",
+    "vs": "mod",
+    "runLabel": "Kørsel {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrikker",
+      "equityOverlay": "Equity-overlay",
+      "trades": "Handler",
+      "signals": "Signaler"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manuel"
+    },
+    "errors": {
+      "notFound": "Sammenligning ikke fundet i aktuel wallet.",
+      "loadFailed": "Kunne ikke indlæse sammenligning: {{message}}",
+      "unknown": "ukendt fejl",
+      "emptyResponse": "Tomt sammenligningssvar."
+    },
+    "launcher": {
+      "title": "Sammenlign",
+      "submit": "Sammenlign",
+      "autoPair": "Sammenlign med seneste",
+      "terminalGate": "sammenligning er tilgængelig, når denne kørsel når terminal status",
+      "noSiblings": "ingen andre kørsler med denne config",
+      "limitNotice": "viser {{count}} seneste — brug manuel parring for ældre kørsler",
+      "pickPlaceholder": "— vælg en kørsel at sammenligne —",
+      "showAllLabel": "Vis alle kørsler (ikke kun samme config)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "alle kørsler",
+        "sameConfig": "samme config"
+      },
+      "errors": {
+        "pickRequired": "vælg en kørsel fra listen"
+      }
+    },
+    "diffColumns": {
+      "common": "Fælles",
+      "onlyA": "Kun i A",
+      "onlyB": "Kun i B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Ingen sammenlignelige metrikker — begge kørsler havde ingen registrerede værdier.",
+      "columns": {
+        "name": "Metrik",
+        "runA": "Kørsel A",
+        "runB": "Kørsel B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Kørsel A",
+        "runB": "Kørsel B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Afventer fremdrift…",
+    "candles": "{{done}} / {{total}} candles",
+    "candlesNoTotal": "{{done}} candles",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} handler",
+    "milestoneLine": "milepæl {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}
