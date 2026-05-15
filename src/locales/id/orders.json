@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Pesanan & Eksekusi",
+    "newOrder": "Pesanan Baru",
+    "exportCsv": "Ekspor CSV"
+  },
+  "tabs": {
+    "orders": "Pesanan ({{total}})",
+    "executions": "Eksekusi ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filter berdasarkan status:",
+    "options": {
+      "all": "Semua Pesanan",
+      "new": "Baru",
+      "open": "Terbuka",
+      "partiallyFilled": "Terisi Sebagian",
+      "partially_filled": "Terisi Sebagian",
+      "filled": "Terisi",
+      "cancelled": "Dibatalkan",
+      "rejected": "Ditolak"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Kuantitas",
+    "price": "Harga",
+    "created": "Dibuat",
+    "createdUnknown": "N/A",
+    "orderId": "ID Pesanan",
+    "leverage": "Leverage",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Batalkan",
+    "cancelling": "Membatalkan…",
+    "cancelAriaLabel": "Batalkan pesanan {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Pesanan #{{orderId}}",
+    "filled": "TERISI",
+    "orderLabel": "Pesanan {{orderId}}",
+    "size": "Ukuran",
+    "price": "Harga",
+    "total": "Total",
+    "executed": "Dieksekusi",
+    "fees": "Biaya"
+  },
+  "empty": {
+    "ordersTitle": "Tidak ada pesanan ditemukan",
+    "ordersStartTrading": "Mulai trading untuk melihat pesanan di sini",
+    "ordersFilterless": "Tidak ada pesanan {{status}}",
+    "executionsTitle": "Tidak ada eksekusi ditemukan",
+    "executionsMessage": "Eksekusi trade akan muncul di sini"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrumen",
+      "side": "Sisi",
+      "type": "Tipe",
+      "status": "Status",
+      "quantity": "Kuantitas",
+      "price": "Harga",
+      "leverage": "Leverage",
+      "reduceOnly": "Reduce Only",
+      "created": "Dibuat"
+    },
+    "executions": {
+      "orderId": "ID Pesanan",
+      "instrument": "Instrumen",
+      "side": "Sisi",
+      "size": "Ukuran",
+      "price": "Harga",
+      "total": "Total",
+      "fee": "Biaya",
+      "feeAsset": "Aset Biaya",
+      "executed": "Dieksekusi"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Pesanan Manual Baru",
+    "titleConfirm": "Konfirmasi Pesanan",
+    "fields": {
+      "exchange": "Bursa",
+      "instrument": "Instrumen",
+      "side": "Sisi",
+      "orderType": "Jenis Pesanan",
+      "quantity": "Kuantitas",
+      "price": "Harga",
+      "stopPrice": "Harga Stop",
+      "mode": "Mode",
+      "wallet": "Dompet",
+      "type": "Tipe"
+    },
+    "sideOptions": {
+      "buy": "Beli",
+      "sell": "Jual"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — khusus data pasar",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Batal",
+      "reviewOrder": "Tinjau Pesanan",
+      "back": "Kembali",
+      "confirmOrder": "Konfirmasi Pesanan",
+      "submitting": "Mengirim..."
+    },
+    "errors": {
+      "missingRequired": "Semua field wajib harus diisi",
+      "quantityPositive": "Kuantitas harus berupa angka positif",
+      "priceRequired": "Harga wajib diisi untuk jenis pesanan ini",
+      "pricePositive": "Harga harus berupa angka positif",
+      "stopPriceRequired": "Harga stop wajib diisi untuk jenis pesanan ini",
+      "stopPricePositive": "Harga stop harus berupa angka positif",
+      "createFailed": "Pembuatan pesanan gagal"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Instrumen ini hanya untuk observasi — pasang pesanan pada instrumen yang mendukung eksekusi.",
+      "unknownInstrument": "Instrumen ini tidak dikenali. Muat ulang daftar lalu coba lagi.",
+      "capsViolation": "Pesanan ini akan melebihi batas keamanan akun Anda. Tinjau pengaturan risiko Anda lalu coba lagi."
+    }
+  }
+}

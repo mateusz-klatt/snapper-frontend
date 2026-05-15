@@ -1,0 +1,83 @@
+{
+  "loading": "Memuat...",
+  "error": "Kesalahan",
+  "retry": "Coba lagi",
+  "close": "Tutup",
+  "cancel": "Batal",
+  "confirm": "Konfirmasi",
+  "save": "Simpan",
+  "documentation": "Dokumentasi (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Ganti bahasa",
+    "flagAriaLabel": "Ganti ke {{country}}",
+    "currentAriaLabel": "Bahasa saat ini: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Konsol Trading",
+    "tagline": "Workstation presisi",
+    "openSidebar": "Buka sidebar",
+    "closeSidebar": "Tutup sidebar",
+    "sidebar": "Sidebar",
+    "mainNavigation": "Navigasi utama",
+    "tradingContent": "Konten trading",
+    "skipToContent": "Lewati ke konten trading",
+    "lag": "Lag:",
+    "lagTitle": "Latensi pulang-pergi ke server WebSocket",
+    "topics": "Topik:",
+    "topicsTitle": "Jumlah topik WebSocket yang dilanggan",
+    "connected": "Terhubung",
+    "disconnected": "Terputus",
+    "connectedTitle": "Terhubung ke WebSocket",
+    "disconnectedTitle": "Terputus dari WebSocket",
+    "switchToLightMode": "Beralih ke mode terang",
+    "switchToDarkMode": "Beralih ke mode gelap",
+    "timeTravelBanner": "Mode Time Travel — melihat data historis (hanya baca)",
+    "lagUnknown": "Tidak diketahui",
+    "walletPicker": {
+      "ariaLabel": "Dompet aktif",
+      "placeholder": "Dompet",
+      "allWallets": "Semua dompet",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operator aktif",
+      "placeholder": "Operator",
+      "allOperators": "Semua operator"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: pilih titik waktu historis",
+      "exitAriaLabel": "Keluar dari mode time travel",
+      "exitTitle": "Kembali ke mode live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrumen khusus observasi. Snapper menerima data pasar tetapi tidak dapat memasang pesanan untuk pasangan (simbol, bursa) ini.",
+      "ariaLabel": "Instrumen khusus data pasar",
+      "badge": "Khusus data pasar"
+    },
+    "liveOnly": {
+      "notice": "Tab ini menampilkan status saat ini — tampilan historis tidak tersedia."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Terjadi kesalahan",
+    "titleWithComponent": "Kesalahan di {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Coba lagi"
+  },
+  "nav": {
+    "overview": "Ringkasan",
+    "market": "Data pasar",
+    "processes": "Proses",
+    "strategies": "Strategi",
+    "orders": "Pesanan & Eksekusi",
+    "positions": "Posisi",
+    "signals": "Sinyal",
+    "backtests": "Backtest",
+    "health": "Kesehatan",
+    "admin": "Administrasi",
+    "aiIntegration": "Integrasi AI",
+    "aiReviews": "Tinjauan AI",
+    "settings": "Pengaturan"
+  }
+}

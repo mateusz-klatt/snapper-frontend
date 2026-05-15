@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "进程控制",
+    "subtitle": "实时进程监控和控制"
+  },
+  "sections": {
+    "longRunning": "长时间运行进程",
+    "executorTemplates": "执行器模板",
+    "executorTemplatesHint": "编辑模板配置会在重启后影响此交易所上的所有钱包。模板仅用于配置 — 启动下方的钱包实例才能运行执行器。",
+    "walletInstances": "钱包实例",
+    "taskProcesses": "任务进程"
+  },
+  "card": {
+    "stop": "停止",
+    "start": "启动",
+    "restart": "重启",
+    "starting": "启动中...",
+    "stopping": "停止中...",
+    "status": {
+      "running": "运行中",
+      "stopped": "已停止",
+      "error": "错误",
+      "starting": "启动中",
+      "stopping": "停止中"
+    }
+  },
+  "template": {
+    "badge": "模板",
+    "mode": "模式：",
+    "parameters": "参数：",
+    "paramCount": "{{count}} 个参数",
+    "noParams": "未设置参数"
+  },
+  "badges": {
+    "oneShot": "一次性",
+    "autoStart": "自动启动",
+    "manual": "手动"
+  },
+  "actions": {
+    "stopTitle": "停止 {{name}}",
+    "stopMessage": "这将停止 {{name}} 进程。",
+    "restartTitle": "重启 {{name}}",
+    "restartMessage": "这将重启 {{name}} 进程。"
+  },
+  "executionMode": {
+    "title": "启动 {{name}}",
+    "label": "执行模式：",
+    "threadName": "线程模式",
+    "threadDescription": "作为 Web 服务器内的嵌入式任务运行。启动更快，共享内存。",
+    "processName": "进程模式",
+    "processDescription": "作为独立 Python 进程运行。隔离性更强，容错更好，监控更详细。",
+    "cancel": "取消",
+    "start": "启动 {{name}}",
+    "threadAriaLabel": "线程模式",
+    "processAriaLabel": "进程模式"
+  }
+}

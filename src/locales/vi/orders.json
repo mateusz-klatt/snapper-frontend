@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Lệnh & Khớp lệnh",
+    "newOrder": "Lệnh mới",
+    "exportCsv": "Xuất CSV"
+  },
+  "tabs": {
+    "orders": "Lệnh ({{total}})",
+    "executions": "Khớp lệnh ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Lọc theo trạng thái:",
+    "options": {
+      "all": "Tất cả lệnh",
+      "new": "Mới",
+      "open": "Đang mở",
+      "partiallyFilled": "Khớp một phần",
+      "partially_filled": "Khớp một phần",
+      "filled": "Đã khớp",
+      "cancelled": "Đã hủy",
+      "rejected": "Bị từ chối"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Thị trường",
+    "quantity": "Số lượng",
+    "price": "Giá",
+    "created": "Đã tạo",
+    "createdUnknown": "N/A",
+    "orderId": "ID lệnh",
+    "leverage": "Đòn bẩy",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "CHỈ GIẢM VỊ THẾ",
+    "cancel": "Hủy",
+    "cancelling": "Đang hủy…",
+    "cancelAriaLabel": "Hủy lệnh {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Lệnh #{{orderId}}",
+    "filled": "ĐÃ KHỚP",
+    "orderLabel": "Lệnh {{orderId}}",
+    "size": "Khối lượng",
+    "price": "Giá",
+    "total": "Tổng",
+    "executed": "Đã khớp",
+    "fees": "Phí"
+  },
+  "empty": {
+    "ordersTitle": "Không tìm thấy lệnh",
+    "ordersStartTrading": "Bắt đầu giao dịch để xem lệnh tại đây",
+    "ordersFilterless": "Không có lệnh {{status}}",
+    "executionsTitle": "Không tìm thấy khớp lệnh",
+    "executionsMessage": "Khớp lệnh giao dịch sẽ xuất hiện tại đây"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Công cụ",
+      "side": "Chiều",
+      "type": "Loại",
+      "status": "Trạng thái",
+      "quantity": "Số lượng",
+      "price": "Giá",
+      "leverage": "Đòn bẩy",
+      "reduceOnly": "Chỉ giảm vị thế",
+      "created": "Đã tạo"
+    },
+    "executions": {
+      "orderId": "ID lệnh",
+      "instrument": "Công cụ",
+      "side": "Chiều",
+      "size": "Khối lượng",
+      "price": "Giá",
+      "total": "Tổng",
+      "fee": "Phí",
+      "feeAsset": "Tài sản tính phí",
+      "executed": "Đã khớp"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Lệnh thủ công mới",
+    "titleConfirm": "Xác nhận lệnh",
+    "fields": {
+      "exchange": "Sàn",
+      "instrument": "Công cụ",
+      "side": "Chiều",
+      "orderType": "Loại lệnh",
+      "quantity": "Số lượng",
+      "price": "Giá",
+      "stopPrice": "Giá dừng",
+      "mode": "Chế độ",
+      "wallet": "Ví",
+      "type": "Loại"
+    },
+    "sideOptions": {
+      "buy": "Mua",
+      "sell": "Bán"
+    },
+    "orderTypeOptions": {
+      "market": "Lệnh thị trường",
+      "limit": "Lệnh giới hạn",
+      "stop": "Lệnh dừng",
+      "stopLimit": "Lệnh dừng giới hạn",
+      "stop_limit": "Lệnh dừng giới hạn"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — chỉ dữ liệu thị trường",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Hủy",
+      "reviewOrder": "Kiểm tra lệnh",
+      "back": "Quay lại",
+      "confirmOrder": "Xác nhận lệnh",
+      "submitting": "Đang gửi..."
+    },
+    "errors": {
+      "missingRequired": "Phải điền tất cả trường bắt buộc",
+      "quantityPositive": "Số lượng phải là số dương",
+      "priceRequired": "Loại lệnh này bắt buộc có giá",
+      "pricePositive": "Giá phải là số dương",
+      "stopPriceRequired": "Loại lệnh này bắt buộc có giá dừng",
+      "stopPricePositive": "Giá dừng phải là số dương",
+      "createFailed": "Tạo lệnh không thành công"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Công cụ này chỉ để quan sát — hãy đặt lệnh trên công cụ có khả năng khớp lệnh.",
+      "unknownInstrument": "Công cụ này không được nhận diện. Tải lại danh sách và thử lại.",
+      "capsViolation": "Lệnh này sẽ vượt giới hạn an toàn của tài khoản. Kiểm tra cài đặt rủi ro rồi thử lại."
+    }
+  }
+}

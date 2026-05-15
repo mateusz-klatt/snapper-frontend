@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Yêu cầu",
+    "decision": "Quyết định",
+    "capsViolation": "Vi phạm giới hạn",
+    "selectedDelegate": "Delegate đã chọn",
+    "instrument": "công cụ",
+    "deadline": "hạn chót {{time}}",
+    "decidedBy": "bởi",
+    "newStatus": "trạng thái",
+    "mode": "chế độ",
+    "capAttempted": "đã thử",
+    "capLimit": "so với giới hạn",
+    "capOn": "trên công cụ",
+    "reviewLabel": "duyệt xét {{reviewId}}",
+    "unhandledFrame": "Frame hoạt động duyệt xét AI chưa được xử lý: {{frame}}"
+  },
+  "page": {
+    "title": "Hộp duyệt xét AI",
+    "subtitle": "Các duyệt xét CONSULT đang chờ được định tuyến đến delegate này cùng luồng sự kiện live."
+  },
+  "roleNotice": {
+    "title": "Dành riêng cho delegate AI",
+    "message": "Hộp này hiển thị các duyệt xét CONSULT được định tuyến đến principal delegate AI. Đăng nhập bằng tài khoản delegate AI để xem duyệt xét đang chờ và luồng hoạt động live. Vai trò hiện tại của bạn là",
+    "unknownRole": "không xác định"
+  },
+  "pending": {
+    "title": "Duyệt xét đang chờ",
+    "loading": "Đang tải duyệt xét đang chờ…",
+    "loadError": "Không tải được duyệt xét đang chờ: {{message}}",
+    "emptyTitle": "Không có duyệt xét đang chờ",
+    "emptyMessage": "Yêu cầu CONSULT mới được định tuyến đến delegate này sẽ xuất hiện tại đây.",
+    "columns": {
+      "instrument": "Công cụ",
+      "thesis": "Luận điểm",
+      "status": "Trạng thái",
+      "deadline": "Hạn chót",
+      "decision": "Quyết định"
+    },
+    "rationalePlaceholder": "Lý do (tùy chọn)",
+    "rationaleAriaLabel": "Lý do cho duyệt xét {{reviewId}}",
+    "approve": "Phê duyệt",
+    "reject": "Từ chối",
+    "submitError": "Gửi thất bại: {{message}}"
+  },
+  "activity": {
+    "title": "Hoạt động gần đây",
+    "emptyTitle": "Chưa có hoạt động",
+    "emptyMessage": "Yêu cầu duyệt xét AI, quyết định và frame vi phạm giới hạn sẽ stream vào đây.",
+    "summaryEmpty": "Chưa nhận frame nào",
+    "summaryCount": "Đang hiển thị {{shown}} / {{total}} đã buffer"
+  }
+}

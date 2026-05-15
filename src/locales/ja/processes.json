@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "プロセス制御",
+    "subtitle": "リアルタイムのプロセス監視と制御"
+  },
+  "sections": {
+    "longRunning": "長期実行プロセス",
+    "executorTemplates": "エグゼキューターテンプレート",
+    "executorTemplatesHint": "テンプレート設定を編集すると、再起動後にこの取引所の全ウォレットへ影響します。テンプレートは設定のみです — エグゼキューターを実行するには、下のウォレット別インスタンスを開始してください。",
+    "walletInstances": "ウォレットインスタンス",
+    "taskProcesses": "タスクプロセス"
+  },
+  "card": {
+    "stop": "停止",
+    "start": "開始",
+    "restart": "再起動",
+    "starting": "開始中...",
+    "stopping": "停止中...",
+    "status": {
+      "running": "実行中",
+      "stopped": "停止中",
+      "error": "エラー",
+      "starting": "開始中",
+      "stopping": "停止中"
+    }
+  },
+  "template": {
+    "badge": "テンプレート",
+    "mode": "モード:",
+    "parameters": "パラメーター:",
+    "paramCount": "{{count}}件のパラメーター",
+    "noParams": "パラメーター未設定"
+  },
+  "badges": {
+    "oneShot": "ワンショット",
+    "autoStart": "自動起動",
+    "manual": "手動"
+  },
+  "actions": {
+    "stopTitle": "{{name}}を停止",
+    "stopMessage": "{{name}}プロセスを停止します。",
+    "restartTitle": "{{name}}を再起動",
+    "restartMessage": "{{name}}プロセスを再起動します。"
+  },
+  "executionMode": {
+    "title": "{{name}}を開始",
+    "label": "実行モード:",
+    "threadName": "スレッドモード",
+    "threadDescription": "Webサーバー内の埋め込みタスクとして実行します。起動が速く、メモリを共有します。",
+    "processName": "プロセスモード",
+    "processDescription": "別個のPythonプロセスとして実行します。分離され、耐障害性が高く、詳細な監視が可能です。",
+    "cancel": "キャンセル",
+    "start": "{{name}}を開始",
+    "threadAriaLabel": "スレッドモード",
+    "processAriaLabel": "プロセスモード"
+  }
+}

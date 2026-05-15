@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "市场数据"
+  },
+  "controls": {
+    "exchange": "交易所：",
+    "instrument": "品种：",
+    "timeframe": "时间周期：",
+    "selectExchange": "选择交易所",
+    "searchInstrument": "搜索品种..."
+  },
+  "timeframes": {
+    "1m": "1 分钟",
+    "5m": "5 分钟",
+    "15m": "15 分钟",
+    "30m": "30 分钟",
+    "1h": "1 小时",
+    "4h": "4 小时",
+    "1d": "1 天"
+  },
+  "stats": {
+    "currentPrice": "当前价格",
+    "change24h": "24h 涨跌",
+    "high24h": "24h 高点",
+    "low24h": "24h 低点"
+  },
+  "chart": {
+    "title": "价格图表",
+    "errorPrefix": "加载图表数据失败:",
+    "unknownError": "未知错误",
+    "noDataTitle": "{{instrument}} 没有可用数据",
+    "noDataHint": "该品种可能不存在，或没有 {{timeframe}} 数据"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{instrument}} 在 {{exchange}} 上未配置相关品种。"
+  },
+  "cacheBanner": {
+    "message": "缓存预热中: {{sampleCount}} / {{expected}} 根K线可用 {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(由 1m 派生)",
+      "db": "(来自 DB)"
+    }
+  }
+}

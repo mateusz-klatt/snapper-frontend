@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "持仓"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: 待生效",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "数量",
+    "averageEntry": "平均开仓价",
+    "unrealizedPnl": "未实现 P&L",
+    "realizedPnl": "已实现 P&L",
+    "updated": "更新于 {{timestamp}}"
+  },
+  "empty": {
+    "title": "没有未平持仓",
+    "message": "交易成交后，多头、空头和空仓持仓会显示在这里。"
+  },
+  "bracketModal": {
+    "title": "添加 SL/TP — {{instrument}}",
+    "confirmTitle": "确认 Bracket",
+    "position": "持仓",
+    "entryPrice": "开仓价",
+    "stopLossLabel": "Stop-Loss 价格",
+    "takeProfitLabel": "Take-Profit 价格",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "低于 ${{price}}",
+      "slShort": "高于 ${{price}}",
+      "tpLong": "高于 ${{price}}",
+      "tpShort": "低于 ${{price}}"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "review": "复核",
+      "back": "返回",
+      "confirm": "确认",
+      "creating": "创建中…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "添加 Trailing Stop — {{instrument}}",
+    "confirmTitle": "确认 Trailing Stop",
+    "position": "持仓",
+    "entryPrice": "开仓价",
+    "trailingDistanceLabel": "Trailing Distance (%)",
+    "minLockLabel": "最小锁定盈利 (%) — 可选",
+    "trailingDistance": "Trailing Distance",
+    "minLockProfit": "最小锁定盈利",
+    "placeholders": {
+      "trailingPct": "例如 5.0",
+      "minLockPct": "0 = 立即开始"
+    },
+    "minLockWarning": "Trailing Stop 不会激活，直到价格朝有利方向移动 {{minLockPct}}%。",
+    "buttons": {
+      "cancel": "取消",
+      "review": "复核",
+      "back": "返回",
+      "confirm": "确认",
+      "creating": "创建中..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "至少需要填写 SL 或 TP 价格之一",
+    "invalidSlPrice": "无效的 Stop-Loss 价格",
+    "slPricePositive": "Stop-Loss 价格必须为正数",
+    "invalidTpPrice": "无效的 Take-Profit 价格",
+    "tpPricePositive": "Take-Profit 价格必须为正数",
+    "slLongBelowEntry": "SL 价格必须低于开仓价 ({{price}})",
+    "tpLongAboveEntry": "TP 价格必须高于开仓价 ({{price}})",
+    "slShortAboveEntry": "SL 价格必须高于开仓价 ({{price}})",
+    "tpShortBelowEntry": "TP 价格必须低于开仓价 ({{price}})",
+    "trailingRequired": "必须填写 Trailing 百分比",
+    "trailingInvalid": "无效的 Trailing 百分比",
+    "trailingRange": "Trailing 百分比必须介于 0 到 100 之间",
+    "minLockInvalid": "无效的最小锁定百分比",
+    "minLockRange": "最小锁定百分比必须介于 0 到 100 之间"
+  }
+}

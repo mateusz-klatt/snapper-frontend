@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Tổng quan"
+  },
+  "metrics": {
+    "feedsRunning": "Feed đang chạy",
+    "strategiesActive": "Chiến lược đang hoạt động",
+    "openOrders": "Lệnh đang mở",
+    "todaysExecutions": "Khớp lệnh hôm nay",
+    "executionsOn": "Khớp lệnh ({{date}})"
+  },
+  "status": {
+    "stopped": "Đã dừng",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Đang chạy",
+    "active": "Đang hoạt động"
+  },
+  "processStatus": {
+    "title": "Trạng thái tiến trình",
+    "feeds": "Feed",
+    "strategies": "Chiến lược",
+    "executors": "Executor",
+    "brokers": "Broker"
+  },
+  "portfolio": {
+    "title": "Tóm tắt danh mục",
+    "totalValue": "Tổng giá trị",
+    "longExposure": "Mức phơi nhiễm Long",
+    "shortExposure": "Mức phơi nhiễm Short",
+    "netDelta": "Delta ròng",
+    "unrealizedPnl": "P&L chưa thực hiện",
+    "pnlPercent": "P&L %",
+    "positions": "Vị thế",
+    "instrumentsCount": "{{count}} công cụ",
+    "empty": "Không có dữ liệu vị thế"
+  },
+  "signals": {
+    "title": "Tín hiệu gần đây",
+    "empty": "Không có tín hiệu gần đây",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Khớp lệnh gần đây",
+    "empty": "Không có khớp lệnh gần đây",
+    "noTime": "N/A"
+  }
+}

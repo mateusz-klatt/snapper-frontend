@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI連携",
+    "subtitle": "MCP経由でSnapperに接続するAIデリゲートを管理します。",
+    "loading": "AI連携を読み込み中…",
+    "createDelegate": "デリゲートを作成"
+  },
+  "disabled": {
+    "title": "AI連携は無効です",
+    "message": "AIデリゲートを管理するには、設定 → 機能フラグで機能フラグを有効にしてください。"
+  },
+  "list": {
+    "loadingDelegates": "デリゲートを読み込み中…",
+    "emptyTitle": "AIデリゲートはまだありません",
+    "emptyMessage": "「デリゲートを作成」をクリックして発行し、MCP設定スニペットを生成します。",
+    "columns": {
+      "label": "ラベル",
+      "username": "ユーザー名",
+      "created": "作成日時",
+      "maxOpenOrders": "最大未決注文数",
+      "maxDailyUsd": "1日最大USD",
+      "status": "ステータス",
+      "actions": "操作"
+    },
+    "status": {
+      "active": "アクティブ",
+      "revoked": "失効済み"
+    },
+    "default": "デフォルト",
+    "details": "詳細",
+    "viewAriaLabel": "デリゲート {{label}} を表示"
+  },
+  "wizard": {
+    "title": "AIデリゲートを作成",
+    "step1": "1. ID",
+    "step2": "2. スコープと上限",
+    "step3": "3. 確認",
+    "stepDone": "✓ 完了",
+    "identity": {
+      "labelField": "ラベル",
+      "labelPlaceholder": "例: Alpha prop desk",
+      "labelHelpPrefix": "デリゲートのユーザー名はサーバー側で次の形式から生成されます: ",
+      "labelHelpSuffix": "。"
+    },
+    "scope": {
+      "heading": "スコープ",
+      "operatorLabel": "オペレーター public_id（任意）",
+      "operatorPlaceholder": "空欄の場合は呼び出し元の主要オペレーターを継承"
+    },
+    "caps": {
+      "heading": "取引上限（すべて任意）",
+      "maxOpenOrders": "最大未決注文数",
+      "maxDailyNotionalUsd": "1日最大想定元本（USD）",
+      "maxCancelsPerMinute": "1分あたり最大キャンセル数",
+      "perInstrument": "銘柄別最大数量（JSON）",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "デフォルト",
+      "errorInvalidJson": "max_order_quantity_per_instrument は有効なJSONである必要があります",
+      "errorJsonObject": "max_order_quantity_per_instrument はJSONオブジェクトまたは空である必要があります",
+      "errorNegative": "上限は0以上の整数または空である必要があります。"
+    },
+    "review": {
+      "heading": "確認して作成",
+      "rowLabel": "ラベル",
+      "rowOperator": "オペレーター public_id",
+      "rowMaxOpenOrders": "最大未決注文数",
+      "rowMaxDailyNotional": "1日最大想定元本（USD）",
+      "rowMaxCancelsPerMinute": "1分あたり最大キャンセル数",
+      "rowPerInstrument": "銘柄別最大数量",
+      "operatorDefault": "（呼び出し元の主要オペレーター）",
+      "defaultValue": "（デフォルト）"
+    },
+    "buttons": {
+      "cancel": "キャンセル",
+      "next": "次へ",
+      "back": "戻る",
+      "createDelegate": "デリゲートを作成",
+      "iSavedClose": "保存しました — 閉じる"
+    },
+    "toast": {
+      "delegateCreated": "デリゲートを作成しました",
+      "failedToCreate": "デリゲートの作成に失敗しました"
+    }
+  },
+  "detail": {
+    "loading": "デリゲートを読み込み中…",
+    "notFound": "デリゲートが見つからないか利用できません。",
+    "back": "戻る",
+    "backToList": "一覧に戻る",
+    "updateCaps": "上限を更新",
+    "revoke": "失効",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "tradingCaps": "取引上限",
+    "status": "ステータス",
+    "active": "アクティブ",
+    "revoked": "失効済み",
+    "createdAt": "作成日時",
+    "createdBy": "作成者（user public_id）",
+    "publicId": "Public ID",
+    "maxOpenOrders": "最大未決注文数",
+    "maxDailyNotionalUsd": "1日最大想定元本（USD）",
+    "maxCancelsPerMinute": "1分あたり最大キャンセル数",
+    "perInstrument": "銘柄別最大数量",
+    "defaultValue": "（デフォルト）",
+    "editorPlaceholder": "（デフォルト）",
+    "toast": {
+      "capsUpdated": "上限を更新しました",
+      "failedToUpdateCaps": "上限の更新に失敗しました",
+      "negativeIntegersError": "上限は0以上の整数または空である必要があります。"
+    }
+  },
+  "revokeDialog": {
+    "title": "デリゲート \"{{label}}\" を失効しますか？",
+    "message": "これによりデリゲートトークンが失効し、MCPサブスクリプションが停止します。この操作は元に戻せません。",
+    "confirm": "失効",
+    "cancel": "キャンセル",
+    "toast": {
+      "delegateRevoked": "デリゲートを失効しました",
+      "failedToRevoke": "デリゲートの失効に失敗しました"
+    }
+  },
+  "snippet": {
+    "warningTitle": "この認証情報を今すぐ保存してください",
+    "warningMessage": "これは二度と表示されません。Snapperは生トークンを保存しません。このウィザードを閉じると、唯一のコピーはMCPクライアント設定内だけになります。",
+    "snippetHelp": "長期有効なAIデリゲートトークン（約10年）。同じトークンでプロキシMCPサーバーとウォッチモニターの両方を認証します。更新するには、このデリゲートを無効化して新しいものを作成してください。",
+    "baseUrlHelpPrefix": "ベースURLは、このブラウザーのオリジン + ",
+    "baseUrlHelpSuffix": " から派生します。",
+    "copyAriaLabel": "設定スニペットをクリップボードにコピー",
+    "copy": "クリップボードにコピー",
+    "copied": "コピーしました"
+  }
+}

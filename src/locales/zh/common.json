@@ -1,0 +1,83 @@
+{
+  "loading": "加载中...",
+  "error": "错误",
+  "retry": "重试",
+  "close": "关闭",
+  "cancel": "取消",
+  "confirm": "确认",
+  "save": "保存",
+  "documentation": "文档 (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "切换语言",
+    "flagAriaLabel": "切换到 {{country}}",
+    "currentAriaLabel": "当前语言: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "交易控制台",
+    "tagline": "精准工作台",
+    "openSidebar": "打开侧边栏",
+    "closeSidebar": "关闭侧边栏",
+    "sidebar": "侧边栏",
+    "mainNavigation": "主导航",
+    "tradingContent": "交易内容",
+    "skipToContent": "跳转到交易内容",
+    "lag": "延迟：",
+    "lagTitle": "到 WebSocket 服务器的往返延迟",
+    "topics": "主题：",
+    "topicsTitle": "已订阅 WebSocket 主题数量",
+    "connected": "已连接",
+    "disconnected": "已断开",
+    "connectedTitle": "已连接到 WebSocket",
+    "disconnectedTitle": "已断开 WebSocket",
+    "switchToLightMode": "切换到浅色模式",
+    "switchToDarkMode": "切换到深色模式",
+    "timeTravelBanner": "Time Travel 模式 — 正在查看历史数据 (只读)",
+    "lagUnknown": "未知",
+    "walletPicker": {
+      "ariaLabel": "当前钱包",
+      "placeholder": "钱包",
+      "allWallets": "所有钱包",
+      "optionPaper": "{{label}} (模拟)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "当前操作员",
+      "placeholder": "操作员",
+      "allOperators": "所有操作员"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time Travel：选择历史时间点",
+      "exitAriaLabel": "退出 Time Travel 模式",
+      "exitTitle": "返回实时模式"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "仅观察品种。Snapper 会接收该 (symbol, exchange) 交易对的市场数据，但不能下单。",
+      "ariaLabel": "仅市场数据品种",
+      "badge": "仅市场数据"
+    },
+    "liveOnly": {
+      "notice": "此标签页显示当前状态 — 不支持历史视图。"
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "出现错误",
+    "titleWithComponent": "{{componentName}} 出错",
+    "stackTrace": "堆栈跟踪",
+    "tryAgain": "重试"
+  },
+  "nav": {
+    "overview": "概览",
+    "market": "市场数据",
+    "processes": "进程",
+    "strategies": "策略",
+    "orders": "订单和成交",
+    "positions": "持仓",
+    "signals": "信号",
+    "backtests": "Backtests",
+    "health": "系统健康",
+    "admin": "管理",
+    "aiIntegration": "AI 集成",
+    "aiReviews": "AI 审核",
+    "settings": "设置"
+  }
+}

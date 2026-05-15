@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Quay lại",
+    "backToList": "← Quay lại Backtest"
+  },
+  "status": {
+    "pending": "Đang chờ",
+    "running": "Đang chạy",
+    "completed": "Đã hoàn tất",
+    "failed": "Thất bại",
+    "cancelled": "Đã hủy"
+  },
+  "list": {
+    "title": "Backtest",
+    "actions": {
+      "cancel": "Hủy",
+      "rerun": "Chạy lại"
+    },
+    "fields": {
+      "timeframe": "Khung thời gian",
+      "period": "Giai đoạn",
+      "initialCash": "Tiền mặt ban đầu",
+      "id": "ID"
+    },
+    "errorPrefix": "Lỗi: {{message}}",
+    "filter": {
+      "ariaLabel": "Lọc Backtest theo trạng thái",
+      "options": {
+        "all": "Tất cả trạng thái",
+        "pending": "Đang chờ",
+        "running": "Đang chạy",
+        "completed": "Đã hoàn tất",
+        "failed": "Thất bại",
+        "cancelled": "Đã hủy"
+      }
+    },
+    "empty": {
+      "title": "Không có Backtest",
+      "message": "Chạy Backtest qua CLI hoặc API để xem kết quả tại đây."
+    }
+  },
+  "detail": {
+    "title": "Lượt chạy Backtest",
+    "fields": {
+      "strategy": "Chiến lược",
+      "instrument": "Công cụ",
+      "status": "Trạng thái",
+      "period": "Giai đoạn",
+      "crossAsset": "Quy kết chéo tài sản",
+      "configHash": "Hash cấu hình"
+    },
+    "crossAssetFlow": "Feed {{source}} → khớp lệnh {{target}}",
+    "errors": {
+      "invalidRunId": "ID lượt chạy không hợp lệ — phải là UUID7 (nhận \"{{id}}\").",
+      "loadFailed": "Không tải được lượt chạy: {{message}}",
+      "notFound": "không tìm thấy"
+    }
+  },
+  "compare": {
+    "title": "So sánh",
+    "headingFull": "So sánh Backtest",
+    "loading": "Đang tải so sánh…",
+    "vs": "với",
+    "runLabel": "Lượt chạy {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Chỉ số",
+      "equityOverlay": "Chồng lớp vốn chủ sở hữu",
+      "trades": "Giao dịch",
+      "signals": "Tín hiệu"
+    },
+    "pairingMode": {
+      "auto": "tự động",
+      "manual": "thủ công"
+    },
+    "errors": {
+      "notFound": "Không tìm thấy so sánh trong ví hiện tại.",
+      "loadFailed": "Không tải được so sánh: {{message}}",
+      "unknown": "lỗi không xác định",
+      "emptyResponse": "Phản hồi so sánh trống."
+    },
+    "launcher": {
+      "title": "So sánh",
+      "submit": "So sánh",
+      "autoPair": "So sánh với lượt gần nhất",
+      "terminalGate": "có thể so sánh khi lượt chạy này đạt trạng thái kết thúc",
+      "noSiblings": "không có lượt chạy nào khác với cấu hình này",
+      "limitNotice": "đang hiển thị {{count}} lượt gần nhất — dùng ghép thủ công cho lượt cũ hơn",
+      "pickPlaceholder": "— chọn một lượt chạy để so sánh —",
+      "showAllLabel": "Hiển thị tất cả lượt chạy (không chỉ cùng cấu hình)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "tất cả lượt chạy",
+        "sameConfig": "cùng cấu hình"
+      },
+      "errors": {
+        "pickRequired": "chọn một lượt chạy từ danh sách"
+      }
+    },
+    "diffColumns": {
+      "common": "Chung",
+      "onlyA": "Chỉ trong A",
+      "onlyB": "Chỉ trong B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Không có chỉ số có thể so sánh — cả hai lượt chạy đều không có giá trị được ghi nhận.",
+      "columns": {
+        "name": "Chỉ số",
+        "runA": "Lượt chạy A",
+        "runB": "Lượt chạy B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Lượt chạy A",
+        "runB": "Lượt chạy B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Đang chờ tiến độ…",
+    "candles": "{{done}} / {{total}} nến",
+    "candlesNoTotal": "{{done}} nến",
+    "equity": "vốn chủ sở hữu {{value}}",
+    "signalsTrades": "{{signals}} tín hiệu / {{trades}} giao dịch",
+    "milestoneLine": "mốc {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

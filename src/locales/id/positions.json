@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Posisi"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: tertunda",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Kuantitas",
+    "averageEntry": "Entry Rata-rata",
+    "unrealizedPnl": "P&L Belum Terealisasi",
+    "realizedPnl": "P&L Terealisasi",
+    "updated": "Diperbarui {{timestamp}}"
+  },
+  "empty": {
+    "title": "Tidak ada posisi terbuka",
+    "message": "Posisi long, short, dan flat akan muncul di sini setelah trade dieksekusi."
+  },
+  "bracketModal": {
+    "title": "Pasang SL/TP — {{instrument}}",
+    "confirmTitle": "Konfirmasi Bracket",
+    "position": "Posisi",
+    "entryPrice": "Harga Entry",
+    "stopLossLabel": "Harga Stop-Loss",
+    "takeProfitLabel": "Harga Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Di bawah ${{price}}",
+      "slShort": "Di atas ${{price}}",
+      "tpLong": "Di atas ${{price}}",
+      "tpShort": "Di bawah ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Batal",
+      "review": "Tinjau",
+      "back": "Kembali",
+      "confirm": "Konfirmasi",
+      "creating": "Membuat…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Pasang Trailing Stop — {{instrument}}",
+    "confirmTitle": "Konfirmasi Trailing Stop",
+    "position": "Posisi",
+    "entryPrice": "Harga Entry",
+    "trailingDistanceLabel": "Jarak Trailing (%)",
+    "minLockLabel": "Profit Terkunci Minimum (%) — opsional",
+    "trailingDistance": "Jarak Trailing",
+    "minLockProfit": "Profit Terkunci Minimum",
+    "placeholders": {
+      "trailingPct": "mis. 5.0",
+      "minLockPct": "0 = mulai segera"
+    },
+    "minLockWarning": "Trailing Stop tidak akan aktif hingga harga bergerak {{minLockPct}}% menguntungkan Anda.",
+    "buttons": {
+      "cancel": "Batal",
+      "review": "Tinjau",
+      "back": "Kembali",
+      "confirm": "Konfirmasi",
+      "creating": "Membuat..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Minimal salah satu harga SL atau TP wajib diisi",
+    "invalidSlPrice": "Harga stop-loss tidak valid",
+    "slPricePositive": "Harga stop-loss harus positif",
+    "invalidTpPrice": "Harga take-profit tidak valid",
+    "tpPricePositive": "Harga take-profit harus positif",
+    "slLongBelowEntry": "Harga SL harus di bawah harga entry ({{price}})",
+    "tpLongAboveEntry": "Harga TP harus di atas harga entry ({{price}})",
+    "slShortAboveEntry": "Harga SL harus di atas harga entry ({{price}})",
+    "tpShortBelowEntry": "Harga TP harus di bawah harga entry ({{price}})",
+    "trailingRequired": "Persentase trailing wajib diisi",
+    "trailingInvalid": "Persentase trailing tidak valid",
+    "trailingRange": "Persentase trailing harus antara 0 dan 100",
+    "minLockInvalid": "Persentase min lock tidak valid",
+    "minLockRange": "Persentase min lock harus antara 0 dan 100"
+  }
+}

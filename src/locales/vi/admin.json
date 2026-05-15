@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Quản trị",
+    "subtitle": "Quản lý người dùng và cấu hình hệ thống"
+  },
+  "rolePermissions": {
+    "title": "Quyền theo vai trò",
+    "viewer": {
+      "label": "Người xem",
+      "description": "Quyền chỉ đọc đối với Tổng quan và Dữ liệu thị trường. Không thể quản lý tiến trình, chiến lược hoặc cài đặt hệ thống."
+    },
+    "operator": {
+      "label": "Người vận hành",
+      "description": "Bao gồm toàn bộ quyền của Người xem, cộng thêm vận hành giao dịch, thực thi chiến lược, quản lý tiến trình và giám sát sức khỏe hệ thống."
+    },
+    "admin": {
+      "label": "Quản trị viên",
+      "description": "Toàn quyền hệ thống, bao gồm quản lý người dùng, cài đặt hệ thống, cấu hình khóa API và toàn bộ quyền của Người vận hành."
+    },
+    "table": {
+      "resource": "Tài nguyên",
+      "viewer": "Người xem",
+      "operator": "Người vận hành",
+      "admin": "Quản trị viên"
+    },
+    "resources": {
+      "overview": "Tổng quan",
+      "market": "Dữ liệu thị trường",
+      "processes": "Tiến trình",
+      "strategies": "Chiến lược",
+      "orders": "Lệnh & Khớp lệnh",
+      "positions": "Vị thế",
+      "signals": "Tín hiệu",
+      "health": "Sức khỏe hệ thống",
+      "admin": "Quản trị",
+      "settings": "Cài đặt"
+    }
+  },
+  "common": {
+    "cancel": "Hủy",
+    "selectWallet": "Chọn ví",
+    "selectAWallet": "Chọn một ví",
+    "chooseWalletPlaceholder": "Chọn một ví...",
+    "selectWalletPlaceholder": "Chọn ví...",
+    "walletLabel": "Ví",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Lỗi không xác định",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Từ chối truy cập",
+      "message": "Bạn không có quyền quản lý người dùng. Vui lòng liên hệ quản trị viên hệ thống."
+    },
+    "list": {
+      "title": "Quản lý người dùng",
+      "countLabel": "{{count}} người dùng",
+      "showInactive": "Hiển thị không hoạt động",
+      "hideInactive": "Ẩn không hoạt động",
+      "addUser": "Thêm người dùng",
+      "searchPlaceholder": "Tìm theo tên người dùng, email hoặc vai trò...",
+      "columns": {
+        "user": "Người dùng",
+        "role": "Vai trò",
+        "status": "Trạng thái",
+        "createdAt": "Tạo lúc",
+        "actions": "Thao tác"
+      },
+      "status": {
+        "active": "Đang hoạt động",
+        "inactive": "Không hoạt động"
+      },
+      "unknown": "Không xác định",
+      "empty": {
+        "title": "Không tìm thấy người dùng",
+        "noMatch": "Không có người dùng nào khớp với tiêu chí tìm kiếm.",
+        "noUsers": "Không tìm thấy người dùng.",
+        "noActive": "Không tìm thấy người dùng đang hoạt động."
+      },
+      "errorLoading": "Lỗi khi tải người dùng: {{message}}",
+      "deactivate": {
+        "title": "Vô hiệu hóa người dùng",
+        "message": "Bạn có chắc muốn vô hiệu hóa người dùng \"{{username}}\"? Người dùng này sẽ không thể đăng nhập nữa.",
+        "confirm": "Vô hiệu hóa"
+      },
+      "toast": {
+        "deactivated": "Đã vô hiệu hóa người dùng",
+        "deactivateError": "Lỗi khi vô hiệu hóa người dùng"
+      }
+    },
+    "form": {
+      "titleEdit": "Sửa người dùng",
+      "titleAdd": "Thêm người dùng",
+      "fields": {
+        "username": "Tên người dùng",
+        "usernamePlaceholder": "Nhập tên người dùng",
+        "password": "Mật khẩu",
+        "passwordPlaceholder": "Nhập mật khẩu",
+        "newPassword": "Mật khẩu mới",
+        "newPasswordPlaceholder": "Nhập mật khẩu mới",
+        "email": "Email",
+        "emailPlaceholder": "Nhập email",
+        "role": "Vai trò",
+        "accountActive": "Tài khoản đang hoạt động",
+        "resetUserPassword": "Đặt lại mật khẩu người dùng"
+      },
+      "roles": {
+        "viewer": "Người xem",
+        "operator": "Người vận hành",
+        "admin": "Quản trị viên"
+      },
+      "validation": {
+        "usernameRequired": "Bắt buộc nhập tên người dùng",
+        "usernameMinLength": "Tên người dùng phải có ít nhất 3 ký tự",
+        "emailRequired": "Bắt buộc nhập email",
+        "emailInvalid": "Định dạng email không hợp lệ",
+        "passwordRequired": "Bắt buộc nhập mật khẩu",
+        "passwordMinLength": "Mật khẩu phải có ít nhất 8 ký tự",
+        "passwordRequiredWhenResetting": "Bắt buộc nhập mật khẩu khi đặt lại"
+      },
+      "actions": {
+        "saveChanges": "Lưu thay đổi",
+        "createUser": "Tạo người dùng"
+      },
+      "toast": {
+        "created": "Đã tạo người dùng",
+        "createError": "Lỗi khi tạo người dùng",
+        "updated": "Đã cập nhật người dùng",
+        "updateError": "Lỗi khi cập nhật người dùng",
+        "passwordReset": "Đã đặt lại mật khẩu người dùng",
+        "resetError": "Lỗi khi đặt lại mật khẩu"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Từ chối truy cập",
+      "message": "Bạn không có quyền quản lý phạm vi quyền. Vui lòng liên hệ quản trị viên hệ thống."
+    },
+    "list": {
+      "title": "Phạm vi quyền",
+      "countLabel": "{{count}} lượt cấp",
+      "createGrant": "Cấp phạm vi",
+      "selectWalletPrompt": "Chọn ví ở trên để xem các phạm vi quyền của ví.",
+      "columns": {
+        "operator": "Người vận hành",
+        "scope": "Phạm vi",
+        "target": "Đối tượng",
+        "grantedAt": "Cấp lúc",
+        "actions": "Thao tác"
+      },
+      "empty": {
+        "noGrants": "Không tìm thấy lượt cấp",
+        "noGrantsHint": "Ví này không có phạm vi quyền đang hoạt động."
+      },
+      "errorLoading": "Lỗi khi tải lượt cấp: {{message}}",
+      "handover": "Bàn giao"
+    },
+    "form": {
+      "title": "Cấp phạm vi",
+      "fields": {
+        "operator": "Người vận hành",
+        "operatorPlaceholder": "Chọn người vận hành...",
+        "wallet": "Ví",
+        "scopeKind": "Loại phạm vi",
+        "underlyingPublicId": "Public ID tài sản cơ sở",
+        "instrumentPublicId": "Public ID công cụ",
+        "underlyingPlaceholder": "ví dụ: BTC",
+        "instrumentPlaceholder": "ví dụ: BTC-USD-PERP",
+        "note": "Ghi chú (tùy chọn)",
+        "notePlaceholder": "Ghi chú tùy chọn"
+      },
+      "scopeKinds": {
+        "underlying": "Tài sản cơ sở",
+        "instrument": "Công cụ"
+      },
+      "validation": {
+        "operatorRequired": "Bắt buộc chọn người vận hành",
+        "walletRequired": "Bắt buộc chọn ví",
+        "targetRequired": "Bắt buộc nhập ID đối tượng"
+      },
+      "actions": {
+        "createGrant": "Cấp phạm vi"
+      },
+      "toast": {
+        "created": "Đã cấp phạm vi",
+        "conflictError": "Xung đột: người vận hành khác đã giữ quyền trên phạm vi này",
+        "createError": "Lỗi khi cấp phạm vi"
+      }
+    },
+    "handover": {
+      "title": "Bàn giao phạm vi quyền",
+      "fields": {
+        "currentHolder": "Người giữ hiện tại",
+        "scope": "Phạm vi",
+        "wallet": "Ví",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Chuyển cho người vận hành",
+        "transferToPlaceholder": "Chọn người vận hành đích...",
+        "reason": "Lý do (tùy chọn)",
+        "reasonPlaceholder": "ví dụ: Đổi ca"
+      },
+      "actions": {
+        "handover": "Bàn giao"
+      },
+      "toast": {
+        "completed": "Đã bàn giao phạm vi quyền",
+        "conflictError": "Xung đột: người vận hành đích đã giữ quyền xung đột",
+        "handoverError": "Lỗi khi bàn giao phạm vi quyền"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Từ chối truy cập",
+      "message": "Bạn không có quyền quản lý thông tin xác thực của ví. Vui lòng liên hệ quản trị viên hệ thống."
+    },
+    "list": {
+      "title": "Thông tin xác thực của ví",
+      "countLabel": "{{count}} thông tin xác thực",
+      "addCredential": "Thêm thông tin xác thực",
+      "selectWalletPrompt": "Chọn ví ở trên để xem thông tin xác thực của ví.",
+      "columns": {
+        "exchange": "Sàn",
+        "type": "Loại",
+        "label": "Nhãn",
+        "createdAt": "Tạo lúc",
+        "actions": "Thao tác"
+      },
+      "empty": {
+        "noCredentials": "Không tìm thấy thông tin xác thực",
+        "noCredentialsHint": "Ví này không có thông tin xác thực đang hoạt động."
+      },
+      "errorLoading": "Lỗi khi tải thông tin xác thực: {{message}}",
+      "rotate": "Thay thế"
+    },
+    "form": {
+      "title": "Thêm thông tin xác thực",
+      "fields": {
+        "wallet": "Ví",
+        "exchange": "Sàn",
+        "exchangePlaceholder": "ví dụ: kraken",
+        "credentialType": "Loại thông tin xác thực",
+        "label": "Nhãn (tùy chọn)",
+        "labelPlaceholder": "ví dụ: Khóa giao dịch chính",
+        "pemPlaceholder": "Dán khóa riêng định dạng PEM vào đây"
+      },
+      "fieldLabels": {
+        "api_key": "Khóa API",
+        "api_secret": "API Secret",
+        "private_key_pem": "Khóa riêng (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Số dư ban đầu"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Khóa API + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Bắt buộc chọn ví",
+        "exchangeRequired": "Bắt buộc nhập sàn",
+        "fieldRequired": "Bắt buộc nhập {{field}}"
+      },
+      "actions": {
+        "addCredential": "Thêm thông tin xác thực"
+      },
+      "toast": {
+        "created": "Đã tạo thông tin xác thực",
+        "conflictError": "Xung đột: ví này đã có thông tin xác thực đang hoạt động cho sàn này",
+        "createError": "Lỗi khi tạo thông tin xác thực"
+      }
+    },
+    "rotate": {
+      "title": "Thay thế thông tin xác thực",
+      "fields": {
+        "exchange": "Sàn",
+        "type": "Loại",
+        "label": "Nhãn",
+        "newLabel": "Nhãn mới (tùy chọn)",
+        "newLabelPlaceholder": "ví dụ: Khóa thay thế 2026-04",
+        "pemPlaceholder": "Dán khóa riêng định dạng PEM vào đây"
+      },
+      "actions": {
+        "rotate": "Thay thế"
+      },
+      "toast": {
+        "rotated": "Đã thay thế thông tin xác thực",
+        "rotateError": "Lỗi khi thay thế thông tin xác thực"
+      }
+    }
+  }
+}

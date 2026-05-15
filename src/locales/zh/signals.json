@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "信号"
+  },
+  "filters": {
+    "allStrategies": "所有策略"
+  },
+  "actions": {
+    "export": "导出"
+  },
+  "stats": {
+    "total": "总数",
+    "buy": "买入",
+    "sell": "卖出",
+    "avgStrength": "平均强度"
+  },
+  "card": {
+    "strength": "强度",
+    "price": "价格",
+    "exchange": "交易所",
+    "reason": "原因：",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "强",
+    "medium": "中",
+    "weak": "弱",
+    "veryWeak": "很弱"
+  },
+  "time": {
+    "justNow": "刚刚",
+    "minutesAgo": "{{count}}m 前",
+    "hoursAgo": "{{count}}h 前"
+  },
+  "empty": {
+    "title": "未找到信号",
+    "message": "没有交易信号符合当前筛选条件。"
+  }
+}

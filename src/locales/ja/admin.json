@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "管理",
+    "subtitle": "ユーザーとシステム設定を管理"
+  },
+  "rolePermissions": {
+    "title": "役割の権限",
+    "viewer": {
+      "label": "閲覧者",
+      "description": "概要とマーケットデータへの読み取り専用アクセス。プロセス、戦略、システム設定の管理はできません。"
+    },
+    "operator": {
+      "label": "オペレーター",
+      "description": "閲覧者の全権限に加え、取引操作、戦略実行、プロセス管理、システムヘルス監視が可能です。"
+    },
+    "admin": {
+      "label": "管理者",
+      "description": "ユーザー管理、システム設定、APIキー設定、すべてのオペレーター権限を含むシステム全体へのアクセス。"
+    },
+    "table": {
+      "resource": "リソース",
+      "viewer": "閲覧者",
+      "operator": "オペレーター",
+      "admin": "管理者"
+    },
+    "resources": {
+      "overview": "概要",
+      "market": "マーケットデータ",
+      "processes": "プロセス",
+      "strategies": "戦略",
+      "orders": "注文と約定",
+      "positions": "ポジション",
+      "signals": "シグナル",
+      "health": "ヘルス",
+      "admin": "管理",
+      "settings": "設定"
+    }
+  },
+  "common": {
+    "cancel": "キャンセル",
+    "selectWallet": "ウォレットを選択",
+    "selectAWallet": "ウォレットを選択",
+    "chooseWalletPlaceholder": "ウォレットを選択...",
+    "selectWalletPlaceholder": "ウォレットを選択...",
+    "walletLabel": "ウォレット",
+    "paperAnnotation": " (ペーパー)",
+    "unknownError": "不明なエラー",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "アクセス拒否",
+      "message": "ユーザーを管理する権限がありません。システム管理者に連絡してください。"
+    },
+    "list": {
+      "title": "ユーザー管理",
+      "countLabel": "{{count}}ユーザー",
+      "showInactive": "非アクティブを表示",
+      "hideInactive": "非アクティブを非表示",
+      "addUser": "ユーザーを追加",
+      "searchPlaceholder": "ユーザー名、メール、役割で検索...",
+      "columns": {
+        "user": "ユーザー",
+        "role": "役割",
+        "status": "ステータス",
+        "createdAt": "作成日時",
+        "actions": "操作"
+      },
+      "status": {
+        "active": "アクティブ",
+        "inactive": "非アクティブ"
+      },
+      "unknown": "不明",
+      "empty": {
+        "title": "ユーザーが見つかりません",
+        "noMatch": "検索条件に一致するユーザーがいません。",
+        "noUsers": "ユーザーが見つかりません。",
+        "noActive": "アクティブなユーザーが見つかりません。"
+      },
+      "errorLoading": "ユーザーの読み込みエラー: {{message}}",
+      "deactivate": {
+        "title": "ユーザーを無効化",
+        "message": "ユーザー \"{{username}}\" を無効化してもよろしいですか？このユーザーはサインインできなくなります。",
+        "confirm": "無効化"
+      },
+      "toast": {
+        "deactivated": "ユーザーを無効化しました",
+        "deactivateError": "ユーザーの無効化エラー"
+      }
+    },
+    "form": {
+      "titleEdit": "ユーザーを編集",
+      "titleAdd": "ユーザーを追加",
+      "fields": {
+        "username": "ユーザー名",
+        "usernamePlaceholder": "ユーザー名を入力",
+        "password": "パスワード",
+        "passwordPlaceholder": "パスワードを入力",
+        "newPassword": "新しいパスワード",
+        "newPasswordPlaceholder": "新しいパスワードを入力",
+        "email": "メール",
+        "emailPlaceholder": "メールを入力",
+        "role": "役割",
+        "accountActive": "アカウントはアクティブ",
+        "resetUserPassword": "ユーザーのパスワードをリセット"
+      },
+      "roles": {
+        "viewer": "閲覧者",
+        "operator": "オペレーター",
+        "admin": "管理者"
+      },
+      "validation": {
+        "usernameRequired": "ユーザー名は必須です",
+        "usernameMinLength": "ユーザー名は3文字以上である必要があります",
+        "emailRequired": "メールは必須です",
+        "emailInvalid": "メール形式が無効です",
+        "passwordRequired": "パスワードは必須です",
+        "passwordMinLength": "パスワードは8文字以上である必要があります",
+        "passwordRequiredWhenResetting": "リセット時はパスワードが必須です"
+      },
+      "actions": {
+        "saveChanges": "変更を保存",
+        "createUser": "ユーザーを作成"
+      },
+      "toast": {
+        "created": "ユーザーを作成しました",
+        "createError": "ユーザー作成エラー",
+        "updated": "ユーザーを更新しました",
+        "updateError": "ユーザー更新エラー",
+        "passwordReset": "ユーザーのパスワードをリセットしました",
+        "resetError": "パスワードリセットエラー"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "アクセス拒否",
+      "message": "スコープ権限を管理する権限がありません。システム管理者に連絡してください。"
+    },
+    "list": {
+      "title": "スコープ権限",
+      "countLabel": "{{count}}件の権限",
+      "createGrant": "権限を付与",
+      "selectWalletPrompt": "上でウォレットを選択すると、そのスコープ権限を表示できます。",
+      "columns": {
+        "operator": "オペレーター",
+        "scope": "スコープ",
+        "target": "対象",
+        "grantedAt": "付与日時",
+        "actions": "操作"
+      },
+      "empty": {
+        "noGrants": "権限が見つかりません",
+        "noGrantsHint": "このウォレットには有効なスコープ権限がありません。"
+      },
+      "errorLoading": "権限の読み込みエラー: {{message}}",
+      "handover": "引き継ぎ"
+    },
+    "form": {
+      "title": "スコープ権限を作成",
+      "fields": {
+        "operator": "オペレーター",
+        "operatorPlaceholder": "オペレーターを選択...",
+        "wallet": "ウォレット",
+        "scopeKind": "スコープ種別",
+        "underlyingPublicId": "原資産Public ID",
+        "instrumentPublicId": "銘柄Public ID",
+        "underlyingPlaceholder": "例: BTC",
+        "instrumentPlaceholder": "例: BTC-USD-PERP",
+        "note": "メモ（任意）",
+        "notePlaceholder": "任意のメモ"
+      },
+      "scopeKinds": {
+        "underlying": "原資産",
+        "instrument": "銘柄"
+      },
+      "validation": {
+        "operatorRequired": "オペレーターは必須です",
+        "walletRequired": "ウォレットは必須です",
+        "targetRequired": "対象IDは必須です"
+      },
+      "actions": {
+        "createGrant": "権限を付与"
+      },
+      "toast": {
+        "created": "スコープ権限を作成しました",
+        "conflictError": "競合: 別のオペレーターがすでにこのスコープの権限を保持しています",
+        "createError": "スコープ権限の作成エラー"
+      }
+    },
+    "handover": {
+      "title": "スコープ権限を引き継ぎ",
+      "fields": {
+        "currentHolder": "現在の保有者",
+        "scope": "スコープ",
+        "wallet": "ウォレット",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "引き継ぎ先オペレーター",
+        "transferToPlaceholder": "移管先オペレーターを選択...",
+        "reason": "理由（任意）",
+        "reasonPlaceholder": "例: シフト交代"
+      },
+      "actions": {
+        "handover": "引き継ぎ"
+      },
+      "toast": {
+        "completed": "スコープ権限を引き継ぎました",
+        "conflictError": "競合: 移管先オペレーターが競合する権限をすでに保持しています",
+        "handoverError": "スコープ権限の引き継ぎエラー"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "アクセス拒否",
+      "message": "ウォレット認証情報を管理する権限がありません。システム管理者に連絡してください。"
+    },
+    "list": {
+      "title": "ウォレット認証情報",
+      "countLabel": "{{count}}件の認証情報",
+      "addCredential": "認証情報を追加",
+      "selectWalletPrompt": "上でウォレットを選択すると、その認証情報を表示できます。",
+      "columns": {
+        "exchange": "取引所",
+        "type": "種類",
+        "label": "ラベル",
+        "createdAt": "作成日時",
+        "actions": "操作"
+      },
+      "empty": {
+        "noCredentials": "認証情報が見つかりません",
+        "noCredentialsHint": "このウォレットには有効な認証情報がありません。"
+      },
+      "errorLoading": "認証情報の読み込みエラー: {{message}}",
+      "rotate": "更新"
+    },
+    "form": {
+      "title": "認証情報を追加",
+      "fields": {
+        "wallet": "ウォレット",
+        "exchange": "取引所",
+        "exchangePlaceholder": "例: kraken",
+        "credentialType": "認証情報の種類",
+        "label": "ラベル（任意）",
+        "labelPlaceholder": "例: メイン取引キー",
+        "pemPlaceholder": "PEM形式の秘密鍵をここに貼り付け"
+      },
+      "fieldLabels": {
+        "api_key": "APIキー",
+        "api_secret": "APIシークレット",
+        "private_key_pem": "秘密鍵（PEM）",
+        "client_id": "クライアントID",
+        "client_secret": "クライアントシークレット",
+        "refresh_token": "リフレッシュトークン",
+        "initial_balance": "初期残高"
+      },
+      "credentialTypes": {
+        "api_key_secret": "APIキー + シークレット",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "ペーパー"
+      },
+      "validation": {
+        "walletRequired": "ウォレットは必須です",
+        "exchangeRequired": "取引所は必須です",
+        "fieldRequired": "{{field}}は必須です"
+      },
+      "actions": {
+        "addCredential": "認証情報を追加"
+      },
+      "toast": {
+        "created": "認証情報を作成しました",
+        "conflictError": "競合: このウォレットには、この取引所の有効な認証情報がすでにあります",
+        "createError": "認証情報の作成エラー"
+      }
+    },
+    "rotate": {
+      "title": "認証情報を更新",
+      "fields": {
+        "exchange": "取引所",
+        "type": "種類",
+        "label": "ラベル",
+        "newLabel": "新しいラベル（任意）",
+        "newLabelPlaceholder": "例: 更新キー 2026-04",
+        "pemPlaceholder": "PEM形式の秘密鍵をここに貼り付け"
+      },
+      "actions": {
+        "rotate": "更新"
+      },
+      "toast": {
+        "rotated": "認証情報を更新しました",
+        "rotateError": "認証情報の更新エラー"
+      }
+    }
+  }
+}

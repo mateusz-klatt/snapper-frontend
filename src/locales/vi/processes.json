@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Điều khiển tiến trình",
+    "subtitle": "Giám sát và điều khiển tiến trình theo thời gian thực"
+  },
+  "sections": {
+    "longRunning": "Tiến trình chạy dài",
+    "executorTemplates": "Mẫu executor",
+    "executorTemplatesHint": "Chỉnh sửa cấu hình mẫu sẽ ảnh hưởng đến tất cả ví trên sàn này sau khi khởi động lại. Mẫu chỉ là cấu hình — hãy khởi động phiên bản theo ví bên dưới để chạy executor.",
+    "walletInstances": "Phiên bản ví",
+    "taskProcesses": "Tiến trình tác vụ"
+  },
+  "card": {
+    "stop": "Dừng",
+    "start": "Bắt đầu",
+    "restart": "Khởi động lại",
+    "starting": "Đang bắt đầu...",
+    "stopping": "Đang dừng...",
+    "status": {
+      "running": "đang chạy",
+      "stopped": "đã dừng",
+      "error": "lỗi",
+      "starting": "đang bắt đầu",
+      "stopping": "đang dừng"
+    }
+  },
+  "template": {
+    "badge": "mẫu",
+    "mode": "Chế độ:",
+    "parameters": "Tham số:",
+    "paramCount": "{{count}} tham số",
+    "noParams": "chưa đặt tham số"
+  },
+  "badges": {
+    "oneShot": "một lần",
+    "autoStart": "tự khởi động",
+    "manual": "thủ công"
+  },
+  "actions": {
+    "stopTitle": "Dừng {{name}}",
+    "stopMessage": "Thao tác này sẽ dừng tiến trình {{name}}.",
+    "restartTitle": "Khởi động lại {{name}}",
+    "restartMessage": "Thao tác này sẽ khởi động lại tiến trình {{name}}."
+  },
+  "executionMode": {
+    "title": "Bắt đầu {{name}}",
+    "label": "Chế độ thực thi:",
+    "threadName": "Chế độ luồng",
+    "threadDescription": "Chạy như tác vụ nhúng trong máy chủ web. Khởi động nhanh hơn, dùng chung bộ nhớ.",
+    "processName": "Chế độ tiến trình",
+    "processDescription": "Chạy như tiến trình Python riêng. Cách ly, chịu lỗi tốt hơn, giám sát chi tiết.",
+    "cancel": "Hủy",
+    "start": "Bắt đầu {{name}}",
+    "threadAriaLabel": "Chế độ luồng",
+    "processAriaLabel": "Chế độ tiến trình"
+  }
+}

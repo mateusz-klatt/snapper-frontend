@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Dữ liệu thị trường"
+  },
+  "controls": {
+    "exchange": "Sàn:",
+    "instrument": "Công cụ:",
+    "timeframe": "Khung thời gian:",
+    "selectExchange": "Chọn sàn",
+    "searchInstrument": "Tìm công cụ..."
+  },
+  "timeframes": {
+    "1m": "1 phút",
+    "5m": "5 phút",
+    "15m": "15 phút",
+    "30m": "30 phút",
+    "1h": "1 giờ",
+    "4h": "4 giờ",
+    "1d": "1 ngày"
+  },
+  "stats": {
+    "currentPrice": "Giá hiện tại",
+    "change24h": "Biến động 24h",
+    "high24h": "Cao nhất 24h",
+    "low24h": "Thấp nhất 24h"
+  },
+  "chart": {
+    "title": "Biểu đồ giá",
+    "errorPrefix": "Lỗi khi tải dữ liệu biểu đồ:",
+    "unknownError": "Lỗi không xác định",
+    "noDataTitle": "Không có dữ liệu cho {{instrument}}",
+    "noDataHint": "Công cụ có thể không tồn tại hoặc chưa có dữ liệu {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Chưa cấu hình công cụ liên quan cho {{instrument}} trên {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Đang làm nóng cache: đã có {{sampleCount}} / {{expected}} nến {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(suy ra từ 1m)",
+      "db": "(từ DB)"
+    }
+  }
+}

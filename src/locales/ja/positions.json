@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "ポジション"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: 保留中",
+    "slTpButton": "SL/TP",
+    "trailButton": "トレール",
+    "quantity": "数量",
+    "averageEntry": "平均建値",
+    "unrealizedPnl": "未実現P&L",
+    "realizedPnl": "実現P&L",
+    "updated": "更新 {{timestamp}}"
+  },
+  "empty": {
+    "title": "オープンポジションはありません",
+    "message": "取引が約定すると、ロング、ショート、フラットのポジションがここに表示されます。"
+  },
+  "bracketModal": {
+    "title": "SL/TPを設定 — {{instrument}}",
+    "confirmTitle": "ブラケットを確認",
+    "position": "ポジション",
+    "entryPrice": "エントリー価格",
+    "stopLossLabel": "ストップロス価格",
+    "takeProfitLabel": "テイクプロフィット価格",
+    "stopLoss": "ストップロス",
+    "takeProfit": "テイクプロフィット",
+    "placeholders": {
+      "slLong": "${{price}}未満",
+      "slShort": "${{price}}超",
+      "tpLong": "${{price}}超",
+      "tpShort": "${{price}}未満"
+    },
+    "buttons": {
+      "cancel": "キャンセル",
+      "review": "確認",
+      "back": "戻る",
+      "confirm": "確定",
+      "creating": "作成中…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "トレーリングストップを設定 — {{instrument}}",
+    "confirmTitle": "トレーリングストップを確認",
+    "position": "ポジション",
+    "entryPrice": "エントリー価格",
+    "trailingDistanceLabel": "トレーリング幅（%）",
+    "minLockLabel": "最低ロック利益（%） — 任意",
+    "trailingDistance": "トレーリング幅",
+    "minLockProfit": "最低ロック利益",
+    "placeholders": {
+      "trailingPct": "例: 5.0",
+      "minLockPct": "0 = 即時開始"
+    },
+    "minLockWarning": "価格が有利な方向に{{minLockPct}}%動くまで、トレーリングストップは有効化されません。",
+    "buttons": {
+      "cancel": "キャンセル",
+      "review": "確認",
+      "back": "戻る",
+      "confirm": "確定",
+      "creating": "作成中..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "SLまたはTP価格の少なくとも一方が必要です",
+    "invalidSlPrice": "ストップロス価格が無効です",
+    "slPricePositive": "ストップロス価格は正の数である必要があります",
+    "invalidTpPrice": "テイクプロフィット価格が無効です",
+    "tpPricePositive": "テイクプロフィット価格は正の数である必要があります",
+    "slLongBelowEntry": "SL価格はエントリー価格 ({{price}}) 未満である必要があります",
+    "tpLongAboveEntry": "TP価格はエントリー価格 ({{price}}) 超である必要があります",
+    "slShortAboveEntry": "SL価格はエントリー価格 ({{price}}) 超である必要があります",
+    "tpShortBelowEntry": "TP価格はエントリー価格 ({{price}}) 未満である必要があります",
+    "trailingRequired": "トレーリング率は必須です",
+    "trailingInvalid": "トレーリング率が無効です",
+    "trailingRange": "トレーリング率は0から100の範囲である必要があります",
+    "minLockInvalid": "最低ロック率が無効です",
+    "minLockRange": "最低ロック率は0から100の範囲である必要があります"
+  }
+}

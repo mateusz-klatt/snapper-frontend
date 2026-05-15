@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "설정",
+    "subtitle": "애플리케이션 설정과 파라미터 구성",
+    "addButton": "설정 추가",
+    "searchPlaceholder": "설정 검색...",
+    "noResults": "조건과 일치하는 설정이 없습니다.",
+    "allCategories": "모든 카테고리",
+    "categoryFilterAriaLabel": "카테고리별 설정 필터"
+  },
+  "errors": {
+    "loadFailed": "설정 로드 실패",
+    "updateFailed": "설정 업데이트 실패",
+    "deleteFailed": "설정 삭제 실패",
+    "createFailed": "설정 생성 실패",
+    "alreadyExists": "키 \"{{key}}\" 설정이 이미 존재합니다"
+  },
+  "item": {
+    "edit": "수정",
+    "delete": "삭제",
+    "save": "저장",
+    "saving": "저장 중...",
+    "cancel": "취소",
+    "yesDelete": "삭제",
+    "deleting": "삭제 중...",
+    "deleteConfirm": "이 설정을 삭제할까요?",
+    "valuePlaceholder": "설정값 입력...",
+    "showMore": "더 보기",
+    "showLess": "간단히 보기",
+    "toggleAriaLabel": "{{key}} 전환",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 민감"
+    },
+    "helpText": {
+      "allowShortSelling": "엔진이 숏 포지션을 열 수 있게 허용합니다. SELL 시그널은 음수 desired_units를 생성하며, 비활성화 시 0으로 제한됩니다.",
+      "allowManualOrders": "주문 탭의 새 주문 버튼을 활성화합니다. 비활성화 시 POST /api/orders는 403을 반환합니다."
+    }
+  },
+  "addModal": {
+    "title": "새 설정 추가",
+    "keyLabel": "키",
+    "valueLabel": "값",
+    "categoryLabel": "카테고리",
+    "descriptionLabel": "설명",
+    "keyPlaceholder": "예: walutomat.api_key",
+    "keyHint": "중첩 설정에는 점 표기법을 사용하세요(예: category.subcategory.name)",
+    "valuePlaceholder": "설정값",
+    "categorySelectPlaceholder": "기존 항목 선택 또는 새로 생성",
+    "newCategoryPlaceholder": "또는 새 카테고리 이름 입력",
+    "descriptionPlaceholder": "선택 설명",
+    "cancel": "취소",
+    "create": "설정 생성",
+    "creating": "생성 중...",
+    "validation": {
+      "keyRequired": "키는 필수입니다",
+      "valueRequired": "값은 필수입니다",
+      "categoryRequired": "카테고리는 필수입니다"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "폼 편집기",
+    "rawEditor": "원시 JSON 편집기",
+    "rawJson": "원시 JSON",
+    "switchToForm": "폼으로 전환",
+    "importToForm": "폼으로 가져오기",
+    "parseError": "파싱 오류: {{message}}",
+    "arraySummary": "배열 ({{length}}개 항목)",
+    "addItem": "항목 추가",
+    "remove": "제거",
+    "typeHint": {
+      "array": "(배열)",
+      "object": "(객체)",
+      "string": "(문자열)",
+      "number": "(숫자)",
+      "boolean": "(불리언)",
+      "bigint": "(bigint)",
+      "function": "(함수)",
+      "symbol": "(심볼)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

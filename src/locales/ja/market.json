@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "マーケットデータ"
+  },
+  "controls": {
+    "exchange": "取引所:",
+    "instrument": "銘柄:",
+    "timeframe": "時間足:",
+    "selectExchange": "取引所を選択",
+    "searchInstrument": "銘柄を検索..."
+  },
+  "timeframes": {
+    "1m": "1分",
+    "5m": "5分",
+    "15m": "15分",
+    "30m": "30分",
+    "1h": "1時間",
+    "4h": "4時間",
+    "1d": "1日"
+  },
+  "stats": {
+    "currentPrice": "現在価格",
+    "change24h": "24時間変化率",
+    "high24h": "24時間高値",
+    "low24h": "24時間安値"
+  },
+  "chart": {
+    "title": "価格チャート",
+    "errorPrefix": "チャートデータの読み込みエラー:",
+    "unknownError": "不明なエラー",
+    "noDataTitle": "{{instrument}}のデータはありません",
+    "noDataHint": "銘柄が存在しないか、{{timeframe}}データがありません"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{exchange}}上の{{instrument}}に関連銘柄が設定されていません。"
+  },
+  "cacheBanner": {
+    "message": "キャッシュをウォームアップ中: {{sampleCount}} / {{expected}}本のローソク足が利用可能 {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "（1分足から派生）",
+      "db": "（DBから）"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Tín hiệu"
+  },
+  "filters": {
+    "allStrategies": "Tất cả chiến lược"
+  },
+  "actions": {
+    "export": "Xuất"
+  },
+  "stats": {
+    "total": "Tổng",
+    "buy": "Mua",
+    "sell": "Bán",
+    "avgStrength": "Độ mạnh TB"
+  },
+  "card": {
+    "strength": "Độ mạnh",
+    "price": "Giá",
+    "exchange": "Sàn",
+    "reason": "Lý do:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Mạnh",
+    "medium": "Trung bình",
+    "weak": "Yếu",
+    "veryWeak": "Rất yếu"
+  },
+  "time": {
+    "justNow": "Vừa xong",
+    "minutesAgo": "{{count}}p trước",
+    "hoursAgo": "{{count}}g trước"
+  },
+  "empty": {
+    "title": "Không tìm thấy tín hiệu",
+    "message": "Không có tín hiệu giao dịch nào khớp với bộ lọc hiện tại."
+  }
+}

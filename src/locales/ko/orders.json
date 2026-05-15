@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "주문 및 체결",
+    "newOrder": "새 주문",
+    "exportCsv": "CSV 내보내기"
+  },
+  "tabs": {
+    "orders": "주문 ({{total}})",
+    "executions": "체결 ({{total}})"
+  },
+  "filters": {
+    "byStatus": "상태로 필터:",
+    "options": {
+      "all": "모든 주문",
+      "new": "신규",
+      "open": "오픈",
+      "partiallyFilled": "부분 체결",
+      "partially_filled": "부분 체결",
+      "filled": "체결 완료",
+      "cancelled": "취소됨",
+      "rejected": "거부됨"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "시장가",
+    "quantity": "수량",
+    "price": "가격",
+    "created": "생성일",
+    "createdUnknown": "N/A",
+    "orderId": "주문 ID",
+    "leverage": "레버리지",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "취소",
+    "cancelling": "취소 중…",
+    "cancelAriaLabel": "주문 {{orderId}} 취소"
+  },
+  "executionCard": {
+    "orderNumber": "주문 #{{orderId}}",
+    "filled": "체결 완료",
+    "orderLabel": "주문 {{orderId}}",
+    "size": "크기",
+    "price": "가격",
+    "total": "합계",
+    "executed": "체결일",
+    "fees": "수수료"
+  },
+  "empty": {
+    "ordersTitle": "주문이 없습니다",
+    "ordersStartTrading": "트레이딩을 시작하면 주문이 여기에 표시됩니다",
+    "ordersFilterless": "{{status}} 주문이 없습니다",
+    "executionsTitle": "체결이 없습니다",
+    "executionsMessage": "거래 체결 내역이 여기에 표시됩니다"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "종목",
+      "side": "매수/매도",
+      "type": "유형",
+      "status": "상태",
+      "quantity": "수량",
+      "price": "가격",
+      "leverage": "레버리지",
+      "reduceOnly": "Reduce Only",
+      "created": "생성일"
+    },
+    "executions": {
+      "orderId": "주문 ID",
+      "instrument": "종목",
+      "side": "매수/매도",
+      "size": "크기",
+      "price": "가격",
+      "total": "합계",
+      "fee": "수수료",
+      "feeAsset": "수수료 자산",
+      "executed": "체결일"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "새 수동 주문",
+    "titleConfirm": "주문 확인",
+    "fields": {
+      "exchange": "거래소",
+      "instrument": "종목",
+      "side": "매수/매도",
+      "orderType": "주문 유형",
+      "quantity": "수량",
+      "price": "가격",
+      "stopPrice": "스탑 가격",
+      "mode": "모드",
+      "wallet": "지갑",
+      "type": "유형"
+    },
+    "sideOptions": {
+      "buy": "매수",
+      "sell": "매도"
+    },
+    "orderTypeOptions": {
+      "market": "시장가",
+      "limit": "지정가",
+      "stop": "스탑",
+      "stopLimit": "스탑 리밋",
+      "stop_limit": "스탑 리밋"
+    },
+    "modeOptions": {
+      "live": "라이브",
+      "paper": "페이퍼"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — 시장 데이터 전용",
+    "walletPaperSuffix": "{{label}} (페이퍼)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "취소",
+      "reviewOrder": "주문 검토",
+      "back": "뒤로",
+      "confirmOrder": "주문 확인",
+      "submitting": "제출 중..."
+    },
+    "errors": {
+      "missingRequired": "필수 항목을 모두 입력해야 합니다",
+      "quantityPositive": "수량은 양수여야 합니다",
+      "priceRequired": "이 주문 유형에는 가격이 필요합니다",
+      "pricePositive": "가격은 양수여야 합니다",
+      "stopPriceRequired": "이 주문 유형에는 스탑 가격이 필요합니다",
+      "stopPricePositive": "스탑 가격은 양수여야 합니다",
+      "createFailed": "주문 생성 실패"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "이 종목은 관측 전용입니다 — 체결 가능한 종목에서 주문하세요.",
+      "unknownInstrument": "이 종목을 인식할 수 없습니다. 목록을 새로고침한 뒤 다시 시도하세요.",
+      "capsViolation": "이 주문은 계정 안전 한도를 초과합니다. 리스크 설정을 확인한 뒤 다시 시도하세요."
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "포지션"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: 대기 중",
+    "slTpButton": "SL/TP",
+    "trailButton": "트레일링",
+    "quantity": "수량",
+    "averageEntry": "평균 진입가",
+    "unrealizedPnl": "미실현 P&L",
+    "realizedPnl": "실현 P&L",
+    "updated": "{{timestamp}} 업데이트"
+  },
+  "empty": {
+    "title": "오픈 포지션 없음",
+    "message": "거래가 체결되면 롱, 숏, 플랫 포지션이 여기에 표시됩니다."
+  },
+  "bracketModal": {
+    "title": "SL/TP 연결 — {{instrument}}",
+    "confirmTitle": "브래킷 확인",
+    "position": "포지션",
+    "entryPrice": "진입가",
+    "stopLossLabel": "스탑로스 가격",
+    "takeProfitLabel": "테이크프로핏 가격",
+    "stopLoss": "스탑로스",
+    "takeProfit": "테이크프로핏",
+    "placeholders": {
+      "slLong": "${{price}} 아래",
+      "slShort": "${{price}} 위",
+      "tpLong": "${{price}} 위",
+      "tpShort": "${{price}} 아래"
+    },
+    "buttons": {
+      "cancel": "취소",
+      "review": "검토",
+      "back": "뒤로",
+      "confirm": "확인",
+      "creating": "생성 중…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "트레일링 스탑 연결 — {{instrument}}",
+    "confirmTitle": "트레일링 스탑 확인",
+    "position": "포지션",
+    "entryPrice": "진입가",
+    "trailingDistanceLabel": "트레일링 거리 (%)",
+    "minLockLabel": "최소 이익 고정 (%) — 선택 사항",
+    "trailingDistance": "트레일링 거리",
+    "minLockProfit": "최소 이익 고정",
+    "placeholders": {
+      "trailingPct": "예: 5.0",
+      "minLockPct": "0 = 즉시 시작"
+    },
+    "minLockWarning": "가격이 유리한 방향으로 {{minLockPct}}% 움직일 때까지 트레일링 스탑이 활성화되지 않습니다.",
+    "buttons": {
+      "cancel": "취소",
+      "review": "검토",
+      "back": "뒤로",
+      "confirm": "확인",
+      "creating": "생성 중..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "SL 또는 TP 가격 중 하나 이상이 필요합니다",
+    "invalidSlPrice": "유효하지 않은 스탑로스 가격",
+    "slPricePositive": "스탑로스 가격은 양수여야 합니다",
+    "invalidTpPrice": "유효하지 않은 테이크프로핏 가격",
+    "tpPricePositive": "테이크프로핏 가격은 양수여야 합니다",
+    "slLongBelowEntry": "SL 가격은 진입가({{price}})보다 낮아야 합니다",
+    "tpLongAboveEntry": "TP 가격은 진입가({{price}})보다 높아야 합니다",
+    "slShortAboveEntry": "SL 가격은 진입가({{price}})보다 높아야 합니다",
+    "tpShortBelowEntry": "TP 가격은 진입가({{price}})보다 낮아야 합니다",
+    "trailingRequired": "트레일링 비율이 필요합니다",
+    "trailingInvalid": "유효하지 않은 트레일링 비율",
+    "trailingRange": "트레일링 비율은 0에서 100 사이여야 합니다",
+    "minLockInvalid": "유효하지 않은 최소 고정 비율",
+    "minLockRange": "최소 고정 비율은 0에서 100 사이여야 합니다"
+  }
+}

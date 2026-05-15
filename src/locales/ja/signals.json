@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "シグナル"
+  },
+  "filters": {
+    "allStrategies": "すべての戦略"
+  },
+  "actions": {
+    "export": "エクスポート"
+  },
+  "stats": {
+    "total": "合計",
+    "buy": "買い",
+    "sell": "売り",
+    "avgStrength": "平均強度"
+  },
+  "card": {
+    "strength": "強度",
+    "price": "価格",
+    "exchange": "取引所",
+    "reason": "理由:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "強い",
+    "medium": "中",
+    "weak": "弱い",
+    "veryWeak": "非常に弱い"
+  },
+  "time": {
+    "justNow": "たった今",
+    "minutesAgo": "{{count}}分前",
+    "hoursAgo": "{{count}}時間前"
+  },
+  "empty": {
+    "title": "シグナルが見つかりません",
+    "message": "現在のフィルターに一致する取引シグナルはありません。"
+  }
+}

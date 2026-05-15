@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Sinyal"
+  },
+  "filters": {
+    "allStrategies": "Semua Strategi"
+  },
+  "actions": {
+    "export": "Ekspor"
+  },
+  "stats": {
+    "total": "Total",
+    "buy": "Beli",
+    "sell": "Jual",
+    "avgStrength": "Kekuatan Rata-rata"
+  },
+  "card": {
+    "strength": "Kekuatan",
+    "price": "Harga",
+    "exchange": "Bursa",
+    "reason": "Alasan:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Kuat",
+    "medium": "Sedang",
+    "weak": "Lemah",
+    "veryWeak": "Sangat Lemah"
+  },
+  "time": {
+    "justNow": "Baru saja",
+    "minutesAgo": "{{count}} mnt lalu",
+    "hoursAgo": "{{count}} jam lalu"
+  },
+  "empty": {
+    "title": "Tidak ada sinyal ditemukan",
+    "message": "Tidak ada sinyal trading yang cocok dengan filter Anda saat ini."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "概览"
+  },
+  "metrics": {
+    "feedsRunning": "运行中的 Feed",
+    "strategiesActive": "活跃策略",
+    "openOrders": "未结订单",
+    "todaysExecutions": "今日成交",
+    "executionsOn": "成交 ({{date}})"
+  },
+  "status": {
+    "stopped": "已停止",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "运行中",
+    "active": "活跃"
+  },
+  "processStatus": {
+    "title": "进程状态",
+    "feeds": "Feeds",
+    "strategies": "策略",
+    "executors": "执行器",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "投资组合摘要",
+    "totalValue": "总价值",
+    "longExposure": "多头敞口",
+    "shortExposure": "空头敞口",
+    "netDelta": "净 Delta",
+    "unrealizedPnl": "未实现 P&L",
+    "pnlPercent": "P&L %",
+    "positions": "持仓",
+    "instrumentsCount": "{{count}} 个品种",
+    "empty": "没有可用持仓数据"
+  },
+  "signals": {
+    "title": "最近信号",
+    "empty": "没有最近信号",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "最近成交",
+    "empty": "没有最近成交",
+    "noTime": "N/A"
+  }
+}

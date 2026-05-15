@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "订单和成交",
+    "newOrder": "新建订单",
+    "exportCsv": "导出 CSV"
+  },
+  "tabs": {
+    "orders": "订单 ({{total}})",
+    "executions": "成交 ({{total}})"
+  },
+  "filters": {
+    "byStatus": "按状态筛选：",
+    "options": {
+      "all": "所有订单",
+      "new": "新建",
+      "open": "挂单",
+      "partiallyFilled": "部分成交",
+      "partially_filled": "部分成交",
+      "filled": "已成交",
+      "cancelled": "已取消",
+      "rejected": "已拒绝"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "市价",
+    "quantity": "数量",
+    "price": "价格",
+    "created": "创建时间",
+    "createdUnknown": "N/A",
+    "orderId": "订单 ID",
+    "leverage": "杠杆",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "只减仓",
+    "cancel": "取消",
+    "cancelling": "取消中…",
+    "cancelAriaLabel": "取消订单 {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "订单 #{{orderId}}",
+    "filled": "已成交",
+    "orderLabel": "订单 {{orderId}}",
+    "size": "数量",
+    "price": "价格",
+    "total": "总额",
+    "executed": "成交时间",
+    "fees": "手续费"
+  },
+  "empty": {
+    "ordersTitle": "未找到订单",
+    "ordersStartTrading": "开始交易后，订单会显示在这里",
+    "ordersFilterless": "没有 {{status}} 订单",
+    "executionsTitle": "未找到成交",
+    "executionsMessage": "交易成交会显示在这里"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "品种",
+      "side": "方向",
+      "type": "类型",
+      "status": "状态",
+      "quantity": "数量",
+      "price": "价格",
+      "leverage": "杠杆",
+      "reduceOnly": "只减仓",
+      "created": "创建时间"
+    },
+    "executions": {
+      "orderId": "订单 ID",
+      "instrument": "品种",
+      "side": "方向",
+      "size": "数量",
+      "price": "价格",
+      "total": "总额",
+      "fee": "手续费",
+      "feeAsset": "手续费资产",
+      "executed": "成交时间"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "新建手动订单",
+    "titleConfirm": "确认订单",
+    "fields": {
+      "exchange": "交易所",
+      "instrument": "品种",
+      "side": "方向",
+      "orderType": "订单类型",
+      "quantity": "数量",
+      "price": "价格",
+      "stopPrice": "止损价",
+      "mode": "模式",
+      "wallet": "钱包",
+      "type": "类型"
+    },
+    "sideOptions": {
+      "buy": "买入",
+      "sell": "卖出"
+    },
+    "orderTypeOptions": {
+      "market": "市价单",
+      "limit": "限价单",
+      "stop": "止损单",
+      "stopLimit": "止损限价单",
+      "stop_limit": "止损限价单"
+    },
+    "modeOptions": {
+      "live": "实盘",
+      "paper": "模拟"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — 仅市场数据",
+    "walletPaperSuffix": "{{label}} (模拟)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "reviewOrder": "复核订单",
+      "back": "返回",
+      "confirmOrder": "确认订单",
+      "submitting": "提交中..."
+    },
+    "errors": {
+      "missingRequired": "必须填写所有必填字段",
+      "quantityPositive": "数量必须为正数",
+      "priceRequired": "此订单类型必须填写价格",
+      "pricePositive": "价格必须为正数",
+      "stopPriceRequired": "此订单类型必须填写止损价",
+      "stopPricePositive": "止损价必须为正数",
+      "createFailed": "创建订单失败"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "此品种仅可观察 — 请在支持执行的品种上下单。",
+      "unknownInstrument": "无法识别此品种。请重新加载列表后重试。",
+      "capsViolation": "此订单会超过你的账户安全上限。请检查风险设置后重试。"
+    }
+  }
+}

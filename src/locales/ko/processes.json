@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "프로세스 제어",
+    "subtitle": "실시간 프로세스 모니터링 및 제어"
+  },
+  "sections": {
+    "longRunning": "장기 실행 프로세스",
+    "executorTemplates": "실행기 템플릿",
+    "executorTemplatesHint": "템플릿 설정을 수정하면 재시작 후 이 거래소의 모든 지갑에 적용됩니다. 템플릿은 설정 전용입니다 — 실행기를 구동하려면 아래에서 지갑별 인스턴스를 시작하세요.",
+    "walletInstances": "지갑 인스턴스",
+    "taskProcesses": "태스크 프로세스"
+  },
+  "card": {
+    "stop": "중지",
+    "start": "시작",
+    "restart": "재시작",
+    "starting": "시작 중...",
+    "stopping": "중지 중...",
+    "status": {
+      "running": "실행 중",
+      "stopped": "중지됨",
+      "error": "오류",
+      "starting": "시작 중",
+      "stopping": "중지 중"
+    }
+  },
+  "template": {
+    "badge": "템플릿",
+    "mode": "모드:",
+    "parameters": "파라미터:",
+    "paramCount": "{{count}}개 파라미터",
+    "noParams": "설정된 파라미터 없음"
+  },
+  "badges": {
+    "oneShot": "원샷",
+    "autoStart": "자동 시작",
+    "manual": "수동"
+  },
+  "actions": {
+    "stopTitle": "{{name}} 중지",
+    "stopMessage": "{{name}} 프로세스를 중지합니다.",
+    "restartTitle": "{{name}} 재시작",
+    "restartMessage": "{{name}} 프로세스를 재시작합니다."
+  },
+  "executionMode": {
+    "title": "{{name}} 시작",
+    "label": "실행 모드:",
+    "threadName": "스레드 모드",
+    "threadDescription": "웹 서버 내 임베디드 태스크로 실행됩니다. 시작이 빠르고 메모리를 공유합니다.",
+    "processName": "프로세스 모드",
+    "processDescription": "별도 Python 프로세스로 실행됩니다. 격리되고 장애에 강하며 상세 모니터링이 가능합니다.",
+    "cancel": "취소",
+    "start": "{{name}} 시작",
+    "threadAriaLabel": "스레드 모드",
+    "processAriaLabel": "프로세스 모드"
+  }
+}

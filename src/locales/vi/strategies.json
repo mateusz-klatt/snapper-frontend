@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Quản lý chiến lược",
+    "register": "Đăng ký chiến lược",
+    "saving": "Đang lưu…",
+    "descriptionCanManage": "Đăng ký tiến trình chiến lược mới trực tiếp từ UI. Autostart giữ tiến trình được bật sau các lần khởi động lại.",
+    "descriptionViewer": "Xem các chiến lược đã cấu hình và trạng thái của chúng. Liên hệ người vận hành hoặc quản trị viên để quản lý chiến lược.",
+    "searchPlaceholder": "Tìm chiến lược...",
+    "filter": {
+      "all": "Tất cả trạng thái",
+      "running": "Đang chạy",
+      "stopped": "Đã dừng"
+    },
+    "configuredHeading": "Chiến lược đã cấu hình",
+    "noMatches": "Không có chiến lược nào khớp với bộ lọc",
+    "clearFilters": "Xóa bộ lọc",
+    "emptyTitle": "Chưa cấu hình chiến lược",
+    "emptyCanManage": "Đăng ký một chiến lược để bắt đầu giao dịch thuật toán",
+    "emptyViewer": "Chưa có chiến lược nào được cấu hình"
+  },
+  "confirm": {
+    "startTitle": "Bắt đầu {{name}}",
+    "startMessage": "Thao tác này sẽ bắt đầu chiến lược {{name}}. Chiến lược có thể bắt đầu vận hành giao dịch live.",
+    "stopTitle": "Dừng {{name}}",
+    "stopMessage": "Thao tác này sẽ dừng chiến lược {{name}}. Các vị thế đang hoạt động sẽ không tự động đóng."
+  },
+  "toast": {
+    "saved": "Đã lưu chiến lược {{name}}",
+    "started": "Đã bắt đầu chiến lược {{name}}",
+    "registerFailed": "Không đăng ký được chiến lược: {{message}}",
+    "startSuccess": "Bắt đầu chiến lược thành công",
+    "stopSuccess": "Dừng chiến lược thành công",
+    "alreadyRunning": "Chiến lược đang chạy",
+    "notRunning": "Chiến lược không chạy",
+    "configNotFound": "Không tìm thấy cấu hình chiến lược. Vui lòng kiểm tra cài đặt cơ sở dữ liệu.",
+    "networkError": "Lỗi mạng. Vui lòng kiểm tra kết nối và thử lại.",
+    "startFailed": "Không bắt đầu được chiến lược: {{message}}",
+    "stopFailed": "Không dừng được chiến lược: {{message}}",
+    "unknownError": "Lỗi không xác định"
+  },
+  "card": {
+    "ariaLabel": "Chiến lược: {{name}}",
+    "modeLabel": "Chế độ: {{mode}}",
+    "autostartEnabled": "Autostart: bật",
+    "autostartDisabled": "Autostart: tắt",
+    "statusAriaLabel": "Trạng thái: {{status}}",
+    "dataLagAriaLabel": "Độ trễ dữ liệu: {{seconds}} giây",
+    "lagBadge": "trễ: {{seconds}}s",
+    "feedLag": "Độ trễ Feed: {{ms}}ms",
+    "heartbeatAge": "Tuổi HB: {{seconds}}s",
+    "metrics": {
+      "status": "Trạng thái",
+      "dataLag": "Độ trễ dữ liệu",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Hiển thị chi tiết",
+    "hideDetails": "Ẩn chi tiết",
+    "inputs": "Đầu vào ({{count}})",
+    "outputs": "Đầu ra ({{count}})",
+    "feedPublishers": "Feed Publisher ({{count}})",
+    "lastUpdate": "Cập nhật gần nhất: {{time}}",
+    "waiting": "Đang chờ heartbeat...",
+    "startAriaLabel": "Bắt đầu chiến lược {{name}}",
+    "stopAriaLabel": "Dừng chiến lược {{name}}",
+    "start": "Bắt đầu",
+    "stop": "Dừng",
+    "starting": "Đang bắt đầu...",
+    "stopping": "Đang dừng...",
+    "status": {
+      "starting": "đang bắt đầu",
+      "stopping": "đang dừng",
+      "running": "đang chạy",
+      "stopped": "đã dừng"
+    },
+    "health": {
+      "healthy": "Ổn định — đang nhận dữ liệu mới",
+      "warning": "Cảnh báo — dữ liệu đã cũ",
+      "error": "Lỗi — không có dữ liệu gần đây",
+      "unknown": "Không xác định — không có dữ liệu heartbeat"
+    },
+    "healthShort": {
+      "healthy": "ỔN ĐỊNH",
+      "warning": "CẢNH BÁO",
+      "error": "LỖI"
+    }
+  },
+  "launchModal": {
+    "title": "Đăng ký tiến trình chiến lược",
+    "emptyTemplates": "Chưa có mẫu chiến lược nào được đăng ký trong backend. Hãy định nghĩa ít nhất một tiến trình chiến lược.",
+    "close": "Đóng",
+    "templateLabel": "Mẫu chiến lược",
+    "templatePlaceholder": "Chọn mẫu...",
+    "templateFallbackDescription": "Chiến lược đã đăng ký trong backend",
+    "loadingDefaults": "Đang tải mặc định của mẫu…",
+    "loadDefaultsError": "Không tải được mặc định của mẫu. Vui lòng kiểm tra log backend.",
+    "processNameLabel": "Tên tiến trình",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Ký tự được phép: chữ thường, số, dấu gạch dưới",
+    "instanceNameLabel": "Tên phiên bản chiến lược",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Được dùng trong cấu hình chiến lược và các topic đầu ra",
+    "executionModeLabel": "Chế độ thực thi",
+    "executionModeThread": "Luồng nhúng",
+    "executionModeProcess": "Tiến trình cách ly",
+    "executionModeHelp": "Luồng dùng chung bộ nhớ, tiến trình cung cấp cách ly mạnh hơn.",
+    "flagsLabel": "Flag",
+    "autostartLabel": "Autostart khi máy chủ khởi động",
+    "startImmediatelyLabel": "Bắt đầu ngay sau khi đăng ký",
+    "noteLabel": "Ghi chú (tùy chọn)",
+    "notePlaceholder": "Mô tả mục đích hoặc tham số của phiên bản chiến lược này.",
+    "noteHelp": "Được lưu cùng cấu hình để hỗ trợ nhận diện tiến trình này.",
+    "cancel": "Hủy",
+    "submit": "Đăng ký chiến lược",
+    "submitting": "Đang đăng ký…"
+  }
+}

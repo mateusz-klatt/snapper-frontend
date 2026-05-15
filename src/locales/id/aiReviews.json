@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Permintaan",
+    "decision": "Keputusan",
+    "capsViolation": "Pelanggaran batas",
+    "selectedDelegate": "Delegat terpilih",
+    "instrument": "instrumen",
+    "deadline": "batas waktu {{time}}",
+    "decidedBy": "oleh",
+    "newStatus": "status",
+    "mode": "mode",
+    "capAttempted": "dicoba",
+    "capLimit": "vs batas",
+    "capOn": "pada instrumen",
+    "reviewLabel": "tinjauan {{reviewId}}",
+    "unhandledFrame": "Frame aktivitas tinjauan AI tidak tertangani: {{frame}}"
+  },
+  "page": {
+    "title": "Kotak Masuk Tinjauan AI",
+    "subtitle": "Tinjauan CONSULT tertunda yang diarahkan ke delegat ini serta stream peristiwa live."
+  },
+  "roleNotice": {
+    "title": "Dicadangkan untuk delegat AI",
+    "message": "Kotak masuk ini menampilkan tinjauan CONSULT yang diarahkan ke prinsipal delegat AI. Masuk dengan akun delegat AI untuk melihat tinjauan tertunda dan stream aktivitas live. Peran Anda saat ini adalah",
+    "unknownRole": "tidak diketahui"
+  },
+  "pending": {
+    "title": "Tinjauan tertunda",
+    "loading": "Memuat tinjauan tertunda…",
+    "loadError": "Gagal memuat tinjauan tertunda: {{message}}",
+    "emptyTitle": "Tidak ada tinjauan tertunda",
+    "emptyMessage": "Permintaan CONSULT baru yang diarahkan ke delegat ini akan muncul di sini.",
+    "columns": {
+      "instrument": "Instrumen",
+      "thesis": "Tesis",
+      "status": "Status",
+      "deadline": "Batas waktu",
+      "decision": "Keputusan"
+    },
+    "rationalePlaceholder": "Alasan (opsional)",
+    "rationaleAriaLabel": "Alasan untuk tinjauan {{reviewId}}",
+    "approve": "Setujui",
+    "reject": "Tolak",
+    "submitError": "Pengiriman gagal: {{message}}"
+  },
+  "activity": {
+    "title": "Aktivitas terbaru",
+    "emptyTitle": "Belum ada aktivitas",
+    "emptyMessage": "Frame permintaan tinjauan AI, keputusan, dan pelanggaran batas akan mengalir ke sini.",
+    "summaryEmpty": "Belum ada frame diterima",
+    "summaryCount": "Menampilkan {{shown}} dari {{total}} dalam buffer"
+  }
+}

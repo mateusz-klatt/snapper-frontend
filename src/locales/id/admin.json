@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrasi",
+    "subtitle": "Kelola pengguna dan konfigurasi sistem"
+  },
+  "rolePermissions": {
+    "title": "Izin Peran",
+    "viewer": {
+      "label": "Pengamat",
+      "description": "Akses hanya baca ke Ringkasan dan Data pasar. Tidak dapat mengelola proses, strategi, atau pengaturan sistem."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Semua izin Pengamat ditambah operasi trading, eksekusi strategi, manajemen proses, dan pemantauan kesehatan sistem."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Akses penuh ke sistem termasuk manajemen pengguna, pengaturan sistem, konfigurasi kunci API, dan semua izin Operator."
+    },
+    "table": {
+      "resource": "Sumber daya",
+      "viewer": "Pengamat",
+      "operator": "Operator",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Ringkasan",
+      "market": "Data pasar",
+      "processes": "Proses",
+      "strategies": "Strategi",
+      "orders": "Pesanan & Eksekusi",
+      "positions": "Posisi",
+      "signals": "Sinyal",
+      "health": "Kesehatan",
+      "admin": "Administrasi",
+      "settings": "Pengaturan"
+    }
+  },
+  "common": {
+    "cancel": "Batal",
+    "selectWallet": "Pilih dompet",
+    "selectAWallet": "Pilih dompet",
+    "chooseWalletPlaceholder": "Pilih dompet...",
+    "selectWalletPlaceholder": "Pilih dompet...",
+    "walletLabel": "Dompet",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Kesalahan tidak diketahui",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Akses Ditolak",
+      "message": "Anda tidak memiliki izin untuk mengelola pengguna. Hubungi administrator sistem Anda."
+    },
+    "list": {
+      "title": "Manajemen Pengguna",
+      "countLabel": "{{count}} pengguna",
+      "showInactive": "Tampilkan nonaktif",
+      "hideInactive": "Sembunyikan nonaktif",
+      "addUser": "Tambah Pengguna",
+      "searchPlaceholder": "Cari berdasarkan nama pengguna, email, atau peran...",
+      "columns": {
+        "user": "Pengguna",
+        "role": "Peran",
+        "status": "Status",
+        "createdAt": "Dibuat Pada",
+        "actions": "Tindakan"
+      },
+      "status": {
+        "active": "Aktif",
+        "inactive": "Nonaktif"
+      },
+      "unknown": "Tidak diketahui",
+      "empty": {
+        "title": "Pengguna tidak ditemukan",
+        "noMatch": "Tidak ada pengguna yang cocok dengan kriteria pencarian Anda.",
+        "noUsers": "Pengguna tidak ditemukan.",
+        "noActive": "Tidak ada pengguna aktif."
+      },
+      "errorLoading": "Kesalahan saat memuat pengguna: {{message}}",
+      "deactivate": {
+        "title": "Nonaktifkan Pengguna",
+        "message": "Anda yakin ingin menonaktifkan pengguna \"{{username}}\"? Pengguna ini tidak akan dapat masuk lagi.",
+        "confirm": "Nonaktifkan"
+      },
+      "toast": {
+        "deactivated": "Pengguna telah dinonaktifkan",
+        "deactivateError": "Kesalahan saat menonaktifkan pengguna"
+      }
+    },
+    "form": {
+      "titleEdit": "Edit Pengguna",
+      "titleAdd": "Tambah Pengguna",
+      "fields": {
+        "username": "Nama pengguna",
+        "usernamePlaceholder": "Masukkan nama pengguna",
+        "password": "Kata sandi",
+        "passwordPlaceholder": "Masukkan kata sandi",
+        "newPassword": "Kata sandi baru",
+        "newPasswordPlaceholder": "Masukkan kata sandi baru",
+        "email": "Email",
+        "emailPlaceholder": "Masukkan email",
+        "role": "Peran",
+        "accountActive": "Akun aktif",
+        "resetUserPassword": "Atur ulang kata sandi pengguna"
+      },
+      "roles": {
+        "viewer": "Pengamat",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Nama pengguna wajib diisi",
+        "usernameMinLength": "Nama pengguna minimal 3 karakter",
+        "emailRequired": "Email wajib diisi",
+        "emailInvalid": "Format email tidak valid",
+        "passwordRequired": "Kata sandi wajib diisi",
+        "passwordMinLength": "Kata sandi minimal 8 karakter",
+        "passwordRequiredWhenResetting": "Kata sandi wajib diisi saat mengatur ulang"
+      },
+      "actions": {
+        "saveChanges": "Simpan Perubahan",
+        "createUser": "Buat Pengguna"
+      },
+      "toast": {
+        "created": "Pengguna telah dibuat",
+        "createError": "Kesalahan saat membuat pengguna",
+        "updated": "Pengguna telah diperbarui",
+        "updateError": "Kesalahan saat memperbarui pengguna",
+        "passwordReset": "Kata sandi pengguna telah diatur ulang",
+        "resetError": "Kesalahan saat mengatur ulang kata sandi"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Akses Ditolak",
+      "message": "Anda tidak memiliki izin untuk mengelola lingkup izin. Hubungi administrator sistem Anda."
+    },
+    "list": {
+      "title": "Lingkup Izin",
+      "countLabel": "{{count}} izin",
+      "createGrant": "Buat Izin",
+      "selectWalletPrompt": "Pilih dompet di atas untuk melihat lingkup izinnya.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Lingkup",
+        "target": "Target",
+        "grantedAt": "Diberikan Pada",
+        "actions": "Tindakan"
+      },
+      "empty": {
+        "noGrants": "Tidak ada izin ditemukan",
+        "noGrantsHint": "Dompet ini tidak memiliki lingkup izin aktif."
+      },
+      "errorLoading": "Kesalahan saat memuat izin: {{message}}",
+      "handover": "Serah terima"
+    },
+    "form": {
+      "title": "Buat Lingkup Izin",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Pilih operator...",
+        "wallet": "Dompet",
+        "scopeKind": "Jenis lingkup",
+        "underlyingPublicId": "ID Publik Aset Dasar",
+        "instrumentPublicId": "ID Publik Instrumen",
+        "underlyingPlaceholder": "mis. BTC",
+        "instrumentPlaceholder": "mis. BTC-USD-PERP",
+        "note": "Catatan (opsional)",
+        "notePlaceholder": "Catatan opsional"
+      },
+      "scopeKinds": {
+        "underlying": "Aset dasar",
+        "instrument": "Instrumen"
+      },
+      "validation": {
+        "operatorRequired": "Operator wajib diisi",
+        "walletRequired": "Dompet wajib diisi",
+        "targetRequired": "ID target wajib diisi"
+      },
+      "actions": {
+        "createGrant": "Buat Izin"
+      },
+      "toast": {
+        "created": "Lingkup izin dibuat",
+        "conflictError": "Konflik: operator lain sudah memegang izin pada lingkup ini",
+        "createError": "Kesalahan saat membuat lingkup izin"
+      }
+    },
+    "handover": {
+      "title": "Serah Terima Lingkup Izin",
+      "fields": {
+        "currentHolder": "Pemegang saat ini",
+        "scope": "Lingkup",
+        "wallet": "Dompet",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Serahkan ke operator",
+        "transferToPlaceholder": "Pilih operator tujuan...",
+        "reason": "Alasan (opsional)",
+        "reasonPlaceholder": "mis. Pergantian shift"
+      },
+      "actions": {
+        "handover": "Serah terima"
+      },
+      "toast": {
+        "completed": "Lingkup izin diserahkan",
+        "conflictError": "Konflik: operator tujuan sudah memegang izin yang bertentangan",
+        "handoverError": "Kesalahan saat menyerahkan lingkup izin"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Akses Ditolak",
+      "message": "Anda tidak memiliki izin untuk mengelola kredensial dompet. Hubungi administrator sistem Anda."
+    },
+    "list": {
+      "title": "Kredensial Dompet",
+      "countLabel": "{{count}} kredensial",
+      "addCredential": "Tambah Kredensial",
+      "selectWalletPrompt": "Pilih dompet di atas untuk melihat kredensialnya.",
+      "columns": {
+        "exchange": "Bursa",
+        "type": "Tipe",
+        "label": "Label",
+        "createdAt": "Dibuat Pada",
+        "actions": "Tindakan"
+      },
+      "empty": {
+        "noCredentials": "Tidak ada kredensial ditemukan",
+        "noCredentialsHint": "Dompet ini tidak memiliki kredensial aktif."
+      },
+      "errorLoading": "Kesalahan saat memuat kredensial: {{message}}",
+      "rotate": "Ganti"
+    },
+    "form": {
+      "title": "Tambah Kredensial",
+      "fields": {
+        "wallet": "Dompet",
+        "exchange": "Bursa",
+        "exchangePlaceholder": "mis. kraken",
+        "credentialType": "Jenis Kredensial",
+        "label": "Label (opsional)",
+        "labelPlaceholder": "mis. Kunci trading utama",
+        "pemPlaceholder": "Tempelkan kunci privat format PEM di sini"
+      },
+      "fieldLabels": {
+        "api_key": "Kunci API",
+        "api_secret": "Secret API",
+        "private_key_pem": "Kunci Privat (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Saldo Awal"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Kunci API + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Dompet wajib diisi",
+        "exchangeRequired": "Bursa wajib diisi",
+        "fieldRequired": "{{field}} wajib diisi"
+      },
+      "actions": {
+        "addCredential": "Tambah Kredensial"
+      },
+      "toast": {
+        "created": "Kredensial dibuat",
+        "conflictError": "Konflik: dompet ini sudah memiliki kredensial aktif untuk bursa ini",
+        "createError": "Kesalahan saat membuat kredensial"
+      }
+    },
+    "rotate": {
+      "title": "Ganti Kredensial",
+      "fields": {
+        "exchange": "Bursa",
+        "type": "Tipe",
+        "label": "Label",
+        "newLabel": "Label Baru (opsional)",
+        "newLabelPlaceholder": "mis. Kunci pengganti 2026-04",
+        "pemPlaceholder": "Tempelkan kunci privat format PEM di sini"
+      },
+      "actions": {
+        "rotate": "Ganti"
+      },
+      "toast": {
+        "rotated": "Kredensial diganti",
+        "rotateError": "Kesalahan saat mengganti kredensial"
+      }
+    }
+  }
+}

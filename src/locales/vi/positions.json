@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Vị thế"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: đang chờ",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Số lượng",
+    "averageEntry": "Giá vào TB",
+    "unrealizedPnl": "P&L chưa thực hiện",
+    "realizedPnl": "P&L đã thực hiện",
+    "updated": "Cập nhật {{timestamp}}"
+  },
+  "empty": {
+    "title": "Không có vị thế đang mở",
+    "message": "Vị thế long, short và flat sẽ xuất hiện tại đây sau khi giao dịch được khớp."
+  },
+  "bracketModal": {
+    "title": "Gắn SL/TP — {{instrument}}",
+    "confirmTitle": "Xác nhận Bracket",
+    "position": "Vị thế",
+    "entryPrice": "Giá vào",
+    "stopLossLabel": "Giá Stop-Loss",
+    "takeProfitLabel": "Giá Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Dưới ${{price}}",
+      "slShort": "Trên ${{price}}",
+      "tpLong": "Trên ${{price}}",
+      "tpShort": "Dưới ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Hủy",
+      "review": "Kiểm tra",
+      "back": "Quay lại",
+      "confirm": "Xác nhận",
+      "creating": "Đang tạo…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Gắn Trailing Stop — {{instrument}}",
+    "confirmTitle": "Xác nhận Trailing Stop",
+    "position": "Vị thế",
+    "entryPrice": "Giá vào",
+    "trailingDistanceLabel": "Khoảng cách Trailing (%)",
+    "minLockLabel": "Lợi nhuận khóa tối thiểu (%) — tùy chọn",
+    "trailingDistance": "Khoảng cách Trailing",
+    "minLockProfit": "Lợi nhuận khóa tối thiểu",
+    "placeholders": {
+      "trailingPct": "ví dụ 5.0",
+      "minLockPct": "0 = bắt đầu ngay"
+    },
+    "minLockWarning": "Trailing Stop sẽ không kích hoạt cho đến khi giá đi {{minLockPct}}% theo hướng có lợi cho bạn.",
+    "buttons": {
+      "cancel": "Hủy",
+      "review": "Kiểm tra",
+      "back": "Quay lại",
+      "confirm": "Xác nhận",
+      "creating": "Đang tạo..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Cần ít nhất một giá SL hoặc TP",
+    "invalidSlPrice": "Giá Stop-Loss không hợp lệ",
+    "slPricePositive": "Giá Stop-Loss phải là số dương",
+    "invalidTpPrice": "Giá Take-Profit không hợp lệ",
+    "tpPricePositive": "Giá Take-Profit phải là số dương",
+    "slLongBelowEntry": "Giá SL phải thấp hơn giá vào ({{price}})",
+    "tpLongAboveEntry": "Giá TP phải cao hơn giá vào ({{price}})",
+    "slShortAboveEntry": "Giá SL phải cao hơn giá vào ({{price}})",
+    "tpShortBelowEntry": "Giá TP phải thấp hơn giá vào ({{price}})",
+    "trailingRequired": "Bắt buộc nhập phần trăm Trailing",
+    "trailingInvalid": "Phần trăm Trailing không hợp lệ",
+    "trailingRange": "Phần trăm Trailing phải nằm trong khoảng 0 đến 100",
+    "minLockInvalid": "Phần trăm khóa tối thiểu không hợp lệ",
+    "minLockRange": "Phần trăm khóa tối thiểu phải nằm trong khoảng 0 đến 100"
+  }
+}
