@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface MarketDataOnlyBadgeProps {
   /**
@@ -17,9 +18,6 @@ const SIZE_CLASSES: Readonly<Record<'sm' | 'md', string>> = {
   md: 'text-xs px-2 py-1 rounded-md',
 }
 
-const DEFAULT_TITLE =
-  'Observation-only instrument. Snapper receives market data but cannot place orders for this (symbol, exchange) pair.'
-
 /**
  * Pill marking an instrument whose ``SymbolExchangeCapability.can_trade=false``.
  *
@@ -31,15 +29,20 @@ const DEFAULT_TITLE =
  */
 export const MarketDataOnlyBadge: React.FC<Readonly<MarketDataOnlyBadgeProps>> = ({
   size = 'sm',
-  title = DEFAULT_TITLE,
+  title,
   className = '',
-}) => (
-  <span
-    title={title}
-    aria-label='Market-data only instrument'
-    data-testid='market-data-only-badge'
-    className={`inline-flex items-center whitespace-nowrap bg-warning-500/20 text-warning-600 border border-warning-500/40 font-medium ${SIZE_CLASSES[size]} ${className}`}
-  >
-    Market-data only
-  </span>
-)
+}) => {
+  const { t } = useTranslation('common')
+  const tooltip = title ?? t('chrome.marketDataOnly.defaultTooltip')
+
+  return (
+    <span
+      title={tooltip}
+      aria-label={t('chrome.marketDataOnly.ariaLabel')}
+      data-testid='market-data-only-badge'
+      className={`inline-flex items-center whitespace-nowrap bg-warning-500/20 text-warning-600 border border-warning-500/40 font-medium ${SIZE_CLASSES[size]} ${className}`}
+    >
+      {t('chrome.marketDataOnly.badge')}
+    </span>
+  )
+}

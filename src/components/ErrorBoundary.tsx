@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface ErrorFallbackProps {
   error: Error
@@ -11,7 +12,10 @@ export function ErrorFallback({
   resetError,
   componentName,
 }: Readonly<ErrorFallbackProps>): ReactNode {
-  const title = componentName ? `Error in ${componentName}` : 'Something went wrong'
+  const { t } = useTranslation('common')
+  const title = componentName
+    ? t('errorBoundary.titleWithComponent', { componentName })
+    : t('errorBoundary.titleDefault')
 
   return (
     <div className='flex flex-col items-center justify-center p-6 bg-loss-500/10 border border-loss-500/30 rounded-lg min-h-[200px]'>
@@ -35,7 +39,9 @@ export function ErrorFallback({
       <p className='text-sm text-muted-400 mb-4 text-center max-w-md'>{error.message}</p>
       {import.meta.env.DEV && (
         <details className='text-xs text-muted-500 mb-4 max-w-full overflow-auto'>
-          <summary className='cursor-pointer hover:text-muted-400'>Stack trace</summary>
+          <summary className='cursor-pointer hover:text-muted-400'>
+            {t('errorBoundary.stackTrace')}
+          </summary>
           <pre className='mt-2 p-2 bg-black/30 rounded text-left whitespace-pre-wrap break-all'>
             {error.stack}
           </pre>
@@ -45,7 +51,7 @@ export function ErrorFallback({
         onClick={resetError}
         className='px-4 py-2 bg-loss-600 hover:bg-loss-700 text-white rounded-md transition-colors text-sm font-medium'
       >
-        Try again
+        {t('errorBoundary.tryAgain')}
       </button>
     </div>
   )

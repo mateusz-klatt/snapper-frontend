@@ -1,8 +1,10 @@
 import { useCallback } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Clock, X } from 'lucide-react'
 import { useAppStore } from '../stores/app'
 
 export const TimeTravelPicker: React.FC = () => {
+  const { t } = useTranslation('common')
   const asOf = useAppStore(s => s.asOf)
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const setAsOf = useAppStore(s => s.setAsOf)
@@ -42,14 +44,14 @@ export const TimeTravelPicker: React.FC = () => {
         value={inputValue}
         onChange={handleChange}
         className='rounded-md border border-dark-600 bg-dark-800 px-2 py-1 text-xs text-alpine-900 focus:border-brand-500 focus:outline-none'
-        title='Time travel: select a historical point in time'
+        title={t('chrome.timeTravel.pickerTitle')}
       />
       {isTimeTraveling && (
         <button
           onClick={handleClear}
           className='rounded-md p-1 text-loss-600 hover:bg-dark-700'
-          aria-label='Exit time travel mode'
-          title='Return to live mode'
+          aria-label={t('chrome.timeTravel.exitAriaLabel')}
+          title={t('chrome.timeTravel.exitTitle')}
         >
           <X size={14} />
         </button>
