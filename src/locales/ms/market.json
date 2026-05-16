@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Data pasaran"
+  },
+  "controls": {
+    "exchange": "Bursa:",
+    "instrument": "Instrumen:",
+    "timeframe": "Rangka masa:",
+    "selectExchange": "Pilih bursa",
+    "searchInstrument": "Cari instrumen..."
+  },
+  "timeframes": {
+    "1m": "1 Minit",
+    "5m": "5 Minit",
+    "15m": "15 Minit",
+    "30m": "30 Minit",
+    "1h": "1 Jam",
+    "4h": "4 Jam",
+    "1d": "1 Hari"
+  },
+  "stats": {
+    "currentPrice": "Harga Semasa",
+    "change24h": "Perubahan 24j",
+    "high24h": "Tinggi 24j",
+    "low24h": "Rendah 24j"
+  },
+  "chart": {
+    "title": "Carta Harga",
+    "errorPrefix": "Ralat memuatkan data carta:",
+    "unknownError": "Ralat tidak diketahui",
+    "noDataTitle": "Tiada data tersedia untuk {{instrument}}",
+    "noDataHint": "Instrumen mungkin tidak wujud atau tiada data {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Tiada instrumen berkaitan dikonfigurasikan untuk {{instrument}} pada {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache sedang dipanaskan: {{sampleCount}} / {{expected}} lilin tersedia {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(diterbitkan daripada 1m)",
+      "db": "(daripada DB)"
+    }
+  }
+}

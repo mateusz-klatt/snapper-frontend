@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Pesanan & Pelaksanaan",
+    "newOrder": "Pesanan Baharu",
+    "exportCsv": "Eksport CSV"
+  },
+  "tabs": {
+    "orders": "Pesanan ({{total}})",
+    "executions": "Pelaksanaan ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Tapis mengikut status:",
+    "options": {
+      "all": "Semua Pesanan",
+      "new": "Baharu",
+      "open": "Terbuka",
+      "partiallyFilled": "Diisi Sebahagian",
+      "partially_filled": "Diisi Sebahagian",
+      "filled": "Diisi",
+      "cancelled": "Dibatalkan",
+      "rejected": "Ditolak"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Kuantiti",
+    "price": "Harga",
+    "created": "Dicipta",
+    "createdUnknown": "N/A",
+    "orderId": "Order ID",
+    "leverage": "Leveraj",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Batal",
+    "cancelling": "Membatalkan…",
+    "cancelAriaLabel": "Batalkan pesanan {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Pesanan #{{orderId}}",
+    "filled": "FILLED",
+    "orderLabel": "Pesanan {{orderId}}",
+    "size": "Saiz",
+    "price": "Harga",
+    "total": "Jumlah",
+    "executed": "Dilaksanakan",
+    "fees": "Fi"
+  },
+  "empty": {
+    "ordersTitle": "Tiada pesanan ditemui",
+    "ordersStartTrading": "Mulakan dagangan untuk melihat pesanan di sini",
+    "ordersFilterless": "Tiada pesanan {{status}}",
+    "executionsTitle": "Tiada pelaksanaan ditemui",
+    "executionsMessage": "Pelaksanaan dagangan akan muncul di sini"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrumen",
+      "side": "Sisi",
+      "type": "Jenis",
+      "status": "Status",
+      "quantity": "Kuantiti",
+      "price": "Harga",
+      "leverage": "Leveraj",
+      "reduceOnly": "Reduce Only",
+      "created": "Dicipta"
+    },
+    "executions": {
+      "orderId": "Order ID",
+      "instrument": "Instrumen",
+      "side": "Sisi",
+      "size": "Saiz",
+      "price": "Harga",
+      "total": "Jumlah",
+      "fee": "Fi",
+      "feeAsset": "Aset Fi",
+      "executed": "Dilaksanakan"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Pesanan Manual Baharu",
+    "titleConfirm": "Sahkan Pesanan",
+    "fields": {
+      "exchange": "Bursa",
+      "instrument": "Instrumen",
+      "side": "Sisi",
+      "orderType": "Jenis Pesanan",
+      "quantity": "Kuantiti",
+      "price": "Harga",
+      "stopPrice": "Harga stop",
+      "mode": "Mod",
+      "wallet": "Dompet",
+      "type": "Jenis"
+    },
+    "sideOptions": {
+      "buy": "Beli",
+      "sell": "Jual"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Pesanan limit",
+      "stop": "Pesanan stop",
+      "stopLimit": "Pesanan stop limit",
+      "stop_limit": "Pesanan stop limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — data pasaran sahaja",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Batal",
+      "reviewOrder": "Semak Pesanan",
+      "back": "Kembali",
+      "confirmOrder": "Sahkan Pesanan",
+      "submitting": "Menghantar..."
+    },
+    "errors": {
+      "missingRequired": "Semua medan wajib mesti diisi",
+      "quantityPositive": "Kuantiti mesti nombor positif",
+      "priceRequired": "Harga diperlukan untuk jenis pesanan ini",
+      "pricePositive": "Harga mesti nombor positif",
+      "stopPriceRequired": "Harga stop diperlukan untuk jenis pesanan ini",
+      "stopPricePositive": "Harga stop mesti nombor positif",
+      "createFailed": "Penciptaan pesanan gagal"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Instrumen ini untuk pemerhatian sahaja — buat pesanan pada instrumen yang boleh melaksanakan pesanan.",
+      "unknownInstrument": "Instrumen ini tidak dikenal pasti. Muat semula senarai dan cuba lagi.",
+      "capsViolation": "Pesanan ini akan melebihi had keselamatan akaun anda. Semak tetapan risiko dan cuba lagi."
+    }
+  }
+}

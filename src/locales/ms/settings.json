@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Tetapan",
+    "subtitle": "Konfigurasikan tetapan dan parameter aplikasi",
+    "addButton": "Tambah Tetapan",
+    "searchPlaceholder": "Cari tetapan...",
+    "noResults": "Tiada tetapan ditemui yang sepadan dengan kriteria anda.",
+    "allCategories": "Semua Kategori",
+    "categoryFilterAriaLabel": "Tapis tetapan mengikut kategori"
+  },
+  "errors": {
+    "loadFailed": "Gagal memuatkan tetapan",
+    "updateFailed": "Gagal mengemas kini tetapan",
+    "deleteFailed": "Gagal memadam tetapan",
+    "createFailed": "Gagal mencipta tetapan",
+    "alreadyExists": "Tetapan dengan kunci \"{{key}}\" sudah wujud"
+  },
+  "item": {
+    "edit": "Edit",
+    "delete": "Padam",
+    "save": "Simpan",
+    "saving": "Menyimpan...",
+    "cancel": "Batal",
+    "yesDelete": "Ya, Padam",
+    "deleting": "Memadam...",
+    "deleteConfirm": "Padam tetapan ini?",
+    "valuePlaceholder": "Masukkan nilai tetapan...",
+    "showMore": "Tunjuk lagi",
+    "showLess": "Tunjuk kurang",
+    "toggleAriaLabel": "Togol {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensitif"
+    },
+    "helpText": {
+      "allowShortSelling": "Benarkan enjin membuka posisi short. Isyarat SELL akan menghasilkan desired_units negatif; dikapit kepada 0 apabila dinyahdayakan.",
+      "allowManualOrders": "Dayakan butang Pesanan Baharu pada tab Pesanan. Apabila dinyahdayakan, POST /api/orders mengembalikan 403."
+    }
+  },
+  "addModal": {
+    "title": "Tambah Tetapan Baharu",
+    "keyLabel": "Kunci",
+    "valueLabel": "Nilai",
+    "categoryLabel": "Kategori",
+    "descriptionLabel": "Penerangan",
+    "keyPlaceholder": "cth. walutomat.api_key",
+    "keyHint": "Gunakan notasi titik untuk tetapan bersarang (cth. category.subcategory.name)",
+    "valuePlaceholder": "Nilai tetapan",
+    "categorySelectPlaceholder": "Pilih sedia ada atau cipta baharu",
+    "newCategoryPlaceholder": "Atau masukkan nama kategori baharu",
+    "descriptionPlaceholder": "Penerangan pilihan",
+    "cancel": "Batal",
+    "create": "Cipta Tetapan",
+    "creating": "Mencipta...",
+    "validation": {
+      "keyRequired": "Kunci diperlukan",
+      "valueRequired": "Nilai diperlukan",
+      "categoryRequired": "Kategori diperlukan"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor Borang",
+    "rawEditor": "Editor JSON Mentah",
+    "rawJson": "JSON Mentah",
+    "switchToForm": "Tukar ke Borang",
+    "importToForm": "Import ke Borang",
+    "parseError": "Ralat parse: {{message}}",
+    "arraySummary": "Tatasusunan ({{length}} item)",
+    "addItem": "Tambah Item",
+    "remove": "Alih keluar",
+    "typeHint": {
+      "array": "(tatasusunan)",
+      "object": "(objek)",
+      "string": "(rentetan)",
+      "number": "(nombor)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(fungsi)",
+      "symbol": "(simbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

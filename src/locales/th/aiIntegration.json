@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "การเชื่อมต่อ AI",
+    "subtitle": "จัดการตัวแทน AI ที่เชื่อมต่อกับ Snapper ผ่าน MCP",
+    "loading": "กำลังโหลดการเชื่อมต่อ AI…",
+    "createDelegate": "สร้างตัวแทน"
+  },
+  "disabled": {
+    "title": "การเชื่อมต่อ AI ถูกปิดใช้งาน",
+    "message": "เปิด feature flag ในการตั้งค่า → Feature Flags เพื่อจัดการตัวแทน AI"
+  },
+  "list": {
+    "loadingDelegates": "กำลังโหลดตัวแทน…",
+    "emptyTitle": "ยังไม่มีตัวแทน AI",
+    "emptyMessage": "คลิก “สร้างตัวแทน” เพื่อสร้างและรับ snippet การกำหนดค่า MCP",
+    "columns": {
+      "label": "ป้ายกำกับ",
+      "username": "ชื่อผู้ใช้",
+      "created": "สร้างเมื่อ",
+      "maxOpenOrders": "คำสั่งเปิดสูงสุด",
+      "maxDailyUsd": "USD รายวันสูงสุด",
+      "status": "สถานะ",
+      "actions": "การดำเนินการ"
+    },
+    "status": {
+      "active": "ใช้งานอยู่",
+      "revoked": "เพิกถอนแล้ว"
+    },
+    "default": "ค่าเริ่มต้น",
+    "details": "รายละเอียด",
+    "viewAriaLabel": "ดูตัวแทน {{label}}"
+  },
+  "wizard": {
+    "title": "สร้างตัวแทน AI",
+    "step1": "1. ตัวตน",
+    "step2": "2. ขอบเขตและเพดาน",
+    "step3": "3. ตรวจทาน",
+    "stepDone": "✓ เสร็จแล้ว",
+    "identity": {
+      "labelField": "ป้ายกำกับ",
+      "labelPlaceholder": "เช่น Alpha prop desk",
+      "labelHelpPrefix": "ชื่อผู้ใช้ของตัวแทนจะถูกสร้างฝั่งเซิร์ฟเวอร์เป็น ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "ขอบเขต",
+      "operatorLabel": "public_id ของ Operator (ไม่บังคับ)",
+      "operatorPlaceholder": "เว้นว่างเพื่อสืบทอด Operator หลักของผู้เรียก"
+    },
+    "caps": {
+      "heading": "เพดานการเทรด (ทั้งหมดไม่บังคับ)",
+      "maxOpenOrders": "คำสั่งเปิดสูงสุด",
+      "maxDailyNotionalUsd": "มูลค่า notional รายวันสูงสุด (USD)",
+      "maxCancelsPerMinute": "การยกเลิกสูงสุดต่อนาที",
+      "perInstrument": "ปริมาณสูงสุดต่อ Instrument (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "ค่าเริ่มต้น",
+      "errorInvalidJson": "max_order_quantity_per_instrument ต้องเป็น JSON ที่ถูกต้อง",
+      "errorJsonObject": "max_order_quantity_per_instrument ต้องเป็นออบเจ็กต์ JSON หรือว่าง",
+      "errorNegative": "เพดานต้องเป็นจำนวนเต็มไม่ติดลบหรือว่าง"
+    },
+    "review": {
+      "heading": "ตรวจทานและสร้าง",
+      "rowLabel": "ป้ายกำกับ",
+      "rowOperator": "public_id ของ Operator",
+      "rowMaxOpenOrders": "คำสั่งเปิดสูงสุด",
+      "rowMaxDailyNotional": "มูลค่า notional รายวันสูงสุด (USD)",
+      "rowMaxCancelsPerMinute": "การยกเลิกสูงสุดต่อนาที",
+      "rowPerInstrument": "ปริมาณสูงสุดต่อ Instrument",
+      "operatorDefault": "(Operator หลักของผู้เรียก)",
+      "defaultValue": "(ค่าเริ่มต้น)"
+    },
+    "buttons": {
+      "cancel": "ยกเลิก",
+      "next": "ถัดไป",
+      "back": "ย้อนกลับ",
+      "createDelegate": "สร้างตัวแทน",
+      "iSavedClose": "บันทึกข้อมูลเหล่านี้แล้ว — ปิด"
+    },
+    "toast": {
+      "delegateCreated": "สร้างตัวแทนแล้ว",
+      "failedToCreate": "สร้างตัวแทนไม่สำเร็จ"
+    }
+  },
+  "detail": {
+    "loading": "กำลังโหลดตัวแทน…",
+    "notFound": "ไม่พบตัวแทนหรือไม่พร้อมใช้งาน",
+    "back": "ย้อนกลับ",
+    "backToList": "กลับไปยังรายการ",
+    "updateCaps": "อัปเดตเพดาน",
+    "revoke": "เพิกถอน",
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "tradingCaps": "เพดานการเทรด",
+    "status": "สถานะ",
+    "active": "ใช้งานอยู่",
+    "revoked": "เพิกถอนแล้ว",
+    "createdAt": "สร้างเมื่อ",
+    "createdBy": "สร้างโดย (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "คำสั่งเปิดสูงสุด",
+    "maxDailyNotionalUsd": "มูลค่า notional รายวันสูงสุด (USD)",
+    "maxCancelsPerMinute": "การยกเลิกสูงสุดต่อนาที",
+    "perInstrument": "ปริมาณสูงสุดต่อ Instrument",
+    "defaultValue": "(ค่าเริ่มต้น)",
+    "editorPlaceholder": "(ค่าเริ่มต้น)",
+    "toast": {
+      "capsUpdated": "อัปเดตเพดานแล้ว",
+      "failedToUpdateCaps": "อัปเดตเพดานไม่สำเร็จ",
+      "negativeIntegersError": "เพดานต้องเป็นจำนวนเต็มไม่ติดลบหรือว่าง"
+    }
+  },
+  "revokeDialog": {
+    "title": "เพิกถอนตัวแทน \"{{label}}\"?",
+    "message": "การดำเนินการนี้จะเพิกถอนโทเคนของตัวแทนและหยุดการสมัครรับ MCP ของตัวแทน ไม่สามารถย้อนกลับได้",
+    "confirm": "เพิกถอน",
+    "cancel": "ยกเลิก",
+    "toast": {
+      "delegateRevoked": "เพิกถอนตัวแทนแล้ว",
+      "failedToRevoke": "เพิกถอนตัวแทนไม่สำเร็จ"
+    }
+  },
+  "snippet": {
+    "warningTitle": "บันทึกข้อมูลรับรองเหล่านี้ตอนนี้",
+    "warningMessage": "ข้อมูลนี้จะไม่ถูกแสดงอีก Snapper ไม่เก็บโทเคนดิบ เมื่อปิดตัวช่วยนี้ สำเนาเดียวจะอยู่ในการกำหนดค่าไคลเอนต์ MCP ของคุณ",
+    "snippetHelp": "โทเคนตัวแทน AI อายุยาว (~10 ปี) โทเคนเดียวกันใช้ยืนยันตัวตนทั้ง proxy MCP server และ watch monitor หากต้องการเปลี่ยน ให้ปิดใช้งานตัวแทนนี้และสร้างใหม่",
+    "baseUrlHelpPrefix": "Base URL มาจาก origin ของเบราว์เซอร์นี้ + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "คัดลอก snippet การกำหนดค่าไปยังคลิปบอร์ด",
+    "copy": "คัดลอกไปยังคลิปบอร์ด",
+    "copied": "คัดลอกแล้ว"
+  }
+}

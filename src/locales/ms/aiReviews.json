@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Permintaan",
+    "decision": "Keputusan",
+    "capsViolation": "Pelanggaran had",
+    "selectedDelegate": "Delegat dipilih",
+    "instrument": "instrumen",
+    "deadline": "tarikh akhir {{time}}",
+    "decidedBy": "oleh",
+    "newStatus": "status",
+    "mode": "mod",
+    "capAttempted": "dicuba",
+    "capLimit": "berbanding had",
+    "capOn": "pada instrumen",
+    "reviewLabel": "semakan {{reviewId}}",
+    "unhandledFrame": "Frame aktiviti semakan AI tidak dikendalikan: {{frame}}"
+  },
+  "page": {
+    "title": "Peti Masuk Semakan AI",
+    "subtitle": "Semakan CONSULT tertunda yang dihalakan kepada delegat ini serta strim acara live."
+  },
+  "roleNotice": {
+    "title": "Dikhaskan untuk delegat AI",
+    "message": "Peti masuk ini memaparkan semakan CONSULT yang dihalakan kepada prinsipal delegat AI. Daftar masuk dengan akaun delegat AI untuk melihat semakan tertunda dan strim aktiviti live. Peranan semasa anda ialah",
+    "unknownRole": "tidak diketahui"
+  },
+  "pending": {
+    "title": "Semakan tertunda",
+    "loading": "Memuatkan semakan tertunda…",
+    "loadError": "Gagal memuatkan semakan tertunda: {{message}}",
+    "emptyTitle": "Tiada semakan tertunda",
+    "emptyMessage": "Permintaan CONSULT baharu yang dihalakan kepada delegat ini akan muncul di sini.",
+    "columns": {
+      "instrument": "Instrumen",
+      "thesis": "Tesis",
+      "status": "Status",
+      "deadline": "Tarikh akhir",
+      "decision": "Keputusan"
+    },
+    "rationalePlaceholder": "Rasional (pilihan)",
+    "rationaleAriaLabel": "Rasional untuk semakan {{reviewId}}",
+    "approve": "Luluskan",
+    "reject": "Tolak",
+    "submitError": "Hantar gagal: {{message}}"
+  },
+  "activity": {
+    "title": "Aktiviti terkini",
+    "emptyTitle": "Belum ada aktiviti",
+    "emptyMessage": "Frame permintaan semakan AI, keputusan dan pelanggaran had akan distrim di sini.",
+    "summaryEmpty": "Tiada frame diterima",
+    "summaryCount": "Memaparkan {{shown}} daripada {{total}} yang dibuffer"
+  }
+}

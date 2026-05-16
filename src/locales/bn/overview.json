@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "ওভারভিউ"
+  },
+  "metrics": {
+    "feedsRunning": "Feed চলছে",
+    "strategiesActive": "সক্রিয় কৌশল",
+    "openOrders": "খোলা অর্ডার",
+    "todaysExecutions": "আজকের নির্বাহ",
+    "executionsOn": "নির্বাহ ({{date}})"
+  },
+  "status": {
+    "stopped": "বন্ধ",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "চলছে",
+    "active": "সক্রিয়"
+  },
+  "processStatus": {
+    "title": "প্রসেস স্ট্যাটাস",
+    "feeds": "Feed",
+    "strategies": "কৌশল",
+    "executors": "Executors",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "পোর্টফোলিও সারাংশ",
+    "totalValue": "মোট মূল্য",
+    "longExposure": "Long exposure",
+    "shortExposure": "Short exposure",
+    "netDelta": "Net delta",
+    "unrealizedPnl": "অবাস্তবায়িত P&L",
+    "pnlPercent": "P&L %",
+    "positions": "পজিশন",
+    "instrumentsCount": "{{count}} ইনস্ট্রুমেন্ট",
+    "empty": "কোনো পজিশন ডেটা উপলভ্য নেই"
+  },
+  "signals": {
+    "title": "সাম্প্রতিক সিগন্যাল",
+    "empty": "সাম্প্রতিক সিগন্যাল নেই",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "সাম্প্রতিক নির্বাহ",
+    "empty": "সাম্প্রতিক নির্বাহ নেই",
+    "noTime": "N/A"
+  }
+}

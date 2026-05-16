@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "প্রশাসন",
+    "subtitle": "ব্যবহারকারী ও সিস্টেম কনফিগারেশন পরিচালনা করুন"
+  },
+  "rolePermissions": {
+    "title": "ভূমিকা অনুমতি",
+    "viewer": {
+      "label": "দর্শক",
+      "description": "ওভারভিউ এবং মার্কেট ডেটায় শুধু-পঠন অ্যাক্সেস। প্রসেস, কৌশল বা সিস্টেম সেটিংস পরিচালনা করতে পারে না।"
+    },
+    "operator": {
+      "label": "অপারেটর",
+      "description": "সব দর্শক অনুমতির সঙ্গে ট্রেডিং অপারেশন, কৌশল নির্বাহ, প্রসেস ব্যবস্থাপনা এবং সিস্টেম স্বাস্থ্য পর্যবেক্ষণ।"
+    },
+    "admin": {
+      "label": "অ্যাডমিন",
+      "description": "ব্যবহারকারী ব্যবস্থাপনা, সিস্টেম সেটিংস, API key কনফিগারেশন এবং সব অপারেটর অনুমতিসহ পূর্ণ সিস্টেম অ্যাক্সেস।"
+    },
+    "table": {
+      "resource": "রিসোর্স",
+      "viewer": "দর্শক",
+      "operator": "অপারেটর",
+      "admin": "অ্যাডমিন"
+    },
+    "resources": {
+      "overview": "ওভারভিউ",
+      "market": "মার্কেট ডেটা",
+      "processes": "প্রসেস",
+      "strategies": "কৌশল",
+      "orders": "অর্ডার ও নির্বাহ",
+      "positions": "পজিশন",
+      "signals": "সিগন্যাল",
+      "health": "সিস্টেম স্বাস্থ্য",
+      "admin": "প্রশাসন",
+      "settings": "সেটিংস"
+    }
+  },
+  "common": {
+    "cancel": "বাতিল",
+    "selectWallet": "ওয়ালেট নির্বাচন করুন",
+    "selectAWallet": "একটি ওয়ালেট নির্বাচন করুন",
+    "chooseWalletPlaceholder": "একটি ওয়ালেট বেছে নিন...",
+    "selectWalletPlaceholder": "ওয়ালেট নির্বাচন করুন...",
+    "walletLabel": "ওয়ালেট",
+    "paperAnnotation": " (paper)",
+    "unknownError": "অজানা ত্রুটি",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "প্রবেশাধিকার অস্বীকৃত",
+      "message": "ব্যবহারকারী পরিচালনার অনুমতি আপনার নেই। সিস্টেম অ্যাডমিনিস্ট্রেটরের সঙ্গে যোগাযোগ করুন।"
+    },
+    "list": {
+      "title": "ব্যবহারকারী ব্যবস্থাপনা",
+      "countLabel": "{{count}} ব্যবহারকারী",
+      "showInactive": "নিষ্ক্রিয় দেখান",
+      "hideInactive": "নিষ্ক্রিয় লুকান",
+      "addUser": "ব্যবহারকারী যোগ করুন",
+      "searchPlaceholder": "ব্যবহারকারীর নাম, ইমেল বা ভূমিকা দিয়ে খুঁজুন...",
+      "columns": {
+        "user": "ব্যবহারকারী",
+        "role": "ভূমিকা",
+        "status": "স্ট্যাটাস",
+        "createdAt": "তৈরি হয়েছে",
+        "actions": "অ্যাকশন"
+      },
+      "status": {
+        "active": "সক্রিয়",
+        "inactive": "নিষ্ক্রিয়"
+      },
+      "unknown": "অজানা",
+      "empty": {
+        "title": "কোনো ব্যবহারকারী পাওয়া যায়নি",
+        "noMatch": "আপনার অনুসন্ধান মানদণ্ডের সঙ্গে কোনো ব্যবহারকারী মেলে না।",
+        "noUsers": "কোনো ব্যবহারকারী পাওয়া যায়নি।",
+        "noActive": "কোনো সক্রিয় ব্যবহারকারী পাওয়া যায়নি।"
+      },
+      "errorLoading": "ব্যবহারকারী লোড করতে ত্রুটি: {{message}}",
+      "deactivate": {
+        "title": "ব্যবহারকারী নিষ্ক্রিয় করুন",
+        "message": "ব্যবহারকারী \"{{username}}\" নিষ্ক্রিয় করতে চান? তারা আর সাইন ইন করতে পারবেন না।",
+        "confirm": "নিষ্ক্রিয় করুন"
+      },
+      "toast": {
+        "deactivated": "ব্যবহারকারী নিষ্ক্রিয় করা হয়েছে",
+        "deactivateError": "ব্যবহারকারী নিষ্ক্রিয় করতে ত্রুটি"
+      }
+    },
+    "form": {
+      "titleEdit": "ব্যবহারকারী সম্পাদনা",
+      "titleAdd": "ব্যবহারকারী যোগ করুন",
+      "fields": {
+        "username": "ব্যবহারকারীর নাম",
+        "usernamePlaceholder": "ব্যবহারকারীর নাম লিখুন",
+        "password": "পাসওয়ার্ড",
+        "passwordPlaceholder": "পাসওয়ার্ড লিখুন",
+        "newPassword": "নতুন পাসওয়ার্ড",
+        "newPasswordPlaceholder": "নতুন পাসওয়ার্ড লিখুন",
+        "email": "ইমেল",
+        "emailPlaceholder": "ইমেল লিখুন",
+        "role": "ভূমিকা",
+        "accountActive": "অ্যাকাউন্ট সক্রিয়",
+        "resetUserPassword": "ব্যবহারকারীর পাসওয়ার্ড রিসেট করুন"
+      },
+      "roles": {
+        "viewer": "দর্শক",
+        "operator": "অপারেটর",
+        "admin": "অ্যাডমিনিস্ট্রেটর"
+      },
+      "validation": {
+        "usernameRequired": "ব্যবহারকারীর নাম আবশ্যক",
+        "usernameMinLength": "ব্যবহারকারীর নাম কমপক্ষে 3 অক্ষরের হতে হবে",
+        "emailRequired": "ইমেল আবশ্যক",
+        "emailInvalid": "ইমেল ফরম্যাট সঠিক নয়",
+        "passwordRequired": "পাসওয়ার্ড আবশ্যক",
+        "passwordMinLength": "পাসওয়ার্ড কমপক্ষে 8 অক্ষরের হতে হবে",
+        "passwordRequiredWhenResetting": "রিসেট করার সময় পাসওয়ার্ড আবশ্যক"
+      },
+      "actions": {
+        "saveChanges": "পরিবর্তন সংরক্ষণ",
+        "createUser": "ব্যবহারকারী তৈরি করুন"
+      },
+      "toast": {
+        "created": "ব্যবহারকারী তৈরি হয়েছে",
+        "createError": "ব্যবহারকারী তৈরি করতে ত্রুটি",
+        "updated": "ব্যবহারকারী আপডেট হয়েছে",
+        "updateError": "ব্যবহারকারী আপডেট করতে ত্রুটি",
+        "passwordReset": "ব্যবহারকারীর পাসওয়ার্ড রিসেট হয়েছে",
+        "resetError": "পাসওয়ার্ড রিসেট করতে ত্রুটি"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "প্রবেশাধিকার অস্বীকৃত",
+      "message": "স্কোপ অনুমতি পরিচালনার অনুমতি আপনার নেই। সিস্টেম অ্যাডমিনিস্ট্রেটরের সঙ্গে যোগাযোগ করুন।"
+    },
+    "list": {
+      "title": "স্কোপ অনুমতি",
+      "countLabel": "{{count}} অনুমতি",
+      "createGrant": "স্কোপ দিন",
+      "selectWalletPrompt": "এর স্কোপ অনুমতি দেখতে উপরের ওয়ালেট বেছে নিন।",
+      "columns": {
+        "operator": "অপারেটর",
+        "scope": "স্কোপ",
+        "target": "টার্গেট",
+        "grantedAt": "অনুমতি দেওয়া হয়েছে",
+        "actions": "অ্যাকশন"
+      },
+      "empty": {
+        "noGrants": "কোনো অনুমতি পাওয়া যায়নি",
+        "noGrantsHint": "এই ওয়ালেটে কোনো সক্রিয় স্কোপ অনুমতি নেই।"
+      },
+      "errorLoading": "অনুমতি লোড করতে ত্রুটি: {{message}}",
+      "handover": "হস্তান্তর"
+    },
+    "form": {
+      "title": "স্কোপ অনুমতি তৈরি করুন",
+      "fields": {
+        "operator": "অপারেটর",
+        "operatorPlaceholder": "অপারেটর নির্বাচন করুন...",
+        "wallet": "ওয়ালেট",
+        "scopeKind": "স্কোপ ধরন",
+        "underlyingPublicId": "Underlying Public ID",
+        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPlaceholder": "যেমন BTC",
+        "instrumentPlaceholder": "যেমন BTC-USD-PERP",
+        "note": "নোট (ঐচ্ছিক)",
+        "notePlaceholder": "ঐচ্ছিক নোট"
+      },
+      "scopeKinds": {
+        "underlying": "Underlying",
+        "instrument": "ইনস্ট্রুমেন্ট"
+      },
+      "validation": {
+        "operatorRequired": "অপারেটর আবশ্যক",
+        "walletRequired": "ওয়ালেট আবশ্যক",
+        "targetRequired": "টার্গেট ID আবশ্যক"
+      },
+      "actions": {
+        "createGrant": "স্কোপ দিন"
+      },
+      "toast": {
+        "created": "স্কোপ অনুমতি তৈরি হয়েছে",
+        "conflictError": "সংঘাত: অন্য অপারেটরের কাছে ইতিমধ্যে এই স্কোপে অনুমতি আছে",
+        "createError": "স্কোপ অনুমতি তৈরি করতে ত্রুটি"
+      }
+    },
+    "handover": {
+      "title": "স্কোপ অনুমতি হস্তান্তর",
+      "fields": {
+        "currentHolder": "বর্তমান ধারক",
+        "scope": "স্কোপ",
+        "wallet": "ওয়ালেট",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "অপারেটরের কাছে হস্তান্তর",
+        "transferToPlaceholder": "গন্তব্য অপারেটর নির্বাচন করুন...",
+        "reason": "কারণ (ঐচ্ছিক)",
+        "reasonPlaceholder": "যেমন শিফট পরিবর্তন"
+      },
+      "actions": {
+        "handover": "হস্তান্তর"
+      },
+      "toast": {
+        "completed": "স্কোপ অনুমতি হস্তান্তর হয়েছে",
+        "conflictError": "সংঘাত: গন্তব্য অপারেটরের কাছে ইতিমধ্যে সংঘাতপূর্ণ অনুমতি আছে",
+        "handoverError": "স্কোপ অনুমতি হস্তান্তর করতে ত্রুটি"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "প্রবেশাধিকার অস্বীকৃত",
+      "message": "ওয়ালেট ক্রেডেনশিয়াল পরিচালনার অনুমতি আপনার নেই। সিস্টেম অ্যাডমিনিস্ট্রেটরের সঙ্গে যোগাযোগ করুন।"
+    },
+    "list": {
+      "title": "ওয়ালেট ক্রেডেনশিয়াল",
+      "countLabel": "{{count}} ক্রেডেনশিয়াল",
+      "addCredential": "ক্রেডেনশিয়াল যোগ করুন",
+      "selectWalletPrompt": "এর ক্রেডেনশিয়াল দেখতে উপরের ওয়ালেট বেছে নিন।",
+      "columns": {
+        "exchange": "এক্সচেঞ্জ",
+        "type": "ধরন",
+        "label": "লেবেল",
+        "createdAt": "তৈরি হয়েছে",
+        "actions": "অ্যাকশন"
+      },
+      "empty": {
+        "noCredentials": "কোনো ক্রেডেনশিয়াল পাওয়া যায়নি",
+        "noCredentialsHint": "এই ওয়ালেটে কোনো সক্রিয় ক্রেডেনশিয়াল নেই।"
+      },
+      "errorLoading": "ক্রেডেনশিয়াল লোড করতে ত্রুটি: {{message}}",
+      "rotate": "পরিবর্তন"
+    },
+    "form": {
+      "title": "ক্রেডেনশিয়াল যোগ করুন",
+      "fields": {
+        "wallet": "ওয়ালেট",
+        "exchange": "এক্সচেঞ্জ",
+        "exchangePlaceholder": "যেমন kraken",
+        "credentialType": "ক্রেডেনশিয়াল ধরন",
+        "label": "লেবেল (ঐচ্ছিক)",
+        "labelPlaceholder": "যেমন প্রধান ট্রেডিং কী",
+        "pemPlaceholder": "PEM ফরম্যাটের প্রাইভেট কী এখানে পেস্ট করুন"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "Private Key (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "প্রাথমিক ব্যালেন্স"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "ওয়ালেট আবশ্যক",
+        "exchangeRequired": "এক্সচেঞ্জ আবশ্যক",
+        "fieldRequired": "{{field}} আবশ্যক"
+      },
+      "actions": {
+        "addCredential": "ক্রেডেনশিয়াল যোগ করুন"
+      },
+      "toast": {
+        "created": "ক্রেডেনশিয়াল তৈরি হয়েছে",
+        "conflictError": "সংঘাত: এই ওয়ালেটে এই এক্সচেঞ্জের জন্য ইতিমধ্যে সক্রিয় ক্রেডেনশিয়াল আছে",
+        "createError": "ক্রেডেনশিয়াল তৈরি করতে ত্রুটি"
+      }
+    },
+    "rotate": {
+      "title": "ক্রেডেনশিয়াল পরিবর্তন",
+      "fields": {
+        "exchange": "এক্সচেঞ্জ",
+        "type": "ধরন",
+        "label": "লেবেল",
+        "newLabel": "নতুন লেবেল (ঐচ্ছিক)",
+        "newLabelPlaceholder": "যেমন পরিবর্তিত কী 2026-04",
+        "pemPlaceholder": "PEM ফরম্যাটের প্রাইভেট কী এখানে পেস্ট করুন"
+      },
+      "actions": {
+        "rotate": "পরিবর্তন"
+      },
+      "toast": {
+        "rotated": "ক্রেডেনশিয়াল পরিবর্তিত হয়েছে",
+        "rotateError": "ক্রেডেনশিয়াল পরিবর্তন করতে ত্রুটি"
+      }
+    }
+  }
+}

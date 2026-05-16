@@ -1,0 +1,83 @@
+{
+  "loading": "লোড হচ্ছে...",
+  "error": "ত্রুটি",
+  "retry": "আবার চেষ্টা করুন",
+  "close": "বন্ধ করুন",
+  "cancel": "বাতিল",
+  "confirm": "নিশ্চিত করুন",
+  "save": "সংরক্ষণ",
+  "documentation": "ডকুমেন্টেশন (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "ভাষা পরিবর্তন করুন",
+    "flagAriaLabel": "{{country}}-এ পরিবর্তন করুন",
+    "currentAriaLabel": "বর্তমান ভাষা: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "ট্রেডিং কনসোল",
+    "tagline": "নির্ভুলতার ওয়ার্কস্টেশন",
+    "openSidebar": "সাইডবার খুলুন",
+    "closeSidebar": "সাইডবার বন্ধ করুন",
+    "sidebar": "সাইডবার",
+    "mainNavigation": "প্রধান নেভিগেশন",
+    "tradingContent": "ট্রেডিং কনটেন্ট",
+    "skipToContent": "ট্রেডিং কনটেন্টে যান",
+    "lag": "ল্যাগ:",
+    "lagTitle": "WebSocket সার্ভারে রাউন্ড-ট্রিপ ল্যাটেন্সি",
+    "topics": "টপিক:",
+    "topicsTitle": "সাবস্ক্রাইব করা WebSocket টপিকের সংখ্যা",
+    "connected": "সংযুক্ত",
+    "disconnected": "সংযোগ বিচ্ছিন্ন",
+    "connectedTitle": "WebSocket-এ সংযুক্ত",
+    "disconnectedTitle": "WebSocket থেকে সংযোগ বিচ্ছিন্ন",
+    "switchToLightMode": "লাইট মোডে যান",
+    "switchToDarkMode": "ডার্ক মোডে যান",
+    "timeTravelBanner": "Time Travel Mode — ঐতিহাসিক ডেটা দেখা হচ্ছে (শুধু-পঠন)",
+    "lagUnknown": "অজানা",
+    "walletPicker": {
+      "ariaLabel": "সক্রিয় ওয়ালেট",
+      "placeholder": "ওয়ালেট",
+      "allWallets": "সব ওয়ালেট",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "সক্রিয় অপারেটর",
+      "placeholder": "অপারেটর",
+      "allOperators": "সব অপারেটর"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: ঐতিহাসিক সময়বিন্দু নির্বাচন করুন",
+      "exitAriaLabel": "Time Travel Mode থেকে বের হন",
+      "exitTitle": "লাইভ মোডে ফিরে যান"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "শুধু পর্যবেক্ষণের ইনস্ট্রুমেন্ট। Snapper মার্কেট ডেটা গ্রহণ করে, কিন্তু এই (symbol, exchange) জোড়ার জন্য অর্ডার দিতে পারে না।",
+      "ariaLabel": "শুধু মার্কেট ডেটা ইনস্ট্রুমেন্ট",
+      "badge": "শুধু মার্কেট ডেটা"
+    },
+    "liveOnly": {
+      "notice": "এই ট্যাব বর্তমান অবস্থা দেখায় — ঐতিহাসিক ভিউ উপলভ্য নয়।"
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "কিছু ভুল হয়েছে",
+    "titleWithComponent": "{{componentName}}-এ ত্রুটি",
+    "stackTrace": "Stack trace",
+    "tryAgain": "আবার চেষ্টা করুন"
+  },
+  "nav": {
+    "overview": "ওভারভিউ",
+    "market": "মার্কেট ডেটা",
+    "processes": "প্রসেস",
+    "strategies": "কৌশল",
+    "orders": "অর্ডার ও নির্বাহ",
+    "positions": "পজিশন",
+    "signals": "সিগন্যাল",
+    "backtests": "Backtests",
+    "health": "সিস্টেম স্বাস্থ্য",
+    "admin": "প্রশাসন",
+    "aiIntegration": "AI ইন্টিগ্রেশন",
+    "aiReviews": "AI রিভিউ",
+    "settings": "সেটিংস"
+  }
+}

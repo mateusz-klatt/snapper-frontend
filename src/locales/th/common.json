@@ -1,0 +1,83 @@
+{
+  "loading": "กำลังโหลด...",
+  "error": "ข้อผิดพลาด",
+  "retry": "ลองอีกครั้ง",
+  "close": "ปิด",
+  "cancel": "ยกเลิก",
+  "confirm": "ยืนยัน",
+  "save": "บันทึก",
+  "documentation": "เอกสาร (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "เปลี่ยนภาษา",
+    "flagAriaLabel": "เปลี่ยนเป็น {{country}}",
+    "currentAriaLabel": "ภาษาปัจจุบัน: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "คอนโซลการเทรด",
+    "tagline": "เวิร์กสเตชันความแม่นยำ",
+    "openSidebar": "เปิดแถบด้านข้าง",
+    "closeSidebar": "ปิดแถบด้านข้าง",
+    "sidebar": "แถบด้านข้าง",
+    "mainNavigation": "การนำทางหลัก",
+    "tradingContent": "เนื้อหาการเทรด",
+    "skipToContent": "ข้ามไปยังเนื้อหาการเทรด",
+    "lag": "ความหน่วง:",
+    "lagTitle": "เวลาไปกลับถึงเซิร์ฟเวอร์ WebSocket",
+    "topics": "หัวข้อ:",
+    "topicsTitle": "จำนวนหัวข้อ WebSocket ที่สมัครรับ",
+    "connected": "เชื่อมต่อแล้ว",
+    "disconnected": "ตัดการเชื่อมต่อแล้ว",
+    "connectedTitle": "เชื่อมต่อกับ WebSocket แล้ว",
+    "disconnectedTitle": "ตัดการเชื่อมต่อจาก WebSocket แล้ว",
+    "switchToLightMode": "เปลี่ยนเป็นโหมดสว่าง",
+    "switchToDarkMode": "เปลี่ยนเป็นโหมดมืด",
+    "timeTravelBanner": "โหมด Time Travel — กำลังดูข้อมูลย้อนหลัง (อ่านอย่างเดียว)",
+    "lagUnknown": "ไม่ทราบ",
+    "walletPicker": {
+      "ariaLabel": "กระเป๋าเงินที่ใช้งานอยู่",
+      "placeholder": "กระเป๋าเงิน",
+      "allWallets": "กระเป๋าเงินทั้งหมด",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Operator ที่ใช้งานอยู่",
+      "placeholder": "Operator",
+      "allOperators": "Operator ทั้งหมด"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: เลือกจุดเวลาในอดีต",
+      "exitAriaLabel": "ออกจากโหมด Time Travel",
+      "exitTitle": "กลับสู่โหมด live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrument สำหรับสังเกตการณ์เท่านั้น Snapper รับข้อมูลตลาดได้ แต่ไม่สามารถส่งคำสั่งสำหรับคู่ (symbol, exchange) นี้",
+      "ariaLabel": "Instrument เฉพาะข้อมูลตลาด",
+      "badge": "เฉพาะข้อมูลตลาด"
+    },
+    "liveOnly": {
+      "notice": "แท็บนี้แสดงสถานะปัจจุบัน — ไม่มีมุมมองย้อนหลัง"
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "มีบางอย่างผิดพลาด",
+    "titleWithComponent": "ข้อผิดพลาดใน {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "ลองอีกครั้ง"
+  },
+  "nav": {
+    "overview": "ภาพรวม",
+    "market": "ข้อมูลตลาด",
+    "processes": "กระบวนการ",
+    "strategies": "กลยุทธ์",
+    "orders": "คำสั่งและการดำเนินการ",
+    "positions": "สถานะ",
+    "signals": "สัญญาณ",
+    "backtests": "Backtests",
+    "health": "สุขภาพระบบ",
+    "admin": "การดูแลระบบ",
+    "aiIntegration": "การเชื่อมต่อ AI",
+    "aiReviews": "การตรวจทาน AI",
+    "settings": "การตั้งค่า"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "সিস্টেম স্বাস্থ্য",
+    "healthMetricsHeading": "স্বাস্থ্য মেট্রিক",
+    "processStatusHeading": "প্রসেস স্ট্যাটাস",
+    "activeBacktestsHeading": "সক্রিয় Backtests",
+    "quickActionsHeading": "দ্রুত অ্যাকশন",
+    "featureNotImplemented": "ফিচার এখনও বাস্তবায়িত নয়",
+    "restartServices": "সার্ভিস রিস্টার্ট করুন",
+    "runHealthCheck": "স্বাস্থ্য পরীক্ষা চালান",
+    "viewLogs": "লগ দেখুন",
+    "exportReport": "রিপোর্ট এক্সপোর্ট করুন"
+  },
+  "status": {
+    "healthy": "স্বাস্থ্যকর",
+    "stopped": "বন্ধ",
+    "error": "ত্রুটি",
+    "warning": "সতর্কতা",
+    "completed": "সম্পন্ন",
+    "unknown": "অজানা"
+  },
+  "metrics": {
+    "tradingEngine": "ট্রেডিং ইঞ্জিন",
+    "tradingEngineDescription": "কৌশল নির্বাহ ইঞ্জিন",
+    "activeBacktests": "সক্রিয় Backtests",
+    "activeBacktestsDescription": "চলমান Backtest প্রসেস",
+    "active": "সক্রিয়",
+    "inactive": "নিষ্ক্রিয়"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Uptime",
+    "exitCode": "Exit code: {{code}}",
+    "service": "সার্ভিস",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "ডেটাবেস পরিসংখ্যান",
+    "loading": "ডেটাবেস stats লোড হচ্ছে…",
+    "unavailable": "ডেটাবেস stats অনুপলভ্য: {{message}}",
+    "fallbackError": "ডেটাবেস পরিসংখ্যান লোড করতে ব্যর্থ।",
+    "sampled": "{{age}} আগে sampled",
+    "samplerSummary": "Sampler interval: {{seconds}}s · {{count}} table",
+    "columns": {
+      "table": "টেবিল",
+      "kind": "ধরন",
+      "total": "মোট",
+      "current": "বর্তমান",
+      "closed": "বন্ধ",
+      "archivable": "আর্কাইভযোগ্য",
+      "status": "স্ট্যাটাস"
+    },
+    "stale": "stale"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Notification metrics লোড হচ্ছে…",
+    "unavailable": "Notification metrics অনুপলভ্য: {{message}}",
+    "fallbackError": "Notification metrics লোড করতে ব্যর্থ।",
+    "sent": "পাঠানো",
+    "sentDescription": "Terminal: পাঠানো",
+    "failed": "ব্যর্থ",
+    "failedDescription": "Retry budget শেষ",
+    "unregistered": "নিবন্ধিত নয়",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "বাতিল (স্কোপ)",
+    "cancelledScopeDescription": "স্কোপ প্রত্যাহার / ব্যবহারকারী নিষ্ক্রিয়",
+    "outboxDepth": "Outbox depth",
+    "outboxDepthDescription": "কিউতে আছে, retry-র অপেক্ষায়"
+  },
+  "retention": {
+    "title": "Retention Scheduler",
+    "loading": "Retention run লোড হচ্ছে…",
+    "unavailable": "Retention run অনুপলভ্য: {{message}}",
+    "fallbackError": "Retention run লোড করতে ব্যর্থ।",
+    "lastRun": "শেষ run {{age}}",
+    "dryRunNotice": "Dry-run mode: row আর্কাইভ হয় কিন্তু DB থেকে purge হয় না।",
+    "columns": {
+      "table": "টেবিল",
+      "retain": "রাখুন",
+      "archivedWindow": "Archived window",
+      "archived": "আর্কাইভ হয়েছে",
+      "purged": "purged",
+      "files": "ফাইল",
+      "status": "স্ট্যাটাস"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "ত্রুটি"
+  },
+  "systemMetrics": {
+    "title": "প্রসেস স্বাস্থ্য",
+    "loading": "Process metrics লোড হচ্ছে…",
+    "unavailable": "Process metrics অনুপলভ্য: {{message}}",
+    "fallbackError": "Process health metrics লোড করতে ব্যর্থ।",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "স্ট্যাটাস: {{status}}",
+    "uptime": "Uptime",
+    "threads": "Threads",
+    "openFds": "Open FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttled {{count}}×",
+    "memory": "মেমরি",
+    "saturation": "Saturation {{percent}}",
+    "asyncioTasks": "Asyncio Tasks",
+    "asyncioActive": "{{count}} সক্রিয়",
+    "asyncioPending": "+ {{count}} অপেক্ষমাণ",
+    "dbPool": "DB Pool",
+    "liveConns": "Live conns: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objects: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Network conns",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Active",
+    "tracemallocIdle": "Idle"
+  },
+  "relativeAge": {
+    "justNow": "এইমাত্র",
+    "seconds": "{{seconds}}s আগে",
+    "minutes": "{{minutes}}min আগে",
+    "hours": "{{hours}}h আগে",
+    "days": "{{days}}d আগে"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

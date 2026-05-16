@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "মার্কেট ডেটা"
+  },
+  "controls": {
+    "exchange": "এক্সচেঞ্জ:",
+    "instrument": "ইনস্ট্রুমেন্ট:",
+    "timeframe": "টাইমফ্রেম:",
+    "selectExchange": "এক্সচেঞ্জ নির্বাচন করুন",
+    "searchInstrument": "ইনস্ট্রুমেন্ট খুঁজুন..."
+  },
+  "timeframes": {
+    "1m": "1 মিনিট",
+    "5m": "5 মিনিট",
+    "15m": "15 মিনিট",
+    "30m": "30 মিনিট",
+    "1h": "1 ঘণ্টা",
+    "4h": "4 ঘণ্টা",
+    "1d": "1 দিন"
+  },
+  "stats": {
+    "currentPrice": "বর্তমান মূল্য",
+    "change24h": "24h পরিবর্তন",
+    "high24h": "24h উচ্চ",
+    "low24h": "24h নিম্ন"
+  },
+  "chart": {
+    "title": "মূল্য চার্ট",
+    "errorPrefix": "চার্ট ডেটা লোড করতে ত্রুটি:",
+    "unknownError": "অজানা ত্রুটি",
+    "noDataTitle": "{{instrument}}-এর জন্য কোনো ডেটা নেই",
+    "noDataHint": "ইনস্ট্রুমেন্টটি নাও থাকতে পারে বা {{timeframe}} ডেটা নাও থাকতে পারে"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{exchange}}-এ {{instrument}}-এর জন্য কোনো সম্পর্কিত ইনস্ট্রুমেন্ট কনফিগার করা নেই।"
+  },
+  "cacheBanner": {
+    "message": "Cache warm হচ্ছে: {{sampleCount}} / {{expected}} ক্যান্ডল উপলভ্য {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(1m থেকে derived)",
+      "db": "(DB থেকে)"
+    }
+  }
+}

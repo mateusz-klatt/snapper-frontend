@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "ข้อมูลตลาด"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrument:",
+    "timeframe": "กรอบเวลา:",
+    "selectExchange": "เลือก Exchange",
+    "searchInstrument": "ค้นหา instrument..."
+  },
+  "timeframes": {
+    "1m": "1 นาที",
+    "5m": "5 นาที",
+    "15m": "15 นาที",
+    "30m": "30 นาที",
+    "1h": "1 ชั่วโมง",
+    "4h": "4 ชั่วโมง",
+    "1d": "1 วัน"
+  },
+  "stats": {
+    "currentPrice": "ราคาปัจจุบัน",
+    "change24h": "เปลี่ยนแปลง 24h",
+    "high24h": "สูงสุด 24h",
+    "low24h": "ต่ำสุด 24h"
+  },
+  "chart": {
+    "title": "กราฟราคา",
+    "errorPrefix": "ข้อผิดพลาดในการโหลดข้อมูลกราฟ:",
+    "unknownError": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ",
+    "noDataTitle": "ไม่มีข้อมูลสำหรับ {{instrument}}",
+    "noDataHint": "Instrument อาจไม่มีอยู่หรือไม่มีข้อมูล {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "ไม่มี instrument ที่เกี่ยวข้องซึ่งกำหนดค่าไว้สำหรับ {{instrument}} บน {{exchange}}"
+  },
+  "cacheBanner": {
+    "message": "กำลังอุ่น cache: มีแท่งเทียน {{sampleCount}} / {{expected}} แท่ง {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(คำนวณจาก 1m)",
+      "db": "(จาก DB)"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← ফিরে যান",
+    "backToList": "← Backtests-এ ফিরে যান"
+  },
+  "status": {
+    "pending": "অপেক্ষমাণ",
+    "running": "চলছে",
+    "completed": "সম্পন্ন",
+    "failed": "ব্যর্থ",
+    "cancelled": "বাতিল"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "বাতিল",
+      "rerun": "আবার চালান"
+    },
+    "fields": {
+      "timeframe": "টাইমফ্রেম",
+      "period": "সময়কাল",
+      "initialCash": "প্রাথমিক নগদ",
+      "id": "ID"
+    },
+    "errorPrefix": "ত্রুটি: {{message}}",
+    "filter": {
+      "ariaLabel": "স্ট্যাটাস অনুযায়ী Backtests ফিল্টার করুন",
+      "options": {
+        "all": "সব স্ট্যাটাস",
+        "pending": "অপেক্ষমাণ",
+        "running": "চলছে",
+        "completed": "সম্পন্ন",
+        "failed": "ব্যর্থ",
+        "cancelled": "বাতিল"
+      }
+    },
+    "empty": {
+      "title": "কোনো Backtests নেই",
+      "message": "ফলাফল দেখতে CLI বা API দিয়ে একটি Backtest চালান।"
+    }
+  },
+  "detail": {
+    "title": "Backtest রান",
+    "fields": {
+      "strategy": "কৌশল",
+      "instrument": "ইনস্ট্রুমেন্ট",
+      "status": "স্ট্যাটাস",
+      "period": "সময়কাল",
+      "crossAsset": "Cross-asset attribution",
+      "configHash": "Config hash"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} নির্বাহ",
+    "errors": {
+      "invalidRunId": "Run id সঠিক নয় — UUID7 হতে হবে (পাওয়া গেছে \"{{id}}\")।",
+      "loadFailed": "Run লোড করতে ব্যর্থ: {{message}}",
+      "notFound": "পাওয়া যায়নি"
+    }
+  },
+  "compare": {
+    "title": "তুলনা",
+    "headingFull": "Backtest তুলনা",
+    "loading": "তুলনা লোড হচ্ছে…",
+    "vs": "vs",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "মেট্রিক",
+      "equityOverlay": "Equity overlay",
+      "trades": "ট্রেড",
+      "signals": "সিগন্যাল"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "বর্তমান ওয়ালেটে তুলনা পাওয়া যায়নি।",
+      "loadFailed": "তুলনা লোড করতে ব্যর্থ: {{message}}",
+      "unknown": "অজানা ত্রুটি",
+      "emptyResponse": "তুলনার response খালি।"
+    },
+    "launcher": {
+      "title": "তুলনা",
+      "submit": "তুলনা করুন",
+      "autoPair": "সবচেয়ে সাম্প্রতিকটির সঙ্গে তুলনা করুন",
+      "terminalGate": "এই run terminal status-এ পৌঁছালে তুলনা উপলভ্য হবে",
+      "noSiblings": "এই config সহ অন্য কোনো run নেই",
+      "limitNotice": "সাম্প্রতিক {{count}} দেখানো হচ্ছে — পুরোনো run-এর জন্য manual pair ব্যবহার করুন",
+      "pickPlaceholder": "— তুলনার জন্য একটি run বেছে নিন —",
+      "showAllLabel": "সব run দেখান (শুধু একই config নয়)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "সব run",
+        "sameConfig": "একই config"
+      },
+      "errors": {
+        "pickRequired": "তালিকা থেকে একটি run নির্বাচন করুন"
+      }
+    },
+    "diffColumns": {
+      "common": "সাধারণ",
+      "onlyA": "শুধু A-তে",
+      "onlyB": "শুধু B-তে"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "তুলনাযোগ্য মেট্রিক নেই — দুই run-এ কোনো মান রেকর্ড হয়নি।",
+      "columns": {
+        "name": "মেট্রিক",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "অগ্রগতির জন্য অপেক্ষা হচ্ছে…",
+    "candles": "{{done}} / {{total}} ক্যান্ডল",
+    "candlesNoTotal": "{{done}} ক্যান্ডল",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} ট্রেড",
+    "milestoneLine": "milestone {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

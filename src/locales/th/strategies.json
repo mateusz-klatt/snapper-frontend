@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "การจัดการกลยุทธ์",
+    "register": "ลงทะเบียนกลยุทธ์",
+    "saving": "กำลังบันทึก…",
+    "descriptionCanManage": "ลงทะเบียนกระบวนการกลยุทธ์ใหม่จาก UI ได้โดยตรง Autostart จะคงกระบวนการให้เปิดใช้งานข้ามการรีสตาร์ท",
+    "descriptionViewer": "ดูสถานะและกลยุทธ์ที่กำหนดค่าไว้ ติดต่อ Operator หรือ Admin เพื่อจัดการกลยุทธ์",
+    "searchPlaceholder": "ค้นหากลยุทธ์...",
+    "filter": {
+      "all": "ทุกสถานะ",
+      "running": "กำลังทำงาน",
+      "stopped": "หยุดแล้ว"
+    },
+    "configuredHeading": "กลยุทธ์ที่กำหนดค่าไว้",
+    "noMatches": "ไม่มีกลยุทธ์ที่ตรงกับตัวกรอง",
+    "clearFilters": "ล้างตัวกรอง",
+    "emptyTitle": "ยังไม่ได้กำหนดค่ากลยุทธ์",
+    "emptyCanManage": "ลงทะเบียนกลยุทธ์เพื่อเริ่มการเทรดแบบอัลกอริทึม",
+    "emptyViewer": "ยังไม่ได้กำหนดค่ากลยุทธ์"
+  },
+  "confirm": {
+    "startTitle": "เริ่ม {{name}}",
+    "startMessage": "การดำเนินการนี้จะเริ่มกลยุทธ์ {{name}} และอาจเริ่มการดำเนินงานเทรด live",
+    "stopTitle": "หยุด {{name}}",
+    "stopMessage": "การดำเนินการนี้จะหยุดกลยุทธ์ {{name}} สถานะที่ใช้งานอยู่จะไม่ถูกปิดโดยอัตโนมัติ"
+  },
+  "toast": {
+    "saved": "บันทึกกลยุทธ์ {{name}} แล้ว",
+    "started": "เริ่มกลยุทธ์ {{name}} แล้ว",
+    "registerFailed": "ลงทะเบียนกลยุทธ์ไม่สำเร็จ: {{message}}",
+    "startSuccess": "เริ่มกลยุทธ์สำเร็จ",
+    "stopSuccess": "หยุดกลยุทธ์สำเร็จ",
+    "alreadyRunning": "กลยุทธ์กำลังทำงานอยู่แล้ว",
+    "notRunning": "กลยุทธ์ไม่ได้ทำงานอยู่",
+    "configNotFound": "ไม่พบการกำหนดค่ากลยุทธ์ โปรดตรวจสอบการตั้งค่าฐานข้อมูล",
+    "networkError": "ข้อผิดพลาดเครือข่าย โปรดตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
+    "startFailed": "เริ่มกลยุทธ์ไม่สำเร็จ: {{message}}",
+    "stopFailed": "หยุดกลยุทธ์ไม่สำเร็จ: {{message}}",
+    "unknownError": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ"
+  },
+  "card": {
+    "ariaLabel": "กลยุทธ์: {{name}}",
+    "modeLabel": "โหมด: {{mode}}",
+    "autostartEnabled": "Autostart: เปิดใช้งาน",
+    "autostartDisabled": "Autostart: ปิดใช้งาน",
+    "statusAriaLabel": "สถานะ: {{status}}",
+    "dataLagAriaLabel": "ความหน่วงข้อมูล: {{seconds}} วินาที",
+    "lagBadge": "ความหน่วง: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "อายุ HB: {{seconds}}s",
+    "metrics": {
+      "status": "สถานะ",
+      "dataLag": "ความหน่วงข้อมูล",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "แสดงรายละเอียด",
+    "hideDetails": "ซ่อนรายละเอียด",
+    "inputs": "Inputs ({{count}})",
+    "outputs": "Outputs ({{count}})",
+    "feedPublishers": "Feed Publishers ({{count}})",
+    "lastUpdate": "อัปเดตล่าสุด: {{time}}",
+    "waiting": "กำลังรอ Heartbeat...",
+    "startAriaLabel": "เริ่มกลยุทธ์ {{name}}",
+    "stopAriaLabel": "หยุดกลยุทธ์ {{name}}",
+    "start": "เริ่ม",
+    "stop": "หยุด",
+    "starting": "กำลังเริ่ม...",
+    "stopping": "กำลังหยุด...",
+    "status": {
+      "starting": "กำลังเริ่ม",
+      "stopping": "กำลังหยุด",
+      "running": "กำลังทำงาน",
+      "stopped": "หยุดแล้ว"
+    },
+    "health": {
+      "healthy": "สุขภาพดี — กำลังรับข้อมูลสด",
+      "warning": "คำเตือน — ข้อมูลเก่า",
+      "error": "ข้อผิดพลาด — ไม่มีข้อมูลล่าสุด",
+      "unknown": "ไม่ทราบ — ไม่มีข้อมูล Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "HEALTHY",
+      "warning": "WARNING",
+      "error": "ERROR"
+    }
+  },
+  "launchModal": {
+    "title": "ลงทะเบียนกระบวนการกลยุทธ์",
+    "emptyTemplates": "ไม่มีเทมเพลตกลยุทธ์ที่ลงทะเบียนใน backend กำหนดกระบวนการกลยุทธ์อย่างน้อยหนึ่งรายการ",
+    "close": "ปิด",
+    "templateLabel": "เทมเพลตกลยุทธ์",
+    "templatePlaceholder": "เลือกเทมเพลต...",
+    "templateFallbackDescription": "กลยุทธ์ที่ลงทะเบียนใน backend",
+    "loadingDefaults": "กำลังโหลดค่าเริ่มต้นของเทมเพลต…",
+    "loadDefaultsError": "โหลดค่าเริ่มต้นของเทมเพลตไม่ได้ โปรดตรวจสอบ log ของ backend",
+    "processNameLabel": "ชื่อกระบวนการ",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "อักขระที่อนุญาต: ตัวอักษรพิมพ์เล็ก ตัวเลข และขีดล่าง",
+    "instanceNameLabel": "ชื่ออินสแตนซ์กลยุทธ์",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "ใช้ในการกำหนดค่ากลยุทธ์และหัวข้อ output",
+    "executionModeLabel": "โหมดการดำเนินการ",
+    "executionModeThread": "Thread แบบฝัง",
+    "executionModeProcess": "Process แบบแยก",
+    "executionModeHelp": "Threads ใช้หน่วยความจำร่วมกัน ส่วน processes ให้การแยกส่วนที่เข้มงวดกว่า",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart เมื่อเซิร์ฟเวอร์เริ่ม",
+    "startImmediatelyLabel": "เริ่มทันทีหลังลงทะเบียน",
+    "noteLabel": "หมายเหตุ (ไม่บังคับ)",
+    "notePlaceholder": "อธิบายวัตถุประสงค์หรือพารามิเตอร์ของอินสแตนซ์กลยุทธ์นี้",
+    "noteHelp": "จัดเก็บพร้อมการกำหนดค่าเพื่อช่วยระบุกระบวนการนี้",
+    "cancel": "ยกเลิก",
+    "submit": "ลงทะเบียนกลยุทธ์",
+    "submitting": "กำลังลงทะเบียน…"
+  }
+}

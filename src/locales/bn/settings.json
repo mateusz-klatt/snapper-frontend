@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "সেটিংস",
+    "subtitle": "অ্যাপ্লিকেশন সেটিংস ও প্যারামিটার কনফিগার করুন",
+    "addButton": "সেটিং যোগ করুন",
+    "searchPlaceholder": "সেটিংস খুঁজুন...",
+    "noResults": "আপনার মানদণ্ডের সঙ্গে মেলে এমন কোনো সেটিং পাওয়া যায়নি।",
+    "allCategories": "সব ক্যাটাগরি",
+    "categoryFilterAriaLabel": "ক্যাটাগরি অনুযায়ী সেটিংস ফিল্টার করুন"
+  },
+  "errors": {
+    "loadFailed": "সেটিংস লোড করতে ব্যর্থ",
+    "updateFailed": "সেটিং আপডেট করতে ব্যর্থ",
+    "deleteFailed": "সেটিং মুছতে ব্যর্থ",
+    "createFailed": "সেটিং তৈরি করতে ব্যর্থ",
+    "alreadyExists": "\"{{key}}\" কী সহ সেটিং ইতিমধ্যে আছে"
+  },
+  "item": {
+    "edit": "সম্পাদনা",
+    "delete": "মুছুন",
+    "save": "সংরক্ষণ",
+    "saving": "সংরক্ষণ হচ্ছে...",
+    "cancel": "বাতিল",
+    "yesDelete": "হ্যাঁ, মুছুন",
+    "deleting": "মুছে ফেলা হচ্ছে...",
+    "deleteConfirm": "এই সেটিং মুছবেন?",
+    "valuePlaceholder": "সেটিং মান লিখুন...",
+    "showMore": "আরও দেখান",
+    "showLess": "কম দেখান",
+    "toggleAriaLabel": "{{key}} টগল করুন",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 সংবেদনশীল"
+    },
+    "helpText": {
+      "allowShortSelling": "ইঞ্জিনকে শর্ট পজিশন খুলতে দিন। SELL সিগন্যাল নেতিবাচক desired_units তৈরি করবে; নিষ্ক্রিয় থাকলে 0-তে সীমাবদ্ধ হবে।",
+      "allowManualOrders": "অর্ডার ট্যাবে New Order বোতাম সক্রিয় করুন। নিষ্ক্রিয় থাকলে POST /api/orders 403 ফেরত দেয়।"
+    }
+  },
+  "addModal": {
+    "title": "নতুন সেটিং যোগ করুন",
+    "keyLabel": "কী",
+    "valueLabel": "মান",
+    "categoryLabel": "ক্যাটাগরি",
+    "descriptionLabel": "বিবরণ",
+    "keyPlaceholder": "যেমন walutomat.api_key",
+    "keyHint": "নেস্টেড সেটিংসের জন্য ডট নোটেশন ব্যবহার করুন (যেমন category.subcategory.name)",
+    "valuePlaceholder": "সেটিং মান",
+    "categorySelectPlaceholder": "বিদ্যমান নির্বাচন করুন বা নতুন তৈরি করুন",
+    "newCategoryPlaceholder": "অথবা নতুন ক্যাটাগরির নাম লিখুন",
+    "descriptionPlaceholder": "ঐচ্ছিক বিবরণ",
+    "cancel": "বাতিল",
+    "create": "সেটিং তৈরি করুন",
+    "creating": "তৈরি হচ্ছে...",
+    "validation": {
+      "keyRequired": "কী আবশ্যক",
+      "valueRequired": "মান আবশ্যক",
+      "categoryRequired": "ক্যাটাগরি আবশ্যক"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "ফর্ম এডিটর",
+    "rawEditor": "Raw JSON এডিটর",
+    "rawJson": "Raw JSON",
+    "switchToForm": "ফর্মে যান",
+    "importToForm": "ফর্মে ইমপোর্ট করুন",
+    "parseError": "পার্স ত্রুটি: {{message}}",
+    "arraySummary": "অ্যারে ({{length}} আইটেম)",
+    "addItem": "আইটেম যোগ করুন",
+    "remove": "সরান",
+    "typeHint": {
+      "array": "(অ্যারে)",
+      "object": "(অবজেক্ট)",
+      "string": "(স্ট্রিং)",
+      "number": "(সংখ্যা)",
+      "boolean": "(বুলিয়ান)",
+      "bigint": "(bigint)",
+      "function": "(ফাংশন)",
+      "symbol": "(সিম্বল)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

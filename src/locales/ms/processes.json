@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Kawalan Proses",
+    "subtitle": "Pemantauan dan kawalan proses masa nyata"
+  },
+  "sections": {
+    "longRunning": "Proses Jangka Panjang",
+    "executorTemplates": "Templat Pelaksana",
+    "executorTemplatesHint": "Mengedit config templat memberi kesan kepada semua dompet pada bursa ini selepas restart. Templat hanya config — mulakan instance per-dompet di bawah untuk menjalankan pelaksana.",
+    "walletInstances": "Instance Dompet",
+    "taskProcesses": "Proses Tugas"
+  },
+  "card": {
+    "stop": "Henti",
+    "start": "Mula",
+    "restart": "Restart",
+    "starting": "Memulakan...",
+    "stopping": "Menghentikan...",
+    "status": {
+      "running": "berjalan",
+      "stopped": "dihentikan",
+      "error": "ralat",
+      "starting": "memulakan",
+      "stopping": "menghentikan"
+    }
+  },
+  "template": {
+    "badge": "templat",
+    "mode": "Mod:",
+    "parameters": "Parameter:",
+    "paramCount": "{{count}} parameter",
+    "noParams": "tiada parameter ditetapkan"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Hentikan {{name}}",
+    "stopMessage": "Ini akan menghentikan proses {{name}}.",
+    "restartTitle": "Restart {{name}}",
+    "restartMessage": "Ini akan memulakan semula proses {{name}}."
+  },
+  "executionMode": {
+    "title": "Mulakan {{name}}",
+    "label": "Mod Pelaksanaan:",
+    "threadName": "Mod Thread",
+    "threadDescription": "Berjalan sebagai tugas terbenam dalam pelayan web. Startup lebih cepat, memori dikongsi.",
+    "processName": "Mod Proses",
+    "processDescription": "Berjalan sebagai proses Python berasingan. Terasing, tahan ralat, pemantauan terperinci.",
+    "cancel": "Batal",
+    "start": "Mulakan {{name}}",
+    "threadAriaLabel": "Mod Thread",
+    "processAriaLabel": "Mod Proses"
+  }
+}

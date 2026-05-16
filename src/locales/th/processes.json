@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "การควบคุมกระบวนการ",
+    "subtitle": "ติดตามและควบคุมกระบวนการแบบเรียลไทม์"
+  },
+  "sections": {
+    "longRunning": "กระบวนการที่ทำงานระยะยาว",
+    "executorTemplates": "เทมเพลต Executor",
+    "executorTemplatesHint": "การแก้ไขการกำหนดค่าเทมเพลตจะมีผลกับกระเป๋าเงินทั้งหมดบน Exchange นี้หลังรีสตาร์ท เทมเพลตเป็น config-only — เริ่มอินสแตนซ์ต่อกระเป๋าด้านล่างเพื่อรัน executor",
+    "walletInstances": "อินสแตนซ์กระเป๋าเงิน",
+    "taskProcesses": "กระบวนการงาน"
+  },
+  "card": {
+    "stop": "หยุด",
+    "start": "เริ่ม",
+    "restart": "รีสตาร์ท",
+    "starting": "กำลังเริ่ม...",
+    "stopping": "กำลังหยุด...",
+    "status": {
+      "running": "กำลังทำงาน",
+      "stopped": "หยุดแล้ว",
+      "error": "ข้อผิดพลาด",
+      "starting": "กำลังเริ่ม",
+      "stopping": "กำลังหยุด"
+    }
+  },
+  "template": {
+    "badge": "เทมเพลต",
+    "mode": "โหมด:",
+    "parameters": "พารามิเตอร์:",
+    "paramCount": "{{count}} พารามิเตอร์",
+    "noParams": "ไม่ได้ตั้งค่าพารามิเตอร์"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "ด้วยตนเอง"
+  },
+  "actions": {
+    "stopTitle": "หยุด {{name}}",
+    "stopMessage": "การดำเนินการนี้จะหยุดกระบวนการ {{name}}",
+    "restartTitle": "รีสตาร์ท {{name}}",
+    "restartMessage": "การดำเนินการนี้จะรีสตาร์ทกระบวนการ {{name}}"
+  },
+  "executionMode": {
+    "title": "เริ่ม {{name}}",
+    "label": "โหมดการดำเนินการ:",
+    "threadName": "โหมด Thread",
+    "threadDescription": "ทำงานเป็น task ฝังอยู่ในเว็บเซิร์ฟเวอร์ เริ่มเร็วกว่าและใช้หน่วยความจำร่วมกัน",
+    "processName": "โหมด Process",
+    "processDescription": "ทำงานเป็นกระบวนการ Python แยกต่างหาก แยกส่วน ทนทานต่อข้อผิดพลาด และติดตามละเอียด",
+    "cancel": "ยกเลิก",
+    "start": "เริ่ม {{name}}",
+    "threadAriaLabel": "โหมด Thread",
+    "processAriaLabel": "โหมด Process"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "สัญญาณ"
+  },
+  "filters": {
+    "allStrategies": "กลยุทธ์ทั้งหมด"
+  },
+  "actions": {
+    "export": "ส่งออก"
+  },
+  "stats": {
+    "total": "ทั้งหมด",
+    "buy": "ซื้อ",
+    "sell": "ขาย",
+    "avgStrength": "ความแรงเฉลี่ย"
+  },
+  "card": {
+    "strength": "ความแรง",
+    "price": "ราคา",
+    "exchange": "Exchange",
+    "reason": "เหตุผล:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "แรง",
+    "medium": "ปานกลาง",
+    "weak": "อ่อน",
+    "veryWeak": "อ่อนมาก"
+  },
+  "time": {
+    "justNow": "เมื่อครู่นี้",
+    "minutesAgo": "{{count}}m ที่แล้ว",
+    "hoursAgo": "{{count}}h ที่แล้ว"
+  },
+  "empty": {
+    "title": "ไม่พบสัญญาณ",
+    "message": "ไม่มีสัญญาณเทรดที่ตรงกับตัวกรองปัจจุบัน"
+  }
+}

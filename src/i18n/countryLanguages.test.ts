@@ -45,6 +45,9 @@ const NATIVE_LANGUAGE_COUNTRIES = [
   'il',
   'ir',
   'in',
+  'th',
+  'my',
+  'bd',
 ] as const
 
 describe('COUNTRY_TO_LANGUAGE', () => {
@@ -86,6 +89,9 @@ describe('COUNTRY_TO_LANGUAGE', () => {
     expect(COUNTRY_TO_LANGUAGE.il).toBe('he')
     expect(COUNTRY_TO_LANGUAGE.ir).toBe('fa')
     expect(COUNTRY_TO_LANGUAGE.in).toBe('hi')
+    expect(COUNTRY_TO_LANGUAGE.th).toBe('th')
+    expect(COUNTRY_TO_LANGUAGE.my).toBe('ms')
+    expect(COUNTRY_TO_LANGUAGE.bd).toBe('bn')
   })
 
   it('maps countries without a native catalog to en', () => {
@@ -145,6 +151,9 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
     expect(COUNTRY_TO_INTL_LOCALE.il).toBe('he-IL')
     expect(COUNTRY_TO_INTL_LOCALE.ir).toBe('fa-IR')
     expect(COUNTRY_TO_INTL_LOCALE.in).toBe('hi-IN')
+    expect(COUNTRY_TO_INTL_LOCALE.th).toBe('th-TH')
+    expect(COUNTRY_TO_INTL_LOCALE.my).toBe('ms-MY')
+    expect(COUNTRY_TO_INTL_LOCALE.bd).toBe('bn-BD')
   })
 
   it('covers all 45 codes', () => {

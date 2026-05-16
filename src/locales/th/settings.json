@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "การตั้งค่า",
+    "subtitle": "กำหนดค่าการตั้งค่าและพารามิเตอร์ของแอปพลิเคชัน",
+    "addButton": "เพิ่มการตั้งค่า",
+    "searchPlaceholder": "ค้นหาการตั้งค่า...",
+    "noResults": "ไม่พบการตั้งค่าที่ตรงกับเกณฑ์",
+    "allCategories": "หมวดหมู่ทั้งหมด",
+    "categoryFilterAriaLabel": "กรองการตั้งค่าตามหมวดหมู่"
+  },
+  "errors": {
+    "loadFailed": "โหลดการตั้งค่าไม่สำเร็จ",
+    "updateFailed": "อัปเดตการตั้งค่าไม่สำเร็จ",
+    "deleteFailed": "ลบการตั้งค่าไม่สำเร็จ",
+    "createFailed": "สร้างการตั้งค่าไม่สำเร็จ",
+    "alreadyExists": "มีการตั้งค่าที่ใช้คีย์ \"{{key}}\" อยู่แล้ว"
+  },
+  "item": {
+    "edit": "แก้ไข",
+    "delete": "ลบ",
+    "save": "บันทึก",
+    "saving": "กำลังบันทึก...",
+    "cancel": "ยกเลิก",
+    "yesDelete": "ใช่ ลบ",
+    "deleting": "กำลังลบ...",
+    "deleteConfirm": "ลบการตั้งค่านี้หรือไม่?",
+    "valuePlaceholder": "ป้อนค่าการตั้งค่า...",
+    "showMore": "แสดงเพิ่มเติม",
+    "showLess": "แสดงน้อยลง",
+    "toggleAriaLabel": "สลับ {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 ข้อมูลอ่อนไหว"
+    },
+    "helpText": {
+      "allowShortSelling": "อนุญาตให้เอนจินเปิดสถานะ short สัญญาณ SELL จะสร้าง desired_units ติดลบ และจะถูกจำกัดเป็น 0 เมื่อปิดใช้งาน",
+      "allowManualOrders": "เปิดใช้งานปุ่มคำสั่งใหม่ในแท็บคำสั่ง เมื่อปิดใช้งาน POST /api/orders จะส่งกลับ 403"
+    }
+  },
+  "addModal": {
+    "title": "เพิ่มการตั้งค่าใหม่",
+    "keyLabel": "คีย์",
+    "valueLabel": "ค่า",
+    "categoryLabel": "หมวดหมู่",
+    "descriptionLabel": "คำอธิบาย",
+    "keyPlaceholder": "เช่น walutomat.api_key",
+    "keyHint": "ใช้รูปแบบจุดสำหรับการตั้งค่าที่ซ้อนกัน (เช่น category.subcategory.name)",
+    "valuePlaceholder": "ค่าการตั้งค่า",
+    "categorySelectPlaceholder": "เลือกที่มีอยู่หรือสร้างใหม่",
+    "newCategoryPlaceholder": "หรือป้อนชื่อหมวดหมู่ใหม่",
+    "descriptionPlaceholder": "คำอธิบาย (ไม่บังคับ)",
+    "cancel": "ยกเลิก",
+    "create": "สร้างการตั้งค่า",
+    "creating": "กำลังสร้าง...",
+    "validation": {
+      "keyRequired": "ต้องระบุคีย์",
+      "valueRequired": "ต้องระบุค่า",
+      "categoryRequired": "ต้องระบุหมวดหมู่"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "ตัวแก้ไขแบบฟอร์ม",
+    "rawEditor": "ตัวแก้ไข JSON ดิบ",
+    "rawJson": "JSON ดิบ",
+    "switchToForm": "สลับเป็นแบบฟอร์ม",
+    "importToForm": "นำเข้าไปยังแบบฟอร์ม",
+    "parseError": "ข้อผิดพลาดในการแยกวิเคราะห์: {{message}}",
+    "arraySummary": "อาร์เรย์ ({{length}} รายการ)",
+    "addItem": "เพิ่มรายการ",
+    "remove": "ลบ",
+    "typeHint": {
+      "array": "(อาร์เรย์)",
+      "object": "(ออบเจ็กต์)",
+      "string": "(สตริง)",
+      "number": "(ตัวเลข)",
+      "boolean": "(บูลีน)",
+      "bigint": "(bigint)",
+      "function": "(ฟังก์ชัน)",
+      "symbol": "(สัญลักษณ์)",
+      "undefined": "(ไม่ระบุ)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}
