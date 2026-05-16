@@ -28,7 +28,7 @@
     "badge": "szablon",
     "mode": "Tryb:",
     "parameters": "Parametry:",
-    "paramCount": "{{count}} parametrów",
+    "paramCount": "{{count}}",
     "noParams": "brak ustawionych parametrów"
   },
   "badges": {
