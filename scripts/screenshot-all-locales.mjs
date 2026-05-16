@@ -108,6 +108,7 @@ const ADMIN_USER = globalThis.process?.env?.ADMIN_USER || 'admin'
 const ADMIN_PASS = globalThis.process?.env?.ADMIN_PASS || 'AdminSnapper2026!'
 
 const SIDEBAR_SELECTOR = '[data-testid="locale-switcher-trigger"]'
+const HEADER_TRIGGER_SELECTOR = 'header [data-testid="locale-switcher-trigger"]'
 const LOGIN_PASSWORD_SELECTOR = 'input[type="password"]'
 
 async function isAuthenticated(page) {
@@ -156,25 +157,52 @@ async function login(page) {
 }
 
 async function selectLocale(page, code) {
-  const trigger = page.locator(SIDEBAR_SELECTOR).first()
-  await trigger.click({ force: true })
+  // Park on #overview before opening the LocaleSwitcher. The Settings page
+  // mounts a *second* LocaleSwitcher trigger in its content area; if we
+  // arrive here straight from `settings.png`, `.first()` may pick that
+  // off-fold trigger on mobile and Playwright reports "Element is outside
+  // of the viewport" even with `force: true` (force skips actionability,
+  // not viewport-bounds). Hash-nav unmounts the Settings page entirely so
+  // only the header trigger remains.
+  await page.evaluate(() => {
+    if (globalThis.location.hash !== '#overview') {
+      globalThis.location.hash = '#overview'
+    }
+  })
+  await page.locator(HEADER_TRIGGER_SELECTOR).waitFor({ state: 'attached', timeout: 10_000 })
 
-  // Wait for the popover dialog to mount the target flag button. Use
-  // `attached` (not `visible`) because on mobile the LocaleSwitcher popover
-  // has 15 flags per row × 32px = ~500px, wider than a 393px iPhone
-  // viewport — flags past column ~12 are present in the DOM but scrolled
-  // off-screen.
-  const flag = page.locator(`button[data-locale="${code}"]`).first()
-  await flag.waitFor({ state: 'attached', timeout: 5_000 })
+  const beforeLang = await page.evaluate(() => document.documentElement.lang)
+
+  // Dispatch the trigger click via the DOM API. This bypasses every
+  // Playwright actionability gate (viewport bounds, hit-test, scrollability)
+  // — needed on a 393×852 iPhone viewport where the Radix popover, anchored
+  // to the top-right trigger with align='end' + side='bottom', extends
+  // beyond the screen edges and some columns sit at negative x coordinates.
+  await page.evaluate(sel => {
+    const el = document.querySelector(sel)
+    if (el === null) {
+      throw new Error(`trigger not found: ${sel}`)
+    }
+    el.click()
+  }, HEADER_TRIGGER_SELECTOR)
+
+  // Wait for the portaled popover to mount the target flag button. Use
+  // `attached` (not `visible`) because flags past column ~12 may be
+  // positioned off-screen on mobile but are still in the DOM.
+  const flagSelector = `button[data-locale="${code}"]`
+  await page.locator(flagSelector).first().waitFor({ state: 'attached', timeout: 5_000 })
+
+  await page.evaluate(sel => {
+    const el = document.querySelector(sel)
+    if (el === null) {
+      throw new Error(`flag not found: ${sel}`)
+    }
+    el.click()
+  }, flagSelector)
 
   // The `<html lang>` attribute flips when i18next.changeLanguage resolves
   // (driven by applyLocaleSideEffects). Watch for that flip as the signal
   // that the locale switch fully landed — event-based, no fixed sleep.
-  const beforeLang = await page.evaluate(() => document.documentElement.lang)
-  // Force-click bypasses Playwright's actionability checks for elements
-  // outside the viewport; on mobile this is needed because the popover
-  // content extends beyond the screen width.
-  await flag.click({ force: true })
   await page
     .waitForFunction(
       prev => document.documentElement.lang !== prev && document.documentElement.lang.length > 0,
