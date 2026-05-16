@@ -13,14 +13,34 @@
  *
  * Run: node scripts/screenshot-all-locales.mjs
  */
-import { chromium } from '@playwright/test'
+import { chromium, devices } from '@playwright/test'
 import { mkdir } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '../..')
-const OUT_DIR = resolve(ROOT, 'proprietary/screenshots/frontend')
+
+/**
+ * Viewport preset. Defaults to `desktop` (1440×900) — set
+ * `VIEWPORT=mobile` to use Playwright's iPhone 15 Pro device descriptor:
+ * Mobile Safari viewport 393×659 (the screen is 393×852, but the visible
+ * browser viewport excludes the URL bar / system chrome — this matches
+ * what real users see) + mobile userAgent + hasTouch + deviceScaleFactor
+ * 3 (PNGs land at 1179×1977). Output goes to
+ * `proprietary/screenshots/frontend{,-mobile}/` accordingly.
+ */
+const VIEWPORT = globalThis.process?.env?.VIEWPORT === 'mobile' ? 'mobile' : 'desktop'
+const OUT_DIR = resolve(
+  ROOT,
+  VIEWPORT === 'mobile'
+    ? 'proprietary/screenshots/frontend-mobile'
+    : 'proprietary/screenshots/frontend'
+)
+const CONTEXT_OPTIONS =
+  VIEWPORT === 'mobile'
+    ? { ...devices['iPhone 15 Pro'], ignoreHTTPSErrors: true }
+    : { viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true }
 
 const LOCALES = [
   'ie',
@@ -91,6 +111,7 @@ const ADMIN_USER = globalThis.process?.env?.ADMIN_USER || 'admin'
 const ADMIN_PASS = globalThis.process?.env?.ADMIN_PASS || 'AdminSnapper2026!'
 
 const SIDEBAR_SELECTOR = '[data-testid="locale-switcher-trigger"]'
+const HEADER_TRIGGER_SELECTOR = 'header [data-testid="locale-switcher-trigger"]'
 const LOGIN_PASSWORD_SELECTOR = 'input[type="password"]'
 
 async function isAuthenticated(page) {
@@ -139,18 +160,52 @@ async function login(page) {
 }
 
 async function selectLocale(page, code) {
-  const trigger = page.locator(SIDEBAR_SELECTOR).first()
-  await trigger.click()
+  // Park on #overview before opening the LocaleSwitcher. The Settings page
+  // mounts a *second* LocaleSwitcher trigger in its content area; if we
+  // arrive here straight from `settings.png`, `.first()` may pick that
+  // off-fold trigger on mobile and Playwright reports "Element is outside
+  // of the viewport" even with `force: true` (force skips actionability,
+  // not viewport-bounds). Hash-nav unmounts the Settings page entirely so
+  // only the header trigger remains.
+  await page.evaluate(() => {
+    if (globalThis.location.hash !== '#overview') {
+      globalThis.location.hash = '#overview'
+    }
+  })
+  await page.locator(HEADER_TRIGGER_SELECTOR).waitFor({ state: 'attached', timeout: 10_000 })
 
-  // Wait for the popover dialog to open and the target flag button to render.
-  const flag = page.locator(`button[data-locale="${code}"]`).first()
-  await flag.waitFor({ state: 'visible', timeout: 5_000 })
+  const beforeLang = await page.evaluate(() => document.documentElement.lang)
+
+  // Dispatch the trigger click via the DOM API. This bypasses every
+  // Playwright actionability gate (viewport bounds, hit-test, scrollability)
+  // — needed on a 393×852 iPhone viewport where the Radix popover, anchored
+  // to the top-right trigger with align='end' + side='bottom', extends
+  // beyond the screen edges and some columns sit at negative x coordinates.
+  await page.evaluate(sel => {
+    const el = document.querySelector(sel)
+    if (el === null) {
+      throw new Error(`trigger not found: ${sel}`)
+    }
+    el.click()
+  }, HEADER_TRIGGER_SELECTOR)
+
+  // Wait for the portaled popover to mount the target flag button. Use
+  // `attached` (not `visible`) because flags past column ~12 may be
+  // positioned off-screen on mobile but are still in the DOM.
+  const flagSelector = `button[data-locale="${code}"]`
+  await page.locator(flagSelector).first().waitFor({ state: 'attached', timeout: 5_000 })
+
+  await page.evaluate(sel => {
+    const el = document.querySelector(sel)
+    if (el === null) {
+      throw new Error(`flag not found: ${sel}`)
+    }
+    el.click()
+  }, flagSelector)
 
   // The `<html lang>` attribute flips when i18next.changeLanguage resolves
   // (driven by applyLocaleSideEffects). Watch for that flip as the signal
   // that the locale switch fully landed — event-based, no fixed sleep.
-  const beforeLang = await page.evaluate(() => document.documentElement.lang)
-  await flag.click()
   await page
     .waitForFunction(
       prev => document.documentElement.lang !== prev && document.documentElement.lang.length > 0,
@@ -235,11 +290,10 @@ async function main() {
     `Locales: ${LOCALES.length}, screens: ${SCREENS.length}, total: ${LOCALES.length * SCREENS.length}`
   )
 
+  console.log(`Viewport: ${VIEWPORT} (output: ${OUT_DIR})`)
+
   const browser = await chromium.launch({ headless: true })
-  const context = await browser.newContext({
-    viewport: { width: 1440, height: 900 },
-    ignoreHTTPSErrors: true,
-  })
+  const context = await browser.newContext(CONTEXT_OPTIONS)
   const page = await context.newPage()
 
   page.on('pageerror', err => console.error(`[pageerror] ${err.message}`))
