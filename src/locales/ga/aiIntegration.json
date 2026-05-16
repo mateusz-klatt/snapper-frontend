@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Comhtháthú AI",
+    "subtitle": "Bainistigh toscairí AI a nascann le Snapper trí MCP.",
+    "loading": "Comhtháthú AI á lódáil…",
+    "createDelegate": "Cruthaigh toscaire"
+  },
+  "disabled": {
+    "title": "Tá comhtháthú AI díchumasaithe",
+    "message": "Cumasaigh an bhratach ghné i Socruithe → Bratacha Gnéithe chun toscairí AI a bhainistiú."
+  },
+  "list": {
+    "loadingDelegates": "Toscairí á lódáil…",
+    "emptyTitle": "Níl aon toscaire AI ann fós",
+    "emptyMessage": "Cliceáil “Cruthaigh toscaire” chun ceann a ghiniúint agus sliocht cumraíochta MCP a fháil.",
+    "columns": {
+      "label": "Lipéad",
+      "username": "Ainm úsáideora",
+      "created": "Cruthaithe",
+      "maxOpenOrders": "Uasmhéid orduithe oscailte",
+      "maxDailyUsd": "Uasmhéid laethúil USD",
+      "status": "Stádas",
+      "actions": "Gníomhartha"
+    },
+    "status": {
+      "active": "Gníomhach",
+      "revoked": "Cúlghairthe"
+    },
+    "default": "réamhshocrú",
+    "details": "Sonraí",
+    "viewAriaLabel": "Féach ar thoscaire {{label}}"
+  },
+  "wizard": {
+    "title": "Cruthaigh toscaire AI",
+    "step1": "1. Aitheantas",
+    "step2": "2. Scóip agus teorainneacha",
+    "step3": "3. Athbhreithniú",
+    "stepDone": "✓ Déanta",
+    "identity": {
+      "labelField": "Lipéad",
+      "labelPlaceholder": "m.sh. Alpha prop desk",
+      "labelHelpPrefix": "Díorthófar ainm úsáideora an toscaire ar thaobh an fhreastalaí mar ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Scóip",
+      "operatorLabel": "public_id oibreora (roghnach)",
+      "operatorPlaceholder": "Fág folamh chun príomhoibreoir an ghlaoiteora a oidhreacht"
+    },
+    "caps": {
+      "heading": "Teorainneacha trádála (roghnach ar fad)",
+      "maxOpenOrders": "Uasmhéid orduithe oscailte",
+      "maxDailyNotionalUsd": "Uasluach ainmniúil laethúil USD",
+      "maxCancelsPerMinute": "Uasmhéid cealuithe sa nóiméad",
+      "perInstrument": "Uaschandam in aghaidh na hionstraime (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "réamhshocrú",
+      "errorInvalidJson": "Caithfidh max_order_quantity_per_instrument a bheith ina JSON bailí",
+      "errorJsonObject": "Caithfidh max_order_quantity_per_instrument a bheith ina réad JSON nó folamh",
+      "errorNegative": "Ní mór do theorainneacha a bheith ina slánuimhreacha neamh-dhiúltacha nó folamh."
+    },
+    "review": {
+      "heading": "Athbhreithnigh agus cruthaigh",
+      "rowLabel": "Lipéad",
+      "rowOperator": "public_id oibreora",
+      "rowMaxOpenOrders": "Uasmhéid orduithe oscailte",
+      "rowMaxDailyNotional": "Uasluach ainmniúil laethúil USD",
+      "rowMaxCancelsPerMinute": "Uasmhéid cealuithe sa nóiméad",
+      "rowPerInstrument": "Uaschandam in aghaidh na hionstraime",
+      "operatorDefault": "(príomhoibreoir an ghlaoiteora)",
+      "defaultValue": "(réamhshocrú)"
+    },
+    "buttons": {
+      "cancel": "Cealaigh",
+      "next": "Ar aghaidh",
+      "back": "Siar",
+      "createDelegate": "Cruthaigh toscaire",
+      "iSavedClose": "Tá siad sábháilte agam — dún"
+    },
+    "toast": {
+      "delegateCreated": "Cruthaíodh an toscaire",
+      "failedToCreate": "Theip ar chruthú an toscaire"
+    }
+  },
+  "detail": {
+    "loading": "Toscaire á lódáil…",
+    "notFound": "Níor aimsíodh an toscaire nó níl sé ar fáil.",
+    "back": "Siar",
+    "backToList": "Ar ais go dtí an liosta",
+    "updateCaps": "Nuashonraigh teorainneacha",
+    "revoke": "Cúlghair",
+    "save": "Sábháil",
+    "cancel": "Cealaigh",
+    "tradingCaps": "Teorainneacha trádála",
+    "status": "Stádas",
+    "active": "Gníomhach",
+    "revoked": "Cúlghairthe",
+    "createdAt": "Cruthaithe ar",
+    "createdBy": "Cruthaithe ag (public_id úsáideora)",
+    "publicId": "ID Poiblí",
+    "maxOpenOrders": "Uasmhéid orduithe oscailte",
+    "maxDailyNotionalUsd": "Uasluach ainmniúil laethúil USD",
+    "maxCancelsPerMinute": "Uasmhéid cealuithe sa nóiméad",
+    "perInstrument": "Uaschandam in aghaidh na hionstraime",
+    "defaultValue": "(réamhshocrú)",
+    "editorPlaceholder": "(réamhshocrú)",
+    "toast": {
+      "capsUpdated": "Nuashonraíodh teorainneacha",
+      "failedToUpdateCaps": "Theip ar nuashonrú na dteorainneacha",
+      "negativeIntegersError": "Ní mór do theorainneacha a bheith ina slánuimhreacha neamh-dhiúltacha nó folamh."
+    }
+  },
+  "revokeDialog": {
+    "title": "Cúlghair toscaire \"{{label}}\"?",
+    "message": "Cúlghairfidh sé seo comharthaí an toscaire agus stopfaidh sé a shíntiúis MCP. Ní féidir é seo a chur ar ceal.",
+    "confirm": "Cúlghair",
+    "cancel": "Cealaigh",
+    "toast": {
+      "delegateRevoked": "Cúlghaireadh an toscaire",
+      "failedToRevoke": "Theip ar chúlghairm an toscaire"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Sábháil na dintiúir seo anois",
+    "warningMessage": "Ní thaispeánfar arís iad. Ní stórálann Snapper na comharthaí amha; nuair a dhúnann tú an draoi seo, beidh an t-aon chóip i gcumraíocht do chliaint MCP.",
+    "snippetHelp": "Comhartha fadsaolach toscaire AI (~10 mbliana). Fíordheimhníonn an comhartha céanna an freastalaí seachfhreastalaí MCP agus an monatóir faire araon. Chun é a rothlú, díghníomhachtaigh an toscaire seo agus cruthaigh ceann nua.",
+    "baseUrlHelpPrefix": "Díorthaítear Base URL ó origin an bhrabhsálaí seo + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Cóipeáil sliocht cumraíochta chuig an ngearrthaisce",
+    "copy": "Cóipeáil chuig an ngearrthaisce",
+    "copied": "Cóipeáilte"
+  }
+}

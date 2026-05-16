@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "訂單與成交",
+    "newOrder": "新增訂單",
+    "exportCsv": "匯出 CSV"
+  },
+  "tabs": {
+    "orders": "訂單 ({{total}})",
+    "executions": "成交 ({{total}})"
+  },
+  "filters": {
+    "byStatus": "按狀態篩選：",
+    "options": {
+      "all": "所有訂單",
+      "new": "新增",
+      "open": "掛單",
+      "partiallyFilled": "部分成交",
+      "partially_filled": "部分成交",
+      "filled": "已成交",
+      "cancelled": "已取消",
+      "rejected": "已拒絕"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "市價",
+    "quantity": "數量",
+    "price": "價格",
+    "created": "建立時間",
+    "createdUnknown": "N/A",
+    "orderId": "訂單 ID",
+    "leverage": "槓桿",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "僅減倉",
+    "cancel": "取消",
+    "cancelling": "取消中…",
+    "cancelAriaLabel": "取消訂單 {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "訂單 #{{orderId}}",
+    "filled": "已成交",
+    "orderLabel": "訂單 {{orderId}}",
+    "size": "數量",
+    "price": "價格",
+    "total": "總額",
+    "executed": "成交時間",
+    "fees": "手續費"
+  },
+  "empty": {
+    "ordersTitle": "未找到訂單",
+    "ordersStartTrading": "開始交易後，訂單會在這裏顯示",
+    "ordersFilterless": "沒有 {{status}} 訂單",
+    "executionsTitle": "未找到成交",
+    "executionsMessage": "交易成交會在這裏顯示"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "品種",
+      "side": "方向",
+      "type": "類型",
+      "status": "狀態",
+      "quantity": "數量",
+      "price": "價格",
+      "leverage": "槓桿",
+      "reduceOnly": "僅減倉",
+      "created": "建立時間"
+    },
+    "executions": {
+      "orderId": "訂單 ID",
+      "instrument": "品種",
+      "side": "方向",
+      "size": "數量",
+      "price": "價格",
+      "total": "總額",
+      "fee": "手續費",
+      "feeAsset": "手續費資產",
+      "executed": "成交時間"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "新增手動訂單",
+    "titleConfirm": "確認訂單",
+    "fields": {
+      "exchange": "交易所",
+      "instrument": "品種",
+      "side": "方向",
+      "orderType": "訂單類型",
+      "quantity": "數量",
+      "price": "價格",
+      "stopPrice": "止損價",
+      "mode": "模式",
+      "wallet": "錢包",
+      "type": "類型"
+    },
+    "sideOptions": {
+      "buy": "買入",
+      "sell": "賣出"
+    },
+    "orderTypeOptions": {
+      "market": "市價單",
+      "limit": "限價單",
+      "stop": "止損單",
+      "stopLimit": "止損限價單",
+      "stop_limit": "止損限價單"
+    },
+    "modeOptions": {
+      "live": "實盤",
+      "paper": "模擬"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — 僅市場數據",
+    "walletPaperSuffix": "{{label}} (模擬)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "reviewOrder": "覆核訂單",
+      "back": "返回",
+      "confirmOrder": "確認訂單",
+      "submitting": "提交中..."
+    },
+    "errors": {
+      "missingRequired": "必須填寫所有必填欄位",
+      "quantityPositive": "數量必須為正數",
+      "priceRequired": "此訂單類型必須填寫價格",
+      "pricePositive": "價格必須為正數",
+      "stopPriceRequired": "此訂單類型必須填寫止損價",
+      "stopPricePositive": "止損價必須為正數",
+      "createFailed": "建立訂單失敗"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "此品種僅可觀察 — 請在支援執行的品種上下單。",
+      "unknownInstrument": "無法識別此品種。請重新載入列表後重試。",
+      "capsViolation": "此訂單會超過你的帳戶安全上限。請檢查風險設定後重試。"
+    }
+  }
+}

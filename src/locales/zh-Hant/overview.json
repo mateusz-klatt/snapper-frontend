@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "概覽"
+  },
+  "metrics": {
+    "feedsRunning": "運行中的 Feed",
+    "strategiesActive": "活躍策略",
+    "openOrders": "未完成訂單",
+    "todaysExecutions": "今日成交",
+    "executionsOn": "成交 ({{date}})"
+  },
+  "status": {
+    "stopped": "已停止",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "運行中",
+    "active": "活躍"
+  },
+  "processStatus": {
+    "title": "進程狀態",
+    "feeds": "Feeds",
+    "strategies": "策略",
+    "executors": "執行器",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "投資組合摘要",
+    "totalValue": "總價值",
+    "longExposure": "長倉敞口",
+    "shortExposure": "短倉敞口",
+    "netDelta": "淨 Delta",
+    "unrealizedPnl": "未實現 P&L",
+    "pnlPercent": "P&L %",
+    "positions": "倉位",
+    "instrumentsCount": "{{count}} 個品種",
+    "empty": "沒有可用倉位數據"
+  },
+  "signals": {
+    "title": "最近信號",
+    "empty": "沒有最近信號",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "最近成交",
+    "empty": "沒有最近成交",
+    "noTime": "N/A"
+  }
+}

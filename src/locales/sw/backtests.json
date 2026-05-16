@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Rudi",
+    "backToList": "← Rudi kwenye backtests"
+  },
+  "status": {
+    "pending": "Inasubiri",
+    "running": "Inaendelea",
+    "completed": "Imekamilika",
+    "failed": "Imeshindwa",
+    "cancelled": "Imeghairiwa"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Ghairi",
+      "rerun": "Endesha tena"
+    },
+    "fields": {
+      "timeframe": "Muda",
+      "period": "Kipindi",
+      "initialCash": "Mtaji wa Awali",
+      "id": "ID"
+    },
+    "errorPrefix": "Hitilafu: {{message}}",
+    "filter": {
+      "ariaLabel": "Chuja backtests kwa hali",
+      "options": {
+        "all": "Hali zote",
+        "pending": "Inasubiri",
+        "running": "Inaendelea",
+        "completed": "Imekamilika",
+        "failed": "Imeshindwa",
+        "cancelled": "Imeghairiwa"
+      }
+    },
+    "empty": {
+      "title": "Hakuna backtests",
+      "message": "Endesha backtest kupitia CLI au API ili kuona matokeo hapa."
+    }
+  },
+  "detail": {
+    "title": "Run ya backtest",
+    "fields": {
+      "strategy": "Mkakati",
+      "instrument": "Instrumenti",
+      "status": "Hali",
+      "period": "Kipindi",
+      "crossAsset": "Attribution ya cross-asset",
+      "configHash": "Hash ya usanidi"
+    },
+    "crossAssetFlow": "feed ya {{source}} → fills za {{target}}",
+    "errors": {
+      "invalidRunId": "ID ya run si sahihi — lazima iwe UUID7 (imepokelewa \"{{id}}\").",
+      "loadFailed": "Imeshindwa kupakia run: {{message}}",
+      "notFound": "haijapatikana"
+    }
+  },
+  "compare": {
+    "title": "Linganisha",
+    "headingFull": "Ulinganisho wa backtest",
+    "loading": "Inapakia ulinganisho…",
+    "vs": "vs",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Vipimo",
+      "equityOverlay": "Overlay ya equity",
+      "trades": "Trades",
+      "signals": "Ishara"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Ulinganisho haukupatikana kwenye pochi ya sasa.",
+      "loadFailed": "Imeshindwa kupakia ulinganisho: {{message}}",
+      "unknown": "hitilafu isiyojulikana",
+      "emptyResponse": "Jibu la ulinganisho ni tupu."
+    },
+    "launcher": {
+      "title": "Linganisha",
+      "submit": "Linganisha",
+      "autoPair": "Linganisha na ya karibuni zaidi",
+      "terminalGate": "ulinganisho hupatikana run hii ikifika hali ya mwisho",
+      "noSiblings": "hakuna run nyingine zenye usanidi huu",
+      "limitNotice": "inaonyesha {{count}} za karibuni zaidi — tumia ulinganisho wa manual kwa run za zamani",
+      "pickPlaceholder": "— chagua run ya kulinganisha —",
+      "showAllLabel": "Onyesha run zote (si zenye usanidi sawa pekee)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "run zote",
+        "sameConfig": "usanidi sawa"
+      },
+      "errors": {
+        "pickRequired": "chagua run kutoka kwenye orodha"
+      }
+    },
+    "diffColumns": {
+      "common": "Zinazofanana",
+      "onlyA": "A pekee",
+      "onlyB": "B pekee"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Hakuna vipimo vinavyolinganishwa — run zote mbili hazikuwa na thamani zilizorekodiwa.",
+      "columns": {
+        "name": "Kipimo",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Inasubiri maendeleo…",
+    "candles": "candles {{done}} / {{total}}",
+    "candlesNoTotal": "candles {{done}}",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} ishara / {{trades}} trades",
+    "milestoneLine": "hatua {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

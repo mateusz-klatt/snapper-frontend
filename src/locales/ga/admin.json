@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Riarachán",
+    "subtitle": "Bainistigh úsáideoirí agus cumraíocht an chórais"
+  },
+  "rolePermissions": {
+    "title": "Ceadanna Ról",
+    "viewer": {
+      "label": "Amharcóir",
+      "description": "Rochtain inléite amháin ar an bhForbhreathnú agus ar Shonraí Margaidh. Ní féidir próisis, straitéisí ná socruithe córais a bhainistiú."
+    },
+    "operator": {
+      "label": "Oibreoir",
+      "description": "Gach cead Amharcóra, móide oibríochtaí trádála, rith straitéisí, bainistiú próiseas agus monatóireacht ar shláinte an chórais."
+    },
+    "admin": {
+      "label": "Riarthóir",
+      "description": "Rochtain iomlán ar an gcóras, lena n-áirítear bainistiú úsáideoirí, socruithe córais, cumraíocht eochracha API agus gach cead Oibreora."
+    },
+    "table": {
+      "resource": "Acmhainn",
+      "viewer": "Amharcóir",
+      "operator": "Oibreoir",
+      "admin": "Riarthóir"
+    },
+    "resources": {
+      "overview": "Forbhreathnú",
+      "market": "Sonraí Margaidh",
+      "processes": "Próisis",
+      "strategies": "Straitéisí",
+      "orders": "Orduithe agus Líonta",
+      "positions": "Suímh",
+      "signals": "Comharthaí",
+      "health": "Sláinte",
+      "admin": "Riarachán",
+      "settings": "Socruithe"
+    }
+  },
+  "common": {
+    "cancel": "Cealaigh",
+    "selectWallet": "Roghnaigh sparán",
+    "selectAWallet": "Roghnaigh sparán",
+    "chooseWalletPlaceholder": "Roghnaigh sparán...",
+    "selectWalletPlaceholder": "Roghnaigh sparán...",
+    "walletLabel": "Sparán",
+    "paperAnnotation": " (páipéir)",
+    "unknownError": "Earráid anaithnid",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Rochtain Diúltaithe",
+      "message": "Níl cead agat úsáideoirí a bhainistiú. Déan teagmháil le riarthóir an chórais."
+    },
+    "list": {
+      "title": "Bainistiú Úsáideoirí",
+      "countLabel": "Úsáideoirí: {{count}}",
+      "showInactive": "Taispeáin neamhghníomhacha",
+      "hideInactive": "Folaigh neamhghníomhacha",
+      "addUser": "Cuir úsáideoir leis",
+      "searchPlaceholder": "Cuardaigh de réir ainm úsáideora, ríomhphoist nó róil...",
+      "columns": {
+        "user": "Úsáideoir",
+        "role": "Ról",
+        "status": "Stádas",
+        "createdAt": "Cruthaithe",
+        "actions": "Gníomhartha"
+      },
+      "status": {
+        "active": "Gníomhach",
+        "inactive": "Neamhghníomhach"
+      },
+      "unknown": "Anaithnid",
+      "empty": {
+        "title": "Níor aimsíodh úsáideoirí",
+        "noMatch": "Ní oireann aon úsáideoir do na critéir chuardaigh.",
+        "noUsers": "Níor aimsíodh úsáideoirí.",
+        "noActive": "Níor aimsíodh úsáideoirí gníomhacha."
+      },
+      "errorLoading": "Earráid agus úsáideoirí á lódáil: {{message}}",
+      "deactivate": {
+        "title": "Díghníomhachtaigh Úsáideoir",
+        "message": "An bhfuil tú cinnte gur mian leat an t-úsáideoir \"{{username}}\" a dhíghníomhachtú? Ní bheidh an cuntas in ann síniú isteach a thuilleadh.",
+        "confirm": "Díghníomhachtaigh"
+      },
+      "toast": {
+        "deactivated": "Díghníomhachtaíodh an t-úsáideoir",
+        "deactivateError": "Earráid agus úsáideoir á dhíghníomhachtú"
+      }
+    },
+    "form": {
+      "titleEdit": "Cuir Úsáideoir in Eagar",
+      "titleAdd": "Cuir Úsáideoir Leis",
+      "fields": {
+        "username": "Ainm úsáideora",
+        "usernamePlaceholder": "Cuir isteach ainm úsáideora",
+        "password": "Pasfhocal",
+        "passwordPlaceholder": "Cuir isteach pasfhocal",
+        "newPassword": "Pasfhocal nua",
+        "newPasswordPlaceholder": "Cuir isteach pasfhocal nua",
+        "email": "Ríomhphost",
+        "emailPlaceholder": "Cuir isteach ríomhphost",
+        "role": "Ról",
+        "accountActive": "Cuntas gníomhach",
+        "resetUserPassword": "Athshocraigh pasfhocal an úsáideora"
+      },
+      "roles": {
+        "viewer": "Amharcóir",
+        "operator": "Oibreoir",
+        "admin": "Riarthóir"
+      },
+      "validation": {
+        "usernameRequired": "Tá ainm úsáideora riachtanach",
+        "usernameMinLength": "Caithfidh ainm úsáideora a bheith 3 charachtar ar a laghad",
+        "emailRequired": "Tá ríomhphost riachtanach",
+        "emailInvalid": "Formáid ríomhphoist neamhbhailí",
+        "passwordRequired": "Tá pasfhocal riachtanach",
+        "passwordMinLength": "Caithfidh pasfhocal a bheith 8 gcarachtar ar a laghad",
+        "passwordRequiredWhenResetting": "Tá pasfhocal riachtanach agus athshocrú á dhéanamh"
+      },
+      "actions": {
+        "saveChanges": "Sábháil Athruithe",
+        "createUser": "Cruthaigh Úsáideoir"
+      },
+      "toast": {
+        "created": "Cruthaíodh an t-úsáideoir",
+        "createError": "Earráid agus úsáideoir á chruthú",
+        "updated": "Nuashonraíodh an t-úsáideoir",
+        "updateError": "Earráid agus úsáideoir á nuashonrú",
+        "passwordReset": "Athshocraíodh pasfhocal an úsáideora",
+        "resetError": "Earráid agus pasfhocal á athshocrú"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Rochtain Diúltaithe",
+      "message": "Níl cead agat deontais scóipe a bhainistiú. Déan teagmháil le riarthóir an chórais."
+    },
+    "list": {
+      "title": "Deontais Scóipe",
+      "countLabel": "Deontais: {{count}}",
+      "createGrant": "Cruthaigh Deontas",
+      "selectWalletPrompt": "Roghnaigh sparán thuas chun a dheontais scóipe a fheiceáil.",
+      "columns": {
+        "operator": "Oibreoir",
+        "scope": "Scóip",
+        "target": "Sprioc",
+        "grantedAt": "Deonaithe",
+        "actions": "Gníomhartha"
+      },
+      "empty": {
+        "noGrants": "Níor aimsíodh deontais",
+        "noGrantsHint": "Níl deontais scóipe ghníomhacha ag an sparán seo."
+      },
+      "errorLoading": "Earráid agus deontais á lódáil: {{message}}",
+      "handover": "Aistriú"
+    },
+    "form": {
+      "title": "Cruthaigh Deontas Scóipe",
+      "fields": {
+        "operator": "Oibreoir",
+        "operatorPlaceholder": "Roghnaigh oibreoir...",
+        "wallet": "Sparán",
+        "scopeKind": "Cineál Scóipe",
+        "underlyingPublicId": "ID Poiblí na Bunsócmhainne",
+        "instrumentPublicId": "ID Poiblí na hIonstraime",
+        "underlyingPlaceholder": "m.sh. BTC",
+        "instrumentPlaceholder": "m.sh. BTC-USD-PERP",
+        "note": "Nóta (roghnach)",
+        "notePlaceholder": "Nóta roghnach"
+      },
+      "scopeKinds": {
+        "underlying": "Bunsócmhainn",
+        "instrument": "Ionstraim"
+      },
+      "validation": {
+        "operatorRequired": "Tá oibreoir riachtanach",
+        "walletRequired": "Tá sparán riachtanach",
+        "targetRequired": "Tá ID sprice riachtanach"
+      },
+      "actions": {
+        "createGrant": "Cruthaigh Deontas"
+      },
+      "toast": {
+        "created": "Cruthaíodh deontas scóipe",
+        "conflictError": "Coimhlint: tá deontas ag oibreoir eile ar an scóip seo cheana",
+        "createError": "Earráid agus deontas scóipe á chruthú"
+      }
+    },
+    "handover": {
+      "title": "Aistrigh Deontas Scóipe",
+      "fields": {
+        "currentHolder": "Sealbhóir reatha",
+        "scope": "Scóip",
+        "wallet": "Sparán",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Aistrigh chuig oibreoir",
+        "transferToPlaceholder": "Roghnaigh oibreoir ceann scríbe...",
+        "reason": "Cúis (roghnach)",
+        "reasonPlaceholder": "m.sh. Athrú seala"
+      },
+      "actions": {
+        "handover": "Aistrigh"
+      },
+      "toast": {
+        "completed": "Aistríodh an deontas scóipe",
+        "conflictError": "Coimhlint: tá deontas contrártha ag an oibreoir ceann scríbe cheana",
+        "handoverError": "Earráid agus deontas scóipe á aistriú"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Rochtain Diúltaithe",
+      "message": "Níl cead agat dintiúir sparáin a bhainistiú. Déan teagmháil le riarthóir an chórais."
+    },
+    "list": {
+      "title": "Dintiúir Sparáin",
+      "countLabel": "Dintiúir: {{count}}",
+      "addCredential": "Cuir Dintiúr Leis",
+      "selectWalletPrompt": "Roghnaigh sparán thuas chun a dhintiúir a fheiceáil.",
+      "columns": {
+        "exchange": "Malartán",
+        "type": "Cineál",
+        "label": "Lipéad",
+        "createdAt": "Cruthaithe",
+        "actions": "Gníomhartha"
+      },
+      "empty": {
+        "noCredentials": "Níor aimsíodh dintiúir",
+        "noCredentialsHint": "Níl dintiúir ghníomhacha ag an sparán seo."
+      },
+      "errorLoading": "Earráid agus dintiúir á lódáil: {{message}}",
+      "rotate": "Rothlaigh"
+    },
+    "form": {
+      "title": "Cuir Dintiúr Leis",
+      "fields": {
+        "wallet": "Sparán",
+        "exchange": "Malartán",
+        "exchangePlaceholder": "m.sh. kraken",
+        "credentialType": "Cineál Dintiúir",
+        "label": "Lipéad (roghnach)",
+        "labelPlaceholder": "m.sh. Príomheochair trádála",
+        "pemPlaceholder": "Greamaigh eochair phríobháideach i bhformáid PEM anseo"
+      },
+      "fieldLabels": {
+        "api_key": "Eochair API",
+        "api_secret": "Rún API",
+        "private_key_pem": "Eochair Phríobháideach (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Comhartha Athnuachana",
+        "initial_balance": "Iarmhéid Tosaigh"
+      },
+      "credentialTypes": {
+        "api_key_secret": "Eochair API + Rún",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Páipéar"
+      },
+      "validation": {
+        "walletRequired": "Tá sparán riachtanach",
+        "exchangeRequired": "Tá malartán riachtanach",
+        "fieldRequired": "Tá {{field}} riachtanach"
+      },
+      "actions": {
+        "addCredential": "Cuir Dintiúr Leis"
+      },
+      "toast": {
+        "created": "Cruthaíodh an dintiúr",
+        "conflictError": "Coimhlint: tá dintiúr gníomhach ag an sparán seo don mhalartán seo cheana",
+        "createError": "Earráid agus dintiúr á chruthú"
+      }
+    },
+    "rotate": {
+      "title": "Rothlaigh Dintiúr",
+      "fields": {
+        "exchange": "Malartán",
+        "type": "Cineál",
+        "label": "Lipéad",
+        "newLabel": "Lipéad Nua (roghnach)",
+        "newLabelPlaceholder": "m.sh. Eochair rothlaithe 2026-04",
+        "pemPlaceholder": "Greamaigh eochair phríobháideach i bhformáid PEM anseo"
+      },
+      "actions": {
+        "rotate": "Rothlaigh"
+      },
+      "toast": {
+        "rotated": "Rothlaíodh an dintiúr",
+        "rotateError": "Earráid agus dintiúr á rothlú"
+      }
+    }
+  }
+}

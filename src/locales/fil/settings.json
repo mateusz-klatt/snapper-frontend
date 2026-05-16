@@ -1,0 +1,88 @@
+{
+  "page": {
+    "title": "Settings",
+    "subtitle": "I-configure ang application settings at parameters",
+    "addButton": "Mag-add ng Setting",
+    "searchPlaceholder": "Maghanap ng settings...",
+    "noResults": "Walang settings na tugma sa criteria mo.",
+    "allCategories": "Lahat ng Categories",
+    "categoryFilterAriaLabel": "I-filter ang settings ayon sa category"
+  },
+  "errors": {
+    "loadFailed": "Hindi na-load ang settings",
+    "updateFailed": "Hindi na-update ang setting",
+    "deleteFailed": "Hindi na-delete ang setting",
+    "createFailed": "Hindi nagawa ang setting",
+    "alreadyExists": "May setting na may key na \"{{key}}\""
+  },
+  "item": {
+    "edit": "I-edit",
+    "delete": "I-delete",
+    "save": "I-save",
+    "saving": "Sine-save...",
+    "cancel": "Kanselahin",
+    "yesDelete": "Oo, I-delete",
+    "deleting": "Dine-delete...",
+    "deleteConfirm": "I-delete ang setting na ito?",
+    "valuePlaceholder": "Ilagay ang setting value...",
+    "showMore": "Ipakita pa",
+    "showLess": "Ipakita nang mas kaunti",
+    "toggleAriaLabel": "I-toggle ang {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensitive"
+    },
+    "helpText": {
+      "allowShortSelling": "Payagan ang engine na mag-open ng short positions. Ang SELL signals ay gagawa ng negative desired_units; iko-clamp sa 0 kapag disabled.",
+      "allowManualOrders": "I-enable ang New Order button sa Orders tab. Kapag disabled, magre-return ng 403 ang POST /api/orders."
+    }
+  },
+  "addModal": {
+    "title": "Mag-add ng Bagong Setting",
+    "keyLabel": "Key",
+    "valueLabel": "Value",
+    "categoryLabel": "Category",
+    "descriptionLabel": "Description",
+    "keyPlaceholder": "hal. walutomat.api_key",
+    "keyHint": "Gumamit ng dot notation para sa nested settings (hal. category.subcategory.name)",
+    "valuePlaceholder": "Setting value",
+    "categorySelectPlaceholder": "Pumili ng existing o gumawa ng bago",
+    "newCategoryPlaceholder": "O maglagay ng bagong category name",
+    "descriptionPlaceholder": "Optional description",
+    "cancel": "Kanselahin",
+    "create": "Gumawa ng Setting",
+    "creating": "Ginagawa...",
+    "validation": {
+      "keyRequired": "Kailangan ang key",
+      "valueRequired": "Kailangan ang value",
+      "categoryRequired": "Kailangan ang category"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Form editor",
+    "rawEditor": "Raw JSON editor",
+    "rawJson": "Raw JSON",
+    "switchToForm": "Lumipat sa Form",
+    "importToForm": "I-import sa Form",
+    "parseError": "Parse error: {{message}}",
+    "arraySummary": "Array ({{length}} items)",
+    "addItem": "Mag-add ng Item",
+    "remove": "Tanggalin",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)",
+      "null": "(null)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Process Control",
+    "subtitle": "Real-time process monitoring at control"
+  },
+  "sections": {
+    "longRunning": "Long-running processes",
+    "executorTemplates": "Executor templates",
+    "executorTemplatesHint": "Apektado ang lahat ng wallet sa exchange na ito kapag in-edit ang template config pagkatapos ng restart. Config-only ang templates — i-start ang per-wallet instance sa ibaba para patakbuhin ang executor.",
+    "walletInstances": "Wallet instances",
+    "taskProcesses": "Task processes"
+  },
+  "card": {
+    "stop": "I-stop",
+    "start": "I-start",
+    "restart": "I-restart",
+    "starting": "Sini-start...",
+    "stopping": "Sini-stop...",
+    "status": {
+      "running": "tumatakbo",
+      "stopped": "nakahinto",
+      "error": "error",
+      "starting": "sini-start",
+      "stopping": "sini-stop"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Mode:",
+    "parameters": "Parameters:",
+    "paramCount": "{{count}} parameter",
+    "noParams": "walang naka-set na parameters"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "I-stop ang {{name}}",
+    "stopMessage": "Ihihinto nito ang {{name}} process.",
+    "restartTitle": "I-restart ang {{name}}",
+    "restartMessage": "Ire-restart nito ang {{name}} process."
+  },
+  "executionMode": {
+    "title": "I-start ang {{name}}",
+    "label": "Execution Mode:",
+    "threadName": "Thread Mode",
+    "threadDescription": "Tumatakbo bilang embedded task sa loob ng web server. Mas mabilis ang startup, shared memory.",
+    "processName": "Process Mode",
+    "processDescription": "Tumatakbo bilang hiwalay na Python process. Isolated, fault-tolerant, at may detailed monitoring.",
+    "cancel": "Kanselahin",
+    "start": "I-start ang {{name}}",
+    "threadAriaLabel": "Thread Mode",
+    "processAriaLabel": "Process Mode"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Bumalik",
+    "backToList": "← Bumalik sa backtests"
+  },
+  "status": {
+    "pending": "Pending",
+    "running": "Tumatakbo",
+    "completed": "Tapos na",
+    "failed": "Nabigo",
+    "cancelled": "Kinansela"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Kanselahin",
+      "rerun": "I-rerun"
+    },
+    "fields": {
+      "timeframe": "Timeframe",
+      "period": "Period",
+      "initialCash": "Initial Cash",
+      "id": "ID"
+    },
+    "errorPrefix": "Error: {{message}}",
+    "filter": {
+      "ariaLabel": "I-filter ang backtests ayon sa status",
+      "options": {
+        "all": "Lahat ng statuses",
+        "pending": "Pending",
+        "running": "Tumatakbo",
+        "completed": "Tapos na",
+        "failed": "Nabigo",
+        "cancelled": "Kinansela"
+      }
+    },
+    "empty": {
+      "title": "Walang backtests",
+      "message": "Mag-run ng backtest sa CLI o API para makita dito ang results."
+    }
+  },
+  "detail": {
+    "title": "Backtest run",
+    "fields": {
+      "strategy": "Strategy",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Period",
+      "crossAsset": "Cross-asset attribution",
+      "configHash": "Config hash"
+    },
+    "crossAssetFlow": "{{source}} feed → {{target}} fills",
+    "errors": {
+      "invalidRunId": "Invalid ang run id — dapat UUID7 (nakuha \"{{id}}\").",
+      "loadFailed": "Hindi na-load ang run: {{message}}",
+      "notFound": "hindi nakita"
+    }
+  },
+  "compare": {
+    "title": "I-compare",
+    "headingFull": "Backtest comparison",
+    "loading": "Nilo-load ang comparison…",
+    "vs": "vs",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrics",
+      "equityOverlay": "Equity overlay",
+      "trades": "Trades",
+      "signals": "Signals"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "manual"
+    },
+    "errors": {
+      "notFound": "Hindi nakita ang comparison sa kasalukuyang wallet.",
+      "loadFailed": "Hindi na-load ang comparison: {{message}}",
+      "unknown": "hindi alam na error",
+      "emptyResponse": "Walang laman ang comparison response."
+    },
+    "launcher": {
+      "title": "I-compare",
+      "submit": "I-compare",
+      "autoPair": "I-compare sa pinakabagong run",
+      "terminalGate": "available ang compare kapag umabot ang run sa terminal status",
+      "noSiblings": "walang ibang runs na may ganitong config",
+      "limitNotice": "ipinapakita ang {{count}} pinakabago — gamitin ang manual pair para sa mas lumang runs",
+      "pickPlaceholder": "— pumili ng run na iko-compare —",
+      "showAllLabel": "Ipakita ang lahat ng runs (hindi lang same config)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "lahat ng runs",
+        "sameConfig": "same config"
+      },
+      "errors": {
+        "pickRequired": "pumili ng run mula sa listahan"
+      }
+    },
+    "diffColumns": {
+      "common": "Common",
+      "onlyA": "Sa A lang",
+      "onlyB": "Sa B lang"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Walang comparable metrics — parehong runs ay walang recorded values.",
+      "columns": {
+        "name": "Metric",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Naghihintay ng progress…",
+    "candles": "{{done}} / {{total}} candles",
+    "candlesNoTotal": "{{done}} candles",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} trades",
+    "milestoneLine": "milestone {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

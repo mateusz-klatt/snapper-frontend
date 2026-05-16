@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "အနှစ်ချုပ်"
+  },
+  "metrics": {
+    "feedsRunning": "Feed များ running",
+    "strategiesActive": "Strategy များ active",
+    "openOrders": "Open Order များ",
+    "todaysExecutions": "ယနေ့ Execution များ",
+    "executionsOn": "Execution များ ({{date}})"
+  },
+  "status": {
+    "stopped": "Stopped",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Running",
+    "active": "Active"
+  },
+  "processStatus": {
+    "title": "Process Status",
+    "feeds": "Feed များ",
+    "strategies": "Strategy များ",
+    "executors": "Executor များ",
+    "brokers": "Broker များ"
+  },
+  "portfolio": {
+    "title": "Portfolio အနှစ်ချုပ်",
+    "totalValue": "စုစုပေါင်း တန်ဖိုး",
+    "longExposure": "Long exposure",
+    "shortExposure": "Short exposure",
+    "netDelta": "Net delta",
+    "unrealizedPnl": "Unrealized P&L",
+    "pnlPercent": "P&L %",
+    "positions": "ပိုဇစ်ရှင်များ",
+    "instrumentsCount": "Instrument {{count}} ခု",
+    "empty": "Position data မရှိပါ"
+  },
+  "signals": {
+    "title": "လတ်တလော Signal များ",
+    "empty": "လတ်တလော signal မရှိပါ",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "လတ်တလော Execution များ",
+    "empty": "လတ်တလော execution မရှိပါ",
+    "noTime": "N/A"
+  }
+}

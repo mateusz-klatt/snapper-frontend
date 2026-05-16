@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Orduithe agus Líonta",
+    "newOrder": "Ordú Nua",
+    "exportCsv": "Easpórtáil CSV"
+  },
+  "tabs": {
+    "orders": "Orduithe ({{total}})",
+    "executions": "Líonta ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Scag de réir stádais:",
+    "options": {
+      "all": "Gach Ordú",
+      "new": "Nua",
+      "open": "Oscailte",
+      "partiallyFilled": "Líonta go Páirteach",
+      "partially_filled": "Líonta go Páirteach",
+      "filled": "Líonta",
+      "cancelled": "Cealaithe",
+      "rejected": "Diúltaithe"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/B",
+    "priceMarket": "Market",
+    "quantity": "Cainníocht",
+    "price": "Praghas",
+    "created": "Cruthaithe",
+    "createdUnknown": "N/B",
+    "orderId": "ID Ordaithe",
+    "leverage": "Giaráil",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "LAGHDÚ-AMHÁIN",
+    "cancel": "Cealaigh",
+    "cancelling": "Á chealú…",
+    "cancelAriaLabel": "Cealaigh ordú {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Ordú #{{orderId}}",
+    "filled": "LÍONTA",
+    "orderLabel": "Ordú {{orderId}}",
+    "size": "Méid",
+    "price": "Praghas",
+    "total": "Iomlán",
+    "executed": "Líonta",
+    "fees": "Táillí"
+  },
+  "empty": {
+    "ordersTitle": "Níor aimsíodh orduithe",
+    "ordersStartTrading": "Tosaigh ag trádáil chun orduithe a fheiceáil anseo",
+    "ordersFilterless": "Níl aon ordú {{status}} ann",
+    "executionsTitle": "Níor aimsíodh líonta",
+    "executionsMessage": "Beidh líonta trádála le feiceáil anseo"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Ionstraim",
+      "side": "Taobh",
+      "type": "Cineál",
+      "status": "Stádas",
+      "quantity": "Cainníocht",
+      "price": "Praghas",
+      "leverage": "Giaráil",
+      "reduceOnly": "Laghdú Amháin",
+      "created": "Cruthaithe"
+    },
+    "executions": {
+      "orderId": "ID Ordaithe",
+      "instrument": "Ionstraim",
+      "side": "Taobh",
+      "size": "Méid",
+      "price": "Praghas",
+      "total": "Iomlán",
+      "fee": "Táille",
+      "feeAsset": "Sócmhainn Táille",
+      "executed": "Líonta"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Ordú Láimhe Nua",
+    "titleConfirm": "Deimhnigh Ordú",
+    "fields": {
+      "exchange": "Malartán",
+      "instrument": "Ionstraim",
+      "side": "Taobh",
+      "orderType": "Cineál Ordaithe",
+      "quantity": "Cainníocht",
+      "price": "Praghas",
+      "stopPrice": "Praghas Stop",
+      "mode": "Mód",
+      "wallet": "Sparán",
+      "type": "Cineál"
+    },
+    "sideOptions": {
+      "buy": "Ceannaigh",
+      "sell": "Díol"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Beo",
+      "paper": "Páipéar"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — sonraí margaidh amháin",
+    "walletPaperSuffix": "{{label}} (páipéir)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Cealaigh",
+      "reviewOrder": "Athbhreithnigh Ordú",
+      "back": "Siar",
+      "confirmOrder": "Deimhnigh Ordú",
+      "submitting": "Á chur isteach..."
+    },
+    "errors": {
+      "missingRequired": "Ní mór gach réimse riachtanach a líonadh",
+      "quantityPositive": "Caithfidh an chainníocht a bheith ina huimhir dhearfach",
+      "priceRequired": "Tá praghas riachtanach don chineál ordaithe seo",
+      "pricePositive": "Caithfidh an praghas a bheith ina uimhir dhearfach",
+      "stopPriceRequired": "Tá praghas stop riachtanach don chineál ordaithe seo",
+      "stopPricePositive": "Caithfidh an praghas stop a bheith ina uimhir dhearfach",
+      "createFailed": "Theip ar chruthú an ordaithe"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Is ionstraim breathnóireachta amháin í seo — cuir orduithe ar ionstraim a thacaíonn le horduithe.",
+      "unknownInstrument": "Ní aithnítear an ionstraim seo. Athlódáil an liosta agus bain triail eile as.",
+      "capsViolation": "Sháródh an t-ordú seo teorainneacha sábháilteachta do chuntais. Athbhreithnigh do shocruithe riosca agus bain triail eile as."
+    }
+  }
+}

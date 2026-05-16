@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "進程控制",
+    "subtitle": "即時進程監控和控制"
+  },
+  "sections": {
+    "longRunning": "長時間運行進程",
+    "executorTemplates": "執行器模板",
+    "executorTemplatesHint": "編輯模板配置會在重啟後影響此交易所上的所有錢包。模板僅用於配置 — 啟動下方的錢包實例才能運行執行器。",
+    "walletInstances": "錢包實例",
+    "taskProcesses": "任務進程"
+  },
+  "card": {
+    "stop": "停止",
+    "start": "啟動",
+    "restart": "重啟",
+    "starting": "啟動中...",
+    "stopping": "停止中...",
+    "status": {
+      "running": "運行中",
+      "stopped": "已停止",
+      "error": "錯誤",
+      "starting": "啟動中",
+      "stopping": "停止中"
+    }
+  },
+  "template": {
+    "badge": "模板",
+    "mode": "模式：",
+    "parameters": "參數：",
+    "paramCount": "{{count}} 個參數",
+    "noParams": "未設定參數"
+  },
+  "badges": {
+    "oneShot": "一次性",
+    "autoStart": "自動啟動",
+    "manual": "手動"
+  },
+  "actions": {
+    "stopTitle": "停止 {{name}}",
+    "stopMessage": "這將停止 {{name}} 進程。",
+    "restartTitle": "重啟 {{name}}",
+    "restartMessage": "這將重啟 {{name}} 進程。"
+  },
+  "executionMode": {
+    "title": "啟動 {{name}}",
+    "label": "執行模式：",
+    "threadName": "線程模式",
+    "threadDescription": "作為 Web 伺服器內的嵌入式任務運行。啟動更快，共享記憶體。",
+    "processName": "進程模式",
+    "processDescription": "作為獨立 Python 進程運行。隔離性更強，容錯更好，監控更詳細。",
+    "cancel": "取消",
+    "start": "啟動 {{name}}",
+    "threadAriaLabel": "線程模式",
+    "processAriaLabel": "進程模式"
+  }
+}

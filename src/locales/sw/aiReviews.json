@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Ombi",
+    "decision": "Uamuzi",
+    "capsViolation": "Ukiukaji wa mipaka",
+    "selectedDelegate": "Mjumbe aliyechaguliwa",
+    "instrument": "instrumenti",
+    "deadline": "mwisho {{time}}",
+    "decidedBy": "na",
+    "newStatus": "hali",
+    "mode": "hali",
+    "capAttempted": "ilijaribu",
+    "capLimit": "dhidi ya mpaka",
+    "capOn": "kwenye instrumenti",
+    "reviewLabel": "pitio {{reviewId}}",
+    "unhandledFrame": "Frame ya shughuli ya pitio la AI haijashughulikiwa: {{frame}}"
+  },
+  "page": {
+    "title": "Kikasha cha Mapitio ya AI",
+    "subtitle": "Mapitio ya CONSULT yanayosubiri yaliyotumwa kwa mjumbe huyu pamoja na mtiririko wa matukio ya live."
+  },
+  "roleNotice": {
+    "title": "Imetengwa kwa wajumbe wa AI",
+    "message": "Kikasha hiki huonyesha mapitio ya CONSULT yaliyotumwa kwa mhusika wa mjumbe wa AI. Ingia kwa akaunti ya mjumbe wa AI ili kuona mapitio yanayosubiri na mtiririko wa shughuli za live. Jukumu lako la sasa ni",
+    "unknownRole": "halijulikani"
+  },
+  "pending": {
+    "title": "Mapitio yanayosubiri",
+    "loading": "Inapakia mapitio yanayosubiri…",
+    "loadError": "Imeshindwa kupakia mapitio yanayosubiri: {{message}}",
+    "emptyTitle": "Hakuna mapitio yanayosubiri",
+    "emptyMessage": "Maombi mapya ya CONSULT yaliyotumwa kwa mjumbe huyu yataonekana hapa.",
+    "columns": {
+      "instrument": "Instrumenti",
+      "thesis": "Thesis",
+      "status": "Hali",
+      "deadline": "Mwisho",
+      "decision": "Uamuzi"
+    },
+    "rationalePlaceholder": "Sababu (hiari)",
+    "rationaleAriaLabel": "Sababu ya pitio {{reviewId}}",
+    "approve": "Idhinisha",
+    "reject": "Kataa",
+    "submitError": "Kutuma kumeshindikana: {{message}}"
+  },
+  "activity": {
+    "title": "Shughuli za karibuni",
+    "emptyTitle": "Bado hakuna shughuli",
+    "emptyMessage": "Frame za ombi la pitio la AI, uamuzi, na ukiukaji wa mipaka zitatiririka hapa.",
+    "summaryEmpty": "Hakuna frame zilizopokelewa",
+    "summaryCount": "Inaonyesha {{shown}} kati ya {{total}} zilizohifadhiwa"
+  }
+}

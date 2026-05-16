@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "信號"
+  },
+  "filters": {
+    "allStrategies": "所有策略"
+  },
+  "actions": {
+    "export": "匯出"
+  },
+  "stats": {
+    "total": "總數",
+    "buy": "買入",
+    "sell": "賣出",
+    "avgStrength": "平均強度"
+  },
+  "card": {
+    "strength": "強度",
+    "price": "價格",
+    "exchange": "交易所",
+    "reason": "原因：",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "強",
+    "medium": "中",
+    "weak": "弱",
+    "veryWeak": "很弱"
+  },
+  "time": {
+    "justNow": "剛剛",
+    "minutesAgo": "{{count}}m 前",
+    "hoursAgo": "{{count}}h 前"
+  },
+  "empty": {
+    "title": "未找到信號",
+    "message": "沒有交易信號符合目前篩選條件。"
+  }
+}

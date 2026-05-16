@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Bainistiú Straitéisí",
+    "register": "Cláraigh Straitéis",
+    "saving": "Á shábháil…",
+    "descriptionCanManage": "Cláraigh próisis straitéise nua díreach ón gcomhéadan. Coinníonn autostart an próiseas cumasaithe thar atosuithe.",
+    "descriptionViewer": "Féach ar straitéisí cumraithe agus ar a stádas. Déan teagmháil le hoibreoir nó riarthóir chun straitéisí a bhainistiú.",
+    "searchPlaceholder": "Cuardaigh straitéisí...",
+    "filter": {
+      "all": "Gach stádas",
+      "running": "Ag rith",
+      "stopped": "Stoptha"
+    },
+    "configuredHeading": "Straitéisí Cumraithe",
+    "noMatches": "Ní oireann aon straitéis do do scagairí",
+    "clearFilters": "Glan scagairí",
+    "emptyTitle": "Níl aon straitéis cumraithe",
+    "emptyCanManage": "Cláraigh straitéis chun trádáil algartamach a thosú",
+    "emptyViewer": "Níl aon straitéis cumraithe fós"
+  },
+  "confirm": {
+    "startTitle": "Tosaigh {{name}}",
+    "startMessage": "Tosóidh sé seo an straitéis {{name}}. D'fhéadfadh sí oibríochtaí trádála beo a thosú.",
+    "stopTitle": "Stad {{name}}",
+    "stopMessage": "Stopfaidh sé seo an straitéis {{name}}. Ní dhúnfar suímh ghníomhacha go huathoibríoch."
+  },
+  "toast": {
+    "saved": "Sábháladh straitéis {{name}}",
+    "started": "Tosaíodh straitéis {{name}}",
+    "registerFailed": "Theip ar chlárú na straitéise: {{message}}",
+    "startSuccess": "Tosaíodh an straitéis go rathúil",
+    "stopSuccess": "Stopadh an straitéis go rathúil",
+    "alreadyRunning": "Tá an straitéis ag rith cheana",
+    "notRunning": "Níl an straitéis ag rith",
+    "configNotFound": "Níor aimsíodh cumraíocht na straitéise. Seiceáil socruithe an bhunachair sonraí.",
+    "networkError": "Earráid líonra. Seiceáil an nasc agus bain triail eile as.",
+    "startFailed": "Theip ar thosú na straitéise: {{message}}",
+    "stopFailed": "Theip ar stopadh na straitéise: {{message}}",
+    "unknownError": "Earráid anaithnid"
+  },
+  "card": {
+    "ariaLabel": "Straitéis: {{name}}",
+    "modeLabel": "Mód: {{mode}}",
+    "autostartEnabled": "Autostart: cumasaithe",
+    "autostartDisabled": "Autostart: díchumasaithe",
+    "statusAriaLabel": "Stádas: {{status}}",
+    "dataLagAriaLabel": "Moill sonraí: {{seconds}} soicind",
+    "lagBadge": "moill: {{seconds}}s",
+    "feedLag": "Moill fotha: {{ms}}ms",
+    "heartbeatAge": "Aois HB: {{seconds}}s",
+    "metrics": {
+      "status": "Stádas",
+      "dataLag": "Moill Sonraí",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Taispeáin Sonraí",
+    "hideDetails": "Folaigh Sonraí",
+    "inputs": "Ionchuir ({{count}})",
+    "outputs": "Aschuir ({{count}})",
+    "feedPublishers": "Foilsitheoirí Fothaí ({{count}})",
+    "lastUpdate": "Nuashonrú deireanach: {{time}}",
+    "waiting": "Ag fanacht le heartbeat...",
+    "startAriaLabel": "Tosaigh straitéis {{name}}",
+    "stopAriaLabel": "Stad straitéis {{name}}",
+    "start": "Tosaigh",
+    "stop": "Stad",
+    "starting": "Á thosú...",
+    "stopping": "Á stopadh...",
+    "status": {
+      "starting": "á thosú",
+      "stopping": "á stopadh",
+      "running": "ag rith",
+      "stopped": "stoptha"
+    },
+    "health": {
+      "healthy": "Sláintiúil — sonraí úra á bhfáil",
+      "warning": "Rabhadh — tá na sonraí sean",
+      "error": "Earráid — níl sonraí le déanaí ann",
+      "unknown": "Anaithnid — níl sonraí heartbeat ann"
+    },
+    "healthShort": {
+      "healthy": "SLÁINTIÚIL",
+      "warning": "RABHADH",
+      "error": "EARRÁID"
+    }
+  },
+  "launchModal": {
+    "title": "Cláraigh Próiseas Straitéise",
+    "emptyTemplates": "Níl aon teimpléad straitéise cláraithe sa backend. Sainigh próiseas straitéise amháin ar a laghad.",
+    "close": "Dún",
+    "templateLabel": "Teimpléad straitéise",
+    "templatePlaceholder": "Roghnaigh teimpléad...",
+    "templateFallbackDescription": "Straitéis cláraithe sa backend",
+    "loadingDefaults": "Réamhshocruithe teimpléid á lódáil…",
+    "loadDefaultsError": "Ní féidir réamhshocruithe an teimpléid a lódáil. Seiceáil logaí an backend.",
+    "processNameLabel": "Ainm próisis",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Carachtair cheadaithe: litreacha beaga, uimhreacha, fostríoca",
+    "instanceNameLabel": "Ainm áisc straitéise",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Úsáidtear i gcumraíocht straitéise agus i dtopaicí aschuir",
+    "executionModeLabel": "Mód rite",
+    "executionModeThread": "Snáithe leabaithe",
+    "executionModeProcess": "Próiseas leithlisithe",
+    "executionModeHelp": "Roinneann snáitheanna cuimhne; soláthraíonn próisis leithlisiú níos láidre.",
+    "flagsLabel": "Bratacha",
+    "autostartLabel": "Autostart ag tosú an fhreastalaí",
+    "startImmediatelyLabel": "Tosaigh láithreach tar éis clárúcháin",
+    "noteLabel": "Nóta (roghnach)",
+    "notePlaceholder": "Déan cur síos ar chuspóir nó paraiméadair an áisc straitéise seo.",
+    "noteHelp": "Stóráiltear é taobh leis an gcumraíocht chun cabhrú leis an bpróiseas seo a aithint.",
+    "cancel": "Cealaigh",
+    "submit": "Cláraigh straitéis",
+    "submitting": "Á chlárú…"
+  }
+}

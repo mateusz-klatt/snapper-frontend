@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Comharthaí"
+  },
+  "filters": {
+    "allStrategies": "Gach Straitéis"
+  },
+  "actions": {
+    "export": "Easpórtáil"
+  },
+  "stats": {
+    "total": "Iomlán",
+    "buy": "Ceannach",
+    "sell": "Díol",
+    "avgStrength": "Meán-neart"
+  },
+  "card": {
+    "strength": "Neart",
+    "price": "Praghas",
+    "exchange": "Malartán",
+    "reason": "Cúis:",
+    "noPrice": "N/B"
+  },
+  "strength": {
+    "strong": "Láidir",
+    "medium": "Measartha",
+    "weak": "Lag",
+    "veryWeak": "An-lag"
+  },
+  "time": {
+    "justNow": "Anois díreach",
+    "minutesAgo": "{{count}}n ó shin",
+    "hoursAgo": "{{count}}u ó shin"
+  },
+  "empty": {
+    "title": "Níor aimsíodh comharthaí",
+    "message": "Ní oireann aon chomhartha trádála do na scagairí reatha."
+  }
+}

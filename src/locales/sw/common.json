@@ -1,0 +1,83 @@
+{
+  "loading": "Inapakia...",
+  "error": "Hitilafu",
+  "retry": "Jaribu tena",
+  "close": "Funga",
+  "cancel": "Ghairi",
+  "confirm": "Thibitisha",
+  "save": "Hifadhi",
+  "documentation": "Nyaraka (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Badilisha lugha",
+    "flagAriaLabel": "Badilisha kwenda {{country}}",
+    "currentAriaLabel": "Lugha ya sasa: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Konsoli ya Trading",
+    "tagline": "Kituo cha kazi cha usahihi",
+    "openSidebar": "Fungua utepe wa pembeni",
+    "closeSidebar": "Funga utepe wa pembeni",
+    "sidebar": "Utepe wa pembeni",
+    "mainNavigation": "Urambazaji mkuu",
+    "tradingContent": "Maudhui ya trading",
+    "skipToContent": "Ruka hadi maudhui ya trading",
+    "lag": "Kuchelewa:",
+    "lagTitle": "Muda wa kwenda na kurudi hadi seva ya WebSocket",
+    "topics": "Mada:",
+    "topicsTitle": "Idadi ya mada za WebSocket zilizosajiliwa",
+    "connected": "Imeunganishwa",
+    "disconnected": "Haijaunganishwa",
+    "connectedTitle": "Imeunganishwa na WebSocket",
+    "disconnectedTitle": "Haijaunganishwa na WebSocket",
+    "switchToLightMode": "Badilisha kwenda hali nyepesi",
+    "switchToDarkMode": "Badilisha kwenda hali nyeusi",
+    "timeTravelBanner": "Hali ya Kusafiri Muda — unaangalia data ya kihistoria (kusoma pekee)",
+    "lagUnknown": "Haijulikani",
+    "walletPicker": {
+      "ariaLabel": "Pochi inayotumika",
+      "placeholder": "Pochi",
+      "allWallets": "Pochi zote",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Opereta anayehusika",
+      "placeholder": "Opereta",
+      "allOperators": "Opereta wote"
+    },
+    "timeTravel": {
+      "pickerTitle": "Kusafiri muda: chagua nukta ya kihistoria ya muda",
+      "exitAriaLabel": "Toka kwenye hali ya kusafiri muda",
+      "exitTitle": "Rudi kwenye hali ya live"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Instrumenti ya kuangalia pekee. Snapper hupokea data ya soko lakini haiwezi kuweka oda kwa jozi hii ya (alama, exchange).",
+      "ariaLabel": "Instrumenti ya data ya soko pekee",
+      "badge": "Data ya soko pekee"
+    },
+    "liveOnly": {
+      "notice": "Kichupo hiki kinaonyesha hali ya sasa — mwonekano wa kihistoria haupatikani."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Kuna kitu kimeenda vibaya",
+    "titleWithComponent": "Hitilafu kwenye {{componentName}}",
+    "stackTrace": "Mfuatano wa stack",
+    "tryAgain": "Jaribu tena"
+  },
+  "nav": {
+    "overview": "Muhtasari",
+    "market": "Data ya Soko",
+    "processes": "Michakato",
+    "strategies": "Mikakati",
+    "orders": "Oda na Utekelezaji",
+    "positions": "Nafasi",
+    "signals": "Ishara",
+    "backtests": "Backtests",
+    "health": "Afya",
+    "admin": "Usimamizi",
+    "aiIntegration": "Muunganisho wa AI",
+    "aiReviews": "Mapitio ya AI",
+    "settings": "Mipangilio"
+  }
+}

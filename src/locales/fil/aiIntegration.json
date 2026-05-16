@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI Integration",
+    "subtitle": "I-manage ang AI delegates na kumokonekta sa Snapper gamit ang MCP.",
+    "loading": "Nilo-load ang AI integration…",
+    "createDelegate": "Gumawa ng delegate"
+  },
+  "disabled": {
+    "title": "Naka-disable ang AI Integration",
+    "message": "I-enable ang feature flag sa Settings → Feature Flags para ma-manage ang AI delegates."
+  },
+  "list": {
+    "loadingDelegates": "Nilo-load ang delegates…",
+    "emptyTitle": "Wala pang AI delegates",
+    "emptyMessage": "I-click ang “Create delegate” para gumawa ng isa at mag-generate ng MCP config snippet.",
+    "columns": {
+      "label": "Label",
+      "username": "Username",
+      "created": "Ginawa",
+      "maxOpenOrders": "Max open orders",
+      "maxDailyUsd": "Max daily USD",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Aktibo",
+      "revoked": "Na-revoke"
+    },
+    "default": "default",
+    "details": "Detalye",
+    "viewAriaLabel": "Tingnan ang delegate {{label}}"
+  },
+  "wizard": {
+    "title": "Gumawa ng AI delegate",
+    "step1": "1. Identity",
+    "step2": "2. Scope at caps",
+    "step3": "3. Review",
+    "stepDone": "✓ Tapos",
+    "identity": {
+      "labelField": "Label",
+      "labelPlaceholder": "hal. Alpha prop desk",
+      "labelHelpPrefix": "Gagawin server-side ang username ng delegate bilang ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Scope",
+      "operatorLabel": "Operator public_id (optional)",
+      "operatorPlaceholder": "Iwanang blank para i-inherit ang caller primary operator"
+    },
+    "caps": {
+      "heading": "Trading caps (lahat optional)",
+      "maxOpenOrders": "Max open orders",
+      "maxDailyNotionalUsd": "Max daily notional USD",
+      "maxCancelsPerMinute": "Max cancels per minute",
+      "perInstrument": "Per-instrument max quantity (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "default",
+      "errorInvalidJson": "Dapat valid JSON ang max_order_quantity_per_instrument",
+      "errorJsonObject": "Dapat JSON object o empty ang max_order_quantity_per_instrument",
+      "errorNegative": "Dapat non-negative integers o empty ang caps."
+    },
+    "review": {
+      "heading": "I-review at gumawa",
+      "rowLabel": "Label",
+      "rowOperator": "Operator public_id",
+      "rowMaxOpenOrders": "Max open orders",
+      "rowMaxDailyNotional": "Max daily notional USD",
+      "rowMaxCancelsPerMinute": "Max cancels per minute",
+      "rowPerInstrument": "Per-instrument max quantity",
+      "operatorDefault": "(primary operator ng caller)",
+      "defaultValue": "(default)"
+    },
+    "buttons": {
+      "cancel": "Kanselahin",
+      "next": "Susunod",
+      "back": "Bumalik",
+      "createDelegate": "Gumawa ng delegate",
+      "iSavedClose": "Na-save ko na ito — isara"
+    },
+    "toast": {
+      "delegateCreated": "Nagawa ang delegate",
+      "failedToCreate": "Hindi nagawa ang delegate"
+    }
+  },
+  "detail": {
+    "loading": "Nilo-load ang delegate…",
+    "notFound": "Hindi nakita o hindi available ang delegate.",
+    "back": "Bumalik",
+    "backToList": "Bumalik sa listahan",
+    "updateCaps": "I-update ang caps",
+    "revoke": "I-revoke",
+    "save": "I-save",
+    "cancel": "Kanselahin",
+    "tradingCaps": "Trading caps",
+    "status": "Status",
+    "active": "Aktibo",
+    "revoked": "Na-revoke",
+    "createdAt": "Ginawa noong",
+    "createdBy": "Ginawa ni (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Max open orders",
+    "maxDailyNotionalUsd": "Max daily notional USD",
+    "maxCancelsPerMinute": "Max cancels per minute",
+    "perInstrument": "Per-instrument max quantity",
+    "defaultValue": "(default)",
+    "editorPlaceholder": "(default)",
+    "toast": {
+      "capsUpdated": "Na-update ang caps",
+      "failedToUpdateCaps": "Hindi na-update ang caps",
+      "negativeIntegersError": "Dapat non-negative integers o empty ang caps."
+    }
+  },
+  "revokeDialog": {
+    "title": "I-revoke ang delegate \"{{label}}\"?",
+    "message": "Ire-revoke nito ang delegate tokens at ihihinto ang MCP subscriptions nito. Hindi na ito maa-undo.",
+    "confirm": "I-revoke",
+    "cancel": "Kanselahin",
+    "toast": {
+      "delegateRevoked": "Na-revoke ang delegate",
+      "failedToRevoke": "Hindi na-revoke ang delegate"
+    }
+  },
+  "snippet": {
+    "warningTitle": "I-save ngayon ang credentials na ito",
+    "warningMessage": "Hindi na ulit ipapakita ang mga ito. Hindi ini-store ng Snapper ang raw tokens; kapag isinara mo ang wizard na ito, ang tanging copy ay nasa MCP client config mo.",
+    "snippetHelp": "Long-lived AI delegate token (~10 years). Parehong token ang nag-a-authenticate sa proxy MCP server at watch monitor. Para i-rotate, i-deactivate ang delegate na ito at gumawa ng bago.",
+    "baseUrlHelpPrefix": "Derived ang Base URL mula sa origin ng browser na ito + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopyahin ang config snippet sa clipboard",
+    "copy": "Kopyahin sa clipboard",
+    "copied": "Nakopya"
+  }
+}

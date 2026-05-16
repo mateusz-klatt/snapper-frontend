@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "管理",
+    "subtitle": "管理用戶和系統配置"
+  },
+  "rolePermissions": {
+    "title": "角色權限",
+    "viewer": {
+      "label": "檢視者",
+      "description": "僅可檢視概覽和市場數據。不能管理進程、策略或系統設定。"
+    },
+    "operator": {
+      "label": "操作員",
+      "description": "包含檢視者全部權限，並可執行交易操作、運行策略、管理進程和監控系統健康。"
+    },
+    "admin": {
+      "label": "管理員",
+      "description": "擁有完整系統存取權限，包括用戶管理、系統設定、API 金鑰配置以及所有操作員權限。"
+    },
+    "table": {
+      "resource": "資源",
+      "viewer": "檢視者",
+      "operator": "操作員",
+      "admin": "管理員"
+    },
+    "resources": {
+      "overview": "概覽",
+      "market": "市場數據",
+      "processes": "進程",
+      "strategies": "策略",
+      "orders": "訂單與成交",
+      "positions": "倉位",
+      "signals": "信號",
+      "health": "系統健康",
+      "admin": "管理",
+      "settings": "設定"
+    }
+  },
+  "common": {
+    "cancel": "取消",
+    "selectWallet": "選擇錢包",
+    "selectAWallet": "選擇一個錢包",
+    "chooseWalletPlaceholder": "選擇錢包...",
+    "selectWalletPlaceholder": "選擇錢包...",
+    "walletLabel": "錢包",
+    "paperAnnotation": " (模擬)",
+    "unknownError": "未知錯誤",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "拒絕存取",
+      "message": "你沒有管理用戶的權限。請聯絡系統管理員。"
+    },
+    "list": {
+      "title": "用戶管理",
+      "countLabel": "{{count}} 個用戶",
+      "showInactive": "顯示停用用戶",
+      "hideInactive": "隱藏停用用戶",
+      "addUser": "新增用戶",
+      "searchPlaceholder": "按用戶名稱、電郵或角色搜尋...",
+      "columns": {
+        "user": "用戶",
+        "role": "角色",
+        "status": "狀態",
+        "createdAt": "建立時間",
+        "actions": "操作"
+      },
+      "status": {
+        "active": "活躍",
+        "inactive": "停用"
+      },
+      "unknown": "未知",
+      "empty": {
+        "title": "未找到用戶",
+        "noMatch": "沒有符合搜尋條件的用戶。",
+        "noUsers": "未找到用戶。",
+        "noActive": "未找到活躍用戶。"
+      },
+      "errorLoading": "載入用戶失敗: {{message}}",
+      "deactivate": {
+        "title": "停用用戶",
+        "message": "確定要停用用戶 \"{{username}}\" 嗎？該用戶將無法再登入。",
+        "confirm": "停用"
+      },
+      "toast": {
+        "deactivated": "用戶已停用",
+        "deactivateError": "停用用戶失敗"
+      }
+    },
+    "form": {
+      "titleEdit": "編輯用戶",
+      "titleAdd": "新增用戶",
+      "fields": {
+        "username": "用戶名稱",
+        "usernamePlaceholder": "輸入用戶名稱",
+        "password": "密碼",
+        "passwordPlaceholder": "輸入密碼",
+        "newPassword": "新密碼",
+        "newPasswordPlaceholder": "輸入新密碼",
+        "email": "電郵",
+        "emailPlaceholder": "輸入電郵",
+        "role": "角色",
+        "accountActive": "帳戶啟用",
+        "resetUserPassword": "重置用戶密碼"
+      },
+      "roles": {
+        "viewer": "檢視者",
+        "operator": "操作員",
+        "admin": "管理員"
+      },
+      "validation": {
+        "usernameRequired": "必須填寫用戶名稱",
+        "usernameMinLength": "用戶名稱至少需要 3 個字元",
+        "emailRequired": "必須填寫電郵",
+        "emailInvalid": "電郵格式無效",
+        "passwordRequired": "必須填寫密碼",
+        "passwordMinLength": "密碼至少需要 8 個字元",
+        "passwordRequiredWhenResetting": "重置時必須填寫密碼"
+      },
+      "actions": {
+        "saveChanges": "儲存更改",
+        "createUser": "建立用戶"
+      },
+      "toast": {
+        "created": "用戶已建立",
+        "createError": "建立用戶失敗",
+        "updated": "用戶已更新",
+        "updateError": "更新用戶失敗",
+        "passwordReset": "用戶密碼已重置",
+        "resetError": "重置密碼失敗"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "拒絕存取",
+      "message": "你沒有管理權限範圍的權限。請聯絡系統管理員。"
+    },
+    "list": {
+      "title": "權限範圍",
+      "countLabel": "{{count}} 個授權",
+      "createGrant": "建立授權",
+      "selectWalletPrompt": "選擇上方錢包以查看其權限範圍。",
+      "columns": {
+        "operator": "操作員",
+        "scope": "範圍",
+        "target": "目標",
+        "grantedAt": "授予時間",
+        "actions": "操作"
+      },
+      "empty": {
+        "noGrants": "未找到授權",
+        "noGrantsHint": "此錢包沒有有效的權限範圍授權。"
+      },
+      "errorLoading": "載入授權失敗: {{message}}",
+      "handover": "移交"
+    },
+    "form": {
+      "title": "建立權限範圍",
+      "fields": {
+        "operator": "操作員",
+        "operatorPlaceholder": "選擇操作員...",
+        "wallet": "錢包",
+        "scopeKind": "範圍類型",
+        "underlyingPublicId": "標的資產 Public ID",
+        "instrumentPublicId": "品種 Public ID",
+        "underlyingPlaceholder": "例如 BTC",
+        "instrumentPlaceholder": "例如 BTC-USD-PERP",
+        "note": "備註（可選）",
+        "notePlaceholder": "可選備註"
+      },
+      "scopeKinds": {
+        "underlying": "標的資產",
+        "instrument": "品種"
+      },
+      "validation": {
+        "operatorRequired": "必須選擇操作員",
+        "walletRequired": "必須選擇錢包",
+        "targetRequired": "必須填寫目標 ID"
+      },
+      "actions": {
+        "createGrant": "建立授權"
+      },
+      "toast": {
+        "created": "權限範圍已建立",
+        "conflictError": "衝突: 另一位操作員已持有此範圍的授權",
+        "createError": "建立權限範圍失敗"
+      }
+    },
+    "handover": {
+      "title": "移交權限範圍",
+      "fields": {
+        "currentHolder": "目前持有者",
+        "scope": "範圍",
+        "wallet": "錢包",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "移交給操作員",
+        "transferToPlaceholder": "選擇目標操作員...",
+        "reason": "原因（可選）",
+        "reasonPlaceholder": "例如 換班"
+      },
+      "actions": {
+        "handover": "移交"
+      },
+      "toast": {
+        "completed": "權限範圍已移交",
+        "conflictError": "衝突: 目標操作員已持有衝突授權",
+        "handoverError": "移交權限範圍失敗"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "拒絕存取",
+      "message": "你沒有管理錢包憑證的權限。請聯絡系統管理員。"
+    },
+    "list": {
+      "title": "錢包憑證",
+      "countLabel": "{{count}} 個憑證",
+      "addCredential": "新增憑證",
+      "selectWalletPrompt": "選擇上方錢包以查看其憑證。",
+      "columns": {
+        "exchange": "交易所",
+        "type": "類型",
+        "label": "標籤",
+        "createdAt": "建立時間",
+        "actions": "操作"
+      },
+      "empty": {
+        "noCredentials": "未找到憑證",
+        "noCredentialsHint": "此錢包沒有有效憑證。"
+      },
+      "errorLoading": "載入憑證失敗: {{message}}",
+      "rotate": "輪換"
+    },
+    "form": {
+      "title": "新增憑證",
+      "fields": {
+        "wallet": "錢包",
+        "exchange": "交易所",
+        "exchangePlaceholder": "例如 kraken",
+        "credentialType": "憑證類型",
+        "label": "標籤（可選）",
+        "labelPlaceholder": "例如 主交易金鑰",
+        "pemPlaceholder": "在此處貼上 PEM 格式的私鑰"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "私鑰 (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "初始餘額"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "模擬"
+      },
+      "validation": {
+        "walletRequired": "必須選擇錢包",
+        "exchangeRequired": "必須選擇交易所",
+        "fieldRequired": "必須填寫 {{field}}"
+      },
+      "actions": {
+        "addCredential": "新增憑證"
+      },
+      "toast": {
+        "created": "憑證已建立",
+        "conflictError": "衝突: 此錢包已存在該交易所的有效憑證",
+        "createError": "建立憑證失敗"
+      }
+    },
+    "rotate": {
+      "title": "輪換憑證",
+      "fields": {
+        "exchange": "交易所",
+        "type": "類型",
+        "label": "標籤",
+        "newLabel": "新標籤（可選）",
+        "newLabelPlaceholder": "例如 2026-04 更換金鑰",
+        "pemPlaceholder": "在此處貼上 PEM 格式的私鑰"
+      },
+      "actions": {
+        "rotate": "輪換"
+      },
+      "toast": {
+        "rotated": "憑證已輪換",
+        "rotateError": "輪換憑證失敗"
+      }
+    }
+  }
+}

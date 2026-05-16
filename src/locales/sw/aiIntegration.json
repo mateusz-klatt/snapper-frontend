@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Muunganisho wa AI",
+    "subtitle": "Simamia wajumbe wa AI wanaounganisha na Snapper kupitia MCP.",
+    "loading": "Inapakia muunganisho wa AI…",
+    "createDelegate": "Unda mjumbe"
+  },
+  "disabled": {
+    "title": "Muunganisho wa AI umezimwa",
+    "message": "Washa feature flag kwenye Mipangilio → Feature Flags ili kusimamia wajumbe wa AI."
+  },
+  "list": {
+    "loadingDelegates": "Inapakia wajumbe…",
+    "emptyTitle": "Bado hakuna wajumbe wa AI",
+    "emptyMessage": "Bofya “Unda mjumbe” ili kuunda mmoja na kuzalisha kipande cha usanidi wa MCP.",
+    "columns": {
+      "label": "Lebo",
+      "username": "Jina la mtumiaji",
+      "created": "Iliundwa",
+      "maxOpenOrders": "Oda wazi za juu",
+      "maxDailyUsd": "USD ya juu kwa siku",
+      "status": "Hali",
+      "actions": "Vitendo"
+    },
+    "status": {
+      "active": "Inatumika",
+      "revoked": "Imebatilishwa"
+    },
+    "default": "chaguo-msingi",
+    "details": "Maelezo",
+    "viewAriaLabel": "Tazama mjumbe {{label}}"
+  },
+  "wizard": {
+    "title": "Unda mjumbe wa AI",
+    "step1": "1. Utambulisho",
+    "step2": "2. Upeo na mipaka",
+    "step3": "3. Kagua",
+    "stepDone": "✓ Imekamilika",
+    "identity": {
+      "labelField": "Lebo",
+      "labelPlaceholder": "mf. Alpha prop desk",
+      "labelHelpPrefix": "Jina la mtumiaji la mjumbe litatolewa upande wa seva kama ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Upeo",
+      "operatorLabel": "public_id ya opereta (hiari)",
+      "operatorPlaceholder": "Acha tupu ili kurithi opereta mkuu wa mtumiaji anayepiga simu"
+    },
+    "caps": {
+      "heading": "Mipaka ya trading (yote ni hiari)",
+      "maxOpenOrders": "Oda wazi za juu",
+      "maxDailyNotionalUsd": "Notional USD ya juu kwa siku",
+      "maxCancelsPerMinute": "Kughairi kwa juu kwa dakika",
+      "perInstrument": "Kiasi cha juu kwa instrumenti (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "chaguo-msingi",
+      "errorInvalidJson": "max_order_quantity_per_instrument lazima iwe JSON sahihi",
+      "errorJsonObject": "max_order_quantity_per_instrument lazima iwe object ya JSON au tupu",
+      "errorNegative": "Mipaka lazima iwe nambari kamili zisizo hasi au tupu."
+    },
+    "review": {
+      "heading": "Kagua na uunde",
+      "rowLabel": "Lebo",
+      "rowOperator": "public_id ya opereta",
+      "rowMaxOpenOrders": "Oda wazi za juu",
+      "rowMaxDailyNotional": "Notional USD ya juu kwa siku",
+      "rowMaxCancelsPerMinute": "Kughairi kwa juu kwa dakika",
+      "rowPerInstrument": "Kiasi cha juu kwa instrumenti",
+      "operatorDefault": "(opereta mkuu wa mpigaji)",
+      "defaultValue": "(chaguo-msingi)"
+    },
+    "buttons": {
+      "cancel": "Ghairi",
+      "next": "Endelea",
+      "back": "Rudi",
+      "createDelegate": "Unda mjumbe",
+      "iSavedClose": "Nimevihifadhi — funga"
+    },
+    "toast": {
+      "delegateCreated": "Mjumbe ameundwa",
+      "failedToCreate": "Imeshindwa kuunda mjumbe"
+    }
+  },
+  "detail": {
+    "loading": "Inapakia mjumbe…",
+    "notFound": "Mjumbe hajapatikana au hapatikani.",
+    "back": "Rudi",
+    "backToList": "Rudi kwenye orodha",
+    "updateCaps": "Sasisha mipaka",
+    "revoke": "Batilisha",
+    "save": "Hifadhi",
+    "cancel": "Ghairi",
+    "tradingCaps": "Mipaka ya trading",
+    "status": "Hali",
+    "active": "Inatumika",
+    "revoked": "Imebatilishwa",
+    "createdAt": "Iliundwa saa",
+    "createdBy": "Imeundwa na (public_id ya mtumiaji)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Oda wazi za juu",
+    "maxDailyNotionalUsd": "Notional USD ya juu kwa siku",
+    "maxCancelsPerMinute": "Kughairi kwa juu kwa dakika",
+    "perInstrument": "Kiasi cha juu kwa instrumenti",
+    "defaultValue": "(chaguo-msingi)",
+    "editorPlaceholder": "(chaguo-msingi)",
+    "toast": {
+      "capsUpdated": "Mipaka imesasishwa",
+      "failedToUpdateCaps": "Imeshindwa kusasisha mipaka",
+      "negativeIntegersError": "Mipaka lazima iwe nambari kamili zisizo hasi au tupu."
+    }
+  },
+  "revokeDialog": {
+    "title": "Batilisha mjumbe \"{{label}}\"?",
+    "message": "Hii itabatilisha tokeni za mjumbe na kusimamisha usajili wake wa MCP. Huwezi kutendua hili.",
+    "confirm": "Batilisha",
+    "cancel": "Ghairi",
+    "toast": {
+      "delegateRevoked": "Mjumbe amebatilishwa",
+      "failedToRevoke": "Imeshindwa kubatilisha mjumbe"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Hifadhi vitambulisho hivi sasa",
+    "warningMessage": "Havitaonyeshwa tena. Snapper haihifadhi tokeni ghafi; ukifunga wizard hii, nakala pekee itakuwa kwenye usanidi wa mteja wako wa MCP.",
+    "snippetHelp": "Tokeni ya muda mrefu ya mjumbe wa AI (~miaka 10). Tokeni hiyo hiyo huthibitisha seva ya proxy ya MCP na monitor ya watch. Ili kuizungusha, zima mjumbe huyu na uunde mpya.",
+    "baseUrlHelpPrefix": "Base URL hutokana na origin ya kivinjari hiki + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Nakili kipande cha usanidi kwenye clipboard",
+    "copy": "Nakili kwenye clipboard",
+    "copied": "Imenakiliwa"
+  }
+}

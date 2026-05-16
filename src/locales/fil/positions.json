@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Positions"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: pending",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Quantity",
+    "averageEntry": "Avg Entry",
+    "unrealizedPnl": "Unrealized P&L",
+    "realizedPnl": "Realized P&L",
+    "updated": "Na-update {{timestamp}}"
+  },
+  "empty": {
+    "title": "Walang open positions",
+    "message": "Lalabas dito ang long, short, at flat positions kapag na-execute na ang trades."
+  },
+  "bracketModal": {
+    "title": "Mag-attach ng SL/TP — {{instrument}}",
+    "confirmTitle": "Kumpirmahin ang Bracket",
+    "position": "Position",
+    "entryPrice": "Entry Price",
+    "stopLossLabel": "Stop-Loss Price",
+    "takeProfitLabel": "Take-Profit Price",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Mas mababa sa ${{price}}",
+      "slShort": "Mas mataas sa ${{price}}",
+      "tpLong": "Mas mataas sa ${{price}}",
+      "tpShort": "Mas mababa sa ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Kanselahin",
+      "review": "I-review",
+      "back": "Bumalik",
+      "confirm": "Kumpirmahin",
+      "creating": "Ginagawa…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Mag-attach ng Trailing Stop — {{instrument}}",
+    "confirmTitle": "Kumpirmahin ang Trailing Stop",
+    "position": "Position",
+    "entryPrice": "Entry Price",
+    "trailingDistanceLabel": "Trailing Distance (%)",
+    "minLockLabel": "Min Lock Profit (%) — optional",
+    "trailingDistance": "Trailing Distance",
+    "minLockProfit": "Min Lock Profit",
+    "placeholders": {
+      "trailingPct": "hal. 5.0",
+      "minLockPct": "0 = magsimula agad"
+    },
+    "minLockWarning": "Hindi mag-a-activate ang trailing stop hanggang gumalaw ang presyo ng {{minLockPct}}% pabor sa iyo.",
+    "buttons": {
+      "cancel": "Kanselahin",
+      "review": "I-review",
+      "back": "Bumalik",
+      "confirm": "Kumpirmahin",
+      "creating": "Ginagawa..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Kailangan ng kahit isang SL o TP price",
+    "invalidSlPrice": "Invalid na stop-loss price",
+    "slPricePositive": "Dapat positive ang stop-loss price",
+    "invalidTpPrice": "Invalid na take-profit price",
+    "tpPricePositive": "Dapat positive ang take-profit price",
+    "slLongBelowEntry": "Dapat mas mababa ang SL price kaysa entry price ({{price}})",
+    "tpLongAboveEntry": "Dapat mas mataas ang TP price kaysa entry price ({{price}})",
+    "slShortAboveEntry": "Dapat mas mataas ang SL price kaysa entry price ({{price}})",
+    "tpShortBelowEntry": "Dapat mas mababa ang TP price kaysa entry price ({{price}})",
+    "trailingRequired": "Kailangan ang trailing percentage",
+    "trailingInvalid": "Invalid na trailing percentage",
+    "trailingRange": "Dapat nasa pagitan ng 0 at 100 ang trailing percentage",
+    "minLockInvalid": "Invalid na min lock percentage",
+    "minLockRange": "Dapat nasa pagitan ng 0 at 100 ang min lock percentage"
+  }
+}

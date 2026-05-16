@@ -1,0 +1,88 @@
+{
+  "page": {
+    "title": "Mipangilio",
+    "subtitle": "Sanidi mipangilio na vigezo vya programu",
+    "addButton": "Ongeza Mpangilio",
+    "searchPlaceholder": "Tafuta mipangilio...",
+    "noResults": "Hakuna mipangilio iliyopatikana inayolingana na vigezo vyako.",
+    "allCategories": "Kategoria Zote",
+    "categoryFilterAriaLabel": "Chuja mipangilio kwa kategoria"
+  },
+  "errors": {
+    "loadFailed": "Imeshindwa kupakia mipangilio",
+    "updateFailed": "Imeshindwa kusasisha mpangilio",
+    "deleteFailed": "Imeshindwa kufuta mpangilio",
+    "createFailed": "Imeshindwa kuunda mpangilio",
+    "alreadyExists": "Mpangilio wenye key \"{{key}}\" tayari upo"
+  },
+  "item": {
+    "edit": "Hariri",
+    "delete": "Futa",
+    "save": "Hifadhi",
+    "saving": "Inahifadhi...",
+    "cancel": "Ghairi",
+    "yesDelete": "Ndiyo, Futa",
+    "deleting": "Inafuta...",
+    "deleteConfirm": "Futa mpangilio huu?",
+    "valuePlaceholder": "Weka thamani ya mpangilio...",
+    "showMore": "Onyesha zaidi",
+    "showLess": "Onyesha kidogo",
+    "toggleAriaLabel": "Geuza {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Nyeti"
+    },
+    "helpText": {
+      "allowShortSelling": "Ruhusu engine kufungua nafasi za short. Ishara za SELL zitatengeneza desired_units hasi; zitabanwa hadi 0 ikiwa imezimwa.",
+      "allowManualOrders": "Washa kitufe cha Oda Mpya kwenye kichupo cha Oda. Ikiwa kimezimwa, POST /api/orders hurejesha 403."
+    }
+  },
+  "addModal": {
+    "title": "Ongeza Mpangilio Mpya",
+    "keyLabel": "Key",
+    "valueLabel": "Thamani",
+    "categoryLabel": "Kategoria",
+    "descriptionLabel": "Maelezo",
+    "keyPlaceholder": "mf., walutomat.api_key",
+    "keyHint": "Tumia nukta kwa mipangilio iliyowekwa ndani (mf., category.subcategory.name)",
+    "valuePlaceholder": "Thamani ya mpangilio",
+    "categorySelectPlaceholder": "Chagua iliyopo au unda mpya",
+    "newCategoryPlaceholder": "Au weka jina jipya la kategoria",
+    "descriptionPlaceholder": "Maelezo ya hiari",
+    "cancel": "Ghairi",
+    "create": "Unda Mpangilio",
+    "creating": "Inaunda...",
+    "validation": {
+      "keyRequired": "Key inahitajika",
+      "valueRequired": "Thamani inahitajika",
+      "categoryRequired": "Kategoria inahitajika"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Kihariri cha Fomu",
+    "rawEditor": "Kihariri cha Raw JSON",
+    "rawJson": "Raw JSON",
+    "switchToForm": "Badilisha kwenda Fomu",
+    "importToForm": "Ingiza kwenye Fomu",
+    "parseError": "Hitilafu ya kuchanganua: {{message}}",
+    "arraySummary": "Array (vipengee {{length}})",
+    "addItem": "Ongeza Kipengee",
+    "remove": "Ondoa",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)",
+      "null": "(null)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

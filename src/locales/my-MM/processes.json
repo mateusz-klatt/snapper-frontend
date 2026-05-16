@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Process Control",
+    "subtitle": "Real-time process monitoring နှင့် control"
+  },
+  "sections": {
+    "longRunning": "Long-Running Process များ",
+    "executorTemplates": "Executor Template များ",
+    "executorTemplatesHint": "Template config ကို ပြင်ဆင်ခြင်းသည် restart ပြီးနောက် ဤ exchange ပေါ်ရှိ wallet အားလုံးကို သက်ရောက်စေသည်။ Template များသည် config-only ဖြစ်သည် — executor run ရန် အောက်တွင် per-wallet instance ကို start လုပ်ပါ။",
+    "walletInstances": "Wallet Instance များ",
+    "taskProcesses": "Task Process များ"
+  },
+  "card": {
+    "stop": "Stop",
+    "start": "Start",
+    "restart": "Restart",
+    "starting": "Starting...",
+    "stopping": "Stopping...",
+    "status": {
+      "running": "running",
+      "stopped": "stopped",
+      "error": "error",
+      "starting": "starting",
+      "stopping": "stopping"
+    }
+  },
+  "template": {
+    "badge": "template",
+    "mode": "Mode:",
+    "parameters": "Parameter များ:",
+    "paramCount": "parameter {{count}} ခု",
+    "noParams": "parameter မသတ်မှတ်ထားပါ"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "{{name}} ကို stop လုပ်ပါ",
+    "stopMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} process ကို stop လုပ်မည်။",
+    "restartTitle": "{{name}} ကို restart လုပ်ပါ",
+    "restartMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} process ကို restart လုပ်မည်။"
+  },
+  "executionMode": {
+    "title": "{{name}} ကို start လုပ်ပါ",
+    "label": "Execution Mode:",
+    "threadName": "Thread Mode",
+    "threadDescription": "Web server အတွင်း embedded task အဖြစ် run သည်။ Startup ပိုမြန်ပြီး memory ကို share လုပ်သည်။",
+    "processName": "Process Mode",
+    "processDescription": "သီးခြား Python process အဖြစ် run သည်။ Isolated ဖြစ်ပြီး fault-tolerant နှင့် detailed monitoring ရှိသည်။",
+    "cancel": "ပယ်ဖျက်",
+    "start": "{{name}} ကို start လုပ်ပါ",
+    "threadAriaLabel": "Thread Mode",
+    "processAriaLabel": "Process Mode"
+  }
+}

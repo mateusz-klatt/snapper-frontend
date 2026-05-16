@@ -1,0 +1,83 @@
+{
+  "loading": "載入中...",
+  "error": "錯誤",
+  "retry": "重試",
+  "close": "關閉",
+  "cancel": "取消",
+  "confirm": "確認",
+  "save": "儲存",
+  "documentation": "說明文件 (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "切換語言",
+    "flagAriaLabel": "切換到 {{country}}",
+    "currentAriaLabel": "目前語言: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "交易控制台",
+    "tagline": "精準工作台",
+    "openSidebar": "開啟側邊欄",
+    "closeSidebar": "關閉側邊欄",
+    "sidebar": "側邊欄",
+    "mainNavigation": "主要導航",
+    "tradingContent": "交易內容",
+    "skipToContent": "跳至交易內容",
+    "lag": "延遲：",
+    "lagTitle": "到 WebSocket 伺服器的往返延遲",
+    "topics": "主題：",
+    "topicsTitle": "已訂閱 WebSocket 主題數量",
+    "connected": "已連線",
+    "disconnected": "已中斷連線",
+    "connectedTitle": "已連線至 WebSocket",
+    "disconnectedTitle": "已中斷 WebSocket 連線",
+    "switchToLightMode": "切換到淺色模式",
+    "switchToDarkMode": "切換到深色模式",
+    "timeTravelBanner": "Time Travel 模式 — 正在查看歷史數據（唯讀）",
+    "lagUnknown": "未知",
+    "walletPicker": {
+      "ariaLabel": "目前錢包",
+      "placeholder": "錢包",
+      "allWallets": "所有錢包",
+      "optionPaper": "{{label}} (模擬)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "目前操作員",
+      "placeholder": "操作員",
+      "allOperators": "所有操作員"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time Travel：選擇歷史時間點",
+      "exitAriaLabel": "退出 Time Travel 模式",
+      "exitTitle": "返回即時模式"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "僅供觀察的品種。Snapper 會接收此 (symbol, exchange) 交易對的市場數據，但不能下單。",
+      "ariaLabel": "僅市場數據品種",
+      "badge": "僅市場數據"
+    },
+    "liveOnly": {
+      "notice": "此分頁顯示目前狀態 — 不支援歷史檢視。"
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "出現錯誤",
+    "titleWithComponent": "{{componentName}} 出錯",
+    "stackTrace": "堆疊追蹤",
+    "tryAgain": "重試"
+  },
+  "nav": {
+    "overview": "概覽",
+    "market": "市場數據",
+    "processes": "進程",
+    "strategies": "策略",
+    "orders": "訂單與成交",
+    "positions": "倉位",
+    "signals": "信號",
+    "backtests": "回測",
+    "health": "系統健康",
+    "admin": "管理",
+    "aiIntegration": "AI 整合",
+    "aiReviews": "AI 審核",
+    "settings": "設定"
+  }
+}

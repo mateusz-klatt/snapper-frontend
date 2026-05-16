@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "策略管理",
+    "register": "註冊策略",
+    "saving": "儲存中…",
+    "descriptionCanManage": "可直接從 UI 註冊新的策略進程。自動啟動會讓進程在重啟後保持啟用。",
+    "descriptionViewer": "檢視已配置的策略及其狀態。請聯絡操作員或管理員來管理策略。",
+    "searchPlaceholder": "搜尋策略...",
+    "filter": {
+      "all": "所有狀態",
+      "running": "運行中",
+      "stopped": "已停止"
+    },
+    "configuredHeading": "已配置策略",
+    "noMatches": "沒有策略符合篩選條件",
+    "clearFilters": "清除篩選",
+    "emptyTitle": "未配置策略",
+    "emptyCanManage": "註冊策略以開始算法交易",
+    "emptyViewer": "尚未配置策略"
+  },
+  "confirm": {
+    "startTitle": "啟動 {{name}}",
+    "startMessage": "這將啟動 {{name}} 策略。它可能開始實盤交易操作。",
+    "stopTitle": "停止 {{name}}",
+    "stopMessage": "這將停止 {{name}} 策略。活躍倉位不會自動平倉。"
+  },
+  "toast": {
+    "saved": "策略 {{name}} 已儲存",
+    "started": "策略 {{name}} 已啟動",
+    "registerFailed": "註冊策略失敗: {{message}}",
+    "startSuccess": "策略啟動成功",
+    "stopSuccess": "策略停止成功",
+    "alreadyRunning": "策略已在運行",
+    "notRunning": "策略未運行",
+    "configNotFound": "未找到策略配置。請檢查資料庫設定。",
+    "networkError": "網絡錯誤。請檢查連線後重試。",
+    "startFailed": "啟動策略失敗: {{message}}",
+    "stopFailed": "停止策略失敗: {{message}}",
+    "unknownError": "未知錯誤"
+  },
+  "card": {
+    "ariaLabel": "策略: {{name}}",
+    "modeLabel": "模式: {{mode}}",
+    "autostartEnabled": "自動啟動: 已啟用",
+    "autostartDisabled": "自動啟動: 已停用",
+    "statusAriaLabel": "狀態: {{status}}",
+    "dataLagAriaLabel": "數據延遲: {{seconds}} 秒",
+    "lagBadge": "延遲: {{seconds}}s",
+    "feedLag": "Feed 延遲: {{ms}}ms",
+    "heartbeatAge": "HB 時長: {{seconds}}s",
+    "metrics": {
+      "status": "狀態",
+      "dataLag": "數據延遲",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "顯示詳情",
+    "hideDetails": "隱藏詳情",
+    "inputs": "輸入 ({{count}})",
+    "outputs": "輸出 ({{count}})",
+    "feedPublishers": "Feed 發佈者 ({{count}})",
+    "lastUpdate": "最後更新: {{time}}",
+    "waiting": "等待 Heartbeat...",
+    "startAriaLabel": "啟動 {{name}} 策略",
+    "stopAriaLabel": "停止 {{name}} 策略",
+    "start": "啟動",
+    "stop": "停止",
+    "starting": "啟動中...",
+    "stopping": "停止中...",
+    "status": {
+      "starting": "啟動中",
+      "stopping": "停止中",
+      "running": "運行中",
+      "stopped": "已停止"
+    },
+    "health": {
+      "healthy": "健康 — 正在接收新鮮數據",
+      "warning": "警告 — 數據已過期",
+      "error": "錯誤 — 沒有近期數據",
+      "unknown": "未知 — 沒有 Heartbeat 數據"
+    },
+    "healthShort": {
+      "healthy": "健康",
+      "warning": "警告",
+      "error": "錯誤"
+    }
+  },
+  "launchModal": {
+    "title": "註冊策略進程",
+    "emptyTemplates": "後端未註冊策略模板。請至少定義一個策略進程。",
+    "close": "關閉",
+    "templateLabel": "策略模板",
+    "templatePlaceholder": "選擇模板...",
+    "templateFallbackDescription": "後端已註冊的策略",
+    "loadingDefaults": "正在載入模板預設值…",
+    "loadDefaultsError": "無法載入模板預設值。請檢查後端日誌。",
+    "processNameLabel": "進程名稱",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "允許的字元：小寫英文字母、數字、底線",
+    "instanceNameLabel": "策略實例名稱",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "用於策略配置和輸出主題",
+    "executionModeLabel": "執行模式",
+    "executionModeThread": "嵌入式線程",
+    "executionModeProcess": "隔離進程",
+    "executionModeHelp": "線程共享記憶體，進程提供更強隔離。",
+    "flagsLabel": "旗標",
+    "autostartLabel": "伺服器啟動時自動啟動",
+    "startImmediatelyLabel": "註冊後立即啟動",
+    "noteLabel": "備註（可選）",
+    "notePlaceholder": "描述此策略實例的用途或參數。",
+    "noteHelp": "隨配置一起儲存，便於識別此進程。",
+    "cancel": "取消",
+    "submit": "註冊策略",
+    "submitting": "註冊中…"
+  }
+}

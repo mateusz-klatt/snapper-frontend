@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Request",
+    "decision": "Desisyon",
+    "capsViolation": "Caps violation",
+    "selectedDelegate": "Napiling delegate",
+    "instrument": "instrument",
+    "deadline": "deadline {{time}}",
+    "decidedBy": "ni",
+    "newStatus": "status",
+    "mode": "mode",
+    "capAttempted": "sinubukan",
+    "capLimit": "vs limit",
+    "capOn": "sa instrument",
+    "reviewLabel": "review {{reviewId}}",
+    "unhandledFrame": "Hindi na-handle na AI review activity frame: {{frame}}"
+  },
+  "page": {
+    "title": "AI Review Inbox",
+    "subtitle": "Pending CONSULT reviews na naka-route sa delegate na ito kasama ang live event stream."
+  },
+  "roleNotice": {
+    "title": "Nakalaan sa AI delegates",
+    "message": "Ipinapakita ng inbox na ito ang CONSULT reviews na naka-route sa isang AI delegate principal. Mag-sign in gamit ang AI delegate account para makita ang pending reviews at live activity stream. Ang kasalukuyan mong role ay",
+    "unknownRole": "hindi alam"
+  },
+  "pending": {
+    "title": "Pending reviews",
+    "loading": "Nilo-load ang pending reviews…",
+    "loadError": "Hindi na-load ang pending reviews: {{message}}",
+    "emptyTitle": "Walang pending reviews",
+    "emptyMessage": "Lalabas dito ang bagong CONSULT requests na naka-route sa delegate na ito.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Thesis",
+      "status": "Status",
+      "deadline": "Deadline",
+      "decision": "Decision"
+    },
+    "rationalePlaceholder": "Rationale (optional)",
+    "rationaleAriaLabel": "Rationale para sa review {{reviewId}}",
+    "approve": "I-approve",
+    "reject": "I-reject",
+    "submitError": "Hindi na-submit: {{message}}"
+  },
+  "activity": {
+    "title": "Recent activity",
+    "emptyTitle": "Wala pang activity",
+    "emptyMessage": "Mag-stream dito ang AI review request, decision, at caps-violation frames.",
+    "summaryEmpty": "Walang frames na natanggap",
+    "summaryCount": "Ipinapakita ang {{shown}} sa {{total}} buffered"
+  }
+}

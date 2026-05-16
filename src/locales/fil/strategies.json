@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Pamamahala ng Strategies",
+    "register": "Mag-register ng Strategy",
+    "saving": "Sine-save…",
+    "descriptionCanManage": "Mag-register ng bagong strategy processes direkta mula sa UI. Pinapanatili ng autostart na enabled ang process kahit pagkatapos ng restarts.",
+    "descriptionViewer": "Tingnan ang configured strategies at status ng mga ito. Makipag-ugnayan sa operator o admin para ma-manage ang strategies.",
+    "searchPlaceholder": "Maghanap ng strategies...",
+    "filter": {
+      "all": "Lahat ng statuses",
+      "running": "Tumatakbo",
+      "stopped": "Nakahinto"
+    },
+    "configuredHeading": "Configured strategies",
+    "noMatches": "Walang strategies na tugma sa filters mo",
+    "clearFilters": "I-clear ang filters",
+    "emptyTitle": "Walang configured strategies",
+    "emptyCanManage": "Mag-register ng strategy para magsimula ang algorithmic trading",
+    "emptyViewer": "Wala pang na-configure na strategies"
+  },
+  "confirm": {
+    "startTitle": "I-start ang {{name}}",
+    "startMessage": "Ista-start nito ang {{name}} strategy. Maaari itong magsimula ng live trading operations.",
+    "stopTitle": "I-stop ang {{name}}",
+    "stopMessage": "Ihihinto nito ang {{name}} strategy. Hindi awtomatikong isasara ang active positions."
+  },
+  "toast": {
+    "saved": "Na-save ang strategy {{name}}",
+    "started": "Nasimulan ang strategy {{name}}",
+    "registerFailed": "Hindi na-register ang strategy: {{message}}",
+    "startSuccess": "Matagumpay na nasimulan ang strategy",
+    "stopSuccess": "Matagumpay na nahinto ang strategy",
+    "alreadyRunning": "Tumatakbo na ang strategy",
+    "notRunning": "Hindi tumatakbo ang strategy",
+    "configNotFound": "Hindi nakita ang strategy configuration. Pakitingnan ang database settings.",
+    "networkError": "Network error. Pakitingnan ang connection at subukan ulit.",
+    "startFailed": "Hindi na-start ang strategy: {{message}}",
+    "stopFailed": "Hindi na-stop ang strategy: {{message}}",
+    "unknownError": "Hindi kilalang error"
+  },
+  "card": {
+    "ariaLabel": "Strategy: {{name}}",
+    "modeLabel": "Mode: {{mode}}",
+    "autostartEnabled": "Autostart: enabled",
+    "autostartDisabled": "Autostart: disabled",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Data lag: {{seconds}} seconds",
+    "lagBadge": "lag: {{seconds}}s",
+    "feedLag": "Feed lag: {{ms}}ms",
+    "heartbeatAge": "HB age: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Data Lag",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Ipakita ang details",
+    "hideDetails": "Itago ang details",
+    "inputs": "Inputs ({{count}})",
+    "outputs": "Outputs ({{count}})",
+    "feedPublishers": "Feed publishers ({{count}})",
+    "lastUpdate": "Huling update: {{time}}",
+    "waiting": "Naghihintay ng heartbeat...",
+    "startAriaLabel": "I-start ang {{name}} strategy",
+    "stopAriaLabel": "I-stop ang {{name}} strategy",
+    "start": "I-start",
+    "stop": "I-stop",
+    "starting": "Sini-start...",
+    "stopping": "Sini-stop...",
+    "status": {
+      "starting": "sini-start",
+      "stopping": "sini-stop",
+      "running": "tumatakbo",
+      "stopped": "nakahinto"
+    },
+    "health": {
+      "healthy": "Healthy — tumatanggap ng fresh data",
+      "warning": "Warning — stale ang data",
+      "error": "Error — walang recent data",
+      "unknown": "Unknown — walang heartbeat data"
+    },
+    "healthShort": {
+      "healthy": "HEALTHY",
+      "warning": "WARNING",
+      "error": "ERROR"
+    }
+  },
+  "launchModal": {
+    "title": "Mag-register ng Strategy Process",
+    "emptyTemplates": "Walang strategy templates na registered sa backend. Mag-define ng kahit isang strategy process.",
+    "close": "Isara",
+    "templateLabel": "Strategy template",
+    "templatePlaceholder": "Pumili ng template...",
+    "templateFallbackDescription": "Strategy na registered sa backend",
+    "loadingDefaults": "Nilo-load ang template defaults…",
+    "loadDefaultsError": "Hindi ma-load ang template defaults. Pakitingnan ang backend logs.",
+    "processNameLabel": "Process name",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Allowed characters: lowercase letters, numbers, underscores",
+    "instanceNameLabel": "Strategy instance name",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Ginagamit sa strategy configuration at output topics",
+    "executionModeLabel": "Execution mode",
+    "executionModeThread": "Embedded thread",
+    "executionModeProcess": "Isolated process",
+    "executionModeHelp": "Nagsha-share ng memory ang threads; mas malakas ang isolation ng processes.",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart sa server boot",
+    "startImmediatelyLabel": "I-start agad pagkatapos ng registration",
+    "noteLabel": "Note (optional)",
+    "notePlaceholder": "Ilarawan ang purpose o parameters ng strategy instance na ito.",
+    "noteHelp": "Isi-store kasama ng configuration para makatulong makilala ang process na ito.",
+    "cancel": "Kanselahin",
+    "submit": "I-register ang strategy",
+    "submitting": "Nire-register…"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Overview"
+  },
+  "metrics": {
+    "feedsRunning": "Feeds na tumatakbo",
+    "strategiesActive": "Active strategies",
+    "openOrders": "Open orders",
+    "todaysExecutions": "Executions ngayon",
+    "executionsOn": "Executions ({{date}})"
+  },
+  "status": {
+    "stopped": "Nakahinto",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Tumatakbo",
+    "active": "Aktibo"
+  },
+  "processStatus": {
+    "title": "Status ng Processes",
+    "feeds": "Feeds",
+    "strategies": "Strategies",
+    "executors": "Executors",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "Portfolio summary",
+    "totalValue": "Total value",
+    "longExposure": "Long exposure",
+    "shortExposure": "Short exposure",
+    "netDelta": "Net delta",
+    "unrealizedPnl": "Unrealized P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Positions",
+    "instrumentsCount": "{{count}} instruments",
+    "empty": "Walang positions data available"
+  },
+  "signals": {
+    "title": "Recent signals",
+    "empty": "Walang recent signals",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Recent executions",
+    "empty": "Walang recent executions",
+    "noTime": "N/A"
+  }
+}

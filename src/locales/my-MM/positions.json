@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "ပိုဇစ်ရှင်များ"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: pending",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Quantity",
+    "averageEntry": "Avg Entry",
+    "unrealizedPnl": "Unrealized P&L",
+    "realizedPnl": "Realized P&L",
+    "updated": "Updated {{timestamp}}"
+  },
+  "empty": {
+    "title": "Open position မရှိပါ",
+    "message": "Trade execution ဖြစ်ပြီးနောက် long, short နှင့် flat position များ ဒီမှာ ပေါ်လာမည်။"
+  },
+  "bracketModal": {
+    "title": "SL/TP တွဲပါ — {{instrument}}",
+    "confirmTitle": "Bracket အတည်ပြုပါ",
+    "position": "Position",
+    "entryPrice": "Entry Price",
+    "stopLossLabel": "Stop-Loss Price",
+    "takeProfitLabel": "Take-Profit Price",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "${{price}} အောက်",
+      "slShort": "${{price}} အထက်",
+      "tpLong": "${{price}} အထက်",
+      "tpShort": "${{price}} အောက်"
+    },
+    "buttons": {
+      "cancel": "ပယ်ဖျက်",
+      "review": "Review",
+      "back": "နောက်သို့",
+      "confirm": "အတည်ပြုပါ",
+      "creating": "ဖန်တီးနေသည်…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Trailing Stop တွဲပါ — {{instrument}}",
+    "confirmTitle": "Trailing Stop အတည်ပြုပါ",
+    "position": "Position",
+    "entryPrice": "Entry Price",
+    "trailingDistanceLabel": "Trailing Distance (%)",
+    "minLockLabel": "Min Lock Profit (%) — optional",
+    "trailingDistance": "Trailing Distance",
+    "minLockProfit": "Min Lock Profit",
+    "placeholders": {
+      "trailingPct": "ဥပမာ 5.0",
+      "minLockPct": "0 = ချက်ချင်းစတင်"
+    },
+    "minLockWarning": "စျေးနှုန်းသည် သင့်ဘက်အကျိုးရှိအောင် {{minLockPct}}% ရွေ့ပြီးမှ trailing stop activate ဖြစ်မည်။",
+    "buttons": {
+      "cancel": "ပယ်ဖျက်",
+      "review": "Review",
+      "back": "နောက်သို့",
+      "confirm": "အတည်ပြုပါ",
+      "creating": "ဖန်တီးနေသည်..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "SL သို့မဟုတ် TP price အနည်းဆုံးတစ်ခု လိုအပ်သည်",
+    "invalidSlPrice": "Stop-loss price မမှန်ပါ",
+    "slPricePositive": "Stop-loss price သည် positive ဖြစ်ရမည်",
+    "invalidTpPrice": "Take-profit price မမှန်ပါ",
+    "tpPricePositive": "Take-profit price သည် positive ဖြစ်ရမည်",
+    "slLongBelowEntry": "SL price သည် entry price ({{price}}) အောက် ဖြစ်ရမည်",
+    "tpLongAboveEntry": "TP price သည် entry price ({{price}}) အထက် ဖြစ်ရမည်",
+    "slShortAboveEntry": "SL price သည် entry price ({{price}}) အထက် ဖြစ်ရမည်",
+    "tpShortBelowEntry": "TP price သည် entry price ({{price}}) အောက် ဖြစ်ရမည်",
+    "trailingRequired": "Trailing percentage လိုအပ်သည်",
+    "trailingInvalid": "Trailing percentage မမှန်ပါ",
+    "trailingRange": "Trailing percentage သည် 0 နှင့် 100 ကြား ဖြစ်ရမည်",
+    "minLockInvalid": "Min lock percentage မမှန်ပါ",
+    "minLockRange": "Min lock percentage သည် 0 နှင့် 100 ကြား ဖြစ်ရမည်"
+  }
+}
