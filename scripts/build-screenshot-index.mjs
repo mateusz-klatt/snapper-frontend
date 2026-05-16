@@ -2,10 +2,10 @@
 /**
  * Build HTML index for the screenshot sweep.
  *
- * Generates:
- *   proprietary/screenshots/index.html         — locale grid (links to per-locale page)
- *   proprietary/screenshots/<code>/index.html  — 13 screens for one locale
- *   proprietary/screenshots/by-screen/<s>.html — all 45 locales of one screen (compare)
+ * Generates (under proprietary/screenshots/frontend/):
+ *   index.html                — locale grid (links to per-locale page)
+ *   <code>/index.html         — 13 screens for one locale
+ *   by-screen/<screen>.html   — all 45 locales of one screen (compare)
  */
 import { writeFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
@@ -105,11 +105,19 @@ const head = title => `<!DOCTYPE html>
 <style>${CSS}</style>
 </head><body>`
 
-const nav = () => `
+/**
+ * Relative-path nav. `base` is the relative prefix from the current page
+ * to the root of the screenshot tree (proprietary/screenshots/frontend/).
+ * Root pages pass `./`, one-level subpages pass `../`. Using relative
+ * paths is critical because the index is intended to be opened directly
+ * via `file://` — absolute `/proprietary/...` paths resolve to the
+ * filesystem root and 404 in that mode.
+ */
+const nav = (base) => `
 <div class="topnav">
   <h1>Snapper i18n screenshot sweep</h1>
-  <a href="/proprietary/screenshots/frontend/index.html">All locales (45)</a>
-  ${SCREENS.map(s => `<a href="/proprietary/screenshots/frontend/by-screen/${s}.html">${s}</a>`).join(' ')}
+  <a href="${base}index.html">All locales (45)</a>
+  ${SCREENS.map(s => `<a href="${base}by-screen/${s}.html">${s}</a>`).join(' ')}
 </div>`
 
 async function buildHome() {
@@ -127,7 +135,7 @@ async function buildHome() {
     </div>`
   ).join('\n')
   const html = `${head('All locales — Snapper i18n sweep')}
-${nav()}
+${nav('./')}
 <div class="grid locale-grid">${cards}</div>
 </body></html>`
   await writeFile(resolve(OUT, 'index.html'), html)
@@ -144,7 +152,7 @@ async function buildLocalePage(code, flag, label) {
     </div>`
   ).join('\n')
   const html = `${head(`${label} — Snapper sweep`)}
-${nav()}
+${nav('../')}
 <div class="breadcrumb">
   <a href="../index.html" style="color:#58a6ff">← all locales</a> &middot;
   <span class="flag">${flag}</span> ${label}
@@ -169,7 +177,7 @@ async function buildScreenPage(screen) {
     </div>`
   ).join('\n')
   const html = `${head(`${screen} — all 45 locales`)}
-${nav()}
+${nav('../')}
 <div class="breadcrumb">
   <a href="../index.html" style="color:#58a6ff">← all locales</a> &middot;
   <strong>${screen}</strong> (45 locales side-by-side)
