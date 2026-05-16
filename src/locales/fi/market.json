@@ -37,7 +37,8 @@
     "empty": "Instrumentille {{instrument}} ei ole määritetty liittyviä instrumentteja pörssissä {{exchange}}.",
     "relationshipType": {
       "exact": "Sama kohde-etuus",
-      "derivative": "Johdannaiset"
+      "derivative": "Johdannaiset",
+      "proxy": "Proxy-instrumentit"
     }
   },
   "cacheBanner": {

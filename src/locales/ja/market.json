@@ -37,7 +37,8 @@
     "empty": "{{exchange}}上の{{instrument}}に関連銘柄が設定されていません。",
     "relationshipType": {
       "exact": "同一原資産",
-      "derivative": "デリバティブ"
+      "derivative": "デリバティブ",
+      "proxy": "プロキシ商品"
     }
   },
   "cacheBanner": {

@@ -37,7 +37,8 @@
     "empty": "Для {{instrument}} на {{exchange}} не настроены связанные инструменты.",
     "relationshipType": {
       "exact": "Тот же базовый актив",
-      "derivative": "Деривативы"
+      "derivative": "Деривативы",
+      "proxy": "Прокси-инструменты"
     }
   },
   "cacheBanner": {

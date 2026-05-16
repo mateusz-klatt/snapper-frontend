@@ -37,7 +37,8 @@
     "empty": "Geen gerelateerde instrumenten geconfigureerd voor {{instrument}} op {{exchange}}.",
     "relationshipType": {
       "exact": "Dezelfde onderliggende waarde",
-      "derivative": "Derivaten"
+      "derivative": "Derivaten",
+      "proxy": "Proxy-instrumenten"
     }
   },
   "cacheBanner": {

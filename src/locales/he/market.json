@@ -37,7 +37,8 @@
     "empty": "לא הוגדרו מכשירים קשורים עבור {{instrument}} ב-{{exchange}}.",
     "relationshipType": {
       "exact": "אותו נכס בסיס",
-      "derivative": "נגזרים"
+      "derivative": "נגזרים",
+      "proxy": "מכשירי פרוקסי"
     }
   },
   "cacheBanner": {

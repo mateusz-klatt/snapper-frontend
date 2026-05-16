@@ -37,7 +37,8 @@
     "empty": "{{instrument}} 在 {{exchange}} 上未配置相关品种。",
     "relationshipType": {
       "exact": "相同标的资产",
-      "derivative": "衍生品"
+      "derivative": "衍生品",
+      "proxy": "代理资产"
     }
   },
   "cacheBanner": {

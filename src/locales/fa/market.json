@@ -37,7 +37,8 @@
     "empty": "هیچ ابزار مرتبطی برای {{instrument}} در {{exchange}} پیکربندی نشده است.",
     "relationshipType": {
       "exact": "همان دارایی پایه",
-      "derivative": "مشتقات"
+      "derivative": "مشتقات",
+      "proxy": "ابزارهای جایگزین"
     }
   },
   "cacheBanner": {

@@ -37,7 +37,8 @@
     "empty": "Pre inštrument {{instrument}} na burze {{exchange}} nie sú nakonfigurované žiadne súvisiace inštrumenty.",
     "relationshipType": {
       "exact": "Rovnaké podkladové aktívum",
-      "derivative": "Deriváty"
+      "derivative": "Deriváty",
+      "proxy": "Proxy nástroje"
     }
   },
   "cacheBanner": {

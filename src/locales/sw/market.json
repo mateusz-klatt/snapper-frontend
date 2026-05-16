@@ -37,7 +37,8 @@
     "empty": "Hakuna instrumenti zinazohusiana zilizosanidiwa kwa {{instrument}} kwenye {{exchange}}.",
     "relationshipType": {
       "exact": "Mali msingi sawa",
-      "derivative": "Derivativi"
+      "derivative": "Derivativi",
+      "proxy": "Vyombo mbadala"
     }
   },
   "cacheBanner": {

@@ -37,7 +37,8 @@
     "empty": "{{exchange}}-এ {{instrument}}-এর জন্য কোনো সম্পর্কিত ইনস্ট্রুমেন্ট কনফিগার করা নেই।",
     "relationshipType": {
       "exact": "একই অন্তর্নিহিত সম্পদ",
-      "derivative": "ডেরিভেটিভস"
+      "derivative": "ডেরিভেটিভস",
+      "proxy": "প্রক্সি ইন্সট্রুমেন্ট"
     }
   },
   "cacheBanner": {

@@ -37,7 +37,8 @@
     "empty": "Δεν έχουν διαμορφωθεί σχετικά μέσα για {{instrument}} στην αγορά {{exchange}}.",
     "relationshipType": {
       "exact": "Ίδιο υποκείμενο",
-      "derivative": "Παράγωγα"
+      "derivative": "Παράγωγα",
+      "proxy": "Υποκατάστατα μέσα"
     }
   },
   "cacheBanner": {

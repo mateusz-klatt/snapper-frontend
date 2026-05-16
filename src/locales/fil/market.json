@@ -37,7 +37,8 @@
     "empty": "Walang naka-configure na related instruments para sa {{instrument}} sa {{exchange}}.",
     "relationshipType": {
       "exact": "Parehong underlying",
-      "derivative": "Mga derivative"
+      "derivative": "Mga derivative",
+      "proxy": "Mga proxy instrument"
     }
   },
   "cacheBanner": {

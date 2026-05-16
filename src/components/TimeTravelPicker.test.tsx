@@ -21,6 +21,13 @@ describe('TimeTravelPicker', () => {
     expect(screen.getByTitle(/time travel/i)).toBeInTheDocument()
   })
 
+  it('forces ISO yyyy-mm-dd date format via lang="en-CA"', () => {
+    render(<TimeTravelPicker />)
+    const input = screen.getByTitle(/time travel/i)
+
+    expect(input.getAttribute('lang')).toBe('en-CA')
+  })
+
   it('does not show clear button in live mode', () => {
     render(<TimeTravelPicker />)
     expect(screen.queryByLabelText(/exit time travel/i)).not.toBeInTheDocument()

@@ -37,7 +37,8 @@
     "empty": "Engir tengdir gerningar eru stilltir fyrir {{instrument}} á {{exchange}}.",
     "relationshipType": {
       "exact": "Sama undirliggjandi",
-      "derivative": "Afleiður"
+      "derivative": "Afleiður",
+      "proxy": "Staðgenglar"
     }
   },
   "cacheBanner": {

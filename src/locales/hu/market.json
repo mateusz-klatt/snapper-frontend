@@ -37,7 +37,8 @@
     "empty": "Nincsenek kapcsolódó instrumentumok konfigurálva ehhez: {{instrument}} ezen a tőzsdén: {{exchange}}.",
     "relationshipType": {
       "exact": "Azonos alaptermék",
-      "derivative": "Derivatívák"
+      "derivative": "Derivatívák",
+      "proxy": "Proxy instrumentumok"
     }
   },
   "cacheBanner": {

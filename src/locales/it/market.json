@@ -37,7 +37,8 @@
     "empty": "Nessuno strumento correlato configurato per {{instrument}} su {{exchange}}.",
     "relationshipType": {
       "exact": "Stesso sottostante",
-      "derivative": "Derivati"
+      "derivative": "Derivati",
+      "proxy": "Strumenti proxy"
     }
   },
   "cacheBanner": {

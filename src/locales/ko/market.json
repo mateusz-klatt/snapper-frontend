@@ -37,7 +37,8 @@
     "empty": "{{exchange}}의 {{instrument}}에 설정된 관련 종목이 없습니다.",
     "relationshipType": {
       "exact": "동일 기초자산",
-      "derivative": "파생상품"
+      "derivative": "파생상품",
+      "proxy": "프록시 상품"
     }
   },
   "cacheBanner": {

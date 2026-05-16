@@ -37,7 +37,8 @@
     "empty": "{{exchange}} ပေါ်ရှိ {{instrument}} အတွက် related instrument များ configure မလုပ်ထားပါ။",
     "relationshipType": {
       "exact": "တူညီသော Underlying",
-      "derivative": "Derivative များ"
+      "derivative": "Derivative များ",
+      "proxy": "Proxy Instrument များ"
     }
   },
   "cacheBanner": {

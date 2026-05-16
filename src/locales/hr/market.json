@@ -37,7 +37,8 @@
     "empty": "Nema konfiguriranih povezanih instrumenata za {{instrument}} na {{exchange}}.",
     "relationshipType": {
       "exact": "Ista temeljna imovina",
-      "derivative": "Derivati"
+      "derivative": "Derivati",
+      "proxy": "Proxy instrumenti"
     }
   },
   "cacheBanner": {

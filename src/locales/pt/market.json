@@ -37,7 +37,8 @@
     "empty": "Nenhum instrumento relacionado configurado para {{instrument}} em {{exchange}}.",
     "relationshipType": {
       "exact": "Mesmo subjacente",
-      "derivative": "Derivativos"
+      "derivative": "Derivativos",
+      "proxy": "Instrumentos proxy"
     }
   },
   "cacheBanner": {

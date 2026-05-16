@@ -37,7 +37,8 @@
     "empty": "Saistīti instrumenti priekš {{instrument}} biržā {{exchange}} nav konfigurēti.",
     "relationshipType": {
       "exact": "Tas pats bāzes aktīvs",
-      "derivative": "Atvasinātie instrumenti"
+      "derivative": "Atvasinātie instrumenti",
+      "proxy": "Proxy instrumenti"
     }
   },
   "cacheBanner": {

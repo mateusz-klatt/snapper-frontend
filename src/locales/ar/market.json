@@ -37,7 +37,8 @@
     "empty": "لا توجد أدوات مرتبطة مكوّنة لـ {{instrument}} على {{exchange}}.",
     "relationshipType": {
       "exact": "نفس الأصل الأساسي",
-      "derivative": "المشتقات"
+      "derivative": "المشتقات",
+      "proxy": "أدوات بديلة"
     }
   },
   "cacheBanner": {

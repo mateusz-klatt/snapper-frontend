@@ -37,7 +37,8 @@
     "empty": "Chưa cấu hình công cụ liên quan cho {{instrument}} trên {{exchange}}.",
     "relationshipType": {
       "exact": "Cùng tài sản cơ sở",
-      "derivative": "Phái sinh"
+      "derivative": "Phái sinh",
+      "proxy": "Công cụ proxy"
     }
   },
   "cacheBanner": {

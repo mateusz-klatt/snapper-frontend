@@ -37,7 +37,8 @@
     "empty": "Nuk ka instrumente të lidhura të konfiguruara për {{instrument}} në {{exchange}}.",
     "relationshipType": {
       "exact": "I njëjti aktiv bazë",
-      "derivative": "Derivate"
+      "derivative": "Derivate",
+      "proxy": "Instrumente proxy"
     }
   },
   "cacheBanner": {

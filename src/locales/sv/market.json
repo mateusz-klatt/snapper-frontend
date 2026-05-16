@@ -37,7 +37,8 @@
     "empty": "Inga relaterade instrument konfigurerade för {{instrument}} på {{exchange}}.",
     "relationshipType": {
       "exact": "Samma underliggande",
-      "derivative": "Derivat"
+      "derivative": "Derivat",
+      "proxy": "Proxyinstrument"
     }
   },
   "cacheBanner": {

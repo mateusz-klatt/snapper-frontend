@@ -37,7 +37,8 @@
     "empty": "Susijusių instrumentų {{instrument}} biržoje {{exchange}} nesukonfigūruota.",
     "relationshipType": {
       "exact": "Tas pats bazinis aktyvas",
-      "derivative": "Išvestinės priemonės"
+      "derivative": "Išvestinės priemonės",
+      "proxy": "Pakaitiniai instrumentai"
     }
   },
   "cacheBanner": {

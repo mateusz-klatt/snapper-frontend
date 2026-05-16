@@ -37,7 +37,8 @@
     "empty": "Níl aon ionstraim ghaolmhar cumraithe do {{instrument}} ar {{exchange}}.",
     "relationshipType": {
       "exact": "An bhunsócmhainn chéanna",
-      "derivative": "Díorthaigh"
+      "derivative": "Díorthaigh",
+      "proxy": "Ionstraimí ionaid"
     }
   },
   "cacheBanner": {

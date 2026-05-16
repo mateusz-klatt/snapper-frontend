@@ -37,7 +37,8 @@
     "empty": "Tidak ada instrumen terkait yang dikonfigurasi untuk {{instrument}} di {{exchange}}.",
     "relationshipType": {
       "exact": "Aset dasar yang sama",
-      "derivative": "Derivatif"
+      "derivative": "Derivatif",
+      "proxy": "Instrumen proxy"
     }
   },
   "cacheBanner": {
