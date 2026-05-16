@@ -3,7 +3,7 @@
     "title": "Համակարգի առողջություն",
     "healthMetricsHeading": "Առողջության մետրիկաներ",
     "processStatusHeading": "Գործընթացների վիճակ",
-    "activeBacktestsHeading": "Ակտիվ Backtests",
+    "activeBacktestsHeading": "Ակտիվ հետադարձ թեստեր",
     "quickActionsHeading": "Արագ գործողություններ",
     "featureNotImplemented": "Գործառույթը դեռ ներդրված չէ",
     "restartServices": "Վերագործարկել ծառայությունները",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Առևտրային շարժիչ",
     "tradingEngineDescription": "Ռազմավարության կատարման շարժիչ",
-    "activeBacktests": "Ակտիվ Backtests",
-    "activeBacktestsDescription": "Գործարկվող Backtest գործընթացներ",
+    "activeBacktests": "Ակտիվ հետադարձ թեստեր",
+    "activeBacktestsDescription": "Գործարկվող հետադարձ թեստերի գործընթացներ",
     "active": "Ակտիվ",
     "inactive": "Ոչ ակտիվ"
   },

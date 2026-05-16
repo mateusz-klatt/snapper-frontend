@@ -3,7 +3,7 @@
     "title": "Saúde do sistema",
     "healthMetricsHeading": "Métricas de saúde",
     "processStatusHeading": "Status dos processos",
-    "activeBacktestsHeading": "Backtests ativos",
+    "activeBacktestsHeading": "Testes retrospectivos ativos",
     "quickActionsHeading": "Ações rápidas",
     "featureNotImplemented": "Recurso ainda não implementado",
     "restartServices": "Reiniciar serviços",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Motor de trading",
     "tradingEngineDescription": "Motor de execução de estratégias",
-    "activeBacktests": "Backtests ativos",
-    "activeBacktestsDescription": "Processos de backtest em execução",
+    "activeBacktests": "Testes retrospectivos ativos",
+    "activeBacktestsDescription": "Processos de teste retrospectivo em execução",
     "active": "Ativo",
     "inactive": "Inativo"
   },

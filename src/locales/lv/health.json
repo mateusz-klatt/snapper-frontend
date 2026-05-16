@@ -3,7 +3,7 @@
     "title": "Sistēmas veselība",
     "healthMetricsHeading": "Veselības metrikas",
     "processStatusHeading": "Procesu statuss",
-    "activeBacktestsHeading": "Aktīvi Backtests",
+    "activeBacktestsHeading": "Aktīvi backtesti",
     "quickActionsHeading": "Ātrās darbības",
     "featureNotImplemented": "Funkcija vēl nav ieviesta",
     "restartServices": "Restartēt servisus",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Tirdzniecības dzinējs",
     "tradingEngineDescription": "Stratēģiju izpildes dzinējs",
-    "activeBacktests": "Aktīvi Backtests",
-    "activeBacktestsDescription": "Darbojošies Backtest procesi",
+    "activeBacktests": "Aktīvi backtesti",
+    "activeBacktestsDescription": "Darbojošies backtestu procesi",
     "active": "Aktīvs",
     "inactive": "Neaktīvs"
   },

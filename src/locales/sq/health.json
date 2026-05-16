@@ -3,7 +3,7 @@
     "title": "Shëndeti i sistemit",
     "healthMetricsHeading": "Metrikat e shëndetit",
     "processStatusHeading": "Statusi i proceseve",
-    "activeBacktestsHeading": "Backtests aktive",
+    "activeBacktestsHeading": "Teste historike aktive",
     "quickActionsHeading": "Veprime të shpejta",
     "featureNotImplemented": "Veçoria nuk është implementuar ende",
     "restartServices": "Rinis shërbimet",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Motori i tregtimit",
     "tradingEngineDescription": "Motor për ekzekutimin e strategjive",
-    "activeBacktests": "Backtests aktive",
-    "activeBacktestsDescription": "Procese Backtest në ekzekutim",
+    "activeBacktests": "Teste historike aktive",
+    "activeBacktestsDescription": "Procese testesh historike në ekzekutim",
     "active": "Aktiv",
     "inactive": "Joaktiv"
   },

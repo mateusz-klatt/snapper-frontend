@@ -3,7 +3,7 @@
     "title": "Stanje sistema",
     "healthMetricsHeading": "Metrike stanja",
     "processStatusHeading": "Status procesa",
-    "activeBacktestsHeading": "Aktivni Backtestovi",
+    "activeBacktestsHeading": "Aktivni backtestovi",
     "quickActionsHeading": "Brze radnje",
     "featureNotImplemented": "Funkcija još nije implementirana",
     "restartServices": "Ponovo pokreni servise",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Engine za trgovanje",
     "tradingEngineDescription": "Engine za izvršavanje strategija",
-    "activeBacktests": "Aktivni Backtestovi",
-    "activeBacktestsDescription": "Pokrenuti Backtest procesi",
+    "activeBacktests": "Aktivni backtestovi",
+    "activeBacktestsDescription": "Pokrenuti backtest procesi",
     "active": "Aktivno",
     "inactive": "Neaktivno"
   },

@@ -3,7 +3,7 @@
     "title": "Kesihatan Sistem",
     "healthMetricsHeading": "Metrik Kesihatan",
     "processStatusHeading": "Status Proses",
-    "activeBacktestsHeading": "Backtests Aktif",
+    "activeBacktestsHeading": "Backtest aktif",
     "quickActionsHeading": "Tindakan Pantas",
     "featureNotImplemented": "Ciri belum dilaksanakan",
     "restartServices": "Mulakan Semula Perkhidmatan",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Enjin Dagangan",
     "tradingEngineDescription": "Enjin pelaksanaan strategi",
-    "activeBacktests": "Backtests Aktif",
-    "activeBacktestsDescription": "Proses Backtest yang berjalan",
+    "activeBacktests": "Backtest aktif",
+    "activeBacktestsDescription": "Proses backtest yang berjalan",
     "active": "Aktif",
     "inactive": "Tidak aktif"
   },

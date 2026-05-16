@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← رجوع",
-    "backToList": "← العودة إلى Backtests"
+    "backToList": "← العودة إلى اختبارات رجعية"
   },
   "status": {
     "pending": "معلق",
@@ -11,7 +11,7 @@
     "cancelled": "ملغى"
   },
   "list": {
-    "title": "Backtests",
+    "title": "اختبارات رجعية",
     "actions": {
       "cancel": "إلغاء",
       "rerun": "إعادة التشغيل"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "خطأ: {{message}}",
     "filter": {
-      "ariaLabel": "تصفية Backtests حسب الحالة",
+      "ariaLabel": "تصفية الاختبارات الرجعية حسب الحالة",
       "options": {
         "all": "كل الحالات",
         "pending": "معلق",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "لا توجد Backtests",
-      "message": "شغّل Backtest عبر CLI أو API لرؤية النتائج هنا."
+      "title": "لا توجد اختبارات رجعية",
+      "message": "شغّل اختبارًا رجعيًا عبر CLI أو API لرؤية النتائج هنا."
     }
   },
   "detail": {
-    "title": "تشغيل Backtest",
+    "title": "تشغيل اختبار رجعي",
     "fields": {
       "strategy": "الاستراتيجية",
       "instrument": "الأداة",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "مقارنة",
-    "headingFull": "مقارنة Backtest",
+    "headingFull": "مقارنة اختبارات رجعية",
     "loading": "جارٍ تحميل المقارنة…",
     "vs": "مقابل",
     "runLabel": "التشغيل {{label}} · {{id}} · {{status}}",

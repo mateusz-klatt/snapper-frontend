@@ -3,7 +3,7 @@
     "title": "Sistemos būklė",
     "healthMetricsHeading": "Būklės metrikos",
     "processStatusHeading": "Procesų būsena",
-    "activeBacktestsHeading": "Aktyvūs Backtests",
+    "activeBacktestsHeading": "Aktyvūs backtestai",
     "quickActionsHeading": "Greitieji veiksmai",
     "featureNotImplemented": "Funkcija dar neįgyvendinta",
     "restartServices": "Paleisti paslaugas iš naujo",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Prekybos variklis",
     "tradingEngineDescription": "Strategijų vykdymo variklis",
-    "activeBacktests": "Aktyvūs Backtests",
-    "activeBacktestsDescription": "Vykdomi Backtest procesai",
+    "activeBacktests": "Aktyvūs backtestai",
+    "activeBacktestsDescription": "Vykdomi backtestų procesai",
     "active": "Aktyvu",
     "inactive": "Neaktyvu"
   },

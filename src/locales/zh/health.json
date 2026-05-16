@@ -3,7 +3,7 @@
     "title": "系统健康",
     "healthMetricsHeading": "健康指标",
     "processStatusHeading": "进程状态",
-    "activeBacktestsHeading": "活跃 Backtests",
+    "activeBacktestsHeading": "活跃回测",
     "quickActionsHeading": "快捷操作",
     "featureNotImplemented": "功能尚未实现",
     "restartServices": "重启服务",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "交易引擎",
     "tradingEngineDescription": "策略执行引擎",
-    "activeBacktests": "活跃 Backtests",
-    "activeBacktestsDescription": "正在运行的 Backtest 进程",
+    "activeBacktests": "活跃回测",
+    "activeBacktestsDescription": "正在运行的回测进程",
     "active": "活跃",
     "inactive": "非活跃"
   },

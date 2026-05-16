@@ -3,7 +3,7 @@
     "title": "Systeemstatus",
     "healthMetricsHeading": "Statusmetrieken",
     "processStatusHeading": "Processtatus",
-    "activeBacktestsHeading": "Actieve backtests",
+    "activeBacktestsHeading": "Actieve backtestruns",
     "quickActionsHeading": "Snelle acties",
     "featureNotImplemented": "Functie nog niet geïmplementeerd",
     "restartServices": "Services herstarten",
@@ -22,7 +22,7 @@
   "metrics": {
     "tradingEngine": "Trading-engine",
     "tradingEngineDescription": "Engine voor strategie-uitvoering",
-    "activeBacktests": "Actieve backtests",
+    "activeBacktests": "Actieve backtestruns",
     "activeBacktestsDescription": "Lopende backtestprocessen",
     "active": "Actief",
     "inactive": "Inactief"

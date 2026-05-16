@@ -1,30 +1,30 @@
 {
   "page": {
-    "title": "AI Integration",
+    "title": "AI ပေါင်းစည်းမှု",
     "subtitle": "MCP မှတစ်ဆင့် Snapper သို့ ချိတ်ဆက်သော AI delegate များကို စီမံပါ။",
-    "loading": "AI integration ကို load လုပ်နေသည်…",
+    "loading": "AI ပေါင်းစည်းမှုကို တင်နေသည်…",
     "createDelegate": "Delegate ဖန်တီးပါ"
   },
   "disabled": {
-    "title": "AI Integration ကို ပိတ်ထားသည်",
-    "message": "AI delegate များ စီမံရန် Settings → Feature Flags တွင် feature flag ကို ဖွင့်ပါ။"
+    "title": "AI ပေါင်းစည်းမှုကို ပိတ်ထားသည်",
+    "message": "AI delegate များ စီမံရန် ဆက်တင်များ → Feature Flags တွင် feature flag ကို ဖွင့်ပါ။"
   },
   "list": {
-    "loadingDelegates": "Delegate များ load လုပ်နေသည်…",
+    "loadingDelegates": "Delegate များ တင်နေသည်…",
     "emptyTitle": "AI delegate မရှိသေးပါ",
     "emptyMessage": "တစ်ခု mint လုပ်ပြီး MCP config snippet ထုတ်ရန် “Delegate ဖန်တီးပါ” ကိုနှိပ်ပါ။",
     "columns": {
-      "label": "Label",
-      "username": "Username",
+      "label": "အညွှန်း",
+      "username": "အသုံးပြုသူအမည်",
       "created": "ဖန်တီးချိန်",
       "maxOpenOrders": "အများဆုံး open order",
       "maxDailyUsd": "နေ့စဉ် USD အများဆုံး",
-      "status": "Status",
+      "status": "အခြေအနေ",
       "actions": "လုပ်ဆောင်ချက်များ"
     },
     "status": {
-      "active": "Active",
-      "revoked": "Revoked"
+      "active": "လှုပ်ရှားနေသည်",
+      "revoked": "ရုပ်သိမ်းပြီး"
     },
     "default": "default",
     "details": "အသေးစိတ်",
@@ -32,12 +32,12 @@
   },
   "wizard": {
     "title": "AI delegate ဖန်တီးပါ",
-    "step1": "1. Identity",
+    "step1": "1. အထောက်အထား",
     "step2": "2. Scope နှင့် cap များ",
-    "step3": "3. Review",
+    "step3": "3. ပြန်လည်သုံးသပ်မှု",
     "stepDone": "✓ ပြီးပြီ",
     "identity": {
-      "labelField": "Label",
+      "labelField": "အညွှန်း",
       "labelPlaceholder": "ဥပမာ Alpha prop desk",
       "labelHelpPrefix": "Delegate username ကို server-side တွင် ဤပုံစံဖြင့် derive လုပ်မည် ",
       "labelHelpSuffix": "."
@@ -60,14 +60,14 @@
       "errorNegative": "Cap များသည် non-negative integer သို့မဟုတ် ဗလာ ဖြစ်ရမည်။"
     },
     "review": {
-      "heading": "Review နှင့် ဖန်တီးပါ",
-      "rowLabel": "Label",
+      "heading": "ပြန်လည်သုံးသပ်ပြီး ဖန်တီးပါ",
+      "rowLabel": "အညွှန်း",
       "rowOperator": "Operator public_id",
       "rowMaxOpenOrders": "အများဆုံး open order",
       "rowMaxDailyNotional": "နေ့စဉ် notional USD အများဆုံး",
       "rowMaxCancelsPerMinute": "တစ်မိနစ် cancel အများဆုံး",
       "rowPerInstrument": "Instrument တစ်ခုစီအတွက် max quantity",
-      "operatorDefault": "(caller primary operator)",
+      "operatorDefault": "(ခေါ်ဆိုသူ၏ primary operator)",
       "defaultValue": "(default)"
     },
     "buttons": {
@@ -83,18 +83,18 @@
     }
   },
   "detail": {
-    "loading": "Delegate ကို load လုပ်နေသည်…",
+    "loading": "Delegate ကို တင်နေသည်…",
     "notFound": "Delegate မတွေ့ပါ သို့မဟုတ် အသုံးမပြုနိုင်ပါ။",
     "back": "နောက်သို့",
     "backToList": "စာရင်းသို့ ပြန်သွားပါ",
-    "updateCaps": "Cap များ update လုပ်ပါ",
-    "revoke": "Revoke",
+    "updateCaps": "Cap များ ပြင်ဆင်ပါ",
+    "revoke": "ရုပ်သိမ်းပါ",
     "save": "သိမ်းပါ",
     "cancel": "ပယ်ဖျက်",
     "tradingCaps": "Trading cap များ",
-    "status": "Status",
-    "active": "Active",
-    "revoked": "Revoked",
+    "status": "အခြေအနေ",
+    "active": "လှုပ်ရှားနေသည်",
+    "revoked": "ရုပ်သိမ်းပြီး",
     "createdAt": "ဖန်တီးချိန်",
     "createdBy": "ဖန်တီးသူ (user public_id)",
     "publicId": "Public ID",
@@ -105,19 +105,19 @@
     "defaultValue": "(default)",
     "editorPlaceholder": "(default)",
     "toast": {
-      "capsUpdated": "Cap များ update လုပ်ပြီးပါပြီ",
-      "failedToUpdateCaps": "Cap များ update လုပ်၍ မရပါ",
+      "capsUpdated": "Cap များ ပြင်ဆင်ပြီးပါပြီ",
+      "failedToUpdateCaps": "Cap များ ပြင်ဆင်၍ မရပါ",
       "negativeIntegersError": "Cap များသည် non-negative integer သို့မဟုတ် ဗလာ ဖြစ်ရမည်။"
     }
   },
   "revokeDialog": {
-    "title": "Delegate \"{{label}}\" ကို revoke လုပ်မလား။",
-    "message": "ဤလုပ်ဆောင်ချက်သည် delegate token များကို revoke လုပ်ပြီး ၎င်း၏ MCP subscription များကို ရပ်တန့်မည်။ ပြန်ပြင်၍ မရပါ။",
-    "confirm": "Revoke",
+    "title": "Delegate \"{{label}}\" ကို ရုပ်သိမ်းမလား။",
+    "message": "ဤလုပ်ဆောင်ချက်သည် delegate token များကို ရုပ်သိမ်းပြီး ၎င်း၏ MCP subscription များကို ရပ်တန့်မည်။ ပြန်ပြင်၍ မရပါ။",
+    "confirm": "ရုပ်သိမ်းပါ",
     "cancel": "ပယ်ဖျက်",
     "toast": {
-      "delegateRevoked": "Delegate revoke လုပ်ပြီးပါပြီ",
-      "failedToRevoke": "Delegate revoke လုပ်၍ မရပါ"
+      "delegateRevoked": "Delegate ရုပ်သိမ်းပြီးပါပြီ",
+      "failedToRevoke": "Delegate ရုပ်သိမ်း၍ မရပါ"
     }
   },
   "snippet": {

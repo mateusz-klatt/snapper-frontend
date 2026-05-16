@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Atpakaļ",
-    "backToList": "← Atpakaļ uz Backtests"
+    "backToList": "← Atpakaļ uz backtestiem"
   },
   "status": {
     "pending": "Gaida",
@@ -11,7 +11,7 @@
     "cancelled": "Atcelts"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Backtesti",
     "actions": {
       "cancel": "Atcelt",
       "rerun": "Palaist vēlreiz"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Kļūda: {{message}}",
     "filter": {
-      "ariaLabel": "Filtrēt Backtests pēc statusa",
+      "ariaLabel": "Filtrēt backtestus pēc statusa",
       "options": {
         "all": "Visi statusi",
         "pending": "Gaida",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Backtests nav",
-      "message": "Palaidiet Backtest caur CLI vai API, lai šeit redzētu rezultātus."
+      "title": "Backtestu nav",
+      "message": "Palaidiet backtestu caur CLI vai API, lai šeit redzētu rezultātus."
     }
   },
   "detail": {
-    "title": "Backtest izpilde",
+    "title": "Backtesta izpilde",
     "fields": {
       "strategy": "Stratēģija",
       "instrument": "Instruments",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Salīdzināt",
-    "headingFull": "Backtest salīdzinājums",
+    "headingFull": "Backtestu salīdzinājums",
     "loading": "Notiek salīdzinājuma ielāde…",
     "vs": "pret",
     "runLabel": "Izpilde {{label}} · {{id}} · {{status}}",

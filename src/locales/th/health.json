@@ -3,7 +3,7 @@
     "title": "สุขภาพระบบ",
     "healthMetricsHeading": "เมตริกสุขภาพ",
     "processStatusHeading": "สถานะกระบวนการ",
-    "activeBacktestsHeading": "Backtests ที่ใช้งานอยู่",
+    "activeBacktestsHeading": "แบ็คเทสต์ที่ใช้งานอยู่",
     "quickActionsHeading": "การดำเนินการด่วน",
     "featureNotImplemented": "ยังไม่ได้ใช้งานฟีเจอร์นี้",
     "restartServices": "รีสตาร์ทบริการ",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "เอนจินการเทรด",
     "tradingEngineDescription": "เอนจินดำเนินกลยุทธ์",
-    "activeBacktests": "Backtests ที่ใช้งานอยู่",
-    "activeBacktestsDescription": "กระบวนการ Backtest ที่กำลังทำงาน",
+    "activeBacktests": "แบ็คเทสต์ที่ใช้งานอยู่",
+    "activeBacktestsDescription": "กระบวนการแบ็คเทสต์ที่กำลังทำงาน",
     "active": "ใช้งานอยู่",
     "inactive": "ไม่ใช้งาน"
   },

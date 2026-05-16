@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← بازگشت",
-    "backToList": "← بازگشت به Backtests"
+    "backToList": "← بازگشت به بک‌تست‌ها"
   },
   "status": {
     "pending": "در انتظار",
@@ -11,7 +11,7 @@
     "cancelled": "لغو شد"
   },
   "list": {
-    "title": "Backtests",
+    "title": "بک‌تست‌ها",
     "actions": {
       "cancel": "لغو",
       "rerun": "اجرای دوباره"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "خطا: {{message}}",
     "filter": {
-      "ariaLabel": "فیلتر Backtests بر اساس وضعیت",
+      "ariaLabel": "فیلتر بک‌تست‌ها بر اساس وضعیت",
       "options": {
         "all": "همه وضعیت‌ها",
         "pending": "در انتظار",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Backtest وجود ندارد",
-      "message": "برای دیدن نتایج، یک Backtest را از طریق CLI یا API اجرا کنید."
+      "title": "بک‌تستی وجود ندارد",
+      "message": "برای دیدن نتایج، یک بک‌تست را از طریق CLI یا API اجرا کنید."
     }
   },
   "detail": {
-    "title": "اجرای Backtest",
+    "title": "اجرای بک‌تست",
     "fields": {
       "strategy": "استراتژی",
       "instrument": "ابزار",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "مقایسه",
-    "headingFull": "مقایسه Backtest",
+    "headingFull": "مقایسه بک‌تست",
     "loading": "در حال بارگذاری مقایسه…",
     "vs": "در برابر",
     "runLabel": "اجرا {{label}} · {{id}} · {{status}}",

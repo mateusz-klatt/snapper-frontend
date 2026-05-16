@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Հետ",
-    "backToList": "← Հետ դեպի Backtests"
+    "backToList": "← Հետ դեպի հետադարձ թեստեր"
   },
   "status": {
     "pending": "Սպասում է",
@@ -11,7 +11,7 @@
     "cancelled": "Չեղարկված է"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Հետադարձ թեստեր",
     "actions": {
       "cancel": "Չեղարկել",
       "rerun": "Գործարկել կրկին"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Սխալ՝ {{message}}",
     "filter": {
-      "ariaLabel": "Զտել Backtests-ը ըստ վիճակի",
+      "ariaLabel": "Զտել հետադարձ թեստերը ըստ վիճակի",
       "options": {
         "all": "Բոլոր վիճակները",
         "pending": "Սպասում է",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Backtests չկան",
-      "message": "Գործարկեք Backtest CLI-ի կամ API-ի միջոցով՝ արդյունքները այստեղ տեսնելու համար։"
+      "title": "Հետադարձ թեստեր չկան",
+      "message": "Գործարկեք հետադարձ թեստ CLI-ի կամ API-ի միջոցով՝ արդյունքները այստեղ տեսնելու համար։"
     }
   },
   "detail": {
-    "title": "Backtest գործարկում",
+    "title": "Հետադարձ թեստի գործարկում",
     "fields": {
       "strategy": "Ռազմավարություն",
       "instrument": "Գործիք",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Համեմատել",
-    "headingFull": "Backtest համեմատություն",
+    "headingFull": "Հետադարձ թեստերի համեմատություն",
     "loading": "Համեմատությունը բեռնվում է…",
     "vs": "ընդդեմ",
     "runLabel": "Գործարկում {{label}} · {{id}} · {{status}}",

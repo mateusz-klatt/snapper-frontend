@@ -3,7 +3,7 @@
     "title": "সিস্টেম স্বাস্থ্য",
     "healthMetricsHeading": "স্বাস্থ্য মেট্রিক",
     "processStatusHeading": "প্রসেস স্ট্যাটাস",
-    "activeBacktestsHeading": "সক্রিয় Backtests",
+    "activeBacktestsHeading": "সক্রিয় ব্যাকটেস্টসমূহ",
     "quickActionsHeading": "দ্রুত অ্যাকশন",
     "featureNotImplemented": "ফিচার এখনও বাস্তবায়িত নয়",
     "restartServices": "সার্ভিস রিস্টার্ট করুন",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "ট্রেডিং ইঞ্জিন",
     "tradingEngineDescription": "কৌশল নির্বাহ ইঞ্জিন",
-    "activeBacktests": "সক্রিয় Backtests",
-    "activeBacktestsDescription": "চলমান Backtest প্রসেস",
+    "activeBacktests": "সক্রিয় ব্যাকটেস্টসমূহ",
+    "activeBacktestsDescription": "চলমান ব্যাকটেস্ট প্রক্রিয়া",
     "active": "সক্রিয়",
     "inactive": "নিষ্ক্রিয়"
   },

@@ -11,7 +11,7 @@
     "cancelled": "Annulé"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Tests historiques",
     "actions": {
       "cancel": "Annuler",
       "rerun": "Relancer"

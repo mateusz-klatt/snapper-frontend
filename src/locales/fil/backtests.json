@@ -11,7 +11,7 @@
     "cancelled": "Kinansela"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Mga Backtest",
     "actions": {
       "cancel": "Kanselahin",
       "rerun": "I-rerun"
@@ -40,7 +40,7 @@
     }
   },
   "detail": {
-    "title": "Backtest run",
+    "title": "Pagpapatakbo ng backtest",
     "fields": {
       "strategy": "Strategy",
       "instrument": "Instrument",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "I-compare",
-    "headingFull": "Backtest comparison",
+    "headingFull": "Paghahambing ng backtest",
     "loading": "Nilo-load ang comparison…",
     "vs": "vs",
     "runLabel": "Run {{label}} · {{id}} · {{status}}",

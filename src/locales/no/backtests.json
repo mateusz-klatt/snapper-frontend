@@ -11,7 +11,7 @@
     "cancelled": "Kansellert"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Backtester",
     "actions": {
       "cancel": "Avbryt",
       "rerun": "Kjør på nytt"

@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Atgal",
-    "backToList": "← Atgal į Backtests"
+    "backToList": "← Atgal į backtestus"
   },
   "status": {
     "pending": "Laukiama",
@@ -11,7 +11,7 @@
     "cancelled": "Atšaukta"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Backtestai",
     "actions": {
       "cancel": "Atšaukti",
       "rerun": "Paleisti iš naujo"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Klaida: {{message}}",
     "filter": {
-      "ariaLabel": "Filtruoti Backtests pagal būseną",
+      "ariaLabel": "Filtruoti backtestus pagal būseną",
       "options": {
         "all": "Visos būsenos",
         "pending": "Laukiama",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Backtests nėra",
-      "message": "Paleiskite Backtest per CLI arba API, kad rezultatai būtų rodomi čia."
+      "title": "Backtestų nėra",
+      "message": "Paleiskite backtestą per CLI arba API, kad rezultatai būtų rodomi čia."
     }
   },
   "detail": {
-    "title": "Backtest vykdymas",
+    "title": "Backtesto vykdymas",
     "fields": {
       "strategy": "Strategija",
       "instrument": "Instrumentas",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Palyginti",
-    "headingFull": "Backtest palyginimas",
+    "headingFull": "Backtestų palyginimas",
     "loading": "Įkeliamas palyginimas…",
     "vs": "prieš",
     "runLabel": "Vykdymas {{label}} · {{id}} · {{status}}",

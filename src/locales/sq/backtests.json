@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Pas",
-    "backToList": "← Kthehu te Backtests"
+    "backToList": "← Kthehu te testet historike"
   },
   "status": {
     "pending": "Në pritje",
@@ -11,7 +11,7 @@
     "cancelled": "Anuluar"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Testet historike",
     "actions": {
       "cancel": "Anulo",
       "rerun": "Riekzekuto"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Gabim: {{message}}",
     "filter": {
-      "ariaLabel": "Filtro Backtests sipas statusit",
+      "ariaLabel": "Filtro testet historike sipas statusit",
       "options": {
         "all": "Të gjitha statuset",
         "pending": "Në pritje",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Nuk ka Backtests",
-      "message": "Ekzekutoni një Backtest përmes CLI ose API për të parë rezultatet këtu."
+      "title": "Nuk ka teste historike",
+      "message": "Ekzekutoni një test historik përmes CLI ose API për të parë rezultatet këtu."
     }
   },
   "detail": {
-    "title": "Ekzekutim Backtest",
+    "title": "Ekzekutim testi historik",
     "fields": {
       "strategy": "Strategji",
       "instrument": "Instrument",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Krahaso",
-    "headingFull": "Krahasim Backtest",
+    "headingFull": "Krahasim testesh historike",
     "loading": "Duke ngarkuar krahasimin…",
     "vs": "vs",
     "runLabel": "Ekzekutimi {{label}} · {{id}} · {{status}}",
