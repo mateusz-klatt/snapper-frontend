@@ -5,7 +5,7 @@
   "controls": {
     "exchange": "Exchange:",
     "instrument": "Instrument:",
-    "timeframe": "Timeframe:",
+    "timeframe": "အချိန်ဘောင်:",
     "selectExchange": "Exchange ရွေးပါ",
     "searchInstrument": "Instrument ရှာပါ..."
   },
@@ -21,15 +21,15 @@
   "stats": {
     "currentPrice": "လက်ရှိ စျေးနှုန်း",
     "change24h": "24h ပြောင်းလဲမှု",
-    "high24h": "24h High",
-    "low24h": "24h Low"
+    "high24h": "24h အမြင့်ဆုံး",
+    "low24h": "24h အနိမ့်ဆုံး"
   },
   "chart": {
     "title": "စျေးနှုန်း Chart",
-    "errorPrefix": "Chart data load လုပ်ရာတွင် error:",
-    "unknownError": "မသိသော error",
-    "noDataTitle": "{{instrument}} အတွက် data မရှိပါ",
-    "noDataHint": "Instrument မရှိနိုင်ပါ သို့မဟုတ် {{timeframe}} data မရှိနိုင်ပါ"
+    "errorPrefix": "Chart ဒေတာ တင်ရာတွင် အမှား:",
+    "unknownError": "မသိသော အမှား",
+    "noDataTitle": "{{instrument}} အတွက် ဒေတာ မရှိပါ",
+    "noDataHint": "Instrument မရှိနိုင်ပါ သို့မဟုတ် {{timeframe}} ဒေတာ မရှိနိုင်ပါ"
   },
   "related": {
     "labelSeparator": "{{label}}:",

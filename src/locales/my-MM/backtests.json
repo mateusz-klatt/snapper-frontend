@@ -1,72 +1,72 @@
 {
   "nav": {
     "back": "← နောက်သို့",
-    "backToList": "← Backtest စာရင်းသို့ ပြန်သွားပါ"
+    "backToList": "← နောက်ကြောင်းပြန် စမ်းသပ်မှု စာရင်းသို့ ပြန်သွားပါ"
   },
   "status": {
-    "pending": "Pending",
-    "running": "Running",
-    "completed": "Completed",
-    "failed": "Failed",
-    "cancelled": "Cancelled"
+    "pending": "စောင့်ဆိုင်းနေသည်",
+    "running": "လည်ပတ်နေသည်",
+    "completed": "ပြီးဆုံးသည်",
+    "failed": "မအောင်မြင်ပါ",
+    "cancelled": "ပယ်ဖျက်ပြီး"
   },
   "list": {
-    "title": "Backtest များ",
+    "title": "နောက်ကြောင်းပြန် စမ်းသပ်မှုများ",
     "actions": {
       "cancel": "ပယ်ဖျက်",
       "rerun": "ပြန် run"
     },
     "fields": {
-      "timeframe": "Timeframe",
+      "timeframe": "အချိန်ဘောင်",
       "period": "ကာလ",
       "initialCash": "စတင် Cash",
       "id": "ID"
     },
-    "errorPrefix": "Error: {{message}}",
+    "errorPrefix": "အမှား: {{message}}",
     "filter": {
-      "ariaLabel": "Status ဖြင့် backtest များ filter လုပ်ပါ",
+      "ariaLabel": "အခြေအနေဖြင့် နောက်ကြောင်းပြန် စမ်းသပ်မှုများ filter လုပ်ပါ",
       "options": {
-        "all": "Status အားလုံး",
-        "pending": "Pending",
-        "running": "Running",
-        "completed": "Completed",
-        "failed": "Failed",
-        "cancelled": "Cancelled"
+        "all": "အခြေအနေအားလုံး",
+        "pending": "စောင့်ဆိုင်းနေသည်",
+        "running": "လည်ပတ်နေသည်",
+        "completed": "ပြီးဆုံးသည်",
+        "failed": "မအောင်မြင်ပါ",
+        "cancelled": "ပယ်ဖျက်ပြီး"
       }
     },
     "empty": {
-      "title": "Backtest မရှိပါ",
-      "message": "Result များ ဒီမှာ မြင်ရန် CLI သို့မဟုတ် API မှ backtest run ပါ။"
+      "title": "နောက်ကြောင်းပြန် စမ်းသပ်မှု မရှိပါ",
+      "message": "ရလဒ်များ ဒီမှာ မြင်ရန် CLI သို့မဟုတ် API မှ backtest run ပါ။"
     }
   },
   "detail": {
-    "title": "Backtest run",
+    "title": "နောက်ကြောင်းပြန် စမ်းသပ်မှု run",
     "fields": {
-      "strategy": "Strategy",
+      "strategy": "ဗျူဟာ",
       "instrument": "Instrument",
-      "status": "Status",
+      "status": "အခြေအနေ",
       "period": "ကာလ",
-      "crossAsset": "Cross-asset attribution",
+      "crossAsset": "အက်ဆက်ဖြတ်ကျော် attribution",
       "configHash": "Config hash"
     },
     "crossAssetFlow": "{{source}} feed → {{target}} fill များ",
     "errors": {
       "invalidRunId": "Run id မမှန်ပါ — UUID7 ဖြစ်ရမည် (ရရှိသည် \"{{id}}\").",
-      "loadFailed": "Run load လုပ်၍ မရပါ: {{message}}",
+      "loadFailed": "Run တင်၍ မရပါ: {{message}}",
       "notFound": "မတွေ့ပါ"
     }
   },
   "compare": {
     "title": "နှိုင်းယှဉ်ပါ",
-    "headingFull": "Backtest နှိုင်းယှဉ်ချက်",
-    "loading": "နှိုင်းယှဉ်ချက် load လုပ်နေသည်…",
+    "headingFull": "နောက်ကြောင်းပြန် စမ်းသပ်မှု နှိုင်းယှဉ်ချက်",
+    "loading": "နှိုင်းယှဉ်ချက် တင်နေသည်…",
     "vs": "vs",
     "runLabel": "Run {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metric များ",
       "equityOverlay": "Equity overlay",
-      "trades": "Trade များ",
-      "signals": "Signal များ"
+      "trades": "ကုန်သွယ်မှုများ",
+      "signals": "အချက်ပြမှုများ"
     },
     "pairingMode": {
       "auto": "auto",
@@ -74,8 +74,8 @@
     },
     "errors": {
       "notFound": "လက်ရှိ wallet တွင် comparison မတွေ့ပါ။",
-      "loadFailed": "Comparison load လုပ်၍ မရပါ: {{message}}",
-      "unknown": "မသိသော error",
+      "loadFailed": "Comparison တင်၍ မရပါ: {{message}}",
+      "unknown": "မသိသော အမှား",
       "emptyResponse": "Comparison response ဗလာဖြစ်သည်။"
     },
     "launcher": {
@@ -97,7 +97,7 @@
       }
     },
     "diffColumns": {
-      "common": "Common",
+      "common": "တူညီသော",
       "onlyA": "A တွင်သာ",
       "onlyB": "B တွင်သာ"
     },

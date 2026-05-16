@@ -3,25 +3,25 @@
     "title": "အနှစ်ချုပ်"
   },
   "metrics": {
-    "feedsRunning": "Feed များ running",
-    "strategiesActive": "Strategy များ active",
-    "openOrders": "Open Order များ",
-    "todaysExecutions": "ယနေ့ Execution များ",
-    "executionsOn": "Execution များ ({{date}})"
+    "feedsRunning": "Feed များ လည်ပတ်နေသည်",
+    "strategiesActive": "ဗျူဟာများ လှုပ်ရှားနေသည်",
+    "openOrders": "ဖွင့်ထားသော အော်ဒါများ",
+    "todaysExecutions": "ယနေ့ အကောင်အထည်ဖော်မှုများ",
+    "executionsOn": "အကောင်အထည်ဖော်မှုများ ({{date}})"
   },
   "status": {
-    "stopped": "Stopped",
+    "stopped": "ရပ်ထားသည်",
     "ratioActive": "{{running}}/{{total}} {{label}}",
     "countActive": "{{running}} {{label}}"
   },
   "labels": {
-    "running": "Running",
-    "active": "Active"
+    "running": "လည်ပတ်နေသည်",
+    "active": "လှုပ်ရှားနေသည်"
   },
   "processStatus": {
-    "title": "Process Status",
+    "title": "လုပ်ငန်းစဉ် အခြေအနေ",
     "feeds": "Feed များ",
-    "strategies": "Strategy များ",
+    "strategies": "ဗျူဟာများ",
     "executors": "Executor များ",
     "brokers": "Broker များ"
   },
@@ -31,20 +31,20 @@
     "longExposure": "Long exposure",
     "shortExposure": "Short exposure",
     "netDelta": "Net delta",
-    "unrealizedPnl": "Unrealized P&L",
+    "unrealizedPnl": "မသိမ်းရသေးသော P&L",
     "pnlPercent": "P&L %",
     "positions": "ပိုဇစ်ရှင်များ",
     "instrumentsCount": "Instrument {{count}} ခု",
-    "empty": "Position data မရှိပါ"
+    "empty": "Position ဒေတာ မရှိပါ"
   },
   "signals": {
-    "title": "လတ်တလော Signal များ",
-    "empty": "လတ်တလော signal မရှိပါ",
+    "title": "လတ်တလော အချက်ပြမှုများ",
+    "empty": "လတ်တလော အချက်ပြမှု မရှိပါ",
     "noTime": "N/A"
   },
   "executions": {
-    "title": "လတ်တလော Execution များ",
-    "empty": "လတ်တလော execution မရှိပါ",
+    "title": "လတ်တလော အကောင်အထည်ဖော်မှုများ",
+    "empty": "လတ်တလော အကောင်အထည်ဖော်မှု မရှိပါ",
     "noTime": "N/A"
   }
 }

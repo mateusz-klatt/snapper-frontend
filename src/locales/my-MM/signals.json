@@ -1,31 +1,31 @@
 {
   "page": {
-    "title": "Signal များ"
+    "title": "အချက်ပြမှုများ"
   },
   "filters": {
-    "allStrategies": "Strategy အားလုံး"
+    "allStrategies": "ဗျူဟာအားလုံး"
   },
   "actions": {
-    "export": "Export"
+    "export": "Export လုပ်ပါ"
   },
   "stats": {
     "total": "စုစုပေါင်း",
-    "buy": "Buy",
-    "sell": "Sell",
-    "avgStrength": "ပျမ်းမျှ Strength"
+    "buy": "ဝယ်",
+    "sell": "ရောင်း",
+    "avgStrength": "ပျမ်းမျှ အားကောင်းမှု"
   },
   "card": {
-    "strength": "Strength",
+    "strength": "အားကောင်းမှု",
     "price": "စျေးနှုန်း",
     "exchange": "Exchange",
     "reason": "အကြောင်းရင်း:",
     "noPrice": "N/A"
   },
   "strength": {
-    "strong": "Strong",
-    "medium": "Medium",
-    "weak": "Weak",
-    "veryWeak": "Very Weak"
+    "strong": "အားကောင်း",
+    "medium": "အလယ်အလတ်",
+    "weak": "အားနည်း",
+    "veryWeak": "အလွန်အားနည်း"
   },
   "time": {
     "justNow": "ယခုလေးတင်",
@@ -33,7 +33,7 @@
     "hoursAgo": "{{count}}h အကြာက"
   },
   "empty": {
-    "title": "Signal မတွေ့ပါ",
-    "message": "သင့်လက်ရှိ filter များနှင့် ကိုက်ညီသည့် trading signal မရှိပါ။"
+    "title": "အချက်ပြမှု မတွေ့ပါ",
+    "message": "သင့်လက်ရှိ filter များနှင့် ကိုက်ညီသည့် trading အချက်ပြမှု မရှိပါ။"
   }
 }

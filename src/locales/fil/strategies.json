@@ -1,17 +1,17 @@
 {
   "page": {
-    "title": "Pamamahala ng Strategies",
-    "register": "Mag-register ng Strategy",
+    "title": "Pamamahala ng mga Strategy",
+    "register": "Mag-register ng strategy",
     "saving": "Sine-save…",
-    "descriptionCanManage": "Mag-register ng bagong strategy processes direkta mula sa UI. Pinapanatili ng autostart na enabled ang process kahit pagkatapos ng restarts.",
+    "descriptionCanManage": "Mag-register ng bagong strategy process direkta mula sa UI. Pinapanatili ng autostart na enabled ang process kahit pagkatapos ng restarts.",
     "descriptionViewer": "Tingnan ang configured strategies at status ng mga ito. Makipag-ugnayan sa operator o admin para ma-manage ang strategies.",
     "searchPlaceholder": "Maghanap ng strategies...",
     "filter": {
-      "all": "Lahat ng statuses",
+      "all": "Lahat ng katayuan",
       "running": "Tumatakbo",
       "stopped": "Nakahinto"
     },
-    "configuredHeading": "Configured strategies",
+    "configuredHeading": "Mga configured strategy",
     "noMatches": "Walang strategies na tugma sa filters mo",
     "clearFilters": "I-clear ang filters",
     "emptyTitle": "Walang configured strategies",
@@ -49,7 +49,7 @@
     "feedLag": "Feed lag: {{ms}}ms",
     "heartbeatAge": "HB age: {{seconds}}s",
     "metrics": {
-      "status": "Status",
+      "status": "Katayuan",
       "dataLag": "Data Lag",
       "dataLagValue": "{{ms}}ms",
       "heartbeat": "Heartbeat",

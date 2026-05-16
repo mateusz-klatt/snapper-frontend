@@ -4,26 +4,26 @@
   },
   "row": {
     "trailingStopBadge": "TS: ${{stop}}",
-    "trailingStopPending": "TS: pending",
+    "trailingStopPending": "TS: စောင့်ဆိုင်းနေသည်",
     "slTpButton": "SL/TP",
     "trailButton": "Trail",
-    "quantity": "Quantity",
-    "averageEntry": "Avg Entry",
-    "unrealizedPnl": "Unrealized P&L",
-    "realizedPnl": "Realized P&L",
-    "updated": "Updated {{timestamp}}"
+    "quantity": "အရေအတွက်",
+    "averageEntry": "ပျမ်းမျှ ဝင်စျေး",
+    "unrealizedPnl": "မသိမ်းရသေးသော P&L",
+    "realizedPnl": "သိမ်းပြီးသော P&L",
+    "updated": "ပြင်ဆင်ချိန် {{timestamp}}"
   },
   "empty": {
-    "title": "Open position မရှိပါ",
+    "title": "ဖွင့်ထားသော position မရှိပါ",
     "message": "Trade execution ဖြစ်ပြီးနောက် long, short နှင့် flat position များ ဒီမှာ ပေါ်လာမည်။"
   },
   "bracketModal": {
     "title": "SL/TP တွဲပါ — {{instrument}}",
     "confirmTitle": "Bracket အတည်ပြုပါ",
     "position": "Position",
-    "entryPrice": "Entry Price",
-    "stopLossLabel": "Stop-Loss Price",
-    "takeProfitLabel": "Take-Profit Price",
+    "entryPrice": "ဝင်စျေး",
+    "stopLossLabel": "Stop-Loss စျေးနှုန်း",
+    "takeProfitLabel": "Take-Profit စျေးနှုန်း",
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
@@ -34,7 +34,7 @@
     },
     "buttons": {
       "cancel": "ပယ်ဖျက်",
-      "review": "Review",
+      "review": "ပြန်လည်သုံးသပ်ပါ",
       "back": "နောက်သို့",
       "confirm": "အတည်ပြုပါ",
       "creating": "ဖန်တီးနေသည်…"
@@ -44,11 +44,11 @@
     "title": "Trailing Stop တွဲပါ — {{instrument}}",
     "confirmTitle": "Trailing Stop အတည်ပြုပါ",
     "position": "Position",
-    "entryPrice": "Entry Price",
-    "trailingDistanceLabel": "Trailing Distance (%)",
-    "minLockLabel": "Min Lock Profit (%) — optional",
-    "trailingDistance": "Trailing Distance",
-    "minLockProfit": "Min Lock Profit",
+    "entryPrice": "ဝင်စျေး",
+    "trailingDistanceLabel": "Trailing အကွာအဝေး (%)",
+    "minLockLabel": "အနည်းဆုံး lock အမြတ် (%) — optional",
+    "trailingDistance": "Trailing အကွာအဝေး",
+    "minLockProfit": "အနည်းဆုံး lock အမြတ်",
     "placeholders": {
       "trailingPct": "ဥပမာ 5.0",
       "minLockPct": "0 = ချက်ချင်းစတင်"
@@ -56,7 +56,7 @@
     "minLockWarning": "စျေးနှုန်းသည် သင့်ဘက်အကျိုးရှိအောင် {{minLockPct}}% ရွေ့ပြီးမှ trailing stop activate ဖြစ်မည်။",
     "buttons": {
       "cancel": "ပယ်ဖျက်",
-      "review": "Review",
+      "review": "ပြန်လည်သုံးသပ်ပါ",
       "back": "နောက်သို့",
       "confirm": "အတည်ပြုပါ",
       "creating": "ဖန်တီးနေသည်..."
@@ -64,18 +64,18 @@
   },
   "validation": {
     "bracketRequired": "SL သို့မဟုတ် TP price အနည်းဆုံးတစ်ခု လိုအပ်သည်",
-    "invalidSlPrice": "Stop-loss price မမှန်ပါ",
-    "slPricePositive": "Stop-loss price သည် positive ဖြစ်ရမည်",
-    "invalidTpPrice": "Take-profit price မမှန်ပါ",
-    "tpPricePositive": "Take-profit price သည် positive ဖြစ်ရမည်",
-    "slLongBelowEntry": "SL price သည် entry price ({{price}}) အောက် ဖြစ်ရမည်",
-    "tpLongAboveEntry": "TP price သည် entry price ({{price}}) အထက် ဖြစ်ရမည်",
-    "slShortAboveEntry": "SL price သည် entry price ({{price}}) အထက် ဖြစ်ရမည်",
-    "tpShortBelowEntry": "TP price သည် entry price ({{price}}) အောက် ဖြစ်ရမည်",
-    "trailingRequired": "Trailing percentage လိုအပ်သည်",
-    "trailingInvalid": "Trailing percentage မမှန်ပါ",
-    "trailingRange": "Trailing percentage သည် 0 နှင့် 100 ကြား ဖြစ်ရမည်",
-    "minLockInvalid": "Min lock percentage မမှန်ပါ",
-    "minLockRange": "Min lock percentage သည် 0 နှင့် 100 ကြား ဖြစ်ရမည်"
+    "invalidSlPrice": "Stop-loss စျေးနှုန်း မမှန်ပါ",
+    "slPricePositive": "Stop-loss စျေးနှုန်းသည် positive ဖြစ်ရမည်",
+    "invalidTpPrice": "Take-profit စျေးနှုန်း မမှန်ပါ",
+    "tpPricePositive": "Take-profit စျေးနှုန်းသည် positive ဖြစ်ရမည်",
+    "slLongBelowEntry": "SL စျေးနှုန်းသည် entry စျေးနှုန်း ({{price}}) အောက် ဖြစ်ရမည်",
+    "tpLongAboveEntry": "TP စျေးနှုန်းသည် entry စျေးနှုန်း ({{price}}) အထက် ဖြစ်ရမည်",
+    "slShortAboveEntry": "SL စျေးနှုန်းသည် entry စျေးနှုန်း ({{price}}) အထက် ဖြစ်ရမည်",
+    "tpShortBelowEntry": "TP စျေးနှုန်းသည် entry စျေးနှုန်း ({{price}}) အောက် ဖြစ်ရမည်",
+    "trailingRequired": "Trailing ရာခိုင်နှုန်း လိုအပ်သည်",
+    "trailingInvalid": "Trailing ရာခိုင်နှုန်း မမှန်ပါ",
+    "trailingRange": "Trailing ရာခိုင်နှုန်းသည် 0 နှင့် 100 ကြား ဖြစ်ရမည်",
+    "minLockInvalid": "Min lock ရာခိုင်နှုန်း မမှန်ပါ",
+    "minLockRange": "Min lock ရာခိုင်နှုန်းသည် 0 နှင့် 100 ကြား ဖြစ်ရမည်"
   }
 }

@@ -1,13 +1,13 @@
 {
   "page": {
-    "title": "Overview"
+    "title": "Pangkalahatang-tingin"
   },
   "metrics": {
     "feedsRunning": "Feeds na tumatakbo",
-    "strategiesActive": "Active strategies",
-    "openOrders": "Open orders",
+    "strategiesActive": "Mga aktibong strategy",
+    "openOrders": "Mga bukas na order",
     "todaysExecutions": "Executions ngayon",
-    "executionsOn": "Executions ({{date}})"
+    "executionsOn": "Mga execution ({{date}})"
   },
   "status": {
     "stopped": "Nakahinto",
@@ -19,32 +19,32 @@
     "active": "Aktibo"
   },
   "processStatus": {
-    "title": "Status ng Processes",
+    "title": "Katayuan ng mga Proseso",
     "feeds": "Feeds",
     "strategies": "Strategies",
     "executors": "Executors",
     "brokers": "Brokers"
   },
   "portfolio": {
-    "title": "Portfolio summary",
-    "totalValue": "Total value",
+    "title": "Buod ng portfolio",
+    "totalValue": "Kabuuang halaga",
     "longExposure": "Long exposure",
     "shortExposure": "Short exposure",
     "netDelta": "Net delta",
     "unrealizedPnl": "Unrealized P&L",
     "pnlPercent": "P&L %",
-    "positions": "Positions",
-    "instrumentsCount": "{{count}} instruments",
+    "positions": "Mga position",
+    "instrumentsCount": "{{count}} instrument",
     "empty": "Walang positions data available"
   },
   "signals": {
-    "title": "Recent signals",
-    "empty": "Walang recent signals",
+    "title": "Kamakailang signals",
+    "empty": "Walang kamakailang signals",
     "noTime": "N/A"
   },
   "executions": {
-    "title": "Recent executions",
-    "empty": "Walang recent executions",
+    "title": "Kamakailang executions",
+    "empty": "Walang kamakailang executions",
     "noTime": "N/A"
   }
 }

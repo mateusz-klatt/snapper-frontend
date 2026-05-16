@@ -4,7 +4,7 @@
     "backToList": "← Bumalik sa backtests"
   },
   "status": {
-    "pending": "Pending",
+    "pending": "Naka-pending",
     "running": "Tumatakbo",
     "completed": "Tapos na",
     "failed": "Nabigo",
@@ -26,8 +26,8 @@
     "filter": {
       "ariaLabel": "I-filter ang backtests ayon sa status",
       "options": {
-        "all": "Lahat ng statuses",
-        "pending": "Pending",
+        "all": "Lahat ng katayuan",
+        "pending": "Naka-pending",
         "running": "Tumatakbo",
         "completed": "Tapos na",
         "failed": "Nabigo",
@@ -44,7 +44,7 @@
     "fields": {
       "strategy": "Strategy",
       "instrument": "Instrument",
-      "status": "Status",
+      "status": "Katayuan",
       "period": "Period",
       "crossAsset": "Cross-asset attribution",
       "configHash": "Config hash"
@@ -97,7 +97,7 @@
       }
     },
     "diffColumns": {
-      "common": "Common",
+      "common": "Pareho",
       "onlyA": "Sa A lang",
       "onlyB": "Sa B lang"
     },

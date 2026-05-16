@@ -1,11 +1,11 @@
 {
   "page": {
-    "title": "Settings",
+    "title": "Mga Setting",
     "subtitle": "I-configure ang application settings at parameters",
-    "addButton": "Mag-add ng Setting",
+    "addButton": "Mag-add ng setting",
     "searchPlaceholder": "Maghanap ng settings...",
     "noResults": "Walang settings na tugma sa criteria mo.",
-    "allCategories": "Lahat ng Categories",
+    "allCategories": "Lahat ng category",
     "categoryFilterAriaLabel": "I-filter ang settings ayon sa category"
   },
   "errors": {
@@ -38,19 +38,19 @@
     }
   },
   "addModal": {
-    "title": "Mag-add ng Bagong Setting",
+    "title": "Mag-add ng bagong setting",
     "keyLabel": "Key",
     "valueLabel": "Value",
     "categoryLabel": "Category",
     "descriptionLabel": "Description",
     "keyPlaceholder": "hal. walutomat.api_key",
     "keyHint": "Gumamit ng dot notation para sa nested settings (hal. category.subcategory.name)",
-    "valuePlaceholder": "Setting value",
+    "valuePlaceholder": "Halaga ng setting",
     "categorySelectPlaceholder": "Pumili ng existing o gumawa ng bago",
     "newCategoryPlaceholder": "O maglagay ng bagong category name",
-    "descriptionPlaceholder": "Optional description",
+    "descriptionPlaceholder": "Opsyonal na description",
     "cancel": "Kanselahin",
-    "create": "Gumawa ng Setting",
+    "create": "Gumawa ng setting",
     "creating": "Ginagawa...",
     "validation": {
       "keyRequired": "Kailangan ang key",
@@ -65,7 +65,7 @@
     "switchToForm": "Lumipat sa Form",
     "importToForm": "I-import sa Form",
     "parseError": "Parse error: {{message}}",
-    "arraySummary": "Array ({{length}} items)",
+    "arraySummary": "Array ({{length}} item)",
     "addItem": "Mag-add ng Item",
     "remove": "Tanggalin",
     "typeHint": {

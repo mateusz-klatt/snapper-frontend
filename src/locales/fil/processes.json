@@ -1,14 +1,14 @@
 {
   "page": {
-    "title": "Process Control",
-    "subtitle": "Real-time process monitoring at control"
+    "title": "Control ng Proseso",
+    "subtitle": "Real-time na monitoring at control ng proseso"
   },
   "sections": {
-    "longRunning": "Long-running processes",
-    "executorTemplates": "Executor templates",
+    "longRunning": "Long-running na proseso",
+    "executorTemplates": "Mga executor template",
     "executorTemplatesHint": "Apektado ang lahat ng wallet sa exchange na ito kapag in-edit ang template config pagkatapos ng restart. Config-only ang templates — i-start ang per-wallet instance sa ibaba para patakbuhin ang executor.",
-    "walletInstances": "Wallet instances",
-    "taskProcesses": "Task processes"
+    "walletInstances": "Mga wallet instance",
+    "taskProcesses": "Mga task process"
   },
   "card": {
     "stop": "I-stop",
@@ -27,7 +27,7 @@
   "template": {
     "badge": "template",
     "mode": "Mode:",
-    "parameters": "Parameters:",
+    "parameters": "Mga parameter:",
     "paramCount": "{{count}} parameter",
     "noParams": "walang naka-set na parameters"
   },
@@ -44,10 +44,10 @@
   },
   "executionMode": {
     "title": "I-start ang {{name}}",
-    "label": "Execution Mode:",
-    "threadName": "Thread Mode",
+    "label": "Execution mode:",
+    "threadName": "Thread mode",
     "threadDescription": "Tumatakbo bilang embedded task sa loob ng web server. Mas mabilis ang startup, shared memory.",
-    "processName": "Process Mode",
+    "processName": "Process mode",
     "processDescription": "Tumatakbo bilang hiwalay na Python process. Isolated, fault-tolerant, at may detailed monitoring.",
     "cancel": "Kanselahin",
     "start": "I-start ang {{name}}",

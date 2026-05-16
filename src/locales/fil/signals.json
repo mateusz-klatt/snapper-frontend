@@ -1,21 +1,21 @@
 {
   "page": {
-    "title": "Signals"
+    "title": "Mga Signal"
   },
   "filters": {
-    "allStrategies": "Lahat ng strategies"
+    "allStrategies": "Lahat ng strategy"
   },
   "actions": {
     "export": "I-export"
   },
   "stats": {
-    "total": "Total",
+    "total": "Kabuuan",
     "buy": "Buy",
     "sell": "Sell",
-    "avgStrength": "Avg strength"
+    "avgStrength": "Average na lakas"
   },
   "card": {
-    "strength": "Strength",
+    "strength": "Lakas",
     "price": "Presyo",
     "exchange": "Exchange",
     "reason": "Dahilan:",

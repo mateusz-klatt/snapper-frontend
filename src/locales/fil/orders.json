@@ -1,6 +1,6 @@
 {
   "page": {
-    "title": "Orders at Executions",
+    "title": "Mga Order at Execution",
     "newOrder": "Bagong Order",
     "exportCsv": "I-export CSV"
   },
@@ -9,22 +9,22 @@
     "executions": "Executions ({{total}})"
   },
   "filters": {
-    "byStatus": "I-filter ayon sa status:",
+    "byStatus": "I-filter ayon sa katayuan:",
     "options": {
-      "all": "Lahat ng orders",
+      "all": "Lahat ng order",
       "new": "Bago",
-      "open": "Open",
-      "partiallyFilled": "Partially Filled",
-      "partially_filled": "Partially Filled",
-      "filled": "Filled",
-      "cancelled": "Cancelled",
-      "rejected": "Rejected"
+      "open": "Bukas",
+      "partiallyFilled": "Bahagyang napunan",
+      "partially_filled": "Bahagyang napunan",
+      "filled": "Napunan",
+      "cancelled": "Kinansela",
+      "rejected": "Tinanggihan"
     }
   },
   "orderCard": {
     "sideUnknown": "N/A",
     "priceMarket": "Market",
-    "quantity": "Quantity",
+    "quantity": "Dami",
     "price": "Presyo",
     "created": "Ginawa",
     "createdUnknown": "N/A",
@@ -40,15 +40,15 @@
     "orderNumber": "Order #{{orderId}}",
     "filled": "FILLED",
     "orderLabel": "Order {{orderId}}",
-    "size": "Size",
+    "size": "Laki",
     "price": "Presyo",
-    "total": "Total",
+    "total": "Kabuuan",
     "executed": "Na-execute",
-    "fees": "Fees"
+    "fees": "Mga fee"
   },
   "empty": {
     "ordersTitle": "Walang orders na nakita",
-    "ordersStartTrading": "Mag-start mag-trade para makita dito ang orders",
+    "ordersStartTrading": "Magsimulang mag-trade para makita dito ang orders",
     "ordersFilterless": "Walang {{status}} orders",
     "executionsTitle": "Walang executions na nakita",
     "executionsMessage": "Lalabas dito ang trade executions"
@@ -58,8 +58,8 @@
       "instrument": "Instrument",
       "side": "Side",
       "type": "Type",
-      "status": "Status",
-      "quantity": "Quantity",
+      "status": "Katayuan",
+      "quantity": "Dami",
       "price": "Presyo",
       "leverage": "Leverage",
       "reduceOnly": "Reduce Only",
@@ -69,9 +69,9 @@
       "orderId": "Order ID",
       "instrument": "Instrument",
       "side": "Side",
-      "size": "Size",
+      "size": "Laki",
       "price": "Presyo",
-      "total": "Total",
+      "total": "Kabuuan",
       "fee": "Fee",
       "feeAsset": "Fee Asset",
       "executed": "Na-execute"
@@ -85,7 +85,7 @@
       "instrument": "Instrument",
       "side": "Side",
       "orderType": "Order Type",
-      "quantity": "Quantity",
+      "quantity": "Dami",
       "price": "Presyo",
       "stopPrice": "Stop Price",
       "mode": "Mode",
@@ -116,16 +116,16 @@
     },
     "buttons": {
       "cancel": "Kanselahin",
-      "reviewOrder": "I-review ang Order",
+      "reviewOrder": "I-review ang order",
       "back": "Bumalik",
       "confirmOrder": "Kumpirmahin ang Order",
       "submitting": "Sine-submit..."
     },
     "errors": {
-      "missingRequired": "Dapat punan ang lahat ng required fields",
-      "quantityPositive": "Dapat positive number ang quantity",
-      "priceRequired": "Kailangan ang price para sa order type na ito",
-      "pricePositive": "Dapat positive number ang price",
+      "missingRequired": "Dapat punan ang lahat ng kinakailangang field",
+      "quantityPositive": "Dapat positive number ang dami",
+      "priceRequired": "Kailangan ang presyo para sa order type na ito",
+      "pricePositive": "Dapat positive number ang presyo",
       "stopPriceRequired": "Kailangan ang stop price para sa order type na ito",
       "stopPricePositive": "Dapat positive number ang stop price",
       "createFailed": "Hindi nagawa ang order"

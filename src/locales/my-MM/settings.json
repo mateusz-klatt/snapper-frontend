@@ -1,73 +1,73 @@
 {
   "page": {
-    "title": "Setting များ",
-    "subtitle": "Application setting နှင့် parameter များကို configure လုပ်ပါ",
-    "addButton": "Setting ထည့်ပါ",
-    "searchPlaceholder": "Setting များ ရှာပါ...",
-    "noResults": "သင်ရွေးထားသော စည်းမျဉ်းနှင့် ကိုက်ညီသည့် setting မတွေ့ပါ။",
-    "allCategories": "Category အားလုံး",
-    "categoryFilterAriaLabel": "Category ဖြင့် setting များ filter လုပ်ပါ"
+    "title": "ဆက်တင်များ",
+    "subtitle": "အက်ပ်ဆက်တင်များနှင့် ပါရာမီတာများကို ပြင်ဆင်ပါ",
+    "addButton": "ဆက်တင် ထည့်ပါ",
+    "searchPlaceholder": "ဆက်တင်များ ရှာပါ...",
+    "noResults": "သင်ရွေးထားသော စည်းမျဉ်းနှင့် ကိုက်ညီသည့် ဆက်တင် မတွေ့ပါ။",
+    "allCategories": "အမျိုးအစားအားလုံး",
+    "categoryFilterAriaLabel": "အမျိုးအစားဖြင့် ဆက်တင်များကို စစ်ထုတ်ပါ"
   },
   "errors": {
-    "loadFailed": "Setting များ load လုပ်၍ မရပါ",
-    "updateFailed": "Setting update လုပ်၍ မရပါ",
-    "deleteFailed": "Setting delete လုပ်၍ မရပါ",
-    "createFailed": "Setting ဖန်တီး၍ မရပါ",
-    "alreadyExists": "Key \"{{key}}\" ဖြင့် setting ရှိပြီးဖြစ်သည်"
+    "loadFailed": "ဆက်တင်များ တင်၍ မရပါ",
+    "updateFailed": "ဆက်တင် ပြင်ဆင်၍ မရပါ",
+    "deleteFailed": "ဆက်တင် ဖျက်၍ မရပါ",
+    "createFailed": "ဆက်တင် ဖန်တီး၍ မရပါ",
+    "alreadyExists": "Key \"{{key}}\" ဖြင့် ဆက်တင် ရှိပြီးဖြစ်သည်"
   },
   "item": {
     "edit": "ပြင်ဆင်ပါ",
-    "delete": "Delete",
+    "delete": "ဖျက်ပါ",
     "save": "သိမ်းပါ",
     "saving": "သိမ်းနေသည်...",
     "cancel": "ပယ်ဖျက်",
-    "yesDelete": "ဟုတ်ကဲ့၊ Delete",
-    "deleting": "Deleting...",
-    "deleteConfirm": "ဤ setting ကို delete လုပ်မလား။",
-    "valuePlaceholder": "Setting value ထည့်ပါ...",
+    "yesDelete": "ဟုတ်ကဲ့၊ ဖျက်ပါ",
+    "deleting": "ဖျက်နေသည်...",
+    "deleteConfirm": "ဤဆက်တင်ကို ဖျက်မလား။",
+    "valuePlaceholder": "ဆက်တင်တန်ဖိုး ထည့်ပါ...",
     "showMore": "ပိုပြပါ",
     "showLess": "လျှော့ပြပါ",
-    "toggleAriaLabel": "{{key}} ကို toggle လုပ်ပါ",
+    "toggleAriaLabel": "{{key}} ကို ပြောင်းဖွင့်/ပိတ်ပါ",
     "badges": {
       "json": "📋 JSON",
       "sensitive": "🔒 Sensitive"
     },
     "helpText": {
       "allowShortSelling": "Engine ကို short position ဖွင့်ခွင့်ပြုပါ။ SELL signal များသည် negative desired_units ထုတ်မည်။ ပိတ်ထားလျှင် 0 သို့ clamp လုပ်သည်။",
-      "allowManualOrders": "Orders tab တွင် New Order button ကို ဖွင့်ပါ။ ပိတ်ထားလျှင် POST /api/orders သည် 403 ပြန်ပေးသည်။"
+      "allowManualOrders": "Orders tab တွင် New Order ခလုတ်ကို ဖွင့်ပါ။ ပိတ်ထားလျှင် POST /api/orders သည် 403 ပြန်ပေးသည်။"
     }
   },
   "addModal": {
-    "title": "Setting အသစ် ထည့်ပါ",
+    "title": "ဆက်တင်အသစ် ထည့်ပါ",
     "keyLabel": "Key",
-    "valueLabel": "Value",
-    "categoryLabel": "Category",
-    "descriptionLabel": "Description",
+    "valueLabel": "တန်ဖိုး",
+    "categoryLabel": "အမျိုးအစား",
+    "descriptionLabel": "ဖော်ပြချက်",
     "keyPlaceholder": "ဥပမာ walutomat.api_key",
-    "keyHint": "Nested setting များအတွက် dot notation သုံးပါ (ဥပမာ category.subcategory.name)",
-    "valuePlaceholder": "Setting value",
+    "keyHint": "အတွင်းပိုင်းအဆင့်ရှိ ဆက်တင်များအတွက် dot notation သုံးပါ (ဥပမာ category.subcategory.name)",
+    "valuePlaceholder": "ဆက်တင်တန်ဖိုး",
     "categorySelectPlaceholder": "ရှိပြီးသားကို ရွေးပါ သို့မဟုတ် အသစ် ဖန်တီးပါ",
-    "newCategoryPlaceholder": "သို့မဟုတ် category name အသစ် ထည့်ပါ",
-    "descriptionPlaceholder": "Optional description",
+    "newCategoryPlaceholder": "သို့မဟုတ် အမျိုးအစားအမည်အသစ် ထည့်ပါ",
+    "descriptionPlaceholder": "ဖော်ပြချက် (optional)",
     "cancel": "ပယ်ဖျက်",
-    "create": "Setting ဖန်တီးပါ",
+    "create": "ဆက်တင် ဖန်တီးပါ",
     "creating": "ဖန်တီးနေသည်...",
     "validation": {
       "keyRequired": "Key လိုအပ်သည်",
-      "valueRequired": "Value လိုအပ်သည်",
-      "categoryRequired": "Category လိုအပ်သည်"
+      "valueRequired": "တန်ဖိုး လိုအပ်သည်",
+      "categoryRequired": "အမျိုးအစား လိုအပ်သည်"
     }
   },
   "jsonEditor": {
-    "formEditor": "Form Editor",
-    "rawEditor": "Raw JSON Editor",
+    "formEditor": "Form တည်းဖြတ်ကိရိယာ",
+    "rawEditor": "Raw JSON တည်းဖြတ်ကိရိယာ",
     "rawJson": "Raw JSON",
     "switchToForm": "Form သို့ ပြောင်းပါ",
     "importToForm": "Form သို့ import လုပ်ပါ",
-    "parseError": "Parse error: {{message}}",
+    "parseError": "Parse အမှား: {{message}}",
     "arraySummary": "Array (item {{length}} ခု)",
     "addItem": "Item ထည့်ပါ",
-    "remove": "Remove",
+    "remove": "ဖယ်ရှားပါ",
     "typeHint": {
       "array": "(array)",
       "object": "(object)",
