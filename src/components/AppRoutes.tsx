@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react'
+import { useTranslation } from 'react-i18next'
 import ErrorBoundary from './ErrorBoundary'
 import ProtectedRoute from './auth/ProtectedRoute'
 import { useHashSubpath } from '../hooks/useHashRouting'
@@ -48,9 +49,16 @@ interface AppRoutesProps {
 }
 
 function RouteFallback(): React.ReactElement {
+  const { t } = useTranslation('common')
+
   return (
-    <div className='flex h-full items-center justify-center p-8' role='status' aria-live='polite'>
-      <span className='text-sm text-muted-600'>Loading…</span>
+    <div
+      className='flex h-full items-center justify-center p-8'
+      role='status'
+      aria-live='polite'
+      data-testid='route-fallback'
+    >
+      <span className='text-sm text-muted-600'>{t('loading', { defaultValue: 'Loading…' })}</span>
     </div>
   )
 }

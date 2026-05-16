@@ -143,6 +143,7 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
           type='button'
           aria-label={t('localeSwitcher.triggerAriaLabel')}
           title={t('localeSwitcher.triggerAriaLabel')}
+          data-testid='locale-switcher-trigger'
           className={clsx(
             'inline-flex items-center gap-1 rounded-lg p-2 text-muted-600 hover:bg-dark-700 transition-colors',
             'focus:outline-hidden focus:ring-2 focus:ring-brand-500',
@@ -195,6 +196,7 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
                       aria-label={t(labelKey, { country })}
                       aria-current={isCurrent ? 'true' : undefined}
                       data-current={isCurrent ? 'true' : undefined}
+                      data-locale={code}
                       className={clsx(
                         'flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-base',
                         'hover:bg-dark-700 transition-colors',
