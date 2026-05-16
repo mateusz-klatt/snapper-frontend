@@ -13,14 +13,31 @@
  *
  * Run: node scripts/screenshot-all-locales.mjs
  */
-import { chromium } from '@playwright/test'
+import { chromium, devices } from '@playwright/test'
 import { mkdir } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '../..')
-const OUT_DIR = resolve(ROOT, 'proprietary/screenshots/frontend')
+
+/**
+ * Viewport preset. Defaults to `desktop` (1440×900) — set
+ * `VIEWPORT=mobile` to use Playwright's iPhone 15 Pro device descriptor
+ * (393×852 + mobile userAgent + hasTouch). Output lands in
+ * `proprietary/screenshots/frontend{,-mobile}/` accordingly.
+ */
+const VIEWPORT = globalThis.process?.env?.VIEWPORT === 'mobile' ? 'mobile' : 'desktop'
+const OUT_DIR = resolve(
+  ROOT,
+  VIEWPORT === 'mobile'
+    ? 'proprietary/screenshots/frontend-mobile'
+    : 'proprietary/screenshots/frontend'
+)
+const CONTEXT_OPTIONS =
+  VIEWPORT === 'mobile'
+    ? { ...devices['iPhone 15 Pro'], ignoreHTTPSErrors: true }
+    : { viewport: { width: 1440, height: 900 }, ignoreHTTPSErrors: true }
 
 const LOCALES = [
   'ie',
@@ -140,17 +157,24 @@ async function login(page) {
 
 async function selectLocale(page, code) {
   const trigger = page.locator(SIDEBAR_SELECTOR).first()
-  await trigger.click()
+  await trigger.click({ force: true })
 
-  // Wait for the popover dialog to open and the target flag button to render.
+  // Wait for the popover dialog to mount the target flag button. Use
+  // `attached` (not `visible`) because on mobile the LocaleSwitcher popover
+  // has 15 flags per row × 32px = ~500px, wider than a 393px iPhone
+  // viewport — flags past column ~12 are present in the DOM but scrolled
+  // off-screen.
   const flag = page.locator(`button[data-locale="${code}"]`).first()
-  await flag.waitFor({ state: 'visible', timeout: 5_000 })
+  await flag.waitFor({ state: 'attached', timeout: 5_000 })
 
   // The `<html lang>` attribute flips when i18next.changeLanguage resolves
   // (driven by applyLocaleSideEffects). Watch for that flip as the signal
   // that the locale switch fully landed — event-based, no fixed sleep.
   const beforeLang = await page.evaluate(() => document.documentElement.lang)
-  await flag.click()
+  // Force-click bypasses Playwright's actionability checks for elements
+  // outside the viewport; on mobile this is needed because the popover
+  // content extends beyond the screen width.
+  await flag.click({ force: true })
   await page
     .waitForFunction(
       prev => document.documentElement.lang !== prev && document.documentElement.lang.length > 0,
@@ -235,11 +259,10 @@ async function main() {
     `Locales: ${LOCALES.length}, screens: ${SCREENS.length}, total: ${LOCALES.length * SCREENS.length}`
   )
 
+  console.log(`Viewport: ${VIEWPORT} (output: ${OUT_DIR})`)
+
   const browser = await chromium.launch({ headless: true })
-  const context = await browser.newContext({
-    viewport: { width: 1440, height: 900 },
-    ignoreHTTPSErrors: true,
-  })
+  const context = await browser.newContext(CONTEXT_OPTIONS)
   const page = await context.newPage()
 
   page.on('pageerror', err => console.error(`[pageerror] ${err.message}`))

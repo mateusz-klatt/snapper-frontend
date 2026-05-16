@@ -2,7 +2,11 @@
 /**
  * Build HTML index for the screenshot sweep.
  *
- * Generates (under proprietary/screenshots/frontend/):
+ * Defaults to the desktop tree at proprietary/screenshots/frontend/.
+ * Pass VIEWPORT=mobile to build the iPhone tree at
+ * proprietary/screenshots/frontend-mobile/ instead.
+ *
+ * Generates (under the selected tree):
  *   index.html                — locale grid (links to per-locale page)
  *   <code>/index.html         — 13 screens for one locale
  *   by-screen/<screen>.html   — all 45 locales of one screen (compare)
@@ -12,7 +16,13 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const OUT = resolve(__dirname, '../../proprietary/screenshots/frontend')
+const VIEWPORT = globalThis.process?.env?.VIEWPORT === 'mobile' ? 'mobile' : 'desktop'
+const OUT = resolve(
+  __dirname,
+  VIEWPORT === 'mobile'
+    ? '../../proprietary/screenshots/frontend-mobile'
+    : '../../proprietary/screenshots/frontend'
+)
 
 const LOCALES = [
   ['ie', '🇮🇪', 'Ireland (ga)'],
