@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Ակնարկ"
+  },
+  "metrics": {
+    "feedsRunning": "Գործարկվող Feed",
+    "strategiesActive": "Ակտիվ ռազմավարություններ",
+    "openOrders": "Բաց հանձնարարականներ",
+    "todaysExecutions": "Այսօրվա կատարումներ",
+    "executionsOn": "Կատարումներ ({{date}})"
+  },
+  "status": {
+    "stopped": "Դադարեցված",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Ընթացքի մեջ է",
+    "active": "Ակտիվ"
+  },
+  "processStatus": {
+    "title": "Գործընթացների վիճակ",
+    "feeds": "Feeds",
+    "strategies": "Ռազմավարություններ",
+    "executors": "Կատարողներ",
+    "brokers": "Բրոքերներ"
+  },
+  "portfolio": {
+    "title": "Պորտֆելի ամփոփում",
+    "totalValue": "Ընդհանուր արժեք",
+    "longExposure": "Long էքսպոզիցիա",
+    "shortExposure": "Short էքսպոզիցիա",
+    "netDelta": "Զուտ դելտա",
+    "unrealizedPnl": "Չիրացված P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Դիրքեր",
+    "instrumentsCount": "{{count}} գործիք",
+    "empty": "Դիրքերի տվյալներ հասանելի չեն"
+  },
+  "signals": {
+    "title": "Վերջին ազդանշաններ",
+    "empty": "Վերջին ազդանշաններ չկան",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Վերջին կատարումներ",
+    "empty": "Վերջին կատարումներ չկան",
+    "noTime": "N/A"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Ռազմավարությունների կառավարում",
+    "register": "Գրանցել ռազմավարություն",
+    "saving": "Պահվում է…",
+    "descriptionCanManage": "Գրանցեք նոր ռազմավարության գործընթացներ անմիջապես UI-ից։ Autostart-ը պահպանում է գործընթացը միացված վերագործարկումների միջև։",
+    "descriptionViewer": "Դիտեք կազմաձևված ռազմավարությունները և դրանց վիճակը։ Ռազմավարությունները կառավարելու համար կապվեք օպերատորի կամ ադմինիստրատորի հետ։",
+    "searchPlaceholder": "Որոնել ռազմավարություններ...",
+    "filter": {
+      "all": "Բոլոր վիճակները",
+      "running": "Ընթացքի մեջ է",
+      "stopped": "Դադարեցված"
+    },
+    "configuredHeading": "Կազմաձևված ռազմավարություններ",
+    "noMatches": "Ոչ մի ռազմավարություն չի համապատասխանում զտիչներին",
+    "clearFilters": "Մաքրել զտիչները",
+    "emptyTitle": "Ռազմավարություններ կազմաձևված չեն",
+    "emptyCanManage": "Գրանցեք ռազմավարություն՝ ալգորիթմային առևտուրը սկսելու համար",
+    "emptyViewer": "Ռազմավարություններ դեռ չեն կազմաձևվել"
+  },
+  "confirm": {
+    "startTitle": "Գործարկել {{name}}",
+    "startMessage": "Սա կգործարկի {{name}} ռազմավարությունը։ Այն կարող է սկսել live առևտրային գործողություններ։",
+    "stopTitle": "Դադարեցնել {{name}}",
+    "stopMessage": "Սա կդադարեցնի {{name}} ռազմավարությունը։ Ակտիվ դիրքերը ավտոմատ չեն փակվի։"
+  },
+  "toast": {
+    "saved": "{{name}} ռազմավարությունը պահվել է",
+    "started": "{{name}} ռազմավարությունը գործարկվել է",
+    "registerFailed": "Չհաջողվեց գրանցել ռազմավարությունը՝ {{message}}",
+    "startSuccess": "Ռազմավարությունը հաջողությամբ գործարկվել է",
+    "stopSuccess": "Ռազմավարությունը հաջողությամբ դադարեցվել է",
+    "alreadyRunning": "Ռազմավարությունն արդեն աշխատում է",
+    "notRunning": "Ռազմավարությունը չի աշխատում",
+    "configNotFound": "Ռազմավարության կազմաձևումը չի գտնվել։ Ստուգեք տվյալների բազայի կարգավորումները։",
+    "networkError": "Ցանցային սխալ։ Ստուգեք կապը և փորձեք կրկին։",
+    "startFailed": "Չհաջողվեց գործարկել ռազմավարությունը՝ {{message}}",
+    "stopFailed": "Չհաջողվեց դադարեցնել ռազմավարությունը՝ {{message}}",
+    "unknownError": "Անհայտ սխալ"
+  },
+  "card": {
+    "ariaLabel": "Ռազմավարություն՝ {{name}}",
+    "modeLabel": "Ռեժիմ՝ {{mode}}",
+    "autostartEnabled": "Autostart՝ միացված",
+    "autostartDisabled": "Autostart՝ անջատված",
+    "statusAriaLabel": "Վիճակ՝ {{status}}",
+    "dataLagAriaLabel": "Տվյալների ուշացում՝ {{seconds}} վայրկյան",
+    "lagBadge": "ուշացում՝ {{seconds}}s",
+    "feedLag": "Feed ուշացում՝ {{ms}}ms",
+    "heartbeatAge": "Heartbeat տարիք՝ {{seconds}}s",
+    "metrics": {
+      "status": "Վիճակ",
+      "dataLag": "Տվյալների ուշացում",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Ցույց տալ մանրամասները",
+    "hideDetails": "Թաքցնել մանրամասները",
+    "inputs": "Մուտքեր ({{count}})",
+    "outputs": "Ելքեր ({{count}})",
+    "feedPublishers": "Feed հրապարակողներ ({{count}})",
+    "lastUpdate": "Վերջին թարմացում՝ {{time}}",
+    "waiting": "Սպասում է Heartbeat-ի...",
+    "startAriaLabel": "Գործարկել {{name}} ռազմավարությունը",
+    "stopAriaLabel": "Դադարեցնել {{name}} ռազմավարությունը",
+    "start": "Գործարկել",
+    "stop": "Դադարեցնել",
+    "starting": "Գործարկվում է...",
+    "stopping": "Դադարեցվում է...",
+    "status": {
+      "starting": "գործարկվում է",
+      "stopping": "դադարեցվում է",
+      "running": "աշխատում է",
+      "stopped": "դադարեցված"
+    },
+    "health": {
+      "healthy": "Առողջ — ստացվում են թարմ տվյալներ",
+      "warning": "Նախազգուշացում — տվյալները հնացած են",
+      "error": "Սխալ — վերջին տվյալներ չկան",
+      "unknown": "Անհայտ — Heartbeat տվյալներ չկան"
+    },
+    "healthShort": {
+      "healthy": "ԱՌՈՂՋ",
+      "warning": "ՆԱԽԱԶԳՈՒՇԱՑՈՒՄ",
+      "error": "ՍԽԱԼ"
+    }
+  },
+  "launchModal": {
+    "title": "Գրանցել ռազմավարության գործընթաց",
+    "emptyTemplates": "Backend-ում ռազմավարության ձևանմուշներ գրանցված չեն։ Սահմանեք առնվազն մեկ ռազմավարության գործընթաց։",
+    "close": "Փակել",
+    "templateLabel": "Ռազմավարության ձևանմուշ",
+    "templatePlaceholder": "Ընտրեք ձևանմուշ...",
+    "templateFallbackDescription": "Ռազմավարությունը գրանցված է backend-ում",
+    "loadingDefaults": "Ձևանմուշի լռելյայնները բեռնվում են…",
+    "loadDefaultsError": "Չհաջողվեց բեռնել ձևանմուշի լռելյայնները։ Ստուգեք backend մատյանները։",
+    "processNameLabel": "Գործընթացի անուն",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Թույլատրելի նիշեր՝ փոքրատառեր, թվեր, ընդգծումներ",
+    "instanceNameLabel": "Ռազմավարության instance-ի անուն",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Օգտագործվում է ռազմավարության կազմաձևում և ելքային թեմաներում",
+    "executionModeLabel": "Կատարման ռեժիմ",
+    "executionModeThread": "Ներդրված thread",
+    "executionModeProcess": "Մեկուսացված գործընթաց",
+    "executionModeHelp": "Thread-ները կիսում են հիշողությունը, գործընթացները ապահովում են ավելի ուժեղ մեկուսացում։",
+    "flagsLabel": "Դրոշներ",
+    "autostartLabel": "Autostart սերվերի մեկնարկի ժամանակ",
+    "startImmediatelyLabel": "Գործարկել անմիջապես գրանցումից հետո",
+    "noteLabel": "Նշում (ըստ ցանկության)",
+    "notePlaceholder": "Նկարագրեք այս ռազմավարության instance-ի նպատակը կամ պարամետրերը։",
+    "noteHelp": "Պահվում է կազմաձևման հետ՝ այս գործընթացը նույնականացնելու համար։",
+    "cancel": "Չեղարկել",
+    "submit": "Գրանցել ռազմավարություն",
+    "submitting": "Գրանցվում է…"
+  }
+}

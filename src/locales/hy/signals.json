@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Ազդանշաններ"
+  },
+  "filters": {
+    "allStrategies": "Բոլոր ռազմավարությունները"
+  },
+  "actions": {
+    "export": "Արտահանել"
+  },
+  "stats": {
+    "total": "Ընդամենը",
+    "buy": "Գնում",
+    "sell": "Վաճառք",
+    "avgStrength": "Միջ. ուժ"
+  },
+  "card": {
+    "strength": "Ուժ",
+    "price": "Գին",
+    "exchange": "Բորսա",
+    "reason": "Պատճառ՝",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Ուժեղ",
+    "medium": "Միջին",
+    "weak": "Թույլ",
+    "veryWeak": "Շատ թույլ"
+  },
+  "time": {
+    "justNow": "Հենց հիմա",
+    "minutesAgo": "{{count}} ր առաջ",
+    "hoursAgo": "{{count}} ժ առաջ"
+  },
+  "empty": {
+    "title": "Ազդանշաններ չեն գտնվել",
+    "message": "Առևտրային ոչ մի ազդանշան չի համապատասխանում ընթացիկ զտիչներին։"
+  }
+}

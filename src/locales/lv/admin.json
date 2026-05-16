@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrēšana",
+    "subtitle": "Pārvaldiet lietotājus un sistēmas konfigurāciju"
+  },
+  "rolePermissions": {
+    "title": "Lomu atļaujas",
+    "viewer": {
+      "label": "Skatītājs",
+      "description": "Tikai lasīšanas piekļuve pārskatam un tirgus datiem. Nevar pārvaldīt procesus, stratēģijas vai sistēmas iestatījumus."
+    },
+    "operator": {
+      "label": "Operators",
+      "description": "Visas skatītāja atļaujas, kā arī tirdzniecības operācijas, stratēģiju izpilde, procesu pārvaldība un sistēmas veselības uzraudzība."
+    },
+    "admin": {
+      "label": "Administrators",
+      "description": "Pilna sistēmas piekļuve, tostarp lietotāju pārvaldība, sistēmas iestatījumi, API atslēgu konfigurācija un visas operatora atļaujas."
+    },
+    "table": {
+      "resource": "Resurss",
+      "viewer": "Skatītājs",
+      "operator": "Operators",
+      "admin": "Administrators"
+    },
+    "resources": {
+      "overview": "Pārskats",
+      "market": "Tirgus dati",
+      "processes": "Procesi",
+      "strategies": "Stratēģijas",
+      "orders": "Rīkojumi un izpildes",
+      "positions": "Pozīcijas",
+      "signals": "Signāli",
+      "health": "Veselība",
+      "admin": "Administrēšana",
+      "settings": "Iestatījumi"
+    }
+  },
+  "common": {
+    "cancel": "Atcelt",
+    "selectWallet": "Izvēlieties maku",
+    "selectAWallet": "Izvēlieties maku",
+    "chooseWalletPlaceholder": "Izvēlieties maku...",
+    "selectWalletPlaceholder": "Izvēlēties maku...",
+    "walletLabel": "Maks",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Nezināma kļūda",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Piekļuve liegta",
+      "message": "Nav atļaujas pārvaldīt lietotājus. Sazinieties ar sistēmas administratoru."
+    },
+    "list": {
+      "title": "Lietotāju pārvaldība",
+      "countLabel": "{{count}} lietotāji",
+      "showInactive": "Rādīt neaktīvos",
+      "hideInactive": "Slēpt neaktīvos",
+      "addUser": "Pievienot lietotāju",
+      "searchPlaceholder": "Meklēt pēc lietotājvārda, e-pasta vai lomas...",
+      "columns": {
+        "user": "Lietotājs",
+        "role": "Loma",
+        "status": "Statuss",
+        "createdAt": "Izveidots",
+        "actions": "Darbības"
+      },
+      "status": {
+        "active": "Aktīvs",
+        "inactive": "Neaktīvs"
+      },
+      "unknown": "Nezināms",
+      "empty": {
+        "title": "Lietotāji nav atrasti",
+        "noMatch": "Neviens lietotājs neatbilst meklēšanas kritērijiem.",
+        "noUsers": "Lietotāji nav atrasti.",
+        "noActive": "Aktīvi lietotāji nav atrasti."
+      },
+      "errorLoading": "Kļūda, ielādējot lietotājus: {{message}}",
+      "deactivate": {
+        "title": "Deaktivizēt lietotāju",
+        "message": "Vai tiešām deaktivizēt lietotāju “{{username}}”? Viņš vairs nevarēs pierakstīties.",
+        "confirm": "Deaktivizēt"
+      },
+      "toast": {
+        "deactivated": "Lietotājs ir deaktivizēts",
+        "deactivateError": "Kļūda, deaktivizējot lietotāju"
+      }
+    },
+    "form": {
+      "titleEdit": "Rediģēt lietotāju",
+      "titleAdd": "Pievienot lietotāju",
+      "fields": {
+        "username": "Lietotājvārds",
+        "usernamePlaceholder": "Ievadiet lietotājvārdu",
+        "password": "Parole",
+        "passwordPlaceholder": "Ievadiet paroli",
+        "newPassword": "Jauna parole",
+        "newPasswordPlaceholder": "Ievadiet jaunu paroli",
+        "email": "E-pasts",
+        "emailPlaceholder": "Ievadiet e-pastu",
+        "role": "Loma",
+        "accountActive": "Konts aktīvs",
+        "resetUserPassword": "Atiestatīt lietotāja paroli"
+      },
+      "roles": {
+        "viewer": "Skatītājs",
+        "operator": "Operators",
+        "admin": "Administrators"
+      },
+      "validation": {
+        "usernameRequired": "Lietotājvārds ir obligāts",
+        "usernameMinLength": "Lietotājvārdam jābūt vismaz 3 rakstzīmēm",
+        "emailRequired": "E-pasts ir obligāts",
+        "emailInvalid": "Nederīgs e-pasta formāts",
+        "passwordRequired": "Parole ir obligāta",
+        "passwordMinLength": "Parolei jābūt vismaz 8 rakstzīmēm",
+        "passwordRequiredWhenResetting": "Atiestatīšanas laikā parole ir obligāta"
+      },
+      "actions": {
+        "saveChanges": "Saglabāt izmaiņas",
+        "createUser": "Izveidot lietotāju"
+      },
+      "toast": {
+        "created": "Lietotājs ir izveidots",
+        "createError": "Kļūda, izveidojot lietotāju",
+        "updated": "Lietotājs ir atjaunināts",
+        "updateError": "Kļūda, atjauninot lietotāju",
+        "passwordReset": "Lietotāja parole ir atiestatīta",
+        "resetError": "Kļūda, atiestatot paroli"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Piekļuve liegta",
+      "message": "Nav atļaujas pārvaldīt piekļuves jomas. Sazinieties ar sistēmas administratoru."
+    },
+    "list": {
+      "title": "Piekļuves jomas",
+      "countLabel": "{{count}} jomas",
+      "createGrant": "Piešķirt jomu",
+      "selectWalletPrompt": "Izvēlieties maku augstāk, lai skatītu tā piekļuves jomas.",
+      "columns": {
+        "operator": "Operators",
+        "scope": "Joma",
+        "target": "Mērķis",
+        "grantedAt": "Piešķirts",
+        "actions": "Darbības"
+      },
+      "empty": {
+        "noGrants": "Piešķirtas jomas nav atrastas",
+        "noGrantsHint": "Šim makam nav aktīvu piekļuves jomu."
+      },
+      "errorLoading": "Kļūda, ielādējot jomas: {{message}}",
+      "handover": "Nodot"
+    },
+    "form": {
+      "title": "Piešķirt piekļuves jomu",
+      "fields": {
+        "operator": "Operators",
+        "operatorPlaceholder": "Izvēlieties operatoru...",
+        "wallet": "Maks",
+        "scopeKind": "Jomas veids",
+        "underlyingPublicId": "Bāzes aktīva publiskais ID",
+        "instrumentPublicId": "Instrumenta publiskais ID",
+        "underlyingPlaceholder": "piem., BTC",
+        "instrumentPlaceholder": "piem., BTC-USD-PERP",
+        "note": "Piezīme (neobligāti)",
+        "notePlaceholder": "Neobligāta piezīme"
+      },
+      "scopeKinds": {
+        "underlying": "Bāzes aktīvs",
+        "instrument": "Instruments"
+      },
+      "validation": {
+        "operatorRequired": "Operators ir obligāts",
+        "walletRequired": "Maks ir obligāts",
+        "targetRequired": "Mērķa ID ir obligāts"
+      },
+      "actions": {
+        "createGrant": "Piešķirt jomu"
+      },
+      "toast": {
+        "created": "Piekļuves joma piešķirta",
+        "conflictError": "Konflikts: citam operatoram jau ir piešķirta šī joma",
+        "createError": "Kļūda, piešķirot piekļuves jomu"
+      }
+    },
+    "handover": {
+      "title": "Nodot piekļuves jomu",
+      "fields": {
+        "currentHolder": "Pašreizējais turētājs",
+        "scope": "Joma",
+        "wallet": "Maks",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Nodot operatoram",
+        "transferToPlaceholder": "Izvēlieties mērķa operatoru...",
+        "reason": "Iemesls (neobligāti)",
+        "reasonPlaceholder": "piem., maiņas nodošana"
+      },
+      "actions": {
+        "handover": "Nodot"
+      },
+      "toast": {
+        "completed": "Piekļuves joma nodota",
+        "conflictError": "Konflikts: mērķa operatoram jau ir konfliktējoša joma",
+        "handoverError": "Kļūda, nododot piekļuves jomu"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Piekļuve liegta",
+      "message": "Nav atļaujas pārvaldīt maka akreditācijas datus. Sazinieties ar sistēmas administratoru."
+    },
+    "list": {
+      "title": "Maka akreditācijas dati",
+      "countLabel": "{{count}} akreditācijas dati",
+      "addCredential": "Pievienot akreditācijas datus",
+      "selectWalletPrompt": "Izvēlieties maku augstāk, lai skatītu tā akreditācijas datus.",
+      "columns": {
+        "exchange": "Birža",
+        "type": "Tips",
+        "label": "Etiķete",
+        "createdAt": "Izveidots",
+        "actions": "Darbības"
+      },
+      "empty": {
+        "noCredentials": "Akreditācijas dati nav atrasti",
+        "noCredentialsHint": "Šim makam nav aktīvu akreditācijas datu."
+      },
+      "errorLoading": "Kļūda, ielādējot akreditācijas datus: {{message}}",
+      "rotate": "Mainīt"
+    },
+    "form": {
+      "title": "Pievienot akreditācijas datus",
+      "fields": {
+        "wallet": "Maks",
+        "exchange": "Birža",
+        "exchangePlaceholder": "piem., kraken",
+        "credentialType": "Akreditācijas datu tips",
+        "label": "Etiķete (neobligāti)",
+        "labelPlaceholder": "piem., galvenā tirdzniecības atslēga",
+        "pemPlaceholder": "Ielīmējiet PEM formāta privāto atslēgu šeit"
+      },
+      "fieldLabels": {
+        "api_key": "API atslēga",
+        "api_secret": "API noslēpums",
+        "private_key_pem": "Privātā atslēga (PEM)",
+        "client_id": "Klienta ID",
+        "client_secret": "Klienta noslēpums",
+        "refresh_token": "Atsvaidzināšanas tokens",
+        "initial_balance": "Sākuma bilance"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API atslēga + noslēpums",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Maks ir obligāts",
+        "exchangeRequired": "Birža ir obligāta",
+        "fieldRequired": "{{field}} ir obligāts"
+      },
+      "actions": {
+        "addCredential": "Pievienot akreditācijas datus"
+      },
+      "toast": {
+        "created": "Akreditācijas dati izveidoti",
+        "conflictError": "Konflikts: šim makam jau ir aktīvi akreditācijas dati šai biržai",
+        "createError": "Kļūda, izveidojot akreditācijas datus"
+      }
+    },
+    "rotate": {
+      "title": "Akreditācijas datu maiņa",
+      "fields": {
+        "exchange": "Birža",
+        "type": "Tips",
+        "label": "Etiķete",
+        "newLabel": "Jauna etiķete (neobligāti)",
+        "newLabelPlaceholder": "piem., mainīta atslēga 2026-04",
+        "pemPlaceholder": "Ielīmējiet PEM formāta privāto atslēgu šeit"
+      },
+      "actions": {
+        "rotate": "Mainīt"
+      },
+      "toast": {
+        "rotated": "Akreditācijas dati mainīti",
+        "rotateError": "Kļūda, mainot akreditācijas datus"
+      }
+    }
+  }
+}

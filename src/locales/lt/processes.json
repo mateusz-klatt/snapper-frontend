@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Procesų valdymas",
+    "subtitle": "Procesų stebėsena ir valdymas realiuoju laiku"
+  },
+  "sections": {
+    "longRunning": "Ilgai veikiantys procesai",
+    "executorTemplates": "Vykdytojų šablonai",
+    "executorTemplatesHint": "Šablono konfigūracijos redagavimas po paleidimo iš naujo paveiks visas šios biržos pinigines. Šablonai yra tik konfigūracija — paleiskite žemiau esančią piniginės instanciją, kad vykdytumėte vykdytoją.",
+    "walletInstances": "Piniginės instancijos",
+    "taskProcesses": "Užduočių procesai"
+  },
+  "card": {
+    "stop": "Stabdyti",
+    "start": "Paleisti",
+    "restart": "Paleisti iš naujo",
+    "starting": "Paleidžiama...",
+    "stopping": "Stabdoma...",
+    "status": {
+      "running": "vykdoma",
+      "stopped": "sustabdyta",
+      "error": "klaida",
+      "starting": "paleidžiama",
+      "stopping": "stabdoma"
+    }
+  },
+  "template": {
+    "badge": "šablonas",
+    "mode": "Režimas:",
+    "parameters": "Parametrai:",
+    "paramCount": "{{count}} parametras (-ai)",
+    "noParams": "parametrų nenustatyta"
+  },
+  "badges": {
+    "oneShot": "vienkartinis",
+    "autoStart": "auto-start",
+    "manual": "rankinis"
+  },
+  "actions": {
+    "stopTitle": "Stabdyti {{name}}",
+    "stopMessage": "Tai sustabdys procesą {{name}}.",
+    "restartTitle": "Paleisti {{name}} iš naujo",
+    "restartMessage": "Tai paleis procesą {{name}} iš naujo."
+  },
+  "executionMode": {
+    "title": "Paleisti {{name}}",
+    "label": "Vykdymo režimas:",
+    "threadName": "Gijos režimas",
+    "threadDescription": "Vykdoma kaip įterpta užduotis žiniatinklio serveryje. Greitesnis paleidimas, bendra atmintis.",
+    "processName": "Proceso režimas",
+    "processDescription": "Vykdoma kaip atskiras Python procesas. Izoliuota, atspari gedimams, su išsamia stebėsena.",
+    "cancel": "Atšaukti",
+    "start": "Paleisti {{name}}",
+    "threadAriaLabel": "Gijos režimas",
+    "processAriaLabel": "Proceso režimas"
+  }
+}

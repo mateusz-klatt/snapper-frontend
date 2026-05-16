@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI integracija",
+    "subtitle": "Valdykite AI delegatus, kurie jungiasi prie Snapper per MCP.",
+    "loading": "Įkeliama AI integracija…",
+    "createDelegate": "Sukurti delegatą"
+  },
+  "disabled": {
+    "title": "AI integracija išjungta",
+    "message": "Įjunkite funkcijos vėliavą skiltyje Nustatymai → Funkcijų vėliavos, kad galėtumėte valdyti AI delegatus."
+  },
+  "list": {
+    "loadingDelegates": "Įkeliami delegatai…",
+    "emptyTitle": "AI delegatų dar nėra",
+    "emptyMessage": "Spustelėkite „Sukurti delegatą“, kad sukurtumėte vieną ir sugeneruotumėte jo MCP konfigūracijos fragmentą.",
+    "columns": {
+      "label": "Etiketė",
+      "username": "Naudotojo vardas",
+      "created": "Sukurta",
+      "maxOpenOrders": "Maks. atvirų pavedimų",
+      "maxDailyUsd": "Maks. dienos USD",
+      "status": "Būsena",
+      "actions": "Veiksmai"
+    },
+    "status": {
+      "active": "Aktyvus",
+      "revoked": "Atšauktas"
+    },
+    "default": "numatyta",
+    "details": "Išsamiau",
+    "viewAriaLabel": "Peržiūrėti delegatą {{label}}"
+  },
+  "wizard": {
+    "title": "Sukurti AI delegatą",
+    "step1": "1. Tapatybė",
+    "step2": "2. Sritis ir limitai",
+    "step3": "3. Peržiūra",
+    "stepDone": "✓ Atlikta",
+    "identity": {
+      "labelField": "Etiketė",
+      "labelPlaceholder": "pvz., Alpha prop desk",
+      "labelHelpPrefix": "Delegato naudotojo vardas serverio pusėje bus išvestas kaip ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Sritis",
+      "operatorLabel": "Operatoriaus public_id (neprivaloma)",
+      "operatorPlaceholder": "Palikite tuščią, kad būtų paveldėtas kviečiančiojo pagrindinis operatorius"
+    },
+    "caps": {
+      "heading": "Prekybos limitai (visi neprivalomi)",
+      "maxOpenOrders": "Maks. atvirų pavedimų",
+      "maxDailyNotionalUsd": "Maks. dienos nominalas USD",
+      "maxCancelsPerMinute": "Maks. atšaukimų per minutę",
+      "perInstrument": "Maks. kiekis vienam instrumentui (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "numatyta",
+      "errorInvalidJson": "max_order_quantity_per_instrument turi būti validus JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument turi būti JSON objektas arba tuščia reikšmė",
+      "errorNegative": "Limitai turi būti neneigiami sveikieji skaičiai arba tuščios reikšmės."
+    },
+    "review": {
+      "heading": "Peržiūrėti ir sukurti",
+      "rowLabel": "Etiketė",
+      "rowOperator": "Operatoriaus public_id",
+      "rowMaxOpenOrders": "Maks. atvirų pavedimų",
+      "rowMaxDailyNotional": "Maks. dienos nominalas USD",
+      "rowMaxCancelsPerMinute": "Maks. atšaukimų per minutę",
+      "rowPerInstrument": "Maks. kiekis vienam instrumentui",
+      "operatorDefault": "(kviečiančiojo pagrindinis operatorius)",
+      "defaultValue": "(numatyta)"
+    },
+    "buttons": {
+      "cancel": "Atšaukti",
+      "next": "Toliau",
+      "back": "Atgal",
+      "createDelegate": "Sukurti delegatą",
+      "iSavedClose": "Išsaugota — uždaryti"
+    },
+    "toast": {
+      "delegateCreated": "Delegatas sukurtas",
+      "failedToCreate": "Nepavyko sukurti delegato"
+    }
+  },
+  "detail": {
+    "loading": "Įkeliamas delegatas…",
+    "notFound": "Delegatas nerastas arba nepasiekiamas.",
+    "back": "Atgal",
+    "backToList": "Grįžti į sąrašą",
+    "updateCaps": "Atnaujinti limitus",
+    "revoke": "Atšaukti",
+    "save": "Išsaugoti",
+    "cancel": "Atšaukti",
+    "tradingCaps": "Prekybos limitai",
+    "status": "Būsena",
+    "active": "Aktyvus",
+    "revoked": "Atšauktas",
+    "createdAt": "Sukurta",
+    "createdBy": "Sukūrė (naudotojo public_id)",
+    "publicId": "Viešasis ID",
+    "maxOpenOrders": "Maks. atvirų pavedimų",
+    "maxDailyNotionalUsd": "Maks. dienos nominalas USD",
+    "maxCancelsPerMinute": "Maks. atšaukimų per minutę",
+    "perInstrument": "Maks. kiekis vienam instrumentui",
+    "defaultValue": "(numatyta)",
+    "editorPlaceholder": "(numatyta)",
+    "toast": {
+      "capsUpdated": "Limitai atnaujinti",
+      "failedToUpdateCaps": "Nepavyko atnaujinti limitų",
+      "negativeIntegersError": "Limitai turi būti neneigiami sveikieji skaičiai arba tuščios reikšmės."
+    }
+  },
+  "revokeDialog": {
+    "title": "Atšaukti delegatą „{{label}}“?",
+    "message": "Tai atšauks delegato prieigos raktus ir sustabdys jo MCP prenumeratas. Šio veiksmo anuliuoti negalima.",
+    "confirm": "Atšaukti",
+    "cancel": "Atšaukti",
+    "toast": {
+      "delegateRevoked": "Delegatas atšauktas",
+      "failedToRevoke": "Nepavyko atšaukti delegato"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Išsaugokite šiuos kredencialus dabar",
+    "warningMessage": "Jie daugiau nebus rodomi. Snapper nesaugo neapdorotų prieigos raktų; uždarius šį vedlį vienintelė kopija bus jūsų MCP kliento konfigūracijoje.",
+    "snippetHelp": "Ilgalaikis AI delegato prieigos raktas (~10 metų). Tas pats raktas autentifikuoja ir proxy MCP serverį, ir stebėjimo monitorių. Norėdami pakeisti, deaktyvuokite šį delegatą ir sukurkite naują.",
+    "baseUrlHelpPrefix": "Bazinis URL išvedamas iš šios naršyklės kilmės + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopijuoti konfigūracijos fragmentą į iškarpinę",
+    "copy": "Kopijuoti į iškarpinę",
+    "copied": "Nukopijuota"
+  }
+}

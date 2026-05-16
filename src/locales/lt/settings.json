@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Nustatymai",
+    "subtitle": "Konfigūruokite programos nustatymus ir parametrus",
+    "addButton": "Pridėti nustatymą",
+    "searchPlaceholder": "Ieškoti nustatymų...",
+    "noResults": "Nerasta nustatymų, atitinkančių kriterijus.",
+    "allCategories": "Visos kategorijos",
+    "categoryFilterAriaLabel": "Filtruoti nustatymus pagal kategoriją"
+  },
+  "errors": {
+    "loadFailed": "Nepavyko įkelti nustatymų",
+    "updateFailed": "Nepavyko atnaujinti nustatymo",
+    "deleteFailed": "Nepavyko ištrinti nustatymo",
+    "createFailed": "Nepavyko sukurti nustatymo",
+    "alreadyExists": "Nustatymas su raktu „{{key}}“ jau yra"
+  },
+  "item": {
+    "edit": "Redaguoti",
+    "delete": "Ištrinti",
+    "save": "Išsaugoti",
+    "saving": "Išsaugoma...",
+    "cancel": "Atšaukti",
+    "yesDelete": "Taip, ištrinti",
+    "deleting": "Trinama...",
+    "deleteConfirm": "Ištrinti šį nustatymą?",
+    "valuePlaceholder": "Įveskite nustatymo reikšmę...",
+    "showMore": "Rodyti daugiau",
+    "showLess": "Rodyti mažiau",
+    "toggleAriaLabel": "Perjungti {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Jautru"
+    },
+    "helpText": {
+      "allowShortSelling": "Leisti varikliui atidaryti trumpąsias pozicijas. SELL signalai sukurs neigiamus desired_units; kai išjungta, apribojama iki 0.",
+      "allowManualOrders": "Įjungti mygtuką Naujas pavedimas pavedimų skirtuke. Kai išjungta, POST /api/orders grąžina 403."
+    }
+  },
+  "addModal": {
+    "title": "Pridėti naują nustatymą",
+    "keyLabel": "Raktas",
+    "valueLabel": "Reikšmė",
+    "categoryLabel": "Kategorija",
+    "descriptionLabel": "Aprašymas",
+    "keyPlaceholder": "pvz., walutomat.api_key",
+    "keyHint": "Įdėtiniams nustatymams naudokite taškinę notaciją (pvz., category.subcategory.name)",
+    "valuePlaceholder": "Nustatymo reikšmė",
+    "categorySelectPlaceholder": "Pasirinkite esamą arba sukurkite naują",
+    "newCategoryPlaceholder": "Arba įveskite naujos kategorijos pavadinimą",
+    "descriptionPlaceholder": "Neprivalomas aprašymas",
+    "cancel": "Atšaukti",
+    "create": "Sukurti nustatymą",
+    "creating": "Kuriama...",
+    "validation": {
+      "keyRequired": "Raktas privalomas",
+      "valueRequired": "Reikšmė privaloma",
+      "categoryRequired": "Kategorija privaloma"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Formos redaktorius",
+    "rawEditor": "Neapdoroto JSON redaktorius",
+    "rawJson": "Neapdorotas JSON",
+    "switchToForm": "Perjungti į formą",
+    "importToForm": "Importuoti į formą",
+    "parseError": "Analizės klaida: {{message}}",
+    "arraySummary": "Masyvas ({{length}} elementų)",
+    "addItem": "Pridėti elementą",
+    "remove": "Pašalinti",
+    "typeHint": {
+      "array": "(masyvas)",
+      "object": "(objektas)",
+      "string": "(eilutė)",
+      "number": "(skaičius)",
+      "boolean": "(loginė reikšmė)",
+      "bigint": "(bigint)",
+      "function": "(funkcija)",
+      "symbol": "(simbolis)",
+      "undefined": "(neapibrėžta)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

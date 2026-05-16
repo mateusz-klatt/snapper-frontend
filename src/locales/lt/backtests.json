@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Atgal",
+    "backToList": "← Atgal į Backtests"
+  },
+  "status": {
+    "pending": "Laukiama",
+    "running": "Vykdoma",
+    "completed": "Baigta",
+    "failed": "Nepavyko",
+    "cancelled": "Atšaukta"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Atšaukti",
+      "rerun": "Paleisti iš naujo"
+    },
+    "fields": {
+      "timeframe": "Laiko intervalas",
+      "period": "Laikotarpis",
+      "initialCash": "Pradinis kapitalas",
+      "id": "ID"
+    },
+    "errorPrefix": "Klaida: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtruoti Backtests pagal būseną",
+      "options": {
+        "all": "Visos būsenos",
+        "pending": "Laukiama",
+        "running": "Vykdoma",
+        "completed": "Baigta",
+        "failed": "Nepavyko",
+        "cancelled": "Atšaukta"
+      }
+    },
+    "empty": {
+      "title": "Backtests nėra",
+      "message": "Paleiskite Backtest per CLI arba API, kad rezultatai būtų rodomi čia."
+    }
+  },
+  "detail": {
+    "title": "Backtest vykdymas",
+    "fields": {
+      "strategy": "Strategija",
+      "instrument": "Instrumentas",
+      "status": "Būsena",
+      "period": "Laikotarpis",
+      "crossAsset": "Kryžminė aktyvų atribucija",
+      "configHash": "Konfigūracijos maiša"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} vykdymai",
+    "errors": {
+      "invalidRunId": "Netinkamas vykdymo ID — turi būti UUID7 (gauta „{{id}}“).",
+      "loadFailed": "Nepavyko įkelti vykdymo: {{message}}",
+      "notFound": "nerasta"
+    }
+  },
+  "compare": {
+    "title": "Palyginti",
+    "headingFull": "Backtest palyginimas",
+    "loading": "Įkeliamas palyginimas…",
+    "vs": "prieš",
+    "runLabel": "Vykdymas {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrikos",
+      "equityOverlay": "Kapitalo kreivės perdanga",
+      "trades": "Sandoriai",
+      "signals": "Signalai"
+    },
+    "pairingMode": {
+      "auto": "automatinis",
+      "manual": "rankinis"
+    },
+    "errors": {
+      "notFound": "Palyginimas dabartinėje piniginėje nerastas.",
+      "loadFailed": "Nepavyko įkelti palyginimo: {{message}}",
+      "unknown": "nežinoma klaida",
+      "emptyResponse": "Tuščias palyginimo atsakymas."
+    },
+    "launcher": {
+      "title": "Palyginti",
+      "submit": "Palyginti",
+      "autoPair": "Palyginti su naujausiu",
+      "terminalGate": "palyginimas pasiekiamas, kai šis vykdymas pasiekia galutinę būseną",
+      "noSiblings": "kitų vykdymų su šia konfigūracija nėra",
+      "limitNotice": "rodoma {{count}} naujausių — senesniems vykdymams naudokite rankinę porą",
+      "pickPlaceholder": "— pasirinkite vykdymą palyginimui —",
+      "showAllLabel": "Rodyti visus vykdymus (ne tik su ta pačia konfigūracija)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "visi vykdymai",
+        "sameConfig": "ta pati konfigūracija"
+      },
+      "errors": {
+        "pickRequired": "pasirinkite vykdymą iš sąrašo"
+      }
+    },
+    "diffColumns": {
+      "common": "Bendra",
+      "onlyA": "Tik A",
+      "onlyB": "Tik B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Palyginamų metrikų nėra — abiejuose vykdymuose nebuvo įrašytų reikšmių.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "Vykdymas A",
+        "runB": "Vykdymas B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Vykdymas A",
+        "runB": "Vykdymas B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Laukiama progreso…",
+    "candles": "{{done}} / {{total}} žvakių",
+    "candlesNoTotal": "{{done}} žvakių",
+    "equity": "kapitalas {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} sandorių",
+    "milestoneLine": "etapas {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

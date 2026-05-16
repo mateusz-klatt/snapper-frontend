@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Užklausa",
+    "decision": "Sprendimas",
+    "capsViolation": "Limitų pažeidimas",
+    "selectedDelegate": "Pasirinktas delegatas",
+    "instrument": "instrumentas",
+    "deadline": "terminas {{time}}",
+    "decidedBy": "pagal",
+    "newStatus": "būsena",
+    "mode": "režimas",
+    "capAttempted": "bandyta",
+    "capLimit": "prieš limitą",
+    "capOn": "instrumente",
+    "reviewLabel": "peržiūra {{reviewId}}",
+    "unhandledFrame": "Neapdorotas AI peržiūros veiklos kadras: {{frame}}"
+  },
+  "page": {
+    "title": "AI peržiūrų gautieji",
+    "subtitle": "Laukiančios CONSULT peržiūros, nukreiptos šiam delegatui, ir tiesioginis įvykių srautas."
+  },
+  "roleNotice": {
+    "title": "Rezervuota AI delegatams",
+    "message": "Šiuose gautuosiuose rodomos CONSULT peržiūros, nukreiptos AI delegato principalui. Prisijunkite su AI delegato paskyra, kad matytumėte laukiančias peržiūras ir tiesioginį veiklos srautą. Dabartinė jūsų rolė yra",
+    "unknownRole": "nežinoma"
+  },
+  "pending": {
+    "title": "Laukiančios peržiūros",
+    "loading": "Įkeliamos laukiančios peržiūros…",
+    "loadError": "Nepavyko įkelti laukiančių peržiūrų: {{message}}",
+    "emptyTitle": "Laukiančių peržiūrų nėra",
+    "emptyMessage": "Naujos CONSULT užklausos, nukreiptos šiam delegatui, bus rodomos čia.",
+    "columns": {
+      "instrument": "Instrumentas",
+      "thesis": "Tezė",
+      "status": "Būsena",
+      "deadline": "Terminas",
+      "decision": "Sprendimas"
+    },
+    "rationalePlaceholder": "Pagrindimas (neprivaloma)",
+    "rationaleAriaLabel": "Peržiūros {{reviewId}} pagrindimas",
+    "approve": "Patvirtinti",
+    "reject": "Atmesti",
+    "submitError": "Pateikti nepavyko: {{message}}"
+  },
+  "activity": {
+    "title": "Naujausia veikla",
+    "emptyTitle": "Veiklos dar nėra",
+    "emptyMessage": "AI peržiūros užklausos, sprendimai ir limitų pažeidimų kadrai bus transliuojami čia.",
+    "summaryEmpty": "Kadrų negauta",
+    "summaryCount": "Rodoma {{shown}} iš {{total}} buferyje"
+  }
+}

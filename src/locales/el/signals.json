@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Σήματα"
+  },
+  "filters": {
+    "allStrategies": "Όλες οι στρατηγικές"
+  },
+  "actions": {
+    "export": "Εξαγωγή"
+  },
+  "stats": {
+    "total": "Σύνολο",
+    "buy": "Αγορά",
+    "sell": "Πώληση",
+    "avgStrength": "Μέση ισχύς"
+  },
+  "card": {
+    "strength": "Ισχύς",
+    "price": "Τιμή",
+    "exchange": "Αγορά",
+    "reason": "Αιτία:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Ισχυρό",
+    "medium": "Μεσαίο",
+    "weak": "Αδύναμο",
+    "veryWeak": "Πολύ αδύναμο"
+  },
+  "time": {
+    "justNow": "Μόλις τώρα",
+    "minutesAgo": "πριν από {{count}} λεπ.",
+    "hoursAgo": "πριν από {{count}} ώ."
+  },
+  "empty": {
+    "title": "Δεν βρέθηκαν σήματα",
+    "message": "Κανένα σήμα συναλλαγών δεν ταιριάζει με τα τρέχοντα φίλτρα."
+  }
+}

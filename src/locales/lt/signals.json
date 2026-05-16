@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signalai"
+  },
+  "filters": {
+    "allStrategies": "Visos strategijos"
+  },
+  "actions": {
+    "export": "Eksportuoti"
+  },
+  "stats": {
+    "total": "Iš viso",
+    "buy": "Pirkimas",
+    "sell": "Pardavimas",
+    "avgStrength": "Vid. stiprumas"
+  },
+  "card": {
+    "strength": "Stiprumas",
+    "price": "Kaina",
+    "exchange": "Birža",
+    "reason": "Priežastis:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Stiprus",
+    "medium": "Vidutinis",
+    "weak": "Silpnas",
+    "veryWeak": "Labai silpnas"
+  },
+  "time": {
+    "justNow": "Ką tik",
+    "minutesAgo": "prieš {{count}} min",
+    "hoursAgo": "prieš {{count}} val."
+  },
+  "empty": {
+    "title": "Signalų nerasta",
+    "message": "Nėra prekybos signalų, atitinkančių dabartinius filtrus."
+  }
+}

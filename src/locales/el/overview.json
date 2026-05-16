@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Επισκόπηση"
+  },
+  "metrics": {
+    "feedsRunning": "Feed σε λειτουργία",
+    "strategiesActive": "Ενεργές στρατηγικές",
+    "openOrders": "Ανοικτές εντολές",
+    "todaysExecutions": "Σημερινές εκτελέσεις",
+    "executionsOn": "Εκτελέσεις ({{date}})"
+  },
+  "status": {
+    "stopped": "Σταματημένο",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Εκτελείται",
+    "active": "Ενεργό"
+  },
+  "processStatus": {
+    "title": "Κατάσταση διεργασιών",
+    "feeds": "Feeds",
+    "strategies": "Στρατηγικές",
+    "executors": "Εκτελεστές",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "Σύνοψη χαρτοφυλακίου",
+    "totalValue": "Συνολική αξία",
+    "longExposure": "Long έκθεση",
+    "shortExposure": "Short έκθεση",
+    "netDelta": "Καθαρό δέλτα",
+    "unrealizedPnl": "Μη πραγματοποιημένο P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Θέσεις",
+    "instrumentsCount": "{{count}} μέσα",
+    "empty": "Δεν υπάρχουν διαθέσιμα δεδομένα θέσεων"
+  },
+  "signals": {
+    "title": "Πρόσφατα σήματα",
+    "empty": "Δεν υπάρχουν πρόσφατα σήματα",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Πρόσφατες εκτελέσεις",
+    "empty": "Δεν υπάρχουν πρόσφατες εκτελέσεις",
+    "noTime": "N/A"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Դիրքեր"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: սպասում է",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Քանակ",
+    "averageEntry": "Միջ. մուտք",
+    "unrealizedPnl": "Չիրացված P&L",
+    "realizedPnl": "Իրացված P&L",
+    "updated": "Թարմացվել է {{timestamp}}"
+  },
+  "empty": {
+    "title": "Բաց դիրքեր չկան",
+    "message": "Long, short և flat դիրքերը կհայտնվեն այստեղ՝ գործարքների կատարումից հետո։"
+  },
+  "bracketModal": {
+    "title": "Կցել SL/TP — {{instrument}}",
+    "confirmTitle": "Հաստատել Bracket",
+    "position": "Դիրք",
+    "entryPrice": "Մուտքի գին",
+    "stopLossLabel": "Stop-Loss գին",
+    "takeProfitLabel": "Take-Profit գին",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "${{price}}-ից ցածր",
+      "slShort": "${{price}}-ից բարձր",
+      "tpLong": "${{price}}-ից բարձր",
+      "tpShort": "${{price}}-ից ցածր"
+    },
+    "buttons": {
+      "cancel": "Չեղարկել",
+      "review": "Վերանայել",
+      "back": "Հետ",
+      "confirm": "Հաստատել",
+      "creating": "Ստեղծվում է…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Կցել Trailing Stop — {{instrument}}",
+    "confirmTitle": "Հաստատել Trailing Stop",
+    "position": "Դիրք",
+    "entryPrice": "Մուտքի գին",
+    "trailingDistanceLabel": "Trailing հեռավորություն (%)",
+    "minLockLabel": "Նվազ. ֆիքսվող շահույթ (%) — ըստ ցանկության",
+    "trailingDistance": "Trailing հեռավորություն",
+    "minLockProfit": "Նվազ. ֆիքսվող շահույթ",
+    "placeholders": {
+      "trailingPct": "օր.՝ 5.0",
+      "minLockPct": "0 = սկսել անմիջապես"
+    },
+    "minLockWarning": "Trailing Stop-ը չի ակտիվանա, մինչև գինը {{minLockPct}}% շարժվի ձեր օգտին։",
+    "buttons": {
+      "cancel": "Չեղարկել",
+      "review": "Վերանայել",
+      "back": "Հետ",
+      "confirm": "Հաստատել",
+      "creating": "Ստեղծվում է..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Պահանջվում է SL կամ TP գներից առնվազն մեկը",
+    "invalidSlPrice": "Անվավեր Stop-Loss գին",
+    "slPricePositive": "Stop-Loss գինը պետք է դրական լինի",
+    "invalidTpPrice": "Անվավեր Take-Profit գին",
+    "tpPricePositive": "Take-Profit գինը պետք է դրական լինի",
+    "slLongBelowEntry": "SL գինը պետք է լինի մուտքի գնից ցածր ({{price}})",
+    "tpLongAboveEntry": "TP գինը պետք է լինի մուտքի գնից բարձր ({{price}})",
+    "slShortAboveEntry": "SL գինը պետք է լինի մուտքի գնից բարձր ({{price}})",
+    "tpShortBelowEntry": "TP գինը պետք է լինի մուտքի գնից ցածր ({{price}})",
+    "trailingRequired": "Trailing տոկոսը պարտադիր է",
+    "trailingInvalid": "Անվավեր Trailing տոկոս",
+    "trailingRange": "Trailing տոկոսը պետք է լինի 0-ից 100 միջակայքում",
+    "minLockInvalid": "Անվավեր նվազ. ֆիքսման տոկոս",
+    "minLockRange": "Նվազ. ֆիքսման տոկոսը պետք է լինի 0-ից 100 միջակայքում"
+  }
+}

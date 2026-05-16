@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Εντολές και εκτελέσεις",
+    "newOrder": "Νέα εντολή",
+    "exportCsv": "Εξαγωγή CSV"
+  },
+  "tabs": {
+    "orders": "Εντολές ({{total}})",
+    "executions": "Εκτελέσεις ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Φιλτράρισμα κατά κατάσταση:",
+    "options": {
+      "all": "Όλες οι εντολές",
+      "new": "Νέα",
+      "open": "Ανοικτή",
+      "partiallyFilled": "Μερικώς εκτελεσμένη",
+      "partially_filled": "Μερικώς εκτελεσμένη",
+      "filled": "Εκτελεσμένη",
+      "cancelled": "Ακυρωμένη",
+      "rejected": "Απορριφθείσα"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Αγορά",
+    "quantity": "Ποσότητα",
+    "price": "Τιμή",
+    "created": "Δημιουργήθηκε",
+    "createdUnknown": "N/A",
+    "orderId": "ID εντολής",
+    "leverage": "Μόχλευση",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "ΜΟΝΟ ΜΕΙΩΣΗ",
+    "cancel": "Ακύρωση",
+    "cancelling": "Ακύρωση…",
+    "cancelAriaLabel": "Ακύρωση εντολής {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Εντολή #{{orderId}}",
+    "filled": "ΕΚΤΕΛΕΣΤΗΚΕ",
+    "orderLabel": "Εντολή {{orderId}}",
+    "size": "Μέγεθος",
+    "price": "Τιμή",
+    "total": "Σύνολο",
+    "executed": "Εκτελέστηκε",
+    "fees": "Προμήθειες"
+  },
+  "empty": {
+    "ordersTitle": "Δεν βρέθηκαν εντολές",
+    "ordersStartTrading": "Ξεκινήστε συναλλαγές για να εμφανιστούν εντολές εδώ",
+    "ordersFilterless": "Δεν υπάρχουν {{status}} εντολές",
+    "executionsTitle": "Δεν βρέθηκαν εκτελέσεις",
+    "executionsMessage": "Οι εκτελέσεις συναλλαγών θα εμφανίζονται εδώ"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Μέσο",
+      "side": "Πλευρά",
+      "type": "Τύπος",
+      "status": "Κατάσταση",
+      "quantity": "Ποσότητα",
+      "price": "Τιμή",
+      "leverage": "Μόχλευση",
+      "reduceOnly": "Μόνο μείωση",
+      "created": "Δημιουργήθηκε"
+    },
+    "executions": {
+      "orderId": "ID εντολής",
+      "instrument": "Μέσο",
+      "side": "Πλευρά",
+      "size": "Μέγεθος",
+      "price": "Τιμή",
+      "total": "Σύνολο",
+      "fee": "Προμήθεια",
+      "feeAsset": "Ενεργητικό προμήθειας",
+      "executed": "Εκτελέστηκε"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Νέα χειροκίνητη εντολή",
+    "titleConfirm": "Επιβεβαίωση εντολής",
+    "fields": {
+      "exchange": "Αγορά",
+      "instrument": "Μέσο",
+      "side": "Πλευρά",
+      "orderType": "Τύπος εντολής",
+      "quantity": "Ποσότητα",
+      "price": "Τιμή",
+      "stopPrice": "Τιμή stop",
+      "mode": "Λειτουργία",
+      "wallet": "Πορτοφόλι",
+      "type": "Τύπος"
+    },
+    "sideOptions": {
+      "buy": "Αγορά",
+      "sell": "Πώληση"
+    },
+    "orderTypeOptions": {
+      "market": "Αγοράς",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Ζωντανή",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — μόνο δεδομένα αγοράς",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Ακύρωση",
+      "reviewOrder": "Έλεγχος εντολής",
+      "back": "Πίσω",
+      "confirmOrder": "Επιβεβαίωση εντολής",
+      "submitting": "Υποβολή..."
+    },
+    "errors": {
+      "missingRequired": "Όλα τα υποχρεωτικά πεδία πρέπει να συμπληρωθούν",
+      "quantityPositive": "Η ποσότητα πρέπει να είναι θετικός αριθμός",
+      "priceRequired": "Η τιμή είναι υποχρεωτική για αυτόν τον τύπο εντολής",
+      "pricePositive": "Η τιμή πρέπει να είναι θετικός αριθμός",
+      "stopPriceRequired": "Η τιμή stop είναι υποχρεωτική για αυτόν τον τύπο εντολής",
+      "stopPricePositive": "Η τιμή stop πρέπει να είναι θετικός αριθμός",
+      "createFailed": "Η δημιουργία εντολής απέτυχε"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Αυτό το μέσο είναι μόνο για παρατήρηση — υποβάλετε εντολές σε μέσο που υποστηρίζει εκτέλεση.",
+      "unknownInstrument": "Αυτό το μέσο δεν αναγνωρίζεται. Επαναφορτώστε τη λίστα και δοκιμάστε ξανά.",
+      "capsViolation": "Αυτή η εντολή θα υπερέβαινε τα όρια ασφαλείας του λογαριασμού. Ελέγξτε τις ρυθμίσεις κινδύνου και δοκιμάστε ξανά."
+    }
+  }
+}

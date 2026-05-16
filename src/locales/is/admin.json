@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Stjórnun",
+    "subtitle": "Stýra notendum og kerfisstillingum"
+  },
+  "rolePermissions": {
+    "title": "Heimildir hlutverka",
+    "viewer": {
+      "label": "Áhorfandi",
+      "description": "Lesaðgangur að yfirliti og markaðsgögnum. Getur ekki stýrt ferlum, stefnum eða kerfisstillingum."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Allar heimildir áhorfanda auk viðskiptaaðgerða, framkvæmdar stefna, ferlastjórnunar og vöktunar á heilsu kerfisins."
+    },
+    "admin": {
+      "label": "Kerfisstjóri",
+      "description": "Fullur kerfisaðgangur, þar á meðal notendastjórnun, kerfisstillingar, stilling API lykla og allar heimildir operators."
+    },
+    "table": {
+      "resource": "Tilfang",
+      "viewer": "Áhorfandi",
+      "operator": "Operator",
+      "admin": "Kerfisstjóri"
+    },
+    "resources": {
+      "overview": "Yfirlit",
+      "market": "Markaðsgögn",
+      "processes": "Ferli",
+      "strategies": "Stefnur",
+      "orders": "Pantanir og framkvæmdir",
+      "positions": "Stöður",
+      "signals": "Merki",
+      "health": "Heilsa",
+      "admin": "Stjórnun",
+      "settings": "Stillingar"
+    }
+  },
+  "common": {
+    "cancel": "Hætta við",
+    "selectWallet": "Velja veski",
+    "selectAWallet": "Veldu veski",
+    "chooseWalletPlaceholder": "Veldu veski...",
+    "selectWalletPlaceholder": "Velja veski...",
+    "walletLabel": "Veski",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Óþekkt villa",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Aðgangi hafnað",
+      "message": "Ekki er heimild til að stýra notendum. Hafðu samband við kerfisstjóra."
+    },
+    "list": {
+      "title": "Notendastjórnun",
+      "countLabel": "{{count}} notendur",
+      "showInactive": "Sýna óvirka",
+      "hideInactive": "Fela óvirka",
+      "addUser": "Bæta við notanda",
+      "searchPlaceholder": "Leita eftir notandanafni, netfangi eða hlutverki...",
+      "columns": {
+        "user": "Notandi",
+        "role": "Hlutverk",
+        "status": "Staða",
+        "createdAt": "Búið til",
+        "actions": "Aðgerðir"
+      },
+      "status": {
+        "active": "Virkur",
+        "inactive": "Óvirkur"
+      },
+      "unknown": "Óþekkt",
+      "empty": {
+        "title": "Engir notendur fundust",
+        "noMatch": "Engir notendur passa við leitarskilyrðin.",
+        "noUsers": "Engir notendur fundust.",
+        "noActive": "Engir virkir notendur fundust."
+      },
+      "errorLoading": "Villa við að hlaða notendur: {{message}}",
+      "deactivate": {
+        "title": "Afvirkja notanda",
+        "message": "Á örugglega að afvirkja notandann „{{username}}“? Hann getur ekki lengur skráð sig inn.",
+        "confirm": "Afvirkja"
+      },
+      "toast": {
+        "deactivated": "Notandi hefur verið afvirkjaður",
+        "deactivateError": "Villa við að afvirkja notanda"
+      }
+    },
+    "form": {
+      "titleEdit": "Breyta notanda",
+      "titleAdd": "Bæta við notanda",
+      "fields": {
+        "username": "Notandanafn",
+        "usernamePlaceholder": "Sláðu inn notandanafn",
+        "password": "Lykilorð",
+        "passwordPlaceholder": "Sláðu inn lykilorð",
+        "newPassword": "Nýtt lykilorð",
+        "newPasswordPlaceholder": "Sláðu inn nýtt lykilorð",
+        "email": "Netfang",
+        "emailPlaceholder": "Sláðu inn netfang",
+        "role": "Hlutverk",
+        "accountActive": "Reikningur virkur",
+        "resetUserPassword": "Endurstilla lykilorð notanda"
+      },
+      "roles": {
+        "viewer": "Áhorfandi",
+        "operator": "Operator",
+        "admin": "Kerfisstjóri"
+      },
+      "validation": {
+        "usernameRequired": "Notandanafn er áskilið",
+        "usernameMinLength": "Notandanafn verður að vera að minnsta kosti 3 stafir",
+        "emailRequired": "Netfang er áskilið",
+        "emailInvalid": "Ógilt snið netfangs",
+        "passwordRequired": "Lykilorð er áskilið",
+        "passwordMinLength": "Lykilorð verður að vera að minnsta kosti 8 stafir",
+        "passwordRequiredWhenResetting": "Lykilorð er áskilið við endurstillingu"
+      },
+      "actions": {
+        "saveChanges": "Vista breytingar",
+        "createUser": "Búa til notanda"
+      },
+      "toast": {
+        "created": "Notandi hefur verið búinn til",
+        "createError": "Villa við að búa til notanda",
+        "updated": "Notandi hefur verið uppfærður",
+        "updateError": "Villa við að uppfæra notanda",
+        "passwordReset": "Lykilorð notanda hefur verið endurstillt",
+        "resetError": "Villa við að endurstilla lykilorð"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Aðgangi hafnað",
+      "message": "Ekki er heimild til að stýra aðgangsumfangi. Hafðu samband við kerfisstjóra."
+    },
+    "list": {
+      "title": "Aðgangsumfang",
+      "countLabel": "{{count}} umfang",
+      "createGrant": "Veita umfang",
+      "selectWalletPrompt": "Veldu veski hér að ofan til að skoða aðgangsumfang þess.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Umfang",
+        "target": "Markmið",
+        "grantedAt": "Veitt",
+        "actions": "Aðgerðir"
+      },
+      "empty": {
+        "noGrants": "Engar veitingar fundust",
+        "noGrantsHint": "Þetta veski hefur ekkert virkt aðgangsumfang."
+      },
+      "errorLoading": "Villa við að hlaða umfang: {{message}}",
+      "handover": "Afhenda"
+    },
+    "form": {
+      "title": "Veita aðgangsumfang",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Veldu operator...",
+        "wallet": "Veski",
+        "scopeKind": "Tegund umfangs",
+        "underlyingPublicId": "Opinbert ID undirliggjandi",
+        "instrumentPublicId": "Opinbert ID gernings",
+        "underlyingPlaceholder": "t.d. BTC",
+        "instrumentPlaceholder": "t.d. BTC-USD-PERP",
+        "note": "Athugasemd (valfrjálst)",
+        "notePlaceholder": "Valfrjáls athugasemd"
+      },
+      "scopeKinds": {
+        "underlying": "Undirliggjandi",
+        "instrument": "Gerningur"
+      },
+      "validation": {
+        "operatorRequired": "Operator er áskilinn",
+        "walletRequired": "Veski er áskilið",
+        "targetRequired": "Markmiðs-ID er áskilið"
+      },
+      "actions": {
+        "createGrant": "Veita umfang"
+      },
+      "toast": {
+        "created": "Aðgangsumfang veitt",
+        "conflictError": "Árekstur: annar operator hefur þegar veitingu á þessu umfangi",
+        "createError": "Villa við að veita aðgangsumfang"
+      }
+    },
+    "handover": {
+      "title": "Afhenda aðgangsumfang",
+      "fields": {
+        "currentHolder": "Núverandi handhafi",
+        "scope": "Umfang",
+        "wallet": "Veski",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Afhenda til operators",
+        "transferToPlaceholder": "Veldu móttökuoperator...",
+        "reason": "Ástæða (valfrjálst)",
+        "reasonPlaceholder": "t.d. vaktaskipti"
+      },
+      "actions": {
+        "handover": "Afhenda"
+      },
+      "toast": {
+        "completed": "Aðgangsumfang afhent",
+        "conflictError": "Árekstur: móttökuoperator hefur þegar árekstrarveitingu",
+        "handoverError": "Villa við að afhenda aðgangsumfang"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Aðgangi hafnað",
+      "message": "Ekki er heimild til að stýra skilríkjum veskis. Hafðu samband við kerfisstjóra."
+    },
+    "list": {
+      "title": "Skilríki veskis",
+      "countLabel": "{{count}} skilríki",
+      "addCredential": "Bæta við skilríki",
+      "selectWalletPrompt": "Veldu veski hér að ofan til að skoða skilríki þess.",
+      "columns": {
+        "exchange": "Kauphöll",
+        "type": "Tegund",
+        "label": "Merki",
+        "createdAt": "Búið til",
+        "actions": "Aðgerðir"
+      },
+      "empty": {
+        "noCredentials": "Engin skilríki fundust",
+        "noCredentialsHint": "Þetta veski hefur engin virk skilríki."
+      },
+      "errorLoading": "Villa við að hlaða skilríki: {{message}}",
+      "rotate": "Endurnýja"
+    },
+    "form": {
+      "title": "Bæta við skilríki",
+      "fields": {
+        "wallet": "Veski",
+        "exchange": "Kauphöll",
+        "exchangePlaceholder": "t.d. kraken",
+        "credentialType": "Tegund skilríkis",
+        "label": "Merki (valfrjálst)",
+        "labelPlaceholder": "t.d. aðal viðskiptalykill",
+        "pemPlaceholder": "Límdu einkalykil á PEM-sniði hér"
+      },
+      "fieldLabels": {
+        "api_key": "API lykill",
+        "api_secret": "API leyndarmál",
+        "private_key_pem": "Einkalykill (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Endurnýjunartoken",
+        "initial_balance": "Upphafsstaða"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API lykill + leyndarmál",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Veski er áskilið",
+        "exchangeRequired": "Kauphöll er áskilin",
+        "fieldRequired": "{{field}} er áskilið"
+      },
+      "actions": {
+        "addCredential": "Bæta við skilríki"
+      },
+      "toast": {
+        "created": "Skilríki búið til",
+        "conflictError": "Árekstur: þetta veski hefur þegar virkt skilríki fyrir þessa kauphöll",
+        "createError": "Villa við að búa til skilríki"
+      }
+    },
+    "rotate": {
+      "title": "Endurnýjun skilríkja",
+      "fields": {
+        "exchange": "Kauphöll",
+        "type": "Tegund",
+        "label": "Merki",
+        "newLabel": "Nýtt merki (valfrjálst)",
+        "newLabelPlaceholder": "t.d. endurnýjaður lykill 2026-04",
+        "pemPlaceholder": "Límdu einkalykil á PEM-sniði hér"
+      },
+      "actions": {
+        "rotate": "Endurnýja"
+      },
+      "toast": {
+        "rotated": "Skilríki endurnýjað",
+        "rotateError": "Villa við að endurnýja skilríki"
+      }
+    }
+  }
+}

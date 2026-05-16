@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Pārskats"
+  },
+  "metrics": {
+    "feedsRunning": "Darbojošies Feed",
+    "strategiesActive": "Aktīvās stratēģijas",
+    "openOrders": "Atvērtie rīkojumi",
+    "todaysExecutions": "Šodienas izpildes",
+    "executionsOn": "Izpildes ({{date}})"
+  },
+  "status": {
+    "stopped": "Apturēts",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Darbojas",
+    "active": "Aktīvs"
+  },
+  "processStatus": {
+    "title": "Procesu statuss",
+    "feeds": "Feeds",
+    "strategies": "Stratēģijas",
+    "executors": "Izpildītāji",
+    "brokers": "Brokeri"
+  },
+  "portfolio": {
+    "title": "Portfeļa kopsavilkums",
+    "totalValue": "Kopējā vērtība",
+    "longExposure": "Garā ekspozīcija",
+    "shortExposure": "Īsā ekspozīcija",
+    "netDelta": "Neto delta",
+    "unrealizedPnl": "Nerealizētais P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Pozīcijas",
+    "instrumentsCount": "{{count}} instrumenti",
+    "empty": "Pozīciju dati nav pieejami"
+  },
+  "signals": {
+    "title": "Nesenie signāli",
+    "empty": "Nesenu signālu nav",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Nesenās izpildes",
+    "empty": "Nesenu izpilžu nav",
+    "noTime": "N/A"
+  }
+}

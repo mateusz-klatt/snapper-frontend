@@ -1,0 +1,83 @@
+{
+  "loading": "Įkeliama...",
+  "error": "Klaida",
+  "retry": "Bandyti dar kartą",
+  "close": "Uždaryti",
+  "cancel": "Atšaukti",
+  "confirm": "Patvirtinti",
+  "save": "Išsaugoti",
+  "documentation": "Dokumentacija (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Keisti kalbą",
+    "flagAriaLabel": "Perjungti į {{country}}",
+    "currentAriaLabel": "Dabartinė kalba: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Prekybos konsolė",
+    "tagline": "Tiksli darbo aplinka",
+    "openSidebar": "Atidaryti šoninį skydelį",
+    "closeSidebar": "Uždaryti šoninį skydelį",
+    "sidebar": "Šoninis skydelis",
+    "mainNavigation": "Pagrindinė navigacija",
+    "tradingContent": "Prekybos turinys",
+    "skipToContent": "Pereiti prie prekybos turinio",
+    "lag": "Vėlavimas:",
+    "lagTitle": "Kelionės pirmyn ir atgal delsa iki WebSocket serverio",
+    "topics": "Temos:",
+    "topicsTitle": "Prenumeruojamų WebSocket temų skaičius",
+    "connected": "Prisijungta",
+    "disconnected": "Atsijungta",
+    "connectedTitle": "Prisijungta prie WebSocket",
+    "disconnectedTitle": "Atsijungta nuo WebSocket",
+    "switchToLightMode": "Perjungti į šviesų režimą",
+    "switchToDarkMode": "Perjungti į tamsų režimą",
+    "timeTravelBanner": "Kelionės laiku režimas — rodomi istoriniai duomenys (tik skaitymui)",
+    "lagUnknown": "Nežinoma",
+    "walletPicker": {
+      "ariaLabel": "Aktyvi piniginė",
+      "placeholder": "Piniginė",
+      "allWallets": "Visos piniginės",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktyvus operatorius",
+      "placeholder": "Operatorius",
+      "allOperators": "Visi operatoriai"
+    },
+    "timeTravel": {
+      "pickerTitle": "Kelionė laiku: pasirinkite istorinį laiko tašką",
+      "exitAriaLabel": "Išeiti iš kelionės laiku režimo",
+      "exitTitle": "Grįžti į tiesioginį režimą"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Tik stebėjimui skirtas instrumentas. Snapper gauna rinkos duomenis, bet negali teikti pavedimų šiai (simbolio, biržos) porai.",
+      "ariaLabel": "Tik rinkos duomenų instrumentas",
+      "badge": "Tik rinkos duomenys"
+    },
+    "liveOnly": {
+      "notice": "Šis skirtukas rodo dabartinę būseną — istorinis vaizdas nepasiekiamas."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Kažkas įvyko ne taip",
+    "titleWithComponent": "Klaida komponente {{componentName}}",
+    "stackTrace": "Dėklo pėdsakas",
+    "tryAgain": "Bandyti dar kartą"
+  },
+  "nav": {
+    "overview": "Apžvalga",
+    "market": "Rinkos duomenys",
+    "processes": "Procesai",
+    "strategies": "Strategijos",
+    "orders": "Pavedimai ir vykdymai",
+    "positions": "Pozicijos",
+    "signals": "Signalai",
+    "backtests": "Backtests",
+    "health": "Būklė",
+    "admin": "Administravimas",
+    "aiIntegration": "AI integracija",
+    "aiReviews": "AI peržiūros",
+    "settings": "Nustatymai"
+  }
+}

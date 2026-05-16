@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Markaðsgögn"
+  },
+  "controls": {
+    "exchange": "Kauphöll:",
+    "instrument": "Gerningur:",
+    "timeframe": "Tímarammi:",
+    "selectExchange": "Velja kauphöll",
+    "searchInstrument": "Leita að gerningi..."
+  },
+  "timeframes": {
+    "1m": "1 mínúta",
+    "5m": "5 mínútur",
+    "15m": "15 mínútur",
+    "30m": "30 mínútur",
+    "1h": "1 klukkustund",
+    "4h": "4 klukkustundir",
+    "1d": "1 dagur"
+  },
+  "stats": {
+    "currentPrice": "Núverandi verð",
+    "change24h": "24 klst breyting",
+    "high24h": "24 klst hæsta",
+    "low24h": "24 klst lægsta"
+  },
+  "chart": {
+    "title": "Verðrit",
+    "errorPrefix": "Villa við að hlaða grafgögnum:",
+    "unknownError": "Óþekkt villa",
+    "noDataTitle": "Engin gögn tiltæk fyrir {{instrument}}",
+    "noDataHint": "Gerningurinn er hugsanlega ekki til eða hefur engin {{timeframe}} gögn"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Engir tengdir gerningar eru stilltir fyrir {{instrument}} á {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Skyndiminni að hitna: {{sampleCount}} / {{expected}} kerti tiltæk {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(leitt af 1m)",
+      "db": "(úr DB)"
+    }
+  }
+}

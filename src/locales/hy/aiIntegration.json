@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI ինտեգրում",
+    "subtitle": "Կառավարեք AI դելեգատները, որոնք միանում են Snapper-ին MCP-ի միջոցով։",
+    "loading": "AI ինտեգրումը բեռնվում է…",
+    "createDelegate": "Ստեղծել դելեգատ"
+  },
+  "disabled": {
+    "title": "AI ինտեգրումն անջատված է",
+    "message": "Միացրեք feature flag-ը Կարգավորումներ → Feature Flags բաժնում՝ AI դելեգատները կառավարելու համար։"
+  },
+  "list": {
+    "loadingDelegates": "Դելեգատները բեռնվում են…",
+    "emptyTitle": "AI դելեգատներ դեռ չկան",
+    "emptyMessage": "Սեղմեք «Ստեղծել դելեգատ»՝ մեկը թողարկելու և դրա MCP կազմաձևման հատվածը գեներացնելու համար։",
+    "columns": {
+      "label": "Պիտակ",
+      "username": "Օգտանուն",
+      "created": "Ստեղծվել է",
+      "maxOpenOrders": "Առավելագույն բաց հանձնարարականներ",
+      "maxDailyUsd": "Առավելագույն օրական USD",
+      "status": "Վիճակ",
+      "actions": "Գործողություններ"
+    },
+    "status": {
+      "active": "Ակտիվ",
+      "revoked": "Չեղարկված"
+    },
+    "default": "լռելյայն",
+    "details": "Մանրամասներ",
+    "viewAriaLabel": "Դիտել {{label}} դելեգատը"
+  },
+  "wizard": {
+    "title": "Ստեղծել AI դելեգատ",
+    "step1": "1. Ինքնություն",
+    "step2": "2. Շրջանակ և սահմանաչափեր",
+    "step3": "3. Վերանայում",
+    "stepDone": "✓ Ավարտված է",
+    "identity": {
+      "labelField": "Պիտակ",
+      "labelPlaceholder": "օր.՝ Alpha prop desk",
+      "labelHelpPrefix": "Դելեգատի օգտանունը սերվերի կողմից կստացվի որպես ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Շրջանակ",
+      "operatorLabel": "Օպերատորի public_id (ըստ ցանկության)",
+      "operatorPlaceholder": "Թողեք դատարկ՝ կանչողի հիմնական օպերատորը ժառանգելու համար"
+    },
+    "caps": {
+      "heading": "Առևտրային սահմանաչափեր (բոլորը ըստ ցանկության)",
+      "maxOpenOrders": "Առավելագույն բաց հանձնարարականներ",
+      "maxDailyNotionalUsd": "Առավելագույն օրական անվանական USD",
+      "maxCancelsPerMinute": "Առավելագույն չեղարկումներ մեկ րոպեում",
+      "perInstrument": "Առավելագույն քանակ մեկ գործիքի համար (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "լռելյայն",
+      "errorInvalidJson": "max_order_quantity_per_instrument-ը պետք է լինի վավեր JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument-ը պետք է լինի JSON օբյեկտ կամ դատարկ",
+      "errorNegative": "Սահմանաչափերը պետք է լինեն ոչ բացասական ամբողջ թվեր կամ դատարկ։"
+    },
+    "review": {
+      "heading": "Վերանայել և ստեղծել",
+      "rowLabel": "Պիտակ",
+      "rowOperator": "Օպերատորի public_id",
+      "rowMaxOpenOrders": "Առավելագույն բաց հանձնարարականներ",
+      "rowMaxDailyNotional": "Առավելագույն օրական անվանական USD",
+      "rowMaxCancelsPerMinute": "Առավելագույն չեղարկումներ մեկ րոպեում",
+      "rowPerInstrument": "Առավելագույն քանակ մեկ գործիքի համար",
+      "operatorDefault": "(կանչողի հիմնական օպերատոր)",
+      "defaultValue": "(լռելյայն)"
+    },
+    "buttons": {
+      "cancel": "Չեղարկել",
+      "next": "Հաջորդը",
+      "back": "Հետ",
+      "createDelegate": "Ստեղծել դելեգատ",
+      "iSavedClose": "Պահված է — փակել"
+    },
+    "toast": {
+      "delegateCreated": "Դելեգատը ստեղծվել է",
+      "failedToCreate": "Չհաջողվեց ստեղծել դելեգատ"
+    }
+  },
+  "detail": {
+    "loading": "Դելեգատը բեռնվում է…",
+    "notFound": "Դելեգատը չի գտնվել կամ հասանելի չէ։",
+    "back": "Հետ",
+    "backToList": "Հետ դեպի ցուցակ",
+    "updateCaps": "Թարմացնել սահմանաչափերը",
+    "revoke": "Չեղարկել",
+    "save": "Պահել",
+    "cancel": "Չեղարկել",
+    "tradingCaps": "Առևտրային սահմանաչափեր",
+    "status": "Վիճակ",
+    "active": "Ակտիվ",
+    "revoked": "Չեղարկված",
+    "createdAt": "Ստեղծվել է",
+    "createdBy": "Ստեղծել է (օգտատիրոջ public_id)",
+    "publicId": "Հանրային ID",
+    "maxOpenOrders": "Առավելագույն բաց հանձնարարականներ",
+    "maxDailyNotionalUsd": "Առավելագույն օրական անվանական USD",
+    "maxCancelsPerMinute": "Առավելագույն չեղարկումներ մեկ րոպեում",
+    "perInstrument": "Առավելագույն քանակ մեկ գործիքի համար",
+    "defaultValue": "(լռելյայն)",
+    "editorPlaceholder": "(լռելյայն)",
+    "toast": {
+      "capsUpdated": "Սահմանաչափերը թարմացվել են",
+      "failedToUpdateCaps": "Չհաջողվեց թարմացնել սահմանաչափերը",
+      "negativeIntegersError": "Սահմանաչափերը պետք է լինեն ոչ բացասական ամբողջ թվեր կամ դատարկ։"
+    }
+  },
+  "revokeDialog": {
+    "title": "Չեղարկե՞լ «{{label}}» դելեգատը։",
+    "message": "Սա չեղարկում է դելեգատի token-ները և դադարեցնում նրա MCP բաժանորդագրությունները։ Սա հնարավոր չէ հետարկել։",
+    "confirm": "Չեղարկել",
+    "cancel": "Չեղարկել",
+    "toast": {
+      "delegateRevoked": "Դելեգատը չեղարկվել է",
+      "failedToRevoke": "Չհաջողվեց չեղարկել դելեգատը"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Պահեք այս հավատարմագրերը հիմա",
+    "warningMessage": "Դրանք կրկին չեն ցուցադրվի։ Snapper-ը չի պահում հում token-ները. այս վիզարդը փակելուց հետո միակ պատճենը կլինի ձեր MCP հաճախորդի կազմաձևում։",
+    "snippetHelp": "Երկարակյաց AI դելեգատի token (~10 տարի)։ Նույն token-ը նույնականացնում է և proxy MCP server-ը, և watch monitor-ը։ Փոխարինելու համար ապաակտիվացրեք այս դելեգատը և ստեղծեք նորը։",
+    "baseUrlHelpPrefix": "Բազային URL-ը ստացվում է այս դիտարկիչի origin-ից + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Պատճենել կազմաձևման հատվածը clipboard-ում",
+    "copy": "Պատճենել clipboard-ում",
+    "copied": "Պատճենվել է"
+  }
+}

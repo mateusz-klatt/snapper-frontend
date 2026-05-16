@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Διαχείριση στρατηγικών",
+    "register": "Καταχώριση στρατηγικής",
+    "saving": "Αποθήκευση…",
+    "descriptionCanManage": "Καταχωρίστε νέες διεργασίες στρατηγικής απευθείας από το UI. Το Autostart διατηρεί τη διεργασία ενεργή μετά από επανεκκινήσεις.",
+    "descriptionViewer": "Δείτε τις διαμορφωμένες στρατηγικές και την κατάστασή τους. Επικοινωνήστε με χειριστή ή διαχειριστή για τη διαχείριση στρατηγικών.",
+    "searchPlaceholder": "Αναζήτηση στρατηγικών...",
+    "filter": {
+      "all": "Όλες οι καταστάσεις",
+      "running": "Εκτελείται",
+      "stopped": "Σταματημένο"
+    },
+    "configuredHeading": "Διαμορφωμένες στρατηγικές",
+    "noMatches": "Καμία στρατηγική δεν ταιριάζει με τα φίλτρα",
+    "clearFilters": "Καθαρισμός φίλτρων",
+    "emptyTitle": "Δεν έχουν διαμορφωθεί στρατηγικές",
+    "emptyCanManage": "Καταχωρίστε στρατηγική για να ξεκινήσει αλγοριθμική διαπραγμάτευση",
+    "emptyViewer": "Δεν έχουν διαμορφωθεί ακόμη στρατηγικές"
+  },
+  "confirm": {
+    "startTitle": "Έναρξη {{name}}",
+    "startMessage": "Αυτό θα εκκινήσει τη στρατηγική {{name}}. Μπορεί να αρχίσει ζωντανές συναλλακτικές λειτουργίες.",
+    "stopTitle": "Διακοπή {{name}}",
+    "stopMessage": "Αυτό θα σταματήσει τη στρατηγική {{name}}. Οι ενεργές θέσεις δεν θα κλείσουν αυτόματα."
+  },
+  "toast": {
+    "saved": "Η στρατηγική {{name}} αποθηκεύτηκε",
+    "started": "Η στρατηγική {{name}} εκκινήθηκε",
+    "registerFailed": "Αποτυχία καταχώρισης στρατηγικής: {{message}}",
+    "startSuccess": "Η στρατηγική εκκινήθηκε επιτυχώς",
+    "stopSuccess": "Η στρατηγική σταμάτησε επιτυχώς",
+    "alreadyRunning": "Η στρατηγική εκτελείται ήδη",
+    "notRunning": "Η στρατηγική δεν εκτελείται",
+    "configNotFound": "Η διαμόρφωση στρατηγικής δεν βρέθηκε. Ελέγξτε τις ρυθμίσεις βάσης δεδομένων.",
+    "networkError": "Σφάλμα δικτύου. Ελέγξτε τη σύνδεση και δοκιμάστε ξανά.",
+    "startFailed": "Αποτυχία έναρξης στρατηγικής: {{message}}",
+    "stopFailed": "Αποτυχία διακοπής στρατηγικής: {{message}}",
+    "unknownError": "Άγνωστο σφάλμα"
+  },
+  "card": {
+    "ariaLabel": "Στρατηγική: {{name}}",
+    "modeLabel": "Λειτουργία: {{mode}}",
+    "autostartEnabled": "Autostart: ενεργό",
+    "autostartDisabled": "Autostart: ανενεργό",
+    "statusAriaLabel": "Κατάσταση: {{status}}",
+    "dataLagAriaLabel": "Καθυστέρηση δεδομένων: {{seconds}} δευτερόλεπτα",
+    "lagBadge": "καθυστέρηση: {{seconds}}s",
+    "feedLag": "Καθυστέρηση Feed: {{ms}}ms",
+    "heartbeatAge": "Ηλικία Heartbeat: {{seconds}}s",
+    "metrics": {
+      "status": "Κατάσταση",
+      "dataLag": "Καθυστέρηση δεδομένων",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Εμφάνιση λεπτομερειών",
+    "hideDetails": "Απόκρυψη λεπτομερειών",
+    "inputs": "Είσοδοι ({{count}})",
+    "outputs": "Έξοδοι ({{count}})",
+    "feedPublishers": "Εκδότες Feed ({{count}})",
+    "lastUpdate": "Τελευταία ενημέρωση: {{time}}",
+    "waiting": "Αναμονή για Heartbeat...",
+    "startAriaLabel": "Έναρξη στρατηγικής {{name}}",
+    "stopAriaLabel": "Διακοπή στρατηγικής {{name}}",
+    "start": "Έναρξη",
+    "stop": "Διακοπή",
+    "starting": "Έναρξη...",
+    "stopping": "Διακοπή...",
+    "status": {
+      "starting": "εκκινεί",
+      "stopping": "σταματά",
+      "running": "εκτελείται",
+      "stopped": "σταματημένη"
+    },
+    "health": {
+      "healthy": "Υγιής — λαμβάνονται φρέσκα δεδομένα",
+      "warning": "Προειδοποίηση — τα δεδομένα είναι παρωχημένα",
+      "error": "Σφάλμα — δεν υπάρχουν πρόσφατα δεδομένα",
+      "unknown": "Άγνωστο — δεν υπάρχουν δεδομένα Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "ΥΓΙΗΣ",
+      "warning": "ΠΡΟΕΙΔΟΠΟΙΗΣΗ",
+      "error": "ΣΦΑΛΜΑ"
+    }
+  },
+  "launchModal": {
+    "title": "Καταχώριση διεργασίας στρατηγικής",
+    "emptyTemplates": "Δεν υπάρχουν καταχωρισμένα πρότυπα στρατηγικής στο backend. Ορίστε τουλάχιστον μία διεργασία στρατηγικής.",
+    "close": "Κλείσιμο",
+    "templateLabel": "Πρότυπο στρατηγικής",
+    "templatePlaceholder": "Επιλέξτε πρότυπο...",
+    "templateFallbackDescription": "Στρατηγική καταχωρισμένη στο backend",
+    "loadingDefaults": "Φόρτωση προεπιλογών προτύπου…",
+    "loadDefaultsError": "Δεν είναι δυνατή η φόρτωση προεπιλογών προτύπου. Ελέγξτε τα αρχεία καταγραφής backend.",
+    "processNameLabel": "Όνομα διεργασίας",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Επιτρεπόμενοι χαρακτήρες: πεζά γράμματα, αριθμοί, κάτω παύλες",
+    "instanceNameLabel": "Όνομα παρουσίας στρατηγικής",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Χρησιμοποιείται στη διαμόρφωση στρατηγικής και στα θέματα εξόδου",
+    "executionModeLabel": "Λειτουργία εκτέλεσης",
+    "executionModeThread": "Ενσωματωμένο νήμα",
+    "executionModeProcess": "Απομονωμένη διεργασία",
+    "executionModeHelp": "Τα νήματα μοιράζονται μνήμη, οι διεργασίες παρέχουν ισχυρότερη απομόνωση.",
+    "flagsLabel": "Σημαίες",
+    "autostartLabel": "Autostart κατά την εκκίνηση του server",
+    "startImmediatelyLabel": "Άμεση έναρξη μετά την καταχώριση",
+    "noteLabel": "Σημείωση (προαιρετικά)",
+    "notePlaceholder": "Περιγράψτε τον σκοπό ή τις παραμέτρους αυτής της παρουσίας στρατηγικής.",
+    "noteHelp": "Αποθηκεύεται μαζί με τη διαμόρφωση για να βοηθά στην ταυτοποίηση αυτής της διεργασίας.",
+    "cancel": "Ακύρωση",
+    "submit": "Καταχώριση στρατηγικής",
+    "submitting": "Καταχώριση…"
+  }
+}

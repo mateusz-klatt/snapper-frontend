@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Til baka",
+    "backToList": "← Til baka í Backtests"
+  },
+  "status": {
+    "pending": "Í bið",
+    "running": "Keyrir",
+    "completed": "Lokið",
+    "failed": "Mistókst",
+    "cancelled": "Hætt við"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Hætta við",
+      "rerun": "Keyra aftur"
+    },
+    "fields": {
+      "timeframe": "Tímarammi",
+      "period": "Tímabil",
+      "initialCash": "Upphafsfé",
+      "id": "ID"
+    },
+    "errorPrefix": "Villa: {{message}}",
+    "filter": {
+      "ariaLabel": "Sía Backtests eftir stöðu",
+      "options": {
+        "all": "Allar stöður",
+        "pending": "Í bið",
+        "running": "Keyrir",
+        "completed": "Lokið",
+        "failed": "Mistókst",
+        "cancelled": "Hætt við"
+      }
+    },
+    "empty": {
+      "title": "Engin Backtests",
+      "message": "Keyrðu Backtest í gegnum CLI eða API til að sjá niðurstöður hér."
+    }
+  },
+  "detail": {
+    "title": "Backtest keyrsla",
+    "fields": {
+      "strategy": "Stefna",
+      "instrument": "Gerningur",
+      "status": "Staða",
+      "period": "Tímabil",
+      "crossAsset": "Þver-eigna úthlutun",
+      "configHash": "Stillingahash"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} framkvæmdir",
+    "errors": {
+      "invalidRunId": "Ógilt keyrslu-ID — verður að vera UUID7 (fékk „{{id}}“).",
+      "loadFailed": "Mistókst að hlaða keyrslu: {{message}}",
+      "notFound": "fannst ekki"
+    }
+  },
+  "compare": {
+    "title": "Bera saman",
+    "headingFull": "Backtest samanburður",
+    "loading": "Hleð samanburði…",
+    "vs": "á móti",
+    "runLabel": "Keyrsla {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Mælikvarðar",
+      "equityOverlay": "Yfirlögn eiginfjár",
+      "trades": "Viðskipti",
+      "signals": "Merki"
+    },
+    "pairingMode": {
+      "auto": "sjálfvirkt",
+      "manual": "handvirkt"
+    },
+    "errors": {
+      "notFound": "Samanburður fannst ekki í núverandi veski.",
+      "loadFailed": "Mistókst að hlaða samanburði: {{message}}",
+      "unknown": "óþekkt villa",
+      "emptyResponse": "Tómt samanburðarsvar."
+    },
+    "launcher": {
+      "title": "Bera saman",
+      "submit": "Bera saman",
+      "autoPair": "Bera saman við það nýjasta",
+      "terminalGate": "samanburður er tiltækur þegar þessi keyrsla nær lokastöðu",
+      "noSiblings": "engar aðrar keyrslur með þessari stillingu",
+      "limitNotice": "sýni {{count}} nýjustu — notaðu handvirkt par fyrir eldri keyrslur",
+      "pickPlaceholder": "— veldu keyrslu til samanburðar —",
+      "showAllLabel": "Sýna allar keyrslur (ekki aðeins sömu stillingu)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "allar keyrslur",
+        "sameConfig": "sama stilling"
+      },
+      "errors": {
+        "pickRequired": "veldu keyrslu úr listanum"
+      }
+    },
+    "diffColumns": {
+      "common": "Sameiginlegt",
+      "onlyA": "Aðeins í A",
+      "onlyB": "Aðeins í B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Engir samanburðarhæfir mælikvarðar — hvorug keyrsla hafði skráð gildi.",
+      "columns": {
+        "name": "Mælikvarði",
+        "runA": "Keyrsla A",
+        "runB": "Keyrsla B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Keyrsla A",
+        "runB": "Keyrsla B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Bíð eftir framvindu…",
+    "candles": "{{done}} / {{total}} kerti",
+    "candlesNoTotal": "{{done}} kerti",
+    "equity": "eigið fé {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} viðskipti",
+    "milestoneLine": "áfangi {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

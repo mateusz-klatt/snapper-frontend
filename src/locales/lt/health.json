@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Sistemos būklė",
+    "healthMetricsHeading": "Būklės metrikos",
+    "processStatusHeading": "Procesų būsena",
+    "activeBacktestsHeading": "Aktyvūs Backtests",
+    "quickActionsHeading": "Greitieji veiksmai",
+    "featureNotImplemented": "Funkcija dar neįgyvendinta",
+    "restartServices": "Paleisti paslaugas iš naujo",
+    "runHealthCheck": "Vykdyti būklės patikrą",
+    "viewLogs": "Peržiūrėti žurnalus",
+    "exportReport": "Eksportuoti ataskaitą"
+  },
+  "status": {
+    "healthy": "Sveika",
+    "stopped": "Sustabdyta",
+    "error": "Klaida",
+    "warning": "Įspėjimas",
+    "completed": "Baigta",
+    "unknown": "Nežinoma"
+  },
+  "metrics": {
+    "tradingEngine": "Prekybos variklis",
+    "tradingEngineDescription": "Strategijų vykdymo variklis",
+    "activeBacktests": "Aktyvūs Backtests",
+    "activeBacktestsDescription": "Vykdomi Backtest procesai",
+    "active": "Aktyvu",
+    "inactive": "Neaktyvu"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} val. {{minutes}} min",
+    "uptimeDays": "{{days}} d. {{hours}} val.",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Veikimo laikas",
+    "exitCode": "Išėjimo kodas: {{code}}",
+    "service": "paslauga",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Duomenų bazės statistika",
+    "loading": "Įkeliama duomenų bazės statistika…",
+    "unavailable": "Duomenų bazės statistika nepasiekiama: {{message}}",
+    "fallbackError": "Nepavyko įkelti duomenų bazės statistikos.",
+    "sampled": "imta imtis {{age}}",
+    "samplerSummary": "Imčių intervalas: {{seconds}} s · {{count}} lentelių",
+    "columns": {
+      "table": "Lentelė",
+      "kind": "Tipas",
+      "total": "Iš viso",
+      "current": "Dabartiniai",
+      "closed": "Uždaryti",
+      "archivable": "Archyvuotini",
+      "status": "Būsena"
+    },
+    "stale": "pasenę"
+  },
+  "notification": {
+    "title": "Pranešimų Sidecar",
+    "loading": "Įkeliamos pranešimų metrikos…",
+    "unavailable": "Pranešimų metrikos nepasiekiamos: {{message}}",
+    "fallbackError": "Nepavyko įkelti pranešimų metrikų.",
+    "sent": "Išsiųsta",
+    "sentDescription": "Terminalas: išsiųsta",
+    "failed": "Nepavyko",
+    "failedDescription": "Pakartojimų biudžetas išnaudotas",
+    "unregistered": "Išregistruota",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Atšaukta (sritis)",
+    "cancelledScopeDescription": "Srities atšaukimas / naudotojo deaktyvavimas",
+    "outboxDepth": "Outbox gylis",
+    "outboxDepthDescription": "Eilėje, laukiama pakartojimo"
+  },
+  "retention": {
+    "title": "Saugojimo planuoklis",
+    "loading": "Įkeliamas saugojimo vykdymas…",
+    "unavailable": "Saugojimo vykdymas nepasiekiamas: {{message}}",
+    "fallbackError": "Nepavyko įkelti saugojimo vykdymo.",
+    "lastRun": "paskutinis vykdymas {{age}}",
+    "dryRunNotice": "Dry-run režimas: eilutės archyvuojamos, bet iš DB nešalinamos.",
+    "columns": {
+      "table": "Lentelė",
+      "retain": "Saugojimas",
+      "archivedWindow": "Archyvuotas langas",
+      "archived": "Archyvuota",
+      "purged": "Išvalyta",
+      "files": "Failai",
+      "status": "Būsena"
+    },
+    "retainDays": "{{days}} d.",
+    "ok": "gerai",
+    "error": "klaida"
+  },
+  "systemMetrics": {
+    "title": "Procesų būklė",
+    "loading": "Įkeliamos procesų metrikos…",
+    "unavailable": "Procesų metrikos nepasiekiamos: {{message}}",
+    "fallbackError": "Nepavyko įkelti procesų būklės metrikų.",
+    "rawJson": "Neapdorotas JSON",
+    "pid": "PID",
+    "statusValue": "Būsena: {{status}}",
+    "uptime": "Veikimo laikas",
+    "threads": "Gijos",
+    "openFds": "Atviri FD",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Ribota {{count}}×",
+    "memory": "Atmintis",
+    "saturation": "Prisotinimas {{percent}}",
+    "asyncioTasks": "Asyncio užduotys",
+    "asyncioActive": "{{count}} aktyvių",
+    "asyncioPending": "+ {{count}} laukia",
+    "dbPool": "DB telkinys",
+    "liveConns": "Aktyvūs ryšiai: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objektai: {{value}}",
+    "threadsPercent": "Gijos %",
+    "networkConns": "Tinklo ryšiai",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktyvu",
+    "tracemallocIdle": "Neaktyvu"
+  },
+  "relativeAge": {
+    "justNow": "ką tik",
+    "seconds": "prieš {{seconds}} s",
+    "minutes": "prieš {{minutes}} min",
+    "hours": "prieš {{hours}} val.",
+    "days": "prieš {{days}} d."
+  },
+  "duration": {
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} val.",
+    "days": "{{days}} d."
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

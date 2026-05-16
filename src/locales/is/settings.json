@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Stillingar",
+    "subtitle": "Stilla forritsstillingar og færibreytur",
+    "addButton": "Bæta við stillingu",
+    "searchPlaceholder": "Leita í stillingum...",
+    "noResults": "Engar stillingar fundust sem passa við skilyrðin.",
+    "allCategories": "Allir flokkar",
+    "categoryFilterAriaLabel": "Sía stillingar eftir flokki"
+  },
+  "errors": {
+    "loadFailed": "Mistókst að hlaða stillingum",
+    "updateFailed": "Mistókst að uppfæra stillingu",
+    "deleteFailed": "Mistókst að eyða stillingu",
+    "createFailed": "Mistókst að búa til stillingu",
+    "alreadyExists": "Stilling með lyklinum „{{key}}“ er þegar til"
+  },
+  "item": {
+    "edit": "Breyta",
+    "delete": "Eyða",
+    "save": "Vista",
+    "saving": "Vista...",
+    "cancel": "Hætta við",
+    "yesDelete": "Já, eyða",
+    "deleting": "Eyði...",
+    "deleteConfirm": "Eyða þessari stillingu?",
+    "valuePlaceholder": "Sláðu inn gildi stillingar...",
+    "showMore": "Sýna meira",
+    "showLess": "Sýna minna",
+    "toggleAriaLabel": "Víxla {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Viðkvæmt"
+    },
+    "helpText": {
+      "allowShortSelling": "Leyfa vélinni að opna short stöður. SELL merki munu mynda neikvæð desired_units; klemmist í 0 þegar slökkt er.",
+      "allowManualOrders": "Virkja hnappinn Ný pöntun á pöntunarflipanum. Þegar slökkt er skilar POST /api/orders 403."
+    }
+  },
+  "addModal": {
+    "title": "Bæta við nýrri stillingu",
+    "keyLabel": "Lykill",
+    "valueLabel": "Gildi",
+    "categoryLabel": "Flokkur",
+    "descriptionLabel": "Lýsing",
+    "keyPlaceholder": "t.d., walutomat.api_key",
+    "keyHint": "Notaðu punktaritaðan stíl fyrir hreiðraðar stillingar (t.d., category.subcategory.name)",
+    "valuePlaceholder": "Gildi stillingar",
+    "categorySelectPlaceholder": "Veldu fyrirliggjandi eða búðu til nýjan",
+    "newCategoryPlaceholder": "Eða sláðu inn heiti nýs flokks",
+    "descriptionPlaceholder": "Valfrjáls lýsing",
+    "cancel": "Hætta við",
+    "create": "Búa til stillingu",
+    "creating": "Bý til...",
+    "validation": {
+      "keyRequired": "Lykill er áskilinn",
+      "valueRequired": "Gildi er áskilið",
+      "categoryRequired": "Flokkur er áskilinn"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Formritill",
+    "rawEditor": "Hrár JSON ritill",
+    "rawJson": "Hrátt JSON",
+    "switchToForm": "Skipta í form",
+    "importToForm": "Flytja inn í form",
+    "parseError": "Þáttunarvilla: {{message}}",
+    "arraySummary": "Fylki ({{length}} atriði)",
+    "addItem": "Bæta við atriði",
+    "remove": "Fjarlægja",
+    "typeHint": {
+      "array": "(fylki)",
+      "object": "(hlutur)",
+      "string": "(strengur)",
+      "number": "(tala)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(fall)",
+      "symbol": "(tákn)",
+      "undefined": "(óskilgreint)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

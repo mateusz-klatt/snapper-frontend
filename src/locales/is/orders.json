@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Pantanir og framkvæmdir",
+    "newOrder": "Ný pöntun",
+    "exportCsv": "Flytja út CSV"
+  },
+  "tabs": {
+    "orders": "Pantanir ({{total}})",
+    "executions": "Framkvæmdir ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Sía eftir stöðu:",
+    "options": {
+      "all": "Allar pantanir",
+      "new": "Ný",
+      "open": "Opin",
+      "partiallyFilled": "Framkvæmd að hluta",
+      "partially_filled": "Framkvæmd að hluta",
+      "filled": "Framkvæmd",
+      "cancelled": "Hætt við",
+      "rejected": "Hafnað"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Markaður",
+    "quantity": "Magn",
+    "price": "Verð",
+    "created": "Búið til",
+    "createdUnknown": "N/A",
+    "orderId": "Pöntunar-ID",
+    "leverage": "Vogun",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "AÐEINS MINNKA",
+    "cancel": "Hætta við",
+    "cancelling": "Hætt við…",
+    "cancelAriaLabel": "Hætta við pöntun {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Pöntun #{{orderId}}",
+    "filled": "FRAMKVÆMD",
+    "orderLabel": "Pöntun {{orderId}}",
+    "size": "Stærð",
+    "price": "Verð",
+    "total": "Samtals",
+    "executed": "Framkvæmt",
+    "fees": "Gjöld"
+  },
+  "empty": {
+    "ordersTitle": "Engar pantanir fundust",
+    "ordersStartTrading": "Hefjið viðskipti til að sjá pantanir hér",
+    "ordersFilterless": "Engar {{status}} pantanir",
+    "executionsTitle": "Engar framkvæmdir fundust",
+    "executionsMessage": "Framkvæmdir viðskipta munu birtast hér"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Gerningur",
+      "side": "Hlið",
+      "type": "Tegund",
+      "status": "Staða",
+      "quantity": "Magn",
+      "price": "Verð",
+      "leverage": "Vogun",
+      "reduceOnly": "Aðeins minnka",
+      "created": "Búið til"
+    },
+    "executions": {
+      "orderId": "Pöntunar-ID",
+      "instrument": "Gerningur",
+      "side": "Hlið",
+      "size": "Stærð",
+      "price": "Verð",
+      "total": "Samtals",
+      "fee": "Gjald",
+      "feeAsset": "Gjaldmiðill gjalds",
+      "executed": "Framkvæmt"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Ný handvirk pöntun",
+    "titleConfirm": "Staðfesta pöntun",
+    "fields": {
+      "exchange": "Kauphöll",
+      "instrument": "Gerningur",
+      "side": "Hlið",
+      "orderType": "Pöntunartegund",
+      "quantity": "Magn",
+      "price": "Verð",
+      "stopPrice": "Stop verð",
+      "mode": "Hamur",
+      "wallet": "Veski",
+      "type": "Tegund"
+    },
+    "sideOptions": {
+      "buy": "Kaup",
+      "sell": "Sala"
+    },
+    "orderTypeOptions": {
+      "market": "Markaður",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Lifandi",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — aðeins markaðsgögn",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Hætta við",
+      "reviewOrder": "Yfirfara pöntun",
+      "back": "Til baka",
+      "confirmOrder": "Staðfesta pöntun",
+      "submitting": "Sendi inn..."
+    },
+    "errors": {
+      "missingRequired": "Fylla þarf út alla áskilna reiti",
+      "quantityPositive": "Magn verður að vera jákvæð tala",
+      "priceRequired": "Verð er áskilið fyrir þessa pöntunartegund",
+      "pricePositive": "Verð verður að vera jákvæð tala",
+      "stopPriceRequired": "Stop verð er áskilið fyrir þessa pöntunartegund",
+      "stopPricePositive": "Stop verð verður að vera jákvæð tala",
+      "createFailed": "Mistókst að búa til pöntun"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Þessi gerningur er aðeins til athugunar — leggðu pantanir inn á gerning sem styður framkvæmd.",
+      "unknownInstrument": "Þessi gerningur er ekki þekktur. Endurhlaðið listann og reynið aftur.",
+      "capsViolation": "Þessi pöntun myndi fara yfir öryggismörk reiknings. Yfirfarið áhættustillingar og reynið aftur."
+    }
+  }
+}

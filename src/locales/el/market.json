@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Δεδομένα αγοράς"
+  },
+  "controls": {
+    "exchange": "Αγορά:",
+    "instrument": "Μέσο:",
+    "timeframe": "Χρονικό πλαίσιο:",
+    "selectExchange": "Επιλέξτε αγορά",
+    "searchInstrument": "Αναζήτηση μέσου..."
+  },
+  "timeframes": {
+    "1m": "1 λεπτό",
+    "5m": "5 λεπτά",
+    "15m": "15 λεπτά",
+    "30m": "30 λεπτά",
+    "1h": "1 ώρα",
+    "4h": "4 ώρες",
+    "1d": "1 ημέρα"
+  },
+  "stats": {
+    "currentPrice": "Τρέχουσα τιμή",
+    "change24h": "Μεταβολή 24ωρου",
+    "high24h": "Υψηλό 24ωρου",
+    "low24h": "Χαμηλό 24ωρου"
+  },
+  "chart": {
+    "title": "Διάγραμμα τιμής",
+    "errorPrefix": "Σφάλμα κατά τη φόρτωση δεδομένων διαγράμματος:",
+    "unknownError": "Άγνωστο σφάλμα",
+    "noDataTitle": "Δεν υπάρχουν διαθέσιμα δεδομένα για {{instrument}}",
+    "noDataHint": "Το μέσο μπορεί να μην υπάρχει ή να μην έχει δεδομένα {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Δεν έχουν διαμορφωθεί σχετικά μέσα για {{instrument}} στην αγορά {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Προθέρμανση cache: {{sampleCount}} / {{expected}} κεριά διαθέσιμα {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(παράγεται από 1m)",
+      "db": "(από DB)"
+    }
+  }
+}

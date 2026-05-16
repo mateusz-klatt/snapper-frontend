@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Tirgus dati"
+  },
+  "controls": {
+    "exchange": "Birža:",
+    "instrument": "Instruments:",
+    "timeframe": "Laika periods:",
+    "selectExchange": "Izvēlieties biržu",
+    "searchInstrument": "Meklēt instrumentu..."
+  },
+  "timeframes": {
+    "1m": "1 minūte",
+    "5m": "5 minūtes",
+    "15m": "15 minūtes",
+    "30m": "30 minūtes",
+    "1h": "1 stunda",
+    "4h": "4 stundas",
+    "1d": "1 diena"
+  },
+  "stats": {
+    "currentPrice": "Pašreizējā cena",
+    "change24h": "24 st. izmaiņa",
+    "high24h": "24 st. maksimums",
+    "low24h": "24 st. minimums"
+  },
+  "chart": {
+    "title": "Cenas grafiks",
+    "errorPrefix": "Kļūda, ielādējot grafika datus:",
+    "unknownError": "Nezināma kļūda",
+    "noDataTitle": "Nav datu par {{instrument}}",
+    "noDataHint": "Instruments var nepastāvēt vai tam nav {{timeframe}} datu"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Saistīti instrumenti priekš {{instrument}} biržā {{exchange}} nav konfigurēti."
+  },
+  "cacheBanner": {
+    "message": "Kešatmiņa iesilst: pieejamas {{sampleCount}} / {{expected}} sveces {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(atvasināts no 1m)",
+      "db": "(no DB)"
+    }
+  }
+}

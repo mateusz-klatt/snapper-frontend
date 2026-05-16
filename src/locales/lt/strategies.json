@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Strategijų valdymas",
+    "register": "Registruoti strategiją",
+    "saving": "Išsaugoma…",
+    "descriptionCanManage": "Registruokite naujus strategijų procesus tiesiogiai iš UI. Autostart išlaiko procesą įjungtą po paleidimų iš naujo.",
+    "descriptionViewer": "Peržiūrėkite sukonfigūruotas strategijas ir jų būseną. Dėl strategijų valdymo kreipkitės į operatorių arba administratorių.",
+    "searchPlaceholder": "Ieškoti strategijų...",
+    "filter": {
+      "all": "Visos būsenos",
+      "running": "Vykdoma",
+      "stopped": "Sustabdyta"
+    },
+    "configuredHeading": "Sukonfigūruotos strategijos",
+    "noMatches": "Pagal filtrus strategijų nerasta",
+    "clearFilters": "Išvalyti filtrus",
+    "emptyTitle": "Strategijų nesukonfigūruota",
+    "emptyCanManage": "Registruokite strategiją algoritminei prekybai pradėti",
+    "emptyViewer": "Strategijų dar nesukonfigūruota"
+  },
+  "confirm": {
+    "startTitle": "Paleisti {{name}}",
+    "startMessage": "Tai paleis strategiją {{name}}. Ji gali pradėti tiesiogines prekybos operacijas.",
+    "stopTitle": "Stabdyti {{name}}",
+    "stopMessage": "Tai sustabdys strategiją {{name}}. Aktyvios pozicijos nebus automatiškai uždaromos."
+  },
+  "toast": {
+    "saved": "Strategija {{name}} išsaugota",
+    "started": "Strategija {{name}} paleista",
+    "registerFailed": "Nepavyko registruoti strategijos: {{message}}",
+    "startSuccess": "Strategija sėkmingai paleista",
+    "stopSuccess": "Strategija sėkmingai sustabdyta",
+    "alreadyRunning": "Strategija jau vykdoma",
+    "notRunning": "Strategija nevykdoma",
+    "configNotFound": "Strategijos konfigūracija nerasta. Patikrinkite duomenų bazės nustatymus.",
+    "networkError": "Tinklo klaida. Patikrinkite ryšį ir bandykite dar kartą.",
+    "startFailed": "Nepavyko paleisti strategijos: {{message}}",
+    "stopFailed": "Nepavyko sustabdyti strategijos: {{message}}",
+    "unknownError": "Nežinoma klaida"
+  },
+  "card": {
+    "ariaLabel": "Strategija: {{name}}",
+    "modeLabel": "Režimas: {{mode}}",
+    "autostartEnabled": "Autostart: įjungta",
+    "autostartDisabled": "Autostart: išjungta",
+    "statusAriaLabel": "Būsena: {{status}}",
+    "dataLagAriaLabel": "Duomenų delsa: {{seconds}} sekundžių",
+    "lagBadge": "delsa: {{seconds}} s",
+    "feedLag": "Feed delsa: {{ms}} ms",
+    "heartbeatAge": "Heartbeat amžius: {{seconds}} s",
+    "metrics": {
+      "status": "Būsena",
+      "dataLag": "Duomenų delsa",
+      "dataLagValue": "{{ms}} ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Rodyti išsamiau",
+    "hideDetails": "Slėpti išsamią informaciją",
+    "inputs": "Įvestys ({{count}})",
+    "outputs": "Išvestys ({{count}})",
+    "feedPublishers": "Feed leidėjai ({{count}})",
+    "lastUpdate": "Paskutinis atnaujinimas: {{time}}",
+    "waiting": "Laukiama Heartbeat...",
+    "startAriaLabel": "Paleisti strategiją {{name}}",
+    "stopAriaLabel": "Stabdyti strategiją {{name}}",
+    "start": "Paleisti",
+    "stop": "Stabdyti",
+    "starting": "Paleidžiama...",
+    "stopping": "Stabdoma...",
+    "status": {
+      "starting": "paleidžiama",
+      "stopping": "stabdoma",
+      "running": "vykdoma",
+      "stopped": "sustabdyta"
+    },
+    "health": {
+      "healthy": "Sveika — gaunami švieži duomenys",
+      "warning": "Įspėjimas — duomenys pasenę",
+      "error": "Klaida — naujausių duomenų nėra",
+      "unknown": "Nežinoma — Heartbeat duomenų nėra"
+    },
+    "healthShort": {
+      "healthy": "SVEIKA",
+      "warning": "ĮSPĖJIMAS",
+      "error": "KLAIDA"
+    }
+  },
+  "launchModal": {
+    "title": "Registruoti strategijos procesą",
+    "emptyTemplates": "Backend sistemoje neregistruota strategijų šablonų. Apibrėžkite bent vieną strategijos procesą.",
+    "close": "Uždaryti",
+    "templateLabel": "Strategijos šablonas",
+    "templatePlaceholder": "Pasirinkite šabloną...",
+    "templateFallbackDescription": "Strategija registruota backend sistemoje",
+    "loadingDefaults": "Įkeliamos numatytos šablono reikšmės…",
+    "loadDefaultsError": "Nepavyko įkelti numatytų šablono reikšmių. Patikrinkite backend žurnalus.",
+    "processNameLabel": "Proceso pavadinimas",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Leidžiami simboliai: mažosios raidės, skaičiai, pabraukimai",
+    "instanceNameLabel": "Strategijos instancijos pavadinimas",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Naudojama strategijos konfigūracijoje ir išvesties temose",
+    "executionModeLabel": "Vykdymo režimas",
+    "executionModeThread": "Įterpta gija",
+    "executionModeProcess": "Izoliuotas procesas",
+    "executionModeHelp": "Gijos dalijasi atmintimi, procesai suteikia stipresnę izoliaciją.",
+    "flagsLabel": "Vėliavos",
+    "autostartLabel": "Autostart serverio paleidimo metu",
+    "startImmediatelyLabel": "Paleisti iš karto po registracijos",
+    "noteLabel": "Pastaba (neprivaloma)",
+    "notePlaceholder": "Aprašykite šios strategijos instancijos paskirtį arba parametrus.",
+    "noteHelp": "Saugoma kartu su konfigūracija, kad būtų lengviau identifikuoti procesą.",
+    "cancel": "Atšaukti",
+    "submit": "Registruoti strategiją",
+    "submitting": "Registruojama…"
+  }
+}

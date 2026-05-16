@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI integrācija",
+    "subtitle": "Pārvaldiet AI delegātus, kas savienojas ar Snapper, izmantojot MCP.",
+    "loading": "Notiek AI integrācijas ielāde…",
+    "createDelegate": "Izveidot delegātu"
+  },
+  "disabled": {
+    "title": "AI integrācija ir izslēgta",
+    "message": "Ieslēdziet funkcijas karogu sadaļā Iestatījumi → Funkciju karogi, lai pārvaldītu AI delegātus."
+  },
+  "list": {
+    "loadingDelegates": "Notiek delegātu ielāde…",
+    "emptyTitle": "AI delegātu vēl nav",
+    "emptyMessage": "Noklikšķiniet “Izveidot delegātu”, lai izveidotu vienu un ģenerētu tā MCP konfigurācijas fragmentu.",
+    "columns": {
+      "label": "Etiķete",
+      "username": "Lietotājvārds",
+      "created": "Izveidots",
+      "maxOpenOrders": "Maks. atvērtie rīkojumi",
+      "maxDailyUsd": "Maks. dienas USD",
+      "status": "Statuss",
+      "actions": "Darbības"
+    },
+    "status": {
+      "active": "Aktīvs",
+      "revoked": "Atsaukts"
+    },
+    "default": "noklusējums",
+    "details": "Informācija",
+    "viewAriaLabel": "Skatīt delegātu {{label}}"
+  },
+  "wizard": {
+    "title": "Izveidot AI delegātu",
+    "step1": "1. Identitāte",
+    "step2": "2. Joma un limiti",
+    "step3": "3. Pārskats",
+    "stepDone": "✓ Gatavs",
+    "identity": {
+      "labelField": "Etiķete",
+      "labelPlaceholder": "piem., Alpha prop desk",
+      "labelHelpPrefix": "Delegāta lietotājvārds servera pusē tiks atvasināts kā ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Joma",
+      "operatorLabel": "Operatora public_id (neobligāti)",
+      "operatorPlaceholder": "Atstājiet tukšu, lai mantotu izsaucēja primāro operatoru"
+    },
+    "caps": {
+      "heading": "Tirdzniecības limiti (visi neobligāti)",
+      "maxOpenOrders": "Maks. atvērtie rīkojumi",
+      "maxDailyNotionalUsd": "Maks. dienas nomināls USD",
+      "maxCancelsPerMinute": "Maks. atcelšanas minūtē",
+      "perInstrument": "Maks. daudzums katram instrumentam (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "noklusējums",
+      "errorInvalidJson": "max_order_quantity_per_instrument jābūt derīgam JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument jābūt JSON objektam vai tukšai vērtībai",
+      "errorNegative": "Limitiem jābūt nenegatīviem veseliem skaitļiem vai tukšām vērtībām."
+    },
+    "review": {
+      "heading": "Pārskatīt un izveidot",
+      "rowLabel": "Etiķete",
+      "rowOperator": "Operatora public_id",
+      "rowMaxOpenOrders": "Maks. atvērtie rīkojumi",
+      "rowMaxDailyNotional": "Maks. dienas nomināls USD",
+      "rowMaxCancelsPerMinute": "Maks. atcelšanas minūtē",
+      "rowPerInstrument": "Maks. daudzums katram instrumentam",
+      "operatorDefault": "(izsaucēja primārais operators)",
+      "defaultValue": "(noklusējums)"
+    },
+    "buttons": {
+      "cancel": "Atcelt",
+      "next": "Tālāk",
+      "back": "Atpakaļ",
+      "createDelegate": "Izveidot delegātu",
+      "iSavedClose": "Saglabāts — aizvērt"
+    },
+    "toast": {
+      "delegateCreated": "Delegāts izveidots",
+      "failedToCreate": "Neizdevās izveidot delegātu"
+    }
+  },
+  "detail": {
+    "loading": "Notiek delegāta ielāde…",
+    "notFound": "Delegāts nav atrasts vai nav pieejams.",
+    "back": "Atpakaļ",
+    "backToList": "Atpakaļ uz sarakstu",
+    "updateCaps": "Atjaunināt limitus",
+    "revoke": "Atsaukt",
+    "save": "Saglabāt",
+    "cancel": "Atcelt",
+    "tradingCaps": "Tirdzniecības limiti",
+    "status": "Statuss",
+    "active": "Aktīvs",
+    "revoked": "Atsaukts",
+    "createdAt": "Izveidots",
+    "createdBy": "Izveidoja (lietotāja public_id)",
+    "publicId": "Publiskais ID",
+    "maxOpenOrders": "Maks. atvērtie rīkojumi",
+    "maxDailyNotionalUsd": "Maks. dienas nomināls USD",
+    "maxCancelsPerMinute": "Maks. atcelšanas minūtē",
+    "perInstrument": "Maks. daudzums katram instrumentam",
+    "defaultValue": "(noklusējums)",
+    "editorPlaceholder": "(noklusējums)",
+    "toast": {
+      "capsUpdated": "Limiti atjaunināti",
+      "failedToUpdateCaps": "Neizdevās atjaunināt limitus",
+      "negativeIntegersError": "Limitiem jābūt nenegatīviem veseliem skaitļiem vai tukšām vērtībām."
+    }
+  },
+  "revokeDialog": {
+    "title": "Atsaukt delegātu “{{label}}”?",
+    "message": "Tas atsauc delegāta tokenus un aptur tā MCP abonementus. Šo darbību nevar atsaukt.",
+    "confirm": "Atsaukt",
+    "cancel": "Atcelt",
+    "toast": {
+      "delegateRevoked": "Delegāts atsaukts",
+      "failedToRevoke": "Neizdevās atsaukt delegātu"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Saglabājiet šos akreditācijas datus tagad",
+    "warningMessage": "Tie vairs netiks parādīti. Snapper neglabā neapstrādātus tokenus; pēc šī vedņa aizvēršanas vienīgā kopija būs jūsu MCP klienta konfigurācijā.",
+    "snippetHelp": "Ilgtermiņa AI delegāta tokens (~10 gadi). Tas pats tokens autentificē gan proxy MCP serveri, gan watch monitoru. Lai mainītu, deaktivizējiet šo delegātu un izveidojiet jaunu.",
+    "baseUrlHelpPrefix": "Bāzes URL tiek atvasināts no šīs pārlūkprogrammas origin + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopēt konfigurācijas fragmentu starpliktuvē",
+    "copy": "Kopēt starpliktuvē",
+    "copied": "Nokopēts"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Stöður"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: í bið",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Magn",
+    "averageEntry": "Meðalinnkoma",
+    "unrealizedPnl": "Óinnleyst P&L",
+    "realizedPnl": "Innleyst P&L",
+    "updated": "Uppfært {{timestamp}}"
+  },
+  "empty": {
+    "title": "Engar opnar stöður",
+    "message": "Long, short og flat stöður birtast hér þegar viðskipti hafa verið framkvæmd."
+  },
+  "bracketModal": {
+    "title": "Bæta við SL/TP — {{instrument}}",
+    "confirmTitle": "Staðfesta Bracket",
+    "position": "Staða",
+    "entryPrice": "Inngangsverð",
+    "stopLossLabel": "Stop-Loss verð",
+    "takeProfitLabel": "Take-Profit verð",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Undir ${{price}}",
+      "slShort": "Yfir ${{price}}",
+      "tpLong": "Yfir ${{price}}",
+      "tpShort": "Undir ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Hætta við",
+      "review": "Yfirfara",
+      "back": "Til baka",
+      "confirm": "Staðfesta",
+      "creating": "Bý til…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Bæta við Trailing Stop — {{instrument}}",
+    "confirmTitle": "Staðfesta Trailing Stop",
+    "position": "Staða",
+    "entryPrice": "Inngangsverð",
+    "trailingDistanceLabel": "Trailing fjarlægð (%)",
+    "minLockLabel": "Lágm. læstur hagnaður (%) — valfrjálst",
+    "trailingDistance": "Trailing fjarlægð",
+    "minLockProfit": "Lágm. læstur hagnaður",
+    "placeholders": {
+      "trailingPct": "t.d. 5.0",
+      "minLockPct": "0 = byrja strax"
+    },
+    "minLockWarning": "Trailing Stop virkjast ekki fyrr en verð færist {{minLockPct}}% þér í hag.",
+    "buttons": {
+      "cancel": "Hætta við",
+      "review": "Yfirfara",
+      "back": "Til baka",
+      "confirm": "Staðfesta",
+      "creating": "Bý til..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Að minnsta kosti eitt SL eða TP verð er áskilið",
+    "invalidSlPrice": "Ógilt Stop-Loss verð",
+    "slPricePositive": "Stop-Loss verð verður að vera jákvætt",
+    "invalidTpPrice": "Ógilt Take-Profit verð",
+    "tpPricePositive": "Take-Profit verð verður að vera jákvætt",
+    "slLongBelowEntry": "SL verð verður að vera undir inngangsverði ({{price}})",
+    "tpLongAboveEntry": "TP verð verður að vera yfir inngangsverði ({{price}})",
+    "slShortAboveEntry": "SL verð verður að vera yfir inngangsverði ({{price}})",
+    "tpShortBelowEntry": "TP verð verður að vera undir inngangsverði ({{price}})",
+    "trailingRequired": "Trailing prósenta er áskilin",
+    "trailingInvalid": "Ógild Trailing prósenta",
+    "trailingRange": "Trailing prósenta verður að vera á bilinu 0 til 100",
+    "minLockInvalid": "Ógild lágm. læsingarprósenta",
+    "minLockRange": "Lágm. læsingarprósenta verður að vera á bilinu 0 til 100"
+  }
+}

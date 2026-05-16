@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Stefnustjórnun",
+    "register": "Skrá stefnu",
+    "saving": "Vista…",
+    "descriptionCanManage": "Skráðu ný stefnuferli beint úr UI. Autostart heldur ferlinu virku yfir endurræsingar.",
+    "descriptionViewer": "Skoðaðu stilltar stefnur og stöðu þeirra. Hafðu samband við operator eða kerfisstjóra til að stýra stefnum.",
+    "searchPlaceholder": "Leita að stefnum...",
+    "filter": {
+      "all": "Allar stöður",
+      "running": "Keyrir",
+      "stopped": "Stöðvað"
+    },
+    "configuredHeading": "Stilltar stefnur",
+    "noMatches": "Engar stefnur passa við síurnar",
+    "clearFilters": "Hreinsa síur",
+    "emptyTitle": "Engar stefnur stilltar",
+    "emptyCanManage": "Skráðu stefnu til að hefja reikniritaviðskipti",
+    "emptyViewer": "Engar stefnur hafa verið stilltar enn"
+  },
+  "confirm": {
+    "startTitle": "Ræsa {{name}}",
+    "startMessage": "Þetta ræsir stefnuna {{name}}. Hún gæti hafið lifandi viðskiptaaðgerðir.",
+    "stopTitle": "Stöðva {{name}}",
+    "stopMessage": "Þetta stöðvar stefnuna {{name}}. Virkum stöðum verður ekki lokað sjálfkrafa."
+  },
+  "toast": {
+    "saved": "Stefna {{name}} vistuð",
+    "started": "Stefna {{name}} ræst",
+    "registerFailed": "Mistókst að skrá stefnu: {{message}}",
+    "startSuccess": "Stefna ræst",
+    "stopSuccess": "Stefna stöðvuð",
+    "alreadyRunning": "Stefna er þegar í keyrslu",
+    "notRunning": "Stefna er ekki í keyrslu",
+    "configNotFound": "Stefnustilling fannst ekki. Athugaðu gagnagrunnsstillingar.",
+    "networkError": "Netvilla. Athugaðu tengingu og reyndu aftur.",
+    "startFailed": "Mistókst að ræsa stefnu: {{message}}",
+    "stopFailed": "Mistókst að stöðva stefnu: {{message}}",
+    "unknownError": "Óþekkt villa"
+  },
+  "card": {
+    "ariaLabel": "Stefna: {{name}}",
+    "modeLabel": "Hamur: {{mode}}",
+    "autostartEnabled": "Autostart: virkt",
+    "autostartDisabled": "Autostart: óvirkt",
+    "statusAriaLabel": "Staða: {{status}}",
+    "dataLagAriaLabel": "Gagnatöf: {{seconds}} sekúndur",
+    "lagBadge": "töf: {{seconds}}s",
+    "feedLag": "Feed töf: {{ms}}ms",
+    "heartbeatAge": "Heartbeat aldur: {{seconds}}s",
+    "metrics": {
+      "status": "Staða",
+      "dataLag": "Gagnatöf",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Sýna upplýsingar",
+    "hideDetails": "Fela upplýsingar",
+    "inputs": "Inntök ({{count}})",
+    "outputs": "Úttök ({{count}})",
+    "feedPublishers": "Feed útgefendur ({{count}})",
+    "lastUpdate": "Síðasta uppfærsla: {{time}}",
+    "waiting": "Bíð eftir Heartbeat...",
+    "startAriaLabel": "Ræsa stefnu {{name}}",
+    "stopAriaLabel": "Stöðva stefnu {{name}}",
+    "start": "Ræsa",
+    "stop": "Stöðva",
+    "starting": "Ræsi...",
+    "stopping": "Stöðva...",
+    "status": {
+      "starting": "ræsir",
+      "stopping": "stöðvar",
+      "running": "keyrir",
+      "stopped": "stöðvuð"
+    },
+    "health": {
+      "healthy": "Heilbrigt — fær fersk gögn",
+      "warning": "Viðvörun — gögn eru úrelt",
+      "error": "Villa — engin nýleg gögn",
+      "unknown": "Óþekkt — engin Heartbeat gögn"
+    },
+    "healthShort": {
+      "healthy": "HEILBRIGT",
+      "warning": "VIÐVÖRUN",
+      "error": "VILLA"
+    }
+  },
+  "launchModal": {
+    "title": "Skrá stefnuferli",
+    "emptyTemplates": "Engin stefnusniðmát eru skráð í backend. Skilgreindu að minnsta kosti eitt stefnuferli.",
+    "close": "Loka",
+    "templateLabel": "Stefnusniðmát",
+    "templatePlaceholder": "Veldu sniðmát...",
+    "templateFallbackDescription": "Stefna skráð í backend",
+    "loadingDefaults": "Hleð sjálfgefnum gildum sniðmáts…",
+    "loadDefaultsError": "Ekki tókst að hlaða sjálfgefnum gildum sniðmáts. Athugaðu backend annála.",
+    "processNameLabel": "Ferliheiti",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Leyfðir stafir: lágstafir, tölur, undirstrik",
+    "instanceNameLabel": "Heiti stefnutilviks",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Notað í stefnustillingu og úttaksumræðuefnum",
+    "executionModeLabel": "Keyrsluhamur",
+    "executionModeThread": "Innfellt þráð",
+    "executionModeProcess": "Einangrað ferli",
+    "executionModeHelp": "Þræðir deila minni, ferli veita sterkari einangrun.",
+    "flagsLabel": "Flögg",
+    "autostartLabel": "Autostart við ræsingu netþjóns",
+    "startImmediatelyLabel": "Ræsa strax eftir skráningu",
+    "noteLabel": "Athugasemd (valfrjálst)",
+    "notePlaceholder": "Lýstu tilgangi eða færibreytum þessa stefnutilviks.",
+    "noteHelp": "Vistað með stillingum til að auðkenna þetta ferli.",
+    "cancel": "Hætta við",
+    "submit": "Skrá stefnu",
+    "submitting": "Skrái…"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "Ενσωμάτωση AI",
+    "subtitle": "Διαχειριστείτε AI delegates που συνδέονται στο Snapper μέσω MCP.",
+    "loading": "Φόρτωση ενσωμάτωσης AI…",
+    "createDelegate": "Δημιουργία delegate"
+  },
+  "disabled": {
+    "title": "Η ενσωμάτωση AI είναι απενεργοποιημένη",
+    "message": "Ενεργοποιήστε το feature flag στις Ρυθμίσεις → Feature Flags για να διαχειριστείτε AI delegates."
+  },
+  "list": {
+    "loadingDelegates": "Φόρτωση delegates…",
+    "emptyTitle": "Δεν υπάρχουν ακόμη AI delegates",
+    "emptyMessage": "Κάντε κλικ στο «Δημιουργία delegate» για να δημιουργηθεί ένα και να παραχθεί το απόσπασμα διαμόρφωσης MCP.",
+    "columns": {
+      "label": "Ετικέτα",
+      "username": "Όνομα χρήστη",
+      "created": "Δημιουργήθηκε",
+      "maxOpenOrders": "Μέγ. ανοικτές εντολές",
+      "maxDailyUsd": "Μέγ. ημερήσιο USD",
+      "status": "Κατάσταση",
+      "actions": "Ενέργειες"
+    },
+    "status": {
+      "active": "Ενεργό",
+      "revoked": "Ανακληθέν"
+    },
+    "default": "προεπιλογή",
+    "details": "Λεπτομέρειες",
+    "viewAriaLabel": "Προβολή delegate {{label}}"
+  },
+  "wizard": {
+    "title": "Δημιουργία AI delegate",
+    "step1": "1. Ταυτότητα",
+    "step2": "2. Εμβέλεια και όρια",
+    "step3": "3. Έλεγχος",
+    "stepDone": "✓ Ολοκληρώθηκε",
+    "identity": {
+      "labelField": "Ετικέτα",
+      "labelPlaceholder": "π.χ. Alpha prop desk",
+      "labelHelpPrefix": "Το όνομα χρήστη του delegate θα παραχθεί στην πλευρά του διακομιστή ως ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Εμβέλεια",
+      "operatorLabel": "public_id χειριστή (προαιρετικά)",
+      "operatorPlaceholder": "Αφήστε κενό για κληρονόμηση του κύριου χειριστή του καλούντος"
+    },
+    "caps": {
+      "heading": "Όρια συναλλαγών (όλα προαιρετικά)",
+      "maxOpenOrders": "Μέγ. ανοικτές εντολές",
+      "maxDailyNotionalUsd": "Μέγ. ημερήσιο ονομαστικό USD",
+      "maxCancelsPerMinute": "Μέγ. ακυρώσεις ανά λεπτό",
+      "perInstrument": "Μέγ. ποσότητα ανά μέσο (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "προεπιλογή",
+      "errorInvalidJson": "Το max_order_quantity_per_instrument πρέπει να είναι έγκυρο JSON",
+      "errorJsonObject": "Το max_order_quantity_per_instrument πρέπει να είναι αντικείμενο JSON ή κενό",
+      "errorNegative": "Τα όρια πρέπει να είναι μη αρνητικοί ακέραιοι ή κενά."
+    },
+    "review": {
+      "heading": "Έλεγχος και δημιουργία",
+      "rowLabel": "Ετικέτα",
+      "rowOperator": "public_id χειριστή",
+      "rowMaxOpenOrders": "Μέγ. ανοικτές εντολές",
+      "rowMaxDailyNotional": "Μέγ. ημερήσιο ονομαστικό USD",
+      "rowMaxCancelsPerMinute": "Μέγ. ακυρώσεις ανά λεπτό",
+      "rowPerInstrument": "Μέγ. ποσότητα ανά μέσο",
+      "operatorDefault": "(κύριος χειριστής καλούντος)",
+      "defaultValue": "(προεπιλογή)"
+    },
+    "buttons": {
+      "cancel": "Ακύρωση",
+      "next": "Επόμενο",
+      "back": "Πίσω",
+      "createDelegate": "Δημιουργία delegate",
+      "iSavedClose": "Έχουν αποθηκευτεί — κλείσιμο"
+    },
+    "toast": {
+      "delegateCreated": "Το delegate δημιουργήθηκε",
+      "failedToCreate": "Αποτυχία δημιουργίας delegate"
+    }
+  },
+  "detail": {
+    "loading": "Φόρτωση delegate…",
+    "notFound": "Το delegate δεν βρέθηκε ή δεν είναι διαθέσιμο.",
+    "back": "Πίσω",
+    "backToList": "Πίσω στη λίστα",
+    "updateCaps": "Ενημέρωση ορίων",
+    "revoke": "Ανάκληση",
+    "save": "Αποθήκευση",
+    "cancel": "Ακύρωση",
+    "tradingCaps": "Όρια συναλλαγών",
+    "status": "Κατάσταση",
+    "active": "Ενεργό",
+    "revoked": "Ανακληθέν",
+    "createdAt": "Δημιουργήθηκε",
+    "createdBy": "Δημιουργήθηκε από (public_id χρήστη)",
+    "publicId": "Δημόσιο ID",
+    "maxOpenOrders": "Μέγ. ανοικτές εντολές",
+    "maxDailyNotionalUsd": "Μέγ. ημερήσιο ονομαστικό USD",
+    "maxCancelsPerMinute": "Μέγ. ακυρώσεις ανά λεπτό",
+    "perInstrument": "Μέγ. ποσότητα ανά μέσο",
+    "defaultValue": "(προεπιλογή)",
+    "editorPlaceholder": "(προεπιλογή)",
+    "toast": {
+      "capsUpdated": "Τα όρια ενημερώθηκαν",
+      "failedToUpdateCaps": "Αποτυχία ενημέρωσης ορίων",
+      "negativeIntegersError": "Τα όρια πρέπει να είναι μη αρνητικοί ακέραιοι ή κενά."
+    }
+  },
+  "revokeDialog": {
+    "title": "Ανάκληση delegate «{{label}}»;",
+    "message": "Αυτό ανακαλεί τα tokens του delegate και σταματά τις συνδρομές MCP του. Δεν μπορεί να αναιρεθεί.",
+    "confirm": "Ανάκληση",
+    "cancel": "Ακύρωση",
+    "toast": {
+      "delegateRevoked": "Το delegate ανακλήθηκε",
+      "failedToRevoke": "Αποτυχία ανάκλησης delegate"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Αποθηκεύστε αυτά τα διαπιστευτήρια τώρα",
+    "warningMessage": "Δεν θα εμφανιστούν ξανά. Το Snapper δεν αποθηκεύει τα ακατέργαστα tokens· μόλις κλείσετε αυτόν τον οδηγό, το μοναδικό αντίγραφο θα βρίσκεται στη διαμόρφωση του MCP client σας.",
+    "snippetHelp": "Μακρόβιο token AI delegate (~10 έτη). Το ίδιο token πιστοποιεί τόσο τον proxy MCP server όσο και το watch monitor. Για αλλαγή, απενεργοποιήστε αυτό το delegate και δημιουργήστε νέο.",
+    "baseUrlHelpPrefix": "Το βασικό URL παράγεται από το origin αυτού του προγράμματος περιήγησης + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Αντιγραφή αποσπάσματος διαμόρφωσης στο πρόχειρο",
+    "copy": "Αντιγραφή στο πρόχειρο",
+    "copied": "Αντιγράφηκε"
+  }
+}

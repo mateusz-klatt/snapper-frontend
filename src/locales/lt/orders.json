@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Pavedimai ir vykdymai",
+    "newOrder": "Naujas pavedimas",
+    "exportCsv": "Eksportuoti CSV"
+  },
+  "tabs": {
+    "orders": "Pavedimai ({{total}})",
+    "executions": "Vykdymai ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Filtruoti pagal būseną:",
+    "options": {
+      "all": "Visi pavedimai",
+      "new": "Naujas",
+      "open": "Atviras",
+      "partiallyFilled": "Iš dalies įvykdytas",
+      "partially_filled": "Iš dalies įvykdytas",
+      "filled": "Įvykdytas",
+      "cancelled": "Atšauktas",
+      "rejected": "Atmestas"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Rinkos",
+    "quantity": "Kiekis",
+    "price": "Kaina",
+    "created": "Sukurta",
+    "createdUnknown": "N/A",
+    "orderId": "Pavedimo ID",
+    "leverage": "Svertas",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "TIK MAŽINIMAS",
+    "cancel": "Atšaukti",
+    "cancelling": "Atšaukiama…",
+    "cancelAriaLabel": "Atšaukti pavedimą {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Pavedimas #{{orderId}}",
+    "filled": "ĮVYKDYTA",
+    "orderLabel": "Pavedimas {{orderId}}",
+    "size": "Dydis",
+    "price": "Kaina",
+    "total": "Iš viso",
+    "executed": "Įvykdyta",
+    "fees": "Mokesčiai"
+  },
+  "empty": {
+    "ordersTitle": "Pavedimų nerasta",
+    "ordersStartTrading": "Pradėkite prekybą, kad pavedimai būtų rodomi čia",
+    "ordersFilterless": "{{status}} pavedimų nėra",
+    "executionsTitle": "Vykdymų nerasta",
+    "executionsMessage": "Sandorių vykdymai bus rodomi čia"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrumentas",
+      "side": "Pusė",
+      "type": "Tipas",
+      "status": "Būsena",
+      "quantity": "Kiekis",
+      "price": "Kaina",
+      "leverage": "Svertas",
+      "reduceOnly": "Tik mažinimas",
+      "created": "Sukurta"
+    },
+    "executions": {
+      "orderId": "Pavedimo ID",
+      "instrument": "Instrumentas",
+      "side": "Pusė",
+      "size": "Dydis",
+      "price": "Kaina",
+      "total": "Iš viso",
+      "fee": "Mokestis",
+      "feeAsset": "Mokesčio aktyvas",
+      "executed": "Įvykdyta"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Naujas rankinis pavedimas",
+    "titleConfirm": "Patvirtinti pavedimą",
+    "fields": {
+      "exchange": "Birža",
+      "instrument": "Instrumentas",
+      "side": "Pusė",
+      "orderType": "Pavedimo tipas",
+      "quantity": "Kiekis",
+      "price": "Kaina",
+      "stopPrice": "Stop kaina",
+      "mode": "Režimas",
+      "wallet": "Piniginė",
+      "type": "Tipas"
+    },
+    "sideOptions": {
+      "buy": "Pirkimas",
+      "sell": "Pardavimas"
+    },
+    "orderTypeOptions": {
+      "market": "Rinkos",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Tiesioginis",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — tik rinkos duomenys",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Atšaukti",
+      "reviewOrder": "Peržiūrėti pavedimą",
+      "back": "Atgal",
+      "confirmOrder": "Patvirtinti pavedimą",
+      "submitting": "Pateikiama..."
+    },
+    "errors": {
+      "missingRequired": "Visi privalomi laukai turi būti užpildyti",
+      "quantityPositive": "Kiekis turi būti teigiamas skaičius",
+      "priceRequired": "Šiam pavedimo tipui kaina privaloma",
+      "pricePositive": "Kaina turi būti teigiamas skaičius",
+      "stopPriceRequired": "Šiam pavedimo tipui Stop kaina privaloma",
+      "stopPricePositive": "Stop kaina turi būti teigiamas skaičius",
+      "createFailed": "Pavedimo sukurti nepavyko"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Šis instrumentas skirtas tik stebėjimui — pavedimus teikite instrumente, kuris palaiko vykdymą.",
+      "unknownInstrument": "Šis instrumentas neatpažintas. Įkelkite sąrašą iš naujo ir bandykite dar kartą.",
+      "capsViolation": "Šis pavedimas viršytų paskyros saugos limitus. Peržiūrėkite rizikos nustatymus ir bandykite dar kartą."
+    }
+  }
+}

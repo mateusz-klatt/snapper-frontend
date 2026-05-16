@@ -1,0 +1,83 @@
+{
+  "loading": "Hleð...",
+  "error": "Villa",
+  "retry": "Reyna aftur",
+  "close": "Loka",
+  "cancel": "Hætta við",
+  "confirm": "Staðfesta",
+  "save": "Vista",
+  "documentation": "Skjölun (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Skipta um tungumál",
+    "flagAriaLabel": "Skipta yfir í {{country}}",
+    "currentAriaLabel": "Núverandi tungumál: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Viðskiptastjórnborð",
+    "tagline": "Nákvæm vinnustöð",
+    "openSidebar": "Opna hliðarstiku",
+    "closeSidebar": "Loka hliðarstiku",
+    "sidebar": "Hliðarstika",
+    "mainNavigation": "Aðalleiðsögn",
+    "tradingContent": "Viðskiptaefni",
+    "skipToContent": "Fara í viðskiptaefni",
+    "lag": "Töf:",
+    "lagTitle": "Töf fram og til baka til WebSocket netþjóns",
+    "topics": "Umræðuefni:",
+    "topicsTitle": "Fjöldi áskrifaðra WebSocket umræðuefna",
+    "connected": "Tengt",
+    "disconnected": "Aftengt",
+    "connectedTitle": "Tengt við WebSocket",
+    "disconnectedTitle": "Aftengt frá WebSocket",
+    "switchToLightMode": "Skipta í ljósan ham",
+    "switchToDarkMode": "Skipta í dökkan ham",
+    "timeTravelBanner": "Tímaferðahamur — söguleg gögn skoðuð (aðeins til lestrar)",
+    "lagUnknown": "Óþekkt",
+    "walletPicker": {
+      "ariaLabel": "Virkt veski",
+      "placeholder": "Veski",
+      "allWallets": "Öll veski",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Virkur operator",
+      "placeholder": "Operator",
+      "allOperators": "Allir operatorar"
+    },
+    "timeTravel": {
+      "pickerTitle": "Tímaferð: veldu sögulegan tímapunkt",
+      "exitAriaLabel": "Fara úr tímaferðaham",
+      "exitTitle": "Fara aftur í lifandi ham"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Gerningur aðeins til athugunar. Snapper tekur við markaðsgögnum en getur ekki lagt inn pantanir fyrir þetta (tákn, kauphöll) par.",
+      "ariaLabel": "Gerningur eingöngu með markaðsgögn",
+      "badge": "Aðeins markaðsgögn"
+    },
+    "liveOnly": {
+      "notice": "Þessi flipi sýnir núverandi stöðu — söguleg sýn er ekki tiltæk."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Eitthvað fór úrskeiðis",
+    "titleWithComponent": "Villa í {{componentName}}",
+    "stackTrace": "Staflarakning",
+    "tryAgain": "Reyna aftur"
+  },
+  "nav": {
+    "overview": "Yfirlit",
+    "market": "Markaðsgögn",
+    "processes": "Ferli",
+    "strategies": "Stefnur",
+    "orders": "Pantanir og framkvæmdir",
+    "positions": "Stöður",
+    "signals": "Merki",
+    "backtests": "Backtests",
+    "health": "Heilsa",
+    "admin": "Stjórnun",
+    "aiIntegration": "AI samþætting",
+    "aiReviews": "AI yfirferðir",
+    "settings": "Stillingar"
+  }
+}
