@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(függvény)",
       "symbol": "(szimbólum)",
-      "undefined": "(undefined)"
+      "undefined": "(undefined)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

@@ -77,11 +77,12 @@
       "bigint": "(bigint)",
       "function": "(fonction)",
       "symbol": "(symbole)",
-      "undefined": "(indéfini)"
+      "undefined": "(undefined)",
+      "null": "(null)"
     }
   },
   "booleanValue": {
-    "true": "vrai",
-    "false": "faux"
+    "true": "true",
+    "false": "false"
   }
 }

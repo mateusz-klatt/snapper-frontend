@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(funkcija)",
       "symbol": "(simbolis)",
-      "undefined": "(neapibrėžta)"
+      "undefined": "(undefined)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

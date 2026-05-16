@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(ফাংশন)",
       "symbol": "(সিম্বল)",
-      "undefined": "(undefined)"
+      "undefined": "(undefined)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

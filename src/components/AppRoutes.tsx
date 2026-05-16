@@ -83,7 +83,7 @@ function renderRoute(activeTab: string): React.ReactElement {
   switch (activeTab) {
     case 'market':
       return (
-        <ErrorBoundary componentName='Market Data'>
+        <ErrorBoundary componentNameKey='nav.market'>
           <ProtectedRoute resource='market'>
             <MarketData />
           </ProtectedRoute>
@@ -91,7 +91,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'processes':
       return (
-        <ErrorBoundary componentName='Processes'>
+        <ErrorBoundary componentNameKey='nav.processes'>
           <ProtectedRoute resource='processes'>
             <Processes />
           </ProtectedRoute>
@@ -99,7 +99,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'strategies':
       return (
-        <ErrorBoundary componentName='Strategies'>
+        <ErrorBoundary componentNameKey='nav.strategies'>
           <ProtectedRoute resource='strategies'>
             <Strategies />
           </ProtectedRoute>
@@ -107,7 +107,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'orders':
       return (
-        <ErrorBoundary componentName='Orders'>
+        <ErrorBoundary componentNameKey='nav.orders'>
           <ProtectedRoute resource='orders'>
             <Orders />
           </ProtectedRoute>
@@ -115,7 +115,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'positions':
       return (
-        <ErrorBoundary componentName='Positions'>
+        <ErrorBoundary componentNameKey='nav.positions'>
           <ProtectedRoute resource='positions'>
             <Positions />
           </ProtectedRoute>
@@ -123,7 +123,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'signals':
       return (
-        <ErrorBoundary componentName='Signals'>
+        <ErrorBoundary componentNameKey='nav.signals'>
           <ProtectedRoute resource='signals'>
             <Signals />
           </ProtectedRoute>
@@ -131,7 +131,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'backtests':
       return (
-        <ErrorBoundary componentName='Backtests'>
+        <ErrorBoundary componentNameKey='nav.backtests'>
           <ProtectedRoute resource='backtests'>
             <BacktestsRouter />
           </ProtectedRoute>
@@ -139,7 +139,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'health':
       return (
-        <ErrorBoundary componentName='Health'>
+        <ErrorBoundary componentNameKey='nav.health'>
           <ProtectedRoute resource='health'>
             <Health />
           </ProtectedRoute>
@@ -147,7 +147,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'admin':
       return (
-        <ErrorBoundary componentName='Administration'>
+        <ErrorBoundary componentNameKey='nav.admin'>
           <ProtectedRoute resource='admin'>
             <Admin />
           </ProtectedRoute>
@@ -155,7 +155,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'ai-integration':
       return (
-        <ErrorBoundary componentName='AI Integration'>
+        <ErrorBoundary componentNameKey='nav.aiIntegration'>
           <ProtectedRoute resource='ai-integration'>
             <AIIntegration />
           </ProtectedRoute>
@@ -163,7 +163,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'ai-reviews':
       return (
-        <ErrorBoundary componentName='AI Reviews'>
+        <ErrorBoundary componentNameKey='nav.aiReviews'>
           <ProtectedRoute resource='ai-reviews'>
             <AiReviewInbox />
           </ProtectedRoute>
@@ -171,7 +171,7 @@ function renderRoute(activeTab: string): React.ReactElement {
       )
     case 'settings':
       return (
-        <ErrorBoundary componentName='Settings'>
+        <ErrorBoundary componentNameKey='nav.settings'>
           <ProtectedRoute resource='settings'>
             <Settings />
           </ProtectedRoute>
@@ -180,7 +180,7 @@ function renderRoute(activeTab: string): React.ReactElement {
     case 'overview':
     default:
       return (
-        <ErrorBoundary componentName='Overview'>
+        <ErrorBoundary componentNameKey='nav.overview'>
           <ProtectedRoute resource='overview'>
             <Overview />
           </ProtectedRoute>

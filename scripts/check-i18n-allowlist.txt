@@ -1,8 +1,9 @@
 # Files / line-ranges exempt from `pnpm check:i18n`.
-# One `path:line` substring per line; matches as substring against the
-# emitted `<relative-path>:<line>` prefix. Add a rationale comment
-# above each entry so future maintainers know why the literal stays
-# hardcoded.
+# One `path:line` per line; EXACT match against the emitted
+# `<relative-path>:<line>` (no prefix/substring matching, so an entry
+# `src/foo.tsx:1` will not match `src/foo.tsx:10`). Add a rationale
+# comment above each entry so future maintainers know why the literal
+# stays hardcoded.
 #
 # Format example (uncomment + edit):
 #

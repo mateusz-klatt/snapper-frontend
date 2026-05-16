@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(funktio)",
       "symbol": "(symboli)",
-      "undefined": "(määrittämätön)"
+      "undefined": "(undefined)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(συνάρτηση)",
       "symbol": "(σύμβολο)",
-      "undefined": "(undefined)"
+      "undefined": "(undefined)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

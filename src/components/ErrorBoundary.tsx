@@ -4,15 +4,18 @@ import { useTranslation } from 'react-i18next'
 interface ErrorFallbackProps {
   error: Error
   resetError: () => void
-  componentName?: string | undefined
+  componentNameKey?: string | undefined
 }
 
 export function ErrorFallback({
   error,
   resetError,
-  componentName,
+  componentNameKey,
 }: Readonly<ErrorFallbackProps>): ReactNode {
   const { t } = useTranslation('common')
+  const componentName = componentNameKey
+    ? t(componentNameKey, { defaultValue: componentNameKey })
+    : undefined
   const title = componentName
     ? t('errorBoundary.titleWithComponent', { componentName })
     : t('errorBoundary.titleDefault')
@@ -60,7 +63,7 @@ export function ErrorFallback({
 interface Props {
   children: ReactNode
   fallback?: ReactNode | ((props: ErrorFallbackProps) => ReactNode)
-  componentName?: string | undefined
+  componentNameKey?: string | undefined
   onError?: (error: Error, errorInfo: React.ErrorInfo) => void
 }
 interface State {
@@ -84,11 +87,11 @@ class ErrorBoundary extends Component<Props, State> {
   }
   render(): ReactNode {
     const { hasError, error } = this.state
-    const { children, fallback, componentName } = this.props
+    const { children, fallback, componentNameKey } = this.props
 
     if (hasError && error) {
       if (typeof fallback === 'function') {
-        return fallback({ error, resetError: this.resetError, componentName })
+        return fallback({ error, resetError: this.resetError, componentNameKey })
       }
 
       if (fallback) {
@@ -96,7 +99,11 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <ErrorFallback error={error} resetError={this.resetError} componentName={componentName} />
+        <ErrorFallback
+          error={error}
+          resetError={this.resetError}
+          componentNameKey={componentNameKey}
+        />
       )
     }
 
