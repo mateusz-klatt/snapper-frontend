@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signals"
+  },
+  "filters": {
+    "allStrategies": "Lahat ng strategies"
+  },
+  "actions": {
+    "export": "I-export"
+  },
+  "stats": {
+    "total": "Total",
+    "buy": "Buy",
+    "sell": "Sell",
+    "avgStrength": "Avg strength"
+  },
+  "card": {
+    "strength": "Strength",
+    "price": "Presyo",
+    "exchange": "Exchange",
+    "reason": "Dahilan:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Malakas",
+    "medium": "Katamtaman",
+    "weak": "Mahina",
+    "veryWeak": "Napakahina"
+  },
+  "time": {
+    "justNow": "Ngayon lang",
+    "minutesAgo": "{{count}}m ang nakalipas",
+    "hoursAgo": "{{count}}h ang nakalipas"
+  },
+  "empty": {
+    "title": "Walang signals na nakita",
+    "message": "Walang trading signals na tugma sa kasalukuyang filters mo."
+  }
+}

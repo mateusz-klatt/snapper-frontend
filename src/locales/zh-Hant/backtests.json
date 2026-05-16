@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← 返回",
+    "backToList": "← 返回 回測"
+  },
+  "status": {
+    "pending": "待處理",
+    "running": "運行中",
+    "completed": "已完成",
+    "failed": "失敗",
+    "cancelled": "已取消"
+  },
+  "list": {
+    "title": "回測",
+    "actions": {
+      "cancel": "取消",
+      "rerun": "重新運行"
+    },
+    "fields": {
+      "timeframe": "時間週期",
+      "period": "區間",
+      "initialCash": "初始資金",
+      "id": "ID"
+    },
+    "errorPrefix": "錯誤: {{message}}",
+    "filter": {
+      "ariaLabel": "按狀態篩選回測",
+      "options": {
+        "all": "所有狀態",
+        "pending": "待處理",
+        "running": "運行中",
+        "completed": "已完成",
+        "failed": "失敗",
+        "cancelled": "已取消"
+      }
+    },
+    "empty": {
+      "title": "沒有回測",
+      "message": "透過 CLI 或 API 執行回測後，可在這裏查看結果。"
+    }
+  },
+  "detail": {
+    "title": "回測運行",
+    "fields": {
+      "strategy": "策略",
+      "instrument": "品種",
+      "status": "狀態",
+      "period": "區間",
+      "crossAsset": "跨資產歸因",
+      "configHash": "配置雜湊"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} 成交",
+    "errors": {
+      "invalidRunId": "無效 run id — 必須是 UUID7 (收到 \"{{id}}\")。",
+      "loadFailed": "載入運行失敗: {{message}}",
+      "notFound": "未找到"
+    }
+  },
+  "compare": {
+    "title": "比較",
+    "headingFull": "回測比較",
+    "loading": "正在載入比較…",
+    "vs": "vs",
+    "runLabel": "運行 {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "指標",
+      "equityOverlay": "權益疊加",
+      "trades": "交易",
+      "signals": "信號"
+    },
+    "pairingMode": {
+      "auto": "自動",
+      "manual": "手動"
+    },
+    "errors": {
+      "notFound": "目前錢包中未找到比較。",
+      "loadFailed": "載入比較失敗: {{message}}",
+      "unknown": "未知錯誤",
+      "emptyResponse": "比較回應為空。"
+    },
+    "launcher": {
+      "title": "比較",
+      "submit": "比較",
+      "autoPair": "與最近一次比較",
+      "terminalGate": "此運行達到終態後可比較",
+      "noSiblings": "沒有使用相同配置的其他運行",
+      "limitNotice": "顯示最近 {{count}} 個 — 如需更早運行，請手動配對",
+      "pickPlaceholder": "— 選擇要比較的運行 —",
+      "showAllLabel": "顯示所有運行（不只相同配置）",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "所有運行",
+        "sameConfig": "相同配置"
+      },
+      "errors": {
+        "pickRequired": "請從列表中選擇一個運行"
+      }
+    },
+    "diffColumns": {
+      "common": "共同",
+      "onlyA": "僅 A",
+      "onlyB": "僅 B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "沒有可比較指標 — 兩次運行均未記錄數值。",
+      "columns": {
+        "name": "指標",
+        "runA": "運行 A",
+        "runB": "運行 B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "運行 A",
+        "runB": "運行 B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "等待進度…",
+    "candles": "{{done}} / {{total}} 根 K 線",
+    "candlesNoTotal": "{{done}} 根 K 線",
+    "equity": "權益 {{value}}",
+    "signalsTrades": "{{signals}} 個信號 / {{trades}} 筆交易",
+    "milestoneLine": "里程碑 {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

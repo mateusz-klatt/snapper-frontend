@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Muhtasari"
+  },
+  "metrics": {
+    "feedsRunning": "Feeds Zinazoendelea",
+    "strategiesActive": "Mikakati Inayotumika",
+    "openOrders": "Oda Zilizofunguliwa",
+    "todaysExecutions": "Utekelezaji wa Leo",
+    "executionsOn": "Utekelezaji ({{date}})"
+  },
+  "status": {
+    "stopped": "Imesimamishwa",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Inaendelea",
+    "active": "Inatumika"
+  },
+  "processStatus": {
+    "title": "Hali ya Michakato",
+    "feeds": "Feeds",
+    "strategies": "Mikakati",
+    "executors": "Watekelezaji",
+    "brokers": "Brokers"
+  },
+  "portfolio": {
+    "title": "Muhtasari wa Portofolio",
+    "totalValue": "Thamani ya Jumla",
+    "longExposure": "Mfiduo wa long",
+    "shortExposure": "Mfiduo wa short",
+    "netDelta": "Delta halisi",
+    "unrealizedPnl": "P&L Isiyotekelezwa",
+    "pnlPercent": "P&L %",
+    "positions": "Nafasi",
+    "instrumentsCount": "Instrumenti {{count}}",
+    "empty": "Hakuna data ya nafasi inayopatikana"
+  },
+  "signals": {
+    "title": "Ishara za Karibuni",
+    "empty": "Hakuna ishara za karibuni",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Utekelezaji wa Karibuni",
+    "empty": "Hakuna utekelezaji wa karibuni",
+    "noTime": "N/A"
+  }
+}

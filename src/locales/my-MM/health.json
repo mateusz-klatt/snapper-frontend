@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "System Health",
+    "healthMetricsHeading": "Health Metric များ",
+    "processStatusHeading": "Process Status",
+    "activeBacktestsHeading": "Active Backtest များ",
+    "quickActionsHeading": "Quick Action များ",
+    "featureNotImplemented": "Feature မဖော်ဆောင်ရသေးပါ",
+    "restartServices": "Service များ restart လုပ်ပါ",
+    "runHealthCheck": "Health Check run ပါ",
+    "viewLogs": "Log များ ကြည့်ပါ",
+    "exportReport": "Report export လုပ်ပါ"
+  },
+  "status": {
+    "healthy": "Healthy",
+    "stopped": "Stopped",
+    "error": "Error",
+    "warning": "Warning",
+    "completed": "Completed",
+    "unknown": "မသိပါ"
+  },
+  "metrics": {
+    "tradingEngine": "Trading Engine",
+    "tradingEngineDescription": "Strategy execution engine",
+    "activeBacktests": "Active Backtest များ",
+    "activeBacktestsDescription": "Running backtest process များ",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Uptime",
+    "exitCode": "Exit code: {{code}}",
+    "service": "service",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Database Statistic များ",
+    "loading": "Database stats load လုပ်နေသည်…",
+    "unavailable": "Database stats မရနိုင်ပါ: {{message}}",
+    "fallbackError": "Database statistic များ load လုပ်၍ မရပါ။",
+    "sampled": "{{age}} က sample ယူထားသည်",
+    "samplerSummary": "Sampler interval: {{seconds}}s · table {{count}} ခု",
+    "columns": {
+      "table": "Table",
+      "kind": "အမျိုးအစား",
+      "total": "စုစုပေါင်း",
+      "current": "လက်ရှိ",
+      "closed": "ပိတ်ထားပြီး",
+      "archivable": "Archive လုပ်နိုင်သည်",
+      "status": "Status"
+    },
+    "stale": "stale"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Notification metric များ load လုပ်နေသည်…",
+    "unavailable": "Notification metric များ မရနိုင်ပါ: {{message}}",
+    "fallbackError": "Notification metric များ load လုပ်၍ မရပါ။",
+    "sent": "ပို့ပြီး",
+    "sentDescription": "Terminal: sent",
+    "failed": "Failed",
+    "failedDescription": "Retry budget ကုန်ဆုံး",
+    "unregistered": "Unregistered",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Cancelled (scope)",
+    "cancelledScopeDescription": "Scope revoke / user deactivate",
+    "outboxDepth": "Outbox depth",
+    "outboxDepthDescription": "Queue ထဲရှိပြီး retry စောင့်နေသည်"
+  },
+  "retention": {
+    "title": "Retention Scheduler",
+    "loading": "Retention run load လုပ်နေသည်…",
+    "unavailable": "Retention run မရနိုင်ပါ: {{message}}",
+    "fallbackError": "Retention run load လုပ်၍ မရပါ။",
+    "lastRun": "နောက်ဆုံး run {{age}}",
+    "dryRunNotice": "Dry-run mode: row များကို archive လုပ်သော်လည်း DB မှ purge မလုပ်ပါ။",
+    "columns": {
+      "table": "Table",
+      "retain": "သိမ်းထားရန်",
+      "archivedWindow": "Archived window",
+      "archived": "Archived",
+      "purged": "Purged",
+      "files": "File များ",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "error"
+  },
+  "systemMetrics": {
+    "title": "Process Health",
+    "loading": "Process metric များ load လုပ်နေသည်…",
+    "unavailable": "Process metric များ မရနိုင်ပါ: {{message}}",
+    "fallbackError": "Process health metric များ load လုပ်၍ မရပါ။",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Uptime",
+    "threads": "Thread များ",
+    "openFds": "Open FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttled {{count}}×",
+    "memory": "Memory",
+    "saturation": "Saturation {{percent}}",
+    "asyncioTasks": "Asyncio Task များ",
+    "asyncioActive": "{{count}} active",
+    "asyncioPending": "+ {{count}} pending",
+    "dbPool": "DB Pool",
+    "liveConns": "Live conns: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Object များ: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Network conns",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Active",
+    "tracemallocIdle": "Idle"
+  },
+  "relativeAge": {
+    "justNow": "ယခုလေးတင်",
+    "seconds": "{{seconds}}s အကြာက",
+    "minutes": "{{minutes}}min အကြာက",
+    "hours": "{{hours}}h အကြာက",
+    "days": "{{days}}d အကြာက"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

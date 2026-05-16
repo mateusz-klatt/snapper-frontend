@@ -1,0 +1,83 @@
+{
+  "loading": "Load လုပ်နေသည်...",
+  "error": "Error",
+  "retry": "ထပ်စမ်းပါ",
+  "close": "ပိတ်ပါ",
+  "cancel": "ပယ်ဖျက်",
+  "confirm": "အတည်ပြုပါ",
+  "save": "သိမ်းပါ",
+  "documentation": "Documentation (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "ဘာသာစကား ပြောင်းပါ",
+    "flagAriaLabel": "{{country}} သို့ ပြောင်းပါ",
+    "currentAriaLabel": "လက်ရှိ ဘာသာစကား: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Trading Console",
+    "tagline": "တိကျမှုမြင့် workstation",
+    "openSidebar": "Sidebar ဖွင့်ပါ",
+    "closeSidebar": "Sidebar ပိတ်ပါ",
+    "sidebar": "Sidebar",
+    "mainNavigation": "Main navigation",
+    "tradingContent": "Trading content",
+    "skipToContent": "Trading content သို့ ကျော်သွားပါ",
+    "lag": "Lag:",
+    "lagTitle": "WebSocket server သို့ round-trip latency",
+    "topics": "Topic များ:",
+    "topicsTitle": "Subscribe လုပ်ထားသော WebSocket topic အရေအတွက်",
+    "connected": "ချိတ်ဆက်ထားသည်",
+    "disconnected": "ချိတ်ဆက်မထားပါ",
+    "connectedTitle": "WebSocket သို့ ချိတ်ဆက်ထားသည်",
+    "disconnectedTitle": "WebSocket မှ ပြတ်တောက်ထားသည်",
+    "switchToLightMode": "Light mode သို့ ပြောင်းပါ",
+    "switchToDarkMode": "Dark mode သို့ ပြောင်းပါ",
+    "timeTravelBanner": "Time Travel Mode — historical data ကို ကြည့်နေသည် (read-only)",
+    "lagUnknown": "မသိပါ",
+    "walletPicker": {
+      "ariaLabel": "Active wallet",
+      "placeholder": "Wallet",
+      "allWallets": "Wallet အားလုံး",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Active operator",
+      "placeholder": "Operator",
+      "allOperators": "Operator အားလုံး"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: historical point in time တစ်ခု ရွေးပါ",
+      "exitAriaLabel": "Time travel mode မှ ထွက်ပါ",
+      "exitTitle": "Live mode သို့ ပြန်သွားပါ"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Observation-only instrument။ Snapper သည် market data ရရှိသော်လည်း ဤ (symbol, exchange) pair အတွက် order မတင်နိုင်ပါ။",
+      "ariaLabel": "Market-data only instrument",
+      "badge": "Market-data only"
+    },
+    "liveOnly": {
+      "notice": "ဤ tab သည် လက်ရှိ state ကိုသာ ပြသည် — historical view မရနိုင်ပါ။"
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "တစ်ခုခု မှားသွားသည်",
+    "titleWithComponent": "{{componentName}} တွင် error ဖြစ်သည်",
+    "stackTrace": "Stack trace",
+    "tryAgain": "ထပ်စမ်းပါ"
+  },
+  "nav": {
+    "overview": "အနှစ်ချုပ်",
+    "market": "စျေးကွက်ဒေတာ",
+    "processes": "Process များ",
+    "strategies": "Strategy များ",
+    "orders": "အော်ဒါများနှင့် Execution များ",
+    "positions": "ပိုဇစ်ရှင်များ",
+    "signals": "Signal များ",
+    "backtests": "Backtest များ",
+    "health": "Health",
+    "admin": "စီမံခန့်ခွဲရေး",
+    "aiIntegration": "AI Integration",
+    "aiReviews": "AI Review များ",
+    "settings": "Setting များ"
+  }
+}

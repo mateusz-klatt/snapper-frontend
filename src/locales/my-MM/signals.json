@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Signal များ"
+  },
+  "filters": {
+    "allStrategies": "Strategy အားလုံး"
+  },
+  "actions": {
+    "export": "Export"
+  },
+  "stats": {
+    "total": "စုစုပေါင်း",
+    "buy": "Buy",
+    "sell": "Sell",
+    "avgStrength": "ပျမ်းမျှ Strength"
+  },
+  "card": {
+    "strength": "Strength",
+    "price": "စျေးနှုန်း",
+    "exchange": "Exchange",
+    "reason": "အကြောင်းရင်း:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Strong",
+    "medium": "Medium",
+    "weak": "Weak",
+    "veryWeak": "Very Weak"
+  },
+  "time": {
+    "justNow": "ယခုလေးတင်",
+    "minutesAgo": "{{count}}m အကြာက",
+    "hoursAgo": "{{count}}h အကြာက"
+  },
+  "empty": {
+    "title": "Signal မတွေ့ပါ",
+    "message": "သင့်လက်ရှိ filter များနှင့် ကိုက်ညီသည့် trading signal မရှိပါ။"
+  }
+}

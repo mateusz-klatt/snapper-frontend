@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Sláinte an Chórais",
+    "healthMetricsHeading": "Méadrachtaí Sláinte",
+    "processStatusHeading": "Stádas Próiseas",
+    "activeBacktestsHeading": "Backtestanna Gníomhacha",
+    "quickActionsHeading": "Gníomhartha Tapa",
+    "featureNotImplemented": "Níl an ghné curtha i bhfeidhm fós",
+    "restartServices": "Atosaigh Seirbhísí",
+    "runHealthCheck": "Rith Seiceáil Sláinte",
+    "viewLogs": "Féach ar Logaí",
+    "exportReport": "Easpórtáil Tuairisc"
+  },
+  "status": {
+    "healthy": "Sláintiúil",
+    "stopped": "Stoptha",
+    "error": "Earráid",
+    "warning": "Rabhadh",
+    "completed": "Críochnaithe",
+    "unknown": "Anaithnid"
+  },
+  "metrics": {
+    "tradingEngine": "Inneall Trádála",
+    "tradingEngineDescription": "Inneall rite straitéisí",
+    "activeBacktests": "Backtestanna Gníomhacha",
+    "activeBacktestsDescription": "Próisis backtest atá ag rith",
+    "active": "Gníomhach",
+    "inactive": "Neamhghníomhach"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/B",
+    "uptimeMinutes": "{{minutes}}n",
+    "uptimeHours": "{{hours}}u {{minutes}}n",
+    "uptimeDays": "{{days}}l {{hours}}u",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/B",
+    "uptimeLabel": "Am rite",
+    "exitCode": "Cód scoir: {{code}}",
+    "service": "seirbhís",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Staitisticí Bunachair Sonraí",
+    "loading": "Staitisticí bunachair sonraí á lódáil…",
+    "unavailable": "Níl staitisticí bunachair sonraí ar fáil: {{message}}",
+    "fallbackError": "Theip ar lódáil staitisticí bunachair sonraí.",
+    "sampled": "sampláilte {{age}}",
+    "samplerSummary": "Eatramh samplála: {{seconds}}s · {{count}} tábla",
+    "columns": {
+      "table": "Tábla",
+      "kind": "Cineál",
+      "total": "Iomlán",
+      "current": "Reatha",
+      "closed": "Dúnta",
+      "archivable": "Inchartlannaithe",
+      "status": "Stádas"
+    },
+    "stale": "sean"
+  },
+  "notification": {
+    "title": "Sidecar Fógraí",
+    "loading": "Méadrachtaí fógraí á lódáil…",
+    "unavailable": "Níl méadrachtaí fógraí ar fáil: {{message}}",
+    "fallbackError": "Theip ar lódáil méadrachtaí fógraí.",
+    "sent": "Seolta",
+    "sentDescription": "Críochnaitheach: seolta",
+    "failed": "Teipthe",
+    "failedDescription": "Ídíodh buiséad atrialacha",
+    "unregistered": "Neamhchláraithe",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Cealaithe (scóip)",
+    "cancelledScopeDescription": "Cúlghairm scóipe / díghníomhachtú úsáideora",
+    "outboxDepth": "Doimhneacht an bhosca amach",
+    "outboxDepthDescription": "Ciúáilte, ag fanacht le hatriail"
+  },
+  "retention": {
+    "title": "Sceidealóir Coinneála",
+    "loading": "Rith coinneála á lódáil…",
+    "unavailable": "Níl rith coinneála ar fáil: {{message}}",
+    "fallbackError": "Theip ar lódáil an rite coinneála.",
+    "lastRun": "rith deireanach {{age}}",
+    "dryRunNotice": "Mód dry-run: cuirtear sraitheanna i gcartlann ach ní scriostar ón DB iad.",
+    "columns": {
+      "table": "Tábla",
+      "retain": "Coinnigh",
+      "archivedWindow": "Fuinneog chartlainne",
+      "archived": "Cartlannaithe",
+      "purged": "Glanta",
+      "files": "Comhaid",
+      "status": "Stádas"
+    },
+    "retainDays": "{{days}}l",
+    "ok": "ceart go leor",
+    "error": "earráid"
+  },
+  "systemMetrics": {
+    "title": "Sláinte Próisis",
+    "loading": "Méadrachtaí próisis á lódáil…",
+    "unavailable": "Níl méadrachtaí próisis ar fáil: {{message}}",
+    "fallbackError": "Theip ar lódáil méadrachtaí sláinte próisis.",
+    "rawJson": "JSON amh",
+    "pid": "PID",
+    "statusValue": "Stádas: {{status}}",
+    "uptime": "Am rite",
+    "threads": "Snáitheanna",
+    "openFds": "FDanna oscailte",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Srianta {{count}}×",
+    "memory": "Cuimhne",
+    "saturation": "Sáithiú {{percent}}",
+    "asyncioTasks": "Tascanna asyncio",
+    "asyncioActive": "{{count}} gníomhach",
+    "asyncioPending": "+ {{count}} ar feitheamh",
+    "dbPool": "Linn DB",
+    "liveConns": "Naisc bheo: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Oibiachtaí: {{value}}",
+    "threadsPercent": "Snáitheanna %",
+    "networkConns": "Naisc líonra",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Gníomhach",
+    "tracemallocIdle": "Díomhaoin"
+  },
+  "relativeAge": {
+    "justNow": "anois díreach",
+    "seconds": "{{seconds}}s ó shin",
+    "minutes": "{{minutes}}n ó shin",
+    "hours": "{{hours}}u ó shin",
+    "days": "{{days}}l ó shin"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}n",
+    "hours": "{{hours}}u",
+    "days": "{{days}}l"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

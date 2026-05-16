@@ -1,0 +1,88 @@
+{
+  "page": {
+    "title": "Socruithe",
+    "subtitle": "Cumraigh socruithe agus paraiméadair an fheidhmchláir",
+    "addButton": "Cuir Socrú Leis",
+    "searchPlaceholder": "Cuardaigh socruithe...",
+    "noResults": "Níor aimsíodh socruithe a oireann do do chritéir.",
+    "allCategories": "Gach Catagóir",
+    "categoryFilterAriaLabel": "Scag socruithe de réir catagóire"
+  },
+  "errors": {
+    "loadFailed": "Theip ar lódáil socruithe",
+    "updateFailed": "Theip ar nuashonrú an tsocraithe",
+    "deleteFailed": "Theip ar scriosadh an tsocraithe",
+    "createFailed": "Theip ar chruthú an tsocraithe",
+    "alreadyExists": "Tá socrú leis an eochair \"{{key}}\" ann cheana"
+  },
+  "item": {
+    "edit": "Cuir in Eagar",
+    "delete": "Scrios",
+    "save": "Sábháil",
+    "saving": "Á shábháil...",
+    "cancel": "Cealaigh",
+    "yesDelete": "Sea, Scrios",
+    "deleting": "Á scriosadh...",
+    "deleteConfirm": "Scrios an socrú seo?",
+    "valuePlaceholder": "Cuir isteach luach socraithe...",
+    "showMore": "Taispeáin níos mó",
+    "showLess": "Taispeáin níos lú",
+    "toggleAriaLabel": "Scoránaigh {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Íogair"
+    },
+    "helpText": {
+      "allowShortSelling": "Lig don inneall suímh ghearra a oscailt. Ginfidh comharthaí SELL desired_units diúltacha; gearrtar go 0 iad nuair atá sé díchumasaithe.",
+      "allowManualOrders": "Cumasaigh an cnaipe Ordú Nua ar an gcluaisín Orduithe. Nuair atá sé díchumasaithe, filleann POST /api/orders 403."
+    }
+  },
+  "addModal": {
+    "title": "Cuir Socrú Nua Leis",
+    "keyLabel": "Eochair",
+    "valueLabel": "Luach",
+    "categoryLabel": "Catagóir",
+    "descriptionLabel": "Cur síos",
+    "keyPlaceholder": "m.sh., walutomat.api_key",
+    "keyHint": "Úsáid nodaireacht phoncanna do shocruithe neadaithe (m.sh., category.subcategory.name)",
+    "valuePlaceholder": "Luach socraithe",
+    "categorySelectPlaceholder": "Roghnaigh ceann atá ann nó cruthaigh ceann nua",
+    "newCategoryPlaceholder": "Nó cuir isteach ainm catagóire nua",
+    "descriptionPlaceholder": "Cur síos roghnach",
+    "cancel": "Cealaigh",
+    "create": "Cruthaigh Socrú",
+    "creating": "Á chruthú...",
+    "validation": {
+      "keyRequired": "Tá eochair riachtanach",
+      "valueRequired": "Tá luach riachtanach",
+      "categoryRequired": "Tá catagóir riachtanach"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Eagarthóir Foirme",
+    "rawEditor": "Eagarthóir JSON Amh",
+    "rawJson": "JSON Amh",
+    "switchToForm": "Athraigh go Foirm",
+    "importToForm": "Iompórtáil go Foirm",
+    "parseError": "Earráid parsála: {{message}}",
+    "arraySummary": "Eagar ({{length}} mír)",
+    "addItem": "Cuir Mír Leis",
+    "remove": "Bain",
+    "typeHint": {
+      "array": "(eagar)",
+      "object": "(réad)",
+      "string": "(teaghrán)",
+      "number": "(uimhir)",
+      "boolean": "(Booleach)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)",
+      "null": "(null)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

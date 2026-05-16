@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Market Data"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrument:",
+    "timeframe": "Timeframe:",
+    "selectExchange": "Pumili ng exchange",
+    "searchInstrument": "Maghanap ng instrument..."
+  },
+  "timeframes": {
+    "1m": "1 Minuto",
+    "5m": "5 Minuto",
+    "15m": "15 Minuto",
+    "30m": "30 Minuto",
+    "1h": "1 Oras",
+    "4h": "4 Oras",
+    "1d": "1 Araw"
+  },
+  "stats": {
+    "currentPrice": "Kasalukuyang presyo",
+    "change24h": "24h change",
+    "high24h": "24h high",
+    "low24h": "24h low"
+  },
+  "chart": {
+    "title": "Price chart",
+    "errorPrefix": "Error sa pag-load ng chart data:",
+    "unknownError": "Hindi alam na error",
+    "noDataTitle": "Walang data para sa {{instrument}}",
+    "noDataHint": "Maaaring wala ang instrument o walang {{timeframe}} data"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Walang naka-configure na related instruments para sa {{instrument}} sa {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Nagwa-warm up ang cache: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(derived mula sa 1m)",
+      "db": "(mula sa DB)"
+    }
+  }
+}

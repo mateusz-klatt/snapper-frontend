@@ -1,0 +1,83 @@
+{
+  "loading": "Nilo-load...",
+  "error": "Error",
+  "retry": "Subukan ulit",
+  "close": "Isara",
+  "cancel": "Kanselahin",
+  "confirm": "Kumpirmahin",
+  "save": "I-save",
+  "documentation": "Dokumentasyon (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Palitan ang wika",
+    "flagAriaLabel": "Lumipat sa {{country}}",
+    "currentAriaLabel": "Kasalukuyang wika: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Trading Console",
+    "tagline": "Precision workstation",
+    "openSidebar": "Buksan ang sidebar",
+    "closeSidebar": "Isara ang sidebar",
+    "sidebar": "Sidebar",
+    "mainNavigation": "Pangunahing navigation",
+    "tradingContent": "Trading content",
+    "skipToContent": "Lumaktaw sa trading content",
+    "lag": "Lag:",
+    "lagTitle": "Round-trip latency papunta sa WebSocket server",
+    "topics": "Topics:",
+    "topicsTitle": "Bilang ng naka-subscribe na WebSocket topics",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "connectedTitle": "Connected sa WebSocket",
+    "disconnectedTitle": "Disconnected sa WebSocket",
+    "switchToLightMode": "Lumipat sa light mode",
+    "switchToDarkMode": "Lumipat sa dark mode",
+    "timeTravelBanner": "Time Travel Mode — tumitingin ng historical data (read-only)",
+    "lagUnknown": "Hindi alam",
+    "walletPicker": {
+      "ariaLabel": "Aktibong wallet",
+      "placeholder": "Wallet",
+      "allWallets": "Lahat ng wallet",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktibong operator",
+      "placeholder": "Operator",
+      "allOperators": "Lahat ng operator"
+    },
+    "timeTravel": {
+      "pickerTitle": "Time travel: pumili ng historical point in time",
+      "exitAriaLabel": "Lumabas sa time travel mode",
+      "exitTitle": "Bumalik sa live mode"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Observation-only instrument. Tumatanggap ang Snapper ng market data pero hindi makakapag-place ng orders para sa pares na ito (symbol, exchange).",
+      "ariaLabel": "Market-data only na instrument",
+      "badge": "Market-data only"
+    },
+    "liveOnly": {
+      "notice": "Kasalukuyang state ang ipinapakita ng tab na ito — walang historical view."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "May nangyaring mali",
+    "titleWithComponent": "Error sa {{componentName}}",
+    "stackTrace": "Stack trace",
+    "tryAgain": "Subukan ulit"
+  },
+  "nav": {
+    "overview": "Overview",
+    "market": "Market Data",
+    "processes": "Processes",
+    "strategies": "Strategies",
+    "orders": "Orders at Executions",
+    "positions": "Positions",
+    "signals": "Signals",
+    "backtests": "Backtests",
+    "health": "Health",
+    "admin": "Administrasyon",
+    "aiIntegration": "AI Integration",
+    "aiReviews": "AI Reviews",
+    "settings": "Settings"
+  }
+}

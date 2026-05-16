@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Rialú Próiseas",
+    "subtitle": "Monatóireacht agus rialú próiseas i bhfíor-am"
+  },
+  "sections": {
+    "longRunning": "Próisis Fhadreatha",
+    "executorTemplates": "Teimpléid Feidhmitheora",
+    "executorTemplatesHint": "Téann eagarthóireacht chumraíocht an teimpléid i bhfeidhm ar gach sparán ar an malartán seo tar éis atosaithe. Is don chumraíocht amháin iad teimpléid — tosaigh an t-ásc in aghaidh an sparáin thíos chun feidhmitheoir a rith.",
+    "walletInstances": "Áisc Sparáin",
+    "taskProcesses": "Próisis Tascanna"
+  },
+  "card": {
+    "stop": "Stad",
+    "start": "Tosaigh",
+    "restart": "Atosaigh",
+    "starting": "Á thosú...",
+    "stopping": "Á stopadh...",
+    "status": {
+      "running": "ag rith",
+      "stopped": "stoptha",
+      "error": "earráid",
+      "starting": "á thosú",
+      "stopping": "á stopadh"
+    }
+  },
+  "template": {
+    "badge": "teimpléad",
+    "mode": "Mód:",
+    "parameters": "Paraiméadair:",
+    "paramCount": "Paraiméadair: {{count}}",
+    "noParams": "níl aon pharaiméadar socraithe"
+  },
+  "badges": {
+    "oneShot": "aonuaire",
+    "autoStart": "auto-start",
+    "manual": "láimhe"
+  },
+  "actions": {
+    "stopTitle": "Stad {{name}}",
+    "stopMessage": "Stopfaidh sé seo an próiseas {{name}}.",
+    "restartTitle": "Atosaigh {{name}}",
+    "restartMessage": "Atosóidh sé seo an próiseas {{name}}."
+  },
+  "executionMode": {
+    "title": "Tosaigh {{name}}",
+    "label": "Mód Rite:",
+    "threadName": "Mód Snáithe",
+    "threadDescription": "Ritheann sé mar thasc leabaithe laistigh den fhreastalaí gréasáin. Tosú níos tapúla, cuimhne chomhroinnte.",
+    "processName": "Mód Próisis",
+    "processDescription": "Ritheann sé mar phróiseas Python ar leith. Leithlisithe, seasmhach in aghaidh lochtanna, monatóireacht mhionsonraithe.",
+    "cancel": "Cealaigh",
+    "start": "Tosaigh {{name}}",
+    "threadAriaLabel": "Mód Snáithe",
+    "processAriaLabel": "Mód Próisis"
+  }
+}

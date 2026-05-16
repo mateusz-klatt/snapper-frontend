@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "စျေးကွက်ဒေတာ"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrument:",
+    "timeframe": "Timeframe:",
+    "selectExchange": "Exchange ရွေးပါ",
+    "searchInstrument": "Instrument ရှာပါ..."
+  },
+  "timeframes": {
+    "1m": "1 မိနစ်",
+    "5m": "5 မိနစ်",
+    "15m": "15 မိနစ်",
+    "30m": "30 မိနစ်",
+    "1h": "1 နာရီ",
+    "4h": "4 နာရီ",
+    "1d": "1 ရက်"
+  },
+  "stats": {
+    "currentPrice": "လက်ရှိ စျေးနှုန်း",
+    "change24h": "24h ပြောင်းလဲမှု",
+    "high24h": "24h High",
+    "low24h": "24h Low"
+  },
+  "chart": {
+    "title": "စျေးနှုန်း Chart",
+    "errorPrefix": "Chart data load လုပ်ရာတွင် error:",
+    "unknownError": "မသိသော error",
+    "noDataTitle": "{{instrument}} အတွက် data မရှိပါ",
+    "noDataHint": "Instrument မရှိနိုင်ပါ သို့မဟုတ် {{timeframe}} data မရှိနိုင်ပါ"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{exchange}} ပေါ်ရှိ {{instrument}} အတွက် related instrument များ configure မလုပ်ထားပါ။"
+  },
+  "cacheBanner": {
+    "message": "Cache warm up လုပ်နေသည်: candle {{sampleCount}} / {{expected}} ရနိုင်သည် {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(1m မှ derive လုပ်ထားသည်)",
+      "db": "(DB မှ)"
+    }
+  }
+}

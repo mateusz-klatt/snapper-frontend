@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Usimamizi wa Mikakati",
+    "register": "Sajili Mkakati",
+    "saving": "Inahifadhi…",
+    "descriptionCanManage": "Sajili michakato mipya ya mikakati moja kwa moja kutoka UI. Autostart huweka process ikiwa imewezeshwa baada ya kuanzisha upya.",
+    "descriptionViewer": "Tazama mikakati iliyosanidiwa na hali zake. Wasiliana na opereta au msimamizi ili kusimamia mikakati.",
+    "searchPlaceholder": "Tafuta mikakati...",
+    "filter": {
+      "all": "Hali zote",
+      "running": "Inaendelea",
+      "stopped": "Imesimamishwa"
+    },
+    "configuredHeading": "Mikakati Iliyosanidiwa",
+    "noMatches": "Hakuna mikakati inayolingana na vichujio vyako",
+    "clearFilters": "Futa vichujio",
+    "emptyTitle": "Hakuna mikakati iliyosanidiwa",
+    "emptyCanManage": "Sajili mkakati ili kuanza trading ya algorithm",
+    "emptyViewer": "Hakuna mikakati iliyosanidiwa bado"
+  },
+  "confirm": {
+    "startTitle": "Anzisha {{name}}",
+    "startMessage": "Hii itaanzisha mkakati wa {{name}}. Inaweza kuanza operesheni za trading ya live.",
+    "stopTitle": "Simamisha {{name}}",
+    "stopMessage": "Hii itasimamisha mkakati wa {{name}}. Nafasi zinazotumika hazitafungwa kiotomatiki."
+  },
+  "toast": {
+    "saved": "Mkakati {{name}} umehifadhiwa",
+    "started": "Mkakati {{name}} umeanzishwa",
+    "registerFailed": "Imeshindwa kusajili mkakati: {{message}}",
+    "startSuccess": "Mkakati umeanzishwa kwa mafanikio",
+    "stopSuccess": "Mkakati umesimamishwa kwa mafanikio",
+    "alreadyRunning": "Mkakati tayari unaendelea",
+    "notRunning": "Mkakati hauendelei",
+    "configNotFound": "Usanidi wa mkakati haukupatikana. Tafadhali kagua mipangilio ya database.",
+    "networkError": "Hitilafu ya mtandao. Tafadhali kagua muunganisho na ujaribu tena.",
+    "startFailed": "Imeshindwa kuanzisha mkakati: {{message}}",
+    "stopFailed": "Imeshindwa kusimamisha mkakati: {{message}}",
+    "unknownError": "Hitilafu isiyojulikana"
+  },
+  "card": {
+    "ariaLabel": "Mkakati: {{name}}",
+    "modeLabel": "Hali: {{mode}}",
+    "autostartEnabled": "Autostart: imewashwa",
+    "autostartDisabled": "Autostart: imezimwa",
+    "statusAriaLabel": "Hali: {{status}}",
+    "dataLagAriaLabel": "Kuchelewa kwa data: sekunde {{seconds}}",
+    "lagBadge": "lag: {{seconds}}s",
+    "feedLag": "Kuchelewa kwa feed: {{ms}}ms",
+    "heartbeatAge": "Umri wa HB: {{seconds}}s",
+    "metrics": {
+      "status": "Hali",
+      "dataLag": "Kuchelewa kwa Data",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Onyesha Maelezo",
+    "hideDetails": "Ficha Maelezo",
+    "inputs": "Inputs ({{count}})",
+    "outputs": "Outputs ({{count}})",
+    "feedPublishers": "Wachapishaji wa Feed ({{count}})",
+    "lastUpdate": "Sasisho la mwisho: {{time}}",
+    "waiting": "Inasubiri heartbeat...",
+    "startAriaLabel": "Anzisha mkakati {{name}}",
+    "stopAriaLabel": "Simamisha mkakati {{name}}",
+    "start": "Anzisha",
+    "stop": "Simamisha",
+    "starting": "Inaanza...",
+    "stopping": "Inasimama...",
+    "status": {
+      "starting": "inaanza",
+      "stopping": "inasimama",
+      "running": "inaendelea",
+      "stopped": "imesimamishwa"
+    },
+    "health": {
+      "healthy": "Afya nzuri — inapokea data mpya",
+      "warning": "Onyo — data imepitwa na wakati",
+      "error": "Hitilafu — hakuna data ya karibuni",
+      "unknown": "Haijulikani — hakuna data ya heartbeat"
+    },
+    "healthShort": {
+      "healthy": "AFYA NZURI",
+      "warning": "ONYO",
+      "error": "HITILAFU"
+    }
+  },
+  "launchModal": {
+    "title": "Sajili Process ya Mkakati",
+    "emptyTemplates": "Hakuna violezo vya mikakati vilivyosajiliwa kwenye backend. Bainisha angalau process moja ya mkakati.",
+    "close": "Funga",
+    "templateLabel": "Kiolezo cha mkakati",
+    "templatePlaceholder": "Chagua kiolezo...",
+    "templateFallbackDescription": "Mkakati umesajiliwa kwenye backend",
+    "loadingDefaults": "Inapakia chaguo-msingi za kiolezo…",
+    "loadDefaultsError": "Haiwezi kupakia chaguo-msingi za kiolezo. Tafadhali kagua logs za backend.",
+    "processNameLabel": "Jina la process",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Herufi zinazoruhusiwa: herufi ndogo, nambari, underscores",
+    "instanceNameLabel": "Jina la instance ya mkakati",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Hutumika ndani ya usanidi wa mkakati na mada za output",
+    "executionModeLabel": "Hali ya utekelezaji",
+    "executionModeThread": "Thread iliyopachikwa",
+    "executionModeProcess": "Process iliyotengwa",
+    "executionModeHelp": "Threads hushiriki kumbukumbu, processes hutoa utengaji imara zaidi.",
+    "flagsLabel": "Flags",
+    "autostartLabel": "Autostart wakati seva inawaka",
+    "startImmediatelyLabel": "Anzisha mara moja baada ya usajili",
+    "noteLabel": "Dokezo (hiari)",
+    "notePlaceholder": "Eleza madhumuni au vigezo vya instance hii ya mkakati.",
+    "noteHelp": "Huhifadhiwa pamoja na usanidi ili kusaidia kutambua process hii.",
+    "cancel": "Ghairi",
+    "submit": "Sajili mkakati",
+    "submitting": "Inasajili…"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "市場數據"
+  },
+  "controls": {
+    "exchange": "交易所：",
+    "instrument": "品種：",
+    "timeframe": "時間週期：",
+    "selectExchange": "選擇交易所",
+    "searchInstrument": "搜尋品種..."
+  },
+  "timeframes": {
+    "1m": "1 分鐘",
+    "5m": "5 分鐘",
+    "15m": "15 分鐘",
+    "30m": "30 分鐘",
+    "1h": "1 小時",
+    "4h": "4 小時",
+    "1d": "1 天"
+  },
+  "stats": {
+    "currentPrice": "目前價格",
+    "change24h": "24h 升跌",
+    "high24h": "24h 高位",
+    "low24h": "24h 低位"
+  },
+  "chart": {
+    "title": "價格圖表",
+    "errorPrefix": "載入圖表數據失敗:",
+    "unknownError": "未知錯誤",
+    "noDataTitle": "{{instrument}} 沒有可用數據",
+    "noDataHint": "該品種可能不存在，或沒有 {{timeframe}} 數據"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{instrument}} 在 {{exchange}} 上未配置相關品種。"
+  },
+  "cacheBanner": {
+    "message": "緩存預熱中: {{sampleCount}} / {{expected}} 根 K 線可用 {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(由 1m 衍生)",
+      "db": "(來自 DB)"
+    }
+  }
+}

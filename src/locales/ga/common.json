@@ -1,0 +1,83 @@
+{
+  "loading": "Á lódáil...",
+  "error": "Earráid",
+  "retry": "Bain triail eile as",
+  "close": "Dún",
+  "cancel": "Cealaigh",
+  "confirm": "Deimhnigh",
+  "save": "Sábháil",
+  "documentation": "Doiciméadacht (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Athraigh teanga",
+    "flagAriaLabel": "Athraigh go {{country}}",
+    "currentAriaLabel": "Teanga reatha: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Consól Trádála",
+    "tagline": "Stáisiún oibre beachtais",
+    "openSidebar": "Oscail barra taoibh",
+    "closeSidebar": "Dún barra taoibh",
+    "sidebar": "Barra taoibh",
+    "mainNavigation": "Príomhloingseoireacht",
+    "tradingContent": "Ábhar trádála",
+    "skipToContent": "Léim chuig ábhar trádála",
+    "lag": "Moill:",
+    "lagTitle": "Moill turais chuaird chuig an bhfreastalaí WebSocket",
+    "topics": "Topaicí:",
+    "topicsTitle": "Líon na dtopaicí WebSocket suibscríofa",
+    "connected": "Ceangailte",
+    "disconnected": "Dícheangailte",
+    "connectedTitle": "Ceangailte le WebSocket",
+    "disconnectedTitle": "Dícheangailte ó WebSocket",
+    "switchToLightMode": "Athraigh go mód geal",
+    "switchToDarkMode": "Athraigh go mód dorcha",
+    "timeTravelBanner": "Mód Taisteal Ama — ag breathnú ar shonraí stairiúla (inléite amháin)",
+    "lagUnknown": "Anaithnid",
+    "walletPicker": {
+      "ariaLabel": "Sparán gníomhach",
+      "placeholder": "Sparán",
+      "allWallets": "Gach sparán",
+      "optionPaper": "{{label}} (páipéir)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Oibreoir gníomhach",
+      "placeholder": "Oibreoir",
+      "allOperators": "Gach oibreoir"
+    },
+    "timeTravel": {
+      "pickerTitle": "Taisteal ama: roghnaigh pointe stairiúil ama",
+      "exitAriaLabel": "Scoir den mhód taisteal ama",
+      "exitTitle": "Fill ar mhód beo"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Ionstraim le breathnú amháin. Faigheann Snapper sonraí margaidh ach ní féidir leis orduithe a chur don phéire seo (siombail, malartán).",
+      "ariaLabel": "Ionstraim sonraí margaidh amháin",
+      "badge": "Sonraí margaidh amháin"
+    },
+    "liveOnly": {
+      "notice": "Taispeánann an cluaisín seo an staid reatha — níl amharc stairiúil ar fáil."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Chuaigh rud éigin amú",
+    "titleWithComponent": "Earráid in {{componentName}}",
+    "stackTrace": "Lorg cruachta",
+    "tryAgain": "Bain triail eile as"
+  },
+  "nav": {
+    "overview": "Forbhreathnú",
+    "market": "Sonraí Margaidh",
+    "processes": "Próisis",
+    "strategies": "Straitéisí",
+    "orders": "Orduithe agus Líonta",
+    "positions": "Suímh",
+    "signals": "Comharthaí",
+    "backtests": "Backtestanna",
+    "health": "Sláinte",
+    "admin": "Riarachán",
+    "aiIntegration": "Comhtháthú AI",
+    "aiReviews": "Athbhreithnithe AI",
+    "settings": "Socruithe"
+  }
+}

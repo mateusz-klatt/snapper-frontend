@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Sonraí Margaidh"
+  },
+  "controls": {
+    "exchange": "Malartán:",
+    "instrument": "Ionstraim:",
+    "timeframe": "Fráma ama:",
+    "selectExchange": "Roghnaigh malartán",
+    "searchInstrument": "Cuardaigh ionstraim..."
+  },
+  "timeframes": {
+    "1m": "1 nóiméad",
+    "5m": "5 nóiméad",
+    "15m": "15 nóiméad",
+    "30m": "30 nóiméad",
+    "1h": "1 uair",
+    "4h": "4 uair",
+    "1d": "1 lá"
+  },
+  "stats": {
+    "currentPrice": "Praghas Reatha",
+    "change24h": "Athrú 24h",
+    "high24h": "Ard 24h",
+    "low24h": "Íseal 24h"
+  },
+  "chart": {
+    "title": "Cairt Phraghais",
+    "errorPrefix": "Earráid agus sonraí cairte á lódáil:",
+    "unknownError": "Earráid anaithnid",
+    "noDataTitle": "Níl aon sonraí ar fáil do {{instrument}}",
+    "noDataHint": "B'fhéidir nach ann don ionstraim nó nach bhfuil sonraí {{timeframe}} aici"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Níl aon ionstraim ghaolmhar cumraithe do {{instrument}} ar {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache á théamh: {{sampleCount}} / {{expected}} coinneal ar fáil {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(díorthaithe ó 1m)",
+      "db": "(ón DB)"
+    }
+  }
+}

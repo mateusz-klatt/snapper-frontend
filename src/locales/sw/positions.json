@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Nafasi"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: inasubiri",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Kiasi",
+    "averageEntry": "Entry Wastani",
+    "unrealizedPnl": "P&L Isiyotekelezwa",
+    "realizedPnl": "P&L Iliyotekelezwa",
+    "updated": "Imesasishwa {{timestamp}}"
+  },
+  "empty": {
+    "title": "Hakuna nafasi zilizo wazi",
+    "message": "Nafasi za long, short, na flat zitaonekana hapa baada ya trades kutekelezwa."
+  },
+  "bracketModal": {
+    "title": "Ambatisha SL/TP — {{instrument}}",
+    "confirmTitle": "Thibitisha Bracket",
+    "position": "Nafasi",
+    "entryPrice": "Bei ya Entry",
+    "stopLossLabel": "Bei ya Stop-Loss",
+    "takeProfitLabel": "Bei ya Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Chini ya ${{price}}",
+      "slShort": "Juu ya ${{price}}",
+      "tpLong": "Juu ya ${{price}}",
+      "tpShort": "Chini ya ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Ghairi",
+      "review": "Kagua",
+      "back": "Rudi",
+      "confirm": "Thibitisha",
+      "creating": "Inaunda…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Ambatisha Trailing Stop — {{instrument}}",
+    "confirmTitle": "Thibitisha Trailing Stop",
+    "position": "Nafasi",
+    "entryPrice": "Bei ya Entry",
+    "trailingDistanceLabel": "Umbali wa Trailing (%)",
+    "minLockLabel": "Faida ya Min Lock (%) — hiari",
+    "trailingDistance": "Umbali wa Trailing",
+    "minLockProfit": "Faida ya Min Lock",
+    "placeholders": {
+      "trailingPct": "mf. 5.0",
+      "minLockPct": "0 = anza mara moja"
+    },
+    "minLockWarning": "Trailing stop haitawashwa hadi bei isogee {{minLockPct}}% kwa upande wako.",
+    "buttons": {
+      "cancel": "Ghairi",
+      "review": "Kagua",
+      "back": "Rudi",
+      "confirm": "Thibitisha",
+      "creating": "Inaunda..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Angalau bei moja ya SL au TP inahitajika",
+    "invalidSlPrice": "Bei ya stop-loss si sahihi",
+    "slPricePositive": "Bei ya stop-loss lazima iwe chanya",
+    "invalidTpPrice": "Bei ya take-profit si sahihi",
+    "tpPricePositive": "Bei ya take-profit lazima iwe chanya",
+    "slLongBelowEntry": "Bei ya SL lazima iwe chini ya bei ya entry ({{price}})",
+    "tpLongAboveEntry": "Bei ya TP lazima iwe juu ya bei ya entry ({{price}})",
+    "slShortAboveEntry": "Bei ya SL lazima iwe juu ya bei ya entry ({{price}})",
+    "tpShortBelowEntry": "Bei ya TP lazima iwe chini ya bei ya entry ({{price}})",
+    "trailingRequired": "Asilimia ya trailing inahitajika",
+    "trailingInvalid": "Asilimia ya trailing si sahihi",
+    "trailingRange": "Asilimia ya trailing lazima iwe kati ya 0 na 100",
+    "minLockInvalid": "Asilimia ya min lock si sahihi",
+    "minLockRange": "Asilimia ya min lock lazima iwe kati ya 0 na 100"
+  }
+}

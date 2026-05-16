@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "系統健康",
+    "healthMetricsHeading": "健康指標",
+    "processStatusHeading": "進程狀態",
+    "activeBacktestsHeading": "活躍回測",
+    "quickActionsHeading": "快捷操作",
+    "featureNotImplemented": "功能尚未實現",
+    "restartServices": "重啟服務",
+    "runHealthCheck": "運行健康檢查",
+    "viewLogs": "檢視日誌",
+    "exportReport": "匯出報告"
+  },
+  "status": {
+    "healthy": "健康",
+    "stopped": "已停止",
+    "error": "錯誤",
+    "warning": "警告",
+    "completed": "已完成",
+    "unknown": "未知"
+  },
+  "metrics": {
+    "tradingEngine": "交易引擎",
+    "tradingEngineDescription": "策略執行引擎",
+    "activeBacktests": "活躍回測",
+    "activeBacktestsDescription": "正在運行的回測進程",
+    "active": "活躍",
+    "inactive": "非活躍"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "回測 {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "運行時長",
+    "exitCode": "退出碼: {{code}}",
+    "service": "服務",
+    "backtest": "回測"
+  },
+  "dbStats": {
+    "title": "資料庫統計",
+    "loading": "正在載入資料庫統計…",
+    "unavailable": "資料庫統計不可用: {{message}}",
+    "fallbackError": "載入資料庫統計失敗。",
+    "sampled": "採樣於 {{age}}",
+    "samplerSummary": "採樣間隔: {{seconds}}s · {{count}} 個資料表",
+    "columns": {
+      "table": "表",
+      "kind": "類型",
+      "total": "總數",
+      "current": "目前",
+      "closed": "已關閉",
+      "archivable": "可歸檔",
+      "status": "狀態"
+    },
+    "stale": "已過期"
+  },
+  "notification": {
+    "title": "通知 Sidecar",
+    "loading": "正在載入通知指標…",
+    "unavailable": "通知指標不可用: {{message}}",
+    "fallbackError": "載入通知指標失敗。",
+    "sent": "已發送",
+    "sentDescription": "終態：已發送",
+    "failed": "失敗",
+    "failedDescription": "重試預算已耗盡",
+    "unregistered": "未註冊",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "已取消（範圍）",
+    "cancelledScopeDescription": "範圍撤銷 / 用戶停用",
+    "outboxDepth": "Outbox 深度",
+    "outboxDepthDescription": "已排入佇列，等待重試"
+  },
+  "retention": {
+    "title": "保留調度器",
+    "loading": "正在載入保留運行…",
+    "unavailable": "保留運行不可用: {{message}}",
+    "fallbackError": "載入保留運行失敗。",
+    "lastRun": "上次運行 {{age}}",
+    "dryRunNotice": "Dry-run 模式：資料列會被歸檔，但不會從 DB 清除。",
+    "columns": {
+      "table": "表",
+      "retain": "保留",
+      "archivedWindow": "歸檔時段",
+      "archived": "已歸檔",
+      "purged": "已清除",
+      "files": "文件",
+      "status": "狀態"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "error"
+  },
+  "systemMetrics": {
+    "title": "進程健康",
+    "loading": "正在載入進程指標…",
+    "unavailable": "進程指標不可用: {{message}}",
+    "fallbackError": "載入進程健康指標失敗。",
+    "rawJson": "原始 JSON",
+    "pid": "PID",
+    "statusValue": "狀態: {{status}}",
+    "uptime": "運行時長",
+    "threads": "線程",
+    "openFds": "已開啟 FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "被限速 {{count}}×",
+    "memory": "記憶體",
+    "saturation": "飽和度 {{percent}}",
+    "asyncioTasks": "Asyncio 任務",
+    "asyncioActive": "{{count}} 個活躍",
+    "asyncioPending": "+ {{count}} 個待處理",
+    "dbPool": "DB Pool",
+    "liveConns": "即時連線: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "物件: {{value}}",
+    "threadsPercent": "線程 %",
+    "networkConns": "網絡連線",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "活躍",
+    "tracemallocIdle": "空閒"
+  },
+  "relativeAge": {
+    "justNow": "剛剛",
+    "seconds": "{{seconds}}s 前",
+    "minutes": "{{minutes}}min 前",
+    "hours": "{{hours}}h 前",
+    "days": "{{days}}d 前"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Iarratas",
+    "decision": "Cinneadh",
+    "capsViolation": "Sárú teorann",
+    "selectedDelegate": "Toscaire roghnaithe",
+    "instrument": "ionstraim",
+    "deadline": "sprioc-am {{time}}",
+    "decidedBy": "ag",
+    "newStatus": "stádas",
+    "mode": "mód",
+    "capAttempted": "iarracht",
+    "capLimit": "i gcoinne teorann",
+    "capOn": "ar ionstraim",
+    "reviewLabel": "athbhreithniú {{reviewId}}",
+    "unhandledFrame": "Fráma gníomhaíochta athbhreithnithe AI gan láimhseáil: {{frame}}"
+  },
+  "page": {
+    "title": "Bosca Isteach Athbhreithnithe AI",
+    "subtitle": "Athbhreithnithe CONSULT atá ar feitheamh agus treoraithe chuig an toscaire seo, móide sruth beo na n-imeachtaí."
+  },
+  "roleNotice": {
+    "title": "Coimeádta do thoscairí AI",
+    "message": "Taispeánann an bosca isteach seo athbhreithnithe CONSULT atá treoraithe chuig príomhoide toscaire AI. Sínigh isteach le cuntas toscaire AI chun athbhreithnithe ar feitheamh agus sruth beo na gníomhaíochta a fheiceáil. Is é do ról reatha",
+    "unknownRole": "anaithnid"
+  },
+  "pending": {
+    "title": "Athbhreithnithe ar feitheamh",
+    "loading": "Athbhreithnithe ar feitheamh á lódáil…",
+    "loadError": "Theip ar lódáil athbhreithnithe ar feitheamh: {{message}}",
+    "emptyTitle": "Níl aon athbhreithniú ar feitheamh",
+    "emptyMessage": "Beidh iarratais CONSULT nua atá treoraithe chuig an toscaire seo le feiceáil anseo.",
+    "columns": {
+      "instrument": "Ionstraim",
+      "thesis": "Tráchtas",
+      "status": "Stádas",
+      "deadline": "Sprioc-am",
+      "decision": "Cinneadh"
+    },
+    "rationalePlaceholder": "Réasúnaíocht (roghnach)",
+    "rationaleAriaLabel": "Réasúnaíocht don athbhreithniú {{reviewId}}",
+    "approve": "Faomh",
+    "reject": "Diúltaigh",
+    "submitError": "Theip ar chur isteach: {{message}}"
+  },
+  "activity": {
+    "title": "Gníomhaíocht le déanaí",
+    "emptyTitle": "Níl aon ghníomhaíocht fós",
+    "emptyMessage": "Sruthóidh frámaí iarratais athbhreithnithe AI, cinntí agus sáruithe teorann isteach anseo.",
+    "summaryEmpty": "Ní bhfuarthas frámaí",
+    "summaryCount": "{{shown}} as {{total}} maolánaithe á dtaispeáint"
+  }
+}

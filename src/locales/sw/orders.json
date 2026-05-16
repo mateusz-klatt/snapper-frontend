@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Oda na Utekelezaji",
+    "newOrder": "Oda Mpya",
+    "exportCsv": "Hamisha CSV"
+  },
+  "tabs": {
+    "orders": "Oda ({{total}})",
+    "executions": "Utekelezaji ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Chuja kwa hali:",
+    "options": {
+      "all": "Oda Zote",
+      "new": "Mpya",
+      "open": "Imefunguliwa",
+      "partiallyFilled": "Imetekelezwa kwa Sehemu",
+      "partially_filled": "Imetekelezwa kwa Sehemu",
+      "filled": "Imetekelezwa",
+      "cancelled": "Imeghairiwa",
+      "rejected": "Imekataliwa"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Kiasi",
+    "price": "Bei",
+    "created": "Iliundwa",
+    "createdUnknown": "N/A",
+    "orderId": "ID ya Oda",
+    "leverage": "Leverage",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "PUNGUZA-TU",
+    "cancel": "Ghairi",
+    "cancelling": "Inaghairi…",
+    "cancelAriaLabel": "Ghairi oda {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Oda #{{orderId}}",
+    "filled": "IMETEKELEZWA",
+    "orderLabel": "Oda {{orderId}}",
+    "size": "Ukubwa",
+    "price": "Bei",
+    "total": "Jumla",
+    "executed": "Imetekelezwa",
+    "fees": "Ada"
+  },
+  "empty": {
+    "ordersTitle": "Hakuna oda zilizopatikana",
+    "ordersStartTrading": "Anza trading ili kuona oda hapa",
+    "ordersFilterless": "Hakuna oda za {{status}}",
+    "executionsTitle": "Hakuna utekelezaji uliopatikana",
+    "executionsMessage": "Utekelezaji wa trades utaonekana hapa"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrumenti",
+      "side": "Upande",
+      "type": "Aina",
+      "status": "Hali",
+      "quantity": "Kiasi",
+      "price": "Bei",
+      "leverage": "Leverage",
+      "reduceOnly": "Punguza Tu",
+      "created": "Iliundwa"
+    },
+    "executions": {
+      "orderId": "ID ya Oda",
+      "instrument": "Instrumenti",
+      "side": "Upande",
+      "size": "Ukubwa",
+      "price": "Bei",
+      "total": "Jumla",
+      "fee": "Ada",
+      "feeAsset": "Asset ya Ada",
+      "executed": "Imetekelezwa"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Oda Mpya ya Manual",
+    "titleConfirm": "Thibitisha Oda",
+    "fields": {
+      "exchange": "Exchange",
+      "instrument": "Instrumenti",
+      "side": "Upande",
+      "orderType": "Aina ya Oda",
+      "quantity": "Kiasi",
+      "price": "Bei",
+      "stopPrice": "Bei ya Stop",
+      "mode": "Hali",
+      "wallet": "Pochi",
+      "type": "Aina"
+    },
+    "sideOptions": {
+      "buy": "Nunua",
+      "sell": "Uza"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — data ya soko pekee",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Ghairi",
+      "reviewOrder": "Kagua Oda",
+      "back": "Rudi",
+      "confirmOrder": "Thibitisha Oda",
+      "submitting": "Inatuma..."
+    },
+    "errors": {
+      "missingRequired": "Sehemu zote zinazohitajika lazima zijazwe",
+      "quantityPositive": "Kiasi lazima kiwe nambari chanya",
+      "priceRequired": "Bei inahitajika kwa aina hii ya oda",
+      "pricePositive": "Bei lazima iwe nambari chanya",
+      "stopPriceRequired": "Bei ya stop inahitajika kwa aina hii ya oda",
+      "stopPricePositive": "Bei ya stop lazima iwe nambari chanya",
+      "createFailed": "Kuunda oda kumeshindikana"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Instrumenti hii ni ya kuangalia pekee — weka oda kwenye instrumenti inayoweza kutekeleza oda.",
+      "unknownInstrument": "Instrumenti hii haitambuliki. Pakia upya orodha na ujaribu tena.",
+      "capsViolation": "Oda hii ingezidisha mipaka ya usalama ya akaunti yako. Kagua mipangilio yako ya hatari na ujaribu tena."
+    }
+  }
+}

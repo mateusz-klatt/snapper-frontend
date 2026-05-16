@@ -96,6 +96,11 @@ export type CatalogLanguage =
   | 'th'
   | 'bn'
   | 'ms'
+  | 'ga'
+  | 'fil'
+  | 'my-MM'
+  | 'sw'
+  | 'zh-Hant'
 
 export interface LocaleMeta {
   readonly code: AppLocale

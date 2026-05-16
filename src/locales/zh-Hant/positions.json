@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "倉位"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: 待生效",
+    "slTpButton": "SL/TP",
+    "trailButton": "追蹤",
+    "quantity": "數量",
+    "averageEntry": "平均開倉價",
+    "unrealizedPnl": "未實現 P&L",
+    "realizedPnl": "已實現 P&L",
+    "updated": "更新於 {{timestamp}}"
+  },
+  "empty": {
+    "title": "沒有未平倉位",
+    "message": "交易成交後，多頭、空頭及空倉狀態會在這裏顯示。"
+  },
+  "bracketModal": {
+    "title": "設定 SL/TP — {{instrument}}",
+    "confirmTitle": "確認 SL/TP",
+    "position": "倉位",
+    "entryPrice": "開倉價",
+    "stopLossLabel": "止損價",
+    "takeProfitLabel": "止賺價",
+    "stopLoss": "止損",
+    "takeProfit": "止賺",
+    "placeholders": {
+      "slLong": "低於 ${{price}}",
+      "slShort": "高於 ${{price}}",
+      "tpLong": "高於 ${{price}}",
+      "tpShort": "低於 ${{price}}"
+    },
+    "buttons": {
+      "cancel": "取消",
+      "review": "覆核",
+      "back": "返回",
+      "confirm": "確認",
+      "creating": "建立中…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "設定追蹤止損 — {{instrument}}",
+    "confirmTitle": "確認追蹤止損",
+    "position": "倉位",
+    "entryPrice": "開倉價",
+    "trailingDistanceLabel": "追蹤距離 (%)",
+    "minLockLabel": "最低鎖定盈利 (%) — 可選",
+    "trailingDistance": "追蹤距離",
+    "minLockProfit": "最低鎖定盈利",
+    "placeholders": {
+      "trailingPct": "例如 5.0",
+      "minLockPct": "0 = 立即開始"
+    },
+    "minLockWarning": "追蹤止損要等價格向有利方向移動 {{minLockPct}}% 後才會啟動。",
+    "buttons": {
+      "cancel": "取消",
+      "review": "覆核",
+      "back": "返回",
+      "confirm": "確認",
+      "creating": "建立中..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "至少需要填寫 SL 或 TP 價格之一",
+    "invalidSlPrice": "無效的止損價",
+    "slPricePositive": "止損價必須為正數",
+    "invalidTpPrice": "無效的止賺價",
+    "tpPricePositive": "止賺價必須為正數",
+    "slLongBelowEntry": "SL 價格必須低於開倉價 ({{price}})",
+    "tpLongAboveEntry": "TP 價格必須高於開倉價 ({{price}})",
+    "slShortAboveEntry": "SL 價格必須高於開倉價 ({{price}})",
+    "tpShortBelowEntry": "TP 價格必須低於開倉價 ({{price}})",
+    "trailingRequired": "必須填寫追蹤百分比",
+    "trailingInvalid": "無效的追蹤百分比",
+    "trailingRange": "追蹤百分比必須介乎 0 至 100 之間",
+    "minLockInvalid": "無效的最低鎖定百分比",
+    "minLockRange": "最低鎖定百分比必須介乎 0 至 100 之間"
+  }
+}

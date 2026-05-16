@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Usimamizi",
+    "subtitle": "Simamia watumiaji na usanidi wa mfumo"
+  },
+  "rolePermissions": {
+    "title": "Ruhusa za Majukumu",
+    "viewer": {
+      "label": "Mtazamaji",
+      "description": "Ufikiaji wa kusoma pekee kwa Muhtasari na Data ya Soko. Hawezi kusimamia michakato, mikakati, au mipangilio ya mfumo."
+    },
+    "operator": {
+      "label": "Opereta",
+      "description": "Ruhusa zote za Mtazamaji pamoja na operesheni za trading, utekelezaji wa mikakati, usimamizi wa michakato, na ufuatiliaji wa afya ya mfumo."
+    },
+    "admin": {
+      "label": "Msimamizi",
+      "description": "Ufikiaji kamili wa mfumo ikijumuisha usimamizi wa watumiaji, mipangilio ya mfumo, usanidi wa API key, na ruhusa zote za Opereta."
+    },
+    "table": {
+      "resource": "Rasilimali",
+      "viewer": "Mtazamaji",
+      "operator": "Opereta",
+      "admin": "Msimamizi"
+    },
+    "resources": {
+      "overview": "Muhtasari",
+      "market": "Data ya Soko",
+      "processes": "Michakato",
+      "strategies": "Mikakati",
+      "orders": "Oda na Fills",
+      "positions": "Nafasi",
+      "signals": "Ishara",
+      "health": "Afya",
+      "admin": "Usimamizi",
+      "settings": "Mipangilio"
+    }
+  },
+  "common": {
+    "cancel": "Ghairi",
+    "selectWallet": "Chagua pochi",
+    "selectAWallet": "Chagua pochi",
+    "chooseWalletPlaceholder": "Chagua pochi...",
+    "selectWalletPlaceholder": "Chagua pochi...",
+    "walletLabel": "Pochi",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Hitilafu isiyojulikana",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Ufikiaji Umekataliwa",
+      "message": "Huna ruhusa ya kusimamia watumiaji. Tafadhali wasiliana na msimamizi wa mfumo."
+    },
+    "list": {
+      "title": "Usimamizi wa Watumiaji",
+      "countLabel": "watumiaji {{count}}",
+      "showInactive": "Onyesha wasiotumika",
+      "hideInactive": "Ficha wasiotumika",
+      "addUser": "Ongeza Mtumiaji",
+      "searchPlaceholder": "Tafuta kwa jina la mtumiaji, email, au jukumu...",
+      "columns": {
+        "user": "Mtumiaji",
+        "role": "Jukumu",
+        "status": "Hali",
+        "createdAt": "Iliundwa",
+        "actions": "Vitendo"
+      },
+      "status": {
+        "active": "Inatumika",
+        "inactive": "Haitumiki"
+      },
+      "unknown": "Haijulikani",
+      "empty": {
+        "title": "Hakuna watumiaji waliopatikana",
+        "noMatch": "Hakuna watumiaji wanaolingana na vigezo vyako vya utafutaji.",
+        "noUsers": "Hakuna watumiaji waliopatikana.",
+        "noActive": "Hakuna watumiaji wanaotumika waliopatikana."
+      },
+      "errorLoading": "Hitilafu kupakia watumiaji: {{message}}",
+      "deactivate": {
+        "title": "Zima Mtumiaji",
+        "message": "Una uhakika unataka kuzima mtumiaji \"{{username}}\"? Hataweza tena kuingia.",
+        "confirm": "Zima"
+      },
+      "toast": {
+        "deactivated": "Mtumiaji amezimwa",
+        "deactivateError": "Hitilafu kuzima mtumiaji"
+      }
+    },
+    "form": {
+      "titleEdit": "Hariri Mtumiaji",
+      "titleAdd": "Ongeza Mtumiaji",
+      "fields": {
+        "username": "Jina la mtumiaji",
+        "usernamePlaceholder": "Weka jina la mtumiaji",
+        "password": "Nenosiri",
+        "passwordPlaceholder": "Weka nenosiri",
+        "newPassword": "Nenosiri Jipya",
+        "newPasswordPlaceholder": "Weka nenosiri jipya",
+        "email": "Email",
+        "emailPlaceholder": "Weka email",
+        "role": "Jukumu",
+        "accountActive": "Akaunti inatumika",
+        "resetUserPassword": "Weka upya nenosiri la mtumiaji"
+      },
+      "roles": {
+        "viewer": "Mtazamaji",
+        "operator": "Opereta",
+        "admin": "Msimamizi"
+      },
+      "validation": {
+        "usernameRequired": "Jina la mtumiaji linahitajika",
+        "usernameMinLength": "Jina la mtumiaji lazima liwe na angalau herufi 3",
+        "emailRequired": "Email inahitajika",
+        "emailInvalid": "Muundo wa email si sahihi",
+        "passwordRequired": "Nenosiri linahitajika",
+        "passwordMinLength": "Nenosiri lazima liwe na angalau herufi 8",
+        "passwordRequiredWhenResetting": "Nenosiri linahitajika wakati wa kuweka upya"
+      },
+      "actions": {
+        "saveChanges": "Hifadhi Mabadiliko",
+        "createUser": "Unda Mtumiaji"
+      },
+      "toast": {
+        "created": "Mtumiaji ameundwa",
+        "createError": "Hitilafu kuunda mtumiaji",
+        "updated": "Mtumiaji amesasishwa",
+        "updateError": "Hitilafu kusasisha mtumiaji",
+        "passwordReset": "Nenosiri la mtumiaji limewekwa upya",
+        "resetError": "Hitilafu kuweka upya nenosiri"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Ufikiaji Umekataliwa",
+      "message": "Huna ruhusa ya kusimamia ruhusa za upeo. Tafadhali wasiliana na msimamizi wa mfumo."
+    },
+    "list": {
+      "title": "Ruhusa za Upeo",
+      "countLabel": "ruhusa {{count}}",
+      "createGrant": "Unda Ruhusa",
+      "selectWalletPrompt": "Chagua pochi hapo juu ili kuona ruhusa zake za upeo.",
+      "columns": {
+        "operator": "Opereta",
+        "scope": "Upeo",
+        "target": "Lengo",
+        "grantedAt": "Ilitolewa",
+        "actions": "Vitendo"
+      },
+      "empty": {
+        "noGrants": "Hakuna ruhusa zilizopatikana",
+        "noGrantsHint": "Pochi hii haina ruhusa za upeo zinazotumika."
+      },
+      "errorLoading": "Hitilafu kupakia ruhusa: {{message}}",
+      "handover": "Kabidhi"
+    },
+    "form": {
+      "title": "Unda Ruhusa ya Upeo",
+      "fields": {
+        "operator": "Opereta",
+        "operatorPlaceholder": "Chagua opereta...",
+        "wallet": "Pochi",
+        "scopeKind": "Aina ya Upeo",
+        "underlyingPublicId": "Public ID ya Mali Msingi",
+        "instrumentPublicId": "Public ID ya Instrumenti",
+        "underlyingPlaceholder": "mf. BTC",
+        "instrumentPlaceholder": "mf. BTC-USD-PERP",
+        "note": "Dokezo (hiari)",
+        "notePlaceholder": "Dokezo la hiari"
+      },
+      "scopeKinds": {
+        "underlying": "Mali Msingi",
+        "instrument": "Instrumenti"
+      },
+      "validation": {
+        "operatorRequired": "Opereta anahitajika",
+        "walletRequired": "Pochi inahitajika",
+        "targetRequired": "ID ya lengo inahitajika"
+      },
+      "actions": {
+        "createGrant": "Unda Ruhusa"
+      },
+      "toast": {
+        "created": "Ruhusa ya upeo imeundwa",
+        "conflictError": "Mgongano: opereta mwingine tayari ana ruhusa kwenye upeo huu",
+        "createError": "Hitilafu kuunda ruhusa ya upeo"
+      }
+    },
+    "handover": {
+      "title": "Kabidhi Ruhusa ya Upeo",
+      "fields": {
+        "currentHolder": "Mmiliki wa sasa",
+        "scope": "Upeo",
+        "wallet": "Pochi",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Hamishia kwa opereta",
+        "transferToPlaceholder": "Chagua opereta mpokeaji...",
+        "reason": "Sababu (hiari)",
+        "reasonPlaceholder": "mf. Mabadiliko ya zamu"
+      },
+      "actions": {
+        "handover": "Kabidhi"
+      },
+      "toast": {
+        "completed": "Ruhusa ya upeo imekabidhiwa",
+        "conflictError": "Mgongano: opereta mpokeaji tayari ana ruhusa inayogongana",
+        "handoverError": "Hitilafu kukabidhi ruhusa ya upeo"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Ufikiaji Umekataliwa",
+      "message": "Huna ruhusa ya kusimamia vitambulisho vya pochi. Tafadhali wasiliana na msimamizi wa mfumo."
+    },
+    "list": {
+      "title": "Vitambulisho vya Pochi",
+      "countLabel": "vitambulisho {{count}}",
+      "addCredential": "Ongeza Kitambulisho",
+      "selectWalletPrompt": "Chagua pochi hapo juu ili kuona vitambulisho vyake.",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Aina",
+        "label": "Lebo",
+        "createdAt": "Iliundwa",
+        "actions": "Vitendo"
+      },
+      "empty": {
+        "noCredentials": "Hakuna vitambulisho vilivyopatikana",
+        "noCredentialsHint": "Pochi hii haina vitambulisho vinavyotumika."
+      },
+      "errorLoading": "Hitilafu kupakia vitambulisho: {{message}}",
+      "rotate": "Zungusha"
+    },
+    "form": {
+      "title": "Ongeza Kitambulisho",
+      "fields": {
+        "wallet": "Pochi",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "mf. kraken",
+        "credentialType": "Aina ya Kitambulisho",
+        "label": "Lebo (hiari)",
+        "labelPlaceholder": "mf. Ufunguo mkuu wa trading",
+        "pemPlaceholder": "Bandika private key ya muundo wa PEM hapa"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "Private Key (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Salio la Awali"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Pochi inahitajika",
+        "exchangeRequired": "Exchange inahitajika",
+        "fieldRequired": "{{field}} inahitajika"
+      },
+      "actions": {
+        "addCredential": "Ongeza Kitambulisho"
+      },
+      "toast": {
+        "created": "Kitambulisho kimeundwa",
+        "conflictError": "Mgongano: pochi hii tayari ina kitambulisho kinachotumika kwa exchange hii",
+        "createError": "Hitilafu kuunda kitambulisho"
+      }
+    },
+    "rotate": {
+      "title": "Zungusha Kitambulisho",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Aina",
+        "label": "Lebo",
+        "newLabel": "Lebo Mpya (hiari)",
+        "newLabelPlaceholder": "mf. Ufunguo uliozungushwa 2026-04",
+        "pemPlaceholder": "Bandika private key ya muundo wa PEM hapa"
+      },
+      "actions": {
+        "rotate": "Zungusha"
+      },
+      "toast": {
+        "rotated": "Kitambulisho kimezungushwa",
+        "rotateError": "Hitilafu kuzungusha kitambulisho"
+      }
+    }
+  }
+}

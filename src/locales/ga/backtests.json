@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Siar",
+    "backToList": "← Ar ais go backtestanna"
+  },
+  "status": {
+    "pending": "Ar feitheamh",
+    "running": "Ag rith",
+    "completed": "Críochnaithe",
+    "failed": "Teipthe",
+    "cancelled": "Cealaithe"
+  },
+  "list": {
+    "title": "Backtestanna",
+    "actions": {
+      "cancel": "Cealaigh",
+      "rerun": "Rith arís"
+    },
+    "fields": {
+      "timeframe": "Fráma ama",
+      "period": "Tréimhse",
+      "initialCash": "Airgead Tosaigh",
+      "id": "ID"
+    },
+    "errorPrefix": "Earráid: {{message}}",
+    "filter": {
+      "ariaLabel": "Scag backtestanna de réir stádais",
+      "options": {
+        "all": "Gach stádas",
+        "pending": "Ar feitheamh",
+        "running": "Ag rith",
+        "completed": "Críochnaithe",
+        "failed": "Teipthe",
+        "cancelled": "Cealaithe"
+      }
+    },
+    "empty": {
+      "title": "Níl aon backtest ann",
+      "message": "Rith backtest tríd an CLI nó API chun torthaí a fheiceáil anseo."
+    }
+  },
+  "detail": {
+    "title": "Rith backtest",
+    "fields": {
+      "strategy": "Straitéis",
+      "instrument": "Ionstraim",
+      "status": "Stádas",
+      "period": "Tréimhse",
+      "crossAsset": "Atribúidiú tras-sócmhainne",
+      "configHash": "Hais cumraíochta"
+    },
+    "crossAssetFlow": "fotha {{source}} → líonta {{target}}",
+    "errors": {
+      "invalidRunId": "ID rite neamhbhailí — caithfidh sé a bheith ina UUID7 (fuarthas \"{{id}}\").",
+      "loadFailed": "Theip ar lódáil an rite: {{message}}",
+      "notFound": "níor aimsíodh"
+    }
+  },
+  "compare": {
+    "title": "Cuir i gcomparáid",
+    "headingFull": "Comparáid backtestanna",
+    "loading": "Comparáid á lódáil…",
+    "vs": "vs",
+    "runLabel": "Rith {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Méadrachtaí",
+      "equityOverlay": "Forleagan cothromais",
+      "trades": "Trádálacha",
+      "signals": "Comharthaí"
+    },
+    "pairingMode": {
+      "auto": "uathoibríoch",
+      "manual": "láimhe"
+    },
+    "errors": {
+      "notFound": "Níor aimsíodh an chomparáid sa sparán reatha.",
+      "loadFailed": "Theip ar lódáil na comparáide: {{message}}",
+      "unknown": "earráid anaithnid",
+      "emptyResponse": "Freagra comparáide folamh."
+    },
+    "launcher": {
+      "title": "Cuir i gcomparáid",
+      "submit": "Cuir i gcomparáid",
+      "autoPair": "Cuir i gcomparáid leis an gceann is déanaí",
+      "terminalGate": "beidh comparáid ar fáil nuair a shroichfidh an rith stádas críochnaitheach",
+      "noSiblings": "níl aon rith eile leis an gcumraíocht seo",
+      "limitNotice": "{{count}} ceann is déanaí á dtaispeáint — úsáid péireáil láimhe do ritheanna níos sine",
+      "pickPlaceholder": "— roghnaigh rith le comparáid —",
+      "showAllLabel": "Taispeáin gach rith (ní hamháin an chumraíocht chéanna)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "gach rith",
+        "sameConfig": "an chumraíocht chéanna"
+      },
+      "errors": {
+        "pickRequired": "roghnaigh rith ón liosta"
+      }
+    },
+    "diffColumns": {
+      "common": "Coitianta",
+      "onlyA": "In A amháin",
+      "onlyB": "In B amháin"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "PnL A",
+        "pnlB": "PnL B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Níl aon mhéadracht inchomparáide ann — ní raibh luachanna taifeadta ag ceachtar rith.",
+      "columns": {
+        "name": "Méadracht",
+        "runA": "Rith A",
+        "runB": "Rith B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Rith A",
+        "runB": "Rith B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Ag fanacht le dul chun cinn…",
+    "candles": "{{done}} / {{total}} coinneal",
+    "candlesNoTotal": "{{done}} coinneal",
+    "equity": "cothromas {{value}}",
+    "signalsTrades": "{{signals}} comh. / {{trades}} trádáil",
+    "milestoneLine": "garsprioc {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

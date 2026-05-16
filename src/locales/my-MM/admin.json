@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "စီမံခန့်ခွဲရေး",
+    "subtitle": "အသုံးပြုသူများနှင့် စနစ် configuration ကို စီမံပါ"
+  },
+  "rolePermissions": {
+    "title": "Role Permission များ",
+    "viewer": {
+      "label": "ကြည့်ရှုသူ",
+      "description": "Overview နှင့် Market Data ကို ဖတ်ရန်သာ ဝင်ခွင့်ရှိသည်။ Process များ၊ strategy များ သို့မဟုတ် စနစ် setting များကို စီမံနိုင်မည်မဟုတ်ပါ။"
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Viewer permission အားလုံးအပြင် trading operation များ၊ strategy run ခြင်း၊ process စီမံခြင်းနှင့် system health စောင့်ကြည့်ခြင်းတို့ ပါဝင်သည်။"
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "အသုံးပြုသူ စီမံခန့်ခွဲမှု၊ စနစ် setting များ၊ API key configuration နှင့် Operator permission အားလုံးအပါအဝင် စနစ်တစ်ခုလုံး ဝင်ခွင့်ရှိသည်။"
+    },
+    "table": {
+      "resource": "Resource",
+      "viewer": "ကြည့်ရှုသူ",
+      "operator": "Operator",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "အနှစ်ချုပ်",
+      "market": "စျေးကွက်ဒေတာ",
+      "processes": "Process များ",
+      "strategies": "Strategy များ",
+      "orders": "အော်ဒါများနှင့် Fill များ",
+      "positions": "ပိုဇစ်ရှင်များ",
+      "signals": "Signal များ",
+      "health": "Health",
+      "admin": "စီမံခန့်ခွဲရေး",
+      "settings": "Setting များ"
+    }
+  },
+  "common": {
+    "cancel": "ပယ်ဖျက်",
+    "selectWallet": "Wallet ရွေးပါ",
+    "selectAWallet": "Wallet တစ်ခု ရွေးပါ",
+    "chooseWalletPlaceholder": "Wallet ရွေးပါ...",
+    "selectWalletPlaceholder": "Wallet ရွေးပါ...",
+    "walletLabel": "Wallet",
+    "paperAnnotation": " (paper)",
+    "unknownError": "မသိသော error",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "ဝင်ခွင့်မရှိပါ",
+      "message": "အသုံးပြုသူများကို စီမံရန် permission မရှိပါ။ သင့် system administrator ကို ဆက်သွယ်ပါ။"
+    },
+    "list": {
+      "title": "အသုံးပြုသူ စီမံခန့်ခွဲမှု",
+      "countLabel": "အသုံးပြုသူ {{count}} ဦး",
+      "showInactive": "Inactive များ ပြပါ",
+      "hideInactive": "Inactive များ ဖျောက်ပါ",
+      "addUser": "အသုံးပြုသူ ထည့်ပါ",
+      "searchPlaceholder": "username, email သို့မဟုတ် role ဖြင့် ရှာပါ...",
+      "columns": {
+        "user": "အသုံးပြုသူ",
+        "role": "Role",
+        "status": "Status",
+        "createdAt": "ဖန်တီးချိန်",
+        "actions": "လုပ်ဆောင်ချက်များ"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "unknown": "မသိပါ",
+      "empty": {
+        "title": "အသုံးပြုသူ မတွေ့ပါ",
+        "noMatch": "သင်ရှာသော စည်းမျဉ်းနှင့် ကိုက်ညီသည့် အသုံးပြုသူ မရှိပါ။",
+        "noUsers": "အသုံးပြုသူ မတွေ့ပါ။",
+        "noActive": "Active အသုံးပြုသူ မတွေ့ပါ။"
+      },
+      "errorLoading": "အသုံးပြုသူများ load လုပ်ရာတွင် error: {{message}}",
+      "deactivate": {
+        "title": "အသုံးပြုသူ Deactivate လုပ်ပါ",
+        "message": "အသုံးပြုသူ \"{{username}}\" ကို deactivate လုပ်မှာ သေချာပါသလား။ ထိုသူသည် sign in မလုပ်နိုင်တော့ပါ။",
+        "confirm": "Deactivate"
+      },
+      "toast": {
+        "deactivated": "အသုံးပြုသူကို deactivate လုပ်ပြီးပါပြီ",
+        "deactivateError": "အသုံးပြုသူ deactivate လုပ်ရာတွင် error"
+      }
+    },
+    "form": {
+      "titleEdit": "အသုံးပြုသူ ပြင်ဆင်ပါ",
+      "titleAdd": "အသုံးပြုသူ ထည့်ပါ",
+      "fields": {
+        "username": "Username",
+        "usernamePlaceholder": "Username ထည့်ပါ",
+        "password": "Password",
+        "passwordPlaceholder": "Password ထည့်ပါ",
+        "newPassword": "Password အသစ်",
+        "newPasswordPlaceholder": "Password အသစ် ထည့်ပါ",
+        "email": "Email",
+        "emailPlaceholder": "Email ထည့်ပါ",
+        "role": "Role",
+        "accountActive": "အကောင့် active",
+        "resetUserPassword": "အသုံးပြုသူ password reset လုပ်ပါ"
+      },
+      "roles": {
+        "viewer": "ကြည့်ရှုသူ",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Username လိုအပ်သည်",
+        "usernameMinLength": "Username သည် အနည်းဆုံး character 3 လုံး ရှိရမည်",
+        "emailRequired": "Email လိုအပ်သည်",
+        "emailInvalid": "Email format မမှန်ပါ",
+        "passwordRequired": "Password လိုအပ်သည်",
+        "passwordMinLength": "Password သည် အနည်းဆုံး character 8 လုံး ရှိရမည်",
+        "passwordRequiredWhenResetting": "Reset လုပ်ချိန်တွင် password လိုအပ်သည်"
+      },
+      "actions": {
+        "saveChanges": "ပြင်ဆင်ချက်များ သိမ်းပါ",
+        "createUser": "အသုံးပြုသူ ဖန်တီးပါ"
+      },
+      "toast": {
+        "created": "အသုံးပြုသူ ဖန်တီးပြီးပါပြီ",
+        "createError": "အသုံးပြုသူ ဖန်တီးရာတွင် error",
+        "updated": "အသုံးပြုသူ update လုပ်ပြီးပါပြီ",
+        "updateError": "အသုံးပြုသူ update လုပ်ရာတွင် error",
+        "passwordReset": "အသုံးပြုသူ password reset လုပ်ပြီးပါပြီ",
+        "resetError": "Password reset လုပ်ရာတွင် error"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "ဝင်ခွင့်မရှိပါ",
+      "message": "Scope grant များကို စီမံရန် permission မရှိပါ။ သင့် system administrator ကို ဆက်သွယ်ပါ။"
+    },
+    "list": {
+      "title": "Scope Grant များ",
+      "countLabel": "grant {{count}} ခု",
+      "createGrant": "Grant ဖန်တီးပါ",
+      "selectWalletPrompt": "၎င်း၏ scope grant များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Scope",
+        "target": "Target",
+        "grantedAt": "Grant ပေးချိန်",
+        "actions": "လုပ်ဆောင်ချက်များ"
+      },
+      "empty": {
+        "noGrants": "Grant မတွေ့ပါ",
+        "noGrantsHint": "ဤ wallet တွင် active scope grant မရှိပါ။"
+      },
+      "errorLoading": "Grant များ load လုပ်ရာတွင် error: {{message}}",
+      "handover": "လွှဲပြောင်းပါ"
+    },
+    "form": {
+      "title": "Scope Grant ဖန်တီးပါ",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Operator ရွေးပါ...",
+        "wallet": "Wallet",
+        "scopeKind": "Scope အမျိုးအစား",
+        "underlyingPublicId": "Underlying Public ID",
+        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPlaceholder": "ဥပမာ BTC",
+        "instrumentPlaceholder": "ဥပမာ BTC-USD-PERP",
+        "note": "မှတ်ချက် (optional)",
+        "notePlaceholder": "Optional မှတ်ချက်"
+      },
+      "scopeKinds": {
+        "underlying": "Underlying",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operator လိုအပ်သည်",
+        "walletRequired": "Wallet လိုအပ်သည်",
+        "targetRequired": "Target ID လိုအပ်သည်"
+      },
+      "actions": {
+        "createGrant": "Grant ဖန်တီးပါ"
+      },
+      "toast": {
+        "created": "Scope grant ဖန်တီးပြီးပါပြီ",
+        "conflictError": "Conflict: ဤ scope အတွက် အခြား operator တစ်ဦးက grant ကို ရယူထားပြီးဖြစ်သည်",
+        "createError": "Scope grant ဖန်တီးရာတွင် error"
+      }
+    },
+    "handover": {
+      "title": "Scope Grant လွှဲပြောင်းပါ",
+      "fields": {
+        "currentHolder": "လက်ရှိ ကိုင်ထားသူ",
+        "scope": "Scope",
+        "wallet": "Wallet",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Operator သို့ လွှဲပြောင်းပါ",
+        "transferToPlaceholder": "လက်ခံမည့် operator ရွေးပါ...",
+        "reason": "အကြောင်းရင်း (optional)",
+        "reasonPlaceholder": "ဥပမာ Shift change"
+      },
+      "actions": {
+        "handover": "လွှဲပြောင်းပါ"
+      },
+      "toast": {
+        "completed": "Scope grant လွှဲပြောင်းပြီးပါပြီ",
+        "conflictError": "Conflict: လက်ခံမည့် operator တွင် conflict ဖြစ်မည့် grant ရှိပြီးဖြစ်သည်",
+        "handoverError": "Scope grant လွှဲပြောင်းရာတွင် error"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "ဝင်ခွင့်မရှိပါ",
+      "message": "Wallet credential များကို စီမံရန် permission မရှိပါ။ သင့် system administrator ကို ဆက်သွယ်ပါ။"
+    },
+    "list": {
+      "title": "Wallet Credential များ",
+      "countLabel": "credential {{count}} ခု",
+      "addCredential": "Credential ထည့်ပါ",
+      "selectWalletPrompt": "၎င်း၏ credential များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "createdAt": "ဖန်တီးချိန်",
+        "actions": "လုပ်ဆောင်ချက်များ"
+      },
+      "empty": {
+        "noCredentials": "Credential မတွေ့ပါ",
+        "noCredentialsHint": "ဤ wallet တွင် active credential မရှိပါ။"
+      },
+      "errorLoading": "Credential များ load လုပ်ရာတွင် error: {{message}}",
+      "rotate": "Rotate"
+    },
+    "form": {
+      "title": "Credential ထည့်ပါ",
+      "fields": {
+        "wallet": "Wallet",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "ဥပမာ kraken",
+        "credentialType": "Credential Type",
+        "label": "Label (optional)",
+        "labelPlaceholder": "ဥပမာ Main trading key",
+        "pemPlaceholder": "PEM format private key ကို ဒီမှာ paste လုပ်ပါ"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "Private Key (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "စတင်လက်ကျန်"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Wallet လိုအပ်သည်",
+        "exchangeRequired": "Exchange လိုအပ်သည်",
+        "fieldRequired": "{{field}} လိုအပ်သည်"
+      },
+      "actions": {
+        "addCredential": "Credential ထည့်ပါ"
+      },
+      "toast": {
+        "created": "Credential ဖန်တီးပြီးပါပြီ",
+        "conflictError": "Conflict: ဤ wallet တွင် ဤ exchange အတွက် active credential ရှိပြီးဖြစ်သည်",
+        "createError": "Credential ဖန်တီးရာတွင် error"
+      }
+    },
+    "rotate": {
+      "title": "Credential Rotate လုပ်ပါ",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "newLabel": "Label အသစ် (optional)",
+        "newLabelPlaceholder": "ဥပမာ Rotated key 2026-04",
+        "pemPlaceholder": "PEM format private key ကို ဒီမှာ paste လုပ်ပါ"
+      },
+      "actions": {
+        "rotate": "Rotate"
+      },
+      "toast": {
+        "rotated": "Credential rotate လုပ်ပြီးပါပြီ",
+        "rotateError": "Credential rotate လုပ်ရာတွင် error"
+      }
+    }
+  }
+}

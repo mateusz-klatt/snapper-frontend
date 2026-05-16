@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Orders at Executions",
+    "newOrder": "Bagong Order",
+    "exportCsv": "I-export CSV"
+  },
+  "tabs": {
+    "orders": "Orders ({{total}})",
+    "executions": "Executions ({{total}})"
+  },
+  "filters": {
+    "byStatus": "I-filter ayon sa status:",
+    "options": {
+      "all": "Lahat ng orders",
+      "new": "Bago",
+      "open": "Open",
+      "partiallyFilled": "Partially Filled",
+      "partially_filled": "Partially Filled",
+      "filled": "Filled",
+      "cancelled": "Cancelled",
+      "rejected": "Rejected"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "N/A",
+    "priceMarket": "Market",
+    "quantity": "Quantity",
+    "price": "Presyo",
+    "created": "Ginawa",
+    "createdUnknown": "N/A",
+    "orderId": "Order ID",
+    "leverage": "Leverage",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "REDUCE-ONLY",
+    "cancel": "Kanselahin",
+    "cancelling": "Kinakansela…",
+    "cancelAriaLabel": "Kanselahin ang order {{orderId}}"
+  },
+  "executionCard": {
+    "orderNumber": "Order #{{orderId}}",
+    "filled": "FILLED",
+    "orderLabel": "Order {{orderId}}",
+    "size": "Size",
+    "price": "Presyo",
+    "total": "Total",
+    "executed": "Na-execute",
+    "fees": "Fees"
+  },
+  "empty": {
+    "ordersTitle": "Walang orders na nakita",
+    "ordersStartTrading": "Mag-start mag-trade para makita dito ang orders",
+    "ordersFilterless": "Walang {{status}} orders",
+    "executionsTitle": "Walang executions na nakita",
+    "executionsMessage": "Lalabas dito ang trade executions"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Instrument",
+      "side": "Side",
+      "type": "Type",
+      "status": "Status",
+      "quantity": "Quantity",
+      "price": "Presyo",
+      "leverage": "Leverage",
+      "reduceOnly": "Reduce Only",
+      "created": "Ginawa"
+    },
+    "executions": {
+      "orderId": "Order ID",
+      "instrument": "Instrument",
+      "side": "Side",
+      "size": "Size",
+      "price": "Presyo",
+      "total": "Total",
+      "fee": "Fee",
+      "feeAsset": "Fee Asset",
+      "executed": "Na-execute"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Bagong Manual Order",
+    "titleConfirm": "Kumpirmahin ang Order",
+    "fields": {
+      "exchange": "Exchange",
+      "instrument": "Instrument",
+      "side": "Side",
+      "orderType": "Order Type",
+      "quantity": "Quantity",
+      "price": "Presyo",
+      "stopPrice": "Stop Price",
+      "mode": "Mode",
+      "wallet": "Wallet",
+      "type": "Type"
+    },
+    "sideOptions": {
+      "buy": "Buy",
+      "sell": "Sell"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — market-data only",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "Kanselahin",
+      "reviewOrder": "I-review ang Order",
+      "back": "Bumalik",
+      "confirmOrder": "Kumpirmahin ang Order",
+      "submitting": "Sine-submit..."
+    },
+    "errors": {
+      "missingRequired": "Dapat punan ang lahat ng required fields",
+      "quantityPositive": "Dapat positive number ang quantity",
+      "priceRequired": "Kailangan ang price para sa order type na ito",
+      "pricePositive": "Dapat positive number ang price",
+      "stopPriceRequired": "Kailangan ang stop price para sa order type na ito",
+      "stopPricePositive": "Dapat positive number ang stop price",
+      "createFailed": "Hindi nagawa ang order"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Observation-only ang instrument na ito — mag-place ng orders sa instrument na execution-capable.",
+      "unknownInstrument": "Hindi nakilala ang instrument na ito. I-reload ang list at subukan ulit.",
+      "capsViolation": "Lalampas ang order na ito sa account safety caps mo. I-review ang risk settings at subukan ulit."
+    }
+  }
+}

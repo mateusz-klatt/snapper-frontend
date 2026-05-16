@@ -1,0 +1,88 @@
+{
+  "page": {
+    "title": "Setting များ",
+    "subtitle": "Application setting နှင့် parameter များကို configure လုပ်ပါ",
+    "addButton": "Setting ထည့်ပါ",
+    "searchPlaceholder": "Setting များ ရှာပါ...",
+    "noResults": "သင်ရွေးထားသော စည်းမျဉ်းနှင့် ကိုက်ညီသည့် setting မတွေ့ပါ။",
+    "allCategories": "Category အားလုံး",
+    "categoryFilterAriaLabel": "Category ဖြင့် setting များ filter လုပ်ပါ"
+  },
+  "errors": {
+    "loadFailed": "Setting များ load လုပ်၍ မရပါ",
+    "updateFailed": "Setting update လုပ်၍ မရပါ",
+    "deleteFailed": "Setting delete လုပ်၍ မရပါ",
+    "createFailed": "Setting ဖန်တီး၍ မရပါ",
+    "alreadyExists": "Key \"{{key}}\" ဖြင့် setting ရှိပြီးဖြစ်သည်"
+  },
+  "item": {
+    "edit": "ပြင်ဆင်ပါ",
+    "delete": "Delete",
+    "save": "သိမ်းပါ",
+    "saving": "သိမ်းနေသည်...",
+    "cancel": "ပယ်ဖျက်",
+    "yesDelete": "ဟုတ်ကဲ့၊ Delete",
+    "deleting": "Deleting...",
+    "deleteConfirm": "ဤ setting ကို delete လုပ်မလား။",
+    "valuePlaceholder": "Setting value ထည့်ပါ...",
+    "showMore": "ပိုပြပါ",
+    "showLess": "လျှော့ပြပါ",
+    "toggleAriaLabel": "{{key}} ကို toggle လုပ်ပါ",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Sensitive"
+    },
+    "helpText": {
+      "allowShortSelling": "Engine ကို short position ဖွင့်ခွင့်ပြုပါ။ SELL signal များသည် negative desired_units ထုတ်မည်။ ပိတ်ထားလျှင် 0 သို့ clamp လုပ်သည်။",
+      "allowManualOrders": "Orders tab တွင် New Order button ကို ဖွင့်ပါ။ ပိတ်ထားလျှင် POST /api/orders သည် 403 ပြန်ပေးသည်။"
+    }
+  },
+  "addModal": {
+    "title": "Setting အသစ် ထည့်ပါ",
+    "keyLabel": "Key",
+    "valueLabel": "Value",
+    "categoryLabel": "Category",
+    "descriptionLabel": "Description",
+    "keyPlaceholder": "ဥပမာ walutomat.api_key",
+    "keyHint": "Nested setting များအတွက် dot notation သုံးပါ (ဥပမာ category.subcategory.name)",
+    "valuePlaceholder": "Setting value",
+    "categorySelectPlaceholder": "ရှိပြီးသားကို ရွေးပါ သို့မဟုတ် အသစ် ဖန်တီးပါ",
+    "newCategoryPlaceholder": "သို့မဟုတ် category name အသစ် ထည့်ပါ",
+    "descriptionPlaceholder": "Optional description",
+    "cancel": "ပယ်ဖျက်",
+    "create": "Setting ဖန်တီးပါ",
+    "creating": "ဖန်တီးနေသည်...",
+    "validation": {
+      "keyRequired": "Key လိုအပ်သည်",
+      "valueRequired": "Value လိုအပ်သည်",
+      "categoryRequired": "Category လိုအပ်သည်"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Form Editor",
+    "rawEditor": "Raw JSON Editor",
+    "rawJson": "Raw JSON",
+    "switchToForm": "Form သို့ ပြောင်းပါ",
+    "importToForm": "Form သို့ import လုပ်ပါ",
+    "parseError": "Parse error: {{message}}",
+    "arraySummary": "Array (item {{length}} ခု)",
+    "addItem": "Item ထည့်ပါ",
+    "remove": "Remove",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)",
+      "null": "(null)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

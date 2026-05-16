@@ -2,7 +2,7 @@ import type { AppLocale, CatalogLanguage } from './types'
 import { SUPPORTED_LOCALES } from './types'
 
 export const COUNTRY_TO_LANGUAGE: Readonly<Record<AppLocale, CatalogLanguage>> = {
-  ie: 'en',
+  ie: 'ga',
   us: 'en',
   pl: 'pl',
   de: 'de',
@@ -18,18 +18,18 @@ export const COUNTRY_TO_LANGUAGE: Readonly<Record<AppLocale, CatalogLanguage>> =
   is: 'is',
   gr: 'el',
   cn: 'zh',
-  hk: 'zh',
+  hk: 'zh-Hant',
   jp: 'ja',
   kr: 'ko',
   th: 'th',
   vn: 'vi',
-  ph: 'en',
+  ph: 'fil',
   my: 'ms',
   id: 'id',
-  mm: 'en',
+  mm: 'my-MM',
   in: 'hi',
   bd: 'bn',
-  ke: 'en',
+  ke: 'sw',
   ae: 'ar',
   il: 'he',
   cz: 'cs',
@@ -51,6 +51,8 @@ export const COUNTRY_TO_LANGUAGE: Readonly<Record<AppLocale, CatalogLanguage>> =
 
 const INTL_LOCALE_OVERRIDES: Readonly<Partial<Record<AppLocale, string>>> = {
   rs: 'sr-Latn-RS',
+  hk: 'zh-Hant-HK',
+  mm: 'my-MM',
 }
 
 const buildIntlLocaleMap = (): Readonly<Record<AppLocale, string>> => {

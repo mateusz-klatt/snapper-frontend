@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Forbhreathnú"
+  },
+  "metrics": {
+    "feedsRunning": "Fothaí ag Rith",
+    "strategiesActive": "Straitéisí Gníomhacha",
+    "openOrders": "Orduithe Oscailte",
+    "todaysExecutions": "Líonta an Lae Inniu",
+    "executionsOn": "Líonta ({{date}})"
+  },
+  "status": {
+    "stopped": "Stoptha",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Ag rith",
+    "active": "Gníomhach"
+  },
+  "processStatus": {
+    "title": "Stádas Próiseas",
+    "feeds": "Fothaí",
+    "strategies": "Straitéisí",
+    "executors": "Feidhmitheoirí",
+    "brokers": "Bróicéirí"
+  },
+  "portfolio": {
+    "title": "Achoimre Punainne",
+    "totalValue": "Luach Iomlán",
+    "longExposure": "Nochtadh fada",
+    "shortExposure": "Nochtadh gearr",
+    "netDelta": "Deilte glan",
+    "unrealizedPnl": "P&L neamhréadaithe",
+    "pnlPercent": "P&L %",
+    "positions": "Suímh",
+    "instrumentsCount": "Ionstraimí: {{count}}",
+    "empty": "Níl aon sonraí suímh ar fáil"
+  },
+  "signals": {
+    "title": "Comharthaí le Déanaí",
+    "empty": "Níl aon chomhartha le déanaí",
+    "noTime": "N/B"
+  },
+  "executions": {
+    "title": "Líonta le Déanaí",
+    "empty": "Níl aon líonadh le déanaí",
+    "noTime": "N/B"
+  }
+}

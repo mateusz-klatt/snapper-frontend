@@ -8,6 +8,7 @@ import {
 import { SUPPORTED_LOCALES } from './types'
 
 const NATIVE_LANGUAGE_COUNTRIES = [
+  'ie',
   'pl',
   'de',
   'fr',
@@ -24,7 +25,9 @@ const NATIVE_LANGUAGE_COUNTRIES = [
   'jp',
   'kr',
   'vn',
+  'ph',
   'id',
+  'mm',
   'cz',
   'sk',
   'ro',
@@ -48,6 +51,7 @@ const NATIVE_LANGUAGE_COUNTRIES = [
   'th',
   'my',
   'bd',
+  'ke',
 ] as const
 
 describe('COUNTRY_TO_LANGUAGE', () => {
@@ -64,7 +68,11 @@ describe('COUNTRY_TO_LANGUAGE', () => {
     expect(COUNTRY_TO_LANGUAGE.no).toBe('no')
     expect(COUNTRY_TO_LANGUAGE.fi).toBe('fi')
     expect(COUNTRY_TO_LANGUAGE.cn).toBe('zh')
-    expect(COUNTRY_TO_LANGUAGE.hk).toBe('zh')
+    expect(COUNTRY_TO_LANGUAGE.hk).toBe('zh-Hant')
+    expect(COUNTRY_TO_LANGUAGE.ie).toBe('ga')
+    expect(COUNTRY_TO_LANGUAGE.ph).toBe('fil')
+    expect(COUNTRY_TO_LANGUAGE.mm).toBe('my-MM')
+    expect(COUNTRY_TO_LANGUAGE.ke).toBe('sw')
     expect(COUNTRY_TO_LANGUAGE.jp).toBe('ja')
     expect(COUNTRY_TO_LANGUAGE.kr).toBe('ko')
     expect(COUNTRY_TO_LANGUAGE.vn).toBe('vi')
@@ -113,8 +121,12 @@ describe('COUNTRY_TO_LANGUAGE', () => {
 
 describe('COUNTRY_TO_INTL_LOCALE', () => {
   it('formats as <catalogLanguage>-<COUNTRY>', () => {
-    expect(COUNTRY_TO_INTL_LOCALE.ie).toBe('en-IE')
+    expect(COUNTRY_TO_INTL_LOCALE.ie).toBe('ga-IE')
     expect(COUNTRY_TO_INTL_LOCALE.us).toBe('en-US')
+    expect(COUNTRY_TO_INTL_LOCALE.hk).toBe('zh-Hant-HK')
+    expect(COUNTRY_TO_INTL_LOCALE.ph).toBe('fil-PH')
+    expect(COUNTRY_TO_INTL_LOCALE.mm).toBe('my-MM')
+    expect(COUNTRY_TO_INTL_LOCALE.ke).toBe('sw-KE')
     expect(COUNTRY_TO_INTL_LOCALE.pl).toBe('pl-PL')
     expect(COUNTRY_TO_INTL_LOCALE.de).toBe('de-DE')
     expect(COUNTRY_TO_INTL_LOCALE.fr).toBe('fr-FR')
@@ -164,7 +176,7 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
 describe('helpers', () => {
   it('getCatalogLanguage returns the mapped language', () => {
     expect(getCatalogLanguage('pl')).toBe('pl')
-    expect(getCatalogLanguage('ie')).toBe('en')
+    expect(getCatalogLanguage('ie')).toBe('ga')
     expect(getCatalogLanguage('de')).toBe('de')
     expect(getCatalogLanguage('fr')).toBe('fr')
     expect(getCatalogLanguage('us')).toBe('en')
@@ -172,7 +184,7 @@ describe('helpers', () => {
 
   it('getIntlLocale returns the BCP-47 tag', () => {
     expect(getIntlLocale('pl')).toBe('pl-PL')
-    expect(getIntlLocale('ie')).toBe('en-IE')
+    expect(getIntlLocale('ie')).toBe('ga-IE')
     expect(getIntlLocale('de')).toBe('de-DE')
   })
 })

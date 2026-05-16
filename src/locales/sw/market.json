@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Data ya Soko"
+  },
+  "controls": {
+    "exchange": "Exchange:",
+    "instrument": "Instrumenti:",
+    "timeframe": "Muda:",
+    "selectExchange": "Chagua exchange",
+    "searchInstrument": "Tafuta instrumenti..."
+  },
+  "timeframes": {
+    "1m": "Dakika 1",
+    "5m": "Dakika 5",
+    "15m": "Dakika 15",
+    "30m": "Dakika 30",
+    "1h": "Saa 1",
+    "4h": "Saa 4",
+    "1d": "Siku 1"
+  },
+  "stats": {
+    "currentPrice": "Bei ya Sasa",
+    "change24h": "Mabadiliko 24h",
+    "high24h": "Juu 24h",
+    "low24h": "Chini 24h"
+  },
+  "chart": {
+    "title": "Chati ya Bei",
+    "errorPrefix": "Hitilafu kupakia data ya chati:",
+    "unknownError": "Hitilafu isiyojulikana",
+    "noDataTitle": "Hakuna data inayopatikana kwa {{instrument}}",
+    "noDataHint": "Instrumenti inaweza isiwepo au haina data ya {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Hakuna instrumenti zinazohusiana zilizosanidiwa kwa {{instrument}} kwenye {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache inaandaliwa: candles {{sampleCount}} / {{expected}} zinapatikana {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(imetokana na 1m)",
+      "db": "(kutoka DB)"
+    }
+  }
+}

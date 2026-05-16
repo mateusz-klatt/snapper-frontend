@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrasyon",
+    "subtitle": "I-manage ang users at system configuration"
+  },
+  "rolePermissions": {
+    "title": "Permissions ng Role",
+    "viewer": {
+      "label": "Viewer",
+      "description": "Read-only access sa Overview at Market Data. Hindi puwedeng mag-manage ng processes, strategies, o system settings."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Lahat ng Viewer permissions, plus trading operations, strategy execution, process management, at system health monitoring."
+    },
+    "admin": {
+      "label": "Admin",
+      "description": "Full system access, kasama ang user management, system settings, API key configuration, at lahat ng Operator permissions."
+    },
+    "table": {
+      "resource": "Resource",
+      "viewer": "Viewer",
+      "operator": "Operator",
+      "admin": "Admin"
+    },
+    "resources": {
+      "overview": "Overview",
+      "market": "Market Data",
+      "processes": "Processes",
+      "strategies": "Strategies",
+      "orders": "Orders at Fills",
+      "positions": "Positions",
+      "signals": "Signals",
+      "health": "Health",
+      "admin": "Administrasyon",
+      "settings": "Settings"
+    }
+  },
+  "common": {
+    "cancel": "Kanselahin",
+    "selectWallet": "Pumili ng wallet",
+    "selectAWallet": "Pumili ng wallet",
+    "chooseWalletPlaceholder": "Pumili ng wallet...",
+    "selectWalletPlaceholder": "Pumili ng wallet...",
+    "walletLabel": "Wallet",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Hindi kilalang error",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Walang Access",
+      "message": "Wala kang permission para mag-manage ng users. Makipag-ugnayan sa system administrator mo."
+    },
+    "list": {
+      "title": "Pamamahala ng Users",
+      "countLabel": "{{count}} users",
+      "showInactive": "Ipakita ang inactive",
+      "hideInactive": "Itago ang inactive",
+      "addUser": "Mag-add ng User",
+      "searchPlaceholder": "Maghanap ayon sa username, email, o role...",
+      "columns": {
+        "user": "User",
+        "role": "Role",
+        "status": "Status",
+        "createdAt": "Ginawa noong",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Aktibo",
+        "inactive": "Inactive"
+      },
+      "unknown": "Hindi kilala",
+      "empty": {
+        "title": "Walang users na nakita",
+        "noMatch": "Walang users na tugma sa search criteria mo.",
+        "noUsers": "Walang users na nakita.",
+        "noActive": "Walang active users na nakita."
+      },
+      "errorLoading": "Error sa pag-load ng users: {{message}}",
+      "deactivate": {
+        "title": "I-deactivate ang User",
+        "message": "Sigurado ka bang gusto mong i-deactivate ang user na \"{{username}}\"? Hindi na siya makakapag-sign in.",
+        "confirm": "I-deactivate"
+      },
+      "toast": {
+        "deactivated": "Na-deactivate ang user",
+        "deactivateError": "Error sa pag-deactivate ng user"
+      }
+    },
+    "form": {
+      "titleEdit": "I-edit ang User",
+      "titleAdd": "Mag-add ng User",
+      "fields": {
+        "username": "Username",
+        "usernamePlaceholder": "Ilagay ang username",
+        "password": "Password",
+        "passwordPlaceholder": "Ilagay ang password",
+        "newPassword": "Bagong Password",
+        "newPasswordPlaceholder": "Ilagay ang bagong password",
+        "email": "Email",
+        "emailPlaceholder": "Ilagay ang email",
+        "role": "Role",
+        "accountActive": "Aktibo ang account",
+        "resetUserPassword": "I-reset ang password ng user"
+      },
+      "roles": {
+        "viewer": "Viewer",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Kailangan ang username",
+        "usernameMinLength": "Dapat hindi bababa sa 3 character ang username",
+        "emailRequired": "Kailangan ang email",
+        "emailInvalid": "Invalid ang email format",
+        "passwordRequired": "Kailangan ang password",
+        "passwordMinLength": "Dapat hindi bababa sa 8 character ang password",
+        "passwordRequiredWhenResetting": "Kailangan ang password kapag nagre-reset"
+      },
+      "actions": {
+        "saveChanges": "I-save ang changes",
+        "createUser": "Gumawa ng User"
+      },
+      "toast": {
+        "created": "Nagawa ang user",
+        "createError": "Error sa paggawa ng user",
+        "updated": "Na-update ang user",
+        "updateError": "Error sa pag-update ng user",
+        "passwordReset": "Na-reset ang password ng user",
+        "resetError": "Error sa pag-reset ng password"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Walang Access",
+      "message": "Wala kang permission para mag-manage ng scope grants. Makipag-ugnayan sa system administrator mo."
+    },
+    "list": {
+      "title": "Scope Grants",
+      "countLabel": "{{count}} grants",
+      "createGrant": "Gumawa ng Grant",
+      "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang scope grants nito.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Scope",
+        "target": "Target",
+        "grantedAt": "Na-grant noong",
+        "actions": "Actions"
+      },
+      "empty": {
+        "noGrants": "Walang grants na nakita",
+        "noGrantsHint": "Walang active scope grants ang wallet na ito."
+      },
+      "errorLoading": "Error sa pag-load ng grants: {{message}}",
+      "handover": "I-handover"
+    },
+    "form": {
+      "title": "Gumawa ng Scope Grant",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Pumili ng operator...",
+        "wallet": "Wallet",
+        "scopeKind": "Scope Kind",
+        "underlyingPublicId": "Underlying Public ID",
+        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPlaceholder": "hal. BTC",
+        "instrumentPlaceholder": "hal. BTC-USD-PERP",
+        "note": "Note (optional)",
+        "notePlaceholder": "Optional note"
+      },
+      "scopeKinds": {
+        "underlying": "Underlying",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Kailangan ang operator",
+        "walletRequired": "Kailangan ang wallet",
+        "targetRequired": "Kailangan ang Target ID"
+      },
+      "actions": {
+        "createGrant": "Gumawa ng Grant"
+      },
+      "toast": {
+        "created": "Nagawa ang scope grant",
+        "conflictError": "Conflict: may ibang operator na may hawak nang grant sa scope na ito",
+        "createError": "Error sa paggawa ng scope grant"
+      }
+    },
+    "handover": {
+      "title": "I-handover ang Scope Grant",
+      "fields": {
+        "currentHolder": "Kasalukuyang holder",
+        "scope": "Scope",
+        "wallet": "Wallet",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "I-transfer sa operator",
+        "transferToPlaceholder": "Pumili ng destination operator...",
+        "reason": "Dahilan (optional)",
+        "reasonPlaceholder": "hal. Shift change"
+      },
+      "actions": {
+        "handover": "I-handover"
+      },
+      "toast": {
+        "completed": "Na-handover ang scope grant",
+        "conflictError": "Conflict: may conflicting grant na hawak ang destination operator",
+        "handoverError": "Error sa pag-handover ng scope grant"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Walang Access",
+      "message": "Wala kang permission para mag-manage ng wallet credentials. Makipag-ugnayan sa system administrator mo."
+    },
+    "list": {
+      "title": "Wallet Credentials",
+      "countLabel": "{{count}} credentials",
+      "addCredential": "Mag-add ng Credential",
+      "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang credentials nito.",
+      "columns": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "createdAt": "Ginawa noong",
+        "actions": "Actions"
+      },
+      "empty": {
+        "noCredentials": "Walang credentials na nakita",
+        "noCredentialsHint": "Walang active credentials ang wallet na ito."
+      },
+      "errorLoading": "Error sa pag-load ng credentials: {{message}}",
+      "rotate": "I-rotate"
+    },
+    "form": {
+      "title": "Mag-add ng Credential",
+      "fields": {
+        "wallet": "Wallet",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "hal. kraken",
+        "credentialType": "Credential Type",
+        "label": "Label (optional)",
+        "labelPlaceholder": "hal. Main trading key",
+        "pemPlaceholder": "I-paste dito ang PEM-formatted private key"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "Private Key (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Initial Balance"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Kailangan ang wallet",
+        "exchangeRequired": "Kailangan ang exchange",
+        "fieldRequired": "Kailangan ang {{field}}"
+      },
+      "actions": {
+        "addCredential": "Mag-add ng Credential"
+      },
+      "toast": {
+        "created": "Nagawa ang credential",
+        "conflictError": "Conflict: may active credential na ang wallet na ito para sa exchange na ito",
+        "createError": "Error sa paggawa ng credential"
+      }
+    },
+    "rotate": {
+      "title": "I-rotate ang Credential",
+      "fields": {
+        "exchange": "Exchange",
+        "type": "Type",
+        "label": "Label",
+        "newLabel": "Bagong Label (optional)",
+        "newLabelPlaceholder": "hal. Rotated key 2026-04",
+        "pemPlaceholder": "I-paste dito ang PEM-formatted private key"
+      },
+      "actions": {
+        "rotate": "I-rotate"
+      },
+      "toast": {
+        "rotated": "Na-rotate ang credential",
+        "rotateError": "Error sa pag-rotate ng credential"
+      }
+    }
+  }
+}

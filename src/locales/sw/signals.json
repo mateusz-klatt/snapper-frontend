@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Ishara"
+  },
+  "filters": {
+    "allStrategies": "Mikakati Yote"
+  },
+  "actions": {
+    "export": "Hamisha"
+  },
+  "stats": {
+    "total": "Jumla",
+    "buy": "Nunua",
+    "sell": "Uza",
+    "avgStrength": "Nguvu Wastani"
+  },
+  "card": {
+    "strength": "Nguvu",
+    "price": "Bei",
+    "exchange": "Exchange",
+    "reason": "Sababu:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Imara",
+    "medium": "Wastani",
+    "weak": "Dhaifu",
+    "veryWeak": "Dhaifu Sana"
+  },
+  "time": {
+    "justNow": "Sasa hivi",
+    "minutesAgo": "{{count}}m zilizopita",
+    "hoursAgo": "{{count}}h zilizopita"
+  },
+  "empty": {
+    "title": "Hakuna ishara zilizopatikana",
+    "message": "Hakuna ishara za trading zinazolingana na vichujio vyako vya sasa."
+  }
+}

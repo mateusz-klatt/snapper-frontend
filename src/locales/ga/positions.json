@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Suímh"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: ar feitheamh",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trailing",
+    "quantity": "Cainníocht",
+    "averageEntry": "Meániontráil",
+    "unrealizedPnl": "P&L neamhréadaithe",
+    "realizedPnl": "P&L réadaithe",
+    "updated": "Nuashonraithe {{timestamp}}"
+  },
+  "empty": {
+    "title": "Níl aon suíomh oscailte",
+    "message": "Beidh suímh fhada, ghearra agus flat le feiceáil anseo nuair a líonfar trádálacha."
+  },
+  "bracketModal": {
+    "title": "Ceangail SL/TP — {{instrument}}",
+    "confirmTitle": "Deimhnigh Bracket",
+    "position": "Suíomh",
+    "entryPrice": "Praghas Iontrála",
+    "stopLossLabel": "Praghas Stop-Loss",
+    "takeProfitLabel": "Praghas Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Faoi ${{price}}",
+      "slShort": "Os cionn ${{price}}",
+      "tpLong": "Os cionn ${{price}}",
+      "tpShort": "Faoi ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Cealaigh",
+      "review": "Athbhreithnigh",
+      "back": "Siar",
+      "confirm": "Deimhnigh",
+      "creating": "Á chruthú…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Ceangail Trailing Stop — {{instrument}}",
+    "confirmTitle": "Deimhnigh Trailing Stop",
+    "position": "Suíomh",
+    "entryPrice": "Praghas Iontrála",
+    "trailingDistanceLabel": "Fad Trailing (%)",
+    "minLockLabel": "Íosbhrabús Glasála (%) — roghnach",
+    "trailingDistance": "Fad Trailing",
+    "minLockProfit": "Íosbhrabús Glasála",
+    "placeholders": {
+      "trailingPct": "m.sh. 5.0",
+      "minLockPct": "0 = tosaigh láithreach"
+    },
+    "minLockWarning": "Ní ghníomhachtóidh an trailing stop go dtí go mbogfaidh an praghas {{minLockPct}}% i do threo.",
+    "buttons": {
+      "cancel": "Cealaigh",
+      "review": "Athbhreithnigh",
+      "back": "Siar",
+      "confirm": "Deimhnigh",
+      "creating": "Á chruthú..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Tá praghas SL nó TP amháin ar a laghad riachtanach",
+    "invalidSlPrice": "Praghas stop-loss neamhbhailí",
+    "slPricePositive": "Caithfidh praghas stop-loss a bheith dearfach",
+    "invalidTpPrice": "Praghas take-profit neamhbhailí",
+    "tpPricePositive": "Caithfidh praghas take-profit a bheith dearfach",
+    "slLongBelowEntry": "Caithfidh praghas SL a bheith faoi bhun an phraghais iontrála ({{price}})",
+    "tpLongAboveEntry": "Caithfidh praghas TP a bheith os cionn an phraghais iontrála ({{price}})",
+    "slShortAboveEntry": "Caithfidh praghas SL a bheith os cionn an phraghais iontrála ({{price}})",
+    "tpShortBelowEntry": "Caithfidh praghas TP a bheith faoi bhun an phraghais iontrála ({{price}})",
+    "trailingRequired": "Tá céatadán trailing riachtanach",
+    "trailingInvalid": "Céatadán trailing neamhbhailí",
+    "trailingRange": "Caithfidh céatadán trailing a bheith idir 0 agus 100",
+    "minLockInvalid": "Céatadán íosghlasála neamhbhailí",
+    "minLockRange": "Caithfidh céatadán íosghlasála a bheith idir 0 agus 100"
+  }
+}

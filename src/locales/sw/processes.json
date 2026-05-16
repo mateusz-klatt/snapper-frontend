@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Udhibiti wa Michakato",
+    "subtitle": "Ufuatiliaji na udhibiti wa michakato kwa wakati halisi"
+  },
+  "sections": {
+    "longRunning": "Michakato ya Muda Mrefu",
+    "executorTemplates": "Violezo vya Watekelezaji",
+    "executorTemplatesHint": "Kuhariri usanidi wa kiolezo huathiri pochi zote kwenye exchange hii baada ya kuanzisha upya. Violezo ni vya usanidi pekee — anzisha instance ya kila pochi hapa chini ili kuendesha mtekelezaji.",
+    "walletInstances": "Instances za Pochi",
+    "taskProcesses": "Michakato ya Majukumu"
+  },
+  "card": {
+    "stop": "Simamisha",
+    "start": "Anzisha",
+    "restart": "Anzisha upya",
+    "starting": "Inaanza...",
+    "stopping": "Inasimama...",
+    "status": {
+      "running": "inaendelea",
+      "stopped": "imesimamishwa",
+      "error": "hitilafu",
+      "starting": "inaanza",
+      "stopping": "inasimama"
+    }
+  },
+  "template": {
+    "badge": "kiolezo",
+    "mode": "Hali:",
+    "parameters": "Vigezo:",
+    "paramCount": "{{count}} parameter(s)",
+    "noParams": "hakuna vigezo vilivyowekwa"
+  },
+  "badges": {
+    "oneShot": "mara moja",
+    "autoStart": "auto-start",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Simamisha {{name}}",
+    "stopMessage": "Hii itasimamisha mchakato wa {{name}}.",
+    "restartTitle": "Anzisha upya {{name}}",
+    "restartMessage": "Hii itaanzisha upya mchakato wa {{name}}."
+  },
+  "executionMode": {
+    "title": "Anzisha {{name}}",
+    "label": "Hali ya Utekelezaji:",
+    "threadName": "Hali ya Thread",
+    "threadDescription": "Huendeshwa kama jukumu lililopachikwa ndani ya seva ya web. Huanzishwa haraka, hutumia kumbukumbu ya pamoja.",
+    "processName": "Hali ya Process",
+    "processDescription": "Huendeshwa kama process tofauti ya Python. Imetengwa, inastahimili hitilafu, na ina ufuatiliaji wa kina.",
+    "cancel": "Ghairi",
+    "start": "Anzisha {{name}}",
+    "threadAriaLabel": "Hali ya Thread",
+    "processAriaLabel": "Hali ya Process"
+  }
+}

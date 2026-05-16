@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Afya ya Mfumo",
+    "healthMetricsHeading": "Vipimo vya Afya",
+    "processStatusHeading": "Hali ya Michakato",
+    "activeBacktestsHeading": "Backtests Zinazoendelea",
+    "quickActionsHeading": "Vitendo vya Haraka",
+    "featureNotImplemented": "Kipengele bado hakijatekelezwa",
+    "restartServices": "Anzisha Huduma Upya",
+    "runHealthCheck": "Endesha Ukaguzi wa Afya",
+    "viewLogs": "Tazama Logs",
+    "exportReport": "Hamisha Ripoti"
+  },
+  "status": {
+    "healthy": "Afya nzuri",
+    "stopped": "Imesimamishwa",
+    "error": "Hitilafu",
+    "warning": "Onyo",
+    "completed": "Imekamilika",
+    "unknown": "Haijulikani"
+  },
+  "metrics": {
+    "tradingEngine": "Engine ya Trading",
+    "tradingEngineDescription": "Engine ya utekelezaji wa mikakati",
+    "activeBacktests": "Backtests Zinazoendelea",
+    "activeBacktestsDescription": "Michakato ya backtest inayoendelea",
+    "active": "Inatumika",
+    "inactive": "Haitumiki"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Muda wa kuwaka",
+    "exitCode": "Exit code: {{code}}",
+    "service": "huduma",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Takwimu za Database",
+    "loading": "Inapakia takwimu za database…",
+    "unavailable": "Takwimu za database hazipatikani: {{message}}",
+    "fallbackError": "Imeshindwa kupakia takwimu za database.",
+    "sampled": "sampuli {{age}}",
+    "samplerSummary": "Kipindi cha sampuli: {{seconds}}s · meza {{count}}",
+    "columns": {
+      "table": "Meza",
+      "kind": "Aina",
+      "total": "Jumla",
+      "current": "Ya sasa",
+      "closed": "Imefungwa",
+      "archivable": "Inaweza kuhifadhiwa",
+      "status": "Hali"
+    },
+    "stale": "imepitwa na wakati"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Inapakia vipimo vya arifa…",
+    "unavailable": "Vipimo vya arifa havipatikani: {{message}}",
+    "fallbackError": "Imeshindwa kupakia vipimo vya arifa.",
+    "sent": "Zimetumwa",
+    "sentDescription": "Terminal: imetumwa",
+    "failed": "Zimeshindwa",
+    "failedDescription": "Bajeti ya kujaribu tena imeisha",
+    "unregistered": "Haijasajiliwa",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Imeghairiwa (upeo)",
+    "cancelledScopeDescription": "Kubatilisha upeo / kuzima mtumiaji",
+    "outboxDepth": "Kina cha outbox",
+    "outboxDepthDescription": "Kwenye foleni, inasubiri kujaribu tena"
+  },
+  "retention": {
+    "title": "Ratiba ya Uhifadhi",
+    "loading": "Inapakia run ya uhifadhi…",
+    "unavailable": "Run ya uhifadhi haipatikani: {{message}}",
+    "fallbackError": "Imeshindwa kupakia run ya uhifadhi.",
+    "lastRun": "run ya mwisho {{age}}",
+    "dryRunNotice": "Hali ya dry-run: safu zinahifadhiwa kwenye archive lakini hazifutwi kutoka DB.",
+    "columns": {
+      "table": "Meza",
+      "retain": "Hifadhi",
+      "archivedWindow": "Dirisha la archive",
+      "archived": "Zimewekwa archive",
+      "purged": "Zimefutwa",
+      "files": "Faili",
+      "status": "Hali"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "sawa",
+    "error": "hitilafu"
+  },
+  "systemMetrics": {
+    "title": "Afya ya Process",
+    "loading": "Inapakia vipimo vya process…",
+    "unavailable": "Vipimo vya process havipatikani: {{message}}",
+    "fallbackError": "Imeshindwa kupakia vipimo vya afya ya process.",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "Hali: {{status}}",
+    "uptime": "Muda wa kuwaka",
+    "threads": "Threads",
+    "openFds": "FD Zilizofunguliwa",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Imepunguzwa {{count}}×",
+    "memory": "Kumbukumbu",
+    "saturation": "Msongamano {{percent}}",
+    "asyncioTasks": "Majukumu ya asyncio",
+    "asyncioActive": "{{count}} active",
+    "asyncioPending": "+ {{count}} pending",
+    "dbPool": "DB Pool",
+    "liveConns": "Miunganisho ya live: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objects: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Miunganisho ya mtandao",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Active",
+    "tracemallocIdle": "Idle"
+  },
+  "relativeAge": {
+    "justNow": "sasa hivi",
+    "seconds": "{{seconds}}s zilizopita",
+    "minutes": "{{minutes}}min zilizopita",
+    "hours": "{{hours}}h zilizopita",
+    "days": "{{days}}d zilizopita"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

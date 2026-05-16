@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "System Health",
+    "healthMetricsHeading": "Health Metrics",
+    "processStatusHeading": "Status ng Processes",
+    "activeBacktestsHeading": "Active Backtests",
+    "quickActionsHeading": "Quick Actions",
+    "featureNotImplemented": "Hindi pa implemented ang feature",
+    "restartServices": "I-restart ang Services",
+    "runHealthCheck": "Mag-run ng Health Check",
+    "viewLogs": "Tingnan ang Logs",
+    "exportReport": "I-export ang Report"
+  },
+  "status": {
+    "healthy": "Healthy",
+    "stopped": "Nakahinto",
+    "error": "Error",
+    "warning": "Warning",
+    "completed": "Tapos na",
+    "unknown": "Hindi kilala"
+  },
+  "metrics": {
+    "tradingEngine": "Trading Engine",
+    "tradingEngineDescription": "Strategy execution engine",
+    "activeBacktests": "Active Backtests",
+    "activeBacktestsDescription": "Tumatakbong backtest processes",
+    "active": "Aktibo",
+    "inactive": "Hindi aktibo"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Uptime",
+    "exitCode": "Exit code: {{code}}",
+    "service": "service",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "Database Stats",
+    "loading": "Nilo-load ang database stats…",
+    "unavailable": "Hindi available ang database stats: {{message}}",
+    "fallbackError": "Hindi na-load ang database statistics.",
+    "sampled": "sampled {{age}}",
+    "samplerSummary": "Sampler interval: {{seconds}}s · {{count}} tables",
+    "columns": {
+      "table": "Table",
+      "kind": "Kind",
+      "total": "Total",
+      "current": "Current",
+      "closed": "Closed",
+      "archivable": "Archivable",
+      "status": "Status"
+    },
+    "stale": "stale"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "Nilo-load ang notification metrics…",
+    "unavailable": "Hindi available ang notification metrics: {{message}}",
+    "fallbackError": "Hindi na-load ang notification metrics.",
+    "sent": "Sent",
+    "sentDescription": "Terminal: sent",
+    "failed": "Failed",
+    "failedDescription": "Naubos ang retry budget",
+    "unregistered": "Unregistered",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Cancelled (scope)",
+    "cancelledScopeDescription": "Scope revoke / user deactivate",
+    "outboxDepth": "Outbox depth",
+    "outboxDepthDescription": "Queued, naghihintay ng retry"
+  },
+  "retention": {
+    "title": "Retention Scheduler",
+    "loading": "Nilo-load ang retention run…",
+    "unavailable": "Hindi available ang retention run: {{message}}",
+    "fallbackError": "Hindi na-load ang retention run.",
+    "lastRun": "last run {{age}}",
+    "dryRunNotice": "Dry-run mode: naka-archive ang rows pero hindi na-purge mula sa DB.",
+    "columns": {
+      "table": "Table",
+      "retain": "Retain",
+      "archivedWindow": "Archived window",
+      "archived": "Archived",
+      "purged": "Purged",
+      "files": "Files",
+      "status": "Status"
+    },
+    "retainDays": "{{days}}d",
+    "ok": "ok",
+    "error": "error"
+  },
+  "systemMetrics": {
+    "title": "Process Health",
+    "loading": "Nilo-load ang process metrics…",
+    "unavailable": "Hindi available ang process metrics: {{message}}",
+    "fallbackError": "Hindi na-load ang process health metrics.",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "Status: {{status}}",
+    "uptime": "Uptime",
+    "threads": "Threads",
+    "openFds": "Open FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttled {{count}}×",
+    "memory": "Memory",
+    "saturation": "Saturation {{percent}}",
+    "asyncioTasks": "Asyncio Tasks",
+    "asyncioActive": "{{count}} active",
+    "asyncioPending": "+ {{count}} pending",
+    "dbPool": "DB Pool",
+    "liveConns": "Live conns: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objects: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "Network conns",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Active",
+    "tracemallocIdle": "Idle"
+  },
+  "relativeAge": {
+    "justNow": "ngayon lang",
+    "seconds": "{{seconds}}s ang nakalipas",
+    "minutes": "{{minutes}}min ang nakalipas",
+    "hours": "{{hours}}h ang nakalipas",
+    "days": "{{days}}d ang nakalipas"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

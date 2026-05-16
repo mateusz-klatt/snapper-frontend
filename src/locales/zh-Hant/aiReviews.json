@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "請求",
+    "decision": "決策",
+    "capsViolation": "上限違規",
+    "selectedDelegate": "已選委託",
+    "instrument": "品種",
+    "deadline": "截止 {{time}}",
+    "decidedBy": "由",
+    "newStatus": "狀態",
+    "mode": "模式",
+    "capAttempted": "嘗試值",
+    "capLimit": "相對上限",
+    "capOn": "品種",
+    "reviewLabel": "審核 {{reviewId}}",
+    "unhandledFrame": "未處理的 AI 審核活動幀: {{frame}}"
+  },
+  "page": {
+    "title": "AI 審核收件箱",
+    "subtitle": "路由到此委託的待處理 CONSULT 審核，以及即時事件串流。"
+  },
+  "roleNotice": {
+    "title": "僅供 AI 委託使用",
+    "message": "此收件箱會顯示路由到 AI 委託主體的 CONSULT 審核。請使用 AI 委託帳戶登入，以查看待處理審核和即時活動串流。你目前的角色是",
+    "unknownRole": "未知"
+  },
+  "pending": {
+    "title": "待處理審核",
+    "loading": "正在載入待處理審核…",
+    "loadError": "載入待處理審核失敗: {{message}}",
+    "emptyTitle": "沒有待處理審核",
+    "emptyMessage": "路由到此委託的新 CONSULT 請求會在這裏顯示。",
+    "columns": {
+      "instrument": "品種",
+      "thesis": "論據",
+      "status": "狀態",
+      "deadline": "截止時間",
+      "decision": "決策"
+    },
+    "rationalePlaceholder": "理由（可選）",
+    "rationaleAriaLabel": "審核 {{reviewId}} 的理由",
+    "approve": "批准",
+    "reject": "拒絕",
+    "submitError": "提交失敗: {{message}}"
+  },
+  "activity": {
+    "title": "最近活動",
+    "emptyTitle": "暫無活動",
+    "emptyMessage": "AI 審核請求、決策和上限違規幀會在這裏即時顯示。",
+    "summaryEmpty": "未收到幀",
+    "summaryCount": "顯示 {{shown}} / {{total}} 條緩衝"
+  }
+}
