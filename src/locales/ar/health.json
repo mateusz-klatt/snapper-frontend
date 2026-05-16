@@ -3,7 +3,7 @@
     "title": "صحة النظام",
     "healthMetricsHeading": "مقاييس الصحة",
     "processStatusHeading": "حالة العمليات",
-    "activeBacktestsHeading": "Backtests نشطة",
+    "activeBacktestsHeading": "اختبارات رجعية نشطة",
     "quickActionsHeading": "إجراءات سريعة",
     "featureNotImplemented": "الميزة غير منفذة بعد",
     "restartServices": "إعادة تشغيل الخدمات",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "محرك التداول",
     "tradingEngineDescription": "محرك تنفيذ الاستراتيجية",
-    "activeBacktests": "Backtests نشطة",
-    "activeBacktestsDescription": "عمليات Backtest قيد التشغيل",
+    "activeBacktests": "اختبارات رجعية نشطة",
+    "activeBacktestsDescription": "عمليات الاختبار الرجعي قيد التشغيل",
     "active": "نشط",
     "inactive": "غير نشط"
   },

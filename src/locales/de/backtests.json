@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Zurück",
-    "backToList": "← Zurück zu Backtests"
+    "backToList": "← Zurück zu Backtestläufen"
   },
   "status": {
     "pending": "Ausstehend",
@@ -11,7 +11,7 @@
     "cancelled": "Abgebrochen"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Backtestläufe",
     "actions": {
       "cancel": "Abbrechen",
       "rerun": "Erneut ausführen"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Fehler: {{message}}",
     "filter": {
-      "ariaLabel": "Backtests nach Status filtern",
+      "ariaLabel": "Backtestläufe nach Status filtern",
       "options": {
         "all": "Alle Status",
         "pending": "Ausstehend",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Keine Backtests",
-      "message": "Führen Sie einen Backtest über die CLI oder API aus, um hier Ergebnisse zu sehen."
+      "title": "Keine Backtestläufe",
+      "message": "Führen Sie einen Backtestlauf über die CLI oder API aus, um hier Ergebnisse zu sehen."
     }
   },
   "detail": {
-    "title": "Backtest-Lauf",
+    "title": "Backtestlauf",
     "fields": {
       "strategy": "Strategie",
       "instrument": "Instrument",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Vergleichen",
-    "headingFull": "Backtest-Vergleich",
+    "headingFull": "Backtestvergleich",
     "loading": "Vergleich wird geladen…",
     "vs": "vs.",
     "runLabel": "Lauf {{label}} · {{id}} · {{status}}",

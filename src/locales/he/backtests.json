@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← חזרה",
-    "backToList": "← חזרה ל-Backtests"
+    "backToList": "← חזרה לבקטסטים"
   },
   "status": {
     "pending": "ממתין",
@@ -11,7 +11,7 @@
     "cancelled": "בוטל"
   },
   "list": {
-    "title": "Backtests",
+    "title": "בקטסטים",
     "actions": {
       "cancel": "בטל",
       "rerun": "הרץ שוב"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "שגיאה: {{message}}",
     "filter": {
-      "ariaLabel": "סנן Backtests לפי סטטוס",
+      "ariaLabel": "סנן בקטסטים לפי סטטוס",
       "options": {
         "all": "כל הסטטוסים",
         "pending": "ממתין",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "אין Backtests",
-      "message": "הרץ Backtest דרך CLI או API כדי לראות כאן תוצאות."
+      "title": "אין בקטסטים",
+      "message": "הרץ בקטסט דרך CLI או API כדי לראות כאן תוצאות."
     }
   },
   "detail": {
-    "title": "הרצת Backtest",
+    "title": "הרצת בקטסט",
     "fields": {
       "strategy": "אסטרטגיה",
       "instrument": "מכשיר",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "השווה",
-    "headingFull": "השוואת Backtest",
+    "headingFull": "השוואת בקטסטים",
     "loading": "טוען השוואה…",
     "vs": "מול",
     "runLabel": "הרצה {{label}} · {{id}} · {{status}}",

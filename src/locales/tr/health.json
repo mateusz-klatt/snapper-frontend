@@ -3,7 +3,7 @@
     "title": "Sistem Sağlığı",
     "healthMetricsHeading": "Sağlık Metrikleri",
     "processStatusHeading": "Süreç Durumu",
-    "activeBacktestsHeading": "Aktif Backtests",
+    "activeBacktestsHeading": "Aktif backtestler",
     "quickActionsHeading": "Hızlı Eylemler",
     "featureNotImplemented": "Özellik henüz uygulanmadı",
     "restartServices": "Servisleri yeniden başlat",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Trading Motoru",
     "tradingEngineDescription": "Strateji yürütme motoru",
-    "activeBacktests": "Aktif Backtests",
-    "activeBacktestsDescription": "Çalışan Backtest süreçleri",
+    "activeBacktests": "Aktif backtestler",
+    "activeBacktestsDescription": "Çalışan backtest süreçleri",
     "active": "Aktif",
     "inactive": "Pasif"
   },

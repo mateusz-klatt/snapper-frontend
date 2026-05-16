@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Til baka",
-    "backToList": "← Til baka í Backtests"
+    "backToList": "← Til baka í bakprófanir"
   },
   "status": {
     "pending": "Í bið",
@@ -11,7 +11,7 @@
     "cancelled": "Hætt við"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Bakprófanir",
     "actions": {
       "cancel": "Hætta við",
       "rerun": "Keyra aftur"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Villa: {{message}}",
     "filter": {
-      "ariaLabel": "Sía Backtests eftir stöðu",
+      "ariaLabel": "Sía bakprófanir eftir stöðu",
       "options": {
         "all": "Allar stöður",
         "pending": "Í bið",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Engin Backtests",
-      "message": "Keyrðu Backtest í gegnum CLI eða API til að sjá niðurstöður hér."
+      "title": "Engar bakprófanir",
+      "message": "Keyrðu bakprófun í gegnum CLI eða API til að sjá niðurstöður hér."
     }
   },
   "detail": {
-    "title": "Backtest keyrsla",
+    "title": "Bakprófunarkeyrsla",
     "fields": {
       "strategy": "Stefna",
       "instrument": "Gerningur",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Bera saman",
-    "headingFull": "Backtest samanburður",
+    "headingFull": "Samanburður bakprófana",
     "loading": "Hleð samanburði…",
     "vs": "á móti",
     "runLabel": "Keyrsla {{label}} · {{id}} · {{status}}",

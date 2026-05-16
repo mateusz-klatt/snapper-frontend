@@ -3,7 +3,7 @@
     "title": "सिस्टम हेल्थ",
     "healthMetricsHeading": "हेल्थ मेट्रिक्स",
     "processStatusHeading": "प्रोसेस स्थिति",
-    "activeBacktestsHeading": "सक्रिय Backtests",
+    "activeBacktestsHeading": "सक्रिय बैकटेस्ट",
     "quickActionsHeading": "त्वरित कार्रवाइयाँ",
     "featureNotImplemented": "फ़ीचर अभी लागू नहीं हुआ",
     "restartServices": "सर्विस फिर शुरू करें",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "ट्रेडिंग इंजन",
     "tradingEngineDescription": "रणनीति निष्पादन इंजन",
-    "activeBacktests": "सक्रिय Backtests",
-    "activeBacktestsDescription": "चल रहे Backtest प्रोसेस",
+    "activeBacktests": "सक्रिय बैकटेस्ट",
+    "activeBacktestsDescription": "चल रही बैकटेस्ट प्रक्रियाएँ",
     "active": "सक्रिय",
     "inactive": "निष्क्रिय"
   },

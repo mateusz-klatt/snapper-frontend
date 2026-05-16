@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← वापस",
-    "backToList": "← Backtests पर वापस"
+    "backToList": "← बैकटेस्ट पर वापस"
   },
   "status": {
     "pending": "लंबित",
@@ -11,7 +11,7 @@
     "cancelled": "रद्द"
   },
   "list": {
-    "title": "Backtests",
+    "title": "बैकटेस्ट",
     "actions": {
       "cancel": "रद्द करें",
       "rerun": "फिर चलाएँ"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "त्रुटि: {{message}}",
     "filter": {
-      "ariaLabel": "स्थिति से Backtests फ़िल्टर करें",
+      "ariaLabel": "स्थिति से बैकटेस्ट फ़िल्टर करें",
       "options": {
         "all": "सभी स्थितियाँ",
         "pending": "लंबित",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "कोई Backtest नहीं",
-      "message": "परिणाम यहाँ देखने के लिए CLI या API से Backtest चलाएँ।"
+      "title": "कोई बैकटेस्ट नहीं",
+      "message": "परिणाम यहाँ देखने के लिए CLI या API से बैकटेस्ट चलाएँ।"
     }
   },
   "detail": {
-    "title": "Backtest रन",
+    "title": "बैकटेस्ट रन",
     "fields": {
       "strategy": "रणनीति",
       "instrument": "इंस्ट्रूमेंट",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "तुलना करें",
-    "headingFull": "Backtest तुलना",
+    "headingFull": "बैकटेस्ट तुलना",
     "loading": "तुलना लोड हो रही है…",
     "vs": "बनाम",
     "runLabel": "रन {{label}} · {{id}} · {{status}}",

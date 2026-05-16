@@ -3,7 +3,7 @@
     "title": "Systemhelse",
     "healthMetricsHeading": "Helsemetrikker",
     "processStatusHeading": "Prosessstatus",
-    "activeBacktestsHeading": "Aktive backtests",
+    "activeBacktestsHeading": "Aktive backtester",
     "quickActionsHeading": "Hurtighandlinger",
     "featureNotImplemented": "Funksjon ikke implementert ennå",
     "restartServices": "Start tjenester på nytt",
@@ -22,7 +22,7 @@
   "metrics": {
     "tradingEngine": "Tradingmotor",
     "tradingEngineDescription": "Motor for strategiutførelse",
-    "activeBacktests": "Aktive backtests",
+    "activeBacktests": "Aktive backtester",
     "activeBacktestsDescription": "Kjørende backtest-prosesser",
     "active": "Aktiv",
     "inactive": "Inaktiv"

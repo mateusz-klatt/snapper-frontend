@@ -3,7 +3,7 @@
     "title": "בריאות מערכת",
     "healthMetricsHeading": "מדדי בריאות",
     "processStatusHeading": "סטטוס תהליכים",
-    "activeBacktestsHeading": "Backtests פעילים",
+    "activeBacktestsHeading": "בקטסטים פעילים",
     "quickActionsHeading": "פעולות מהירות",
     "featureNotImplemented": "הפיצ׳ר עדיין לא מומש",
     "restartServices": "הפעל שירותים מחדש",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "מנוע מסחר",
     "tradingEngineDescription": "מנוע ביצוע אסטרטגיות",
-    "activeBacktests": "Backtests פעילים",
-    "activeBacktestsDescription": "תהליכי Backtest פועלים",
+    "activeBacktests": "בקטסטים פעילים",
+    "activeBacktestsDescription": "תהליכי בקטסט פעילים",
     "active": "פעיל",
     "inactive": "לא פעיל"
   },

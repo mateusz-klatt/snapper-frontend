@@ -3,7 +3,7 @@
     "title": "سلامت سیستم",
     "healthMetricsHeading": "معیارهای سلامت",
     "processStatusHeading": "وضعیت فرایند",
-    "activeBacktestsHeading": "Backtests فعال",
+    "activeBacktestsHeading": "بک‌تست‌های فعال",
     "quickActionsHeading": "اقدام‌های سریع",
     "featureNotImplemented": "این قابلیت هنوز پیاده‌سازی نشده است",
     "restartServices": "راه‌اندازی دوباره سرویس‌ها",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "موتور معاملاتی",
     "tradingEngineDescription": "موتور اجرای استراتژی",
-    "activeBacktests": "Backtests فعال",
-    "activeBacktestsDescription": "فرایندهای Backtest در حال اجرا",
+    "activeBacktests": "بک‌تست‌های فعال",
+    "activeBacktestsDescription": "فرایندهای بک‌تست در حال اجرا",
     "active": "فعال",
     "inactive": "غیرفعال"
   },

@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← 返回",
-    "backToList": "← 返回 Backtests"
+    "backToList": "← 返回回测"
   },
   "status": {
     "pending": "待处理",
@@ -11,7 +11,7 @@
     "cancelled": "已取消"
   },
   "list": {
-    "title": "Backtests",
+    "title": "回测",
     "actions": {
       "cancel": "取消",
       "rerun": "重新运行"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "错误: {{message}}",
     "filter": {
-      "ariaLabel": "按状态筛选 Backtest",
+      "ariaLabel": "按状态筛选回测",
       "options": {
         "all": "所有状态",
         "pending": "待处理",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "没有 Backtest",
-      "message": "通过 CLI 或 API 运行 Backtest 后，可在这里查看结果。"
+      "title": "没有回测",
+      "message": "通过 CLI 或 API 运行回测后，可在这里查看结果。"
     }
   },
   "detail": {
-    "title": "Backtest 运行",
+    "title": "回测运行",
     "fields": {
       "strategy": "策略",
       "instrument": "品种",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "比较",
-    "headingFull": "Backtest 比较",
+    "headingFull": "回测比较",
     "loading": "正在加载比较…",
     "vs": "vs",
     "runLabel": "运行 {{label}} · {{id}} · {{status}}",

@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Nazad",
-    "backToList": "← Nazad na Backtests"
+    "backToList": "← Nazad na backtestove"
   },
   "status": {
     "pending": "Na čekanju",
@@ -11,7 +11,7 @@
     "cancelled": "Otkazano"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Backtestovi",
     "actions": {
       "cancel": "Otkaži",
       "rerun": "Pokreni ponovo"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Greška: {{message}}",
     "filter": {
-      "ariaLabel": "Filtriraj Backtests po statusu",
+      "ariaLabel": "Filtriraj backtestove po statusu",
       "options": {
         "all": "Svi statusi",
         "pending": "Na čekanju",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Nema Backtestova",
-      "message": "Pokrenite Backtest putem CLI-ja ili API-ja da ovdje vidite rezultate."
+      "title": "Nema backtestova",
+      "message": "Pokrenite backtest putem CLI-ja ili API-ja da ovdje vidite rezultate."
     }
   },
   "detail": {
-    "title": "Backtest pokretanje",
+    "title": "Pokretanje backtesta",
     "fields": {
       "strategy": "Strategija",
       "instrument": "Instrument",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Uporedi",
-    "headingFull": "Poređenje Backtestova",
+    "headingFull": "Poređenje backtestova",
     "loading": "Učitavanje poređenja…",
     "vs": "vs",
     "runLabel": "Pokretanje {{label}} · {{id}} · {{status}}",

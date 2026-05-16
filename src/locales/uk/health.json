@@ -3,7 +3,7 @@
     "title": "Стан системи",
     "healthMetricsHeading": "Метрики стану",
     "processStatusHeading": "Стан процесів",
-    "activeBacktestsHeading": "Активні Backtest",
+    "activeBacktestsHeading": "Активні бектести",
     "quickActionsHeading": "Швидкі дії",
     "featureNotImplemented": "Функцію ще не реалізовано",
     "restartServices": "Перезапустити сервіси",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Торговий рушій",
     "tradingEngineDescription": "Рушій виконання стратегій",
-    "activeBacktests": "Активні Backtest",
-    "activeBacktestsDescription": "Запущені процеси Backtest",
+    "activeBacktests": "Активні бектести",
+    "activeBacktestsDescription": "Запущені процеси бектестування",
     "active": "Активний",
     "inactive": "Неактивний"
   },

@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Назад",
-    "backToList": "← Назад до Backtests"
+    "backToList": "← Назад до бектестів"
   },
   "status": {
     "pending": "Очікує",
@@ -11,7 +11,7 @@
     "cancelled": "Скасовано"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Бектести",
     "actions": {
       "cancel": "Скасувати",
       "rerun": "Запустити повторно"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Помилка: {{message}}",
     "filter": {
-      "ariaLabel": "Фільтр Backtests за статусом",
+      "ariaLabel": "Фільтр бектестів за статусом",
       "options": {
         "all": "Усі статуси",
         "pending": "Очікує",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Backtests не знайдено",
-      "message": "Запустіть Backtest через CLI або API, щоб побачити результати тут."
+      "title": "Бектестів не знайдено",
+      "message": "Запустіть бектест через CLI або API, щоб побачити результати тут."
     }
   },
   "detail": {
-    "title": "Запуск Backtest",
+    "title": "Запуск бектесту",
     "fields": {
       "strategy": "Стратегія",
       "instrument": "Інструмент",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Порівняти",
-    "headingFull": "Порівняння Backtests",
+    "headingFull": "Порівняння бектестів",
     "loading": "Завантаження порівняння…",
     "vs": "vs",
     "runLabel": "Запуск {{label}} · {{id}} · {{status}}",

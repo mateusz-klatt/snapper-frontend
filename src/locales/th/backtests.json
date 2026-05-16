@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← ย้อนกลับ",
-    "backToList": "← กลับไปยัง Backtests"
+    "backToList": "← กลับไปยังแบ็คเทสต์"
   },
   "status": {
     "pending": "รอดำเนินการ",
@@ -11,7 +11,7 @@
     "cancelled": "ยกเลิกแล้ว"
   },
   "list": {
-    "title": "Backtests",
+    "title": "แบ็คเทสต์",
     "actions": {
       "cancel": "ยกเลิก",
       "rerun": "รันซ้ำ"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "ข้อผิดพลาด: {{message}}",
     "filter": {
-      "ariaLabel": "กรอง Backtests ตามสถานะ",
+      "ariaLabel": "กรองแบ็คเทสต์ตามสถานะ",
       "options": {
         "all": "ทุกสถานะ",
         "pending": "รอดำเนินการ",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "ไม่มี Backtests",
-      "message": "รัน Backtest ผ่าน CLI หรือ API เพื่อดูผลลัพธ์ที่นี่"
+      "title": "ไม่มีแบ็คเทสต์",
+      "message": "รันแบ็คเทสต์ผ่าน CLI หรือ API เพื่อดูผลลัพธ์ที่นี่"
     }
   },
   "detail": {
-    "title": "การรัน Backtest",
+    "title": "การรันแบ็คเทสต์",
     "fields": {
       "strategy": "กลยุทธ์",
       "instrument": "Instrument",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "เปรียบเทียบ",
-    "headingFull": "การเปรียบเทียบ Backtest",
+    "headingFull": "การเปรียบเทียบแบ็คเทสต์",
     "loading": "กำลังโหลดการเปรียบเทียบ…",
     "vs": "เทียบกับ",
     "runLabel": "Run {{label}} · {{id}} · {{status}}",

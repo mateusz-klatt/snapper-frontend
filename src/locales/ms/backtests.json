@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Kembali",
-    "backToList": "← Kembali ke Backtests"
+    "backToList": "← Kembali ke backtest"
   },
   "status": {
     "pending": "Tertunda",
@@ -11,7 +11,7 @@
     "cancelled": "Dibatalkan"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Backtest",
     "actions": {
       "cancel": "Batal",
       "rerun": "Jalankan semula"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Ralat: {{message}}",
     "filter": {
-      "ariaLabel": "Tapis Backtests mengikut status",
+      "ariaLabel": "Tapis backtest mengikut status",
       "options": {
         "all": "Semua status",
         "pending": "Tertunda",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Tiada Backtests",
-      "message": "Jalankan Backtest melalui CLI atau API untuk melihat keputusan di sini."
+      "title": "Tiada backtest",
+      "message": "Jalankan backtest melalui CLI atau API untuk melihat keputusan di sini."
     }
   },
   "detail": {
-    "title": "Larian Backtest",
+    "title": "Larian backtest",
     "fields": {
       "strategy": "Strategi",
       "instrument": "Instrumen",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Bandingkan",
-    "headingFull": "Perbandingan Backtest",
+    "headingFull": "Perbandingan backtest",
     "loading": "Memuatkan perbandingan…",
     "vs": "vs",
     "runLabel": "Run {{label}} · {{id}} · {{status}}",

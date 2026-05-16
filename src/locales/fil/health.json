@@ -3,7 +3,7 @@
     "title": "System Health",
     "healthMetricsHeading": "Health Metrics",
     "processStatusHeading": "Status ng Processes",
-    "activeBacktestsHeading": "Active Backtests",
+    "activeBacktestsHeading": "Mga aktibong backtest",
     "quickActionsHeading": "Quick Actions",
     "featureNotImplemented": "Hindi pa implemented ang feature",
     "restartServices": "I-restart ang Services",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Trading Engine",
     "tradingEngineDescription": "Strategy execution engine",
-    "activeBacktests": "Active Backtests",
-    "activeBacktestsDescription": "Tumatakbong backtest processes",
+    "activeBacktests": "Mga aktibong backtest",
+    "activeBacktestsDescription": "Mga tumatakbong proseso ng backtest",
     "active": "Aktibo",
     "inactive": "Hindi aktibo"
   },

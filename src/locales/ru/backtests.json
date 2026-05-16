@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Назад",
-    "backToList": "← Назад к Backtests"
+    "backToList": "← Назад к бэктестам"
   },
   "status": {
     "pending": "Ожидает",
@@ -11,7 +11,7 @@
     "cancelled": "Отменён"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Бэктесты",
     "actions": {
       "cancel": "Отменить",
       "rerun": "Запустить повторно"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Ошибка: {{message}}",
     "filter": {
-      "ariaLabel": "Фильтр Backtests по статусу",
+      "ariaLabel": "Фильтр бэктестов по статусу",
       "options": {
         "all": "Все статусы",
         "pending": "Ожидает",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Backtests не найдены",
-      "message": "Запустите Backtest через CLI или API, чтобы увидеть результаты здесь."
+      "title": "Бэктесты не найдены",
+      "message": "Запустите бэктест через CLI или API, чтобы увидеть результаты здесь."
     }
   },
   "detail": {
-    "title": "Запуск Backtest",
+    "title": "Запуск бэктеста",
     "fields": {
       "strategy": "Стратегия",
       "instrument": "Инструмент",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Сравнить",
-    "headingFull": "Сравнение Backtests",
+    "headingFull": "Сравнение бэктестов",
     "loading": "Загрузка сравнения…",
     "vs": "vs",
     "runLabel": "Запуск {{label}} · {{id}} · {{status}}",

@@ -3,7 +3,7 @@
     "title": "Kerfisheilsa",
     "healthMetricsHeading": "Heilsumælikvarðar",
     "processStatusHeading": "Staða ferla",
-    "activeBacktestsHeading": "Virk Backtests",
+    "activeBacktestsHeading": "Virkar bakprófanir",
     "quickActionsHeading": "Flýtiaðgerðir",
     "featureNotImplemented": "Eiginleiki hefur ekki verið útfærður enn",
     "restartServices": "Endurræsa þjónustur",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Viðskiptavél",
     "tradingEngineDescription": "Keyrsluvél stefna",
-    "activeBacktests": "Virk Backtests",
-    "activeBacktestsDescription": "Backtest ferli í keyrslu",
+    "activeBacktests": "Virkar bakprófanir",
+    "activeBacktestsDescription": "Bakprófunarferli í keyrslu",
     "active": "Virkt",
     "inactive": "Óvirkt"
   },

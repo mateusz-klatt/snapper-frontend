@@ -3,7 +3,7 @@
     "title": "Υγεία συστήματος",
     "healthMetricsHeading": "Μετρικές υγείας",
     "processStatusHeading": "Κατάσταση διεργασιών",
-    "activeBacktestsHeading": "Ενεργά Backtests",
+    "activeBacktestsHeading": "Ενεργοί ιστορικοί έλεγχοι",
     "quickActionsHeading": "Γρήγορες ενέργειες",
     "featureNotImplemented": "Η λειτουργία δεν έχει υλοποιηθεί ακόμη",
     "restartServices": "Επανεκκίνηση υπηρεσιών",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Μηχανή συναλλαγών",
     "tradingEngineDescription": "Μηχανή εκτέλεσης στρατηγικών",
-    "activeBacktests": "Ενεργά Backtests",
-    "activeBacktestsDescription": "Διεργασίες Backtest σε εκτέλεση",
+    "activeBacktests": "Ενεργοί ιστορικοί έλεγχοι",
+    "activeBacktestsDescription": "Διεργασίες ιστορικού ελέγχου σε εκτέλεση",
     "active": "Ενεργό",
     "inactive": "Ανενεργό"
   },

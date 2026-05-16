@@ -11,7 +11,7 @@
     "cancelled": "Cancelado"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Pruebas retrospectivas",
     "actions": {
       "cancel": "Cancelar",
       "rerun": "Reejecutar"

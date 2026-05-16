@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← ফিরে যান",
-    "backToList": "← Backtests-এ ফিরে যান"
+    "backToList": "← ব্যাকটেস্টসমূহে ফিরে যান"
   },
   "status": {
     "pending": "অপেক্ষমাণ",
@@ -11,7 +11,7 @@
     "cancelled": "বাতিল"
   },
   "list": {
-    "title": "Backtests",
+    "title": "ব্যাকটেস্টসমূহ",
     "actions": {
       "cancel": "বাতিল",
       "rerun": "আবার চালান"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "ত্রুটি: {{message}}",
     "filter": {
-      "ariaLabel": "স্ট্যাটাস অনুযায়ী Backtests ফিল্টার করুন",
+      "ariaLabel": "স্ট্যাটাস অনুযায়ী ব্যাকটেস্ট ফিল্টার করুন",
       "options": {
         "all": "সব স্ট্যাটাস",
         "pending": "অপেক্ষমাণ",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "কোনো Backtests নেই",
-      "message": "ফলাফল দেখতে CLI বা API দিয়ে একটি Backtest চালান।"
+      "title": "কোনো ব্যাকটেস্ট নেই",
+      "message": "ফলাফল দেখতে CLI বা API দিয়ে একটি ব্যাকটেস্ট চালান।"
     }
   },
   "detail": {
-    "title": "Backtest রান",
+    "title": "ব্যাকটেস্ট রান",
     "fields": {
       "strategy": "কৌশল",
       "instrument": "ইনস্ট্রুমেন্ট",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "তুলনা",
-    "headingFull": "Backtest তুলনা",
+    "headingFull": "ব্যাকটেস্ট তুলনা",
     "loading": "তুলনা লোড হচ্ছে…",
     "vs": "vs",
     "runLabel": "Run {{label}} · {{id}} · {{status}}",

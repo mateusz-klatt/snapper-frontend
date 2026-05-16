@@ -3,7 +3,7 @@
     "title": "Состояние системы",
     "healthMetricsHeading": "Метрики состояния",
     "processStatusHeading": "Статус процессов",
-    "activeBacktestsHeading": "Активные Backtests",
+    "activeBacktestsHeading": "Активные бэктесты",
     "quickActionsHeading": "Быстрые действия",
     "featureNotImplemented": "Функция пока не реализована",
     "restartServices": "Перезапустить сервисы",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Торговый движок",
     "tradingEngineDescription": "Движок исполнения стратегий",
-    "activeBacktests": "Активные Backtests",
-    "activeBacktestsDescription": "Запущенные процессы Backtest",
+    "activeBacktests": "Активные бэктесты",
+    "activeBacktestsDescription": "Запущенные процессы бэктестирования",
     "active": "Активно",
     "inactive": "Неактивно"
   },

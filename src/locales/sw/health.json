@@ -3,7 +3,7 @@
     "title": "Afya ya Mfumo",
     "healthMetricsHeading": "Vipimo vya Afya",
     "processStatusHeading": "Hali ya Michakato",
-    "activeBacktestsHeading": "Backtests Zinazoendelea",
+    "activeBacktestsHeading": "Majaribio ya nyuma yanayoendelea",
     "quickActionsHeading": "Vitendo vya Haraka",
     "featureNotImplemented": "Kipengele bado hakijatekelezwa",
     "restartServices": "Anzisha Huduma Upya",
@@ -22,8 +22,8 @@
   "metrics": {
     "tradingEngine": "Engine ya Trading",
     "tradingEngineDescription": "Engine ya utekelezaji wa mikakati",
-    "activeBacktests": "Backtests Zinazoendelea",
-    "activeBacktestsDescription": "Michakato ya backtest inayoendelea",
+    "activeBacktests": "Majaribio ya nyuma yanayoendelea",
+    "activeBacktestsDescription": "Michakato ya majaribio ya nyuma inayoendelea",
     "active": "Inatumika",
     "inactive": "Haitumiki"
   },

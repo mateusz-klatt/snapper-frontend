@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Πίσω",
-    "backToList": "← Πίσω στα Backtests"
+    "backToList": "← Πίσω στους ιστορικούς ελέγχους"
   },
   "status": {
     "pending": "Σε εκκρεμότητα",
@@ -11,7 +11,7 @@
     "cancelled": "Ακυρώθηκε"
   },
   "list": {
-    "title": "Backtests",
+    "title": "Ιστορικοί έλεγχοι",
     "actions": {
       "cancel": "Ακύρωση",
       "rerun": "Επανεκτέλεση"
@@ -24,7 +24,7 @@
     },
     "errorPrefix": "Σφάλμα: {{message}}",
     "filter": {
-      "ariaLabel": "Φιλτράρισμα Backtests κατά κατάσταση",
+      "ariaLabel": "Φιλτράρισμα ιστορικών ελέγχων κατά κατάσταση",
       "options": {
         "all": "Όλες οι καταστάσεις",
         "pending": "Σε εκκρεμότητα",
@@ -35,12 +35,12 @@
       }
     },
     "empty": {
-      "title": "Δεν υπάρχουν Backtests",
-      "message": "Εκτελέστε Backtest μέσω CLI ή API για να δείτε αποτελέσματα εδώ."
+      "title": "Δεν υπάρχουν ιστορικοί έλεγχοι",
+      "message": "Εκτελέστε ιστορικό έλεγχο μέσω CLI ή API για να δείτε αποτελέσματα εδώ."
     }
   },
   "detail": {
-    "title": "Εκτέλεση Backtest",
+    "title": "Εκτέλεση ιστορικού ελέγχου",
     "fields": {
       "strategy": "Στρατηγική",
       "instrument": "Μέσο",
@@ -58,7 +58,7 @@
   },
   "compare": {
     "title": "Σύγκριση",
-    "headingFull": "Σύγκριση Backtest",
+    "headingFull": "Σύγκριση ιστορικού ελέγχου",
     "loading": "Φόρτωση σύγκρισης…",
     "vs": "έναντι",
     "runLabel": "Εκτέλεση {{label}} · {{id}} · {{status}}",

@@ -3,7 +3,7 @@
     "title": "Systemzustand",
     "healthMetricsHeading": "Zustandsmetriken",
     "processStatusHeading": "Prozessstatus",
-    "activeBacktestsHeading": "Aktive Backtests",
+    "activeBacktestsHeading": "Aktive Backtestläufe",
     "quickActionsHeading": "Schnellaktionen",
     "featureNotImplemented": "Funktion noch nicht implementiert",
     "restartServices": "Dienste neu starten",
@@ -22,7 +22,7 @@
   "metrics": {
     "tradingEngine": "Trading-Engine",
     "tradingEngineDescription": "Ausführungs-Engine für Strategien",
-    "activeBacktests": "Aktive Backtests",
+    "activeBacktests": "Aktive Backtestläufe",
     "activeBacktestsDescription": "Laufende Backtest-Prozesse",
     "active": "Aktiv",
     "inactive": "Inaktiv"
