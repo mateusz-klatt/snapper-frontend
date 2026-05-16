@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{exchange}} ပေါ်ရှိ {{instrument}} အတွက် related instrument များ configure မလုပ်ထားပါ။"
+    "empty": "{{exchange}} ပေါ်ရှိ {{instrument}} အတွက် related instrument များ configure မလုပ်ထားပါ။",
+    "relationshipType": {
+      "exact": "တူညီသော Underlying",
+      "derivative": "Derivative များ"
+    }
   },
   "cacheBanner": {
     "message": "Cache warm up လုပ်နေသည်: candle {{sampleCount}} / {{expected}} ရနိုင်သည် {{sourceLabel}}",

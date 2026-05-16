@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Walang naka-configure na related instruments para sa {{instrument}} sa {{exchange}}."
+    "empty": "Walang naka-configure na related instruments para sa {{instrument}} sa {{exchange}}.",
+    "relationshipType": {
+      "exact": "Parehong underlying",
+      "derivative": "Mga derivative"
+    }
   },
   "cacheBanner": {
     "message": "Nagwa-warm up ang cache: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",

@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{instrument}} için {{exchange}} üzerinde ilişkili enstrüman yapılandırılmamış."
+    "empty": "{{instrument}} için {{exchange}} üzerinde ilişkili enstrüman yapılandırılmamış.",
+    "relationshipType": {
+      "exact": "Aynı dayanak",
+      "derivative": "Türevler"
+    }
   },
   "cacheBanner": {
     "message": "Önbellek ısınıyor: {{sampleCount}} / {{expected}} mum mevcut {{sourceLabel}}",

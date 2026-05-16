@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{exchange}}上の{{instrument}}に関連銘柄が設定されていません。"
+    "empty": "{{exchange}}上の{{instrument}}に関連銘柄が設定されていません。",
+    "relationshipType": {
+      "exact": "同一原資産",
+      "derivative": "デリバティブ"
+    }
   },
   "cacheBanner": {
     "message": "キャッシュをウォームアップ中: {{sampleCount}} / {{expected}}本のローソク足が利用可能 {{sourceLabel}}",

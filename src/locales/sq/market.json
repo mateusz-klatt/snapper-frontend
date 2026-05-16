@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Nuk ka instrumente të lidhura të konfiguruara për {{instrument}} në {{exchange}}."
+    "empty": "Nuk ka instrumente të lidhura të konfiguruara për {{instrument}} në {{exchange}}.",
+    "relationshipType": {
+      "exact": "I njëjti aktiv bazë",
+      "derivative": "Derivate"
+    }
   },
   "cacheBanner": {
     "message": "Cache po ngrohet: {{sampleCount}} / {{expected}} qirinj të disponueshëm {{sourceLabel}}",

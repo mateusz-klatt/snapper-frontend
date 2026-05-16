@@ -113,7 +113,7 @@ const head = title => `<!DOCTYPE html>
  * via `file://` — absolute `/proprietary/...` paths resolve to the
  * filesystem root and 404 in that mode.
  */
-const nav = (base) => `
+const nav = base => `
 <div class="topnav">
   <h1>Snapper i18n screenshot sweep</h1>
   <a href="${base}index.html">All locales (45)</a>

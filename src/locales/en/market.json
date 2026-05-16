@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "No related instruments configured for {{instrument}} on {{exchange}}."
+    "empty": "No related instruments configured for {{instrument}} on {{exchange}}.",
+    "relationshipType": {
+      "exact": "Same underlying",
+      "derivative": "Derivatives"
+    }
   },
   "cacheBanner": {
     "message": "Cache warming up: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",

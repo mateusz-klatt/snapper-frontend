@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{exchange}}-এ {{instrument}}-এর জন্য কোনো সম্পর্কিত ইনস্ট্রুমেন্ট কনফিগার করা নেই।"
+    "empty": "{{exchange}}-এ {{instrument}}-এর জন্য কোনো সম্পর্কিত ইনস্ট্রুমেন্ট কনফিগার করা নেই।",
+    "relationshipType": {
+      "exact": "একই অন্তর্নিহিত সম্পদ",
+      "derivative": "ডেরিভেটিভস"
+    }
   },
   "cacheBanner": {
     "message": "Cache warm হচ্ছে: {{sampleCount}} / {{expected}} ক্যান্ডল উপলভ্য {{sourceLabel}}",

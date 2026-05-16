@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "ไม่มี instrument ที่เกี่ยวข้องซึ่งกำหนดค่าไว้สำหรับ {{instrument}} บน {{exchange}}"
+    "empty": "ไม่มี instrument ที่เกี่ยวข้องซึ่งกำหนดค่าไว้สำหรับ {{instrument}} บน {{exchange}}",
+    "relationshipType": {
+      "exact": "สินทรัพย์อ้างอิงเดียวกัน",
+      "derivative": "ตราสารอนุพันธ์"
+    }
   },
   "cacheBanner": {
     "message": "กำลังอุ่น cache: มีแท่งเทียน {{sampleCount}} / {{expected}} แท่ง {{sourceLabel}}",

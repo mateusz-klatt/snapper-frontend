@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Chưa cấu hình công cụ liên quan cho {{instrument}} trên {{exchange}}."
+    "empty": "Chưa cấu hình công cụ liên quan cho {{instrument}} trên {{exchange}}.",
+    "relationshipType": {
+      "exact": "Cùng tài sản cơ sở",
+      "derivative": "Phái sinh"
+    }
   },
   "cacheBanner": {
     "message": "Đang làm nóng cache: đã có {{sampleCount}} / {{expected}} nến {{sourceLabel}}",

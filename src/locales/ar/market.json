@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "لا توجد أدوات مرتبطة مكوّنة لـ {{instrument}} على {{exchange}}."
+    "empty": "لا توجد أدوات مرتبطة مكوّنة لـ {{instrument}} على {{exchange}}.",
+    "relationshipType": {
+      "exact": "نفس الأصل الأساسي",
+      "derivative": "المشتقات"
+    }
   },
   "cacheBanner": {
     "message": "يجري تجهيز التخزين المؤقت: {{sampleCount}} / {{expected}} شموع متاحة {{sourceLabel}}",

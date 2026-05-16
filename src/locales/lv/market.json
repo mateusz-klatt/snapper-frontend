@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Saistīti instrumenti priekš {{instrument}} biržā {{exchange}} nav konfigurēti."
+    "empty": "Saistīti instrumenti priekš {{instrument}} biržā {{exchange}} nav konfigurēti.",
+    "relationshipType": {
+      "exact": "Tas pats bāzes aktīvs",
+      "derivative": "Atvasinātie instrumenti"
+    }
   },
   "cacheBanner": {
     "message": "Kešatmiņa iesilst: pieejamas {{sampleCount}} / {{expected}} sveces {{sourceLabel}}",

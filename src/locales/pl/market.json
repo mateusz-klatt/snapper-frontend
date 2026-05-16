@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Brak skonfigurowanych powiązanych instrumentów dla {{instrument}} na {{exchange}}."
+    "empty": "Brak skonfigurowanych powiązanych instrumentów dla {{instrument}} na {{exchange}}.",
+    "relationshipType": {
+      "exact": "Ten sam instrument bazowy",
+      "derivative": "Instrumenty pochodne"
+    }
   },
   "cacheBanner": {
     "message": "Wypełnianie cache’u: dostępne {{sampleCount}} / {{expected}} świec {{sourceLabel}}",

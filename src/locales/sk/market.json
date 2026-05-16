@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Pre inštrument {{instrument}} na burze {{exchange}} nie sú nakonfigurované žiadne súvisiace inštrumenty."
+    "empty": "Pre inštrument {{instrument}} na burze {{exchange}} nie sú nakonfigurované žiadne súvisiace inštrumenty.",
+    "relationshipType": {
+      "exact": "Rovnaké podkladové aktívum",
+      "derivative": "Deriváty"
+    }
   },
   "cacheBanner": {
     "message": "Cache sa zahrieva: k dispozícii je {{sampleCount}} / {{expected}} sviečok {{sourceLabel}}",

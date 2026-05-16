@@ -34,7 +34,11 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Engir tengdir gerningar eru stilltir fyrir {{instrument}} á {{exchange}}."
+    "empty": "Engir tengdir gerningar eru stilltir fyrir {{instrument}} á {{exchange}}.",
+    "relationshipType": {
+      "exact": "Sama undirliggjandi",
+      "derivative": "Afleiður"
+    }
   },
   "cacheBanner": {
     "message": "Skyndiminni að hitna: {{sampleCount}} / {{expected}} kerti tiltæk {{sourceLabel}}",
