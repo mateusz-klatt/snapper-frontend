@@ -1,14 +1,14 @@
 {
   "page": {
-    "title": "Positions"
+    "title": "Mga Position"
   },
   "row": {
     "trailingStopBadge": "TS: ${{stop}}",
-    "trailingStopPending": "TS: pending",
+    "trailingStopPending": "TS: naka-pending",
     "slTpButton": "SL/TP",
     "trailButton": "Trail",
-    "quantity": "Quantity",
-    "averageEntry": "Avg Entry",
+    "quantity": "Dami",
+    "averageEntry": "Avg entry",
     "unrealizedPnl": "Unrealized P&L",
     "realizedPnl": "Realized P&L",
     "updated": "Na-update {{timestamp}}"

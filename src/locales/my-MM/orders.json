@@ -1,30 +1,30 @@
 {
   "page": {
-    "title": "အော်ဒါများနှင့် Execution များ",
+    "title": "အော်ဒါများနှင့် အကောင်အထည်ဖော်မှုများ",
     "newOrder": "အော်ဒါ အသစ်",
-    "exportCsv": "CSV export"
+    "exportCsv": "CSV export လုပ်ပါ"
   },
   "tabs": {
     "orders": "အော်ဒါများ ({{total}})",
-    "executions": "Execution များ ({{total}})"
+    "executions": "အကောင်အထည်ဖော်မှုများ ({{total}})"
   },
   "filters": {
-    "byStatus": "Status ဖြင့် filter လုပ်ပါ:",
+    "byStatus": "အခြေအနေဖြင့် filter လုပ်ပါ:",
     "options": {
       "all": "အော်ဒါအားလုံး",
       "new": "အသစ်",
-      "open": "Open",
-      "partiallyFilled": "Partially Filled",
-      "partially_filled": "Partially Filled",
-      "filled": "Filled",
-      "cancelled": "Cancelled",
-      "rejected": "Rejected"
+      "open": "ဖွင့်ထားသည်",
+      "partiallyFilled": "တစ်စိတ်တစ်ပိုင်း ဖြည့်ပြီး",
+      "partially_filled": "တစ်စိတ်တစ်ပိုင်း ဖြည့်ပြီး",
+      "filled": "ဖြည့်ပြီး",
+      "cancelled": "ပယ်ဖျက်ပြီး",
+      "rejected": "ပယ်ချပြီး"
     }
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
-    "quantity": "Quantity",
+    "priceMarket": "စျေးကွက်",
+    "quantity": "အရေအတွက်",
     "price": "စျေးနှုန်း",
     "created": "ဖန်တီးချိန်",
     "createdUnknown": "N/A",
@@ -32,69 +32,69 @@
     "leverage": "Leverage",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "REDUCE-ONLY",
-    "cancel": "Cancel",
-    "cancelling": "Cancel လုပ်နေသည်…",
-    "cancelAriaLabel": "Order {{orderId}} ကို cancel လုပ်ပါ"
+    "cancel": "ပယ်ဖျက်",
+    "cancelling": "ပယ်ဖျက်နေသည်…",
+    "cancelAriaLabel": "အော်ဒါ {{orderId}} ကို ပယ်ဖျက်ပါ"
   },
   "executionCard": {
-    "orderNumber": "Order #{{orderId}}",
-    "filled": "FILLED",
-    "orderLabel": "Order {{orderId}}",
-    "size": "Size",
+    "orderNumber": "အော်ဒါ #{{orderId}}",
+    "filled": "ဖြည့်ပြီး",
+    "orderLabel": "အော်ဒါ {{orderId}}",
+    "size": "အရွယ်အစား",
     "price": "စျေးနှုန်း",
     "total": "စုစုပေါင်း",
-    "executed": "Executed",
+    "executed": "အကောင်အထည်ဖော်ပြီး",
     "fees": "Fee များ"
   },
   "empty": {
     "ordersTitle": "အော်ဒါ မတွေ့ပါ",
-    "ordersStartTrading": "အော်ဒါများ ဒီမှာ မြင်ရန် trading စတင်ပါ",
+    "ordersStartTrading": "အော်ဒါများ ဒီမှာ မြင်ရန် ကုန်သွယ်မှု စတင်ပါ",
     "ordersFilterless": "{{status}} အော်ဒါ မရှိပါ",
-    "executionsTitle": "Execution မတွေ့ပါ",
-    "executionsMessage": "Trade execution များ ဒီမှာ ပေါ်လာမည်"
+    "executionsTitle": "အကောင်အထည်ဖော်မှု မတွေ့ပါ",
+    "executionsMessage": "Trade အကောင်အထည်ဖော်မှုများ ဒီမှာ ပေါ်လာမည်"
   },
   "csv": {
     "orders": {
       "instrument": "Instrument",
-      "side": "Side",
-      "type": "Type",
-      "status": "Status",
-      "quantity": "Quantity",
+      "side": "ဘက်",
+      "type": "အမျိုးအစား",
+      "status": "အခြေအနေ",
+      "quantity": "အရေအတွက်",
       "price": "စျေးနှုန်း",
       "leverage": "Leverage",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "လျှော့ချရန်သာ",
       "created": "ဖန်တီးချိန်"
     },
     "executions": {
-      "orderId": "Order ID",
+      "orderId": "အော်ဒါ ID",
       "instrument": "Instrument",
-      "side": "Side",
-      "size": "Size",
+      "side": "ဘက်",
+      "size": "အရွယ်အစား",
       "price": "စျေးနှုန်း",
       "total": "စုစုပေါင်း",
       "fee": "Fee",
       "feeAsset": "Fee Asset",
-      "executed": "Executed"
+      "executed": "အကောင်အထည်ဖော်ပြီး"
     }
   },
   "newOrderModal": {
-    "titleEdit": "Manual Order အသစ်",
+    "titleEdit": "လက်ဖြင့် အော်ဒါအသစ်",
     "titleConfirm": "အော်ဒါ အတည်ပြုပါ",
     "fields": {
       "exchange": "Exchange",
       "instrument": "Instrument",
-      "side": "Side",
-      "orderType": "Order Type",
-      "quantity": "Quantity",
+      "side": "ဘက်",
+      "orderType": "အော်ဒါ အမျိုးအစား",
+      "quantity": "အရေအတွက်",
       "price": "စျေးနှုန်း",
-      "stopPrice": "Stop Price",
-      "mode": "Mode",
-      "wallet": "Wallet",
-      "type": "Type"
+      "stopPrice": "Stop စျေးနှုန်း",
+      "mode": "မုဒ်",
+      "wallet": "ဝေါလက်",
+      "type": "အမျိုးအစား"
     },
     "sideOptions": {
-      "buy": "Buy",
-      "sell": "Sell"
+      "buy": "ဝယ်",
+      "sell": "ရောင်း"
     },
     "orderTypeOptions": {
       "market": "Market",
@@ -105,10 +105,10 @@
     },
     "modeOptions": {
       "live": "Live",
-      "paper": "Paper"
+      "paper": "စမ်းသပ်"
     },
-    "instrumentMarketDataOnlySuffix": "{{symbol}} — market-data only",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — စျေးကွက်ဒေတာသာ",
+    "walletPaperSuffix": "{{label}} (စမ်းသပ်)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
@@ -116,24 +116,24 @@
     },
     "buttons": {
       "cancel": "ပယ်ဖျက်",
-      "reviewOrder": "အော်ဒါ review လုပ်ပါ",
+      "reviewOrder": "အော်ဒါ ပြန်လည်သုံးသပ်ပါ",
       "back": "နောက်သို့",
       "confirmOrder": "အော်ဒါ အတည်ပြုပါ",
-      "submitting": "Submit လုပ်နေသည်..."
+      "submitting": "တင်သွင်းနေသည်..."
     },
     "errors": {
       "missingRequired": "လိုအပ်သော field အားလုံး ဖြည့်ရမည်",
-      "quantityPositive": "Quantity သည် positive number ဖြစ်ရမည်",
-      "priceRequired": "ဤ order type အတွက် price လိုအပ်သည်",
-      "pricePositive": "Price သည် positive number ဖြစ်ရမည်",
-      "stopPriceRequired": "ဤ order type အတွက် stop price လိုအပ်သည်",
-      "stopPricePositive": "Stop price သည် positive number ဖြစ်ရမည်",
-      "createFailed": "Order ဖန်တီးမှု မအောင်မြင်ပါ"
+      "quantityPositive": "အရေအတွက်သည် positive number ဖြစ်ရမည်",
+      "priceRequired": "ဤအော်ဒါအမျိုးအစားအတွက် စျေးနှုန်း လိုအပ်သည်",
+      "pricePositive": "စျေးနှုန်းသည် positive number ဖြစ်ရမည်",
+      "stopPriceRequired": "ဤအော်ဒါအမျိုးအစားအတွက် stop စျေးနှုန်း လိုအပ်သည်",
+      "stopPricePositive": "Stop စျေးနှုန်းသည် positive number ဖြစ်ရမည်",
+      "createFailed": "အော်ဒါ ဖန်တီးမှု မအောင်မြင်ပါ"
     },
     "errorCodes": {
       "instrumentMarketDataOnly": "ဤ instrument သည် observation-only ဖြစ်သည် — order တင်နိုင်သော execution-capable instrument ပေါ်တွင် order တင်ပါ။",
-      "unknownInstrument": "ဤ instrument ကို မသိပါ။ စာရင်းကို reload လုပ်ပြီး ထပ်စမ်းပါ။",
-      "capsViolation": "ဤ order သည် သင့် account safety cap များကို ကျော်လွန်မည်။ Risk setting များကို ပြန်စစ်ပြီး ထပ်စမ်းပါ။"
+      "unknownInstrument": "ဤ instrument ကို မသိပါ။ စာရင်းကို ပြန်တင်ပြီး ထပ်စမ်းပါ။",
+      "capsViolation": "ဤအော်ဒါသည် သင့်အကောင့် safety cap များကို ကျော်လွန်မည်။ Risk ဆက်တင်များကို ပြန်စစ်ပြီး ထပ်စမ်းပါ။"
     }
   }
 }

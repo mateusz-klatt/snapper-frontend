@@ -1,12 +1,12 @@
 {
-  "loading": "Load လုပ်နေသည်...",
-  "error": "Error",
+  "loading": "တင်နေသည်...",
+  "error": "အမှား",
   "retry": "ထပ်စမ်းပါ",
   "close": "ပိတ်ပါ",
   "cancel": "ပယ်ဖျက်",
   "confirm": "အတည်ပြုပါ",
   "save": "သိမ်းပါ",
-  "documentation": "Documentation (PDF)",
+  "documentation": "စာတမ်းလမ်းညွှန် (PDF)",
   "localeSwitcher": {
     "triggerAriaLabel": "ဘာသာစကား ပြောင်းပါ",
     "flagAriaLabel": "{{country}} သို့ ပြောင်းပါ",
@@ -14,70 +14,70 @@
   },
   "chrome": {
     "brand": "Snapper",
-    "console": "Trading Console",
-    "tagline": "တိကျမှုမြင့် workstation",
-    "openSidebar": "Sidebar ဖွင့်ပါ",
-    "closeSidebar": "Sidebar ပိတ်ပါ",
-    "sidebar": "Sidebar",
-    "mainNavigation": "Main navigation",
-    "tradingContent": "Trading content",
-    "skipToContent": "Trading content သို့ ကျော်သွားပါ",
-    "lag": "Lag:",
+    "console": "ကုန်သွယ်ရေး ကွန်ဆိုးလ်",
+    "tagline": "တိကျမှုမြင့် အလုပ်နေရာ",
+    "openSidebar": "ဘေးဘား ဖွင့်ပါ",
+    "closeSidebar": "ဘေးဘား ပိတ်ပါ",
+    "sidebar": "ဘေးဘား",
+    "mainNavigation": "အဓိက လမ်းညွှန်",
+    "tradingContent": "ကုန်သွယ်ရေး အကြောင်းအရာ",
+    "skipToContent": "ကုန်သွယ်ရေး အကြောင်းအရာသို့ ကျော်သွားပါ",
+    "lag": "နောက်ကျမှု:",
     "lagTitle": "WebSocket server သို့ round-trip latency",
-    "topics": "Topic များ:",
+    "topics": "အကြောင်းအရာများ:",
     "topicsTitle": "Subscribe လုပ်ထားသော WebSocket topic အရေအတွက်",
     "connected": "ချိတ်ဆက်ထားသည်",
     "disconnected": "ချိတ်ဆက်မထားပါ",
     "connectedTitle": "WebSocket သို့ ချိတ်ဆက်ထားသည်",
     "disconnectedTitle": "WebSocket မှ ပြတ်တောက်ထားသည်",
-    "switchToLightMode": "Light mode သို့ ပြောင်းပါ",
-    "switchToDarkMode": "Dark mode သို့ ပြောင်းပါ",
-    "timeTravelBanner": "Time Travel Mode — historical data ကို ကြည့်နေသည် (read-only)",
+    "switchToLightMode": "အလင်းမုဒ်သို့ ပြောင်းပါ",
+    "switchToDarkMode": "အမှောင်မုဒ်သို့ ပြောင်းပါ",
+    "timeTravelBanner": "အချိန်ပြန်ကြည့်မုဒ် — သမိုင်းဒေတာကို ကြည့်နေသည် (read-only)",
     "lagUnknown": "မသိပါ",
     "walletPicker": {
-      "ariaLabel": "Active wallet",
-      "placeholder": "Wallet",
-      "allWallets": "Wallet အားလုံး",
-      "optionPaper": "{{label}} (paper)"
+      "ariaLabel": "အသုံးပြုနေသော ဝေါလက်",
+      "placeholder": "ဝေါလက်",
+      "allWallets": "ဝေါလက်အားလုံး",
+      "optionPaper": "{{label}} (စမ်းသပ်)"
     },
     "operatorPicker": {
-      "ariaLabel": "Active operator",
-      "placeholder": "Operator",
-      "allOperators": "Operator အားလုံး"
+      "ariaLabel": "အသုံးပြုနေသော လုပ်ဆောင်သူ",
+      "placeholder": "လုပ်ဆောင်သူ",
+      "allOperators": "လုပ်ဆောင်သူအားလုံး"
     },
     "timeTravel": {
-      "pickerTitle": "Time travel: historical point in time တစ်ခု ရွေးပါ",
-      "exitAriaLabel": "Time travel mode မှ ထွက်ပါ",
-      "exitTitle": "Live mode သို့ ပြန်သွားပါ"
+      "pickerTitle": "အချိန်ပြန်ကြည့်ခြင်း: သမိုင်းအချိန်မှတ်တစ်ခု ရွေးပါ",
+      "exitAriaLabel": "အချိန်ပြန်ကြည့်မုဒ်မှ ထွက်ပါ",
+      "exitTitle": "Live မုဒ်သို့ ပြန်သွားပါ"
     },
     "marketDataOnly": {
-      "defaultTooltip": "Observation-only instrument။ Snapper သည် market data ရရှိသော်လည်း ဤ (symbol, exchange) pair အတွက် order မတင်နိုင်ပါ။",
-      "ariaLabel": "Market-data only instrument",
-      "badge": "Market-data only"
+      "defaultTooltip": "စောင့်ကြည့်ရန်သာဖြစ်သော instrument။ Snapper သည် market data ရရှိသော်လည်း ဤ (symbol, exchange) pair အတွက် order မတင်နိုင်ပါ။",
+      "ariaLabel": "စျေးကွက်ဒေတာသာရသော instrument",
+      "badge": "စျေးကွက်ဒေတာသာ"
     },
     "liveOnly": {
-      "notice": "ဤ tab သည် လက်ရှိ state ကိုသာ ပြသည် — historical view မရနိုင်ပါ။"
+      "notice": "ဤ tab သည် လက်ရှိအခြေအနေကိုသာ ပြသည် — သမိုင်းမြင်ကွင်း မရနိုင်ပါ။"
     }
   },
   "errorBoundary": {
     "titleDefault": "တစ်ခုခု မှားသွားသည်",
-    "titleWithComponent": "{{componentName}} တွင် error ဖြစ်သည်",
+    "titleWithComponent": "{{componentName}} တွင် အမှားဖြစ်သည်",
     "stackTrace": "Stack trace",
     "tryAgain": "ထပ်စမ်းပါ"
   },
   "nav": {
     "overview": "အနှစ်ချုပ်",
     "market": "စျေးကွက်ဒေတာ",
-    "processes": "Process များ",
-    "strategies": "Strategy များ",
-    "orders": "အော်ဒါများနှင့် Execution များ",
+    "processes": "လုပ်ငန်းစဉ်များ",
+    "strategies": "ဗျူဟာများ",
+    "orders": "အော်ဒါများနှင့် အကောင်အထည်ဖော်မှုများ",
     "positions": "ပိုဇစ်ရှင်များ",
-    "signals": "Signal များ",
-    "backtests": "Backtest များ",
-    "health": "Health",
+    "signals": "အချက်ပြမှုများ",
+    "backtests": "နောက်ကြောင်းပြန် စမ်းသပ်မှုများ",
+    "health": "ကျန်းမာရေး",
     "admin": "စီမံခန့်ခွဲရေး",
-    "aiIntegration": "AI Integration",
-    "aiReviews": "AI Review များ",
-    "settings": "Setting များ"
+    "aiIntegration": "AI ပေါင်းစည်းမှု",
+    "aiReviews": "AI ပြန်လည်သုံးသပ်မှုများ",
+    "settings": "ဆက်တင်များ"
   }
 }

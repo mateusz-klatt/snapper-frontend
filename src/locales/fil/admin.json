@@ -33,7 +33,7 @@
       "signals": "Signals",
       "health": "Health",
       "admin": "Administrasyon",
-      "settings": "Settings"
+      "settings": "Mga Setting"
     }
   },
   "common": {
@@ -64,7 +64,7 @@
         "role": "Role",
         "status": "Status",
         "createdAt": "Ginawa noong",
-        "actions": "Actions"
+        "actions": "Mga aksyon"
       },
       "status": {
         "active": "Aktibo",
@@ -80,7 +80,7 @@
       "errorLoading": "Error sa pag-load ng users: {{message}}",
       "deactivate": {
         "title": "I-deactivate ang User",
-        "message": "Sigurado ka bang gusto mong i-deactivate ang user na \"{{username}}\"? Hindi na siya makakapag-sign in.",
+        "message": "Sigurado ka bang gusto mong i-deactivate ang user na \"{{username}}\"? Hindi na siya makakapag-login.",
         "confirm": "I-deactivate"
       },
       "toast": {
@@ -147,7 +147,7 @@
         "scope": "Scope",
         "target": "Target",
         "grantedAt": "Na-grant noong",
-        "actions": "Actions"
+        "actions": "Mga aksyon"
       },
       "empty": {
         "noGrants": "Walang grants na nakita",
@@ -225,7 +225,7 @@
         "type": "Type",
         "label": "Label",
         "createdAt": "Ginawa noong",
-        "actions": "Actions"
+        "actions": "Mga aksyon"
       },
       "empty": {
         "noCredentials": "Walang credentials na nakita",

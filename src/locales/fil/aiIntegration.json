@@ -7,7 +7,7 @@
   },
   "disabled": {
     "title": "Naka-disable ang AI Integration",
-    "message": "I-enable ang feature flag sa Settings → Feature Flags para ma-manage ang AI delegates."
+    "message": "I-enable ang feature flag sa Mga Setting → Feature Flags para ma-manage ang AI delegates."
   },
   "list": {
     "loadingDelegates": "Nilo-load ang delegates…",
@@ -19,8 +19,8 @@
       "created": "Ginawa",
       "maxOpenOrders": "Max open orders",
       "maxDailyUsd": "Max daily USD",
-      "status": "Status",
-      "actions": "Actions"
+      "status": "Katayuan",
+      "actions": "Mga aksyon"
     },
     "status": {
       "active": "Aktibo",
@@ -92,7 +92,7 @@
     "save": "I-save",
     "cancel": "Kanselahin",
     "tradingCaps": "Trading caps",
-    "status": "Status",
+    "status": "Katayuan",
     "active": "Aktibo",
     "revoked": "Na-revoke",
     "createdAt": "Ginawa noong",

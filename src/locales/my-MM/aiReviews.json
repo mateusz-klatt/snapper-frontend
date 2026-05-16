@@ -1,52 +1,52 @@
 {
   "activityRow": {
-    "request": "Request",
-    "decision": "Decision",
-    "capsViolation": "Cap violation",
+    "request": "တောင်းဆိုချက်",
+    "decision": "ဆုံးဖြတ်ချက်",
+    "capsViolation": "Cap ကန့်သတ်ချက် ချိုးဖောက်မှု",
     "selectedDelegate": "ရွေးထားသော delegate",
     "instrument": "instrument",
-    "deadline": "deadline {{time}}",
-    "decidedBy": "by",
-    "newStatus": "status",
-    "mode": "mode",
-    "capAttempted": "attempted",
-    "capLimit": "vs limit",
+    "deadline": "နောက်ဆုံးအချိန် {{time}}",
+    "decidedBy": "ဆုံးဖြတ်သူ",
+    "newStatus": "အခြေအနေ",
+    "mode": "မုဒ်",
+    "capAttempted": "ကြိုးစားထားသည်",
+    "capLimit": "ကန့်သတ်ချက်နှင့်နှိုင်းယှဉ်",
     "capOn": "instrument ပေါ်တွင်",
-    "reviewLabel": "review {{reviewId}}",
-    "unhandledFrame": "မကိုင်တွယ်ထားသော AI review activity frame: {{frame}}"
+    "reviewLabel": "ပြန်လည်သုံးသပ်ချက် {{reviewId}}",
+    "unhandledFrame": "မကိုင်တွယ်ထားသော AI ပြန်လည်သုံးသပ်မှု လုပ်ဆောင်ချက် frame: {{frame}}"
   },
   "page": {
-    "title": "AI Review Inbox",
-    "subtitle": "ဤ delegate သို့ route လုပ်ထားသော pending CONSULT review များနှင့် live event stream။"
+    "title": "AI ပြန်လည်သုံးသပ်မှု Inbox",
+    "subtitle": "ဤ delegate သို့ route လုပ်ထားသော စောင့်ဆိုင်းနေသည့် CONSULT ပြန်လည်သုံးသပ်မှုများနှင့် တိုက်ရိုက် event stream။"
   },
   "roleNotice": {
     "title": "AI delegate များအတွက် သီးသန့်",
-    "message": "ဤ inbox သည် AI delegate principal သို့ route လုပ်ထားသော CONSULT review များကို ပြသည်။ Pending review များနှင့် live activity stream ကြည့်ရန် AI delegate account ဖြင့် sign in လုပ်ပါ။ သင့်လက်ရှိ role သည်",
+    "message": "ဤ inbox သည် AI delegate principal သို့ route လုပ်ထားသော CONSULT ပြန်လည်သုံးသပ်မှုများကို ပြသည်။ စောင့်ဆိုင်းနေသည့် ပြန်လည်သုံးသပ်မှုများနှင့် တိုက်ရိုက်လုပ်ဆောင်ချက် stream ကို ကြည့်ရန် AI delegate အကောင့်ဖြင့် ဝင်ရောက်ပါ။ သင့်လက်ရှိ role သည်",
     "unknownRole": "မသိပါ"
   },
   "pending": {
-    "title": "Pending review များ",
-    "loading": "Pending review များ load လုပ်နေသည်…",
-    "loadError": "Pending review များ load လုပ်၍ မရပါ: {{message}}",
-    "emptyTitle": "Pending review မရှိပါ",
-    "emptyMessage": "ဤ delegate သို့ route လုပ်ထားသော CONSULT request အသစ်များ ဒီမှာ ပေါ်လာမည်။",
+    "title": "စောင့်ဆိုင်းနေသည့် ပြန်လည်သုံးသပ်မှုများ",
+    "loading": "စောင့်ဆိုင်းနေသည့် ပြန်လည်သုံးသပ်မှုများ တင်နေသည်…",
+    "loadError": "စောင့်ဆိုင်းနေသည့် ပြန်လည်သုံးသပ်မှုများ တင်၍ မရပါ: {{message}}",
+    "emptyTitle": "စောင့်ဆိုင်းနေသည့် ပြန်လည်သုံးသပ်မှု မရှိပါ",
+    "emptyMessage": "ဤ delegate သို့ route လုပ်ထားသော CONSULT တောင်းဆိုချက်အသစ်များ ဒီမှာ ပေါ်လာမည်။",
     "columns": {
       "instrument": "Instrument",
-      "thesis": "Thesis",
-      "status": "Status",
-      "deadline": "Deadline",
-      "decision": "Decision"
+      "thesis": "အဆိုပြုချက်",
+      "status": "အခြေအနေ",
+      "deadline": "နောက်ဆုံးအချိန်",
+      "decision": "ဆုံးဖြတ်ချက်"
     },
-    "rationalePlaceholder": "Rationale (optional)",
-    "rationaleAriaLabel": "Review {{reviewId}} အတွက် rationale",
-    "approve": "Approve",
-    "reject": "Reject",
-    "submitError": "Submit မအောင်မြင်ပါ: {{message}}"
+    "rationalePlaceholder": "အကြောင်းပြချက် (optional)",
+    "rationaleAriaLabel": "ပြန်လည်သုံးသပ်ချက် {{reviewId}} အတွက် အကြောင်းပြချက်",
+    "approve": "အတည်ပြု",
+    "reject": "ပယ်ချ",
+    "submitError": "တင်သွင်းမှု မအောင်မြင်ပါ: {{message}}"
   },
   "activity": {
-    "title": "လတ်တလော activity",
-    "emptyTitle": "Activity မရှိသေးပါ",
-    "emptyMessage": "AI review request, decision နှင့် caps-violation frame များ ဒီမှာ stream ဝင်လာမည်။",
+    "title": "လတ်တလော လုပ်ဆောင်ချက်",
+    "emptyTitle": "လုပ်ဆောင်ချက် မရှိသေးပါ",
+    "emptyMessage": "AI ပြန်လည်သုံးသပ်မှု တောင်းဆိုချက်၊ ဆုံးဖြတ်ချက်နှင့် cap ချိုးဖောက်မှု frame များ ဒီမှာ stream ဝင်လာမည်။",
     "summaryEmpty": "Frame မရရှိသေးပါ",
     "summaryCount": "Buffered {{total}} ခုထဲမှ {{shown}} ခု ပြနေသည်"
   }

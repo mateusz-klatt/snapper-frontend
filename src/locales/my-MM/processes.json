@@ -1,57 +1,57 @@
 {
   "page": {
-    "title": "Process Control",
-    "subtitle": "Real-time process monitoring နှင့် control"
+    "title": "လုပ်ငန်းစဉ် ထိန်းချုပ်မှု",
+    "subtitle": "အချိန်နှင့်တပြေးညီ လုပ်ငန်းစဉ် စောင့်ကြည့်ခြင်းနှင့် ထိန်းချုပ်မှု"
   },
   "sections": {
-    "longRunning": "Long-Running Process များ",
-    "executorTemplates": "Executor Template များ",
-    "executorTemplatesHint": "Template config ကို ပြင်ဆင်ခြင်းသည် restart ပြီးနောက် ဤ exchange ပေါ်ရှိ wallet အားလုံးကို သက်ရောက်စေသည်။ Template များသည် config-only ဖြစ်သည် — executor run ရန် အောက်တွင် per-wallet instance ကို start လုပ်ပါ။",
-    "walletInstances": "Wallet Instance များ",
-    "taskProcesses": "Task Process များ"
+    "longRunning": "ကြာရှည်လည်ပတ်သော လုပ်ငန်းစဉ်များ",
+    "executorTemplates": "အကောင်အထည်ဖော်သူ ပုံစံများ",
+    "executorTemplatesHint": "ပုံစံ config ကို ပြင်ဆင်ခြင်းသည် ပြန်စတင်ပြီးနောက် ဤ exchange ပေါ်ရှိ ဝေါလက်အားလုံးကို သက်ရောက်စေသည်။ ပုံစံများသည် config-only ဖြစ်သည် — executor run ရန် အောက်တွင် ဝေါလက်တစ်ခုစီ instance ကို စတင်ပါ။",
+    "walletInstances": "ဝေါလက် instance များ",
+    "taskProcesses": "တာဝန် လုပ်ငန်းစဉ်များ"
   },
   "card": {
-    "stop": "Stop",
-    "start": "Start",
-    "restart": "Restart",
-    "starting": "Starting...",
-    "stopping": "Stopping...",
+    "stop": "ရပ်",
+    "start": "စတင်",
+    "restart": "ပြန်စတင်",
+    "starting": "စတင်နေသည်...",
+    "stopping": "ရပ်နေသည်...",
     "status": {
-      "running": "running",
-      "stopped": "stopped",
-      "error": "error",
-      "starting": "starting",
-      "stopping": "stopping"
+      "running": "အလုပ်လုပ်နေသည်",
+      "stopped": "ရပ်ထားသည်",
+      "error": "အမှား",
+      "starting": "စတင်နေသည်",
+      "stopping": "ရပ်နေသည်"
     }
   },
   "template": {
-    "badge": "template",
-    "mode": "Mode:",
-    "parameters": "Parameter များ:",
-    "paramCount": "parameter {{count}} ခု",
-    "noParams": "parameter မသတ်မှတ်ထားပါ"
+    "badge": "ပုံစံ",
+    "mode": "မုဒ်:",
+    "parameters": "ပါရာမီတာများ:",
+    "paramCount": "ပါရာမီတာ {{count}} ခု",
+    "noParams": "ပါရာမီတာ မသတ်မှတ်ထားပါ"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
-    "manual": "manual"
+    "oneShot": "တစ်ကြိမ်သာ",
+    "autoStart": "အလိုအလျောက်စတင်",
+    "manual": "လက်ဖြင့်"
   },
   "actions": {
-    "stopTitle": "{{name}} ကို stop လုပ်ပါ",
-    "stopMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} process ကို stop လုပ်မည်။",
-    "restartTitle": "{{name}} ကို restart လုပ်ပါ",
-    "restartMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} process ကို restart လုပ်မည်။"
+    "stopTitle": "{{name}} ကို ရပ်ပါ",
+    "stopMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} လုပ်ငန်းစဉ်ကို ရပ်မည်။",
+    "restartTitle": "{{name}} ကို ပြန်စတင်ပါ",
+    "restartMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} လုပ်ငန်းစဉ်ကို ပြန်စတင်မည်။"
   },
   "executionMode": {
-    "title": "{{name}} ကို start လုပ်ပါ",
-    "label": "Execution Mode:",
-    "threadName": "Thread Mode",
-    "threadDescription": "Web server အတွင်း embedded task အဖြစ် run သည်။ Startup ပိုမြန်ပြီး memory ကို share လုပ်သည်။",
-    "processName": "Process Mode",
-    "processDescription": "သီးခြား Python process အဖြစ် run သည်။ Isolated ဖြစ်ပြီး fault-tolerant နှင့် detailed monitoring ရှိသည်။",
+    "title": "{{name}} ကို စတင်ပါ",
+    "label": "လုပ်ဆောင်မှု မုဒ်:",
+    "threadName": "Thread မုဒ်",
+    "threadDescription": "Web server အတွင်း embedded task အဖြစ် run သည်။ စတင်မှု ပိုမြန်ပြီး memory ကို မျှဝေသုံးသည်။",
+    "processName": "လုပ်ငန်းစဉ် မုဒ်",
+    "processDescription": "သီးခြား Python လုပ်ငန်းစဉ်အဖြစ် run သည်။ သီးခြားထားပြီး အမှားခံနိုင်မှုနှင့် အသေးစိတ်စောင့်ကြည့်မှု ရှိသည်။",
     "cancel": "ပယ်ဖျက်",
-    "start": "{{name}} ကို start လုပ်ပါ",
-    "threadAriaLabel": "Thread Mode",
-    "processAriaLabel": "Process Mode"
+    "start": "{{name}} ကို စတင်ပါ",
+    "threadAriaLabel": "Thread မုဒ်",
+    "processAriaLabel": "လုပ်ငန်းစဉ် မုဒ်"
   }
 }

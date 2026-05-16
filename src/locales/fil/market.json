@@ -25,7 +25,7 @@
     "low24h": "24h low"
   },
   "chart": {
-    "title": "Price chart",
+    "title": "Chart ng presyo",
     "errorPrefix": "Error sa pag-load ng chart data:",
     "unknownError": "Hindi alam na error",
     "noDataTitle": "Walang data para sa {{instrument}}",
