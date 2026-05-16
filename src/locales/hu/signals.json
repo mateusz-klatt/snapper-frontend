@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Jelzések"
+  },
+  "filters": {
+    "allStrategies": "Minden stratégia"
+  },
+  "actions": {
+    "export": "Exportálás"
+  },
+  "stats": {
+    "total": "Összesen",
+    "buy": "Vétel",
+    "sell": "Eladás",
+    "avgStrength": "Átlagos erősség"
+  },
+  "card": {
+    "strength": "Erősség",
+    "price": "Ár",
+    "exchange": "Tőzsde",
+    "reason": "Indok:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "Erős",
+    "medium": "Közepes",
+    "weak": "Gyenge",
+    "veryWeak": "Nagyon gyenge"
+  },
+  "time": {
+    "justNow": "Épp most",
+    "minutesAgo": "Eltelt percek: {{count}}",
+    "hoursAgo": "Eltelt órák: {{count}}"
+  },
+  "empty": {
+    "title": "Nem találhatók jelzések",
+    "message": "Nincs az aktuális szűrőknek megfelelő kereskedési jelzés."
+  }
+}

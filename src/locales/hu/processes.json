@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Folyamatvezérlés",
+    "subtitle": "Valós idejű folyamatfigyelés és vezérlés"
+  },
+  "sections": {
+    "longRunning": "Hosszan futó folyamatok",
+    "executorTemplates": "Végrehajtó sablonok",
+    "executorTemplatesHint": "A sablonkonfiguráció szerkesztése újraindítás után az összes pénztárcát érinti ezen a tőzsdén. A sablonok csak konfigurációk — a végrehajtó futtatásához indítsa el lent a pénztárcánkénti példányt.",
+    "walletInstances": "Pénztárcapéldányok",
+    "taskProcesses": "Feladatfolyamatok"
+  },
+  "card": {
+    "stop": "Leállítás",
+    "start": "Indítás",
+    "restart": "Újraindítás",
+    "starting": "Indítás...",
+    "stopping": "Leállítás...",
+    "status": {
+      "running": "fut",
+      "stopped": "leállítva",
+      "error": "hiba",
+      "starting": "indítás",
+      "stopping": "leállítás"
+    }
+  },
+  "template": {
+    "badge": "sablon",
+    "mode": "Mód:",
+    "parameters": "Paraméterek:",
+    "paramCount": "Paraméterek: {{count}}",
+    "noParams": "nincsenek beállított paraméterek"
+  },
+  "badges": {
+    "oneShot": "one-shot",
+    "autoStart": "auto-start",
+    "manual": "kézi"
+  },
+  "actions": {
+    "stopTitle": "{{name}} leállítása",
+    "stopMessage": "Ez leállítja a(z) {{name}} folyamatot.",
+    "restartTitle": "{{name}} újraindítása",
+    "restartMessage": "Ez újraindítja a(z) {{name}} folyamatot."
+  },
+  "executionMode": {
+    "title": "{{name}} indítása",
+    "label": "Végrehajtási mód:",
+    "threadName": "Szál mód",
+    "threadDescription": "Beágyazott feladatként fut a webszerveren belül. Gyorsabb indítás, megosztott memória.",
+    "processName": "Folyamat mód",
+    "processDescription": "Külön Python-folyamatként fut. Elkülönített, hibatűrő, részletesen figyelhető.",
+    "cancel": "Mégse",
+    "start": "{{name}} indítása",
+    "threadAriaLabel": "Szál mód",
+    "processAriaLabel": "Folyamat mód"
+  }
+}

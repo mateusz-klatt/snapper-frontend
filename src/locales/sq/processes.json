@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Kontrolli i proceseve",
+    "subtitle": "Monitorim dhe kontroll i proceseve në kohë reale"
+  },
+  "sections": {
+    "longRunning": "Procese afatgjata",
+    "executorTemplates": "Modele ekzekutori",
+    "executorTemplatesHint": "Ndryshimi i konfigurimit të modelit prek të gjitha portofolet në këtë bursë pas rinisjes. Modelet janë vetëm konfigurim — nisni instancën për portofol më poshtë për të ekzekutuar një ekzekutor.",
+    "walletInstances": "Instanca portofoli",
+    "taskProcesses": "Procese detyrash"
+  },
+  "card": {
+    "stop": "Ndalo",
+    "start": "Nis",
+    "restart": "Rinis",
+    "starting": "Duke nisur...",
+    "stopping": "Duke ndaluar...",
+    "status": {
+      "running": "në ekzekutim",
+      "stopped": "ndaluar",
+      "error": "gabim",
+      "starting": "duke nisur",
+      "stopping": "duke ndaluar"
+    }
+  },
+  "template": {
+    "badge": "model",
+    "mode": "Modalitet:",
+    "parameters": "Parametra:",
+    "paramCount": "{{count}} parametra",
+    "noParams": "nuk ka parametra të vendosur"
+  },
+  "badges": {
+    "oneShot": "një-herësh",
+    "autoStart": "nisje automatike",
+    "manual": "manual"
+  },
+  "actions": {
+    "stopTitle": "Ndalo {{name}}",
+    "stopMessage": "Kjo do të ndalojë procesin {{name}}.",
+    "restartTitle": "Rinis {{name}}",
+    "restartMessage": "Kjo do të rinisë procesin {{name}}."
+  },
+  "executionMode": {
+    "title": "Nis {{name}}",
+    "label": "Modaliteti i ekzekutimit:",
+    "threadName": "Modalitet Thread",
+    "threadDescription": "Ekzekutohet si detyrë e integruar brenda serverit web. Nisje më e shpejtë, memorie e përbashkët.",
+    "processName": "Modalitet Proces",
+    "processDescription": "Ekzekutohet si proces i veçantë Python. I izoluar, tolerant ndaj defekteve, me monitorim të detajuar.",
+    "cancel": "Anulo",
+    "start": "Nis {{name}}",
+    "threadAriaLabel": "Modalitet Thread",
+    "processAriaLabel": "Modalitet Proces"
+  }
+}

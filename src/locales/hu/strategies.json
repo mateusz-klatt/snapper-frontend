@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Stratégiakezelés",
+    "register": "Stratégia regisztrálása",
+    "saving": "Mentés…",
+    "descriptionCanManage": "Új stratégiafolyamatok regisztrálása közvetlenül a felhasználói felületről. Az automatikus indítás újraindítások között is engedélyezve tartja a folyamatot.",
+    "descriptionViewer": "Konfigurált stratégiák és állapotuk megtekintése. Stratégia kezeléséhez forduljon operátorhoz vagy adminisztrátorhoz.",
+    "searchPlaceholder": "Stratégiák keresése...",
+    "filter": {
+      "all": "Minden állapot",
+      "running": "Fut",
+      "stopped": "Leállítva"
+    },
+    "configuredHeading": "Konfigurált stratégiák",
+    "noMatches": "Nincs a szűrőknek megfelelő stratégia",
+    "clearFilters": "Szűrők törlése",
+    "emptyTitle": "Nincsenek konfigurált stratégiák",
+    "emptyCanManage": "Regisztráljon stratégiát az algoritmikus kereskedés indításához",
+    "emptyViewer": "Még nincsenek konfigurálva stratégiák"
+  },
+  "confirm": {
+    "startTitle": "{{name}} indítása",
+    "startMessage": "Ez elindítja a(z) {{name}} stratégiát. Élő kereskedési műveleteket kezdhet.",
+    "stopTitle": "{{name}} leállítása",
+    "stopMessage": "Ez leállítja a(z) {{name}} stratégiát. Az aktív pozíciók nem záródnak automatikusan."
+  },
+  "toast": {
+    "saved": "{{name}} stratégia mentve",
+    "started": "{{name}} stratégia elindítva",
+    "registerFailed": "Nem sikerült regisztrálni a stratégiát: {{message}}",
+    "startSuccess": "A stratégia sikeresen elindítva",
+    "stopSuccess": "A stratégia sikeresen leállítva",
+    "alreadyRunning": "A stratégia már fut",
+    "notRunning": "A stratégia nem fut",
+    "configNotFound": "A stratégia konfigurációja nem található. Ellenőrizze az adatbázis-beállításokat.",
+    "networkError": "Hálózati hiba. Ellenőrizze a kapcsolatot, majd próbálja újra.",
+    "startFailed": "Nem sikerült elindítani a stratégiát: {{message}}",
+    "stopFailed": "Nem sikerült leállítani a stratégiát: {{message}}",
+    "unknownError": "Ismeretlen hiba"
+  },
+  "card": {
+    "ariaLabel": "Stratégia: {{name}}",
+    "modeLabel": "Mód: {{mode}}",
+    "autostartEnabled": "Automatikus indítás: engedélyezve",
+    "autostartDisabled": "Automatikus indítás: letiltva",
+    "statusAriaLabel": "Állapot: {{status}}",
+    "dataLagAriaLabel": "Adatkésés másodpercben: {{seconds}}",
+    "lagBadge": "késés: {{seconds}}s",
+    "feedLag": "Feed késés: {{ms}}ms",
+    "heartbeatAge": "Heartbeat kora: {{seconds}}s",
+    "metrics": {
+      "status": "Állapot",
+      "dataLag": "Adatkésés",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Részletek megjelenítése",
+    "hideDetails": "Részletek elrejtése",
+    "inputs": "Bemenetek ({{count}})",
+    "outputs": "Kimenetek ({{count}})",
+    "feedPublishers": "Feed publisherek ({{count}})",
+    "lastUpdate": "Legutóbbi frissítés: {{time}}",
+    "waiting": "Várakozás Heartbeatre...",
+    "startAriaLabel": "{{name}} stratégia indítása",
+    "stopAriaLabel": "{{name}} stratégia leállítása",
+    "start": "Indítás",
+    "stop": "Leállítás",
+    "starting": "Indítás...",
+    "stopping": "Leállítás...",
+    "status": {
+      "starting": "indítás",
+      "stopping": "leállítás",
+      "running": "fut",
+      "stopped": "leállítva"
+    },
+    "health": {
+      "healthy": "Egészséges — friss adatok érkeznek",
+      "warning": "Figyelmeztetés — az adatok elavultak",
+      "error": "Hiba — nincs friss adat",
+      "unknown": "Ismeretlen — nincs Heartbeat adat"
+    },
+    "healthShort": {
+      "healthy": "EGÉSZSÉGES",
+      "warning": "FIGYELMEZTETÉS",
+      "error": "HIBA"
+    }
+  },
+  "launchModal": {
+    "title": "Stratégiafolyamat regisztrálása",
+    "emptyTemplates": "Nincsenek regisztrált stratégiasablonok a backendben. Definiáljon legalább egy stratégiafolyamatot.",
+    "close": "Bezárás",
+    "templateLabel": "Stratégiasablon",
+    "templatePlaceholder": "Sablon kiválasztása...",
+    "templateFallbackDescription": "Backendben regisztrált stratégia",
+    "loadingDefaults": "Sablon alapértékeinek betöltése…",
+    "loadDefaultsError": "Nem sikerült betölteni a sablon alapértékeit. Ellenőrizze a backend naplóit.",
+    "processNameLabel": "Folyamatnév",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Engedélyezett karakterek: kisbetűk, számok, aláhúzások",
+    "instanceNameLabel": "Stratégiapéldány neve",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "A stratégia konfigurációjában és a kimeneti témákban használatos",
+    "executionModeLabel": "Végrehajtási mód",
+    "executionModeThread": "Beágyazott szál",
+    "executionModeProcess": "Elkülönített folyamat",
+    "executionModeHelp": "A szálak memóriát osztanak meg, a folyamatok erősebb izolációt biztosítanak.",
+    "flagsLabel": "Jelzők",
+    "autostartLabel": "Automatikus indítás a szerver indításakor",
+    "startImmediatelyLabel": "Azonnali indítás regisztráció után",
+    "noteLabel": "Megjegyzés (opcionális)",
+    "notePlaceholder": "Írja le a stratégiapéldány célját vagy paramétereit.",
+    "noteHelp": "A konfiguráció mellett tárolva segíti a folyamat azonosítását.",
+    "cancel": "Mégse",
+    "submit": "Stratégia regisztrálása",
+    "submitting": "Regisztrálás…"
+  }
+}

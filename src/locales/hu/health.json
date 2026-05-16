@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "Rendszerállapot",
+    "healthMetricsHeading": "Állapotmetrikák",
+    "processStatusHeading": "Folyamatállapot",
+    "activeBacktestsHeading": "Aktív Backtestek",
+    "quickActionsHeading": "Gyors műveletek",
+    "featureNotImplemented": "A funkció még nincs megvalósítva",
+    "restartServices": "Szolgáltatások újraindítása",
+    "runHealthCheck": "Állapotellenőrzés futtatása",
+    "viewLogs": "Naplók megtekintése",
+    "exportReport": "Jelentés exportálása"
+  },
+  "status": {
+    "healthy": "Egészséges",
+    "stopped": "Leállítva",
+    "error": "Hiba",
+    "warning": "Figyelmeztetés",
+    "completed": "Befejezve",
+    "unknown": "Ismeretlen"
+  },
+  "metrics": {
+    "tradingEngine": "Kereskedési motor",
+    "tradingEngineDescription": "Stratégia-végrehajtó motor",
+    "activeBacktests": "Aktív Backtestek",
+    "activeBacktestsDescription": "Futó Backtest folyamatok",
+    "active": "Aktív",
+    "inactive": "Inaktív"
+  },
+  "process": {
+    "uptimeNotAvailable": "N/A",
+    "uptimeMinutes": "{{minutes}}m",
+    "uptimeHours": "{{hours}}h {{minutes}}m",
+    "uptimeDays": "{{days}}d {{hours}}h",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "N/A",
+    "uptimeLabel": "Üzemidő",
+    "exitCode": "Kilépési kód: {{code}}",
+    "service": "szolgáltatás",
+    "backtest": "Backtest"
+  },
+  "dbStats": {
+    "title": "Adatbázis-statisztika",
+    "loading": "Adatbázis-statisztika betöltése…",
+    "unavailable": "Az adatbázis-statisztika nem érhető el: {{message}}",
+    "fallbackError": "Nem sikerült betölteni az adatbázis-statisztikát.",
+    "sampled": "mintavétel: {{age}}",
+    "samplerSummary": "Mintavételező intervallum: {{seconds}}s · táblák: {{count}}",
+    "columns": {
+      "table": "Tábla",
+      "kind": "Típus",
+      "total": "Összesen",
+      "current": "Aktuális",
+      "closed": "Lezárt",
+      "archivable": "Archiválható",
+      "status": "Állapot"
+    },
+    "stale": "elavult"
+  },
+  "notification": {
+    "title": "Értesítési Sidecar",
+    "loading": "Értesítési metrikák betöltése…",
+    "unavailable": "Az értesítési metrikák nem érhetők el: {{message}}",
+    "fallbackError": "Nem sikerült betölteni az értesítési metrikákat.",
+    "sent": "Elküldve",
+    "sentDescription": "Terminális: elküldve",
+    "failed": "Sikertelen",
+    "failedDescription": "Újrapróbálkozási keret kimerült",
+    "unregistered": "Regisztrálatlan",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "Megszakítva (hatáskör)",
+    "cancelledScopeDescription": "Hatáskör visszavonása / felhasználó deaktiválása",
+    "outboxDepth": "Outbox mélysége",
+    "outboxDepthDescription": "Sorban áll, újrapróbálkozásra vár"
+  },
+  "retention": {
+    "title": "Megőrzési ütemező",
+    "loading": "Megőrzési futtatás betöltése…",
+    "unavailable": "A megőrzési futtatás nem érhető el: {{message}}",
+    "fallbackError": "Nem sikerült betölteni a megőrzési futtatást.",
+    "lastRun": "legutóbbi futtatás: {{age}}",
+    "dryRunNotice": "Dry-run mód: a sorok archiválva lesznek, de nem törlődnek véglegesen a DB-ből.",
+    "columns": {
+      "table": "Tábla",
+      "retain": "Megőrzés",
+      "archivedWindow": "Archivált ablak",
+      "archived": "Archivált",
+      "purged": "Végleg törölt",
+      "files": "Fájlok",
+      "status": "Állapot"
+    },
+    "retainDays": "Napok: {{days}}",
+    "ok": "rendben",
+    "error": "hiba"
+  },
+  "systemMetrics": {
+    "title": "Folyamatállapot",
+    "loading": "Folyamatmetrikák betöltése…",
+    "unavailable": "A folyamatmetrikák nem érhetők el: {{message}}",
+    "fallbackError": "Nem sikerült betölteni a folyamatállapot-metrikákat.",
+    "rawJson": "Nyers JSON",
+    "pid": "PID",
+    "statusValue": "Állapot: {{status}}",
+    "uptime": "Üzemidő",
+    "threads": "Szálak",
+    "openFds": "Nyitott FD-k",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "Throttled: {{count}}×",
+    "memory": "Memória",
+    "saturation": "Telítettség {{percent}}",
+    "asyncioTasks": "Asyncio feladatok",
+    "asyncioActive": "Aktív: {{count}}",
+    "asyncioPending": "+ függő: {{count}}",
+    "dbPool": "DB-pool",
+    "liveConns": "Élő kapcsolatok: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "Objektumok: {{value}}",
+    "threadsPercent": "Szálak %",
+    "networkConns": "Hálózati kapcsolatok",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "Aktív",
+    "tracemallocIdle": "Tétlen"
+  },
+  "relativeAge": {
+    "justNow": "épp most",
+    "seconds": "Eltelt másodpercek: {{seconds}}",
+    "minutes": "Eltelt percek: {{minutes}}",
+    "hours": "Eltelt órák: {{hours}}",
+    "days": "Eltelt napok: {{days}}"
+  },
+  "duration": {
+    "seconds": "{{seconds}}s",
+    "minutes": "{{minutes}}min",
+    "hours": "{{hours}}h",
+    "days": "{{days}}d"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

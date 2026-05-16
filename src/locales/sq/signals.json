@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Sinjale"
+  },
+  "filters": {
+    "allStrategies": "Të gjitha strategjitë"
+  },
+  "actions": {
+    "export": "Eksporto"
+  },
+  "stats": {
+    "total": "Totali",
+    "buy": "Blerje",
+    "sell": "Shitje",
+    "avgStrength": "Forca mesatare"
+  },
+  "card": {
+    "strength": "Forcë",
+    "price": "Çmim",
+    "exchange": "Bursë",
+    "reason": "Arsye:",
+    "noPrice": "N/A"
+  },
+  "strength": {
+    "strong": "I fortë",
+    "medium": "Mesatar",
+    "weak": "I dobët",
+    "veryWeak": "Shumë i dobët"
+  },
+  "time": {
+    "justNow": "Tani sapo",
+    "minutesAgo": "{{count}}m më parë",
+    "hoursAgo": "{{count}}h më parë"
+  },
+  "empty": {
+    "title": "Nuk u gjet asnjë sinjal",
+    "message": "Asnjë sinjal tregtimi nuk përputhet me filtrat aktualë."
+  }
+}

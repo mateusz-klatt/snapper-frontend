@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozíciók"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: függőben",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Mennyiség",
+    "averageEntry": "Átlagos belépő",
+    "unrealizedPnl": "Nem realizált P&L",
+    "realizedPnl": "Realizált P&L",
+    "updated": "Frissítve: {{timestamp}}"
+  },
+  "empty": {
+    "title": "Nincsenek nyitott pozíciók",
+    "message": "A long, short és flat pozíciók a kötések teljesítése után jelennek meg itt."
+  },
+  "bracketModal": {
+    "title": "SL/TP csatolása — {{instrument}}",
+    "confirmTitle": "Bracket megerősítése",
+    "position": "Pozíció",
+    "entryPrice": "Belépési ár",
+    "stopLossLabel": "Stop-Loss ár",
+    "takeProfitLabel": "Take-Profit ár",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "${{price}} alatt",
+      "slShort": "${{price}} felett",
+      "tpLong": "${{price}} felett",
+      "tpShort": "${{price}} alatt"
+    },
+    "buttons": {
+      "cancel": "Mégse",
+      "review": "Ellenőrzés",
+      "back": "Vissza",
+      "confirm": "Megerősítés",
+      "creating": "Létrehozás…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Trailing Stop csatolása — {{instrument}}",
+    "confirmTitle": "Trailing Stop megerősítése",
+    "position": "Pozíció",
+    "entryPrice": "Belépési ár",
+    "trailingDistanceLabel": "Trailing Distance (%)",
+    "minLockLabel": "Min Lock Profit (%) — opcionális",
+    "trailingDistance": "Trailing Distance",
+    "minLockProfit": "Min Lock Profit",
+    "placeholders": {
+      "trailingPct": "pl. 5.0",
+      "minLockPct": "0 = azonnali indítás"
+    },
+    "minLockWarning": "A Trailing Stop nem aktiválódik, amíg az ár nem mozdul {{minLockPct}}%-kal kedvező irányba.",
+    "buttons": {
+      "cancel": "Mégse",
+      "review": "Ellenőrzés",
+      "back": "Vissza",
+      "confirm": "Megerősítés",
+      "creating": "Létrehozás..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Legalább egy SL vagy TP ár megadása kötelező",
+    "invalidSlPrice": "Érvénytelen Stop-Loss ár",
+    "slPricePositive": "A Stop-Loss árnak pozitívnak kell lennie",
+    "invalidTpPrice": "Érvénytelen Take-Profit ár",
+    "tpPricePositive": "A Take-Profit árnak pozitívnak kell lennie",
+    "slLongBelowEntry": "Az SL árnak a belépési ár alatt kell lennie ({{price}})",
+    "tpLongAboveEntry": "A TP árnak a belépési ár felett kell lennie ({{price}})",
+    "slShortAboveEntry": "Az SL árnak a belépési ár felett kell lennie ({{price}})",
+    "tpShortBelowEntry": "A TP árnak a belépési ár alatt kell lennie ({{price}})",
+    "trailingRequired": "A trailing százalék megadása kötelező",
+    "trailingInvalid": "Érvénytelen trailing százalék",
+    "trailingRange": "A trailing százaléknak 0 és 100 között kell lennie",
+    "minLockInvalid": "Érvénytelen min lock százalék",
+    "minLockRange": "A min lock százaléknak 0 és 100 között kell lennie"
+  }
+}

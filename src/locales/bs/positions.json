@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozicije"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: na čekanju",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Količina",
+    "averageEntry": "Prosj. ulaz",
+    "unrealizedPnl": "Nerealizovani P&L",
+    "realizedPnl": "Realizovani P&L",
+    "updated": "Ažurirano {{timestamp}}"
+  },
+  "empty": {
+    "title": "Nema otvorenih pozicija",
+    "message": "Long, short i flat pozicije pojavit će se ovdje nakon izvršenja trgovina."
+  },
+  "bracketModal": {
+    "title": "Dodaj SL/TP — {{instrument}}",
+    "confirmTitle": "Potvrdi Bracket",
+    "position": "Pozicija",
+    "entryPrice": "Ulazna cijena",
+    "stopLossLabel": "Stop-Loss cijena",
+    "takeProfitLabel": "Take-Profit cijena",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "Ispod ${{price}}",
+      "slShort": "Iznad ${{price}}",
+      "tpLong": "Iznad ${{price}}",
+      "tpShort": "Ispod ${{price}}"
+    },
+    "buttons": {
+      "cancel": "Otkaži",
+      "review": "Pregledaj",
+      "back": "Nazad",
+      "confirm": "Potvrdi",
+      "creating": "Kreiranje…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Dodaj Trailing Stop — {{instrument}}",
+    "confirmTitle": "Potvrdi Trailing Stop",
+    "position": "Pozicija",
+    "entryPrice": "Ulazna cijena",
+    "trailingDistanceLabel": "Trailing udaljenost (%)",
+    "minLockLabel": "Min Lock Profit (%) — opcionalno",
+    "trailingDistance": "Trailing udaljenost",
+    "minLockProfit": "Min Lock Profit",
+    "placeholders": {
+      "trailingPct": "npr. 5.0",
+      "minLockPct": "0 = počni odmah"
+    },
+    "minLockWarning": "Trailing Stop se neće aktivirati dok se cijena ne pomjeri {{minLockPct}}% u vašu korist.",
+    "buttons": {
+      "cancel": "Otkaži",
+      "review": "Pregledaj",
+      "back": "Nazad",
+      "confirm": "Potvrdi",
+      "creating": "Kreiranje..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "Potrebna je najmanje jedna SL ili TP cijena",
+    "invalidSlPrice": "Nevažeća Stop-Loss cijena",
+    "slPricePositive": "Stop-Loss cijena mora biti pozitivna",
+    "invalidTpPrice": "Nevažeća Take-Profit cijena",
+    "tpPricePositive": "Take-Profit cijena mora biti pozitivna",
+    "slLongBelowEntry": "SL cijena mora biti ispod ulazne cijene ({{price}})",
+    "tpLongAboveEntry": "TP cijena mora biti iznad ulazne cijene ({{price}})",
+    "slShortAboveEntry": "SL cijena mora biti iznad ulazne cijene ({{price}})",
+    "tpShortBelowEntry": "TP cijena mora biti ispod ulazne cijene ({{price}})",
+    "trailingRequired": "Trailing procenat je obavezan",
+    "trailingInvalid": "Nevažeći trailing procenat",
+    "trailingRange": "Trailing procenat mora biti između 0 i 100",
+    "minLockInvalid": "Nevažeći min lock procenat",
+    "minLockRange": "Min lock procenat mora biti između 0 i 100"
+  }
+}

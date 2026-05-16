@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Nazad",
+    "backToList": "← Nazad na Backtests"
+  },
+  "status": {
+    "pending": "Na čekanju",
+    "running": "U toku",
+    "completed": "Završeno",
+    "failed": "Neuspjelo",
+    "cancelled": "Otkazano"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "Otkaži",
+      "rerun": "Pokreni ponovo"
+    },
+    "fields": {
+      "timeframe": "Vremenski okvir",
+      "period": "Period",
+      "initialCash": "Početni novac",
+      "id": "ID"
+    },
+    "errorPrefix": "Greška: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtriraj Backtests po statusu",
+      "options": {
+        "all": "Svi statusi",
+        "pending": "Na čekanju",
+        "running": "U toku",
+        "completed": "Završeno",
+        "failed": "Neuspjelo",
+        "cancelled": "Otkazano"
+      }
+    },
+    "empty": {
+      "title": "Nema Backtestova",
+      "message": "Pokrenite Backtest putem CLI-ja ili API-ja da ovdje vidite rezultate."
+    }
+  },
+  "detail": {
+    "title": "Backtest pokretanje",
+    "fields": {
+      "strategy": "Strategija",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Period",
+      "crossAsset": "Međuimovinska atribucija",
+      "configHash": "Hash konfiguracije"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} izvršenja",
+    "errors": {
+      "invalidRunId": "Nevažeći ID pokretanja — mora biti UUID7 (dobijeno \"{{id}}\").",
+      "loadFailed": "Učitavanje pokretanja nije uspjelo: {{message}}",
+      "notFound": "nije pronađeno"
+    }
+  },
+  "compare": {
+    "title": "Uporedi",
+    "headingFull": "Poređenje Backtestova",
+    "loading": "Učitavanje poređenja…",
+    "vs": "vs",
+    "runLabel": "Pokretanje {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrike",
+      "equityOverlay": "Preklop krivulje kapitala",
+      "trades": "Trgovine",
+      "signals": "Signali"
+    },
+    "pairingMode": {
+      "auto": "automatski",
+      "manual": "ručno"
+    },
+    "errors": {
+      "notFound": "Poređenje nije pronađeno u trenutnom novčaniku.",
+      "loadFailed": "Učitavanje poređenja nije uspjelo: {{message}}",
+      "unknown": "nepoznata greška",
+      "emptyResponse": "Prazan odgovor poređenja."
+    },
+    "launcher": {
+      "title": "Uporedi",
+      "submit": "Uporedi",
+      "autoPair": "Uporedi s najnovijim",
+      "terminalGate": "poređenje je dostupno kada ovo pokretanje dosegne terminalni status",
+      "noSiblings": "nema drugih pokretanja s ovom konfiguracijom",
+      "limitNotice": "prikazuje se {{count}} najnovijih — koristite ručno uparivanje za starija pokretanja",
+      "pickPlaceholder": "— odaberite pokretanje za poređenje —",
+      "showAllLabel": "Prikaži sva pokretanja (ne samo istu konfiguraciju)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "sva pokretanja",
+        "sameConfig": "ista konfiguracija"
+      },
+      "errors": {
+        "pickRequired": "odaberite pokretanje s liste"
+      }
+    },
+    "diffColumns": {
+      "common": "Zajedničko",
+      "onlyA": "Samo u A",
+      "onlyB": "Samo u B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A PnL",
+        "pnlB": "B PnL",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Nema uporedivih metrika — oba pokretanja nemaju zabilježene vrijednosti.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "Pokretanje A",
+        "runB": "Pokretanje B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Pokretanje A",
+        "runB": "Pokretanje B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Čekanje napretka…",
+    "candles": "{{done}} / {{total}} svijeća",
+    "candlesNoTotal": "{{done}} svijeća",
+    "equity": "kapital {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} trgovina",
+    "milestoneLine": "prekretnica {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Natrag",
+    "backToList": "← Natrag na backtestove"
+  },
+  "status": {
+    "pending": "Na čekanju",
+    "running": "Pokrenuto",
+    "completed": "Dovršeno",
+    "failed": "Neuspjelo",
+    "cancelled": "Otkazano"
+  },
+  "list": {
+    "title": "Backtestovi",
+    "actions": {
+      "cancel": "Odustani",
+      "rerun": "Ponovno pokreni"
+    },
+    "fields": {
+      "timeframe": "Vremenski okvir",
+      "period": "Razdoblje",
+      "initialCash": "Početni novac",
+      "id": "ID"
+    },
+    "errorPrefix": "Pogreška: {{message}}",
+    "filter": {
+      "ariaLabel": "Filtriraj backtestove prema statusu",
+      "options": {
+        "all": "Svi statusi",
+        "pending": "Na čekanju",
+        "running": "Pokrenuto",
+        "completed": "Dovršeno",
+        "failed": "Neuspjelo",
+        "cancelled": "Otkazano"
+      }
+    },
+    "empty": {
+      "title": "Nema backtestova",
+      "message": "Pokrenite backtest preko CLI-ja ili API-ja za prikaz rezultata ovdje."
+    }
+  },
+  "detail": {
+    "title": "Backtest run",
+    "fields": {
+      "strategy": "Strategija",
+      "instrument": "Instrument",
+      "status": "Status",
+      "period": "Razdoblje",
+      "crossAsset": "Cross-asset atribucija",
+      "configHash": "Hash konfiguracije"
+    },
+    "crossAssetFlow": "{{source}} feed → {{target}} izvršenja",
+    "errors": {
+      "invalidRunId": "Nevaljan run id — mora biti UUID7 (dobiveno \"{{id}}\").",
+      "loadFailed": "Učitavanje runa nije uspjelo: {{message}}",
+      "notFound": "nije pronađeno"
+    }
+  },
+  "compare": {
+    "title": "Usporedi",
+    "headingFull": "Usporedba backtestova",
+    "loading": "Učitavanje usporedbe…",
+    "vs": "vs",
+    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrike",
+      "equityOverlay": "Equity overlay",
+      "trades": "Trgovanja",
+      "signals": "Signali"
+    },
+    "pairingMode": {
+      "auto": "auto",
+      "manual": "ručno"
+    },
+    "errors": {
+      "notFound": "Usporedba nije pronađena u trenutačnom novčaniku.",
+      "loadFailed": "Učitavanje usporedbe nije uspjelo: {{message}}",
+      "unknown": "nepoznata pogreška",
+      "emptyResponse": "Prazan odgovor usporedbe."
+    },
+    "launcher": {
+      "title": "Usporedi",
+      "submit": "Usporedi",
+      "autoPair": "Usporedi s najnovijim",
+      "terminalGate": "usporedba je dostupna nakon što ovaj run dosegne završni status",
+      "noSiblings": "nema drugih runova s ovom konfiguracijom",
+      "limitNotice": "prikazuje se {{count}} najnovijih — za starije runove upotrijebite ručno uparivanje",
+      "pickPlaceholder": "— odaberite run za usporedbu —",
+      "showAllLabel": "Prikaži sve runove (ne samo istu konfiguraciju)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "svi runovi",
+        "sameConfig": "ista konfiguracija"
+      },
+      "errors": {
+        "pickRequired": "odaberite run s popisa"
+      }
+    },
+    "diffColumns": {
+      "common": "Zajedničko",
+      "onlyA": "Samo u A",
+      "onlyB": "Samo u B"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Nema usporedivih metrika — nijedan run nije zabilježio vrijednosti.",
+      "columns": {
+        "name": "Metrika",
+        "runA": "Run A",
+        "runB": "Run B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Run A",
+        "runB": "Run B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "Čekanje napretka…",
+    "candles": "{{done}} / {{total}} svijeća",
+    "candlesNoTotal": "{{done}} svijeća",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sig / {{trades}} trgovanja",
+    "milestoneLine": "milestone {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

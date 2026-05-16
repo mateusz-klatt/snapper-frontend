@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Administrim",
+    "subtitle": "Menaxhoni përdoruesit dhe konfigurimin e sistemit"
+  },
+  "rolePermissions": {
+    "title": "Lejet e roleve",
+    "viewer": {
+      "label": "Shikues",
+      "description": "Akses vetëm për lexim te Përmbledhje dhe Të dhëna tregu. Nuk mund të menaxhojë procese, strategji ose cilësime sistemi."
+    },
+    "operator": {
+      "label": "Operator",
+      "description": "Të gjitha lejet e Shikuesit plus operacionet e tregtimit, ekzekutimin e strategjive, menaxhimin e proceseve dhe monitorimin e shëndetit të sistemit."
+    },
+    "admin": {
+      "label": "Administrator",
+      "description": "Akses i plotë në sistem, duke përfshirë menaxhimin e përdoruesve, cilësimet e sistemit, konfigurimin e çelësave API dhe të gjitha lejet e Operatorit."
+    },
+    "table": {
+      "resource": "Burim",
+      "viewer": "Shikues",
+      "operator": "Operator",
+      "admin": "Administrator"
+    },
+    "resources": {
+      "overview": "Përmbledhje",
+      "market": "Të dhëna tregu",
+      "processes": "Procese",
+      "strategies": "Strategji",
+      "orders": "Urdhra dhe Ekzekutimet",
+      "positions": "Pozicione",
+      "signals": "Sinjale",
+      "health": "Shëndeti",
+      "admin": "Administrim",
+      "settings": "Cilësime"
+    }
+  },
+  "common": {
+    "cancel": "Anulo",
+    "selectWallet": "Zgjidh portofol",
+    "selectAWallet": "Zgjidh një portofol",
+    "chooseWalletPlaceholder": "Zgjidh një portofol...",
+    "selectWalletPlaceholder": "Zgjidh portofol...",
+    "walletLabel": "Portofol",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Gabim i panjohur",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Aksesi u refuzua",
+      "message": "Nuk keni leje për të menaxhuar përdoruesit. Kontaktoni administratorin e sistemit."
+    },
+    "list": {
+      "title": "Menaxhimi i përdoruesve",
+      "countLabel": "{{count}} përdorues",
+      "showInactive": "Shfaq joaktivët",
+      "hideInactive": "Fshih joaktivët",
+      "addUser": "Shto përdorues",
+      "searchPlaceholder": "Kërko sipas emrit të përdoruesit, emailit ose rolit...",
+      "columns": {
+        "user": "Përdorues",
+        "role": "Rol",
+        "status": "Status",
+        "createdAt": "Krijuar më",
+        "actions": "Veprime"
+      },
+      "status": {
+        "active": "Aktiv",
+        "inactive": "Joaktiv"
+      },
+      "unknown": "I panjohur",
+      "empty": {
+        "title": "Nuk u gjet asnjë përdorues",
+        "noMatch": "Asnjë përdorues nuk përputhet me kriteret e kërkimit.",
+        "noUsers": "Nuk u gjet asnjë përdorues.",
+        "noActive": "Nuk u gjet asnjë përdorues aktiv."
+      },
+      "errorLoading": "Gabim gjatë ngarkimit të përdoruesve: {{message}}",
+      "deactivate": {
+        "title": "Çaktivizo përdoruesin",
+        "message": "Jeni të sigurt që dëshironi të çaktivizoni përdoruesin \"{{username}}\"? Ai nuk do të mund të identifikohet më.",
+        "confirm": "Çaktivizo"
+      },
+      "toast": {
+        "deactivated": "Përdoruesi u çaktivizua",
+        "deactivateError": "Gabim gjatë çaktivizimit të përdoruesit"
+      }
+    },
+    "form": {
+      "titleEdit": "Ndrysho përdoruesin",
+      "titleAdd": "Shto përdorues",
+      "fields": {
+        "username": "Emër përdoruesi",
+        "usernamePlaceholder": "Shkruani emrin e përdoruesit",
+        "password": "Fjalëkalim",
+        "passwordPlaceholder": "Shkruani fjalëkalimin",
+        "newPassword": "Fjalëkalim i ri",
+        "newPasswordPlaceholder": "Shkruani fjalëkalimin e ri",
+        "email": "Email",
+        "emailPlaceholder": "Shkruani emailin",
+        "role": "Rol",
+        "accountActive": "Llogaria aktive",
+        "resetUserPassword": "Rivendos fjalëkalimin e përdoruesit"
+      },
+      "roles": {
+        "viewer": "Shikues",
+        "operator": "Operator",
+        "admin": "Administrator"
+      },
+      "validation": {
+        "usernameRequired": "Emri i përdoruesit është i detyrueshëm",
+        "usernameMinLength": "Emri i përdoruesit duhet të ketë të paktën 3 karaktere",
+        "emailRequired": "Emaili është i detyrueshëm",
+        "emailInvalid": "Formati i emailit është i pavlefshëm",
+        "passwordRequired": "Fjalëkalimi është i detyrueshëm",
+        "passwordMinLength": "Fjalëkalimi duhet të ketë të paktën 8 karaktere",
+        "passwordRequiredWhenResetting": "Fjalëkalimi është i detyrueshëm gjatë rivendosjes"
+      },
+      "actions": {
+        "saveChanges": "Ruaj ndryshimet",
+        "createUser": "Krijo përdorues"
+      },
+      "toast": {
+        "created": "Përdoruesi u krijua",
+        "createError": "Gabim gjatë krijimit të përdoruesit",
+        "updated": "Përdoruesi u përditësua",
+        "updateError": "Gabim gjatë përditësimit të përdoruesit",
+        "passwordReset": "Fjalëkalimi i përdoruesit u rivendos",
+        "resetError": "Gabim gjatë rivendosjes së fjalëkalimit"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Aksesi u refuzua",
+      "message": "Nuk keni leje për të menaxhuar fushëveprimet e aksesit. Kontaktoni administratorin e sistemit."
+    },
+    "list": {
+      "title": "Fushëveprime aksesi",
+      "countLabel": "{{count}} fushëveprime",
+      "createGrant": "Jep fushëveprim",
+      "selectWalletPrompt": "Zgjidhni një portofol më sipër për të parë fushëveprimet e tij të aksesit.",
+      "columns": {
+        "operator": "Operator",
+        "scope": "Fushëveprim",
+        "target": "Objektiv",
+        "grantedAt": "Dhënë më",
+        "actions": "Veprime"
+      },
+      "empty": {
+        "noGrants": "Nuk u gjet asnjë fushëveprim",
+        "noGrantsHint": "Ky portofol nuk ka fushëveprime aktive aksesi."
+      },
+      "errorLoading": "Gabim gjatë ngarkimit të fushëveprimeve: {{message}}",
+      "handover": "Dorëzim"
+    },
+    "form": {
+      "title": "Jep fushëveprim aksesi",
+      "fields": {
+        "operator": "Operator",
+        "operatorPlaceholder": "Zgjidh operator...",
+        "wallet": "Portofol",
+        "scopeKind": "Lloji i fushëveprimit",
+        "underlyingPublicId": "ID publike e aktivit bazë",
+        "instrumentPublicId": "ID publike e instrumentit",
+        "underlyingPlaceholder": "p.sh. BTC",
+        "instrumentPlaceholder": "p.sh. BTC-USD-PERP",
+        "note": "Shënim (opsional)",
+        "notePlaceholder": "Shënim opsional"
+      },
+      "scopeKinds": {
+        "underlying": "Aktiv bazë",
+        "instrument": "Instrument"
+      },
+      "validation": {
+        "operatorRequired": "Operatori është i detyrueshëm",
+        "walletRequired": "Portofoli është i detyrueshëm",
+        "targetRequired": "ID-ja e objektivit është e detyrueshme"
+      },
+      "actions": {
+        "createGrant": "Jep fushëveprim"
+      },
+      "toast": {
+        "created": "Fushëveprimi i aksesit u krijua",
+        "conflictError": "Konflikt: një operator tjetër tashmë mban fushëveprim për këtë fushë",
+        "createError": "Gabim gjatë krijimit të fushëveprimit të aksesit"
+      }
+    },
+    "handover": {
+      "title": "Dorëzo fushëveprimin e aksesit",
+      "fields": {
+        "currentHolder": "Mbajtësi aktual",
+        "scope": "Fushëveprim",
+        "wallet": "Portofol",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Transfero te operatori",
+        "transferToPlaceholder": "Zgjidh operatorin e destinacionit...",
+        "reason": "Arsye (opsionale)",
+        "reasonPlaceholder": "p.sh. Ndërrim turni"
+      },
+      "actions": {
+        "handover": "Dorëzo"
+      },
+      "toast": {
+        "completed": "Fushëveprimi i aksesit u dorëzua",
+        "conflictError": "Konflikt: operatori i destinacionit tashmë mban një fushëveprim konfliktues",
+        "handoverError": "Gabim gjatë dorëzimit të fushëveprimit të aksesit"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Aksesi u refuzua",
+      "message": "Nuk keni leje për të menaxhuar kredencialet e portofolit. Kontaktoni administratorin e sistemit."
+    },
+    "list": {
+      "title": "Kredencialet e portofolit",
+      "countLabel": "{{count}} kredenciale",
+      "addCredential": "Shto kredencial",
+      "selectWalletPrompt": "Zgjidhni një portofol më sipër për të parë kredencialet e tij.",
+      "columns": {
+        "exchange": "Bursë",
+        "type": "Lloj",
+        "label": "Etiketë",
+        "createdAt": "Krijuar më",
+        "actions": "Veprime"
+      },
+      "empty": {
+        "noCredentials": "Nuk u gjet asnjë kredencial",
+        "noCredentialsHint": "Ky portofol nuk ka kredenciale aktive."
+      },
+      "errorLoading": "Gabim gjatë ngarkimit të kredencialeve: {{message}}",
+      "rotate": "Zëvendëso"
+    },
+    "form": {
+      "title": "Shto kredencial",
+      "fields": {
+        "wallet": "Portofol",
+        "exchange": "Bursë",
+        "exchangePlaceholder": "p.sh. kraken",
+        "credentialType": "Lloji i kredencialit",
+        "label": "Etiketë (opsionale)",
+        "labelPlaceholder": "p.sh. Çelësi kryesor i tregtimit",
+        "pemPlaceholder": "Ngjisni këtu çelësin privat në format PEM"
+      },
+      "fieldLabels": {
+        "api_key": "Çelës API",
+        "api_secret": "Sekret API",
+        "private_key_pem": "Çelës privat (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "Bilanci fillestar"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "Portofoli është i detyrueshëm",
+        "exchangeRequired": "Bursa është e detyrueshme",
+        "fieldRequired": "{{field}} është i detyrueshëm"
+      },
+      "actions": {
+        "addCredential": "Shto kredencial"
+      },
+      "toast": {
+        "created": "Kredenciali u krijua",
+        "conflictError": "Konflikt: ky portofol tashmë ka një kredencial aktiv për këtë bursë",
+        "createError": "Gabim gjatë krijimit të kredencialit"
+      }
+    },
+    "rotate": {
+      "title": "Zëvendësim kredencialesh",
+      "fields": {
+        "exchange": "Bursë",
+        "type": "Lloj",
+        "label": "Etiketë",
+        "newLabel": "Etiketë e re (opsionale)",
+        "newLabelPlaceholder": "p.sh. Çelës i zëvendësuar 2026-04",
+        "pemPlaceholder": "Ngjisni këtu çelësin privat në format PEM"
+      },
+      "actions": {
+        "rotate": "Zëvendëso"
+      },
+      "toast": {
+        "rotated": "Kredenciali u zëvendësua",
+        "rotateError": "Gabim gjatë zëvendësimit të kredencialit"
+      }
+    }
+  }
+}

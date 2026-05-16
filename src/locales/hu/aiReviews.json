@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Kérés",
+    "decision": "Döntés",
+    "capsViolation": "Limit megsértése",
+    "selectedDelegate": "Kiválasztott delegált",
+    "instrument": "instrumentum",
+    "deadline": "határidő {{time}}",
+    "decidedBy": "döntötte",
+    "newStatus": "állapot",
+    "mode": "mód",
+    "capAttempted": "próbált érték",
+    "capLimit": "limithez képest",
+    "capOn": "instrumentumon",
+    "reviewLabel": "felülvizsgálat {{reviewId}}",
+    "unhandledFrame": "Kezeletlen AI-felülvizsgálati aktivitáskeret: {{frame}}"
+  },
+  "page": {
+    "title": "AI-felülvizsgálati beérkezők",
+    "subtitle": "Ehhez a delegálthoz irányított függő CONSULT felülvizsgálatok és az élő eseményfolyam."
+  },
+  "roleNotice": {
+    "title": "AI-delegáltak számára fenntartva",
+    "message": "Ez a beérkező nézet az AI-delegált principalhoz irányított CONSULT felülvizsgálatokat jeleníti meg. A függő felülvizsgálatok és az élő aktivitásfolyam megtekintéséhez AI-delegált fiókkal jelentkezzen be. Jelenlegi szerepe",
+    "unknownRole": "ismeretlen"
+  },
+  "pending": {
+    "title": "Függő felülvizsgálatok",
+    "loading": "Függő felülvizsgálatok betöltése…",
+    "loadError": "Nem sikerült betölteni a függő felülvizsgálatokat: {{message}}",
+    "emptyTitle": "Nincsenek függő felülvizsgálatok",
+    "emptyMessage": "Az ehhez a delegálthoz irányított új CONSULT kérések itt jelennek meg.",
+    "columns": {
+      "instrument": "Instrumentum",
+      "thesis": "Tézis",
+      "status": "Állapot",
+      "deadline": "Határidő",
+      "decision": "Döntés"
+    },
+    "rationalePlaceholder": "Indoklás (opcionális)",
+    "rationaleAriaLabel": "Indoklás a(z) {{reviewId}} felülvizsgálathoz",
+    "approve": "Jóváhagyás",
+    "reject": "Elutasítás",
+    "submitError": "Küldés sikertelen: {{message}}"
+  },
+  "activity": {
+    "title": "Legutóbbi aktivitás",
+    "emptyTitle": "Még nincs aktivitás",
+    "emptyMessage": "Az AI-felülvizsgálati kérések, döntések és limitmegsértési keretek ide érkeznek folyamként.",
+    "summaryEmpty": "Nem érkezett keret",
+    "summaryCount": "Megjelenített / pufferelt keretek: {{shown}} / {{total}}"
+  }
+}

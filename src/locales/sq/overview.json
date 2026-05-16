@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Përmbledhje"
+  },
+  "metrics": {
+    "feedsRunning": "Feed në ekzekutim",
+    "strategiesActive": "Strategji aktive",
+    "openOrders": "Urdhra të hapur",
+    "todaysExecutions": "Ekzekutimet e sotme",
+    "executionsOn": "Ekzekutime ({{date}})"
+  },
+  "status": {
+    "stopped": "Ndaluar",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Në ekzekutim",
+    "active": "Aktiv"
+  },
+  "processStatus": {
+    "title": "Statusi i proceseve",
+    "feeds": "Feeds",
+    "strategies": "Strategji",
+    "executors": "Ekzekutorë",
+    "brokers": "Brokerë"
+  },
+  "portfolio": {
+    "title": "Përmbledhje e portofolit",
+    "totalValue": "Vlera totale",
+    "longExposure": "Ekspozim long",
+    "shortExposure": "Ekspozim short",
+    "netDelta": "Delta neto",
+    "unrealizedPnl": "P&L i parealizuar",
+    "pnlPercent": "P&L %",
+    "positions": "Pozicione",
+    "instrumentsCount": "{{count}} instrumente",
+    "empty": "Nuk ka të dhëna pozicionesh të disponueshme"
+  },
+  "signals": {
+    "title": "Sinjalet e fundit",
+    "empty": "Nuk ka sinjale të fundit",
+    "noTime": "N/A"
+  },
+  "executions": {
+    "title": "Ekzekutimet e fundit",
+    "empty": "Nuk ka ekzekutime të fundit",
+    "noTime": "N/A"
+  }
+}

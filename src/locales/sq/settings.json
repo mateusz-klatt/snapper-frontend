@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Cilësime",
+    "subtitle": "Konfiguroni cilësimet dhe parametrat e aplikacionit",
+    "addButton": "Shto cilësim",
+    "searchPlaceholder": "Kërko cilësime...",
+    "noResults": "Nuk u gjet asnjë cilësim që përputhet me kriteret tuaja.",
+    "allCategories": "Të gjitha kategoritë",
+    "categoryFilterAriaLabel": "Filtro cilësimet sipas kategorisë"
+  },
+  "errors": {
+    "loadFailed": "Ngarkimi i cilësimeve dështoi",
+    "updateFailed": "Përditësimi i cilësimit dështoi",
+    "deleteFailed": "Fshirja e cilësimit dështoi",
+    "createFailed": "Krijimi i cilësimit dështoi",
+    "alreadyExists": "Cilësimi me çelësin \"{{key}}\" ekziston tashmë"
+  },
+  "item": {
+    "edit": "Ndrysho",
+    "delete": "Fshi",
+    "save": "Ruaj",
+    "saving": "Duke ruajtur...",
+    "cancel": "Anulo",
+    "yesDelete": "Po, fshi",
+    "deleting": "Duke fshirë...",
+    "deleteConfirm": "Të fshihet ky cilësim?",
+    "valuePlaceholder": "Shkruani vlerën e cilësimit...",
+    "showMore": "Shfaq më shumë",
+    "showLess": "Shfaq më pak",
+    "toggleAriaLabel": "Ndërro {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 I ndjeshëm"
+    },
+    "helpText": {
+      "allowShortSelling": "Lejo motorin të hapë pozicione short. Sinjalet SELL do të prodhojnë desired_units negative; kufizohen në 0 kur është çaktivizuar.",
+      "allowManualOrders": "Aktivizo butonin Urdhër i ri në skedën Urdhra. Kur është çaktivizuar, POST /api/orders kthen 403."
+    }
+  },
+  "addModal": {
+    "title": "Shto cilësim të ri",
+    "keyLabel": "Çelës",
+    "valueLabel": "Vlerë",
+    "categoryLabel": "Kategori",
+    "descriptionLabel": "Përshkrim",
+    "keyPlaceholder": "p.sh., walutomat.api_key",
+    "keyHint": "Përdorni notacion me pika për cilësime të ndërfutura (p.sh., category.subcategory.name)",
+    "valuePlaceholder": "Vlera e cilësimit",
+    "categorySelectPlaceholder": "Zgjidh ekzistuese ose krijo të re",
+    "newCategoryPlaceholder": "Ose shkruani emrin e kategorisë së re",
+    "descriptionPlaceholder": "Përshkrim opsional",
+    "cancel": "Anulo",
+    "create": "Krijo cilësim",
+    "creating": "Duke krijuar...",
+    "validation": {
+      "keyRequired": "Çelësi është i detyrueshëm",
+      "valueRequired": "Vlera është e detyrueshme",
+      "categoryRequired": "Kategoria është e detyrueshme"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Editor forme",
+    "rawEditor": "Editor JSON i papërpunuar",
+    "rawJson": "JSON i papërpunuar",
+    "switchToForm": "Kalo te forma",
+    "importToForm": "Importo në formë",
+    "parseError": "Gabim parsimi: {{message}}",
+    "arraySummary": "Varg ({{length}} elemente)",
+    "addItem": "Shto element",
+    "remove": "Hiq",
+    "typeHint": {
+      "array": "(varg)",
+      "object": "(objekt)",
+      "string": "(tekst)",
+      "number": "(numër)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(funksion)",
+      "symbol": "(simbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

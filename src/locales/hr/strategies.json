@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "Upravljanje strategijama",
+    "register": "Registriraj strategiju",
+    "saving": "Spremanje…",
+    "descriptionCanManage": "Registrirajte nove procese strategije izravno iz sučelja. Autostart održava proces omogućenim kroz ponovna pokretanja.",
+    "descriptionViewer": "Pregledajte konfigurirane strategije i njihov status. Za upravljanje strategijama obratite se operateru ili administratoru.",
+    "searchPlaceholder": "Pretraži strategije...",
+    "filter": {
+      "all": "Svi statusi",
+      "running": "Pokrenuto",
+      "stopped": "Zaustavljeno"
+    },
+    "configuredHeading": "Konfigurirane strategije",
+    "noMatches": "Nijedna strategija ne odgovara filtrima",
+    "clearFilters": "Očisti filtre",
+    "emptyTitle": "Nema konfiguriranih strategija",
+    "emptyCanManage": "Registrirajte strategiju za početak algoritamskog trgovanja",
+    "emptyViewer": "Još nije konfigurirana nijedna strategija"
+  },
+  "confirm": {
+    "startTitle": "Pokreni {{name}}",
+    "startMessage": "Ovo će pokrenuti strategiju {{name}}. Može započeti live trgovinske operacije.",
+    "stopTitle": "Zaustavi {{name}}",
+    "stopMessage": "Ovo će zaustaviti strategiju {{name}}. Aktivne pozicije neće se automatski zatvoriti."
+  },
+  "toast": {
+    "saved": "Strategija {{name}} je spremljena",
+    "started": "Strategija {{name}} je pokrenuta",
+    "registerFailed": "Registracija strategije nije uspjela: {{message}}",
+    "startSuccess": "Strategija je uspješno pokrenuta",
+    "stopSuccess": "Strategija je uspješno zaustavljena",
+    "alreadyRunning": "Strategija je već pokrenuta",
+    "notRunning": "Strategija nije pokrenuta",
+    "configNotFound": "Konfiguracija strategije nije pronađena. Provjerite postavke baze podataka.",
+    "networkError": "Mrežna pogreška. Provjerite vezu i pokušajte ponovno.",
+    "startFailed": "Pokretanje strategije nije uspjelo: {{message}}",
+    "stopFailed": "Zaustavljanje strategije nije uspjelo: {{message}}",
+    "unknownError": "Nepoznata pogreška"
+  },
+  "card": {
+    "ariaLabel": "Strategija: {{name}}",
+    "modeLabel": "Način: {{mode}}",
+    "autostartEnabled": "Autostart: omogućen",
+    "autostartDisabled": "Autostart: onemogućen",
+    "statusAriaLabel": "Status: {{status}}",
+    "dataLagAriaLabel": "Kašnjenje podataka: {{seconds}} sekundi",
+    "lagBadge": "kašnjenje: {{seconds}}s",
+    "feedLag": "Feed kašnjenje: {{ms}}ms",
+    "heartbeatAge": "Starost HB: {{seconds}}s",
+    "metrics": {
+      "status": "Status",
+      "dataLag": "Kašnjenje podataka",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "Prikaži detalje",
+    "hideDetails": "Sakrij detalje",
+    "inputs": "Ulazi ({{count}})",
+    "outputs": "Izlazi ({{count}})",
+    "feedPublishers": "Feed izdavači ({{count}})",
+    "lastUpdate": "Zadnje ažuriranje: {{time}}",
+    "waiting": "Čekanje Heartbeata...",
+    "startAriaLabel": "Pokreni strategiju {{name}}",
+    "stopAriaLabel": "Zaustavi strategiju {{name}}",
+    "start": "Pokreni",
+    "stop": "Zaustavi",
+    "starting": "Pokretanje...",
+    "stopping": "Zaustavljanje...",
+    "status": {
+      "starting": "pokretanje",
+      "stopping": "zaustavljanje",
+      "running": "pokrenuto",
+      "stopped": "zaustavljeno"
+    },
+    "health": {
+      "healthy": "Zdravo — primaju se svježi podaci",
+      "warning": "Upozorenje — podaci su zastarjeli",
+      "error": "Pogreška — nema nedavnih podataka",
+      "unknown": "Nepoznato — nema Heartbeat podataka"
+    },
+    "healthShort": {
+      "healthy": "ZDRAVO",
+      "warning": "UPOZORENJE",
+      "error": "POGREŠKA"
+    }
+  },
+  "launchModal": {
+    "title": "Registracija procesa strategije",
+    "emptyTemplates": "U backendu nema registriranih predložaka strategija. Definirajte barem jedan proces strategije.",
+    "close": "Zatvori",
+    "templateLabel": "Predložak strategije",
+    "templatePlaceholder": "Odaberite predložak...",
+    "templateFallbackDescription": "Strategija registrirana u backendu",
+    "loadingDefaults": "Učitavanje zadanih vrijednosti predloška…",
+    "loadDefaultsError": "Nije moguće učitati zadane vrijednosti predloška. Provjerite backend logove.",
+    "processNameLabel": "Naziv procesa",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "Dopušteni znakovi: mala slova, brojevi, podvlake",
+    "instanceNameLabel": "Naziv instance strategije",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "Koristi se unutar konfiguracije strategije i izlaznih tema",
+    "executionModeLabel": "Način izvršavanja",
+    "executionModeThread": "Ugrađeni thread",
+    "executionModeProcess": "Izolirani proces",
+    "executionModeHelp": "Threadovi dijele memoriju, procesi pružaju jaču izolaciju.",
+    "flagsLabel": "Zastavice",
+    "autostartLabel": "Autostart pri pokretanju poslužitelja",
+    "startImmediatelyLabel": "Pokreni odmah nakon registracije",
+    "noteLabel": "Napomena (opcijski)",
+    "notePlaceholder": "Opišite svrhu ili parametre ove instance strategije.",
+    "noteHelp": "Sprema se uz konfiguraciju radi lakšeg prepoznavanja ovog procesa.",
+    "cancel": "Odustani",
+    "submit": "Registriraj strategiju",
+    "submitting": "Registracija…"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "Adminisztráció",
+    "subtitle": "Felhasználók és rendszerkonfiguráció kezelése"
+  },
+  "rolePermissions": {
+    "title": "Szerepkör-jogosultságok",
+    "viewer": {
+      "label": "Megfigyelő",
+      "description": "Csak olvasási hozzáférés az Áttekintéshez és a Piaci adatokhoz. Folyamatok, stratégiák és rendszerbeállítások nem kezelhetők."
+    },
+    "operator": {
+      "label": "Operátor",
+      "description": "Minden Megfigyelő jogosultság, valamint kereskedési műveletek, stratégia-végrehajtás, folyamatkezelés és rendszerállapot-figyelés."
+    },
+    "admin": {
+      "label": "Adminisztrátor",
+      "description": "Teljes rendszerhozzáférés, beleértve a felhasználókezelést, rendszerbeállításokat, API-kulcs konfigurálását és minden Operátor jogosultságot."
+    },
+    "table": {
+      "resource": "Erőforrás",
+      "viewer": "Megfigyelő",
+      "operator": "Operátor",
+      "admin": "Adminisztrátor"
+    },
+    "resources": {
+      "overview": "Áttekintés",
+      "market": "Piaci adatok",
+      "processes": "Folyamatok",
+      "strategies": "Stratégiák",
+      "orders": "Megbízások és teljesítések",
+      "positions": "Pozíciók",
+      "signals": "Jelzések",
+      "health": "Állapot",
+      "admin": "Adminisztráció",
+      "settings": "Beállítások"
+    }
+  },
+  "common": {
+    "cancel": "Mégse",
+    "selectWallet": "Pénztárca kiválasztása",
+    "selectAWallet": "Válasszon pénztárcát",
+    "chooseWalletPlaceholder": "Pénztárca kiválasztása...",
+    "selectWalletPlaceholder": "Pénztárca kiválasztása...",
+    "walletLabel": "Pénztárca",
+    "paperAnnotation": " (paper)",
+    "unknownError": "Ismeretlen hiba",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "Hozzáférés megtagadva",
+      "message": "Nincs jogosultság a felhasználók kezeléséhez. Forduljon a rendszergazdához."
+    },
+    "list": {
+      "title": "Felhasználókezelés",
+      "countLabel": "Felhasználók: {{count}}",
+      "showInactive": "Inaktívak megjelenítése",
+      "hideInactive": "Inaktívak elrejtése",
+      "addUser": "Felhasználó hozzáadása",
+      "searchPlaceholder": "Keresés felhasználónév, e-mail vagy szerep szerint...",
+      "columns": {
+        "user": "Felhasználó",
+        "role": "Szerep",
+        "status": "Állapot",
+        "createdAt": "Létrehozva",
+        "actions": "Műveletek"
+      },
+      "status": {
+        "active": "Aktív",
+        "inactive": "Inaktív"
+      },
+      "unknown": "Ismeretlen",
+      "empty": {
+        "title": "Nem találhatók felhasználók",
+        "noMatch": "Nincs a keresési feltételeknek megfelelő felhasználó.",
+        "noUsers": "Nem találhatók felhasználók.",
+        "noActive": "Nem találhatók aktív felhasználók."
+      },
+      "errorLoading": "Hiba a felhasználók betöltésekor: {{message}}",
+      "deactivate": {
+        "title": "Felhasználó deaktiválása",
+        "message": "Biztosan deaktiválja a(z) „{{username}}” felhasználót? Ezután már nem tud bejelentkezni.",
+        "confirm": "Deaktiválás"
+      },
+      "toast": {
+        "deactivated": "A felhasználó deaktiválva",
+        "deactivateError": "Hiba a felhasználó deaktiválásakor"
+      }
+    },
+    "form": {
+      "titleEdit": "Felhasználó szerkesztése",
+      "titleAdd": "Felhasználó hozzáadása",
+      "fields": {
+        "username": "Felhasználónév",
+        "usernamePlaceholder": "Adja meg a felhasználónevet",
+        "password": "Jelszó",
+        "passwordPlaceholder": "Adja meg a jelszót",
+        "newPassword": "Új jelszó",
+        "newPasswordPlaceholder": "Adja meg az új jelszót",
+        "email": "E-mail",
+        "emailPlaceholder": "Adja meg az e-mail-címet",
+        "role": "Szerep",
+        "accountActive": "Aktív fiók",
+        "resetUserPassword": "Felhasználói jelszó visszaállítása"
+      },
+      "roles": {
+        "viewer": "Megfigyelő",
+        "operator": "Operátor",
+        "admin": "Adminisztrátor"
+      },
+      "validation": {
+        "usernameRequired": "A felhasználónév megadása kötelező",
+        "usernameMinLength": "A felhasználónévnek legalább 3 karakterből kell állnia",
+        "emailRequired": "Az e-mail-cím megadása kötelező",
+        "emailInvalid": "Érvénytelen e-mail-formátum",
+        "passwordRequired": "A jelszó megadása kötelező",
+        "passwordMinLength": "A jelszónak legalább 8 karakterből kell állnia",
+        "passwordRequiredWhenResetting": "Visszaállításkor kötelező jelszót megadni"
+      },
+      "actions": {
+        "saveChanges": "Módosítások mentése",
+        "createUser": "Felhasználó létrehozása"
+      },
+      "toast": {
+        "created": "A felhasználó létrehozva",
+        "createError": "Hiba a felhasználó létrehozásakor",
+        "updated": "A felhasználó frissítve",
+        "updateError": "Hiba a felhasználó frissítésekor",
+        "passwordReset": "A felhasználó jelszava visszaállítva",
+        "resetError": "Hiba a jelszó visszaállításakor"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "Hozzáférés megtagadva",
+      "message": "Nincs jogosultság a hatáskör jogosultságok kezeléséhez. Forduljon a rendszergazdához."
+    },
+    "list": {
+      "title": "Hatáskör jogosultságok",
+      "countLabel": "Jogosultságok: {{count}}",
+      "createGrant": "Hatáskör hozzárendelése",
+      "selectWalletPrompt": "A hatáskör jogosultságok megtekintéséhez válasszon fent egy pénztárcát.",
+      "columns": {
+        "operator": "Operátor",
+        "scope": "Hatáskör",
+        "target": "Cél",
+        "grantedAt": "Hozzárendelve",
+        "actions": "Műveletek"
+      },
+      "empty": {
+        "noGrants": "Nem találhatók jogosultságok",
+        "noGrantsHint": "Ehhez a pénztárcához nincs aktív hatáskör jogosultság."
+      },
+      "errorLoading": "Hiba a jogosultságok betöltésekor: {{message}}",
+      "handover": "Átadás"
+    },
+    "form": {
+      "title": "Hatáskör hozzárendelése",
+      "fields": {
+        "operator": "Operátor",
+        "operatorPlaceholder": "Operátor kiválasztása...",
+        "wallet": "Pénztárca",
+        "scopeKind": "Hatáskör típusa",
+        "underlyingPublicId": "Alaptermék nyilvános azonosítója",
+        "instrumentPublicId": "Instrumentum nyilvános azonosítója",
+        "underlyingPlaceholder": "pl. BTC",
+        "instrumentPlaceholder": "pl. BTC-USD-PERP",
+        "note": "Megjegyzés (opcionális)",
+        "notePlaceholder": "Opcionális megjegyzés"
+      },
+      "scopeKinds": {
+        "underlying": "Alaptermék",
+        "instrument": "Instrumentum"
+      },
+      "validation": {
+        "operatorRequired": "Az operátor megadása kötelező",
+        "walletRequired": "A pénztárca megadása kötelező",
+        "targetRequired": "A célazonosító megadása kötelező"
+      },
+      "actions": {
+        "createGrant": "Hatáskör hozzárendelése"
+      },
+      "toast": {
+        "created": "Hatáskör jogosultság létrehozva",
+        "conflictError": "Ütközés: egy másik operátor már rendelkezik jogosultsággal erre a hatáskörre",
+        "createError": "Hiba a hatáskör jogosultság létrehozásakor"
+      }
+    },
+    "handover": {
+      "title": "Hatáskör jogosultság átadása",
+      "fields": {
+        "currentHolder": "Jelenlegi jogosult",
+        "scope": "Hatáskör",
+        "wallet": "Pénztárca",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "Átadás operátornak",
+        "transferToPlaceholder": "Céloperátor kiválasztása...",
+        "reason": "Indoklás (opcionális)",
+        "reasonPlaceholder": "pl. műszakváltás"
+      },
+      "actions": {
+        "handover": "Átadás"
+      },
+      "toast": {
+        "completed": "Hatáskör jogosultság átadva",
+        "conflictError": "Ütközés: a céloperátor már rendelkezik ütköző jogosultsággal",
+        "handoverError": "Hiba a hatáskör jogosultság átadásakor"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "Hozzáférés megtagadva",
+      "message": "Nincs jogosultság a pénztárca hitelesítő adatainak kezeléséhez. Forduljon a rendszergazdához."
+    },
+    "list": {
+      "title": "Pénztárca hitelesítő adatai",
+      "countLabel": "Hitelesítő adatok: {{count}}",
+      "addCredential": "Hitelesítő adat hozzáadása",
+      "selectWalletPrompt": "A hitelesítő adatok megtekintéséhez válasszon fent egy pénztárcát.",
+      "columns": {
+        "exchange": "Tőzsde",
+        "type": "Típus",
+        "label": "Címke",
+        "createdAt": "Létrehozva",
+        "actions": "Műveletek"
+      },
+      "empty": {
+        "noCredentials": "Nem találhatók hitelesítő adatok",
+        "noCredentialsHint": "Ehhez a pénztárcához nincs aktív hitelesítő adat."
+      },
+      "errorLoading": "Hiba a hitelesítő adatok betöltésekor: {{message}}",
+      "rotate": "Csere"
+    },
+    "form": {
+      "title": "Hitelesítő adat hozzáadása",
+      "fields": {
+        "wallet": "Pénztárca",
+        "exchange": "Tőzsde",
+        "exchangePlaceholder": "pl. kraken",
+        "credentialType": "Hitelesítő adat típusa",
+        "label": "Címke (opcionális)",
+        "labelPlaceholder": "pl. fő kereskedési kulcs",
+        "pemPlaceholder": "Illessze be ide a PEM formátumú privát kulcsot"
+      },
+      "fieldLabels": {
+        "api_key": "API-kulcs",
+        "api_secret": "API-titok",
+        "private_key_pem": "Privát kulcs (PEM)",
+        "client_id": "Ügyfél-azonosító",
+        "client_secret": "Ügyféltitok",
+        "refresh_token": "Frissítési token",
+        "initial_balance": "Kezdő egyenleg"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API-kulcs + titok",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "A pénztárca megadása kötelező",
+        "exchangeRequired": "A tőzsde megadása kötelező",
+        "fieldRequired": "{{field}} megadása kötelező"
+      },
+      "actions": {
+        "addCredential": "Hitelesítő adat hozzáadása"
+      },
+      "toast": {
+        "created": "Hitelesítő adat létrehozva",
+        "conflictError": "Ütközés: ehhez a pénztárcához már tartozik aktív hitelesítő adat ezen a tőzsdén",
+        "createError": "Hiba a hitelesítő adat létrehozásakor"
+      }
+    },
+    "rotate": {
+      "title": "Hitelesítő adatok cseréje",
+      "fields": {
+        "exchange": "Tőzsde",
+        "type": "Típus",
+        "label": "Címke",
+        "newLabel": "Új címke (opcionális)",
+        "newLabelPlaceholder": "pl. cserélt kulcs 2026-04",
+        "pemPlaceholder": "Illessze be ide a PEM formátumú privát kulcsot"
+      },
+      "actions": {
+        "rotate": "Csere"
+      },
+      "toast": {
+        "rotated": "Hitelesítő adatok cserélve",
+        "rotateError": "Hiba a hitelesítő adatok cseréjekor"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "Të dhëna tregu"
+  },
+  "controls": {
+    "exchange": "Bursë:",
+    "instrument": "Instrument:",
+    "timeframe": "Korniza kohore:",
+    "selectExchange": "Zgjidh bursë",
+    "searchInstrument": "Kërko instrument..."
+  },
+  "timeframes": {
+    "1m": "1 minutë",
+    "5m": "5 minuta",
+    "15m": "15 minuta",
+    "30m": "30 minuta",
+    "1h": "1 orë",
+    "4h": "4 orë",
+    "1d": "1 ditë"
+  },
+  "stats": {
+    "currentPrice": "Çmimi aktual",
+    "change24h": "Ndryshimi 24h",
+    "high24h": "Maksimumi 24h",
+    "low24h": "Minimumi 24h"
+  },
+  "chart": {
+    "title": "Grafiku i çmimit",
+    "errorPrefix": "Gabim gjatë ngarkimit të të dhënave të grafikut:",
+    "unknownError": "Gabim i panjohur",
+    "noDataTitle": "Nuk ka të dhëna të disponueshme për {{instrument}}",
+    "noDataHint": "Instrumenti mund të mos ekzistojë ose të mos ketë të dhëna {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "Nuk ka instrumente të lidhura të konfiguruara për {{instrument}} në {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "Cache po ngrohet: {{sampleCount}} / {{expected}} qirinj të disponueshëm {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(nxjerrë nga 1m)",
+      "db": "(nga DB)"
+    }
+  }
+}

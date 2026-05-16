@@ -78,6 +78,11 @@ export type CatalogLanguage =
   | 'cs'
   | 'sk'
   | 'ro'
+  | 'hr'
+  | 'sr'
+  | 'bs'
+  | 'hu'
+  | 'sq'
 
 export interface LocaleMeta {
   readonly code: AppLocale

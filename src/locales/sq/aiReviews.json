@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Kërkesë",
+    "decision": "Vendim",
+    "capsViolation": "Shkelje kufijsh",
+    "selectedDelegate": "Delegati i zgjedhur",
+    "instrument": "instrument",
+    "deadline": "afati {{time}}",
+    "decidedBy": "nga",
+    "newStatus": "status",
+    "mode": "modalitet",
+    "capAttempted": "u tentua",
+    "capLimit": "kundrejt kufirit",
+    "capOn": "në instrument",
+    "reviewLabel": "rishikim {{reviewId}}",
+    "unhandledFrame": "Frame i patrajtuar i aktivitetit të rishikimit AI: {{frame}}"
+  },
+  "page": {
+    "title": "Kutia hyrëse e rishikimeve AI",
+    "subtitle": "Rishikimet CONSULT në pritje që i janë drejtuar këtij delegati, plus rrjedha live e ngjarjeve."
+  },
+  "roleNotice": {
+    "title": "E rezervuar për delegatët AI",
+    "message": "Kjo kuti hyrëse shfaq rishikimet CONSULT të drejtuara te një principal delegati AI. Identifikohuni me një llogari delegati AI për të parë rishikimet në pritje dhe rrjedhën live të aktivitetit. Roli juaj aktual është",
+    "unknownRole": "i panjohur"
+  },
+  "pending": {
+    "title": "Rishikime në pritje",
+    "loading": "Duke ngarkuar rishikimet në pritje…",
+    "loadError": "Ngarkimi i rishikimeve në pritje dështoi: {{message}}",
+    "emptyTitle": "Nuk ka rishikime në pritje",
+    "emptyMessage": "Kërkesat e reja CONSULT të drejtuara te ky delegat do të shfaqen këtu.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Tezë",
+      "status": "Status",
+      "deadline": "Afat",
+      "decision": "Vendim"
+    },
+    "rationalePlaceholder": "Arsyetim (opsional)",
+    "rationaleAriaLabel": "Arsyetim për rishikimin {{reviewId}}",
+    "approve": "Mirato",
+    "reject": "Refuzo",
+    "submitError": "Dërgimi dështoi: {{message}}"
+  },
+  "activity": {
+    "title": "Aktiviteti i fundit",
+    "emptyTitle": "Ende nuk ka aktivitet",
+    "emptyMessage": "Kornizat e kërkesave të rishikimit AI, vendimeve dhe shkeljeve të kufijve do të rrjedhin këtu.",
+    "summaryEmpty": "Nuk u mor asnjë frame",
+    "summaryCount": "Po shfaqen {{shown}} nga {{total}} në buffer"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "activityRow": {
+    "request": "Zahtjev",
+    "decision": "Odluka",
+    "capsViolation": "Kršenje limita",
+    "selectedDelegate": "Odabrani delegat",
+    "instrument": "instrument",
+    "deadline": "rok {{time}}",
+    "decidedBy": "od",
+    "newStatus": "status",
+    "mode": "način",
+    "capAttempted": "pokušano",
+    "capLimit": "prema limitu",
+    "capOn": "na instrumentu",
+    "reviewLabel": "pregled {{reviewId}}",
+    "unhandledFrame": "Neobrađen okvir aktivnosti AI pregleda: {{frame}}"
+  },
+  "page": {
+    "title": "Ulazna pošta AI pregleda",
+    "subtitle": "CONSULT pregledi na čekanju usmjereni ovom delegatu i live tok događaja."
+  },
+  "roleNotice": {
+    "title": "Rezervirano za AI delegate",
+    "message": "Ova ulazna pošta prikazuje CONSULT preglede usmjerene principalu AI delegata. Prijavite se računom AI delegata za prikaz pregleda na čekanju i live toka aktivnosti. Trenutačna uloga je",
+    "unknownRole": "nepoznata"
+  },
+  "pending": {
+    "title": "Pregledi na čekanju",
+    "loading": "Učitavanje pregleda na čekanju…",
+    "loadError": "Učitavanje pregleda na čekanju nije uspjelo: {{message}}",
+    "emptyTitle": "Nema pregleda na čekanju",
+    "emptyMessage": "Novi CONSULT zahtjevi usmjereni ovom delegatu pojavit će se ovdje.",
+    "columns": {
+      "instrument": "Instrument",
+      "thesis": "Teza",
+      "status": "Status",
+      "deadline": "Rok",
+      "decision": "Odluka"
+    },
+    "rationalePlaceholder": "Obrazloženje (opcijski)",
+    "rationaleAriaLabel": "Obrazloženje za pregled {{reviewId}}",
+    "approve": "Odobri",
+    "reject": "Odbij",
+    "submitError": "Slanje nije uspjelo: {{message}}"
+  },
+  "activity": {
+    "title": "Nedavna aktivnost",
+    "emptyTitle": "Još nema aktivnosti",
+    "emptyMessage": "Okviri zahtjeva AI pregleda, odluka i kršenja limita pojavit će se ovdje.",
+    "summaryEmpty": "Nije primljen nijedan okvir",
+    "summaryCount": "Prikazuje se {{shown}} od {{total}} međuspremnih"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "AI integracija",
+    "subtitle": "Upravljanje AI delegatima koji se povezuju sa Snapperom preko MCP-a.",
+    "loading": "Učitavanje AI integracije…",
+    "createDelegate": "Kreiraj delegata"
+  },
+  "disabled": {
+    "title": "AI integracija je onemogućena",
+    "message": "Omogućite feature flag u Podešavanja → Feature Flags za upravljanje AI delegatima."
+  },
+  "list": {
+    "loadingDelegates": "Učitavanje delegata…",
+    "emptyTitle": "Još nema AI delegata",
+    "emptyMessage": "Kliknite \"Kreiraj delegata\" da ga izdate i generišete MCP konfiguracioni isečak.",
+    "columns": {
+      "label": "Oznaka",
+      "username": "Korisničko ime",
+      "created": "Kreirano",
+      "maxOpenOrders": "Maks. otvorenih naloga",
+      "maxDailyUsd": "Maks. dnevno USD",
+      "status": "Status",
+      "actions": "Radnje"
+    },
+    "status": {
+      "active": "Aktivan",
+      "revoked": "Opozvan"
+    },
+    "default": "podrazumevano",
+    "details": "Detalji",
+    "viewAriaLabel": "Prikaži delegata {{label}}"
+  },
+  "wizard": {
+    "title": "Kreiraj AI delegata",
+    "step1": "1. Identitet",
+    "step2": "2. Opseg i limiti",
+    "step3": "3. Pregled",
+    "stepDone": "✓ Gotovo",
+    "identity": {
+      "labelField": "Oznaka",
+      "labelPlaceholder": "npr. Alpha prop desk",
+      "labelHelpPrefix": "Korisničko ime delegata biće izvedeno na strani servera kao ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "Opseg",
+      "operatorLabel": "public_id operatera (opciono)",
+      "operatorPlaceholder": "Ostavite prazno za nasleđivanje primarnog operatera pozivaoca"
+    },
+    "caps": {
+      "heading": "Trgovinski limiti (svi opciono)",
+      "maxOpenOrders": "Maks. otvorenih naloga",
+      "maxDailyNotionalUsd": "Maks. dnevna nominalna vrednost u USD",
+      "maxCancelsPerMinute": "Maks. otkazivanja po minuti",
+      "perInstrument": "Maks. količina po instrumentu (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "podrazumevano",
+      "errorInvalidJson": "max_order_quantity_per_instrument mora biti ispravan JSON",
+      "errorJsonObject": "max_order_quantity_per_instrument mora biti JSON objekat ili prazno",
+      "errorNegative": "Limiti moraju biti nenegativni celi brojevi ili prazni."
+    },
+    "review": {
+      "heading": "Pregled i kreiranje",
+      "rowLabel": "Oznaka",
+      "rowOperator": "public_id operatera",
+      "rowMaxOpenOrders": "Maks. otvorenih naloga",
+      "rowMaxDailyNotional": "Maks. dnevna nominalna vrednost u USD",
+      "rowMaxCancelsPerMinute": "Maks. otkazivanja po minuti",
+      "rowPerInstrument": "Maks. količina po instrumentu",
+      "operatorDefault": "(primarni operater pozivaoca)",
+      "defaultValue": "(podrazumevano)"
+    },
+    "buttons": {
+      "cancel": "Otkaži",
+      "next": "Dalje",
+      "back": "Nazad",
+      "createDelegate": "Kreiraj delegata",
+      "iSavedClose": "Sačuvano — zatvori"
+    },
+    "toast": {
+      "delegateCreated": "Delegat je kreiran",
+      "failedToCreate": "Kreiranje delegata nije uspelo"
+    }
+  },
+  "detail": {
+    "loading": "Učitavanje delegata…",
+    "notFound": "Delegat nije pronađen ili nije dostupan.",
+    "back": "Nazad",
+    "backToList": "Nazad na listu",
+    "updateCaps": "Ažuriraj limite",
+    "revoke": "Opozovi",
+    "save": "Sačuvaj",
+    "cancel": "Otkaži",
+    "tradingCaps": "Trgovinski limiti",
+    "status": "Status",
+    "active": "Aktivan",
+    "revoked": "Opozvan",
+    "createdAt": "Kreirano",
+    "createdBy": "Kreirao (public_id korisnika)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "Maks. otvorenih naloga",
+    "maxDailyNotionalUsd": "Maks. dnevna nominalna vrednost u USD",
+    "maxCancelsPerMinute": "Maks. otkazivanja po minuti",
+    "perInstrument": "Maks. količina po instrumentu",
+    "defaultValue": "(podrazumevano)",
+    "editorPlaceholder": "(podrazumevano)",
+    "toast": {
+      "capsUpdated": "Limiti su ažurirani",
+      "failedToUpdateCaps": "Ažuriranje limita nije uspelo",
+      "negativeIntegersError": "Limiti moraju biti nenegativni celi brojevi ili prazni."
+    }
+  },
+  "revokeDialog": {
+    "title": "Opozvati delegata \"{{label}}\"?",
+    "message": "Ovo opoziva tokene delegata i zaustavlja njegove MCP pretplate. Radnja se ne može poništiti.",
+    "confirm": "Opozovi",
+    "cancel": "Otkaži",
+    "toast": {
+      "delegateRevoked": "Delegat je opozvan",
+      "failedToRevoke": "Opoziv delegata nije uspeo"
+    }
+  },
+  "snippet": {
+    "warningTitle": "Odmah sačuvajte ove akreditive",
+    "warningMessage": "Neće biti ponovo prikazani. Snapper ne čuva sirove tokene; kada zatvorite ovaj čarobnjak, jedina kopija biće u konfiguraciji MCP klijenta.",
+    "snippetHelp": "Dugovečni token AI delegata (~10 godina). Isti token autentifikuje i proxy MCP server i watch monitor. Za zamenu deaktivirajte ovog delegata i kreirajte novog.",
+    "baseUrlHelpPrefix": "Base URL se izvodi iz origina ovog pregledača + ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "Kopiraj konfiguracioni isečak u privremenu memoriju",
+    "copy": "Kopiraj u privremenu memoriju",
+    "copied": "Kopirano"
+  }
+}
