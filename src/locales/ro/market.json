@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Nu există instrumente asociate configurate pentru {{instrument}} pe {{exchange}}."
+    "empty": "Nu există instrumente asociate configurate pentru {{instrument}} pe {{exchange}}.",
+    "relationshipType": {
+      "exact": "Același activ suport",
+      "derivative": "Instrumente derivate",
+      "proxy": "Instrumente proxy"
+    }
   },
   "cacheBanner": {
     "message": "Cache în încălzire: {{sampleCount}} / {{expected}} lumânări disponibile {{sourceLabel}}",

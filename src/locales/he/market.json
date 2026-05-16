@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "לא הוגדרו מכשירים קשורים עבור {{instrument}} ב-{{exchange}}."
+    "empty": "לא הוגדרו מכשירים קשורים עבור {{instrument}} ב-{{exchange}}.",
+    "relationshipType": {
+      "exact": "אותו נכס בסיס",
+      "derivative": "נגזרים",
+      "proxy": "מכשירי פרוקסי"
+    }
   },
   "cacheBanner": {
     "message": "החימום של המטמון מתבצע: {{sampleCount}} / {{expected}} נרות זמינים {{sourceLabel}}",

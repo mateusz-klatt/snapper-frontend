@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Níl aon ionstraim ghaolmhar cumraithe do {{instrument}} ar {{exchange}}."
+    "empty": "Níl aon ionstraim ghaolmhar cumraithe do {{instrument}} ar {{exchange}}.",
+    "relationshipType": {
+      "exact": "An bhunsócmhainn chéanna",
+      "derivative": "Díorthaigh",
+      "proxy": "Ionstraimí ionaid"
+    }
   },
   "cacheBanner": {
     "message": "Cache á théamh: {{sampleCount}} / {{expected}} coinneal ar fáil {{sourceLabel}}",

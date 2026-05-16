@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Для {{instrument}} на {{exchange}} не настроены связанные инструменты."
+    "empty": "Для {{instrument}} на {{exchange}} не настроены связанные инструменты.",
+    "relationshipType": {
+      "exact": "Тот же базовый актив",
+      "derivative": "Деривативы",
+      "proxy": "Прокси-инструменты"
+    }
   },
   "cacheBanner": {
     "message": "Прогрев кеша: доступно {{sampleCount}} / {{expected}} свечей {{sourceLabel}}",

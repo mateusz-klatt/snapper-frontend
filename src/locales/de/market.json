@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Keine verwandten Instrumente für {{instrument}} auf {{exchange}} konfiguriert."
+    "empty": "Keine verwandten Instrumente für {{instrument}} auf {{exchange}} konfiguriert.",
+    "relationshipType": {
+      "exact": "Gleicher Basiswert",
+      "derivative": "Derivate",
+      "proxy": "Proxy-Instrumente"
+    }
   },
   "cacheBanner": {
     "message": "Cache wird aufgewärmt: {{sampleCount}} / {{expected}} Kerzen verfügbar {{sourceLabel}}",

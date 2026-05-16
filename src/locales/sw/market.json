@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Hakuna instrumenti zinazohusiana zilizosanidiwa kwa {{instrument}} kwenye {{exchange}}."
+    "empty": "Hakuna instrumenti zinazohusiana zilizosanidiwa kwa {{instrument}} kwenye {{exchange}}.",
+    "relationshipType": {
+      "exact": "Mali msingi sawa",
+      "derivative": "Derivativi",
+      "proxy": "Vyombo mbadala"
+    }
   },
   "cacheBanner": {
     "message": "Cache inaandaliwa: candles {{sampleCount}} / {{expected}} zinapatikana {{sourceLabel}}",

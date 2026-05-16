@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Nessuno strumento correlato configurato per {{instrument}} su {{exchange}}."
+    "empty": "Nessuno strumento correlato configurato per {{instrument}} su {{exchange}}.",
+    "relationshipType": {
+      "exact": "Stesso sottostante",
+      "derivative": "Derivati",
+      "proxy": "Strumenti proxy"
+    }
   },
   "cacheBanner": {
     "message": "Riscaldamento cache: {{sampleCount}} / {{expected}} candele disponibili {{sourceLabel}}",

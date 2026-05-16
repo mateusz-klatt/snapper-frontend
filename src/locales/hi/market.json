@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{instrument}} के लिए {{exchange}} पर कोई संबंधित इंस्ट्रूमेंट कॉन्फ़िगर नहीं है।"
+    "empty": "{{instrument}} के लिए {{exchange}} पर कोई संबंधित इंस्ट्रूमेंट कॉन्फ़िगर नहीं है।",
+    "relationshipType": {
+      "exact": "समान अंतर्निहित परिसंपत्ति",
+      "derivative": "डेरिवेटिव्स",
+      "proxy": "प्रॉक्सी साधन"
+    }
   },
   "cacheBanner": {
     "message": "कैश गर्म हो रहा है: {{sampleCount}} / {{expected}} कैंडल उपलब्ध {{sourceLabel}}",

@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Tidak ada instrumen terkait yang dikonfigurasi untuk {{instrument}} di {{exchange}}."
+    "empty": "Tidak ada instrumen terkait yang dikonfigurasi untuk {{instrument}} di {{exchange}}.",
+    "relationshipType": {
+      "exact": "Aset dasar yang sama",
+      "derivative": "Derivatif",
+      "proxy": "Instrumen proxy"
+    }
   },
   "cacheBanner": {
     "message": "Pemanasan cache: {{sampleCount}} / {{expected}} candle tersedia {{sourceLabel}}",

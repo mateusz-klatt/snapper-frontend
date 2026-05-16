@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "هیچ ابزار مرتبطی برای {{instrument}} در {{exchange}} پیکربندی نشده است."
+    "empty": "هیچ ابزار مرتبطی برای {{instrument}} در {{exchange}} پیکربندی نشده است.",
+    "relationshipType": {
+      "exact": "همان دارایی پایه",
+      "derivative": "مشتقات",
+      "proxy": "ابزارهای جایگزین"
+    }
   },
   "cacheBanner": {
     "message": "گرم‌سازی کش: {{sampleCount}} / {{expected}} کندل در دسترس است {{sourceLabel}}",

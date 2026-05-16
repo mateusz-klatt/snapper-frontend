@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}} :",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Aucun instrument associé configuré pour {{instrument}} sur {{exchange}}."
+    "empty": "Aucun instrument associé configuré pour {{instrument}} sur {{exchange}}.",
+    "relationshipType": {
+      "exact": "Même sous-jacent",
+      "derivative": "Produits dérivés",
+      "proxy": "Instruments proxy"
+    }
   },
   "cacheBanner": {
     "message": "Préchauffage du cache : {{sampleCount}} / {{expected}} bougies disponibles {{sourceLabel}}",

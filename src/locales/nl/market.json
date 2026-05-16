@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Geen gerelateerde instrumenten geconfigureerd voor {{instrument}} op {{exchange}}."
+    "empty": "Geen gerelateerde instrumenten geconfigureerd voor {{instrument}} op {{exchange}}.",
+    "relationshipType": {
+      "exact": "Dezelfde onderliggende waarde",
+      "derivative": "Derivaten",
+      "proxy": "Proxy-instrumenten"
+    }
   },
   "cacheBanner": {
     "message": "Cache aan het opwarmen: {{sampleCount}} / {{expected}} candles beschikbaar {{sourceLabel}}",

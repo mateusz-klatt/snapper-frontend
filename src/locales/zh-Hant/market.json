@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{instrument}} 在 {{exchange}} 上未配置相關品種。"
+    "empty": "{{instrument}} 在 {{exchange}} 上未配置相關品種。",
+    "relationshipType": {
+      "exact": "相同標的資產",
+      "derivative": "衍生品",
+      "proxy": "代理資產"
+    }
   },
   "cacheBanner": {
     "message": "緩存預熱中: {{sampleCount}} / {{expected}} 根 K 線可用 {{sourceLabel}}",

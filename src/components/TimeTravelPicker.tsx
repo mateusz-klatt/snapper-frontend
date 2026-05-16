@@ -41,6 +41,7 @@ export const TimeTravelPicker: React.FC = () => {
       <Clock size={14} className={isTimeTraveling ? 'text-brand-500' : 'text-muted-600'} />
       <input
         type='datetime-local'
+        lang='en-CA'
         value={inputValue}
         onChange={handleChange}
         className='rounded-md border border-dark-600 bg-dark-800 px-2 py-1 text-xs text-alpine-900 focus:border-brand-500 focus:outline-none'

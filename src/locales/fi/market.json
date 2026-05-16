@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Instrumentille {{instrument}} ei ole määritetty liittyviä instrumentteja pörssissä {{exchange}}."
+    "empty": "Instrumentille {{instrument}} ei ole määritetty liittyviä instrumentteja pörssissä {{exchange}}.",
+    "relationshipType": {
+      "exact": "Sama kohde-etuus",
+      "derivative": "Johdannaiset",
+      "proxy": "Proxy-instrumentit"
+    }
   },
   "cacheBanner": {
     "message": "Cache lämpenee: kynttilät {{sampleCount}} / {{expected}} saatavilla {{sourceLabel}}",

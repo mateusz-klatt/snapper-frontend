@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Nincsenek kapcsolódó instrumentumok konfigurálva ehhez: {{instrument}} ezen a tőzsdén: {{exchange}}."
+    "empty": "Nincsenek kapcsolódó instrumentumok konfigurálva ehhez: {{instrument}} ezen a tőzsdén: {{exchange}}.",
+    "relationshipType": {
+      "exact": "Azonos alaptermék",
+      "derivative": "Derivatívák",
+      "proxy": "Proxy instrumentumok"
+    }
   },
   "cacheBanner": {
     "message": "Cache bemelegítése: elérhető gyertyák: {{sampleCount}} / {{expected}} {{sourceLabel}}",

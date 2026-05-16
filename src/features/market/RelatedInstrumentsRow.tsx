@@ -46,7 +46,11 @@ export function RelatedInstrumentsRow({
       {groups.map(group => (
         <div key={group.relationship_type} className='flex items-center gap-2'>
           <span className='text-xs text-muted-500 mr-1'>
-            {t('related.labelSeparator', { label: group.label })}
+            {t('related.labelSeparator', {
+              label: t(`related.relationshipType.${group.relationship_type}`, {
+                defaultValue: group.label,
+              }),
+            })}
           </span>
           {group.items.map(item => {
             const baseClass =

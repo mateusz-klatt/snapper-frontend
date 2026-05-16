@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{exchange}} բորսայում {{instrument}} գործիքի համար հարակից գործիքներ կազմաձևված չեն։"
+    "empty": "{{exchange}} բորսայում {{instrument}} գործիքի համար հարակից գործիքներ կազմաձևված չեն։",
+    "relationshipType": {
+      "exact": "Նույն հիմքային ակտիվը",
+      "derivative": "Ածանցյալ գործիքներ",
+      "proxy": "Փոխարինող գործիքներ"
+    }
   },
   "cacheBanner": {
     "message": "Քեշը տաքացվում է՝ հասանելի է {{sampleCount}} / {{expected}} մոմ {{sourceLabel}}",

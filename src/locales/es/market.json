@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "No hay instrumentos relacionados configurados para {{instrument}} en {{exchange}}."
+    "empty": "No hay instrumentos relacionados configurados para {{instrument}} en {{exchange}}.",
+    "relationshipType": {
+      "exact": "Mismo subyacente",
+      "derivative": "Derivados",
+      "proxy": "Instrumentos proxy"
+    }
   },
   "cacheBanner": {
     "message": "Calentando la caché: {{sampleCount}} / {{expected}} velas disponibles {{sourceLabel}}",

@@ -34,7 +34,12 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Nema povezanih instrumenata konfigurisanih za {{instrument}} na {{exchange}}."
+    "empty": "Nema povezanih instrumenata konfigurisanih za {{instrument}} na {{exchange}}.",
+    "relationshipType": {
+      "exact": "Ista osnovna imovina",
+      "derivative": "Derivati",
+      "proxy": "Proksi instrumenti"
+    }
   },
   "cacheBanner": {
     "message": "Cache se zagrijava: dostupno {{sampleCount}} / {{expected}} svijeća {{sourceLabel}}",
