@@ -87,7 +87,7 @@
       "orderType": "Ordertyp",
       "quantity": "Kvantitet",
       "price": "Pris",
-      "stopPrice": "Stopppris",
+      "stopPrice": "Stoppris",
       "mode": "Läge",
       "wallet": "Plånbok",
       "type": "Typ"
@@ -126,8 +126,8 @@
       "quantityPositive": "Kvantitet måste vara ett positivt tal",
       "priceRequired": "Pris krävs för denna ordertyp",
       "pricePositive": "Pris måste vara ett positivt tal",
-      "stopPriceRequired": "Stopppris krävs för denna ordertyp",
-      "stopPricePositive": "Stopppris måste vara ett positivt tal",
+      "stopPriceRequired": "Stoppris krävs för denna ordertyp",
+      "stopPricePositive": "Stoppris måste vara ett positivt tal",
       "createFailed": "Det gick inte att skapa order"
     },
     "errorCodes": {

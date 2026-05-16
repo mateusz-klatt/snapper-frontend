@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(funkcja)",
       "symbol": "(symbol)",
-      "undefined": "(brak)"
+      "undefined": "(brak)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

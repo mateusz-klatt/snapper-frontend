@@ -23,7 +23,7 @@ describe('ErrorFallback', () => {
     const error = new Error('Failed')
     const resetError = vi.fn()
 
-    render(<ErrorFallback error={error} resetError={resetError} componentName='TestComponent' />)
+    render(<ErrorFallback error={error} resetError={resetError} componentNameKey='TestComponent' />)
     expect(screen.getByText('Error in TestComponent')).toBeInTheDocument()
   })
   it('calls resetError when try again button is clicked', () => {
@@ -58,7 +58,7 @@ describe('ErrorBoundary', () => {
   })
   it('renders fallback UI when child throws error', () => {
     render(
-      <ErrorBoundary componentName='TestComponent'>
+      <ErrorBoundary componentNameKey='TestComponent'>
         <ThrowError shouldThrow={true} message='Component crashed' />
       </ErrorBoundary>
     )
@@ -77,7 +77,7 @@ describe('ErrorBoundary', () => {
     }
 
     const { rerender } = render(
-      <ErrorBoundary componentName='TestComponent' key='test'>
+      <ErrorBoundary componentNameKey='TestComponent' key='test'>
         <TestComponent />
       </ErrorBoundary>
     )
@@ -86,7 +86,7 @@ describe('ErrorBoundary', () => {
     shouldThrow = false
     fireEvent.click(screen.getByText('Try again'))
     rerender(
-      <ErrorBoundary componentName='TestComponent' key='test'>
+      <ErrorBoundary componentNameKey='TestComponent' key='test'>
         <TestComponent />
       </ErrorBoundary>
     )
@@ -129,7 +129,7 @@ describe('ErrorBoundary', () => {
     expect(screen.getByText('Custom: Custom error message')).toBeInTheDocument()
     expect(screen.getByText('Custom Reset')).toBeInTheDocument()
   })
-  it('renders default title when componentName is not provided', () => {
+  it('renders default title when componentNameKey is not provided', () => {
     render(
       <ErrorBoundary>
         <ThrowError shouldThrow={true} />

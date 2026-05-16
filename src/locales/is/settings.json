@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(fall)",
       "symbol": "(tákn)",
-      "undefined": "(óskilgreint)"
+      "undefined": "(óskilgreint)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

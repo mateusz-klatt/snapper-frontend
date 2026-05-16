@@ -49,9 +49,17 @@ export const COUNTRY_TO_LANGUAGE: Readonly<Record<AppLocale, CatalogLanguage>> =
   am: 'hy',
 }
 
+const INTL_LOCALE_OVERRIDES: Readonly<Partial<Record<AppLocale, string>>> = {
+  rs: 'sr-Latn-RS',
+}
+
 const buildIntlLocaleMap = (): Readonly<Record<AppLocale, string>> => {
   const entries = SUPPORTED_LOCALES.map(
-    code => [code, `${COUNTRY_TO_LANGUAGE[code]}-${code.toUpperCase()}`] as const
+    code =>
+      [
+        code,
+        INTL_LOCALE_OVERRIDES[code] ?? `${COUNTRY_TO_LANGUAGE[code]}-${code.toUpperCase()}`,
+      ] as const
   )
 
   return Object.fromEntries(entries) as Record<AppLocale, string>

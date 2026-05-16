@@ -253,6 +253,8 @@ const ObjectEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
                 <span>{key}</span>
                 <span className='text-xs text-muted-500'>
                   {(() => {
+                    if (val === null)
+                      return t('jsonEditor.typeHint.null', { defaultValue: '(null)' })
                     if (Array.isArray(val)) return t('jsonEditor.typeHint.array')
                     if (typeof val === 'object') return t('jsonEditor.typeHint.object')
 

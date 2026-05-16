@@ -77,7 +77,8 @@
       "bigint": "(bigint)",
       "function": "(함수)",
       "symbol": "(심볼)",
-      "undefined": "(undefined)"
+      "undefined": "(undefined)",
+      "null": "(null)"
     }
   },
   "booleanValue": {

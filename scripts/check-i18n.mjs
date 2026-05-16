@@ -27,13 +27,21 @@
  *   - ``*.test.tsx`` / ``*.test.ts``
  *   - Generated files matching ``*.generated.*``
  *   - Any ``file:line`` pair listed in
- *     ``scripts/check-i18n-allowlist.txt`` (substring match against the
- *     emitted ``path:line`` prefix; one entry per line, ``#`` comments
- *     allowed).
+ *     ``scripts/check-i18n-allowlist.txt`` (EXACT match against the
+ *     emitted ``path:line``; one entry per line, ``#`` comments
+ *     allowed). An entry ``src/foo.tsx:1`` will NOT match
+ *     ``src/foo.tsx:10`` — substring-shadowing was rejected because
+ *     ``:1`` would silently exempt ``:10``, ``:11``, … .
  *
  * Add a new pattern: extend ``PATTERNS`` below. Allowlist an entry: add
- * a ``path:line`` substring to the allowlist file with a rationale
+ * the exact ``path:line`` to the allowlist file with a rationale
  * comment on the line above.
+ *
+ * Scanning runs against the full file text (not per-line), so multi-line
+ * JSX attribute splits like ``aria-label=\n  "Foo"`` are caught. The
+ * attribute-name regex requires a JSX boundary (start-of-line or
+ * preceding whitespace/``{``/``(``) to avoid matching `data-aria-label`
+ * or similar longer attribute names.
  *
  * Exit 0 when clean; 1 when at least one un-allowlisted hit remains.
  */
@@ -53,22 +61,24 @@ const FILE_EXTENSIONS = new Set(['.tsx', '.ts'])
 const TEST_RE = /\.test\.(tsx|ts)$/
 const GENERATED_RE = /\.generated(?:\.\w+)*\.(ts|tsx|mts|cts)$/
 
+const ATTR_BOUNDARY = String.raw`(?<=^|[\s{(])`
+
 const PATTERNS = [
   {
     name: 'aria-label',
-    regex: /\baria-label\s*=\s*(['"])([A-Z][^'"]{1,})\1/g,
+    regex: new RegExp(String.raw`${ATTR_BOUNDARY}aria-label\s*=\s*(['"])([A-Z][^'"]{1,})\1`, 'g'),
   },
   {
     name: 'title',
-    regex: /\btitle\s*=\s*(['"])([A-Z][^'"]{3,})\1/g,
+    regex: new RegExp(String.raw`${ATTR_BOUNDARY}title\s*=\s*(['"])([A-Z][^'"]{3,})\1`, 'g'),
   },
   {
     name: 'placeholder',
-    regex: /\bplaceholder\s*=\s*(['"])([A-Z][^'"]{2,})\1/g,
+    regex: new RegExp(String.raw`${ATTR_BOUNDARY}placeholder\s*=\s*(['"])([A-Z][^'"]{2,})\1`, 'g'),
   },
   {
     name: 'alt',
-    regex: /\balt\s*=\s*(['"])([A-Z][^'"]{1,})\1/g,
+    regex: new RegExp(String.raw`${ATTR_BOUNDARY}alt\s*=\s*(['"])([A-Z][^'"]{1,})\1`, 'g'),
   },
 ]
 
@@ -121,22 +131,26 @@ async function walk(root, out) {
   }
 }
 
+function lineNumberAt(content, offset) {
+  let count = 1
+  for (let i = 0; i < offset && i < content.length; i++) {
+    if (content[i] === '\n') count++
+  }
+  return count
+}
+
 function scanContent(content, relPath) {
   const hits = []
-  const lines = content.split('\n')
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i]
-    for (const { name, regex } of PATTERNS) {
-      regex.lastIndex = 0
-      let match
-      while ((match = regex.exec(line)) !== null) {
-        hits.push({
-          file: relPath,
-          line: i + 1,
-          attr: name,
-          literal: match[2],
-        })
-      }
+  for (const { name, regex } of PATTERNS) {
+    regex.lastIndex = 0
+    let match
+    while ((match = regex.exec(content)) !== null) {
+      hits.push({
+        file: relPath,
+        line: lineNumberAt(content, match.index),
+        attr: name,
+        literal: match[2],
+      })
     }
   }
   return hits
@@ -144,7 +158,7 @@ function scanContent(content, relPath) {
 
 function isAllowlisted(hit, allowlist) {
   const probe = `${hit.file}:${hit.line}`
-  return allowlist.some(entry => probe.includes(entry))
+  return allowlist.some(entry => entry === probe)
 }
 
 async function main() {

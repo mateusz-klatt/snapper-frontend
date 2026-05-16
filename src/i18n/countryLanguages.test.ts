@@ -137,7 +137,7 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
     expect(COUNTRY_TO_INTL_LOCALE.ua).toBe('uk-UA')
     expect(COUNTRY_TO_INTL_LOCALE.ru).toBe('ru-RU')
     expect(COUNTRY_TO_INTL_LOCALE.hr).toBe('hr-HR')
-    expect(COUNTRY_TO_INTL_LOCALE.rs).toBe('sr-RS')
+    expect(COUNTRY_TO_INTL_LOCALE.rs).toBe('sr-Latn-RS')
     expect(COUNTRY_TO_INTL_LOCALE.ba).toBe('bs-BA')
     expect(COUNTRY_TO_INTL_LOCALE.hu).toBe('hu-HU')
     expect(COUNTRY_TO_INTL_LOCALE.al).toBe('sq-AL')
