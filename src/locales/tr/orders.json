@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "Emirler ve Gerçekleşmeler",
+    "newOrder": "Yeni Emir",
+    "exportCsv": "CSV dışa aktar"
+  },
+  "tabs": {
+    "orders": "Emirler ({{total}})",
+    "executions": "Gerçekleşmeler ({{total}})"
+  },
+  "filters": {
+    "byStatus": "Duruma göre filtrele:",
+    "options": {
+      "all": "Tüm Emirler",
+      "new": "Yeni",
+      "open": "Açık",
+      "partiallyFilled": "Kısmen Gerçekleşti",
+      "partially_filled": "Kısmen Gerçekleşti",
+      "filled": "Gerçekleşti",
+      "cancelled": "İptal Edildi",
+      "rejected": "Reddedildi"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "Yok",
+    "priceMarket": "Market",
+    "quantity": "Miktar",
+    "price": "Fiyat",
+    "created": "Oluşturuldu",
+    "createdUnknown": "Yok",
+    "orderId": "Emir ID",
+    "leverage": "Kaldıraç",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "SADECE-AZALT",
+    "cancel": "İptal",
+    "cancelling": "İptal ediliyor…",
+    "cancelAriaLabel": "{{orderId}} emrini iptal et"
+  },
+  "executionCard": {
+    "orderNumber": "Emir #{{orderId}}",
+    "filled": "GERÇEKLEŞTİ",
+    "orderLabel": "Emir {{orderId}}",
+    "size": "Boyut",
+    "price": "Fiyat",
+    "total": "Toplam",
+    "executed": "Gerçekleşti",
+    "fees": "Ücretler"
+  },
+  "empty": {
+    "ordersTitle": "Emir bulunamadı",
+    "ordersStartTrading": "Emirleri burada görmek için trading başlatın",
+    "ordersFilterless": "{{status}} durumunda emir yok",
+    "executionsTitle": "Gerçekleşme bulunamadı",
+    "executionsMessage": "Trade gerçekleşmeleri burada görünecek"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "Enstrüman",
+      "side": "Yön",
+      "type": "Tür",
+      "status": "Durum",
+      "quantity": "Miktar",
+      "price": "Fiyat",
+      "leverage": "Kaldıraç",
+      "reduceOnly": "Sadece azalt",
+      "created": "Oluşturuldu"
+    },
+    "executions": {
+      "orderId": "Emir ID",
+      "instrument": "Enstrüman",
+      "side": "Yön",
+      "size": "Boyut",
+      "price": "Fiyat",
+      "total": "Toplam",
+      "fee": "Ücret",
+      "feeAsset": "Ücret varlığı",
+      "executed": "Gerçekleşti"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "Yeni Manuel Emir",
+    "titleConfirm": "Emri Onayla",
+    "fields": {
+      "exchange": "Borsa",
+      "instrument": "Enstrüman",
+      "side": "Yön",
+      "orderType": "Emir Türü",
+      "quantity": "Miktar",
+      "price": "Fiyat",
+      "stopPrice": "Stop Fiyatı",
+      "mode": "Mod",
+      "wallet": "Cüzdan",
+      "type": "Tür"
+    },
+    "sideOptions": {
+      "buy": "Alım",
+      "sell": "Satım"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — yalnızca piyasa verisi",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "İptal",
+      "reviewOrder": "Emri gözden geçir",
+      "back": "Geri",
+      "confirmOrder": "Emri onayla",
+      "submitting": "Gönderiliyor..."
+    },
+    "errors": {
+      "missingRequired": "Tüm zorunlu alanlar doldurulmalı",
+      "quantityPositive": "Miktar pozitif bir sayı olmalı",
+      "priceRequired": "Bu emir türü için fiyat gerekli",
+      "pricePositive": "Fiyat pozitif bir sayı olmalı",
+      "stopPriceRequired": "Bu emir türü için stop fiyatı gerekli",
+      "stopPricePositive": "Stop fiyatı pozitif bir sayı olmalı",
+      "createFailed": "Emir oluşturma başarısız"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "Bu enstrüman yalnızca gözlem amaçlı — emirleri gerçekleşme destekli bir enstrümanda verin.",
+      "unknownInstrument": "Bu enstrüman tanınmıyor. Listeyi yenileyip tekrar deneyin.",
+      "capsViolation": "Bu emir hesap güvenlik limitlerinizi aşar. Risk ayarlarınızı gözden geçirip tekrar deneyin."
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "ओवरव्यू"
+  },
+  "metrics": {
+    "feedsRunning": "चल रहे Feed",
+    "strategiesActive": "सक्रिय रणनीतियाँ",
+    "openOrders": "खुले ऑर्डर",
+    "todaysExecutions": "आज के निष्पादन",
+    "executionsOn": "निष्पादन ({{date}})"
+  },
+  "status": {
+    "stopped": "रुका हुआ",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "चल रहा",
+    "active": "सक्रिय"
+  },
+  "processStatus": {
+    "title": "प्रोसेस स्थिति",
+    "feeds": "Feed",
+    "strategies": "रणनीतियाँ",
+    "executors": "एक्ज़ीक्यूटर",
+    "brokers": "ब्रोकर"
+  },
+  "portfolio": {
+    "title": "पोर्टफोलियो सारांश",
+    "totalValue": "कुल मूल्य",
+    "longExposure": "Long एक्सपोज़र",
+    "shortExposure": "Short एक्सपोज़र",
+    "netDelta": "नेट डेल्टा",
+    "unrealizedPnl": "अवास्तविक P&L",
+    "pnlPercent": "P&L %",
+    "positions": "पोजीशन",
+    "instrumentsCount": "{{count}} इंस्ट्रूमेंट",
+    "empty": "कोई पोजीशन डेटा उपलब्ध नहीं"
+  },
+  "signals": {
+    "title": "हाल के सिग्नल",
+    "empty": "हाल के सिग्नल नहीं हैं",
+    "noTime": "लागू नहीं"
+  },
+  "executions": {
+    "title": "हाल के निष्पादन",
+    "empty": "हाल के निष्पादन नहीं हैं",
+    "noTime": "लागू नहीं"
+  }
+}

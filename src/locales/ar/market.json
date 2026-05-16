@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "بيانات السوق"
+  },
+  "controls": {
+    "exchange": "البورصة:",
+    "instrument": "الأداة:",
+    "timeframe": "الإطار الزمني:",
+    "selectExchange": "اختر البورصة",
+    "searchInstrument": "ابحث عن أداة..."
+  },
+  "timeframes": {
+    "1m": "دقيقة واحدة",
+    "5m": "5 دقائق",
+    "15m": "15 دقيقة",
+    "30m": "30 دقيقة",
+    "1h": "ساعة واحدة",
+    "4h": "4 ساعات",
+    "1d": "يوم واحد"
+  },
+  "stats": {
+    "currentPrice": "السعر الحالي",
+    "change24h": "تغير 24 ساعة",
+    "high24h": "أعلى 24 ساعة",
+    "low24h": "أدنى 24 ساعة"
+  },
+  "chart": {
+    "title": "مخطط السعر",
+    "errorPrefix": "خطأ في تحميل بيانات المخطط:",
+    "unknownError": "خطأ غير معروف",
+    "noDataTitle": "لا توجد بيانات متاحة لـ {{instrument}}",
+    "noDataHint": "قد لا تكون الأداة موجودة أو لا تحتوي على بيانات {{timeframe}}"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "لا توجد أدوات مرتبطة مكوّنة لـ {{instrument}} على {{exchange}}."
+  },
+  "cacheBanner": {
+    "message": "يجري تجهيز التخزين المؤقت: {{sampleCount}} / {{expected}} شموع متاحة {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(مشتق من 1m)",
+      "db": "(من DB)"
+    }
+  }
+}

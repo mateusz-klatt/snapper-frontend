@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "सेटिंग्स",
+    "subtitle": "एप्लिकेशन सेटिंग्स और पैरामीटर कॉन्फ़िगर करें",
+    "addButton": "सेटिंग जोड़ें",
+    "searchPlaceholder": "सेटिंग्स खोजें...",
+    "noResults": "आपकी शर्तों से मेल खाने वाली कोई सेटिंग नहीं मिली।",
+    "allCategories": "सभी श्रेणियाँ",
+    "categoryFilterAriaLabel": "श्रेणी से सेटिंग्स फ़िल्टर करें"
+  },
+  "errors": {
+    "loadFailed": "सेटिंग्स लोड करने में विफल",
+    "updateFailed": "सेटिंग अपडेट करने में विफल",
+    "deleteFailed": "सेटिंग हटाने में विफल",
+    "createFailed": "सेटिंग बनाने में विफल",
+    "alreadyExists": "key \"{{key}}\" वाली सेटिंग पहले से मौजूद है"
+  },
+  "item": {
+    "edit": "संपादित करें",
+    "delete": "हटाएँ",
+    "save": "सहेजें",
+    "saving": "सहेजा जा रहा है...",
+    "cancel": "रद्द करें",
+    "yesDelete": "हाँ, हटाएँ",
+    "deleting": "हटाया जा रहा है...",
+    "deleteConfirm": "यह सेटिंग हटाएँ?",
+    "valuePlaceholder": "सेटिंग मान दर्ज करें...",
+    "showMore": "और दिखाएँ",
+    "showLess": "कम दिखाएँ",
+    "toggleAriaLabel": "{{key}} टॉगल करें",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 संवेदनशील"
+    },
+    "helpText": {
+      "allowShortSelling": "इंजन को Short पोजीशन खोलने दें। SELL सिग्नल negative desired_units बनाएँगे; अक्षम होने पर 0 पर clamp होता है।",
+      "allowManualOrders": "ऑर्डर टैब पर नया ऑर्डर बटन सक्षम करें। अक्षम होने पर POST /api/orders 403 लौटाता है।"
+    }
+  },
+  "addModal": {
+    "title": "नई सेटिंग जोड़ें",
+    "keyLabel": "Key",
+    "valueLabel": "मान",
+    "categoryLabel": "श्रेणी",
+    "descriptionLabel": "विवरण",
+    "keyPlaceholder": "जैसे, walutomat.api_key",
+    "keyHint": "नेस्टेड सेटिंग्स के लिए dot notation का उपयोग करें (जैसे category.subcategory.name)",
+    "valuePlaceholder": "सेटिंग मान",
+    "categorySelectPlaceholder": "मौजूदा चुनें या नया बनाएँ",
+    "newCategoryPlaceholder": "या नई श्रेणी का नाम दर्ज करें",
+    "descriptionPlaceholder": "वैकल्पिक विवरण",
+    "cancel": "रद्द करें",
+    "create": "सेटिंग बनाएँ",
+    "creating": "बन रहा है...",
+    "validation": {
+      "keyRequired": "Key आवश्यक है",
+      "valueRequired": "मान आवश्यक है",
+      "categoryRequired": "श्रेणी आवश्यक है"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "फ़ॉर्म एडिटर",
+    "rawEditor": "Raw JSON एडिटर",
+    "rawJson": "Raw JSON",
+    "switchToForm": "फ़ॉर्म पर स्विच करें",
+    "importToForm": "फ़ॉर्म में आयात करें",
+    "parseError": "Parse त्रुटि: {{message}}",
+    "arraySummary": "Array ({{length}} आइटम)",
+    "addItem": "आइटम जोड़ें",
+    "remove": "हटाएँ",
+    "typeHint": {
+      "array": "(array)",
+      "object": "(object)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

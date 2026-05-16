@@ -1,0 +1,83 @@
+{
+  "loading": "در حال بارگذاری...",
+  "error": "خطا",
+  "retry": "تلاش دوباره",
+  "close": "بستن",
+  "cancel": "لغو",
+  "confirm": "تأیید",
+  "save": "ذخیره",
+  "documentation": "مستندات (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "تغییر زبان",
+    "flagAriaLabel": "تغییر به {{country}}",
+    "currentAriaLabel": "زبان فعلی: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "کنسول معاملاتی",
+    "tagline": "ایستگاه کاری دقیق",
+    "openSidebar": "باز کردن نوار کناری",
+    "closeSidebar": "بستن نوار کناری",
+    "sidebar": "نوار کناری",
+    "mainNavigation": "ناوبری اصلی",
+    "tradingContent": "محتوای معاملاتی",
+    "skipToContent": "رفتن به محتوای معاملاتی",
+    "lag": "تأخیر:",
+    "lagTitle": "تأخیر رفت‌وبرگشت تا سرور WebSocket",
+    "topics": "موضوعات:",
+    "topicsTitle": "تعداد موضوعات WebSocket مشترک‌شده",
+    "connected": "متصل",
+    "disconnected": "قطع اتصال",
+    "connectedTitle": "متصل به WebSocket",
+    "disconnectedTitle": "قطع اتصال از WebSocket",
+    "switchToLightMode": "تغییر به حالت روشن",
+    "switchToDarkMode": "تغییر به حالت تیره",
+    "timeTravelBanner": "حالت سفر در زمان — مشاهده داده‌های تاریخی (فقط خواندنی)",
+    "lagUnknown": "نامشخص",
+    "walletPicker": {
+      "ariaLabel": "کیف پول فعال",
+      "placeholder": "کیف پول",
+      "allWallets": "همه کیف پول‌ها",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "اپراتور فعال",
+      "placeholder": "اپراتور",
+      "allOperators": "همه اپراتورها"
+    },
+    "timeTravel": {
+      "pickerTitle": "سفر در زمان: یک نقطه تاریخی در زمان انتخاب کنید",
+      "exitAriaLabel": "خروج از حالت سفر در زمان",
+      "exitTitle": "بازگشت به حالت زنده"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "ابزار فقط برای مشاهده. Snapper داده‌های بازار را دریافت می‌کند اما نمی‌تواند برای این جفت (نماد، صرافی) سفارش ثبت کند.",
+      "ariaLabel": "ابزار فقط داده‌های بازار",
+      "badge": "فقط داده‌های بازار"
+    },
+    "liveOnly": {
+      "notice": "این زبانه وضعیت فعلی را نشان می‌دهد — نمای تاریخی در دسترس نیست."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "مشکلی پیش آمد",
+    "titleWithComponent": "خطا در {{componentName}}",
+    "stackTrace": "ردیابی پشته",
+    "tryAgain": "دوباره تلاش کنید"
+  },
+  "nav": {
+    "overview": "نمای کلی",
+    "market": "داده‌های بازار",
+    "processes": "فرایندها",
+    "strategies": "استراتژی‌ها",
+    "orders": "سفارش‌ها و اجراها",
+    "positions": "موقعیت‌ها",
+    "signals": "سیگنال‌ها",
+    "backtests": "Backtests",
+    "health": "سلامت",
+    "admin": "مدیریت",
+    "aiIntegration": "یکپارچه‌سازی AI",
+    "aiReviews": "بازبینی‌های AI",
+    "settings": "تنظیمات"
+  }
+}

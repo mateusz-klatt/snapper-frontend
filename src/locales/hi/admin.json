@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "प्रशासन",
+    "subtitle": "उपयोगकर्ताओं और सिस्टम कॉन्फ़िगरेशन को प्रबंधित करें"
+  },
+  "rolePermissions": {
+    "title": "रोल अनुमतियाँ",
+    "viewer": {
+      "label": "व्यूअर",
+      "description": "ओवरव्यू और बाजार डेटा तक केवल-पढ़ने की पहुँच। प्रोसेस, रणनीतियाँ या सिस्टम सेटिंग्स प्रबंधित नहीं कर सकता।"
+    },
+    "operator": {
+      "label": "ऑपरेटर",
+      "description": "सभी व्यूअर अनुमतियाँ, साथ में ट्रेडिंग ऑपरेशन, रणनीति निष्पादन, प्रोसेस प्रबंधन और सिस्टम हेल्थ मॉनिटरिंग।"
+    },
+    "admin": {
+      "label": "एडमिन",
+      "description": "उपयोगकर्ता प्रबंधन, सिस्टम सेटिंग्स, API key कॉन्फ़िगरेशन और सभी ऑपरेटर अनुमतियों सहित पूर्ण सिस्टम पहुँच।"
+    },
+    "table": {
+      "resource": "संसाधन",
+      "viewer": "व्यूअर",
+      "operator": "ऑपरेटर",
+      "admin": "एडमिन"
+    },
+    "resources": {
+      "overview": "ओवरव्यू",
+      "market": "बाजार डेटा",
+      "processes": "प्रोसेस",
+      "strategies": "रणनीतियाँ",
+      "orders": "ऑर्डर और निष्पादन",
+      "positions": "पोजीशन",
+      "signals": "सिग्नल",
+      "health": "हेल्थ",
+      "admin": "प्रशासन",
+      "settings": "सेटिंग्स"
+    }
+  },
+  "common": {
+    "cancel": "रद्द करें",
+    "selectWallet": "वॉलेट चुनें",
+    "selectAWallet": "एक वॉलेट चुनें",
+    "chooseWalletPlaceholder": "एक वॉलेट चुनें...",
+    "selectWalletPlaceholder": "वॉलेट चुनें...",
+    "walletLabel": "वॉलेट",
+    "paperAnnotation": " (paper)",
+    "unknownError": "अज्ञात त्रुटि",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "पहुँच अस्वीकृत",
+      "message": "आपके पास उपयोगकर्ता प्रबंधित करने की अनुमति नहीं है। कृपया अपने सिस्टम एडमिन से संपर्क करें।"
+    },
+    "list": {
+      "title": "उपयोगकर्ता प्रबंधन",
+      "countLabel": "{{count}} उपयोगकर्ता",
+      "showInactive": "निष्क्रिय दिखाएँ",
+      "hideInactive": "निष्क्रिय छिपाएँ",
+      "addUser": "उपयोगकर्ता जोड़ें",
+      "searchPlaceholder": "उपयोगकर्ता नाम, ईमेल या रोल से खोजें...",
+      "columns": {
+        "user": "उपयोगकर्ता",
+        "role": "रोल",
+        "status": "स्थिति",
+        "createdAt": "बनाया गया",
+        "actions": "कार्रवाइयाँ"
+      },
+      "status": {
+        "active": "सक्रिय",
+        "inactive": "निष्क्रिय"
+      },
+      "unknown": "अज्ञात",
+      "empty": {
+        "title": "कोई उपयोगकर्ता नहीं मिला",
+        "noMatch": "कोई उपयोगकर्ता आपकी खोज शर्तों से मेल नहीं खाता।",
+        "noUsers": "कोई उपयोगकर्ता नहीं मिला।",
+        "noActive": "कोई सक्रिय उपयोगकर्ता नहीं मिला।"
+      },
+      "errorLoading": "उपयोगकर्ता लोड करने में त्रुटि: {{message}}",
+      "deactivate": {
+        "title": "उपयोगकर्ता निष्क्रिय करें",
+        "message": "क्या आप वाकई उपयोगकर्ता \"{{username}}\" को निष्क्रिय करना चाहते हैं? वे अब साइन इन नहीं कर पाएँगे।",
+        "confirm": "निष्क्रिय करें"
+      },
+      "toast": {
+        "deactivated": "उपयोगकर्ता निष्क्रिय कर दिया गया है",
+        "deactivateError": "उपयोगकर्ता निष्क्रिय करने में त्रुटि"
+      }
+    },
+    "form": {
+      "titleEdit": "उपयोगकर्ता संपादित करें",
+      "titleAdd": "उपयोगकर्ता जोड़ें",
+      "fields": {
+        "username": "उपयोगकर्ता नाम",
+        "usernamePlaceholder": "उपयोगकर्ता नाम दर्ज करें",
+        "password": "पासवर्ड",
+        "passwordPlaceholder": "पासवर्ड दर्ज करें",
+        "newPassword": "नया पासवर्ड",
+        "newPasswordPlaceholder": "नया पासवर्ड दर्ज करें",
+        "email": "ईमेल",
+        "emailPlaceholder": "ईमेल दर्ज करें",
+        "role": "रोल",
+        "accountActive": "खाता सक्रिय",
+        "resetUserPassword": "उपयोगकर्ता पासवर्ड रीसेट करें"
+      },
+      "roles": {
+        "viewer": "व्यूअर",
+        "operator": "ऑपरेटर",
+        "admin": "एडमिन"
+      },
+      "validation": {
+        "usernameRequired": "उपयोगकर्ता नाम आवश्यक है",
+        "usernameMinLength": "उपयोगकर्ता नाम कम से कम 3 अक्षर का होना चाहिए",
+        "emailRequired": "ईमेल आवश्यक है",
+        "emailInvalid": "ईमेल फ़ॉर्मेट अमान्य है",
+        "passwordRequired": "पासवर्ड आवश्यक है",
+        "passwordMinLength": "पासवर्ड कम से कम 8 अक्षर का होना चाहिए",
+        "passwordRequiredWhenResetting": "रीसेट करते समय पासवर्ड आवश्यक है"
+      },
+      "actions": {
+        "saveChanges": "बदलाव सहेजें",
+        "createUser": "उपयोगकर्ता बनाएँ"
+      },
+      "toast": {
+        "created": "उपयोगकर्ता बनाया गया है",
+        "createError": "उपयोगकर्ता बनाने में त्रुटि",
+        "updated": "उपयोगकर्ता अपडेट किया गया है",
+        "updateError": "उपयोगकर्ता अपडेट करने में त्रुटि",
+        "passwordReset": "उपयोगकर्ता पासवर्ड रीसेट किया गया है",
+        "resetError": "पासवर्ड रीसेट करने में त्रुटि"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "पहुँच अस्वीकृत",
+      "message": "आपके पास स्कोप अनुमतियाँ प्रबंधित करने की अनुमति नहीं है। कृपया अपने सिस्टम एडमिन से संपर्क करें।"
+    },
+    "list": {
+      "title": "स्कोप अनुमतियाँ",
+      "countLabel": "{{count}} अनुदान",
+      "createGrant": "स्कोप दें",
+      "selectWalletPrompt": "उसकी स्कोप अनुमतियाँ देखने के लिए ऊपर एक वॉलेट चुनें।",
+      "columns": {
+        "operator": "ऑपरेटर",
+        "scope": "स्कोप",
+        "target": "लक्ष्य",
+        "grantedAt": "दिया गया",
+        "actions": "कार्रवाइयाँ"
+      },
+      "empty": {
+        "noGrants": "कोई अनुदान नहीं मिला",
+        "noGrantsHint": "इस वॉलेट में कोई सक्रिय स्कोप अनुमति नहीं है।"
+      },
+      "errorLoading": "अनुदान लोड करने में त्रुटि: {{message}}",
+      "handover": "हैंडओवर"
+    },
+    "form": {
+      "title": "स्कोप अनुदान बनाएँ",
+      "fields": {
+        "operator": "ऑपरेटर",
+        "operatorPlaceholder": "ऑपरेटर चुनें...",
+        "wallet": "वॉलेट",
+        "scopeKind": "स्कोप प्रकार",
+        "underlyingPublicId": "Underlying Public ID",
+        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPlaceholder": "जैसे BTC",
+        "instrumentPlaceholder": "जैसे BTC-USD-PERP",
+        "note": "नोट (वैकल्पिक)",
+        "notePlaceholder": "वैकल्पिक नोट"
+      },
+      "scopeKinds": {
+        "underlying": "Underlying",
+        "instrument": "इंस्ट्रूमेंट"
+      },
+      "validation": {
+        "operatorRequired": "ऑपरेटर आवश्यक है",
+        "walletRequired": "वॉलेट आवश्यक है",
+        "targetRequired": "लक्ष्य ID आवश्यक है"
+      },
+      "actions": {
+        "createGrant": "स्कोप दें"
+      },
+      "toast": {
+        "created": "स्कोप अनुदान बनाया गया",
+        "conflictError": "टकराव: कोई अन्य ऑपरेटर इस स्कोप पर पहले से अनुदान रखता है",
+        "createError": "स्कोप अनुदान बनाने में त्रुटि"
+      }
+    },
+    "handover": {
+      "title": "स्कोप अनुदान हैंडओवर करें",
+      "fields": {
+        "currentHolder": "वर्तमान धारक",
+        "scope": "स्कोप",
+        "wallet": "वॉलेट",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "ऑपरेटर को ट्रांसफर करें",
+        "transferToPlaceholder": "गंतव्य ऑपरेटर चुनें...",
+        "reason": "कारण (वैकल्पिक)",
+        "reasonPlaceholder": "जैसे शिफ्ट परिवर्तन"
+      },
+      "actions": {
+        "handover": "हैंडओवर"
+      },
+      "toast": {
+        "completed": "स्कोप अनुदान हैंडओवर किया गया",
+        "conflictError": "टकराव: गंतव्य ऑपरेटर पहले से एक टकराने वाला अनुदान रखता है",
+        "handoverError": "स्कोप अनुदान हैंडओवर करने में त्रुटि"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "पहुँच अस्वीकृत",
+      "message": "आपके पास वॉलेट क्रेडेंशियल प्रबंधित करने की अनुमति नहीं है। कृपया अपने सिस्टम एडमिन से संपर्क करें।"
+    },
+    "list": {
+      "title": "वॉलेट क्रेडेंशियल",
+      "countLabel": "{{count}} क्रेडेंशियल",
+      "addCredential": "क्रेडेंशियल जोड़ें",
+      "selectWalletPrompt": "उसके क्रेडेंशियल देखने के लिए ऊपर एक वॉलेट चुनें।",
+      "columns": {
+        "exchange": "एक्सचेंज",
+        "type": "प्रकार",
+        "label": "लेबल",
+        "createdAt": "बनाया गया",
+        "actions": "कार्रवाइयाँ"
+      },
+      "empty": {
+        "noCredentials": "कोई क्रेडेंशियल नहीं मिला",
+        "noCredentialsHint": "इस वॉलेट में कोई सक्रिय क्रेडेंशियल नहीं है।"
+      },
+      "errorLoading": "क्रेडेंशियल लोड करने में त्रुटि: {{message}}",
+      "rotate": "बदलें"
+    },
+    "form": {
+      "title": "क्रेडेंशियल जोड़ें",
+      "fields": {
+        "wallet": "वॉलेट",
+        "exchange": "एक्सचेंज",
+        "exchangePlaceholder": "जैसे kraken",
+        "credentialType": "क्रेडेंशियल प्रकार",
+        "label": "लेबल (वैकल्पिक)",
+        "labelPlaceholder": "जैसे मुख्य ट्रेडिंग key",
+        "pemPlaceholder": "PEM फ़ॉर्मेट वाली निजी key यहाँ पेस्ट करें"
+      },
+      "fieldLabels": {
+        "api_key": "API Key",
+        "api_secret": "API Secret",
+        "private_key_pem": "Private Key (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "प्रारंभिक बैलेंस"
+      },
+      "credentialTypes": {
+        "api_key_secret": "API Key + Secret",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "वॉलेट आवश्यक है",
+        "exchangeRequired": "एक्सचेंज आवश्यक है",
+        "fieldRequired": "{{field}} आवश्यक है"
+      },
+      "actions": {
+        "addCredential": "क्रेडेंशियल जोड़ें"
+      },
+      "toast": {
+        "created": "क्रेडेंशियल बनाया गया",
+        "conflictError": "टकराव: इस वॉलेट के पास इस एक्सचेंज के लिए पहले से सक्रिय क्रेडेंशियल है",
+        "createError": "क्रेडेंशियल बनाने में त्रुटि"
+      }
+    },
+    "rotate": {
+      "title": "क्रेडेंशियल बदलना",
+      "fields": {
+        "exchange": "एक्सचेंज",
+        "type": "प्रकार",
+        "label": "लेबल",
+        "newLabel": "नया लेबल (वैकल्पिक)",
+        "newLabelPlaceholder": "जैसे बदली गई key 2026-04",
+        "pemPlaceholder": "PEM फ़ॉर्मेट वाली निजी key यहाँ पेस्ट करें"
+      },
+      "actions": {
+        "rotate": "बदलें"
+      },
+      "toast": {
+        "rotated": "क्रेडेंशियल बदला गया",
+        "rotateError": "क्रेडेंशियल बदलने में त्रुटि"
+      }
+    }
+  }
+}

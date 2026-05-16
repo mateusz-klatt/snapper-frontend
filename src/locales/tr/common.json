@@ -1,0 +1,83 @@
+{
+  "loading": "Yükleniyor...",
+  "error": "Hata",
+  "retry": "Tekrar dene",
+  "close": "Kapat",
+  "cancel": "İptal",
+  "confirm": "Onayla",
+  "save": "Kaydet",
+  "documentation": "Dokümantasyon (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "Dili değiştir",
+    "flagAriaLabel": "{{country}} diline geç",
+    "currentAriaLabel": "Geçerli dil: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "Trading Konsolu",
+    "tagline": "Hassas çalışma istasyonu",
+    "openSidebar": "Kenar çubuğunu aç",
+    "closeSidebar": "Kenar çubuğunu kapat",
+    "sidebar": "Kenar çubuğu",
+    "mainNavigation": "Ana gezinme",
+    "tradingContent": "Trading içeriği",
+    "skipToContent": "Trading içeriğine geç",
+    "lag": "Gecikme:",
+    "lagTitle": "WebSocket sunucusuna gidiş-dönüş gecikmesi",
+    "topics": "Konular:",
+    "topicsTitle": "Abone olunan WebSocket konu sayısı",
+    "connected": "Bağlı",
+    "disconnected": "Bağlı değil",
+    "connectedTitle": "WebSocket'e bağlı",
+    "disconnectedTitle": "WebSocket bağlantısı yok",
+    "switchToLightMode": "Açık moda geç",
+    "switchToDarkMode": "Koyu moda geç",
+    "timeTravelBanner": "Zaman Yolculuğu Modu — geçmiş veriler görüntüleniyor (salt okunur)",
+    "lagUnknown": "Bilinmiyor",
+    "walletPicker": {
+      "ariaLabel": "Aktif cüzdan",
+      "placeholder": "Cüzdan",
+      "allWallets": "Tüm cüzdanlar",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "Aktif operator",
+      "placeholder": "Operator",
+      "allOperators": "Tüm operatorler"
+    },
+    "timeTravel": {
+      "pickerTitle": "Zaman yolculuğu: geçmişte bir zaman noktası seç",
+      "exitAriaLabel": "Zaman yolculuğu modundan çık",
+      "exitTitle": "Canlı moda dön"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "Yalnızca gözlem amaçlı enstrüman. Snapper piyasa verileri alır ancak bu (sembol, borsa) çifti için emir veremez.",
+      "ariaLabel": "Yalnızca piyasa verisi enstrümanı",
+      "badge": "Yalnızca piyasa verisi"
+    },
+    "liveOnly": {
+      "notice": "Bu sekme güncel durumu gösterir — geçmiş görünüm kullanılamaz."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "Bir şeyler ters gitti",
+    "titleWithComponent": "{{componentName}} içinde hata",
+    "stackTrace": "Yığın izi",
+    "tryAgain": "Tekrar dene"
+  },
+  "nav": {
+    "overview": "Genel Bakış",
+    "market": "Piyasa verileri",
+    "processes": "Süreçler",
+    "strategies": "Stratejiler",
+    "orders": "Emirler ve Gerçekleşmeler",
+    "positions": "Pozisyonlar",
+    "signals": "Sinyaller",
+    "backtests": "Backtests",
+    "health": "Sağlık",
+    "admin": "Yönetim",
+    "aiIntegration": "AI Entegrasyonu",
+    "aiReviews": "AI İncelemeleri",
+    "settings": "Ayarlar"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "सिस्टम हेल्थ",
+    "healthMetricsHeading": "हेल्थ मेट्रिक्स",
+    "processStatusHeading": "प्रोसेस स्थिति",
+    "activeBacktestsHeading": "सक्रिय Backtests",
+    "quickActionsHeading": "त्वरित कार्रवाइयाँ",
+    "featureNotImplemented": "फ़ीचर अभी लागू नहीं हुआ",
+    "restartServices": "सर्विस फिर शुरू करें",
+    "runHealthCheck": "हेल्थ चेक चलाएँ",
+    "viewLogs": "लॉग देखें",
+    "exportReport": "रिपोर्ट निर्यात करें"
+  },
+  "status": {
+    "healthy": "स्वस्थ",
+    "stopped": "रुका हुआ",
+    "error": "त्रुटि",
+    "warning": "चेतावनी",
+    "completed": "पूरा",
+    "unknown": "अज्ञात"
+  },
+  "metrics": {
+    "tradingEngine": "ट्रेडिंग इंजन",
+    "tradingEngineDescription": "रणनीति निष्पादन इंजन",
+    "activeBacktests": "सक्रिय Backtests",
+    "activeBacktestsDescription": "चल रहे Backtest प्रोसेस",
+    "active": "सक्रिय",
+    "inactive": "निष्क्रिय"
+  },
+  "process": {
+    "uptimeNotAvailable": "लागू नहीं",
+    "uptimeMinutes": "{{minutes}}मि",
+    "uptimeHours": "{{hours}}घं {{minutes}}मि",
+    "uptimeDays": "{{days}}दि {{hours}}घं",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "लागू नहीं",
+    "uptimeLabel": "अपटाइम",
+    "exitCode": "एग्ज़िट कोड: {{code}}",
+    "service": "सर्विस",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "डेटाबेस आँकड़े",
+    "loading": "डेटाबेस आँकड़े लोड हो रहे हैं…",
+    "unavailable": "डेटाबेस आँकड़े उपलब्ध नहीं: {{message}}",
+    "fallbackError": "डेटाबेस आँकड़े लोड करने में विफल।",
+    "sampled": "{{age}} पर सैंपल किया गया",
+    "samplerSummary": "सैंपलर अंतराल: {{seconds}}से · {{count}} टेबल",
+    "columns": {
+      "table": "टेबल",
+      "kind": "किस्म",
+      "total": "कुल",
+      "current": "वर्तमान",
+      "closed": "बंद",
+      "archivable": "आर्काइव योग्य",
+      "status": "स्थिति"
+    },
+    "stale": "पुराना"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "नोटिफिकेशन मेट्रिक्स लोड हो रहे हैं…",
+    "unavailable": "नोटिफिकेशन मेट्रिक्स उपलब्ध नहीं: {{message}}",
+    "fallbackError": "नोटिफिकेशन मेट्रिक्स लोड करने में विफल।",
+    "sent": "भेजा गया",
+    "sentDescription": "टर्मिनल: भेजा गया",
+    "failed": "विफल",
+    "failedDescription": "रीट्राई बजट समाप्त",
+    "unregistered": "अनरजिस्टर्ड",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "रद्द (स्कोप)",
+    "cancelledScopeDescription": "स्कोप रद्द / उपयोगकर्ता निष्क्रिय",
+    "outboxDepth": "Outbox गहराई",
+    "outboxDepthDescription": "कतार में, फिर कोशिश की प्रतीक्षा"
+  },
+  "retention": {
+    "title": "रिटेंशन शेड्यूलर",
+    "loading": "रिटेंशन रन लोड हो रहा है…",
+    "unavailable": "रिटेंशन रन उपलब्ध नहीं: {{message}}",
+    "fallbackError": "रिटेंशन रन लोड करने में विफल।",
+    "lastRun": "अंतिम रन {{age}}",
+    "dryRunNotice": "Dry-run मोड: पंक्तियाँ आर्काइव होती हैं लेकिन DB से हटाई नहीं जातीं।",
+    "columns": {
+      "table": "टेबल",
+      "retain": "रखें",
+      "archivedWindow": "आर्काइव विंडो",
+      "archived": "आर्काइव किया",
+      "purged": "हटाया गया",
+      "files": "फाइलें",
+      "status": "स्थिति"
+    },
+    "retainDays": "{{days}}दि",
+    "ok": "ठीक",
+    "error": "त्रुटि"
+  },
+  "systemMetrics": {
+    "title": "प्रोसेस हेल्थ",
+    "loading": "प्रोसेस मेट्रिक्स लोड हो रहे हैं…",
+    "unavailable": "प्रोसेस मेट्रिक्स उपलब्ध नहीं: {{message}}",
+    "fallbackError": "प्रोसेस हेल्थ मेट्रिक्स लोड करने में विफल।",
+    "rawJson": "Raw JSON",
+    "pid": "PID",
+    "statusValue": "स्थिति: {{status}}",
+    "uptime": "अपटाइम",
+    "threads": "Threads",
+    "openFds": "खुले FDs",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "{{count}}× थ्रॉटल किया गया",
+    "memory": "मेमोरी",
+    "saturation": "सैचुरेशन {{percent}}",
+    "asyncioTasks": "Asyncio Tasks",
+    "asyncioActive": "{{count}} सक्रिय",
+    "asyncioPending": "+ {{count}} लंबित",
+    "dbPool": "DB Pool",
+    "liveConns": "लाइव कनेक्शन: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "ऑब्जेक्ट: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "नेटवर्क कनेक्शन",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "सक्रिय",
+    "tracemallocIdle": "निष्क्रिय"
+  },
+  "relativeAge": {
+    "justNow": "अभी",
+    "seconds": "{{seconds}}से पहले",
+    "minutes": "{{minutes}}मि पहले",
+    "hours": "{{hours}}घं पहले",
+    "days": "{{days}}दि पहले"
+  },
+  "duration": {
+    "seconds": "{{seconds}}से",
+    "minutes": "{{minutes}}मि",
+    "hours": "{{hours}}घं",
+    "days": "{{days}}दि"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

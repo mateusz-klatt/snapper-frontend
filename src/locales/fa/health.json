@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "سلامت سیستم",
+    "healthMetricsHeading": "معیارهای سلامت",
+    "processStatusHeading": "وضعیت فرایند",
+    "activeBacktestsHeading": "Backtests فعال",
+    "quickActionsHeading": "اقدام‌های سریع",
+    "featureNotImplemented": "این قابلیت هنوز پیاده‌سازی نشده است",
+    "restartServices": "راه‌اندازی دوباره سرویس‌ها",
+    "runHealthCheck": "اجرای بررسی سلامت",
+    "viewLogs": "مشاهده لاگ‌ها",
+    "exportReport": "صدور گزارش"
+  },
+  "status": {
+    "healthy": "سالم",
+    "stopped": "متوقف",
+    "error": "خطا",
+    "warning": "هشدار",
+    "completed": "تکمیل شد",
+    "unknown": "نامشخص"
+  },
+  "metrics": {
+    "tradingEngine": "موتور معاملاتی",
+    "tradingEngineDescription": "موتور اجرای استراتژی",
+    "activeBacktests": "Backtests فعال",
+    "activeBacktestsDescription": "فرایندهای Backtest در حال اجرا",
+    "active": "فعال",
+    "inactive": "غیرفعال"
+  },
+  "process": {
+    "uptimeNotAvailable": "ناموجود",
+    "uptimeMinutes": "{{minutes}}د",
+    "uptimeHours": "{{hours}}س {{minutes}}د",
+    "uptimeDays": "{{days}}ر {{hours}}س",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "ناموجود",
+    "uptimeLabel": "زمان کارکرد",
+    "exitCode": "کد خروج: {{code}}",
+    "service": "سرویس",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "آمار پایگاه داده",
+    "loading": "در حال بارگذاری آمار پایگاه داده…",
+    "unavailable": "آمار پایگاه داده در دسترس نیست: {{message}}",
+    "fallbackError": "بارگذاری آمار پایگاه داده ناموفق بود.",
+    "sampled": "نمونه‌برداری شد {{age}}",
+    "samplerSummary": "فاصله نمونه‌برداری: {{seconds}}ث · {{count}} جدول",
+    "columns": {
+      "table": "جدول",
+      "kind": "نوع",
+      "total": "کل",
+      "current": "فعلی",
+      "closed": "بسته",
+      "archivable": "قابل آرشیو",
+      "status": "وضعیت"
+    },
+    "stale": "کهنه"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "در حال بارگذاری معیارهای اعلان…",
+    "unavailable": "معیارهای اعلان در دسترس نیست: {{message}}",
+    "fallbackError": "بارگذاری معیارهای اعلان ناموفق بود.",
+    "sent": "ارسال شد",
+    "sentDescription": "نهایی: ارسال شد",
+    "failed": "ناموفق",
+    "failedDescription": "بودجه تلاش دوباره تمام شد",
+    "unregistered": "ثبت‌نشده",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "لغو شد (محدوده)",
+    "cancelledScopeDescription": "لغو محدوده / غیرفعال‌سازی کاربر",
+    "outboxDepth": "عمق Outbox",
+    "outboxDepthDescription": "در صف، در انتظار تلاش دوباره"
+  },
+  "retention": {
+    "title": "زمان‌بند نگهداری",
+    "loading": "در حال بارگذاری اجرای نگهداری…",
+    "unavailable": "اجرای نگهداری در دسترس نیست: {{message}}",
+    "fallbackError": "بارگذاری اجرای نگهداری ناموفق بود.",
+    "lastRun": "آخرین اجرا {{age}}",
+    "dryRunNotice": "حالت Dry-run: ردیف‌ها آرشیو می‌شوند اما از DB حذف نمی‌شوند.",
+    "columns": {
+      "table": "جدول",
+      "retain": "نگهداری",
+      "archivedWindow": "بازه آرشیوشده",
+      "archived": "آرشیو شد",
+      "purged": "پاک شد",
+      "files": "فایل‌ها",
+      "status": "وضعیت"
+    },
+    "retainDays": "{{days}}ر",
+    "ok": "خوب",
+    "error": "خطا"
+  },
+  "systemMetrics": {
+    "title": "سلامت فرایند",
+    "loading": "در حال بارگذاری معیارهای فرایند…",
+    "unavailable": "معیارهای فرایند در دسترس نیست: {{message}}",
+    "fallbackError": "بارگذاری معیارهای سلامت فرایند ناموفق بود.",
+    "rawJson": "JSON خام",
+    "pid": "PID",
+    "statusValue": "وضعیت: {{status}}",
+    "uptime": "زمان کارکرد",
+    "threads": "Threads",
+    "openFds": "FDهای باز",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "{{count}}× محدود شد",
+    "memory": "حافظه",
+    "saturation": "اشباع {{percent}}",
+    "asyncioTasks": "وظایف Asyncio",
+    "asyncioActive": "{{count}} فعال",
+    "asyncioPending": "+ {{count}} در انتظار",
+    "dbPool": "DB Pool",
+    "liveConns": "اتصال‌های زنده: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "اشیا: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "اتصال‌های شبکه",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "فعال",
+    "tracemallocIdle": "بیکار"
+  },
+  "relativeAge": {
+    "justNow": "همین حالا",
+    "seconds": "{{seconds}}ث قبل",
+    "minutes": "{{minutes}}د قبل",
+    "hours": "{{hours}}س قبل",
+    "days": "{{days}}ر قبل"
+  },
+  "duration": {
+    "seconds": "{{seconds}}ث",
+    "minutes": "{{minutes}}د",
+    "hours": "{{hours}}س",
+    "days": "{{days}}ر"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

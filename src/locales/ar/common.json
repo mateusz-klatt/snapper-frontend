@@ -1,0 +1,83 @@
+{
+  "loading": "جارٍ التحميل...",
+  "error": "خطأ",
+  "retry": "إعادة المحاولة",
+  "close": "إغلاق",
+  "cancel": "إلغاء",
+  "confirm": "تأكيد",
+  "save": "حفظ",
+  "documentation": "التوثيق (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "تغيير اللغة",
+    "flagAriaLabel": "التبديل إلى {{country}}",
+    "currentAriaLabel": "اللغة الحالية: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "وحدة التداول",
+    "tagline": "محطة عمل دقيقة",
+    "openSidebar": "فتح الشريط الجانبي",
+    "closeSidebar": "إغلاق الشريط الجانبي",
+    "sidebar": "الشريط الجانبي",
+    "mainNavigation": "التنقل الرئيسي",
+    "tradingContent": "محتوى التداول",
+    "skipToContent": "الانتقال إلى محتوى التداول",
+    "lag": "التأخير:",
+    "lagTitle": "زمن الذهاب والعودة إلى خادم WebSocket",
+    "topics": "الموضوعات:",
+    "topicsTitle": "عدد موضوعات WebSocket المشترك بها",
+    "connected": "متصل",
+    "disconnected": "غير متصل",
+    "connectedTitle": "متصل بـ WebSocket",
+    "disconnectedTitle": "غير متصل بـ WebSocket",
+    "switchToLightMode": "التبديل إلى الوضع الفاتح",
+    "switchToDarkMode": "التبديل إلى الوضع الداكن",
+    "timeTravelBanner": "وضع السفر عبر الزمن — عرض بيانات تاريخية (للقراءة فقط)",
+    "lagUnknown": "غير معروف",
+    "walletPicker": {
+      "ariaLabel": "المحفظة النشطة",
+      "placeholder": "محفظة",
+      "allWallets": "كل المحافظ",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "المشغّل النشط",
+      "placeholder": "المشغّل",
+      "allOperators": "كل المشغّلين"
+    },
+    "timeTravel": {
+      "pickerTitle": "السفر عبر الزمن: اختر نقطة زمنية تاريخية",
+      "exitAriaLabel": "الخروج من وضع السفر عبر الزمن",
+      "exitTitle": "العودة إلى الوضع المباشر"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "أداة للمراقبة فقط. يتلقى Snapper بيانات السوق لكنه لا يستطيع وضع أوامر لهذا الزوج (الرمز، البورصة).",
+      "ariaLabel": "أداة بيانات السوق فقط",
+      "badge": "بيانات السوق فقط"
+    },
+    "liveOnly": {
+      "notice": "تعرض هذه علامة التبويب الحالة الحالية — العرض التاريخي غير متاح."
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "حدث خطأ ما",
+    "titleWithComponent": "خطأ في {{componentName}}",
+    "stackTrace": "تتبع المكدس",
+    "tryAgain": "حاول مرة أخرى"
+  },
+  "nav": {
+    "overview": "نظرة عامة",
+    "market": "بيانات السوق",
+    "processes": "العمليات",
+    "strategies": "الاستراتيجيات",
+    "orders": "الأوامر والتنفيذات",
+    "positions": "المراكز",
+    "signals": "الإشارات",
+    "backtests": "Backtests",
+    "health": "الصحة",
+    "admin": "الإدارة",
+    "aiIntegration": "تكامل AI",
+    "aiReviews": "مراجعات AI",
+    "settings": "الإعدادات"
+  }
+}

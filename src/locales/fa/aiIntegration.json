@@ -1,0 +1,133 @@
+{
+  "page": {
+    "title": "یکپارچه‌سازی AI",
+    "subtitle": "نمایندگان AI را که از طریق MCP به Snapper متصل می‌شوند مدیریت کنید.",
+    "loading": "در حال بارگذاری یکپارچه‌سازی AI…",
+    "createDelegate": "ایجاد نماینده"
+  },
+  "disabled": {
+    "title": "یکپارچه‌سازی AI غیرفعال است",
+    "message": "برای مدیریت نمایندگان AI، پرچم قابلیت را در تنظیمات → پرچم‌های قابلیت فعال کنید."
+  },
+  "list": {
+    "loadingDelegates": "در حال بارگذاری نمایندگان…",
+    "emptyTitle": "هنوز نماینده AI وجود ندارد",
+    "emptyMessage": "برای ایجاد یکی و تولید قطعه پیکربندی MCP آن، روی “ایجاد نماینده” کلیک کنید.",
+    "columns": {
+      "label": "برچسب",
+      "username": "نام کاربری",
+      "created": "ایجاد شد",
+      "maxOpenOrders": "حداکثر سفارش باز",
+      "maxDailyUsd": "حداکثر USD روزانه",
+      "status": "وضعیت",
+      "actions": "اقدامات"
+    },
+    "status": {
+      "active": "فعال",
+      "revoked": "لغو شده"
+    },
+    "default": "پیش‌فرض",
+    "details": "جزئیات",
+    "viewAriaLabel": "مشاهده نماینده {{label}}"
+  },
+  "wizard": {
+    "title": "ایجاد نماینده AI",
+    "step1": "1. هویت",
+    "step2": "2. محدوده و سقف‌ها",
+    "step3": "3. بازبینی",
+    "stepDone": "✓ انجام شد",
+    "identity": {
+      "labelField": "برچسب",
+      "labelPlaceholder": "مثلاً Alpha prop desk",
+      "labelHelpPrefix": "نام کاربری نماینده در سمت سرور به این صورت ساخته می‌شود: ",
+      "labelHelpSuffix": "."
+    },
+    "scope": {
+      "heading": "محدوده",
+      "operatorLabel": "public_id اپراتور (اختیاری)",
+      "operatorPlaceholder": "برای ارث‌بری اپراتور اصلی فراخواننده، خالی بگذارید"
+    },
+    "caps": {
+      "heading": "سقف‌های معاملاتی (همه اختیاری)",
+      "maxOpenOrders": "حداکثر سفارش باز",
+      "maxDailyNotionalUsd": "حداکثر ارزش اسمی روزانه USD",
+      "maxCancelsPerMinute": "حداکثر لغو در دقیقه",
+      "perInstrument": "حداکثر مقدار برای هر ابزار (JSON)",
+      "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
+      "default": "پیش‌فرض",
+      "errorInvalidJson": "max_order_quantity_per_instrument باید JSON معتبر باشد",
+      "errorJsonObject": "max_order_quantity_per_instrument باید یک شیء JSON یا خالی باشد",
+      "errorNegative": "سقف‌ها باید اعداد صحیح غیرمنفی یا خالی باشند."
+    },
+    "review": {
+      "heading": "بازبینی و ایجاد",
+      "rowLabel": "برچسب",
+      "rowOperator": "public_id اپراتور",
+      "rowMaxOpenOrders": "حداکثر سفارش باز",
+      "rowMaxDailyNotional": "حداکثر ارزش اسمی روزانه USD",
+      "rowMaxCancelsPerMinute": "حداکثر لغو در دقیقه",
+      "rowPerInstrument": "حداکثر مقدار برای هر ابزار",
+      "operatorDefault": "(اپراتور اصلی فراخواننده)",
+      "defaultValue": "(پیش‌فرض)"
+    },
+    "buttons": {
+      "cancel": "لغو",
+      "next": "بعدی",
+      "back": "بازگشت",
+      "createDelegate": "ایجاد نماینده",
+      "iSavedClose": "این‌ها را ذخیره کردم — بستن"
+    },
+    "toast": {
+      "delegateCreated": "نماینده ایجاد شد",
+      "failedToCreate": "ایجاد نماینده ناموفق بود"
+    }
+  },
+  "detail": {
+    "loading": "در حال بارگذاری نماینده…",
+    "notFound": "نماینده یافت نشد یا در دسترس نیست.",
+    "back": "بازگشت",
+    "backToList": "بازگشت به فهرست",
+    "updateCaps": "به‌روزرسانی سقف‌ها",
+    "revoke": "لغو",
+    "save": "ذخیره",
+    "cancel": "لغو",
+    "tradingCaps": "سقف‌های معاملاتی",
+    "status": "وضعیت",
+    "active": "فعال",
+    "revoked": "لغو شده",
+    "createdAt": "ایجاد شده در",
+    "createdBy": "ایجاد شده توسط (user public_id)",
+    "publicId": "Public ID",
+    "maxOpenOrders": "حداکثر سفارش باز",
+    "maxDailyNotionalUsd": "حداکثر ارزش اسمی روزانه USD",
+    "maxCancelsPerMinute": "حداکثر لغو در دقیقه",
+    "perInstrument": "حداکثر مقدار برای هر ابزار",
+    "defaultValue": "(پیش‌فرض)",
+    "editorPlaceholder": "(پیش‌فرض)",
+    "toast": {
+      "capsUpdated": "سقف‌ها به‌روزرسانی شدند",
+      "failedToUpdateCaps": "به‌روزرسانی سقف‌ها ناموفق بود",
+      "negativeIntegersError": "سقف‌ها باید اعداد صحیح غیرمنفی یا خالی باشند."
+    }
+  },
+  "revokeDialog": {
+    "title": "نماینده \"{{label}}\" لغو شود؟",
+    "message": "این کار توکن‌های نماینده را لغو می‌کند و اشتراک‌های MCP آن را متوقف می‌کند. این کار قابل بازگشت نیست.",
+    "confirm": "لغو",
+    "cancel": "لغو",
+    "toast": {
+      "delegateRevoked": "نماینده لغو شد",
+      "failedToRevoke": "لغو نماینده ناموفق بود"
+    }
+  },
+  "snippet": {
+    "warningTitle": "این اعتبارنامه‌ها را اکنون ذخیره کنید",
+    "warningMessage": "دوباره نمایش داده نمی‌شوند. Snapper توکن‌های خام را ذخیره نمی‌کند؛ پس از بستن این راهنما، تنها نسخه در پیکربندی کلاینت MCP شما خواهد بود.",
+    "snippetHelp": "توکن نماینده AI با عمر طولانی (~10 سال). همین توکن هم سرور proxy MCP و هم پایشگر watch را احراز هویت می‌کند. برای تعویض، این نماینده را غیرفعال کنید و نماینده جدید بسازید.",
+    "baseUrlHelpPrefix": "Base URL از origin این مرورگر + مشتق می‌شود ",
+    "baseUrlHelpSuffix": ".",
+    "copyAriaLabel": "کپی قطعه پیکربندی در کلیپ‌بورد",
+    "copy": "کپی در کلیپ‌بورد",
+    "copied": "کپی شد"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "موقعیت‌ها"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: در انتظار",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "مقدار",
+    "averageEntry": "میانگین ورود",
+    "unrealizedPnl": "P&L تحقق‌نیافته",
+    "realizedPnl": "P&L تحقق‌یافته",
+    "updated": "به‌روزرسانی شد {{timestamp}}"
+  },
+  "empty": {
+    "title": "موقعیت باز وجود ندارد",
+    "message": "موقعیت‌های Long، Short و Flat پس از اجرای معاملات اینجا ظاهر می‌شوند."
+  },
+  "bracketModal": {
+    "title": "افزودن SL/TP — {{instrument}}",
+    "confirmTitle": "تأیید Bracket",
+    "position": "موقعیت",
+    "entryPrice": "قیمت ورود",
+    "stopLossLabel": "قیمت Stop-Loss",
+    "takeProfitLabel": "قیمت Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "زیر ${{price}}",
+      "slShort": "بالای ${{price}}",
+      "tpLong": "بالای ${{price}}",
+      "tpShort": "زیر ${{price}}"
+    },
+    "buttons": {
+      "cancel": "لغو",
+      "review": "بازبینی",
+      "back": "بازگشت",
+      "confirm": "تأیید",
+      "creating": "در حال ایجاد…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "افزودن Trailing Stop — {{instrument}}",
+    "confirmTitle": "تأیید Trailing Stop",
+    "position": "موقعیت",
+    "entryPrice": "قیمت ورود",
+    "trailingDistanceLabel": "فاصله Trailing (%)",
+    "minLockLabel": "حداقل قفل سود (%) — اختیاری",
+    "trailingDistance": "فاصله Trailing",
+    "minLockProfit": "حداقل قفل سود",
+    "placeholders": {
+      "trailingPct": "مثلاً 5.0",
+      "minLockPct": "0 = شروع فوری"
+    },
+    "minLockWarning": "Trailing Stop تا زمانی که قیمت {{minLockPct}}% به نفع شما حرکت نکند فعال نمی‌شود.",
+    "buttons": {
+      "cancel": "لغو",
+      "review": "بازبینی",
+      "back": "بازگشت",
+      "confirm": "تأیید",
+      "creating": "در حال ایجاد..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "حداقل یکی از قیمت‌های SL یا TP الزامی است",
+    "invalidSlPrice": "قیمت Stop-Loss نامعتبر است",
+    "slPricePositive": "قیمت Stop-Loss باید مثبت باشد",
+    "invalidTpPrice": "قیمت Take-Profit نامعتبر است",
+    "tpPricePositive": "قیمت Take-Profit باید مثبت باشد",
+    "slLongBelowEntry": "قیمت SL باید زیر قیمت ورود باشد ({{price}})",
+    "tpLongAboveEntry": "قیمت TP باید بالای قیمت ورود باشد ({{price}})",
+    "slShortAboveEntry": "قیمت SL باید بالای قیمت ورود باشد ({{price}})",
+    "tpShortBelowEntry": "قیمت TP باید زیر قیمت ورود باشد ({{price}})",
+    "trailingRequired": "درصد Trailing الزامی است",
+    "trailingInvalid": "درصد Trailing نامعتبر است",
+    "trailingRange": "درصد Trailing باید بین 0 و 100 باشد",
+    "minLockInvalid": "درصد حداقل قفل نامعتبر است",
+    "minLockRange": "درصد حداقل قفل باید بین 0 و 100 باشد"
+  }
+}

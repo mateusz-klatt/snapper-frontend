@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "Genel Bakış"
+  },
+  "metrics": {
+    "feedsRunning": "Çalışan Feed'ler",
+    "strategiesActive": "Aktif Stratejiler",
+    "openOrders": "Açık Emirler",
+    "todaysExecutions": "Bugünkü Gerçekleşmeler",
+    "executionsOn": "Gerçekleşmeler ({{date}})"
+  },
+  "status": {
+    "stopped": "Durduruldu",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "Çalışıyor",
+    "active": "Aktif"
+  },
+  "processStatus": {
+    "title": "Süreç Durumu",
+    "feeds": "Feed'ler",
+    "strategies": "Stratejiler",
+    "executors": "Yürütücüler",
+    "brokers": "Brokerlar"
+  },
+  "portfolio": {
+    "title": "Portföy Özeti",
+    "totalValue": "Toplam Değer",
+    "longExposure": "Long maruziyet",
+    "shortExposure": "Short maruziyet",
+    "netDelta": "Net delta",
+    "unrealizedPnl": "Gerçekleşmemiş P&L",
+    "pnlPercent": "P&L %",
+    "positions": "Pozisyonlar",
+    "instrumentsCount": "{{count}} enstrüman",
+    "empty": "Pozisyon verisi yok"
+  },
+  "signals": {
+    "title": "Son Sinyaller",
+    "empty": "Yeni sinyal yok",
+    "noTime": "Yok"
+  },
+  "executions": {
+    "title": "Son Gerçekleşmeler",
+    "empty": "Yeni gerçekleşme yok",
+    "noTime": "Yok"
+  }
+}

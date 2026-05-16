@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "Pozisyonlar"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: bekliyor",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "Miktar",
+    "averageEntry": "Ort. Giriş",
+    "unrealizedPnl": "Gerçekleşmemiş P&L",
+    "realizedPnl": "Gerçekleşmiş P&L",
+    "updated": "Güncellendi {{timestamp}}"
+  },
+  "empty": {
+    "title": "Açık pozisyon yok",
+    "message": "Long, short ve flat pozisyonlar trade'ler gerçekleştikten sonra burada görünür."
+  },
+  "bracketModal": {
+    "title": "SL/TP ekle — {{instrument}}",
+    "confirmTitle": "Bracket Onayla",
+    "position": "Pozisyon",
+    "entryPrice": "Giriş Fiyatı",
+    "stopLossLabel": "Stop-Loss Fiyatı",
+    "takeProfitLabel": "Take-Profit Fiyatı",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "${{price}} altında",
+      "slShort": "${{price}} üstünde",
+      "tpLong": "${{price}} üstünde",
+      "tpShort": "${{price}} altında"
+    },
+    "buttons": {
+      "cancel": "İptal",
+      "review": "Gözden geçir",
+      "back": "Geri",
+      "confirm": "Onayla",
+      "creating": "Oluşturuluyor…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Trailing Stop ekle — {{instrument}}",
+    "confirmTitle": "Trailing Stop Onayla",
+    "position": "Pozisyon",
+    "entryPrice": "Giriş Fiyatı",
+    "trailingDistanceLabel": "Trailing Mesafesi (%)",
+    "minLockLabel": "Min Kilit Karı (%) — isteğe bağlı",
+    "trailingDistance": "Trailing Mesafesi",
+    "minLockProfit": "Min Kilit Karı",
+    "placeholders": {
+      "trailingPct": "örn. 5.0",
+      "minLockPct": "0 = hemen başlat"
+    },
+    "minLockWarning": "Trailing Stop, fiyat lehinize {{minLockPct}}% hareket edene kadar etkinleşmez.",
+    "buttons": {
+      "cancel": "İptal",
+      "review": "Gözden geçir",
+      "back": "Geri",
+      "confirm": "Onayla",
+      "creating": "Oluşturuluyor..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "SL veya TP fiyatından en az biri gerekli",
+    "invalidSlPrice": "Geçersiz Stop-Loss fiyatı",
+    "slPricePositive": "Stop-Loss fiyatı pozitif olmalı",
+    "invalidTpPrice": "Geçersiz Take-Profit fiyatı",
+    "tpPricePositive": "Take-Profit fiyatı pozitif olmalı",
+    "slLongBelowEntry": "SL fiyatı giriş fiyatının ({{price}}) altında olmalı",
+    "tpLongAboveEntry": "TP fiyatı giriş fiyatının ({{price}}) üstünde olmalı",
+    "slShortAboveEntry": "SL fiyatı giriş fiyatının ({{price}}) üstünde olmalı",
+    "tpShortBelowEntry": "TP fiyatı giriş fiyatının ({{price}}) altında olmalı",
+    "trailingRequired": "Trailing yüzdesi gerekli",
+    "trailingInvalid": "Geçersiz trailing yüzdesi",
+    "trailingRange": "Trailing yüzdesi 0 ile 100 arasında olmalı",
+    "minLockInvalid": "Geçersiz min kilit yüzdesi",
+    "minLockRange": "Min kilit yüzdesi 0 ile 100 arasında olmalı"
+  }
+}

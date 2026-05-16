@@ -1,0 +1,83 @@
+{
+  "loading": "लोड हो रहा है...",
+  "error": "त्रुटि",
+  "retry": "फिर कोशिश करें",
+  "close": "बंद करें",
+  "cancel": "रद्द करें",
+  "confirm": "पुष्टि करें",
+  "save": "सहेजें",
+  "documentation": "दस्तावेज़ीकरण (PDF)",
+  "localeSwitcher": {
+    "triggerAriaLabel": "भाषा बदलें",
+    "flagAriaLabel": "{{country}} पर स्विच करें",
+    "currentAriaLabel": "वर्तमान भाषा: {{country}}"
+  },
+  "chrome": {
+    "brand": "Snapper",
+    "console": "ट्रेडिंग कंसोल",
+    "tagline": "प्रिसिजन वर्कस्टेशन",
+    "openSidebar": "साइडबार खोलें",
+    "closeSidebar": "साइडबार बंद करें",
+    "sidebar": "साइडबार",
+    "mainNavigation": "मुख्य नेविगेशन",
+    "tradingContent": "ट्रेडिंग सामग्री",
+    "skipToContent": "ट्रेडिंग सामग्री पर जाएँ",
+    "lag": "लैग:",
+    "lagTitle": "WebSocket सर्वर तक राउंड-ट्रिप लेटेंसी",
+    "topics": "टॉपिक:",
+    "topicsTitle": "सब्सक्राइब किए गए WebSocket टॉपिक की संख्या",
+    "connected": "कनेक्टेड",
+    "disconnected": "डिस्कनेक्टेड",
+    "connectedTitle": "WebSocket से कनेक्टेड",
+    "disconnectedTitle": "WebSocket से डिस्कनेक्टेड",
+    "switchToLightMode": "लाइट मोड पर स्विच करें",
+    "switchToDarkMode": "डार्क मोड पर स्विच करें",
+    "timeTravelBanner": "टाइम ट्रैवल मोड — ऐतिहासिक डेटा देखा जा रहा है (केवल पढ़ने योग्य)",
+    "lagUnknown": "अज्ञात",
+    "walletPicker": {
+      "ariaLabel": "सक्रिय वॉलेट",
+      "placeholder": "वॉलेट",
+      "allWallets": "सभी वॉलेट",
+      "optionPaper": "{{label}} (paper)"
+    },
+    "operatorPicker": {
+      "ariaLabel": "सक्रिय ऑपरेटर",
+      "placeholder": "ऑपरेटर",
+      "allOperators": "सभी ऑपरेटर"
+    },
+    "timeTravel": {
+      "pickerTitle": "टाइम ट्रैवल: समय में एक ऐतिहासिक बिंदु चुनें",
+      "exitAriaLabel": "टाइम ट्रैवल मोड से बाहर निकलें",
+      "exitTitle": "लाइव मोड पर लौटें"
+    },
+    "marketDataOnly": {
+      "defaultTooltip": "केवल अवलोकन वाला इंस्ट्रूमेंट। Snapper बाजार डेटा प्राप्त करता है लेकिन इस (सिंबल, एक्सचेंज) जोड़ी के लिए ऑर्डर नहीं दे सकता।",
+      "ariaLabel": "केवल बाजार डेटा वाला इंस्ट्रूमेंट",
+      "badge": "केवल बाजार डेटा"
+    },
+    "liveOnly": {
+      "notice": "यह टैब वर्तमान स्थिति दिखाता है — ऐतिहासिक दृश्य उपलब्ध नहीं है।"
+    }
+  },
+  "errorBoundary": {
+    "titleDefault": "कुछ गलत हुआ",
+    "titleWithComponent": "{{componentName}} में त्रुटि",
+    "stackTrace": "स्टैक ट्रेस",
+    "tryAgain": "फिर कोशिश करें"
+  },
+  "nav": {
+    "overview": "ओवरव्यू",
+    "market": "बाजार डेटा",
+    "processes": "प्रोसेस",
+    "strategies": "रणनीतियाँ",
+    "orders": "ऑर्डर और निष्पादन",
+    "positions": "पोजीशन",
+    "signals": "सिग्नल",
+    "backtests": "Backtests",
+    "health": "हेल्थ",
+    "admin": "प्रशासन",
+    "aiIntegration": "AI इंटीग्रेशन",
+    "aiReviews": "AI समीक्षाएँ",
+    "settings": "सेटिंग्स"
+  }
+}

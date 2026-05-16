@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "Süreç Kontrolü",
+    "subtitle": "Gerçek zamanlı süreç izleme ve kontrol"
+  },
+  "sections": {
+    "longRunning": "Uzun Süreli Süreçler",
+    "executorTemplates": "Yürütücü Şablonları",
+    "executorTemplatesHint": "Şablon yapılandırmasını düzenlemek, yeniden başlatmadan sonra bu borsadaki tüm cüzdanları etkiler. Şablonlar yalnızca yapılandırmadır — bir yürütücü çalıştırmak için aşağıdaki cüzdan örneğini başlatın.",
+    "walletInstances": "Cüzdan Örnekleri",
+    "taskProcesses": "Görev Süreçleri"
+  },
+  "card": {
+    "stop": "Durdur",
+    "start": "Başlat",
+    "restart": "Yeniden başlat",
+    "starting": "Başlatılıyor...",
+    "stopping": "Durduruluyor...",
+    "status": {
+      "running": "çalışıyor",
+      "stopped": "durduruldu",
+      "error": "hata",
+      "starting": "başlatılıyor",
+      "stopping": "durduruluyor"
+    }
+  },
+  "template": {
+    "badge": "şablon",
+    "mode": "Mod:",
+    "parameters": "Parametreler:",
+    "paramCount": "{{count}} parametre",
+    "noParams": "parametre ayarlanmadı"
+  },
+  "badges": {
+    "oneShot": "tek seferlik",
+    "autoStart": "otomatik başlat",
+    "manual": "manuel"
+  },
+  "actions": {
+    "stopTitle": "{{name}} durdur",
+    "stopMessage": "Bu, {{name}} sürecini durdurur.",
+    "restartTitle": "{{name}} yeniden başlat",
+    "restartMessage": "Bu, {{name}} sürecini yeniden başlatır."
+  },
+  "executionMode": {
+    "title": "{{name}} başlat",
+    "label": "Yürütme Modu:",
+    "threadName": "Thread Modu",
+    "threadDescription": "Web sunucusu içinde gömülü görev olarak çalışır. Daha hızlı başlatma, paylaşılan bellek.",
+    "processName": "Süreç Modu",
+    "processDescription": "Ayrı Python süreci olarak çalışır. İzole, hataya dayanıklı, ayrıntılı izleme.",
+    "cancel": "İptal",
+    "start": "{{name}} başlat",
+    "threadAriaLabel": "Thread Modu",
+    "processAriaLabel": "Süreç Modu"
+  }
+}

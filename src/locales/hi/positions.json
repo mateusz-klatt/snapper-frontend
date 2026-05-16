@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "पोजीशन"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: लंबित",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "मात्रा",
+    "averageEntry": "औसत एंट्री",
+    "unrealizedPnl": "अवास्तविक P&L",
+    "realizedPnl": "वास्तविक P&L",
+    "updated": "अपडेट किया गया {{timestamp}}"
+  },
+  "empty": {
+    "title": "कोई खुली पोजीशन नहीं",
+    "message": "ट्रेड निष्पादित होने के बाद Long, Short और Flat पोजीशन यहाँ दिखाई देंगी।"
+  },
+  "bracketModal": {
+    "title": "SL/TP जोड़ें — {{instrument}}",
+    "confirmTitle": "Bracket की पुष्टि करें",
+    "position": "पोजीशन",
+    "entryPrice": "एंट्री कीमत",
+    "stopLossLabel": "Stop-Loss कीमत",
+    "takeProfitLabel": "Take-Profit कीमत",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "${{price}} से नीचे",
+      "slShort": "${{price}} से ऊपर",
+      "tpLong": "${{price}} से ऊपर",
+      "tpShort": "${{price}} से नीचे"
+    },
+    "buttons": {
+      "cancel": "रद्द करें",
+      "review": "समीक्षा करें",
+      "back": "वापस",
+      "confirm": "पुष्टि करें",
+      "creating": "बन रहा है…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "Trailing Stop जोड़ें — {{instrument}}",
+    "confirmTitle": "Trailing Stop की पुष्टि करें",
+    "position": "पोजीशन",
+    "entryPrice": "एंट्री कीमत",
+    "trailingDistanceLabel": "Trailing दूरी (%)",
+    "minLockLabel": "न्यूनतम लॉक लाभ (%) — वैकल्पिक",
+    "trailingDistance": "Trailing दूरी",
+    "minLockProfit": "न्यूनतम लॉक लाभ",
+    "placeholders": {
+      "trailingPct": "जैसे 5.0",
+      "minLockPct": "0 = तुरंत शुरू करें"
+    },
+    "minLockWarning": "Trailing Stop तब तक सक्रिय नहीं होगा जब तक कीमत आपके पक्ष में {{minLockPct}}% नहीं बढ़ती।",
+    "buttons": {
+      "cancel": "रद्द करें",
+      "review": "समीक्षा करें",
+      "back": "वापस",
+      "confirm": "पुष्टि करें",
+      "creating": "बन रहा है..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "SL या TP कीमत में से कम से कम एक आवश्यक है",
+    "invalidSlPrice": "अमान्य Stop-Loss कीमत",
+    "slPricePositive": "Stop-Loss कीमत सकारात्मक होनी चाहिए",
+    "invalidTpPrice": "अमान्य Take-Profit कीमत",
+    "tpPricePositive": "Take-Profit कीमत सकारात्मक होनी चाहिए",
+    "slLongBelowEntry": "SL कीमत एंट्री कीमत ({{price}}) से नीचे होनी चाहिए",
+    "tpLongAboveEntry": "TP कीमत एंट्री कीमत ({{price}}) से ऊपर होनी चाहिए",
+    "slShortAboveEntry": "SL कीमत एंट्री कीमत ({{price}}) से ऊपर होनी चाहिए",
+    "tpShortBelowEntry": "TP कीमत एंट्री कीमत ({{price}}) से नीचे होनी चाहिए",
+    "trailingRequired": "Trailing प्रतिशत आवश्यक है",
+    "trailingInvalid": "अमान्य Trailing प्रतिशत",
+    "trailingRange": "Trailing प्रतिशत 0 और 100 के बीच होना चाहिए",
+    "minLockInvalid": "अमान्य न्यूनतम लॉक प्रतिशत",
+    "minLockRange": "न्यूनतम लॉक प्रतिशत 0 और 100 के बीच होना चाहिए"
+  }
+}

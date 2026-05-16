@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "סקירה"
+  },
+  "metrics": {
+    "feedsRunning": "Feed פועלים",
+    "strategiesActive": "אסטרטגיות פעילות",
+    "openOrders": "פקודות פתוחות",
+    "todaysExecutions": "ביצועי היום",
+    "executionsOn": "ביצועים ({{date}})"
+  },
+  "status": {
+    "stopped": "נעצר",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "פועל",
+    "active": "פעיל"
+  },
+  "processStatus": {
+    "title": "סטטוס תהליכים",
+    "feeds": "Feed",
+    "strategies": "אסטרטגיות",
+    "executors": "מבצעים",
+    "brokers": "ברוקרים"
+  },
+  "portfolio": {
+    "title": "סיכום תיק",
+    "totalValue": "ערך כולל",
+    "longExposure": "חשיפת Long",
+    "shortExposure": "חשיפת Short",
+    "netDelta": "דלתא נטו",
+    "unrealizedPnl": "P&L לא ממומש",
+    "pnlPercent": "P&L %",
+    "positions": "פוזיציות",
+    "instrumentsCount": "{{count}} מכשירים",
+    "empty": "אין נתוני פוזיציות זמינים"
+  },
+  "signals": {
+    "title": "אותות אחרונים",
+    "empty": "אין אותות אחרונים",
+    "noTime": "לא זמין"
+  },
+  "executions": {
+    "title": "ביצועים אחרונים",
+    "empty": "אין ביצועים אחרונים",
+    "noTime": "לא זמין"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "page": {
+    "title": "बाजार डेटा"
+  },
+  "controls": {
+    "exchange": "एक्सचेंज:",
+    "instrument": "इंस्ट्रूमेंट:",
+    "timeframe": "समय-सीमा:",
+    "selectExchange": "एक्सचेंज चुनें",
+    "searchInstrument": "इंस्ट्रूमेंट खोजें..."
+  },
+  "timeframes": {
+    "1m": "1 मिनट",
+    "5m": "5 मिनट",
+    "15m": "15 मिनट",
+    "30m": "30 मिनट",
+    "1h": "1 घंटा",
+    "4h": "4 घंटे",
+    "1d": "1 दिन"
+  },
+  "stats": {
+    "currentPrice": "वर्तमान कीमत",
+    "change24h": "24घं परिवर्तन",
+    "high24h": "24घं उच्च",
+    "low24h": "24घं निम्न"
+  },
+  "chart": {
+    "title": "कीमत चार्ट",
+    "errorPrefix": "चार्ट डेटा लोड करने में त्रुटि:",
+    "unknownError": "अज्ञात त्रुटि",
+    "noDataTitle": "{{instrument}} के लिए कोई डेटा उपलब्ध नहीं",
+    "noDataHint": "इंस्ट्रूमेंट मौजूद नहीं हो सकता या उसमें {{timeframe}} डेटा नहीं है"
+  },
+  "related": {
+    "labelSeparator": "{{label}}:",
+    "exchangeSeparator": "· {{exchange}}",
+    "empty": "{{instrument}} के लिए {{exchange}} पर कोई संबंधित इंस्ट्रूमेंट कॉन्फ़िगर नहीं है।"
+  },
+  "cacheBanner": {
+    "message": "कैश गर्म हो रहा है: {{sampleCount}} / {{expected}} कैंडल उपलब्ध {{sourceLabel}}",
+    "sources": {
+      "cache": "",
+      "derived": "(1m से व्युत्पन्न)",
+      "db": "(DB से)"
+    }
+  }
+}

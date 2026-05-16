@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "Ayarlar",
+    "subtitle": "Uygulama ayarlarını ve parametrelerini yapılandırın",
+    "addButton": "Ayar ekle",
+    "searchPlaceholder": "Ayarlarda ara...",
+    "noResults": "Ölçütlerinize uyan ayar bulunamadı.",
+    "allCategories": "Tüm Kategoriler",
+    "categoryFilterAriaLabel": "Ayarları kategoriye göre filtrele"
+  },
+  "errors": {
+    "loadFailed": "Ayarlar yüklenemedi",
+    "updateFailed": "Ayar güncellenemedi",
+    "deleteFailed": "Ayar silinemedi",
+    "createFailed": "Ayar oluşturulamadı",
+    "alreadyExists": "\"{{key}}\" anahtarlı ayar zaten var"
+  },
+  "item": {
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "save": "Kaydet",
+    "saving": "Kaydediliyor...",
+    "cancel": "İptal",
+    "yesDelete": "Evet, sil",
+    "deleting": "Siliniyor...",
+    "deleteConfirm": "Bu ayar silinsin mi?",
+    "valuePlaceholder": "Ayar değerini girin...",
+    "showMore": "Daha fazla göster",
+    "showLess": "Daha az göster",
+    "toggleAriaLabel": "{{key}} değiştir",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 Hassas"
+    },
+    "helpText": {
+      "allowShortSelling": "Motorun short pozisyon açmasına izin ver. SELL sinyalleri negatif desired_units üretir; devre dışıysa 0'a sıkıştırılır.",
+      "allowManualOrders": "Emirler sekmesinde Yeni Emir düğmesini etkinleştir. Devre dışıysa POST /api/orders 403 döndürür."
+    }
+  },
+  "addModal": {
+    "title": "Yeni Ayar Ekle",
+    "keyLabel": "Anahtar",
+    "valueLabel": "Değer",
+    "categoryLabel": "Kategori",
+    "descriptionLabel": "Açıklama",
+    "keyPlaceholder": "örn., walutomat.api_key",
+    "keyHint": "İç içe ayarlar için nokta gösterimi kullanın (örn. category.subcategory.name)",
+    "valuePlaceholder": "Ayar değeri",
+    "categorySelectPlaceholder": "Mevcut olanı seç veya yeni oluştur",
+    "newCategoryPlaceholder": "Veya yeni kategori adı gir",
+    "descriptionPlaceholder": "İsteğe bağlı açıklama",
+    "cancel": "İptal",
+    "create": "Ayar oluştur",
+    "creating": "Oluşturuluyor...",
+    "validation": {
+      "keyRequired": "Anahtar gerekli",
+      "valueRequired": "Değer gerekli",
+      "categoryRequired": "Kategori gerekli"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "Form Düzenleyici",
+    "rawEditor": "Ham JSON Düzenleyici",
+    "rawJson": "Ham JSON",
+    "switchToForm": "Forma geç",
+    "importToForm": "Forma içe aktar",
+    "parseError": "Ayrıştırma hatası: {{message}}",
+    "arraySummary": "Dizi ({{length}} öğe)",
+    "addItem": "Öğe ekle",
+    "remove": "Kaldır",
+    "typeHint": {
+      "array": "(dizi)",
+      "object": "(nesne)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "בקרת תהליכים",
+    "subtitle": "ניטור ובקרה של תהליכים בזמן אמת"
+  },
+  "sections": {
+    "longRunning": "תהליכים ארוכי-ריצה",
+    "executorTemplates": "תבניות מבצע",
+    "executorTemplatesHint": "עריכת תצורת תבנית משפיעה על כל הארנקים בבורסה זו לאחר הפעלה מחדש. תבניות הן לתצורה בלבד — הפעל את מופע הארנק למטה כדי להריץ מבצע.",
+    "walletInstances": "מופעי ארנק",
+    "taskProcesses": "תהליכי משימות"
+  },
+  "card": {
+    "stop": "עצור",
+    "start": "התחל",
+    "restart": "הפעל מחדש",
+    "starting": "מתחיל...",
+    "stopping": "עוצר...",
+    "status": {
+      "running": "פועל",
+      "stopped": "נעצר",
+      "error": "שגיאה",
+      "starting": "מתחיל",
+      "stopping": "עוצר"
+    }
+  },
+  "template": {
+    "badge": "תבנית",
+    "mode": "מצב:",
+    "parameters": "פרמטרים:",
+    "paramCount": "{{count}} פרמטרים",
+    "noParams": "לא הוגדרו פרמטרים"
+  },
+  "badges": {
+    "oneShot": "חד-פעמי",
+    "autoStart": "הפעלה אוטומטית",
+    "manual": "ידני"
+  },
+  "actions": {
+    "stopTitle": "עצור {{name}}",
+    "stopMessage": "פעולה זו תעצור את התהליך {{name}}.",
+    "restartTitle": "הפעל מחדש את {{name}}",
+    "restartMessage": "פעולה זו תפעיל מחדש את התהליך {{name}}."
+  },
+  "executionMode": {
+    "title": "התחל {{name}}",
+    "label": "מצב ביצוע:",
+    "threadName": "מצב Thread",
+    "threadDescription": "רץ כמשימה מוטמעת בתוך שרת הווב. התחלה מהירה יותר, זיכרון משותף.",
+    "processName": "מצב תהליך",
+    "processDescription": "רץ כתהליך Python נפרד. מבודד, עמיד לתקלות, ניטור מפורט.",
+    "cancel": "בטל",
+    "start": "התחל {{name}}",
+    "threadAriaLabel": "מצב Thread",
+    "processAriaLabel": "מצב תהליך"
+  }
+}

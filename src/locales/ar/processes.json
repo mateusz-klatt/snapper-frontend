@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "التحكم في العمليات",
+    "subtitle": "مراقبة العمليات والتحكم بها في الوقت الحقيقي"
+  },
+  "sections": {
+    "longRunning": "عمليات طويلة التشغيل",
+    "executorTemplates": "قوالب المنفذ",
+    "executorTemplatesHint": "يؤثر تعديل تكوين القالب في كل المحافظ على هذه البورصة بعد إعادة التشغيل. القوالب للتكوين فقط — ابدأ نسخة المحفظة أدناه لتشغيل منفذ.",
+    "walletInstances": "نسخ المحفظة",
+    "taskProcesses": "عمليات المهام"
+  },
+  "card": {
+    "stop": "إيقاف",
+    "start": "بدء",
+    "restart": "إعادة تشغيل",
+    "starting": "جارٍ البدء...",
+    "stopping": "جارٍ الإيقاف...",
+    "status": {
+      "running": "قيد التشغيل",
+      "stopped": "متوقف",
+      "error": "خطأ",
+      "starting": "جارٍ البدء",
+      "stopping": "جارٍ الإيقاف"
+    }
+  },
+  "template": {
+    "badge": "قالب",
+    "mode": "الوضع:",
+    "parameters": "المعلمات:",
+    "paramCount": "{{count}} معلمة",
+    "noParams": "لم يتم تعيين معلمات"
+  },
+  "badges": {
+    "oneShot": "مرة واحدة",
+    "autoStart": "بدء تلقائي",
+    "manual": "يدوي"
+  },
+  "actions": {
+    "stopTitle": "إيقاف {{name}}",
+    "stopMessage": "سيؤدي هذا إلى إيقاف عملية {{name}}.",
+    "restartTitle": "إعادة تشغيل {{name}}",
+    "restartMessage": "سيؤدي هذا إلى إعادة تشغيل عملية {{name}}."
+  },
+  "executionMode": {
+    "title": "بدء {{name}}",
+    "label": "وضع التنفيذ:",
+    "threadName": "وضع Thread",
+    "threadDescription": "يعمل كمهمة مضمّنة داخل خادم الويب. بدء أسرع وذاكرة مشتركة.",
+    "processName": "وضع العملية",
+    "processDescription": "يعمل كعملية Python منفصلة. معزول، متحمل للأخطاء، ومراقبة مفصلة.",
+    "cancel": "إلغاء",
+    "start": "بدء {{name}}",
+    "threadAriaLabel": "وضع Thread",
+    "processAriaLabel": "وضع العملية"
+  }
+}

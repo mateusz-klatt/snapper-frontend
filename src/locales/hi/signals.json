@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "सिग्नल"
+  },
+  "filters": {
+    "allStrategies": "सभी रणनीतियाँ"
+  },
+  "actions": {
+    "export": "निर्यात"
+  },
+  "stats": {
+    "total": "कुल",
+    "buy": "खरीद",
+    "sell": "बिक्री",
+    "avgStrength": "औसत शक्ति"
+  },
+  "card": {
+    "strength": "शक्ति",
+    "price": "कीमत",
+    "exchange": "एक्सचेंज",
+    "reason": "कारण:",
+    "noPrice": "लागू नहीं"
+  },
+  "strength": {
+    "strong": "मजबूत",
+    "medium": "मध्यम",
+    "weak": "कमज़ोर",
+    "veryWeak": "बहुत कमज़ोर"
+  },
+  "time": {
+    "justNow": "अभी",
+    "minutesAgo": "{{count}}मि पहले",
+    "hoursAgo": "{{count}}घं पहले"
+  },
+  "empty": {
+    "title": "कोई सिग्नल नहीं मिला",
+    "message": "कोई ट्रेडिंग सिग्नल आपके वर्तमान फ़िल्टर से मेल नहीं खाता।"
+  }
+}

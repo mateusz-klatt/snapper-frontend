@@ -1,0 +1,50 @@
+{
+  "page": {
+    "title": "نمای کلی"
+  },
+  "metrics": {
+    "feedsRunning": "Feedهای در حال اجرا",
+    "strategiesActive": "استراتژی‌های فعال",
+    "openOrders": "سفارش‌های باز",
+    "todaysExecutions": "اجراهای امروز",
+    "executionsOn": "اجراها ({{date}})"
+  },
+  "status": {
+    "stopped": "متوقف",
+    "ratioActive": "{{running}}/{{total}} {{label}}",
+    "countActive": "{{running}} {{label}}"
+  },
+  "labels": {
+    "running": "در حال اجرا",
+    "active": "فعال"
+  },
+  "processStatus": {
+    "title": "وضعیت فرایند",
+    "feeds": "Feedها",
+    "strategies": "استراتژی‌ها",
+    "executors": "اجراکننده‌ها",
+    "brokers": "کارگزارها"
+  },
+  "portfolio": {
+    "title": "خلاصه پرتفوی",
+    "totalValue": "ارزش کل",
+    "longExposure": "قرارگیری Long",
+    "shortExposure": "قرارگیری Short",
+    "netDelta": "دلتا خالص",
+    "unrealizedPnl": "P&L تحقق‌نیافته",
+    "pnlPercent": "P&L %",
+    "positions": "موقعیت‌ها",
+    "instrumentsCount": "{{count}} ابزار",
+    "empty": "داده موقعیت در دسترس نیست"
+  },
+  "signals": {
+    "title": "سیگنال‌های اخیر",
+    "empty": "سیگنال اخیر وجود ندارد",
+    "noTime": "ناموجود"
+  },
+  "executions": {
+    "title": "اجراهای اخیر",
+    "empty": "اجرای اخیر وجود ندارد",
+    "noTime": "ناموجود"
+  }
+}

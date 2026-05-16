@@ -1,0 +1,81 @@
+{
+  "page": {
+    "title": "المراكز"
+  },
+  "row": {
+    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopPending": "TS: معلق",
+    "slTpButton": "SL/TP",
+    "trailButton": "Trail",
+    "quantity": "الكمية",
+    "averageEntry": "متوسط الدخول",
+    "unrealizedPnl": "P&L غير محقق",
+    "realizedPnl": "P&L محقق",
+    "updated": "تم التحديث {{timestamp}}"
+  },
+  "empty": {
+    "title": "لا توجد مراكز مفتوحة",
+    "message": "ستظهر مراكز Long وShort وFlat هنا بعد تنفيذ الصفقات."
+  },
+  "bracketModal": {
+    "title": "إرفاق SL/TP — {{instrument}}",
+    "confirmTitle": "تأكيد Bracket",
+    "position": "المركز",
+    "entryPrice": "سعر الدخول",
+    "stopLossLabel": "سعر Stop-Loss",
+    "takeProfitLabel": "سعر Take-Profit",
+    "stopLoss": "Stop-Loss",
+    "takeProfit": "Take-Profit",
+    "placeholders": {
+      "slLong": "أقل من ${{price}}",
+      "slShort": "أعلى من ${{price}}",
+      "tpLong": "أعلى من ${{price}}",
+      "tpShort": "أقل من ${{price}}"
+    },
+    "buttons": {
+      "cancel": "إلغاء",
+      "review": "مراجعة",
+      "back": "رجوع",
+      "confirm": "تأكيد",
+      "creating": "جارٍ الإنشاء…"
+    }
+  },
+  "trailingStopModal": {
+    "title": "إرفاق Trailing Stop — {{instrument}}",
+    "confirmTitle": "تأكيد Trailing Stop",
+    "position": "المركز",
+    "entryPrice": "سعر الدخول",
+    "trailingDistanceLabel": "مسافة Trailing (%)",
+    "minLockLabel": "حد أدنى لقفل الربح (%) — اختياري",
+    "trailingDistance": "مسافة Trailing",
+    "minLockProfit": "حد أدنى لقفل الربح",
+    "placeholders": {
+      "trailingPct": "مثلاً 5.0",
+      "minLockPct": "0 = ابدأ فوراً"
+    },
+    "minLockWarning": "لن يتم تفعيل Trailing Stop حتى يتحرك السعر {{minLockPct}}% لصالحك.",
+    "buttons": {
+      "cancel": "إلغاء",
+      "review": "مراجعة",
+      "back": "رجوع",
+      "confirm": "تأكيد",
+      "creating": "جارٍ الإنشاء..."
+    }
+  },
+  "validation": {
+    "bracketRequired": "مطلوب سعر واحد على الأقل من SL أو TP",
+    "invalidSlPrice": "سعر Stop-Loss غير صالح",
+    "slPricePositive": "يجب أن يكون سعر Stop-Loss موجباً",
+    "invalidTpPrice": "سعر Take-Profit غير صالح",
+    "tpPricePositive": "يجب أن يكون سعر Take-Profit موجباً",
+    "slLongBelowEntry": "يجب أن يكون سعر SL أقل من سعر الدخول ({{price}})",
+    "tpLongAboveEntry": "يجب أن يكون سعر TP أعلى من سعر الدخول ({{price}})",
+    "slShortAboveEntry": "يجب أن يكون سعر SL أعلى من سعر الدخول ({{price}})",
+    "tpShortBelowEntry": "يجب أن يكون سعر TP أقل من سعر الدخول ({{price}})",
+    "trailingRequired": "نسبة Trailing مطلوبة",
+    "trailingInvalid": "نسبة Trailing غير صالحة",
+    "trailingRange": "يجب أن تكون نسبة Trailing بين 0 و100",
+    "minLockInvalid": "نسبة الحد الأدنى للقفل غير صالحة",
+    "minLockRange": "يجب أن تكون نسبة الحد الأدنى للقفل بين 0 و100"
+  }
+}

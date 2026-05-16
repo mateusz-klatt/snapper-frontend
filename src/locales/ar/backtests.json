@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← رجوع",
+    "backToList": "← العودة إلى Backtests"
+  },
+  "status": {
+    "pending": "معلق",
+    "running": "قيد التشغيل",
+    "completed": "مكتمل",
+    "failed": "فشل",
+    "cancelled": "ملغى"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "إلغاء",
+      "rerun": "إعادة التشغيل"
+    },
+    "fields": {
+      "timeframe": "الإطار الزمني",
+      "period": "الفترة",
+      "initialCash": "النقد الأولي",
+      "id": "ID"
+    },
+    "errorPrefix": "خطأ: {{message}}",
+    "filter": {
+      "ariaLabel": "تصفية Backtests حسب الحالة",
+      "options": {
+        "all": "كل الحالات",
+        "pending": "معلق",
+        "running": "قيد التشغيل",
+        "completed": "مكتمل",
+        "failed": "فشل",
+        "cancelled": "ملغى"
+      }
+    },
+    "empty": {
+      "title": "لا توجد Backtests",
+      "message": "شغّل Backtest عبر CLI أو API لرؤية النتائج هنا."
+    }
+  },
+  "detail": {
+    "title": "تشغيل Backtest",
+    "fields": {
+      "strategy": "الاستراتيجية",
+      "instrument": "الأداة",
+      "status": "الحالة",
+      "period": "الفترة",
+      "crossAsset": "إسناد عبر الأصول",
+      "configHash": "تجزئة التكوين"
+    },
+    "crossAssetFlow": "Feed {{source}} → تنفيذات {{target}}",
+    "errors": {
+      "invalidRunId": "معرّف التشغيل غير صالح — يجب أن يكون UUID7 (القيمة \"{{id}}\").",
+      "loadFailed": "فشل تحميل التشغيل: {{message}}",
+      "notFound": "غير موجود"
+    }
+  },
+  "compare": {
+    "title": "مقارنة",
+    "headingFull": "مقارنة Backtest",
+    "loading": "جارٍ تحميل المقارنة…",
+    "vs": "مقابل",
+    "runLabel": "التشغيل {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "المقاييس",
+      "equityOverlay": "تراكب equity",
+      "trades": "الصفقات",
+      "signals": "الإشارات"
+    },
+    "pairingMode": {
+      "auto": "تلقائي",
+      "manual": "يدوي"
+    },
+    "errors": {
+      "notFound": "لم يتم العثور على المقارنة في المحفظة الحالية.",
+      "loadFailed": "فشل تحميل المقارنة: {{message}}",
+      "unknown": "خطأ غير معروف",
+      "emptyResponse": "استجابة المقارنة فارغة."
+    },
+    "launcher": {
+      "title": "مقارنة",
+      "submit": "مقارنة",
+      "autoPair": "مقارنة مع الأحدث",
+      "terminalGate": "تتوفر المقارنة عندما يصل هذا التشغيل إلى حالة نهائية",
+      "noSiblings": "لا توجد تشغيلات أخرى بهذا التكوين",
+      "limitNotice": "يتم عرض أحدث {{count}} — استخدم الاقتران اليدوي للتشغيلات الأقدم",
+      "pickPlaceholder": "— اختر تشغيلاً للمقارنة —",
+      "showAllLabel": "إظهار كل التشغيلات (وليس نفس التكوين فقط)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "كل التشغيلات",
+        "sameConfig": "نفس التكوين"
+      },
+      "errors": {
+        "pickRequired": "اختر تشغيلاً من القائمة"
+      }
+    },
+    "diffColumns": {
+      "common": "مشترك",
+      "onlyA": "في A فقط",
+      "onlyB": "في B فقط"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "pnl A",
+        "pnlB": "pnl B",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "لا توجد مقاييس قابلة للمقارنة — لم يسجل أي من التشغيلين قيماً.",
+      "columns": {
+        "name": "المقياس",
+        "runA": "التشغيل A",
+        "runB": "التشغيل B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "التشغيل A",
+        "runB": "التشغيل B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "في انتظار التقدم…",
+    "candles": "{{done}} / {{total}} شموع",
+    "candlesNoTotal": "{{done}} شموع",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} إشارة / {{trades}} صفقات",
+    "milestoneLine": "مرحلة {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}

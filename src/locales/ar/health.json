@@ -1,0 +1,143 @@
+{
+  "page": {
+    "title": "صحة النظام",
+    "healthMetricsHeading": "مقاييس الصحة",
+    "processStatusHeading": "حالة العمليات",
+    "activeBacktestsHeading": "Backtests نشطة",
+    "quickActionsHeading": "إجراءات سريعة",
+    "featureNotImplemented": "الميزة غير منفذة بعد",
+    "restartServices": "إعادة تشغيل الخدمات",
+    "runHealthCheck": "تشغيل فحص الصحة",
+    "viewLogs": "عرض السجلات",
+    "exportReport": "تصدير التقرير"
+  },
+  "status": {
+    "healthy": "سليم",
+    "stopped": "متوقف",
+    "error": "خطأ",
+    "warning": "تحذير",
+    "completed": "مكتمل",
+    "unknown": "غير معروف"
+  },
+  "metrics": {
+    "tradingEngine": "محرك التداول",
+    "tradingEngineDescription": "محرك تنفيذ الاستراتيجية",
+    "activeBacktests": "Backtests نشطة",
+    "activeBacktestsDescription": "عمليات Backtest قيد التشغيل",
+    "active": "نشط",
+    "inactive": "غير نشط"
+  },
+  "process": {
+    "uptimeNotAvailable": "غير متاح",
+    "uptimeMinutes": "{{minutes}}د",
+    "uptimeHours": "{{hours}}س {{minutes}}د",
+    "uptimeDays": "{{days}}ي {{hours}}س",
+    "backtestName": "Backtest {{id}}",
+    "pidLabel": "PID",
+    "pidNotAvailable": "غير متاح",
+    "uptimeLabel": "مدة التشغيل",
+    "exitCode": "رمز الخروج: {{code}}",
+    "service": "خدمة",
+    "backtest": "backtest"
+  },
+  "dbStats": {
+    "title": "إحصاءات قاعدة البيانات",
+    "loading": "جارٍ تحميل إحصاءات قاعدة البيانات…",
+    "unavailable": "إحصاءات قاعدة البيانات غير متاحة: {{message}}",
+    "fallbackError": "فشل تحميل إحصاءات قاعدة البيانات.",
+    "sampled": "تم أخذ عينة {{age}}",
+    "samplerSummary": "فاصل أخذ العينات: {{seconds}}ث · {{count}} جداول",
+    "columns": {
+      "table": "الجدول",
+      "kind": "النوع",
+      "total": "الإجمالي",
+      "current": "الحالي",
+      "closed": "مغلق",
+      "archivable": "قابل للأرشفة",
+      "status": "الحالة"
+    },
+    "stale": "قديم"
+  },
+  "notification": {
+    "title": "Notification Sidecar",
+    "loading": "جارٍ تحميل مقاييس الإشعارات…",
+    "unavailable": "مقاييس الإشعارات غير متاحة: {{message}}",
+    "fallbackError": "فشل تحميل مقاييس الإشعارات.",
+    "sent": "مرسل",
+    "sentDescription": "نهائي: مرسل",
+    "failed": "فشل",
+    "failedDescription": "استُنفدت ميزانية إعادة المحاولة",
+    "unregistered": "غير مسجل",
+    "unregisteredDescription": "APNs 410 (BadDeviceToken)",
+    "cancelledScope": "ملغى (النطاق)",
+    "cancelledScopeDescription": "إلغاء النطاق / تعطيل المستخدم",
+    "outboxDepth": "عمق Outbox",
+    "outboxDepthDescription": "في قائمة الانتظار، بانتظار إعادة المحاولة"
+  },
+  "retention": {
+    "title": "مجدول الاحتفاظ",
+    "loading": "جارٍ تحميل تشغيل الاحتفاظ…",
+    "unavailable": "تشغيل الاحتفاظ غير متاح: {{message}}",
+    "fallbackError": "فشل تحميل تشغيل الاحتفاظ.",
+    "lastRun": "آخر تشغيل {{age}}",
+    "dryRunNotice": "وضع Dry-run: تتم أرشفة الصفوف لكن لا تتم إزالتها من DB.",
+    "columns": {
+      "table": "الجدول",
+      "retain": "الاحتفاظ",
+      "archivedWindow": "نافذة مؤرشفة",
+      "archived": "مؤرشف",
+      "purged": "تم الحذف",
+      "files": "الملفات",
+      "status": "الحالة"
+    },
+    "retainDays": "{{days}}ي",
+    "ok": "حسنًا",
+    "error": "خطأ"
+  },
+  "systemMetrics": {
+    "title": "صحة العملية",
+    "loading": "جارٍ تحميل مقاييس العملية…",
+    "unavailable": "مقاييس العملية غير متاحة: {{message}}",
+    "fallbackError": "فشل تحميل مقاييس صحة العملية.",
+    "rawJson": "JSON خام",
+    "pid": "PID",
+    "statusValue": "الحالة: {{status}}",
+    "uptime": "مدة التشغيل",
+    "threads": "Threads",
+    "openFds": "FDs مفتوحة",
+    "cpu": "CPU",
+    "cpuValue": "{{percent}}%",
+    "throttled": "مقيد {{count}}×",
+    "memory": "الذاكرة",
+    "saturation": "التشبع {{percent}}",
+    "asyncioTasks": "مهام Asyncio",
+    "asyncioActive": "{{count}} نشطة",
+    "asyncioPending": "+ {{count}} معلقة",
+    "dbPool": "DB Pool",
+    "liveConns": "اتصالات مباشرة: {{count}}",
+    "gcGenerations": "GC Gen0/1/2",
+    "gcObjects": "الكائنات: {{value}}",
+    "threadsPercent": "Threads %",
+    "networkConns": "اتصالات الشبكة",
+    "tracemalloc": "Tracemalloc",
+    "tracemallocActive": "نشط",
+    "tracemallocIdle": "خامل"
+  },
+  "relativeAge": {
+    "justNow": "الآن",
+    "seconds": "قبل {{seconds}}ث",
+    "minutes": "قبل {{minutes}}د",
+    "hours": "قبل {{hours}}س",
+    "days": "قبل {{days}}ي"
+  },
+  "duration": {
+    "seconds": "{{seconds}}ث",
+    "minutes": "{{minutes}}د",
+    "hours": "{{hours}}س",
+    "days": "{{days}}ي"
+  },
+  "memory": {
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "page": {
+    "title": "مدیریت",
+    "subtitle": "مدیریت کاربران و پیکربندی سیستم"
+  },
+  "rolePermissions": {
+    "title": "مجوزهای نقش",
+    "viewer": {
+      "label": "بیننده",
+      "description": "دسترسی فقط خواندنی به نمای کلی و داده‌های بازار. نمی‌تواند فرایندها، استراتژی‌ها یا تنظیمات سیستم را مدیریت کند."
+    },
+    "operator": {
+      "label": "اپراتور",
+      "description": "همه مجوزهای بیننده به‌علاوه عملیات معاملاتی، اجرای استراتژی، مدیریت فرایند و پایش سلامت سیستم."
+    },
+    "admin": {
+      "label": "مدیر",
+      "description": "دسترسی کامل به سیستم شامل مدیریت کاربر، تنظیمات سیستم، پیکربندی کلید API و همه مجوزهای اپراتور."
+    },
+    "table": {
+      "resource": "منبع",
+      "viewer": "بیننده",
+      "operator": "اپراتور",
+      "admin": "مدیر"
+    },
+    "resources": {
+      "overview": "نمای کلی",
+      "market": "داده‌های بازار",
+      "processes": "فرایندها",
+      "strategies": "استراتژی‌ها",
+      "orders": "سفارش‌ها و اجراها",
+      "positions": "موقعیت‌ها",
+      "signals": "سیگنال‌ها",
+      "health": "سلامت",
+      "admin": "مدیریت",
+      "settings": "تنظیمات"
+    }
+  },
+  "common": {
+    "cancel": "لغو",
+    "selectWallet": "انتخاب کیف پول",
+    "selectAWallet": "یک کیف پول انتخاب کنید",
+    "chooseWalletPlaceholder": "یک کیف پول انتخاب کنید...",
+    "selectWalletPlaceholder": "انتخاب کیف پول...",
+    "walletLabel": "کیف پول",
+    "paperAnnotation": " (paper)",
+    "unknownError": "خطای نامشخص",
+    "dash": "-"
+  },
+  "users": {
+    "accessDenied": {
+      "title": "دسترسی رد شد",
+      "message": "شما مجوز مدیریت کاربران را ندارید. لطفاً با مدیر سیستم تماس بگیرید."
+    },
+    "list": {
+      "title": "مدیریت کاربران",
+      "countLabel": "{{count}} کاربر",
+      "showInactive": "نمایش غیرفعال‌ها",
+      "hideInactive": "پنهان کردن غیرفعال‌ها",
+      "addUser": "افزودن کاربر",
+      "searchPlaceholder": "جستجو بر اساس نام کاربری، ایمیل یا نقش...",
+      "columns": {
+        "user": "کاربر",
+        "role": "نقش",
+        "status": "وضعیت",
+        "createdAt": "ایجاد شده در",
+        "actions": "اقدامات"
+      },
+      "status": {
+        "active": "فعال",
+        "inactive": "غیرفعال"
+      },
+      "unknown": "نامشخص",
+      "empty": {
+        "title": "کاربری یافت نشد",
+        "noMatch": "هیچ کاربری با معیارهای جستجوی شما مطابقت ندارد.",
+        "noUsers": "کاربری یافت نشد.",
+        "noActive": "کاربر فعال یافت نشد."
+      },
+      "errorLoading": "خطا در بارگذاری کاربران: {{message}}",
+      "deactivate": {
+        "title": "غیرفعال کردن کاربر",
+        "message": "آیا مطمئن هستید که می‌خواهید کاربر \"{{username}}\" را غیرفعال کنید؟ او دیگر نمی‌تواند وارد شود.",
+        "confirm": "غیرفعال کردن"
+      },
+      "toast": {
+        "deactivated": "کاربر غیرفعال شد",
+        "deactivateError": "خطا در غیرفعال کردن کاربر"
+      }
+    },
+    "form": {
+      "titleEdit": "ویرایش کاربر",
+      "titleAdd": "افزودن کاربر",
+      "fields": {
+        "username": "نام کاربری",
+        "usernamePlaceholder": "نام کاربری را وارد کنید",
+        "password": "گذرواژه",
+        "passwordPlaceholder": "گذرواژه را وارد کنید",
+        "newPassword": "گذرواژه جدید",
+        "newPasswordPlaceholder": "گذرواژه جدید را وارد کنید",
+        "email": "ایمیل",
+        "emailPlaceholder": "ایمیل را وارد کنید",
+        "role": "نقش",
+        "accountActive": "حساب فعال",
+        "resetUserPassword": "بازنشانی گذرواژه کاربر"
+      },
+      "roles": {
+        "viewer": "بیننده",
+        "operator": "اپراتور",
+        "admin": "مدیر"
+      },
+      "validation": {
+        "usernameRequired": "نام کاربری الزامی است",
+        "usernameMinLength": "نام کاربری باید حداقل 3 نویسه باشد",
+        "emailRequired": "ایمیل الزامی است",
+        "emailInvalid": "قالب ایمیل نامعتبر است",
+        "passwordRequired": "گذرواژه الزامی است",
+        "passwordMinLength": "گذرواژه باید حداقل 8 نویسه باشد",
+        "passwordRequiredWhenResetting": "هنگام بازنشانی، گذرواژه الزامی است"
+      },
+      "actions": {
+        "saveChanges": "ذخیره تغییرات",
+        "createUser": "ایجاد کاربر"
+      },
+      "toast": {
+        "created": "کاربر ایجاد شد",
+        "createError": "خطا در ایجاد کاربر",
+        "updated": "کاربر به‌روزرسانی شد",
+        "updateError": "خطا در به‌روزرسانی کاربر",
+        "passwordReset": "گذرواژه کاربر بازنشانی شد",
+        "resetError": "خطا در بازنشانی گذرواژه"
+      }
+    }
+  },
+  "scopeGrants": {
+    "accessDenied": {
+      "title": "دسترسی رد شد",
+      "message": "شما مجوز مدیریت محدوده‌های دسترسی را ندارید. لطفاً با مدیر سیستم تماس بگیرید."
+    },
+    "list": {
+      "title": "محدوده‌های دسترسی",
+      "countLabel": "{{count}} اعطا",
+      "createGrant": "اعطای محدوده",
+      "selectWalletPrompt": "برای مشاهده محدوده‌های دسترسی، یک کیف پول از بالا انتخاب کنید.",
+      "columns": {
+        "operator": "اپراتور",
+        "scope": "محدوده",
+        "target": "هدف",
+        "grantedAt": "اعطا شده در",
+        "actions": "اقدامات"
+      },
+      "empty": {
+        "noGrants": "اعطایی یافت نشد",
+        "noGrantsHint": "این کیف پول محدوده دسترسی فعال ندارد."
+      },
+      "errorLoading": "خطا در بارگذاری اعطاها: {{message}}",
+      "handover": "تحویل"
+    },
+    "form": {
+      "title": "ایجاد اعطای محدوده",
+      "fields": {
+        "operator": "اپراتور",
+        "operatorPlaceholder": "اپراتور را انتخاب کنید...",
+        "wallet": "کیف پول",
+        "scopeKind": "نوع محدوده",
+        "underlyingPublicId": "Public ID دارایی پایه",
+        "instrumentPublicId": "Public ID ابزار",
+        "underlyingPlaceholder": "مثلاً BTC",
+        "instrumentPlaceholder": "مثلاً BTC-USD-PERP",
+        "note": "یادداشت (اختیاری)",
+        "notePlaceholder": "یادداشت اختیاری"
+      },
+      "scopeKinds": {
+        "underlying": "دارایی پایه",
+        "instrument": "ابزار"
+      },
+      "validation": {
+        "operatorRequired": "اپراتور الزامی است",
+        "walletRequired": "کیف پول الزامی است",
+        "targetRequired": "شناسه هدف الزامی است"
+      },
+      "actions": {
+        "createGrant": "اعطای محدوده"
+      },
+      "toast": {
+        "created": "اعطای محدوده ایجاد شد",
+        "conflictError": "تداخل: اپراتور دیگری از قبل برای این محدوده اعطا دارد",
+        "createError": "خطا در ایجاد اعطای محدوده"
+      }
+    },
+    "handover": {
+      "title": "تحویل اعطای محدوده",
+      "fields": {
+        "currentHolder": "دارنده فعلی",
+        "scope": "محدوده",
+        "wallet": "کیف پول",
+        "scopeValue": "{{kind}}: {{target}}",
+        "transferTo": "انتقال به اپراتور",
+        "transferToPlaceholder": "اپراتور مقصد را انتخاب کنید...",
+        "reason": "دلیل (اختیاری)",
+        "reasonPlaceholder": "مثلاً تغییر شیفت"
+      },
+      "actions": {
+        "handover": "تحویل"
+      },
+      "toast": {
+        "completed": "اعطای محدوده تحویل داده شد",
+        "conflictError": "تداخل: اپراتور مقصد از قبل اعطای متداخل دارد",
+        "handoverError": "خطا در تحویل اعطای محدوده"
+      }
+    }
+  },
+  "credentials": {
+    "accessDenied": {
+      "title": "دسترسی رد شد",
+      "message": "شما مجوز مدیریت اعتبارنامه‌های کیف پول را ندارید. لطفاً با مدیر سیستم تماس بگیرید."
+    },
+    "list": {
+      "title": "اعتبارنامه‌های کیف پول",
+      "countLabel": "{{count}} اعتبارنامه",
+      "addCredential": "افزودن اعتبارنامه",
+      "selectWalletPrompt": "برای مشاهده اعتبارنامه‌ها، یک کیف پول از بالا انتخاب کنید.",
+      "columns": {
+        "exchange": "صرافی",
+        "type": "نوع",
+        "label": "برچسب",
+        "createdAt": "ایجاد شده در",
+        "actions": "اقدامات"
+      },
+      "empty": {
+        "noCredentials": "اعتبارنامه‌ای یافت نشد",
+        "noCredentialsHint": "این کیف پول اعتبارنامه فعال ندارد."
+      },
+      "errorLoading": "خطا در بارگذاری اعتبارنامه‌ها: {{message}}",
+      "rotate": "تعویض"
+    },
+    "form": {
+      "title": "افزودن اعتبارنامه",
+      "fields": {
+        "wallet": "کیف پول",
+        "exchange": "صرافی",
+        "exchangePlaceholder": "مثلاً kraken",
+        "credentialType": "نوع اعتبارنامه",
+        "label": "برچسب (اختیاری)",
+        "labelPlaceholder": "مثلاً کلید اصلی معاملاتی",
+        "pemPlaceholder": "کلید خصوصی با قالب PEM را اینجا بچسبانید"
+      },
+      "fieldLabels": {
+        "api_key": "کلید API",
+        "api_secret": "راز API",
+        "private_key_pem": "کلید خصوصی (PEM)",
+        "client_id": "Client ID",
+        "client_secret": "Client Secret",
+        "refresh_token": "Refresh Token",
+        "initial_balance": "موجودی اولیه"
+      },
+      "credentialTypes": {
+        "api_key_secret": "کلید API + راز",
+        "rsa_pem": "RSA PEM",
+        "oauth": "OAuth",
+        "paper": "Paper"
+      },
+      "validation": {
+        "walletRequired": "کیف پول الزامی است",
+        "exchangeRequired": "صرافی الزامی است",
+        "fieldRequired": "{{field}} الزامی است"
+      },
+      "actions": {
+        "addCredential": "افزودن اعتبارنامه"
+      },
+      "toast": {
+        "created": "اعتبارنامه ایجاد شد",
+        "conflictError": "تداخل: این کیف پول از قبل برای این صرافی اعتبارنامه فعال دارد",
+        "createError": "خطا در ایجاد اعتبارنامه"
+      }
+    },
+    "rotate": {
+      "title": "تعویض اعتبارنامه",
+      "fields": {
+        "exchange": "صرافی",
+        "type": "نوع",
+        "label": "برچسب",
+        "newLabel": "برچسب جدید (اختیاری)",
+        "newLabelPlaceholder": "مثلاً کلید تعویض‌شده 2026-04",
+        "pemPlaceholder": "کلید خصوصی با قالب PEM را اینجا بچسبانید"
+      },
+      "actions": {
+        "rotate": "تعویض"
+      },
+      "toast": {
+        "rotated": "اعتبارنامه تعویض شد",
+        "rotateError": "خطا در تعویض اعتبارنامه"
+      }
+    }
+  }
+}

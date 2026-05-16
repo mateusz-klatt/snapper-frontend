@@ -1,0 +1,57 @@
+{
+  "page": {
+    "title": "प्रोसेस नियंत्रण",
+    "subtitle": "रीयल-टाइम प्रोसेस मॉनिटरिंग और नियंत्रण"
+  },
+  "sections": {
+    "longRunning": "लंबे समय तक चलने वाले प्रोसेस",
+    "executorTemplates": "एक्ज़ीक्यूटर टेम्पलेट",
+    "executorTemplatesHint": "टेम्पलेट कॉन्फ़िग संपादित करने से रीस्टार्ट के बाद इस एक्सचेंज पर सभी वॉलेट प्रभावित होते हैं। टेम्पलेट केवल कॉन्फ़िग हैं — एक्ज़ीक्यूटर चलाने के लिए नीचे प्रति-वॉलेट इंस्टेंस शुरू करें।",
+    "walletInstances": "वॉलेट इंस्टेंस",
+    "taskProcesses": "टास्क प्रोसेस"
+  },
+  "card": {
+    "stop": "रोकें",
+    "start": "शुरू करें",
+    "restart": "रीस्टार्ट",
+    "starting": "शुरू हो रहा है...",
+    "stopping": "रुक रहा है...",
+    "status": {
+      "running": "चल रहा",
+      "stopped": "रुका हुआ",
+      "error": "त्रुटि",
+      "starting": "शुरू हो रहा है",
+      "stopping": "रुक रहा है"
+    }
+  },
+  "template": {
+    "badge": "टेम्पलेट",
+    "mode": "मोड:",
+    "parameters": "पैरामीटर:",
+    "paramCount": "{{count}} पैरामीटर",
+    "noParams": "कोई पैरामीटर सेट नहीं"
+  },
+  "badges": {
+    "oneShot": "एक-बार",
+    "autoStart": "ऑटो-स्टार्ट",
+    "manual": "मैनुअल"
+  },
+  "actions": {
+    "stopTitle": "{{name}} रोकें",
+    "stopMessage": "यह {{name}} प्रोसेस को रोक देगा।",
+    "restartTitle": "{{name}} रीस्टार्ट करें",
+    "restartMessage": "यह {{name}} प्रोसेस को रीस्टार्ट करेगा।"
+  },
+  "executionMode": {
+    "title": "{{name}} शुरू करें",
+    "label": "निष्पादन मोड:",
+    "threadName": "Thread मोड",
+    "threadDescription": "वेब सर्वर के भीतर एम्बेडेड टास्क के रूप में चलता है। तेज़ स्टार्टअप, साझा मेमोरी।",
+    "processName": "प्रोसेस मोड",
+    "processDescription": "अलग Python प्रोसेस के रूप में चलता है। अलग-थलग, fault-tolerant, विस्तृत मॉनिटरिंग।",
+    "cancel": "रद्द करें",
+    "start": "{{name}} शुरू करें",
+    "threadAriaLabel": "Thread मोड",
+    "processAriaLabel": "प्रोसेस मोड"
+  }
+}

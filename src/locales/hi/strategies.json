@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "रणनीति प्रबंधन",
+    "register": "रणनीति पंजीकृत करें",
+    "saving": "सहेजा जा रहा है…",
+    "descriptionCanManage": "UI से सीधे नई रणनीति प्रोसेस पंजीकृत करें। ऑटोस्टार्ट रीस्टार्ट के बाद भी प्रोसेस को सक्षम रखता है।",
+    "descriptionViewer": "कॉन्फ़िगर की गई रणनीतियाँ और उनकी स्थिति देखें। रणनीतियाँ प्रबंधित करने के लिए ऑपरेटर या एडमिन से संपर्क करें।",
+    "searchPlaceholder": "रणनीतियाँ खोजें...",
+    "filter": {
+      "all": "सभी स्थितियाँ",
+      "running": "चल रहा",
+      "stopped": "रुका हुआ"
+    },
+    "configuredHeading": "कॉन्फ़िगर की गई रणनीतियाँ",
+    "noMatches": "कोई रणनीति आपके फ़िल्टर से मेल नहीं खाती",
+    "clearFilters": "फ़िल्टर साफ़ करें",
+    "emptyTitle": "कोई रणनीति कॉन्फ़िगर नहीं",
+    "emptyCanManage": "एल्गोरिथ्मिक ट्रेडिंग शुरू करने के लिए रणनीति पंजीकृत करें",
+    "emptyViewer": "अभी तक कोई रणनीति कॉन्फ़िगर नहीं की गई"
+  },
+  "confirm": {
+    "startTitle": "{{name}} शुरू करें",
+    "startMessage": "यह {{name}} रणनीति शुरू करेगा। यह लाइव ट्रेडिंग ऑपरेशन शुरू कर सकती है।",
+    "stopTitle": "{{name}} रोकें",
+    "stopMessage": "यह {{name}} रणनीति को रोक देगा। सक्रिय पोजीशन अपने-आप बंद नहीं होंगी।"
+  },
+  "toast": {
+    "saved": "रणनीति {{name}} सहेजी गई",
+    "started": "रणनीति {{name}} शुरू हुई",
+    "registerFailed": "रणनीति पंजीकृत करने में विफल: {{message}}",
+    "startSuccess": "रणनीति सफलतापूर्वक शुरू हुई",
+    "stopSuccess": "रणनीति सफलतापूर्वक रोकी गई",
+    "alreadyRunning": "रणनीति पहले से चल रही है",
+    "notRunning": "रणनीति नहीं चल रही है",
+    "configNotFound": "रणनीति कॉन्फ़िगरेशन नहीं मिला। कृपया डेटाबेस सेटिंग्स जाँचें।",
+    "networkError": "नेटवर्क त्रुटि। कृपया कनेक्शन जाँचें और फिर कोशिश करें।",
+    "startFailed": "रणनीति शुरू करने में विफल: {{message}}",
+    "stopFailed": "रणनीति रोकने में विफल: {{message}}",
+    "unknownError": "अज्ञात त्रुटि"
+  },
+  "card": {
+    "ariaLabel": "रणनीति: {{name}}",
+    "modeLabel": "मोड: {{mode}}",
+    "autostartEnabled": "ऑटोस्टार्ट: सक्षम",
+    "autostartDisabled": "ऑटोस्टार्ट: अक्षम",
+    "statusAriaLabel": "स्थिति: {{status}}",
+    "dataLagAriaLabel": "डेटा लैग: {{seconds}} सेकंड",
+    "lagBadge": "लैग: {{seconds}}से",
+    "feedLag": "Feed लैग: {{ms}}ms",
+    "heartbeatAge": "Heartbeat आयु: {{seconds}}से",
+    "metrics": {
+      "status": "स्थिति",
+      "dataLag": "डेटा लैग",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "विवरण दिखाएँ",
+    "hideDetails": "विवरण छिपाएँ",
+    "inputs": "इनपुट ({{count}})",
+    "outputs": "आउटपुट ({{count}})",
+    "feedPublishers": "Feed पब्लिशर ({{count}})",
+    "lastUpdate": "अंतिम अपडेट: {{time}}",
+    "waiting": "Heartbeat की प्रतीक्षा...",
+    "startAriaLabel": "{{name}} रणनीति शुरू करें",
+    "stopAriaLabel": "{{name}} रणनीति रोकें",
+    "start": "शुरू करें",
+    "stop": "रोकें",
+    "starting": "शुरू हो रहा है...",
+    "stopping": "रुक रहा है...",
+    "status": {
+      "starting": "शुरू हो रहा है",
+      "stopping": "रुक रहा है",
+      "running": "चल रहा",
+      "stopped": "रुका हुआ"
+    },
+    "health": {
+      "healthy": "स्वस्थ — ताज़ा डेटा प्राप्त हो रहा है",
+      "warning": "चेतावनी — डेटा पुराना है",
+      "error": "त्रुटि — हाल का डेटा नहीं है",
+      "unknown": "अज्ञात — Heartbeat डेटा नहीं है"
+    },
+    "healthShort": {
+      "healthy": "स्वस्थ",
+      "warning": "चेतावनी",
+      "error": "त्रुटि"
+    }
+  },
+  "launchModal": {
+    "title": "रणनीति प्रोसेस पंजीकृत करें",
+    "emptyTemplates": "backend में कोई रणनीति टेम्पलेट पंजीकृत नहीं है। कम से कम एक रणनीति प्रोसेस परिभाषित करें।",
+    "close": "बंद करें",
+    "templateLabel": "रणनीति टेम्पलेट",
+    "templatePlaceholder": "टेम्पलेट चुनें...",
+    "templateFallbackDescription": "backend में पंजीकृत रणनीति",
+    "loadingDefaults": "टेम्पलेट डिफ़ॉल्ट लोड हो रहे हैं…",
+    "loadDefaultsError": "टेम्पलेट डिफ़ॉल्ट लोड नहीं हो सके। कृपया backend लॉग जाँचें।",
+    "processNameLabel": "प्रोसेस नाम",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "अनुमत अक्षर: छोटे अक्षर, संख्याएँ, अंडरस्कोर",
+    "instanceNameLabel": "रणनीति इंस्टेंस नाम",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "रणनीति कॉन्फ़िगरेशन और आउटपुट टॉपिक में उपयोग होता है",
+    "executionModeLabel": "निष्पादन मोड",
+    "executionModeThread": "एम्बेडेड thread",
+    "executionModeProcess": "अलग प्रोसेस",
+    "executionModeHelp": "Threads मेमोरी साझा करते हैं, प्रोसेस अधिक मजबूत अलगाव देते हैं।",
+    "flagsLabel": "Flags",
+    "autostartLabel": "सर्वर बूट पर ऑटोस्टार्ट",
+    "startImmediatelyLabel": "पंजीकरण के तुरंत बाद शुरू करें",
+    "noteLabel": "नोट (वैकल्पिक)",
+    "notePlaceholder": "इस रणनीति इंस्टेंस का उद्देश्य या पैरामीटर बताएँ।",
+    "noteHelp": "इस प्रोसेस की पहचान में मदद के लिए कॉन्फ़िगरेशन के साथ संग्रहीत।",
+    "cancel": "रद्द करें",
+    "submit": "रणनीति पंजीकृत करें",
+    "submitting": "पंजीकृत हो रहा है…"
+  }
+}

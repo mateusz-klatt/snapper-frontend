@@ -1,0 +1,139 @@
+{
+  "page": {
+    "title": "ऑर्डर और निष्पादन",
+    "newOrder": "नया ऑर्डर",
+    "exportCsv": "CSV निर्यात करें"
+  },
+  "tabs": {
+    "orders": "ऑर्डर ({{total}})",
+    "executions": "निष्पादन ({{total}})"
+  },
+  "filters": {
+    "byStatus": "स्थिति से फ़िल्टर करें:",
+    "options": {
+      "all": "सभी ऑर्डर",
+      "new": "नया",
+      "open": "खुला",
+      "partiallyFilled": "आंशिक रूप से भरा",
+      "partially_filled": "आंशिक रूप से भरा",
+      "filled": "भरा",
+      "cancelled": "रद्द",
+      "rejected": "अस्वीकृत"
+    }
+  },
+  "orderCard": {
+    "sideUnknown": "लागू नहीं",
+    "priceMarket": "Market",
+    "quantity": "मात्रा",
+    "price": "कीमत",
+    "created": "बनाया गया",
+    "createdUnknown": "लागू नहीं",
+    "orderId": "ऑर्डर ID",
+    "leverage": "लीवरेज",
+    "leverageValue": "{{leverage}}x",
+    "reduceOnly": "केवल-कमी",
+    "cancel": "रद्द करें",
+    "cancelling": "रद्द हो रहा है…",
+    "cancelAriaLabel": "ऑर्डर {{orderId}} रद्द करें"
+  },
+  "executionCard": {
+    "orderNumber": "ऑर्डर #{{orderId}}",
+    "filled": "भरा गया",
+    "orderLabel": "ऑर्डर {{orderId}}",
+    "size": "आकार",
+    "price": "कीमत",
+    "total": "कुल",
+    "executed": "निष्पादित",
+    "fees": "शुल्क"
+  },
+  "empty": {
+    "ordersTitle": "कोई ऑर्डर नहीं मिला",
+    "ordersStartTrading": "ऑर्डर यहाँ देखने के लिए ट्रेडिंग शुरू करें",
+    "ordersFilterless": "{{status}} ऑर्डर नहीं हैं",
+    "executionsTitle": "कोई निष्पादन नहीं मिला",
+    "executionsMessage": "ट्रेड निष्पादन यहाँ दिखाई देंगे"
+  },
+  "csv": {
+    "orders": {
+      "instrument": "इंस्ट्रूमेंट",
+      "side": "साइड",
+      "type": "प्रकार",
+      "status": "स्थिति",
+      "quantity": "मात्रा",
+      "price": "कीमत",
+      "leverage": "लीवरेज",
+      "reduceOnly": "केवल कमी",
+      "created": "बनाया गया"
+    },
+    "executions": {
+      "orderId": "ऑर्डर ID",
+      "instrument": "इंस्ट्रूमेंट",
+      "side": "साइड",
+      "size": "आकार",
+      "price": "कीमत",
+      "total": "कुल",
+      "fee": "शुल्क",
+      "feeAsset": "शुल्क एसेट",
+      "executed": "निष्पादित"
+    }
+  },
+  "newOrderModal": {
+    "titleEdit": "नया मैनुअल ऑर्डर",
+    "titleConfirm": "ऑर्डर की पुष्टि करें",
+    "fields": {
+      "exchange": "एक्सचेंज",
+      "instrument": "इंस्ट्रूमेंट",
+      "side": "साइड",
+      "orderType": "ऑर्डर प्रकार",
+      "quantity": "मात्रा",
+      "price": "कीमत",
+      "stopPrice": "Stop कीमत",
+      "mode": "मोड",
+      "wallet": "वॉलेट",
+      "type": "प्रकार"
+    },
+    "sideOptions": {
+      "buy": "खरीद",
+      "sell": "बिक्री"
+    },
+    "orderTypeOptions": {
+      "market": "Market",
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
+    },
+    "modeOptions": {
+      "live": "Live",
+      "paper": "Paper"
+    },
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — केवल बाजार डेटा",
+    "walletPaperSuffix": "{{label}} (paper)",
+    "placeholders": {
+      "quantity": "0.00",
+      "price": "0.00",
+      "stopPrice": "0.00"
+    },
+    "buttons": {
+      "cancel": "रद्द करें",
+      "reviewOrder": "ऑर्डर की समीक्षा करें",
+      "back": "वापस",
+      "confirmOrder": "ऑर्डर की पुष्टि करें",
+      "submitting": "सबमिट हो रहा है..."
+    },
+    "errors": {
+      "missingRequired": "सभी आवश्यक फ़ील्ड भरे जाने चाहिए",
+      "quantityPositive": "मात्रा एक सकारात्मक संख्या होनी चाहिए",
+      "priceRequired": "इस ऑर्डर प्रकार के लिए कीमत आवश्यक है",
+      "pricePositive": "कीमत एक सकारात्मक संख्या होनी चाहिए",
+      "stopPriceRequired": "इस ऑर्डर प्रकार के लिए Stop कीमत आवश्यक है",
+      "stopPricePositive": "Stop कीमत एक सकारात्मक संख्या होनी चाहिए",
+      "createFailed": "ऑर्डर बनाना विफल रहा"
+    },
+    "errorCodes": {
+      "instrumentMarketDataOnly": "यह इंस्ट्रूमेंट केवल अवलोकन के लिए है — निष्पादन-सक्षम इंस्ट्रूमेंट पर ऑर्डर दें।",
+      "unknownInstrument": "यह इंस्ट्रूमेंट पहचाना नहीं गया। सूची फिर से लोड करें और फिर कोशिश करें।",
+      "capsViolation": "यह ऑर्डर आपके खाते की सुरक्षा सीमाओं से अधिक होगा। अपनी जोखिम सेटिंग्स की समीक्षा करें और फिर कोशिश करें।"
+    }
+  }
+}

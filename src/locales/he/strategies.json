@@ -1,0 +1,119 @@
+{
+  "page": {
+    "title": "ניהול אסטרטגיות",
+    "register": "רשום אסטרטגיה",
+    "saving": "שומר…",
+    "descriptionCanManage": "רשום תהליכי אסטרטגיה חדשים ישירות מה-UI. הפעלה אוטומטית שומרת את התהליך פעיל בין הפעלות מחדש.",
+    "descriptionViewer": "הצג אסטרטגיות מוגדרות ואת הסטטוס שלהן. פנה למפעיל או למנהל כדי לנהל אסטרטגיות.",
+    "searchPlaceholder": "חפש אסטרטגיות...",
+    "filter": {
+      "all": "כל הסטטוסים",
+      "running": "פועל",
+      "stopped": "נעצר"
+    },
+    "configuredHeading": "אסטרטגיות מוגדרות",
+    "noMatches": "אין אסטרטגיות שתואמות למסננים שלך",
+    "clearFilters": "נקה מסננים",
+    "emptyTitle": "לא הוגדרו אסטרטגיות",
+    "emptyCanManage": "רשום אסטרטגיה כדי להתחיל מסחר אלגוריתמי",
+    "emptyViewer": "עדיין לא הוגדרו אסטרטגיות"
+  },
+  "confirm": {
+    "startTitle": "התחל {{name}}",
+    "startMessage": "פעולה זו תתחיל את אסטרטגיית {{name}}. היא עשויה להתחיל פעולות מסחר חיות.",
+    "stopTitle": "עצור {{name}}",
+    "stopMessage": "פעולה זו תעצור את אסטרטגיית {{name}}. פוזיציות פעילות לא ייסגרו אוטומטית."
+  },
+  "toast": {
+    "saved": "אסטרטגיית {{name}} נשמרה",
+    "started": "אסטרטגיית {{name}} התחילה",
+    "registerFailed": "רישום האסטרטגיה נכשל: {{message}}",
+    "startSuccess": "האסטרטגיה התחילה בהצלחה",
+    "stopSuccess": "האסטרטגיה נעצרה בהצלחה",
+    "alreadyRunning": "האסטרטגיה כבר פועלת",
+    "notRunning": "האסטרטגיה אינה פועלת",
+    "configNotFound": "תצורת האסטרטגיה לא נמצאה. בדוק את הגדרות מסד הנתונים.",
+    "networkError": "שגיאת רשת. בדוק את החיבור ונסה שוב.",
+    "startFailed": "התחלת האסטרטגיה נכשלה: {{message}}",
+    "stopFailed": "עצירת האסטרטגיה נכשלה: {{message}}",
+    "unknownError": "שגיאה לא ידועה"
+  },
+  "card": {
+    "ariaLabel": "אסטרטגיה: {{name}}",
+    "modeLabel": "מצב: {{mode}}",
+    "autostartEnabled": "הפעלה אוטומטית: מופעלת",
+    "autostartDisabled": "הפעלה אוטומטית: מושבתת",
+    "statusAriaLabel": "סטטוס: {{status}}",
+    "dataLagAriaLabel": "השהיית נתונים: {{seconds}} שניות",
+    "lagBadge": "השהיה: {{seconds}}ש׳",
+    "feedLag": "השהיית Feed: {{ms}}ms",
+    "heartbeatAge": "גיל Heartbeat: {{seconds}}ש׳",
+    "metrics": {
+      "status": "סטטוס",
+      "dataLag": "השהיית נתונים",
+      "dataLagValue": "{{ms}}ms",
+      "heartbeat": "Heartbeat",
+      "heartbeatValue": "#{{seq}}",
+      "heartbeatUnknown": "#?"
+    },
+    "showDetails": "הצג פרטים",
+    "hideDetails": "הסתר פרטים",
+    "inputs": "קלטים ({{count}})",
+    "outputs": "פלטים ({{count}})",
+    "feedPublishers": "מפרסמי Feed ({{count}})",
+    "lastUpdate": "עדכון אחרון: {{time}}",
+    "waiting": "ממתין ל-Heartbeat...",
+    "startAriaLabel": "התחל את אסטרטגיית {{name}}",
+    "stopAriaLabel": "עצור את אסטרטגיית {{name}}",
+    "start": "התחל",
+    "stop": "עצור",
+    "starting": "מתחיל...",
+    "stopping": "עוצר...",
+    "status": {
+      "starting": "מתחיל",
+      "stopping": "עוצר",
+      "running": "פועל",
+      "stopped": "נעצר"
+    },
+    "health": {
+      "healthy": "בריא — מתקבלים נתונים טריים",
+      "warning": "אזהרה — הנתונים מיושנים",
+      "error": "שגיאה — אין נתונים עדכניים",
+      "unknown": "לא ידוע — אין נתוני Heartbeat"
+    },
+    "healthShort": {
+      "healthy": "בריא",
+      "warning": "אזהרה",
+      "error": "שגיאה"
+    }
+  },
+  "launchModal": {
+    "title": "רשום תהליך אסטרטגיה",
+    "emptyTemplates": "אין תבניות אסטרטגיה רשומות ב-backend. הגדר לפחות תהליך אסטרטגיה אחד.",
+    "close": "סגור",
+    "templateLabel": "תבנית אסטרטגיה",
+    "templatePlaceholder": "בחר תבנית...",
+    "templateFallbackDescription": "אסטרטגיה רשומה ב-backend",
+    "loadingDefaults": "טוען ברירות מחדל של תבנית…",
+    "loadDefaultsError": "לא ניתן לטעון ברירות מחדל של התבנית. בדוק לוגים של backend.",
+    "processNameLabel": "שם תהליך",
+    "processNamePlaceholder": "strategy_macd_custom",
+    "processNameHelp": "תווים מותרים: אותיות קטנות, מספרים, קווים תחתונים",
+    "instanceNameLabel": "שם מופע אסטרטגיה",
+    "instanceNamePlaceholder": "macd_custom",
+    "instanceNameHelp": "משמש בתוך תצורת האסטרטגיה ונושאי הפלט",
+    "executionModeLabel": "מצב ביצוע",
+    "executionModeThread": "Thread מוטמע",
+    "executionModeProcess": "תהליך מבודד",
+    "executionModeHelp": "Threads חולקים זיכרון, תהליכים מספקים בידוד חזק יותר.",
+    "flagsLabel": "דגלים",
+    "autostartLabel": "הפעלה אוטומטית באתחול השרת",
+    "startImmediatelyLabel": "התחל מיד לאחר הרישום",
+    "noteLabel": "הערה (אופציונלי)",
+    "notePlaceholder": "תאר את המטרה או הפרמטרים של מופע האסטרטגיה הזה.",
+    "noteHelp": "נשמר לצד התצורה כדי לעזור לזהות תהליך זה.",
+    "cancel": "בטל",
+    "submit": "רשום אסטרטגיה",
+    "submitting": "רושם…"
+  }
+}

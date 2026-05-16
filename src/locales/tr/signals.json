@@ -1,0 +1,39 @@
+{
+  "page": {
+    "title": "Sinyaller"
+  },
+  "filters": {
+    "allStrategies": "Tüm Stratejiler"
+  },
+  "actions": {
+    "export": "Dışa aktar"
+  },
+  "stats": {
+    "total": "Toplam",
+    "buy": "Alım",
+    "sell": "Satım",
+    "avgStrength": "Ort. Güç"
+  },
+  "card": {
+    "strength": "Güç",
+    "price": "Fiyat",
+    "exchange": "Borsa",
+    "reason": "Neden:",
+    "noPrice": "Yok"
+  },
+  "strength": {
+    "strong": "Güçlü",
+    "medium": "Orta",
+    "weak": "Zayıf",
+    "veryWeak": "Çok Zayıf"
+  },
+  "time": {
+    "justNow": "Az önce",
+    "minutesAgo": "{{count}}dk önce",
+    "hoursAgo": "{{count}}s önce"
+  },
+  "empty": {
+    "title": "Sinyal bulunamadı",
+    "message": "Geçerli filtrelerinizle eşleşen trading sinyali yok."
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "page": {
+    "title": "الإعدادات",
+    "subtitle": "تكوين إعدادات التطبيق ومعلماته",
+    "addButton": "إضافة إعداد",
+    "searchPlaceholder": "ابحث في الإعدادات...",
+    "noResults": "لم يتم العثور على إعدادات تطابق معاييرك.",
+    "allCategories": "كل الفئات",
+    "categoryFilterAriaLabel": "تصفية الإعدادات حسب الفئة"
+  },
+  "errors": {
+    "loadFailed": "فشل تحميل الإعدادات",
+    "updateFailed": "فشل تحديث الإعداد",
+    "deleteFailed": "فشل حذف الإعداد",
+    "createFailed": "فشل إنشاء الإعداد",
+    "alreadyExists": "الإعداد بالمفتاح \"{{key}}\" موجود بالفعل"
+  },
+  "item": {
+    "edit": "تحرير",
+    "delete": "حذف",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ...",
+    "cancel": "إلغاء",
+    "yesDelete": "نعم، احذف",
+    "deleting": "جارٍ الحذف...",
+    "deleteConfirm": "حذف هذا الإعداد؟",
+    "valuePlaceholder": "أدخل قيمة الإعداد...",
+    "showMore": "إظهار المزيد",
+    "showLess": "إظهار أقل",
+    "toggleAriaLabel": "تبديل {{key}}",
+    "badges": {
+      "json": "📋 JSON",
+      "sensitive": "🔒 حساس"
+    },
+    "helpText": {
+      "allowShortSelling": "اسمح للمحرك بفتح مراكز Short. ستنتج إشارات SELL قيماً سالبة لـ desired_units؛ وتُقيّد إلى 0 عند التعطيل.",
+      "allowManualOrders": "فعّل زر الأمر الجديد في علامة تبويب الأوامر. عند التعطيل، يعيد POST /api/orders الرمز 403."
+    }
+  },
+  "addModal": {
+    "title": "إضافة إعداد جديد",
+    "keyLabel": "المفتاح",
+    "valueLabel": "القيمة",
+    "categoryLabel": "الفئة",
+    "descriptionLabel": "الوصف",
+    "keyPlaceholder": "مثلاً، walutomat.api_key",
+    "keyHint": "استخدم ترميز النقاط للإعدادات المتداخلة (مثلاً category.subcategory.name)",
+    "valuePlaceholder": "قيمة الإعداد",
+    "categorySelectPlaceholder": "اختر موجوداً أو أنشئ جديداً",
+    "newCategoryPlaceholder": "أو أدخل اسم فئة جديداً",
+    "descriptionPlaceholder": "وصف اختياري",
+    "cancel": "إلغاء",
+    "create": "إنشاء إعداد",
+    "creating": "جارٍ الإنشاء...",
+    "validation": {
+      "keyRequired": "المفتاح مطلوب",
+      "valueRequired": "القيمة مطلوبة",
+      "categoryRequired": "الفئة مطلوبة"
+    }
+  },
+  "jsonEditor": {
+    "formEditor": "محرر النموذج",
+    "rawEditor": "محرر JSON الخام",
+    "rawJson": "JSON خام",
+    "switchToForm": "التبديل إلى النموذج",
+    "importToForm": "استيراد إلى النموذج",
+    "parseError": "خطأ في التحليل: {{message}}",
+    "arraySummary": "مصفوفة ({{length}} عناصر)",
+    "addItem": "إضافة عنصر",
+    "remove": "إزالة",
+    "typeHint": {
+      "array": "(مصفوفة)",
+      "object": "(كائن)",
+      "string": "(string)",
+      "number": "(number)",
+      "boolean": "(boolean)",
+      "bigint": "(bigint)",
+      "function": "(function)",
+      "symbol": "(symbol)",
+      "undefined": "(undefined)"
+    }
+  },
+  "booleanValue": {
+    "true": "true",
+    "false": "false"
+  }
+}

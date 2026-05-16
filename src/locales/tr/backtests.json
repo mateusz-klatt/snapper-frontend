@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "back": "← Geri",
+    "backToList": "← Backtestlere dön"
+  },
+  "status": {
+    "pending": "Bekliyor",
+    "running": "Çalışıyor",
+    "completed": "Tamamlandı",
+    "failed": "Başarısız",
+    "cancelled": "İptal edildi"
+  },
+  "list": {
+    "title": "Backtests",
+    "actions": {
+      "cancel": "İptal",
+      "rerun": "Yeniden çalıştır"
+    },
+    "fields": {
+      "timeframe": "Zaman aralığı",
+      "period": "Dönem",
+      "initialCash": "Başlangıç Nakit",
+      "id": "ID"
+    },
+    "errorPrefix": "Hata: {{message}}",
+    "filter": {
+      "ariaLabel": "Backtestleri duruma göre filtrele",
+      "options": {
+        "all": "Tüm durumlar",
+        "pending": "Bekliyor",
+        "running": "Çalışıyor",
+        "completed": "Tamamlandı",
+        "failed": "Başarısız",
+        "cancelled": "İptal edildi"
+      }
+    },
+    "empty": {
+      "title": "Backtest yok",
+      "message": "Sonuçları burada görmek için CLI veya API üzerinden bir Backtest çalıştırın."
+    }
+  },
+  "detail": {
+    "title": "Backtest çalıştırması",
+    "fields": {
+      "strategy": "Strateji",
+      "instrument": "Enstrüman",
+      "status": "Durum",
+      "period": "Dönem",
+      "crossAsset": "Çapraz varlık atfı",
+      "configHash": "Yapılandırma hash'i"
+    },
+    "crossAssetFlow": "{{source}} Feed → {{target}} gerçekleşmeleri",
+    "errors": {
+      "invalidRunId": "Geçersiz çalıştırma id'si — UUID7 olmalı (alınan \"{{id}}\").",
+      "loadFailed": "Çalıştırma yüklenemedi: {{message}}",
+      "notFound": "bulunamadı"
+    }
+  },
+  "compare": {
+    "title": "Karşılaştır",
+    "headingFull": "Backtest karşılaştırması",
+    "loading": "Karşılaştırma yükleniyor…",
+    "vs": "vs",
+    "runLabel": "Çalıştırma {{label}} · {{id}} · {{status}}",
+    "sections": {
+      "metrics": "Metrikler",
+      "equityOverlay": "Equity örtüşümü",
+      "trades": "Trade'ler",
+      "signals": "Sinyaller"
+    },
+    "pairingMode": {
+      "auto": "otomatik",
+      "manual": "manuel"
+    },
+    "errors": {
+      "notFound": "Karşılaştırma geçerli cüzdanda bulunamadı.",
+      "loadFailed": "Karşılaştırma yüklenemedi: {{message}}",
+      "unknown": "bilinmeyen hata",
+      "emptyResponse": "Boş karşılaştırma yanıtı."
+    },
+    "launcher": {
+      "title": "Karşılaştır",
+      "submit": "Karşılaştır",
+      "autoPair": "En yeniyle karşılaştır",
+      "terminalGate": "karşılaştırma bu çalıştırma terminal duruma ulaştığında kullanılabilir",
+      "noSiblings": "bu yapılandırmayla başka çalıştırma yok",
+      "limitNotice": "en yeni {{count}} gösteriliyor — daha eski çalıştırmalar için manuel eşleştirme kullanın",
+      "pickPlaceholder": "— karşılaştırmak için bir çalıştırma seç —",
+      "showAllLabel": "Tüm çalıştırmaları göster (yalnızca aynı yapılandırma değil)",
+      "optionLabel": "{{id}} · {{strategy}} · {{status}}",
+      "source": {
+        "allRuns": "tüm çalıştırmalar",
+        "sameConfig": "aynı yapılandırma"
+      },
+      "errors": {
+        "pickRequired": "listeden bir çalıştırma seçin"
+      }
+    },
+    "diffColumns": {
+      "common": "Ortak",
+      "onlyA": "Yalnızca A'da",
+      "onlyB": "Yalnızca B'de"
+    },
+    "trades": {
+      "card": {
+        "pnlA": "A pnl",
+        "pnlB": "B pnl",
+        "delta": "Δ"
+      }
+    },
+    "metrics": {
+      "empty": "Karşılaştırılabilir metrik yok — iki çalıştırmada da kayıtlı değer yok.",
+      "columns": {
+        "name": "Metrik",
+        "runA": "Çalıştırma A",
+        "runB": "Çalıştırma B",
+        "delta": "Δ",
+        "deltaPct": "Δ %"
+      },
+      "percent": "{{value}} %"
+    },
+    "equity": {
+      "legend": {
+        "runA": "Çalıştırma A",
+        "runB": "Çalıştırma B"
+      }
+    }
+  },
+  "progress": {
+    "waiting": "İlerleme bekleniyor…",
+    "candles": "{{done}} / {{total}} mum",
+    "candlesNoTotal": "{{done}} mum",
+    "equity": "equity {{value}}",
+    "signalsTrades": "{{signals}} sinyal / {{trades}} trade",
+    "milestoneLine": "kilometre taşı {{label}}",
+    "milestone": {
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
+    }
+  }
+}
