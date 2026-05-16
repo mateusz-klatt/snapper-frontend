@@ -23,8 +23,11 @@ const ROOT = resolve(__dirname, '../..')
 
 /**
  * Viewport preset. Defaults to `desktop` (1440×900) — set
- * `VIEWPORT=mobile` to use Playwright's iPhone 15 Pro device descriptor
- * (393×852 + mobile userAgent + hasTouch). Output lands in
+ * `VIEWPORT=mobile` to use Playwright's iPhone 15 Pro device descriptor:
+ * Mobile Safari viewport 393×659 (the screen is 393×852, but the visible
+ * browser viewport excludes the URL bar / system chrome — this matches
+ * what real users see) + mobile userAgent + hasTouch + deviceScaleFactor
+ * 3 (PNGs land at 1179×1977). Output goes to
  * `proprietary/screenshots/frontend{,-mobile}/` accordingly.
  */
 const VIEWPORT = globalThis.process?.env?.VIEWPORT === 'mobile' ? 'mobile' : 'desktop'
