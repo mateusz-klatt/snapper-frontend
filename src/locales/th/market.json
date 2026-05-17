@@ -3,7 +3,7 @@
     "title": "ข้อมูลตลาด"
   },
   "controls": {
-    "exchange": "Exchange:",
+    "exchange": "ตลาด:",
     "instrument": "Instrument:",
     "timeframe": "กรอบเวลา:",
     "selectExchange": "เลือก Exchange",
