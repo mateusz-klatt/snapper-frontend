@@ -3,7 +3,7 @@
     "title": "Data ya Soko"
   },
   "controls": {
-    "exchange": "Exchange:",
+    "exchange": "Soko:",
     "instrument": "Instrumenti:",
     "timeframe": "Muda:",
     "selectExchange": "Chagua exchange",

@@ -3,7 +3,7 @@
     "title": "Market Data"
   },
   "controls": {
-    "exchange": "Exchange:",
+    "exchange": "Palitan:",
     "instrument": "Instrument:",
     "timeframe": "Timeframe:",
     "selectExchange": "Pumili ng exchange",

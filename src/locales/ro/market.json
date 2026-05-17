@@ -3,7 +3,7 @@
     "title": "Date de piață"
   },
   "controls": {
-    "exchange": "Exchange:",
+    "exchange": "Bursă:",
     "instrument": "Instrument:",
     "timeframe": "Interval:",
     "selectExchange": "Selectați exchange-ul",
