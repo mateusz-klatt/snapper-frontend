@@ -175,12 +175,12 @@ const MetricCard: React.FC<{ metric: HealthMetric }> = ({ metric }) => {
 
   return (
     <div className={clsx('p-4 rounded-lg border', getStatusColor(metric.status))}>
-      <div className='flex items-center justify-between mb-2'>
-        <div className='flex items-center space-x-2'>
-          <div className='text-current'>{metric.icon}</div>
+      <div className='flex items-center justify-between gap-2 mb-2'>
+        <div className='flex items-center gap-2 min-w-0'>
+          <div className='text-current shrink-0'>{metric.icon}</div>
           <span className='font-medium'>{metric.name}</span>
         </div>
-        <div className='text-lg font-bold'>{metric.value}</div>
+        <div className='text-lg font-bold shrink-0'>{metric.value}</div>
       </div>
       <p className='text-xs opacity-80'>{metric.description}</p>
     </div>

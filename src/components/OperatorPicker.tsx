@@ -24,7 +24,7 @@ export const OperatorPicker: React.FC = () => {
       onChange={v => setId(v === '__all__' ? null : v)}
       options={options}
       placeholder={t('chrome.operatorPicker.placeholder')}
-      className='w-40'
+      className='w-56'
     />
   )
 }
