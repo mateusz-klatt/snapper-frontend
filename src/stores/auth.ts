@@ -4,6 +4,7 @@ import type { Components } from '../types/api.generated'
 import type { LoginBody } from '../types/api'
 import { RESOURCE_ACCESS, ROLE_PERMISSIONS } from '../types/permissions.generated'
 import type { Permission } from '../types/permissions.generated'
+import i18n from '../i18n/config'
 import { apiClient } from '../lib/apiClient'
 import { queryClient } from '../lib/queryClient'
 import { storeWsTicket } from '../lib/wsTicketCache'
@@ -83,6 +84,11 @@ export const useAuthStore = create<AuthState>()(
             const data = envelope.payload
 
             apiClient.setCsrfToken(data.csrf_token ?? null)
+
+            if (data.user.default_language && data.user.default_language !== i18n.language) {
+              void i18n.changeLanguage(data.user.default_language)
+            }
+
             set({
               user: data.user,
               isAuthenticated: true,

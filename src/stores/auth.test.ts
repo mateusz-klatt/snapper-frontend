@@ -379,6 +379,32 @@ describe('auth store', () => {
       expect(updatedState.isAuthenticated).toBe(false)
       expect(updatedState.error).toBe('Invalid credentials')
     })
+    it('applies user.default_language to i18n on login when it differs from current', async () => {
+      const i18nModule = await import('../i18n/config')
+      const changeSpy = vi.spyOn(i18nModule.default, 'changeLanguage')
+      const mockUser = {
+        type: 'user_profile' as const,
+        sequence_id: 0,
+        public_id: 'test-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'test-sid',
+        username: 'testuser',
+        role: 'admin' as const,
+        is_active: true,
+        created_at: '2026-01-01T00:00:00Z',
+        default_language: 'pl',
+      }
+
+      vi.mocked(apiClient.post).mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({ payload: { user: mockUser, csrf_token: 'test-csrf' } }),
+      } as Response)
+      const state = useAuthStore.getState()
+
+      await state.login({ username: 'testuser', password: 'password', remember_me: false })
+      expect(changeSpy).toHaveBeenCalledWith('pl')
+      changeSpy.mockRestore()
+    })
     it('handles login failure without detail', async () => {
       vi.mocked(apiClient.post).mockResolvedValueOnce({
         ok: false,

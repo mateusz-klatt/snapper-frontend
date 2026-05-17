@@ -30,6 +30,20 @@ const applyLocaleSideEffects = (locale: AppLocale): void => {
   void i18n.changeLanguage(getCatalogLanguage(locale))
 }
 
+const persistDefaultLanguageToBackend = (locale: AppLocale): void => {
+  const { isAuthenticated } = useAuthStore.getState()
+
+  if (!isAuthenticated) {
+    return
+  }
+
+  void apiClient
+    .postJSON('/api/auth/me/update', { default_language: getCatalogLanguage(locale) })
+    .catch((error: unknown) => {
+      console.warn('Failed to persist default_language to backend', error)
+    })
+}
+
 interface AppStore extends AppState {
   setConnected: (connected: boolean) => void
   setConnectionLag: (lag: number) => void
@@ -109,6 +123,7 @@ export const useAppStore = create<AppStore>()(
     },
     setLocale: (locale: AppLocale) => {
       applyLocaleSideEffects(locale)
+      persistDefaultLanguageToBackend(locale)
       set({ locale })
     },
   }))
