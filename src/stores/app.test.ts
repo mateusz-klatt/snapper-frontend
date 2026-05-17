@@ -250,26 +250,23 @@ describe('useAppStore', () => {
     })
     it('does not call backend when caller is unauthenticated', () => {
       useAuthStore.setState({ isAuthenticated: false })
-      const postSpy = vi.spyOn(apiClient, 'post')
+      const postSpy = vi.spyOn(apiClient, 'postJSON')
 
       useAppStore.getState().setLocale('pl')
       expect(postSpy).not.toHaveBeenCalled()
     })
     it('persists default_language to backend when caller is authenticated', () => {
       useAuthStore.setState({ isAuthenticated: true })
-      const postSpy = vi
-        .spyOn(apiClient, 'post')
-        .mockResolvedValue(new Response('{}', { status: 200 }))
+      const postSpy = vi.spyOn(apiClient, 'postJSON').mockResolvedValue({} as never)
 
       useAppStore.getState().setLocale('pl')
       expect(postSpy).toHaveBeenCalledWith('/api/auth/me/update', {
-        type: 'update_auth_me_request',
-        payload: { default_language: 'pl' },
+        default_language: 'pl',
       })
     })
     it('swallows backend persist errors so the picker still flips locally', async () => {
       useAuthStore.setState({ isAuthenticated: true })
-      vi.spyOn(apiClient, 'post').mockRejectedValue(new Error('500'))
+      vi.spyOn(apiClient, 'postJSON').mockRejectedValue(new Error('500'))
       const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
       try {

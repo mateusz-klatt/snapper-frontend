@@ -37,14 +37,11 @@ const persistDefaultLanguageToBackend = (locale: AppLocale): void => {
     return
   }
 
-  const body = {
-    type: 'update_auth_me_request',
-    payload: { default_language: getCatalogLanguage(locale) },
-  }
-
-  void apiClient.post('/api/auth/me/update', body).catch((error: unknown) => {
-    console.warn('Failed to persist default_language to backend', error)
-  })
+  void apiClient
+    .postJSON('/api/auth/me/update', { default_language: getCatalogLanguage(locale) })
+    .catch((error: unknown) => {
+      console.warn('Failed to persist default_language to backend', error)
+    })
 }
 
 interface AppStore extends AppState {
