@@ -28,6 +28,21 @@ describe('i18n config', () => {
     expect(i18n.t('login.title', { ns: 'auth' })).toBe('Logowanie Snapper Trading')
     await i18n.changeLanguage('en')
   })
+
+  it('updates document.documentElement.lang only after changeLanguage resolves', async () => {
+    await i18n.changeLanguage('pl')
+    expect(document.documentElement.lang).toBe('pl')
+    await i18n.changeLanguage('de')
+    expect(document.documentElement.lang).toBe('de')
+    await i18n.changeLanguage('en')
+  })
+
+  it('updates document.documentElement.dir based on the new language', async () => {
+    await i18n.changeLanguage('ar')
+    expect(document.documentElement.dir).toBe('rtl')
+    await i18n.changeLanguage('en')
+    expect(document.documentElement.dir).toBe('ltr')
+  })
 })
 
 describe('detectInitialLocale', () => {

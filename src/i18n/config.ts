@@ -47,6 +47,14 @@ const lazyLoader = resourcesToBackend(loadCatalog)
 const initialLocale = detectInitialLocale()
 const initialLanguage: CatalogLanguage = getCatalogLanguage(initialLocale)
 
+const updateDocumentLanguage = (lng: string): void => {
+  document.documentElement.lang = lng
+  document.documentElement.dir = i18n.dir(lng)
+}
+
+i18n.on('languageChanged', updateDocumentLanguage)
+updateDocumentLanguage(initialLanguage)
+
 void i18n
   .use(lazyLoader)
   .use(initReactI18next)
