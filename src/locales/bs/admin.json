@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Posmatrač",
         "operator": "Operater",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "AI delegat"
       },
       "validation": {
         "usernameRequired": "Korisničko ime je obavezno",

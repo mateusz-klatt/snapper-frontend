@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Betrachter",
         "operator": "Operator",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "KI-Delegierter"
       },
       "validation": {
         "usernameRequired": "Benutzername ist erforderlich",

@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Pengamat",
         "operator": "Operator",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "Delegat AI"
       },
       "validation": {
         "usernameRequired": "Nama pengguna wajib diisi",

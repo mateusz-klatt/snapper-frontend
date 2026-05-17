@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Skatītājs",
         "operator": "Operators",
-        "admin": "Administrators"
+        "admin": "Administrators",
+        "ai_delegate": "AI delegāts"
       },
       "validation": {
         "usernameRequired": "Lietotājvārds ir obligāts",

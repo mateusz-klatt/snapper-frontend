@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "閲覧者",
         "operator": "オペレーター",
-        "admin": "管理者"
+        "admin": "管理者",
+        "ai_delegate": "AI代理人"
       },
       "validation": {
         "usernameRequired": "ユーザー名は必須です",

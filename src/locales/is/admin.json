@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Áhorfandi",
         "operator": "Operator",
-        "admin": "Kerfisstjóri"
+        "admin": "Kerfisstjóri",
+        "ai_delegate": "AI-fulltrúi"
       },
       "validation": {
         "usernameRequired": "Notandanafn er áskilið",

@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Læser",
         "operator": "Operatør",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "AI-delegeret"
       },
       "validation": {
         "usernameRequired": "Brugernavn er påkrævet",

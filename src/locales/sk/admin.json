@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Pozorovateľ",
         "operator": "Operátor",
-        "admin": "Administrátor"
+        "admin": "Administrátor",
+        "ai_delegate": "Delegát AI"
       },
       "validation": {
         "usernameRequired": "Používateľské meno je povinné",

@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Mtazamaji",
         "operator": "Opereta",
-        "admin": "Msimamizi"
+        "admin": "Msimamizi",
+        "ai_delegate": "Mwakilishi wa AI"
       },
       "validation": {
         "usernameRequired": "Jina la mtumiaji linahitajika",

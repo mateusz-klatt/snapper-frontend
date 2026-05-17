@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Դիտող",
         "operator": "Օպերատոր",
-        "admin": "Ադմինիստրատոր"
+        "admin": "Ադմինիստրատոր",
+        "ai_delegate": "AI պատվիրակ"
       },
       "validation": {
         "usernameRequired": "Օգտանունը պարտադիր է",

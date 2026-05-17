@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Viewer",
         "operator": "Operator",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "AI Delegate"
       },
       "validation": {
         "usernameRequired": "ต้องระบุชื่อผู้ใช้",

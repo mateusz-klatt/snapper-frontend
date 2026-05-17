@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Kijker",
         "operator": "Operator",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "AI-gemachtigde"
       },
       "validation": {
         "usernameRequired": "Gebruikersnaam is verplicht",

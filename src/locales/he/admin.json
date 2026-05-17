@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "צופה",
         "operator": "מפעיל",
-        "admin": "מנהל"
+        "admin": "מנהל",
+        "ai_delegate": "נציג AI"
       },
       "validation": {
         "usernameRequired": "שם משתמש הוא חובה",

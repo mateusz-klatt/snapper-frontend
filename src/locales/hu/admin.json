@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Megfigyelő",
         "operator": "Operátor",
-        "admin": "Adminisztrátor"
+        "admin": "Adminisztrátor",
+        "ai_delegate": "AI-megbízott"
       },
       "validation": {
         "usernameRequired": "A felhasználónév megadása kötelező",

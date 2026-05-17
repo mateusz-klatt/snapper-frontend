@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Παρατηρητής",
         "operator": "Χειριστής",
-        "admin": "Διαχειριστής"
+        "admin": "Διαχειριστής",
+        "ai_delegate": "Εκπρόσωπος AI"
       },
       "validation": {
         "usernameRequired": "Το όνομα χρήστη είναι υποχρεωτικό",

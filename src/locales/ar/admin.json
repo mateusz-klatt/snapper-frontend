@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "مشاهد",
         "operator": "مشغّل",
-        "admin": "مسؤول"
+        "admin": "مسؤول",
+        "ai_delegate": "مفوّض الذكاء الاصطناعي"
       },
       "validation": {
         "usernameRequired": "اسم المستخدم مطلوب",

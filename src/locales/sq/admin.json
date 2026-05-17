@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Shikues",
         "operator": "Operator",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "Delegat AI"
       },
       "validation": {
         "usernameRequired": "Emri i përdoruesit është i detyrueshëm",

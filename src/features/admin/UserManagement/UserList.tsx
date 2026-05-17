@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Trash2, Edit, UserPlus, Eye, EyeOff, Shield, Users } from 'lucide-react'
+import { Trash2, Edit, UserPlus, Eye, EyeOff, Shield, Users, Sparkles } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { Button, Badge } from '../../../components/ui'
 import { ConfirmDialog } from '../../../components/ui/ConfirmDialog'
@@ -42,6 +42,8 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
         return 'bg-brand-100 text-brand-800 border-brand-200'
       case 'viewer':
         return 'bg-muted-200 text-muted-700 border-muted-300'
+      case 'ai_delegate':
+        return 'bg-accent-100 text-accent-800 border-accent-200'
       default:
         return 'bg-muted-200 text-muted-700 border-muted-300'
     }
@@ -55,6 +57,8 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
         return <Users className='w-3 h-3' />
       case 'viewer':
         return <Eye className='w-3 h-3' />
+      case 'ai_delegate':
+        return <Sparkles className='w-3 h-3' />
       default:
         return null
     }
@@ -231,7 +235,9 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                       className={`inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium ${getRoleBadgeColor(user.role)}`}
                     >
                       {getRoleIcon(user.role)}
-                      <span className='capitalize'>{user.role}</span>
+                      <span className='capitalize'>
+                        {t(`users.form.roles.${user.role}`, { defaultValue: user.role })}
+                      </span>
                     </span>
                   </td>
                   <td className='px-3 py-4 whitespace-nowrap'>

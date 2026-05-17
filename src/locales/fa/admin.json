@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "بیننده",
         "operator": "اپراتور",
-        "admin": "مدیر"
+        "admin": "مدیر",
+        "ai_delegate": "نماینده هوش مصنوعی"
       },
       "validation": {
         "usernameRequired": "نام کاربری الزامی است",

@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "व्यूअर",
         "operator": "ऑपरेटर",
-        "admin": "एडमिन"
+        "admin": "एडमिन",
+        "ai_delegate": "AI प्रतिनिधि"
       },
       "validation": {
         "usernameRequired": "उपयोगकर्ता नाम आवश्यक है",
