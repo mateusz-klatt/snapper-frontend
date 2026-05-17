@@ -33,7 +33,7 @@ describe('preloadAllLocales', () => {
 
   it('does nothing when supportedLngs is missing', () => {
     const spy = vi.spyOn(i18n, 'loadLanguages').mockResolvedValue(undefined)
-    const original = i18n.options.supportedLngs
+    const original = i18n.options.supportedLngs ?? false
 
     i18n.options.supportedLngs = undefined as unknown as readonly string[]
 
@@ -47,7 +47,7 @@ describe('preloadAllLocales', () => {
 
   it('does nothing when supportedLngs filters down to an empty list', () => {
     const spy = vi.spyOn(i18n, 'loadLanguages').mockResolvedValue(undefined)
-    const original = i18n.options.supportedLngs
+    const original = i18n.options.supportedLngs ?? false
 
     i18n.options.supportedLngs = ['cimode'] as unknown as readonly string[]
 
