@@ -7,6 +7,7 @@ import { useAppStore } from '../stores/app'
 import { LOCALES } from '../i18n/locales'
 import { ROW_1, ROW_2, ROW_3 } from '../i18n/types'
 import { getCatalogLanguage } from '../i18n/countryLanguages'
+import { preloadAllLocales } from '../i18n/preloader'
 import type { AppLocale } from '../i18n/types'
 
 const ROWS: readonly [readonly AppLocale[], readonly AppLocale[], readonly AppLocale[]] = [
@@ -144,6 +145,8 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
           aria-label={t('localeSwitcher.triggerAriaLabel')}
           title={t('localeSwitcher.triggerAriaLabel')}
           data-testid='locale-switcher-trigger'
+          onPointerEnter={preloadAllLocales}
+          onFocus={preloadAllLocales}
           className={clsx(
             'inline-flex items-center gap-1 rounded-lg p-2 text-muted-600 hover:bg-dark-700 transition-colors',
             'focus:outline-hidden focus:ring-2 focus:ring-brand-500',
