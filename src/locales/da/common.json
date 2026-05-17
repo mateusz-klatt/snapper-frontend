@@ -24,7 +24,7 @@
     "skipToContent": "Spring til tradingindhold",
     "lag": "Forsinkelse:",
     "lagTitle": "Round-trip-latency til WebSocket-serveren",
-    "topics": "Topics:",
+    "topics": "Emner:",
     "topicsTitle": "Antal abonnerede WebSocket-topics",
     "connected": "Forbundet",
     "disconnected": "Afbrudt",

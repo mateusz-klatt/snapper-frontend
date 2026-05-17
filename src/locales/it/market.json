@@ -3,7 +3,7 @@
     "title": "Dati di mercato"
   },
   "controls": {
-    "exchange": "Exchange:",
+    "exchange": "Borsa:",
     "instrument": "Strumento:",
     "timeframe": "Timeframe:",
     "selectExchange": "Seleziona exchange",

@@ -3,7 +3,7 @@
     "title": "စျေးကွက်ဒေတာ"
   },
   "controls": {
-    "exchange": "Exchange:",
+    "exchange": "စတော့အိတ်ချိန်း:",
     "instrument": "Instrument:",
     "timeframe": "အချိန်ဘောင်:",
     "selectExchange": "Exchange ရွေးပါ",

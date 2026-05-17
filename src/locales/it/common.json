@@ -24,7 +24,7 @@
     "skipToContent": "Vai al contenuto di trading",
     "lag": "Latenza:",
     "lagTitle": "Latenza di andata e ritorno verso il server WebSocket",
-    "topics": "Topic:",
+    "topics": "Argomenti:",
     "topicsTitle": "Numero di topic WebSocket sottoscritti",
     "connected": "Connesso",
     "disconnected": "Disconnesso",
