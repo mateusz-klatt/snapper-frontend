@@ -114,7 +114,7 @@
     "asyncioActive": "{{count}} সক্রিয়",
     "asyncioPending": "+ {{count}} অপেক্ষমাণ",
     "dbPool": "DB Pool",
-    "liveConns": "Live conns: {{count}}",
+    "liveConns": "সক্রিয় সংযোগ: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objects: {{value}}",
     "threadsPercent": "Threads %",
