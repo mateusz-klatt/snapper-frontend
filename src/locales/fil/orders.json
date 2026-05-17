@@ -5,8 +5,8 @@
     "exportCsv": "I-export CSV"
   },
   "tabs": {
-    "orders": "Orders ({{total}})",
-    "executions": "Executions ({{total}})"
+    "orders": "Mga Order ({{total}})",
+    "executions": "Mga Execution ({{total}})"
   },
   "filters": {
     "byStatus": "I-filter ayon sa katayuan:",

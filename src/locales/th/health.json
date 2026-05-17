@@ -114,7 +114,7 @@
     "asyncioActive": "ใช้งานอยู่ {{count}}",
     "asyncioPending": "+ รอดำเนินการ {{count}}",
     "dbPool": "DB พูล",
-    "liveConns": "Live conns: {{count}}",
+    "liveConns": "การเชื่อมต่อที่ใช้งานอยู่: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objects: {{value}}",
     "threadsPercent": "Threads %",

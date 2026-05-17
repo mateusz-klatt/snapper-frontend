@@ -114,7 +114,7 @@
     "asyncioActive": "{{count}} active",
     "asyncioPending": "+ {{count}} naka-pending",
     "dbPool": "DB Pool",
-    "liveConns": "Live conns: {{count}}",
+    "liveConns": "Mga aktibong koneksyon: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objects: {{value}}",
     "threadsPercent": "Threads %",

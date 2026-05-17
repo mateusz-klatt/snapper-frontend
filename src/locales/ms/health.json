@@ -114,7 +114,7 @@
     "asyncioActive": "{{count}} aktif",
     "asyncioPending": "+ {{count}} tertunda",
     "dbPool": "DB Pool",
-    "liveConns": "Live conns: {{count}}",
+    "liveConns": "Sambungan aktif: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objects: {{value}}",
     "threadsPercent": "Threads %",
