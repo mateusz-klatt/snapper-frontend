@@ -11,6 +11,7 @@ export const preloadAllLocales = (): void => {
 
   const configured = i18n.options.supportedLngs
   const langs = Array.isArray(configured) ? configured.filter(isPreloadable) : []
+
   if (langs.length === 0) return
 
   void i18n.loadLanguages(langs)
