@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Người xem",
         "operator": "Người vận hành",
-        "admin": "Quản trị viên"
+        "admin": "Quản trị viên",
+        "ai_delegate": "Đại diện AI"
       },
       "validation": {
         "usernameRequired": "Bắt buộc nhập tên người dùng",

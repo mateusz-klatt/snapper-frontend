@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Pemapar",
         "operator": "Operator",
-        "admin": "Pentadbir"
+        "admin": "Pentadbir",
+        "ai_delegate": "Wakil AI"
       },
       "validation": {
         "usernameRequired": "Nama pengguna diperlukan",

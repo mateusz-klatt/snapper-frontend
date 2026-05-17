@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Спостерігач",
         "operator": "Оператор",
-        "admin": "Адміністратор"
+        "admin": "Адміністратор",
+        "ai_delegate": "Делегат ШІ"
       },
       "validation": {
         "usernameRequired": "Ім'я користувача обов'язкове",

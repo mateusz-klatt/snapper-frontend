@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "뷰어",
         "operator": "운영자",
-        "admin": "관리자"
+        "admin": "관리자",
+        "ai_delegate": "AI 대리인"
       },
       "validation": {
         "usernameRequired": "사용자 이름은 필수입니다",

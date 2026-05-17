@@ -103,7 +103,7 @@ describe('UserList', () => {
     )
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     await waitFor(() => {
-      expect(screen.getAllByText('admin')[0]).toBeTruthy()
+      expect(screen.getAllByText('Administrator')[0]).toBeTruthy()
     })
   })
   it('displays inactive users badge', async () => {
@@ -331,7 +331,7 @@ describe('UserList', () => {
     )
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     await waitFor(() => {
-      expect(screen.getAllByText('operator')[0]).toBeTruthy()
+      expect(screen.getAllByText('Operator')[0]).toBeTruthy()
     })
   })
   it('displays viewer role badge', async () => {
@@ -348,7 +348,7 @@ describe('UserList', () => {
     )
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     await waitFor(() => {
-      expect(screen.getAllByText('viewer')[0]).toBeTruthy()
+      expect(screen.getAllByText('Viewer')[0]).toBeTruthy()
     })
   })
   it('displays unknown role badge with default styling', async () => {

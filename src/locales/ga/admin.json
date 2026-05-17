@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Amharcóir",
         "operator": "Oibreoir",
-        "admin": "Riarthóir"
+        "admin": "Riarthóir",
+        "ai_delegate": "Toscaire AI"
       },
       "validation": {
         "usernameRequired": "Tá ainm úsáideora riachtanach",

@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Tarkkailija",
         "operator": "Operaattori",
-        "admin": "Pääkäyttäjä"
+        "admin": "Pääkäyttäjä",
+        "ai_delegate": "AI-valtuutettu"
       },
       "validation": {
         "usernameRequired": "Käyttäjänimi vaaditaan",

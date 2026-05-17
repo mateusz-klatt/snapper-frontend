@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "ကြည့်ရှုသူ",
         "operator": "လုပ်ဆောင်သူ",
-        "admin": "စီမံခန့်ခွဲသူ"
+        "admin": "စီမံခန့်ခွဲသူ",
+        "ai_delegate": "AI ကိုယ်စားလှယ်"
       },
       "validation": {
         "usernameRequired": "Username လိုအပ်သည်",

@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Obserwator",
         "operator": "Operator",
-        "admin": "Administrator"
+        "admin": "Administrator",
+        "ai_delegate": "Delegat AI"
       },
       "validation": {
         "usernameRequired": "Nazwa użytkownika jest wymagana",

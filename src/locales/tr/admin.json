@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Görüntüleyici",
         "operator": "Operator",
-        "admin": "Yönetici"
+        "admin": "Yönetici",
+        "ai_delegate": "AI temsilcisi"
       },
       "validation": {
         "usernameRequired": "Kullanıcı adı gerekli",

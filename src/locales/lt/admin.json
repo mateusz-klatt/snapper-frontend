@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "Stebėtojas",
         "operator": "Operatorius",
-        "admin": "Administratorius"
+        "admin": "Administratorius",
+        "ai_delegate": "AI delegatas"
       },
       "validation": {
         "usernameRequired": "Naudotojo vardas privalomas",

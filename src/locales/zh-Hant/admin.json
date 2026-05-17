@@ -107,7 +107,8 @@
       "roles": {
         "viewer": "檢視者",
         "operator": "操作員",
-        "admin": "管理員"
+        "admin": "管理員",
+        "ai_delegate": "AI 代理人"
       },
       "validation": {
         "usernameRequired": "必須填寫用戶名稱",
