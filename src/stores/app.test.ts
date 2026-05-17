@@ -1,5 +1,7 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { useAppStore } from './app'
+import { useAuthStore } from './auth'
+import { apiClient } from '../lib/apiClient'
 import i18n from '../i18n/config'
 
 describe('useAppStore', () => {
@@ -244,6 +246,40 @@ describe('useAppStore', () => {
         expect(useAppStore.getState().locale).toBe('pl')
       } finally {
         spy.mockRestore()
+      }
+    })
+    it('does not call backend when caller is unauthenticated', () => {
+      useAuthStore.setState({ isAuthenticated: false })
+      const postSpy = vi.spyOn(apiClient, 'post')
+
+      useAppStore.getState().setLocale('pl')
+      expect(postSpy).not.toHaveBeenCalled()
+    })
+    it('persists default_language to backend when caller is authenticated', () => {
+      useAuthStore.setState({ isAuthenticated: true })
+      const postSpy = vi
+        .spyOn(apiClient, 'post')
+        .mockResolvedValue(new Response('{}', { status: 200 }))
+
+      useAppStore.getState().setLocale('pl')
+      expect(postSpy).toHaveBeenCalledWith('/api/auth/me/update', {
+        type: 'update_auth_me_request',
+        payload: { default_language: 'pl' },
+      })
+    })
+    it('swallows backend persist errors so the picker still flips locally', async () => {
+      useAuthStore.setState({ isAuthenticated: true })
+      vi.spyOn(apiClient, 'post').mockRejectedValue(new Error('500'))
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+      try {
+        expect(() => useAppStore.getState().setLocale('pl')).not.toThrow()
+        expect(useAppStore.getState().locale).toBe('pl')
+        await Promise.resolve()
+        await Promise.resolve()
+        expect(warnSpy).toHaveBeenCalled()
+      } finally {
+        warnSpy.mockRestore()
       }
     })
   })

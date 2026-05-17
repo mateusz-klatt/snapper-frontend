@@ -68,6 +68,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/auth/me/update": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: Operations["update_current_user_preferences_api_auth_me_update_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/auth/logout": {
         parameters: {
             query?: never;
@@ -3588,6 +3604,7 @@ export type Components = {
             operator_public_ids: string[];
             primary_operator_public_id?: string | null | undefined;
             active_wallet_public_id?: string | null | undefined;
+            default_language?: string | null | undefined;
         };
         UserResponse: {
             type: "user_response";
@@ -3782,6 +3799,18 @@ export type Components = {
         RefreshTokenPayload: {
             active_wallet_public_id?: string | null;
             clear_active_wallet?: boolean;
+        };
+        UpdateAuthMeRequest: {
+            type?: "update_auth_me_request";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["UpdateAuthMeBody"];
+        };
+        UpdateAuthMeBody: {
+            default_language?: string | null;
         };
         CreateUserRequest: {
             type?: "create_user_request";
@@ -4347,6 +4376,29 @@ export interface Operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["UserResponse"];
+                };
+            };
+        };
+    };
+    update_current_user_preferences_api_auth_me_update_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["UpdateAuthMeRequest"];
+            };
+        };
         responses: {
             200: {
                 headers: {

@@ -1466,6 +1466,16 @@ export const RefreshTokenPayloadSchema = _RefreshTokenPayloadRawSchema as unknow
   Components['schemas']['RefreshTokenPayload']
 >
 
+const _UpdateAuthMeBodyRawSchema = z
+  .object({
+    default_language: z.string().max(20).nullable().optional(),
+  })
+  .strict()
+
+export const UpdateAuthMeBodySchema = _UpdateAuthMeBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['UpdateAuthMeBody']
+>
+
 const _DeactivateUserBodyRawSchema = z
   .object({
     reason: z.string().nullable().optional(),
@@ -2819,6 +2829,7 @@ const _UserProfileRawSchema = z
     operator_public_ids: z.array(z.string()),
     primary_operator_public_id: z.string().nullable().optional(),
     active_wallet_public_id: z.string().nullable().optional(),
+    default_language: z.string().nullable().optional(),
   })
   .strict()
 
@@ -3001,6 +3012,22 @@ const _RefreshTokenRequestRawSchema = z
 
 export const RefreshTokenRequestSchema = _RefreshTokenRequestRawSchema as unknown as z.ZodType<
   Components['schemas']['RefreshTokenRequest']
+>
+
+const _UpdateAuthMeRequestRawSchema = z
+  .object({
+    type: z.literal('update_auth_me_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: UpdateAuthMeBodySchema,
+  })
+  .strict()
+
+export const UpdateAuthMeRequestSchema = _UpdateAuthMeRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['UpdateAuthMeRequest']
 >
 
 const _DeactivateUserRequestRawSchema = z
@@ -4721,6 +4748,7 @@ export type ZmqComponents = Components['schemas']['ZmqComponents']
 export type ZmqConfig = Components['schemas']['ZmqConfig']
 export type LoginBody = Components['schemas']['LoginBody']
 export type RefreshTokenPayload = Components['schemas']['RefreshTokenPayload']
+export type UpdateAuthMeBody = Components['schemas']['UpdateAuthMeBody']
 export type DeactivateUserBody = Components['schemas']['DeactivateUserBody']
 export type ChangePasswordBody = Components['schemas']['ChangePasswordBody']
 export type AdminResetPasswordBody = Components['schemas']['AdminResetPasswordBody']
@@ -4822,6 +4850,7 @@ export type WsStatsData = Components['schemas']['WsStatsData']
 export type ZmqHealthData = Components['schemas']['ZmqHealthData']
 export type LoginRequest = Components['schemas']['LoginRequest']
 export type RefreshTokenRequest = Components['schemas']['RefreshTokenRequest']
+export type UpdateAuthMeRequest = Components['schemas']['UpdateAuthMeRequest']
 export type DeactivateUserRequest = Components['schemas']['DeactivateUserRequest']
 export type ChangePasswordRequest = Components['schemas']['ChangePasswordRequest']
 export type AdminResetPasswordRequest = Components['schemas']['AdminResetPasswordRequest']
