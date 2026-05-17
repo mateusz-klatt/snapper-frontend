@@ -5,7 +5,6 @@ import { queryClient } from '../lib/queryClient'
 import { useAuthStore } from './auth'
 import { AppState } from '../types/ui'
 import i18n, { LOCALE_STORAGE_KEY, detectInitialLocale } from '../i18n/config'
-import { LOCALES } from '../i18n/locales'
 import { getCatalogLanguage } from '../i18n/countryLanguages'
 import type { AppLocale } from '../i18n/types'
 
@@ -29,8 +28,6 @@ const applyLocaleSideEffects = (locale: AppLocale): void => {
   }
 
   void i18n.changeLanguage(getCatalogLanguage(locale))
-  document.documentElement.lang = getCatalogLanguage(locale)
-  document.documentElement.dir = LOCALES[locale].dir
 }
 
 interface AppStore extends AppState {

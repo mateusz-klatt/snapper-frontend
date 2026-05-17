@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { useAppStore } from './app'
+import i18n from '../i18n/config'
 
 describe('useAppStore', () => {
   beforeEach(() => {
@@ -212,20 +213,25 @@ describe('useAppStore', () => {
       useAppStore.getState().setLocale('pl')
       expect(localStorage.getItem('snapper-locale')).toBe('pl')
     })
-    it('sets document.documentElement.lang to the catalog language', () => {
+    it('sets document.documentElement.lang to the catalog language after changeLanguage resolves', async () => {
       useAppStore.getState().setLocale('pl')
+      await i18n.changeLanguage('pl')
       expect(document.documentElement.lang).toBe('pl')
       useAppStore.getState().setLocale('de')
+      await i18n.changeLanguage('de')
       expect(document.documentElement.lang).toBe('de')
       useAppStore.getState().setLocale('us')
+      await i18n.changeLanguage('en')
       expect(document.documentElement.lang).toBe('en')
     })
-    it('sets document.documentElement.dir to ltr for ltr locales', () => {
+    it('sets document.documentElement.dir to ltr for ltr locales', async () => {
       useAppStore.getState().setLocale('pl')
+      await i18n.changeLanguage('pl')
       expect(document.documentElement.dir).toBe('ltr')
     })
-    it('sets document.documentElement.dir to rtl for rtl locales', () => {
+    it('sets document.documentElement.dir to rtl for rtl locales', async () => {
       useAppStore.getState().setLocale('ae')
+      await i18n.changeLanguage('ar')
       expect(document.documentElement.dir).toBe('rtl')
     })
     it('falls back gracefully when localStorage.setItem throws', () => {
