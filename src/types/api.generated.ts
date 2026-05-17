@@ -1646,6 +1646,10 @@ export type Components = {
             title: string;
             body: string;
             payload?: Record<string, unknown> | null | undefined;
+            title_loc_key?: string | null | undefined;
+            title_loc_args?: string[];
+            body_loc_key?: string | null | undefined;
+            body_loc_args?: string[];
             dedup_key?: string | null | undefined;
             thread_key?: string | null | undefined;
             source_topic?: string | null | undefined;
