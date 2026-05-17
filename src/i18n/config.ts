@@ -48,7 +48,6 @@ const initialLocale = detectInitialLocale()
 const initialLanguage: CatalogLanguage = getCatalogLanguage(initialLocale)
 
 const updateDocumentLanguage = (lng: string): void => {
-  if (typeof document === 'undefined') return
   document.documentElement.lang = lng
   document.documentElement.dir = i18n.dir(lng)
 }
