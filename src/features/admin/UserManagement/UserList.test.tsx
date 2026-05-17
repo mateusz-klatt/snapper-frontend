@@ -351,6 +351,23 @@ describe('UserList', () => {
       expect(screen.getAllByText('Viewer')[0]).toBeTruthy()
     })
   })
+  it('displays ai_delegate role badge', async () => {
+    vi.mocked(listUsers).mockResolvedValue(
+      makeListEnvelope('user_list', [
+        makeUserProfile({
+          username: 'ai_user',
+          email: 'ai@example.com',
+          role: 'ai_delegate' as 'admin',
+          is_active: true,
+          created_at: '2024-01-01T00:00:00Z',
+        }),
+      ]) as never
+    )
+    renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
+    await waitFor(() => {
+      expect(screen.getAllByText('AI Delegate')[0]).toBeTruthy()
+    })
+  })
   it('displays unknown role badge with default styling', async () => {
     vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
