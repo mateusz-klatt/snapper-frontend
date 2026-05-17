@@ -3,7 +3,7 @@
     "title": "Marktdata"
   },
   "controls": {
-    "exchange": "Exchange:",
+    "exchange": "Beurs:",
     "instrument": "Instrument:",
     "timeframe": "Tijdframe:",
     "selectExchange": "Selecteer exchange",

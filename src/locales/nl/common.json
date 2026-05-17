@@ -24,7 +24,7 @@
     "skipToContent": "Tradinginhoud overslaan",
     "lag": "Vertraging:",
     "lagTitle": "Round-triplatentie naar de WebSocket-server",
-    "topics": "Topics:",
+    "topics": "Onderwerpen:",
     "topicsTitle": "Aantal geabonneerde WebSocket-topics",
     "connected": "Verbonden",
     "disconnected": "Verbinding verbroken",
