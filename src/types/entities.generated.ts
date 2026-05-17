@@ -981,6 +981,19 @@ export interface RefreshToken {
 }
 
 /**
+ * UpdateAuthMe request entity.
+ * Use with updateAuthMeToAPI() transform.
+ */
+export interface UpdateAuthMe {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  payload: Record<string, unknown>
+}
+
+/**
  * CreateUser request entity.
  * Use with createUserToAPI() transform.
  */
