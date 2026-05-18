@@ -332,4 +332,27 @@ describe('AppWithAuth', () => {
       expect(document.documentElement.dataset.colorConvention).toBe('rising-green')
     })
   })
+
+  it('sets dark class + color-convention synchronously during render so child useEffects see both', () => {
+    vi.mocked(useAppStore).mockImplementation((selector?: unknown) => {
+      const state = {
+        isDarkMode: true,
+        locale: 'cn' as const,
+        financialColorPreference: 'auto' as const,
+      }
+
+      if (typeof selector === 'function') return (selector as (s: typeof state) => unknown)(state)
+
+      return state
+    })
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    render(<AppWithAuth />)
+    expect(document.documentElement.classList.contains('dark')).toBe(true)
+    expect(document.documentElement.dataset.colorConvention).toBe('rising-red')
+  })
 })

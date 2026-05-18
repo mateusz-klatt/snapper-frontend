@@ -14,7 +14,7 @@ function AppWithAuth() {
   const financialColorPreference = useAppStore(s => s.financialColorPreference)
   const initialized = useRef(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
     } else {

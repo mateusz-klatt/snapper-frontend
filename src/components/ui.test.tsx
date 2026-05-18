@@ -40,6 +40,18 @@ describe('StatusBadge', () => {
 
     expect(badge).toHaveClass('bg-loss-50', 'text-loss-800', 'border-loss-200')
   })
+  it('renders rising status with direction tokens (separate from severity)', () => {
+    render(<StatusBadge status='rising'>BUY</StatusBadge>)
+    const badge = screen.getByText('BUY')
+
+    expect(badge).toHaveClass('bg-rising-50', 'text-rising-800', 'border-rising-200')
+  })
+  it('renders falling status with direction tokens (separate from severity)', () => {
+    render(<StatusBadge status='falling'>SELL</StatusBadge>)
+    const badge = screen.getByText('SELL')
+
+    expect(badge).toHaveClass('bg-falling-50', 'text-falling-800', 'border-falling-200')
+  })
   it('applies custom className', () => {
     render(
       <StatusBadge status='connected' className='custom-class'>
