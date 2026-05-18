@@ -1,10 +1,59 @@
-import type { AssetClass, ParsedInstrument } from './types'
+import type {
+  AssetClass,
+  FuturesExpiry,
+  FuturesQuarter,
+  MonthInQuarter,
+  ParsedInstrument,
+} from './types'
 import { isFiat, isStablecoin } from './taxRules'
 
 const PERP_SUFFIX = '-PERP'
 const PERP_INV_SUFFIX = '-PERP-INV'
 const BTNL_SUFFIX = '-BTNL'
-const FUTURE_DATE_RE = /-\d{6}(-INV)?$/
+const FUTURE_DATE_RE = /-(\d{2})(\d{2})(\d{2})(-INV)?$/
+
+const CME_MONTH_CODE_RE = /^([FGHJKMNQUVXZ])(\d)$/
+const CME_MONTH_LETTERS = 'FGHJKMNQUVXZ'
+
+const buildExpiry = (year: number, month: number): FuturesExpiry => {
+  const quarter = (Math.floor((month - 1) / 3) + 1) as FuturesQuarter
+  const monthInQuarter = (((month - 1) % 3) + 1) as MonthInQuarter
+
+  return { year, month, quarter, monthInQuarter }
+}
+
+const resolveCmeYear = (digit: number, now: Date): number => {
+  const currentYear = now.getUTCFullYear()
+  const decade = Math.floor(currentYear / 10) * 10
+  const candidate = decade + digit
+
+  if (currentYear - candidate > 5) return candidate + 10
+
+  return candidate
+}
+
+const parseCmeMonthCode = (token: string, now: Date): FuturesExpiry | null => {
+  const match = CME_MONTH_CODE_RE.exec(token)
+
+  if (match === null) return null
+
+  const month = CME_MONTH_LETTERS.indexOf(match[1] as string) + 1
+  const year = resolveCmeYear(Number(match[2]), now)
+
+  return buildExpiry(year, month)
+}
+
+const parseDatedSuffix = (yy: string, mm: string, dd: string): FuturesExpiry | null => {
+  const month = Number(mm)
+  const day = Number(dd)
+
+  if (month < 1 || month > 12) return null
+  if (day < 1 || day > 31) return null
+
+  const year = 2000 + Number(yy)
+
+  return buildExpiry(year, month)
+}
 
 type StrippableSuffix = typeof PERP_SUFFIX | typeof PERP_INV_SUFFIX | typeof BTNL_SUFFIX
 
@@ -47,11 +96,15 @@ const INDEX_PREFIXES = new Set(['ES', 'MES', 'NQ', 'MNQ', 'YM', 'MYM', 'RTY', 'E
 const YIELD_PREFIXES = new Set(['10Y', '30Y', '2YY', '5YY', 'ZN', 'ZB', 'ZT', 'ZF'])
 const FOREX_PREFIXES = new Set(['6A', '6B', '6C', '6E', '6J', '6L', '6M', '6N', '6S', 'E7', 'J7'])
 
-export function parseInstrument(symbol: string, exchange: string): ParsedInstrument {
+export function parseInstrument(
+  symbol: string,
+  exchange: string,
+  now: Date = new Date()
+): ParsedInstrument {
   const upper = symbol.toUpperCase()
 
   if (exchange === 'kraken_equities') {
-    return parseKrakenEquitiesSymbol(upper)
+    return parseKrakenEquitiesSymbol(upper, now)
   }
 
   const suffixMatch = matchInstrumentSuffix(upper)
@@ -65,6 +118,7 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
       quote: suffixMatch.quote,
       assetClass,
       underlyingTicker: suffixMatch.base,
+      expiry: suffixMatch.expiry,
     }
   }
 
@@ -72,14 +126,26 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
 
   if (dash <= 0) {
     if (KNOWN_INDICES.has(upper)) {
-      return { base: upper, quote: null, assetClass: 'index', underlyingTicker: upper }
+      return {
+        base: upper,
+        quote: null,
+        assetClass: 'index',
+        underlyingTicker: upper,
+        expiry: null,
+      }
     }
 
     if (KNOWN_YIELDS.has(upper)) {
-      return { base: upper, quote: null, assetClass: 'yield', underlyingTicker: upper }
+      return {
+        base: upper,
+        quote: null,
+        assetClass: 'yield',
+        underlyingTicker: upper,
+        expiry: null,
+      }
     }
 
-    return { base: upper, quote: null, assetClass: 'equity', underlyingTicker: null }
+    return { base: upper, quote: null, assetClass: 'equity', underlyingTicker: null, expiry: null }
   }
 
   const base = upper.slice(0, dash)
@@ -89,12 +155,15 @@ export function parseInstrument(symbol: string, exchange: string): ParsedInstrum
   const assetClass = classifyPair(base, quote)
   const underlyingTicker = derivePairUnderlying(base, quote, assetClass)
 
-  return { base, quote, assetClass, underlyingTicker }
+  return { base, quote, assetClass, underlyingTicker, expiry: null }
 }
 
-function matchInstrumentSuffix(
-  upper: string
-): { base: string; quote: string; suffix: StrippableSuffix | null } | null {
+function matchInstrumentSuffix(upper: string): {
+  base: string
+  quote: string
+  suffix: StrippableSuffix | null
+  expiry: FuturesExpiry | null
+} | null {
   const suffix = pickInstrumentSuffix(upper)
 
   if (suffix !== null) {
@@ -104,7 +173,7 @@ function matchInstrumentSuffix(
       return null
     }
 
-    return { ...stripped, suffix }
+    return { ...stripped, suffix, expiry: null }
   }
 
   const futureMatch = FUTURE_DATE_RE.exec(upper)
@@ -116,7 +185,13 @@ function matchInstrumentSuffix(
       return null
     }
 
-    return { ...stripped, suffix: null }
+    const expiry = parseDatedSuffix(
+      futureMatch[1] as string,
+      futureMatch[2] as string,
+      futureMatch[3] as string
+    )
+
+    return { ...stripped, suffix: null, expiry }
   }
 
   return null
@@ -171,16 +246,23 @@ function derivePairUnderlying(base: string, quote: string, assetClass: AssetClas
   return base
 }
 
-function parseKrakenEquitiesSymbol(symbol: string): ParsedInstrument {
+function parseKrakenEquitiesSymbol(symbol: string, now: Date): ParsedInstrument {
   const dash = symbol.indexOf('-')
 
   if (dash <= 0) {
-    return { base: symbol, quote: null, assetClass: 'unknown', underlyingTicker: null }
+    return {
+      base: symbol,
+      quote: null,
+      assetClass: 'unknown',
+      underlyingTicker: null,
+      expiry: null,
+    }
   }
 
   const contractCode = symbol.slice(0, dash)
   const venue = symbol.slice(dash + 1)
   const prefix = extractAlphaPrefix(contractCode)
+  const expiry = parseCmeMonthCode(contractCode.slice(prefix.length), now)
 
   if (FOREX_PREFIXES.has(prefix)) {
     const fx = forexPairFromPrefix(prefix)
@@ -190,6 +272,7 @@ function parseKrakenEquitiesSymbol(symbol: string): ParsedInstrument {
       quote: fx.quote,
       assetClass: 'forex',
       underlyingTicker: `${fx.base}${fx.quote}`,
+      expiry,
     }
   }
 
@@ -199,6 +282,7 @@ function parseKrakenEquitiesSymbol(symbol: string): ParsedInstrument {
       quote: venue,
       assetClass: 'yield',
       underlyingTicker: yieldUnderlyingFromPrefix(prefix),
+      expiry,
     }
   }
 
@@ -208,6 +292,7 @@ function parseKrakenEquitiesSymbol(symbol: string): ParsedInstrument {
       quote: venue,
       assetClass: 'index',
       underlyingTicker: indexUnderlyingFromPrefix(prefix),
+      expiry,
     }
   }
 
@@ -217,10 +302,17 @@ function parseKrakenEquitiesSymbol(symbol: string): ParsedInstrument {
       quote: venue,
       assetClass: 'commodity-future',
       underlyingTicker: commodityUnderlyingFromPrefix(prefix),
+      expiry,
     }
   }
 
-  return { base: contractCode, quote: venue, assetClass: 'unknown', underlyingTicker: null }
+  return {
+    base: contractCode,
+    quote: venue,
+    assetClass: 'unknown',
+    underlyingTicker: null,
+    expiry,
+  }
 }
 
 function extractAlphaPrefix(code: string): string {

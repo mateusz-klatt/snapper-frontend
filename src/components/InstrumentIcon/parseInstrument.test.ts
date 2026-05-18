@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { parseInstrument } from './parseInstrument'
 
+const NOW = new Date('2026-05-18T00:00:00Z')
+
 describe('parseInstrument', () => {
   describe('crypto-spot', () => {
     it('parses BTC-USD on kraken', (): void => {
@@ -9,6 +11,7 @@ describe('parseInstrument', () => {
         quote: 'USD',
         assetClass: 'crypto-spot',
         underlyingTicker: 'BTC',
+        expiry: null,
       })
     })
 
@@ -18,6 +21,7 @@ describe('parseInstrument', () => {
         quote: 'EUR',
         assetClass: 'crypto-spot',
         underlyingTicker: 'BTC',
+        expiry: null,
       })
     })
 
@@ -37,6 +41,7 @@ describe('parseInstrument', () => {
         quote: 'BTC',
         assetClass: 'crypto-cross',
         underlyingTicker: 'ETH',
+        expiry: null,
       })
     })
   })
@@ -48,6 +53,7 @@ describe('parseInstrument', () => {
         quote: 'USDT',
         assetClass: 'crypto-spot',
         underlyingTicker: 'BTC',
+        expiry: null,
       })
     })
 
@@ -63,6 +69,7 @@ describe('parseInstrument', () => {
         quote: 'USD',
         assetClass: 'crypto-perp',
         underlyingTicker: 'BTC',
+        expiry: null,
       })
     })
 
@@ -72,15 +79,17 @@ describe('parseInstrument', () => {
         quote: 'USD',
         assetClass: 'crypto-perp',
         underlyingTicker: 'BTC',
+        expiry: null,
       })
     })
 
     it('parses dated future BTC-USD-260925', (): void => {
-      expect(parseInstrument('BTC-USD-260925', 'kraken_futures')).toEqual({
+      expect(parseInstrument('BTC-USD-260925', 'kraken_futures', NOW)).toEqual({
         base: 'BTC',
         quote: 'USD',
         assetClass: 'crypto-perp',
         underlyingTicker: 'BTC',
+        expiry: { year: 2026, month: 9, quarter: 3, monthInQuarter: 3 },
       })
     })
 
@@ -96,6 +105,7 @@ describe('parseInstrument', () => {
         quote: 'USD',
         assetClass: 'crypto-spot',
         underlyingTicker: 'BTC',
+        expiry: null,
       })
     })
 
@@ -105,6 +115,7 @@ describe('parseInstrument', () => {
         quote: 'USD',
         assetClass: 'crypto-spot',
         underlyingTicker: 'ETH',
+        expiry: null,
       })
     })
 
@@ -114,6 +125,7 @@ describe('parseInstrument', () => {
         quote: 'USD',
         assetClass: 'crypto-spot',
         underlyingTicker: 'PAXG',
+        expiry: null,
       })
     })
   })
@@ -125,6 +137,7 @@ describe('parseInstrument', () => {
         quote: 'USD',
         assetClass: 'forex',
         underlyingTicker: 'EURUSD',
+        expiry: null,
       })
     })
 
@@ -134,6 +147,7 @@ describe('parseInstrument', () => {
         quote: 'PLN',
         assetClass: 'forex',
         underlyingTicker: 'USDPLN',
+        expiry: null,
       })
     })
   })
@@ -145,6 +159,7 @@ describe('parseInstrument', () => {
         quote: null,
         assetClass: 'equity',
         underlyingTicker: null,
+        expiry: null,
       })
     })
   })
@@ -156,6 +171,7 @@ describe('parseInstrument', () => {
         quote: null,
         assetClass: 'index',
         underlyingTicker: 'SPX',
+        expiry: null,
       })
     })
   })
@@ -167,6 +183,7 @@ describe('parseInstrument', () => {
         quote: null,
         assetClass: 'yield',
         underlyingTicker: 'US10Y',
+        expiry: null,
       })
     })
   })
@@ -193,11 +210,12 @@ describe('parseInstrument', () => {
 
   describe('kraken_equities futures decoder', () => {
     it('decodes ESM6-CME as SPX-class index future', (): void => {
-      expect(parseInstrument('ESM6-CME', 'kraken_equities')).toEqual({
+      expect(parseInstrument('ESM6-CME', 'kraken_equities', NOW)).toEqual({
         base: 'ESM6',
         quote: 'CME',
         assetClass: 'index',
         underlyingTicker: 'SPX',
+        expiry: { year: 2026, month: 6, quarter: 2, monthInQuarter: 3 },
       })
     })
 
@@ -214,11 +232,12 @@ describe('parseInstrument', () => {
     })
 
     it('decodes 10YK6-CBOT as US10Y yield-class', (): void => {
-      expect(parseInstrument('10YK6-CBOT', 'kraken_equities')).toEqual({
+      expect(parseInstrument('10YK6-CBOT', 'kraken_equities', NOW)).toEqual({
         base: '10YK6',
         quote: 'CBOT',
         assetClass: 'yield',
         underlyingTicker: 'US10Y',
+        expiry: { year: 2026, month: 5, quarter: 2, monthInQuarter: 2 },
       })
     })
 
@@ -227,11 +246,12 @@ describe('parseInstrument', () => {
     })
 
     it('decodes GCM6-COMEX → GOLD underlying (canonical name, registry-resolvable)', (): void => {
-      expect(parseInstrument('GCM6-COMEX', 'kraken_equities')).toEqual({
+      expect(parseInstrument('GCM6-COMEX', 'kraken_equities', NOW)).toEqual({
         base: 'GCM6',
         quote: 'COMEX',
         assetClass: 'commodity-future',
         underlyingTicker: 'GOLD',
+        expiry: { year: 2026, month: 6, quarter: 2, monthInQuarter: 3 },
       })
     })
 
@@ -260,20 +280,22 @@ describe('parseInstrument', () => {
     })
 
     it('decodes 6EM6-CME → EUR/USD pair (canonical fx legs, not raw prefix/venue)', (): void => {
-      expect(parseInstrument('6EM6-CME', 'kraken_equities')).toEqual({
+      expect(parseInstrument('6EM6-CME', 'kraken_equities', NOW)).toEqual({
         base: 'EUR',
         quote: 'USD',
         assetClass: 'forex',
         underlyingTicker: 'EURUSD',
+        expiry: { year: 2026, month: 6, quarter: 2, monthInQuarter: 3 },
       })
     })
 
     it('decodes 6CM6-CME → USD/CAD pair (CAD/USD inverse maps to USDCAD canonical)', (): void => {
-      expect(parseInstrument('6CM6-CME', 'kraken_equities')).toEqual({
+      expect(parseInstrument('6CM6-CME', 'kraken_equities', NOW)).toEqual({
         base: 'USD',
         quote: 'CAD',
         assetClass: 'forex',
         underlyingTicker: 'USDCAD',
+        expiry: { year: 2026, month: 6, quarter: 2, monthInQuarter: 3 },
       })
     })
 
@@ -303,6 +325,96 @@ describe('parseInstrument', () => {
 
     it('returns unknown for kraken_equities symbol without dash', (): void => {
       expect(parseInstrument('NOTAFUTURE', 'kraken_equities').assetClass).toBe('unknown')
+    })
+  })
+
+  describe('futures expiry decoding', () => {
+    it('maps each CME month code letter to the calendar month', (): void => {
+      const letters: Array<readonly [string, number, 1 | 2 | 3 | 4, 1 | 2 | 3]> = [
+        ['F', 1, 1, 1],
+        ['G', 2, 1, 2],
+        ['H', 3, 1, 3],
+        ['J', 4, 2, 1],
+        ['K', 5, 2, 2],
+        ['M', 6, 2, 3],
+        ['N', 7, 3, 1],
+        ['Q', 8, 3, 2],
+        ['U', 9, 3, 3],
+        ['V', 10, 4, 1],
+        ['X', 11, 4, 2],
+        ['Z', 12, 4, 3],
+      ]
+
+      for (const [letter, month, quarter, monthInQuarter] of letters) {
+        expect(parseInstrument(`ES${letter}6-CME`, 'kraken_equities', NOW).expiry).toEqual({
+          year: 2026,
+          month,
+          quarter,
+          monthInQuarter,
+        })
+      }
+    })
+
+    it('rolls year forward to next decade when digit is more than 5 years in the past', (): void => {
+      const NOW_2029 = new Date('2029-12-01T00:00:00Z')
+
+      expect(parseInstrument('ESM0-CME', 'kraken_equities', NOW_2029).expiry).toEqual({
+        year: 2030,
+        month: 6,
+        quarter: 2,
+        monthInQuarter: 3,
+      })
+    })
+
+    it('keeps year in current decade when digit matches future occurrence', (): void => {
+      const NOW_2026 = new Date('2026-01-01T00:00:00Z')
+
+      expect(parseInstrument('ESM9-CME', 'kraken_equities', NOW_2026).expiry?.year).toBe(2029)
+    })
+
+    it('keeps year in current decade when digit is recent past', (): void => {
+      const NOW_2026 = new Date('2026-05-18T00:00:00Z')
+
+      expect(parseInstrument('ESM5-CME', 'kraken_equities', NOW_2026).expiry?.year).toBe(2025)
+    })
+
+    it('decodes crypto dated suffix -YYMMDD across quarters', (): void => {
+      const cases: Array<readonly [string, number, 1 | 2 | 3 | 4, 1 | 2 | 3]> = [
+        ['BTC-USD-260120', 1, 1, 1],
+        ['BTC-USD-260315', 3, 1, 3],
+        ['BTC-USD-260601', 6, 2, 3],
+        ['BTC-USD-260801', 8, 3, 2],
+        ['BTC-USD-261225', 12, 4, 3],
+      ]
+
+      for (const [symbol, month, quarter, monthInQuarter] of cases) {
+        expect(parseInstrument(symbol, 'kraken_futures', NOW).expiry).toEqual({
+          year: 2026,
+          month,
+          quarter,
+          monthInQuarter,
+        })
+      }
+    })
+
+    it('returns null expiry on invalid date components', (): void => {
+      const invalidMonth = parseInstrument('BTC-USD-261325', 'kraken_futures', NOW)
+
+      expect(invalidMonth.expiry).toBeNull()
+
+      const invalidDay = parseInstrument('BTC-USD-260132', 'kraken_futures', NOW)
+
+      expect(invalidDay.expiry).toBeNull()
+    })
+
+    it('returns null expiry for kraken_equities prefix without month code', (): void => {
+      expect(parseInstrument('ZZZ-EXOTIC', 'kraken_equities', NOW).expiry).toBeNull()
+    })
+
+    it('returns null expiry for spot/perp instruments', (): void => {
+      expect(parseInstrument('BTC-USD', 'kraken', NOW).expiry).toBeNull()
+      expect(parseInstrument('BTC-USD-PERP', 'kraken_futures', NOW).expiry).toBeNull()
+      expect(parseInstrument('AAPL', 'kraken', NOW).expiry).toBeNull()
     })
   })
 })

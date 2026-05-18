@@ -64,9 +64,20 @@ export type LucideName =
   | 'trending-up'
   | 'wheat'
 
+export type FuturesQuarter = 1 | 2 | 3 | 4
+export type MonthInQuarter = 1 | 2 | 3
+
+export type FuturesExpiry = {
+  readonly year: number
+  readonly month: number
+  readonly quarter: FuturesQuarter
+  readonly monthInQuarter: MonthInQuarter
+}
+
 export type ParsedInstrument = {
   readonly base: string
   readonly quote: string | null
   readonly assetClass: AssetClass
   readonly underlyingTicker: string | null
+  readonly expiry: FuturesExpiry | null
 }
