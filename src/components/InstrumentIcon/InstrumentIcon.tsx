@@ -1,3 +1,4 @@
+import { FuturesIcon } from './FuturesIcon'
 import { PairIcon } from './PairIcon'
 import { SingleAssetIcon } from './SingleAssetIcon'
 import { parseInstrument } from './parseInstrument'
@@ -23,12 +24,37 @@ export function InstrumentIcon({
 
   if (renderSingle || parsed.quote === null) {
     const singleTicker = parsed.underlyingTicker ?? parsed.base
+    const singleSpec = resolveIcon(singleTicker, parsed.assetClass)
 
-    return <SingleAssetIcon spec={resolveIcon(singleTicker, parsed.assetClass)} size={size} />
+    if (parsed.expiry !== null) {
+      return (
+        <FuturesIcon
+          base={singleSpec}
+          quarter={parsed.expiry.quarter}
+          monthInQuarter={parsed.expiry.monthInQuarter}
+          size={size}
+        />
+      )
+    }
+
+    return <SingleAssetIcon spec={singleSpec} size={size} />
   }
 
   const baseSpec = resolveIcon(parsed.base, parsed.assetClass)
   const quoteSpec = resolveIcon(parsed.quote, parsed.assetClass)
+
+  if (parsed.expiry !== null) {
+    return (
+      <FuturesIcon
+        base={baseSpec}
+        quote={quoteSpec}
+        quarter={parsed.expiry.quarter}
+        monthInQuarter={parsed.expiry.monthInQuarter}
+        size={size}
+        borderColor={borderColor}
+      />
+    )
+  }
 
   return <PairIcon base={baseSpec} quote={quoteSpec} size={size} borderColor={borderColor} />
 }
