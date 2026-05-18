@@ -158,9 +158,7 @@ export function parseInstrument(
   return { base, quote, assetClass, underlyingTicker, expiry: null }
 }
 
-function matchInstrumentSuffix(
-  upper: string
-): {
+function matchInstrumentSuffix(upper: string): {
   base: string
   quote: string
   suffix: StrippableSuffix | null
@@ -252,7 +250,13 @@ function parseKrakenEquitiesSymbol(symbol: string, now: Date): ParsedInstrument 
   const dash = symbol.indexOf('-')
 
   if (dash <= 0) {
-    return { base: symbol, quote: null, assetClass: 'unknown', underlyingTicker: null, expiry: null }
+    return {
+      base: symbol,
+      quote: null,
+      assetClass: 'unknown',
+      underlyingTicker: null,
+      expiry: null,
+    }
   }
 
   const contractCode = symbol.slice(0, dash)
