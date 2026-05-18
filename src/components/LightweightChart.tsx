@@ -26,12 +26,12 @@ import { useAppStore } from '../stores/app'
  */
 function getFinancialChartPalette(): { upColor: string; downColor: string } {
   if (typeof window === 'undefined') {
-    return { upColor: '#3cb67a', downColor: '#d8062a' }
+    return { upColor: '#0b8f4d', downColor: '#8b1025' }
   }
 
   const style = getComputedStyle(document.documentElement)
-  const upColor = style.getPropertyValue('--color-rising-500').trim() || '#3cb67a'
-  const downColor = style.getPropertyValue('--color-falling-500').trim() || '#d8062a'
+  const upColor = style.getPropertyValue('--color-rising-500').trim() || '#0b8f4d'
+  const downColor = style.getPropertyValue('--color-falling-500').trim() || '#8b1025'
 
   return { upColor, downColor }
 }

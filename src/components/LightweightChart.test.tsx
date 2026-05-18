@@ -94,8 +94,8 @@ describe('LightweightChart', () => {
     expect(mockAddSeries).toHaveBeenCalledWith(
       'CandlestickSeries',
       expect.objectContaining({
-        upColor: '#3cb67a',
-        downColor: '#d8062a',
+        upColor: '#0b8f4d',
+        downColor: '#8b1025',
       })
     )
   })
@@ -463,7 +463,7 @@ describe('LightweightChart', () => {
     document.documentElement.style.removeProperty('--color-falling-500')
   })
 
-  it('falls back to the Western Tailwind defaults when CSS vars are absent', () => {
+  it('falls back to the Western 500 tokens when CSS vars are absent', () => {
     document.documentElement.style.removeProperty('--color-rising-500')
     document.documentElement.style.removeProperty('--color-falling-500')
     render(<LightweightChart data={sampleData} />)
@@ -471,8 +471,8 @@ describe('LightweightChart', () => {
     expect(mockAddSeries).toHaveBeenCalledWith(
       'CandlestickSeries',
       expect.objectContaining({
-        upColor: '#3cb67a',
-        downColor: '#d8062a',
+        upColor: '#0b8f4d',
+        downColor: '#8b1025',
       })
     )
   })

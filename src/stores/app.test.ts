@@ -280,4 +280,38 @@ describe('useAppStore', () => {
       }
     })
   })
+  describe('setFinancialColorPreference', () => {
+    afterEach(() => {
+      localStorage.removeItem('snapper-financial-color-preference')
+    })
+    it('updates the store with the chosen preference', () => {
+      useAppStore.getState().setFinancialColorPreference('rising-red')
+      expect(useAppStore.getState().financialColorPreference).toBe('rising-red')
+    })
+    it('persists the preference to localStorage under the shared key', () => {
+      useAppStore.getState().setFinancialColorPreference('rising-red')
+      expect(localStorage.getItem('snapper-financial-color-preference')).toBe('rising-red')
+    })
+    it('round-trips the preference through localStorage on module reload', async () => {
+      localStorage.setItem('snapper-financial-color-preference', 'rising-red')
+      vi.resetModules()
+      const { useAppStore: freshStore } = await import('./app')
+
+      expect(freshStore.getState().financialColorPreference).toBe('rising-red')
+    })
+    it('defaults to auto when localStorage has no value', async () => {
+      localStorage.removeItem('snapper-financial-color-preference')
+      vi.resetModules()
+      const { useAppStore: freshStore } = await import('./app')
+
+      expect(freshStore.getState().financialColorPreference).toBe('auto')
+    })
+    it('falls back to auto when localStorage has an invalid value', async () => {
+      localStorage.setItem('snapper-financial-color-preference', 'not-a-real-value')
+      vi.resetModules()
+      const { useAppStore: freshStore } = await import('./app')
+
+      expect(freshStore.getState().financialColorPreference).toBe('auto')
+    })
+  })
 })

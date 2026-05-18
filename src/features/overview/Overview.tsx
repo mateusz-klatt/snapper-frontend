@@ -21,7 +21,7 @@ const runningBadgeStatus = (count: number): 'connected' | 'disconnected' =>
 const countChangeType = (count: number): 'positive' | 'neutral' =>
   count > 0 ? 'positive' : 'neutral'
 
-const sideStatus = (side: string): 'connected' | 'error' => (side === 'buy' ? 'connected' : 'error')
+const sideStatus = (side: string): 'rising' | 'falling' => (side === 'buy' ? 'rising' : 'falling')
 
 const ProcessStatusRow: React.FC<
   Readonly<{ label: string; running: number; total?: number; activeLabel: string }>
@@ -146,7 +146,7 @@ const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution 
   return (
     <div className='flex items-center justify-between p-2 bg-dark-700 rounded-sm'>
       <div className='flex items-center gap-3'>
-        <StatusBadge status={execution.side === 'sell' ? 'error' : 'connected'}>
+        <StatusBadge status={execution.side === 'sell' ? 'falling' : 'rising'}>
           {execution.side.toUpperCase()}
         </StatusBadge>
         <span className='text-sm font-medium'>{execution.instrument}</span>

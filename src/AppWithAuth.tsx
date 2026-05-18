@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import App from './App'
 import { AuthenticatedApp } from './components/AuthenticatedApp'
 import AuthErrorBoundary from './components/auth/AuthErrorBoundary'
@@ -22,7 +22,7 @@ function AppWithAuth() {
     }
   }, [isDarkMode])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const effective = resolveFinancialColorConvention(financialColorPreference, locale)
 
     document.documentElement.dataset.colorConvention = effective
