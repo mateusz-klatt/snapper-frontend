@@ -53,6 +53,17 @@
     "yield": "Avkastning",
     "unknown": "Annat"
   },
+  "sector": {
+    "agriculture": "Jordbruk",
+    "energy": "Energi",
+    "industrial-metals": "Industrimetaller",
+    "livestock": "Boskap",
+    "precious-metals": "Ädelmetaller",
+    "us-government": "Amerikanska statsobligationer",
+    "us-large-cap": "Amerikanska storbolag",
+    "us-small-cap": "Amerikanska småbolag",
+    "us-tech": "Amerikansk teknik"
+  },
   "cacheBanner": {
     "message": "Cache värms upp: {{sampleCount}} / {{expected}} candles tillgängliga {{sourceLabel}}",
     "sources": {

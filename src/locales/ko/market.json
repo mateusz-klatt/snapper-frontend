@@ -53,6 +53,17 @@
     "yield": "수익률",
     "unknown": "기타"
   },
+  "sector": {
+    "agriculture": "농업",
+    "energy": "에너지",
+    "industrial-metals": "산업용 금속",
+    "livestock": "축산",
+    "precious-metals": "귀금속",
+    "us-government": "미국 국채",
+    "us-large-cap": "미국 대형주",
+    "us-small-cap": "미국 소형주",
+    "us-tech": "미국 기술주"
+  },
   "cacheBanner": {
     "message": "캐시 준비 중: 사용 가능한 캔들 {{sampleCount}} / {{expected}} {{sourceLabel}}",
     "sources": {

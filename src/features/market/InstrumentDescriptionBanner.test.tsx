@@ -82,10 +82,24 @@ describe('InstrumentDescriptionBanner', () => {
     expect(screen.getByText('Bitcoin · Cryptocurrency')).toBeInTheDocument()
   })
 
-  it('renders sector chip when sector present', () => {
+  it('slugifies sector labels before translation lookup', async () => {
+    await i18n.changeLanguage('pl')
     mockRelatedQuery({ data: makeResponse({ sector: 'Precious Metals' }) })
     renderBanner()
-    expect(screen.getByText('Precious Metals')).toBeInTheDocument()
+    expect(screen.getByText('Metale szlachetne')).toBeInTheDocument()
+  })
+
+  it('renders translated sector chip when sector key exists', async () => {
+    await i18n.changeLanguage('pl')
+    mockRelatedQuery({ data: makeResponse({ sector: 'Energy' }) })
+    renderBanner()
+    expect(screen.getByText('Energetyka')).toBeInTheDocument()
+  })
+
+  it('falls back to raw sector chip when translation key is missing', () => {
+    mockRelatedQuery({ data: makeResponse({ sector: 'New Sector' }) })
+    renderBanner()
+    expect(screen.getByText('New Sector')).toBeInTheDocument()
   })
 
   it('falls back to assetClass label when sector is null', () => {

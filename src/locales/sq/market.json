@@ -53,6 +53,17 @@
     "yield": "Rendiment",
     "unknown": "Tjetër"
   },
+  "sector": {
+    "agriculture": "Bujqësi",
+    "energy": "Energji",
+    "industrial-metals": "Metale industriale",
+    "livestock": "Blegtori",
+    "precious-metals": "Metale të çmuara",
+    "us-government": "Obligacione qeveritare të SHBA-së",
+    "us-large-cap": "Kompanitë e mëdha të SHBA-së",
+    "us-small-cap": "Kompanitë e vogla të SHBA-së",
+    "us-tech": "Teknologji e SHBA-së"
+  },
   "cacheBanner": {
     "message": "Cache po ngrohet: {{sampleCount}} / {{expected}} qirinj të disponueshëm {{sourceLabel}}",
     "sources": {

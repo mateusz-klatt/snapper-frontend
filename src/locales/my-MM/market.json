@@ -53,6 +53,17 @@
     "yield": "အထွက်နှုန်း",
     "unknown": "အခြား"
   },
+  "sector": {
+    "agriculture": "စိုက်ပျိုးရေး",
+    "energy": "စွမ်းအင်",
+    "industrial-metals": "စက်မှုသတ္တုများ",
+    "livestock": "မွေးမြူရေး",
+    "precious-metals": "အဖိုးတန်သတ္တုများ",
+    "us-government": "အမေရိကန် အစိုးရ ငွေချေးစာချုပ်များ",
+    "us-large-cap": "အမေရိကန် ကုမ္ပဏီကြီးများ",
+    "us-small-cap": "အမေရိကန် ကုမ္ပဏီငယ်များ",
+    "us-tech": "အမေရိကန် နည်းပညာ"
+  },
   "cacheBanner": {
     "message": "Cache warm up လုပ်နေသည်: candle {{sampleCount}} / {{expected}} ရနိုင်သည် {{sourceLabel}}",
     "sources": {

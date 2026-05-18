@@ -53,6 +53,17 @@
     "yield": "عائد",
     "unknown": "أخرى"
   },
+  "sector": {
+    "agriculture": "الزراعة",
+    "energy": "الطاقة",
+    "industrial-metals": "المعادن الصناعية",
+    "livestock": "الثروة الحيوانية",
+    "precious-metals": "المعادن النفيسة",
+    "us-government": "سندات الحكومة الأمريكية",
+    "us-large-cap": "الشركات الأمريكية كبيرة القيمة السوقية",
+    "us-small-cap": "الشركات الأمريكية صغيرة القيمة السوقية",
+    "us-tech": "التكنولوجيا الأمريكية"
+  },
   "cacheBanner": {
     "message": "يجري تجهيز التخزين المؤقت: {{sampleCount}} / {{expected}} شموع متاحة {{sourceLabel}}",
     "sources": {

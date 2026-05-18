@@ -53,6 +53,17 @@
     "yield": "Yield",
     "unknown": "Other"
   },
+  "sector": {
+    "agriculture": "Agriculture",
+    "energy": "Energy",
+    "industrial-metals": "Industrial Metals",
+    "livestock": "Livestock",
+    "precious-metals": "Precious Metals",
+    "us-government": "US Government",
+    "us-large-cap": "US Large Cap",
+    "us-small-cap": "US Small Cap",
+    "us-tech": "US Tech"
+  },
   "cacheBanner": {
     "message": "Cache warming up: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",
     "sources": {

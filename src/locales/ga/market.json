@@ -53,6 +53,17 @@
     "yield": "Toradh",
     "unknown": "Eile"
   },
+  "sector": {
+    "agriculture": "Talmhaíocht",
+    "energy": "Fuinneamh",
+    "industrial-metals": "Miotail thionsclaíocha",
+    "livestock": "Beostoc",
+    "precious-metals": "Miotail lómhara",
+    "us-government": "Bannaí rialtais SAM",
+    "us-large-cap": "Cuideachtaí móra SAM",
+    "us-small-cap": "Cuideachtaí beaga SAM",
+    "us-tech": "Teicneolaíocht SAM"
+  },
   "cacheBanner": {
     "message": "Cache á théamh: {{sampleCount}} / {{expected}} coinneal ar fáil {{sourceLabel}}",
     "sources": {

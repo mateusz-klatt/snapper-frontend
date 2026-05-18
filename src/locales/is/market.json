@@ -53,6 +53,17 @@
     "yield": "Ávöxtun",
     "unknown": "Annað"
   },
+  "sector": {
+    "agriculture": "Landbúnaður",
+    "energy": "Orka",
+    "industrial-metals": "Iðnaðarmálmar",
+    "livestock": "Búfé",
+    "precious-metals": "Góðmálmar",
+    "us-government": "Bandarísk ríkisskuldabréf",
+    "us-large-cap": "Bandarísk stórfyrirtæki",
+    "us-small-cap": "Bandarísk smáfyrirtæki",
+    "us-tech": "Bandarísk tækni"
+  },
   "cacheBanner": {
     "message": "Skyndiminni að hitna: {{sampleCount}} / {{expected}} kerti tiltæk {{sourceLabel}}",
     "sources": {

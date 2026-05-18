@@ -53,6 +53,17 @@
     "yield": "Výnos",
     "unknown": "Ostatní"
   },
+  "sector": {
+    "agriculture": "Zemědělství",
+    "energy": "Energetika",
+    "industrial-metals": "Průmyslové kovy",
+    "livestock": "Živočišná výroba",
+    "precious-metals": "Drahé kovy",
+    "us-government": "Americké státní dluhopisy",
+    "us-large-cap": "Americké velké společnosti",
+    "us-small-cap": "Americké malé společnosti",
+    "us-tech": "Americké technologie"
+  },
   "cacheBanner": {
     "message": "Cache se zahřívá: k dispozici {{sampleCount}} / {{expected}} svíček {{sourceLabel}}",
     "sources": {

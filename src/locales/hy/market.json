@@ -53,6 +53,17 @@
     "yield": "Եկամտաբերություն",
     "unknown": "Այլ"
   },
+  "sector": {
+    "agriculture": "Գյուղատնտեսություն",
+    "energy": "Էներգետիկա",
+    "industrial-metals": "Արդյունաբերական մետաղներ",
+    "livestock": "Անասնապահություն",
+    "precious-metals": "Թանկարժեք մետաղներ",
+    "us-government": "ԱՄՆ պետական պարտատոմսեր",
+    "us-large-cap": "ԱՄՆ խոշոր կապիտալիզացիա",
+    "us-small-cap": "ԱՄՆ փոքր կապիտալիզացիա",
+    "us-tech": "ԱՄՆ տեխնոլոգիաներ"
+  },
   "cacheBanner": {
     "message": "Քեշը տաքացվում է՝ հասանելի է {{sampleCount}} / {{expected}} մոմ {{sourceLabel}}",
     "sources": {

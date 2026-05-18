@@ -53,6 +53,17 @@
     "yield": "ผลตอบแทน",
     "unknown": "อื่นๆ"
   },
+  "sector": {
+    "agriculture": "เกษตรกรรม",
+    "energy": "พลังงาน",
+    "industrial-metals": "โลหะอุตสาหกรรม",
+    "livestock": "ปศุสัตว์",
+    "precious-metals": "โลหะมีค่า",
+    "us-government": "พันธบัตรรัฐบาลสหรัฐฯ",
+    "us-large-cap": "หุ้นขนาดใหญ่สหรัฐฯ",
+    "us-small-cap": "หุ้นขนาดเล็กสหรัฐฯ",
+    "us-tech": "เทคโนโลยีสหรัฐฯ"
+  },
   "cacheBanner": {
     "message": "กำลังอุ่น cache: มีแท่งเทียน {{sampleCount}} / {{expected}} แท่ง {{sourceLabel}}",
     "sources": {

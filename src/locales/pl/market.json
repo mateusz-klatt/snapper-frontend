@@ -53,6 +53,17 @@
     "yield": "Rentowność",
     "unknown": "Inne"
   },
+  "sector": {
+    "agriculture": "Rolnictwo",
+    "energy": "Energetyka",
+    "industrial-metals": "Metale przemysłowe",
+    "livestock": "Hodowla",
+    "precious-metals": "Metale szlachetne",
+    "us-government": "Skarbowe USA",
+    "us-large-cap": "Duże spółki USA",
+    "us-small-cap": "Małe spółki USA",
+    "us-tech": "Tech USA"
+  },
   "cacheBanner": {
     "message": "Wypełnianie cache’u: dostępne {{sampleCount}} / {{expected}} świec {{sourceLabel}}",
     "sources": {

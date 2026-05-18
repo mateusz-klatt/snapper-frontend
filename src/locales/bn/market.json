@@ -53,6 +53,17 @@
     "yield": "ইল্ড",
     "unknown": "অন্যান্য"
   },
+  "sector": {
+    "agriculture": "কৃষি",
+    "energy": "জ্বালানি",
+    "industrial-metals": "শিল্প ধাতু",
+    "livestock": "পশুপালন",
+    "precious-metals": "মূল্যবান ধাতু",
+    "us-government": "মার্কিন সরকারি বন্ড",
+    "us-large-cap": "মার্কিন বৃহৎ মূলধনি শেয়ার",
+    "us-small-cap": "মার্কিন ক্ষুদ্র মূলধনি শেয়ার",
+    "us-tech": "মার্কিন প্রযুক্তি"
+  },
   "cacheBanner": {
     "message": "Cache warm হচ্ছে: {{sampleCount}} / {{expected}} ক্যান্ডল উপলভ্য {{sourceLabel}}",
     "sources": {

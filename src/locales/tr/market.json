@@ -53,6 +53,17 @@
     "yield": "Getiri",
     "unknown": "Diğer"
   },
+  "sector": {
+    "agriculture": "Tarım",
+    "energy": "Enerji",
+    "industrial-metals": "Endüstriyel metaller",
+    "livestock": "Hayvancılık",
+    "precious-metals": "Değerli metaller",
+    "us-government": "ABD devlet tahvilleri",
+    "us-large-cap": "ABD büyük ölçekli şirketler",
+    "us-small-cap": "ABD küçük ölçekli şirketler",
+    "us-tech": "ABD teknoloji"
+  },
   "cacheBanner": {
     "message": "Önbellek ısınıyor: {{sampleCount}} / {{expected}} mum mevcut {{sourceLabel}}",
     "sources": {

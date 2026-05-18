@@ -53,6 +53,17 @@
     "yield": "Доходность",
     "unknown": "Другое"
   },
+  "sector": {
+    "agriculture": "Сельское хозяйство",
+    "energy": "Энергетика",
+    "industrial-metals": "Промышленные металлы",
+    "livestock": "Животноводство",
+    "precious-metals": "Драгоценные металлы",
+    "us-government": "Гособлигации США",
+    "us-large-cap": "Крупная капитализация США",
+    "us-small-cap": "Малая капитализация США",
+    "us-tech": "Технологии США"
+  },
   "cacheBanner": {
     "message": "Прогрев кеша: доступно {{sampleCount}} / {{expected}} свечей {{sourceLabel}}",
     "sources": {

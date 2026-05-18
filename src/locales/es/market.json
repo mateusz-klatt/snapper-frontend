@@ -53,6 +53,17 @@
     "yield": "Rendimiento",
     "unknown": "Otro"
   },
+  "sector": {
+    "agriculture": "Agricultura",
+    "energy": "Energía",
+    "industrial-metals": "Metales industriales",
+    "livestock": "Ganadería",
+    "precious-metals": "Metales preciosos",
+    "us-government": "Bonos del Tesoro de EE. UU.",
+    "us-large-cap": "Gran capitalización de EE. UU.",
+    "us-small-cap": "Pequeña capitalización de EE. UU.",
+    "us-tech": "Tecnología de EE. UU."
+  },
   "cacheBanner": {
     "message": "Calentando la caché: {{sampleCount}} / {{expected}} velas disponibles {{sourceLabel}}",
     "sources": {

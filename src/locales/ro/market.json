@@ -53,6 +53,17 @@
     "yield": "Randament",
     "unknown": "Altul"
   },
+  "sector": {
+    "agriculture": "Agricultură",
+    "energy": "Energie",
+    "industrial-metals": "Metale industriale",
+    "livestock": "Creșterea animalelor",
+    "precious-metals": "Metale prețioase",
+    "us-government": "Titluri de stat SUA",
+    "us-large-cap": "Companii mari SUA",
+    "us-small-cap": "Companii mici SUA",
+    "us-tech": "Tehnologie SUA"
+  },
   "cacheBanner": {
     "message": "Cache în încălzire: {{sampleCount}} / {{expected}} lumânări disponibile {{sourceLabel}}",
     "sources": {

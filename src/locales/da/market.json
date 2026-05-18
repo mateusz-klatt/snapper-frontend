@@ -53,6 +53,17 @@
     "yield": "Afkast",
     "unknown": "Andet"
   },
+  "sector": {
+    "agriculture": "Landbrug",
+    "energy": "Energi",
+    "industrial-metals": "Industrimetaller",
+    "livestock": "Husdyr",
+    "precious-metals": "Ædelmetaller",
+    "us-government": "Amerikanske statsobligationer",
+    "us-large-cap": "Amerikanske large cap",
+    "us-small-cap": "Amerikanske small cap",
+    "us-tech": "Amerikansk teknologi"
+  },
   "cacheBanner": {
     "message": "Cache varmes op: {{sampleCount}} / {{expected}} candles tilgængelige {{sourceLabel}}",
     "sources": {

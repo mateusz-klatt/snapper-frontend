@@ -53,6 +53,17 @@
     "yield": "Дохідність",
     "unknown": "Інше"
   },
+  "sector": {
+    "agriculture": "Сільське господарство",
+    "energy": "Енергетика",
+    "industrial-metals": "Промислові метали",
+    "livestock": "Тваринництво",
+    "precious-metals": "Дорогоцінні метали",
+    "us-government": "Держоблігації США",
+    "us-large-cap": "Велика капіталізація США",
+    "us-small-cap": "Мала капіталізація США",
+    "us-tech": "Технології США"
+  },
   "cacheBanner": {
     "message": "Прогрів кешу: доступно {{sampleCount}} / {{expected}} свічок {{sourceLabel}}",
     "sources": {

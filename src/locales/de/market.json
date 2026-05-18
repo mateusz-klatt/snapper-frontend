@@ -53,6 +53,17 @@
     "yield": "Rendite",
     "unknown": "Sonstiges"
   },
+  "sector": {
+    "agriculture": "Landwirtschaft",
+    "energy": "Energie",
+    "industrial-metals": "Industriemetalle",
+    "livestock": "Viehwirtschaft",
+    "precious-metals": "Edelmetalle",
+    "us-government": "US-Staatsanleihen",
+    "us-large-cap": "US-Large-Caps",
+    "us-small-cap": "US-Small-Caps",
+    "us-tech": "US-Technologie"
+  },
   "cacheBanner": {
     "message": "Cache wird aufgewärmt: {{sampleCount}} / {{expected}} Kerzen verfügbar {{sourceLabel}}",
     "sources": {
