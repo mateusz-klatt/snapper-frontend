@@ -10,9 +10,7 @@ const LUCIDE_INDEX: IconSpec = { kind: 'lucide', name: 'trending-up' }
 describe('FuturesIcon', () => {
   describe('pair futures (4-glyph composite)', () => {
     it('renders the underlying PairIcon plus the expiry overlay', () => {
-      render(
-        <FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={3} />
-      )
+      render(<FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={3} />)
 
       expect(screen.getByTestId('futures-icon')).toBeInTheDocument()
       expect(screen.getByTestId('futures-expiry-overlay')).toBeInTheDocument()
@@ -24,25 +22,18 @@ describe('FuturesIcon', () => {
       [3, '🍂'],
       [4, '❄️'],
     ])('maps quarter %s to season glyph %s', (quarter, glyph) => {
-      render(
-        <FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={quarter} monthInQuarter={1} />
-      )
+      render(<FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={quarter} monthInQuarter={1} />)
       const overlay = screen.getByTestId('futures-expiry-overlay')
 
       expect(overlay.textContent).toContain(glyph)
     })
 
-    it.each<readonly [1 | 2 | 3]>([[1], [2], [3]])(
-      'renders month-in-quarter digit %s',
-      digit => {
-        render(
-          <FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={digit} />
-        )
-        const overlay = screen.getByTestId('futures-expiry-overlay')
+    it.each<readonly [1 | 2 | 3]>([[1], [2], [3]])('renders month-in-quarter digit %s', digit => {
+      render(<FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={digit} />)
+      const overlay = screen.getByTestId('futures-expiry-overlay')
 
-        expect(overlay.textContent).toContain(String(digit))
-      }
-    )
+      expect(overlay.textContent).toContain(String(digit))
+    })
   })
 
   describe('single-asset futures (3-glyph composite)', () => {
@@ -56,9 +47,7 @@ describe('FuturesIcon', () => {
 
   describe('accessibility', () => {
     it('marks the expiry overlay as aria-hidden', () => {
-      render(
-        <FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={3} />
-      )
+      render(<FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={3} />)
 
       expect(screen.getByTestId('futures-expiry-overlay')).toHaveAttribute('aria-hidden', 'true')
     })
@@ -67,13 +56,7 @@ describe('FuturesIcon', () => {
   describe('size scaling', () => {
     it('scales the overlay font with the icon size', () => {
       render(
-        <FuturesIcon
-          base={FLAG_EUR}
-          quote={FLAG_USD}
-          quarter={2}
-          monthInQuarter={3}
-          size={48}
-        />
+        <FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={3} size={48} />
       )
       const overlay = screen.getByTestId('futures-expiry-overlay')
 
@@ -82,13 +65,7 @@ describe('FuturesIcon', () => {
 
     it('clamps overlay font to a minimum readable size at very small icon sizes', () => {
       render(
-        <FuturesIcon
-          base={FLAG_EUR}
-          quote={FLAG_USD}
-          quarter={2}
-          monthInQuarter={3}
-          size={14}
-        />
+        <FuturesIcon base={FLAG_EUR} quote={FLAG_USD} quarter={2} monthInQuarter={3} size={14} />
       )
       const overlay = screen.getByTestId('futures-expiry-overlay')
 
