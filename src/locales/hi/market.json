@@ -48,5 +48,10 @@
       "derived": "(1m से व्युत्पन्न)",
       "db": "(DB से)"
     }
+  },
+  "pairStats": {
+    "label": "सह-समाकलन:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "{{exchange}} पर {{symbol}} के साथ जोड़ी के आँकड़े: पियर्सन {{pearson}}, p-मान {{pvalue}}"
   }
 }

@@ -48,5 +48,10 @@
       "derived": "(díorthaithe ó 1m)",
       "db": "(ón DB)"
     }
+  },
+  "pairStats": {
+    "label": "Comhtháthú:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Staitisticí péire le {{symbol}} ar {{exchange}}: Pearson {{pearson}}, p-luach {{pvalue}}"
   }
 }

@@ -48,5 +48,10 @@
       "derived": "(مشتق‌شده از 1m)",
       "db": "(از DB)"
     }
+  },
+  "pairStats": {
+    "label": "هم‌انباشتگی:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "آمار جفت با {{symbol}} در {{exchange}}: پیرسون {{pearson}}، مقدار p {{pvalue}}"
   }
 }

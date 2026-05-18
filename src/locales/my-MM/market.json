@@ -48,5 +48,10 @@
       "derived": "(1m မှ derive လုပ်ထားသည်)",
       "db": "(DB မှ)"
     }
+  },
+  "pairStats": {
+    "label": "ပူးတွဲပေါင်းစည်းမှု:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "{{exchange}} ပေါ်ရှိ {{symbol}} နှင့် တွဲဖက်စာရင်းအင်း: Pearson {{pearson}}, p-value {{pvalue}}"
   }
 }

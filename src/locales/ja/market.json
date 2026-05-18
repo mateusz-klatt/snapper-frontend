@@ -48,5 +48,10 @@
       "derived": "（1分足から派生）",
       "db": "（DBから）"
     }
+  },
+  "pairStats": {
+    "label": "共和分:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "{{exchange}}の{{symbol}}とのペア統計: Pearson {{pearson}}、p値 {{pvalue}}"
   }
 }

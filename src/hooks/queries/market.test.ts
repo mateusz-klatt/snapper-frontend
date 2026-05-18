@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
+  useAllConfiguredPairStats,
   useCachedCandles,
   useCachedPairStats,
   useCacheHealth,
@@ -14,6 +15,7 @@ import {
 } from './market'
 import { useAuth } from '../../stores/auth'
 import {
+  getAllConfiguredPairStats,
   getCachedCandles,
   getCachedPairStats,
   getCacheHealth,
@@ -139,6 +141,13 @@ vi.mock('../../lib/api/market', () => ({
     Promise.resolve(
       envelope('cache_health', {
         payload: { instruments_cached: 0, pairs_cached: 0, persist_universe_size: 0 },
+      })
+    )
+  ),
+  getAllConfiguredPairStats: vi.fn(() =>
+    Promise.resolve(
+      envelope('listed_cached_stats', {
+        payload: { count: 0, pairs: [] },
       })
     )
   ),
@@ -389,6 +398,32 @@ describe('market queries', () => {
         expect(result.current.isFetched).toBe(true)
       })
       expect(vi.mocked(getCacheHealth)).toHaveBeenCalled()
+    })
+  })
+
+  describe('useAllConfiguredPairStats', () => {
+    it('fetches when authenticated', async () => {
+      vi.mocked(getAllConfiguredPairStats).mockClear()
+      const { result } = renderHook(() => useAllConfiguredPairStats(), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isFetched).toBe(true)
+      })
+      expect(vi.mocked(getAllConfiguredPairStats)).toHaveBeenCalled()
+    })
+
+    it('does not fetch when explicitly disabled', async () => {
+      vi.mocked(getAllConfiguredPairStats).mockClear()
+      const { result } = renderHook(() => useAllConfiguredPairStats(false), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getAllConfiguredPairStats)).not.toHaveBeenCalled()
     })
   })
 })

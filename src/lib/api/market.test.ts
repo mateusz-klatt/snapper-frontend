@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
 import {
+  getAllConfiguredPairStats,
   getCachedCandles,
   getCachedPairStats,
   getCacheHealth,
@@ -374,6 +375,57 @@ describe('market cache fetchers', () => {
     const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
 
     expect(requestedUrl).toContain('/api/market/cache/stats/kraken/BTC-USD/kraken/ETH-USD')
+  })
+
+  it('getAllConfiguredPairStats fetches the listed configured-pair envelope', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'listed_cached_stats',
+        sequence_id: 0,
+        public_id: 'lcs-1',
+        timestamp: '2026-05-18T10:00:00Z',
+        session_id: 'test-sid',
+        payload: {
+          count: 2,
+          pairs: [
+            {
+              left: 'kraken:BTC-USD',
+              right: 'kraken:ETH-USD',
+              pearson_r: 0.91,
+              pearson_n: 96,
+              coint_t: -3.91,
+              coint_pvalue: 0.032,
+              coint_critical_values: [-3.9, -3.3, -3],
+              computed_at: '2026-05-18T10:00:00Z',
+              sample_count: 96,
+              is_warm: true,
+            },
+            {
+              left: 'kraken:BTC-USD',
+              right: 'kraken:SOL-USD',
+              pearson_r: 0.74,
+              pearson_n: 96,
+              coint_t: null,
+              coint_pvalue: null,
+              coint_critical_values: null,
+              computed_at: '2026-05-18T10:00:00Z',
+              sample_count: 32,
+              is_warm: false,
+            },
+          ],
+        },
+      }),
+    })
+
+    const result = await getAllConfiguredPairStats()
+
+    expect(result.payload.count).toBe(2)
+    expect(result.payload.pairs[0]?.coint_pvalue).toBe(0.032)
+    const requestedUrl = mockFetch.mock.calls[0]?.[0] as string
+
+    expect(requestedUrl).toContain('/api/market/cache/stats/configured')
   })
 
   it('getCacheHealth returns the diagnostic envelope', async () => {

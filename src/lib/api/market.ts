@@ -8,6 +8,7 @@ import {
   ExchangeListResponseSchema,
   InstrumentDetailListResponseSchema,
   InstrumentListResponseSchema,
+  ListedCachedStatsResponseSchema,
   RelatedInstrumentsResponseSchema,
 } from '../schemas/api.generated.zod'
 import type {
@@ -17,6 +18,7 @@ import type {
   ExchangeListResponse,
   InstrumentDetailListResponse,
   InstrumentListResponse,
+  ListedCachedStatsResponse,
   RelatedInstrumentsResponse,
   CandleData,
 } from '../../types/api'
@@ -115,6 +117,12 @@ export async function getCachedPairStats(
     CachedStatsResponseSchema,
     '/market/cache/stats/:exchange_a/:symbol_a/:exchange_b/:symbol_b'
   )
+}
+
+export async function getAllConfiguredPairStats(): Promise<ListedCachedStatsResponse> {
+  const data = await apiClient.getJSON('/api/market/cache/stats/configured')
+
+  return validateResponse(data, ListedCachedStatsResponseSchema, '/market/cache/stats/configured')
 }
 
 export async function getCacheHealth(): Promise<CacheHealthResponse> {

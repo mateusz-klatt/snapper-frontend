@@ -72,6 +72,9 @@ vi.mock('../../hooks/queries/market', () => ({
     data: undefined,
     isFetching: false,
   })),
+  useAllConfiguredPairStats: vi.fn(() => ({
+    data: undefined,
+  })),
 }))
 vi.mock('../../stores/market', () => ({
   useMarketStore: vi.fn(() => ({
@@ -812,6 +815,59 @@ describe('MarketData', () => {
       vi.mocked(useRelatedInstruments).mockReturnValue({
         data: undefined,
         isFetching: false,
+      } as never)
+    }
+  })
+
+  it('clicking a pair-stats chip calls setSelectedMarket with the other leg', async () => {
+    const { useAllConfiguredPairStats } = await import('../../hooks/queries/market')
+
+    vi.mocked(useAllConfiguredPairStats).mockReturnValue({
+      data: {
+        type: 'listed_cached_stats',
+        sequence_id: 0,
+        public_id: 'lcs-1',
+        timestamp: '2026-05-18T10:00:00Z',
+        session_id: 'sid',
+        topic: null,
+        payload: {
+          count: 1,
+          pairs: [
+            {
+              type: 'cached_stats',
+              sequence_id: 1,
+              public_id: 'cs-1',
+              timestamp: '2026-05-18T10:00:00Z',
+              session_id: 'sid',
+              topic: null,
+              left: 'kraken:EUR-USD',
+              right: 'kraken:GBP-USD',
+              pearson_r: 0.85,
+              pearson_n: 96,
+              coint_t: -3.9,
+              coint_pvalue: 0.02,
+              coint_critical_values: [-3.9, -3.3, -3],
+              computed_at: '2026-05-18T10:00:00Z',
+              sample_count: 96,
+              is_warm: true,
+            },
+          ],
+        },
+      },
+    } as never)
+
+    try {
+      renderWithProviders(<MarketData />)
+      const chip = await screen.findByRole('button', { name: /Pair stats with GBP-USD/i })
+
+      fireEvent.click(chip)
+      expect(mockSetSelectedMarket).toHaveBeenCalledWith({
+        exchange: 'kraken',
+        instrument: 'GBP-USD',
+      })
+    } finally {
+      vi.mocked(useAllConfiguredPairStats).mockReturnValue({
+        data: undefined,
       } as never)
     }
   })

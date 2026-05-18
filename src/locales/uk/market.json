@@ -48,5 +48,10 @@
       "derived": "(похідні з 1m)",
       "db": "(з БД)"
     }
+  },
+  "pairStats": {
+    "label": "Коінтеграція:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Статистика пари з {{symbol}} на {{exchange}}: Pearson {{pearson}}, p-значення {{pvalue}}"
   }
 }

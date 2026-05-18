@@ -48,5 +48,10 @@
       "derived": "(atvasināts no 1m)",
       "db": "(no DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegrācija:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Pāra statistika ar {{symbol}} biržā {{exchange}}: Pearson {{pearson}}, p vērtība {{pvalue}}"
   }
 }

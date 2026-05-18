@@ -48,5 +48,10 @@
       "derived": "(išvesta iš 1m)",
       "db": "(iš DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegracija:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Poros statistika su {{symbol}} biržoje {{exchange}}: Pearson {{pearson}}, p reikšmė {{pvalue}}"
   }
 }

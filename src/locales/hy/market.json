@@ -48,5 +48,10 @@
       "derived": "(ստացված է 1m-ից)",
       "db": "(DB-ից)"
     }
+  },
+  "pairStats": {
+    "label": "Կոինտեգրացիա՝",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Զույգի վիճակագրություն {{exchange}} բորսայում {{symbol}}-ի հետ՝ Pearson {{pearson}}, p-արժեք {{pvalue}}"
   }
 }

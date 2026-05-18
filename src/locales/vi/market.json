@@ -48,5 +48,10 @@
       "derived": "(suy ra từ 1m)",
       "db": "(từ DB)"
     }
+  },
+  "pairStats": {
+    "label": "Đồng liên kết:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Thống kê cặp với {{symbol}} trên {{exchange}}: Pearson {{pearson}}, giá trị p {{pvalue}}"
   }
 }
