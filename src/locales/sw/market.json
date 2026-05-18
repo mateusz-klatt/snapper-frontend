@@ -53,6 +53,17 @@
     "yield": "Mavuno",
     "unknown": "Nyingine"
   },
+  "sector": {
+    "agriculture": "Kilimo",
+    "energy": "Nishati",
+    "industrial-metals": "Madini ya viwanda",
+    "livestock": "Mifugo",
+    "precious-metals": "Madini ya thamani",
+    "us-government": "Dhamana za serikali ya Marekani",
+    "us-large-cap": "Kampuni kubwa za Marekani",
+    "us-small-cap": "Kampuni ndogo za Marekani",
+    "us-tech": "Teknolojia ya Marekani"
+  },
   "cacheBanner": {
     "message": "Cache inaandaliwa: candles {{sampleCount}} / {{expected}} zinapatikana {{sourceLabel}}",
     "sources": {

@@ -53,6 +53,17 @@
     "yield": "Yield",
     "unknown": "Iba pa"
   },
+  "sector": {
+    "agriculture": "Agrikultura",
+    "energy": "Enerhiya",
+    "industrial-metals": "Mga metal na industriyal",
+    "livestock": "Paghahayupan",
+    "precious-metals": "Mahahalagang metal",
+    "us-government": "Mga bono ng pamahalaan ng US",
+    "us-large-cap": "Malalaking kapitalisasyon sa US",
+    "us-small-cap": "Maliliit na kapitalisasyon sa US",
+    "us-tech": "Teknolohiya ng US"
+  },
   "cacheBanner": {
     "message": "Nagwa-warm up ang cache: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",
     "sources": {

@@ -53,6 +53,17 @@
     "yield": "Rendimento",
     "unknown": "Outro"
   },
+  "sector": {
+    "agriculture": "Agricultura",
+    "energy": "Energia",
+    "industrial-metals": "Metais industriais",
+    "livestock": "Pecuária",
+    "precious-metals": "Metais preciosos",
+    "us-government": "Títulos do Tesouro dos EUA",
+    "us-large-cap": "Large caps dos EUA",
+    "us-small-cap": "Small caps dos EUA",
+    "us-tech": "Tecnologia dos EUA"
+  },
   "cacheBanner": {
     "message": "Aquecendo cache: {{sampleCount}} / {{expected}} candles disponíveis {{sourceLabel}}",
     "sources": {

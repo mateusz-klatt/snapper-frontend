@@ -53,6 +53,17 @@
     "yield": "利回り",
     "unknown": "その他"
   },
+  "sector": {
+    "agriculture": "農業",
+    "energy": "エネルギー",
+    "industrial-metals": "産業用金属",
+    "livestock": "畜産",
+    "precious-metals": "貴金属",
+    "us-government": "米国債",
+    "us-large-cap": "米国大型株",
+    "us-small-cap": "米国小型株",
+    "us-tech": "米国テクノロジー"
+  },
   "cacheBanner": {
     "message": "キャッシュをウォームアップ中: {{sampleCount}} / {{expected}}本のローソク足が利用可能 {{sourceLabel}}",
     "sources": {

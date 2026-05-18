@@ -53,6 +53,17 @@
     "yield": "收益率",
     "unknown": "其他"
   },
+  "sector": {
+    "agriculture": "農業",
+    "energy": "能源",
+    "industrial-metals": "工業金屬",
+    "livestock": "畜牧",
+    "precious-metals": "貴金屬",
+    "us-government": "美國國債",
+    "us-large-cap": "美國大型股",
+    "us-small-cap": "美國小型股",
+    "us-tech": "美國科技"
+  },
   "cacheBanner": {
     "message": "緩存預熱中: {{sampleCount}} / {{expected}} 根 K 線可用 {{sourceLabel}}",
     "sources": {

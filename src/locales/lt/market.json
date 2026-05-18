@@ -53,6 +53,17 @@
     "yield": "Pajamingumas",
     "unknown": "Kita"
   },
+  "sector": {
+    "agriculture": "Žemės ūkis",
+    "energy": "Energetika",
+    "industrial-metals": "Pramoniniai metalai",
+    "livestock": "Gyvulininkystė",
+    "precious-metals": "Taurieji metalai",
+    "us-government": "JAV vyriausybės obligacijos",
+    "us-large-cap": "JAV didelės kapitalizacijos bendrovės",
+    "us-small-cap": "JAV mažos kapitalizacijos bendrovės",
+    "us-tech": "JAV technologijos"
+  },
   "cacheBanner": {
     "message": "Talpykla šildoma: pasiekiama {{sampleCount}} / {{expected}} žvakių {{sourceLabel}}",
     "sources": {

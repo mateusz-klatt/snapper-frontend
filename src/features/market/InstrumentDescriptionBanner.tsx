@@ -16,6 +16,8 @@ const isAssetClassKey = (value: string): value is AssetClassKey =>
 const normalizeAssetClass = (value: string): AssetClassKey =>
   isAssetClassKey(value) ? value : 'unknown'
 
+const slugifySector = (sector: string): string => sector.toLowerCase().replaceAll(' ', '-')
+
 /** Maps related-underlying asset classes to the MarketData badge palette. */
 const assetClassColor = (assetClass: AssetClassKey): string => {
   switch (assetClass) {
@@ -71,7 +73,10 @@ export function InstrumentDescriptionBanner({
     assetClass: assetClassLabel,
   })
   const description = isError ? fallback : (underlying.description ?? fallback)
-  const chipLabel = underlying.sector ?? assetClassLabel
+  const chipLabel =
+    underlying.sector === null
+      ? assetClassLabel
+      : t(`sector.${slugifySector(underlying.sector)}`, { defaultValue: underlying.sector })
 
   return (
     <section

@@ -53,6 +53,17 @@
     "yield": "Avkastning",
     "unknown": "Annet"
   },
+  "sector": {
+    "agriculture": "Landbruk",
+    "energy": "Energi",
+    "industrial-metals": "Industrimetaller",
+    "livestock": "Husdyr",
+    "precious-metals": "Edelmetaller",
+    "us-government": "Amerikanske statsobligasjoner",
+    "us-large-cap": "Amerikanske store selskaper",
+    "us-small-cap": "Amerikanske små selskaper",
+    "us-tech": "Amerikansk teknologi"
+  },
   "cacheBanner": {
     "message": "Cache varmes opp: {{sampleCount}} / {{expected}} candles tilgjengelig {{sourceLabel}}",
     "sources": {

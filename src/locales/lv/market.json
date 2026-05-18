@@ -53,6 +53,17 @@
     "yield": "Ienesīgums",
     "unknown": "Cits"
   },
+  "sector": {
+    "agriculture": "Lauksaimniecība",
+    "energy": "Enerģētika",
+    "industrial-metals": "Rūpnieciskie metāli",
+    "livestock": "Lopkopība",
+    "precious-metals": "Dārgmetāli",
+    "us-government": "ASV valsts obligācijas",
+    "us-large-cap": "ASV lielas kapitalizācijas uzņēmumi",
+    "us-small-cap": "ASV mazas kapitalizācijas uzņēmumi",
+    "us-tech": "ASV tehnoloģijas"
+  },
   "cacheBanner": {
     "message": "Kešatmiņa iesilst: pieejamas {{sampleCount}} / {{expected}} sveces {{sourceLabel}}",
     "sources": {

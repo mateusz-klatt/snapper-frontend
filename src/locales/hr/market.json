@@ -53,6 +53,17 @@
     "yield": "Prinos",
     "unknown": "Ostalo"
   },
+  "sector": {
+    "agriculture": "Poljoprivreda",
+    "energy": "Energetika",
+    "industrial-metals": "Industrijski metali",
+    "livestock": "Stočarstvo",
+    "precious-metals": "Plemeniti metali",
+    "us-government": "Američke državne obveznice",
+    "us-large-cap": "Američke velike kompanije",
+    "us-small-cap": "Američke male kompanije",
+    "us-tech": "Američka tehnologija"
+  },
   "cacheBanner": {
     "message": "Cache se zagrijava: dostupno {{sampleCount}} / {{expected}} svijeća {{sourceLabel}}",
     "sources": {

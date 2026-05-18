@@ -53,6 +53,17 @@
     "yield": "Imbal hasil",
     "unknown": "Lainnya"
   },
+  "sector": {
+    "agriculture": "Pertanian",
+    "energy": "Energi",
+    "industrial-metals": "Logam industri",
+    "livestock": "Peternakan",
+    "precious-metals": "Logam mulia",
+    "us-government": "Obligasi pemerintah AS",
+    "us-large-cap": "Saham kapitalisasi besar AS",
+    "us-small-cap": "Saham kapitalisasi kecil AS",
+    "us-tech": "Teknologi AS"
+  },
   "cacheBanner": {
     "message": "Pemanasan cache: {{sampleCount}} / {{expected}} candle tersedia {{sourceLabel}}",
     "sources": {

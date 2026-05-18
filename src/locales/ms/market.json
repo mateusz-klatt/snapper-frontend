@@ -53,6 +53,17 @@
     "yield": "Hasil",
     "unknown": "Lain-lain"
   },
+  "sector": {
+    "agriculture": "Pertanian",
+    "energy": "Tenaga",
+    "industrial-metals": "Logam perindustrian",
+    "livestock": "Ternakan",
+    "precious-metals": "Logam berharga",
+    "us-government": "Bon kerajaan AS",
+    "us-large-cap": "Saham bermodal besar AS",
+    "us-small-cap": "Saham bermodal kecil AS",
+    "us-tech": "Teknologi AS"
+  },
   "cacheBanner": {
     "message": "Cache sedang dipanaskan: {{sampleCount}} / {{expected}} lilin tersedia {{sourceLabel}}",
     "sources": {

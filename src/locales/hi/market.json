@@ -53,6 +53,17 @@
     "yield": "यील्ड",
     "unknown": "अन्य"
   },
+  "sector": {
+    "agriculture": "कृषि",
+    "energy": "ऊर्जा",
+    "industrial-metals": "औद्योगिक धातुएं",
+    "livestock": "पशुधन",
+    "precious-metals": "कीमती धातुएं",
+    "us-government": "अमेरिकी सरकारी बॉन्ड",
+    "us-large-cap": "अमेरिकी लार्ज कैप",
+    "us-small-cap": "अमेरिकी स्मॉल कैप",
+    "us-tech": "अमेरिकी टेक"
+  },
   "cacheBanner": {
     "message": "कैश गर्म हो रहा है: {{sampleCount}} / {{expected}} कैंडल उपलब्ध {{sourceLabel}}",
     "sources": {

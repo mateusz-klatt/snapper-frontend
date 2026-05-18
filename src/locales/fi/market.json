@@ -53,6 +53,17 @@
     "yield": "Tuotto",
     "unknown": "Muu"
   },
+  "sector": {
+    "agriculture": "Maatalous",
+    "energy": "Energia",
+    "industrial-metals": "Teollisuusmetallit",
+    "livestock": "Karja",
+    "precious-metals": "Jalometallit",
+    "us-government": "Yhdysvaltain valtionlainat",
+    "us-large-cap": "Yhdysvaltain suuret yhtiöt",
+    "us-small-cap": "Yhdysvaltain pienet yhtiöt",
+    "us-tech": "Yhdysvaltain teknologia"
+  },
   "cacheBanner": {
     "message": "Cache lämpenee: kynttilät {{sampleCount}} / {{expected}} saatavilla {{sourceLabel}}",
     "sources": {

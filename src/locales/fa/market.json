@@ -53,6 +53,17 @@
     "yield": "بازده",
     "unknown": "سایر"
   },
+  "sector": {
+    "agriculture": "کشاورزی",
+    "energy": "انرژی",
+    "industrial-metals": "فلزات صنعتی",
+    "livestock": "دامداری",
+    "precious-metals": "فلزات گران‌بها",
+    "us-government": "اوراق دولتی آمریکا",
+    "us-large-cap": "شرکت‌های بزرگ آمریکا",
+    "us-small-cap": "شرکت‌های کوچک آمریکا",
+    "us-tech": "فناوری آمریکا"
+  },
   "cacheBanner": {
     "message": "گرم‌سازی کش: {{sampleCount}} / {{expected}} کندل در دسترس است {{sourceLabel}}",
     "sources": {

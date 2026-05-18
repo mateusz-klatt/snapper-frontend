@@ -53,6 +53,17 @@
     "yield": "Απόδοση",
     "unknown": "Άλλο"
   },
+  "sector": {
+    "agriculture": "Γεωργία",
+    "energy": "Ενέργεια",
+    "industrial-metals": "Βιομηχανικά μέταλλα",
+    "livestock": "Κτηνοτροφία",
+    "precious-metals": "Πολύτιμα μέταλλα",
+    "us-government": "Κρατικά ομόλογα ΗΠΑ",
+    "us-large-cap": "Μεγάλη κεφαλαιοποίηση ΗΠΑ",
+    "us-small-cap": "Μικρή κεφαλαιοποίηση ΗΠΑ",
+    "us-tech": "Τεχνολογία ΗΠΑ"
+  },
   "cacheBanner": {
     "message": "Προθέρμανση cache: {{sampleCount}} / {{expected}} κεριά διαθέσιμα {{sourceLabel}}",
     "sources": {

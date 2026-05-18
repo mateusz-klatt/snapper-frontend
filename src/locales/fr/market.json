@@ -53,6 +53,17 @@
     "yield": "Rendement",
     "unknown": "Autre"
   },
+  "sector": {
+    "agriculture": "Agriculture",
+    "energy": "Énergie",
+    "industrial-metals": "Métaux industriels",
+    "livestock": "Élevage",
+    "precious-metals": "Métaux précieux",
+    "us-government": "Obligations d'État US",
+    "us-large-cap": "Grandes capitalisations US",
+    "us-small-cap": "Petites capitalisations US",
+    "us-tech": "Technologie US"
+  },
   "cacheBanner": {
     "message": "Préchauffage du cache : {{sampleCount}} / {{expected}} bougies disponibles {{sourceLabel}}",
     "sources": {

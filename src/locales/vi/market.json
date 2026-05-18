@@ -53,6 +53,17 @@
     "yield": "Lợi suất",
     "unknown": "Khác"
   },
+  "sector": {
+    "agriculture": "Nông nghiệp",
+    "energy": "Năng lượng",
+    "industrial-metals": "Kim loại công nghiệp",
+    "livestock": "Chăn nuôi",
+    "precious-metals": "Kim loại quý",
+    "us-government": "Trái phiếu chính phủ Mỹ",
+    "us-large-cap": "Cổ phiếu vốn hóa lớn Mỹ",
+    "us-small-cap": "Cổ phiếu vốn hóa nhỏ Mỹ",
+    "us-tech": "Công nghệ Mỹ"
+  },
   "cacheBanner": {
     "message": "Đang làm nóng cache: đã có {{sampleCount}} / {{expected}} nến {{sourceLabel}}",
     "sources": {

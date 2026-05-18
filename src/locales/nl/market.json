@@ -53,6 +53,17 @@
     "yield": "Rendement",
     "unknown": "Overig"
   },
+  "sector": {
+    "agriculture": "Landbouw",
+    "energy": "Energie",
+    "industrial-metals": "Industriële metalen",
+    "livestock": "Vee",
+    "precious-metals": "Edelmetalen",
+    "us-government": "Amerikaanse staatsobligaties",
+    "us-large-cap": "Amerikaanse large caps",
+    "us-small-cap": "Amerikaanse small caps",
+    "us-tech": "Amerikaanse technologie"
+  },
   "cacheBanner": {
     "message": "Cache aan het opwarmen: {{sampleCount}} / {{expected}} candles beschikbaar {{sourceLabel}}",
     "sources": {

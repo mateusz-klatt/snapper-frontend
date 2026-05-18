@@ -53,6 +53,17 @@
     "yield": "תשואה",
     "unknown": "אחר"
   },
+  "sector": {
+    "agriculture": "חקלאות",
+    "energy": "אנרגיה",
+    "industrial-metals": "מתכות תעשייתיות",
+    "livestock": "משק חי",
+    "precious-metals": "מתכות יקרות",
+    "us-government": "אג\"ח ממשלת ארה\"ב",
+    "us-large-cap": "מניות שווי שוק גדול בארה\"ב",
+    "us-small-cap": "מניות שווי שוק קטן בארה\"ב",
+    "us-tech": "טכנולוגיה בארה\"ב"
+  },
   "cacheBanner": {
     "message": "החימום של המטמון מתבצע: {{sampleCount}} / {{expected}} נרות זמינים {{sourceLabel}}",
     "sources": {

@@ -53,6 +53,17 @@
     "yield": "Hozam",
     "unknown": "Egyéb"
   },
+  "sector": {
+    "agriculture": "Mezőgazdaság",
+    "energy": "Energia",
+    "industrial-metals": "Ipari fémek",
+    "livestock": "Állattenyésztés",
+    "precious-metals": "Nemesfémek",
+    "us-government": "Amerikai államkötvények",
+    "us-large-cap": "Amerikai nagy kapitalizáció",
+    "us-small-cap": "Amerikai kis kapitalizáció",
+    "us-tech": "Amerikai technológia"
+  },
   "cacheBanner": {
     "message": "Cache bemelegítése: elérhető gyertyák: {{sampleCount}} / {{expected}} {{sourceLabel}}",
     "sources": {

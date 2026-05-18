@@ -53,6 +53,17 @@
     "yield": "Výnos",
     "unknown": "Ostatné"
   },
+  "sector": {
+    "agriculture": "Poľnohospodárstvo",
+    "energy": "Energetika",
+    "industrial-metals": "Priemyselné kovy",
+    "livestock": "Živočíšna výroba",
+    "precious-metals": "Drahé kovy",
+    "us-government": "Americké štátne dlhopisy",
+    "us-large-cap": "Americké veľké spoločnosti",
+    "us-small-cap": "Americké malé spoločnosti",
+    "us-tech": "Americké technológie"
+  },
   "cacheBanner": {
     "message": "Cache sa zahrieva: k dispozícii je {{sampleCount}} / {{expected}} sviečok {{sourceLabel}}",
     "sources": {
