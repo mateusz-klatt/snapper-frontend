@@ -66,18 +66,19 @@
     "tryAgain": "Erneut versuchen"
   },
   "nav": {
-    "overview": "Übersicht",
-    "market": "Marktdaten",
-    "processes": "Prozesse",
-    "strategies": "Strategien",
-    "orders": "Aufträge & Ausführungen",
-    "positions": "Positionen",
-    "signals": "Signale",
-    "backtests": "Backtestläufe",
-    "health": "Systemzustand",
     "admin": "Administration",
     "aiIntegration": "KI-Integration",
     "aiReviews": "KI-Reviews",
-    "settings": "Einstellungen"
+    "alerts": "Alarme",
+    "backtests": "Backtestläufe",
+    "health": "Systemzustand",
+    "market": "Marktdaten",
+    "orders": "Aufträge & Ausführungen",
+    "overview": "Übersicht",
+    "positions": "Positionen",
+    "processes": "Prozesse",
+    "settings": "Einstellungen",
+    "signals": "Signale",
+    "strategies": "Strategien"
   }
 }

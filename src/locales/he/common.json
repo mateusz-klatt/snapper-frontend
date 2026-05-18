@@ -66,18 +66,19 @@
     "tryAgain": "נסה שוב"
   },
   "nav": {
-    "overview": "סקירה",
-    "market": "נתוני שוק",
-    "processes": "תהליכים",
-    "strategies": "אסטרטגיות",
-    "orders": "פקודות וביצועים",
-    "positions": "פוזיציות",
-    "signals": "אותות",
-    "backtests": "בקטסטים",
-    "health": "בריאות",
     "admin": "ניהול",
     "aiIntegration": "שילוב AI",
     "aiReviews": "סקירות AI",
-    "settings": "הגדרות"
+    "alerts": "התראות",
+    "backtests": "בקטסטים",
+    "health": "בריאות",
+    "market": "נתוני שוק",
+    "orders": "פקודות וביצועים",
+    "overview": "סקירה",
+    "positions": "פוזיציות",
+    "processes": "תהליכים",
+    "settings": "הגדרות",
+    "signals": "אותות",
+    "strategies": "אסטרטגיות"
   }
 }

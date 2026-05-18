@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Trokit dy herë për të hapur detajet e sinjalizimit"
+    },
+    "label": {
+      "dismissButton": "Hiq sinjalizimin"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Gabim sistemi",
+    "margin_warning": "Paralajmërim për marzhën",
+    "order_fill_full": "Porosia u plotësua",
+    "order_rejected": "Porosia u refuzua",
+    "position_stop_loss_fired": "Stop-loss u aktivizua"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} raportoi {{2}} për {{3}} heartbeat-e radhazi",
+    "margin_warning": "{{0}} {{1}} {{2}} u bllokua nga marzhi: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} u ekzekutua në {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} u refuzua: {{3}}",
+    "position_stop_loss_fired": "Stop-loss u aktivizua për {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Detajet e sinjalizimit",
+    "sourceTopic": "Tema burimore",
+    "thread": "Fill",
+    "timestamp": "Koha"
+  },
+  "empty": {
+    "message": "Sinjalizimet e reja do të shfaqen këtu kur të aktivizohen.",
+    "title": "Nuk ka sinjalizime"
+  },
+  "error": {
+    "loadFailed": "Nuk u ngarkuan dot sinjalizimet"
+  },
+  "loading": "Po ngarkohen sinjalizimet…",
+  "navTitle": "Sinjalizime",
+  "priority": {
+    "high": "I lartë",
+    "low": "I ulët",
+    "medium": "Mesatar"
+  },
+  "row": {
+    "swipeDismiss": "Hiq"
+  },
+  "title": {
+    "critical_system_error": "Sistemi është degraduar: {{0}}",
+    "margin_warning": "Paralajmërim për marzhën",
+    "order_fill_full": "Porosia u plotësua",
+    "order_rejected": "Porosia u refuzua",
+    "position_stop_loss_fired": "Stop-loss u aktivizua"
+  }
+}

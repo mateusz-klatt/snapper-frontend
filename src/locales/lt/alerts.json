@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Bakstelėkite du kartus, kad atvertumėte įspėjimo informaciją"
+    },
+    "label": {
+      "dismissButton": "Atmesti įspėjimą"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Sistemos klaida",
+    "margin_warning": "Įspėjimas dėl maržos",
+    "order_fill_full": "Pavedimas įvykdytas",
+    "order_rejected": "Pavedimas atmestas",
+    "position_stop_loss_fired": "Suveikė stop-loss"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} pranešė {{2}} per {{3}} iš eilės einančius heartbeatus",
+    "margin_warning": "{{0}} {{1}} {{2}} užblokuota dėl maržos: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} įvykdyta biržoje {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} atmesta: {{3}}",
+    "position_stop_loss_fired": "Stop-loss suveikė {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Įspėjimo informacija",
+    "sourceTopic": "Šaltinio tema",
+    "thread": "Gija",
+    "timestamp": "Laiko žyma"
+  },
+  "empty": {
+    "message": "Nauji įspėjimai bus rodomi čia, kai jie suveiks.",
+    "title": "Įspėjimų nėra"
+  },
+  "error": {
+    "loadFailed": "Nepavyko įkelti įspėjimų"
+  },
+  "loading": "Įkeliami įspėjimai…",
+  "navTitle": "Įspėjimai",
+  "priority": {
+    "high": "Aukštas",
+    "low": "Žemas",
+    "medium": "Vidutinis"
+  },
+  "row": {
+    "swipeDismiss": "Atmesti"
+  },
+  "title": {
+    "critical_system_error": "Sistema veikia pablogintai: {{0}}",
+    "margin_warning": "Įspėjimas dėl maržos",
+    "order_fill_full": "Pavedimas įvykdytas",
+    "order_rejected": "Pavedimas atmestas",
+    "position_stop_loss_fired": "Suveikė stop-loss"
+  }
+}

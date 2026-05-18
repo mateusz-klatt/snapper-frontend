@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "برای باز کردن جزئیات هشدار، دو بار ضربه بزنید"
+    },
+    "label": {
+      "dismissButton": "رد کردن هشدار"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "خطای سیستم",
+    "margin_warning": "هشدار وجه تضمین",
+    "order_fill_full": "سفارش اجرا شد",
+    "order_rejected": "سفارش رد شد",
+    "position_stop_loss_fired": "حد ضرر فعال شد"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} وضعیت {{2}} را برای {{3}} ضربان پیاپی گزارش کرد",
+    "margin_warning": "{{0}} {{1}} {{2}} به دلیل وجه تضمین مسدود شد: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} با قیمت ${{3}} در {{4}} اجرا شد",
+    "order_rejected": "{{0}} {{1}} {{2}} رد شد: {{3}}",
+    "position_stop_loss_fired": "حد ضرر روی {{0}} ({{1}}) فعال شد"
+  },
+  "detail": {
+    "navTitle": "جزئیات هشدار",
+    "sourceTopic": "موضوع منبع",
+    "thread": "رشته پیام",
+    "timestamp": "زمان"
+  },
+  "empty": {
+    "message": "هشدارهای جدید پس از فعال شدن اینجا نمایش داده می‌شوند.",
+    "title": "هشداری نیست"
+  },
+  "error": {
+    "loadFailed": "هشدارها بارگذاری نشدند"
+  },
+  "loading": "در حال بارگذاری هشدارها…",
+  "navTitle": "هشدارها",
+  "priority": {
+    "high": "بالا",
+    "low": "پایین",
+    "medium": "متوسط"
+  },
+  "row": {
+    "swipeDismiss": "رد کردن"
+  },
+  "title": {
+    "critical_system_error": "افت عملکرد سیستم: {{0}}",
+    "margin_warning": "هشدار وجه تضمین",
+    "order_fill_full": "سفارش اجرا شد",
+    "order_rejected": "سفارش رد شد",
+    "position_stop_loss_fired": "حد ضرر فعال شد"
+  }
+}

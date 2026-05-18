@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Ketik dua kali untuk membuka butiran amaran"
+    },
+    "label": {
+      "dismissButton": "Ketepikan amaran"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Ralat sistem",
+    "margin_warning": "Amaran margin",
+    "order_fill_full": "Pesanan dipenuhi",
+    "order_rejected": "Pesanan ditolak",
+    "position_stop_loss_fired": "Stop-loss dicetuskan"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} melaporkan {{2}} selama {{3}} heartbeat berturut-turut",
+    "margin_warning": "{{0}} {{1}} {{2}} disekat oleh margin: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} dilaksanakan di {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} ditolak: {{3}}",
+    "position_stop_loss_fired": "Stop-loss dicetuskan pada {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Butiran amaran",
+    "sourceTopic": "Topik sumber",
+    "thread": "Bebenang",
+    "timestamp": "Cap masa"
+  },
+  "empty": {
+    "message": "Amaran baharu akan muncul di sini apabila dicetuskan.",
+    "title": "Tiada amaran"
+  },
+  "error": {
+    "loadFailed": "Tidak dapat memuatkan amaran"
+  },
+  "loading": "Memuatkan amaran…",
+  "navTitle": "Amaran",
+  "priority": {
+    "high": "Tinggi",
+    "low": "Rendah",
+    "medium": "Sederhana"
+  },
+  "row": {
+    "swipeDismiss": "Ketepikan"
+  },
+  "title": {
+    "critical_system_error": "Sistem merosot: {{0}}",
+    "margin_warning": "Amaran margin",
+    "order_fill_full": "Pesanan dipenuhi",
+    "order_rejected": "Pesanan ditolak",
+    "position_stop_loss_fired": "Stop-loss dicetuskan"
+  }
+}

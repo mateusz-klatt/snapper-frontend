@@ -66,18 +66,19 @@
     "tryAgain": "Jaribu tena"
   },
   "nav": {
-    "overview": "Muhtasari",
-    "market": "Data ya Soko",
-    "processes": "Michakato",
-    "strategies": "Mikakati",
-    "orders": "Oda na Utekelezaji",
-    "positions": "Nafasi",
-    "signals": "Ishara",
-    "backtests": "Majaribio ya nyuma",
-    "health": "Afya",
     "admin": "Usimamizi",
     "aiIntegration": "Muunganisho wa AI",
     "aiReviews": "Mapitio ya AI",
-    "settings": "Mipangilio"
+    "alerts": "Arifa",
+    "backtests": "Majaribio ya nyuma",
+    "health": "Afya",
+    "market": "Data ya Soko",
+    "orders": "Oda na Utekelezaji",
+    "overview": "Muhtasari",
+    "positions": "Nafasi",
+    "processes": "Michakato",
+    "settings": "Mipangilio",
+    "signals": "Ishara",
+    "strategies": "Mikakati"
   }
 }

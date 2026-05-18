@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "اضغط مرتين لفتح تفاصيل التنبيه"
+    },
+    "label": {
+      "dismissButton": "تجاهل التنبيه"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "خطأ في النظام",
+    "margin_warning": "تحذير الهامش",
+    "order_fill_full": "تم تنفيذ الأمر",
+    "order_rejected": "تم رفض الأمر",
+    "position_stop_loss_fired": "تم تفعيل وقف الخسارة"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} أبلغ عن {{2}} خلال {{3}} نبضات متتالية",
+    "margin_warning": "تم حظر {{0}} {{1}} {{2}} بسبب الهامش: {{3}}",
+    "order_fill_full": "تم تنفيذ {{0}} {{1}} {{2}} بسعر ${{3}} على {{4}}",
+    "order_rejected": "تم رفض {{0}} {{1}} {{2}}: {{3}}",
+    "position_stop_loss_fired": "تم تفعيل وقف الخسارة على {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "تفاصيل التنبيه",
+    "sourceTopic": "الموضوع المصدر",
+    "thread": "السلسلة",
+    "timestamp": "الوقت"
+  },
+  "empty": {
+    "message": "ستظهر التنبيهات الجديدة هنا عند تفعيلها.",
+    "title": "لا توجد تنبيهات"
+  },
+  "error": {
+    "loadFailed": "تعذر تحميل التنبيهات"
+  },
+  "loading": "جارٍ تحميل التنبيهات…",
+  "navTitle": "التنبيهات",
+  "priority": {
+    "high": "مرتفع",
+    "low": "منخفض",
+    "medium": "متوسط"
+  },
+  "row": {
+    "swipeDismiss": "تجاهل"
+  },
+  "title": {
+    "critical_system_error": "تدهور النظام: {{0}}",
+    "margin_warning": "تحذير الهامش",
+    "order_fill_full": "تم تنفيذ الأمر",
+    "order_rejected": "تم رفض الأمر",
+    "position_stop_loss_fired": "تم تفعيل وقف الخسارة"
+  }
+}

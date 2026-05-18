@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Pieskarieties divreiz, lai atvērtu brīdinājuma detaļas"
+    },
+    "label": {
+      "dismissButton": "Aizvērt brīdinājumu"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Sistēmas kļūda",
+    "margin_warning": "Maržas brīdinājums",
+    "order_fill_full": "Rīkojums izpildīts",
+    "order_rejected": "Rīkojums noraidīts",
+    "position_stop_loss_fired": "Stop-loss aktivizēts"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} ziņoja {{2}} {{3}} secīgos heartbeatos",
+    "margin_warning": "{{0}} {{1}} {{2}} bloķēts maržas dēļ: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} izpildīts biržā {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} noraidīts: {{3}}",
+    "position_stop_loss_fired": "Stop-loss aktivizēts {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Brīdinājuma detaļas",
+    "sourceTopic": "Avota temats",
+    "thread": "Pavediens",
+    "timestamp": "Laika zīmogs"
+  },
+  "empty": {
+    "message": "Jauni brīdinājumi parādīsies šeit, kad tie tiks aktivizēti.",
+    "title": "Nav brīdinājumu"
+  },
+  "error": {
+    "loadFailed": "Neizdevās ielādēt brīdinājumus"
+  },
+  "loading": "Notiek brīdinājumu ielāde…",
+  "navTitle": "Brīdinājumi",
+  "priority": {
+    "high": "Augsta",
+    "low": "Zema",
+    "medium": "Vidēja"
+  },
+  "row": {
+    "swipeDismiss": "Aizvērt"
+  },
+  "title": {
+    "critical_system_error": "Sistēma degradēta: {{0}}",
+    "margin_warning": "Maržas brīdinājums",
+    "order_fill_full": "Rīkojums izpildīts",
+    "order_rejected": "Rīkojums noraidīts",
+    "position_stop_loss_fired": "Stop-loss aktivizēts"
+  }
+}

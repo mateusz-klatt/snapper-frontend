@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "แตะสองครั้งเพื่อเปิดรายละเอียดการแจ้งเตือน"
+    },
+    "label": {
+      "dismissButton": "ปิดการแจ้งเตือน"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "ข้อผิดพลาดของระบบ",
+    "margin_warning": "คำเตือนมาร์จิ้น",
+    "order_fill_full": "คำสั่งถูกจับคู่แล้ว",
+    "order_rejected": "คำสั่งถูกปฏิเสธ",
+    "position_stop_loss_fired": "คำสั่งหยุดขาดทุนถูกเรียกใช้"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} รายงาน {{2}} เป็นเวลา {{3}} heartbeat ติดต่อกัน",
+    "margin_warning": "{{0}} {{1}} {{2}} ถูกบล็อกโดยมาร์จิ้น: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} ที่ ${{3}} จับคู่แล้วบน {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} ถูกปฏิเสธ: {{3}}",
+    "position_stop_loss_fired": "หยุดขาดทุนถูกเรียกใช้บน {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "รายละเอียดการแจ้งเตือน",
+    "sourceTopic": "หัวข้อต้นทาง",
+    "thread": "เธรด",
+    "timestamp": "เวลา"
+  },
+  "empty": {
+    "message": "การแจ้งเตือนใหม่จะแสดงที่นี่เมื่อถูกทริกเกอร์",
+    "title": "ไม่มีการแจ้งเตือน"
+  },
+  "error": {
+    "loadFailed": "โหลดการแจ้งเตือนไม่ได้"
+  },
+  "loading": "กำลังโหลดการแจ้งเตือน…",
+  "navTitle": "การแจ้งเตือน",
+  "priority": {
+    "high": "สูง",
+    "low": "ต่ำ",
+    "medium": "ปานกลาง"
+  },
+  "row": {
+    "swipeDismiss": "ปิด"
+  },
+  "title": {
+    "critical_system_error": "ระบบเสื่อมสภาพ: {{0}}",
+    "margin_warning": "คำเตือนมาร์จิ้น",
+    "order_fill_full": "คำสั่งถูกจับคู่แล้ว",
+    "order_rejected": "คำสั่งถูกปฏิเสธ",
+    "position_stop_loss_fired": "คำสั่งหยุดขาดทุนถูกเรียกใช้"
+  }
+}

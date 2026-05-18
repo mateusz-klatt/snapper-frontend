@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Touchez deux fois pour afficher les détails de l'alerte"
+    },
+    "label": {
+      "dismissButton": "Ignorer l'alerte"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Erreur système",
+    "margin_warning": "Avertissement de marge",
+    "order_fill_full": "Ordre exécuté",
+    "order_rejected": "Ordre rejeté",
+    "position_stop_loss_fired": "Stop loss déclenché"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} a signalé {{2}} pendant {{3}} heartbeats consécutifs",
+    "margin_warning": "{{0}} {{1}} {{2}} bloqué par la marge : {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} exécuté sur {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} rejeté : {{3}}",
+    "position_stop_loss_fired": "Stop loss déclenché sur {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Détails de l'alerte",
+    "sourceTopic": "Sujet source",
+    "thread": "Fil",
+    "timestamp": "Horodatage"
+  },
+  "empty": {
+    "message": "Les nouvelles alertes apparaîtront ici lorsqu'elles se déclencheront.",
+    "title": "Aucune alerte"
+  },
+  "error": {
+    "loadFailed": "Impossible de charger les alertes"
+  },
+  "loading": "Chargement des alertes…",
+  "navTitle": "Alertes",
+  "priority": {
+    "high": "Haute",
+    "low": "Basse",
+    "medium": "Moyenne"
+  },
+  "row": {
+    "swipeDismiss": "Ignorer"
+  },
+  "title": {
+    "critical_system_error": "Système dégradé : {{0}}",
+    "margin_warning": "Avertissement de marge",
+    "order_fill_full": "Ordre exécuté",
+    "order_rejected": "Ordre rejeté",
+    "position_stop_loss_fired": "Stop loss déclenché"
+  }
+}

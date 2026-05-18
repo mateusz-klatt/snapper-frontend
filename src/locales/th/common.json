@@ -66,18 +66,19 @@
     "tryAgain": "ลองอีกครั้ง"
   },
   "nav": {
-    "overview": "ภาพรวม",
-    "market": "ข้อมูลตลาด",
-    "processes": "กระบวนการ",
-    "strategies": "กลยุทธ์",
-    "orders": "คำสั่งและการดำเนินการ",
-    "positions": "สถานะ",
-    "signals": "สัญญาณ",
-    "backtests": "แบ็คเทสต์",
-    "health": "สุขภาพระบบ",
     "admin": "การดูแลระบบ",
     "aiIntegration": "การเชื่อมต่อ AI",
     "aiReviews": "การตรวจทาน AI",
-    "settings": "การตั้งค่า"
+    "alerts": "การแจ้งเตือน",
+    "backtests": "แบ็คเทสต์",
+    "health": "สุขภาพระบบ",
+    "market": "ข้อมูลตลาด",
+    "orders": "คำสั่งและการดำเนินการ",
+    "overview": "ภาพรวม",
+    "positions": "สถานะ",
+    "processes": "กระบวนการ",
+    "settings": "การตั้งค่า",
+    "signals": "สัญญาณ",
+    "strategies": "กลยุทธ์"
   }
 }

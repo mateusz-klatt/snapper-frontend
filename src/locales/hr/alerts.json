@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Dvaput dodirnite za prikaz detalja upozorenja"
+    },
+    "label": {
+      "dismissButton": "Odbaci upozorenje"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Greška sustava",
+    "margin_warning": "Upozorenje o marži",
+    "order_fill_full": "Nalog izvršen",
+    "order_rejected": "Nalog odbijen",
+    "position_stop_loss_fired": "Stop-loss aktiviran"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} prijavio je {{2}} tijekom {{3}} uzastopnih heartbeatova",
+    "margin_warning": "{{0}} {{1}} {{2}} blokirano zbog marže: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} izvršeno na {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} odbijeno: {{3}}",
+    "position_stop_loss_fired": "Stop-loss aktiviran za {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Detalji upozorenja",
+    "sourceTopic": "Tema izvora",
+    "thread": "Nit",
+    "timestamp": "Vrijeme"
+  },
+  "empty": {
+    "message": "Nova upozorenja pojavit će se ovdje kad se aktiviraju.",
+    "title": "Nema upozorenja"
+  },
+  "error": {
+    "loadFailed": "Nije moguće učitati upozorenja"
+  },
+  "loading": "Učitavanje upozorenja…",
+  "navTitle": "Upozorenja",
+  "priority": {
+    "high": "Visok",
+    "low": "Nizak",
+    "medium": "Srednji"
+  },
+  "row": {
+    "swipeDismiss": "Odbaci"
+  },
+  "title": {
+    "critical_system_error": "Sustav degradiran: {{0}}",
+    "margin_warning": "Upozorenje o marži",
+    "order_fill_full": "Nalog izvršen",
+    "order_rejected": "Nalog odbijen",
+    "position_stop_loss_fired": "Stop-loss aktiviran"
+  }
+}

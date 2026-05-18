@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Tocca due volte per aprire i dettagli dell'allerta"
+    },
+    "label": {
+      "dismissButton": "Chiudi avviso"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Errore di sistema",
+    "margin_warning": "Avviso di margine",
+    "order_fill_full": "Ordine eseguito",
+    "order_rejected": "Ordine rifiutato",
+    "position_stop_loss_fired": "Stop-loss attivato"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} ha segnalato {{2}} per {{3}} heartbeat consecutivi",
+    "margin_warning": "{{0}} {{1}} {{2}} bloccato dal margine: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} eseguito su {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} rifiutato: {{3}}",
+    "position_stop_loss_fired": "Stop-loss attivato su {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Dettagli avviso",
+    "sourceTopic": "Argomento di origine",
+    "thread": "Thread",
+    "timestamp": "Data e ora"
+  },
+  "empty": {
+    "message": "I nuovi avvisi appariranno qui quando verranno attivati.",
+    "title": "Nessuna allerta"
+  },
+  "error": {
+    "loadFailed": "Impossibile caricare gli avvisi"
+  },
+  "loading": "Caricamento avvisi…",
+  "navTitle": "Avvisi",
+  "priority": {
+    "high": "Alta",
+    "low": "Bassa",
+    "medium": "Media"
+  },
+  "row": {
+    "swipeDismiss": "Ignora"
+  },
+  "title": {
+    "critical_system_error": "Sistema degradato: {{0}}",
+    "margin_warning": "Avviso di margine",
+    "order_fill_full": "Ordine eseguito",
+    "order_rejected": "Ordine rifiutato",
+    "position_stop_loss_fired": "Stop-loss attivato"
+  }
+}

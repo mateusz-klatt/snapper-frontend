@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Dvojitým klepnutím otevřete detaily upozornění"
+    },
+    "label": {
+      "dismissButton": "Zavřít upozornění"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Chyba systému",
+    "margin_warning": "Upozornění na margin",
+    "order_fill_full": "Pokyn proveden",
+    "order_rejected": "Pokyn zamítnut",
+    "position_stop_loss_fired": "Stop-loss aktivován"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} hlásí {{2}} po {{3}} po sobě jdoucích heartbeatech",
+    "margin_warning": "{{0}} {{1}} {{2}} zablokováno kvůli marginu: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} provedeno na {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} zamítnuto: {{3}}",
+    "position_stop_loss_fired": "Stop-loss aktivován pro {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Detail upozornění",
+    "sourceTopic": "Zdrojové téma",
+    "thread": "Vlákno",
+    "timestamp": "Čas"
+  },
+  "empty": {
+    "message": "Nová upozornění se objeví zde, jakmile budou spuštěna.",
+    "title": "Žádná upozornění"
+  },
+  "error": {
+    "loadFailed": "Upozornění se nepodařilo načíst"
+  },
+  "loading": "Načítání upozornění…",
+  "navTitle": "Upozornění",
+  "priority": {
+    "high": "Vysoká",
+    "low": "Nízká",
+    "medium": "Střední"
+  },
+  "row": {
+    "swipeDismiss": "Zavřít"
+  },
+  "title": {
+    "critical_system_error": "Systém je degradovaný: {{0}}",
+    "margin_warning": "Upozornění na margin",
+    "order_fill_full": "Pokyn proveden",
+    "order_rejected": "Pokyn zamítnut",
+    "position_stop_loss_fired": "Stop-loss aktivován"
+  }
+}

@@ -66,18 +66,19 @@
     "tryAgain": "Повторить"
   },
   "nav": {
-    "overview": "Обзор",
-    "market": "Рыночные данные",
-    "processes": "Процессы",
-    "strategies": "Стратегии",
-    "orders": "Заявки и исполнения",
-    "positions": "Позиции",
-    "signals": "Сигналы",
-    "backtests": "Бэктесты",
-    "health": "Состояние",
     "admin": "Администрирование",
     "aiIntegration": "Интеграция AI",
     "aiReviews": "Проверки AI",
-    "settings": "Настройки"
+    "alerts": "Оповещения",
+    "backtests": "Бэктесты",
+    "health": "Состояние",
+    "market": "Рыночные данные",
+    "orders": "Заявки и исполнения",
+    "overview": "Обзор",
+    "positions": "Позиции",
+    "processes": "Процессы",
+    "settings": "Настройки",
+    "signals": "Сигналы",
+    "strategies": "Стратегии"
   }
 }

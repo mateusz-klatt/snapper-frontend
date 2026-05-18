@@ -66,18 +66,19 @@
     "tryAgain": "Încercați din nou"
   },
   "nav": {
-    "overview": "Prezentare generală",
-    "market": "Date de piață",
-    "processes": "Procese",
-    "strategies": "Strategii",
-    "orders": "Ordine și execuții",
-    "positions": "Poziții",
-    "signals": "Semnale",
-    "backtests": "Backtesturi",
-    "health": "Stare sistem",
     "admin": "Administrare",
     "aiIntegration": "Integrare AI",
     "aiReviews": "Revizuiri AI",
-    "settings": "Setări"
+    "alerts": "Alerte",
+    "backtests": "Backtesturi",
+    "health": "Stare sistem",
+    "market": "Date de piață",
+    "orders": "Ordine și execuții",
+    "overview": "Prezentare generală",
+    "positions": "Poziții",
+    "processes": "Procese",
+    "settings": "Setări",
+    "signals": "Semnale",
+    "strategies": "Strategii"
   }
 }

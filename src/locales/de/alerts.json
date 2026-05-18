@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Doppeltippen, um Alarmdetails zu öffnen"
+    },
+    "label": {
+      "dismissButton": "Alarm verwerfen"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Systemfehler",
+    "margin_warning": "Margin-Warnung",
+    "order_fill_full": "Order ausgeführt",
+    "order_rejected": "Order abgelehnt",
+    "position_stop_loss_fired": "Stop-Loss ausgelöst"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} meldet {{2}} für {{3}} aufeinanderfolgende Heartbeats",
+    "margin_warning": "{{0}} {{1}} {{2}} wegen Margin blockiert: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} ausgeführt auf {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} abgelehnt: {{3}}",
+    "position_stop_loss_fired": "Stop-Loss ausgelöst für {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Alarmdetails",
+    "sourceTopic": "Quellthema",
+    "thread": "Thread",
+    "timestamp": "Zeitstempel"
+  },
+  "empty": {
+    "message": "Neue Alarme erscheinen hier, sobald sie ausgelöst werden.",
+    "title": "Keine Alarme"
+  },
+  "error": {
+    "loadFailed": "Alarme konnten nicht geladen werden"
+  },
+  "loading": "Alarme werden geladen…",
+  "navTitle": "Alarme",
+  "priority": {
+    "high": "Hoch",
+    "low": "Niedrig",
+    "medium": "Mittel"
+  },
+  "row": {
+    "swipeDismiss": "Verwerfen"
+  },
+  "title": {
+    "critical_system_error": "System beeinträchtigt: {{0}}",
+    "margin_warning": "Margin-Warnung",
+    "order_fill_full": "Order ausgeführt",
+    "order_rejected": "Order abgelehnt",
+    "position_stop_loss_fired": "Stop-Loss ausgelöst"
+  }
+}

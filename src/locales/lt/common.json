@@ -66,18 +66,19 @@
     "tryAgain": "Bandyti dar kartą"
   },
   "nav": {
-    "overview": "Apžvalga",
-    "market": "Rinkos duomenys",
-    "processes": "Procesai",
-    "strategies": "Strategijos",
-    "orders": "Pavedimai ir vykdymai",
-    "positions": "Pozicijos",
-    "signals": "Signalai",
-    "backtests": "Backtestai",
-    "health": "Būklė",
     "admin": "Administravimas",
     "aiIntegration": "AI integracija",
     "aiReviews": "AI peržiūros",
-    "settings": "Nustatymai"
+    "alerts": "Įspėjimai",
+    "backtests": "Backtestai",
+    "health": "Būklė",
+    "market": "Rinkos duomenys",
+    "orders": "Pavedimai ir vykdymai",
+    "overview": "Apžvalga",
+    "positions": "Pozicijos",
+    "processes": "Procesai",
+    "settings": "Nustatymai",
+    "signals": "Signalai",
+    "strategies": "Strategijos"
   }
 }

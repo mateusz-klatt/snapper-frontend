@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Дважды коснитесь, чтобы открыть детали оповещения"
+    },
+    "label": {
+      "dismissButton": "Закрыть оповещение"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Системная ошибка",
+    "margin_warning": "Предупреждение о марже",
+    "order_fill_full": "Ордер исполнен",
+    "order_rejected": "Ордер отклонён",
+    "position_stop_loss_fired": "Стоп-лосс сработал"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} сообщил {{2}} в течение {{3}} последовательных heartbeat-сигналов",
+    "margin_warning": "{{0}} {{1}} {{2}} заблокировано из-за маржи: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} исполнено на {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} отклонено: {{3}}",
+    "position_stop_loss_fired": "Стоп-лосс сработал для {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Детали оповещения",
+    "sourceTopic": "Исходный топик",
+    "thread": "Поток",
+    "timestamp": "Время"
+  },
+  "empty": {
+    "message": "Новые оповещения появятся здесь, когда они сработают.",
+    "title": "Нет оповещений"
+  },
+  "error": {
+    "loadFailed": "Не удалось загрузить оповещения"
+  },
+  "loading": "Загрузка оповещений…",
+  "navTitle": "Оповещения",
+  "priority": {
+    "high": "Высокий",
+    "low": "Низкий",
+    "medium": "Средний"
+  },
+  "row": {
+    "swipeDismiss": "Закрыть"
+  },
+  "title": {
+    "critical_system_error": "Система деградирована: {{0}}",
+    "margin_warning": "Предупреждение о марже",
+    "order_fill_full": "Ордер исполнен",
+    "order_rejected": "Ордер отклонён",
+    "position_stop_loss_fired": "Стоп-лосс сработал"
+  }
+}

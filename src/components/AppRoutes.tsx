@@ -43,6 +43,9 @@ const AiReviewInbox = lazy(() =>
 const Settings = lazy(() =>
   import('../features/settings/Settings').then(m => ({ default: m.Settings }))
 )
+const Notifications = lazy(() =>
+  import('../features/notifications/Notifications').then(m => ({ default: m.Notifications }))
+)
 
 interface AppRoutesProps {
   activeTab: string
@@ -174,6 +177,14 @@ function renderRoute(activeTab: string): React.ReactElement {
         <ErrorBoundary componentNameKey='nav.aiReviews'>
           <ProtectedRoute resource='ai-reviews'>
             <AiReviewInbox />
+          </ProtectedRoute>
+        </ErrorBoundary>
+      )
+    case 'notifications':
+      return (
+        <ErrorBoundary componentNameKey='nav.alerts'>
+          <ProtectedRoute resource='notifications'>
+            <Notifications />
           </ProtectedRoute>
         </ErrorBoundary>
       )

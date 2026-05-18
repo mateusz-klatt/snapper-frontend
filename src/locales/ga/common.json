@@ -66,18 +66,19 @@
     "tryAgain": "Bain triail eile as"
   },
   "nav": {
-    "overview": "Forbhreathnú",
-    "market": "Sonraí Margaidh",
-    "processes": "Próisis",
-    "strategies": "Straitéisí",
-    "orders": "Orduithe agus Líonta",
-    "positions": "Suímh",
-    "signals": "Comharthaí",
-    "backtests": "Backtestanna",
-    "health": "Sláinte",
     "admin": "Riarachán",
     "aiIntegration": "Comhtháthú AI",
     "aiReviews": "Athbhreithnithe AI",
-    "settings": "Socruithe"
+    "alerts": "Foláirimh",
+    "backtests": "Backtestanna",
+    "health": "Sláinte",
+    "market": "Sonraí Margaidh",
+    "orders": "Orduithe agus Líonta",
+    "overview": "Forbhreathnú",
+    "positions": "Suímh",
+    "processes": "Próisis",
+    "settings": "Socruithe",
+    "signals": "Comharthaí",
+    "strategies": "Straitéisí"
   }
 }

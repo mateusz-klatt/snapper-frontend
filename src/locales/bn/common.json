@@ -66,18 +66,19 @@
     "tryAgain": "আবার চেষ্টা করুন"
   },
   "nav": {
-    "overview": "ওভারভিউ",
-    "market": "মার্কেট ডেটা",
-    "processes": "প্রসেস",
-    "strategies": "কৌশল",
-    "orders": "অর্ডার ও নির্বাহ",
-    "positions": "পজিশন",
-    "signals": "সিগন্যাল",
-    "backtests": "ব্যাকটেস্টসমূহ",
-    "health": "সিস্টেম স্বাস্থ্য",
     "admin": "প্রশাসন",
     "aiIntegration": "AI ইন্টিগ্রেশন",
     "aiReviews": "AI রিভিউ",
-    "settings": "সেটিংস"
+    "alerts": "অ্যালার্ট",
+    "backtests": "ব্যাকটেস্টসমূহ",
+    "health": "সিস্টেম স্বাস্থ্য",
+    "market": "মার্কেট ডেটা",
+    "orders": "অর্ডার ও নির্বাহ",
+    "overview": "ওভারভিউ",
+    "positions": "পজিশন",
+    "processes": "প্রসেস",
+    "settings": "সেটিংস",
+    "signals": "সিগন্যাল",
+    "strategies": "কৌশল"
   }
 }

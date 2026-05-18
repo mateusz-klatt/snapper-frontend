@@ -66,18 +66,19 @@
     "tryAgain": "Újrapróbálkozás"
   },
   "nav": {
-    "overview": "Áttekintés",
-    "market": "Piaci adatok",
-    "processes": "Folyamatok",
-    "strategies": "Stratégiák",
-    "orders": "Megbízások és teljesítések",
-    "positions": "Pozíciók",
-    "signals": "Jelzések",
-    "backtests": "Backtestek",
-    "health": "Állapot",
     "admin": "Adminisztráció",
     "aiIntegration": "AI-integráció",
     "aiReviews": "AI-felülvizsgálatok",
-    "settings": "Beállítások"
+    "alerts": "Riasztások",
+    "backtests": "Backtestek",
+    "health": "Állapot",
+    "market": "Piaci adatok",
+    "orders": "Megbízások és teljesítések",
+    "overview": "Áttekintés",
+    "positions": "Pozíciók",
+    "processes": "Folyamatok",
+    "settings": "Beállítások",
+    "signals": "Jelzések",
+    "strategies": "Stratégiák"
   }
 }

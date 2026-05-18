@@ -66,18 +66,19 @@
     "tryAgain": "حاول مرة أخرى"
   },
   "nav": {
-    "overview": "نظرة عامة",
-    "market": "بيانات السوق",
-    "processes": "العمليات",
-    "strategies": "الاستراتيجيات",
-    "orders": "الأوامر والتنفيذات",
-    "positions": "المراكز",
-    "signals": "الإشارات",
-    "backtests": "اختبارات رجعية",
-    "health": "الصحة",
     "admin": "الإدارة",
     "aiIntegration": "تكامل AI",
     "aiReviews": "مراجعات AI",
-    "settings": "الإعدادات"
+    "alerts": "التنبيهات",
+    "backtests": "اختبارات رجعية",
+    "health": "الصحة",
+    "market": "بيانات السوق",
+    "orders": "الأوامر والتنفيذات",
+    "overview": "نظرة عامة",
+    "positions": "المراكز",
+    "processes": "العمليات",
+    "settings": "الإعدادات",
+    "signals": "الإشارات",
+    "strategies": "الاستراتيجيات"
   }
 }

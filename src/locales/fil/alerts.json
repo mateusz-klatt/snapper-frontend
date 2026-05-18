@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "I-double tap upang buksan ang detalye ng alerto"
+    },
+    "label": {
+      "dismissButton": "Alisin ang alerto"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Error sa sistema",
+    "margin_warning": "Babala sa margin",
+    "order_fill_full": "Naisagawa ang order",
+    "order_rejected": "Tinanggihan ang order",
+    "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} nag-ulat ng {{2}} sa loob ng {{3}} sunod-sunod na heartbeat",
+    "margin_warning": "{{0}} {{1}} {{2}} hinarang dahil sa margin: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} naisagawa sa {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} tinanggihan: {{3}}",
+    "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi sa {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Detalye ng alerto",
+    "sourceTopic": "Paksa ng pinagmulan",
+    "thread": "Talakayan",
+    "timestamp": "Tatak ng oras"
+  },
+  "empty": {
+    "message": "Lalabas dito ang mga bagong alerto kapag na-activate ang mga ito.",
+    "title": "Walang alerto"
+  },
+  "error": {
+    "loadFailed": "Hindi makuha ang mga alerto"
+  },
+  "loading": "Kinukuha ang mga alerto…",
+  "navTitle": "Mga Alerto",
+  "priority": {
+    "high": "Mataas",
+    "low": "Mababa",
+    "medium": "Katamtaman"
+  },
+  "row": {
+    "swipeDismiss": "Alisin"
+  },
+  "title": {
+    "critical_system_error": "Humina ang sistema: {{0}}",
+    "margin_warning": "Babala sa margin",
+    "order_fill_full": "Naisagawa ang order",
+    "order_rejected": "Tinanggihan ang order",
+    "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi"
+  }
+}

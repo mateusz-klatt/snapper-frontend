@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "הקשה כפולה לפתיחת פרטי ההתראה"
+    },
+    "label": {
+      "dismissButton": "סגירת התראה"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "שגיאת מערכת",
+    "margin_warning": "אזהרת מרג'ין",
+    "order_fill_full": "הפקודה בוצעה",
+    "order_rejected": "הפקודה נדחתה",
+    "position_stop_loss_fired": "סטופ-לוס הופעל"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} דיווח על {{2}} במשך {{3}} פעימות רצופות",
+    "margin_warning": "{{0}} {{1}} {{2}} נחסמה עקב מרג'ין: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} ב-${{3}} ב-{{4}} בוצעה",
+    "order_rejected": "{{0}} {{1}} {{2}} נדחתה: {{3}}",
+    "position_stop_loss_fired": "סטופ-לוס הופעל ב-{{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "פרטי התראה",
+    "sourceTopic": "נושא מקור",
+    "thread": "שרשור",
+    "timestamp": "חותמת זמן"
+  },
+  "empty": {
+    "message": "התראות חדשות יופיעו כאן כשהן יופעלו.",
+    "title": "אין התראות"
+  },
+  "error": {
+    "loadFailed": "לא ניתן לטעון התראות"
+  },
+  "loading": "טוען התראות…",
+  "navTitle": "התראות",
+  "priority": {
+    "high": "גבוה",
+    "low": "נמוך",
+    "medium": "בינוני"
+  },
+  "row": {
+    "swipeDismiss": "סגירה"
+  },
+  "title": {
+    "critical_system_error": "מערכת במצב ירוד: {{0}}",
+    "margin_warning": "אזהרת מרג'ין",
+    "order_fill_full": "הפקודה בוצעה",
+    "order_rejected": "הפקודה נדחתה",
+    "position_stop_loss_fired": "סטופ-לוס הופעל"
+  }
+}

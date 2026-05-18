@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "點兩下以開啟警示詳情"
+    },
+    "label": {
+      "dismissButton": "關閉警示"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "系統錯誤",
+    "margin_warning": "保證金警示",
+    "order_fill_full": "訂單已成交",
+    "order_rejected": "訂單已拒絕",
+    "position_stop_loss_fired": "止損已觸發"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} 回報 {{2}}，已連續 {{3}} 次心跳",
+    "margin_warning": "{{0}} {{1}} {{2}} 因保證金不足被阻止：{{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} 以 ${{3}} 在 {{4}} 成交",
+    "order_rejected": "{{0}} {{1}} {{2}} 已拒絕：{{3}}",
+    "position_stop_loss_fired": "{{0}}（{{1}}）觸發止損"
+  },
+  "detail": {
+    "navTitle": "警示詳情",
+    "sourceTopic": "來源主題",
+    "thread": "執行緒",
+    "timestamp": "時間戳記"
+  },
+  "empty": {
+    "message": "新警示觸發後會顯示在此。",
+    "title": "沒有警示"
+  },
+  "error": {
+    "loadFailed": "無法載入警示"
+  },
+  "loading": "正在載入警示…",
+  "navTitle": "警示",
+  "priority": {
+    "high": "高",
+    "low": "低",
+    "medium": "中"
+  },
+  "row": {
+    "swipeDismiss": "關閉"
+  },
+  "title": {
+    "critical_system_error": "系統降級：{{0}}",
+    "margin_warning": "保證金警示",
+    "order_fill_full": "訂單已成交",
+    "order_rejected": "訂單已拒絕",
+    "position_stop_loss_fired": "止損已觸發"
+  }
+}

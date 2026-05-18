@@ -66,18 +66,19 @@
     "tryAgain": "Спробувати ще раз"
   },
   "nav": {
-    "overview": "Огляд",
-    "market": "Ринкові дані",
-    "processes": "Процеси",
-    "strategies": "Стратегії",
-    "orders": "Ордери та виконання",
-    "positions": "Позиції",
-    "signals": "Сигнали",
-    "backtests": "Бектести",
-    "health": "Стан",
     "admin": "Адміністрування",
     "aiIntegration": "AI-інтеграція",
     "aiReviews": "AI-перевірки",
-    "settings": "Налаштування"
+    "alerts": "Сповіщення",
+    "backtests": "Бектести",
+    "health": "Стан",
+    "market": "Ринкові дані",
+    "orders": "Ордери та виконання",
+    "overview": "Огляд",
+    "positions": "Позиції",
+    "processes": "Процеси",
+    "settings": "Налаштування",
+    "signals": "Сигнали",
+    "strategies": "Стратегії"
   }
 }

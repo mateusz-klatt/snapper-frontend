@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Tapáil faoi dhó chun sonraí an fholáirimh a oscailt"
+    },
+    "label": {
+      "dismissButton": "Dún foláireamh"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Earráid chórais",
+    "margin_warning": "Rabhadh corrlaigh",
+    "order_fill_full": "Ordú comhlíonta",
+    "order_rejected": "Ordú diúltaithe",
+    "position_stop_loss_fired": "Spreagadh stopchaillteanas"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} thuairiscigh {{2}} ar feadh {{3}} chomhartha heartbeat as a chéile",
+    "margin_warning": "{{0}} {{1}} {{2}} blocáilte mar gheall ar chorrlach: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} comhlíonta ar {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} diúltaithe: {{3}}",
+    "position_stop_loss_fired": "Spreagadh stopchaillteanas do {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Sonraí an fholáirimh",
+    "sourceTopic": "Topaic foinse",
+    "thread": "Snáithe",
+    "timestamp": "Stampa ama"
+  },
+  "empty": {
+    "message": "Beidh foláirimh nua le feiceáil anseo nuair a spreagfar iad.",
+    "title": "Gan foláirimh"
+  },
+  "error": {
+    "loadFailed": "Níorbh fhéidir foláirimh a luchtú"
+  },
+  "loading": "Foláirimh á luchtú…",
+  "navTitle": "Foláirimh",
+  "priority": {
+    "high": "Ard",
+    "low": "Íseal",
+    "medium": "Meánach"
+  },
+  "row": {
+    "swipeDismiss": "Dún"
+  },
+  "title": {
+    "critical_system_error": "Díghrádú córais: {{0}}",
+    "margin_warning": "Rabhadh corrlaigh",
+    "order_fill_full": "Ordú comhlíonta",
+    "order_rejected": "Ordú diúltaithe",
+    "position_stop_loss_fired": "Spreagadh stopchaillteanas"
+  }
+}

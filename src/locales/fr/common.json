@@ -66,18 +66,19 @@
     "tryAgain": "Réessayer"
   },
   "nav": {
-    "overview": "Vue d'ensemble",
-    "market": "Données de marché",
-    "processes": "Processus",
-    "strategies": "Stratégies",
-    "orders": "Ordres et exécutions",
-    "positions": "Positions",
-    "signals": "Signaux",
-    "backtests": "Tests historiques",
-    "health": "État du système",
     "admin": "Administration",
     "aiIntegration": "Intégration IA",
     "aiReviews": "Revues IA",
-    "settings": "Paramètres"
+    "alerts": "Alertes",
+    "backtests": "Tests historiques",
+    "health": "État du système",
+    "market": "Données de marché",
+    "orders": "Ordres et exécutions",
+    "overview": "Vue d'ensemble",
+    "positions": "Positions",
+    "processes": "Processus",
+    "settings": "Paramètres",
+    "signals": "Signaux",
+    "strategies": "Stratégies"
   }
 }

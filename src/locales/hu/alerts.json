@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Koppintson duplán a riasztás részleteinek megnyitásához"
+    },
+    "label": {
+      "dismissButton": "Riasztás elvetése"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Rendszerhiba",
+    "margin_warning": "Fedezeti figyelmeztetés",
+    "order_fill_full": "Megbízás teljesült",
+    "order_rejected": "Megbízás elutasítva",
+    "position_stop_loss_fired": "Stop-loss aktiválódott"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} {{2}} állapotot jelzett {{3}} egymást követő heartbeat során",
+    "margin_warning": "{{0}} {{1}} {{2}} fedezethiány miatt blokkolva: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} teljesült a(z) {{4}} tőzsdén",
+    "order_rejected": "{{0}} {{1}} {{2}} elutasítva: {{3}}",
+    "position_stop_loss_fired": "Stop-loss aktiválódott ehhez: {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Riasztás részletei",
+    "sourceTopic": "Forrástéma",
+    "thread": "Szál",
+    "timestamp": "Időbélyeg"
+  },
+  "empty": {
+    "message": "Az új riasztások itt jelennek meg, amikor aktiválódnak.",
+    "title": "Nincsenek riasztások"
+  },
+  "error": {
+    "loadFailed": "A riasztásokat nem sikerült betölteni"
+  },
+  "loading": "Riasztások betöltése…",
+  "navTitle": "Riasztások",
+  "priority": {
+    "high": "Magas",
+    "low": "Alacsony",
+    "medium": "Közepes"
+  },
+  "row": {
+    "swipeDismiss": "Elvetés"
+  },
+  "title": {
+    "critical_system_error": "A rendszer degradált: {{0}}",
+    "margin_warning": "Fedezeti figyelmeztetés",
+    "order_fill_full": "Megbízás teljesült",
+    "order_rejected": "Megbízás elutasítva",
+    "position_stop_loss_fired": "Stop-loss aktiválódott"
+  }
+}

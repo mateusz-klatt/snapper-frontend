@@ -66,18 +66,19 @@
     "tryAgain": "Reyna aftur"
   },
   "nav": {
-    "overview": "Yfirlit",
-    "market": "Markaðsgögn",
-    "processes": "Ferli",
-    "strategies": "Stefnur",
-    "orders": "Pantanir og framkvæmdir",
-    "positions": "Stöður",
-    "signals": "Merki",
-    "backtests": "Bakprófanir",
-    "health": "Heilsa",
     "admin": "Stjórnun",
     "aiIntegration": "AI samþætting",
     "aiReviews": "AI yfirferðir",
-    "settings": "Stillingar"
+    "alerts": "Viðvaranir",
+    "backtests": "Bakprófanir",
+    "health": "Heilsa",
+    "market": "Markaðsgögn",
+    "orders": "Pantanir og framkvæmdir",
+    "overview": "Yfirlit",
+    "positions": "Stöður",
+    "processes": "Ferli",
+    "settings": "Stillingar",
+    "signals": "Merki",
+    "strategies": "Stefnur"
   }
 }

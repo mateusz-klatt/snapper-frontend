@@ -66,18 +66,19 @@
     "tryAgain": "重試"
   },
   "nav": {
-    "overview": "概覽",
-    "market": "市場數據",
-    "processes": "進程",
-    "strategies": "策略",
-    "orders": "訂單與成交",
-    "positions": "倉位",
-    "signals": "信號",
-    "backtests": "回測",
-    "health": "系統健康",
     "admin": "管理",
     "aiIntegration": "AI 整合",
     "aiReviews": "AI 審核",
-    "settings": "設定"
+    "alerts": "警示",
+    "backtests": "回測",
+    "health": "系統健康",
+    "market": "市場數據",
+    "orders": "訂單與成交",
+    "overview": "概覽",
+    "positions": "倉位",
+    "processes": "進程",
+    "settings": "設定",
+    "signals": "信號",
+    "strategies": "策略"
   }
 }

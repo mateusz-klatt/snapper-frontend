@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Nhấn đúp để mở chi tiết cảnh báo"
+    },
+    "label": {
+      "dismissButton": "Bỏ qua cảnh báo"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Lỗi hệ thống",
+    "margin_warning": "Cảnh báo ký quỹ",
+    "order_fill_full": "Lệnh đã khớp",
+    "order_rejected": "Lệnh bị từ chối",
+    "position_stop_loss_fired": "Cắt lỗ đã kích hoạt"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} đã báo cáo {{2}} trong {{3}} heartbeat liên tiếp",
+    "margin_warning": "{{0}} {{1}} {{2}} bị chặn bởi ký quỹ: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} đã khớp trên {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} bị từ chối: {{3}}",
+    "position_stop_loss_fired": "Cắt lỗ đã kích hoạt cho {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Chi tiết cảnh báo",
+    "sourceTopic": "Chủ đề nguồn",
+    "thread": "Luồng",
+    "timestamp": "Thời gian"
+  },
+  "empty": {
+    "message": "Cảnh báo mới sẽ xuất hiện ở đây khi được kích hoạt.",
+    "title": "Không có cảnh báo"
+  },
+  "error": {
+    "loadFailed": "Không thể tải cảnh báo"
+  },
+  "loading": "Đang tải cảnh báo…",
+  "navTitle": "Cảnh báo",
+  "priority": {
+    "high": "Cao",
+    "low": "Thấp",
+    "medium": "Trung bình"
+  },
+  "row": {
+    "swipeDismiss": "Bỏ qua"
+  },
+  "title": {
+    "critical_system_error": "Hệ thống suy giảm: {{0}}",
+    "margin_warning": "Cảnh báo ký quỹ",
+    "order_fill_full": "Lệnh đã khớp",
+    "order_rejected": "Lệnh bị từ chối",
+    "position_stop_loss_fired": "Cắt lỗ đã kích hoạt"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "অ্যালার্টের বিস্তারিত খুলতে দুবার ট্যাপ করুন"
+    },
+    "label": {
+      "dismissButton": "অ্যালার্ট সরান"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "সিস্টেম ত্রুটি",
+    "margin_warning": "মার্জিন সতর্কতা",
+    "order_fill_full": "অর্ডার পূরণ হয়েছে",
+    "order_rejected": "অর্ডার প্রত্যাখ্যাত",
+    "position_stop_loss_fired": "স্টপ-লস ট্রিগার হয়েছে"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} {{2}} রিপোর্ট করেছে {{3}} ধারাবাহিক heartbeat ধরে",
+    "margin_warning": "{{0}} {{1}} {{2}} মার্জিনের কারণে ব্লক হয়েছে: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} {{4}}-এ সম্পন্ন হয়েছে",
+    "order_rejected": "{{0}} {{1}} {{2}} প্রত্যাখ্যাত: {{3}}",
+    "position_stop_loss_fired": "{{0}} ({{1}})-এ স্টপ-লস ট্রিগার হয়েছে"
+  },
+  "detail": {
+    "navTitle": "অ্যালার্টের বিস্তারিত",
+    "sourceTopic": "উৎস টপিক",
+    "thread": "থ্রেড",
+    "timestamp": "টাইমস্ট্যাম্প"
+  },
+  "empty": {
+    "message": "নতুন অ্যালার্ট ট্রিগার হলে এখানে দেখা যাবে।",
+    "title": "কোনো অ্যালার্ট নেই"
+  },
+  "error": {
+    "loadFailed": "অ্যালার্ট লোড করা যায়নি"
+  },
+  "loading": "অ্যালার্ট লোড হচ্ছে…",
+  "navTitle": "অ্যালার্ট",
+  "priority": {
+    "high": "উচ্চ",
+    "low": "নিম্ন",
+    "medium": "মাঝারি"
+  },
+  "row": {
+    "swipeDismiss": "সরান"
+  },
+  "title": {
+    "critical_system_error": "সিস্টেম অবনমিত: {{0}}",
+    "margin_warning": "মার্জিন সতর্কতা",
+    "order_fill_full": "অর্ডার পূরণ হয়েছে",
+    "order_rejected": "অর্ডার প্রত্যাখ্যাত",
+    "position_stop_loss_fired": "স্টপ-লস ট্রিগার হয়েছে"
+  }
+}

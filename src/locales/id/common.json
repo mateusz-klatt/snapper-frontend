@@ -66,18 +66,19 @@
     "tryAgain": "Coba lagi"
   },
   "nav": {
-    "overview": "Ringkasan",
-    "market": "Data pasar",
-    "processes": "Proses",
-    "strategies": "Strategi",
-    "orders": "Pesanan & Eksekusi",
-    "positions": "Posisi",
-    "signals": "Sinyal",
-    "backtests": "Backtest",
-    "health": "Kesehatan",
     "admin": "Administrasi",
     "aiIntegration": "Integrasi AI",
     "aiReviews": "Tinjauan AI",
-    "settings": "Pengaturan"
+    "alerts": "Peringatan",
+    "backtests": "Backtest",
+    "health": "Kesehatan",
+    "market": "Data pasar",
+    "orders": "Pesanan & Eksekusi",
+    "overview": "Ringkasan",
+    "positions": "Posisi",
+    "processes": "Proses",
+    "settings": "Pengaturan",
+    "signals": "Sinyal",
+    "strategies": "Strategi"
   }
 }

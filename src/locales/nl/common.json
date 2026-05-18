@@ -66,18 +66,19 @@
     "tryAgain": "Opnieuw proberen"
   },
   "nav": {
-    "overview": "Overzicht",
-    "market": "Marktdata",
-    "processes": "Processen",
-    "strategies": "Strategieën",
-    "orders": "Orders en executies",
-    "positions": "Posities",
-    "signals": "Signalen",
-    "backtests": "Backtestruns",
-    "health": "Status",
     "admin": "Beheer",
     "aiIntegration": "AI-integratie",
     "aiReviews": "AI-beoordelingen",
-    "settings": "Instellingen"
+    "alerts": "Alerts",
+    "backtests": "Backtestruns",
+    "health": "Status",
+    "market": "Marktdata",
+    "orders": "Orders en executies",
+    "overview": "Overzicht",
+    "positions": "Posities",
+    "processes": "Processen",
+    "settings": "Instellingen",
+    "signals": "Signalen",
+    "strategies": "Strategieën"
   }
 }

@@ -66,18 +66,19 @@
     "tryAgain": "Thử lại"
   },
   "nav": {
-    "overview": "Tổng quan",
-    "market": "Dữ liệu thị trường",
-    "processes": "Tiến trình",
-    "strategies": "Chiến lược",
-    "orders": "Lệnh & Khớp lệnh",
-    "positions": "Vị thế",
-    "signals": "Tín hiệu",
-    "backtests": "Backtest",
-    "health": "Sức khỏe hệ thống",
     "admin": "Quản trị",
     "aiIntegration": "Tích hợp AI",
     "aiReviews": "Duyệt xét AI",
-    "settings": "Cài đặt"
+    "alerts": "Cảnh báo",
+    "backtests": "Backtest",
+    "health": "Sức khỏe hệ thống",
+    "market": "Dữ liệu thị trường",
+    "orders": "Lệnh & Khớp lệnh",
+    "overview": "Tổng quan",
+    "positions": "Vị thế",
+    "processes": "Tiến trình",
+    "settings": "Cài đặt",
+    "signals": "Tín hiệu",
+    "strategies": "Chiến lược"
   }
 }

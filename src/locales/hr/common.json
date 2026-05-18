@@ -66,18 +66,19 @@
     "tryAgain": "Pokušaj ponovno"
   },
   "nav": {
-    "overview": "Pregled",
-    "market": "Tržišni podaci",
-    "processes": "Procesi",
-    "strategies": "Strategije",
-    "orders": "Nalozi i izvršenja",
-    "positions": "Pozicije",
-    "signals": "Signali",
-    "backtests": "Backtestovi",
-    "health": "Zdravlje",
     "admin": "Administracija",
     "aiIntegration": "AI integracija",
     "aiReviews": "AI pregledi",
-    "settings": "Postavke"
+    "alerts": "Upozorenja",
+    "backtests": "Backtestovi",
+    "health": "Zdravlje",
+    "market": "Tržišni podaci",
+    "orders": "Nalozi i izvršenja",
+    "overview": "Pregled",
+    "positions": "Pozicije",
+    "processes": "Procesi",
+    "settings": "Postavke",
+    "signals": "Signali",
+    "strategies": "Strategije"
   }
 }

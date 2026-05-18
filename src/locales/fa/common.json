@@ -66,18 +66,19 @@
     "tryAgain": "دوباره تلاش کنید"
   },
   "nav": {
-    "overview": "نمای کلی",
-    "market": "داده‌های بازار",
-    "processes": "فرایندها",
-    "strategies": "استراتژی‌ها",
-    "orders": "سفارش‌ها و اجراها",
-    "positions": "موقعیت‌ها",
-    "signals": "سیگنال‌ها",
-    "backtests": "بک‌تست‌ها",
-    "health": "سلامت",
     "admin": "مدیریت",
     "aiIntegration": "یکپارچه‌سازی AI",
     "aiReviews": "بازبینی‌های AI",
-    "settings": "تنظیمات"
+    "alerts": "هشدارها",
+    "backtests": "بک‌تست‌ها",
+    "health": "سلامت",
+    "market": "داده‌های بازار",
+    "orders": "سفارش‌ها و اجراها",
+    "overview": "نمای کلی",
+    "positions": "موقعیت‌ها",
+    "processes": "فرایندها",
+    "settings": "تنظیمات",
+    "signals": "سیگنال‌ها",
+    "strategies": "استراتژی‌ها"
   }
 }

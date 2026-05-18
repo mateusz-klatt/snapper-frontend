@@ -66,18 +66,19 @@
     "tryAgain": "Cuba lagi"
   },
   "nav": {
-    "overview": "Gambaran keseluruhan",
-    "market": "Data pasaran",
-    "processes": "Proses",
-    "strategies": "Strategi",
-    "orders": "Pesanan & Pelaksanaan",
-    "positions": "Posisi",
-    "signals": "Isyarat",
-    "backtests": "Backtest",
-    "health": "Kesihatan",
     "admin": "Pentadbiran",
     "aiIntegration": "Integrasi AI",
     "aiReviews": "Semakan AI",
-    "settings": "Tetapan"
+    "alerts": "Amaran",
+    "backtests": "Backtest",
+    "health": "Kesihatan",
+    "market": "Data pasaran",
+    "orders": "Pesanan & Pelaksanaan",
+    "overview": "Gambaran keseluruhan",
+    "positions": "Posisi",
+    "processes": "Proses",
+    "settings": "Tetapan",
+    "signals": "Isyarat",
+    "strategies": "Strategi"
   }
 }

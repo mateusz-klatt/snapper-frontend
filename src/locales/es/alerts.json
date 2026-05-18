@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Toca dos veces para ver los detalles de la alerta"
+    },
+    "label": {
+      "dismissButton": "Descartar alerta"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Error del sistema",
+    "margin_warning": "Aviso de margen",
+    "order_fill_full": "Orden ejecutada",
+    "order_rejected": "Orden rechazada",
+    "position_stop_loss_fired": "Stop loss activado"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} informó {{2}} durante {{3}} heartbeats consecutivos",
+    "margin_warning": "{{0}} {{1}} {{2}} bloqueada por margen: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} ejecutada en {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} rechazada: {{3}}",
+    "position_stop_loss_fired": "Stop loss activado en {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Detalle de alerta",
+    "sourceTopic": "Tema de origen",
+    "thread": "Hilo",
+    "timestamp": "Fecha y hora"
+  },
+  "empty": {
+    "message": "Las nuevas alertas aparecerán aquí cuando se activen.",
+    "title": "Sin alertas"
+  },
+  "error": {
+    "loadFailed": "No se pudieron cargar las alertas"
+  },
+  "loading": "Cargando alertas…",
+  "navTitle": "Alertas",
+  "priority": {
+    "high": "Alta",
+    "low": "Baja",
+    "medium": "Media"
+  },
+  "row": {
+    "swipeDismiss": "Descartar"
+  },
+  "title": {
+    "critical_system_error": "Sistema degradado: {{0}}",
+    "margin_warning": "Aviso de margen",
+    "order_fill_full": "Orden ejecutada",
+    "order_rejected": "Orden rechazada",
+    "position_stop_loss_fired": "Stop loss activado"
+  }
+}

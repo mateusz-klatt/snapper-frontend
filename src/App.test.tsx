@@ -301,6 +301,7 @@ describe('App', () => {
             'signals',
             'backtests',
             'health',
+            'notifications',
             'admin',
             'ai-integration',
             'settings',
@@ -329,6 +330,7 @@ describe('App', () => {
             'signals',
             'backtests',
             'health',
+            'notifications',
             'ai-integration',
             'settings',
           ].includes(resource)

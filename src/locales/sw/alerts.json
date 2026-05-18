@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Gusa mara mbili ili kufungua maelezo ya arifa"
+    },
+    "label": {
+      "dismissButton": "Ondoa arifa"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Hitilafu ya mfumo",
+    "margin_warning": "Onyo la dhamana",
+    "order_fill_full": "Agizo limetekelezwa",
+    "order_rejected": "Agizo limekataliwa",
+    "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} iliripoti {{2}} kwa heartbeat {{3}} mfululizo",
+    "margin_warning": "{{0}} {{1}} {{2}} limezuiwa na dhamana: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} limetekelezwa kwenye {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} limekataliwa: {{3}}",
+    "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa kwa {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Maelezo ya arifa",
+    "sourceTopic": "Mada ya chanzo",
+    "thread": "Mfululizo",
+    "timestamp": "Muda"
+  },
+  "empty": {
+    "message": "Arifa mpya zitaonekana hapa zitakapowashwa.",
+    "title": "Hakuna arifa"
+  },
+  "error": {
+    "loadFailed": "Haikuweza kupakia arifa"
+  },
+  "loading": "Inapakia arifa…",
+  "navTitle": "Arifa",
+  "priority": {
+    "high": "Juu",
+    "low": "Chini",
+    "medium": "Wastani"
+  },
+  "row": {
+    "swipeDismiss": "Ondoa"
+  },
+  "title": {
+    "critical_system_error": "Mfumo umezorota: {{0}}",
+    "margin_warning": "Onyo la dhamana",
+    "order_fill_full": "Agizo limetekelezwa",
+    "order_rejected": "Agizo limekataliwa",
+    "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
+  }
+}
