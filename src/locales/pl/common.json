@@ -66,18 +66,19 @@
     "tryAgain": "Spróbuj ponownie"
   },
   "nav": {
-    "overview": "Przegląd",
-    "market": "Dane rynkowe",
-    "processes": "Procesy",
-    "strategies": "Strategie",
-    "orders": "Zlecenia i transakcje",
-    "positions": "Pozycje",
-    "signals": "Sygnały",
-    "backtests": "Backtesty",
-    "health": "Kondycja",
     "admin": "Administracja",
     "aiIntegration": "Integracja AI",
     "aiReviews": "Weryfikacje AI",
-    "settings": "Ustawienia"
+    "alerts": "Alerty",
+    "backtests": "Backtesty",
+    "health": "Kondycja",
+    "market": "Dane rynkowe",
+    "orders": "Zlecenia i transakcje",
+    "overview": "Przegląd",
+    "positions": "Pozycje",
+    "processes": "Procesy",
+    "settings": "Ustawienia",
+    "signals": "Sygnały",
+    "strategies": "Strategie"
   }
 }

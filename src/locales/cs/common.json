@@ -66,18 +66,19 @@
     "tryAgain": "Zkusit znovu"
   },
   "nav": {
-    "overview": "Přehled",
-    "market": "Tržní data",
-    "processes": "Procesy",
-    "strategies": "Strategie",
-    "orders": "Pokyny a provedení",
-    "positions": "Pozice",
-    "signals": "Signály",
-    "backtests": "Backtesty",
-    "health": "Stav",
     "admin": "Administrace",
     "aiIntegration": "Integrace AI",
     "aiReviews": "Kontroly AI",
-    "settings": "Nastavení"
+    "alerts": "Upozornění",
+    "backtests": "Backtesty",
+    "health": "Stav",
+    "market": "Tržní data",
+    "orders": "Pokyny a provedení",
+    "overview": "Přehled",
+    "positions": "Pozice",
+    "processes": "Procesy",
+    "settings": "Nastavení",
+    "signals": "Signály",
+    "strategies": "Strategie"
   }
 }

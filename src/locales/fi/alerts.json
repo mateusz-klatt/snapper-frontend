@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Avaa hälytyksen tiedot kaksoisnapauttamalla"
+    },
+    "label": {
+      "dismissButton": "Kuittaa hälytys"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Järjestelmävirhe",
+    "margin_warning": "Vakuusvaroitus",
+    "order_fill_full": "Toimeksianto toteutettu",
+    "order_rejected": "Toimeksianto hylätty",
+    "position_stop_loss_fired": "Stop-loss aktivoitui"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} ilmoitti tilan {{2}} {{3}} peräkkäisen heartbeatin ajan",
+    "margin_warning": "{{0}} {{1}} {{2}} estetty vakuusvaatimuksen takia: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} toteutettu pörssissä {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} hylätty: {{3}}",
+    "position_stop_loss_fired": "Stop-loss aktivoitui kohteessa {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Hälytyksen tiedot",
+    "sourceTopic": "Lähdeaihe",
+    "thread": "Säie",
+    "timestamp": "Aikaleima"
+  },
+  "empty": {
+    "message": "Uudet hälytykset näkyvät täällä, kun ne laukeavat.",
+    "title": "Ei hälytyksiä"
+  },
+  "error": {
+    "loadFailed": "Hälytysten lataaminen epäonnistui"
+  },
+  "loading": "Ladataan hälytyksiä…",
+  "navTitle": "Hälytykset",
+  "priority": {
+    "high": "Korkea",
+    "low": "Alhainen",
+    "medium": "Keskitaso"
+  },
+  "row": {
+    "swipeDismiss": "Kuittaa"
+  },
+  "title": {
+    "critical_system_error": "Järjestelmä heikentynyt: {{0}}",
+    "margin_warning": "Vakuusvaroitus",
+    "order_fill_full": "Toimeksianto toteutettu",
+    "order_rejected": "Toimeksianto hylätty",
+    "position_stop_loss_fired": "Stop-loss aktivoitui"
+  }
+}

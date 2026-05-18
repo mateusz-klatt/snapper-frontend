@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "轻点两下打开提醒详情"
+    },
+    "label": {
+      "dismissButton": "忽略提醒"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "系统错误",
+    "margin_warning": "保证金警告",
+    "order_fill_full": "订单已成交",
+    "order_rejected": "订单已拒绝",
+    "position_stop_loss_fired": "止损已触发"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} 报告 {{2}}，已连续 {{3}} 次心跳",
+    "margin_warning": "{{0}} {{1}} {{2}} 因保证金不足被阻止：{{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} 以 ${{3}} 在 {{4}} 成交",
+    "order_rejected": "{{0}} {{1}} {{2}} 已拒绝：{{3}}",
+    "position_stop_loss_fired": "{{0}}（{{1}}）触发止损"
+  },
+  "detail": {
+    "navTitle": "提醒详情",
+    "sourceTopic": "来源主题",
+    "thread": "会话",
+    "timestamp": "时间戳"
+  },
+  "empty": {
+    "message": "新的提醒触发后会显示在这里。",
+    "title": "暂无提醒"
+  },
+  "error": {
+    "loadFailed": "无法加载提醒"
+  },
+  "loading": "正在加载提醒…",
+  "navTitle": "提醒",
+  "priority": {
+    "high": "高",
+    "low": "低",
+    "medium": "中"
+  },
+  "row": {
+    "swipeDismiss": "忽略"
+  },
+  "title": {
+    "critical_system_error": "系统降级：{{0}}",
+    "margin_warning": "保证金警告",
+    "order_fill_full": "订单已成交",
+    "order_rejected": "订单已拒绝",
+    "position_stop_loss_fired": "止损已触发"
+  }
+}

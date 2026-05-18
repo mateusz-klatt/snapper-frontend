@@ -2,6 +2,7 @@ import type { LucideIcon } from 'lucide-react'
 import {
   BarChart3,
   Bell,
+  BellRing,
   ChartCandlestick,
   ClipboardList,
   Gauge,
@@ -25,6 +26,7 @@ type TabType =
   | 'signals'
   | 'backtests'
   | 'health'
+  | 'notifications'
   | 'admin'
   | 'ai-integration'
   | 'ai-reviews'
@@ -39,6 +41,7 @@ type NavLabelKey =
   | 'nav.signals'
   | 'nav.backtests'
   | 'nav.health'
+  | 'nav.alerts'
   | 'nav.admin'
   | 'nav.aiIntegration'
   | 'nav.aiReviews'
@@ -66,6 +69,7 @@ export const ALL_TABS: readonly TabConfig[] = [
   { id: 'signals', label: 'Signals', labelKey: 'nav.signals', icon: Bell },
   { id: 'backtests', label: 'Backtests', labelKey: 'nav.backtests', icon: BarChart3 },
   { id: 'health', label: 'Health', labelKey: 'nav.health', icon: HeartPulse },
+  { id: 'notifications', label: 'Alerts', labelKey: 'nav.alerts', icon: BellRing },
   { id: 'admin', label: 'Administration', labelKey: 'nav.admin', icon: Shield },
   { id: 'ai-integration', label: 'AI Integration', labelKey: 'nav.aiIntegration', icon: Zap },
   { id: 'ai-reviews', label: 'AI Reviews', labelKey: 'nav.aiReviews', icon: Inbox },

@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Uyarı ayrıntılarını açmak için çift dokunun"
+    },
+    "label": {
+      "dismissButton": "Uyarıyı kapat"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Sistem hatası",
+    "margin_warning": "Marjin uyarısı",
+    "order_fill_full": "Emir gerçekleşti",
+    "order_rejected": "Emir reddedildi",
+    "position_stop_loss_fired": "Zarar durdur tetiklendi"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} {{2}} durumunu {{3}} ardışık heartbeat boyunca bildirdi",
+    "margin_warning": "{{0}} {{1}} {{2}} marjin nedeniyle engellendi: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} {{4}} üzerinde gerçekleşti",
+    "order_rejected": "{{0}} {{1}} {{2}} reddedildi: {{3}}",
+    "position_stop_loss_fired": "Zarar durdur {{0}} ({{1}}) için tetiklendi"
+  },
+  "detail": {
+    "navTitle": "Uyarı ayrıntısı",
+    "sourceTopic": "Kaynak konu",
+    "thread": "Konu dizisi",
+    "timestamp": "Zaman damgası"
+  },
+  "empty": {
+    "message": "Yeni uyarılar tetiklendiğinde burada görünecek.",
+    "title": "Uyarı yok"
+  },
+  "error": {
+    "loadFailed": "Uyarılar yüklenemedi"
+  },
+  "loading": "Uyarılar yükleniyor…",
+  "navTitle": "Uyarılar",
+  "priority": {
+    "high": "Yüksek",
+    "low": "Düşük",
+    "medium": "Orta"
+  },
+  "row": {
+    "swipeDismiss": "Kapat"
+  },
+  "title": {
+    "critical_system_error": "Sistem degradasyonu: {{0}}",
+    "margin_warning": "Marjin uyarısı",
+    "order_fill_full": "Emir gerçekleşti",
+    "order_rejected": "Emir reddedildi",
+    "position_stop_loss_fired": "Zarar durdur tetiklendi"
+  }
+}

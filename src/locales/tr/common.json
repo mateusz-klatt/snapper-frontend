@@ -66,18 +66,19 @@
     "tryAgain": "Tekrar dene"
   },
   "nav": {
-    "overview": "Genel Bakış",
-    "market": "Piyasa verileri",
-    "processes": "Süreçler",
-    "strategies": "Stratejiler",
-    "orders": "Emirler ve Gerçekleşmeler",
-    "positions": "Pozisyonlar",
-    "signals": "Sinyaller",
-    "backtests": "Backtestler",
-    "health": "Sağlık",
     "admin": "Yönetim",
     "aiIntegration": "AI Entegrasyonu",
     "aiReviews": "AI İncelemeleri",
-    "settings": "Ayarlar"
+    "alerts": "Uyarılar",
+    "backtests": "Backtestler",
+    "health": "Sağlık",
+    "market": "Piyasa verileri",
+    "orders": "Emirler ve Gerçekleşmeler",
+    "overview": "Genel Bakış",
+    "positions": "Pozisyonlar",
+    "processes": "Süreçler",
+    "settings": "Ayarlar",
+    "signals": "Sinyaller",
+    "strategies": "Stratejiler"
   }
 }

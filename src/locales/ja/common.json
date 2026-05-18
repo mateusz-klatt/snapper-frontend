@@ -66,18 +66,19 @@
     "tryAgain": "再試行"
   },
   "nav": {
-    "overview": "概要",
-    "market": "マーケットデータ",
-    "processes": "プロセス",
-    "strategies": "戦略",
-    "orders": "注文と約定",
-    "positions": "ポジション",
-    "signals": "シグナル",
-    "backtests": "バックテスト",
-    "health": "ヘルス",
     "admin": "管理",
     "aiIntegration": "AI連携",
     "aiReviews": "AIレビュー",
-    "settings": "設定"
+    "alerts": "アラート",
+    "backtests": "バックテスト",
+    "health": "ヘルス",
+    "market": "マーケットデータ",
+    "orders": "注文と約定",
+    "overview": "概要",
+    "positions": "ポジション",
+    "processes": "プロセス",
+    "settings": "設定",
+    "signals": "シグナル",
+    "strategies": "戦略"
   }
 }

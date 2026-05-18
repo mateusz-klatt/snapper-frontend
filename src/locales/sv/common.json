@@ -66,18 +66,19 @@
     "tryAgain": "Försök igen"
   },
   "nav": {
-    "overview": "Översikt",
-    "market": "Marknadsdata",
-    "processes": "Processer",
-    "strategies": "Strategier",
-    "orders": "Ordrar och utföranden",
-    "positions": "Positioner",
-    "signals": "Signaler",
-    "backtests": "Backtester",
-    "health": "Hälsa",
     "admin": "Administration",
     "aiIntegration": "AI-integration",
     "aiReviews": "AI-granskningar",
-    "settings": "Inställningar"
+    "alerts": "Larm",
+    "backtests": "Backtester",
+    "health": "Hälsa",
+    "market": "Marknadsdata",
+    "orders": "Ordrar och utföranden",
+    "overview": "Översikt",
+    "positions": "Positioner",
+    "processes": "Processer",
+    "settings": "Inställningar",
+    "signals": "Signaler",
+    "strategies": "Strategier"
   }
 }

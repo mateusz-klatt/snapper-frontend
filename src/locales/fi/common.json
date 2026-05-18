@@ -66,18 +66,19 @@
     "tryAgain": "Yritä uudelleen"
   },
   "nav": {
-    "overview": "Yleisnäkymä",
-    "market": "Markkinatiedot",
-    "processes": "Prosessit",
-    "strategies": "Strategiat",
-    "orders": "Toimeksiannot ja toteutukset",
-    "positions": "Positiot",
-    "signals": "Signaalit",
-    "backtests": "Backtestit",
-    "health": "Tila",
     "admin": "Hallinta",
     "aiIntegration": "AI-integraatio",
     "aiReviews": "AI-tarkistukset",
-    "settings": "Asetukset"
+    "alerts": "Hälytykset",
+    "backtests": "Backtestit",
+    "health": "Tila",
+    "market": "Markkinatiedot",
+    "orders": "Toimeksiannot ja toteutukset",
+    "overview": "Yleisnäkymä",
+    "positions": "Positiot",
+    "processes": "Prosessit",
+    "settings": "Asetukset",
+    "signals": "Signaalit",
+    "strategies": "Strategiat"
   }
 }

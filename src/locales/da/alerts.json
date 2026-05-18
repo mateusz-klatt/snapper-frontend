@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Dobbelttryk for at åbne alarmdetaljer"
+    },
+    "label": {
+      "dismissButton": "Afvis alarm"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Systemfejl",
+    "margin_warning": "Margin-advarsel",
+    "order_fill_full": "Ordre udført",
+    "order_rejected": "Ordre afvist",
+    "position_stop_loss_fired": "Stop-loss udløst"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} rapporterede {{2}} i {{3}} på hinanden følgende heartbeats",
+    "margin_warning": "{{0}} {{1}} {{2}} blokeret af marginkrav: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} udført på {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} afvist: {{3}}",
+    "position_stop_loss_fired": "Stop-loss udløst for {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Alarmdetaljer",
+    "sourceTopic": "Kildeemne",
+    "thread": "Tråd",
+    "timestamp": "Tidsstempel"
+  },
+  "empty": {
+    "message": "Nye alarmer vises her, når de udløses.",
+    "title": "Ingen alarmer"
+  },
+  "error": {
+    "loadFailed": "Kunne ikke indlæse alarmer"
+  },
+  "loading": "Indlæser alarmer…",
+  "navTitle": "Alarmer",
+  "priority": {
+    "high": "Høj",
+    "low": "Lav",
+    "medium": "Mellem"
+  },
+  "row": {
+    "swipeDismiss": "Afvis"
+  },
+  "title": {
+    "critical_system_error": "System degraderet: {{0}}",
+    "margin_warning": "Margin-advarsel",
+    "order_fill_full": "Ordre udført",
+    "order_rejected": "Ordre afvist",
+    "position_stop_loss_fired": "Stop-loss udløst"
+  }
+}

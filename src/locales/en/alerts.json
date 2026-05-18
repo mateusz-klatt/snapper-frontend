@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Double-tap to open alert details"
+    },
+    "label": {
+      "dismissButton": "Dismiss alert"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "System error",
+    "margin_warning": "Margin warning",
+    "order_fill_full": "Order filled",
+    "order_rejected": "Order rejected",
+    "position_stop_loss_fired": "Stop-loss fired"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} reported {{2}} for {{3}} consecutive heartbeats",
+    "margin_warning": "{{0}} {{1}} {{2}} blocked by margin: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} filled on {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} rejected: {{3}}",
+    "position_stop_loss_fired": "Stop-loss fired on {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Alert detail",
+    "sourceTopic": "Source topic",
+    "thread": "Thread",
+    "timestamp": "Timestamp"
+  },
+  "empty": {
+    "message": "New alerts will appear here when they fire.",
+    "title": "No alerts"
+  },
+  "error": {
+    "loadFailed": "Couldn't load alerts"
+  },
+  "loading": "Loading alerts…",
+  "navTitle": "Alerts",
+  "priority": {
+    "high": "High",
+    "low": "Low",
+    "medium": "Medium"
+  },
+  "row": {
+    "swipeDismiss": "Dismiss"
+  },
+  "title": {
+    "critical_system_error": "System degraded: {{0}}",
+    "margin_warning": "Margin warning",
+    "order_fill_full": "Order filled",
+    "order_rejected": "Order rejected",
+    "position_stop_loss_fired": "Stop-loss fired"
+  }
+}

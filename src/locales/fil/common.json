@@ -66,18 +66,19 @@
     "tryAgain": "Subukan ulit"
   },
   "nav": {
-    "overview": "Pangkalahatang-tingin",
-    "market": "Market Data",
-    "processes": "Mga Proseso",
-    "strategies": "Mga Strategy",
-    "orders": "Mga Order at Execution",
-    "positions": "Mga Position",
-    "signals": "Mga Signal",
-    "backtests": "Mga Backtest",
-    "health": "Kalusugan",
     "admin": "Administrasyon",
     "aiIntegration": "AI Integration",
     "aiReviews": "AI Reviews",
-    "settings": "Mga Setting"
+    "alerts": "Mga Alerto",
+    "backtests": "Mga Backtest",
+    "health": "Kalusugan",
+    "market": "Market Data",
+    "orders": "Mga Order at Execution",
+    "overview": "Pangkalahatang-tingin",
+    "positions": "Mga Position",
+    "processes": "Mga Proseso",
+    "settings": "Mga Setting",
+    "signals": "Mga Signal",
+    "strategies": "Mga Strategy"
   }
 }

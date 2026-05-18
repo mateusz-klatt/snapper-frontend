@@ -66,18 +66,19 @@
     "tryAgain": "फिर कोशिश करें"
   },
   "nav": {
-    "overview": "ओवरव्यू",
-    "market": "बाजार डेटा",
-    "processes": "प्रोसेस",
-    "strategies": "रणनीतियाँ",
-    "orders": "ऑर्डर और निष्पादन",
-    "positions": "पोजीशन",
-    "signals": "सिग्नल",
-    "backtests": "बैकटेस्ट",
-    "health": "हेल्थ",
     "admin": "प्रशासन",
     "aiIntegration": "AI इंटीग्रेशन",
     "aiReviews": "AI समीक्षाएँ",
-    "settings": "सेटिंग्स"
+    "alerts": "अलर्ट",
+    "backtests": "बैकटेस्ट",
+    "health": "हेल्थ",
+    "market": "बाजार डेटा",
+    "orders": "ऑर्डर और निष्पादन",
+    "overview": "ओवरव्यू",
+    "positions": "पोजीशन",
+    "processes": "प्रोसेस",
+    "settings": "सेटिंग्स",
+    "signals": "सिग्नल",
+    "strategies": "रणनीतियाँ"
   }
 }

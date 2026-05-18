@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Atinge de două ori pentru a deschide detaliile alertei"
+    },
+    "label": {
+      "dismissButton": "Închide alerta"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Eroare de sistem",
+    "margin_warning": "Avertisment de marjă",
+    "order_fill_full": "Ordin executat",
+    "order_rejected": "Ordin respins",
+    "position_stop_loss_fired": "Stop-loss declanșat"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} a raportat {{2}} timp de {{3}} heartbeaturi consecutive",
+    "margin_warning": "{{0}} {{1}} {{2}} blocat de marjă: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} executat pe {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} respins: {{3}}",
+    "position_stop_loss_fired": "Stop-loss declanșat pe {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Detalii alertă",
+    "sourceTopic": "Topic sursă",
+    "thread": "Fir",
+    "timestamp": "Marcaj de timp"
+  },
+  "empty": {
+    "message": "Alertele noi vor apărea aici când sunt declanșate.",
+    "title": "Nicio alertă"
+  },
+  "error": {
+    "loadFailed": "Nu s-au putut încărca alertele"
+  },
+  "loading": "Se încarcă alertele…",
+  "navTitle": "Alerte",
+  "priority": {
+    "high": "Ridicată",
+    "low": "Scăzută",
+    "medium": "Medie"
+  },
+  "row": {
+    "swipeDismiss": "Închide"
+  },
+  "title": {
+    "critical_system_error": "Sistem degradat: {{0}}",
+    "margin_warning": "Avertisment de marjă",
+    "order_fill_full": "Ordin executat",
+    "order_rejected": "Ordin respins",
+    "position_stop_loss_fired": "Stop-loss declanșat"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Dubbeltryck för att öppna larmdetaljer"
+    },
+    "label": {
+      "dismissButton": "Avfärda larm"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Systemfel",
+    "margin_warning": "Marginalvarning",
+    "order_fill_full": "Order utförd",
+    "order_rejected": "Order avvisad",
+    "position_stop_loss_fired": "Stop-loss utlöst"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} rapporterade {{2}} under {{3}} på varandra följande heartbeats",
+    "margin_warning": "{{0}} {{1}} {{2}} blockerad av marginalkrav: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} utförd på {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} avvisad: {{3}}",
+    "position_stop_loss_fired": "Stop-loss utlöst för {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Larmdetaljer",
+    "sourceTopic": "Källämne",
+    "thread": "Tråd",
+    "timestamp": "Tidsstämpel"
+  },
+  "empty": {
+    "message": "Nya larm visas här när de utlöses.",
+    "title": "Inga larm"
+  },
+  "error": {
+    "loadFailed": "Kunde inte ladda larm"
+  },
+  "loading": "Laddar larm…",
+  "navTitle": "Larm",
+  "priority": {
+    "high": "Hög",
+    "low": "Låg",
+    "medium": "Medel"
+  },
+  "row": {
+    "swipeDismiss": "Avfärda"
+  },
+  "title": {
+    "critical_system_error": "System degraderat: {{0}}",
+    "margin_warning": "Marginalvarning",
+    "order_fill_full": "Order utförd",
+    "order_rejected": "Order avvisad",
+    "position_stop_loss_fired": "Stop-loss utlöst"
+  }
+}

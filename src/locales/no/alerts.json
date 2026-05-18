@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Dobbelttrykk for å åpne varseldetaljer"
+    },
+    "label": {
+      "dismissButton": "Avvis varsel"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Systemfeil",
+    "margin_warning": "Marginadvarsel",
+    "order_fill_full": "Ordre utført",
+    "order_rejected": "Ordre avvist",
+    "position_stop_loss_fired": "Stop-loss utløst"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} rapporterte {{2}} i {{3}} påfølgende heartbeats",
+    "margin_warning": "{{0}} {{1}} {{2}} blokkert av marginkrav: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} utført på {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} avvist: {{3}}",
+    "position_stop_loss_fired": "Stop-loss utløst for {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Varseldetaljer",
+    "sourceTopic": "Kildetema",
+    "thread": "Tråd",
+    "timestamp": "Tidsstempel"
+  },
+  "empty": {
+    "message": "Nye varsler vises her når de utløses.",
+    "title": "Ingen varsler"
+  },
+  "error": {
+    "loadFailed": "Kunne ikke laste varsler"
+  },
+  "loading": "Laster varsler…",
+  "navTitle": "Varsler",
+  "priority": {
+    "high": "Høy",
+    "low": "Lav",
+    "medium": "Middels"
+  },
+  "row": {
+    "swipeDismiss": "Avvis"
+  },
+  "title": {
+    "critical_system_error": "System degradert: {{0}}",
+    "margin_warning": "Marginadvarsel",
+    "order_fill_full": "Ordre utført",
+    "order_rejected": "Ordre avvist",
+    "position_stop_loss_fired": "Stop-loss utløst"
+  }
+}

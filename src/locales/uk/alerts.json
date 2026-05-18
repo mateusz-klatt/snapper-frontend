@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Двічі торкніться, щоб переглянути деталі сповіщення"
+    },
+    "label": {
+      "dismissButton": "Відхилити сповіщення"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Системна помилка",
+    "margin_warning": "Попередження про маржу",
+    "order_fill_full": "Ордер виконано",
+    "order_rejected": "Ордер відхилено",
+    "position_stop_loss_fired": "Стоп-лос спрацював"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} повідомив {{2}} протягом {{3}} послідовних heartbeatів",
+    "margin_warning": "{{0}} {{1}} {{2}} заблоковано через маржу: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} виконано на {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} відхилено: {{3}}",
+    "position_stop_loss_fired": "Стоп-лос спрацював для {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Деталі сповіщення",
+    "sourceTopic": "Тема джерела",
+    "thread": "Потік",
+    "timestamp": "Час"
+  },
+  "empty": {
+    "message": "Нові сповіщення з'являться тут, коли вони спрацюють.",
+    "title": "Немає сповіщень"
+  },
+  "error": {
+    "loadFailed": "Не вдалося завантажити сповіщення"
+  },
+  "loading": "Завантаження сповіщень…",
+  "navTitle": "Сповіщення",
+  "priority": {
+    "high": "Високий",
+    "low": "Низький",
+    "medium": "Середній"
+  },
+  "row": {
+    "swipeDismiss": "Відхилити"
+  },
+  "title": {
+    "critical_system_error": "Система деградована: {{0}}",
+    "margin_warning": "Попередження про маржу",
+    "order_fill_full": "Ордер виконано",
+    "order_rejected": "Ордер відхилено",
+    "position_stop_loss_fired": "Стоп-лос спрацював"
+  }
+}

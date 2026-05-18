@@ -14,6 +14,7 @@ import type enAiIntegration from '../locales/en/aiIntegration.json'
 import type enAiReviews from '../locales/en/aiReviews.json'
 import type enAdmin from '../locales/en/admin.json'
 import type enSettings from '../locales/en/settings.json'
+import type enAlerts from '../locales/en/alerts.json'
 
 declare module 'i18next' {
   interface CustomTypeOptions {
@@ -34,6 +35,7 @@ declare module 'i18next' {
       aiReviews: typeof enAiReviews
       admin: typeof enAdmin
       settings: typeof enSettings
+      alerts: typeof enAlerts
     }
     keySeparator: '.'
     pluralSeparator: '_'

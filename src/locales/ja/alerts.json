@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "ダブルタップしてアラート詳細を開く"
+    },
+    "label": {
+      "dismissButton": "アラートを閉じる"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "システムエラー",
+    "margin_warning": "証拠金警告",
+    "order_fill_full": "注文約定",
+    "order_rejected": "注文拒否",
+    "position_stop_loss_fired": "ストップロス発動"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} が {{2}} を {{3}} 回連続のハートビートで報告",
+    "margin_warning": "{{0}} {{1}} {{2}} は証拠金によりブロックされました: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} を ${{3}} で {{4}} にて約定",
+    "order_rejected": "{{0}} {{1}} {{2}} は拒否されました: {{3}}",
+    "position_stop_loss_fired": "{{0}}（{{1}}）でストップロス発動"
+  },
+  "detail": {
+    "navTitle": "アラート詳細",
+    "sourceTopic": "送信元トピック",
+    "thread": "スレッド",
+    "timestamp": "日時"
+  },
+  "empty": {
+    "message": "新しいアラートが発動するとここに表示されます。",
+    "title": "アラートなし"
+  },
+  "error": {
+    "loadFailed": "アラートを読み込めませんでした"
+  },
+  "loading": "アラートを読み込み中…",
+  "navTitle": "アラート",
+  "priority": {
+    "high": "高",
+    "low": "低",
+    "medium": "中"
+  },
+  "row": {
+    "swipeDismiss": "閉じる"
+  },
+  "title": {
+    "critical_system_error": "システム劣化: {{0}}",
+    "margin_warning": "証拠金警告",
+    "order_fill_full": "注文約定",
+    "order_rejected": "注文拒否",
+    "position_stop_loss_fired": "ストップロス発動"
+  }
+}

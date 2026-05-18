@@ -66,18 +66,19 @@
     "tryAgain": "Δοκιμάστε ξανά"
   },
   "nav": {
-    "overview": "Επισκόπηση",
-    "market": "Δεδομένα αγοράς",
-    "processes": "Διεργασίες",
-    "strategies": "Στρατηγικές",
-    "orders": "Εντολές και εκτελέσεις",
-    "positions": "Θέσεις",
-    "signals": "Σήματα",
-    "backtests": "Ιστορικοί έλεγχοι",
-    "health": "Υγεία",
     "admin": "Διαχείριση",
     "aiIntegration": "Ενσωμάτωση AI",
     "aiReviews": "Αξιολογήσεις AI",
-    "settings": "Ρυθμίσεις"
+    "alerts": "Ειδοποιήσεις",
+    "backtests": "Ιστορικοί έλεγχοι",
+    "health": "Υγεία",
+    "market": "Δεδομένα αγοράς",
+    "orders": "Εντολές και εκτελέσεις",
+    "overview": "Επισκόπηση",
+    "positions": "Θέσεις",
+    "processes": "Διεργασίες",
+    "settings": "Ρυθμίσεις",
+    "signals": "Σήματα",
+    "strategies": "Στρατηγικές"
   }
 }

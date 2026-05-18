@@ -66,18 +66,19 @@
     "tryAgain": "다시 시도"
   },
   "nav": {
-    "overview": "개요",
-    "market": "시장 데이터",
-    "processes": "프로세스",
-    "strategies": "전략",
-    "orders": "주문 및 체결",
-    "positions": "포지션",
-    "signals": "시그널",
-    "backtests": "백테스트",
-    "health": "상태",
     "admin": "관리",
     "aiIntegration": "AI 연동",
     "aiReviews": "AI 리뷰",
-    "settings": "설정"
+    "alerts": "알림",
+    "backtests": "백테스트",
+    "health": "상태",
+    "market": "시장 데이터",
+    "orders": "주문 및 체결",
+    "overview": "개요",
+    "positions": "포지션",
+    "processes": "프로세스",
+    "settings": "설정",
+    "signals": "시그널",
+    "strategies": "전략"
   }
 }

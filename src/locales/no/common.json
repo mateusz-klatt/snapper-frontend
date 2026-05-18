@@ -66,18 +66,19 @@
     "tryAgain": "Prøv igjen"
   },
   "nav": {
-    "overview": "Oversikt",
-    "market": "Markedsdata",
-    "processes": "Prosesser",
-    "strategies": "Strategier",
-    "orders": "Ordre og utførelser",
-    "positions": "Posisjoner",
-    "signals": "Signaler",
-    "backtests": "Backtester",
-    "health": "Helse",
     "admin": "Administrasjon",
     "aiIntegration": "AI-integrasjon",
     "aiReviews": "AI-gjennomganger",
-    "settings": "Innstillinger"
+    "alerts": "Varsler",
+    "backtests": "Backtester",
+    "health": "Helse",
+    "market": "Markedsdata",
+    "orders": "Ordre og utførelser",
+    "overview": "Oversikt",
+    "positions": "Posisjoner",
+    "processes": "Prosesser",
+    "settings": "Innstillinger",
+    "signals": "Signaler",
+    "strategies": "Strategier"
   }
 }

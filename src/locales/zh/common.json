@@ -66,18 +66,19 @@
     "tryAgain": "重试"
   },
   "nav": {
-    "overview": "概览",
-    "market": "市场数据",
-    "processes": "进程",
-    "strategies": "策略",
-    "orders": "订单和成交",
-    "positions": "持仓",
-    "signals": "信号",
-    "backtests": "回测",
-    "health": "系统健康",
     "admin": "管理",
     "aiIntegration": "AI 集成",
     "aiReviews": "AI 审核",
-    "settings": "设置"
+    "alerts": "提醒",
+    "backtests": "回测",
+    "health": "系统健康",
+    "market": "市场数据",
+    "orders": "订单和成交",
+    "overview": "概览",
+    "positions": "持仓",
+    "processes": "进程",
+    "settings": "设置",
+    "signals": "信号",
+    "strategies": "策略"
   }
 }

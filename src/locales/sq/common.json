@@ -66,18 +66,19 @@
     "tryAgain": "Provo përsëri"
   },
   "nav": {
-    "overview": "Përmbledhje",
-    "market": "Të dhëna tregu",
-    "processes": "Procese",
-    "strategies": "Strategji",
-    "orders": "Urdhra dhe Ekzekutimet",
-    "positions": "Pozicione",
-    "signals": "Sinjale",
-    "backtests": "Testet historike",
-    "health": "Shëndeti",
     "admin": "Administrim",
     "aiIntegration": "Integrimi AI",
     "aiReviews": "Rishikime AI",
-    "settings": "Cilësime"
+    "alerts": "Sinjalizime",
+    "backtests": "Testet historike",
+    "health": "Shëndeti",
+    "market": "Të dhëna tregu",
+    "orders": "Urdhra dhe Ekzekutimet",
+    "overview": "Përmbledhje",
+    "positions": "Pozicione",
+    "processes": "Procese",
+    "settings": "Cilësime",
+    "signals": "Sinjale",
+    "strategies": "Strategji"
   }
 }

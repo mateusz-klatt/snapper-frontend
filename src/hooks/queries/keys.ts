@@ -135,4 +135,11 @@ export const queryKeys = {
   processSummaryAll: ['processes', 'summary'] as const,
   strategiesAll: ['strategies'] as const,
   processRunsAll: ['processes', 'runs'] as const,
+  alertHistory: (
+    asOf: string | null,
+    operatorPublicId: string | null,
+    walletPublicId: string | null
+  ) => ['alerts', 'history', asOf, operatorPublicId, walletPublicId] as const,
+  alertHistoryAll: ['alerts', 'history'] as const,
+  alert: (publicId: string | undefined) => ['alerts', 'detail', publicId] as const,
 }

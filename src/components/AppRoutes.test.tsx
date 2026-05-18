@@ -56,6 +56,9 @@ vi.mock('../features/ai-reviews/AiReviewInbox', () => ({
 vi.mock('../features/settings/Settings', () => ({
   Settings: () => <div data-testid='settings'>Settings Component</div>,
 }))
+vi.mock('../features/notifications/Notifications', () => ({
+  Notifications: () => <div data-testid='notifications'>Notifications Component</div>,
+}))
 const createQueryClient = (): QueryClient =>
   new QueryClient({
     defaultOptions: {
@@ -175,6 +178,12 @@ describe('AppRoutes', () => {
     renderWithProviders(<AppRoutes activeTab='settings' />)
     await waitFor(() => {
       expect(screen.getByTestId('settings')).toBeTruthy()
+    })
+  })
+  it('renders Notifications component for notifications tab', async () => {
+    renderWithProviders(<AppRoutes activeTab='notifications' />)
+    await waitFor(() => {
+      expect(screen.getByTestId('notifications')).toBeTruthy()
     })
   })
   it('renders Overview as default for unknown tab', async () => {

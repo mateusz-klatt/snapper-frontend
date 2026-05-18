@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Stuknij dwukrotnie, aby otworzyć szczegóły alertu"
+    },
+    "label": {
+      "dismissButton": "Odrzuć alert"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Błąd systemu",
+    "margin_warning": "Ostrzeżenie o depozycie zabezpieczającym",
+    "order_fill_full": "Zlecenie zrealizowane",
+    "order_rejected": "Zlecenie odrzucone",
+    "position_stop_loss_fired": "Stop loss aktywowany"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} zgłasza {{2}} przez {{3}} kolejnych heartbeatów",
+    "margin_warning": "{{0}} {{1}} {{2}} zablokowano z powodu depozytu zabezpieczającego: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} zrealizowane na {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} odrzucono: {{3}}",
+    "position_stop_loss_fired": "Stop loss aktywowany dla {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Szczegóły alertu",
+    "sourceTopic": "Temat źródłowy",
+    "thread": "Wątek",
+    "timestamp": "Znacznik czasu"
+  },
+  "empty": {
+    "message": "Nowe alerty pojawią się tutaj po uruchomieniu.",
+    "title": "Brak alertów"
+  },
+  "error": {
+    "loadFailed": "Nie udało się załadować alertów"
+  },
+  "loading": "Ładowanie alertów…",
+  "navTitle": "Alerty",
+  "priority": {
+    "high": "Wysoki",
+    "low": "Niski",
+    "medium": "Średni"
+  },
+  "row": {
+    "swipeDismiss": "Odrzuć"
+  },
+  "title": {
+    "critical_system_error": "Degradacja systemu: {{0}}",
+    "margin_warning": "Ostrzeżenie o depozycie zabezpieczającym",
+    "order_fill_full": "Zlecenie zrealizowane",
+    "order_rejected": "Zlecenie odrzucone",
+    "position_stop_loss_fired": "Stop loss aktywowany"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "अलर्ट विवरण खोलने के लिए डबल-टैप करें"
+    },
+    "label": {
+      "dismissButton": "अलर्ट हटाएं"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "सिस्टम त्रुटि",
+    "margin_warning": "मार्जिन चेतावनी",
+    "order_fill_full": "ऑर्डर पूरा हुआ",
+    "order_rejected": "ऑर्डर अस्वीकृत",
+    "position_stop_loss_fired": "स्टॉप-लॉस ट्रिगर हुआ"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} ने {{2}} को लगातार {{3}} हार्टबीट तक रिपोर्ट किया",
+    "margin_warning": "{{0}} {{1}} {{2}} मार्जिन के कारण ब्लॉक हुआ: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} {{4}} पर पूरा हुआ",
+    "order_rejected": "{{0}} {{1}} {{2}} अस्वीकृत: {{3}}",
+    "position_stop_loss_fired": "{{0}} ({{1}}) पर स्टॉप-लॉस ट्रिगर हुआ"
+  },
+  "detail": {
+    "navTitle": "अलर्ट विवरण",
+    "sourceTopic": "सोर्स टॉपिक",
+    "thread": "थ्रेड",
+    "timestamp": "टाइमस्टैम्प"
+  },
+  "empty": {
+    "message": "नए अलर्ट ट्रिगर होने पर यहां दिखाई देंगे।",
+    "title": "कोई अलर्ट नहीं"
+  },
+  "error": {
+    "loadFailed": "अलर्ट लोड नहीं हो सके"
+  },
+  "loading": "अलर्ट लोड हो रहे हैं…",
+  "navTitle": "अलर्ट",
+  "priority": {
+    "high": "उच्च",
+    "low": "निम्न",
+    "medium": "मध्यम"
+  },
+  "row": {
+    "swipeDismiss": "हटाएं"
+  },
+  "title": {
+    "critical_system_error": "सिस्टम की स्थिति अवनत: {{0}}",
+    "margin_warning": "मार्जिन चेतावनी",
+    "order_fill_full": "ऑर्डर पूरा हुआ",
+    "order_rejected": "ऑर्डर अस्वीकृत",
+    "position_stop_loss_fired": "स्टॉप-लॉस ट्रिगर हुआ"
+  }
+}

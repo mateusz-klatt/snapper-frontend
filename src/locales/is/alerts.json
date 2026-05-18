@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Tvípikkaðu til að opna upplýsingar um viðvörun"
+    },
+    "label": {
+      "dismissButton": "Hunsa viðvörun"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Kerfisvilla",
+    "margin_warning": "Viðvörun um tryggingarfé",
+    "order_fill_full": "Pöntun framkvæmd",
+    "order_rejected": "Pöntun hafnað",
+    "position_stop_loss_fired": "Stop-loss virkjað"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} tilkynnti {{2}} í {{3}} heartbeat-merkjum í röð",
+    "margin_warning": "{{0}} {{1}} {{2}} lokað vegna tryggingarfjár: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} framkvæmt á {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} hafnað: {{3}}",
+    "position_stop_loss_fired": "Stop-loss virkjað fyrir {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Upplýsingar um viðvörun",
+    "sourceTopic": "Upprunarás",
+    "thread": "Þráður",
+    "timestamp": "Tími"
+  },
+  "empty": {
+    "message": "Nýjar viðvaranir birtast hér þegar þær virkjast.",
+    "title": "Engar viðvaranir"
+  },
+  "error": {
+    "loadFailed": "Ekki tókst að hlaða viðvörunum"
+  },
+  "loading": "Hleður viðvörunum…",
+  "navTitle": "Viðvaranir",
+  "priority": {
+    "high": "Hár",
+    "low": "Lágur",
+    "medium": "Miðlungs"
+  },
+  "row": {
+    "swipeDismiss": "Hunsa"
+  },
+  "title": {
+    "critical_system_error": "Kerfi í skertu ástandi: {{0}}",
+    "margin_warning": "Viðvörun um tryggingarfé",
+    "order_fill_full": "Pöntun framkvæmd",
+    "order_rejected": "Pöntun hafnað",
+    "position_stop_loss_fired": "Stop-loss virkjað"
+  }
+}

@@ -66,18 +66,19 @@
     "tryAgain": "Mēģināt vēlreiz"
   },
   "nav": {
-    "overview": "Pārskats",
-    "market": "Tirgus dati",
-    "processes": "Procesi",
-    "strategies": "Stratēģijas",
-    "orders": "Rīkojumi un izpildes",
-    "positions": "Pozīcijas",
-    "signals": "Signāli",
-    "backtests": "Backtesti",
-    "health": "Veselība",
     "admin": "Administrēšana",
     "aiIntegration": "AI integrācija",
     "aiReviews": "AI pārskati",
-    "settings": "Iestatījumi"
+    "alerts": "Brīdinājumi",
+    "backtests": "Backtesti",
+    "health": "Veselība",
+    "market": "Tirgus dati",
+    "orders": "Rīkojumi un izpildes",
+    "overview": "Pārskats",
+    "positions": "Pozīcijas",
+    "processes": "Procesi",
+    "settings": "Iestatījumi",
+    "signals": "Signāli",
+    "strategies": "Stratēģijas"
   }
 }

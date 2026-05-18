@@ -78,6 +78,7 @@ void i18n
       'aiIntegration',
       'aiReviews',
       'admin',
+      'alerts',
       'settings',
     ],
     supportedLngs: [

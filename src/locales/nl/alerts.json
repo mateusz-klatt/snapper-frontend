@@ -1,0 +1,54 @@
+{
+  "accessibility": {
+    "hint": {
+      "row": "Dubbeltik om alertdetails te openen"
+    },
+    "label": {
+      "dismissButton": "Alert sluiten"
+    }
+  },
+  "alertType": {
+    "critical_system_error": "Systeemfout",
+    "margin_warning": "Marginwaarschuwing",
+    "order_fill_full": "Order uitgevoerd",
+    "order_rejected": "Order geweigerd",
+    "position_stop_loss_fired": "Stop-loss geactiveerd"
+  },
+  "body": {
+    "critical_system_error": "{{0}}/{{1}} meldde {{2}} gedurende {{3}} opeenvolgende heartbeats",
+    "margin_warning": "{{0}} {{1}} {{2}} geblokkeerd door margin: {{3}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} uitgevoerd op {{4}}",
+    "order_rejected": "{{0}} {{1}} {{2}} geweigerd: {{3}}",
+    "position_stop_loss_fired": "Stop-loss geactiveerd voor {{0}} ({{1}})"
+  },
+  "detail": {
+    "navTitle": "Alertdetails",
+    "sourceTopic": "Brononderwerp",
+    "thread": "Discussie",
+    "timestamp": "Tijdstempel"
+  },
+  "empty": {
+    "message": "Nieuwe alerts verschijnen hier zodra ze worden geactiveerd.",
+    "title": "Geen alerts"
+  },
+  "error": {
+    "loadFailed": "Kan alerts niet laden"
+  },
+  "loading": "Alerts laden…",
+  "navTitle": "Alerts",
+  "priority": {
+    "high": "Hoog",
+    "low": "Laag",
+    "medium": "Gemiddeld"
+  },
+  "row": {
+    "swipeDismiss": "Sluiten"
+  },
+  "title": {
+    "critical_system_error": "Systeem gedegradeerd: {{0}}",
+    "margin_warning": "Marginwaarschuwing",
+    "order_fill_full": "Order uitgevoerd",
+    "order_rejected": "Order geweigerd",
+    "position_stop_loss_fired": "Stop-loss geactiveerd"
+  }
+}
