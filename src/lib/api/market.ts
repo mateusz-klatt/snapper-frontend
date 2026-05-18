@@ -122,11 +122,7 @@ export async function getCachedPairStats(
 export async function getAllConfiguredPairStats(): Promise<ListedCachedStatsResponse> {
   const data = await apiClient.getJSON('/api/market/cache/stats/configured')
 
-  return validateResponse(
-    data,
-    ListedCachedStatsResponseSchema,
-    '/market/cache/stats/configured'
-  )
+  return validateResponse(data, ListedCachedStatsResponseSchema, '/market/cache/stats/configured')
 }
 
 export async function getCacheHealth(): Promise<CacheHealthResponse> {
