@@ -41,6 +41,18 @@
       "proxy": "Pakaitiniai instrumentai"
     }
   },
+  "description": {
+    "label": "Instrumento aprašymas",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kriptovaliuta",
+    "commodity": "Žaliava",
+    "forex": "Forex",
+    "index": "Indeksas",
+    "yield": "Pajamingumas",
+    "unknown": "Kita"
+  },
   "cacheBanner": {
     "message": "Talpykla šildoma: pasiekiama {{sampleCount}} / {{expected}} žvakių {{sourceLabel}}",
     "sources": {

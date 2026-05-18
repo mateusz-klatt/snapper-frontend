@@ -41,6 +41,18 @@
       "proxy": "Mga proxy instrument"
     }
   },
+  "description": {
+    "label": "Paglalarawan ng instrumento",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Cryptocurrency",
+    "commodity": "Kalakal",
+    "forex": "Forex",
+    "index": "Index",
+    "yield": "Yield",
+    "unknown": "Iba pa"
+  },
   "cacheBanner": {
     "message": "Nagwa-warm up ang cache: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",
     "sources": {

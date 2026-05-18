@@ -41,6 +41,18 @@
       "proxy": "أدوات بديلة"
     }
   },
+  "description": {
+    "label": "وصف الأداة",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "عملة مشفرة",
+    "commodity": "سلعة",
+    "forex": "فوركس",
+    "index": "مؤشر",
+    "yield": "عائد",
+    "unknown": "أخرى"
+  },
   "cacheBanner": {
     "message": "يجري تجهيز التخزين المؤقت: {{sampleCount}} / {{expected}} شموع متاحة {{sourceLabel}}",
     "sources": {

@@ -133,6 +133,53 @@ describe('MarketData', () => {
     renderWithProviders(<MarketData />)
     expect(screen.getByText(/Market Data/i)).toBeInTheDocument()
   })
+  it('renders the instrument description banner between title and controls', async () => {
+    const { useRelatedInstruments } = await import('../../hooks/queries/market')
+
+    vi.mocked(useRelatedInstruments).mockReturnValue({
+      data: {
+        type: 'related_instruments',
+        sequence_id: 0,
+        public_id: 'ri-env-banner',
+        timestamp: '2026-05-18T00:00:00Z',
+        session_id: 'sid',
+        payload: {
+          selected: { exchange: 'kraken', native_symbol: 'EUR-USD' },
+          underlying: {
+            public_id: 'ua-eur',
+            ticker: 'EUR',
+            name: 'Euro',
+            asset_class: 'forex',
+            sector: null,
+            description: null,
+          },
+          groups: [],
+        },
+      },
+      isFetching: false,
+      isError: false,
+    } as never)
+
+    try {
+      renderWithProviders(<MarketData />)
+      const title = screen.getByRole('heading', { name: 'Market Data' })
+      const banner = screen.getByTestId('instrument-description-banner')
+      const exchangeControl = screen.getByLabelText('Exchange:')
+
+      expect(title.compareDocumentPosition(banner) & Node.DOCUMENT_POSITION_FOLLOWING).toBe(
+        Node.DOCUMENT_POSITION_FOLLOWING
+      )
+      expect(
+        banner.compareDocumentPosition(exchangeControl) & Node.DOCUMENT_POSITION_FOLLOWING
+      ).toBe(Node.DOCUMENT_POSITION_FOLLOWING)
+      expect(screen.getByText('Euro · Forex')).toBeInTheDocument()
+    } finally {
+      vi.mocked(useRelatedInstruments).mockReturnValue({
+        data: undefined,
+        isFetching: false,
+      } as never)
+    }
+  })
   it('displays instrument selector', async () => {
     renderWithProviders(<MarketData />)
     await waitFor(() => {
@@ -774,6 +821,7 @@ describe('MarketData', () => {
             name: 'Euro / US Dollar',
             asset_class: 'forex',
             sector: null,
+            description: null,
           },
           groups: [
             {

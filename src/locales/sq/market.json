@@ -41,6 +41,18 @@
       "proxy": "Instrumente proxy"
     }
   },
+  "description": {
+    "label": "Përshkrimi i instrumentit",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kriptomonedhë",
+    "commodity": "Mall",
+    "forex": "Forex",
+    "index": "Indeks",
+    "yield": "Rendiment",
+    "unknown": "Tjetër"
+  },
   "cacheBanner": {
     "message": "Cache po ngrohet: {{sampleCount}} / {{expected}} qirinj të disponueshëm {{sourceLabel}}",
     "sources": {

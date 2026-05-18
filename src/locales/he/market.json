@@ -41,6 +41,18 @@
       "proxy": "מכשירי פרוקסי"
     }
   },
+  "description": {
+    "label": "תיאור המכשיר",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "מטבע קריפטו",
+    "commodity": "סחורה",
+    "forex": "פורקס",
+    "index": "מדד",
+    "yield": "תשואה",
+    "unknown": "אחר"
+  },
   "cacheBanner": {
     "message": "החימום של המטמון מתבצע: {{sampleCount}} / {{expected}} נרות זמינים {{sourceLabel}}",
     "sources": {

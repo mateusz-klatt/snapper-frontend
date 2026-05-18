@@ -41,6 +41,18 @@
       "proxy": "Փոխարինող գործիքներ"
     }
   },
+  "description": {
+    "label": "Գործիքի նկարագրություն",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Կրիպտոարժույթ",
+    "commodity": "Ապրանք",
+    "forex": "Ֆորեքս",
+    "index": "Ինդեքս",
+    "yield": "Եկամտաբերություն",
+    "unknown": "Այլ"
+  },
   "cacheBanner": {
     "message": "Քեշը տաքացվում է՝ հասանելի է {{sampleCount}} / {{expected}} մոմ {{sourceLabel}}",
     "sources": {

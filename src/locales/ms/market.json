@@ -41,6 +41,18 @@
       "proxy": "Instrumen proksi"
     }
   },
+  "description": {
+    "label": "Penerangan instrumen",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Mata wang kripto",
+    "commodity": "Komoditi",
+    "forex": "Forex",
+    "index": "Indeks",
+    "yield": "Hasil",
+    "unknown": "Lain-lain"
+  },
   "cacheBanner": {
     "message": "Cache sedang dipanaskan: {{sampleCount}} / {{expected}} lilin tersedia {{sourceLabel}}",
     "sources": {

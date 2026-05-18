@@ -880,6 +880,7 @@ export interface UnderlyingAsset {
   name: string
   assetClass: string
   sector: string | null
+  description: string | null
   instrumentCount: number
 }
 

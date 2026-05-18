@@ -41,6 +41,18 @@
       "proxy": "Proxyinstrument"
     }
   },
+  "description": {
+    "label": "Instrumentbeskrivning",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kryptovaluta",
+    "commodity": "Råvara",
+    "forex": "Forex",
+    "index": "Index",
+    "yield": "Avkastning",
+    "unknown": "Annat"
+  },
   "cacheBanner": {
     "message": "Cache värms upp: {{sampleCount}} / {{expected}} candles tillgängliga {{sourceLabel}}",
     "sources": {

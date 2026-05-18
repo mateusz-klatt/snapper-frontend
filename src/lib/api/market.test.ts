@@ -218,6 +218,7 @@ describe('market API methods', () => {
             name: 'Bitcoin',
             asset_class: 'crypto',
             sector: null,
+            description: null,
           },
           groups: [
             {

@@ -6,6 +6,7 @@ import { useAuthStore } from './auth'
 import { AppState } from '../types/ui'
 import i18n, { LOCALE_STORAGE_KEY, detectInitialLocale } from '../i18n/config'
 import { getCatalogLanguage } from '../i18n/countryLanguages'
+import { queryKeys } from '../hooks/queries/keys'
 import type { AppLocale } from '../i18n/types'
 import {
   loadStoredFinancialColorPreference,
@@ -35,18 +36,24 @@ const applyLocaleSideEffects = (locale: AppLocale): void => {
   void i18n.changeLanguage(getCatalogLanguage(locale))
 }
 
-const persistDefaultLanguageToBackend = (locale: AppLocale): void => {
+const persistDefaultLanguageToBackend = async (locale: AppLocale): Promise<boolean> => {
   const { isAuthenticated } = useAuthStore.getState()
 
   if (!isAuthenticated) {
-    return
+    return false
   }
 
-  void apiClient
-    .postJSON('/api/auth/me/update', { default_language: getCatalogLanguage(locale) })
-    .catch((error: unknown) => {
-      console.warn('Failed to persist default_language to backend', error)
+  try {
+    await apiClient.postJSON('/api/auth/me/update', {
+      default_language: getCatalogLanguage(locale),
     })
+
+    return true
+  } catch (error: unknown) {
+    console.warn('Failed to persist default_language to backend', error)
+
+    return false
+  }
 }
 
 interface AppStore extends AppState {
@@ -60,7 +67,7 @@ interface AppStore extends AppState {
   setCurrentOperatorPublicId: (id: string | null) => void
   setCurrentWalletPublicId: (id: string | null) => void
   selectWalletAndRefresh: (nextWalletId: string | null) => Promise<void>
-  setLocale: (locale: AppLocale) => void
+  setLocale: (locale: AppLocale) => Promise<void>
   setFinancialColorPreference: (preference: FinancialColorPreference) => void
 }
 
@@ -128,10 +135,14 @@ export const useAppStore = create<AppStore>()(
       set({ currentWalletPublicId: nextWalletId })
       queryClient.invalidateQueries()
     },
-    setLocale: (locale: AppLocale) => {
-      applyLocaleSideEffects(locale)
-      persistDefaultLanguageToBackend(locale)
+    setLocale: async (locale: AppLocale): Promise<void> => {
       set({ locale })
+      applyLocaleSideEffects(locale)
+      const persisted = await persistDefaultLanguageToBackend(locale)
+
+      if (persisted) {
+        queryClient.invalidateQueries({ queryKey: queryKeys.relatedInstrumentsAll })
+      }
     },
     setFinancialColorPreference: (preference: FinancialColorPreference) => {
       storeFinancialColorPreference(preference)

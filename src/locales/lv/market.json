@@ -41,6 +41,18 @@
       "proxy": "Proxy instrumenti"
     }
   },
+  "description": {
+    "label": "Instrumenta apraksts",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kriptovalūta",
+    "commodity": "Prece",
+    "forex": "Forex",
+    "index": "Indekss",
+    "yield": "Ienesīgums",
+    "unknown": "Cits"
+  },
   "cacheBanner": {
     "message": "Kešatmiņa iesilst: pieejamas {{sampleCount}} / {{expected}} sveces {{sourceLabel}}",
     "sources": {

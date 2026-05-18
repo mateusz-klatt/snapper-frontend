@@ -41,6 +41,18 @@
       "proxy": "Proxy nástroje"
     }
   },
+  "description": {
+    "label": "Popis nástroja",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kryptomena",
+    "commodity": "Komodita",
+    "forex": "Forex",
+    "index": "Index",
+    "yield": "Výnos",
+    "unknown": "Ostatné"
+  },
   "cacheBanner": {
     "message": "Cache sa zahrieva: k dispozícii je {{sampleCount}} / {{expected}} sviečok {{sourceLabel}}",
     "sources": {

@@ -41,6 +41,18 @@
       "proxy": "Proxy-instrumentit"
     }
   },
+  "description": {
+    "label": "Instrumentin kuvaus",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kryptovaluutta",
+    "commodity": "Hyödyke",
+    "forex": "Valuutta",
+    "index": "Indeksi",
+    "yield": "Tuotto",
+    "unknown": "Muu"
+  },
   "cacheBanner": {
     "message": "Cache lämpenee: kynttilät {{sampleCount}} / {{expected}} saatavilla {{sourceLabel}}",
     "sources": {

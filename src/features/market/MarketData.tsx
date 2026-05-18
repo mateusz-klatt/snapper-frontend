@@ -7,6 +7,7 @@ import { LightweightChart } from '../../components/LightweightChart'
 import { PairStatsRow } from './PairStatsRow'
 import { RelatedInstrumentsRow } from './RelatedInstrumentsRow'
 import { CacheWarmingBanner } from './CacheWarmingBanner'
+import { InstrumentDescriptionBanner } from './InstrumentDescriptionBanner'
 import {
   useCachedCandles,
   useExchanges,
@@ -211,6 +212,10 @@ export function MarketData() {
           {isSelectedMarketDataOnly && <MarketDataOnlyBadge size='md' />}
         </div>
       </div>
+      <InstrumentDescriptionBanner
+        selectedExchange={selectedExchange}
+        selectedInstrument={selectedInstrument}
+      />
       {}
       <div className='flex flex-wrap items-center gap-4'>
         <div className='flex items-center gap-2'>

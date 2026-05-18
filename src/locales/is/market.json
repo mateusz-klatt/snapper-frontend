@@ -41,6 +41,18 @@
       "proxy": "Staðgenglar"
     }
   },
+  "description": {
+    "label": "Lýsing á gerningi",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Rafmynt",
+    "commodity": "Hrávara",
+    "forex": "Gjaldeyrir",
+    "index": "Vísitala",
+    "yield": "Ávöxtun",
+    "unknown": "Annað"
+  },
   "cacheBanner": {
     "message": "Skyndiminni að hitna: {{sampleCount}} / {{expected}} kerti tiltæk {{sourceLabel}}",
     "sources": {

@@ -41,6 +41,18 @@
       "proxy": "Proxy araçlar"
     }
   },
+  "description": {
+    "label": "Enstrüman açıklaması",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kripto para",
+    "commodity": "Emtia",
+    "forex": "Forex",
+    "index": "Endeks",
+    "yield": "Getiri",
+    "unknown": "Diğer"
+  },
   "cacheBanner": {
     "message": "Önbellek ısınıyor: {{sampleCount}} / {{expected}} mum mevcut {{sourceLabel}}",
     "sources": {

@@ -41,6 +41,18 @@
       "proxy": "Công cụ proxy"
     }
   },
+  "description": {
+    "label": "Mô tả công cụ",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Tiền mã hóa",
+    "commodity": "Hàng hóa",
+    "forex": "Forex",
+    "index": "Chỉ số",
+    "yield": "Lợi suất",
+    "unknown": "Khác"
+  },
   "cacheBanner": {
     "message": "Đang làm nóng cache: đã có {{sampleCount}} / {{expected}} nến {{sourceLabel}}",
     "sources": {
