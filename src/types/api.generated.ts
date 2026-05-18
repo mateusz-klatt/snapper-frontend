@@ -3138,6 +3138,7 @@ export type Components = {
             name: string;
             asset_class: string;
             sector: string | null;
+            description: string | null;
         };
         RelationshipTypeEnum: "exact" | "derivative" | "proxy";
         RestRateData: {
@@ -3545,6 +3546,7 @@ export type Components = {
             name: string;
             asset_class: string;
             sector: string | null;
+            description: string | null;
             instrument_count: number;
         };
         UnderlyingAssetListResponse: {

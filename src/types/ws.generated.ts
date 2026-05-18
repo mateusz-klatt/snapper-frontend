@@ -292,6 +292,7 @@ export type TradeId1 = string | null;
 export type Type41 = "underlying_asset";
 export type Topic42 = string | null;
 export type Sector = string | null;
+export type Description = string | null;
 export type Type42 = "underlying_instrument";
 export type Topic43 = string | null;
 export type ContractFamily3 = string | null;
@@ -1072,6 +1073,7 @@ export interface UnderlyingAssetData {
   name: string;
   asset_class: string;
   sector: Sector;
+  description: Description;
   instrument_count: number;
 }
 export interface UnderlyingInstrumentData {
