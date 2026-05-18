@@ -8,33 +8,7 @@ import {
   createChart,
 } from 'lightweight-charts'
 import { useAppStore } from '../stores/app'
-
-/**
- * Resolve candle up/down colors from the currently-mounted CSS vars.
- *
- * Reads `--color-rising-500` / `--color-falling-500` from
- * `<html>`, which `AppWithAuth.tsx` keeps in sync with the user's
- * financial-color preference (auto-derived from locale or explicit
- * Settings choice). Falls back to the Western hex on the rare race
- * where the document attribute hasn't mounted yet.
- *
- * `lightweight-charts` doesn't consume CSS vars directly — it stores
- * hex on a `CandlestickSeries` via `applyOptions(...)`. This helper
- * is the bridge. Effect below re-runs on any of:
- * isDarkMode (different dark-mode hex) / financialColorPreference /
- * locale (the resolver is locale-aware).
- */
-export function getFinancialChartPalette(): { upColor: string; downColor: string } {
-  if (typeof window === 'undefined') {
-    return { upColor: '#0b8f4d', downColor: '#8b1025' }
-  }
-
-  const style = getComputedStyle(document.documentElement)
-  const upColor = style.getPropertyValue('--color-rising-500').trim() || '#0b8f4d'
-  const downColor = style.getPropertyValue('--color-falling-500').trim() || '#8b1025'
-
-  return { upColor, downColor }
-}
+import { getFinancialChartPalette } from './financialChartPalette'
 
 const LIGHT_THEME = {
   background: '#fdf8f0',

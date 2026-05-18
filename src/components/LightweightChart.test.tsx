@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render } from '@testing-library/react'
-import { LightweightChart, getFinancialChartPalette } from './LightweightChart'
+import { LightweightChart } from './LightweightChart'
+import { getFinancialChartPalette } from './financialChartPalette'
 import { useAppStore } from '../stores/app'
 
 vi.mock('../stores/app', () => ({
@@ -479,6 +480,7 @@ describe('LightweightChart', () => {
 
   it('returns the Western 500 hex from the SSR guard when window is undefined', () => {
     vi.stubGlobal('window', undefined)
+
     try {
       expect(getFinancialChartPalette()).toEqual({ upColor: '#0b8f4d', downColor: '#8b1025' })
     } finally {
