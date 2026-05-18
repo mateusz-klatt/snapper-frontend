@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Convenção de cores financeiras",
+    "auto": "Combinar com minha localidade (auto)",
+    "risingGreen": "Verde = alta, vermelho = baixa (ocidental)",
+    "risingRed": "Vermelho = alta, verde = baixa (convenção do Leste Asiático)",
+    "subtitleRisingGreen": "verde alta / vermelho baixa",
+    "subtitleRisingRed": "vermelho alta / verde baixa",
+    "subtitleAutoCurrent": "Atualmente: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

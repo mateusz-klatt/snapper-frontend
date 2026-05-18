@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Konwencja kolorów finansowych",
+    "auto": "Dopasuj do mojego regionu (auto)",
+    "risingGreen": "Zielony = wzrost, czerwony = spadek (zachodnia)",
+    "risingRed": "Czerwony = wzrost, zielony = spadek (konwencja wschodnioazjatycka)",
+    "subtitleRisingGreen": "zielony wzrost / czerwony spadek",
+    "subtitleRisingRed": "czerwony wzrost / zielony spadek",
+    "subtitleAutoCurrent": "Obecnie: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

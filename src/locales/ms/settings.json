@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Konvensyen warna kewangan",
+    "auto": "Padankan dengan rantau saya (auto)",
+    "risingGreen": "Hijau = naik, merah = turun (Barat)",
+    "risingRed": "Merah = naik, hijau = turun (konvensyen Asia Timur)",
+    "subtitleRisingGreen": "hijau naik / merah turun",
+    "subtitleRisingRed": "merah naik / hijau turun",
+    "subtitleAutoCurrent": "Semasa: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

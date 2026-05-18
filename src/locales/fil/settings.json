@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Kumbensyon ng kulay sa pananalapi",
+    "auto": "Itugma sa rehiyon ko (auto)",
+    "risingGreen": "Berde = taas, pula = baba (Kanluranin)",
+    "risingRed": "Pula = taas, berde = baba (kumbensyon sa Silangang Asya)",
+    "subtitleRisingGreen": "berde taas / pula baba",
+    "subtitleRisingRed": "pula taas / berde baba",
+    "subtitleAutoCurrent": "Kasalukuyan: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

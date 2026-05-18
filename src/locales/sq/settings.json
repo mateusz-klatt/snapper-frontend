@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Skema e ngjyrave financiare",
+    "auto": "Përshtat me rajonin tim (auto)",
+    "risingGreen": "E gjelbër = rritje, e kuqe = rënie (perëndimore)",
+    "risingRed": "E kuqe = rritje, e gjelbër = rënie (konventë e Azisë Lindore)",
+    "subtitleRisingGreen": "e gjelbër rritje / e kuqe rënie",
+    "subtitleRisingRed": "e kuqe rritje / e gjelbër rënie",
+    "subtitleAutoCurrent": "Aktualisht: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

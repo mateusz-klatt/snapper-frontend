@@ -179,7 +179,7 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
               {minLockPct && Number.parseFloat(minLockPct) > 0 ? (
                 <div className='flex justify-between'>
                   <span className='text-muted-500'>{t('trailingStopModal.minLockProfit')}</span>
-                  <span className='font-mono text-gain-400'>
+                  <span className='font-mono text-rising-400'>
                     {Number.parseFloat(minLockPct).toFixed(1)}%
                   </span>
                 </div>

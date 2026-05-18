@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finanšu krāsu shēma",
+    "auto": "Pieskaņot manam reģionam (auto)",
+    "risingGreen": "Zaļš = kāpums, sarkans = kritums (rietumu)",
+    "risingRed": "Sarkans = kāpums, zaļš = kritums (Austrumāzijas konvencija)",
+    "subtitleRisingGreen": "zaļš kāpums / sarkans kritums",
+    "subtitleRisingRed": "sarkans kāpums / zaļš kritums",
+    "subtitleAutoCurrent": "Pašlaik: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finansinių spalvų schema",
+    "auto": "Derinti prie mano regiono (automatiškai)",
+    "risingGreen": "Žalia = kilimas, raudona = kritimas (vakarietiška)",
+    "risingRed": "Raudona = kilimas, žalia = kritimas (Rytų Azijos konvencija)",
+    "subtitleRisingGreen": "žalia kilimas / raudona kritimas",
+    "subtitleRisingRed": "raudona kilimas / žalia kritimas",
+    "subtitleAutoCurrent": "Dabar: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

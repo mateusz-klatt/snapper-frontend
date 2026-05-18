@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "वित्तीय रंग परंपरा",
+    "auto": "मेरे क्षेत्र से मिलाएँ (ऑटो)",
+    "risingGreen": "हरा = ऊपर, लाल = नीचे (पश्चिमी)",
+    "risingRed": "लाल = ऊपर, हरा = नीचे (पूर्वी एशियाई परंपरा)",
+    "subtitleRisingGreen": "हरा ऊपर / लाल नीचे",
+    "subtitleRisingRed": "लाल ऊपर / हरा नीचे",
+    "subtitleAutoCurrent": "वर्तमान: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

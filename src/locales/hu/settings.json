@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Pénzügyi színséma",
+    "auto": "Igazítás a régiómhoz (automatikus)",
+    "risingGreen": "Zöld = emelkedés, piros = csökkenés (nyugati)",
+    "risingRed": "Piros = emelkedés, zöld = csökkenés (kelet-ázsiai konvenció)",
+    "subtitleRisingGreen": "zöld emelkedés / piros csökkenés",
+    "subtitleRisingRed": "piros emelkedés / zöld csökkenés",
+    "subtitleAutoCurrent": "Jelenleg: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

@@ -329,7 +329,7 @@ export function MarketData() {
               <div>
                 <p className='text-sm text-muted-500'>{t('stats.change24h')}</p>
                 <p
-                  className={`text-lg font-semibold ${stats.change >= 0 ? 'text-gain-600' : 'text-loss-600'}`}
+                  className={`text-lg font-semibold ${stats.change >= 0 ? 'text-rising-600' : 'text-falling-600'}`}
                 >
                   {stats.change >= 0 ? '+' : ''}
                   {stats.change.toFixed(5)} ({stats.changePercent.toFixed(2)}%)
@@ -340,13 +340,13 @@ export function MarketData() {
           <Card title={t('stats.high24h')} className='p-4'>
             <div>
               <p className='text-sm text-muted-500'>{t('stats.high24h')}</p>
-              <p className='text-lg font-semibold text-gain-600'>{stats.high24h.toFixed(5)}</p>
+              <p className='text-lg font-semibold text-rising-600'>{stats.high24h.toFixed(5)}</p>
             </div>
           </Card>
           <Card title={t('stats.low24h')} className='p-4'>
             <div>
               <p className='text-sm text-muted-500'>{t('stats.low24h')}</p>
-              <p className='text-lg font-semibold text-loss-600'>{stats.low24h.toFixed(5)}</p>
+              <p className='text-lg font-semibold text-falling-600'>{stats.low24h.toFixed(5)}</p>
             </div>
           </Card>
         </div>

@@ -101,7 +101,7 @@ describe('TradesDiffList', () => {
     const positive = screen.getByText('5.00')
     const negative = screen.getByText('-3.00')
 
-    expect(positive.className).toContain('text-gain-400')
-    expect(negative.className).toContain('text-loss-400')
+    expect(positive.className).toContain('text-rising-400')
+    expect(negative.className).toContain('text-falling-400')
   })
 })

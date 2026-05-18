@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "金融颜色惯例",
+    "auto": "匹配我的地区（自动）",
+    "risingGreen": "绿色 = 上涨，红色 = 下跌（西方）",
+    "risingRed": "红色 = 上涨，绿色 = 下跌",
+    "subtitleRisingGreen": "绿涨 / 红跌",
+    "subtitleRisingRed": "红涨 / 绿跌",
+    "subtitleAutoCurrent": "当前：{{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

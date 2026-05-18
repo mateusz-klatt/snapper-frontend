@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Фінансова колірна схема",
+    "auto": "За моїм регіоном (авто)",
+    "risingGreen": "Зелений = зростання, червоний = падіння (західна)",
+    "risingRed": "Червоний = зростання, зелений = падіння (східноазійська конвенція)",
+    "subtitleRisingGreen": "зелений зростання / червоний падіння",
+    "subtitleRisingRed": "червоний зростання / зелений падіння",
+    "subtitleAutoCurrent": "Зараз: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

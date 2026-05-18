@@ -177,7 +177,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               {slPrice && (
                 <div className='flex justify-between'>
                   <span className='text-muted-500'>{t('bracketModal.stopLoss')}</span>
-                  <span className='font-mono text-loss-400'>
+                  <span className='font-mono text-falling-400'>
                     ${Number.parseFloat(slPrice).toFixed(2)}
                   </span>
                 </div>
@@ -185,7 +185,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               {tpPrice && (
                 <div className='flex justify-between'>
                   <span className='text-muted-500'>{t('bracketModal.takeProfit')}</span>
-                  <span className='font-mono text-gain-400'>
+                  <span className='font-mono text-rising-400'>
                     ${Number.parseFloat(tpPrice).toFixed(2)}
                   </span>
                 </div>

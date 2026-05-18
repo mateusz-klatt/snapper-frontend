@@ -20,7 +20,9 @@ const SignalCard: React.FC<{ signal: Signal }> = ({ signal }) => {
   const asOf = useAppStore(s => s.asOf)
 
   const getSideColor = (side: string) => {
-    return side === 'buy' ? 'text-gain-400 bg-gain-900/20' : 'text-loss-400 bg-loss-900/20'
+    return side === 'buy'
+      ? 'text-rising-400 bg-rising-900/20'
+      : 'text-falling-400 bg-falling-900/20'
   }
 
   const getStrengthColor = (strength: number) => {
@@ -190,11 +192,11 @@ export const Signals: React.FC = () => {
           <div className='text-xs text-muted-500'>{t('stats.total')}</div>
         </div>
         <div className='rounded-xl border border-dark-600 bg-alpine-50 p-4 text-center'>
-          <div className='text-2xl font-bold text-gain-400'>{buySignals}</div>
+          <div className='text-2xl font-bold text-rising-400'>{buySignals}</div>
           <div className='text-xs text-muted-500'>{t('stats.buy')}</div>
         </div>
         <div className='rounded-xl border border-dark-600 bg-alpine-50 p-4 text-center'>
-          <div className='text-2xl font-bold text-loss-400'>{sellSignals}</div>
+          <div className='text-2xl font-bold text-falling-400'>{sellSignals}</div>
           <div className='text-xs text-muted-500'>{t('stats.sell')}</div>
         </div>
         <div className='rounded-xl border border-dark-600 bg-alpine-50 p-4 text-center'>

@@ -133,7 +133,7 @@ describe('Positions', () => {
     const sideBadge = screen.getByTestId('position-side-ETH-USD-kraken-live')
 
     expect(sideBadge).toHaveTextContent('SHORT')
-    expect(sideBadge.className).toContain('text-loss-400')
+    expect(sideBadge.className).toContain('text-falling-400')
     expect(screen.getByText('3.0000')).toBeInTheDocument()
     expect(screen.getByTestId('position-unrealized-ETH-USD-kraken-live')).toHaveTextContent(
       '-$150.00'

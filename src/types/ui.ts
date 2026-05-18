@@ -1,4 +1,5 @@
 import type { AppLocale } from '../i18n/types'
+import type { FinancialColorPreference } from '../theme/financialColorPreference'
 
 export interface AppState {
   isDarkMode: boolean
@@ -11,6 +12,7 @@ export interface AppState {
   currentOperatorPublicId: string | null
   currentWalletPublicId: string | null
   locale: AppLocale
+  financialColorPreference: FinancialColorPreference
 }
 export interface MarketDataState {
   selectedExchange: string | null

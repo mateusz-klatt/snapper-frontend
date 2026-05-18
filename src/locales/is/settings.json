@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Litakerfi fjármála",
+    "auto": "Passa við mitt svæði (sjálfvirkt)",
+    "risingGreen": "Grænt = hækkun, rautt = lækkun (vestrænt)",
+    "risingRed": "Rautt = hækkun, grænt = lækkun (austur-asísk venja)",
+    "subtitleRisingGreen": "grænt hækkun / rautt lækkun",
+    "subtitleRisingRed": "rautt hækkun / grænt lækkun",
+    "subtitleAutoCurrent": "Núna: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

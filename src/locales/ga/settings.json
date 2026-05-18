@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Coinbhinsiún dathanna airgeadais",
+    "auto": "Meaitseáil le mo réigiún (uathoibríoch)",
+    "risingGreen": "Glas = suas, dearg = síos (Iartharach)",
+    "risingRed": "Dearg = suas, glas = síos (coinbhinsiún Oirthear na hÁise)",
+    "subtitleRisingGreen": "glas suas / dearg síos",
+    "subtitleRisingRed": "dearg suas / glas síos",
+    "subtitleAutoCurrent": "Faoi láthair: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

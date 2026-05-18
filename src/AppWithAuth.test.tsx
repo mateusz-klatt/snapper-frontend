@@ -37,7 +37,11 @@ describe('AppWithAuth', () => {
     document.documentElement.classList.remove('dark')
     vi.mocked(stores.useAuthStore.getState).mockReturnValue({ user: null } as never)
     vi.mocked(useAppStore).mockImplementation((selector?: unknown) => {
-      const state = { isDarkMode: false }
+      const state = {
+        isDarkMode: false,
+        locale: 'us' as const,
+        financialColorPreference: 'auto' as const,
+      }
 
       if (typeof selector === 'function') return (selector as (s: typeof state) => unknown)(state)
 
@@ -242,5 +246,113 @@ describe('AppWithAuth', () => {
     await waitFor(() => {
       expect(document.documentElement.classList.contains('dark')).toBe(false)
     })
+  })
+
+  it('mounts data-color-convention="rising-green" for the Western default (us locale, auto preference)', async () => {
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    render(<AppWithAuth />)
+    await waitFor(() => {
+      expect(document.documentElement.dataset.colorConvention).toBe('rising-green')
+    })
+  })
+
+  it('mounts data-color-convention="rising-red" for a Chinese-locale auto user', async () => {
+    vi.mocked(useAppStore).mockImplementation((selector?: unknown) => {
+      const state = {
+        isDarkMode: false,
+        locale: 'cn' as const,
+        financialColorPreference: 'auto' as const,
+      }
+
+      if (typeof selector === 'function') return (selector as (s: typeof state) => unknown)(state)
+
+      return state
+    })
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    render(<AppWithAuth />)
+    await waitFor(() => {
+      expect(document.documentElement.dataset.colorConvention).toBe('rising-red')
+    })
+  })
+
+  it('honors explicit rising-red preference even when locale would default to Western', async () => {
+    vi.mocked(useAppStore).mockImplementation((selector?: unknown) => {
+      const state = {
+        isDarkMode: false,
+        locale: 'us' as const,
+        financialColorPreference: 'rising-red' as const,
+      }
+
+      if (typeof selector === 'function') return (selector as (s: typeof state) => unknown)(state)
+
+      return state
+    })
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    render(<AppWithAuth />)
+    await waitFor(() => {
+      expect(document.documentElement.dataset.colorConvention).toBe('rising-red')
+    })
+  })
+
+  it('honors explicit rising-green preference even when locale would default to Asian', async () => {
+    vi.mocked(useAppStore).mockImplementation((selector?: unknown) => {
+      const state = {
+        isDarkMode: false,
+        locale: 'cn' as const,
+        financialColorPreference: 'rising-green' as const,
+      }
+
+      if (typeof selector === 'function') return (selector as (s: typeof state) => unknown)(state)
+
+      return state
+    })
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    render(<AppWithAuth />)
+    await waitFor(() => {
+      expect(document.documentElement.dataset.colorConvention).toBe('rising-green')
+    })
+  })
+
+  it('sets dark class + color-convention synchronously during render so child useEffects see both', () => {
+    vi.mocked(useAppStore).mockImplementation((selector?: unknown) => {
+      const state = {
+        isDarkMode: true,
+        locale: 'cn' as const,
+        financialColorPreference: 'auto' as const,
+      }
+
+      if (typeof selector === 'function') return (selector as (s: typeof state) => unknown)(state)
+
+      return state
+    })
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    render(<AppWithAuth />)
+    expect(document.documentElement.classList.contains('dark')).toBe(true)
+    expect(document.documentElement.dataset.colorConvention).toBe('rising-red')
   })
 })

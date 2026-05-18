@@ -3,7 +3,15 @@ import { useTranslation } from 'react-i18next'
 import { clsx } from 'clsx'
 
 interface StatusBadgeProps {
-  status: 'connected' | 'disconnected' | 'pending' | 'healthy' | 'stale' | 'error'
+  status:
+    | 'connected'
+    | 'disconnected'
+    | 'pending'
+    | 'healthy'
+    | 'stale'
+    | 'error'
+    | 'rising'
+    | 'falling'
   children: React.ReactNode
   className?: string
 }
@@ -21,6 +29,8 @@ export const StatusBadge: React.FC<Readonly<StatusBadgeProps>> = ({
     error: 'bg-loss-50 text-loss-800 border border-loss-200',
     pending: 'bg-warning-50 text-warning-800 border border-warning-200',
     stale: 'bg-dark-700 text-muted-700 border border-dark-600',
+    rising: 'bg-rising-50 text-rising-800 border border-rising-200',
+    falling: 'bg-falling-50 text-falling-800 border border-falling-200',
   }
 
   return <span className={clsx(baseClasses, statusClasses[status], className)}>{children}</span>

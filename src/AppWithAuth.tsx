@@ -1,23 +1,32 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import App from './App'
 import { AuthenticatedApp } from './components/AuthenticatedApp'
 import AuthErrorBoundary from './components/auth/AuthErrorBoundary'
 import { useAuth, useAuthStore } from './stores/auth'
 import { useAppStore } from './stores/app'
 import { apiClient } from './lib/apiClient'
+import { resolveFinancialColorConvention } from './theme/financialColorPreference'
 
 function AppWithAuth() {
   const { isAuthenticated, refreshToken, silentLogout } = useAuth()
   const isDarkMode = useAppStore(s => s.isDarkMode)
+  const locale = useAppStore(s => s.locale)
+  const financialColorPreference = useAppStore(s => s.financialColorPreference)
   const initialized = useRef(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
   }, [isDarkMode])
+
+  useLayoutEffect(() => {
+    const effective = resolveFinancialColorConvention(financialColorPreference, locale)
+
+    document.documentElement.dataset.colorConvention = effective
+  }, [financialColorPreference, locale])
 
   useEffect(() => {
     if (initialized.current) {

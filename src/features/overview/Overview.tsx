@@ -21,7 +21,7 @@ const runningBadgeStatus = (count: number): 'connected' | 'disconnected' =>
 const countChangeType = (count: number): 'positive' | 'neutral' =>
   count > 0 ? 'positive' : 'neutral'
 
-const sideStatus = (side: string): 'connected' | 'error' => (side === 'buy' ? 'connected' : 'error')
+const sideStatus = (side: string): 'rising' | 'falling' => (side === 'buy' ? 'rising' : 'falling')
 
 const ProcessStatusRow: React.FC<
   Readonly<{ label: string; running: number; total?: number; activeLabel: string }>
@@ -60,7 +60,8 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
   shortCost,
 }) => {
   const { t } = useTranslation('overview')
-  const pnlColorClass = (value: number): string => (value >= 0 ? 'text-gain-600' : 'text-loss-600')
+  const pnlColorClass = (value: number): string =>
+    value >= 0 ? 'text-rising-600' : 'text-falling-600'
   const netDelta = longCost - shortCost
 
   return (
@@ -71,13 +72,16 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
       </div>
       <div className='flex items-center justify-between'>
         <span className='text-sm font-medium'>{t('portfolio.longExposure')}</span>
-        <span className='font-mono text-right text-gain-600' data-testid='overview-long-exposure'>
+        <span className='font-mono text-right text-rising-600' data-testid='overview-long-exposure'>
           ${formatCurrency(longCost)}
         </span>
       </div>
       <div className='flex items-center justify-between'>
         <span className='text-sm font-medium'>{t('portfolio.shortExposure')}</span>
-        <span className='font-mono text-right text-loss-600' data-testid='overview-short-exposure'>
+        <span
+          className='font-mono text-right text-falling-600'
+          data-testid='overview-short-exposure'
+        >
           ${formatCurrency(shortCost)}
         </span>
       </div>
@@ -142,7 +146,7 @@ const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution 
   return (
     <div className='flex items-center justify-between p-2 bg-dark-700 rounded-sm'>
       <div className='flex items-center gap-3'>
-        <StatusBadge status={execution.side === 'sell' ? 'error' : 'connected'}>
+        <StatusBadge status={execution.side === 'sell' ? 'falling' : 'rising'}>
           {execution.side.toUpperCase()}
         </StatusBadge>
         <span className='text-sm font-medium'>{execution.instrument}</span>
