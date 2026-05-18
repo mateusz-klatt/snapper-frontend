@@ -41,6 +41,18 @@
       "proxy": "ตราสารตัวแทน"
     }
   },
+  "description": {
+    "label": "คำอธิบายตราสาร",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "คริปโทเคอร์เรนซี",
+    "commodity": "สินค้าโภคภัณฑ์",
+    "forex": "ฟอเร็กซ์",
+    "index": "ดัชนี",
+    "yield": "ผลตอบแทน",
+    "unknown": "อื่นๆ"
+  },
   "cacheBanner": {
     "message": "กำลังอุ่น cache: มีแท่งเทียน {{sampleCount}} / {{expected}} แท่ง {{sourceLabel}}",
     "sources": {

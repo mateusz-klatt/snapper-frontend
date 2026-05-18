@@ -41,6 +41,18 @@
       "proxy": "Instrumente proxy"
     }
   },
+  "description": {
+    "label": "Descrierea instrumentului",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Criptomonedă",
+    "commodity": "Marfă",
+    "forex": "Forex",
+    "index": "Indice",
+    "yield": "Randament",
+    "unknown": "Altul"
+  },
   "cacheBanner": {
     "message": "Cache în încălzire: {{sampleCount}} / {{expected}} lumânări disponibile {{sourceLabel}}",
     "sources": {

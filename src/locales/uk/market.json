@@ -41,6 +41,18 @@
       "proxy": "Проксі-інструменти"
     }
   },
+  "description": {
+    "label": "Опис інструмента",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Криптовалюта",
+    "commodity": "Товар",
+    "forex": "Форекс",
+    "index": "Індекс",
+    "yield": "Дохідність",
+    "unknown": "Інше"
+  },
   "cacheBanner": {
     "message": "Прогрів кешу: доступно {{sampleCount}} / {{expected}} свічок {{sourceLabel}}",
     "sources": {

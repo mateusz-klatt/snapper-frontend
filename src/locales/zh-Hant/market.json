@@ -41,6 +41,18 @@
       "proxy": "代理資產"
     }
   },
+  "description": {
+    "label": "品種說明",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "加密貨幣",
+    "commodity": "商品",
+    "forex": "外匯",
+    "index": "指數",
+    "yield": "收益率",
+    "unknown": "其他"
+  },
   "cacheBanner": {
     "message": "緩存預熱中: {{sampleCount}} / {{expected}} 根 K 線可用 {{sourceLabel}}",
     "sources": {

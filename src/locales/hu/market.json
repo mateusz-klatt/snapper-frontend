@@ -41,6 +41,18 @@
       "proxy": "Proxy instrumentumok"
     }
   },
+  "description": {
+    "label": "Instrumentum leírása",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kriptovaluta",
+    "commodity": "Árupiaci termék",
+    "forex": "Forex",
+    "index": "Index",
+    "yield": "Hozam",
+    "unknown": "Egyéb"
+  },
   "cacheBanner": {
     "message": "Cache bemelegítése: elérhető gyertyák: {{sampleCount}} / {{expected}} {{sourceLabel}}",
     "sources": {

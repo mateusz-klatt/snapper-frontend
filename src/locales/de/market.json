@@ -41,6 +41,18 @@
       "proxy": "Proxy-Instrumente"
     }
   },
+  "description": {
+    "label": "Instrumentenbeschreibung",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kryptowährung",
+    "commodity": "Rohstoff",
+    "forex": "Devisen",
+    "index": "Index",
+    "yield": "Rendite",
+    "unknown": "Sonstiges"
+  },
   "cacheBanner": {
     "message": "Cache wird aufgewärmt: {{sampleCount}} / {{expected}} Kerzen verfügbar {{sourceLabel}}",
     "sources": {

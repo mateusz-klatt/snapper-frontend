@@ -41,6 +41,18 @@
       "proxy": "ابزارهای جایگزین"
     }
   },
+  "description": {
+    "label": "شرح ابزار",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "رمزارز",
+    "commodity": "کالا",
+    "forex": "فارکس",
+    "index": "شاخص",
+    "yield": "بازده",
+    "unknown": "سایر"
+  },
   "cacheBanner": {
     "message": "گرم‌سازی کش: {{sampleCount}} / {{expected}} کندل در دسترس است {{sourceLabel}}",
     "sources": {

@@ -41,6 +41,18 @@
       "proxy": "代理资产"
     }
   },
+  "description": {
+    "label": "品种说明",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "加密货币",
+    "commodity": "商品",
+    "forex": "外汇",
+    "index": "指数",
+    "yield": "收益率",
+    "unknown": "其他"
+  },
   "cacheBanner": {
     "message": "缓存预热中: {{sampleCount}} / {{expected}} 根K线可用 {{sourceLabel}}",
     "sources": {

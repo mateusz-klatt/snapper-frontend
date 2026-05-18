@@ -56,6 +56,7 @@ function makePayload(
               name: underlying.ticker,
               asset_class: 'crypto',
               sector: null,
+              description: null,
             },
       groups: groups.map(g => ({
         relationship_type: g.relationship_type,

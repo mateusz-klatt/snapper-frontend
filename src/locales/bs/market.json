@@ -41,6 +41,18 @@
       "proxy": "Proksi instrumenti"
     }
   },
+  "description": {
+    "label": "Opis instrumenta",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kriptovaluta",
+    "commodity": "Roba",
+    "forex": "Forex",
+    "index": "Indeks",
+    "yield": "Prinos",
+    "unknown": "Ostalo"
+  },
   "cacheBanner": {
     "message": "Cache se zagrijava: dostupno {{sampleCount}} / {{expected}} svijeća {{sourceLabel}}",
     "sources": {
