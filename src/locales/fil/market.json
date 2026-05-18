@@ -48,5 +48,10 @@
       "derived": "(derived mula sa 1m)",
       "db": "(mula sa DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegrasyon:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Istatistika ng pares kasama ang {{symbol}} sa {{exchange}}: Pearson {{pearson}}, p-value {{pvalue}}"
   }
 }

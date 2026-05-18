@@ -48,5 +48,10 @@
       "derived": "(агрегировано из 1m)",
       "db": "(из БД)"
     }
+  },
+  "pairStats": {
+    "label": "Коинтеграция:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Статистика пары с {{symbol}} на {{exchange}}: Pearson {{pearson}}, p-значение {{pvalue}}"
   }
 }

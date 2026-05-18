@@ -48,5 +48,10 @@
       "derived": "(leitt af 1m)",
       "db": "(úr DB)"
     }
+  },
+  "pairStats": {
+    "label": "Samþætting:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Paratölfræði með {{symbol}} á {{exchange}}: Pearson {{pearson}}, p-gildi {{pvalue}}"
   }
 }

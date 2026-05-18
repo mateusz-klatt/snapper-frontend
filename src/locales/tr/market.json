@@ -48,5 +48,10 @@
       "derived": "(1m'den türetildi)",
       "db": "(DB'den)"
     }
+  },
+  "pairStats": {
+    "label": "Eşbütünleşme:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "{{exchange}} üzerindeki {{symbol}} ile çift istatistikleri: Pearson {{pearson}}, p değeri {{pvalue}}"
   }
 }

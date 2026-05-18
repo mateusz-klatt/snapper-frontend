@@ -48,5 +48,10 @@
       "derived": "(1m থেকে derived)",
       "db": "(DB থেকে)"
     }
+  },
+  "pairStats": {
+    "label": "সহ-সমাকলন:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "{{exchange}}-এ {{symbol}}-এর সঙ্গে জোড়ার পরিসংখ্যান: Pearson {{pearson}}, p-মান {{pvalue}}"
   }
 }

@@ -49,6 +49,8 @@ export const queryKeys = {
     symbolB: string,
     asOf: string | null
   ) => ['market', 'cache', 'stats', exchangeA, symbolA, exchangeB, symbolB, asOf] as const,
+  allConfiguredPairStats: (asOf: string | null) =>
+    ['market', 'cache', 'stats', 'configured', asOf] as const,
   cacheHealth: (asOf: string | null) => ['market', 'cache', 'health', asOf] as const,
   orders: (
     filters?: { symbol?: string; limit?: number; offset?: number },

@@ -48,5 +48,10 @@
       "derived": "(مشتق من 1m)",
       "db": "(من DB)"
     }
+  },
+  "pairStats": {
+    "label": "التكامل المشترك:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "إحصاءات الزوج مع {{symbol}} على {{exchange}}: بيرسون {{pearson}}، قيمة p {{pvalue}}"
   }
 }

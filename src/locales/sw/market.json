@@ -48,5 +48,10 @@
       "derived": "(imetokana na 1m)",
       "db": "(kutoka DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegresha:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Takwimu za jozi na {{symbol}} kwenye {{exchange}}: Pearson {{pearson}}, thamani ya p {{pvalue}}"
   }
 }

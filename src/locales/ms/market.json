@@ -48,5 +48,10 @@
       "derived": "(diterbitkan daripada 1m)",
       "db": "(daripada DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegrasi:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Statistik pasangan dengan {{symbol}} pada {{exchange}}: Pearson {{pearson}}, nilai p {{pvalue}}"
   }
 }

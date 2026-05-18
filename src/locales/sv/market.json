@@ -48,5 +48,10 @@
       "derived": "(härlett från 1m)",
       "db": "(från DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegration:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Parstatistik med {{symbol}} på {{exchange}}: Pearson {{pearson}}, p-värde {{pvalue}}"
   }
 }

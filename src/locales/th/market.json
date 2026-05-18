@@ -48,5 +48,10 @@
       "derived": "(คำนวณจาก 1m)",
       "db": "(จาก DB)"
     }
+  },
+  "pairStats": {
+    "label": "โคอินทิเกรชัน:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "สถิติคู่กับ {{symbol}} บน {{exchange}}: Pearson {{pearson}}, ค่า p {{pvalue}}"
   }
 }

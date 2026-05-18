@@ -48,5 +48,10 @@
       "derived": "(izvedeno iz 1m)",
       "db": "(iz DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegracija:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Statistika para s {{symbol}} na {{exchange}}: Pearson {{pearson}}, p-vrijednost {{pvalue}}"
   }
 }

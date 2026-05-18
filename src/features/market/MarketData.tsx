@@ -4,6 +4,7 @@ import { Card, LoadingSpinner } from '../../components/ui'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
 import { LightweightChart } from '../../components/LightweightChart'
+import { PairStatsRow } from './PairStatsRow'
 import { RelatedInstrumentsRow } from './RelatedInstrumentsRow'
 import { CacheWarmingBanner } from './CacheWarmingBanner'
 import {
@@ -300,6 +301,11 @@ export function MarketData() {
         </div>
       </div>
       <RelatedInstrumentsRow
+        selectedExchange={selectedExchange}
+        selectedInstrument={selectedInstrument}
+        onSelect={({ exchange, symbol }) => setSelectedMarket({ exchange, instrument: symbol })}
+      />
+      <PairStatsRow
         selectedExchange={selectedExchange}
         selectedInstrument={selectedInstrument}
         onSelect={({ exchange, symbol }) => setSelectedMarket({ exchange, instrument: symbol })}

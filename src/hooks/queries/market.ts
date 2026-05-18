@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import {
+  getAllConfiguredPairStats,
   getCachedCandles,
   getCachedPairStats,
   getCacheHealth,
@@ -132,6 +133,20 @@ export const useCachedPairStats = (
     queryKey: queryKeys.cachedPairStats(left, symbolLeft, right, symbolRight, asOf),
     queryFn: () => getCachedPairStats(left, symbolLeft, right, symbolRight),
     enabled: enabled && isAuthenticated && !!exchangeA && !!symbolA && !!exchangeB && !!symbolB,
+    staleTime: 30 * 1000,
+    throwOnError: false,
+    retry: 1,
+  })
+}
+
+export const useAllConfiguredPairStats = (enabled: boolean = true) => {
+  const { isAuthenticated } = useAuth()
+  const asOf = useAppStore(s => s.asOf)
+
+  return useQuery({
+    queryKey: queryKeys.allConfiguredPairStats(asOf),
+    queryFn: getAllConfiguredPairStats,
+    enabled: enabled && isAuthenticated,
     staleTime: 30 * 1000,
     throwOnError: false,
     retry: 1,

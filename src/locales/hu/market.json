@@ -48,5 +48,10 @@
       "derived": "(1m-ből származtatva)",
       "db": "(DB-ből)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegráció:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Párstatisztika a(z) {{symbol}} instrumentummal a(z) {{exchange}} tőzsdén: Pearson {{pearson}}, p-érték {{pvalue}}"
   }
 }

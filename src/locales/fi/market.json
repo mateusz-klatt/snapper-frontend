@@ -48,5 +48,10 @@
       "derived": "(johdettu 1m-datasta)",
       "db": "(DB:stä)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegraatio:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Paritilastot instrumentin {{symbol}} kanssa pörssissä {{exchange}}: Pearson {{pearson}}, p-arvo {{pvalue}}"
   }
 }

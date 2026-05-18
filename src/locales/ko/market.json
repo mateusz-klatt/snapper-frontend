@@ -48,5 +48,10 @@
       "derived": "(1분에서 파생)",
       "db": "(DB에서)"
     }
+  },
+  "pairStats": {
+    "label": "공적분:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "{{exchange}}의 {{symbol}}와의 페어 통계: Pearson {{pearson}}, p값 {{pvalue}}"
   }
 }

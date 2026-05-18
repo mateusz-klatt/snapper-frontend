@@ -1960,6 +1960,18 @@ export const CachedStatsResponseSchema = _CachedStatsResponseRawSchema as unknow
   Components['schemas']['CachedStatsResponse']
 >
 
+const _ListedCachedStatsPayloadRawSchema = z
+  .object({
+    count: z.number().int(),
+    pairs: z.array(CachedStatsPayloadSchema),
+  })
+  .strict()
+
+export const ListedCachedStatsPayloadSchema =
+  _ListedCachedStatsPayloadRawSchema as unknown as z.ZodType<
+    Components['schemas']['ListedCachedStatsPayload']
+  >
+
 const _CandleListResponseRawSchema = z
   .object({
     type: z.literal('candle_list'),
@@ -3477,6 +3489,23 @@ export const CachedCandlesResponseSchema = _CachedCandlesResponseRawSchema as un
   Components['schemas']['CachedCandlesResponse']
 >
 
+const _ListedCachedStatsResponseRawSchema = z
+  .object({
+    type: z.literal('listed_cached_stats'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ListedCachedStatsPayloadSchema,
+  })
+  .strict()
+
+export const ListedCachedStatsResponseSchema =
+  _ListedCachedStatsResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ListedCachedStatsResponse']
+  >
+
 const _HealthCheckDataRawSchema = z
   .object({
     type: z.literal('health_check'),
@@ -4789,6 +4818,7 @@ export type BacktestTradeListResponse = Components['schemas']['BacktestTradeList
 export type CacheHealthResponse = Components['schemas']['CacheHealthResponse']
 export type CachedCandlesPayload = Components['schemas']['CachedCandlesPayload']
 export type CachedStatsResponse = Components['schemas']['CachedStatsResponse']
+export type ListedCachedStatsPayload = Components['schemas']['ListedCachedStatsPayload']
 export type CandleListResponse = Components['schemas']['CandleListResponse']
 export type ContinuousCandleListResponse = Components['schemas']['ContinuousCandleListResponse']
 export type ContractListResponse = Components['schemas']['ContractListResponse']
@@ -4882,6 +4912,7 @@ export type TrailingStopCreateCommand = Components['schemas']['TrailingStopCreat
 export type TrailingStopCancelCommand = Components['schemas']['TrailingStopCancelCommand']
 export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
+export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
 export type HealthCheckData = Components['schemas']['HealthCheckData']
 export type JsonObject = Components['schemas']['JsonObject']
 export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']

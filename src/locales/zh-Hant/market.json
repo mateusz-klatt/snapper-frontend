@@ -48,5 +48,10 @@
       "derived": "(由 1m 衍生)",
       "db": "(來自 DB)"
     }
+  },
+  "pairStats": {
+    "label": "協整:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "與 {{exchange}} 上 {{symbol}} 的配對統計: Pearson {{pearson}}, p 值 {{pvalue}}"
   }
 }

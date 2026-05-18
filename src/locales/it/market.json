@@ -48,5 +48,10 @@
       "derived": "(derivate da 1m)",
       "db": "(da DB)"
     }
+  },
+  "pairStats": {
+    "label": "Cointegrazione:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Statistiche della coppia con {{symbol}} su {{exchange}}: Pearson {{pearson}}, valore p {{pvalue}}"
   }
 }

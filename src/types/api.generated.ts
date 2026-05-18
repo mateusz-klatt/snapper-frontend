@@ -580,6 +580,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/market/cache/stats/configured": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_configured_cached_pair_stats_api_market_cache_stats_configured_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/market/cache/stats/{exchange_a}/{symbol_a}/{exchange_b}/{symbol_b}": {
         parameters: {
             query?: never;
@@ -2605,6 +2621,19 @@ export type Components = {
             rlimit_nproc: number;
             rlimit_nofile: number;
             rlimit_as_bytes: number;
+        };
+        ListedCachedStatsPayload: {
+            count: number;
+            pairs: Components["schemas"]["CachedStatsPayload"][];
+        };
+        ListedCachedStatsResponse: {
+            type: "listed_cached_stats";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["ListedCachedStatsPayload"];
         };
         LoginData: {
             type: "login";
@@ -5479,6 +5508,25 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_configured_cached_pair_stats_api_market_cache_stats_configured_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ListedCachedStatsResponse"];
                 };
             };
         };

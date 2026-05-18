@@ -48,5 +48,10 @@
       "derived": "(נגזר מ-1m)",
       "db": "(מ-DB)"
     }
+  },
+  "pairStats": {
+    "label": "קו-אינטגרציה:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "סטטיסטיקת זוג עם {{symbol}} ב-{{exchange}}: פירסון {{pearson}}, ערך p {{pvalue}}"
   }
 }

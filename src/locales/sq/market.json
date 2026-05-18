@@ -48,5 +48,10 @@
       "derived": "(nxjerrë nga 1m)",
       "db": "(nga DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegrimi:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Statistikat e çiftit me {{symbol}} në {{exchange}}: Pearson {{pearson}}, vlera p {{pvalue}}"
   }
 }

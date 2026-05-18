@@ -48,5 +48,10 @@
       "derived": "(derivat din 1m)",
       "db": "(din DB)"
     }
+  },
+  "pairStats": {
+    "label": "Cointegrare:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Statistici de pereche cu {{symbol}} pe {{exchange}}: Pearson {{pearson}}, valoare p {{pvalue}}"
   }
 }

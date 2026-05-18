@@ -48,5 +48,10 @@
       "derived": "(odvodené z 1m)",
       "db": "(z DB)"
     }
+  },
+  "pairStats": {
+    "label": "Kointegrácia:",
+    "metric": "ρ {{pearson}} · p {{pvalue}}",
+    "chipAriaLabel": "Štatistiky páru s {{symbol}} na burze {{exchange}}: Pearson {{pearson}}, p-hodnota {{pvalue}}"
   }
 }
