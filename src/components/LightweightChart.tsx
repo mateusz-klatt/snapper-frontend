@@ -24,7 +24,7 @@ import { useAppStore } from '../stores/app'
  * isDarkMode (different dark-mode hex) / financialColorPreference /
  * locale (the resolver is locale-aware).
  */
-function getFinancialChartPalette(): { upColor: string; downColor: string } {
+export function getFinancialChartPalette(): { upColor: string; downColor: string } {
   if (typeof window === 'undefined') {
     return { upColor: '#0b8f4d', downColor: '#8b1025' }
   }
