@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finansiell färgkonvention",
+    "auto": "Matcha min region (auto)",
+    "risingGreen": "Grönt = upp, rött = ned (västerländsk)",
+    "risingRed": "Rött = upp, grönt = ned (östasiatisk konvention)",
+    "subtitleRisingGreen": "grönt upp / rött ned",
+    "subtitleRisingRed": "rött upp / grönt ned",
+    "subtitleAutoCurrent": "Aktuellt: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

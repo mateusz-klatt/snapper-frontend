@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Mpangilio wa rangi za fedha",
+    "auto": "Linganishwa na eneo langu (auto)",
+    "risingGreen": "Kijani = juu, nyekundu = chini (Magharibi)",
+    "risingRed": "Nyekundu = juu, kijani = chini (utaratibu wa Asia Mashariki)",
+    "subtitleRisingGreen": "kijani juu / nyekundu chini",
+    "subtitleRisingRed": "nyekundu juu / kijani chini",
+    "subtitleAutoCurrent": "Kwa sasa: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

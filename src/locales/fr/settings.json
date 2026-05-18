@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Code couleur financier",
+    "auto": "Selon ma région (auto)",
+    "risingGreen": "Vert = hausse, rouge = baisse (occidental)",
+    "risingRed": "Rouge = hausse, vert = baisse (convention est-asiatique)",
+    "subtitleRisingGreen": "vert hausse / rouge baisse",
+    "subtitleRisingRed": "rouge hausse / vert baisse",
+    "subtitleAutoCurrent": "Actuellement : {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finansiell fargekonvensjon",
+    "auto": "Tilpass til mitt område (auto)",
+    "risingGreen": "Grønt = opp, rødt = ned (vestlig)",
+    "risingRed": "Rødt = opp, grønt = ned (østasiatisk konvensjon)",
+    "subtitleRisingGreen": "grønt opp / rødt ned",
+    "subtitleRisingRed": "rødt opp / grønt ned",
+    "subtitleAutoCurrent": "Gjeldende: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

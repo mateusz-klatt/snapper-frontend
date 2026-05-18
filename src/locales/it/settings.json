@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Convenzione colori finanziari",
+    "auto": "Abbina alla mia area geografica (auto)",
+    "risingGreen": "Verde = rialzo, rosso = ribasso (occidentale)",
+    "risingRed": "Rosso = rialzo, verde = ribasso (convenzione dell'Asia orientale)",
+    "subtitleRisingGreen": "verde rialzo / rosso ribasso",
+    "subtitleRisingRed": "rosso rialzo / verde ribasso",
+    "subtitleAutoCurrent": "Attualmente: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

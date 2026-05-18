@@ -23,7 +23,7 @@ const formatPct = (t: TFunction<'backtests'>, v: number | null | undefined): str
 const deltaColor = (v: number | null | undefined): string => {
   if (v === null || v === undefined || v === 0) return 'text-muted-400'
 
-  return v > 0 ? 'text-gain-400' : 'text-loss-400'
+  return v > 0 ? 'text-rising-400' : 'text-falling-400'
 }
 
 /**

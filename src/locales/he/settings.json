@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "מוסכמת צבעים פיננסית",
+    "auto": "התאמה לאזור שלי (אוטומטי)",
+    "risingGreen": "ירוק = עלייה, אדום = ירידה (מערבי)",
+    "risingRed": "אדום = עלייה, ירוק = ירידה (מוסכמה מזרח-אסייתית)",
+    "subtitleRisingGreen": "ירוק עלייה / אדום ירידה",
+    "subtitleRisingRed": "אדום עלייה / ירוק ירידה",
+    "subtitleAutoCurrent": "כרגע: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

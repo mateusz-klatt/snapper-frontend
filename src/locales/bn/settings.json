@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "আর্থিক রঙের রীতি",
+    "auto": "আমার অঞ্চলের সঙ্গে মিলান (স্বয়ংক্রিয়)",
+    "risingGreen": "সবুজ = ঊর্ধ্বগতি, লাল = নিম্নগতি (পশ্চিমা)",
+    "risingRed": "লাল = ঊর্ধ্বগতি, সবুজ = নিম্নগতি (পূর্ব এশীয় রীতি)",
+    "subtitleRisingGreen": "সবুজ ঊর্ধ্বগতি / লাল নিম্নগতি",
+    "subtitleRisingRed": "লাল ঊর্ধ্বগতি / সবুজ নিম্নগতি",
+    "subtitleAutoCurrent": "বর্তমানে: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

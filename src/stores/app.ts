@@ -7,6 +7,11 @@ import { AppState } from '../types/ui'
 import i18n, { LOCALE_STORAGE_KEY, detectInitialLocale } from '../i18n/config'
 import { getCatalogLanguage } from '../i18n/countryLanguages'
 import type { AppLocale } from '../i18n/types'
+import {
+  loadStoredFinancialColorPreference,
+  storeFinancialColorPreference,
+  type FinancialColorPreference,
+} from '../theme/financialColorPreference'
 
 const DARK_MODE_KEY = 'snapper-dark-mode'
 
@@ -56,6 +61,7 @@ interface AppStore extends AppState {
   setCurrentWalletPublicId: (id: string | null) => void
   selectWalletAndRefresh: (nextWalletId: string | null) => Promise<void>
   setLocale: (locale: AppLocale) => void
+  setFinancialColorPreference: (preference: FinancialColorPreference) => void
 }
 
 export const useAppStore = create<AppStore>()(
@@ -70,6 +76,7 @@ export const useAppStore = create<AppStore>()(
     currentOperatorPublicId: null,
     currentWalletPublicId: null,
     locale: detectInitialLocale(),
+    financialColorPreference: loadStoredFinancialColorPreference(),
     setConnected: connected => set({ isConnected: connected }),
     setConnectionLag: lag => set({ connectionLag: lag }),
     setSubscribedTopics: topics => set({ subscribedTopics: topics }),
@@ -125,6 +132,10 @@ export const useAppStore = create<AppStore>()(
       applyLocaleSideEffects(locale)
       persistDefaultLanguageToBackend(locale)
       set({ locale })
+    },
+    setFinancialColorPreference: (preference: FinancialColorPreference) => {
+      storeFinancialColorPreference(preference)
+      set({ financialColorPreference: preference })
     },
   }))
 )

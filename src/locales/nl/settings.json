@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Financiële kleurconventie",
+    "auto": "Afstemmen op mijn regio (auto)",
+    "risingGreen": "Groen = omhoog, rood = omlaag (westers)",
+    "risingRed": "Rood = omhoog, groen = omlaag (Oost-Aziatische conventie)",
+    "subtitleRisingGreen": "groen omhoog / rood omlaag",
+    "subtitleRisingRed": "rood omhoog / groen omlaag",
+    "subtitleAutoCurrent": "Momenteel: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

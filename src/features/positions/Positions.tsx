@@ -24,9 +24,9 @@ const getPositionSide = (quantity: number): PositionSide => {
 const getSideBadgeClass = (side: PositionSide): string => {
   switch (side) {
     case 'LONG':
-      return 'text-gain-400 bg-gain-900/20'
+      return 'text-rising-400 bg-rising-900/20'
     case 'SHORT':
-      return 'text-loss-400 bg-loss-900/20'
+      return 'text-falling-400 bg-falling-900/20'
     case 'FLAT':
     default:
       return 'text-muted-400 bg-muted-900/20'
@@ -34,8 +34,8 @@ const getSideBadgeClass = (side: PositionSide): string => {
 }
 
 const getPnlClass = (value: number): string => {
-  if (value > 0) return 'text-gain-400'
-  if (value < 0) return 'text-loss-400'
+  if (value > 0) return 'text-rising-400'
+  if (value < 0) return 'text-falling-400'
 
   return 'text-muted-400'
 }

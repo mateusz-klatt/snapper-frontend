@@ -164,7 +164,7 @@ describe('Overview', () => {
     const netDelta = screen.getByTestId('overview-net-delta')
 
     expect(netDelta).toHaveTextContent('$-6,000.00')
-    expect(netDelta.className).toContain('text-loss-600')
+    expect(netDelta.className).toContain('text-falling-600')
   })
   it('displays running feeds status', async () => {
     const { useProcessSummary } = await import('../../hooks/queries/processes')

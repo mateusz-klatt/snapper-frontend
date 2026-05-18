@@ -60,7 +60,8 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
   shortCost,
 }) => {
   const { t } = useTranslation('overview')
-  const pnlColorClass = (value: number): string => (value >= 0 ? 'text-gain-600' : 'text-loss-600')
+  const pnlColorClass = (value: number): string =>
+    value >= 0 ? 'text-rising-600' : 'text-falling-600'
   const netDelta = longCost - shortCost
 
   return (
@@ -71,13 +72,16 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
       </div>
       <div className='flex items-center justify-between'>
         <span className='text-sm font-medium'>{t('portfolio.longExposure')}</span>
-        <span className='font-mono text-right text-gain-600' data-testid='overview-long-exposure'>
+        <span className='font-mono text-right text-rising-600' data-testid='overview-long-exposure'>
           ${formatCurrency(longCost)}
         </span>
       </div>
       <div className='flex items-center justify-between'>
         <span className='text-sm font-medium'>{t('portfolio.shortExposure')}</span>
-        <span className='font-mono text-right text-loss-600' data-testid='overview-short-exposure'>
+        <span
+          className='font-mono text-right text-falling-600'
+          data-testid='overview-short-exposure'
+        >
           ${formatCurrency(shortCost)}
         </span>
       </div>

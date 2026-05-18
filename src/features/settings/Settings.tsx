@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SettingItem } from './SettingItem'
 import { AddSettingModal } from './AddSettingModal'
+import { FinancialColorPreferencePicker } from './FinancialColorPreferencePicker'
 import { ThemeSelect } from '../../components/ThemeSelect'
 import LocaleSwitcher from '../../components/LocaleSwitcher'
 import {
@@ -164,6 +165,10 @@ export const Settings = () => {
             />
           </div>
         </div>
+      </div>
+      {}
+      <div className='pt-4 pb-4 border-b border-dark-600'>
+        <FinancialColorPreferencePicker />
       </div>
       {}
       <div className='pt-4'>

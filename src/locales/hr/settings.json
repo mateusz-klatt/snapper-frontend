@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Financijska konvencija boja",
+    "auto": "Uskladi s mojom regijom (auto)",
+    "risingGreen": "Zelena = rast, crvena = pad (zapadno)",
+    "risingRed": "Crvena = rast, zelena = pad (istočnoazijska konvencija)",
+    "subtitleRisingGreen": "zelena rast / crvena pad",
+    "subtitleRisingRed": "crvena rast / zelena pad",
+    "subtitleAutoCurrent": "Trenutačno: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Convención de colores financieros",
+    "auto": "Coincidir con mi región (auto)",
+    "risingGreen": "Verde = sube, rojo = baja (occidental)",
+    "risingRed": "Rojo = sube, verde = baja (convención de Asia Oriental)",
+    "subtitleRisingGreen": "verde sube / rojo baja",
+    "subtitleRisingRed": "rojo sube / verde baja",
+    "subtitleAutoCurrent": "Actualmente: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

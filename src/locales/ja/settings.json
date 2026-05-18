@@ -81,6 +81,15 @@
       "null": "（null）"
     }
   },
+  "financialColor": {
+    "title": "金融カラーの慣例",
+    "auto": "ロケールに合わせる（自動）",
+    "risingGreen": "緑 = 上昇、赤 = 下落（欧米式）",
+    "risingRed": "赤 = 上昇、緑 = 下落",
+    "subtitleRisingGreen": "緑上昇 / 赤下落",
+    "subtitleRisingRed": "赤上昇 / 緑下落",
+    "subtitleAutoCurrent": "現在: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

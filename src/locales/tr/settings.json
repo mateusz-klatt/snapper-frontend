@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finansal renk düzeni",
+    "auto": "Yerel ayarımla eşleştir (otomatik)",
+    "risingGreen": "Yeşil = yükseliş, kırmızı = düşüş (Batı)",
+    "risingRed": "Kırmızı = yükseliş, yeşil = düşüş (Doğu Asya geleneği)",
+    "subtitleRisingGreen": "yeşil yükseliş / kırmızı düşüş",
+    "subtitleRisingRed": "kırmızı yükseliş / yeşil düşüş",
+    "subtitleAutoCurrent": "Şu anda: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

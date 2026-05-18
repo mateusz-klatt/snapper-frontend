@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "اصطلاح ألوان الأسواق المالية",
+    "auto": "مطابقة منطقتي (تلقائي)",
+    "risingGreen": "الأخضر = صعود، الأحمر = هبوط (غربي)",
+    "risingRed": "الأحمر = صعود، الأخضر = هبوط (اصطلاح شرق آسيوي)",
+    "subtitleRisingGreen": "أخضر صعود / أحمر هبوط",
+    "subtitleRisingRed": "أحمر صعود / أخضر هبوط",
+    "subtitleAutoCurrent": "حاليًا: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

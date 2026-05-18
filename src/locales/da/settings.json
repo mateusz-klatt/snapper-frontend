@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finansiel farvekonvention",
+    "auto": "Match min region (auto)",
+    "risingGreen": "Grøn = op, rød = ned (vestlig)",
+    "risingRed": "Rød = op, grøn = ned (østasiatisk konvention)",
+    "subtitleRisingGreen": "grøn op / rød ned",
+    "subtitleRisingRed": "rød op / grøn ned",
+    "subtitleAutoCurrent": "Aktuelt: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

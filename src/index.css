@@ -104,6 +104,38 @@
   --color-loss-800: #470813;
   --color-loss-900: #30050d;
 
+  /*
+   * Financial-direction semantic tokens (locale-flippable).
+   *
+   * Defaults to Western convention: rising = green (gain hex),
+   * falling = red (loss hex). Override via the
+   * `[data-color-convention='rising-red']` selector below.
+   *
+   * Keep gain-* / loss-* for severity / error / status — the new
+   * rising-* / falling-* are ONLY for market-direction surfaces.
+   */
+  --color-rising-50: #eefaf4;
+  --color-rising-100: #d6f2e2;
+  --color-rising-200: #b1e5ca;
+  --color-rising-300: #7fd2ab;
+  --color-rising-400: #3cb67a;
+  --color-rising-500: #0b8f4d;
+  --color-rising-600: #08753f;
+  --color-rising-700: #065b31;
+  --color-rising-800: #044425;
+  --color-rising-900: #032f19;
+
+  --color-falling-50: #fdf1f4;
+  --color-falling-100: #f9dfe6;
+  --color-falling-200: #f0bcca;
+  --color-falling-300: #e088a0;
+  --color-falling-400: #c95072;
+  --color-falling-500: #8b1025;
+  --color-falling-600: #760e20;
+  --color-falling-700: #5f0b19;
+  --color-falling-800: #470813;
+  --color-falling-900: #30050d;
+
   --color-warning-50: #fff8eb;
   --color-warning-100: #fcebc7;
   --color-warning-200: #f7d896;
@@ -163,6 +195,38 @@
     'Twemoji Country Flags', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     sans-serif;
   --font-mono: 'JetBrains Mono', Monaco, Menlo, Consolas, monospace;
+}
+
+/*
+ * Asian financial convention override (light mode).
+ *
+ * Mounted on <html> by AppWithAuth.tsx as `data-color-convention=
+ * "rising-red"` when the resolved preference (locale-derived or
+ * explicit Settings choice) inverts the Western palette. Swaps
+ * the rising/falling stops with the loss/gain hex respectively.
+ */
+[data-color-convention='rising-red'] {
+  --color-rising-50: #fdf1f4;
+  --color-rising-100: #f9dfe6;
+  --color-rising-200: #f0bcca;
+  --color-rising-300: #e088a0;
+  --color-rising-400: #c95072;
+  --color-rising-500: #8b1025;
+  --color-rising-600: #760e20;
+  --color-rising-700: #5f0b19;
+  --color-rising-800: #470813;
+  --color-rising-900: #30050d;
+
+  --color-falling-50: #eefaf4;
+  --color-falling-100: #d6f2e2;
+  --color-falling-200: #b1e5ca;
+  --color-falling-300: #7fd2ab;
+  --color-falling-400: #3cb67a;
+  --color-falling-500: #0b8f4d;
+  --color-falling-600: #08753f;
+  --color-falling-700: #065b31;
+  --color-falling-800: #044425;
+  --color-falling-900: #032f19;
 }
 
 @layer base {
@@ -309,6 +373,15 @@ html.dark {
   --color-loss-100: #3a1520;
   --color-loss-200: #5a1a2e;
 
+  /* Dark-mode rising/falling: mirror the existing dark gain/loss stops */
+  --color-rising-50: #0e2818;
+  --color-rising-100: #143820;
+  --color-rising-200: #1a4a2a;
+
+  --color-falling-50: #2a1018;
+  --color-falling-100: #3a1520;
+  --color-falling-200: #5a1a2e;
+
   --color-brand-600: #f33b5e;
   --color-brand-700: #ff8197;
   --color-brand-800: #ffb7c4;
@@ -325,6 +398,15 @@ html.dark {
   --color-loss-700: #e088a0;
   --color-loss-800: #f0bcca;
 
+  /* Dark-mode rising/falling 600-800 stops */
+  --color-rising-600: #3cb67a;
+  --color-rising-700: #7fd2ab;
+  --color-rising-800: #b1e5ca;
+
+  --color-falling-600: #c95072;
+  --color-falling-700: #e088a0;
+  --color-falling-800: #f0bcca;
+
   --color-warning-50: #2a1e08;
   --color-warning-100: #3a2a10;
   --color-warning-200: #4a3618;
@@ -334,4 +416,29 @@ html.dark {
   --color-info-50: #0d1117;
   --color-info-100: #131b22;
   --color-info-200: #1a2530;
+}
+
+/*
+ * Dark mode + Asian convention (rising-red).
+ *
+ * Swaps the dark-mode rising/falling stops the same way the
+ * light-mode `[data-color-convention='rising-red']` selector does.
+ * Both attribute selectors are needed because Tailwind v4's CSS-var
+ * model doesn't compose attribute selectors with `html.dark`
+ * automatically.
+ */
+html.dark[data-color-convention='rising-red'] {
+  --color-rising-50: #2a1018;
+  --color-rising-100: #3a1520;
+  --color-rising-200: #5a1a2e;
+  --color-rising-600: #c95072;
+  --color-rising-700: #e088a0;
+  --color-rising-800: #f0bcca;
+
+  --color-falling-50: #0e2818;
+  --color-falling-100: #143820;
+  --color-falling-200: #1a4a2a;
+  --color-falling-600: #3cb67a;
+  --color-falling-700: #7fd2ab;
+  --color-falling-800: #b1e5ca;
 }

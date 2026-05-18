@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "金融顏色慣例",
+    "auto": "符合我的地區（自動）",
+    "risingGreen": "綠色 = 上漲，紅色 = 下跌（西方）",
+    "risingRed": "紅色 = 上漲，綠色 = 下跌",
+    "subtitleRisingGreen": "綠漲 / 紅跌",
+    "subtitleRisingRed": "紅漲 / 綠跌",
+    "subtitleAutoCurrent": "目前：{{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

@@ -307,7 +307,7 @@ describe('MarketData', () => {
       const changeElement = screen.getByText(/\+0\.00500/)
 
       expect(changeElement).toBeInTheDocument()
-      expect(changeElement).toHaveClass('text-gain-600')
+      expect(changeElement).toHaveClass('text-rising-600')
     })
   })
   it('displays negative change with red color', async () => {
@@ -329,7 +329,7 @@ describe('MarketData', () => {
       const changeElement = screen.getByText(/-0\.00500/)
 
       expect(changeElement).toBeInTheDocument()
-      expect(changeElement).toHaveClass('text-loss-600')
+      expect(changeElement).toHaveClass('text-falling-600')
     })
   })
   it('displays error message when error occurs', async () => {

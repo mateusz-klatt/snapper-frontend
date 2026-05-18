@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Talouden värikäytäntö",
+    "auto": "Sovita omaan alueeseen (auto)",
+    "risingGreen": "Vihreä = ylös, punainen = alas (länsimainen)",
+    "risingRed": "Punainen = ylös, vihreä = alas (itäaasialainen käytäntö)",
+    "subtitleRisingGreen": "vihreä ylös / punainen alas",
+    "subtitleRisingRed": "punainen ylös / vihreä alas",
+    "subtitleAutoCurrent": "Tällä hetkellä: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

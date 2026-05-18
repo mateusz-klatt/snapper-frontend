@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "ဘဏ္ဍာရေးအရောင် စနစ်",
+    "auto": "ကျွန်ုပ်၏ ဒေသနှင့် ကိုက်ညီစေ (အလိုအလျောက်)",
+    "risingGreen": "အစိမ်း = တက်, အနီ = ကျ (အနောက်တိုင်း)",
+    "risingRed": "အနီ = တက်, အစိမ်း = ကျ (အရှေ့အာရှ စနစ်)",
+    "subtitleRisingGreen": "အစိမ်း တက် / အနီ ကျ",
+    "subtitleRisingRed": "အနီ တက် / အစိမ်း ကျ",
+    "subtitleAutoCurrent": "လက်ရှိ: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

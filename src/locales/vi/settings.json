@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Quy ước màu tài chính",
+    "auto": "Khớp với khu vực của tôi (tự động)",
+    "risingGreen": "Xanh lá = tăng, đỏ = giảm (phương Tây)",
+    "risingRed": "Đỏ = tăng, xanh lá = giảm (quy ước Đông Á)",
+    "subtitleRisingGreen": "xanh lá tăng / đỏ giảm",
+    "subtitleRisingRed": "đỏ tăng / xanh lá giảm",
+    "subtitleAutoCurrent": "Hiện tại: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

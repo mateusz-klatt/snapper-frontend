@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Ֆինանսական գույների պայմանականություն",
+    "auto": "Համապատասխանեցնել իմ տարածաշրջանին (ավտոմատ)",
+    "risingGreen": "Կանաչ = աճ, կարմիր = անկում (արևմտյան)",
+    "risingRed": "Կարմիր = աճ, կանաչ = անկում (արևելաասիական պայմանականություն)",
+    "subtitleRisingGreen": "կանաչ աճ / կարմիր անկում",
+    "subtitleRisingRed": "կարմիր աճ / կանաչ անկում",
+    "subtitleAutoCurrent": "Ներկա պահին՝ {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Convenția culorilor financiare",
+    "auto": "Potrivește cu regiunea mea (auto)",
+    "risingGreen": "Verde = creștere, roșu = scădere (occidental)",
+    "risingRed": "Roșu = creștere, verde = scădere (convenție est-asiatică)",
+    "subtitleRisingGreen": "verde creștere / roșu scădere",
+    "subtitleRisingRed": "roșu creștere / verde scădere",
+    "subtitleAutoCurrent": "În prezent: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

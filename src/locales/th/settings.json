@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "รูปแบบสีทางการเงิน",
+    "auto": "ตรงกับภูมิภาคของฉัน (อัตโนมัติ)",
+    "risingGreen": "สีเขียว = ขึ้น, สีแดง = ลง (ตะวันตก)",
+    "risingRed": "สีแดง = ขึ้น, สีเขียว = ลง (ธรรมเนียมเอเชียตะวันออก)",
+    "subtitleRisingGreen": "เขียวขึ้น / แดงลง",
+    "subtitleRisingRed": "แดงขึ้น / เขียวลง",
+    "subtitleAutoCurrent": "ปัจจุบัน: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

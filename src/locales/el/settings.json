@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Σύμβαση χρωμάτων χρηματοοικονομικών",
+    "auto": "Ταίριασμα με την περιοχή μου (αυτόματο)",
+    "risingGreen": "Πράσινο = άνοδος, κόκκινο = πτώση (δυτική)",
+    "risingRed": "Κόκκινο = άνοδος, πράσινο = πτώση (σύμβαση Ανατολικής Ασίας)",
+    "subtitleRisingGreen": "πράσινο άνοδος / κόκκινο πτώση",
+    "subtitleRisingRed": "κόκκινο άνοδος / πράσινο πτώση",
+    "subtitleAutoCurrent": "Τρέχον: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

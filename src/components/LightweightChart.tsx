@@ -9,6 +9,33 @@ import {
 } from 'lightweight-charts'
 import { useAppStore } from '../stores/app'
 
+/**
+ * Resolve candle up/down colors from the currently-mounted CSS vars.
+ *
+ * Reads `--color-rising-500` / `--color-falling-500` from
+ * `<html>`, which `AppWithAuth.tsx` keeps in sync with the user's
+ * financial-color preference (auto-derived from locale or explicit
+ * Settings choice). Falls back to the Western hex on the rare race
+ * where the document attribute hasn't mounted yet.
+ *
+ * `lightweight-charts` doesn't consume CSS vars directly — it stores
+ * hex on a `CandlestickSeries` via `applyOptions(...)`. This helper
+ * is the bridge. Effect below re-runs on any of:
+ * isDarkMode (different dark-mode hex) / financialColorPreference /
+ * locale (the resolver is locale-aware).
+ */
+function getFinancialChartPalette(): { upColor: string; downColor: string } {
+  if (typeof window === 'undefined') {
+    return { upColor: '#3cb67a', downColor: '#d8062a' }
+  }
+
+  const style = getComputedStyle(document.documentElement)
+  const upColor = style.getPropertyValue('--color-rising-500').trim() || '#3cb67a'
+  const downColor = style.getPropertyValue('--color-falling-500').trim() || '#d8062a'
+
+  return { upColor, downColor }
+}
+
 const LIGHT_THEME = {
   background: '#fdf8f0',
   text: '#6f695f',
@@ -40,12 +67,15 @@ export const LightweightChart = ({
   const chartRef = useRef<IChartApi | null>(null)
   const seriesRef = useRef<ISeriesApi<'Candlestick'> | null>(null)
   const isDarkMode = useAppStore(s => s.isDarkMode)
+  const financialColorPreference = useAppStore(s => s.financialColorPreference)
+  const locale = useAppStore(s => s.locale)
 
   useEffect(() => {
     if (!chartContainerRef.current) {
       return
     }
 
+    const palette = getFinancialChartPalette()
     const chart = createChart(chartContainerRef.current, {
       width: width || chartContainerRef.current.clientWidth,
       height,
@@ -71,12 +101,12 @@ export const LightweightChart = ({
       },
     })
     const candlestickSeries = chart.addSeries(CandlestickSeries, {
-      upColor: '#3cb67a',
-      downColor: '#d8062a',
-      borderUpColor: '#3cb67a',
-      borderDownColor: '#d8062a',
-      wickUpColor: '#3cb67a',
-      wickDownColor: '#d8062a',
+      upColor: palette.upColor,
+      downColor: palette.downColor,
+      borderUpColor: palette.upColor,
+      borderDownColor: palette.downColor,
+      wickUpColor: palette.upColor,
+      wickDownColor: palette.downColor,
     })
 
     chartRef.current = chart
@@ -135,6 +165,34 @@ export const LightweightChart = ({
       },
     })
   }, [isDarkMode])
+  useEffect(() => {
+    if (!seriesRef.current) {
+      return
+    }
+
+    /*
+     * Re-apply candle palette on any change to:
+     * - isDarkMode (different dark-mode hex stops)
+     * - financialColorPreference (explicit Western/Asian choice)
+     * - locale (auto-default flip on cn/hk/jp/kr)
+     *
+     * The palette helper reads computed CSS vars set on <html> by
+     * AppWithAuth.tsx — those vars switch via the
+     * [data-color-convention] attribute selector, so calling
+     * applyOptions here picks up the new hex without re-running
+     * the resolver directly.
+     */
+    const palette = getFinancialChartPalette()
+
+    seriesRef.current.applyOptions({
+      upColor: palette.upColor,
+      downColor: palette.downColor,
+      borderUpColor: palette.upColor,
+      borderDownColor: palette.downColor,
+      wickUpColor: palette.upColor,
+      wickDownColor: palette.downColor,
+    })
+  }, [isDarkMode, financialColorPreference, locale])
   useEffect(() => {
     if (!seriesRef.current || !chartRef.current) {
       return

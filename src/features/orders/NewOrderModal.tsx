@@ -269,7 +269,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 <span className='text-muted-500'>{t('newOrderModal.fields.side')}</span>
                 <span
                   className={
-                    side === 'buy' ? 'text-gain-400 font-medium' : 'text-loss-400 font-medium'
+                    side === 'buy' ? 'text-rising-400 font-medium' : 'text-falling-400 font-medium'
                   }
                 >
                   {t(`newOrderModal.sideOptions.${side}`, { defaultValue: side.toUpperCase() })}

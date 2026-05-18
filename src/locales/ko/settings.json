@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "금융 색상 관례",
+    "auto": "내 지역 설정에 맞춤(자동)",
+    "risingGreen": "초록색 = 상승, 빨간색 = 하락(서구식)",
+    "risingRed": "빨간색 = 상승, 초록색 = 하락",
+    "subtitleRisingGreen": "초록 상승 / 빨강 하락",
+    "subtitleRisingRed": "빨강 상승 / 초록 하락",
+    "subtitleAutoCurrent": "현재: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

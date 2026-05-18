@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finanz-Farbschema",
+    "auto": "An meine Region anpassen (auto)",
+    "risingGreen": "Grün = aufwärts, Rot = abwärts (westlich)",
+    "risingRed": "Rot = aufwärts, Grün = abwärts (ostasiatische Konvention)",
+    "subtitleRisingGreen": "grün aufwärts / rot abwärts",
+    "subtitleRisingRed": "rot aufwärts / grün abwärts",
+    "subtitleAutoCurrent": "Aktuell: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

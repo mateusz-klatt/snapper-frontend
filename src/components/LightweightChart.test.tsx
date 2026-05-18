@@ -4,14 +4,23 @@ import { LightweightChart } from './LightweightChart'
 import { useAppStore } from '../stores/app'
 
 vi.mock('../stores/app', () => ({
-  useAppStore: vi.fn((selector: (s: { isDarkMode: boolean }) => boolean) =>
-    selector({ isDarkMode: false })
+  useAppStore: vi.fn(
+    (
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: 'auto' | 'rising-red' | 'rising-green'
+        locale: 'us' | 'cn' | 'pl'
+      }) => unknown
+    ) => selector({ isDarkMode: false, financialColorPreference: 'auto', locale: 'us' })
   ),
 }))
 
 const mockSetData = vi.fn()
 const mockApplyOptions = vi.fn()
-const mockAddSeries = vi.fn().mockReturnValue({ setData: mockSetData })
+const mockSeriesApplyOptions = vi.fn()
+const mockAddSeries = vi
+  .fn()
+  .mockReturnValue({ setData: mockSetData, applyOptions: mockSeriesApplyOptions })
 const mockRemove = vi.fn()
 const mockTimeScaleFitContent = vi.fn()
 const mockCreateChart = vi.fn().mockReturnValue({
@@ -295,8 +304,17 @@ describe('LightweightChart', () => {
   })
   it('applies dark theme via applyOptions when isDarkMode is true', () => {
     vi.mocked(useAppStore).mockImplementation(((
-      selector: (s: { isDarkMode: boolean }) => boolean
-    ) => selector({ isDarkMode: true })) as never)
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: true,
+        financialColorPreference: 'auto',
+        locale: 'us',
+      })) as never)
     render(<LightweightChart data={sampleData} />)
     expect(mockApplyOptions).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -307,8 +325,17 @@ describe('LightweightChart', () => {
       })
     )
     vi.mocked(useAppStore).mockImplementation(((
-      selector: (s: { isDarkMode: boolean }) => boolean
-    ) => selector({ isDarkMode: false })) as never)
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: false,
+        financialColorPreference: 'auto',
+        locale: 'us',
+      })) as never)
   })
   it('observes the container with ResizeObserver and disconnects on unmount', () => {
     const observe = vi.fn()
@@ -350,8 +377,17 @@ describe('LightweightChart', () => {
 
     mockApplyOptions.mockClear()
     vi.mocked(useAppStore).mockImplementation(((
-      selector: (s: { isDarkMode: boolean }) => boolean
-    ) => selector({ isDarkMode: true })) as never)
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: true,
+        financialColorPreference: 'auto',
+        locale: 'us',
+      })) as never)
     rerender(<LightweightChart data={sampleData} />)
     expect(mockCreateChart).toHaveBeenCalledTimes(initialCreateCount)
     expect(mockApplyOptions).toHaveBeenCalledWith(
@@ -362,7 +398,82 @@ describe('LightweightChart', () => {
       })
     )
     vi.mocked(useAppStore).mockImplementation(((
-      selector: (s: { isDarkMode: boolean }) => boolean
-    ) => selector({ isDarkMode: false })) as never)
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: false,
+        financialColorPreference: 'auto',
+        locale: 'us',
+      })) as never)
+  })
+
+  it('initializes candle series with computed --color-rising-500 / --color-falling-500 hex', () => {
+    document.documentElement.style.setProperty('--color-rising-500', '#abcdef')
+    document.documentElement.style.setProperty('--color-falling-500', '#fedcba')
+    render(<LightweightChart data={sampleData} />)
+
+    expect(mockAddSeries).toHaveBeenCalledWith(
+      'CandlestickSeries',
+      expect.objectContaining({
+        upColor: '#abcdef',
+        downColor: '#fedcba',
+        borderUpColor: '#abcdef',
+        borderDownColor: '#fedcba',
+        wickUpColor: '#abcdef',
+        wickDownColor: '#fedcba',
+      })
+    )
+    document.documentElement.style.removeProperty('--color-rising-500')
+    document.documentElement.style.removeProperty('--color-falling-500')
+  })
+
+  it('re-applies the candle palette via series.applyOptions on financialColorPreference change', () => {
+    document.documentElement.style.setProperty('--color-rising-500', '#0b8f4d')
+    document.documentElement.style.setProperty('--color-falling-500', '#8b1025')
+    const { rerender } = render(<LightweightChart data={sampleData} />)
+
+    mockSeriesApplyOptions.mockClear()
+    document.documentElement.style.setProperty('--color-rising-500', '#8b1025')
+    document.documentElement.style.setProperty('--color-falling-500', '#0b8f4d')
+    vi.mocked(useAppStore).mockImplementation(((
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: false,
+        financialColorPreference: 'rising-red',
+        locale: 'us',
+      })) as never)
+    rerender(<LightweightChart data={sampleData} />)
+
+    expect(mockSeriesApplyOptions).toHaveBeenCalledWith(
+      expect.objectContaining({
+        upColor: '#8b1025',
+        downColor: '#0b8f4d',
+      })
+    )
+    document.documentElement.style.removeProperty('--color-rising-500')
+    document.documentElement.style.removeProperty('--color-falling-500')
+  })
+
+  it('falls back to the Western Tailwind defaults when CSS vars are absent', () => {
+    document.documentElement.style.removeProperty('--color-rising-500')
+    document.documentElement.style.removeProperty('--color-falling-500')
+    render(<LightweightChart data={sampleData} />)
+
+    expect(mockAddSeries).toHaveBeenCalledWith(
+      'CandlestickSeries',
+      expect.objectContaining({
+        upColor: '#3cb67a',
+        downColor: '#d8062a',
+      })
+    )
   })
 })

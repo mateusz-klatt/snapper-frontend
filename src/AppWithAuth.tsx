@@ -5,10 +5,13 @@ import AuthErrorBoundary from './components/auth/AuthErrorBoundary'
 import { useAuth, useAuthStore } from './stores/auth'
 import { useAppStore } from './stores/app'
 import { apiClient } from './lib/apiClient'
+import { resolveFinancialColorConvention } from './theme/financialColorPreference'
 
 function AppWithAuth() {
   const { isAuthenticated, refreshToken, silentLogout } = useAuth()
   const isDarkMode = useAppStore(s => s.isDarkMode)
+  const locale = useAppStore(s => s.locale)
+  const financialColorPreference = useAppStore(s => s.financialColorPreference)
   const initialized = useRef(false)
 
   useEffect(() => {
@@ -18,6 +21,12 @@ function AppWithAuth() {
       document.documentElement.classList.remove('dark')
     }
   }, [isDarkMode])
+
+  useEffect(() => {
+    const effective = resolveFinancialColorConvention(financialColorPreference, locale)
+
+    document.documentElement.dataset.colorConvention = effective
+  }, [financialColorPreference, locale])
 
   useEffect(() => {
     if (initialized.current) {

@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Financial color convention",
+    "auto": "Match my locale (auto)",
+    "risingGreen": "Green = up, red = down (Western)",
+    "risingRed": "Red = up, green = down (East Asian convention)",
+    "subtitleRisingGreen": "green up / red down",
+    "subtitleRisingRed": "red up / green down",
+    "subtitleAutoCurrent": "Currently: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

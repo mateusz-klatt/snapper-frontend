@@ -41,7 +41,7 @@ describe('MetricsDiffTable', () => {
 
     const cagrDelta = screen.getByText('0.0700')
 
-    expect(cagrDelta.className).toContain('text-gain-400')
+    expect(cagrDelta.className).toContain('text-rising-400')
 
     const mddDelta = screen.getByText('0.0000')
 
@@ -49,7 +49,7 @@ describe('MetricsDiffTable', () => {
 
     const sortinoDelta = screen.getByText('-0.5500')
 
-    expect(sortinoDelta.className).toContain('text-loss-400')
+    expect(sortinoDelta.className).toContain('text-falling-400')
   })
 
   it('renders em-dash for null/undefined values (one-sided metric)', () => {

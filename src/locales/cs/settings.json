@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "Finanční barevná konvence",
+    "auto": "Přizpůsobit mému regionu (auto)",
+    "risingGreen": "Zelená = růst, červená = pokles (západní)",
+    "risingRed": "Červená = růst, zelená = pokles (východoasijská konvence)",
+    "subtitleRisingGreen": "zelená růst / červená pokles",
+    "subtitleRisingRed": "červená růst / zelená pokles",
+    "subtitleAutoCurrent": "Aktuálně: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"

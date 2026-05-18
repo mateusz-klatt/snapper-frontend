@@ -26,6 +26,12 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
   const isTerminal = TERMINAL_ORDER_STATUSES.has(order.status.toLowerCase())
 
   const getStatusColor = (status: string) => {
+    /*
+     * Order status colors are SEVERITY semantics (success/error/info),
+     * NOT financial direction — they stay on gain-* / loss-* tokens
+     * so a CN user who picks the inverted convention doesn't see
+     * "filled" rendered in red on a successful trade.
+     */
     switch (status.toLowerCase()) {
       case 'filled':
         return 'text-gain-400 bg-gain-900/20'
@@ -47,7 +53,12 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
   }
 
   const getSideColor = (side: string) => {
-    return side === 'buy' ? 'text-gain-400' : 'text-loss-400'
+    /*
+     * Order side BUY/SELL IS financial direction — flips per the
+     * user's color convention (cn/hk/jp/kr default to red-up, others
+     * green-up; explicit Settings override always wins).
+     */
+    return side === 'buy' ? 'text-rising-400' : 'text-falling-400'
   }
 
   const formatPrice = (price: number | null | undefined) => {

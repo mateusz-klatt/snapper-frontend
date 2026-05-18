@@ -81,6 +81,15 @@
       "null": "(null)"
     }
   },
+  "financialColor": {
+    "title": "قرارداد رنگ‌های مالی",
+    "auto": "مطابق با منطقه من (خودکار)",
+    "risingGreen": "سبز = صعود، قرمز = نزول (غربی)",
+    "risingRed": "قرمز = صعود، سبز = نزول (رسم شرق آسیا)",
+    "subtitleRisingGreen": "سبز صعود / قرمز نزول",
+    "subtitleRisingRed": "قرمز صعود / سبز نزول",
+    "subtitleAutoCurrent": "در حال حاضر: {{convention}}"
+  },
   "booleanValue": {
     "true": "true",
     "false": "false"
