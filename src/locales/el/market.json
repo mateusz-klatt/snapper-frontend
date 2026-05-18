@@ -41,6 +41,18 @@
       "proxy": "Υποκατάστατα μέσα"
     }
   },
+  "description": {
+    "label": "Περιγραφή μέσου",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Κρυπτονόμισμα",
+    "commodity": "Εμπόρευμα",
+    "forex": "Forex",
+    "index": "Δείκτης",
+    "yield": "Απόδοση",
+    "unknown": "Άλλο"
+  },
   "cacheBanner": {
     "message": "Προθέρμανση cache: {{sampleCount}} / {{expected}} κεριά διαθέσιμα {{sourceLabel}}",
     "sources": {

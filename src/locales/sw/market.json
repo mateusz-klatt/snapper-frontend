@@ -41,6 +41,18 @@
       "proxy": "Vyombo mbadala"
     }
   },
+  "description": {
+    "label": "Maelezo ya chombo",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Sarafu fiche",
+    "commodity": "Bidhaa",
+    "forex": "Forex",
+    "index": "Fahirisi",
+    "yield": "Mavuno",
+    "unknown": "Nyingine"
+  },
   "cacheBanner": {
     "message": "Cache inaandaliwa: candles {{sampleCount}} / {{expected}} zinapatikana {{sourceLabel}}",
     "sources": {

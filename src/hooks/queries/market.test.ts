@@ -58,6 +58,7 @@ vi.mock('../../lib/api/market', () => ({
             name: 'Bitcoin',
             asset_class: 'crypto',
             sector: null,
+            description: null,
           },
           groups: [
             {

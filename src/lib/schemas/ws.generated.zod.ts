@@ -752,6 +752,7 @@ export const UnderlyingAssetDataSchema = z
     name: z.string(),
     asset_class: z.string(),
     sector: z.string().nullable(),
+    description: z.string().nullable(),
     instrument_count: z.number().int(),
   })
   .strict()

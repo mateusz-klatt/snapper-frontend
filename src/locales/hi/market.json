@@ -41,6 +41,18 @@
       "proxy": "प्रॉक्सी साधन"
     }
   },
+  "description": {
+    "label": "इंस्ट्रूमेंट विवरण",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "क्रिप्टोकरेंसी",
+    "commodity": "कमोडिटी",
+    "forex": "फॉरेक्स",
+    "index": "सूचकांक",
+    "yield": "यील्ड",
+    "unknown": "अन्य"
+  },
   "cacheBanner": {
     "message": "कैश गर्म हो रहा है: {{sampleCount}} / {{expected}} कैंडल उपलब्ध {{sourceLabel}}",
     "sources": {

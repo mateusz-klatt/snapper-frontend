@@ -35,6 +35,7 @@ export const queryKeys = {
     ['exchanges', exchange, 'instruments', 'detail', asOf] as const,
   relatedInstruments: (exchange: string, nativeSymbol: string, asOf: string | null) =>
     ['market', 'related', exchange, nativeSymbol, asOf] as const,
+  relatedInstrumentsAll: ['market', 'related'] as const,
   cachedCandles: (
     exchange: string,
     nativeSymbol: string,

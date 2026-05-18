@@ -41,6 +41,18 @@
       "proxy": "Instrumenty proxy"
     }
   },
+  "description": {
+    "label": "Opis instrumentu",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Kryptowaluta",
+    "commodity": "Towar",
+    "forex": "Forex",
+    "index": "Indeks",
+    "yield": "Rentowność",
+    "unknown": "Inne"
+  },
   "cacheBanner": {
     "message": "Wypełnianie cache’u: dostępne {{sampleCount}} / {{expected}} świec {{sourceLabel}}",
     "sources": {

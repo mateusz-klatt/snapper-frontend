@@ -41,6 +41,18 @@
       "proxy": "Instrumen proxy"
     }
   },
+  "description": {
+    "label": "Deskripsi instrumen",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Mata uang kripto",
+    "commodity": "Komoditas",
+    "forex": "Forex",
+    "index": "Indeks",
+    "yield": "Imbal hasil",
+    "unknown": "Lainnya"
+  },
   "cacheBanner": {
     "message": "Pemanasan cache: {{sampleCount}} / {{expected}} candle tersedia {{sourceLabel}}",
     "sources": {

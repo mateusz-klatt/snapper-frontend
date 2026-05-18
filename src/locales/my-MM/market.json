@@ -41,6 +41,18 @@
       "proxy": "Proxy Instrument များ"
     }
   },
+  "description": {
+    "label": "အင်စထရူးမင့် ဖော်ပြချက်",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "ကရစ်ပတိုငွေကြေး",
+    "commodity": "ကုန်စည်",
+    "forex": "ဖောရက်စ်",
+    "index": "အညွှန်းကိန်း",
+    "yield": "အထွက်နှုန်း",
+    "unknown": "အခြား"
+  },
   "cacheBanner": {
     "message": "Cache warm up လုပ်နေသည်: candle {{sampleCount}} / {{expected}} ရနိုင်သည် {{sourceLabel}}",
     "sources": {

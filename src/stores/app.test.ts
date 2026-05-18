@@ -3,6 +3,8 @@ import { useAppStore } from './app'
 import { useAuthStore } from './auth'
 import { apiClient } from '../lib/apiClient'
 import i18n from '../i18n/config'
+import { queryClient } from '../lib/queryClient'
+import { queryKeys } from '../hooks/queries/keys'
 
 describe('useAppStore', () => {
   beforeEach(() => {
@@ -14,7 +16,9 @@ describe('useAppStore', () => {
       isDarkMode: true,
       asOf: null,
       isTimeTraveling: false,
+      locale: 'us',
     })
+    useAuthStore.setState({ isAuthenticated: false })
     vi.clearAllMocks()
   })
   afterEach(() => {
@@ -207,73 +211,140 @@ describe('useAppStore', () => {
       document.documentElement.lang = ''
       document.documentElement.dir = ''
     })
-    it('updates the store locale', () => {
-      useAppStore.getState().setLocale('pl')
+    it("setLocale updates store and writes LOCALE_STORAGE_KEY ('snapper-locale') synchronously before async work", async () => {
+      useAuthStore.setState({ isAuthenticated: true })
+
+      let resolvePost: () => void = () => {}
+
+      const postSpy = vi.spyOn(apiClient, 'postJSON').mockImplementation(
+        () =>
+          new Promise<never>(resolve => {
+            resolvePost = () => resolve({} as never)
+          }) as Promise<never>
+      )
+      const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries').mockResolvedValue(undefined)
+
+      const pending = useAppStore.getState().setLocale('pl')
+
       expect(useAppStore.getState().locale).toBe('pl')
-    })
-    it('persists locale to localStorage', () => {
-      useAppStore.getState().setLocale('pl')
       expect(localStorage.getItem('snapper-locale')).toBe('pl')
+      expect(postSpy).toHaveBeenCalledWith('/api/auth/me/update', {
+        default_language: 'pl',
+      })
+      expect(invalidateSpy).not.toHaveBeenCalled()
+
+      resolvePost()
+      await pending
+      expect(invalidateSpy).toHaveBeenCalledWith({
+        queryKey: queryKeys.relatedInstrumentsAll,
+      })
     })
     it('sets document.documentElement.lang to the catalog language after changeLanguage resolves', async () => {
-      useAppStore.getState().setLocale('pl')
+      await useAppStore.getState().setLocale('pl')
       await i18n.changeLanguage('pl')
       expect(document.documentElement.lang).toBe('pl')
-      useAppStore.getState().setLocale('de')
+      await useAppStore.getState().setLocale('de')
       await i18n.changeLanguage('de')
       expect(document.documentElement.lang).toBe('de')
-      useAppStore.getState().setLocale('us')
+      await useAppStore.getState().setLocale('us')
       await i18n.changeLanguage('en')
       expect(document.documentElement.lang).toBe('en')
     })
     it('sets document.documentElement.dir to ltr for ltr locales', async () => {
-      useAppStore.getState().setLocale('pl')
+      await useAppStore.getState().setLocale('pl')
       await i18n.changeLanguage('pl')
       expect(document.documentElement.dir).toBe('ltr')
     })
     it('sets document.documentElement.dir to rtl for rtl locales', async () => {
-      useAppStore.getState().setLocale('ae')
+      await useAppStore.getState().setLocale('ae')
       await i18n.changeLanguage('ar')
       expect(document.documentElement.dir).toBe('rtl')
     })
-    it('falls back gracefully when localStorage.setItem throws', () => {
+    it('falls back gracefully when localStorage.setItem throws', async () => {
       const spy = vi.spyOn(window.localStorage, 'setItem').mockImplementation(() => {
         throw new Error('quota exceeded')
       })
 
       try {
-        expect(() => useAppStore.getState().setLocale('pl')).not.toThrow()
+        await expect(useAppStore.getState().setLocale('pl')).resolves.toBeUndefined()
         expect(useAppStore.getState().locale).toBe('pl')
       } finally {
         spy.mockRestore()
       }
     })
-    it('does not call backend when caller is unauthenticated', () => {
+    it('authenticated setLocale invokes applyLocaleSideEffects, then posts default_language, then invalidates queryKeys.relatedInstrumentsAll (in that order)', async () => {
+      useAuthStore.setState({ isAuthenticated: true })
+      const storageSpy = vi.spyOn(window.localStorage, 'setItem')
+      const changeLanguageSpy = vi.spyOn(i18n, 'changeLanguage')
+      const postSpy = vi.spyOn(apiClient, 'postJSON').mockResolvedValue({} as never)
+      const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries').mockResolvedValue(undefined)
+
+      await useAppStore.getState().setLocale('pl')
+      const storageOrder = storageSpy.mock.invocationCallOrder[0]
+      const changeLanguageOrder = changeLanguageSpy.mock.invocationCallOrder[0]
+      const postOrder = postSpy.mock.invocationCallOrder[0]
+      const invalidateOrder = invalidateSpy.mock.invocationCallOrder[0]
+
+      if (
+        storageOrder === undefined ||
+        changeLanguageOrder === undefined ||
+        postOrder === undefined ||
+        invalidateOrder === undefined
+      ) {
+        throw new Error('Expected setLocale collaborators to be called')
+      }
+
+      expect(storageSpy).toHaveBeenCalledWith('snapper-locale', 'pl')
+      expect(changeLanguageSpy).toHaveBeenCalledWith('pl')
+      expect(postSpy).toHaveBeenCalledWith('/api/auth/me/update', {
+        default_language: 'pl',
+      })
+      expect(invalidateSpy).toHaveBeenCalledWith({
+        queryKey: queryKeys.relatedInstrumentsAll,
+      })
+      expect(storageOrder).toBeLessThan(changeLanguageOrder)
+      expect(changeLanguageOrder).toBeLessThan(postOrder)
+      expect(postOrder).toBeLessThan(invalidateOrder)
+    })
+    it('unauthenticated setLocale skips backend POST and does NOT invalidate query cache', async () => {
       useAuthStore.setState({ isAuthenticated: false })
       const postSpy = vi.spyOn(apiClient, 'postJSON')
+      const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries').mockResolvedValue(undefined)
 
-      useAppStore.getState().setLocale('pl')
+      await useAppStore.getState().setLocale('pl')
       expect(postSpy).not.toHaveBeenCalled()
+      expect(invalidateSpy).not.toHaveBeenCalled()
     })
-    it('persists default_language to backend when caller is authenticated', () => {
+    it('persists default_language to backend when caller is authenticated', async () => {
       useAuthStore.setState({ isAuthenticated: true })
       const postSpy = vi.spyOn(apiClient, 'postJSON').mockResolvedValue({} as never)
 
-      useAppStore.getState().setLocale('pl')
+      await useAppStore.getState().setLocale('pl')
       expect(postSpy).toHaveBeenCalledWith('/api/auth/me/update', {
         default_language: 'pl',
       })
     })
-    it('swallows backend persist errors so the picker still flips locally', async () => {
+    it('authenticated setLocale does NOT invalidate query cache when backend persistence fails (4xx/5xx)', async () => {
+      useAuthStore.setState({ isAuthenticated: true })
+      vi.spyOn(apiClient, 'postJSON').mockRejectedValue(new Error('500'))
+      const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries').mockResolvedValue(undefined)
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+      try {
+        await useAppStore.getState().setLocale('pl')
+        expect(invalidateSpy).not.toHaveBeenCalled()
+      } finally {
+        warnSpy.mockRestore()
+      }
+    })
+    it('setLocale logs warning when backend persistence fails but does not throw', async () => {
       useAuthStore.setState({ isAuthenticated: true })
       vi.spyOn(apiClient, 'postJSON').mockRejectedValue(new Error('500'))
       const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
       try {
-        expect(() => useAppStore.getState().setLocale('pl')).not.toThrow()
+        await expect(useAppStore.getState().setLocale('pl')).resolves.toBeUndefined()
         expect(useAppStore.getState().locale).toBe('pl')
-        await Promise.resolve()
-        await Promise.resolve()
         expect(warnSpy).toHaveBeenCalled()
       } finally {
         warnSpy.mockRestore()

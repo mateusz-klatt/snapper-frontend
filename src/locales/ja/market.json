@@ -41,6 +41,18 @@
       "proxy": "プロキシ商品"
     }
   },
+  "description": {
+    "label": "銘柄の説明",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "暗号資産",
+    "commodity": "コモディティ",
+    "forex": "外国為替",
+    "index": "指数",
+    "yield": "利回り",
+    "unknown": "その他"
+  },
   "cacheBanner": {
     "message": "キャッシュをウォームアップ中: {{sampleCount}} / {{expected}}本のローソク足が利用可能 {{sourceLabel}}",
     "sources": {

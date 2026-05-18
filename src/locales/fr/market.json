@@ -41,6 +41,18 @@
       "proxy": "Instruments proxy"
     }
   },
+  "description": {
+    "label": "Description de l'instrument",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Cryptomonnaie",
+    "commodity": "Matière première",
+    "forex": "Forex",
+    "index": "Indice",
+    "yield": "Rendement",
+    "unknown": "Autre"
+  },
   "cacheBanner": {
     "message": "Préchauffage du cache : {{sampleCount}} / {{expected}} bougies disponibles {{sourceLabel}}",
     "sources": {

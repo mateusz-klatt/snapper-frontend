@@ -41,6 +41,18 @@
       "proxy": "Ionstraimí ionaid"
     }
   },
+  "description": {
+    "label": "Cur síos ar an ionstraim",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Criptea-airgeadra",
+    "commodity": "Tráchtearra",
+    "forex": "Forex",
+    "index": "Innéacs",
+    "yield": "Toradh",
+    "unknown": "Eile"
+  },
   "cacheBanner": {
     "message": "Cache á théamh: {{sampleCount}} / {{expected}} coinneal ar fáil {{sourceLabel}}",
     "sources": {

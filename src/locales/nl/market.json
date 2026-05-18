@@ -41,6 +41,18 @@
       "proxy": "Proxy-instrumenten"
     }
   },
+  "description": {
+    "label": "Instrumentbeschrijving",
+    "fallback": "{{name}} · {{assetClass}}"
+  },
+  "assetClass": {
+    "crypto": "Cryptovaluta",
+    "commodity": "Grondstof",
+    "forex": "Forex",
+    "index": "Index",
+    "yield": "Rendement",
+    "unknown": "Overig"
+  },
   "cacheBanner": {
     "message": "Cache aan het opwarmen: {{sampleCount}} / {{expected}} candles beschikbaar {{sourceLabel}}",
     "sources": {
