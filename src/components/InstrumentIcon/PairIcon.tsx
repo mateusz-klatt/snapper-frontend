@@ -11,36 +11,32 @@ type PairIconProps = {
   borderColor?: string | undefined
 }
 
+const SIDE_BY_SIDE_GAP_PX = 2
+
 export function PairIcon({
   base,
   quote,
   size = 28,
   borderColor = 'var(--background, #fff)',
 }: Readonly<PairIconProps>): React.ReactElement {
-  const overlap = Math.round(size * 0.55)
   const containerStyle: CSSProperties = {
-    position: 'relative',
-    display: 'inline-block',
-    width: size + overlap,
-    height: size,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: SIDE_BY_SIDE_GAP_PX,
     flexShrink: 0,
+    lineHeight: 0,
+    height: size,
   }
-  const baseStyle: CSSProperties = {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    zIndex: 2,
+  const cellStyle: CSSProperties = {
     width: size,
     height: size,
     borderRadius: '50%',
     border: `2px solid ${borderColor}`,
     boxSizing: 'border-box',
     overflow: 'hidden',
-  }
-  const quoteStyle: CSSProperties = {
-    ...baseStyle,
-    left: overlap,
-    zIndex: 1,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 
   return (
@@ -49,8 +45,8 @@ export function PairIcon({
       aria-label={`${describeIcon(base)} / ${describeIcon(quote)}`}
       role='img'
     >
-      <span style={baseStyle}>{renderCircle(base, size - 4)}</span>
-      <span style={quoteStyle}>{renderCircle(quote, size - 4)}</span>
+      <span style={cellStyle}>{renderCircle(base, size - 4)}</span>
+      <span style={cellStyle}>{renderCircle(quote, size - 4)}</span>
     </span>
   )
 }

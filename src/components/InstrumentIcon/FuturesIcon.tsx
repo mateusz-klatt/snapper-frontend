@@ -19,33 +19,35 @@ const SEASON_GLYPH_BY_QUARTER: Record<FuturesQuarter, string> = {
   4: '❄️',
 }
 
+const GLYPH_CELL_GAP_PX = 2
+
 export function FuturesIcon({
   base,
   quote,
   quarter,
   monthInQuarter,
   size = 28,
-  borderColor,
+  borderColor = 'var(--background, #fff)',
 }: Readonly<FuturesIconProps>): React.ReactElement {
-  const overlayFontSize = Math.max(8, Math.round(size * 0.42))
   const containerStyle: CSSProperties = {
-    position: 'relative',
-    display: 'inline-block',
-    flexShrink: 0,
-    lineHeight: 0,
-  }
-  const overlayStyle: CSSProperties = {
-    position: 'absolute',
-    right: -2,
-    bottom: -2,
-    zIndex: 3,
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 1,
-    padding: '0 2px',
+    gap: GLYPH_CELL_GAP_PX,
+    flexShrink: 0,
+    lineHeight: 0,
+    height: size,
+  }
+  const glyphCellStyle: CSSProperties = {
+    width: size,
+    height: size,
+    borderRadius: '50%',
+    border: `2px solid ${borderColor}`,
+    boxSizing: 'border-box',
     background: 'var(--background, #fff)',
-    borderRadius: 4,
-    fontSize: overlayFontSize,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: Math.round(size * 0.6),
     lineHeight: 1,
     fontWeight: 600,
   }
@@ -58,9 +60,11 @@ export function FuturesIcon({
       ) : (
         <PairIcon base={base} quote={quote} size={size} borderColor={borderColor} />
       )}
-      <span style={overlayStyle} aria-hidden='true' data-testid='futures-expiry-overlay'>
-        <span>{seasonGlyph}</span>
-        <span>{monthInQuarter}</span>
+      <span style={glyphCellStyle} aria-hidden='true' data-testid='futures-quarter-glyph'>
+        {seasonGlyph}
+      </span>
+      <span style={glyphCellStyle} aria-hidden='true' data-testid='futures-month-glyph'>
+        {monthInQuarter}
       </span>
     </span>
   )
