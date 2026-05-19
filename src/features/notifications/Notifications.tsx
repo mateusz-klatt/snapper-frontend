@@ -48,11 +48,7 @@ export const Notifications: React.FC = () => {
         <h1 className='text-2xl font-semibold text-alpine-900'>
           {t('navTitle', { defaultValue: 'Alerts' })}
         </h1>
-        <p className='mt-1 text-sm text-muted-600'>
-          {t('page.subtitle', {
-            defaultValue: 'Recent alert history for your account.',
-          })}
-        </p>
+        <p className='mt-1 text-sm text-muted-600'>{t('page.subtitle')}</p>
       </header>
       <NotificationsList onOpenAlert={handleOpen} />
       <AlertDetailModal publicId={openPid} onClose={handleClose} />

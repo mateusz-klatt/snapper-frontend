@@ -36,6 +36,9 @@
   },
   "loading": "Ladataan hälytyksiä…",
   "navTitle": "Hälytykset",
+  "page": {
+    "subtitle": "Tilisi viimeaikainen hälytyshistoria."
+  },
   "priority": {
     "high": "Korkea",
     "low": "Alhainen",

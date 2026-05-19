@@ -17,7 +17,8 @@
     "error": "Chyba",
     "warning": "Varovanie",
     "completed": "Dokončené",
-    "unknown": "Neznáme"
+    "unknown": "Neznáme",
+    "running": "Prebieha"
   },
   "metrics": {
     "tradingEngine": "Obchodný engine",
@@ -91,7 +92,7 @@
       "status": "Stav"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "chyba"
   },
   "systemMetrics": {

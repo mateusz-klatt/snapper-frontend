@@ -36,6 +36,9 @@
   },
   "loading": "Hleður viðvörunum…",
   "navTitle": "Viðvaranir",
+  "page": {
+    "subtitle": "Nýleg viðvörunarsaga fyrir reikninginn þinn."
+  },
   "priority": {
     "high": "Hár",
     "low": "Lágur",

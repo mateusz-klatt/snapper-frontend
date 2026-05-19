@@ -21,7 +21,22 @@
       "stopped": "stoppet",
       "error": "fejl",
       "starting": "starter",
-      "stopping": "stopper"
+      "stopping": "stopper",
+      "warning": "advarsel",
+      "unknown": "ukendt",
+      "healthy": "sund"
+    },
+    "detail": {
+      "wallet": "Wallet",
+      "template": "Template",
+      "last_run": "Seneste kørsel",
+      "unknownWallet": "ukendt"
+    },
+    "runStatus": {
+      "running": "Kører",
+      "succeeded": "Lykkedes",
+      "failed": "Mislykket",
+      "cancelled": "Annulleret"
     }
   },
   "template": {

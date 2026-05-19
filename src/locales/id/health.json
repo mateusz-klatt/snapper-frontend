@@ -17,7 +17,8 @@
     "error": "Kesalahan",
     "warning": "Peringatan",
     "completed": "Selesai",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "running": "Berjalan"
   },
   "metrics": {
     "tradingEngine": "Mesin Trading",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}} hari",
-    "ok": "ok",
+    "ok": "OK",
     "error": "kesalahan"
   },
   "systemMetrics": {

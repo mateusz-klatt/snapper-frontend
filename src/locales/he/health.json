@@ -17,7 +17,8 @@
     "error": "שגיאה",
     "warning": "אזהרה",
     "completed": "הושלם",
-    "unknown": "לא ידוע"
+    "unknown": "לא ידוע",
+    "running": "פועל"
   },
   "metrics": {
     "tradingEngine": "מנוע מסחר",
@@ -91,7 +92,7 @@
       "status": "סטטוס"
     },
     "retainDays": "{{days}}י׳",
-    "ok": "תקין",
+    "ok": "OK",
     "error": "שגיאה"
   },
   "systemMetrics": {

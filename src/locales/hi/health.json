@@ -17,7 +17,8 @@
     "error": "त्रुटि",
     "warning": "चेतावनी",
     "completed": "पूरा",
-    "unknown": "अज्ञात"
+    "unknown": "अज्ञात",
+    "running": "चल रहा"
   },
   "metrics": {
     "tradingEngine": "ट्रेडिंग इंजन",
@@ -91,7 +92,7 @@
       "status": "स्थिति"
     },
     "retainDays": "{{days}}दि",
-    "ok": "ठीक",
+    "ok": "OK",
     "error": "त्रुटि"
   },
   "systemMetrics": {

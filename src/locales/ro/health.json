@@ -17,7 +17,8 @@
     "error": "Eroare",
     "warning": "Avertisment",
     "completed": "Finalizat",
-    "unknown": "Necunoscut"
+    "unknown": "Necunoscut",
+    "running": "În rulare"
   },
   "metrics": {
     "tradingEngine": "Motor de trading",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}z",
-    "ok": "ok",
+    "ok": "OK",
     "error": "eroare"
   },
   "systemMetrics": {

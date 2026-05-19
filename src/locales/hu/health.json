@@ -17,7 +17,8 @@
     "error": "Hiba",
     "warning": "Figyelmeztetés",
     "completed": "Befejezve",
-    "unknown": "Ismeretlen"
+    "unknown": "Ismeretlen",
+    "running": "Fut"
   },
   "metrics": {
     "tradingEngine": "Kereskedési motor",
@@ -91,7 +92,7 @@
       "status": "Állapot"
     },
     "retainDays": "Napok: {{days}}",
-    "ok": "rendben",
+    "ok": "OK",
     "error": "hiba"
   },
   "systemMetrics": {

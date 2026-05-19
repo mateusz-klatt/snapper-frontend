@@ -5,6 +5,8 @@ import { toast } from 'react-hot-toast'
 import { Button, Badge } from '../../../components/ui'
 import { ConfirmDialog } from '../../../components/ui/ConfirmDialog'
 import { useUsers, useDeactivateUser } from '../../../hooks/queries/users'
+import { formatDateTime } from '../../../lib/dateFormat'
+import { useAppStore } from '../../../stores/app'
 import type { UserProfile } from '../../../types/api'
 
 interface UserListProps {
@@ -64,15 +66,8 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
     }
   }
 
-  const formatDate = (dateString: string): string => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-    })
-  }
+  const locale = useAppStore(s => s.locale)
+  const formatDate = (dateString: string): string => formatDateTime(new Date(dateString), locale)
 
   if (isLoading) {
     return (

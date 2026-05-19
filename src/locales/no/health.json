@@ -17,7 +17,8 @@
     "error": "Feil",
     "warning": "Advarsel",
     "completed": "Fullført",
-    "unknown": "Ukjent"
+    "unknown": "Ukjent",
+    "running": "Kjører"
   },
   "metrics": {
     "tradingEngine": "Tradingmotor",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "feil"
   },
   "systemMetrics": {

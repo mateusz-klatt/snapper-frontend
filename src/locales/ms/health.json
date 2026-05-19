@@ -17,7 +17,8 @@
     "error": "Ralat",
     "warning": "Amaran",
     "completed": "Selesai",
-    "unknown": "Tidak diketahui"
+    "unknown": "Tidak diketahui",
+    "running": "Berjalan"
   },
   "metrics": {
     "tradingEngine": "Enjin Dagangan",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "ralat"
   },
   "systemMetrics": {

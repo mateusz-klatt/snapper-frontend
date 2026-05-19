@@ -21,7 +21,22 @@
       "stopped": "ရပ်ထားသည်",
       "error": "အမှား",
       "starting": "စတင်နေသည်",
-      "stopping": "ရပ်နေသည်"
+      "stopping": "ရပ်နေသည်",
+      "warning": "သတိပေး",
+      "unknown": "မသိ",
+      "healthy": "ကောင်းမွန်"
+    },
+    "detail": {
+      "wallet": "ဝေါလက်",
+      "template": "ပုံစံ",
+      "last_run": "နောက်ဆုံး လည်ပတ်မှု",
+      "unknownWallet": "မသိပါ"
+    },
+    "runStatus": {
+      "running": "လည်ပတ်နေသည်",
+      "succeeded": "အောင်မြင်သည်",
+      "failed": "မအောင်မြင်ပါ",
+      "cancelled": "ပယ်ဖျက်ပြီး"
     }
   },
   "template": {

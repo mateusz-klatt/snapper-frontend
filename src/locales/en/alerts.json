@@ -36,6 +36,9 @@
   },
   "loading": "Loading alerts…",
   "navTitle": "Alerts",
+  "page": {
+    "subtitle": "Recent alert history for your account."
+  },
   "priority": {
     "high": "High",
     "low": "Low",

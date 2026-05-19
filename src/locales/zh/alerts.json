@@ -36,6 +36,9 @@
   },
   "loading": "正在加载提醒…",
   "navTitle": "提醒",
+  "page": {
+    "subtitle": "您账户的近期提醒历史。"
+  },
   "priority": {
     "high": "高",
     "low": "低",

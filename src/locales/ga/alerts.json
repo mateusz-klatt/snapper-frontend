@@ -36,6 +36,9 @@
   },
   "loading": "Foláirimh á luchtú…",
   "navTitle": "Foláirimh",
+  "page": {
+    "subtitle": "Stair na n-aláram a tharla le déanaí ar do chuntas."
+  },
   "priority": {
     "high": "Ard",
     "low": "Íseal",

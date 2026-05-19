@@ -17,7 +17,8 @@
     "error": "Fout",
     "warning": "Waarschuwing",
     "completed": "Voltooid",
-    "unknown": "Onbekend"
+    "unknown": "Onbekend",
+    "running": "Loopt"
   },
   "metrics": {
     "tradingEngine": "Trading-engine",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "fout"
   },
   "systemMetrics": {

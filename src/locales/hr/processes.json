@@ -21,7 +21,22 @@
       "stopped": "zaustavljeno",
       "error": "pogreška",
       "starting": "pokretanje",
-      "stopping": "zaustavljanje"
+      "stopping": "zaustavljanje",
+      "warning": "upozorenje",
+      "unknown": "nepoznato",
+      "healthy": "ispravno"
+    },
+    "detail": {
+      "wallet": "Novčanik",
+      "template": "Predložak",
+      "last_run": "Zadnje pokretanje",
+      "unknownWallet": "nepoznat"
+    },
+    "runStatus": {
+      "running": "Pokrenuto",
+      "succeeded": "Uspjelo",
+      "failed": "Neuspjelo",
+      "cancelled": "Otkazano"
     }
   },
   "template": {

@@ -21,7 +21,22 @@
       "stopped": "gestopt",
       "error": "fout",
       "starting": "starten",
-      "stopping": "stoppen"
+      "stopping": "stoppen",
+      "warning": "waarschuwing",
+      "unknown": "onbekend",
+      "healthy": "in orde"
+    },
+    "detail": {
+      "wallet": "Portefeuille",
+      "template": "Template",
+      "last_run": "Laatste run",
+      "unknownWallet": "onbekend"
+    },
+    "runStatus": {
+      "running": "Loopt",
+      "succeeded": "Geslaagd",
+      "failed": "Mislukt",
+      "cancelled": "Geannuleerd"
     }
   },
   "template": {

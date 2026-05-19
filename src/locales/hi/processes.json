@@ -21,7 +21,22 @@
       "stopped": "रुका हुआ",
       "error": "त्रुटि",
       "starting": "शुरू हो रहा है",
-      "stopping": "रुक रहा है"
+      "stopping": "रुक रहा है",
+      "warning": "चेतावनी",
+      "unknown": "अज्ञात",
+      "healthy": "स्वस्थ"
+    },
+    "detail": {
+      "wallet": "वॉलेट",
+      "template": "टेम्पलेट",
+      "last_run": "अंतिम रन",
+      "unknownWallet": "अज्ञात"
+    },
+    "runStatus": {
+      "running": "चल रहा",
+      "succeeded": "सफल",
+      "failed": "विफल",
+      "cancelled": "रद्द"
     }
   },
   "template": {

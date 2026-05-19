@@ -36,6 +36,9 @@
   },
   "loading": "Riasztások betöltése…",
   "navTitle": "Riasztások",
+  "page": {
+    "subtitle": "A fiókja legutóbbi riasztási előzményei."
+  },
   "priority": {
     "high": "Magas",
     "low": "Alacsony",

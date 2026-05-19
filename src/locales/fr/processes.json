@@ -21,7 +21,22 @@
       "stopped": "arrêté",
       "error": "erreur",
       "starting": "démarrage",
-      "stopping": "arrêt"
+      "stopping": "arrêt",
+      "warning": "avertissement",
+      "unknown": "inconnu",
+      "healthy": "sain"
+    },
+    "detail": {
+      "wallet": "Wallet",
+      "template": "Modèle",
+      "last_run": "Dernière exécution",
+      "unknownWallet": "inconnu"
+    },
+    "runStatus": {
+      "running": "En cours",
+      "succeeded": "Réussi",
+      "failed": "Échoué",
+      "cancelled": "Annulé"
     }
   },
   "template": {

@@ -65,7 +65,9 @@ const ProcessHealthGrid: React.FC<ProcessHealthGridProps> = ({ snapshot }) => {
       <MetricCell
         label={t('systemMetrics.pid')}
         value={process.pid.toString()}
-        description={t('systemMetrics.statusValue', { status: process.status })}
+        description={t('systemMetrics.statusValue', {
+          status: t(`status.${process.status}`, { defaultValue: process.status }),
+        })}
       />
       <MetricCell label={t('systemMetrics.uptime')} value={formatUptime(process.uptime_seconds)} />
       <MetricCell label={t('systemMetrics.threads')} value={process.num_threads.toString()} />

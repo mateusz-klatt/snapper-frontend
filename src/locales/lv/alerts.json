@@ -36,6 +36,9 @@
   },
   "loading": "Notiek brīdinājumu ielāde…",
   "navTitle": "Brīdinājumi",
+  "page": {
+    "subtitle": "Jūsu konta nesenā brīdinājumu vēsture."
+  },
   "priority": {
     "high": "Augsta",
     "low": "Zema",

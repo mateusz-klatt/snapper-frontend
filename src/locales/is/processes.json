@@ -21,7 +21,22 @@
       "stopped": "stöðvað",
       "error": "villa",
       "starting": "ræsir",
-      "stopping": "stöðvar"
+      "stopping": "stöðvar",
+      "warning": "aðvörun",
+      "unknown": "óþekkt",
+      "healthy": "í lagi"
+    },
+    "detail": {
+      "wallet": "Veski",
+      "template": "Sniðmát",
+      "last_run": "Síðasta keyrsla",
+      "unknownWallet": "óþekkt"
+    },
+    "runStatus": {
+      "running": "Keyrir",
+      "succeeded": "Tókst",
+      "failed": "Mistókst",
+      "cancelled": "Hætt við"
     }
   },
   "template": {

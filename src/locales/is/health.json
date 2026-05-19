@@ -17,7 +17,8 @@
     "error": "Villa",
     "warning": "Viðvörun",
     "completed": "Lokið",
-    "unknown": "Óþekkt"
+    "unknown": "Óþekkt",
+    "running": "Keyrir"
   },
   "metrics": {
     "tradingEngine": "Viðskiptavél",
@@ -91,7 +92,7 @@
       "status": "Staða"
     },
     "retainDays": "{{days}} d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "villa"
   },
   "systemMetrics": {

@@ -21,7 +21,22 @@
       "stopped": "դադարեցված",
       "error": "սխալ",
       "starting": "գործարկվում է",
-      "stopping": "դադարեցվում է"
+      "stopping": "դադարեցվում է",
+      "warning": "զգուշացում",
+      "unknown": "անհայտ",
+      "healthy": "առողջ"
+    },
+    "detail": {
+      "wallet": "Դրամապանակ",
+      "template": "Ձևանմուշ",
+      "last_run": "Վերջին գործարկում",
+      "unknownWallet": "անհայտ"
+    },
+    "runStatus": {
+      "running": "Ընթացքի մեջ է",
+      "succeeded": "Հաջողվել է",
+      "failed": "Ձախողվել է",
+      "cancelled": "Չեղարկված է"
     }
   },
   "template": {

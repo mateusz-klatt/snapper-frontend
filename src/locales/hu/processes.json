@@ -21,7 +21,22 @@
       "stopped": "leállítva",
       "error": "hiba",
       "starting": "indítás",
-      "stopping": "leállítás"
+      "stopping": "leállítás",
+      "warning": "figyelmeztetés",
+      "unknown": "ismeretlen",
+      "healthy": "rendben"
+    },
+    "detail": {
+      "wallet": "Pénztárca",
+      "template": "Sablon",
+      "last_run": "Legutóbbi futtatás",
+      "unknownWallet": "ismeretlen"
+    },
+    "runStatus": {
+      "running": "Fut",
+      "succeeded": "Sikeres",
+      "failed": "Sikertelen",
+      "cancelled": "Megszakítva"
     }
   },
   "template": {

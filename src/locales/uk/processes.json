@@ -21,7 +21,22 @@
       "stopped": "зупинено",
       "error": "помилка",
       "starting": "запуск",
-      "stopping": "зупинка"
+      "stopping": "зупинка",
+      "warning": "попередження",
+      "unknown": "невідомо",
+      "healthy": "норма"
+    },
+    "detail": {
+      "wallet": "Гаманець",
+      "template": "Шаблон",
+      "last_run": "Останній запуск",
+      "unknownWallet": "невідомий"
+    },
+    "runStatus": {
+      "running": "Виконується",
+      "succeeded": "Успішно",
+      "failed": "Не вдалося",
+      "cancelled": "Скасовано"
     }
   },
   "template": {

@@ -108,7 +108,7 @@ describe('RetentionCard', () => {
     expect(screen.getByText('7d')).toBeInTheDocument()
     expect(screen.getByText('2026-04-01 → 2026-04-02')).toBeInTheDocument()
     expect(screen.getAllByText('1,234').length).toBeGreaterThan(0)
-    expect(screen.getByText('ok')).toBeInTheDocument()
+    expect(screen.getByText('OK')).toBeInTheDocument()
     expect(screen.getByText('error')).toBeInTheDocument()
   })
 

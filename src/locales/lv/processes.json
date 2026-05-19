@@ -21,7 +21,22 @@
       "stopped": "apturēts",
       "error": "kļūda",
       "starting": "tiek palaists",
-      "stopping": "tiek apturēts"
+      "stopping": "tiek apturēts",
+      "warning": "brīdinājums",
+      "unknown": "nezināms",
+      "healthy": "darbojas"
+    },
+    "detail": {
+      "wallet": "Maks",
+      "template": "Veidne",
+      "last_run": "Pēdējā izpilde",
+      "unknownWallet": "nezināms"
+    },
+    "runStatus": {
+      "running": "Darbojas",
+      "succeeded": "Izdevās",
+      "failed": "Neizdevās",
+      "cancelled": "Atcelts"
     }
   },
   "template": {

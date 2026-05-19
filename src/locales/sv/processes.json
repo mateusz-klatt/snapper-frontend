@@ -21,7 +21,22 @@
       "stopped": "stoppad",
       "error": "fel",
       "starting": "startar",
-      "stopping": "stoppar"
+      "stopping": "stoppar",
+      "warning": "varning",
+      "unknown": "okänt",
+      "healthy": "frisk"
+    },
+    "detail": {
+      "wallet": "Plånbok",
+      "template": "Mall",
+      "last_run": "Senaste körning",
+      "unknownWallet": "okänd"
+    },
+    "runStatus": {
+      "running": "Körs",
+      "succeeded": "Lyckades",
+      "failed": "Misslyckad",
+      "cancelled": "Avbruten"
     }
   },
   "template": {

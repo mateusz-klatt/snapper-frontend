@@ -21,7 +21,22 @@
       "stopped": "arrestato",
       "error": "errore",
       "starting": "avvio",
-      "stopping": "arresto"
+      "stopping": "arresto",
+      "warning": "avviso",
+      "unknown": "sconosciuto",
+      "healthy": "integro"
+    },
+    "detail": {
+      "wallet": "Portafoglio",
+      "template": "Template",
+      "last_run": "Ultima esecuzione",
+      "unknownWallet": "sconosciuto"
+    },
+    "runStatus": {
+      "running": "In corso",
+      "succeeded": "Riuscito",
+      "failed": "Fallito",
+      "cancelled": "Annullato"
     }
   },
   "template": {

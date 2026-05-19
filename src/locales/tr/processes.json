@@ -21,7 +21,22 @@
       "stopped": "durduruldu",
       "error": "hata",
       "starting": "başlatılıyor",
-      "stopping": "durduruluyor"
+      "stopping": "durduruluyor",
+      "warning": "uyarı",
+      "unknown": "bilinmiyor",
+      "healthy": "sağlıklı"
+    },
+    "detail": {
+      "wallet": "Cüzdan",
+      "template": "Şablon",
+      "last_run": "Son çalıştırma",
+      "unknownWallet": "bilinmiyor"
+    },
+    "runStatus": {
+      "running": "Çalışıyor",
+      "succeeded": "Başarılı",
+      "failed": "Başarısız",
+      "cancelled": "İptal edildi"
     }
   },
   "template": {

@@ -17,7 +17,8 @@
     "error": "錯誤",
     "warning": "警告",
     "completed": "已完成",
-    "unknown": "未知"
+    "unknown": "未知",
+    "running": "運行中"
   },
   "metrics": {
     "tradingEngine": "交易引擎",
@@ -91,7 +92,7 @@
       "status": "狀態"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "error"
   },
   "systemMetrics": {

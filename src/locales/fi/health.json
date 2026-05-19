@@ -17,7 +17,8 @@
     "error": "Virhe",
     "warning": "Varoitus",
     "completed": "Valmis",
-    "unknown": "Tuntematon"
+    "unknown": "Tuntematon",
+    "running": "Käynnissä"
   },
   "metrics": {
     "tradingEngine": "Trading-moottori",
@@ -91,7 +92,7 @@
       "status": "Tila"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "virhe"
   },
   "systemMetrics": {

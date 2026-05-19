@@ -36,6 +36,9 @@
   },
   "loading": "正在載入警示…",
   "navTitle": "警示",
+  "page": {
+    "subtitle": "您帳戶的近期提醒紀錄。"
+  },
   "priority": {
     "high": "高",
     "low": "低",

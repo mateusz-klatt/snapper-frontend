@@ -21,7 +21,22 @@
       "stopped": "σταματημένο",
       "error": "σφάλμα",
       "starting": "εκκινεί",
-      "stopping": "σταματά"
+      "stopping": "σταματά",
+      "warning": "προειδοποίηση",
+      "unknown": "άγνωστο",
+      "healthy": "υγιές"
+    },
+    "detail": {
+      "wallet": "Πορτοφόλι",
+      "template": "Πρότυπο",
+      "last_run": "Τελευταία εκτέλεση",
+      "unknownWallet": "άγνωστο"
+    },
+    "runStatus": {
+      "running": "Εκτελείται",
+      "succeeded": "Επιτυχές",
+      "failed": "Απέτυχε",
+      "cancelled": "Ακυρώθηκε"
     }
   },
   "template": {

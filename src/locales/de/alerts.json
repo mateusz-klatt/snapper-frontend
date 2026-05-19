@@ -36,6 +36,9 @@
   },
   "loading": "Alarme werden geladen…",
   "navTitle": "Alarme",
+  "page": {
+    "subtitle": "Aktueller Warnungsverlauf für Ihr Konto."
+  },
   "priority": {
     "high": "Hoch",
     "low": "Niedrig",

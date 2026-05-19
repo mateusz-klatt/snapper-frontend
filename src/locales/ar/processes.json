@@ -21,7 +21,22 @@
       "stopped": "متوقف",
       "error": "خطأ",
       "starting": "جارٍ البدء",
-      "stopping": "جارٍ الإيقاف"
+      "stopping": "جارٍ الإيقاف",
+      "warning": "تحذير",
+      "unknown": "غير معروف",
+      "healthy": "سليم"
+    },
+    "detail": {
+      "wallet": "محفظة",
+      "template": "قالب",
+      "last_run": "آخر تشغيل",
+      "unknownWallet": "غير معروف"
+    },
+    "runStatus": {
+      "running": "قيد التشغيل",
+      "succeeded": "نجح",
+      "failed": "فشل",
+      "cancelled": "ملغى"
     }
   },
   "template": {

@@ -17,7 +17,8 @@
     "error": "Lỗi",
     "warning": "Cảnh báo",
     "completed": "Đã hoàn tất",
-    "unknown": "Không xác định"
+    "unknown": "Không xác định",
+    "running": "Đang chạy"
   },
   "metrics": {
     "tradingEngine": "Trading Engine",
@@ -91,7 +92,7 @@
       "status": "Trạng thái"
     },
     "retainDays": "{{days}}n",
-    "ok": "ok",
+    "ok": "OK",
     "error": "lỗi"
   },
   "systemMetrics": {

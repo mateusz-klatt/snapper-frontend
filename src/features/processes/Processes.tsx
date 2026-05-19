@@ -345,7 +345,7 @@ export const Processes: React.FC = () => {
               const heartbeat = getHeartbeat(instance.name)
               const walletShort = instance.wallet_public_id
                 ? `${instance.wallet_public_id.slice(0, 8)}…`
-                : 'unknown'
+                : t('card.detail.unknownWallet', { defaultValue: 'unknown' })
               const details: Record<string, string> = {
                 wallet: walletShort,
                 template: instance.parent_template,
@@ -399,7 +399,11 @@ export const Processes: React.FC = () => {
               const details: Record<string, string> = {}
 
               if (latestRun) {
-                details.last_run = `${latestRun.status} (${formatTimestamp(latestRun.started_at)})`
+                const translatedStatus = t(`card.runStatus.${latestRun.status}`, {
+                  defaultValue: latestRun.status,
+                })
+
+                details.last_run = `${translatedStatus} (${formatTimestamp(latestRun.started_at)})`
               }
 
               return (

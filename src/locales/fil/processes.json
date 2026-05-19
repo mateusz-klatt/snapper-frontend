@@ -21,7 +21,22 @@
       "stopped": "nakahinto",
       "error": "error",
       "starting": "sini-start",
-      "stopping": "sini-stop"
+      "stopping": "sini-stop",
+      "warning": "babala",
+      "unknown": "hindi alam",
+      "healthy": "malusog"
+    },
+    "detail": {
+      "wallet": "Wallet",
+      "template": "Template",
+      "last_run": "Huling run",
+      "unknownWallet": "hindi kilala"
+    },
+    "runStatus": {
+      "running": "Tumatakbo",
+      "succeeded": "Nagtagumpay",
+      "failed": "Nabigo",
+      "cancelled": "Kinansela"
     }
   },
   "template": {

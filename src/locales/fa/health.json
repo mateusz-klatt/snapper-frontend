@@ -17,7 +17,8 @@
     "error": "خطا",
     "warning": "هشدار",
     "completed": "تکمیل شد",
-    "unknown": "نامشخص"
+    "unknown": "نامشخص",
+    "running": "در حال اجرا"
   },
   "metrics": {
     "tradingEngine": "موتور معاملاتی",
@@ -91,7 +92,7 @@
       "status": "وضعیت"
     },
     "retainDays": "{{days}}ر",
-    "ok": "خوب",
+    "ok": "OK",
     "error": "خطا"
   },
   "systemMetrics": {

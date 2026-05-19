@@ -21,7 +21,22 @@
       "stopped": "остановлен",
       "error": "ошибка",
       "starting": "запуск",
-      "stopping": "остановка"
+      "stopping": "остановка",
+      "warning": "предупреждение",
+      "unknown": "неизвестно",
+      "healthy": "норма"
+    },
+    "detail": {
+      "wallet": "Кошелёк",
+      "template": "Шаблон",
+      "last_run": "Последний запуск",
+      "unknownWallet": "неизвестный"
+    },
+    "runStatus": {
+      "running": "Выполняется",
+      "succeeded": "Успешно",
+      "failed": "Не удалось",
+      "cancelled": "Отменено"
     }
   },
   "template": {

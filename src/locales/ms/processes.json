@@ -21,7 +21,22 @@
       "stopped": "dihentikan",
       "error": "ralat",
       "starting": "memulakan",
-      "stopping": "menghentikan"
+      "stopping": "menghentikan",
+      "warning": "amaran",
+      "unknown": "tidak diketahui",
+      "healthy": "sihat"
+    },
+    "detail": {
+      "wallet": "Dompet",
+      "template": "Templat",
+      "last_run": "Run terakhir",
+      "unknownWallet": "tidak diketahui"
+    },
+    "runStatus": {
+      "running": "Berjalan",
+      "succeeded": "Berjaya",
+      "failed": "Gagal",
+      "cancelled": "Dibatalkan"
     }
   },
   "template": {
