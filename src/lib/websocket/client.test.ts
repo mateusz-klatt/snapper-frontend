@@ -39,6 +39,7 @@ vi.mock('./topics', () => ({
   SIGNALS_TOPIC_PREFIX: 'signals.',
   HEARTBEATS_TOPIC_PREFIX: 'system.heartbeats.',
   AI_REVIEWS_TOPIC_PREFIX: 'ai_reviews.',
+  ALERTS_TOPIC_PREFIX: 'alerts.',
   getSubscriptionTopics: vi.fn(() => [
     'market.',
     'orders.commands.',
@@ -47,6 +48,7 @@ vi.mock('./topics', () => ({
     'strategy.',
     'system.heartbeats.',
     'ai_reviews.',
+    'alerts.',
   ]),
 }))
 vi.mock('./reconnect', () => ({
@@ -574,6 +576,16 @@ describe('WebSocketClient', () => {
     it('subscribeToHeartbeats', () => {
       client.subscribeToHeartbeats()
       expect(client.getSubscribedTopics()).toContain('system.heartbeats.')
+    })
+    it('subscribeToAlerts', () => {
+      client.subscribeToAlerts()
+      expect(client.getSubscribedTopics()).toContain('alerts.')
+    })
+    it('unsubscribeFromAlerts removes the prefix from the active set', () => {
+      client.subscribeToAlerts()
+      expect(client.getSubscribedTopics()).toContain('alerts.')
+      client.unsubscribeFromAlerts()
+      expect(client.getSubscribedTopics()).not.toContain('alerts.')
     })
     it('subscribeToAll', () => {
       client.subscribeToAll()

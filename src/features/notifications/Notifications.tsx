@@ -1,27 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHashSubpath } from '../../hooks/useHashRouting'
+import { currentHashQuery } from '../../lib/hash/currentHashQuery'
 import { AlertDetailModal } from './AlertDetailModal'
 import { NotificationsList } from './NotificationsList'
+import { useAlertsLiveSubscription } from './hooks/useAlertsLiveSubscription'
 
 const HASH_PREFIX = 'notifications'
-
-/**
- * Extract the `?param=value` suffix of the current hash, if any.
- *
- * The app's hash routing carries scope query params (`?wallet=X`,
- * `?operator=Y`, `?as_of=Z`) appended to the tab segment. When the
- * Alerts tab rewrites the hash to open / close the detail modal we
- * preserve that suffix; otherwise the next render of the
- * `WalletPicker` / `OperatorPicker` would see them dropped and
- * silently reset scope.
- */
-function currentHashQuery(): string {
-  const hash = globalThis.location.hash
-  const qIdx = hash.indexOf('?')
-
-  return qIdx === -1 ? '' : hash.slice(qIdx)
-}
 
 /**
  * Top-level Alerts feature.
@@ -38,6 +23,8 @@ function currentHashQuery(): string {
 export const Notifications: React.FC = () => {
   const { t } = useTranslation('alerts')
   const subpath = useHashSubpath(HASH_PREFIX)
+
+  useAlertsLiveSubscription()
   const deepLinkedPid = subpath[0] ?? null
   const [openPid, setOpenPid] = useState<string | null>(deepLinkedPid)
 

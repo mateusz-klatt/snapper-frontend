@@ -2,6 +2,7 @@ export type {
   AiReviewCapsViolationFrameData,
   AiReviewDecisionAckFrameData,
   AiReviewRequestFrameData,
+  AlertEventData,
   BacktestProgressData,
   TickData,
   CandleData,
@@ -45,6 +46,7 @@ import type {
   AiReviewCapsViolationFrameData,
   AiReviewDecisionAckFrameData,
   AiReviewRequestFrameData,
+  AlertEventData,
   BacktestProgressData,
   TickData,
   CandleData,
@@ -89,6 +91,7 @@ export type WebSocketMessages =
   | AiReviewCapsViolationFrameData
   | AiReviewDecisionAckFrameData
   | AiReviewRequestFrameData
+  | AlertEventData
   | BacktestProgressData
   | TickData
   | CandleData
@@ -170,6 +173,10 @@ export function isAiReviewCapsViolation(
   msg: WebSocketMessages
 ): msg is AiReviewCapsViolationFrameData {
   return msg.type === 'ai_review.caps_violation'
+}
+
+export function isAlertEvent(msg: WebSocketMessages): msg is AlertEventData {
+  return msg.type === 'alert_event'
 }
 
 export function isProcessSummaryEvent(msg: WebSocketMessages): msg is ProcessSummaryEventData {

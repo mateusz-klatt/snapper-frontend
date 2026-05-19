@@ -80,5 +80,6 @@
     "settings": "Settings",
     "signals": "Signals",
     "strategies": "Strategies"
-  }
+  },
+  "view": "View"
 }

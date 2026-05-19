@@ -44,6 +44,27 @@ describe('parseWsMessage', () => {
     )
   })
 
+  it('parses alert_event frames (Phase E web live-refresh)', () => {
+    const message = {
+      type: 'alert_event',
+      sequence_id: 1,
+      public_id: '019dcaf5-0a22-7ef2-8767-9a37d05a7f68',
+      timestamp: '2026-05-19T12:00:00.000Z',
+      session_id: 'sess-xyz',
+      user_public_id: 'user-1',
+      alert_type: 'order_fill_full',
+      priority: 'medium',
+      is_safety_critical: false,
+      title: 'Order filled',
+      body: 'BUY 100 BTC @ 78,000',
+    }
+    const result = parseWsMessage(message)
+
+    expect(result).not.toBeNull()
+    expect(result?.type).toBe('alert_event')
+    expect(result).toMatchObject(message)
+  })
+
   it('parses ai_review.request frames', () => {
     const message = {
       type: 'ai_review.request',

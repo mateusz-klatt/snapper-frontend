@@ -23,6 +23,10 @@ vi.mock('../../stores/app', () => ({
   ),
 }))
 
+vi.mock('./hooks/useAlertsLiveSubscription', () => ({
+  useAlertsLiveSubscription: vi.fn(),
+}))
+
 const getAlertHistoryMock = vi.fn()
 const getAlertMock = vi.fn()
 

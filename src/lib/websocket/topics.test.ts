@@ -11,6 +11,7 @@ import {
   STRATEGY_TOPIC_PREFIX,
   HEARTBEATS_TOPIC_PREFIX,
   AI_REVIEWS_TOPIC_PREFIX,
+  ALERTS_TOPIC_PREFIX,
 } from './topics'
 import {
   createCandle,
@@ -186,6 +187,9 @@ describe('topics', () => {
     it('exports AI_REVIEWS_TOPIC_PREFIX', () => {
       expect(AI_REVIEWS_TOPIC_PREFIX).toBe('ai_reviews.')
     })
+    it('exports ALERTS_TOPIC_PREFIX', () => {
+      expect(ALERTS_TOPIC_PREFIX).toBe('alerts.')
+    })
   })
   describe('getSubscriptionTopics', () => {
     it('returns array of valid subscription prefixes', () => {
@@ -199,13 +203,17 @@ describe('topics', () => {
         'strategy.',
         'system.heartbeats.',
         'ai_reviews.',
+        'alerts.',
       ])
     })
-    it('returns 7 topics', () => {
-      expect(getSubscriptionTopics()).toHaveLength(7)
+    it('returns 8 topics', () => {
+      expect(getSubscriptionTopics()).toHaveLength(8)
     })
     it('includes ai_reviews prefix so AI delegate consumers receive request/decision_ack/caps_violation frames', () => {
       expect(getSubscriptionTopics()).toContain(AI_REVIEWS_TOPIC_PREFIX)
+    })
+    it('includes alerts prefix so Phase E web live-refresh receives alert_event frames', () => {
+      expect(getSubscriptionTopics()).toContain(ALERTS_TOPIC_PREFIX)
     })
   })
 })

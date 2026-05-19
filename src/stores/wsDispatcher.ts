@@ -1,5 +1,10 @@
 import { QueryClient } from '@tanstack/react-query'
+import React from 'react'
+import toast from 'react-hot-toast'
 import WebSocketClient from '../lib/websocket/client'
+import i18n from '../i18n/config'
+import { AlertToastBody } from '../features/notifications/AlertToastBody'
+import { openAlertModal } from '../features/notifications/openAlertModal'
 import { useMarketStore } from './market'
 import { useAppStore } from './app'
 import { useAuthStore } from './auth'
@@ -13,6 +18,7 @@ import {
   type AiReviewCapsViolationFrameData,
   type AiReviewDecisionAckFrameData,
   type AiReviewRequestFrameData,
+  type AlertEventData,
   isOrder,
   isExecution,
   isSignal,
@@ -20,6 +26,7 @@ import {
   isTick,
   isTrade,
   isHeartbeat,
+  isAlertEvent,
   isAiReviewRequest,
   isAiReviewDecisionAck,
   isAiReviewCapsViolation,
@@ -43,6 +50,8 @@ export type AiReviewActivityFrame =
 
 export const AI_REVIEW_ACTIVITY_QUERY_KEY_ROOT = 'ai-review-activity'
 export const AI_REVIEW_ACTIVITY_RING_CAP = 1024
+export const ALERT_TOAST_RING_CAP = 3
+export const ALERT_HISTORY_QUERY_KEY_PREFIX = ['alerts', 'history'] as const
 
 /**
  * Compose the per-user cache key for the AI review activity ring buffer.
@@ -101,6 +110,7 @@ export class WSDispatcher {
   private orderBuffer: OrderData[] | null = null
   private executionBuffer: ExecutionData[] | null = null
   private signalBuffer: SignalData[] | null = null
+  private readonly toastIds: string[] = []
   constructor(config: DispatcherConfig) {
     this.queryClient = config.queryClient
     this.maxCandles = config.maxCandles ?? DEFAULT_MAX_CANDLES
@@ -121,6 +131,7 @@ export class WSDispatcher {
       client.onMessage('ai_review.request', this.handleAiReviewActivityMessage.bind(this)),
       client.onMessage('ai_review.decision_ack', this.handleAiReviewActivityMessage.bind(this)),
       client.onMessage('ai_review.caps_violation', this.handleAiReviewActivityMessage.bind(this)),
+      client.onMessage('alert_event', this.handleAlertEventMessage.bind(this)),
       client.onMessage('process_summary_event', this.handleProcessSummaryEvent.bind(this)),
       client.onMessage('process_configured_event', this.handleProcessConfiguredEvent.bind(this)),
       client.onMessage('process_run_event', this.handleProcessRunEvent.bind(this)),
@@ -477,6 +488,84 @@ export class WSDispatcher {
 
     this.mergeAiReviewActivity(message)
     this.invalidateActive(queryKeys.pendingAiReviewsAll)
+  }
+  /**
+   * Phase E live-refresh: invalidate the Alerts tab list + surface a
+   * priority-tinted toast.
+   *
+   * Invocation: registered on `attach()` for the `alert_event` message
+   * type. The sidecar (`src/snapper/application/notify/sidecar.py`)
+   * publishes one `AlertEventData` frame per persisted alert AFTER
+   * the `alert_events` SCD2 insert and BEFORE the APNs fanout; the
+   * bridge forwards the frame iff the destination socket's principal
+   * matches the payload's `user_public_id` (ADMIN bypasses).
+   *
+   * Cache invalidation: the `['alerts', 'history']` prefix matches
+   * every `useAlertHistory(asOf, operator, wallet)` variant, so any
+   * mounted Alerts tab refetches the first page on the next tick.
+   * React Query coalesces concurrent invalidations on the same key,
+   * so a burst of alert frames does NOT multiply REST calls.
+   */
+  private handleAlertEventMessage(message: WebSocketMessages): void {
+    if (!isAlertEvent(message)) return
+
+    this.invalidateActive([...ALERT_HISTORY_QUERY_KEY_PREFIX])
+    this.scheduleAlertToast(message)
+  }
+  /**
+   * Render the toast for a freshly-received alert frame.
+   *
+   * Skip rule (Decisions table in plan v4): suppress toast iff
+   * `priority === 'low' && !is_safety_critical`. Low-priority
+   * background-info alerts surface only in the list refresh —
+   * safety-critical alerts ALWAYS toast (mirrors iOS quiet-hours
+   * bypass semantics for the same flag).
+   *
+   * High / safety-critical path uses `toast.error` with
+   * `ariaProps.role='alert'` + `aria-live='assertive'` so screen
+   * readers announce it; medium uses the default `toast()` styling.
+   *
+   * Ring buffer (cap `ALERT_TOAST_RING_CAP`): when more than N toasts
+   * are visible the oldest id is dismissed via `toast.dismiss(id)`
+   * to keep the top-right stack readable.
+   *
+   * Locale: `frame.title` / `frame.body` are backend-resolved per
+   * Phase D (`user.default_language`). The CTA label `toast.cta.view`
+   * is namespaced under the `alerts` i18n catalog (imported i18n
+   * direct, no constructor injection — same pattern as
+   * `stores/app.ts` / `stores/auth.ts`).
+   */
+  private scheduleAlertToast(frame: AlertEventData): void {
+    const isLowAndNotSafety = frame.priority === 'low' && !frame.is_safety_critical
+
+    if (isLowAndNotSafety) return
+
+    const isHigh = (frame.is_safety_critical ?? false) || frame.priority === 'high'
+    const cta = i18n.t('view', { ns: 'common' })
+    const message = `${frame.title}\n${frame.body}`
+
+    const renderBody = (toastObj: { id: string }) =>
+      React.createElement(AlertToastBody, {
+        message,
+        cta,
+        onClick: () => openAlertModal(frame.public_id, toastObj.id),
+      })
+
+    const id = isHigh
+      ? toast.error(renderBody, {
+          duration: 6000,
+          ariaProps: { role: 'alert', 'aria-live': 'assertive' },
+        })
+      : toast(renderBody, { duration: 4000 })
+
+    this.toastIds.push(id)
+
+    if (this.toastIds.length > ALERT_TOAST_RING_CAP) {
+      const overflow = this.toastIds.length - ALERT_TOAST_RING_CAP
+      const dropped = this.toastIds.splice(0, overflow)
+
+      dropped.forEach(d => toast.dismiss(d))
+    }
   }
   /**
    * Invalidate paths the four 2026-05-14 emit-site topics drive.

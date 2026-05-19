@@ -26,6 +26,7 @@ import {
   ORDERS_EVENTS_PREFIX,
   SIGNALS_TOPIC_PREFIX,
   HEARTBEATS_TOPIC_PREFIX,
+  ALERTS_TOPIC_PREFIX,
   getSubscriptionTopics,
 } from './topics'
 import {
@@ -669,6 +670,12 @@ class WebSocketClient {
   }
   subscribeToHeartbeats(): void {
     this.subscribe([HEARTBEATS_TOPIC_PREFIX])
+  }
+  subscribeToAlerts(): void {
+    this.subscribe([ALERTS_TOPIC_PREFIX])
+  }
+  unsubscribeFromAlerts(): void {
+    this.unsubscribe([ALERTS_TOPIC_PREFIX])
   }
   subscribeToAll(): void {
     this.subscribe(getSubscriptionTopics())
