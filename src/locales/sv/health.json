@@ -17,7 +17,8 @@
     "error": "Fel",
     "warning": "Varning",
     "completed": "Slutförd",
-    "unknown": "Okänd"
+    "unknown": "Okänd",
+    "running": "Körs"
   },
   "metrics": {
     "tradingEngine": "Tradingmotor",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "fel"
   },
   "systemMetrics": {

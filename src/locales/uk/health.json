@@ -17,7 +17,8 @@
     "error": "Помилка",
     "warning": "Попередження",
     "completed": "Завершено",
-    "unknown": "Невідомо"
+    "unknown": "Невідомо",
+    "running": "Виконується"
   },
   "metrics": {
     "tradingEngine": "Торговий рушій",
@@ -91,7 +92,7 @@
       "status": "Статус"
     },
     "retainDays": "{{days}} д",
-    "ok": "ok",
+    "ok": "OK",
     "error": "error"
   },
   "systemMetrics": {

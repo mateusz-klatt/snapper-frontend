@@ -36,6 +36,9 @@
   },
   "loading": "Memuat peringatan…",
   "navTitle": "Peringatan",
+  "page": {
+    "subtitle": "Riwayat peringatan terbaru untuk akun Anda."
+  },
   "priority": {
     "high": "Tinggi",
     "low": "Rendah",

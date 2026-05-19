@@ -36,6 +36,9 @@
   },
   "loading": "Memuatkan amaran…",
   "navTitle": "Amaran",
+  "page": {
+    "subtitle": "Sejarah amaran terkini untuk akaun anda."
+  },
   "priority": {
     "high": "Tinggi",
     "low": "Rendah",

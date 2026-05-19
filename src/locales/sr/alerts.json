@@ -36,6 +36,9 @@
   },
   "loading": "Učitavanje upozorenja…",
   "navTitle": "Upozorenja",
+  "page": {
+    "subtitle": "Nedavna istorija upozorenja za vaš nalog."
+  },
   "priority": {
     "high": "Visok",
     "low": "Nizak",

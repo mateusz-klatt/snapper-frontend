@@ -36,6 +36,9 @@
   },
   "loading": "Įkeliami įspėjimai…",
   "navTitle": "Įspėjimai",
+  "page": {
+    "subtitle": "Naujausia paskyros įspėjimų istorija."
+  },
   "priority": {
     "high": "Aukštas",
     "low": "Žemas",

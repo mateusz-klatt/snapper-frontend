@@ -129,7 +129,7 @@ describe('SystemMetricsCard', () => {
     renderWithProviders(<SystemMetricsCard />)
     expect(screen.getByText('PID')).toBeInTheDocument()
     expect(screen.getByText('12345')).toBeInTheDocument()
-    expect(screen.getByText('Status: running')).toBeInTheDocument()
+    expect(screen.getByText('Status: Running')).toBeInTheDocument()
     expect(screen.getByText('128.0 MB')).toBeInTheDocument()
     expect(screen.getByText('1.0h')).toBeInTheDocument()
     expect(screen.getByText('4.7%')).toBeInTheDocument()

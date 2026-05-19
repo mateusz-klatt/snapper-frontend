@@ -17,7 +17,8 @@
     "error": "Erro",
     "warning": "Alerta",
     "completed": "Concluído",
-    "unknown": "Desconhecido"
+    "unknown": "Desconhecido",
+    "running": "Em execução"
   },
   "metrics": {
     "tradingEngine": "Motor de trading",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "erro"
   },
   "systemMetrics": {

@@ -21,7 +21,22 @@
       "stopped": "pysäytetty",
       "error": "virhe",
       "starting": "käynnistyy",
-      "stopping": "pysähtyy"
+      "stopping": "pysähtyy",
+      "warning": "varoitus",
+      "unknown": "tuntematon",
+      "healthy": "kunnossa"
+    },
+    "detail": {
+      "wallet": "Lompakko",
+      "template": "Malli",
+      "last_run": "Viimeisin ajo",
+      "unknownWallet": "tuntematon"
+    },
+    "runStatus": {
+      "running": "Käynnissä",
+      "succeeded": "Onnistui",
+      "failed": "Epäonnistui",
+      "cancelled": "Peruttu"
     }
   },
   "template": {

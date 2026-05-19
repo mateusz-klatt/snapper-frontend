@@ -21,7 +21,22 @@
       "stopped": "stopped",
       "error": "error",
       "starting": "starting",
-      "stopping": "stopping"
+      "stopping": "stopping",
+      "warning": "warning",
+      "unknown": "unknown",
+      "healthy": "healthy"
+    },
+    "detail": {
+      "wallet": "Wallet",
+      "template": "Template",
+      "last_run": "Last run",
+      "unknownWallet": "unknown"
+    },
+    "runStatus": {
+      "running": "Running",
+      "succeeded": "Succeeded",
+      "failed": "Failed",
+      "cancelled": "Cancelled"
     }
   },
   "template": {

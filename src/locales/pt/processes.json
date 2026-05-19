@@ -21,7 +21,22 @@
       "stopped": "parado",
       "error": "erro",
       "starting": "iniciando",
-      "stopping": "parando"
+      "stopping": "parando",
+      "warning": "aviso",
+      "unknown": "desconhecido",
+      "healthy": "saudável"
+    },
+    "detail": {
+      "wallet": "Carteira",
+      "template": "Template",
+      "last_run": "Última execução",
+      "unknownWallet": "desconhecida"
+    },
+    "runStatus": {
+      "running": "Em execução",
+      "succeeded": "Bem-sucedido",
+      "failed": "Falhou",
+      "cancelled": "Cancelado"
     }
   },
   "template": {

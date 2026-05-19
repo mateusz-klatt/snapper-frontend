@@ -17,7 +17,8 @@
     "error": "Gabim",
     "warning": "Paralajmërim",
     "completed": "Përfunduar",
-    "unknown": "I panjohur"
+    "unknown": "I panjohur",
+    "running": "Në ekzekutim"
   },
   "metrics": {
     "tradingEngine": "Motori i tregtimit",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "gabim"
   },
   "systemMetrics": {

@@ -17,7 +17,8 @@
     "error": "Սխալ",
     "warning": "Նախազգուշացում",
     "completed": "Ավարտված",
-    "unknown": "Անհայտ"
+    "unknown": "Անհայտ",
+    "running": "Ընթացքի մեջ է"
   },
   "metrics": {
     "tradingEngine": "Առևտրային շարժիչ",
@@ -91,7 +92,7 @@
       "status": "Վիճակ"
     },
     "retainDays": "{{days}} օ",
-    "ok": "ok",
+    "ok": "OK",
     "error": "սխալ"
   },
   "systemMetrics": {

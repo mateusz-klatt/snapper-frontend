@@ -21,7 +21,22 @@
       "stopped": "נעצר",
       "error": "שגיאה",
       "starting": "מתחיל",
-      "stopping": "עוצר"
+      "stopping": "עוצר",
+      "warning": "אזהרה",
+      "unknown": "לא ידוע",
+      "healthy": "תקין"
+    },
+    "detail": {
+      "wallet": "ארנק",
+      "template": "תבנית",
+      "last_run": "הרצה אחרונה",
+      "unknownWallet": "לא ידוע"
+    },
+    "runStatus": {
+      "running": "פועל",
+      "succeeded": "הצליח",
+      "failed": "נכשל",
+      "cancelled": "בוטל"
     }
   },
   "template": {

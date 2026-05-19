@@ -36,6 +36,9 @@
   },
   "loading": "Caricamento avvisi…",
   "navTitle": "Avvisi",
+  "page": {
+    "subtitle": "Cronologia recente degli avvisi del tuo account."
+  },
   "priority": {
     "high": "Alta",
     "low": "Bassa",

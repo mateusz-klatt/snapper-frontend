@@ -21,7 +21,22 @@
       "stopped": "zatrzymany",
       "error": "błąd",
       "starting": "uruchamianie",
-      "stopping": "zatrzymywanie"
+      "stopping": "zatrzymywanie",
+      "warning": "ostrzeżenie",
+      "unknown": "nieznany",
+      "healthy": "sprawny"
+    },
+    "detail": {
+      "wallet": "Portfel",
+      "template": "Szablon",
+      "last_run": "Ostatnie uruchomienie",
+      "unknownWallet": "nieznany"
+    },
+    "runStatus": {
+      "running": "Trwa",
+      "succeeded": "Powiodło się",
+      "failed": "Nie powiodło się",
+      "cancelled": "Anulowano"
     }
   },
   "template": {

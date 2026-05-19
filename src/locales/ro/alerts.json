@@ -36,6 +36,9 @@
   },
   "loading": "Se încarcă alertele…",
   "navTitle": "Alerte",
+  "page": {
+    "subtitle": "Istoricul recent al alertelor pentru contul tău."
+  },
   "priority": {
     "high": "Ridicată",
     "low": "Scăzută",

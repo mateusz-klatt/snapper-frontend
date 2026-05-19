@@ -36,6 +36,9 @@
   },
   "loading": "Laddar larm…",
   "navTitle": "Larm",
+  "page": {
+    "subtitle": "Senaste varningshistorik för ditt konto."
+  },
   "priority": {
     "high": "Hög",
     "low": "Låg",

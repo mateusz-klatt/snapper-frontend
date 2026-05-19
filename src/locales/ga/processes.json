@@ -21,7 +21,22 @@
       "stopped": "stoptha",
       "error": "earráid",
       "starting": "á thosú",
-      "stopping": "á stopadh"
+      "stopping": "á stopadh",
+      "warning": "rabhadh",
+      "unknown": "anaithnid",
+      "healthy": "folláin"
+    },
+    "detail": {
+      "wallet": "Sparán",
+      "template": "Teimpléad",
+      "last_run": "Rith deireanach",
+      "unknownWallet": "anaithnid"
+    },
+    "runStatus": {
+      "running": "Ag rith",
+      "succeeded": "D'éirigh leis",
+      "failed": "Teipthe",
+      "cancelled": "Cealaithe"
     }
   },
   "template": {

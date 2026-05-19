@@ -17,7 +17,8 @@
     "error": "အမှား",
     "warning": "သတိပေးချက်",
     "completed": "ပြီးဆုံးသည်",
-    "unknown": "မသိပါ"
+    "unknown": "မသိပါ",
+    "running": "လည်ပတ်နေသည်"
   },
   "metrics": {
     "tradingEngine": "ကုန်သွယ်ရေး Engine",
@@ -91,7 +92,7 @@
       "status": "အခြေအနေ"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "error"
   },
   "systemMetrics": {

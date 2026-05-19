@@ -21,7 +21,22 @@
       "stopped": "zastaveno",
       "error": "chyba",
       "starting": "spouští se",
-      "stopping": "zastavuje se"
+      "stopping": "zastavuje se",
+      "warning": "varování",
+      "unknown": "neznámý",
+      "healthy": "v pořádku"
+    },
+    "detail": {
+      "wallet": "Peněženka",
+      "template": "Šablona",
+      "last_run": "Poslední běh",
+      "unknownWallet": "neznámá"
+    },
+    "runStatus": {
+      "running": "Probíhá",
+      "succeeded": "Úspěšné",
+      "failed": "Selhalo",
+      "cancelled": "Zrušeno"
     }
   },
   "template": {

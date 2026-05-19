@@ -21,7 +21,22 @@
       "stopped": "หยุดแล้ว",
       "error": "ข้อผิดพลาด",
       "starting": "กำลังเริ่ม",
-      "stopping": "กำลังหยุด"
+      "stopping": "กำลังหยุด",
+      "warning": "คำเตือน",
+      "unknown": "ไม่ทราบ",
+      "healthy": "ปกติ"
+    },
+    "detail": {
+      "wallet": "กระเป๋าเงิน",
+      "template": "เทมเพลต",
+      "last_run": "การรันล่าสุด",
+      "unknownWallet": "ไม่ทราบ"
+    },
+    "runStatus": {
+      "running": "กำลังทำงาน",
+      "succeeded": "สำเร็จ",
+      "failed": "ล้มเหลว",
+      "cancelled": "ยกเลิกแล้ว"
     }
   },
   "template": {

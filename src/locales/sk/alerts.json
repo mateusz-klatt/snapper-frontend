@@ -36,6 +36,9 @@
   },
   "loading": "Načítavanie upozornení…",
   "navTitle": "Upozornenia",
+  "page": {
+    "subtitle": "Nedávna história upozornení pre váš účet."
+  },
   "priority": {
     "high": "Vysoká",
     "low": "Nízka",

@@ -36,6 +36,9 @@
   },
   "loading": "Po ngarkohen sinjalizimet…",
   "navTitle": "Sinjalizime",
+  "page": {
+    "subtitle": "Historia e fundit e alarmeve për llogarinë tuaj."
+  },
   "priority": {
     "high": "I lartë",
     "low": "I ulët",

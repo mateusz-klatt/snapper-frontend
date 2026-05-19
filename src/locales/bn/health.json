@@ -17,7 +17,8 @@
     "error": "ত্রুটি",
     "warning": "সতর্কতা",
     "completed": "সম্পন্ন",
-    "unknown": "অজানা"
+    "unknown": "অজানা",
+    "running": "চলছে"
   },
   "metrics": {
     "tradingEngine": "ট্রেডিং ইঞ্জিন",
@@ -91,7 +92,7 @@
       "status": "স্ট্যাটাস"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "ত্রুটি"
   },
   "systemMetrics": {

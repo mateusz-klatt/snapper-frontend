@@ -36,6 +36,9 @@
   },
   "loading": "Uyarılar yükleniyor…",
   "navTitle": "Uyarılar",
+  "page": {
+    "subtitle": "Hesabınıza ait son uyarı geçmişi."
+  },
   "priority": {
     "high": "Yüksek",
     "low": "Düşük",

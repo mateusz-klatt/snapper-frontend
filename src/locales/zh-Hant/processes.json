@@ -21,7 +21,22 @@
       "stopped": "已停止",
       "error": "錯誤",
       "starting": "啟動中",
-      "stopping": "停止中"
+      "stopping": "停止中",
+      "warning": "警告",
+      "unknown": "未知",
+      "healthy": "正常"
+    },
+    "detail": {
+      "wallet": "錢包",
+      "template": "模板",
+      "last_run": "最近運行",
+      "unknownWallet": "未知"
+    },
+    "runStatus": {
+      "running": "運行中",
+      "succeeded": "成功",
+      "failed": "失敗",
+      "cancelled": "已取消"
     }
   },
   "template": {

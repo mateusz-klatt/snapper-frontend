@@ -17,7 +17,8 @@
     "error": "Kļūda",
     "warning": "Brīdinājums",
     "completed": "Pabeigts",
-    "unknown": "Nezināms"
+    "unknown": "Nezināms",
+    "running": "Darbojas"
   },
   "metrics": {
     "tradingEngine": "Tirdzniecības dzinējs",
@@ -91,7 +92,7 @@
       "status": "Statuss"
     },
     "retainDays": "{{days}} d.",
-    "ok": "ok",
+    "ok": "OK",
     "error": "kļūda"
   },
   "systemMetrics": {

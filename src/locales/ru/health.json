@@ -17,7 +17,8 @@
     "error": "Ошибка",
     "warning": "Предупреждение",
     "completed": "Завершено",
-    "unknown": "Неизвестно"
+    "unknown": "Неизвестно",
+    "running": "Выполняется"
   },
   "metrics": {
     "tradingEngine": "Торговый движок",
@@ -91,7 +92,7 @@
       "status": "Статус"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "ошибка"
   },
   "systemMetrics": {

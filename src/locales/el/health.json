@@ -17,7 +17,8 @@
     "error": "Σφάλμα",
     "warning": "Προειδοποίηση",
     "completed": "Ολοκληρώθηκε",
-    "unknown": "Άγνωστο"
+    "unknown": "Άγνωστο",
+    "running": "Εκτελείται"
   },
   "metrics": {
     "tradingEngine": "Μηχανή συναλλαγών",
@@ -91,7 +92,7 @@
       "status": "Κατάσταση"
     },
     "retainDays": "{{days}} ημ.",
-    "ok": "ok",
+    "ok": "OK",
     "error": "σφάλμα"
   },
   "systemMetrics": {

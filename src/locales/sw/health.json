@@ -17,7 +17,8 @@
     "error": "Hitilafu",
     "warning": "Onyo",
     "completed": "Imekamilika",
-    "unknown": "Haijulikani"
+    "unknown": "Haijulikani",
+    "running": "Inaendelea"
   },
   "metrics": {
     "tradingEngine": "Engine ya Trading",
@@ -91,7 +92,7 @@
       "status": "Hali"
     },
     "retainDays": "{{days}}d",
-    "ok": "sawa",
+    "ok": "OK",
     "error": "hitilafu"
   },
   "systemMetrics": {

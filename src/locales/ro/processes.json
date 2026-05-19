@@ -21,7 +21,22 @@
       "stopped": "oprit",
       "error": "eroare",
       "starting": "pornire",
-      "stopping": "oprire"
+      "stopping": "oprire",
+      "warning": "avertisment",
+      "unknown": "necunoscut",
+      "healthy": "funcțional"
+    },
+    "detail": {
+      "wallet": "Portofel",
+      "template": "Șablon",
+      "last_run": "Ultima rulare",
+      "unknownWallet": "necunoscut"
+    },
+    "runStatus": {
+      "running": "În rulare",
+      "succeeded": "Reușit",
+      "failed": "Eșuat",
+      "cancelled": "Anulat"
     }
   },
   "template": {

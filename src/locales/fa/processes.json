@@ -21,7 +21,22 @@
       "stopped": "متوقف",
       "error": "خطا",
       "starting": "در حال شروع",
-      "stopping": "در حال توقف"
+      "stopping": "در حال توقف",
+      "warning": "هشدار",
+      "unknown": "ناشناخته",
+      "healthy": "سالم"
+    },
+    "detail": {
+      "wallet": "کیف پول",
+      "template": "قالب",
+      "last_run": "آخرین اجرا",
+      "unknownWallet": "نامشخص"
+    },
+    "runStatus": {
+      "running": "در حال اجرا",
+      "succeeded": "موفق",
+      "failed": "ناموفق",
+      "cancelled": "لغو شد"
     }
   },
   "template": {

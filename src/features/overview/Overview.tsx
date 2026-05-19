@@ -60,8 +60,14 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
   shortCost,
 }) => {
   const { t } = useTranslation('overview')
-  const pnlColorClass = (value: number): string =>
-    value >= 0 ? 'text-rising-600' : 'text-falling-600'
+
+  const pnlColorClass = (value: number): string => {
+    if (value > 0) return 'text-rising-600'
+    if (value < 0) return 'text-falling-600'
+
+    return 'text-alpine-700 dark:text-alpine-300'
+  }
+
   const netDelta = longCost - shortCost
 
   return (

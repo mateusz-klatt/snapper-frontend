@@ -17,7 +17,8 @@
     "error": "Error",
     "warning": "Babala",
     "completed": "Tapos na",
-    "unknown": "Hindi kilala"
+    "unknown": "Hindi kilala",
+    "running": "Tumatakbo"
   },
   "metrics": {
     "tradingEngine": "Trading engine",
@@ -91,7 +92,7 @@
       "status": "Katayuan"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "error"
   },
   "systemMetrics": {

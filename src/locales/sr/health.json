@@ -17,7 +17,8 @@
     "error": "Greška",
     "warning": "Upozorenje",
     "completed": "Završeno",
-    "unknown": "Nepoznato"
+    "unknown": "Nepoznato",
+    "running": "Pokrenuto"
   },
   "metrics": {
     "tradingEngine": "Trgovinski engine",
@@ -91,7 +92,7 @@
       "status": "Status"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "greška"
   },
   "systemMetrics": {

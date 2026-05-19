@@ -36,6 +36,9 @@
   },
   "loading": "Đang tải cảnh báo…",
   "navTitle": "Cảnh báo",
+  "page": {
+    "subtitle": "Lịch sử cảnh báo gần đây cho tài khoản của bạn."
+  },
   "priority": {
     "high": "Cao",
     "low": "Thấp",

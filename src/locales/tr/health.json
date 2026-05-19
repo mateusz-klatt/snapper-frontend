@@ -17,7 +17,8 @@
     "error": "Hata",
     "warning": "Uyarı",
     "completed": "Tamamlandı",
-    "unknown": "Bilinmiyor"
+    "unknown": "Bilinmiyor",
+    "running": "Çalışıyor"
   },
   "metrics": {
     "tradingEngine": "Trading Motoru",
@@ -91,7 +92,7 @@
       "status": "Durum"
     },
     "retainDays": "{{days}}g",
-    "ok": "tamam",
+    "ok": "OK",
     "error": "hata"
   },
   "systemMetrics": {

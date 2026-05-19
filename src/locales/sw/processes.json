@@ -21,7 +21,22 @@
       "stopped": "imesimamishwa",
       "error": "hitilafu",
       "starting": "inaanza",
-      "stopping": "inasimama"
+      "stopping": "inasimama",
+      "warning": "onyo",
+      "unknown": "haijulikani",
+      "healthy": "salama"
+    },
+    "detail": {
+      "wallet": "Pochi",
+      "template": "Kiolezo",
+      "last_run": "Uendeshaji wa mwisho",
+      "unknownWallet": "haijulikani"
+    },
+    "runStatus": {
+      "running": "Inaendelea",
+      "succeeded": "Imefanikiwa",
+      "failed": "Imeshindwa",
+      "cancelled": "Imeghairiwa"
     }
   },
   "template": {

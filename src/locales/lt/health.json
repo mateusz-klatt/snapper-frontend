@@ -17,7 +17,8 @@
     "error": "Klaida",
     "warning": "Įspėjimas",
     "completed": "Baigta",
-    "unknown": "Nežinoma"
+    "unknown": "Nežinoma",
+    "running": "Vykdoma"
   },
   "metrics": {
     "tradingEngine": "Prekybos variklis",
@@ -91,7 +92,7 @@
       "status": "Būsena"
     },
     "retainDays": "{{days}} d.",
-    "ok": "gerai",
+    "ok": "OK",
     "error": "klaida"
   },
   "systemMetrics": {

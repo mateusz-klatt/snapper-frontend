@@ -21,7 +21,22 @@
       "stopped": "gestoppt",
       "error": "Fehler",
       "starting": "wird gestartet",
-      "stopping": "wird gestoppt"
+      "stopping": "wird gestoppt",
+      "warning": "warnung",
+      "unknown": "unbekannt",
+      "healthy": "gesund"
+    },
+    "detail": {
+      "wallet": "Wallet",
+      "template": "Vorlage",
+      "last_run": "Letzter Lauf",
+      "unknownWallet": "unbekannt"
+    },
+    "runStatus": {
+      "running": "Läuft",
+      "succeeded": "Erfolgreich",
+      "failed": "Fehlgeschlagen",
+      "cancelled": "Abgebrochen"
     }
   },
   "template": {

@@ -36,6 +36,9 @@
   },
   "loading": "Laster varsler…",
   "navTitle": "Varsler",
+  "page": {
+    "subtitle": "Nylig varselshistorikk for kontoen din."
+  },
   "priority": {
     "high": "Høy",
     "low": "Lav",

@@ -21,7 +21,22 @@
       "stopped": "stoppet",
       "error": "feil",
       "starting": "starter",
-      "stopping": "stopper"
+      "stopping": "stopper",
+      "warning": "advarsel",
+      "unknown": "ukjent",
+      "healthy": "ok"
+    },
+    "detail": {
+      "wallet": "Lommebok",
+      "template": "Mal",
+      "last_run": "Siste kjøring",
+      "unknownWallet": "ukjent"
+    },
+    "runStatus": {
+      "running": "Kjører",
+      "succeeded": "Vellykket",
+      "failed": "Mislyktes",
+      "cancelled": "Kansellert"
     }
   },
   "template": {

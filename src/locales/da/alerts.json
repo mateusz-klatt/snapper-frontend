@@ -36,6 +36,9 @@
   },
   "loading": "Indlæser alarmer…",
   "navTitle": "Alarmer",
+  "page": {
+    "subtitle": "Seneste advarselshistorik for din konto."
+  },
   "priority": {
     "high": "Høj",
     "low": "Lav",

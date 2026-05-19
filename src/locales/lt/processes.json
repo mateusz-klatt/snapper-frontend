@@ -21,7 +21,22 @@
       "stopped": "sustabdyta",
       "error": "klaida",
       "starting": "paleidžiama",
-      "stopping": "stabdoma"
+      "stopping": "stabdoma",
+      "warning": "įspėjimas",
+      "unknown": "nežinoma",
+      "healthy": "veikia"
+    },
+    "detail": {
+      "wallet": "Piniginė",
+      "template": "Šablonas",
+      "last_run": "Paskutinis vykdymas",
+      "unknownWallet": "nežinoma"
+    },
+    "runStatus": {
+      "running": "Vykdoma",
+      "succeeded": "Pavyko",
+      "failed": "Nepavyko",
+      "cancelled": "Atšaukta"
     }
   },
   "template": {

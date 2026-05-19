@@ -17,7 +17,8 @@
     "error": "ข้อผิดพลาด",
     "warning": "คำเตือน",
     "completed": "เสร็จสมบูรณ์",
-    "unknown": "ไม่ทราบ"
+    "unknown": "ไม่ทราบ",
+    "running": "กำลังทำงาน"
   },
   "metrics": {
     "tradingEngine": "เอนจินการเทรด",
@@ -91,7 +92,7 @@
       "status": "สถานะ"
     },
     "retainDays": "{{days}}d",
-    "ok": "ok",
+    "ok": "OK",
     "error": "ข้อผิดพลาด"
   },
   "systemMetrics": {

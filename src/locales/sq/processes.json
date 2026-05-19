@@ -21,7 +21,22 @@
       "stopped": "ndaluar",
       "error": "gabim",
       "starting": "duke nisur",
-      "stopping": "duke ndaluar"
+      "stopping": "duke ndaluar",
+      "warning": "paralajmërim",
+      "unknown": "i panjohur",
+      "healthy": "i shëndetshëm"
+    },
+    "detail": {
+      "wallet": "Portofol",
+      "template": "Model",
+      "last_run": "Ekzekutimi i fundit",
+      "unknownWallet": "i panjohur"
+    },
+    "runStatus": {
+      "running": "Në ekzekutim",
+      "succeeded": "Me sukses",
+      "failed": "Dështoi",
+      "cancelled": "Anuluar"
     }
   },
   "template": {

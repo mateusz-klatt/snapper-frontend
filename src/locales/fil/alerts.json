@@ -36,6 +36,9 @@
   },
   "loading": "Kinukuha ang mga alerto…",
   "navTitle": "Mga Alerto",
+  "page": {
+    "subtitle": "Kasaysayan ng mga kamakailang alerto para sa iyong account."
+  },
   "priority": {
     "high": "Mataas",
     "low": "Mababa",

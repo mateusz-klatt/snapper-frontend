@@ -36,6 +36,9 @@
   },
   "loading": "アラートを読み込み中…",
   "navTitle": "アラート",
+  "page": {
+    "subtitle": "ご利用アカウントの最近のアラート履歴です。"
+  },
   "priority": {
     "high": "高",
     "low": "低",

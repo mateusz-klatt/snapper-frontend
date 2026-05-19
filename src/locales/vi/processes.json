@@ -21,7 +21,22 @@
       "stopped": "đã dừng",
       "error": "lỗi",
       "starting": "đang bắt đầu",
-      "stopping": "đang dừng"
+      "stopping": "đang dừng",
+      "warning": "cảnh báo",
+      "unknown": "không xác định",
+      "healthy": "khỏe mạnh"
+    },
+    "detail": {
+      "wallet": "Ví",
+      "template": "Mẫu",
+      "last_run": "Lượt chạy gần nhất",
+      "unknownWallet": "không xác định"
+    },
+    "runStatus": {
+      "running": "Đang chạy",
+      "succeeded": "Thành công",
+      "failed": "Thất bại",
+      "cancelled": "Đã hủy"
     }
   },
   "template": {

@@ -21,7 +21,22 @@
       "stopped": "detenido",
       "error": "error",
       "starting": "iniciando",
-      "stopping": "deteniendo"
+      "stopping": "deteniendo",
+      "warning": "advertencia",
+      "unknown": "desconocido",
+      "healthy": "saludable"
+    },
+    "detail": {
+      "wallet": "Cartera",
+      "template": "Plantilla",
+      "last_run": "Última ejecución",
+      "unknownWallet": "desconocida"
+    },
+    "runStatus": {
+      "running": "En ejecución",
+      "succeeded": "Correcto",
+      "failed": "Fallido",
+      "cancelled": "Cancelado"
     }
   },
   "template": {

@@ -101,7 +101,9 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
         <div className='space-y-1'>
           {Object.entries(details).map(([key, value]) => (
             <div key={key} className='flex gap-2 text-xs'>
-              <span className='text-muted-400 font-medium shrink-0'>{formatDetailKey(key)}:</span>
+              <span className='text-muted-400 font-medium shrink-0'>
+                {t(`card.detail.${key}`, { defaultValue: formatDetailKey(key) })}:
+              </span>
               <span className='text-muted-600 break-all'>{formatDetailValue(value)}</span>
             </div>
           ))}

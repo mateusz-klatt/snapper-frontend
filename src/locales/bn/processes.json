@@ -21,7 +21,22 @@
       "stopped": "বন্ধ",
       "error": "ত্রুটি",
       "starting": "শুরু হচ্ছে",
-      "stopping": "বন্ধ হচ্ছে"
+      "stopping": "বন্ধ হচ্ছে",
+      "warning": "সতর্কতা",
+      "unknown": "অজানা",
+      "healthy": "স্বাস্থ্যকর"
+    },
+    "detail": {
+      "wallet": "ওয়ালেট",
+      "template": "টেমপ্লেট",
+      "last_run": "শেষ রান",
+      "unknownWallet": "অজানা"
+    },
+    "runStatus": {
+      "running": "চলছে",
+      "succeeded": "সফল",
+      "failed": "ব্যর্থ",
+      "cancelled": "বাতিল"
     }
   },
   "template": {

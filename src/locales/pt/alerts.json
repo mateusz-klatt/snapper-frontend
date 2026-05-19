@@ -36,6 +36,9 @@
   },
   "loading": "Carregando alertas…",
   "navTitle": "Alertas",
+  "page": {
+    "subtitle": "Histórico recente de alertas da sua conta."
+  },
   "priority": {
     "high": "Alta",
     "low": "Baixa",

@@ -17,7 +17,8 @@
     "error": "Earráid",
     "warning": "Rabhadh",
     "completed": "Críochnaithe",
-    "unknown": "Anaithnid"
+    "unknown": "Anaithnid",
+    "running": "Ag rith"
   },
   "metrics": {
     "tradingEngine": "Inneall Trádála",
@@ -91,7 +92,7 @@
       "status": "Stádas"
     },
     "retainDays": "{{days}}l",
-    "ok": "ceart go leor",
+    "ok": "OK",
     "error": "earráid"
   },
   "systemMetrics": {

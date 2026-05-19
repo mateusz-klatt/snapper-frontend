@@ -21,7 +21,22 @@
       "stopped": "중지됨",
       "error": "오류",
       "starting": "시작 중",
-      "stopping": "중지 중"
+      "stopping": "중지 중",
+      "warning": "경고",
+      "unknown": "알 수 없음",
+      "healthy": "정상"
+    },
+    "detail": {
+      "wallet": "지갑",
+      "template": "템플릿",
+      "last_run": "마지막 실행",
+      "unknownWallet": "알 수 없음"
+    },
+    "runStatus": {
+      "running": "실행 중",
+      "succeeded": "성공",
+      "failed": "실패",
+      "cancelled": "취소됨"
     }
   },
   "template": {

@@ -17,7 +17,8 @@
     "error": "خطأ",
     "warning": "تحذير",
     "completed": "مكتمل",
-    "unknown": "غير معروف"
+    "unknown": "غير معروف",
+    "running": "قيد التشغيل"
   },
   "metrics": {
     "tradingEngine": "محرك التداول",
@@ -91,7 +92,7 @@
       "status": "الحالة"
     },
     "retainDays": "{{days}}ي",
-    "ok": "حسنًا",
+    "ok": "OK",
     "error": "خطأ"
   },
   "systemMetrics": {

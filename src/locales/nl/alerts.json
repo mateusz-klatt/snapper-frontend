@@ -36,6 +36,9 @@
   },
   "loading": "Alerts laden…",
   "navTitle": "Alerts",
+  "page": {
+    "subtitle": "Recente waarschuwingsgeschiedenis voor uw account."
+  },
   "priority": {
     "high": "Hoog",
     "low": "Laag",
