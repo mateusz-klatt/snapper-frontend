@@ -62,7 +62,7 @@ export function AiReviewActivityRow({
     case 'ai_review.caps_violation':
       return (
         <RowShell
-          icon={<AlertTriangle className='w-4 h-4 text-warn-600' />}
+          icon={<AlertTriangle className='w-4 h-4 text-warning-600' />}
           label={t('activityRow.capsViolation')}
           tone='warning'
           timestamp={frame.timestamp}

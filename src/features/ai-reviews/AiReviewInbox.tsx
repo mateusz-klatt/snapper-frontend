@@ -48,7 +48,7 @@ export function AiReviewInbox(): React.ReactElement {
   if (!isDelegate) {
     return (
       <div className='p-6'>
-        <div className='flex items-start gap-3 p-4 rounded-lg bg-warn-50 border border-warn-200 text-warn-800'>
+        <div className='flex items-start gap-3 p-4 rounded-lg bg-warning-50 border border-warning-200 text-warning-800'>
           <ShieldAlert className='w-5 h-5 shrink-0 mt-0.5' />
           <div>
             <h2 className='font-semibold mb-1'>{t('roleNotice.title')}</h2>
