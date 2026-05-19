@@ -32,7 +32,6 @@ const StatusIndicator: React.FC<{ status: string; showLabel: boolean }> = ({
       case 'healthy':
         return { color: 'bg-accent-500', label: t('status.healthy'), textColor: 'text-gain-600' }
       case 'stopped':
-      case 'not_running':
         return { color: 'bg-muted-400', label: t('status.stopped'), textColor: 'text-muted-600' }
       case 'error':
       case 'failed':
@@ -43,14 +42,8 @@ const StatusIndicator: React.FC<{ status: string; showLabel: boolean }> = ({
           label: t('status.warning'),
           textColor: 'text-warning-600',
         }
-      case 'completed':
-        return { color: 'bg-info-500', label: t('status.completed'), textColor: 'text-info-600' }
       default:
-        return {
-          color: 'bg-warning-500',
-          label: t('status.unknown'),
-          textColor: 'text-warning-600',
-        }
+        return { color: 'bg-info-500', label: t('status.completed'), textColor: 'text-info-600' }
     }
   }
 
@@ -72,11 +65,10 @@ const StatusIndicator: React.FC<{ status: string; showLabel: boolean }> = ({
   )
 }
 
-const ProcessCard: React.FC<{
+const BacktestProcessCard: React.FC<{
   name: string
   status: ProcessStatus
-  type: 'service' | 'backtest'
-}> = ({ name, status, type }) => {
+}> = ({ name, status }) => {
   const { t } = useTranslation('health')
 
   const formatUptime = (startedAt?: string): string => {
@@ -99,42 +91,23 @@ const ProcessCard: React.FC<{
     })
   }
 
-  const getProcessIcon = (_name: string, t2: string) => {
-    if (t2 === 'backtest') {
-      return (
-        <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-          <path
-            strokeLinecap='round'
-            strokeLinejoin='round'
-            strokeWidth={2}
-            d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
-          />
-        </svg>
-      )
-    }
-
-    return (
-      <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth={2}
-          d='M13 10V3L4 14h7v7l9-11h-7z'
-        />
-      </svg>
-    )
-  }
-
-  const typeLabel = type === 'backtest' ? t('process.backtest') : t('process.service')
-
   return (
     <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'>
       <div className='flex items-center justify-between mb-3'>
         <div className='flex items-center space-x-3'>
-          <div className='text-muted-500'>{getProcessIcon(name, type)}</div>
+          <div className='text-muted-500'>
+            <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth={2}
+                d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
+              />
+            </svg>
+          </div>
           <div>
             <h3 className='font-medium text-alpine-900'>{name}</h3>
-            <p className='text-xs capitalize text-muted-500'>{typeLabel}</p>
+            <p className='text-xs capitalize text-muted-500'>{t('process.backtest')}</p>
           </div>
         </div>
         <StatusIndicator status={status.status} showLabel />
@@ -257,80 +230,29 @@ export const Health: React.FC = () => {
           ))}
         </div>
       </div>
-      <div>
-        <h3 className='mb-4 text-lg font-medium text-alpine-900'>
-          {t('page.processStatusHeading')}
-        </h3>
-        {isLoading ? (
-          <HealthSkeleton className='mt-0 p-0' />
-        ) : (
-          <div className='grid gap-4'>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-              <ProcessCard
-                name={t('metrics.tradingEngine')}
-                status={statusPayload?.trader || { status: 'not_running' }}
-                type='service'
-              />
+      {isLoading && <HealthSkeleton className='mt-0 p-0' />}
+      {!isLoading &&
+        statusPayload?.backtests &&
+        Object.keys(statusPayload.backtests).length > 0 && (
+          <div>
+            <h3 className='mb-4 text-lg font-medium text-alpine-900'>
+              {t('page.activeBacktestsHeading')}
+            </h3>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              {Object.entries(statusPayload.backtests).map(([id, status]) => (
+                <BacktestProcessCard
+                  key={id}
+                  name={t('process.backtestName', { id: id.slice(0, 8) })}
+                  status={status}
+                />
+              ))}
             </div>
-            {statusPayload?.backtests && Object.keys(statusPayload.backtests).length > 0 && (
-              <div>
-                <h4 className='mb-3 text-md font-medium text-alpine-900'>
-                  {t('page.activeBacktestsHeading')}
-                </h4>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                  {Object.entries(statusPayload.backtests).map(([id, status]) => (
-                    <ProcessCard
-                      key={id}
-                      name={t('process.backtestName', { id: id.slice(0, 8) })}
-                      status={status}
-                      type='backtest'
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         )}
-      </div>
       <SystemMetricsCard />
       <DbStatsCard />
       <NotificationMetricsCard />
       <RetentionCard />
-      <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'>
-        <h3 className='mb-3 text-lg font-medium text-alpine-900'>
-          {t('page.quickActionsHeading')}
-        </h3>
-        <div className='flex flex-wrap gap-3'>
-          <button
-            disabled
-            title={t('page.featureNotImplemented')}
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
-          >
-            {t('page.restartServices')}
-          </button>
-          <button
-            disabled
-            title={t('page.featureNotImplemented')}
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
-          >
-            {t('page.runHealthCheck')}
-          </button>
-          <button
-            disabled
-            title={t('page.featureNotImplemented')}
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
-          >
-            {t('page.viewLogs')}
-          </button>
-          <button
-            disabled
-            title={t('page.featureNotImplemented')}
-            className='cursor-not-allowed rounded-md border border-dark-600 bg-dark-700 px-4 py-2 text-sm text-muted-500'
-          >
-            {t('page.exportReport')}
-          </button>
-        </div>
-      </div>
     </div>
   )
 }

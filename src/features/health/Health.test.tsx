@@ -66,10 +66,6 @@ describe('Health', () => {
       expect(screen.getByTestId('health-skeleton')).toBeInTheDocument()
     })
   })
-  it('shows no data message when data is null', () => {
-    renderWithProviders(<Health />)
-    expect(screen.getByText(/Run Health Check/i)).toBeInTheDocument()
-  })
   it('displays system status when data is available', async () => {
     const { useSystemStatus } = await import('../../hooks/queries/system')
 
@@ -145,53 +141,6 @@ describe('Health', () => {
       expect(elements.length).toBeGreaterThan(0)
     })
   })
-  it('displays quick action buttons', () => {
-    renderWithProviders(<Health />)
-    expect(screen.getByText(/Restart Services/i)).toBeInTheDocument()
-    expect(screen.getByText(/Run Health Check/i)).toBeInTheDocument()
-    expect(screen.getByText(/View Logs/i)).toBeInTheDocument()
-    expect(screen.getByText(/Export Report/i)).toBeInTheDocument()
-  })
-  it('displays stopped process status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries/system')
-
-    vi.mocked(useSystemStatus).mockReturnValue({
-      data: {
-        payload: {
-          status: 'healthy',
-          trader: { status: 'stopped' },
-          backtests: {},
-        },
-      },
-      isLoading: false,
-      error: null,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Health />)
-    await waitFor(() => {
-      expect(screen.getByText(/Stopped/i)).toBeInTheDocument()
-    })
-  })
-  it('displays error process status', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries/system')
-
-    vi.mocked(useSystemStatus).mockReturnValue({
-      data: {
-        payload: {
-          status: 'error',
-          trader: { status: 'error' },
-          backtests: {},
-        },
-      },
-      isLoading: false,
-      error: null,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Health />)
-    await waitFor(() => {
-      expect(screen.getByText(/Error/i)).toBeInTheDocument()
-    })
-  })
   it('displays completed backtest status', async () => {
     const { useSystemStatus } = await import('../../hooks/queries/system')
 
@@ -212,41 +161,6 @@ describe('Health', () => {
     renderWithProviders(<Health />)
     await waitFor(() => {
       expect(screen.getByText(/Completed/i)).toBeInTheDocument()
-    })
-  })
-  it('displays exit code when process has stopped with error', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries/system')
-
-    vi.mocked(useSystemStatus).mockReturnValue({
-      data: {
-        payload: {
-          status: 'error',
-          trader: { status: 'stopped', exit_code: 1, error: 'Process crashed' },
-          backtests: {},
-        },
-      },
-      isLoading: false,
-      error: null,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Health />)
-    await waitFor(() => {
-      expect(screen.getByText(/Exit code: 1/i)).toBeInTheDocument()
-      expect(screen.getByText(/Process crashed/i)).toBeInTheDocument()
-    })
-  })
-  it('displays error state from query', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries/system')
-
-    vi.mocked(useSystemStatus).mockReturnValue({
-      data: null,
-      isLoading: false,
-      error: new Error('Failed to fetch'),
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Health />)
-    await waitFor(() => {
-      expect(screen.getByText(/Run Health Check/i)).toBeInTheDocument()
     })
   })
   it('displays backtest with error status', async () => {
@@ -380,68 +294,6 @@ describe('Health', () => {
       expect(elements.length).toBeGreaterThan(0)
     })
   })
-  it('displays critical overall health when any metric is critical', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries/system')
-
-    vi.mocked(useSystemStatus).mockReturnValue({
-      data: {
-        payload: {
-          status: 'error',
-          trader: { status: 'error' },
-          backtests: {},
-        },
-      },
-      isLoading: false,
-      error: null,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Health />)
-    await waitFor(() => {
-      expect(screen.getByText(/Error/i)).toBeInTheDocument()
-    })
-  })
-  it('formats uptime correctly for minutes', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries/system')
-    const now = new Date()
-    const thirtyMinsAgo = new Date(now.getTime() - 30 * 60 * 1000)
-
-    vi.mocked(useSystemStatus).mockReturnValue({
-      data: {
-        payload: {
-          status: 'healthy',
-          trader: { status: 'running', started_at: thirtyMinsAgo.toISOString() },
-        },
-      },
-      isLoading: false,
-      error: null,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Health />)
-    await waitFor(() => {
-      expect(screen.getByText(/30m/i)).toBeInTheDocument()
-    })
-  })
-  it('formats uptime correctly for hours', async () => {
-    const { useSystemStatus } = await import('../../hooks/queries/system')
-    const now = new Date()
-    const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000)
-
-    vi.mocked(useSystemStatus).mockReturnValue({
-      data: {
-        payload: {
-          status: 'healthy',
-          trader: { status: 'running', started_at: twoHoursAgo.toISOString() },
-        },
-      },
-      isLoading: false,
-      error: null,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Health />)
-    await waitFor(() => {
-      expect(screen.getByText(/2h/i)).toBeInTheDocument()
-    })
-  })
   it('displays metric card with warning status', async () => {
     const { useSystemStatus } = await import('../../hooks/queries/system')
 
@@ -485,15 +337,17 @@ describe('Health', () => {
       expect(screen.getByText('Inactive')).toBeInTheDocument()
     })
   })
-  it('displays Unknown label for unrecognized trader status', async () => {
+  it('renders a stopped backtest with its status badge', async () => {
     const { useSystemStatus } = await import('../../hooks/queries/system')
 
     vi.mocked(useSystemStatus).mockReturnValue({
       data: {
         payload: {
           status: 'healthy',
-          trader: { status: 'unexpected_value' },
-          backtests: {},
+          trader: { status: 'running' },
+          backtests: {
+            'bt-stopped-1': { status: 'stopped' },
+          },
         },
       },
       isLoading: false,
@@ -502,7 +356,55 @@ describe('Health', () => {
     } as never)
     renderWithProviders(<Health />)
     await waitFor(() => {
-      expect(screen.getByText('Unknown')).toBeInTheDocument()
+      expect(screen.getByText(/Stopped/i)).toBeInTheDocument()
+    })
+  })
+  it('formats backtest uptime in minutes for runs under an hour old', async () => {
+    const { useSystemStatus } = await import('../../hooks/queries/system')
+
+    const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000).toISOString()
+
+    vi.mocked(useSystemStatus).mockReturnValue({
+      data: {
+        payload: {
+          status: 'healthy',
+          trader: { status: 'running' },
+          backtests: {
+            'bt-fresh-run': { status: 'running', started_at: fifteenMinutesAgo },
+          },
+        },
+      },
+      isLoading: false,
+      error: null,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Health />)
+    await waitFor(() => {
+      expect(screen.getByText(/15m/i)).toBeInTheDocument()
+    })
+  })
+  it('formats backtest uptime in hours when the run is over an hour old', async () => {
+    const { useSystemStatus } = await import('../../hooks/queries/system')
+
+    const twoHoursAgo = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
+
+    vi.mocked(useSystemStatus).mockReturnValue({
+      data: {
+        payload: {
+          status: 'healthy',
+          trader: { status: 'running' },
+          backtests: {
+            'bt-long-run': { status: 'running', started_at: twoHoursAgo },
+          },
+        },
+      },
+      isLoading: false,
+      error: null,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Health />)
+    await waitFor(() => {
+      expect(screen.getByText(/2h/i)).toBeInTheDocument()
     })
   })
 })
