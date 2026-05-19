@@ -1,10 +1,13 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { QueryClient } from '@tanstack/react-query'
+import toast from 'react-hot-toast'
 import {
   WSDispatcher,
   getDispatcher,
   resetDispatcher,
   AI_REVIEW_ACTIVITY_RING_CAP,
+  ALERT_HISTORY_QUERY_KEY_PREFIX,
+  ALERT_TOAST_RING_CAP,
   aiReviewActivityQueryKey,
   type AiReviewActivityFrame,
 } from './wsDispatcher'
@@ -22,6 +25,7 @@ import type {
   AiReviewRequestFrameData,
   AiReviewDecisionAckFrameData,
   AiReviewCapsViolationFrameData,
+  AlertEventData,
   WebSocketMessages,
 } from '../types/ws'
 import type { CachedCandle, CachedCandlesResponse } from '../types/api'
@@ -91,6 +95,26 @@ vi.mock('../lib/websocket', () => {
     })),
   }
 })
+vi.mock('react-hot-toast', () => ({
+  default: Object.assign(
+    vi.fn(() => 'toast-id-medium'),
+    {
+      error: vi.fn(() => 'toast-id-high'),
+      dismiss: vi.fn(),
+    }
+  ),
+}))
+vi.mock('../i18n/config', () => ({
+  default: {
+    t: vi.fn((key: string) => `t(${key})`),
+  },
+}))
+vi.mock('../features/notifications/AlertToastBody', () => ({
+  AlertToastBody: () => null,
+}))
+vi.mock('../features/notifications/openAlertModal', () => ({
+  openAlertModal: vi.fn(),
+}))
 describe('WSDispatcher', () => {
   let queryClient: QueryClient
   let mockWsClient: WebSocketClient
@@ -2126,6 +2150,183 @@ describe('WSDispatcher', () => {
       )
 
       expect(cached?.[0]?.review_public_id).toBe('rev-orphan')
+    })
+  })
+  describe('alert_event live-refresh (Phase E)', () => {
+    const makeAlert = (overrides: Partial<AlertEventData> = {}): AlertEventData => ({
+      type: 'alert_event',
+      sequence_id: 1,
+      public_id: 'alert-pid-1',
+      timestamp: '2026-05-19T12:00:00Z',
+      session_id: 'sid',
+      user_public_id: 'user-1',
+      alert_type: 'order_fill_full',
+      priority: 'medium',
+      is_safety_critical: false,
+      title: 'Order filled',
+      body: 'BUY 100 BTC @ 78,000',
+      ...overrides,
+    })
+
+    it('invalidates alerts-history queries on every alert frame', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      const spy = vi.spyOn(queryClient, 'invalidateQueries')
+
+      messageHandlers.get('alert_event')?.(makeAlert())
+
+      expect(spy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          queryKey: [...ALERT_HISTORY_QUERY_KEY_PREFIX],
+          refetchType: 'active',
+        })
+      )
+    })
+
+    it('skips the toast when priority=low and not safety-critical', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      vi.mocked(toast).mockClear()
+      vi.mocked(toast.error).mockClear()
+
+      messageHandlers.get('alert_event')?.(
+        makeAlert({ priority: 'low', is_safety_critical: false })
+      )
+
+      expect(toast).not.toHaveBeenCalled()
+      expect(toast.error).not.toHaveBeenCalled()
+    })
+
+    it('toasts a high-priority frame when is_safety_critical is omitted (undefined)', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      vi.mocked(toast.error).mockClear()
+
+      const frame = makeAlert({ priority: 'high' })
+
+      delete (frame as { is_safety_critical?: boolean }).is_safety_critical
+      messageHandlers.get('alert_event')?.(frame)
+
+      expect(toast.error).toHaveBeenCalledTimes(1)
+    })
+
+    it('toasts a low-priority frame when is_safety_critical=true', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      vi.mocked(toast.error).mockClear()
+
+      messageHandlers.get('alert_event')?.(makeAlert({ priority: 'low', is_safety_critical: true }))
+
+      expect(toast.error).toHaveBeenCalledTimes(1)
+    })
+
+    it('uses toast.error with aria-live=assertive for high-priority frames', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      vi.mocked(toast.error).mockClear()
+
+      messageHandlers.get('alert_event')?.(makeAlert({ priority: 'high' }))
+
+      expect(toast.error).toHaveBeenCalledTimes(1)
+      const opts = vi.mocked(toast.error).mock.calls[0]?.[1] as {
+        duration?: number
+        ariaProps?: { role?: string; 'aria-live'?: string }
+      }
+
+      expect(opts?.duration).toBe(6000)
+      expect(opts?.ariaProps?.role).toBe('alert')
+      expect(opts?.ariaProps?.['aria-live']).toBe('assertive')
+    })
+
+    it('uses default toast() for medium-priority non-safety-critical frames', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      vi.mocked(toast).mockClear()
+      vi.mocked(toast.error).mockClear()
+
+      messageHandlers.get('alert_event')?.(
+        makeAlert({ priority: 'medium', is_safety_critical: false })
+      )
+
+      expect(toast).toHaveBeenCalledTimes(1)
+      expect(toast.error).not.toHaveBeenCalled()
+    })
+
+    it('dismisses the oldest toast when the ring buffer exceeds ALERT_TOAST_RING_CAP', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      vi.mocked(toast.dismiss).mockClear()
+      let counter = 0
+
+      vi.mocked(toast.error).mockImplementation(() => {
+        counter += 1
+
+        return `toast-id-${counter}` as never
+      })
+
+      for (let i = 0; i < ALERT_TOAST_RING_CAP + 1; i += 1) {
+        messageHandlers.get('alert_event')?.(makeAlert({ priority: 'high' }))
+      }
+
+      expect(toast.dismiss).toHaveBeenCalledTimes(1)
+      expect(toast.dismiss).toHaveBeenCalledWith('toast-id-1')
+    })
+
+    it('ignores non-alert messages routed to the handler defensively', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      vi.mocked(toast).mockClear()
+      const wrongTypeFrame = {
+        type: 'order',
+        sequence_id: 1,
+        public_id: 'order-1',
+        timestamp: '2026-05-19T12:00:00Z',
+        session_id: 'sid',
+      } as unknown as WebSocketMessages
+
+      messageHandlers.get('alert_event')?.(wrongTypeFrame)
+
+      expect(toast).not.toHaveBeenCalled()
+    })
+
+    it('invokes the captured renderBody to construct AlertToastBody with click-handler', async () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      const openMod = await import('../features/notifications/openAlertModal')
+
+      vi.mocked(openMod.openAlertModal).mockClear()
+
+      const renderRef: { current: ((arg: { id: string }) => unknown) | null } = {
+        current: null,
+      }
+
+      vi.mocked(toast.error).mockImplementation(((render: unknown) => {
+        renderRef.current = render as (arg: { id: string }) => unknown
+
+        return 'toast-id-X' as never
+      }) as never)
+
+      messageHandlers.get('alert_event')?.(
+        makeAlert({ priority: 'high', public_id: 'alert-pid-X' })
+      )
+
+      expect(renderRef.current).not.toBeNull()
+      const element = renderRef.current?.({ id: 'toast-id-X' }) as
+        | { props: { onClick: () => void } }
+        | undefined
+
+      expect(element).toBeDefined()
+      element?.props.onClick()
+      expect(openMod.openAlertModal).toHaveBeenCalledWith('alert-pid-X', 'toast-id-X')
     })
   })
   describe('snapshot+invalidate hooks (Q2 polling cleanup)', () => {

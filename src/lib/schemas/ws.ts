@@ -20,6 +20,7 @@ export {
   AiReviewCapsViolationFrameDataSchema as aiReviewCapsViolationFrameSchema,
   AiReviewRequestFrameDataSchema as aiReviewRequestFrameSchema,
   AiReviewDecisionAckFrameDataSchema as aiReviewDecisionAckFrameSchema,
+  AlertEventDataSchema as alertEventSchema,
   WSAuthRequiredResponseSchema as authRequiredMessageSchema,
   WSAuthOkResponseSchema as authOkMessageSchema,
   WSAuthFailedResponseSchema as authFailedMessageSchema,
@@ -58,6 +59,7 @@ import {
   AiReviewCapsViolationFrameDataSchema,
   AiReviewRequestFrameDataSchema,
   AiReviewDecisionAckFrameDataSchema,
+  AlertEventDataSchema,
   WSAuthRequiredResponseSchema,
   WSAuthOkResponseSchema,
   WSAuthFailedResponseSchema,
@@ -95,6 +97,7 @@ export const wsMessageUnionSchema = z.discriminatedUnion('type', [
   AiReviewCapsViolationFrameDataSchema,
   AiReviewRequestFrameDataSchema,
   AiReviewDecisionAckFrameDataSchema,
+  AlertEventDataSchema,
   WSAuthRequiredResponseSchema,
   WSAuthOkResponseSchema,
   WSAuthFailedResponseSchema,
@@ -123,6 +126,7 @@ export type Heartbeat = z.infer<typeof HeartbeatDataSchema>
 export type AiReviewCapsViolation = z.infer<typeof AiReviewCapsViolationFrameDataSchema>
 export type AiReviewRequest = z.infer<typeof AiReviewRequestFrameDataSchema>
 export type AiReviewDecisionAck = z.infer<typeof AiReviewDecisionAckFrameDataSchema>
+export type AlertEvent = z.infer<typeof AlertEventDataSchema>
 const KNOWN_MESSAGE_TYPES = new Set([
   'tick',
   'candle',
@@ -147,6 +151,7 @@ const KNOWN_MESSAGE_TYPES = new Set([
   'ai_review.caps_violation',
   'ai_review.decision_ack',
   'ai_review.request',
+  'alert_event',
   'auth_expired',
   'auth_failed',
   'auth_ok',
