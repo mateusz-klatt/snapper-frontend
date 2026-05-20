@@ -81,15 +81,29 @@ export function InstrumentDescriptionBanner({
   return (
     <section
       aria-label={t('description.label')}
-      className='flex min-h-16 flex-col gap-2 rounded-sm border border-dark-600 bg-alpine-50 px-3 py-3 sm:flex-row sm:items-start'
+      className='flex min-h-16 flex-col gap-2 rounded-sm border border-dark-600 bg-alpine-50 px-3 py-3'
       data-testid='instrument-description-banner'
     >
       {!isError && (
-        <span
-          className={`inline-flex w-fit shrink-0 items-center rounded-sm border px-2 py-1 text-xs font-medium ${assetClassColor(assetClass)}`}
-        >
-          {chipLabel}
-        </span>
+        <div className='flex min-w-0 items-center gap-2'>
+          <span
+            className={`inline-flex w-fit shrink-0 items-center rounded-sm border px-2 py-1 text-xs font-medium ${assetClassColor(assetClass)}`}
+          >
+            {chipLabel}
+          </span>
+          <span
+            className='shrink-0 font-mono text-sm font-bold tracking-wide text-alpine-900'
+            data-testid='instrument-banner-ticker'
+          >
+            {underlying.ticker}
+          </span>
+          <span
+            className='min-w-0 truncate text-sm text-alpine-700'
+            data-testid='instrument-banner-name'
+          >
+            {underlying.name}
+          </span>
+        </div>
       )}
       <p className='text-sm leading-6 text-alpine-900'>{description}</p>
     </section>
