@@ -74,6 +74,33 @@ describe('InstrumentDescriptionBanner', () => {
     expect(screen.getByText('Gold exposure description.')).toBeInTheDocument()
   })
 
+  it('renders the identity row with ticker and name', () => {
+    mockRelatedQuery({ data: makeResponse({ name: 'Gold' }) })
+    renderBanner()
+    expect(screen.getByTestId('instrument-banner-ticker')).toHaveTextContent('GOLD')
+    expect(screen.getByTestId('instrument-banner-name')).toHaveTextContent('Gold')
+  })
+
+  it('places the chip before the ticker and name in DOM order', () => {
+    mockRelatedQuery({ data: makeResponse() })
+    renderBanner()
+    const banner = screen.getByTestId('instrument-description-banner')
+    const chipIdx = banner.innerHTML.indexOf('Precious Metals')
+    const tickerIdx = banner.innerHTML.indexOf('GOLD')
+    const nameIdx = banner.innerHTML.indexOf('>Gold<')
+
+    expect(chipIdx).toBeGreaterThan(-1)
+    expect(tickerIdx).toBeGreaterThan(chipIdx)
+    expect(nameIdx).toBeGreaterThan(tickerIdx)
+  })
+
+  it('hides the identity row when the query is in an error state', () => {
+    mockRelatedQuery({ data: makeResponse(), isError: true })
+    renderBanner()
+    expect(screen.queryByTestId('instrument-banner-ticker')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('instrument-banner-name')).not.toBeInTheDocument()
+  })
+
   it('renders fallback when description is null', () => {
     mockRelatedQuery({
       data: makeResponse({ description: null, name: 'Bitcoin', assetClass: 'crypto' }),
