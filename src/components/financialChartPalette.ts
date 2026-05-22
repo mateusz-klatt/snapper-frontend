@@ -17,7 +17,7 @@
  * helper is the bridge.
  */
 export function getFinancialChartPalette(): { upColor: string; downColor: string } {
-  if (typeof window === 'undefined') {
+  if (globalThis.window === undefined) {
     return { upColor: '#0b8f4d', downColor: '#8b1025' }
   }
 

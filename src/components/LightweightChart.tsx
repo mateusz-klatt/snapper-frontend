@@ -144,7 +144,7 @@ export const LightweightChart = ({
       return
     }
 
-    /*
+    /**
      * Re-apply candle palette on any change to:
      * - isDarkMode (different dark-mode hex stops)
      * - financialColorPreference (explicit Western/Asian choice)

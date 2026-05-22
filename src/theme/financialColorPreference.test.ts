@@ -129,7 +129,7 @@ describe('loadStoredFinancialColorPreference + storeFinancialColorPreference', (
   })
 
   it('falls back to `auto` and does not throw when localStorage.getItem throws', () => {
-    vi.spyOn(Storage.prototype, 'getItem').mockImplementation(() => {
+    vi.spyOn(window.localStorage, 'getItem').mockImplementation(() => {
       throw new Error('SecurityError: storage disabled')
     })
 
@@ -137,7 +137,7 @@ describe('loadStoredFinancialColorPreference + storeFinancialColorPreference', (
   })
 
   it('swallows localStorage.setItem failures so the UI does not crash on sandboxed contexts', () => {
-    vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+    vi.spyOn(window.localStorage, 'setItem').mockImplementation(() => {
       throw new Error('QuotaExceededError')
     })
 
