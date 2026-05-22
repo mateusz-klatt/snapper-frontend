@@ -44,7 +44,7 @@ describe('useAlertsLiveSubscription', () => {
   it('no-ops when wsClient is null', () => {
     const { unmount } = renderHook(() => useAlertsLiveSubscription())
 
-    expect(true).toBe(true)
+    expect(useWebSocketStore.getState().wsClient).toBeNull()
     unmount()
   })
 

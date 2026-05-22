@@ -93,7 +93,7 @@ export function loadStoredFinancialColorPreference(): FinancialColorPreference {
 
     if (isFinancialColorPreference(raw)) return raw
   } catch {
-    /* localStorage unavailable; fall through to default */
+    return 'auto'
   }
 
   return 'auto'
@@ -109,6 +109,6 @@ export function storeFinancialColorPreference(preference: FinancialColorPreferen
   try {
     localStorage.setItem(PREFERENCE_STORAGE_KEY, preference)
   } catch {
-    /* localStorage unavailable; in-memory value remains the source of truth */
+    return
   }
 }

@@ -42,7 +42,7 @@ export const AlertDetailModal: React.FC<Readonly<AlertDetailModalProps>> = ({
   const { data, isLoading, isError, error } = useAlert(publicId ?? undefined)
   const open = publicId !== null
   const alert = data?.payload ?? null
-  const title = alert !== null ? resolveAlertTitle(alert, t) : ''
+  const title = alert === null ? '' : resolveAlertTitle(alert, t)
 
   return (
     <Modal open={open} onClose={onClose} title={title || tCommon('loading')} size='lg'>
@@ -68,7 +68,7 @@ export const AlertDetailModal: React.FC<Readonly<AlertDetailModalProps>> = ({
                 {t('detail.alertType', { defaultValue: 'Type' })}
               </dt>
               <dd className='mt-1 text-alpine-900'>
-                {t(`alertType.${alert.alert_type}` as never, {
+                {t(`alertType.${alert.alert_type}`, {
                   defaultValue: alert.alert_type,
                 })}
               </dd>

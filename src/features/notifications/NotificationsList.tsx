@@ -31,6 +31,10 @@ export const NotificationsList: React.FC<Readonly<NotificationsListProps>> = ({ 
   const canLoadMore = hasNextPage && !reachedCap
   const visibleAlerts = allAlerts.slice(0, ALERT_HISTORY_DISPLAY_CAP)
 
+  const handleFetchNextPage = (): void => {
+    fetchNextPage().catch(console.error)
+  }
+
   if (isLoading) {
     return (
       <div className='py-8 text-center text-sm text-muted-600' role='status' aria-live='polite'>
@@ -72,9 +76,7 @@ export const NotificationsList: React.FC<Readonly<NotificationsListProps>> = ({ 
       {canLoadMore && (
         <button
           type='button'
-          onClick={() => {
-            void fetchNextPage()
-          }}
+          onClick={handleFetchNextPage}
           disabled={isFetchingNextPage}
           className='self-center rounded-xl border border-dark-600 bg-alpine-50 px-4 py-2 text-sm font-medium text-alpine-900 hover:border-brand-400 disabled:opacity-60'
         >
