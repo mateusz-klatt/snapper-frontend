@@ -1317,19 +1317,7 @@ describe('Orders', () => {
         'Reduce Only',
         'Created',
       ],
-      [
-        [
-          'BTC/USD',
-          'sell',
-          'limit',
-          'open',
-          '1.5000',
-          '50000.00',
-          '4',
-          'true',
-          fmtDt(created),
-        ],
-      ]
+      [['BTC/USD', 'sell', 'limit', 'open', '1.5000', '50000.00', '4', 'true', fmtDt(created)]]
     )
   })
 

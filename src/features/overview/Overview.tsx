@@ -142,7 +142,9 @@ const SignalRow: React.FC<Readonly<{ signal: Signal; index: number }>> = ({ sign
         <span className='text-sm font-medium'>{signal.instrument}</span>
       </div>
       <div className='text-xs text-dark-300'>
-        {signal.firedAt ? formatTime(signal.firedAt, i18n.language as AppLocale) : t('signals.noTime')}
+        {signal.firedAt
+          ? formatTime(signal.firedAt, i18n.language as AppLocale)
+          : t('signals.noTime')}
       </div>
     </div>
   )
