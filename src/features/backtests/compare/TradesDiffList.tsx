@@ -1,13 +1,16 @@
 import React, { useMemo } from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
+import { formatDateTime } from '../../../lib/dateFormat'
+import type { AppLocale } from '../../../i18n/types'
 import type { TradeDiffEntry } from '../../../types/api'
 
 interface Props {
   entries: TradeDiffEntry[]
 }
 
-const formatTime = (iso: string): string => new Date(iso).toLocaleString()
+const formatTradeTime = (iso: string, locale: AppLocale): string =>
+  formatDateTime(new Date(iso), locale)
 
 const formatPnl = (v: number | null | undefined): string => {
   if (v === null || v === undefined) return '—'
@@ -22,13 +25,15 @@ const pnlColor = (v: number | null | undefined): string => {
 }
 
 const TradeCard: React.FC<{ trade: TradeDiffEntry }> = ({ trade }) => {
-  const { t } = useTranslation('backtests')
+  const { t, i18n } = useTranslation('backtests')
 
   return (
     <div className='rounded-lg border border-dark-600 bg-alpine-50 p-2 text-xs'>
       <div className='flex items-center justify-between'>
         <span className='font-mono text-alpine-900'>{trade.instrument}</span>
-        <span className='text-muted-500'>{formatTime(trade.executed_at)}</span>
+        <span className='text-muted-500'>
+          {formatTradeTime(trade.executed_at, i18n.language as AppLocale)}
+        </span>
       </div>
       <div className='mt-1 flex items-center gap-2 font-mono text-alpine-900'>
         <span>{trade.side}</span>

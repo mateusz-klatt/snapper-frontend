@@ -11,6 +11,8 @@ import {
 import { useTranslation } from 'react-i18next'
 import { EmptyState } from '../../components/ui'
 import { useAuth } from '../../stores/auth'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import {
   useAiReviewActivity,
   usePendingAiReviews,
@@ -93,7 +95,7 @@ interface PendingReviewItem {
 }
 
 function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): React.ReactElement {
-  const { t } = useTranslation('aiReviews')
+  const { t, i18n } = useTranslation('aiReviews')
   const [rationale, setRationale] = useState('')
   const submit = useSubmitAiReviewDecision()
   const thesis = (item.signal_envelope?.['thesis'] ?? null) as string | null
@@ -126,7 +128,9 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
         )}
       </td>
       <td className='px-4 py-2'>{item.status}</td>
-      <td className='px-4 py-2 text-muted-600'>{new Date(item.deadline).toLocaleString()}</td>
+      <td className='px-4 py-2 text-muted-600'>
+        {formatDateTime(new Date(item.deadline), i18n.language as AppLocale)}
+      </td>
       <td className='px-4 py-2'>
         <div className='flex flex-col gap-2 min-w-[12rem]'>
           <input

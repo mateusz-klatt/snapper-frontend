@@ -2,6 +2,8 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useAlert } from '../../hooks/queries/alerts'
+import { formatDateTime as fmtDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import { resolveAlertBody, resolveAlertTitle } from './formatAlert'
 
 interface AlertDetailModalProps {
@@ -9,12 +11,12 @@ interface AlertDetailModalProps {
   onClose: () => void
 }
 
-const formatDateTime = (iso: string, locale: string): string => {
+const formatDateTime = (iso: string, locale: AppLocale): string => {
   const d = new Date(iso)
 
   if (Number.isNaN(d.getTime())) return iso
 
-  return d.toLocaleString(locale, {
+  return fmtDateTime(d, locale, {
     dateStyle: 'medium',
     timeStyle: 'medium',
   })
@@ -92,7 +94,7 @@ export const AlertDetailModal: React.FC<Readonly<AlertDetailModalProps>> = ({
             <div>
               <dt className='font-medium text-muted-500'>{t('detail.timestamp')}</dt>
               <dd className='mt-1 text-alpine-900'>
-                {formatDateTime(alert.timestamp, i18n.language)}
+                {formatDateTime(alert.timestamp, i18n.language as AppLocale)}
               </dd>
             </div>
             {alert.thread_key !== null && alert.thread_key !== undefined && (

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import type { SettingRead } from '../../types/api'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import { JsonEditor } from './JsonEditor'
 import {
   isJsonString,
@@ -172,7 +174,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
   isSaving,
   readOnly,
 }) => {
-  const { t } = useTranslation('settings')
+  const { t, i18n } = useTranslation('settings')
   const [isCollapsed, setIsCollapsed] = useState(true)
   const isJson = isJsonString(setting.value) && !isSensitive(setting.key)
   const lineCount = isJson ? (formatJsonObject(setting.value)?.split('\n').length ?? 1) : 0
@@ -247,7 +249,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
             </button>
           </div>
           <div className='text-xs text-muted-500'>
-            {new Date(setting.updated_at).toLocaleString()}
+            {formatDateTime(new Date(setting.updated_at), i18n.language as AppLocale)}
             {setting.updated_by && ` • ${setting.updated_by}`}
           </div>
         </div>
@@ -276,7 +278,7 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
   isSaving,
   readOnly,
 }) => {
-  const { t } = useTranslation('settings')
+  const { t, i18n } = useTranslation('settings')
   const isOn = parseBooleanString(setting.value)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
@@ -327,7 +329,7 @@ const BooleanToggle: React.FC<BooleanToggleProps> = ({
           </span>
         </div>
         <div className='text-xs text-muted-500'>
-          {new Date(setting.updated_at).toLocaleString()}
+          {formatDateTime(new Date(setting.updated_at), i18n.language as AppLocale)}
           {setting.updated_by && ` • ${setting.updated_by}`}
         </div>
       </div>

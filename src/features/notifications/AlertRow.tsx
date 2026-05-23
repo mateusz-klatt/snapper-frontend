@@ -1,6 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { AlertEventInfo } from '../../types/api'
 import { resolveAlertBody, resolveAlertTitle } from './formatAlert'
 
@@ -22,12 +24,12 @@ const priorityDotColor = (priority: string): string => {
   }
 }
 
-const formatTimestamp = (iso: string, locale: string): string => {
+const formatTimestamp = (iso: string, locale: AppLocale): string => {
   const d = new Date(iso)
 
   if (Number.isNaN(d.getTime())) return iso
 
-  return d.toLocaleString(locale, {
+  return formatDateTime(d, locale, {
     dateStyle: 'medium',
     timeStyle: 'short',
   })
@@ -79,7 +81,7 @@ export const AlertRow: React.FC<Readonly<AlertRowProps>> = ({ alert, onOpen }) =
             {displayTitle}
           </span>
           <span className='shrink-0 text-xs tabular-nums text-muted-500'>
-            {formatTimestamp(alert.timestamp, i18n.language)}
+            {formatTimestamp(alert.timestamp, i18n.language as AppLocale)}
           </span>
         </div>
         <p className='line-clamp-2 text-sm text-muted-600'>{displayBody}</p>

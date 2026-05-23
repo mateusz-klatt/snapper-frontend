@@ -7,6 +7,8 @@ import { useOrdersGrouped, useExecutions } from '../../hooks/queries/orders'
 import { usePositionsSummary } from '../../hooks/queries/positions'
 import { useProcessSummary } from '../../hooks/queries/processes'
 import { useLatestSignals } from '../../hooks/queries/signals'
+import { formatDate, formatTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { Signal, Execution } from '../../types/entities'
 
 const CURRENCY_FORMAT = { minimumFractionDigits: 2, maximumFractionDigits: 2 }
@@ -125,7 +127,7 @@ const signalKey = (signal: Signal, index: number): string | number =>
   signal.firedAt?.getTime() ?? `signal-${index}`
 
 const SignalRow: React.FC<Readonly<{ signal: Signal; index: number }>> = ({ signal, index }) => {
-  const { t } = useTranslation('overview')
+  const { t, i18n } = useTranslation('overview')
   const normalizedSide = signal.side.toLowerCase()
 
   return (
@@ -140,14 +142,16 @@ const SignalRow: React.FC<Readonly<{ signal: Signal; index: number }>> = ({ sign
         <span className='text-sm font-medium'>{signal.instrument}</span>
       </div>
       <div className='text-xs text-dark-300'>
-        {signal.firedAt?.toLocaleTimeString() ?? t('signals.noTime')}
+        {signal.firedAt
+          ? formatTime(signal.firedAt, i18n.language as AppLocale)
+          : t('signals.noTime')}
       </div>
     </div>
   )
 }
 
 const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution }) => {
-  const { t } = useTranslation('overview')
+  const { t, i18n } = useTranslation('overview')
 
   return (
     <div className='flex items-center justify-between p-2 bg-dark-700 rounded-sm'>
@@ -161,7 +165,9 @@ const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution 
         </span>
       </div>
       <div className='text-xs text-dark-300'>
-        {execution.executedAt?.toLocaleTimeString() ?? t('executions.noTime')}
+        {execution.executedAt
+          ? formatTime(execution.executedAt, i18n.language as AppLocale)
+          : t('executions.noTime')}
       </div>
     </div>
   )
@@ -205,7 +211,7 @@ const SignalsCardContent: React.FC<
 const zeroCounts = { running: 0, total: 0 }
 
 export const Overview: React.FC = () => {
-  const { t } = useTranslation('overview')
+  const { t, i18n } = useTranslation('overview')
   const asOf = useAppStore(s => s.asOf)
   const { data: processSummary, isLoading: processLoading } = useProcessSummary()
   const { data: positionsSummary, isLoading: positionsLoading } = usePositionsSummary()
@@ -243,7 +249,9 @@ export const Overview: React.FC = () => {
         <MetricCard
           label={
             asOf
-              ? t('metrics.executionsOn', { date: referenceDate.toLocaleDateString() })
+              ? t('metrics.executionsOn', {
+                  date: formatDate(referenceDate, i18n.language as AppLocale),
+                })
               : t('metrics.todaysExecutions')
           }
           value={todayExecutionsCount}

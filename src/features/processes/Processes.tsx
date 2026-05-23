@@ -11,6 +11,8 @@ import {
 import { useHeartbeats, type HeartbeatData } from '../../hooks/useHeartbeats'
 import { useConfirmDialog } from '../../hooks/useConfirmDialog'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import { ProcessControlCard } from './ProcessControlCard'
 import { ExecutionModeModal } from './ExecutionModeModal'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
@@ -27,7 +29,7 @@ const UNKNOWN_HEARTBEAT: HeartbeatData = {
 const EXECUTOR_INSTANCE_PATTERN = /^(.+)_w([a-f0-9]{12})$/
 
 export const Processes: React.FC = () => {
-  const { t } = useTranslation('processes')
+  const { t, i18n } = useTranslation('processes')
   const readOnly = useIsReadOnly()
   const { openConfirm, dialogProps: confirmDialogProps } = useConfirmDialog()
 
@@ -130,16 +132,19 @@ export const Processes: React.FC = () => {
         process.role !== 'backtest'
     )
   }, [configuredProcesses])
-  const formatTimestamp = React.useCallback((timestamp?: string | null) => {
-    if (!timestamp) return null
-    const date = new Date(timestamp)
+  const formatTimestamp = React.useCallback(
+    (timestamp?: string | null) => {
+      if (!timestamp) return null
+      const date = new Date(timestamp)
 
-    if (Number.isNaN(date.getTime())) {
-      return null
-    }
+      if (Number.isNaN(date.getTime())) {
+        return null
+      }
 
-    return date.toLocaleString()
-  }, [])
+      return formatDateTime(date, i18n.language as AppLocale)
+    },
+    [i18n.language]
+  )
 
   const getDescription = React.useCallback(
     (process: ConfiguredProcess): string => {

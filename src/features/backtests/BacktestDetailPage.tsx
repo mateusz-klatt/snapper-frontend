@@ -6,6 +6,8 @@ import { useBacktestProgressSubscription } from './hooks/useBacktestProgressSubs
 import { BacktestProgressBar } from './BacktestProgressBar'
 import { CompareLauncher } from './CompareLauncher'
 import { isUuid7 } from '../../lib/ids'
+import { formatDate } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 
 interface Props {
   runPublicId: string
@@ -19,7 +21,7 @@ const STATUS_COLOR: Record<string, string> = {
   pending: 'text-muted-400',
 }
 
-const formatDate = (iso: string): string => new Date(iso).toLocaleDateString()
+const formatRunDate = (iso: string, locale: AppLocale): string => formatDate(new Date(iso), locale)
 
 /**
  * Backtest detail page.
@@ -29,7 +31,7 @@ const formatDate = (iso: string): string => new Date(iso).toLocaleDateString()
  * without an extra round trip.
  */
 export const BacktestDetailPage: React.FC<Props> = ({ runPublicId }) => {
-  const { t } = useTranslation('backtests')
+  const { t, i18n } = useTranslation('backtests')
   const validRun = isUuid7(runPublicId)
   const snapshot = useBacktestProgressSubscription(validRun ? runPublicId : null)
   const { data, isLoading, error } = useBacktest(validRun ? runPublicId : undefined)
@@ -97,7 +99,8 @@ export const BacktestDetailPage: React.FC<Props> = ({ runPublicId }) => {
         <div>
           <div className='text-muted-500'>{t('detail.fields.period')}</div>
           <div className='font-mono text-alpine-900'>
-            {formatDate(run.start_date)} — {formatDate(run.end_date)}
+            {formatRunDate(run.start_date, i18n.language as AppLocale)} —{' '}
+            {formatRunDate(run.end_date, i18n.language as AppLocale)}
           </div>
         </div>
         {run.target_execution_exchange && (

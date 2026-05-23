@@ -396,6 +396,23 @@ describe('Overview', () => {
     renderWithMocks(<Overview />)
     expect(screen.getByText('AVAX/USD')).toBeInTheDocument()
   })
+  it('renders signal firedAt via centralized formatTime when defined', async () => {
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
+
+    vi.mocked(useLatestSignals).mockReturnValue({
+      isLoading: false,
+      data: [
+        {
+          publicId: 1,
+          instrument: 'SOL/USD',
+          side: 'buy',
+          firedAt: new Date('2024-01-01T12:00:00Z'),
+        },
+      ],
+    } as never)
+    renderWithMocks(<Overview />)
+    expect(screen.getByText('SOL/USD')).toBeInTheDocument()
+  })
   it('shows N/A when signal timestamp is undefined', async () => {
     const { useLatestSignals } = await import('../../hooks/queries/signals')
 

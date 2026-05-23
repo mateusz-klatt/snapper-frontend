@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { LoadingSpinner } from '../../components/ui'
+import { formatTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 
 export interface FeedHealth {
   status: 'healthy' | 'warning' | 'error'
@@ -181,7 +183,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     isStopping = false,
     readOnly = false,
   }) => {
-    const { t } = useTranslation('strategies')
+    const { t, i18n } = useTranslation('strategies')
     const [expanded, setExpanded] = useState(false)
     const isRunning = running || isStarting
     const showStopButton = running || isStopping
@@ -359,7 +361,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 {}
                 <div className='text-xs text-muted-400 text-center pt-2 border-t border-dark-600'>
                   {t('card.lastUpdate', {
-                    time: new Date(health.timestamp).toLocaleTimeString(),
+                    time: formatTime(new Date(health.timestamp), i18n.language as AppLocale),
                   })}
                 </div>
               </div>
