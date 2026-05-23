@@ -5,6 +5,8 @@ import { Button, Badge } from '../../../components/ui'
 import { useCredentials } from '../../../hooks/queries/credentials'
 import { useWallets } from '../../../hooks/queries/wallets'
 import { ThemeSelect } from '../../../components/ThemeSelect'
+import { formatDateTime } from '../../../lib/dateFormat'
+import type { AppLocale } from '../../../i18n/types'
 import { isCredentialType } from './credentialTypes'
 import type { CredentialSummary, WalletInfo } from '../../../types/api'
 
@@ -19,7 +21,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
   onRotate,
   readOnly,
 }) => {
-  const { t } = useTranslation('admin')
+  const { t, i18n } = useTranslation('admin')
   const [selectedWallet, setSelectedWallet] = useState<string>('')
   const { data: walletsData } = useWallets()
   const { data: credentialsData, isLoading, error } = useCredentials(selectedWallet)
@@ -27,15 +29,14 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
   const wallets: WalletInfo[] = walletsData?.payload ?? []
   const credentials: CredentialSummary[] = credentialsData?.payload ?? []
 
-  const formatDate = (dateString: string): string => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+  const formatDate = (dateString: string): string =>
+    formatDateTime(new Date(dateString), i18n.language as AppLocale, {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
     })
-  }
 
   const credentialTypeLabel = (type: string): string => {
     if (isCredentialType(type)) {
