@@ -21,8 +21,7 @@ const STATUS_COLOR: Record<string, string> = {
   pending: 'text-muted-400',
 }
 
-const formatRunDate = (iso: string, locale: AppLocale): string =>
-  formatDate(new Date(iso), locale)
+const formatRunDate = (iso: string, locale: AppLocale): string => formatDate(new Date(iso), locale)
 
 /**
  * Backtest detail page.
