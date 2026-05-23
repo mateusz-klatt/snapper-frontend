@@ -7,6 +7,8 @@ import { ThemeSelect } from '../../components/ThemeSelect'
 import { exportToCSV } from '../../lib/csvExport'
 import { EmptyState } from '../../components/ui'
 import { useSignals } from '../../hooks/queries/signals'
+import { formatDate } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { Signal } from '../../types/entities'
 import clsx from 'clsx'
 import {
@@ -16,7 +18,7 @@ import {
 } from '../../lib/constants'
 
 const SignalCard: React.FC<{ signal: Signal }> = ({ signal }) => {
-  const { t } = useTranslation('signals')
+  const { t, i18n } = useTranslation('signals')
   const asOf = useAppStore(s => s.asOf)
 
   const getSideColor = (side: string) => {
@@ -50,7 +52,7 @@ const SignalCard: React.FC<{ signal: Signal }> = ({ signal }) => {
     if (diffMins < 60) return t('time.minutesAgo', { count: diffMins })
     if (diffMins < 1440) return t('time.hoursAgo', { count: Math.floor(diffMins / 60) })
 
-    return date.toLocaleDateString()
+    return formatDate(date, i18n.language as AppLocale)
   }
 
   return (

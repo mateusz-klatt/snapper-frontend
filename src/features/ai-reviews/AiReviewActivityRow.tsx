@@ -1,6 +1,8 @@
 import React from 'react'
 import { AlertTriangle, Inbox, ShieldCheck } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { formatTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { AiReviewActivityFrame } from '../../stores/wsDispatcher'
 
 /**
@@ -20,7 +22,7 @@ import type { AiReviewActivityFrame } from '../../stores/wsDispatcher'
 export function AiReviewActivityRow({
   frame,
 }: Readonly<{ frame: AiReviewActivityFrame }>): React.ReactElement {
-  const { t } = useTranslation('aiReviews')
+  const { t, i18n } = useTranslation('aiReviews')
 
   switch (frame.type) {
     case 'ai_review.request':
@@ -37,7 +39,9 @@ export function AiReviewActivityRow({
             <span className='font-mono text-xs'>{frame.selected_delegate_public_id}</span> ·{' '}
             {t('activityRow.instrument')}{' '}
             <span className='font-mono text-xs'>{frame.instrument_public_id}</span> ·{' '}
-            {t('activityRow.deadline', { time: new Date(frame.deadline).toLocaleTimeString() })}
+            {t('activityRow.deadline', {
+              time: formatTime(new Date(frame.deadline), i18n.language as AppLocale),
+            })}
           </span>
         </RowShell>
       )
@@ -100,7 +104,7 @@ function RowShell({
   reviewPublicId: string
   children: React.ReactNode
 }>): React.ReactElement {
-  const { t } = useTranslation('aiReviews')
+  const { t, i18n } = useTranslation('aiReviews')
 
   return (
     <li
@@ -112,7 +116,9 @@ function RowShell({
       <div className='flex-1 text-sm space-y-1'>
         <div className='flex items-center justify-between'>
           <span className='font-semibold text-muted-900'>{label}</span>
-          <span className='text-xs text-muted-500'>{new Date(timestamp).toLocaleTimeString()}</span>
+          <span className='text-xs text-muted-500'>
+            {formatTime(new Date(timestamp), i18n.language as AppLocale)}
+          </span>
         </div>
         <div>{children}</div>
         <div className='font-mono text-[11px] text-muted-500'>
