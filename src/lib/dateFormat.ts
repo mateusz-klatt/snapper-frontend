@@ -17,8 +17,12 @@ export const formatTime = (
 ): string =>
   new Intl.DateTimeFormat(intlLocale(locale), options ?? { timeStyle: 'short' }).format(date)
 
-export const formatDateTime = (date: Date, locale: AppLocale): string =>
-  new Intl.DateTimeFormat(intlLocale(locale), {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-  }).format(date)
+export const formatDateTime = (
+  date: Date,
+  locale: AppLocale,
+  options?: Intl.DateTimeFormatOptions
+): string =>
+  new Intl.DateTimeFormat(
+    intlLocale(locale),
+    options ?? { dateStyle: 'medium', timeStyle: 'short' }
+  ).format(date)

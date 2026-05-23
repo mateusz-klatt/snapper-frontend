@@ -487,4 +487,78 @@ describe('LightweightChart', () => {
       vi.unstubAllGlobals()
     }
   })
+
+  it('applies localization with intl locale + time/date formatters via applyOptions', () => {
+    render(<LightweightChart data={sampleData} />)
+    expect(mockApplyOptions).toHaveBeenCalledWith(
+      expect.objectContaining({
+        localization: expect.objectContaining({
+          locale: expect.any(String),
+          timeFormatter: expect.any(Function),
+          dateFormatter: expect.any(Function),
+        }),
+      })
+    )
+  })
+
+  it('localization formatters render Unix time in browser-local timezone', () => {
+    render(<LightweightChart data={sampleData} />)
+    const localizationCall = mockApplyOptions.mock.calls.find(
+      (call: unknown[]) =>
+        (call[0] as { localization?: unknown } | undefined)?.localization !== undefined
+    ) as [
+      {
+        localization: {
+          timeFormatter: (t: number) => string
+          dateFormatter: (t: number) => string
+        }
+      },
+    ]
+    const unixNoonUtc = 1735732800
+    const timeRendered = localizationCall[0].localization.timeFormatter(unixNoonUtc)
+    const dateRendered = localizationCall[0].localization.dateFormatter(unixNoonUtc)
+
+    expect(timeRendered).toMatch(/\d{1,2}[:.]\d{2}/)
+    expect(dateRendered).toMatch(/\d/)
+  })
+
+  it('re-applies localization via applyOptions when locale changes', () => {
+    const { rerender } = render(<LightweightChart data={sampleData} />)
+
+    mockApplyOptions.mockClear()
+    vi.mocked(useAppStore).mockImplementation(((
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: false,
+        financialColorPreference: 'auto',
+        locale: 'pl',
+      })) as never)
+    rerender(<LightweightChart data={sampleData} />)
+    expect(mockApplyOptions).toHaveBeenCalledWith(
+      expect.objectContaining({
+        localization: expect.objectContaining({
+          locale: expect.any(String),
+          timeFormatter: expect.any(Function),
+          dateFormatter: expect.any(Function),
+        }),
+      })
+    )
+    vi.mocked(useAppStore).mockImplementation(((
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: false,
+        financialColorPreference: 'auto',
+        locale: 'us',
+      })) as never)
+  })
 })

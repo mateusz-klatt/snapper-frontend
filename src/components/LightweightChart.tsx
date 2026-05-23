@@ -1,13 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import {
   CandlestickSeries,
   CandlestickData,
   IChartApi,
   ISeriesApi,
   Time,
+  UTCTimestamp,
   createChart,
 } from 'lightweight-charts'
 import { useAppStore } from '../stores/app'
+import { getIntlLocale } from '../i18n/countryLanguages'
 import { getFinancialChartPalette } from './financialChartPalette'
 
 const LIGHT_THEME = {
@@ -43,6 +45,27 @@ export const LightweightChart = ({
   const isDarkMode = useAppStore(s => s.isDarkMode)
   const financialColorPreference = useAppStore(s => s.financialColorPreference)
   const locale = useAppStore(s => s.locale)
+
+  const localization = useMemo(() => {
+    const intlLocale = getIntlLocale(locale)
+
+    return {
+      locale: intlLocale,
+      timeFormatter: (time: Time): string => {
+        const date = new Date((time as UTCTimestamp) * 1000)
+
+        return new Intl.DateTimeFormat(intlLocale, {
+          hour: '2-digit',
+          minute: '2-digit',
+        }).format(date)
+      },
+      dateFormatter: (time: Time): string => {
+        const date = new Date((time as UTCTimestamp) * 1000)
+
+        return new Intl.DateTimeFormat(intlLocale, { dateStyle: 'medium' }).format(date)
+      },
+    }
+  }, [locale])
 
   useEffect(() => {
     if (!chartContainerRef.current) {
@@ -115,6 +138,13 @@ export const LightweightChart = ({
       seriesRef.current = null
     }
   }, [height, width])
+  useEffect(() => {
+    if (!chartRef.current) {
+      return
+    }
+
+    chartRef.current.applyOptions({ localization })
+  }, [localization])
   useEffect(() => {
     if (!chartRef.current) {
       return
