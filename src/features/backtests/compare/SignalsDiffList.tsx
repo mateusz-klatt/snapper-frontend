@@ -1,22 +1,31 @@
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { formatDateTime } from '../../../lib/dateFormat'
+import type { AppLocale } from '../../../i18n/types'
 import type { SignalDiffEntry } from '../../../types/api'
 
 interface Props {
   entries: SignalDiffEntry[]
 }
 
-const formatTime = (iso: string): string => new Date(iso).toLocaleString()
+const formatSignalTime = (iso: string, locale: AppLocale): string =>
+  formatDateTime(new Date(iso), locale)
 
-const SignalCard: React.FC<{ signal: SignalDiffEntry }> = ({ signal }) => (
-  <div className='rounded-lg border border-dark-600 bg-alpine-50 p-2 text-xs'>
-    <div className='flex items-center justify-between'>
-      <span className='font-mono text-alpine-900'>{signal.instrument}</span>
-      <span className='text-muted-500'>{formatTime(signal.signal_time)}</span>
+const SignalCard: React.FC<{ signal: SignalDiffEntry }> = ({ signal }) => {
+  const { i18n } = useTranslation('backtests')
+
+  return (
+    <div className='rounded-lg border border-dark-600 bg-alpine-50 p-2 text-xs'>
+      <div className='flex items-center justify-between'>
+        <span className='font-mono text-alpine-900'>{signal.instrument}</span>
+        <span className='text-muted-500'>
+          {formatSignalTime(signal.signal_time, i18n.language as AppLocale)}
+        </span>
+      </div>
+      <div className='mt-1 font-mono text-alpine-900'>{signal.signal_type}</div>
     </div>
-    <div className='mt-1 font-mono text-alpine-900'>{signal.signal_type}</div>
-  </div>
-)
+  )
+}
 
 interface ColumnProps {
   title: string

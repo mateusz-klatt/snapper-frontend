@@ -5,6 +5,8 @@ import { Play, RotateCcw, XCircle } from 'lucide-react'
 import { useBacktests, useCancelBacktest, useRerunBacktest } from '../../hooks/queries/backtests'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
+import { formatDate } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { BacktestRunData } from '../../types/api'
 
 const BACKTEST_STATUS_KEYS = ['pending', 'running', 'completed', 'failed', 'cancelled'] as const
@@ -24,11 +26,8 @@ const getStatusColor = (status: string): StatusColor => {
   }
 }
 
-const formatDate = (dateStr: string): string => {
-  const d = new Date(dateStr)
-
-  return d.toLocaleDateString()
-}
+const formatRunDate = (dateStr: string, locale: AppLocale): string =>
+  formatDate(new Date(dateStr), locale)
 
 interface BacktestRowProps {
   run: BacktestRunData
@@ -37,7 +36,7 @@ interface BacktestRowProps {
 }
 
 const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => {
-  const { t } = useTranslation('backtests')
+  const { t, i18n } = useTranslation('backtests')
   const canCancel = run.status === 'pending' || run.status === 'running'
   const statusLabel = t(`status.${run.status}`, { defaultValue: run.status })
 
@@ -97,7 +96,8 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
         <div>
           <div className='text-muted-500'>{t('list.fields.period')}</div>
           <div className='font-mono text-alpine-900'>
-            {formatDate(run.start_date)} - {formatDate(run.end_date)}
+            {formatRunDate(run.start_date, i18n.language as AppLocale)} -{' '}
+            {formatRunDate(run.end_date, i18n.language as AppLocale)}
           </div>
         </div>
         <div>
