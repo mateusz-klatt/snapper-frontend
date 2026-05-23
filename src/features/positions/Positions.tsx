@@ -7,6 +7,8 @@ import { useAppStore } from '../../stores/app'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import { AttachBracketModal } from './AttachBracketModal'
 import { AttachTrailingStopModal } from './AttachTrailingStopModal'
 import type { Position } from '../../types/entities'
@@ -89,7 +91,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
   onAttachTrailingStop,
   isTimeTraveling,
 }) => {
-  const { t } = useTranslation('positions')
+  const { t, i18n } = useTranslation('positions')
   const side = getPositionSide(position.quantity)
   const absQuantity = Math.abs(position.quantity)
   const suffix = positionIdSuffix(position)
@@ -171,7 +173,9 @@ const PositionRow: React.FC<PositionRowProps> = ({
       </div>
       {position.timestamp && (
         <div className='mt-3 text-xs text-muted-500'>
-          {t('row.updated', { timestamp: position.timestamp.toLocaleString() })}
+          {t('row.updated', {
+            timestamp: formatDateTime(position.timestamp, i18n.language as AppLocale),
+          })}
         </div>
       )}
     </div>

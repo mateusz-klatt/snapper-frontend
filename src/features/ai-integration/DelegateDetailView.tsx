@@ -6,13 +6,15 @@ import { Button } from '../../components/ui'
 import { useAiDelegate, useUpdateAiDelegateCaps } from '../../hooks/queries/ai-delegates'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { RevokeConfirmDialog } from './RevokeConfirmDialog'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { DelegateCapsBody } from '../../types/api'
 
 export function DelegateDetailView({
   publicId,
   onBack,
 }: Readonly<{ publicId: string; onBack: () => void }>): React.ReactElement {
-  const { t } = useTranslation('aiIntegration')
+  const { t, i18n } = useTranslation('aiIntegration')
   const detailQuery = useAiDelegate(publicId)
   const readOnly = useIsReadOnly()
   const updateMutation = useUpdateAiDelegateCaps()
@@ -127,7 +129,7 @@ export function DelegateDetailView({
         </div>
         <div>
           <dt className='text-muted-500'>{t('detail.createdAt')}</dt>
-          <dd>{new Date(delegate.created_at).toLocaleString()}</dd>
+          <dd>{formatDateTime(new Date(delegate.created_at), i18n.language as AppLocale)}</dd>
         </div>
         <div>
           <dt className='text-muted-500'>{t('detail.createdBy')}</dt>

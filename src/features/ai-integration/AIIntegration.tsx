@@ -8,6 +8,8 @@ import { DelegateDetailView } from './DelegateDetailView'
 import { useAiDelegates } from '../../hooks/queries/ai-delegates'
 import { useFeatureFlags } from '../../hooks/queries/feature-flags'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { DelegateRead } from '../../types/api'
 
 export function AIIntegration(): React.ReactElement {
@@ -91,7 +93,7 @@ function DelegateList({
   isLoading: boolean
   onSelect: (publicId: string) => void
 }>): React.ReactElement {
-  const { t } = useTranslation('aiIntegration')
+  const { t, i18n } = useTranslation('aiIntegration')
 
   if (isLoading) {
     return (
@@ -132,7 +134,7 @@ function DelegateList({
               <td className='px-4 py-2'>{d.label}</td>
               <td className='px-4 py-2 font-mono text-xs'>{d.username}</td>
               <td className='px-4 py-2 text-muted-600'>
-                {new Date(d.created_at).toLocaleString()}
+                {formatDateTime(new Date(d.created_at), i18n.language as AppLocale)}
               </td>
               <td className='px-4 py-2'>{d.caps.max_open_orders ?? t('list.default')}</td>
               <td className='px-4 py-2'>{d.caps.max_daily_notional_usd ?? t('list.default')}</td>
