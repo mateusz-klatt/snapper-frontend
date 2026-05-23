@@ -45,4 +45,10 @@ describe('formatDateTime', () => {
     expect(result).toMatch(/2026/)
     expect(result).toMatch(/\d/)
   })
+
+  it('honors custom options when provided', () => {
+    const result = formatDateTime(FIXED, 'us', { year: 'numeric', ...UTC })
+
+    expect(result).toMatch(/2026/)
+  })
 })
