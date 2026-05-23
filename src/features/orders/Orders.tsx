@@ -7,6 +7,8 @@ import type { Order, Execution } from '../../types/entities'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { ThemeSelect } from '../../components/ThemeSelect'
 import { exportToCSV } from '../../lib/csvExport'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import { EmptyState } from '../../components/ui'
 import clsx from 'clsx'
 
@@ -21,7 +23,7 @@ const TERMINAL_ORDER_STATUSES = new Set([
 ])
 
 const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
-  const { t } = useTranslation('orders')
+  const { t, i18n } = useTranslation('orders')
   const cancelOrder = useCancelOrder()
   const isTerminal = TERMINAL_ORDER_STATUSES.has(order.status.toLowerCase())
 
@@ -121,7 +123,9 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
         <div>
           <div className='text-muted-500'>{t('orderCard.created')}</div>
           <div className='text-xs text-alpine-900'>
-            {order.createdAt ? order.createdAt.toLocaleString() : t('orderCard.createdUnknown')}
+            {order.createdAt
+              ? formatDateTime(order.createdAt, i18n.language as AppLocale)
+              : t('orderCard.createdUnknown')}
           </div>
         </div>
         <div>
@@ -155,7 +159,7 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
 }
 
 const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
-  const { t } = useTranslation('orders')
+  const { t, i18n } = useTranslation('orders')
   const totalCost = execution.price * execution.size
   const fees = execution.fee || 0
 
@@ -189,7 +193,9 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
         </div>
         <div className='col-span-2'>
           <div className='text-muted-500'>{t('executionCard.executed')}</div>
-          <div className='text-xs text-alpine-900'>{execution.executedAt.toLocaleString()}</div>
+          <div className='text-xs text-alpine-900'>
+            {formatDateTime(execution.executedAt, i18n.language as AppLocale)}
+          </div>
         </div>
         {fees > 0 && (
           <div>
@@ -205,7 +211,7 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
 }
 
 export const Orders: React.FC = () => {
-  const { t } = useTranslation('orders')
+  const { t, i18n } = useTranslation('orders')
   const [activeTab, setActiveTab] = useState<'orders' | 'executions'>('orders')
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [showNewOrder, setShowNewOrder] = useState(false)
@@ -236,7 +242,7 @@ export const Orders: React.FC = () => {
       o.price ? o.price.toFixed(2) : t('orderCard.priceMarket'),
       o.leverage?.toString() ?? '',
       o.reduceOnly === true ? 'true' : 'false',
-      o.createdAt ? o.createdAt.toLocaleString() : '',
+      o.createdAt ? formatDateTime(o.createdAt, i18n.language as AppLocale) : '',
     ])
 
     exportToCSV('orders.csv', headers, rows)
@@ -263,7 +269,7 @@ export const Orders: React.FC = () => {
       (e.price * e.size).toFixed(2),
       e.fee ? e.fee.toFixed(2) : '0',
       e.feeAsset ?? '',
-      e.executedAt.toLocaleString(),
+      formatDateTime(e.executedAt, i18n.language as AppLocale),
     ])
 
     exportToCSV('executions.csv', headers, rows)

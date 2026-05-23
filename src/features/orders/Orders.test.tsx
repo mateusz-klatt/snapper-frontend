@@ -2,9 +2,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import i18n from 'i18next'
 import type { ReactNode } from 'react'
 import { Orders } from './Orders'
+import { formatDateTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 import type { Order, Execution } from '../../types/entities'
+
+const fmtDt = (d: Date): string => formatDateTime(d, i18n.language as AppLocale)
 
 vi.mock('../../lib/csvExport', () => ({
   exportToCSV: vi.fn(),
@@ -944,7 +949,7 @@ describe('Orders', () => {
     await user.click(executionsTab)
     await waitFor(() => {
       expect(screen.getByText('Order #200')).toBeInTheDocument()
-      expect(screen.getByText(executedDate.toLocaleString())).toBeInTheDocument()
+      expect(screen.getByText(fmtDt(executedDate))).toBeInTheDocument()
     })
   })
   it('exports orders to CSV when export button clicked', async () => {
@@ -1151,7 +1156,7 @@ describe('Orders', () => {
           '30000.00',
           '0',
           '',
-          executedDate.toLocaleString(),
+          fmtDt(executedDate),
         ],
       ]
     )
@@ -1322,7 +1327,7 @@ describe('Orders', () => {
           '50000.00',
           '4',
           'true',
-          created.toLocaleString(),
+          fmtDt(created),
         ],
       ]
     )
