@@ -4,6 +4,7 @@ import {
   CandlestickData,
   IChartApi,
   ISeriesApi,
+  TickMarkType,
   Time,
   UTCTimestamp,
   createChart,
@@ -67,6 +68,49 @@ export const LightweightChart = ({
     }
   }, [locale])
 
+  /**
+   * Tick-mark labels on the X-axis are rendered by lightweight-charts
+   * itself; the chart-level localization.timeFormatter only feeds the
+   * crosshair / tooltip. Without overriding tickMarkFormatter the axis
+   * stays in UTC even when the browser is in a different timezone
+   * (observed 2026-05-24: CEST browser showing UTC chart labels).
+   * Route through Intl.DateTimeFormat with the browser-resolved
+   * timezone so the axis ticks match the cursor labels.
+   */
+  const tickMarkFormatter = useMemo(() => {
+    const intlLocale = getIntlLocale(locale)
+
+    return (time: Time, tickMarkType: TickMarkType): string => {
+      const date = new Date((time as UTCTimestamp) * 1000)
+
+      switch (tickMarkType) {
+        case TickMarkType.Year:
+          return new Intl.DateTimeFormat(intlLocale, { year: 'numeric' }).format(date)
+        case TickMarkType.Month:
+          return new Intl.DateTimeFormat(intlLocale, {
+            month: 'short',
+            year: 'numeric',
+          }).format(date)
+        case TickMarkType.DayOfMonth:
+          return new Intl.DateTimeFormat(intlLocale, {
+            day: 'numeric',
+            month: 'short',
+          }).format(date)
+        case TickMarkType.TimeWithSeconds:
+          return new Intl.DateTimeFormat(intlLocale, {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          }).format(date)
+        default:
+          return new Intl.DateTimeFormat(intlLocale, {
+            hour: '2-digit',
+            minute: '2-digit',
+          }).format(date)
+      }
+    }
+  }, [locale])
+
   useEffect(() => {
     if (!chartContainerRef.current) {
       return
@@ -95,6 +139,7 @@ export const LightweightChart = ({
         borderColor: LIGHT_THEME.border,
         timeVisible: true,
         secondsVisible: false,
+        tickMarkFormatter,
       },
     })
     const candlestickSeries = chart.addSeries(CandlestickSeries, {
@@ -137,7 +182,7 @@ export const LightweightChart = ({
       chartRef.current = null
       seriesRef.current = null
     }
-  }, [height, width])
+  }, [height, width, tickMarkFormatter])
   useEffect(() => {
     if (!chartRef.current) {
       return
