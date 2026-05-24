@@ -34,6 +34,13 @@ const mockCreateChart = vi.fn().mockReturnValue({
 vi.mock('lightweight-charts', () => ({
   createChart: (container: never, options: never) => mockCreateChart(container, options),
   CandlestickSeries: 'CandlestickSeries',
+  TickMarkType: {
+    Year: 0,
+    Month: 1,
+    DayOfMonth: 2,
+    Time: 3,
+    TimeWithSeconds: 4,
+  },
 }))
 describe('LightweightChart', () => {
   beforeEach(() => {
@@ -548,6 +555,72 @@ describe('LightweightChart', () => {
         }),
       })
     )
+    vi.mocked(useAppStore).mockImplementation(((
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: false,
+        financialColorPreference: 'auto',
+        locale: 'us',
+      })) as never)
+  })
+
+  it('passes tickMarkFormatter to the chart timeScale at creation', () => {
+    render(<LightweightChart data={sampleData} />)
+    expect(mockCreateChart).toHaveBeenCalledWith(
+      expect.any(HTMLDivElement),
+      expect.objectContaining({
+        timeScale: expect.objectContaining({
+          tickMarkFormatter: expect.any(Function),
+        }),
+      })
+    )
+  })
+
+  it('tickMarkFormatter renders each TickMarkType in browser-local timezone', () => {
+    render(<LightweightChart data={sampleData} />)
+    const creationCall = mockCreateChart.mock.calls[0] as [
+      unknown,
+      { timeScale: { tickMarkFormatter: (t: number, m: number) => string } },
+    ]
+    const formatter = creationCall[1].timeScale.tickMarkFormatter
+    const unixNoonUtc = 1735732800
+
+    expect(formatter(unixNoonUtc, 0)).toMatch(/\d{4}/)
+    expect(formatter(unixNoonUtc, 1)).toMatch(/\d{4}/)
+    expect(formatter(unixNoonUtc, 2)).toMatch(/\d/)
+    expect(formatter(unixNoonUtc, 3)).toMatch(/\d{1,2}[:.]\d{2}/)
+    expect(formatter(unixNoonUtc, 4)).toMatch(/\d{1,2}[:.]\d{2}[:.]\d{2}/)
+  })
+
+  it('recreates the chart with a fresh tickMarkFormatter when locale changes', () => {
+    const { rerender } = render(<LightweightChart data={sampleData} />)
+    const initialCreateCount = mockCreateChart.mock.calls.length
+
+    vi.mocked(useAppStore).mockImplementation(((
+      selector: (s: {
+        isDarkMode: boolean
+        financialColorPreference: string
+        locale: string
+      }) => unknown
+    ) =>
+      selector({
+        isDarkMode: false,
+        financialColorPreference: 'auto',
+        locale: 'pl',
+      })) as never)
+    rerender(<LightweightChart data={sampleData} />)
+    expect(mockCreateChart.mock.calls.length).toBeGreaterThan(initialCreateCount)
+    const latestCall = mockCreateChart.mock.calls[mockCreateChart.mock.calls.length - 1] as [
+      unknown,
+      { timeScale: { tickMarkFormatter: (t: number, m: number) => string } },
+    ]
+
+    expect(latestCall[1].timeScale.tickMarkFormatter(1735732800, 3)).toMatch(/\d{1,2}[:.]\d{2}/)
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: {
         isDarkMode: boolean
