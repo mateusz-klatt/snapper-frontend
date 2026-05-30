@@ -12,7 +12,7 @@ Thanks for your interest. This is a single-maintainer project but PRs and issues
 
 ## Local setup
 
-Prerequisites: **Node 22+**, **pnpm 10** (auto-installed via Corepack from `packageManager` in `package.json`).
+Prerequisites: **Node 26+**, **pnpm 11** (auto-installed via Corepack from `packageManager` in `package.json`).
 
 ```bash
 corepack enable        # one-time

@@ -45,7 +45,7 @@ Snapshots from a local instance running against the [snapper](https://github.com
 
 ## Getting started
 
-Prerequisites: **Node 22+**, **pnpm 10** (auto-installed via Corepack from `packageManager` in `package.json` — run `corepack enable` once), a running Snapper backend at `http://localhost:8000`.
+Prerequisites: **Node 26+**, **pnpm 11** (auto-installed via Corepack from `packageManager` in `package.json` — run `corepack enable` once), a running Snapper backend at `http://localhost:8000`.
 
 ```bash
 corepack enable        # one-time, enables packageManager pnpm pin
@@ -119,7 +119,7 @@ Stable from `1.0.0` onward; subsequent releases follow Semantic Versioning:
 ### Supported runtime
 
 - **Browsers** — current and previous major release of Chrome, Edge, Firefox, Safari (so 2 versions back from "latest"). Other browsers may work but are not gated by CI. Open an issue if you hit a regression in scope.
-- **Node + pnpm (for contributors)** — Node `>=22`, pnpm `>=10`, enforced via `engines` + `engine-strict`.
+- **Node + pnpm (for contributors)** — Node `>=26`, pnpm `>=11`, enforced via `engines` + `engine-strict`.
 - **Backend pairing** — this frontend release pairs with the `mateusz-klatt/snapper` backend at the submodule pointer recorded against the matching frontend tag. Generated types (`src/types/*.generated.ts`, `src/lib/schemas/*.generated.zod.ts`) are committed; regenerate with `make gen` against a local backend if you point at a different commit.
 
 ### Accessibility target
