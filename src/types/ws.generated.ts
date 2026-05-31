@@ -228,6 +228,8 @@ export type ExitCode = number | null;
 export type Type28 = "process_summary_event";
 export type Topic29 = string | null;
 export type ActivePublicId = string | null;
+export type RssBytes = number | null;
+export type CpuPercent = number | null;
 export type Processes = ProcessSummaryItem[];
 export type Type29 = "related_instrument";
 export type Topic30 = string | null;
@@ -893,6 +895,8 @@ export interface ProcessSummaryItem {
   role: string;
   lifecycle: string;
   active_public_id?: ActivePublicId;
+  rss_bytes?: RssBytes;
+  cpu_percent?: CpuPercent;
 }
 export interface RelatedInstrumentData {
   type: Type29;
