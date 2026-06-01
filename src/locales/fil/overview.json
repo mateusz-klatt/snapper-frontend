@@ -46,5 +46,19 @@
     "title": "Kamakailang executions",
     "empty": "Walang kamakailang executions",
     "noTime": "N/A"
+  },
+  "processResources": {
+    "title": "Process Resources",
+    "empty": "No process resource data available",
+    "colName": "Name",
+    "colStatus": "Status",
+    "colRole": "Role",
+    "colMemory": "MEM",
+    "colCpu": "CPU",
+    "statusRunning": "Running",
+    "statusStopped": "Stopped",
+    "statusDisabled": "Disabled",
+    "containerTotal": "Total MEM {{value}}",
+    "cpuTooltip": "CPU usage can exceed 100% across multiple cores"
   }
 }
