@@ -225,10 +225,12 @@ const DEFAULTS: Array<[string | RegExp, RouteOverride]> = [
         route,
         envelope('process_summary_response', {
           payload: envelope('process_summary', {
+            coordinator: 'coord-0',
             feeds: { running: 0, total: 0 },
             strategies: { running: 0, total: 0 },
             executors: { running: 0, total: 0 },
             brokers: { running: 0, total: 0 },
+            processes: [],
           }),
         })
       ),
