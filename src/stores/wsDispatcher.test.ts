@@ -15,6 +15,7 @@ import WebSocketClient from '../lib/websocket/client'
 import { useMarketStore } from './market'
 import { useAppStore } from './app'
 import { useAuthStore } from './auth'
+import { useProcessMetricsStore } from './processMetrics'
 import type {
   OrderData,
   ExecutionData,
@@ -85,6 +86,11 @@ vi.mock('./auth', () => ({
     getState: vi.fn(),
   },
 }))
+vi.mock('./processMetrics', () => ({
+  useProcessMetricsStore: {
+    getState: vi.fn(),
+  },
+}))
 vi.mock('../lib/websocket', () => {
   return {
     default: vi.fn().mockImplementation(() => ({
@@ -120,6 +126,8 @@ describe('WSDispatcher', () => {
   let mockWsClient: WebSocketClient
   let messageHandlers: Map<string, (msg: unknown) => void>
   let connectionHandlers: ((connected: boolean) => void)[]
+  let processMetricsSetSnapshot: ReturnType<typeof vi.fn>
+  let processMetricsReset: ReturnType<typeof vi.fn>
 
   beforeEach(() => {
     vi.clearAllMocks()
@@ -160,6 +168,12 @@ describe('WSDispatcher', () => {
     vi.mocked(useAppStore.getState).mockReturnValue(mockAppStore as never)
     vi.mocked(useAuthStore.getState).mockReturnValue({
       user: { public_id: 'user-1' },
+    } as never)
+    processMetricsSetSnapshot = vi.fn()
+    processMetricsReset = vi.fn()
+    vi.mocked(useProcessMetricsStore.getState).mockReturnValue({
+      setSnapshot: processMetricsSetSnapshot,
+      reset: processMetricsReset,
     } as never)
     resetDispatcher()
   })
@@ -1293,6 +1307,11 @@ describe('WSDispatcher', () => {
       const dispatcher2 = getDispatcher(queryClient)
 
       expect(dispatcher1).not.toBe(dispatcher2)
+    })
+    it('resetDispatcher resets the process-metrics store', () => {
+      processMetricsReset.mockClear()
+      resetDispatcher()
+      expect(processMetricsReset).toHaveBeenCalledTimes(1)
     })
   })
   describe('additional message handling', () => {
@@ -2498,6 +2517,7 @@ describe('WSDispatcher', () => {
         timestamp: '2026-05-14T12:00:00Z',
         session_id: 'sid',
         sequence_id: 1,
+        coordinator: 'alpha',
         processes: [
           {
             name: 'trader_coordinator',
@@ -2555,6 +2575,59 @@ describe('WSDispatcher', () => {
       const callKeys = invalidate.mock.calls.map(c => (c[0] as { queryKey: string[] }).queryKey)
 
       expect(callKeys).toContainEqual(['processes', 'summary'])
+    })
+
+    it('process_summary_event feeds the metrics store snapshot', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      processMetricsSetSnapshot.mockClear()
+      messageHandlers.get('process_summary_event')?.(makeProcessSummary())
+      expect(processMetricsSetSnapshot).toHaveBeenCalledWith(
+        'alpha',
+        [
+          {
+            name: 'trader_coordinator',
+            running: true,
+            enabled: true,
+            role: 'core',
+            lifecycle: 'long_running',
+          },
+        ],
+        '2026-05-14T12:00:00Z'
+      )
+    })
+
+    it('process_summary_event defaults a missing coordinator to empty string', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      processMetricsSetSnapshot.mockClear()
+      messageHandlers.get('process_summary_event')?.({
+        type: 'process_summary_event',
+        public_id: 'summary-pub-2',
+        timestamp: '2026-05-14T12:00:00Z',
+        session_id: 'sid',
+        sequence_id: 2,
+        processes: [],
+        snapshot_at: '2026-05-14T12:00:00Z',
+      } as unknown as WebSocketMessages)
+      expect(processMetricsSetSnapshot).toHaveBeenCalledWith(
+        '',
+        expect.any(Array),
+        '2026-05-14T12:00:00Z'
+      )
+    })
+
+    it('mismatched process_summary_event does not touch the metrics store', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      processMetricsSetSnapshot.mockClear()
+      messageHandlers.get('process_summary_event')?.({
+        type: 'not_summary',
+      } as unknown as WebSocketMessages)
+      expect(processMetricsSetSnapshot).not.toHaveBeenCalled()
     })
 
     it('process_configured_event invalidates the configured-processes prefix', () => {

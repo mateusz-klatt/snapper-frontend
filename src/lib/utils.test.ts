@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { formatNumber, getCookie } from './utils'
+import { formatBytes, formatNumber, getCookie } from './utils'
 
 describe('getCookie', () => {
   beforeEach(() => {
@@ -43,5 +43,20 @@ describe('formatNumber', () => {
     expect(formatNumber(1234.5, { minimumFractionDigits: 2, maximumFractionDigits: 2 })).toBe(
       '1,234.50'
     )
+  })
+})
+
+describe('formatBytes', () => {
+  it('renders sub-gibibyte values in mebibytes with one decimal', () => {
+    expect(formatBytes(256 * 1024 * 1024)).toBe('256.0 MiB')
+  })
+  it('renders zero as 0.0 MiB', () => {
+    expect(formatBytes(0)).toBe('0.0 MiB')
+  })
+  it('switches to gibibytes at the 1024 MiB boundary', () => {
+    expect(formatBytes(1024 * 1024 * 1024)).toBe('1.00 GiB')
+  })
+  it('renders multi-gibibyte values with two decimals', () => {
+    expect(formatBytes(2560 * 1024 * 1024)).toBe('2.50 GiB')
   })
 })

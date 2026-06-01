@@ -1,4 +1,5 @@
 import type { Components } from '../types/api.generated'
+import type { ProcessSummaryItem } from '../types/ws.generated'
 
 type Provenance = {
   type: string
@@ -134,6 +135,20 @@ export function makeSettingRead(
     updated_at: '2024-01-01T00:00:00Z',
     ...overrides,
   }) as Components['schemas']['SettingRead']
+}
+
+export function makeProcessSummaryItem(
+  overrides: Partial<ProcessSummaryItem> & { name: string }
+): ProcessSummaryItem {
+  return {
+    running: true,
+    enabled: true,
+    role: 'core',
+    lifecycle: 'long_running',
+    rss_bytes: null,
+    cpu_percent: null,
+    ...overrides,
+  }
 }
 
 export function makeEnvelope<T>(

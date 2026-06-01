@@ -7,9 +7,13 @@ import { useOrdersGrouped, useExecutions } from '../../hooks/queries/orders'
 import { usePositionsSummary } from '../../hooks/queries/positions'
 import { useProcessSummary } from '../../hooks/queries/processes'
 import { useLatestSignals } from '../../hooks/queries/signals'
+import { ProcessResourceTable } from './ProcessResourceTable'
+import { useProcessMetricsStore } from '../../stores/processMetrics'
 import { formatDate, formatTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import type { Signal, Execution } from '../../types/entities'
+import type { ProcessSummaryData } from '../../types/api'
+import type { ProcessSummaryItem } from '../../types/ws.generated'
 
 const CURRENCY_FORMAT = { minimumFractionDigits: 2, maximumFractionDigits: 2 }
 
@@ -210,6 +214,27 @@ const SignalsCardContent: React.FC<
 
 const zeroCounts = { running: 0, total: 0 }
 
+/**
+ * Map a REST process-summary item onto the store's WS-shaped item.
+ *
+ * The REST and WS generated types differ only in optional/`undefined`
+ * tolerance under `exactOptionalPropertyTypes`; the nullable fields are
+ * collapsed to `null` here so the seed matches the store contract and
+ * stays value-comparable with later WS frames.
+ */
+const toMetricItem = (
+  item: NonNullable<ProcessSummaryData['processes']>[number]
+): ProcessSummaryItem => ({
+  name: item.name,
+  running: item.running,
+  enabled: item.enabled,
+  role: item.role,
+  lifecycle: item.lifecycle,
+  active_public_id: item.active_public_id ?? null,
+  rss_bytes: item.rss_bytes ?? null,
+  cpu_percent: item.cpu_percent ?? null,
+})
+
 export const Overview: React.FC = () => {
   const { t, i18n } = useTranslation('overview')
   const asOf = useAppStore(s => s.asOf)
@@ -222,6 +247,20 @@ export const Overview: React.FC = () => {
   const strategies = processSummary?.payload?.strategies ?? zeroCounts
   const executors = processSummary?.payload?.executors ?? zeroCounts
   const brokers = processSummary?.payload?.brokers ?? zeroCounts
+  const summaryPayload = processSummary?.payload
+
+  React.useEffect(() => {
+    if (summaryPayload?.processes === undefined) return
+
+    useProcessMetricsStore
+      .getState()
+      .setSnapshot(
+        summaryPayload.coordinator,
+        summaryPayload.processes.map(toMetricItem),
+        summaryPayload.timestamp
+      )
+  }, [summaryPayload])
+
   const recentExecutions = executions.slice(0, 5)
   const openOrdersCount = ordersGrouped?.open?.length || 0
   const referenceDate = asOf ? new Date(asOf) : new Date()
@@ -295,6 +334,7 @@ export const Overview: React.FC = () => {
           <PortfolioCardContent loading={positionsLoading} summary={positionsSummary ?? null} />
         </Card>
       </div>
+      <ProcessResourceTable />
       <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
         {}
         <Card title={t('signals.title')}>

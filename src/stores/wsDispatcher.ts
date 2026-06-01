@@ -8,6 +8,7 @@ import { openAlertModal } from '../features/notifications/openAlertModal'
 import { useMarketStore } from './market'
 import { useAppStore } from './app'
 import { useAuthStore } from './auth'
+import { useProcessMetricsStore } from './processMetrics'
 import {
   type WebSocketMessages,
   type PongWithRtt,
@@ -580,6 +581,9 @@ export class WSDispatcher {
   private handleProcessSummaryEvent(message: WebSocketMessages): void {
     if (!isProcessSummaryEvent(message)) return
 
+    useProcessMetricsStore
+      .getState()
+      .setSnapshot(message.coordinator ?? '', message.processes, message.snapshot_at)
     this.invalidateActive(queryKeys.processSummaryAll)
   }
   private handleProcessConfiguredEvent(message: WebSocketMessages): void {
@@ -651,4 +655,6 @@ export function resetDispatcher(): void {
     dispatcherInstance.detach()
     dispatcherInstance = null
   }
+
+  useProcessMetricsStore.getState().reset()
 }

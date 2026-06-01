@@ -3,6 +3,7 @@ import { screen } from '@testing-library/react'
 import type { ReactElement } from 'react'
 import { Overview } from './Overview'
 import { renderWithI18n } from '../../test/renderWithI18n'
+import { useProcessMetricsStore } from '../../stores/processMetrics'
 
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn((selector: (s: Record<string, unknown>) => unknown) =>
@@ -41,6 +42,7 @@ const renderWithMocks = (ui: ReactElement) => {
 describe('Overview', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    useProcessMetricsStore.getState().reset()
   })
   it('renders overview page', () => {
     renderWithMocks(<Overview />)
@@ -455,6 +457,57 @@ describe('Overview', () => {
     renderWithMocks(<Overview />)
     expect(screen.getByText('DOT/USD')).toBeInTheDocument()
     expect(screen.getByText('N/A')).toBeInTheDocument()
+  })
+  it('shows the process resources empty state when no processes are present', () => {
+    renderWithMocks(<Overview />)
+    expect(screen.getByText('No process resource data available')).toBeInTheDocument()
+  })
+  it('seeds the process metrics store from the REST payload and renders the table', async () => {
+    const { useProcessSummary } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useProcessSummary).mockReturnValue({
+      isLoading: false,
+      data: {
+        payload: {
+          coordinator: 'alpha',
+          timestamp: '2026-06-01T00:00:00Z',
+          feeds: { running: 0, total: 0 },
+          strategies: { running: 0, total: 0 },
+          executors: { running: 0, total: 0 },
+          brokers: { running: 0, total: 0 },
+          processes: [
+            {
+              name: 'feed-1',
+              running: true,
+              enabled: true,
+              role: 'core',
+              lifecycle: 'long_running',
+              active_public_id: 'run-123',
+              rss_bytes: 104857600,
+              cpu_percent: 12.5,
+            },
+            {
+              name: 'feed-2',
+              running: false,
+              enabled: false,
+              role: 'core',
+              lifecycle: 'long_running',
+              rss_bytes: null,
+              cpu_percent: null,
+            },
+          ],
+        },
+      },
+    } as never)
+    renderWithMocks(<Overview />)
+    expect(screen.getByText('feed-1')).toBeInTheDocument()
+    expect(screen.getByText('100.0 MB')).toBeInTheDocument()
+    expect(screen.getByText('12.5%')).toBeInTheDocument()
+    const seeded = useProcessMetricsStore.getState().byCoordinator['alpha']
+
+    expect(seeded?.['feed-1']?.active_public_id).toBe('run-123')
+    expect(seeded?.['feed-2']?.rss_bytes).toBeNull()
+    expect(seeded?.['feed-2']?.cpu_percent).toBeNull()
   })
   it('shows date-specific execution label when time traveling', async () => {
     const { useAppStore } = await import('../../stores/app')
