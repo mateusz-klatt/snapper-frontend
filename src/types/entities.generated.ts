@@ -646,6 +646,7 @@ export interface ProcessSummaryEvent {
   timestamp: Date
   sessionId: string
   topic?: string | null
+  coordinator?: string
   processes: Record<string, unknown>[]
   snapshotAt: Date
 }
