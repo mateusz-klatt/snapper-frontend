@@ -148,6 +148,7 @@ describe('processes API methods', () => {
         public_id: 'test-pid',
         timestamp: '2024-01-01T00:00:00Z',
         session_id: 'test-sid',
+        coordinator: 'coord-0',
         feeds: {
           running: 1,
           total: 2,

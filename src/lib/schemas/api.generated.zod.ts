@@ -897,6 +897,23 @@ export const ProcessStopDataSchema = _ProcessStopDataRawSchema as unknown as z.Z
   Components['schemas']['ProcessStopData']
 >
 
+const _ProcessSummaryItemRawSchema = z
+  .object({
+    name: z.string(),
+    running: z.boolean(),
+    enabled: z.boolean(),
+    role: z.string(),
+    lifecycle: z.string(),
+    active_public_id: z.string().nullable().optional(),
+    rss_bytes: z.number().int().nullable().optional(),
+    cpu_percent: z.number().nullable().optional(),
+  })
+  .strict()
+
+export const ProcessSummaryItemSchema = _ProcessSummaryItemRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessSummaryItem']
+>
+
 const _PushBetaConfigReadRawSchema = z
   .object({
     type: z.literal('push_beta_config_read'),
@@ -2367,25 +2384,6 @@ export const PositionListResponseSchema = _PositionListResponseRawSchema as unkn
   Components['schemas']['PositionListResponse']
 >
 
-const _ProcessSummaryDataRawSchema = z
-  .object({
-    type: z.literal('process_summary'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    feeds: ProcessCategoryCountSchema,
-    strategies: ProcessCategoryCountSchema,
-    executors: ProcessCategoryCountSchema,
-    brokers: ProcessCategoryCountSchema,
-  })
-  .strict()
-
-export const ProcessSummaryDataSchema = _ProcessSummaryDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['ProcessSummaryData']
->
-
 const _ProcessCreateDataRawSchema = z
   .object({
     type: z.literal('process_create'),
@@ -2433,6 +2431,27 @@ const _ProcessStopResponseRawSchema = z
 
 export const ProcessStopResponseSchema = _ProcessStopResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['ProcessStopResponse']
+>
+
+const _ProcessSummaryDataRawSchema = z
+  .object({
+    type: z.literal('process_summary'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    coordinator: z.string(),
+    feeds: ProcessCategoryCountSchema,
+    strategies: ProcessCategoryCountSchema,
+    executors: ProcessCategoryCountSchema,
+    brokers: ProcessCategoryCountSchema,
+    processes: z.array(ProcessSummaryItemSchema).optional(),
+  })
+  .strict()
+
+export const ProcessSummaryDataSchema = _ProcessSummaryDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessSummaryData']
 >
 
 const _PushBetaConfigResponseRawSchema = z
@@ -3534,6 +3553,22 @@ export const JsonObjectSchema = _JsonObjectRawSchema as unknown as z.ZodType<
   Components['schemas']['JsonObject']
 >
 
+const _ProcessCreateResponseRawSchema = z
+  .object({
+    type: z.literal('process_create_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ProcessCreateDataSchema,
+  })
+  .strict()
+
+export const ProcessCreateResponseSchema = _ProcessCreateResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['ProcessCreateResponse']
+>
+
 const _ProcessSummaryResponseRawSchema = z
   .object({
     type: z.literal('process_summary_response'),
@@ -3550,22 +3585,6 @@ export const ProcessSummaryResponseSchema =
   _ProcessSummaryResponseRawSchema as unknown as z.ZodType<
     Components['schemas']['ProcessSummaryResponse']
   >
-
-const _ProcessCreateResponseRawSchema = z
-  .object({
-    type: z.literal('process_create_response'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: ProcessCreateDataSchema,
-  })
-  .strict()
-
-export const ProcessCreateResponseSchema = _ProcessCreateResponseRawSchema as unknown as z.ZodType<
-  Components['schemas']['ProcessCreateResponse']
->
 
 const _RelatedInstrumentsPayloadDataRawSchema = z
   .object({
@@ -4747,6 +4766,7 @@ export type ProcessMetrics = Components['schemas']['ProcessMetrics']
 export type ProcessStartData = Components['schemas']['ProcessStartData']
 export type ProcessStatus = Components['schemas']['ProcessStatus']
 export type ProcessStopData = Components['schemas']['ProcessStopData']
+export type ProcessSummaryItem = Components['schemas']['ProcessSummaryItem']
 export type PushBetaConfigRead = Components['schemas']['PushBetaConfigRead']
 export type RelatedInstrumentData = Components['schemas']['RelatedInstrumentData']
 export type RelatedInstrumentsSelected = Components['schemas']['RelatedInstrumentsSelected']
@@ -4846,10 +4866,10 @@ export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
 export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
 export type PositionListResponse = Components['schemas']['PositionListResponse']
-export type ProcessSummaryData = Components['schemas']['ProcessSummaryData']
 export type ProcessCreateData = Components['schemas']['ProcessCreateData']
 export type ProcessStartResponse = Components['schemas']['ProcessStartResponse']
 export type ProcessStopResponse = Components['schemas']['ProcessStopResponse']
+export type ProcessSummaryData = Components['schemas']['ProcessSummaryData']
 export type PushBetaConfigResponse = Components['schemas']['PushBetaConfigResponse']
 export type RelatedInstrumentsGroup = Components['schemas']['RelatedInstrumentsGroup']
 export type RestRateData = Components['schemas']['RestRateData']
@@ -4917,8 +4937,8 @@ export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
 export type HealthCheckData = Components['schemas']['HealthCheckData']
 export type JsonObject = Components['schemas']['JsonObject']
-export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
+export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
 export type RelatedInstrumentsPayloadData = Components['schemas']['RelatedInstrumentsPayloadData']
 export type RestRateResponse = Components['schemas']['RestRateResponse']
 export type RetentionRunResponse = Components['schemas']['RetentionRunResponse']

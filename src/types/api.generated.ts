@@ -3037,10 +3037,22 @@ export type Components = {
             timestamp: string;
             session_id: string;
             topic?: string | null | undefined;
+            coordinator: string;
             feeds: Components["schemas"]["ProcessCategoryCount"];
             strategies: Components["schemas"]["ProcessCategoryCount"];
             executors: Components["schemas"]["ProcessCategoryCount"];
             brokers: Components["schemas"]["ProcessCategoryCount"];
+            processes?: Components["schemas"]["ProcessSummaryItem"][];
+        };
+        ProcessSummaryItem: {
+            name: string;
+            running: boolean;
+            enabled: boolean;
+            role: string;
+            lifecycle: string;
+            active_public_id?: string | null | undefined;
+            rss_bytes?: number | null | undefined;
+            cpu_percent?: number | null | undefined;
         };
         ProcessSummaryResponse: {
             type: "process_summary_response";
