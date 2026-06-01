@@ -83,12 +83,16 @@ export const useProcessMetricsStore = create<ProcessMetricsStore>()(
 )
 
 export function useMetricCoordinators(): string[] {
-  return useProcessMetricsStore(useShallow(state => Object.keys(state.byCoordinator).sort()))
+  return useProcessMetricsStore(
+    useShallow(state => Object.keys(state.byCoordinator).sort((a, b) => a.localeCompare(b)))
+  )
 }
 
 export function useMetricProcessNames(coordinator: string): string[] {
   return useProcessMetricsStore(
-    useShallow(state => Object.keys(state.byCoordinator[coordinator] ?? {}).sort())
+    useShallow(state =>
+      Object.keys(state.byCoordinator[coordinator] ?? {}).sort((a, b) => a.localeCompare(b))
+    )
   )
 }
 
