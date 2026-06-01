@@ -885,6 +885,7 @@ export interface ProcessSummaryEventData {
   timestamp: string;
   session_id: string;
   topic?: Topic29;
+  coordinator?: string;
   processes: Processes;
   snapshot_at: string;
 }

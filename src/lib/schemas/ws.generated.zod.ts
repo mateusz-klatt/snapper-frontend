@@ -1016,6 +1016,7 @@ export const ProcessSummaryEventDataSchema = z
     timestamp: z.iso.datetime(),
     session_id: z.string(),
     topic: z.string().nullable().optional(),
+    coordinator: z.string(),
     processes: z.array(ProcessSummaryItemSchema),
     snapshot_at: z.iso.datetime(),
   })
