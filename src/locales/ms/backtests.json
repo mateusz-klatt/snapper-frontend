@@ -14,7 +14,8 @@
     "title": "Backtest",
     "actions": {
       "cancel": "Batal",
-      "rerun": "Jalankan semula"
+      "rerun": "Jalankan semula",
+      "create": "Backtest baharu"
     },
     "fields": {
       "timeframe": "Rangka masa",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Backtest baharu",
+    "cancel": "Batal",
+    "submit": "Mulakan backtest",
+    "submitting": "Memulakan…",
+    "errors": {
+      "unknown": "Ralat tidak diketahui"
+    },
+    "validation": {
+      "endDateAfterStart": "Tarikh tamat mesti selepas tarikh mula"
+    },
+    "form": {
+      "strategyLabel": "Strategi",
+      "strategyPlaceholder": "— Pilih strategi —",
+      "strategyLoading": "Memuatkan strategi…",
+      "strategyError": "Gagal memuatkan strategi",
+      "instrumentLabel": "Instrumen",
+      "instrumentPlaceholder": "cth. BTC-USD",
+      "instrumentHelp": "Id awam instrumen untuk backtest",
+      "exchangeLabel": "Bursa (sumber feed)",
+      "exchangePlaceholder": "— Pilih bursa —",
+      "timeframeLabel": "Rangka masa",
+      "startDateLabel": "Tarikh mula",
+      "endDateLabel": "Tarikh tamat",
+      "initialCashLabel": "Tunai awal",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Komisen (bps)",
+      "executionModeLabel": "Mod pelaksanaan",
+      "executionModeDirectDb": "DB Terus",
+      "executionModeZmqReplay": "Main semula ZMQ",
+      "targetExchangeLabel": "Bursa pelaksanaan sasaran",
+      "targetExchangeNone": "Tiada (bursa tunggal)",
+      "targetExchangeHelp": "Pilihan — untuk larian cross-asset; biarkan kosong untuk bursa tunggal"
     }
   }
 }

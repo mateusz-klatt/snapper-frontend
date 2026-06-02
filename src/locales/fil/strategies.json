@@ -85,7 +85,9 @@
       "healthy": "HEALTHY",
       "warning": "WARNING",
       "error": "ERROR"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "I-backtest ang strategy na {{name}}"
   },
   "launchModal": {
     "title": "Mag-register ng Strategy Process",

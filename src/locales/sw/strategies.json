@@ -85,7 +85,9 @@
       "healthy": "AFYA NZURI",
       "warning": "ONYO",
       "error": "HITILAFU"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Fanya backtest mkakati wa {{name}}"
   },
   "launchModal": {
     "title": "Sajili Process ya Mkakati",

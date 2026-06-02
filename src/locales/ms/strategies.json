@@ -85,7 +85,9 @@
       "healthy": "HEALTHY",
       "warning": "WARNING",
       "error": "ERROR"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest strategi {{name}}"
   },
   "launchModal": {
     "title": "Daftar Proses Strategi",

@@ -14,7 +14,8 @@
     "title": "Backtestler",
     "actions": {
       "cancel": "İptal",
-      "rerun": "Yeniden çalıştır"
+      "rerun": "Yeniden çalıştır",
+      "create": "Yeni backtest"
     },
     "fields": {
       "timeframe": "Zaman aralığı",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Yeni backtest",
+    "cancel": "İptal",
+    "submit": "Backtest'i başlat",
+    "submitting": "Başlatılıyor…",
+    "errors": {
+      "unknown": "Bilinmeyen hata"
+    },
+    "validation": {
+      "endDateAfterStart": "Bitiş tarihi başlangıç tarihinden sonra olmalıdır"
+    },
+    "form": {
+      "strategyLabel": "Strateji",
+      "strategyPlaceholder": "— Bir strateji seçin —",
+      "strategyLoading": "Stratejiler yükleniyor…",
+      "strategyError": "Stratejiler yüklenemedi",
+      "instrumentLabel": "Enstrüman",
+      "instrumentPlaceholder": "örn. BTC-USD",
+      "instrumentHelp": "Backtest yapılacak enstrümanın genel id'si",
+      "exchangeLabel": "Borsa (feed kaynağı)",
+      "exchangePlaceholder": "— Bir borsa seçin —",
+      "timeframeLabel": "Zaman aralığı",
+      "startDateLabel": "Başlangıç tarihi",
+      "endDateLabel": "Bitiş tarihi",
+      "initialCashLabel": "Başlangıç nakit",
+      "slippageBpsLabel": "Kayma (bps)",
+      "commissionBpsLabel": "Komisyon (bps)",
+      "executionModeLabel": "Gerçekleşme modu",
+      "executionModeDirectDb": "Doğrudan DB",
+      "executionModeZmqReplay": "ZMQ yeniden oynatma",
+      "targetExchangeLabel": "Hedef gerçekleşme borsası",
+      "targetExchangeNone": "Yok (tek borsa)",
+      "targetExchangeHelp": "İsteğe bağlı — çapraz varlık çalıştırmaları için; tek borsa için boş bırakın"
     }
   }
 }

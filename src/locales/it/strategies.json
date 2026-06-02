@@ -85,7 +85,9 @@
       "healthy": "SANA",
       "warning": "AVVISO",
       "error": "ERRORE"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest della strategia {{name}}"
   },
   "launchModal": {
     "title": "Registra processo di strategia",

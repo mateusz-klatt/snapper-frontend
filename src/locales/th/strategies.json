@@ -85,7 +85,9 @@
       "healthy": "HEALTHY",
       "warning": "WARNING",
       "error": "ERROR"
-    }
+    },
+    "backtest": "แบ็คเทสต์",
+    "backtestAriaLabel": "แบ็คเทสต์กลยุทธ์ {{name}}"
   },
   "launchModal": {
     "title": "ลงทะเบียนกระบวนการกลยุทธ์",

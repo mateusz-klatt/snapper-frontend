@@ -14,7 +14,8 @@
     "title": "Backtestovi",
     "actions": {
       "cancel": "Otkaži",
-      "rerun": "Pokreni ponovo"
+      "rerun": "Pokreni ponovo",
+      "create": "Novi backtest"
     },
     "fields": {
       "timeframe": "Vremenski okvir",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Novi backtest",
+    "cancel": "Otkaži",
+    "submit": "Pokreni backtest",
+    "submitting": "Pokretanje…",
+    "errors": {
+      "unknown": "Nepoznata greška"
+    },
+    "validation": {
+      "endDateAfterStart": "Datum završetka mora biti posle datuma početka"
+    },
+    "form": {
+      "strategyLabel": "Strategija",
+      "strategyPlaceholder": "— Izaberite strategiju —",
+      "strategyLoading": "Učitavanje strategija…",
+      "strategyError": "Učitavanje strategija nije uspelo",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "npr. BTC-USD",
+      "instrumentHelp": "Javni id instrumenta za backtest",
+      "exchangeLabel": "Berza (izvor feeda)",
+      "exchangePlaceholder": "— Izaberite berzu —",
+      "timeframeLabel": "Vremenski okvir",
+      "startDateLabel": "Datum početka",
+      "endDateLabel": "Datum završetka",
+      "initialCashLabel": "Početni kapital",
+      "slippageBpsLabel": "Klizanje (bps)",
+      "commissionBpsLabel": "Provizija (bps)",
+      "executionModeLabel": "Režim izvršenja",
+      "executionModeDirectDb": "Direktna DB",
+      "executionModeZmqReplay": "ZMQ replay",
+      "targetExchangeLabel": "Ciljna berza izvršenja",
+      "targetExchangeNone": "Nijedna (jedna berza)",
+      "targetExchangeHelp": "Opciono — za cross-asset runove; ostavite prazno za jednu berzu"
     }
   }
 }

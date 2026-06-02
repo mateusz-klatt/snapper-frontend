@@ -18,6 +18,8 @@ import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { LiveOnlyNotice } from '../../components/LiveOnlyNotice'
 import { Permission } from '../../types/permissions.generated'
 import { StrategyLaunchModal, type StrategyLaunchData } from './StrategyLaunchModal'
+import { BacktestCreateForm } from '../backtests/BacktestCreateForm'
+import { currentHashQuery } from '../../lib/hash/currentHashQuery'
 import { StrategyCard, type FeedHealth, type HealthStatus } from './StrategyCard'
 import { StrategiesSkeleton } from '../../components/Skeleton'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
@@ -28,7 +30,9 @@ export const Strategies: React.FC = () => {
   const { hasPermission } = useAuth()
   const readOnly = useIsReadOnly()
   const canManage = hasPermission(Permission.MANAGE_PROCESSES)
+  const canBacktest = hasPermission(Permission.MANAGE_BACKTESTS)
   const [strategyModalOpen, setStrategyModalOpen] = useState(false)
+  const [backtestStrategyClass, setBacktestStrategyClass] = useState<string | null>(null)
   const [activeStrategyProcess, setActiveStrategyProcess] = useState<string | null>(null)
   const [healthStatuses, setHealthStatuses] = useState<Record<string, HealthStatus>>({})
   const { openConfirm, dialogProps: confirmDialogProps } = useConfirmDialog()
@@ -305,23 +309,32 @@ export const Strategies: React.FC = () => {
         <h3 className='text-lg font-medium text-alpine-900'>{t('page.configuredHeading')}</h3>
         {filteredStrategies.length > 0 && (
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-            {filteredStrategies.map(strategy => (
-              <StrategyCard
-                key={strategy.name}
-                name={strategy.name}
-                running={strategy.running}
-                autoStartEnabled={strategy.enabled}
-                mode={strategy.mode}
-                health={healthStatuses[strategy.name]}
-                onStart={
-                  canManage ? () => requestStartStrategy(strategy.name, strategy.mode) : undefined
-                }
-                onStop={canManage ? () => requestStopStrategy(strategy.name) : undefined}
-                isStarting={startProcess.isPending && activeStrategyProcess === strategy.name}
-                isStopping={stopProcess.isPending && activeStrategyProcess === strategy.name}
-                readOnly={readOnly}
-              />
-            ))}
+            {filteredStrategies.map(strategy => {
+              const backtestClass: string | null = strategy.strategy_class ?? null
+
+              return (
+                <StrategyCard
+                  key={strategy.name}
+                  name={strategy.name}
+                  running={strategy.running}
+                  autoStartEnabled={strategy.enabled}
+                  mode={strategy.mode}
+                  health={healthStatuses[strategy.name]}
+                  onStart={
+                    canManage ? () => requestStartStrategy(strategy.name, strategy.mode) : undefined
+                  }
+                  onStop={canManage ? () => requestStopStrategy(strategy.name) : undefined}
+                  onBacktest={
+                    canBacktest && backtestClass && !readOnly
+                      ? () => setBacktestStrategyClass(backtestClass)
+                      : undefined
+                  }
+                  isStarting={startProcess.isPending && activeStrategyProcess === strategy.name}
+                  isStopping={stopProcess.isPending && activeStrategyProcess === strategy.name}
+                  readOnly={readOnly}
+                />
+              )
+            })}
           </div>
         )}
         {filteredStrategies.length === 0 && strategies.length > 0 && (
@@ -367,6 +380,14 @@ export const Strategies: React.FC = () => {
         templates={strategyTemplates}
         onSubmit={handleStrategyLaunch}
         isSubmitting={createProcessConfig.isPending || startProcess.isPending}
+      />
+      <BacktestCreateForm
+        open={backtestStrategyClass !== null}
+        onClose={() => setBacktestStrategyClass(null)}
+        preSelectedStrategy={backtestStrategyClass ?? undefined}
+        onSuccess={runPublicId => {
+          globalThis.location.hash = `#backtests/${runPublicId}${currentHashQuery()}`
+        }}
       />
     </div>
   )

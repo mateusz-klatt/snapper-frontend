@@ -4,6 +4,7 @@ import { renderHook, waitFor, act } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   useBacktests,
+  useBacktestStrategyClasses,
   useBacktestRunsByConfigHash,
   useBacktest,
   useBacktestTrades,
@@ -23,6 +24,7 @@ import {
   getBacktestSignals,
   getBacktestTrades,
   getBacktests,
+  getBacktestStrategyClasses,
 } from '../../lib/api/backtests'
 
 vi.mock('../../lib/api/backtests', () => ({
@@ -53,6 +55,9 @@ vi.mock('../../lib/api/backtests', () => ({
     Promise.resolve({ type: 'backtest_trade_list', payload: [], count: 0 })
   ),
   getBacktests: vi.fn(() => Promise.resolve({ type: 'backtest_run_list', payload: [], count: 0 })),
+  getBacktestStrategyClasses: vi.fn(() =>
+    Promise.resolve({ type: 'backtest_strategy_class_list', payload: ['MACDCrossover'], count: 1 })
+  ),
   rerunBacktest: vi.fn(() => Promise.resolve({ type: 'backtest_run_response', payload: {} })),
 }))
 
@@ -92,6 +97,26 @@ describe('backtests queries', () => {
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(getBacktests).toHaveBeenCalled()
+    })
+  })
+
+  describe('useBacktestStrategyClasses', () => {
+    it('fetches the registered strategy class keys when enabled', async () => {
+      const { result } = renderHook(() => useBacktestStrategyClasses(true), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(getBacktestStrategyClasses).toHaveBeenCalled()
+    })
+
+    it('does not fetch when disabled', () => {
+      const { result } = renderHook(() => useBacktestStrategyClasses(false), {
+        wrapper: createWrapper(),
+      })
+
+      expect(result.current.fetchStatus).toBe('idle')
+      expect(getBacktestStrategyClasses).not.toHaveBeenCalled()
     })
   })
 

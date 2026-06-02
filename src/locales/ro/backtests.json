@@ -14,7 +14,8 @@
     "title": "Backtesturi",
     "actions": {
       "cancel": "Anulați",
-      "rerun": "Rulați din nou"
+      "rerun": "Rulați din nou",
+      "create": "Backtest nou"
     },
     "fields": {
       "timeframe": "Interval",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Backtest nou",
+    "cancel": "Anulați",
+    "submit": "Porniți backtestul",
+    "submitting": "Se pornește…",
+    "errors": {
+      "unknown": "Eroare necunoscută"
+    },
+    "validation": {
+      "endDateAfterStart": "Data de sfârșit trebuie să fie ulterioară datei de început"
+    },
+    "form": {
+      "strategyLabel": "Strategie",
+      "strategyPlaceholder": "— Selectați o strategie —",
+      "strategyLoading": "Se încarcă strategiile…",
+      "strategyError": "Încărcarea strategiilor a eșuat",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "ex. BTC-USD",
+      "instrumentHelp": "ID-ul public al instrumentului de testat",
+      "exchangeLabel": "Bursă (sursă feed)",
+      "exchangePlaceholder": "— Selectați o bursă —",
+      "timeframeLabel": "Interval",
+      "startDateLabel": "Data de început",
+      "endDateLabel": "Data de sfârșit",
+      "initialCashLabel": "Capital inițial",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Comision (bps)",
+      "executionModeLabel": "Mod de execuție",
+      "executionModeDirectDb": "DB direct",
+      "executionModeZmqReplay": "Reluare ZMQ",
+      "targetExchangeLabel": "Bursă de execuție țintă",
+      "targetExchangeNone": "Niciuna (o singură bursă)",
+      "targetExchangeHelp": "Opțional — pentru rulări cross-asset; lăsați nesetat pentru o singură bursă"
     }
   }
 }

@@ -14,7 +14,8 @@
     "title": "Backtesty",
     "actions": {
       "cancel": "Zrušiť",
-      "rerun": "Spustiť znova"
+      "rerun": "Spustiť znova",
+      "create": "Nový backtest"
     },
     "fields": {
       "timeframe": "Časový rámec",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Nový backtest",
+    "cancel": "Zrušiť",
+    "submit": "Spustiť backtest",
+    "submitting": "Spúšťa sa…",
+    "errors": {
+      "unknown": "Neznáma chyba"
+    },
+    "validation": {
+      "endDateAfterStart": "Dátum konca musí byť po dátume začiatku"
+    },
+    "form": {
+      "strategyLabel": "Stratégia",
+      "strategyPlaceholder": "— Vyberte stratégiu —",
+      "strategyLoading": "Načítavajú sa stratégie…",
+      "strategyError": "Stratégie sa nepodarilo načítať",
+      "instrumentLabel": "Inštrument",
+      "instrumentPlaceholder": "napr. BTC-USD",
+      "instrumentHelp": "Verejné ID inštrumentu na backtest",
+      "exchangeLabel": "Burza (zdroj feedu)",
+      "exchangePlaceholder": "— Vyberte burzu —",
+      "timeframeLabel": "Časový rámec",
+      "startDateLabel": "Dátum začiatku",
+      "endDateLabel": "Dátum konca",
+      "initialCashLabel": "Počiatočný kapitál",
+      "slippageBpsLabel": "Sklz (bps)",
+      "commissionBpsLabel": "Poplatok (bps)",
+      "executionModeLabel": "Režim vykonávania",
+      "executionModeDirectDb": "Priama DB",
+      "executionModeZmqReplay": "Prehrávanie ZMQ",
+      "targetExchangeLabel": "Cieľová burza vykonávania",
+      "targetExchangeNone": "Žiadna (jedna burza)",
+      "targetExchangeHelp": "Voliteľné — pre behy medzi aktívami; pre jednu burzu nechajte nevyplnené"
     }
   }
 }

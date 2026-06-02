@@ -85,7 +85,9 @@
       "healthy": "SĂNĂTOS",
       "warning": "AVERTISMENT",
       "error": "EROARE"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest pentru strategia {{name}}"
   },
   "launchModal": {
     "title": "Înregistrare proces de strategie",

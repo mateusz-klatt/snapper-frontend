@@ -85,7 +85,9 @@
       "healthy": "健康",
       "warning": "警告",
       "error": "错误"
-    }
+    },
+    "backtest": "回测",
+    "backtestAriaLabel": "回测 {{name}} 策略"
   },
   "launchModal": {
     "title": "注册策略进程",

@@ -14,7 +14,8 @@
     "title": "Backtesty",
     "actions": {
       "cancel": "Anuluj",
-      "rerun": "Uruchom ponownie"
+      "rerun": "Uruchom ponownie",
+      "create": "Nowy backtest"
     },
     "fields": {
       "timeframe": "Interwał",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Nowy backtest",
+    "cancel": "Anuluj",
+    "submit": "Uruchom backtest",
+    "submitting": "Uruchamianie…",
+    "errors": {
+      "unknown": "Nieznany błąd"
+    },
+    "validation": {
+      "endDateAfterStart": "Data końcowa musi być późniejsza niż data początkowa"
+    },
+    "form": {
+      "strategyLabel": "Strategia",
+      "strategyPlaceholder": "— Wybierz strategię —",
+      "strategyLoading": "Ładowanie strategii…",
+      "strategyError": "Nie udało się załadować strategii",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "np. BTC-USD",
+      "instrumentHelp": "Publiczne id instrumentu do backtestu",
+      "exchangeLabel": "Giełda (źródło danych)",
+      "exchangePlaceholder": "— Wybierz giełdę —",
+      "timeframeLabel": "Interwał",
+      "startDateLabel": "Data początkowa",
+      "endDateLabel": "Data końcowa",
+      "initialCashLabel": "Kapitał początkowy",
+      "slippageBpsLabel": "Poślizg (bps)",
+      "commissionBpsLabel": "Prowizja (bps)",
+      "executionModeLabel": "Tryb realizacji",
+      "executionModeDirectDb": "Bezpośrednio z DB",
+      "executionModeZmqReplay": "Odtwarzanie ZMQ",
+      "targetExchangeLabel": "Docelowa giełda realizacji",
+      "targetExchangeNone": "Brak (jedna giełda)",
+      "targetExchangeHelp": "Opcjonalne — dla przebiegów cross-asset; pozostaw puste dla jednej giełdy"
     }
   }
 }

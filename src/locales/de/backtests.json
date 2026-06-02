@@ -14,7 +14,8 @@
     "title": "Backtestläufe",
     "actions": {
       "cancel": "Abbrechen",
-      "rerun": "Erneut ausführen"
+      "rerun": "Erneut ausführen",
+      "create": "Neuer Backtest"
     },
     "fields": {
       "timeframe": "Zeitrahmen",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Neuer Backtest",
+    "cancel": "Abbrechen",
+    "submit": "Backtest starten",
+    "submitting": "Wird gestartet…",
+    "errors": {
+      "unknown": "Unbekannter Fehler"
+    },
+    "validation": {
+      "endDateAfterStart": "Das Enddatum muss nach dem Startdatum liegen"
+    },
+    "form": {
+      "strategyLabel": "Strategie",
+      "strategyPlaceholder": "— Strategie auswählen —",
+      "strategyLoading": "Strategien werden geladen…",
+      "strategyError": "Strategien konnten nicht geladen werden",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "z. B. BTC-USD",
+      "instrumentHelp": "Öffentliche ID des zu testenden Instruments",
+      "exchangeLabel": "Börse (Feed-Quelle)",
+      "exchangePlaceholder": "— Börse auswählen —",
+      "timeframeLabel": "Zeitrahmen",
+      "startDateLabel": "Startdatum",
+      "endDateLabel": "Enddatum",
+      "initialCashLabel": "Anfangskapital",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Gebühren (bps)",
+      "executionModeLabel": "Ausführungsmodus",
+      "executionModeDirectDb": "Direkte DB",
+      "executionModeZmqReplay": "ZMQ-Wiedergabe",
+      "targetExchangeLabel": "Ziel-Ausführungsbörse",
+      "targetExchangeNone": "Keine (Einzelbörse)",
+      "targetExchangeHelp": "Optional — für Cross-Asset-Läufe; für Einzelbörse leer lassen"
     }
   }
 }

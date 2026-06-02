@@ -85,7 +85,9 @@
       "healthy": "FRISK",
       "warning": "ADVARSEL",
       "error": "FEIL"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest {{name}}-strategi"
   },
   "launchModal": {
     "title": "Registrer strategiprosess",

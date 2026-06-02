@@ -85,7 +85,9 @@
       "healthy": "SAĞLIKLI",
       "warning": "UYARI",
       "error": "HATA"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "{{name}} stratejisini backtest et"
   },
   "launchModal": {
     "title": "Strateji Süreci Kaydet",

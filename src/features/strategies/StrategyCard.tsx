@@ -94,6 +94,7 @@ interface StrategyCardProps {
   health?: HealthStatus | undefined
   onStart?: (() => void) | undefined
   onStop?: (() => void) | undefined
+  onBacktest?: (() => void) | undefined
   isStarting?: boolean
   isStopping?: boolean
   readOnly?: boolean | undefined
@@ -179,6 +180,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     health,
     onStart,
     onStop,
+    onBacktest,
     isStarting = false,
     isStopping = false,
     readOnly = false,
@@ -372,17 +374,29 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
           <div className='text-xs text-muted-400 text-center py-2'>{t('card.waiting')}</div>
         )}
         {}
-        {(onStart || onStop) && (
+        {(onStart || onStop || onBacktest) && (
           <div className='flex space-x-2 pt-2 border-t border-dark-600'>
-            <StrategyActionControls
-              displayName={displayName}
-              showStopButton={showStopButton}
-              onStart={onStart}
-              onStop={onStop}
-              isStarting={isStarting}
-              isStopping={isStopping}
-              readOnly={readOnly}
-            />
+            {(onStart || onStop) && (
+              <StrategyActionControls
+                displayName={displayName}
+                showStopButton={showStopButton}
+                onStart={onStart}
+                onStop={onStop}
+                isStarting={isStarting}
+                isStopping={isStopping}
+                readOnly={readOnly}
+              />
+            )}
+            {onBacktest && (
+              <button
+                type='button'
+                onClick={onBacktest}
+                aria-label={t('card.backtestAriaLabel', { name: displayName })}
+                className='px-4 py-2 rounded-md text-sm font-medium bg-brand-600 text-white transition-colors hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500'
+              >
+                {t('card.backtest')}
+              </button>
+            )}
           </div>
         )}
       </article>

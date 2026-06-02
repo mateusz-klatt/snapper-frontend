@@ -14,7 +14,8 @@
     "title": "แบ็คเทสต์",
     "actions": {
       "cancel": "ยกเลิก",
-      "rerun": "รันซ้ำ"
+      "rerun": "รันซ้ำ",
+      "create": "แบ็คเทสต์ใหม่"
     },
     "fields": {
       "timeframe": "กรอบเวลา",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "แบ็คเทสต์ใหม่",
+    "cancel": "ยกเลิก",
+    "submit": "เริ่มแบ็คเทสต์",
+    "submitting": "กำลังเริ่ม…",
+    "errors": {
+      "unknown": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ"
+    },
+    "validation": {
+      "endDateAfterStart": "วันที่สิ้นสุดต้องอยู่หลังวันที่เริ่มต้น"
+    },
+    "form": {
+      "strategyLabel": "กลยุทธ์",
+      "strategyPlaceholder": "— เลือกกลยุทธ์ —",
+      "strategyLoading": "กำลังโหลดกลยุทธ์…",
+      "strategyError": "โหลดกลยุทธ์ไม่สำเร็จ",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "เช่น BTC-USD",
+      "instrumentHelp": "Public id ของ instrument ที่จะแบ็คเทสต์",
+      "exchangeLabel": "Exchange (แหล่ง feed)",
+      "exchangePlaceholder": "— เลือก exchange —",
+      "timeframeLabel": "กรอบเวลา",
+      "startDateLabel": "วันที่เริ่มต้น",
+      "endDateLabel": "วันที่สิ้นสุด",
+      "initialCashLabel": "เงินสดตั้งต้น",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "ค่าคอมมิชชัน (bps)",
+      "executionModeLabel": "โหมดการดำเนินการ",
+      "executionModeDirectDb": "Direct DB",
+      "executionModeZmqReplay": "ZMQ replay",
+      "targetExchangeLabel": "Exchange เป้าหมายสำหรับการดำเนินการ",
+      "targetExchangeNone": "ไม่มี (exchange เดียว)",
+      "targetExchangeHelp": "ไม่บังคับ — สำหรับการรันแบบ cross-asset; เว้นว่างไว้สำหรับ exchange เดียว"
     }
   }
 }

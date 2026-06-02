@@ -64,6 +64,33 @@ describe('StrategyCard', () => {
     )
     expect(screen.getByText(/stopped/i)).toBeInTheDocument()
   })
+  it('renders a Backtest button and calls onBacktest when clicked', async () => {
+    const onBacktest = vi.fn()
+
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_test'
+        running={false}
+        autoStartEnabled={false}
+        mode='thread'
+        onBacktest={onBacktest}
+      />
+    )
+    await userEvent.click(screen.getByText('Backtest'))
+    expect(onBacktest).toHaveBeenCalledTimes(1)
+  })
+  it('omits the Backtest button when onBacktest is not provided', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_test'
+        running={false}
+        autoStartEnabled={false}
+        mode='thread'
+        onStart={mockOnStart}
+      />
+    )
+    expect(screen.queryByText('Backtest')).toBeNull()
+  })
   it('shows starting status while starting', () => {
     renderWithMocks(
       <StrategyCard

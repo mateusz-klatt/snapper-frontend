@@ -14,7 +14,8 @@
     "title": "Backtestanna",
     "actions": {
       "cancel": "Cealaigh",
-      "rerun": "Rith arís"
+      "rerun": "Rith arís",
+      "create": "Backtest nua"
     },
     "fields": {
       "timeframe": "Fráma ama",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Backtest nua",
+    "cancel": "Cealaigh",
+    "submit": "Tosaigh backtest",
+    "submitting": "Á thosú…",
+    "errors": {
+      "unknown": "Earráid anaithnid"
+    },
+    "validation": {
+      "endDateAfterStart": "Caithfidh an dáta deiridh a bheith i ndiaidh an dáta tosaigh"
+    },
+    "form": {
+      "strategyLabel": "Straitéis",
+      "strategyPlaceholder": "— Roghnaigh straitéis —",
+      "strategyLoading": "Straitéisí á lódáil…",
+      "strategyError": "Theip ar lódáil na straitéisí",
+      "instrumentLabel": "Ionstraim",
+      "instrumentPlaceholder": "m.sh. BTC-USD",
+      "instrumentHelp": "ID poiblí na hionstraime le backtestáil",
+      "exchangeLabel": "Malartán (foinse fotha)",
+      "exchangePlaceholder": "— Roghnaigh malartán —",
+      "timeframeLabel": "Fráma ama",
+      "startDateLabel": "Dáta tosaigh",
+      "endDateLabel": "Dáta deiridh",
+      "initialCashLabel": "Airgead tosaigh",
+      "slippageBpsLabel": "Sleamhnú (bps)",
+      "commissionBpsLabel": "Coimisiún (bps)",
+      "executionModeLabel": "Mód forghníomhaithe",
+      "executionModeDirectDb": "DB díreach",
+      "executionModeZmqReplay": "Athsheinm ZMQ",
+      "targetExchangeLabel": "Malartán forghníomhaithe sprice",
+      "targetExchangeNone": "Gan ceann (malartán aonair)",
+      "targetExchangeHelp": "Roghnach — do ritheanna tras-sócmhainne; fág gan socrú do mhalartán aonair"
     }
   }
 }

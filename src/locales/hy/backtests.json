@@ -14,7 +14,8 @@
     "title": "Հետադարձ թեստեր",
     "actions": {
       "cancel": "Չեղարկել",
-      "rerun": "Գործարկել կրկին"
+      "rerun": "Գործարկել կրկին",
+      "create": "Նոր հետադարձ թեստ"
     },
     "fields": {
       "timeframe": "Ժամանակահատված",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Նոր հետադարձ թեստ",
+    "cancel": "Չեղարկել",
+    "submit": "Սկսել հետադարձ թեստը",
+    "submitting": "Մեկնարկում…",
+    "errors": {
+      "unknown": "Անհայտ սխալ"
+    },
+    "validation": {
+      "endDateAfterStart": "Ավարտի ամսաթիվը պետք է լինի մեկնարկի ամսաթվից հետո"
+    },
+    "form": {
+      "strategyLabel": "Ռազմավարություն",
+      "strategyPlaceholder": "— Ընտրեք ռազմավարություն —",
+      "strategyLoading": "Ռազմավարությունները բեռնվում են…",
+      "strategyError": "Չհաջողվեց բեռնել ռազմավարությունները",
+      "instrumentLabel": "Գործիք",
+      "instrumentPlaceholder": "օր․՝ BTC-USD",
+      "instrumentHelp": "Հետադարձ թեստ անցկացվող գործիքի հանրային id",
+      "exchangeLabel": "Բորսա (feed աղբյուր)",
+      "exchangePlaceholder": "— Ընտրեք բորսա —",
+      "timeframeLabel": "Ժամանակահատված",
+      "startDateLabel": "Մեկնարկի ամսաթիվ",
+      "endDateLabel": "Ավարտի ամսաթիվ",
+      "initialCashLabel": "Սկզբնական կանխիկ",
+      "slippageBpsLabel": "Սահք (bps)",
+      "commissionBpsLabel": "Միջնորդավճար (bps)",
+      "executionModeLabel": "Կատարման ռեժիմ",
+      "executionModeDirectDb": "Ուղիղ DB",
+      "executionModeZmqReplay": "ZMQ վերարտադրում",
+      "targetExchangeLabel": "Կատարման թիրախ բորսա",
+      "targetExchangeNone": "Չկա (մեկ բորսա)",
+      "targetExchangeHelp": "Ոչ պարտադիր — միջակտիվային գործարկումների համար. թողեք չլրացված մեկ բորսայի դեպքում"
     }
   }
 }

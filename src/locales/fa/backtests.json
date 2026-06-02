@@ -14,7 +14,8 @@
     "title": "بک‌تست‌ها",
     "actions": {
       "cancel": "لغو",
-      "rerun": "اجرای دوباره"
+      "rerun": "اجرای دوباره",
+      "create": "بک‌تست جدید"
     },
     "fields": {
       "timeframe": "بازه زمانی",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "بک‌تست جدید",
+    "cancel": "لغو",
+    "submit": "شروع بک‌تست",
+    "submitting": "در حال شروع…",
+    "errors": {
+      "unknown": "خطای نامشخص"
+    },
+    "validation": {
+      "endDateAfterStart": "تاریخ پایان باید بعد از تاریخ شروع باشد"
+    },
+    "form": {
+      "strategyLabel": "استراتژی",
+      "strategyPlaceholder": "— یک استراتژی انتخاب کنید —",
+      "strategyLoading": "در حال بارگذاری استراتژی‌ها…",
+      "strategyError": "بارگذاری استراتژی‌ها ناموفق بود",
+      "instrumentLabel": "ابزار",
+      "instrumentPlaceholder": "مثلاً BTC-USD",
+      "instrumentHelp": "شناسه عمومی ابزار برای بک‌تست",
+      "exchangeLabel": "صرافی (منبع feed)",
+      "exchangePlaceholder": "— یک صرافی انتخاب کنید —",
+      "timeframeLabel": "بازه زمانی",
+      "startDateLabel": "تاریخ شروع",
+      "endDateLabel": "تاریخ پایان",
+      "initialCashLabel": "وجه نقد اولیه",
+      "slippageBpsLabel": "لغزش (bps)",
+      "commissionBpsLabel": "کارمزد (bps)",
+      "executionModeLabel": "حالت اجرا",
+      "executionModeDirectDb": "Direct DB",
+      "executionModeZmqReplay": "بازپخش ZMQ",
+      "targetExchangeLabel": "صرافی اجرای هدف",
+      "targetExchangeNone": "هیچ‌کدام (تک‌صرافی)",
+      "targetExchangeHelp": "اختیاری — برای اجراهای بین‌دارایی؛ برای حالت تک‌صرافی تنظیم نکنید"
     }
   }
 }

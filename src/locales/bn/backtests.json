@@ -14,7 +14,8 @@
     "title": "ব্যাকটেস্টসমূহ",
     "actions": {
       "cancel": "বাতিল",
-      "rerun": "আবার চালান"
+      "rerun": "আবার চালান",
+      "create": "নতুন ব্যাকটেস্ট"
     },
     "fields": {
       "timeframe": "টাইমফ্রেম",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "নতুন ব্যাকটেস্ট",
+    "cancel": "বাতিল",
+    "submit": "ব্যাকটেস্ট শুরু করুন",
+    "submitting": "শুরু হচ্ছে…",
+    "errors": {
+      "unknown": "অজানা ত্রুটি"
+    },
+    "validation": {
+      "endDateAfterStart": "শেষের তারিখ শুরুর তারিখের পরে হতে হবে"
+    },
+    "form": {
+      "strategyLabel": "কৌশল",
+      "strategyPlaceholder": "— একটি কৌশল নির্বাচন করুন —",
+      "strategyLoading": "কৌশল লোড হচ্ছে…",
+      "strategyError": "কৌশল লোড করতে ব্যর্থ",
+      "instrumentLabel": "ইনস্ট্রুমেন্ট",
+      "instrumentPlaceholder": "যেমন BTC-USD",
+      "instrumentHelp": "ব্যাকটেস্ট করার ইনস্ট্রুমেন্টের পাবলিক id",
+      "exchangeLabel": "এক্সচেঞ্জ (feed উৎস)",
+      "exchangePlaceholder": "— একটি এক্সচেঞ্জ নির্বাচন করুন —",
+      "timeframeLabel": "টাইমফ্রেম",
+      "startDateLabel": "শুরুর তারিখ",
+      "endDateLabel": "শেষের তারিখ",
+      "initialCashLabel": "প্রাথমিক নগদ",
+      "slippageBpsLabel": "স্লিপেজ (bps)",
+      "commissionBpsLabel": "কমিশন (bps)",
+      "executionModeLabel": "নির্বাহ মোড",
+      "executionModeDirectDb": "Direct DB",
+      "executionModeZmqReplay": "ZMQ রিপ্লে",
+      "targetExchangeLabel": "লক্ষ্য নির্বাহ এক্সচেঞ্জ",
+      "targetExchangeNone": "কোনোটি নয় (একক-এক্সচেঞ্জ)",
+      "targetExchangeHelp": "ঐচ্ছিক — ক্রস-অ্যাসেট run-এর জন্য; একক-এক্সচেঞ্জের ক্ষেত্রে খালি রাখুন"
     }
   }
 }

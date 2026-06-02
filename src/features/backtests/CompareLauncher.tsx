@@ -6,6 +6,7 @@ import {
   useCreateBacktestComparison,
 } from '../../hooks/queries/backtests'
 import { useAllTerminalRuns } from './hooks/useAllTerminalRuns'
+import { currentHashQuery } from '../../lib/hash/currentHashQuery'
 import type { BacktestCompareBody, BacktestRunData } from '../../types/api'
 
 interface Props {
@@ -89,7 +90,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
 
     createCompare.mutate(body, {
       onSuccess: response => {
-        globalThis.location.hash = `#backtests/compare/${response.payload.public_id}`
+        globalThis.location.hash = `#backtests/compare/${response.payload.public_id}${currentHashQuery()}`
       },
     })
   }

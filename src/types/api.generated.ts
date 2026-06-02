@@ -916,6 +916,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/backtests/strategy-classes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["list_strategy_classes_api_backtests_strategy_classes_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/backtests/compare": {
         parameters: {
             query?: never;
@@ -1947,6 +1963,16 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             payload: Components["schemas"]["BacktestSignalData"][];
+            count: number;
+        };
+        BacktestStrategyClassListResponse: {
+            type: "backtest_strategy_class_list";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: string[];
             count: number;
         };
         BacktestTradeData: {
@@ -3375,6 +3401,7 @@ export type Components = {
             running: boolean;
             enabled: boolean;
             mode: "thread" | "process";
+            strategy_class?: string | null | undefined;
         };
         StrategyStatusPayload: {
             strategy_name: string;
@@ -6252,6 +6279,25 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    list_strategy_classes_api_backtests_strategy_classes_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["BacktestStrategyClassListResponse"];
+                };
             };
         };
     };

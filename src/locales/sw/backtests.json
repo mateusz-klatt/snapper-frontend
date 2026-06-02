@@ -14,7 +14,8 @@
     "title": "Majaribio ya nyuma",
     "actions": {
       "cancel": "Ghairi",
-      "rerun": "Endesha tena"
+      "rerun": "Endesha tena",
+      "create": "Backtest mpya"
     },
     "fields": {
       "timeframe": "Muda",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Backtest mpya",
+    "cancel": "Ghairi",
+    "submit": "Anzisha backtest",
+    "submitting": "Inaanzisha…",
+    "errors": {
+      "unknown": "Hitilafu isiyojulikana"
+    },
+    "validation": {
+      "endDateAfterStart": "Tarehe ya mwisho lazima iwe baada ya tarehe ya kuanza"
+    },
+    "form": {
+      "strategyLabel": "Mkakati",
+      "strategyPlaceholder": "— Chagua mkakati —",
+      "strategyLoading": "Inapakia mikakati…",
+      "strategyError": "Imeshindwa kupakia mikakati",
+      "instrumentLabel": "Instrumenti",
+      "instrumentPlaceholder": "k.m. BTC-USD",
+      "instrumentHelp": "ID ya umma ya instrumenti ya kufanyia backtest",
+      "exchangeLabel": "Exchange (chanzo cha feed)",
+      "exchangePlaceholder": "— Chagua exchange —",
+      "timeframeLabel": "Muda",
+      "startDateLabel": "Tarehe ya kuanza",
+      "endDateLabel": "Tarehe ya mwisho",
+      "initialCashLabel": "Mtaji wa awali",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Komisheni (bps)",
+      "executionModeLabel": "Hali ya utekelezaji",
+      "executionModeDirectDb": "DB ya moja kwa moja",
+      "executionModeZmqReplay": "ZMQ replay",
+      "targetExchangeLabel": "Exchange lengwa ya utekelezaji",
+      "targetExchangeNone": "Hakuna (exchange moja)",
+      "targetExchangeHelp": "Hiari — kwa run za cross-asset; acha bila kuweka kwa exchange moja"
     }
   }
 }

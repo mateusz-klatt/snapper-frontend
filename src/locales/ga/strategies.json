@@ -85,7 +85,9 @@
       "healthy": "SLÁINTIÚIL",
       "warning": "RABHADH",
       "error": "EARRÁID"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtestáil straitéis {{name}}"
   },
   "launchModal": {
     "title": "Cláraigh Próiseas Straitéise",

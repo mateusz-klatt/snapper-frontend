@@ -14,7 +14,8 @@
     "title": "Backtestai",
     "actions": {
       "cancel": "Atšaukti",
-      "rerun": "Paleisti iš naujo"
+      "rerun": "Paleisti iš naujo",
+      "create": "Naujas backtestas"
     },
     "fields": {
       "timeframe": "Laiko intervalas",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Naujas backtestas",
+    "cancel": "Atšaukti",
+    "submit": "Paleisti backtestą",
+    "submitting": "Paleidžiama…",
+    "errors": {
+      "unknown": "Nežinoma klaida"
+    },
+    "validation": {
+      "endDateAfterStart": "Pabaigos data turi būti vėlesnė už pradžios datą"
+    },
+    "form": {
+      "strategyLabel": "Strategija",
+      "strategyPlaceholder": "— Pasirinkite strategiją —",
+      "strategyLoading": "Įkeliamos strategijos…",
+      "strategyError": "Nepavyko įkelti strategijų",
+      "instrumentLabel": "Instrumentas",
+      "instrumentPlaceholder": "pvz. BTC-USD",
+      "instrumentHelp": "Viešasis instrumento, kuriam atliekamas backtestas, ID",
+      "exchangeLabel": "Birža (duomenų srauto šaltinis)",
+      "exchangePlaceholder": "— Pasirinkite biržą —",
+      "timeframeLabel": "Laiko intervalas",
+      "startDateLabel": "Pradžios data",
+      "endDateLabel": "Pabaigos data",
+      "initialCashLabel": "Pradinis kapitalas",
+      "slippageBpsLabel": "Praslydimas (bps)",
+      "commissionBpsLabel": "Komisinis (bps)",
+      "executionModeLabel": "Vykdymo režimas",
+      "executionModeDirectDb": "Tiesioginė DB",
+      "executionModeZmqReplay": "ZMQ pakartojimas",
+      "targetExchangeLabel": "Tikslinė vykdymo birža",
+      "targetExchangeNone": "Nėra (viena birža)",
+      "targetExchangeHelp": "Pasirenkama — kryžminių aktyvų vykdymams; vienos biržos atveju palikite nenustatytą"
     }
   }
 }

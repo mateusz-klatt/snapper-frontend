@@ -14,7 +14,8 @@
     "title": "Backtesti",
     "actions": {
       "cancel": "Atcelt",
-      "rerun": "Palaist vēlreiz"
+      "rerun": "Palaist vēlreiz",
+      "create": "Jauns backtests"
     },
     "fields": {
       "timeframe": "Laika periods",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Jauns backtests",
+    "cancel": "Atcelt",
+    "submit": "Sākt backtestu",
+    "submitting": "Notiek palaišana…",
+    "errors": {
+      "unknown": "Nezināma kļūda"
+    },
+    "validation": {
+      "endDateAfterStart": "Beigu datumam jābūt vēlākam par sākuma datumu"
+    },
+    "form": {
+      "strategyLabel": "Stratēģija",
+      "strategyPlaceholder": "— Izvēlieties stratēģiju —",
+      "strategyLoading": "Notiek stratēģiju ielāde…",
+      "strategyError": "Neizdevās ielādēt stratēģijas",
+      "instrumentLabel": "Instruments",
+      "instrumentPlaceholder": "piem. BTC-USD",
+      "instrumentHelp": "Backtestējamā instrumenta publiskais ID",
+      "exchangeLabel": "Birža (datu avots)",
+      "exchangePlaceholder": "— Izvēlieties biržu —",
+      "timeframeLabel": "Laika periods",
+      "startDateLabel": "Sākuma datums",
+      "endDateLabel": "Beigu datums",
+      "initialCashLabel": "Sākuma kapitāls",
+      "slippageBpsLabel": "Slīde (bps)",
+      "commissionBpsLabel": "Komisija (bps)",
+      "executionModeLabel": "Izpildes režīms",
+      "executionModeDirectDb": "Tiešais DB",
+      "executionModeZmqReplay": "ZMQ atkārtojums",
+      "targetExchangeLabel": "Mērķa izpildes birža",
+      "targetExchangeNone": "Nav (viena birža)",
+      "targetExchangeHelp": "Neobligāts — starpaktīvu izpildēm; atstājiet tukšu vienas biržas gadījumā"
     }
   }
 }

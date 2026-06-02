@@ -117,6 +117,7 @@ export const queryKeys = {
   trailingStopForCycle: (cyclePublicId: string | undefined) =>
     ['trailingStopState', cyclePublicId] as const,
   backtestsAll: ['backtests'] as const,
+  backtestStrategyClasses: ['backtests', 'strategy-classes'] as const,
   backtestsByStrategyStatus: (strategy?: string, status?: string) =>
     ['backtests', strategy, status] as const,
   backtestsByConfigHash: (configHash: string | null, limit: number) =>

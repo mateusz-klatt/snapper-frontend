@@ -85,7 +85,9 @@
       "healthy": "SPRAWNE",
       "warning": "OSTRZEŻENIE",
       "error": "BŁĄD"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest strategii {{name}}"
   },
   "launchModal": {
     "title": "Rejestracja procesu strategii",

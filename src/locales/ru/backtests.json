@@ -14,7 +14,8 @@
     "title": "Бэктесты",
     "actions": {
       "cancel": "Отменить",
-      "rerun": "Запустить повторно"
+      "rerun": "Запустить повторно",
+      "create": "Новый бэктест"
     },
     "fields": {
       "timeframe": "Таймфрейм",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Новый бэктест",
+    "cancel": "Отменить",
+    "submit": "Запустить бэктест",
+    "submitting": "Запуск…",
+    "errors": {
+      "unknown": "Неизвестная ошибка"
+    },
+    "validation": {
+      "endDateAfterStart": "Дата окончания должна быть позже даты начала"
+    },
+    "form": {
+      "strategyLabel": "Стратегия",
+      "strategyPlaceholder": "— Выберите стратегию —",
+      "strategyLoading": "Загрузка стратегий…",
+      "strategyError": "Не удалось загрузить стратегии",
+      "instrumentLabel": "Инструмент",
+      "instrumentPlaceholder": "напр. BTC-USD",
+      "instrumentHelp": "Публичный id инструмента для бэктеста",
+      "exchangeLabel": "Биржа (источник данных)",
+      "exchangePlaceholder": "— Выберите биржу —",
+      "timeframeLabel": "Таймфрейм",
+      "startDateLabel": "Дата начала",
+      "endDateLabel": "Дата окончания",
+      "initialCashLabel": "Начальный капитал",
+      "slippageBpsLabel": "Проскальзывание (bps)",
+      "commissionBpsLabel": "Комиссия (bps)",
+      "executionModeLabel": "Режим исполнения",
+      "executionModeDirectDb": "Прямой доступ к DB",
+      "executionModeZmqReplay": "Воспроизведение ZMQ",
+      "targetExchangeLabel": "Целевая биржа исполнения",
+      "targetExchangeNone": "Нет (одна биржа)",
+      "targetExchangeHelp": "Опционально — для кросс-активных запусков; оставьте пустым для одной биржи"
     }
   }
 }

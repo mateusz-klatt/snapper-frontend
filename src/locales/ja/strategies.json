@@ -85,7 +85,9 @@
       "healthy": "正常",
       "warning": "警告",
       "error": "エラー"
-    }
+    },
+    "backtest": "バックテスト",
+    "backtestAriaLabel": "{{name}}戦略をバックテスト"
   },
   "launchModal": {
     "title": "戦略プロセスを登録",

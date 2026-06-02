@@ -85,7 +85,9 @@
       "healthy": "I SHËNDETSHËM",
       "warning": "PARALAJMËRIM",
       "error": "GABIM"
-    }
+    },
+    "backtest": "Test historik",
+    "backtestAriaLabel": "Testo historikisht strategjinë {{name}}"
   },
   "launchModal": {
     "title": "Regjistro proces strategjie",

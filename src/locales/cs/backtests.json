@@ -14,7 +14,8 @@
     "title": "Backtesty",
     "actions": {
       "cancel": "Zrušit",
-      "rerun": "Spustit znovu"
+      "rerun": "Spustit znovu",
+      "create": "Nový backtest"
     },
     "fields": {
       "timeframe": "Časový rámec",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Nový backtest",
+    "cancel": "Zrušit",
+    "submit": "Spustit backtest",
+    "submitting": "Spouštění…",
+    "errors": {
+      "unknown": "Neznámá chyba"
+    },
+    "validation": {
+      "endDateAfterStart": "Datum konce musí být po datu začátku"
+    },
+    "form": {
+      "strategyLabel": "Strategie",
+      "strategyPlaceholder": "— Vyberte strategii —",
+      "strategyLoading": "Načítání strategií…",
+      "strategyError": "Strategie se nepodařilo načíst",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "např. BTC-USD",
+      "instrumentHelp": "Veřejné ID instrumentu k backtestu",
+      "exchangeLabel": "Burza (zdroj feedu)",
+      "exchangePlaceholder": "— Vyberte burzu —",
+      "timeframeLabel": "Časový rámec",
+      "startDateLabel": "Datum začátku",
+      "endDateLabel": "Datum konce",
+      "initialCashLabel": "Počáteční kapitál",
+      "slippageBpsLabel": "Skluz (bps)",
+      "commissionBpsLabel": "Provize (bps)",
+      "executionModeLabel": "Režim provedení",
+      "executionModeDirectDb": "Přímo DB",
+      "executionModeZmqReplay": "Přehrání ZMQ",
+      "targetExchangeLabel": "Cílová burza provedení",
+      "targetExchangeNone": "Žádná (jedna burza)",
+      "targetExchangeHelp": "Volitelné — pro běhy mezi aktivy; pro jednu burzu ponechte nevyplněné"
     }
   }
 }

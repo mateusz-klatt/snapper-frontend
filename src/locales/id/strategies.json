@@ -85,7 +85,9 @@
       "healthy": "SEHAT",
       "warning": "PERINGATAN",
       "error": "KESALAHAN"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest strategi {{name}}"
   },
   "launchModal": {
     "title": "Daftarkan Proses Strategi",

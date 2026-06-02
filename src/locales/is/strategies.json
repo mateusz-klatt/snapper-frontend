@@ -85,7 +85,9 @@
       "healthy": "HEILBRIGT",
       "warning": "VIÐVÖRUN",
       "error": "VILLA"
-    }
+    },
+    "backtest": "Bakprófa",
+    "backtestAriaLabel": "Bakprófa stefnu {{name}}"
   },
   "launchModal": {
     "title": "Skrá stefnuferli",

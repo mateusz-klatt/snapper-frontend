@@ -69,6 +69,8 @@
     "stop": "Stop",
     "starting": "Starting...",
     "stopping": "Stopping...",
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest {{name}} strategy",
     "status": {
       "starting": "starting",
       "stopping": "stopping",

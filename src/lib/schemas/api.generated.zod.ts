@@ -105,6 +105,24 @@ export const BacktestSignalDataSchema = _BacktestSignalDataRawSchema as unknown 
   Components['schemas']['BacktestSignalData']
 >
 
+const _BacktestStrategyClassListResponseRawSchema = z
+  .object({
+    type: z.literal('backtest_strategy_class_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(z.string()),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const BacktestStrategyClassListResponseSchema =
+  _BacktestStrategyClassListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['BacktestStrategyClassListResponse']
+  >
+
 const _BacktestTradeDataRawSchema = z
   .object({
     type: z.literal('backtest_trade'),
@@ -1157,6 +1175,7 @@ const _StrategyProcessRawSchema = z
     running: z.boolean(),
     enabled: z.boolean(),
     mode: z.enum(['thread', 'process']),
+    strategy_class: z.string().nullable().optional(),
   })
   .strict()
 
@@ -4724,6 +4743,8 @@ export type BacktestComparisonData = Components['schemas']['BacktestComparisonDa
 export type BacktestEquityPointInline = Components['schemas']['BacktestEquityPointInline']
 export type BacktestEventData = Components['schemas']['BacktestEventData']
 export type BacktestSignalData = Components['schemas']['BacktestSignalData']
+export type BacktestStrategyClassListResponse =
+  Components['schemas']['BacktestStrategyClassListResponse']
 export type BacktestTradeData = Components['schemas']['BacktestTradeData']
 export type CacheHealthPayload = Components['schemas']['CacheHealthPayload']
 export type CachedCandle = Components['schemas']['CachedCandle']

@@ -85,7 +85,9 @@
       "healthy": "SALUDABLE",
       "warning": "ADVERTENCIA",
       "error": "ERROR"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Hacer backtest de la estrategia {{name}}"
   },
   "launchModal": {
     "title": "Registrar proceso de estrategia",

@@ -14,7 +14,8 @@
     "title": "Bakprófanir",
     "actions": {
       "cancel": "Hætta við",
-      "rerun": "Keyra aftur"
+      "rerun": "Keyra aftur",
+      "create": "Ný bakprófun"
     },
     "fields": {
       "timeframe": "Tímarammi",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Ný bakprófun",
+    "cancel": "Hætta við",
+    "submit": "Hefja bakprófun",
+    "submitting": "Hef…",
+    "errors": {
+      "unknown": "Óþekkt villa"
+    },
+    "validation": {
+      "endDateAfterStart": "Lokadagsetning verður að vera á eftir upphafsdagsetningu"
+    },
+    "form": {
+      "strategyLabel": "Stefna",
+      "strategyPlaceholder": "— Veldu stefnu —",
+      "strategyLoading": "Hleð stefnum…",
+      "strategyError": "Mistókst að hlaða stefnum",
+      "instrumentLabel": "Gerningur",
+      "instrumentPlaceholder": "t.d. BTC-USD",
+      "instrumentHelp": "Opinbert auðkenni gerningsins sem á að bakprófa",
+      "exchangeLabel": "Kauphöll (feed-uppspretta)",
+      "exchangePlaceholder": "— Veldu kauphöll —",
+      "timeframeLabel": "Tímarammi",
+      "startDateLabel": "Upphafsdagsetning",
+      "endDateLabel": "Lokadagsetning",
+      "initialCashLabel": "Upphafsfé",
+      "slippageBpsLabel": "Skrik (bps)",
+      "commissionBpsLabel": "Þóknun (bps)",
+      "executionModeLabel": "Framkvæmdarhamur",
+      "executionModeDirectDb": "Beint DB",
+      "executionModeZmqReplay": "ZMQ endurspilun",
+      "targetExchangeLabel": "Markkauphöll fyrir framkvæmdir",
+      "targetExchangeNone": "Engin (ein kauphöll)",
+      "targetExchangeHelp": "Valfrjálst — fyrir þver-eigna keyrslur; skildu eftir óstillt fyrir eina kauphöll"
     }
   }
 }

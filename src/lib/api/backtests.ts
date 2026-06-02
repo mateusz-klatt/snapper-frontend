@@ -2,6 +2,7 @@ import { apiClient } from '../apiClient'
 import { validateResponse } from '../schemas/api'
 import {
   BacktestRunListResponseSchema,
+  BacktestStrategyClassListResponseSchema,
   BacktestRunResponseSchema,
   BacktestRunDetailResponseSchema,
   BacktestTradeListResponseSchema,
@@ -12,6 +13,7 @@ import {
 } from '../schemas/api.generated.zod'
 import type {
   BacktestRunListResponse,
+  BacktestStrategyClassListResponse,
   BacktestRunResponse,
   BacktestRunDetailResponse,
   BacktestTradeListResponse,
@@ -54,6 +56,16 @@ export async function getBacktest(runId: string): Promise<BacktestRunDetailRespo
     BacktestRunDetailResponseSchema,
     '/backtests/:id'
   ) as BacktestRunDetailResponse
+}
+
+export async function getBacktestStrategyClasses(): Promise<BacktestStrategyClassListResponse> {
+  const data = await apiClient.getJSON('/api/backtests/strategy-classes')
+
+  return validateResponse(
+    data,
+    BacktestStrategyClassListResponseSchema,
+    '/backtests/strategy-classes'
+  ) as BacktestStrategyClassListResponse
 }
 
 export async function createBacktest(body: BacktestCreateBody): Promise<BacktestRunResponse> {
