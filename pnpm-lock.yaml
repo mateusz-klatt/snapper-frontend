@@ -1929,8 +1929,8 @@ packages:
     peerDependencies:
       cytoscape: ^3.2.0
 
-  cytoscape@3.33.4:
-    resolution: {integrity: sha512-HIN5Pmd9MrX9BkV7tDwnOcEJCSFvCpc8X97h3f508J6I5FsqAY65wKOCvgH2CuP42CaahWaz4tuh32SOOIH7ww==}
+  cytoscape@3.34.0:
+    resolution: {integrity: sha512-62rNSrioXw93uliKFBwjukeQyeWwH2PqDrTac31r2P6464u3AUvTk0xS4LVvT251g7IgkFunrI48ZEZGjywSOg==}
     engines: {node: '>=0.10'}
 
   d3-array@2.12.1:
@@ -5619,17 +5619,17 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  cytoscape-cose-bilkent@4.1.0(cytoscape@3.33.4):
+  cytoscape-cose-bilkent@4.1.0(cytoscape@3.34.0):
     dependencies:
       cose-base: 1.0.3
-      cytoscape: 3.33.4
+      cytoscape: 3.34.0
 
-  cytoscape-fcose@2.2.0(cytoscape@3.33.4):
+  cytoscape-fcose@2.2.0(cytoscape@3.34.0):
     dependencies:
       cose-base: 2.2.0
-      cytoscape: 3.33.4
+      cytoscape: 3.34.0
 
-  cytoscape@3.33.4: {}
+  cytoscape@3.34.0: {}
 
   d3-array@2.12.1:
     dependencies:
@@ -6697,9 +6697,9 @@ snapshots:
       '@mermaid-js/parser': 1.1.1
       '@types/d3': 7.4.3
       '@upsetjs/venn.js': 2.0.0
-      cytoscape: 3.33.4
-      cytoscape-cose-bilkent: 4.1.0(cytoscape@3.33.4)
-      cytoscape-fcose: 2.2.0(cytoscape@3.33.4)
+      cytoscape: 3.34.0
+      cytoscape-cose-bilkent: 4.1.0(cytoscape@3.34.0)
+      cytoscape-fcose: 2.2.0(cytoscape@3.34.0)
       d3: 7.9.0
       d3-sankey: 0.12.3
       dagre-d3-es: 7.0.14
