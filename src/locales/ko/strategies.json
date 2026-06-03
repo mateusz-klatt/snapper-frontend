@@ -85,7 +85,9 @@
       "healthy": "정상",
       "warning": "경고",
       "error": "오류"
-    }
+    },
+    "backtest": "백테스트",
+    "backtestAriaLabel": "{{name}} 전략 백테스트"
   },
   "launchModal": {
     "title": "전략 프로세스 등록",

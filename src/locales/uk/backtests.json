@@ -14,7 +14,8 @@
     "title": "Бектести",
     "actions": {
       "cancel": "Скасувати",
-      "rerun": "Запустити повторно"
+      "rerun": "Запустити повторно",
+      "create": "Новий бектест"
     },
     "fields": {
       "timeframe": "Таймфрейм",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Новий бектест",
+    "cancel": "Скасувати",
+    "submit": "Запустити бектест",
+    "submitting": "Запуск…",
+    "errors": {
+      "unknown": "Невідома помилка"
+    },
+    "validation": {
+      "endDateAfterStart": "Дата завершення має бути пізнішою за дату початку"
+    },
+    "form": {
+      "strategyLabel": "Стратегія",
+      "strategyPlaceholder": "— Виберіть стратегію —",
+      "strategyLoading": "Завантаження стратегій…",
+      "strategyError": "Не вдалося завантажити стратегії",
+      "instrumentLabel": "Інструмент",
+      "instrumentPlaceholder": "напр. BTC-USD",
+      "instrumentHelp": "Публічний ідентифікатор інструмента для бектесту",
+      "exchangeLabel": "Біржа (джерело Feed)",
+      "exchangePlaceholder": "— Виберіть біржу —",
+      "timeframeLabel": "Таймфрейм",
+      "startDateLabel": "Дата початку",
+      "endDateLabel": "Дата завершення",
+      "initialCashLabel": "Початковий капітал",
+      "slippageBpsLabel": "Проковзування (bps)",
+      "commissionBpsLabel": "Комісія (bps)",
+      "executionModeLabel": "Режим виконання",
+      "executionModeDirectDb": "Пряма DB",
+      "executionModeZmqReplay": "Відтворення ZMQ",
+      "targetExchangeLabel": "Цільова біржа виконання",
+      "targetExchangeNone": "Немає (одна біржа)",
+      "targetExchangeHelp": "Необов’язково — для крос-активних запусків; залиште порожнім для однієї біржі"
     }
   }
 }

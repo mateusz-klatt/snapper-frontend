@@ -85,7 +85,9 @@
       "healthy": "ZDRAVO",
       "warning": "UPOZORENJE",
       "error": "GREŠKA"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtestiraj strategiju {{name}}"
   },
   "launchModal": {
     "title": "Registruj proces strategije",

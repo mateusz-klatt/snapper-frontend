@@ -14,7 +14,8 @@
     "title": "回测",
     "actions": {
       "cancel": "取消",
-      "rerun": "重新运行"
+      "rerun": "重新运行",
+      "create": "新建回测"
     },
     "fields": {
       "timeframe": "时间周期",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "新建回测",
+    "cancel": "取消",
+    "submit": "开始回测",
+    "submitting": "正在启动…",
+    "errors": {
+      "unknown": "未知错误"
+    },
+    "validation": {
+      "endDateAfterStart": "结束日期必须晚于开始日期"
+    },
+    "form": {
+      "strategyLabel": "策略",
+      "strategyPlaceholder": "— 选择策略 —",
+      "strategyLoading": "正在加载策略…",
+      "strategyError": "加载策略失败",
+      "instrumentLabel": "品种",
+      "instrumentPlaceholder": "例如 BTC-USD",
+      "instrumentHelp": "要回测品种的公共 id",
+      "exchangeLabel": "交易所（数据来源）",
+      "exchangePlaceholder": "— 选择交易所 —",
+      "timeframeLabel": "时间周期",
+      "startDateLabel": "开始日期",
+      "endDateLabel": "结束日期",
+      "initialCashLabel": "初始资金",
+      "slippageBpsLabel": "滑点（bps）",
+      "commissionBpsLabel": "手续费（bps）",
+      "executionModeLabel": "执行模式",
+      "executionModeDirectDb": "直连 DB",
+      "executionModeZmqReplay": "ZMQ 回放",
+      "targetExchangeLabel": "目标执行交易所",
+      "targetExchangeNone": "无（单交易所）",
+      "targetExchangeHelp": "可选 — 用于跨资产运行；单交易所时请留空"
     }
   }
 }

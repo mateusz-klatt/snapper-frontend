@@ -14,7 +14,8 @@
     "title": "Mga Backtest",
     "actions": {
       "cancel": "Kanselahin",
-      "rerun": "I-rerun"
+      "rerun": "I-rerun",
+      "create": "Bagong backtest"
     },
     "fields": {
       "timeframe": "Timeframe",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Bagong backtest",
+    "cancel": "Kanselahin",
+    "submit": "Simulan ang backtest",
+    "submitting": "Sinisimulan…",
+    "errors": {
+      "unknown": "Hindi alam na error"
+    },
+    "validation": {
+      "endDateAfterStart": "Dapat mas huli ang end date kaysa sa start date"
+    },
+    "form": {
+      "strategyLabel": "Strategy",
+      "strategyPlaceholder": "— Pumili ng strategy —",
+      "strategyLoading": "Nilo-load ang mga strategy…",
+      "strategyError": "Hindi na-load ang mga strategy",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "hal. BTC-USD",
+      "instrumentHelp": "Public id ng instrument na iba-backtest",
+      "exchangeLabel": "Exchange (feed source)",
+      "exchangePlaceholder": "— Pumili ng exchange —",
+      "timeframeLabel": "Timeframe",
+      "startDateLabel": "Start date",
+      "endDateLabel": "End date",
+      "initialCashLabel": "Initial cash",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Commission (bps)",
+      "executionModeLabel": "Execution mode",
+      "executionModeDirectDb": "Direct DB",
+      "executionModeZmqReplay": "ZMQ replay",
+      "targetExchangeLabel": "Target execution exchange",
+      "targetExchangeNone": "Wala (single-exchange)",
+      "targetExchangeHelp": "Opsyonal — para sa cross-asset runs; iwanang walang laman para sa single-exchange"
     }
   }
 }

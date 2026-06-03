@@ -14,7 +14,8 @@
     "title": "בקטסטים",
     "actions": {
       "cancel": "בטל",
-      "rerun": "הרץ שוב"
+      "rerun": "הרץ שוב",
+      "create": "בקטסט חדש"
     },
     "fields": {
       "timeframe": "מסגרת זמן",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "בקטסט חדש",
+    "cancel": "בטל",
+    "submit": "הפעל בקטסט",
+    "submitting": "מתחיל…",
+    "errors": {
+      "unknown": "שגיאה לא ידועה"
+    },
+    "validation": {
+      "endDateAfterStart": "תאריך הסיום חייב להיות מאוחר מתאריך ההתחלה"
+    },
+    "form": {
+      "strategyLabel": "אסטרטגיה",
+      "strategyPlaceholder": "— בחר אסטרטגיה —",
+      "strategyLoading": "טוען אסטרטגיות…",
+      "strategyError": "טעינת האסטרטגיות נכשלה",
+      "instrumentLabel": "מכשיר",
+      "instrumentPlaceholder": "למשל BTC-USD",
+      "instrumentHelp": "מזהה ציבורי של המכשיר לבקטסט",
+      "exchangeLabel": "בורסה (מקור Feed)",
+      "exchangePlaceholder": "— בחר בורסה —",
+      "timeframeLabel": "מסגרת זמן",
+      "startDateLabel": "תאריך התחלה",
+      "endDateLabel": "תאריך סיום",
+      "initialCashLabel": "מזומן התחלתי",
+      "slippageBpsLabel": "החלקה (bps)",
+      "commissionBpsLabel": "עמלה (bps)",
+      "executionModeLabel": "מצב ביצוע",
+      "executionModeDirectDb": "DB ישיר",
+      "executionModeZmqReplay": "שחזור ZMQ",
+      "targetExchangeLabel": "בורסת ביצוע יעד",
+      "targetExchangeNone": "ללא (בורסה יחידה)",
+      "targetExchangeHelp": "אופציונלי — להרצות חוצות נכסים; השאר ריק לבורסה יחידה"
     }
   }
 }

@@ -85,7 +85,9 @@
       "healthy": "SVEIKA",
       "warning": "ĮSPĖJIMAS",
       "error": "KLAIDA"
-    }
+    },
+    "backtest": "Backtestas",
+    "backtestAriaLabel": "Strategijos {{name}} backtestas"
   },
   "launchModal": {
     "title": "Registruoti strategijos procesą",

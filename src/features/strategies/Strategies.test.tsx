@@ -87,6 +87,30 @@ vi.mock('react-hot-toast', () => ({
     error: vi.fn(),
   },
 }))
+vi.mock('../backtests/BacktestCreateForm', () => ({
+  BacktestCreateForm: ({
+    open,
+    preSelectedStrategy,
+    onClose,
+    onSuccess,
+  }: {
+    open: boolean
+    preSelectedStrategy?: string
+    onClose: () => void
+    onSuccess?: (id: string) => void
+  }) =>
+    open ? (
+      <div data-testid='backtest-create-form'>
+        <span data-testid='bt-preselect'>{preSelectedStrategy}</span>
+        <button type='button' data-testid='bt-success' onClick={() => onSuccess?.('run-z')}>
+          ok
+        </button>
+        <button type='button' data-testid='bt-close' onClick={onClose}>
+          close
+        </button>
+      </div>
+    ) : null,
+}))
 const createQueryClient = () =>
   new QueryClient({
     defaultOptions: {
@@ -147,6 +171,86 @@ describe('Strategies', () => {
     await waitFor(() => {
       expect(screen.getByText('MACD BTC')).toBeTruthy()
     })
+  })
+  it('opens the backtest form pre-filled with the strategy class, then handles success and close', async () => {
+    const mockStrategies = [
+      makeStrategyProcess({ name: 'strategy_macd_btc', strategy_class: 'MACDCrossover' }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    const user = (await import('@testing-library/user-event')).default.setup()
+
+    globalThis.location.hash = ''
+    renderWithProviders(<Strategies />)
+    const backtestButton = await screen.findByText('Backtest')
+
+    expect(screen.queryByTestId('backtest-create-form')).toBeNull()
+    await user.click(backtestButton)
+    expect(screen.getByTestId('bt-preselect').textContent).toBe('MACDCrossover')
+
+    await user.click(screen.getByTestId('bt-success'))
+    expect(globalThis.location.hash).toBe('#backtests/run-z')
+
+    await user.click(screen.getByTestId('bt-close'))
+    expect(screen.queryByTestId('backtest-create-form')).toBeNull()
+    globalThis.location.hash = ''
+  })
+  it('hides the Backtest button when the user lacks manage:backtests', async () => {
+    const mockStrategies = [
+      makeStrategyProcess({ name: 'strategy_macd_btc', strategy_class: 'MACDCrossover' }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+    const { useAuth } = await import('../../stores/auth')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useAuth).mockReturnValue({
+      hasPermission: (p: string) => p !== 'manage:backtests',
+    } as unknown as ReturnType<typeof useAuth>)
+
+    try {
+      renderWithProviders(<Strategies />)
+      await waitFor(() => expect(screen.getByText('MACD BTC')).toBeTruthy())
+      expect(screen.queryByText('Backtest')).toBeNull()
+    } finally {
+      vi.mocked(useAuth).mockReturnValue({
+        hasPermission: () => true,
+      } as unknown as ReturnType<typeof useAuth>)
+    }
+  })
+  it('hides the Backtest button in read-only (time-travel) mode', async () => {
+    const mockStrategies = [
+      makeStrategyProcess({ name: 'strategy_macd_btc', strategy_class: 'MACDCrossover' }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+    const { useAppStore } = await import('../../stores/app')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useAppStore).mockImplementation(selector =>
+      selector({ asOf: null, isTimeTraveling: true } as never)
+    )
+
+    try {
+      renderWithProviders(<Strategies />)
+      await waitFor(() => expect(screen.getByText('MACD BTC')).toBeTruthy())
+      expect(screen.queryByText('Backtest')).toBeNull()
+    } finally {
+      vi.mocked(useAppStore).mockImplementation(selector =>
+        selector({ asOf: null, isTimeTraveling: false } as never)
+      )
+    }
   })
   it('subscribes to heartbeat topics for strategies', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_macd_btc', running: true })]

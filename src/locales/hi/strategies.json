@@ -85,7 +85,9 @@
       "healthy": "स्वस्थ",
       "warning": "चेतावनी",
       "error": "त्रुटि"
-    }
+    },
+    "backtest": "बैकटेस्ट",
+    "backtestAriaLabel": "{{name}} रणनीति का बैकटेस्ट करें"
   },
   "launchModal": {
     "title": "रणनीति प्रोसेस पंजीकृत करें",

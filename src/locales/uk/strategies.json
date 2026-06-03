@@ -85,7 +85,9 @@
       "healthy": "СПРАВНО",
       "warning": "ПОПЕРЕДЖЕННЯ",
       "error": "ПОМИЛКА"
-    }
+    },
+    "backtest": "Бектест",
+    "backtestAriaLabel": "Бектест стратегії {{name}}"
   },
   "launchModal": {
     "title": "Зареєструвати процес стратегії",

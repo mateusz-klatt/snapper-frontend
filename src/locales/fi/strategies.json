@@ -85,7 +85,9 @@
       "healthy": "KUNNOSSA",
       "warning": "VAROITUS",
       "error": "VIRHE"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtestaa strategia {{name}}"
   },
   "launchModal": {
     "title": "Rekisteröi strategiaprosessi",

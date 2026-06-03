@@ -85,7 +85,9 @@
       "healthy": "בריא",
       "warning": "אזהרה",
       "error": "שגיאה"
-    }
+    },
+    "backtest": "בקטסט",
+    "backtestAriaLabel": "בקטסט לאסטרטגיה {{name}}"
   },
   "launchModal": {
     "title": "רשום תהליך אסטרטגיה",

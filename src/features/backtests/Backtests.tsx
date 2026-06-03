@@ -3,6 +3,11 @@ import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { Play, RotateCcw, XCircle } from 'lucide-react'
 import { useBacktests, useCancelBacktest, useRerunBacktest } from '../../hooks/queries/backtests'
+import { BacktestCreateForm } from './BacktestCreateForm'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
+import { currentHashQuery } from '../../lib/hash/currentHashQuery'
+import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
 import { formatDate } from '../../lib/dateFormat'
@@ -47,7 +52,7 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
     >
       <div className='mb-3 flex items-center justify-between'>
         <a
-          href={`#backtests/${run.public_id}`}
+          href={`#backtests/${run.public_id}${currentHashQuery()}`}
           className='flex cursor-pointer items-center space-x-3 hover:underline'
           data-testid={`open-${run.public_id}`}
         >
@@ -120,7 +125,11 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
 
 export const Backtests: React.FC = () => {
   const { t } = useTranslation('backtests')
+  const { hasPermission } = useAuth()
+  const readOnly = useIsReadOnly()
+  const canCreate = hasPermission(Permission.MANAGE_BACKTESTS) && !readOnly
   const [statusFilter, setStatusFilter] = useState<string>('')
+  const [createOpen, setCreateOpen] = useState<boolean>(false)
   const { data, isLoading } = useBacktests(undefined, statusFilter || undefined)
   const cancelMutation = useCancelBacktest()
   const rerunMutation = useRerunBacktest()
@@ -140,6 +149,16 @@ export const Backtests: React.FC = () => {
       <div className='flex items-center justify-between'>
         <h2 className='text-xl font-semibold text-alpine-900'>{t('list.title')}</h2>
         <div className='flex items-center gap-2'>
+          {canCreate && (
+            <button
+              type='button'
+              onClick={() => setCreateOpen(true)}
+              className='rounded-md bg-brand-600 px-4 py-1 text-sm font-medium text-white hover:bg-brand-700'
+              data-testid='new-backtest'
+            >
+              {t('list.actions.create')}
+            </button>
+          )}
           <select
             aria-label={t('list.filter.ariaLabel')}
             className='rounded-lg border border-dark-600 bg-alpine-50 px-3 py-1 text-sm text-alpine-900'
@@ -183,6 +202,13 @@ export const Backtests: React.FC = () => {
           </div>
         )}
       </div>
+      <BacktestCreateForm
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        onSuccess={runPublicId => {
+          globalThis.location.hash = `#backtests/${runPublicId}${currentHashQuery()}`
+        }}
+      />
     </div>
   )
 }

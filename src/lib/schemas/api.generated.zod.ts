@@ -1175,6 +1175,7 @@ const _StrategyProcessRawSchema = z
     running: z.boolean(),
     enabled: z.boolean(),
     mode: z.enum(['thread', 'process']),
+    strategy_class: z.string().nullable().optional(),
   })
   .strict()
 

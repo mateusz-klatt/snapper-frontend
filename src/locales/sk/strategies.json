@@ -85,7 +85,9 @@
       "healthy": "V PORIADKU",
       "warning": "VAROVANIE",
       "error": "CHYBA"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest stratégie {{name}}"
   },
   "launchModal": {
     "title": "Registrovať proces stratégie",

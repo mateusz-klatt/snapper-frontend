@@ -85,7 +85,9 @@
       "healthy": "SAIN",
       "warning": "AVERTISSEMENT",
       "error": "ERREUR"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtester la stratégie {{name}}"
   },
   "launchModal": {
     "title": "Enregistrer un processus de stratégie",

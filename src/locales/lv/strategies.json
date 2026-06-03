@@ -85,7 +85,9 @@
       "healthy": "VESELA",
       "warning": "BRĪDINĀJUMS",
       "error": "KĻŪDA"
-    }
+    },
+    "backtest": "Backtests",
+    "backtestAriaLabel": "Backtestēt stratēģiju {{name}}"
   },
   "launchModal": {
     "title": "Reģistrēt stratēģijas procesu",

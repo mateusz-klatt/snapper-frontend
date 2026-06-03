@@ -85,7 +85,9 @@
       "healthy": "HEALTHY",
       "warning": "WARNING",
       "error": "ERROR"
-    }
+    },
+    "backtest": "ব্যাকটেস্ট",
+    "backtestAriaLabel": "{{name}} কৌশল ব্যাকটেস্ট করুন"
   },
   "launchModal": {
     "title": "কৌশল প্রসেস নিবন্ধন",

@@ -14,7 +14,8 @@
     "title": "Backtester",
     "actions": {
       "cancel": "Avbryt",
-      "rerun": "Kör igen"
+      "rerun": "Kör igen",
+      "create": "Ny backtest"
     },
     "fields": {
       "timeframe": "Tidsupplösning",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Ny backtest",
+    "cancel": "Avbryt",
+    "submit": "Starta backtest",
+    "submitting": "Startar…",
+    "errors": {
+      "unknown": "Okänt fel"
+    },
+    "validation": {
+      "endDateAfterStart": "Slutdatum måste vara efter startdatum"
+    },
+    "form": {
+      "strategyLabel": "Strategi",
+      "strategyPlaceholder": "— Välj en strategi —",
+      "strategyLoading": "Laddar strategier…",
+      "strategyError": "Det gick inte att ladda strategier",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "t.ex. BTC-USD",
+      "instrumentHelp": "Publikt id för instrumentet att backtesta",
+      "exchangeLabel": "Börs (feedkälla)",
+      "exchangePlaceholder": "— Välj en börs —",
+      "timeframeLabel": "Tidsupplösning",
+      "startDateLabel": "Startdatum",
+      "endDateLabel": "Slutdatum",
+      "initialCashLabel": "Startkapital",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Courtage (bps)",
+      "executionModeLabel": "Utförandeläge",
+      "executionModeDirectDb": "Direkt DB",
+      "executionModeZmqReplay": "ZMQ-uppspelning",
+      "targetExchangeLabel": "Börs för målutförande",
+      "targetExchangeNone": "Ingen (en börs)",
+      "targetExchangeHelp": "Valfritt — för körningar över tillgångar; lämna tomt för en enda börs"
     }
   }
 }

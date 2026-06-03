@@ -2,12 +2,35 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Backtests } from './Backtests'
+import { useAuth } from '../../stores/auth'
 
 vi.mock('../../stores/auth', () => ({
-  useAuth: vi.fn(() => ({
-    isAuthenticated: true,
-  })),
+  useAuth: vi.fn(),
 }))
+vi.mock('./BacktestCreateForm', () => ({
+  BacktestCreateForm: ({
+    open,
+    onClose,
+    onSuccess,
+  }: {
+    open: boolean
+    onClose: () => void
+    onSuccess?: (id: string) => void
+  }) =>
+    open ? (
+      <div data-testid='backtest-create-form'>
+        <button type='button' data-testid='bt-success' onClick={() => onSuccess?.('run-xyz')}>
+          ok
+        </button>
+        <button type='button' data-testid='bt-close' onClick={onClose}>
+          close
+        </button>
+      </div>
+    ) : null,
+}))
+
+const mockedUseAuth = vi.mocked(useAuth)
+
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn((selector: (s: Record<string, unknown>) => unknown) =>
     selector({ asOf: null, isTimeTraveling: false })
@@ -61,6 +84,10 @@ function renderWithQuery(ui: React.ReactElement) {
 describe('Backtests', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockedUseAuth.mockReturnValue({
+      isAuthenticated: true,
+      hasPermission: vi.fn(() => true),
+    } as unknown as ReturnType<typeof useAuth>)
   })
 
   it('renders empty state when no backtests', async () => {
@@ -311,5 +338,78 @@ describe('Backtests', () => {
     fireEvent.click(anchor)
     expect(mockCancelBacktest).not.toHaveBeenCalled()
     expect(mockRerunBacktest).not.toHaveBeenCalled()
+  })
+
+  it('shows a New backtest button (with manage:backtests) that opens the create form', async () => {
+    mockGetBacktests.mockResolvedValue({
+      type: 'backtest_run_list',
+      session_id: 's1',
+      sequence_id: 1,
+      public_id: 'resp-1',
+      timestamp: NOW,
+      payload: [],
+      count: 0,
+    })
+
+    renderWithQuery(<Backtests />)
+    const btn = await screen.findByTestId('new-backtest')
+
+    expect(screen.queryByTestId('backtest-create-form')).not.toBeInTheDocument()
+    fireEvent.click(btn)
+    expect(screen.getByTestId('backtest-create-form')).toBeInTheDocument()
+
+    globalThis.location.hash = ''
+    fireEvent.click(screen.getByTestId('bt-success'))
+    expect(globalThis.location.hash).toBe('#backtests/run-xyz')
+    fireEvent.click(screen.getByTestId('bt-close'))
+    expect(screen.queryByTestId('backtest-create-form')).not.toBeInTheDocument()
+    globalThis.location.hash = ''
+  })
+
+  it('hides the New backtest button without manage:backtests', async () => {
+    mockedUseAuth.mockReturnValue({
+      isAuthenticated: true,
+      hasPermission: vi.fn(() => false),
+    } as unknown as ReturnType<typeof useAuth>)
+    mockGetBacktests.mockResolvedValue({
+      type: 'backtest_run_list',
+      session_id: 's1',
+      sequence_id: 1,
+      public_id: 'resp-1',
+      timestamp: NOW,
+      payload: [],
+      count: 0,
+    })
+
+    renderWithQuery(<Backtests />)
+    await screen.findByText('No backtests')
+    expect(screen.queryByTestId('new-backtest')).not.toBeInTheDocument()
+  })
+
+  it('hides the New backtest button in read-only (time-travel) mode', async () => {
+    const { useAppStore } = await import('../../stores/app')
+
+    vi.mocked(useAppStore).mockImplementation(selector =>
+      selector({ asOf: null, isTimeTraveling: true } as never)
+    )
+    mockGetBacktests.mockResolvedValue({
+      type: 'backtest_run_list',
+      session_id: 's1',
+      sequence_id: 1,
+      public_id: 'resp-1',
+      timestamp: NOW,
+      payload: [],
+      count: 0,
+    })
+
+    try {
+      renderWithQuery(<Backtests />)
+      await screen.findByText('No backtests')
+      expect(screen.queryByTestId('new-backtest')).not.toBeInTheDocument()
+    } finally {
+      vi.mocked(useAppStore).mockImplementation(selector =>
+        selector({ asOf: null, isTimeTraveling: false } as never)
+      )
+    }
   })
 })

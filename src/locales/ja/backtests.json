@@ -14,7 +14,8 @@
     "title": "バックテスト",
     "actions": {
       "cancel": "キャンセル",
-      "rerun": "再実行"
+      "rerun": "再実行",
+      "create": "新規バックテスト"
     },
     "fields": {
       "timeframe": "時間足",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "新規バックテスト",
+    "cancel": "キャンセル",
+    "submit": "バックテスト開始",
+    "submitting": "開始中…",
+    "errors": {
+      "unknown": "不明なエラー"
+    },
+    "validation": {
+      "endDateAfterStart": "終了日は開始日より後にしてください"
+    },
+    "form": {
+      "strategyLabel": "戦略",
+      "strategyPlaceholder": "— 戦略を選択 —",
+      "strategyLoading": "戦略を読み込み中…",
+      "strategyError": "戦略の読み込みに失敗しました",
+      "instrumentLabel": "銘柄",
+      "instrumentPlaceholder": "例: BTC-USD",
+      "instrumentHelp": "バックテスト対象銘柄の公開ID",
+      "exchangeLabel": "取引所（フィードソース）",
+      "exchangePlaceholder": "— 取引所を選択 —",
+      "timeframeLabel": "時間足",
+      "startDateLabel": "開始日",
+      "endDateLabel": "終了日",
+      "initialCashLabel": "初期資金",
+      "slippageBpsLabel": "スリッページ（bps）",
+      "commissionBpsLabel": "手数料（bps）",
+      "executionModeLabel": "約定モード",
+      "executionModeDirectDb": "ダイレクトDB",
+      "executionModeZmqReplay": "ZMQリプレイ",
+      "targetExchangeLabel": "約定先取引所",
+      "targetExchangeNone": "なし（単一取引所）",
+      "targetExchangeHelp": "任意 — クロスアセット実行用。単一取引所の場合は未設定のままにしてください"
     }
   }
 }

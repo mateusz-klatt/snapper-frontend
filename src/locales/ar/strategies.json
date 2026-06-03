@@ -85,7 +85,9 @@
       "healthy": "سليم",
       "warning": "تحذير",
       "error": "خطأ"
-    }
+    },
+    "backtest": "اختبار رجعي",
+    "backtestAriaLabel": "اختبار رجعي للاستراتيجية {{name}}"
   },
   "launchModal": {
     "title": "تسجيل عملية استراتيجية",

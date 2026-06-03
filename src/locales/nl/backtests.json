@@ -14,7 +14,8 @@
     "title": "Backtestruns",
     "actions": {
       "cancel": "Annuleren",
-      "rerun": "Opnieuw uitvoeren"
+      "rerun": "Opnieuw uitvoeren",
+      "create": "Nieuwe backtest"
     },
     "fields": {
       "timeframe": "Tijdframe",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Nieuwe backtest",
+    "cancel": "Annuleren",
+    "submit": "Backtest starten",
+    "submitting": "Starten…",
+    "errors": {
+      "unknown": "Onbekende fout"
+    },
+    "validation": {
+      "endDateAfterStart": "Einddatum moet na startdatum liggen"
+    },
+    "form": {
+      "strategyLabel": "Strategie",
+      "strategyPlaceholder": "— Selecteer een strategie —",
+      "strategyLoading": "Strategieën laden…",
+      "strategyError": "Laden van strategieën mislukt",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "bijv. BTC-USD",
+      "instrumentHelp": "Publieke id van het te backtesten instrument",
+      "exchangeLabel": "Exchange (feedbron)",
+      "exchangePlaceholder": "— Selecteer een exchange —",
+      "timeframeLabel": "Tijdframe",
+      "startDateLabel": "Startdatum",
+      "endDateLabel": "Einddatum",
+      "initialCashLabel": "Beginkapitaal",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Commissie (bps)",
+      "executionModeLabel": "Uitvoeringsmodus",
+      "executionModeDirectDb": "Directe DB",
+      "executionModeZmqReplay": "ZMQ-replay",
+      "targetExchangeLabel": "Doel-uitvoeringsexchange",
+      "targetExchangeNone": "Geen (enkele exchange)",
+      "targetExchangeHelp": "Optioneel — voor cross-asset-runs; laat leeg voor één exchange"
     }
   }
 }

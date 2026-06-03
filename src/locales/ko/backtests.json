@@ -14,7 +14,8 @@
     "title": "백테스트",
     "actions": {
       "cancel": "취소",
-      "rerun": "재실행"
+      "rerun": "재실행",
+      "create": "새 백테스트"
     },
     "fields": {
       "timeframe": "타임프레임",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "새 백테스트",
+    "cancel": "취소",
+    "submit": "백테스트 시작",
+    "submitting": "시작하는 중…",
+    "errors": {
+      "unknown": "알 수 없는 오류"
+    },
+    "validation": {
+      "endDateAfterStart": "종료일은 시작일보다 이후여야 합니다"
+    },
+    "form": {
+      "strategyLabel": "전략",
+      "strategyPlaceholder": "— 전략 선택 —",
+      "strategyLoading": "전략 로딩 중…",
+      "strategyError": "전략을 불러오지 못했습니다",
+      "instrumentLabel": "종목",
+      "instrumentPlaceholder": "예: BTC-USD",
+      "instrumentHelp": "백테스트할 종목의 공개 ID",
+      "exchangeLabel": "거래소 (피드 소스)",
+      "exchangePlaceholder": "— 거래소 선택 —",
+      "timeframeLabel": "타임프레임",
+      "startDateLabel": "시작일",
+      "endDateLabel": "종료일",
+      "initialCashLabel": "초기 현금",
+      "slippageBpsLabel": "슬리피지 (bps)",
+      "commissionBpsLabel": "수수료 (bps)",
+      "executionModeLabel": "실행 모드",
+      "executionModeDirectDb": "직접 DB",
+      "executionModeZmqReplay": "ZMQ 리플레이",
+      "targetExchangeLabel": "대상 실행 거래소",
+      "targetExchangeNone": "없음 (단일 거래소)",
+      "targetExchangeHelp": "선택 사항 — 크로스 애셋 실행용. 단일 거래소인 경우 설정하지 마세요"
     }
   }
 }

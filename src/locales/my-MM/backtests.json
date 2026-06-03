@@ -14,7 +14,8 @@
     "title": "နောက်ကြောင်းပြန် စမ်းသပ်မှုများ",
     "actions": {
       "cancel": "ပယ်ဖျက်",
-      "rerun": "ပြန် run"
+      "rerun": "ပြန် run",
+      "create": "နောက်ကြောင်းပြန် စမ်းသပ်မှု အသစ်"
     },
     "fields": {
       "timeframe": "အချိန်ဘောင်",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "နောက်ကြောင်းပြန် စမ်းသပ်မှု အသစ်",
+    "cancel": "ပယ်ဖျက်",
+    "submit": "နောက်ကြောင်းပြန် စမ်းသပ်မှု စတင်ပါ",
+    "submitting": "စတင်နေသည်…",
+    "errors": {
+      "unknown": "မသိသော အမှား"
+    },
+    "validation": {
+      "endDateAfterStart": "ပြီးဆုံးရက်စွဲသည် စတင်ရက်စွဲထက် နောက်ကျရမည်"
+    },
+    "form": {
+      "strategyLabel": "ဗျူဟာ",
+      "strategyPlaceholder": "— ဗျူဟာတစ်ခု ရွေးပါ —",
+      "strategyLoading": "ဗျူဟာများ load လုပ်နေသည်…",
+      "strategyError": "ဗျူဟာများ load လုပ်၍ မရပါ",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "ဥပမာ BTC-USD",
+      "instrumentHelp": "နောက်ကြောင်းပြန် စမ်းသပ်ရန် instrument ၏ public id",
+      "exchangeLabel": "Exchange (feed source)",
+      "exchangePlaceholder": "— exchange တစ်ခု ရွေးပါ —",
+      "timeframeLabel": "အချိန်ဘောင်",
+      "startDateLabel": "စတင်ရက်စွဲ",
+      "endDateLabel": "ပြီးဆုံးရက်စွဲ",
+      "initialCashLabel": "စတင် Cash",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "ကော်မရှင် (bps)",
+      "executionModeLabel": "လုပ်ဆောင်မှု မုဒ်",
+      "executionModeDirectDb": "Direct DB",
+      "executionModeZmqReplay": "ZMQ replay",
+      "targetExchangeLabel": "ပစ်မှတ် လုပ်ဆောင်မှု exchange",
+      "targetExchangeNone": "မရှိ (single-exchange)",
+      "targetExchangeHelp": "Optional — cross-asset run များအတွက်; single-exchange အတွက် မသတ်မှတ်ဘဲ ထားပါ"
     }
   }
 }

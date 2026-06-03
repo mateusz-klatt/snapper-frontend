@@ -14,7 +14,8 @@
     "title": "Backtest",
     "actions": {
       "cancel": "Hủy",
-      "rerun": "Chạy lại"
+      "rerun": "Chạy lại",
+      "create": "Backtest mới"
     },
     "fields": {
       "timeframe": "Khung thời gian",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Backtest mới",
+    "cancel": "Hủy",
+    "submit": "Bắt đầu Backtest",
+    "submitting": "Đang bắt đầu…",
+    "errors": {
+      "unknown": "Lỗi không xác định"
+    },
+    "validation": {
+      "endDateAfterStart": "Ngày kết thúc phải sau ngày bắt đầu"
+    },
+    "form": {
+      "strategyLabel": "Chiến lược",
+      "strategyPlaceholder": "— Chọn một chiến lược —",
+      "strategyLoading": "Đang tải chiến lược…",
+      "strategyError": "Không tải được chiến lược",
+      "instrumentLabel": "Công cụ",
+      "instrumentPlaceholder": "ví dụ BTC-USD",
+      "instrumentHelp": "ID công khai của công cụ cần backtest",
+      "exchangeLabel": "Sàn (nguồn feed)",
+      "exchangePlaceholder": "— Chọn một sàn —",
+      "timeframeLabel": "Khung thời gian",
+      "startDateLabel": "Ngày bắt đầu",
+      "endDateLabel": "Ngày kết thúc",
+      "initialCashLabel": "Tiền mặt ban đầu",
+      "slippageBpsLabel": "Trượt giá (bps)",
+      "commissionBpsLabel": "Phí hoa hồng (bps)",
+      "executionModeLabel": "Chế độ thực thi",
+      "executionModeDirectDb": "Direct DB",
+      "executionModeZmqReplay": "ZMQ replay",
+      "targetExchangeLabel": "Sàn thực thi mục tiêu",
+      "targetExchangeNone": "Không (đơn sàn)",
+      "targetExchangeHelp": "Tùy chọn — dành cho lượt chạy chéo tài sản; để trống cho đơn sàn"
     }
   }
 }

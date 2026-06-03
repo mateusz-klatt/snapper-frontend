@@ -14,7 +14,8 @@
     "title": "Backtestit",
     "actions": {
       "cancel": "Peruuta",
-      "rerun": "Aja uudelleen"
+      "rerun": "Aja uudelleen",
+      "create": "Uusi backtest"
     },
     "fields": {
       "timeframe": "Aikaväli",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Uusi backtest",
+    "cancel": "Peruuta",
+    "submit": "Käynnistä backtest",
+    "submitting": "Käynnistetään…",
+    "errors": {
+      "unknown": "Tuntematon virhe"
+    },
+    "validation": {
+      "endDateAfterStart": "Loppupäivän on oltava alkupäivän jälkeen"
+    },
+    "form": {
+      "strategyLabel": "Strategia",
+      "strategyPlaceholder": "— Valitse strategia —",
+      "strategyLoading": "Ladataan strategioita…",
+      "strategyError": "Strategioiden lataus epäonnistui",
+      "instrumentLabel": "Instrumentti",
+      "instrumentPlaceholder": "esim. BTC-USD",
+      "instrumentHelp": "Backtestattavan instrumentin julkinen id",
+      "exchangeLabel": "Pörssi (feed-lähde)",
+      "exchangePlaceholder": "— Valitse pörssi —",
+      "timeframeLabel": "Aikaväli",
+      "startDateLabel": "Alkupäivä",
+      "endDateLabel": "Loppupäivä",
+      "initialCashLabel": "Alkukassa",
+      "slippageBpsLabel": "Liukuma (bps)",
+      "commissionBpsLabel": "Palkkio (bps)",
+      "executionModeLabel": "Toteutustila",
+      "executionModeDirectDb": "Suora DB",
+      "executionModeZmqReplay": "ZMQ-toisto",
+      "targetExchangeLabel": "Kohdetoteutuspörssi",
+      "targetExchangeNone": "Ei mitään (yksi pörssi)",
+      "targetExchangeHelp": "Valinnainen — instrumenttien välisille ajoille; jätä asettamatta yhden pörssin ajoissa"
     }
   }
 }

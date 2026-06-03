@@ -2,6 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   getBacktests,
   getBacktest,
+  getBacktestStrategyClasses,
   createBacktest,
   cancelBacktest,
   rerunBacktest,
@@ -20,6 +21,15 @@ export const useBacktests = (strategy?: string, status?: string) => {
   return useQuery({
     queryKey: queryKeys.backtestsByStrategyStatus(strategy, status),
     queryFn: () => getBacktests(50, 0, strategy, status),
+  })
+}
+
+export const useBacktestStrategyClasses = (enabled: boolean) => {
+  return useQuery({
+    queryKey: queryKeys.backtestStrategyClasses,
+    queryFn: () => getBacktestStrategyClasses(),
+    staleTime: Infinity,
+    enabled,
   })
 }
 

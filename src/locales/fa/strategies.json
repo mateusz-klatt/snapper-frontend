@@ -85,7 +85,9 @@
       "healthy": "سالم",
       "warning": "هشدار",
       "error": "خطا"
-    }
+    },
+    "backtest": "بک‌تست",
+    "backtestAriaLabel": "بک‌تست استراتژی {{name}}"
   },
   "launchModal": {
     "title": "ثبت فرایند استراتژی",

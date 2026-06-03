@@ -14,7 +14,8 @@
     "title": "Backtestek",
     "actions": {
       "cancel": "Mégse",
-      "rerun": "Újrafuttatás"
+      "rerun": "Újrafuttatás",
+      "create": "Új backtest"
     },
     "fields": {
       "timeframe": "Idősík",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Új backtest",
+    "cancel": "Mégse",
+    "submit": "Backtest indítása",
+    "submitting": "Indítás…",
+    "errors": {
+      "unknown": "Ismeretlen hiba"
+    },
+    "validation": {
+      "endDateAfterStart": "A befejező dátumnak a kezdő dátum utánra kell esnie"
+    },
+    "form": {
+      "strategyLabel": "Stratégia",
+      "strategyPlaceholder": "— Válasszon stratégiát —",
+      "strategyLoading": "Stratégiák betöltése…",
+      "strategyError": "Nem sikerült betölteni a stratégiákat",
+      "instrumentLabel": "Instrumentum",
+      "instrumentPlaceholder": "pl. BTC-USD",
+      "instrumentHelp": "A backtestelendő instrumentum nyilvános azonosítója",
+      "exchangeLabel": "Tőzsde (feed forrás)",
+      "exchangePlaceholder": "— Válasszon tőzsdét —",
+      "timeframeLabel": "Idősík",
+      "startDateLabel": "Kezdő dátum",
+      "endDateLabel": "Befejező dátum",
+      "initialCashLabel": "Kezdő készpénz",
+      "slippageBpsLabel": "Csúszás (bps)",
+      "commissionBpsLabel": "Jutalék (bps)",
+      "executionModeLabel": "Végrehajtási mód",
+      "executionModeDirectDb": "Közvetlen DB",
+      "executionModeZmqReplay": "ZMQ visszajátszás",
+      "targetExchangeLabel": "Cél végrehajtási tőzsde",
+      "targetExchangeNone": "Nincs (egytőzsdés)",
+      "targetExchangeHelp": "Opcionális — eszközök közötti futtatásokhoz; egytőzsdés esetén hagyja üresen"
     }
   }
 }

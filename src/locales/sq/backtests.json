@@ -14,7 +14,8 @@
     "title": "Testet historike",
     "actions": {
       "cancel": "Anulo",
-      "rerun": "Riekzekuto"
+      "rerun": "Riekzekuto",
+      "create": "Test historik i ri"
     },
     "fields": {
       "timeframe": "Korniza kohore",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Test historik i ri",
+    "cancel": "Anulo",
+    "submit": "Nis testin historik",
+    "submitting": "Duke nisur…",
+    "errors": {
+      "unknown": "Gabim i panjohur"
+    },
+    "validation": {
+      "endDateAfterStart": "Data e mbarimit duhet të jetë pas datës së fillimit"
+    },
+    "form": {
+      "strategyLabel": "Strategji",
+      "strategyPlaceholder": "— Zgjidhni një strategji —",
+      "strategyLoading": "Duke ngarkuar strategjitë…",
+      "strategyError": "Ngarkimi i strategjive dështoi",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "p.sh. BTC-USD",
+      "instrumentHelp": "ID publike e instrumentit për testin historik",
+      "exchangeLabel": "Bursa (burimi i feed-it)",
+      "exchangePlaceholder": "— Zgjidhni një bursë —",
+      "timeframeLabel": "Korniza kohore",
+      "startDateLabel": "Data e fillimit",
+      "endDateLabel": "Data e mbarimit",
+      "initialCashLabel": "Kapitali fillestar",
+      "slippageBpsLabel": "Rrëshqitja (bps)",
+      "commissionBpsLabel": "Komisioni (bps)",
+      "executionModeLabel": "Modaliteti i ekzekutimit",
+      "executionModeDirectDb": "DB e drejtpërdrejtë",
+      "executionModeZmqReplay": "Riluajtje ZMQ",
+      "targetExchangeLabel": "Bursa e synuar e ekzekutimit",
+      "targetExchangeNone": "Asnjë (bursë e vetme)",
+      "targetExchangeHelp": "Opsionale — për ekzekutime ndër-asetesh; lëreni të pacaktuar për bursë të vetme"
     }
   }
 }

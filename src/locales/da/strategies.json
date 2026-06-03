@@ -85,7 +85,9 @@
       "healthy": "SUND",
       "warning": "ADVARSEL",
       "error": "FEJL"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest strategien {{name}}"
   },
   "launchModal": {
     "title": "Registrer strategiproces",

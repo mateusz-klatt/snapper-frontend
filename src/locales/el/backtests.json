@@ -14,7 +14,8 @@
     "title": "Ιστορικοί έλεγχοι",
     "actions": {
       "cancel": "Ακύρωση",
-      "rerun": "Επανεκτέλεση"
+      "rerun": "Επανεκτέλεση",
+      "create": "Νέος ιστορικός έλεγχος"
     },
     "fields": {
       "timeframe": "Χρονικό πλαίσιο",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Νέος ιστορικός έλεγχος",
+    "cancel": "Ακύρωση",
+    "submit": "Έναρξη ιστορικού ελέγχου",
+    "submitting": "Έναρξη…",
+    "errors": {
+      "unknown": "Άγνωστο σφάλμα"
+    },
+    "validation": {
+      "endDateAfterStart": "Η ημερομηνία λήξης πρέπει να είναι μεταγενέστερη της ημερομηνίας έναρξης"
+    },
+    "form": {
+      "strategyLabel": "Στρατηγική",
+      "strategyPlaceholder": "— Επιλέξτε στρατηγική —",
+      "strategyLoading": "Φόρτωση στρατηγικών…",
+      "strategyError": "Αποτυχία φόρτωσης στρατηγικών",
+      "instrumentLabel": "Μέσο",
+      "instrumentPlaceholder": "π.χ. BTC-USD",
+      "instrumentHelp": "Δημόσιο id του μέσου προς ιστορικό έλεγχο",
+      "exchangeLabel": "Ανταλλακτήριο (πηγή feed)",
+      "exchangePlaceholder": "— Επιλέξτε ανταλλακτήριο —",
+      "timeframeLabel": "Χρονικό πλαίσιο",
+      "startDateLabel": "Ημερομηνία έναρξης",
+      "endDateLabel": "Ημερομηνία λήξης",
+      "initialCashLabel": "Αρχικό κεφάλαιο",
+      "slippageBpsLabel": "Ολίσθηση (bps)",
+      "commissionBpsLabel": "Προμήθεια (bps)",
+      "executionModeLabel": "Λειτουργία εκτέλεσης",
+      "executionModeDirectDb": "Άμεση DB",
+      "executionModeZmqReplay": "Επανάληψη ZMQ",
+      "targetExchangeLabel": "Ανταλλακτήριο εκτέλεσης προορισμού",
+      "targetExchangeNone": "Κανένα (μονό ανταλλακτήριο)",
+      "targetExchangeHelp": "Προαιρετικό — για εκτελέσεις μεταξύ ενεργητικών· αφήστε κενό για μονό ανταλλακτήριο"
     }
   }
 }

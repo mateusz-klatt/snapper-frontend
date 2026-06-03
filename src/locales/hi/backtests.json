@@ -14,7 +14,8 @@
     "title": "बैकटेस्ट",
     "actions": {
       "cancel": "रद्द करें",
-      "rerun": "फिर चलाएँ"
+      "rerun": "फिर चलाएँ",
+      "create": "नया बैकटेस्ट"
     },
     "fields": {
       "timeframe": "समय-सीमा",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "नया बैकटेस्ट",
+    "cancel": "रद्द करें",
+    "submit": "बैकटेस्ट शुरू करें",
+    "submitting": "शुरू हो रहा है…",
+    "errors": {
+      "unknown": "अज्ञात त्रुटि"
+    },
+    "validation": {
+      "endDateAfterStart": "समाप्ति तिथि प्रारंभ तिथि के बाद होनी चाहिए"
+    },
+    "form": {
+      "strategyLabel": "रणनीति",
+      "strategyPlaceholder": "— एक रणनीति चुनें —",
+      "strategyLoading": "रणनीतियाँ लोड हो रही हैं…",
+      "strategyError": "रणनीतियाँ लोड करने में विफल",
+      "instrumentLabel": "इंस्ट्रूमेंट",
+      "instrumentPlaceholder": "उदा. BTC-USD",
+      "instrumentHelp": "बैकटेस्ट किए जाने वाले इंस्ट्रूमेंट की सार्वजनिक id",
+      "exchangeLabel": "एक्सचेंज (फ़ीड स्रोत)",
+      "exchangePlaceholder": "— एक एक्सचेंज चुनें —",
+      "timeframeLabel": "समय-सीमा",
+      "startDateLabel": "प्रारंभ तिथि",
+      "endDateLabel": "समाप्ति तिथि",
+      "initialCashLabel": "प्रारंभिक नकद",
+      "slippageBpsLabel": "स्लिपेज (bps)",
+      "commissionBpsLabel": "कमीशन (bps)",
+      "executionModeLabel": "निष्पादन मोड",
+      "executionModeDirectDb": "डायरेक्ट DB",
+      "executionModeZmqReplay": "ZMQ रीप्ले",
+      "targetExchangeLabel": "लक्ष्य निष्पादन एक्सचेंज",
+      "targetExchangeNone": "कोई नहीं (सिंगल-एक्सचेंज)",
+      "targetExchangeHelp": "वैकल्पिक — क्रॉस-एसेट रन के लिए; सिंगल-एक्सचेंज के लिए अनसेट रहने दें"
     }
   }
 }

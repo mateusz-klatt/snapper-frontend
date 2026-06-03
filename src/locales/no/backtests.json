@@ -14,7 +14,8 @@
     "title": "Backtester",
     "actions": {
       "cancel": "Avbryt",
-      "rerun": "Kjør på nytt"
+      "rerun": "Kjør på nytt",
+      "create": "Ny backtest"
     },
     "fields": {
       "timeframe": "Tidsramme",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "Ny backtest",
+    "cancel": "Avbryt",
+    "submit": "Start backtest",
+    "submitting": "Starter…",
+    "errors": {
+      "unknown": "Ukjent feil"
+    },
+    "validation": {
+      "endDateAfterStart": "Sluttdato må være etter startdato"
+    },
+    "form": {
+      "strategyLabel": "Strategi",
+      "strategyPlaceholder": "— Velg en strategi —",
+      "strategyLoading": "Laster strategier…",
+      "strategyError": "Kunne ikke laste strategier",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "f.eks. BTC-USD",
+      "instrumentHelp": "Offentlig id for instrumentet som skal backtestes",
+      "exchangeLabel": "Børs (feed-kilde)",
+      "exchangePlaceholder": "— Velg en børs —",
+      "timeframeLabel": "Tidsramme",
+      "startDateLabel": "Startdato",
+      "endDateLabel": "Sluttdato",
+      "initialCashLabel": "Startkapital",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Kurtasje (bps)",
+      "executionModeLabel": "Utførelsesmodus",
+      "executionModeDirectDb": "Direkte DB",
+      "executionModeZmqReplay": "ZMQ-avspilling",
+      "targetExchangeLabel": "Børs for målutførelse",
+      "targetExchangeNone": "Ingen (enkeltbørs)",
+      "targetExchangeHelp": "Valgfritt — for cross-asset-kjøringer; la stå tomt for enkeltbørs"
     }
   }
 }

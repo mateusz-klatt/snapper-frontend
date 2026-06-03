@@ -85,7 +85,9 @@
       "healthy": "EGÉSZSÉGES",
       "warning": "FIGYELMEZTETÉS",
       "error": "HIBA"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "{{name}} stratégia backtestelése"
   },
   "launchModal": {
     "title": "Stratégiafolyamat regisztrálása",

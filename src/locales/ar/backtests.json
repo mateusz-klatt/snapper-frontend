@@ -14,7 +14,8 @@
     "title": "اختبارات رجعية",
     "actions": {
       "cancel": "إلغاء",
-      "rerun": "إعادة التشغيل"
+      "rerun": "إعادة التشغيل",
+      "create": "اختبار رجعي جديد"
     },
     "fields": {
       "timeframe": "الإطار الزمني",
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "اختبار رجعي جديد",
+    "cancel": "إلغاء",
+    "submit": "بدء الاختبار الرجعي",
+    "submitting": "جارٍ البدء…",
+    "errors": {
+      "unknown": "خطأ غير معروف"
+    },
+    "validation": {
+      "endDateAfterStart": "يجب أن يكون تاريخ الانتهاء بعد تاريخ البدء"
+    },
+    "form": {
+      "strategyLabel": "الاستراتيجية",
+      "strategyPlaceholder": "— اختر استراتيجية —",
+      "strategyLoading": "جارٍ تحميل الاستراتيجيات…",
+      "strategyError": "فشل تحميل الاستراتيجيات",
+      "instrumentLabel": "الأداة",
+      "instrumentPlaceholder": "مثال: BTC-USD",
+      "instrumentHelp": "المعرّف العام للأداة المراد اختبارها رجعيًا",
+      "exchangeLabel": "البورصة (مصدر التغذية)",
+      "exchangePlaceholder": "— اختر بورصة —",
+      "timeframeLabel": "الإطار الزمني",
+      "startDateLabel": "تاريخ البدء",
+      "endDateLabel": "تاريخ الانتهاء",
+      "initialCashLabel": "النقد الأولي",
+      "slippageBpsLabel": "الانزلاق (bps)",
+      "commissionBpsLabel": "العمولة (bps)",
+      "executionModeLabel": "وضع التنفيذ",
+      "executionModeDirectDb": "DB مباشر",
+      "executionModeZmqReplay": "إعادة تشغيل ZMQ",
+      "targetExchangeLabel": "بورصة التنفيذ المستهدفة",
+      "targetExchangeNone": "بلا (بورصة واحدة)",
+      "targetExchangeHelp": "اختياري — لعمليات التشغيل عبر الأصول؛ اتركه فارغًا للبورصة الواحدة"
     }
   }
 }

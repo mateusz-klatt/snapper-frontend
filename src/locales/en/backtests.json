@@ -13,6 +13,7 @@
   "list": {
     "title": "Backtests",
     "actions": {
+      "create": "New backtest",
       "cancel": "Cancel",
       "rerun": "Rerun"
     },
@@ -137,6 +138,41 @@
       "25pct": "25 %",
       "50pct": "50 %",
       "75pct": "75 %"
+    }
+  },
+  "create": {
+    "title": "New backtest",
+    "cancel": "Cancel",
+    "submit": "Start backtest",
+    "submitting": "Starting…",
+    "errors": {
+      "unknown": "Unknown error"
+    },
+    "validation": {
+      "endDateAfterStart": "End date must be after start date"
+    },
+    "form": {
+      "strategyLabel": "Strategy",
+      "strategyPlaceholder": "— Select a strategy —",
+      "strategyLoading": "Loading strategies…",
+      "strategyError": "Failed to load strategies",
+      "instrumentLabel": "Instrument",
+      "instrumentPlaceholder": "e.g. BTC-USD",
+      "instrumentHelp": "Public id of the instrument to backtest",
+      "exchangeLabel": "Exchange (feed source)",
+      "exchangePlaceholder": "— Select an exchange —",
+      "timeframeLabel": "Timeframe",
+      "startDateLabel": "Start date",
+      "endDateLabel": "End date",
+      "initialCashLabel": "Initial cash",
+      "slippageBpsLabel": "Slippage (bps)",
+      "commissionBpsLabel": "Commission (bps)",
+      "executionModeLabel": "Execution mode",
+      "executionModeDirectDb": "Direct DB",
+      "executionModeZmqReplay": "ZMQ replay",
+      "targetExchangeLabel": "Target execution exchange",
+      "targetExchangeNone": "None (single-exchange)",
+      "targetExchangeHelp": "Optional — for cross-asset runs; leave unset for single-exchange"
     }
   }
 }

@@ -85,7 +85,9 @@
       "healthy": "ỔN ĐỊNH",
       "warning": "CẢNH BÁO",
       "error": "LỖI"
-    }
+    },
+    "backtest": "Backtest",
+    "backtestAriaLabel": "Backtest chiến lược {{name}}"
   },
   "launchModal": {
     "title": "Đăng ký tiến trình chiến lược",

@@ -4,6 +4,7 @@ import { apiClient as sharedApiClient, APIError as SharedAPIError } from '../api
 import {
   getBacktests,
   getBacktest,
+  getBacktestStrategyClasses,
   createBacktest,
   cancelBacktest,
   rerunBacktest,
@@ -185,6 +186,25 @@ describe('backtests API methods', () => {
 
       expect(mockFetch).toHaveBeenCalledWith(
         expect.stringContaining('config_hash=cfg-hash-abc'),
+        expect.objectContaining({ method: 'GET' })
+      )
+    })
+
+    it('getBacktestStrategyClasses sends GET and returns sorted registry keys', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          ...baseEnv,
+          type: 'backtest_strategy_class_list',
+          payload: ['MACDCrossover', 'RSIReversion'],
+          count: 2,
+        }),
+      })
+      const result = await getBacktestStrategyClasses()
+
+      expect(result.payload).toEqual(['MACDCrossover', 'RSIReversion'])
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringContaining('/api/backtests/strategy-classes'),
         expect.objectContaining({ method: 'GET' })
       )
     })

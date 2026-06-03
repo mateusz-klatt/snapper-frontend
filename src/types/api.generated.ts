@@ -3401,6 +3401,7 @@ export type Components = {
             running: boolean;
             enabled: boolean;
             mode: "thread" | "process";
+            strategy_class?: string | null | undefined;
         };
         StrategyStatusPayload: {
             strategy_name: string;

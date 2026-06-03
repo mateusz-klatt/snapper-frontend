@@ -85,7 +85,9 @@
       "healthy": "В НОРМЕ",
       "warning": "ПРЕДУПРЕЖДЕНИЕ",
       "error": "ОШИБКА"
-    }
+    },
+    "backtest": "Бэктест",
+    "backtestAriaLabel": "Бэктест стратегии {{name}}"
   },
   "launchModal": {
     "title": "Регистрация процесса стратегии",
