@@ -16,6 +16,8 @@
     "restart": "Käynnistä uudelleen",
     "starting": "Käynnistetään...",
     "stopping": "Pysäytetään...",
+    "managedRemotely": "Hallinnoija: {{coordinator}}",
+    "remoteCoordinatorUnknown": "toinen kontti",
     "status": {
       "running": "käynnissä",
       "stopped": "pysäytetty",

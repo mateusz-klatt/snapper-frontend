@@ -16,6 +16,8 @@
     "restart": "Reporniți",
     "starting": "Se pornește...",
     "stopping": "Se oprește...",
+    "managedRemotely": "Gestionat de {{coordinator}}",
+    "remoteCoordinatorUnknown": "alt container",
     "status": {
       "running": "în rulare",
       "stopped": "oprit",

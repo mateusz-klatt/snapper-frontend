@@ -16,6 +16,8 @@
     "restart": "รีสตาร์ท",
     "starting": "กำลังเริ่ม...",
     "stopping": "กำลังหยุด...",
+    "managedRemotely": "จัดการโดย {{coordinator}}",
+    "remoteCoordinatorUnknown": "คอนเทนเนอร์อื่น",
     "status": {
       "running": "กำลังทำงาน",
       "stopped": "หยุดแล้ว",

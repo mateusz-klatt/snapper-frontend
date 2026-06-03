@@ -16,6 +16,8 @@
     "restart": "Start på nytt",
     "starting": "Starter...",
     "stopping": "Stopper...",
+    "managedRemotely": "Administrert av {{coordinator}}",
+    "remoteCoordinatorUnknown": "en annen container",
     "status": {
       "running": "kjører",
       "stopped": "stoppet",

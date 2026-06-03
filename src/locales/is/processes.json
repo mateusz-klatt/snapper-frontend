@@ -16,6 +16,8 @@
     "restart": "Endurræsa",
     "starting": "Ræsi...",
     "stopping": "Stöðva...",
+    "managedRemotely": "Stýrt af {{coordinator}}",
+    "remoteCoordinatorUnknown": "annað ílát",
     "status": {
       "running": "keyrir",
       "stopped": "stöðvað",

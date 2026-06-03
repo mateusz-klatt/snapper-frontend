@@ -16,6 +16,8 @@
     "restart": "Yeniden başlat",
     "starting": "Başlatılıyor...",
     "stopping": "Durduruluyor...",
+    "managedRemotely": "{{coordinator}} tarafından yönetiliyor",
+    "remoteCoordinatorUnknown": "başka bir kapsayıcı",
     "status": {
       "running": "çalışıyor",
       "stopped": "durduruldu",

@@ -16,6 +16,8 @@
     "restart": "Перезапустить",
     "starting": "Запуск...",
     "stopping": "Остановка...",
+    "managedRemotely": "Управляется узлом {{coordinator}}",
+    "remoteCoordinatorUnknown": "другой контейнер",
     "status": {
       "running": "выполняется",
       "stopped": "остановлен",

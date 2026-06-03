@@ -16,6 +16,8 @@
     "restart": "Restartovat",
     "starting": "Spouštění...",
     "stopping": "Zastavování...",
+    "managedRemotely": "Spravuje {{coordinator}}",
+    "remoteCoordinatorUnknown": "jiný kontejner",
     "status": {
       "running": "běží",
       "stopped": "zastaveno",

@@ -16,6 +16,8 @@
     "restart": "Uruchom ponownie",
     "starting": "Uruchamianie...",
     "stopping": "Zatrzymywanie...",
+    "managedRemotely": "Zarządzane przez {{coordinator}}",
+    "remoteCoordinatorUnknown": "inny kontener",
     "status": {
       "running": "działa",
       "stopped": "zatrzymany",

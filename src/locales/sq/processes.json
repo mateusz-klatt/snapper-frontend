@@ -16,6 +16,8 @@
     "restart": "Rinis",
     "starting": "Duke nisur...",
     "stopping": "Duke ndaluar...",
+    "managedRemotely": "Menaxhohet nga {{coordinator}}",
+    "remoteCoordinatorUnknown": "një kontejner tjetër",
     "status": {
       "running": "në ekzekutim",
       "stopped": "ndaluar",

@@ -16,6 +16,8 @@
     "restart": "Riavvia",
     "starting": "Avvio in corso...",
     "stopping": "Arresto in corso...",
+    "managedRemotely": "Gestito da {{coordinator}}",
+    "remoteCoordinatorUnknown": "un altro container",
     "status": {
       "running": "in esecuzione",
       "stopped": "arrestato",

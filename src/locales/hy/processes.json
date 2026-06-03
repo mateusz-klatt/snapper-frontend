@@ -16,6 +16,8 @@
     "restart": "Վերագործարկել",
     "starting": "Գործարկվում է...",
     "stopping": "Դադարեցվում է...",
+    "managedRemotely": "Կառավարվում է {{coordinator}}-ի կողմից",
+    "remoteCoordinatorUnknown": "այլ կոնտեյներ",
     "status": {
       "running": "աշխատում է",
       "stopped": "դադարեցված",

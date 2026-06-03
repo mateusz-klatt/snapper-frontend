@@ -16,6 +16,8 @@
     "restart": "I-restart",
     "starting": "Sini-start...",
     "stopping": "Sini-stop...",
+    "managedRemotely": "Pinamamahalaan ng {{coordinator}}",
+    "remoteCoordinatorUnknown": "ibang container",
     "status": {
       "running": "tumatakbo",
       "stopped": "nakahinto",

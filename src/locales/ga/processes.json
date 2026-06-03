@@ -16,6 +16,8 @@
     "restart": "Atosaigh",
     "starting": "Á thosú...",
     "stopping": "Á stopadh...",
+    "managedRemotely": "Á bhainistiú ag {{coordinator}}",
+    "remoteCoordinatorUnknown": "coimeádán eile",
     "status": {
       "running": "ag rith",
       "stopped": "stoptha",

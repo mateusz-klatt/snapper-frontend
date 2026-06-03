@@ -16,6 +16,8 @@
     "restart": "Khởi động lại",
     "starting": "Đang bắt đầu...",
     "stopping": "Đang dừng...",
+    "managedRemotely": "Được quản lý bởi {{coordinator}}",
+    "remoteCoordinatorUnknown": "một vùng chứa khác",
     "status": {
       "running": "đang chạy",
       "stopped": "đã dừng",

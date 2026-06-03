@@ -16,6 +16,8 @@
     "restart": "রিস্টার্ট",
     "starting": "শুরু হচ্ছে...",
     "stopping": "বন্ধ হচ্ছে...",
+    "managedRemotely": "{{coordinator}} দ্বারা পরিচালিত",
+    "remoteCoordinatorUnknown": "অন্য একটি কন্টেইনার",
     "status": {
       "running": "চলছে",
       "stopped": "বন্ধ",

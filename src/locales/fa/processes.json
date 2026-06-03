@@ -16,6 +16,8 @@
     "restart": "راه‌اندازی دوباره",
     "starting": "در حال شروع...",
     "stopping": "در حال توقف...",
+    "managedRemotely": "مدیریت‌شده توسط {{coordinator}}",
+    "remoteCoordinatorUnknown": "کانتینر دیگری",
     "status": {
       "running": "در حال اجرا",
       "stopped": "متوقف",

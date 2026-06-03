@@ -16,6 +16,8 @@
     "restart": "Újraindítás",
     "starting": "Indítás...",
     "stopping": "Leállítás...",
+    "managedRemotely": "Kezeli: {{coordinator}}",
+    "remoteCoordinatorUnknown": "egy másik konténer",
     "status": {
       "running": "fut",
       "stopped": "leállítva",

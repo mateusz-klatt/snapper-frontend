@@ -16,6 +16,8 @@ interface ProcessControlCardProps {
   isStarting?: boolean
   isStopping?: boolean
   readOnly?: boolean | undefined
+  managedRemotely?: boolean | undefined
+  coordinator?: string | null | undefined
   heartbeat?: HeartbeatData | undefined
 }
 
@@ -62,6 +64,8 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
   isStarting = false,
   isStopping = false,
   readOnly = false,
+  managedRemotely = false,
+  coordinator,
   heartbeat,
 }) => {
   const { t } = useTranslation('processes')
@@ -111,59 +115,71 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
       )}
       {}
       <div className='mt-auto pt-2 border-t border-dark-600'>
-        <div className='flex space-x-2'>
-          {isRunning ? (
-            <button
-              onClick={onStop}
-              disabled={isStopping || readOnly}
-              className={clsx(
-                'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
-                isStopping || readOnly
-                  ? 'bg-loss-400/20 text-loss-600 cursor-not-allowed'
-                  : 'bg-loss-600 text-white hover:bg-loss-700'
-              )}
-            >
-              {isStopping ? (
-                <>
-                  <LoadingSpinner size='sm' className='inline-block mr-2' />
-                  {t('card.stopping')}
-                </>
-              ) : (
-                t('card.stop')
-              )}
-            </button>
-          ) : (
-            <button
-              onClick={onStart}
-              disabled={isStarting || readOnly}
-              className={clsx(
-                'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
-                isStarting || readOnly
-                  ? 'bg-accent-400/20 text-accent-300 cursor-not-allowed'
-                  : 'bg-accent-600 text-white hover:bg-accent-700'
-              )}
-            >
-              {isStarting ? (
-                <>
-                  <LoadingSpinner size='sm' className='inline-block mr-2' />
-                  {t('card.starting')}
-                </>
-              ) : (
-                t('card.start')
-              )}
-            </button>
-          )}
-          {}
-          {isRunning && (
-            <button
-              onClick={onRestart}
-              disabled={readOnly}
-              className='flex-1 px-4 py-2 rounded-md text-sm font-medium bg-info-600 text-white hover:bg-info-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
-            >
-              {t('card.restart')}
-            </button>
-          )}
-        </div>
+        {managedRemotely ? (
+          <p
+            className='flex items-center gap-1.5 text-xs text-muted-500'
+            data-testid='managed-remotely-notice'
+          >
+            <span className='w-1.5 h-1.5 rounded-full bg-info-400 shrink-0' />
+            {t('card.managedRemotely', {
+              coordinator: coordinator ?? t('card.remoteCoordinatorUnknown'),
+            })}
+          </p>
+        ) : (
+          <div className='flex space-x-2'>
+            {isRunning ? (
+              <button
+                onClick={onStop}
+                disabled={isStopping || readOnly}
+                className={clsx(
+                  'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
+                  isStopping || readOnly
+                    ? 'bg-loss-400/20 text-loss-600 cursor-not-allowed'
+                    : 'bg-loss-600 text-white hover:bg-loss-700'
+                )}
+              >
+                {isStopping ? (
+                  <>
+                    <LoadingSpinner size='sm' className='inline-block mr-2' />
+                    {t('card.stopping')}
+                  </>
+                ) : (
+                  t('card.stop')
+                )}
+              </button>
+            ) : (
+              <button
+                onClick={onStart}
+                disabled={isStarting || readOnly}
+                className={clsx(
+                  'flex-1 px-4 py-2 rounded-md text-sm font-medium transition-colors',
+                  isStarting || readOnly
+                    ? 'bg-accent-400/20 text-accent-300 cursor-not-allowed'
+                    : 'bg-accent-600 text-white hover:bg-accent-700'
+                )}
+              >
+                {isStarting ? (
+                  <>
+                    <LoadingSpinner size='sm' className='inline-block mr-2' />
+                    {t('card.starting')}
+                  </>
+                ) : (
+                  t('card.start')
+                )}
+              </button>
+            )}
+            {}
+            {isRunning && (
+              <button
+                onClick={onRestart}
+                disabled={readOnly}
+                className='flex-1 px-4 py-2 rounded-md text-sm font-medium bg-info-600 text-white hover:bg-info-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+              >
+                {t('card.restart')}
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   )

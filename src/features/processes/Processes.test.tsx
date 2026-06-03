@@ -129,6 +129,30 @@ describe('Processes', () => {
       expect(screen.getByText('Long-Running Processes')).toBeTruthy()
     })
   })
+  it('hides controls and shows the managed-remotely notice for a remote-owned process', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        running: true,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    expect(screen.queryByText('Stop')).toBeNull()
+  })
   it('subscribes to heartbeat topics', async () => {
     const items = [
       makeConfiguredProcess({

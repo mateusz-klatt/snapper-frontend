@@ -16,6 +16,8 @@
     "restart": "إعادة تشغيل",
     "starting": "جارٍ البدء...",
     "stopping": "جارٍ الإيقاف...",
+    "managedRemotely": "تُدار بواسطة {{coordinator}}",
+    "remoteCoordinatorUnknown": "حاوية أخرى",
     "status": {
       "running": "قيد التشغيل",
       "stopped": "متوقف",

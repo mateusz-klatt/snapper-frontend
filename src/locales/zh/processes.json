@@ -16,6 +16,8 @@
     "restart": "重启",
     "starting": "启动中...",
     "stopping": "停止中...",
+    "managedRemotely": "由 {{coordinator}} 管理",
+    "remoteCoordinatorUnknown": "其他容器",
     "status": {
       "running": "运行中",
       "stopped": "已停止",

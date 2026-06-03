@@ -16,6 +16,8 @@
     "restart": "Paleisti iš naujo",
     "starting": "Paleidžiama...",
     "stopping": "Stabdoma...",
+    "managedRemotely": "Valdo {{coordinator}}",
+    "remoteCoordinatorUnknown": "kitas konteineris",
     "status": {
       "running": "vykdoma",
       "stopped": "sustabdyta",

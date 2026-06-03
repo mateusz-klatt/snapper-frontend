@@ -4028,6 +4028,8 @@ const _ConfiguredProcessRawSchema = z
     kind: z.enum(['template', 'instance']),
     wallet_public_id: z.string().nullable().optional(),
     parent_template: z.string().nullable().optional(),
+    coordinator: z.string().nullable().optional(),
+    managed_remotely: z.boolean(),
   })
   .strict()
 

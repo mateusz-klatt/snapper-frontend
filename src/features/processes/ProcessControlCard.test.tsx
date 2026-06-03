@@ -285,4 +285,37 @@ describe('ProcessControlCard', () => {
     await expect(user.click(restartButton)).resolves.not.toThrow()
     expect(restartButton).toBeInTheDocument()
   })
+  it('hides control buttons and shows the managed-remotely notice when managed remotely', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Kraken Feed'
+        description='Test description'
+        status='running'
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+        onRestart={mockOnRestart}
+        managedRemotely
+        coordinator='coord-1'
+      />
+    )
+    expect(screen.getByTestId('managed-remotely-notice')).toBeInTheDocument()
+    expect(screen.getByText('Managed by coord-1')).toBeInTheDocument()
+    expect(screen.queryByText('Stop')).not.toBeInTheDocument()
+    expect(screen.queryByText('Start')).not.toBeInTheDocument()
+    expect(screen.queryByText('Restart')).not.toBeInTheDocument()
+  })
+  it('falls back to a generic owner label when coordinator is null', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Kraken Feed'
+        description='Test description'
+        status='running'
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+        managedRemotely
+        coordinator={null}
+      />
+    )
+    expect(screen.getByText('Managed by another container')).toBeInTheDocument()
+  })
 })

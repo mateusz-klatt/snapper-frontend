@@ -16,6 +16,8 @@
     "restart": "Перезапустити",
     "starting": "Запуск...",
     "stopping": "Зупинка...",
+    "managedRemotely": "Керується вузлом {{coordinator}}",
+    "remoteCoordinatorUnknown": "інший контейнер",
     "status": {
       "running": "запущено",
       "stopped": "зупинено",
