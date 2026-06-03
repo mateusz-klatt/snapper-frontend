@@ -574,6 +574,27 @@ export const InstrumentDetailDataSchema = _InstrumentDetailDataRawSchema as unkn
   Components['schemas']['InstrumentDetailData']
 >
 
+const _InstrumentFeedHealthRowSchemaRawSchema = z
+  .object({
+    coordinator: z.string(),
+    exchange: z.string(),
+    channel: z.string(),
+    symbol: z.string(),
+    status: z.string(),
+    requested_at: z.iso.datetime(),
+    confirmed_at: z.iso.datetime().nullable(),
+    last_seen_data_at: z.iso.datetime().nullable(),
+    last_error: z.string().nullable(),
+    retry_count: z.number().int(),
+    snapshot_at: z.iso.datetime(),
+  })
+  .strict()
+
+export const InstrumentFeedHealthRowSchemaSchema =
+  _InstrumentFeedHealthRowSchemaRawSchema as unknown as z.ZodType<
+    Components['schemas']['InstrumentFeedHealthRowSchema']
+  >
+
 const _InstrumentListResponseRawSchema = z
   .object({
     type: z.literal('instrument_list'),
@@ -609,6 +630,22 @@ const _LimitsMetricsRawSchema = z
 export const LimitsMetricsSchema = _LimitsMetricsRawSchema as unknown as z.ZodType<
   Components['schemas']['LimitsMetrics']
 >
+
+const _MarketDataCoverageExchangeRawSchema = z
+  .object({
+    exchange: z.string(),
+    instruments: z.number().int(),
+    fresh_ticks: z.number().int(),
+    fresh_candles: z.number().int(),
+    gated_off: z.number().int(),
+    dark: z.number().int(),
+  })
+  .strict()
+
+export const MarketDataCoverageExchangeSchema =
+  _MarketDataCoverageExchangeRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketDataCoverageExchange']
+  >
 
 const _MemoryMetricsRawSchema = z
   .object({
@@ -2260,11 +2297,37 @@ export const InstrumentDetailListResponseSchema =
     Components['schemas']['InstrumentDetailListResponse']
   >
 
+const _MarketFeedHealthPayloadRawSchema = z
+  .object({
+    rows: z.array(InstrumentFeedHealthRowSchemaSchema),
+    exchange: z.string().nullable(),
+    fresh_within_seconds: z.number().int().nullable(),
+  })
+  .strict()
+
+export const MarketFeedHealthPayloadSchema =
+  _MarketFeedHealthPayloadRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketFeedHealthPayload']
+  >
+
 const _JsonValueRawSchema = z.unknown()
 
 export const JsonValueSchema = _JsonValueRawSchema as unknown as z.ZodType<
   Components['schemas']['JsonValue']
 >
+
+const _MarketDataCoveragePayloadRawSchema = z
+  .object({
+    exchanges: z.array(MarketDataCoverageExchangeSchema),
+    tick_window_seconds: z.number().int(),
+    candle_window_seconds: z.number().int(),
+  })
+  .strict()
+
+export const MarketDataCoveragePayloadSchema =
+  _MarketDataCoveragePayloadRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketDataCoveragePayload']
+  >
 
 const _NotificationDeviceListResponseRawSchema = z
   .object({
@@ -3566,11 +3629,45 @@ export const HealthCheckDataSchema = _HealthCheckDataRawSchema as unknown as z.Z
   Components['schemas']['HealthCheckData']
 >
 
+const _MarketFeedHealthResponseRawSchema = z
+  .object({
+    type: z.literal('market_feed_health'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: MarketFeedHealthPayloadSchema,
+  })
+  .strict()
+
+export const MarketFeedHealthResponseSchema =
+  _MarketFeedHealthResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketFeedHealthResponse']
+  >
+
 const _JsonObjectRawSchema = z.record(z.string(), z.any())
 
 export const JsonObjectSchema = _JsonObjectRawSchema as unknown as z.ZodType<
   Components['schemas']['JsonObject']
 >
+
+const _MarketDataCoverageResponseRawSchema = z
+  .object({
+    type: z.literal('market_data_coverage'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: MarketDataCoveragePayloadSchema,
+  })
+  .strict()
+
+export const MarketDataCoverageResponseSchema =
+  _MarketDataCoverageResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketDataCoverageResponse']
+  >
 
 const _ProcessCreateResponseRawSchema = z
   .object({
@@ -4770,9 +4867,11 @@ export type GcMetrics = Components['schemas']['GcMetrics']
 export type HealthTopics = Components['schemas']['HealthTopics']
 export type InstrumentCapabilityData = Components['schemas']['InstrumentCapabilityData']
 export type InstrumentDetailData = Components['schemas']['InstrumentDetailData']
+export type InstrumentFeedHealthRowSchema = Components['schemas']['InstrumentFeedHealthRowSchema']
 export type InstrumentListResponse = Components['schemas']['InstrumentListResponse']
 export type JsonPrimitive = Components['schemas']['JsonPrimitive']
 export type LimitsMetrics = Components['schemas']['LimitsMetrics']
+export type MarketDataCoverageExchange = Components['schemas']['MarketDataCoverageExchange']
 export type MemoryMetrics = Components['schemas']['MemoryMetrics']
 export type MessageResponse = Components['schemas']['MessageResponse']
 export type MetricDiffRow = Components['schemas']['MetricDiffRow']
@@ -4880,7 +4979,9 @@ export type GapDetectionStats = Components['schemas']['GapDetectionStats']
 export type InstrumentCapabilityListResponse =
   Components['schemas']['InstrumentCapabilityListResponse']
 export type InstrumentDetailListResponse = Components['schemas']['InstrumentDetailListResponse']
+export type MarketFeedHealthPayload = Components['schemas']['MarketFeedHealthPayload']
 export type JsonValue = Components['schemas']['JsonValue']
+export type MarketDataCoveragePayload = Components['schemas']['MarketDataCoveragePayload']
 export type NotificationDeviceListResponse = Components['schemas']['NotificationDeviceListResponse']
 export type NotificationDeviceResponse = Components['schemas']['NotificationDeviceResponse']
 export type NotificationMetricsResponse = Components['schemas']['NotificationMetricsResponse']
@@ -4959,7 +5060,9 @@ export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
 export type HealthCheckData = Components['schemas']['HealthCheckData']
+export type MarketFeedHealthResponse = Components['schemas']['MarketFeedHealthResponse']
 export type JsonObject = Components['schemas']['JsonObject']
+export type MarketDataCoverageResponse = Components['schemas']['MarketDataCoverageResponse']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
 export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
 export type RelatedInstrumentsPayloadData = Components['schemas']['RelatedInstrumentsPayloadData']

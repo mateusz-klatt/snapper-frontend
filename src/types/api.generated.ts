@@ -628,6 +628,38 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/market/coverage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_market_data_coverage_api_market_coverage_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/market/feed-health": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_market_feed_health_api_market_feed_health_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/wallets/{wallet_public_id}/credentials": {
         parameters: {
             query?: never;
@@ -2628,6 +2660,19 @@ export type Components = {
             payload: Components["schemas"]["InstrumentDetailData"][];
             count: number;
         };
+        InstrumentFeedHealthRowSchema: {
+            coordinator: string;
+            exchange: string;
+            channel: string;
+            symbol: string;
+            status: string;
+            requested_at: string;
+            confirmed_at: string | null;
+            last_seen_data_at: string | null;
+            last_error: string | null;
+            retry_count: number;
+            snapshot_at: string;
+        };
         InstrumentListResponse: {
             type: "instrument_list";
             sequence_id: number;
@@ -2684,6 +2729,42 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             payload: Components["schemas"]["LoginData"];
+        };
+        MarketDataCoverageExchange: {
+            exchange: string;
+            instruments: number;
+            fresh_ticks: number;
+            fresh_candles: number;
+            gated_off: number;
+            dark: number;
+        };
+        MarketDataCoveragePayload: {
+            exchanges: Components["schemas"]["MarketDataCoverageExchange"][];
+            tick_window_seconds: number;
+            candle_window_seconds: number;
+        };
+        MarketDataCoverageResponse: {
+            type: "market_data_coverage";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["MarketDataCoveragePayload"];
+        };
+        MarketFeedHealthPayload: {
+            rows: Components["schemas"]["InstrumentFeedHealthRowSchema"][];
+            exchange: string | null;
+            fresh_within_seconds: number | null;
+        };
+        MarketFeedHealthResponse: {
+            type: "market_feed_health";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["MarketFeedHealthPayload"];
         };
         MemoryMetrics: {
             rss_bytes: number;
@@ -5621,6 +5702,66 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["CacheHealthResponse"];
+                };
+            };
+        };
+    };
+    get_market_data_coverage_api_market_coverage_get: {
+        parameters: {
+            query?: {
+                tick_window_seconds?: number;
+                candle_window_seconds?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["MarketDataCoverageResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_market_feed_health_api_market_feed_health_get: {
+        parameters: {
+            query?: {
+                exchange?: string | null | undefined;
+                fresh_within_seconds?: number | null | undefined;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["MarketFeedHealthResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
                 };
             };
         };
