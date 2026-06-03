@@ -16,6 +16,8 @@
     "restart": "再起動",
     "starting": "開始中...",
     "stopping": "停止中...",
+    "managedRemotely": "{{coordinator}} が管理",
+    "remoteCoordinatorUnknown": "別のコンテナ",
     "status": {
       "running": "実行中",
       "stopped": "停止中",

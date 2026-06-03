@@ -16,6 +16,8 @@
     "restart": "הפעל מחדש",
     "starting": "מתחיל...",
     "stopping": "עוצר...",
+    "managedRemotely": "מנוהל על ידי {{coordinator}}",
+    "remoteCoordinatorUnknown": "מכל אחר",
     "status": {
       "running": "פועל",
       "stopped": "נעצר",

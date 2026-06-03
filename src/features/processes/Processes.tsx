@@ -282,6 +282,8 @@ export const Processes: React.FC = () => {
                 isStarting={startProcess.isPending && startProcess.variables?.name === process.name}
                 isStopping={stopProcess.isPending && stopProcess.variables?.name === process.name}
                 readOnly={readOnly}
+                managedRemotely={process.managed_remotely}
+                coordinator={process.coordinator}
               />
             )
           })}

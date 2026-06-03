@@ -2119,6 +2119,8 @@ export type Components = {
             kind: "template" | "instance";
             wallet_public_id?: string | null | undefined;
             parent_template?: string | null | undefined;
+            coordinator?: string | null | undefined;
+            managed_remotely: boolean;
         };
         ConfiguredProcessesResponse: {
             type: "configured_processes";

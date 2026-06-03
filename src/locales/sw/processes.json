@@ -16,6 +16,8 @@
     "restart": "Anzisha upya",
     "starting": "Inaanza...",
     "stopping": "Inasimama...",
+    "managedRemotely": "Inadhibitiwa na {{coordinator}}",
+    "remoteCoordinatorUnknown": "kontena nyingine",
     "status": {
       "running": "inaendelea",
       "stopped": "imesimamishwa",

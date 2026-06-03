@@ -16,6 +16,8 @@
     "restart": "Ponovo pokreni",
     "starting": "Pokretanje...",
     "stopping": "Zaustavljanje...",
+    "managedRemotely": "Upravlja {{coordinator}}",
+    "remoteCoordinatorUnknown": "drugi kontejner",
     "status": {
       "running": "u toku",
       "stopped": "zaustavljeno",

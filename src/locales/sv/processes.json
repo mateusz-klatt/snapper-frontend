@@ -16,6 +16,8 @@
     "restart": "Starta om",
     "starting": "Startar...",
     "stopping": "Stoppar...",
+    "managedRemotely": "Hanteras av {{coordinator}}",
+    "remoteCoordinatorUnknown": "en annan container",
     "status": {
       "running": "körs",
       "stopped": "stoppad",

@@ -16,6 +16,8 @@
     "restart": "Reštartovať",
     "starting": "Spúšťa sa...",
     "stopping": "Zastavuje sa...",
+    "managedRemotely": "Spravované uzlom {{coordinator}}",
+    "remoteCoordinatorUnknown": "iný kontajner",
     "status": {
       "running": "beží",
       "stopped": "zastavené",

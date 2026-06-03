@@ -16,6 +16,8 @@
     "restart": "Επανεκκίνηση",
     "starting": "Έναρξη...",
     "stopping": "Διακοπή...",
+    "managedRemotely": "Διαχειρίζεται από {{coordinator}}",
+    "remoteCoordinatorUnknown": "άλλο κοντέινερ",
     "status": {
       "running": "εκτελείται",
       "stopped": "σταματημένο",

@@ -16,6 +16,8 @@
     "restart": "Neu starten",
     "starting": "Wird gestartet...",
     "stopping": "Wird gestoppt...",
+    "managedRemotely": "Verwaltet von {{coordinator}}",
+    "remoteCoordinatorUnknown": "einem anderen Container",
     "status": {
       "running": "läuft",
       "stopped": "gestoppt",

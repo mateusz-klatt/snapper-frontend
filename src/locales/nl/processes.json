@@ -16,6 +16,8 @@
     "restart": "Herstarten",
     "starting": "Starten...",
     "stopping": "Stoppen...",
+    "managedRemotely": "Beheerd door {{coordinator}}",
+    "remoteCoordinatorUnknown": "een andere container",
     "status": {
       "running": "loopt",
       "stopped": "gestopt",

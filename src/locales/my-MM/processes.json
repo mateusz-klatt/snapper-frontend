@@ -16,6 +16,8 @@
     "restart": "ပြန်စတင်",
     "starting": "စတင်နေသည်...",
     "stopping": "ရပ်နေသည်...",
+    "managedRemotely": "{{coordinator}} မှ စီမံခန့်ခွဲသည်",
+    "remoteCoordinatorUnknown": "အခြားကွန်တိန်နာ",
     "status": {
       "running": "အလုပ်လုပ်နေသည်",
       "stopped": "ရပ်ထားသည်",

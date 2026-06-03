@@ -16,6 +16,8 @@
     "restart": "Reiniciar",
     "starting": "Iniciando...",
     "stopping": "Deteniendo...",
+    "managedRemotely": "Gestionado por {{coordinator}}",
+    "remoteCoordinatorUnknown": "otro contenedor",
     "status": {
       "running": "en ejecución",
       "stopped": "detenido",

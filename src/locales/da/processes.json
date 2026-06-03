@@ -16,6 +16,8 @@
     "restart": "Genstart",
     "starting": "Starter...",
     "stopping": "Stopper...",
+    "managedRemotely": "Administreres af {{coordinator}}",
+    "remoteCoordinatorUnknown": "en anden container",
     "status": {
       "running": "kører",
       "stopped": "stoppet",

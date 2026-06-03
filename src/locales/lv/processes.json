@@ -16,6 +16,8 @@
     "restart": "Restartēt",
     "starting": "Notiek palaišana...",
     "stopping": "Notiek apturēšana...",
+    "managedRemotely": "Pārvalda {{coordinator}}",
+    "remoteCoordinatorUnknown": "cits konteiners",
     "status": {
       "running": "darbojas",
       "stopped": "apturēts",

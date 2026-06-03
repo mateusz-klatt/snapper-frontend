@@ -16,6 +16,8 @@
     "restart": "Mulai ulang",
     "starting": "Memulai...",
     "stopping": "Menghentikan...",
+    "managedRemotely": "Dikelola oleh {{coordinator}}",
+    "remoteCoordinatorUnknown": "kontainer lain",
     "status": {
       "running": "berjalan",
       "stopped": "berhenti",
