@@ -82,7 +82,7 @@ export const BacktestCreateForm: React.FC<Readonly<BacktestCreateFormProps>> = (
     startDate !== '' &&
     endDate !== ''
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
     setClientError(null)
 
