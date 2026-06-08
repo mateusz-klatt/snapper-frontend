@@ -1192,6 +1192,7 @@ const _SignalDataRawSchema = z
     paired_group_size: z.number().int().nullable().optional(),
     paired_group_index: z.number().int().nullable().optional(),
     paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
+    paired_group_key: z.string().nullable().optional(),
   })
   .strict()
 

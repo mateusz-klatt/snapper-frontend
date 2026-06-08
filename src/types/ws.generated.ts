@@ -291,6 +291,7 @@ export type PairedGroupId4 = string | null;
 export type PairedGroupSize4 = number | null;
 export type PairedGroupIndex4 = number | null;
 export type PairedGroupPolicy4 = ("simultaneous" | "sequential_handoff") | null;
+export type PairedGroupKey = string | null;
 export type Type37 = "strategy_list_event";
 export type Topic38 = string | null;
 export type StrategyClasses = string[];
@@ -1055,6 +1056,7 @@ export interface SignalData {
   paired_group_size?: PairedGroupSize4;
   paired_group_index?: PairedGroupIndex4;
   paired_group_policy?: PairedGroupPolicy4;
+  paired_group_key?: PairedGroupKey;
 }
 export interface StrategyListEventData {
   type: Type37;
