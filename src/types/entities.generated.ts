@@ -818,6 +818,7 @@ export interface Signal {
   pairedGroupSize?: number | null
   pairedGroupIndex?: number | null
   pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
+  pairedGroupKey?: string | null
 }
 
 /**

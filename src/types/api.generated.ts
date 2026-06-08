@@ -3458,6 +3458,7 @@ export type Components = {
             paired_group_size?: number | null | undefined;
             paired_group_index?: number | null | undefined;
             paired_group_policy?: ("simultaneous" | "sequential_handoff") | null | undefined;
+            paired_group_key?: string | null | undefined;
         };
         SignalDiffEntry: {
             instrument: string;
