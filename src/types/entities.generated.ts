@@ -280,6 +280,10 @@ export interface Execution {
   operatorPublicId?: string | null
   userPublicId?: string | null
   liquidityRole?: string
+  pairedGroupId?: string | null
+  pairedGroupSize?: number | null
+  pairedGroupIndex?: number | null
+  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
 }
 
 /**
@@ -510,6 +514,10 @@ export interface Order {
   operatorPublicId?: string | null
   userPublicId?: string | null
   planPublicId?: string | null
+  pairedGroupId?: string | null
+  pairedGroupSize?: number | null
+  pairedGroupIndex?: number | null
+  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
 }
 
 /**
@@ -531,6 +539,10 @@ export interface OrderEvent {
   walletPublicId?: string
   operatorPublicId?: string | null
   userPublicId?: string | null
+  pairedGroupId?: string | null
+  pairedGroupSize?: number | null
+  pairedGroupIndex?: number | null
+  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
 }
 
 /**
@@ -580,6 +592,10 @@ export interface OrderRequest {
   walletPublicId?: string
   operatorPublicId?: string | null
   userPublicId?: string | null
+  pairedGroupId?: string | null
+  pairedGroupSize?: number | null
+  pairedGroupIndex?: number | null
+  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
 }
 
 /**
@@ -798,6 +814,10 @@ export interface Signal {
   userPublicId?: string | null
   aiReviewPublicId?: string | null
   aiReviewDispatchVersion?: number | null
+  pairedGroupId?: string | null
+  pairedGroupSize?: number | null
+  pairedGroupIndex?: number | null
+  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
 }
 
 /**
