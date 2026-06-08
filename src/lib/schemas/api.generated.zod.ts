@@ -409,6 +409,10 @@ const _ExecutionDataRawSchema = z
     operator_public_id: z.string().nullable().optional(),
     user_public_id: z.string().nullable().optional(),
     liquidity_role: z.string(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 
@@ -788,6 +792,10 @@ const _OrderDataRawSchema = z
     operator_public_id: z.string().nullable().optional(),
     user_public_id: z.string().nullable().optional(),
     plan_public_id: z.string().nullable().optional(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 
@@ -1180,6 +1188,10 @@ const _SignalDataRawSchema = z
     user_public_id: z.string().nullable().optional(),
     ai_review_public_id: z.string().nullable().optional(),
     ai_review_dispatch_version: z.number().int().nullable().optional(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 

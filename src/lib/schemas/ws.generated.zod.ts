@@ -221,6 +221,10 @@ export const ExecutionDataSchema = z
     operator_public_id: z.string().nullable().optional(),
     user_public_id: z.string().nullable().optional(),
     liquidity_role: z.string(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 
@@ -404,6 +408,10 @@ export const OrderDataSchema = z
     operator_public_id: z.string().nullable().optional(),
     user_public_id: z.string().nullable().optional(),
     plan_public_id: z.string().nullable().optional(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 
@@ -424,6 +432,10 @@ export const OrderEventDataSchema = z
     wallet_public_id: z.string(),
     operator_public_id: z.string().nullable().optional(),
     user_public_id: z.string().nullable().optional(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 
@@ -471,6 +483,10 @@ export const OrderRequestDataSchema = z
     wallet_public_id: z.string(),
     operator_public_id: z.string().nullable().optional(),
     user_public_id: z.string().nullable().optional(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 
@@ -676,6 +692,10 @@ export const SignalDataSchema = z
     user_public_id: z.string().nullable().optional(),
     ai_review_public_id: z.string().nullable().optional(),
     ai_review_dispatch_version: z.number().int().nullable().optional(),
+    paired_group_id: z.string().nullable().optional(),
+    paired_group_size: z.number().int().nullable().optional(),
+    paired_group_index: z.number().int().nullable().optional(),
+    paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
   })
   .strict()
 

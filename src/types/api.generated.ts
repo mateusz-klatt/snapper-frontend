@@ -2427,6 +2427,10 @@ export type Components = {
             operator_public_id?: string | null | undefined;
             user_public_id?: string | null | undefined;
             liquidity_role: string;
+            paired_group_id?: string | null | undefined;
+            paired_group_size?: number | null | undefined;
+            paired_group_index?: number | null | undefined;
+            paired_group_policy?: ("simultaneous" | "sequential_handoff") | null | undefined;
         };
         ExecutionListResponse: {
             type: "execution_list";
@@ -2900,6 +2904,10 @@ export type Components = {
             operator_public_id?: string | null | undefined;
             user_public_id?: string | null | undefined;
             plan_public_id?: string | null | undefined;
+            paired_group_id?: string | null | undefined;
+            paired_group_size?: number | null | undefined;
+            paired_group_index?: number | null | undefined;
+            paired_group_policy?: ("simultaneous" | "sequential_handoff") | null | undefined;
         };
         OrderListResponse: {
             type: "order_list";
@@ -3446,6 +3454,10 @@ export type Components = {
             user_public_id?: string | null | undefined;
             ai_review_public_id?: string | null | undefined;
             ai_review_dispatch_version?: number | null | undefined;
+            paired_group_id?: string | null | undefined;
+            paired_group_size?: number | null | undefined;
+            paired_group_index?: number | null | undefined;
+            paired_group_policy?: ("simultaneous" | "sequential_handoff") | null | undefined;
         };
         SignalDiffEntry: {
             instrument: string;

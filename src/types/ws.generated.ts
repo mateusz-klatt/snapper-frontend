@@ -132,6 +132,10 @@ export type Side = "buy" | "sell";
 export type Status = "filled" | "partial";
 export type OperatorPublicId1 = string | null;
 export type UserPublicId = string | null;
+export type PairedGroupId = string | null;
+export type PairedGroupSize = number | null;
+export type PairedGroupIndex = number | null;
+export type PairedGroupPolicy = ("simultaneous" | "sequential_handoff") | null;
 export type Type12 = "execution_plan";
 export type Topic13 = string | null;
 export type OperatorPublicId2 = string | null;
@@ -187,6 +191,10 @@ export type Leverage = number | null;
 export type OperatorPublicId4 = string | null;
 export type UserPublicId2 = string | null;
 export type PlanPublicId = string | null;
+export type PairedGroupId1 = string | null;
+export type PairedGroupSize1 = number | null;
+export type PairedGroupIndex1 = number | null;
+export type PairedGroupPolicy1 = ("simultaneous" | "sequential_handoff") | null;
 export type Type22 = "order_event";
 export type Topic23 = string | null;
 export type Exchange5 = "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -194,6 +202,10 @@ export type Event1 = "submitted" | "accepted" | "rejected" | "cancelled" | "expi
 export type Reason1 = string | null;
 export type OperatorPublicId5 = string | null;
 export type UserPublicId3 = string | null;
+export type PairedGroupId2 = string | null;
+export type PairedGroupSize2 = number | null;
+export type PairedGroupIndex2 = number | null;
+export type PairedGroupPolicy2 = ("simultaneous" | "sequential_handoff") | null;
 export type Type23 = "order_replace";
 export type Topic24 = string | null;
 export type Exchange6 = "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -213,6 +225,10 @@ export type StrategyTag = string | null;
 export type Leverage1 = number | null;
 export type OperatorPublicId7 = string | null;
 export type UserPublicId5 = string | null;
+export type PairedGroupId3 = string | null;
+export type PairedGroupSize3 = number | null;
+export type PairedGroupIndex3 = number | null;
+export type PairedGroupPolicy3 = ("simultaneous" | "sequential_handoff") | null;
 export type Type25 = "position";
 export type Topic26 = string | null;
 export type Exchange8 = "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -271,6 +287,10 @@ export type OperatorPublicId8 = string | null;
 export type UserPublicId6 = string | null;
 export type AiReviewPublicId = string | null;
 export type AiReviewDispatchVersion = number | null;
+export type PairedGroupId4 = string | null;
+export type PairedGroupSize4 = number | null;
+export type PairedGroupIndex4 = number | null;
+export type PairedGroupPolicy4 = ("simultaneous" | "sequential_handoff") | null;
 export type Type37 = "strategy_list_event";
 export type Topic38 = string | null;
 export type StrategyClasses = string[];
@@ -578,6 +598,10 @@ export interface ExecutionData {
   operator_public_id?: OperatorPublicId1;
   user_public_id?: UserPublicId;
   liquidity_role?: string;
+  paired_group_id?: PairedGroupId;
+  paired_group_size?: PairedGroupSize;
+  paired_group_index?: PairedGroupIndex;
+  paired_group_policy?: PairedGroupPolicy;
 }
 export interface ExecutionPlanData {
   type: Type12;
@@ -777,6 +801,10 @@ export interface OrderData {
   operator_public_id?: OperatorPublicId4;
   user_public_id?: UserPublicId2;
   plan_public_id?: PlanPublicId;
+  paired_group_id?: PairedGroupId1;
+  paired_group_size?: PairedGroupSize1;
+  paired_group_index?: PairedGroupIndex1;
+  paired_group_policy?: PairedGroupPolicy1;
 }
 export interface OrderEventData {
   type: Type22;
@@ -794,6 +822,10 @@ export interface OrderEventData {
   wallet_public_id?: string;
   operator_public_id?: OperatorPublicId5;
   user_public_id?: UserPublicId3;
+  paired_group_id?: PairedGroupId2;
+  paired_group_size?: PairedGroupSize2;
+  paired_group_index?: PairedGroupIndex2;
+  paired_group_policy?: PairedGroupPolicy2;
 }
 export interface OrderReplaceData {
   type: Type23;
@@ -835,6 +867,10 @@ export interface OrderRequestData {
   wallet_public_id?: string;
   operator_public_id?: OperatorPublicId7;
   user_public_id?: UserPublicId5;
+  paired_group_id?: PairedGroupId3;
+  paired_group_size?: PairedGroupSize3;
+  paired_group_index?: PairedGroupIndex3;
+  paired_group_policy?: PairedGroupPolicy3;
 }
 export interface PositionData {
   type: Type25;
@@ -1015,6 +1051,10 @@ export interface SignalData {
   user_public_id?: UserPublicId6;
   ai_review_public_id?: AiReviewPublicId;
   ai_review_dispatch_version?: AiReviewDispatchVersion;
+  paired_group_id?: PairedGroupId4;
+  paired_group_size?: PairedGroupSize4;
+  paired_group_index?: PairedGroupIndex4;
+  paired_group_policy?: PairedGroupPolicy4;
 }
 export interface StrategyListEventData {
   type: Type37;
