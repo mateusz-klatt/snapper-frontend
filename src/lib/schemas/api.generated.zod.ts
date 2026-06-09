@@ -820,6 +820,52 @@ export const OrphanSweepResultDataSchema = _OrphanSweepResultDataRawSchema as un
   Components['schemas']['OrphanSweepResultData']
 >
 
+const _PairedHaltInfoRawSchema = z
+  .object({
+    type: z.literal('paired_halt_info'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    halt_public_id: z.string(),
+    reason: z.string(),
+    group_public_id: z.string(),
+    created_at: z.iso.datetime(),
+  })
+  .strict()
+
+export const PairedHaltInfoSchema = _PairedHaltInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['PairedHaltInfo']
+>
+
+const _PairedLegExposureRawSchema = z
+  .object({
+    type: z.literal('paired_leg_exposure'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    leg_public_id: z.string(),
+    leg_index: z.number().int(),
+    exchange: z.string(),
+    instrument: z.string(),
+    mode: z.string(),
+    shard_key: z.string(),
+    side: z.string(),
+    status: z.string(),
+    filled_signed_qty: z.number(),
+    compensated_signed_qty: z.number(),
+    open_qty: z.number(),
+    compensation_seq: z.number().int(),
+  })
+  .strict()
+
+export const PairedLegExposureSchema = _PairedLegExposureRawSchema as unknown as z.ZodType<
+  Components['schemas']['PairedLegExposure']
+>
+
 const _PositionCycleDataRawSchema = z
   .object({
     type: z.literal('position_cycle'),
@@ -2444,6 +2490,28 @@ export const OrphanSweepResponseSchema = _OrphanSweepResponseRawSchema as unknow
   Components['schemas']['OrphanSweepResponse']
 >
 
+const _PairedGroupIncidentRawSchema = z
+  .object({
+    type: z.literal('paired_group_incident'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    group_public_id: z.string(),
+    status: z.string(),
+    policy: z.string(),
+    failure_reason: z.string().nullable(),
+    halted_at: z.iso.datetime().nullable(),
+    created_at: z.iso.datetime(),
+    legs: z.array(PairedLegExposureSchema),
+  })
+  .strict()
+
+export const PairedGroupIncidentSchema = _PairedGroupIncidentRawSchema as unknown as z.ZodType<
+  Components['schemas']['PairedGroupIncident']
+>
+
 const _PositionCycleListResponseRawSchema = z
   .object({
     type: z.literal('position_cycles'),
@@ -3682,6 +3750,45 @@ export const MarketDataCoverageResponseSchema =
     Components['schemas']['MarketDataCoverageResponse']
   >
 
+const _PairedExecutionIncidentRawSchema = z
+  .object({
+    type: z.literal('paired_execution_incident'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+    strategy_id: z.string(),
+    group_key: z.string(),
+    halt: PairedHaltInfoSchema.nullable(),
+    halt_missing: z.boolean(),
+    groups: z.array(PairedGroupIncidentSchema),
+  })
+  .strict()
+
+export const PairedExecutionIncidentSchema =
+  _PairedExecutionIncidentRawSchema as unknown as z.ZodType<
+    Components['schemas']['PairedExecutionIncident']
+  >
+
+const _PairedGroupTerminalizeResponseRawSchema = z
+  .object({
+    type: z.literal('paired_group_terminalize_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: PairedGroupIncidentSchema,
+  })
+  .strict()
+
+export const PairedGroupTerminalizeResponseSchema =
+  _PairedGroupTerminalizeResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PairedGroupTerminalizeResponse']
+  >
+
 const _ProcessCreateResponseRawSchema = z
   .object({
     type: z.literal('process_create_response'),
@@ -4323,6 +4430,24 @@ export const ProcessStartBodySchema = _ProcessStartBodyRawSchema as unknown as z
   Components['schemas']['ProcessStartBody']
 >
 
+const _PairedExecutionIncidentListResponseRawSchema = z
+  .object({
+    type: z.literal('paired_execution_incident_list_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(PairedExecutionIncidentSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const PairedExecutionIncidentListResponseSchema =
+  _PairedExecutionIncidentListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PairedExecutionIncidentListResponse']
+  >
+
 const _RelatedInstrumentsResponseRawSchema = z
   .object({
     type: z.literal('related_instruments'),
@@ -4893,6 +5018,8 @@ export type NotificationMetricsData = Components['schemas']['NotificationMetrics
 export type OperatorInfo = Components['schemas']['OperatorInfo']
 export type OrderData = Components['schemas']['OrderData']
 export type OrphanSweepResultData = Components['schemas']['OrphanSweepResultData']
+export type PairedHaltInfo = Components['schemas']['PairedHaltInfo']
+export type PairedLegExposure = Components['schemas']['PairedLegExposure']
 export type PositionCycleData = Components['schemas']['PositionCycleData']
 export type PositionData = Components['schemas']['PositionData']
 export type ProcessCategoryCount = Components['schemas']['ProcessCategoryCount']
@@ -5001,6 +5128,7 @@ export type NotificationMetricsResponse = Components['schemas']['NotificationMet
 export type OperatorListResponse = Components['schemas']['OperatorListResponse']
 export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
+export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
 export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
 export type PositionListResponse = Components['schemas']['PositionListResponse']
 export type ProcessCreateData = Components['schemas']['ProcessCreateData']
@@ -5076,6 +5204,8 @@ export type HealthCheckData = Components['schemas']['HealthCheckData']
 export type MarketFeedHealthResponse = Components['schemas']['MarketFeedHealthResponse']
 export type JsonObject = Components['schemas']['JsonObject']
 export type MarketDataCoverageResponse = Components['schemas']['MarketDataCoverageResponse']
+export type PairedExecutionIncident = Components['schemas']['PairedExecutionIncident']
+export type PairedGroupTerminalizeResponse = Components['schemas']['PairedGroupTerminalizeResponse']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
 export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
 export type RelatedInstrumentsPayloadData = Components['schemas']['RelatedInstrumentsPayloadData']
@@ -5109,6 +5239,8 @@ export type StrategyStatusPayload = Components['schemas']['StrategyStatusPayload
 export type BacktestCreateBody = Components['schemas']['BacktestCreateBody']
 export type ProcessCreateBody = Components['schemas']['ProcessCreateBody']
 export type ProcessStartBody = Components['schemas']['ProcessStartBody']
+export type PairedExecutionIncidentListResponse =
+  Components['schemas']['PairedExecutionIncidentListResponse']
 export type RelatedInstrumentsResponse = Components['schemas']['RelatedInstrumentsResponse']
 export type LoginResponse = Components['schemas']['LoginResponse']
 export type RefreshResponse = Components['schemas']['RefreshResponse']

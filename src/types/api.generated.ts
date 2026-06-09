@@ -532,6 +532,38 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/paired-execution/incidents": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["list_paired_execution_incidents_api_paired_execution_incidents_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/paired-execution/groups/{group_public_id}/terminalize": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: Operations["terminalize_paired_execution_group_api_paired_execution_groups__group_public_id__terminalize_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/scope-grants": {
         parameters: {
             query?: never;
@@ -2937,6 +2969,86 @@ export type Components = {
             topic?: string | null | undefined;
             closed_count: number;
             closed_cycle_ids: string[];
+        };
+        PairedExecutionIncident: {
+            type: "paired_execution_incident";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            wallet_public_id: string;
+            strategy_id: string;
+            group_key: string;
+            halt: Components["schemas"]["PairedHaltInfo"] | null;
+            halt_missing: boolean;
+            groups: Components["schemas"]["PairedGroupIncident"][];
+        };
+        PairedExecutionIncidentListResponse: {
+            type: "paired_execution_incident_list_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["PairedExecutionIncident"][];
+            count: number;
+        };
+        PairedGroupIncident: {
+            type: "paired_group_incident";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            group_public_id: string;
+            status: string;
+            policy: string;
+            failure_reason: string | null;
+            halted_at: string | null;
+            created_at: string;
+            legs: Components["schemas"]["PairedLegExposure"][];
+        };
+        PairedGroupTerminalizeResponse: {
+            type: "paired_group_terminalize_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["PairedGroupIncident"];
+        };
+        PairedHaltInfo: {
+            type: "paired_halt_info";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            halt_public_id: string;
+            reason: string;
+            group_public_id: string;
+            created_at: string;
+        };
+        PairedLegExposure: {
+            type: "paired_leg_exposure";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            leg_public_id: string;
+            leg_index: number;
+            exchange: string;
+            instrument: string;
+            mode: string;
+            shard_key: string;
+            side: string;
+            status: string;
+            filled_signed_qty: number;
+            compensated_signed_qty: number;
+            open_qty: number;
+            compensation_seq: number;
         };
         PendingReviewListResponse: {
             items: Components["schemas"]["PendingReviewSummaryItem"][];
@@ -5537,6 +5649,54 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["OperatorListResponse"];
+                };
+            };
+        };
+    };
+    list_paired_execution_incidents_api_paired_execution_incidents_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["PairedExecutionIncidentListResponse"];
+                };
+            };
+        };
+    };
+    terminalize_paired_execution_group_api_paired_execution_groups__group_public_id__terminalize_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                group_public_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["PairedGroupTerminalizeResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
                 };
             };
         };
