@@ -534,7 +534,7 @@ export interface OrderEvent {
   clientOrderId: string
   exchange: Exchange2
   instrument: string
-  event: 'submitted' | 'accepted' | 'rejected' | 'cancelled' | 'expired' | 'replaced' | 'unknown'
+  event: 'submitted' | 'accepted' | 'rejected' | 'cancelled' | 'expired' | 'replaced'
   reason?: string | null
   walletPublicId?: string
   operatorPublicId?: string | null
