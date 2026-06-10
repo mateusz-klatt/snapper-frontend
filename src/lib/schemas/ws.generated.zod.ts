@@ -1103,6 +1103,7 @@ export const AlertEventDataSchema = z
     alert_type: z.enum([
       'order_fill_full',
       'order_rejected',
+      'order_unknown',
       'position_stop_loss_fired',
       'margin_warning',
       'critical_system_error',
