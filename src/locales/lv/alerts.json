@@ -19,6 +19,7 @@
     "margin_warning": "{{0}} {{1}} {{2}} bloķēts maržas dēļ: {{3}}",
     "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} izpildīts biržā {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} noraidīts: {{3}}",
+    "order_unknown": "{{0}} {{1}} {{2}} statuss nezināms: {{3}} — notiek pārbaude",
     "position_stop_loss_fired": "Stop-loss aktivizēts {{0}} ({{1}})"
   },
   "detail": {
@@ -52,6 +53,7 @@
     "margin_warning": "Maržas brīdinājums",
     "order_fill_full": "Rīkojums izpildīts",
     "order_rejected": "Rīkojums noraidīts",
+    "order_unknown": "Rīkojuma statuss nezināms",
     "position_stop_loss_fired": "Stop-loss aktivizēts"
   }
 }

@@ -19,6 +19,7 @@
     "margin_warning": "{{0}} {{1}} {{2}} bloqué par la marge : {{3}}",
     "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} exécuté sur {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rejeté : {{3}}",
+    "order_unknown": "{{0}} {{1}} {{2}} état inconnu : {{3}} — vérification en cours",
     "position_stop_loss_fired": "Stop loss déclenché sur {{0}} ({{1}})"
   },
   "detail": {
@@ -52,6 +53,7 @@
     "margin_warning": "Avertissement de marge",
     "order_fill_full": "Ordre exécuté",
     "order_rejected": "Ordre rejeté",
+    "order_unknown": "État de l'ordre inconnu",
     "position_stop_loss_fired": "Stop loss déclenché"
   }
 }
