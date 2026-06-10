@@ -117,7 +117,7 @@ export interface AlertEvent {
   userPublicId: string
   operatorPublicId?: string | null
   walletPublicId?: string | null
-  alertType: 'order_fill_full' | 'order_rejected' | 'position_stop_loss_fired' | 'margin_warning' | 'critical_system_error'
+  alertType: 'order_fill_full' | 'order_rejected' | 'order_unknown' | 'position_stop_loss_fired' | 'margin_warning' | 'critical_system_error'
   priority?: 'low' | 'medium' | 'high'
   isSafetyCritical?: boolean
   title: string
