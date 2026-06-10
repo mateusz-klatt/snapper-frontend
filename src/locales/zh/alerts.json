@@ -19,6 +19,7 @@
     "margin_warning": "{{0}} {{1}} {{2}} 因保证金不足被阻止：{{3}}",
     "order_fill_full": "{{0}} {{1}} {{2}} 以 ${{3}} 在 {{4}} 成交",
     "order_rejected": "{{0}} {{1}} {{2}} 已拒绝：{{3}}",
+    "order_unknown": "{{0}} {{1}} {{2}} 状态未知：{{3}} — 正在与交易所核实",
     "position_stop_loss_fired": "{{0}}（{{1}}）触发止损"
   },
   "detail": {
@@ -52,6 +53,7 @@
     "margin_warning": "保证金警告",
     "order_fill_full": "订单已成交",
     "order_rejected": "订单已拒绝",
+    "order_unknown": "订单状态未知",
     "position_stop_loss_fired": "止损已触发"
   }
 }

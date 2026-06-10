@@ -19,6 +19,7 @@
     "margin_warning": "{{0}} {{1}} {{2}} diblokir oleh margin: {{3}}",
     "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} dieksekusi di {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} ditolak: {{3}}",
+    "order_unknown": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — verifikasi sedang berlangsung",
     "position_stop_loss_fired": "Stop-loss terpicu pada {{0}} ({{1}})"
   },
   "detail": {
@@ -52,6 +53,7 @@
     "margin_warning": "Peringatan margin",
     "order_fill_full": "Pesanan terisi",
     "order_rejected": "Pesanan ditolak",
+    "order_unknown": "Status pesanan tidak diketahui",
     "position_stop_loss_fired": "Stop-loss terpicu"
   }
 }
