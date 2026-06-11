@@ -221,6 +221,7 @@ export type Mode2 = "live" | "paper";
 export type Side2 = "buy" | "sell";
 export type OrderType1 = "market" | "limit" | "stop" | "stop_limit";
 export type Price1 = number | null;
+export type StopPrice = number | null;
 export type SignaledAt = string | null;
 export type StrategyTag = string | null;
 export type Leverage1 = number | null;
@@ -861,6 +862,7 @@ export interface OrderRequestData {
   order_type: OrderType1;
   quantity: number;
   price?: Price1;
+  stop_price?: StopPrice;
   client_order_id: string;
   signaled_at?: SignaledAt;
   strategy_tag?: StrategyTag;
