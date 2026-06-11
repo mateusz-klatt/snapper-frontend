@@ -584,6 +584,7 @@ export interface OrderRequest {
   orderType: 'market' | 'limit' | 'stop' | 'stop_limit'
   quantity: number
   price?: number | null
+  stopPrice?: number | null
   clientOrderId: string
   signaledAt?: Date | null
   strategyTag?: string | null

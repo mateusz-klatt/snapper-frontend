@@ -483,6 +483,7 @@ export const OrderRequestDataSchema = z
     order_type: z.enum(['market', 'limit', 'stop', 'stop_limit']),
     quantity: z.number(),
     price: z.number().nullable().optional(),
+    stop_price: z.number().nullable().optional(),
     client_order_id: z.string(),
     signaled_at: z.iso.datetime().nullable().optional(),
     strategy_tag: z.string().nullable().optional(),
