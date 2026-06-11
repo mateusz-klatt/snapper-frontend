@@ -8,7 +8,7 @@ Vite + React + TypeScript trading UI for the [Snapper](https://github.com/mateus
 
 ## What it is
 
-The browser-side dashboard for Snapper — a single-operator portfolio + execution platform that talks to crypto and forex venues over WebSocket and REST. This repo contains only the UI; the backend (FastAPI + SQLAlchemy + ZMQ) lives in the parent repo.
+The browser-side dashboard for Snapper — a role-, wallet-, and operator-scoped portfolio + execution platform that talks to crypto, futures, equities, and forex venues over WebSocket and REST. This repo contains only the UI; the backend (FastAPI + SQLAlchemy + ZMQ) lives in the parent repo.
 
 Highlights:
 
@@ -18,6 +18,7 @@ Highlights:
 - **Hash-based subroute routing** — `useHashSubpath` handles deep routes like `#backtests/<uuid>?wallet=X` without query-collision bugs.
 - **WebSocket envelope minter** — per-app session ID, separate control / telemetry counters, ms-precision ISO-8601 provenance stamping.
 - **Order entry** — bracket and trailing-stop dialogs with capability-guard error mapping.
+- **Full operator surface** — overview, market, processes, strategies, orders, positions, signals, backtests, health, alerts, administration, AI integration, AI reviews, and settings.
 
 ## Screenshots
 
@@ -70,8 +71,8 @@ mirrors the GitHub Actions `check` workflow exactly so a green
 `prepush` is a strong signal CI will pass on first attempt:
 
 ```bash
-pnpm prepush      # format:check + lint + typecheck + test:coverage
-pnpm prepush:fix  # auto-fix format + lint, then typecheck + test:coverage
+pnpm prepush      # format:check + lint + typecheck + no-comments + i18n + test:coverage
+pnpm prepush:fix  # auto-fix format + lint, then typecheck + no-comments + i18n + test:coverage
 ```
 
 ## Generated types
@@ -128,14 +129,14 @@ Targets **WCAG 2.1 AA** for the shipped UI flows (login, navigation, market data
 
 ### Internationalisation
 
-**English only** for `1.0.x`. UI strings are not externalised. Locale-aware number/date rendering uses `Intl.NumberFormat`/`Intl.DateTimeFormat` with the browser locale, and a few user-facing strings are localised inside specific datepickers (PL labels). A future minor version may add a translation layer; this is not on the `1.0.x` roadmap.
+The UI uses i18next catalogs with 45 picker locales. Locale choice is stored in `localStorage` as `snapper-locale`, falls back from the browser region to the default locale, and updates `<html lang>` / `<html dir>` for RTL languages. Date, number, and financial formatting use the selected locale. The financial color convention defaults from locale (`rising-red` for CN/HK/JP/KR, Western green-up elsewhere) and can be overridden in Settings.
 
 ### Privacy + storage
 
 The frontend does not load third-party trackers, analytics, or fonts. Local browser storage is limited to:
 
 - `sessionStorage`: `snapper_sequence_tracker` (per-session UUIDv7 + per-table sequence counter, used for control-frame provenance). Cleared when the tab closes.
-- `localStorage`: scope-persistence (last selected wallet/operator) — UUID strings only.
+- `localStorage`: `snapper-auth` (persisted user profile only; tokens stay in backend-managed cookies), `snapper-dark-mode` (boolean), `snapper-locale` (locale code), `snapper-financial-color-preference` (`auto`, `rising-green`, or `rising-red`), and scope-persistence (last selected wallet/operator UUID strings).
 - `cookies`: backend-issued auth + CSRF cookies. Lifecycle is owned by the backend.
 
 No telemetry is sent from the browser. All network traffic goes to the same origin (`/api/*`, `/api/ws`).

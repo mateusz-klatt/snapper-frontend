@@ -100,6 +100,7 @@ const SCREENS = [
   'signals',
   'backtests',
   'health',
+  'notifications',
   'admin',
   'ai-integration',
   'ai-reviews',
