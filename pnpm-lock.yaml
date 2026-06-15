@@ -285,8 +285,8 @@ packages:
       '@csstools/css-parser-algorithms': ^4.0.0
       '@csstools/css-tokenizer': ^4.0.0
 
-  '@csstools/css-color-parser@4.1.3':
-    resolution: {integrity: sha512-DOgvIPkikIOixQRlD4YF31VN6fLLUTdrzhfRbis8vm0kMTgIbEPX0Ip/YX9fOeV9iywAS4sUUbTclpan7yYP8Q==}
+  '@csstools/css-color-parser@4.1.4':
+    resolution: {integrity: sha512-yI8kNhHiOrLb8Rlulsk07DeQz0PwyT69FX9dkz5rAp7p9RUwFKEXnZpBGzURiLHgi66YqIWxOHn1nij8Lrg27Q==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       '@csstools/css-parser-algorithms': ^4.0.0
@@ -1618,8 +1618,8 @@ packages:
   '@vitest/utils@4.1.8':
     resolution: {integrity: sha512-uOJamYALNhfJ6iolExyQM40yIQwDqYnkKtQ5VCiSe17E33H0aQ/u+1GlRuz4LZBk6Mm3sg90G9hEbmEt37C1Zg==}
 
-  '@zenuml/core@3.49.6':
-    resolution: {integrity: sha512-IbBqOJlJW1u48siboMP430YLCnUO7owFFehZTsfp6mXQ1/LkmXlHmhkFJIoUicel6r/NGAoG9UfvSWGSbiKxeA==}
+  '@zenuml/core@3.50.0':
+    resolution: {integrity: sha512-y+DhuUS7v3cpoZcOHf0VD3/68vS/Y999kazl3mz+rCIW0PJ75EKB9pW+m5BMdmND3m7N+DEF+4pvNjS0cK1org==}
     engines: {node: '>=20'}
     hasBin: true
     peerDependencies:
@@ -3666,7 +3666,7 @@ snapshots:
     dependencies:
       '@asamuzakjp/generational-cache': 1.0.1
       '@csstools/css-calc': 3.2.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
-      '@csstools/css-color-parser': 4.1.3(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
+      '@csstools/css-color-parser': 4.1.4(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-tokenizer': 4.0.0
 
@@ -3804,7 +3804,7 @@ snapshots:
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-tokenizer': 4.0.0
 
-  '@csstools/css-color-parser@4.1.3(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
+  '@csstools/css-color-parser@4.1.4(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
     dependencies:
       '@csstools/color-helpers': 6.0.2
       '@csstools/css-calc': 3.2.1(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
@@ -4016,7 +4016,7 @@ snapshots:
 
   '@mermaid-js/mermaid-zenuml@0.2.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(mermaid@11.15.0)(playwright-core@1.57.0)(tailwindcss@4.3.1)':
     dependencies:
-      '@zenuml/core': 3.49.6(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)
+      '@zenuml/core': 3.50.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)
       mermaid: 11.15.0
     transitivePeerDependencies:
       - '@babel/core'
@@ -5011,7 +5011,7 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
 
-  '@zenuml/core@3.49.6(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)':
+  '@zenuml/core@3.50.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)':
     dependencies:
       '@floating-ui/react': 0.27.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@headlessui/react': 2.2.10(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
