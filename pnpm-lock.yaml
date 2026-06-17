@@ -2092,8 +2092,8 @@ packages:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
-  electron-to-chromium@1.5.373:
-    resolution: {integrity: sha512-G2Hym8JIf/QreuseqkDibgH8Ci8KfJzqGDKdakbhSx9UltwRBH2cBLAWU/lBX0sCdv0TlhyxQyDCnSfxgMWsjA==}
+  electron-to-chromium@1.5.374:
+    resolution: {integrity: sha512-HCF5i7izveksHSGqa7mhDh6tr3Uz9Dar2RAjwuh69bw3QGPVObjQIgLwQWeO/Rxp9/r0KdboKy9RbpQDl97fjg==}
 
   elkjs@0.9.3:
     resolution: {integrity: sha512-f/ZeWvW/BCXbhGEf1Ujp29EASo/lk1FDnETgNKwJrsVvGZhUWCZyg3xLJjAsxfOmt8KjswHmI5EwCQcPMpOYhQ==}
@@ -5168,7 +5168,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.37
       caniuse-lite: 1.0.30001799
-      electron-to-chromium: 1.5.373
+      electron-to-chromium: 1.5.374
       node-releases: 2.0.47
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -5525,7 +5525,7 @@ snapshots:
       es-errors: 1.3.0
       gopd: 1.2.0
 
-  electron-to-chromium@1.5.373: {}
+  electron-to-chromium@1.5.374: {}
 
   elkjs@0.9.3: {}
 
