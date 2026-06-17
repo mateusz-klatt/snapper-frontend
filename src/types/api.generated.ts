@@ -7500,6 +7500,8 @@ export interface Operations {
                 timeframe: string;
                 limit?: number;
                 as_of?: string | null | undefined;
+                start?: string | null | undefined;
+                end?: string | null | undefined;
             };
             header?: never;
             path?: never;

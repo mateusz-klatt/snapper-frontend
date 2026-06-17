@@ -47,7 +47,10 @@ export const LightweightChart = ({
   const seriesRef = useRef<ISeriesApi<'Candlestick'> | null>(null)
   const precisionRef = useRef(precision)
 
-  precisionRef.current = precision
+  useEffect(() => {
+    precisionRef.current = precision
+  })
+
   const isDarkMode = useAppStore(s => s.isDarkMode)
   const financialColorPreference = useAppStore(s => s.financialColorPreference)
   const locale = useAppStore(s => s.locale)
