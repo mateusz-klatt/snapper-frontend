@@ -76,5 +76,17 @@
     "label": "Samþætting:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
     "chipAriaLabel": "Paratölfræði með {{symbol}} á {{exchange}}: Pearson {{pearson}}, p-gildi {{pvalue}}"
+  },
+  "scrubber": {
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
+    "presets": {
+      "live": "Live",
+      "h1": "-1h",
+      "d1": "-1d",
+      "w1": "-1w",
+      "mo1": "-1mo"
+    }
   }
 }

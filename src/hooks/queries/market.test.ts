@@ -12,6 +12,7 @@ import {
   useExchangeInstruments,
   useExchangeInstrumentsDetail,
   useRelatedInstruments,
+  useTimeTravelCandles,
 } from './market'
 import { useAuth } from '../../stores/auth'
 import {
@@ -20,6 +21,7 @@ import {
   getCachedPairStats,
   getCacheHealth,
   getCandles,
+  getCandlesRange,
   getExchangeInstruments,
   getRelatedInstruments,
 } from '../../lib/api/market'
@@ -120,6 +122,7 @@ vi.mock('../../lib/api/market', () => ({
       })
     )
   ),
+  getCandlesRange: vi.fn(() => Promise.resolve([])),
   getCachedPairStats: vi.fn(() =>
     Promise.resolve(
       envelope('cached_stats', {
@@ -178,6 +181,91 @@ const createWrapper = () => {
 describe('market queries', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+  })
+
+  describe('useTimeTravelCandles', () => {
+    it('fetches a market-time window when all params are provided', async () => {
+      const { result } = renderHook(
+        () =>
+          useTimeTravelCandles(
+            'kraken',
+            'BTC-USD',
+            '1d',
+            '2023-01-01T00:00:00Z',
+            '2023-01-04T00:00:00Z',
+            400
+          ),
+        { wrapper: createWrapper() }
+      )
+
+      await waitFor(() => {
+        expect(result.current.isFetched).toBe(true)
+      })
+      expect(vi.mocked(getCandlesRange)).toHaveBeenCalledWith(
+        'BTC-USD',
+        'kraken',
+        '1d',
+        '2023-01-01T00:00:00Z',
+        '2023-01-04T00:00:00Z',
+        400
+      )
+    })
+
+    it('does not fetch when the window bounds are null', async () => {
+      vi.mocked(getCandlesRange).mockClear()
+      const { result } = renderHook(
+        () => useTimeTravelCandles('kraken', 'BTC-USD', '1d', null, null, 400),
+        { wrapper: createWrapper() }
+      )
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getCandlesRange)).not.toHaveBeenCalled()
+    })
+
+    it('does not fetch when exchange and symbol are null', async () => {
+      vi.mocked(getCandlesRange).mockClear()
+      const { result } = renderHook(
+        () =>
+          useTimeTravelCandles(
+            null,
+            null,
+            '1d',
+            '2023-01-01T00:00:00Z',
+            '2023-01-04T00:00:00Z',
+            400
+          ),
+        { wrapper: createWrapper() }
+      )
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getCandlesRange)).not.toHaveBeenCalled()
+    })
+
+    it('does not fetch when explicitly disabled', async () => {
+      vi.mocked(getCandlesRange).mockClear()
+      const { result } = renderHook(
+        () =>
+          useTimeTravelCandles(
+            'kraken',
+            'BTC-USD',
+            '1d',
+            '2023-01-01T00:00:00Z',
+            '2023-01-04T00:00:00Z',
+            400,
+            false
+          ),
+        { wrapper: createWrapper() }
+      )
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getCandlesRange)).not.toHaveBeenCalled()
+    })
   })
 
   describe('useCandles', () => {

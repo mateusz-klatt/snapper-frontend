@@ -76,5 +76,17 @@
     "label": "ပူးတွဲပေါင်းစည်းမှု:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
     "chipAriaLabel": "{{exchange}} ပေါ်ရှိ {{symbol}} နှင့် တွဲဖက်စာရင်းအင်း: Pearson {{pearson}}, p-value {{pvalue}}"
+  },
+  "scrubber": {
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
+    "presets": {
+      "live": "Live",
+      "h1": "-1h",
+      "d1": "-1d",
+      "w1": "-1w",
+      "mo1": "-1mo"
+    }
   }
 }

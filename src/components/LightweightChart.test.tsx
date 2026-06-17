@@ -85,6 +85,25 @@ describe('LightweightChart', () => {
       })
     )
   })
+  it('initializes the series price format from the precision prop', () => {
+    render(<LightweightChart data={sampleData} precision={5} />)
+    expect(mockAddSeries).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        priceFormat: { type: 'price', precision: 5, minMove: 10 ** -5 },
+      })
+    )
+  })
+  it('re-applies the series price format when the precision prop changes', () => {
+    const { rerender } = render(<LightweightChart data={sampleData} precision={2} />)
+
+    rerender(<LightweightChart data={sampleData} precision={4} />)
+    expect(mockSeriesApplyOptions).toHaveBeenCalledWith(
+      expect.objectContaining({
+        priceFormat: { type: 'price', precision: 4, minMove: 10 ** -4 },
+      })
+    )
+  })
   it('creates chart with alpine theme', () => {
     render(<LightweightChart data={sampleData} />)
     expect(mockCreateChart).toHaveBeenCalledWith(

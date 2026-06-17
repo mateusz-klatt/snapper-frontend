@@ -42,6 +42,41 @@ export async function getCandles(
   return validated.payload
 }
 
+/**
+ * Fetch candles in a market-time window (``open_at`` in ``[start, end]``).
+ *
+ * Drives the market time-travel scrubber: unlike the latest-N / ``as_of``
+ * reads this navigates by business time, so bulk-backfilled history is
+ * reachable. ``start`` / ``end`` are ISO-8601 UTC strings.
+ */
+export async function getCandlesRange(
+  instrument: string,
+  exchange: string,
+  timeframe: string,
+  start: string,
+  end: string,
+  limit: number = 1000
+): Promise<CandleData[]> {
+  const params = new URLSearchParams({
+    instrument,
+    exchange,
+    timeframe,
+    start,
+    end,
+    limit: String(limit),
+  })
+  const response = await apiClient.get(`/api/candles?${params}`)
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+  }
+
+  const data = await response.json()
+  const validated = validateResponse(data, CandleListResponseSchema, '/candles')
+
+  return validated.payload
+}
+
 export async function getExchanges(): Promise<ExchangeListResponse> {
   const data = await apiClient.getJSON('/api/exchanges')
 

@@ -76,5 +76,17 @@
     "label": "공적분:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
     "chipAriaLabel": "{{exchange}}의 {{symbol}}와의 페어 통계: Pearson {{pearson}}, p값 {{pvalue}}"
+  },
+  "scrubber": {
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
+    "presets": {
+      "live": "Live",
+      "h1": "-1h",
+      "d1": "-1d",
+      "w1": "-1w",
+      "mo1": "-1mo"
+    }
   }
 }

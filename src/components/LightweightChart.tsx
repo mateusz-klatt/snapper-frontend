@@ -32,6 +32,7 @@ interface LightweightChartProps {
   height?: number
   width?: number
   className?: string
+  precision?: number
 }
 
 export const LightweightChart = ({
@@ -39,10 +40,14 @@ export const LightweightChart = ({
   height = 400,
   width,
   className = '',
+  precision = 2,
 }: Readonly<LightweightChartProps>) => {
   const chartContainerRef = useRef<HTMLDivElement>(null)
   const chartRef = useRef<IChartApi | null>(null)
   const seriesRef = useRef<ISeriesApi<'Candlestick'> | null>(null)
+  const precisionRef = useRef(precision)
+
+  precisionRef.current = precision
   const isDarkMode = useAppStore(s => s.isDarkMode)
   const financialColorPreference = useAppStore(s => s.financialColorPreference)
   const locale = useAppStore(s => s.locale)
@@ -149,6 +154,11 @@ export const LightweightChart = ({
       borderDownColor: palette.downColor,
       wickUpColor: palette.upColor,
       wickDownColor: palette.downColor,
+      priceFormat: {
+        type: 'price',
+        precision: precisionRef.current,
+        minMove: 10 ** -precisionRef.current,
+      },
     })
 
     chartRef.current = chart
@@ -242,6 +252,15 @@ export const LightweightChart = ({
       wickDownColor: palette.downColor,
     })
   }, [isDarkMode, financialColorPreference, locale])
+  useEffect(() => {
+    if (!seriesRef.current) {
+      return
+    }
+
+    seriesRef.current.applyOptions({
+      priceFormat: { type: 'price', precision, minMove: 10 ** -precision },
+    })
+  }, [precision])
   useEffect(() => {
     if (!seriesRef.current || !chartRef.current) {
       return

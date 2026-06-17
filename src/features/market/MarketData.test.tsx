@@ -51,6 +51,12 @@ vi.mock('../../hooks/queries/market', () => ({
     error: null,
     isFetching: false,
   })),
+  useTimeTravelCandles: vi.fn(() => ({
+    data: undefined,
+    isLoading: false,
+    error: null,
+    isFetching: false,
+  })),
   useExchanges: vi.fn(() => ({
     data: { payload: ['kraken', 'binance'], count: 2 },
     isLoading: false,
@@ -351,7 +357,7 @@ describe('MarketData', () => {
     } as never)
     renderWithProviders(<MarketData />)
     await waitFor(() => {
-      const changeElement = screen.getByText(/\+0\.00500/)
+      const changeElement = screen.getByText(/\+0\.0050/)
 
       expect(changeElement).toBeInTheDocument()
       expect(changeElement).toHaveClass('text-rising-600')
@@ -373,12 +379,111 @@ describe('MarketData', () => {
     } as never)
     renderWithProviders(<MarketData />)
     await waitFor(() => {
-      const changeElement = screen.getByText(/-0\.00500/)
+      const changeElement = screen.getByText(/-0\.0050/)
 
       expect(changeElement).toBeInTheDocument()
       expect(changeElement).toHaveClass('text-falling-600')
     })
   })
+  it('switches the chart to a market-time window when scrubbed into the past', async () => {
+    const replayCandles = [
+      {
+        type: 'candle',
+        session_id: '',
+        sequence_id: 0,
+        public_id: 'r1',
+        timestamp: '2024-01-01T00:00:00Z',
+        instrument: 'EUR-USD',
+        exchange: 'kraken',
+        timeframe: '1h',
+        open_at: '2024-01-01T00:00:00Z',
+        open: 1.08,
+        high: 1.085,
+        low: 1.079,
+        close: 1.08,
+        vwap: 1.08,
+        trades: 1,
+        volume: 1,
+      },
+      {
+        type: 'candle',
+        session_id: '',
+        sequence_id: 0,
+        public_id: 'r2',
+        timestamp: '2024-01-01T01:00:00Z',
+        instrument: 'EUR-USD',
+        exchange: 'kraken',
+        timeframe: '1h',
+        open_at: '2024-01-01T01:00:00Z',
+        open: 1.08,
+        high: 1.09,
+        low: 1.079,
+        close: 1.088,
+        vwap: 1.08,
+        trades: 1,
+        volume: 1,
+      },
+    ]
+    const { useCachedCandles, useTimeTravelCandles } = await import('../../hooks/queries/market')
+
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: undefined,
+      isLoading: false,
+      error: null,
+      isFetching: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useTimeTravelCandles).mockReturnValue({
+      data: replayCandles,
+      isLoading: false,
+      error: null,
+      isFetching: false,
+      refetch: vi.fn(),
+    } as never)
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    await user.click(screen.getByRole('button', { name: '-1d' }))
+    await waitFor(() => {
+      expect(screen.getAllByText('Current Price').length).toBeGreaterThan(0)
+    })
+    expect(vi.mocked(useTimeTravelCandles)).toHaveBeenCalledWith(
+      'kraken',
+      'EUR-USD',
+      '1h',
+      expect.any(String),
+      expect.any(String),
+      400,
+      true
+    )
+  })
+
+  it('shows no data while scrubbing when the window has no candles', async () => {
+    const { useCachedCandles, useTimeTravelCandles } = await import('../../hooks/queries/market')
+
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: undefined,
+      isLoading: false,
+      error: null,
+      isFetching: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useTimeTravelCandles).mockReturnValue({
+      data: undefined,
+      isLoading: false,
+      error: null,
+      isFetching: false,
+      refetch: vi.fn(),
+    } as never)
+    const user = userEvent.setup()
+
+    renderWithProviders(<MarketData />)
+    await user.click(screen.getByRole('button', { name: '-1d' }))
+    await waitFor(() => {
+      expect(screen.getByText(/No data available/i)).toBeInTheDocument()
+    })
+  })
+
   it('displays error message when error occurs', async () => {
     const { useCachedCandles } = await import('../../hooks/queries/market')
 

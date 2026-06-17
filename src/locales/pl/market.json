@@ -76,5 +76,17 @@
     "label": "Kointegracja:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
     "chipAriaLabel": "Statystyki pary z {{symbol}} na {{exchange}}: Pearson {{pearson}}, wartość p {{pvalue}}"
+  },
+  "scrubber": {
+    "label": "Czas:",
+    "live": "Na żywo",
+    "sliderAriaLabel": "Przewijaj czas rynkowy",
+    "presets": {
+      "live": "Na żywo",
+      "h1": "-1g",
+      "d1": "-1d",
+      "w1": "-1t",
+      "mo1": "-1mc"
+    }
   }
 }

@@ -76,5 +76,17 @@
     "label": "সহ-সমাকলন:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
     "chipAriaLabel": "{{exchange}}-এ {{symbol}}-এর সঙ্গে জোড়ার পরিসংখ্যান: Pearson {{pearson}}, p-মান {{pvalue}}"
+  },
+  "scrubber": {
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
+    "presets": {
+      "live": "Live",
+      "h1": "-1h",
+      "d1": "-1d",
+      "w1": "-1w",
+      "mo1": "-1mo"
+    }
   }
 }
