@@ -73,6 +73,7 @@ export default defineConfig({
     exclude: ['e2e/**', 'node_modules/**', 'dist/**'],
     coverage: {
       provider: 'istanbul',
+      processingConcurrency: 1,
       reporter: ['text', 'lcov', 'html'],
       all: true,
       include: ['src/**/*.{ts,tsx}'],
