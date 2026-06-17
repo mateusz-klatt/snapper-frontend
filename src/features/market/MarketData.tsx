@@ -12,7 +12,9 @@ import {
   useCachedCandles,
   useExchanges,
   useExchangeInstrumentsDetail,
+  useTimeTravelCandles,
 } from '../../hooks/queries/market'
+import { MarketTimeScrubber } from './MarketTimeScrubber'
 import { useAppStore } from '../../stores/app'
 import { useMarketStore } from '../../stores/market'
 import { useMarketSubscription } from '../../hooks/useMarketSubscription'
@@ -21,6 +23,11 @@ import { useWSDispatcher } from '../../hooks/useWSDispatcher'
 import * as Select from '@radix-ui/react-select'
 import { ChevronDownIcon } from 'lucide-react'
 import { Time } from 'lightweight-charts'
+import {
+  assetClassForExchange,
+  formatAtPrecision,
+  priceDisplayPrecision,
+} from '../../lib/formatPrice'
 
 interface FormattedCandle {
   time: Time
@@ -38,6 +45,18 @@ const TIMEFRAME_SET: ReadonlySet<string> = new Set(TIMEFRAME_VALUES)
 
 const isTimeframeValue = (value: string): value is TimeframeValue => TIMEFRAME_SET.has(value)
 
+const TIMEFRAME_SECONDS: Record<TimeframeValue, number> = {
+  '1m': 60,
+  '5m': 300,
+  '15m': 900,
+  '30m': 1800,
+  '1h': 3600,
+  '4h': 14400,
+  '1d': 86400,
+}
+
+const REPLAY_BARS = 400
+
 export function MarketData() {
   const { t } = useTranslation('market')
   const {
@@ -49,6 +68,13 @@ export function MarketData() {
     setSelectedMarket,
     setSelectedTimeframe,
   } = useMarketStore()
+
+  const [replayAt, setReplayAt] = useState<number | null>(null)
+  const isReplay = replayAt !== null
+
+  useEffect(() => {
+    setReplayAt(null)
+  }, [selectedInstrument, selectedExchange, selectedTimeframe])
 
   const timeframes = useMemo(
     () => TIMEFRAME_VALUES.map(value => ({ value, label: t(`timeframes.${value}`) })),
@@ -62,7 +88,7 @@ export function MarketData() {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const dispatcher = useWSDispatcher({ enabled: !isTimeTraveling })
   const subscribed = useMarketSubscription({
-    instrument: selectedInstrument,
+    instrument: isReplay ? null : selectedInstrument,
     exchange: selectedExchange,
     timeframe: selectedTimeframe,
     dispatcher,
@@ -91,12 +117,57 @@ export function MarketData() {
     selectedInstrument,
     selectedTimeframe,
     100,
-    snapshotEnabled
+    snapshotEnabled && !isReplay
   )
   const candles = cachedResponse?.payload.candles
   const isWarm = cachedResponse?.payload.is_warm ?? true
   const sampleCount = cachedResponse?.payload.sample_count ?? 0
   const cacheSource = cachedResponse?.payload.source ?? 'cache'
+
+  const replayWindow = useMemo(() => {
+    if (replayAt === null) {
+      return null
+    }
+
+    const tfSeconds = TIMEFRAME_SECONDS[selectedTimeframe as TimeframeValue]
+    const halfMs = (REPLAY_BARS / 2) * tfSeconds * 1000
+
+    return {
+      start: new Date(replayAt - halfMs).toISOString(),
+      end: new Date(replayAt + halfMs).toISOString(),
+    }
+  }, [replayAt, selectedTimeframe])
+  const {
+    data: replayCandles,
+    isLoading: replayLoading,
+    error: replayError,
+    isFetching: replayFetching,
+  } = useTimeTravelCandles(
+    selectedExchange,
+    selectedInstrument,
+    selectedTimeframe,
+    replayWindow?.start ?? null,
+    replayWindow?.end ?? null,
+    REPLAY_BARS,
+    isReplay
+  )
+  const sourceCandles = useMemo(() => {
+    if (isReplay) {
+      return (replayCandles ?? []).map(candle => ({
+        open_at_ms: Date.parse(candle.open_at),
+        open: candle.open,
+        high: candle.high,
+        low: candle.low,
+        close: candle.close,
+        volume: candle.volume,
+      }))
+    }
+
+    return candles ?? []
+  }, [isReplay, replayCandles, candles])
+  const effectiveLoading = isReplay ? replayLoading : isLoading
+  const effectiveError = isReplay ? replayError : error
+  const effectiveFetching = isReplay ? replayFetching : isFetching
   const flushedRef = useRef(false)
 
   useEffect(() => {
@@ -151,8 +222,8 @@ export function MarketData() {
   }
 
   const chartData: FormattedCandle[] = useMemo(() => {
-    if (!candles || isFetching) return []
-    const sortedCandles = [...candles].sort((a, b) => a.open_at_ms - b.open_at_ms)
+    if (!sourceCandles.length || effectiveFetching) return []
+    const sortedCandles = [...sourceCandles].sort((a, b) => a.open_at_ms - b.open_at_ms)
     const deduped: FormattedCandle[] = []
 
     for (const candle of sortedCandles) {
@@ -179,7 +250,7 @@ export function MarketData() {
     }
 
     return deduped
-  }, [candles, isFetching])
+  }, [sourceCandles, effectiveFetching])
 
   const stats = useMemo(() => {
     if (!chartData.length) return null
@@ -199,6 +270,21 @@ export function MarketData() {
       low24h,
     }
   }, [chartData])
+
+  const instrumentKind = useMemo(
+    () =>
+      (instruments?.payload ?? []).find(row => row.symbol === selectedInstrument)
+        ?.instrument_kind ?? null,
+    [instruments, selectedInstrument]
+  )
+  const assetClass = useMemo(
+    () => assetClassForExchange(selectedExchange ?? '', instrumentKind),
+    [selectedExchange, instrumentKind]
+  )
+  const pricePrecision = useMemo(
+    () => priceDisplayPrecision(stats?.price ?? 0, assetClass),
+    [stats?.price, assetClass]
+  )
 
   return (
     <div className='flex flex-col space-y-6'>
@@ -305,6 +391,9 @@ export function MarketData() {
           </Select.Root>
         </div>
       </div>
+      {selectedInstrument !== null && isTimeframeValue(selectedTimeframe) && (
+        <MarketTimeScrubber value={replayAt} onChange={setReplayAt} />
+      )}
       <RelatedInstrumentsRow
         selectedExchange={selectedExchange}
         selectedInstrument={selectedInstrument}
@@ -321,7 +410,9 @@ export function MarketData() {
           <Card title={t('stats.currentPrice')} className='p-4'>
             <div>
               <p className='text-sm text-muted-500'>{t('stats.currentPrice')}</p>
-              <p className='text-lg font-semibold'>{stats.price.toFixed(5)}</p>
+              <p className='text-lg font-semibold'>
+                {formatAtPrecision(stats.price, pricePrecision)}
+              </p>
             </div>
           </Card>
           <Card title={t('stats.change24h')} className='p-4'>
@@ -332,7 +423,8 @@ export function MarketData() {
                   className={`text-lg font-semibold ${stats.change >= 0 ? 'text-rising-600' : 'text-falling-600'}`}
                 >
                   {stats.change >= 0 ? '+' : ''}
-                  {stats.change.toFixed(5)} ({stats.changePercent.toFixed(2)}%)
+                  {formatAtPrecision(stats.change, pricePrecision)} (
+                  {stats.changePercent.toFixed(2)}%)
                 </p>
               </div>
             </div>
@@ -340,41 +432,47 @@ export function MarketData() {
           <Card title={t('stats.high24h')} className='p-4'>
             <div>
               <p className='text-sm text-muted-500'>{t('stats.high24h')}</p>
-              <p className='text-lg font-semibold text-rising-600'>{stats.high24h.toFixed(5)}</p>
+              <p className='text-lg font-semibold text-rising-600'>
+                {formatAtPrecision(stats.high24h, pricePrecision)}
+              </p>
             </div>
           </Card>
           <Card title={t('stats.low24h')} className='p-4'>
             <div>
               <p className='text-sm text-muted-500'>{t('stats.low24h')}</p>
-              <p className='text-lg font-semibold text-falling-600'>{stats.low24h.toFixed(5)}</p>
+              <p className='text-lg font-semibold text-falling-600'>
+                {formatAtPrecision(stats.low24h, pricePrecision)}
+              </p>
             </div>
           </Card>
         </div>
       )}
       {}
       <Card title={t('chart.title')} className='flex-1 p-6'>
-        <CacheWarmingBanner
-          isWarm={isWarm}
-          sampleCount={sampleCount}
-          expected={100}
-          source={cacheSource}
-        />
-        {isLoading && (
+        {!isReplay && (
+          <CacheWarmingBanner
+            isWarm={isWarm}
+            sampleCount={sampleCount}
+            expected={100}
+            source={cacheSource}
+          />
+        )}
+        {effectiveLoading && (
           <div className='flex items-center justify-center h-full'>
             <LoadingSpinner />
           </div>
         )}
-        {!isLoading && error && (
+        {!effectiveLoading && effectiveError && (
           <div className='flex items-center justify-center h-full'>
             <p className='text-loss-600'>
-              {t('chart.errorPrefix')} {error?.message || t('chart.unknownError')}
+              {t('chart.errorPrefix')} {effectiveError?.message || t('chart.unknownError')}
             </p>
           </div>
         )}
-        {!isLoading && !error && chartData.length > 0 && (
-          <LightweightChart data={chartData} height={400} />
+        {!effectiveLoading && !effectiveError && chartData.length > 0 && (
+          <LightweightChart data={chartData} height={400} precision={pricePrecision} />
         )}
-        {!isLoading && !error && chartData.length === 0 && (
+        {!effectiveLoading && !effectiveError && chartData.length === 0 && (
           <div className='flex items-center justify-center h-full'>
             <div className='text-center'>
               <p className='text-muted-500 mb-2'>

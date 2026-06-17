@@ -43,6 +43,25 @@ export const queryKeys = {
     limit: number,
     asOf: string | null
   ) => ['market', 'cache', 'candles', exchange, nativeSymbol, timeframe, limit, asOf] as const,
+  timeTravelCandles: (
+    exchange: string,
+    nativeSymbol: string,
+    timeframe: string,
+    start: string,
+    end: string,
+    limit: number
+  ) =>
+    [
+      'market',
+      'timetravel',
+      'candles',
+      exchange,
+      nativeSymbol,
+      timeframe,
+      start,
+      end,
+      limit,
+    ] as const,
   cachedPairStats: (
     exchangeA: string,
     symbolA: string,

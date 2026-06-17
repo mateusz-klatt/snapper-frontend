@@ -76,5 +76,17 @@
     "label": "Коінтеграція:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
     "chipAriaLabel": "Статистика пари з {{symbol}} на {{exchange}}: Pearson {{pearson}}, p-значення {{pvalue}}"
+  },
+  "scrubber": {
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
+    "presets": {
+      "live": "Live",
+      "h1": "-1h",
+      "d1": "-1d",
+      "w1": "-1w",
+      "mo1": "-1mo"
+    }
   }
 }

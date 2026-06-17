@@ -76,5 +76,17 @@
     "label": "協整:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
     "chipAriaLabel": "與 {{exchange}} 上 {{symbol}} 的配對統計: Pearson {{pearson}}, p 值 {{pvalue}}"
+  },
+  "scrubber": {
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
+    "presets": {
+      "live": "Live",
+      "h1": "-1h",
+      "d1": "-1d",
+      "w1": "-1w",
+      "mo1": "-1mo"
+    }
   }
 }

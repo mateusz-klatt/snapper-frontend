@@ -7,6 +7,7 @@ import {
   getCachedPairStats,
   getCacheHealth,
   getCandles,
+  getCandlesRange,
   getExchanges,
   getExchangeInstruments,
   getExchangeInstrumentsDetail,
@@ -114,6 +115,66 @@ describe('market API methods', () => {
       statusText: 'Server Error',
     })
     await expect(getCandles('BTC/USD', 'kraken')).rejects.toThrow('HTTP 500: Server Error')
+  })
+  it('getCandlesRange sends the market-time window and returns candle data', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'candle_list',
+        session_id: '',
+        sequence_id: 0,
+        public_id: 'env-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        payload: [
+          {
+            type: 'candle',
+            session_id: '',
+            sequence_id: 0,
+            public_id: 'cdl-range',
+            timestamp: '2023-01-02T00:00:00Z',
+            instrument: 'BTC/USD',
+            exchange: 'kraken',
+            timeframe: '1d',
+            open_at: '2023-01-02T00:00:00Z',
+            open: 1,
+            high: 1.1,
+            low: 0.9,
+            close: 1.05,
+            volume: 1000,
+          },
+        ],
+        count: 1,
+      }),
+    })
+    const result = await getCandlesRange(
+      'BTC/USD',
+      'kraken',
+      '1d',
+      '2023-01-01T00:00:00.000Z',
+      '2023-01-04T00:00:00.000Z',
+      500
+    )
+
+    expect(result).toHaveLength(1)
+    expect(mockFetch).toHaveBeenCalledWith(
+      expect.stringContaining('start=2023-01-01'),
+      expect.any(Object)
+    )
+    expect(mockFetch).toHaveBeenCalledWith(
+      expect.stringContaining('end=2023-01-04'),
+      expect.any(Object)
+    )
+  })
+  it('getCandlesRange throws on non-ok response', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: false,
+      status: 500,
+      statusText: 'Server Error',
+    })
+    await expect(
+      getCandlesRange('BTC/USD', 'kraken', '1d', '2023-01-01T00:00:00Z', '2023-01-04T00:00:00Z')
+    ).rejects.toThrow('HTTP 500: Server Error')
   })
   it('getExchanges returns exchange list', async () => {
     mockFetch.mockResolvedValueOnce({

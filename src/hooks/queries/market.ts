@@ -5,6 +5,7 @@ import {
   getCachedPairStats,
   getCacheHealth,
   getCandles,
+  getCandlesRange,
   getExchanges,
   getExchangeInstruments,
   getExchangeInstrumentsDetail,
@@ -106,6 +107,42 @@ export const useCachedCandles = (
     queryKey: queryKeys.cachedCandles(exchangeKey, symbolKey, timeframe, limit, asOf),
     queryFn: () => getCachedCandles(exchangeKey, symbolKey, timeframe, limit),
     enabled: enabled && isAuthenticated && !!exchange && !!nativeSymbol,
+    staleTime: Infinity,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    throwOnError: false,
+    retry: 1,
+  })
+}
+
+export const useTimeTravelCandles = (
+  exchange: string | null,
+  nativeSymbol: string | null,
+  timeframe: string,
+  start: string | null,
+  end: string | null,
+  limit: number,
+  enabled: boolean = true
+) => {
+  const { isAuthenticated } = useAuth()
+  const exchangeKey = exchange ?? ''
+  const symbolKey = nativeSymbol ?? ''
+  const startKey = start ?? ''
+  const endKey = end ?? ''
+
+  return useQuery({
+    queryKey: queryKeys.timeTravelCandles(
+      exchangeKey,
+      symbolKey,
+      timeframe,
+      startKey,
+      endKey,
+      limit
+    ),
+    queryFn: () => getCandlesRange(symbolKey, exchangeKey, timeframe, startKey, endKey, limit),
+    enabled:
+      enabled && isAuthenticated && !!exchange && !!nativeSymbol && start !== null && end !== null,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
