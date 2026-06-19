@@ -117,6 +117,7 @@ export const CandleDataSchema = z
     volume: z.number(),
     vwap: z.number().nullable().optional(),
     trades: z.number().int().nullable().optional(),
+    complete: z.boolean(),
   })
   .strict()
 

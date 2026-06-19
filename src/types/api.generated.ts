@@ -2148,6 +2148,7 @@ export type Components = {
             volume: number;
             vwap?: number | null | undefined;
             trades?: number | null | undefined;
+            complete: boolean;
         };
         CandleListResponse: {
             type: "candle_list";

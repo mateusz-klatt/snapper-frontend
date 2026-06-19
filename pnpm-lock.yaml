@@ -1630,8 +1630,8 @@ packages:
   '@vitest/utils@4.1.9':
     resolution: {integrity: sha512-A51o8ymO5PpqlWNnBP9ZHPXDIpuMtTLlGSjN7la4US+LJzoUMyhwjA5QXlm39JexgwHKW4Xjs8Z2d3dLCXOeuA==}
 
-  '@zenuml/core@3.50.0':
-    resolution: {integrity: sha512-y+DhuUS7v3cpoZcOHf0VD3/68vS/Y999kazl3mz+rCIW0PJ75EKB9pW+m5BMdmND3m7N+DEF+4pvNjS0cK1org==}
+  '@zenuml/core@3.50.1':
+    resolution: {integrity: sha512-Q18BXvIfhRuGw0JfO4e+pltG04Phhv2E7n35EWTNSZKKH/HEkyE4Sh7KERb9dqaOfjOdRdKvLG0YekjK3fcDXw==}
     engines: {node: '>=20'}
     hasBin: true
     peerDependencies:
@@ -4048,7 +4048,7 @@ snapshots:
 
   '@mermaid-js/mermaid-zenuml@0.2.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(mermaid@11.15.0)(playwright-core@1.57.0)(tailwindcss@4.3.1)':
     dependencies:
-      '@zenuml/core': 3.50.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)
+      '@zenuml/core': 3.50.1(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)
       mermaid: 11.15.0
     transitivePeerDependencies:
       - '@babel/core'
@@ -5052,7 +5052,7 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
 
-  '@zenuml/core@3.50.0(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)':
+  '@zenuml/core@3.50.1(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@19.2.17)(playwright-core@1.57.0)(tailwindcss@4.3.1)':
     dependencies:
       '@floating-ui/react': 0.27.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@headlessui/react': 2.2.10(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
