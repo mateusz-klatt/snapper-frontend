@@ -171,6 +171,7 @@ export interface Candle {
   volume: number
   vwap?: number | null
   trades?: number | null
+  complete?: boolean
 }
 
 /**

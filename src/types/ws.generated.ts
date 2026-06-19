@@ -512,6 +512,7 @@ export interface CandleData {
   volume: number;
   vwap?: Vwap;
   trades?: Trades;
+  complete?: boolean;
 }
 export interface CapsViolationAfterAiApproveData {
   type: Type7;
