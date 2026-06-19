@@ -144,6 +144,7 @@ export function createCandle(
     close?: number
     vwap?: number | null
     trades?: number | null
+    complete?: boolean
   } = {}
 ) {
   return {
@@ -161,6 +162,7 @@ export function createCandle(
     close: overrides.close ?? 102,
     vwap: overrides.vwap ?? 101,
     trades: overrides.trades ?? 50,
+    complete: overrides.complete ?? true,
   }
 }
 
