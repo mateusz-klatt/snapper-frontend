@@ -27,12 +27,24 @@ const DARK_THEME = {
   border: '#3a4048',
 }
 
+/** Imperative handle exposed to a controller that drives data/viewport itself. */
+export interface ChartHandle {
+  chart: IChartApi
+  series: ISeriesApi<'Candlestick'>
+}
+
 interface LightweightChartProps {
   data: CandlestickData<Time>[]
   height?: number
   width?: number
   className?: string
   precision?: number
+  /**
+   * When provided, the chart hands its `{ chart, series }` to a controller on
+   * (re)creation (and `null` on teardown) and stops driving `data` itself — the
+   * controller owns `setData` / viewport. Called with `null` on cleanup.
+   */
+  onChartReady?: (handle: ChartHandle | null) => void
 }
 
 export const LightweightChart = ({
@@ -41,14 +53,18 @@ export const LightweightChart = ({
   width,
   className = '',
   precision = 2,
+  onChartReady,
 }: Readonly<LightweightChartProps>) => {
   const chartContainerRef = useRef<HTMLDivElement>(null)
   const chartRef = useRef<IChartApi | null>(null)
   const seriesRef = useRef<ISeriesApi<'Candlestick'> | null>(null)
   const precisionRef = useRef(precision)
+  const onChartReadyRef = useRef(onChartReady)
+  const managed = onChartReady !== undefined
 
   useEffect(() => {
     precisionRef.current = precision
+    onChartReadyRef.current = onChartReady
   })
 
   const isDarkMode = useAppStore(s => s.isDarkMode)
@@ -166,6 +182,7 @@ export const LightweightChart = ({
 
     chartRef.current = chart
     seriesRef.current = candlestickSeries
+    onChartReadyRef.current?.({ chart, series: candlestickSeries })
 
     const handleResize = () => {
       if (chartContainerRef.current && chartRef.current) {
@@ -191,6 +208,7 @@ export const LightweightChart = ({
         globalThis.removeEventListener('resize', handleResize)
       }
 
+      onChartReadyRef.current?.(null)
       chartRef.current?.remove()
       chartRef.current = null
       seriesRef.current = null
@@ -265,7 +283,7 @@ export const LightweightChart = ({
     })
   }, [precision])
   useEffect(() => {
-    if (!seriesRef.current || !chartRef.current) {
+    if (managed || !seriesRef.current || !chartRef.current) {
       return
     }
 
@@ -295,7 +313,7 @@ export const LightweightChart = ({
         console.error('LightweightChart: Error clearing chart data:', cleanupError)
       }
     }
-  }, [data])
+  }, [data, managed])
 
   return (
     <div

@@ -113,9 +113,11 @@ vi.mock('../../hooks/useWSDispatcher', () => ({
     stopBuffering: vi.fn(),
   })),
 }))
-vi.mock('../../components/LightweightChart', () => ({
-  LightweightChart: ({ data }: { data: unknown[] }) => (
-    <div data-testid='lightweight-chart'>Chart with {data.length} candles</div>
+vi.mock('./MarketChart', () => ({
+  MarketChart: ({ instrument, timeframe }: { instrument: string | null; timeframe: string }) => (
+    <div data-testid='market-chart'>
+      Chart {instrument} {timeframe}
+    </div>
   ),
 }))
 const createQueryClient = () =>
@@ -264,21 +266,6 @@ describe('MarketData', () => {
     renderWithProviders(<MarketData />)
 
     expect(useCachedCandles).toHaveBeenCalledWith('kraken', 'EUR-USD', '1h', 100, true)
-  })
-  it('shows unknown error message when error has no message', async () => {
-    const { useCachedCandles } = await import('../../hooks/queries/market')
-
-    vi.mocked(useCachedCandles).mockReturnValue({
-      data: buildCachedEnvelope([]),
-      isLoading: false,
-      error: new Error(''),
-      isFetching: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      expect(screen.getByText(/Unknown error/i)).toBeInTheDocument()
-    })
   })
   it('displays stats when candles data is available', async () => {
     const mockCandles = [
@@ -458,62 +445,27 @@ describe('MarketData', () => {
     )
   })
 
-  it('shows no data while scrubbing when the window has no candles', async () => {
+  it('keeps an empty stats window while scrubbing before replay candles load', async () => {
     const { useCachedCandles, useTimeTravelCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCachedCandles).mockReturnValue({
       data: undefined,
-      isLoading: false,
-      error: null,
       isFetching: false,
-      refetch: vi.fn(),
     } as never)
     vi.mocked(useTimeTravelCandles).mockReturnValue({
       data: undefined,
-      isLoading: false,
-      error: null,
       isFetching: false,
-      refetch: vi.fn(),
     } as never)
     const user = userEvent.setup()
 
     renderWithProviders(<MarketData />)
     await user.click(screen.getByRole('button', { name: '-1d' }))
     await waitFor(() => {
-      expect(screen.getByText(/No data available/i)).toBeInTheDocument()
+      expect(screen.getByTestId('market-chart')).toBeInTheDocument()
     })
+    expect(screen.queryByText('Current Price')).not.toBeInTheDocument()
   })
 
-  it('displays error message when error occurs', async () => {
-    const { useCachedCandles } = await import('../../hooks/queries/market')
-
-    vi.mocked(useCachedCandles).mockReturnValue({
-      data: undefined,
-      isLoading: false,
-      error: { message: 'Failed to fetch data' },
-      isFetching: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      expect(screen.getByText(/Error loading chart data/i)).toBeInTheDocument()
-    })
-  })
-  it('displays no data message when selected instrument has no data', async () => {
-    const { useCachedCandles } = await import('../../hooks/queries/market')
-
-    vi.mocked(useCachedCandles).mockReturnValue({
-      data: buildCachedEnvelope([]),
-      isLoading: false,
-      error: null,
-      isFetching: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      expect(screen.getByText(/No data available for/i)).toBeInTheDocument()
-    })
-  })
   it('uses raw timeframe text when selected timeframe is unknown', async () => {
     const { useCachedCandles } = await import('../../hooks/queries/market')
     const { useMarketStore } = await import('../../stores/market')
