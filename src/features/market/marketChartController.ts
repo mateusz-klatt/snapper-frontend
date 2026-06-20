@@ -12,10 +12,13 @@ import {
   DEFAULT_VISIBLE_BARS,
   FETCH_PAGE_BARS,
   LEFT_PREFETCH_BARS,
+  LOD_DWELL_MS,
   MAX_BACKSCAN_WINDOWS,
   MAX_CHART_BARS,
   TIMEFRAME_SECONDS,
   appendLive,
+  barsPerPixel,
+  decideLodTimeframe,
   mergeOlder,
   olderRange,
   shiftLogicalSpan,
@@ -36,6 +39,7 @@ export interface ChartNavAdapter {
   setVisibleLogicalRange(range: LogicalSpan): void
   barsBefore(range: LogicalSpan): number | null
   barsAfter(range: LogicalSpan): number | null
+  width(): number
   fitContent(): void
   subscribeVisibleLogicalRangeChange(handler: () => void): () => void
 }
@@ -52,6 +56,8 @@ export interface MarketChartControllerOptions {
   fetchOlder: (range: IsoRange) => Promise<WindowCandle[]>
   onStateChange?: (state: ControllerState) => void
   maxBars?: number
+  /** Injectable clock for the LOD dwell lockout (defaults to Date.now). */
+  now?: () => number
 }
 
 export class MarketChartController {
@@ -63,24 +69,41 @@ export class MarketChartController {
   private error: string | null = null
   private lastViewport: LogicalSpan | null = null
   private tfSeconds: number
+  private timeframe: TimeframeValue
   private destroyed = false
   /** Bumped whenever the window's identity changes, so in-flight older fetches can be discarded. */
   private generation = 0
+  private autoLod = false
+  private lodLockedUntilMs = 0
+  private onLodTimeframe: ((timeframe: TimeframeValue) => void) | undefined
   private readonly maxBars: number
+  private readonly now: () => number
   private fetchOlder: (range: IsoRange) => Promise<WindowCandle[]>
   private readonly onStateChange: ((state: ControllerState) => void) | undefined
 
   constructor(options: MarketChartControllerOptions) {
+    this.timeframe = options.timeframe
     this.tfSeconds = TIMEFRAME_SECONDS[options.timeframe]
     this.fetchOlder = options.fetchOlder
     this.onStateChange = options.onStateChange
     this.maxBars = options.maxBars ?? MAX_CHART_BARS
+    this.now = options.now ?? (() => Date.now())
   }
 
   /** Swap the older-history fetcher (e.g. when the instrument/exchange/timeframe change). */
   setFetchOlder(fetchOlder: (range: IsoRange) => Promise<WindowCandle[]>): void {
     this.fetchOlder = fetchOlder
     this.generation += 1
+  }
+
+  /** Enable/disable auto level-of-detail (zoom-driven timeframe switching). */
+  setAutoLod(enabled: boolean): void {
+    this.autoLod = enabled
+  }
+
+  /** Register the callback invoked when a zoom level warrants a timeframe switch. */
+  setOnLodTimeframe(onLodTimeframe: (timeframe: TimeframeValue) => void): void {
+    this.onLodTimeframe = onLodTimeframe
   }
 
   getState(): ControllerState {
@@ -92,10 +115,18 @@ export class MarketChartController {
     }
   }
 
-  /** Update the timeframe used to size older-history requests. */
+  /** Update the timeframe used to size older-history requests + LOD decisions. */
   setTimeframe(timeframe: TimeframeValue): void {
+    const changed = timeframe !== this.timeframe
+
+    this.timeframe = timeframe
     this.tfSeconds = TIMEFRAME_SECONDS[timeframe]
     this.generation += 1
+
+    if (changed) {
+      /** Dwell after a real switch so the post-switch refit doesn't immediately re-trigger LOD. */
+      this.lodLockedUntilMs = this.now() + LOD_DWELL_MS
+    }
   }
 
   /** Replace the window with a fresh page (new instrument/timeframe) and show the latest bars. */
@@ -251,13 +282,39 @@ export class MarketChartController {
     this.emit()
   }
 
-  /** React to a viewport change: remember it and prefetch older history when near the left edge. */
+  /**
+   * Zoom-driven level-of-detail: if auto-LOD is on, the dwell has elapsed, and
+   * the bars-per-pixel density crosses a threshold, request a timeframe switch.
+   * Returns true when a switch was requested (caller skips older-history work).
+   */
+  private maybeSwitchLod(adapter: ChartNavAdapter, range: LogicalSpan): boolean {
+    const onLodTimeframe = this.onLodTimeframe
+
+    if (!this.autoLod || !onLodTimeframe || this.now() < this.lodLockedUntilMs) {
+      return false
+    }
+
+    const target = decideLodTimeframe(this.timeframe, barsPerPixel(range, adapter.width()))
+
+    if (!target) {
+      return false
+    }
+
+    this.lodLockedUntilMs = this.now() + LOD_DWELL_MS
+    onLodTimeframe(target)
+
+    return true
+  }
+
+  /** React to a viewport change: maybe switch LOD timeframe, else prefetch older history. */
   handleRangeChange(): void {
-    if (!this.adapter) {
+    const adapter = this.adapter
+
+    if (!adapter) {
       return
     }
 
-    const range = this.adapter.getVisibleLogicalRange()
+    const range = adapter.getVisibleLogicalRange()
 
     if (!range) {
       return
@@ -265,7 +322,11 @@ export class MarketChartController {
 
     this.lastViewport = range
 
-    const barsBefore = this.adapter.barsBefore(range)
+    if (this.maybeSwitchLod(adapter, range)) {
+      return
+    }
+
+    const barsBefore = adapter.barsBefore(range)
 
     /**
      * Clear a prior exhaustion verdict once the user scrolls well clear of the

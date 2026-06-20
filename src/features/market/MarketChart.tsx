@@ -23,6 +23,10 @@ interface MarketChartProps {
   enabled: boolean
   /** Latest live candle (from the warm cache) to fold in; null while scrubbed or feedless. */
   liveCandle?: WindowCandle | null
+  /** When true, zooming switches the timeframe (level-of-detail). */
+  autoLod?: boolean
+  /** Invoked with the target timeframe when a zoom level warrants an LOD switch. */
+  onLodTimeframe?: (timeframe: TimeframeValue) => void
   height?: number
 }
 
@@ -47,6 +51,8 @@ export function MarketChart({
   anchorMs,
   enabled,
   liveCandle = null,
+  autoLod = false,
+  onLodTimeframe,
   height = 400,
 }: Readonly<MarketChartProps>) {
   const { t } = useTranslation('market')
@@ -84,6 +90,17 @@ export function MarketChart({
   useEffect(() => {
     controller.setFetchOlder(fetchOlder)
   }, [controller, fetchOlder])
+
+  useEffect(() => {
+    /** Gate LOD on initial-load readiness so a zoom during a fetch can't decide against a stale viewport. */
+    controller.setAutoLod(autoLod && readyKey === currentKey)
+  }, [controller, autoLod, readyKey, currentKey])
+
+  useEffect(() => {
+    if (onLodTimeframe) {
+      controller.setOnLodTimeframe(onLodTimeframe)
+    }
+  }, [controller, onLodTimeframe])
 
   const onChartReady = useCallback(
     (handle: ChartHandle | null) => {

@@ -44,6 +44,9 @@ export function createChartNavAdapter(handle: ChartHandle): ChartNavAdapter {
     fitContent(): void {
       chart.timeScale().fitContent()
     },
+    width(): number {
+      return chart.timeScale().width()
+    },
     subscribeVisibleLogicalRangeChange(handler: () => void): () => void {
       const wrapped = (): void => {
         handler()

@@ -15,6 +15,7 @@ const makeHandle = (
     getVisibleLogicalRange: vi.fn(() => overrides.visibleRange ?? null),
     setVisibleLogicalRange: vi.fn(),
     fitContent: vi.fn(),
+    width: vi.fn(() => 1280),
     subscribeVisibleLogicalRangeChange: vi.fn(),
     unsubscribeVisibleLogicalRangeChange: vi.fn(),
   }
@@ -90,6 +91,12 @@ describe('createChartNavAdapter', () => {
     const { handle } = makeHandle({ barsInfo: null })
 
     expect(createChartNavAdapter(handle).barsAfter({ from: 0, to: 10 })).toBeNull()
+  })
+
+  it('returns the time scale width', () => {
+    const { handle } = makeHandle()
+
+    expect(createChartNavAdapter(handle).width()).toBe(1280)
   })
 
   it('forwards fitContent', () => {

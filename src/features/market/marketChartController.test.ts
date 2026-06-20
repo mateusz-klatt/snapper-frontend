@@ -3,6 +3,7 @@ import { MarketChartController, type ChartNavAdapter } from './marketChartContro
 import {
   DEFAULT_VISIBLE_BARS,
   LEFT_PREFETCH_BARS,
+  LOD_DWELL_MS,
   MAX_BACKSCAN_WINDOWS,
   TIMEFRAME_SECONDS,
   type IsoRange,
@@ -65,6 +66,12 @@ class FakeAdapter implements ChartNavAdapter {
 
   barsAfter(): number | null {
     return this.barsAfterValue
+  }
+
+  widthValue = 1000
+
+  width(): number {
+    return this.widthValue
   }
 
   fitContent(): void {
@@ -642,6 +649,108 @@ describe('MarketChartController', () => {
 
       expect(adapter.setDataCalls).toHaveLength(0)
       expect(controller.getState().barCount).toBe(2)
+    })
+  })
+
+  describe('auto-LOD', () => {
+    const lodSetup = (
+      opts: { timeframe?: '1m' | '5m'; autoLod?: boolean; wire?: boolean; now?: () => number } = {}
+    ) => {
+      const onLod = vi.fn()
+      const adapter = new FakeAdapter()
+      const controller = new MarketChartController({
+        timeframe: opts.timeframe ?? '1m',
+        fetchOlder,
+        ...(opts.now ? { now: opts.now } : {}),
+      })
+
+      controller.reset([wc(60_000)])
+      controller.attach(adapter)
+
+      if (opts.autoLod) {
+        controller.setAutoLod(true)
+      }
+
+      if (opts.wire !== false) {
+        controller.setOnLodTimeframe(onLod)
+      }
+
+      return { onLod, adapter, controller }
+    }
+
+    it('coarsens the timeframe when zoomed out past the density threshold', () => {
+      const { onLod, adapter, controller } = lodSetup({ autoLod: true })
+
+      adapter.visibleRange = { from: 0, to: 600 }
+      adapter.widthValue = 1000
+      adapter.barsBeforeValue = 0
+      controller.handleRangeChange()
+
+      expect(onLod).toHaveBeenCalledWith('5m')
+      expect(fetchOlder).not.toHaveBeenCalled()
+    })
+
+    it('refines the timeframe when zoomed in past the sparse threshold', () => {
+      const { onLod, adapter, controller } = lodSetup({ timeframe: '5m', autoLod: true })
+
+      adapter.visibleRange = { from: 0, to: 50 }
+      adapter.widthValue = 1000
+      controller.handleRangeChange()
+
+      expect(onLod).toHaveBeenCalledWith('1m')
+    })
+
+    it('does not switch within the hysteresis band', () => {
+      const { onLod, adapter, controller } = lodSetup({ autoLod: true })
+
+      adapter.visibleRange = { from: 0, to: 300 }
+      adapter.widthValue = 1000
+      adapter.barsBeforeValue = 500
+      controller.handleRangeChange()
+
+      expect(onLod).not.toHaveBeenCalled()
+    })
+
+    it('does not switch when auto-LOD is disabled', () => {
+      const { onLod, adapter, controller } = lodSetup({ autoLod: false })
+
+      adapter.visibleRange = { from: 0, to: 600 }
+      adapter.widthValue = 1000
+      adapter.barsBeforeValue = 500
+      controller.handleRangeChange()
+
+      expect(onLod).not.toHaveBeenCalled()
+    })
+
+    it('does not switch when no LOD callback is registered', () => {
+      const { onLod, adapter, controller } = lodSetup({ autoLod: true, wire: false })
+
+      adapter.visibleRange = { from: 0, to: 600 }
+      adapter.widthValue = 1000
+      adapter.barsBeforeValue = 500
+      controller.handleRangeChange()
+
+      expect(onLod).not.toHaveBeenCalled()
+    })
+
+    it('respects the dwell lockout after a timeframe switch', () => {
+      let clock = 1000
+      const { onLod, adapter, controller } = lodSetup({
+        autoLod: true,
+        now: () => clock,
+      })
+
+      controller.setTimeframe('5m')
+      adapter.visibleRange = { from: 0, to: 600 }
+      adapter.widthValue = 1000
+      controller.handleRangeChange()
+
+      expect(onLod).not.toHaveBeenCalled()
+
+      clock = 1000 + LOD_DWELL_MS
+      controller.handleRangeChange()
+
+      expect(onLod).toHaveBeenCalledWith('15m')
     })
   })
 

@@ -61,6 +61,9 @@ export const DEFAULT_VISIBLE_BARS = 120
 /** Maximum widening multiplier when scanning back across gaps (weekends / illiquidity). */
 export const MAX_BACKSCAN_WINDOWS = 8
 
+/** Lockout (ms) after a programmatic timeframe switch before auto-LOD may fire again. */
+export const LOD_DWELL_MS = 750
+
 /** A candle held in the navigation window. */
 export interface WindowCandle {
   openAtMs: number
