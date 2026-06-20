@@ -9,6 +9,7 @@ import {
   TIMEFRAME_SECONDS,
   toWindowCandle,
   type TimeframeValue,
+  type WindowCandle,
 } from './chartNavigation'
 import { MarketChartController, type ControllerState } from './marketChartController'
 
@@ -20,6 +21,8 @@ interface MarketChartProps {
   /** Coarse jump target (epoch ms) from the scrubber; null anchors at the latest data. */
   anchorMs: number | null
   enabled: boolean
+  /** Latest live candle (from the warm cache) to fold in; null while scrubbed or feedless. */
+  liveCandle?: WindowCandle | null
   height?: number
 }
 
@@ -43,12 +46,16 @@ export function MarketChart({
   precision,
   anchorMs,
   enabled,
+  liveCandle = null,
   height = 400,
 }: Readonly<MarketChartProps>) {
   const { t } = useTranslation('market')
   const [state, setState] = useState<ControllerState>(INITIAL_STATE)
   const [initialLoading, setInitialLoading] = useState(false)
   const [initialError, setInitialError] = useState<string | null>(null)
+  /** Identity of the params whose initial window has been reset into the controller. */
+  const [readyKey, setReadyKey] = useState<string | null>(null)
+  const currentKey = `${exchange}|${instrument}|${timeframe}|${anchorMs ?? 'live'}`
 
   const fetchOlder = useCallback(
     async (range: { start: string; end: string }) => {
@@ -117,6 +124,7 @@ export function MarketChart({
         }
 
         controller.reset(rows.map(toWindowCandle))
+        setReadyKey(currentKey)
         setInitialLoading(false)
       })
       .catch((error_: unknown) => {
@@ -131,7 +139,15 @@ export function MarketChart({
     return () => {
       cancelled = true
     }
-  }, [controller, enabled, exchange, instrument, timeframe, anchorMs])
+  }, [controller, enabled, exchange, instrument, timeframe, anchorMs, currentKey])
+
+  useEffect(() => {
+    if (!liveCandle || anchorMs !== null || readyKey !== currentKey) {
+      return
+    }
+
+    controller.applyLive(liveCandle)
+  }, [controller, liveCandle, anchorMs, readyKey, currentKey])
 
   useEffect(
     () => () => {

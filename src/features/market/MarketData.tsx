@@ -4,6 +4,7 @@ import { Card } from '../../components/ui'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
 import { MarketChart } from './MarketChart'
+import type { WindowCandle } from './chartNavigation'
 import { PairStatsRow } from './PairStatsRow'
 import { RelatedInstrumentsRow } from './RelatedInstrumentsRow'
 import { CacheWarmingBanner } from './CacheWarmingBanner'
@@ -118,6 +119,28 @@ export function MarketData() {
   const isWarm = cachedResponse?.payload.is_warm ?? true
   const sampleCount = cachedResponse?.payload.sample_count ?? 0
   const cacheSource = cachedResponse?.payload.source ?? 'cache'
+
+  const liveCandle = useMemo<WindowCandle | null>(() => {
+    if (isReplay) {
+      return null
+    }
+
+    const last = candles?.at(-1)
+
+    if (!last) {
+      return null
+    }
+
+    return {
+      openAtMs: last.open_at_ms,
+      open: last.open,
+      high: last.high,
+      low: last.low,
+      close: last.close,
+      volume: last.volume,
+      complete: false,
+    }
+  }, [isReplay, candles])
 
   const replayWindow = useMemo(() => {
     if (replayAt === null) {
@@ -453,6 +476,7 @@ export function MarketData() {
             precision={pricePrecision}
             anchorMs={replayAt}
             enabled={selectedExchange !== null}
+            liveCandle={liveCandle}
           />
         ) : (
           <div className='flex items-center justify-center h-full'>

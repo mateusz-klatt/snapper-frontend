@@ -8,7 +8,7 @@ const datum: ChartDatum = { time: 120, open: 1, high: 2, low: 0, close: 1.5 }
 const makeHandle = (
   overrides: {
     visibleRange?: { from: number; to: number } | null
-    barsInfo?: { barsBefore: number } | null
+    barsInfo?: { barsBefore: number; barsAfter: number } | null
   } = {}
 ) => {
   const timeScale = {
@@ -69,7 +69,7 @@ describe('createChartNavAdapter', () => {
   })
 
   it('returns barsBefore from the series', () => {
-    const { handle } = makeHandle({ barsInfo: { barsBefore: 42 } })
+    const { handle } = makeHandle({ barsInfo: { barsBefore: 42, barsAfter: 7 } })
 
     expect(createChartNavAdapter(handle).barsBefore({ from: 0, to: 10 })).toBe(42)
   })
@@ -78,6 +78,18 @@ describe('createChartNavAdapter', () => {
     const { handle } = makeHandle({ barsInfo: null })
 
     expect(createChartNavAdapter(handle).barsBefore({ from: 0, to: 10 })).toBeNull()
+  })
+
+  it('returns barsAfter from the series', () => {
+    const { handle } = makeHandle({ barsInfo: { barsBefore: 42, barsAfter: 7 } })
+
+    expect(createChartNavAdapter(handle).barsAfter({ from: 0, to: 10 })).toBe(7)
+  })
+
+  it('returns null barsAfter when the series has no info', () => {
+    const { handle } = makeHandle({ barsInfo: null })
+
+    expect(createChartNavAdapter(handle).barsAfter({ from: 0, to: 10 })).toBeNull()
   })
 
   it('forwards fitContent', () => {

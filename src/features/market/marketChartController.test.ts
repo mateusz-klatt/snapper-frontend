@@ -40,6 +40,7 @@ class FakeAdapter implements ChartNavAdapter {
   handler: (() => void) | null = null
   visibleRange: LogicalSpan | null = null
   barsBeforeValue: number | null = 0
+  barsAfterValue: number | null = 5
   onFetchHook: (() => void) | null = null
 
   setData(data: { time: number }[]): void {
@@ -60,6 +61,10 @@ class FakeAdapter implements ChartNavAdapter {
 
   barsBefore(): number | null {
     return this.barsBeforeValue
+  }
+
+  barsAfter(): number | null {
+    return this.barsAfterValue
   }
 
   fitContent(): void {
@@ -284,6 +289,50 @@ describe('MarketChartController', () => {
 
       expect(adapter.setDataCalls.at(-1)).toHaveLength(2)
       expect(adapter.updateLastCalls).toHaveLength(0)
+    })
+
+    it('pins the viewport to the newest bars on an evicting append at the live edge', () => {
+      const adapter = new FakeAdapter()
+      const controller = new MarketChartController({ timeframe: '1m', fetchOlder, maxBars: 3 })
+
+      controller.reset([wc(60_000), wc(120_000), wc(180_000)])
+      controller.attach(adapter)
+      adapter.visibleRange = { from: 1, to: 2 }
+      adapter.barsAfterValue = 0
+      adapter.setVisibleCalls = []
+      controller.applyLive(wc(240_000))
+
+      expect(adapter.setVisibleCalls.at(-1)).toEqual({ from: 1, to: 2 })
+      expect(controller.getState().barCount).toBe(3)
+    })
+
+    it('shifts the viewport left on an evicting append while browsing history', () => {
+      const adapter = new FakeAdapter()
+      const controller = new MarketChartController({ timeframe: '1m', fetchOlder, maxBars: 3 })
+
+      controller.reset([wc(60_000), wc(120_000), wc(180_000)])
+      controller.attach(adapter)
+      adapter.visibleRange = { from: 1, to: 2 }
+      adapter.barsAfterValue = 5
+      adapter.setVisibleCalls = []
+      controller.applyLive(wc(240_000))
+
+      expect(adapter.setVisibleCalls.at(-1)).toEqual({ from: 0, to: 1 })
+    })
+
+    it('skips an evicting append that would remove the bars under view', () => {
+      const adapter = new FakeAdapter()
+      const controller = new MarketChartController({ timeframe: '1m', fetchOlder, maxBars: 3 })
+
+      controller.reset([wc(60_000), wc(120_000), wc(180_000)])
+      controller.attach(adapter)
+      adapter.visibleRange = { from: 0, to: 1 }
+      adapter.barsAfterValue = 5
+      adapter.setDataCalls = []
+      controller.applyLive(wc(240_000))
+
+      expect(adapter.setDataCalls).toHaveLength(0)
+      expect(controller.getState().barCount).toBe(3)
     })
 
     it('updates the window without a chart when detached', () => {

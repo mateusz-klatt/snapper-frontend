@@ -71,6 +71,16 @@ const candleRow = (openAt: string, close = 100): CandleData => ({
   complete: true,
 })
 
+const liveWc = (openAt: string, close = 100) => ({
+  openAtMs: Date.parse(openAt),
+  open: close,
+  high: close + 1,
+  low: close - 1,
+  close,
+  volume: 10,
+  complete: false,
+})
+
 const deferred = <T,>() => {
   let resolve!: (value: T) => void
   let reject!: (reason?: unknown) => void
@@ -129,6 +139,47 @@ describe('MarketChart', () => {
     const call = mocks.getCandlesRange.mock.calls[0]
 
     expect(call?.[4]).toBe(new Date(anchorMs).toISOString())
+  })
+
+  it('folds a live candle into the chart when not scrubbed', async () => {
+    mocks.getCandlesRange.mockResolvedValueOnce([candleRow('2026-06-20T00:00:00Z')])
+    render(<MarketChart {...baseProps} liveCandle={liveWc('2026-06-20T00:01:00Z')} />)
+
+    await waitFor(() => {
+      expect(mocks.series.update).toHaveBeenCalled()
+    })
+  })
+
+  it('defers live candles until the initial window has loaded', async () => {
+    const pending = deferred<CandleData[]>()
+
+    mocks.getCandlesRange.mockReturnValueOnce(pending.promise)
+    render(<MarketChart {...baseProps} liveCandle={liveWc('2026-06-20T00:01:00Z')} />)
+
+    expect(mocks.series.update).not.toHaveBeenCalled()
+    await act(async () => {
+      pending.resolve([candleRow('2026-06-20T00:00:00Z')])
+      await pending.promise
+    })
+    await waitFor(() => {
+      expect(mocks.series.update).toHaveBeenCalled()
+    })
+  })
+
+  it('ignores live candles while scrubbed into the past', async () => {
+    mocks.getCandlesRange.mockResolvedValueOnce([candleRow('2026-06-10T00:00:00Z')])
+    render(
+      <MarketChart
+        {...baseProps}
+        anchorMs={Date.parse('2026-06-10T12:00:00Z')}
+        liveCandle={liveWc('2026-06-10T00:01:00Z')}
+      />
+    )
+
+    await waitFor(() => {
+      expect(mocks.series.setData).toHaveBeenCalled()
+    })
+    expect(mocks.series.update).not.toHaveBeenCalled()
   })
 
   it('shows no-data when the initial window is empty', async () => {

@@ -35,6 +35,7 @@ export interface ChartNavAdapter {
   getVisibleLogicalRange(): LogicalSpan | null
   setVisibleLogicalRange(range: LogicalSpan): void
   barsBefore(range: LogicalSpan): number | null
+  barsAfter(range: LogicalSpan): number | null
   fitContent(): void
   subscribeVisibleLogicalRangeChange(handler: () => void): () => void
 }
@@ -187,14 +188,64 @@ export class MarketChartController {
       return
     }
 
-    this.window = result.candles
+    const adapter = this.adapter
+    const evicted = result.evictedBefore
 
-    if (this.adapter) {
-      if (result.outcome === 'append' && result.evictedBefore > 0) {
-        this.adapter.setData(toChartData(this.window))
-      } else {
-        this.adapter.updateLast(toChartDatum(candle))
-      }
+    if (!adapter) {
+      this.window = result.candles
+      this.emit()
+
+      return
+    }
+
+    if (result.outcome === 'append' && evicted > 0) {
+      this.applyLiveWithEviction(adapter, result.candles, evicted)
+
+      return
+    }
+
+    /**
+     * Update-last and plain append (no eviction): lightweight-charts' `update()`
+     * keeps the user's scroll position (it only follows when already at the live
+     * edge), so this path is viewport-safe without extra work.
+     */
+    this.window = result.candles
+    adapter.updateLast(toChartDatum(candle))
+    this.emit()
+  }
+
+  /**
+   * Append that crossed the cap and evicted oldest bars. Front eviction shifts
+   * every retained bar left, and setData() does not adjust the visible range, so
+   * a naive rebuild would yank a history-browsing user to the right. Capture the
+   * range first; if the user is browsing the very oldest bars the eviction would
+   * remove, skip the append entirely until they scroll back toward live.
+   */
+  private applyLiveWithEviction(
+    adapter: ChartNavAdapter,
+    candles: WindowCandle[],
+    evicted: number
+  ): void {
+    const before = adapter.getVisibleLogicalRange()
+    const barsAfter = before ? adapter.barsAfter(before) : null
+    const atLiveEdge = barsAfter !== null && barsAfter <= 1
+
+    if (before && !atLiveEdge && before.from - evicted < 0) {
+      return
+    }
+
+    this.window = candles
+    adapter.setData(toChartData(this.window))
+
+    if (before) {
+      const maxIndex = this.window.length - 1
+      const span = before.to - before.from
+      const restored = atLiveEdge
+        ? { from: maxIndex - span, to: maxIndex }
+        : { from: before.from - evicted, to: before.to - evicted }
+
+      adapter.setVisibleLogicalRange(restored)
+      this.lastViewport = restored
     }
 
     this.emit()
