@@ -38,6 +38,9 @@ export function createChartNavAdapter(handle: ChartHandle): ChartNavAdapter {
     barsBefore(range: LogicalSpan): number | null {
       return series.barsInLogicalRange(range)?.barsBefore ?? null
     },
+    barsAfter(range: LogicalSpan): number | null {
+      return series.barsInLogicalRange(range)?.barsAfter ?? null
+    },
     fitContent(): void {
       chart.timeScale().fitContent()
     },
