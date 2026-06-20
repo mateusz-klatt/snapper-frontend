@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef, useEffect } from 'react'
+import { useCallback, useMemo, useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '../../components/ui'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
@@ -73,9 +73,35 @@ export function MarketData() {
   const [replayAt, setReplayAt] = useState<number | null>(null)
   const isReplay = replayAt !== null
 
+  /**
+   * Auto level-of-detail (zoom switches the timeframe). On by default; a manual
+   * timeframe selection turns it off so it does not fight the user, and it
+   * re-enables when the instrument/exchange changes.
+   */
+  const [autoLodEnabled, setAutoLodEnabled] = useState(true)
+
   useEffect(() => {
     setReplayAt(null)
   }, [selectedInstrument, selectedExchange, selectedTimeframe])
+
+  useEffect(() => {
+    setAutoLodEnabled(true)
+  }, [selectedInstrument, selectedExchange])
+
+  const handleTimeframeSelect = useCallback(
+    (value: string) => {
+      setAutoLodEnabled(false)
+      setSelectedTimeframe(value)
+    },
+    [setSelectedTimeframe]
+  )
+
+  const handleLodTimeframe = useCallback(
+    (next: string) => {
+      setSelectedTimeframe(next)
+    },
+    [setSelectedTimeframe]
+  )
 
   const timeframes = useMemo(
     () => TIMEFRAME_VALUES.map(value => ({ value, label: t(`timeframes.${value}`) })),
@@ -374,7 +400,7 @@ export function MarketData() {
           <label htmlFor='timeframe-select' className='text-sm font-medium text-muted-600'>
             {t('controls.timeframe')}
           </label>
-          <Select.Root value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
+          <Select.Root value={selectedTimeframe} onValueChange={handleTimeframeSelect}>
             <Select.Trigger
               id='timeframe-select'
               className='inline-flex items-center justify-center rounded-sm px-3 py-2 text-sm bg-alpine-50 border border-dark-600 text-alpine-900 hover:bg-dark-700 focus:outline-hidden focus:ring-2 focus:ring-primary-500 focus:border-primary-500'
@@ -477,6 +503,8 @@ export function MarketData() {
             anchorMs={replayAt}
             enabled={selectedExchange !== null}
             liveCandle={liveCandle}
+            autoLod={autoLodEnabled && replayAt === null}
+            onLodTimeframe={handleLodTimeframe}
           />
         ) : (
           <div className='flex items-center justify-center h-full'>

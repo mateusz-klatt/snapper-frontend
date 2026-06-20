@@ -114,9 +114,20 @@ vi.mock('../../hooks/useWSDispatcher', () => ({
   })),
 }))
 vi.mock('./MarketChart', () => ({
-  MarketChart: ({ instrument, timeframe }: { instrument: string | null; timeframe: string }) => (
+  MarketChart: ({
+    instrument,
+    timeframe,
+    onLodTimeframe,
+  }: {
+    instrument: string | null
+    timeframe: string
+    onLodTimeframe?: (tf: string) => void
+  }) => (
     <div data-testid='market-chart'>
       Chart {instrument} {timeframe}
+      <button data-testid='lod-trigger' onClick={() => onLodTimeframe?.('5m')}>
+        lod
+      </button>
     </div>
   ),
 }))
@@ -582,6 +593,12 @@ describe('MarketData', () => {
 
     expect(input.getAttribute('list')).toBe('instrument-options')
   })
+  it('applies an auto-LOD timeframe switch from the chart', async () => {
+    renderWithProviders(<MarketData />)
+    fireEvent.click(screen.getByTestId('lod-trigger'))
+    expect(mockSetSelectedTimeframe).toHaveBeenCalledWith('5m')
+  })
+
   it('calls setSelectedTimeframe when timeframe is changed', async () => {
     const user = userEvent.setup()
 

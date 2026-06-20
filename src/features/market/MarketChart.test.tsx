@@ -10,6 +10,7 @@ const mocks = vi.hoisted(() => {
     getVisibleLogicalRange: vi.fn<() => { from: number; to: number } | null>(() => null),
     setVisibleLogicalRange: vi.fn(),
     fitContent: vi.fn(),
+    width: vi.fn(() => 1000),
     subscribeVisibleLogicalRangeChange: vi.fn((cb: () => void) => {
       handlerRef.current = cb
     }),
@@ -180,6 +181,25 @@ describe('MarketChart', () => {
       expect(mocks.series.setData).toHaveBeenCalled()
     })
     expect(mocks.series.update).not.toHaveBeenCalled()
+  })
+
+  it('requests a timeframe switch when zoomed out with auto-LOD on', async () => {
+    const onLodTimeframe = vi.fn()
+
+    mocks.getCandlesRange.mockResolvedValueOnce([candleRow('2026-06-20T00:00:00Z')])
+    render(<MarketChart {...baseProps} autoLod onLodTimeframe={onLodTimeframe} />)
+    await waitFor(() => {
+      expect(mocks.series.setData).toHaveBeenCalled()
+    })
+
+    mocks.timeScale.getVisibleLogicalRange.mockReturnValue({ from: 0, to: 600 })
+    mocks.timeScale.width.mockReturnValue(1000)
+
+    act(() => {
+      mocks.handlerRef.current?.()
+    })
+
+    expect(onLodTimeframe).toHaveBeenCalledWith('5m')
   })
 
   it('shows no-data when the initial window is empty', async () => {
