@@ -147,6 +147,22 @@ describe('LightweightChart', () => {
     unmount()
     expect(mockRemove).toHaveBeenCalled()
   })
+  it('hands the chart handle to onChartReady on creation and null on cleanup', () => {
+    const onChartReady = vi.fn()
+    const { unmount } = render(<LightweightChart data={sampleData} onChartReady={onChartReady} />)
+
+    expect(onChartReady).toHaveBeenCalledWith(
+      expect.objectContaining({ chart: expect.anything(), series: expect.anything() })
+    )
+    onChartReady.mockClear()
+    unmount()
+    expect(onChartReady).toHaveBeenCalledWith(null)
+  })
+  it('does not drive series data from the data prop in managed mode', () => {
+    mockSetData.mockClear()
+    render(<LightweightChart data={sampleData} onChartReady={vi.fn()} />)
+    expect(mockSetData).not.toHaveBeenCalled()
+  })
   it('updates data when prop changes', () => {
     const { rerender } = render(<LightweightChart data={sampleData} />)
     const newData = [{ time: '2024-01-03' as never, open: 110, high: 120, low: 105, close: 115 }]

@@ -1,9 +1,9 @@
 import { useMemo, useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Card, LoadingSpinner } from '../../components/ui'
+import { Card } from '../../components/ui'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
-import { LightweightChart } from '../../components/LightweightChart'
+import { MarketChart } from './MarketChart'
 import { PairStatsRow } from './PairStatsRow'
 import { RelatedInstrumentsRow } from './RelatedInstrumentsRow'
 import { CacheWarmingBanner } from './CacheWarmingBanner'
@@ -107,12 +107,7 @@ export function MarketData() {
   }, [instruments])
   const isSelectedMarketDataOnly =
     selectedInstrument !== null && capabilityMap.get(selectedInstrument) === false
-  const {
-    data: cachedResponse,
-    isLoading,
-    error,
-    isFetching,
-  } = useCachedCandles(
+  const { data: cachedResponse, isFetching } = useCachedCandles(
     selectedExchange,
     selectedInstrument,
     selectedTimeframe,
@@ -137,12 +132,7 @@ export function MarketData() {
       end: new Date(replayAt + halfMs).toISOString(),
     }
   }, [replayAt, selectedTimeframe])
-  const {
-    data: replayCandles,
-    isLoading: replayLoading,
-    error: replayError,
-    isFetching: replayFetching,
-  } = useTimeTravelCandles(
+  const { data: replayCandles, isFetching: replayFetching } = useTimeTravelCandles(
     selectedExchange,
     selectedInstrument,
     selectedTimeframe,
@@ -165,8 +155,6 @@ export function MarketData() {
 
     return candles ?? []
   }, [isReplay, replayCandles, candles])
-  const effectiveLoading = isReplay ? replayLoading : isLoading
-  const effectiveError = isReplay ? replayError : error
   const effectiveFetching = isReplay ? replayFetching : isFetching
   const flushedRef = useRef(false)
 
@@ -457,22 +445,16 @@ export function MarketData() {
             source={cacheSource}
           />
         )}
-        {effectiveLoading && (
-          <div className='flex items-center justify-center h-full'>
-            <LoadingSpinner />
-          </div>
-        )}
-        {!effectiveLoading && effectiveError && (
-          <div className='flex items-center justify-center h-full'>
-            <p className='text-loss-600'>
-              {t('chart.errorPrefix')} {effectiveError?.message || t('chart.unknownError')}
-            </p>
-          </div>
-        )}
-        {!effectiveLoading && !effectiveError && chartData.length > 0 && (
-          <LightweightChart data={chartData} height={400} precision={pricePrecision} />
-        )}
-        {!effectiveLoading && !effectiveError && chartData.length === 0 && (
+        {selectedInstrument !== null && isTimeframeValue(selectedTimeframe) ? (
+          <MarketChart
+            exchange={selectedExchange}
+            instrument={selectedInstrument}
+            timeframe={selectedTimeframe}
+            precision={pricePrecision}
+            anchorMs={replayAt}
+            enabled={selectedExchange !== null}
+          />
+        ) : (
           <div className='flex items-center justify-center h-full'>
             <div className='text-center'>
               <p className='text-muted-500 mb-2'>
