@@ -13,6 +13,7 @@ export const queryKeys = {
   systemDbStats: ['system', 'db-stats'] as const,
   systemNotificationMetrics: ['system', 'notification-metrics'] as const,
   systemRetention: ['system', 'retention'] as const,
+  systemEgressHealth: ['system', 'egress-health'] as const,
   processStatus: ['process', 'status'] as const,
   availableProcesses: ['processes', 'available'] as const,
   configuredProcesses: (asOf: string | null) => ['processes', 'configured', asOf] as const,

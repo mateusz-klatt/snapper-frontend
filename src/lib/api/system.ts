@@ -6,6 +6,7 @@ import {
   DbStatsResponseSchema,
   NotificationMetricsResponseSchema,
   RetentionRunResponseSchema,
+  EgressHealthResponseSchema,
 } from '../schemas/api.generated.zod'
 import type {
   SystemStatusResponse,
@@ -13,6 +14,7 @@ import type {
   DbStatsResponse,
   NotificationMetricsResponse,
   RetentionRunResponse,
+  EgressHealthResponse,
 } from '../../types/api'
 
 export async function getSystemStatus(): Promise<SystemStatusResponse> {
@@ -43,4 +45,10 @@ export async function getRetentionRun(): Promise<RetentionRunResponse> {
   const data = await apiClient.getJSON('/api/metrics/retention')
 
   return validateResponse(data, RetentionRunResponseSchema, '/metrics/retention')
+}
+
+export async function getEgressHealth(): Promise<EgressHealthResponse> {
+  const data = await apiClient.getJSON('/api/health/egress')
+
+  return validateResponse(data, EgressHealthResponseSchema, '/health/egress')
 }

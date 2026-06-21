@@ -124,6 +124,56 @@
     "tracemallocActive": "Aktywne",
     "tracemallocIdle": "Bezczynne"
   },
+  "egress": {
+    "title": "Kondycja egress",
+    "loading": "Ładowanie kondycji egress…",
+    "unavailable": "Kondycja egress niedostępna: {{message}}",
+    "fallbackError": "Nie udało się załadować kondycji egress.",
+    "enabled": "Włączone",
+    "disabled": "Wyłączone",
+    "disabledMessage": "Pula egress jest wyłączona; ruch wychodzący używa domyślnej ścieżki sieciowej.",
+    "fallbackWarning": "Ostrzeżenie: ruch prywatny korzysta z zapasowego VPN, a nie z bezpośredniego egress.",
+    "noRoutes": "Nie skonfigurowano tras egress.",
+    "anyExchange": "Wszystkie",
+    "none": "Brak",
+    "reservation": "{{exchange}} · {{trafficClass}}",
+    "summary": {
+      "pool": "Pula",
+      "policy": "Polityka kwarantanny",
+      "fallbackRoute": "Zapasowa trasa prywatna",
+      "routes": "Trasy"
+    },
+    "policy": {
+      "wait": "Czekaj",
+      "raise": "Zgłoś błąd"
+    },
+    "columns": {
+      "id": "ID",
+      "kind": "Rodzaj",
+      "region": "Region",
+      "exitIp": "IP wyjściowe",
+      "provider": "Dostawca",
+      "priority": "Priorytet",
+      "allowedExchanges": "Dozwolone giełdy",
+      "status": "Status",
+      "inUse": "W użyciu",
+      "reservations": "Aktywne rezerwacje"
+    },
+    "kind": {
+      "direct": "direct",
+      "socks5": "socks5"
+    },
+    "status": {
+      "active": "Aktywna",
+      "quarantined": "Kwarantanna",
+      "quarantinedSeconds": "Kwarantanna ({{seconds}}s)",
+      "disabled": "Wyłączona"
+    },
+    "trafficClass": {
+      "public": "publiczny",
+      "private": "prywatny"
+    }
+  },
   "relativeAge": {
     "justNow": "przed chwilą",
     "seconds": "{{seconds}}s temu",

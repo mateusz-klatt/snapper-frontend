@@ -355,6 +355,18 @@ export const DeviceAlertPrefInfoSchema = _DeviceAlertPrefInfoRawSchema as unknow
   Components['schemas']['DeviceAlertPrefInfo']
 >
 
+const _EgressActiveReservationSnapshotRawSchema = z
+  .object({
+    exchange: z.string(),
+    traffic_class: z.enum(['public', 'private']),
+  })
+  .strict()
+
+export const EgressActiveReservationSnapshotSchema =
+  _EgressActiveReservationSnapshotRawSchema as unknown as z.ZodType<
+    Components['schemas']['EgressActiveReservationSnapshot']
+  >
+
 const _EquityOverlayPointRawSchema = z
   .object({
     point_time: z.iso.datetime(),
@@ -2247,6 +2259,28 @@ export const RevokeDevicePrefResponseSchema =
     Components['schemas']['RevokeDevicePrefResponse']
   >
 
+const _EgressRouteStatusSnapshotRawSchema = z
+  .object({
+    id: z.string(),
+    kind: z.enum(['direct', 'socks5']),
+    region: z.string().nullable().optional(),
+    exit_ip: z.string().nullable().optional(),
+    provider: z.string().nullable().optional(),
+    priority: z.number().int(),
+    allowed_exchanges: z.array(z.string()).optional(),
+    enabled: z.boolean(),
+    quarantined: z.boolean(),
+    quarantine_seconds_remaining: z.number().nullable(),
+    in_use_count: z.number().int(),
+    active_reservations: z.array(EgressActiveReservationSnapshotSchema).optional(),
+  })
+  .strict()
+
+export const EgressRouteStatusSnapshotSchema =
+  _EgressRouteStatusSnapshotRawSchema as unknown as z.ZodType<
+    Components['schemas']['EgressRouteStatusSnapshot']
+  >
+
 const _ExecutionListResponseRawSchema = z
   .object({
     type: z.literal('execution_list'),
@@ -3693,6 +3727,26 @@ export const ListedCachedStatsResponseSchema =
     Components['schemas']['ListedCachedStatsResponse']
   >
 
+const _EgressHealthDataRawSchema = z
+  .object({
+    type: z.literal('egress_health'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    enabled: z.boolean(),
+    on_all_quarantined: z.enum(['wait', 'raise']).nullable().optional(),
+    private_fallback_route_id: z.string().nullable().optional(),
+    private_on_fallback: z.boolean(),
+    routes: z.array(EgressRouteStatusSnapshotSchema).optional(),
+  })
+  .strict()
+
+export const EgressHealthDataSchema = _EgressHealthDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['EgressHealthData']
+>
+
 const _HealthCheckDataRawSchema = z
   .object({
     type: z.literal('health_check'),
@@ -4074,6 +4128,22 @@ const _ZmqHealthResponseRawSchema = z
 
 export const ZmqHealthResponseSchema = _ZmqHealthResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['ZmqHealthResponse']
+>
+
+const _EgressHealthResponseRawSchema = z
+  .object({
+    type: z.literal('egress_health_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: EgressHealthDataSchema,
+  })
+  .strict()
+
+export const EgressHealthResponseSchema = _EgressHealthResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['EgressHealthResponse']
 >
 
 const _HealthCheckResponseRawSchema = z
@@ -4997,6 +5067,8 @@ export type CpuMetrics = Components['schemas']['CpuMetrics']
 export type CredentialSummary = Components['schemas']['CredentialSummary']
 export type DbInternalMetrics = Components['schemas']['DbInternalMetrics']
 export type DeviceAlertPrefInfo = Components['schemas']['DeviceAlertPrefInfo']
+export type EgressActiveReservationSnapshot =
+  Components['schemas']['EgressActiveReservationSnapshot']
 export type EquityOverlayPoint = Components['schemas']['EquityOverlayPoint']
 export type ExchangeListResponse = Components['schemas']['ExchangeListResponse']
 export type ExecutionData = Components['schemas']['ExecutionData']
@@ -5114,6 +5186,7 @@ export type CredentialResponse = Components['schemas']['CredentialResponse']
 export type DeviceAlertPrefListResponse = Components['schemas']['DeviceAlertPrefListResponse']
 export type DeviceAlertPrefResponse = Components['schemas']['DeviceAlertPrefResponse']
 export type RevokeDevicePrefResponse = Components['schemas']['RevokeDevicePrefResponse']
+export type EgressRouteStatusSnapshot = Components['schemas']['EgressRouteStatusSnapshot']
 export type ExecutionListResponse = Components['schemas']['ExecutionListResponse']
 export type ExecutionPlanResponse = Components['schemas']['ExecutionPlanResponse']
 export type FeatureFlagsResponse = Components['schemas']['FeatureFlagsResponse']
@@ -5203,6 +5276,7 @@ export type TrailingStopCancelCommand = Components['schemas']['TrailingStopCance
 export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
+export type EgressHealthData = Components['schemas']['EgressHealthData']
 export type HealthCheckData = Components['schemas']['HealthCheckData']
 export type MarketFeedHealthResponse = Components['schemas']['MarketFeedHealthResponse']
 export type JsonObject = Components['schemas']['JsonObject']
@@ -5226,6 +5300,7 @@ export type CreateUserRequest = Components['schemas']['CreateUserRequest']
 export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
 export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
+export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
 export type AiReviewDecisionResponse = Components['schemas']['AiReviewDecisionResponse']
 export type AlertEventInfo = Components['schemas']['AlertEventInfo']

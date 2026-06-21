@@ -7,6 +7,7 @@ import { SystemMetricsCard } from './SystemMetricsCard'
 import { DbStatsCard } from './DbStatsCard'
 import { NotificationMetricsCard } from './NotificationMetricsCard'
 import { RetentionCard } from './RetentionCard'
+import { EgressCard } from './EgressCard'
 import clsx from 'clsx'
 import type { ProcessStatus } from '../../types/api'
 
@@ -250,6 +251,7 @@ export const Health: React.FC = () => {
           </div>
         )}
       <SystemMetricsCard />
+      <EgressCard />
       <DbStatsCard />
       <NotificationMetricsCard />
       <RetentionCard />

@@ -124,6 +124,56 @@
     "tracemallocActive": "نشط",
     "tracemallocIdle": "خامل"
   },
+  "egress": {
+    "title": "Egress Health",
+    "loading": "Loading egress health…",
+    "unavailable": "Egress health unavailable: {{message}}",
+    "fallbackError": "Failed to load egress health.",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
+    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
+    "noRoutes": "No egress routes configured.",
+    "anyExchange": "All",
+    "none": "None",
+    "reservation": "{{exchange}} · {{trafficClass}}",
+    "summary": {
+      "pool": "Pool",
+      "policy": "Quarantine policy",
+      "fallbackRoute": "Private fallback",
+      "routes": "Routes"
+    },
+    "policy": {
+      "wait": "Wait",
+      "raise": "Raise"
+    },
+    "columns": {
+      "id": "ID",
+      "kind": "Kind",
+      "region": "Region",
+      "exitIp": "Exit IP",
+      "provider": "Provider",
+      "priority": "Priority",
+      "allowedExchanges": "Allowed exchanges",
+      "status": "Status",
+      "inUse": "In use",
+      "reservations": "Active reservations"
+    },
+    "kind": {
+      "direct": "direct",
+      "socks5": "socks5"
+    },
+    "status": {
+      "active": "Active",
+      "quarantined": "Quarantined",
+      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
+      "disabled": "Disabled"
+    },
+    "trafficClass": {
+      "public": "public",
+      "private": "private"
+    }
+  },
   "relativeAge": {
     "justNow": "الآن",
     "seconds": "قبل {{seconds}}ث",

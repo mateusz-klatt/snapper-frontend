@@ -155,3 +155,9 @@ export type NotificationMetricsData = Components['schemas']['NotificationMetrics
 export type RetentionRunResponse = Components['schemas']['RetentionRunResponse']
 export type RetentionRunData = Components['schemas']['RetentionRunData']
 export type RetentionPolicyResult = Components['schemas']['RetentionPolicyResult']
+
+export type EgressActiveReservationSnapshot =
+  Components['schemas']['EgressActiveReservationSnapshot']
+export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
+export type EgressHealthData = Components['schemas']['EgressHealthData']
+export type EgressRouteStatusSnapshot = Components['schemas']['EgressRouteStatusSnapshot']

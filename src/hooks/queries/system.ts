@@ -5,6 +5,7 @@ import {
   getDbStats,
   getNotificationMetrics,
   getRetentionRun,
+  getEgressHealth,
 } from '../../lib/api/system'
 import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
@@ -70,6 +71,19 @@ export const useRetentionRun = () => {
     queryKey: queryKeys.systemRetention,
     queryFn: () => getRetentionRun(),
     refetchInterval: isAuthenticated && !isTimeTraveling ? 60000 : false,
+    enabled: isAuthenticated,
+    throwOnError: false,
+  })
+}
+
+export const useEgressHealth = () => {
+  const { isAuthenticated } = useAuth()
+  const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
+
+  return useQuery({
+    queryKey: queryKeys.systemEgressHealth,
+    queryFn: () => getEgressHealth(),
+    refetchInterval: isAuthenticated && !isTimeTraveling ? 10000 : false,
     enabled: isAuthenticated,
     throwOnError: false,
   })
