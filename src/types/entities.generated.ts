@@ -254,6 +254,20 @@ export interface DelegateOffline {
 }
 
 /**
+ * Canonical EgressPoolSnapshotEvent entity.
+ * From WebSocket EgressPoolSnapshotEventData.
+ */
+export interface EgressPoolSnapshotEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  container: string
+  snapshot: Record<string, unknown>
+}
+
+/**
  * Canonical Execution entity.
  * From WebSocket ExecutionData.
  */
@@ -958,6 +972,50 @@ export interface VenueFeeSchedule {
   takerBps: number
   minVolume30d: number | null
   currency: string
+}
+
+/**
+ * Canonical EgressActiveReservation entity.
+ * From REST API EgressActiveReservationSnapshot.
+ */
+export interface EgressActiveReservation {
+  exchange: string
+  trafficClass: 'public' | 'private'
+  container?: string
+}
+
+/**
+ * Canonical EgressConnection entity.
+ * From REST API EgressConnectionSnapshot.
+ */
+export interface EgressConnection {
+  host: string
+  kind: 'ws' | 'rest'
+  exchange: string
+  trafficClass: 'public' | 'private'
+  container?: string
+  count: number
+  lastSeenAt?: Date | null
+}
+
+/**
+ * Canonical EgressRouteStatus entity.
+ * From REST API EgressRouteStatusSnapshot.
+ */
+export interface EgressRouteStatus {
+  id: string | number
+  kind: 'direct' | 'socks5'
+  region?: string | null
+  exitIp?: string | null
+  provider?: string | null
+  priority: number
+  allowedExchanges?: string[]
+  enabled: boolean
+  quarantined: boolean
+  quarantineSecondsRemaining: number | null
+  inUseCount: number
+  activeReservations?: Record<string, unknown>[]
+  connections?: Record<string, unknown>[]
 }
 
 /**

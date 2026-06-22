@@ -196,6 +196,26 @@ export const DelegateOfflineDataSchema = z
   })
   .strict()
 
+export const EgressActiveReservationSnapshotSchema = z
+  .object({
+    exchange: z.string(),
+    traffic_class: z.enum(['public', 'private']),
+    container: z.string(),
+  })
+  .strict()
+
+export const EgressConnectionSnapshotSchema = z
+  .object({
+    host: z.string(),
+    kind: z.enum(['ws', 'rest']),
+    exchange: z.string(),
+    traffic_class: z.enum(['public', 'private']),
+    container: z.string(),
+    count: z.number().int(),
+    last_seen_at: z.iso.datetime().nullable().optional(),
+  })
+  .strict()
+
 export const ExecutionDataSchema = z
   .object({
     type: z.literal('execution'),
@@ -1039,6 +1059,24 @@ export const WSUnsubscribeRequestSchema = z
 
 export const JsonValueSchema = z.unknown()
 
+export const EgressRouteStatusSnapshotSchema = z
+  .object({
+    id: z.string(),
+    kind: z.enum(['direct', 'socks5']),
+    region: z.string().nullable().optional(),
+    exit_ip: z.string().nullable().optional(),
+    provider: z.string().nullable().optional(),
+    priority: z.number().int(),
+    allowed_exchanges: z.array(z.string()).optional(),
+    enabled: z.boolean(),
+    quarantined: z.boolean(),
+    quarantine_seconds_remaining: z.number().nullable(),
+    in_use_count: z.number().int(),
+    active_reservations: z.array(EgressActiveReservationSnapshotSchema).optional(),
+    connections: z.array(EgressConnectionSnapshotSchema).optional(),
+  })
+  .strict()
+
 export const ProcessSummaryEventDataSchema = z
   .object({
     type: z.literal('process_summary_event'),
@@ -1069,6 +1107,16 @@ export const WSAuthCompleteResponseSchema = z
   .strict()
 
 export const JsonObjectSchema = z.record(z.string(), z.any())
+
+export const EgressPoolStatusSnapshotSchema = z
+  .object({
+    enabled: z.boolean(),
+    on_all_quarantined: z.enum(['wait', 'raise']).nullable().optional(),
+    private_fallback_route_id: z.string().nullable().optional(),
+    private_on_fallback: z.boolean(),
+    routes: z.array(EgressRouteStatusSnapshotSchema).optional(),
+  })
+  .strict()
 
 export const AiReviewRequestFrameDataSchema = z
   .object({
@@ -1155,5 +1203,18 @@ export const HeartbeatDataSchema = z
     status: z.enum(['healthy', 'warning', 'error']),
     lag_ms: z.number().int(),
     meta: z.record(z.string(), z.any()),
+  })
+  .strict()
+
+export const EgressPoolSnapshotEventDataSchema = z
+  .object({
+    type: z.literal('egress_pool_snapshot_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    container: z.string(),
+    snapshot: EgressPoolStatusSnapshotSchema,
   })
   .strict()
