@@ -399,6 +399,27 @@ export const EgressContainerSummarySchema =
     Components['schemas']['EgressContainerSummary']
   >
 
+const _EgressTransferSnapshotRawSchema = z
+  .object({
+    interface: z.string(),
+    socks5_listen_port: z.number().int(),
+    rx_bytes: z.number().int(),
+    tx_bytes: z.number().int(),
+    rx_rate_bytes_per_second: z.number().nullable().optional(),
+    tx_rate_bytes_per_second: z.number().nullable().optional(),
+    latest_handshake_at: z.iso.datetime().nullable().optional(),
+    counter_reset: z.boolean(),
+    sampled_at: z.iso.datetime(),
+    sample_age_seconds: z.number(),
+    stale: z.boolean(),
+  })
+  .strict()
+
+export const EgressTransferSnapshotSchema =
+  _EgressTransferSnapshotRawSchema as unknown as z.ZodType<
+    Components['schemas']['EgressTransferSnapshot']
+  >
+
 const _EquityOverlayPointRawSchema = z
   .object({
     point_time: z.iso.datetime(),
@@ -2295,6 +2316,7 @@ const _EgressRouteStatusSnapshotRawSchema = z
   .object({
     id: z.string(),
     kind: z.enum(['direct', 'socks5']),
+    proxy_url: z.string().nullable().optional(),
     region: z.string().nullable().optional(),
     exit_ip: z.string().nullable().optional(),
     provider: z.string().nullable().optional(),
@@ -2306,6 +2328,7 @@ const _EgressRouteStatusSnapshotRawSchema = z
     in_use_count: z.number().int(),
     active_reservations: z.array(EgressActiveReservationSnapshotSchema).optional(),
     connections: z.array(EgressConnectionSnapshotSchema).optional(),
+    transfer: EgressTransferSnapshotSchema.nullable().optional(),
   })
   .strict()
 
@@ -5105,6 +5128,7 @@ export type EgressActiveReservationSnapshot =
   Components['schemas']['EgressActiveReservationSnapshot']
 export type EgressConnectionSnapshot = Components['schemas']['EgressConnectionSnapshot']
 export type EgressContainerSummary = Components['schemas']['EgressContainerSummary']
+export type EgressTransferSnapshot = Components['schemas']['EgressTransferSnapshot']
 export type EquityOverlayPoint = Components['schemas']['EquityOverlayPoint']
 export type ExchangeListResponse = Components['schemas']['ExchangeListResponse']
 export type ExecutionData = Components['schemas']['ExecutionData']

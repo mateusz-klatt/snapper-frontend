@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
 
 import { useEgressHealth } from '../../hooks/queries/system'
-import { formatNumber } from '../../lib/utils'
+import { formatBytes, formatNumber } from '../../lib/utils'
 
 import type {
   EgressActiveReservationSnapshot,
@@ -16,6 +16,8 @@ import type {
 const EMPTY_VALUE = '—'
 
 type EgressPolicy = NonNullable<EgressHealthData['on_all_quarantined']>
+type EgressTransferSnapshot = NonNullable<EgressRouteStatusSnapshot['transfer']>
+type TrafficDirection = 'rx' | 'tx'
 
 function formatRelativeAgeSeconds(seconds: number, t: TFunction<'health', undefined>): string {
   const ageS = Math.max(0, seconds)
@@ -40,6 +42,27 @@ function formatOptionalText(value: string | null | undefined): string {
   if (value === null || value === undefined || value.length === 0) return EMPTY_VALUE
 
   return value
+}
+
+function formatTrafficLine(
+  direction: TrafficDirection,
+  bytes: number,
+  rateBytesPerSecond: number | null | undefined,
+  t: TFunction<'health', undefined>
+): string {
+  const byteLabel = formatBytes(bytes)
+
+  if (rateBytesPerSecond === null || rateBytesPerSecond === undefined) {
+    return direction === 'rx'
+      ? t('egress.traffic.rxBytes', { bytes: byteLabel })
+      : t('egress.traffic.txBytes', { bytes: byteLabel })
+  }
+
+  const rateLabel = formatBytes(rateBytesPerSecond)
+
+  return direction === 'rx'
+    ? t('egress.traffic.rxRate', { bytes: byteLabel, rate: rateLabel })
+    : t('egress.traffic.txRate', { bytes: byteLabel, rate: rateLabel })
 }
 
 interface SummaryCellProps {
@@ -204,6 +227,40 @@ const ConnectionList: React.FC<ConnectionListProps> = ({ connections }) => {
   )
 }
 
+interface TrafficCellProps {
+  readonly transfer: EgressTransferSnapshot | null | undefined
+}
+
+const TrafficCell: React.FC<TrafficCellProps> = ({ transfer }) => {
+  const { t } = useTranslation('health')
+  const now = new Date()
+
+  if (transfer === null || transfer === undefined) {
+    return <span className='text-muted-500'>{EMPTY_VALUE}</span>
+  }
+
+  return (
+    <div className='flex flex-col gap-1 font-mono text-xs text-alpine-900'>
+      <span className='whitespace-nowrap'>
+        {formatTrafficLine('rx', transfer.rx_bytes, transfer.rx_rate_bytes_per_second, t)}
+      </span>
+      <span className='whitespace-nowrap'>
+        {formatTrafficLine('tx', transfer.tx_bytes, transfer.tx_rate_bytes_per_second, t)}
+      </span>
+      {transfer.latest_handshake_at !== null && transfer.latest_handshake_at !== undefined && (
+        <span className='whitespace-nowrap text-muted-500'>
+          {t('egress.traffic.handshake', {
+            age: formatRelativeAgeFromTimestamp(transfer.latest_handshake_at, now, t),
+          })}
+        </span>
+      )}
+      {transfer.stale && (
+        <span className='whitespace-nowrap text-warning-700'>{t('egress.containers.stale')}</span>
+      )}
+    </div>
+  )
+}
+
 interface RouteRowProps {
   readonly route: EgressRouteStatusSnapshot
 }
@@ -232,6 +289,9 @@ const RouteRow: React.FC<RouteRowProps> = ({ route }) => {
       </td>
       <td className='px-3 py-2 text-right font-mono text-xs text-alpine-900'>
         {formatNumber(route.in_use_count)}
+      </td>
+      <td className='px-3 py-2 text-xs'>
+        <TrafficCell transfer={route.transfer} />
       </td>
       <td className='px-3 py-2 text-xs'>
         <ReservationList reservations={route.active_reservations} />
@@ -264,6 +324,7 @@ const RoutesTable: React.FC<RoutesTableProps> = ({ routes }) => {
             <th className='px-3 py-2'>{t('egress.columns.allowedExchanges')}</th>
             <th className='px-3 py-2'>{t('egress.columns.status')}</th>
             <th className='px-3 py-2 text-right'>{t('egress.columns.inUse')}</th>
+            <th className='px-3 py-2'>{t('egress.columns.traffic')}</th>
             <th className='px-3 py-2'>{t('egress.columns.reservations')}</th>
             <th className='px-3 py-2'>{t('egress.columns.connections')}</th>
           </tr>

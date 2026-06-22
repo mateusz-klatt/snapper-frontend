@@ -47,12 +47,19 @@ describe('formatNumber', () => {
 })
 
 describe('formatBytes', () => {
+  it('renders values below one kibibyte as bytes', () => {
+    expect(formatBytes(0)).toBe('0 B')
+    expect(formatBytes(512)).toBe('512 B')
+  })
+
+  it('renders sub-mebibyte values in kibibytes with one decimal', () => {
+    expect(formatBytes(128 * 1024)).toBe('128.0 KiB')
+  })
+
   it('renders sub-gibibyte values in mebibytes with one decimal', () => {
     expect(formatBytes(256 * 1024 * 1024)).toBe('256.0 MiB')
   })
-  it('renders zero as 0.0 MiB', () => {
-    expect(formatBytes(0)).toBe('0.0 MiB')
-  })
+
   it('switches to gibibytes at the 1024 MiB boundary', () => {
     expect(formatBytes(1024 * 1024 * 1024)).toBe('1.00 GiB')
   })

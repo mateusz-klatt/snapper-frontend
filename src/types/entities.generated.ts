@@ -268,6 +268,19 @@ export interface EgressPoolSnapshotEvent {
 }
 
 /**
+ * Canonical EgressTransferEvent entity.
+ * From WebSocket EgressTransferEventData.
+ */
+export interface EgressTransferEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  interfaces?: Record<string, unknown>[]
+}
+
+/**
  * Canonical Execution entity.
  * From WebSocket ExecutionData.
  */
@@ -1005,6 +1018,7 @@ export interface EgressConnection {
 export interface EgressRouteStatus {
   id: string | number
   kind: 'direct' | 'socks5'
+  proxyUrl?: string | null
   region?: string | null
   exitIp?: string | null
   provider?: string | null
@@ -1016,6 +1030,25 @@ export interface EgressRouteStatus {
   inUseCount: number
   activeReservations?: Record<string, unknown>[]
   connections?: Record<string, unknown>[]
+  transfer?: Record<string, unknown> | null
+}
+
+/**
+ * Canonical EgressTransfer entity.
+ * From REST API EgressTransferSnapshot.
+ */
+export interface EgressTransfer {
+  interface: string
+  socks5ListenPort: number
+  rxBytes: number
+  txBytes: number
+  rxRateBytesPerSecond?: number | null
+  txRateBytesPerSecond?: number | null
+  latestHandshakeAt?: Date | null
+  counterReset: boolean
+  sampledAt: Date
+  sampleAgeSeconds: number
+  stale: boolean
 }
 
 /**

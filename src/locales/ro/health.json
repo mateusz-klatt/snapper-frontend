@@ -171,8 +171,16 @@
       "allowedExchanges": "Allowed exchanges",
       "status": "Status",
       "inUse": "In use",
+      "traffic": "Traffic",
       "reservations": "Active reservations",
       "connections": "Connections"
+    },
+    "traffic": {
+      "rxBytes": "↓ {{bytes}}",
+      "rxRate": "↓ {{bytes}} · {{rate}}/s",
+      "txBytes": "↑ {{bytes}}",
+      "txRate": "↑ {{bytes}} · {{rate}}/s",
+      "handshake": "hs {{age}}"
     },
     "kind": {
       "direct": "direct",
