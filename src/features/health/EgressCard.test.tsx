@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { render, screen, within } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 
@@ -37,6 +37,38 @@ const sampleSnapshot: EgressHealthResponse = {
     on_all_quarantined: 'wait',
     private_fallback_route_id: 'pl-vpn',
     private_on_fallback: false,
+    containers: [
+      {
+        container: 'api:orders@snapper',
+        last_seen_age_seconds: 4,
+        stale: false,
+        route_count: 1,
+      },
+      {
+        container: 'publisher:kraken@snapper-feed',
+        last_seen_age_seconds: 91,
+        stale: true,
+        route_count: 1,
+      },
+      {
+        container: 'publisher:coinbase@snapper-feed',
+        last_seen_age_seconds: 0,
+        stale: false,
+        route_count: 0,
+      },
+      {
+        container: 'publisher:binance@snapper-feed',
+        last_seen_age_seconds: 7200,
+        stale: false,
+        route_count: 2,
+      },
+      {
+        container: 'publisher:okx@snapper-feed',
+        last_seen_age_seconds: 90000,
+        stale: false,
+        route_count: 3,
+      },
+    ],
     routes: [
       {
         id: 'direct-host',
@@ -50,7 +82,29 @@ const sampleSnapshot: EgressHealthResponse = {
         quarantined: false,
         quarantine_seconds_remaining: null,
         in_use_count: 1,
-        active_reservations: [{ exchange: 'kraken', traffic_class: 'private' }],
+        active_reservations: [
+          { exchange: 'kraken', traffic_class: 'private', container: 'api:orders@snapper' },
+        ],
+        connections: [
+          {
+            host: 'ws.kraken.com',
+            kind: 'ws',
+            exchange: 'kraken',
+            traffic_class: 'public',
+            container: 'publisher:kraken@snapper-feed',
+            count: 1,
+            last_seen_at: null,
+          },
+          {
+            host: 'api.kraken.com',
+            kind: 'rest',
+            exchange: 'kraken',
+            traffic_class: 'private',
+            container: 'api:orders@snapper',
+            count: 0,
+            last_seen_at: '2026-06-21T17:59:57Z',
+          },
+        ],
       },
       {
         id: 'pl-vpn',
@@ -64,6 +118,7 @@ const sampleSnapshot: EgressHealthResponse = {
         quarantined: true,
         quarantine_seconds_remaining: 42.2,
         in_use_count: 0,
+        connections: [],
       },
       {
         id: 'disabled-route',
@@ -77,6 +132,7 @@ const sampleSnapshot: EgressHealthResponse = {
         quarantine_seconds_remaining: null,
         in_use_count: 1000,
         active_reservations: [],
+        connections: [],
       },
     ],
   },
@@ -85,6 +141,10 @@ const sampleSnapshot: EgressHealthResponse = {
 describe('EgressCard', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
   })
 
   it('renders the card title without data during loading', async () => {
@@ -129,6 +189,8 @@ describe('EgressCard', () => {
   it('renders route status, metadata, and active reservations', async () => {
     const { useEgressHealth } = await import('../../hooks/queries/system')
 
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2026-06-21T18:00:00Z'))
     vi.mocked(useEgressHealth).mockReturnValue({
       data: sampleSnapshot,
       isLoading: false,
@@ -150,8 +212,154 @@ describe('EgressCard', () => {
     expect(screen.getByText('Quarantined (43s)')).toBeInTheDocument()
     expect(screen.getByText('Disabled')).toBeInTheDocument()
     expect(screen.getByText('1,000')).toBeInTheDocument()
-    expect(screen.getByText('kraken · private')).toBeInTheDocument()
+    expect(screen.getByText('kraken · private · api:orders@snapper')).toBeInTheDocument()
+    expect(screen.getByText('Reporting containers')).toBeInTheDocument()
+    expect(screen.getByText('api:orders@snapper · 4s ago · routes: 1')).toBeInTheDocument()
+    expect(
+      screen.getByText('publisher:kraken@snapper-feed · 1.5min ago · routes: 1')
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('publisher:coinbase@snapper-feed · just now · routes: 0')
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('publisher:binance@snapper-feed · 2.0h ago · routes: 2')
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText('publisher:okx@snapper-feed · 1.0d ago · routes: 3')
+    ).toBeInTheDocument()
+    expect(screen.getByText('· stale')).toBeInTheDocument()
+    expect(
+      screen.getByText('ws.kraken.com · ws · kraken/public · ×1 · publisher:kraken@snapper-feed')
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        'api.kraken.com · rest · kraken/private · last seen 3s ago · api:orders@snapper'
+      )
+    ).toBeInTheDocument()
     expect(screen.getAllByText('None').length).toBeGreaterThan(0)
+  })
+
+  it('renders an empty connections list for a route', async () => {
+    const { useEgressHealth } = await import('../../hooks/queries/system')
+    const directRoute = sampleSnapshot.payload.routes?.[0]
+
+    expect(directRoute).toBeDefined()
+    if (directRoute === undefined) return
+
+    vi.mocked(useEgressHealth).mockReturnValue({
+      data: {
+        ...sampleSnapshot,
+        payload: {
+          ...sampleSnapshot.payload,
+          routes: [
+            {
+              ...directRoute,
+              id: 'no-live-connections',
+              connections: [],
+            },
+          ],
+        },
+      },
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useEgressHealth>)
+    renderWithProviders(<EgressCard />)
+
+    const row = screen.getByText('no-live-connections').closest('tr')
+
+    expect(row).not.toBeNull()
+    if (row === null) return
+
+    expect(within(row).getByText('None')).toBeInTheDocument()
+    expect(within(row).getByText('kraken · private · api:orders@snapper')).toBeInTheDocument()
+  })
+
+  it('renders an omitted connections list for a route', async () => {
+    const { useEgressHealth } = await import('../../hooks/queries/system')
+    const directRoute = sampleSnapshot.payload.routes?.[0]
+
+    expect(directRoute).toBeDefined()
+    if (directRoute === undefined) return
+
+    const routeWithoutConnections = { ...directRoute, id: 'omitted-connections' }
+
+    delete routeWithoutConnections.connections
+
+    vi.mocked(useEgressHealth).mockReturnValue({
+      data: {
+        ...sampleSnapshot,
+        payload: {
+          ...sampleSnapshot.payload,
+          routes: [routeWithoutConnections],
+        },
+      },
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useEgressHealth>)
+    renderWithProviders(<EgressCard />)
+
+    const row = screen.getByText('omitted-connections').closest('tr')
+
+    expect(row).not.toBeNull()
+    if (row === null) return
+
+    expect(within(row).getByText('None')).toBeInTheDocument()
+    expect(within(row).getByText('kraken · private · api:orders@snapper')).toBeInTheDocument()
+  })
+
+  it('renders unknown last-seen text for REST connections without timestamps', async () => {
+    const { useEgressHealth } = await import('../../hooks/queries/system')
+    const directRoute = sampleSnapshot.payload.routes?.[0]
+
+    expect(directRoute).toBeDefined()
+    if (directRoute === undefined) return
+
+    vi.mocked(useEgressHealth).mockReturnValue({
+      data: {
+        ...sampleSnapshot,
+        payload: {
+          ...sampleSnapshot.payload,
+          routes: [
+            {
+              ...directRoute,
+              connections: [
+                {
+                  host: 'api.null-kraken.com',
+                  kind: 'rest',
+                  exchange: 'kraken',
+                  traffic_class: 'private',
+                  container: 'api:orders@snapper',
+                  count: 0,
+                  last_seen_at: null,
+                },
+                {
+                  host: 'api.unknown-kraken.com',
+                  kind: 'rest',
+                  exchange: 'kraken',
+                  traffic_class: 'private',
+                  container: 'api:orders@snapper',
+                  count: 0,
+                },
+              ],
+            },
+          ],
+        },
+      },
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useEgressHealth>)
+    renderWithProviders(<EgressCard />)
+
+    expect(
+      screen.getByText(
+        'api.null-kraken.com · rest · kraken/private · last seen unknown · api:orders@snapper'
+      )
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        'api.unknown-kraken.com · rest · kraken/private · last seen unknown · api:orders@snapper'
+      )
+    ).toBeInTheDocument()
   })
 
   it('renders the explicit disabled-pool state', async () => {

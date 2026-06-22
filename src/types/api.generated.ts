@@ -2439,6 +2439,22 @@ export type Components = {
         EgressActiveReservationSnapshot: {
             exchange: string;
             traffic_class: "public" | "private";
+            container: string;
+        };
+        EgressConnectionSnapshot: {
+            host: string;
+            kind: "ws" | "rest";
+            exchange: string;
+            traffic_class: "public" | "private";
+            container: string;
+            count: number;
+            last_seen_at?: string | null | undefined;
+        };
+        EgressContainerSummary: {
+            container: string;
+            last_seen_age_seconds: number;
+            stale: boolean;
+            route_count: number;
         };
         EgressHealthData: {
             type: "egress_health";
@@ -2451,6 +2467,7 @@ export type Components = {
             on_all_quarantined?: ("wait" | "raise") | null | undefined;
             private_fallback_route_id?: string | null | undefined;
             private_on_fallback: boolean;
+            containers?: Components["schemas"]["EgressContainerSummary"][];
             routes?: Components["schemas"]["EgressRouteStatusSnapshot"][];
         };
         EgressHealthResponse: {
@@ -2475,6 +2492,7 @@ export type Components = {
             quarantine_seconds_remaining: number | null;
             in_use_count: number;
             active_reservations?: Components["schemas"]["EgressActiveReservationSnapshot"][];
+            connections?: Components["schemas"]["EgressConnectionSnapshot"][];
         };
         EquityOverlayPoint: {
             point_time: string;

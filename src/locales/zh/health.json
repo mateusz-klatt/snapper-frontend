@@ -136,7 +136,21 @@
     "noRoutes": "No egress routes configured.",
     "anyExchange": "All",
     "none": "None",
-    "reservation": "{{exchange}} · {{trafficClass}}",
+    "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
+    "containers": {
+      "title": "Reporting containers",
+      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
+      "stale": "· stale"
+    },
+    "connection": {
+      "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "unknown",
+      "kind": {
+        "ws": "ws",
+        "rest": "rest"
+      }
+    },
     "summary": {
       "pool": "Pool",
       "policy": "Quarantine policy",
@@ -157,7 +171,8 @@
       "allowedExchanges": "Allowed exchanges",
       "status": "Status",
       "inUse": "In use",
-      "reservations": "Active reservations"
+      "reservations": "Active reservations",
+      "connections": "Connections"
     },
     "kind": {
       "direct": "direct",

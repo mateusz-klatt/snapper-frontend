@@ -1,11 +1,14 @@
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 
 import { useEgressHealth } from '../../hooks/queries/system'
 import { formatNumber } from '../../lib/utils'
 
 import type {
   EgressActiveReservationSnapshot,
+  EgressConnectionSnapshot,
+  EgressContainerSummary,
   EgressHealthData,
   EgressRouteStatusSnapshot,
 } from '../../types/api'
@@ -13,6 +16,25 @@ import type {
 const EMPTY_VALUE = '—'
 
 type EgressPolicy = NonNullable<EgressHealthData['on_all_quarantined']>
+
+function formatRelativeAgeSeconds(seconds: number, t: TFunction<'health', undefined>): string {
+  const ageS = Math.max(0, seconds)
+
+  if (ageS < 1) return t('relativeAge.justNow')
+  if (ageS < 60) return t('relativeAge.seconds', { seconds: ageS.toFixed(0) })
+  if (ageS < 3600) return t('relativeAge.minutes', { minutes: (ageS / 60).toFixed(1) })
+  if (ageS < 86400) return t('relativeAge.hours', { hours: (ageS / 3600).toFixed(1) })
+
+  return t('relativeAge.days', { days: (ageS / 86400).toFixed(1) })
+}
+
+function formatRelativeAgeFromTimestamp(
+  timestamp: string,
+  now: Date,
+  t: TFunction<'health', undefined>
+): string {
+  return formatRelativeAgeSeconds((now.getTime() - new Date(timestamp).getTime()) / 1000, t)
+}
 
 function formatOptionalText(value: string | null | undefined): string {
   if (value === null || value === undefined || value.length === 0) return EMPTY_VALUE
@@ -40,6 +62,41 @@ const SummaryCell: React.FC<SummaryCellProps> = ({ label, value, tone = 'neutral
     </span>
   </div>
 )
+
+interface ReportingContainersProps {
+  readonly containers: readonly EgressContainerSummary[] | undefined
+}
+
+const ReportingContainers: React.FC<ReportingContainersProps> = ({ containers }) => {
+  const { t } = useTranslation('health')
+  const items = containers ?? []
+
+  return (
+    <div className='space-y-2'>
+      <h4 className='text-xs uppercase tracking-wide text-muted-600'>
+        {t('egress.containers.title')}
+      </h4>
+      {items.length === 0 ? (
+        <p className='text-xs text-muted-500'>{t('egress.none')}</p>
+      ) : (
+        <div className='flex flex-col gap-1'>
+          {items.map(item => (
+            <span key={item.container} className='font-mono text-xs text-alpine-900'>
+              {t('egress.containers.item', {
+                container: item.container,
+                age: formatRelativeAgeSeconds(item.last_seen_age_seconds, t),
+                routeCount: formatNumber(item.route_count),
+              })}
+              {item.stale && (
+                <span className='ml-1 text-warning-700'>{t('egress.containers.stale')}</span>
+              )}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 interface RouteStatusProps {
   readonly route: EgressRouteStatusSnapshot
@@ -85,15 +142,64 @@ const ReservationList: React.FC<ReservationListProps> = ({ reservations }) => {
     <div className='flex flex-col gap-1'>
       {items.map(item => (
         <span
-          key={`${item.exchange}:${item.traffic_class}`}
+          key={`${item.exchange}:${item.traffic_class}:${item.container}`}
           className='font-mono text-xs text-alpine-900'
         >
           {t('egress.reservation', {
             exchange: item.exchange,
             trafficClass: t(`egress.trafficClass.${item.traffic_class}`),
+            container: item.container,
           })}
         </span>
       ))}
+    </div>
+  )
+}
+
+interface ConnectionListProps {
+  readonly connections: readonly EgressConnectionSnapshot[] | undefined
+}
+
+const ConnectionList: React.FC<ConnectionListProps> = ({ connections }) => {
+  const { t } = useTranslation('health')
+  const items = connections ?? []
+  const now = new Date()
+
+  if (items.length === 0) {
+    return <span className='text-muted-500'>{t('egress.none')}</span>
+  }
+
+  return (
+    <div className='flex flex-col gap-1'>
+      {items.map(item => {
+        const trafficClass = t(`egress.trafficClass.${item.traffic_class}`)
+        const key = `${item.host}:${item.kind}:${item.exchange}:${item.traffic_class}:${item.container}:${item.count.toString()}:${item.last_seen_at ?? ''}`
+
+        return (
+          <span key={key} className='font-mono text-xs text-alpine-900'>
+            {item.kind === 'ws'
+              ? t('egress.connection.ws', {
+                  host: item.host,
+                  kind: t('egress.connection.kind.ws'),
+                  exchange: item.exchange,
+                  trafficClass,
+                  count: formatNumber(item.count),
+                  container: item.container,
+                })
+              : t('egress.connection.rest', {
+                  host: item.host,
+                  kind: t('egress.connection.kind.rest'),
+                  exchange: item.exchange,
+                  trafficClass,
+                  lastSeen:
+                    item.last_seen_at === null || item.last_seen_at === undefined
+                      ? t('egress.connection.lastSeenUnknown')
+                      : formatRelativeAgeFromTimestamp(item.last_seen_at, now, t),
+                  container: item.container,
+                })}
+          </span>
+        )
+      })}
     </div>
   )
 }
@@ -130,6 +236,9 @@ const RouteRow: React.FC<RouteRowProps> = ({ route }) => {
       <td className='px-3 py-2 text-xs'>
         <ReservationList reservations={route.active_reservations} />
       </td>
+      <td className='px-3 py-2 text-xs'>
+        <ConnectionList connections={route.connections} />
+      </td>
     </tr>
   )
 }
@@ -156,6 +265,7 @@ const RoutesTable: React.FC<RoutesTableProps> = ({ routes }) => {
             <th className='px-3 py-2'>{t('egress.columns.status')}</th>
             <th className='px-3 py-2 text-right'>{t('egress.columns.inUse')}</th>
             <th className='px-3 py-2'>{t('egress.columns.reservations')}</th>
+            <th className='px-3 py-2'>{t('egress.columns.connections')}</th>
           </tr>
         </thead>
         <tbody>
@@ -229,6 +339,7 @@ export const EgressCard: React.FC = () => {
             />
             <SummaryCell label={t('egress.summary.routes')} value={formatNumber(routes.length)} />
           </div>
+          <ReportingContainers containers={payload.containers} />
           {payload.private_on_fallback && (
             <p className='rounded-md border border-warning-200 bg-warning-50 px-3 py-2 text-xs text-warning-700'>
               {t('egress.fallbackWarning')}

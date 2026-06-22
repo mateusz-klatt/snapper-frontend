@@ -359,12 +359,44 @@ const _EgressActiveReservationSnapshotRawSchema = z
   .object({
     exchange: z.string(),
     traffic_class: z.enum(['public', 'private']),
+    container: z.string(),
   })
   .strict()
 
 export const EgressActiveReservationSnapshotSchema =
   _EgressActiveReservationSnapshotRawSchema as unknown as z.ZodType<
     Components['schemas']['EgressActiveReservationSnapshot']
+  >
+
+const _EgressConnectionSnapshotRawSchema = z
+  .object({
+    host: z.string(),
+    kind: z.enum(['ws', 'rest']),
+    exchange: z.string(),
+    traffic_class: z.enum(['public', 'private']),
+    container: z.string(),
+    count: z.number().int(),
+    last_seen_at: z.iso.datetime().nullable().optional(),
+  })
+  .strict()
+
+export const EgressConnectionSnapshotSchema =
+  _EgressConnectionSnapshotRawSchema as unknown as z.ZodType<
+    Components['schemas']['EgressConnectionSnapshot']
+  >
+
+const _EgressContainerSummaryRawSchema = z
+  .object({
+    container: z.string(),
+    last_seen_age_seconds: z.number(),
+    stale: z.boolean(),
+    route_count: z.number().int(),
+  })
+  .strict()
+
+export const EgressContainerSummarySchema =
+  _EgressContainerSummaryRawSchema as unknown as z.ZodType<
+    Components['schemas']['EgressContainerSummary']
   >
 
 const _EquityOverlayPointRawSchema = z
@@ -2273,6 +2305,7 @@ const _EgressRouteStatusSnapshotRawSchema = z
     quarantine_seconds_remaining: z.number().nullable(),
     in_use_count: z.number().int(),
     active_reservations: z.array(EgressActiveReservationSnapshotSchema).optional(),
+    connections: z.array(EgressConnectionSnapshotSchema).optional(),
   })
   .strict()
 
@@ -3739,6 +3772,7 @@ const _EgressHealthDataRawSchema = z
     on_all_quarantined: z.enum(['wait', 'raise']).nullable().optional(),
     private_fallback_route_id: z.string().nullable().optional(),
     private_on_fallback: z.boolean(),
+    containers: z.array(EgressContainerSummarySchema).optional(),
     routes: z.array(EgressRouteStatusSnapshotSchema).optional(),
   })
   .strict()
@@ -5069,6 +5103,8 @@ export type DbInternalMetrics = Components['schemas']['DbInternalMetrics']
 export type DeviceAlertPrefInfo = Components['schemas']['DeviceAlertPrefInfo']
 export type EgressActiveReservationSnapshot =
   Components['schemas']['EgressActiveReservationSnapshot']
+export type EgressConnectionSnapshot = Components['schemas']['EgressConnectionSnapshot']
+export type EgressContainerSummary = Components['schemas']['EgressContainerSummary']
 export type EquityOverlayPoint = Components['schemas']['EquityOverlayPoint']
 export type ExchangeListResponse = Components['schemas']['ExchangeListResponse']
 export type ExecutionData = Components['schemas']['ExecutionData']
