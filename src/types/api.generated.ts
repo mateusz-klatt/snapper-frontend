@@ -1204,6 +1204,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/health/egress": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_egress_health_api_health_egress_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/alert_defaults": {
         parameters: {
             query?: never;
@@ -2419,6 +2435,46 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             payload: Components["schemas"]["DeviceAlertPrefInfo"];
+        };
+        EgressActiveReservationSnapshot: {
+            exchange: string;
+            traffic_class: "public" | "private";
+        };
+        EgressHealthData: {
+            type: "egress_health";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            enabled: boolean;
+            on_all_quarantined?: ("wait" | "raise") | null | undefined;
+            private_fallback_route_id?: string | null | undefined;
+            private_on_fallback: boolean;
+            routes?: Components["schemas"]["EgressRouteStatusSnapshot"][];
+        };
+        EgressHealthResponse: {
+            type: "egress_health_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["EgressHealthData"];
+        };
+        EgressRouteStatusSnapshot: {
+            id: string;
+            kind: "direct" | "socks5";
+            region?: string | null | undefined;
+            exit_ip?: string | null | undefined;
+            provider?: string | null | undefined;
+            priority: number;
+            allowed_exchanges?: string[];
+            enabled: boolean;
+            quarantined: boolean;
+            quarantine_seconds_remaining: number | null;
+            in_use_count: number;
+            active_reservations?: Components["schemas"]["EgressActiveReservationSnapshot"][];
         };
         EquityOverlayPoint: {
             point_time: string;
@@ -7233,6 +7289,25 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_egress_health_api_health_egress_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["EgressHealthResponse"];
                 };
             };
         };

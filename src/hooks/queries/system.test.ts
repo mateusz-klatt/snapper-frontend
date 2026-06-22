@@ -8,9 +8,10 @@ import {
   useDbStats,
   useNotificationMetrics,
   useRetentionRun,
+  useEgressHealth,
 } from './system'
 import { useAuth } from '../../stores/auth'
-import { getSystemStatus } from '../../lib/api/system'
+import { getSystemStatus, getEgressHealth } from '../../lib/api/system'
 
 const ENV = {
   seq: 0,
@@ -75,6 +76,19 @@ vi.mock('../../lib/api/system', () => ({
           run_completed_at: '2026-05-02T17:00:01Z',
           dry_run: false,
           results: [],
+        }),
+      })
+    )
+  ),
+  getEgressHealth: vi.fn(() =>
+    Promise.resolve(
+      envelope('egress_health_response', {
+        payload: envelope('egress_health', {
+          enabled: true,
+          on_all_quarantined: 'wait',
+          private_fallback_route_id: 'pl',
+          private_on_fallback: false,
+          routes: [],
         }),
       })
     )
@@ -218,6 +232,16 @@ describe('system queries', () => {
       expect(result.current.data).toBeDefined()
     })
   })
+  describe('useEgressHealth', () => {
+    it('returns data when authenticated', async () => {
+      const { result } = renderHook(() => useEgressHealth(), { wrapper: createWrapper() })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(result.current.data).toBeDefined()
+    })
+  })
   describe('authentication behavior', () => {
     it('does not fetch when not authenticated', async () => {
       vi.mocked(useAuth).mockReturnValue({ isAuthenticated: false } as ReturnType<typeof useAuth>)
@@ -227,6 +251,16 @@ describe('system queries', () => {
         expect(result.current.isLoading).toBe(false)
       })
       expect(vi.mocked(getSystemStatus)).not.toHaveBeenCalled()
+      vi.mocked(useAuth).mockReturnValue({ isAuthenticated: true } as ReturnType<typeof useAuth>)
+    })
+    it('does not fetch egress health when not authenticated', async () => {
+      vi.mocked(useAuth).mockReturnValue({ isAuthenticated: false } as ReturnType<typeof useAuth>)
+      const { result } = renderHook(() => useEgressHealth(), { wrapper: createWrapper() })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(vi.mocked(getEgressHealth)).not.toHaveBeenCalled()
       vi.mocked(useAuth).mockReturnValue({ isAuthenticated: true } as ReturnType<typeof useAuth>)
     })
   })
@@ -261,6 +295,12 @@ describe('system queries', () => {
     it('useRetentionRun disables refetchInterval when time-traveling', async () => {
       appStoreModule.useAppStore.setState({ asOf: '2026-01-01T00:00:00Z', isTimeTraveling: true })
       const { result } = renderHook(() => useRetentionRun(), { wrapper: createWrapper() })
+
+      await waitFor(() => expect(result.current.isLoading).toBe(false))
+    })
+    it('useEgressHealth disables refetchInterval when time-traveling', async () => {
+      appStoreModule.useAppStore.setState({ asOf: '2026-01-01T00:00:00Z', isTimeTraveling: true })
+      const { result } = renderHook(() => useEgressHealth(), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isLoading).toBe(false))
     })

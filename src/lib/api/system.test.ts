@@ -7,6 +7,7 @@ import {
   getDbStats,
   getNotificationMetrics,
   getRetentionRun,
+  getEgressHealth,
 } from './system'
 
 vi.mock('../utils', () => ({
@@ -248,5 +249,50 @@ describe('system API methods', () => {
     expect(result.payload.dry_run).toBe(true)
     expect(result.payload.results).toHaveLength(1)
     expect(result.payload.results[0]?.archived_rows).toBe(100)
+  })
+  it('getEgressHealth returns egress pool status', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'egress_health_response',
+        sequence_id: 0,
+        public_id: 'env-egress',
+        timestamp: '2026-06-21T18:00:00Z',
+        session_id: 'sid',
+        payload: {
+          type: 'egress_health',
+          sequence_id: 1,
+          public_id: 'p-egress',
+          timestamp: '2026-06-21T18:00:00Z',
+          session_id: 'sid',
+          enabled: true,
+          on_all_quarantined: 'wait',
+          private_fallback_route_id: 'pl',
+          private_on_fallback: false,
+          routes: [
+            {
+              id: 'direct',
+              kind: 'direct',
+              region: 'host',
+              exit_ip: '198.51.100.11',
+              provider: 'isp',
+              priority: 0,
+              allowed_exchanges: [],
+              enabled: true,
+              quarantined: false,
+              quarantine_seconds_remaining: null,
+              in_use_count: 1,
+              active_reservations: [{ exchange: 'kraken', traffic_class: 'private' }],
+            },
+          ],
+        },
+      }),
+    })
+    const result = await getEgressHealth()
+
+    expect(result.payload.enabled).toBe(true)
+    expect(result.payload.routes?.[0]?.id).toBe('direct')
+    expect(result.payload.routes?.[0]?.active_reservations?.[0]?.traffic_class).toBe('private')
   })
 })

@@ -30,6 +30,11 @@ vi.mock('../../hooks/queries/system', () => ({
     isLoading: false,
     error: null,
   })),
+  useEgressHealth: vi.fn(() => ({
+    data: null,
+    isLoading: false,
+    error: null,
+  })),
 }))
 const createQueryClient = () =>
   new QueryClient({
