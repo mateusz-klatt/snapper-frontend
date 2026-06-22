@@ -80,7 +80,7 @@ export function MarketTimeScrubber({
           className={`font-semibold ${isReplay ? 'text-brand-600' : 'text-rising-600'}`}
           aria-live='polite'
         >
-          {value !== null ? formatDateTime(new Date(value), locale) : t('scrubber.live')}
+          {value === null ? t('scrubber.live') : formatDateTime(new Date(value), locale)}
         </span>
       </div>
       <input
