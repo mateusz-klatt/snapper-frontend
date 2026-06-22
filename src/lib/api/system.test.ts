@@ -270,6 +270,14 @@ describe('system API methods', () => {
           on_all_quarantined: 'wait',
           private_fallback_route_id: 'pl',
           private_on_fallback: false,
+          containers: [
+            {
+              container: 'api:orders@snapper',
+              last_seen_age_seconds: 3,
+              stale: false,
+              route_count: 1,
+            },
+          ],
           routes: [
             {
               id: 'direct',
@@ -283,7 +291,20 @@ describe('system API methods', () => {
               quarantined: false,
               quarantine_seconds_remaining: null,
               in_use_count: 1,
-              active_reservations: [{ exchange: 'kraken', traffic_class: 'private' }],
+              active_reservations: [
+                { exchange: 'kraken', traffic_class: 'private', container: 'api:orders@snapper' },
+              ],
+              connections: [
+                {
+                  host: 'api.kraken.com',
+                  kind: 'rest',
+                  exchange: 'kraken',
+                  traffic_class: 'private',
+                  container: 'api:orders@snapper',
+                  count: 0,
+                  last_seen_at: '2026-06-21T17:59:57Z',
+                },
+              ],
             },
           ],
         },
@@ -294,5 +315,10 @@ describe('system API methods', () => {
     expect(result.payload.enabled).toBe(true)
     expect(result.payload.routes?.[0]?.id).toBe('direct')
     expect(result.payload.routes?.[0]?.active_reservations?.[0]?.traffic_class).toBe('private')
+    expect(result.payload.routes?.[0]?.active_reservations?.[0]?.container).toBe(
+      'api:orders@snapper'
+    )
+    expect(result.payload.routes?.[0]?.connections?.[0]?.host).toBe('api.kraken.com')
+    expect(result.payload.containers?.[0]?.container).toBe('api:orders@snapper')
   })
 })

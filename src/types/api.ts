@@ -158,6 +158,8 @@ export type RetentionPolicyResult = Components['schemas']['RetentionPolicyResult
 
 export type EgressActiveReservationSnapshot =
   Components['schemas']['EgressActiveReservationSnapshot']
+export type EgressConnectionSnapshot = Components['schemas']['EgressConnectionSnapshot']
+export type EgressContainerSummary = Components['schemas']['EgressContainerSummary']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type EgressHealthData = Components['schemas']['EgressHealthData']
 export type EgressRouteStatusSnapshot = Components['schemas']['EgressRouteStatusSnapshot']

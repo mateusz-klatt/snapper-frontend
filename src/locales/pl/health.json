@@ -136,7 +136,21 @@
     "noRoutes": "Nie skonfigurowano tras egress.",
     "anyExchange": "Wszystkie",
     "none": "Brak",
-    "reservation": "{{exchange}} · {{trafficClass}}",
+    "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
+    "containers": {
+      "title": "Raportujące kontenery",
+      "item": "{{container}} · {{age}} · trasy: {{routeCount}}",
+      "stale": "· nieaktualny"
+    },
+    "connection": {
+      "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ostatnio widziane {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "nieznane",
+      "kind": {
+        "ws": "ws",
+        "rest": "rest"
+      }
+    },
     "summary": {
       "pool": "Pula",
       "policy": "Polityka kwarantanny",
@@ -157,7 +171,8 @@
       "allowedExchanges": "Dozwolone giełdy",
       "status": "Status",
       "inUse": "W użyciu",
-      "reservations": "Aktywne rezerwacje"
+      "reservations": "Aktywne rezerwacje",
+      "connections": "Połączenia"
     },
     "kind": {
       "direct": "direct",
