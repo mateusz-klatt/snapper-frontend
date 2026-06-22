@@ -1,11 +1,11 @@
 packages: []
 
+autoInstallPeers: true
+engineStrict: true
+
 overrides:
   lodash-es: '>=4.17.23'
   js-yaml@<4.2.0: '^4.2.0'
-
-onlyBuiltDependencies:
-  - puppeteer
 
 allowBuilds:
   puppeteer: true
