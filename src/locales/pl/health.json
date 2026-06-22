@@ -171,8 +171,16 @@
       "allowedExchanges": "Dozwolone giełdy",
       "status": "Status",
       "inUse": "W użyciu",
+      "traffic": "Ruch",
       "reservations": "Aktywne rezerwacje",
       "connections": "Połączenia"
+    },
+    "traffic": {
+      "rxBytes": "↓ {{bytes}}",
+      "rxRate": "↓ {{bytes}} · {{rate}}/s",
+      "txBytes": "↑ {{bytes}}",
+      "txRate": "↑ {{bytes}} · {{rate}}/s",
+      "handshake": "uzg. {{age}}"
     },
     "kind": {
       "direct": "direct",

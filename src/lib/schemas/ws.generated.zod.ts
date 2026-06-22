@@ -216,6 +216,36 @@ export const EgressConnectionSnapshotSchema = z
   })
   .strict()
 
+export const EgressTransferSnapshotSchema = z
+  .object({
+    interface: z.string(),
+    socks5_listen_port: z.number().int(),
+    rx_bytes: z.number().int(),
+    tx_bytes: z.number().int(),
+    rx_rate_bytes_per_second: z.number().nullable().optional(),
+    tx_rate_bytes_per_second: z.number().nullable().optional(),
+    latest_handshake_at: z.iso.datetime().nullable().optional(),
+    counter_reset: z.boolean(),
+    sampled_at: z.iso.datetime(),
+    sample_age_seconds: z.number(),
+    stale: z.boolean(),
+  })
+  .strict()
+
+export const EgressTransferInterfaceSnapshotSchema = z
+  .object({
+    interface: z.string(),
+    socks5_listen_port: z.number().int(),
+    rx_bytes: z.number().int(),
+    tx_bytes: z.number().int(),
+    rx_rate_bytes_per_second: z.number().nullable().optional(),
+    tx_rate_bytes_per_second: z.number().nullable().optional(),
+    latest_handshake_at: z.iso.datetime().nullable().optional(),
+    counter_reset: z.boolean(),
+    sampled_at: z.iso.datetime(),
+  })
+  .strict()
+
 export const ExecutionDataSchema = z
   .object({
     type: z.literal('execution'),
@@ -1063,6 +1093,7 @@ export const EgressRouteStatusSnapshotSchema = z
   .object({
     id: z.string(),
     kind: z.enum(['direct', 'socks5']),
+    proxy_url: z.string().nullable().optional(),
     region: z.string().nullable().optional(),
     exit_ip: z.string().nullable().optional(),
     provider: z.string().nullable().optional(),
@@ -1074,6 +1105,19 @@ export const EgressRouteStatusSnapshotSchema = z
     in_use_count: z.number().int(),
     active_reservations: z.array(EgressActiveReservationSnapshotSchema).optional(),
     connections: z.array(EgressConnectionSnapshotSchema).optional(),
+    transfer: EgressTransferSnapshotSchema.nullable().optional(),
+  })
+  .strict()
+
+export const EgressTransferEventDataSchema = z
+  .object({
+    type: z.literal('egress_transfer_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    interfaces: z.array(EgressTransferInterfaceSnapshotSchema).optional(),
   })
   .strict()
 

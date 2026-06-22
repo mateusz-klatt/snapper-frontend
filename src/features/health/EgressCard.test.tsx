@@ -21,6 +21,16 @@ const renderWithProviders = (ui: ReactNode): ReturnType<typeof render> => {
   return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
 }
 
+const getRouteRow = (routeId: string): HTMLElement => {
+  const routeIdCell = within(screen.getByRole('table')).getByText(routeId)
+  const row = routeIdCell.closest('tr')
+
+  expect(row).not.toBeNull()
+  if (row === null) throw new Error(`Route row not found for ${routeId}`)
+
+  return row
+}
+
 const sampleSnapshot: EgressHealthResponse = {
   type: 'egress_health_response',
   sequence_id: 1,
@@ -82,6 +92,7 @@ const sampleSnapshot: EgressHealthResponse = {
         quarantined: false,
         quarantine_seconds_remaining: null,
         in_use_count: 1,
+        transfer: null,
         active_reservations: [
           { exchange: 'kraken', traffic_class: 'private', container: 'api:orders@snapper' },
         ],
@@ -118,6 +129,19 @@ const sampleSnapshot: EgressHealthResponse = {
         quarantined: true,
         quarantine_seconds_remaining: 42.2,
         in_use_count: 0,
+        transfer: {
+          interface: 'wg-pl',
+          socks5_listen_port: 1080,
+          rx_bytes: 42_572_186,
+          tx_bytes: 2_621_440,
+          rx_rate_bytes_per_second: 128 * 1024,
+          tx_rate_bytes_per_second: 64 * 1024,
+          latest_handshake_at: '2026-06-21T17:59:30Z',
+          counter_reset: false,
+          sampled_at: '2026-06-21T17:59:58Z',
+          sample_age_seconds: 2,
+          stale: false,
+        },
         connections: [],
       },
       {
@@ -212,6 +236,7 @@ describe('EgressCard', () => {
     expect(screen.getByText('Quarantined (43s)')).toBeInTheDocument()
     expect(screen.getByText('Disabled')).toBeInTheDocument()
     expect(screen.getByText('1,000')).toBeInTheDocument()
+    expect(screen.getByText('Traffic')).toBeInTheDocument()
     expect(screen.getByText('kraken · private · api:orders@snapper')).toBeInTheDocument()
     expect(screen.getByText('Reporting containers')).toBeInTheDocument()
     expect(screen.getByText('api:orders@snapper · 4s ago · routes: 1')).toBeInTheDocument()
@@ -237,6 +262,135 @@ describe('EgressCard', () => {
       )
     ).toBeInTheDocument()
     expect(screen.getAllByText('None').length).toBeGreaterThan(0)
+  })
+
+  it('renders transfer traffic bytes, backend rates, and latest handshake age', async () => {
+    const { useEgressHealth } = await import('../../hooks/queries/system')
+
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2026-06-21T18:00:00Z'))
+    vi.mocked(useEgressHealth).mockReturnValue({
+      data: sampleSnapshot,
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useEgressHealth>)
+    renderWithProviders(<EgressCard />)
+
+    const row = getRouteRow('pl-vpn')
+
+    expect(within(row).getByText('↓ 40.6 MiB · 128.0 KiB/s')).toBeInTheDocument()
+    expect(within(row).getByText('↑ 2.5 MiB · 64.0 KiB/s')).toBeInTheDocument()
+    expect(within(row).getByText('hs 30s ago')).toBeInTheDocument()
+    expect(within(row).queryByText('· stale')).not.toBeInTheDocument()
+  })
+
+  it('omits traffic rates when the backend reports a reset sample', async () => {
+    const { useEgressHealth } = await import('../../hooks/queries/system')
+    const route = sampleSnapshot.payload.routes?.[1]
+
+    expect(route).toBeDefined()
+    if (route === undefined) return
+
+    const transfer = route.transfer
+
+    expect(transfer).toBeDefined()
+    if (transfer === null || transfer === undefined) return
+
+    vi.mocked(useEgressHealth).mockReturnValue({
+      data: {
+        ...sampleSnapshot,
+        payload: {
+          ...sampleSnapshot.payload,
+          routes: [
+            {
+              ...route,
+              id: 'reset-route',
+              transfer: {
+                ...transfer,
+                rx_rate_bytes_per_second: null,
+                tx_rate_bytes_per_second: null,
+                latest_handshake_at: null,
+                counter_reset: true,
+              },
+            },
+          ],
+        },
+      },
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useEgressHealth>)
+    renderWithProviders(<EgressCard />)
+
+    const row = getRouteRow('reset-route')
+
+    expect(within(row).getByText('↓ 40.6 MiB')).toBeInTheDocument()
+    expect(within(row).getByText('↑ 2.5 MiB')).toBeInTheDocument()
+    expect(within(row).queryByText(/KiB\/s/)).not.toBeInTheDocument()
+    expect(within(row).queryByText(/hs /)).not.toBeInTheDocument()
+  })
+
+  it('renders an empty traffic cell when a route has no transfer snapshot', async () => {
+    const { useEgressHealth } = await import('../../hooks/queries/system')
+    const route = sampleSnapshot.payload.routes?.[0]
+
+    expect(route).toBeDefined()
+    if (route === undefined) return
+
+    vi.mocked(useEgressHealth).mockReturnValue({
+      data: {
+        ...sampleSnapshot,
+        payload: {
+          ...sampleSnapshot.payload,
+          routes: [route],
+        },
+      },
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useEgressHealth>)
+    renderWithProviders(<EgressCard />)
+
+    expect(within(getRouteRow('direct-host')).getByText('—')).toBeInTheDocument()
+  })
+
+  it('renders stale transfer snapshots with the existing stale affordance', async () => {
+    const { useEgressHealth } = await import('../../hooks/queries/system')
+    const route = sampleSnapshot.payload.routes?.[1]
+
+    expect(route).toBeDefined()
+    if (route === undefined) return
+
+    const transfer = route.transfer
+
+    expect(transfer).toBeDefined()
+    if (transfer === null || transfer === undefined) return
+
+    vi.mocked(useEgressHealth).mockReturnValue({
+      data: {
+        ...sampleSnapshot,
+        payload: {
+          ...sampleSnapshot.payload,
+          routes: [
+            {
+              ...route,
+              id: 'stale-transfer',
+              transfer: {
+                ...transfer,
+                latest_handshake_at: null,
+                stale: true,
+              },
+            },
+          ],
+        },
+      },
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useEgressHealth>)
+    renderWithProviders(<EgressCard />)
+
+    const row = getRouteRow('stale-transfer')
+
+    expect(within(row).getByText('· stale')).toBeInTheDocument()
+    expect(within(row).queryByText(/hs /)).not.toBeInTheDocument()
   })
 
   it('renders an empty connections list for a route', async () => {

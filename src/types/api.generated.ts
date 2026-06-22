@@ -2482,6 +2482,7 @@ export type Components = {
         EgressRouteStatusSnapshot: {
             id: string;
             kind: "direct" | "socks5";
+            proxy_url?: string | null | undefined;
             region?: string | null | undefined;
             exit_ip?: string | null | undefined;
             provider?: string | null | undefined;
@@ -2493,6 +2494,20 @@ export type Components = {
             in_use_count: number;
             active_reservations?: Components["schemas"]["EgressActiveReservationSnapshot"][];
             connections?: Components["schemas"]["EgressConnectionSnapshot"][];
+            transfer?: Components["schemas"]["EgressTransferSnapshot"] | null | undefined;
+        };
+        EgressTransferSnapshot: {
+            interface: string;
+            socks5_listen_port: number;
+            rx_bytes: number;
+            tx_bytes: number;
+            rx_rate_bytes_per_second?: number | null | undefined;
+            tx_rate_bytes_per_second?: number | null | undefined;
+            latest_handshake_at?: string | null | undefined;
+            counter_reset: boolean;
+            sampled_at: string;
+            sample_age_seconds: number;
+            stale: boolean;
         };
         EquityOverlayPoint: {
             point_time: string;

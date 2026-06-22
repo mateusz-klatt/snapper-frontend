@@ -13,23 +13,32 @@ export function formatNumber(value: number, options?: Intl.NumberFormatOptions):
   return value.toLocaleString('en-US', options)
 }
 
-const BYTES_PER_MIB = 1024 * 1024
-const MIB_PER_GIB = 1024
+const BYTES_PER_KIB = 1024
+const BYTES_PER_MIB = BYTES_PER_KIB * 1024
+const BYTES_PER_GIB = BYTES_PER_MIB * 1024
 
 /**
  * Render a byte count as a binary-base human string.
  *
- * Below one gibibyte the value is shown in mebibytes with one decimal
- * (`<n>.<1> MiB`); at or above 1024 MiB it switches to gibibytes with
- * two decimals (`<n>.<2> GiB`). Pure and i18n-free so callers can wrap
- * it in their own translation layer.
+ * Values below one kibibyte are shown as bytes, below one mebibyte as
+ * kibibytes, below one gibibyte as mebibytes, and larger values as
+ * gibibytes. Pure and i18n-free so callers can wrap it in their own
+ * translation layer.
  */
 export function formatBytes(bytes: number): string {
-  const mib = bytes / BYTES_PER_MIB
+  const absBytes = Math.abs(bytes)
 
-  if (mib < MIB_PER_GIB) {
-    return `${mib.toFixed(1)} MiB`
+  if (absBytes < BYTES_PER_KIB) {
+    return `${bytes.toFixed(0)} B`
   }
 
-  return `${(mib / MIB_PER_GIB).toFixed(2)} GiB`
+  if (absBytes < BYTES_PER_MIB) {
+    return `${(bytes / BYTES_PER_KIB).toFixed(1)} KiB`
+  }
+
+  if (absBytes < BYTES_PER_GIB) {
+    return `${(bytes / BYTES_PER_MIB).toFixed(1)} MiB`
+  }
+
+  return `${(bytes / BYTES_PER_GIB).toFixed(2)} GiB`
 }
