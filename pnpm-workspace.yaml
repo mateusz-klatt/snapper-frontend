@@ -9,3 +9,21 @@ overrides:
 
 allowBuilds:
   puppeteer: true
+
+minimumReleaseAgeExclude:
+  - '@puppeteer/browsers@3.0.5'
+  - '@typescript-eslint/eslint-plugin@8.62.0'
+  - '@typescript-eslint/parser@8.62.0'
+  - '@typescript-eslint/project-service@8.62.0'
+  - '@typescript-eslint/scope-manager@8.62.0'
+  - '@typescript-eslint/tsconfig-utils@8.62.0'
+  - '@typescript-eslint/type-utils@8.62.0'
+  - '@typescript-eslint/types@8.62.0'
+  - '@typescript-eslint/typescript-estree@8.62.0'
+  - '@typescript-eslint/utils@8.62.0'
+  - '@typescript-eslint/visitor-keys@8.62.0'
+  - globals@17.7.0
+  - knip@6.18.0
+  - puppeteer-core@25.2.0
+  - puppeteer@25.2.0
+  - typescript-eslint@8.62.0
