@@ -120,7 +120,7 @@ Stable from `1.0.0` onward; subsequent releases follow Semantic Versioning:
 ### Supported runtime
 
 - **Browsers** — current and previous major release of Chrome, Edge, Firefox, Safari (so 2 versions back from "latest"). Other browsers may work but are not gated by CI. Open an issue if you hit a regression in scope.
-- **Node + pnpm (for contributors)** — Node `>=26`, pnpm `>=11`, enforced via `engines` + `engine-strict`.
+- **Node + pnpm (for contributors)** — Node `>=26`, pnpm `>=11`, declared via `packageManager` and `engines`; enable `engine-strict=true` locally if you want hard enforcement.
 - **Backend pairing** — this frontend release pairs with the `mateusz-klatt/snapper` backend at the submodule pointer recorded against the matching frontend tag. Generated types (`src/types/*.generated.ts`, `src/lib/schemas/*.generated.zod.ts`) are committed; regenerate with `make gen` against a local backend if you point at a different commit.
 
 ### Accessibility target
