@@ -274,7 +274,7 @@ describe('PairStatsRow', () => {
     } as never)
     renderRow({ selectedExchange: 'kraken', selectedInstrument: 'BTC-USD' })
 
-    expect(screen.getAllByText('✓').length).toBe(1)
+    expect(screen.getAllByText('✓')).toHaveLength(1)
   })
 
   it('renders a dimmed chip for not-warm placeholder pairs', () => {

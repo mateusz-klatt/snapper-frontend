@@ -109,7 +109,7 @@ describe('CompareLauncher', () => {
     mockSameConfig([])
     renderWithClient(<CompareLauncher currentRun={makeRun()} />)
     await waitFor(() => expect(screen.getByTestId('compare-no-siblings')).toBeDefined())
-    expect((getBacktests as ReturnType<typeof vi.fn>).mock.calls.length).toBe(1)
+    expect(getBacktests).toHaveBeenCalledTimes(1)
     expect(getBacktests).toHaveBeenCalledWith(20, 0, undefined, undefined, 'cfg-deadbeef')
   })
 

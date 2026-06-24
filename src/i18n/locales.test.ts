@@ -4,7 +4,7 @@ import { SUPPORTED_LOCALES } from './types'
 
 describe('LOCALES metadata', () => {
   it('covers all 45 codes', () => {
-    expect(Object.keys(LOCALES).length).toBe(45)
+    expect(Object.keys(LOCALES)).toHaveLength(45)
 
     for (const code of SUPPORTED_LOCALES) {
       expect(LOCALES[code]).toBeDefined()

@@ -3,10 +3,10 @@ import { ROW_1, ROW_2, ROW_3, SUPPORTED_LOCALES, DEFAULT_LOCALE, isLocale } from
 
 describe('locale rows', () => {
   it('has 15 entries per row, 45 total, no duplicates', () => {
-    expect(ROW_1.length).toBe(15)
-    expect(ROW_2.length).toBe(15)
-    expect(ROW_3.length).toBe(15)
-    expect(SUPPORTED_LOCALES.length).toBe(45)
+    expect(ROW_1).toHaveLength(15)
+    expect(ROW_2).toHaveLength(15)
+    expect(ROW_3).toHaveLength(15)
+    expect(SUPPORTED_LOCALES).toHaveLength(45)
     expect(new Set(SUPPORTED_LOCALES).size).toBe(45)
   })
 

@@ -107,7 +107,7 @@ describe('COUNTRY_TO_LANGUAGE', () => {
       code => !(NATIVE_LANGUAGE_COUNTRIES as readonly string[]).includes(code)
     )
 
-    expect(fallbackCodes.length).toBe(SUPPORTED_LOCALES.length - NATIVE_LANGUAGE_COUNTRIES.length)
+    expect(fallbackCodes).toEqual(['us'])
 
     for (const code of fallbackCodes) {
       expect(COUNTRY_TO_LANGUAGE[code]).toBe('en')
@@ -115,7 +115,7 @@ describe('COUNTRY_TO_LANGUAGE', () => {
   })
 
   it('covers all 45 codes', () => {
-    expect(Object.keys(COUNTRY_TO_LANGUAGE).length).toBe(45)
+    expect(Object.keys(COUNTRY_TO_LANGUAGE)).toHaveLength(45)
   })
 })
 
@@ -169,7 +169,7 @@ describe('COUNTRY_TO_INTL_LOCALE', () => {
   })
 
   it('covers all 45 codes', () => {
-    expect(Object.keys(COUNTRY_TO_INTL_LOCALE).length).toBe(45)
+    expect(Object.keys(COUNTRY_TO_INTL_LOCALE)).toHaveLength(45)
   })
 })
 

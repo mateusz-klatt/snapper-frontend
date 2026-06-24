@@ -271,7 +271,7 @@ describe('backtests queries', () => {
       const { result } = renderHook(() => useBacktestComparison('cmp-missing'), { wrapper })
 
       await waitFor(() => expect(result.current.isError).toBe(true))
-      expect((getBacktestComparison as Mock).mock.calls.length).toBe(1)
+      expect(getBacktestComparison).toHaveBeenCalledTimes(1)
     })
 
     it('useBacktestComparison retries up to 3 times on 500', async () => {
@@ -286,7 +286,7 @@ describe('backtests queries', () => {
       const { result } = renderHook(() => useBacktestComparison('cmp-flake'), { wrapper })
 
       await waitFor(() => expect(result.current.isError).toBe(true), { timeout: 2000 })
-      expect((getBacktestComparison as Mock).mock.calls.length).toBe(4)
+      expect(getBacktestComparison).toHaveBeenCalledTimes(4)
     })
 
     it('useBacktestComparisons fetches list with default + custom paging + scoped key', async () => {

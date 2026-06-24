@@ -1223,7 +1223,7 @@ describe('Settings', () => {
     })
     const sensitiveBadges = screen.getAllByText('🔒 Sensitive')
 
-    expect(sensitiveBadges.length).toBe(4)
+    expect(sensitiveBadges).toHaveLength(4)
   })
   it('does not show sensitive badge for non-sensitive keys', async () => {
     const mockSettings = [

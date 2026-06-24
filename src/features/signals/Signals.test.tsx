@@ -236,7 +236,7 @@ describe('Signals', () => {
     renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getAllByText('2').length).toBeGreaterThanOrEqual(1)
-    expect(screen.getAllByText('BUY').length).toBe(2)
+    expect(screen.getAllByText('BUY')).toHaveLength(2)
   })
   it('displays all sell stats when sell signals dominate', async () => {
     vi.mocked(getSignals).mockResolvedValueOnce({
@@ -273,7 +273,7 @@ describe('Signals', () => {
     renderSignals(queryClient)
     await screen.findByText('BTC-USD')
     expect(screen.getAllByText('2').length).toBeGreaterThanOrEqual(1)
-    expect(screen.getAllByText('SELL').length).toBe(2)
+    expect(screen.getAllByText('SELL')).toHaveLength(2)
   })
   it('displays strength label based on strength value', async () => {
     const queryClient = createTestQueryClient()

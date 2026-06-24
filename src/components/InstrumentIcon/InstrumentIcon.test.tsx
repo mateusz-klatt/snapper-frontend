@@ -8,14 +8,14 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='BTC-USD' exchange='kraken' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(1)
+      expect(imgs).toHaveLength(1)
       expect(imgs[0]?.getAttribute('src')).toContain('btc.svg')
     })
 
     it('renders single icon for ETH-USD', (): void => {
       const { container } = render(<InstrumentIcon symbol='ETH-USD' exchange='kraken' />)
 
-      expect(container.querySelectorAll('img').length).toBe(1)
+      expect(container.querySelectorAll('img')).toHaveLength(1)
     })
 
     it('renders single icon for BTC-USD-PERP (perp = USD implicit)', (): void => {
@@ -23,7 +23,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
         <InstrumentIcon symbol='BTC-USD-PERP' exchange='kraken_futures' />
       )
 
-      expect(container.querySelectorAll('img').length).toBe(1)
+      expect(container.querySelectorAll('img')).toHaveLength(1)
     })
 
     it('renders single icon for BTC-USD-260925 (dated future)', (): void => {
@@ -31,7 +31,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
         <InstrumentIcon symbol='BTC-USD-260925' exchange='kraken_futures' />
       )
 
-      expect(container.querySelectorAll('img').length).toBe(1)
+      expect(container.querySelectorAll('img')).toHaveLength(1)
     })
   })
 
@@ -40,7 +40,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='BTC-EUR' exchange='kraken' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(2)
+      expect(imgs).toHaveLength(2)
       expect(imgs[0]?.getAttribute('src')).toContain('btc.svg')
       expect(imgs[1]?.getAttribute('src')).toContain('eu.svg')
     })
@@ -49,7 +49,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='BTC-USDT' exchange='kraken' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(2)
+      expect(imgs).toHaveLength(2)
       expect(imgs[1]?.getAttribute('src')).toContain('usdt.svg')
     })
 
@@ -57,7 +57,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='BTC-USDC' exchange='kraken' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(2)
+      expect(imgs).toHaveLength(2)
       expect(imgs[1]?.getAttribute('src')).toContain('usdc.svg')
     })
 
@@ -65,7 +65,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='ETH-BTC' exchange='kraken' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(2)
+      expect(imgs).toHaveLength(2)
     })
   })
 
@@ -74,7 +74,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='EUR-USD' exchange='walutomat' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(2)
+      expect(imgs).toHaveLength(2)
       expect(imgs[0]?.getAttribute('src')).toContain('eu.svg')
       expect(imgs[1]?.getAttribute('src')).toContain('us.svg')
     })
@@ -83,7 +83,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='USD-PLN' exchange='walutomat' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(2)
+      expect(imgs).toHaveLength(2)
     })
   })
 
@@ -92,7 +92,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='AAPL' exchange='kraken' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(0)
+      expect(imgs).toHaveLength(0)
       expect(container.querySelector('svg')).not.toBeNull()
     })
 
@@ -100,7 +100,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='SPX' exchange='polygon' />)
 
       expect(container.querySelector('svg')).not.toBeNull()
-      expect(container.querySelectorAll('img').length).toBe(0)
+      expect(container.querySelectorAll('img')).toHaveLength(0)
     })
 
     it('renders single lucide icon for US10Y (yield)', (): void => {
@@ -113,7 +113,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='ESM6-CME' exchange='kraken_equities' />)
 
       expect(container.querySelector('svg')).not.toBeNull()
-      expect(container.querySelectorAll('img').length).toBe(0)
+      expect(container.querySelectorAll('img')).toHaveLength(0)
     })
 
     it('renders gold-coloured gem for GCM6-COMEX (canonical underlying GOLD resolves to gold #FFD700)', (): void => {
@@ -150,7 +150,7 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='6EM6-CME' exchange='kraken_equities' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(2)
+      expect(imgs).toHaveLength(2)
       expect(imgs[0]?.getAttribute('src')).toContain('eu.svg')
       expect(imgs[1]?.getAttribute('src')).toContain('us.svg')
     })
@@ -206,16 +206,16 @@ describe('InstrumentIcon — smart-hybrid dispatcher', () => {
       const { container } = render(<InstrumentIcon symbol='SHIB-EUR' exchange='kraken' />)
       const imgs = container.querySelectorAll('img')
 
-      expect(imgs.length).toBe(1)
+      expect(imgs).toHaveLength(1)
       const badges = container.querySelectorAll('span[role="img"]')
 
-      expect(badges.length).toBeGreaterThan(0)
+      expect(badges).toHaveLength(2)
     })
 
     it('renders textual badge for both legs when both miss the manifest', (): void => {
       const { container } = render(<InstrumentIcon symbol='ARB-OP' exchange='kraken' />)
 
-      expect(container.querySelectorAll('img').length).toBe(0)
+      expect(container.querySelectorAll('img')).toHaveLength(0)
     })
   })
 

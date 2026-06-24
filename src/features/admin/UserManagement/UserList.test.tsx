@@ -385,7 +385,7 @@ describe('UserList', () => {
       expect(screen.getAllByText('custom_role')[0]).toBeTruthy()
     })
   })
-  it('formats dates correctly', async () => {
+  it('formats dates for dateuser rows', async () => {
     vi.mocked(listUsers).mockResolvedValue(
       makeListEnvelope('user_list', [
         makeUserProfile({

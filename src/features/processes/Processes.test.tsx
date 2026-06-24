@@ -443,7 +443,7 @@ describe('Processes', () => {
       expect(screen.getByText(/succeeded \(null\)/i)).toBeInTheDocument()
     })
   })
-  it('subscribes to heartbeat topics', async () => {
+  it('subscribes to heartbeat topics for executor processes', async () => {
     const items = [
       makeConfiguredProcess({
         name: 'executor_kraken',
