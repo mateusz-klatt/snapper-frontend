@@ -384,7 +384,7 @@ describe('websocket store', () => {
 
     expect(useWebSocketStore.getState().isConnected).toBe(true)
   })
-  it('uses fallback unsubscribe when onConnection returns undefined', async () => {
+  it('uses fallback unsubscribe when an existing client onConnection returns undefined', async () => {
     const customClient = {
       connect: vi.fn(),
       disconnect: vi.fn(),

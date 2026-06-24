@@ -12,7 +12,7 @@ describe('PairIcon', () => {
     )
     const imgs = container.querySelectorAll('img')
 
-    expect(imgs.length).toBe(2)
+    expect(imgs).toHaveLength(2)
     expect(imgs[0]?.getAttribute('src')).toContain('btc.svg')
     expect(imgs[1]?.getAttribute('src')).toContain('usdt.svg')
   })

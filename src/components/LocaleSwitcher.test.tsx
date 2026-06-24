@@ -94,8 +94,8 @@ describe('LocaleSwitcher', () => {
         b => b.dataset.current === 'true' || /^Switch to /.test(b.getAttribute('aria-label') ?? '')
       )
 
-    expect(flagButtons.length).toBe(45)
-    expect([...ROW_1, ...ROW_2, ...ROW_3].length).toBe(45)
+    expect(flagButtons).toHaveLength(45)
+    expect([...ROW_1, ...ROW_2, ...ROW_3]).toHaveLength(45)
   })
 
   it('arrow-right moves focus within row 1, wraps at end', async () => {

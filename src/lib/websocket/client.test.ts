@@ -227,9 +227,9 @@ describe('WebSocketClient', () => {
       client.connect()
       await vi.advanceTimersByTimeAsync(50)
       client.disconnect()
-      expect((client as any).ws).toBe(null)
-      expect((client as any).heartbeatTimer).toBe(null)
-      expect((client as any).throttleTimer).toBe(null)
+      expect((client as any).ws).toBeNull()
+      expect((client as any).heartbeatTimer).toBeNull()
+      expect((client as any).throttleTimer).toBeNull()
     })
     it('skips clearing timers when none are set', () => {
       const existingThrottle = (client as any).throttleTimer
@@ -267,7 +267,7 @@ describe('WebSocketClient', () => {
       expect((client as any).isReconnecting).toBe(false)
       expect((client as any).intentionalDisconnect).toBe(false)
       await vi.advanceTimersByTimeAsync(5000)
-      expect((client as any).ws).toBe(null)
+      expect((client as any).ws).toBeNull()
     })
   })
   describe('errors', () => {
@@ -832,12 +832,12 @@ describe('WebSocketClient', () => {
     })
     it('handles scheduleReauthFromMs and clearReauthTimer guards', () => {
       ;(client as any).scheduleReauthFromMs(Date.now() + 60000)
-      expect((client as any).reauthTimer).toBe(null)
+      expect((client as any).reauthTimer).toBeNull()
       const secureClient = new WebSocketClient({ secure: true })
 
       ;(secureClient as any).scheduleReauthFromMs(Date.now() - 60000)
-      expect((secureClient as any).reauthTimer).toBe(null)
-      expect((secureClient as any).reauthScheduledAt).toBe(null)
+      expect((secureClient as any).reauthTimer).toBeNull()
+      expect((secureClient as any).reauthScheduledAt).toBeNull()
       const clearTimeoutSpy = vi.spyOn(globalThis, 'clearTimeout')
 
       ;(secureClient as any).reauthTimer = null
@@ -877,7 +877,7 @@ describe('WebSocketClient', () => {
       const secureClient = new WebSocketClient({ secure: true })
 
       ;(secureClient as any).scheduleReauthFromMs(Date.now() + 120000)
-      expect((secureClient as any).reauthTimer).not.toBe(null)
+      expect((secureClient as any).reauthTimer).not.toBeNull()
       const clearTimeoutSpy = vi.spyOn(globalThis, 'clearTimeout')
 
       ;(secureClient as any).clearReauthTimer()
@@ -1289,7 +1289,7 @@ describe('WebSocketClient secure mode', () => {
 
     ;(message as { session_expires_at: string | null }).session_expires_at = null
     ;(client as any).handleAuthComplete(message)
-    expect((client as any).sessionExpiresAt).toBe(null)
+    expect((client as any).sessionExpiresAt).toBeNull()
     expect(readySpy).toHaveBeenCalled()
     readySpy.mockRestore()
   })
@@ -1312,7 +1312,7 @@ describe('WebSocketClient secure mode', () => {
     mockWs.onmessage?.({
       data: JSON.stringify(createAuthOk()),
     })
-    expect((client as any).reauthTimer).not.toBe(null)
+    expect((client as any).reauthTimer).not.toBeNull()
   })
   it('handles auth_required via handleAuthMessage', async () => {
     const secureClient = new WebSocketClient({ secure: true })
@@ -1339,7 +1339,7 @@ describe('WebSocketClient secure mode', () => {
 
     await (secureClient as any).handleAuthMessage({ type: 'auth_ok', exp: expIso })
     expect(scheduleSpy).toHaveBeenCalledWith(expMs)
-    expect((secureClient as any).pendingWsTokenExp).toBe(null)
+    expect((secureClient as any).pendingWsTokenExp).toBeNull()
   })
   it('handles auth_expired via handleAuthMessage', async () => {
     const secureClient = new WebSocketClient({ secure: true })
@@ -1351,7 +1351,7 @@ describe('WebSocketClient secure mode', () => {
     await (secureClient as any).handleAuthMessage({ type: 'auth_expired' })
     expect(clearSpy).toHaveBeenCalled()
     expect((secureClient as any).isAuthenticated).toBe(false)
-    expect((secureClient as any).sessionExpiresAt).toBe(null)
+    expect((secureClient as any).sessionExpiresAt).toBeNull()
   })
   it('handles auth_success via handleAuthMessage', async () => {
     const notifySpy = vi.spyOn(client as any, 'notifyHandlers')
@@ -1394,7 +1394,7 @@ describe('WebSocketClient secure mode', () => {
 
     ;(client as any).handleAuthOk({ type: 'auth_ok' } as unknown as Record<string, unknown>)
     expect(scheduleSpy).toHaveBeenCalledWith(pendingExpMs)
-    expect((client as any).pendingWsTokenExp).toBe(null)
+    expect((client as any).pendingWsTokenExp).toBeNull()
   })
   it('skips schedule when auth_ok has no exp or pending value', () => {
     const scheduleSpy = vi.spyOn(client as any, 'scheduleReauthFromMs')
@@ -1496,7 +1496,7 @@ describe('WebSocketClient secure mode', () => {
       data: JSON.stringify(createReauthRequired({ deadline })),
     })
     await vi.advanceTimersByTimeAsync(100)
-    expect(mockWs.send.mock.calls.length).toBe(firstCallCount)
+    expect(mockWs.send.mock.calls).toHaveLength(firstCallCount)
   })
   it('skips reauth_required when scheduled reauth is before deadline', async () => {
     const { getWsToken } = await import('./auth')
@@ -1524,7 +1524,7 @@ describe('WebSocketClient secure mode', () => {
       data: JSON.stringify(createReauthRequired({ deadline })),
     })
     await vi.advanceTimersByTimeAsync(10)
-    expect(vi.mocked(getWsToken).mock.calls.length).toBe(initialCalls)
+    expect(vi.mocked(getWsToken).mock.calls).toHaveLength(initialCalls)
     secureClient.disconnect()
   })
   it('returns early when scheduled reauth is already pending', async () => {
@@ -1598,7 +1598,7 @@ describe('WebSocketClient secure mode', () => {
       type: 'reauth_required',
       deadline: Number.NaN,
     })
-    expect((secureClient as any).lastReauthDeadlineMs).toBe(null)
+    expect((secureClient as any).lastReauthDeadlineMs).toBeNull()
     expect(performSpy).toHaveBeenCalledWith('reauth')
     secureClient.disconnect()
   })
@@ -1616,7 +1616,7 @@ describe('WebSocketClient secure mode', () => {
         session_id: 'test-sid',
       }),
     })
-    expect((client as any).reauthTimer).toBe(null)
+    expect((client as any).reauthTimer).toBeNull()
   })
   it('handles scheduleReauthFromMs with past expiration (negative delay)', async () => {
     client.connect()
@@ -1634,7 +1634,7 @@ describe('WebSocketClient secure mode', () => {
         exp: pastExpiration,
       }),
     })
-    expect((client as any).reauthScheduledAt).toBe(null)
+    expect((client as any).reauthScheduledAt).toBeNull()
   })
   it('handles closeForAuthFailure when WS is not open', async () => {
     client.connect()
@@ -1867,7 +1867,7 @@ describe('WebSocketClient secure mode', () => {
       (call: string[]) => call[0]?.includes('reauth') ?? false
     )
 
-    expect(reauthCalls.length).toBe(0)
+    expect(reauthCalls).toHaveLength(0)
     nonSecureClient.disconnect()
   })
   it('handles reauth_required when no timer is scheduled', async () => {
@@ -1892,8 +1892,8 @@ describe('WebSocketClient secure mode', () => {
     })
     await vi.advanceTimersByTimeAsync(0)
     ;(secureClient as any).clearReauthTimer()
-    expect((secureClient as any).reauthTimer).toBe(null)
-    expect((secureClient as any).reauthScheduledAt).toBe(null)
+    expect((secureClient as any).reauthTimer).toBeNull()
+    expect((secureClient as any).reauthScheduledAt).toBeNull()
     ;(secureClient as any).lastReauthDeadlineMs = null
     vi.mocked(getWsToken).mockClear()
     mockWs.onmessage?.({
@@ -1929,7 +1929,7 @@ describe('WebSocketClient secure mode', () => {
     mockWs.onmessage?.({
       data: JSON.stringify(createAuthOk()),
     })
-    expect((secureClient as any).reauthTimer).not.toBe(null)
+    expect((secureClient as any).reauthTimer).not.toBeNull()
     vi.mocked(getWsToken).mockClear()
     mockWs.onmessage?.({
       data: JSON.stringify(
@@ -1937,7 +1937,7 @@ describe('WebSocketClient secure mode', () => {
       ),
     })
     await vi.advanceTimersByTimeAsync(50)
-    expect((secureClient as any).reauthTimer).toBe(null)
+    expect((secureClient as any).reauthTimer).toBeNull()
     expect(vi.mocked(getWsToken)).toHaveBeenCalled()
     secureClient.disconnect()
   })
@@ -1960,7 +1960,7 @@ describe('WebSocketClient secure mode', () => {
     mockWs.onmessage?.({
       data: JSON.stringify(createAuthOk()),
     })
-    expect((secureClient as any).reauthTimer).not.toBe(null)
+    expect((secureClient as any).reauthTimer).not.toBeNull()
     vi.mocked(getWsToken).mockClear()
     mockWs.send.mockClear()
     mockWs.onmessage?.({

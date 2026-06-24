@@ -85,9 +85,9 @@ export const Strategies: React.FC = () => {
 
       if (message.component.startsWith('strategy_')) {
         const strategyName = message.component.replace('strategy_', '')
-        const strategy = strategies.find(s => s.name === strategyName)
+        const hasStrategy = strategies.some(s => s.name === strategyName)
 
-        if (strategy) {
+        if (hasStrategy) {
           const status = message.status
 
           setHealthStatuses(prev => ({
