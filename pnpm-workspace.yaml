@@ -29,3 +29,4 @@ minimumReleaseAgeExclude:
   - typescript-eslint@8.62.0
   - i18next@26.3.3
   - prettier@3.8.5
+  - eslint@10.6.0
