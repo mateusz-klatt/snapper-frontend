@@ -19,12 +19,7 @@ export function parseBooleanString(value: string): boolean {
 }
 
 export type JsonValue =
-  | string
-  | number
-  | boolean
-  | null
-  | JsonValue[]
-  | { [key: string]: JsonValue }
+  string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue }
 
 export const SENSITIVE_PATTERNS = [
   'api_key',
@@ -92,13 +87,7 @@ export const getMaskedValue = (key: string, value: string): string => {
 }
 
 export type JsonTokenType =
-  | 'key'
-  | 'string'
-  | 'number'
-  | 'boolean'
-  | 'null'
-  | 'punctuation'
-  | 'whitespace'
+  'key' | 'string' | 'number' | 'boolean' | 'null' | 'punctuation' | 'whitespace'
 
 interface JsonToken {
   id: string
