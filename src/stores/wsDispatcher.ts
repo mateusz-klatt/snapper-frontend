@@ -45,9 +45,7 @@ import {
 import { queryKeys } from '../hooks/queries/keys'
 
 export type AiReviewActivityFrame =
-  | AiReviewRequestFrameData
-  | AiReviewDecisionAckFrameData
-  | AiReviewCapsViolationFrameData
+  AiReviewRequestFrameData | AiReviewDecisionAckFrameData | AiReviewCapsViolationFrameData
 
 export const AI_REVIEW_ACTIVITY_QUERY_KEY_ROOT = 'ai-review-activity'
 export const AI_REVIEW_ACTIVITY_RING_CAP = 1024

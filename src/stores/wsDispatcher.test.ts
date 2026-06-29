@@ -54,17 +54,15 @@ const cachedEnv = (
   session_id: 'sid',
   topic: null,
   payload: {
-    candles: rows.map(
-      (r): CachedCandle => ({
-        open_at_ms: new Date(r.open_at).getTime(),
-        timeframe: '1m',
-        open: r.open,
-        high: r.high,
-        low: r.low,
-        close: r.close,
-        volume: r.volume,
-      })
-    ),
+    candles: rows.map((r): CachedCandle => ({
+      open_at_ms: new Date(r.open_at).getTime(),
+      timeframe: '1m',
+      open: r.open,
+      high: r.high,
+      low: r.low,
+      close: r.close,
+      volume: r.volume,
+    })),
     sample_count: rows.length,
     is_warm: options.isWarm ?? true,
     source: options.source ?? 'cache',
@@ -2340,8 +2338,7 @@ describe('WSDispatcher', () => {
 
       expect(renderRef.current).not.toBeNull()
       const element = renderRef.current?.({ id: 'toast-id-X' }) as
-        | { props: { onClick: () => void } }
-        | undefined
+        { props: { onClick: () => void } } | undefined
 
       expect(element).toBeDefined()
       element?.props.onClick()

@@ -4,14 +4,7 @@ import { clsx } from 'clsx'
 
 interface StatusBadgeProps {
   status:
-    | 'connected'
-    | 'disconnected'
-    | 'pending'
-    | 'healthy'
-    | 'stale'
-    | 'error'
-    | 'rising'
-    | 'falling'
+    'connected' | 'disconnected' | 'pending' | 'healthy' | 'stale' | 'error' | 'rising' | 'falling'
   children: React.ReactNode
   className?: string
 }
