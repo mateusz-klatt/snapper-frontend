@@ -355,6 +355,23 @@ export const DeviceAlertPrefInfoSchema = _DeviceAlertPrefInfoRawSchema as unknow
   Components['schemas']['DeviceAlertPrefInfo']
 >
 
+const _DiskMetricsRawSchema = z
+  .object({
+    mount_path: z.string(),
+    total_bytes: z.number().int().nullable(),
+    used_bytes: z.number().int().nullable(),
+    free_bytes: z.number().int().nullable(),
+    percent_used: z.number().nullable(),
+    disk_low: z.boolean(),
+    disk_critical: z.boolean(),
+    status: z.enum(['healthy', 'warning', 'error']),
+  })
+  .strict()
+
+export const DiskMetricsSchema = _DiskMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['DiskMetrics']
+>
+
 const _EgressActiveReservationSnapshotRawSchema = z
   .object({
     exchange: z.string(),
@@ -2812,6 +2829,7 @@ const _SystemMetricsDataRawSchema = z
     limits: LimitsMetricsSchema,
     saturation: SaturationMetricsSchema,
     db_internal: DbInternalMetricsSchema,
+    disk: DiskMetricsSchema,
     tracemalloc_active: z.boolean(),
     cgroup_version: z.enum(['v1', 'v2']).nullable(),
   })
@@ -2838,6 +2856,7 @@ const _SystemMetricsHistoryItemRawSchema = z
     limits: LimitsMetricsSchema,
     saturation: SaturationMetricsSchema,
     db_internal: DbInternalMetricsSchema,
+    disk: DiskMetricsSchema,
     tracemalloc_active: z.boolean(),
     cgroup_version: z.enum(['v1', 'v2']).nullable(),
   })
@@ -5124,6 +5143,7 @@ export type CpuMetrics = Components['schemas']['CpuMetrics']
 export type CredentialSummary = Components['schemas']['CredentialSummary']
 export type DbInternalMetrics = Components['schemas']['DbInternalMetrics']
 export type DeviceAlertPrefInfo = Components['schemas']['DeviceAlertPrefInfo']
+export type DiskMetrics = Components['schemas']['DiskMetrics']
 export type EgressActiveReservationSnapshot =
   Components['schemas']['EgressActiveReservationSnapshot']
 export type EgressConnectionSnapshot = Components['schemas']['EgressConnectionSnapshot']

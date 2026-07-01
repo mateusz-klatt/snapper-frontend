@@ -2436,6 +2436,16 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["DeviceAlertPrefInfo"];
         };
+        DiskMetrics: {
+            mount_path: string;
+            total_bytes: number | null;
+            used_bytes: number | null;
+            free_bytes: number | null;
+            percent_used: number | null;
+            disk_low: boolean;
+            disk_critical: boolean;
+            status: "healthy" | "warning" | "error";
+        };
         EgressActiveReservationSnapshot: {
             exchange: string;
             traffic_class: "public" | "private";
@@ -3737,6 +3747,7 @@ export type Components = {
             limits: Components["schemas"]["LimitsMetrics"];
             saturation: Components["schemas"]["SaturationMetrics"];
             db_internal: Components["schemas"]["DbInternalMetrics"];
+            disk: Components["schemas"]["DiskMetrics"];
             tracemalloc_active: boolean;
             cgroup_version: ("v1" | "v2") | null;
         };
@@ -3756,6 +3767,7 @@ export type Components = {
             limits: Components["schemas"]["LimitsMetrics"];
             saturation: Components["schemas"]["SaturationMetrics"];
             db_internal: Components["schemas"]["DbInternalMetrics"];
+            disk: Components["schemas"]["DiskMetrics"];
             tracemalloc_active: boolean;
             cgroup_version: ("v1" | "v2") | null;
         };
