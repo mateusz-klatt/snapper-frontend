@@ -1931,7 +1931,7 @@ const _CreateOrderBodyRawSchema = z
     post_only: z.boolean().optional(),
     leverage: z.number().int().nullable().optional(),
     reduce_only: z.boolean().optional(),
-    wallet_public_id: z.string(),
+    wallet_public_id: z.string().nullable().optional(),
     operator_public_id: z.string().nullable().optional(),
     idempotency_key: z.string().nullable().optional(),
     ai_review_public_id: z.string().nullable().optional(),
