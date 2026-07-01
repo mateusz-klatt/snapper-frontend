@@ -4547,7 +4547,7 @@ export type Components = {
             post_only?: boolean;
             leverage?: number | null;
             reduce_only?: boolean;
-            wallet_public_id: string;
+            wallet_public_id?: string | null;
             operator_public_id?: string | null;
             idempotency_key?: string | null;
             ai_review_public_id?: string | null;
