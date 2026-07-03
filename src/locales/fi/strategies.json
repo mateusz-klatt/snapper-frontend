@@ -87,7 +87,9 @@
       "error": "VIRHE"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtestaa strategia {{name}}"
+    "backtestAriaLabel": "Backtestaa strategia {{name}}",
+    "managedRemotely": "Hallinnoija: {{coordinator}}",
+    "remoteCoordinatorUnknown": "toinen kontti"
   },
   "launchModal": {
     "title": "Rekisteröi strategiaprosessi",

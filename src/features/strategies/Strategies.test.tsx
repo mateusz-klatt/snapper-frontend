@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Strategies } from './Strategies'
@@ -252,6 +252,29 @@ describe('Strategies', () => {
       )
     }
   })
+  it('renders a remote strategy without start/stop controls', async () => {
+    const mockStrategies = [
+      makeStrategyProcess({
+        name: 'strategy_remote',
+        running: true,
+        managed_remotely: true,
+        coordinator: 'coord-2',
+      }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await waitFor(() => {
+      expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent('coord-2')
+    })
+    expect(screen.queryByRole('button', { name: /stop strategy/i })).toBeNull()
+    expect(screen.queryByRole('button', { name: /start strategy/i })).toBeNull()
+  })
   it('subscribes to heartbeat topics for strategies', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_macd_btc', running: true })]
     const { useStrategies } = await import('../../hooks/queries/strategies')
@@ -388,6 +411,32 @@ describe('Strategies', () => {
     renderWithProviders(<Strategies />)
     await waitFor(() => {
       expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
+    })
+  })
+  it('maps a live dotted heartbeat component onto the API row', async () => {
+    const mockStrategies = [makeStrategyProcess({ name: 'strategy_macd_btc_1h', running: true })]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await waitFor(() => {
+      expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
+    })
+    act(() => {
+      storedHeartbeatCallback?.({
+        component: 'strategy.macd_btc_1h',
+        status: 'healthy',
+        lag_ms: 120,
+        sequence: 9,
+        meta: {},
+      })
+    })
+    await waitFor(() => {
+      expect(screen.getByText(/data lag/i)).toBeInTheDocument()
     })
   })
   it('renders configured strategies section header', async () => {

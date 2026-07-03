@@ -87,7 +87,9 @@
       "error": "FEL"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtesta strategin {{name}}"
+    "backtestAriaLabel": "Backtesta strategin {{name}}",
+    "managedRemotely": "Hanteras av {{coordinator}}",
+    "remoteCoordinatorUnknown": "en annan container"
   },
   "launchModal": {
     "title": "Registrera strategiprocess",

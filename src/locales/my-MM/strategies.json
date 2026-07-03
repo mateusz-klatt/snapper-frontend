@@ -87,7 +87,9 @@
       "error": "အမှား"
     },
     "backtest": "နောက်ကြောင်းပြန် စမ်းသပ်မှု",
-    "backtestAriaLabel": "{{name}} ဗျူဟာကို နောက်ကြောင်းပြန် စမ်းသပ်ပါ"
+    "backtestAriaLabel": "{{name}} ဗျူဟာကို နောက်ကြောင်းပြန် စမ်းသပ်ပါ",
+    "managedRemotely": "{{coordinator}} မှ စီမံခန့်ခွဲသည်",
+    "remoteCoordinatorUnknown": "အခြားကွန်တိန်နာ"
   },
   "launchModal": {
     "title": "ဗျူဟာလုပ်ငန်းစဉ် မှတ်ပုံတင်ပါ",

@@ -87,7 +87,9 @@
       "error": "EROARE"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest pentru strategia {{name}}"
+    "backtestAriaLabel": "Backtest pentru strategia {{name}}",
+    "managedRemotely": "Gestionat de {{coordinator}}",
+    "remoteCoordinatorUnknown": "alt container"
   },
   "launchModal": {
     "title": "Înregistrare proces de strategie",

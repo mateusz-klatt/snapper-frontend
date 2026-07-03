@@ -3710,6 +3710,8 @@ export type Components = {
             enabled: boolean;
             mode: "thread" | "process";
             strategy_class?: string | null | undefined;
+            coordinator?: string | null | undefined;
+            managed_remotely: boolean;
         };
         StrategyStatusPayload: {
             strategy_name: string;

@@ -87,7 +87,9 @@
       "error": "ERROR"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest strategi {{name}}"
+    "backtestAriaLabel": "Backtest strategi {{name}}",
+    "managedRemotely": "Diurus oleh {{coordinator}}",
+    "remoteCoordinatorUnknown": "kontena lain"
   },
   "launchModal": {
     "title": "Daftar Proses Strategi",

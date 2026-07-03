@@ -87,7 +87,9 @@
       "error": "LỖI"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest chiến lược {{name}}"
+    "backtestAriaLabel": "Backtest chiến lược {{name}}",
+    "managedRemotely": "Được quản lý bởi {{coordinator}}",
+    "remoteCoordinatorUnknown": "một vùng chứa khác"
   },
   "launchModal": {
     "title": "Đăng ký tiến trình chiến lược",

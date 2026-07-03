@@ -87,7 +87,9 @@
       "error": "ՍԽԱԼ"
     },
     "backtest": "Հետադարձ թեստ",
-    "backtestAriaLabel": "{{name}} ռազմավարության հետադարձ թեստ"
+    "backtestAriaLabel": "{{name}} ռազմավարության հետադարձ թեստ",
+    "managedRemotely": "Կառավարվում է {{coordinator}}-ի կողմից",
+    "remoteCoordinatorUnknown": "այլ կոնտեյներ"
   },
   "launchModal": {
     "title": "Գրանցել ռազմավարության գործընթաց",

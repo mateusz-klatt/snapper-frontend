@@ -87,7 +87,9 @@
       "error": "ERROR"
     },
     "backtest": "แบ็คเทสต์",
-    "backtestAriaLabel": "แบ็คเทสต์กลยุทธ์ {{name}}"
+    "backtestAriaLabel": "แบ็คเทสต์กลยุทธ์ {{name}}",
+    "managedRemotely": "จัดการโดย {{coordinator}}",
+    "remoteCoordinatorUnknown": "คอนเทนเนอร์อื่น"
   },
   "launchModal": {
     "title": "ลงทะเบียนกระบวนการกลยุทธ์",

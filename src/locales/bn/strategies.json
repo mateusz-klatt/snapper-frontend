@@ -87,7 +87,9 @@
       "error": "ERROR"
     },
     "backtest": "ব্যাকটেস্ট",
-    "backtestAriaLabel": "{{name}} কৌশল ব্যাকটেস্ট করুন"
+    "backtestAriaLabel": "{{name}} কৌশল ব্যাকটেস্ট করুন",
+    "managedRemotely": "{{coordinator}} দ্বারা পরিচালিত",
+    "remoteCoordinatorUnknown": "অন্য একটি কন্টেইনার"
   },
   "launchModal": {
     "title": "কৌশল প্রসেস নিবন্ধন",

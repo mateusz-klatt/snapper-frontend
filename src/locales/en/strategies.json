@@ -87,7 +87,9 @@
       "healthy": "HEALTHY",
       "warning": "WARNING",
       "error": "ERROR"
-    }
+    },
+    "managedRemotely": "Managed by {{coordinator}}",
+    "remoteCoordinatorUnknown": "another container"
   },
   "launchModal": {
     "title": "Register Strategy Process",

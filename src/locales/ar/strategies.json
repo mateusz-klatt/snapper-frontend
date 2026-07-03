@@ -87,7 +87,9 @@
       "error": "خطأ"
     },
     "backtest": "اختبار رجعي",
-    "backtestAriaLabel": "اختبار رجعي للاستراتيجية {{name}}"
+    "backtestAriaLabel": "اختبار رجعي للاستراتيجية {{name}}",
+    "managedRemotely": "تُدار بواسطة {{coordinator}}",
+    "remoteCoordinatorUnknown": "حاوية أخرى"
   },
   "launchModal": {
     "title": "تسجيل عملية استراتيجية",

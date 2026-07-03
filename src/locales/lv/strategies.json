@@ -87,7 +87,9 @@
       "error": "KĻŪDA"
     },
     "backtest": "Backtests",
-    "backtestAriaLabel": "Backtestēt stratēģiju {{name}}"
+    "backtestAriaLabel": "Backtestēt stratēģiju {{name}}",
+    "managedRemotely": "Pārvalda {{coordinator}}",
+    "remoteCoordinatorUnknown": "cits konteiners"
   },
   "launchModal": {
     "title": "Reģistrēt stratēģijas procesu",

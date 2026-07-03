@@ -47,6 +47,7 @@ export function makeStrategyProcess(
     running: false,
     enabled: true,
     mode: 'thread' as const,
+    managed_remotely: false,
     ...overrides,
   }) as Components['schemas']['StrategyProcess']
 }

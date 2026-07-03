@@ -87,7 +87,9 @@
       "error": "ПОМИЛКА"
     },
     "backtest": "Бектест",
-    "backtestAriaLabel": "Бектест стратегії {{name}}"
+    "backtestAriaLabel": "Бектест стратегії {{name}}",
+    "managedRemotely": "Керується вузлом {{coordinator}}",
+    "remoteCoordinatorUnknown": "інший контейнер"
   },
   "launchModal": {
     "title": "Зареєструвати процес стратегії",

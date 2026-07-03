@@ -87,7 +87,9 @@
       "error": "VILLA"
     },
     "backtest": "Bakprófa",
-    "backtestAriaLabel": "Bakprófa stefnu {{name}}"
+    "backtestAriaLabel": "Bakprófa stefnu {{name}}",
+    "managedRemotely": "Stýrt af {{coordinator}}",
+    "remoteCoordinatorUnknown": "annað ílát"
   },
   "launchModal": {
     "title": "Skrá stefnuferli",

@@ -1355,6 +1355,8 @@ const _StrategyProcessRawSchema = z
     enabled: z.boolean(),
     mode: z.enum(['thread', 'process']),
     strategy_class: z.string().nullable().optional(),
+    coordinator: z.string().nullable().optional(),
+    managed_remotely: z.boolean(),
   })
   .strict()
 

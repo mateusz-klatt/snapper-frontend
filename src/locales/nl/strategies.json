@@ -87,7 +87,9 @@
       "error": "FOUT"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Strategie {{name}} backtesten"
+    "backtestAriaLabel": "Strategie {{name}} backtesten",
+    "managedRemotely": "Beheerd door {{coordinator}}",
+    "remoteCoordinatorUnknown": "een andere container"
   },
   "launchModal": {
     "title": "Strategieproces registreren",

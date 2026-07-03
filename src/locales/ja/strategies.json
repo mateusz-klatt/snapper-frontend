@@ -87,7 +87,9 @@
       "error": "エラー"
     },
     "backtest": "バックテスト",
-    "backtestAriaLabel": "{{name}}戦略をバックテスト"
+    "backtestAriaLabel": "{{name}}戦略をバックテスト",
+    "managedRemotely": "{{coordinator}} が管理",
+    "remoteCoordinatorUnknown": "別のコンテナ"
   },
   "launchModal": {
     "title": "戦略プロセスを登録",
