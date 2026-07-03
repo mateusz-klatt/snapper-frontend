@@ -54,6 +54,7 @@ describe('strategies API methods', () => {
           running: true,
           enabled: true,
           mode: 'thread' as const,
+          managed_remotely: false,
         },
       ],
       count: 1,

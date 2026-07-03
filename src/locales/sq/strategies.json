@@ -87,7 +87,9 @@
       "error": "GABIM"
     },
     "backtest": "Test historik",
-    "backtestAriaLabel": "Testo historikisht strategjinë {{name}}"
+    "backtestAriaLabel": "Testo historikisht strategjinë {{name}}",
+    "managedRemotely": "Menaxhohet nga {{coordinator}}",
+    "remoteCoordinatorUnknown": "një kontejner tjetër"
   },
   "launchModal": {
     "title": "Regjistro proces strategjie",

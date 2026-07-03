@@ -87,7 +87,9 @@
       "error": "خطا"
     },
     "backtest": "بک‌تست",
-    "backtestAriaLabel": "بک‌تست استراتژی {{name}}"
+    "backtestAriaLabel": "بک‌تست استراتژی {{name}}",
+    "managedRemotely": "مدیریت‌شده توسط {{coordinator}}",
+    "remoteCoordinatorUnknown": "کانتینر دیگری"
   },
   "launchModal": {
     "title": "ثبت فرایند استراتژی",

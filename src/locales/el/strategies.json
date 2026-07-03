@@ -87,7 +87,9 @@
       "error": "ΣΦΑΛΜΑ"
     },
     "backtest": "Ιστορικός έλεγχος",
-    "backtestAriaLabel": "Ιστορικός έλεγχος στρατηγικής {{name}}"
+    "backtestAriaLabel": "Ιστορικός έλεγχος στρατηγικής {{name}}",
+    "managedRemotely": "Διαχειρίζεται από {{coordinator}}",
+    "remoteCoordinatorUnknown": "άλλο κοντέινερ"
   },
   "launchModal": {
     "title": "Καταχώριση διεργασίας στρατηγικής",

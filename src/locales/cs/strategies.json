@@ -87,7 +87,9 @@
       "error": "CHYBA"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest strategie {{name}}"
+    "backtestAriaLabel": "Backtest strategie {{name}}",
+    "managedRemotely": "Spravuje {{coordinator}}",
+    "remoteCoordinatorUnknown": "jiný kontejner"
   },
   "launchModal": {
     "title": "Registrovat proces strategie",

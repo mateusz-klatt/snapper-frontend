@@ -83,16 +83,16 @@ export const Strategies: React.FC = () => {
           }
         | undefined
 
-      if (message.component.startsWith('strategy_')) {
-        const strategyName = message.component.replace('strategy_', '')
-        const hasStrategy = strategies.some(s => s.name === strategyName)
+      if (message.component.startsWith('strategy.') || message.component.startsWith('strategy_')) {
+        const rawName = message.component.replace(/^strategy[._]/, '')
+        const matched = strategies.find(s => s.name === rawName || s.name === `strategy_${rawName}`)
 
-        if (hasStrategy) {
+        if (matched) {
           const status = message.status
 
           setHealthStatuses(prev => ({
             ...prev,
-            [strategyName]: {
+            [matched.name]: {
               status,
               lag_ms: message.lag_ms || 0,
               timestamp: Date.now(),
@@ -320,10 +320,18 @@ export const Strategies: React.FC = () => {
                   autoStartEnabled={strategy.enabled}
                   mode={strategy.mode}
                   health={healthStatuses[strategy.name]}
+                  coordinator={strategy.coordinator}
+                  managedRemotely={strategy.managed_remotely}
                   onStart={
-                    canManage ? () => requestStartStrategy(strategy.name, strategy.mode) : undefined
+                    canManage && !strategy.managed_remotely
+                      ? () => requestStartStrategy(strategy.name, strategy.mode)
+                      : undefined
                   }
-                  onStop={canManage ? () => requestStopStrategy(strategy.name) : undefined}
+                  onStop={
+                    canManage && !strategy.managed_remotely
+                      ? () => requestStopStrategy(strategy.name)
+                      : undefined
+                  }
                   onBacktest={
                     canBacktest && backtestClass && !readOnly
                       ? () => setBacktestStrategyClass(backtestClass)

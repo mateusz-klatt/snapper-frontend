@@ -87,7 +87,9 @@
       "error": "HITILAFU"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Fanya backtest mkakati wa {{name}}"
+    "backtestAriaLabel": "Fanya backtest mkakati wa {{name}}",
+    "managedRemotely": "Inadhibitiwa na {{coordinator}}",
+    "remoteCoordinatorUnknown": "kontena nyingine"
   },
   "launchModal": {
     "title": "Sajili Process ya Mkakati",

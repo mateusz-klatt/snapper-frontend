@@ -87,7 +87,9 @@
       "error": "ERROR"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Hacer backtest de la estrategia {{name}}"
+    "backtestAriaLabel": "Hacer backtest de la estrategia {{name}}",
+    "managedRemotely": "Gestionado por {{coordinator}}",
+    "remoteCoordinatorUnknown": "otro contenedor"
   },
   "launchModal": {
     "title": "Registrar proceso de estrategia",

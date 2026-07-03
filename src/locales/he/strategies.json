@@ -87,7 +87,9 @@
       "error": "שגיאה"
     },
     "backtest": "בקטסט",
-    "backtestAriaLabel": "בקטסט לאסטרטגיה {{name}}"
+    "backtestAriaLabel": "בקטסט לאסטרטגיה {{name}}",
+    "managedRemotely": "מנוהל על ידי {{coordinator}}",
+    "remoteCoordinatorUnknown": "מכל אחר"
   },
   "launchModal": {
     "title": "רשום תהליך אסטרטגיה",

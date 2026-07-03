@@ -87,7 +87,9 @@
       "error": "ERROR"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "I-backtest ang strategy na {{name}}"
+    "backtestAriaLabel": "I-backtest ang strategy na {{name}}",
+    "managedRemotely": "Pinamamahalaan ng {{coordinator}}",
+    "remoteCoordinatorUnknown": "ibang container"
   },
   "launchModal": {
     "title": "Mag-register ng Strategy Process",

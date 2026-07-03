@@ -87,7 +87,9 @@
       "error": "त्रुटि"
     },
     "backtest": "बैकटेस्ट",
-    "backtestAriaLabel": "{{name}} रणनीति का बैकटेस्ट करें"
+    "backtestAriaLabel": "{{name}} रणनीति का बैकटेस्ट करें",
+    "managedRemotely": "{{coordinator}} द्वारा प्रबंधित",
+    "remoteCoordinatorUnknown": "अन्य कंटेनर"
   },
   "launchModal": {
     "title": "रणनीति प्रोसेस पंजीकृत करें",

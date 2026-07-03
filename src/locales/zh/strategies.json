@@ -87,7 +87,9 @@
       "error": "错误"
     },
     "backtest": "回测",
-    "backtestAriaLabel": "回测 {{name}} 策略"
+    "backtestAriaLabel": "回测 {{name}} 策略",
+    "managedRemotely": "由 {{coordinator}} 管理",
+    "remoteCoordinatorUnknown": "其他容器"
   },
   "launchModal": {
     "title": "注册策略进程",

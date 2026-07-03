@@ -87,7 +87,9 @@
       "error": "HATA"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "{{name}} stratejisini backtest et"
+    "backtestAriaLabel": "{{name}} stratejisini backtest et",
+    "managedRemotely": "{{coordinator}} tarafından yönetiliyor",
+    "remoteCoordinatorUnknown": "başka bir kapsayıcı"
   },
   "launchModal": {
     "title": "Strateji Süreci Kaydet",

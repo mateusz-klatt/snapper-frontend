@@ -87,7 +87,9 @@
       "error": "KLAIDA"
     },
     "backtest": "Backtestas",
-    "backtestAriaLabel": "Strategijos {{name}} backtestas"
+    "backtestAriaLabel": "Strategijos {{name}} backtestas",
+    "managedRemotely": "Valdo {{coordinator}}",
+    "remoteCoordinatorUnknown": "kitas konteineris"
   },
   "launchModal": {
     "title": "Registruoti strategijos procesą",

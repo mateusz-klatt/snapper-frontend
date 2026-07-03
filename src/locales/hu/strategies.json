@@ -87,7 +87,9 @@
       "error": "HIBA"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "{{name}} stratégia backtestelése"
+    "backtestAriaLabel": "{{name}} stratégia backtestelése",
+    "managedRemotely": "Kezeli: {{coordinator}}",
+    "remoteCoordinatorUnknown": "egy másik konténer"
   },
   "launchModal": {
     "title": "Stratégiafolyamat regisztrálása",

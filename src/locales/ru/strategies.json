@@ -87,7 +87,9 @@
       "error": "ОШИБКА"
     },
     "backtest": "Бэктест",
-    "backtestAriaLabel": "Бэктест стратегии {{name}}"
+    "backtestAriaLabel": "Бэктест стратегии {{name}}",
+    "managedRemotely": "Управляется узлом {{coordinator}}",
+    "remoteCoordinatorUnknown": "другой контейнер"
   },
   "launchModal": {
     "title": "Регистрация процесса стратегии",

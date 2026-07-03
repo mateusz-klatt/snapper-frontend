@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { StrategyCard } from './StrategyCard'
@@ -11,6 +11,97 @@ const renderWithMocks = (ui: ReactNode) => {
 describe('StrategyCard', () => {
   const mockOnStart = vi.fn()
   const mockOnStop = vi.fn()
+
+  const freshHealth = () => ({
+    status: 'healthy' as const,
+    lag_ms: 100,
+    seq: 7,
+    timestamp: Date.now(),
+  })
+
+  it('shows the managed-remotely notice instead of controls', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_remote'
+        running={true}
+        autoStartEnabled={true}
+        mode='thread'
+        coordinator='coord-2'
+        managedRemotely={true}
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+      />
+    )
+    expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent('coord-2')
+    expect(screen.queryByRole('button', { name: /stop strategy/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /start strategy/i })).not.toBeInTheDocument()
+  })
+
+  it('falls back to the unknown-coordinator copy', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_remote'
+        running={false}
+        autoStartEnabled={false}
+        mode='thread'
+        managedRemotely={true}
+      />
+    )
+    expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent(/another container/i)
+  })
+
+  it('renders health metrics for a fresh remote heartbeat without local running', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_remote'
+        running={true}
+        autoStartEnabled={true}
+        mode='thread'
+        managedRemotely={true}
+        coordinator='coord-2'
+        health={freshHealth()}
+      />
+    )
+    expect(screen.getByText(/data lag/i)).toBeInTheDocument()
+  })
+
+  it('re-evaluates freshness when the stale timer fires', () => {
+    vi.useFakeTimers()
+
+    try {
+      renderWithMocks(
+        <StrategyCard
+          name='strategy_remote'
+          running={true}
+          autoStartEnabled={true}
+          mode='thread'
+          managedRemotely={true}
+          health={{ status: 'healthy', lag_ms: 100, seq: 7, timestamp: Date.now() }}
+        />
+      )
+      expect(screen.getByText(/data lag/i)).toBeInTheDocument()
+      act(() => {
+        vi.advanceTimersByTime(11_000)
+      })
+      expect(screen.queryByText(/data lag/i)).not.toBeInTheDocument()
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('hides health metrics once the heartbeat is stale', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_remote'
+        running={true}
+        autoStartEnabled={true}
+        mode='thread'
+        managedRemotely={true}
+        health={{ status: 'healthy', lag_ms: 100, seq: 7, timestamp: Date.now() - 60_000 }}
+      />
+    )
+    expect(screen.queryByText(/data lag/i)).not.toBeInTheDocument()
+  })
 
   it('renders strategy card', () => {
     renderWithMocks(

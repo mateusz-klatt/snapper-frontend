@@ -87,7 +87,9 @@
       "error": "GREŠKA"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtestuj strategiju {{name}}"
+    "backtestAriaLabel": "Backtestuj strategiju {{name}}",
+    "managedRemotely": "Управља {{coordinator}}",
+    "remoteCoordinatorUnknown": "други контејнер"
   },
   "launchModal": {
     "title": "Registracija procesa strategije",

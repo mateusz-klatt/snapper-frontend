@@ -87,7 +87,9 @@
       "error": "오류"
     },
     "backtest": "백테스트",
-    "backtestAriaLabel": "{{name}} 전략 백테스트"
+    "backtestAriaLabel": "{{name}} 전략 백테스트",
+    "managedRemotely": "{{coordinator}}에서 관리됨",
+    "remoteCoordinatorUnknown": "다른 컨테이너"
   },
   "launchModal": {
     "title": "전략 프로세스 등록",

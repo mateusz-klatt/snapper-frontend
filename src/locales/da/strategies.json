@@ -87,7 +87,9 @@
       "error": "FEJL"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtest strategien {{name}}"
+    "backtestAriaLabel": "Backtest strategien {{name}}",
+    "managedRemotely": "Administreres af {{coordinator}}",
+    "remoteCoordinatorUnknown": "en anden container"
   },
   "launchModal": {
     "title": "Registrer strategiproces",

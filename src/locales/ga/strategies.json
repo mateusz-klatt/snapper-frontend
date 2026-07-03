@@ -87,7 +87,9 @@
       "error": "EARRÁID"
     },
     "backtest": "Backtest",
-    "backtestAriaLabel": "Backtestáil straitéis {{name}}"
+    "backtestAriaLabel": "Backtestáil straitéis {{name}}",
+    "managedRemotely": "Á bhainistiú ag {{coordinator}}",
+    "remoteCoordinatorUnknown": "coimeádán eile"
   },
   "launchModal": {
     "title": "Cláraigh Próiseas Straitéise",

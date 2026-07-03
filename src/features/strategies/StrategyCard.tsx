@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { LoadingSpinner } from '../../components/ui'
+import { HEARTBEAT_STALE_THRESHOLD_MS } from '../../lib/constants'
 import { formatTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 
@@ -60,6 +61,22 @@ const FeedPublisherEntry: React.FC<Readonly<{ feedKey: string; feed: FeedHealth 
   )
 }
 
+const useHealthFreshness = (health: HealthStatus | undefined): boolean => {
+  const [now, setNow] = useState(() => Date.now())
+
+  useEffect(() => {
+    if (!health) return undefined
+    const remaining = health.timestamp + HEARTBEAT_STALE_THRESHOLD_MS - Date.now()
+
+    if (remaining <= 0) return undefined
+    const timer = setTimeout(() => setNow(Date.now()), remaining + 50)
+
+    return () => clearTimeout(timer)
+  }, [health])
+
+  return health !== undefined && now - health.timestamp <= HEARTBEAT_STALE_THRESHOLD_MS
+}
+
 const HEALTH_COLOR: Record<HealthStatus['status'], string> = {
   healthy: 'bg-accent-500',
   warning: 'bg-warning-500',
@@ -92,6 +109,8 @@ interface StrategyCardProps {
   autoStartEnabled: boolean
   mode: 'thread' | 'process'
   health?: HealthStatus | undefined
+  coordinator?: string | null | undefined
+  managedRemotely?: boolean | undefined
   onStart?: (() => void) | undefined
   onStop?: (() => void) | undefined
   onBacktest?: (() => void) | undefined
@@ -178,6 +197,8 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     autoStartEnabled,
     mode,
     health,
+    coordinator,
+    managedRemotely = false,
     onStart,
     onStop,
     onBacktest,
@@ -187,6 +208,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
   }) => {
     const { t, i18n } = useTranslation('strategies')
     const [expanded, setExpanded] = useState(false)
+    const healthFresh = useHealthFreshness(health)
     const isRunning = running || isStarting
     const showStopButton = running || isStopping
     const healthColor = resolveHealthColor(health)
@@ -255,7 +277,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
           </div>
         </div>
         {}
-        {health && isRunning && (
+        {health && healthFresh && (
           <div className='space-y-3'>
             {}
             <div className='grid grid-cols-3 gap-3 text-xs'>
@@ -374,7 +396,18 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
           <div className='text-xs text-muted-400 text-center py-2'>{t('card.waiting')}</div>
         )}
         {}
-        {(onStart || onStop || onBacktest) && (
+        {managedRemotely && (
+          <p
+            className='flex items-center gap-1.5 pt-2 border-t border-dark-600 text-xs text-muted-500'
+            data-testid='managed-remotely-notice'
+          >
+            <span className='w-1.5 h-1.5 rounded-full bg-info-400 shrink-0' />
+            {t('card.managedRemotely', {
+              coordinator: coordinator ?? t('card.remoteCoordinatorUnknown'),
+            })}
+          </p>
+        )}
+        {!managedRemotely && (onStart || onStop || onBacktest) && (
           <div className='flex space-x-2 pt-2 border-t border-dark-600'>
             {(onStart || onStop) && (
               <StrategyActionControls
