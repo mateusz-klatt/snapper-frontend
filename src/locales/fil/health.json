@@ -96,6 +96,8 @@
     "error": "error"
   },
   "systemMetrics": {
+    "disk": "Libreng disk",
+    "diskUsage": "{{percent}}% ginamit · {{mount}}",
     "title": "Kalusugan ng Proseso",
     "loading": "Nilo-load ang process metrics…",
     "unavailable": "Hindi available ang process metrics: {{message}}",

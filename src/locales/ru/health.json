@@ -96,6 +96,8 @@
     "error": "ошибка"
   },
   "systemMetrics": {
+    "disk": "Свободно на диске",
+    "diskUsage": "{{percent}}% занято · {{mount}}",
     "title": "Состояние процесса",
     "loading": "Загрузка метрик процесса…",
     "unavailable": "Метрики процесса недоступны: {{message}}",

@@ -96,6 +96,8 @@
     "error": "שגיאה"
   },
   "systemMetrics": {
+    "disk": "דיסק פנוי",
+    "diskUsage": "{{percent}}% בשימוש · {{mount}}",
     "title": "בריאות תהליך",
     "loading": "טוען מדדי תהליך…",
     "unavailable": "מדדי תהליך אינם זמינים: {{message}}",

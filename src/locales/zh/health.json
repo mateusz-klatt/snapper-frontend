@@ -96,6 +96,8 @@
     "error": "error"
   },
   "systemMetrics": {
+    "disk": "磁盘可用",
+    "diskUsage": "{{percent}}% 已用 · {{mount}}",
     "title": "进程健康",
     "loading": "正在加载进程指标…",
     "unavailable": "进程指标不可用: {{message}}",
@@ -106,6 +108,8 @@
     "uptime": "运行时长",
     "threads": "线程",
     "openFds": "打开的 FDs",
+    "disk": "磁盘可用",
+    "diskUsage": "{{percent}}% 已用 · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "被限流 {{count}}×",

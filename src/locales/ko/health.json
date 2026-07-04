@@ -96,6 +96,8 @@
     "error": "오류"
   },
   "systemMetrics": {
+    "disk": "디스크 여유",
+    "diskUsage": "{{percent}}% 사용 · {{mount}}",
     "title": "프로세스 상태",
     "loading": "프로세스 지표 로딩 중…",
     "unavailable": "프로세스 지표를 사용할 수 없습니다: {{message}}",

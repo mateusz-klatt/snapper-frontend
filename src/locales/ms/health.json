@@ -96,6 +96,8 @@
     "error": "ralat"
   },
   "systemMetrics": {
+    "disk": "Disk kosong",
+    "diskUsage": "{{percent}}% digunakan · {{mount}}",
     "title": "Kesihatan Proses",
     "loading": "Memuatkan metrik proses…",
     "unavailable": "Metrik proses tidak tersedia: {{message}}",

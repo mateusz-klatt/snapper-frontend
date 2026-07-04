@@ -96,6 +96,8 @@
     "error": "erro"
   },
   "systemMetrics": {
+    "disk": "Disco livre",
+    "diskUsage": "{{percent}}% usado · {{mount}}",
     "title": "Saúde dos processos",
     "loading": "Carregando métricas de processos…",
     "unavailable": "Métricas de processos indisponíveis: {{message}}",

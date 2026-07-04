@@ -96,6 +96,8 @@
     "error": "eroare"
   },
   "systemMetrics": {
+    "disk": "Disc liber",
+    "diskUsage": "{{percent}}% utilizat · {{mount}}",
     "title": "Sănătate proces",
     "loading": "Se încarcă metricile proceselor…",
     "unavailable": "Metricile de sănătate ale proceselor nu sunt disponibile: {{message}}",

@@ -96,6 +96,8 @@
     "error": "earráid"
   },
   "systemMetrics": {
+    "disk": "Diosca saor",
+    "diskUsage": "{{percent}}% úsáidte · {{mount}}",
     "title": "Sláinte Próisis",
     "loading": "Méadrachtaí próisis á lódáil…",
     "unavailable": "Níl méadrachtaí próisis ar fáil: {{message}}",

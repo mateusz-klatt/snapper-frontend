@@ -96,6 +96,8 @@
     "error": "lỗi"
   },
   "systemMetrics": {
+    "disk": "Đĩa trống",
+    "diskUsage": "{{percent}}% đã dùng · {{mount}}",
     "title": "Sức khỏe tiến trình",
     "loading": "Đang tải chỉ số tiến trình…",
     "unavailable": "Không có chỉ số tiến trình: {{message}}",
@@ -106,6 +108,8 @@
     "uptime": "Thời gian chạy",
     "threads": "Luồng",
     "openFds": "FD đang mở",
+    "disk": "Đĩa trống",
+    "diskUsage": "{{percent}}% đã dùng · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "Bị throttle {{count}}×",

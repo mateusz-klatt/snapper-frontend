@@ -96,6 +96,8 @@
     "error": "virhe"
   },
   "systemMetrics": {
+    "disk": "Levy vapaana",
+    "diskUsage": "{{percent}}% käytetty · {{mount}}",
     "title": "Prosessin tila",
     "loading": "Ladataan prosessimetriikoita…",
     "unavailable": "Prosessimetriikat eivät ole saatavilla: {{message}}",

@@ -96,6 +96,8 @@
     "error": "error"
   },
   "systemMetrics": {
+    "disk": "Вільне місце на диску",
+    "diskUsage": "{{percent}}% використано · {{mount}}",
     "title": "Стан процесу",
     "loading": "Завантаження метрик процесу…",
     "unavailable": "Метрики процесу недоступні: {{message}}",
@@ -106,6 +108,8 @@
     "uptime": "Час роботи",
     "threads": "Потоки",
     "openFds": "Відкриті FD",
+    "disk": "Вільне місце на диску",
+    "diskUsage": "{{percent}}% використано · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "Обмежено {{count}}×",

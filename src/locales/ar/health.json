@@ -96,6 +96,8 @@
     "error": "خطأ"
   },
   "systemMetrics": {
+    "disk": "مساحة القرص الحرة",
+    "diskUsage": "{{percent}}% مستخدَم · {{mount}}",
     "title": "صحة العملية",
     "loading": "جارٍ تحميل مقاييس العملية…",
     "unavailable": "مقاييس العملية غير متاحة: {{message}}",

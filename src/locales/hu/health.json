@@ -96,6 +96,8 @@
     "error": "hiba"
   },
   "systemMetrics": {
+    "disk": "Szabad lemez",
+    "diskUsage": "{{percent}}% használt · {{mount}}",
     "title": "Folyamatállapot",
     "loading": "Folyamatmetrikák betöltése…",
     "unavailable": "A folyamatmetrikák nem érhetők el: {{message}}",

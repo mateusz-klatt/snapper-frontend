@@ -96,6 +96,8 @@
     "error": "fel"
   },
   "systemMetrics": {
+    "disk": "Ledigt diskutrymme",
+    "diskUsage": "{{percent}}% använt · {{mount}}",
     "title": "Processhälsa",
     "loading": "Laddar processmätvärden…",
     "unavailable": "Processmätvärden inte tillgängliga: {{message}}",
@@ -106,6 +108,8 @@
     "uptime": "Drifttid",
     "threads": "Trådar",
     "openFds": "Öppna FDs",
+    "disk": "Ledigt diskutrymme",
+    "diskUsage": "{{percent}}% använt · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "Strypningar {{count}}×",

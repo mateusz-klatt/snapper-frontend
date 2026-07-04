@@ -96,6 +96,8 @@
     "error": "pogreška"
   },
   "systemMetrics": {
+    "disk": "Slobodan disk",
+    "diskUsage": "{{percent}}% iskorišteno · {{mount}}",
     "title": "Zdravlje procesa",
     "loading": "Učitavanje metrika procesa…",
     "unavailable": "Metrike procesa nisu dostupne: {{message}}",

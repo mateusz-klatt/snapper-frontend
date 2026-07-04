@@ -96,6 +96,8 @@
     "error": "villa"
   },
   "systemMetrics": {
+    "disk": "Laust diskpláss",
+    "diskUsage": "{{percent}}% notað · {{mount}}",
     "title": "Heilsa ferla",
     "loading": "Hleð ferlamælikvörðum…",
     "unavailable": "Ferlamælikvarðar eru ekki tiltækir: {{message}}",

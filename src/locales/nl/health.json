@@ -96,6 +96,8 @@
     "error": "fout"
   },
   "systemMetrics": {
+    "disk": "Schijf vrij",
+    "diskUsage": "{{percent}}% gebruikt · {{mount}}",
     "title": "Processtatus",
     "loading": "Procesmetrieken laden…",
     "unavailable": "Procesmetrieken niet beschikbaar: {{message}}",
