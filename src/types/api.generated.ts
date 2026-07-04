@@ -5722,13 +5722,35 @@ export interface Operations {
                     "application/json": Components["schemas"]["ProcessDesiredStateResponse"];
                 };
             };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
             422: {
                 headers: {
                     [name: string]: unknown;
                 };
-                content: {
-                    "application/json": Components["schemas"]["HTTPValidationError"];
-                };
+                content?: never;
             };
         };
     };

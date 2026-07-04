@@ -1979,7 +1979,7 @@ export const CancelOrderBodySchema = _CancelOrderBodyRawSchema as unknown as z.Z
 const _ProcessDesiredStateBodyRawSchema = z
   .object({
     action: z.enum(['enable', 'disable', 'restart']),
-    restart_nonce: z.string().nullable().optional(),
+    restart_nonce: z.string().min(8).max(64).nullable().optional(),
   })
   .strict()
 
