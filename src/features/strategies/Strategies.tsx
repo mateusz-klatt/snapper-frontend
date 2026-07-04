@@ -26,6 +26,115 @@ import { StrategyCard, type FeedHealth, type HealthStatus } from './StrategyCard
 import { StrategiesSkeleton } from '../../components/Skeleton'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
 import { useConfirmDialog } from '../../hooks/useConfirmDialog'
+import type { StrategyProcess } from '../../types/api'
+
+type RemoteProcessAction = 'enable' | 'disable' | 'restart'
+type StrategyCardAction = () => void
+
+interface StrategyCardRenderParams {
+  strategy: StrategyProcess
+  canManage: boolean
+  canBacktest: boolean
+  readOnly: boolean
+  health: HealthStatus | undefined
+  activeStrategyProcess: string | null
+  startPending: boolean
+  stopPending: boolean
+  remotePending: (name: string, action: RemoteProcessAction) => boolean
+  requestRemoteEnable: (name: string) => void
+  requestStartStrategy: (name: string, mode: string) => void
+  requestRemoteDisable: (name: string) => void
+  requestStopStrategy: (name: string) => void
+  requestRemoteRestart: (name: string) => void
+  setBacktestStrategyClass: React.Dispatch<React.SetStateAction<string | null>>
+}
+
+function startAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
+  if (!params.canManage) {
+    return undefined
+  }
+
+  if (params.strategy.managed_remotely) {
+    return () => params.requestRemoteEnable(params.strategy.name)
+  }
+
+  return () => params.requestStartStrategy(params.strategy.name, params.strategy.mode)
+}
+
+function stopAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
+  if (!params.canManage) {
+    return undefined
+  }
+
+  if (params.strategy.managed_remotely) {
+    return () => params.requestRemoteDisable(params.strategy.name)
+  }
+
+  return () => params.requestStopStrategy(params.strategy.name)
+}
+
+function restartAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
+  if (!params.canManage || !params.strategy.managed_remotely) {
+    return undefined
+  }
+
+  return () => params.requestRemoteRestart(params.strategy.name)
+}
+
+function backtestAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
+  const backtestClass = params.strategy.strategy_class ?? null
+
+  if (!params.canBacktest || !backtestClass || params.readOnly) {
+    return undefined
+  }
+
+  return () => params.setBacktestStrategyClass(backtestClass)
+}
+
+function strategyIsStarting(params: StrategyCardRenderParams): boolean {
+  if (params.strategy.managed_remotely) {
+    return params.remotePending(params.strategy.name, 'enable')
+  }
+
+  return params.startPending && params.activeStrategyProcess === params.strategy.name
+}
+
+function strategyIsStopping(params: StrategyCardRenderParams): boolean {
+  if (params.strategy.managed_remotely) {
+    return params.remotePending(params.strategy.name, 'disable')
+  }
+
+  return params.stopPending && params.activeStrategyProcess === params.strategy.name
+}
+
+function strategyIsRestarting(params: StrategyCardRenderParams): boolean {
+  return params.strategy.managed_remotely && params.remotePending(params.strategy.name, 'restart')
+}
+
+function renderStrategyCard(params: StrategyCardRenderParams): React.ReactElement {
+  const strategy = params.strategy
+
+  return (
+    <StrategyCard
+      key={strategy.name}
+      name={strategy.name}
+      running={strategy.running}
+      autoStartEnabled={strategy.enabled}
+      mode={strategy.mode}
+      health={params.health}
+      coordinator={strategy.coordinator}
+      managedRemotely={strategy.managed_remotely}
+      onStart={startAction(params)}
+      onStop={stopAction(params)}
+      onRestart={restartAction(params)}
+      onBacktest={backtestAction(params)}
+      isStarting={strategyIsStarting(params)}
+      isStopping={strategyIsStopping(params)}
+      isRestarting={strategyIsRestarting(params)}
+      readOnly={params.readOnly}
+    />
+  )
+}
 
 export const Strategies: React.FC = () => {
   const { t } = useTranslation('strategies')
@@ -46,9 +155,7 @@ export const Strategies: React.FC = () => {
   const startProcess = useStartProcessByName()
   const stopProcess = useStopProcessByName()
   const patchDesiredState = usePatchProcessDesiredState()
-  const [pendingRemote, setPendingRemote] = useState<
-    Record<string, 'enable' | 'disable' | 'restart'>
-  >({})
+  const [pendingRemote, setPendingRemote] = useState<Record<string, RemoteProcessAction>>({})
   const createProcessConfig = useCreateProcessConfig()
   const { data: strategiesData, isLoading } = useStrategies()
   const { data: availableProcesses } = useAvailableProcesses()
@@ -169,7 +276,7 @@ export const Strategies: React.FC = () => {
 
   const mutateRemote = (
     name: string,
-    action: 'enable' | 'disable' | 'restart',
+    action: RemoteProcessAction,
     callbacks: { onSuccess: () => void; onError: (error: Error) => void },
     restartNonce?: string
   ) => {
@@ -195,7 +302,7 @@ export const Strategies: React.FC = () => {
       })
   }
 
-  const remotePending = (name: string, action: 'enable' | 'disable' | 'restart'): boolean =>
+  const remotePending = (name: string, action: RemoteProcessAction): boolean =>
     pendingRemote[name] === action
 
   const requestRemoteEnable = (processName: string) => {
@@ -418,60 +525,25 @@ export const Strategies: React.FC = () => {
         <h3 className='text-lg font-medium text-alpine-900'>{t('page.configuredHeading')}</h3>
         {filteredStrategies.length > 0 && (
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
-            {filteredStrategies.map(strategy => {
-              const backtestClass: string | null = strategy.strategy_class ?? null
-
-              return (
-                <StrategyCard
-                  key={strategy.name}
-                  name={strategy.name}
-                  running={strategy.running}
-                  autoStartEnabled={strategy.enabled}
-                  mode={strategy.mode}
-                  health={healthStatuses[strategy.name]}
-                  coordinator={strategy.coordinator}
-                  managedRemotely={strategy.managed_remotely}
-                  onStart={
-                    canManage
-                      ? strategy.managed_remotely
-                        ? () => requestRemoteEnable(strategy.name)
-                        : () => requestStartStrategy(strategy.name, strategy.mode)
-                      : undefined
-                  }
-                  onStop={
-                    canManage
-                      ? strategy.managed_remotely
-                        ? () => requestRemoteDisable(strategy.name)
-                        : () => requestStopStrategy(strategy.name)
-                      : undefined
-                  }
-                  onRestart={
-                    canManage && strategy.managed_remotely
-                      ? () => requestRemoteRestart(strategy.name)
-                      : undefined
-                  }
-                  onBacktest={
-                    canBacktest && backtestClass && !readOnly
-                      ? () => setBacktestStrategyClass(backtestClass)
-                      : undefined
-                  }
-                  isStarting={
-                    strategy.managed_remotely
-                      ? remotePending(strategy.name, 'enable')
-                      : startProcess.isPending && activeStrategyProcess === strategy.name
-                  }
-                  isStopping={
-                    strategy.managed_remotely
-                      ? remotePending(strategy.name, 'disable')
-                      : stopProcess.isPending && activeStrategyProcess === strategy.name
-                  }
-                  isRestarting={
-                    strategy.managed_remotely && remotePending(strategy.name, 'restart')
-                  }
-                  readOnly={readOnly}
-                />
-              )
-            })}
+            {filteredStrategies.map(strategy =>
+              renderStrategyCard({
+                strategy,
+                canManage,
+                canBacktest,
+                readOnly,
+                health: healthStatuses[strategy.name],
+                activeStrategyProcess,
+                startPending: startProcess.isPending,
+                stopPending: stopProcess.isPending,
+                remotePending,
+                requestRemoteEnable,
+                requestStartStrategy,
+                requestRemoteDisable,
+                requestStopStrategy,
+                requestRemoteRestart,
+                setBacktestStrategyClass,
+              })
+            )}
           </div>
         )}
         {filteredStrategies.length === 0 && strategies.length > 0 && (
