@@ -30,6 +30,8 @@ const UNKNOWN_HEARTBEAT: HeartbeatData = {
 
 const EXECUTOR_INSTANCE_PATTERN = /^(.+)_w([a-f0-9]{12})$/
 
+type RemoteProcessAction = 'enable' | 'disable' | 'restart'
+
 export const Processes: React.FC = () => {
   const { t, i18n } = useTranslation('processes')
   const readOnly = useIsReadOnly()
@@ -160,9 +162,7 @@ export const Processes: React.FC = () => {
   const startProcess = useStartProcessByName()
   const stopProcess = useStopProcessByName()
   const patchDesiredState = usePatchProcessDesiredState()
-  const [pendingRemote, setPendingRemote] = useState<
-    Record<string, 'enable' | 'disable' | 'restart'>
-  >({})
+  const [pendingRemote, setPendingRemote] = useState<Record<string, RemoteProcessAction>>({})
 
   const closeExecutionModeModal = React.useCallback(() => {
     setExecutionModeModal({
@@ -231,7 +231,7 @@ export const Processes: React.FC = () => {
   }, [])
 
   const runRemote = React.useCallback(
-    (name: string, action: 'enable' | 'disable' | 'restart', restartNonce?: string) => {
+    (name: string, action: RemoteProcessAction, restartNonce?: string) => {
       setPendingRemote(prev => ({ ...prev, [name]: action }))
       patchDesiredState
         .mutateAsync({
@@ -245,8 +245,7 @@ export const Processes: React.FC = () => {
   )
 
   const remotePending = React.useCallback(
-    (name: string, action: 'enable' | 'disable' | 'restart'): boolean =>
-      pendingRemote[name] === action,
+    (name: string, action: RemoteProcessAction): boolean => pendingRemote[name] === action,
     [pendingRemote]
   )
 
