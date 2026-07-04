@@ -650,6 +650,43 @@ export interface Position {
 }
 
 /**
+ * Canonical ProcessCommandAck entity.
+ * From WebSocket ProcessCommandAckData.
+ */
+export interface ProcessCommandAck {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  commandId: string
+  coordinator: string
+  processName: string
+  status: string
+  detail?: string | null
+  signature: string
+}
+
+/**
+ * Canonical ProcessCommand entity.
+ * From WebSocket ProcessCommandData.
+ */
+export interface ProcessCommand {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  commandId: string
+  coordinator: string
+  processName: string
+  action: string
+  issuedBy: string
+  issuedAt: Date
+  signature: string
+}
+
+/**
  * Canonical ProcessConfiguredEvent entity.
  * From WebSocket ProcessConfiguredEventData.
  */
