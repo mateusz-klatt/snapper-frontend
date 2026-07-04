@@ -70,5 +70,8 @@
     "start": "Pokreni {{name}}",
     "threadAriaLabel": "Način niti",
     "processAriaLabel": "Način procesa"
+  },
+  "toast": {
+    "remoteActionFailed": "Udaljena radnja nije uspjela: {{message}}"
   }
 }

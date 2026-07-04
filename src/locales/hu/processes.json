@@ -70,5 +70,8 @@
     "start": "{{name}} indítása",
     "threadAriaLabel": "Szál mód",
     "processAriaLabel": "Folyamat mód"
+  },
+  "toast": {
+    "remoteActionFailed": "A távoli művelet sikertelen: {{message}}"
   }
 }

@@ -70,5 +70,8 @@
     "start": "Paleisti {{name}}",
     "threadAriaLabel": "Gijos režimas",
     "processAriaLabel": "Proceso režimas"
+  },
+  "toast": {
+    "remoteActionFailed": "Nuotolinis veiksmas nepavyko: {{message}}"
   }
 }

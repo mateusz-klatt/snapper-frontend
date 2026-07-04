@@ -70,5 +70,8 @@
     "start": "Mulai {{name}}",
     "threadAriaLabel": "Mode Thread",
     "processAriaLabel": "Mode Proses"
+  },
+  "toast": {
+    "remoteActionFailed": "Tindakan jarak jauh gagal: {{message}}"
   }
 }

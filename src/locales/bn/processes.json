@@ -70,5 +70,8 @@
     "start": "{{name}} শুরু করুন",
     "threadAriaLabel": "Thread Mode",
     "processAriaLabel": "Process Mode"
+  },
+  "toast": {
+    "remoteActionFailed": "দূরবর্তী কাজ ব্যর্থ হয়েছে: {{message}}"
   }
 }

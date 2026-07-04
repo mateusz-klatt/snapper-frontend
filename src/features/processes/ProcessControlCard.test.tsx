@@ -116,6 +116,34 @@ describe('ProcessControlCard', () => {
     )
     expect(screen.getByText('Restart')).toBeInTheDocument()
   })
+  it('shows restart for a remote-managed enabled process even when stopped', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Test Process'
+        description='Test description'
+        status='stopped'
+        managedRemotely={true}
+        enabled={true}
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+      />
+    )
+    expect(screen.getByText('Restart')).toBeInTheDocument()
+  })
+  it('hides restart for a remote-managed disabled stopped process', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Test Process'
+        description='Test description'
+        status='stopped'
+        managedRemotely={true}
+        enabled={false}
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+      />
+    )
+    expect(screen.queryByText('Restart')).not.toBeInTheDocument()
+  })
   it('displays loading state when starting', () => {
     renderWithMocks(
       <ProcessControlCard

@@ -70,5 +70,8 @@
     "start": "Έναρξη {{name}}",
     "threadAriaLabel": "Λειτουργία νήματος",
     "processAriaLabel": "Λειτουργία διεργασίας"
+  },
+  "toast": {
+    "remoteActionFailed": "Η απομακρυσμένη ενέργεια απέτυχε: {{message}}"
   }
 }

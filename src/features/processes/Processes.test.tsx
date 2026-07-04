@@ -69,6 +69,12 @@ vi.mock('../../hooks/queries/processes', () => ({
   })),
   useCreateProcessConfig: vi.fn(() => ({ mutate: mockCreateProcessConfig })),
 }))
+vi.mock('react-hot-toast', () => ({
+  default: {
+    success: vi.fn(),
+    error: vi.fn(),
+  },
+}))
 vi.mock('../../stores/websocket', () => ({
   useWebSocketStore: vi.fn(() => ({
     wsClient: mockWsClient,
@@ -214,11 +220,69 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Managed by coord-1')).toBeTruthy()
     })
-    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^start$/i }))
     expect(mockPatchDesiredStateMutateAsync).toHaveBeenCalledWith({
       name: 'kraken_feed_publisher',
       body: { action: 'enable' },
     })
+  })
+  it('toasts an error when a remote desired-state PATCH fails', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        running: false,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    mockPatchDesiredStateMutateAsync.mockRejectedValueOnce(new Error('coordinator offline'))
+    const toast = (await import('react-hot-toast')).default
+
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /^start$/i }))
+    await waitFor(() => {
+      expect(vi.mocked(toast.error)).toHaveBeenCalledWith(
+        expect.stringContaining('coordinator offline'),
+        expect.objectContaining({ duration: 5000 })
+      )
+    })
+  })
+  it('shows Restart for a stopped-but-enabled remote process (parked recovery)', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        enabled: true,
+        running: false,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    expect(screen.getByRole('button', { name: /restart/i })).toBeTruthy()
   })
   it('routes Restart of a running remote process to the desired-state restart PATCH', async () => {
     const items = [
@@ -274,7 +338,7 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Managed by coord-1')).toBeTruthy()
     })
-    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^start$/i }))
     await waitFor(() => {
       expect(screen.getByText('Starting...')).toBeTruthy()
     })
@@ -302,7 +366,7 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Managed by coord-1')).toBeTruthy()
     })
-    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^start$/i }))
     expect(mockPatchDesiredStateMutateAsync).toHaveBeenCalled()
     await waitFor(() => {
       expect(screen.queryByText('Starting...')).toBeNull()
@@ -331,9 +395,9 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Managed by coord-1')).toBeTruthy()
     })
-    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^start$/i }))
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: /start/i })).toBeEnabled()
+      expect(screen.getByRole('button', { name: /^start$/i })).toBeEnabled()
     })
   })
   it('subscribes to heartbeat topics', async () => {
@@ -1006,7 +1070,7 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Long-Running Processes')).toBeTruthy()
     })
-    const startButtons = screen.getAllByRole('button', { name: /start/i })
+    const startButtons = screen.getAllByRole('button', { name: /^start$/i })
 
     expect(startButtons.length).toBeGreaterThan(0)
     fireEvent.click(startButtons[0] as HTMLElement)
@@ -1360,7 +1424,7 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Long-Running Processes')).toBeTruthy()
     })
-    const startButtons = screen.getAllByRole('button', { name: /start/i })
+    const startButtons = screen.getAllByRole('button', { name: /^start$/i })
 
     fireEvent.click(startButtons[0] as HTMLElement)
     await waitFor(() => {
@@ -2340,7 +2404,7 @@ describe('Processes', () => {
       expect(screen.getByText('Wallet Instances')).toBeTruthy()
     })
     const startButton = screen
-      .getAllByRole('button', { name: /start/i })
+      .getAllByRole('button', { name: /^start$/i })
       .find(btn => btn instanceof HTMLElement) as HTMLElement | undefined
 
     expect(startButton).toBeDefined()

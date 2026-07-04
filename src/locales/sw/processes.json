@@ -70,5 +70,8 @@
     "start": "Anzisha {{name}}",
     "threadAriaLabel": "Hali ya Thread",
     "processAriaLabel": "Hali ya Process"
+  },
+  "toast": {
+    "remoteActionFailed": "Kitendo cha mbali kimeshindikana: {{message}}"
   }
 }

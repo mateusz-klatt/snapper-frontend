@@ -70,5 +70,8 @@
     "start": "{{name}} 시작",
     "threadAriaLabel": "스레드 모드",
     "processAriaLabel": "프로세스 모드"
+  },
+  "toast": {
+    "remoteActionFailed": "원격 작업 실패: {{message}}"
   }
 }

@@ -70,5 +70,8 @@
     "start": "Mulakan {{name}}",
     "threadAriaLabel": "Mod Thread",
     "processAriaLabel": "Mod Proses"
+  },
+  "toast": {
+    "remoteActionFailed": "Tindakan jauh gagal: {{message}}"
   }
 }

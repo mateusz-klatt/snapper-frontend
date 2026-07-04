@@ -70,5 +70,8 @@
     "start": "I-start ang {{name}}",
     "threadAriaLabel": "Thread Mode",
     "processAriaLabel": "Process Mode"
+  },
+  "toast": {
+    "remoteActionFailed": "Nabigo ang malayuang aksyon: {{message}}"
   }
 }

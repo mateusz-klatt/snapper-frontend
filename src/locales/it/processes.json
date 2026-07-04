@@ -70,5 +70,8 @@
     "start": "Avvia {{name}}",
     "threadAriaLabel": "Modalità thread",
     "processAriaLabel": "Modalità processo"
+  },
+  "toast": {
+    "remoteActionFailed": "Azione remota non riuscita: {{message}}"
   }
 }

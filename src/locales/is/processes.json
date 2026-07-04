@@ -70,5 +70,8 @@
     "start": "Ræsa {{name}}",
     "threadAriaLabel": "Þráðarhamur",
     "processAriaLabel": "Ferlishamur"
+  },
+  "toast": {
+    "remoteActionFailed": "Fjaraðgerð mistókst: {{message}}"
   }
 }

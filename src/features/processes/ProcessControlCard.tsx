@@ -18,6 +18,7 @@ interface ProcessControlCardProps {
   isRestarting?: boolean
   readOnly?: boolean | undefined
   managedRemotely?: boolean | undefined
+  enabled?: boolean | undefined
   coordinator?: string | null | undefined
   heartbeat?: HeartbeatData | undefined
 }
@@ -67,6 +68,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
   isRestarting = false,
   readOnly = false,
   managedRemotely = false,
+  enabled = false,
   coordinator,
   heartbeat,
 }) => {
@@ -172,7 +174,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
             </button>
           )}
           {}
-          {isRunning && (
+          {(isRunning || (managedRemotely === true && enabled === true)) && (
             <button
               onClick={onRestart}
               disabled={controlsBusy || readOnly}

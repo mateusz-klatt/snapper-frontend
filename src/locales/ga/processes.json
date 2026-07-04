@@ -70,5 +70,8 @@
     "start": "Tosaigh {{name}}",
     "threadAriaLabel": "Mód Snáithe",
     "processAriaLabel": "Mód Próisis"
+  },
+  "toast": {
+    "remoteActionFailed": "Theip ar an ngníomh cianda: {{message}}"
   }
 }

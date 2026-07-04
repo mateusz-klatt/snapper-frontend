@@ -320,9 +320,9 @@ describe('Strategies', () => {
     } as never)
     renderWithProviders(<Strategies />)
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: /start remote strategy/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /^start remote strategy/i })).toBeInTheDocument()
     })
-    fireEvent.click(screen.getByRole('button', { name: /start remote strategy/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^start remote strategy/i }))
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
     })
@@ -431,9 +431,9 @@ describe('Strategies', () => {
     } as never)
     renderWithProviders(<Strategies />)
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: /start remote strategy/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /^start remote strategy/i })).toBeInTheDocument()
     })
-    fireEvent.click(screen.getByRole('button', { name: /start remote strategy/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^start remote strategy/i }))
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
     })
@@ -462,9 +462,9 @@ describe('Strategies', () => {
     } as never)
     renderWithProviders(<Strategies />)
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: /start remote strategy/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /^start remote strategy/i })).toBeInTheDocument()
     })
-    fireEvent.click(screen.getByRole('button', { name: /start remote strategy/i }))
+    fireEvent.click(screen.getByRole('button', { name: /^start remote strategy/i }))
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
     })

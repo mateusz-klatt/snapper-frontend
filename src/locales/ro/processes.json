@@ -70,5 +70,8 @@
     "start": "Porniți {{name}}",
     "threadAriaLabel": "Mod thread",
     "processAriaLabel": "Mod proces"
+  },
+  "toast": {
+    "remoteActionFailed": "Acțiunea la distanță a eșuat: {{message}}"
   }
 }

@@ -70,5 +70,8 @@
     "start": "Nis {{name}}",
     "threadAriaLabel": "Modalitet Thread",
     "processAriaLabel": "Modalitet Proces"
+  },
+  "toast": {
+    "remoteActionFailed": "Veprimi në distancë dështoi: {{message}}"
   }
 }
