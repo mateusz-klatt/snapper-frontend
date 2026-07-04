@@ -96,6 +96,8 @@
     "error": "klaida"
   },
   "systemMetrics": {
+    "disk": "Laisva disko vieta",
+    "diskUsage": "{{percent}}% naudojama · {{mount}}",
     "title": "Procesų būklė",
     "loading": "Įkeliamos procesų metrikos…",
     "unavailable": "Procesų metrikos nepasiekiamos: {{message}}",

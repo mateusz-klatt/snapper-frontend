@@ -96,6 +96,8 @@
     "error": "feil"
   },
   "systemMetrics": {
+    "disk": "Ledig disk",
+    "diskUsage": "{{percent}}% brukt · {{mount}}",
     "title": "Prosesshelse",
     "loading": "Laster prosessmetrikker…",
     "unavailable": "Prosessmetrikker utilgjengelige: {{message}}",

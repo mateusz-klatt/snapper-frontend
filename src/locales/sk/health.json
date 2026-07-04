@@ -96,6 +96,8 @@
     "error": "chyba"
   },
   "systemMetrics": {
+    "disk": "Voľný disk",
+    "diskUsage": "{{percent}}% využité · {{mount}}",
     "title": "Stav procesu",
     "loading": "Načítavajú sa metriky procesu…",
     "unavailable": "Metriky procesu nie sú dostupné: {{message}}",

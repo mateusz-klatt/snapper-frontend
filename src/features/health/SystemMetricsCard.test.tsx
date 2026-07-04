@@ -378,4 +378,100 @@ describe('SystemMetricsCard', () => {
     expect(screen.queryByText(/Saturation —/)).not.toBeInTheDocument()
     expect(screen.queryByText(/Throttled 0×/)).not.toBeInTheDocument()
   })
+
+  const withDisk = (disk: (typeof sampleSnapshot)['payload']['disk']): SystemMetricsResponse => ({
+    ...sampleSnapshot,
+    payload: { ...sampleSnapshot.payload, disk },
+  })
+
+  it('renders disk free space, usage percent and mount path', async () => {
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
+
+    vi.mocked(useSystemMetrics).mockReturnValue({
+      data: withDisk({
+        mount_path: '/data',
+        total_bytes: 4 * 1024 * 1024 * 1024,
+        used_bytes: 1 * 1024 * 1024 * 1024,
+        free_bytes: 3 * 1024 * 1024 * 1024,
+        percent_used: 25,
+        disk_low: false,
+        disk_critical: false,
+        status: 'healthy',
+      }),
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useSystemMetrics>)
+    renderWithProviders(<SystemMetricsCard />)
+    expect(screen.getByText('Disk free')).toBeInTheDocument()
+    expect(screen.getByText('3.00 GB')).toBeInTheDocument()
+    expect(screen.getByText('25.0% used · /data')).toBeInTheDocument()
+  })
+
+  it('applies a warning tone when disk space is low', async () => {
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
+
+    vi.mocked(useSystemMetrics).mockReturnValue({
+      data: withDisk({
+        mount_path: '/',
+        total_bytes: 781_000_000_000,
+        used_bytes: 765_000_000_000,
+        free_bytes: 16_000_000_000,
+        percent_used: 97.9,
+        disk_low: true,
+        disk_critical: false,
+        status: 'warning',
+      }),
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useSystemMetrics>)
+    renderWithProviders(<SystemMetricsCard />)
+    const cell = screen.getByText('Disk free').closest('div')
+
+    expect(cell?.className).toContain('border-warning-500')
+  })
+
+  it('applies an error tone when disk space is critical', async () => {
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
+
+    vi.mocked(useSystemMetrics).mockReturnValue({
+      data: withDisk({
+        mount_path: '/',
+        total_bytes: 781_000_000_000,
+        used_bytes: 776_000_000_000,
+        free_bytes: 5_000_000_000,
+        percent_used: 99.4,
+        disk_low: true,
+        disk_critical: true,
+        status: 'error',
+      }),
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useSystemMetrics>)
+    renderWithProviders(<SystemMetricsCard />)
+    const cell = screen.getByText('Disk free').closest('div')
+
+    expect(cell?.className).toContain('border-loss-500')
+  })
+
+  it('renders em-dash and mount-only description when disk metrics are unavailable', async () => {
+    const { useSystemMetrics } = await import('../../hooks/queries/system')
+
+    vi.mocked(useSystemMetrics).mockReturnValue({
+      data: withDisk({
+        mount_path: '/srv',
+        total_bytes: null,
+        used_bytes: null,
+        free_bytes: null,
+        percent_used: null,
+        disk_low: false,
+        disk_critical: false,
+        status: 'warning',
+      }),
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useSystemMetrics>)
+    renderWithProviders(<SystemMetricsCard />)
+    expect(screen.getByText('—')).toBeInTheDocument()
+    expect(screen.getByText('/srv')).toBeInTheDocument()
+  })
 })

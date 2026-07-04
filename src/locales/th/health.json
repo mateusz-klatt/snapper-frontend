@@ -96,6 +96,8 @@
     "error": "ข้อผิดพลาด"
   },
   "systemMetrics": {
+    "disk": "ดิสก์ว่าง",
+    "diskUsage": "{{percent}}% ใช้ไป · {{mount}}",
     "title": "สุขภาพกระบวนการ",
     "loading": "กำลังโหลดเมตริกกระบวนการ…",
     "unavailable": "เมตริกกระบวนการไม่พร้อมใช้งาน: {{message}}",
@@ -106,6 +108,8 @@
     "uptime": "เวลาทำงาน",
     "threads": "เธรด",
     "openFds": "FD ที่เปิดอยู่",
+    "disk": "ดิสก์ว่าง",
+    "diskUsage": "{{percent}}% ใช้ไป · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "ถูก throttle {{count}}×",

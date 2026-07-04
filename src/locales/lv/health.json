@@ -96,6 +96,8 @@
     "error": "kļūda"
   },
   "systemMetrics": {
+    "disk": "Brīva diska vieta",
+    "diskUsage": "{{percent}}% izmantots · {{mount}}",
     "title": "Procesu veselība",
     "loading": "Notiek procesu metriku ielāde…",
     "unavailable": "Procesu metrikas nav pieejamas: {{message}}",

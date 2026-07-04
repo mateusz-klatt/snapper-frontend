@@ -96,6 +96,8 @@
     "error": "ত্রুটি"
   },
   "systemMetrics": {
+    "disk": "ফাঁকা ডিস্ক",
+    "diskUsage": "{{percent}}% ব্যবহৃত · {{mount}}",
     "title": "প্রসেস স্বাস্থ্য",
     "loading": "Process metrics লোড হচ্ছে…",
     "unavailable": "Process metrics অনুপলভ্য: {{message}}",

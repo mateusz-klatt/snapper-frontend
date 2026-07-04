@@ -96,6 +96,8 @@
     "error": "fejl"
   },
   "systemMetrics": {
+    "disk": "Ledig diskplads",
+    "diskUsage": "{{percent}}% brugt · {{mount}}",
     "title": "Processundhed",
     "loading": "Indlæser procesmetrikker…",
     "unavailable": "Procesmetrikker ikke tilgængelige: {{message}}",

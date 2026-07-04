@@ -14,14 +14,29 @@ function formatPercent(value: number | null | undefined): string {
   return `${(value * 100).toFixed(1)}%`
 }
 
+type MetricTone = 'neutral' | 'warning' | 'error'
+
+const TONE_CLASSES: Record<MetricTone, string> = {
+  neutral: 'border-dark-600 bg-alpine-50',
+  warning: 'border-warning-500 bg-warning-50',
+  error: 'border-loss-500 bg-loss-50',
+}
+
+const DISK_TONE: Record<SystemMetricsData['disk']['status'], MetricTone> = {
+  healthy: 'neutral',
+  warning: 'warning',
+  error: 'error',
+}
+
 interface MetricCellProps {
   readonly label: string
   readonly value: string
   readonly description?: string | undefined
+  readonly tone?: MetricTone
 }
 
-const MetricCell: React.FC<MetricCellProps> = ({ label, value, description }) => (
-  <div className='flex flex-col rounded-md border border-dark-600 bg-alpine-50 p-3'>
+const MetricCell: React.FC<MetricCellProps> = ({ label, value, description, tone = 'neutral' }) => (
+  <div className={`flex flex-col rounded-md border p-3 ${TONE_CLASSES[tone]}`}>
     <span className='text-xs uppercase tracking-wide text-muted-600'>{label}</span>
     <span className='mt-1 text-lg font-semibold text-alpine-900'>{value}</span>
     {description !== undefined && (
@@ -36,7 +51,7 @@ interface ProcessHealthGridProps {
 
 const ProcessHealthGrid: React.FC<ProcessHealthGridProps> = ({ snapshot }) => {
   const { t } = useTranslation('health')
-  const { process, cpu, memory, asyncio, gc, db_internal, saturation, tracemalloc_active } =
+  const { process, cpu, memory, asyncio, gc, db_internal, saturation, tracemalloc_active, disk } =
     snapshot
   const memorySaturation = memory.saturation_pct
   const dbPoolDepth =
@@ -89,6 +104,19 @@ const ProcessHealthGrid: React.FC<ProcessHealthGridProps> = ({ snapshot }) => {
             ? undefined
             : t('systemMetrics.saturation', { percent: formatPercent(memorySaturation) })
         }
+      />
+      <MetricCell
+        label={t('systemMetrics.disk')}
+        value={disk.free_bytes === null ? '—' : formatBytes(disk.free_bytes)}
+        description={
+          disk.percent_used === null
+            ? disk.mount_path
+            : t('systemMetrics.diskUsage', {
+                percent: disk.percent_used.toFixed(1),
+                mount: disk.mount_path,
+              })
+        }
+        tone={DISK_TONE[disk.status]}
       />
       <MetricCell
         label={t('systemMetrics.asyncioTasks')}

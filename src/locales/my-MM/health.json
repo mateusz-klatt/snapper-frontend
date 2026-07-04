@@ -96,6 +96,8 @@
     "error": "error"
   },
   "systemMetrics": {
+    "disk": "ဒစ်ခ် လွတ်နေရာ",
+    "diskUsage": "{{percent}}% အသုံးပြုထားသည် · {{mount}}",
     "title": "လုပ်ငန်းစဉ် ကျန်းမာရေး",
     "loading": "လုပ်ငန်းစဉ် metric များ တင်နေသည်…",
     "unavailable": "Process metric များ မရနိုင်ပါ: {{message}}",

@@ -96,6 +96,8 @@
     "error": "hitilafu"
   },
   "systemMetrics": {
+    "disk": "Diski iliyosalia",
+    "diskUsage": "{{percent}}% imetumika · {{mount}}",
     "title": "Afya ya Process",
     "loading": "Inapakia vipimo vya process…",
     "unavailable": "Vipimo vya process havipatikani: {{message}}",
@@ -106,6 +108,8 @@
     "uptime": "Muda wa kuwaka",
     "threads": "Threads",
     "openFds": "FD Zilizofunguliwa",
+    "disk": "Diski iliyosalia",
+    "diskUsage": "{{percent}}% imetumika · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "Imepunguzwa {{count}}×",

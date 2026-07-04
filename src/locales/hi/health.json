@@ -96,6 +96,8 @@
     "error": "त्रुटि"
   },
   "systemMetrics": {
+    "disk": "डिस्क खाली",
+    "diskUsage": "{{percent}}% उपयोग में · {{mount}}",
     "title": "प्रोसेस हेल्थ",
     "loading": "प्रोसेस मेट्रिक्स लोड हो रहे हैं…",
     "unavailable": "प्रोसेस मेट्रिक्स उपलब्ध नहीं: {{message}}",

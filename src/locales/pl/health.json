@@ -96,6 +96,8 @@
     "error": "błąd"
   },
   "systemMetrics": {
+    "disk": "Wolny dysk",
+    "diskUsage": "{{percent}}% zajęte · {{mount}}",
     "title": "Kondycja procesu",
     "loading": "Ładowanie metryk procesu…",
     "unavailable": "Metryki procesu niedostępne: {{message}}",

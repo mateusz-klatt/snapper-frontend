@@ -96,6 +96,8 @@
     "error": "hata"
   },
   "systemMetrics": {
+    "disk": "Boş disk alanı",
+    "diskUsage": "{{percent}}% kullanıldı · {{mount}}",
     "title": "Süreç Sağlığı",
     "loading": "Süreç metrikleri yükleniyor…",
     "unavailable": "Süreç metrikleri kullanılamıyor: {{message}}",
@@ -106,6 +108,8 @@
     "uptime": "Çalışma süresi",
     "threads": "Thread'ler",
     "openFds": "Açık FD'ler",
+    "disk": "Boş disk alanı",
+    "diskUsage": "{{percent}}% kullanıldı · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "{{count}}× kısıtlandı",

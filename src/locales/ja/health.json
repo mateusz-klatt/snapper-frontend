@@ -96,6 +96,8 @@
     "error": "error"
   },
   "systemMetrics": {
+    "disk": "ディスク空き",
+    "diskUsage": "{{percent}}% 使用 · {{mount}}",
     "title": "プロセスヘルス",
     "loading": "プロセスメトリクスを読み込み中…",
     "unavailable": "プロセスメトリクスを利用できません: {{message}}",

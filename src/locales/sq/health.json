@@ -96,6 +96,8 @@
     "error": "gabim"
   },
   "systemMetrics": {
+    "disk": "Disk i lirë",
+    "diskUsage": "{{percent}}% e përdorur · {{mount}}",
     "title": "Shëndeti i proceseve",
     "loading": "Duke ngarkuar metrikat e proceseve…",
     "unavailable": "Metrikat e proceseve nuk janë të disponueshme: {{message}}",

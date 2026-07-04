@@ -96,6 +96,8 @@
     "error": "Fehler"
   },
   "systemMetrics": {
+    "disk": "Freier Speicherplatz",
+    "diskUsage": "{{percent}}% belegt · {{mount}}",
     "title": "Prozessgesundheit",
     "loading": "Prozessmetriken werden geladen…",
     "unavailable": "Prozessmetriken nicht verfügbar: {{message}}",

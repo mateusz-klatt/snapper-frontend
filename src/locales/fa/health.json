@@ -96,6 +96,8 @@
     "error": "خطا"
   },
   "systemMetrics": {
+    "disk": "فضای آزاد دیسک",
+    "diskUsage": "{{percent}}% استفاده‌شده · {{mount}}",
     "title": "سلامت فرایند",
     "loading": "در حال بارگذاری معیارهای فرایند…",
     "unavailable": "معیارهای فرایند در دسترس نیست: {{message}}",
