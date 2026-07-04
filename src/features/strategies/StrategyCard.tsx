@@ -113,9 +113,11 @@ interface StrategyCardProps {
   managedRemotely?: boolean | undefined
   onStart?: (() => void) | undefined
   onStop?: (() => void) | undefined
+  onRestart?: (() => void) | undefined
   onBacktest?: (() => void) | undefined
   isStarting?: boolean
   isStopping?: boolean
+  isRestarting?: boolean
   readOnly?: boolean | undefined
 }
 
@@ -126,6 +128,7 @@ interface StrategyActionControlsProps {
   onStop?: (() => void) | undefined
   isStarting: boolean
   isStopping: boolean
+  isRestarting: boolean
   readOnly: boolean
 }
 
@@ -136,10 +139,11 @@ const StrategyActionControls: React.FC<Readonly<StrategyActionControlsProps>> = 
   onStop,
   isStarting,
   isStopping,
+  isRestarting,
   readOnly,
 }) => {
   const { t } = useTranslation('strategies')
-  const controlsDisabled = isStopping || isStarting || readOnly
+  const controlsDisabled = isStopping || isStarting || isRestarting || readOnly
 
   if (showStopButton) {
     return (
@@ -201,9 +205,11 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     managedRemotely = false,
     onStart,
     onStop,
+    onRestart,
     onBacktest,
     isStarting = false,
     isStopping = false,
+    isRestarting = false,
     readOnly = false,
   }) => {
     const { t, i18n } = useTranslation('strategies')
@@ -407,8 +413,10 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             })}
           </p>
         )}
-        {!managedRemotely && (onStart || onStop || onBacktest) && (
-          <div className='flex space-x-2 pt-2 border-t border-dark-600'>
+        {(onStart || onStop || onRestart || onBacktest) && (
+          <div
+            className={clsx('flex space-x-2 pt-2', !managedRemotely && 'border-t border-dark-600')}
+          >
             {(onStart || onStop) && (
               <StrategyActionControls
                 displayName={displayName}
@@ -417,8 +425,27 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 onStop={onStop}
                 isStarting={isStarting}
                 isStopping={isStopping}
+                isRestarting={isRestarting}
                 readOnly={readOnly}
               />
+            )}
+            {onRestart && showStopButton && (
+              <button
+                type='button'
+                onClick={onRestart}
+                disabled={readOnly || isStarting || isStopping || isRestarting}
+                aria-label={t('card.restartAriaLabel', { name: displayName })}
+                className='flex-1 px-4 py-2 rounded-md text-sm font-medium bg-info-600 text-white transition-colors hover:bg-info-700 focus:outline-none focus:ring-2 focus:ring-info-500 disabled:opacity-50 disabled:cursor-not-allowed'
+              >
+                {isRestarting ? (
+                  <>
+                    <LoadingSpinner size='sm' className='inline-block mr-2' />
+                    {t('card.restart')}
+                  </>
+                ) : (
+                  t('card.restart')
+                )}
+              </button>
             )}
             {onBacktest && (
               <button

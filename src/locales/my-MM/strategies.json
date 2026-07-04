@@ -22,7 +22,9 @@
     "startTitle": "{{name}} ကို စတင်ပါ",
     "startMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို စတင်မည်။ Live trading operation များ စတင်နိုင်သည်။",
     "stopTitle": "{{name}} ကို ရပ်ပါ",
-    "stopMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို ရပ်မည်။ Active position များကို အလိုအလျောက် ပိတ်မည်မဟုတ်ပါ။"
+    "stopMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို ရပ်မည်။ Active position များကို အလိုအလျောက် ပိတ်မည်မဟုတ်ပါ။",
+    "restartTitle": "{{name}} ကို ပြန်လည်စတင်ပါ",
+    "restartMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို ရပ်၍ ပြန်လည်စတင်မည်။ Active position များကို အလိုအလျောက် ပိတ်မည်မဟုတ်ပါ။"
   },
   "toast": {
     "saved": "ဗျူဟာ {{name}} သိမ်းပြီးပါပြီ",
@@ -36,7 +38,9 @@
     "networkError": "ကွန်ရက်အမှား။ Connection ကို စစ်ပြီး ထပ်စမ်းပါ။",
     "startFailed": "ဗျူဟာ စတင်၍ မရပါ: {{message}}",
     "stopFailed": "ဗျူဟာ ရပ်၍ မရပါ: {{message}}",
-    "unknownError": "မသိသော အမှား"
+    "unknownError": "မသိသော အမှား",
+    "restartSuccess": "ဗျူဟာ ပြန်လည်စတင်ခြင်း တောင်းဆိုထားပါသည်",
+    "restartFailed": "ဗျူဟာ ပြန်လည်စတင်၍ မရပါ: {{message}}"
   },
   "card": {
     "ariaLabel": "ဗျူဟာ: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "နောက်ကြောင်းပြန် စမ်းသပ်မှု",
     "backtestAriaLabel": "{{name}} ဗျူဟာကို နောက်ကြောင်းပြန် စမ်းသပ်ပါ",
     "managedRemotely": "{{coordinator}} မှ စီမံခန့်ခွဲသည်",
-    "remoteCoordinatorUnknown": "အခြားကွန်တိန်နာ"
+    "remoteCoordinatorUnknown": "အခြားကွန်တိန်နာ",
+    "restart": "ပြန်လည်စတင်",
+    "restartAriaLabel": "{{name}} ဗျူဟာကို ပြန်လည်စတင်ပါ"
   },
   "launchModal": {
     "title": "ဗျူဟာလုပ်ငန်းစဉ် မှတ်ပုံတင်ပါ",

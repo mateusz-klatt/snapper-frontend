@@ -22,7 +22,9 @@
     "startTitle": "{{name}} starten",
     "startMessage": "Dies startet die Strategie {{name}}. Sie kann Live-Trading-Operationen aufnehmen.",
     "stopTitle": "{{name}} stoppen",
-    "stopMessage": "Dies stoppt die Strategie {{name}}. Aktive Positionen werden nicht automatisch geschlossen."
+    "stopMessage": "Dies stoppt die Strategie {{name}}. Aktive Positionen werden nicht automatisch geschlossen.",
+    "restartTitle": "{{name}} neu starten",
+    "restartMessage": "Dies stoppt und startet die Strategie {{name}} neu. Aktive Positionen werden nicht automatisch geschlossen."
   },
   "toast": {
     "saved": "Strategie {{name}} gespeichert",
@@ -36,7 +38,9 @@
     "networkError": "Netzwerkfehler. Bitte Verbindung prüfen und erneut versuchen.",
     "startFailed": "Strategie konnte nicht gestartet werden: {{message}}",
     "stopFailed": "Strategie konnte nicht gestoppt werden: {{message}}",
-    "unknownError": "Unbekannter Fehler"
+    "unknownError": "Unbekannter Fehler",
+    "restartSuccess": "Neustart der Strategie angefordert",
+    "restartFailed": "Strategie konnte nicht neu gestartet werden: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategie: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Strategie {{name}} im Backtest testen",
     "managedRemotely": "Verwaltet von {{coordinator}}",
-    "remoteCoordinatorUnknown": "einem anderen Container"
+    "remoteCoordinatorUnknown": "einem anderen Container",
+    "restart": "Neu starten",
+    "restartAriaLabel": "Strategie {{name}} neu starten"
   },
   "launchModal": {
     "title": "Strategieprozess registrieren",

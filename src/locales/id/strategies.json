@@ -22,7 +22,9 @@
     "startTitle": "Mulai {{name}}",
     "startMessage": "Tindakan ini akan memulai strategi {{name}}. Strategi ini dapat mulai menjalankan operasi trading live.",
     "stopTitle": "Hentikan {{name}}",
-    "stopMessage": "Tindakan ini akan menghentikan strategi {{name}}. Posisi aktif tidak akan ditutup secara otomatis."
+    "stopMessage": "Tindakan ini akan menghentikan strategi {{name}}. Posisi aktif tidak akan ditutup secara otomatis.",
+    "restartTitle": "Mulai ulang {{name}}",
+    "restartMessage": "Tindakan ini akan menghentikan dan memulai ulang strategi {{name}}. Posisi aktif tidak akan ditutup secara otomatis."
   },
   "toast": {
     "saved": "Strategi {{name}} disimpan",
@@ -36,7 +38,9 @@
     "networkError": "Kesalahan jaringan. Periksa koneksi lalu coba lagi.",
     "startFailed": "Gagal memulai strategi: {{message}}",
     "stopFailed": "Gagal menghentikan strategi: {{message}}",
-    "unknownError": "Kesalahan tidak diketahui"
+    "unknownError": "Kesalahan tidak diketahui",
+    "restartSuccess": "Permintaan mulai ulang strategi terkirim",
+    "restartFailed": "Gagal memulai ulang strategi: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategi: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest strategi {{name}}",
     "managedRemotely": "Dikelola oleh {{coordinator}}",
-    "remoteCoordinatorUnknown": "kontainer lain"
+    "remoteCoordinatorUnknown": "kontainer lain",
+    "restart": "Mulai ulang",
+    "restartAriaLabel": "Mulai ulang strategi {{name}}"
   },
   "launchModal": {
     "title": "Daftarkan Proses Strategi",

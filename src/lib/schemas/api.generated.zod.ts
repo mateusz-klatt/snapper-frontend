@@ -1022,6 +1022,28 @@ export const ProcessCreatedInfoSchema = _ProcessCreatedInfoRawSchema as unknown 
   Components['schemas']['ProcessCreatedInfo']
 >
 
+const _ProcessDesiredStateDataRawSchema = z
+  .object({
+    type: z.literal('process_desired_state'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    status: z.literal('success'),
+    name: z.string(),
+    action: z.enum(['enable', 'disable', 'restart']),
+    coordinator: z.string().nullable().optional(),
+    managed_remotely: z.boolean(),
+    message: z.string().nullable().optional(),
+  })
+  .strict()
+
+export const ProcessDesiredStateDataSchema =
+  _ProcessDesiredStateDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessDesiredStateData']
+  >
+
 const _ProcessMetricsRawSchema = z
   .object({
     pid: z.number().int(),
@@ -1954,6 +1976,18 @@ export const CancelOrderBodySchema = _CancelOrderBodyRawSchema as unknown as z.Z
   Components['schemas']['CancelOrderBody']
 >
 
+const _ProcessDesiredStateBodyRawSchema = z
+  .object({
+    action: z.enum(['enable', 'disable', 'restart']),
+    restart_nonce: z.string().nullable().optional(),
+  })
+  .strict()
+
+export const ProcessDesiredStateBodySchema =
+  _ProcessDesiredStateBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessDesiredStateBody']
+  >
+
 const _CreateScopeGrantBodyRawSchema = z
   .object({
     operator_public_id: z.string().min(1).max(64),
@@ -2675,6 +2709,23 @@ const _ProcessCreateDataRawSchema = z
 export const ProcessCreateDataSchema = _ProcessCreateDataRawSchema as unknown as z.ZodType<
   Components['schemas']['ProcessCreateData']
 >
+
+const _ProcessDesiredStateResponseRawSchema = z
+  .object({
+    type: z.literal('process_desired_state_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ProcessDesiredStateDataSchema,
+  })
+  .strict()
+
+export const ProcessDesiredStateResponseSchema =
+  _ProcessDesiredStateResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessDesiredStateResponse']
+  >
 
 const _ProcessStartResponseRawSchema = z
   .object({
@@ -3669,6 +3720,23 @@ const _CancelOrderCommandRawSchema = z
 export const CancelOrderCommandSchema = _CancelOrderCommandRawSchema as unknown as z.ZodType<
   Components['schemas']['CancelOrderCommand']
 >
+
+const _ProcessDesiredStateRequestRawSchema = z
+  .object({
+    type: z.literal('process_desired_state_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ProcessDesiredStateBodySchema,
+  })
+  .strict()
+
+export const ProcessDesiredStateRequestSchema =
+  _ProcessDesiredStateRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessDesiredStateRequest']
+  >
 
 const _CreateScopeGrantCommandRawSchema = z
   .object({
@@ -5181,6 +5249,7 @@ export type PositionCycleData = Components['schemas']['PositionCycleData']
 export type PositionData = Components['schemas']['PositionData']
 export type ProcessCategoryCount = Components['schemas']['ProcessCategoryCount']
 export type ProcessCreatedInfo = Components['schemas']['ProcessCreatedInfo']
+export type ProcessDesiredStateData = Components['schemas']['ProcessDesiredStateData']
 export type ProcessMetrics = Components['schemas']['ProcessMetrics']
 export type ProcessStartData = Components['schemas']['ProcessStartData']
 export type ProcessStatus = Components['schemas']['ProcessStatus']
@@ -5243,6 +5312,7 @@ export type BracketCreateBody = Components['schemas']['BracketCreateBody']
 export type BracketCancelBody = Components['schemas']['BracketCancelBody']
 export type CreateOrderBody = Components['schemas']['CreateOrderBody']
 export type CancelOrderBody = Components['schemas']['CancelOrderBody']
+export type ProcessDesiredStateBody = Components['schemas']['ProcessDesiredStateBody']
 export type CreateScopeGrantBody = Components['schemas']['CreateScopeGrantBody']
 export type HandoverScopeGrantBody = Components['schemas']['HandoverScopeGrantBody']
 export type RevokeScopeGrantBody = Components['schemas']['RevokeScopeGrantBody']
@@ -5290,6 +5360,7 @@ export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
 export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
 export type PositionListResponse = Components['schemas']['PositionListResponse']
 export type ProcessCreateData = Components['schemas']['ProcessCreateData']
+export type ProcessDesiredStateResponse = Components['schemas']['ProcessDesiredStateResponse']
 export type ProcessStartResponse = Components['schemas']['ProcessStartResponse']
 export type ProcessStopResponse = Components['schemas']['ProcessStopResponse']
 export type ProcessSummaryData = Components['schemas']['ProcessSummaryData']
@@ -5350,6 +5421,7 @@ export type BracketCreateCommand = Components['schemas']['BracketCreateCommand']
 export type BracketCancelCommand = Components['schemas']['BracketCancelCommand']
 export type CreateOrderCommand = Components['schemas']['CreateOrderCommand']
 export type CancelOrderCommand = Components['schemas']['CancelOrderCommand']
+export type ProcessDesiredStateRequest = Components['schemas']['ProcessDesiredStateRequest']
 export type CreateScopeGrantCommand = Components['schemas']['CreateScopeGrantCommand']
 export type HandoverScopeGrantCommand = Components['schemas']['HandoverScopeGrantCommand']
 export type RevokeScopeGrantCommand = Components['schemas']['RevokeScopeGrantCommand']

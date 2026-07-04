@@ -22,7 +22,9 @@
     "startTitle": "{{name}} 시작",
     "startMessage": "{{name}} 전략을 시작합니다. 라이브 트레이딩 작업이 시작될 수 있습니다.",
     "stopTitle": "{{name}} 중지",
-    "stopMessage": "{{name}} 전략을 중지합니다. 활성 포지션은 자동으로 청산되지 않습니다."
+    "stopMessage": "{{name}} 전략을 중지합니다. 활성 포지션은 자동으로 청산되지 않습니다.",
+    "restartTitle": "{{name}} 재시작",
+    "restartMessage": "{{name}} 전략을 중지 후 재시작합니다. 활성 포지션은 자동으로 청산되지 않습니다."
   },
   "toast": {
     "saved": "전략 {{name}} 저장됨",
@@ -36,7 +38,9 @@
     "networkError": "네트워크 오류입니다. 연결을 확인한 뒤 다시 시도하세요.",
     "startFailed": "전략 시작 실패: {{message}}",
     "stopFailed": "전략 중지 실패: {{message}}",
-    "unknownError": "알 수 없는 오류"
+    "unknownError": "알 수 없는 오류",
+    "restartSuccess": "전략 재시작 요청됨",
+    "restartFailed": "전략 재시작 실패: {{message}}"
   },
   "card": {
     "ariaLabel": "전략: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "백테스트",
     "backtestAriaLabel": "{{name}} 전략 백테스트",
     "managedRemotely": "{{coordinator}}에서 관리됨",
-    "remoteCoordinatorUnknown": "다른 컨테이너"
+    "remoteCoordinatorUnknown": "다른 컨테이너",
+    "restart": "재시작",
+    "restartAriaLabel": "{{name}} 전략 재시작"
   },
   "launchModal": {
     "title": "전략 프로세스 등록",

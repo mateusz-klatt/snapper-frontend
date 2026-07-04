@@ -22,7 +22,9 @@
     "startTitle": "Paleisti {{name}}",
     "startMessage": "Tai paleis strategiją {{name}}. Ji gali pradėti tiesiogines prekybos operacijas.",
     "stopTitle": "Stabdyti {{name}}",
-    "stopMessage": "Tai sustabdys strategiją {{name}}. Aktyvios pozicijos nebus automatiškai uždaromos."
+    "stopMessage": "Tai sustabdys strategiją {{name}}. Aktyvios pozicijos nebus automatiškai uždaromos.",
+    "restartTitle": "Paleisti iš naujo {{name}}",
+    "restartMessage": "Tai sustabdys ir iš naujo paleis strategiją {{name}}. Aktyvios pozicijos nebus automatiškai uždaromos."
   },
   "toast": {
     "saved": "Strategija {{name}} išsaugota",
@@ -36,7 +38,9 @@
     "networkError": "Tinklo klaida. Patikrinkite ryšį ir bandykite dar kartą.",
     "startFailed": "Nepavyko paleisti strategijos: {{message}}",
     "stopFailed": "Nepavyko sustabdyti strategijos: {{message}}",
-    "unknownError": "Nežinoma klaida"
+    "unknownError": "Nežinoma klaida",
+    "restartSuccess": "Strategijos paleidimo iš naujo užklausa pateikta",
+    "restartFailed": "Nepavyko iš naujo paleisti strategijos: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategija: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtestas",
     "backtestAriaLabel": "Strategijos {{name}} backtestas",
     "managedRemotely": "Valdo {{coordinator}}",
-    "remoteCoordinatorUnknown": "kitas konteineris"
+    "remoteCoordinatorUnknown": "kitas konteineris",
+    "restart": "Paleisti iš naujo",
+    "restartAriaLabel": "Paleisti iš naujo strategiją {{name}}"
   },
   "launchModal": {
     "title": "Registruoti strategijos procesą",

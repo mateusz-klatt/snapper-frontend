@@ -468,6 +468,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/processes/{name}/desired-state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: Operations["set_process_desired_state_api_processes__name__desired_state_patch"];
+        trace?: never;
+    };
     "/api/processes/runs": {
         parameters: {
             query?: never;
@@ -3249,6 +3265,29 @@ export type Components = {
             name: string;
             template: string;
         };
+        ProcessDesiredStateData: {
+            type: "process_desired_state";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            status: "success";
+            name: string;
+            action: "enable" | "disable" | "restart";
+            coordinator?: string | null | undefined;
+            managed_remotely: boolean;
+            message?: string | null | undefined;
+        };
+        ProcessDesiredStateResponse: {
+            type: "process_desired_state_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["ProcessDesiredStateData"];
+        };
         ProcessMetrics: {
             pid: number;
             uptime_seconds: number;
@@ -4596,6 +4635,19 @@ export type Components = {
             mode?: ("thread" | "process") | null;
             parameters?: Record<string, unknown> | null;
         };
+        ProcessDesiredStateRequest: {
+            type?: "process_desired_state_request";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["ProcessDesiredStateBody"];
+        };
+        ProcessDesiredStateBody: {
+            action: "enable" | "disable" | "restart";
+            restart_nonce?: string | null;
+        };
         CreateScopeGrantCommand: {
             type?: "create_scope_grant_command";
             sequence_id: number;
@@ -5635,6 +5687,39 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["ProcessStopResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_process_desired_state_api_processes__name__desired_state_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                name: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["ProcessDesiredStateRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ProcessDesiredStateResponse"];
                 };
             };
             422: {

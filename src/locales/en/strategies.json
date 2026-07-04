@@ -22,7 +22,9 @@
     "startTitle": "Start {{name}}",
     "startMessage": "This will start the {{name}} strategy. It may begin live trading operations.",
     "stopTitle": "Stop {{name}}",
-    "stopMessage": "This will stop the {{name}} strategy. Active positions will not be automatically closed."
+    "stopMessage": "This will stop the {{name}} strategy. Active positions will not be automatically closed.",
+    "restartTitle": "Restart {{name}}",
+    "restartMessage": "This will stop and restart the {{name}} strategy. Active positions will not be automatically closed."
   },
   "toast": {
     "saved": "Strategy {{name}} saved",
@@ -36,7 +38,9 @@
     "networkError": "Network error. Please check connection and try again.",
     "startFailed": "Failed to start strategy: {{message}}",
     "stopFailed": "Failed to stop strategy: {{message}}",
-    "unknownError": "Unknown error"
+    "unknownError": "Unknown error",
+    "restartSuccess": "Strategy restart requested",
+    "restartFailed": "Failed to restart strategy: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategy: {{name}}",
@@ -89,7 +93,9 @@
       "error": "ERROR"
     },
     "managedRemotely": "Managed by {{coordinator}}",
-    "remoteCoordinatorUnknown": "another container"
+    "remoteCoordinatorUnknown": "another container",
+    "restart": "Restart",
+    "restartAriaLabel": "Restart {{name}} strategy"
   },
   "launchModal": {
     "title": "Register Strategy Process",

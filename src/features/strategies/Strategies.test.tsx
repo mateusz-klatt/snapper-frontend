@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { act, render, screen, waitFor } from '@testing-library/react'
+import { act, render, screen, waitFor, fireEvent } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Strategies } from './Strategies'
@@ -24,6 +24,8 @@ function createHeartbeat(
 
 const mockStartProcess = vi.fn()
 const mockStopProcess = vi.fn()
+const mockPatchDesiredState = vi.fn()
+const mockPatchDesiredStateAsync = vi.fn()
 const mockCreateProcessConfig = vi.fn()
 let storedHeartbeatCallback: ((msg: unknown) => void) | null = null
 let storedConnectionCallback: ((connected: boolean) => void) | null = null
@@ -55,6 +57,12 @@ vi.mock('../../hooks/queries/processes', () => ({
   })),
   useStartProcessByName: vi.fn(() => mockStartProcess),
   useStopProcessByName: vi.fn(() => mockStopProcess),
+  usePatchProcessDesiredState: vi.fn(() => ({
+    mutate: mockPatchDesiredState,
+    mutateAsync: mockPatchDesiredStateAsync,
+    isPending: false,
+    variables: undefined,
+  })),
   useCreateProcessConfig: vi.fn(() => ({
     mutateAsync: mockCreateProcessConfig,
     isPending: false,
@@ -127,6 +135,9 @@ const renderWithProviders = (ui: ReactNode) => {
 describe('Strategies', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockPatchDesiredState.mockReset()
+    mockPatchDesiredStateAsync.mockReset()
+    mockPatchDesiredStateAsync.mockReturnValue(new Promise(() => {}))
     storedHeartbeatCallback = null
     storedConnectionCallback = null
   })
@@ -252,7 +263,81 @@ describe('Strategies', () => {
       )
     }
   })
-  it('renders a remote strategy without start/stop controls', async () => {
+  it('renders live controls for a remote strategy and routes Stop to the desired-state PATCH', async () => {
+    const mockStrategies = [
+      makeStrategyProcess({
+        name: 'strategy_remote',
+        running: true,
+        managed_remotely: true,
+        coordinator: 'coord-2',
+      }),
+    ]
+
+    mockPatchDesiredStateAsync.mockResolvedValue(undefined)
+    const toast = (await import('react-hot-toast')).default
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await waitFor(() => {
+      expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent('coord-2')
+    })
+    expect(screen.getByRole('button', { name: /restart remote strategy/i })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /stop remote strategy/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    expect(mockPatchDesiredStateAsync).toHaveBeenCalledWith({
+      name: 'strategy_remote',
+      body: { action: 'disable' },
+    })
+    await waitFor(() => {
+      expect(toast.success).toHaveBeenCalled()
+    })
+  })
+  it('routes Start of a stopped remote strategy to the enable PATCH (success toast)', async () => {
+    mockPatchDesiredStateAsync.mockResolvedValue(undefined)
+    const toast = (await import('react-hot-toast')).default
+    const mockStrategies = [
+      makeStrategyProcess({
+        name: 'strategy_remote',
+        running: false,
+        managed_remotely: true,
+        coordinator: 'coord-2',
+      }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /start remote strategy/i })).toBeInTheDocument()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /start remote strategy/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    expect(mockPatchDesiredStateAsync).toHaveBeenCalledWith({
+      name: 'strategy_remote',
+      body: { action: 'enable' },
+    })
+    await waitFor(() => {
+      expect(toast.success).toHaveBeenCalled()
+    })
+  })
+  it('routes Restart of a running remote strategy to the restart PATCH (success toast)', async () => {
+    mockPatchDesiredStateAsync.mockResolvedValue(undefined)
+    const toast = (await import('react-hot-toast')).default
     const mockStrategies = [
       makeStrategyProcess({
         name: 'strategy_remote',
@@ -270,10 +355,127 @@ describe('Strategies', () => {
     } as never)
     renderWithProviders(<Strategies />)
     await waitFor(() => {
-      expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent('coord-2')
+      expect(screen.getByRole('button', { name: /restart remote strategy/i })).toBeInTheDocument()
     })
-    expect(screen.queryByRole('button', { name: /stop strategy/i })).toBeNull()
-    expect(screen.queryByRole('button', { name: /start strategy/i })).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: /restart remote strategy/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    expect(mockPatchDesiredStateAsync).toHaveBeenCalledWith({
+      name: 'strategy_remote',
+      body: { action: 'restart', restart_nonce: expect.any(String) },
+    })
+    await waitFor(() => {
+      expect(toast.success).toHaveBeenCalled()
+    })
+  })
+  it('surfaces desired-state PATCH errors as a toast for each remote action', async () => {
+    mockPatchDesiredStateAsync.mockRejectedValue(new Error('boom'))
+    const toast = (await import('react-hot-toast')).default
+    const mockStrategies = [
+      makeStrategyProcess({
+        name: 'strategy_remote',
+        running: true,
+        managed_remotely: true,
+        coordinator: 'coord-2',
+      }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /restart remote strategy/i })).toBeInTheDocument()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /stop remote strategy/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    await waitFor(() => {
+      expect(toast.error).toHaveBeenCalledTimes(1)
+    })
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /restart remote strategy/i })).toBeEnabled()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /restart remote strategy/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    await waitFor(() => {
+      expect(toast.error).toHaveBeenCalledTimes(2)
+    })
+    expect(mockPatchDesiredStateAsync).toHaveBeenCalledTimes(2)
+  })
+  it('reflects the enable PATCH pending state on a remote strategy Start button', async () => {
+    const mockStrategies = [
+      makeStrategyProcess({
+        name: 'strategy_remote',
+        running: false,
+        managed_remotely: true,
+        coordinator: 'coord-2',
+      }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /start remote strategy/i })).toBeInTheDocument()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /start remote strategy/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    await waitFor(() => {
+      expect(screen.getByText('Starting...')).toBeTruthy()
+    })
+  })
+  it('surfaces an enable PATCH error as a toast for a stopped remote strategy', async () => {
+    mockPatchDesiredStateAsync.mockRejectedValue('non-error rejection')
+    const toast = (await import('react-hot-toast')).default
+    const mockStrategies = [
+      makeStrategyProcess({
+        name: 'strategy_remote',
+        running: false,
+        managed_remotely: true,
+        coordinator: 'coord-2',
+      }),
+    ]
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', mockStrategies),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /start remote strategy/i })).toBeInTheDocument()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /start remote strategy/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    expect(mockPatchDesiredStateAsync).toHaveBeenCalledWith({
+      name: 'strategy_remote',
+      body: { action: 'enable' },
+    })
+    await waitFor(() => {
+      expect(toast.error).toHaveBeenCalled()
+    })
   })
   it('subscribes to heartbeat topics for strategies', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_macd_btc', running: true })]

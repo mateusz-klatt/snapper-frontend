@@ -22,7 +22,9 @@
     "startTitle": "Spustiť {{name}}",
     "startMessage": "Týmto sa spustí stratégia {{name}}. Môže začať vykonávať live obchodné operácie.",
     "stopTitle": "Zastaviť {{name}}",
-    "stopMessage": "Týmto sa zastaví stratégia {{name}}. Aktívne pozície nebudú automaticky uzavreté."
+    "stopMessage": "Týmto sa zastaví stratégia {{name}}. Aktívne pozície nebudú automaticky uzavreté.",
+    "restartTitle": "Reštartovať {{name}}",
+    "restartMessage": "Týmto sa zastaví a reštartuje stratégia {{name}}. Aktívne pozície nebudú automaticky uzavreté."
   },
   "toast": {
     "saved": "Stratégia {{name}} bola uložená",
@@ -36,7 +38,9 @@
     "networkError": "Chyba siete. Skontrolujte pripojenie a skúste to znova.",
     "startFailed": "Stratégiu sa nepodarilo spustiť: {{message}}",
     "stopFailed": "Stratégiu sa nepodarilo zastaviť: {{message}}",
-    "unknownError": "Neznáma chyba"
+    "unknownError": "Neznáma chyba",
+    "restartSuccess": "Reštart stratégie bol vyžiadaný",
+    "restartFailed": "Stratégiu sa nepodarilo reštartovať: {{message}}"
   },
   "card": {
     "ariaLabel": "Stratégia: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest stratégie {{name}}",
     "managedRemotely": "Spravované uzlom {{coordinator}}",
-    "remoteCoordinatorUnknown": "iný kontajner"
+    "remoteCoordinatorUnknown": "iný kontajner",
+    "restart": "Reštartovať",
+    "restartAriaLabel": "Reštartovať stratégiu {{name}}"
   },
   "launchModal": {
     "title": "Registrovať proces stratégie",

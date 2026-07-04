@@ -22,7 +22,9 @@
     "startTitle": "{{name}} starten",
     "startMessage": "Dit start de strategie {{name}}. Mogelijk begint live tradingactiviteit.",
     "stopTitle": "{{name}} stoppen",
-    "stopMessage": "Dit stopt de strategie {{name}}. Actieve posities worden niet automatisch gesloten."
+    "stopMessage": "Dit stopt de strategie {{name}}. Actieve posities worden niet automatisch gesloten.",
+    "restartTitle": "{{name}} herstarten",
+    "restartMessage": "Dit stopt en herstart de strategie {{name}}. Actieve posities worden niet automatisch gesloten."
   },
   "toast": {
     "saved": "Strategie {{name}} opgeslagen",
@@ -36,7 +38,9 @@
     "networkError": "Netwerkfout. Controleer de verbinding en probeer opnieuw.",
     "startFailed": "Starten strategie mislukt: {{message}}",
     "stopFailed": "Stoppen strategie mislukt: {{message}}",
-    "unknownError": "Onbekende fout"
+    "unknownError": "Onbekende fout",
+    "restartSuccess": "Herstart van strategie aangevraagd",
+    "restartFailed": "Herstarten strategie mislukt: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategie: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Strategie {{name}} backtesten",
     "managedRemotely": "Beheerd door {{coordinator}}",
-    "remoteCoordinatorUnknown": "een andere container"
+    "remoteCoordinatorUnknown": "een andere container",
+    "restart": "Herstarten",
+    "restartAriaLabel": "Strategie {{name}} herstarten"
   },
   "launchModal": {
     "title": "Strategieproces registreren",

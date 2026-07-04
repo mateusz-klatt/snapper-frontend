@@ -22,7 +22,9 @@
     "startTitle": "Start {{name}}",
     "startMessage": "Dette starter strategien {{name}}. Den kan begynne live tradingoperasjoner.",
     "stopTitle": "Stopp {{name}}",
-    "stopMessage": "Dette stopper strategien {{name}}. Aktive posisjoner lukkes ikke automatisk."
+    "stopMessage": "Dette stopper strategien {{name}}. Aktive posisjoner lukkes ikke automatisk.",
+    "restartTitle": "Start {{name}} på nytt",
+    "restartMessage": "Dette stopper og starter strategien {{name}} på nytt. Aktive posisjoner lukkes ikke automatisk."
   },
   "toast": {
     "saved": "Strategi {{name}} lagret",
@@ -36,7 +38,9 @@
     "networkError": "Nettverksfeil. Sjekk tilkoblingen og prøv igjen.",
     "startFailed": "Kunne ikke starte strategi: {{message}}",
     "stopFailed": "Kunne ikke stoppe strategi: {{message}}",
-    "unknownError": "Ukjent feil"
+    "unknownError": "Ukjent feil",
+    "restartSuccess": "Omstart av strategi forespurt",
+    "restartFailed": "Kunne ikke starte strategi på nytt: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategi: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest {{name}}-strategi",
     "managedRemotely": "Administrert av {{coordinator}}",
-    "remoteCoordinatorUnknown": "en annen container"
+    "remoteCoordinatorUnknown": "en annen container",
+    "restart": "Start på nytt",
+    "restartAriaLabel": "Start strategien {{name}} på nytt"
   },
   "launchModal": {
     "title": "Registrer strategiprosess",

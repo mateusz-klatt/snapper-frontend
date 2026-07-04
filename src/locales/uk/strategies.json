@@ -22,7 +22,9 @@
     "startTitle": "Запустити {{name}}",
     "startMessage": "Це запустить стратегію {{name}}. Вона може почати live-торгові операції.",
     "stopTitle": "Зупинити {{name}}",
-    "stopMessage": "Це зупинить стратегію {{name}}. Активні позиції не закриватимуться автоматично."
+    "stopMessage": "Це зупинить стратегію {{name}}. Активні позиції не закриватимуться автоматично.",
+    "restartTitle": "Перезапустити {{name}}",
+    "restartMessage": "Це зупинить і перезапустить стратегію {{name}}. Активні позиції не закриватимуться автоматично."
   },
   "toast": {
     "saved": "Стратегію {{name}} збережено",
@@ -36,7 +38,9 @@
     "networkError": "Помилка мережі. Перевірте з'єднання та спробуйте ще раз.",
     "startFailed": "Не вдалося запустити стратегію: {{message}}",
     "stopFailed": "Не вдалося зупинити стратегію: {{message}}",
-    "unknownError": "Невідома помилка"
+    "unknownError": "Невідома помилка",
+    "restartSuccess": "Запит на перезапуск стратегії надіслано",
+    "restartFailed": "Не вдалося перезапустити стратегію: {{message}}"
   },
   "card": {
     "ariaLabel": "Стратегія: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Бектест",
     "backtestAriaLabel": "Бектест стратегії {{name}}",
     "managedRemotely": "Керується вузлом {{coordinator}}",
-    "remoteCoordinatorUnknown": "інший контейнер"
+    "remoteCoordinatorUnknown": "інший контейнер",
+    "restart": "Перезапустити",
+    "restartAriaLabel": "Перезапустити стратегію {{name}}"
   },
   "launchModal": {
     "title": "Зареєструвати процес стратегії",

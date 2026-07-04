@@ -22,7 +22,9 @@
     "startTitle": "Palaist {{name}}",
     "startMessage": "Tas palaidīs stratēģiju {{name}}. Tā var sākt tiešās tirdzniecības operācijas.",
     "stopTitle": "Apturēt {{name}}",
-    "stopMessage": "Tas apturēs stratēģiju {{name}}. Aktīvās pozīcijas netiks automātiski aizvērtas."
+    "stopMessage": "Tas apturēs stratēģiju {{name}}. Aktīvās pozīcijas netiks automātiski aizvērtas.",
+    "restartTitle": "Restartēt {{name}}",
+    "restartMessage": "Tas apturēs un restartēs stratēģiju {{name}}. Aktīvās pozīcijas netiks automātiski aizvērtas."
   },
   "toast": {
     "saved": "Stratēģija {{name}} saglabāta",
@@ -36,7 +38,9 @@
     "networkError": "Tīkla kļūda. Pārbaudiet savienojumu un mēģiniet vēlreiz.",
     "startFailed": "Neizdevās palaist stratēģiju: {{message}}",
     "stopFailed": "Neizdevās apturēt stratēģiju: {{message}}",
-    "unknownError": "Nezināma kļūda"
+    "unknownError": "Nezināma kļūda",
+    "restartSuccess": "Pieprasīta stratēģijas restartēšana",
+    "restartFailed": "Neizdevās restartēt stratēģiju: {{message}}"
   },
   "card": {
     "ariaLabel": "Stratēģija: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtests",
     "backtestAriaLabel": "Backtestēt stratēģiju {{name}}",
     "managedRemotely": "Pārvalda {{coordinator}}",
-    "remoteCoordinatorUnknown": "cits konteiners"
+    "remoteCoordinatorUnknown": "cits konteiners",
+    "restart": "Restartēt",
+    "restartAriaLabel": "Restartēt stratēģiju {{name}}"
   },
   "launchModal": {
     "title": "Reģistrēt stratēģijas procesu",

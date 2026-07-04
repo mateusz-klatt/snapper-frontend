@@ -10,6 +10,11 @@ import {
   makeHeartbeat,
   makeListEnvelope,
 } from '../../test/factories'
+import {
+  useStartProcessByName,
+  useStopProcessByName,
+  usePatchProcessDesiredState,
+} from '../../hooks/queries/processes'
 
 let heartbeatCallback: ((msg: unknown) => void) | null = null
 let connectionCallback: ((connected: boolean) => void) | null = null
@@ -31,6 +36,8 @@ const mockWsClient = {
 }
 const mockStartProcessMutate = vi.fn()
 const mockStopProcessMutate = vi.fn()
+const mockPatchDesiredStateMutate = vi.fn()
+const mockPatchDesiredStateMutateAsync = vi.fn()
 const mockCreateProcessConfig = vi.fn()
 
 vi.mock('../../hooks/queries/processes', () => ({
@@ -53,6 +60,12 @@ vi.mock('../../hooks/queries/processes', () => ({
   useStopProcessByName: vi.fn(() => ({
     mutate: mockStopProcessMutate,
     isPending: false,
+  })),
+  usePatchProcessDesiredState: vi.fn(() => ({
+    mutate: mockPatchDesiredStateMutate,
+    mutateAsync: mockPatchDesiredStateMutateAsync,
+    isPending: false,
+    variables: undefined,
   })),
   useCreateProcessConfig: vi.fn(() => ({ mutate: mockCreateProcessConfig })),
 }))
@@ -77,6 +90,23 @@ const renderWithProviders = (ui: ReactNode) => {
 describe('Processes', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockPatchDesiredStateMutate.mockReset()
+    mockPatchDesiredStateMutateAsync.mockReset()
+    mockPatchDesiredStateMutateAsync.mockReturnValue(new Promise(() => {}))
+    vi.mocked(useStartProcessByName).mockReturnValue({
+      mutate: mockStartProcessMutate,
+      isPending: false,
+    } as never)
+    vi.mocked(useStopProcessByName).mockReturnValue({
+      mutate: mockStopProcessMutate,
+      isPending: false,
+    } as never)
+    vi.mocked(usePatchProcessDesiredState).mockReturnValue({
+      mutate: mockPatchDesiredStateMutate,
+      mutateAsync: mockPatchDesiredStateMutateAsync,
+      isPending: false,
+      variables: undefined,
+    } as never)
     heartbeatCallback = null
     connectionCallback = null
   })
@@ -129,7 +159,7 @@ describe('Processes', () => {
       expect(screen.getByText('Long-Running Processes')).toBeTruthy()
     })
   })
-  it('hides controls and shows the managed-remotely notice for a remote-owned process', async () => {
+  it('shows live controls + the managed-remotely notice and routes Stop to the desired-state PATCH', async () => {
     const items = [
       makeConfiguredProcess({
         name: 'kraken_feed_publisher',
@@ -151,7 +181,160 @@ describe('Processes', () => {
     await waitFor(() => {
       expect(screen.getByText('Managed by coord-1')).toBeTruthy()
     })
-    expect(screen.queryByText('Stop')).toBeNull()
+    expect(screen.getByText('Restart')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /stop/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    expect(mockPatchDesiredStateMutateAsync).toHaveBeenCalledWith({
+      name: 'kraken_feed_publisher',
+      body: { action: 'disable' },
+    })
+  })
+  it('routes Start of a stopped remote process to the desired-state enable PATCH', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        running: false,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    expect(mockPatchDesiredStateMutateAsync).toHaveBeenCalledWith({
+      name: 'kraken_feed_publisher',
+      body: { action: 'enable' },
+    })
+  })
+  it('routes Restart of a running remote process to the desired-state restart PATCH', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        running: true,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    fireEvent.click(screen.getByText('Restart'))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /confirm/i })).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /confirm/i }))
+    expect(mockPatchDesiredStateMutateAsync).toHaveBeenCalledWith({
+      name: 'kraken_feed_publisher',
+      body: { action: 'restart', restart_nonce: expect.any(String) },
+    })
+  })
+  it('reflects the enable PATCH pending state on the Start button of a remote process', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        running: false,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    await waitFor(() => {
+      expect(screen.getByText('Starting...')).toBeTruthy()
+    })
+  })
+  it('clears the remote pending state once the desired-state PATCH settles', async () => {
+    mockPatchDesiredStateMutateAsync.mockResolvedValue(undefined)
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        running: false,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    expect(mockPatchDesiredStateMutateAsync).toHaveBeenCalled()
+    await waitFor(() => {
+      expect(screen.queryByText('Starting...')).toBeNull()
+    })
+  })
+  it('recovers the remote controls after a failed desired-state PATCH', async () => {
+    mockPatchDesiredStateMutateAsync.mockRejectedValue(new Error('boom'))
+    const items = [
+      makeConfiguredProcess({
+        name: 'kraken_feed_publisher',
+        running: false,
+        lifecycle: 'long_running',
+        role: 'core',
+        managed_remotely: true,
+        coordinator: 'coord-1',
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Managed by coord-1')).toBeTruthy()
+    })
+    fireEvent.click(screen.getByRole('button', { name: /start/i }))
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /start/i })).toBeEnabled()
+    })
   })
   it('subscribes to heartbeat topics', async () => {
     const items = [
@@ -2085,6 +2268,47 @@ describe('Processes', () => {
       )
     ).toBeTruthy()
     expect(screen.getByText('1 parameter(s)')).toBeTruthy()
+  })
+  it('reflects a pending local stop on the matching wallet instance', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'executor_kraken_w000000000003',
+        kind: 'instance',
+        wallet_public_id: '00000000-0000-7000-8000-000000000003',
+        parent_template: 'executor_kraken',
+        running: true,
+        enabled: true,
+        class_path: 'snapper.executor',
+        method: 'main',
+        parameters: { wallet_public_id: '00000000-0000-7000-8000-000000000003' },
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useStartProcessByName).mockReturnValue({
+      mutate: mockStartProcessMutate,
+      isPending: true,
+      variables: { name: 'executor_kraken_w000000000003' },
+    } as never)
+    vi.mocked(useStopProcessByName).mockReturnValue({
+      mutate: mockStopProcessMutate,
+      isPending: true,
+      variables: { name: 'executor_kraken_w000000000003' },
+    } as never)
+    renderWithProviders(<Processes />)
+    await waitFor(() => {
+      expect(screen.getByText('Wallet Instances')).toBeTruthy()
+    })
+    expect(screen.getByText('Stopping...')).toBeTruthy()
   })
   it('clicking Start on a stopped Wallet Instance opens execution mode modal', async () => {
     const items = [

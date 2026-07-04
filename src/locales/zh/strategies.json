@@ -22,7 +22,9 @@
     "startTitle": "启动 {{name}}",
     "startMessage": "这将启动 {{name}} 策略。它可能开始实盘交易操作。",
     "stopTitle": "停止 {{name}}",
-    "stopMessage": "这将停止 {{name}} 策略。活跃持仓不会自动平仓。"
+    "stopMessage": "这将停止 {{name}} 策略。活跃持仓不会自动平仓。",
+    "restartTitle": "重启 {{name}}",
+    "restartMessage": "这将停止并重启 {{name}} 策略。活跃持仓不会自动平仓。"
   },
   "toast": {
     "saved": "策略 {{name}} 已保存",
@@ -36,7 +38,9 @@
     "networkError": "网络错误。请检查连接后重试。",
     "startFailed": "启动策略失败: {{message}}",
     "stopFailed": "停止策略失败: {{message}}",
-    "unknownError": "未知错误"
+    "unknownError": "未知错误",
+    "restartSuccess": "已请求重启策略",
+    "restartFailed": "重启策略失败: {{message}}"
   },
   "card": {
     "ariaLabel": "策略: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "回测",
     "backtestAriaLabel": "回测 {{name}} 策略",
     "managedRemotely": "由 {{coordinator}} 管理",
-    "remoteCoordinatorUnknown": "其他容器"
+    "remoteCoordinatorUnknown": "其他容器",
+    "restart": "重启",
+    "restartAriaLabel": "重启 {{name}} 策略"
   },
   "launchModal": {
     "title": "注册策略进程",

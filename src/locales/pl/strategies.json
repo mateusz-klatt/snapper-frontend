@@ -22,7 +22,9 @@
     "startTitle": "Uruchom {{name}}",
     "startMessage": "Spowoduje to uruchomienie strategii {{name}}. Może rozpocząć operacje tradingu na żywo.",
     "stopTitle": "Zatrzymaj {{name}}",
-    "stopMessage": "Spowoduje to zatrzymanie strategii {{name}}. Aktywne pozycje nie zostaną automatycznie zamknięte."
+    "stopMessage": "Spowoduje to zatrzymanie strategii {{name}}. Aktywne pozycje nie zostaną automatycznie zamknięte.",
+    "restartTitle": "Uruchom ponownie {{name}}",
+    "restartMessage": "Spowoduje to zatrzymanie i ponowne uruchomienie strategii {{name}}. Aktywne pozycje nie zostaną automatycznie zamknięte."
   },
   "toast": {
     "saved": "Strategia {{name}} zapisana",
@@ -36,7 +38,9 @@
     "networkError": "Błąd sieci. Sprawdź połączenie i spróbuj ponownie.",
     "startFailed": "Nie udało się uruchomić strategii: {{message}}",
     "stopFailed": "Nie udało się zatrzymać strategii: {{message}}",
-    "unknownError": "Nieznany błąd"
+    "unknownError": "Nieznany błąd",
+    "restartSuccess": "Zażądano ponownego uruchomienia strategii",
+    "restartFailed": "Nie udało się ponownie uruchomić strategii: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategia: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest strategii {{name}}",
     "managedRemotely": "Zarządzane przez {{coordinator}}",
-    "remoteCoordinatorUnknown": "inny kontener"
+    "remoteCoordinatorUnknown": "inny kontener",
+    "restart": "Uruchom ponownie",
+    "restartAriaLabel": "Uruchom ponownie strategię {{name}}"
   },
   "launchModal": {
     "title": "Rejestracja procesu strategii",

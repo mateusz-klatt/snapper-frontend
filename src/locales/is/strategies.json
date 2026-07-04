@@ -22,7 +22,9 @@
     "startTitle": "Ræsa {{name}}",
     "startMessage": "Þetta ræsir stefnuna {{name}}. Hún gæti hafið lifandi viðskiptaaðgerðir.",
     "stopTitle": "Stöðva {{name}}",
-    "stopMessage": "Þetta stöðvar stefnuna {{name}}. Virkum stöðum verður ekki lokað sjálfkrafa."
+    "stopMessage": "Þetta stöðvar stefnuna {{name}}. Virkum stöðum verður ekki lokað sjálfkrafa.",
+    "restartTitle": "Endurræsa {{name}}",
+    "restartMessage": "Þetta stöðvar og endurræsir stefnuna {{name}}. Virkum stöðum verður ekki lokað sjálfkrafa."
   },
   "toast": {
     "saved": "Stefna {{name}} vistuð",
@@ -36,7 +38,9 @@
     "networkError": "Netvilla. Athugaðu tengingu og reyndu aftur.",
     "startFailed": "Mistókst að ræsa stefnu: {{message}}",
     "stopFailed": "Mistókst að stöðva stefnu: {{message}}",
-    "unknownError": "Óþekkt villa"
+    "unknownError": "Óþekkt villa",
+    "restartSuccess": "Óskað eftir endurræsingu stefnu",
+    "restartFailed": "Mistókst að endurræsa stefnu: {{message}}"
   },
   "card": {
     "ariaLabel": "Stefna: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Bakprófa",
     "backtestAriaLabel": "Bakprófa stefnu {{name}}",
     "managedRemotely": "Stýrt af {{coordinator}}",
-    "remoteCoordinatorUnknown": "annað ílát"
+    "remoteCoordinatorUnknown": "annað ílát",
+    "restart": "Endurræsa",
+    "restartAriaLabel": "Endurræsa stefnu {{name}}"
   },
   "launchModal": {
     "title": "Skrá stefnuferli",

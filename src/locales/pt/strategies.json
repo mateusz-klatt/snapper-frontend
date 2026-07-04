@@ -22,7 +22,9 @@
     "startTitle": "Iniciar {{name}}",
     "startMessage": "Isto irá iniciar a estratégia {{name}}. Ela pode começar operações de trading live.",
     "stopTitle": "Parar {{name}}",
-    "stopMessage": "Isto irá parar a estratégia {{name}}. Posições ativas não serão fechadas automaticamente."
+    "stopMessage": "Isto irá parar a estratégia {{name}}. Posições ativas não serão fechadas automaticamente.",
+    "restartTitle": "Reiniciar {{name}}",
+    "restartMessage": "Isto irá parar e reiniciar a estratégia {{name}}. Posições ativas não serão fechadas automaticamente."
   },
   "toast": {
     "saved": "Estratégia {{name}} salva",
@@ -36,7 +38,9 @@
     "networkError": "Erro de rede. Verifique a conexão e tente novamente.",
     "startFailed": "Falha ao iniciar estratégia: {{message}}",
     "stopFailed": "Falha ao parar estratégia: {{message}}",
-    "unknownError": "Erro desconhecido"
+    "unknownError": "Erro desconhecido",
+    "restartSuccess": "Reinício da estratégia solicitado",
+    "restartFailed": "Falha ao reiniciar estratégia: {{message}}"
   },
   "card": {
     "ariaLabel": "Estratégia: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Testar estratégia {{name}}",
     "managedRemotely": "Gerido por {{coordinator}}",
-    "remoteCoordinatorUnknown": "outro contentor"
+    "remoteCoordinatorUnknown": "outro contentor",
+    "restart": "Reiniciar",
+    "restartAriaLabel": "Reiniciar estratégia {{name}}"
   },
   "launchModal": {
     "title": "Registrar processo de estratégia",

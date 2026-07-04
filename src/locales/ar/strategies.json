@@ -22,7 +22,9 @@
     "startTitle": "بدء {{name}}",
     "startMessage": "سيؤدي هذا إلى بدء استراتيجية {{name}}. قد تبدأ عمليات تداول مباشرة.",
     "stopTitle": "إيقاف {{name}}",
-    "stopMessage": "سيؤدي هذا إلى إيقاف استراتيجية {{name}}. لن تُغلق المراكز النشطة تلقائياً."
+    "stopMessage": "سيؤدي هذا إلى إيقاف استراتيجية {{name}}. لن تُغلق المراكز النشطة تلقائياً.",
+    "restartTitle": "إعادة تشغيل {{name}}",
+    "restartMessage": "سيؤدي هذا إلى إيقاف وإعادة تشغيل استراتيجية {{name}}. لن تُغلق المراكز النشطة تلقائياً."
   },
   "toast": {
     "saved": "تم حفظ استراتيجية {{name}}",
@@ -36,7 +38,9 @@
     "networkError": "خطأ في الشبكة. يرجى التحقق من الاتصال والمحاولة مرة أخرى.",
     "startFailed": "فشل بدء الاستراتيجية: {{message}}",
     "stopFailed": "فشل إيقاف الاستراتيجية: {{message}}",
-    "unknownError": "خطأ غير معروف"
+    "unknownError": "خطأ غير معروف",
+    "restartSuccess": "تم طلب إعادة تشغيل الاستراتيجية",
+    "restartFailed": "فشل إعادة تشغيل الاستراتيجية: {{message}}"
   },
   "card": {
     "ariaLabel": "استراتيجية: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "اختبار رجعي",
     "backtestAriaLabel": "اختبار رجعي للاستراتيجية {{name}}",
     "managedRemotely": "تُدار بواسطة {{coordinator}}",
-    "remoteCoordinatorUnknown": "حاوية أخرى"
+    "remoteCoordinatorUnknown": "حاوية أخرى",
+    "restart": "إعادة تشغيل",
+    "restartAriaLabel": "إعادة تشغيل استراتيجية {{name}}"
   },
   "launchModal": {
     "title": "تسجيل عملية استراتيجية",

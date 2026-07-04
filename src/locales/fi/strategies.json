@@ -22,7 +22,9 @@
     "startTitle": "Käynnistä {{name}}",
     "startMessage": "Tämä käynnistää strategian {{name}}. Se voi aloittaa live-trading-toiminnot.",
     "stopTitle": "Pysäytä {{name}}",
-    "stopMessage": "Tämä pysäyttää strategian {{name}}. Aktiivisia positioita ei suljeta automaattisesti."
+    "stopMessage": "Tämä pysäyttää strategian {{name}}. Aktiivisia positioita ei suljeta automaattisesti.",
+    "restartTitle": "Käynnistä {{name}} uudelleen",
+    "restartMessage": "Tämä pysäyttää strategian {{name}} ja käynnistää sen uudelleen. Aktiivisia positioita ei suljeta automaattisesti."
   },
   "toast": {
     "saved": "Strategia {{name}} tallennettu",
@@ -36,7 +38,9 @@
     "networkError": "Verkkovirhe. Tarkista yhteys ja yritä uudestaan.",
     "startFailed": "Strategian käynnistys epäonnistui: {{message}}",
     "stopFailed": "Strategian pysäytys epäonnistui: {{message}}",
-    "unknownError": "Tuntematon virhe"
+    "unknownError": "Tuntematon virhe",
+    "restartSuccess": "Strategian uudelleenkäynnistystä pyydetty",
+    "restartFailed": "Strategian uudelleenkäynnistys epäonnistui: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategia: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtestaa strategia {{name}}",
     "managedRemotely": "Hallinnoija: {{coordinator}}",
-    "remoteCoordinatorUnknown": "toinen kontti"
+    "remoteCoordinatorUnknown": "toinen kontti",
+    "restart": "Käynnistä uudelleen",
+    "restartAriaLabel": "Käynnistä strategia {{name}} uudelleen"
   },
   "launchModal": {
     "title": "Rekisteröi strategiaprosessi",

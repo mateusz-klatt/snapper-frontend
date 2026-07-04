@@ -10,6 +10,7 @@ import {
   getProcessRuns,
   startProcessByName,
   stopProcessByName,
+  patchProcessDesiredState,
 } from './processes'
 
 vi.mock('../utils', () => ({
@@ -334,5 +335,46 @@ describe('processes API methods', () => {
     const result = await stopProcessByName('test-process')
 
     expect(result).toEqual(responseData)
+  })
+  it('patchProcessDesiredState PATCHes the desired-state endpoint with the wrapped body', async () => {
+    const responseData = {
+      type: 'process_desired_state_response' as const,
+      sequence_id: 0,
+      public_id: 'test-pid',
+      timestamp: '2024-01-01T00:00:00Z',
+      session_id: 'test-sid',
+      payload: {
+        type: 'process_desired_state' as const,
+        sequence_id: 0,
+        public_id: 'test-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'test-sid',
+        status: 'success' as const,
+        name: 'test-process',
+        action: 'restart' as const,
+        managed_remotely: true,
+      },
+    }
+
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => responseData,
+    })
+    const result = await patchProcessDesiredState('test-process', {
+      action: 'restart',
+      restart_nonce: 'nonce-1',
+    })
+
+    expect(result).toEqual(responseData)
+    const lastCall = mockFetch.mock.calls[mockFetch.mock.calls.length - 1]
+    const [url, init] = lastCall as [string, RequestInit]
+
+    expect(url).toContain('/api/processes/test-process/desired-state')
+    expect(init.method).toBe('PATCH')
+    expect(JSON.parse(init.body as string).payload).toEqual({
+      action: 'restart',
+      restart_nonce: 'nonce-1',
+    })
   })
 })

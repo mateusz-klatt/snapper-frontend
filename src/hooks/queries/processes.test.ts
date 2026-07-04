@@ -10,6 +10,7 @@ import {
   useProcessRuns,
   useStartProcessByName,
   useStopProcessByName,
+  usePatchProcessDesiredState,
   useCreateProcessConfig,
 } from './processes'
 import {
@@ -17,6 +18,7 @@ import {
   getProcessRuns,
   startProcessByName,
   stopProcessByName,
+  patchProcessDesiredState,
 } from '../../lib/api/processes'
 
 const ENV = {
@@ -100,6 +102,18 @@ vi.mock('../../lib/api/processes', () => ({
           status: 'success',
           name: 'collector',
           message: 'stopped',
+        }),
+      })
+    )
+  ),
+  patchProcessDesiredState: vi.fn(() =>
+    Promise.resolve(
+      envelope('process_desired_state_response', {
+        payload: envelope('process_desired_state', {
+          status: 'success',
+          name: 'collector',
+          action: 'restart',
+          managed_remotely: true,
         }),
       })
     )
@@ -256,6 +270,43 @@ describe('processes queries', () => {
 
       await act(async () => {
         await result.current.mutateAsync({ name: 'collector' })
+      })
+      const mutation = queryClient.getMutationCache().getAll()[0]
+
+      expect(mutation).toBeDefined()
+      const retryDelay = mutation?.options.retryDelay
+
+      expect(retryDelay).toEqual(expect.any(Function))
+
+      if (typeof retryDelay === 'function') {
+        expect(retryDelay(0, new Error('test'))).toBe(1000)
+        expect(retryDelay(5, new Error('test'))).toBe(30000)
+      }
+    })
+  })
+  describe('usePatchProcessDesiredState', () => {
+    it('patches desired state and invalidates queries', async () => {
+      const { result } = renderHook(() => usePatchProcessDesiredState(), {
+        wrapper: createWrapper(),
+      })
+
+      await act(async () => {
+        await result.current.mutateAsync({
+          name: 'collector',
+          body: { action: 'restart', restart_nonce: 'n1' },
+        })
+      })
+      expect(vi.mocked(patchProcessDesiredState)).toHaveBeenCalledWith('collector', {
+        action: 'restart',
+        restart_nonce: 'n1',
+      })
+    })
+    it('uses exponential retryDelay', async () => {
+      const { queryClient, wrapper } = createWrapperWithClient()
+      const { result } = renderHook(() => usePatchProcessDesiredState(), { wrapper })
+
+      await act(async () => {
+        await result.current.mutateAsync({ name: 'collector', body: { action: 'enable' } })
       })
       const mutation = queryClient.getMutationCache().getAll()[0]
 

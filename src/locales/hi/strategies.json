@@ -22,7 +22,9 @@
     "startTitle": "{{name}} शुरू करें",
     "startMessage": "यह {{name}} रणनीति शुरू करेगा। यह लाइव ट्रेडिंग ऑपरेशन शुरू कर सकती है।",
     "stopTitle": "{{name}} रोकें",
-    "stopMessage": "यह {{name}} रणनीति को रोक देगा। सक्रिय पोजीशन अपने-आप बंद नहीं होंगी।"
+    "stopMessage": "यह {{name}} रणनीति को रोक देगा। सक्रिय पोजीशन अपने-आप बंद नहीं होंगी।",
+    "restartTitle": "{{name}} पुनः आरंभ करें",
+    "restartMessage": "यह {{name}} रणनीति को रोककर पुनः आरंभ करेगा। सक्रिय पोजीशन अपने-आप बंद नहीं होंगी।"
   },
   "toast": {
     "saved": "रणनीति {{name}} सहेजी गई",
@@ -36,7 +38,9 @@
     "networkError": "नेटवर्क त्रुटि। कृपया कनेक्शन जाँचें और फिर कोशिश करें।",
     "startFailed": "रणनीति शुरू करने में विफल: {{message}}",
     "stopFailed": "रणनीति रोकने में विफल: {{message}}",
-    "unknownError": "अज्ञात त्रुटि"
+    "unknownError": "अज्ञात त्रुटि",
+    "restartSuccess": "रणनीति पुनः आरंभ करने का अनुरोध किया गया",
+    "restartFailed": "रणनीति पुनः आरंभ करने में विफल: {{message}}"
   },
   "card": {
     "ariaLabel": "रणनीति: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "बैकटेस्ट",
     "backtestAriaLabel": "{{name}} रणनीति का बैकटेस्ट करें",
     "managedRemotely": "{{coordinator}} द्वारा प्रबंधित",
-    "remoteCoordinatorUnknown": "अन्य कंटेनर"
+    "remoteCoordinatorUnknown": "अन्य कंटेनर",
+    "restart": "पुनः आरंभ करें",
+    "restartAriaLabel": "{{name}} रणनीति पुनः आरंभ करें"
   },
   "launchModal": {
     "title": "रणनीति प्रोसेस पंजीकृत करें",

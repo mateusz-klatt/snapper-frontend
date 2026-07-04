@@ -22,7 +22,9 @@
     "startTitle": "เริ่ม {{name}}",
     "startMessage": "การดำเนินการนี้จะเริ่มกลยุทธ์ {{name}} และอาจเริ่มการดำเนินงานเทรด live",
     "stopTitle": "หยุด {{name}}",
-    "stopMessage": "การดำเนินการนี้จะหยุดกลยุทธ์ {{name}} สถานะที่ใช้งานอยู่จะไม่ถูกปิดโดยอัตโนมัติ"
+    "stopMessage": "การดำเนินการนี้จะหยุดกลยุทธ์ {{name}} สถานะที่ใช้งานอยู่จะไม่ถูกปิดโดยอัตโนมัติ",
+    "restartTitle": "เริ่ม {{name}} ใหม่",
+    "restartMessage": "การดำเนินการนี้จะหยุดและเริ่มกลยุทธ์ {{name}} ใหม่ สถานะที่ใช้งานอยู่จะไม่ถูกปิดโดยอัตโนมัติ"
   },
   "toast": {
     "saved": "บันทึกกลยุทธ์ {{name}} แล้ว",
@@ -36,7 +38,9 @@
     "networkError": "ข้อผิดพลาดเครือข่าย โปรดตรวจสอบการเชื่อมต่อและลองอีกครั้ง",
     "startFailed": "เริ่มกลยุทธ์ไม่สำเร็จ: {{message}}",
     "stopFailed": "หยุดกลยุทธ์ไม่สำเร็จ: {{message}}",
-    "unknownError": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ"
+    "unknownError": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ",
+    "restartSuccess": "ส่งคำขอเริ่มกลยุทธ์ใหม่แล้ว",
+    "restartFailed": "เริ่มกลยุทธ์ใหม่ไม่สำเร็จ: {{message}}"
   },
   "card": {
     "ariaLabel": "กลยุทธ์: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "แบ็คเทสต์",
     "backtestAriaLabel": "แบ็คเทสต์กลยุทธ์ {{name}}",
     "managedRemotely": "จัดการโดย {{coordinator}}",
-    "remoteCoordinatorUnknown": "คอนเทนเนอร์อื่น"
+    "remoteCoordinatorUnknown": "คอนเทนเนอร์อื่น",
+    "restart": "เริ่มใหม่",
+    "restartAriaLabel": "เริ่มกลยุทธ์ {{name}} ใหม่"
   },
   "launchModal": {
     "title": "ลงทะเบียนกระบวนการกลยุทธ์",
