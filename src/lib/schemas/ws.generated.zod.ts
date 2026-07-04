@@ -571,6 +571,41 @@ export const PositionDataSchema = z
   })
   .strict()
 
+export const ProcessCommandAckDataSchema = z
+  .object({
+    type: z.literal('process_command_ack'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    command_id: z.string(),
+    coordinator: z.string(),
+    process_name: z.string(),
+    status: z.string(),
+    detail: z.string().nullable().optional(),
+    signature: z.string(),
+  })
+  .strict()
+
+export const ProcessCommandDataSchema = z
+  .object({
+    type: z.literal('process_command'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    command_id: z.string(),
+    coordinator: z.string(),
+    process_name: z.string(),
+    action: z.string(),
+    issued_by: z.string(),
+    issued_at: z.iso.datetime(),
+    signature: z.string(),
+  })
+  .strict()
+
 export const ProcessConfiguredEventDataSchema = z
   .object({
     type: z.literal('process_configured_event'),
