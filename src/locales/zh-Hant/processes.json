@@ -70,5 +70,8 @@
     "start": "啟動 {{name}}",
     "threadAriaLabel": "線程模式",
     "processAriaLabel": "進程模式"
+  },
+  "toast": {
+    "remoteActionFailed": "遠端操作失敗：{{message}}"
   }
 }

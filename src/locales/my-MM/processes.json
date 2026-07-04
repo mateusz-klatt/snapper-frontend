@@ -70,5 +70,8 @@
     "start": "{{name}} ကို စတင်ပါ",
     "threadAriaLabel": "Thread မုဒ်",
     "processAriaLabel": "လုပ်ငန်းစဉ် မုဒ်"
+  },
+  "toast": {
+    "remoteActionFailed": "အဝေးမှ လုပ်ဆောင်ချက် မအောင်မြင်ပါ: {{message}}"
   }
 }

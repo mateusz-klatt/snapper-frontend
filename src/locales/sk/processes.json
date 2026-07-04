@@ -70,5 +70,8 @@
     "start": "Spustiť {{name}}",
     "threadAriaLabel": "Režim vlákna",
     "processAriaLabel": "Režim procesu"
+  },
+  "toast": {
+    "remoteActionFailed": "Vzdialená akcia zlyhala: {{message}}"
   }
 }

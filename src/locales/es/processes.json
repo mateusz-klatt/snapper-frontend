@@ -70,5 +70,8 @@
     "start": "Iniciar {{name}}",
     "threadAriaLabel": "Modo hilo",
     "processAriaLabel": "Modo proceso"
+  },
+  "toast": {
+    "remoteActionFailed": "La acción remota falló: {{message}}"
   }
 }

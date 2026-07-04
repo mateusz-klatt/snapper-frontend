@@ -70,5 +70,8 @@
     "start": "Starta {{name}}",
     "threadAriaLabel": "Trådläge",
     "processAriaLabel": "Processläge"
+  },
+  "toast": {
+    "remoteActionFailed": "Fjärråtgärden misslyckades: {{message}}"
   }
 }

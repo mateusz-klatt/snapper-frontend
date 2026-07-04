@@ -70,5 +70,8 @@
     "start": "Bắt đầu {{name}}",
     "threadAriaLabel": "Chế độ luồng",
     "processAriaLabel": "Chế độ tiến trình"
+  },
+  "toast": {
+    "remoteActionFailed": "Thao tác từ xa thất bại: {{message}}"
   }
 }

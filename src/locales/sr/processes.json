@@ -70,5 +70,8 @@
     "start": "Pokreni {{name}}",
     "threadAriaLabel": "Thread režim",
     "processAriaLabel": "Procesni režim"
+  },
+  "toast": {
+    "remoteActionFailed": "Удаљена радња није успела: {{message}}"
   }
 }

@@ -70,5 +70,8 @@
     "start": "{{name}} starten",
     "threadAriaLabel": "Thread-Modus",
     "processAriaLabel": "Prozess-Modus"
+  },
+  "toast": {
+    "remoteActionFailed": "Remote-Aktion fehlgeschlagen: {{message}}"
   }
 }

@@ -70,5 +70,8 @@
     "start": "Գործարկել {{name}}",
     "threadAriaLabel": "Thread ռեժիմ",
     "processAriaLabel": "Գործընթացի ռեժիմ"
+  },
+  "toast": {
+    "remoteActionFailed": "Հեռավոր գործողությունը ձախողվեց․ {{message}}"
   }
 }

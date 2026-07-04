@@ -70,5 +70,8 @@
     "start": "شروع {{name}}",
     "threadAriaLabel": "حالت Thread",
     "processAriaLabel": "حالت فرایند"
+  },
+  "toast": {
+    "remoteActionFailed": "عملیات از راه دور ناموفق بود: {{message}}"
   }
 }

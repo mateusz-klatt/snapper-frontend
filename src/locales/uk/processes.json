@@ -70,5 +70,8 @@
     "start": "Запустити {{name}}",
     "threadAriaLabel": "Режим потоку",
     "processAriaLabel": "Режим процесу"
+  },
+  "toast": {
+    "remoteActionFailed": "Віддалена дія не вдалася: {{message}}"
   }
 }

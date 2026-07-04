@@ -70,5 +70,8 @@
     "start": "Uruchom {{name}}",
     "threadAriaLabel": "Tryb wątkowy",
     "processAriaLabel": "Tryb procesowy"
+  },
+  "toast": {
+    "remoteActionFailed": "Zdalna akcja nie powiodła się: {{message}}"
   }
 }

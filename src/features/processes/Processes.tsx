@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 import { v7 as uuid7 } from 'uuid'
 import { useTranslation } from 'react-i18next'
 import { LiveOnlyNotice } from '../../components/LiveOnlyNotice'
@@ -238,10 +239,15 @@ export const Processes: React.FC = () => {
           name,
           body: { action, ...(restartNonce === undefined ? {} : { restart_nonce: restartNonce }) },
         })
-        .catch(() => {})
+        .catch((error: Error) => {
+          toast.error(t('toast.remoteActionFailed', { message: error.message }), {
+            duration: 5000,
+            icon: '⚠️',
+          })
+        })
         .finally(() => clearPendingRemote(name))
     },
-    [patchDesiredState, clearPendingRemote]
+    [patchDesiredState, clearPendingRemote, t]
   )
 
   const remotePending = React.useCallback(
@@ -370,6 +376,7 @@ export const Processes: React.FC = () => {
                 isRestarting={process.managed_remotely && remotePending(process.name, 'restart')}
                 readOnly={readOnly}
                 managedRemotely={process.managed_remotely}
+                enabled={process.enabled}
                 coordinator={process.coordinator}
               />
             )

@@ -70,5 +70,8 @@
     "start": "{{name}} शुरू करें",
     "threadAriaLabel": "Thread मोड",
     "processAriaLabel": "प्रोसेस मोड"
+  },
+  "toast": {
+    "remoteActionFailed": "दूरस्थ कार्रवाई विफल रही: {{message}}"
   }
 }

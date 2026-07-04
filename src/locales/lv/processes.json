@@ -70,5 +70,8 @@
     "start": "Palaist {{name}}",
     "threadAriaLabel": "Pavediena režīms",
     "processAriaLabel": "Procesa režīms"
+  },
+  "toast": {
+    "remoteActionFailed": "Attālā darbība neizdevās: {{message}}"
   }
 }

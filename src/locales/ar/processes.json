@@ -70,5 +70,8 @@
     "start": "بدء {{name}}",
     "threadAriaLabel": "وضع Thread",
     "processAriaLabel": "وضع العملية"
+  },
+  "toast": {
+    "remoteActionFailed": "فشل الإجراء عن بُعد: {{message}}"
   }
 }

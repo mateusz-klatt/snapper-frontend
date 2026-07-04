@@ -70,5 +70,8 @@
     "start": "เริ่ม {{name}}",
     "threadAriaLabel": "โหมด Thread",
     "processAriaLabel": "โหมด Process"
+  },
+  "toast": {
+    "remoteActionFailed": "การดำเนินการระยะไกลล้มเหลว: {{message}}"
   }
 }

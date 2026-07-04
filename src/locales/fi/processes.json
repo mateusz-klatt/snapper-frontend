@@ -70,5 +70,8 @@
     "start": "Käynnistä {{name}}",
     "threadAriaLabel": "Säietila",
     "processAriaLabel": "Prosessitila"
+  },
+  "toast": {
+    "remoteActionFailed": "Etätoiminto epäonnistui: {{message}}"
   }
 }

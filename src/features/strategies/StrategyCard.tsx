@@ -429,7 +429,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 readOnly={readOnly}
               />
             )}
-            {onRestart && showStopButton && (
+            {onRestart && (showStopButton || (managedRemotely === true && autoStartEnabled)) && (
               <button
                 type='button'
                 onClick={onRestart}

@@ -44,6 +44,42 @@ describe('StrategyCard', () => {
     expect(mockOnRestart).toHaveBeenCalledTimes(1)
   })
 
+  it('shows Restart for a remote enabled strategy even when stopped (parked recovery)', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_remote'
+        running={false}
+        autoStartEnabled={true}
+        mode='thread'
+        coordinator='coord-2'
+        managedRemotely={true}
+        onStart={mockOnStart}
+        onRestart={mockOnRestart}
+      />
+    )
+    expect(screen.getByRole('button', { name: /restart remote strategy/i })).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /restart remote strategy/i }))
+    expect(mockOnRestart).toHaveBeenCalled()
+  })
+
+  it('hides Restart for a remote disabled stopped strategy', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_remote'
+        running={false}
+        autoStartEnabled={false}
+        mode='thread'
+        coordinator='coord-2'
+        managedRemotely={true}
+        onStart={mockOnStart}
+        onRestart={mockOnRestart}
+      />
+    )
+    expect(
+      screen.queryByRole('button', { name: /restart remote strategy/i })
+    ).not.toBeInTheDocument()
+  })
+
   it('falls back to the unknown-coordinator copy', () => {
     renderWithMocks(
       <StrategyCard

@@ -70,5 +70,8 @@
     "start": "{{name}} başlat",
     "threadAriaLabel": "Thread Modu",
     "processAriaLabel": "Süreç Modu"
+  },
+  "toast": {
+    "remoteActionFailed": "Uzak eylem başarısız oldu: {{message}}"
   }
 }

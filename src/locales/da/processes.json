@@ -70,5 +70,8 @@
     "start": "Start {{name}}",
     "threadAriaLabel": "Thread-tilstand",
     "processAriaLabel": "Procestilstand"
+  },
+  "toast": {
+    "remoteActionFailed": "Fjernhandling mislykkedes: {{message}}"
   }
 }
