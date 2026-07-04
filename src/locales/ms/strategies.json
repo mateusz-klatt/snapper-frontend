@@ -22,7 +22,9 @@
     "startTitle": "Mulakan {{name}}",
     "startMessage": "Ini akan memulakan strategi {{name}}. Ia mungkin memulakan operasi dagangan live.",
     "stopTitle": "Hentikan {{name}}",
-    "stopMessage": "Ini akan menghentikan strategi {{name}}. Posisi aktif tidak akan ditutup secara automatik."
+    "stopMessage": "Ini akan menghentikan strategi {{name}}. Posisi aktif tidak akan ditutup secara automatik.",
+    "restartTitle": "Mulakan semula {{name}}",
+    "restartMessage": "Ini akan menghentikan dan memulakan semula strategi {{name}}. Posisi aktif tidak akan ditutup secara automatik."
   },
   "toast": {
     "saved": "Strategi {{name}} disimpan",
@@ -36,7 +38,9 @@
     "networkError": "Ralat rangkaian. Sila semak sambungan dan cuba lagi.",
     "startFailed": "Gagal memulakan strategi: {{message}}",
     "stopFailed": "Gagal menghentikan strategi: {{message}}",
-    "unknownError": "Ralat tidak diketahui"
+    "unknownError": "Ralat tidak diketahui",
+    "restartSuccess": "Mula semula strategi telah diminta",
+    "restartFailed": "Gagal memulakan semula strategi: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategi: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest strategi {{name}}",
     "managedRemotely": "Diurus oleh {{coordinator}}",
-    "remoteCoordinatorUnknown": "kontena lain"
+    "remoteCoordinatorUnknown": "kontena lain",
+    "restart": "Mula semula",
+    "restartAriaLabel": "Mulakan semula strategi {{name}}"
   },
   "launchModal": {
     "title": "Daftar Proses Strategi",

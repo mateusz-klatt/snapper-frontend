@@ -22,7 +22,9 @@
     "startTitle": "Anzisha {{name}}",
     "startMessage": "Hii itaanzisha mkakati wa {{name}}. Inaweza kuanza operesheni za trading ya live.",
     "stopTitle": "Simamisha {{name}}",
-    "stopMessage": "Hii itasimamisha mkakati wa {{name}}. Nafasi zinazotumika hazitafungwa kiotomatiki."
+    "stopMessage": "Hii itasimamisha mkakati wa {{name}}. Nafasi zinazotumika hazitafungwa kiotomatiki.",
+    "restartTitle": "Anzisha upya {{name}}",
+    "restartMessage": "Hii itasimamisha na kuanzisha upya mkakati wa {{name}}. Nafasi zinazotumika hazitafungwa kiotomatiki."
   },
   "toast": {
     "saved": "Mkakati {{name}} umehifadhiwa",
@@ -36,7 +38,9 @@
     "networkError": "Hitilafu ya mtandao. Tafadhali kagua muunganisho na ujaribu tena.",
     "startFailed": "Imeshindwa kuanzisha mkakati: {{message}}",
     "stopFailed": "Imeshindwa kusimamisha mkakati: {{message}}",
-    "unknownError": "Hitilafu isiyojulikana"
+    "unknownError": "Hitilafu isiyojulikana",
+    "restartSuccess": "Imeombwa kuanzisha upya mkakati",
+    "restartFailed": "Imeshindwa kuanzisha upya mkakati: {{message}}"
   },
   "card": {
     "ariaLabel": "Mkakati: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Fanya backtest mkakati wa {{name}}",
     "managedRemotely": "Inadhibitiwa na {{coordinator}}",
-    "remoteCoordinatorUnknown": "kontena nyingine"
+    "remoteCoordinatorUnknown": "kontena nyingine",
+    "restart": "Anzisha upya",
+    "restartAriaLabel": "Anzisha upya mkakati {{name}}"
   },
   "launchModal": {
     "title": "Sajili Process ya Mkakati",

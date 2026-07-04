@@ -22,7 +22,9 @@
     "startTitle": "{{name}} başlat",
     "startMessage": "Bu, {{name}} stratejisini başlatır. Canlı trading işlemleri başlayabilir.",
     "stopTitle": "{{name}} durdur",
-    "stopMessage": "Bu, {{name}} stratejisini durdurur. Aktif pozisyonlar otomatik kapatılmaz."
+    "stopMessage": "Bu, {{name}} stratejisini durdurur. Aktif pozisyonlar otomatik kapatılmaz.",
+    "restartTitle": "{{name}} yeniden başlat",
+    "restartMessage": "Bu, {{name}} stratejisini durdurur ve yeniden başlatır. Aktif pozisyonlar otomatik kapatılmaz."
   },
   "toast": {
     "saved": "{{name}} stratejisi kaydedildi",
@@ -36,7 +38,9 @@
     "networkError": "Ağ hatası. Lütfen bağlantıyı kontrol edip tekrar deneyin.",
     "startFailed": "Strateji başlatılamadı: {{message}}",
     "stopFailed": "Strateji durdurulamadı: {{message}}",
-    "unknownError": "Bilinmeyen hata"
+    "unknownError": "Bilinmeyen hata",
+    "restartSuccess": "Strateji yeniden başlatma isteği gönderildi",
+    "restartFailed": "Strateji yeniden başlatılamadı: {{message}}"
   },
   "card": {
     "ariaLabel": "Strateji: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "{{name}} stratejisini backtest et",
     "managedRemotely": "{{coordinator}} tarafından yönetiliyor",
-    "remoteCoordinatorUnknown": "başka bir kapsayıcı"
+    "remoteCoordinatorUnknown": "başka bir kapsayıcı",
+    "restart": "Yeniden başlat",
+    "restartAriaLabel": "{{name}} stratejisini yeniden başlat"
   },
   "launchModal": {
     "title": "Strateji Süreci Kaydet",

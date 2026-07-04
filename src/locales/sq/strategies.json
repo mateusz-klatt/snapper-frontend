@@ -22,7 +22,9 @@
     "startTitle": "Nis {{name}}",
     "startMessage": "Kjo do të nisë strategjinë {{name}}. Ajo mund të fillojë operacione tregtimi live.",
     "stopTitle": "Ndalo {{name}}",
-    "stopMessage": "Kjo do të ndalojë strategjinë {{name}}. Pozicionet aktive nuk do të mbyllen automatikisht."
+    "stopMessage": "Kjo do të ndalojë strategjinë {{name}}. Pozicionet aktive nuk do të mbyllen automatikisht.",
+    "restartTitle": "Rinis {{name}}",
+    "restartMessage": "Kjo do të ndalojë dhe rinisë strategjinë {{name}}. Pozicionet aktive nuk do të mbyllen automatikisht."
   },
   "toast": {
     "saved": "Strategjia {{name}} u ruajt",
@@ -36,7 +38,9 @@
     "networkError": "Gabim rrjeti. Kontrolloni lidhjen dhe provoni përsëri.",
     "startFailed": "Nisja e strategjisë dështoi: {{message}}",
     "stopFailed": "Ndalimi i strategjisë dështoi: {{message}}",
-    "unknownError": "Gabim i panjohur"
+    "unknownError": "Gabim i panjohur",
+    "restartSuccess": "U kërkua rinisja e strategjisë",
+    "restartFailed": "Rinisja e strategjisë dështoi: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategji: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Test historik",
     "backtestAriaLabel": "Testo historikisht strategjinë {{name}}",
     "managedRemotely": "Menaxhohet nga {{coordinator}}",
-    "remoteCoordinatorUnknown": "një kontejner tjetër"
+    "remoteCoordinatorUnknown": "një kontejner tjetër",
+    "restart": "Rinis",
+    "restartAriaLabel": "Rinis strategjinë {{name}}"
   },
   "launchModal": {
     "title": "Regjistro proces strategjie",

@@ -1273,3 +1273,16 @@ export interface ProcessStart {
   topic?: string | null
   payload: Record<string, unknown>
 }
+
+/**
+ * ProcessDesiredState request entity.
+ * Use with processDesiredStateToAPI() transform.
+ */
+export interface ProcessDesiredState {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  payload: Record<string, unknown>
+}

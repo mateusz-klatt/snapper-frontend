@@ -22,7 +22,9 @@
     "startTitle": "Bắt đầu {{name}}",
     "startMessage": "Thao tác này sẽ bắt đầu chiến lược {{name}}. Chiến lược có thể bắt đầu vận hành giao dịch live.",
     "stopTitle": "Dừng {{name}}",
-    "stopMessage": "Thao tác này sẽ dừng chiến lược {{name}}. Các vị thế đang hoạt động sẽ không tự động đóng."
+    "stopMessage": "Thao tác này sẽ dừng chiến lược {{name}}. Các vị thế đang hoạt động sẽ không tự động đóng.",
+    "restartTitle": "Khởi động lại {{name}}",
+    "restartMessage": "Thao tác này sẽ dừng và khởi động lại chiến lược {{name}}. Các vị thế đang hoạt động sẽ không tự động đóng."
   },
   "toast": {
     "saved": "Đã lưu chiến lược {{name}}",
@@ -36,7 +38,9 @@
     "networkError": "Lỗi mạng. Vui lòng kiểm tra kết nối và thử lại.",
     "startFailed": "Không bắt đầu được chiến lược: {{message}}",
     "stopFailed": "Không dừng được chiến lược: {{message}}",
-    "unknownError": "Lỗi không xác định"
+    "unknownError": "Lỗi không xác định",
+    "restartSuccess": "Đã yêu cầu khởi động lại chiến lược",
+    "restartFailed": "Không khởi động lại được chiến lược: {{message}}"
   },
   "card": {
     "ariaLabel": "Chiến lược: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest chiến lược {{name}}",
     "managedRemotely": "Được quản lý bởi {{coordinator}}",
-    "remoteCoordinatorUnknown": "một vùng chứa khác"
+    "remoteCoordinatorUnknown": "một vùng chứa khác",
+    "restart": "Khởi động lại",
+    "restartAriaLabel": "Khởi động lại chiến lược {{name}}"
   },
   "launchModal": {
     "title": "Đăng ký tiến trình chiến lược",

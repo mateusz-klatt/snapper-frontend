@@ -22,7 +22,9 @@
     "startTitle": "התחל {{name}}",
     "startMessage": "פעולה זו תתחיל את אסטרטגיית {{name}}. היא עשויה להתחיל פעולות מסחר חיות.",
     "stopTitle": "עצור {{name}}",
-    "stopMessage": "פעולה זו תעצור את אסטרטגיית {{name}}. פוזיציות פעילות לא ייסגרו אוטומטית."
+    "stopMessage": "פעולה זו תעצור את אסטרטגיית {{name}}. פוזיציות פעילות לא ייסגרו אוטומטית.",
+    "restartTitle": "הפעל מחדש {{name}}",
+    "restartMessage": "פעולה זו תעצור ותפעיל מחדש את אסטרטגיית {{name}}. פוזיציות פעילות לא ייסגרו אוטומטית."
   },
   "toast": {
     "saved": "אסטרטגיית {{name}} נשמרה",
@@ -36,7 +38,9 @@
     "networkError": "שגיאת רשת. בדוק את החיבור ונסה שוב.",
     "startFailed": "התחלת האסטרטגיה נכשלה: {{message}}",
     "stopFailed": "עצירת האסטרטגיה נכשלה: {{message}}",
-    "unknownError": "שגיאה לא ידועה"
+    "unknownError": "שגיאה לא ידועה",
+    "restartSuccess": "נשלחה בקשה להפעלה מחדש של האסטרטגיה",
+    "restartFailed": "הפעלת האסטרטגיה מחדש נכשלה: {{message}}"
   },
   "card": {
     "ariaLabel": "אסטרטגיה: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "בקטסט",
     "backtestAriaLabel": "בקטסט לאסטרטגיה {{name}}",
     "managedRemotely": "מנוהל על ידי {{coordinator}}",
-    "remoteCoordinatorUnknown": "מכל אחר"
+    "remoteCoordinatorUnknown": "מכל אחר",
+    "restart": "הפעל מחדש",
+    "restartAriaLabel": "הפעל מחדש את אסטרטגיית {{name}}"
   },
   "launchModal": {
     "title": "רשום תהליך אסטרטגיה",

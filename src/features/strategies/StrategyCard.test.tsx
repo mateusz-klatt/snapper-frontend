@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { act, render, screen } from '@testing-library/react'
+import { act, render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { StrategyCard } from './StrategyCard'
@@ -11,6 +11,7 @@ const renderWithMocks = (ui: ReactNode) => {
 describe('StrategyCard', () => {
   const mockOnStart = vi.fn()
   const mockOnStop = vi.fn()
+  const mockOnRestart = vi.fn()
 
   const freshHealth = () => ({
     status: 'healthy' as const,
@@ -19,7 +20,7 @@ describe('StrategyCard', () => {
     timestamp: Date.now(),
   })
 
-  it('shows the managed-remotely notice instead of controls', () => {
+  it('shows the managed-remotely notice AND live controls (Stop + Restart) when running', () => {
     renderWithMocks(
       <StrategyCard
         name='strategy_remote'
@@ -30,11 +31,17 @@ describe('StrategyCard', () => {
         managedRemotely={true}
         onStart={mockOnStart}
         onStop={mockOnStop}
+        onRestart={mockOnRestart}
       />
     )
     expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent('coord-2')
-    expect(screen.queryByRole('button', { name: /stop strategy/i })).not.toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: /start strategy/i })).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /stop remote strategy/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /restart remote strategy/i })).toBeInTheDocument()
+    expect(
+      screen.queryByRole('button', { name: /^start remote strategy$/i })
+    ).not.toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /restart remote strategy/i }))
+    expect(mockOnRestart).toHaveBeenCalledTimes(1)
   })
 
   it('falls back to the unknown-coordinator copy', () => {

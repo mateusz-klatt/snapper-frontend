@@ -22,7 +22,9 @@
     "startTitle": "I-start ang {{name}}",
     "startMessage": "Ista-start nito ang {{name}} strategy. Maaari itong magsimula ng live trading operations.",
     "stopTitle": "I-stop ang {{name}}",
-    "stopMessage": "Ihihinto nito ang {{name}} strategy. Hindi awtomatikong isasara ang active positions."
+    "stopMessage": "Ihihinto nito ang {{name}} strategy. Hindi awtomatikong isasara ang active positions.",
+    "restartTitle": "I-restart ang {{name}}",
+    "restartMessage": "Ihihinto at ire-restart nito ang {{name}} strategy. Hindi awtomatikong isasara ang active positions."
   },
   "toast": {
     "saved": "Na-save ang strategy {{name}}",
@@ -36,7 +38,9 @@
     "networkError": "Network error. Pakitingnan ang connection at subukan ulit.",
     "startFailed": "Hindi na-start ang strategy: {{message}}",
     "stopFailed": "Hindi na-stop ang strategy: {{message}}",
-    "unknownError": "Hindi kilalang error"
+    "unknownError": "Hindi kilalang error",
+    "restartSuccess": "Na-request ang pag-restart ng strategy",
+    "restartFailed": "Hindi na-restart ang strategy: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategy: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "I-backtest ang strategy na {{name}}",
     "managedRemotely": "Pinamamahalaan ng {{coordinator}}",
-    "remoteCoordinatorUnknown": "ibang container"
+    "remoteCoordinatorUnknown": "ibang container",
+    "restart": "I-restart",
+    "restartAriaLabel": "I-restart ang {{name}} strategy"
   },
   "launchModal": {
     "title": "Mag-register ng Strategy Process",

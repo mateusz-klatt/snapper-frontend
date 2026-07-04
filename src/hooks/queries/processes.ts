@@ -8,6 +8,7 @@ import {
   getProcessRuns,
   startProcessByName,
   stopProcessByName,
+  patchProcessDesiredState,
 } from '../../lib/api/processes'
 import { useAppStore } from '../../stores/app'
 import type {
@@ -18,6 +19,7 @@ import type {
   ProcessSchemaResponse,
   ProcessCreateBody,
   ProcessCreateResponse,
+  ProcessDesiredStateBody,
 } from '../../types/api'
 import { queryKeys } from './keys'
 
@@ -57,6 +59,26 @@ export const useStopProcessByName = () => {
 
   return useMutation({
     mutationFn: ({ name }: { name: string }) => stopProcessByName(name),
+    retry: 2,
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.processStatus })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processRuntimeForName(variables.name) })
+      queryClient.invalidateQueries({ queryKey: queryKeys.configuredProcessesAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processSummaryAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.strategiesAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.availableProcesses })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processRunsAll })
+    },
+  })
+}
+
+export const usePatchProcessDesiredState = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: ({ name, body }: { name: string; body: ProcessDesiredStateBody }) =>
+      patchProcessDesiredState(name, body),
     retry: 2,
     retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
     onSuccess: (_data, variables) => {

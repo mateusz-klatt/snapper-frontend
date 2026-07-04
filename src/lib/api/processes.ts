@@ -9,6 +9,7 @@ import {
   ProcessRunsResponseSchema,
   ProcessStartResponseSchema,
   ProcessStopResponseSchema,
+  ProcessDesiredStateResponseSchema,
 } from '../schemas/api.generated.zod'
 import type {
   ProcessSchemaResponse,
@@ -21,6 +22,8 @@ import type {
   ProcessStartBody,
   ProcessStartResponse,
   ProcessStopResponse,
+  ProcessDesiredStateBody,
+  ProcessDesiredStateResponse,
 } from '../../types/api'
 
 export async function getProcessSchema(name: string): Promise<ProcessSchemaResponse> {
@@ -83,4 +86,16 @@ export async function stopProcessByName(name: string): Promise<ProcessStopRespon
   const data = await apiClient.postJSON(`/api/processes/${encodeURIComponent(name)}/stop`)
 
   return validateResponse(data, ProcessStopResponseSchema, '/processes/:name/stop')
+}
+
+export async function patchProcessDesiredState(
+  name: string,
+  body: ProcessDesiredStateBody
+): Promise<ProcessDesiredStateResponse> {
+  const data = await apiClient.patchJSON(
+    `/api/processes/${encodeURIComponent(name)}/desired-state`,
+    body
+  )
+
+  return validateResponse(data, ProcessDesiredStateResponseSchema, '/processes/:name/desired-state')
 }

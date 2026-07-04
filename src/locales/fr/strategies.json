@@ -22,7 +22,9 @@
     "startTitle": "Démarrer {{name}}",
     "startMessage": "Cela démarrera la stratégie {{name}}. Elle peut lancer des opérations de trading en direct.",
     "stopTitle": "Arrêter {{name}}",
-    "stopMessage": "Cela arrêtera la stratégie {{name}}. Les positions actives ne seront pas fermées automatiquement."
+    "stopMessage": "Cela arrêtera la stratégie {{name}}. Les positions actives ne seront pas fermées automatiquement.",
+    "restartTitle": "Redémarrer {{name}}",
+    "restartMessage": "Cela arrêtera et redémarrera la stratégie {{name}}. Les positions actives ne seront pas fermées automatiquement."
   },
   "toast": {
     "saved": "Stratégie {{name}} enregistrée",
@@ -36,7 +38,9 @@
     "networkError": "Erreur réseau. Vérifiez la connexion et réessayez.",
     "startFailed": "Échec du démarrage de la stratégie : {{message}}",
     "stopFailed": "Échec de l'arrêt de la stratégie : {{message}}",
-    "unknownError": "Erreur inconnue"
+    "unknownError": "Erreur inconnue",
+    "restartSuccess": "Redémarrage de la stratégie demandé",
+    "restartFailed": "Échec du redémarrage de la stratégie : {{message}}"
   },
   "card": {
     "ariaLabel": "Stratégie : {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtester la stratégie {{name}}",
     "managedRemotely": "Géré par {{coordinator}}",
-    "remoteCoordinatorUnknown": "un autre conteneur"
+    "remoteCoordinatorUnknown": "un autre conteneur",
+    "restart": "Redémarrer",
+    "restartAriaLabel": "Redémarrer la stratégie {{name}}"
   },
   "launchModal": {
     "title": "Enregistrer un processus de stratégie",

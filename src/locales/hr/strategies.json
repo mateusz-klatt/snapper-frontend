@@ -22,7 +22,9 @@
     "startTitle": "Pokreni {{name}}",
     "startMessage": "Ovo će pokrenuti strategiju {{name}}. Može započeti live trgovinske operacije.",
     "stopTitle": "Zaustavi {{name}}",
-    "stopMessage": "Ovo će zaustaviti strategiju {{name}}. Aktivne pozicije neće se automatski zatvoriti."
+    "stopMessage": "Ovo će zaustaviti strategiju {{name}}. Aktivne pozicije neće se automatski zatvoriti.",
+    "restartTitle": "Ponovno pokreni {{name}}",
+    "restartMessage": "Ovo će zaustaviti i ponovno pokrenuti strategiju {{name}}. Aktivne pozicije neće se automatski zatvoriti."
   },
   "toast": {
     "saved": "Strategija {{name}} je spremljena",
@@ -36,7 +38,9 @@
     "networkError": "Mrežna pogreška. Provjerite vezu i pokušajte ponovno.",
     "startFailed": "Pokretanje strategije nije uspjelo: {{message}}",
     "stopFailed": "Zaustavljanje strategije nije uspjelo: {{message}}",
-    "unknownError": "Nepoznata pogreška"
+    "unknownError": "Nepoznata pogreška",
+    "restartSuccess": "Zatraženo je ponovno pokretanje strategije",
+    "restartFailed": "Ponovno pokretanje strategije nije uspjelo: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategija: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtestiraj strategiju {{name}}",
     "managedRemotely": "Upravlja {{coordinator}}",
-    "remoteCoordinatorUnknown": "drugi kontejner"
+    "remoteCoordinatorUnknown": "drugi kontejner",
+    "restart": "Ponovno pokreni",
+    "restartAriaLabel": "Ponovno pokreni strategiju {{name}}"
   },
   "launchModal": {
     "title": "Registracija procesa strategije",

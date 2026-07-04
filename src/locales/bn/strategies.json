@@ -22,7 +22,9 @@
     "startTitle": "{{name}} শুরু করুন",
     "startMessage": "এটি {{name}} কৌশল শুরু করবে। এটি live trading operations শুরু করতে পারে।",
     "stopTitle": "{{name}} বন্ধ করুন",
-    "stopMessage": "এটি {{name}} কৌশল বন্ধ করবে। সক্রিয় পজিশন স্বয়ংক্রিয়ভাবে বন্ধ হবে না।"
+    "stopMessage": "এটি {{name}} কৌশল বন্ধ করবে। সক্রিয় পজিশন স্বয়ংক্রিয়ভাবে বন্ধ হবে না।",
+    "restartTitle": "{{name}} পুনরায় চালু করুন",
+    "restartMessage": "এটি {{name}} কৌশল বন্ধ করে পুনরায় চালু করবে। সক্রিয় পজিশন স্বয়ংক্রিয়ভাবে বন্ধ হবে না।"
   },
   "toast": {
     "saved": "{{name}} কৌশল সংরক্ষিত",
@@ -36,7 +38,9 @@
     "networkError": "নেটওয়ার্ক ত্রুটি। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
     "startFailed": "কৌশল শুরু করতে ব্যর্থ: {{message}}",
     "stopFailed": "কৌশল বন্ধ করতে ব্যর্থ: {{message}}",
-    "unknownError": "অজানা ত্রুটি"
+    "unknownError": "অজানা ত্রুটি",
+    "restartSuccess": "কৌশল পুনরায় চালু করার অনুরোধ করা হয়েছে",
+    "restartFailed": "কৌশল পুনরায় চালু করতে ব্যর্থ: {{message}}"
   },
   "card": {
     "ariaLabel": "কৌশল: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "ব্যাকটেস্ট",
     "backtestAriaLabel": "{{name}} কৌশল ব্যাকটেস্ট করুন",
     "managedRemotely": "{{coordinator}} দ্বারা পরিচালিত",
-    "remoteCoordinatorUnknown": "অন্য একটি কন্টেইনার"
+    "remoteCoordinatorUnknown": "অন্য একটি কন্টেইনার",
+    "restart": "পুনরায় চালু করুন",
+    "restartAriaLabel": "{{name}} কৌশল পুনরায় চালু করুন"
   },
   "launchModal": {
     "title": "কৌশল প্রসেস নিবন্ধন",

@@ -22,7 +22,9 @@
     "startTitle": "شروع {{name}}",
     "startMessage": "این کار استراتژی {{name}} را شروع می‌کند. ممکن است عملیات معاملاتی زنده آغاز شود.",
     "stopTitle": "توقف {{name}}",
-    "stopMessage": "این کار استراتژی {{name}} را متوقف می‌کند. موقعیت‌های فعال به‌طور خودکار بسته نمی‌شوند."
+    "stopMessage": "این کار استراتژی {{name}} را متوقف می‌کند. موقعیت‌های فعال به‌طور خودکار بسته نمی‌شوند.",
+    "restartTitle": "راه‌اندازی مجدد {{name}}",
+    "restartMessage": "این کار استراتژی {{name}} را متوقف و دوباره راه‌اندازی می‌کند. موقعیت‌های فعال به‌طور خودکار بسته نمی‌شوند."
   },
   "toast": {
     "saved": "استراتژی {{name}} ذخیره شد",
@@ -36,7 +38,9 @@
     "networkError": "خطای شبکه. لطفاً اتصال را بررسی کنید و دوباره تلاش کنید.",
     "startFailed": "شروع استراتژی ناموفق بود: {{message}}",
     "stopFailed": "توقف استراتژی ناموفق بود: {{message}}",
-    "unknownError": "خطای نامشخص"
+    "unknownError": "خطای نامشخص",
+    "restartSuccess": "درخواست راه‌اندازی مجدد استراتژی ثبت شد",
+    "restartFailed": "راه‌اندازی مجدد استراتژی ناموفق بود: {{message}}"
   },
   "card": {
     "ariaLabel": "استراتژی: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "بک‌تست",
     "backtestAriaLabel": "بک‌تست استراتژی {{name}}",
     "managedRemotely": "مدیریت‌شده توسط {{coordinator}}",
-    "remoteCoordinatorUnknown": "کانتینر دیگری"
+    "remoteCoordinatorUnknown": "کانتینر دیگری",
+    "restart": "راه‌اندازی مجدد",
+    "restartAriaLabel": "راه‌اندازی مجدد استراتژی {{name}}"
   },
   "launchModal": {
     "title": "ثبت فرایند استراتژی",

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { ProcessControlCard } from './ProcessControlCard'
@@ -285,7 +285,7 @@ describe('ProcessControlCard', () => {
     await expect(user.click(restartButton)).resolves.not.toThrow()
     expect(restartButton).toBeInTheDocument()
   })
-  it('hides control buttons and shows the managed-remotely notice when managed remotely', () => {
+  it('shows the managed-remotely notice AND live control buttons when managed remotely', () => {
     renderWithMocks(
       <ProcessControlCard
         title='Kraken Feed'
@@ -300,9 +300,11 @@ describe('ProcessControlCard', () => {
     )
     expect(screen.getByTestId('managed-remotely-notice')).toBeInTheDocument()
     expect(screen.getByText('Managed by coord-1')).toBeInTheDocument()
-    expect(screen.queryByText('Stop')).not.toBeInTheDocument()
+    expect(screen.getByText('Stop')).toBeInTheDocument()
+    expect(screen.getByText('Restart')).toBeInTheDocument()
     expect(screen.queryByText('Start')).not.toBeInTheDocument()
-    expect(screen.queryByText('Restart')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('Stop'))
+    expect(mockOnStop).toHaveBeenCalled()
   })
   it('falls back to a generic owner label when coordinator is null', () => {
     renderWithMocks(

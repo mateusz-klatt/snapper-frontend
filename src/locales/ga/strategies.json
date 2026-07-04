@@ -22,7 +22,9 @@
     "startTitle": "Tosaigh {{name}}",
     "startMessage": "Tosóidh sé seo an straitéis {{name}}. D'fhéadfadh sí oibríochtaí trádála beo a thosú.",
     "stopTitle": "Stad {{name}}",
-    "stopMessage": "Stopfaidh sé seo an straitéis {{name}}. Ní dhúnfar suímh ghníomhacha go huathoibríoch."
+    "stopMessage": "Stopfaidh sé seo an straitéis {{name}}. Ní dhúnfar suímh ghníomhacha go huathoibríoch.",
+    "restartTitle": "Atosaigh {{name}}",
+    "restartMessage": "Stopfaidh agus atosóidh sé seo an straitéis {{name}}. Ní dhúnfar suímh ghníomhacha go huathoibríoch."
   },
   "toast": {
     "saved": "Sábháladh straitéis {{name}}",
@@ -36,7 +38,9 @@
     "networkError": "Earráid líonra. Seiceáil an nasc agus bain triail eile as.",
     "startFailed": "Theip ar thosú na straitéise: {{message}}",
     "stopFailed": "Theip ar stopadh na straitéise: {{message}}",
-    "unknownError": "Earráid anaithnid"
+    "unknownError": "Earráid anaithnid",
+    "restartSuccess": "Iarradh atosú na straitéise",
+    "restartFailed": "Theip ar atosú na straitéise: {{message}}"
   },
   "card": {
     "ariaLabel": "Straitéis: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtestáil straitéis {{name}}",
     "managedRemotely": "Á bhainistiú ag {{coordinator}}",
-    "remoteCoordinatorUnknown": "coimeádán eile"
+    "remoteCoordinatorUnknown": "coimeádán eile",
+    "restart": "Atosaigh",
+    "restartAriaLabel": "Atosaigh straitéis {{name}}"
   },
   "launchModal": {
     "title": "Cláraigh Próiseas Straitéise",

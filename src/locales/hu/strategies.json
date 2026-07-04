@@ -22,7 +22,9 @@
     "startTitle": "{{name}} indítása",
     "startMessage": "Ez elindítja a(z) {{name}} stratégiát. Élő kereskedési műveleteket kezdhet.",
     "stopTitle": "{{name}} leállítása",
-    "stopMessage": "Ez leállítja a(z) {{name}} stratégiát. Az aktív pozíciók nem záródnak automatikusan."
+    "stopMessage": "Ez leállítja a(z) {{name}} stratégiát. Az aktív pozíciók nem záródnak automatikusan.",
+    "restartTitle": "{{name}} újraindítása",
+    "restartMessage": "Ez leállítja és újraindítja a(z) {{name}} stratégiát. Az aktív pozíciók nem záródnak automatikusan."
   },
   "toast": {
     "saved": "{{name}} stratégia mentve",
@@ -36,7 +38,9 @@
     "networkError": "Hálózati hiba. Ellenőrizze a kapcsolatot, majd próbálja újra.",
     "startFailed": "Nem sikerült elindítani a stratégiát: {{message}}",
     "stopFailed": "Nem sikerült leállítani a stratégiát: {{message}}",
-    "unknownError": "Ismeretlen hiba"
+    "unknownError": "Ismeretlen hiba",
+    "restartSuccess": "A stratégia újraindítása kérelmezve",
+    "restartFailed": "Nem sikerült újraindítani a stratégiát: {{message}}"
   },
   "card": {
     "ariaLabel": "Stratégia: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "{{name}} stratégia backtestelése",
     "managedRemotely": "Kezeli: {{coordinator}}",
-    "remoteCoordinatorUnknown": "egy másik konténer"
+    "remoteCoordinatorUnknown": "egy másik konténer",
+    "restart": "Újraindítás",
+    "restartAriaLabel": "{{name}} stratégia újraindítása"
   },
   "launchModal": {
     "title": "Stratégiafolyamat regisztrálása",

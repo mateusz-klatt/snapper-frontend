@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { v7 as uuid7 } from 'uuid'
 import { useTranslation } from 'react-i18next'
 import { LiveOnlyNotice } from '../../components/LiveOnlyNotice'
 import {
   useStartProcessByName,
   useStopProcessByName,
+  usePatchProcessDesiredState,
   useConfiguredProcesses,
   useAvailableProcesses,
   useProcessRuns,
@@ -157,6 +159,10 @@ export const Processes: React.FC = () => {
 
   const startProcess = useStartProcessByName()
   const stopProcess = useStopProcessByName()
+  const patchDesiredState = usePatchProcessDesiredState()
+  const [pendingRemote, setPendingRemote] = useState<
+    Record<string, 'enable' | 'disable' | 'restart'>
+  >({})
 
   const closeExecutionModeModal = React.useCallback(() => {
     setExecutionModeModal({
@@ -214,6 +220,65 @@ export const Processes: React.FC = () => {
     [stopProcess, openConfirm, t]
   )
 
+  const clearPendingRemote = React.useCallback((name: string) => {
+    setPendingRemote(prev => {
+      const next = { ...prev }
+
+      delete next[name]
+
+      return next
+    })
+  }, [])
+
+  const runRemote = React.useCallback(
+    (name: string, action: 'enable' | 'disable' | 'restart', restartNonce?: string) => {
+      setPendingRemote(prev => ({ ...prev, [name]: action }))
+      patchDesiredState
+        .mutateAsync({
+          name,
+          body: { action, ...(restartNonce === undefined ? {} : { restart_nonce: restartNonce }) },
+        })
+        .catch(() => {})
+        .finally(() => clearPendingRemote(name))
+    },
+    [patchDesiredState, clearPendingRemote]
+  )
+
+  const remotePending = React.useCallback(
+    (name: string, action: 'enable' | 'disable' | 'restart'): boolean =>
+      pendingRemote[name] === action,
+    [pendingRemote]
+  )
+
+  const handleRemoteEnable = React.useCallback(
+    (name: string) => runRemote(name, 'enable'),
+    [runRemote]
+  )
+
+  const handleRemoteDisable = React.useCallback(
+    (name: string, message: string) => {
+      openConfirm({
+        title: t('actions.stopTitle', { name }),
+        message,
+        onConfirm: () => runRemote(name, 'disable'),
+      })
+    },
+    [runRemote, openConfirm, t]
+  )
+
+  const handleRemoteRestart = React.useCallback(
+    (name: string, message: string) => {
+      const restartNonce = uuid7()
+
+      openConfirm({
+        title: t('actions.restartTitle', { name }),
+        message,
+        onConfirm: () => runRemote(name, 'restart', restartNonce),
+      })
+    },
+    [runRemote, openConfirm, t]
+  )
+
   const getHeartbeat = React.useCallback(
     (processName: string): HeartbeatData | undefined => {
       if (processName.startsWith('executor_')) {
@@ -268,19 +333,42 @@ export const Processes: React.FC = () => {
                 status={process.running ? 'running' : 'stopped'}
                 details={undefined}
                 heartbeat={heartbeat}
-                onStart={() => handleStart(process.name, description)}
+                onStart={() =>
+                  process.managed_remotely
+                    ? handleRemoteEnable(process.name)
+                    : handleStart(process.name, description)
+                }
                 onStop={() =>
-                  handleStop(process.name, t('actions.stopMessage', { name: process.name }))
+                  process.managed_remotely
+                    ? handleRemoteDisable(
+                        process.name,
+                        t('actions.stopMessage', { name: process.name })
+                      )
+                    : handleStop(process.name, t('actions.stopMessage', { name: process.name }))
                 }
                 onRestart={() =>
-                  handleRestart(
-                    process.name,
-                    t('actions.restartMessage', { name: process.name }),
-                    () => handleStart(process.name, description)
-                  )
+                  process.managed_remotely
+                    ? handleRemoteRestart(
+                        process.name,
+                        t('actions.restartMessage', { name: process.name })
+                      )
+                    : handleRestart(
+                        process.name,
+                        t('actions.restartMessage', { name: process.name }),
+                        () => handleStart(process.name, description)
+                      )
                 }
-                isStarting={startProcess.isPending && startProcess.variables?.name === process.name}
-                isStopping={stopProcess.isPending && stopProcess.variables?.name === process.name}
+                isStarting={
+                  process.managed_remotely
+                    ? remotePending(process.name, 'enable')
+                    : startProcess.isPending && startProcess.variables?.name === process.name
+                }
+                isStopping={
+                  process.managed_remotely
+                    ? remotePending(process.name, 'disable')
+                    : stopProcess.isPending && stopProcess.variables?.name === process.name
+                }
+                isRestarting={process.managed_remotely && remotePending(process.name, 'restart')}
                 readOnly={readOnly}
                 managedRemotely={process.managed_remotely}
                 coordinator={process.coordinator}

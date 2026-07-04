@@ -22,7 +22,9 @@
     "startTitle": "{{name}}を開始",
     "startMessage": "{{name}}戦略を開始します。ライブ取引操作が始まる可能性があります。",
     "stopTitle": "{{name}}を停止",
-    "stopMessage": "{{name}}戦略を停止します。アクティブなポジションは自動的にはクローズされません。"
+    "stopMessage": "{{name}}戦略を停止します。アクティブなポジションは自動的にはクローズされません。",
+    "restartTitle": "{{name}}を再起動",
+    "restartMessage": "{{name}}戦略を停止して再起動します。アクティブなポジションは自動的にはクローズされません。"
   },
   "toast": {
     "saved": "戦略 {{name}} を保存しました",
@@ -36,7 +38,9 @@
     "networkError": "ネットワークエラーです。接続を確認して再試行してください。",
     "startFailed": "戦略の開始に失敗しました: {{message}}",
     "stopFailed": "戦略の停止に失敗しました: {{message}}",
-    "unknownError": "不明なエラー"
+    "unknownError": "不明なエラー",
+    "restartSuccess": "戦略の再起動を要求しました",
+    "restartFailed": "戦略の再起動に失敗しました: {{message}}"
   },
   "card": {
     "ariaLabel": "戦略: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "バックテスト",
     "backtestAriaLabel": "{{name}}戦略をバックテスト",
     "managedRemotely": "{{coordinator}} が管理",
-    "remoteCoordinatorUnknown": "別のコンテナ"
+    "remoteCoordinatorUnknown": "別のコンテナ",
+    "restart": "再起動",
+    "restartAriaLabel": "{{name}}戦略を再起動"
   },
   "launchModal": {
     "title": "戦略プロセスを登録",

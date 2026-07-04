@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
+import { v7 as uuid7 } from 'uuid'
 import { useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { Gauge } from 'lucide-react'
@@ -7,6 +8,7 @@ import { ThemeSelect } from '../../components/ThemeSelect'
 import {
   useStartProcessByName,
   useStopProcessByName,
+  usePatchProcessDesiredState,
   useAvailableProcesses,
   useCreateProcessConfig,
 } from '../../hooks/queries/processes'
@@ -43,6 +45,10 @@ export const Strategies: React.FC = () => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const startProcess = useStartProcessByName()
   const stopProcess = useStopProcessByName()
+  const patchDesiredState = usePatchProcessDesiredState()
+  const [pendingRemote, setPendingRemote] = useState<
+    Record<string, 'enable' | 'disable' | 'restart'>
+  >({})
   const createProcessConfig = useCreateProcessConfig()
   const { data: strategiesData, isLoading } = useStrategies()
   const { data: availableProcesses } = useAvailableProcesses()
@@ -161,6 +167,108 @@ export const Strategies: React.FC = () => {
     })
   }
 
+  const mutateRemote = (
+    name: string,
+    action: 'enable' | 'disable' | 'restart',
+    callbacks: { onSuccess: () => void; onError: (error: Error) => void },
+    restartNonce?: string
+  ) => {
+    setActiveStrategyProcess(name)
+    setPendingRemote(prev => ({ ...prev, [name]: action }))
+    patchDesiredState
+      .mutateAsync({
+        name,
+        body: { action, ...(restartNonce === undefined ? {} : { restart_nonce: restartNonce }) },
+      })
+      .then(callbacks.onSuccess)
+      .catch((error: unknown) =>
+        callbacks.onError(error instanceof Error ? error : new Error(String(error)))
+      )
+      .finally(() => {
+        setPendingRemote(prev => {
+          const next = { ...prev }
+
+          delete next[name]
+
+          return next
+        })
+      })
+  }
+
+  const remotePending = (name: string, action: 'enable' | 'disable' | 'restart'): boolean =>
+    pendingRemote[name] === action
+
+  const requestRemoteEnable = (processName: string) => {
+    openConfirm({
+      title: t('confirm.startTitle', { name: processName }),
+      message: t('confirm.startMessage', { name: processName }),
+      variant: 'default',
+      onConfirm: () =>
+        mutateRemote(processName, 'enable', {
+          onSuccess: () => {
+            toast.success(t('toast.startSuccess'), { duration: 3000, icon: '🚀' })
+          },
+          onError: (error: Error) => {
+            setActiveStrategyProcess(null)
+            toast.error(t('toast.startFailed', { message: error.message }), {
+              duration: 5000,
+              icon: '⚠️',
+            })
+          },
+        }),
+    })
+  }
+
+  const requestRemoteDisable = (processName: string) => {
+    openConfirm({
+      title: t('confirm.stopTitle', { name: processName }),
+      message: t('confirm.stopMessage', { name: processName }),
+      variant: 'danger',
+      onConfirm: () =>
+        mutateRemote(processName, 'disable', {
+          onSuccess: () => {
+            setActiveStrategyProcess(null)
+            toast.success(t('toast.stopSuccess'), { duration: 3000, icon: '✋' })
+          },
+          onError: (error: Error) => {
+            setActiveStrategyProcess(null)
+            toast.error(t('toast.stopFailed', { message: error.message }), {
+              duration: 5000,
+              icon: '⚠️',
+            })
+          },
+        }),
+    })
+  }
+
+  const requestRemoteRestart = (processName: string) => {
+    const restartNonce = uuid7()
+
+    openConfirm({
+      title: t('confirm.restartTitle', { name: processName }),
+      message: t('confirm.restartMessage', { name: processName }),
+      variant: 'default',
+      onConfirm: () =>
+        mutateRemote(
+          processName,
+          'restart',
+          {
+            onSuccess: () => {
+              toast.success(t('toast.restartSuccess'), { duration: 3000, icon: '🔄' })
+            },
+            onError: (error: Error) => {
+              setActiveStrategyProcess(null)
+              toast.error(t('toast.restartFailed', { message: error.message }), {
+                duration: 5000,
+                icon: '⚠️',
+              })
+            },
+          },
+          restartNonce
+        ),
+    })
+  }
+
   const handleStartStrategy = (processName: string, mode: string) => {
     setActiveStrategyProcess(processName)
     startProcess.mutate(
@@ -207,6 +315,7 @@ export const Strategies: React.FC = () => {
   }
 
   const handleStopStrategy = (processName: string) => {
+    setActiveStrategyProcess(processName)
     stopProcess.mutate(
       { name: processName },
       {
@@ -323,13 +432,22 @@ export const Strategies: React.FC = () => {
                   coordinator={strategy.coordinator}
                   managedRemotely={strategy.managed_remotely}
                   onStart={
-                    canManage && !strategy.managed_remotely
-                      ? () => requestStartStrategy(strategy.name, strategy.mode)
+                    canManage
+                      ? strategy.managed_remotely
+                        ? () => requestRemoteEnable(strategy.name)
+                        : () => requestStartStrategy(strategy.name, strategy.mode)
                       : undefined
                   }
                   onStop={
-                    canManage && !strategy.managed_remotely
-                      ? () => requestStopStrategy(strategy.name)
+                    canManage
+                      ? strategy.managed_remotely
+                        ? () => requestRemoteDisable(strategy.name)
+                        : () => requestStopStrategy(strategy.name)
+                      : undefined
+                  }
+                  onRestart={
+                    canManage && strategy.managed_remotely
+                      ? () => requestRemoteRestart(strategy.name)
                       : undefined
                   }
                   onBacktest={
@@ -337,8 +455,19 @@ export const Strategies: React.FC = () => {
                       ? () => setBacktestStrategyClass(backtestClass)
                       : undefined
                   }
-                  isStarting={startProcess.isPending && activeStrategyProcess === strategy.name}
-                  isStopping={stopProcess.isPending && activeStrategyProcess === strategy.name}
+                  isStarting={
+                    strategy.managed_remotely
+                      ? remotePending(strategy.name, 'enable')
+                      : startProcess.isPending && activeStrategyProcess === strategy.name
+                  }
+                  isStopping={
+                    strategy.managed_remotely
+                      ? remotePending(strategy.name, 'disable')
+                      : stopProcess.isPending && activeStrategyProcess === strategy.name
+                  }
+                  isRestarting={
+                    strategy.managed_remotely && remotePending(strategy.name, 'restart')
+                  }
                   readOnly={readOnly}
                 />
               )

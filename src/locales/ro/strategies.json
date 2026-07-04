@@ -22,7 +22,9 @@
     "startTitle": "Porniți {{name}}",
     "startMessage": "Aceasta va porni strategia {{name}}. Poate începe operațiuni de trading live.",
     "stopTitle": "Opriți {{name}}",
-    "stopMessage": "Aceasta va opri strategia {{name}}. Pozițiile active nu vor fi închise automat."
+    "stopMessage": "Aceasta va opri strategia {{name}}. Pozițiile active nu vor fi închise automat.",
+    "restartTitle": "Reporniți {{name}}",
+    "restartMessage": "Aceasta va opri și reporni strategia {{name}}. Pozițiile active nu vor fi închise automat."
   },
   "toast": {
     "saved": "Strategia {{name}} a fost salvată",
@@ -36,7 +38,9 @@
     "networkError": "Eroare de rețea. Verificați conexiunea și încercați din nou.",
     "startFailed": "Pornirea strategiei a eșuat: {{message}}",
     "stopFailed": "Oprirea strategiei a eșuat: {{message}}",
-    "unknownError": "Eroare necunoscută"
+    "unknownError": "Eroare necunoscută",
+    "restartSuccess": "Repornirea strategiei a fost solicitată",
+    "restartFailed": "Repornirea strategiei a eșuat: {{message}}"
   },
   "card": {
     "ariaLabel": "Strategie: {{name}}",
@@ -89,7 +93,9 @@
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest pentru strategia {{name}}",
     "managedRemotely": "Gestionat de {{coordinator}}",
-    "remoteCoordinatorUnknown": "alt container"
+    "remoteCoordinatorUnknown": "alt container",
+    "restart": "Reporniți",
+    "restartAriaLabel": "Reporniți strategia {{name}}"
   },
   "launchModal": {
     "title": "Înregistrare proces de strategie",
