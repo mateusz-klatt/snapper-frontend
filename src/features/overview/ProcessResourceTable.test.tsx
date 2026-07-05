@@ -76,21 +76,24 @@ describe('ProcessResourceTable', () => {
     expect(screen.getByRole('heading', { level: 4 }).textContent).toBe('coord-1')
   })
 
-  it('hides disabled processes (not running and not enabled)', (): void => {
-    useProcessMetricsStore
-      .getState()
-      .setSnapshot(
-        'alpha',
-        null,
-        [
-          makeProcessSummaryItem({ name: 'feed-live', running: true, enabled: true }),
-          makeProcessSummaryItem({ name: 'strat-disabled', running: false, enabled: false }),
-        ],
-        't1'
-      )
+  it('hides processes this container does not manage even when reported running', (): void => {
+    useProcessMetricsStore.getState().setSnapshot(
+      'alpha',
+      null,
+      [
+        makeProcessSummaryItem({ name: 'managed-here', owned: true }),
+        makeProcessSummaryItem({
+          name: 'runs-elsewhere',
+          owned: false,
+          running: true,
+          enabled: true,
+        }),
+      ],
+      't1'
+    )
     renderWithI18n(<ProcessResourceTable />)
-    expect(screen.getByText('feed-live')).toBeInTheDocument()
-    expect(screen.queryByText('strat-disabled')).not.toBeInTheDocument()
+    expect(screen.getByText('managed-here')).toBeInTheDocument()
+    expect(screen.queryByText('runs-elsewhere')).not.toBeInTheDocument()
   })
 
   it('titles the em-dash for a process with no per-process metrics', (): void => {
@@ -124,19 +127,32 @@ describe('ProcessResourceTable', () => {
     expect(screen.getByText('Stopped')).toBeInTheDocument()
   })
 
-  it('derives the Disabled status once disabled processes are revealed', (): void => {
+  it('shows an owned process with the Disabled badge (managed but dormant)', (): void => {
     useProcessMetricsStore
       .getState()
       .setSnapshot(
         'alpha',
         null,
-        [makeProcessSummaryItem({ name: 'feed-1', running: false, enabled: false })],
+        [makeProcessSummaryItem({ name: 'feed-1', owned: true, running: false, enabled: false })],
         't1'
       )
     renderWithI18n(<ProcessResourceTable />)
-    expect(screen.queryByText('Disabled')).not.toBeInTheDocument()
-    fireEvent.click(screen.getByLabelText('Hide disabled processes'))
     expect(screen.getByText('Disabled')).toBeInTheDocument()
+  })
+
+  it('reveals other containers processes when the managed-only toggle is unchecked', (): void => {
+    useProcessMetricsStore
+      .getState()
+      .setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'runs-elsewhere', owned: false, running: true })],
+        't1'
+      )
+    renderWithI18n(<ProcessResourceTable />)
+    expect(screen.queryByText('runs-elsewhere')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByLabelText(/only this container/i))
+    expect(screen.getByText('runs-elsewhere')).toBeInTheDocument()
   })
 
   it('shows an em-dash when rss_bytes is null', (): void => {

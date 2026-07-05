@@ -144,6 +144,7 @@ export function makeProcessSummaryItem(
   return {
     running: true,
     enabled: true,
+    owned: true,
     role: 'core',
     lifecycle: 'long_running',
     rss_bytes: null,

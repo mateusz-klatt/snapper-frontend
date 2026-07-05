@@ -228,6 +228,7 @@ const toMetricItem = (
   name: item.name,
   running: item.running,
   enabled: item.enabled,
+  owned: item.owned,
   role: item.role,
   lifecycle: item.lifecycle,
   active_public_id: item.active_public_id ?? null,
