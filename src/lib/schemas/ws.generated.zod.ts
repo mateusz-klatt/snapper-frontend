@@ -646,6 +646,7 @@ export const ProcessSummaryItemSchema = z
     active_public_id: z.string().nullable().optional(),
     rss_bytes: z.number().int().nullable().optional(),
     cpu_percent: z.number().nullable().optional(),
+    owned: z.boolean(),
   })
   .strict()
 
