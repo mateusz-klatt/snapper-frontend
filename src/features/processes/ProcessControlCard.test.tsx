@@ -348,4 +348,20 @@ describe('ProcessControlCard', () => {
     )
     expect(screen.getByText('Managed by another container')).toBeInTheDocument()
   })
+  it('prefers the coordinator label over the raw slug', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Kraken Feed'
+        description='Test description'
+        status='running'
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+        managedRemotely
+        coordinator='coord-1'
+        coordinatorLabel='Feed'
+      />
+    )
+    expect(screen.getByText('Managed by Feed')).toBeInTheDocument()
+    expect(screen.queryByText('Managed by coord-1')).not.toBeInTheDocument()
+  })
 })

@@ -378,6 +378,7 @@ export const Processes: React.FC = () => {
                 managedRemotely={process.managed_remotely}
                 enabled={process.enabled}
                 coordinator={process.coordinator}
+                coordinatorLabel={process.coordinator_label}
               />
             )
           })}

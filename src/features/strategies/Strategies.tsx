@@ -123,6 +123,7 @@ function renderStrategyCard(params: StrategyCardRenderParams): React.ReactElemen
       mode={strategy.mode}
       health={params.health}
       coordinator={strategy.coordinator}
+      coordinatorLabel={strategy.coordinator_label}
       managedRemotely={strategy.managed_remotely}
       onStart={startAction(params)}
       onStop={stopAction(params)}

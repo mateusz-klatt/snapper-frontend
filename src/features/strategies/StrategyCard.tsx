@@ -110,6 +110,7 @@ interface StrategyCardProps {
   mode: 'thread' | 'process'
   health?: HealthStatus | undefined
   coordinator?: string | null | undefined
+  coordinatorLabel?: string | null | undefined
   managedRemotely?: boolean | undefined
   onStart?: (() => void) | undefined
   onStop?: (() => void) | undefined
@@ -202,6 +203,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     mode,
     health,
     coordinator,
+    coordinatorLabel,
     managedRemotely = false,
     onStart,
     onStop,
@@ -409,7 +411,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
           >
             <span className='w-1.5 h-1.5 rounded-full bg-info-400 shrink-0' />
             {t('card.managedRemotely', {
-              coordinator: coordinator ?? t('card.remoteCoordinatorUnknown'),
+              coordinator: coordinatorLabel ?? coordinator ?? t('card.remoteCoordinatorUnknown'),
             })}
           </p>
         )}

@@ -20,6 +20,7 @@ interface ProcessControlCardProps {
   managedRemotely?: boolean | undefined
   enabled?: boolean | undefined
   coordinator?: string | null | undefined
+  coordinatorLabel?: string | null | undefined
   heartbeat?: HeartbeatData | undefined
 }
 
@@ -70,6 +71,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
   managedRemotely = false,
   enabled = false,
   coordinator,
+  coordinatorLabel,
   heartbeat,
 }) => {
   const { t } = useTranslation('processes')
@@ -127,7 +129,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
           >
             <span className='w-1.5 h-1.5 rounded-full bg-info-400 shrink-0' />
             {t('card.managedRemotely', {
-              coordinator: coordinator ?? t('card.remoteCoordinatorUnknown'),
+              coordinator: coordinatorLabel ?? coordinator ?? t('card.remoteCoordinatorUnknown'),
             })}
           </p>
         )}
