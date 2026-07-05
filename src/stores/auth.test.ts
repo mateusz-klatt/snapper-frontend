@@ -9,10 +9,15 @@ vi.mock('../lib/apiClient', () => ({
     post: vi.fn(),
     postJSON: vi.fn(),
     get: vi.fn(),
+    refreshSession: vi.fn(),
     setCsrfToken: vi.fn(),
     clearCSRFToken: vi.fn(),
   },
 }))
+
+const refreshResponse = (payload: unknown): Response =>
+  ({ ok: true, status: 200, json: () => Promise.resolve(payload) }) as unknown as Response
+
 vi.mock('../lib/wsTicketCache', () => ({
   storeWsTicket: vi.fn(),
 }))
@@ -566,14 +571,16 @@ describe('auth store', () => {
         created_at: '2026-01-01T00:00:00Z',
       }
 
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          ws_token: 'new-ws-token',
-          ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-          csrf_token: 'new-csrf',
-          user: mockUser,
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            ws_token: 'new-ws-token',
+            ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
+            csrf_token: 'new-csrf',
+            user: mockUser,
+          },
+        })
+      )
       const state = useAuthStore.getState()
 
       await state.refreshToken()
@@ -582,13 +589,15 @@ describe('auth store', () => {
     })
     it('fetches user info if not in response', async () => {
       useAuthStore.setState({ user: null, isAuthenticated: true })
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          ws_token: 'token',
-          ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-          csrf_token: 'csrf',
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            ws_token: 'token',
+            ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
+            csrf_token: 'csrf',
+          },
+        })
+      )
       vi.mocked(apiClient.get).mockResolvedValueOnce({
         ok: true,
         json: () =>
@@ -612,35 +621,51 @@ describe('auth store', () => {
       await state.refreshToken()
       expect(apiClient.get).toHaveBeenCalledWith('/api/auth/me')
     })
-    it('handles refresh failure by logging out', async () => {
-      vi.mocked(apiClient.postJSON).mockRejectedValueOnce(new Error('Refresh failed'))
+    it('handles refresh failure by silently logging out (no server logout POST)', async () => {
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(new Error('Refresh failed'))
       vi.mocked(apiClient.post).mockResolvedValueOnce({ ok: true } as Response)
       vi.spyOn(console, 'error').mockImplementation(() => {})
       const state = useAuthStore.getState()
 
       await expect(state.refreshToken()).rejects.toThrow('Refresh failed')
       expect(useAuthStore.getState().isAuthenticated).toBe(false)
+      expect(apiClient.post).not.toHaveBeenCalled()
+    })
+    it('throws and silently logs out when the refresh response is not ok', async () => {
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce({
+        ok: false,
+        status: 401,
+        json: () => Promise.resolve({}),
+      } as unknown as Response)
+      vi.spyOn(console, 'error').mockImplementation(() => {})
+      const state = useAuthStore.getState()
+
+      await expect(state.refreshToken()).rejects.toThrow('Refresh failed with status 401')
+      expect(useAuthStore.getState().isAuthenticated).toBe(false)
+      expect(apiClient.post).not.toHaveBeenCalled()
     })
     it('stores null ws ticket when ws_token is missing', async () => {
       const { storeWsTicket } = await import('../lib/wsTicketCache')
 
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          csrf_token: 'csrf',
-          user: {
-            type: 'user_profile' as const,
-            sequence_id: 0,
-            public_id: 'test-pid',
-            timestamp: '2024-01-01T00:00:00Z',
-            session_id: 'test-sid',
-            username: 'admin',
-            role: 'admin',
-            is_active: true,
-            created_at: '2026-01-01T00:00:00Z',
-            operator_public_ids: [],
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            csrf_token: 'csrf',
+            user: {
+              type: 'user_profile' as const,
+              sequence_id: 0,
+              public_id: 'test-pid',
+              timestamp: '2024-01-01T00:00:00Z',
+              session_id: 'test-sid',
+              username: 'admin',
+              role: 'admin',
+              is_active: true,
+              created_at: '2026-01-01T00:00:00Z',
+              operator_public_ids: [],
+            },
           },
-        },
-      })
+        })
+      )
       const state = useAuthStore.getState()
 
       await state.refreshToken()
@@ -649,24 +674,26 @@ describe('auth store', () => {
     it('stores null ws ticket when ws_token_exp is missing', async () => {
       const { storeWsTicket } = await import('../lib/wsTicketCache')
 
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          csrf_token: 'csrf',
-          ws_token: 'token',
-          user: {
-            type: 'user_profile' as const,
-            sequence_id: 0,
-            public_id: 'test-pid',
-            timestamp: '2024-01-01T00:00:00Z',
-            session_id: 'test-sid',
-            username: 'admin',
-            role: 'admin',
-            is_active: true,
-            created_at: '2026-01-01T00:00:00Z',
-            operator_public_ids: [],
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            csrf_token: 'csrf',
+            ws_token: 'token',
+            user: {
+              type: 'user_profile' as const,
+              sequence_id: 0,
+              public_id: 'test-pid',
+              timestamp: '2024-01-01T00:00:00Z',
+              session_id: 'test-sid',
+              username: 'admin',
+              role: 'admin',
+              is_active: true,
+              created_at: '2026-01-01T00:00:00Z',
+              operator_public_ids: [],
+            },
           },
-        },
-      })
+        })
+      )
       const state = useAuthStore.getState()
 
       await state.refreshToken()
@@ -685,13 +712,15 @@ describe('auth store', () => {
         created_at: '2026-01-01T00:00:00Z',
       }
 
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          ws_token: 'token',
-          ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-          user: mockUser,
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            ws_token: 'token',
+            ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
+            user: mockUser,
+          },
+        })
+      )
       const state = useAuthStore.getState()
 
       await state.refreshToken()
@@ -700,13 +729,15 @@ describe('auth store', () => {
     })
     it('throws error when fetching user info fails', async () => {
       useAuthStore.setState({ user: null, isAuthenticated: true })
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          ws_token: 'token',
-          ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-          csrf_token: 'csrf',
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            ws_token: 'token',
+            ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
+            csrf_token: 'csrf',
+          },
+        })
+      )
       vi.mocked(apiClient.get).mockResolvedValueOnce({
         ok: false,
         status: 401,
@@ -719,13 +750,15 @@ describe('auth store', () => {
     })
     it('does not update localStorage when userData is null', async () => {
       useAuthStore.setState({ user: null, isAuthenticated: true })
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          ws_token: 'token',
-          ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-          csrf_token: 'csrf',
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            ws_token: 'token',
+            ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
+            csrf_token: 'csrf',
+          },
+        })
+      )
       vi.mocked(apiClient.get).mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({ payload: null }),
@@ -761,9 +794,13 @@ describe('auth store', () => {
       const state = useAuthStore.getState()
 
       await state.refreshToken({ walletId: 'wallet-7' })
-      expect(apiClient.postJSON).toHaveBeenCalledWith('/api/auth/refresh', {
-        active_wallet_public_id: 'wallet-7',
-      })
+      expect(apiClient.postJSON).toHaveBeenCalledWith(
+        '/api/auth/refresh',
+        {
+          active_wallet_public_id: 'wallet-7',
+        },
+        { skipRetry: true }
+      )
     })
 
     it('forwards clear hint as clear_active_wallet body', async () => {
@@ -789,9 +826,13 @@ describe('auth store', () => {
       const state = useAuthStore.getState()
 
       await state.refreshToken({ clear: true })
-      expect(apiClient.postJSON).toHaveBeenCalledWith('/api/auth/refresh', {
-        clear_active_wallet: true,
-      })
+      expect(apiClient.postJSON).toHaveBeenCalledWith(
+        '/api/auth/refresh',
+        {
+          clear_active_wallet: true,
+        },
+        { skipRetry: true }
+      )
     })
   })
   describe('useAuth hook', () => {
@@ -884,11 +925,7 @@ describe('auth store', () => {
         typeof (window as Window & { authLogoutCallback?: () => void }).authLogoutCallback
       ).toBe('function')
     })
-    it('global callback triggers logout', async () => {
-      vi.mocked(apiClient.post).mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-      } as Response)
+    it('global callback silently logs out without a server logout POST', async () => {
       useAuthStore.setState({
         user: {
           type: 'user_profile' as const,
@@ -914,6 +951,7 @@ describe('auth store', () => {
 
       expect(state.isAuthenticated).toBe(false)
       expect(state.user).toBeNull()
+      expect(apiClient.post).not.toHaveBeenCalled()
     })
     it('skips callback registration when window is undefined', async () => {
       vi.stubGlobal('window', undefined)

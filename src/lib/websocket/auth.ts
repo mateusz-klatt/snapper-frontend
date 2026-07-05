@@ -10,14 +10,13 @@ let wsTokenPromise: Promise<RefreshWsTokenResponse> | null = null
 
 async function fetchWsToken(): Promise<RefreshWsTokenResponse> {
   wsTokenPromise ??= (async () => {
-    const envelope = await apiClient.postJSON<RefreshWsTokenResponse>(
-      '/api/auth/refresh',
-      undefined,
-      {
-        skipRetry: true,
-      }
-    )
+    const response = await apiClient.refreshSession()
 
+    if (!response.ok) {
+      throw new Error(`Refresh failed with status ${response.status}`)
+    }
+
+    const envelope = (await response.json()) as RefreshWsTokenResponse
     const data = envelope?.payload
 
     if (!data || typeof data.ws_token !== 'string' || typeof data.ws_token_exp !== 'string') {
