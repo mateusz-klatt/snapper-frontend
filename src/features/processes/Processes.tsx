@@ -57,7 +57,12 @@ export const Processes: React.FC = () => {
     onStart: noop,
   })
   const heartbeatTopics = React.useMemo(
-    () => ['system.heartbeats.executor.', 'system.heartbeats.feed.'],
+    // Subscribe to the whole heartbeats root (a valid registry root); the
+    // executor./feed. sub-prefixes are NOT roots and the server rejects the
+    // entire batch, leaving every card "unknown". The bridge throttles this
+    // root per-component (system.heartbeats. schema), so components no longer
+    // starve one another, and getHeartbeat keys each card by its component.
+    () => ['system.heartbeats.'],
     []
   )
   const allHeartbeats = useHeartbeats(heartbeatTopics)
