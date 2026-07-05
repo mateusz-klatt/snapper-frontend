@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Payagan ang engine na mag-open ng short positions. Ang SELL signals ay gagawa ng negative desired_units; iko-clamp sa 0 kapag disabled.",
       "allowManualOrders": "I-enable ang New Order button sa Orders tab. Kapag disabled, magre-return ng 403 ang POST /api/orders."
-    }
+    },
+    "emptyValue": "(walang laman)"
   },
   "addModal": {
     "title": "Mag-add ng bagong setting",

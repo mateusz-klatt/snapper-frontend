@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Erlaubt der Engine das Eröffnen von Short-Positionen. SELL-Signale erzeugen negative desired_units; bei Deaktivierung werden Werte auf 0 begrenzt.",
       "allowManualOrders": "Aktiviert die Schaltfläche „Neuer Auftrag“ auf dem Aufträge-Tab. Bei Deaktivierung liefert POST /api/orders 403 zurück."
-    }
+    },
+    "emptyValue": "(leer)"
   },
   "addModal": {
     "title": "Neue Einstellung hinzufügen",

@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "엔진이 숏 포지션을 열 수 있게 허용합니다. SELL 시그널은 음수 desired_units를 생성하며, 비활성화 시 0으로 제한됩니다.",
       "allowManualOrders": "주문 탭의 새 주문 버튼을 활성화합니다. 비활성화 시 POST /api/orders는 403을 반환합니다."
-    }
+    },
+    "emptyValue": "(비어 있음)"
   },
   "addModal": {
     "title": "새 설정 추가",

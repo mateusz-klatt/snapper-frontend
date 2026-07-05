@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Consente al motore di aprire posizioni short. I segnali SELL produrranno desired_units negativi; quando disabilitato il valore viene limitato a 0.",
       "allowManualOrders": "Abilita il pulsante Nuovo ordine nella scheda Ordini. Se disabilitato, POST /api/orders restituisce 403."
-    }
+    },
+    "emptyValue": "(vuoto)"
   },
   "addModal": {
     "title": "Aggiungi nuova impostazione",

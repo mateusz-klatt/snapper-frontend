@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Dopusti engineu otvaranje kratkih pozicija. SELL signali stvarat će negativne desired_units; kada je onemogućeno, vrijednosti se ograničavaju na 0.",
       "allowManualOrders": "Omogući gumb Novi nalog na kartici Nalozi. Kada je onemogućeno, POST /api/orders vraća 403."
-    }
+    },
+    "emptyValue": "(prazno)"
   },
   "addModal": {
     "title": "Dodaj novu postavku",

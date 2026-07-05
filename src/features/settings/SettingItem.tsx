@@ -189,7 +189,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
           </div>
         ) : (
           <pre className='text-xs text-alpine-900 whitespace-pre-wrap break-all'>
-            {getMaskedValue(setting.key, setting.value)}
+            {getMaskedValue(setting.key, setting.value, t('item.emptyValue'))}
           </pre>
         )}
         {isLongJson && (

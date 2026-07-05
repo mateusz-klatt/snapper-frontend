@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Sta de engine toe om short-posities te openen. SELL-signalen produceren negatieve desired_units; klemt op 0 wanneer uitgeschakeld.",
       "allowManualOrders": "Schakel de knop Nieuwe order op het tabblad Orders in. Wanneer uitgeschakeld retourneert POST /api/orders 403."
-    }
+    },
+    "emptyValue": "(leeg)"
   },
   "addModal": {
     "title": "Nieuwe instelling toevoegen",

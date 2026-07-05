@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Engedélyezi, hogy a motor short pozíciókat nyisson. A SELL jelzések negatív desired_units értéket hoznak létre; letiltva 0-ra korlátoz.",
       "allowManualOrders": "Engedélyezi az Új megbízás gombot a Megbízások lapon. Letiltva a POST /api/orders 403 választ ad."
-    }
+    },
+    "emptyValue": "(üres)"
   },
   "addModal": {
     "title": "Új beállítás hozzáadása",

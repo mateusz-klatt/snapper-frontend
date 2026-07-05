@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Motorun short pozisyon açmasına izin ver. SELL sinyalleri negatif desired_units üretir; devre dışıysa 0'a sıkıştırılır.",
       "allowManualOrders": "Emirler sekmesinde Yeni Emir düğmesini etkinleştir. Devre dışıysa POST /api/orders 403 döndürür."
-    }
+    },
+    "emptyValue": "(boş)"
   },
   "addModal": {
     "title": "Yeni Ayar Ekle",

@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Pozwól silnikowi otwierać pozycje krótkie. Sygnały SELL wygenerują ujemne desired_units; przy wyłączeniu wartości są przycinane do 0.",
       "allowManualOrders": "Włącz przycisk Nowe zlecenie na karcie Zlecenia. Po wyłączeniu POST /api/orders zwraca 403."
-    }
+    },
+    "emptyValue": "(puste)"
   },
   "addModal": {
     "title": "Dodaj nowe ustawienie",

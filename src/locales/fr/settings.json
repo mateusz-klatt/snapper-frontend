@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Autoriser le moteur à ouvrir des positions courtes. Les signaux SELL produiront des desired_units négatifs ; ramené à 0 lorsque désactivé.",
       "allowManualOrders": "Active le bouton Nouvel ordre sur l'onglet Ordres. Lorsque désactivé, POST /api/orders renvoie 403."
-    }
+    },
+    "emptyValue": "(vide)"
   },
   "addModal": {
     "title": "Ajouter un nouveau paramètre",

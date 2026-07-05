@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "ইঞ্জিনকে শর্ট পজিশন খুলতে দিন। SELL সিগন্যাল নেতিবাচক desired_units তৈরি করবে; নিষ্ক্রিয় থাকলে 0-তে সীমাবদ্ধ হবে।",
       "allowManualOrders": "অর্ডার ট্যাবে New Order বোতাম সক্রিয় করুন। নিষ্ক্রিয় থাকলে POST /api/orders 403 ফেরত দেয়।"
-    }
+    },
+    "emptyValue": "(খালি)"
   },
   "addModal": {
     "title": "নতুন সেটিং যোগ করুন",
