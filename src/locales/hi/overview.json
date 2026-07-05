@@ -48,20 +48,21 @@
     "noTime": "लागू नहीं"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "प्रक्रिया संसाधन",
+    "empty": "कोई प्रक्रिया संसाधन डेटा उपलब्ध नहीं है",
+    "colName": "नाम",
+    "colStatus": "स्थिति",
+    "colRole": "भूमिका",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "चल रहा है",
+    "statusStopped": "रुका हुआ",
+    "statusDisabled": "अक्षम",
+    "containerTotal": "कुल MEM {{value}}",
+    "cpuTooltip": "कई कोर पर CPU उपयोग 100% से अधिक हो सकता है",
+    "metricsNa": "प्रति-प्रक्रिया अलग CPU/मेमोरी नहीं है; यह प्रक्रिया के भीतर चलता है (थ्रेड मोड) या चल नहीं रहा है",
+    "managedOnly": "केवल इस कंटेनर की प्रक्रियाएँ",
+    "managedOnlyHint": "हर कंटेनर प्रक्रियाओं के एक उपसमूह को प्रबंधित करता है (उसकी autostart प्रोफ़ाइल); अन्य प्रक्रियाएँ यहाँ केवल कहीं और चल रही के रूप में रिपोर्ट होती हैं। प्रत्येक कंटेनर द्वारा रिपोर्ट की गई हर प्रक्रिया देखने के लिए चयन हटाएँ।",
+    "hideDisabled": "अक्षम प्रक्रियाएँ छिपाएँ"
   }
 }

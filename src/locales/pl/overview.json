@@ -48,20 +48,21 @@
     "noTime": "N/D"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
+    "title": "Zasoby procesów",
+    "empty": "Brak dostępnych danych zasobów procesów",
+    "colName": "Nazwa",
     "colStatus": "Status",
-    "colRole": "Role",
+    "colRole": "Rola",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Działa",
+    "statusStopped": "Zatrzymany",
+    "statusDisabled": "Wyłączony",
+    "containerTotal": "Łącznie MEM {{value}}",
+    "cpuTooltip": "Użycie CPU może przekraczać 100% na wielu rdzeniach",
+    "metricsNa": "Brak osobnych danych CPU/pamięci dla procesu; działa w ramach procesu (tryb wątków) albo nie działa",
+    "managedOnly": "Tylko procesy tego kontenera",
+    "managedOnlyHint": "Każdy kontener zarządza podzbiorem procesów (swoim profilem autostart); pozostałe procesy są tu zgłaszane tylko jako działające gdzie indziej. Odznacz, aby zobaczyć każdy proces zgłaszany przez każdy kontener.",
+    "hideDisabled": "Ukryj wyłączone procesy"
   }
 }

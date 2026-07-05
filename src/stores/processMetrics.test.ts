@@ -171,13 +171,13 @@ describe('useProcessMetricsStore', () => {
             't1'
           )
       })
-      const { result } = renderHook(() => useMetricProcessNames('alpha', false))
+      const { result } = renderHook(() => useMetricProcessNames('alpha', false, false))
 
       expect(result.current).toEqual(['feed', 'strategy'])
     })
 
     it('returns an empty list for an unknown coordinator', () => {
-      const { result } = renderHook(() => useMetricProcessNames('missing', true))
+      const { result } = renderHook(() => useMetricProcessNames('missing', true, false))
 
       expect(result.current).toEqual([])
     })
@@ -200,9 +200,32 @@ describe('useProcessMetricsStore', () => {
           't1'
         )
       })
-      const { result } = renderHook(() => useMetricProcessNames('alpha', true))
+      const { result } = renderHook(() => useMetricProcessNames('alpha', true, false))
 
       expect(result.current).toEqual(['mine-dormant', 'mine-running'])
+    })
+
+    it('hides disabled (not running, not enabled) rows when hideDisabled is true', () => {
+      act(() => {
+        useProcessMetricsStore.getState().setSnapshot(
+          'alpha',
+          null,
+          [
+            makeProcessSummaryItem({ name: 'running', owned: true, running: true }),
+            makeProcessSummaryItem({ name: 'stopped', owned: true, running: false, enabled: true }),
+            makeProcessSummaryItem({
+              name: 'disabled',
+              owned: true,
+              running: false,
+              enabled: false,
+            }),
+          ],
+          't1'
+        )
+      })
+      const { result } = renderHook(() => useMetricProcessNames('alpha', true, true))
+
+      expect(result.current).toEqual(['running', 'stopped'])
     })
   })
 

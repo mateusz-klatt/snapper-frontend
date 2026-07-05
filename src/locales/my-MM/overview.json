@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "လုပ်ငန်းစဉ် ရင်းမြစ်များ",
+    "empty": "လုပ်ငန်းစဉ် ရင်းမြစ်ဒေတာ မရှိပါ",
+    "colName": "အမည်",
+    "colStatus": "အခြေအနေ",
+    "colRole": "အခန်းကဏ္ဍ",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "လည်ပတ်နေသည်",
+    "statusStopped": "ရပ်ထားသည်",
+    "statusDisabled": "ပိတ်ထားသည်",
+    "containerTotal": "စုစုပေါင်း MEM {{value}}",
+    "cpuTooltip": "CPU အသုံးပြုမှုသည် core များစွာတွင် 100% ထက် ကျော်လွန်နိုင်သည်",
+    "metricsNa": "လုပ်ငန်းစဉ်တစ်ခုချင်းစီအတွက် သီးခြား CPU/မမ်မိုရီ မရှိပါ; ၎င်းသည် လုပ်ငန်းစဉ်အတွင်း (thread mode) လည်ပတ်နေခြင်း သို့မဟုတ် မလည်ပတ်နေခြင်း ဖြစ်သည်",
+    "managedOnly": "ဤ container ၏ လုပ်ငန်းစဉ်များသာ",
+    "managedOnlyHint": "container တစ်ခုစီသည် လုပ်ငန်းစဉ်အချို့ကို (၎င်း၏ autostart profile) စီမံသည်; အခြားလုပ်ငန်းစဉ်များကို ဤနေရာတွင် အခြားနေရာတွင် လည်ပတ်နေသည်ဟုသာ ဖော်ပြသည်။ container တစ်ခုစီက ဖော်ပြသော လုပ်ငန်းစဉ်အားလုံးကို ကြည့်ရန် အမှန်ခြစ်ကို ဖြုတ်ပါ။",
+    "hideDisabled": "ပိတ်ထားသော လုပ်ငန်းစဉ်များကို ဝှက်ရန်"
   }
 }

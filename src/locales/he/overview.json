@@ -48,20 +48,21 @@
     "noTime": "לא זמין"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "משאבי תהליכים",
+    "empty": "אין נתוני משאבי תהליכים זמינים",
+    "colName": "שם",
+    "colStatus": "סטטוס",
+    "colRole": "תפקיד",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "פועל",
+    "statusStopped": "נעצר",
+    "statusDisabled": "מושבת",
+    "containerTotal": "סך הכול MEM {{value}}",
+    "cpuTooltip": "שימוש ב-CPU יכול לעלות על 100% על פני כמה ליבות",
+    "metricsNa": "אין CPU/זיכרון נפרדים לכל תהליך; הוא רץ בתוך התהליך (מצב thread) או שאינו פועל",
+    "managedOnly": "רק התהליכים של הקונטיינר הזה",
+    "managedOnlyHint": "כל קונטיינר מנהל תת-קבוצה של תהליכים (פרופיל autostart שלו); תהליכים אחרים מדווחים כאן רק כפועלים במקום אחר. בטלו את הסימון כדי לראות כל תהליך שכל קונטיינר מדווח עליו.",
+    "hideDisabled": "הסתר תהליכים מושבתים"
   }
 }

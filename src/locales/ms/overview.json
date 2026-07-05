@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
+    "title": "Sumber Proses",
+    "empty": "Tiada data sumber proses tersedia",
+    "colName": "Nama",
     "colStatus": "Status",
-    "colRole": "Role",
+    "colRole": "Peranan",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Berjalan",
+    "statusStopped": "Dihentikan",
+    "statusDisabled": "Dilumpuhkan",
+    "containerTotal": "Jumlah MEM {{value}}",
+    "cpuTooltip": "Penggunaan CPU boleh melebihi 100% merentas berbilang teras",
+    "metricsNa": "Tiada CPU/memori berasingan bagi setiap proses; ini berjalan dalam proses (mod bebenang) atau tidak berjalan",
+    "managedOnly": "Hanya proses kontena ini",
+    "managedOnlyHint": "Setiap kontena mengurus subset proses (profil autostart-nya); proses lain hanya dilaporkan di sini sebagai berjalan di tempat lain. Nyahtanda untuk melihat setiap proses yang dilaporkan oleh setiap kontena.",
+    "hideDisabled": "Sembunyikan proses dilumpuhkan"
   }
 }

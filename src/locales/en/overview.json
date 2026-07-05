@@ -62,6 +62,7 @@
     "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
     "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
     "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports.",
+    "hideDisabled": "Hide disabled processes"
   }
 }

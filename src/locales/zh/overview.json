@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "进程资源",
+    "empty": "没有可用的进程资源数据",
+    "colName": "名称",
+    "colStatus": "状态",
+    "colRole": "角色",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "运行中",
+    "statusStopped": "已停止",
+    "statusDisabled": "已禁用",
+    "containerTotal": "总 MEM {{value}}",
+    "cpuTooltip": "跨多个核心时，CPU 使用率可能超过 100%",
+    "metricsNa": "没有单独的每进程 CPU/内存数据；它在进程内运行（线程模式）或未运行",
+    "managedOnly": "仅此容器的进程",
+    "managedOnlyHint": "每个容器管理一部分进程（其 autostart 配置）；其他进程在这里仅报告为在别处运行。取消勾选可查看每个容器报告的所有进程。",
+    "hideDisabled": "隐藏已禁用的进程"
   }
 }

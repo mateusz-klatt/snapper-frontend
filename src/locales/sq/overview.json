@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Burimet e proceseve",
+    "empty": "Nuk ka të dhëna të disponueshme për burimet e proceseve",
+    "colName": "Emri",
+    "colStatus": "Statusi",
+    "colRole": "Roli",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Në ekzekutim",
+    "statusStopped": "I ndalur",
+    "statusDisabled": "I çaktivizuar",
+    "containerTotal": "Gjithsej MEM {{value}}",
+    "cpuTooltip": "Përdorimi i CPU-së mund të kalojë 100% në disa bërthama",
+    "metricsNa": "Nuk ka CPU/memorie të veçantë për çdo proces; ky ekzekutohet brenda procesit (modalitet fijesh) ose nuk po ekzekutohet",
+    "managedOnly": "Vetëm proceset e këtij kontejneri",
+    "managedOnlyHint": "Çdo kontejner menaxhon një nënbashkësi procesesh (profilin e tij autostart); proceset e tjera raportohen këtu vetëm si në ekzekutim diku tjetër. Hiqni shenjën për të parë çdo proces që raporton çdo kontejner.",
+    "hideDisabled": "Fshih proceset e çaktivizuara"
   }
 }

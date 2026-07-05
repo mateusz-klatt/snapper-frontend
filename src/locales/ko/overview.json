@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "프로세스 리소스",
+    "empty": "사용 가능한 프로세스 리소스 데이터가 없습니다",
+    "colName": "이름",
+    "colStatus": "상태",
+    "colRole": "역할",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "실행 중",
+    "statusStopped": "중지됨",
+    "statusDisabled": "비활성화됨",
+    "containerTotal": "총 MEM {{value}}",
+    "cpuTooltip": "여러 코어에서 CPU 사용률이 100%를 초과할 수 있습니다",
+    "metricsNa": "프로세스별 별도 CPU/메모리가 없습니다. 프로세스 내부(스레드 모드)에서 실행 중이거나 실행 중이 아닙니다",
+    "managedOnly": "이 컨테이너의 프로세스만",
+    "managedOnlyHint": "각 컨테이너는 프로세스의 하위 집합(autostart 프로필)을 관리합니다. 다른 프로세스는 여기에서 다른 곳에서 실행 중인 것으로만 보고됩니다. 각 컨테이너가 보고하는 모든 프로세스를 보려면 선택을 해제하세요.",
+    "hideDisabled": "비활성화된 프로세스 숨기기"
   }
 }
