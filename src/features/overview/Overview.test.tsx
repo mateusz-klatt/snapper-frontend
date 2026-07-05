@@ -480,6 +480,7 @@ describe('Overview', () => {
               name: 'feed-1',
               running: true,
               enabled: true,
+              owned: true,
               role: 'core',
               lifecycle: 'long_running',
               active_public_id: 'run-123',

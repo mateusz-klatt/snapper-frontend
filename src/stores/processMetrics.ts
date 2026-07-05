@@ -22,6 +22,7 @@ interface ProcessMetricsStore extends ProcessMetricsState {
 const COMPARED_FIELDS: readonly (keyof ProcessSummaryItem)[] = [
   'running',
   'enabled',
+  'owned',
   'role',
   'lifecycle',
   'active_public_id',
@@ -99,13 +100,13 @@ export function useCoordinatorLabel(coordinator: string): string | null {
   return useProcessMetricsStore(state => state.labelByCoordinator[coordinator] ?? null)
 }
 
-export function useMetricProcessNames(coordinator: string, hideDisabled: boolean): string[] {
+export function useMetricProcessNames(coordinator: string, managedOnly: boolean): string[] {
   return useProcessMetricsStore(
     useShallow(state => {
       const rows = state.byCoordinator[coordinator] ?? {}
 
       return Object.entries(rows)
-        .filter(([, row]) => !hideDisabled || row.running || row.enabled)
+        .filter(([, row]) => !managedOnly || row.owned)
         .map(([name]) => name)
         .sort((a, b) => a.localeCompare(b))
     })

@@ -130,12 +130,12 @@ ProcessMetricRow.displayName = 'ProcessMetricRow'
 
 interface ContainerGroupProps {
   readonly coordinator: string
-  readonly hideDisabled: boolean
+  readonly managedOnly: boolean
 }
 
-const ContainerGroup: React.FC<ContainerGroupProps> = ({ coordinator, hideDisabled }) => {
+const ContainerGroup: React.FC<ContainerGroupProps> = ({ coordinator, managedOnly }) => {
   const { t } = useTranslation('overview')
-  const names = useMetricProcessNames(coordinator, hideDisabled)
+  const names = useMetricProcessNames(coordinator, managedOnly)
   const rssTotal = useMetricContainerRssTotal(coordinator)
   const totalLabel = rssTotal === null ? EM_DASH : formatBytes(rssTotal)
   const label = useCoordinatorLabel(coordinator)
@@ -177,7 +177,7 @@ const ContainerGroup: React.FC<ContainerGroupProps> = ({ coordinator, hideDisabl
 export const ProcessResourceTable: React.FC = () => {
   const { t } = useTranslation('overview')
   const coordinators = useMetricCoordinators()
-  const [hideDisabled, setHideDisabled] = React.useState(true)
+  const [managedOnly, setManagedOnly] = React.useState(true)
 
   return (
     <Card title={t('processResources.title')}>
@@ -185,20 +185,19 @@ export const ProcessResourceTable: React.FC = () => {
         <div className='text-center py-8 text-muted-500'>{t('processResources.empty')}</div>
       ) : (
         <div className='space-y-6'>
-          <label className='flex items-center gap-2 text-sm text-muted-600'>
+          <label
+            className='flex items-center gap-2 text-sm text-muted-600'
+            title={t('processResources.managedOnlyHint')}
+          >
             <input
               type='checkbox'
-              checked={hideDisabled}
-              onChange={event => setHideDisabled(event.target.checked)}
+              checked={managedOnly}
+              onChange={event => setManagedOnly(event.target.checked)}
             />
-            {t('processResources.hideDisabled')}
+            {t('processResources.managedOnly')}
           </label>
           {coordinators.map(coordinator => (
-            <ContainerGroup
-              key={coordinator}
-              coordinator={coordinator}
-              hideDisabled={hideDisabled}
-            />
+            <ContainerGroup key={coordinator} coordinator={coordinator} managedOnly={managedOnly} />
           ))}
         </div>
       )}

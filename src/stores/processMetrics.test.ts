@@ -104,6 +104,29 @@ describe('useProcessMetricsStore', () => {
       expect(second).not.toBe(first)
       expect(second?.rss_bytes).toBe(99)
     })
+
+    it('allocates a new object when only ownership changes so the filter stays correct', () => {
+      const store = useProcessMetricsStore.getState()
+
+      store.setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed', owned: false })],
+        't1'
+      )
+      const first = useProcessMetricsStore.getState().byCoordinator['alpha']?.['feed']
+
+      store.setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed', owned: true })],
+        't2'
+      )
+      const second = useProcessMetricsStore.getState().byCoordinator['alpha']?.['feed']
+
+      expect(second).not.toBe(first)
+      expect(second?.owned).toBe(true)
+    })
   })
 
   describe('reset', () => {
@@ -159,24 +182,27 @@ describe('useProcessMetricsStore', () => {
       expect(result.current).toEqual([])
     })
 
-    it('filters out disabled rows when hideDisabled is true, keeping stopped-but-enabled', () => {
+    it('shows only owned rows when managedOnly is true, regardless of run/enabled state', () => {
       act(() => {
-        useProcessMetricsStore
-          .getState()
-          .setSnapshot(
-            'alpha',
-            null,
-            [
-              makeProcessSummaryItem({ name: 'live', running: true, enabled: true }),
-              makeProcessSummaryItem({ name: 'stopped', running: false, enabled: true }),
-              makeProcessSummaryItem({ name: 'disabled', running: false, enabled: false }),
-            ],
-            't1'
-          )
+        useProcessMetricsStore.getState().setSnapshot(
+          'alpha',
+          null,
+          [
+            makeProcessSummaryItem({ name: 'mine-running', owned: true, running: true }),
+            makeProcessSummaryItem({
+              name: 'mine-dormant',
+              owned: true,
+              running: false,
+              enabled: false,
+            }),
+            makeProcessSummaryItem({ name: 'theirs', owned: false, running: true, enabled: true }),
+          ],
+          't1'
+        )
       })
       const { result } = renderHook(() => useMetricProcessNames('alpha', true))
 
-      expect(result.current).toEqual(['live', 'stopped'])
+      expect(result.current).toEqual(['mine-dormant', 'mine-running'])
     })
   })
 
