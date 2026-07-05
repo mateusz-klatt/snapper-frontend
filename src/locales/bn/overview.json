@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "প্রক্রিয়ার রিসোর্স",
+    "empty": "কোনো প্রক্রিয়া রিসোর্স ডেটা উপলভ্য নেই",
+    "colName": "নাম",
+    "colStatus": "স্থিতি",
+    "colRole": "ভূমিকা",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "চলমান",
+    "statusStopped": "বন্ধ",
+    "statusDisabled": "নিষ্ক্রিয়",
+    "containerTotal": "মোট MEM {{value}}",
+    "cpuTooltip": "একাধিক কোরে CPU ব্যবহার 100% ছাড়িয়ে যেতে পারে",
+    "metricsNa": "প্রতি প্রক্রিয়ার আলাদা CPU/মেমরি নেই; এটি একই প্রক্রিয়ার ভেতরে চলে (থ্রেড মোড) অথবা চলছে না",
+    "managedOnly": "শুধু এই কন্টেইনারের প্রক্রিয়াগুলি",
+    "managedOnlyHint": "প্রতিটি কন্টেইনার প্রক্রিয়ার একটি উপসেট পরিচালনা করে (তার autostart প্রোফাইল); অন্য প্রক্রিয়াগুলি এখানে শুধু অন্য কোথাও চলমান হিসেবে দেখানো হয়। প্রতিটি কন্টেইনার যে সব প্রক্রিয়া রিপোর্ট করে তা দেখতে টিক সরান।",
+    "hideDisabled": "নিষ্ক্রিয় প্রক্রিয়া লুকান"
   }
 }

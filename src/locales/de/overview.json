@@ -48,20 +48,21 @@
     "noTime": "n. v."
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
+    "title": "Prozessressourcen",
+    "empty": "Keine Prozessressourcendaten verfügbar",
     "colName": "Name",
     "colStatus": "Status",
-    "colRole": "Role",
+    "colRole": "Rolle",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Läuft",
+    "statusStopped": "Gestoppt",
+    "statusDisabled": "Deaktiviert",
+    "containerTotal": "Gesamt MEM {{value}}",
+    "cpuTooltip": "Die CPU-Auslastung kann über mehrere Kerne hinweg 100 % überschreiten",
+    "metricsNa": "Keine separaten CPU-/Speichermetriken pro Prozess; dieser läuft im selben Prozess (Thread-Modus) oder läuft nicht",
+    "managedOnly": "Nur Prozesse dieses Containers",
+    "managedOnlyHint": "Jeder Container verwaltet eine Teilmenge der Prozesse (sein Autostart-Profil); andere Prozesse werden hier nur als andernorts laufend gemeldet. Deaktivieren, um jeden von den Containern gemeldeten Prozess zu sehen.",
+    "hideDisabled": "Deaktivierte Prozesse ausblenden"
   }
 }

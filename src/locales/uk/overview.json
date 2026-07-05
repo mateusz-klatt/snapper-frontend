@@ -48,20 +48,21 @@
     "noTime": "Н/Д"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Ресурси процесів",
+    "empty": "Немає доступних даних про ресурси процесів",
+    "colName": "Назва",
+    "colStatus": "Статус",
+    "colRole": "Роль",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Працює",
+    "statusStopped": "Зупинено",
+    "statusDisabled": "Вимкнено",
+    "containerTotal": "Усього MEM {{value}}",
+    "cpuTooltip": "Використання CPU може перевищувати 100% на кількох ядрах",
+    "metricsNa": "Немає окремих даних CPU/пам’яті для процесу; він виконується всередині процесу (режим потоків) або не запущений",
+    "managedOnly": "Лише процеси цього контейнера",
+    "managedOnlyHint": "Кожен контейнер керує підмножиною процесів (своїм профілем autostart); інші процеси тут лише позначені як такі, що працюють в іншому місці. Зніміть прапорець, щоб побачити всі процеси, про які повідомляє кожен контейнер.",
+    "hideDisabled": "Приховати вимкнені процеси"
   }
 }

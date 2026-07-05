@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Πόροι διεργασιών",
+    "empty": "Δεν υπάρχουν διαθέσιμα δεδομένα πόρων διεργασιών",
+    "colName": "Όνομα",
+    "colStatus": "Κατάσταση",
+    "colRole": "Ρόλος",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Εκτελείται",
+    "statusStopped": "Σταματημένη",
+    "statusDisabled": "Απενεργοποιημένη",
+    "containerTotal": "Σύνολο MEM {{value}}",
+    "cpuTooltip": "Η χρήση CPU μπορεί να υπερβεί το 100% σε πολλαπλούς πυρήνες",
+    "metricsNa": "Δεν υπάρχουν ξεχωριστές μετρήσεις CPU/μνήμης ανά διεργασία· εκτελείται μέσα στην ίδια διεργασία (λειτουργία νημάτων) ή δεν εκτελείται",
+    "managedOnly": "Μόνο οι διεργασίες αυτού του container",
+    "managedOnlyHint": "Κάθε container διαχειρίζεται ένα υποσύνολο διεργασιών (το προφίλ αυτόματης εκκίνησής του)· οι άλλες διεργασίες αναφέρονται εδώ μόνο ως εκτελούμενες αλλού. Καταργήστε την επιλογή για να δείτε κάθε διεργασία που αναφέρει κάθε container.",
+    "hideDisabled": "Απόκρυψη απενεργοποιημένων διεργασιών"
   }
 }

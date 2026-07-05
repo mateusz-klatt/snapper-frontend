@@ -48,20 +48,21 @@
     "noTime": "N.v.t."
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
+    "title": "Procesresources",
+    "empty": "Geen gegevens over procesresources beschikbaar",
+    "colName": "Naam",
     "colStatus": "Status",
-    "colRole": "Role",
+    "colRole": "Rol",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Actief",
+    "statusStopped": "Gestopt",
+    "statusDisabled": "Uitgeschakeld",
+    "containerTotal": "Totaal MEM {{value}}",
+    "cpuTooltip": "CPU-gebruik kan over meerdere cores hoger zijn dan 100%",
+    "metricsNa": "Geen aparte CPU-/geheugengegevens per proces; dit draait binnen het proces (threadmodus) of draait niet",
+    "managedOnly": "Alleen processen van deze container",
+    "managedOnlyHint": "Elke container beheert een subset van processen (het autostartprofiel); andere processen worden hier alleen gemeld als elders actief. Schakel uit om elk proces te zien dat elke container rapporteert.",
+    "hideDisabled": "Uitgeschakelde processen verbergen"
   }
 }

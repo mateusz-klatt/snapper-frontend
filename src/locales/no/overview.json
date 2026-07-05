@@ -48,20 +48,21 @@
     "noTime": "I/T"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
+    "title": "Prosessressurser",
+    "empty": "Ingen prosessressursdata tilgjengelig",
+    "colName": "Navn",
     "colStatus": "Status",
-    "colRole": "Role",
+    "colRole": "Rolle",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Kjører",
+    "statusStopped": "Stoppet",
+    "statusDisabled": "Deaktivert",
+    "containerTotal": "Totalt MEM {{value}}",
+    "cpuTooltip": "CPU-bruk kan overstige 100 % på tvers av flere kjerner",
+    "metricsNa": "Ingen separat CPU-/minnedata per prosess; dette kjører i prosessen (trådmodus) eller kjører ikke",
+    "managedOnly": "Bare prosessene i denne containeren",
+    "managedOnlyHint": "Hver container administrerer et delsett av prosesser (autostart-profilen sin); andre prosesser rapporteres her bare som kjørende et annet sted. Fjern avmerkingen for å se alle prosesser som hver container rapporterer.",
+    "hideDisabled": "Skjul deaktiverte prosesser"
   }
 }

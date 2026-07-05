@@ -48,20 +48,21 @@
     "noTime": "Yok"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Süreç Kaynakları",
+    "empty": "Kullanılabilir süreç kaynak verisi yok",
+    "colName": "Ad",
+    "colStatus": "Durum",
+    "colRole": "Rol",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Çalışıyor",
+    "statusStopped": "Durduruldu",
+    "statusDisabled": "Devre dışı",
+    "containerTotal": "Toplam MEM {{value}}",
+    "cpuTooltip": "CPU kullanımı birden çok çekirdekte %100'ü aşabilir",
+    "metricsNa": "Süreç başına ayrı CPU/bellek yok; bu, süreç içinde çalışır (iş parçacığı modu) veya çalışmıyor",
+    "managedOnly": "Yalnızca bu konteynerin süreçleri",
+    "managedOnlyHint": "Her konteyner süreçlerin bir alt kümesini yönetir (autostart profili); diğer süreçler burada yalnızca başka yerde çalışıyor olarak bildirilir. Her konteynerin bildirdiği tüm süreçleri görmek için işareti kaldırın.",
+    "hideDisabled": "Devre dışı süreçleri gizle"
   }
 }

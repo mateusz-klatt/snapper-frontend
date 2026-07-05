@@ -48,20 +48,21 @@
     "noTime": "N/D"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
+    "title": "Resursi procesa",
+    "empty": "Nema dostupnih podataka o resursima procesa",
+    "colName": "Naziv",
     "colStatus": "Status",
-    "colRole": "Role",
+    "colRole": "Uloga",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Pokrenuto",
+    "statusStopped": "Zaustavljeno",
+    "statusDisabled": "Onemogućeno",
+    "containerTotal": "Ukupno MEM {{value}}",
+    "cpuTooltip": "Korišćenje CPU-a može preći 100% na više jezgara",
+    "metricsNa": "Nema zasebnih CPU/memorijskih podataka po procesu; ovo se izvršava unutar procesa (režim niti) ili nije pokrenuto",
+    "managedOnly": "Samo procesi ovog kontejnera",
+    "managedOnlyHint": "Svaki kontejner upravlja podskupom procesa (svojim autostart profilom); ostali procesi se ovde prijavljuju samo kao pokrenuti negde drugde. Uklonite oznaku da vidite svaki proces koji svaki kontejner prijavljuje.",
+    "hideDisabled": "Sakrij onemogućene procese"
   }
 }

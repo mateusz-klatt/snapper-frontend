@@ -48,20 +48,21 @@
     "noTime": "ناموجود"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "منابع فرایندها",
+    "empty": "داده‌ای برای منابع فرایندها موجود نیست",
+    "colName": "نام",
+    "colStatus": "وضعیت",
+    "colRole": "نقش",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "در حال اجرا",
+    "statusStopped": "متوقف",
+    "statusDisabled": "غیرفعال",
+    "containerTotal": "مجموع MEM {{value}}",
+    "cpuTooltip": "مصرف CPU می‌تواند در چند هسته از 100٪ بیشتر شود",
+    "metricsNa": "CPU/حافظه جداگانه برای هر فرایند وجود ندارد؛ این مورد درون همان فرایند اجرا می‌شود (حالت رشته) یا در حال اجرا نیست",
+    "managedOnly": "فقط فرایندهای این کانتینر",
+    "managedOnlyHint": "هر کانتینر زیرمجموعه‌ای از فرایندها را مدیریت می‌کند (پروفایل autostart آن)؛ فرایندهای دیگر اینجا فقط به‌عنوان در حال اجرا در جای دیگر گزارش می‌شوند. برای دیدن همه فرایندهایی که هر کانتینر گزارش می‌کند، تیک را بردارید.",
+    "hideDisabled": "پنهان کردن فرایندهای غیرفعال"
   }
 }

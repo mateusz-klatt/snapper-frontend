@@ -48,20 +48,21 @@
     "noTime": "N/B"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Acmhainní próisis",
+    "empty": "Níl aon sonraí acmhainní próisis ar fáil",
+    "colName": "Ainm",
+    "colStatus": "Stádas",
+    "colRole": "Ról",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Ag rith",
+    "statusStopped": "Stoptha",
+    "statusDisabled": "Díchumasaithe",
+    "containerTotal": "Iomlán MEM {{value}}",
+    "cpuTooltip": "Is féidir le húsáid CPU dul thar 100% thar iliomad croíthe",
+    "metricsNa": "Níl CPU/cuimhne ar leith in aghaidh an phróisis ann; ritheann sé seo laistigh den phróiseas (mód snáithe) nó níl sé ag rith",
+    "managedOnly": "Próisis an choimeádáin seo amháin",
+    "managedOnlyHint": "Bainistíonn gach coimeádán fo-thacar próiseas (a phróifíl autostart); ní thuairiscítear próisis eile anseo ach mar phróisis atá ag rith in áit eile. Díthiceáil chun gach próiseas a thuairiscíonn gach coimeádán a fheiceáil.",
+    "hideDisabled": "Folaigh próisis dhíchumasaithe"
   }
 }

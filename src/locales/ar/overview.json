@@ -48,20 +48,21 @@
     "noTime": "غير متاح"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "موارد العمليات",
+    "empty": "لا تتوفر بيانات موارد العمليات",
+    "colName": "الاسم",
+    "colStatus": "الحالة",
+    "colRole": "الدور",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "قيد التشغيل",
+    "statusStopped": "متوقف",
+    "statusDisabled": "معطل",
+    "containerTotal": "إجمالي MEM {{value}}",
+    "cpuTooltip": "قد يتجاوز استخدام CPU نسبة 100% عبر عدة أنوية",
+    "metricsNa": "لا توجد بيانات CPU/ذاكرة منفصلة لكل عملية؛ يعمل هذا داخل العملية نفسها (وضع الخيوط) أو أنه غير قيد التشغيل",
+    "managedOnly": "عمليات هذه الحاوية فقط",
+    "managedOnlyHint": "تدير كل حاوية مجموعة فرعية من العمليات (ملف التشغيل التلقائي الخاص بها)؛ ولا تُعرض العمليات الأخرى هنا إلا على أنها تعمل في مكان آخر. ألغِ التحديد لعرض كل عملية تُبلغ عنها كل حاوية.",
+    "hideDisabled": "إخفاء العمليات المعطلة"
   }
 }

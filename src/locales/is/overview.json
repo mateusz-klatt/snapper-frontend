@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Tilföng ferla",
+    "empty": "Engin gögn um tilföng ferla tiltæk",
+    "colName": "Nafn",
+    "colStatus": "Staða",
+    "colRole": "Hlutverk",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Í gangi",
+    "statusStopped": "Stöðvað",
+    "statusDisabled": "Óvirkt",
+    "containerTotal": "Samtals MEM {{value}}",
+    "cpuTooltip": "CPU-notkun getur farið yfir 100% yfir marga kjarna",
+    "metricsNa": "Engin aðskilin CPU-/minnisgögn á hvern feril; þetta keyrir inni í ferlinu (þráðarhamur) eða er ekki í gangi",
+    "managedOnly": "Aðeins ferli þessa gáms",
+    "managedOnlyHint": "Hver gámur stýrir hlutmengi ferla (autostart-sniðinu sínu); önnur ferli eru hér aðeins tilkynnt sem keyrandi annars staðar. Taktu hakið af til að sjá hvert ferli sem hver gámur tilkynnir.",
+    "hideDisabled": "Fela óvirk ferli"
   }
 }

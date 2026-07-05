@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "ทรัพยากรของโปรเซส",
+    "empty": "ไม่มีข้อมูลทรัพยากรของโปรเซส",
+    "colName": "ชื่อ",
+    "colStatus": "สถานะ",
+    "colRole": "บทบาท",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "กำลังทำงาน",
+    "statusStopped": "หยุดแล้ว",
+    "statusDisabled": "ปิดใช้งาน",
+    "containerTotal": "รวม MEM {{value}}",
+    "cpuTooltip": "การใช้งาน CPU อาจเกิน 100% เมื่อรวมหลายคอร์",
+    "metricsNa": "ไม่มี CPU/หน่วยความจำแยกตามโปรเซส; รายการนี้ทำงานภายในโปรเซส (โหมดเธรด) หรือไม่ได้ทำงานอยู่",
+    "managedOnly": "เฉพาะโปรเซสของคอนเทนเนอร์นี้",
+    "managedOnlyHint": "แต่ละคอนเทนเนอร์จัดการโปรเซสบางส่วน (โปรไฟล์ autostart ของตน); โปรเซสอื่นจะแสดงที่นี่เพียงว่าไปทำงานอยู่ที่อื่น ยกเลิกการเลือกเพื่อดูทุกโปรเซสที่แต่ละคอนเทนเนอร์รายงาน",
+    "hideDisabled": "ซ่อนโปรเซสที่ปิดใช้งาน"
   }
 }

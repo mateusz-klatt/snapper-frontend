@@ -100,13 +100,22 @@ export function useCoordinatorLabel(coordinator: string): string | null {
   return useProcessMetricsStore(state => state.labelByCoordinator[coordinator] ?? null)
 }
 
-export function useMetricProcessNames(coordinator: string, managedOnly: boolean): string[] {
+export function useMetricProcessNames(
+  coordinator: string,
+  managedOnly: boolean,
+  hideDisabled: boolean
+): string[] {
   return useProcessMetricsStore(
     useShallow(state => {
       const rows = state.byCoordinator[coordinator] ?? {}
 
       return Object.entries(rows)
-        .filter(([, row]) => !managedOnly || row.owned)
+        .filter(([, row]) => {
+          if (managedOnly && !row.owned) return false
+          if (hideDisabled && !row.running && !row.enabled) return false
+
+          return true
+        })
         .map(([name]) => name)
         .sort((a, b) => a.localeCompare(b))
     })

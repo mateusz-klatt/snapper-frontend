@@ -48,20 +48,21 @@
     "noTime": "N/D"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Recursos de procesos",
+    "empty": "No hay datos de recursos de procesos disponibles",
+    "colName": "Nombre",
+    "colStatus": "Estado",
+    "colRole": "Rol",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
+    "statusRunning": "En ejecución",
+    "statusStopped": "Detenido",
+    "statusDisabled": "Deshabilitado",
     "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "cpuTooltip": "El uso de CPU puede superar el 100% en varios núcleos",
+    "metricsNa": "No hay CPU/memoria separada por proceso; se ejecuta dentro del proceso (modo de hilos) o no está en ejecución",
+    "managedOnly": "Solo procesos de este contenedor",
+    "managedOnlyHint": "Cada contenedor gestiona un subconjunto de procesos (su perfil de autoinicio); los demás procesos solo se muestran aquí como en ejecución en otro lugar. Desmarca para ver todos los procesos que reporta cada contenedor.",
+    "hideDisabled": "Ocultar procesos deshabilitados"
   }
 }

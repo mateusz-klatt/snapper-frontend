@@ -127,7 +127,7 @@ describe('ProcessResourceTable', () => {
     expect(screen.getByText('Stopped')).toBeInTheDocument()
   })
 
-  it('shows an owned process with the Disabled badge (managed but dormant)', (): void => {
+  it('hides an owned disabled process by default and reveals it when hide-disabled is unchecked', (): void => {
     useProcessMetricsStore
       .getState()
       .setSnapshot(
@@ -137,6 +137,8 @@ describe('ProcessResourceTable', () => {
         't1'
       )
     renderWithI18n(<ProcessResourceTable />)
+    expect(screen.queryByText('Disabled')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByLabelText(/hide disabled/i))
     expect(screen.getByText('Disabled')).toBeInTheDocument()
   })
 

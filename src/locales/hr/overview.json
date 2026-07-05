@@ -48,20 +48,21 @@
     "noTime": "N/D"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
+    "title": "Resursi procesa",
+    "empty": "Nema dostupnih podataka o resursima procesa",
+    "colName": "Naziv",
     "colStatus": "Status",
-    "colRole": "Role",
+    "colRole": "Uloga",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Pokrenuto",
+    "statusStopped": "Zaustavljeno",
+    "statusDisabled": "Onemogućeno",
+    "containerTotal": "Ukupno MEM {{value}}",
+    "cpuTooltip": "Upotreba CPU-a može premašiti 100 % na više jezgri",
+    "metricsNa": "Nema zasebnih CPU/memorijskih metrika po procesu; ovo se izvodi unutar procesa (način niti) ili nije pokrenuto",
+    "managedOnly": "Samo procesi ovog spremnika",
+    "managedOnlyHint": "Svaki spremnik upravlja podskupom procesa (svojim autostart profilom); ostali se procesi ovdje prijavljuju samo kao pokrenuti drugdje. Uklonite oznaku za prikaz svakog procesa koji svaki spremnik prijavljuje.",
+    "hideDisabled": "Sakrij onemogućene procese"
   }
 }

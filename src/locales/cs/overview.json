@@ -48,20 +48,21 @@
     "noTime": "N/A"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
+    "title": "Prostředky procesů",
+    "empty": "Nejsou k dispozici žádná data o prostředcích procesů",
+    "colName": "Název",
+    "colStatus": "Stav",
     "colRole": "Role",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "Běží",
+    "statusStopped": "Zastaveno",
+    "statusDisabled": "Zakázáno",
+    "containerTotal": "Celkem MEM {{value}}",
+    "cpuTooltip": "Využití CPU může na více jádrech překročit 100 %",
+    "metricsNa": "Nejsou samostatné metriky CPU/paměti pro proces; běží v rámci procesu (režim vláken) nebo neběží",
+    "managedOnly": "Pouze procesy tohoto kontejneru",
+    "managedOnlyHint": "Každý kontejner spravuje podmnožinu procesů (svůj profil automatického spuštění); ostatní procesy se zde uvádějí jen jako běžící jinde. Zrušte zaškrtnutí, chcete-li zobrazit každý proces hlášený jednotlivými kontejnery.",
+    "hideDisabled": "Skrýt zakázané procesy"
   }
 }

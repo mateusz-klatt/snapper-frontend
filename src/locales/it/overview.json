@@ -48,20 +48,21 @@
     "noTime": "N/D"
   },
   "processResources": {
-    "title": "Process Resources",
-    "empty": "No process resource data available",
-    "colName": "Name",
-    "colStatus": "Status",
-    "colRole": "Role",
+    "title": "Risorse dei processi",
+    "empty": "Nessun dato sulle risorse dei processi disponibile",
+    "colName": "Nome",
+    "colStatus": "Stato",
+    "colRole": "Ruolo",
     "colMemory": "MEM",
     "colCpu": "CPU",
-    "statusRunning": "Running",
-    "statusStopped": "Stopped",
-    "statusDisabled": "Disabled",
-    "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
-    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
-    "managedOnly": "Only this container's processes",
-    "managedOnlyHint": "Each container manages a subset of processes (its autostart profile); other processes are only reported here as running elsewhere. Uncheck to see every process each container reports."
+    "statusRunning": "In esecuzione",
+    "statusStopped": "Arrestato",
+    "statusDisabled": "Disabilitato",
+    "containerTotal": "Totale MEM {{value}}",
+    "cpuTooltip": "L'utilizzo della CPU può superare il 100% su più core",
+    "metricsNa": "Nessuna CPU/memoria separata per processo; viene eseguito nel processo (modalità thread) oppure non è in esecuzione",
+    "managedOnly": "Solo i processi di questo container",
+    "managedOnlyHint": "Ogni container gestisce un sottoinsieme di processi (il suo profilo di avvio automatico); gli altri processi sono indicati qui solo come in esecuzione altrove. Deseleziona per vedere ogni processo segnalato da ciascun container.",
+    "hideDisabled": "Nascondi processi disabilitati"
   }
 }
