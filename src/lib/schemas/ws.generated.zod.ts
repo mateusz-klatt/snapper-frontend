@@ -1165,6 +1165,7 @@ export const ProcessSummaryEventDataSchema = z
     session_id: z.string(),
     topic: z.string().nullable().optional(),
     coordinator: z.string(),
+    coordinator_label: z.string().nullable().optional(),
     processes: z.array(ProcessSummaryItemSchema),
     snapshot_at: z.iso.datetime(),
   })

@@ -2217,6 +2217,7 @@ export type Components = {
             wallet_public_id?: string | null | undefined;
             parent_template?: string | null | undefined;
             coordinator?: string | null | undefined;
+            coordinator_label?: string | null | undefined;
             managed_remotely: boolean;
         };
         ConfiguredProcessesResponse: {
@@ -3406,6 +3407,7 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             coordinator: string;
+            coordinator_label?: string | null | undefined;
             feeds: Components["schemas"]["ProcessCategoryCount"];
             strategies: Components["schemas"]["ProcessCategoryCount"];
             executors: Components["schemas"]["ProcessCategoryCount"];
@@ -3750,6 +3752,7 @@ export type Components = {
             mode: "thread" | "process";
             strategy_class?: string | null | undefined;
             coordinator?: string | null | undefined;
+            coordinator_label?: string | null | undefined;
             managed_remotely: boolean;
         };
         StrategyStatusPayload: {
