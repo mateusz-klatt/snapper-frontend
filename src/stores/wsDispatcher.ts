@@ -581,7 +581,12 @@ export class WSDispatcher {
 
     useProcessMetricsStore
       .getState()
-      .setSnapshot(message.coordinator ?? '', message.processes, message.snapshot_at)
+      .setSnapshot(
+        message.coordinator ?? '',
+        message.coordinator_label ?? null,
+        message.processes,
+        message.snapshot_at
+      )
     this.invalidateActive(queryKeys.processSummaryAll)
   }
   private handleProcessConfiguredEvent(message: WebSocketMessages): void {

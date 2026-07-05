@@ -256,6 +256,7 @@ export const Overview: React.FC = () => {
       .getState()
       .setSnapshot(
         summaryPayload.coordinator,
+        summaryPayload.coordinator_label ?? null,
         summaryPayload.processes.map(toMetricItem),
         summaryPayload.timestamp
       )

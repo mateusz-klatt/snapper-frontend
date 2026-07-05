@@ -6,6 +6,7 @@ import {
   useMetricProcessNames,
   useMetricRow,
   useMetricContainerRssTotal,
+  useCoordinatorLabel,
 } from '../../stores/processMetrics'
 import type { ProcessSummaryItem } from '../../types/ws.generated'
 
@@ -39,6 +40,23 @@ function formatCpu(cpuPercent: number | null | undefined): string {
   if (cpuPercent == null) return EM_DASH
 
   return `${cpuPercent.toFixed(1)}%`
+}
+
+/**
+ * Render a resource metric value, titling the em-dash so operators know the
+ * blank is by-design (thread-mode processes share one address space, so there
+ * is no separable per-process RSS/CPU) rather than a bug or missing sample.
+ */
+const MetricValue: React.FC<{ value: string; naTitle: string }> = ({ value, naTitle }) => {
+  if (value === EM_DASH) {
+    return (
+      <span title={naTitle} className='cursor-help'>
+        {value}
+      </span>
+    )
+  }
+
+  return <>{value}</>
 }
 
 type ProcessStatus = 'running' | 'stopped' | 'disabled'
@@ -94,10 +112,13 @@ const ProcessMetricRowInner: React.FC<ProcessMetricRowProps> = ({ coordinator, n
       </td>
       <td className='py-2 pr-4 text-sm text-muted-600'>{row.role}</td>
       <td className='py-2 pr-4 text-right font-mono text-sm text-alpine-900'>
-        {formatMemory(row.rss_bytes)}
+        <MetricValue
+          value={formatMemory(row.rss_bytes)}
+          naTitle={t('processResources.metricsNa')}
+        />
       </td>
       <td className='py-2 text-right font-mono text-sm text-alpine-900'>
-        {formatCpu(row.cpu_percent)}
+        <MetricValue value={formatCpu(row.cpu_percent)} naTitle={t('processResources.metricsNa')} />
       </td>
     </tr>
   )
@@ -109,18 +130,20 @@ ProcessMetricRow.displayName = 'ProcessMetricRow'
 
 interface ContainerGroupProps {
   readonly coordinator: string
+  readonly hideDisabled: boolean
 }
 
-const ContainerGroup: React.FC<ContainerGroupProps> = ({ coordinator }) => {
+const ContainerGroup: React.FC<ContainerGroupProps> = ({ coordinator, hideDisabled }) => {
   const { t } = useTranslation('overview')
-  const names = useMetricProcessNames(coordinator)
+  const names = useMetricProcessNames(coordinator, hideDisabled)
   const rssTotal = useMetricContainerRssTotal(coordinator)
   const totalLabel = rssTotal === null ? EM_DASH : formatBytes(rssTotal)
+  const label = useCoordinatorLabel(coordinator)
 
   return (
     <section className='space-y-2'>
       <header className='flex items-center justify-between'>
-        <h4 className='text-sm font-semibold text-alpine-900'>{coordinator}</h4>
+        <h4 className='text-sm font-semibold text-alpine-900'>{label ?? coordinator}</h4>
         <span className='font-mono text-xs text-muted-600'>
           {t('processResources.containerTotal', { value: totalLabel })}
         </span>
@@ -154,6 +177,7 @@ const ContainerGroup: React.FC<ContainerGroupProps> = ({ coordinator }) => {
 export const ProcessResourceTable: React.FC = () => {
   const { t } = useTranslation('overview')
   const coordinators = useMetricCoordinators()
+  const [hideDisabled, setHideDisabled] = React.useState(true)
 
   return (
     <Card title={t('processResources.title')}>
@@ -161,8 +185,20 @@ export const ProcessResourceTable: React.FC = () => {
         <div className='text-center py-8 text-muted-500'>{t('processResources.empty')}</div>
       ) : (
         <div className='space-y-6'>
+          <label className='flex items-center gap-2 text-sm text-muted-600'>
+            <input
+              type='checkbox'
+              checked={hideDisabled}
+              onChange={event => setHideDisabled(event.target.checked)}
+            />
+            {t('processResources.hideDisabled')}
+          </label>
           {coordinators.map(coordinator => (
-            <ContainerGroup key={coordinator} coordinator={coordinator} />
+            <ContainerGroup
+              key={coordinator}
+              coordinator={coordinator}
+              hideDisabled={hideDisabled}
+            />
           ))}
         </div>
       )}
