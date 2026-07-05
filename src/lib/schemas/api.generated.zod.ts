@@ -1378,6 +1378,7 @@ const _StrategyProcessRawSchema = z
     mode: z.enum(['thread', 'process']),
     strategy_class: z.string().nullable().optional(),
     coordinator: z.string().nullable().optional(),
+    coordinator_label: z.string().nullable().optional(),
     managed_remotely: z.boolean(),
   })
   .strict()
@@ -2768,6 +2769,7 @@ const _ProcessSummaryDataRawSchema = z
     session_id: z.string(),
     topic: z.string().nullable().optional(),
     coordinator: z.string(),
+    coordinator_label: z.string().nullable().optional(),
     feeds: ProcessCategoryCountSchema,
     strategies: ProcessCategoryCountSchema,
     executors: ProcessCategoryCountSchema,
@@ -4465,6 +4467,7 @@ const _ConfiguredProcessRawSchema = z
     wallet_public_id: z.string().nullable().optional(),
     parent_template: z.string().nullable().optional(),
     coordinator: z.string().nullable().optional(),
+    coordinator_label: z.string().nullable().optional(),
     managed_remotely: z.boolean(),
   })
   .strict()
