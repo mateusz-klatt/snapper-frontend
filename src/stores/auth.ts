@@ -52,6 +52,9 @@ const ROLE_HIERARCHY: Record<UserRole, number> = {
   admin: 3,
 }
 
+const isTransportError = (error: unknown): boolean =>
+  error instanceof TypeError || (error instanceof DOMException && error.name === 'AbortError')
+
 export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => {
@@ -219,6 +222,10 @@ export const useAuthStore = create<AuthState>()(
               csrfToken: data.csrf_token ?? null,
             })
           } catch (error) {
+            if (isTransportError(error)) {
+              throw error
+            }
+
             console.error('Token refresh failed:', error)
             get().silentLogout()
             throw error
