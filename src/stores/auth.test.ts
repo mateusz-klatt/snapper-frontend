@@ -794,13 +794,9 @@ describe('auth store', () => {
       const state = useAuthStore.getState()
 
       await state.refreshToken({ walletId: 'wallet-7' })
-      expect(apiClient.postJSON).toHaveBeenCalledWith(
-        '/api/auth/refresh',
-        {
-          active_wallet_public_id: 'wallet-7',
-        },
-        { skipRetry: true }
-      )
+      expect(apiClient.postJSON).toHaveBeenCalledWith('/api/auth/refresh', {
+        active_wallet_public_id: 'wallet-7',
+      })
     })
 
     it('forwards clear hint as clear_active_wallet body', async () => {
@@ -826,13 +822,9 @@ describe('auth store', () => {
       const state = useAuthStore.getState()
 
       await state.refreshToken({ clear: true })
-      expect(apiClient.postJSON).toHaveBeenCalledWith(
-        '/api/auth/refresh',
-        {
-          clear_active_wallet: true,
-        },
-        { skipRetry: true }
-      )
+      expect(apiClient.postJSON).toHaveBeenCalledWith('/api/auth/refresh', {
+        clear_active_wallet: true,
+      })
     })
   })
   describe('useAuth hook', () => {

@@ -173,18 +173,40 @@ class APIClient {
     }
   }
   public refreshSession(): Promise<Response> {
-    this.refreshPromise ??= fetch('/api/auth/refresh', {
+    this.refreshPromise ??= this.runRefreshFlight().finally(() => {
+      this.refreshPromise = null
+    })
+
+    return this.refreshPromise.then(response => response.clone())
+  }
+  private async runRefreshFlight(): Promise<Response> {
+    const attempt = await fetch('/api/auth/refresh', {
       method: 'POST',
       credentials: 'include',
       headers: {
         'X-CSRF-Token': this.getCSRFToken(),
         'Content-Type': 'application/json',
       },
-    }).finally(() => {
-      this.refreshPromise = null
     })
 
-    return this.refreshPromise.then(response => response.clone())
+    if (attempt.status !== 403) {
+      return attempt
+    }
+
+    const errorData = await attempt
+      .clone()
+      .json()
+      .catch(() => ({}))
+
+    if (typeof errorData.detail === 'string' && errorData.detail.includes('CSRF')) {
+      return fetch('/api/auth/refresh', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
+
+    return attempt
   }
   private async refreshAndRetry(url: string, options: RequestOptions): Promise<Response> {
     try {

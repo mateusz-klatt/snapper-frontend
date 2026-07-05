@@ -195,6 +195,57 @@ describe('APIClient', () => {
       expect(mockFetch).toHaveBeenCalledTimes(2)
       expect(third.ok).toBe(true)
     })
+    it('retries the refresh flight without the CSRF header on 403 CSRF rejection', async () => {
+      const csrfReject = {
+        ok: false,
+        status: 403,
+        json: async () => ({ detail: 'CSRF token invalid' }),
+      } as unknown as Response
+
+      ;(csrfReject as { clone: () => Response }).clone = () => csrfReject
+      mockFetch
+        .mockResolvedValueOnce(csrfReject)
+        .mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+      const response = await apiClient.refreshSession()
+
+      expect(response.ok).toBe(true)
+      expect(mockFetch).toHaveBeenCalledTimes(2)
+      const retryHeaders = (mockFetch.mock.calls[1] as unknown[])[1] as {
+        headers: Record<string, string>
+      }
+
+      expect(retryHeaders.headers['X-CSRF-Token']).toBeUndefined()
+    })
+    it('returns the 403 as-is when the rejection is not CSRF-shaped', async () => {
+      const forbidden = {
+        ok: false,
+        status: 403,
+        json: async () => ({ detail: 'Access denied' }),
+      } as unknown as Response
+
+      ;(forbidden as { clone: () => Response }).clone = () => forbidden
+      mockFetch.mockResolvedValueOnce(forbidden)
+      const response = await apiClient.refreshSession()
+
+      expect(response.status).toBe(403)
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+    })
+    it('returns the 403 as-is when its body is not JSON', async () => {
+      const brokenBody = {
+        ok: false,
+        status: 403,
+        json: async () => {
+          throw new Error('not json')
+        },
+      } as unknown as Response
+
+      ;(brokenBody as { clone: () => Response }).clone = () => brokenBody
+      mockFetch.mockResolvedValueOnce(brokenBody)
+      const response = await apiClient.refreshSession()
+
+      expect(response.status).toBe(403)
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+    })
     it('handles 401 when refresh fails', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: false,

@@ -185,7 +185,7 @@ export const useAuthStore = create<AuthState>()(
 
               envelope = await response.json()
             } else {
-              envelope = await apiClient.postJSON('/api/auth/refresh', body, { skipRetry: true })
+              envelope = await apiClient.postJSON('/api/auth/refresh', body)
             }
 
             const data = envelope.payload
