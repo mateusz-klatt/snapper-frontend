@@ -58,7 +58,7 @@ function AppWithAuth() {
   }, [isAuthenticated, refreshToken, silentLogout])
 
   return (
-    <AuthErrorBoundary>
+    <AuthErrorBoundary key={`auth-${isAuthenticated}`}>
       <AuthenticatedApp>
         <App />
       </AuthenticatedApp>

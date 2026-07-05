@@ -124,6 +124,7 @@ function extractErrorPayload(data: unknown, fallbackMessage: string): ErrorPaylo
 class APIClient {
   private static instance: APIClient
   private isLoggingOut = false
+  private refreshPromise: Promise<Response> | null = null
   private timeTravelAsOf: string | null = null
   private operatorPublicId: string | null = null
   private walletPublicId: string | null = null
@@ -171,17 +172,45 @@ class APIClient {
       headers.set('X-CSRF-Token', csrfToken)
     }
   }
-  private async refreshAndRetry(url: string, options: RequestOptions): Promise<Response> {
-    try {
-      const csrfToken = this.getCSRFToken()
-      const refreshResponse = await fetch('/api/auth/refresh', {
+  public refreshSession(): Promise<Response> {
+    this.refreshPromise ??= this.runRefreshFlight().finally(() => {
+      this.refreshPromise = null
+    })
+
+    return this.refreshPromise.then(response => response.clone())
+  }
+  private async runRefreshFlight(): Promise<Response> {
+    const attempt = await fetch('/api/auth/refresh', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'X-CSRF-Token': this.getCSRFToken(),
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (attempt.status !== 403) {
+      return attempt
+    }
+
+    const errorData = await attempt
+      .clone()
+      .json()
+      .catch(() => ({}))
+
+    if (typeof errorData.detail === 'string' && errorData.detail.includes('CSRF')) {
+      return fetch('/api/auth/refresh', {
         method: 'POST',
         credentials: 'include',
-        headers: {
-          'X-CSRF-Token': csrfToken,
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
       })
+    }
+
+    return attempt
+  }
+  private async refreshAndRetry(url: string, options: RequestOptions): Promise<Response> {
+    try {
+      const refreshResponse = await this.refreshSession()
 
       if (refreshResponse.ok) {
         await cacheWsTicketFromResponse(refreshResponse)

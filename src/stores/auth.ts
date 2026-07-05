@@ -58,7 +58,7 @@ export const useAuthStore = create<AuthState>()(
       const win = globalThis as WindowWithCallbacks
 
       win.authLogoutCallback = () => {
-        get().logout()
+        get().silentLogout()
       }
 
       return {
@@ -166,7 +166,7 @@ export const useAuthStore = create<AuthState>()(
                   : { active_wallet_public_id: nextWallet.walletId }
             }
 
-            const envelope: {
+            let envelope: {
               payload: {
                 message?: string
                 ws_token?: string
@@ -174,10 +174,20 @@ export const useAuthStore = create<AuthState>()(
                 csrf_token?: string
                 user?: User
               }
-            } =
-              body === undefined
-                ? await apiClient.postJSON('/api/auth/refresh')
-                : await apiClient.postJSON('/api/auth/refresh', body)
+            }
+
+            if (body === undefined) {
+              const response = await apiClient.refreshSession()
+
+              if (!response.ok) {
+                throw new Error(`Refresh failed with status ${response.status}`)
+              }
+
+              envelope = await response.json()
+            } else {
+              envelope = await apiClient.postJSON('/api/auth/refresh', body)
+            }
+
             const data = envelope.payload
 
             if (typeof data.ws_token === 'string' && typeof data.ws_token_exp === 'string') {
@@ -210,7 +220,7 @@ export const useAuthStore = create<AuthState>()(
             })
           } catch (error) {
             console.error('Token refresh failed:', error)
-            get().logout()
+            get().silentLogout()
             throw error
           }
         },

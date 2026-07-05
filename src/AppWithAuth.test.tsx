@@ -48,6 +48,24 @@ describe('AppWithAuth', () => {
       return state
     })
   })
+  it('remounts the auth error boundary when authentication state flips', () => {
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: false,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    vi.mocked(apiClient.hasAuthCookies).mockReturnValue(false)
+    const { rerender, getByTestId } = render(<AppWithAuth />)
+    const boundaryBeforeFlip = getByTestId('auth-error-boundary')
+
+    vi.mocked(stores.useAuth).mockReturnValue({
+      isAuthenticated: true,
+      refreshToken: vi.fn(),
+      silentLogout: vi.fn(),
+    } as never)
+    rerender(<AppWithAuth />)
+    expect(getByTestId('auth-error-boundary')).not.toBe(boundaryBeforeFlip)
+  })
   it('renders wrapped app structure', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: false,

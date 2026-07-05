@@ -8,9 +8,13 @@ vi.mock('../wsTicketCache', () => ({
 }))
 vi.mock('../apiClient', () => ({
   apiClient: {
-    postJSON: vi.fn(),
+    refreshSession: vi.fn(),
   },
 }))
+
+const refreshResponse = (payload: unknown): Response =>
+  ({ ok: true, status: 200, json: () => Promise.resolve(payload) }) as unknown as Response
+
 describe('auth', () => {
   beforeEach(() => {
     vi.clearAllMocks()
@@ -55,70 +59,87 @@ describe('auth', () => {
       const result = await getWsToken()
 
       expect(result).toEqual({ token: 'cached-token', exp: 1234567890 })
-      expect(apiClient.postJSON).not.toHaveBeenCalled()
+      expect(apiClient.refreshSession).not.toHaveBeenCalled()
     })
     it('fetches token from API when cache is empty', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
       const expDate = new Date('2026-01-07T12:00:00Z')
 
-      vi.mocked(apiClient.postJSON).mockResolvedValue({
-        payload: {
-          ws_token: 'fetched-token',
-          ws_token_exp: expDate.toISOString(),
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValue(
+        refreshResponse({
+          payload: {
+            ws_token: 'fetched-token',
+            ws_token_exp: expDate.toISOString(),
+          },
+        })
+      )
       const result = await getWsToken()
 
       expect(result).toEqual({ token: 'fetched-token', exp: Math.floor(expDate.getTime() / 1000) })
-      expect(apiClient.postJSON).toHaveBeenCalledWith('/api/auth/refresh', undefined, {
-        skipRetry: true,
-      })
+      expect(apiClient.refreshSession).toHaveBeenCalledTimes(1)
+    })
+    it('throws error when the refresh response is not ok', async () => {
+      vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
+      vi.mocked(apiClient.refreshSession).mockResolvedValue({
+        ok: false,
+        status: 401,
+        json: () => Promise.resolve({}),
+      } as unknown as Response)
+      await expect(getWsToken()).rejects.toThrow('Refresh failed with status 401')
     })
     it('throws error for invalid API response', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
-      vi.mocked(apiClient.postJSON).mockResolvedValue({ payload: { invalid: 'response' } })
+      vi.mocked(apiClient.refreshSession).mockResolvedValue(
+        refreshResponse({ payload: { invalid: 'response' } })
+      )
       await expect(getWsToken()).rejects.toThrow('Invalid ws_token response from refresh endpoint')
     })
     it('throws error when API returns null', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
-      vi.mocked(apiClient.postJSON).mockResolvedValue(null)
+      vi.mocked(apiClient.refreshSession).mockResolvedValue(refreshResponse(null))
       await expect(getWsToken()).rejects.toThrow('Invalid ws_token response from refresh endpoint')
     })
     it('throws error when ws_token is not a string', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
-      vi.mocked(apiClient.postJSON).mockResolvedValue({
-        payload: {
-          ws_token: 12345,
-          ws_token_exp: new Date().toISOString(),
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValue(
+        refreshResponse({
+          payload: {
+            ws_token: 12345,
+            ws_token_exp: new Date().toISOString(),
+          },
+        })
+      )
       await expect(getWsToken()).rejects.toThrow('Invalid ws_token response from refresh endpoint')
     })
     it('throws error when ws_token_exp is not a string', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
-      vi.mocked(apiClient.postJSON).mockResolvedValue({
-        payload: {
-          ws_token: 'valid-token',
-          ws_token_exp: 12345,
-        },
-      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValue(
+        refreshResponse({
+          payload: {
+            ws_token: 'valid-token',
+            ws_token_exp: 12345,
+          },
+        })
+      )
       await expect(getWsToken()).rejects.toThrow('Invalid ws_token response from refresh endpoint')
     })
     it('deduplicates concurrent requests', async () => {
       vi.mocked(wsTicketCache.consumeWsTicket).mockReturnValue(null)
       const expDate = new Date('2026-01-07T12:00:00Z')
 
-      vi.mocked(apiClient.postJSON).mockImplementation(
+      vi.mocked(apiClient.refreshSession).mockImplementation(
         () =>
           new Promise(resolve =>
             setTimeout(
               () =>
-                resolve({
-                  payload: {
-                    ws_token: 'dedup-token',
-                    ws_token_exp: expDate.toISOString(),
-                  },
-                }),
+                resolve(
+                  refreshResponse({
+                    payload: {
+                      ws_token: 'dedup-token',
+                      ws_token_exp: expDate.toISOString(),
+                    },
+                  })
+                ),
               50
             )
           )
@@ -128,7 +149,7 @@ describe('auth', () => {
 
       expect(result1).toEqual({ token: 'dedup-token', exp: expectedExp })
       expect(result2).toEqual({ token: 'dedup-token', exp: expectedExp })
-      expect(apiClient.postJSON).toHaveBeenCalledTimes(1)
+      expect(apiClient.refreshSession).toHaveBeenCalledTimes(1)
     })
   })
 })

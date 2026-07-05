@@ -2,6 +2,14 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { getCookie } from './utils'
 import { apiClient as sharedApiClient } from './apiClient'
 
+const selfCloningResponse = (json: () => Promise<unknown>): Response => {
+  const resp = { ok: true, status: 200, json } as unknown as Response
+
+  ;(resp as { clone: () => Response }).clone = () => resp
+
+  return resp
+}
+
 vi.mock('./utils', () => ({
   getCookie: vi.fn(() => 'test-csrf-token'),
 }))
@@ -153,26 +161,14 @@ describe('APIClient', () => {
         ok: false,
         status: 401,
       })
-      mockFetch.mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        json: async () => ({
+      mockFetch.mockResolvedValueOnce(
+        selfCloningResponse(async () => ({
           payload: {
             ws_token: 'new-token',
             ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
           },
-        }),
-        clone: function () {
-          return {
-            json: async () => ({
-              payload: {
-                ws_token: 'new-token',
-                ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-              },
-            }),
-          }
-        },
-      })
+        }))
+      )
       mockFetch.mockResolvedValueOnce({
         ok: true,
         status: 200,
@@ -183,15 +179,82 @@ describe('APIClient', () => {
       expect(response.ok).toBe(true)
       expect(mockFetch).toHaveBeenCalledTimes(3)
     })
+    it('single-flights concurrent refreshSession calls and re-arms after settle', async () => {
+      mockFetch.mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+      const [first, second] = await Promise.all([
+        apiClient.refreshSession(),
+        apiClient.refreshSession(),
+      ])
+
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+      expect(first.ok).toBe(true)
+      expect(second.ok).toBe(true)
+      mockFetch.mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+      const third = await apiClient.refreshSession()
+
+      expect(mockFetch).toHaveBeenCalledTimes(2)
+      expect(third.ok).toBe(true)
+    })
+    it('retries the refresh flight without the CSRF header on 403 CSRF rejection', async () => {
+      const csrfReject = {
+        ok: false,
+        status: 403,
+        json: async () => ({ detail: 'CSRF token invalid' }),
+      } as unknown as Response
+
+      ;(csrfReject as { clone: () => Response }).clone = () => csrfReject
+      mockFetch
+        .mockResolvedValueOnce(csrfReject)
+        .mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+      const response = await apiClient.refreshSession()
+
+      expect(response.ok).toBe(true)
+      expect(mockFetch).toHaveBeenCalledTimes(2)
+      const retryHeaders = (mockFetch.mock.calls[1] as unknown[])[1] as {
+        headers: Record<string, string>
+      }
+
+      expect(retryHeaders.headers['X-CSRF-Token']).toBeUndefined()
+    })
+    it('returns the 403 as-is when the rejection is not CSRF-shaped', async () => {
+      const forbidden = {
+        ok: false,
+        status: 403,
+        json: async () => ({ detail: 'Access denied' }),
+      } as unknown as Response
+
+      ;(forbidden as { clone: () => Response }).clone = () => forbidden
+      mockFetch.mockResolvedValueOnce(forbidden)
+      const response = await apiClient.refreshSession()
+
+      expect(response.status).toBe(403)
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+    })
+    it('returns the 403 as-is when its body is not JSON', async () => {
+      const brokenBody = {
+        ok: false,
+        status: 403,
+        json: async () => {
+          throw new Error('not json')
+        },
+      } as unknown as Response
+
+      ;(brokenBody as { clone: () => Response }).clone = () => brokenBody
+      mockFetch.mockResolvedValueOnce(brokenBody)
+      const response = await apiClient.refreshSession()
+
+      expect(response.status).toBe(403)
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+    })
     it('handles 401 when refresh fails', async () => {
       mockFetch.mockResolvedValueOnce({
         ok: false,
         status: 401,
       })
-      mockFetch.mockResolvedValueOnce({
-        ok: false,
-        status: 401,
-      })
+      const failedRefresh = { ok: false, status: 401 } as unknown as Response
+
+      ;(failedRefresh as { clone: () => Response }).clone = () => failedRefresh
+      mockFetch.mockResolvedValueOnce(failedRefresh)
       await expect(apiClient.request('/test', { method: 'GET' })).rejects.toThrow(
         'Authentication required'
       )
@@ -503,20 +566,14 @@ describe('cacheWsTicketFromResponse', () => {
 
     mockFetch
       .mockResolvedValueOnce({ ok: false, status: 401 })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        clone: function () {
-          return {
-            json: async () => ({
-              payload: {
-                ws_token: 'test-token',
-                ws_token_exp: expDate.toISOString(),
-              },
-            }),
-          }
-        },
-      })
+      .mockResolvedValueOnce(
+        selfCloningResponse(async () => ({
+          payload: {
+            ws_token: 'test-token',
+            ws_token_exp: expDate.toISOString(),
+          },
+        }))
+      )
       .mockResolvedValueOnce({ ok: true, status: 200 })
     await apiClient.request('/test', { method: 'GET' })
     expect(storeWsTicket).toHaveBeenCalledWith({
@@ -527,15 +584,7 @@ describe('cacheWsTicketFromResponse', () => {
   it('stores null when ws_token is missing', async () => {
     mockFetch
       .mockResolvedValueOnce({ ok: false, status: 401 })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        clone: function () {
-          return {
-            json: async () => ({ payload: { other: 'data' } }),
-          }
-        },
-      })
+      .mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: { other: 'data' } })))
       .mockResolvedValueOnce({ ok: true, status: 200 })
     await apiClient.request('/test', { method: 'GET' })
     expect(storeWsTicket).toHaveBeenCalledWith(null)
@@ -543,17 +592,11 @@ describe('cacheWsTicketFromResponse', () => {
   it('stores null when json parsing fails', async () => {
     mockFetch
       .mockResolvedValueOnce({ ok: false, status: 401 })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        clone: function () {
-          return {
-            json: async () => {
-              throw new Error('JSON parse error')
-            },
-          }
-        },
-      })
+      .mockResolvedValueOnce(
+        selfCloningResponse(async () => {
+          throw new Error('JSON parse error')
+        })
+      )
       .mockResolvedValueOnce({ ok: true, status: 200 })
     await apiClient.request('/test', { method: 'GET' })
     expect(storeWsTicket).toHaveBeenCalledWith(null)
