@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "אפשר למנוע לפתוח פוזיציות Short. אותות SELL יפיקו desired_units שלילי; בעת השבתה הערך נחתך ל-0.",
       "allowManualOrders": "הפעל את כפתור פקודה חדשה בלשונית פקודות. בעת השבתה, POST /api/orders מחזיר 403."
-    }
+    },
+    "emptyValue": "(ריק)"
   },
   "addModal": {
     "title": "הוסף הגדרה חדשה",

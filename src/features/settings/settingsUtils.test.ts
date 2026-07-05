@@ -133,7 +133,7 @@ describe('getCategoryColor', () => {
 
 describe('getMaskedValue', () => {
   it('masks sensitive key value with short mask', () => {
-    const result = getMaskedValue('my_api_key', 'secret123')
+    const result = getMaskedValue('my_api_key', 'secret123', '<none>')
 
     expect(result).toBe(SENSITIVE_MASK)
     expect(result).toHaveLength(8)
@@ -141,31 +141,35 @@ describe('getMaskedValue', () => {
   })
 
   it('returns value for non-sensitive key', () => {
-    expect(getMaskedValue('trading_mode', 'paper')).toBe('paper')
+    expect(getMaskedValue('trading_mode', 'paper', '<none>')).toBe('paper')
   })
 
   it('pretty-prints JSON object value', () => {
-    expect(getMaskedValue('config', '{"a":1,"b":2}')).toBe(JSON.stringify({ a: 1, b: 2 }, null, 2))
+    expect(getMaskedValue('config', '{"a":1,"b":2}', '<none>')).toBe(
+      JSON.stringify({ a: 1, b: 2 }, null, 2)
+    )
   })
 
   it('pretty-prints JSON array value', () => {
-    expect(getMaskedValue('symbols', '["SPY","QQQ"]')).toBe(JSON.stringify(['SPY', 'QQQ'], null, 2))
+    expect(getMaskedValue('symbols', '["SPY","QQQ"]', '<none>')).toBe(
+      JSON.stringify(['SPY', 'QQQ'], null, 2)
+    )
   })
 
   it('returns plain string when value is not JSON', () => {
-    expect(getMaskedValue('mode', 'live')).toBe('live')
+    expect(getMaskedValue('mode', 'live', '<none>')).toBe('live')
   })
 
   it('returns JSON primitive string as-is without formatting', () => {
-    expect(getMaskedValue('count', '42')).toBe('42')
+    expect(getMaskedValue('count', '42', '<none>')).toBe('42')
   })
 
-  it('returns (empty) for empty value on non-sensitive key', () => {
-    expect(getMaskedValue('trading_mode', '')).toBe('(empty)')
+  it('returns the provided empty label for an empty value on a non-sensitive key', () => {
+    expect(getMaskedValue('trading_mode', '', '<none>')).toBe('<none>')
   })
 
-  it('does not mask empty value on sensitive key', () => {
-    expect(getMaskedValue('api_key', '')).toBe('(empty)')
+  it('returns the empty label (not the mask) for an empty sensitive value', () => {
+    expect(getMaskedValue('api_key', '', '<none>')).toBe('<none>')
   })
 })
 

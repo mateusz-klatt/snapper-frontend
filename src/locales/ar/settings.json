@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "اسمح للمحرك بفتح مراكز Short. ستنتج إشارات SELL قيماً سالبة لـ desired_units؛ وتُقيّد إلى 0 عند التعطيل.",
       "allowManualOrders": "فعّل زر الأمر الجديد في علامة تبويب الأوامر. عند التعطيل، يعيد POST /api/orders الرمز 403."
-    }
+    },
+    "emptyValue": "(فارغ)"
   },
   "addModal": {
     "title": "إضافة إعداد جديد",

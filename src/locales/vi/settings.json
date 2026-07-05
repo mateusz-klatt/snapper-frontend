@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Cho phép engine mở vị thế short. Tín hiệu SELL sẽ tạo desired_units âm; bị kẹp về 0 khi tắt.",
       "allowManualOrders": "Bật nút Lệnh mới trên tab Lệnh. Khi tắt, POST /api/orders trả về 403."
-    }
+    },
+    "emptyValue": "(trống)"
   },
   "addModal": {
     "title": "Thêm cài đặt mới",

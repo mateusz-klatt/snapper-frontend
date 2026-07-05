@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Lejo motorin të hapë pozicione short. Sinjalet SELL do të prodhojnë desired_units negative; kufizohen në 0 kur është çaktivizuar.",
       "allowManualOrders": "Aktivizo butonin Urdhër i ri në skedën Urdhra. Kur është çaktivizuar, POST /api/orders kthen 403."
-    }
+    },
+    "emptyValue": "(bosh)"
   },
   "addModal": {
     "title": "Shto cilësim të ri",

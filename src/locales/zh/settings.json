@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "允许引擎开空仓。SELL 信号会生成负 desired_units；禁用时限制为 0。",
       "allowManualOrders": "在订单标签页启用新建订单按钮。禁用时，POST /api/orders 返回 403。"
-    }
+    },
+    "emptyValue": "(空)"
   },
   "addModal": {
     "title": "添加新设置",

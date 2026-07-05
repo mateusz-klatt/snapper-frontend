@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Permite motorului să deschidă poziții short. Semnalele SELL vor produce desired_units negative; se limitează la 0 când este dezactivat.",
       "allowManualOrders": "Activați butonul Ordin nou în fila Ordine. Când este dezactivat, POST /api/orders returnează 403."
-    }
+    },
+    "emptyValue": "(gol)"
   },
   "addModal": {
     "title": "Adăugați setare nouă",

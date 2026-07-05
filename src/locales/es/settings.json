@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Permitir al motor abrir posiciones cortas. Las señales SELL producirán desired_units negativos; se ajusta a 0 cuando está deshabilitado.",
       "allowManualOrders": "Habilita el botón Nueva orden en la pestaña Órdenes. Cuando está deshabilitado, POST /api/orders devuelve 403."
-    }
+    },
+    "emptyValue": "(vacío)"
   },
   "addModal": {
     "title": "Añadir nuevo ajuste",

@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Tillad motoren at åbne korte positioner. SELL-signaler producerer negative desired_units; klemmes til 0, når deaktiveret.",
       "allowManualOrders": "Aktivér knappen Ny ordre på fanen Ordrer. Når deaktiveret returnerer POST /api/orders 403."
-    }
+    },
+    "emptyValue": "(tom)"
   },
   "addModal": {
     "title": "Tilføj ny indstilling",

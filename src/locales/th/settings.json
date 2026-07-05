@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "อนุญาตให้เอนจินเปิดสถานะ short สัญญาณ SELL จะสร้าง desired_units ติดลบ และจะถูกจำกัดเป็น 0 เมื่อปิดใช้งาน",
       "allowManualOrders": "เปิดใช้งานปุ่มคำสั่งใหม่ในแท็บคำสั่ง เมื่อปิดใช้งาน POST /api/orders จะส่งกลับ 403"
-    }
+    },
+    "emptyValue": "(ว่าง)"
   },
   "addModal": {
     "title": "เพิ่มการตั้งค่าใหม่",

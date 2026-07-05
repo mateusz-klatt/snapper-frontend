@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import type { HeartbeatData } from '../../hooks/useHeartbeats'
 import { LoadingSpinner } from '../../components/ui'
+import { formatDurationMs } from '../../lib/duration'
 
 interface ProcessControlCardProps {
   title: string
@@ -48,7 +49,7 @@ const HeartbeatIndicator: React.FC<{ heartbeat: HeartbeatData }> = ({ heartbeat 
       <span>
         {t(`card.status.${heartbeat.status}`, { defaultValue: heartbeat.status })}
         {heartbeat.lag_ms !== undefined && (
-          <span className='opacity-70 ml-1'>({heartbeat.lag_ms}ms)</span>
+          <span className='opacity-70 ml-1'>({formatDurationMs(heartbeat.lag_ms)})</span>
         )}
       </span>
     </div>

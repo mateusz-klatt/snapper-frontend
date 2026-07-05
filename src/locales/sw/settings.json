@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Ruhusu engine kufungua nafasi za short. Ishara za SELL zitatengeneza desired_units hasi; zitabanwa hadi 0 ikiwa imezimwa.",
       "allowManualOrders": "Washa kitufe cha Oda Mpya kwenye kichupo cha Oda. Ikiwa kimezimwa, POST /api/orders hurejesha 403."
-    }
+    },
+    "emptyValue": "(tupu)"
   },
   "addModal": {
     "title": "Ongeza Mpangilio Mpya",

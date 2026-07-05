@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Povolí enginu otevírat short pozice. Signály SELL vytvoří záporné desired_units; při vypnutí se hodnota omezí na 0.",
       "allowManualOrders": "Povolí tlačítko Nový pokyn na kartě Pokyny. Při vypnutí POST /api/orders vrací 403."
-    }
+    },
+    "emptyValue": "(prázdné)"
   },
   "addModal": {
     "title": "Přidat nové nastavení",

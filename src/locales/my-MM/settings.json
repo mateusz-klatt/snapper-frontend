@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Engine ကို short position ဖွင့်ခွင့်ပြုပါ။ SELL signal များသည် negative desired_units ထုတ်မည်။ ပိတ်ထားလျှင် 0 သို့ clamp လုပ်သည်။",
       "allowManualOrders": "Orders tab တွင် New Order ခလုတ်ကို ဖွင့်ပါ။ ပိတ်ထားလျှင် POST /api/orders သည် 403 ပြန်ပေးသည်။"
-    }
+    },
+    "emptyValue": "(ဗလာ)"
   },
   "addModal": {
     "title": "ဆက်တင်အသစ် ထည့်ပါ",

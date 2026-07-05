@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "エンジンがショートポジションを建てることを許可します。売りシグナルは負の desired_units を生成し、無効時は0にクランプされます。",
       "allowManualOrders": "注文タブの新規注文ボタンを有効にします。無効時、POST /api/orders は403を返します。"
-    }
+    },
+    "emptyValue": "(空欄)"
   },
   "addModal": {
     "title": "新しい設定を追加",

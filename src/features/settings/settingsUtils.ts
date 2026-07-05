@@ -74,13 +74,13 @@ export const formatJsonObject = (value: string): string | null => {
   }
 }
 
-export const getMaskedValue = (key: string, value: string): string => {
+export const getMaskedValue = (key: string, value: string, emptyLabel: string): string => {
   if (isSensitive(key) && value) {
     return SENSITIVE_MASK
   }
 
   if (!value) {
-    return '(empty)'
+    return emptyLabel
   }
 
   return formatJsonObject(value) ?? value

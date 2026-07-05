@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Leisti varikliui atidaryti trumpąsias pozicijas. SELL signalai sukurs neigiamus desired_units; kai išjungta, apribojama iki 0.",
       "allowManualOrders": "Įjungti mygtuką Naujas pavedimas pavedimų skirtuke. Kai išjungta, POST /api/orders grąžina 403."
-    }
+    },
+    "emptyValue": "(tuščia)"
   },
   "addModal": {
     "title": "Pridėti naują nustatymą",

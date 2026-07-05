@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Atļaut dzinējam atvērt īsās pozīcijas. SELL signāli radīs negatīvus desired_units; kad izslēgts, tiek ierobežots līdz 0.",
       "allowManualOrders": "Ieslēgt pogu Jauns rīkojums rīkojumu cilnē. Kad izslēgts, POST /api/orders atgriež 403."
-    }
+    },
+    "emptyValue": "(tukša)"
   },
   "addModal": {
     "title": "Pievienot jaunu iestatījumu",

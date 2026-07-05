@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "इंजन को Short पोजीशन खोलने दें। SELL सिग्नल negative desired_units बनाएँगे; अक्षम होने पर 0 पर clamp होता है।",
       "allowManualOrders": "ऑर्डर टैब पर नया ऑर्डर बटन सक्षम करें। अक्षम होने पर POST /api/orders 403 लौटाता है।"
-    }
+    },
+    "emptyValue": "(खाली)"
   },
   "addModal": {
     "title": "नई सेटिंग जोड़ें",

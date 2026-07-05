@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Tillåt motorn att öppna korta positioner. SELL-signaler ger negativ desired_units; begränsas till 0 när avstängt.",
       "allowManualOrders": "Aktivera knappen Ny order på fliken Ordrar. När avstängt returnerar POST /api/orders 403."
-    }
+    },
+    "emptyValue": "(tomt)"
   },
   "addModal": {
     "title": "Lägg till ny inställning",

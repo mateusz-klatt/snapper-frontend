@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Benarkan enjin membuka posisi short. Isyarat SELL akan menghasilkan desired_units negatif; dikapit kepada 0 apabila dinyahdayakan.",
       "allowManualOrders": "Dayakan butang Pesanan Baharu pada tab Pesanan. Apabila dinyahdayakan, POST /api/orders mengembalikan 403."
-    }
+    },
+    "emptyValue": "(kosong)"
   },
   "addModal": {
     "title": "Tambah Tetapan Baharu",

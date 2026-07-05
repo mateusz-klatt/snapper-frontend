@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Izinkan engine membuka posisi short. Sinyal SELL akan menghasilkan desired_units negatif; dibatasi ke 0 saat dinonaktifkan.",
       "allowManualOrders": "Aktifkan tombol Pesanan Baru di tab Pesanan. Saat dinonaktifkan, POST /api/orders mengembalikan 403."
-    }
+    },
+    "emptyValue": "(kosong)"
   },
   "addModal": {
     "title": "Tambah Pengaturan Baru",

@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Leyfa vélinni að opna short stöður. SELL merki munu mynda neikvæð desired_units; klemmist í 0 þegar slökkt er.",
       "allowManualOrders": "Virkja hnappinn Ný pöntun á pöntunarflipanum. Þegar slökkt er skilar POST /api/orders 403."
-    }
+    },
+    "emptyValue": "(tómt)"
   },
   "addModal": {
     "title": "Bæta við nýrri stillingu",

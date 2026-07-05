@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Permite que o motor abra posições vendidas. Sinais de VENDA gerarão desired_units negativos; trava em 0 quando desativado.",
       "allowManualOrders": "Habilita o botão Nova ordem na aba Ordens. Quando desativado, POST /api/orders retorna 403."
-    }
+    },
+    "emptyValue": "(vazio)"
   },
   "addModal": {
     "title": "Adicionar nova configuração",

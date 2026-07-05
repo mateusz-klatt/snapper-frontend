@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "允許引擎開空倉。SELL 信號會生成負 desired_units；停用時限制為 0。",
       "allowManualOrders": "在訂單標籤頁啟用新增訂單按鈕。停用時，POST /api/orders 返回 403。"
-    }
+    },
+    "emptyValue": "(空)"
   },
   "addModal": {
     "title": "新增新設定",

@@ -35,7 +35,8 @@
     "helpText": {
       "allowShortSelling": "Lig don inneall suímh ghearra a oscailt. Ginfidh comharthaí SELL desired_units diúltacha; gearrtar go 0 iad nuair atá sé díchumasaithe.",
       "allowManualOrders": "Cumasaigh an cnaipe Ordú Nua ar an gcluaisín Orduithe. Nuair atá sé díchumasaithe, filleann POST /api/orders 403."
-    }
+    },
+    "emptyValue": "(folamh)"
   },
   "addModal": {
     "title": "Cuir Socrú Nua Leis",
