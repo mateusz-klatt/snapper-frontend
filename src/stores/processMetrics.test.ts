@@ -6,6 +6,7 @@ import {
   useMetricProcessNames,
   useMetricRow,
   useMetricContainerRssTotal,
+  useCoordinatorLabel,
 } from './processMetrics'
 import { makeProcessSummaryItem } from '../test/factories'
 
@@ -20,6 +21,7 @@ describe('useProcessMetricsStore', () => {
         .getState()
         .setSnapshot(
           'alpha',
+          null,
           [makeProcessSummaryItem({ name: 'feed', rss_bytes: 100 })],
           '2026-06-01T00:00:00Z'
         )
@@ -32,9 +34,9 @@ describe('useProcessMetricsStore', () => {
     it('replaces only the named coordinator and leaves others intact', () => {
       const store = useProcessMetricsStore.getState()
 
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed' })], 't1')
-      store.setSnapshot('beta', [makeProcessSummaryItem({ name: 'broker' })], 't2')
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'strategy' })], 't3')
+      store.setSnapshot('alpha', null, [makeProcessSummaryItem({ name: 'feed' })], 't1')
+      store.setSnapshot('beta', null, [makeProcessSummaryItem({ name: 'broker' })], 't2')
+      store.setSnapshot('alpha', null, [makeProcessSummaryItem({ name: 'strategy' })], 't3')
       const state = useProcessMetricsStore.getState()
 
       expect(Object.keys(state.byCoordinator['alpha'] ?? {})).toEqual(['strategy'])
@@ -48,10 +50,11 @@ describe('useProcessMetricsStore', () => {
 
       store.setSnapshot(
         'alpha',
+        null,
         [makeProcessSummaryItem({ name: 'feed' }), makeProcessSummaryItem({ name: 'broker' })],
         't1'
       )
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed' })], 't2')
+      store.setSnapshot('alpha', null, [makeProcessSummaryItem({ name: 'feed' })], 't2')
       expect(Object.keys(useProcessMetricsStore.getState().byCoordinator['alpha'] ?? {})).toEqual([
         'feed',
       ])
@@ -60,10 +63,20 @@ describe('useProcessMetricsStore', () => {
     it('keeps the prior object reference when a row is unchanged', () => {
       const store = useProcessMetricsStore.getState()
 
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed', rss_bytes: 50 })], 't1')
+      store.setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed', rss_bytes: 50 })],
+        't1'
+      )
       const first = useProcessMetricsStore.getState().byCoordinator['alpha']?.['feed']
 
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed', rss_bytes: 50 })], 't2')
+      store.setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed', rss_bytes: 50 })],
+        't2'
+      )
       const second = useProcessMetricsStore.getState().byCoordinator['alpha']?.['feed']
 
       expect(second).toBe(first)
@@ -72,10 +85,20 @@ describe('useProcessMetricsStore', () => {
     it('allocates a new object when a row value changes', () => {
       const store = useProcessMetricsStore.getState()
 
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed', rss_bytes: 50 })], 't1')
+      store.setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed', rss_bytes: 50 })],
+        't1'
+      )
       const first = useProcessMetricsStore.getState().byCoordinator['alpha']?.['feed']
 
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed', rss_bytes: 99 })], 't2')
+      store.setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed', rss_bytes: 99 })],
+        't2'
+      )
       const second = useProcessMetricsStore.getState().byCoordinator['alpha']?.['feed']
 
       expect(second).not.toBe(first)
@@ -87,7 +110,7 @@ describe('useProcessMetricsStore', () => {
     it('clears all coordinators and snapshot times', () => {
       const store = useProcessMetricsStore.getState()
 
-      store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed' })], 't1')
+      store.setSnapshot('alpha', null, [makeProcessSummaryItem({ name: 'feed' })], 't1')
       store.reset()
       const state = useProcessMetricsStore.getState()
 
@@ -101,8 +124,8 @@ describe('useProcessMetricsStore', () => {
       const store = useProcessMetricsStore.getState()
 
       act(() => {
-        store.setSnapshot('zeta', [makeProcessSummaryItem({ name: 'feed' })], 't1')
-        store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed' })], 't2')
+        store.setSnapshot('zeta', null, [makeProcessSummaryItem({ name: 'feed' })], 't1')
+        store.setSnapshot('alpha', null, [makeProcessSummaryItem({ name: 'feed' })], 't2')
       })
       const { result } = renderHook(() => useMetricCoordinators())
 
@@ -117,6 +140,7 @@ describe('useProcessMetricsStore', () => {
           .getState()
           .setSnapshot(
             'alpha',
+            null,
             [
               makeProcessSummaryItem({ name: 'strategy' }),
               makeProcessSummaryItem({ name: 'feed' }),
@@ -124,15 +148,35 @@ describe('useProcessMetricsStore', () => {
             't1'
           )
       })
-      const { result } = renderHook(() => useMetricProcessNames('alpha'))
+      const { result } = renderHook(() => useMetricProcessNames('alpha', false))
 
       expect(result.current).toEqual(['feed', 'strategy'])
     })
 
     it('returns an empty list for an unknown coordinator', () => {
-      const { result } = renderHook(() => useMetricProcessNames('missing'))
+      const { result } = renderHook(() => useMetricProcessNames('missing', true))
 
       expect(result.current).toEqual([])
+    })
+
+    it('filters out disabled rows when hideDisabled is true, keeping stopped-but-enabled', () => {
+      act(() => {
+        useProcessMetricsStore
+          .getState()
+          .setSnapshot(
+            'alpha',
+            null,
+            [
+              makeProcessSummaryItem({ name: 'live', running: true, enabled: true }),
+              makeProcessSummaryItem({ name: 'stopped', running: false, enabled: true }),
+              makeProcessSummaryItem({ name: 'disabled', running: false, enabled: false }),
+            ],
+            't1'
+          )
+      })
+      const { result } = renderHook(() => useMetricProcessNames('alpha', true))
+
+      expect(result.current).toEqual(['live', 'stopped'])
     })
   })
 
@@ -141,7 +185,12 @@ describe('useProcessMetricsStore', () => {
       act(() => {
         useProcessMetricsStore
           .getState()
-          .setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed', cpu_percent: 12.5 })], 't1')
+          .setSnapshot(
+            'alpha',
+            null,
+            [makeProcessSummaryItem({ name: 'feed', cpu_percent: 12.5 })],
+            't1'
+          )
       })
       const { result } = renderHook(() => useMetricRow('alpha', 'feed'))
 
@@ -168,6 +217,7 @@ describe('useProcessMetricsStore', () => {
           .getState()
           .setSnapshot(
             'alpha',
+            null,
             [
               makeProcessSummaryItem({ name: 'feed', rss_bytes: null }),
               makeProcessSummaryItem({ name: 'broker', rss_bytes: null }),
@@ -186,6 +236,7 @@ describe('useProcessMetricsStore', () => {
           .getState()
           .setSnapshot(
             'alpha',
+            null,
             [
               makeProcessSummaryItem({ name: 'feed', rss_bytes: 100 }),
               makeProcessSummaryItem({ name: 'broker', rss_bytes: null }),
@@ -201,11 +252,35 @@ describe('useProcessMetricsStore', () => {
 
     it('returns null for an empty coordinator snapshot', () => {
       act(() => {
-        useProcessMetricsStore.getState().setSnapshot('alpha', [], 't1')
+        useProcessMetricsStore.getState().setSnapshot('alpha', null, [], 't1')
       })
       const { result } = renderHook(() => useMetricContainerRssTotal('alpha'))
 
       expect(result.current).toBeNull()
+    })
+  })
+
+  describe('useCoordinatorLabel', () => {
+    it('returns the label recorded for a coordinator', () => {
+      act(() => {
+        useProcessMetricsStore
+          .getState()
+          .setSnapshot('coord-1', 'Feed', [makeProcessSummaryItem({ name: 'kfp' })], 't1')
+      })
+      const { result } = renderHook(() => useCoordinatorLabel('coord-1'))
+
+      expect(result.current).toBe('Feed')
+    })
+
+    it('returns null for an unknown coordinator or a null label', () => {
+      act(() => {
+        useProcessMetricsStore.getState().setSnapshot('coord-1', null, [], 't1')
+      })
+      const known = renderHook(() => useCoordinatorLabel('coord-1'))
+      const unknown = renderHook(() => useCoordinatorLabel('missing'))
+
+      expect(known.result.current).toBeNull()
+      expect(unknown.result.current).toBeNull()
     })
   })
 })

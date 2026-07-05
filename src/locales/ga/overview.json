@@ -59,6 +59,8 @@
     "statusStopped": "Stopped",
     "statusDisabled": "Disabled",
     "containerTotal": "Total MEM {{value}}",
-    "cpuTooltip": "CPU usage can exceed 100% across multiple cores"
+    "cpuTooltip": "CPU usage can exceed 100% across multiple cores",
+    "metricsNa": "No separate per-process CPU/memory — this runs in-process (thread mode) or is not running",
+    "hideDisabled": "Hide disabled processes"
   }
 }

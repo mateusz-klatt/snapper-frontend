@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { screen, within } from '@testing-library/react'
+import { screen, within, fireEvent } from '@testing-library/react'
 import { ProcessResourceTable, ProcessMetricRow } from './ProcessResourceTable'
 import { renderWithI18n } from '../../test/renderWithI18n'
 import { useProcessMetricsStore } from '../../stores/processMetrics'
@@ -23,6 +23,7 @@ describe('ProcessResourceTable', () => {
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [makeProcessSummaryItem({ name: 'feed-1', role: 'core', rss_bytes: 100 * MB })],
         't1'
       )
@@ -35,8 +36,8 @@ describe('ProcessResourceTable', () => {
   it('renders multiple coordinator groups sorted by slug', (): void => {
     const store = useProcessMetricsStore.getState()
 
-    store.setSnapshot('beta', [makeProcessSummaryItem({ name: 'broker-1' })], 't1')
-    store.setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed-1' })], 't2')
+    store.setSnapshot('beta', null, [makeProcessSummaryItem({ name: 'broker-1' })], 't1')
+    store.setSnapshot('alpha', null, [makeProcessSummaryItem({ name: 'feed-1' })], 't2')
     renderWithI18n(<ProcessResourceTable />)
     const headers = screen.getAllByRole('heading', { level: 4 })
 
@@ -50,6 +51,7 @@ describe('ProcessResourceTable', () => {
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [makeProcessSummaryItem({ name: 'feed-1', running: true, enabled: true })],
         't1'
       )
@@ -57,11 +59,64 @@ describe('ProcessResourceTable', () => {
     expect(screen.getByText('Running')).toBeInTheDocument()
   })
 
+  it('renders the coordinator label in the header when present', (): void => {
+    useProcessMetricsStore
+      .getState()
+      .setSnapshot('coord-1', 'Feed', [makeProcessSummaryItem({ name: 'feed-1' })], 't1')
+    renderWithI18n(<ProcessResourceTable />)
+    expect(screen.getByRole('heading', { level: 4 }).textContent).toBe('Feed')
+    expect(screen.queryByText('coord-1')).not.toBeInTheDocument()
+  })
+
+  it('falls back to the coordinator slug when no label is present', (): void => {
+    useProcessMetricsStore
+      .getState()
+      .setSnapshot('coord-1', null, [makeProcessSummaryItem({ name: 'feed-1' })], 't1')
+    renderWithI18n(<ProcessResourceTable />)
+    expect(screen.getByRole('heading', { level: 4 }).textContent).toBe('coord-1')
+  })
+
+  it('hides disabled processes (not running and not enabled)', (): void => {
+    useProcessMetricsStore
+      .getState()
+      .setSnapshot(
+        'alpha',
+        null,
+        [
+          makeProcessSummaryItem({ name: 'feed-live', running: true, enabled: true }),
+          makeProcessSummaryItem({ name: 'strat-disabled', running: false, enabled: false }),
+        ],
+        't1'
+      )
+    renderWithI18n(<ProcessResourceTable />)
+    expect(screen.getByText('feed-live')).toBeInTheDocument()
+    expect(screen.queryByText('strat-disabled')).not.toBeInTheDocument()
+  })
+
+  it('titles the em-dash for a process with no per-process metrics', (): void => {
+    useProcessMetricsStore.getState().setSnapshot(
+      'alpha',
+      null,
+      [
+        makeProcessSummaryItem({
+          name: 'strat-1',
+          running: true,
+          rss_bytes: null,
+          cpu_percent: null,
+        }),
+      ],
+      't1'
+    )
+    renderWithI18n(<ProcessResourceTable />)
+    expect(screen.getAllByTitle(/no separate per-process/i)).toHaveLength(2)
+  })
+
   it('derives the Stopped status for an enabled non-running process', (): void => {
     useProcessMetricsStore
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [makeProcessSummaryItem({ name: 'feed-1', running: false, enabled: true })],
         't1'
       )
@@ -69,15 +124,18 @@ describe('ProcessResourceTable', () => {
     expect(screen.getByText('Stopped')).toBeInTheDocument()
   })
 
-  it('derives the Disabled status for a disabled non-running process', (): void => {
+  it('derives the Disabled status once disabled processes are revealed', (): void => {
     useProcessMetricsStore
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [makeProcessSummaryItem({ name: 'feed-1', running: false, enabled: false })],
         't1'
       )
     renderWithI18n(<ProcessResourceTable />)
+    expect(screen.queryByText('Disabled')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByLabelText('Hide disabled processes'))
     expect(screen.getByText('Disabled')).toBeInTheDocument()
   })
 
@@ -86,6 +144,7 @@ describe('ProcessResourceTable', () => {
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [makeProcessSummaryItem({ name: 'feed-1', rss_bytes: null, cpu_percent: 5 })],
         't1'
       )
@@ -99,7 +158,12 @@ describe('ProcessResourceTable', () => {
   it('formats rss_bytes below 1 GB in MB', (): void => {
     useProcessMetricsStore
       .getState()
-      .setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed-1', rss_bytes: 256 * MB })], 't1')
+      .setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed-1', rss_bytes: 256 * MB })],
+        't1'
+      )
     renderWithI18n(<ProcessResourceTable />)
     expect(screen.getByText('256.0 MB')).toBeInTheDocument()
   })
@@ -107,7 +171,12 @@ describe('ProcessResourceTable', () => {
   it('formats rss_bytes at or above 1 GB in GB', (): void => {
     useProcessMetricsStore
       .getState()
-      .setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed-1', rss_bytes: 2 * GB })], 't1')
+      .setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed-1', rss_bytes: 2 * GB })],
+        't1'
+      )
     renderWithI18n(<ProcessResourceTable />)
     expect(screen.getByText('2.00 GB')).toBeInTheDocument()
   })
@@ -117,6 +186,7 @@ describe('ProcessResourceTable', () => {
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [makeProcessSummaryItem({ name: 'feed-1', rss_bytes: 100 * MB, cpu_percent: null })],
         't1'
       )
@@ -130,7 +200,12 @@ describe('ProcessResourceTable', () => {
   it('formats a non-null cpu_percent with one decimal and a percent sign', (): void => {
     useProcessMetricsStore
       .getState()
-      .setSnapshot('alpha', [makeProcessSummaryItem({ name: 'feed-1', cpu_percent: 137.25 })], 't1')
+      .setSnapshot(
+        'alpha',
+        null,
+        [makeProcessSummaryItem({ name: 'feed-1', cpu_percent: 137.25 })],
+        't1'
+      )
     renderWithI18n(<ProcessResourceTable />)
     expect(screen.getByText('137.3%')).toBeInTheDocument()
   })
@@ -140,6 +215,7 @@ describe('ProcessResourceTable', () => {
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [
           makeProcessSummaryItem({ name: 'feed-1', rss_bytes: 100 * MB }),
           makeProcessSummaryItem({ name: 'feed-2', rss_bytes: 156 * MB }),
@@ -168,6 +244,7 @@ describe('ProcessResourceTable', () => {
       .getState()
       .setSnapshot(
         'alpha',
+        null,
         [
           makeProcessSummaryItem({ name: 'feed-1', rss_bytes: null }),
           makeProcessSummaryItem({ name: 'feed-2', rss_bytes: null }),

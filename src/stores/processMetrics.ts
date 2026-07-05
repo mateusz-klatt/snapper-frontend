@@ -5,12 +5,14 @@ import type { ProcessSummaryItem } from '../types/ws.generated'
 
 interface ProcessMetricsState {
   byCoordinator: Record<string, Record<string, ProcessSummaryItem>>
+  labelByCoordinator: Record<string, string | null>
   snapshotAt: Record<string, string>
 }
 
 interface ProcessMetricsStore extends ProcessMetricsState {
   setSnapshot: (
     coordinator: string,
+    coordinatorLabel: string | null,
     items: readonly ProcessSummaryItem[],
     snapshotAt: string
   ) => void
@@ -65,12 +67,17 @@ function mergeRows(
 export const useProcessMetricsStore = create<ProcessMetricsStore>()(
   subscribeWithSelector((set, _get) => ({
     byCoordinator: {},
+    labelByCoordinator: {},
     snapshotAt: {},
-    setSnapshot: (coordinator, items, snapshotAt) => {
+    setSnapshot: (coordinator, coordinatorLabel, items, snapshotAt) => {
       set(state => ({
         byCoordinator: {
           ...state.byCoordinator,
           [coordinator]: mergeRows(state.byCoordinator[coordinator], items),
+        },
+        labelByCoordinator: {
+          ...state.labelByCoordinator,
+          [coordinator]: coordinatorLabel,
         },
         snapshotAt: {
           ...state.snapshotAt,
@@ -78,7 +85,7 @@ export const useProcessMetricsStore = create<ProcessMetricsStore>()(
         },
       }))
     },
-    reset: () => set({ byCoordinator: {}, snapshotAt: {} }),
+    reset: () => set({ byCoordinator: {}, labelByCoordinator: {}, snapshotAt: {} }),
   }))
 )
 
@@ -88,11 +95,20 @@ export function useMetricCoordinators(): string[] {
   )
 }
 
-export function useMetricProcessNames(coordinator: string): string[] {
+export function useCoordinatorLabel(coordinator: string): string | null {
+  return useProcessMetricsStore(state => state.labelByCoordinator[coordinator] ?? null)
+}
+
+export function useMetricProcessNames(coordinator: string, hideDisabled: boolean): string[] {
   return useProcessMetricsStore(
-    useShallow(state =>
-      Object.keys(state.byCoordinator[coordinator] ?? {}).sort((a, b) => a.localeCompare(b))
-    )
+    useShallow(state => {
+      const rows = state.byCoordinator[coordinator] ?? {}
+
+      return Object.entries(rows)
+        .filter(([, row]) => !hideDisabled || row.running || row.enabled)
+        .map(([name]) => name)
+        .sort((a, b) => a.localeCompare(b))
+    })
   )
 }
 

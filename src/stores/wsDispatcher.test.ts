@@ -2515,6 +2515,7 @@ describe('WSDispatcher', () => {
         session_id: 'sid',
         sequence_id: 1,
         coordinator: 'alpha',
+        coordinator_label: 'API',
         processes: [
           {
             name: 'trader_coordinator',
@@ -2582,6 +2583,7 @@ describe('WSDispatcher', () => {
       messageHandlers.get('process_summary_event')?.(makeProcessSummary())
       expect(processMetricsSetSnapshot).toHaveBeenCalledWith(
         'alpha',
+        'API',
         [
           {
             name: 'trader_coordinator',
@@ -2611,6 +2613,7 @@ describe('WSDispatcher', () => {
       } as unknown as WebSocketMessages)
       expect(processMetricsSetSnapshot).toHaveBeenCalledWith(
         '',
+        null,
         expect.any(Array),
         '2026-05-14T12:00:00Z'
       )
