@@ -3423,6 +3423,7 @@ export type Components = {
             active_public_id?: string | null | undefined;
             rss_bytes?: number | null | undefined;
             cpu_percent?: number | null | undefined;
+            owned: boolean;
         };
         ProcessSummaryResponse: {
             type: "process_summary_response";

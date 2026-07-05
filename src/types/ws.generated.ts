@@ -1087,6 +1087,7 @@ export interface ProcessSummaryItem {
   active_public_id?: ActivePublicId;
   rss_bytes?: RssBytes;
   cpu_percent?: CpuPercent;
+  owned?: boolean;
 }
 export interface RelatedInstrumentData {
   type: Type33;
