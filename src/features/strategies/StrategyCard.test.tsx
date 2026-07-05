@@ -93,6 +93,24 @@ describe('StrategyCard', () => {
     expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent(/another container/i)
   })
 
+  it('prefers the coordinator label over the raw slug in the notice', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_remote'
+        running={true}
+        autoStartEnabled={true}
+        mode='thread'
+        coordinator='coord-2'
+        coordinatorLabel='Strategies'
+        managedRemotely={true}
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+        onRestart={mockOnRestart}
+      />
+    )
+    expect(screen.getByTestId('managed-remotely-notice')).toHaveTextContent('Strategies')
+  })
+
   it('renders health metrics for a fresh remote heartbeat without local running', () => {
     renderWithMocks(
       <StrategyCard
