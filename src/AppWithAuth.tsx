@@ -8,7 +8,7 @@ import { apiClient } from './lib/apiClient'
 import { resolveFinancialColorConvention } from './theme/financialColorPreference'
 
 function AppWithAuth() {
-  const { isAuthenticated, refreshToken, silentLogout } = useAuth()
+  const { isAuthenticated, refreshToken } = useAuth()
   const isDarkMode = useAppStore(s => s.isDarkMode)
   const locale = useAppStore(s => s.locale)
   const financialColorPreference = useAppStore(s => s.financialColorPreference)
@@ -50,12 +50,12 @@ function AppWithAuth() {
       try {
         await refreshToken()
       } catch {
-        silentLogout()
+        return
       }
     }
 
     initializeAuth()
-  }, [isAuthenticated, refreshToken, silentLogout])
+  }, [isAuthenticated, refreshToken])
 
   return (
     <AuthErrorBoundary key={`auth-${isAuthenticated}`}>

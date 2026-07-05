@@ -138,8 +138,8 @@ describe('AppWithAuth', () => {
       expect(refreshToken).toHaveBeenCalledTimes(1)
     })
   })
-  it('calls silentLogout when token refresh fails', async () => {
-    const refreshToken = vi.fn().mockRejectedValue(new Error('Refresh failed'))
+  it('swallows a boot refresh failure without wiping the session itself', async () => {
+    const refreshToken = vi.fn().mockRejectedValue(new TypeError('Failed to fetch'))
     const silentLogout = vi.fn()
 
     vi.mocked(stores.useAuth).mockReturnValue({
@@ -151,8 +151,8 @@ describe('AppWithAuth', () => {
     render(<AppWithAuth />)
     await waitFor(() => {
       expect(refreshToken).toHaveBeenCalledTimes(1)
-      expect(silentLogout).toHaveBeenCalledTimes(1)
     })
+    expect(silentLogout).not.toHaveBeenCalled()
   })
   it('initializes only once with useRef guard', async () => {
     const refreshToken = vi.fn().mockResolvedValue(undefined)

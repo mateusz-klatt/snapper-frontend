@@ -631,6 +631,55 @@ describe('auth store', () => {
       expect(useAuthStore.getState().isAuthenticated).toBe(false)
       expect(apiClient.post).not.toHaveBeenCalled()
     })
+    it('does NOT silently log out on a transport error (aborted boot refresh)', async () => {
+      useAuthStore.setState({
+        user: {
+          type: 'user_profile' as const,
+          sequence_id: 0,
+          public_id: 'test-pid',
+          timestamp: '2024-01-01T00:00:00Z',
+          session_id: 'test-sid',
+          username: 'admin',
+          role: 'admin',
+          is_active: true,
+          created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
+        },
+        isAuthenticated: true,
+      })
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(new TypeError('Failed to fetch'))
+      const state = useAuthStore.getState()
+
+      await expect(state.refreshToken()).rejects.toThrow('Failed to fetch')
+      expect(useAuthStore.getState().user).not.toBeNull()
+      expect(useAuthStore.getState().isAuthenticated).toBe(true)
+      expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
+    })
+    it('does NOT silently log out on an AbortError rejection', async () => {
+      useAuthStore.setState({
+        user: {
+          type: 'user_profile' as const,
+          sequence_id: 0,
+          public_id: 'test-pid',
+          timestamp: '2024-01-01T00:00:00Z',
+          session_id: 'test-sid',
+          username: 'admin',
+          role: 'admin',
+          is_active: true,
+          created_at: '2026-01-01T00:00:00Z',
+          operator_public_ids: [],
+        },
+        isAuthenticated: true,
+      })
+      vi.mocked(apiClient.refreshSession).mockRejectedValueOnce(
+        new DOMException('The user aborted a request.', 'AbortError')
+      )
+      const state = useAuthStore.getState()
+
+      await expect(state.refreshToken()).rejects.toThrow('aborted')
+      expect(useAuthStore.getState().user).not.toBeNull()
+      expect(apiClient.clearCSRFToken).not.toHaveBeenCalled()
+    })
     it('throws and silently logs out when the refresh response is not ok', async () => {
       vi.mocked(apiClient.refreshSession).mockResolvedValueOnce({
         ok: false,
