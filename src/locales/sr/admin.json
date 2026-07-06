@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Dodaj operatera"
+    },
+    "form": {
+      "title": "Kreiraj operatera",
+      "fields": {
+        "label": "Oznaka",
+        "labelPlaceholder": "npr. desk-alpha",
+        "description": "Opis (opciono)",
+        "descriptionPlaceholder": "Slobodan opis"
+      },
+      "validation": {
+        "labelRequired": "Oznaka je obavezna"
+      },
+      "actions": {
+        "create": "Kreiraj operatera"
+      },
+      "toast": {
+        "created": "Operater je kreiran",
+        "conflictError": "Operater sa tom oznakom već postoji",
+        "createError": "Greška pri kreiranju operatera"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Pristup odbijen",

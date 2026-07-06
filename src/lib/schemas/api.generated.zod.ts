@@ -1942,6 +1942,17 @@ export const BracketCancelBodySchema = _BracketCancelBodyRawSchema as unknown as
   Components['schemas']['BracketCancelBody']
 >
 
+const _CreateOperatorBodyRawSchema = z
+  .object({
+    label: z.string().min(1).max(128),
+    description: z.string().max(512).nullable().optional(),
+  })
+  .strict()
+
+export const CreateOperatorBodySchema = _CreateOperatorBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateOperatorBody']
+>
+
 const _CreateOrderBodyRawSchema = z
   .object({
     instrument: z.string(),
@@ -2603,6 +2614,22 @@ const _OperatorListResponseRawSchema = z
 
 export const OperatorListResponseSchema = _OperatorListResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['OperatorListResponse']
+>
+
+const _OperatorResponseRawSchema = z
+  .object({
+    type: z.literal('operator_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: OperatorInfoSchema,
+  })
+  .strict()
+
+export const OperatorResponseSchema = _OperatorResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['OperatorResponse']
 >
 
 const _OrderListResponseRawSchema = z
@@ -3690,6 +3717,22 @@ const _BracketCancelCommandRawSchema = z
 
 export const BracketCancelCommandSchema = _BracketCancelCommandRawSchema as unknown as z.ZodType<
   Components['schemas']['BracketCancelCommand']
+>
+
+const _CreateOperatorCommandRawSchema = z
+  .object({
+    type: z.literal('create_operator_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: CreateOperatorBodySchema,
+  })
+  .strict()
+
+export const CreateOperatorCommandSchema = _CreateOperatorCommandRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateOperatorCommand']
 >
 
 const _CreateOrderCommandRawSchema = z
@@ -5314,6 +5357,7 @@ export type DeviceAlertPrefBody = Components['schemas']['DeviceAlertPrefBody']
 export type RevokeDevicePrefBody = Components['schemas']['RevokeDevicePrefBody']
 export type BracketCreateBody = Components['schemas']['BracketCreateBody']
 export type BracketCancelBody = Components['schemas']['BracketCancelBody']
+export type CreateOperatorBody = Components['schemas']['CreateOperatorBody']
 export type CreateOrderBody = Components['schemas']['CreateOrderBody']
 export type CancelOrderBody = Components['schemas']['CancelOrderBody']
 export type ProcessDesiredStateBody = Components['schemas']['ProcessDesiredStateBody']
@@ -5358,6 +5402,7 @@ export type NotificationDeviceListResponse = Components['schemas']['Notification
 export type NotificationDeviceResponse = Components['schemas']['NotificationDeviceResponse']
 export type NotificationMetricsResponse = Components['schemas']['NotificationMetricsResponse']
 export type OperatorListResponse = Components['schemas']['OperatorListResponse']
+export type OperatorResponse = Components['schemas']['OperatorResponse']
 export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
 export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
@@ -5423,6 +5468,7 @@ export type UpdateDevicePrefCommand = Components['schemas']['UpdateDevicePrefCom
 export type RevokeDevicePrefCommand = Components['schemas']['RevokeDevicePrefCommand']
 export type BracketCreateCommand = Components['schemas']['BracketCreateCommand']
 export type BracketCancelCommand = Components['schemas']['BracketCancelCommand']
+export type CreateOperatorCommand = Components['schemas']['CreateOperatorCommand']
 export type CreateOrderCommand = Components['schemas']['CreateOrderCommand']
 export type CancelOrderCommand = Components['schemas']['CancelOrderCommand']
 export type ProcessDesiredStateRequest = Components['schemas']['ProcessDesiredStateRequest']

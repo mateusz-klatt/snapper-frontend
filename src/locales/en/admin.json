@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Add Operator"
+    },
+    "form": {
+      "title": "Create Operator",
+      "fields": {
+        "label": "Label",
+        "labelPlaceholder": "e.g. desk-alpha",
+        "description": "Description (optional)",
+        "descriptionPlaceholder": "Free-form description"
+      },
+      "validation": {
+        "labelRequired": "Label is required"
+      },
+      "actions": {
+        "create": "Create Operator"
+      },
+      "toast": {
+        "created": "Operator has been created",
+        "conflictError": "An operator with that label already exists",
+        "createError": "Error creating operator"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Access Denied",

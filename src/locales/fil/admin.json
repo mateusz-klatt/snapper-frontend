@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Mag-add ng Operator"
+    },
+    "form": {
+      "title": "Gumawa ng Operator",
+      "fields": {
+        "label": "Label",
+        "labelPlaceholder": "hal. desk-alpha",
+        "description": "Paglalarawan (optional)",
+        "descriptionPlaceholder": "Malayang paglalarawan"
+      },
+      "validation": {
+        "labelRequired": "Kailangan ang label"
+      },
+      "actions": {
+        "create": "Gumawa ng Operator"
+      },
+      "toast": {
+        "created": "Nagawa ang operator",
+        "conflictError": "May operator nang may ganoong label",
+        "createError": "Error sa paggawa ng operator"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Walang Access",

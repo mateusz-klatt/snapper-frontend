@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "လုပ်ဆောင်သူ ထည့်ပါ"
+    },
+    "form": {
+      "title": "လုပ်ဆောင်သူ ဖန်တီးပါ",
+      "fields": {
+        "label": "အညွှန်း",
+        "labelPlaceholder": "ဥပမာ desk-alpha",
+        "description": "ဖော်ပြချက် (optional)",
+        "descriptionPlaceholder": "လွတ်လပ်စွာ ရေးသားနိုင်သော ဖော်ပြချက်"
+      },
+      "validation": {
+        "labelRequired": "အညွှန်း လိုအပ်သည်"
+      },
+      "actions": {
+        "create": "လုပ်ဆောင်သူ ဖန်တီးပါ"
+      },
+      "toast": {
+        "created": "လုပ်ဆောင်သူ ဖန်တီးပြီးပါပြီ",
+        "conflictError": "ဤအညွှန်းဖြင့် လုပ်ဆောင်သူ ရှိပြီးဖြစ်သည်",
+        "createError": "လုပ်ဆောင်သူ ဖန်တီးရာတွင် error"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "ဝင်ခွင့်မရှိပါ",

@@ -526,4 +526,161 @@ describe('UserForm', () => {
 
     expect(emailInput).toHaveValue('')
   })
+  it('renders a disabled read-only role field for ai_delegate users', () => {
+    const delegate: UserProfile = makeUserProfile({
+      username: 'ai-bot',
+      email: 'bot@example.com',
+      role: 'ai_delegate',
+      is_active: true,
+      created_at: '2024-01-01T00:00:00Z',
+    })
+
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} user={delegate} />)
+    const roleField = screen.getByDisplayValue('AI Delegate')
+
+    expect(roleField.tagName).toBe('INPUT')
+    expect(roleField).toBeDisabled()
+    expect(screen.queryByRole('option', { name: /viewer/i })).toBeNull()
+  })
+  it('applies the profile update then the password reset when both change', async () => {
+    const existingUser: UserProfile = makeUserProfile({
+      username: 'testuser',
+      email: 'test@example.com',
+      role: 'viewer',
+      is_active: true,
+      created_at: '2024-01-01T00:00:00Z',
+    })
+
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} user={existingUser} />)
+    const emailInput = screen.getByLabelText(/email/i)
+
+    await userEvent.clear(emailInput)
+    await userEvent.type(emailInput, 'updated@example.com')
+    await userEvent.click(screen.getByLabelText(/reset user password/i))
+    await userEvent.type(screen.getByLabelText(/new password/i), 'newpassword123')
+    await userEvent.click(screen.getByRole('button', { name: /save/i }))
+    await waitFor(() => {
+      expect(updateUser).toHaveBeenCalledWith(
+        'testuser',
+        expect.objectContaining({ email: 'updated@example.com' })
+      )
+      expect(adminResetPassword).toHaveBeenCalledWith(
+        'testuser',
+        expect.objectContaining({ new_password: 'newpassword123' })
+      )
+      expect(toast.success).toHaveBeenCalledWith('User has been updated')
+      expect(mockOnClose).toHaveBeenCalled()
+    })
+  })
+  it('does not reset the password when the chained profile update fails', async () => {
+    vi.mocked(updateUser).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
+    const existingUser: UserProfile = makeUserProfile({
+      username: 'testuser',
+      email: 'test@example.com',
+      role: 'viewer',
+      is_active: true,
+      created_at: '2024-01-01T00:00:00Z',
+    })
+
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} user={existingUser} />)
+    const emailInput = screen.getByLabelText(/email/i)
+
+    await userEvent.clear(emailInput)
+    await userEvent.type(emailInput, 'updated@example.com')
+    await userEvent.click(screen.getByLabelText(/reset user password/i))
+    await userEvent.type(screen.getByLabelText(/new password/i), 'newpassword123')
+    await userEvent.click(screen.getByRole('button', { name: /save/i }))
+    await waitFor(() => {
+      expect(toast.error).toHaveBeenCalled()
+    })
+    expect(adminResetPassword).not.toHaveBeenCalled()
+    expect(mockOnClose).not.toHaveBeenCalled()
+  })
+  it('surfaces a reset error after the chained profile update succeeds', async () => {
+    vi.mocked(adminResetPassword).mockRejectedValue(new Error('HTTP 500: Internal Server Error'))
+    const existingUser: UserProfile = makeUserProfile({
+      username: 'testuser',
+      email: 'test@example.com',
+      role: 'viewer',
+      is_active: true,
+      created_at: '2024-01-01T00:00:00Z',
+    })
+
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} user={existingUser} />)
+    const emailInput = screen.getByLabelText(/email/i)
+
+    await userEvent.clear(emailInput)
+    await userEvent.type(emailInput, 'updated@example.com')
+    await userEvent.click(screen.getByLabelText(/reset user password/i))
+    await userEvent.type(screen.getByLabelText(/new password/i), 'newpassword123')
+    await userEvent.click(screen.getByRole('button', { name: /save/i }))
+    await waitFor(() => {
+      expect(updateUser).toHaveBeenCalled()
+      expect(toast.error).toHaveBeenCalled()
+    })
+    expect(mockOnClose).not.toHaveBeenCalled()
+  })
+  it('handles the chained update for a user whose stored email was null', async () => {
+    const existingUser: UserProfile = makeUserProfile({
+      username: 'testuser',
+      email: null,
+      role: 'viewer',
+      is_active: true,
+      created_at: '2024-01-01T00:00:00Z',
+    })
+
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} user={existingUser} />)
+    await userEvent.type(screen.getByLabelText(/email/i), 'filled@example.com')
+    await userEvent.click(screen.getByLabelText(/reset user password/i))
+    await userEvent.type(screen.getByLabelText(/new password/i), 'newpassword123')
+    await userEvent.click(screen.getByRole('button', { name: /save/i }))
+    await waitFor(() => {
+      expect(updateUser).toHaveBeenCalledWith(
+        'testuser',
+        expect.objectContaining({ email: 'filled@example.com' })
+      )
+      expect(adminResetPassword).toHaveBeenCalled()
+      expect(mockOnClose).toHaveBeenCalled()
+    })
+  })
+  it('uses the fallback update-error toast in the chain when the error has no message', async () => {
+    vi.mocked(updateUser).mockRejectedValue(new Error(''))
+    const existingUser: UserProfile = makeUserProfile({
+      username: 'testuser',
+      email: 'test@example.com',
+      role: 'viewer',
+      is_active: true,
+      created_at: '2024-01-01T00:00:00Z',
+    })
+
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} user={existingUser} />)
+    await userEvent.clear(screen.getByLabelText(/email/i))
+    await userEvent.type(screen.getByLabelText(/email/i), 'updated@example.com')
+    await userEvent.click(screen.getByLabelText(/reset user password/i))
+    await userEvent.type(screen.getByLabelText(/new password/i), 'newpassword123')
+    await userEvent.click(screen.getByRole('button', { name: /save/i }))
+    await waitFor(() => {
+      expect(toast.error).toHaveBeenCalledWith('Error updating user')
+    })
+  })
+  it('uses the fallback reset-error toast in the chain when the error has no message', async () => {
+    vi.mocked(adminResetPassword).mockRejectedValue(new Error(''))
+    const existingUser: UserProfile = makeUserProfile({
+      username: 'testuser',
+      email: 'test@example.com',
+      role: 'viewer',
+      is_active: true,
+      created_at: '2024-01-01T00:00:00Z',
+    })
+
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} user={existingUser} />)
+    await userEvent.clear(screen.getByLabelText(/email/i))
+    await userEvent.type(screen.getByLabelText(/email/i), 'updated@example.com')
+    await userEvent.click(screen.getByLabelText(/reset user password/i))
+    await userEvent.type(screen.getByLabelText(/new password/i), 'newpassword123')
+    await userEvent.click(screen.getByRole('button', { name: /save/i }))
+    await waitFor(() => {
+      expect(toast.error).toHaveBeenCalledWith('Error resetting password')
+    })
+  })
 })

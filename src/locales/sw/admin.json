@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Ongeza Opereta"
+    },
+    "form": {
+      "title": "Unda Opereta",
+      "fields": {
+        "label": "Lebo",
+        "labelPlaceholder": "mf. desk-alpha",
+        "description": "Maelezo (hiari)",
+        "descriptionPlaceholder": "Maelezo ya maandishi huru"
+      },
+      "validation": {
+        "labelRequired": "Lebo inahitajika"
+      },
+      "actions": {
+        "create": "Unda Opereta"
+      },
+      "toast": {
+        "created": "Opereta ameundwa",
+        "conflictError": "Opereta aliye na lebo hiyo tayari yupo",
+        "createError": "Hitilafu kuunda opereta"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Ufikiaji Umekataliwa",

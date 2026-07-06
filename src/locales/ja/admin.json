@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "オペレーターを追加"
+    },
+    "form": {
+      "title": "オペレーターを作成",
+      "fields": {
+        "label": "ラベル",
+        "labelPlaceholder": "例: desk-alpha",
+        "description": "説明（任意）",
+        "descriptionPlaceholder": "自由形式の説明"
+      },
+      "validation": {
+        "labelRequired": "ラベルは必須です"
+      },
+      "actions": {
+        "create": "オペレーターを作成"
+      },
+      "toast": {
+        "created": "オペレーターを作成しました",
+        "conflictError": "そのラベルのオペレーターはすでに存在します",
+        "createError": "オペレーター作成エラー"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "アクセス拒否",

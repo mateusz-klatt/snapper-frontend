@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Tilføj operatør"
+    },
+    "form": {
+      "title": "Opret operatør",
+      "fields": {
+        "label": "Label",
+        "labelPlaceholder": "f.eks. desk-alpha",
+        "description": "Beskrivelse (valgfri)",
+        "descriptionPlaceholder": "Fri beskrivelse"
+      },
+      "validation": {
+        "labelRequired": "Label er påkrævet"
+      },
+      "actions": {
+        "create": "Opret operatør"
+      },
+      "toast": {
+        "created": "Operatør oprettet",
+        "conflictError": "En operatør med dette label findes allerede",
+        "createError": "Fejl ved oprettelse af operatør"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Adgang nægtet",

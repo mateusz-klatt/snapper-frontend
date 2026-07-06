@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "افزودن اپراتور"
+    },
+    "form": {
+      "title": "ایجاد اپراتور",
+      "fields": {
+        "label": "برچسب",
+        "labelPlaceholder": "مثلاً desk-alpha",
+        "description": "توضیحات (اختیاری)",
+        "descriptionPlaceholder": "توضیحات آزاد"
+      },
+      "validation": {
+        "labelRequired": "برچسب الزامی است"
+      },
+      "actions": {
+        "create": "ایجاد اپراتور"
+      },
+      "toast": {
+        "created": "اپراتور ایجاد شد",
+        "conflictError": "اپراتوری با این برچسب از قبل وجود دارد",
+        "createError": "خطا در ایجاد اپراتور"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "دسترسی رد شد",

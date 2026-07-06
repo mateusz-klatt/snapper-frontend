@@ -72,6 +72,7 @@ vi.mock('../../../hooks/queries/scope-grants', () => ({
 vi.mock('../../../hooks/queries/wallets', () => ({
   useWallets: () => mockUseWallets(),
   useOperators: () => mockUseOperators(),
+  useCreateOperator: () => ({ mutate: vi.fn(), isPending: false }),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({
@@ -118,6 +119,13 @@ describe('ScopeGrantList', () => {
     renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
     expect(screen.getByText('Select a wallet')).toBeDefined()
     expect(screen.getByTestId('wallet-filter')).toBeDefined()
+  })
+  it('opens and closes the Add Operator modal', () => {
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.click(screen.getByText('Add Operator'))
+    expect(screen.getByPlaceholderText('e.g. desk-alpha')).toBeDefined()
+    fireEvent.click(screen.getByText('Cancel'))
+    expect(screen.queryByPlaceholderText('e.g. desk-alpha')).toBeNull()
   })
   it('shows loading spinner when fetching grants', () => {
     mockUseScopeGrants.mockReturnValue({ data: undefined, isLoading: true, error: null })

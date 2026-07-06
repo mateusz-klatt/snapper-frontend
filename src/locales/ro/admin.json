@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Adăugați operator"
+    },
+    "form": {
+      "title": "Creați operator",
+      "fields": {
+        "label": "Etichetă",
+        "labelPlaceholder": "ex. desk-alpha",
+        "description": "Descriere (opțional)",
+        "descriptionPlaceholder": "Descriere liberă"
+      },
+      "validation": {
+        "labelRequired": "Eticheta este obligatorie"
+      },
+      "actions": {
+        "create": "Creați operator"
+      },
+      "toast": {
+        "created": "Operatorul a fost creat",
+        "conflictError": "Există deja un operator cu acea etichetă",
+        "createError": "Eroare la crearea operatorului"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Acces refuzat",

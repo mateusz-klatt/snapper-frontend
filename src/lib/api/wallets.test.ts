@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
-import { getOperators, getWallets } from './wallets'
+import { createOperator, getOperators, getWallets } from './wallets'
 
 vi.mock('../utils', () => ({
   getCookie: vi.fn(() => 'test-csrf-token'),
@@ -62,6 +62,32 @@ describe('wallets API methods', () => {
 
       expect(result.payload).toHaveLength(1)
       expect(result.payload[0]?.label).toBe('alice')
+    })
+  })
+  describe('createOperator', () => {
+    it('posts and validates the created operator', async () => {
+      const payload = {
+        type: 'operator_response',
+        session_id: 's',
+        sequence_id: 1,
+        public_id: 'p',
+        timestamp: '2026-01-01T00:00:00Z',
+        payload: {
+          type: 'operator_info',
+          session_id: 's',
+          sequence_id: 1,
+          public_id: 'op-new',
+          timestamp: '2026-01-01T00:00:00Z',
+          label: 'desk-alpha',
+          description: null,
+        },
+      }
+
+      mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
+      const result = await createOperator({ label: 'desk-alpha' })
+
+      expect(result.payload.public_id).toBe('op-new')
+      expect(result.payload.label).toBe('desk-alpha')
     })
   })
   describe('getWallets', () => {

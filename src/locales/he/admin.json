@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "הוסף מפעיל"
+    },
+    "form": {
+      "title": "צור מפעיל",
+      "fields": {
+        "label": "תווית",
+        "labelPlaceholder": "למשל desk-alpha",
+        "description": "תיאור (אופציונלי)",
+        "descriptionPlaceholder": "תיאור חופשי"
+      },
+      "validation": {
+        "labelRequired": "תווית היא חובה"
+      },
+      "actions": {
+        "create": "צור מפעיל"
+      },
+      "toast": {
+        "created": "המפעיל נוצר",
+        "conflictError": "כבר קיים מפעיל עם תווית זו",
+        "createError": "שגיאה ביצירת מפעיל"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "הגישה נדחתה",

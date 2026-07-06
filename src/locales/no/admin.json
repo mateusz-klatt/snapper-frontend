@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Legg til operatør"
+    },
+    "form": {
+      "title": "Opprett operatør",
+      "fields": {
+        "label": "Etikett",
+        "labelPlaceholder": "f.eks. desk-alpha",
+        "description": "Beskrivelse (valgfritt)",
+        "descriptionPlaceholder": "Friformsbeskrivelse"
+      },
+      "validation": {
+        "labelRequired": "Etikett er påkrevd"
+      },
+      "actions": {
+        "create": "Opprett operatør"
+      },
+      "toast": {
+        "created": "Operatøren er opprettet",
+        "conflictError": "En operatør med denne etiketten finnes allerede",
+        "createError": "Feil ved oppretting av operatør"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Ingen tilgang",

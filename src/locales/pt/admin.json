@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Adicionar operador"
+    },
+    "form": {
+      "title": "Criar operador",
+      "fields": {
+        "label": "Rótulo",
+        "labelPlaceholder": "ex. desk-alpha",
+        "description": "Descrição (opcional)",
+        "descriptionPlaceholder": "Descrição livre"
+      },
+      "validation": {
+        "labelRequired": "Rótulo é obrigatório"
+      },
+      "actions": {
+        "create": "Criar operador"
+      },
+      "toast": {
+        "created": "Operador criado",
+        "conflictError": "Já existe um operador com esse rótulo",
+        "createError": "Erro ao criar operador"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Acesso negado",

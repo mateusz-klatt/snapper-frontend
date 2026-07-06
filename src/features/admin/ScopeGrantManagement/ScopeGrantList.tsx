@@ -6,6 +6,7 @@ import { useScopeGrants } from '../../../hooks/queries/scope-grants'
 import { useWallets, useOperators } from '../../../hooks/queries/wallets'
 import { ThemeSelect } from '../../../components/ThemeSelect'
 import { formatDateTime } from '../../../lib/dateFormat'
+import AddOperatorForm from './AddOperatorForm'
 import type { AppLocale } from '../../../i18n/types'
 import type { ScopeGrantInfo, WalletInfo, OperatorInfo } from '../../../types/api'
 
@@ -22,6 +23,7 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
 }) => {
   const { t, i18n } = useTranslation('admin')
   const [selectedWallet, setSelectedWallet] = useState<string>('')
+  const [showAddOperator, setShowAddOperator] = useState(false)
   const { data: walletsData } = useWallets()
   const { data: operatorsData } = useOperators()
   const { data: grantsData, isLoading, error } = useScopeGrants(selectedWallet)
@@ -56,10 +58,25 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
             </Badge>
           )}
         </div>
-        <Button onClick={onCreateGrant} disabled={readOnly} className='flex items-center space-x-2'>
-          <Plus className='w-4 h-4' />
-          <span>{t('scopeGrants.list.createGrant')}</span>
-        </Button>
+        <div className='flex items-center gap-2'>
+          <Button
+            variant='secondary'
+            onClick={() => setShowAddOperator(true)}
+            disabled={readOnly}
+            className='flex items-center space-x-2'
+          >
+            <Plus className='w-4 h-4' />
+            <span>{t('operators.list.addOperator')}</span>
+          </Button>
+          <Button
+            onClick={onCreateGrant}
+            disabled={readOnly}
+            className='flex items-center space-x-2'
+          >
+            <Plus className='w-4 h-4' />
+            <span>{t('scopeGrants.list.createGrant')}</span>
+          </Button>
+        </div>
       </div>
       <div className='max-w-xs'>
         <label htmlFor='wallet-filter' className='block text-sm font-medium text-alpine-900 mb-1'>
@@ -170,6 +187,11 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
           </div>
         </div>
       )}
+      <AddOperatorForm
+        open={showAddOperator}
+        onClose={() => setShowAddOperator(false)}
+        readOnly={readOnly}
+      />
     </div>
   )
 }

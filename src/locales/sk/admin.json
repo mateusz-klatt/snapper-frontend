@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Pridať operátora"
+    },
+    "form": {
+      "title": "Vytvoriť operátora",
+      "fields": {
+        "label": "Označenie",
+        "labelPlaceholder": "napr. desk-alpha",
+        "description": "Popis (voliteľné)",
+        "descriptionPlaceholder": "Voľný popis"
+      },
+      "validation": {
+        "labelRequired": "Označenie je povinné"
+      },
+      "actions": {
+        "create": "Vytvoriť operátora"
+      },
+      "toast": {
+        "created": "Operátor bol vytvorený",
+        "conflictError": "Operátor s týmto označením už existuje",
+        "createError": "Chyba pri vytváraní operátora"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Prístup zamietnutý",

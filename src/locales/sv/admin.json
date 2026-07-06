@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Lägg till operatör"
+    },
+    "form": {
+      "title": "Skapa operatör",
+      "fields": {
+        "label": "Etikett",
+        "labelPlaceholder": "t.ex. desk-alpha",
+        "description": "Beskrivning (valfritt)",
+        "descriptionPlaceholder": "Fritextbeskrivning"
+      },
+      "validation": {
+        "labelRequired": "Etikett krävs"
+      },
+      "actions": {
+        "create": "Skapa operatör"
+      },
+      "toast": {
+        "created": "Operatören har skapats",
+        "conflictError": "En operatör med den etiketten finns redan",
+        "createError": "Fel vid skapande av operatör"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Åtkomst nekad",

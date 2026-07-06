@@ -57,6 +57,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
     setResetPassword(false)
   }, [user])
   const isEditing = !!user
+  const isDelegate = user?.role === 'ai_delegate'
   const createMutation = useCreateUser()
   const updateMutation = useUpdateUser()
   const resetPasswordMutation = useAdminResetPassword()
@@ -146,8 +147,39 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
       return
     }
 
-    if (isEditing) {
-      if (resetPassword) {
+    if (user) {
+      const profileChanged =
+        formData.email !== (user.email ?? '') ||
+        formData.role !== user.role ||
+        formData.is_active !== user.is_active
+
+      if (resetPassword && profileChanged) {
+        updateMutation.mutate(
+          {
+            userId: formData.username,
+            data: {
+              email: formData.email,
+              role: formData.role,
+              is_active: formData.is_active,
+            },
+          },
+          {
+            onSuccess: () =>
+              resetPasswordMutation.mutate(
+                { userId: formData.username, data: { new_password: formData.password } },
+                {
+                  onSuccess: () => {
+                    toast.success(t('users.form.toast.updated'))
+                    onClose()
+                  },
+                  onError: (err: Error) =>
+                    toast.error(err.message || t('users.form.toast.resetError')),
+                }
+              ),
+            onError: (err: Error) => toast.error(err.message || t('users.form.toast.updateError')),
+          }
+        )
+      } else if (resetPassword) {
         adminResetPasswordMutation.mutate({
           new_password: formData.password,
         })
@@ -307,16 +339,27 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
             <label htmlFor='role' className='block text-sm font-medium text-alpine-900 mb-2'>
               {t('users.form.fields.role')}
             </label>
-            <ThemeSelect
-              id='role'
-              value={formData.role}
-              onChange={val => handleInputChange('role', val)}
-              options={[
-                { value: 'viewer', label: t('users.form.roles.viewer') },
-                { value: 'operator', label: t('users.form.roles.operator') },
-                { value: 'admin', label: t('users.form.roles.admin') },
-              ]}
-            />
+            {isDelegate ? (
+              <input
+                type='text'
+                id='role'
+                value={t('users.form.roles.ai_delegate')}
+                disabled
+                readOnly
+                className='w-full rounded-md border border-dark-600 bg-muted-100 px-3 py-2 text-alpine-900 shadow-sm cursor-not-allowed'
+              />
+            ) : (
+              <ThemeSelect
+                id='role'
+                value={formData.role}
+                onChange={val => handleInputChange('role', val)}
+                options={[
+                  { value: 'viewer', label: t('users.form.roles.viewer') },
+                  { value: 'operator', label: t('users.form.roles.operator') },
+                  { value: 'admin', label: t('users.form.roles.admin') },
+                ]}
+              />
+            )}
           </div>
           {}
           <div className='flex items-center'>

@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "新增操作員"
+    },
+    "form": {
+      "title": "建立操作員",
+      "fields": {
+        "label": "標籤",
+        "labelPlaceholder": "例如 desk-alpha",
+        "description": "描述（可選）",
+        "descriptionPlaceholder": "自由格式描述"
+      },
+      "validation": {
+        "labelRequired": "必須填寫標籤"
+      },
+      "actions": {
+        "create": "建立操作員"
+      },
+      "toast": {
+        "created": "操作員已建立",
+        "conflictError": "已有使用該標籤的操作員",
+        "createError": "建立操作員失敗"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "拒絕存取",

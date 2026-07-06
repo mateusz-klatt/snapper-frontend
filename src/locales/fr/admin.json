@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Ajouter un opérateur"
+    },
+    "form": {
+      "title": "Créer un opérateur",
+      "fields": {
+        "label": "Libellé",
+        "labelPlaceholder": "p. ex. desk-alpha",
+        "description": "Description (optionnelle)",
+        "descriptionPlaceholder": "Description libre"
+      },
+      "validation": {
+        "labelRequired": "Le libellé est requis"
+      },
+      "actions": {
+        "create": "Créer un opérateur"
+      },
+      "toast": {
+        "created": "L'opérateur a été créé",
+        "conflictError": "Un opérateur avec ce libellé existe déjà",
+        "createError": "Erreur lors de la création de l'opérateur"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Accès refusé",

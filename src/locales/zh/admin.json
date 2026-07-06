@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "添加操作员"
+    },
+    "form": {
+      "title": "创建操作员",
+      "fields": {
+        "label": "标签",
+        "labelPlaceholder": "例如 desk-alpha",
+        "description": "描述（可选）",
+        "descriptionPlaceholder": "自由格式描述"
+      },
+      "validation": {
+        "labelRequired": "必须填写标签"
+      },
+      "actions": {
+        "create": "创建操作员"
+      },
+      "toast": {
+        "created": "操作员已创建",
+        "conflictError": "已有使用该标签的操作员",
+        "createError": "创建操作员失败"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "访问被拒绝",

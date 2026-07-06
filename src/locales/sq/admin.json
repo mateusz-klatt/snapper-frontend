@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Shto operator"
+    },
+    "form": {
+      "title": "Krijo operator",
+      "fields": {
+        "label": "Etiketë",
+        "labelPlaceholder": "p.sh. desk-alpha",
+        "description": "Përshkrim (opsional)",
+        "descriptionPlaceholder": "Përshkrim i lirë"
+      },
+      "validation": {
+        "labelRequired": "Etiketa është e detyrueshme"
+      },
+      "actions": {
+        "create": "Krijo operator"
+      },
+      "toast": {
+        "created": "Operatori u krijua",
+        "conflictError": "Ekziston tashmë një operator me atë etiketë",
+        "createError": "Gabim gjatë krijimit të operatorit"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Aksesi u refuzua",

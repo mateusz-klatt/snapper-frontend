@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Bæta við operator"
+    },
+    "form": {
+      "title": "Búa til operator",
+      "fields": {
+        "label": "Merki",
+        "labelPlaceholder": "t.d. desk-alpha",
+        "description": "Lýsing (valfrjáls)",
+        "descriptionPlaceholder": "Frjáls lýsing"
+      },
+      "validation": {
+        "labelRequired": "Merki er áskilið"
+      },
+      "actions": {
+        "create": "Búa til operator"
+      },
+      "toast": {
+        "created": "Operator hefur verið búinn til",
+        "conflictError": "Operator með þessu merki er þegar til",
+        "createError": "Villa við að búa til operator"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Aðgangi hafnað",
