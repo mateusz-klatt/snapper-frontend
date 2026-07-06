@@ -64,6 +64,13 @@ const ROLE_HIERARCHY: Record<UserRole, number> = {
 const isTransportError = (error: unknown): boolean =>
   error instanceof TypeError || (error instanceof DOMException && error.name === 'AbortError')
 
+function buildRefreshBody(nextWallet?: RefreshWalletHint): RefreshRequestBody | undefined {
+  if (nextWallet === undefined) return undefined
+  if ('clear' in nextWallet) return { clear_active_wallet: true }
+
+  return { active_wallet_public_id: nextWallet.walletId }
+}
+
 export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => {
@@ -169,12 +176,7 @@ export const useAuthStore = create<AuthState>()(
         },
         refreshToken: async (nextWallet?: RefreshWalletHint) => {
           try {
-            const body: RefreshRequestBody | undefined =
-              nextWallet === undefined
-                ? undefined
-                : 'clear' in nextWallet
-                  ? { clear_active_wallet: true }
-                  : { active_wallet_public_id: nextWallet.walletId }
+            const body = buildRefreshBody(nextWallet)
             let envelope: RefreshEnvelope
 
             if (body === undefined) {

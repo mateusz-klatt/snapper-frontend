@@ -15,7 +15,7 @@ const inputClasses = (
   baseClasses: string,
   error: string | undefined,
   className: string | undefined
-): string => `${baseClasses} ${errorBorderClass(error)}${className ? ` ${className}` : ''}`
+): string => baseClasses + ' ' + errorBorderClass(error) + (className ? ' ' + className : '')
 
 interface AdminFieldFrameProps {
   id: string
