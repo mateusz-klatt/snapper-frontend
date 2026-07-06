@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "ऑपरेटर जोड़ें"
+    },
+    "form": {
+      "title": "ऑपरेटर बनाएँ",
+      "fields": {
+        "label": "लेबल",
+        "labelPlaceholder": "जैसे desk-alpha",
+        "description": "विवरण (वैकल्पिक)",
+        "descriptionPlaceholder": "मुक्त-रूप विवरण"
+      },
+      "validation": {
+        "labelRequired": "लेबल आवश्यक है"
+      },
+      "actions": {
+        "create": "ऑपरेटर बनाएँ"
+      },
+      "toast": {
+        "created": "ऑपरेटर बनाया गया है",
+        "conflictError": "उस लेबल वाला ऑपरेटर पहले से मौजूद है",
+        "createError": "ऑपरेटर बनाने में त्रुटि"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "पहुँच अस्वीकृत",

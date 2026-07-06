@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Pievienot operatoru"
+    },
+    "form": {
+      "title": "Izveidot operatoru",
+      "fields": {
+        "label": "Etiķete",
+        "labelPlaceholder": "piem., desk-alpha",
+        "description": "Apraksts (neobligāti)",
+        "descriptionPlaceholder": "Brīvas formas apraksts"
+      },
+      "validation": {
+        "labelRequired": "Etiķete ir obligāta"
+      },
+      "actions": {
+        "create": "Izveidot operatoru"
+      },
+      "toast": {
+        "created": "Operators ir izveidots",
+        "conflictError": "Operators ar šo etiķeti jau pastāv",
+        "createError": "Kļūda, izveidojot operatoru"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Piekļuve liegta",

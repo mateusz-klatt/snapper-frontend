@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Добавить оператора"
+    },
+    "form": {
+      "title": "Создать оператора",
+      "fields": {
+        "label": "Метка",
+        "labelPlaceholder": "например, desk-alpha",
+        "description": "Описание (опционально)",
+        "descriptionPlaceholder": "Описание в свободной форме"
+      },
+      "validation": {
+        "labelRequired": "Метка обязательна"
+      },
+      "actions": {
+        "create": "Создать оператора"
+      },
+      "toast": {
+        "created": "Оператор создан",
+        "conflictError": "Оператор с такой меткой уже существует",
+        "createError": "Ошибка создания оператора"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Доступ запрещён",

@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Tambah Operator"
+    },
+    "form": {
+      "title": "Cipta Operator",
+      "fields": {
+        "label": "Label",
+        "labelPlaceholder": "cth. desk-alpha",
+        "description": "Perihalan (pilihan)",
+        "descriptionPlaceholder": "Perihalan bentuk bebas"
+      },
+      "validation": {
+        "labelRequired": "Label diperlukan"
+      },
+      "actions": {
+        "create": "Cipta Operator"
+      },
+      "toast": {
+        "created": "Operator dicipta",
+        "conflictError": "Operator dengan label itu sudah wujud",
+        "createError": "Ralat mencipta operator"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Akses Ditolak",

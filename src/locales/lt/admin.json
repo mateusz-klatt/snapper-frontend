@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Pridėti operatorių"
+    },
+    "form": {
+      "title": "Sukurti operatorių",
+      "fields": {
+        "label": "Etiketė",
+        "labelPlaceholder": "pvz., desk-alpha",
+        "description": "Aprašas (neprivaloma)",
+        "descriptionPlaceholder": "Laisvos formos aprašas"
+      },
+      "validation": {
+        "labelRequired": "Etiketė privaloma"
+      },
+      "actions": {
+        "create": "Sukurti operatorių"
+      },
+      "toast": {
+        "created": "Operatorius sukurtas",
+        "conflictError": "Operatorius su šia etikete jau yra",
+        "createError": "Klaida kuriant operatorių"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Prieiga atmesta",

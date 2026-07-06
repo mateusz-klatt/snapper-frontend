@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Ավելացնել օպերատոր"
+    },
+    "form": {
+      "title": "Ստեղծել օպերատոր",
+      "fields": {
+        "label": "Պիտակ",
+        "labelPlaceholder": "օր.՝ desk-alpha",
+        "description": "Նկարագրություն (ըստ ցանկության)",
+        "descriptionPlaceholder": "Ազատ ձևի նկարագրություն"
+      },
+      "validation": {
+        "labelRequired": "Պիտակը պարտադիր է"
+      },
+      "actions": {
+        "create": "Ստեղծել օպերատոր"
+      },
+      "toast": {
+        "created": "Օպերատորը ստեղծվել է",
+        "conflictError": "Այդ պիտակով օպերատոր արդեն գոյություն ունի",
+        "createError": "Օպերատոր ստեղծելու սխալ"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Հասանելիությունը մերժված է",

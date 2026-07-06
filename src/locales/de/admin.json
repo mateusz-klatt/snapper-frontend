@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Operator hinzufügen"
+    },
+    "form": {
+      "title": "Operator erstellen",
+      "fields": {
+        "label": "Bezeichnung",
+        "labelPlaceholder": "z. B. desk-alpha",
+        "description": "Beschreibung (optional)",
+        "descriptionPlaceholder": "Freitextbeschreibung"
+      },
+      "validation": {
+        "labelRequired": "Bezeichnung ist erforderlich"
+      },
+      "actions": {
+        "create": "Operator erstellen"
+      },
+      "toast": {
+        "created": "Operator wurde erstellt",
+        "conflictError": "Ein Operator mit dieser Bezeichnung existiert bereits",
+        "createError": "Fehler beim Erstellen des Operators"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Zugriff verweigert",

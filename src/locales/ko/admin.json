@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "운영자 추가"
+    },
+    "form": {
+      "title": "운영자 생성",
+      "fields": {
+        "label": "라벨",
+        "labelPlaceholder": "예: desk-alpha",
+        "description": "설명 (선택)",
+        "descriptionPlaceholder": "자유 형식 설명"
+      },
+      "validation": {
+        "labelRequired": "라벨은 필수입니다"
+      },
+      "actions": {
+        "create": "운영자 생성"
+      },
+      "toast": {
+        "created": "운영자가 생성되었습니다",
+        "conflictError": "해당 라벨을 가진 운영자가 이미 있습니다",
+        "createError": "운영자 생성 오류"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "접근 거부",

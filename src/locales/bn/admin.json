@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "অপারেটর যোগ করুন"
+    },
+    "form": {
+      "title": "অপারেটর তৈরি করুন",
+      "fields": {
+        "label": "লেবেল",
+        "labelPlaceholder": "যেমন desk-alpha",
+        "description": "বিবরণ (ঐচ্ছিক)",
+        "descriptionPlaceholder": "মুক্ত আকারের বিবরণ"
+      },
+      "validation": {
+        "labelRequired": "লেবেল আবশ্যক"
+      },
+      "actions": {
+        "create": "অপারেটর তৈরি করুন"
+      },
+      "toast": {
+        "created": "অপারেটর তৈরি হয়েছে",
+        "conflictError": "এই লেবেলসহ একটি অপারেটর ইতিমধ্যে আছে",
+        "createError": "অপারেটর তৈরি করতে ত্রুটি"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "প্রবেশাধিকার অস্বীকৃত",

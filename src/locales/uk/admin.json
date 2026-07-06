@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Додати оператора"
+    },
+    "form": {
+      "title": "Створити оператора",
+      "fields": {
+        "label": "Мітка",
+        "labelPlaceholder": "наприклад desk-alpha",
+        "description": "Опис (необов'язково)",
+        "descriptionPlaceholder": "Опис у довільній формі"
+      },
+      "validation": {
+        "labelRequired": "Мітка обов'язкова"
+      },
+      "actions": {
+        "create": "Створити оператора"
+      },
+      "toast": {
+        "created": "Оператора створено",
+        "conflictError": "Оператор із такою міткою вже існує",
+        "createError": "Помилка створення оператора"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Доступ заборонено",

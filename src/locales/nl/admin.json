@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Operator toevoegen"
+    },
+    "form": {
+      "title": "Operator aanmaken",
+      "fields": {
+        "label": "Label",
+        "labelPlaceholder": "bijv. desk-alpha",
+        "description": "Beschrijving (optioneel)",
+        "descriptionPlaceholder": "Vrije beschrijving"
+      },
+      "validation": {
+        "labelRequired": "Label is verplicht"
+      },
+      "actions": {
+        "create": "Operator aanmaken"
+      },
+      "toast": {
+        "created": "Operator is aangemaakt",
+        "conflictError": "Er bestaat al een operator met dat label",
+        "createError": "Fout bij aanmaken operator"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Toegang geweigerd",

@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "เพิ่ม Operator"
+    },
+    "form": {
+      "title": "สร้าง Operator",
+      "fields": {
+        "label": "ป้ายกำกับ",
+        "labelPlaceholder": "เช่น desk-alpha",
+        "description": "คำอธิบาย (ไม่บังคับ)",
+        "descriptionPlaceholder": "คำอธิบายแบบอิสระ"
+      },
+      "validation": {
+        "labelRequired": "ต้องระบุป้ายกำกับ"
+      },
+      "actions": {
+        "create": "สร้าง Operator"
+      },
+      "toast": {
+        "created": "สร้าง Operator แล้ว",
+        "conflictError": "มี Operator ที่ใช้ป้ายกำกับนั้นอยู่แล้ว",
+        "createError": "ข้อผิดพลาดในการสร้าง Operator"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "ปฏิเสธการเข้าถึง",

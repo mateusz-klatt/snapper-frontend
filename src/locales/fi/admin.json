@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Lisää operaattori"
+    },
+    "form": {
+      "title": "Luo operaattori",
+      "fields": {
+        "label": "Tunniste",
+        "labelPlaceholder": "esim. desk-alpha",
+        "description": "Kuvaus (valinnainen)",
+        "descriptionPlaceholder": "Vapaamuotoinen kuvaus"
+      },
+      "validation": {
+        "labelRequired": "Tunniste vaaditaan"
+      },
+      "actions": {
+        "create": "Luo operaattori"
+      },
+      "toast": {
+        "created": "Operaattori luotu",
+        "conflictError": "Tällä tunnisteella oleva operaattori on jo olemassa",
+        "createError": "Virhe operaattorin luonnissa"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Pääsy evätty",

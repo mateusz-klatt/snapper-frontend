@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Operator ekle"
+    },
+    "form": {
+      "title": "Operator oluştur",
+      "fields": {
+        "label": "Etiket",
+        "labelPlaceholder": "örn. desk-alpha",
+        "description": "Açıklama (isteğe bağlı)",
+        "descriptionPlaceholder": "Serbest biçimli açıklama"
+      },
+      "validation": {
+        "labelRequired": "Etiket gerekli"
+      },
+      "actions": {
+        "create": "Operator oluştur"
+      },
+      "toast": {
+        "created": "Operator oluşturuldu",
+        "conflictError": "Bu etikete sahip bir operator zaten var",
+        "createError": "Operator oluşturma hatası"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Erişim Reddedildi",

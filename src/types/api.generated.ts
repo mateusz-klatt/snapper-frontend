@@ -541,7 +541,7 @@ export type Paths = {
         };
         get: Operations["list_operators_api_operators_get"];
         put?: never;
-        post?: never;
+        post: Operations["create_operator_api_operators_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -3023,6 +3023,15 @@ export type Components = {
             payload: Components["schemas"]["OperatorInfo"][];
             count: number;
         };
+        OperatorResponse: {
+            type: "operator_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["OperatorInfo"];
+        };
         OrderData: {
             type: "order";
             sequence_id: number;
@@ -4569,6 +4578,19 @@ export type Components = {
         BracketCancelBody: {
             reason?: string | null;
         };
+        CreateOperatorCommand: {
+            type?: "create_operator_command";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["CreateOperatorBody"];
+        };
+        CreateOperatorBody: {
+            label: string;
+            description?: string | null;
+        };
         CreateOrderCommand: {
             type?: "create_order_command";
             sequence_id: number;
@@ -5864,6 +5886,29 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["OperatorListResponse"];
+                };
+            };
+        };
+    };
+    create_operator_api_operators_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["CreateOperatorCommand"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["OperatorResponse"];
                 };
             };
         };

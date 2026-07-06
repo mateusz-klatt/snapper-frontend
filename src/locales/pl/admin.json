@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Dodaj operatora"
+    },
+    "form": {
+      "title": "Utwórz operatora",
+      "fields": {
+        "label": "Etykieta",
+        "labelPlaceholder": "np. desk-alpha",
+        "description": "Opis (opcjonalny)",
+        "descriptionPlaceholder": "Opis w dowolnej formie"
+      },
+      "validation": {
+        "labelRequired": "Etykieta jest wymagana"
+      },
+      "actions": {
+        "create": "Utwórz operatora"
+      },
+      "toast": {
+        "created": "Operator został utworzony",
+        "conflictError": "Operator z tą etykietą już istnieje",
+        "createError": "Błąd tworzenia operatora"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Brak dostępu",

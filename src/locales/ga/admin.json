@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Cuir oibreoir leis"
+    },
+    "form": {
+      "title": "Cruthaigh Oibreoir",
+      "fields": {
+        "label": "Lipéad",
+        "labelPlaceholder": "m.sh. desk-alpha",
+        "description": "Cur síos (roghnach)",
+        "descriptionPlaceholder": "Cur síos saorfhoirme"
+      },
+      "validation": {
+        "labelRequired": "Tá lipéad riachtanach"
+      },
+      "actions": {
+        "create": "Cruthaigh Oibreoir"
+      },
+      "toast": {
+        "created": "Cruthaíodh an t-oibreoir",
+        "conflictError": "Tá oibreoir leis an lipéad sin ann cheana",
+        "createError": "Earráid agus oibreoir á chruthú"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Rochtain Diúltaithe",

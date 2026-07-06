@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Operátor hozzáadása"
+    },
+    "form": {
+      "title": "Operátor létrehozása",
+      "fields": {
+        "label": "Címke",
+        "labelPlaceholder": "pl. desk-alpha",
+        "description": "Leírás (opcionális)",
+        "descriptionPlaceholder": "Szabad szöveges leírás"
+      },
+      "validation": {
+        "labelRequired": "A címke megadása kötelező"
+      },
+      "actions": {
+        "create": "Operátor létrehozása"
+      },
+      "toast": {
+        "created": "Operátor létrehozva",
+        "conflictError": "Már létezik operátor ezzel a címkével",
+        "createError": "Hiba az operátor létrehozásakor"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Hozzáférés megtagadva",

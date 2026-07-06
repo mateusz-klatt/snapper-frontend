@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "إضافة مشغّل"
+    },
+    "form": {
+      "title": "إنشاء مشغّل",
+      "fields": {
+        "label": "التسمية",
+        "labelPlaceholder": "مثلاً desk-alpha",
+        "description": "الوصف (اختياري)",
+        "descriptionPlaceholder": "وصف حر"
+      },
+      "validation": {
+        "labelRequired": "التسمية مطلوبة"
+      },
+      "actions": {
+        "create": "إنشاء مشغّل"
+      },
+      "toast": {
+        "created": "تم إنشاء المشغّل",
+        "conflictError": "يوجد مشغّل بهذه التسمية بالفعل",
+        "createError": "خطأ في إنشاء المشغّل"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "تم رفض الوصول",

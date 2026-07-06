@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Přidat operátora"
+    },
+    "form": {
+      "title": "Vytvořit operátora",
+      "fields": {
+        "label": "Popisek",
+        "labelPlaceholder": "např. desk-alpha",
+        "description": "Popis (volitelné)",
+        "descriptionPlaceholder": "Volný popis"
+      },
+      "validation": {
+        "labelRequired": "Popisek je povinný"
+      },
+      "actions": {
+        "create": "Vytvořit operátora"
+      },
+      "toast": {
+        "created": "Operátor byl vytvořen",
+        "conflictError": "Operátor s tímto popiskem již existuje",
+        "createError": "Chyba při vytváření operátora"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Přístup odepřen",

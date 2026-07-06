@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Tambah Operator"
+    },
+    "form": {
+      "title": "Buat Operator",
+      "fields": {
+        "label": "Label",
+        "labelPlaceholder": "mis. desk-alpha",
+        "description": "Deskripsi (opsional)",
+        "descriptionPlaceholder": "Deskripsi bebas"
+      },
+      "validation": {
+        "labelRequired": "Label wajib diisi"
+      },
+      "actions": {
+        "create": "Buat Operator"
+      },
+      "toast": {
+        "created": "Operator telah dibuat",
+        "conflictError": "Operator dengan label tersebut sudah ada",
+        "createError": "Kesalahan saat membuat operator"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Akses Ditolak",

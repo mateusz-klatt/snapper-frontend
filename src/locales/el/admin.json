@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Προσθήκη χειριστή"
+    },
+    "form": {
+      "title": "Δημιουργία χειριστή",
+      "fields": {
+        "label": "Ετικέτα",
+        "labelPlaceholder": "π.χ. desk-alpha",
+        "description": "Περιγραφή (προαιρετικά)",
+        "descriptionPlaceholder": "Περιγραφή ελεύθερης μορφής"
+      },
+      "validation": {
+        "labelRequired": "Η ετικέτα είναι υποχρεωτική"
+      },
+      "actions": {
+        "create": "Δημιουργία χειριστή"
+      },
+      "toast": {
+        "created": "Ο χειριστής δημιουργήθηκε",
+        "conflictError": "Υπάρχει ήδη χειριστής με αυτή την ετικέτα",
+        "createError": "Σφάλμα κατά τη δημιουργία χειριστή"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Απόρριψη πρόσβασης",

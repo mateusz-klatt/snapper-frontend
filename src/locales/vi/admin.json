@@ -211,6 +211,31 @@
       }
     }
   },
+  "operators": {
+    "list": {
+      "addOperator": "Thêm người vận hành"
+    },
+    "form": {
+      "title": "Tạo người vận hành",
+      "fields": {
+        "label": "Nhãn",
+        "labelPlaceholder": "ví dụ: desk-alpha",
+        "description": "Mô tả (tùy chọn)",
+        "descriptionPlaceholder": "Mô tả tự do"
+      },
+      "validation": {
+        "labelRequired": "Bắt buộc nhập nhãn"
+      },
+      "actions": {
+        "create": "Tạo người vận hành"
+      },
+      "toast": {
+        "created": "Đã tạo người vận hành",
+        "conflictError": "Đã tồn tại người vận hành có nhãn đó",
+        "createError": "Lỗi khi tạo người vận hành"
+      }
+    }
+  },
   "credentials": {
     "accessDenied": {
       "title": "Từ chối truy cập",
