@@ -24,7 +24,7 @@ interface AdminFieldFrameProps {
   children: React.ReactNode
 }
 
-export const AdminFieldFrame: React.FC<Readonly<AdminFieldFrameProps>> = ({
+const AdminFieldFrame: React.FC<Readonly<AdminFieldFrameProps>> = ({
   id,
   label,
   error,
