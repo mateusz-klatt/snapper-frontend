@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { toast } from 'react-hot-toast'
-import { ThemeSelect } from '../../../components/ThemeSelect'
-import { AdminTextField } from '../components/AdminFormFields'
+import { AdminSelectField, AdminTextField } from '../components/AdminFormFields'
 import { AdminFormModal } from '../components/AdminFormModal'
-import { showConflictAwareErrorToast } from '../formFeedback'
+import { createConflictMutationFeedback } from '../formFeedback'
 import { useCreateScopeGrant } from '../../../hooks/queries/scope-grants'
 import { useOperators, useWallets } from '../../../hooks/queries/wallets'
 import type { OperatorInfo, WalletInfo } from '../../../types/api'
@@ -73,19 +71,12 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
         ...(scopeKind === 'instrument' ? { instrument_public_id: trimmedTarget } : {}),
         ...(trimmedNote ? { note: trimmedNote } : {}),
       },
-      {
-        onSuccess: () => {
-          toast.success(t('scopeGrants.form.toast.created'))
-          handleClose()
-        },
-        onError: (err: Error) => {
-          showConflictAwareErrorToast(
-            err,
-            t('scopeGrants.form.toast.conflictError'),
-            t('scopeGrants.form.toast.createError')
-          )
-        },
-      }
+      createConflictMutationFeedback(
+        t('scopeGrants.form.toast.created'),
+        handleClose,
+        t('scopeGrants.form.toast.conflictError'),
+        t('scopeGrants.form.toast.createError')
+      )
     )
   }
 
@@ -101,49 +92,37 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
       cancelLabel={t('common.cancel')}
       submitLabel={t('scopeGrants.form.actions.createGrant')}
     >
-      <div>
-        <label htmlFor='sg-operator' className='block text-sm font-medium text-alpine-900 mb-2'>
-          {t('scopeGrants.form.fields.operator')}
-        </label>
-        <ThemeSelect
-          id='sg-operator'
-          value={operatorId}
-          onChange={setOperatorId}
-          options={operators.map(o => ({ value: o.public_id, label: o.label }))}
-          placeholder={t('scopeGrants.form.fields.operatorPlaceholder')}
-        />
-        {errors.operator && <p className='mt-1 text-sm text-loss-600'>{errors.operator}</p>}
-      </div>
-      <div>
-        <label htmlFor='sg-wallet' className='block text-sm font-medium text-alpine-900 mb-2'>
-          {t('scopeGrants.form.fields.wallet')}
-        </label>
-        <ThemeSelect
-          id='sg-wallet'
-          value={walletId}
-          onChange={setWalletId}
-          options={wallets.map(w => ({
-            value: w.public_id,
-            label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
-          }))}
-          placeholder={t('common.selectWalletPlaceholder')}
-        />
-        {errors.wallet && <p className='mt-1 text-sm text-loss-600'>{errors.wallet}</p>}
-      </div>
-      <div>
-        <label htmlFor='sg-scope-kind' className='block text-sm font-medium text-alpine-900 mb-2'>
-          {t('scopeGrants.form.fields.scopeKind')}
-        </label>
-        <ThemeSelect
-          id='sg-scope-kind'
-          value={scopeKind}
-          onChange={val => setScopeKind(val as 'underlying' | 'instrument')}
-          options={[
-            { value: 'underlying', label: t('scopeGrants.form.scopeKinds.underlying') },
-            { value: 'instrument', label: t('scopeGrants.form.scopeKinds.instrument') },
-          ]}
-        />
-      </div>
+      <AdminSelectField
+        id='sg-operator'
+        label={t('scopeGrants.form.fields.operator')}
+        value={operatorId}
+        onChange={setOperatorId}
+        options={operators.map(o => ({ value: o.public_id, label: o.label }))}
+        placeholder={t('scopeGrants.form.fields.operatorPlaceholder')}
+        error={errors.operator}
+      />
+      <AdminSelectField
+        id='sg-wallet'
+        label={t('scopeGrants.form.fields.wallet')}
+        value={walletId}
+        onChange={setWalletId}
+        options={wallets.map(w => ({
+          value: w.public_id,
+          label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
+        }))}
+        placeholder={t('common.selectWalletPlaceholder')}
+        error={errors.wallet}
+      />
+      <AdminSelectField
+        id='sg-scope-kind'
+        label={t('scopeGrants.form.fields.scopeKind')}
+        value={scopeKind}
+        onChange={val => setScopeKind(val as 'underlying' | 'instrument')}
+        options={[
+          { value: 'underlying', label: t('scopeGrants.form.scopeKinds.underlying') },
+          { value: 'instrument', label: t('scopeGrants.form.scopeKinds.instrument') },
+        ]}
+      />
       <AdminTextField
         id='sg-target'
         type='text'

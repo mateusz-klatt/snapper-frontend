@@ -1,6 +1,15 @@
 import { toast } from 'react-hot-toast'
 
-export const showConflictAwareErrorToast = (
+export const showSuccessToastAndClose = (message: string, close: () => void): void => {
+  toast.success(message)
+  close()
+}
+
+export const showErrorToast = (err: Error, fallbackMessage: string): void => {
+  toast.error(err.message || fallbackMessage)
+}
+
+const showConflictAwareErrorToast = (
   err: Error,
   conflictMessage: string,
   fallbackMessage: string
@@ -20,3 +29,13 @@ export const showConflictAwareErrorToast = (
 
   toast.error(message || fallbackMessage)
 }
+
+export const createConflictMutationFeedback = (
+  successMessage: string,
+  close: () => void,
+  conflictMessage: string,
+  fallbackMessage: string
+) => ({
+  onSuccess: () => showSuccessToastAndClose(successMessage, close),
+  onError: (err: Error) => showConflictAwareErrorToast(err, conflictMessage, fallbackMessage),
+})

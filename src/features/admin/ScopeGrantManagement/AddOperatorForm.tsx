@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { toast } from 'react-hot-toast'
 import { AdminTextField } from '../components/AdminFormFields'
 import { AdminFormModal } from '../components/AdminFormModal'
-import { showConflictAwareErrorToast } from '../formFeedback'
+import { createConflictMutationFeedback } from '../formFeedback'
 import { useCreateOperator } from '../../../hooks/queries/wallets'
 
 interface AddOperatorFormProps {
@@ -47,19 +46,12 @@ const AddOperatorForm: React.FC<Readonly<AddOperatorFormProps>> = ({ open, onClo
         label: label.trim(),
         ...(trimmedDescription ? { description: trimmedDescription } : {}),
       },
-      {
-        onSuccess: () => {
-          toast.success(t('operators.form.toast.created'))
-          handleClose()
-        },
-        onError: (err: Error) => {
-          showConflictAwareErrorToast(
-            err,
-            t('operators.form.toast.conflictError'),
-            t('operators.form.toast.createError')
-          )
-        },
-      }
+      createConflictMutationFeedback(
+        t('operators.form.toast.created'),
+        handleClose,
+        t('operators.form.toast.conflictError'),
+        t('operators.form.toast.createError')
+      )
     )
   }
 

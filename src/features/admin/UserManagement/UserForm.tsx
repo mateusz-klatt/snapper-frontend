@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { toast } from 'react-hot-toast'
-import { ThemeSelect } from '../../../components/ThemeSelect'
-import { AdminPasswordField, AdminTextField } from '../components/AdminFormFields'
+import { AdminPasswordField, AdminSelectField, AdminTextField } from '../components/AdminFormFields'
 import { AdminFormModal } from '../components/AdminFormModal'
+import { showErrorToast, showSuccessToastAndClose } from '../formFeedback'
 import { useCreateUser, useUpdateUser, useAdminResetPassword } from '../../../hooks/queries/users'
 import type { UserProfile, UserRole } from '../../../types/api'
 
@@ -60,54 +59,6 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
   const createMutation = useCreateUser()
   const updateMutation = useUpdateUser()
   const resetPasswordMutation = useAdminResetPassword()
-  const createUserMutation = {
-    mutate: (data: {
-      username: string
-      password: string
-      email: string
-      role: UserRole
-      is_active: boolean
-    }) => {
-      createMutation.mutate(data, {
-        onSuccess: () => {
-          toast.success(t('users.form.toast.created'))
-          onClose()
-        },
-        onError: (err: Error) => toast.error(err.message || t('users.form.toast.createError')),
-      })
-    },
-    isPending: createMutation.isPending,
-  }
-  const updateUserMutation = {
-    mutate: (data: { email: string; role: UserRole; is_active: boolean }) => {
-      updateMutation.mutate(
-        { userId: formData.username, data },
-        {
-          onSuccess: () => {
-            toast.success(t('users.form.toast.updated'))
-            onClose()
-          },
-          onError: (err: Error) => toast.error(err.message || t('users.form.toast.updateError')),
-        }
-      )
-    },
-    isPending: updateMutation.isPending,
-  }
-  const adminResetPasswordMutation = {
-    mutate: (data: { new_password: string }) => {
-      resetPasswordMutation.mutate(
-        { userId: formData.username, data },
-        {
-          onSuccess: () => {
-            toast.success(t('users.form.toast.passwordReset'))
-            onClose()
-          },
-          onError: (err: Error) => toast.error(err.message || t('users.form.toast.resetError')),
-        }
-      )
-    },
-    isPending: resetPasswordMutation.isPending,
-  }
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {}
@@ -151,52 +102,64 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
         formData.email !== (user.email ?? '') ||
         formData.role !== user.role ||
         formData.is_active !== user.is_active
+      const profilePayload = {
+        email: formData.email,
+        role: formData.role,
+        is_active: formData.is_active,
+      }
 
       if (resetPassword && profileChanged) {
         updateMutation.mutate(
           {
             userId: formData.username,
-            data: {
-              email: formData.email,
-              role: formData.role,
-              is_active: formData.is_active,
-            },
+            data: profilePayload,
           },
           {
             onSuccess: () =>
               resetPasswordMutation.mutate(
                 { userId: formData.username, data: { new_password: formData.password } },
                 {
-                  onSuccess: () => {
-                    toast.success(t('users.form.toast.updated'))
-                    onClose()
-                  },
-                  onError: (err: Error) =>
-                    toast.error(err.message || t('users.form.toast.resetError')),
+                  onSuccess: () => showSuccessToastAndClose(t('users.form.toast.updated'), onClose),
+                  onError: (err: Error) => showErrorToast(err, t('users.form.toast.resetError')),
                 }
               ),
-            onError: (err: Error) => toast.error(err.message || t('users.form.toast.updateError')),
+            onError: (err: Error) => showErrorToast(err, t('users.form.toast.updateError')),
           }
         )
       } else if (resetPassword) {
-        adminResetPasswordMutation.mutate({
-          new_password: formData.password,
-        })
+        resetPasswordMutation.mutate(
+          {
+            userId: formData.username,
+            data: { new_password: formData.password },
+          },
+          {
+            onSuccess: () => showSuccessToastAndClose(t('users.form.toast.passwordReset'), onClose),
+            onError: (err: Error) => showErrorToast(err, t('users.form.toast.resetError')),
+          }
+        )
       } else {
-        updateUserMutation.mutate({
+        updateMutation.mutate(
+          { userId: formData.username, data: profilePayload },
+          {
+            onSuccess: () => showSuccessToastAndClose(t('users.form.toast.updated'), onClose),
+            onError: (err: Error) => showErrorToast(err, t('users.form.toast.updateError')),
+          }
+        )
+      }
+    } else {
+      createMutation.mutate(
+        {
+          username: formData.username,
+          password: formData.password,
           email: formData.email,
           role: formData.role,
           is_active: formData.is_active,
-        })
-      }
-    } else {
-      createUserMutation.mutate({
-        username: formData.username,
-        password: formData.password,
-        email: formData.email,
-        role: formData.role,
-        is_active: formData.is_active,
-      })
+        },
+        {
+          onSuccess: () => showSuccessToastAndClose(t('users.form.toast.created'), onClose),
+          onError: (err: Error) => showErrorToast(err, t('users.form.toast.createError')),
+        }
+      )
     }
   }
 
@@ -209,9 +172,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
   }
 
   const isPending =
-    createUserMutation.isPending ||
-    updateUserMutation.isPending ||
-    adminResetPasswordMutation.isPending
+    createMutation.isPending || updateMutation.isPending || resetPasswordMutation.isPending
 
   return (
     <AdminFormModal
@@ -287,32 +248,30 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
         placeholder={t('users.form.fields.emailPlaceholder')}
         error={errors.email}
       />
-      <div>
-        <label htmlFor='role' className='block text-sm font-medium text-alpine-900 mb-2'>
-          {t('users.form.fields.role')}
-        </label>
-        {isDelegate ? (
-          <input
-            type='text'
-            id='role'
-            value={t('users.form.roles.ai_delegate')}
-            disabled
-            readOnly
-            className='w-full rounded-md border border-dark-600 bg-muted-100 px-3 py-2 text-alpine-900 shadow-sm cursor-not-allowed'
-          />
-        ) : (
-          <ThemeSelect
-            id='role'
-            value={formData.role}
-            onChange={val => handleInputChange('role', val)}
-            options={[
-              { value: 'viewer', label: t('users.form.roles.viewer') },
-              { value: 'operator', label: t('users.form.roles.operator') },
-              { value: 'admin', label: t('users.form.roles.admin') },
-            ]}
-          />
-        )}
-      </div>
+      {isDelegate ? (
+        <AdminTextField
+          id='role'
+          type='text'
+          label={t('users.form.fields.role')}
+          value={t('users.form.roles.ai_delegate')}
+          disabled
+          readOnly
+          className='bg-muted-100 cursor-not-allowed'
+          placeholder=''
+        />
+      ) : (
+        <AdminSelectField
+          id='role'
+          label={t('users.form.fields.role')}
+          value={formData.role}
+          onChange={val => handleInputChange('role', val)}
+          options={[
+            { value: 'viewer', label: t('users.form.roles.viewer') },
+            { value: 'operator', label: t('users.form.roles.operator') },
+            { value: 'admin', label: t('users.form.roles.admin') },
+          ]}
+        />
+      )}
       <div className='flex items-center'>
         <input
           type='checkbox'

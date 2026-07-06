@@ -22,7 +22,7 @@ export const useOperators = () => {
 export const useCreateOperator = () =>
   useInvalidatingMutation<OperatorResponse, CreateOperatorBody>({
     mutationFn: data => createOperator(data),
-    invalidate: queryKeys.operatorsAll,
+    invalidate: ['operators'],
   })
 
 export const useWallets = () => {

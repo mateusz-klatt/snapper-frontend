@@ -1,6 +1,6 @@
 import React from 'react'
-import clsx from 'clsx'
 import { Eye, EyeOff } from 'lucide-react'
+import { ThemeSelect } from '../../../components/ThemeSelect'
 
 const TEXT_INPUT_CLASSES =
   'w-full rounded-md border bg-alpine-50 px-3 py-2 text-alpine-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500'
@@ -11,6 +11,12 @@ const PASSWORD_INPUT_CLASSES =
 const errorBorderClass = (error: string | undefined): string =>
   error ? 'border-loss-500' : 'border-dark-600'
 
+const inputClasses = (
+  baseClasses: string,
+  error: string | undefined,
+  className: string | undefined
+): string => `${baseClasses} ${errorBorderClass(error)}${className ? ` ${className}` : ''}`
+
 interface AdminFieldFrameProps {
   id: string
   label: string
@@ -18,7 +24,7 @@ interface AdminFieldFrameProps {
   children: React.ReactNode
 }
 
-const AdminFieldFrame: React.FC<Readonly<AdminFieldFrameProps>> = ({
+export const AdminFieldFrame: React.FC<Readonly<AdminFieldFrameProps>> = ({
   id,
   label,
   error,
@@ -38,10 +44,11 @@ interface AdminTextFieldProps {
   label: string
   type: 'email' | 'text'
   value: string
-  onChange: (value: string) => void
   placeholder: string
+  onChange?: ((value: string) => void) | undefined
   error?: string | undefined
   disabled?: boolean | undefined
+  readOnly?: boolean | undefined
   className?: string | undefined
 }
 
@@ -54,6 +61,7 @@ export const AdminTextField: React.FC<Readonly<AdminTextFieldProps>> = ({
   placeholder,
   error,
   disabled,
+  readOnly,
   className,
 }) => (
   <AdminFieldFrame id={id} label={label} error={error}>
@@ -61,9 +69,10 @@ export const AdminTextField: React.FC<Readonly<AdminTextFieldProps>> = ({
       type={type}
       id={id}
       value={value}
-      onChange={event => onChange(event.target.value)}
+      onChange={onChange !== undefined ? event => onChange(event.target.value) : undefined}
       disabled={disabled}
-      className={clsx(TEXT_INPUT_CLASSES, errorBorderClass(error), className)}
+      readOnly={readOnly}
+      className={inputClasses(TEXT_INPUT_CLASSES, error, className)}
       placeholder={placeholder}
     />
   </AdminFieldFrame>
@@ -97,7 +106,7 @@ export const AdminPasswordField: React.FC<Readonly<AdminPasswordFieldProps>> = (
         id={id}
         value={value}
         onChange={event => onChange(event.target.value)}
-        className={clsx(PASSWORD_INPUT_CLASSES, errorBorderClass(error))}
+        className={inputClasses(PASSWORD_INPUT_CLASSES, error, undefined)}
         placeholder={placeholder}
       />
       <button
@@ -108,5 +117,40 @@ export const AdminPasswordField: React.FC<Readonly<AdminPasswordFieldProps>> = (
         {visible ? <EyeOff className='w-4 h-4' /> : <Eye className='w-4 h-4' />}
       </button>
     </div>
+  </AdminFieldFrame>
+)
+
+interface AdminSelectOption {
+  value: string
+  label: string
+}
+
+interface AdminSelectFieldProps {
+  id: string
+  label: string
+  value: string
+  onChange: (value: string) => void
+  options: readonly AdminSelectOption[]
+  placeholder?: string | undefined
+  error?: string | undefined
+}
+
+export const AdminSelectField: React.FC<Readonly<AdminSelectFieldProps>> = ({
+  id,
+  label,
+  value,
+  onChange,
+  options,
+  placeholder,
+  error,
+}) => (
+  <AdminFieldFrame id={id} label={label} error={error}>
+    <ThemeSelect
+      id={id}
+      value={value}
+      onChange={onChange}
+      options={options}
+      {...(placeholder !== undefined ? { placeholder } : {})}
+    />
   </AdminFieldFrame>
 )
