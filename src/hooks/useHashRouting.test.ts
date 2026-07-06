@@ -12,44 +12,76 @@ describe('useHashRouting', () => {
   afterEach(() => {
     globalThis.location.hash = originalHash
   })
-  it('returns default route when no hash present', () => {
+  it.each([
+    {
+      name: 'returns default route and sets initial hash when no hash present',
+      initialHash: '',
+      expectedRoute: 'overview',
+      expectedHash: '#overview',
+    },
+    {
+      name: 'returns current hash when valid',
+      initialHash: '#market',
+      expectedRoute: 'market',
+      expectedHash: '#market',
+    },
+    {
+      name: 'matches route even when hash includes query string',
+      initialHash: '#backtests?wallet=019ded78&operator=o-1',
+      expectedRoute: 'backtests',
+      expectedHash: '#backtests?wallet=019ded78&operator=o-1',
+    },
+    {
+      name: 'falls back to default for invalid hash',
+      initialHash: '#invalid-route',
+      expectedRoute: 'overview',
+      expectedHash: undefined,
+    },
+  ] satisfies {
+    name: string
+    initialHash: string
+    expectedRoute: ValidTab
+    expectedHash: string | undefined
+  }[])('$name', ({ initialHash, expectedRoute, expectedHash }) => {
+    globalThis.location.hash = initialHash
     const { result } = renderHook(() => useTabRouting())
 
-    expect(result.current[0]).toBe('overview')
-  })
-  it('sets initial hash to default route', () => {
-    renderHook(() => useTabRouting())
-    expect(globalThis.location.hash).toBe('#overview')
-  })
-  it('returns current hash when valid', () => {
-    globalThis.location.hash = '#market'
-    const { result } = renderHook(() => useTabRouting())
+    expect(result.current[0]).toBe(expectedRoute)
 
-    expect(result.current[0]).toBe('market')
+    if (expectedHash !== undefined) {
+      expect(globalThis.location.hash).toBe(expectedHash)
+    }
   })
-  it('navigates to new route', () => {
+  it.each([
+    {
+      name: 'navigates to new route',
+      initialHash: '',
+      nextRoute: 'processes',
+      expectedRoute: 'processes',
+      expectedHash: '#processes',
+    },
+    {
+      name: 'preserves query string when navigating between routes',
+      initialHash: '#market?wallet=w-1&operator=o-1',
+      nextRoute: 'positions',
+      expectedRoute: 'positions',
+      expectedHash: '#positions?wallet=w-1&operator=o-1',
+    },
+  ] satisfies {
+    name: string
+    initialHash: string
+    nextRoute: ValidTab
+    expectedRoute: ValidTab
+    expectedHash: string
+  }[])('$name', ({ initialHash, nextRoute, expectedRoute, expectedHash }) => {
+    globalThis.location.hash = initialHash
     const { result } = renderHook(() => useTabRouting())
 
     act(() => {
-      result.current[1]('processes')
+      result.current[1](nextRoute)
     })
-    expect(result.current[0]).toBe('processes')
-    expect(globalThis.location.hash).toBe('#processes')
-  })
-  it('preserves query string when navigating between routes', () => {
-    globalThis.location.hash = '#market?wallet=w-1&operator=o-1'
-    const { result } = renderHook(() => useTabRouting())
-
-    act(() => {
-      result.current[1]('positions')
-    })
-    expect(globalThis.location.hash).toBe('#positions?wallet=w-1&operator=o-1')
-  })
-  it('matches route even when hash includes query string', () => {
-    globalThis.location.hash = '#backtests?wallet=019ded78&operator=o-1'
-    const { result } = renderHook(() => useTabRouting())
-
-    expect(result.current[0]).toBe('backtests')
+    expect(result.current[0]).toBe(expectedRoute)
+    expect(globalThis.location.hash).toBe(expectedHash)
   })
   it('handles all valid tabs', () => {
     const validTabs: ValidTab[] = [
@@ -77,12 +109,6 @@ describe('useHashRouting', () => {
       expect(result.current[0]).toBe(tab)
       expect(globalThis.location.hash).toBe(`#${tab}`)
     })
-  })
-  it('falls back to default for invalid hash', () => {
-    globalThis.location.hash = '#invalid-route'
-    const { result } = renderHook(() => useTabRouting())
-
-    expect(result.current[0]).toBe('overview')
   })
   it('responds to hashchange events', () => {
     const { result } = renderHook(() => useTabRouting())
@@ -151,23 +177,42 @@ describe('useHashSubpath', () => {
   afterEach(() => {
     globalThis.location.hash = originalHash
   })
-  it('returns [] when the hash does not match the requested tab', () => {
-    globalThis.location.hash = '#orders'
+  it.each([
+    {
+      name: 'returns [] when the hash does not match the requested tab',
+      hash: '#orders',
+      expectedSubpath: [],
+    },
+    {
+      name: 'returns [] when the hash is just the tab with no sub-path',
+      hash: '#backtests',
+      expectedSubpath: [],
+    },
+    {
+      name: 'returns the sub-path segments for a matching hash',
+      hash: '#backtests/run-1/equity',
+      expectedSubpath: ['run-1', 'equity'],
+    },
+    {
+      name: 'strips ?query before segmenting (deep route + scope persistence)',
+      hash: '#backtests/01948f94-abcd?wallet=w-1',
+      expectedSubpath: ['01948f94-abcd'],
+    },
+    {
+      name: 'strips ?query when only the tab is present with scope params',
+      hash: '#backtests?wallet=w-1&operator=o-1',
+      expectedSubpath: [],
+    },
+    {
+      name: 'strips ?query across multiple deep segments',
+      hash: '#backtests/run-1/equity?wallet=w-1',
+      expectedSubpath: ['run-1', 'equity'],
+    },
+  ])('$name', ({ hash, expectedSubpath }) => {
+    globalThis.location.hash = hash
     const { result } = renderHook(() => useHashSubpath('backtests'))
 
-    expect(result.current).toEqual([])
-  })
-  it('returns [] when the hash is just the tab with no sub-path', () => {
-    globalThis.location.hash = '#backtests'
-    const { result } = renderHook(() => useHashSubpath('backtests'))
-
-    expect(result.current).toEqual([])
-  })
-  it('returns the sub-path segments for a matching hash', () => {
-    globalThis.location.hash = '#backtests/run-1/equity'
-    const { result } = renderHook(() => useHashSubpath('backtests'))
-
-    expect(result.current).toEqual(['run-1', 'equity'])
+    expect(result.current).toEqual(expectedSubpath)
   })
   it('updates when the hash changes', () => {
     globalThis.location.hash = '#backtests'
@@ -179,23 +224,5 @@ describe('useHashSubpath', () => {
       globalThis.dispatchEvent(new HashChangeEvent('hashchange'))
     })
     expect(result.current).toEqual(['run-2'])
-  })
-  it('strips ?query before segmenting (deep route + scope persistence)', () => {
-    globalThis.location.hash = '#backtests/01948f94-abcd?wallet=w-1'
-    const { result } = renderHook(() => useHashSubpath('backtests'))
-
-    expect(result.current).toEqual(['01948f94-abcd'])
-  })
-  it('strips ?query when only the tab is present with scope params', () => {
-    globalThis.location.hash = '#backtests?wallet=w-1&operator=o-1'
-    const { result } = renderHook(() => useHashSubpath('backtests'))
-
-    expect(result.current).toEqual([])
-  })
-  it('strips ?query across multiple deep segments', () => {
-    globalThis.location.hash = '#backtests/run-1/equity?wallet=w-1'
-    const { result } = renderHook(() => useHashSubpath('backtests'))
-
-    expect(result.current).toEqual(['run-1', 'equity'])
   })
 })

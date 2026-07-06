@@ -44,43 +44,21 @@ describe('Overview', () => {
     vi.clearAllMocks()
     useProcessMetricsStore.getState().reset()
   })
-  it('renders overview page', () => {
+  it.each([
+    ['renders overview page', ['Feeds Running']],
+    ['displays metric cards', ['Strategies Active', 'Open Orders', "Today's Executions"]],
+    ['displays process status section', ['Process Status']],
+    ['displays portfolio summary section', ['Portfolio Summary']],
+    ['displays recent signals section', ['Recent Signals']],
+    ['displays recent executions section', ['Recent Executions']],
+    ['shows no positions message when data is null', ['No positions data available']],
+    ['shows no recent signals message when empty', ['No recent signals']],
+    ['shows no recent executions message when empty', ['No recent executions']],
+  ])('%s', (_name, expectedTexts) => {
     renderWithMocks(<Overview />)
-    expect(screen.getByText('Feeds Running')).toBeInTheDocument()
-  })
-  it('displays metric cards', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('Strategies Active')).toBeInTheDocument()
-    expect(screen.getByText('Open Orders')).toBeInTheDocument()
-    expect(screen.getByText("Today's Executions")).toBeInTheDocument()
-  })
-  it('displays process status section', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('Process Status')).toBeInTheDocument()
-  })
-  it('displays portfolio summary section', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('Portfolio Summary')).toBeInTheDocument()
-  })
-  it('displays recent signals section', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('Recent Signals')).toBeInTheDocument()
-  })
-  it('displays recent executions section', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('Recent Executions')).toBeInTheDocument()
-  })
-  it('shows no positions message when data is null', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('No positions data available')).toBeInTheDocument()
-  })
-  it('shows no recent signals message when empty', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('No recent signals')).toBeInTheDocument()
-  })
-  it('shows no recent executions message when empty', () => {
-    renderWithMocks(<Overview />)
-    expect(screen.getByText('No recent executions')).toBeInTheDocument()
+    expectedTexts.forEach(text => {
+      expect(screen.getByText(text)).toBeInTheDocument()
+    })
   })
   it('handles undefined store values with defaults', async () => {
     const { useExecutions } = await import('../../hooks/queries/orders')

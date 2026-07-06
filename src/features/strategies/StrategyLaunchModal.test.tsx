@@ -82,7 +82,19 @@ describe('StrategyLaunchModal', () => {
     )
     expect(screen.getByText(/No strategy templates registered/i)).toBeTruthy()
   })
-  it('displays template dropdown with options', async () => {
+  it.each([
+    { name: 'displays template dropdown with options', expectedTexts: ['Strategy template'] },
+    { name: 'displays process name input', expectedTexts: ['Process name'] },
+    { name: 'displays strategy instance name input', expectedTexts: ['Strategy instance name'] },
+    { name: 'displays execution mode selector', expectedTexts: ['Execution mode'] },
+    { name: 'displays autostart checkbox', expectedTexts: ['Autostart on server boot'] },
+    {
+      name: 'displays start immediately checkbox',
+      expectedTexts: ['Start immediately after registration'],
+    },
+    { name: 'displays note textarea', expectedTexts: ['Note (optional)'] },
+    { name: 'displays cancel and submit buttons', expectedTexts: ['Cancel', 'Register strategy'] },
+  ])('$name', async ({ expectedTexts }) => {
     renderWithProviders(
       <StrategyLaunchModal
         open={true}
@@ -92,99 +104,9 @@ describe('StrategyLaunchModal', () => {
       />
     )
     await waitFor(() => {
-      expect(screen.getByText('Strategy template')).toBeTruthy()
-    })
-  })
-  it('displays process name input', async () => {
-    renderWithProviders(
-      <StrategyLaunchModal
-        open={true}
-        onClose={mockOnClose}
-        templates={mockTemplates}
-        onSubmit={mockOnSubmit}
-      />
-    )
-    await waitFor(() => {
-      expect(screen.getByText('Process name')).toBeTruthy()
-    })
-  })
-  it('displays strategy instance name input', async () => {
-    renderWithProviders(
-      <StrategyLaunchModal
-        open={true}
-        onClose={mockOnClose}
-        templates={mockTemplates}
-        onSubmit={mockOnSubmit}
-      />
-    )
-    await waitFor(() => {
-      expect(screen.getByText('Strategy instance name')).toBeTruthy()
-    })
-  })
-  it('displays execution mode selector', async () => {
-    renderWithProviders(
-      <StrategyLaunchModal
-        open={true}
-        onClose={mockOnClose}
-        templates={mockTemplates}
-        onSubmit={mockOnSubmit}
-      />
-    )
-    await waitFor(() => {
-      expect(screen.getByText('Execution mode')).toBeTruthy()
-    })
-  })
-  it('displays autostart checkbox', async () => {
-    renderWithProviders(
-      <StrategyLaunchModal
-        open={true}
-        onClose={mockOnClose}
-        templates={mockTemplates}
-        onSubmit={mockOnSubmit}
-      />
-    )
-    await waitFor(() => {
-      expect(screen.getByText('Autostart on server boot')).toBeTruthy()
-    })
-  })
-  it('displays start immediately checkbox', async () => {
-    renderWithProviders(
-      <StrategyLaunchModal
-        open={true}
-        onClose={mockOnClose}
-        templates={mockTemplates}
-        onSubmit={mockOnSubmit}
-      />
-    )
-    await waitFor(() => {
-      expect(screen.getByText('Start immediately after registration')).toBeTruthy()
-    })
-  })
-  it('displays note textarea', async () => {
-    renderWithProviders(
-      <StrategyLaunchModal
-        open={true}
-        onClose={mockOnClose}
-        templates={mockTemplates}
-        onSubmit={mockOnSubmit}
-      />
-    )
-    await waitFor(() => {
-      expect(screen.getByText('Note (optional)')).toBeTruthy()
-    })
-  })
-  it('displays cancel and submit buttons', async () => {
-    renderWithProviders(
-      <StrategyLaunchModal
-        open={true}
-        onClose={mockOnClose}
-        templates={mockTemplates}
-        onSubmit={mockOnSubmit}
-      />
-    )
-    await waitFor(() => {
-      expect(screen.getByText('Cancel')).toBeTruthy()
-      expect(screen.getByText('Register strategy')).toBeTruthy()
+      expectedTexts.forEach(text => {
+        expect(screen.getByText(text)).toBeTruthy()
+      })
     })
   })
   it('calls onClose when cancel is clicked', async () => {

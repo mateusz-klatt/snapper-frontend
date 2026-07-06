@@ -97,46 +97,26 @@ describe('Modal', () => {
     fireEvent.click(content)
     expect(onClose).not.toHaveBeenCalled()
   })
-  it('applies correct size class for sm size', () => {
-    render(
-      <Modal open={true} onClose={vi.fn()} size='sm'>
-        <div>Modal content</div>
-      </Modal>
-    )
-    const modal = document.querySelector('.max-w-md')
+  it.each([
+    ['applies correct size class for sm size', 'sm', '.max-w-md'],
+    ['applies correct size class for md size (default)', undefined, '.max-w-lg'],
+    ['applies correct size class for lg size', 'lg', '.max-w-2xl'],
+    ['applies correct size class for xl size', 'xl', '.max-w-4xl'],
+  ] satisfies [string, 'sm' | 'md' | 'lg' | 'xl' | undefined, string][])(
+    '%s',
+    (_name, size, expectedClass) => {
+      const sizeProps = size === undefined ? {} : { size }
 
-    expect(modal).toBeInTheDocument()
-  })
-  it('applies correct size class for md size (default)', () => {
-    render(
-      <Modal open={true} onClose={vi.fn()}>
-        <div>Modal content</div>
-      </Modal>
-    )
-    const modal = document.querySelector('.max-w-lg')
+      render(
+        <Modal open={true} onClose={vi.fn()} {...sizeProps}>
+          <div>Modal content</div>
+        </Modal>
+      )
+      const modal = document.querySelector(expectedClass)
 
-    expect(modal).toBeInTheDocument()
-  })
-  it('applies correct size class for lg size', () => {
-    render(
-      <Modal open={true} onClose={vi.fn()} size='lg'>
-        <div>Modal content</div>
-      </Modal>
-    )
-    const modal = document.querySelector('.max-w-2xl')
-
-    expect(modal).toBeInTheDocument()
-  })
-  it('applies correct size class for xl size', () => {
-    render(
-      <Modal open={true} onClose={vi.fn()} size='xl'>
-        <div>Modal content</div>
-      </Modal>
-    )
-    const modal = document.querySelector('.max-w-4xl')
-
-    expect(modal).toBeInTheDocument()
-  })
+      expect(modal).toBeInTheDocument()
+    }
+  )
   it('sets body overflow to hidden when open', () => {
     document.body.style.overflow = ''
     const { rerender } = render(

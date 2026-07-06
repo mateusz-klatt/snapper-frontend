@@ -18,17 +18,13 @@ describe('Admin', () => {
     expect(screen.getByText('Administration')).toBeInTheDocument()
     expect(screen.getByText(/Manage users and system configuration/i)).toBeInTheDocument()
   })
-  it('renders user management component', () => {
+  it.each([
+    ['renders user management component', 'user-management'],
+    ['renders scope grant management component', 'scope-grant-management'],
+    ['renders credential management component', 'credential-management'],
+  ])('%s', (_name, testId) => {
     render(<Admin />)
-    expect(screen.getByTestId('user-management')).toBeInTheDocument()
-  })
-  it('renders scope grant management component', () => {
-    render(<Admin />)
-    expect(screen.getByTestId('scope-grant-management')).toBeInTheDocument()
-  })
-  it('renders credential management component', () => {
-    render(<Admin />)
-    expect(screen.getByTestId('credential-management')).toBeInTheDocument()
+    expect(screen.getByTestId(testId)).toBeInTheDocument()
   })
   it('applies correct styling classes', () => {
     const { container } = render(<Admin />)

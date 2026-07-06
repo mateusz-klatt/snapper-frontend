@@ -461,66 +461,16 @@ describe('Processes', () => {
       expect(screen.getByText('Process Control')).toBeTruthy()
     })
   })
-  it('opens execution mode modal on start', async () => {
+  it.each([
+    { name: 'opens execution mode modal on start', running: false },
+    { name: 'stops a running process', running: true },
+    { name: 'displays process with heartbeat status', running: true },
+  ])('$name', async ({ running }) => {
     const items = [
       makeConfiguredProcess({
         name: 'executor_kraken',
         enabled: true,
-        running: false,
-        class_path: 'snapper.executor',
-        method: 'main',
-        parameters: {},
-        lifecycle: 'long_running',
-        role: 'core',
-        tags: [],
-        is_one_shot: false,
-      }),
-    ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
-
-    vi.mocked(useConfiguredProcesses).mockReturnValue({
-      data: makeListEnvelope('configured_processes', items),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Processes />)
-    await waitFor(() => {
-      expect(screen.getByText('Process Control')).toBeTruthy()
-    })
-  })
-  it('stops a running process', async () => {
-    const items = [
-      makeConfiguredProcess({
-        name: 'executor_kraken',
-        enabled: true,
-        running: true,
-        class_path: 'snapper.executor',
-        method: 'main',
-        parameters: {},
-        lifecycle: 'long_running',
-        role: 'core',
-        tags: [],
-        is_one_shot: false,
-      }),
-    ]
-    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
-
-    vi.mocked(useConfiguredProcesses).mockReturnValue({
-      data: makeListEnvelope('configured_processes', items),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Processes />)
-    await waitFor(() => {
-      expect(screen.getByText('Process Control')).toBeTruthy()
-    })
-  })
-  it('displays process with heartbeat status', async () => {
-    const items = [
-      makeConfiguredProcess({
-        name: 'executor_kraken',
-        enabled: true,
-        running: true,
+        running,
         class_path: 'snapper.executor',
         method: 'main',
         parameters: {},

@@ -36,41 +36,39 @@ describe('UserList', () => {
     vi.clearAllMocks()
     vi.mocked(listUsers).mockResolvedValue(makeListEnvelope('user_list', []) as never)
   })
-  it('renders user list', async () => {
+  it.each([
+    { name: 'renders user list', expectedText: 'User Management' },
+    { name: 'shows loading state', expectsSpinner: true },
+    { name: 'displays add user button', expectedText: 'Add User' },
+    {
+      name: 'calls onCreateUser when add button clicked',
+      expectedText: 'Add User',
+      clickCreateUser: true,
+    },
+    { name: 'shows no users message when list is empty', expectedText: 'No users found' },
+    { name: 'displays toggle for inactive users', expectedText: 'Show inactive' },
+  ] satisfies {
+    name: string
+    expectedText?: string
+    expectsSpinner?: boolean
+    clickCreateUser?: boolean
+  }[])('$name', async ({ expectedText, expectsSpinner, clickCreateUser }) => {
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
+
+    if (expectsSpinner === true) {
+      expect(document.querySelector('.animate-spin')).toBeTruthy()
+
+      return
+    }
+
     await waitFor(() => {
-      expect(screen.getByText('User Management')).toBeTruthy()
+      expect(screen.getByText(expectedText as string)).toBeTruthy()
     })
-  })
-  it('shows loading state', () => {
-    renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
-    expect(document.querySelector('.animate-spin')).toBeTruthy()
-  })
-  it('displays add user button', async () => {
-    renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
-    await waitFor(() => {
-      expect(screen.getByText('Add User')).toBeTruthy()
-    })
-  })
-  it('calls onCreateUser when add button clicked', async () => {
-    renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
-    await waitFor(() => {
-      expect(screen.getByText('Add User')).toBeTruthy()
-    })
-    await userEvent.click(screen.getByText('Add User'))
-    expect(mockOnCreateUser).toHaveBeenCalled()
-  })
-  it('shows no users message when list is empty', async () => {
-    renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
-    await waitFor(() => {
-      expect(screen.getByText('No users found')).toBeTruthy()
-    })
-  })
-  it('displays toggle for inactive users', async () => {
-    renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
-    await waitFor(() => {
-      expect(screen.getByText('Show inactive')).toBeTruthy()
-    })
+
+    if (clickCreateUser === true) {
+      await userEvent.click(screen.getByText(expectedText as string))
+      expect(mockOnCreateUser).toHaveBeenCalled()
+    }
   })
   it('displays users list', async () => {
     vi.mocked(listUsers).mockResolvedValue(
