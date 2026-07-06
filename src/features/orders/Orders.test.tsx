@@ -415,14 +415,44 @@ describe('Orders', () => {
       expect(screen.getAllByText('Filled').length).toBeGreaterThan(0)
     })
   })
-  it('displays order with different statuses', async () => {
+  it.each([
+    {
+      name: 'displays order with different statuses',
+      clientOrderId: '3',
+      status: 'cancelled',
+      expectedTexts: ['Cancelled'],
+    },
+    {
+      name: 'displays order with new status',
+      clientOrderId: '6',
+      status: 'new',
+      expectedTexts: ['New'],
+    },
+    {
+      name: 'displays rejected order status',
+      clientOrderId: '4',
+      status: 'rejected',
+      expectedTexts: ['Rejected', 'BTC/USD'],
+    },
+    {
+      name: 'displays partially_filled order status',
+      clientOrderId: '5',
+      status: 'partially_filled',
+      expectedTexts: ['Partially Filled'],
+    },
+  ] satisfies {
+    name: string
+    clientOrderId: string
+    status: Order['status']
+    expectedTexts: string[]
+  }[])('$name', async ({ clientOrderId, status, expectedTexts }) => {
     const mockOrders: Order[] = [
       {
         sequenceId: 0,
         publicId: 'test-pid',
         timestamp: new Date('2024-01-01T00:00:00Z'),
         sessionId: 'test-sid',
-        clientOrderId: '3',
+        clientOrderId,
         instrument: 'BTC/USD',
         exchange: 'kraken',
         side: 'buy',
@@ -430,7 +460,7 @@ describe('Orders', () => {
         size: 1,
         filledSize: 0,
         price: 45000,
-        status: 'cancelled',
+        status,
         createdAt: new Date('2024-01-01T00:00:00Z'),
         updatedAt: null,
       },
@@ -444,104 +474,9 @@ describe('Orders', () => {
     } as never)
     renderWithProviders(<Orders />)
     await waitFor(() => {
-      expect(screen.getAllByText('Cancelled').length).toBeGreaterThan(0)
-    })
-  })
-  it('displays order with new status', async () => {
-    const mockOrders: Order[] = [
-      {
-        sequenceId: 0,
-        publicId: 'test-pid',
-        timestamp: new Date('2024-01-01T00:00:00Z'),
-        sessionId: 'test-sid',
-        clientOrderId: '6',
-        instrument: 'BTC/USD',
-        exchange: 'kraken',
-        side: 'buy',
-        orderType: 'limit',
-        size: 1,
-        filledSize: 0,
-        price: 45000,
-        status: 'new',
-        createdAt: new Date('2024-01-01T00:00:00Z'),
-        updatedAt: null,
-      },
-    ]
-    const { useOrders } = await import('../../hooks/queries/orders')
-
-    vi.mocked(useOrders).mockReturnValue({
-      data: mockOrders,
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Orders />)
-    await waitFor(() => {
-      expect(screen.getAllByText('New').length).toBeGreaterThan(0)
-    })
-  })
-  it('displays rejected order status', async () => {
-    const mockOrders: Order[] = [
-      {
-        sequenceId: 0,
-        publicId: 'test-pid',
-        timestamp: new Date('2024-01-01T00:00:00Z'),
-        sessionId: 'test-sid',
-        clientOrderId: '4',
-        instrument: 'BTC/USD',
-        exchange: 'kraken',
-        side: 'buy',
-        orderType: 'limit',
-        size: 1,
-        filledSize: 0,
-        price: 45000,
-        status: 'rejected',
-        createdAt: new Date('2024-01-01T00:00:00Z'),
-        updatedAt: null,
-      },
-    ]
-    const { useOrders } = await import('../../hooks/queries/orders')
-
-    vi.mocked(useOrders).mockReturnValue({
-      data: mockOrders,
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Orders />)
-    await waitFor(() => {
-      expect(screen.getAllByText('Rejected').length).toBeGreaterThan(0)
-      expect(screen.getByText('BTC/USD')).toBeInTheDocument()
-    })
-  })
-  it('displays partially_filled order status', async () => {
-    const mockOrders: Order[] = [
-      {
-        sequenceId: 0,
-        publicId: 'test-pid',
-        timestamp: new Date('2024-01-01T00:00:00Z'),
-        sessionId: 'test-sid',
-        clientOrderId: '5',
-        instrument: 'BTC/USD',
-        exchange: 'kraken',
-        side: 'buy',
-        orderType: 'limit',
-        size: 1,
-        filledSize: 0,
-        price: 45000,
-        status: 'partially_filled',
-        createdAt: new Date('2024-01-01T00:00:00Z'),
-        updatedAt: null,
-      },
-    ]
-    const { useOrders } = await import('../../hooks/queries/orders')
-
-    vi.mocked(useOrders).mockReturnValue({
-      data: mockOrders,
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Orders />)
-    await waitFor(() => {
-      expect(screen.getAllByText('Partially Filled').length).toBeGreaterThan(0)
+      expectedTexts.forEach(text => {
+        expect(screen.getAllByText(text).length).toBeGreaterThan(0)
+      })
     })
   })
   it('switches to executions tab and displays execution card', async () => {

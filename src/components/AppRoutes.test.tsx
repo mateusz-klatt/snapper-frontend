@@ -76,53 +76,29 @@ describe('AppRoutes', () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
-  it('renders Overview component for overview tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='overview' />)
+  it.each([
+    { activeTab: 'overview', testId: 'overview', label: 'Overview' },
+    { activeTab: 'market', testId: 'market-data', label: 'Market Data' },
+    { activeTab: 'processes', testId: 'processes', label: 'Processes' },
+    { activeTab: 'strategies', testId: 'strategies', label: 'Strategies' },
+    { activeTab: 'orders', testId: 'orders', label: 'Orders' },
+    { activeTab: 'positions', testId: 'positions', label: 'Positions' },
+    { activeTab: 'signals', testId: 'signals', label: 'Signals' },
+    { activeTab: 'backtests', testId: 'backtests', label: 'Backtests', hash: '#backtests' },
+    { activeTab: 'health', testId: 'health', label: 'Health' },
+    { activeTab: 'admin', testId: 'admin', label: 'Admin' },
+    { activeTab: 'ai-integration', testId: 'ai-integration', label: 'AIIntegration' },
+    { activeTab: 'ai-reviews', testId: 'ai-reviews', label: 'AiReviewInbox' },
+    { activeTab: 'settings', testId: 'settings', label: 'Settings' },
+    { activeTab: 'notifications', testId: 'notifications', label: 'Notifications' },
+  ])('renders $label component for $activeTab tab', async ({ activeTab, testId, hash }) => {
+    if (hash !== undefined) {
+      globalThis.location.hash = hash
+    }
+
+    renderWithProviders(<AppRoutes activeTab={activeTab} />)
     await waitFor(() => {
-      expect(screen.getByTestId('overview')).toBeTruthy()
-    })
-  })
-  it('renders Market Data component for market tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='market' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('market-data')).toBeTruthy()
-    })
-  })
-  it('renders Processes component for processes tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='processes' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('processes')).toBeTruthy()
-    })
-  })
-  it('renders Strategies component for strategies tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='strategies' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('strategies')).toBeTruthy()
-    })
-  })
-  it('renders Orders component for orders tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='orders' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('orders')).toBeTruthy()
-    })
-  })
-  it('renders Positions component for positions tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='positions' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('positions')).toBeTruthy()
-    })
-  })
-  it('renders Signals component for signals tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='signals' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('signals')).toBeTruthy()
-    })
-  })
-  it('renders Backtests component for backtests tab', async () => {
-    globalThis.location.hash = '#backtests'
-    renderWithProviders(<AppRoutes activeTab='backtests' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('backtests')).toBeTruthy()
+      expect(screen.getByTestId(testId)).toBeTruthy()
     })
   })
   it('renders BacktestDetailPage when hash has a sub-path', async () => {
@@ -149,42 +125,6 @@ describe('AppRoutes', () => {
     })
     expect(screen.queryByTestId('backtest-detail')).toBeNull()
     expect(screen.queryByTestId('compare-page')).toBeNull()
-  })
-  it('renders Health component for health tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='health' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('health')).toBeTruthy()
-    })
-  })
-  it('renders Admin component for admin tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='admin' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('admin')).toBeTruthy()
-    })
-  })
-  it('renders AIIntegration component for ai-integration tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='ai-integration' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('ai-integration')).toBeTruthy()
-    })
-  })
-  it('renders AiReviewInbox component for ai-reviews tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='ai-reviews' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('ai-reviews')).toBeTruthy()
-    })
-  })
-  it('renders Settings component for settings tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='settings' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('settings')).toBeTruthy()
-    })
-  })
-  it('renders Notifications component for notifications tab', async () => {
-    renderWithProviders(<AppRoutes activeTab='notifications' />)
-    await waitFor(() => {
-      expect(screen.getByTestId('notifications')).toBeTruthy()
-    })
   })
   it('renders Overview as default for unknown tab', async () => {
     renderWithProviders(<AppRoutes activeTab='unknown-tab' />)

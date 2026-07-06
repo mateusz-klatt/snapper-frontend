@@ -787,7 +787,11 @@ describe('Strategies', () => {
     )
     expect(screen.getByLabelText('Status: starting')).toBeTruthy()
   })
-  it('handles start strategy error - already running', async () => {
+  it.each([
+    ['handles start strategy error - already running', 'Strategy is already running'],
+    ['handles start strategy error - not found', 'Process not found'],
+    ['handles start strategy error - network error', 'network timeout'],
+  ])('%s', async (_name, errorMessage) => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
     const { useStartProcessByName } = await import('../../hooks/queries/processes')
     const { useStrategies } = await import('../../hooks/queries/strategies')
@@ -798,7 +802,7 @@ describe('Strategies', () => {
       refetch: vi.fn(),
     } as never)
     const mockMutate = vi.fn().mockImplementation((_data, options) => {
-      options?.onError?.(new Error('Strategy is already running'))
+      options?.onError?.(new Error(errorMessage))
     })
 
     vi.mocked(useStartProcessByName).mockReturnValue({
@@ -820,73 +824,27 @@ describe('Strategies', () => {
     await user.click(screen.getByText('Confirm'))
     expect(mockMutate).toHaveBeenCalled()
   })
-  it('handles start strategy error - not found', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStartProcessByName } = await import('../../hooks/queries/processes')
-    const { useStrategies } = await import('../../hooks/queries/strategies')
-
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    const mockMutate = vi.fn().mockImplementation((_data, options) => {
-      options?.onError?.(new Error('Process not found'))
-    })
-
-    vi.mocked(useStartProcessByName).mockReturnValue({
-      mutate: mockMutate,
-      isPending: false,
-    } as never)
-    const user = (await import('@testing-library/user-event')).default.setup()
-
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(screen.getByText('TEST')).toBeTruthy()
-    })
-    const startButtons = screen.getAllByRole('button', { name: /start/i })
-
-    await user.click(startButtons[0] as HTMLElement)
-    await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeTruthy()
-    })
-    await user.click(screen.getByText('Confirm'))
-    expect(mockMutate).toHaveBeenCalled()
-  })
-  it('handles start strategy error - network error', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
-    const { useStartProcessByName } = await import('../../hooks/queries/processes')
-    const { useStrategies } = await import('../../hooks/queries/strategies')
-
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    const mockMutate = vi.fn().mockImplementation((_data, options) => {
-      options?.onError?.(new Error('network timeout'))
-    })
-
-    vi.mocked(useStartProcessByName).mockReturnValue({
-      mutate: mockMutate,
-      isPending: false,
-    } as never)
-    const user = (await import('@testing-library/user-event')).default.setup()
-
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(screen.getByText('TEST')).toBeTruthy()
-    })
-    const startButtons = screen.getAllByRole('button', { name: /start/i })
-
-    await user.click(startButtons[0] as HTMLElement)
-    await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeTruthy()
-    })
-    await user.click(screen.getByText('Confirm'))
-    expect(mockMutate).toHaveBeenCalled()
-  })
-  it('handles stop strategy with success', async () => {
+  it.each([
+    {
+      name: 'handles stop strategy with success',
+      errorMessage: undefined,
+      expectPayload: true,
+    },
+    {
+      name: 'handles stop strategy error - not running',
+      errorMessage: 'Strategy is not running',
+      expectPayload: false,
+    },
+    {
+      name: 'handles stop strategy error - network error',
+      errorMessage: 'Network timeout',
+      expectPayload: false,
+    },
+  ] satisfies {
+    name: string
+    errorMessage: string | undefined
+    expectPayload: boolean
+  }[])('$name', async ({ errorMessage, expectPayload }) => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
     const { useStopProcessByName } = await import('../../hooks/queries/processes')
     const { useStrategies } = await import('../../hooks/queries/strategies')
@@ -897,7 +855,13 @@ describe('Strategies', () => {
       refetch: vi.fn(),
     } as never)
     const mockMutate = vi.fn().mockImplementation((_data, options) => {
-      options?.onSuccess?.()
+      if (errorMessage === undefined) {
+        options?.onSuccess?.()
+
+        return
+      }
+
+      options?.onError?.(new Error(errorMessage))
     })
 
     vi.mocked(useStopProcessByName).mockReturnValue({
@@ -917,7 +881,14 @@ describe('Strategies', () => {
       expect(screen.getByText('Confirm')).toBeTruthy()
     })
     await user.click(screen.getByText('Confirm'))
-    expect(mockMutate).toHaveBeenCalledWith({ name: 'strategy_test' }, expect.any(Object))
+
+    if (expectPayload) {
+      expect(mockMutate).toHaveBeenCalledWith({ name: 'strategy_test' }, expect.any(Object))
+
+      return
+    }
+
+    expect(mockMutate).toHaveBeenCalled()
   })
   it('disables stop button while stop mutation is pending for active strategy', async () => {
     const mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
@@ -970,72 +941,6 @@ describe('Strategies', () => {
       </QueryClientProvider>
     )
     expect(screen.getByLabelText('Stop TEST strategy')).toBeDisabled()
-  })
-  it('handles stop strategy error - not running', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStopProcessByName } = await import('../../hooks/queries/processes')
-    const { useStrategies } = await import('../../hooks/queries/strategies')
-
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    const mockMutate = vi.fn().mockImplementation((_data, options) => {
-      options?.onError?.(new Error('Strategy is not running'))
-    })
-
-    vi.mocked(useStopProcessByName).mockReturnValue({
-      mutate: mockMutate,
-      isPending: false,
-    } as never)
-    const user = (await import('@testing-library/user-event')).default.setup()
-
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(screen.getByText('TEST')).toBeTruthy()
-    })
-    const stopButtons = screen.getAllByRole('button', { name: /stop/i })
-
-    await user.click(stopButtons[0] as HTMLElement)
-    await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeTruthy()
-    })
-    await user.click(screen.getByText('Confirm'))
-    expect(mockMutate).toHaveBeenCalled()
-  })
-  it('handles stop strategy error - network error', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStopProcessByName } = await import('../../hooks/queries/processes')
-    const { useStrategies } = await import('../../hooks/queries/strategies')
-
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    const mockMutate = vi.fn().mockImplementation((_data, options) => {
-      options?.onError?.(new Error('Network timeout'))
-    })
-
-    vi.mocked(useStopProcessByName).mockReturnValue({
-      mutate: mockMutate,
-      isPending: false,
-    } as never)
-    const user = (await import('@testing-library/user-event')).default.setup()
-
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(screen.getByText('TEST')).toBeTruthy()
-    })
-    const stopButtons = screen.getAllByRole('button', { name: /stop/i })
-
-    await user.click(stopButtons[0] as HTMLElement)
-    await waitFor(() => {
-      expect(screen.getByText('Confirm')).toBeTruthy()
-    })
-    await user.click(screen.getByText('Confirm'))
-    expect(mockMutate).toHaveBeenCalled()
   })
   it('handles opening and closing strategy launch modal', async () => {
     const user = (await import('@testing-library/user-event')).default.setup()
@@ -1440,82 +1345,87 @@ describe('Strategies', () => {
       )
     }
   })
-  it('handles heartbeat message for error status', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries/strategies')
+  it.each([
+    {
+      name: 'handles heartbeat message for error status',
+      strategyName: 'strategy_test',
+      heartbeatComponent: 'strategy_test',
+      heartbeatStatus: 'error',
+      lagMs: 500,
+      sequence: 2,
+      expectedText: undefined,
+    },
+    {
+      name: 'handles heartbeat message for ok status',
+      strategyName: 'strategy_test',
+      heartbeatComponent: 'strategy_test',
+      heartbeatStatus: 'healthy',
+      lagMs: 10,
+      sequence: 3,
+      expectedText: undefined,
+    },
+    {
+      name: 'defaults lag_ms to 0 when missing from heartbeat',
+      strategyName: 'test',
+      heartbeatComponent: 'strategy_test',
+      heartbeatStatus: 'healthy',
+      lagMs: 0,
+      sequence: 4,
+      expectedText: '0ms',
+    },
+    {
+      name: 'ignores heartbeat messages for unknown strategies',
+      strategyName: 'strategy_known',
+      heartbeatComponent: 'strategy_unknown',
+      heartbeatStatus: 'healthy',
+      lagMs: 10,
+      sequence: 1,
+      expectedText: undefined,
+    },
+  ] satisfies {
+    name: string
+    strategyName: string
+    heartbeatComponent: string
+    heartbeatStatus: 'healthy' | 'warning' | 'error'
+    lagMs: number
+    sequence: number
+    expectedText: string | undefined
+  }[])(
+    '$name',
+    async ({
+      strategyName,
+      heartbeatComponent,
+      heartbeatStatus,
+      lagMs,
+      sequence,
+      expectedText,
+    }) => {
+      const mockStrategies = [makeStrategyProcess({ name: strategyName, running: true })]
+      const { useStrategies } = await import('../../hooks/queries/strategies')
 
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
-    })
+      vi.mocked(useStrategies).mockReturnValue({
+        data: makeListEnvelope('strategy_list', mockStrategies),
+        isLoading: false,
+        refetch: vi.fn(),
+      } as never)
+      renderWithProviders(<Strategies />)
+      await waitFor(() => {
+        expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
+      })
 
-    if (storedHeartbeatCallback) {
-      storedHeartbeatCallback(createHeartbeat('strategy_test', 'error', 500, 2))
+      if (storedHeartbeatCallback) {
+        storedHeartbeatCallback(
+          createHeartbeat(heartbeatComponent, heartbeatStatus, lagMs, sequence)
+        )
+      }
+
+      if (expectedText !== undefined) {
+        await waitFor(() => {
+          expect(screen.getByText(expectedText)).toBeTruthy()
+        })
+      }
     }
-  })
-  it('handles heartbeat message for ok status', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'strategy_test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries/strategies')
-
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
-    })
-
-    if (storedHeartbeatCallback) {
-      storedHeartbeatCallback(createHeartbeat('strategy_test', 'healthy', 10, 3))
-    }
-  })
-  it('defaults lag_ms to 0 when missing from heartbeat', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'test', running: true })]
-    const { useStrategies } = await import('../../hooks/queries/strategies')
-
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
-    })
-
-    if (storedHeartbeatCallback) {
-      storedHeartbeatCallback(createHeartbeat('strategy_test', 'healthy', 0, 4))
-    }
-
-    await waitFor(() => {
-      expect(screen.getByText('0ms')).toBeTruthy()
-    })
-  })
-  it('ignores heartbeat messages for unknown strategies', async () => {
-    const mockStrategies = [makeStrategyProcess({ name: 'strategy_known', running: true })]
-    const { useStrategies } = await import('../../hooks/queries/strategies')
-
-    vi.mocked(useStrategies).mockReturnValue({
-      data: makeListEnvelope('strategy_list', mockStrategies),
-      isLoading: false,
-      refetch: vi.fn(),
-    } as never)
-    renderWithProviders(<Strategies />)
-    await waitFor(() => {
-      expect(mockWsClient.onMessage).toHaveBeenCalledWith('heartbeat', expect.any(Function))
-    })
-
-    if (storedHeartbeatCallback) {
-      storedHeartbeatCallback(createHeartbeat('strategy_unknown', 'healthy', 10, 1))
-    }
-  })
+  )
   it('clears activeStrategyProcess when stopping process that is not running', async () => {
     let mockStrategies = [makeStrategyProcess({ name: 'strategy_test' })]
     const { useStartProcessByName, useStopProcessByName } =

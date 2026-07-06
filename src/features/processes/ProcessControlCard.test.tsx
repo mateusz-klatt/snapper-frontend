@@ -38,29 +38,26 @@ describe('ProcessControlCard', () => {
     )
     expect(screen.queryByRole('paragraph')).not.toBeInTheDocument()
   })
-  it('shows start button when stopped', () => {
+  it.each([
+    { name: 'shows start button when stopped', status: 'stopped', expectedText: 'Start' },
+    { name: 'shows stop button when running', status: 'running', expectedText: 'Stop' },
+    { name: 'displays status badge', status: 'running', expectedText: 'running' },
+    { name: 'shows restart button when running', status: 'running', expectedText: 'Restart' },
+  ] satisfies {
+    name: string
+    status: 'stopped' | 'running'
+    expectedText: string
+  }[])('$name', ({ status, expectedText }) => {
     renderWithMocks(
       <ProcessControlCard
         title='Test Process'
         description='Test description'
-        status='stopped'
+        status={status}
         onStart={mockOnStart}
         onStop={mockOnStop}
       />
     )
-    expect(screen.getByText('Start')).toBeInTheDocument()
-  })
-  it('shows stop button when running', () => {
-    renderWithMocks(
-      <ProcessControlCard
-        title='Test Process'
-        description='Test description'
-        status='running'
-        onStart={mockOnStart}
-        onStop={mockOnStop}
-      />
-    )
-    expect(screen.getByText('Stop')).toBeInTheDocument()
+    expect(screen.getByText(expectedText)).toBeInTheDocument()
   })
   it('calls onStart when start button clicked', async () => {
     const user = userEvent.setup()
@@ -91,30 +88,6 @@ describe('ProcessControlCard', () => {
     )
     await user.click(screen.getByText('Stop'))
     expect(mockOnStop).toHaveBeenCalled()
-  })
-  it('displays status badge', () => {
-    renderWithMocks(
-      <ProcessControlCard
-        title='Test Process'
-        description='Test description'
-        status='running'
-        onStart={mockOnStart}
-        onStop={mockOnStop}
-      />
-    )
-    expect(screen.getByText('running')).toBeInTheDocument()
-  })
-  it('shows restart button when running', () => {
-    renderWithMocks(
-      <ProcessControlCard
-        title='Test Process'
-        description='Test description'
-        status='running'
-        onStart={mockOnStart}
-        onStop={mockOnStop}
-      />
-    )
-    expect(screen.getByText('Restart')).toBeInTheDocument()
   })
   it('shows restart for a remote-managed enabled process even when stopped', () => {
     renderWithMocks(

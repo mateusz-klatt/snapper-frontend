@@ -23,38 +23,13 @@ describe('AuthErrorBoundary', () => {
     )
     expect(screen.getByText('Test Content')).toBeInTheDocument()
   })
-  it('catches authentication required error', () => {
-    const error = new Error('Authentication required')
-
-    render(
-      <AuthErrorBoundary>
-        <ThrowError error={error} />
-      </AuthErrorBoundary>
-    )
-    expect(screen.queryByText('No error')).not.toBeInTheDocument()
-  })
-  it('catches access denied error', () => {
-    const error = new Error('Access denied')
-
-    render(
-      <AuthErrorBoundary>
-        <ThrowError error={error} />
-      </AuthErrorBoundary>
-    )
-    expect(screen.queryByText('No error')).not.toBeInTheDocument()
-  })
-  it('catches 401 error', () => {
-    const error = new Error('HTTP 401 Unauthorized')
-
-    render(
-      <AuthErrorBoundary>
-        <ThrowError error={error} />
-      </AuthErrorBoundary>
-    )
-    expect(screen.queryByText('No error')).not.toBeInTheDocument()
-  })
-  it('catches 403 error', () => {
-    const error = new Error('HTTP 403 Forbidden')
+  it.each([
+    ['catches authentication required error', 'Authentication required'],
+    ['catches access denied error', 'Access denied'],
+    ['catches 401 error', 'HTTP 401 Unauthorized'],
+    ['catches 403 error', 'HTTP 403 Forbidden'],
+  ])('%s', (_name, message) => {
+    const error = new Error(message)
 
     render(
       <AuthErrorBoundary>

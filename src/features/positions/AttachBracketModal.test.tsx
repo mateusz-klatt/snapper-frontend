@@ -73,40 +73,48 @@ describe('AttachBracketModal', () => {
     )
   })
 
-  it('validates SL below entry for LONG', async () => {
+  it.each([
+    {
+      name: 'validates SL below entry for LONG',
+      side: 'LONG',
+      inputTestId: 'sl-price-input',
+      price: '55000',
+      expectedError: 'SL price must be below entry',
+    },
+    {
+      name: 'validates TP above entry for LONG',
+      side: 'LONG',
+      inputTestId: 'tp-price-input',
+      price: '45000',
+      expectedError: 'TP price must be above entry',
+    },
+    {
+      name: 'validates SL above entry for SHORT',
+      side: 'SHORT',
+      inputTestId: 'sl-price-input',
+      price: '45000',
+      expectedError: 'SL price must be above entry',
+    },
+    {
+      name: 'validates TP below entry for SHORT',
+      side: 'SHORT',
+      inputTestId: 'tp-price-input',
+      price: '55000',
+      expectedError: 'TP price must be below entry',
+    },
+  ] satisfies {
+    name: string
+    side: 'LONG' | 'SHORT'
+    inputTestId: string
+    price: string
+    expectedError: string
+  }[])('$name', async ({ side, inputTestId, price, expectedError }) => {
     const user = userEvent.setup()
 
-    renderWithProviders(<AttachBracketModal {...defaultProps} />)
-    await user.type(screen.getByTestId('sl-price-input'), '55000')
+    renderWithProviders(<AttachBracketModal {...defaultProps} side={side} />)
+    await user.type(screen.getByTestId(inputTestId), price)
     await user.click(screen.getByTestId('bracket-submit'))
-    expect(screen.getByTestId('bracket-error')).toHaveTextContent('SL price must be below entry')
-  })
-
-  it('validates TP above entry for LONG', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<AttachBracketModal {...defaultProps} />)
-    await user.type(screen.getByTestId('tp-price-input'), '45000')
-    await user.click(screen.getByTestId('bracket-submit'))
-    expect(screen.getByTestId('bracket-error')).toHaveTextContent('TP price must be above entry')
-  })
-
-  it('validates SL above entry for SHORT', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<AttachBracketModal {...defaultProps} side='SHORT' />)
-    await user.type(screen.getByTestId('sl-price-input'), '45000')
-    await user.click(screen.getByTestId('bracket-submit'))
-    expect(screen.getByTestId('bracket-error')).toHaveTextContent('SL price must be above entry')
-  })
-
-  it('validates TP below entry for SHORT', async () => {
-    const user = userEvent.setup()
-
-    renderWithProviders(<AttachBracketModal {...defaultProps} side='SHORT' />)
-    await user.type(screen.getByTestId('tp-price-input'), '55000')
-    await user.click(screen.getByTestId('bracket-submit'))
-    expect(screen.getByTestId('bracket-error')).toHaveTextContent('TP price must be below entry')
+    expect(screen.getByTestId('bracket-error')).toHaveTextContent(expectedError)
   })
 
   it('shows confirmation screen with valid LONG SL+TP', async () => {

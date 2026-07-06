@@ -229,69 +229,69 @@ describe('NewOrderModal', () => {
     expect(screen.getByText('Stop Price')).toBeTruthy()
   })
 
-  it('shows error for zero quantity', async () => {
+  it.each([
+    {
+      name: 'shows error for zero quantity',
+      inputValues: [
+        [0, '0'],
+        [1, '50000'],
+      ],
+      expectedError: 'Quantity must be a positive number',
+    },
+    {
+      name: 'shows error for negative price',
+      inputValues: [
+        [0, '1'],
+        [1, '-5'],
+      ],
+      expectedError: 'Price must be a positive number',
+    },
+    {
+      name: 'shows price required error for limit without price',
+      inputValues: [
+        [0, '1'],
+        [1, ''],
+      ],
+      expectedError: 'Price is required for this order type',
+    },
+    {
+      name: 'shows stop price required error for stop without stop_price',
+      orderType: 'stop',
+      inputValues: [[0, '1']],
+      expectedError: 'Stop price is required for this order type',
+    },
+    {
+      name: 'shows stop price positive error for stop with non-positive stop_price',
+      orderType: 'stop',
+      inputValues: [
+        [0, '1'],
+        [1, '0'],
+      ],
+      expectedError: 'Stop price must be a positive number',
+    },
+  ] satisfies {
+    name: string
+    orderType?: 'stop'
+    inputValues: [number, string][]
+    expectedError: string
+  }[])('$name', async ({ orderType, inputValues, expectedError }) => {
     render(<NewOrderModal open={true} onClose={vi.fn()} />, {
       wrapper: createWrapper(),
     })
+
+    if (orderType !== undefined) {
+      const selects = screen.getAllByRole('combobox')
+
+      fireEvent.change(selects[3] as HTMLElement, { target: { value: orderType } })
+    }
+
     const inputs = screen.getAllByPlaceholderText('0.00')
 
-    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0' } })
-    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
-    await userEvent.click(screen.getByText('Review Order'))
-    expect(screen.getByText('Quantity must be a positive number')).toBeTruthy()
-  })
-
-  it('shows error for negative price', async () => {
-    render(<NewOrderModal open={true} onClose={vi.fn()} />, {
-      wrapper: createWrapper(),
+    inputValues.forEach(([index, value]) => {
+      fireEvent.change(inputs[index] as HTMLElement, { target: { value } })
     })
-    const inputs = screen.getAllByPlaceholderText('0.00')
-
-    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
-    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '-5' } })
     await userEvent.click(screen.getByText('Review Order'))
-    expect(screen.getByText('Price must be a positive number')).toBeTruthy()
-  })
-
-  it('shows price required error for limit without price', async () => {
-    render(<NewOrderModal open={true} onClose={vi.fn()} />, {
-      wrapper: createWrapper(),
-    })
-    const inputs = screen.getAllByPlaceholderText('0.00')
-
-    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
-    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '' } })
-    await userEvent.click(screen.getByText('Review Order'))
-    expect(screen.getByText('Price is required for this order type')).toBeTruthy()
-  })
-
-  it('shows stop price required error for stop without stop_price', async () => {
-    render(<NewOrderModal open={true} onClose={vi.fn()} />, {
-      wrapper: createWrapper(),
-    })
-    const selects = screen.getAllByRole('combobox')
-
-    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'stop' } })
-    const inputs = screen.getAllByPlaceholderText('0.00')
-
-    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
-    await userEvent.click(screen.getByText('Review Order'))
-    expect(screen.getByText('Stop price is required for this order type')).toBeTruthy()
-  })
-
-  it('shows stop price positive error for stop with non-positive stop_price', async () => {
-    render(<NewOrderModal open={true} onClose={vi.fn()} />, {
-      wrapper: createWrapper(),
-    })
-    const selects = screen.getAllByRole('combobox')
-
-    fireEvent.change(selects[3] as HTMLElement, { target: { value: 'stop' } })
-    const inputs = screen.getAllByPlaceholderText('0.00')
-
-    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '1' } })
-    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '0' } })
-    await userEvent.click(screen.getByText('Review Order'))
-    expect(screen.getByText('Stop price must be a positive number')).toBeTruthy()
+    expect(screen.getByText(expectedError)).toBeTruthy()
   })
 
   it('renders with empty fallback lists when hooks return undefined data', () => {

@@ -25,6 +25,15 @@ type UserRole = Components['schemas']['UserRole']
  *   ``null`` ("All wallets" picker option).
  */
 type RefreshWalletHint = { walletId: string } | { clear: true } | undefined
+type RefreshRequestBody = { active_wallet_public_id?: string; clear_active_wallet?: true }
+type RefreshPayload = {
+  message?: string
+  ws_token?: string
+  ws_token_exp?: string
+  csrf_token?: string
+  user?: User
+}
+type RefreshEnvelope = { payload: RefreshPayload }
 type WindowWithCallbacks = typeof globalThis & {
   authLogoutCallback?: () => void
   wsDisconnectCallback?: () => void
@@ -160,24 +169,13 @@ export const useAuthStore = create<AuthState>()(
         },
         refreshToken: async (nextWallet?: RefreshWalletHint) => {
           try {
-            let body: { active_wallet_public_id?: string; clear_active_wallet?: true } | undefined
-
-            if (nextWallet !== undefined) {
-              body =
-                'clear' in nextWallet
+            const body: RefreshRequestBody | undefined =
+              nextWallet === undefined
+                ? undefined
+                : 'clear' in nextWallet
                   ? { clear_active_wallet: true }
                   : { active_wallet_public_id: nextWallet.walletId }
-            }
-
-            let envelope: {
-              payload: {
-                message?: string
-                ws_token?: string
-                ws_token_exp?: string
-                csrf_token?: string
-                user?: User
-              }
-            }
+            let envelope: RefreshEnvelope
 
             if (body === undefined) {
               const response = await apiClient.refreshSession()
@@ -186,7 +184,7 @@ export const useAuthStore = create<AuthState>()(
                 throw new Error(`Refresh failed with status ${response.status}`)
               }
 
-              envelope = await response.json()
+              envelope = (await response.json()) as RefreshEnvelope
             } else {
               envelope = await apiClient.postJSON('/api/auth/refresh', body)
             }
