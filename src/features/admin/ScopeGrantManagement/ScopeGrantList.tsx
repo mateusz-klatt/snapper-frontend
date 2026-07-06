@@ -47,6 +47,23 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
       minute: '2-digit',
     })
 
+  const headerActions: Array<{
+    label: string
+    onClick: () => void
+    variant: 'primary' | 'secondary'
+  }> = [
+    {
+      label: t('operators.list.addOperator'),
+      onClick: () => setShowAddOperator(true),
+      variant: 'secondary',
+    },
+    {
+      label: t('scopeGrants.list.createGrant'),
+      onClick: onCreateGrant,
+      variant: 'primary',
+    },
+  ]
+
   return (
     <div className='space-y-4'>
       <div className='flex flex-wrap items-center justify-between gap-2'>
@@ -59,23 +76,18 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
           )}
         </div>
         <div className='flex items-center gap-2'>
-          <Button
-            variant='secondary'
-            onClick={() => setShowAddOperator(true)}
-            disabled={readOnly}
-            className='flex items-center space-x-2'
-          >
-            <Plus className='w-4 h-4' />
-            <span>{t('operators.list.addOperator')}</span>
-          </Button>
-          <Button
-            onClick={onCreateGrant}
-            disabled={readOnly}
-            className='flex items-center space-x-2'
-          >
-            <Plus className='w-4 h-4' />
-            <span>{t('scopeGrants.list.createGrant')}</span>
-          </Button>
+          {headerActions.map(action => (
+            <Button
+              key={action.label}
+              variant={action.variant}
+              onClick={action.onClick}
+              disabled={readOnly}
+              className='flex items-center space-x-2'
+            >
+              <Plus className='w-4 h-4' />
+              <span>{action.label}</span>
+            </Button>
+          ))}
         </div>
       </div>
       <div className='max-w-xs'>

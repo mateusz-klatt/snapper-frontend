@@ -10,6 +10,7 @@ import type {
   HandoverScopeGrantResponse,
 } from '../../types/api'
 import { queryKeys } from './keys'
+import { useInvalidatingMutation } from './mutations'
 
 export const useScopeGrants = (walletPublicId: string) => {
   const { isAuthenticated } = useAuth()
@@ -24,18 +25,11 @@ export const useScopeGrants = (walletPublicId: string) => {
   })
 }
 
-export const useCreateScopeGrant = () => {
-  const queryClient = useQueryClient()
-
-  return useMutation<ScopeGrantResponse, Error, CreateScopeGrantBody>({
+export const useCreateScopeGrant = () =>
+  useInvalidatingMutation<ScopeGrantResponse, CreateScopeGrantBody>({
     mutationFn: data => createScopeGrant(data),
-    onSuccess: (_data, variables) => {
-      queryClient.invalidateQueries({
-        queryKey: queryKeys.scopeGrantsForWallet(variables.wallet_public_id),
-      })
-    },
+    invalidate: (_data, variables) => queryKeys.scopeGrantsForWallet(variables.wallet_public_id),
   })
-}
 
 export const useHandoverScopeGrant = () => {
   const queryClient = useQueryClient()

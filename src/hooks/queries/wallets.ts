@@ -1,9 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { createOperator, getOperators, getWallets } from '../../lib/api/wallets'
 import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
 import type { CreateOperatorBody, OperatorResponse } from '../../types/api'
 import { queryKeys } from './keys'
+import { useInvalidatingMutation } from './mutations'
 
 export const useOperators = () => {
   const { isAuthenticated } = useAuth()
@@ -18,16 +19,11 @@ export const useOperators = () => {
   })
 }
 
-export const useCreateOperator = () => {
-  const queryClient = useQueryClient()
-
-  return useMutation<OperatorResponse, Error, CreateOperatorBody>({
+export const useCreateOperator = () =>
+  useInvalidatingMutation<OperatorResponse, CreateOperatorBody>({
     mutationFn: data => createOperator(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['operators'] })
-    },
+    invalidate: queryKeys.operatorsAll,
   })
-}
 
 export const useWallets = () => {
   const { isAuthenticated } = useAuth()

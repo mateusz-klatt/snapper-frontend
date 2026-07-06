@@ -97,6 +97,7 @@ export const queryKeys = {
     walletId?: string | null
   ) => ['signals', strategyId, limit, instrument, hours, asOf, opId, walletId] as const,
   operators: (asOf: string | null) => ['operators', asOf] as const,
+  operatorsAll: ['operators'] as const,
   wallets: (asOf: string | null, opId?: string | null) => ['wallets', asOf, opId] as const,
   scopeGrants: (walletPublicId: string, asOf: string | null) =>
     ['scope-grants', walletPublicId, asOf] as const,
