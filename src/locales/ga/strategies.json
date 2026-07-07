@@ -124,6 +124,18 @@
     "noteHelp": "Stóráiltear é taobh leis an gcumraíocht chun cabhrú leis an bpróiseas seo a aithint.",
     "cancel": "Cealaigh",
     "submit": "Cláraigh straitéis",
-    "submitting": "Á chlárú…"
+    "submitting": "Á chlárú…",
+    "scopeSectionLabel": "Scóip",
+    "operatorLabel": "Oibreoir",
+    "operatorPlaceholder": "Roghnaigh oibreoir",
+    "walletLabel": "Sparán",
+    "walletPlaceholder": "Roghnaigh sparán",
+    "paperAnnotation": " (páipéir)",
+    "refUserLabel": "Úinéir na straitéise (úsáideoir)",
+    "refOperatorLabel": "Tagairt oibreora",
+    "refWalletLabel": "Tagairt sparáin",
+    "referencePlaceholder": "Roghnaigh",
+    "scopeHelp": "Réitítear an t-úinéir de réir ainm úsáideora agus déantar seiceáil scóipe air i gcoinne an oibreora roghnaithe nuair a sheoltar an straitéis.",
+    "noOperatorsWarning": "Níl aon oibreoirí ann fós. Cruthaigh oibreoir agus deontas scóipe sula seoltar straitéis scóipe."
   }
 }

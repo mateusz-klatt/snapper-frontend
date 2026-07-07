@@ -124,6 +124,18 @@
     "noteHelp": "Ruhet krahas konfigurimit për të ndihmuar në identifikimin e këtij procesi.",
     "cancel": "Anulo",
     "submit": "Regjistro strategjinë",
-    "submitting": "Duke regjistruar…"
+    "submitting": "Duke regjistruar…",
+    "scopeSectionLabel": "Fushëveprimi",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Zgjidhni një operator",
+    "walletLabel": "Portofol",
+    "walletPlaceholder": "Zgjidhni një portofol",
+    "paperAnnotation": " (letër)",
+    "refUserLabel": "Pronari i strategjisë (përdorues)",
+    "refOperatorLabel": "Referencë operatori",
+    "refWalletLabel": "Referencë portofoli",
+    "referencePlaceholder": "Zgjidh",
+    "scopeHelp": "Pronari përcaktohet nga emri i përdoruesit dhe fushëveprimi i tij kontrollohet ndaj operatorit të zgjedhur kur niset strategjia.",
+    "noOperatorsWarning": "Ende nuk ka operatorë. Krijoni një operator dhe një dhënie fushëveprimi përpara se të nisni një strategji me fushëveprim."
   }
 }

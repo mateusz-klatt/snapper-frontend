@@ -124,6 +124,18 @@
     "noteHelp": "Čuva se uz konfiguraciju radi lakšeg prepoznavanja ovog procesa.",
     "cancel": "Otkaži",
     "submit": "Registruj strategiju",
-    "submitting": "Registracija…"
+    "submitting": "Registracija…",
+    "scopeSectionLabel": "Opseg",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Izaberite operatora",
+    "walletLabel": "Novčanik",
+    "walletPlaceholder": "Izaberite novčanik",
+    "paperAnnotation": " (papirni)",
+    "refUserLabel": "Vlasnik strategije (korisnik)",
+    "refOperatorLabel": "Referenca operatora",
+    "refWalletLabel": "Referenca novčanika",
+    "referencePlaceholder": "Izaberite",
+    "scopeHelp": "Vlasnik se određuje prema korisničkom imenu i pri pokretanju strategije proverava se njegov opseg u odnosu na izabranog operatora.",
+    "noOperatorsWarning": "Još nema operatora. Kreirajte operatora i dodelu opsega pre pokretanja strategije sa opsegom."
   }
 }

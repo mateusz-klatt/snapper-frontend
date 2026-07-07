@@ -124,6 +124,18 @@
     "noteHelp": "Được lưu cùng cấu hình để hỗ trợ nhận diện tiến trình này.",
     "cancel": "Hủy",
     "submit": "Đăng ký chiến lược",
-    "submitting": "Đang đăng ký…"
+    "submitting": "Đang đăng ký…",
+    "scopeSectionLabel": "Phạm vi",
+    "operatorLabel": "Nhà vận hành",
+    "operatorPlaceholder": "Chọn nhà vận hành",
+    "walletLabel": "Ví",
+    "walletPlaceholder": "Chọn ví",
+    "paperAnnotation": " (giấy)",
+    "refUserLabel": "Chủ sở hữu chiến lược (người dùng)",
+    "refOperatorLabel": "Tham chiếu nhà vận hành",
+    "refWalletLabel": "Tham chiếu ví",
+    "referencePlaceholder": "Chọn",
+    "scopeHelp": "Chủ sở hữu được xác định theo tên người dùng và phạm vi được kiểm tra với nhà vận hành đã chọn khi chiến lược khởi chạy.",
+    "noOperatorsWarning": "Chưa có nhà vận hành nào. Tạo một nhà vận hành và một cấp quyền phạm vi trước khi khởi chạy chiến lược có phạm vi."
   }
 }

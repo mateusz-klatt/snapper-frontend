@@ -124,6 +124,18 @@
     "noteHelp": "এই প্রসেস শনাক্ত করতে configuration-এর সঙ্গে সংরক্ষিত হয়।",
     "cancel": "বাতিল",
     "submit": "কৌশল নিবন্ধন করুন",
-    "submitting": "নিবন্ধন হচ্ছে…"
+    "submitting": "নিবন্ধন হচ্ছে…",
+    "scopeSectionLabel": "স্কোপ",
+    "operatorLabel": "অপারেটর",
+    "operatorPlaceholder": "একটি অপারেটর নির্বাচন করুন",
+    "walletLabel": "ওয়ালেট",
+    "walletPlaceholder": "একটি ওয়ালেট নির্বাচন করুন",
+    "paperAnnotation": " (পেপার)",
+    "refUserLabel": "কৌশলের মালিক (ব্যবহারকারী)",
+    "refOperatorLabel": "অপারেটর রেফারেন্স",
+    "refWalletLabel": "ওয়ালেট রেফারেন্স",
+    "referencePlaceholder": "নির্বাচন করুন",
+    "scopeHelp": "মালিককে ব্যবহারকারীর নাম দিয়ে নির্ধারণ করা হয় এবং কৌশল চালু হলে নির্বাচিত অপারেটরের বিপরীতে তার স্কোপ যাচাই করা হয়।",
+    "noOperatorsWarning": "এখনও কোনো অপারেটর নেই। স্কোপযুক্ত কৌশল চালু করার আগে একটি অপারেটর এবং একটি স্কোপ অনুমোদন তৈরি করুন।"
   }
 }

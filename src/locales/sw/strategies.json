@@ -124,6 +124,18 @@
     "noteHelp": "Huhifadhiwa pamoja na usanidi ili kusaidia kutambua process hii.",
     "cancel": "Ghairi",
     "submit": "Sajili mkakati",
-    "submitting": "Inasajili…"
+    "submitting": "Inasajili…",
+    "scopeSectionLabel": "Upeo",
+    "operatorLabel": "Mwendeshaji",
+    "operatorPlaceholder": "Chagua mwendeshaji",
+    "walletLabel": "Pochi",
+    "walletPlaceholder": "Chagua pochi",
+    "paperAnnotation": " (karatasi)",
+    "refUserLabel": "Mmiliki wa mkakati (mtumiaji)",
+    "refOperatorLabel": "Rejeleo la mwendeshaji",
+    "refWalletLabel": "Rejeleo la pochi",
+    "referencePlaceholder": "Chagua",
+    "scopeHelp": "Mmiliki hutambuliwa kwa jina la mtumiaji na upeo wake hukaguliwa dhidi ya mwendeshaji aliyechaguliwa mkakati unapoanzishwa.",
+    "noOperatorsWarning": "Bado hakuna waendeshaji. Unda mwendeshaji na ruhusa ya upeo kabla ya kuanzisha mkakati wenye upeo."
   }
 }

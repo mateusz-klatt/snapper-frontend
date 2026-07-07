@@ -124,6 +124,18 @@
     "noteHelp": "Disimpan bersama konfigurasi untuk membantu mengidentifikasi proses ini.",
     "cancel": "Batal",
     "submit": "Daftarkan strategi",
-    "submitting": "Mendaftarkan…"
+    "submitting": "Mendaftarkan…",
+    "scopeSectionLabel": "Cakupan",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Pilih operator",
+    "walletLabel": "Dompet",
+    "walletPlaceholder": "Pilih dompet",
+    "paperAnnotation": " (kertas)",
+    "refUserLabel": "Pemilik strategi (pengguna)",
+    "refOperatorLabel": "Referensi operator",
+    "refWalletLabel": "Referensi dompet",
+    "referencePlaceholder": "Pilih",
+    "scopeHelp": "Pemilik ditentukan berdasarkan nama pengguna dan cakupannya diperiksa terhadap operator yang dipilih saat strategi diluncurkan.",
+    "noOperatorsWarning": "Belum ada operator. Buat operator dan grant cakupan sebelum meluncurkan strategi bercakupan."
   }
 }

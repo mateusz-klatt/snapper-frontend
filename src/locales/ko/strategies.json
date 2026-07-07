@@ -124,6 +124,18 @@
     "noteHelp": "이 프로세스를 식별하기 쉽도록 설정과 함께 저장됩니다.",
     "cancel": "취소",
     "submit": "전략 등록",
-    "submitting": "등록 중…"
+    "submitting": "등록 중…",
+    "scopeSectionLabel": "스코프",
+    "operatorLabel": "운영자",
+    "operatorPlaceholder": "운영자를 선택하세요",
+    "walletLabel": "지갑",
+    "walletPlaceholder": "지갑을 선택하세요",
+    "paperAnnotation": " (페이퍼)",
+    "refUserLabel": "전략 소유자 (사용자)",
+    "refOperatorLabel": "운영자 참조",
+    "refWalletLabel": "지갑 참조",
+    "referencePlaceholder": "선택",
+    "scopeHelp": "소유자는 사용자 이름으로 확인되며, 전략이 시작될 때 선택한 운영자에 대해 스코프가 검사됩니다.",
+    "noOperatorsWarning": "아직 운영자가 없습니다. 스코프가 지정된 전략을 시작하기 전에 운영자와 스코프 부여를 생성하세요."
   }
 }

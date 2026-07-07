@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { StrategyLaunchModal } from './StrategyLaunchModal'
 import type { AvailableProcess } from '../../types/api'
+import { useProcessSchema } from '../../hooks/queries/processes'
+import { useOperators, useWallets } from '../../hooks/queries/wallets'
+import { useUsers } from '../../hooks/queries/users'
 
 vi.mock('../../hooks/queries/processes', () => ({
   useProcessSchema: vi.fn(() => ({
@@ -12,6 +15,38 @@ vi.mock('../../hooks/queries/processes', () => ({
     isLoading: false,
   })),
 }))
+vi.mock('../../hooks/queries/wallets', () => ({
+  useOperators: vi.fn(() => ({ data: undefined })),
+  useWallets: vi.fn(() => ({ data: undefined })),
+}))
+vi.mock('../../hooks/queries/users', () => ({
+  useUsers: vi.fn(() => ({ data: undefined })),
+}))
+
+const mockSchemaPayload = (payload: Record<string, unknown>): void => {
+  vi.mocked(useProcessSchema).mockReturnValue({
+    data: { payload },
+    isLoading: false,
+    error: null,
+  } as never)
+}
+
+const mockCatalogues = (options?: {
+  operators?: { public_id: string; label: string }[]
+  wallets?: { public_id: string; label: string; is_paper?: boolean }[]
+  users?: { public_id: string; username: string }[]
+}): void => {
+  vi.mocked(useOperators).mockReturnValue({
+    data: options?.operators ? { payload: options.operators } : undefined,
+  } as never)
+  vi.mocked(useWallets).mockReturnValue({
+    data: options?.wallets ? { payload: options.wallets } : undefined,
+  } as never)
+  vi.mocked(useUsers).mockReturnValue({
+    data: options?.users ? { payload: options.users } : undefined,
+  } as never)
+}
+
 const createQueryClient = () =>
   new QueryClient({
     defaultOptions: {
@@ -48,6 +83,12 @@ describe('StrategyLaunchModal', () => {
 
   beforeEach(() => {
     vi.resetAllMocks()
+    vi.mocked(useProcessSchema).mockReturnValue({
+      data: null,
+      isLoading: false,
+      error: null,
+    } as never)
+    mockCatalogues()
   })
   it('renders modal when open', () => {
     renderWithProviders(
@@ -616,5 +657,248 @@ describe('StrategyLaunchModal', () => {
     await waitFor(() => {
       expect(screen.getByText('Strategy registered in backend')).toBeTruthy()
     })
+  })
+
+  it('renders scope pickers for a scoped strategy', async () => {
+    mockSchemaPayload({
+      default_parameters: { name: 'heartbeat', params: {} },
+      default_mode: 'thread',
+      reference_identity_params: { ai_review_user_public_id: 'user' },
+    })
+    mockCatalogues({
+      operators: [{ public_id: 'op-1', label: 'desk' }],
+      wallets: [{ public_id: 'w-1', label: 'paper', is_paper: true }],
+      users: [{ public_id: 'u-1', username: 'alice' }],
+    })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await waitFor(() => {
+      expect(screen.getByText('Scope')).toBeTruthy()
+      expect(screen.getByLabelText('Operator')).toBeTruthy()
+      expect(screen.getByLabelText('Wallet')).toBeTruthy()
+      expect(screen.getByLabelText('Strategy owner (user)')).toBeTruthy()
+    })
+  })
+
+  it('shows the fail-closed warning and disables submit when no operators exist', async () => {
+    mockSchemaPayload({
+      default_parameters: { name: 'heartbeat', params: {} },
+      default_mode: 'thread',
+      reference_identity_params: { ai_review_user_public_id: 'user' },
+    })
+    mockCatalogues({ users: [{ public_id: 'u-1', username: 'alice' }] })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await waitFor(() => {
+      expect(screen.getByText(/No operators exist yet/i)).toBeTruthy()
+    })
+    expect(screen.getByText('Register strategy')).toBeDisabled()
+  })
+
+  it('keeps submit disabled until the scope selection is complete', async () => {
+    mockSchemaPayload({
+      default_parameters: { name: 'heartbeat', params: {} },
+      default_mode: 'thread',
+      reference_identity_params: { ai_review_user_public_id: 'user' },
+    })
+    mockCatalogues({
+      operators: [{ public_id: 'op-1', label: 'desk' }],
+      wallets: [{ public_id: 'w-1', label: 'paper', is_paper: true }],
+      users: [{ public_id: 'u-1', username: 'alice' }],
+    })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await waitFor(() => {
+      expect(screen.getByText('Register strategy')).toBeTruthy()
+    })
+    expect(screen.getByText('Register strategy')).toBeDisabled()
+  })
+
+  it('submits a scoped strategy with operator, wallet, and a label user reference', async () => {
+    const user = userEvent.setup()
+
+    mockOnSubmit.mockResolvedValue(undefined)
+    mockSchemaPayload({
+      default_parameters: { name: 'heartbeat', params: { existing: 'keep' } },
+      default_mode: 'thread',
+      reference_identity_params: { ai_review_user_public_id: 'user' },
+    })
+    mockCatalogues({
+      operators: [{ public_id: 'op-1', label: 'desk' }],
+      wallets: [
+        { public_id: 'w-1', label: 'paper', is_paper: true },
+        { public_id: 'w-2', label: 'live', is_paper: false },
+      ],
+      users: [{ public_id: 'u-1', username: 'alice' }],
+    })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await user.selectOptions(await screen.findByLabelText('Operator'), 'op-1')
+    await user.selectOptions(screen.getByLabelText('Wallet'), 'w-1')
+    await user.selectOptions(screen.getByLabelText('Strategy owner (user)'), 'label:alice')
+    await user.type(screen.getByPlaceholderText(/Describe purpose or parameters/i), 'scoped note')
+    await user.click(screen.getByText('Register strategy'))
+    await waitFor(() => {
+      expect(mockOnSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          note: 'scoped note',
+          parameters: expect.objectContaining({
+            operator_public_id: 'op-1',
+            wallet_public_id: 'w-1',
+            params: expect.objectContaining({
+              existing: 'keep',
+              ai_review_user_public_id: 'label:alice',
+            }),
+          }),
+        })
+      )
+    })
+  })
+
+  it('renders operator and wallet reference pickers by kind', async () => {
+    mockSchemaPayload({
+      default_parameters: { name: 's', params: {} },
+      default_mode: 'thread',
+      reference_identity_params: { delegate_op: 'operator', maker_wallet: 'wallet' },
+    })
+    mockCatalogues({
+      operators: [{ public_id: 'op-1', label: 'desk' }],
+      wallets: [
+        { public_id: 'w-1', label: 'mm', is_paper: true },
+        { public_id: 'w-2', label: 'live', is_paper: false },
+      ],
+    })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await waitFor(() => {
+      expect(screen.getByLabelText('Operator reference')).toBeTruthy()
+      expect(screen.getByLabelText('Wallet reference')).toBeTruthy()
+    })
+  })
+
+  it('renders an empty picker and the raw kind label for an unknown reference kind', async () => {
+    mockSchemaPayload({
+      default_parameters: { name: 's', params: {} },
+      default_mode: 'thread',
+      reference_identity_params: { mystery: 'bogus' },
+    })
+    mockCatalogues({ operators: [{ public_id: 'op-1', label: 'desk' }] })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await waitFor(() => {
+      expect(screen.getByLabelText('bogus')).toBeTruthy()
+    })
+  })
+
+  it('injects nested references when the schema params default is not an object', async () => {
+    const user = userEvent.setup()
+
+    mockOnSubmit.mockResolvedValue(undefined)
+    mockSchemaPayload({
+      default_parameters: { name: 's', params: 'not-an-object' },
+      default_mode: 'thread',
+      reference_identity_params: { ai_review_user_public_id: 'user' },
+    })
+    mockCatalogues({
+      operators: [{ public_id: 'op-1', label: 'desk' }],
+      wallets: [{ public_id: 'w-1', label: 'paper', is_paper: true }],
+      users: [{ public_id: 'u-1', username: 'alice' }],
+    })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await user.selectOptions(await screen.findByLabelText('Operator'), 'op-1')
+    await user.selectOptions(screen.getByLabelText('Wallet'), 'w-1')
+    await user.selectOptions(screen.getByLabelText('Strategy owner (user)'), 'label:alice')
+    await user.click(screen.getByText('Register strategy'))
+    await waitFor(() => {
+      expect(mockOnSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          parameters: expect.objectContaining({
+            params: { ai_review_user_public_id: 'label:alice' },
+          }),
+        })
+      )
+    })
+  })
+
+  it('does not render scope pickers for a non-strategy template', async () => {
+    mockSchemaPayload({
+      default_parameters: { name: 'x' },
+      default_mode: 'thread',
+      reference_identity_params: { ai_review_user_public_id: 'user' },
+    })
+    mockCatalogues({ operators: [{ public_id: 'op-1', label: 'desk' }] })
+    const coreTemplates: AvailableProcess[] = [
+      {
+        type: 'available_process' as const,
+        sequence_id: 0,
+        public_id: 'core-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'test-sid',
+        name: 'zmq_broker',
+        class_path: 'snapper.ipc.zmq_broker',
+        method: 'run',
+        description: 'Broker',
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        parameters_schema: null,
+      },
+    ]
+
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={coreTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await waitFor(() => {
+      expect(screen.getByText('Register strategy')).toBeTruthy()
+    })
+    expect(screen.queryByText('Scope')).toBeFalsy()
   })
 })

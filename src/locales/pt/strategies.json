@@ -124,6 +124,18 @@
     "noteHelp": "Armazenada junto à configuração para ajudar a identificar este processo.",
     "cancel": "Cancelar",
     "submit": "Registrar estratégia",
-    "submitting": "Registrando…"
+    "submitting": "Registrando…",
+    "scopeSectionLabel": "Escopo",
+    "operatorLabel": "Operador",
+    "operatorPlaceholder": "Selecione um operador",
+    "walletLabel": "Carteira",
+    "walletPlaceholder": "Selecione uma carteira",
+    "paperAnnotation": " (papel)",
+    "refUserLabel": "Proprietário da estratégia (usuário)",
+    "refOperatorLabel": "Referência do operador",
+    "refWalletLabel": "Referência da carteira",
+    "referencePlaceholder": "Selecionar",
+    "scopeHelp": "O proprietário é resolvido pelo nome de usuário e tem o escopo verificado em relação ao operador selecionado quando a estratégia é iniciada.",
+    "noOperatorsWarning": "Ainda não existem operadores. Crie um operador e uma concessão de escopo antes de iniciar uma estratégia com escopo."
   }
 }

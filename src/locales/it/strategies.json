@@ -124,6 +124,18 @@
     "noteHelp": "Salvata insieme alla configurazione per identificare questo processo.",
     "cancel": "Annulla",
     "submit": "Registra strategia",
-    "submitting": "Registrazione in corso…"
+    "submitting": "Registrazione in corso…",
+    "scopeSectionLabel": "Ambito",
+    "operatorLabel": "Operatore",
+    "operatorPlaceholder": "Seleziona un operatore",
+    "walletLabel": "Portafoglio",
+    "walletPlaceholder": "Seleziona un portafoglio",
+    "paperAnnotation": " (cartaceo)",
+    "refUserLabel": "Proprietario della strategia (utente)",
+    "refOperatorLabel": "Riferimento operatore",
+    "refWalletLabel": "Riferimento portafoglio",
+    "referencePlaceholder": "Seleziona",
+    "scopeHelp": "Il proprietario viene risolto tramite nome utente e il suo ambito viene verificato rispetto all'operatore selezionato quando la strategia viene avviata.",
+    "noOperatorsWarning": "Non esistono ancora operatori. Crea un operatore e una concessione di ambito prima di avviare una strategia con ambito."
   }
 }

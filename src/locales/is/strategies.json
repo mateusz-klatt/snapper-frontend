@@ -124,6 +124,18 @@
     "noteHelp": "Vistað með stillingum til að auðkenna þetta ferli.",
     "cancel": "Hætta við",
     "submit": "Skrá stefnu",
-    "submitting": "Skrái…"
+    "submitting": "Skrái…",
+    "scopeSectionLabel": "Umfang",
+    "operatorLabel": "Rekstraraðili",
+    "operatorPlaceholder": "Veldu rekstraraðila",
+    "walletLabel": "Veski",
+    "walletPlaceholder": "Veldu veski",
+    "paperAnnotation": " (pappír)",
+    "refUserLabel": "Eigandi stefnu (notandi)",
+    "refOperatorLabel": "Tilvísun rekstraraðila",
+    "refWalletLabel": "Tilvísun veskis",
+    "referencePlaceholder": "Veldu",
+    "scopeHelp": "Eigandinn er fundinn út frá notandanafni og umfang hans er athugað gagnvart völdum rekstraraðila þegar stefnan er ræst.",
+    "noOperatorsWarning": "Engir rekstraraðilar eru til enn. Búðu til rekstraraðila og umfangsheimild áður en þú ræsir stefnu með umfangi."
   }
 }

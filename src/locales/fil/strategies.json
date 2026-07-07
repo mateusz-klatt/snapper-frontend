@@ -124,6 +124,18 @@
     "noteHelp": "Isi-store kasama ng configuration para makatulong makilala ang process na ito.",
     "cancel": "Kanselahin",
     "submit": "I-register ang strategy",
-    "submitting": "Nire-register…"
+    "submitting": "Nire-register…",
+    "scopeSectionLabel": "Saklaw",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Pumili ng operator",
+    "walletLabel": "Wallet",
+    "walletPlaceholder": "Pumili ng wallet",
+    "paperAnnotation": " (papel)",
+    "refUserLabel": "May-ari ng strategy (user)",
+    "refOperatorLabel": "Reference ng operator",
+    "refWalletLabel": "Reference ng wallet",
+    "referencePlaceholder": "Piliin",
+    "scopeHelp": "Nire-resolve ang may-ari gamit ang username at sine-scope-check laban sa napiling operator kapag inilulunsad ang strategy.",
+    "noOperatorsWarning": "Wala pang operator. Gumawa ng operator at scope grant bago maglunsad ng scoped strategy."
   }
 }

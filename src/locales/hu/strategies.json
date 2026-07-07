@@ -124,6 +124,18 @@
     "noteHelp": "A konfiguráció mellett tárolva segíti a folyamat azonosítását.",
     "cancel": "Mégse",
     "submit": "Stratégia regisztrálása",
-    "submitting": "Regisztrálás…"
+    "submitting": "Regisztrálás…",
+    "scopeSectionLabel": "Hatókör",
+    "operatorLabel": "Operátor",
+    "operatorPlaceholder": "Válasszon operátort",
+    "walletLabel": "Tárca",
+    "walletPlaceholder": "Válasszon tárcát",
+    "paperAnnotation": " (papír)",
+    "refUserLabel": "Stratégia tulajdonosa (felhasználó)",
+    "refOperatorLabel": "Operátor hivatkozása",
+    "refWalletLabel": "Tárca hivatkozása",
+    "referencePlaceholder": "Válasszon",
+    "scopeHelp": "A tulajdonost felhasználónév alapján azonosítjuk, és a stratégia indításakor ellenőrizzük a hatókörét a kiválasztott operátorral szemben.",
+    "noOperatorsWarning": "Még nincsenek operátorok. Hozzon létre egy operátort és egy hatókör-hozzárendelést, mielőtt hatókörrel rendelkező stratégiát indít."
   }
 }

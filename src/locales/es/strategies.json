@@ -124,6 +124,18 @@
     "noteHelp": "Se almacena junto con la configuración para ayudar a identificar este proceso.",
     "cancel": "Cancelar",
     "submit": "Registrar estrategia",
-    "submitting": "Registrando…"
+    "submitting": "Registrando…",
+    "scopeSectionLabel": "Ámbito",
+    "operatorLabel": "Operador",
+    "operatorPlaceholder": "Selecciona un operador",
+    "walletLabel": "Billetera",
+    "walletPlaceholder": "Selecciona una billetera",
+    "paperAnnotation": " (papel)",
+    "refUserLabel": "Propietario de la estrategia (usuario)",
+    "refOperatorLabel": "Referencia del operador",
+    "refWalletLabel": "Referencia de la billetera",
+    "referencePlaceholder": "Seleccionar",
+    "scopeHelp": "El propietario se resuelve por nombre de usuario y se valida su ámbito contra el operador seleccionado cuando se lanza la estrategia.",
+    "noOperatorsWarning": "Aún no existen operadores. Cree un operador y una concesión de ámbito antes de lanzar una estrategia con ámbito."
   }
 }

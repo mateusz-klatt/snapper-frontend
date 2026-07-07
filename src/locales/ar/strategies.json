@@ -124,6 +124,18 @@
     "noteHelp": "تُحفظ بجانب التكوين للمساعدة في تحديد هذه العملية.",
     "cancel": "إلغاء",
     "submit": "تسجيل الاستراتيجية",
-    "submitting": "جارٍ التسجيل…"
+    "submitting": "جارٍ التسجيل…",
+    "scopeSectionLabel": "النطاق",
+    "operatorLabel": "المشغل",
+    "operatorPlaceholder": "اختر مشغلاً",
+    "walletLabel": "المحفظة",
+    "walletPlaceholder": "اختر محفظة",
+    "paperAnnotation": " (ورقية)",
+    "refUserLabel": "مالك الاستراتيجية (المستخدم)",
+    "refOperatorLabel": "مرجع المشغل",
+    "refWalletLabel": "مرجع المحفظة",
+    "referencePlaceholder": "اختر",
+    "scopeHelp": "يُحدَّد المالك عبر اسم المستخدم ويتم التحقق من نطاقه مقابل المشغل المحدد عند تشغيل الاستراتيجية.",
+    "noOperatorsWarning": "لا توجد مشغلات بعد. أنشئ مشغلاً ومنح نطاق قبل تشغيل استراتيجية محددة النطاق."
   }
 }
