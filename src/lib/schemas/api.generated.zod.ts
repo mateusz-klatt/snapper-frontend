@@ -4618,6 +4618,8 @@ const _ProcessSchemaDataRawSchema = z
     default_enabled: z.boolean(),
     default_mode: z.enum(['thread', 'process']),
     default_parameters: z.record(z.string(), z.any()),
+    reference_identity_params: z.record(z.string(), z.string()),
+    seeded_identity_params: z.array(z.string()),
     lifecycle: z.enum(['long_running', 'one_shot']),
   })
   .strict()
