@@ -92,6 +92,27 @@ describe('useHeartbeats', () => {
     )
   })
 
+  it('stores market_closed and next_open when provided', () => {
+    const { result } = renderHook(() => useHeartbeats(['system.heartbeats.feed.']))
+
+    act(() => {
+      heartbeatCallback?.({
+        component: 'feed.kraken',
+        status: 'warning',
+        lag_ms: 9_000_000,
+        market_closed: true,
+        next_open: '2026-07-07T14:30:00Z',
+      })
+    })
+
+    expect(result.current['feed.kraken']).toEqual(
+      expect.objectContaining({
+        market_closed: true,
+        next_open: '2026-07-07T14:30:00Z',
+      })
+    )
+  })
+
   it('marks unhealthy heartbeats correctly', () => {
     const { result } = renderHook(() => useHeartbeats(['system.heartbeats.feed.']))
 

@@ -18,6 +18,8 @@
     "stopping": "Leállítás...",
     "managedRemotely": "Kezeli: {{coordinator}}",
     "remoteCoordinatorUnknown": "egy másik konténer",
+    "marketClosed": "A piac zárva",
+    "reopensAt": "újranyit {{time}}",
     "status": {
       "running": "fut",
       "stopped": "leállítva",

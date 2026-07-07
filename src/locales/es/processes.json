@@ -18,6 +18,8 @@
     "stopping": "Deteniendo...",
     "managedRemotely": "Gestionado por {{coordinator}}",
     "remoteCoordinatorUnknown": "otro contenedor",
+    "marketClosed": "Mercado cerrado",
+    "reopensAt": "reabre {{time}}",
     "status": {
       "running": "en ejecución",
       "stopped": "detenido",

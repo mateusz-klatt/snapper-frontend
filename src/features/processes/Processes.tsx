@@ -27,6 +27,7 @@ const UNKNOWN_HEARTBEAT: HeartbeatData = {
   status: 'unknown',
   healthy: false,
   timestamp: 0,
+  market_closed: false,
 }
 
 const EXECUTOR_INSTANCE_PATTERN = /^(.+)_w([a-f0-9]{12})$/

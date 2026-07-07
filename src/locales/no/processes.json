@@ -18,6 +18,8 @@
     "stopping": "Stopper...",
     "managedRemotely": "Administrert av {{coordinator}}",
     "remoteCoordinatorUnknown": "en annen container",
+    "marketClosed": "Markedet er stengt",
+    "reopensAt": "åpner igjen {{time}}",
     "status": {
       "running": "kjører",
       "stopped": "stoppet",

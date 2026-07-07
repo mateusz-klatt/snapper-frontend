@@ -18,6 +18,8 @@
     "stopping": "বন্ধ হচ্ছে...",
     "managedRemotely": "{{coordinator}} দ্বারা পরিচালিত",
     "remoteCoordinatorUnknown": "অন্য একটি কন্টেইনার",
+    "marketClosed": "বাজার বন্ধ",
+    "reopensAt": "পুনরায় খোলে {{time}}",
     "status": {
       "running": "চলছে",
       "stopped": "বন্ধ",

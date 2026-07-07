@@ -250,6 +250,8 @@ export function createHeartbeat(
     sequence?: number
     status?: 'healthy' | 'warning' | 'error'
     lag_ms?: number
+    market_closed?: boolean
+    next_open?: string | null
   } = {}
 ) {
   return {
@@ -260,6 +262,8 @@ export function createHeartbeat(
     sequence: overrides.sequence ?? 0,
     status: overrides.status ?? ('healthy' as const),
     lag_ms: overrides.lag_ms ?? 0,
+    market_closed: overrides.market_closed ?? false,
+    next_open: overrides.next_open ?? null,
     meta: overrides.meta ?? {},
   }
 }

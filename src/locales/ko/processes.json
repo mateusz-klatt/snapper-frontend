@@ -18,6 +18,8 @@
     "stopping": "중지 중...",
     "managedRemotely": "{{coordinator}}에서 관리됨",
     "remoteCoordinatorUnknown": "다른 컨테이너",
+    "marketClosed": "시장 마감",
+    "reopensAt": "{{time}}에 재개장",
     "status": {
       "running": "실행 중",
       "stopped": "중지됨",

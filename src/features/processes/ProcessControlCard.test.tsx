@@ -337,4 +337,63 @@ describe('ProcessControlCard', () => {
     expect(screen.getByText('Managed by Feed')).toBeInTheDocument()
     expect(screen.queryByText('Managed by coord-1')).not.toBeInTheDocument()
   })
+  it('shows the market-closed badge and suppresses the lag chip when market is closed', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Kraken Feed'
+        description='Test description'
+        status='running'
+        heartbeat={{
+          status: 'warning',
+          lag_ms: 9_000_000,
+          timestamp: Date.now(),
+          healthy: false,
+          market_closed: true,
+        }}
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+      />
+    )
+    expect(screen.getByText('Market closed')).toBeInTheDocument()
+    expect(screen.queryByText(/2h 30m/)).not.toBeInTheDocument()
+  })
+  it('shows the reopen time when next_open is provided while market is closed', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Kraken Feed'
+        description='Test description'
+        status='running'
+        heartbeat={{
+          status: 'warning',
+          timestamp: Date.now(),
+          healthy: false,
+          market_closed: true,
+          next_open: '2026-07-07T14:30:00Z',
+        }}
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+      />
+    )
+    expect(screen.getByText('Market closed')).toBeInTheDocument()
+    expect(screen.getByText(/reopens/i)).toBeInTheDocument()
+  })
+  it('omits the reopen time when market is closed without a next_open', () => {
+    renderWithMocks(
+      <ProcessControlCard
+        title='Kraken Feed'
+        description='Test description'
+        status='running'
+        heartbeat={{
+          status: 'warning',
+          timestamp: Date.now(),
+          healthy: false,
+          market_closed: true,
+        }}
+        onStart={mockOnStart}
+        onStop={mockOnStop}
+      />
+    )
+    expect(screen.getByText('Market closed')).toBeInTheDocument()
+    expect(screen.queryByText(/reopens/i)).not.toBeInTheDocument()
+  })
 })

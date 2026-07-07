@@ -18,6 +18,8 @@
     "stopping": "Διακοπή...",
     "managedRemotely": "Διαχειρίζεται από {{coordinator}}",
     "remoteCoordinatorUnknown": "άλλο κοντέινερ",
+    "marketClosed": "Η αγορά είναι κλειστή",
+    "reopensAt": "ανοίγει ξανά {{time}}",
     "status": {
       "running": "εκτελείται",
       "stopped": "σταματημένο",

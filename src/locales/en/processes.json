@@ -18,6 +18,8 @@
     "stopping": "Stopping...",
     "managedRemotely": "Managed by {{coordinator}}",
     "remoteCoordinatorUnknown": "another container",
+    "marketClosed": "Market closed",
+    "reopensAt": "reopens {{time}}",
     "status": {
       "running": "running",
       "stopped": "stopped",

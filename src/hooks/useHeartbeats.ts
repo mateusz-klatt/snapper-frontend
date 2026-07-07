@@ -8,6 +8,8 @@ export interface HeartbeatData {
   lag_ms?: number | undefined
   timestamp: number
   healthy: boolean
+  market_closed?: boolean | undefined
+  next_open?: string | undefined
 }
 
 export function useHeartbeats(topics: string[]): Record<string, HeartbeatData> {
@@ -32,6 +34,8 @@ export function useHeartbeats(topics: string[]): Record<string, HeartbeatData> {
         lag_ms: message.lag_ms || 0,
         timestamp: Date.now(),
         healthy: message.status === 'healthy',
+        market_closed: message.market_closed ?? false,
+        next_open: message.next_open ?? undefined,
       }
 
       setAllHeartbeats(prev => ({ ...prev, [message.component]: heartbeat }))

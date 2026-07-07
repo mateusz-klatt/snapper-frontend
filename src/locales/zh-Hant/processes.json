@@ -18,6 +18,8 @@
     "stopping": "停止中...",
     "managedRemotely": "由 {{coordinator}} 管理",
     "remoteCoordinatorUnknown": "其他容器",
+    "marketClosed": "市場休市",
+    "reopensAt": "{{time}} 重新開盤",
     "status": {
       "running": "運行中",
       "stopped": "已停止",

@@ -18,6 +18,8 @@
     "stopping": "עוצר...",
     "managedRemotely": "מנוהל על ידי {{coordinator}}",
     "remoteCoordinatorUnknown": "מכל אחר",
+    "marketClosed": "השוק סגור",
+    "reopensAt": "נפתח מחדש {{time}}",
     "status": {
       "running": "פועל",
       "stopped": "נעצר",

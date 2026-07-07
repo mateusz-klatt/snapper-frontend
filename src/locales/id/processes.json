@@ -18,6 +18,8 @@
     "stopping": "Menghentikan...",
     "managedRemotely": "Dikelola oleh {{coordinator}}",
     "remoteCoordinatorUnknown": "kontainer lain",
+    "marketClosed": "Pasar tutup",
+    "reopensAt": "buka kembali {{time}}",
     "status": {
       "running": "berjalan",
       "stopped": "berhenti",

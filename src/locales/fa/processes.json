@@ -18,6 +18,8 @@
     "stopping": "در حال توقف...",
     "managedRemotely": "مدیریت‌شده توسط {{coordinator}}",
     "remoteCoordinatorUnknown": "کانتینر دیگری",
+    "marketClosed": "بازار بسته است",
+    "reopensAt": "بازگشایی {{time}}",
     "status": {
       "running": "در حال اجرا",
       "stopped": "متوقف",

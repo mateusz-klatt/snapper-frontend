@@ -18,6 +18,8 @@
     "stopping": "Stabdoma...",
     "managedRemotely": "Valdo {{coordinator}}",
     "remoteCoordinatorUnknown": "kitas konteineris",
+    "marketClosed": "Rinka uždaryta",
+    "reopensAt": "vėl atsidaro {{time}}",
     "status": {
       "running": "vykdoma",
       "stopped": "sustabdyta",

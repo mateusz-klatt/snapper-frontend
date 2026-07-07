@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import type { HeartbeatData } from '../../hooks/useHeartbeats'
 import { LoadingSpinner } from '../../components/ui'
 import { formatDurationMs } from '../../lib/duration'
+import { formatTime } from '../../lib/dateFormat'
+import type { AppLocale } from '../../i18n/types'
 
 interface ProcessControlCardProps {
   title: string
@@ -39,19 +41,31 @@ const formatDetailValue = (value: unknown): string => {
 }
 
 const HeartbeatIndicator: React.FC<{ heartbeat: HeartbeatData }> = ({ heartbeat }) => {
-  const { t } = useTranslation('processes')
+  const { t, i18n } = useTranslation('processes')
   const color = heartbeat.healthy ? 'text-accent-400' : 'text-loss-400'
   const dot = heartbeat.healthy ? 'bg-accent-400' : 'bg-loss-400'
+  const reopensAt =
+    heartbeat.market_closed && heartbeat.next_open
+      ? formatTime(new Date(heartbeat.next_open), i18n.language as AppLocale)
+      : null
 
   return (
-    <div className={clsx('flex items-center gap-1.5 text-xs', color)}>
-      <span className={clsx('w-1.5 h-1.5 rounded-full shrink-0', dot)} />
-      <span>
-        {t(`card.status.${heartbeat.status}`, { defaultValue: heartbeat.status })}
-        {heartbeat.lag_ms !== undefined && (
-          <span className='opacity-70 ml-1'>({formatDurationMs(heartbeat.lag_ms)})</span>
-        )}
-      </span>
+    <div className='flex flex-col items-end gap-1'>
+      <div className={clsx('flex items-center gap-1.5 text-xs', color)}>
+        <span className={clsx('w-1.5 h-1.5 rounded-full shrink-0', dot)} />
+        <span>
+          {t(`card.status.${heartbeat.status}`, { defaultValue: heartbeat.status })}
+          {!heartbeat.market_closed && heartbeat.lag_ms !== undefined && (
+            <span className='opacity-70 ml-1'>({formatDurationMs(heartbeat.lag_ms)})</span>
+          )}
+        </span>
+      </div>
+      {heartbeat.market_closed && (
+        <span className='px-2 py-1 rounded-md text-xs font-medium text-warning-400 bg-warning-400/10'>
+          {t('card.marketClosed')}
+          {reopensAt && <span className='ml-1'>{t('card.reopensAt', { time: reopensAt })}</span>}
+        </span>
+      )}
     </div>
   )
 }

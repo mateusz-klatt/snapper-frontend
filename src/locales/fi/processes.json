@@ -18,6 +18,8 @@
     "stopping": "Pysäytetään...",
     "managedRemotely": "Hallinnoija: {{coordinator}}",
     "remoteCoordinatorUnknown": "toinen kontti",
+    "marketClosed": "Markkina suljettu",
+    "reopensAt": "avautuu uudelleen {{time}}",
     "status": {
       "running": "käynnissä",
       "stopped": "pysäytetty",

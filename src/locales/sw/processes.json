@@ -18,6 +18,8 @@
     "stopping": "Inasimama...",
     "managedRemotely": "Inadhibitiwa na {{coordinator}}",
     "remoteCoordinatorUnknown": "kontena nyingine",
+    "marketClosed": "Soko limefungwa",
+    "reopensAt": "hufunguliwa tena {{time}}",
     "status": {
       "running": "inaendelea",
       "stopped": "imesimamishwa",

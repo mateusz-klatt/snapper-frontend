@@ -18,6 +18,8 @@
     "stopping": "Stoppen...",
     "managedRemotely": "Beheerd door {{coordinator}}",
     "remoteCoordinatorUnknown": "een andere container",
+    "marketClosed": "Markt gesloten",
+    "reopensAt": "heropent {{time}}",
     "status": {
       "running": "loopt",
       "stopped": "gestopt",

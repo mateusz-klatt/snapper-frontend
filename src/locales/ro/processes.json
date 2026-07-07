@@ -18,6 +18,8 @@
     "stopping": "Se oprește...",
     "managedRemotely": "Gestionat de {{coordinator}}",
     "remoteCoordinatorUnknown": "alt container",
+    "marketClosed": "Piață închisă",
+    "reopensAt": "se redeschide {{time}}",
     "status": {
       "running": "în rulare",
       "stopped": "oprit",

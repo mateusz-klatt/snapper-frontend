@@ -1283,6 +1283,8 @@ export const HeartbeatDataSchema = z
     sequence: z.number().int(),
     status: z.enum(['healthy', 'warning', 'error']),
     lag_ms: z.number().int(),
+    market_closed: z.boolean(),
+    next_open: z.iso.datetime().nullable().optional(),
     meta: z.record(z.string(), z.any()),
   })
   .strict()

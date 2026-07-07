@@ -18,6 +18,8 @@
     "stopping": "Menghentikan...",
     "managedRemotely": "Diurus oleh {{coordinator}}",
     "remoteCoordinatorUnknown": "kontena lain",
+    "marketClosed": "Pasaran ditutup",
+    "reopensAt": "dibuka semula {{time}}",
     "status": {
       "running": "berjalan",
       "stopped": "dihentikan",

@@ -18,6 +18,8 @@
     "stopping": "रुक रहा है...",
     "managedRemotely": "{{coordinator}} द्वारा प्रबंधित",
     "remoteCoordinatorUnknown": "अन्य कंटेनर",
+    "marketClosed": "बाज़ार बंद",
+    "reopensAt": "फिर से खुलेगा {{time}}",
     "status": {
       "running": "चल रहा",
       "stopped": "रुका हुआ",

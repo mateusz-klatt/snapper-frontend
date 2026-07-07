@@ -18,6 +18,8 @@
     "stopping": "Зупинка...",
     "managedRemotely": "Керується вузлом {{coordinator}}",
     "remoteCoordinatorUnknown": "інший контейнер",
+    "marketClosed": "Ринок закритий",
+    "reopensAt": "відкриється знову {{time}}",
     "status": {
       "running": "запущено",
       "stopped": "зупинено",
