@@ -192,6 +192,7 @@ export type AccrualType = "funding" | "rollover" | "borrow";
 export type Type19 = "heartbeat";
 export type Topic20 = string | null;
 export type Status1 = "healthy" | "warning" | "error";
+export type NextOpen = string | null;
 export type Type20 = "instrument_capability";
 export type Topic21 = string | null;
 export type SupportedOrderTypes = string[];
@@ -831,6 +832,8 @@ export interface HeartbeatData {
   sequence: number;
   status: Status1;
   lag_ms: number;
+  market_closed?: boolean;
+  next_open?: NextOpen;
   meta?: JsonObject2;
 }
 export interface JsonObject2 {

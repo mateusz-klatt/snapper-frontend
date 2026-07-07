@@ -18,6 +18,8 @@
     "stopping": "ရပ်နေသည်...",
     "managedRemotely": "{{coordinator}} မှ စီမံခန့်ခွဲသည်",
     "remoteCoordinatorUnknown": "အခြားကွန်တိန်နာ",
+    "marketClosed": "စျေးကွက်ပိတ်ထားသည်",
+    "reopensAt": "{{time}} တွင် ပြန်ဖွင့်မည်",
     "status": {
       "running": "အလုပ်လုပ်နေသည်",
       "stopped": "ရပ်ထားသည်",

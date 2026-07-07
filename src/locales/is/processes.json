@@ -18,6 +18,8 @@
     "stopping": "Stöðva...",
     "managedRemotely": "Stýrt af {{coordinator}}",
     "remoteCoordinatorUnknown": "annað ílát",
+    "marketClosed": "Markaður lokaður",
+    "reopensAt": "opnar aftur {{time}}",
     "status": {
       "running": "keyrir",
       "stopped": "stöðvað",

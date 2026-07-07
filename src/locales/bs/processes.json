@@ -18,6 +18,8 @@
     "stopping": "Zaustavljanje...",
     "managedRemotely": "Upravlja {{coordinator}}",
     "remoteCoordinatorUnknown": "drugi kontejner",
+    "marketClosed": "Tržište zatvoreno",
+    "reopensAt": "ponovo se otvara {{time}}",
     "status": {
       "running": "u toku",
       "stopped": "zaustavljeno",

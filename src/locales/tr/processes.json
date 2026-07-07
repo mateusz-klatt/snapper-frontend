@@ -18,6 +18,8 @@
     "stopping": "Durduruluyor...",
     "managedRemotely": "{{coordinator}} tarafından yönetiliyor",
     "remoteCoordinatorUnknown": "başka bir kapsayıcı",
+    "marketClosed": "Piyasa kapalı",
+    "reopensAt": "yeniden açılış {{time}}",
     "status": {
       "running": "çalışıyor",
       "stopped": "durduruldu",

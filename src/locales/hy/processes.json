@@ -18,6 +18,8 @@
     "stopping": "Դադարեցվում է...",
     "managedRemotely": "Կառավարվում է {{coordinator}}-ի կողմից",
     "remoteCoordinatorUnknown": "այլ կոնտեյներ",
+    "marketClosed": "Շուկան փակ է",
+    "reopensAt": "նորից բացվում է {{time}}",
     "status": {
       "running": "աշխատում է",
       "stopped": "դադարեցված",

@@ -18,6 +18,8 @@
     "stopping": "Остановка...",
     "managedRemotely": "Управляется узлом {{coordinator}}",
     "remoteCoordinatorUnknown": "другой контейнер",
+    "marketClosed": "Рынок закрыт",
+    "reopensAt": "открытие {{time}}",
     "status": {
       "running": "выполняется",
       "stopped": "остановлен",

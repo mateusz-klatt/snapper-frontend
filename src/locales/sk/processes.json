@@ -18,6 +18,8 @@
     "stopping": "Zastavuje sa...",
     "managedRemotely": "Spravované uzlom {{coordinator}}",
     "remoteCoordinatorUnknown": "iný kontajner",
+    "marketClosed": "Trh zatvorený",
+    "reopensAt": "znova otvára {{time}}",
     "status": {
       "running": "beží",
       "stopped": "zastavené",

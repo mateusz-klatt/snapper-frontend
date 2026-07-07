@@ -18,6 +18,8 @@
     "stopping": "Duke ndaluar...",
     "managedRemotely": "Menaxhohet nga {{coordinator}}",
     "remoteCoordinatorUnknown": "një kontejner tjetër",
+    "marketClosed": "Tregu i mbyllur",
+    "reopensAt": "rihapet {{time}}",
     "status": {
       "running": "në ekzekutim",
       "stopped": "ndaluar",

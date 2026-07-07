@@ -18,6 +18,8 @@
     "stopping": "Sini-stop...",
     "managedRemotely": "Pinamamahalaan ng {{coordinator}}",
     "remoteCoordinatorUnknown": "ibang container",
+    "marketClosed": "Sarado ang merkado",
+    "reopensAt": "muling magbubukas {{time}}",
     "status": {
       "running": "tumatakbo",
       "stopped": "nakahinto",

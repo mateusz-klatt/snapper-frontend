@@ -18,6 +18,8 @@
     "stopping": "กำลังหยุด...",
     "managedRemotely": "จัดการโดย {{coordinator}}",
     "remoteCoordinatorUnknown": "คอนเทนเนอร์อื่น",
+    "marketClosed": "ตลาดปิด",
+    "reopensAt": "เปิดอีกครั้ง {{time}}",
     "status": {
       "running": "กำลังทำงาน",
       "stopped": "หยุดแล้ว",

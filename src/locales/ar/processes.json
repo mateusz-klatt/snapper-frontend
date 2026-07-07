@@ -18,6 +18,8 @@
     "stopping": "جارٍ الإيقاف...",
     "managedRemotely": "تُدار بواسطة {{coordinator}}",
     "remoteCoordinatorUnknown": "حاوية أخرى",
+    "marketClosed": "السوق مغلق",
+    "reopensAt": "يُعاد الفتح {{time}}",
     "status": {
       "running": "قيد التشغيل",
       "stopped": "متوقف",

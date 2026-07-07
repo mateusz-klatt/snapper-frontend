@@ -18,6 +18,8 @@
     "stopping": "Notiek apturēšana...",
     "managedRemotely": "Pārvalda {{coordinator}}",
     "remoteCoordinatorUnknown": "cits konteiners",
+    "marketClosed": "Tirgus slēgts",
+    "reopensAt": "atkal atveras {{time}}",
     "status": {
       "running": "darbojas",
       "stopped": "apturēts",

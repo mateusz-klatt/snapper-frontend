@@ -18,6 +18,8 @@
     "stopping": "Á stopadh...",
     "managedRemotely": "Á bhainistiú ag {{coordinator}}",
     "remoteCoordinatorUnknown": "coimeádán eile",
+    "marketClosed": "Margadh dúnta",
+    "reopensAt": "athosclaíonn {{time}}",
     "status": {
       "running": "ag rith",
       "stopped": "stoptha",
