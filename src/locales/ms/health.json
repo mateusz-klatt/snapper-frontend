@@ -57,7 +57,8 @@
       "archivable": "Boleh diarkibkan",
       "status": "Status"
     },
-    "stale": "lapuk"
+    "stale": "lapuk",
+    "totalHint": "Pada PostgreSQL, Jumlah ialah anggaran perancang (tepat dalam julat hanyutan autovacuum); tepat pada SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",

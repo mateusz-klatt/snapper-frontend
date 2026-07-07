@@ -11,7 +11,8 @@ const ASSETS_DIR = join(ROOT, 'dist', 'assets')
 const BUDGET_LARGEST_CHUNK_GZIP_BYTES = 80 * 1024
 /** Raised 350 -> 360 kB for the Overview per-process MEM/CPU table feature (lazy Overview chunk + shared store, ~1.5 kB gzip). */
 /** Raised 360 -> 365 kB for #market chart-native navigation (lazy MarketChart + nav controller/logic modules in the MarketData chunk, ~1-2 kB gzip). */
-const BUDGET_TOTAL_JS_GZIP_BYTES = 367 * 1024
+/** Raised 367 -> 375 kB for #admin All-wallets scope-grant aggregation (useQueries fan-out) + DbStats Total estimate tooltip (~1.2 kB gzip). */
+const BUDGET_TOTAL_JS_GZIP_BYTES = 375 * 1024
 
 const LOCALE_NAMESPACES = [
   'admin',

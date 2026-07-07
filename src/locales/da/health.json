@@ -57,7 +57,8 @@
       "archivable": "Arkiverbare",
       "status": "Status"
     },
-    "stale": "forældet"
+    "stale": "forældet",
+    "totalHint": "På PostgreSQL er Total et estimat fra planlæggeren (nøjagtigt inden for drift fra autovacuum); på SQLite er det eksakt."
   },
   "notification": {
     "title": "Notification Sidecar",

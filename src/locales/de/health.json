@@ -57,7 +57,8 @@
       "archivable": "Archivierbar",
       "status": "Status"
     },
-    "stale": "veraltet"
+    "stale": "veraltet",
+    "totalHint": "Bei PostgreSQL ist Gesamt eine Schätzung des Planers (genau innerhalb der Abweichung durch autovacuum); bei SQLite exakt."
   },
   "notification": {
     "title": "Benachrichtigungs-Sidecar",

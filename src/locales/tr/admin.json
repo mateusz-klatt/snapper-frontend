@@ -155,7 +155,8 @@
         "noGrantsHint": "Bu cüzdanın aktif kapsam yetkisi yok."
       },
       "errorLoading": "Yetkiler yüklenirken hata: {{message}}",
-      "handover": "Devret"
+      "handover": "Devret",
+      "allWallets": "Tüm cüzdanlar"
     },
     "form": {
       "title": "Kapsam yetkisi oluştur",

@@ -57,7 +57,8 @@
       "archivable": "Có thể lưu trữ",
       "status": "Trạng thái"
     },
-    "stale": "quá hạn"
+    "stale": "quá hạn",
+    "totalHint": "Trên PostgreSQL, Tổng là ước tính của bộ lập kế hoạch (chính xác trong phạm vi độ lệch autovacuum); chính xác trên SQLite."
   },
   "notification": {
     "title": "Sidecar thông báo",
@@ -108,8 +109,6 @@
     "uptime": "Thời gian chạy",
     "threads": "Luồng",
     "openFds": "FD đang mở",
-    "disk": "Đĩa trống",
-    "diskUsage": "{{percent}}% đã dùng · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "Bị throttle {{count}}×",

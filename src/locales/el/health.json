@@ -57,7 +57,8 @@
       "archivable": "Αρχειοθετήσιμα",
       "status": "Κατάσταση"
     },
-    "stale": "παρωχημένο"
+    "stale": "παρωχημένο",
+    "totalHint": "Στο PostgreSQL, το Σύνολο είναι εκτίμηση του σχεδιαστή ερωτημάτων (ακριβές εντός της απόκλισης του autovacuum)· στο SQLite είναι ακριβές."
   },
   "notification": {
     "title": "Notification Sidecar",

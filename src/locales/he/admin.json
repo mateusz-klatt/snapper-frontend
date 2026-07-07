@@ -155,7 +155,8 @@
         "noGrantsHint": "לארנק זה אין טווחי הרשאות פעילים."
       },
       "errorLoading": "שגיאה בטעינת הענקות: {{message}}",
-      "handover": "העבר"
+      "handover": "העבר",
+      "allWallets": "כל הארנקים"
     },
     "form": {
       "title": "צור הענקת טווח",

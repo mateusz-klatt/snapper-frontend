@@ -155,7 +155,8 @@
         "noGrantsHint": "Dieses Wallet hat keine aktiven Scope-Grants."
       },
       "errorLoading": "Fehler beim Laden der Grants: {{message}}",
-      "handover": "Übergeben"
+      "handover": "Übergeben",
+      "allWallets": "Alle Wallets"
     },
     "form": {
       "title": "Scope-Grant erstellen",

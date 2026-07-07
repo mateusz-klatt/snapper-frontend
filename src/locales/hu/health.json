@@ -57,7 +57,8 @@
       "archivable": "Archiválható",
       "status": "Állapot"
     },
-    "stale": "elavult"
+    "stale": "elavult",
+    "totalHint": "PostgreSQL esetén az Összesen a tervező becslése (az autovacuum eltérésén belül pontos); SQLite esetén pontos."
   },
   "notification": {
     "title": "Értesítési Sidecar",

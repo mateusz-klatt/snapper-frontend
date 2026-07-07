@@ -57,7 +57,8 @@
       "archivable": "Արխիվացվող",
       "status": "Վիճակ"
     },
-    "stale": "հնացած"
+    "stale": "հնացած",
+    "totalHint": "PostgreSQL-ում «Ընդամենը»-ն պլանավորիչի գնահատական է (ճշգրիտ՝ autovacuum շեղման սահմաններում). SQLite-ում՝ ճշգրիտ։"
   },
   "notification": {
     "title": "Ծանուցումների Sidecar",

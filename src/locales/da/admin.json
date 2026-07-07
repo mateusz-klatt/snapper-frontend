@@ -155,7 +155,8 @@
         "noGrantsHint": "Denne wallet har ingen aktive adgangsomfang."
       },
       "errorLoading": "Fejl ved indlæsning af adgangsomfang: {{message}}",
-      "handover": "Overdrag"
+      "handover": "Overdrag",
+      "allWallets": "Alle wallets"
     },
     "form": {
       "title": "Tildel omfang",

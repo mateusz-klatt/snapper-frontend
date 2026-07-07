@@ -155,7 +155,8 @@
         "noGrantsHint": "Acest portofel nu are domenii de acces active."
       },
       "errorLoading": "Eroare la încărcarea domeniilor: {{message}}",
-      "handover": "Transfer"
+      "handover": "Transfer",
+      "allWallets": "Toate portofelele"
     },
     "form": {
       "title": "Acordați domeniu de acces",

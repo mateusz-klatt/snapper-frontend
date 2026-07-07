@@ -155,7 +155,8 @@
         "noGrantsHint": "Dompet ini tidak memiliki lingkup izin aktif."
       },
       "errorLoading": "Kesalahan saat memuat izin: {{message}}",
-      "handover": "Serah terima"
+      "handover": "Serah terima",
+      "allWallets": "Semua dompet"
     },
     "form": {
       "title": "Buat Lingkup Izin",

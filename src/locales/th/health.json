@@ -57,7 +57,8 @@
       "archivable": "เก็บถาวรได้",
       "status": "สถานะ"
     },
-    "stale": "เก่า"
+    "stale": "เก่า",
+    "totalHint": "ใน PostgreSQL ค่า “ทั้งหมด” เป็นค่าประมาณจากตัววางแผนคิวรี (แม่นยำภายในความคลาดเคลื่อนของ autovacuum); ใน SQLite เป็นค่าที่แน่นอน"
   },
   "notification": {
     "title": "Notification Sidecar",
@@ -108,8 +109,6 @@
     "uptime": "เวลาทำงาน",
     "threads": "เธรด",
     "openFds": "FD ที่เปิดอยู่",
-    "disk": "ดิสก์ว่าง",
-    "diskUsage": "{{percent}}% ใช้ไป · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "ถูก throttle {{count}}×",

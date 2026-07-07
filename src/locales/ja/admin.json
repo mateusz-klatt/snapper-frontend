@@ -155,7 +155,8 @@
         "noGrantsHint": "このウォレットには有効なスコープ権限がありません。"
       },
       "errorLoading": "権限の読み込みエラー: {{message}}",
-      "handover": "引き継ぎ"
+      "handover": "引き継ぎ",
+      "allWallets": "すべてのウォレット"
     },
     "form": {
       "title": "スコープ権限を作成",

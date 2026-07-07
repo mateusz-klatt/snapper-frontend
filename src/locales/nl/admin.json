@@ -155,7 +155,8 @@
         "noGrantsHint": "Deze portefeuille heeft geen actieve scope grants."
       },
       "errorLoading": "Fout bij laden grants: {{message}}",
-      "handover": "Overdracht"
+      "handover": "Overdracht",
+      "allWallets": "Alle portefeuilles"
     },
     "form": {
       "title": "Scope grant aanmaken",

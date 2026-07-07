@@ -57,7 +57,8 @@
       "archivable": "आर्काइव योग्य",
       "status": "स्थिति"
     },
-    "stale": "पुराना"
+    "stale": "पुराना",
+    "totalHint": "PostgreSQL पर, कुल प्लानर का अनुमान है (autovacuum ड्रिफ्ट की सीमा में सटीक); SQLite पर सटीक।"
   },
   "notification": {
     "title": "Notification Sidecar",

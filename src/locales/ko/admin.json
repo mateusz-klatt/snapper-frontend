@@ -155,7 +155,8 @@
         "noGrantsHint": "이 지갑에는 활성 범위 부여가 없습니다."
       },
       "errorLoading": "부여 내역 로딩 오류: {{message}}",
-      "handover": "인계"
+      "handover": "인계",
+      "allWallets": "모든 지갑"
     },
     "form": {
       "title": "범위 부여 생성",

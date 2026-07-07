@@ -155,7 +155,8 @@
         "noGrantsHint": "Den här plånboken har inga aktiva behörighetsomfång."
       },
       "errorLoading": "Fel vid laddning av omfång: {{message}}",
-      "handover": "Överlämna"
+      "handover": "Överlämna",
+      "allWallets": "Alla plånböcker"
     },
     "form": {
       "title": "Bevilja behörighetsomfång",

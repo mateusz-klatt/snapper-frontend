@@ -57,7 +57,8 @@
       "archivable": "アーカイブ可能",
       "status": "ステータス"
     },
-    "stale": "古い"
+    "stale": "古い",
+    "totalHint": "PostgreSQL では、合計はプランナーによる推定値です（autovacuum のずれの範囲内で正確）。SQLite では正確です。"
   },
   "notification": {
     "title": "通知サイドカー",

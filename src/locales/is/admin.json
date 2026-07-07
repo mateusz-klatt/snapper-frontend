@@ -155,7 +155,8 @@
         "noGrantsHint": "Þetta veski hefur ekkert virkt aðgangsumfang."
       },
       "errorLoading": "Villa við að hlaða umfang: {{message}}",
-      "handover": "Afhenda"
+      "handover": "Afhenda",
+      "allWallets": "Öll veski"
     },
     "form": {
       "title": "Veita aðgangsumfang",

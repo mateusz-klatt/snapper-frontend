@@ -57,7 +57,8 @@
       "archivable": "Inchartlannaithe",
       "status": "Stádas"
     },
-    "stale": "sean"
+    "stale": "sean",
+    "totalHint": "Ar PostgreSQL, is meastachán ón bpleanálaí é Iomlán (cruinn laistigh de dhiall autovacuum); tá sé cruinn ar SQLite."
   },
   "notification": {
     "title": "Sidecar Fógraí",

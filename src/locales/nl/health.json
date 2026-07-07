@@ -57,7 +57,8 @@
       "archivable": "Archiveerbaar",
       "status": "Status"
     },
-    "stale": "verouderd"
+    "stale": "verouderd",
+    "totalHint": "Op PostgreSQL is Totaal een schatting van de planner (nauwkeurig binnen de afwijking door autovacuum); exact op SQLite."
   },
   "notification": {
     "title": "Notificatie-sidecar",

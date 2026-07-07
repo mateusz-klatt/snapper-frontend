@@ -155,7 +155,8 @@
         "noGrantsHint": "Pochi hii haina ruhusa za upeo zinazotumika."
       },
       "errorLoading": "Hitilafu kupakia ruhusa: {{message}}",
-      "handover": "Kabidhi"
+      "handover": "Kabidhi",
+      "allWallets": "Pochi zote"
     },
     "form": {
       "title": "Unda Ruhusa ya Upeo",

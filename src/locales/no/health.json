@@ -57,7 +57,8 @@
       "archivable": "Arkiverbar",
       "status": "Status"
     },
-    "stale": "utdatert"
+    "stale": "utdatert",
+    "totalHint": "På PostgreSQL er Totalt et estimat fra planleggeren (nøyaktig innenfor avviket fra autovacuum); eksakt på SQLite."
   },
   "notification": {
     "title": "Varslings-sidecar",

@@ -57,7 +57,8 @@
       "archivable": "Arhivabil",
       "status": "Status"
     },
-    "stale": "învechit"
+    "stale": "învechit",
+    "totalHint": "În PostgreSQL, Total este o estimare a planificatorului (precisă în limitele derivei autovacuum); exactă în SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",

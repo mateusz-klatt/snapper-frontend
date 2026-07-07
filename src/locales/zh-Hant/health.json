@@ -57,7 +57,8 @@
       "archivable": "可歸檔",
       "status": "狀態"
     },
-    "stale": "已過期"
+    "stale": "已過期",
+    "totalHint": "在 PostgreSQL 上，「總數」是規劃器估算值（在 autovacuum 漂移範圍內準確）；在 SQLite 上為精確值。"
   },
   "notification": {
     "title": "通知 Sidecar",
@@ -108,8 +109,6 @@
     "uptime": "運行時長",
     "threads": "線程",
     "openFds": "已開啟 FDs",
-    "disk": "磁碟可用",
-    "diskUsage": "{{percent}}% 已用 · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "被限速 {{count}}×",

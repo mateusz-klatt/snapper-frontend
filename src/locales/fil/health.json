@@ -57,7 +57,8 @@
       "archivable": "Puwedeng i-archive",
       "status": "Katayuan"
     },
-    "stale": "stale"
+    "stale": "stale",
+    "totalHint": "Sa PostgreSQL, ang Kabuuan ay pagtatantya ng tagaplano ng query (tumpak sa loob ng drift ng autovacuum); eksakto sa SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",
