@@ -437,6 +437,8 @@ export interface Heartbeat {
   sequence: number
   status: 'healthy' | 'warning' | 'error'
   lagMs: number
+  marketClosed?: boolean
+  nextOpen?: Date | null
   meta?: Record<string, unknown>
 }
 
