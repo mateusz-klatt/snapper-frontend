@@ -70,4 +70,36 @@ describe('ThemeSelect', () => {
     render(<ThemeSelect value='' onChange={() => {}} options={[]} placeholder='No items' />)
     expect(screen.getByRole('combobox')).toHaveTextContent('No items')
   })
+
+  it('stays controlled without an uncontrolled-to-controlled warning when value fills in', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    const { rerender } = render(
+      <ThemeSelect
+        value=''
+        onChange={() => {}}
+        options={COLOR_OPTIONS}
+        placeholder='Pick a color'
+      />
+    )
+
+    rerender(
+      <ThemeSelect
+        value='red'
+        onChange={() => {}}
+        options={COLOR_OPTIONS}
+        placeholder='Pick a color'
+      />
+    )
+
+    const allCalls = [...warnSpy.mock.calls, ...errorSpy.mock.calls]
+    const warned = allCalls.some(callArgs =>
+      callArgs.some(arg => typeof arg === 'string' && /uncontrolled|controlled/i.test(arg))
+    )
+
+    warnSpy.mockRestore()
+    errorSpy.mockRestore()
+    expect(warned).toBe(false)
+    expect(screen.getByRole('combobox')).toHaveTextContent('Red')
+  })
 })
