@@ -57,7 +57,8 @@
       "archivable": "আর্কাইভযোগ্য",
       "status": "স্ট্যাটাস"
     },
-    "stale": "stale"
+    "stale": "stale",
+    "totalHint": "PostgreSQL-এ, মোট হলো পরিকল্পনাকারীর একটি অনুমান (autovacuum ড্রিফটের সীমার মধ্যে সঠিক); SQLite-এ এটি নির্ভুল।"
   },
   "notification": {
     "title": "Notification Sidecar",

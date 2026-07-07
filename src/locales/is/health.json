@@ -57,7 +57,8 @@
       "archivable": "Hægt að safnvista",
       "status": "Staða"
     },
-    "stale": "úrelt"
+    "stale": "úrelt",
+    "totalHint": "Í PostgreSQL er Samtals áætlun skipuleggjarans (nákvæm innan fráviks autovacuum); nákvæm í SQLite."
   },
   "notification": {
     "title": "Tilkynninga Sidecar",

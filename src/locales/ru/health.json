@@ -57,7 +57,8 @@
       "archivable": "К архивации",
       "status": "Статус"
     },
-    "stale": "устарело"
+    "stale": "устарело",
+    "totalHint": "В PostgreSQL «Всего» — оценка планировщика (точная в пределах отклонения autovacuum); в SQLite точная."
   },
   "notification": {
     "title": "Sidecar уведомлений",

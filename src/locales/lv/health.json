@@ -57,7 +57,8 @@
       "archivable": "Arhivējami",
       "status": "Statuss"
     },
-    "stale": "novecojis"
+    "stale": "novecojis",
+    "totalHint": "PostgreSQL gadījumā Kopā ir plānotāja aplēse (precīza autovacuum novirzes robežās); SQLite gadījumā precīza."
   },
   "notification": {
     "title": "Paziņojumu Sidecar",

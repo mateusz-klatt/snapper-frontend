@@ -89,7 +89,11 @@ export const DbStatsCard: React.FC = () => {
               <tr className='bg-alpine-50 text-left text-xs uppercase tracking-wide text-muted-600'>
                 <th className='px-3 py-2'>{t('dbStats.columns.table')}</th>
                 <th className='px-3 py-2'>{t('dbStats.columns.kind')}</th>
-                <th className='px-3 py-2 text-right'>{t('dbStats.columns.total')}</th>
+                <th className='px-3 py-2 text-right'>
+                  <span className='cursor-help' title={t('dbStats.totalHint')}>
+                    {t('dbStats.columns.total')}
+                  </span>
+                </th>
                 <th className='px-3 py-2 text-right'>{t('dbStats.columns.current')}</th>
                 <th className='px-3 py-2 text-right'>{t('dbStats.columns.closed')}</th>
                 <th className='px-3 py-2 text-right'>{t('dbStats.columns.archivable')}</th>

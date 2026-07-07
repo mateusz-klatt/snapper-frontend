@@ -57,7 +57,8 @@
       "archivable": "Arşivlenebilir",
       "status": "Durum"
     },
-    "stale": "bayat"
+    "stale": "bayat",
+    "totalHint": "PostgreSQL'de Toplam, planlayıcı tahminidir (autovacuum sapması içinde doğrudur); SQLite'ta kesindir."
   },
   "notification": {
     "title": "Bildirim Sidecar",
@@ -108,8 +109,6 @@
     "uptime": "Çalışma süresi",
     "threads": "Thread'ler",
     "openFds": "Açık FD'ler",
-    "disk": "Boş disk alanı",
-    "diskUsage": "{{percent}}% kullanıldı · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "{{count}}× kısıtlandı",

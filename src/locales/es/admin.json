@@ -155,7 +155,8 @@
         "noGrantsHint": "Esta cartera no tiene concesiones de alcance activas."
       },
       "errorLoading": "Error al cargar las concesiones: {{message}}",
-      "handover": "Traspasar"
+      "handover": "Traspasar",
+      "allWallets": "Todas las carteras"
     },
     "form": {
       "title": "Crear concesión de alcance",

@@ -155,7 +155,8 @@
         "noGrantsHint": "Ce wallet n'a aucune attribution de scope active."
       },
       "errorLoading": "Erreur lors du chargement des attributions : {{message}}",
-      "handover": "Transférer"
+      "handover": "Transférer",
+      "allWallets": "Tous les wallets"
     },
     "form": {
       "title": "Créer une attribution de scope",

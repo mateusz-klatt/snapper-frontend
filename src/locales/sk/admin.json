@@ -155,7 +155,8 @@
         "noGrantsHint": "Táto peňaženka nemá žiadne aktívne rozsahy oprávnení."
       },
       "errorLoading": "Chyba pri načítaní oprávnení: {{message}}",
-      "handover": "Odovzdať"
+      "handover": "Odovzdať",
+      "allWallets": "Všetky peňaženky"
     },
     "form": {
       "title": "Udeliť rozsah oprávnení",

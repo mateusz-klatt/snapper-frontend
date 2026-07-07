@@ -155,7 +155,8 @@
         "noGrantsHint": "Ví này không có phạm vi quyền đang hoạt động."
       },
       "errorLoading": "Lỗi khi tải lượt cấp: {{message}}",
-      "handover": "Bàn giao"
+      "handover": "Bàn giao",
+      "allWallets": "Tất cả ví"
     },
     "form": {
       "title": "Cấp phạm vi",

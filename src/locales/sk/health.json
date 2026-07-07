@@ -57,7 +57,8 @@
       "archivable": "Na archiváciu",
       "status": "Stav"
     },
-    "stale": "zastarané"
+    "stale": "zastarané",
+    "totalHint": "V PostgreSQL je Spolu odhad plánovača (presný v rámci odchýlky autovacuum); v SQLite je presný."
   },
   "notification": {
     "title": "Notifikačný Sidecar",

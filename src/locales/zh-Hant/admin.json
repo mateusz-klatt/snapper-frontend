@@ -155,7 +155,8 @@
         "noGrantsHint": "此錢包沒有有效的權限範圍授權。"
       },
       "errorLoading": "載入授權失敗: {{message}}",
-      "handover": "移交"
+      "handover": "移交",
+      "allWallets": "所有錢包"
     },
     "form": {
       "title": "建立權限範圍",

@@ -57,7 +57,8 @@
       "archivable": "Archiviabile",
       "status": "Stato"
     },
-    "stale": "obsoleto"
+    "stale": "obsoleto",
+    "totalHint": "Su PostgreSQL, Totale è una stima del pianificatore (accurata entro lo scostamento di autovacuum); esatta su SQLite."
   },
   "notification": {
     "title": "Sidecar notifiche",

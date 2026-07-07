@@ -57,7 +57,8 @@
       "archivable": "E arkivueshme",
       "status": "Status"
     },
-    "stale": "i vjetruar"
+    "stale": "i vjetruar",
+    "totalHint": "Në PostgreSQL, Totali është një vlerësim i planifikuesit (i saktë brenda shmangies së autovacuum); i saktë në SQLite."
   },
   "notification": {
     "title": "Sidecar i njoftimeve",

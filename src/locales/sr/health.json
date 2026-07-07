@@ -57,7 +57,8 @@
       "archivable": "Za arhiviranje",
       "status": "Status"
     },
-    "stale": "zastarelo"
+    "stale": "zastarelo",
+    "totalHint": "Na PostgreSQL, Ukupno je procena planera (tačna u okviru odstupanja autovacuum); tačna je na SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",

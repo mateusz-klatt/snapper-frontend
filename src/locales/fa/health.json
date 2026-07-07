@@ -57,7 +57,8 @@
       "archivable": "قابل آرشیو",
       "status": "وضعیت"
     },
-    "stale": "کهنه"
+    "stale": "کهنه",
+    "totalHint": "در PostgreSQL، مقدار کل یک برآورد برنامه‌ریز است (در محدوده انحراف autovacuum دقیق است)؛ در SQLite دقیق است."
   },
   "notification": {
     "title": "Notification Sidecar",

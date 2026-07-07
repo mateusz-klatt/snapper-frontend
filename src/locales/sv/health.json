@@ -57,7 +57,8 @@
       "archivable": "Arkiverbara",
       "status": "Status"
     },
-    "stale": "inaktuell"
+    "stale": "inaktuell",
+    "totalHint": "På PostgreSQL är Totalt en uppskattning från planeraren (korrekt inom avvikelsen från autovacuum); exakt på SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",
@@ -108,8 +109,6 @@
     "uptime": "Drifttid",
     "threads": "Trådar",
     "openFds": "Öppna FDs",
-    "disk": "Ledigt diskutrymme",
-    "diskUsage": "{{percent}}% använt · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "Strypningar {{count}}×",

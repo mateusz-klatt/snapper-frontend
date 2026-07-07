@@ -57,7 +57,8 @@
       "archivable": "Archivable",
       "status": "Status"
     },
-    "stale": "stale"
+    "stale": "stale",
+    "totalHint": "On PostgreSQL, Total is a planner estimate (accurate within autovacuum drift); exact on SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",

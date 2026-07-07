@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Plus, ArrowRightLeft, Link2 } from 'lucide-react'
 import { Button, Badge } from '../../../components/ui'
-import { useScopeGrants } from '../../../hooks/queries/scope-grants'
+import { useScopeGrants, useAllScopeGrants } from '../../../hooks/queries/scope-grants'
 import { useWallets, useOperators } from '../../../hooks/queries/wallets'
 import { ThemeSelect } from '../../../components/ThemeSelect'
 import { formatDateTime } from '../../../lib/dateFormat'
 import AddOperatorForm from './AddOperatorForm'
 import type { AppLocale } from '../../../i18n/types'
 import type { ScopeGrantInfo, WalletInfo, OperatorInfo } from '../../../types/api'
+
+const ALL_WALLETS = '__all__'
 
 interface ScopeGrantListProps {
   onCreateGrant: () => void
@@ -24,18 +26,32 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
   const { t, i18n } = useTranslation('admin')
   const [selectedWallet, setSelectedWallet] = useState<string>('')
   const [showAddOperator, setShowAddOperator] = useState(false)
-  const { data: walletsData } = useWallets()
+  const { data: walletsData, isLoading: walletsLoading, error: walletsError } = useWallets()
   const { data: operatorsData } = useOperators()
-  const { data: grantsData, isLoading, error } = useScopeGrants(selectedWallet)
 
   const wallets: WalletInfo[] = walletsData?.payload ?? []
   const operators: OperatorInfo[] = operatorsData?.payload ?? []
-  const grants: ScopeGrantInfo[] = grantsData?.payload ?? []
+
+  const isAllWallets = selectedWallet === ALL_WALLETS
+  const singleQuery = useScopeGrants(isAllWallets ? '' : selectedWallet)
+  const allQuery = useAllScopeGrants(isAllWallets ? wallets.map(w => w.public_id) : [])
+
+  const grants: ScopeGrantInfo[] = isAllWallets
+    ? allQuery.grants
+    : (singleQuery.data?.payload ?? [])
+  const isLoading = isAllWallets ? walletsLoading || allQuery.isLoading : singleQuery.isLoading
+  const error = isAllWallets ? (walletsError ?? allQuery.error) : singleQuery.error
 
   const operatorLabel = (publicId: string): string => {
     const op = operators.find(o => o.public_id === publicId)
 
     return op?.label ?? publicId
+  }
+
+  const walletLabel = (publicId: string): string => {
+    const wallet = wallets.find(w => w.public_id === publicId)
+
+    return wallet?.label ?? publicId
   }
 
   const formatDate = (dateString: string): string =>
@@ -98,10 +114,13 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
           id='wallet-filter'
           value={selectedWallet}
           onChange={val => setSelectedWallet(val)}
-          options={wallets.map(w => ({
-            value: w.public_id,
-            label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
-          }))}
+          options={[
+            { value: ALL_WALLETS, label: t('scopeGrants.list.allWallets') },
+            ...wallets.map(w => ({
+              value: w.public_id,
+              label: `${w.label}${w.is_paper ? t('common.paperAnnotation') : ''}`,
+            })),
+          ]}
           placeholder={t('common.chooseWalletPlaceholder')}
         />
       </div>
@@ -142,6 +161,11 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
                     {t('scopeGrants.list.columns.operator')}
                   </th>
+                  {isAllWallets && (
+                    <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
+                      {t('common.walletLabel')}
+                    </th>
+                  )}
                   <th className='px-3 py-3 text-left text-xs font-medium text-muted-600 uppercase tracking-wider'>
                     {t('scopeGrants.list.columns.scope')}
                   </th>
@@ -165,6 +189,11 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                       </div>
                       <div className='text-xs text-muted-500'>{grant.operator_public_id}</div>
                     </td>
+                    {isAllWallets && (
+                      <td className='px-3 py-4 whitespace-nowrap text-sm text-alpine-900'>
+                        {walletLabel(grant.wallet_public_id)}
+                      </td>
+                    )}
                     <td className='px-3 py-4 whitespace-nowrap'>
                       <span className='inline-flex items-center rounded-full border border-brand-200 bg-brand-100 px-2.5 py-0.5 text-xs font-medium text-brand-800'>
                         {t(`scopeGrants.form.scopeKinds.${grant.scope_kind}`, {

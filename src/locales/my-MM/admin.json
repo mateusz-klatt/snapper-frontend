@@ -155,7 +155,8 @@
         "noGrantsHint": "ဤ wallet တွင် active scope grant မရှိပါ။"
       },
       "errorLoading": "Grant များ load လုပ်ရာတွင် error: {{message}}",
-      "handover": "လွှဲပြောင်းပါ"
+      "handover": "လွှဲပြောင်းပါ",
+      "allWallets": "ဝေါလက်အားလုံး"
     },
     "form": {
       "title": "Scope Grant ဖန်တီးပါ",

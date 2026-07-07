@@ -155,7 +155,8 @@
         "noGrantsHint": "Ky portofol nuk ka fushëveprime aktive aksesi."
       },
       "errorLoading": "Gabim gjatë ngarkimit të fushëveprimeve: {{message}}",
-      "handover": "Dorëzim"
+      "handover": "Dorëzim",
+      "allWallets": "Të gjitha portofolat"
     },
     "form": {
       "title": "Jep fushëveprim aksesi",

@@ -57,7 +57,8 @@
       "archivable": "Archivable",
       "status": "Statut"
     },
-    "stale": "obsolète"
+    "stale": "obsolète",
+    "totalHint": "Sur PostgreSQL, la valeur Total est une estimation du planificateur (précise dans la marge de dérive liée à autovacuum) ; exacte sur SQLite."
   },
   "notification": {
     "title": "Sidecar de notifications",

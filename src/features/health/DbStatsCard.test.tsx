@@ -110,6 +110,18 @@ describe('DbStatsCard', () => {
     expect(screen.getByText(/Sampler interval: 60s · 2 tables/)).toBeInTheDocument()
   })
 
+  it('explains the Total estimate via a tooltip on the column header', async () => {
+    const { useDbStats } = await import('../../hooks/queries/system')
+
+    vi.mocked(useDbStats).mockReturnValue({
+      data: sampleSnapshot,
+      isLoading: false,
+      error: null,
+    } as unknown as ReturnType<typeof useDbStats>)
+    renderWithProviders(<DbStatsCard />)
+    expect(screen.getByText('Total').getAttribute('title')).toMatch(/planner estimate/)
+  })
+
   it('renders em-dashes for null SCD2 columns on event tables', async () => {
     const { useDbStats } = await import('../../hooks/queries/system')
 

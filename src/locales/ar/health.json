@@ -57,7 +57,8 @@
       "archivable": "قابل للأرشفة",
       "status": "الحالة"
     },
-    "stale": "قديم"
+    "stale": "قديم",
+    "totalHint": "في PostgreSQL، يكون الإجمالي تقديرًا من مخطط الاستعلامات (دقيقًا ضمن انحراف autovacuum)؛ ويكون دقيقًا على SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",

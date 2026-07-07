@@ -57,7 +57,8 @@
       "archivable": "До архівації",
       "status": "Статус"
     },
-    "stale": "застаріло"
+    "stale": "застаріло",
+    "totalHint": "У PostgreSQL «Усього» — оцінка планувальника (точна в межах відхилення autovacuum); у SQLite точна."
   },
   "notification": {
     "title": "Sidecar сповіщень",
@@ -108,8 +109,6 @@
     "uptime": "Час роботи",
     "threads": "Потоки",
     "openFds": "Відкриті FD",
-    "disk": "Вільне місце на диску",
-    "diskUsage": "{{percent}}% використано · {{mount}}",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
     "throttled": "Обмежено {{count}}×",

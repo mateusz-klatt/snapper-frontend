@@ -57,7 +57,8 @@
       "archivable": "아카이브 가능",
       "status": "상태"
     },
-    "stale": "오래됨"
+    "stale": "오래됨",
+    "totalHint": "PostgreSQL에서는 전체가 플래너 추정치입니다(autovacuum 드리프트 범위 내에서 정확함). SQLite에서는 정확합니다."
   },
   "notification": {
     "title": "알림 사이드카",

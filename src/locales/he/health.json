@@ -57,7 +57,8 @@
       "archivable": "ניתן לארכוב",
       "status": "סטטוס"
     },
-    "stale": "מיושן"
+    "stale": "מיושן",
+    "totalHint": "ב-PostgreSQL, סה״כ הוא אומדן של המתכנן (מדויק במסגרת הסטייה של autovacuum); מדויק ב-SQLite."
   },
   "notification": {
     "title": "Notification Sidecar",

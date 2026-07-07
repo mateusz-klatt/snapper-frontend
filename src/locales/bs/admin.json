@@ -155,7 +155,8 @@
         "noGrantsHint": "Ovaj novčanik nema aktivnih opsega ovlaštenja."
       },
       "errorLoading": "Greška pri učitavanju ovlaštenja: {{message}}",
-      "handover": "Prenesi"
+      "handover": "Prenesi",
+      "allWallets": "Svi novčanici"
     },
     "form": {
       "title": "Dodijeli opseg",

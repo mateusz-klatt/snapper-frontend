@@ -155,7 +155,8 @@
         "noGrantsHint": "Walang active scope grants ang wallet na ito."
       },
       "errorLoading": "Error sa pag-load ng grants: {{message}}",
-      "handover": "I-handover"
+      "handover": "I-handover",
+      "allWallets": "Lahat ng wallet"
     },
     "form": {
       "title": "Gumawa ng Scope Grant",

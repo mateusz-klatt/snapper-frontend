@@ -155,7 +155,8 @@
         "noGrantsHint": "Ši piniginė neturi aktyvių prieigos sričių."
       },
       "errorLoading": "Klaida įkeliant sritis: {{message}}",
-      "handover": "Perduoti"
+      "handover": "Perduoti",
+      "allWallets": "Visos piniginės"
     },
     "form": {
       "title": "Suteikti prieigos sritį",

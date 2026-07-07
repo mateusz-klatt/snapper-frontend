@@ -57,7 +57,8 @@
       "archivable": "Do archiwizacji",
       "status": "Status"
     },
-    "stale": "przestarzałe"
+    "stale": "przestarzałe",
+    "totalHint": "W PostgreSQL wartość Łącznie jest oszacowaniem planera (dokładnym w granicach odchylenia autovacuum); w SQLite jest dokładna."
   },
   "notification": {
     "title": "Sidecar powiadomień",

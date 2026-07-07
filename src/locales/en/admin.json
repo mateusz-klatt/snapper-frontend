@@ -155,7 +155,8 @@
         "noGrantsHint": "This wallet has no active scope grants."
       },
       "errorLoading": "Error loading grants: {{message}}",
-      "handover": "Handover"
+      "handover": "Handover",
+      "allWallets": "All wallets"
     },
     "form": {
       "title": "Create Scope Grant",

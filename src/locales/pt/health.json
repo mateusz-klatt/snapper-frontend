@@ -57,7 +57,8 @@
       "archivable": "Arquivável",
       "status": "Status"
     },
-    "stale": "desatualizado"
+    "stale": "desatualizado",
+    "totalHint": "No PostgreSQL, Total é uma estimativa do planejador (precisa dentro da variação do autovacuum); exata no SQLite."
   },
   "notification": {
     "title": "Sidecar de notificações",

@@ -155,7 +155,8 @@
         "noGrantsHint": "Ten portfel nie ma aktywnych przyznań zakresów."
       },
       "errorLoading": "Błąd ładowania przyznań: {{message}}",
-      "handover": "Przekaż"
+      "handover": "Przekaż",
+      "allWallets": "Wszystkie portfele"
     },
     "form": {
       "title": "Nadaj uprawnienie zakresowe",

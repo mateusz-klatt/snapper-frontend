@@ -155,7 +155,8 @@
         "noGrantsHint": "Níl deontais scóipe ghníomhacha ag an sparán seo."
       },
       "errorLoading": "Earráid agus deontais á lódáil: {{message}}",
-      "handover": "Aistriú"
+      "handover": "Aistriú",
+      "allWallets": "Gach sparán"
     },
     "form": {
       "title": "Cruthaigh Deontas Scóipe",

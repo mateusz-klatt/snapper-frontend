@@ -57,7 +57,8 @@
       "archivable": "Arkistoitavat",
       "status": "Tila"
     },
-    "stale": "vanhentunut"
+    "stale": "vanhentunut",
+    "totalHint": "PostgreSQL-tietokannassa Yhteensä on suunnittelijan arvio (tarkka autovacuum-poikkeaman rajoissa); SQLite-tietokannassa se on tarkka."
   },
   "notification": {
     "title": "Ilmoitusten sidecar",

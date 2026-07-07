@@ -155,7 +155,8 @@
         "noGrantsHint": "Ehhez a pénztárcához nincs aktív hatáskör jogosultság."
       },
       "errorLoading": "Hiba a jogosultságok betöltésekor: {{message}}",
-      "handover": "Átadás"
+      "handover": "Átadás",
+      "allWallets": "Összes pénztárca"
     },
     "form": {
       "title": "Hatáskör hozzárendelése",

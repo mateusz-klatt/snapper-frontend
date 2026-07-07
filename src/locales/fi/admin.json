@@ -155,7 +155,8 @@
         "noGrantsHint": "Tällä lompakolla ei ole aktiivisia käyttöoikeusalueita."
       },
       "errorLoading": "Virhe alueiden latauksessa: {{message}}",
-      "handover": "Siirrä"
+      "handover": "Siirrä",
+      "allWallets": "Kaikki lompakot"
     },
     "form": {
       "title": "Myönnä käyttöoikeusalue",

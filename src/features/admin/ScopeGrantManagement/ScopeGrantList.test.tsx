@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, within } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import ScopeGrantList from './ScopeGrantList'
 
@@ -63,11 +63,13 @@ const mockGrants = {
 }
 
 const mockUseScopeGrants = vi.fn()
+const mockUseAllScopeGrants = vi.fn()
 const mockUseWallets = vi.fn()
 const mockUseOperators = vi.fn()
 
 vi.mock('../../../hooks/queries/scope-grants', () => ({
   useScopeGrants: () => mockUseScopeGrants(),
+  useAllScopeGrants: (ids: readonly string[]) => mockUseAllScopeGrants(ids),
 }))
 vi.mock('../../../hooks/queries/wallets', () => ({
   useWallets: () => mockUseWallets(),
@@ -114,6 +116,7 @@ describe('ScopeGrantList', () => {
     mockUseWallets.mockReturnValue({ data: mockWallets })
     mockUseOperators.mockReturnValue({ data: mockOperators })
     mockUseScopeGrants.mockReturnValue({ data: undefined, isLoading: false, error: null })
+    mockUseAllScopeGrants.mockReturnValue({ grants: [], isLoading: false, error: null })
   })
   it('shows wallet selector and select-a-wallet message', () => {
     renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
@@ -256,5 +259,66 @@ describe('ScopeGrantList', () => {
     renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
     fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
     expect(screen.getByText(/Unknown error/)).toBeDefined()
+  })
+  it('shows the Wallet column and aggregated grants when All wallets is selected', () => {
+    const secondGrant = {
+      ...mockGrants.payload[0],
+      public_id: 'sg-2',
+      wallet_public_id: 'w-2',
+    }
+
+    mockUseAllScopeGrants.mockReturnValue({
+      grants: [mockGrants.payload[0], secondGrant],
+      isLoading: false,
+      error: null,
+    })
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: '__all__' } })
+    expect(screen.getByText('Wallet')).toBeDefined()
+    expect(screen.getAllByText('alice')).toHaveLength(2)
+    expect(mockUseAllScopeGrants).toHaveBeenCalledWith(['w-1', 'w-2'])
+    const table = screen.getByRole('table')
+
+    expect(within(table).getByText('default')).toBeDefined()
+    expect(within(table).getByText('paper')).toBeDefined()
+  })
+  it('shows the loading spinner in All wallets mode while wallets are still loading', () => {
+    mockUseWallets.mockReturnValue({ data: mockWallets, isLoading: true, error: null })
+    const { container } = renderWithQuery(
+      <ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />
+    )
+
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: '__all__' } })
+    expect(container.querySelector('.animate-spin')).not.toBeNull()
+    expect(screen.queryByText('No grants found')).toBeNull()
+  })
+  it('surfaces the wallets error in All wallets mode instead of a false empty state', () => {
+    mockUseWallets.mockReturnValue({
+      data: mockWallets,
+      isLoading: false,
+      error: new Error('wallets down'),
+    })
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: '__all__' } })
+    expect(screen.getByText(/wallets down/)).toBeDefined()
+    expect(screen.queryByText('No grants found')).toBeNull()
+  })
+  it('falls back to wallet public_id when the wallet is not in the wallets list', () => {
+    const orphanGrant = {
+      ...mockGrants.payload[0],
+      public_id: 'sg-3',
+      wallet_public_id: 'w-unknown',
+    }
+
+    mockUseAllScopeGrants.mockReturnValue({
+      grants: [orphanGrant],
+      isLoading: false,
+      error: null,
+    })
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: '__all__' } })
+    const table = screen.getByRole('table')
+
+    expect(within(table).getByText('w-unknown')).toBeDefined()
   })
 })

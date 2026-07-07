@@ -155,7 +155,8 @@
         "noGrantsHint": "Šim makam nav aktīvu piekļuves jomu."
       },
       "errorLoading": "Kļūda, ielādējot jomas: {{message}}",
-      "handover": "Nodot"
+      "handover": "Nodot",
+      "allWallets": "Visi maki"
     },
     "form": {
       "title": "Piešķirt piekļuves jomu",

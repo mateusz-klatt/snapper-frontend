@@ -57,7 +57,8 @@
       "archivable": "Dapat diarsipkan",
       "status": "Status"
     },
-    "stale": "usang"
+    "stale": "usang",
+    "totalHint": "Pada PostgreSQL, Total adalah estimasi perencana kueri (akurat dalam batas pergeseran autovacuum); tepat pada SQLite."
   },
   "notification": {
     "title": "Sidecar Notifikasi",

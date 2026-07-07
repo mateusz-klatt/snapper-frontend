@@ -155,7 +155,8 @@
         "noGrantsHint": "Denne lommeboken har ingen aktive tilgangsomfang."
       },
       "errorLoading": "Feil ved lasting av tilgangsomfang: {{message}}",
-      "handover": "Overfør"
+      "handover": "Overfør",
+      "allWallets": "Alle lommebøker"
     },
     "form": {
       "title": "Tildel omfang",

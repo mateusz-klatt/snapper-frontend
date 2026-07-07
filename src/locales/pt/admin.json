@@ -155,7 +155,8 @@
         "noGrantsHint": "Esta carteira não tem permissões de escopo ativas."
       },
       "errorLoading": "Erro ao carregar permissões: {{message}}",
-      "handover": "Transferir"
+      "handover": "Transferir",
+      "allWallets": "Todas as carteiras"
     },
     "form": {
       "title": "Criar permissão de escopo",

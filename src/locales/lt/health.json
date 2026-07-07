@@ -57,7 +57,8 @@
       "archivable": "Archyvuotini",
       "status": "Būsena"
     },
-    "stale": "pasenę"
+    "stale": "pasenę",
+    "totalHint": "PostgreSQL atveju Iš viso yra planuoklio įvertis (tikslus neviršijant autovacuum nuokrypio); SQLite atveju tikslus."
   },
   "notification": {
     "title": "Pranešimų Sidecar",

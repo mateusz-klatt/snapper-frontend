@@ -155,7 +155,8 @@
         "noGrantsHint": "لا تحتوي هذه المحفظة على نطاقات صلاحيات نشطة."
       },
       "errorLoading": "خطأ في تحميل المنح: {{message}}",
-      "handover": "تسليم"
+      "handover": "تسليم",
+      "allWallets": "كل المحافظ"
     },
     "form": {
       "title": "إنشاء منح نطاق",

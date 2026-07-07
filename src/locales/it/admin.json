@@ -155,7 +155,8 @@
         "noGrantsHint": "Questo portafoglio non ha grant degli scope attivi."
       },
       "errorLoading": "Errore nel caricamento dei grant: {{message}}",
-      "handover": "Trasferisci"
+      "handover": "Trasferisci",
+      "allWallets": "Tutti i portafogli"
     },
     "form": {
       "title": "Crea grant di scope",
