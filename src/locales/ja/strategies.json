@@ -124,6 +124,18 @@
     "noteHelp": "このプロセスを識別しやすくするため、設定と一緒に保存されます。",
     "cancel": "キャンセル",
     "submit": "戦略を登録",
-    "submitting": "登録中…"
+    "submitting": "登録中…",
+    "scopeSectionLabel": "スコープ",
+    "operatorLabel": "オペレーター",
+    "operatorPlaceholder": "オペレーターを選択",
+    "walletLabel": "ウォレット",
+    "walletPlaceholder": "ウォレットを選択",
+    "paperAnnotation": " (ペーパー)",
+    "refUserLabel": "戦略所有者 (ユーザー)",
+    "refOperatorLabel": "オペレーター参照",
+    "refWalletLabel": "ウォレット参照",
+    "referencePlaceholder": "選択",
+    "scopeHelp": "所有者はユーザー名で解決され、戦略の起動時に選択したオペレーターに対してスコープがチェックされます。",
+    "noOperatorsWarning": "オペレーターはまだ存在しません。スコープ付き戦略を起動する前に、オペレーターとスコープ付与を作成してください。"
   }
 }

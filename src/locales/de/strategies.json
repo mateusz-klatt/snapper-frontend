@@ -124,6 +124,18 @@
     "noteHelp": "Wird zusammen mit der Konfiguration gespeichert, um diesen Prozess identifizieren zu können.",
     "cancel": "Abbrechen",
     "submit": "Strategie registrieren",
-    "submitting": "Wird registriert…"
+    "submitting": "Wird registriert…",
+    "scopeSectionLabel": "Scope",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Operator auswählen",
+    "walletLabel": "Wallet",
+    "walletPlaceholder": "Wallet auswählen",
+    "paperAnnotation": " (Papier)",
+    "refUserLabel": "Strategieeigentümer (Benutzer)",
+    "refOperatorLabel": "Operator-Referenz",
+    "refWalletLabel": "Wallet-Referenz",
+    "referencePlaceholder": "Auswählen",
+    "scopeHelp": "Der Eigentümer wird über den Benutzernamen aufgelöst und beim Start der Strategie gegen den ausgewählten Operator auf den Scope geprüft.",
+    "noOperatorsWarning": "Es sind noch keine Operatoren vorhanden. Erstellen Sie einen Operator und eine Scope-Freigabe, bevor Sie eine Strategie mit Scope starten."
   }
 }

@@ -124,6 +124,18 @@
     "noteHelp": "Zapisana wraz z konfiguracją, aby pomóc zidentyfikować ten proces.",
     "cancel": "Anuluj",
     "submit": "Zarejestruj strategię",
-    "submitting": "Rejestrowanie…"
+    "submitting": "Rejestrowanie…",
+    "scopeSectionLabel": "Zakres",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Wybierz operatora",
+    "walletLabel": "Portfel",
+    "walletPlaceholder": "Wybierz portfel",
+    "paperAnnotation": " (papierowy)",
+    "refUserLabel": "Właściciel strategii (użytkownik)",
+    "refOperatorLabel": "Referencja operatora",
+    "refWalletLabel": "Referencja portfela",
+    "referencePlaceholder": "Wybierz",
+    "scopeHelp": "Właściciel jest ustalany na podstawie nazwy użytkownika, a podczas uruchamiania strategii jego zakres jest sprawdzany względem wybranego operatora.",
+    "noOperatorsWarning": "Nie ma jeszcze operatorów. Utwórz operatora i nadanie zakresu przed uruchomieniem strategii z zakresem."
   }
 }

@@ -3348,6 +3348,10 @@ export type Components = {
             default_enabled: boolean;
             default_mode: "thread" | "process";
             default_parameters: Record<string, unknown>;
+            reference_identity_params: {
+                [key: string]: string;
+            };
+            seeded_identity_params: string[];
             lifecycle: "long_running" | "one_shot";
         };
         ProcessSchemaResponse: {

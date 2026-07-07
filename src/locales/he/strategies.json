@@ -124,6 +124,18 @@
     "noteHelp": "נשמר לצד התצורה כדי לעזור לזהות תהליך זה.",
     "cancel": "בטל",
     "submit": "רשום אסטרטגיה",
-    "submitting": "רושם…"
+    "submitting": "רושם…",
+    "scopeSectionLabel": "היקף",
+    "operatorLabel": "מפעיל",
+    "operatorPlaceholder": "בחר מפעיל",
+    "walletLabel": "ארנק",
+    "walletPlaceholder": "בחר ארנק",
+    "paperAnnotation": " (נייר)",
+    "refUserLabel": "בעל האסטרטגיה (משתמש)",
+    "refOperatorLabel": "הפניית מפעיל",
+    "refWalletLabel": "הפניית ארנק",
+    "referencePlaceholder": "בחר",
+    "scopeHelp": "הבעלים נפתר לפי שם משתמש ונבדק לפי ההיקף מול המפעיל שנבחר בעת הפעלת האסטרטגיה.",
+    "noOperatorsWarning": "עדיין אין מפעילים. צור מפעיל והרשאת היקף לפני הפעלת אסטרטגיה מוגבלת היקף."
   }
 }

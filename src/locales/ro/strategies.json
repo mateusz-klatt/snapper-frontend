@@ -124,6 +124,18 @@
     "noteHelp": "Stocată împreună cu configurația pentru a ajuta la identificarea acestui proces.",
     "cancel": "Anulați",
     "submit": "Înregistrați strategia",
-    "submitting": "Se înregistrează…"
+    "submitting": "Se înregistrează…",
+    "scopeSectionLabel": "Domeniu",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Selectați un operator",
+    "walletLabel": "Portofel",
+    "walletPlaceholder": "Selectați un portofel",
+    "paperAnnotation": " (hârtie)",
+    "refUserLabel": "Proprietarul strategiei (utilizator)",
+    "refOperatorLabel": "Referință operator",
+    "refWalletLabel": "Referință portofel",
+    "referencePlaceholder": "Selectați",
+    "scopeHelp": "Proprietarul este rezolvat după numele de utilizator, iar domeniul său este verificat față de operatorul selectat la lansarea strategiei.",
+    "noOperatorsWarning": "Nu există încă operatori. Creați un operator și o acordare de domeniu înainte de a lansa o strategie cu domeniu."
   }
 }

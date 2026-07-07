@@ -124,6 +124,18 @@
     "noteHelp": "Conservée avec la configuration pour faciliter l'identification de ce processus.",
     "cancel": "Annuler",
     "submit": "Enregistrer la stratégie",
-    "submitting": "Enregistrement…"
+    "submitting": "Enregistrement…",
+    "scopeSectionLabel": "Périmètre",
+    "operatorLabel": "Opérateur",
+    "operatorPlaceholder": "Sélectionner un opérateur",
+    "walletLabel": "Portefeuille",
+    "walletPlaceholder": "Sélectionner un portefeuille",
+    "paperAnnotation": " (papier)",
+    "refUserLabel": "Propriétaire de la stratégie (utilisateur)",
+    "refOperatorLabel": "Référence de l’opérateur",
+    "refWalletLabel": "Référence du portefeuille",
+    "referencePlaceholder": "Sélectionner",
+    "scopeHelp": "Le propriétaire est résolu par nom d’utilisateur et son périmètre est vérifié par rapport à l’opérateur sélectionné au lancement de la stratégie.",
+    "noOperatorsWarning": "Aucun opérateur n’existe encore. Créez un opérateur et une autorisation de périmètre avant de lancer une stratégie avec périmètre."
   }
 }

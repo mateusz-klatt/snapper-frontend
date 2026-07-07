@@ -124,6 +124,18 @@
     "noteHelp": "Bu süreci tanımlamaya yardımcı olmak için yapılandırmanın yanında saklanır.",
     "cancel": "İptal",
     "submit": "Strateji kaydet",
-    "submitting": "Kaydediliyor…"
+    "submitting": "Kaydediliyor…",
+    "scopeSectionLabel": "Kapsam",
+    "operatorLabel": "Operatör",
+    "operatorPlaceholder": "Bir operatör seçin",
+    "walletLabel": "Cüzdan",
+    "walletPlaceholder": "Bir cüzdan seçin",
+    "paperAnnotation": " (kağıt)",
+    "refUserLabel": "Strateji sahibi (kullanıcı)",
+    "refOperatorLabel": "Operatör referansı",
+    "refWalletLabel": "Cüzdan referansı",
+    "referencePlaceholder": "Seç",
+    "scopeHelp": "Sahip kullanıcı adına göre çözümlenir ve strateji başlatıldığında kapsamı seçili operatöre göre denetlenir.",
+    "noOperatorsWarning": "Henüz operatör yok. Kapsamlı bir strateji başlatmadan önce bir operatör ve kapsam izni oluşturun."
   }
 }

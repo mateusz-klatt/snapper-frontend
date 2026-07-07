@@ -124,6 +124,18 @@
     "noteHelp": "Tallennetaan konfiguraation rinnalle prosessin tunnistamista varten.",
     "cancel": "Peruuta",
     "submit": "Rekisteröi strategia",
-    "submitting": "Rekisteröidään…"
+    "submitting": "Rekisteröidään…",
+    "scopeSectionLabel": "Scope",
+    "operatorLabel": "Operaattori",
+    "operatorPlaceholder": "Valitse operaattori",
+    "walletLabel": "Lompakko",
+    "walletPlaceholder": "Valitse lompakko",
+    "paperAnnotation": " (paperi)",
+    "refUserLabel": "Strategian omistaja (käyttäjä)",
+    "refOperatorLabel": "Operaattorin viite",
+    "refWalletLabel": "Lompakon viite",
+    "referencePlaceholder": "Valitse",
+    "scopeHelp": "Omistaja ratkaistaan käyttäjänimen perusteella ja hänen scope-oikeutensa tarkistetaan valittua operaattoria vasten strategian käynnistyessä.",
+    "noOperatorsWarning": "Operaattoreita ei ole vielä. Luo operaattori ja scope-valtuutus ennen scoped-strategian käynnistämistä."
   }
 }

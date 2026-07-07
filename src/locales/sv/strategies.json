@@ -124,6 +124,18 @@
     "noteHelp": "Sparas tillsammans med konfigurationen för att identifiera processen.",
     "cancel": "Avbryt",
     "submit": "Registrera strategi",
-    "submitting": "Registrerar…"
+    "submitting": "Registrerar…",
+    "scopeSectionLabel": "Omfattning",
+    "operatorLabel": "Operatör",
+    "operatorPlaceholder": "Välj en operatör",
+    "walletLabel": "Plånbok",
+    "walletPlaceholder": "Välj en plånbok",
+    "paperAnnotation": " (papper)",
+    "refUserLabel": "Strategiägare (användare)",
+    "refOperatorLabel": "Operatörsreferens",
+    "refWalletLabel": "Plånboksreferens",
+    "referencePlaceholder": "Välj",
+    "scopeHelp": "Ägaren bestäms via användarnamn och omfattningen kontrolleras mot den valda operatören när strategin startas.",
+    "noOperatorsWarning": "Det finns inga operatörer ännu. Skapa en operatör och en omfattningstilldelning innan du startar en strategi med omfattning."
   }
 }

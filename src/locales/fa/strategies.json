@@ -124,6 +124,18 @@
     "noteHelp": "کنار پیکربندی ذخیره می‌شود تا این فرایند را بهتر شناسایی کند.",
     "cancel": "لغو",
     "submit": "ثبت استراتژی",
-    "submitting": "در حال ثبت…"
+    "submitting": "در حال ثبت…",
+    "scopeSectionLabel": "دامنه",
+    "operatorLabel": "اپراتور",
+    "operatorPlaceholder": "یک اپراتور انتخاب کنید",
+    "walletLabel": "کیف پول",
+    "walletPlaceholder": "یک کیف پول انتخاب کنید",
+    "paperAnnotation": " (کاغذی)",
+    "refUserLabel": "مالک استراتژی (کاربر)",
+    "refOperatorLabel": "مرجع اپراتور",
+    "refWalletLabel": "مرجع کیف پول",
+    "referencePlaceholder": "انتخاب",
+    "scopeHelp": "مالک از طریق نام کاربری تعیین می‌شود و هنگام راه‌اندازی استراتژی، دامنه او نسبت به اپراتور انتخاب‌شده بررسی می‌شود.",
+    "noOperatorsWarning": "هنوز هیچ اپراتوری وجود ندارد. پیش از راه‌اندازی یک استراتژی دارای دامنه، یک اپراتور و یک مجوز دامنه ایجاد کنید."
   }
 }

@@ -124,6 +124,18 @@
     "noteHelp": "ဤ process ကို ခွဲခြားသိရန် configuration နှင့်အတူ သိမ်းထားသည်။",
     "cancel": "ပယ်ဖျက်",
     "submit": "ဗျူဟာ မှတ်ပုံတင်ပါ",
-    "submitting": "မှတ်ပုံတင်နေသည်…"
+    "submitting": "မှတ်ပုံတင်နေသည်…",
+    "scopeSectionLabel": "Scope",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Operator တစ်ခုကို ရွေးပါ",
+    "walletLabel": "Wallet",
+    "walletPlaceholder": "Wallet တစ်ခုကို ရွေးပါ",
+    "paperAnnotation": " (စာရွက်)",
+    "refUserLabel": "ဗျူဟာပိုင်ရှင် (အသုံးပြုသူ)",
+    "refOperatorLabel": "Operator reference",
+    "refWalletLabel": "Wallet reference",
+    "referencePlaceholder": "ရွေးပါ",
+    "scopeHelp": "ပိုင်ရှင်ကို username ဖြင့် resolve လုပ်ပြီး ဗျူဟာကို launch လုပ်သည့်အခါ ရွေးထားသော operator နှင့် scope စစ်ဆေးသည်။",
+    "noOperatorsWarning": "Operator မရှိသေးပါ။ scoped strategy ကို launch မလုပ်မီ operator တစ်ခုနှင့် scope grant တစ်ခု ဖန်တီးပါ။"
   }
 }

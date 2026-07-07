@@ -124,6 +124,18 @@
     "noteHelp": "Uloženo spolu s konfigurací, aby bylo možné tento proces identifikovat.",
     "cancel": "Zrušit",
     "submit": "Registrovat strategii",
-    "submitting": "Registrace…"
+    "submitting": "Registrace…",
+    "scopeSectionLabel": "Rozsah",
+    "operatorLabel": "Operátor",
+    "operatorPlaceholder": "Vyberte operátora",
+    "walletLabel": "Peněženka",
+    "walletPlaceholder": "Vyberte peněženku",
+    "paperAnnotation": " (papírová)",
+    "refUserLabel": "Vlastník strategie (uživatel)",
+    "refOperatorLabel": "Reference operátora",
+    "refWalletLabel": "Reference peněženky",
+    "referencePlaceholder": "Vybrat",
+    "scopeHelp": "Vlastník se určí podle uživatelského jména a při spuštění strategie se zkontroluje jeho rozsah vůči vybranému operátorovi.",
+    "noOperatorsWarning": "Zatím neexistují žádní operátoři. Před spuštěním strategie s rozsahem vytvořte operátora a udělení rozsahu."
   }
 }

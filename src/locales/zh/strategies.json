@@ -124,6 +124,18 @@
     "noteHelp": "随配置一起保存，便于识别此进程。",
     "cancel": "取消",
     "submit": "注册策略",
-    "submitting": "注册中…"
+    "submitting": "注册中…",
+    "scopeSectionLabel": "范围",
+    "operatorLabel": "操作员",
+    "operatorPlaceholder": "选择操作员",
+    "walletLabel": "钱包",
+    "walletPlaceholder": "选择钱包",
+    "paperAnnotation": " (纸质)",
+    "refUserLabel": "策略所有者（用户）",
+    "refOperatorLabel": "操作员引用",
+    "refWalletLabel": "钱包引用",
+    "referencePlaceholder": "选择",
+    "scopeHelp": "所有者会按用户名解析，并在策略启动时根据所选操作员检查范围。",
+    "noOperatorsWarning": "尚无操作员。启动有范围的策略之前，请创建一个操作员和一个范围授权。"
   }
 }

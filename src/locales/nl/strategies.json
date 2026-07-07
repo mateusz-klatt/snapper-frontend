@@ -124,6 +124,18 @@
     "noteHelp": "Opgeslagen naast de configuratie om dit proces te helpen identificeren.",
     "cancel": "Annuleren",
     "submit": "Strategie registreren",
-    "submitting": "Registreren…"
+    "submitting": "Registreren…",
+    "scopeSectionLabel": "Scope",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Selecteer een operator",
+    "walletLabel": "Wallet",
+    "walletPlaceholder": "Selecteer een wallet",
+    "paperAnnotation": " (papier)",
+    "refUserLabel": "Strategie-eigenaar (gebruiker)",
+    "refOperatorLabel": "Operatorreferentie",
+    "refWalletLabel": "Walletreferentie",
+    "referencePlaceholder": "Selecteren",
+    "scopeHelp": "De eigenaar wordt op gebruikersnaam bepaald en bij het starten van de strategie op scope gecontroleerd ten opzichte van de geselecteerde operator.",
+    "noOperatorsWarning": "Er zijn nog geen operators. Maak een operator en een scope-toekenning aan voordat u een strategie met scope start."
   }
 }

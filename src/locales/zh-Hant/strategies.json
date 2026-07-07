@@ -124,6 +124,18 @@
     "noteHelp": "隨配置一起儲存，便於識別此進程。",
     "cancel": "取消",
     "submit": "註冊策略",
-    "submitting": "註冊中…"
+    "submitting": "註冊中…",
+    "scopeSectionLabel": "範圍",
+    "operatorLabel": "操作員",
+    "operatorPlaceholder": "選擇操作員",
+    "walletLabel": "錢包",
+    "walletPlaceholder": "選擇錢包",
+    "paperAnnotation": " (紙本)",
+    "refUserLabel": "策略擁有者（使用者）",
+    "refOperatorLabel": "操作員參照",
+    "refWalletLabel": "錢包參照",
+    "referencePlaceholder": "選擇",
+    "scopeHelp": "擁有者會依使用者名稱解析，並在策略啟動時依所選操作員檢查範圍。",
+    "noOperatorsWarning": "尚未建立操作員。請先建立操作員和範圍授權，再啟動具範圍的策略。"
   }
 }

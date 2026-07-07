@@ -124,6 +124,18 @@
     "noteHelp": "Saugoma kartu su konfigūracija, kad būtų lengviau identifikuoti procesą.",
     "cancel": "Atšaukti",
     "submit": "Registruoti strategiją",
-    "submitting": "Registruojama…"
+    "submitting": "Registruojama…",
+    "scopeSectionLabel": "Apimtis",
+    "operatorLabel": "Operatorius",
+    "operatorPlaceholder": "Pasirinkite operatorių",
+    "walletLabel": "Piniginė",
+    "walletPlaceholder": "Pasirinkite piniginę",
+    "paperAnnotation": " (popierinė)",
+    "refUserLabel": "Strategijos savininkas (naudotojas)",
+    "refOperatorLabel": "Operatoriaus nuoroda",
+    "refWalletLabel": "Piniginės nuoroda",
+    "referencePlaceholder": "Pasirinkti",
+    "scopeHelp": "Savininkas nustatomas pagal naudotojo vardą, o paleidžiant strategiją jo apimtis patikrinama pagal pasirinktą operatorių.",
+    "noOperatorsWarning": "Operatorių dar nėra. Prieš paleisdami strategiją su apimtimi sukurkite operatorių ir apimties suteikimą."
   }
 }

@@ -124,6 +124,18 @@
     "noteHelp": "Lagres sammen med konfigurasjonen for å identifisere prosessen.",
     "cancel": "Avbryt",
     "submit": "Registrer strategi",
-    "submitting": "Registrerer…"
+    "submitting": "Registrerer…",
+    "scopeSectionLabel": "Omfang",
+    "operatorLabel": "Operatør",
+    "operatorPlaceholder": "Velg en operatør",
+    "walletLabel": "Lommebok",
+    "walletPlaceholder": "Velg en lommebok",
+    "paperAnnotation": " (papir)",
+    "refUserLabel": "Strategieier (bruker)",
+    "refOperatorLabel": "Operatørreferanse",
+    "refWalletLabel": "Lommebokreferanse",
+    "referencePlaceholder": "Velg",
+    "scopeHelp": "Eieren bestemmes ut fra brukernavn, og omfanget kontrolleres mot valgt operatør når strategien startes.",
+    "noOperatorsWarning": "Det finnes ingen operatører ennå. Opprett en operatør og en omfangstildeling før du starter en strategi med omfang."
   }
 }

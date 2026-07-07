@@ -124,6 +124,18 @@
     "noteHelp": "Stored alongside configuration to help identify this process.",
     "cancel": "Cancel",
     "submit": "Register strategy",
-    "submitting": "Registering…"
+    "submitting": "Registering…",
+    "scopeSectionLabel": "Scope",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Select an operator",
+    "walletLabel": "Wallet",
+    "walletPlaceholder": "Select a wallet",
+    "paperAnnotation": " (paper)",
+    "refUserLabel": "Strategy owner (user)",
+    "refOperatorLabel": "Operator reference",
+    "refWalletLabel": "Wallet reference",
+    "referencePlaceholder": "Select",
+    "scopeHelp": "The owner is resolved by username and scope-checked against the selected operator when the strategy launches.",
+    "noOperatorsWarning": "No operators exist yet. Create an operator and a scope grant before launching a scoped strategy."
   }
 }

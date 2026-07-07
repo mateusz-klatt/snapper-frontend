@@ -124,6 +124,18 @@
     "noteHelp": "Glabāts kopā ar konfigurāciju, lai palīdzētu identificēt šo procesu.",
     "cancel": "Atcelt",
     "submit": "Reģistrēt stratēģiju",
-    "submitting": "Notiek reģistrācija…"
+    "submitting": "Notiek reģistrācija…",
+    "scopeSectionLabel": "Tvērums",
+    "operatorLabel": "Operators",
+    "operatorPlaceholder": "Atlasiet operatoru",
+    "walletLabel": "Maks",
+    "walletPlaceholder": "Atlasiet maku",
+    "paperAnnotation": " (papīra)",
+    "refUserLabel": "Stratēģijas īpašnieks (lietotājs)",
+    "refOperatorLabel": "Operatora atsauce",
+    "refWalletLabel": "Maka atsauce",
+    "referencePlaceholder": "Atlasīt",
+    "scopeHelp": "Īpašnieks tiek noteikts pēc lietotājvārda, un stratēģijas palaišanas laikā viņa tvērums tiek pārbaudīts pret atlasīto operatoru.",
+    "noOperatorsWarning": "Operatoru vēl nav. Pirms stratēģijas ar tvērumu palaišanas izveidojiet operatoru un tvēruma piešķīrumu."
   }
 }

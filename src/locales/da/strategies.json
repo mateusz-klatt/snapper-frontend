@@ -124,6 +124,18 @@
     "noteHelp": "Gemmes sammen med konfigurationen for at identificere processen.",
     "cancel": "Annuller",
     "submit": "Registrer strategi",
-    "submitting": "Registrerer…"
+    "submitting": "Registrerer…",
+    "scopeSectionLabel": "Omfang",
+    "operatorLabel": "Operatør",
+    "operatorPlaceholder": "Vælg en operatør",
+    "walletLabel": "Wallet",
+    "walletPlaceholder": "Vælg en wallet",
+    "paperAnnotation": " (papir)",
+    "refUserLabel": "Strategiejer (bruger)",
+    "refOperatorLabel": "Operatørreference",
+    "refWalletLabel": "Wallet-reference",
+    "referencePlaceholder": "Vælg",
+    "scopeHelp": "Ejeren findes via brugernavn og scope-kontrolleres mod den valgte operatør, når strategien startes.",
+    "noOperatorsWarning": "Der findes endnu ingen operatører. Opret en operatør og en scope-tildeling, før du starter en scoped strategi."
   }
 }

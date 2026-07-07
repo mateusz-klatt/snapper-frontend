@@ -124,6 +124,18 @@
     "noteHelp": "Disimpan bersama konfigurasi untuk membantu mengenal pasti proses ini.",
     "cancel": "Batal",
     "submit": "Daftar strategi",
-    "submitting": "Mendaftar…"
+    "submitting": "Mendaftar…",
+    "scopeSectionLabel": "Skop",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Pilih operator",
+    "walletLabel": "Dompet",
+    "walletPlaceholder": "Pilih dompet",
+    "paperAnnotation": " (kertas)",
+    "refUserLabel": "Pemilik strategi (pengguna)",
+    "refOperatorLabel": "Rujukan operator",
+    "refWalletLabel": "Rujukan dompet",
+    "referencePlaceholder": "Pilih",
+    "scopeHelp": "Pemilik diselesaikan melalui nama pengguna dan skopnya disemak terhadap operator yang dipilih apabila strategi dilancarkan.",
+    "noOperatorsWarning": "Belum ada operator. Cipta operator dan geran skop sebelum melancarkan strategi berskop."
   }
 }
