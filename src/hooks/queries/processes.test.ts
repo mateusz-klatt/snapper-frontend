@@ -67,6 +67,8 @@ vi.mock('../../lib/api/processes', () => ({
           method: '',
           default_enabled: true,
           default_mode: 'thread',
+          reference_identity_params: {},
+          seeded_identity_params: [],
           lifecycle: 'long_running',
         }),
       })

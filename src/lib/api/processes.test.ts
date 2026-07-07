@@ -69,6 +69,8 @@ describe('processes API methods', () => {
           default_enabled: true,
           default_mode: 'thread',
           default_parameters: {},
+          reference_identity_params: {},
+          seeded_identity_params: [],
           lifecycle: 'long_running',
         },
       }),
