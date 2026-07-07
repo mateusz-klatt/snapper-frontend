@@ -30,7 +30,7 @@ export const ThemeSelect: React.FC<Readonly<ThemeSelectProps>> = ({
   ariaLabel,
 }) => (
   <Select.Root
-    {...(value ? { value } : {})}
+    value={value}
     onValueChange={onChange}
     {...(disabled === undefined ? {} : { disabled })}
   >
