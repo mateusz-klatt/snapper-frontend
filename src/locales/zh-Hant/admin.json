@@ -169,6 +169,10 @@
         "instrumentPublicId": "品種 Public ID",
         "underlyingPlaceholder": "例如 BTC",
         "instrumentPlaceholder": "例如 BTC-USD-PERP",
+        "exchange": "交易所",
+        "exchangePlaceholder": "選擇交易所...",
+        "instrumentSelectPlaceholder": "選擇交易品種...",
+        "selectExchangeFirst": "請先選擇交易所",
         "note": "備註（可選）",
         "notePlaceholder": "可選備註"
       },

@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID ของ Instrument",
         "underlyingPlaceholder": "เช่น BTC",
         "instrumentPlaceholder": "เช่น BTC-USD-PERP",
+        "exchange": "ตลาด",
+        "exchangePlaceholder": "เลือกตลาด...",
+        "instrumentSelectPlaceholder": "เลือก Instrument...",
+        "selectExchangeFirst": "เลือกตลาดก่อน",
         "note": "หมายเหตุ (ไม่บังคับ)",
         "notePlaceholder": "หมายเหตุ (ไม่บังคับ)"
       },

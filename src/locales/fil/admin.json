@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrument Public ID",
         "underlyingPlaceholder": "hal. BTC",
         "instrumentPlaceholder": "hal. BTC-USD-PERP",
+        "exchange": "Palitan",
+        "exchangePlaceholder": "Pumili ng palitan...",
+        "instrumentSelectPlaceholder": "Pumili ng instrumento...",
+        "selectExchangeFirst": "Pumili muna ng palitan",
         "note": "Note (optional)",
         "notePlaceholder": "Optional note"
       },

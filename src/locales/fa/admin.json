@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID ابزار",
         "underlyingPlaceholder": "مثلاً BTC",
         "instrumentPlaceholder": "مثلاً BTC-USD-PERP",
+        "exchange": "صرافی",
+        "exchangePlaceholder": "صرافی را انتخاب کنید...",
+        "instrumentSelectPlaceholder": "ابزار را انتخاب کنید...",
+        "selectExchangeFirst": "ابتدا یک صرافی انتخاب کنید",
         "note": "یادداشت (اختیاری)",
         "notePlaceholder": "یادداشت اختیاری"
       },

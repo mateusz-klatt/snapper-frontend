@@ -169,6 +169,10 @@
         "instrumentPublicId": "Enstrüman Public ID",
         "underlyingPlaceholder": "örn. BTC",
         "instrumentPlaceholder": "örn. BTC-USD-PERP",
+        "exchange": "Borsa",
+        "exchangePlaceholder": "Borsa seç...",
+        "instrumentSelectPlaceholder": "Enstrüman seç...",
+        "selectExchangeFirst": "Önce borsa seç",
         "note": "Not (isteğe bağlı)",
         "notePlaceholder": "İsteğe bağlı not"
       },

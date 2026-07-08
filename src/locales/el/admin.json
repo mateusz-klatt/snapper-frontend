@@ -169,6 +169,10 @@
         "instrumentPublicId": "Δημόσιο ID μέσου",
         "underlyingPlaceholder": "π.χ. BTC",
         "instrumentPlaceholder": "π.χ. BTC-USD-PERP",
+        "exchange": "Αγορά",
+        "exchangePlaceholder": "Επιλέξτε αγορά...",
+        "instrumentSelectPlaceholder": "Επιλέξτε εργαλείο...",
+        "selectExchangeFirst": "Επιλέξτε πρώτα μια αγορά",
         "note": "Σημείωση (προαιρετικά)",
         "notePlaceholder": "Προαιρετική σημείωση"
       },

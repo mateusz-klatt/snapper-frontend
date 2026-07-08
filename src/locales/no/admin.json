@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrument-public_id",
         "underlyingPlaceholder": "f.eks. BTC",
         "instrumentPlaceholder": "f.eks. BTC-USD-PERP",
+        "exchange": "Børs",
+        "exchangePlaceholder": "Velg børs...",
+        "instrumentSelectPlaceholder": "Velg instrument...",
+        "selectExchangeFirst": "Velg en børs først",
         "note": "Notat (valgfritt)",
         "notePlaceholder": "Valgfritt notat"
       },

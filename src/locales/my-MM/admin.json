@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrument Public ID",
         "underlyingPlaceholder": "ဥပမာ BTC",
         "instrumentPlaceholder": "ဥပမာ BTC-USD-PERP",
+        "exchange": "စတော့အိတ်ချိန်း",
+        "exchangePlaceholder": "စတော့အိတ်ချိန်း ရွေးပါ...",
+        "instrumentSelectPlaceholder": "Instrument ရွေးပါ...",
+        "selectExchangeFirst": "ဦးစွာ စတော့အိတ်ချိန်း ရွေးပါ",
         "note": "မှတ်ချက် (optional)",
         "notePlaceholder": "Optional မှတ်ချက်"
       },

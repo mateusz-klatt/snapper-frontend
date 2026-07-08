@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrument Public ID",
         "underlyingPlaceholder": "cth. BTC",
         "instrumentPlaceholder": "cth. BTC-USD-PERP",
+        "exchange": "Bursa",
+        "exchangePlaceholder": "Pilih bursa...",
+        "instrumentSelectPlaceholder": "Pilih instrumen...",
+        "selectExchangeFirst": "Pilih bursa dahulu",
         "note": "Nota (pilihan)",
         "notePlaceholder": "Nota pilihan"
       },

@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID ya Instrumenti",
         "underlyingPlaceholder": "mf. BTC",
         "instrumentPlaceholder": "mf. BTC-USD-PERP",
+        "exchange": "Soko",
+        "exchangePlaceholder": "Chagua soko...",
+        "instrumentSelectPlaceholder": "Chagua chombo...",
+        "selectExchangeFirst": "Chagua soko kwanza",
         "note": "Dokezo (hiari)",
         "notePlaceholder": "Dokezo la hiari"
       },

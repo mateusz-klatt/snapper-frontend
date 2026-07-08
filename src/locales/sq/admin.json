@@ -169,6 +169,10 @@
         "instrumentPublicId": "ID publike e instrumentit",
         "underlyingPlaceholder": "p.sh. BTC",
         "instrumentPlaceholder": "p.sh. BTC-USD-PERP",
+        "exchange": "Bursë",
+        "exchangePlaceholder": "Zgjidh bursë...",
+        "instrumentSelectPlaceholder": "Zgjidh instrument...",
+        "selectExchangeFirst": "Zgjidh më parë një bursë",
         "note": "Shënim (opsional)",
         "notePlaceholder": "Shënim opsional"
       },

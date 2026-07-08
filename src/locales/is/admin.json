@@ -169,6 +169,10 @@
         "instrumentPublicId": "Opinbert ID gernings",
         "underlyingPlaceholder": "t.d. BTC",
         "instrumentPlaceholder": "t.d. BTC-USD-PERP",
+        "exchange": "Kauphöll",
+        "exchangePlaceholder": "Veldu kauphöll...",
+        "instrumentSelectPlaceholder": "Veldu instrument...",
+        "selectExchangeFirst": "Veldu kauphöll fyrst",
         "note": "Athugasemd (valfrjálst)",
         "notePlaceholder": "Valfrjáls athugasemd"
       },

@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ThemeSelect } from './ThemeSelect'
+import { ModalPortalContext } from './ui/modalPortalContext'
 
 const COLOR_OPTIONS = [
   { value: 'red', label: 'Red' },
@@ -64,6 +65,23 @@ describe('ThemeSelect', () => {
     await user.click(screen.getByRole('combobox'))
     await user.click(screen.getByRole('option', { name: 'Green' }))
     expect(handleChange).toHaveBeenCalledWith('green')
+  })
+
+  it('portals the dropdown into a provided modal container instead of document.body', async () => {
+    const user = userEvent.setup()
+    const container = document.createElement('div')
+
+    document.body.appendChild(container)
+    render(
+      <ModalPortalContext.Provider value={container}>
+        <ThemeSelect value='red' onChange={() => {}} options={COLOR_OPTIONS} />
+      </ModalPortalContext.Provider>
+    )
+    await user.click(screen.getByRole('combobox'))
+    const option = screen.getByRole('option', { name: 'Green' })
+
+    expect(container.contains(option)).toBe(true)
+    container.remove()
   })
 
   it('renders with empty options list', () => {

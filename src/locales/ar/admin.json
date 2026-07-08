@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID للأداة",
         "underlyingPlaceholder": "مثلاً BTC",
         "instrumentPlaceholder": "مثلاً BTC-USD-PERP",
+        "exchange": "البورصة",
+        "exchangePlaceholder": "اختر بورصة...",
+        "instrumentSelectPlaceholder": "اختر أداة...",
+        "selectExchangeFirst": "اختر بورصة أولاً",
         "note": "ملاحظة (اختيارية)",
         "notePlaceholder": "ملاحظة اختيارية"
       },
