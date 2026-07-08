@@ -125,13 +125,10 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
             {t('editScopeModal.subtitle', { name: target.processName })}
           </p>
           {saved ? (
-            <div
-              role='status'
-              className='flex items-start gap-2 rounded-md border border-warning-200 bg-warning-50 p-3 text-sm text-warning-800'
-            >
+            <output className='flex items-start gap-2 rounded-md border border-warning-200 bg-warning-50 p-3 text-sm text-warning-800'>
               <AlertTriangle className='w-4 h-4 shrink-0 mt-0.5' />
               <span>{t('editScopeModal.restartRequiredBanner')}</span>
-            </div>
+            </output>
           ) : (
             <>
               <div className='space-y-4 rounded-md border border-dark-600 p-4'>

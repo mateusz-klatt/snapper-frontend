@@ -216,7 +216,7 @@ describe('ScopeGrantList', () => {
     fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
     const table = screen.getByRole('table')
 
-    expect(within(table).getAllByText('u-btc').length).toBe(2)
+    expect(within(table).getAllByText('u-btc')).toHaveLength(2)
   })
   it('renders an empty ticker when an underlying grant has a null underlying_public_id', () => {
     const nullUnderlyingGrant = {
@@ -244,7 +244,7 @@ describe('ScopeGrantList', () => {
     fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
     const table = screen.getByRole('table')
 
-    expect(within(table).getAllByText('u-btc').length).toBe(2)
+    expect(within(table).getAllByText('u-btc')).toHaveLength(2)
   })
   it('resolves operator label from operators list', () => {
     mockUseScopeGrants.mockReturnValue({
