@@ -169,6 +169,10 @@
         "instrumentPublicId": "ID Publik Instrumen",
         "underlyingPlaceholder": "mis. BTC",
         "instrumentPlaceholder": "mis. BTC-USD-PERP",
+        "exchange": "Bursa",
+        "exchangePlaceholder": "Pilih bursa...",
+        "instrumentSelectPlaceholder": "Pilih instrumen...",
+        "selectExchangeFirst": "Pilih bursa terlebih dahulu",
         "note": "Catatan (opsional)",
         "notePlaceholder": "Catatan opsional"
       },

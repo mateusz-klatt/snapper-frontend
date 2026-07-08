@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrumentum nyilvános azonosítója",
         "underlyingPlaceholder": "pl. BTC",
         "instrumentPlaceholder": "pl. BTC-USD-PERP",
+        "exchange": "Tőzsde",
+        "exchangePlaceholder": "Tőzsde kiválasztása...",
+        "instrumentSelectPlaceholder": "Eszköz kiválasztása...",
+        "selectExchangeFirst": "Először válasszon tőzsdét",
         "note": "Megjegyzés (opcionális)",
         "notePlaceholder": "Opcionális megjegyzés"
       },

@@ -169,6 +169,10 @@
         "instrumentPublicId": "Գործիքի հանրային ID",
         "underlyingPlaceholder": "օր.՝ BTC",
         "instrumentPlaceholder": "օր.՝ BTC-USD-PERP",
+        "exchange": "Բորսա",
+        "exchangePlaceholder": "Ընտրեք բորսա...",
+        "instrumentSelectPlaceholder": "Ընտրեք գործիք...",
+        "selectExchangeFirst": "Նախ ընտրեք բորսա",
         "note": "Նշում (ըստ ցանկության)",
         "notePlaceholder": "Ըստ ցանկության նշում"
       },

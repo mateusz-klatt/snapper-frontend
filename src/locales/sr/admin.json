@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID instrumenta",
         "underlyingPlaceholder": "npr. BTC",
         "instrumentPlaceholder": "npr. BTC-USD-PERP",
+        "exchange": "Berza",
+        "exchangePlaceholder": "Izaberite berzu...",
+        "instrumentSelectPlaceholder": "Izaberite instrument...",
+        "selectExchangeFirst": "Prvo izaberite berzu",
         "note": "Napomena (opciono)",
         "notePlaceholder": "Opciona napomena"
       },

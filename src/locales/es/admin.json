@@ -169,6 +169,10 @@
         "instrumentPublicId": "ID público del instrumento",
         "underlyingPlaceholder": "p. ej. BTC",
         "instrumentPlaceholder": "p. ej. BTC-USD-PERP",
+        "exchange": "Bolsa",
+        "exchangePlaceholder": "Seleccionar bolsa...",
+        "instrumentSelectPlaceholder": "Seleccionar instrumento...",
+        "selectExchangeFirst": "Selecciona primero una bolsa",
         "note": "Nota (opcional)",
         "notePlaceholder": "Nota opcional"
       },

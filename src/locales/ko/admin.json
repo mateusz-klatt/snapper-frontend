@@ -169,6 +169,10 @@
         "instrumentPublicId": "종목 Public ID",
         "underlyingPlaceholder": "예: BTC",
         "instrumentPlaceholder": "예: BTC-USD-PERP",
+        "exchange": "거래소",
+        "exchangePlaceholder": "거래소 선택...",
+        "instrumentSelectPlaceholder": "종목 선택...",
+        "selectExchangeFirst": "먼저 거래소를 선택하세요",
         "note": "메모 (선택)",
         "notePlaceholder": "선택 메모"
       },

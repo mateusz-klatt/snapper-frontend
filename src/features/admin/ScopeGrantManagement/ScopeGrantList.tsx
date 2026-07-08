@@ -4,11 +4,17 @@ import { Plus, ArrowRightLeft, Link2 } from 'lucide-react'
 import { Button, Badge } from '../../../components/ui'
 import { useScopeGrants, useAllScopeGrants } from '../../../hooks/queries/scope-grants'
 import { useWallets, useOperators } from '../../../hooks/queries/wallets'
+import { useUnderlyings } from '../../../hooks/queries/market'
 import { ThemeSelect } from '../../../components/ThemeSelect'
 import { formatDateTime } from '../../../lib/dateFormat'
 import AddOperatorForm from './AddOperatorForm'
 import type { AppLocale } from '../../../i18n/types'
-import type { ScopeGrantInfo, WalletInfo, OperatorInfo } from '../../../types/api'
+import type {
+  ScopeGrantInfo,
+  WalletInfo,
+  OperatorInfo,
+  UnderlyingAssetData,
+} from '../../../types/api'
 
 const ALL_WALLETS = '__all__'
 
@@ -28,9 +34,11 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
   const [showAddOperator, setShowAddOperator] = useState(false)
   const { data: walletsData, isLoading: walletsLoading, error: walletsError } = useWallets()
   const { data: operatorsData } = useOperators()
+  const { data: underlyingsData } = useUnderlyings()
 
   const wallets: WalletInfo[] = walletsData?.payload ?? []
   const operators: OperatorInfo[] = operatorsData?.payload ?? []
+  const underlyings: UnderlyingAssetData[] = underlyingsData?.payload ?? []
 
   const isAllWallets = selectedWallet === ALL_WALLETS
   const singleQuery = useScopeGrants(isAllWallets ? '' : selectedWallet)
@@ -52,6 +60,16 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
     const wallet = wallets.find(w => w.public_id === publicId)
 
     return wallet?.label ?? publicId
+  }
+
+  const underlyingTicker = (publicId: string | null | undefined): string => {
+    if (publicId == null) {
+      return ''
+    }
+
+    const underlying = underlyings.find(u => u.public_id === publicId)
+
+    return underlying?.ticker ?? publicId
   }
 
   const formatDate = (dateString: string): string =>
@@ -201,10 +219,17 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                         })}
                       </span>
                     </td>
-                    <td className='px-3 py-4 whitespace-nowrap text-sm text-alpine-900'>
-                      {grant.scope_kind === 'underlying'
-                        ? grant.underlying_public_id
-                        : grant.instrument_public_id}
+                    <td className='px-3 py-4 whitespace-nowrap'>
+                      {grant.scope_kind === 'underlying' ? (
+                        <>
+                          <div className='text-sm font-medium text-alpine-900'>
+                            {underlyingTicker(grant.underlying_public_id)}
+                          </div>
+                          <div className='text-xs text-muted-500'>{grant.underlying_public_id}</div>
+                        </>
+                      ) : (
+                        <div className='text-sm text-alpine-900'>{grant.instrument_public_id}</div>
+                      )}
                     </td>
                     <td className='hidden xl:table-cell px-3 py-4 whitespace-nowrap text-sm text-muted-500'>
                       {formatDate(grant.timestamp)}

@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrument Public ID",
         "underlyingPlaceholder": "जैसे BTC",
         "instrumentPlaceholder": "जैसे BTC-USD-PERP",
+        "exchange": "एक्सचेंज",
+        "exchangePlaceholder": "एक्सचेंज चुनें...",
+        "instrumentSelectPlaceholder": "इंस्ट्रूमेंट चुनें...",
+        "selectExchangeFirst": "पहले एक्सचेंज चुनें",
         "note": "नोट (वैकल्पिक)",
         "notePlaceholder": "वैकल्पिक नोट"
       },

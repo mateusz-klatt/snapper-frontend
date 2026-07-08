@@ -41,6 +41,25 @@ const mockOperators = {
   count: 1,
 }
 
+const mockUnderlyings = {
+  payload: [
+    {
+      type: 'underlying_asset' as const,
+      session_id: 's',
+      sequence_id: 1,
+      public_id: 'u-btc',
+      timestamp: '2026-01-01T00:00:00Z',
+      ticker: 'BTC',
+      name: 'Bitcoin',
+      asset_class: 'crypto',
+      sector: null,
+      description: null,
+      instrument_count: 1,
+    },
+  ],
+  count: 1,
+}
+
 const mockGrants = {
   payload: [
     {
@@ -53,7 +72,7 @@ const mockGrants = {
       wallet_public_id: 'w-1',
       granted_by_user_public_id: 'u-1',
       scope_kind: 'underlying' as const,
-      underlying_public_id: 'BTC',
+      underlying_public_id: 'u-btc',
       instrument_public_id: null,
       note: null,
       known_to: '9999-12-31T23:59:59.999999Z',
@@ -66,6 +85,7 @@ const mockUseScopeGrants = vi.fn()
 const mockUseAllScopeGrants = vi.fn()
 const mockUseWallets = vi.fn()
 const mockUseOperators = vi.fn()
+const mockUseUnderlyings = vi.fn()
 
 vi.mock('../../../hooks/queries/scope-grants', () => ({
   useScopeGrants: () => mockUseScopeGrants(),
@@ -75,6 +95,9 @@ vi.mock('../../../hooks/queries/wallets', () => ({
   useWallets: () => mockUseWallets(),
   useOperators: () => mockUseOperators(),
   useCreateOperator: () => ({ mutate: vi.fn(), isPending: false }),
+}))
+vi.mock('../../../hooks/queries/market', () => ({
+  useUnderlyings: () => mockUseUnderlyings(),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({
@@ -117,6 +140,7 @@ describe('ScopeGrantList', () => {
     mockUseOperators.mockReturnValue({ data: mockOperators })
     mockUseScopeGrants.mockReturnValue({ data: undefined, isLoading: false, error: null })
     mockUseAllScopeGrants.mockReturnValue({ grants: [], isLoading: false, error: null })
+    mockUseUnderlyings.mockReturnValue({ data: mockUnderlyings })
   })
   it('shows wallet selector and select-a-wallet message', () => {
     renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
@@ -167,6 +191,60 @@ describe('ScopeGrantList', () => {
     expect(screen.getByText('alice')).toBeDefined()
     expect(screen.getByText('BTC')).toBeDefined()
     expect(screen.getByText('Underlying')).toBeDefined()
+  })
+  it('resolves the underlying ticker and keeps the raw public_id as a subtitle', () => {
+    mockUseScopeGrants.mockReturnValue({
+      data: mockGrants,
+      isLoading: false,
+      error: null,
+    })
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
+    const table = screen.getByRole('table')
+
+    expect(within(table).getByText('BTC')).toBeDefined()
+    expect(within(table).getByText('u-btc')).toBeDefined()
+  })
+  it('falls back to the raw underlying public_id when it is not in the underlyings list', () => {
+    mockUseUnderlyings.mockReturnValue({ data: { payload: [], count: 0 } })
+    mockUseScopeGrants.mockReturnValue({
+      data: mockGrants,
+      isLoading: false,
+      error: null,
+    })
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
+    const table = screen.getByRole('table')
+
+    expect(within(table).getAllByText('u-btc').length).toBe(2)
+  })
+  it('renders an empty ticker when an underlying grant has a null underlying_public_id', () => {
+    const nullUnderlyingGrant = {
+      ...mockGrants.payload[0],
+      underlying_public_id: null,
+    }
+
+    mockUseScopeGrants.mockReturnValue({
+      data: { payload: [nullUnderlyingGrant], count: 1 },
+      isLoading: false,
+      error: null,
+    })
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
+    expect(screen.getByText('Handover')).toBeDefined()
+  })
+  it('handles undefined underlyings data gracefully', () => {
+    mockUseUnderlyings.mockReturnValue({ data: undefined })
+    mockUseScopeGrants.mockReturnValue({
+      data: mockGrants,
+      isLoading: false,
+      error: null,
+    })
+    renderWithQuery(<ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} />)
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
+    const table = screen.getByRole('table')
+
+    expect(within(table).getAllByText('u-btc').length).toBe(2)
   })
   it('resolves operator label from operators list', () => {
     mockUseScopeGrants.mockReturnValue({

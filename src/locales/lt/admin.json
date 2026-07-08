@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrumento viešasis ID",
         "underlyingPlaceholder": "pvz., BTC",
         "instrumentPlaceholder": "pvz., BTC-USD-PERP",
+        "exchange": "Birža",
+        "exchangePlaceholder": "Pasirinkite biržą...",
+        "instrumentSelectPlaceholder": "Pasirinkite instrumentą...",
+        "selectExchangeFirst": "Pirmiausia pasirinkite biržą",
         "note": "Pastaba (neprivaloma)",
         "notePlaceholder": "Neprivaloma pastaba"
       },

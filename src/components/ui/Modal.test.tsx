@@ -1,6 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { Modal } from './Modal'
+import { ThemeSelect } from '../ThemeSelect'
 
 describe('Modal', () => {
   it('does not render when open is false', () => {
@@ -72,6 +74,40 @@ describe('Modal', () => {
     )
     fireEvent.keyDown(document, { key: 'Escape' })
     expect(onClose).toHaveBeenCalledOnce()
+  })
+  it('does not close on ESC that an inner layer already handled (defaultPrevented)', () => {
+    const onClose = vi.fn()
+
+    render(
+      <Modal open={true} onClose={onClose}>
+        <div>Modal content</div>
+      </Modal>
+    )
+    const event = new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true })
+
+    event.preventDefault()
+    document.dispatchEvent(event)
+    expect(onClose).not.toHaveBeenCalled()
+  })
+  it('closing an inner ThemeSelect with ESC does not close the whole modal', async () => {
+    const user = userEvent.setup()
+    const onClose = vi.fn()
+
+    render(
+      <Modal open={true} onClose={onClose}>
+        <ThemeSelect
+          value=''
+          onChange={() => {}}
+          placeholder='Pick'
+          options={[{ value: 'a', label: 'Alpha' }] as const}
+        />
+      </Modal>
+    )
+    await user.click(screen.getByRole('combobox'))
+    expect(screen.getByRole('option', { name: 'Alpha' })).toBeInTheDocument()
+    await user.keyboard('{Escape}')
+    expect(screen.queryByRole('option', { name: 'Alpha' })).not.toBeInTheDocument()
+    expect(onClose).not.toHaveBeenCalled()
   })
   it('does not close on ESC when modal is closed', () => {
     const onClose = vi.fn()
@@ -255,5 +291,25 @@ describe('Modal', () => {
     inside.focus()
     fireEvent.keyDown(inside, { key: 'Enter' })
     expect(document.activeElement).toBe(inside)
+  })
+  it('portals a ThemeSelect dropdown into the top-layer dialog so it opens above the modal', async () => {
+    const user = userEvent.setup()
+
+    render(
+      <Modal open={true} onClose={vi.fn()}>
+        <ThemeSelect
+          value=''
+          onChange={() => {}}
+          placeholder='Pick'
+          options={[{ value: 'a', label: 'Alpha' }] as const}
+        />
+      </Modal>
+    )
+    await user.click(screen.getByRole('combobox'))
+    const dialog = document.querySelector('dialog')
+    const option = screen.getByRole('option', { name: 'Alpha' })
+
+    expect(dialog).not.toBeNull()
+    expect(dialog?.contains(option)).toBe(true)
   })
 })

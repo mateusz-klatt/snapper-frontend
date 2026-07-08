@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID công cụ",
         "underlyingPlaceholder": "ví dụ: BTC",
         "instrumentPlaceholder": "ví dụ: BTC-USD-PERP",
+        "exchange": "Sàn",
+        "exchangePlaceholder": "Chọn sàn...",
+        "instrumentSelectPlaceholder": "Chọn công cụ...",
+        "selectExchangeFirst": "Chọn sàn trước",
         "note": "Ghi chú (tùy chọn)",
         "notePlaceholder": "Ghi chú tùy chọn"
       },

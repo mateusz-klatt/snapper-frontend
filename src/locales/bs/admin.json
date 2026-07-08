@@ -169,6 +169,10 @@
         "instrumentPublicId": "Javni ID instrumenta",
         "underlyingPlaceholder": "npr. BTC",
         "instrumentPlaceholder": "npr. BTC-USD-PERP",
+        "exchange": "Berza",
+        "exchangePlaceholder": "Odaberite berzu...",
+        "instrumentSelectPlaceholder": "Odaberite instrument...",
+        "selectExchangeFirst": "Prvo odaberite berzu",
         "note": "Napomena (opcionalno)",
         "notePlaceholder": "Opcionalna napomena"
       },

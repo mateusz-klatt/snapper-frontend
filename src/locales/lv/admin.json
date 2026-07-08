@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrumenta publiskais ID",
         "underlyingPlaceholder": "piem., BTC",
         "instrumentPlaceholder": "piem., BTC-USD-PERP",
+        "exchange": "Birža",
+        "exchangePlaceholder": "Izvēlieties biržu...",
+        "instrumentSelectPlaceholder": "Izvēlieties instrumentu...",
+        "selectExchangeFirst": "Vispirms izvēlieties biržu",
         "note": "Piezīme (neobligāti)",
         "notePlaceholder": "Neobligāta piezīme"
       },

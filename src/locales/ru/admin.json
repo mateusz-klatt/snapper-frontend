@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID инструмента",
         "underlyingPlaceholder": "например, BTC",
         "instrumentPlaceholder": "например, BTC-USD-PERP",
+        "exchange": "Биржа",
+        "exchangePlaceholder": "Выберите биржу...",
+        "instrumentSelectPlaceholder": "Выберите инструмент...",
+        "selectExchangeFirst": "Сначала выберите биржу",
         "note": "Примечание (опционально)",
         "notePlaceholder": "Опциональное примечание"
       },

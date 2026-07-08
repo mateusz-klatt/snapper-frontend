@@ -169,6 +169,10 @@
         "instrumentPublicId": "銘柄Public ID",
         "underlyingPlaceholder": "例: BTC",
         "instrumentPlaceholder": "例: BTC-USD-PERP",
+        "exchange": "取引所",
+        "exchangePlaceholder": "取引所を選択...",
+        "instrumentSelectPlaceholder": "銘柄を選択...",
+        "selectExchangeFirst": "先に取引所を選択してください",
         "note": "メモ（任意）",
         "notePlaceholder": "任意のメモ"
       },

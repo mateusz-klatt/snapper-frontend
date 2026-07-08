@@ -5,8 +5,17 @@ import { AdminFormModal } from '../components/AdminFormModal'
 import { createConflictMutationFeedback } from '../formFeedback'
 import { useCreateScopeGrant } from '../../../hooks/queries/scope-grants'
 import { useOperators, useWallets } from '../../../hooks/queries/wallets'
-import { useUnderlyings } from '../../../hooks/queries/market'
-import type { OperatorInfo, UnderlyingAssetData, WalletInfo } from '../../../types/api'
+import {
+  useUnderlyings,
+  useExchanges,
+  useExchangeInstrumentsDetail,
+} from '../../../hooks/queries/market'
+import type {
+  OperatorInfo,
+  UnderlyingAssetData,
+  WalletInfo,
+  InstrumentDetailData,
+} from '../../../types/api'
 
 interface ScopeGrantFormProps {
   open: boolean
@@ -19,6 +28,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
   const [operatorId, setOperatorId] = useState('')
   const [walletId, setWalletId] = useState('')
   const [scopeKind, setScopeKind] = useState<'underlying' | 'instrument'>('underlying')
+  const [exchange, setExchange] = useState('')
   const [targetId, setTargetId] = useState('')
   const [note, setNote] = useState('')
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -26,11 +36,15 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
   const { data: operatorsData } = useOperators()
   const { data: walletsData } = useWallets()
   const { data: underlyingsData } = useUnderlyings()
+  const { data: exchangesData } = useExchanges()
+  const { data: instrumentsData } = useExchangeInstrumentsDetail(exchange === '' ? null : exchange)
   const createMutation = useCreateScopeGrant()
 
   const operators: OperatorInfo[] = operatorsData?.payload ?? []
   const wallets: WalletInfo[] = walletsData?.payload ?? []
   const underlyings: UnderlyingAssetData[] = underlyingsData?.payload ?? []
+  const exchanges: string[] = exchangesData?.payload ?? []
+  const instruments: InstrumentDetailData[] = instrumentsData?.payload ?? []
 
   const clearTargetError = () => {
     if (errors.target) setErrors(prev => ({ ...prev, target: '' }))
@@ -40,6 +54,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
     setOperatorId('')
     setWalletId('')
     setScopeKind('underlying')
+    setExchange('')
     setTargetId('')
     setNote('')
     setErrors({})
@@ -126,6 +141,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
         value={scopeKind}
         onChange={val => {
           setScopeKind(val as 'underlying' | 'instrument')
+          setExchange('')
           setTargetId('')
           clearTargetError()
         }}
@@ -151,18 +167,40 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
           error={errors.target}
         />
       ) : (
-        <AdminTextField
-          id='sg-target'
-          type='text'
-          label={t('scopeGrants.form.fields.instrumentPublicId')}
-          value={targetId}
-          onChange={value => {
-            setTargetId(value)
-            clearTargetError()
-          }}
-          placeholder={t('scopeGrants.form.fields.instrumentPlaceholder')}
-          error={errors.target}
-        />
+        <>
+          <AdminSelectField
+            id='sg-exchange'
+            label={t('scopeGrants.form.fields.exchange')}
+            value={exchange}
+            onChange={value => {
+              setExchange(value)
+              setTargetId('')
+              clearTargetError()
+            }}
+            options={exchanges.map(ex => ({ value: ex, label: ex }))}
+            placeholder={t('scopeGrants.form.fields.exchangePlaceholder')}
+          />
+          <AdminSelectField
+            id='sg-target'
+            label={t('scopeGrants.form.fields.instrumentPublicId')}
+            value={targetId}
+            onChange={value => {
+              setTargetId(value)
+              clearTargetError()
+            }}
+            options={instruments.map(inst => ({
+              value: inst.instrument_public_id,
+              label: inst.symbol,
+            }))}
+            placeholder={
+              exchange === ''
+                ? t('scopeGrants.form.fields.selectExchangeFirst')
+                : t('scopeGrants.form.fields.instrumentSelectPlaceholder')
+            }
+            disabled={exchange === ''}
+            error={errors.target}
+          />
+        </>
       )}
       <AdminTextField
         id='sg-note'

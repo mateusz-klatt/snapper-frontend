@@ -169,6 +169,10 @@
         "instrumentPublicId": "ID public instrument",
         "underlyingPlaceholder": "ex. BTC",
         "instrumentPlaceholder": "ex. BTC-USD-PERP",
+        "exchange": "Bursă",
+        "exchangePlaceholder": "Selectați bursa...",
+        "instrumentSelectPlaceholder": "Selectați instrumentul...",
+        "selectExchangeFirst": "Selectați mai întâi o bursă",
         "note": "Notă (opțional)",
         "notePlaceholder": "Notă opțională"
       },

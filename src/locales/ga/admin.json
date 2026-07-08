@@ -169,6 +169,10 @@
         "instrumentPublicId": "ID Poiblí na hIonstraime",
         "underlyingPlaceholder": "m.sh. BTC",
         "instrumentPlaceholder": "m.sh. BTC-USD-PERP",
+        "exchange": "Malartán",
+        "exchangePlaceholder": "Roghnaigh malartán...",
+        "instrumentSelectPlaceholder": "Roghnaigh ionstraim...",
+        "selectExchangeFirst": "Roghnaigh malartán ar dtús",
         "note": "Nóta (roghnach)",
         "notePlaceholder": "Nóta roghnach"
       },

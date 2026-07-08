@@ -169,6 +169,10 @@
         "instrumentPublicId": "Verejné ID inštrumentu",
         "underlyingPlaceholder": "napr. BTC",
         "instrumentPlaceholder": "napr. BTC-USD-PERP",
+        "exchange": "Burza",
+        "exchangePlaceholder": "Vyberte burzu...",
+        "instrumentSelectPlaceholder": "Vyberte nástroj...",
+        "selectExchangeFirst": "Najprv vyberte burzu",
         "note": "Poznámka (voliteľné)",
         "notePlaceholder": "Voliteľná poznámka"
       },

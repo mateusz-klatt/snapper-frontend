@@ -11,6 +11,8 @@ const mockCreateMutation = {
 const mockUseOperators = vi.fn()
 const mockUseWallets = vi.fn()
 const mockUseUnderlyings = vi.fn()
+const mockUseExchanges = vi.fn()
+const mockUseExchangeInstrumentsDetail = vi.fn()
 
 vi.mock('../../../hooks/queries/scope-grants', () => ({
   useCreateScopeGrant: () => mockCreateMutation,
@@ -21,6 +23,9 @@ vi.mock('../../../hooks/queries/wallets', () => ({
 }))
 vi.mock('../../../hooks/queries/market', () => ({
   useUnderlyings: () => mockUseUnderlyings(),
+  useExchanges: () => mockUseExchanges(),
+  useExchangeInstrumentsDetail: (exchange: string | null) =>
+    mockUseExchangeInstrumentsDetail(exchange),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({
@@ -29,14 +34,22 @@ vi.mock('../../../components/ThemeSelect', () => ({
     onChange,
     options,
     placeholder,
+    disabled,
   }: {
     id: string
     value: string
     onChange: (v: string) => void
     options: { value: string; label: string }[]
     placeholder?: string
+    disabled?: boolean
   }) => (
-    <select data-testid={id} value={value} onChange={e => onChange(e.target.value)}>
+    <select
+      data-testid={id}
+      id={id}
+      value={value}
+      disabled={disabled}
+      onChange={e => onChange(e.target.value)}
+    >
       <option value=''>{placeholder ?? 'Select...'}</option>
       {options.map(o => (
         <option key={o.value} value={o.value}>
@@ -143,6 +156,29 @@ describe('ScopeGrantForm', () => {
         ],
       },
     })
+    mockUseExchanges.mockReturnValue({ data: { payload: ['kraken', 'kraken_futures'] } })
+    mockUseExchangeInstrumentsDetail.mockReturnValue({
+      data: {
+        payload: [
+          {
+            type: 'instrument_detail',
+            session_id: 's',
+            sequence_id: 1,
+            public_id: 'i-1',
+            timestamp: '2026-01-01T00:00:00Z',
+            instrument_public_id: 'inst-btc-perp',
+            symbol_public_id: 'sym-1',
+            symbol: 'BTC-USD-PERP',
+            exchange: 'kraken_futures',
+            can_trade: true,
+            can_market_data: true,
+            instrument_resolved: true,
+            instrument_kind: 'perpetual',
+            expiry_at: null,
+          },
+        ],
+      },
+    })
   })
   it('does not render when closed', () => {
     renderWithQuery(<ScopeGrantForm open={false} onClose={onClose} />)
@@ -204,19 +240,40 @@ describe('ScopeGrantForm', () => {
       )
     })
   })
-  it('switches label when scope kind changes to instrument', () => {
+  it('reveals the exchange and instrument pickers when scope kind changes to instrument', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
+    expect(screen.getByTestId('sg-exchange')).toBeDefined()
     expect(screen.getByLabelText(/Instrument Public ID/)).toBeDefined()
   })
-  it('calls createScopeGrant with instrument scope', async () => {
+  it('disables the instrument picker until an exchange is chosen', () => {
+    renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
+    fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
+    const instrumentSelect = screen.getByTestId('sg-target') as HTMLSelectElement
+
+    expect(instrumentSelect.disabled).toBe(true)
+    expect(screen.getByText('Select an exchange first')).toBeDefined()
+    expect(mockUseExchangeInstrumentsDetail).toHaveBeenCalledWith(null)
+  })
+  it('populates and enables the instrument picker once an exchange is chosen', () => {
+    renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
+    fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
+    fireEvent.change(screen.getByTestId('sg-exchange'), { target: { value: 'kraken_futures' } })
+    const instrumentSelect = screen.getByTestId('sg-target') as HTMLSelectElement
+    const labels = Array.from(instrumentSelect.querySelectorAll('option')).map(o => o.textContent)
+
+    expect(instrumentSelect.disabled).toBe(false)
+    expect(labels).toContain('Select instrument...')
+    expect(labels).toContain('BTC-USD-PERP')
+    expect(mockUseExchangeInstrumentsDetail).toHaveBeenCalledWith('kraken_futures')
+  })
+  it('calls createScopeGrant with the selected instrument public_id', async () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
     fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
     fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
-    fireEvent.change(screen.getByLabelText(/Instrument Public ID/), {
-      target: { value: 'BTC-USD-PERP' },
-    })
+    fireEvent.change(screen.getByTestId('sg-exchange'), { target: { value: 'kraken_futures' } })
+    fireEvent.change(screen.getByTestId('sg-target'), { target: { value: 'inst-btc-perp' } })
     const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
 
     fireEvent.submit(form)
@@ -224,12 +281,24 @@ describe('ScopeGrantForm', () => {
       expect(mockCreateMutation.mutate).toHaveBeenCalledWith(
         expect.objectContaining({
           scope_kind: 'instrument',
-          instrument_public_id: 'BTC-USD-PERP',
+          instrument_public_id: 'inst-btc-perp',
         }),
         expect.anything()
       )
     })
     expect(mockCreateMutation.mutate.mock.calls[0]?.[0]).not.toHaveProperty('underlying_public_id')
+  })
+  it('resets the chosen exchange and instrument when returning to the underlying scope kind', () => {
+    renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
+    fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
+    fireEvent.change(screen.getByTestId('sg-exchange'), { target: { value: 'kraken_futures' } })
+    fireEvent.change(screen.getByTestId('sg-target'), { target: { value: 'inst-btc-perp' } })
+    fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'underlying' } })
+    fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
+    const exchangeSelect = screen.getByTestId('sg-exchange') as HTMLSelectElement
+
+    expect(exchangeSelect.value).toBe('')
+    expect((screen.getByTestId('sg-target') as HTMLSelectElement).disabled).toBe(true)
   })
   it('includes note when provided', async () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
@@ -341,6 +410,14 @@ describe('ScopeGrantForm', () => {
     const targetSelect = screen.getByTestId('sg-target')
 
     expect(targetSelect.querySelectorAll('option')).toHaveLength(1)
+  })
+  it('handles undefined exchanges and instruments data gracefully', () => {
+    mockUseExchanges.mockReturnValue({ data: undefined })
+    mockUseExchangeInstrumentsDetail.mockReturnValue({ data: undefined })
+    renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
+    fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
+    expect(screen.getByTestId('sg-exchange').querySelectorAll('option')).toHaveLength(1)
+    expect(screen.getByTestId('sg-target').querySelectorAll('option')).toHaveLength(1)
   })
   it('shows paper annotation for paper wallets', () => {
     mockUseWallets.mockReturnValue({

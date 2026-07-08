@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID instrument",
         "underlyingPlaceholder": "bijv. BTC",
         "instrumentPlaceholder": "bijv. BTC-USD-PERP",
+        "exchange": "Beurs",
+        "exchangePlaceholder": "Selecteer beurs...",
+        "instrumentSelectPlaceholder": "Selecteer instrument...",
+        "selectExchangeFirst": "Selecteer eerst een beurs",
         "note": "Notitie (optioneel)",
         "notePlaceholder": "Optionele notitie"
       },

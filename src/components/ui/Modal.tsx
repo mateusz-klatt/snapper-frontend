@@ -1,7 +1,9 @@
-import React, { useEffect, useId, useRef } from 'react'
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import clsx from 'clsx'
+
+import { ModalPortalContext } from './modalPortalContext'
 
 interface ModalProps {
   open: boolean
@@ -37,6 +39,12 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
   const dialogRef = useRef<HTMLDialogElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const previousActiveElement = useRef<HTMLElement | null>(null)
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null)
+
+  const setDialogNode = useCallback((node: HTMLDialogElement | null) => {
+    dialogRef.current = node
+    setPortalContainer(node)
+  }, [])
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -66,6 +74,10 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        if (event.defaultPrevented) {
+          return
+        }
+
         onClose()
 
         return
@@ -112,7 +124,7 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
   }
   const modalContent = (
     <dialog
-      ref={dialogRef}
+      ref={setDialogNode}
       className='fixed inset-0 z-50 m-0 h-full max-h-none w-full max-w-none overflow-y-auto bg-transparent p-0 backdrop:bg-muted-900/40'
       aria-labelledby={title ? titleId : undefined}
     >
@@ -151,7 +163,11 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
               </button>
             </div>
           )}
-          <div className='p-6'>{children}</div>
+          <div className='p-6'>
+            <ModalPortalContext.Provider value={portalContainer}>
+              {children}
+            </ModalPortalContext.Provider>
+          </div>
         </div>
       </div>
     </dialog>

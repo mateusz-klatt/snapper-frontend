@@ -133,6 +133,7 @@ interface AdminSelectFieldProps {
   options: readonly AdminSelectOption[]
   placeholder?: string | undefined
   error?: string | undefined
+  disabled?: boolean | undefined
 }
 
 export const AdminSelectField: React.FC<Readonly<AdminSelectFieldProps>> = ({
@@ -143,6 +144,7 @@ export const AdminSelectField: React.FC<Readonly<AdminSelectFieldProps>> = ({
   options,
   placeholder,
   error,
+  disabled,
 }) => (
   <AdminFieldFrame id={id} label={label} error={error}>
     <ThemeSelect
@@ -151,6 +153,7 @@ export const AdminSelectField: React.FC<Readonly<AdminSelectFieldProps>> = ({
       onChange={onChange}
       options={options}
       {...(placeholder !== undefined ? { placeholder } : {})}
+      {...(disabled !== undefined ? { disabled } : {})}
     />
   </AdminFieldFrame>
 )

@@ -169,6 +169,10 @@
         "instrumentPublicId": "Public ID של מכשיר",
         "underlyingPlaceholder": "למשל BTC",
         "instrumentPlaceholder": "למשל BTC-USD-PERP",
+        "exchange": "בורסה",
+        "exchangePlaceholder": "בחר בורסה...",
+        "instrumentSelectPlaceholder": "בחר מכשיר...",
+        "selectExchangeFirst": "בחר תחילה בורסה",
         "note": "הערה (אופציונלי)",
         "notePlaceholder": "הערה אופציונלית"
       },

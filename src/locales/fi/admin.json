@@ -169,6 +169,10 @@
         "instrumentPublicId": "Instrumentin julkinen ID",
         "underlyingPlaceholder": "esim. BTC",
         "instrumentPlaceholder": "esim. BTC-USD-PERP",
+        "exchange": "Pörssi",
+        "exchangePlaceholder": "Valitse pörssi...",
+        "instrumentSelectPlaceholder": "Valitse instrumentti...",
+        "selectExchangeFirst": "Valitse ensin pörssi",
         "note": "Huomautus (valinnainen)",
         "notePlaceholder": "Valinnainen huomautus"
       },
