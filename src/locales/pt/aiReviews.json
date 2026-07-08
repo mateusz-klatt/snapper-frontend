@@ -49,5 +49,19 @@
     "emptyMessage": "Frames de solicitação de revisão de IA, decisão e violação de limites aparecerão aqui em stream.",
     "summaryEmpty": "Nenhum frame recebido",
     "summaryCount": "Mostrando {{shown}} de {{total}} em buffer"
+  },
+  "decisions": {
+    "title": "Decisões da AI",
+    "subtitle": "O que os delegados da AI decidiram nas revisões CONSULT — auditoria somente leitura.",
+    "sectionTitle": "Decisões recentes",
+    "loading": "Carregando decisões da AI…",
+    "loadError": "Falha ao carregar decisões da AI: {{message}}",
+    "emptyTitle": "Nenhuma decisão da AI ainda",
+    "emptyMessage": "As revisões CONSULT resolvidas aparecerão aqui com a decisão e a justificativa do delegado.",
+    "columns": {
+      "rationale": "Justificativa",
+      "decidedAt": "Decidido em"
+    },
+    "decisionPending": "Pendente"
   }
 }

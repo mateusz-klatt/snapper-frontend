@@ -49,5 +49,19 @@
     "emptyMessage": "AI-tarkistuspyynnöt, päätökset ja rajarikkomusframet virtaavat tähän.",
     "summaryEmpty": "Frameja ei vastaanotettu",
     "summaryCount": "Puskuroidut: {{shown}} / {{total}}"
+  },
+  "decisions": {
+    "title": "AI-päätökset",
+    "subtitle": "Mitä AI-delegaatit päättivät CONSULT-tarkistuksissa — vain luku -tarkastus.",
+    "sectionTitle": "Viimeaikaiset päätökset",
+    "loading": "Ladataan AI-päätöksiä…",
+    "loadError": "AI-päätösten lataus epäonnistui: {{message}}",
+    "emptyTitle": "Ei vielä AI-päätöksiä",
+    "emptyMessage": "Ratkaistut CONSULT-tarkistukset näkyvät tässä delegaatin päätöksen ja perustelun kanssa.",
+    "columns": {
+      "rationale": "Perustelu",
+      "decidedAt": "Päätetty"
+    },
+    "decisionPending": "Odottaa"
   }
 }

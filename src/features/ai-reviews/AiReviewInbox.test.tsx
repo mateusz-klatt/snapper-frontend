@@ -8,6 +8,7 @@ import type { AiReviewActivityFrame } from '../../stores/wsDispatcher'
 const mockUseAuth = vi.fn()
 const mockUsePendingAiReviews = vi.fn()
 const mockUseAiReviewActivity = vi.fn()
+const mockUseAiReviews = vi.fn()
 const mockSubmitMutate = vi.fn()
 
 interface MockSubmitState {
@@ -31,6 +32,7 @@ vi.mock('../../stores/auth', () => ({
 vi.mock('../../hooks/queries/ai-reviews', () => ({
   usePendingAiReviews: () => mockUsePendingAiReviews(),
   useAiReviewActivity: () => mockUseAiReviewActivity(),
+  useAiReviews: () => mockUseAiReviews(),
   useSubmitAiReviewDecision: () => mockUseSubmitAiReviewDecision(),
 }))
 
@@ -67,20 +69,145 @@ describe('AiReviewInbox', () => {
       data: { items: [], count: 0 },
     })
     mockUseAiReviewActivity.mockReturnValue([])
+    mockUseAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: { items: [], count: 0 },
+    })
   })
 
-  it('renders a role-aware notice for non-delegate roles', () => {
+  const _decidedItem = (overrides: Record<string, unknown> = {}): Record<string, unknown> => ({
+    review_public_id: 'rev-dec-1',
+    strategy_public_id: 'strat-1',
+    user_public_id: 'user-1',
+    operator_public_id: 'op-1',
+    wallet_public_id: 'wal-1',
+    instrument_public_id: 'inst-1',
+    selected_delegate_public_id: 'del-1',
+    responding_delegate_public_id: 'del-1',
+    status: 'resolved_approved',
+    decision: 'approve',
+    rationale: 'looks tight',
+    resolution_mode: 'pick_one_primary',
+    dispatch_version: 0,
+    created_at: '2026-07-08T10:00:00Z',
+    resolved_at: '2026-07-08T10:00:30Z',
+    deadline: '2026-07-08T10:05:00Z',
+    signal_envelope: { instrument: 'BTC-USD', side: 'buy' },
+    ...overrides,
+  })
+
+  it('shows the operator decisions loading state', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+    mockUseAiReviews.mockReturnValue({ isLoading: true, error: null, data: undefined })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByText(/Loading AI decisions/)).toBeTruthy()
+  })
+
+  it('shows the operator decisions error state', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'admin' } })
+    mockUseAiReviews.mockReturnValue({
+      isLoading: false,
+      error: new Error('reviews 503'),
+      data: undefined,
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByText(/reviews 503/)).toBeTruthy()
+  })
+
+  it('shows the operator decisions empty state', () => {
     mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
     renderWithProviders(<AiReviewInbox />)
-    expect(screen.getByText('Reserved for AI delegates')).toBeTruthy()
-    expect(screen.getByText(/operator/)).toBeTruthy()
+    expect(screen.getByText('No AI decisions yet')).toBeTruthy()
   })
 
-  it('falls back to "unknown" role label when no user is authenticated', () => {
-    mockUseAuth.mockReturnValue({ user: null })
+  it('renders a decision row with instrument, decision, and rationale for operators', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+    mockUseAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: { items: [_decidedItem()], count: 1 },
+    })
     renderWithProviders(<AiReviewInbox />)
-    expect(screen.getByText('Reserved for AI delegates')).toBeTruthy()
-    expect(screen.getByText(/unknown/)).toBeTruthy()
+    expect(screen.getByTestId('ai-decision-row-rev-dec-1')).toBeTruthy()
+    expect(screen.getByText('BTC-USD')).toBeTruthy()
+    expect(screen.getByTestId('ai-decision-value-rev-dec-1')).toHaveTextContent('Approve')
+    expect(screen.getByText('looks tight')).toBeTruthy()
+  })
+
+  it('renders a pending decision with em-dashes for missing rationale and resolved_at', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+    mockUseAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          _decidedItem({
+            review_public_id: 'rev-pending-dec',
+            status: 'pending',
+            decision: null,
+            rationale: null,
+            resolved_at: null,
+            signal_envelope: {},
+          }),
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByText('Pending')).toBeTruthy()
+    expect(screen.getAllByText('—').length).toBeGreaterThanOrEqual(3)
+  })
+
+  it('truncates a long rationale to 120 chars with an ellipsis', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+    const longRationale = 'B'.repeat(150)
+
+    mockUseAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: { items: [_decidedItem({ rationale: longRationale })], count: 1 },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByText(`${'B'.repeat(120)}…`)).toBeTruthy()
+  })
+
+  it('renders a rejected decision in the loss style', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+    mockUseAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          _decidedItem({
+            review_public_id: 'rev-rej',
+            status: 'resolved_rejected',
+            decision: 'reject',
+            rationale: 'too risky',
+          }),
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    const cell = screen.getByTestId('ai-decision-value-rev-rej')
+
+    expect(cell).toHaveTextContent('Reject')
+    expect(cell.className).toContain('text-loss-700')
+  })
+
+  it('handles a null signal_envelope without an instrument', () => {
+    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+    mockUseAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [_decidedItem({ review_public_id: 'rev-null-env', signal_envelope: null })],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+    expect(screen.getByTestId('ai-decision-row-rev-null-env')).toBeTruthy()
   })
 
   it('renders loading state while pending reviews query is in flight', () => {

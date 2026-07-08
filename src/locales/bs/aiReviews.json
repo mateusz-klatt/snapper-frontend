@@ -49,5 +49,19 @@
     "emptyMessage": "AI zahtjevi za provjeru, odluke i okviri kršenja limita stizat će ovdje.",
     "summaryEmpty": "Nema primljenih okvira",
     "summaryCount": "Prikazano {{shown}} od {{total}} baferovanih"
+  },
+  "decisions": {
+    "title": "AI odluke",
+    "subtitle": "Ono što su AI delegati odlučili u CONSULT provjerama — revizija samo za čitanje.",
+    "sectionTitle": "Nedavne odluke",
+    "loading": "Učitavanje AI odluka…",
+    "loadError": "Učitavanje AI odluka nije uspjelo: {{message}}",
+    "emptyTitle": "Još nema AI odluka",
+    "emptyMessage": "Riješene CONSULT provjere pojavit će se ovdje s odlukom i obrazloženjem delegata.",
+    "columns": {
+      "rationale": "Obrazloženje",
+      "decidedAt": "Odlučeno"
+    },
+    "decisionPending": "Na čekanju"
   }
 }

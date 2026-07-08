@@ -2,12 +2,22 @@ import { createElement, type ReactNode } from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { renderHook, waitFor, act } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { usePendingAiReviews, useSubmitAiReviewDecision, useAiReviewActivity } from './ai-reviews'
+import {
+  usePendingAiReviews,
+  useSubmitAiReviewDecision,
+  useAiReviewActivity,
+  useAiReviews,
+} from './ai-reviews'
 import { aiReviewActivityQueryKey, type AiReviewActivityFrame } from '../../stores/wsDispatcher'
 import { useAuth } from '../../stores/auth'
-import { listPendingAiReviews, submitAiReviewDecision } from '../../lib/api/ai-reviews'
+import {
+  listAiReviews,
+  listPendingAiReviews,
+  submitAiReviewDecision,
+} from '../../lib/api/ai-reviews'
 
 vi.mock('../../lib/api/ai-reviews', () => ({
+  listAiReviews: vi.fn(() => Promise.resolve({ items: [], count: 0 })),
   listPendingAiReviews: vi.fn(() => Promise.resolve({ items: [], count: 0 })),
   submitAiReviewDecision: vi.fn(() =>
     Promise.resolve({ success: true, error_code: null, message: 'recorded', details: {} })
@@ -58,6 +68,48 @@ describe('ai-reviews queries', () => {
 
       expect(result.current.isPending).toBe(true)
       expect(vi.mocked(listPendingAiReviews)).not.toHaveBeenCalled()
+    })
+    it('useAiReviews stays disabled for an AI delegate caller', () => {
+      vi.mocked(useAuth).mockReturnValueOnce({
+        isAuthenticated: true,
+        user: { role: 'ai_delegate', public_id: 'user-del-1' },
+      } as ReturnType<typeof useAuth>)
+      const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
+
+      expect(result.current.isPending).toBe(true)
+      expect(vi.mocked(listAiReviews)).not.toHaveBeenCalled()
+    })
+    it('useAiReviews fetches the decision list for an operator', async () => {
+      vi.mocked(useAuth).mockReturnValueOnce({
+        isAuthenticated: true,
+        user: { role: 'operator', public_id: 'user-op-2' },
+      } as ReturnType<typeof useAuth>)
+      const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(vi.mocked(listAiReviews)).toHaveBeenCalledWith({ limit: 100 })
+    })
+
+    it('useAiReviews fetches the decision list for an admin', async () => {
+      vi.mocked(useAuth).mockReturnValueOnce({
+        isAuthenticated: true,
+        user: { role: 'admin', public_id: 'user-adm-1' },
+      } as ReturnType<typeof useAuth>)
+      const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(vi.mocked(listAiReviews)).toHaveBeenCalledWith({ limit: 100 })
+    })
+
+    it('useAiReviews stays disabled for a viewer', () => {
+      vi.mocked(useAuth).mockReturnValueOnce({
+        isAuthenticated: true,
+        user: { role: 'viewer', public_id: 'user-view-1' },
+      } as ReturnType<typeof useAuth>)
+      const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
+
+      expect(result.current.isPending).toBe(true)
+      expect(vi.mocked(listAiReviews)).not.toHaveBeenCalled()
     })
     it('usePendingAiReviews stays disabled when no user is authenticated', () => {
       vi.mocked(useAuth).mockReturnValueOnce({

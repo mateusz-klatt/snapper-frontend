@@ -49,5 +49,19 @@
     "emptyMessage": "Mag-stream dito ang AI review request, decision, at caps-violation frames.",
     "summaryEmpty": "Walang frames na natanggap",
     "summaryCount": "Ipinapakita ang {{shown}} sa {{total}} buffered"
+  },
+  "decisions": {
+    "title": "Mga Desisyon ng AI",
+    "subtitle": "Ang ipinasya ng mga delegate ng AI sa mga CONSULT review — read-only na audit.",
+    "sectionTitle": "Kamakailang mga desisyon",
+    "loading": "Nilo-load ang mga desisyon ng AI…",
+    "loadError": "Hindi na-load ang mga desisyon ng AI: {{message}}",
+    "emptyTitle": "Wala pang desisyon ng AI",
+    "emptyMessage": "Lalabas dito ang mga na-resolve na CONSULT review kasama ang desisyon at katwiran ng delegate.",
+    "columns": {
+      "rationale": "Katwiran",
+      "decidedAt": "Petsa ng desisyon"
+    },
+    "decisionPending": "Nakabinbin"
   }
 }

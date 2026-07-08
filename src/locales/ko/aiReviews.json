@@ -49,5 +49,19 @@
     "emptyMessage": "AI 리뷰 요청, 결정, 한도 위반 프레임이 여기에 스트리밍됩니다.",
     "summaryEmpty": "수신된 프레임 없음",
     "summaryCount": "버퍼된 {{total}}개 중 {{shown}}개 표시"
+  },
+  "decisions": {
+    "title": "AI 결정",
+    "subtitle": "AI 델리게이트가 CONSULT 리뷰에서 내린 결정 — 읽기 전용 감사.",
+    "sectionTitle": "최근 결정",
+    "loading": "AI 결정 로딩 중…",
+    "loadError": "AI 결정 로드 실패: {{message}}",
+    "emptyTitle": "아직 AI 결정 없음",
+    "emptyMessage": "해결된 CONSULT 리뷰가 델리게이트의 결정과 근거와 함께 여기에 표시됩니다.",
+    "columns": {
+      "rationale": "근거",
+      "decidedAt": "결정 시각"
+    },
+    "decisionPending": "대기 중"
   }
 }

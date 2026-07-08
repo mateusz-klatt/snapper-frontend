@@ -49,5 +49,19 @@
     "emptyMessage": "Rammar fyrir AI yfirferðarbeiðnir, ákvarðanir og brot á mörkum munu streyma hingað.",
     "summaryEmpty": "Engir rammar mótteknir",
     "summaryCount": "Sýni {{shown}} af {{total}} í biðminni"
+  },
+  "decisions": {
+    "title": "AI-ákvarðanir",
+    "subtitle": "Það sem AI-fulltrúarnir ákváðu í CONSULT-yfirferðum — skrifvarin endurskoðun.",
+    "sectionTitle": "Nýlegar ákvarðanir",
+    "loading": "Hleð AI-ákvörðunum…",
+    "loadError": "Mistókst að hlaða AI-ákvörðunum: {{message}}",
+    "emptyTitle": "Engar AI-ákvarðanir enn",
+    "emptyMessage": "Leystar CONSULT-yfirferðir birtast hér ásamt ákvörðun og rökstuðningi fulltrúans.",
+    "columns": {
+      "rationale": "Rökstuðningur",
+      "decidedAt": "Ákveðið"
+    },
+    "decisionPending": "Í bið"
   }
 }

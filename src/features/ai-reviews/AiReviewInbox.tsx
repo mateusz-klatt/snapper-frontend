@@ -1,20 +1,14 @@
 import React, { useMemo, useState } from 'react'
-import {
-  Activity,
-  Check,
-  Inbox as InboxIcon,
-  Loader2,
-  MailOpen,
-  ShieldAlert,
-  X,
-} from 'lucide-react'
+import { Activity, Check, Inbox as InboxIcon, Loader2, MailOpen, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { EmptyState } from '../../components/ui'
 import { useAuth } from '../../stores/auth'
 import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
+import type { AdminAiReviewItem } from '../../types/api'
 import {
   useAiReviewActivity,
+  useAiReviews,
   usePendingAiReviews,
   useSubmitAiReviewDecision,
 } from '../../hooks/queries/ai-reviews'
@@ -48,20 +42,7 @@ export function AiReviewInbox(): React.ReactElement {
   const recent = useMemo(() => [...activity].slice(-ACTIVITY_DISPLAY_LIMIT).reverse(), [activity])
 
   if (!isDelegate) {
-    return (
-      <div className='p-6'>
-        <div className='flex items-start gap-3 p-4 rounded-lg bg-warning-50 border border-warning-200 text-warning-800'>
-          <ShieldAlert className='w-5 h-5 shrink-0 mt-0.5' />
-          <div>
-            <h2 className='font-semibold mb-1'>{t('roleNotice.title')}</h2>
-            <p className='text-sm'>
-              {t('roleNotice.message')}{' '}
-              <span className='font-semibold'>{user?.role ?? t('roleNotice.unknownRole')}</span>.
-            </p>
-          </div>
-        </div>
-      </div>
-    )
+    return <OperatorDecisionsView />
   }
 
   return (
@@ -94,6 +75,99 @@ interface PendingReviewItem {
   signal_envelope?: Record<string, unknown> | null | undefined
 }
 
+const truncate120 = (text: string): string => (text.length > 120 ? `${text.slice(0, 120)}…` : text)
+
+function InstrumentCell({
+  instrument,
+  badge,
+}: Readonly<{ instrument: string | null; badge?: React.ReactNode }>): React.ReactElement {
+  return (
+    <td className='px-4 py-2 font-mono text-xs text-alpine-900'>
+      {instrument ?? <span className='text-muted-500'>—</span>}
+      {badge}
+    </td>
+  )
+}
+
+function TruncatedCell({ text }: Readonly<{ text: string | null }>): React.ReactElement {
+  return (
+    <td className='px-4 py-2 max-w-md text-xs text-alpine-700'>
+      {text === null || text.length === 0 ? (
+        <span className='text-muted-500'>—</span>
+      ) : (
+        <span title={text}>{truncate120(text)}</span>
+      )}
+    </td>
+  )
+}
+
+function ReviewSectionState({
+  loading,
+  error,
+  isEmpty,
+  loadingText,
+  errorText,
+  emptyIcon,
+  emptyTitle,
+  emptyMessage,
+  children,
+}: Readonly<{
+  loading: boolean
+  error: Error | null
+  isEmpty: boolean
+  loadingText: string
+  errorText: string
+  emptyIcon: React.ReactNode
+  emptyTitle: string
+  emptyMessage: string
+  children: React.ReactNode
+}>): React.ReactElement {
+  if (loading) {
+    return (
+      <div className='flex items-center gap-2 text-muted-500 text-sm'>
+        <Loader2 className='w-4 h-4 animate-spin' />
+        {loadingText}
+      </div>
+    )
+  }
+
+  if (error !== null) {
+    return (
+      <div className='p-3 rounded-lg bg-loss-50 border border-loss-200 text-loss-800 text-sm'>
+        {errorText}
+      </div>
+    )
+  }
+
+  if (isEmpty) {
+    return <EmptyState icon={emptyIcon} title={emptyTitle} message={emptyMessage} />
+  }
+
+  return <>{children}</>
+}
+
+function ReviewTable({
+  headers,
+  children,
+}: Readonly<{ headers: readonly string[]; children: React.ReactNode }>): React.ReactElement {
+  return (
+    <div className='overflow-x-auto border border-dark-600 rounded-lg'>
+      <table className='min-w-full text-sm'>
+        <thead className='bg-dark-700 text-muted-700 text-left'>
+          <tr>
+            {headers.map(header => (
+              <th key={header} className='px-4 py-2 font-semibold'>
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className='divide-y divide-dark-600'>{children}</tbody>
+      </table>
+    </div>
+  )
+}
+
 function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): React.ReactElement {
   const { t, i18n } = useTranslation('aiReviews')
   const [rationale, setRationale] = useState('')
@@ -112,21 +186,17 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
 
   return (
     <tr data-testid={`pending-review-row-${item.review_public_id}`}>
-      <td className='px-4 py-2 font-mono text-xs text-alpine-900'>
-        {item.instrument ?? <span className='text-muted-500'>—</span>}
-        {side !== null && (
-          <span className='ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-[10px] uppercase text-brand-700'>
-            {side}
-          </span>
-        )}
-      </td>
-      <td className='px-4 py-2 max-w-md text-xs text-alpine-700'>
-        {thesis === null ? (
-          <span className='text-muted-500'>—</span>
-        ) : (
-          <span title={thesis}>{thesis.length > 120 ? `${thesis.slice(0, 120)}…` : thesis}</span>
-        )}
-      </td>
+      <InstrumentCell
+        instrument={item.instrument ?? null}
+        badge={
+          side !== null && (
+            <span className='ml-2 rounded bg-brand-50 px-1.5 py-0.5 text-[10px] uppercase text-brand-700'>
+              {side}
+            </span>
+          )
+        }
+      />
+      <TruncatedCell text={thesis} />
       <td className='px-4 py-2'>{item.status}</td>
       <td className='px-4 py-2 text-muted-600'>
         {formatDateTime(new Date(item.deadline), i18n.language as AppLocale)}
@@ -195,51 +265,7 @@ function PendingReviewsSection({
   }>
 }>): React.ReactElement {
   const { t } = useTranslation('aiReviews')
-  let content: React.ReactNode
-
-  if (loading) {
-    content = (
-      <div className='flex items-center gap-2 text-muted-500 text-sm'>
-        <Loader2 className='w-4 h-4 animate-spin' />
-        {t('pending.loading')}
-      </div>
-    )
-  } else if (error !== null) {
-    content = (
-      <div className='p-3 rounded-lg bg-loss-50 border border-loss-200 text-loss-800 text-sm'>
-        {t('pending.loadError', { message: error.message })}
-      </div>
-    )
-  } else if (items.length === 0) {
-    content = (
-      <EmptyState
-        icon={<MailOpen className='w-5 h-5' />}
-        title={t('pending.emptyTitle')}
-        message={t('pending.emptyMessage')}
-      />
-    )
-  } else {
-    content = (
-      <div className='overflow-x-auto border border-dark-600 rounded-lg'>
-        <table className='min-w-full text-sm'>
-          <thead className='bg-dark-700 text-muted-700 text-left'>
-            <tr>
-              <th className='px-4 py-2 font-semibold'>{t('pending.columns.instrument')}</th>
-              <th className='px-4 py-2 font-semibold'>{t('pending.columns.thesis')}</th>
-              <th className='px-4 py-2 font-semibold'>{t('pending.columns.status')}</th>
-              <th className='px-4 py-2 font-semibold'>{t('pending.columns.deadline')}</th>
-              <th className='px-4 py-2 font-semibold'>{t('pending.columns.decision')}</th>
-            </tr>
-          </thead>
-          <tbody className='divide-y divide-dark-600'>
-            {items.map(item => (
-              <PendingReviewRow key={item.review_public_id} item={item} />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    )
-  }
+  const errorText = error !== null ? t('pending.loadError', { message: error.message }) : ''
 
   return (
     <section>
@@ -247,7 +273,30 @@ function PendingReviewsSection({
         <InboxIcon className='w-4 h-4 text-brand-600' />
         <h2 className='text-sm font-semibold text-muted-800'>{t('pending.title')}</h2>
       </div>
-      {content}
+      <ReviewSectionState
+        loading={loading}
+        error={error}
+        isEmpty={items.length === 0}
+        loadingText={t('pending.loading')}
+        errorText={errorText}
+        emptyIcon={<MailOpen className='w-5 h-5' />}
+        emptyTitle={t('pending.emptyTitle')}
+        emptyMessage={t('pending.emptyMessage')}
+      >
+        <ReviewTable
+          headers={[
+            t('pending.columns.instrument'),
+            t('pending.columns.thesis'),
+            t('pending.columns.status'),
+            t('pending.columns.deadline'),
+            t('pending.columns.decision'),
+          ]}
+        >
+          {items.map(item => (
+            <PendingReviewRow key={item.review_public_id} item={item} />
+          ))}
+        </ReviewTable>
+      </ReviewSectionState>
     </section>
   )
 }
@@ -303,5 +352,99 @@ function ActivitySection({
       </div>
       {content}
     </section>
+  )
+}
+
+/**
+ * Operator/admin read-only AI decisions view.
+ *
+ * Non-delegate roles are routed to the AI Reviews screen by the resource
+ * gate but the delegate inbox (pending list + WS activity) is empty for
+ * them (`GET /api/ai-reviews/pending` 422s; the WS scope filter drops
+ * every ai_reviews frame). This surface answers "what did the AI decide?"
+ * by polling the operator-scoped `GET /api/ai-reviews`, which returns
+ * terminal decided rows with the decision + rationale.
+ */
+function OperatorDecisionsView(): React.ReactElement {
+  const { t, i18n } = useTranslation('aiReviews')
+  const reviewsQuery = useAiReviews()
+  const items = reviewsQuery.data?.items ?? []
+  const error = reviewsQuery.error
+  const errorText = error !== null ? t('decisions.loadError', { message: error.message }) : ''
+
+  return (
+    <div className='p-6 space-y-6'>
+      <header>
+        <h1 className='text-2xl font-bold'>{t('decisions.title')}</h1>
+        <p className='text-sm text-muted-500'>{t('decisions.subtitle')}</p>
+      </header>
+      <section>
+        <div className='flex items-center gap-2 mb-3'>
+          <InboxIcon className='w-4 h-4 text-brand-600' />
+          <h2 className='text-sm font-semibold text-muted-800'>{t('decisions.sectionTitle')}</h2>
+        </div>
+        <ReviewSectionState
+          loading={reviewsQuery.isLoading}
+          error={error}
+          isEmpty={items.length === 0}
+          loadingText={t('decisions.loading')}
+          errorText={errorText}
+          emptyIcon={<MailOpen className='w-5 h-5' />}
+          emptyTitle={t('decisions.emptyTitle')}
+          emptyMessage={t('decisions.emptyMessage')}
+        >
+          <ReviewTable
+            headers={[
+              t('pending.columns.instrument'),
+              t('pending.columns.status'),
+              t('pending.columns.decision'),
+              t('decisions.columns.rationale'),
+              t('decisions.columns.decidedAt'),
+            ]}
+          >
+            {items.map(item => (
+              <AiDecisionRow key={item.review_public_id} item={item} locale={i18n.language} />
+            ))}
+          </ReviewTable>
+        </ReviewSectionState>
+      </section>
+    </div>
+  )
+}
+
+function AiDecisionRow({
+  item,
+  locale,
+}: Readonly<{ item: AdminAiReviewItem; locale: string }>): React.ReactElement {
+  const { t } = useTranslation('aiReviews')
+  const envelope = item.signal_envelope ?? {}
+  const instrument = (envelope['instrument'] ?? envelope['symbol'] ?? null) as string | null
+  const rationale = item.rationale
+
+  return (
+    <tr data-testid={`ai-decision-row-${item.review_public_id}`}>
+      <InstrumentCell instrument={instrument} />
+      <td className='px-4 py-2'>{item.status}</td>
+      <td className='px-4 py-2'>
+        {item.decision === null ? (
+          <span className='text-muted-500'>{t('decisions.decisionPending')}</span>
+        ) : (
+          <span
+            className={item.decision === 'approve' ? 'text-gain-700' : 'text-loss-700'}
+            data-testid={`ai-decision-value-${item.review_public_id}`}
+          >
+            {item.decision === 'approve' ? t('pending.approve') : t('pending.reject')}
+          </span>
+        )}
+      </td>
+      <TruncatedCell text={rationale} />
+      <td className='px-4 py-2 text-muted-600'>
+        {item.resolved_at === null ? (
+          <span className='text-muted-500'>—</span>
+        ) : (
+          formatDateTime(new Date(item.resolved_at), locale as AppLocale)
+        )}
+      </td>
+    </tr>
   )
 }

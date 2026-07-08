@@ -126,6 +126,7 @@ export const queryKeys = {
    * 5-second refetch.
    */
   pendingAiReviewsAll: ['ai-reviews', 'pending'] as const,
+  aiReviews: (limit: number | null) => ['ai-reviews', 'all', limit] as const,
 
   ordersAll: ['orders'] as const,
   positionsAll: ['positions'] as const,

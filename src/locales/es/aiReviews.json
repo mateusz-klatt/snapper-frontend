@@ -49,5 +49,19 @@
     "emptyMessage": "Los marcos de solicitud, decisión y violación de límites de revisión de IA se transmitirán aquí.",
     "summaryEmpty": "No se recibieron marcos",
     "summaryCount": "Mostrando {{shown}} de {{total}} en búfer"
+  },
+  "decisions": {
+    "title": "Decisiones de AI",
+    "subtitle": "Lo que los delegados de AI decidieron en las revisiones CONSULT — auditoría de solo lectura.",
+    "sectionTitle": "Decisiones recientes",
+    "loading": "Cargando decisiones de AI…",
+    "loadError": "Error al cargar las decisiones de AI: {{message}}",
+    "emptyTitle": "Aún no hay decisiones de AI",
+    "emptyMessage": "Las revisiones CONSULT resueltas aparecerán aquí con la decisión y la justificación del delegado.",
+    "columns": {
+      "rationale": "Justificación",
+      "decidedAt": "Decidido el"
+    },
+    "decisionPending": "Pendiente"
   }
 }

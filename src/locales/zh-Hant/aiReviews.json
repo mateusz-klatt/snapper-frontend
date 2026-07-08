@@ -49,5 +49,19 @@
     "emptyMessage": "AI 審核請求、決策和上限違規幀會在這裏即時顯示。",
     "summaryEmpty": "未收到幀",
     "summaryCount": "顯示 {{shown}} / {{total}} 條緩衝"
+  },
+  "decisions": {
+    "title": "AI 決策",
+    "subtitle": "AI 委派代理在 CONSULT 審核中所做的決策——唯讀稽核。",
+    "sectionTitle": "最近決策",
+    "loading": "正在載入 AI 決策…",
+    "loadError": "載入 AI 決策失敗: {{message}}",
+    "emptyTitle": "尚無 AI 決策",
+    "emptyMessage": "已解決的 CONSULT 審核將在此顯示，並附上委派代理的決策與理由。",
+    "columns": {
+      "rationale": "理由",
+      "decidedAt": "決策時間"
+    },
+    "decisionPending": "待處理"
   }
 }

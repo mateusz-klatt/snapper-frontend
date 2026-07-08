@@ -49,5 +49,19 @@
     "emptyMessage": "AI-gjennomgangsforespørsler, beslutninger og grensebrudd-frames strømmer inn her.",
     "summaryEmpty": "Ingen frames mottatt",
     "summaryCount": "Viser {{shown}} av {{total}} bufrede"
+  },
+  "decisions": {
+    "title": "AI-beslutninger",
+    "subtitle": "Hva AI-delegatene besluttet i CONSULT-gjennomganger — skrivebeskyttet revisjon.",
+    "sectionTitle": "Siste beslutninger",
+    "loading": "Laster AI-beslutninger…",
+    "loadError": "Kunne ikke laste AI-beslutninger: {{message}}",
+    "emptyTitle": "Ingen AI-beslutninger ennå",
+    "emptyMessage": "Løste CONSULT-gjennomganger vises her med delegatens beslutning og begrunnelse.",
+    "columns": {
+      "rationale": "Begrunnelse",
+      "decidedAt": "Besluttet"
+    },
+    "decisionPending": "Venter"
   }
 }

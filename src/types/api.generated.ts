@@ -356,6 +356,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/ai-reviews": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["list_ai_reviews_route_api_ai_reviews_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/processes/available": {
         parameters: {
             query?: never;
@@ -1752,6 +1768,29 @@ export type Paths = {
 export type webhooks = Record<string, never>;
 export type Components = {
     schemas: {
+        AdminAiReviewItem: {
+            review_public_id: string;
+            strategy_public_id: string;
+            user_public_id: string;
+            operator_public_id: string;
+            wallet_public_id: string;
+            instrument_public_id: string;
+            selected_delegate_public_id: string;
+            responding_delegate_public_id: string | null;
+            status: string;
+            decision: string | null;
+            rationale: string | null;
+            resolution_mode: string | null;
+            dispatch_version: number;
+            created_at: string;
+            resolved_at: string | null;
+            deadline: string;
+            signal_envelope?: Record<string, unknown> | null | undefined;
+        };
+        AdminAiReviewListResponse: {
+            items: Components["schemas"]["AdminAiReviewItem"][];
+            count: number;
+        };
         AiReviewDecisionResponse: {
             success: boolean;
             error_code: string | null;
@@ -5515,6 +5554,44 @@ export interface Operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    list_ai_reviews_route_api_ai_reviews_get: {
+        parameters: {
+            query?: {
+                limit?: number;
+                status?: string | null | undefined;
+                wallet_public_id?: string | null | undefined;
+                strategy_public_id?: string | null | undefined;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AdminAiReviewListResponse"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };

@@ -49,5 +49,19 @@
     "emptyMessage": "Ramki żądań przeglądów AI, decyzji i naruszeń limitów pojawią się tutaj.",
     "summaryEmpty": "Nie otrzymano ramek",
     "summaryCount": "Wyświetlanie {{shown}} z {{total}} buforowanych"
+  },
+  "decisions": {
+    "title": "Decyzje AI",
+    "subtitle": "Co delegaci AI zdecydowali w przeglądach CONSULT — audyt tylko do odczytu.",
+    "sectionTitle": "Ostatnie decyzje",
+    "loading": "Ładowanie decyzji AI…",
+    "loadError": "Nie udało się załadować decyzji AI: {{message}}",
+    "emptyTitle": "Brak decyzji AI",
+    "emptyMessage": "Rozstrzygnięte przeglądy CONSULT pojawią się tutaj wraz z decyzją i uzasadnieniem delegata.",
+    "columns": {
+      "rationale": "Uzasadnienie",
+      "decidedAt": "Zdecydowano"
+    },
+    "decisionPending": "Oczekuje"
   }
 }

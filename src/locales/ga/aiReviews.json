@@ -49,5 +49,19 @@
     "emptyMessage": "Sruthóidh frámaí iarratais athbhreithnithe AI, cinntí agus sáruithe teorann isteach anseo.",
     "summaryEmpty": "Ní bhfuarthas frámaí",
     "summaryCount": "{{shown}} as {{total}} maolánaithe á dtaispeáint"
+  },
+  "decisions": {
+    "title": "Cinntí AI",
+    "subtitle": "An méid a chinn toscairí AI ar athbhreithnithe CONSULT — iniúchadh inléite amháin.",
+    "sectionTitle": "Cinntí le déanaí",
+    "loading": "Cinntí AI á lódáil…",
+    "loadError": "Theip ar lódáil cinntí AI: {{message}}",
+    "emptyTitle": "Níl aon chinneadh AI ann fós",
+    "emptyMessage": "Taispeánfar athbhreithnithe CONSULT réitithe anseo mar aon le cinneadh agus réasúnaíocht an toscaire.",
+    "columns": {
+      "rationale": "Réasúnaíocht",
+      "decidedAt": "Am an chinnidh"
+    },
+    "decisionPending": "Ar feitheamh"
   }
 }

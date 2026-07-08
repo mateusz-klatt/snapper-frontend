@@ -49,5 +49,19 @@
     "emptyMessage": "Frame za ombi la pitio la AI, uamuzi, na ukiukaji wa mipaka zitatiririka hapa.",
     "summaryEmpty": "Hakuna frame zilizopokelewa",
     "summaryCount": "Inaonyesha {{shown}} kati ya {{total}} zilizohifadhiwa"
+  },
+  "decisions": {
+    "title": "Maamuzi ya AI",
+    "subtitle": "Kile ambacho wajumbe wa AI waliamua kwenye mapitio ya CONSULT — ukaguzi wa kusoma tu.",
+    "sectionTitle": "Maamuzi ya karibuni",
+    "loading": "Inapakia maamuzi ya AI…",
+    "loadError": "Imeshindwa kupakia maamuzi ya AI: {{message}}",
+    "emptyTitle": "Bado hakuna maamuzi ya AI",
+    "emptyMessage": "Mapitio ya CONSULT yaliyotatuliwa yataonekana hapa pamoja na uamuzi na sababu za mjumbe.",
+    "columns": {
+      "rationale": "Sababu",
+      "decidedAt": "Iliamuliwa"
+    },
+    "decisionPending": "Inasubiri"
   }
 }

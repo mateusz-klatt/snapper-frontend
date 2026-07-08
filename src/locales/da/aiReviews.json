@@ -49,5 +49,19 @@
     "emptyMessage": "Frames for AI-reviewanmodninger, beslutninger og grænseoverskridelser streames hertil.",
     "summaryEmpty": "Ingen frames modtaget",
     "summaryCount": "Viser {{shown}} af {{total}} bufferlagrede"
+  },
+  "decisions": {
+    "title": "AI-beslutninger",
+    "subtitle": "Hvad AI-delegaterne besluttede i CONSULT-reviews — skrivebeskyttet revision.",
+    "sectionTitle": "Seneste beslutninger",
+    "loading": "Indlæser AI-beslutninger…",
+    "loadError": "Kunne ikke indlæse AI-beslutninger: {{message}}",
+    "emptyTitle": "Ingen AI-beslutninger endnu",
+    "emptyMessage": "Afgjorte CONSULT-reviews vises her med delegatens beslutning og begrundelse.",
+    "columns": {
+      "rationale": "Begrundelse",
+      "decidedAt": "Besluttet"
+    },
+    "decisionPending": "Afventer"
   }
 }

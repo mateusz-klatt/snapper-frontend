@@ -49,5 +49,19 @@
     "emptyMessage": "Frames för AI-granskningsbegäranden, beslut och limitöverträdelser strömmas hit.",
     "summaryEmpty": "Inga frames mottagna",
     "summaryCount": "Visar {{shown}} av {{total}} buffrade"
+  },
+  "decisions": {
+    "title": "AI-beslut",
+    "subtitle": "Vad AI-delegaterna beslutade i CONSULT-granskningar — skrivskyddad revision.",
+    "sectionTitle": "Senaste besluten",
+    "loading": "Laddar AI-beslut…",
+    "loadError": "Det gick inte att ladda AI-beslut: {{message}}",
+    "emptyTitle": "Inga AI-beslut ännu",
+    "emptyMessage": "Lösta CONSULT-granskningar visas här med delegatens beslut och motivering.",
+    "columns": {
+      "rationale": "Motivering",
+      "decidedAt": "Beslutat"
+    },
+    "decisionPending": "Väntar"
   }
 }

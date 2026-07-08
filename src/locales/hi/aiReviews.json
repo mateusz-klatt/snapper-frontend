@@ -49,5 +49,19 @@
     "emptyMessage": "AI समीक्षा अनुरोध, निर्णय और सीमा-उल्लंघन फ्रेम यहाँ स्ट्रीम होंगे।",
     "summaryEmpty": "कोई फ्रेम प्राप्त नहीं",
     "summaryCount": "{{shown}} / {{total}} बफ़र किए गए दिखाए जा रहे हैं"
+  },
+  "decisions": {
+    "title": "AI निर्णय",
+    "subtitle": "AI प्रतिनिधियों ने CONSULT समीक्षाओं पर क्या निर्णय लिया — केवल-पठन ऑडिट।",
+    "sectionTitle": "हाल के निर्णय",
+    "loading": "AI निर्णय लोड हो रहे हैं…",
+    "loadError": "AI निर्णय लोड करने में विफल: {{message}}",
+    "emptyTitle": "अभी तक कोई AI निर्णय नहीं",
+    "emptyMessage": "हल की गई CONSULT समीक्षाएँ यहाँ प्रतिनिधि के निर्णय और औचित्य के साथ दिखाई देंगी।",
+    "columns": {
+      "rationale": "औचित्य",
+      "decidedAt": "निर्णय का समय"
+    },
+    "decisionPending": "लंबित"
   }
 }

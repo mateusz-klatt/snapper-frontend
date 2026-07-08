@@ -1,6 +1,10 @@
 import React from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { listPendingAiReviews, submitAiReviewDecision } from '../../lib/api/ai-reviews'
+import {
+  listAiReviews,
+  listPendingAiReviews,
+  submitAiReviewDecision,
+} from '../../lib/api/ai-reviews'
 import { useAuth } from '../../stores/auth'
 import {
   type AiReviewActivityFrame,
@@ -45,6 +49,33 @@ export const usePendingAiReviews = (
     staleTime: Infinity,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
+    throwOnError: false,
+  })
+}
+
+const AI_REVIEWS_DEFAULT_LIMIT = 100
+
+/**
+ * List AI reviews (newest-first) for the operator/admin audit view.
+ *
+ * Backs the read-only "AI decisions" surface for non-delegate roles.
+ * Gated to NON-delegate operator/admin principals: the backend
+ * `GET /api/ai-reviews` requires the OPERATOR role (delegates use the
+ * pending inbox instead), so a delegate call would 403. Enabling it only
+ * for the audience that can read it keeps the delegate UI free of the
+ * error. Snapshot poll (30s) plus refetch-on-focus so an operator sees
+ * fresh decisions without a manual reload.
+ */
+export const useAiReviews = (limit: number = AI_REVIEWS_DEFAULT_LIMIT) => {
+  const { isAuthenticated, user } = useAuth()
+  const canReadDecisions = user?.role === 'operator' || user?.role === 'admin'
+
+  return useQuery({
+    queryKey: queryKeys.aiReviews(limit),
+    queryFn: () => listAiReviews({ limit }),
+    enabled: isAuthenticated && canReadDecisions,
+    staleTime: 15 * 1000,
+    refetchInterval: 30 * 1000,
     throwOnError: false,
   })
 }

@@ -49,5 +49,19 @@
     "emptyMessage": "AI-beoordelingsverzoeken, beslissingen en caps-overtredingsframes stromen hier binnen.",
     "summaryEmpty": "Geen frames ontvangen",
     "summaryCount": "Toont {{shown}} van {{total}} in buffer"
+  },
+  "decisions": {
+    "title": "AI-beslissingen",
+    "subtitle": "Wat de AI-gedelegeerden hebben besloten bij CONSULT-beoordelingen — alleen-lezen audit.",
+    "sectionTitle": "Recente beslissingen",
+    "loading": "AI-beslissingen laden…",
+    "loadError": "Laden AI-beslissingen mislukt: {{message}}",
+    "emptyTitle": "Nog geen AI-beslissingen",
+    "emptyMessage": "Opgeloste CONSULT-beoordelingen verschijnen hier met de beslissing en onderbouwing van de gedelegeerde.",
+    "columns": {
+      "rationale": "Onderbouwing",
+      "decidedAt": "Besloten op"
+    },
+    "decisionPending": "In afwachting"
   }
 }
