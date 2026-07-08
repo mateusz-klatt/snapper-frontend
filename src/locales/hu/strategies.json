@@ -95,7 +95,9 @@
     "managedRemotely": "Kezeli: {{coordinator}}",
     "remoteCoordinatorUnknown": "egy másik konténer",
     "restart": "Újraindítás",
-    "restartAriaLabel": "{{name}} stratégia újraindítása"
+    "restartAriaLabel": "{{name}} stratégia újraindítása",
+    "editScope": "Hatókör szerkesztése",
+    "editScopeAriaLabel": "{{name}} hatókörének szerkesztése"
   },
   "launchModal": {
     "title": "Stratégiafolyamat regisztrálása",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Válasszon",
     "scopeHelp": "A tulajdonost felhasználónév alapján azonosítjuk, és a stratégia indításakor ellenőrizzük a hatókörét a kiválasztott operátorral szemben.",
     "noOperatorsWarning": "Még nincsenek operátorok. Hozzon létre egy operátort és egy hatókör-hozzárendelést, mielőtt hatókörrel rendelkező stratégiát indít."
+  },
+  "editScopeModal": {
+    "title": "Stratégia hatókörének szerkesztése",
+    "subtitle": "A(z) „{{name}}” újracélzása — operátor, tárca és felülvizsgáló. A módosítások a következő újraindításkor lépnek életbe.",
+    "restartRequiredBanner": "Hatókör mentve. Indítsa újra a stratégiát, hogy az új hatókör életbe lépjen.",
+    "help": "A hatókör módosításait a stratégia újraindításakor ellenőrizzük (operátor-tagság, tárca-hozzárendelés, kimeneti lefedettség).",
+    "saveError": "A hatókör mentése sikertelen: {{message}}",
+    "save": "Hatókör mentése",
+    "saving": "Mentés…",
+    "cancel": "Mégse",
+    "close": "Bezárás"
   }
 }

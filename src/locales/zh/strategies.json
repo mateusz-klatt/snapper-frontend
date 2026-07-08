@@ -95,7 +95,9 @@
     "managedRemotely": "由 {{coordinator}} 管理",
     "remoteCoordinatorUnknown": "其他容器",
     "restart": "重启",
-    "restartAriaLabel": "重启 {{name}} 策略"
+    "restartAriaLabel": "重启 {{name}} 策略",
+    "editScope": "编辑范围",
+    "editScopeAriaLabel": "编辑 {{name}} 的范围"
   },
   "launchModal": {
     "title": "注册策略进程",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "选择",
     "scopeHelp": "所有者会按用户名解析，并在策略启动时根据所选操作员检查范围。",
     "noOperatorsWarning": "尚无操作员。启动有范围的策略之前，请创建一个操作员和一个范围授权。"
+  },
+  "editScopeModal": {
+    "title": "编辑策略范围",
+    "subtitle": "重新定向 “{{name}}” 的操作员、钱包和审核者。更改将在下次重启时生效。",
+    "restartRequiredBanner": "范围已保存。重启策略以使新范围生效。",
+    "help": "范围更改会在策略重启时进行验证（操作员成员资格、钱包授权、输出覆盖）。",
+    "saveError": "保存范围失败：{{message}}",
+    "save": "保存范围",
+    "saving": "正在保存…",
+    "cancel": "取消",
+    "close": "关闭"
   }
 }

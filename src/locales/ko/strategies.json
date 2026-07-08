@@ -95,7 +95,9 @@
     "managedRemotely": "{{coordinator}}에서 관리됨",
     "remoteCoordinatorUnknown": "다른 컨테이너",
     "restart": "재시작",
-    "restartAriaLabel": "{{name}} 전략 재시작"
+    "restartAriaLabel": "{{name}} 전략 재시작",
+    "editScope": "스코프 편집",
+    "editScopeAriaLabel": "{{name}}의 스코프 편집"
   },
   "launchModal": {
     "title": "전략 프로세스 등록",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "선택",
     "scopeHelp": "소유자는 사용자 이름으로 확인되며, 전략이 시작될 때 선택한 운영자에 대해 스코프가 검사됩니다.",
     "noOperatorsWarning": "아직 운영자가 없습니다. 스코프가 지정된 전략을 시작하기 전에 운영자와 스코프 부여를 생성하세요."
+  },
+  "editScopeModal": {
+    "title": "전략 스코프 편집",
+    "subtitle": "“{{name}}”의 운영자, 지갑, 리뷰어를 다시 지정합니다. 변경 사항은 다음 재시작 시 적용됩니다.",
+    "restartRequiredBanner": "스코프가 저장되었습니다. 새 스코프를 적용하려면 전략을 재시작하세요.",
+    "help": "스코프 변경 사항은 전략을 재시작할 때 검증됩니다(운영자 멤버십, 지갑 부여, 출력 커버리지).",
+    "saveError": "스코프 저장 실패: {{message}}",
+    "save": "스코프 저장",
+    "saving": "저장 중…",
+    "cancel": "취소",
+    "close": "닫기"
   }
 }

@@ -9,6 +9,7 @@ import {
   startProcessByName,
   stopProcessByName,
   patchProcessDesiredState,
+  updateProcessConfig,
 } from '../../lib/api/processes'
 import { useAppStore } from '../../stores/app'
 import type {
@@ -20,6 +21,7 @@ import type {
   ProcessCreateBody,
   ProcessCreateResponse,
   ProcessDesiredStateBody,
+  ProcessConfigScopeBody,
 } from '../../types/api'
 import { queryKeys } from './keys'
 
@@ -89,6 +91,25 @@ export const usePatchProcessDesiredState = () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.strategiesAll })
       queryClient.invalidateQueries({ queryKey: queryKeys.availableProcesses })
       queryClient.invalidateQueries({ queryKey: queryKeys.processRunsAll })
+    },
+  })
+}
+
+export const useUpdateProcessConfig = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: ({ name, body }: { name: string; body: ProcessConfigScopeBody }) =>
+      updateProcessConfig(name, body),
+    retry: 2,
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({ queryKey: queryKeys.configuredProcessesAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.processSummaryAll })
+      queryClient.invalidateQueries({ queryKey: queryKeys.strategiesAll })
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.processRuntimeForName(variables.name),
+      })
     },
   })
 }

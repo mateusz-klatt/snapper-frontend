@@ -95,7 +95,9 @@
     "managedRemotely": "Gestionado por {{coordinator}}",
     "remoteCoordinatorUnknown": "otro contenedor",
     "restart": "Reiniciar",
-    "restartAriaLabel": "Reiniciar la estrategia {{name}}"
+    "restartAriaLabel": "Reiniciar la estrategia {{name}}",
+    "editScope": "Editar ámbito",
+    "editScopeAriaLabel": "Editar el ámbito de {{name}}"
   },
   "launchModal": {
     "title": "Registrar proceso de estrategia",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Seleccionar",
     "scopeHelp": "El propietario se resuelve por nombre de usuario y se valida su ámbito contra el operador seleccionado cuando se lanza la estrategia.",
     "noOperatorsWarning": "Aún no existen operadores. Cree un operador y una concesión de ámbito antes de lanzar una estrategia con ámbito."
+  },
+  "editScopeModal": {
+    "title": "Editar el ámbito de la estrategia",
+    "subtitle": "Redirigir «{{name}}» — operador, billetera y revisor. Los cambios se aplican en el próximo reinicio.",
+    "restartRequiredBanner": "Ámbito guardado. Reinicie la estrategia para que el nuevo ámbito surta efecto.",
+    "help": "Los cambios de ámbito se validan cuando se reinicia la estrategia (pertenencia al operador, concesión de billetera, cobertura de salida).",
+    "saveError": "Error al guardar el ámbito: {{message}}",
+    "save": "Guardar ámbito",
+    "saving": "Guardando…",
+    "cancel": "Cancelar",
+    "close": "Cerrar"
   }
 }

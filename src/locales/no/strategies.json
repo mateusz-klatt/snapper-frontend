@@ -95,7 +95,9 @@
     "managedRemotely": "Administrert av {{coordinator}}",
     "remoteCoordinatorUnknown": "en annen container",
     "restart": "Start på nytt",
-    "restartAriaLabel": "Start strategien {{name}} på nytt"
+    "restartAriaLabel": "Start strategien {{name}} på nytt",
+    "editScope": "Rediger omfang",
+    "editScopeAriaLabel": "Rediger omfang for {{name}}"
   },
   "launchModal": {
     "title": "Registrer strategiprosess",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Velg",
     "scopeHelp": "Eieren bestemmes ut fra brukernavn, og omfanget kontrolleres mot valgt operatør når strategien startes.",
     "noOperatorsWarning": "Det finnes ingen operatører ennå. Opprett en operatør og en omfangstildeling før du starter en strategi med omfang."
+  },
+  "editScopeModal": {
+    "title": "Rediger strategiens omfang",
+    "subtitle": "Målrett “{{name}}” på nytt — operatør, lommebok og vurderer. Endringer trer i kraft ved neste omstart.",
+    "restartRequiredBanner": "Omfang lagret. Start strategien på nytt for at det nye omfanget skal tre i kraft.",
+    "help": "Endringer i omfang valideres når strategien startes på nytt (operatørmedlemskap, lommebok-tildeling, utdatadekning).",
+    "saveError": "Kunne ikke lagre omfang: {{message}}",
+    "save": "Lagre omfang",
+    "saving": "Lagrer…",
+    "cancel": "Avbryt",
+    "close": "Lukk"
   }
 }

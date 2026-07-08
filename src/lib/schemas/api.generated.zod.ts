@@ -2001,6 +2001,19 @@ export const ProcessDesiredStateBodySchema =
     Components['schemas']['ProcessDesiredStateBody']
   >
 
+const _ProcessConfigScopeBodyRawSchema = z
+  .object({
+    operator_public_id: z.string().max(256).nullable().optional(),
+    wallet_public_id: z.string().max(256).nullable().optional(),
+    reference_identity_params: z.record(z.string(), z.string()).nullable().optional(),
+  })
+  .strict()
+
+export const ProcessConfigScopeBodySchema =
+  _ProcessConfigScopeBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessConfigScopeBody']
+  >
+
 const _CreateScopeGrantBodyRawSchema = z
   .object({
     operator_public_id: z.string().min(1).max(64),
@@ -3784,6 +3797,23 @@ export const ProcessDesiredStateRequestSchema =
     Components['schemas']['ProcessDesiredStateRequest']
   >
 
+const _ProcessConfigScopeRequestRawSchema = z
+  .object({
+    type: z.literal('process_config_scope_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ProcessConfigScopeBodySchema,
+  })
+  .strict()
+
+export const ProcessConfigScopeRequestSchema =
+  _ProcessConfigScopeRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessConfigScopeRequest']
+  >
+
 const _CreateScopeGrantCommandRawSchema = z
   .object({
     type: z.literal('create_scope_grant_command').optional(),
@@ -4536,6 +4566,7 @@ const _ConfiguredProcessRawSchema = z
     kind: z.enum(['template', 'instance']),
     wallet_public_id: z.string().nullable().optional(),
     parent_template: z.string().nullable().optional(),
+    template: z.string().nullable().optional(),
     coordinator: z.string().nullable().optional(),
     coordinator_label: z.string().nullable().optional(),
     managed_remotely: z.boolean(),
@@ -4602,6 +4633,26 @@ const _PendingReviewSummaryItemRawSchema = z
 export const PendingReviewSummaryItemSchema =
   _PendingReviewSummaryItemRawSchema as unknown as z.ZodType<
     Components['schemas']['PendingReviewSummaryItem']
+  >
+
+const _ProcessConfigScopeDataRawSchema = z
+  .object({
+    type: z.literal('process_config_scope'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    status: z.literal('success'),
+    name: z.string(),
+    parameters: z.record(z.string(), z.any()),
+    restart_required: z.boolean(),
+  })
+  .strict()
+
+export const ProcessConfigScopeDataSchema =
+  _ProcessConfigScopeDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessConfigScopeData']
   >
 
 const _ProcessRunRawSchema = z
@@ -5035,6 +5086,23 @@ export const PendingReviewListResponseSchema =
     Components['schemas']['PendingReviewListResponse']
   >
 
+const _ProcessConfigScopeResponseRawSchema = z
+  .object({
+    type: z.literal('process_config_scope_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ProcessConfigScopeDataSchema,
+  })
+  .strict()
+
+export const ProcessConfigScopeResponseSchema =
+  _ProcessConfigScopeResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProcessConfigScopeResponse']
+  >
+
 const _ProcessRunsResponseRawSchema = z
   .object({
     type: z.literal('process_runs'),
@@ -5401,6 +5469,7 @@ export type CreateOperatorBody = Components['schemas']['CreateOperatorBody']
 export type CreateOrderBody = Components['schemas']['CreateOrderBody']
 export type CancelOrderBody = Components['schemas']['CancelOrderBody']
 export type ProcessDesiredStateBody = Components['schemas']['ProcessDesiredStateBody']
+export type ProcessConfigScopeBody = Components['schemas']['ProcessConfigScopeBody']
 export type CreateScopeGrantBody = Components['schemas']['CreateScopeGrantBody']
 export type HandoverScopeGrantBody = Components['schemas']['HandoverScopeGrantBody']
 export type RevokeScopeGrantBody = Components['schemas']['RevokeScopeGrantBody']
@@ -5512,6 +5581,7 @@ export type CreateOperatorCommand = Components['schemas']['CreateOperatorCommand
 export type CreateOrderCommand = Components['schemas']['CreateOrderCommand']
 export type CancelOrderCommand = Components['schemas']['CancelOrderCommand']
 export type ProcessDesiredStateRequest = Components['schemas']['ProcessDesiredStateRequest']
+export type ProcessConfigScopeRequest = Components['schemas']['ProcessConfigScopeRequest']
 export type CreateScopeGrantCommand = Components['schemas']['CreateScopeGrantCommand']
 export type HandoverScopeGrantCommand = Components['schemas']['HandoverScopeGrantCommand']
 export type RevokeScopeGrantCommand = Components['schemas']['RevokeScopeGrantCommand']
@@ -5556,6 +5626,7 @@ export type ConfiguredProcess = Components['schemas']['ConfiguredProcess']
 export type DelegateCapsBody = Components['schemas']['DelegateCapsBody']
 export type ExecutionPlanDecisionData = Components['schemas']['ExecutionPlanDecisionData']
 export type PendingReviewSummaryItem = Components['schemas']['PendingReviewSummaryItem']
+export type ProcessConfigScopeData = Components['schemas']['ProcessConfigScopeData']
 export type ProcessRun = Components['schemas']['ProcessRun']
 export type ProcessSchemaData = Components['schemas']['ProcessSchemaData']
 export type StrategyStatusPayload = Components['schemas']['StrategyStatusPayload']
@@ -5583,6 +5654,7 @@ export type DelegateCapsUpdateBody = Components['schemas']['DelegateCapsUpdateBo
 export type ExecutionPlanDecisionListResponse =
   Components['schemas']['ExecutionPlanDecisionListResponse']
 export type PendingReviewListResponse = Components['schemas']['PendingReviewListResponse']
+export type ProcessConfigScopeResponse = Components['schemas']['ProcessConfigScopeResponse']
 export type ProcessRunsResponse = Components['schemas']['ProcessRunsResponse']
 export type ProcessSchemaResponse = Components['schemas']['ProcessSchemaResponse']
 export type SystemStatusData = Components['schemas']['SystemStatusData']

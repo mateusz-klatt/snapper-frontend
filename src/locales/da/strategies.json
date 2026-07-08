@@ -95,7 +95,9 @@
     "managedRemotely": "Administreres af {{coordinator}}",
     "remoteCoordinatorUnknown": "en anden container",
     "restart": "Genstart",
-    "restartAriaLabel": "Genstart strategien {{name}}"
+    "restartAriaLabel": "Genstart strategien {{name}}",
+    "editScope": "Rediger omfang",
+    "editScopeAriaLabel": "Rediger omfang for {{name}}"
   },
   "launchModal": {
     "title": "Registrer strategiproces",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Vælg",
     "scopeHelp": "Ejeren findes via brugernavn og scope-kontrolleres mod den valgte operatør, når strategien startes.",
     "noOperatorsWarning": "Der findes endnu ingen operatører. Opret en operatør og en scope-tildeling, før du starter en scoped strategi."
+  },
+  "editScopeModal": {
+    "title": "Rediger strategiens omfang",
+    "subtitle": "Målret “{{name}}” igen — operatør, wallet og reviewer. Ændringer træder i kraft ved næste genstart.",
+    "restartRequiredBanner": "Omfang gemt. Genstart strategien, for at det nye omfang træder i kraft.",
+    "help": "Ændringer af omfang valideres, når strategien genstartes (operatørmedlemskab, wallet-tildeling, outputdækning).",
+    "saveError": "Kunne ikke gemme omfang: {{message}}",
+    "save": "Gem omfang",
+    "saving": "Gemmer…",
+    "cancel": "Annuller",
+    "close": "Luk"
   }
 }

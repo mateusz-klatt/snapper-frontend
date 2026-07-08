@@ -95,7 +95,9 @@
     "managedRemotely": "Valdo {{coordinator}}",
     "remoteCoordinatorUnknown": "kitas konteineris",
     "restart": "Paleisti iš naujo",
-    "restartAriaLabel": "Paleisti iš naujo strategiją {{name}}"
+    "restartAriaLabel": "Paleisti iš naujo strategiją {{name}}",
+    "editScope": "Redaguoti apimtį",
+    "editScopeAriaLabel": "Redaguoti {{name}} apimtį"
   },
   "launchModal": {
     "title": "Registruoti strategijos procesą",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Pasirinkti",
     "scopeHelp": "Savininkas nustatomas pagal naudotojo vardą, o paleidžiant strategiją jo apimtis patikrinama pagal pasirinktą operatorių.",
     "noOperatorsWarning": "Operatorių dar nėra. Prieš paleisdami strategiją su apimtimi sukurkite operatorių ir apimties suteikimą."
+  },
+  "editScopeModal": {
+    "title": "Redaguoti strategijos apimtį",
+    "subtitle": "Nukreipti „{{name}}“ iš naujo — operatorius, piniginė ir recenzentas. Pakeitimai pritaikomi per kitą paleidimą iš naujo.",
+    "restartRequiredBanner": "Apimtis įrašyta. Paleiskite strategiją iš naujo, kad įsigaliotų nauja apimtis.",
+    "help": "Apimties pakeitimai patikrinami paleidžiant strategiją iš naujo (narystė operatoriuje, piniginės suteikimas, išvesties aprėptis).",
+    "saveError": "Nepavyko įrašyti apimties: {{message}}",
+    "save": "Įrašyti apimtį",
+    "saving": "Įrašoma…",
+    "cancel": "Atšaukti",
+    "close": "Uždaryti"
   }
 }

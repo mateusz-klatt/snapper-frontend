@@ -500,6 +500,22 @@ export type Paths = {
         patch: Operations["set_process_desired_state_api_processes__name__desired_state_patch"];
         trace?: never;
     };
+    "/api/processes/{name}/config": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: Operations["update_process_scope_config_api_processes__name__config_patch"];
+        trace?: never;
+    };
     "/api/processes/runs": {
         parameters: {
             query?: never;
@@ -2255,6 +2271,7 @@ export type Components = {
             kind: "template" | "instance";
             wallet_public_id?: string | null | undefined;
             parent_template?: string | null | undefined;
+            template?: string | null | undefined;
             coordinator?: string | null | undefined;
             coordinator_label?: string | null | undefined;
             managed_remotely: boolean;
@@ -3290,6 +3307,27 @@ export type Components = {
         ProcessCategoryCount: {
             running: number;
             total: number;
+        };
+        ProcessConfigScopeData: {
+            type: "process_config_scope";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            status: "success";
+            name: string;
+            parameters: Record<string, unknown>;
+            restart_required: boolean;
+        };
+        ProcessConfigScopeResponse: {
+            type: "process_config_scope_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["ProcessConfigScopeData"];
         };
         ProcessCreateData: {
             type: "process_create";
@@ -4717,6 +4755,22 @@ export type Components = {
             action: "enable" | "disable" | "restart";
             restart_nonce?: string | null;
         };
+        ProcessConfigScopeRequest: {
+            type?: "process_config_scope_request";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["ProcessConfigScopeBody"];
+        };
+        ProcessConfigScopeBody: {
+            operator_public_id?: string | null;
+            wallet_public_id?: string | null;
+            reference_identity_params?: {
+                [key: string]: string;
+            } | null;
+        };
         CreateScopeGrantCommand: {
             type?: "create_scope_grant_command";
             sequence_id: number;
@@ -5827,6 +5881,61 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["ProcessDesiredStateResponse"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    update_process_scope_config_api_processes__name__config_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                name: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["ProcessConfigScopeRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ProcessConfigScopeResponse"];
                 };
             };
             400: {

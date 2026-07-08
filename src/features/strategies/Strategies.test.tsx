@@ -4,7 +4,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Strategies } from './Strategies'
 import type { HeartbeatData } from '../../types/ws'
-import { makeStrategyProcess, makeListEnvelope, stamp } from '../../test/factories'
+import {
+  makeStrategyProcess,
+  makeConfiguredProcess,
+  makeListEnvelope,
+  stamp,
+} from '../../test/factories'
 
 function createHeartbeat(
   component: string,
@@ -66,6 +71,16 @@ vi.mock('../../hooks/queries/processes', () => ({
   useCreateProcessConfig: vi.fn(() => ({
     mutateAsync: mockCreateProcessConfig,
     isPending: false,
+  })),
+  useConfiguredProcesses: vi.fn(() => ({
+    data: null,
+    isLoading: false,
+  })),
+  useUpdateProcessConfig: vi.fn(() => ({
+    mutate: vi.fn(),
+    isPending: false,
+    isError: false,
+    error: null,
   })),
 }))
 vi.mock('../../hooks/queries/strategies', () => ({
@@ -182,6 +197,93 @@ describe('Strategies', () => {
     await waitFor(() => {
       expect(screen.getByText('MACD BTC')).toBeTruthy()
     })
+  })
+  it('shows Edit scope for a scoped strategy and opens the scope-edit modal', async () => {
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [makeStrategyProcess({ name: 'strategy_macd_btc' })]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: {
+        payload: [
+          makeConfiguredProcess({
+            name: 'strategy_macd_btc',
+            role: 'strategy',
+            template: 'strategy_macd',
+            parameters: { operator_public_id: 'label:default' },
+          }),
+        ],
+      },
+      isLoading: false,
+    } as never)
+    const user = (await import('@testing-library/user-event')).default.setup()
+
+    renderWithProviders(<Strategies />)
+    const editButton = await screen.findByText('Edit scope')
+
+    expect(screen.queryByText('Edit strategy scope')).toBeNull()
+    await user.click(editButton)
+    expect(screen.getByText('Edit strategy scope')).toBeTruthy()
+
+    await user.click(screen.getByRole('button', { name: 'Cancel' }))
+    await waitFor(() => expect(screen.queryByText('Edit strategy scope')).toBeNull())
+  })
+  it('hides Edit scope for a strategy whose config carries no operator/wallet scope', async () => {
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [makeStrategyProcess({ name: 'strategy_macd_btc' })]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: {
+        payload: [
+          makeConfiguredProcess({
+            name: 'strategy_macd_btc',
+            role: 'strategy',
+            template: 'strategy_macd',
+            parameters: {},
+          }),
+        ],
+      },
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Strategies />)
+    await screen.findByText('MACD BTC')
+    expect(screen.queryByText('Edit scope')).toBeNull()
+  })
+  it('opens the scope editor for a scoped strategy config that has no parent template', async () => {
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [makeStrategyProcess({ name: 'strategy_macd_btc' })]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: {
+        payload: [
+          makeConfiguredProcess({
+            name: 'strategy_macd_btc',
+            role: 'strategy',
+            parameters: { wallet_public_id: 'label:paper' },
+          }),
+        ],
+      },
+      isLoading: false,
+    } as never)
+    const user = (await import('@testing-library/user-event')).default.setup()
+
+    renderWithProviders(<Strategies />)
+    await user.click(await screen.findByText('Edit scope'))
+    expect(screen.getByText('Edit strategy scope')).toBeTruthy()
   })
   it('opens the backtest form pre-filled with the strategy class, then handles success and close', async () => {
     const mockStrategies = [

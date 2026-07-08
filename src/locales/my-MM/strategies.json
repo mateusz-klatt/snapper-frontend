@@ -95,7 +95,9 @@
     "managedRemotely": "{{coordinator}} မှ စီမံခန့်ခွဲသည်",
     "remoteCoordinatorUnknown": "အခြားကွန်တိန်နာ",
     "restart": "ပြန်လည်စတင်",
-    "restartAriaLabel": "{{name}} ဗျူဟာကို ပြန်လည်စတင်ပါ"
+    "restartAriaLabel": "{{name}} ဗျူဟာကို ပြန်လည်စတင်ပါ",
+    "editScope": "Scope တည်းဖြတ်ရန်",
+    "editScopeAriaLabel": "{{name}} အတွက် Scope တည်းဖြတ်ရန်"
   },
   "launchModal": {
     "title": "ဗျူဟာလုပ်ငန်းစဉ် မှတ်ပုံတင်ပါ",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "ရွေးပါ",
     "scopeHelp": "ပိုင်ရှင်ကို username ဖြင့် resolve လုပ်ပြီး ဗျူဟာကို launch လုပ်သည့်အခါ ရွေးထားသော operator နှင့် scope စစ်ဆေးသည်။",
     "noOperatorsWarning": "Operator မရှိသေးပါ။ scoped strategy ကို launch မလုပ်မီ operator တစ်ခုနှင့် scope grant တစ်ခု ဖန်တီးပါ။"
+  },
+  "editScopeModal": {
+    "title": "မဟာဗျူဟာ Scope ကို တည်းဖြတ်ရန်",
+    "subtitle": "“{{name}}” ကို operator၊ wallet နှင့် reviewer အတွက် ပြန်လည်ချိန်ညှိပါ။ ပြောင်းလဲမှုများသည် နောက်တစ်ကြိမ် restart တွင် သက်ရောက်ပါမည်။",
+    "restartRequiredBanner": "Scope ကို သိမ်းဆည်းပြီးပါပြီ။ Scope အသစ် သက်ရောက်စေရန် မဟာဗျူဟာကို restart လုပ်ပါ။",
+    "help": "Scope ပြောင်းလဲမှုများကို မဟာဗျူဟာ restart လုပ်သည့်အခါ စစ်ဆေးသည် (operator membership၊ wallet grant၊ output coverage)။",
+    "saveError": "Scope သိမ်းဆည်း၍ မရပါ: {{message}}",
+    "save": "Scope ကို သိမ်းရန်",
+    "saving": "သိမ်းဆည်းနေသည်…",
+    "cancel": "ပယ်ဖျက်",
+    "close": "ပိတ်ပါ"
   }
 }

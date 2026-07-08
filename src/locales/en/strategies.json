@@ -95,7 +95,9 @@
     "managedRemotely": "Managed by {{coordinator}}",
     "remoteCoordinatorUnknown": "another container",
     "restart": "Restart",
-    "restartAriaLabel": "Restart {{name}} strategy"
+    "restartAriaLabel": "Restart {{name}} strategy",
+    "editScope": "Edit scope",
+    "editScopeAriaLabel": "Edit scope for {{name}}"
   },
   "launchModal": {
     "title": "Register Strategy Process",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Select",
     "scopeHelp": "The owner is resolved by username and scope-checked against the selected operator when the strategy launches.",
     "noOperatorsWarning": "No operators exist yet. Create an operator and a scope grant before launching a scoped strategy."
+  },
+  "editScopeModal": {
+    "title": "Edit strategy scope",
+    "subtitle": "Retarget “{{name}}” — operator, wallet, and reviewer. Changes apply on the next restart.",
+    "restartRequiredBanner": "Scope saved. Restart the strategy for the new scope to take effect.",
+    "help": "Scope changes are validated when the strategy is restarted (operator membership, wallet grant, output coverage).",
+    "saveError": "Failed to save scope: {{message}}",
+    "save": "Save scope",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "close": "Close"
   }
 }

@@ -95,7 +95,9 @@
     "managedRemotely": "Beheerd door {{coordinator}}",
     "remoteCoordinatorUnknown": "een andere container",
     "restart": "Herstarten",
-    "restartAriaLabel": "Strategie {{name}} herstarten"
+    "restartAriaLabel": "Strategie {{name}} herstarten",
+    "editScope": "Scope bewerken",
+    "editScopeAriaLabel": "Scope bewerken voor {{name}}"
   },
   "launchModal": {
     "title": "Strategieproces registreren",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Selecteren",
     "scopeHelp": "De eigenaar wordt op gebruikersnaam bepaald en bij het starten van de strategie op scope gecontroleerd ten opzichte van de geselecteerde operator.",
     "noOperatorsWarning": "Er zijn nog geen operators. Maak een operator en een scope-toekenning aan voordat u een strategie met scope start."
+  },
+  "editScopeModal": {
+    "title": "Strategiescope bewerken",
+    "subtitle": "“{{name}}” opnieuw richten — operator, wallet en beoordelaar. Wijzigingen worden bij de volgende herstart toegepast.",
+    "restartRequiredBanner": "Scope opgeslagen. Herstart de strategie om de nieuwe scope van kracht te laten worden.",
+    "help": "Scope-wijzigingen worden gevalideerd wanneer de strategie opnieuw wordt gestart (operatorlidmaatschap, wallet-toekenning, outputdekking).",
+    "saveError": "Kan scope niet opslaan: {{message}}",
+    "save": "Scope opslaan",
+    "saving": "Opslaan…",
+    "cancel": "Annuleren",
+    "close": "Sluiten"
   }
 }

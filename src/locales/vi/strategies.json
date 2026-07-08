@@ -95,7 +95,9 @@
     "managedRemotely": "Được quản lý bởi {{coordinator}}",
     "remoteCoordinatorUnknown": "một vùng chứa khác",
     "restart": "Khởi động lại",
-    "restartAriaLabel": "Khởi động lại chiến lược {{name}}"
+    "restartAriaLabel": "Khởi động lại chiến lược {{name}}",
+    "editScope": "Chỉnh sửa phạm vi",
+    "editScopeAriaLabel": "Chỉnh sửa phạm vi cho {{name}}"
   },
   "launchModal": {
     "title": "Đăng ký tiến trình chiến lược",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Chọn",
     "scopeHelp": "Chủ sở hữu được xác định theo tên người dùng và phạm vi được kiểm tra với nhà vận hành đã chọn khi chiến lược khởi chạy.",
     "noOperatorsWarning": "Chưa có nhà vận hành nào. Tạo một nhà vận hành và một cấp quyền phạm vi trước khi khởi chạy chiến lược có phạm vi."
+  },
+  "editScopeModal": {
+    "title": "Chỉnh sửa phạm vi chiến lược",
+    "subtitle": "Chuyển hướng “{{name}}” — nhà vận hành, ví và người duyệt. Các thay đổi được áp dụng ở lần khởi động lại tiếp theo.",
+    "restartRequiredBanner": "Đã lưu phạm vi. Khởi động lại chiến lược để phạm vi mới có hiệu lực.",
+    "help": "Các thay đổi phạm vi được xác thực khi chiến lược được khởi động lại (tư cách thành viên nhà vận hành, cấp quyền ví, phạm vi bao phủ đầu ra).",
+    "saveError": "Không thể lưu phạm vi: {{message}}",
+    "save": "Lưu phạm vi",
+    "saving": "Đang lưu…",
+    "cancel": "Hủy",
+    "close": "Đóng"
   }
 }

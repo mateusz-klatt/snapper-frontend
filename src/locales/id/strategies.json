@@ -95,7 +95,9 @@
     "managedRemotely": "Dikelola oleh {{coordinator}}",
     "remoteCoordinatorUnknown": "kontainer lain",
     "restart": "Mulai ulang",
-    "restartAriaLabel": "Mulai ulang strategi {{name}}"
+    "restartAriaLabel": "Mulai ulang strategi {{name}}",
+    "editScope": "Edit cakupan",
+    "editScopeAriaLabel": "Edit cakupan untuk {{name}}"
   },
   "launchModal": {
     "title": "Daftarkan Proses Strategi",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Pilih",
     "scopeHelp": "Pemilik ditentukan berdasarkan nama pengguna dan cakupannya diperiksa terhadap operator yang dipilih saat strategi diluncurkan.",
     "noOperatorsWarning": "Belum ada operator. Buat operator dan grant cakupan sebelum meluncurkan strategi bercakupan."
+  },
+  "editScopeModal": {
+    "title": "Edit cakupan strategi",
+    "subtitle": "Arahkan ulang “{{name}}” — operator, dompet, dan peninjau. Perubahan diterapkan pada mulai ulang berikutnya.",
+    "restartRequiredBanner": "Cakupan disimpan. Mulai ulang strategi agar cakupan baru berlaku.",
+    "help": "Perubahan cakupan divalidasi saat strategi dimulai ulang (keanggotaan operator, grant dompet, cakupan output).",
+    "saveError": "Gagal menyimpan cakupan: {{message}}",
+    "save": "Simpan cakupan",
+    "saving": "Menyimpan…",
+    "cancel": "Batal",
+    "close": "Tutup"
   }
 }

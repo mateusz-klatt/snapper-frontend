@@ -95,7 +95,9 @@
     "managedRemotely": "Inadhibitiwa na {{coordinator}}",
     "remoteCoordinatorUnknown": "kontena nyingine",
     "restart": "Anzisha upya",
-    "restartAriaLabel": "Anzisha upya mkakati {{name}}"
+    "restartAriaLabel": "Anzisha upya mkakati {{name}}",
+    "editScope": "Hariri upeo",
+    "editScopeAriaLabel": "Hariri upeo kwa {{name}}"
   },
   "launchModal": {
     "title": "Sajili Process ya Mkakati",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Chagua",
     "scopeHelp": "Mmiliki hutambuliwa kwa jina la mtumiaji na upeo wake hukaguliwa dhidi ya mwendeshaji aliyechaguliwa mkakati unapoanzishwa.",
     "noOperatorsWarning": "Bado hakuna waendeshaji. Unda mwendeshaji na ruhusa ya upeo kabla ya kuanzisha mkakati wenye upeo."
+  },
+  "editScopeModal": {
+    "title": "Hariri upeo wa mkakati",
+    "subtitle": "Elekeza upya “{{name}}” — mwendeshaji, pochi na mkaguzi. Mabadiliko yataanza kutumika kwenye uanzishaji upya unaofuata.",
+    "restartRequiredBanner": "Upeo umehifadhiwa. Anzisha upya mkakati ili upeo mpya uanze kutumika.",
+    "help": "Mabadiliko ya upeo huthibitishwa mkakati unapoanzishwa upya (uanachama wa mwendeshaji, ruhusa ya pochi, ufikiaji wa matokeo).",
+    "saveError": "Imeshindwa kuhifadhi upeo: {{message}}",
+    "save": "Hifadhi upeo",
+    "saving": "Inahifadhi…",
+    "cancel": "Ghairi",
+    "close": "Funga"
   }
 }

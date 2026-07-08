@@ -95,7 +95,9 @@
     "managedRemotely": "Zarządzane przez {{coordinator}}",
     "remoteCoordinatorUnknown": "inny kontener",
     "restart": "Uruchom ponownie",
-    "restartAriaLabel": "Uruchom ponownie strategię {{name}}"
+    "restartAriaLabel": "Uruchom ponownie strategię {{name}}",
+    "editScope": "Edytuj zakres",
+    "editScopeAriaLabel": "Edytuj zakres dla {{name}}"
   },
   "launchModal": {
     "title": "Rejestracja procesu strategii",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Wybierz",
     "scopeHelp": "Właściciel jest ustalany na podstawie nazwy użytkownika, a podczas uruchamiania strategii jego zakres jest sprawdzany względem wybranego operatora.",
     "noOperatorsWarning": "Nie ma jeszcze operatorów. Utwórz operatora i nadanie zakresu przed uruchomieniem strategii z zakresem."
+  },
+  "editScopeModal": {
+    "title": "Edytuj zakres strategii",
+    "subtitle": "Zmień cel „{{name}}” — operator, portfel, recenzent. Zmiany wejdą po restarcie.",
+    "restartRequiredBanner": "Zakres zapisany. Zrestartuj strategię, aby nowy zakres zadziałał.",
+    "help": "Zmiany zakresu są walidowane przy restarcie strategii (członkostwo operatora, grant portfela, pokrycie wyjść).",
+    "saveError": "Nie udało się zapisać zakresu: {{message}}",
+    "save": "Zapisz zakres",
+    "saving": "Zapisywanie…",
+    "cancel": "Anuluj",
+    "close": "Zamknij"
   }
 }

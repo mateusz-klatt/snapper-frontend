@@ -95,7 +95,9 @@
     "managedRemotely": "Hanteras av {{coordinator}}",
     "remoteCoordinatorUnknown": "en annan container",
     "restart": "Starta om",
-    "restartAriaLabel": "Starta om strategin {{name}}"
+    "restartAriaLabel": "Starta om strategin {{name}}",
+    "editScope": "Redigera omfattning",
+    "editScopeAriaLabel": "Redigera omfattning för {{name}}"
   },
   "launchModal": {
     "title": "Registrera strategiprocess",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Välj",
     "scopeHelp": "Ägaren bestäms via användarnamn och omfattningen kontrolleras mot den valda operatören när strategin startas.",
     "noOperatorsWarning": "Det finns inga operatörer ännu. Skapa en operatör och en omfattningstilldelning innan du startar en strategi med omfattning."
+  },
+  "editScopeModal": {
+    "title": "Redigera strategins omfattning",
+    "subtitle": "Rikta om “{{name}}” — operatör, plånbok och granskare. Ändringarna tillämpas vid nästa omstart.",
+    "restartRequiredBanner": "Omfattning sparad. Starta om strategin för att den nya omfattningen ska träda i kraft.",
+    "help": "Ändringar av omfattning valideras när strategin startas om (operatörsmedlemskap, plånbokstilldelning, utdatatäckning).",
+    "saveError": "Det gick inte att spara omfattningen: {{message}}",
+    "save": "Spara omfattning",
+    "saving": "Sparar…",
+    "cancel": "Avbryt",
+    "close": "Stäng"
   }
 }

@@ -95,7 +95,9 @@
     "managedRemotely": "Verwaltet von {{coordinator}}",
     "remoteCoordinatorUnknown": "einem anderen Container",
     "restart": "Neu starten",
-    "restartAriaLabel": "Strategie {{name}} neu starten"
+    "restartAriaLabel": "Strategie {{name}} neu starten",
+    "editScope": "Scope bearbeiten",
+    "editScopeAriaLabel": "Scope für {{name}} bearbeiten"
   },
   "launchModal": {
     "title": "Strategieprozess registrieren",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Auswählen",
     "scopeHelp": "Der Eigentümer wird über den Benutzernamen aufgelöst und beim Start der Strategie gegen den ausgewählten Operator auf den Scope geprüft.",
     "noOperatorsWarning": "Es sind noch keine Operatoren vorhanden. Erstellen Sie einen Operator und eine Scope-Freigabe, bevor Sie eine Strategie mit Scope starten."
+  },
+  "editScopeModal": {
+    "title": "Strategie-Scope bearbeiten",
+    "subtitle": "„{{name}}“ neu ausrichten — Operator, Wallet und Reviewer. Änderungen werden beim nächsten Neustart wirksam.",
+    "restartRequiredBanner": "Scope gespeichert. Starten Sie die Strategie neu, damit der neue Scope wirksam wird.",
+    "help": "Scope-Änderungen werden beim Neustart der Strategie geprüft (Operator-Mitgliedschaft, Wallet-Freigabe, Output-Abdeckung).",
+    "saveError": "Scope konnte nicht gespeichert werden: {{message}}",
+    "save": "Scope speichern",
+    "saving": "Wird gespeichert…",
+    "cancel": "Abbrechen",
+    "close": "Schließen"
   }
 }

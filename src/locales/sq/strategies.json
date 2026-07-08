@@ -95,7 +95,9 @@
     "managedRemotely": "Menaxhohet nga {{coordinator}}",
     "remoteCoordinatorUnknown": "një kontejner tjetër",
     "restart": "Rinis",
-    "restartAriaLabel": "Rinis strategjinë {{name}}"
+    "restartAriaLabel": "Rinis strategjinë {{name}}",
+    "editScope": "Modifiko fushëveprimin",
+    "editScopeAriaLabel": "Modifiko fushëveprimin për {{name}}"
   },
   "launchModal": {
     "title": "Regjistro proces strategjie",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Zgjidh",
     "scopeHelp": "Pronari përcaktohet nga emri i përdoruesit dhe fushëveprimi i tij kontrollohet ndaj operatorit të zgjedhur kur niset strategjia.",
     "noOperatorsWarning": "Ende nuk ka operatorë. Krijoni një operator dhe një dhënie fushëveprimi përpara se të nisni një strategji me fushëveprim."
+  },
+  "editScopeModal": {
+    "title": "Modifiko fushëveprimin e strategjisë",
+    "subtitle": "Rioriento “{{name}}” — operator, portofol dhe rishikues. Ndryshimet zbatohen në rinisjen e radhës.",
+    "restartRequiredBanner": "Fushëveprimi u ruajt. Rinise strategjinë që fushëveprimi i ri të hyjë në fuqi.",
+    "help": "Ndryshimet e fushëveprimit vërtetohen kur strategjia rinis (anëtarësimi te operatori, dhënia e portofolit, mbulimi i daljes).",
+    "saveError": "Ruajtja e fushëveprimit dështoi: {{message}}",
+    "save": "Ruaj fushëveprimin",
+    "saving": "Po ruhet…",
+    "cancel": "Anulo",
+    "close": "Mbyll"
   }
 }

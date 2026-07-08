@@ -11,6 +11,7 @@ import {
   startProcessByName,
   stopProcessByName,
   patchProcessDesiredState,
+  updateProcessConfig,
 } from './processes'
 
 vi.mock('../utils', () => ({
@@ -378,5 +379,40 @@ describe('processes API methods', () => {
       action: 'restart',
       restart_nonce: 'nonce-1',
     })
+  })
+
+  it('updateProcessConfig PATCHes the scope-config endpoint and validates the response', async () => {
+    const responseData = {
+      type: 'process_config_scope_response' as const,
+      sequence_id: 0,
+      public_id: 'test-pid',
+      timestamp: '2024-01-01T00:00:00Z',
+      session_id: 'test-sid',
+      payload: {
+        type: 'process_config_scope' as const,
+        sequence_id: 0,
+        public_id: 'test-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'test-sid',
+        status: 'success' as const,
+        name: 'p7_heartbeat',
+        parameters: { operator_public_id: 'label:default' },
+        restart_required: true,
+      },
+    }
+
+    mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => responseData })
+    const result = await updateProcessConfig('p7_heartbeat', {
+      operator_public_id: 'label:default',
+      wallet_public_id: 'label:paper',
+      reference_identity_params: { ai_review_user_public_id: 'label:bob' },
+    })
+
+    expect(result.payload.restart_required).toBe(true)
+    expect(result.payload.parameters).toEqual({ operator_public_id: 'label:default' })
+    const [url, init] = mockFetch.mock.calls[0] as [string, { method: string }]
+
+    expect(url).toContain('/api/processes/p7_heartbeat/config')
+    expect(init.method).toBe('PATCH')
   })
 })

@@ -95,7 +95,9 @@
     "managedRemotely": "Géré par {{coordinator}}",
     "remoteCoordinatorUnknown": "un autre conteneur",
     "restart": "Redémarrer",
-    "restartAriaLabel": "Redémarrer la stratégie {{name}}"
+    "restartAriaLabel": "Redémarrer la stratégie {{name}}",
+    "editScope": "Modifier le périmètre",
+    "editScopeAriaLabel": "Modifier le périmètre de {{name}}"
   },
   "launchModal": {
     "title": "Enregistrer un processus de stratégie",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Sélectionner",
     "scopeHelp": "Le propriétaire est résolu par nom d’utilisateur et son périmètre est vérifié par rapport à l’opérateur sélectionné au lancement de la stratégie.",
     "noOperatorsWarning": "Aucun opérateur n’existe encore. Créez un opérateur et une autorisation de périmètre avant de lancer une stratégie avec périmètre."
+  },
+  "editScopeModal": {
+    "title": "Modifier le périmètre de la stratégie",
+    "subtitle": "Recibler « {{name}} » — opérateur, portefeuille et réviseur. Les changements s’appliquent au prochain redémarrage.",
+    "restartRequiredBanner": "Périmètre enregistré. Redémarrez la stratégie pour que le nouveau périmètre prenne effet.",
+    "help": "Les changements de périmètre sont validés au redémarrage de la stratégie (appartenance à l’opérateur, autorisation de portefeuille, couverture des sorties).",
+    "saveError": "Échec de l’enregistrement du périmètre : {{message}}",
+    "save": "Enregistrer le périmètre",
+    "saving": "Enregistrement…",
+    "cancel": "Annuler",
+    "close": "Fermer"
   }
 }
