@@ -10,6 +10,7 @@ const mockCreateMutation = {
 
 const mockUseOperators = vi.fn()
 const mockUseWallets = vi.fn()
+const mockUseUnderlyings = vi.fn()
 
 vi.mock('../../../hooks/queries/scope-grants', () => ({
   useCreateScopeGrant: () => mockCreateMutation,
@@ -17,6 +18,9 @@ vi.mock('../../../hooks/queries/scope-grants', () => ({
 vi.mock('../../../hooks/queries/wallets', () => ({
   useOperators: () => mockUseOperators(),
   useWallets: () => mockUseWallets(),
+}))
+vi.mock('../../../hooks/queries/market', () => ({
+  useUnderlyings: () => mockUseUnderlyings(),
 }))
 vi.mock('../../../components/ThemeSelect', () => ({
   ThemeSelect: ({
@@ -107,6 +111,38 @@ describe('ScopeGrantForm', () => {
         ],
       },
     })
+    mockUseUnderlyings.mockReturnValue({
+      data: {
+        payload: [
+          {
+            type: 'underlying_asset',
+            session_id: 's',
+            sequence_id: 1,
+            public_id: 'ua-btc',
+            timestamp: '2026-01-01T00:00:00Z',
+            ticker: 'BTC',
+            name: 'Bitcoin',
+            asset_class: 'crypto',
+            sector: null,
+            description: null,
+            instrument_count: 3,
+          },
+          {
+            type: 'underlying_asset',
+            session_id: 's',
+            sequence_id: 2,
+            public_id: 'ua-eth',
+            timestamp: '2026-01-01T00:00:00Z',
+            ticker: 'ETH',
+            name: 'Ethereum',
+            asset_class: 'crypto',
+            sector: null,
+            description: null,
+            instrument_count: 2,
+          },
+        ],
+      },
+    })
   })
   it('does not render when closed', () => {
     renderWithQuery(<ScopeGrantForm open={false} onClose={onClose} />)
@@ -130,12 +166,26 @@ describe('ScopeGrantForm', () => {
       expect(screen.getByText('Target ID is required')).toBeDefined()
     })
   })
-  it('calls createScopeGrant with underlying scope', async () => {
+  it('renders underlying options as a picker with human-readable labels', () => {
+    renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
+    const targetSelect = screen.getByTestId('sg-target')
+    const labels = Array.from(targetSelect.querySelectorAll('option')).map(o => o.textContent)
+
+    expect(labels).toContain('BTC (Bitcoin)')
+    expect(labels).toContain('ETH (Ethereum)')
+    const values = Array.from(targetSelect.querySelectorAll('option')).map(o =>
+      o.getAttribute('value')
+    )
+
+    expect(values).toContain('ua-btc')
+    expect(values).toContain('ua-eth')
+  })
+  it('calls createScopeGrant with the selected underlying public_id', async () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
     fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
-    fireEvent.change(screen.getByLabelText(/Underlying Public ID/), {
-      target: { value: 'BTC' },
+    fireEvent.change(screen.getByTestId('sg-target'), {
+      target: { value: 'ua-btc' },
     })
     const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
 
@@ -146,7 +196,7 @@ describe('ScopeGrantForm', () => {
           operator_public_id: 'op-1',
           wallet_public_id: 'w-1',
           scope_kind: 'underlying',
-          underlying_public_id: 'BTC',
+          underlying_public_id: 'ua-btc',
           instrument_public_id: undefined,
           note: undefined,
         },
@@ -185,8 +235,8 @@ describe('ScopeGrantForm', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
     fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
-    fireEvent.change(screen.getByLabelText(/Underlying Public ID/), {
-      target: { value: 'ETH' },
+    fireEvent.change(screen.getByTestId('sg-target'), {
+      target: { value: 'ua-eth' },
     })
     fireEvent.change(screen.getByPlaceholderText('Optional note'), {
       target: { value: 'test note' },
@@ -201,16 +251,30 @@ describe('ScopeGrantForm', () => {
       )
     })
   })
-  it('clears target error when typing', () => {
+  it('clears target error when an underlying is selected', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
 
     fireEvent.submit(form)
     expect(screen.getByText('Target ID is required')).toBeDefined()
-    fireEvent.change(screen.getByLabelText(/Underlying Public ID/), {
-      target: { value: 'X' },
+    fireEvent.change(screen.getByTestId('sg-target'), {
+      target: { value: 'ua-btc' },
     })
     expect(screen.queryByText('Target ID is required')).toBeNull()
+  })
+  it('resets the target when the scope kind changes', () => {
+    renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
+    fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
+    fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
+    fireEvent.change(screen.getByTestId('sg-target'), { target: { value: 'ua-btc' } })
+    fireEvent.change(screen.getByTestId('sg-scope-kind'), { target: { value: 'instrument' } })
+    const instrumentInput = screen.getByLabelText(/Instrument Public ID/) as HTMLInputElement
+
+    expect(instrumentInput.value).toBe('')
+    const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
+
+    fireEvent.submit(form)
+    expect(screen.getByText('Target ID is required')).toBeDefined()
   })
   it('calls onClose and resets form on Cancel', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
@@ -224,8 +288,8 @@ describe('ScopeGrantForm', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
     fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
-    fireEvent.change(screen.getByLabelText(/Underlying Public ID/), {
-      target: { value: 'BTC' },
+    fireEvent.change(screen.getByTestId('sg-target'), {
+      target: { value: 'ua-btc' },
     })
     const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
 
@@ -241,8 +305,8 @@ describe('ScopeGrantForm', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
     fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
-    fireEvent.change(screen.getByLabelText(/Underlying Public ID/), {
-      target: { value: 'BTC' },
+    fireEvent.change(screen.getByTestId('sg-target'), {
+      target: { value: 'ua-btc' },
     })
     const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
 
@@ -258,8 +322,8 @@ describe('ScopeGrantForm', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
     fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
-    fireEvent.change(screen.getByLabelText(/Underlying Public ID/), {
-      target: { value: 'BTC' },
+    fireEvent.change(screen.getByTestId('sg-target'), {
+      target: { value: 'ua-btc' },
     })
     const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
 
@@ -268,11 +332,15 @@ describe('ScopeGrantForm', () => {
       expect(onClose).toHaveBeenCalled()
     })
   })
-  it('handles undefined wallets/operators data gracefully', () => {
+  it('handles undefined wallets/operators/underlyings data gracefully', () => {
     mockUseOperators.mockReturnValue({ data: undefined })
     mockUseWallets.mockReturnValue({ data: undefined })
+    mockUseUnderlyings.mockReturnValue({ data: undefined })
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     expect(screen.getByText('Create Scope Grant')).toBeDefined()
+    const targetSelect = screen.getByTestId('sg-target')
+
+    expect(targetSelect.querySelectorAll('option')).toHaveLength(1)
   })
   it('shows paper annotation for paper wallets', () => {
     mockUseWallets.mockReturnValue({
@@ -307,8 +375,8 @@ describe('ScopeGrantForm', () => {
     renderWithQuery(<ScopeGrantForm open onClose={onClose} />)
     fireEvent.change(screen.getByTestId('sg-operator'), { target: { value: 'op-1' } })
     fireEvent.change(screen.getByTestId('sg-wallet'), { target: { value: 'w-1' } })
-    fireEvent.change(screen.getByLabelText(/Underlying Public ID/), {
-      target: { value: 'BTC' },
+    fireEvent.change(screen.getByTestId('sg-target'), {
+      target: { value: 'ua-btc' },
     })
     const form = screen.getByText('Create Grant').closest('form') as HTMLFormElement
 
