@@ -52,8 +52,8 @@
     "e2e:report": "playwright show-report playwright-report"
   },
   "dependencies": {
-    "@radix-ui/react-popover": "^1.1.18",
-    "@radix-ui/react-select": "^2.3.2",
+    "@radix-ui/react-popover": "^1.1.19",
+    "@radix-ui/react-select": "^2.3.3",
     "@tanstack/react-query": "^5.101.2",
     "clsx": "^2.1.1",
     "country-flag-emoji-polyfill": "^0.1.8",
@@ -92,7 +92,7 @@
     "jsdom": "^29.1.1",
     "json-schema-to-typescript": "^15.0.4",
     "json-schema-to-zod": "^2.8.1",
-    "knip": "^6.24.0",
+    "knip": "^6.25.0",
     "openapi-typescript": "^7.13.0",
     "postcss": "^8.5.16",
     "prettier": "^3.9.4",
