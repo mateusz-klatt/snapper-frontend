@@ -10,6 +10,7 @@ import {
   ProcessStartResponseSchema,
   ProcessStopResponseSchema,
   ProcessDesiredStateResponseSchema,
+  ProcessConfigScopeResponseSchema,
 } from '../schemas/api.generated.zod'
 import type {
   ProcessSchemaResponse,
@@ -24,6 +25,8 @@ import type {
   ProcessStopResponse,
   ProcessDesiredStateBody,
   ProcessDesiredStateResponse,
+  ProcessConfigScopeBody,
+  ProcessConfigScopeResponse,
 } from '../../types/api'
 
 export async function getProcessSchema(name: string): Promise<ProcessSchemaResponse> {
@@ -98,4 +101,13 @@ export async function patchProcessDesiredState(
   )
 
   return validateResponse(data, ProcessDesiredStateResponseSchema, '/processes/:name/desired-state')
+}
+
+export async function updateProcessConfig(
+  name: string,
+  body: ProcessConfigScopeBody
+): Promise<ProcessConfigScopeResponse> {
+  const data = await apiClient.patchJSON(`/api/processes/${encodeURIComponent(name)}/config`, body)
+
+  return validateResponse(data, ProcessConfigScopeResponseSchema, '/processes/:name/config')
 }

@@ -95,7 +95,9 @@
     "managedRemotely": "Gestito da {{coordinator}}",
     "remoteCoordinatorUnknown": "un altro container",
     "restart": "Riavvia",
-    "restartAriaLabel": "Riavvia strategia {{name}}"
+    "restartAriaLabel": "Riavvia strategia {{name}}",
+    "editScope": "Modifica ambito",
+    "editScopeAriaLabel": "Modifica l'ambito di {{name}}"
   },
   "launchModal": {
     "title": "Registra processo di strategia",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Seleziona",
     "scopeHelp": "Il proprietario viene risolto tramite nome utente e il suo ambito viene verificato rispetto all'operatore selezionato quando la strategia viene avviata.",
     "noOperatorsWarning": "Non esistono ancora operatori. Crea un operatore e una concessione di ambito prima di avviare una strategia con ambito."
+  },
+  "editScopeModal": {
+    "title": "Modifica l'ambito della strategia",
+    "subtitle": "Riorienta “{{name}}” — operatore, portafoglio e revisore. Le modifiche vengono applicate al prossimo riavvio.",
+    "restartRequiredBanner": "Ambito salvato. Riavvia la strategia affinché il nuovo ambito abbia effetto.",
+    "help": "Le modifiche all'ambito vengono convalidate al riavvio della strategia (appartenenza all'operatore, concessione del portafoglio, copertura dell'output).",
+    "saveError": "Impossibile salvare l'ambito: {{message}}",
+    "save": "Salva ambito",
+    "saving": "Salvataggio…",
+    "cancel": "Annulla",
+    "close": "Chiudi"
   }
 }

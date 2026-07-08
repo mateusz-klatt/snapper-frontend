@@ -12,6 +12,7 @@ import {
   useStopProcessByName,
   usePatchProcessDesiredState,
   useCreateProcessConfig,
+  useUpdateProcessConfig,
 } from './processes'
 import {
   createProcessConfig,
@@ -19,6 +20,7 @@ import {
   startProcessByName,
   stopProcessByName,
   patchProcessDesiredState,
+  updateProcessConfig,
 } from '../../lib/api/processes'
 
 const ENV = {
@@ -116,6 +118,18 @@ vi.mock('../../lib/api/processes', () => ({
           name: 'collector',
           action: 'restart',
           managed_remotely: true,
+        }),
+      })
+    )
+  ),
+  updateProcessConfig: vi.fn(() =>
+    Promise.resolve(
+      envelope('process_config_scope_response', {
+        payload: envelope('process_config_scope', {
+          status: 'success',
+          name: 'collector',
+          parameters: { operator_public_id: 'label:default' },
+          restart_required: true,
         }),
       })
     )
@@ -309,6 +323,55 @@ describe('processes queries', () => {
 
       await act(async () => {
         await result.current.mutateAsync({ name: 'collector', body: { action: 'enable' } })
+      })
+      const mutation = queryClient.getMutationCache().getAll()[0]
+
+      expect(mutation).toBeDefined()
+      const retryDelay = mutation?.options.retryDelay
+
+      expect(retryDelay).toEqual(expect.any(Function))
+
+      if (typeof retryDelay === 'function') {
+        expect(retryDelay(0, new Error('test'))).toBe(1000)
+        expect(retryDelay(5, new Error('test'))).toBe(30000)
+      }
+    })
+  })
+  describe('useUpdateProcessConfig', () => {
+    it('updates process config scope and invalidates queries', async () => {
+      const { result } = renderHook(() => useUpdateProcessConfig(), {
+        wrapper: createWrapper(),
+      })
+
+      await act(async () => {
+        await result.current.mutateAsync({
+          name: 'p7_heartbeat',
+          body: {
+            operator_public_id: 'label:default',
+            wallet_public_id: 'label:paper',
+            reference_identity_params: { ai_review_user_public_id: 'label:bob' },
+          },
+        })
+      })
+      expect(vi.mocked(updateProcessConfig)).toHaveBeenCalledWith('p7_heartbeat', {
+        operator_public_id: 'label:default',
+        wallet_public_id: 'label:paper',
+        reference_identity_params: { ai_review_user_public_id: 'label:bob' },
+      })
+    })
+    it('uses exponential retryDelay', async () => {
+      const { queryClient, wrapper } = createWrapperWithClient()
+      const { result } = renderHook(() => useUpdateProcessConfig(), { wrapper })
+
+      await act(async () => {
+        await result.current.mutateAsync({
+          name: 'p7_heartbeat',
+          body: {
+            operator_public_id: 'label:default',
+            wallet_public_id: '',
+            reference_identity_params: {},
+          },
+        })
       })
       const mutation = queryClient.getMutationCache().getAll()[0]
 

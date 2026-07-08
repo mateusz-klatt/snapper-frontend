@@ -6,9 +6,7 @@ import { useProcessSchema } from '../../hooks/queries/processes'
 import { useOperators, useWallets } from '../../hooks/queries/wallets'
 import { useUsers } from '../../hooks/queries/users'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
-
-const SCOPE_SELECT_CLASS =
-  'w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'
+import { ScopeFields } from './ScopeFields'
 
 export interface StrategyLaunchData {
   template: string
@@ -92,33 +90,6 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
   const referenceComplete = referenceEntries.every(([name]) => Boolean(referenceValues[name]))
   const scopeComplete = !isScoped || (Boolean(operatorId) && Boolean(walletId) && referenceComplete)
   const scopeBlocked = isScoped && noOperators
-
-  const referenceOptions = (kind: string): { value: string; label: string }[] => {
-    if (kind === 'user') {
-      return users.map(user => ({ value: `label:${user.username}`, label: user.username }))
-    }
-
-    if (kind === 'operator') {
-      return operators.map(operator => ({ value: operator.public_id, label: operator.label }))
-    }
-
-    if (kind === 'wallet') {
-      return wallets.map(wallet => ({
-        value: wallet.public_id,
-        label: `${wallet.label}${wallet.is_paper ? t('launchModal.paperAnnotation') : ''}`,
-      }))
-    }
-
-    return []
-  }
-
-  const referenceLabel = (kind: string): string => {
-    if (kind === 'user') return t('launchModal.refUserLabel')
-    if (kind === 'operator') return t('launchModal.refOperatorLabel')
-    if (kind === 'wallet') return t('launchModal.refWalletLabel')
-
-    return kind
-  }
 
   useEffect(() => {
     if (!open) {
@@ -284,82 +255,21 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               <p className='text-sm font-medium text-muted-700'>
                 {t('launchModal.scopeSectionLabel')}
               </p>
-              {scopeBlocked ? (
-                <p className='text-xs text-warning-400'>{t('launchModal.noOperatorsWarning')}</p>
-              ) : (
-                <div className='space-y-4'>
-                  <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-                    <div>
-                      <label
-                        htmlFor='scope-operator'
-                        className='block text-sm font-medium text-muted-700 mb-2'
-                      >
-                        {t('launchModal.operatorLabel')}
-                      </label>
-                      <select
-                        id='scope-operator'
-                        value={operatorId}
-                        onChange={e => setOperatorId(e.target.value)}
-                        className={SCOPE_SELECT_CLASS}
-                      >
-                        <option value=''>{t('launchModal.operatorPlaceholder')}</option>
-                        {operators.map(operator => (
-                          <option key={operator.public_id} value={operator.public_id}>
-                            {operator.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label
-                        htmlFor='scope-wallet'
-                        className='block text-sm font-medium text-muted-700 mb-2'
-                      >
-                        {t('launchModal.walletLabel')}
-                      </label>
-                      <select
-                        id='scope-wallet'
-                        value={walletId}
-                        onChange={e => setWalletId(e.target.value)}
-                        className={SCOPE_SELECT_CLASS}
-                      >
-                        <option value=''>{t('launchModal.walletPlaceholder')}</option>
-                        {wallets.map(wallet => (
-                          <option key={wallet.public_id} value={wallet.public_id}>
-                            {`${wallet.label}${wallet.is_paper ? t('launchModal.paperAnnotation') : ''}`}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  {referenceEntries.map(([name, kind]) => (
-                    <div key={name}>
-                      <label
-                        htmlFor={`scope-ref-${name}`}
-                        className='block text-sm font-medium text-muted-700 mb-2'
-                      >
-                        {referenceLabel(kind)}
-                      </label>
-                      <select
-                        id={`scope-ref-${name}`}
-                        value={referenceValues[name] ?? ''}
-                        onChange={e =>
-                          setReferenceValues(prev => ({ ...prev, [name]: e.target.value }))
-                        }
-                        className={SCOPE_SELECT_CLASS}
-                      >
-                        <option value=''>{t('launchModal.referencePlaceholder')}</option>
-                        {referenceOptions(kind).map(option => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  ))}
-                  <p className='text-xs text-muted-400'>{t('launchModal.scopeHelp')}</p>
-                </div>
-              )}
+              <ScopeFields
+                referenceEntries={referenceEntries}
+                operators={operators}
+                wallets={wallets}
+                users={users}
+                operatorId={operatorId}
+                walletId={walletId}
+                referenceValues={referenceValues}
+                onOperatorChange={setOperatorId}
+                onWalletChange={setWalletId}
+                onReferenceChange={(name, value) =>
+                  setReferenceValues(prev => ({ ...prev, [name]: value }))
+                }
+                scopeBlocked={scopeBlocked}
+              />
             </div>
           )}
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>

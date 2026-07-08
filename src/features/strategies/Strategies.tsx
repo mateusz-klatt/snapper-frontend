@@ -11,6 +11,7 @@ import {
   usePatchProcessDesiredState,
   useAvailableProcesses,
   useCreateProcessConfig,
+  useConfiguredProcesses,
 } from '../../hooks/queries/processes'
 import { useStrategies } from '../../hooks/queries/strategies'
 import { useWebSocketStore } from '../../stores/websocket'
@@ -20,13 +21,14 @@ import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { LiveOnlyNotice } from '../../components/LiveOnlyNotice'
 import { Permission } from '../../types/permissions.generated'
 import { StrategyLaunchModal, type StrategyLaunchData } from './StrategyLaunchModal'
+import { StrategyScopeEditModal, type StrategyScopeEditTarget } from './StrategyScopeEditModal'
 import { BacktestCreateForm } from '../backtests/BacktestCreateForm'
 import { currentHashQuery } from '../../lib/hash/currentHashQuery'
 import { StrategyCard, type FeedHealth, type HealthStatus } from './StrategyCard'
 import { StrategiesSkeleton } from '../../components/Skeleton'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
 import { useConfirmDialog } from '../../hooks/useConfirmDialog'
-import type { StrategyProcess } from '../../types/api'
+import type { StrategyProcess, ConfiguredProcess } from '../../types/api'
 
 type RemoteProcessAction = 'enable' | 'disable' | 'restart'
 type StrategyCardAction = () => void
@@ -47,6 +49,8 @@ interface StrategyCardRenderParams {
   requestStopStrategy: (name: string) => void
   requestRemoteRestart: (name: string) => void
   setBacktestStrategyClass: React.Dispatch<React.SetStateAction<string | null>>
+  config: ConfiguredProcess | undefined
+  requestEditScope: (config: ConfiguredProcess) => void
 }
 
 function startAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
@@ -91,6 +95,23 @@ function backtestAction(params: StrategyCardRenderParams): StrategyCardAction | 
   return () => params.setBacktestStrategyClass(backtestClass)
 }
 
+function editScopeAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
+  const config = params.config
+
+  if (!params.canManage || params.readOnly || config === undefined) {
+    return undefined
+  }
+
+  const parameters = config.parameters
+  const isScoped = 'operator_public_id' in parameters || 'wallet_public_id' in parameters
+
+  if (!isScoped) {
+    return undefined
+  }
+
+  return () => params.requestEditScope(config)
+}
+
 function strategyIsStarting(params: StrategyCardRenderParams): boolean {
   if (params.strategy.managed_remotely) {
     return params.remotePending(params.strategy.name, 'enable')
@@ -129,6 +150,7 @@ function renderStrategyCard(params: StrategyCardRenderParams): React.ReactElemen
       onStop={stopAction(params)}
       onRestart={restartAction(params)}
       onBacktest={backtestAction(params)}
+      onEditScope={editScopeAction(params)}
       isStarting={strategyIsStarting(params)}
       isStopping={strategyIsStopping(params)}
       isRestarting={strategyIsRestarting(params)}
@@ -164,6 +186,20 @@ export const Strategies: React.FC = () => {
     return availableProcesses?.payload.filter(process => process.role === 'strategy') ?? []
   }, [availableProcesses?.payload])
   const strategies = useMemo(() => strategiesData?.payload ?? [], [strategiesData?.payload])
+  const { data: configuredData } = useConfiguredProcesses()
+  const configByName = useMemo(
+    () => new Map((configuredData?.payload ?? []).map(config => [config.name, config])),
+    [configuredData?.payload]
+  )
+  const [editScopeTarget, setEditScopeTarget] = useState<StrategyScopeEditTarget | null>(null)
+
+  const requestEditScope = (config: ConfiguredProcess): void => {
+    setEditScopeTarget({
+      processName: config.name,
+      template: config.template ?? null,
+      parameters: config.parameters,
+    })
+  }
 
   useEffect(() => {
     if (isTimeTraveling || !wsClient) {
@@ -543,6 +579,8 @@ export const Strategies: React.FC = () => {
                 requestStopStrategy,
                 requestRemoteRestart,
                 setBacktestStrategyClass,
+                config: configByName.get(strategy.name),
+                requestEditScope,
               })
             )}
           </div>
@@ -590,6 +628,11 @@ export const Strategies: React.FC = () => {
         templates={strategyTemplates}
         onSubmit={handleStrategyLaunch}
         isSubmitting={createProcessConfig.isPending || startProcess.isPending}
+      />
+      <StrategyScopeEditModal
+        open={editScopeTarget !== null}
+        onClose={() => setEditScopeTarget(null)}
+        target={editScopeTarget}
       />
       <BacktestCreateForm
         open={backtestStrategyClass !== null}

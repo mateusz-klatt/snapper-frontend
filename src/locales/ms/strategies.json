@@ -95,7 +95,9 @@
     "managedRemotely": "Diurus oleh {{coordinator}}",
     "remoteCoordinatorUnknown": "kontena lain",
     "restart": "Mula semula",
-    "restartAriaLabel": "Mulakan semula strategi {{name}}"
+    "restartAriaLabel": "Mulakan semula strategi {{name}}",
+    "editScope": "Edit skop",
+    "editScopeAriaLabel": "Edit skop untuk {{name}}"
   },
   "launchModal": {
     "title": "Daftar Proses Strategi",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Pilih",
     "scopeHelp": "Pemilik diselesaikan melalui nama pengguna dan skopnya disemak terhadap operator yang dipilih apabila strategi dilancarkan.",
     "noOperatorsWarning": "Belum ada operator. Cipta operator dan geran skop sebelum melancarkan strategi berskop."
+  },
+  "editScopeModal": {
+    "title": "Edit skop strategi",
+    "subtitle": "Sasarkan semula “{{name}}” — operator, dompet dan penyemak. Perubahan berkuat kuasa pada mula semula seterusnya.",
+    "restartRequiredBanner": "Skop disimpan. Mula semula strategi supaya skop baharu berkuat kuasa.",
+    "help": "Perubahan skop disahkan apabila strategi dimulakan semula (keahlian operator, geran dompet, liputan output).",
+    "saveError": "Gagal menyimpan skop: {{message}}",
+    "save": "Simpan skop",
+    "saving": "Menyimpan…",
+    "cancel": "Batal",
+    "close": "Tutup"
   }
 }

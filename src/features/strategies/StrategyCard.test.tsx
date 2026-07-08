@@ -243,6 +243,34 @@ describe('StrategyCard', () => {
     )
     expect(screen.queryByText('Backtest')).toBeNull()
   })
+  it('renders an Edit scope button and calls onEditScope when clicked', async () => {
+    const onEditScope = vi.fn()
+
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_test'
+        running={false}
+        autoStartEnabled={false}
+        mode='thread'
+        onEditScope={onEditScope}
+      />
+    )
+    await userEvent.click(screen.getByText('Edit scope'))
+    expect(onEditScope).toHaveBeenCalledTimes(1)
+  })
+  it('disables the Edit scope button in read-only mode', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_test'
+        running={false}
+        autoStartEnabled={false}
+        mode='thread'
+        onEditScope={vi.fn()}
+        readOnly
+      />
+    )
+    expect((screen.getByText('Edit scope') as HTMLButtonElement).disabled).toBe(true)
+  })
   it('shows starting status while starting', () => {
     renderWithMocks(
       <StrategyCard

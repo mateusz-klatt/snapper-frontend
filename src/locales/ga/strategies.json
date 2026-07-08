@@ -95,7 +95,9 @@
     "managedRemotely": "Á bhainistiú ag {{coordinator}}",
     "remoteCoordinatorUnknown": "coimeádán eile",
     "restart": "Atosaigh",
-    "restartAriaLabel": "Atosaigh straitéis {{name}}"
+    "restartAriaLabel": "Atosaigh straitéis {{name}}",
+    "editScope": "Cuir scóip in eagar",
+    "editScopeAriaLabel": "Cuir scóip in eagar do {{name}}"
   },
   "launchModal": {
     "title": "Cláraigh Próiseas Straitéise",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Roghnaigh",
     "scopeHelp": "Réitítear an t-úinéir de réir ainm úsáideora agus déantar seiceáil scóipe air i gcoinne an oibreora roghnaithe nuair a sheoltar an straitéis.",
     "noOperatorsWarning": "Níl aon oibreoirí ann fós. Cruthaigh oibreoir agus deontas scóipe sula seoltar straitéis scóipe."
+  },
+  "editScopeModal": {
+    "title": "Cuir scóip na straitéise in eagar",
+    "subtitle": "Athdhírigh “{{name}}” — oibreoir, sparán agus athbhreithneoir. Cuirtear na hathruithe i bhfeidhm ag an atosú seo chugainn.",
+    "restartRequiredBanner": "Scóip sábháilte. Atosaigh an straitéis chun go dtiocfaidh an scóip nua i bhfeidhm.",
+    "help": "Déantar athruithe scóipe a bhailíochtú nuair a atosaítear an straitéis (ballraíocht oibreora, deontas sparáin, clúdach aschuir).",
+    "saveError": "Theip ar an scóip a shábháil: {{message}}",
+    "save": "Sábháil an scóip",
+    "saving": "Á shábháil…",
+    "cancel": "Cealaigh",
+    "close": "Dún"
   }
 }

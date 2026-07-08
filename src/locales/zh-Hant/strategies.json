@@ -95,7 +95,9 @@
     "managedRemotely": "由 {{coordinator}} 管理",
     "remoteCoordinatorUnknown": "其他容器",
     "restart": "重新啟動",
-    "restartAriaLabel": "重新啟動 {{name}} 策略"
+    "restartAriaLabel": "重新啟動 {{name}} 策略",
+    "editScope": "編輯範圍",
+    "editScopeAriaLabel": "編輯 {{name}} 的範圍"
   },
   "launchModal": {
     "title": "註冊策略進程",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "選擇",
     "scopeHelp": "擁有者會依使用者名稱解析，並在策略啟動時依所選操作員檢查範圍。",
     "noOperatorsWarning": "尚未建立操作員。請先建立操作員和範圍授權，再啟動具範圍的策略。"
+  },
+  "editScopeModal": {
+    "title": "編輯策略範圍",
+    "subtitle": "重新指定「{{name}}」的操作員、錢包和審核者。變更將在下次重新啟動時生效。",
+    "restartRequiredBanner": "範圍已儲存。請重新啟動策略，讓新範圍生效。",
+    "help": "範圍變更會在策略重新啟動時進行驗證（操作員成員資格、錢包授權、輸出涵蓋範圍）。",
+    "saveError": "儲存範圍失敗：{{message}}",
+    "save": "儲存範圍",
+    "saving": "正在儲存…",
+    "cancel": "取消",
+    "close": "關閉"
   }
 }

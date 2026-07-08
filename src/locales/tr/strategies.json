@@ -95,7 +95,9 @@
     "managedRemotely": "{{coordinator}} tarafından yönetiliyor",
     "remoteCoordinatorUnknown": "başka bir kapsayıcı",
     "restart": "Yeniden başlat",
-    "restartAriaLabel": "{{name}} stratejisini yeniden başlat"
+    "restartAriaLabel": "{{name}} stratejisini yeniden başlat",
+    "editScope": "Kapsamı düzenle",
+    "editScopeAriaLabel": "{{name}} için kapsamı düzenle"
   },
   "launchModal": {
     "title": "Strateji Süreci Kaydet",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Seç",
     "scopeHelp": "Sahip kullanıcı adına göre çözümlenir ve strateji başlatıldığında kapsamı seçili operatöre göre denetlenir.",
     "noOperatorsWarning": "Henüz operatör yok. Kapsamlı bir strateji başlatmadan önce bir operatör ve kapsam izni oluşturun."
+  },
+  "editScopeModal": {
+    "title": "Strateji kapsamını düzenle",
+    "subtitle": "“{{name}}” için yeniden hedef belirleyin — operatör, cüzdan ve inceleyici. Değişiklikler bir sonraki yeniden başlatmada geçerli olur.",
+    "restartRequiredBanner": "Kapsam kaydedildi. Yeni kapsamın geçerli olması için stratejiyi yeniden başlatın.",
+    "help": "Kapsam değişiklikleri strateji yeniden başlatıldığında doğrulanır (operatör üyeliği, cüzdan izni, çıktı kapsamı).",
+    "saveError": "Kapsam kaydedilemedi: {{message}}",
+    "save": "Kapsamı kaydet",
+    "saving": "Kaydediliyor…",
+    "cancel": "İptal",
+    "close": "Kapat"
   }
 }

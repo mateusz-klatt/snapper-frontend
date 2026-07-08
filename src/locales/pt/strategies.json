@@ -95,7 +95,9 @@
     "managedRemotely": "Gerido por {{coordinator}}",
     "remoteCoordinatorUnknown": "outro contentor",
     "restart": "Reiniciar",
-    "restartAriaLabel": "Reiniciar estratégia {{name}}"
+    "restartAriaLabel": "Reiniciar estratégia {{name}}",
+    "editScope": "Editar escopo",
+    "editScopeAriaLabel": "Editar o escopo de {{name}}"
   },
   "launchModal": {
     "title": "Registrar processo de estratégia",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Selecionar",
     "scopeHelp": "O proprietário é resolvido pelo nome de usuário e tem o escopo verificado em relação ao operador selecionado quando a estratégia é iniciada.",
     "noOperatorsWarning": "Ainda não existem operadores. Crie um operador e uma concessão de escopo antes de iniciar uma estratégia com escopo."
+  },
+  "editScopeModal": {
+    "title": "Editar o escopo da estratégia",
+    "subtitle": "Redirecionar “{{name}}” — operador, carteira e revisor. As alterações são aplicadas na próxima reinicialização.",
+    "restartRequiredBanner": "Escopo salvo. Reinicie a estratégia para que o novo escopo entre em vigor.",
+    "help": "As alterações de escopo são validadas quando a estratégia é reiniciada (associação ao operador, concessão de carteira, cobertura de saída).",
+    "saveError": "Falha ao salvar o escopo: {{message}}",
+    "save": "Salvar escopo",
+    "saving": "Salvando…",
+    "cancel": "Cancelar",
+    "close": "Fechar"
   }
 }

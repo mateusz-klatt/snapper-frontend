@@ -95,7 +95,9 @@
     "managedRemotely": "Pinamamahalaan ng {{coordinator}}",
     "remoteCoordinatorUnknown": "ibang container",
     "restart": "I-restart",
-    "restartAriaLabel": "I-restart ang {{name}} strategy"
+    "restartAriaLabel": "I-restart ang {{name}} strategy",
+    "editScope": "I-edit ang saklaw",
+    "editScopeAriaLabel": "I-edit ang saklaw para sa {{name}}"
   },
   "launchModal": {
     "title": "Mag-register ng Strategy Process",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Piliin",
     "scopeHelp": "Nire-resolve ang may-ari gamit ang username at sine-scope-check laban sa napiling operator kapag inilulunsad ang strategy.",
     "noOperatorsWarning": "Wala pang operator. Gumawa ng operator at scope grant bago maglunsad ng scoped strategy."
+  },
+  "editScopeModal": {
+    "title": "I-edit ang saklaw ng strategy",
+    "subtitle": "I-retarget ang “{{name}}” — operator, wallet, at reviewer. Ilalapat ang mga pagbabago sa susunod na restart.",
+    "restartRequiredBanner": "Na-save ang saklaw. I-restart ang strategy para magkabisa ang bagong saklaw.",
+    "help": "Bina-validate ang mga pagbabago sa saklaw kapag ni-restart ang strategy (membership sa operator, wallet grant, output coverage).",
+    "saveError": "Nabigong i-save ang saklaw: {{message}}",
+    "save": "I-save ang saklaw",
+    "saving": "Sine-save…",
+    "cancel": "Kanselahin",
+    "close": "Isara"
   }
 }

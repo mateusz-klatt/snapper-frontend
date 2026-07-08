@@ -1326,3 +1326,16 @@ export interface ProcessDesiredState {
   topic?: string | null
   payload: Record<string, unknown>
 }
+
+/**
+ * ProcessConfigScope request entity.
+ * Use with processConfigScopeToAPI() transform.
+ */
+export interface ProcessConfigScope {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  payload: Record<string, unknown>
+}

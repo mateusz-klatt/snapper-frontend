@@ -95,7 +95,9 @@
     "managedRemotely": "Hallinnoija: {{coordinator}}",
     "remoteCoordinatorUnknown": "toinen kontti",
     "restart": "Käynnistä uudelleen",
-    "restartAriaLabel": "Käynnistä strategia {{name}} uudelleen"
+    "restartAriaLabel": "Käynnistä strategia {{name}} uudelleen",
+    "editScope": "Muokkaa scopea",
+    "editScopeAriaLabel": "Muokkaa scopea kohteelle {{name}}"
   },
   "launchModal": {
     "title": "Rekisteröi strategiaprosessi",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Valitse",
     "scopeHelp": "Omistaja ratkaistaan käyttäjänimen perusteella ja hänen scope-oikeutensa tarkistetaan valittua operaattoria vasten strategian käynnistyessä.",
     "noOperatorsWarning": "Operaattoreita ei ole vielä. Luo operaattori ja scope-valtuutus ennen scoped-strategian käynnistämistä."
+  },
+  "editScopeModal": {
+    "title": "Muokkaa strategian scopea",
+    "subtitle": "Kohdista “{{name}}” uudelleen — operaattori, lompakko ja tarkistaja. Muutokset tulevat voimaan seuraavassa uudelleenkäynnistyksessä.",
+    "restartRequiredBanner": "Scope tallennettu. Käynnistä strategia uudelleen, jotta uusi scope tulee voimaan.",
+    "help": "Scope-muutokset tarkistetaan, kun strategia käynnistetään uudelleen (operaattorin jäsenyys, lompakon valtuutus, tulosteen kattavuus).",
+    "saveError": "Scopen tallennus epäonnistui: {{message}}",
+    "save": "Tallenna scope",
+    "saving": "Tallennetaan…",
+    "cancel": "Peruuta",
+    "close": "Sulje"
   }
 }

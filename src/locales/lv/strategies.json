@@ -95,7 +95,9 @@
     "managedRemotely": "Pārvalda {{coordinator}}",
     "remoteCoordinatorUnknown": "cits konteiners",
     "restart": "Restartēt",
-    "restartAriaLabel": "Restartēt stratēģiju {{name}}"
+    "restartAriaLabel": "Restartēt stratēģiju {{name}}",
+    "editScope": "Rediģēt tvērumu",
+    "editScopeAriaLabel": "Rediģēt tvērumu {{name}}"
   },
   "launchModal": {
     "title": "Reģistrēt stratēģijas procesu",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Atlasīt",
     "scopeHelp": "Īpašnieks tiek noteikts pēc lietotājvārda, un stratēģijas palaišanas laikā viņa tvērums tiek pārbaudīts pret atlasīto operatoru.",
     "noOperatorsWarning": "Operatoru vēl nav. Pirms stratēģijas ar tvērumu palaišanas izveidojiet operatoru un tvēruma piešķīrumu."
+  },
+  "editScopeModal": {
+    "title": "Rediģēt stratēģijas tvērumu",
+    "subtitle": "Pārorientēt “{{name}}” — operators, maks un recenzents. Izmaiņas stājas spēkā nākamajā restartēšanā.",
+    "restartRequiredBanner": "Tvērums saglabāts. Restartējiet stratēģiju, lai jaunais tvērums stātos spēkā.",
+    "help": "Tvēruma izmaiņas tiek pārbaudītas, kad stratēģija tiek restartēta (dalība operatorā, maka piešķīrums, izvades pārklājums).",
+    "saveError": "Neizdevās saglabāt tvērumu: {{message}}",
+    "save": "Saglabāt tvērumu",
+    "saving": "Notiek saglabāšana…",
+    "cancel": "Atcelt",
+    "close": "Aizvērt"
   }
 }

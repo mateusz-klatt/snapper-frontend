@@ -95,7 +95,9 @@
     "managedRemotely": "{{coordinator}} が管理",
     "remoteCoordinatorUnknown": "別のコンテナ",
     "restart": "再起動",
-    "restartAriaLabel": "{{name}}戦略を再起動"
+    "restartAriaLabel": "{{name}}戦略を再起動",
+    "editScope": "スコープを編集",
+    "editScopeAriaLabel": "{{name}} のスコープを編集"
   },
   "launchModal": {
     "title": "戦略プロセスを登録",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "選択",
     "scopeHelp": "所有者はユーザー名で解決され、戦略の起動時に選択したオペレーターに対してスコープがチェックされます。",
     "noOperatorsWarning": "オペレーターはまだ存在しません。スコープ付き戦略を起動する前に、オペレーターとスコープ付与を作成してください。"
+  },
+  "editScopeModal": {
+    "title": "戦略スコープの編集",
+    "subtitle": "「{{name}}」のオペレーター、ウォレット、レビュアーを再設定します。変更は次回の再起動時に適用されます。",
+    "restartRequiredBanner": "スコープを保存しました。新しいスコープを有効にするには戦略を再起動してください。",
+    "help": "スコープの変更は戦略の再起動時に検証されます（オペレーターのメンバーシップ、ウォレットの付与、出力のカバレッジ）。",
+    "saveError": "スコープの保存に失敗しました: {{message}}",
+    "save": "スコープを保存",
+    "saving": "保存中…",
+    "cancel": "キャンセル",
+    "close": "閉じる"
   }
 }

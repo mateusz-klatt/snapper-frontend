@@ -95,7 +95,9 @@
     "managedRemotely": "Управља {{coordinator}}",
     "remoteCoordinatorUnknown": "други контејнер",
     "restart": "Ponovo pokreni",
-    "restartAriaLabel": "Ponovo pokreni strategiju {{name}}"
+    "restartAriaLabel": "Ponovo pokreni strategiju {{name}}",
+    "editScope": "Uredi opseg",
+    "editScopeAriaLabel": "Uredi opseg za {{name}}"
   },
   "launchModal": {
     "title": "Registracija procesa strategije",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Izaberite",
     "scopeHelp": "Vlasnik se određuje prema korisničkom imenu i pri pokretanju strategije proverava se njegov opseg u odnosu na izabranog operatora.",
     "noOperatorsWarning": "Još nema operatora. Kreirajte operatora i dodelu opsega pre pokretanja strategije sa opsegom."
+  },
+  "editScopeModal": {
+    "title": "Uredi opseg strategije",
+    "subtitle": "Preusmeri “{{name}}” — operator, novčanik i recenzent. Promene se primenjuju pri sledećem ponovnom pokretanju.",
+    "restartRequiredBanner": "Opseg je sačuvan. Ponovo pokrenite strategiju da bi novi opseg stupio na snagu.",
+    "help": "Promene opsega proveravaju se pri ponovnom pokretanju strategije (članstvo u operatoru, dodela novčanika, pokrivenost izlaza).",
+    "saveError": "Čuvanje opsega nije uspelo: {{message}}",
+    "save": "Sačuvaj opseg",
+    "saving": "Čuvanje…",
+    "cancel": "Otkaži",
+    "close": "Zatvori"
   }
 }

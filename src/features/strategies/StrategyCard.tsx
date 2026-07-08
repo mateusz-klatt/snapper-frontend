@@ -116,6 +116,7 @@ interface StrategyCardProps {
   onStop?: (() => void) | undefined
   onRestart?: (() => void) | undefined
   onBacktest?: (() => void) | undefined
+  onEditScope?: (() => void) | undefined
   isStarting?: boolean
   isStopping?: boolean
   isRestarting?: boolean
@@ -209,6 +210,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     onStop,
     onRestart,
     onBacktest,
+    onEditScope,
     isStarting = false,
     isStopping = false,
     isRestarting = false,
@@ -415,7 +417,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             })}
           </p>
         )}
-        {(onStart || onStop || onRestart || onBacktest) && (
+        {(onStart || onStop || onRestart || onBacktest || onEditScope) && (
           <div
             className={clsx('flex space-x-2 pt-2', !managedRemotely && 'border-t border-dark-600')}
           >
@@ -457,6 +459,17 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
                 className='px-4 py-2 rounded-md text-sm font-medium bg-brand-600 text-white transition-colors hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500'
               >
                 {t('card.backtest')}
+              </button>
+            )}
+            {onEditScope && (
+              <button
+                type='button'
+                onClick={onEditScope}
+                disabled={readOnly}
+                aria-label={t('card.editScopeAriaLabel', { name: displayName })}
+                className='px-4 py-2 rounded-md text-sm font-medium border border-dark-600 text-alpine-900 transition-colors hover:bg-dark-50 focus:outline-none focus:ring-2 focus:ring-brand-500 disabled:opacity-50 disabled:cursor-not-allowed'
+              >
+                {t('card.editScope')}
               </button>
             )}
           </div>

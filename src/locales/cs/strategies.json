@@ -95,7 +95,9 @@
     "managedRemotely": "Spravuje {{coordinator}}",
     "remoteCoordinatorUnknown": "jiný kontejner",
     "restart": "Restartovat",
-    "restartAriaLabel": "Restartovat strategii {{name}}"
+    "restartAriaLabel": "Restartovat strategii {{name}}",
+    "editScope": "Upravit rozsah",
+    "editScopeAriaLabel": "Upravit rozsah pro {{name}}"
   },
   "launchModal": {
     "title": "Registrovat proces strategie",
@@ -137,5 +139,16 @@
     "referencePlaceholder": "Vybrat",
     "scopeHelp": "Vlastník se určí podle uživatelského jména a při spuštění strategie se zkontroluje jeho rozsah vůči vybranému operátorovi.",
     "noOperatorsWarning": "Zatím neexistují žádní operátoři. Před spuštěním strategie s rozsahem vytvořte operátora a udělení rozsahu."
+  },
+  "editScopeModal": {
+    "title": "Upravit rozsah strategie",
+    "subtitle": "Přesměrovat „{{name}}“ — operátor, peněženka a kontrolor. Změny se projeví při příštím restartu.",
+    "restartRequiredBanner": "Rozsah uložen. Restartujte strategii, aby se nový rozsah projevil.",
+    "help": "Změny rozsahu se ověřují při restartu strategie (členství v operátorovi, udělení peněženky, pokrytí výstupů).",
+    "saveError": "Uložení rozsahu se nezdařilo: {{message}}",
+    "save": "Uložit rozsah",
+    "saving": "Ukládání…",
+    "cancel": "Zrušit",
+    "close": "Zavřít"
   }
 }
