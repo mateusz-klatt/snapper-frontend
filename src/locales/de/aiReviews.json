@@ -49,5 +49,19 @@
     "emptyMessage": "Frames für KI-Review-Anfragen, -Entscheidungen und Limit-Verletzungen werden hier eingehen.",
     "summaryEmpty": "Keine Frames empfangen",
     "summaryCount": "Zeige {{shown}} von {{total}} im Puffer"
+  },
+  "decisions": {
+    "title": "AI-Entscheidungen",
+    "subtitle": "Worüber die AI-Delegierten bei CONSULT-Reviews entschieden haben — schreibgeschütztes Audit.",
+    "sectionTitle": "Letzte Entscheidungen",
+    "loading": "AI-Entscheidungen werden geladen…",
+    "loadError": "AI-Entscheidungen konnten nicht geladen werden: {{message}}",
+    "emptyTitle": "Noch keine AI-Entscheidungen",
+    "emptyMessage": "Abgeschlossene CONSULT-Reviews erscheinen hier mit Entscheidung und Begründung des Delegierten.",
+    "columns": {
+      "rationale": "Begründung",
+      "decidedAt": "Entschieden am"
+    },
+    "decisionPending": "Ausstehend"
   }
 }

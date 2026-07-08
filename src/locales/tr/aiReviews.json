@@ -49,5 +49,19 @@
     "emptyMessage": "AI inceleme isteği, karar ve limit ihlali çerçeveleri burada akacak.",
     "summaryEmpty": "Çerçeve alınmadı",
     "summaryCount": "{{shown}} / {{total}} arabelleğe alınan gösteriliyor"
+  },
+  "decisions": {
+    "title": "AI kararları",
+    "subtitle": "AI delegelerinin CONSULT incelemelerinde neye karar verdiği — salt okunur denetim.",
+    "sectionTitle": "Son kararlar",
+    "loading": "AI kararları yükleniyor…",
+    "loadError": "AI kararları yüklenemedi: {{message}}",
+    "emptyTitle": "Henüz AI kararı yok",
+    "emptyMessage": "Çözümlenen CONSULT incelemeleri, delegenin kararı ve gerekçesiyle birlikte burada görünür.",
+    "columns": {
+      "rationale": "Gerekçe",
+      "decidedAt": "Karar zamanı"
+    },
+    "decisionPending": "Beklemede"
   }
 }

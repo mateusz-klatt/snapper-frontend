@@ -49,5 +49,19 @@
     "emptyMessage": "Az AI-felülvizsgálati kérések, döntések és limitmegsértési keretek ide érkeznek folyamként.",
     "summaryEmpty": "Nem érkezett keret",
     "summaryCount": "Megjelenített / pufferelt keretek: {{shown}} / {{total}}"
+  },
+  "decisions": {
+    "title": "AI-döntések",
+    "subtitle": "Amiről az AI-megbízottak döntöttek a CONSULT-felülvizsgálatokban — csak olvasható audit.",
+    "sectionTitle": "Legutóbbi döntések",
+    "loading": "AI-döntések betöltése…",
+    "loadError": "Nem sikerült betölteni az AI-döntéseket: {{message}}",
+    "emptyTitle": "Még nincsenek AI-döntések",
+    "emptyMessage": "A megoldott CONSULT-felülvizsgálatok itt jelennek meg a megbízott döntésével és indoklásával.",
+    "columns": {
+      "rationale": "Indoklás",
+      "decidedAt": "Döntés ideje"
+    },
+    "decisionPending": "Függőben"
   }
 }

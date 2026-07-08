@@ -49,5 +49,19 @@
     "emptyMessage": "AIレビューリクエスト、判断、上限違反フレームがここにストリーム表示されます。",
     "summaryEmpty": "受信したフレームはありません",
     "summaryCount": "{{total}}件中{{shown}}件のバッファを表示"
+  },
+  "decisions": {
+    "title": "AIの決定",
+    "subtitle": "AIデリゲートがCONSULTレビューで下した決定 — 読み取り専用の監査。",
+    "sectionTitle": "最近の決定",
+    "loading": "AIの決定を読み込み中…",
+    "loadError": "AIの決定の読み込みに失敗しました: {{message}}",
+    "emptyTitle": "AIの決定はまだありません",
+    "emptyMessage": "解決済みのCONSULTレビューが、デリゲートの決定と根拠とともにここに表示されます。",
+    "columns": {
+      "rationale": "根拠",
+      "decidedAt": "決定日時"
+    },
+    "decisionPending": "保留中"
   }
 }

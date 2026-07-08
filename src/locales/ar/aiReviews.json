@@ -49,5 +49,19 @@
     "emptyMessage": "سيتم بث طلبات مراجعة AI والقرارات وإطارات انتهاك الحدود هنا.",
     "summaryEmpty": "لم يتم تلقي أي إطارات",
     "summaryCount": "عرض {{shown}} من {{total}} مخزنة مؤقتاً"
+  },
+  "decisions": {
+    "title": "قرارات AI",
+    "subtitle": "ما قرّره مندوبو AI في مراجعات CONSULT — تدقيق للقراءة فقط.",
+    "sectionTitle": "القرارات الأخيرة",
+    "loading": "جارٍ تحميل قرارات AI…",
+    "loadError": "فشل تحميل قرارات AI: {{message}}",
+    "emptyTitle": "لا توجد قرارات AI بعد",
+    "emptyMessage": "ستظهر مراجعات CONSULT التي تمّت تسويتها هنا مع قرار المندوب ومبرره.",
+    "columns": {
+      "rationale": "المبرر",
+      "decidedAt": "تاريخ القرار"
+    },
+    "decisionPending": "قيد الانتظار"
   }
 }

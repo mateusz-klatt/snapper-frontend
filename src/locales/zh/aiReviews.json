@@ -49,5 +49,19 @@
     "emptyMessage": "AI 审核请求、决策和上限违规帧将在这里实时显示。",
     "summaryEmpty": "未收到帧",
     "summaryCount": "显示 {{shown}} / {{total}} 条缓冲"
+  },
+  "decisions": {
+    "title": "AI 决策",
+    "subtitle": "AI 委托代理在 CONSULT 审核中所做的决策——只读审计。",
+    "sectionTitle": "最近决策",
+    "loading": "正在加载 AI 决策…",
+    "loadError": "加载 AI 决策失败: {{message}}",
+    "emptyTitle": "暂无 AI 决策",
+    "emptyMessage": "已解决的 CONSULT 审核将在此显示，并附上委托代理的决策和理由。",
+    "columns": {
+      "rationale": "理由",
+      "decidedAt": "决策时间"
+    },
+    "decisionPending": "待处理"
   }
 }

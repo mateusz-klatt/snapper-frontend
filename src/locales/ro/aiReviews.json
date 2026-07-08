@@ -49,5 +49,19 @@
     "emptyMessage": "Cadrele de solicitare AI review, decizie și încălcare de limite vor fi transmise aici.",
     "summaryEmpty": "Nu s-au primit cadre",
     "summaryCount": "Se afișează {{shown}} din {{total}} în buffer"
+  },
+  "decisions": {
+    "title": "Decizii AI",
+    "subtitle": "Ce au decis delegații AI în revizuirile CONSULT — audit doar în citire.",
+    "sectionTitle": "Decizii recente",
+    "loading": "Se încarcă deciziile AI…",
+    "loadError": "Încărcarea deciziilor AI a eșuat: {{message}}",
+    "emptyTitle": "Nu există încă decizii AI",
+    "emptyMessage": "Revizuirile CONSULT rezolvate vor apărea aici împreună cu decizia și justificarea delegatului.",
+    "columns": {
+      "rationale": "Justificare",
+      "decidedAt": "Decis la"
+    },
+    "decisionPending": "În așteptare"
   }
 }

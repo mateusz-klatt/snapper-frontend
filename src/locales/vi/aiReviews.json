@@ -49,5 +49,19 @@
     "emptyMessage": "Yêu cầu duyệt xét AI, quyết định và frame vi phạm giới hạn sẽ stream vào đây.",
     "summaryEmpty": "Chưa nhận frame nào",
     "summaryCount": "Đang hiển thị {{shown}} / {{total}} đã buffer"
+  },
+  "decisions": {
+    "title": "Quyết định AI",
+    "subtitle": "Những gì các đại diện AI đã quyết định trong các duyệt xét CONSULT — kiểm toán chỉ đọc.",
+    "sectionTitle": "Quyết định gần đây",
+    "loading": "Đang tải quyết định AI…",
+    "loadError": "Không tải được quyết định AI: {{message}}",
+    "emptyTitle": "Chưa có quyết định AI",
+    "emptyMessage": "Các duyệt xét CONSULT đã giải quyết sẽ xuất hiện ở đây cùng với quyết định và lý do của đại diện.",
+    "columns": {
+      "rationale": "Lý do",
+      "decidedAt": "Quyết định lúc"
+    },
+    "decisionPending": "Đang chờ"
   }
 }

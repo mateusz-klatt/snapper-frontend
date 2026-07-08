@@ -49,5 +49,19 @@
     "emptyMessage": "AI peržiūros užklausos, sprendimai ir limitų pažeidimų kadrai bus transliuojami čia.",
     "summaryEmpty": "Kadrų negauta",
     "summaryCount": "Rodoma {{shown}} iš {{total}} buferyje"
+  },
+  "decisions": {
+    "title": "AI sprendimai",
+    "subtitle": "Ką AI delegatai nusprendė CONSULT peržiūrose — tik skaitymo auditas.",
+    "sectionTitle": "Naujausi sprendimai",
+    "loading": "Įkeliami AI sprendimai…",
+    "loadError": "Nepavyko įkelti AI sprendimų: {{message}}",
+    "emptyTitle": "AI sprendimų dar nėra",
+    "emptyMessage": "Išspręstos CONSULT peržiūros bus rodomos čia kartu su delegato sprendimu ir pagrindimu.",
+    "columns": {
+      "rationale": "Pagrindimas",
+      "decidedAt": "Nuspręsta"
+    },
+    "decisionPending": "Laukiama"
   }
 }

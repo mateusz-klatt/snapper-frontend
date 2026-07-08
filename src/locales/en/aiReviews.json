@@ -49,5 +49,19 @@
     "emptyMessage": "AI review request, decision, and caps-violation frames will stream in here.",
     "summaryEmpty": "No frames received",
     "summaryCount": "Showing {{shown}} of {{total}} buffered"
+  },
+  "decisions": {
+    "title": "AI Decisions",
+    "subtitle": "What the AI delegates decided on CONSULT reviews — read-only audit.",
+    "sectionTitle": "Recent decisions",
+    "loading": "Loading AI decisions…",
+    "loadError": "Failed to load AI decisions: {{message}}",
+    "emptyTitle": "No AI decisions yet",
+    "emptyMessage": "Resolved CONSULT reviews will appear here with the delegate's decision and rationale.",
+    "columns": {
+      "rationale": "Rationale",
+      "decidedAt": "Decided at"
+    },
+    "decisionPending": "Pending"
   }
 }

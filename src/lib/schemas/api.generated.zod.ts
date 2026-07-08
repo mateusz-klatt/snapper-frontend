@@ -4354,6 +4354,32 @@ export const HealthCheckResponseSchema = _HealthCheckResponseRawSchema as unknow
   Components['schemas']['HealthCheckResponse']
 >
 
+const _AdminAiReviewItemRawSchema = z
+  .object({
+    review_public_id: z.string(),
+    strategy_public_id: z.string(),
+    user_public_id: z.string(),
+    operator_public_id: z.string(),
+    wallet_public_id: z.string(),
+    instrument_public_id: z.string(),
+    selected_delegate_public_id: z.string(),
+    responding_delegate_public_id: z.string().nullable(),
+    status: z.string(),
+    decision: z.string().nullable(),
+    rationale: z.string().nullable(),
+    resolution_mode: z.string().nullable(),
+    dispatch_version: z.number().int(),
+    created_at: z.iso.datetime(),
+    resolved_at: z.iso.datetime().nullable(),
+    deadline: z.iso.datetime(),
+    signal_envelope: z.record(z.string(), z.any()).nullable().optional(),
+  })
+  .strict()
+
+export const AdminAiReviewItemSchema = _AdminAiReviewItemRawSchema as unknown as z.ZodType<
+  Components['schemas']['AdminAiReviewItem']
+>
+
 const _AiReviewDecisionResponseRawSchema = z
   .object({
     success: z.boolean(),
@@ -4764,6 +4790,18 @@ const _RefreshResponseRawSchema = z
 export const RefreshResponseSchema = _RefreshResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['RefreshResponse']
 >
+
+const _AdminAiReviewListResponseRawSchema = z
+  .object({
+    items: z.array(AdminAiReviewItemSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const AdminAiReviewListResponseSchema =
+  _AdminAiReviewListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['AdminAiReviewListResponse']
+  >
 
 const _AlertEventResponseRawSchema = z
   .object({
@@ -5508,6 +5546,7 @@ export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
+export type AdminAiReviewItem = Components['schemas']['AdminAiReviewItem']
 export type AiReviewDecisionResponse = Components['schemas']['AiReviewDecisionResponse']
 export type AlertEventInfo = Components['schemas']['AlertEventInfo']
 export type AvailableProcess = Components['schemas']['AvailableProcess']
@@ -5528,6 +5567,7 @@ export type PairedExecutionIncidentListResponse =
 export type RelatedInstrumentsResponse = Components['schemas']['RelatedInstrumentsResponse']
 export type LoginResponse = Components['schemas']['LoginResponse']
 export type RefreshResponse = Components['schemas']['RefreshResponse']
+export type AdminAiReviewListResponse = Components['schemas']['AdminAiReviewListResponse']
 export type AlertEventResponse = Components['schemas']['AlertEventResponse']
 export type AlertHistoryResponse = Components['schemas']['AlertHistoryResponse']
 export type AvailableProcessesResponse = Components['schemas']['AvailableProcessesResponse']

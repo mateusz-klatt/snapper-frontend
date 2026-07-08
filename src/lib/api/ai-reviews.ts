@@ -3,9 +3,27 @@ import { validateResponse } from '../schemas/api'
 import {
   PendingReviewListResponseSchema,
   AiReviewDecisionResponseSchema,
+  AdminAiReviewListResponseSchema,
   type PendingReviewListResponse,
   type AiReviewDecisionResponse,
+  type AdminAiReviewListResponse,
 } from '../schemas/api.generated.zod'
+
+export async function listAiReviews(
+  params: Readonly<{ limit?: number | undefined }> = {}
+): Promise<AdminAiReviewListResponse> {
+  const search = new URLSearchParams()
+
+  if (params.limit !== undefined) {
+    search.set('limit', String(params.limit))
+  }
+
+  const qs = search.toString()
+  const path = qs ? `/api/ai-reviews?${qs}` : '/api/ai-reviews'
+  const data = await apiClient.requestJSON(path, { method: 'GET' })
+
+  return validateResponse(data, AdminAiReviewListResponseSchema, '/ai-reviews')
+}
 
 export async function listPendingAiReviews(
   params: Readonly<{ wallet_public_id?: string | undefined; limit?: number | undefined }> = {}

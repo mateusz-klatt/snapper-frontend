@@ -49,5 +49,19 @@
     "emptyMessage": "בקשות סקירת AI, החלטות ומסגרות חריגה ממגבלות יוזרמו כאן.",
     "summaryEmpty": "לא התקבלו מסגרות",
     "summaryCount": "מציג {{shown}} מתוך {{total}} שנאגרו"
+  },
+  "decisions": {
+    "title": "החלטות AI",
+    "subtitle": "מה שנציגי AI החליטו בסקירות CONSULT — ביקורת לקריאה בלבד.",
+    "sectionTitle": "החלטות אחרונות",
+    "loading": "טוען החלטות AI…",
+    "loadError": "טעינת החלטות AI נכשלה: {{message}}",
+    "emptyTitle": "אין עדיין החלטות AI",
+    "emptyMessage": "סקירות CONSULT שנפתרו יופיעו כאן עם ההחלטה והנימוק של הנציג.",
+    "columns": {
+      "rationale": "נימוק",
+      "decidedAt": "מועד ההחלטה"
+    },
+    "decisionPending": "ממתין"
   }
 }

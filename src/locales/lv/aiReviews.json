@@ -49,5 +49,19 @@
     "emptyMessage": "AI pārskata pieprasījumu, lēmumu un limitu pārkāpumu kadri tiks straumēti šeit.",
     "summaryEmpty": "Kadri nav saņemti",
     "summaryCount": "Rādīti {{shown}} no {{total}} buferētajiem"
+  },
+  "decisions": {
+    "title": "AI lēmumi",
+    "subtitle": "Ko AI delegāti izlēma CONSULT pārskatos — tikai lasāms audits.",
+    "sectionTitle": "Nesenie lēmumi",
+    "loading": "Notiek AI lēmumu ielāde…",
+    "loadError": "Neizdevās ielādēt AI lēmumus: {{message}}",
+    "emptyTitle": "AI lēmumu vēl nav",
+    "emptyMessage": "Atrisinātie CONSULT pārskati parādīsies šeit kopā ar delegāta lēmumu un pamatojumu.",
+    "columns": {
+      "rationale": "Pamatojums",
+      "decidedAt": "Izlemts"
+    },
+    "decisionPending": "Gaida"
   }
 }

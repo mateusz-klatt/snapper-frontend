@@ -49,5 +49,19 @@
     "emptyMessage": "Kornizat e kërkesave të rishikimit AI, vendimeve dhe shkeljeve të kufijve do të rrjedhin këtu.",
     "summaryEmpty": "Nuk u mor asnjë frame",
     "summaryCount": "Po shfaqen {{shown}} nga {{total}} në buffer"
+  },
+  "decisions": {
+    "title": "Vendimet e AI",
+    "subtitle": "Çfarë vendosën delegatët e AI në rishikimet CONSULT — auditim vetëm për lexim.",
+    "sectionTitle": "Vendimet e fundit",
+    "loading": "Duke ngarkuar vendimet e AI…",
+    "loadError": "Ngarkimi i vendimeve të AI dështoi: {{message}}",
+    "emptyTitle": "Ende nuk ka vendime AI",
+    "emptyMessage": "Rishikimet CONSULT të zgjidhura do të shfaqen këtu me vendimin dhe arsyetimin e delegatit.",
+    "columns": {
+      "rationale": "Arsyetimi",
+      "decidedAt": "Vendosur më"
+    },
+    "decisionPending": "Në pritje"
   }
 }

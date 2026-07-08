@@ -49,5 +49,19 @@
     "emptyMessage": "I frame di richiesta, decisione e violazione dei limiti delle revisioni AI verranno trasmessi qui.",
     "summaryEmpty": "Nessun frame ricevuto",
     "summaryCount": "Mostrati {{shown}} di {{total}} bufferizzati"
+  },
+  "decisions": {
+    "title": "Decisioni AI",
+    "subtitle": "Ciò che i delegati AI hanno deciso sulle revisioni CONSULT — audit di sola lettura.",
+    "sectionTitle": "Decisioni recenti",
+    "loading": "Caricamento decisioni AI…",
+    "loadError": "Caricamento delle decisioni AI non riuscito: {{message}}",
+    "emptyTitle": "Nessuna decisione AI ancora",
+    "emptyMessage": "Le revisioni CONSULT risolte appariranno qui con la decisione e la motivazione del delegato.",
+    "columns": {
+      "rationale": "Motivazione",
+      "decidedAt": "Deciso il"
+    },
+    "decisionPending": "In attesa"
   }
 }

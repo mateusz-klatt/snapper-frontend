@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
-import { listPendingAiReviews, submitAiReviewDecision } from './ai-reviews'
+import { listAiReviews, listPendingAiReviews, submitAiReviewDecision } from './ai-reviews'
 
 vi.mock('../utils', () => ({
   getCookie: vi.fn(() => 'test-csrf-token'),
@@ -163,6 +163,56 @@ describe('ai-reviews API methods', () => {
       }
 
       expect(body.payload?.['rationale']).toBeUndefined()
+    })
+    it('listAiReviews returns the validated decision list and hits the collection path', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({
+          items: [
+            {
+              review_public_id: 'rev-1',
+              strategy_public_id: 'strat-1',
+              user_public_id: 'user-1',
+              operator_public_id: 'op-1',
+              wallet_public_id: 'wal-1',
+              instrument_public_id: 'inst-1',
+              selected_delegate_public_id: 'del-1',
+              responding_delegate_public_id: 'del-1',
+              status: 'resolved_approved',
+              decision: 'approve',
+              rationale: 'ok',
+              resolution_mode: 'pick_one_primary',
+              dispatch_version: 0,
+              created_at: '2026-07-08T10:00:00Z',
+              resolved_at: '2026-07-08T10:00:30Z',
+              deadline: '2026-07-08T10:05:00Z',
+              signal_envelope: { side: 'buy' },
+            },
+          ],
+          count: 1,
+        }),
+      })
+      const result = await listAiReviews()
+
+      expect(result.count).toBe(1)
+      expect(result.items[0]?.decision).toBe('approve')
+      expect(mockFetch).toHaveBeenCalledWith(
+        expect.stringMatching(/\/api\/ai-reviews$/),
+        expect.any(Object)
+      )
+    })
+    it('listAiReviews appends the limit query param', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ items: [], count: 0 }),
+      })
+      await listAiReviews({ limit: 25 })
+      const calledUrl = mockFetch.mock.calls[0]?.[0] as string
+
+      expect(calledUrl).toContain('/api/ai-reviews?')
+      expect(calledUrl).toContain('limit=25')
     })
     it('submitAiReviewDecision throws APIError on 422 (invalid decision)', async () => {
       const jsonFn = async () => ({

@@ -49,5 +49,19 @@
     "emptyMessage": "AI রিভিউ অনুরোধ, সিদ্ধান্ত এবং ক্যাপ-লঙ্ঘন frame এখানে স্ট্রিম হবে।",
     "summaryEmpty": "কোনো frame পাওয়া যায়নি",
     "summaryCount": "বাফার করা {{total}}-এর মধ্যে {{shown}} দেখানো হচ্ছে"
+  },
+  "decisions": {
+    "title": "AI সিদ্ধান্ত",
+    "subtitle": "AI ডেলিগেটরা CONSULT রিভিউতে যা সিদ্ধান্ত নিয়েছে — শুধুমাত্র-পঠনযোগ্য অডিট।",
+    "sectionTitle": "সাম্প্রতিক সিদ্ধান্ত",
+    "loading": "AI সিদ্ধান্ত লোড হচ্ছে…",
+    "loadError": "AI সিদ্ধান্ত লোড করতে ব্যর্থ: {{message}}",
+    "emptyTitle": "এখনও কোনো AI সিদ্ধান্ত নেই",
+    "emptyMessage": "নিষ্পন্ন CONSULT রিভিউ এখানে ডেলিগেটের সিদ্ধান্ত ও যুক্তিসহ প্রদর্শিত হবে।",
+    "columns": {
+      "rationale": "যুক্তি",
+      "decidedAt": "সিদ্ধান্তের সময়"
+    },
+    "decisionPending": "অপেক্ষমাণ"
   }
 }

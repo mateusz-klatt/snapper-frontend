@@ -49,5 +49,19 @@
     "emptyMessage": "Frame permintaan semakan AI, keputusan dan pelanggaran had akan distrim di sini.",
     "summaryEmpty": "Tiada frame diterima",
     "summaryCount": "Memaparkan {{shown}} daripada {{total}} yang dibuffer"
+  },
+  "decisions": {
+    "title": "Keputusan AI",
+    "subtitle": "Apa yang diputuskan oleh delegasi AI dalam semakan CONSULT — audit baca sahaja.",
+    "sectionTitle": "Keputusan terkini",
+    "loading": "Memuatkan keputusan AI…",
+    "loadError": "Gagal memuatkan keputusan AI: {{message}}",
+    "emptyTitle": "Tiada keputusan AI lagi",
+    "emptyMessage": "Semakan CONSULT yang telah diselesaikan akan muncul di sini beserta keputusan dan rasional delegasi.",
+    "columns": {
+      "rationale": "Rasional",
+      "decidedAt": "Diputuskan pada"
+    },
+    "decisionPending": "Tertunda"
   }
 }

@@ -49,5 +49,19 @@
     "emptyMessage": "Les trames de requête, de décision et de violation de plafonds des revues IA apparaîtront ici en flux.",
     "summaryEmpty": "Aucune trame reçue",
     "summaryCount": "Affichage de {{shown}} sur {{total}} mises en buffer"
+  },
+  "decisions": {
+    "title": "Décisions AI",
+    "subtitle": "Ce que les délégués AI ont décidé sur les revues CONSULT — audit en lecture seule.",
+    "sectionTitle": "Décisions récentes",
+    "loading": "Chargement des décisions AI…",
+    "loadError": "Échec du chargement des décisions AI : {{message}}",
+    "emptyTitle": "Aucune décision AI pour le moment",
+    "emptyMessage": "Les revues CONSULT résolues apparaîtront ici avec la décision et la justification du délégué.",
+    "columns": {
+      "rationale": "Justification",
+      "decidedAt": "Décidé le"
+    },
+    "decisionPending": "En attente"
   }
 }

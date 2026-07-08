@@ -49,5 +49,19 @@
     "emptyMessage": "Rámce požiadaviek na kontrolu AI, rozhodnutí a porušení limitov sa budú streamovať sem.",
     "summaryEmpty": "Neboli prijaté žiadne rámce",
     "summaryCount": "Zobrazené {{shown}} z {{total}} vo vyrovnávacej pamäti"
+  },
+  "decisions": {
+    "title": "Rozhodnutia AI",
+    "subtitle": "O čom delegáti AI rozhodli pri kontrolách CONSULT — audit iba na čítanie.",
+    "sectionTitle": "Nedávne rozhodnutia",
+    "loading": "Načítavajú sa rozhodnutia AI…",
+    "loadError": "Rozhodnutia AI sa nepodarilo načítať: {{message}}",
+    "emptyTitle": "Zatiaľ žiadne rozhodnutia AI",
+    "emptyMessage": "Vyriešené kontroly CONSULT sa tu zobrazia s rozhodnutím a odôvodnením delegáta.",
+    "columns": {
+      "rationale": "Odôvodnenie",
+      "decidedAt": "Rozhodnuté"
+    },
+    "decisionPending": "Čaká"
   }
 }
