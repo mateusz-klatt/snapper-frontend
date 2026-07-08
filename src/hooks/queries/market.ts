@@ -10,6 +10,7 @@ import {
   getExchangeInstruments,
   getExchangeInstrumentsDetail,
   getRelatedInstruments,
+  getUnderlyings,
 } from '../../lib/api/market'
 import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
@@ -42,6 +43,19 @@ export const useExchanges = () => {
   return useQuery({
     queryKey: queryKeys.exchanges(asOf),
     queryFn: () => getExchanges(),
+    enabled: isAuthenticated,
+    staleTime: 5 * 60 * 1000,
+    throwOnError: false,
+  })
+}
+
+export const useUnderlyings = () => {
+  const { isAuthenticated } = useAuth()
+  const asOf = useAppStore(s => s.asOf)
+
+  return useQuery({
+    queryKey: queryKeys.underlyings(asOf),
+    queryFn: () => getUnderlyings(),
     enabled: isAuthenticated,
     staleTime: 5 * 60 * 1000,
     throwOnError: false,

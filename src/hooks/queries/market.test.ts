@@ -13,6 +13,7 @@ import {
   useExchangeInstrumentsDetail,
   useRelatedInstruments,
   useTimeTravelCandles,
+  useUnderlyings,
 } from './market'
 import { useAuth } from '../../stores/auth'
 import {
@@ -114,6 +115,28 @@ vi.mock('../../lib/api/market', () => ({
   ),
   getExchanges: vi.fn(() =>
     Promise.resolve(envelope('exchange_list', { payload: ['kraken', 'binance'], count: 2 }))
+  ),
+  getUnderlyings: vi.fn(() =>
+    Promise.resolve(
+      envelope('underlying_asset_list', {
+        payload: [
+          {
+            type: 'underlying_asset',
+            sequence_id: 0,
+            public_id: 'ua-btc',
+            timestamp: '2026-04-21T00:00:00Z',
+            session_id: 'sid',
+            ticker: 'BTC',
+            name: 'Bitcoin',
+            asset_class: 'crypto',
+            sector: null,
+            description: null,
+            instrument_count: 3,
+          },
+        ],
+        count: 1,
+      })
+    )
   ),
   getCachedCandles: vi.fn(() =>
     Promise.resolve(
@@ -298,6 +321,18 @@ describe('market queries', () => {
         expect(result.current.isLoading).toBe(false)
       })
       expect(result.current.data?.payload).toEqual(['kraken', 'binance'])
+    })
+  })
+  describe('useUnderlyings', () => {
+    it('returns the underlying asset list when authenticated', async () => {
+      const { result } = renderHook(() => useUnderlyings(), { wrapper: createWrapper() })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(result.current.data?.payload).toHaveLength(1)
+      expect(result.current.data?.payload[0]?.ticker).toBe('BTC')
+      expect(result.current.data?.payload[0]?.public_id).toBe('ua-btc')
     })
   })
   describe('useExchangeInstruments', () => {

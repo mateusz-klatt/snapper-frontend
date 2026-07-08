@@ -5,7 +5,8 @@ import { AdminFormModal } from '../components/AdminFormModal'
 import { createConflictMutationFeedback } from '../formFeedback'
 import { useCreateScopeGrant } from '../../../hooks/queries/scope-grants'
 import { useOperators, useWallets } from '../../../hooks/queries/wallets'
-import type { OperatorInfo, WalletInfo } from '../../../types/api'
+import { useUnderlyings } from '../../../hooks/queries/market'
+import type { OperatorInfo, UnderlyingAssetData, WalletInfo } from '../../../types/api'
 
 interface ScopeGrantFormProps {
   open: boolean
@@ -24,10 +25,16 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
 
   const { data: operatorsData } = useOperators()
   const { data: walletsData } = useWallets()
+  const { data: underlyingsData } = useUnderlyings()
   const createMutation = useCreateScopeGrant()
 
   const operators: OperatorInfo[] = operatorsData?.payload ?? []
   const wallets: WalletInfo[] = walletsData?.payload ?? []
+  const underlyings: UnderlyingAssetData[] = underlyingsData?.payload ?? []
+
+  const clearTargetError = () => {
+    if (errors.target) setErrors(prev => ({ ...prev, target: '' }))
+  }
 
   const resetForm = () => {
     setOperatorId('')
@@ -117,33 +124,46 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
         id='sg-scope-kind'
         label={t('scopeGrants.form.fields.scopeKind')}
         value={scopeKind}
-        onChange={val => setScopeKind(val as 'underlying' | 'instrument')}
+        onChange={val => {
+          setScopeKind(val as 'underlying' | 'instrument')
+          setTargetId('')
+          clearTargetError()
+        }}
         options={[
           { value: 'underlying', label: t('scopeGrants.form.scopeKinds.underlying') },
           { value: 'instrument', label: t('scopeGrants.form.scopeKinds.instrument') },
         ]}
       />
-      <AdminTextField
-        id='sg-target'
-        type='text'
-        label={
-          scopeKind === 'underlying'
-            ? t('scopeGrants.form.fields.underlyingPublicId')
-            : t('scopeGrants.form.fields.instrumentPublicId')
-        }
-        value={targetId}
-        onChange={value => {
-          setTargetId(value)
-
-          if (errors.target) setErrors(prev => ({ ...prev, target: '' }))
-        }}
-        placeholder={
-          scopeKind === 'underlying'
-            ? t('scopeGrants.form.fields.underlyingPlaceholder')
-            : t('scopeGrants.form.fields.instrumentPlaceholder')
-        }
-        error={errors.target}
-      />
+      {scopeKind === 'underlying' ? (
+        <AdminSelectField
+          id='sg-target'
+          label={t('scopeGrants.form.fields.underlyingPublicId')}
+          value={targetId}
+          onChange={value => {
+            setTargetId(value)
+            clearTargetError()
+          }}
+          options={underlyings.map(u => ({
+            value: u.public_id,
+            label: `${u.ticker} (${u.name})`,
+          }))}
+          placeholder={t('scopeGrants.form.fields.underlyingPlaceholder')}
+          error={errors.target}
+        />
+      ) : (
+        <AdminTextField
+          id='sg-target'
+          type='text'
+          label={t('scopeGrants.form.fields.instrumentPublicId')}
+          value={targetId}
+          onChange={value => {
+            setTargetId(value)
+            clearTargetError()
+          }}
+          placeholder={t('scopeGrants.form.fields.instrumentPlaceholder')}
+          error={errors.target}
+        />
+      )}
       <AdminTextField
         id='sg-note'
         type='text'

@@ -12,6 +12,7 @@ import {
   getExchangeInstruments,
   getExchangeInstrumentsDetail,
   getRelatedInstruments,
+  getUnderlyings,
 } from './market'
 
 vi.mock('../utils', () => ({
@@ -197,6 +198,44 @@ describe('market API methods', () => {
     expect(result.payload).toEqual(['kraken', 'binance'])
     expect(mockFetch).toHaveBeenCalledWith(
       expect.stringContaining('/api/exchanges'),
+      expect.any(Object)
+    )
+  })
+  it('getUnderlyings returns the underlying asset list', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'underlying_asset_list',
+        sequence_id: 0,
+        public_id: 'test-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'test-sid',
+        payload: [
+          {
+            type: 'underlying_asset',
+            sequence_id: 0,
+            public_id: 'ua-btc',
+            timestamp: '2024-01-01T00:00:00Z',
+            session_id: 'test-sid',
+            ticker: 'BTC',
+            name: 'Bitcoin',
+            asset_class: 'crypto',
+            sector: null,
+            description: null,
+            instrument_count: 3,
+          },
+        ],
+        count: 1,
+      }),
+    })
+    const result = await getUnderlyings()
+
+    expect(result.payload).toHaveLength(1)
+    expect(result.payload[0]?.public_id).toBe('ua-btc')
+    expect(result.payload[0]?.ticker).toBe('BTC')
+    expect(mockFetch).toHaveBeenCalledWith(
+      expect.stringContaining('/api/underlyings'),
       expect.any(Object)
     )
   })

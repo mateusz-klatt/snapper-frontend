@@ -10,6 +10,7 @@ import {
   InstrumentListResponseSchema,
   ListedCachedStatsResponseSchema,
   RelatedInstrumentsResponseSchema,
+  UnderlyingAssetListResponseSchema,
 } from '../schemas/api.generated.zod'
 import type {
   CacheHealthResponse,
@@ -20,6 +21,7 @@ import type {
   InstrumentListResponse,
   ListedCachedStatsResponse,
   RelatedInstrumentsResponse,
+  UnderlyingAssetListResponse,
   CandleData,
 } from '../../types/api'
 
@@ -81,6 +83,12 @@ export async function getExchanges(): Promise<ExchangeListResponse> {
   const data = await apiClient.getJSON('/api/exchanges')
 
   return validateResponse(data, ExchangeListResponseSchema, '/exchanges')
+}
+
+export async function getUnderlyings(): Promise<UnderlyingAssetListResponse> {
+  const data = await apiClient.getJSON('/api/underlyings')
+
+  return validateResponse(data, UnderlyingAssetListResponseSchema, '/underlyings')
 }
 
 export async function getExchangeInstruments(exchange: string): Promise<InstrumentListResponse> {

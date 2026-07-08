@@ -30,6 +30,7 @@ export const queryKeys = {
     asOf: string | null
   ) => ['candles', instrument, exchange, timeframe, limit, asOf] as const,
   exchanges: (asOf: string | null) => ['exchanges', asOf] as const,
+  underlyings: (asOf: string | null) => ['underlyings', asOf] as const,
   exchangeInstruments: (exchange: string, asOf: string | null) =>
     ['exchanges', exchange, 'instruments', asOf] as const,
   exchangeInstrumentsDetail: (exchange: string, asOf: string | null) =>
