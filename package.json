@@ -60,7 +60,7 @@
     "i18next": "^26.3.5",
     "i18next-resources-to-backend": "^1.2.1",
     "lightweight-charts": "^5.2.0",
-    "lucide-react": "^1.23.0",
+    "lucide-react": "^1.24.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-hot-toast": "^2.6.0",
