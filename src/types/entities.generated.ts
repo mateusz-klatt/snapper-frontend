@@ -15,6 +15,7 @@ export type {
 } from './ws.generated'
 
 type Exchange = 'kraken' | 'kraken_futures' | 'kraken_equities' | 'walutomat' | 'polygon'
+type Origin = 'live' | 'replay'
 type Exchange2 = 'paper' | 'kraken' | 'kraken_futures' | 'walutomat'
 type TradeSide = 'buy' | 'sell'
 type Mode = 'live' | 'paper'
@@ -172,6 +173,9 @@ export interface Candle {
   vwap?: number | null
   trades?: number | null
   complete?: boolean
+  origin?: Origin
+  replayWindowStart?: Date | null
+  replayWindowEnd?: Date | null
 }
 
 /**
@@ -627,6 +631,9 @@ export interface OrderRequest {
   pairedGroupSize?: number | null
   pairedGroupIndex?: number | null
   pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
+  origin?: Origin
+  replayWindowStart?: Date | null
+  replayWindowEnd?: Date | null
 }
 
 /**
@@ -888,6 +895,9 @@ export interface Signal {
   pairedGroupIndex?: number | null
   pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
   pairedGroupKey?: string | null
+  origin?: Origin
+  replayWindowStart?: Date | null
+  replayWindowEnd?: Date | null
 }
 
 /**
@@ -936,6 +946,9 @@ export interface Tick {
   last?: number | null
   isDelayed?: boolean
   isExtendedHours?: boolean | null
+  origin?: Origin
+  replayWindowStart?: Date | null
+  replayWindowEnd?: Date | null
 }
 
 /**
@@ -955,6 +968,9 @@ export interface Trade {
   volume: number
   side?: string | null
   tradeId?: string | null
+  origin?: Origin
+  replayWindowStart?: Date | null
+  replayWindowEnd?: Date | null
 }
 
 /**

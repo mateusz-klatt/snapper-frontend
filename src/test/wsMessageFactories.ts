@@ -163,6 +163,7 @@ export function createCandle(
     vwap: overrides.vwap ?? 101,
     trades: overrides.trades ?? 50,
     complete: overrides.complete ?? true,
+    origin: 'live' as const,
   }
 }
 
@@ -187,6 +188,7 @@ export function createTick(
     bid: overrides.bid ?? 49990,
     ask: overrides.ask ?? 50010,
     last: overrides.last ?? 50000,
+    origin: 'live' as const,
   }
 }
 
@@ -211,6 +213,7 @@ export function createTrade(
     price: overrides.price ?? 50000,
     volume: overrides.volume ?? 1.5,
     side: overrides.side ?? 'buy',
+    origin: 'live' as const,
   }
 }
 
@@ -239,6 +242,7 @@ export function createSignal(
     strategy_name: overrides.strategy_name ?? 'test-strategy',
     price: overrides.price ?? 50000,
     fired_at: overrides.fired_at ?? PROVENANCE.timestamp,
+    origin: 'live' as const,
   }
 }
 

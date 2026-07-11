@@ -114,6 +114,9 @@ export type Topic7 = string | null;
 export type Exchange = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
 export type Vwap = number | null;
 export type Trades = number | null;
+export type Origin = "live" | "replay";
+export type ReplayWindowStart = string | null;
+export type ReplayWindowEnd = string | null;
 export type Type7 = "caps_violation_after_ai_approve";
 export type Topic8 = string | null;
 export type Type8 = "continuous_candle";
@@ -263,6 +266,9 @@ export type PairedGroupId3 = string | null;
 export type PairedGroupSize3 = number | null;
 export type PairedGroupIndex3 = number | null;
 export type PairedGroupPolicy3 = ("simultaneous" | "sequential_handoff") | null;
+export type Origin1 = "live" | "replay";
+export type ReplayWindowStart1 = string | null;
+export type ReplayWindowEnd1 = string | null;
 export type Type27 = "position";
 export type Topic28 = string | null;
 export type Exchange8 = "paper" | "kraken" | "kraken_futures" | "walutomat";
@@ -332,6 +338,9 @@ export type PairedGroupSize4 = number | null;
 export type PairedGroupIndex4 = number | null;
 export type PairedGroupPolicy4 = ("simultaneous" | "sequential_handoff") | null;
 export type PairedGroupKey = string | null;
+export type Origin2 = "live" | "replay";
+export type ReplayWindowStart2 = string | null;
+export type ReplayWindowEnd2 = string | null;
 export type Type41 = "strategy_list_event";
 export type Topic42 = string | null;
 export type StrategyClasses = string[];
@@ -346,12 +355,18 @@ export type Bid = number | null;
 export type Ask = number | null;
 export type Last = number | null;
 export type IsExtendedHours = boolean | null;
+export type Origin3 = "live" | "replay";
+export type ReplayWindowStart3 = string | null;
+export type ReplayWindowEnd3 = string | null;
 export type Type44 = "trade";
 export type Topic45 = string | null;
 export type Exchange11 = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
 export type ExecutedAt = string | null;
 export type Side4 = string | null;
 export type TradeId1 = string | null;
+export type Origin4 = "live" | "replay";
+export type ReplayWindowStart4 = string | null;
+export type ReplayWindowEnd4 = string | null;
 export type Type45 = "underlying_asset";
 export type Topic46 = string | null;
 export type Sector = string | null;
@@ -551,6 +566,9 @@ export interface CandleData {
   vwap?: Vwap;
   trades?: Trades;
   complete?: boolean;
+  origin?: Origin;
+  replay_window_start?: ReplayWindowStart;
+  replay_window_end?: ReplayWindowEnd;
 }
 export interface CapsViolationAfterAiApproveData {
   type: Type7;
@@ -997,6 +1015,9 @@ export interface OrderRequestData {
   paired_group_size?: PairedGroupSize3;
   paired_group_index?: PairedGroupIndex3;
   paired_group_policy?: PairedGroupPolicy3;
+  origin?: Origin1;
+  replay_window_start?: ReplayWindowStart1;
+  replay_window_end?: ReplayWindowEnd1;
 }
 export interface PositionData {
   type: Type27;
@@ -1213,6 +1234,9 @@ export interface SignalData {
   paired_group_index?: PairedGroupIndex4;
   paired_group_policy?: PairedGroupPolicy4;
   paired_group_key?: PairedGroupKey;
+  origin?: Origin2;
+  replay_window_start?: ReplayWindowStart2;
+  replay_window_end?: ReplayWindowEnd2;
 }
 export interface StrategyListEventData {
   type: Type41;
@@ -1249,6 +1273,9 @@ export interface TickData {
   last?: Last;
   is_delayed?: boolean;
   is_extended_hours?: IsExtendedHours;
+  origin?: Origin3;
+  replay_window_start?: ReplayWindowStart3;
+  replay_window_end?: ReplayWindowEnd3;
 }
 export interface TradeData {
   type: Type44;
@@ -1264,6 +1291,9 @@ export interface TradeData {
   volume: number;
   side?: Side4;
   trade_id?: TradeId1;
+  origin?: Origin4;
+  replay_window_start?: ReplayWindowStart4;
+  replay_window_end?: ReplayWindowEnd4;
 }
 export interface UnderlyingAssetData {
   type: Type45;
