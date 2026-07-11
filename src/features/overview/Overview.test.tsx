@@ -393,6 +393,28 @@ describe('Overview', () => {
     renderWithMocks(<Overview />)
     expect(screen.getByText('SOL/USD')).toBeInTheDocument()
   })
+  it('displays strategy badge, price and strength on enriched signal rows', async () => {
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
+
+    vi.mocked(useLatestSignals).mockReturnValue({
+      isLoading: false,
+      data: [
+        {
+          publicId: 1,
+          instrument: 'BTC/USD',
+          side: 'buy',
+          strength: 0.62,
+          price: 64136.9,
+          strategyName: 'momentum-breakout',
+          firedAt: new Date('2024-01-01T12:00:00Z'),
+        },
+      ],
+    } as never)
+    renderWithMocks(<Overview />)
+    expect(screen.getByText('momentum-breakout')).toBeInTheDocument()
+    expect(screen.getByText('$64136.90')).toBeInTheDocument()
+    expect(screen.getByText('62%')).toBeInTheDocument()
+  })
   it('shows N/A when signal timestamp is undefined', async () => {
     const { useLatestSignals } = await import('../../hooks/queries/signals')
 

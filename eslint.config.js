@@ -84,6 +84,25 @@ export default [
       'no-console': ['error', { allow: ['warn', 'error', 'debug'] }],
       'no-debugger': 'error',
 
+      /**
+       * The dark-* palette is a SURFACE scale (in dark theme dark-300 and
+       * dark-700 are the same color), so text-dark-* renders invisible
+       * gray-on-gray text. Use text-muted-* / text-alpine-* for text.
+       */
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: 'Literal[value=/text-dark-/]',
+          message:
+            'text-dark-* is a surface color, not a text color (gray-on-gray in dark theme). Use text-muted-* or text-alpine-*.',
+        },
+        {
+          selector: 'TemplateElement[value.raw=/text-dark-/]',
+          message:
+            'text-dark-* is a surface color, not a text color (gray-on-gray in dark theme). Use text-muted-* or text-alpine-*.',
+        },
+      ],
+
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 
       'padding-line-between-statements': [

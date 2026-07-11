@@ -42,7 +42,7 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
             {t('errors.accessDenied.title')}
           </h1>
-          <p className='text-muted-600 dark:text-dark-400 mb-4'>
+          <p className='text-muted-600 dark:text-muted-600 mb-4'>
             {t('errors.accessDenied.message', { role: requiredRole })}
           </p>
           <p className='text-sm text-muted-500 dark:text-muted-500'>
@@ -61,7 +61,7 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
             {t('errors.insufficientPermissions.title')}
           </h1>
-          <p className='text-muted-600 dark:text-dark-400 mb-4'>
+          <p className='text-muted-600 dark:text-muted-600 mb-4'>
             {t('errors.insufficientPermissions.message')} <code>{requiredPermission}</code>
           </p>
           <p className='text-sm text-muted-500 dark:text-muted-500'>
@@ -80,7 +80,7 @@ const ProtectedRoute: React.FC<Readonly<ProtectedRouteProps>> = ({
           <h1 className='text-2xl font-bold text-alpine-900 dark:text-white mb-2'>
             {t('errors.resourceRestricted.title')}
           </h1>
-          <p className='text-muted-600 dark:text-dark-400 mb-4'>
+          <p className='text-muted-600 dark:text-muted-600 mb-4'>
             {t('errors.resourceRestricted.message')} <code>{resource}</code>
           </p>
           <p className='text-sm text-muted-500 dark:text-muted-500'>

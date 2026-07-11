@@ -184,7 +184,7 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
                   )
                 }
                 disabled={readOnly || update.isPending || scopeBlocked || !scopeComplete}
-                className='px-4 py-2 bg-info-600 text-white text-sm font-medium rounded-md hover:bg-info-700 disabled:opacity-50 disabled:cursor-not-allowed'
+                className='px-4 py-2 bg-info-600 text-info-50 text-sm font-medium rounded-md hover:bg-info-700 disabled:opacity-50 disabled:cursor-not-allowed'
               >
                 {update.isPending ? t('editScopeModal.saving') : t('editScopeModal.save')}
               </button>
