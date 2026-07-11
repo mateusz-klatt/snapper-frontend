@@ -137,15 +137,24 @@ const SignalRow: React.FC<Readonly<{ signal: Signal; index: number }>> = ({ sign
   return (
     <div
       key={signalKey(signal, index)}
-      className='flex items-center justify-between p-2 bg-dark-700 rounded-sm'
+      className='flex items-center justify-between gap-3 p-2 bg-dark-700 rounded-sm'
     >
-      <div className='flex items-center gap-3'>
+      <div className='flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1'>
         <StatusBadge status={sideStatus(normalizedSide)}>
           {normalizedSide.toUpperCase()}
         </StatusBadge>
         <span className='text-sm font-medium'>{signal.instrument}</span>
+        {signal.strategyName && (
+          <span className='max-w-40 truncate rounded-md bg-info-50 px-2 py-1 text-xs text-info-600'>
+            {signal.strategyName}
+          </span>
+        )}
+        {signal.price != null && (
+          <span className='font-mono text-xs text-alpine-900'>${signal.price.toFixed(2)}</span>
+        )}
+        <span className='text-xs text-muted-500'>{(signal.strength * 100).toFixed(0)}%</span>
       </div>
-      <div className='text-xs text-dark-300'>
+      <div className='shrink-0 text-xs text-muted-500'>
         {signal.firedAt
           ? formatTime(signal.firedAt, i18n.language as AppLocale)
           : t('signals.noTime')}
@@ -158,17 +167,17 @@ const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution 
   const { t, i18n } = useTranslation('overview')
 
   return (
-    <div className='flex items-center justify-between p-2 bg-dark-700 rounded-sm'>
-      <div className='flex items-center gap-3'>
+    <div className='flex items-center justify-between gap-3 p-2 bg-dark-700 rounded-sm'>
+      <div className='flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1'>
         <StatusBadge status={execution.side === 'sell' ? 'falling' : 'rising'}>
           {execution.side.toUpperCase()}
         </StatusBadge>
         <span className='text-sm font-medium'>{execution.instrument}</span>
-        <span className='text-xs text-dark-300'>
+        <span className='font-mono text-xs text-alpine-900'>
           {execution.size} @ ${execution.price}
         </span>
       </div>
-      <div className='text-xs text-dark-300'>
+      <div className='shrink-0 text-xs text-muted-500'>
         {execution.executedAt
           ? formatTime(execution.executedAt, i18n.language as AppLocale)
           : t('executions.noTime')}

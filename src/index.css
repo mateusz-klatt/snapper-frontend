@@ -413,9 +413,21 @@ html.dark {
   --color-warning-700: #efbc5a;
   --color-warning-800: #f7d896;
 
+  /*
+   * Info text stops brighten in dark mode (500-800) so text-info-600 /
+   * text-info-700 read on the dark info-50/100/200 surfaces. The
+   * chromatic mid-tones 300/400 and the tint stop 900 intentionally
+   * inherit the light values — like the gain and loss scales they are
+   * mid colors used as text/dots/tints on BOTH themes; inverting them would
+   * break every existing text-info-400 / bg-info-900/20 site.
+   */
   --color-info-50: #0d1117;
   --color-info-100: #131b22;
   --color-info-200: #1a2530;
+  --color-info-500: #6d7f90;
+  --color-info-600: #9aaab8;
+  --color-info-700: #c1ccd4;
+  --color-info-800: #dfe5ea;
 }
 
 /*
