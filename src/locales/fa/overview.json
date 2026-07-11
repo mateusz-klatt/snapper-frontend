@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "موقعیت‌ها",
     "instrumentsCount": "{{count}} ابزار",
-    "empty": "داده موقعیت در دسترس نیست"
+    "empty": "داده موقعیت در دسترس نیست",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "سیگنال‌های اخیر",

@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Suímh",
     "instrumentsCount": "Ionstraimí: {{count}}",
-    "empty": "Níl aon sonraí suímh ar fáil"
+    "empty": "Níl aon sonraí suímh ar fáil",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Comharthaí le Déanaí",

@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Positiot",
     "instrumentsCount": "Instrumentit: {{count}}",
-    "empty": "Positiodataa ei ole saatavilla"
+    "empty": "Positiodataa ei ole saatavilla",
+    "incompleteValuation": "Tiedot puutteelliset — osalta positioista puuttuu käyttökelpoinen mark- tai aloitushinta; summat sisältävät vain tunnetut osat"
   },
   "signals": {
     "title": "Viimeaikaiset signaalit",

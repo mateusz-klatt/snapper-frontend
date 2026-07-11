@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Stöður",
     "instrumentsCount": "{{count}} gerningar",
-    "empty": "Engin stöðugögn tiltæk"
+    "empty": "Engin stöðugögn tiltæk",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Nýleg merki",

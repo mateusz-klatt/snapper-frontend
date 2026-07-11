@@ -11,7 +11,9 @@
     "averageEntry": "平均开仓价",
     "unrealizedPnl": "未实现 P&L",
     "realizedPnl": "已实现 P&L",
-    "updated": "更新于 {{timestamp}}"
+    "updated": "更新于 {{timestamp}}",
+    "mark": "标记价格",
+    "noValue": "无"
   },
   "empty": {
     "title": "没有未平持仓",

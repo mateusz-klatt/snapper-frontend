@@ -651,9 +651,12 @@ export interface Position {
   exchange: Exchange2
   mode?: Mode
   quantity: number
-  averagePrice: number
-  unrealizedPnl: number
+  averagePrice?: number | null
+  unrealizedPnl?: number | null
   realizedPnl: number
+  markPrice?: number | null
+  markedAt?: Date | null
+  sourceVenueEventId?: number | null
   positionCyclePublicId?: string | null
   walletPublicId?: string
 }

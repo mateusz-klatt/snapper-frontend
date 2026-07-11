@@ -11,7 +11,9 @@
     "averageEntry": "평균 진입가",
     "unrealizedPnl": "미실현 P&L",
     "realizedPnl": "실현 P&L",
-    "updated": "{{timestamp}} 업데이트"
+    "updated": "{{timestamp}} 업데이트",
+    "mark": "마크 가격",
+    "noValue": "없음"
   },
   "empty": {
     "title": "오픈 포지션 없음",

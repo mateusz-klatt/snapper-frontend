@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Nafasi",
     "instrumentsCount": "Instrumenti {{count}}",
-    "empty": "Hakuna data ya nafasi inayopatikana"
+    "empty": "Hakuna data ya nafasi inayopatikana",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Ishara za Karibuni",

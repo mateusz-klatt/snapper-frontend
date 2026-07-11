@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Pozicije",
     "instrumentsCount": "{{count}} instrumenata",
-    "empty": "Nema dostupnih podataka o pozicijama"
+    "empty": "Nema dostupnih podataka o pozicijama",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Nedavni signali",

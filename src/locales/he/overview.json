@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "פוזיציות",
     "instrumentsCount": "{{count}} מכשירים",
-    "empty": "אין נתוני פוזיציות זמינים"
+    "empty": "אין נתוני פוזיציות זמינים",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "אותות אחרונים",

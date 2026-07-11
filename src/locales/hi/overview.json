@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "पोजीशन",
     "instrumentsCount": "{{count}} इंस्ट्रूमेंट",
-    "empty": "कोई पोजीशन डेटा उपलब्ध नहीं"
+    "empty": "कोई पोजीशन डेटा उपलब्ध नहीं",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "हाल के सिग्नल",

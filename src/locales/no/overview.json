@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Posisjoner",
     "instrumentsCount": "{{count}} instrumenter",
-    "empty": "Ingen posisjonsdata tilgjengelig"
+    "empty": "Ingen posisjonsdata tilgjengelig",
+    "incompleteValuation": "Ufullstendige data — noen posisjoner mangler brukbar mark- eller inngangspris; summene omfatter bare kjente komponenter"
   },
   "signals": {
     "title": "Siste signaler",

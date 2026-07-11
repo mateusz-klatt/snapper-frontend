@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "المراكز",
     "instrumentsCount": "{{count}} أدوات",
-    "empty": "لا توجد بيانات مراكز متاحة"
+    "empty": "لا توجد بيانات مراكز متاحة",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "الإشارات الأخيرة",

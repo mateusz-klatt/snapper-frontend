@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Pozice",
     "instrumentsCount": "Instrumentů: {{count}}",
-    "empty": "Nejsou dostupná data o pozicích"
+    "empty": "Nejsou dostupná data o pozicích",
+    "incompleteValuation": "Neúplná data — některým pozicím chybí použitelná mark cena nebo vstupní cena; součty zahrnují jen známé složky"
   },
   "signals": {
     "title": "Nedávné signály",

@@ -11,7 +11,9 @@
     "averageEntry": "Hyrja mes.",
     "unrealizedPnl": "P&L i parealizuar",
     "realizedPnl": "P&L i realizuar",
-    "updated": "Përditësuar {{timestamp}}"
+    "updated": "Përditësuar {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Nuk ka pozicione të hapura",

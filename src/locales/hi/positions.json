@@ -11,7 +11,9 @@
     "averageEntry": "औसत एंट्री",
     "unrealizedPnl": "अवास्तविक P&L",
     "realizedPnl": "वास्तविक P&L",
-    "updated": "अपडेट किया गया {{timestamp}}"
+    "updated": "अपडेट किया गया {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "कोई खुली पोजीशन नहीं",

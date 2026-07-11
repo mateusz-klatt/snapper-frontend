@@ -11,7 +11,9 @@
     "averageEntry": "Μέση είσοδος",
     "unrealizedPnl": "Μη πραγματοποιημένο P&L",
     "realizedPnl": "Πραγματοποιημένο P&L",
-    "updated": "Ενημερώθηκε {{timestamp}}"
+    "updated": "Ενημερώθηκε {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Δεν υπάρχουν ανοικτές θέσεις",

@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Pozicijos",
     "instrumentsCount": "{{count}} instrumentų",
-    "empty": "Pozicijų duomenų nėra"
+    "empty": "Pozicijų duomenų nėra",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Naujausi signalai",

@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Θέσεις",
     "instrumentsCount": "{{count}} μέσα",
-    "empty": "Δεν υπάρχουν διαθέσιμα δεδομένα θέσεων"
+    "empty": "Δεν υπάρχουν διαθέσιμα δεδομένα θέσεων",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Πρόσφατα σήματα",

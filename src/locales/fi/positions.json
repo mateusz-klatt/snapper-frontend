@@ -11,7 +11,9 @@
     "averageEntry": "Keskim. avaushinta",
     "unrealizedPnl": "Realisoitumaton P&L",
     "realizedPnl": "Realisoitunut P&L",
-    "updated": "Päivitetty {{timestamp}}"
+    "updated": "Päivitetty {{timestamp}}",
+    "mark": "Mark-hinta",
+    "noValue": "ei tietoa"
   },
   "empty": {
     "title": "Ei avoimia positioita",

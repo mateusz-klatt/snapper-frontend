@@ -280,9 +280,12 @@ export function positionFromAPI(api: PositionData): Position {
     exchange: api.exchange,
     mode: api.mode,
     quantity: api.quantity,
-    averagePrice: api.average_price,
-    unrealizedPnl: api.unrealized_pnl,
+    averagePrice: api.average_price ?? null,
+    unrealizedPnl: api.unrealized_pnl ?? null,
     realizedPnl: api.realized_pnl,
+    markPrice: api.mark_price ?? null,
+    markedAt: api.marked_at ? new Date(api.marked_at) : null,
+    sourceVenueEventId: api.source_venue_event_id ?? null,
     positionCyclePublicId: api.position_cycle_public_id ?? null,
   }
 }

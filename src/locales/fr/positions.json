@@ -11,7 +11,9 @@
     "averageEntry": "Prix moyen d'entrée",
     "unrealizedPnl": "P&L latent",
     "realizedPnl": "P&L réalisé",
-    "updated": "Mis à jour {{timestamp}}"
+    "updated": "Mis à jour {{timestamp}}",
+    "mark": "Prix de référence",
+    "noValue": "N/D"
   },
   "empty": {
     "title": "Aucune position ouverte",

@@ -11,7 +11,9 @@
     "averageEntry": "ပျမ်းမျှ ဝင်စျေး",
     "unrealizedPnl": "မသိမ်းရသေးသော P&L",
     "realizedPnl": "သိမ်းပြီးသော P&L",
-    "updated": "ပြင်ဆင်ချိန် {{timestamp}}"
+    "updated": "ပြင်ဆင်ချိန် {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "ဖွင့်ထားသော position မရှိပါ",

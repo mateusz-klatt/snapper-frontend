@@ -11,7 +11,9 @@
     "averageEntry": "Átlagos belépő",
     "unrealizedPnl": "Nem realizált P&L",
     "realizedPnl": "Realizált P&L",
-    "updated": "Frissítve: {{timestamp}}"
+    "updated": "Frissítve: {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Nincsenek nyitott pozíciók",

@@ -60,6 +60,58 @@ const makePosition = (overrides: Partial<Position> = {}): Position => ({
 })
 
 describe('Positions', () => {
+  it('renders honest N/A for null valuation and shows the mark with its timestamp', async () => {
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({
+      data: [
+        makePosition({
+          averagePrice: null,
+          unrealizedPnl: null,
+          markPrice: null,
+          markedAt: null,
+        }),
+        makePosition({
+          publicId: 'pos-2',
+          instrument: 'ETH-USD',
+          markPrice: 2050,
+          markedAt: new Date('2026-04-05T11:59:00Z'),
+        }),
+      ],
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Positions />)
+    expect(screen.getByTestId('position-unrealized-BTC-USD-kraken-live')).toHaveTextContent('N/A')
+    expect(screen.getByTestId('position-mark-BTC-USD-kraken-live')).toHaveTextContent('N/A')
+    expect(screen.queryByTestId('position-marked-at-BTC-USD-kraken-live')).not.toBeInTheDocument()
+    expect(screen.getByTestId('position-mark-ETH-USD-kraken-live')).toHaveTextContent('$2050.00')
+    expect(screen.getByTestId('position-marked-at-ETH-USD-kraken-live')).toHaveTextContent(/2026/)
+  })
+
+  it('never opens the bracket modal for a position without an entry price', async () => {
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({
+      data: [
+        makePosition({
+          averagePrice: null,
+          positionCyclePublicId: 'cycle-1',
+        }),
+      ],
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Positions />)
+    const bracketButton = screen.getByTestId('attach-bracket-BTC-USD-kraken-live')
+
+    expect(bracketButton).toHaveAttribute('aria-disabled', 'true')
+    fireEvent.click(bracketButton)
+    expect(screen.queryByText('Attach SL/TP Bracket')).not.toBeInTheDocument()
+    const trailButton = screen.getByTestId('attach-trailing-stop-BTC-USD-kraken-live')
+
+    expect(trailButton).toHaveAttribute('aria-disabled', 'true')
+    fireEvent.click(trailButton)
+    expect(screen.queryByText('Attach Trailing Stop')).not.toBeInTheDocument()
+  })
   beforeEach(() => {
     vi.clearAllMocks()
   })

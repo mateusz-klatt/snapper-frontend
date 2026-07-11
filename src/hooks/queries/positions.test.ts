@@ -9,6 +9,7 @@ import {
   useTrailingStopForCycle,
 } from './positions'
 import { useAuth } from '../../stores/auth'
+import { useAppStore } from '../../stores/app'
 import {
   createBracket,
   createTrailingStop,
@@ -61,9 +62,12 @@ vi.mock('../../lib/transforms', () => ({
     instrument: p.instrument ?? '',
     exchange: p.exchange ?? '',
     quantity: p.quantity ?? 0,
-    averagePrice: p.average_price ?? 0,
-    unrealizedPnl: p.unrealized_pnl ?? 0,
+    averagePrice: p.average_price ?? null,
+    unrealizedPnl: p.unrealized_pnl ?? null,
     realizedPnl: p.realized_pnl ?? 0,
+    markPrice: p.mark_price ?? null,
+    markedAt: p.marked_at ? new Date(p.marked_at) : null,
+    sourceVenueEventId: p.source_venue_event_id ?? null,
   })),
 }))
 
@@ -88,6 +92,129 @@ describe('positions queries', () => {
   })
 
   describe('usePositionsSummary', () => {
+    it('polls latest-state positions every five seconds', async () => {
+      vi.useFakeTimers()
+
+      try {
+        renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+        await act(async () => {
+          await vi.advanceTimersByTimeAsync(0)
+        })
+        expect(getPositions).toHaveBeenCalledTimes(1)
+        await act(async () => {
+          await vi.advanceTimersByTimeAsync(5_000)
+        })
+        expect(getPositions).toHaveBeenCalledTimes(2)
+      } finally {
+        vi.useRealTimers()
+      }
+    })
+    it('disables latest-state polling while time traveling', async () => {
+      vi.useFakeTimers()
+      act(() => {
+        useAppStore.setState({ asOf: '2026-01-01T00:00:00Z' })
+      })
+
+      try {
+        renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+        await act(async () => {
+          await vi.advanceTimersByTimeAsync(0)
+        })
+        expect(getPositions).toHaveBeenCalledTimes(1)
+        await act(async () => {
+          await vi.advanceTimersByTimeAsync(6_000)
+        })
+        expect(getPositions).toHaveBeenCalledTimes(1)
+      } finally {
+        vi.useRealTimers()
+        act(() => {
+          useAppStore.setState({ asOf: null })
+        })
+      }
+    })
+    it('flags incomplete valuation and sums only unrealized under its own total', async () => {
+      vi.mocked(getPositions).mockResolvedValueOnce(
+        envelope('position_list', {
+          payload: [
+            {
+              type: 'position' as const,
+              public_id: '1',
+              timestamp: new Date().toISOString(),
+              instrument: 'BTC/USD',
+              exchange: 'kraken' as const,
+              quantity: 2,
+              average_price: 100,
+              unrealized_pnl: 40,
+              realized_pnl: 10,
+              mark_price: 120,
+              marked_at: new Date().toISOString(),
+            },
+            {
+              type: 'position' as const,
+              public_id: '2',
+              timestamp: new Date().toISOString(),
+              instrument: 'ETH/USD',
+              exchange: 'kraken' as const,
+              quantity: -3,
+              average_price: null,
+              unrealized_pnl: null,
+              realized_pnl: 5,
+            },
+            {
+              type: 'position' as const,
+              public_id: '3',
+              timestamp: new Date().toISOString(),
+              instrument: 'SOL/USD',
+              exchange: 'kraken' as const,
+              quantity: 4,
+              average_price: null,
+              unrealized_pnl: null,
+              realized_pnl: 0,
+            },
+          ],
+          count: 3,
+        }) as never
+      )
+      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(result.current.data?.incompleteValuation).toBe(true)
+      expect(result.current.data?.totalUnrealizedPnl).toBe(40)
+      expect(result.current.data?.totalRealizedPnl).toBe(15)
+      expect(result.current.data?.longCost).toBe(200)
+      expect(result.current.data?.count).toBe(3)
+      expect(result.current.data?.shortCost).toBe(0)
+    })
+    it('reports complete valuation when every open position carries a mark', async () => {
+      vi.mocked(getPositions).mockResolvedValueOnce(
+        envelope('position_list', {
+          payload: [
+            {
+              type: 'position' as const,
+              public_id: '1',
+              timestamp: new Date().toISOString(),
+              instrument: 'BTC/USD',
+              exchange: 'kraken' as const,
+              quantity: 1,
+              average_price: 100,
+              unrealized_pnl: 20,
+              realized_pnl: 0,
+              mark_price: 120,
+              marked_at: new Date().toISOString(),
+            },
+          ],
+          count: 1,
+        }) as never
+      )
+      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false)
+      })
+      expect(result.current.data?.incompleteValuation).toBe(false)
+    })
     it('calculates summary for all-long positions', async () => {
       vi.mocked(getPositions).mockResolvedValueOnce(
         envelope('position_list', {

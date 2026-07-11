@@ -113,6 +113,8 @@ describe('Overview', () => {
       data: {
         totalValue: 10000,
         totalPnL: 500,
+        totalUnrealizedPnl: 500,
+        incompleteValuation: false,
         pnlPercent: 5,
         count: 3,
         longCost: 6000,
@@ -126,6 +128,27 @@ describe('Overview', () => {
     expect(screen.getByTestId('overview-net-delta')).toHaveTextContent('+$2,000.00')
   })
 
+  it('surfaces the incomplete-valuation indicator when a position lacks a mark', async () => {
+    const { usePositionsSummary } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositionsSummary).mockReturnValue({
+      isLoading: false,
+      data: {
+        totalValue: 10000,
+        totalPnL: 500,
+        totalUnrealizedPnl: 300,
+        incompleteValuation: true,
+        pnlPercent: 5,
+        count: 3,
+        longCost: 6000,
+        shortCost: 4000,
+      },
+    } as never)
+    renderWithMocks(<Overview />)
+    expect(screen.getByTestId('overview-incomplete-valuation')).toBeInTheDocument()
+    expect(screen.getByText('+$300.00')).toBeInTheDocument()
+    expect(screen.queryByText('+$500.00')).not.toBeInTheDocument()
+  })
   it('shows negative net delta as red when net short', async () => {
     const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
@@ -134,6 +157,8 @@ describe('Overview', () => {
       data: {
         totalValue: 8000,
         totalPnL: -500,
+        totalUnrealizedPnl: -500,
+        incompleteValuation: false,
         pnlPercent: -5.5,
         count: 2,
         longCost: 1000,
@@ -332,6 +357,8 @@ describe('Overview', () => {
       data: {
         totalValue: 10000,
         totalPnL: -500,
+        totalUnrealizedPnl: -500,
+        incompleteValuation: false,
         pnlPercent: -5,
         count: 2,
         longCost: 5000,

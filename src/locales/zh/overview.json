@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "持仓",
     "instrumentsCount": "{{count}} 个品种",
-    "empty": "没有可用持仓数据"
+    "empty": "没有可用持仓数据",
+    "incompleteValuation": "数据不完整 — 部分持仓缺少可用的标记价格或入场价格；总计仅汇总已知部分"
   },
   "signals": {
     "title": "最近信号",

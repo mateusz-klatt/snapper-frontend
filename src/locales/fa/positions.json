@@ -11,7 +11,9 @@
     "averageEntry": "میانگین ورود",
     "unrealizedPnl": "P&L تحقق‌نیافته",
     "realizedPnl": "P&L تحقق‌یافته",
-    "updated": "به‌روزرسانی شد {{timestamp}}"
+    "updated": "به‌روزرسانی شد {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "موقعیت باز وجود ندارد",

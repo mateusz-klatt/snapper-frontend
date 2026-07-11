@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Vị thế",
     "instrumentsCount": "{{count}} công cụ",
-    "empty": "Không có dữ liệu vị thế"
+    "empty": "Không có dữ liệu vị thế",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Tín hiệu gần đây",

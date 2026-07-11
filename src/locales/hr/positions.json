@@ -11,7 +11,9 @@
     "averageEntry": "Prosj. ulaz",
     "unrealizedPnl": "Nerealizirani P&L",
     "realizedPnl": "Realizirani P&L",
-    "updated": "Ažurirano {{timestamp}}"
+    "updated": "Ažurirano {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Nema otvorenih pozicija",

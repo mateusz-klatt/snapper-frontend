@@ -11,7 +11,9 @@
     "averageEntry": "Ø Einstieg",
     "unrealizedPnl": "Unrealisierter P&L",
     "realizedPnl": "Realisierter P&L",
-    "updated": "Aktualisiert {{timestamp}}"
+    "updated": "Aktualisiert {{timestamp}}",
+    "mark": "Markpreis",
+    "noValue": "k. A."
   },
   "empty": {
     "title": "Keine offenen Positionen",

@@ -11,7 +11,9 @@
     "averageEntry": "Intrare medie",
     "unrealizedPnl": "P&L nerealizat",
     "realizedPnl": "P&L realizat",
-    "updated": "Actualizat {{timestamp}}"
+    "updated": "Actualizat {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Nu există poziții deschise",

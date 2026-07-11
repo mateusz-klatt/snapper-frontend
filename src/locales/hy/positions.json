@@ -11,7 +11,9 @@
     "averageEntry": "Միջ. մուտք",
     "unrealizedPnl": "Չիրացված P&L",
     "realizedPnl": "Իրացված P&L",
-    "updated": "Թարմացվել է {{timestamp}}"
+    "updated": "Թարմացվել է {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Բաց դիրքեր չկան",

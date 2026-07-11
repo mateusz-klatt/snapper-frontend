@@ -11,7 +11,9 @@
     "averageEntry": "Giá vào TB",
     "unrealizedPnl": "P&L chưa thực hiện",
     "realizedPnl": "P&L đã thực hiện",
-    "updated": "Cập nhật {{timestamp}}"
+    "updated": "Cập nhật {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Không có vị thế đang mở",

@@ -11,7 +11,9 @@
     "averageEntry": "平均開倉價",
     "unrealizedPnl": "未實現 P&L",
     "realizedPnl": "已實現 P&L",
-    "updated": "更新於 {{timestamp}}"
+    "updated": "更新於 {{timestamp}}",
+    "mark": "標記價格",
+    "noValue": "無"
   },
   "empty": {
     "title": "沒有未平倉位",
