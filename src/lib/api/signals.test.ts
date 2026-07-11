@@ -62,6 +62,7 @@ describe('signals API methods', () => {
             strategy_name: 'momentum',
             price: 50000,
             wallet_public_id: 'wallet-1',
+            origin: 'live',
           },
         ],
         count: 1,

@@ -49,6 +49,7 @@ const makeCandleData = (overrides: Partial<CandleData> = {}): CandleData => ({
   close: 1.5,
   volume: 100,
   complete: true,
+  origin: 'live',
   ...overrides,
 })
 

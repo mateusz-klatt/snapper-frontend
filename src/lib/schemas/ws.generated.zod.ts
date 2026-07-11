@@ -118,6 +118,9 @@ export const CandleDataSchema = z
     vwap: z.number().nullable().optional(),
     trades: z.number().int().nullable().optional(),
     complete: z.boolean(),
+    origin: z.enum(['live', 'replay']),
+    replay_window_start: z.iso.datetime().nullable().optional(),
+    replay_window_end: z.iso.datetime().nullable().optional(),
   })
   .strict()
 
@@ -547,6 +550,9 @@ export const OrderRequestDataSchema = z
     paired_group_size: z.number().int().nullable().optional(),
     paired_group_index: z.number().int().nullable().optional(),
     paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
+    origin: z.enum(['live', 'replay']),
+    replay_window_start: z.iso.datetime().nullable().optional(),
+    replay_window_end: z.iso.datetime().nullable().optional(),
   })
   .strict()
 
@@ -793,6 +799,9 @@ export const SignalDataSchema = z
     paired_group_index: z.number().int().nullable().optional(),
     paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
     paired_group_key: z.string().nullable().optional(),
+    origin: z.enum(['live', 'replay']),
+    replay_window_start: z.iso.datetime().nullable().optional(),
+    replay_window_end: z.iso.datetime().nullable().optional(),
   })
   .strict()
 
@@ -838,6 +847,9 @@ export const TickDataSchema = z
     last: z.number().nullable().optional(),
     is_delayed: z.boolean(),
     is_extended_hours: z.boolean().nullable().optional(),
+    origin: z.enum(['live', 'replay']),
+    replay_window_start: z.iso.datetime().nullable().optional(),
+    replay_window_end: z.iso.datetime().nullable().optional(),
   })
   .strict()
 
@@ -856,6 +868,9 @@ export const TradeDataSchema = z
     volume: z.number(),
     side: z.string().nullable().optional(),
     trade_id: z.string().nullable().optional(),
+    origin: z.enum(['live', 'replay']),
+    replay_window_start: z.iso.datetime().nullable().optional(),
+    replay_window_end: z.iso.datetime().nullable().optional(),
   })
   .strict()
 

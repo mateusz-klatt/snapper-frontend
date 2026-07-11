@@ -215,6 +215,9 @@ const _CandleDataRawSchema = z
     vwap: z.number().nullable().optional(),
     trades: z.number().int().nullable().optional(),
     complete: z.boolean(),
+    origin: z.enum(['live', 'replay']),
+    replay_window_start: z.iso.datetime().nullable().optional(),
+    replay_window_end: z.iso.datetime().nullable().optional(),
   })
   .strict()
 
@@ -1345,6 +1348,9 @@ const _SignalDataRawSchema = z
     paired_group_index: z.number().int().nullable().optional(),
     paired_group_policy: z.enum(['simultaneous', 'sequential_handoff']).nullable().optional(),
     paired_group_key: z.string().nullable().optional(),
+    origin: z.enum(['live', 'replay']),
+    replay_window_start: z.iso.datetime().nullable().optional(),
+    replay_window_end: z.iso.datetime().nullable().optional(),
   })
   .strict()
 

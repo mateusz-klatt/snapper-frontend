@@ -2236,6 +2236,9 @@ export type Components = {
             vwap?: number | null | undefined;
             trades?: number | null | undefined;
             complete: boolean;
+            origin: "live" | "replay";
+            replay_window_start?: string | null | undefined;
+            replay_window_end?: string | null | undefined;
         };
         CandleListResponse: {
             type: "candle_list";
@@ -3803,6 +3806,9 @@ export type Components = {
             paired_group_index?: number | null | undefined;
             paired_group_policy?: ("simultaneous" | "sequential_handoff") | null | undefined;
             paired_group_key?: string | null | undefined;
+            origin: "live" | "replay";
+            replay_window_start?: string | null | undefined;
+            replay_window_end?: string | null | undefined;
         };
         SignalDiffEntry: {
             instrument: string;

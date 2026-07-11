@@ -70,6 +70,7 @@ const candleRow = (openAt: string, close = 100): CandleData => ({
   close,
   volume: 10,
   complete: true,
+  origin: 'live',
 })
 
 const liveWc = (openAt: string, close = 100) => ({
