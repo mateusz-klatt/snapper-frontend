@@ -11,7 +11,9 @@
     "averageEntry": "Priemerný vstup",
     "unrealizedPnl": "Nerealizovaný P&L",
     "realizedPnl": "Realizovaný P&L",
-    "updated": "Aktualizované {{timestamp}}"
+    "updated": "Aktualizované {{timestamp}}",
+    "mark": "Mark cena",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Žiadne otvorené pozície",

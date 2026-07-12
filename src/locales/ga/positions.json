@@ -11,7 +11,9 @@
     "averageEntry": "Meániontráil",
     "unrealizedPnl": "P&L neamhréadaithe",
     "realizedPnl": "P&L réadaithe",
-    "updated": "Nuashonraithe {{timestamp}}"
+    "updated": "Nuashonraithe {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Níl aon suíomh oscailte",

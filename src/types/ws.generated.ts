@@ -273,6 +273,11 @@ export type Type27 = "position";
 export type Topic28 = string | null;
 export type Exchange8 = "paper" | "kraken" | "kraken_futures" | "walutomat";
 export type Mode3 = "live" | "paper";
+export type AveragePrice1 = number | null;
+export type UnrealizedPnl = number | null;
+export type MarkPrice = number | null;
+export type MarkedAt = string | null;
+export type SourceVenueEventId = number | null;
 export type PositionCyclePublicId1 = string | null;
 export type Type28 = "process_command_ack";
 export type Topic29 = string | null;
@@ -1031,9 +1036,12 @@ export interface PositionData {
   exchange: Exchange8;
   mode?: Mode3;
   quantity: number;
-  average_price: number;
-  unrealized_pnl: number;
+  average_price?: AveragePrice1;
+  unrealized_pnl?: UnrealizedPnl;
   realized_pnl: number;
+  mark_price?: MarkPrice;
+  marked_at?: MarkedAt;
+  source_venue_event_id?: SourceVenueEventId;
   position_cycle_public_id?: PositionCyclePublicId1;
   wallet_public_id?: string;
 }

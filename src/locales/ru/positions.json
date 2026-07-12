@@ -11,7 +11,9 @@
     "averageEntry": "Средняя цена входа",
     "unrealizedPnl": "Нереализованный P&L",
     "realizedPnl": "Реализованный P&L",
-    "updated": "Обновлено {{timestamp}}"
+    "updated": "Обновлено {{timestamp}}",
+    "mark": "Цена марк",
+    "noValue": "н/д"
   },
   "empty": {
     "title": "Открытых позиций нет",

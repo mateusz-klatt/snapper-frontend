@@ -11,7 +11,9 @@
     "averageEntry": "平均建値",
     "unrealizedPnl": "未実現P&L",
     "realizedPnl": "実現P&L",
-    "updated": "更新 {{timestamp}}"
+    "updated": "更新 {{timestamp}}",
+    "mark": "マーク価格",
+    "noValue": "なし"
   },
   "empty": {
     "title": "オープンポジションはありません",

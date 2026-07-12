@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Poziții",
     "instrumentsCount": "{{count}} instrumente",
-    "empty": "Nu există date disponibile despre poziții"
+    "empty": "Nu există date disponibile despre poziții",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Semnale recente",

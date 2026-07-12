@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Posisi",
     "instrumentsCount": "{{count}} instrumen",
-    "empty": "Data posisi tidak tersedia"
+    "empty": "Data posisi tidak tersedia",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Sinyal Terbaru",

@@ -11,7 +11,9 @@
     "averageEntry": "Gem. instap",
     "unrealizedPnl": "Niet-gerealiseerde P&L",
     "realizedPnl": "Gerealiseerde P&L",
-    "updated": "Bijgewerkt {{timestamp}}"
+    "updated": "Bijgewerkt {{timestamp}}",
+    "mark": "Markprijs",
+    "noValue": "n.v.t."
   },
   "empty": {
     "title": "Geen open posities",

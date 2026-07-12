@@ -11,7 +11,9 @@
     "averageEntry": "Ort. Giriş",
     "unrealizedPnl": "Gerçekleşmemiş P&L",
     "realizedPnl": "Gerçekleşmiş P&L",
-    "updated": "Güncellendi {{timestamp}}"
+    "updated": "Güncellendi {{timestamp}}",
+    "mark": "Mark fiyatı",
+    "noValue": "yok"
   },
   "empty": {
     "title": "Açık pozisyon yok",

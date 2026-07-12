@@ -11,7 +11,9 @@
     "averageEntry": "Meðalinnkoma",
     "unrealizedPnl": "Óinnleyst P&L",
     "realizedPnl": "Innleyst P&L",
-    "updated": "Uppfært {{timestamp}}"
+    "updated": "Uppfært {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Engar opnar stöður",

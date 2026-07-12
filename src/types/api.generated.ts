@@ -3291,9 +3291,12 @@ export type Components = {
             exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
             mode: "live" | "paper";
             quantity: number;
-            average_price: number;
-            unrealized_pnl: number;
+            average_price?: number | null | undefined;
+            unrealized_pnl?: number | null | undefined;
             realized_pnl: number;
+            mark_price?: number | null | undefined;
+            marked_at?: string | null | undefined;
+            source_venue_event_id?: number | null | undefined;
             position_cycle_public_id?: string | null | undefined;
             wallet_public_id: string;
         };

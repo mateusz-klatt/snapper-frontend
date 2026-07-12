@@ -35,16 +35,19 @@ const getSideBadgeClass = (side: PositionSide): string => {
   }
 }
 
-const getPnlClass = (value: number): string => {
+const getPnlClass = (value: number | null | undefined): string => {
+  if (value == null) return 'text-muted-400'
   if (value > 0) return 'text-rising-400'
   if (value < 0) return 'text-falling-400'
 
   return 'text-muted-400'
 }
 
-const formatPrice = (value: number): string => `$${value.toFixed(2)}`
+const formatPrice = (value: number | null | undefined, noValue: string): string =>
+  value == null ? noValue : `$${value.toFixed(2)}`
 
-const formatPnl = (value: number): string => {
+const formatPnl = (value: number | null | undefined, noValue: string): string => {
+  if (value == null) return noValue
   const abs = Math.abs(value).toFixed(2)
 
   if (value > 0) return `+$${abs}`
@@ -94,9 +97,11 @@ const PositionRow: React.FC<PositionRowProps> = ({
   const { t, i18n } = useTranslation('positions')
   const side = getPositionSide(position.quantity)
   const absQuantity = Math.abs(position.quantity)
+  const noValue = t('row.noValue')
   const suffix = positionIdSuffix(position)
   const hasCycle = !!position.positionCyclePublicId
   const canAttach = hasCycle && side !== 'FLAT' && !isTimeTraveling
+  const attachable = position.averagePrice != null
 
   return (
     <div
@@ -123,7 +128,11 @@ const PositionRow: React.FC<PositionRowProps> = ({
             <button
               type='button'
               onClick={() => onAttachBracket(position)}
-              className='flex items-center gap-1 rounded-lg border border-brand-500 px-2 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20'
+              aria-disabled={!attachable}
+              className={clsx(
+                'flex items-center gap-1 rounded-lg border border-brand-500 px-2 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20',
+                !attachable && 'cursor-not-allowed opacity-40'
+              )}
               data-testid={`attach-bracket-${suffix}`}
             >
               <Shield size={12} />
@@ -134,7 +143,11 @@ const PositionRow: React.FC<PositionRowProps> = ({
             <button
               type='button'
               onClick={() => onAttachTrailingStop(position)}
-              className='flex items-center gap-1 rounded-lg border border-brand-500 px-2 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20'
+              aria-disabled={!attachable}
+              className={clsx(
+                'flex items-center gap-1 rounded-lg border border-brand-500 px-2 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20',
+                !attachable && 'cursor-not-allowed opacity-40'
+              )}
               data-testid={`attach-trailing-stop-${suffix}`}
             >
               <TrendingDown size={12} />
@@ -143,14 +156,27 @@ const PositionRow: React.FC<PositionRowProps> = ({
           )}
         </div>
       </div>
-      <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-4'>
+      <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-5'>
         <div>
           <div className='text-muted-500'>{t('row.quantity')}</div>
           <div className='font-mono text-alpine-900'>{absQuantity.toFixed(4)}</div>
         </div>
         <div>
           <div className='text-muted-500'>{t('row.averageEntry')}</div>
-          <div className='font-mono text-alpine-900'>{formatPrice(position.averagePrice)}</div>
+          <div className='font-mono text-alpine-900'>
+            {formatPrice(position.averagePrice, noValue)}
+          </div>
+        </div>
+        <div>
+          <div className='text-muted-500'>{t('row.mark')}</div>
+          <div className='font-mono text-alpine-900' data-testid={`position-mark-${suffix}`}>
+            {formatPrice(position.markPrice, noValue)}
+          </div>
+          {position.markedAt && (
+            <div className='text-xs text-muted-500' data-testid={`position-marked-at-${suffix}`}>
+              {formatDateTime(position.markedAt, i18n.language as AppLocale)}
+            </div>
+          )}
         </div>
         <div>
           <div className='text-muted-500'>{t('row.unrealizedPnl')}</div>
@@ -158,7 +184,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
             className={clsx('font-mono', getPnlClass(position.unrealizedPnl))}
             data-testid={`position-unrealized-${suffix}`}
           >
-            {formatPnl(position.unrealizedPnl)}
+            {formatPnl(position.unrealizedPnl, noValue)}
           </div>
         </div>
         <div>
@@ -167,7 +193,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
             className={clsx('font-mono', getPnlClass(position.realizedPnl))}
             data-testid={`position-realized-${suffix}`}
           >
-            {formatPnl(position.realizedPnl)}
+            {formatPnl(position.realizedPnl, noValue)}
           </div>
         </div>
       </div>
@@ -204,7 +230,7 @@ export const Positions: React.FC = () => {
 
   return (
     <div className='space-y-6'>
-      {bracketTarget?.positionCyclePublicId && (
+      {bracketTarget?.positionCyclePublicId && bracketTarget.averagePrice != null && (
         <AttachBracketModal
           open={true}
           onClose={() => setBracketTarget(null)}
@@ -214,7 +240,7 @@ export const Positions: React.FC = () => {
           averagePrice={bracketTarget.averagePrice}
         />
       )}
-      {trailingStopTarget?.positionCyclePublicId && (
+      {trailingStopTarget?.positionCyclePublicId && trailingStopTarget.averagePrice != null && (
         <AttachTrailingStopModal
           open={true}
           onClose={() => setTrailingStopTarget(null)}

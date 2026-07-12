@@ -11,7 +11,9 @@
     "averageEntry": "Prezzo medio di ingresso",
     "unrealizedPnl": "P&L non realizzato",
     "realizedPnl": "P&L realizzato",
-    "updated": "Aggiornato {{timestamp}}"
+    "updated": "Aggiornato {{timestamp}}",
+    "mark": "Prezzo mark",
+    "noValue": "N/D"
   },
   "empty": {
     "title": "Nessuna posizione aperta",

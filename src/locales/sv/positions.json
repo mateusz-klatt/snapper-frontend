@@ -11,7 +11,9 @@
     "averageEntry": "Snittinträde",
     "unrealizedPnl": "Orealiserad P&L",
     "realizedPnl": "Realiserad P&L",
-    "updated": "Uppdaterad {{timestamp}}"
+    "updated": "Uppdaterad {{timestamp}}",
+    "mark": "Markpris",
+    "noValue": "saknas"
   },
   "empty": {
     "title": "Inga öppna positioner",

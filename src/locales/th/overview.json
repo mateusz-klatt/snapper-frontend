@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "สถานะ",
     "instrumentsCount": "{{count}} instruments",
-    "empty": "ไม่มีข้อมูลสถานะ"
+    "empty": "ไม่มีข้อมูลสถานะ",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "สัญญาณล่าสุด",

@@ -11,7 +11,9 @@
     "averageEntry": "Purata Entry",
     "unrealizedPnl": "P&L Belum Direalisasi",
     "realizedPnl": "P&L Direalisasi",
-    "updated": "Dikemas kini {{timestamp}}"
+    "updated": "Dikemas kini {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Tiada posisi terbuka",

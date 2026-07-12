@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Pozíciók",
     "instrumentsCount": "Instrumentumok: {{count}}",
-    "empty": "Nem érhetők el pozícióadatok"
+    "empty": "Nem érhetők el pozícióadatok",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Legutóbbi jelzések",

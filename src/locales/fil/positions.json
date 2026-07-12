@@ -11,7 +11,9 @@
     "averageEntry": "Avg entry",
     "unrealizedPnl": "Unrealized P&L",
     "realizedPnl": "Realized P&L",
-    "updated": "Na-update {{timestamp}}"
+    "updated": "Na-update {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "Walang open positions",

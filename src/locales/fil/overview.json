@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Mga position",
     "instrumentsCount": "{{count}} instrument",
-    "empty": "Walang positions data available"
+    "empty": "Walang positions data available",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Kamakailang signals",

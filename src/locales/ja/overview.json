@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "ポジション",
     "instrumentsCount": "{{count}}銘柄",
-    "empty": "ポジションデータはありません"
+    "empty": "ポジションデータはありません",
+    "incompleteValuation": "データが不完全です — 一部のポジションに有効なマーク価格または取得価格がありません。合計は既知の要素のみを集計します"
   },
   "signals": {
     "title": "最近のシグナル",

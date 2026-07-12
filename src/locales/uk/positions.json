@@ -11,7 +11,9 @@
     "averageEntry": "Сер. вхід",
     "unrealizedPnl": "Нереалізований P&L",
     "realizedPnl": "Реалізований P&L",
-    "updated": "Оновлено {{timestamp}}"
+    "updated": "Оновлено {{timestamp}}",
+    "mark": "Ціна марк",
+    "noValue": "н/д"
   },
   "empty": {
     "title": "Немає відкритих позицій",

@@ -11,7 +11,9 @@
     "averageEntry": "গড় এন্ট্রি",
     "unrealizedPnl": "অবাস্তবায়িত P&L",
     "realizedPnl": "বাস্তবায়িত P&L",
-    "updated": "{{timestamp}} আপডেট হয়েছে"
+    "updated": "{{timestamp}} আপডেট হয়েছে",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "কোনো খোলা পজিশন নেই",

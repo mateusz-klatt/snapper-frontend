@@ -50,20 +50,22 @@ const ProcessStatusRow: React.FC<
 
 interface PortfolioContentProps {
   readonly totalValue: number
-  readonly totalPnL: number
+  readonly totalUnrealizedPnl: number
   readonly pnlPercent: number
   readonly count: number
   readonly longCost: number
   readonly shortCost: number
+  readonly incompleteValuation: boolean
 }
 
 const PortfolioContent: React.FC<PortfolioContentProps> = ({
   totalValue,
-  totalPnL,
+  totalUnrealizedPnl,
   pnlPercent,
   count,
   longCost,
   shortCost,
+  incompleteValuation,
 }) => {
   const { t } = useTranslation('overview')
 
@@ -108,8 +110,8 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
       </div>
       <div className='flex items-center justify-between'>
         <span className='text-sm font-medium'>{t('portfolio.unrealizedPnl')}</span>
-        <span className={`font-mono text-right ${pnlColorClass(totalPnL)}`}>
-          {pnlSign(totalPnL)}${formatCurrency(totalPnL)}
+        <span className={`font-mono text-right ${pnlColorClass(totalUnrealizedPnl)}`}>
+          {pnlSign(totalUnrealizedPnl)}${formatCurrency(totalUnrealizedPnl)}
         </span>
       </div>
       <div className='flex items-center justify-between'>
@@ -123,6 +125,11 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
         <span className='text-sm font-medium'>{t('portfolio.positions')}</span>
         <span className='font-mono text-right'>{t('portfolio.instrumentsCount', { count })}</span>
       </div>
+      {incompleteValuation && (
+        <div className='text-xs text-warning-600' data-testid='overview-incomplete-valuation'>
+          {t('portfolio.incompleteValuation')}
+        </div>
+      )}
     </div>
   )
 }

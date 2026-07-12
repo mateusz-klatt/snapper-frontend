@@ -477,6 +477,55 @@ describe('Signal Transformers', () => {
   })
 })
 describe('Position Transformers', () => {
+  it('carries mark provenance and honest NULL valuation through positionFromAPI', () => {
+    const marked: PositionData = {
+      type: 'position',
+      sequence_id: 0,
+      public_id: 'pos-uuid-3',
+      timestamp: '2026-01-15T10:30:00Z',
+      session_id: 'test-sid',
+      instrument: 'BTC/USD',
+      instrument_public_id: 'inst-uuid-3',
+      exchange: 'kraken',
+      mode: 'paper',
+      quantity: 1.5,
+      average_price: 48000,
+      unrealized_pnl: 3000,
+      realized_pnl: 500,
+      mark_price: 50100,
+      marked_at: '2026-01-15T10:29:00Z',
+      source_venue_event_id: 42,
+      wallet_public_id: 'wal-uuid-1',
+    }
+    const withMark = positionFromAPI(marked)
+
+    expect(withMark.markPrice).toBe(50100)
+    expect(withMark.markedAt).toEqual(new Date('2026-01-15T10:29:00Z'))
+    expect(withMark.sourceVenueEventId).toBe(42)
+    const bare: PositionData = {
+      type: 'position',
+      sequence_id: 0,
+      public_id: 'pos-uuid-4',
+      timestamp: '2026-01-15T10:30:00Z',
+      session_id: 'test-sid',
+      instrument: 'BTC/USD',
+      instrument_public_id: 'inst-uuid-4',
+      exchange: 'kraken',
+      mode: 'paper',
+      quantity: 0,
+      average_price: null,
+      unrealized_pnl: null,
+      realized_pnl: 500,
+      wallet_public_id: 'wal-uuid-1',
+    }
+    const honest = positionFromAPI(bare)
+
+    expect(honest.averagePrice).toBeNull()
+    expect(honest.unrealizedPnl).toBeNull()
+    expect(honest.markPrice).toBeNull()
+    expect(honest.markedAt).toBeNull()
+    expect(honest.sourceVenueEventId).toBeNull()
+  })
   it('transforms REST API position to canonical entity', () => {
     const apiPosition: PositionData = {
       type: 'position',

@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Դիրքեր",
     "instrumentsCount": "{{count}} գործիք",
-    "empty": "Դիրքերի տվյալներ հասանելի չեն"
+    "empty": "Դիրքերի տվյալներ հասանելի չեն",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Վերջին ազդանշաններ",

@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Pozicione",
     "instrumentsCount": "{{count}} instrumente",
-    "empty": "Nuk ka të dhëna pozicionesh të disponueshme"
+    "empty": "Nuk ka të dhëna pozicionesh të disponueshme",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Sinjalet e fundit",

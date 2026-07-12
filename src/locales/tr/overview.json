@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Pozisyonlar",
     "instrumentsCount": "{{count}} enstrüman",
-    "empty": "Pozisyon verisi yok"
+    "empty": "Pozisyon verisi yok",
+    "incompleteValuation": "Veriler eksik — bazı pozisyonların kullanılabilir mark veya giriş fiyatı yok; toplamlar yalnızca bilinen bileşenleri içerir"
   },
   "signals": {
     "title": "Son Sinyaller",

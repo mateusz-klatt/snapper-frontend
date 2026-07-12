@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Posities",
     "instrumentsCount": "{{count}} instrumenten",
-    "empty": "Geen positiedata beschikbaar"
+    "empty": "Geen positiedata beschikbaar",
+    "incompleteValuation": "Gegevens onvolledig — sommige posities missen een bruikbare mark- of instapprijs; totalen tellen alleen bekende componenten"
   },
   "signals": {
     "title": "Recente signalen",

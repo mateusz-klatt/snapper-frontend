@@ -11,7 +11,9 @@
     "averageEntry": "Średnia cena wejścia",
     "unrealizedPnl": "Niezrealizowany P&L",
     "realizedPnl": "Zrealizowany P&L",
-    "updated": "Zaktualizowano {{timestamp}}"
+    "updated": "Zaktualizowano {{timestamp}}",
+    "mark": "Cena mark",
+    "noValue": "brak"
   },
   "empty": {
     "title": "Brak otwartych pozycji",

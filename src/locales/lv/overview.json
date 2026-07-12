@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "Pozīcijas",
     "instrumentsCount": "{{count}} instrumenti",
-    "empty": "Pozīciju dati nav pieejami"
+    "empty": "Pozīciju dati nav pieejami",
+    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
   },
   "signals": {
     "title": "Nesenie signāli",

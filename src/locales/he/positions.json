@@ -11,7 +11,9 @@
     "averageEntry": "כניסה ממוצעת",
     "unrealizedPnl": "P&L לא ממומש",
     "realizedPnl": "P&L ממומש",
-    "updated": "עודכן {{timestamp}}"
+    "updated": "עודכן {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "אין פוזיציות פתוחות",

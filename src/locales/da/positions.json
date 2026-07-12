@@ -11,7 +11,9 @@
     "averageEntry": "Gns. indgang",
     "unrealizedPnl": "Urealiseret P&L",
     "realizedPnl": "Realiseret P&L",
-    "updated": "Opdateret {{timestamp}}"
+    "updated": "Opdateret {{timestamp}}",
+    "mark": "Markpris",
+    "noValue": "mangler"
   },
   "empty": {
     "title": "Ingen åbne positioner",

@@ -11,7 +11,9 @@
     "averageEntry": "ราคาเข้าเฉลี่ย",
     "unrealizedPnl": "P&L ที่ยังไม่รับรู้",
     "realizedPnl": "P&L ที่รับรู้แล้ว",
-    "updated": "อัปเดตเมื่อ {{timestamp}}"
+    "updated": "อัปเดตเมื่อ {{timestamp}}",
+    "mark": "Mark",
+    "noValue": "N/A"
   },
   "empty": {
     "title": "ไม่มีสถานะเปิด",

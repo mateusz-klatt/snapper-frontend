@@ -35,7 +35,8 @@
     "pnlPercent": "P&L %",
     "positions": "倉位",
     "instrumentsCount": "{{count}} 個品種",
-    "empty": "沒有可用倉位數據"
+    "empty": "沒有可用倉位數據",
+    "incompleteValuation": "資料不完整 — 部分持倉缺少可用的標記價格或進場價格；總計僅彙總已知部分"
   },
   "signals": {
     "title": "最近信號",

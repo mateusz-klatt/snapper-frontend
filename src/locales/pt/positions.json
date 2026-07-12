@@ -11,7 +11,9 @@
     "averageEntry": "Entrada média",
     "unrealizedPnl": "P&L não realizado",
     "realizedPnl": "P&L realizado",
-    "updated": "Atualizado {{timestamp}}"
+    "updated": "Atualizado {{timestamp}}",
+    "mark": "Preço mark",
+    "noValue": "N/D"
   },
   "empty": {
     "title": "Nenhuma posição aberta",
