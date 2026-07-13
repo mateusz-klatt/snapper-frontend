@@ -60,6 +60,10 @@ const makePosition = (overrides: Partial<Position> = {}): Position => ({
 })
 
 describe('Positions', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
   it('renders honest N/A for null valuation and shows the mark with its timestamp', async () => {
     const { usePositions } = await import('../../hooks/queries/positions')
 
@@ -111,9 +115,6 @@ describe('Positions', () => {
     expect(trailButton).toHaveAttribute('aria-disabled', 'true')
     fireEvent.click(trailButton)
     expect(screen.queryByText('Attach Trailing Stop')).not.toBeInTheDocument()
-  })
-  beforeEach(() => {
-    vi.clearAllMocks()
   })
 
   it('renders the page title', () => {
