@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "交易所账户",
+    "subtitle": "交易所现金余额和持仓，按交易所报告的来源标记。"
+  },
+  "empty": {
+    "title": "没有交易所账户",
+    "message": "关联钱包的账户被检测到后，余额和持仓将显示在此处。"
+  },
+  "banner": {
+    "title": "部分账户数据非实时数据",
+    "message": "未标记为“实时”的行显示的是陈旧、模拟或不可用的数据。"
+  },
+  "unavailable": {
+    "title": "无法获取可靠的账户数据",
+    "message": "无法加载交易所账户状态。账户并非为空，只是当前暂时无法获取数据。"
+  },
+  "status": {
+    "observed": "实时",
+    "simulated": "模拟",
+    "stale": "已过期",
+    "clockError": "时钟错误",
+    "corrupt": "未验证",
+    "unsupported": "不可用",
+    "notApplicable": "不适用",
+    "unknown": "未知"
+  },
+  "statusTooltip": {
+    "observed": "在有效期内获取的交易所实时权威数据。",
+    "simulated": "纸面交易数据 — 非真实交易所余额。",
+    "stale": "最后已知快照；有效期已过或数据轮询已停滞。",
+    "clockError": "观察时间戳与服务器时钟不一致。",
+    "corrupt": "存储的快照未通过验证。",
+    "unsupported": "该交易所不报告账户状态。",
+    "notApplicable": "此组件不适用于该交易所。",
+    "unknown": "状态无法分类。"
+  },
+  "section": {
+    "balances": "余额",
+    "positions": "当前持仓"
+  },
+  "sectionEmpty": {
+    "balances": "未报告余额",
+    "positions": "没有持仓"
+  },
+  "balance": {
+    "currency": "货币",
+    "total": "总计",
+    "free": "可用",
+    "used": "已用"
+  },
+  "position": {
+    "symbol": "标的",
+    "side": "方向",
+    "size": "数量",
+    "entryPrice": "开仓价",
+    "markPrice": "标记价格",
+    "unrealizedPnl": "未实现盈亏",
+    "unrealizedFunding": "资金费用"
+  },
+  "side": {
+    "buy": "买入",
+    "sell": "卖出"
+  },
+  "mode": {
+    "live": "实时",
+    "paper": "模拟"
+  },
+  "meta": {
+    "balancesObserved": "余额更新于 {{timestamp}}",
+    "positionsObserved": "持仓更新于 {{timestamp}}",
+    "authoritativeUntil": "权威数据至 {{timestamp}}",
+    "error": "错误：{{message}}"
+  },
+  "noValue": "无"
+}

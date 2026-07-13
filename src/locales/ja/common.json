@@ -66,6 +66,7 @@
     "tryAgain": "再試行"
   },
   "nav": {
+    "accounts": "取引所アカウント",
     "admin": "管理",
     "aiIntegration": "AI連携",
     "aiReviews": "AIレビュー",

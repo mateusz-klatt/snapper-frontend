@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Pörssitilit",
+    "subtitle": "Käteissaldot ja avoimet positiot, merkittynä pörssin ilmoituksen mukaan."
+  },
+  "empty": {
+    "title": "Ei pörssitilejä",
+    "message": "Saldot ja positiot näkyvät tässä, kun tili on havaittu."
+  },
+  "banner": {
+    "title": "Kaikki tilitiedot eivät ole reaaliaikaisia",
+    "message": "Rivit, joita ei ole merkitty reaaliaikaisiksi, näyttävät viimeksi tunnettuja, simuloituja tai puuttuvia tietoja."
+  },
+  "unavailable": {
+    "title": "Luotettavia tilitietoja ei ole saatavilla",
+    "message": "Pörssitilin tilaa ei voitu ladata. Tili ei ole tyhjä, vaan tiedot eivät juuri nyt ole saatavilla."
+  },
+  "status": {
+    "observed": "Reaaliaikainen",
+    "simulated": "Simuloitu",
+    "stale": "Vanhentunut",
+    "clockError": "Kellovirhe",
+    "corrupt": "Vahvistamaton",
+    "unsupported": "Ei saatavilla",
+    "notApplicable": "Ei sovelleta",
+    "unknown": "Tuntematon"
+  },
+  "statusTooltip": {
+    "observed": "Reaaliaikainen pörssin tila, havaittu vahvistusikkunan sisällä.",
+    "simulated": "Simuloidun kaupankäynnin luvut — eivät pörssin todellisia saldoja.",
+    "stale": "Viimeisin tunnettu tilanne; vahvistusikkuna umpeutui.",
+    "clockError": "Havainnon aikaleima on ristiriidassa palvelimen kellon kanssa.",
+    "corrupt": "Tallennetun tilanteen vahvistus epäonnistui.",
+    "unsupported": "Tämä pörssi ei ilmoita tilin tilaa.",
+    "notApplicable": "Tämä komponentti ei koske tätä pörssiä.",
+    "unknown": "Tilaa ei voitu luokitella."
+  },
+  "section": {
+    "balances": "Saldot",
+    "positions": "Avoimet positiot"
+  },
+  "sectionEmpty": {
+    "balances": "Ei ilmoitettuja saldoja",
+    "positions": "Ei avoimia positioita"
+  },
+  "balance": {
+    "currency": "Valuutta",
+    "total": "Yhteensä",
+    "free": "Käytettävissä",
+    "used": "Sidottu"
+  },
+  "position": {
+    "symbol": "Symboli",
+    "side": "Puoli",
+    "size": "Koko",
+    "entryPrice": "Avaushinta",
+    "markPrice": "Mark-hinta",
+    "unrealizedPnl": "Realisoitumaton P&L",
+    "unrealizedFunding": "Rahoitus"
+  },
+  "side": {
+    "buy": "Osta",
+    "sell": "Myy"
+  },
+  "mode": {
+    "live": "Oikea",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Saldot havaittu {{timestamp}}",
+    "positionsObserved": "Positiot havaittu {{timestamp}}",
+    "authoritativeUntil": "Vahvistettu tilaan {{timestamp}} asti",
+    "error": "Virhe: {{message}}"
+  },
+  "noValue": "Ei saatavilla"
+}

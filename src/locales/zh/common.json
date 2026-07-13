@@ -66,6 +66,7 @@
     "tryAgain": "重试"
   },
   "nav": {
+    "accounts": "交易所账户",
     "admin": "管理",
     "aiIntegration": "AI 集成",
     "aiReviews": "AI 审核",

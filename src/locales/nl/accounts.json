@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Beursaccounts",
+    "subtitle": "Kassaldi en open posities, gelabeld volgens rapportage van de beurs."
+  },
+  "empty": {
+    "title": "Geen beursaccounts",
+    "message": "Saldi en posities verschijnen hier zodra een account is waargenomen."
+  },
+  "banner": {
+    "title": "Sommige accountgegevens zijn niet realtime",
+    "message": "Rijen zonder de markering Realtime tonen laatst bekende, gesimuleerde of niet-beschikbare gegevens."
+  },
+  "unavailable": {
+    "title": "Betrouwbare accountgegevens niet beschikbaar",
+    "message": "De status van het beursaccount kon niet worden geladen. Het account is niet leeg; de gegevens zijn momenteel gewoon niet beschikbaar."
+  },
+  "status": {
+    "observed": "Realtime",
+    "simulated": "Gesimuleerd",
+    "stale": "Verouderd",
+    "clockError": "Klokfout",
+    "corrupt": "Ongeverifieerd",
+    "unsupported": "Niet beschikbaar",
+    "notApplicable": "Niet van toepassing",
+    "unknown": "Onbekend"
+  },
+  "statusTooltip": {
+    "observed": "Bindende realtime beursgegevens, waargenomen binnen de geldigheidsperiode.",
+    "simulated": "Cijfers uit gesimuleerde handel — geen echte beurssaldi.",
+    "stale": "Laatst bekende momentopname; de geldigheidsperiode is verstreken of het ophalen is vastgelopen.",
+    "clockError": "Waarnemingstijdstempel is inconsistent met de serverklok.",
+    "corrupt": "De opgeslagen momentopname is niet gevalideerd.",
+    "unsupported": "Deze beurs rapporteert de accountstatus niet.",
+    "notApplicable": "Deze component is niet van toepassing op de beurs.",
+    "unknown": "Status kon niet worden geclassificeerd."
+  },
+  "section": {
+    "balances": "Saldi",
+    "positions": "Open posities"
+  },
+  "sectionEmpty": {
+    "balances": "Geen saldi gerapporteerd",
+    "positions": "Geen open posities"
+  },
+  "balance": {
+    "currency": "Valuta",
+    "total": "Totaal",
+    "free": "Beschikbaar",
+    "used": "Gebruikt"
+  },
+  "position": {
+    "symbol": "Symbool",
+    "side": "Kant",
+    "size": "Grootte",
+    "entryPrice": "Instap",
+    "markPrice": "Referentieprijs",
+    "unrealizedPnl": "Ongerealiseerde P&L",
+    "unrealizedFunding": "Financiering"
+  },
+  "side": {
+    "buy": "Kopen",
+    "sell": "Verkopen"
+  },
+  "mode": {
+    "live": "Echt",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Saldi waargenomen {{timestamp}}",
+    "positionsObserved": "Posities waargenomen {{timestamp}}",
+    "authoritativeUntil": "Betrouwbaar tot {{timestamp}}",
+    "error": "Fout: {{message}}"
+  },
+  "noValue": "Niet beschikbaar"
+}

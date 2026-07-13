@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Mga Account sa Palitan",
+    "subtitle": "Mga balanseng salapi at bukas na posisyon, na may tatak ayon sa pagiging mapagkakatiwalaan ng ulat ng palitan."
+  },
+  "empty": {
+    "title": "Walang account sa palitan",
+    "message": "Lilitaw ang mga balanse dito kapag na-obserbahan ang isang account."
+  },
+  "banner": {
+    "title": "Hindi real-time ang ilang data ng account",
+    "message": "Ang mga hanay na hindi minarkahang Real-time ay nagpapakita ng huling nalaman, ginaya, o hindi magagamit na data."
+  },
+  "unavailable": {
+    "title": "Hindi magagamit ang mapagkakatiwalaang data ng account",
+    "message": "Hindi ma-load ang estado ng account sa palitan. Hindi walang laman ang account; hindi lamang magagamit ang data sa ngayon."
+  },
+  "status": {
+    "observed": "Real-time",
+    "simulated": "Ginaya",
+    "stale": "Hindi napapanahon",
+    "clockError": "Error sa oras",
+    "corrupt": "Hindi napatunayan",
+    "unsupported": "Hindi magagamit",
+    "notApplicable": "Hindi naaangkop",
+    "unknown": "Hindi alam"
+  },
+  "statusTooltip": {
+    "observed": "Mapagkakatiwalaang real-time na data ng palitan, naitala sa loob ng panahon ng bisa.",
+    "simulated": "Mga bilang mula sa kunwaring pangangalakal — hindi tunay na balanse ng palitan.",
+    "stale": "Huling natanggap na tala; lumampas na ang panahon ng bisa o huminto ang pagkuha ng data.",
+    "clockError": "Hindi tugma sa orasan ng server ang oras.",
+    "corrupt": "Bumagsak sa pagpapatunay ang snapshot.",
+    "unsupported": "Hindi nag-uulat ng estado ng account ang palitang ito.",
+    "notApplicable": "Hindi angkop ang bahaging ito.",
+    "unknown": "Hindi mauri ang katayuan."
+  },
+  "section": {
+    "balances": "Mga Balanse",
+    "positions": "Bukas na posisyon"
+  },
+  "sectionEmpty": {
+    "balances": "Walang inulat na balanse",
+    "positions": "Walang bukas na posisyon"
+  },
+  "balance": {
+    "currency": "Pera",
+    "total": "Kabuuan",
+    "free": "Magagamit",
+    "used": "Nagamit"
+  },
+  "position": {
+    "symbol": "Simbolo",
+    "side": "Panig",
+    "size": "Laki",
+    "entryPrice": "Presyo ng pagpasok",
+    "markPrice": "Presyong batayan",
+    "unrealizedPnl": "Hindi pa natutupad na tubo/lugi",
+    "unrealizedFunding": "Pagpopondo"
+  },
+  "side": {
+    "buy": "Bumili",
+    "sell": "Magbenta"
+  },
+  "mode": {
+    "live": "Totoo",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Mga balanse {{timestamp}}",
+    "positionsObserved": "Mga posisyon {{timestamp}}",
+    "authoritativeUntil": "Mapagkakatiwalaan hanggang {{timestamp}}",
+    "error": "Mali: {{message}}"
+  },
+  "noValue": "Hindi magagamit"
+}

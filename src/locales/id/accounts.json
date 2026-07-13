@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Akun Bursa",
+    "subtitle": "Saldo kas dan posisi terbuka, diberi label berdasarkan laporan bursa."
+  },
+  "empty": {
+    "title": "Tidak ada akun",
+    "message": "Saldo dan posisi bursa akan muncul di sini setelah akun terdeteksi."
+  },
+  "banner": {
+    "title": "Beberapa data akun tidak real-time",
+    "message": "Baris yang tidak ditandai Real-time menampilkan data terakhir yang diketahui, simulasi, atau tidak tersedia."
+  },
+  "unavailable": {
+    "title": "Data akun tepercaya tidak tersedia",
+    "message": "Status akun bursa tidak dapat dimuat. Akun ini bukan kosong; datanya hanya sedang tidak tersedia."
+  },
+  "status": {
+    "observed": "Real-time",
+    "simulated": "Simulasi",
+    "stale": "Usang",
+    "clockError": "Kesalahan waktu",
+    "corrupt": "Belum diverifikasi",
+    "unsupported": "Tidak tersedia",
+    "notApplicable": "Tidak berlaku",
+    "unknown": "Tidak diketahui"
+  },
+  "statusTooltip": {
+    "observed": "Data bursa langsung, diamati dalam jendela otoritas.",
+    "simulated": "Angka perdagangan simulasi — bukan saldo bursa yang sebenarnya.",
+    "stale": "Snapshot terakhir yang diketahui; jendela otoritas telah berlalu.",
+    "clockError": "Tanda waktu pengamatan tidak konsisten dengan server.",
+    "corrupt": "Snapshot yang disimpan gagal divalidasi.",
+    "unsupported": "Bursa ini tidak melaporkan status akun.",
+    "notApplicable": "Komponen ini tidak berlaku untuk bursa.",
+    "unknown": "Status tidak dapat diklasifikasikan."
+  },
+  "section": {
+    "balances": "Saldo",
+    "positions": "Posisi terbuka"
+  },
+  "sectionEmpty": {
+    "balances": "Tidak ada saldo",
+    "positions": "Tidak ada posisi terbuka"
+  },
+  "balance": {
+    "currency": "Mata Uang",
+    "total": "Total",
+    "free": "Tersedia",
+    "used": "Digunakan"
+  },
+  "position": {
+    "symbol": "Simbol",
+    "side": "Sisi",
+    "size": "Ukuran",
+    "entryPrice": "Harga masuk",
+    "markPrice": "Harga mark",
+    "unrealizedPnl": "P&L Belum Terealisasi",
+    "unrealizedFunding": "Pendanaan"
+  },
+  "side": {
+    "buy": "Beli",
+    "sell": "Jual"
+  },
+  "mode": {
+    "live": "Riil",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Saldo diamati {{timestamp}}",
+    "positionsObserved": "Posisi diamati {{timestamp}}",
+    "authoritativeUntil": "Tepercaya hingga {{timestamp}}",
+    "error": "Kesalahan: {{message}}"
+  },
+  "noValue": "Tidak tersedia"
+}

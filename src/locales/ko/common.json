@@ -66,6 +66,7 @@
     "tryAgain": "다시 시도"
   },
   "nav": {
+    "accounts": "거래소 계정",
     "admin": "관리",
     "aiIntegration": "AI 연동",
     "aiReviews": "AI 리뷰",

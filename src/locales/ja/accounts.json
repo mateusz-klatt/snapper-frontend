@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "取引所アカウント",
+    "subtitle": "取引所の報告に基づく、現金残高とオープンポジション。"
+  },
+  "empty": {
+    "title": "アカウントなし",
+    "message": "アカウントが検出されると、ここに残高とポジションが表示されます。"
+  },
+  "banner": {
+    "title": "一部のアカウントデータはリアルタイムではありません",
+    "message": "リアルタイムと表示されていない行には、最終確認済み、シミュレーション、または利用不可のデータが表示されます。"
+  },
+  "unavailable": {
+    "title": "信頼できるアカウントデータを取得できません",
+    "message": "取引所アカウントの状態を読み込めませんでした。アカウントが空なのではなく、現在データを取得できない状態です。"
+  },
+  "status": {
+    "observed": "リアルタイム",
+    "simulated": "シミュレーション",
+    "stale": "期限切れ",
+    "clockError": "時刻エラー",
+    "corrupt": "未確認",
+    "unsupported": "利用不可",
+    "notApplicable": "該当なし",
+    "unknown": "不明"
+  },
+  "statusTooltip": {
+    "observed": "権限ウィンドウ内で確認された、ライブの取引所データ。",
+    "simulated": "ペーパートレードの数値 — 実際の残高ではありません。",
+    "stale": "最後に確認されたスナップショット。権限ウィンドウが経過しました。",
+    "clockError": "確認タイムスタンプがサーバー時刻と一致しません。",
+    "corrupt": "保存されたスナップショットの検証に失敗しました。",
+    "unsupported": "この取引所はアカウント状態を報告しません。",
+    "notApplicable": "このコンポーネントは取引所に適用されません。",
+    "unknown": "ステータスを分類できませんでした。"
+  },
+  "section": {
+    "balances": "残高",
+    "positions": "オープンポジション"
+  },
+  "sectionEmpty": {
+    "balances": "残高は報告されていません",
+    "positions": "オープンポジションはありません"
+  },
+  "balance": {
+    "currency": "通貨",
+    "total": "合計",
+    "free": "利用可能",
+    "used": "使用中"
+  },
+  "position": {
+    "symbol": "シンボル",
+    "side": "サイド",
+    "size": "サイズ",
+    "entryPrice": "エントリー価格",
+    "markPrice": "マーク価格",
+    "unrealizedPnl": "未実現損益",
+    "unrealizedFunding": "ファンディング"
+  },
+  "side": {
+    "buy": "買い",
+    "sell": "売り"
+  },
+  "mode": {
+    "live": "本番",
+    "paper": "デモ"
+  },
+  "meta": {
+    "balancesObserved": "残高確認 {{timestamp}}",
+    "positionsObserved": "ポジション確認 {{timestamp}}",
+    "authoritativeUntil": "{{timestamp}} まで信頼性あり",
+    "error": "エラー: {{message}}"
+  },
+  "noValue": "データなし"
+}

@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Llogaritë e Bursës",
+    "subtitle": "Gjendjet e parave të gatshme dhe pozicionet e hapura, të etiketuara sipas raportimeve të bursës."
+  },
+  "empty": {
+    "title": "Asnjë llogari",
+    "message": "Gjendjet dhe pozicionet do të shfaqen këtu pasi të jetë vëzhguar një llogari."
+  },
+  "banner": {
+    "title": "Disa të dhëna të llogarisë nuk janë në kohë reale",
+    "message": "Rreshtat e pashënuar Në kohë reale tregojnë të dhënat e fundit të njohura, të simuluara ose të padisponueshme."
+  },
+  "unavailable": {
+    "title": "Të dhënat e besueshme të llogarisë nuk disponohen",
+    "message": "Gjendja e llogarisë së bursës nuk mund të ngarkohej. Llogaria nuk është bosh; të dhënat thjesht nuk disponohen për momentin."
+  },
+  "status": {
+    "observed": "Në kohë reale",
+    "simulated": "Të simuluara",
+    "stale": "Të vjetra",
+    "clockError": "Gabim ore",
+    "corrupt": "Të pa verifikuara",
+    "unsupported": "Të padisponueshme",
+    "notApplicable": "Nuk zbatohet",
+    "unknown": "E panjohur"
+  },
+  "statusTooltip": {
+    "observed": "Të dhëna të besueshme të bursës në kohë reale, të regjistruara brenda periudhës së vlefshmërisë.",
+    "simulated": "Të dhëna të tregtimit në letër — jo gjendje reale.",
+    "stale": "Pamja e fundit e njohur; periudha e vlefshmërisë ka skaduar ose marrja e të dhënave është ndalur.",
+    "clockError": "Vula kohore është në mospërputhje me serverin.",
+    "corrupt": "Fotografia e ruajtur dështoi në vërtetim.",
+    "unsupported": "Kjo bursë nuk raporton gjendjen e llogarisë.",
+    "notApplicable": "Ky komponent nuk vlen për bursën.",
+    "unknown": "Statusi nuk mund të klasifikohej."
+  },
+  "section": {
+    "balances": "Gjendjet",
+    "positions": "Pozicionet e hapura"
+  },
+  "sectionEmpty": {
+    "balances": "Nuk raportohen gjendje",
+    "positions": "Asnjë pozicion i hapur"
+  },
+  "balance": {
+    "currency": "Monedha",
+    "total": "Gjithsej",
+    "free": "E disponueshme",
+    "used": "E përdorur"
+  },
+  "position": {
+    "symbol": "Simboli",
+    "side": "Ana",
+    "size": "Madhësia",
+    "entryPrice": "Çmimi i hyrjes",
+    "markPrice": "Çmimi referencë",
+    "unrealizedPnl": "Fitim/humbje e parealizuar",
+    "unrealizedFunding": "Financimi"
+  },
+  "side": {
+    "buy": "Bli",
+    "sell": "Shit"
+  },
+  "mode": {
+    "live": "Reale",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Gjendjet e vëzhguara {{timestamp}}",
+    "positionsObserved": "Pozicionet e vëzhguara {{timestamp}}",
+    "authoritativeUntil": "Të besueshme deri në {{timestamp}}",
+    "error": "Gabim: {{message}}"
+  },
+  "noValue": "Nuk disponohet"
+}

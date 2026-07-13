@@ -66,6 +66,7 @@
     "tryAgain": "Try again"
   },
   "nav": {
+    "accounts": "Venue Accounts",
     "admin": "Administration",
     "aiIntegration": "AI Integration",
     "aiReviews": "AI Reviews",

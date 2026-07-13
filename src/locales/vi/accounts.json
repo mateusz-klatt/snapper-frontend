@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Tài khoản Sàn",
+    "subtitle": "Số dư tiền mặt và các vị thế mở, được đánh dấu theo báo cáo của sàn."
+  },
+  "empty": {
+    "title": "Không có tài khoản sàn",
+    "message": "Số dư và các vị thế sẽ xuất hiện ở đây khi một tài khoản được ghi nhận."
+  },
+  "banner": {
+    "title": "Một số dữ liệu tài khoản không theo thời gian thực",
+    "message": "Các hàng không được đánh dấu Thời gian thực hiển thị dữ liệu mới nhất đã biết, dữ liệu mô phỏng hoặc dữ liệu không khả dụng."
+  },
+  "unavailable": {
+    "title": "Không có dữ liệu tài khoản đáng tin cậy",
+    "message": "Không thể tải trạng thái tài khoản sàn giao dịch. Tài khoản không trống; dữ liệu chỉ đang tạm thời không khả dụng."
+  },
+  "status": {
+    "observed": "Thời gian thực",
+    "simulated": "Mô phỏng",
+    "stale": "Hết hạn",
+    "clockError": "Lỗi đồng hồ",
+    "corrupt": "Chưa xác minh",
+    "unsupported": "Không có sẵn",
+    "notApplicable": "Không áp dụng",
+    "unknown": "Không rõ"
+  },
+  "statusTooltip": {
+    "observed": "Sự thật trực tiếp của sàn, được ghi nhận trong khung thời gian hợp lệ.",
+    "simulated": "Số liệu giao dịch giấy — không phải số dư thực của sàn.",
+    "stale": "Bản ghi nhanh cuối cùng; khung thời gian hợp lệ đã hết.",
+    "clockError": "Dấu thời gian không nhất quán với máy chủ.",
+    "corrupt": "Bản ghi nhanh được lưu trữ không xác thực được.",
+    "unsupported": "Sàn này không báo cáo trạng thái tài khoản.",
+    "notApplicable": "Thành phần này không áp dụng cho sàn.",
+    "unknown": "Không thể phân loại trạng thái."
+  },
+  "section": {
+    "balances": "Số dư",
+    "positions": "Vị thế mở"
+  },
+  "sectionEmpty": {
+    "balances": "Không có số dư được báo cáo",
+    "positions": "Không có vị thế mở"
+  },
+  "balance": {
+    "currency": "Tiền tệ",
+    "total": "Tổng cộng",
+    "free": "Khả dụng",
+    "used": "Đã dùng"
+  },
+  "position": {
+    "symbol": "Mã",
+    "side": "Bên",
+    "size": "Kích thước",
+    "entryPrice": "Giá vào lệnh",
+    "markPrice": "Giá tham chiếu",
+    "unrealizedPnl": "Lãi/lỗ chưa thực hiện",
+    "unrealizedFunding": "Phí cấp vốn"
+  },
+  "side": {
+    "buy": "Mua",
+    "sell": "Bán"
+  },
+  "mode": {
+    "live": "Thực",
+    "paper": "Mô phỏng"
+  },
+  "meta": {
+    "balancesObserved": "Số dư được ghi nhận lúc {{timestamp}}",
+    "positionsObserved": "Các vị thế được ghi nhận lúc {{timestamp}}",
+    "authoritativeUntil": "Đáng tin cậy đến {{timestamp}}",
+    "error": "Lỗi: {{message}}"
+  },
+  "noValue": "Không có dữ liệu"
+}

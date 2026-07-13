@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Cuentas de la plataforma",
+    "subtitle": "Saldos de efectivo y posiciones abiertas, etiquetados según la fiabilidad con que los comunicó la plataforma."
+  },
+  "empty": {
+    "title": "Sin cuentas de la plataforma",
+    "message": "Los saldos y posiciones aparecerán aquí una vez que se observe una cuenta."
+  },
+  "banner": {
+    "title": "Algunos datos de cuenta no son en tiempo real",
+    "message": "Las filas no marcadas como En vivo muestran datos obsoletos, simulados o no disponibles."
+  },
+  "unavailable": {
+    "title": "Datos fiables de la cuenta no disponibles",
+    "message": "No se pudo cargar el estado de la cuenta de la plataforma. La cuenta no está vacía; los datos simplemente no están disponibles en este momento."
+  },
+  "status": {
+    "observed": "Tiempo real",
+    "simulated": "Simulado",
+    "stale": "Obsoleto",
+    "clockError": "Error de reloj",
+    "corrupt": "No verificado",
+    "unsupported": "No disponible",
+    "notApplicable": "No aplicable",
+    "unknown": "Desconocido"
+  },
+  "statusTooltip": {
+    "observed": "Verdad en vivo, observada dentro de la ventana de autoridad.",
+    "simulated": "Cifras de operaciones simuladas; no son saldos reales de la plataforma.",
+    "stale": "Última instantánea conocida; la ventana de autoridad ha transcurrido.",
+    "clockError": "La marca de tiempo no coincide con el servidor.",
+    "corrupt": "La instantánea almacenada falló la validación.",
+    "unsupported": "Esta plataforma no comunica el estado de la cuenta.",
+    "notApplicable": "Este componente no se aplica a la plataforma.",
+    "unknown": "No se pudo clasificar el estado."
+  },
+  "section": {
+    "balances": "Saldos",
+    "positions": "Posiciones abiertas"
+  },
+  "sectionEmpty": {
+    "balances": "Sin saldos reportados",
+    "positions": "Sin posiciones abiertas"
+  },
+  "balance": {
+    "currency": "Moneda",
+    "total": "Total",
+    "free": "Disponible",
+    "used": "Usado"
+  },
+  "position": {
+    "symbol": "Símbolo",
+    "side": "Lado",
+    "size": "Tamaño",
+    "entryPrice": "Entrada",
+    "markPrice": "Precio de marca",
+    "unrealizedPnl": "Ganancia/pérdida no realizada",
+    "unrealizedFunding": "Financiación"
+  },
+  "side": {
+    "buy": "Comprar",
+    "sell": "Vender"
+  },
+  "mode": {
+    "live": "Real",
+    "paper": "Simulado"
+  },
+  "meta": {
+    "balancesObserved": "Saldos observados {{timestamp}}",
+    "positionsObserved": "Posiciones observadas {{timestamp}}",
+    "authoritativeUntil": "Datos fiables hasta {{timestamp}}",
+    "error": "Error: {{message}}"
+  },
+  "noValue": "No disponible"
+}

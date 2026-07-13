@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Biržas konti",
+    "subtitle": "Naudas atlikumi un atvērtās pozīcijas, atzīmētas pēc biržas ziņojumiem."
+  },
+  "empty": {
+    "title": "Nav kontu",
+    "message": "Atlikumi un pozīcijas parādīsies šeit, tiklīdz konts tiks pamanīts."
+  },
+  "banner": {
+    "title": "Daži dati nav reāllaika",
+    "message": "Rindas, kas nav atzīmētas kā Tiešsaistē, parāda novecojušus, simulētus datus."
+  },
+  "unavailable": {
+    "title": "Uzticami konta dati nav pieejami",
+    "message": "Neizdevās ielādēt biržas konta stāvokli. Konts nav tukšs; dati šobrīd vienkārši nav pieejami."
+  },
+  "status": {
+    "observed": "Reāllaikā",
+    "simulated": "Simulēts",
+    "stale": "Novecojis",
+    "clockError": "Pulksteņa kļūda",
+    "corrupt": "Nepārbaudīts",
+    "unsupported": "Nav pieejams",
+    "notApplicable": "Nav piemērojams",
+    "unknown": "Nezināms"
+  },
+  "statusTooltip": {
+    "observed": "Tiešsaistes biržas patiesība.",
+    "simulated": "Papīra tirdzniecības dati — ne īsti atlikumi.",
+    "stale": "Pēdējais zināmais stāvoklis; logs beidzies.",
+    "clockError": "Laika zīmogs neatbilst serverim.",
+    "corrupt": "Stāvokļa apstiprināšana neizdevās.",
+    "unsupported": "Šī birža neziņo konta stāvokli.",
+    "notApplicable": "Šis komponents neattiecas uz biržu.",
+    "unknown": "Statusu nevarēja klasificēt."
+  },
+  "section": {
+    "balances": "Atlikumi",
+    "positions": "Atvērtās pozīcijas"
+  },
+  "sectionEmpty": {
+    "balances": "Nav paziņotu atlikumu",
+    "positions": "Nav atvērto pozīciju"
+  },
+  "balance": {
+    "currency": "Valūta",
+    "total": "Kopā",
+    "free": "Pieejams",
+    "used": "Izmantots"
+  },
+  "position": {
+    "symbol": "Simbols",
+    "side": "Puse",
+    "size": "Lielums",
+    "entryPrice": "Ieejas cena",
+    "markPrice": "Atskaites cena",
+    "unrealizedPnl": "Nerealizētā P/Z",
+    "unrealizedFunding": "Finansējums"
+  },
+  "side": {
+    "buy": "Pirkt",
+    "sell": "Pārdot"
+  },
+  "mode": {
+    "live": "Reāls",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Atlikumi pamanīti {{timestamp}}",
+    "positionsObserved": "Pozīcijas pamanītas {{timestamp}}",
+    "authoritativeUntil": "Autentisks līdz {{timestamp}}",
+    "error": "Kļūda: {{message}}"
+  },
+  "noValue": "Nav pieejams"
+}

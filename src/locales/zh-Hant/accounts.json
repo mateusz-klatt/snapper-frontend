@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "交易所帳戶",
+    "subtitle": "交易所現金餘額和未平倉合約，依據交易所報告的來源標記。"
+  },
+  "empty": {
+    "title": "沒有交易所帳戶",
+    "message": "關聯錢包的帳戶被檢測到後，餘額和倉位將顯示於此。"
+  },
+  "banner": {
+    "title": "部分帳戶數據非即時數據",
+    "message": "未標記為「即時」的行顯示的是過時、模擬或不可用的數據。"
+  },
+  "unavailable": {
+    "title": "無法取得可靠的帳戶數據",
+    "message": "無法載入交易所帳戶狀態。帳戶並非空白，只是目前暫時無法取得數據。"
+  },
+  "status": {
+    "observed": "即時",
+    "simulated": "模擬",
+    "stale": "已過期",
+    "clockError": "時鐘錯誤",
+    "corrupt": "未驗證",
+    "unsupported": "不可用",
+    "notApplicable": "不適用",
+    "unknown": "未知"
+  },
+  "statusTooltip": {
+    "observed": "在有效期內取得的交易所即時權威數據。",
+    "simulated": "模擬交易數據 — 非真實交易所餘額。",
+    "stale": "最後已知快照；有效期已過或數據輪詢已停滯。",
+    "clockError": "觀察時間戳與伺服器時鐘不一致。",
+    "corrupt": "存儲的快照未通過驗證。",
+    "unsupported": "該交易所不報告帳戶狀態。",
+    "notApplicable": "此組件不適用於該交易所。",
+    "unknown": "狀態無法分類。"
+  },
+  "section": {
+    "balances": "餘額",
+    "positions": "未平倉合約"
+  },
+  "sectionEmpty": {
+    "balances": "未報告餘額",
+    "positions": "沒有未平倉合約"
+  },
+  "balance": {
+    "currency": "貨幣",
+    "total": "總計",
+    "free": "可用",
+    "used": "已用"
+  },
+  "position": {
+    "symbol": "標的",
+    "side": "方向",
+    "size": "數量",
+    "entryPrice": "開倉價",
+    "markPrice": "標記價格",
+    "unrealizedPnl": "未實現盈虧",
+    "unrealizedFunding": "資金費用"
+  },
+  "side": {
+    "buy": "買入",
+    "sell": "賣出"
+  },
+  "mode": {
+    "live": "即時",
+    "paper": "模擬"
+  },
+  "meta": {
+    "balancesObserved": "餘額更新於 {{timestamp}}",
+    "positionsObserved": "倉位更新於 {{timestamp}}",
+    "authoritativeUntil": "權威數據至 {{timestamp}}",
+    "error": "錯誤：{{message}}"
+  },
+  "noValue": "無"
+}

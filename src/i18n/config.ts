@@ -69,6 +69,7 @@ void i18n
       'overview',
       'orders',
       'positions',
+      'accounts',
       'strategies',
       'signals',
       'backtests',

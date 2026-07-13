@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Venue Accounts",
+    "subtitle": "Exchange cash balances and open positions, labeled by how the venue reported them."
+  },
+  "empty": {
+    "title": "No venue accounts",
+    "message": "Venue balances and positions appear here once an account has been observed for a connected wallet."
+  },
+  "banner": {
+    "title": "Some account data is not live truth",
+    "message": "Rows not marked Live show last-known, simulated, or unavailable data — never authoritative live venue balances."
+  },
+  "unavailable": {
+    "title": "Account truth unavailable",
+    "message": "Venue account state could not be loaded. This is not an empty account — the data is simply unavailable right now."
+  },
+  "status": {
+    "observed": "Live",
+    "simulated": "Simulated",
+    "stale": "Stale",
+    "clockError": "Clock error",
+    "corrupt": "Unverified",
+    "unsupported": "Unavailable",
+    "notApplicable": "Not applicable",
+    "unknown": "Unknown"
+  },
+  "statusTooltip": {
+    "observed": "Live venue truth, observed within the authority window.",
+    "simulated": "Paper-trading figures — not real venue balances.",
+    "stale": "Last-known snapshot; the authority window elapsed or polling stalled.",
+    "clockError": "Observation timestamp is inconsistent with the server clock.",
+    "corrupt": "The stored snapshot failed validation and cannot be shown as truth.",
+    "unsupported": "This venue does not report account state.",
+    "notApplicable": "This component does not apply to the venue.",
+    "unknown": "Status could not be classified; treated as not authoritative."
+  },
+  "section": {
+    "balances": "Balances",
+    "positions": "Open positions"
+  },
+  "sectionEmpty": {
+    "balances": "No balances reported",
+    "positions": "No open positions"
+  },
+  "balance": {
+    "currency": "Currency",
+    "total": "Total",
+    "free": "Free",
+    "used": "Used"
+  },
+  "position": {
+    "symbol": "Symbol",
+    "side": "Side",
+    "size": "Size",
+    "entryPrice": "Entry",
+    "markPrice": "Mark",
+    "unrealizedPnl": "Unrealized P&L",
+    "unrealizedFunding": "Funding"
+  },
+  "side": {
+    "buy": "Buy",
+    "sell": "Sell"
+  },
+  "mode": {
+    "live": "Live",
+    "paper": "Paper"
+  },
+  "meta": {
+    "balancesObserved": "Balances observed {{timestamp}}",
+    "positionsObserved": "Positions observed {{timestamp}}",
+    "authoritativeUntil": "Authoritative until {{timestamp}}",
+    "error": "Error: {{message}}"
+  },
+  "noValue": "N/A"
+}

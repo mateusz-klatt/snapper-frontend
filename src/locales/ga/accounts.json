@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Cuntais Malartáin",
+    "subtitle": "Iarmhéideanna airgid thirim agus suíomhanna oscailte na malartaithe."
+  },
+  "empty": {
+    "title": "Níl aon chuntais ann",
+    "message": "Beidh iarmhéideanna anseo nuair a aimseofar cuntas do sparán nasctha."
+  },
+  "banner": {
+    "title": "Níl roinnt sonraí cuntais fíor-ama",
+    "message": "Taispeánann línte nach bhfuil beo sonraí atá as dáta, insamhlaithe, nó nach bhfuil ar fáil."
+  },
+  "unavailable": {
+    "title": "Níl sonraí iontaofa an chuntais ar fáil",
+    "message": "Níorbh fhéidir staid an chuntais malartáin a lódáil. Níl an cuntas folamh; níl na sonraí ar fáil faoi láthair."
+  },
+  "status": {
+    "observed": "Fíor-am",
+    "simulated": "Insamhlaithe",
+    "stale": "As dáta",
+    "clockError": "Earráid cloig",
+    "corrupt": "Neamhdheimhnithe",
+    "unsupported": "Níl ar fáil",
+    "notApplicable": "Ní bhaineann",
+    "unknown": "Anaithnid"
+  },
+  "statusTooltip": {
+    "observed": "Sonraí malartáin iontaofa fíor-ama, taifeadta laistigh den tréimhse bailíochta.",
+    "simulated": "Figiúirí trádála ionsamhlaithe — ní fíoriarmhéideanna malartáin iad.",
+    "stale": "An seat is déanaí; tá an fhuinneog údaráis imithe in éag.",
+    "clockError": "Níl an stampa ama cothrom le clog an fhreastalaí.",
+    "corrupt": "Theip ar bhailíochtú an tsuímh stóráilte.",
+    "unsupported": "Ní dhéanann an t-ionad seo tuairisciú ar stádas cuntais.",
+    "notApplicable": "Ní bhaineann an chomhpháirt seo leis an ionad.",
+    "unknown": "Ní fhéadfaí an stádas a rangú."
+  },
+  "section": {
+    "balances": "Iarmhéideanna",
+    "positions": "Suíomhanna oscailte"
+  },
+  "sectionEmpty": {
+    "balances": "Níl iarmhéid tuairiscithe",
+    "positions": "Níl suíomhanna oscailte"
+  },
+  "balance": {
+    "currency": "Airgeadra",
+    "total": "Iomlán",
+    "free": "Ar fáil",
+    "used": "Úsáidte"
+  },
+  "position": {
+    "symbol": "Siombail",
+    "side": "Taobh",
+    "size": "Méid",
+    "entryPrice": "Praghas iontrála",
+    "markPrice": "Praghas tagartha",
+    "unrealizedPnl": "P&L neamhréadaithe",
+    "unrealizedFunding": "Maoiniú"
+  },
+  "side": {
+    "buy": "Ceannaigh",
+    "sell": "Díol"
+  },
+  "mode": {
+    "live": "Fíor",
+    "paper": "Taispeána"
+  },
+  "meta": {
+    "balancesObserved": "Iarmhéideanna feicthe {{timestamp}}",
+    "positionsObserved": "Suíomhanna feicthe {{timestamp}}",
+    "authoritativeUntil": "Iontaofa go dtí {{timestamp}}",
+    "error": "Earráid: {{message}}"
+  },
+  "noValue": "N/B"
+}

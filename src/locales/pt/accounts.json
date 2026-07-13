@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Contas da Corretora",
+    "subtitle": "Saldos de caixa e posições abertas, rotulados de acordo com os relatórios da corretora."
+  },
+  "empty": {
+    "title": "Sem contas",
+    "message": "Saldos e posições aparecerão aqui assim que uma conta for detectada."
+  },
+  "banner": {
+    "title": "Alguns dados não são em tempo real",
+    "message": "As linhas não marcadas como Ao vivo mostram dados desatualizados, simulados ou indisponíveis."
+  },
+  "unavailable": {
+    "title": "Dados confiáveis da conta indisponíveis",
+    "message": "Não foi possível carregar o estado da conta da corretora. A conta não está vazia; os dados apenas estão indisponíveis no momento."
+  },
+  "status": {
+    "observed": "Tempo real",
+    "simulated": "Simulado",
+    "stale": "Desatualizado",
+    "clockError": "Erro de relógio",
+    "corrupt": "Não verificado",
+    "unsupported": "Indisponível",
+    "notApplicable": "Não aplicável",
+    "unknown": "Desconhecido"
+  },
+  "statusTooltip": {
+    "observed": "Verdade ao vivo da corretora, observada na janela de autoridade.",
+    "simulated": "Valores de negociação simulada — não são saldos reais da corretora.",
+    "stale": "Última captura conhecida; a janela de autoridade expirou.",
+    "clockError": "O carimbo de data/hora é inconsistente com o servidor.",
+    "corrupt": "A captura armazenada falhou na validação.",
+    "unsupported": "Esta corretora não relata o estado da conta.",
+    "notApplicable": "Este componente não se aplica à corretora.",
+    "unknown": "Não foi possível classificar o status."
+  },
+  "section": {
+    "balances": "Saldos",
+    "positions": "Posições abertas"
+  },
+  "sectionEmpty": {
+    "balances": "Nenhum saldo relatado",
+    "positions": "Nenhuma posição aberta"
+  },
+  "balance": {
+    "currency": "Moeda",
+    "total": "Total",
+    "free": "Disponível",
+    "used": "Usado"
+  },
+  "position": {
+    "symbol": "Símbolo",
+    "side": "Lado",
+    "size": "Tamanho",
+    "entryPrice": "Entrada",
+    "markPrice": "Preço de referência",
+    "unrealizedPnl": "Lucro/prejuízo não realizado",
+    "unrealizedFunding": "Financiamento"
+  },
+  "side": {
+    "buy": "Comprar",
+    "sell": "Vender"
+  },
+  "mode": {
+    "live": "Real",
+    "paper": "Simulado"
+  },
+  "meta": {
+    "balancesObserved": "Saldos observados {{timestamp}}",
+    "positionsObserved": "Posições observadas {{timestamp}}",
+    "authoritativeUntil": "Confiável até {{timestamp}}",
+    "error": "Erro: {{message}}"
+  },
+  "noValue": "Sem dados"
+}

@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Akaun Bursa",
+    "subtitle": "Baki tunai bursa dan kedudukan terbuka, dilabel mengikut laporan bursa."
+  },
+  "empty": {
+    "title": "Tiada akaun",
+    "message": "Baki dan kedudukan akan muncul di sini setelah akaun dikesan."
+  },
+  "banner": {
+    "title": "Sesetengah data akaun bukan masa nyata",
+    "message": "Baris yang tidak ditandakan Masa nyata menunjukkan data terakhir diketahui, simulasi atau tidak tersedia."
+  },
+  "unavailable": {
+    "title": "Data akaun yang boleh dipercayai tidak tersedia",
+    "message": "Status akaun bursa tidak dapat dimuatkan. Akaun ini bukan kosong; datanya hanya tidak tersedia buat masa ini."
+  },
+  "status": {
+    "observed": "Masa nyata",
+    "simulated": "Simulasi",
+    "stale": "Lapuk",
+    "clockError": "Ralat jam",
+    "corrupt": "Belum disahkan",
+    "unsupported": "Tidak tersedia",
+    "notApplicable": "Tidak berkenaan",
+    "unknown": "Tidak diketahui"
+  },
+  "statusTooltip": {
+    "observed": "Data bursa masa nyata yang boleh dipercayai, direkodkan dalam tempoh sah.",
+    "simulated": "Angka dagangan kertas — bukan baki bursa sebenar.",
+    "stale": "Rekod terakhir yang diketahui; tempoh sah telah tamat atau pengambilan data terhenti.",
+    "clockError": "Cap masa pemerhatian tidak konsisten dengan pelayan.",
+    "corrupt": "Snapshot yang disimpan gagal disahkan.",
+    "unsupported": "Bursa ini tidak melaporkan keadaan akaun.",
+    "notApplicable": "Komponen ini tidak terpakai kepada bursa.",
+    "unknown": "Status tidak dapat diklasifikasikan."
+  },
+  "section": {
+    "balances": "Baki",
+    "positions": "Kedudukan terbuka"
+  },
+  "sectionEmpty": {
+    "balances": "Tiada baki dilaporkan",
+    "positions": "Tiada kedudukan terbuka"
+  },
+  "balance": {
+    "currency": "Mata Wang",
+    "total": "Jumlah",
+    "free": "Tersedia",
+    "used": "Digunakan"
+  },
+  "position": {
+    "symbol": "Simbol",
+    "side": "Sisi",
+    "size": "Saiz",
+    "entryPrice": "Harga masuk",
+    "markPrice": "Harga rujukan",
+    "unrealizedPnl": "P&L Belum Direalisasikan",
+    "unrealizedFunding": "Pembiayaan"
+  },
+  "side": {
+    "buy": "Beli",
+    "sell": "Jual"
+  },
+  "mode": {
+    "live": "Sebenar",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Baki diperhatikan {{timestamp}}",
+    "positionsObserved": "Kedudukan diperhatikan {{timestamp}}",
+    "authoritativeUntil": "Sahih sehingga {{timestamp}}",
+    "error": "Ralat: {{message}}"
+  },
+  "noValue": "Tidak tersedia"
+}

@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Borsa Hesapları",
+    "subtitle": "Borsanın bildirdiğine göre etiketlenmiş nakit bakiyeleri ve açık pozisyonlar."
+  },
+  "empty": {
+    "title": "Borsa hesabı yok",
+    "message": "Bağlı bir cüzdan için bir hesap tespit edildiğinde bakiyeler ve pozisyonlar burada görünür."
+  },
+  "banner": {
+    "title": "Bazı hesap verileri canlı değildir",
+    "message": "Gerçek zamanlı olarak işaretlenmeyen satırlar son bilinen, simüle edilmiş veya kullanılamayan verileri gösterir."
+  },
+  "unavailable": {
+    "title": "Güvenilir hesap verileri kullanılamıyor",
+    "message": "Borsa hesabının durumu yüklenemedi. Hesap boş değil; veriler şu anda kullanılamıyor."
+  },
+  "status": {
+    "observed": "Gerçek zamanlı",
+    "simulated": "Simüle",
+    "stale": "Güncel değil",
+    "clockError": "Saat hatası",
+    "corrupt": "Doğrulanmamış",
+    "unsupported": "Kullanılamıyor",
+    "notApplicable": "Uygulanamaz",
+    "unknown": "Bilinmiyor"
+  },
+  "statusTooltip": {
+    "observed": "Geçerlilik süresi içinde alınmış güvenilir ve gerçek zamanlı borsa verileri.",
+    "simulated": "Kağıt ticareti rakamları — gerçek borsa bakiyeleri değil.",
+    "stale": "Bilinen son anlık görüntü; geçerlilik süresi doldu veya veri alımı durdu.",
+    "clockError": "Gözlem zaman damgası sunucu saatiyle tutarsız.",
+    "corrupt": "Depolanan anlık görüntü doğrulanamadı.",
+    "unsupported": "Bu borsa hesap durumunu bildirmiyor.",
+    "notApplicable": "Bu bileşen borsaya uygulanamaz.",
+    "unknown": "Durum sınıflandırılamadı."
+  },
+  "section": {
+    "balances": "Bakiyeler",
+    "positions": "Açık pozisyonlar"
+  },
+  "sectionEmpty": {
+    "balances": "Bildirilen bakiye yok",
+    "positions": "Açık pozisyon yok"
+  },
+  "balance": {
+    "currency": "Para Birimi",
+    "total": "Toplam",
+    "free": "Serbest",
+    "used": "Kullanılan"
+  },
+  "position": {
+    "symbol": "Sembol",
+    "side": "Yön",
+    "size": "Büyüklük",
+    "entryPrice": "Giriş",
+    "markPrice": "Referans fiyatı",
+    "unrealizedPnl": "Gerçekleşmemiş kâr/zarar",
+    "unrealizedFunding": "Fonlama"
+  },
+  "side": {
+    "buy": "Al",
+    "sell": "Sat"
+  },
+  "mode": {
+    "live": "Gerçek",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Bakiyeler {{timestamp}}'de gözlemlendi",
+    "positionsObserved": "Pozisyonlar {{timestamp}}'de gözlemlendi",
+    "authoritativeUntil": "{{timestamp}} tarihine kadar güvenilir",
+    "error": "Hata: {{message}}"
+  },
+  "noValue": "B/Y"
+}

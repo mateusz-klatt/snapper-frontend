@@ -12,6 +12,7 @@ import {
   Settings,
   Shield,
   TrendingUp,
+  Wallet,
   Workflow,
   Zap,
 } from 'lucide-react'
@@ -23,6 +24,7 @@ type TabType =
   | 'strategies'
   | 'orders'
   | 'positions'
+  | 'accounts'
   | 'signals'
   | 'backtests'
   | 'health'
@@ -38,6 +40,7 @@ type NavLabelKey =
   | 'nav.strategies'
   | 'nav.orders'
   | 'nav.positions'
+  | 'nav.accounts'
   | 'nav.signals'
   | 'nav.backtests'
   | 'nav.health'
@@ -66,6 +69,7 @@ export const ALL_TABS: readonly TabConfig[] = [
     icon: ClipboardList,
   },
   { id: 'positions', label: 'Positions', labelKey: 'nav.positions', icon: TrendingUp },
+  { id: 'accounts', label: 'Venue Accounts', labelKey: 'nav.accounts', icon: Wallet },
   { id: 'signals', label: 'Signals', labelKey: 'nav.signals', icon: Bell },
   { id: 'backtests', label: 'Backtests', labelKey: 'nav.backtests', icon: BarChart3 },
   { id: 'health', label: 'Health', labelKey: 'nav.health', icon: HeartPulse },

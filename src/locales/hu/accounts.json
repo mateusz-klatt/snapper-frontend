@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Tőzsdei fiókok",
+    "subtitle": "Készpénzegyenlegek és nyitott pozíciók, a tőzsde jelentése alapján címkézve."
+  },
+  "empty": {
+    "title": "Nincsenek fiókok",
+    "message": "Az egyenlegek és pozíciók itt jelennek meg, miután egy fiókot észleltünk."
+  },
+  "banner": {
+    "title": "Egyes fiókadatok nem valós idejűek",
+    "message": "A nem Élő jelzésű sorok elavult, szimulált vagy nem elérhető adatokat mutatnak."
+  },
+  "unavailable": {
+    "title": "A hiteles számlaadatok nem érhetők el",
+    "message": "A tőzsdei számla állapota nem tölthető be. A számla nem üres; az adatok jelenleg egyszerűen nem érhetők el."
+  },
+  "status": {
+    "observed": "Valós idejű",
+    "simulated": "Szimulált",
+    "stale": "Elavult",
+    "clockError": "Óra hiba",
+    "corrupt": "Nem ellenőrzött",
+    "unsupported": "Nem elérhető",
+    "notApplicable": "Nem alkalmazható",
+    "unknown": "Ismeretlen"
+  },
+  "statusTooltip": {
+    "observed": "Valós idejű tőzsdei adat, a hitelességi ablakon belül.",
+    "simulated": "Papírkereskedési adatok — nem valódi egyenlegek.",
+    "stale": "Utolsó ismert pillanatkép; a hitelességi ablak lejárt.",
+    "clockError": "Az észlelés időbélyege nem egyezik a szerver órájával.",
+    "corrupt": "A tárolt pillanatkép érvényesítése sikertelen.",
+    "unsupported": "Ez a tőzsde nem jelenti a fiók állapotát.",
+    "notApplicable": "Ez az összetevő nem vonatkozik a tőzsdére.",
+    "unknown": "Az állapotot nem lehetett besorolni."
+  },
+  "section": {
+    "balances": "Egyenlegek",
+    "positions": "Nyitott pozíciók"
+  },
+  "sectionEmpty": {
+    "balances": "Nincsenek jelentett egyenlegek",
+    "positions": "Nincsenek nyitott pozíciók"
+  },
+  "balance": {
+    "currency": "Deviza",
+    "total": "Összesen",
+    "free": "Elérhető",
+    "used": "Felhasznált"
+  },
+  "position": {
+    "symbol": "Szimbólum",
+    "side": "Oldal",
+    "size": "Méret",
+    "entryPrice": "Belépési ár",
+    "markPrice": "Referenciaár",
+    "unrealizedPnl": "Nem realizált eredmény",
+    "unrealizedFunding": "Finanszírozás"
+  },
+  "side": {
+    "buy": "Vétel",
+    "sell": "Eladás"
+  },
+  "mode": {
+    "live": "Valós",
+    "paper": "Demó"
+  },
+  "meta": {
+    "balancesObserved": "Egyenlegek észlelve: {{timestamp}}",
+    "positionsObserved": "Pozíciók észlelve: {{timestamp}}",
+    "authoritativeUntil": "Hiteles eddig: {{timestamp}}",
+    "error": "Hiba: {{message}}"
+  },
+  "noValue": "Nem érhető el"
+}

@@ -88,6 +88,8 @@ export const queryKeys = {
   ) => ['executions', filters, asOf, opId, walletId] as const,
   positions: (asOf: string | null, opId?: string | null, walletId?: string | null) =>
     ['positions', asOf, opId, walletId] as const,
+  portfolioAccounts: (asOf: string | null, opId?: string | null, walletId?: string | null) =>
+    ['portfolio', 'accounts', asOf, opId, walletId] as const,
   signals: (
     strategyId?: string,
     limit?: number,
@@ -130,6 +132,7 @@ export const queryKeys = {
 
   ordersAll: ['orders'] as const,
   positionsAll: ['positions'] as const,
+  portfolioAccountsAll: ['portfolio', 'accounts'] as const,
   usersAll: ['users'] as const,
   settingsAll: ['settings'] as const,
   scopeGrantsAll: ['scope-grants'] as const,

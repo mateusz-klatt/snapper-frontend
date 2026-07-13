@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Biržos sąskaitos",
+    "subtitle": "Pinigų likučiai ir atviros pozicijos, pažymėtos pagal biržos ataskaitas."
+  },
+  "empty": {
+    "title": "Sąskaitų nėra",
+    "message": "Likučiai ir pozicijos atsiras čia, kai bus aptikta sąskaita."
+  },
+  "banner": {
+    "title": "Kai kurie sąskaitos duomenys nėra tikralaikiai",
+    "message": "Eilutėse, nepažymėtose „Tiesiogiai“, rodomi pasenę, imituoti arba nepasiekiami duomenys."
+  },
+  "unavailable": {
+    "title": "Patikimi sąskaitos duomenys nepasiekiami",
+    "message": "Nepavyko įkelti biržos sąskaitos būsenos. Sąskaita nėra tuščia; duomenys šiuo metu tiesiog nepasiekiami."
+  },
+  "status": {
+    "observed": "Tikruoju laiku",
+    "simulated": "Imituota",
+    "stale": "Pasenę",
+    "clockError": "Laikrodžio klaida",
+    "corrupt": "Nepatvirtinta",
+    "unsupported": "Nepasiekiama",
+    "notApplicable": "Netaikoma",
+    "unknown": "Nežinoma"
+  },
+  "statusTooltip": {
+    "observed": "Tiesioginiai biržos duomenys.",
+    "simulated": "Popierinės prekybos skaičiai — ne tikri likučiai.",
+    "stale": "Paskutinė žinoma momentinė kopija; langas baigėsi.",
+    "clockError": "Laiko žyma nesutampa su serveriu.",
+    "corrupt": "Momentinės kopijos nepavyko patvirtinti.",
+    "unsupported": "Ši birža nepraneša sąskaitos būsenos.",
+    "notApplicable": "Šis komponentas biržai netaikomas.",
+    "unknown": "Būsenos nepavyko klasifikuoti."
+  },
+  "section": {
+    "balances": "Likučiai",
+    "positions": "Atviros pozicijos"
+  },
+  "sectionEmpty": {
+    "balances": "Likučių nepranešta",
+    "positions": "Atvirų pozicijų nėra"
+  },
+  "balance": {
+    "currency": "Valiuta",
+    "total": "Iš viso",
+    "free": "Prieinama",
+    "used": "Naudojama"
+  },
+  "position": {
+    "symbol": "Simbolis",
+    "side": "Pusė",
+    "size": "Dydis",
+    "entryPrice": "Įėjimo kaina",
+    "markPrice": "Orientacinė kaina",
+    "unrealizedPnl": "Nerealizuotas P/N",
+    "unrealizedFunding": "Finansavimas"
+  },
+  "side": {
+    "buy": "Pirkti",
+    "sell": "Parduoti"
+  },
+  "mode": {
+    "live": "Tikra",
+    "paper": "Demonstracinė"
+  },
+  "meta": {
+    "balancesObserved": "Likučiai pastebėti {{timestamp}}",
+    "positionsObserved": "Pozicijos pastebėtos {{timestamp}}",
+    "authoritativeUntil": "Patikima iki {{timestamp}}",
+    "error": "Klaida: {{message}}"
+  },
+  "noValue": "Duomenų nėra"
+}

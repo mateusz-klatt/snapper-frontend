@@ -18,6 +18,36 @@ import { z } from 'zod'
 
 import type { Components } from '../../types/api.generated'
 
+const _AccountBalanceEntryRawSchema = z
+  .object({
+    currency: z.string(),
+    total: z.number(),
+    free: z.number().nullable().optional(),
+    used: z.number().nullable().optional(),
+  })
+  .strict()
+
+export const AccountBalanceEntrySchema = _AccountBalanceEntryRawSchema as unknown as z.ZodType<
+  Components['schemas']['AccountBalanceEntry']
+>
+
+const _AccountPositionEntryRawSchema = z
+  .object({
+    symbol: z.string(),
+    side: z.string(),
+    size: z.number(),
+    entry_price: z.number(),
+    mark_price: z.number(),
+    unrealized_pnl: z.number(),
+    unrealized_funding: z.number(),
+    timestamp: z.iso.datetime(),
+  })
+  .strict()
+
+export const AccountPositionEntrySchema = _AccountPositionEntryRawSchema as unknown as z.ZodType<
+  Components['schemas']['AccountPositionEntry']
+>
+
 const _AsyncioMetricsRawSchema = z
   .object({
     active_tasks: z.number().int(),
@@ -2098,6 +2128,39 @@ export const CreateWalletBodySchema = _CreateWalletBodyRawSchema as unknown as z
   Components['schemas']['CreateWalletBody']
 >
 
+const _PortfolioAccountStateRawSchema = z
+  .object({
+    type: z.literal('portfolio_account_state'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
+    mode: z.enum(['live', 'paper']),
+    sync_status: z.string(),
+    effective_status: z.string(),
+    is_authoritative: z.boolean(),
+    balance_status: z.string(),
+    position_status: z.string(),
+    valuation_status: z.string(),
+    balances: z.array(AccountBalanceEntrySchema).nullable().optional(),
+    open_positions: z.array(AccountPositionEntrySchema).nullable().optional(),
+    balance_observed_at: z.iso.datetime().nullable().optional(),
+    position_observed_at: z.iso.datetime().nullable().optional(),
+    authoritative_until: z.iso.datetime().nullable().optional(),
+    current_attempt_observation_id: z.number().int().nullable().optional(),
+    balance_payload_source_observation_id: z.number().int().nullable().optional(),
+    position_payload_source_observation_id: z.number().int().nullable().optional(),
+    error: z.string().nullable().optional(),
+  })
+  .strict()
+
+export const PortfolioAccountStateSchema = _PortfolioAccountStateRawSchema as unknown as z.ZodType<
+  Components['schemas']['PortfolioAccountState']
+>
+
 const _BacktestComparisonListResponseRawSchema = z
   .object({
     type: z.literal('backtest_comparison_list'),
@@ -3924,6 +3987,24 @@ export const CreateWalletCommandSchema = _CreateWalletCommandRawSchema as unknow
   Components['schemas']['CreateWalletCommand']
 >
 
+const _PortfolioAccountStateListResponseRawSchema = z
+  .object({
+    type: z.literal('portfolio_account_state_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(PortfolioAccountStateSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const PortfolioAccountStateListResponseSchema =
+  _PortfolioAccountStateListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioAccountStateListResponse']
+  >
+
 const _CachedCandlesResponseRawSchema = z
   .object({
     type: z.literal('cached_candles'),
@@ -5358,6 +5439,8 @@ export const DelegateCreatedResponseSchema =
   >
 
 // Type exports
+export type AccountBalanceEntry = Components['schemas']['AccountBalanceEntry']
+export type AccountPositionEntry = Components['schemas']['AccountPositionEntry']
 export type AsyncioMetrics = Components['schemas']['AsyncioMetrics']
 export type BacktestComparisonData = Components['schemas']['BacktestComparisonData']
 export type BacktestEquityPointInline = Components['schemas']['BacktestEquityPointInline']
@@ -5485,6 +5568,7 @@ export type RevokeScopeGrantBody = Components['schemas']['RevokeScopeGrantBody']
 export type TrailingStopCreateBody = Components['schemas']['TrailingStopCreateBody']
 export type TrailingStopCancelBody = Components['schemas']['TrailingStopCancelBody']
 export type CreateWalletBody = Components['schemas']['CreateWalletBody']
+export type PortfolioAccountState = Components['schemas']['PortfolioAccountState']
 export type BacktestComparisonListResponse = Components['schemas']['BacktestComparisonListResponse']
 export type BacktestComparisonResponse = Components['schemas']['BacktestComparisonResponse']
 export type BacktestEquityPointListResponse =
@@ -5597,6 +5681,8 @@ export type RevokeScopeGrantCommand = Components['schemas']['RevokeScopeGrantCom
 export type TrailingStopCreateCommand = Components['schemas']['TrailingStopCreateCommand']
 export type TrailingStopCancelCommand = Components['schemas']['TrailingStopCancelCommand']
 export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
+export type PortfolioAccountStateListResponse =
+  Components['schemas']['PortfolioAccountStateListResponse']
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
 export type EgressHealthData = Components['schemas']['EgressHealthData']

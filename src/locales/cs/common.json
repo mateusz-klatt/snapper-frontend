@@ -66,6 +66,7 @@
     "tryAgain": "Zkusit znovu"
   },
   "nav": {
+    "accounts": "Účty na burze",
     "admin": "Administrace",
     "aiIntegration": "Integrace AI",
     "aiReviews": "Kontroly AI",

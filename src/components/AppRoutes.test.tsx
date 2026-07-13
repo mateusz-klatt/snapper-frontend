@@ -25,6 +25,9 @@ vi.mock('../features/orders/Orders', () => ({
 vi.mock('../features/positions/Positions', () => ({
   Positions: () => <div data-testid='positions'>Positions Component</div>,
 }))
+vi.mock('../features/portfolio/Accounts', () => ({
+  Accounts: () => <div data-testid='accounts'>Accounts Component</div>,
+}))
 vi.mock('../features/signals/Signals', () => ({
   Signals: () => <div data-testid='signals'>Signals Component</div>,
 }))
@@ -83,6 +86,7 @@ describe('AppRoutes', () => {
     { activeTab: 'strategies', testId: 'strategies', label: 'Strategies' },
     { activeTab: 'orders', testId: 'orders', label: 'Orders' },
     { activeTab: 'positions', testId: 'positions', label: 'Positions' },
+    { activeTab: 'accounts', testId: 'accounts', label: 'Accounts' },
     { activeTab: 'signals', testId: 'signals', label: 'Signals' },
     { activeTab: 'backtests', testId: 'backtests', label: 'Backtests', hash: '#backtests' },
     { activeTab: 'health', testId: 'health', label: 'Health' },

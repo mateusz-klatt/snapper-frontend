@@ -4,6 +4,7 @@ import type enAuth from '../locales/en/auth.json'
 import type enOverview from '../locales/en/overview.json'
 import type enOrders from '../locales/en/orders.json'
 import type enPositions from '../locales/en/positions.json'
+import type enAccounts from '../locales/en/accounts.json'
 import type enStrategies from '../locales/en/strategies.json'
 import type enSignals from '../locales/en/signals.json'
 import type enBacktests from '../locales/en/backtests.json'
@@ -25,6 +26,7 @@ declare module 'i18next' {
       overview: typeof enOverview
       orders: typeof enOrders
       positions: typeof enPositions
+      accounts: typeof enAccounts
       strategies: typeof enStrategies
       signals: typeof enSignals
       backtests: typeof enBacktests

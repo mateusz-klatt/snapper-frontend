@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Börskonton",
+    "subtitle": "Kontantsaldon och öppna positioner, märkta enligt börsens rapportering."
+  },
+  "empty": {
+    "title": "Inga börskonton",
+    "message": "Saldon och positioner visas här när ett konto har observerats."
+  },
+  "banner": {
+    "title": "Viss kontodata är inte i realtid",
+    "message": "Rader som inte är märkta Realtid visar senast kända, simulerade eller otillgängliga data."
+  },
+  "unavailable": {
+    "title": "Tillförlitliga kontodata är inte tillgängliga",
+    "message": "Börskontots status kunde inte läsas in. Kontot är inte tomt; uppgifterna är bara otillgängliga just nu."
+  },
+  "status": {
+    "observed": "Realtid",
+    "simulated": "Simulerad",
+    "stale": "Föråldrad",
+    "clockError": "Klockfel",
+    "corrupt": "Obekräftad",
+    "unsupported": "Otillgänglig",
+    "notApplicable": "Ej tillämpligt",
+    "unknown": "Okänd"
+  },
+  "statusTooltip": {
+    "observed": "Tillförlitliga börsdata i realtid, registrerade inom giltighetsperioden.",
+    "simulated": "Pappershandelssiffror — inte verkliga börssaldon.",
+    "stale": "Senast kända ögonblicksbild; auktoritetsfönstret har löpt ut.",
+    "clockError": "Observationstidsstämpel stämmer inte med serverns klocka.",
+    "corrupt": "Sparad ögonblicksbild klarade inte valideringen.",
+    "unsupported": "Denna börs rapporterar inte kontostatus.",
+    "notApplicable": "Denna komponent gäller inte för börsen.",
+    "unknown": "Status kunde inte klassificeras."
+  },
+  "section": {
+    "balances": "Saldon",
+    "positions": "Öppna positioner"
+  },
+  "sectionEmpty": {
+    "balances": "Inga saldon rapporterade",
+    "positions": "Inga öppna positioner"
+  },
+  "balance": {
+    "currency": "Valuta",
+    "total": "Totalt",
+    "free": "Tillgängligt",
+    "used": "Använt"
+  },
+  "position": {
+    "symbol": "Symbol",
+    "side": "Sida",
+    "size": "Storlek",
+    "entryPrice": "Ingångspris",
+    "markPrice": "Referenspris",
+    "unrealizedPnl": "Orealiserad P&L",
+    "unrealizedFunding": "Finansiering"
+  },
+  "side": {
+    "buy": "Köp",
+    "sell": "Sälj"
+  },
+  "mode": {
+    "live": "Verklig",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Saldon observerade {{timestamp}}",
+    "positionsObserved": "Positioner observerade {{timestamp}}",
+    "authoritativeUntil": "Tillförlitligt till {{timestamp}}",
+    "error": "Fel: {{message}}"
+  },
+  "noValue": "Ej tillgängligt"
+}

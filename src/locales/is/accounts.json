@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Vettvangsreikningar",
+    "subtitle": "Peningainneignir og opnar stöður, merktar eftir skýrslugjöf vettvangsins."
+  },
+  "empty": {
+    "title": "Engir reikningar",
+    "message": "Inneignir og stöður birtast hér þegar reikningur hefur sést."
+  },
+  "banner": {
+    "title": "Sum gögn eru ekki í rauntíma",
+    "message": "Raðir sem eru ekki merktar Í rauntíma sýna gömul, hermd eða ófáanleg gögn."
+  },
+  "unavailable": {
+    "title": "Áreiðanleg reikningsgögn eru ekki tiltæk",
+    "message": "Ekki tókst að hlaða stöðu kauphallarreikningsins. Reikningurinn er ekki tómur; gögnin eru einfaldlega ekki tiltæk sem stendur."
+  },
+  "status": {
+    "observed": "Í rauntíma",
+    "simulated": "Hermt",
+    "stale": "Úrelt",
+    "clockError": "Klukkuskekkja",
+    "corrupt": "Óstaðfest",
+    "unsupported": "Ófáanlegt",
+    "notApplicable": "Á ekki við",
+    "unknown": "Óþekkt"
+  },
+  "statusTooltip": {
+    "observed": "Rauntímagögn vettvangsins.",
+    "simulated": "Sýndarviðskiptatölur — ekki raunverulegar inneignir.",
+    "stale": "Síðasta þekkta staða; gildistími rann út.",
+    "clockError": "Tímastimpill er í ósamræmi við þjón.",
+    "corrupt": "Vistun mistókst í staðfestingu.",
+    "unsupported": "Þessi vettvangur gefur ekki upp reikningsstöðu.",
+    "notApplicable": "Þessi hluti á ekki við vettvanginn.",
+    "unknown": "Ekki var hægt að flokka stöðu."
+  },
+  "section": {
+    "balances": "Inneignir",
+    "positions": "Opnar stöður"
+  },
+  "sectionEmpty": {
+    "balances": "Engar inneignir",
+    "positions": "Engar opnar stöður"
+  },
+  "balance": {
+    "currency": "Gjaldmiðill",
+    "total": "Samtals",
+    "free": "Laust",
+    "used": "Notað"
+  },
+  "position": {
+    "symbol": "Tákn",
+    "side": "Hlið",
+    "size": "Stærð",
+    "entryPrice": "Inngangsverð",
+    "markPrice": "Markaðsverð",
+    "unrealizedPnl": "Óinnleystur H/T",
+    "unrealizedFunding": "Fjármögnun"
+  },
+  "side": {
+    "buy": "Kaupa",
+    "sell": "Selja"
+  },
+  "mode": {
+    "live": "Raunviðskipti",
+    "paper": "Sýndarviðskipti"
+  },
+  "meta": {
+    "balancesObserved": "Inneignir {{timestamp}}",
+    "positionsObserved": "Stöður {{timestamp}}",
+    "authoritativeUntil": "Gilt til {{timestamp}}",
+    "error": "Villa: {{message}}"
+  },
+  "noValue": "Ekki tiltækt"
+}

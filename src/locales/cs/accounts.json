@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Účty na burze",
+    "subtitle": "Peněžní zůstatky a otevřené pozice označené podle toho, jak je burza nahlásila."
+  },
+  "empty": {
+    "title": "Žádné účty",
+    "message": "Zůstatky a pozice se zde objeví, jakmile bude účet pozorován."
+  },
+  "banner": {
+    "title": "Některá data účtu nejsou aktuální",
+    "message": "Řádky, které nejsou označeny jako Živé, zobrazují stará, simulovaná nebo nedostupná data."
+  },
+  "unavailable": {
+    "title": "Spolehlivá data účtu nejsou dostupná",
+    "message": "Stav účtu na burze se nepodařilo načíst. Nejde o prázdný účet; data pouze momentálně nejsou dostupná."
+  },
+  "status": {
+    "observed": "Aktuální",
+    "simulated": "Simulováno",
+    "stale": "Zastaralé",
+    "clockError": "Chyba času",
+    "corrupt": "Neověřeno",
+    "unsupported": "Nedostupné",
+    "notApplicable": "Nelze použít",
+    "unknown": "Neznámé"
+  },
+  "statusTooltip": {
+    "observed": "Spolehlivá aktuální data burzy zaznamenaná během doby platnosti.",
+    "simulated": "Údaje z papírového obchodování — nejsou skutečné.",
+    "stale": "Poslední známý snímek; doba platnosti uplynula nebo se načítání zastavilo.",
+    "clockError": "Čas pozorování je nekonzistentní se serverem.",
+    "corrupt": "Uložený snímek neprošel validací.",
+    "unsupported": "Tato burza nehlásí stav účtu.",
+    "notApplicable": "Tato komponenta se na burzu nevztahuje.",
+    "unknown": "Stav nelze klasifikovat; není směrodatný."
+  },
+  "section": {
+    "balances": "Zůstatky",
+    "positions": "Otvřené pozice"
+  },
+  "sectionEmpty": {
+    "balances": "Nebyly nahlášeny žádné zůstatky",
+    "positions": "Žádné otevřené pozice"
+  },
+  "balance": {
+    "currency": "Měna",
+    "total": "Celkem",
+    "free": "Volné",
+    "used": "Použité"
+  },
+  "position": {
+    "symbol": "Symbol",
+    "side": "Směr",
+    "size": "Velikost",
+    "entryPrice": "Vstup",
+    "markPrice": "Tržní cena",
+    "unrealizedPnl": "Nerealizovaný Z/Z",
+    "unrealizedFunding": "Financování"
+  },
+  "side": {
+    "buy": "Koupit",
+    "sell": "Prodat"
+  },
+  "mode": {
+    "live": "Skutečný",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Zůstatky zpozorovány {{timestamp}}",
+    "positionsObserved": "Pozice zpozorovány {{timestamp}}",
+    "authoritativeUntil": "Směrodatné do {{timestamp}}",
+    "error": "Chyba: {{message}}"
+  },
+  "noValue": "Není k dispozici"
+}

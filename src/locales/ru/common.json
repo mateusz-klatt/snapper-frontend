@@ -66,6 +66,7 @@
     "tryAgain": "Повторить"
   },
   "nav": {
+    "accounts": "Биржевые счета",
     "admin": "Администрирование",
     "aiIntegration": "Интеграция AI",
     "aiReviews": "Проверки AI",

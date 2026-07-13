@@ -66,6 +66,7 @@
     "tryAgain": "Prøv igjen"
   },
   "nav": {
+    "accounts": "Børskontoer",
     "admin": "Administrasjon",
     "aiIntegration": "AI-integrasjon",
     "aiReviews": "AI-gjennomganger",

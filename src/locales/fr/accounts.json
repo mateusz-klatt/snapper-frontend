@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Comptes de la plateforme",
+    "subtitle": "Soldes en espèces et positions ouvertes, étiquetés selon la plateforme."
+  },
+  "empty": {
+    "title": "Aucun compte",
+    "message": "Les soldes apparaîtront ici dès qu'un compte sera observé."
+  },
+  "banner": {
+    "title": "Certaines données de compte ne sont pas en temps réel",
+    "message": "Les lignes non marquées En direct affichent des données obsolètes ou simulées."
+  },
+  "unavailable": {
+    "title": "Données fiables du compte indisponibles",
+    "message": "Impossible de charger l'état du compte de la plateforme. Le compte n'est pas vide ; les données sont simplement indisponibles pour le moment."
+  },
+  "status": {
+    "observed": "Temps réel",
+    "simulated": "Simulé",
+    "stale": "Obsolète",
+    "clockError": "Erreur d'horloge",
+    "corrupt": "Non vérifié",
+    "unsupported": "Indisponible",
+    "notApplicable": "Non applicable",
+    "unknown": "Inconnu"
+  },
+  "statusTooltip": {
+    "observed": "Vérité de la plateforme en direct.",
+    "simulated": "Chiffres du trading papier.",
+    "stale": "Dernier instantané connu ; la période de validité est écoulée ou la collecte est bloquée.",
+    "clockError": "L'horodatage d'observation est incohérent.",
+    "corrupt": "L'instantané stocké n'a pas pu être validé.",
+    "unsupported": "Cette plateforme ne signale pas l'état du compte.",
+    "notApplicable": "Ce composant ne s'applique pas.",
+    "unknown": "Le statut n'a pas pu être classé."
+  },
+  "section": {
+    "balances": "Soldes",
+    "positions": "Positions ouvertes"
+  },
+  "sectionEmpty": {
+    "balances": "Aucun solde déclaré",
+    "positions": "Aucune position ouverte"
+  },
+  "balance": {
+    "currency": "Devise",
+    "total": "Total",
+    "free": "Disponible",
+    "used": "Utilisé"
+  },
+  "position": {
+    "symbol": "Symbole",
+    "side": "Côté",
+    "size": "Taille",
+    "entryPrice": "Entrée",
+    "markPrice": "Prix de référence",
+    "unrealizedPnl": "Gain/perte latent(e)",
+    "unrealizedFunding": "Financement"
+  },
+  "side": {
+    "buy": "Acheter",
+    "sell": "Vendre"
+  },
+  "mode": {
+    "live": "Réel",
+    "paper": "Démo"
+  },
+  "meta": {
+    "balancesObserved": "Soldes observés {{timestamp}}",
+    "positionsObserved": "Positions observées {{timestamp}}",
+    "authoritativeUntil": "Données fiables jusqu'au {{timestamp}}",
+    "error": "Erreur: {{message}}"
+  },
+  "noValue": "Non disponible"
+}

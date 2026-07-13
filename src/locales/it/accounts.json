@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Conti della piattaforma",
+    "subtitle": "Saldi di cassa e posizioni aperte, etichettati in base all'affidabilità dei dati comunicati dalla piattaforma."
+  },
+  "empty": {
+    "title": "Nessun conto della piattaforma",
+    "message": "Saldi e posizioni appariranno qui una volta che un conto sarà stato osservato."
+  },
+  "banner": {
+    "title": "Alcuni dati non sono in tempo reale",
+    "message": "Le righe non contrassegnate come Tempo reale mostrano gli ultimi dati noti, simulati o non disponibili."
+  },
+  "unavailable": {
+    "title": "Dati affidabili del conto non disponibili",
+    "message": "Impossibile caricare lo stato del conto della piattaforma. Il conto non è vuoto; al momento i dati sono semplicemente indisponibili."
+  },
+  "status": {
+    "observed": "Tempo reale",
+    "simulated": "Simulato",
+    "stale": "Obsoleto",
+    "clockError": "Errore orologio",
+    "corrupt": "Non verificato",
+    "unsupported": "Non disponibile",
+    "notApplicable": "Non applicabile",
+    "unknown": "Sconosciuto"
+  },
+  "statusTooltip": {
+    "observed": "Dati autorevoli della piattaforma in tempo reale, rilevati nel periodo di validità.",
+    "simulated": "Dati di negoziazione simulata — non sono saldi reali della piattaforma.",
+    "stale": "Ultima istantanea nota; il periodo di validità è scaduto o l'acquisizione si è bloccata.",
+    "clockError": "Il timestamp non è coerente con il server.",
+    "corrupt": "Lo snapshot archiviato ha fallito la convalida.",
+    "unsupported": "Questa piattaforma non comunica lo stato del conto.",
+    "notApplicable": "Questo componente non si applica alla piattaforma.",
+    "unknown": "Impossibile classificare lo stato."
+  },
+  "section": {
+    "balances": "Saldi",
+    "positions": "Posizioni aperte"
+  },
+  "sectionEmpty": {
+    "balances": "Nessun saldo riportato",
+    "positions": "Nessuna posizione aperta"
+  },
+  "balance": {
+    "currency": "Valuta",
+    "total": "Totale",
+    "free": "Disponibile",
+    "used": "Usato"
+  },
+  "position": {
+    "symbol": "Simbolo",
+    "side": "Lato",
+    "size": "Dimensione",
+    "entryPrice": "Ingresso",
+    "markPrice": "Prezzo di riferimento",
+    "unrealizedPnl": "Profitto/perdita non realizzato",
+    "unrealizedFunding": "Finanziamento"
+  },
+  "side": {
+    "buy": "Acquista",
+    "sell": "Vendi"
+  },
+  "mode": {
+    "live": "Reale",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Saldi osservati {{timestamp}}",
+    "positionsObserved": "Posizioni osservate {{timestamp}}",
+    "authoritativeUntil": "Affidabile fino a {{timestamp}}",
+    "error": "Errore: {{message}}"
+  },
+  "noValue": "N/D"
+}

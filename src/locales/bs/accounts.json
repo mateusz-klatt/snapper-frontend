@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Računi na berzi",
+    "subtitle": "Gotovinski bilansi i otvorene pozicije, označeni po izvještaju berze."
+  },
+  "empty": {
+    "title": "Nema računa",
+    "message": "Bilansi i pozicije berze će se pojaviti ovdje kada račun bude opserviran."
+  },
+  "banner": {
+    "title": "Neki podaci računa nisu u stvarnom vremenu",
+    "message": "Redovi koji nisu označeni kao podaci u stvarnom vremenu prikazuju posljednje poznate, simulirane ili nedostupne podatke."
+  },
+  "unavailable": {
+    "title": "Pouzdani podaci računa nisu dostupni",
+    "message": "Stanje računa na berzi nije moguće učitati. Račun nije prazan; podaci su trenutno nedostupni."
+  },
+  "status": {
+    "observed": "U stvarnom vremenu",
+    "simulated": "Simulirano",
+    "stale": "Zastarjelo",
+    "clockError": "Greška sata",
+    "corrupt": "Neprovjereno",
+    "unsupported": "Nedostupno",
+    "notApplicable": "Nije primjenjivo",
+    "unknown": "Nepoznato"
+  },
+  "statusTooltip": {
+    "observed": "Mjerodavni podaci berze u stvarnom vremenu, zabilježeni tokom perioda važenja.",
+    "simulated": "Podaci trgovanja na papiru — nisu stvarni bilansi.",
+    "stale": "Posljednja poznata snimka; period važenja je istekao ili je preuzimanje zastalo.",
+    "clockError": "Vrijeme opservacije nije usklađeno sa satom servera.",
+    "corrupt": "Snimka nije prošla validaciju.",
+    "unsupported": "Ova berza ne prijavljuje stanje računa.",
+    "notApplicable": "Ova komponenta se ne odnosi na berzu.",
+    "unknown": "Status ne može biti klasificiran."
+  },
+  "section": {
+    "balances": "Bilansi",
+    "positions": "Otvorene pozicije"
+  },
+  "sectionEmpty": {
+    "balances": "Nema prijavljenih bilansa",
+    "positions": "Nema otvorenih pozicija"
+  },
+  "balance": {
+    "currency": "Valuta",
+    "total": "Ukupno",
+    "free": "Slobodno",
+    "used": "Korišteno"
+  },
+  "position": {
+    "symbol": "Simbol",
+    "side": "Strana",
+    "size": "Veličina",
+    "entryPrice": "Ulazna cijena",
+    "markPrice": "Referentna cijena",
+    "unrealizedPnl": "Nerealizovana dobit/gubitak",
+    "unrealizedFunding": "Finansiranje"
+  },
+  "side": {
+    "buy": "Kupi",
+    "sell": "Prodaj"
+  },
+  "mode": {
+    "live": "Stvarno",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Bilansi opservirani {{timestamp}}",
+    "positionsObserved": "Pozicije opservirane {{timestamp}}",
+    "authoritativeUntil": "Pouzdano do {{timestamp}}",
+    "error": "Greška: {{message}}"
+  },
+  "noValue": "Nije dostupno"
+}

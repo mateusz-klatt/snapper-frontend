@@ -66,6 +66,7 @@
     "tryAgain": "Intentar de nuevo"
   },
   "nav": {
+    "accounts": "Cuentas de la plataforma",
     "admin": "Administración",
     "aiIntegration": "Integración con IA",
     "aiReviews": "Revisiones de IA",

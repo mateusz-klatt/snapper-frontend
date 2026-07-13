@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Konta Giełdowe",
+    "subtitle": "Salda gotówkowe i otwarte pozycje, oznaczone według raportów giełdy."
+  },
+  "empty": {
+    "title": "Brak kont",
+    "message": "Salda i pozycje pojawią się tutaj po zaobserwowaniu konta."
+  },
+  "banner": {
+    "title": "Niektóre dane konta nie są aktualizowane w czasie rzeczywistym",
+    "message": "Wiersze nieoznaczone Na żywo pokazują dane nieaktualne, symulowane lub niedostępne."
+  },
+  "unavailable": {
+    "title": "Wiarygodne dane konta są niedostępne",
+    "message": "Nie udało się wczytać stanu konta giełdowego. Konto nie jest puste; dane są obecnie po prostu niedostępne."
+  },
+  "status": {
+    "observed": "Czas rzeczywisty",
+    "simulated": "Symulowane",
+    "stale": "Nieaktualne",
+    "clockError": "Błąd zegara",
+    "corrupt": "Niezweryfikowane",
+    "unsupported": "Niedostępne",
+    "notApplicable": "Nie dotyczy",
+    "unknown": "Nieznane"
+  },
+  "statusTooltip": {
+    "observed": "Prawda na żywo, zaobserwowana w oknie autorytetu.",
+    "simulated": "Dane z handlu symulowanego — nie są to rzeczywiste salda giełdy.",
+    "stale": "Ostatnia znana migawka; okno autorytetu wygasło.",
+    "clockError": "Znacznik czasu niezgodny z serwerem.",
+    "corrupt": "Zapisana migawka nie przeszła weryfikacji.",
+    "unsupported": "Ta giełda nie raportuje stanu konta.",
+    "notApplicable": "Ten komponent nie ma zastosowania do giełdy.",
+    "unknown": "Nie można było sklasyfikować statusu."
+  },
+  "section": {
+    "balances": "Salda",
+    "positions": "Otwarte pozycje"
+  },
+  "sectionEmpty": {
+    "balances": "Brak zgłoszonych sald",
+    "positions": "Brak otwartych pozycji"
+  },
+  "balance": {
+    "currency": "Waluta",
+    "total": "Razem",
+    "free": "Dostępne",
+    "used": "Użyte"
+  },
+  "position": {
+    "symbol": "Symbol",
+    "side": "Strona",
+    "size": "Rozmiar",
+    "entryPrice": "Cena wejścia",
+    "markPrice": "Cena referencyjna",
+    "unrealizedPnl": "Niezrealizowany P&L",
+    "unrealizedFunding": "Finansowanie"
+  },
+  "side": {
+    "buy": "Kup",
+    "sell": "Sprzedaj"
+  },
+  "mode": {
+    "live": "Rzeczywisty",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Salda zaobserwowane {{timestamp}}",
+    "positionsObserved": "Pozycje zaobserwowane {{timestamp}}",
+    "authoritativeUntil": "Miarodajne do {{timestamp}}",
+    "error": "Błąd: {{message}}"
+  },
+  "noValue": "Brak danych"
+}

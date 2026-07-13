@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Účty na burze",
+    "subtitle": "Peňažné zostatky a otvorené pozície označené podľa toho, ako ich burza nahlásila."
+  },
+  "empty": {
+    "title": "Žiadne účty",
+    "message": "Zostatky a pozície sa tu objavia po zistení účtu."
+  },
+  "banner": {
+    "title": "Niektoré údaje nie sú aktuálne",
+    "message": "Riadky, ktoré nie sú označené ako Živé, zobrazujú staré, simulované alebo nedostupné údaje."
+  },
+  "unavailable": {
+    "title": "Spoľahlivé údaje účtu nie sú k dispozícii",
+    "message": "Stav účtu na burze sa nepodarilo načítať. Účet nie je prázdny; údaje momentálne iba nie sú k dispozícii."
+  },
+  "status": {
+    "observed": "Aktuálne",
+    "simulated": "Simulované",
+    "stale": "Zastarané",
+    "clockError": "Chyba času",
+    "corrupt": "Neoverené",
+    "unsupported": "Nedostupné",
+    "notApplicable": "Nenastaviteľné",
+    "unknown": "Neznáme"
+  },
+  "statusTooltip": {
+    "observed": "Aktuálny stav burzy.",
+    "simulated": "Údaje z papierového obchodovania — nie skutočné zostatky.",
+    "stale": "Posledná známa snímka; okno platnosti vypršalo.",
+    "clockError": "Čas nie je konzistentný so serverom.",
+    "corrupt": "Snímka neprešla validáciou.",
+    "unsupported": "Táto burza nehlási stav účtu.",
+    "notApplicable": "Tento komponent sa nevzťahuje na burzu.",
+    "unknown": "Stav nebolo možné klasifikovať."
+  },
+  "section": {
+    "balances": "Zostatky",
+    "positions": "Otvorené pozície"
+  },
+  "sectionEmpty": {
+    "balances": "Neboli hlásené žiadne zostatky",
+    "positions": "Žiadne otvorené pozície"
+  },
+  "balance": {
+    "currency": "Mena",
+    "total": "Celkom",
+    "free": "Dostupné",
+    "used": "Použité"
+  },
+  "position": {
+    "symbol": "Symbol",
+    "side": "Strana",
+    "size": "Veľkosť",
+    "entryPrice": "Vstupná cena",
+    "markPrice": "Referenčná cena",
+    "unrealizedPnl": "Nerealizovaný Z/Z",
+    "unrealizedFunding": "Financovanie"
+  },
+  "side": {
+    "buy": "Kúpiť",
+    "sell": "Predať"
+  },
+  "mode": {
+    "live": "Skutočný",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Zostatky zistené {{timestamp}}",
+    "positionsObserved": "Pozície zistené {{timestamp}}",
+    "authoritativeUntil": "Smerodajné do {{timestamp}}",
+    "error": "Chyba: {{message}}"
+  },
+  "noValue": "Nie je k dispozícii"
+}

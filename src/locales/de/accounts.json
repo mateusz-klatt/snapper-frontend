@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Börsenkonten",
+    "subtitle": "Barguthaben und offene Positionen, gekennzeichnet nach Meldung der Börse."
+  },
+  "empty": {
+    "title": "Keine Börsenkonten",
+    "message": "Salden und Positionen erscheinen hier, sobald ein Konto für eine verbundene Wallet beobachtet wurde."
+  },
+  "banner": {
+    "title": "Einige Kontodaten sind nicht in Echtzeit",
+    "message": "Zeilen ohne Kennzeichnung Echtzeit zeigen zuletzt bekannte, simulierte oder nicht verfügbare Daten."
+  },
+  "unavailable": {
+    "title": "Verlässliche Kontodaten nicht verfügbar",
+    "message": "Der Zustand des Börsenkontos konnte nicht geladen werden. Das Konto ist nicht leer; die Daten sind derzeit lediglich nicht verfügbar."
+  },
+  "status": {
+    "observed": "Echtzeit",
+    "simulated": "Simuliert",
+    "stale": "Veraltet",
+    "clockError": "Uhrfehler",
+    "corrupt": "Unbestätigt",
+    "unsupported": "Nicht verfügbar",
+    "notApplicable": "Nicht anwendbar",
+    "unknown": "Unbekannt"
+  },
+  "statusTooltip": {
+    "observed": "Verbindliche Börsendaten in Echtzeit, innerhalb des Gültigkeitszeitraums erfasst.",
+    "simulated": "Zahlen aus dem simulierten Handel — keine echten Börsensalden.",
+    "stale": "Letzter bekannter Snapshot; das Autoritätsfenster ist abgelaufen oder das Abfragen ist blockiert.",
+    "clockError": "Beobachtungszeitstempel inkonsistent mit Serveruhr.",
+    "corrupt": "Der gespeicherte Snapshot konnte nicht validiert werden.",
+    "unsupported": "Diese Börse meldet keinen Kontostatus.",
+    "notApplicable": "Diese Komponente gilt nicht für die Börse.",
+    "unknown": "Status konnte nicht klassifiziert werden."
+  },
+  "section": {
+    "balances": "Salden",
+    "positions": "Offene Positionen"
+  },
+  "sectionEmpty": {
+    "balances": "Keine Salden gemeldet",
+    "positions": "Keine offenen Positionen"
+  },
+  "balance": {
+    "currency": "Währung",
+    "total": "Gesamt",
+    "free": "Frei",
+    "used": "Verwendet"
+  },
+  "position": {
+    "symbol": "Symbol",
+    "side": "Seite",
+    "size": "Größe",
+    "entryPrice": "Einstieg",
+    "markPrice": "Markpreis",
+    "unrealizedPnl": "Unrealisierter G&V",
+    "unrealizedFunding": "Finanzierung"
+  },
+  "side": {
+    "buy": "Kauf",
+    "sell": "Verkauf"
+  },
+  "mode": {
+    "live": "Real",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Salden beobachtet {{timestamp}}",
+    "positionsObserved": "Positionen beobachtet {{timestamp}}",
+    "authoritativeUntil": "Maßgeblich bis {{timestamp}}",
+    "error": "Fehler: {{message}}"
+  },
+  "noValue": "k. A."
+}

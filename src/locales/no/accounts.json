@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Børskontoer",
+    "subtitle": "Kontantbeholdninger og åpne posisjoner, merket etter børsens rapportering."
+  },
+  "empty": {
+    "title": "Ingen børskontoer",
+    "message": "Saldi og posisjoner vises her når en konto er observert."
+  },
+  "banner": {
+    "title": "Noen kontodata er ikke i sanntid",
+    "message": "Rader som ikke er merket Sanntid viser sist kjente, simulerte eller utilgjengelige data."
+  },
+  "unavailable": {
+    "title": "Pålitelige kontodata er ikke tilgjengelige",
+    "message": "Tilstanden til børskontoen kunne ikke lastes inn. Kontoen er ikke tom; dataene er bare utilgjengelige akkurat nå."
+  },
+  "status": {
+    "observed": "Sanntid",
+    "simulated": "Simulert",
+    "stale": "Foreldet",
+    "clockError": "Klokkefeil",
+    "corrupt": "Ubekreftet",
+    "unsupported": "Utilgjengelig",
+    "notApplicable": "Ikke relevant",
+    "unknown": "Ukjent"
+  },
+  "statusTooltip": {
+    "observed": "Autoritative børsdata i sanntid, registrert innenfor gyldighetsperioden.",
+    "simulated": "Papirhandelstall — ikke ekte børssaldi.",
+    "stale": "Sist kjente øyeblikksbilde; gyldighetsperioden er utløpt eller innhentingen har stoppet.",
+    "clockError": "Observasjonstidsstempel stemmer ikke med serverklokken.",
+    "corrupt": "Lagret øyeblikksbilde besto ikke valideringen.",
+    "unsupported": "Denne børsen rapporterer ikke kontostatus.",
+    "notApplicable": "Denne komponenten gjelder ikke børsen.",
+    "unknown": "Status kunne ikke klassifiseres."
+  },
+  "section": {
+    "balances": "Saldi",
+    "positions": "Åpne posisjoner"
+  },
+  "sectionEmpty": {
+    "balances": "Ingen saldi rapportert",
+    "positions": "Ingen åpne posisjoner"
+  },
+  "balance": {
+    "currency": "Valuta",
+    "total": "Totalt",
+    "free": "Tilgjengelig",
+    "used": "Brukt"
+  },
+  "position": {
+    "symbol": "Symbol",
+    "side": "Retning",
+    "size": "Størrelse",
+    "entryPrice": "Inngangspris",
+    "markPrice": "Referansepris",
+    "unrealizedPnl": "Urealisert P&L",
+    "unrealizedFunding": "Finansiering"
+  },
+  "side": {
+    "buy": "Kjøp",
+    "sell": "Selg"
+  },
+  "mode": {
+    "live": "Reell",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Saldi observert {{timestamp}}",
+    "positionsObserved": "Posisjoner observert {{timestamp}}",
+    "authoritativeUntil": "Pålitelig til {{timestamp}}",
+    "error": "Feil: {{message}}"
+  },
+  "noValue": "I/A"
+}

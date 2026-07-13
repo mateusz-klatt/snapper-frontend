@@ -10,6 +10,7 @@ export const Permission = {
   CANCEL_ORDERS: 'cancel:orders',
   READ_POSITIONS: 'read:positions',
   MANAGE_POSITIONS: 'manage:positions',
+  READ_ACCOUNT_STATE: 'read:account_state',
   READ_STRATEGIES: 'read:strategies',
   READ_SIGNALS: 'read:signals',
   START_STRATEGIES: 'start:strategies',
@@ -36,9 +37,9 @@ type UserRole = 'ai_delegate' | 'viewer' | 'operator' | 'admin'
 
 export const ROLE_PERMISSIONS: Record<UserRole, readonly Permission[]> = {
   ai_delegate: ['cancel:orders', 'create:orders', 'manage:positions', 'read:backtests', 'read:market_data', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status'],
-  viewer: ['manage:notification_devices', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:strategies', 'read:system_status'],
-  operator: ['cancel:orders', 'create:orders', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'start:strategies', 'stop:strategies'],
-  admin: ['cancel:orders', 'configure:strategies', 'configure:system', 'create:orders', 'impersonate:operator', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'manage:scope_grants', 'manage:users', 'manage:wallet_credentials', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'read:wallet_credentials', 'start:strategies', 'stop:strategies'],
+  viewer: ['manage:notification_devices', 'read:account_state', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:strategies', 'read:system_status'],
+  operator: ['cancel:orders', 'create:orders', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'read:account_state', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'start:strategies', 'stop:strategies'],
+  admin: ['cancel:orders', 'configure:strategies', 'configure:system', 'create:orders', 'impersonate:operator', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'manage:scope_grants', 'manage:users', 'manage:wallet_credentials', 'read:account_state', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'read:wallet_credentials', 'start:strategies', 'stop:strategies'],
 } as const
 
 export const RESOURCE_ACCESS: Record<string, readonly UserRole[]> = {
@@ -48,6 +49,7 @@ export const RESOURCE_ACCESS: Record<string, readonly UserRole[]> = {
   'strategies': ['ai_delegate', 'viewer', 'operator', 'admin'],
   'orders': ['ai_delegate', 'viewer', 'operator', 'admin'],
   'positions': ['ai_delegate', 'viewer', 'operator', 'admin'],
+  'accounts': ['viewer', 'operator', 'admin'],
   'signals': ['ai_delegate', 'viewer', 'operator', 'admin'],
   'health': ['ai_delegate', 'viewer', 'operator', 'admin'],
   'admin': ['admin'],

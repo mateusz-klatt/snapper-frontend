@@ -20,6 +20,9 @@ const Orders = lazy(() => import('../features/orders/Orders').then(m => ({ defau
 const Positions = lazy(() =>
   import('../features/positions/Positions').then(m => ({ default: m.Positions }))
 )
+const Accounts = lazy(() =>
+  import('../features/portfolio/Accounts').then(m => ({ default: m.Accounts }))
+)
 const Signals = lazy(() =>
   import('../features/signals/Signals').then(m => ({ default: m.Signals }))
 )
@@ -129,6 +132,14 @@ function renderRoute(activeTab: string): React.ReactElement {
         <ErrorBoundary componentNameKey='nav.positions'>
           <ProtectedRoute resource='positions'>
             <Positions />
+          </ProtectedRoute>
+        </ErrorBoundary>
+      )
+    case 'accounts':
+      return (
+        <ErrorBoundary componentNameKey='nav.accounts'>
+          <ProtectedRoute resource='accounts'>
+            <Accounts />
           </ProtectedRoute>
         </ErrorBoundary>
       )

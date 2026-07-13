@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "חשבונות בורסה",
+    "subtitle": "יתרות מזומן ופוזיציות פתוחות בבורסה."
+  },
+  "empty": {
+    "title": "אין חשבונות בורסה",
+    "message": "יתרות ופוזיציות יופיעו כאן ברגע שיזוהה חשבון לארנק המחובר."
+  },
+  "banner": {
+    "title": "חלק מנתוני החשבון אינם בזמן אמת",
+    "message": "שורות שאינן מסומנות כזמן אמת מציגות נתונים אחרונים, מדומים או לא זמינים."
+  },
+  "unavailable": {
+    "title": "נתוני חשבון מהימנים אינם זמינים",
+    "message": "לא ניתן לטעון את מצב החשבון בבורסה. החשבון אינו ריק; הנתונים פשוט אינם זמינים כרגע."
+  },
+  "status": {
+    "observed": "זמן אמת",
+    "simulated": "מדומה",
+    "stale": "לא מעודכן",
+    "clockError": "שגיאת שעון",
+    "corrupt": "לא מאומת",
+    "unsupported": "לא זמין",
+    "notApplicable": "לא רלוונטי",
+    "unknown": "לא ידוע"
+  },
+  "statusTooltip": {
+    "observed": "אמת בורסה בזמן אמת.",
+    "simulated": "נתוני מסחר וירטואלי — אינם יתרות אמיתיות.",
+    "stale": "תמונת מצב אחרונה ידועה; חלון הסמכות פג.",
+    "clockError": "חותמת הזמן אינה תואמת לשעון השרת.",
+    "corrupt": "תמונת המצב השמורה נכשלה באימות.",
+    "unsupported": "בורסה זו אינה מדווחת על מצב חשבון.",
+    "notApplicable": "רכיב זה אינו ישים לבורסה זו.",
+    "unknown": "לא ניתן היה לסווג את הסטטוס."
+  },
+  "section": {
+    "balances": "יתרות",
+    "positions": "פוזיציות פתוחות"
+  },
+  "sectionEmpty": {
+    "balances": "לא דווחו יתרות",
+    "positions": "אין פוזיציות פתוחות"
+  },
+  "balance": {
+    "currency": "מטבע",
+    "total": "סה\"כ",
+    "free": "פנוי",
+    "used": "בשימוש"
+  },
+  "position": {
+    "symbol": "סימול",
+    "side": "צד",
+    "size": "גודל",
+    "entryPrice": "כניסה",
+    "markPrice": "שוק",
+    "unrealizedPnl": "רווח/הפסד לא ממומש",
+    "unrealizedFunding": "מימון"
+  },
+  "side": {
+    "buy": "קנייה",
+    "sell": "מכירה"
+  },
+  "mode": {
+    "live": "אמיתי",
+    "paper": "הדגמה"
+  },
+  "meta": {
+    "balancesObserved": "יתרות נצפו {{timestamp}}",
+    "positionsObserved": "פוזיציות נצפו {{timestamp}}",
+    "authoritativeUntil": "מהימן עד {{timestamp}}",
+    "error": "שגיאה: {{message}}"
+  },
+  "noValue": "לא זמין"
+}

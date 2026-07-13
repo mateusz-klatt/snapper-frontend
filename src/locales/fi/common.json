@@ -66,6 +66,7 @@
     "tryAgain": "Yritä uudelleen"
   },
   "nav": {
+    "accounts": "Pörssitilit",
     "admin": "Hallinta",
     "aiIntegration": "AI-integraatio",
     "aiReviews": "AI-tarkistukset",

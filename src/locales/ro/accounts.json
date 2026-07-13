@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Conturi de Bursă",
+    "subtitle": "Solduri de numerar și poziții deschise, etichetate conform raportărilor bursei."
+  },
+  "empty": {
+    "title": "Fără conturi",
+    "message": "Soldurile și pozițiile vor apărea aici după ce un cont a fost observat."
+  },
+  "banner": {
+    "title": "Unele date nu sunt în timp real",
+    "message": "Rândurile nemarcate Timp real afișează ultimele date cunoscute, simulate sau indisponibile."
+  },
+  "unavailable": {
+    "title": "Datele de încredere ale contului nu sunt disponibile",
+    "message": "Starea contului de bursă nu a putut fi încărcată. Contul nu este gol; datele sunt pur și simplu indisponibile momentan."
+  },
+  "status": {
+    "observed": "Timp real",
+    "simulated": "Simulat",
+    "stale": "Învechit",
+    "clockError": "Eroare de ceas",
+    "corrupt": "Neverificat",
+    "unsupported": "Indisponibil",
+    "notApplicable": "Nu se aplică",
+    "unknown": "Necunoscut"
+  },
+  "statusTooltip": {
+    "observed": "Adevăr bursier în timp real.",
+    "simulated": "Valori din tranzacționare simulată — nu sunt solduri reale ale bursei.",
+    "stale": "Ultima captură cunoscută; perioada de valabilitate a expirat sau interogarea s-a oprit.",
+    "clockError": "Marcajul de timp este inconsecvent cu serverul.",
+    "corrupt": "Instantaneul stocat a eșuat la validare.",
+    "unsupported": "Această bursă nu raportează starea contului.",
+    "notApplicable": "Acest component nu se aplică bursei.",
+    "unknown": "Starea nu a putut fi clasificată."
+  },
+  "section": {
+    "balances": "Solduri",
+    "positions": "Poziții deschise"
+  },
+  "sectionEmpty": {
+    "balances": "Nu s-au raportat solduri",
+    "positions": "Fără poziții deschise"
+  },
+  "balance": {
+    "currency": "Monedă",
+    "total": "Total",
+    "free": "Disponibil",
+    "used": "Utilizat"
+  },
+  "position": {
+    "symbol": "Simbol",
+    "side": "Parte",
+    "size": "Mărime",
+    "entryPrice": "Preț de intrare",
+    "markPrice": "Preț de referință",
+    "unrealizedPnl": "Profit/pierdere nerealizată",
+    "unrealizedFunding": "Finanțare"
+  },
+  "side": {
+    "buy": "Cumpără",
+    "sell": "Vinde"
+  },
+  "mode": {
+    "live": "Real",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Solduri observate {{timestamp}}",
+    "positionsObserved": "Poziții observate {{timestamp}}",
+    "authoritativeUntil": "De încredere până la {{timestamp}}",
+    "error": "Eroare: {{message}}"
+  },
+  "noValue": "Indisponibil"
+}

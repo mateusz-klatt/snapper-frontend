@@ -66,6 +66,7 @@
     "tryAgain": "Réessayer"
   },
   "nav": {
+    "accounts": "Comptes de la plateforme",
     "admin": "Administration",
     "aiIntegration": "Intégration IA",
     "aiReviews": "Revues IA",

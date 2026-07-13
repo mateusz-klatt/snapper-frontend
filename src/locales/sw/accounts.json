@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Akaunti za Soko la Kubadilisha",
+    "subtitle": "Salio la fedha na nafasi wazi, zikiwa na alama kulingana na uaminifu wa ripoti ya soko la kubadilisha."
+  },
+  "empty": {
+    "title": "Hakuna akaunti",
+    "message": "Salio na nafasi zitaonekana hapa mara tu akaunti itakapogunduliwa."
+  },
+  "banner": {
+    "title": "Baadhi ya data za akaunti si za wakati halisi",
+    "message": "Mistari isiyotiwa alama Wakati halisi inaonyesha data za mwisho kujulikana, zilizoigwa au zisizopatikana."
+  },
+  "unavailable": {
+    "title": "Data za akaunti zinazoaminika hazipatikani",
+    "message": "Hali ya akaunti ya soko la kubadilisha haikuweza kupakiwa. Akaunti si tupu; data hazipatikani kwa sasa."
+  },
+  "status": {
+    "observed": "Wakati halisi",
+    "simulated": "Imeigwa",
+    "stale": "Zimepitwa na wakati",
+    "clockError": "Hitilafu ya saa",
+    "corrupt": "Haijathibitishwa",
+    "unsupported": "Haipatikani",
+    "notApplicable": "Haitumiki",
+    "unknown": "Hajulikani"
+  },
+  "statusTooltip": {
+    "observed": "Data halisi na ya kuaminika kutoka soko la kubadilisha ndani ya muda wake wa uhalali.",
+    "simulated": "Takwimu za biashara ya karatasi.",
+    "stale": "Picha ya mwisho inayojulikana; dirisha limekwisha.",
+    "clockError": "Muda hauambatani na seva.",
+    "corrupt": "Picha iliyohifadhiwa ilishindwa kuthibitishwa.",
+    "unsupported": "Ukumbi huu hauripoti hali ya akaunti.",
+    "notApplicable": "Kipengele hiki hakitumiki kwa ukumbi.",
+    "unknown": "Hali haikuweza kuainishwa."
+  },
+  "section": {
+    "balances": "Salio",
+    "positions": "Nafasi wazi"
+  },
+  "sectionEmpty": {
+    "balances": "Hakuna salio lililoripotiwa",
+    "positions": "Hakuna nafasi wazi"
+  },
+  "balance": {
+    "currency": "Sarafu",
+    "total": "Jumla",
+    "free": "Inayopatikana",
+    "used": "Imetumika"
+  },
+  "position": {
+    "symbol": "Alama",
+    "side": "Upande",
+    "size": "Ukubwa",
+    "entryPrice": "Bei ya kuingia",
+    "markPrice": "Bei elekezi",
+    "unrealizedPnl": "Faida/hasara ambayo haijafikiwa",
+    "unrealizedFunding": "Ada ya ufadhili"
+  },
+  "side": {
+    "buy": "Nunua",
+    "sell": "Uza"
+  },
+  "mode": {
+    "live": "Halisi",
+    "paper": "Majaribio"
+  },
+  "meta": {
+    "balancesObserved": "Salio lilionekana {{timestamp}}",
+    "positionsObserved": "Nafasi zilionekana {{timestamp}}",
+    "authoritativeUntil": "Inaaminika hadi {{timestamp}}",
+    "error": "Hitilafu: {{message}}"
+  },
+  "noValue": "Haipatikani"
+}

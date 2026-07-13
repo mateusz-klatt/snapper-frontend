@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "거래소 계정",
+    "subtitle": "거래소가 보고한 현금 잔고 및 미결제 약정입니다."
+  },
+  "empty": {
+    "title": "계정 없음",
+    "message": "연결된 지갑의 계정이 확인되면 잔고와 포지션이 여기에 표시됩니다."
+  },
+  "banner": {
+    "title": "일부 계정 데이터는 실시간이 아닙니다",
+    "message": "실시간으로 표시되지 않은 행은 마지막으로 확인된 데이터, 시뮬레이션 데이터 또는 사용할 수 없는 데이터를 나타냅니다."
+  },
+  "unavailable": {
+    "title": "신뢰할 수 있는 계정 데이터를 사용할 수 없음",
+    "message": "거래소 계정 상태를 불러올 수 없습니다. 빈 계정이 아니라 현재 데이터를 사용할 수 없는 상태입니다."
+  },
+  "status": {
+    "observed": "실시간",
+    "simulated": "시뮬레이션",
+    "stale": "기한 만료",
+    "clockError": "시간 오류",
+    "corrupt": "미확인",
+    "unsupported": "사용 불가",
+    "notApplicable": "해당 없음",
+    "unknown": "알 수 없음"
+  },
+  "statusTooltip": {
+    "observed": "권한 기간 내에 확인된 실시간 거래소 데이터입니다.",
+    "simulated": "모의 투자 수치 — 실제 거래소 잔고가 아닙니다.",
+    "stale": "마지막으로 확인된 스냅샷; 권한 기간이 경과했습니다.",
+    "clockError": "확인 타임스탬프가 서버 시간과 일치하지 않습니다.",
+    "corrupt": "저장된 스냅샷의 유효성 검사에 실패했습니다.",
+    "unsupported": "이 거래소는 계정 상태를 보고하지 않습니다.",
+    "notApplicable": "이 구성요소는 거래소에 적용되지 않습니다.",
+    "unknown": "상태를 분류할 수 없습니다."
+  },
+  "section": {
+    "balances": "잔고",
+    "positions": "미결제 약정"
+  },
+  "sectionEmpty": {
+    "balances": "보고된 잔고 없음",
+    "positions": "미결제 약정 없음"
+  },
+  "balance": {
+    "currency": "통화",
+    "total": "총액",
+    "free": "사용 가능",
+    "used": "사용 중"
+  },
+  "position": {
+    "symbol": "심볼",
+    "side": "방향",
+    "size": "규모",
+    "entryPrice": "진입가",
+    "markPrice": "기준가",
+    "unrealizedPnl": "미실현 손익",
+    "unrealizedFunding": "펀딩"
+  },
+  "side": {
+    "buy": "매수",
+    "sell": "매도"
+  },
+  "mode": {
+    "live": "실거래",
+    "paper": "모의"
+  },
+  "meta": {
+    "balancesObserved": "잔고 확인 {{timestamp}}",
+    "positionsObserved": "포지션 확인 {{timestamp}}",
+    "authoritativeUntil": "{{timestamp}}까지 유효함",
+    "error": "오류: {{message}}"
+  },
+  "noValue": "데이터 없음"
+}

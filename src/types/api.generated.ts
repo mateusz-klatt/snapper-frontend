@@ -1668,6 +1668,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/portfolio/accounts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_portfolio_accounts_api_portfolio_accounts_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/instrument-capabilities": {
         parameters: {
             query?: never;
@@ -1784,6 +1800,22 @@ export type Paths = {
 export type webhooks = Record<string, never>;
 export type Components = {
     schemas: {
+        AccountBalanceEntry: {
+            currency: string;
+            total: number;
+            free?: number | null | undefined;
+            used?: number | null | undefined;
+        };
+        AccountPositionEntry: {
+            symbol: string;
+            side: string;
+            size: number;
+            entry_price: number;
+            mark_price: number;
+            unrealized_pnl: number;
+            unrealized_funding: number;
+            timestamp: string;
+        };
         AdminAiReviewItem: {
             review_public_id: string;
             strategy_public_id: string;
@@ -3249,6 +3281,42 @@ export type Components = {
             fanout_after: string;
             instrument?: string | null | undefined;
             signal_envelope?: Record<string, unknown> | null | undefined;
+        };
+        PortfolioAccountState: {
+            type: "portfolio_account_state";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            wallet_public_id: string;
+            exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
+            mode: "live" | "paper";
+            sync_status: string;
+            effective_status: string;
+            is_authoritative: boolean;
+            balance_status: string;
+            position_status: string;
+            valuation_status: string;
+            balances?: Components["schemas"]["AccountBalanceEntry"][] | null | undefined;
+            open_positions?: Components["schemas"]["AccountPositionEntry"][] | null | undefined;
+            balance_observed_at?: string | null | undefined;
+            position_observed_at?: string | null | undefined;
+            authoritative_until?: string | null | undefined;
+            current_attempt_observation_id?: number | null | undefined;
+            balance_payload_source_observation_id?: number | null | undefined;
+            position_payload_source_observation_id?: number | null | undefined;
+            error?: string | null | undefined;
+        };
+        PortfolioAccountStateListResponse: {
+            type: "portfolio_account_state_list";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["PortfolioAccountState"][];
+            count: number;
         };
         PositionCycleData: {
             type: "position_cycle";
@@ -8584,6 +8652,42 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["PositionListResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_portfolio_accounts_api_portfolio_accounts_get: {
+        parameters: {
+            query?: {
+                operator_public_id?: string | null | undefined;
+                wallet_public_id?: string | null | undefined;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["PortfolioAccountStateListResponse"];
                 };
             };
             422: {

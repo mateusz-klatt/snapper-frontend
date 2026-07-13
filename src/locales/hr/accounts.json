@@ -1,0 +1,76 @@
+{
+  "page": {
+    "title": "Računi na burzi",
+    "subtitle": "Gotovinska salda i otvorene pozicije, označene prema izvješću burze."
+  },
+  "empty": {
+    "title": "Nema računa",
+    "message": "Salda i pozicije će se pojaviti ovdje kada se otkrije račun."
+  },
+  "banner": {
+    "title": "Neki podaci računa nisu u stvarnom vremenu",
+    "message": "Redci koji nisu označeni kao Živo prikazuju stare, simulirane ili nedostupne podatke."
+  },
+  "unavailable": {
+    "title": "Pouzdani podaci računa nisu dostupni",
+    "message": "Stanje računa na burzi nije moguće učitati. Račun nije prazan; podaci su trenutačno nedostupni."
+  },
+  "status": {
+    "observed": "U stvarnom vremenu",
+    "simulated": "Simulirano",
+    "stale": "Zastarjelo",
+    "clockError": "Pogreška sata",
+    "corrupt": "Neprovjereno",
+    "unsupported": "Nedostupno",
+    "notApplicable": "Nije primjenjivo",
+    "unknown": "Nepoznato"
+  },
+  "statusTooltip": {
+    "observed": "Pouzdani podaci burze u stvarnom vremenu, zabilježeni tijekom razdoblja valjanosti.",
+    "simulated": "Podaci trgovanja na papiru — nisu stvarna salda burze.",
+    "stale": "Posljednja poznata snimka; razdoblje valjanosti je isteklo ili je dohvat zastao.",
+    "clockError": "Vrijeme opservacije nije usklađeno sa satom poslužitelja.",
+    "corrupt": "Snimka nije prošla provjeru.",
+    "unsupported": "Ova burza ne prijavljuje stanje računa.",
+    "notApplicable": "Ova se komponenta ne odnosi na burzu.",
+    "unknown": "Status se ne može klasificirati."
+  },
+  "section": {
+    "balances": "Salda",
+    "positions": "Otvorene pozicije"
+  },
+  "sectionEmpty": {
+    "balances": "Nema prijavljenih salda",
+    "positions": "Nema otvorenih pozicija"
+  },
+  "balance": {
+    "currency": "Valuta",
+    "total": "Ukupno",
+    "free": "Slobodno",
+    "used": "Korišteno"
+  },
+  "position": {
+    "symbol": "Simbol",
+    "side": "Strana",
+    "size": "Veličina",
+    "entryPrice": "Ulazna cijena",
+    "markPrice": "Referentna cijena",
+    "unrealizedPnl": "Nerealizirana dobit/gubitak",
+    "unrealizedFunding": "Financiranje"
+  },
+  "side": {
+    "buy": "Kupi",
+    "sell": "Prodaj"
+  },
+  "mode": {
+    "live": "Stvarno",
+    "paper": "Demo"
+  },
+  "meta": {
+    "balancesObserved": "Salda uočena {{timestamp}}",
+    "positionsObserved": "Pozicije uočene {{timestamp}}",
+    "authoritativeUntil": "Pouzdano do {{timestamp}}",
+    "error": "Pogreška: {{message}}"
+  },
+  "noValue": "N/D"
+}

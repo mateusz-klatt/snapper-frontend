@@ -66,6 +66,7 @@
     "tryAgain": "ลองอีกครั้ง"
   },
   "nav": {
+    "accounts": "บัญชีศูนย์ซื้อขาย",
     "admin": "การดูแลระบบ",
     "aiIntegration": "การเชื่อมต่อ AI",
     "aiReviews": "การตรวจทาน AI",
