@@ -26,6 +26,24 @@ export const CLIENT_AUTHORITY_STALENESS_MS = 15_000
 const CLIENT_OBSERVATION_MAX_WINDOW_MS = 900_000
 
 /**
+ * Tolerance for the fail-closed "future clock" guards when comparing the ticked
+ * client clock against real-time (react-query ``dataUpdatedAt``) or server
+ * (``*_observed_at``) timestamps.
+ *
+ * ``now`` is sourced from a ``useNow`` interval that only advances once per tick
+ * (1s), so between ticks it LAGS real wall-clock by up to the tick interval.
+ * ``dataUpdatedAt`` and a freshly written ``balance_observed_at`` are real
+ * timestamps, so right after a successful fetch (or a new observation) they
+ * legitimately sit a few hundred ms AHEAD of the lagging ``now`` — which a naive
+ * ``x > now`` reads as a rolled-back/forged future clock and would flap the row
+ * to ``stale`` for up to a tick on every 5s poll. Tolerating this much skew
+ * removes the false demotion while still failing closed on a genuine clock
+ * rollback or a forged far-future timestamp, both of which exceed it by orders
+ * of magnitude (seconds→years, versus this sub-tick allowance).
+ */
+export const CLIENT_CLOCK_SKEW_TOLERANCE_MS = 2_000
+
+/**
  * Client-side re-derivation of a venue-account row's truth, fail-closed.
  *
  * The server computes ``effective_status``/``is_authoritative`` at FETCH time.
@@ -100,12 +118,12 @@ export const deriveAccountTruth = (
     positionObs != null && positionObs !== '' ? Date.parse(positionObs) : Number.NaN
   const balanceObservationBad =
     !Number.isFinite(balanceObservedMs) ||
-    balanceObservedMs > now ||
+    balanceObservedMs > now + CLIENT_CLOCK_SKEW_TOLERANCE_MS ||
     now >= balanceObservedMs + CLIENT_OBSERVATION_MAX_WINDOW_MS
   const positionObservationBad =
     state.position_status === 'observed' &&
     (!Number.isFinite(positionObservedMs) ||
-      positionObservedMs > now ||
+      positionObservedMs > now + CLIENT_CLOCK_SKEW_TOLERANCE_MS ||
       now >= positionObservedMs + CLIENT_OBSERVATION_MAX_WINDOW_MS)
   const observationExpired = balanceObservationBad || positionObservationBad
   const authorityExpired =
@@ -114,7 +132,7 @@ export const deriveAccountTruth = (
     lastSuccessfulFetch === null ||
     !Number.isFinite(lastSuccessfulFetch) ||
     lastSuccessfulFetch <= 0 ||
-    lastSuccessfulFetch > now ||
+    lastSuccessfulFetch > now + CLIENT_CLOCK_SKEW_TOLERANCE_MS ||
     now - lastSuccessfulFetch > CLIENT_AUTHORITY_STALENESS_MS
 
   if (authorityExpired || pollingStalled) {
