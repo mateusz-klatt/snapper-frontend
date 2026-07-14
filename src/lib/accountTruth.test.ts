@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest'
-import { deriveAccountTruth, statusTone, CLIENT_AUTHORITY_STALENESS_MS } from './accountTruth'
+import {
+  deriveAccountTruth,
+  statusTone,
+  CLIENT_AUTHORITY_STALENESS_MS,
+  CLIENT_CLOCK_SKEW_TOLERANCE_MS,
+} from './accountTruth'
 import type { PortfolioAccountState } from '../types/api'
 
 const NOW = Date.parse('2026-07-13T12:00:00Z')
@@ -208,6 +213,73 @@ describe('deriveAccountTruth', () => {
       makeState({
         authoritative_until: FUTURE,
         position_status: 'observed',
+        position_observed_at: null,
+      }),
+      NOW,
+      NOW
+    )
+
+    expect(truth.authorityExpired).toBe(true)
+    expect(truth.isAuthoritative).toBe(false)
+  })
+
+  it('stays authoritative when the last fetch epoch is barely ahead of the ticked clock (within skew tolerance)', () => {
+    const fetchedAt = NOW + CLIENT_CLOCK_SKEW_TOLERANCE_MS - 1
+    const truth = deriveAccountTruth(makeState({ authoritative_until: FUTURE }), NOW, fetchedAt)
+
+    expect(truth.pollingStalled).toBe(false)
+    expect(truth.clientEffectiveStatus).toBe('observed')
+    expect(truth.isAuthoritative).toBe(true)
+  })
+
+  it('demotes to stale when the last fetch epoch exceeds the skew tolerance (real clock rollback)', () => {
+    const fetchedAt = NOW + CLIENT_CLOCK_SKEW_TOLERANCE_MS + 1
+    const truth = deriveAccountTruth(makeState({ authoritative_until: FUTURE }), NOW, fetchedAt)
+
+    expect(truth.pollingStalled).toBe(true)
+    expect(truth.isAuthoritative).toBe(false)
+  })
+
+  it('stays authoritative when a fresh balance observation is barely ahead of the ticked clock', () => {
+    const observedAt = new Date(NOW + CLIENT_CLOCK_SKEW_TOLERANCE_MS - 1).toISOString()
+    const truth = deriveAccountTruth(
+      makeState({
+        authoritative_until: FUTURE,
+        balance_observed_at: observedAt,
+        position_status: 'not_applicable',
+        position_observed_at: null,
+      }),
+      NOW,
+      NOW
+    )
+
+    expect(truth.authorityExpired).toBe(false)
+    expect(truth.isAuthoritative).toBe(true)
+  })
+
+  it('stays authoritative when a fresh position observation is barely ahead of the ticked clock', () => {
+    const observedAt = new Date(NOW + CLIENT_CLOCK_SKEW_TOLERANCE_MS - 1).toISOString()
+    const truth = deriveAccountTruth(
+      makeState({
+        authoritative_until: FUTURE,
+        position_status: 'observed',
+        position_observed_at: observedAt,
+      }),
+      NOW,
+      NOW
+    )
+
+    expect(truth.authorityExpired).toBe(false)
+    expect(truth.isAuthoritative).toBe(true)
+  })
+
+  it('demotes when a balance observation is further ahead than the skew tolerance allows', () => {
+    const observedAt = new Date(NOW + CLIENT_CLOCK_SKEW_TOLERANCE_MS + 60_000).toISOString()
+    const truth = deriveAccountTruth(
+      makeState({
+        authoritative_until: FUTURE,
+        balance_observed_at: observedAt,
+        position_status: 'not_applicable',
         position_observed_at: null,
       }),
       NOW,
