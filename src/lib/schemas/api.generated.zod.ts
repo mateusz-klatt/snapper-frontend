@@ -24,6 +24,10 @@ const _AccountBalanceEntryRawSchema = z
     total: z.number(),
     free: z.number().nullable().optional(),
     used: z.number().nullable().optional(),
+    total_decimal: z.string().nullable().optional(),
+    free_decimal: z.string().nullable().optional(),
+    used_decimal: z.string().nullable().optional(),
+    numeric_provenance: z.string().nullable().optional(),
   })
   .strict()
 

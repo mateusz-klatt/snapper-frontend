@@ -1805,6 +1805,10 @@ export type Components = {
             total: number;
             free?: number | null | undefined;
             used?: number | null | undefined;
+            total_decimal?: string | null | undefined;
+            free_decimal?: string | null | undefined;
+            used_decimal?: string | null | undefined;
+            numeric_provenance?: string | null | undefined;
         };
         AccountPositionEntry: {
             symbol: string;
