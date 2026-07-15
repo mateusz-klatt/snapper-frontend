@@ -756,6 +756,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/wallets/{wallet_public_id}/credentials/{credential_public_id}/reconciliation-method": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: Operations["set_credential_reconciliation_method_api_wallets__wallet_public_id__credentials__credential_public_id__reconciliation_method_put"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/wallets/{wallet_public_id}/credentials/{credential_public_id}/rotate": {
         parameters: {
             query?: never;
@@ -2416,6 +2432,27 @@ export type Components = {
             payload: Components["schemas"]["CredentialSummary"][];
             count: number;
         };
+        CredentialReconciliationMethodInfo: {
+            type: "credential_reconciliation_method_info";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            wallet_public_id: string;
+            exchange: string;
+            mode: "live";
+            method: Components["schemas"]["RealPortfolioReconciliationMethod"];
+        };
+        CredentialReconciliationMethodResponse: {
+            type: "credential_reconciliation_method_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["CredentialReconciliationMethodInfo"];
+        };
         CredentialResponse: {
             type: "credential_response";
             sequence_id: number;
@@ -3621,6 +3658,7 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["PushBetaConfigRead"];
         };
+        RealPortfolioReconciliationMethod: "futures_position" | "spot_execution_replay" | "margin_ledger_replay";
         RefreshData: {
             type: "refresh";
             sequence_id: number;
@@ -4645,10 +4683,24 @@ export type Components = {
         CreateCredentialBody: {
             exchange: string;
             credential_type: "api_key_secret" | "rsa_pem" | "oauth" | "paper";
+            reconciliation_method: Components["schemas"]["PortfolioReconciliationMethod"];
             credential_payload: {
                 [key: string]: string;
             };
             label?: string | null;
+        };
+        PortfolioReconciliationMethod: "futures_position" | "spot_execution_replay" | "margin_ledger_replay" | "unclassified";
+        SetCredentialReconciliationMethodCommand: {
+            type?: "set_credential_reconciliation_method_command";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["SetCredentialReconciliationMethodBody"];
+        };
+        SetCredentialReconciliationMethodBody: {
+            reconciliation_method: Components["schemas"]["RealPortfolioReconciliationMethod"];
         };
         RotateCredentialCommand: {
             type?: "rotate_credential_command";
@@ -6520,6 +6572,40 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["CredentialResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    set_credential_reconciliation_method_api_wallets__wallet_public_id__credentials__credential_public_id__reconciliation_method_put: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                wallet_public_id: string;
+                credential_public_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["SetCredentialReconciliationMethodCommand"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["CredentialReconciliationMethodResponse"];
                 };
             };
             422: {

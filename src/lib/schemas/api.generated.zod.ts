@@ -1186,6 +1186,17 @@ export const PushBetaConfigReadSchema = _PushBetaConfigReadRawSchema as unknown 
   Components['schemas']['PushBetaConfigRead']
 >
 
+const _RealPortfolioReconciliationMethodRawSchema = z.enum([
+  'futures_position',
+  'spot_execution_replay',
+  'margin_ledger_replay',
+])
+
+export const RealPortfolioReconciliationMethodSchema =
+  _RealPortfolioReconciliationMethodRawSchema as unknown as z.ZodType<
+    Components['schemas']['RealPortfolioReconciliationMethod']
+  >
+
 const _RelatedInstrumentDataRawSchema = z
   .object({
     type: z.literal('related_instrument'),
@@ -1889,18 +1900,17 @@ export const BacktestCancelBodySchema = _BacktestCancelBodyRawSchema as unknown 
   Components['schemas']['BacktestCancelBody']
 >
 
-const _CreateCredentialBodyRawSchema = z
-  .object({
-    exchange: z.string().min(1).max(20),
-    credential_type: z.enum(['api_key_secret', 'rsa_pem', 'oauth', 'paper']),
-    credential_payload: z.record(z.string(), z.string()),
-    label: z.string().max(128).nullable().optional(),
-  })
-  .strict()
+const _PortfolioReconciliationMethodRawSchema = z.enum([
+  'futures_position',
+  'spot_execution_replay',
+  'margin_ledger_replay',
+  'unclassified',
+])
 
-export const CreateCredentialBodySchema = _CreateCredentialBodyRawSchema as unknown as z.ZodType<
-  Components['schemas']['CreateCredentialBody']
->
+export const PortfolioReconciliationMethodSchema =
+  _PortfolioReconciliationMethodRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioReconciliationMethod']
+  >
 
 const _RotateCredentialBodyRawSchema = z
   .object({
@@ -2916,6 +2926,37 @@ export const PushBetaConfigResponseSchema =
     Components['schemas']['PushBetaConfigResponse']
   >
 
+const _CredentialReconciliationMethodInfoRawSchema = z
+  .object({
+    type: z.literal('credential_reconciliation_method_info'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+    exchange: z.string(),
+    mode: z.literal('live'),
+    method: RealPortfolioReconciliationMethodSchema,
+  })
+  .strict()
+
+export const CredentialReconciliationMethodInfoSchema =
+  _CredentialReconciliationMethodInfoRawSchema as unknown as z.ZodType<
+    Components['schemas']['CredentialReconciliationMethodInfo']
+  >
+
+const _SetCredentialReconciliationMethodBodyRawSchema = z
+  .object({
+    reconciliation_method: RealPortfolioReconciliationMethodSchema,
+  })
+  .strict()
+
+export const SetCredentialReconciliationMethodBodySchema =
+  _SetCredentialReconciliationMethodBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['SetCredentialReconciliationMethodBody']
+  >
+
 const _RelatedInstrumentsGroupRawSchema = z
   .object({
     relationship_type: z.string(),
@@ -3692,22 +3733,19 @@ export const BacktestCancelCommandSchema = _BacktestCancelCommandRawSchema as un
   Components['schemas']['BacktestCancelCommand']
 >
 
-const _CreateCredentialCommandRawSchema = z
+const _CreateCredentialBodyRawSchema = z
   .object({
-    type: z.literal('create_credential_command').optional(),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: CreateCredentialBodySchema,
+    exchange: z.string().min(1).max(20),
+    credential_type: z.enum(['api_key_secret', 'rsa_pem', 'oauth', 'paper']),
+    reconciliation_method: PortfolioReconciliationMethodSchema,
+    credential_payload: z.record(z.string(), z.string()),
+    label: z.string().max(128).nullable().optional(),
   })
   .strict()
 
-export const CreateCredentialCommandSchema =
-  _CreateCredentialCommandRawSchema as unknown as z.ZodType<
-    Components['schemas']['CreateCredentialCommand']
-  >
+export const CreateCredentialBodySchema = _CreateCredentialBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateCredentialBody']
+>
 
 const _RotateCredentialCommandRawSchema = z
   .object({
@@ -4195,6 +4233,40 @@ export const ProcessSummaryResponseSchema =
     Components['schemas']['ProcessSummaryResponse']
   >
 
+const _CredentialReconciliationMethodResponseRawSchema = z
+  .object({
+    type: z.literal('credential_reconciliation_method_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: CredentialReconciliationMethodInfoSchema,
+  })
+  .strict()
+
+export const CredentialReconciliationMethodResponseSchema =
+  _CredentialReconciliationMethodResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['CredentialReconciliationMethodResponse']
+  >
+
+const _SetCredentialReconciliationMethodCommandRawSchema = z
+  .object({
+    type: z.literal('set_credential_reconciliation_method_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: SetCredentialReconciliationMethodBodySchema,
+  })
+  .strict()
+
+export const SetCredentialReconciliationMethodCommandSchema =
+  _SetCredentialReconciliationMethodCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['SetCredentialReconciliationMethodCommand']
+  >
+
 const _RelatedInstrumentsPayloadDataRawSchema = z
   .object({
     selected: RelatedInstrumentsSelectedSchema,
@@ -4445,6 +4517,23 @@ const _ZmqHealthResponseRawSchema = z
 export const ZmqHealthResponseSchema = _ZmqHealthResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['ZmqHealthResponse']
 >
+
+const _CreateCredentialCommandRawSchema = z
+  .object({
+    type: z.literal('create_credential_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: CreateCredentialBodySchema,
+  })
+  .strict()
+
+export const CreateCredentialCommandSchema =
+  _CreateCredentialCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['CreateCredentialCommand']
+  >
 
 const _EgressHealthResponseRawSchema = z
   .object({
@@ -5507,6 +5596,8 @@ export type ProcessStatus = Components['schemas']['ProcessStatus']
 export type ProcessStopData = Components['schemas']['ProcessStopData']
 export type ProcessSummaryItem = Components['schemas']['ProcessSummaryItem']
 export type PushBetaConfigRead = Components['schemas']['PushBetaConfigRead']
+export type RealPortfolioReconciliationMethod =
+  Components['schemas']['RealPortfolioReconciliationMethod']
 export type RelatedInstrumentData = Components['schemas']['RelatedInstrumentData']
 export type RelatedInstrumentsSelected = Components['schemas']['RelatedInstrumentsSelected']
 export type RelatedInstrumentsUnderlying = Components['schemas']['RelatedInstrumentsUnderlying']
@@ -5554,7 +5645,7 @@ export type AiReviewDecisionRequest = Components['schemas']['AiReviewDecisionReq
 export type UserAlertDefaultBody = Components['schemas']['UserAlertDefaultBody']
 export type BacktestCompareBody = Components['schemas']['BacktestCompareBody']
 export type BacktestCancelBody = Components['schemas']['BacktestCancelBody']
-export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
+export type PortfolioReconciliationMethod = Components['schemas']['PortfolioReconciliationMethod']
 export type RotateCredentialBody = Components['schemas']['RotateCredentialBody']
 export type RegisterDeviceBody = Components['schemas']['RegisterDeviceBody']
 export type DeviceAlertPrefBody = Components['schemas']['DeviceAlertPrefBody']
@@ -5620,6 +5711,10 @@ export type ProcessStartResponse = Components['schemas']['ProcessStartResponse']
 export type ProcessStopResponse = Components['schemas']['ProcessStopResponse']
 export type ProcessSummaryData = Components['schemas']['ProcessSummaryData']
 export type PushBetaConfigResponse = Components['schemas']['PushBetaConfigResponse']
+export type CredentialReconciliationMethodInfo =
+  Components['schemas']['CredentialReconciliationMethodInfo']
+export type SetCredentialReconciliationMethodBody =
+  Components['schemas']['SetCredentialReconciliationMethodBody']
 export type RelatedInstrumentsGroup = Components['schemas']['RelatedInstrumentsGroup']
 export type RestRateData = Components['schemas']['RestRateData']
 export type RetentionRunData = Components['schemas']['RetentionRunData']
@@ -5667,7 +5762,7 @@ export type AiReviewDecisionCommand = Components['schemas']['AiReviewDecisionCom
 export type UpdateUserAlertDefaultCommand = Components['schemas']['UpdateUserAlertDefaultCommand']
 export type BacktestCompareRequest = Components['schemas']['BacktestCompareRequest']
 export type BacktestCancelCommand = Components['schemas']['BacktestCancelCommand']
-export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
+export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
 export type RotateCredentialCommand = Components['schemas']['RotateCredentialCommand']
 export type RegisterDeviceCommand = Components['schemas']['RegisterDeviceCommand']
 export type UpdateDevicePrefCommand = Components['schemas']['UpdateDevicePrefCommand']
@@ -5698,6 +5793,10 @@ export type PairedExecutionIncident = Components['schemas']['PairedExecutionInci
 export type PairedGroupTerminalizeResponse = Components['schemas']['PairedGroupTerminalizeResponse']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
 export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
+export type CredentialReconciliationMethodResponse =
+  Components['schemas']['CredentialReconciliationMethodResponse']
+export type SetCredentialReconciliationMethodCommand =
+  Components['schemas']['SetCredentialReconciliationMethodCommand']
 export type RelatedInstrumentsPayloadData = Components['schemas']['RelatedInstrumentsPayloadData']
 export type RestRateResponse = Components['schemas']['RestRateResponse']
 export type RetentionRunResponse = Components['schemas']['RetentionRunResponse']
@@ -5713,6 +5812,7 @@ export type CreateUserRequest = Components['schemas']['CreateUserRequest']
 export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
 export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
+export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
 export type AdminAiReviewItem = Components['schemas']['AdminAiReviewItem']
