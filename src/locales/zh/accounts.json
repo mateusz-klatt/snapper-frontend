@@ -72,5 +72,39 @@
     "authoritativeUntil": "权威数据至 {{timestamp}}",
     "error": "错误：{{message}}"
   },
-  "noValue": "无"
+  "noValue": "无",
+  "reconciliation": {
+    "status": {
+      "reconciled": "已对账",
+      "driftDetected": "检测到偏差",
+      "openDrift": "检测到偏差 · 开启 ({{count}})",
+      "unclassified": "未分类 — 需要分类",
+      "notReconciled": "尚未对账",
+      "stale": "已过期",
+      "clockError": "时钟错误",
+      "reconciliationError": "对账错误",
+      "unsupported": "不支持",
+      "unverified": "未验证"
+    },
+    "method": {
+      "futuresPosition": "期货仓位",
+      "spotExecutionReplay": "现货成交回放",
+      "marginLedgerReplay": "保证金分类账回放",
+      "unclassified": "未分类",
+      "notAssigned": "未分配方法",
+      "unknown": "未知方法"
+    },
+    "statusTooltip": {
+      "reconciled": "方法：{{method}}。权威对账证据相符。",
+      "driftDetected": "方法：{{method}}。权威对账证据发现不一致。",
+      "openDrift": "方法：{{method}}。在 {{count}} 次连续完全不一致后，仍有未解决的偏差事件。",
+      "unclassified": "方法：{{method}}。运行对账前需要操作员进行分类。",
+      "notReconciled": "方法：{{method}}。对账证据尚未完整。",
+      "stale": "方法：{{method}}。对账判定结果太旧，无法信任。",
+      "clockError": "方法：{{method}}。对账时间戳与服务器时钟冲突。",
+      "reconciliationError": "方法：{{method}}。对账无法产生可靠的判定结果。",
+      "unsupported": "方法：{{method}}。此账户不支持对账。",
+      "unverified": "方法：{{method}}。此判定结果不具权威性，且不被信任为已对账。"
+    }
+  }
 }

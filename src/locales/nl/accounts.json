@@ -72,5 +72,39 @@
     "authoritativeUntil": "Betrouwbaar tot {{timestamp}}",
     "error": "Fout: {{message}}"
   },
-  "noValue": "Niet beschikbaar"
+  "noValue": "Niet beschikbaar",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Gereconcilieerd",
+      "driftDetected": "Afwijking gedetecteerd",
+      "openDrift": "Afwijking gedetecteerd · open ({{count}})",
+      "unclassified": "Niet geclassificeerd — classificatie vereist",
+      "notReconciled": "Nog niet gereconcilieerd",
+      "stale": "Verouderd",
+      "clockError": "Klokfout",
+      "reconciliationError": "Reconciliatiefout",
+      "unsupported": "Niet ondersteund",
+      "unverified": "Niet geverifieerd"
+    },
+    "method": {
+      "futuresPosition": "Futures-posities",
+      "spotExecutionReplay": "Spot-uitvoeringsreplay",
+      "marginLedgerReplay": "Margin-grootboekreplay",
+      "unclassified": "Niet geclassificeerd",
+      "notAssigned": "Methode niet toegewezen",
+      "unknown": "Onbekende methode"
+    },
+    "statusTooltip": {
+      "reconciled": "Methode: {{method}}. Gezaghebbend reconciliatiebewijs kwam overeen.",
+      "driftDetected": "Methode: {{method}}. Gezaghebbend reconciliatiebewijs vond een mismatch.",
+      "openDrift": "Methode: {{method}}. Een open afwijkingsepisode blijft over na {{count}} opeenvolgende volledige mismatches.",
+      "unclassified": "Methode: {{method}}. Classificatie door operator is vereist voordat reconciliatie kan worden uitgevoerd.",
+      "notReconciled": "Methode: {{method}}. Reconciliatiebewijs is nog niet compleet.",
+      "stale": "Methode: {{method}}. Het reconciliatie-oordeel is te oud om te vertrouwen.",
+      "clockError": "Methode: {{method}}. Reconciliatiestempels conflicteren met de serverklok.",
+      "reconciliationError": "Methode: {{method}}. Reconciliatie kon geen betrouwbaar oordeel produceren.",
+      "unsupported": "Methode: {{method}}. Reconciliatie wordt niet ondersteund voor dit account.",
+      "unverified": "Methode: {{method}}. Dit oordeel is niet gezaghebbend en wordt niet als gereconcilieerd vertrouwd."
+    }
+  }
 }

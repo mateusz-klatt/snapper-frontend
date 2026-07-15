@@ -72,5 +72,39 @@
     "authoritativeUntil": "Vahvistettu tilaan {{timestamp}} asti",
     "error": "Virhe: {{message}}"
   },
-  "noValue": "Ei saatavilla"
+  "noValue": "Ei saatavilla",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Täsmäytetty",
+      "driftDetected": "Poikkeama havaittu",
+      "openDrift": "Poikkeama havaittu · avoin ({{count}})",
+      "unclassified": "Luokittelematon — vaatii luokittelun",
+      "notReconciled": "Ei vielä täsmäytetty",
+      "stale": "Vanhentunut",
+      "clockError": "Kellovirhe",
+      "reconciliationError": "Täsmäytysvirhe",
+      "unsupported": "Ei tuettu",
+      "unverified": "Vahvistamaton"
+    },
+    "method": {
+      "futuresPosition": "Futuuripositiot",
+      "spotExecutionReplay": "Spot-toteutuksen toisto",
+      "marginLedgerReplay": "Marginaalipääkirjan toisto",
+      "unclassified": "Luokittelematon",
+      "notAssigned": "Menetelmää ei määritetty",
+      "unknown": "Tuntematon menetelmä"
+    },
+    "statusTooltip": {
+      "reconciled": "Menetelmä: {{method}}. Luotettavat täsmäytystodisteet täsmäsivät.",
+      "driftDetected": "Menetelmä: {{method}}. Luotettavissa täsmäytystodisteissa havaittiin epäsuhta.",
+      "openDrift": "Menetelmä: {{method}}. Avoin poikkeamaepisodi on jäljellä {{count}} peräkkäisen täyden epäsuhdan jälkeen.",
+      "unclassified": "Menetelmä: {{method}}. Operaattorin luokittelu vaaditaan ennen kuin täsmäytys voidaan suorittaa.",
+      "notReconciled": "Menetelmä: {{method}}. Täsmäytystodisteet eivät ole vielä valmiit.",
+      "stale": "Menetelmä: {{method}}. Täsmäytystulos on liian vanha ollakseen luotettava.",
+      "clockError": "Menetelmä: {{method}}. Täsmäytyksen aikaleimat ovat ristiriidassa palvelimen kellon kanssa.",
+      "reconciliationError": "Menetelmä: {{method}}. Täsmäytys ei tuottanut luotettavaa tulosta.",
+      "unsupported": "Menetelmä: {{method}}. Täsmäytystä ei tueta tälle tilille.",
+      "unverified": "Menetelmä: {{method}}. Tämä tulos ei ole auktorisoitu eikä siihen luoteta täsmäytettynä."
+    }
+  }
 }

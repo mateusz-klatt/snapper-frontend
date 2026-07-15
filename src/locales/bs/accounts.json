@@ -72,5 +72,39 @@
     "authoritativeUntil": "Pouzdano do {{timestamp}}",
     "error": "Greška: {{message}}"
   },
-  "noValue": "Nije dostupno"
+  "noValue": "Nije dostupno",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Usklađeno",
+      "driftDetected": "Otkriveno odstupanje",
+      "openDrift": "Otkriveno odstupanje · otvoreno ({{count}})",
+      "unclassified": "Neklasificirano — zahtijeva klasifikaciju",
+      "notReconciled": "Još nije usklađeno",
+      "stale": "Zastarjelo",
+      "clockError": "Greška sata",
+      "reconciliationError": "Greška pri usklađivanju",
+      "unsupported": "Nije podržano",
+      "unverified": "Neprovjereno"
+    },
+    "method": {
+      "futuresPosition": "Pozicije fjučersa",
+      "spotExecutionReplay": "Reprodukcija spot izvršenja",
+      "marginLedgerReplay": "Reprodukcija glavne knjige marže",
+      "unclassified": "Neklasificirano",
+      "notAssigned": "Metoda nije dodijeljena",
+      "unknown": "Nepoznata metoda"
+    },
+    "statusTooltip": {
+      "reconciled": "Metoda: {{method}}. Autoritativni dokazi o usklađivanju se podudaraju.",
+      "driftDetected": "Metoda: {{method}}. Autoritativni dokazi o usklađivanju su pronašli nepodudarnost.",
+      "openDrift": "Metoda: {{method}}. Otvorena epizoda odstupanja ostaje nakon {{count}} uzastopnih potpunih nepodudarnosti.",
+      "unclassified": "Metoda: {{method}}. Klasifikacija operatera je neophodna prije pokretanja usklađivanja.",
+      "notReconciled": "Metoda: {{method}}. Dokazi o usklađivanju još nisu potpuni.",
+      "stale": "Metoda: {{method}}. Presuda o usklađivanju je prestara da bi bila pouzdana.",
+      "clockError": "Metoda: {{method}}. Vremenske oznake usklađivanja su u sukobu sa satom servera.",
+      "reconciliationError": "Metoda: {{method}}. Usklađivanje nije moglo donijeti pouzdanu presudu.",
+      "unsupported": "Metoda: {{method}}. Usklađivanje nije podržano za ovaj račun.",
+      "unverified": "Metoda: {{method}}. Ova presuda nije autoritativna i ne smatra se pouzdanom."
+    }
+  }
 }

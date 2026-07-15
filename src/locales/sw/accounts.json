@@ -72,5 +72,39 @@
     "authoritativeUntil": "Inaaminika hadi {{timestamp}}",
     "error": "Hitilafu: {{message}}"
   },
-  "noValue": "Haipatikani"
+  "noValue": "Haipatikani",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Imepatanishwa",
+      "driftDetected": "Mchepuko umegunduliwa",
+      "openDrift": "Mchepuko umegunduliwa · ipo wazi ({{count}})",
+      "unclassified": "Haijaainishwa — inahitaji kuainishwa",
+      "notReconciled": "Bado haijapatanishwa",
+      "stale": "Pitwa na wakati",
+      "clockError": "Hitilafu ya saa",
+      "reconciliationError": "Hitilafu ya upatanisho",
+      "unsupported": "Haitumiki",
+      "unverified": "Haijathibitishwa"
+    },
+    "method": {
+      "futuresPosition": "Nafasi za futures",
+      "spotExecutionReplay": "Marejeo ya utekelezaji wa spot",
+      "marginLedgerReplay": "Marejeo ya leja ya margin",
+      "unclassified": "Haijaainishwa",
+      "notAssigned": "Njia haijatolewa",
+      "unknown": "Njia isiyojulikana"
+    },
+    "statusTooltip": {
+      "reconciled": "Njia: {{method}}. Uthibitisho rasmi wa upatanisho ulingana.",
+      "driftDetected": "Njia: {{method}}. Uthibitisho rasmi wa upatanisho ulipata hitilafu ya kutolingana.",
+      "openDrift": "Njia: {{method}}. Tukio la mchepuko ulio wazi linasalia baada ya {{count}} kamili za kutolingana zinazofuatana.",
+      "unclassified": "Njia: {{method}}. Uainishaji wa opereta unahitajika kabla ya upatanisho kuanzishwa.",
+      "notReconciled": "Njia: {{method}}. Uthibitisho wa upatanisho bado haujakamilika.",
+      "stale": "Njia: {{method}}. Uamuzi wa upatanisho ni wa zamani mno kuweza kuaminika.",
+      "clockError": "Njia: {{method}}. Mihuri ya muda ya upatanisho inagongana na saa ya seva.",
+      "reconciliationError": "Njia: {{method}}. Upatanisho haukuweza kutoa uamuzi unaoaminika.",
+      "unsupported": "Njia: {{method}}. Upatanisho hautumiki kwa akaunti hii.",
+      "unverified": "Njia: {{method}}. Uamuzi huu si rasmi na hauaminiki kama uliopatanishwa."
+    }
+  }
 }

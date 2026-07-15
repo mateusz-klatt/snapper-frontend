@@ -35,6 +35,40 @@
     "notApplicable": "This component does not apply to the venue.",
     "unknown": "Status could not be classified; treated as not authoritative."
   },
+  "reconciliation": {
+    "status": {
+      "reconciled": "Reconciled",
+      "driftDetected": "Drift detected",
+      "openDrift": "Drift detected · open ({{count}})",
+      "unclassified": "Unclassified — needs classification",
+      "notReconciled": "Not yet reconciled",
+      "stale": "Stale",
+      "clockError": "Clock error",
+      "reconciliationError": "Reconciliation error",
+      "unsupported": "Not supported",
+      "unverified": "Unverified"
+    },
+    "method": {
+      "futuresPosition": "Futures positions",
+      "spotExecutionReplay": "Spot execution replay",
+      "marginLedgerReplay": "Margin ledger replay",
+      "unclassified": "Unclassified",
+      "notAssigned": "Method not assigned",
+      "unknown": "Unknown method"
+    },
+    "statusTooltip": {
+      "reconciled": "Method: {{method}}. Authoritative reconciliation evidence matched.",
+      "driftDetected": "Method: {{method}}. Authoritative reconciliation evidence found a mismatch.",
+      "openDrift": "Method: {{method}}. An open drift episode remains after {{count}} consecutive full mismatches.",
+      "unclassified": "Method: {{method}}. Operator classification is required before reconciliation can run.",
+      "notReconciled": "Method: {{method}}. Reconciliation evidence is not complete yet.",
+      "stale": "Method: {{method}}. The reconciliation verdict is too old to trust.",
+      "clockError": "Method: {{method}}. Reconciliation timestamps conflict with the server clock.",
+      "reconciliationError": "Method: {{method}}. Reconciliation could not produce a trustworthy verdict.",
+      "unsupported": "Method: {{method}}. Reconciliation is not supported for this account.",
+      "unverified": "Method: {{method}}. This verdict is not authoritative and is not trusted as reconciled."
+    }
+  },
   "section": {
     "balances": "Balances",
     "positions": "Open positions"

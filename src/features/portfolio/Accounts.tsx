@@ -11,6 +11,7 @@ import { EmptyState } from '../../components/ui'
 import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import { AccountTruthBadge } from './AccountTruthBadge'
+import { ReconciliationBadge } from './ReconciliationBadge'
 import { PortfolioTruthBanner } from './PortfolioTruthBanner'
 import type {
   AccountBalanceEntry,
@@ -155,9 +156,14 @@ const PositionsTable: React.FC<Readonly<PositionsTableProps>> = ({ positions, su
 interface AccountCardProps {
   account: PortfolioAccountState
   clientEffectiveStatus: string
+  isClientAuthoritative: boolean
 }
 
-const AccountCard: React.FC<Readonly<AccountCardProps>> = ({ account, clientEffectiveStatus }) => {
+const AccountCard: React.FC<Readonly<AccountCardProps>> = ({
+  account,
+  clientEffectiveStatus,
+  isClientAuthoritative,
+}) => {
   const { t, i18n } = useTranslation('accounts')
   const locale = i18n.language as AppLocale
   const suffix = accountKey(account)
@@ -175,7 +181,13 @@ const AccountCard: React.FC<Readonly<AccountCardProps>> = ({ account, clientEffe
           </span>
           <span className='text-sm text-muted-500'>{account.wallet_public_id}</span>
         </div>
-        <AccountTruthBadge status={clientEffectiveStatus} />
+        <div className='flex flex-wrap items-center justify-end gap-2'>
+          <AccountTruthBadge status={clientEffectiveStatus} />
+          <ReconciliationBadge
+            reconciliation={account.reconciliation}
+            isClientAuthoritative={isClientAuthoritative}
+          />
+        </div>
       </div>
 
       <div className='space-y-4'>
@@ -324,6 +336,7 @@ export const Accounts: React.FC = () => {
                 key={accountKey(account)}
                 account={account}
                 clientEffectiveStatus={truth.clientEffectiveStatus}
+                isClientAuthoritative={truth.isAuthoritative}
               />
             ))}
           </div>

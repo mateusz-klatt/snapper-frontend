@@ -72,5 +72,39 @@
     "authoritativeUntil": "מהימן עד {{timestamp}}",
     "error": "שגיאה: {{message}}"
   },
-  "noValue": "לא זמין"
+  "noValue": "לא זמין",
+  "reconciliation": {
+    "status": {
+      "reconciled": "הותאם",
+      "driftDetected": "זוהתה סחף",
+      "openDrift": "זוהתה סחף · פתוח ({{count}})",
+      "unclassified": "לא מסווג — דורש סיווג",
+      "notReconciled": "טרם הותאם",
+      "stale": "לא מעודכן",
+      "clockError": "שגיאת שעון",
+      "reconciliationError": "שגיאת התאמה",
+      "unsupported": "לא נתמך",
+      "unverified": "לא מאומת"
+    },
+    "method": {
+      "futuresPosition": "פוזיציות חוזים עתידיים",
+      "spotExecutionReplay": "שחזור ביצוע ספוט",
+      "marginLedgerReplay": "שחזור ספר חשבונות מרג'ין",
+      "unclassified": "לא מסווג",
+      "notAssigned": "לא הוקצתה שיטה",
+      "unknown": "שיטה לא ידועה"
+    },
+    "statusTooltip": {
+      "reconciled": "שיטה: {{method}}. ראיות התאמה מוסמכות תואמות.",
+      "driftDetected": "שיטה: {{method}}. ראיות התאמה מוסמכות מצאו אי-התאמה.",
+      "openDrift": "שיטה: {{method}}. נותר אירוע סחף פתוח לאחר {{count}} אי-התאמות מלאות ורצופות.",
+      "unclassified": "שיטה: {{method}}. נדרש סיווג מפעיל לפני שניתן יהיה לבצע התאמה.",
+      "notReconciled": "שיטה: {{method}}. ראיות ההתאמה טרם הושלמו.",
+      "stale": "שיטה: {{method}}. פסק ההתאמה ישן מדי מכדי לסמוך עליו.",
+      "clockError": "שיטה: {{method}}. חותמות זמן של התאמה מתנגשות עם שעון השרת.",
+      "reconciliationError": "שיטה: {{method}}. ההתאמה לא הצליחה להפיק פסק אמין.",
+      "unsupported": "שיטה: {{method}}. התאמה אינה נתמכת עבור חשבון זה.",
+      "unverified": "שיטה: {{method}}. פסק זה אינו מוסמך ואינו נחשב כאמין או מותאם."
+    }
+  }
 }

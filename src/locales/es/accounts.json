@@ -72,5 +72,39 @@
     "authoritativeUntil": "Datos fiables hasta {{timestamp}}",
     "error": "Error: {{message}}"
   },
-  "noValue": "No disponible"
+  "noValue": "No disponible",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Conciliado",
+      "driftDetected": "Desviación detectada",
+      "openDrift": "Desviación detectada · abierta ({{count}})",
+      "unclassified": "Sin clasificar — requiere clasificación",
+      "notReconciled": "Aún no conciliado",
+      "stale": "Obsoleto",
+      "clockError": "Error de reloj",
+      "reconciliationError": "Error de conciliación",
+      "unsupported": "No admitido",
+      "unverified": "No verificado"
+    },
+    "method": {
+      "futuresPosition": "Posiciones de futuros",
+      "spotExecutionReplay": "Reproducción de ejecución spot",
+      "marginLedgerReplay": "Reproducción del libro mayor de margen",
+      "unclassified": "Sin clasificar",
+      "notAssigned": "Método no asignado",
+      "unknown": "Método desconocido"
+    },
+    "statusTooltip": {
+      "reconciled": "Método: {{method}}. La evidencia de conciliación autorizada coincidió.",
+      "driftDetected": "Método: {{method}}. La evidencia de conciliación autorizada encontró una discrepancia.",
+      "openDrift": "Método: {{method}}. Queda un episodio de desviación abierto después de {{count}} discrepancias totales consecutivas.",
+      "unclassified": "Método: {{method}}. Se requiere la clasificación del operador antes de poder ejecutar la conciliación.",
+      "notReconciled": "Método: {{method}}. La evidencia de conciliación aún no está completa.",
+      "stale": "Método: {{method}}. El veredicto de conciliación es demasiado antiguo para ser confiable.",
+      "clockError": "Método: {{method}}. Las marcas de tiempo de conciliación entran en conflicto con el reloj del servidor.",
+      "reconciliationError": "Método: {{method}}. La conciliación no pudo producir un veredicto confiable.",
+      "unsupported": "Método: {{method}}. La conciliación no es compatible con esta cuenta.",
+      "unverified": "Método: {{method}}. Este veredicto no es autoritativo y no se considera conciliado."
+    }
+  }
 }

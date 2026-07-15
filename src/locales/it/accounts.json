@@ -72,5 +72,39 @@
     "authoritativeUntil": "Affidabile fino a {{timestamp}}",
     "error": "Errore: {{message}}"
   },
-  "noValue": "N/D"
+  "noValue": "N/D",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Riconciliato",
+      "driftDetected": "Deriva rilevata",
+      "openDrift": "Deriva rilevata · aperta ({{count}})",
+      "unclassified": "Non classificato — richiede classificazione",
+      "notReconciled": "Non ancora riconciliato",
+      "stale": "Obsoleto",
+      "clockError": "Errore orologio",
+      "reconciliationError": "Errore di riconciliazione",
+      "unsupported": "Non supportato",
+      "unverified": "Non verificato"
+    },
+    "method": {
+      "futuresPosition": "Posizioni futures",
+      "spotExecutionReplay": "Replay esecuzione spot",
+      "marginLedgerReplay": "Replay libro mastro margin",
+      "unclassified": "Non classificato",
+      "notAssigned": "Metodo non assegnato",
+      "unknown": "Metodo sconosciuto"
+    },
+    "statusTooltip": {
+      "reconciled": "Metodo: {{method}}. Le prove di riconciliazione autorevoli corrispondono.",
+      "driftDetected": "Metodo: {{method}}. Le prove di riconciliazione autorevoli hanno rilevato una discrepanza.",
+      "openDrift": "Metodo: {{method}}. Rimane un episodio di deriva aperto dopo {{count}} discrepanze totali consecutive.",
+      "unclassified": "Metodo: {{method}}. È richiesta la classificazione dell'operatore prima di eseguire la riconciliazione.",
+      "notReconciled": "Metodo: {{method}}. Le prove di riconciliazione non sono ancora complete.",
+      "stale": "Metodo: {{method}}. Il verdetto di riconciliazione è troppo vecchio per essere affidabile.",
+      "clockError": "Metodo: {{method}}. I timestamp di riconciliazione sono in conflitto con l'orologio del server.",
+      "reconciliationError": "Metodo: {{method}}. La riconciliazione non ha potuto produrre un verdetto affidabile.",
+      "unsupported": "Metodo: {{method}}. La riconciliazione non è supportata per questo conto.",
+      "unverified": "Metodo: {{method}}. Questo verdetto non è autorevole e non è considerato affidabile come riconciliato."
+    }
+  }
 }

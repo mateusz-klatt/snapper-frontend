@@ -72,5 +72,39 @@
     "authoritativeUntil": "Smerodajné do {{timestamp}}",
     "error": "Chyba: {{message}}"
   },
-  "noValue": "Nie je k dispozícii"
+  "noValue": "Nie je k dispozícii",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Odsúhlasené",
+      "driftDetected": "Zistená odchýlka",
+      "openDrift": "Zistená odchýlka · otvorené ({{count}})",
+      "unclassified": "Neklasifikované — vyžaduje klasifikáciu",
+      "notReconciled": "Zatiaľ neodsúhlasené",
+      "stale": "Zastarané",
+      "clockError": "Chyba hodín",
+      "reconciliationError": "Chyba odsúhlasenia",
+      "unsupported": "Nepodporované",
+      "unverified": "Neoverené"
+    },
+    "method": {
+      "futuresPosition": "Futures pozície",
+      "spotExecutionReplay": "Prehratie spotovej exekúcie",
+      "marginLedgerReplay": "Prehratie maržovej účtovnej knihy",
+      "unclassified": "Neklasifikované",
+      "notAssigned": "Metóda nepriradená",
+      "unknown": "Neznáma metóda"
+    },
+    "statusTooltip": {
+      "reconciled": "Metóda: {{method}}. Smerodajné dôkazy odsúhlasenia sa zhodujú.",
+      "driftDetected": "Metóda: {{method}}. Smerodajné dôkazy odsúhlasenia našli nezhodu.",
+      "openDrift": "Metóda: {{method}}. Otvorená epizóda odchýlky pretrváva po {{count}} po sebe idúcich úplných nezhodách.",
+      "unclassified": "Metóda: {{method}}. Pred spustením odsúhlasenia sa vyžaduje klasifikácia operátorom.",
+      "notReconciled": "Metóda: {{method}}. Dôkazy odsúhlasenia zatiaľ nie sú kompletné.",
+      "stale": "Metóda: {{method}}. Verdikt odsúhlasenia je príliš starý na to, aby mu bolo možné dôverovať.",
+      "clockError": "Metóda: {{method}}. Časové pečiatky odsúhlasenia sú v rozpore s hodinami servera.",
+      "reconciliationError": "Metóda: {{method}}. Odsúhlasenie nedokázalo vyprodukovať dôveryhodný verdikt.",
+      "unsupported": "Metóda: {{method}}. Odsúhlasenie pre tento účet nie je podporované.",
+      "unverified": "Metóda: {{method}}. Tento verdikt nie je smerodajný a nedôveruje sa mu ako odsúhlasenému."
+    }
+  }
 }

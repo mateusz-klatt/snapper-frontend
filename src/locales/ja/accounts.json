@@ -72,5 +72,39 @@
     "authoritativeUntil": "{{timestamp}} まで信頼性あり",
     "error": "エラー: {{message}}"
   },
-  "noValue": "データなし"
+  "noValue": "データなし",
+  "reconciliation": {
+    "status": {
+      "reconciled": "照合済み",
+      "driftDetected": "乖離を検出",
+      "openDrift": "乖離を検出 · オープン ({{count}})",
+      "unclassified": "未分類 — 分類が必要",
+      "notReconciled": "未照合",
+      "stale": "古いデータ",
+      "clockError": "クロックエラー",
+      "reconciliationError": "照合エラー",
+      "unsupported": "未対応",
+      "unverified": "未検証"
+    },
+    "method": {
+      "futuresPosition": "先物ポジション",
+      "spotExecutionReplay": "現物約定リプレイ",
+      "marginLedgerReplay": "証拠金元帳リプレイ",
+      "unclassified": "未分類",
+      "notAssigned": "メソッド未割り当て",
+      "unknown": "不明なメソッド"
+    },
+    "statusTooltip": {
+      "reconciled": "メソッド: {{method}}。信頼できる照合エビデンスが一致しました。",
+      "driftDetected": "メソッド: {{method}}。信頼できる照合エビデンスに不一致が見つかりました。",
+      "openDrift": "メソッド: {{method}}。{{count}} 回連続して完全な不一致が発生した後、未解決の乖離エピソードが残っています。",
+      "unclassified": "メソッド: {{method}}。照合を実行する前にオペレーターによる分類が必要です。",
+      "notReconciled": "メソッド: {{method}}。照合エビデンスがまだ完全ではありません。",
+      "stale": "メソッド: {{method}}。照合結果が古すぎるため信頼できません。",
+      "clockError": "メソッド: {{method}}。照合タイムスタンプがサーバーの時計と競合しています。",
+      "reconciliationError": "メソッド: {{method}}。照合で信頼できる結果を生成できませんでした。",
+      "unsupported": "メソッド: {{method}}。このアカウントでは照合はサポートされていません。",
+      "unverified": "メソッド: {{method}}。この結果は権威あるものではなく、照合済みとして信頼されていません。"
+    }
+  }
 }

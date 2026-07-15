@@ -72,5 +72,39 @@
     "authoritativeUntil": "{{timestamp}} tarihine kadar güvenilir",
     "error": "Hata: {{message}}"
   },
-  "noValue": "B/Y"
+  "noValue": "B/Y",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Mutabakat Sağlandı",
+      "driftDetected": "Sapma tespit edildi",
+      "openDrift": "Sapma tespit edildi · açık ({{count}})",
+      "unclassified": "Sınıflandırılmamış — sınıflandırma gerekli",
+      "notReconciled": "Henüz mutabakat sağlanmadı",
+      "stale": "Eski",
+      "clockError": "Saat hatası",
+      "reconciliationError": "Mutabakat hatası",
+      "unsupported": "Desteklenmiyor",
+      "unverified": "Doğrulanmamış"
+    },
+    "method": {
+      "futuresPosition": "Vadeli işlem pozisyonları",
+      "spotExecutionReplay": "Spot emir yürütme tekrarı",
+      "marginLedgerReplay": "Marjin defteri tekrarı",
+      "unclassified": "Sınıflandırılmamış",
+      "notAssigned": "Yöntem atanmadı",
+      "unknown": "Bilinmeyen yöntem"
+    },
+    "statusTooltip": {
+      "reconciled": "Yöntem: {{method}}. Yetkili mutabakat kanıtları eşleşti.",
+      "driftDetected": "Yöntem: {{method}}. Yetkili mutabakat kanıtlarında eşleşmezlik bulundu.",
+      "openDrift": "Yöntem: {{method}}. Art arda {{count}} tam eşleşmezlikten sonra açık bir sapma durumu devam ediyor.",
+      "unclassified": "Yöntem: {{method}}. Mutabakatın çalıştırılabilmesi için operatör sınıflandırması gereklidir.",
+      "notReconciled": "Yöntem: {{method}}. Mutabakat kanıtları henüz tamamlanmadı.",
+      "stale": "Yöntem: {{method}}. Mutabakat kararı güvenilemeyecek kadar eski.",
+      "clockError": "Yöntem: {{method}}. Mutabakat zaman damgaları sunucu saatiyle çakışıyor.",
+      "reconciliationError": "Yöntem: {{method}}. Mutabakat güvenilir bir karar üretemedi.",
+      "unsupported": "Yöntem: {{method}}. Bu hesap için mutabakat desteklenmiyor.",
+      "unverified": "Yöntem: {{method}}. Bu karar yetkili değildir ve mutabakat sağlandığı kabul edilmez."
+    }
+  }
 }

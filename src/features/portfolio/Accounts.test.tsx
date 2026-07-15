@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { Accounts } from './Accounts'
 import { usePortfolioAccounts } from '../../hooks/queries/portfolio'
+import { CLIENT_AUTHORITY_STALENESS_MS } from '../../lib/accountTruth'
 import type { PortfolioAccountState } from '../../types/api'
 
 const FIXED_NOW = Date.parse('2026-07-13T12:00:00Z')
@@ -20,6 +21,37 @@ vi.mock('../../hooks/useNow', () => ({
 vi.mock('../../hooks/queries/portfolio', () => ({
   usePortfolioAccounts: vi.fn(),
 }))
+
+type PortfolioReconciliationView = PortfolioAccountState['reconciliation']
+
+const makeReconciliation = (
+  overrides: Partial<PortfolioReconciliationView> = {}
+): PortfolioReconciliationView => ({
+  method: null,
+  evaluation_status: null,
+  effective_status: 'incomplete',
+  is_authoritative: false,
+  evaluated_at: null,
+  current_observation_id: null,
+  last_full_observation_id: null,
+  detail_source_observation_id: null,
+  last_full_outcome: null,
+  consecutive_full_mismatches: 0,
+  anchor_public_id: null,
+  venue_account_state_public_id: null,
+  venue_account_observation_id: null,
+  source_watermark_kind: null,
+  source_watermark: null,
+  expected: null,
+  actual: null,
+  difference: null,
+  tolerance: null,
+  reconciled_at: null,
+  authoritative_until: null,
+  error: null,
+  open_drift_episode: null,
+  ...overrides,
+})
 
 const makeState = (overrides: Partial<PortfolioAccountState> = {}): PortfolioAccountState => ({
   type: 'portfolio_account_state',
@@ -45,31 +77,7 @@ const makeState = (overrides: Partial<PortfolioAccountState> = {}): PortfolioAcc
   balance_payload_source_observation_id: null,
   position_payload_source_observation_id: null,
   error: null,
-  reconciliation: {
-    method: null,
-    evaluation_status: null,
-    effective_status: 'incomplete',
-    is_authoritative: false,
-    evaluated_at: null,
-    current_observation_id: null,
-    last_full_observation_id: null,
-    detail_source_observation_id: null,
-    last_full_outcome: null,
-    consecutive_full_mismatches: 0,
-    anchor_public_id: null,
-    venue_account_state_public_id: null,
-    venue_account_observation_id: null,
-    source_watermark_kind: null,
-    source_watermark: null,
-    expected: null,
-    actual: null,
-    difference: null,
-    tolerance: null,
-    reconciled_at: null,
-    authoritative_until: null,
-    error: null,
-    open_drift_episode: null,
-  },
+  reconciliation: makeReconciliation(),
   ...overrides,
 })
 
@@ -142,6 +150,15 @@ describe('Accounts', () => {
           ],
           balance_observed_at: '2026-07-13T11:59:00Z',
           position_observed_at: '2026-07-13T11:59:00Z',
+          reconciliation: makeReconciliation({
+            method: 'futures_position',
+            evaluation_status: 'matched',
+            effective_status: 'matched',
+            is_authoritative: true,
+            last_full_outcome: 'matched',
+            reconciled_at: '2026-07-13T11:59:00Z',
+            authoritative_until: FUTURE,
+          }),
         }),
         makeState({
           wallet_public_id: 'w-2',
@@ -156,6 +173,10 @@ describe('Accounts', () => {
     render(<Accounts />)
 
     expect(screen.getAllByTestId('account-truth-badge-observed').length).toBe(2)
+    expect(screen.getByTestId('reconciliation-badge-reconciled')).toHaveTextContent('Reconciled')
+    expect(screen.getByTestId('reconciliation-badge-notReconciled')).toHaveTextContent(
+      'Not yet reconciled'
+    )
     expect(screen.queryByTestId('portfolio-truth-banner')).not.toBeInTheDocument()
     expect(screen.getByTestId('account-balance-w-1-kraken-live-USD')).toBeInTheDocument()
     expect(screen.getByTestId('account-position-w-1-kraken-live-BTC/USD')).toHaveTextContent('Buy')
@@ -164,6 +185,32 @@ describe('Accounts', () => {
     expect(screen.getByTestId('account-authoritative-until-w-1-kraken-live')).toBeInTheDocument()
     expect(screen.getByTestId('account-balances-empty-w-2-kraken-live')).toBeInTheDocument()
     expect(screen.getByTestId('account-positions-empty-w-2-kraken-live')).toBeInTheDocument()
+  })
+
+  it('demotes authoritative account and reconciliation truth when polling stalls', () => {
+    mockAccounts(
+      [
+        makeState({
+          balance_observed_at: '2026-07-13T11:59:00Z',
+          reconciliation: makeReconciliation({
+            method: 'futures_position',
+            evaluation_status: 'matched',
+            effective_status: 'matched',
+            is_authoritative: true,
+            last_full_outcome: 'matched',
+            reconciled_at: '2026-07-13T11:59:00Z',
+            authoritative_until: FUTURE,
+          }),
+        }),
+      ],
+      false,
+      FIXED_NOW - CLIENT_AUTHORITY_STALENESS_MS - 1
+    )
+    render(<Accounts />)
+
+    expect(screen.getByTestId('account-truth-badge-stale')).toBeInTheDocument()
+    expect(screen.getByTestId('reconciliation-badge-stale')).toHaveTextContent('Stale')
+    expect(screen.queryByTestId('reconciliation-badge-reconciled')).not.toBeInTheDocument()
   })
 
   it('demotes a malformed-timestamp row to stale, shows the banner, and prints the raw value', () => {

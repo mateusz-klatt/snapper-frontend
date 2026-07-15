@@ -72,5 +72,39 @@
     "authoritativeUntil": "موثوق حتى {{timestamp}}",
     "error": "خطأ: {{message}}"
   },
-  "noValue": "غير متوفر"
+  "noValue": "غير متوفر",
+  "reconciliation": {
+    "status": {
+      "reconciled": "تمت التسوية",
+      "driftDetected": "تم اكتشاف انحراف",
+      "openDrift": "تم اكتشاف انحراف · مفتوح ({{count}})",
+      "unclassified": "غير مصنف — يحتاج إلى تصنيف",
+      "notReconciled": "لم تتم التسوية بعد",
+      "stale": "قديم",
+      "clockError": "خطأ في الساعة",
+      "reconciliationError": "خطأ في التسوية",
+      "unsupported": "غير مدعوم",
+      "unverified": "غير متحقق منه"
+    },
+    "method": {
+      "futuresPosition": "مراكز العقود الآجلة",
+      "spotExecutionReplay": "إعادة تنفيذ التداول الفوري",
+      "marginLedgerReplay": "إعادة سجل الهامش",
+      "unclassified": "غير مصنف",
+      "notAssigned": "لم يتم تعيين طريقة",
+      "unknown": "طريقة غير معروفة"
+    },
+    "statusTooltip": {
+      "reconciled": "الطريقة: {{method}}. تطابقت أدلة التسوية الموثوقة.",
+      "driftDetected": "الطريقة: {{method}}. وجدت أدلة التسوية الموثوقة عدم تطابق.",
+      "openDrift": "الطريقة: {{method}}. لا تزال هناك حلقة انحراف مفتوحة بعد {{count}} من حالات عدم التطابق الكاملة المتتالية.",
+      "unclassified": "الطريقة: {{method}}. يتطلب تصنيف المشغل قبل بدء التسوية.",
+      "notReconciled": "الطريقة: {{method}}. أدلة التسوية غير مكتملة بعد.",
+      "stale": "الطريقة: {{method}}. نتيجة التسوية قديمة جدًا ولا يمكن الوثوق بها.",
+      "clockError": "الطريقة: {{method}}. تتعارض طوابع التسوية الزمنية مع ساعة الخادم.",
+      "reconciliationError": "الطريقة: {{method}}. لم تتمكن التسوية من تقديم نتيجة موثوقة.",
+      "unsupported": "الطريقة: {{method}}. التسوية غير مدعومة لهذا الحساب.",
+      "unverified": "الطريقة: {{method}}. هذه النتيجة غير موثوقة ولا تعتبر تمت تسويتها."
+    }
+  }
 }

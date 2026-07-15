@@ -72,5 +72,39 @@
     "authoritativeUntil": "權威數據至 {{timestamp}}",
     "error": "錯誤：{{message}}"
   },
-  "noValue": "無"
+  "noValue": "無",
+  "reconciliation": {
+    "status": {
+      "reconciled": "已對帳",
+      "driftDetected": "偵測到偏差",
+      "openDrift": "偵測到偏差 · 開啟 ({{count}})",
+      "unclassified": "未分類 — 需要分類",
+      "notReconciled": "尚未對帳",
+      "stale": "已過期",
+      "clockError": "時鐘錯誤",
+      "reconciliationError": "對帳錯誤",
+      "unsupported": "不支援",
+      "unverified": "未驗證"
+    },
+    "method": {
+      "futuresPosition": "期貨倉位",
+      "spotExecutionReplay": "現貨成交重播",
+      "marginLedgerReplay": "保證金分類帳重播",
+      "unclassified": "未分類",
+      "notAssigned": "未指派方法",
+      "unknown": "未知方法"
+    },
+    "statusTooltip": {
+      "reconciled": "方法：{{method}}。權威對帳證據相符。",
+      "driftDetected": "方法：{{method}}。權威對帳證據發現不一致。",
+      "openDrift": "方法：{{method}}。在 {{count}} 次連續完全不一致後，仍有未解決的偏差事件。",
+      "unclassified": "方法：{{method}}。執行對帳前需要操作員進行分類。",
+      "notReconciled": "方法：{{method}}。對帳證據尚未完整。",
+      "stale": "方法：{{method}}。對帳判定結果太舊，無法信任。",
+      "clockError": "方法：{{method}}。對帳時間戳記與伺服器時鐘衝突。",
+      "reconciliationError": "方法：{{method}}。對帳無法產生可靠的判定結果。",
+      "unsupported": "方法：{{method}}。此帳戶不支援對帳。",
+      "unverified": "方法：{{method}}。此判定結果不具權威性，且不被信任為已對帳。"
+    }
+  }
 }

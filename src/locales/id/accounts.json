@@ -72,5 +72,39 @@
     "authoritativeUntil": "Tepercaya hingga {{timestamp}}",
     "error": "Kesalahan: {{message}}"
   },
-  "noValue": "Tidak tersedia"
+  "noValue": "Tidak tersedia",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Direkonsiliasi",
+      "driftDetected": "Penyimpangan terdeteksi",
+      "openDrift": "Penyimpangan terdeteksi · terbuka ({{count}})",
+      "unclassified": "Belum diklasifikasi — butuh klasifikasi",
+      "notReconciled": "Belum direkonsiliasi",
+      "stale": "Usang",
+      "clockError": "Kesalahan jam",
+      "reconciliationError": "Kesalahan rekonsiliasi",
+      "unsupported": "Tidak didukung",
+      "unverified": "Belum diverifikasi"
+    },
+    "method": {
+      "futuresPosition": "Posisi futures",
+      "spotExecutionReplay": "Pemutaran ulang eksekusi spot",
+      "marginLedgerReplay": "Pemutaran ulang buku besar margin",
+      "unclassified": "Belum diklasifikasi",
+      "notAssigned": "Metode belum ditentukan",
+      "unknown": "Metode tidak diketahui"
+    },
+    "statusTooltip": {
+      "reconciled": "Metode: {{method}}. Bukti rekonsiliasi yang otoritatif cocok.",
+      "driftDetected": "Metode: {{method}}. Bukti rekonsiliasi yang otoritatif menemukan ketidakcocokan.",
+      "openDrift": "Metode: {{method}}. Episode penyimpangan terbuka tersisa setelah {{count}} ketidakcocokan penuh secara berturut-turut.",
+      "unclassified": "Metode: {{method}}. Klasifikasi operator diperlukan sebelum rekonsiliasi dapat dijalankan.",
+      "notReconciled": "Metode: {{method}}. Bukti rekonsiliasi belum lengkap.",
+      "stale": "Metode: {{method}}. Putusan rekonsiliasi terlalu usang untuk dipercaya.",
+      "clockError": "Metode: {{method}}. Stempel waktu rekonsiliasi bertentangan dengan jam server.",
+      "reconciliationError": "Metode: {{method}}. Rekonsiliasi tidak dapat menghasilkan putusan yang tepercaya.",
+      "unsupported": "Metode: {{method}}. Rekonsiliasi tidak didukung untuk akun ini.",
+      "unverified": "Metode: {{method}}. Putusan ini tidak otoritatif dan tidak dipercaya sebagai hasil rekonsiliasi."
+    }
+  }
 }

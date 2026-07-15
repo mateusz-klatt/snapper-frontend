@@ -72,5 +72,39 @@
     "authoritativeUntil": "Tillförlitligt till {{timestamp}}",
     "error": "Fel: {{message}}"
   },
-  "noValue": "Ej tillgängligt"
+  "noValue": "Ej tillgängligt",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Avstämd",
+      "driftDetected": "Avvikelse upptäckt",
+      "openDrift": "Avvikelse upptäckt · öppen ({{count}})",
+      "unclassified": "Oklassificerad — kräver klassificering",
+      "notReconciled": "Inte avstämd ännu",
+      "stale": "Inaktuell",
+      "clockError": "Klockfel",
+      "reconciliationError": "Avstämningsfel",
+      "unsupported": "Stöds inte",
+      "unverified": "Overifierad"
+    },
+    "method": {
+      "futuresPosition": "Terminspositioner",
+      "spotExecutionReplay": "Spot-exekveringsuppspelning",
+      "marginLedgerReplay": "Marginal-huvudboksuppspelning",
+      "unclassified": "Oklassificerad",
+      "notAssigned": "Metod ej tilldelad",
+      "unknown": "Okänd metod"
+    },
+    "statusTooltip": {
+      "reconciled": "Metod: {{method}}. Auktoritativa avstämningsbevis stämde överens.",
+      "driftDetected": "Metod: {{method}}. Auktoritativa avstämningsbevis hittade en bristande överensstämmelse.",
+      "openDrift": "Metod: {{method}}. En öppen avvikelseepisod kvarstår efter {{count}} på varandra följande fullständiga avvikelser.",
+      "unclassified": "Metod: {{method}}. Operatörsklassificering krävs innan avstämning kan köras.",
+      "notReconciled": "Metod: {{method}}. Avstämningsbevis är inte kompletta ännu.",
+      "stale": "Metod: {{method}}. Avstämningsutfallet är för gammalt för att vara tillförlitligt.",
+      "clockError": "Metod: {{method}}. Avstämningstidsstämplar är i konflikt med serverklockan.",
+      "reconciliationError": "Metod: {{method}}. Avstämningen kunde inte producera ett tillförlitligt utfall.",
+      "unsupported": "Metod: {{method}}. Avstämning stöds inte för detta konto.",
+      "unverified": "Metod: {{method}}. Detta utfall är inte auktoritativt och litas inte på som avstämt."
+    }
+  }
 }
