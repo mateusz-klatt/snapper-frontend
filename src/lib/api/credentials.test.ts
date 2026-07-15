@@ -151,6 +151,7 @@ describe('credentials API methods', () => {
       const result = await createCredential('w-1', {
         exchange: 'kraken',
         credential_type: 'api_key_secret',
+        reconciliation_method: 'unclassified',
         credential_payload: { api_key: 'k', api_secret: 's' },
         label: 'new-key',
       })
