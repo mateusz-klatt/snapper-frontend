@@ -143,6 +143,7 @@ describe('CredentialForm', () => {
           data: {
             exchange: 'kraken',
             credential_type: 'api_key_secret',
+            reconciliation_method: 'unclassified',
             credential_payload: { api_key: 'my-key', api_secret: 'my-secret' },
             label: undefined,
           },

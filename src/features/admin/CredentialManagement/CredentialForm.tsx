@@ -102,6 +102,10 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
         data: {
           exchange: exchange.trim(),
           credential_type: credentialType,
+          // Credentials are always created unclassified. The reconciliation method is a
+          // deliberate, immutable operator statement-of-fact set later via the dedicated
+          // classification path (seed config / PUT reconciliation-method), never guessed here.
+          reconciliation_method: 'unclassified',
           credential_payload: payload,
           ...(trimmedLabel ? { label: trimmedLabel } : {}),
         },

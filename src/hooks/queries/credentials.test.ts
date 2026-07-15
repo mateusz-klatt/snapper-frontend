@@ -113,6 +113,7 @@ describe('credentials queries', () => {
           data: {
             exchange: 'kraken',
             credential_type: 'api_key_secret',
+            reconciliation_method: 'unclassified',
             credential_payload: { api_key: 'k', api_secret: 's' },
           },
         })
@@ -120,6 +121,7 @@ describe('credentials queries', () => {
       expect(vi.mocked(createCredential)).toHaveBeenCalledWith('w-1', {
         exchange: 'kraken',
         credential_type: 'api_key_secret',
+        reconciliation_method: 'unclassified',
         credential_payload: { api_key: 'k', api_secret: 's' },
       })
       expect(spy).toHaveBeenCalled()
