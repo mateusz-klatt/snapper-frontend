@@ -118,7 +118,7 @@ export interface AlertEvent {
   userPublicId: string
   operatorPublicId?: string | null
   walletPublicId?: string | null
-  alertType: 'order_fill_full' | 'order_rejected' | 'order_unknown' | 'position_stop_loss_fired' | 'margin_warning' | 'critical_system_error'
+  alertType: 'order_fill_full' | 'order_rejected' | 'order_unknown' | 'position_stop_loss_fired' | 'margin_warning' | 'critical_system_error' | 'drift'
   priority?: 'low' | 'medium' | 'high'
   isSafetyCritical?: boolean
   title: string
@@ -634,6 +634,27 @@ export interface OrderRequest {
   origin?: Origin
   replayWindowStart?: Date | null
   replayWindowEnd?: Date | null
+}
+
+/**
+ * Canonical PortfolioDriftEpisodeEvent entity.
+ * From WebSocket PortfolioDriftEpisodeEventData.
+ */
+export interface PortfolioDriftEpisodeEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  walletPublicId: string
+  exchange: string
+  mode: string
+  episodePublicId: string
+  lifecycle: 'opened' | 'resolved'
+  openedAt: Date
+  closedAt?: Date | null
+  mismatchCount: number
+  resolutionReason?: string | null
 }
 
 /**

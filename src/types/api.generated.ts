@@ -4653,7 +4653,7 @@ export type Components = {
             payload: Components["schemas"]["UserAlertDefaultBody"];
         };
         UserAlertDefaultBody: {
-            alert_type: "order_fill_full" | "order_rejected" | "order_unknown" | "position_stop_loss_fired" | "margin_warning" | "critical_system_error";
+            alert_type: "order_fill_full" | "order_rejected" | "order_unknown" | "position_stop_loss_fired" | "margin_warning" | "critical_system_error" | "drift";
             enabled?: boolean;
             min_priority?: "low" | "medium" | "high";
         };
@@ -4780,7 +4780,7 @@ export type Components = {
             payload: Components["schemas"]["DeviceAlertPrefBody"];
         };
         DeviceAlertPrefBody: {
-            alert_type: "order_fill_full" | "order_rejected" | "order_unknown" | "position_stop_loss_fired" | "margin_warning" | "critical_system_error";
+            alert_type: "order_fill_full" | "order_rejected" | "order_unknown" | "position_stop_loss_fired" | "margin_warning" | "critical_system_error" | "drift";
             operator_public_id?: string | null;
             wallet_public_id?: string | null;
             enabled?: boolean;

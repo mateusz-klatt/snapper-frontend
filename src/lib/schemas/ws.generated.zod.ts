@@ -556,6 +556,26 @@ export const OrderRequestDataSchema = z
   })
   .strict()
 
+export const PortfolioDriftEpisodeEventDataSchema = z
+  .object({
+    type: z.literal('portfolio_drift_episode_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+    exchange: z.string(),
+    mode: z.literal('live'),
+    episode_public_id: z.string(),
+    lifecycle: z.enum(['opened', 'resolved']),
+    opened_at: z.iso.datetime(),
+    closed_at: z.iso.datetime().nullable().optional(),
+    mismatch_count: z.number().int(),
+    resolution_reason: z.literal('matched').nullable().optional(),
+  })
+  .strict()
+
 export const PositionDataSchema = z
   .object({
     type: z.literal('position'),
@@ -1256,6 +1276,7 @@ export const AlertEventDataSchema = z
       'position_stop_loss_fired',
       'margin_warning',
       'critical_system_error',
+      'drift',
     ]),
     priority: z.enum(['low', 'medium', 'high']),
     is_safety_critical: z.boolean(),
