@@ -72,5 +72,39 @@
     "authoritativeUntil": "De încredere până la {{timestamp}}",
     "error": "Eroare: {{message}}"
   },
-  "noValue": "Indisponibil"
+  "noValue": "Indisponibil",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Reconciliat",
+      "driftDetected": "Derivă detectată",
+      "openDrift": "Derivă detectată · deschis ({{count}})",
+      "unclassified": "Neclasificat — necesită clasificare",
+      "notReconciled": "Nereconciliat încă",
+      "stale": "Învechit",
+      "clockError": "Eroare de ceas",
+      "reconciliationError": "Eroare de reconciliere",
+      "unsupported": "Neacceptat",
+      "unverified": "Nefirificat"
+    },
+    "method": {
+      "futuresPosition": "Poziții futures",
+      "spotExecutionReplay": "Reluare execuție spot",
+      "marginLedgerReplay": "Reluare registru de marjă",
+      "unclassified": "Neclasificat",
+      "notAssigned": "Metodă nealocată",
+      "unknown": "Metodă necunoscută"
+    },
+    "statusTooltip": {
+      "reconciled": "Metodă: {{method}}. Dovezile de reconciliere cu caracter de autoritate s-au potrivit.",
+      "driftDetected": "Metodă: {{method}}. Dovezile de reconciliere cu caracter de autoritate au găsit o neconcordanță.",
+      "openDrift": "Metodă: {{method}}. Un episod de derivă deschis rămâne după {{count}} neconcordanțe totale consecutive.",
+      "unclassified": "Metodă: {{method}}. Clasificarea de către operator este necesară înainte ca reconcilierea să poată rula.",
+      "notReconciled": "Metodă: {{method}}. Dovezile de reconciliere nu sunt încă complete.",
+      "stale": "Metodă: {{method}}. Verdictul de reconciliere este prea vechi pentru a fi de încredere.",
+      "clockError": "Metodă: {{method}}. Marcajele de timp ale reconcilierii intră în conflict cu ceasul serverului.",
+      "reconciliationError": "Metodă: {{method}}. Reconcilierea nu a putut produce un verdict de încredere.",
+      "unsupported": "Metodă: {{method}}. Reconcilierea nu este acceptată pentru acest cont.",
+      "unverified": "Metodă: {{method}}. Acest verdict nu are caracter de autoritate și nu este considerat de încredere ca fiind reconciliat."
+    }
+  }
 }

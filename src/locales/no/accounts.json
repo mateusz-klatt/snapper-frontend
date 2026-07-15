@@ -72,5 +72,39 @@
     "authoritativeUntil": "Pålitelig til {{timestamp}}",
     "error": "Feil: {{message}}"
   },
-  "noValue": "I/A"
+  "noValue": "I/A",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Avstemt",
+      "driftDetected": "Avvik oppdaget",
+      "openDrift": "Avvik oppdaget · åpent ({{count}})",
+      "unclassified": "Uklassifisert — krever klassifisering",
+      "notReconciled": "Ikke avstemt ennå",
+      "stale": "Foreldet",
+      "clockError": "Klokkefeil",
+      "reconciliationError": "Avstemmingsfeil",
+      "unsupported": "Ikke støttet",
+      "unverified": "Uverifisert"
+    },
+    "method": {
+      "futuresPosition": "Futures-posisjoner",
+      "spotExecutionReplay": "Spot-utførelsesrepetisjon",
+      "marginLedgerReplay": "Margin-hovedboksrepetisjon",
+      "unclassified": "Uklassifisert",
+      "notAssigned": "Metode ikke tildelt",
+      "unknown": "Ukjent metode"
+    },
+    "statusTooltip": {
+      "reconciled": "Metode: {{method}}. Autoritativt avstemmingsbevis stemte overens.",
+      "driftDetected": "Metode: {{method}}. Autoritativt avstemmingsbevis fant et avvik.",
+      "openDrift": "Metode: {{method}}. En åpen avviksepisode gjenstår etter {{count}} påfølgende fulle uoverensstemmelser.",
+      "unclassified": "Metode: {{method}}. Operatørklassifisering er nødvendig før avstemming kan kjøres.",
+      "notReconciled": "Metode: {{method}}. Avstemmingsbevis er ikke komplett ennå.",
+      "stale": "Metode: {{method}}. Avstemmingsresultatet er for gammelt til å være pålitelig.",
+      "clockError": "Metode: {{method}}. Avstemmingstidsstempler er i konflikt med serverklokken.",
+      "reconciliationError": "Metode: {{method}}. Avstemmingen kunne ikke produsere et pålitelig resultat.",
+      "unsupported": "Metode: {{method}}. Avstemming støttes ikke for denne kontoen.",
+      "unverified": "Metode: {{method}}. Dette resultatet er ikke autoritativt og stoles ikke på som avstemt."
+    }
+  }
 }

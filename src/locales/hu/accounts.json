@@ -72,5 +72,39 @@
     "authoritativeUntil": "Hiteles eddig: {{timestamp}}",
     "error": "Hiba: {{message}}"
   },
-  "noValue": "Nem érhető el"
+  "noValue": "Nem érhető el",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Egyeztetve",
+      "driftDetected": "Eltérés észlelve",
+      "openDrift": "Eltérés észlelve · nyitott ({{count}})",
+      "unclassified": "Besorolatlan — besorolás szükséges",
+      "notReconciled": "Még nincs egyeztetve",
+      "stale": "Elavult",
+      "clockError": "Órahiba",
+      "reconciliationError": "Egyeztetési hiba",
+      "unsupported": "Nem támogatott",
+      "unverified": "Nem ellenőrzött"
+    },
+    "method": {
+      "futuresPosition": "Határidős pozíciók",
+      "spotExecutionReplay": "Azonnali végrehajtás újrajátszása",
+      "marginLedgerReplay": "Margin főkönyv újrajátszása",
+      "unclassified": "Besorolatlan",
+      "notAssigned": "Módszer nincs hozzárendelve",
+      "unknown": "Ismeretlen módszer"
+    },
+    "statusTooltip": {
+      "reconciled": "Módszer: {{method}}. A hiteles egyeztetési bizonyítékok egyeznek.",
+      "driftDetected": "Módszer: {{method}}. A hiteles egyeztetési bizonyítékok eltérést találtak.",
+      "openDrift": "Módszer: {{method}}. Egy nyitott eltérési epizód fennmaradt {{count}} egymást követő teljes eltérés után.",
+      "unclassified": "Módszer: {{method}}. Az operátori besorolás elvégzése szükséges az egyeztetés futtatása előtt.",
+      "notReconciled": "Módszer: {{method}}. Az egyeztetési bizonyítékok még nem teljesek.",
+      "stale": "Módszer: {{method}}. Az egyeztetési ítélet túl régi ahhoz, hogy megbízható legyen.",
+      "clockError": "Módszer: {{method}}. Az egyeztetési időbélyegek ütköznek a szerver órájával.",
+      "reconciliationError": "Módszer: {{method}}. Az egyeztetés nem tudott megbízható ítéletet hozni.",
+      "unsupported": "Módszer: {{method}}. Az egyeztetés nem támogatott ennél a fióknál.",
+      "unverified": "Módszer: {{method}}. Ez az ítélet nem hiteles, és nem minősül megbízhatóan egyeztetettnek."
+    }
+  }
 }

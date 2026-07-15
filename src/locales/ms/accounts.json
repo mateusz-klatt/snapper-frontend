@@ -72,5 +72,39 @@
     "authoritativeUntil": "Sahih sehingga {{timestamp}}",
     "error": "Ralat: {{message}}"
   },
-  "noValue": "Tidak tersedia"
+  "noValue": "Tidak tersedia",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Telah diselaraskan",
+      "driftDetected": "Penyimpangan dikesan",
+      "openDrift": "Penyimpangan dikesan · terbuka ({{count}})",
+      "unclassified": "Tidak dikelaskan — perlukan pengelasan",
+      "notReconciled": "Belum diselaraskan",
+      "stale": "Lapuk",
+      "clockError": "Ralat jam",
+      "reconciliationError": "Ralat penyelarasan",
+      "unsupported": "Tidak disokong",
+      "unverified": "Tidak disahkan"
+    },
+    "method": {
+      "futuresPosition": "Kedudukan hadapan",
+      "spotExecutionReplay": "Ulang tayang pelaksanaan lani",
+      "marginLedgerReplay": "Ulang tayang lejar margin",
+      "unclassified": "Tidak dikelaskan",
+      "notAssigned": "Kaedah tidak diperuntukkan",
+      "unknown": "Kaedah tidak diketahui"
+    },
+    "statusTooltip": {
+      "reconciled": "Kaedah: {{method}}. Bukti penyelarasan sahih sepadan.",
+      "driftDetected": "Kaedah: {{method}}. Bukti penyelarasan sahih mendapati ketidakpadanan.",
+      "openDrift": "Kaedah: {{method}}. Episod penyimpangan terbuka kekal selepas {{count}} ketidakpadanan penuh berturut-turut.",
+      "unclassified": "Kaedah: {{method}}. Pengelasan operator diperlukan sebelum penyelarasan boleh dijalankan.",
+      "notReconciled": "Kaedah: {{method}}. Bukti penyelarasan belum lengkap lagi.",
+      "stale": "Kaedah: {{method}}. Keputusan penyelarasan terlalu lama untuk dipercayai.",
+      "clockError": "Kaedah: {{method}}. Cap masa penyelarasan bercanggah dengan jam pelayan.",
+      "reconciliationError": "Kaedah: {{method}}. Penyelarasan tidak dapat menghasilkan keputusan yang boleh dipercayai.",
+      "unsupported": "Kaedah: {{method}}. Penyelarasan tidak disokong untuk akaun ini.",
+      "unverified": "Kaedah: {{method}}. Keputusan ini bukan sahih dan tidak dipercayai sebagai diselaraskan."
+    }
+  }
 }

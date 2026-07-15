@@ -72,5 +72,39 @@
     "authoritativeUntil": "Maßgeblich bis {{timestamp}}",
     "error": "Fehler: {{message}}"
   },
-  "noValue": "k. A."
+  "noValue": "k. A.",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Abgeglichen",
+      "driftDetected": "Abweichung erkannt",
+      "openDrift": "Abweichung erkannt · offen ({{count}})",
+      "unclassified": "Nicht klassifiziert — Klassifizierung erforderlich",
+      "notReconciled": "Noch nicht abgeglichen",
+      "stale": "Veraltet",
+      "clockError": "Uhrfehler",
+      "reconciliationError": "Abgleichfehler",
+      "unsupported": "Nicht unterstützt",
+      "unverified": "Unverifiziert"
+    },
+    "method": {
+      "futuresPosition": "Futures-Positionen",
+      "spotExecutionReplay": "Spot-Ausführungs-Replay",
+      "marginLedgerReplay": "Margin-Ledger-Replay",
+      "unclassified": "Nicht klassifiziert",
+      "notAssigned": "Methode nicht zugewiesen",
+      "unknown": "Unbekannte Methode"
+    },
+    "statusTooltip": {
+      "reconciled": "Methode: {{method}}. Maßgebliche Abgleichsnachweise stimmten überein.",
+      "driftDetected": "Methode: {{method}}. Maßgebliche Abgleichsnachweise ergaben eine Unstimmigkeit.",
+      "openDrift": "Methode: {{method}}. Eine offene Abweichungsepisode verbleibt nach {{count}} aufeinanderfolgenden vollständigen Unstimmigkeiten.",
+      "unclassified": "Methode: {{method}}. Eine Klassifizierung durch den Operator ist erforderlich, bevor der Abgleich ausgeführt werden kann.",
+      "notReconciled": "Methode: {{method}}. Die Abgleichsnachweise sind noch nicht vollständig.",
+      "stale": "Methode: {{method}}. Das Abgleichsurteil ist zu alt, um vertrauenswürdig zu sein.",
+      "clockError": "Methode: {{method}}. Die Zeitstempel des Abgleichs stehen im Konflikt mit der Serveruhr.",
+      "reconciliationError": "Methode: {{method}}. Der Abgleich konnte kein vertrauenswürdiges Urteil liefern.",
+      "unsupported": "Methode: {{method}}. Ein Abgleich wird für dieses Konto nicht unterstützt.",
+      "unverified": "Methode: {{method}}. Dieses Urteil ist nicht maßgeblich und wird nicht als abgeglichen vertraut."
+    }
+  }
 }

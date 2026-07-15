@@ -72,5 +72,39 @@
     "authoritativeUntil": "Miarodajne do {{timestamp}}",
     "error": "Błąd: {{message}}"
   },
-  "noValue": "Brak danych"
+  "noValue": "Brak danych",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Uzgodniono",
+      "driftDetected": "Wykryto odchylenie",
+      "openDrift": "Wykryto odchylenie · otwarte ({{count}})",
+      "unclassified": "Niesklasyfikowano — wymaga klasyfikacji",
+      "notReconciled": "Jeszcze nie uzgodniono",
+      "stale": "Nieaktualne",
+      "clockError": "Błąd zegara",
+      "reconciliationError": "Błąd uzgadniania",
+      "unsupported": "Brak obsługi",
+      "unverified": "Niezweryfikowano"
+    },
+    "method": {
+      "futuresPosition": "Pozycje futures",
+      "spotExecutionReplay": "Powtórka egzekucji spot",
+      "marginLedgerReplay": "Powtórka księgi depozytowej",
+      "unclassified": "Niesklasyfikowano",
+      "notAssigned": "Metoda nieprzypisana",
+      "unknown": "Nieznana metoda"
+    },
+    "statusTooltip": {
+      "reconciled": "Metoda: {{method}}. Miarydowne dowody uzgadniania są zgodne.",
+      "driftDetected": "Metode: {{method}}. Miarydowne dowody uzgadniania wykazały niezgodność.",
+      "openDrift": "Metoda: {{method}}. Otwarty epizod odchylenia utrzymuje się po {{count}} kolejnych pełnych niezgodnościach.",
+      "unclassified": "Metoda: {{method}}. Klasyfikacja operatora jest wymagana przed uruchomieniem uzgadniania.",
+      "notReconciled": "Metoda: {{method}}. Dowody uzgadniania nie są jeszcze kompletne.",
+      "stale": "Metoda: {{method}}. Werdykt uzgadniania jest zbyt stary, aby można było mu zaufać.",
+      "clockError": "Metoda: {{method}}. Znaczniki czasu uzgadniania są w konflikcie z zegarem serwera.",
+      "reconciliationError": "Metoda: {{method}}. Uzgadnianie nie przyniosło wiarygodnego werdyktu.",
+      "unsupported": "Metoda: {{method}}. Uzgadnianie nie jest obsługiwane dla tego konta.",
+      "unverified": "Metoda: {{method}}. Ten werdykt nie jest miarodajny i nie uznaje się go za uzgodniony."
+    }
+  }
 }

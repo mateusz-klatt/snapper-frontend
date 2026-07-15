@@ -72,5 +72,39 @@
     "authoritativeUntil": "Pålidelig indtil {{timestamp}}",
     "error": "Fejl: {{message}}"
   },
-  "noValue": "Ikke tilgængelig"
+  "noValue": "Ikke tilgængelig",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Afstemt",
+      "driftDetected": "Afvigelse registreret",
+      "openDrift": "Afvigelse registreret · åben ({{count}})",
+      "unclassified": "Uklassificeret — mangler klassificering",
+      "notReconciled": "Ikke afstemt endnu",
+      "stale": "Forældet",
+      "clockError": "Ur-fejl",
+      "reconciliationError": "Afstemningsfejl",
+      "unsupported": "Ikke understøttet",
+      "unverified": "Uverificeret"
+    },
+    "method": {
+      "futuresPosition": "Futures-positioner",
+      "spotExecutionReplay": "Gengivelse af spot-eksekvering",
+      "marginLedgerReplay": "Gengivelse af margin-hovedbog",
+      "unclassified": "Uklassificeret",
+      "notAssigned": "Metode ikke tildelt",
+      "unknown": "Ukendt metode"
+    },
+    "statusTooltip": {
+      "reconciled": "Metode: {{method}}. Autoritativ afstemningsdokumentation stemte overens.",
+      "driftDetected": "Metode: {{method}}. Autoritativ afstemningsdokumentation fandt en uoverensstemmelse.",
+      "openDrift": "Metode: {{method}}. En åben afvigelsesepisode resterer efter {{count}} på hinanden følgende fulde uoverensstemmelser.",
+      "unclassified": "Metode: {{method}}. Operatørklassificering er påkrævet, før afstemning kan køres.",
+      "notReconciled": "Metode: {{method}}. Afstemningsdokumentation er endnu ikke komplet.",
+      "stale": "Metode: {{method}}. Afstemningsresultatet er for gammelt til at være pålideligt.",
+      "clockError": "Metode: {{method}}. Afstemningstidsstempler er i konflikt med serverens ur.",
+      "reconciliationError": "Metode: {{method}}. Afstemningen kunne ikke producere et pålideligt resultat.",
+      "unsupported": "Metode: {{method}}. Afstemning understøttes ikke for denne konto.",
+      "unverified": "Metode: {{method}}. Dette resultat er ikke autoritativt og har ikke tillid som afstemt."
+    }
+  }
 }

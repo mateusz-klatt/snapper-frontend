@@ -72,5 +72,39 @@
     "authoritativeUntil": "Gilt til {{timestamp}}",
     "error": "Villa: {{message}}"
   },
-  "noValue": "Ekki tiltækt"
+  "noValue": "Ekki tiltækt",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Afstemt",
+      "driftDetected": "Frávik fannst",
+      "openDrift": "Frávik fannst · opið ({{count}})",
+      "unclassified": "Óflokkað — krefst flokkunar",
+      "notReconciled": "Ekki enn afstemt",
+      "stale": "Úrelt",
+      "clockError": "Klukkuskekkja",
+      "reconciliationError": "Afstemmingarvilla",
+      "unsupported": "Ekki stutt",
+      "unverified": "Óstaðfest"
+    },
+    "method": {
+      "futuresPosition": "Framvirk stöðutaka",
+      "spotExecutionReplay": "Spilun spot-fyrirmæla",
+      "marginLedgerReplay": "Spilun margin-höfuðbókar",
+      "unclassified": "Óflokkað",
+      "notAssigned": "Aðferð ekki úthlutað",
+      "unknown": "Óþekkt aðferð"
+    },
+    "statusTooltip": {
+      "reconciled": "Aðferð: {{method}}. Áreiðanleg afstemmingargögn stemmdu.",
+      "driftDetected": "Aðferð: {{method}}. Áreiðanleg afstemmingargögn sýndu misræmi.",
+      "openDrift": "Aðferð: {{method}}. Opið fráviksatvik er enn til staðar eftir {{count}} samfelld algjör misræmi.",
+      "unclassified": "Aðferð: {{method}}. Rekstraraðili verður að flokka áður en afstemming getur farið fram.",
+      "notReconciled": "Aðferð: {{method}}. Afstemmingargögn eru ekki enn fullkomin.",
+      "stale": "Aðferð: {{method}}. Niðurstaða afstemmingar er of gömul til að vera treyst.",
+      "clockError": "Aðferð: {{method}}. Tímastimplar afstemmingar stangast á við klukku þjónsins.",
+      "reconciliationError": "Aðferð: {{method}}. Afstemming gat ekki skilað áreiðanlegri niðurstöðu.",
+      "unsupported": "Aðferð: {{method}}. Afstemming er ekki studd fyrir þennan reikning.",
+      "unverified": "Aðferð: {{method}}. Þessi niðurstaða er ekki áreiðanleg og henni er ekki treyst sem afstemmdri."
+    }
+  }
 }

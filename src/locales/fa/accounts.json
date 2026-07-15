@@ -72,5 +72,39 @@
     "authoritativeUntil": "معتبر تا {{timestamp}}",
     "error": "خطا: {{message}}"
   },
-  "noValue": "ناموجود"
+  "noValue": "ناموجود",
+  "reconciliation": {
+    "status": {
+      "reconciled": "مغایرت‌گیری شد",
+      "driftDetected": "انحراف تشخیص داده شد",
+      "openDrift": "انحراف تشخیص داده شد · باز ({{count}})",
+      "unclassified": "دسته‌بندی نشده — نیاز به دسته‌بندی دارد",
+      "notReconciled": "هنوز مغایرت‌گیری نشده است",
+      "stale": "منقضی شده",
+      "clockError": "خطای ساعت",
+      "reconciliationError": "خطای مغایرت‌گیری",
+      "unsupported": "پشتیبانی نمی‌شود",
+      "unverified": "تأیید نشده"
+    },
+    "method": {
+      "futuresPosition": "موقعیت‌های آتی",
+      "spotExecutionReplay": "بازپخش اجرای اسپات",
+      "marginLedgerReplay": "بازپخش دفتر کل مارجین",
+      "unclassified": "دسته‌بندی نشده",
+      "notAssigned": "روشی اختصاص داده نشده است",
+      "unknown": "روش نامشخص"
+    },
+    "statusTooltip": {
+      "reconciled": "روش: {{method}}. شواهد معتبر مغایرت‌گیری مطابقت داشت.",
+      "driftDetected": "روش: {{method}}. شواهد معتبر مغایرت‌گیری عدم تطابق پیدا کرد.",
+      "openDrift": "روش: {{method}}. یک دوره انحراف باز پس از {{count}} عدم تطابق کامل متوالی باقی مانده است.",
+      "unclassified": "روش: {{method}}. پیش از اجرای مغایرت‌گیری، دسته‌بندی توسط اپراتور الزامی است.",
+      "notReconciled": "روش: {{method}}. شواهد مغایرت‌گیری هنوز کامل نشده است.",
+      "stale": "روش: {{method}}. نتیجه مغایرت‌گیری بیش از حد قدیمی است و قابل اعتماد نیست.",
+      "clockError": "روش: {{method}}. برچسب‌های زمانی مغایرت‌گیری با ساعت سرور در تضاد است.",
+      "reconciliationError": "روش: {{method}}. مغایرت‌گیری نتوانست نتیجه‌ای قابل اعتماد تولید کند.",
+      "unsupported": "روش: {{method}}. مغایرت‌گیری برای این حساب پشتیبانی نمی‌شود.",
+      "unverified": "روش: {{method}}. این نتیجه معتبر نیست و به عنوان مغایرت‌گیری شده قابل اعتماد نمی‌باشد."
+    }
+  }
 }

@@ -72,5 +72,39 @@
     "authoritativeUntil": "Autentisks līdz {{timestamp}}",
     "error": "Kļūda: {{message}}"
   },
-  "noValue": "Nav pieejams"
+  "noValue": "Nav pieejams",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Saskaņots",
+      "driftDetected": "Atklāta novirze",
+      "openDrift": "Atklāta novirze · atvērta ({{count}})",
+      "unclassified": "Neklasificēts — nepieciešama klasifikācija",
+      "notReconciled": "Vēl nav saskaņots",
+      "stale": "Novecojis",
+      "clockError": "Pulksteņa kļūda",
+      "reconciliationError": "Saskaņošanas kļūda",
+      "unsupported": "Netiek atbalstīts",
+      "unverified": "Nepārbaudīts"
+    },
+    "method": {
+      "futuresPosition": "Nākotnes līgumu pozīcijas",
+      "spotExecutionReplay": "Spot izpildes atkārtojums",
+      "marginLedgerReplay": "Maržas virsgrāmatas atkārtojums",
+      "unclassified": "Neklasificēts",
+      "notAssigned": "Metode nav piešķirta",
+      "unknown": "Nezināma metode"
+    },
+    "statusTooltip": {
+      "reconciled": "Metode: {{method}}. Autitatīvi saskaņošanas pierādījumi sakrita.",
+      "driftDetected": "Metode: {{method}}. Autitatīvi saskaņošanas pierādījumi atklāja neatbilstību.",
+      "openDrift": "Metode: {{method}}. Pēc {{count}} secīgām pilnīgām neatbilstībām joprojām ir atvērta novirzes epizode.",
+      "unclassified": "Metode: {{method}}. Pirms saskaņošanas palaišanas nepieciešama operatora klasifikācija.",
+      "notReconciled": "Metode: {{method}}. Saskaņošanas pierādījumi vēl nav pilnīgi.",
+      "stale": "Metode: {{method}}. Saskaņošanas spriedums ir pārāk vecs, lai tam uzticētos.",
+      "clockError": "Metode: {{method}}. Saskaņošanas laikspiedoli konfliktē ar servera pulksteni.",
+      "reconciliationError": "Metode: {{method}}. Saskaņošana nespēja sniegt uzticamu spriedumu.",
+      "unsupported": "Metode: {{method}}. Šim kontam saskaņošana netiek atbalstīta.",
+      "unverified": "Metode: {{method}}. Šis spriedums nav autoritatīvs un netiek uzskatīts par saskaņotu."
+    }
+  }
 }

@@ -72,5 +72,39 @@
     "authoritativeUntil": "Đáng tin cậy đến {{timestamp}}",
     "error": "Lỗi: {{message}}"
   },
-  "noValue": "Không có dữ liệu"
+  "noValue": "Không có dữ liệu",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Đã đối soát",
+      "driftDetected": "Đã phát hiện sai lệch",
+      "openDrift": "Đã phát hiện sai lệch · đang mở ({{count}})",
+      "unclassified": "Chưa phân loại — cần phân loại",
+      "notReconciled": "Chưa đối soát",
+      "stale": "Cũ",
+      "clockError": "Lỗi đồng hồ",
+      "reconciliationError": "Lỗi đối soát",
+      "unsupported": "Không được hỗ trợ",
+      "unverified": "Chưa xác minh"
+    },
+    "method": {
+      "futuresPosition": "Vị thế futures",
+      "spotExecutionReplay": "Phát lại khớp lệnh spot",
+      "marginLedgerReplay": "Phát lại sổ cái margin",
+      "unclassified": "Chưa phân loại",
+      "notAssigned": "Chưa chỉ định phương pháp",
+      "unknown": "Phương pháp không xác định"
+    },
+    "statusTooltip": {
+      "reconciled": "Phương pháp: {{method}}. Bằng chứng đối soát đáng tin cậy đã khớp.",
+      "driftDetected": "Phương pháp: {{method}}. Bằng chứng đối soát đáng tin cậy đã phát hiện sự không khớp.",
+      "openDrift": "Phương pháp: {{method}}. Vẫn còn một đợt sai lệch đang mở sau {{count}} lần hoàn toàn không khớp liên tiếp.",
+      "unclassified": "Phương pháp: {{method}}. Cần có sự phân loại của người vận hành trước khi có thể chạy đối soát.",
+      "notReconciled": "Phương pháp: {{method}}. Bằng chứng đối soát chưa đầy đủ.",
+      "stale": "Phương pháp: {{method}}. Kết luận đối soát đã quá cũ để có thể tin cậy.",
+      "clockError": "Phương pháp: {{method}}. Dấu thời gian đối soát xung đột với đồng hồ máy chủ.",
+      "reconciliationError": "Phương pháp: {{method}}. Đối soát không thể đưa ra kết luận đáng tin cậy.",
+      "unsupported": "Phương pháp: {{method}}. Không hỗ trợ đối soát cho tài khoản này.",
+      "unverified": "Phương pháp: {{method}}. Kết luận này không có tính thẩm quyền và không được tin cậy là đã đối soát."
+    }
+  }
 }

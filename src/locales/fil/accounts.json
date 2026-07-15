@@ -72,5 +72,39 @@
     "authoritativeUntil": "Mapagkakatiwalaan hanggang {{timestamp}}",
     "error": "Mali: {{message}}"
   },
-  "noValue": "Hindi magagamit"
+  "noValue": "Hindi magagamit",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Nareconcile na",
+      "driftDetected": "May na-detect na drift",
+      "openDrift": "May na-detect na drift · nakabukas ({{count}})",
+      "unclassified": "Hindi pa naiuri — kailangang iuri",
+      "notReconciled": "Hindi pa nareconcile",
+      "stale": "Luma na",
+      "clockError": "Error sa orasan",
+      "reconciliationError": "Error sa reconciliation",
+      "unsupported": "Hindi suportado",
+      "unverified": "Hindi na-verify"
+    },
+    "method": {
+      "futuresPosition": "Futures positions",
+      "spotExecutionReplay": "Spot execution replay",
+      "marginLedgerReplay": "Margin ledger replay",
+      "unclassified": "Hindi pa naiuri",
+      "notAssigned": "Walang nakatalagang paraan",
+      "unknown": "Hindi kilalang paraan"
+    },
+    "statusTooltip": {
+      "reconciled": "Paraan: {{method}}. Tumugma ang mapagkakatiwalaang ebidensya ng reconciliation.",
+      "driftDetected": "Paraan: {{method}}. Nakahanap ng hindi pagkakatugma sa mapagkakatiwalaang ebidensya ng reconciliation.",
+      "openDrift": "Paraan: {{method}}. May natitirang open drift episode pagkatapos ng {{count}} na magkakasunod at buong hindi pagkakatugma.",
+      "unclassified": "Paraan: {{method}}. Kinakailangan ang pag-uuri ng operator bago patakbuhin ang reconciliation.",
+      "notReconciled": "Paraan: {{method}}. Hindi pa kumpleto ang ebidensya ng reconciliation.",
+      "stale": "Paraan: {{method}}. Masyadong luma ang hatol ng reconciliation para pagkatiwalaan.",
+      "clockError": "Paraan: {{method}}. Sumasalungat ang mga timestamp ng reconciliation sa orasan ng server.",
+      "reconciliationError": "Paraan: {{method}}. Hindi makagawa ng mapagkakatiwalaang hatol ang reconciliation.",
+      "unsupported": "Paraan: {{method}}. Hindi suportado ang reconciliation para sa account na ito.",
+      "unverified": "Paraan: {{method}}. Ang hatol na ito ay hindi mapagkakatiwalaan at hindi tinatanggap bilang nareconcile na."
+    }
+  }
 }

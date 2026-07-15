@@ -72,5 +72,39 @@
     "authoritativeUntil": "{{timestamp}} तक आधिकारिक",
     "error": "त्रुटि: {{message}}"
   },
-  "noValue": "उपलब्ध नहीं"
+  "noValue": "उपलब्ध नहीं",
+  "reconciliation": {
+    "status": {
+      "reconciled": "मिलान हो गया",
+      "driftDetected": "विचलन पाया गया",
+      "openDrift": "विचलन पाया गया · खुला है ({{count}})",
+      "unclassified": "अवर्गीकृत — वर्गीकरण आवश्यक है",
+      "notReconciled": "अभी तक मिलान नहीं हुआ",
+      "stale": "पुराना",
+      "clockError": "घड़ी की त्रुटि",
+      "reconciliationError": "मिलान त्रुटि",
+      "unsupported": "समर्थित नहीं",
+      "unverified": "असत्यापित"
+    },
+    "method": {
+      "futuresPosition": "फ्यूचर्स पोज़िशन",
+      "spotExecutionReplay": "स्पॉट निष्पादन रीप्ले",
+      "marginLedgerReplay": "मार्जिन लेज़र रीप्ले",
+      "unclassified": "अवर्गीकृत",
+      "notAssigned": "तरीका असाइन नहीं किया गया",
+      "unknown": "अज्ञात तरीका"
+    },
+    "statusTooltip": {
+      "reconciled": "तरीका: {{method}}. प्रामाणिक मिलान साक्ष्य मेल खाते हैं।",
+      "driftDetected": "तरीका: {{method}}. प्रामाणिक मिलान साक्ष्य में बेमेल पाया गया।",
+      "openDrift": "तरीका: {{method}}. {{count}} लगातार पूर्ण बेमेल के बाद एक खुला विचलन एपिसोड बना हुआ है।",
+      "unclassified": "तरीका: {{method}}. मिलान चलाने से पहले ऑपरेटर वर्गीकरण आवश्यक है।",
+      "notReconciled": "तरीका: {{method}}. मिलान साक्ष्य अभी तक पूर्ण नहीं हुआ है।",
+      "stale": "तरीका: {{method}}. मिलान का फैसला भरोसा करने के लिए बहुत पुराना है।",
+      "clockError": "तरीका: {{method}}. मिलान टाइमस्टैम्प सर्वर घड़ी के साथ टकराते हैं।",
+      "reconciliationError": "तरीका: {{method}}. मिलान एक भरोसेमंद फैसला नहीं दे सका।",
+      "unsupported": "तरीका: {{method}}. इस खाते के लिए मिलान समर्थित नहीं है।",
+      "unverified": "तरीका: {{method}}. यह फैसला प्रामाणिक नहीं है और इसे मिलान के रूप में विश्वसनीय नहीं माना जाता है।"
+    }
+  }
 }

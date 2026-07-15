@@ -72,5 +72,39 @@
     "authoritativeUntil": "Confiável até {{timestamp}}",
     "error": "Erro: {{message}}"
   },
-  "noValue": "Sem dados"
+  "noValue": "Sem dados",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Reconciliado",
+      "driftDetected": "Desvio detetado",
+      "openDrift": "Desvio detetado · aberto ({{count}})",
+      "unclassified": "Não classificado — necessita de classificação",
+      "notReconciled": "Ainda não reconciliado",
+      "stale": "Desatualizado",
+      "clockError": "Erro de relógio",
+      "reconciliationError": "Erro de reconciliação",
+      "unsupported": "Não suportado",
+      "unverified": "Não verificado"
+    },
+    "method": {
+      "futuresPosition": "Posições de futuros",
+      "spotExecutionReplay": "Repetição de execução spot",
+      "marginLedgerReplay": "Repetição do livro-razão de margem",
+      "unclassified": "Não classificado",
+      "notAssigned": "Método não atribuído",
+      "unknown": "Método desconhecido"
+    },
+    "statusTooltip": {
+      "reconciled": "Método: {{method}}. As evidências oficiais de reconciliação coincidem.",
+      "driftDetected": "Método: {{method}}. As evidências oficiais de reconciliação detetaram uma discrepância.",
+      "openDrift": "Método: {{method}}. Permanece um episódio de desvio aberto após {{count}} discrepâncias totais consecutivas.",
+      "unclassified": "Método: {{method}}. A classificação do operador é necessária antes de executar a reconciliação.",
+      "notReconciled": "Método: {{method}}. As evidências de reconciliação ainda não estão completas.",
+      "stale": "Método: {{method}}. O veredito da reconciliação é demasiado antigo para ser fiável.",
+      "clockError": "Método: {{method}}. Os carimbos de data/hora de reconciliação entram em conflito com o relógio do servidor.",
+      "reconciliationError": "Método: {{method}}. A reconciliação não conseguiu produzir um veredito fiável.",
+      "unsupported": "Método: {{method}}. A reconciliação não é suportada para esta conta.",
+      "unverified": "Método: {{method}}. Este veredito não é oficial e não é considerado como reconciliado."
+    }
+  }
 }

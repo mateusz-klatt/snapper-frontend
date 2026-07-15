@@ -72,5 +72,39 @@
     "authoritativeUntil": "Iontaofa go dtí {{timestamp}}",
     "error": "Earráid: {{message}}"
   },
-  "noValue": "N/B"
+  "noValue": "N/B",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Athnóite",
+      "driftDetected": "Sruth braite",
+      "openDrift": "Sruth braite · oscailte ({{count}})",
+      "unclassified": "Neamhaicmithe — aicmiú de dhíth",
+      "notReconciled": "Níl athnóite go fóill",
+      "stale": "Seanchaite",
+      "clockError": "Earráid cloig",
+      "reconciliationError": "Earráid athmhuintearais",
+      "unsupported": "Gan tacaíocht",
+      "unverified": "Neamhdheimhnithe"
+    },
+    "method": {
+      "futuresPosition": "Suímh todhchaíochtaí",
+      "spotExecutionReplay": "Athsheinm forghníomhaithe spot",
+      "marginLedgerReplay": "Athsheinm mórleabhair corrlaigh",
+      "unclassified": "Neamhaicmithe",
+      "notAssigned": "Modh gan sannadh",
+      "unknown": "Modh anaithnid"
+    },
+    "statusTooltip": {
+      "reconciled": "Modh: {{method}}. Meaitseáil fianaise údarásach athmhuintearais.",
+      "driftDetected": "Modh: {{method}}. Fuair fianaise údarásach athmhuintearais neamhréir.",
+      "openDrift": "Modh: {{method}}. Tá eachtra srutha oscailte fágtha tar éis {{count}} neamhréireanna iomlána as a chéile.",
+      "unclassified": "Modh: {{method}}. Tá aicmiú oibreora ag teastáil sular féidir athmhuintearas a rith.",
+      "notReconciled": "Modh: {{method}}. Níl an fhianaise athmhuintearais iomlán fós.",
+      "stale": "Modh: {{method}}. Tá an fíorasc athmhuintearais ró-shean le bheith iontaofa.",
+      "clockError": "Modh: {{method}}. Tá stampaí ama athmhuintearais ag teacht salach ar chlog an fhreastalaí.",
+      "reconciliationError": "Modh: {{method}}. Ní raibh an t-athmhuintearas in ann fíorasc iontaofa a chruthú.",
+      "unsupported": "Modh: {{method}}. Ní thacaítear le hathmhuintearas don chuntas seo.",
+      "unverified": "Modh: {{method}}. Níl an fíorasc seo údarásach agus ní mheastar é a bheith athnóite."
+    }
+  }
 }

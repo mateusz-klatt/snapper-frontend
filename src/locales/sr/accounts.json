@@ -72,5 +72,39 @@
     "authoritativeUntil": "Pouzdano do {{timestamp}}",
     "error": "Greška: {{message}}"
   },
-  "noValue": "N/D"
+  "noValue": "N/D",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Usklađeno",
+      "driftDetected": "Otkriveno odstupanje",
+      "openDrift": "Otkriveno odstupanje · otvoreno ({{count}})",
+      "unclassified": "Neklasifikovano — zahteva klasifikaciju",
+      "notReconciled": "Još uvek nije usklađeno",
+      "stale": "Zastarelo",
+      "clockError": "Greška na satu",
+      "reconciliationError": "Greška usklađivanja",
+      "unsupported": "Nije podržano",
+      "unverified": "Nepotvrđeno"
+    },
+    "method": {
+      "futuresPosition": "Fjučers pozicije",
+      "spotExecutionReplay": "Ponovno puštanje spot izvršenja",
+      "marginLedgerReplay": "Ponovno puštanje knjige marže",
+      "unclassified": "Neklasifikovano",
+      "notAssigned": "Metod nije dodeljen",
+      "unknown": "Nepoznat metod"
+    },
+    "statusTooltip": {
+      "reconciled": "Metod: {{method}}. Autoritativni dokazi usklađivanja se podudaraju.",
+      "driftDetected": "Metod: {{method}}. Autoritativni dokazi usklađivanja su pronašli nepodudaranje.",
+      "openDrift": "Metod: {{method}}. Otvorena epizoda odstupanja preostaje nakon {{count}} uzastopnih potpunih nepodudaranja.",
+      "unclassified": "Metod: {{method}}. Klasifikacija operatera je neophodna pre pokretanja usklađivanja.",
+      "notReconciled": "Metod: {{method}}. Dokazi usklađivanja još uvek nisu potpuni.",
+      "stale": "Metod: {{method}}. Presuda o usklađivanju je prestara da bi se njoj verovalo.",
+      "clockError": "Metod: {{method}}. Vremenske oznake usklađivanja su u sukobu sa satom servera.",
+      "reconciliationError": "Metod: {{method}}. Usklađivanje nije moglo da proizvede pouzdanu presudu.",
+      "unsupported": "Metod: {{method}}. Usklađivanje nije podržano za ovaj nalog.",
+      "unverified": "Metod: {{method}}. Ova presuda nije autoritativna i ne smatra se pouzdanom kao usklađenom."
+    }
+  }
 }

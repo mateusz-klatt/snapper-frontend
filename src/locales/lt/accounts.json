@@ -72,5 +72,39 @@
     "authoritativeUntil": "Patikima iki {{timestamp}}",
     "error": "Klaida: {{message}}"
   },
-  "noValue": "Duomenų nėra"
+  "noValue": "Duomenų nėra",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Suderinta",
+      "driftDetected": "Aptiktas nuokrypis",
+      "openDrift": "Aptiktas nuokrypis · atviras ({{count}})",
+      "unclassified": "Neklasifikuota — reikia klasifikuoti",
+      "notReconciled": "Dar nesuderinta",
+      "stale": "Pasenę",
+      "clockError": "Laikrodžio klaida",
+      "reconciliationError": "Suderinimo klaida",
+      "unsupported": "Nepalaikoma",
+      "unverified": "Nepativirtinta"
+    },
+    "method": {
+      "futuresPosition": "Ateities sandorių pozicijos",
+      "spotExecutionReplay": "Spot vykdymo pakartojimas",
+      "marginLedgerReplay": "Maržos didžiosios knygos pakartojimas",
+      "unclassified": "Neklasifikuota",
+      "notAssigned": "Metodas nepriskirtas",
+      "unknown": "Nežinomas metodas"
+    },
+    "statusTooltip": {
+      "reconciled": "Metodas: {{method}}. Patikimi suderinimo įrodymai sutapo.",
+      "driftDetected": "Metodas: {{method}}. Patikimi suderinimo įrodymai atskleidė neatitikimą.",
+      "openDrift": "Metodas: {{method}}. Atviras nuokrypio epizodas išlieka po {{count}} iš eilės einančių visiškų neatitikimų.",
+      "unclassified": "Metodas: {{method}}. Prieš vykdant suderinimą, operatorius turi atlikti klasifikaciją.",
+      "notReconciled": "Metodas: {{method}}. Suderinimo įrodymai dar nėra išsamūs.",
+      "stale": "Metodas: {{method}}. Suderinimo verdiktas per senas, kad būtų patikimas.",
+      "clockError": "Metodas: {{method}}. Suderinimo laiko žymos prieštarauja serverio laikrodžiui.",
+      "reconciliationError": "Metodas: {{method}}. Suderinimas negalėjo pateikti patikimo verdikto.",
+      "unsupported": "Metodas: {{method}}. Suderinimas šiai paskyrai nepalaikomas.",
+      "unverified": "Metodas: {{method}}. Šis verdiktas nėra patikimas ir nelaikomas suderintu."
+    }
+  }
 }

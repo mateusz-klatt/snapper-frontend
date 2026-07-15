@@ -72,5 +72,39 @@
     "authoritativeUntil": "Données fiables jusqu'au {{timestamp}}",
     "error": "Erreur: {{message}}"
   },
-  "noValue": "Non disponible"
+  "noValue": "Non disponible",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Rapproché",
+      "driftDetected": "Dérive détectée",
+      "openDrift": "Dérive détectée · ouverte ({{count}})",
+      "unclassified": "Non classifié — classification requise",
+      "notReconciled": "Pas encore rapproché",
+      "stale": "Obsolète",
+      "clockError": "Erreur d'horloge",
+      "reconciliationError": "Erreur de rapprochement",
+      "unsupported": "Non pris en charge",
+      "unverified": "Non vérifié"
+    },
+    "method": {
+      "futuresPosition": "Positions futures",
+      "spotExecutionReplay": "Rejeu d'exécution au comptant",
+      "marginLedgerReplay": "Rejeu du grand livre de marge",
+      "unclassified": "Non classifié",
+      "notAssigned": "Méthode non assignée",
+      "unknown": "Méthode inconnue"
+    },
+    "statusTooltip": {
+      "reconciled": "Méthode : {{method}}. Les preuves de rapprochement faisant autorité correspondent.",
+      "driftDetected": "Méthode : {{method}}. Les preuves de rapprochement faisant autorité ont révélé une incohérence.",
+      "openDrift": "Méthode : {{method}}. Un épisode de dérive ouvert subsiste après {{count}} incohérences totales consécutives.",
+      "unclassified": "Méthode : {{method}}. Une classification par l'opérateur est requise avant de pouvoir exécuter le rapprochement.",
+      "notReconciled": "Méthode : {{method}}. Les preuves de rapprochement ne sont pas encore complètes.",
+      "stale": "Méthode : {{method}}. Le verdict de rapprochement est trop ancien pour être fiable.",
+      "clockError": "Méthode : {{method}}. Les horodatages de rapprochement sont en conflit avec l'horloge du serveur.",
+      "reconciliationError": "Méthode : {{method}}. Le rapprochement n'a pas pu produire de verdict fiable.",
+      "unsupported": "Méthode : {{method}}. Le rapprochement n'est pas pris en charge pour ce compte.",
+      "unverified": "Méthode : {{method}}. Ce verdict ne fait pas autorité et n'est pas considéré comme rapproché."
+    }
+  }
 }

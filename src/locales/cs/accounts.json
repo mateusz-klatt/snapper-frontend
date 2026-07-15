@@ -72,5 +72,39 @@
     "authoritativeUntil": "Směrodatné do {{timestamp}}",
     "error": "Chyba: {{message}}"
   },
-  "noValue": "Není k dispozici"
+  "noValue": "Není k dispozici",
+  "reconciliation": {
+    "status": {
+      "reconciled": "Odsouhlaseno",
+      "driftDetected": "Zjištěna odchylka",
+      "openDrift": "Zjištěna odchylka · otevřeno ({{count}})",
+      "unclassified": "Neklasifikováno — vyžaduje klasifikaci",
+      "notReconciled": "Zatím neodsouhlaseno",
+      "stale": "Zastaralé",
+      "clockError": "Chyba hodin",
+      "reconciliationError": "Chyba odsouhlasení",
+      "unsupported": "Nepodporováno",
+      "unverified": "Neověřeno"
+    },
+    "method": {
+      "futuresPosition": "Futures pozice",
+      "spotExecutionReplay": "Přehrání spotové exekuce",
+      "marginLedgerReplay": "Přehrání maržové účetní knihy",
+      "unclassified": "Neklasifikováno",
+      "notAssigned": "Metoda nepřiřazena",
+      "unknown": "Neznámá metoda"
+    },
+    "statusTooltip": {
+      "reconciled": "Metoda: {{method}}. Směrodatné důkazy odsouhlasení se shodují.",
+      "driftDetected": "Metoda: {{method}}. Směrodatné důkazy odsouhlasení nalezly neshodu.",
+      "openDrift": "Metoda: {{method}}. Otevřená epizoda odchylky přetrvává po {{count}} po sobě jdoucích úplných neshodách.",
+      "unclassified": "Metoda: {{method}}. Před spuštěním odsouhlasení je vyžadována klasifikace operátorem.",
+      "notReconciled": "Metoda: {{method}}. Důkazy odsouhlasení zatím nejsou kompletní.",
+      "stale": "Metoda: {{method}}. Verdikt odsouhlasení je příliš starý na to, aby mu bylo možné důvěřovat.",
+      "clockError": "Metoda: {{method}}. Časová razítka odsouhlasení jsou v rozporu s hodinami serveru.",
+      "reconciliationError": "Metoda: {{method}}. Odsouhlasení nedokázalo vyprodukovat důvěryhodný verdikt.",
+      "unsupported": "Metoda: {{method}}. Odsouhlasení pro tento účet není podporováno.",
+      "unverified": "Metoda: {{method}}. Tento verdikt není směrodatný a není mu důvěřováno jako odsouhlasenému."
+    }
+  }
 }
