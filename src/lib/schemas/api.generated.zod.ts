@@ -986,6 +986,64 @@ export const PairedLegExposureSchema = _PairedLegExposureRawSchema as unknown as
   Components['schemas']['PairedLegExposure']
 >
 
+const _PortfolioReconciliationDriftEpisodeRawSchema = z
+  .object({
+    public_id: z.string(),
+    status: z.literal('open'),
+    opened_at: z.iso.datetime(),
+    trigger_observation_id: z.number().int(),
+    last_observation_id: z.number().int(),
+    details_source_observation_id: z.number().int(),
+    latest_full_mismatch_count: z.number().int(),
+  })
+  .strict()
+
+export const PortfolioReconciliationDriftEpisodeSchema =
+  _PortfolioReconciliationDriftEpisodeRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioReconciliationDriftEpisode']
+  >
+
+const _PortfolioReconciliationEffectiveStatusRawSchema = z.enum([
+  'matched',
+  'mismatched',
+  'incomplete',
+  'unsupported',
+  'error',
+  'stale',
+  'clock_error',
+  'corrupt',
+])
+
+export const PortfolioReconciliationEffectiveStatusSchema =
+  _PortfolioReconciliationEffectiveStatusRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioReconciliationEffectiveStatus']
+  >
+
+const _PortfolioReconciliationEvaluationStatusRawSchema = z.enum([
+  'matched',
+  'mismatched',
+  'incomplete',
+  'unsupported',
+  'error',
+])
+
+export const PortfolioReconciliationEvaluationStatusSchema =
+  _PortfolioReconciliationEvaluationStatusRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioReconciliationEvaluationStatus']
+  >
+
+const _PortfolioReconciliationMethodRawSchema = z.enum([
+  'futures_position',
+  'spot_execution_replay',
+  'margin_ledger_replay',
+  'unclassified',
+])
+
+export const PortfolioReconciliationMethodSchema =
+  _PortfolioReconciliationMethodRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioReconciliationMethod']
+  >
+
 const _PositionCycleDataRawSchema = z
   .object({
     type: z.literal('position_cycle'),
@@ -1900,18 +1958,6 @@ export const BacktestCancelBodySchema = _BacktestCancelBodyRawSchema as unknown 
   Components['schemas']['BacktestCancelBody']
 >
 
-const _PortfolioReconciliationMethodRawSchema = z.enum([
-  'futures_position',
-  'spot_execution_replay',
-  'margin_ledger_replay',
-  'unclassified',
-])
-
-export const PortfolioReconciliationMethodSchema =
-  _PortfolioReconciliationMethodRawSchema as unknown as z.ZodType<
-    Components['schemas']['PortfolioReconciliationMethod']
-  >
-
 const _RotateCredentialBodyRawSchema = z
   .object({
     credential_payload: z.record(z.string(), z.string()),
@@ -2140,39 +2186,6 @@ const _CreateWalletBodyRawSchema = z
 
 export const CreateWalletBodySchema = _CreateWalletBodyRawSchema as unknown as z.ZodType<
   Components['schemas']['CreateWalletBody']
->
-
-const _PortfolioAccountStateRawSchema = z
-  .object({
-    type: z.literal('portfolio_account_state'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    wallet_public_id: z.string(),
-    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
-    mode: z.enum(['live', 'paper']),
-    sync_status: z.string(),
-    effective_status: z.string(),
-    is_authoritative: z.boolean(),
-    balance_status: z.string(),
-    position_status: z.string(),
-    valuation_status: z.string(),
-    balances: z.array(AccountBalanceEntrySchema).nullable().optional(),
-    open_positions: z.array(AccountPositionEntrySchema).nullable().optional(),
-    balance_observed_at: z.iso.datetime().nullable().optional(),
-    position_observed_at: z.iso.datetime().nullable().optional(),
-    authoritative_until: z.iso.datetime().nullable().optional(),
-    current_attempt_observation_id: z.number().int().nullable().optional(),
-    balance_payload_source_observation_id: z.number().int().nullable().optional(),
-    position_payload_source_observation_id: z.number().int().nullable().optional(),
-    error: z.string().nullable().optional(),
-  })
-  .strict()
-
-export const PortfolioAccountStateSchema = _PortfolioAccountStateRawSchema as unknown as z.ZodType<
-  Components['schemas']['PortfolioAccountState']
 >
 
 const _BacktestComparisonListResponseRawSchema = z
@@ -2784,6 +2797,20 @@ const _PairedGroupIncidentRawSchema = z
 
 export const PairedGroupIncidentSchema = _PairedGroupIncidentRawSchema as unknown as z.ZodType<
   Components['schemas']['PairedGroupIncident']
+>
+
+const _CreateCredentialBodyRawSchema = z
+  .object({
+    exchange: z.string().min(1).max(20),
+    credential_type: z.enum(['api_key_secret', 'rsa_pem', 'oauth', 'paper']),
+    reconciliation_method: PortfolioReconciliationMethodSchema,
+    credential_payload: z.record(z.string(), z.string()),
+    label: z.string().max(128).nullable().optional(),
+  })
+  .strict()
+
+export const CreateCredentialBodySchema = _CreateCredentialBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['CreateCredentialBody']
 >
 
 const _PositionCycleListResponseRawSchema = z
@@ -3733,20 +3760,6 @@ export const BacktestCancelCommandSchema = _BacktestCancelCommandRawSchema as un
   Components['schemas']['BacktestCancelCommand']
 >
 
-const _CreateCredentialBodyRawSchema = z
-  .object({
-    exchange: z.string().min(1).max(20),
-    credential_type: z.enum(['api_key_secret', 'rsa_pem', 'oauth', 'paper']),
-    reconciliation_method: PortfolioReconciliationMethodSchema,
-    credential_payload: z.record(z.string(), z.string()),
-    label: z.string().max(128).nullable().optional(),
-  })
-  .strict()
-
-export const CreateCredentialBodySchema = _CreateCredentialBodyRawSchema as unknown as z.ZodType<
-  Components['schemas']['CreateCredentialBody']
->
-
 const _RotateCredentialCommandRawSchema = z
   .object({
     type: z.literal('rotate_credential_command').optional(),
@@ -4029,24 +4042,6 @@ export const CreateWalletCommandSchema = _CreateWalletCommandRawSchema as unknow
   Components['schemas']['CreateWalletCommand']
 >
 
-const _PortfolioAccountStateListResponseRawSchema = z
-  .object({
-    type: z.literal('portfolio_account_state_list'),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: z.array(PortfolioAccountStateSchema),
-    count: z.number().int(),
-  })
-  .strict()
-
-export const PortfolioAccountStateListResponseSchema =
-  _PortfolioAccountStateListResponseRawSchema as unknown as z.ZodType<
-    Components['schemas']['PortfolioAccountStateListResponse']
-  >
-
 const _CachedCandlesResponseRawSchema = z
   .object({
     type: z.literal('cached_candles'),
@@ -4198,6 +4193,23 @@ const _PairedGroupTerminalizeResponseRawSchema = z
 export const PairedGroupTerminalizeResponseSchema =
   _PairedGroupTerminalizeResponseRawSchema as unknown as z.ZodType<
     Components['schemas']['PairedGroupTerminalizeResponse']
+  >
+
+const _CreateCredentialCommandRawSchema = z
+  .object({
+    type: z.literal('create_credential_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: CreateCredentialBodySchema,
+  })
+  .strict()
+
+export const CreateCredentialCommandSchema =
+  _CreateCredentialCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['CreateCredentialCommand']
   >
 
 const _ProcessCreateResponseRawSchema = z
@@ -4518,23 +4530,6 @@ export const ZmqHealthResponseSchema = _ZmqHealthResponseRawSchema as unknown as
   Components['schemas']['ZmqHealthResponse']
 >
 
-const _CreateCredentialCommandRawSchema = z
-  .object({
-    type: z.literal('create_credential_command').optional(),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: CreateCredentialBodySchema,
-  })
-  .strict()
-
-export const CreateCredentialCommandSchema =
-  _CreateCredentialCommandRawSchema as unknown as z.ZodType<
-    Components['schemas']['CreateCredentialCommand']
-  >
-
 const _EgressHealthResponseRawSchema = z
   .object({
     type: z.literal('egress_health_response'),
@@ -4816,6 +4811,39 @@ const _PendingReviewSummaryItemRawSchema = z
 export const PendingReviewSummaryItemSchema =
   _PendingReviewSummaryItemRawSchema as unknown as z.ZodType<
     Components['schemas']['PendingReviewSummaryItem']
+  >
+
+const _PortfolioReconciliationViewRawSchema = z
+  .object({
+    method: PortfolioReconciliationMethodSchema.nullable(),
+    evaluation_status: PortfolioReconciliationEvaluationStatusSchema.nullable(),
+    effective_status: PortfolioReconciliationEffectiveStatusSchema,
+    is_authoritative: z.boolean(),
+    evaluated_at: z.iso.datetime().nullable(),
+    current_observation_id: z.number().int().nullable(),
+    last_full_observation_id: z.number().int().nullable(),
+    detail_source_observation_id: z.number().int().nullable(),
+    last_full_outcome: z.enum(['matched', 'mismatched']).nullable(),
+    consecutive_full_mismatches: z.number().int(),
+    anchor_public_id: z.string().nullable(),
+    venue_account_state_public_id: z.string().nullable(),
+    venue_account_observation_id: z.number().int().nullable(),
+    source_watermark_kind: z.string().nullable(),
+    source_watermark: z.number().int().nullable(),
+    expected: z.record(z.string(), z.any()).nullable(),
+    actual: z.record(z.string(), z.any()).nullable(),
+    difference: z.record(z.string(), z.any()).nullable(),
+    tolerance: z.record(z.string(), z.any()).nullable(),
+    reconciled_at: z.iso.datetime().nullable(),
+    authoritative_until: z.iso.datetime().nullable(),
+    error: z.string().nullable(),
+    open_drift_episode: PortfolioReconciliationDriftEpisodeSchema.nullable(),
+  })
+  .strict()
+
+export const PortfolioReconciliationViewSchema =
+  _PortfolioReconciliationViewRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioReconciliationView']
   >
 
 const _ProcessConfigScopeDataRawSchema = z
@@ -5269,6 +5297,40 @@ export const PendingReviewListResponseSchema =
     Components['schemas']['PendingReviewListResponse']
   >
 
+const _PortfolioAccountStateRawSchema = z
+  .object({
+    type: z.literal('portfolio_account_state'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
+    mode: z.enum(['live', 'paper']),
+    sync_status: z.string(),
+    effective_status: z.string(),
+    is_authoritative: z.boolean(),
+    balance_status: z.string(),
+    position_status: z.string(),
+    valuation_status: z.string(),
+    balances: z.array(AccountBalanceEntrySchema).nullable().optional(),
+    open_positions: z.array(AccountPositionEntrySchema).nullable().optional(),
+    balance_observed_at: z.iso.datetime().nullable().optional(),
+    position_observed_at: z.iso.datetime().nullable().optional(),
+    authoritative_until: z.iso.datetime().nullable().optional(),
+    current_attempt_observation_id: z.number().int().nullable().optional(),
+    balance_payload_source_observation_id: z.number().int().nullable().optional(),
+    position_payload_source_observation_id: z.number().int().nullable().optional(),
+    error: z.string().nullable().optional(),
+    reconciliation: PortfolioReconciliationViewSchema,
+  })
+  .strict()
+
+export const PortfolioAccountStateSchema = _PortfolioAccountStateRawSchema as unknown as z.ZodType<
+  Components['schemas']['PortfolioAccountState']
+>
+
 const _ProcessConfigScopeResponseRawSchema = z
   .object({
     type: z.literal('process_config_scope_response'),
@@ -5498,6 +5560,24 @@ export const DelegateCapsUpdateRequestSchema =
     Components['schemas']['DelegateCapsUpdateRequest']
   >
 
+const _PortfolioAccountStateListResponseRawSchema = z
+  .object({
+    type: z.literal('portfolio_account_state_list'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(PortfolioAccountStateSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const PortfolioAccountStateListResponseSchema =
+  _PortfolioAccountStateListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['PortfolioAccountStateListResponse']
+  >
+
 const _SystemStatusResponseRawSchema = z
   .object({
     type: z.literal('system_status_response'),
@@ -5585,6 +5665,13 @@ export type OrderData = Components['schemas']['OrderData']
 export type OrphanSweepResultData = Components['schemas']['OrphanSweepResultData']
 export type PairedHaltInfo = Components['schemas']['PairedHaltInfo']
 export type PairedLegExposure = Components['schemas']['PairedLegExposure']
+export type PortfolioReconciliationDriftEpisode =
+  Components['schemas']['PortfolioReconciliationDriftEpisode']
+export type PortfolioReconciliationEffectiveStatus =
+  Components['schemas']['PortfolioReconciliationEffectiveStatus']
+export type PortfolioReconciliationEvaluationStatus =
+  Components['schemas']['PortfolioReconciliationEvaluationStatus']
+export type PortfolioReconciliationMethod = Components['schemas']['PortfolioReconciliationMethod']
 export type PositionCycleData = Components['schemas']['PositionCycleData']
 export type PositionData = Components['schemas']['PositionData']
 export type ProcessCategoryCount = Components['schemas']['ProcessCategoryCount']
@@ -5645,7 +5732,6 @@ export type AiReviewDecisionRequest = Components['schemas']['AiReviewDecisionReq
 export type UserAlertDefaultBody = Components['schemas']['UserAlertDefaultBody']
 export type BacktestCompareBody = Components['schemas']['BacktestCompareBody']
 export type BacktestCancelBody = Components['schemas']['BacktestCancelBody']
-export type PortfolioReconciliationMethod = Components['schemas']['PortfolioReconciliationMethod']
 export type RotateCredentialBody = Components['schemas']['RotateCredentialBody']
 export type RegisterDeviceBody = Components['schemas']['RegisterDeviceBody']
 export type DeviceAlertPrefBody = Components['schemas']['DeviceAlertPrefBody']
@@ -5663,7 +5749,6 @@ export type RevokeScopeGrantBody = Components['schemas']['RevokeScopeGrantBody']
 export type TrailingStopCreateBody = Components['schemas']['TrailingStopCreateBody']
 export type TrailingStopCancelBody = Components['schemas']['TrailingStopCancelBody']
 export type CreateWalletBody = Components['schemas']['CreateWalletBody']
-export type PortfolioAccountState = Components['schemas']['PortfolioAccountState']
 export type BacktestComparisonListResponse = Components['schemas']['BacktestComparisonListResponse']
 export type BacktestComparisonResponse = Components['schemas']['BacktestComparisonResponse']
 export type BacktestEquityPointListResponse =
@@ -5703,6 +5788,7 @@ export type OperatorResponse = Components['schemas']['OperatorResponse']
 export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
 export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
+export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
 export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
 export type PositionListResponse = Components['schemas']['PositionListResponse']
 export type ProcessCreateData = Components['schemas']['ProcessCreateData']
@@ -5762,7 +5848,6 @@ export type AiReviewDecisionCommand = Components['schemas']['AiReviewDecisionCom
 export type UpdateUserAlertDefaultCommand = Components['schemas']['UpdateUserAlertDefaultCommand']
 export type BacktestCompareRequest = Components['schemas']['BacktestCompareRequest']
 export type BacktestCancelCommand = Components['schemas']['BacktestCancelCommand']
-export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
 export type RotateCredentialCommand = Components['schemas']['RotateCredentialCommand']
 export type RegisterDeviceCommand = Components['schemas']['RegisterDeviceCommand']
 export type UpdateDevicePrefCommand = Components['schemas']['UpdateDevicePrefCommand']
@@ -5780,8 +5865,6 @@ export type RevokeScopeGrantCommand = Components['schemas']['RevokeScopeGrantCom
 export type TrailingStopCreateCommand = Components['schemas']['TrailingStopCreateCommand']
 export type TrailingStopCancelCommand = Components['schemas']['TrailingStopCancelCommand']
 export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
-export type PortfolioAccountStateListResponse =
-  Components['schemas']['PortfolioAccountStateListResponse']
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
 export type EgressHealthData = Components['schemas']['EgressHealthData']
@@ -5791,6 +5874,7 @@ export type JsonObject = Components['schemas']['JsonObject']
 export type MarketDataCoverageResponse = Components['schemas']['MarketDataCoverageResponse']
 export type PairedExecutionIncident = Components['schemas']['PairedExecutionIncident']
 export type PairedGroupTerminalizeResponse = Components['schemas']['PairedGroupTerminalizeResponse']
+export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
 export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']
 export type CredentialReconciliationMethodResponse =
@@ -5812,7 +5896,6 @@ export type CreateUserRequest = Components['schemas']['CreateUserRequest']
 export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
 export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
-export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
 export type AdminAiReviewItem = Components['schemas']['AdminAiReviewItem']
@@ -5825,6 +5908,7 @@ export type ConfiguredProcess = Components['schemas']['ConfiguredProcess']
 export type DelegateCapsBody = Components['schemas']['DelegateCapsBody']
 export type ExecutionPlanDecisionData = Components['schemas']['ExecutionPlanDecisionData']
 export type PendingReviewSummaryItem = Components['schemas']['PendingReviewSummaryItem']
+export type PortfolioReconciliationView = Components['schemas']['PortfolioReconciliationView']
 export type ProcessConfigScopeData = Components['schemas']['ProcessConfigScopeData']
 export type ProcessRun = Components['schemas']['ProcessRun']
 export type ProcessSchemaData = Components['schemas']['ProcessSchemaData']
@@ -5853,6 +5937,7 @@ export type DelegateCapsUpdateBody = Components['schemas']['DelegateCapsUpdateBo
 export type ExecutionPlanDecisionListResponse =
   Components['schemas']['ExecutionPlanDecisionListResponse']
 export type PendingReviewListResponse = Components['schemas']['PendingReviewListResponse']
+export type PortfolioAccountState = Components['schemas']['PortfolioAccountState']
 export type ProcessConfigScopeResponse = Components['schemas']['ProcessConfigScopeResponse']
 export type ProcessRunsResponse = Components['schemas']['ProcessRunsResponse']
 export type ProcessSchemaResponse = Components['schemas']['ProcessSchemaResponse']
@@ -5868,5 +5953,7 @@ export type DelegateListResponse = Components['schemas']['DelegateListResponse']
 export type DelegateResponse = Components['schemas']['DelegateResponse']
 export type DelegateCreateRequest = Components['schemas']['DelegateCreateRequest']
 export type DelegateCapsUpdateRequest = Components['schemas']['DelegateCapsUpdateRequest']
+export type PortfolioAccountStateListResponse =
+  Components['schemas']['PortfolioAccountStateListResponse']
 export type SystemStatusResponse = Components['schemas']['SystemStatusResponse']
 export type DelegateCreatedResponse = Components['schemas']['DelegateCreatedResponse']

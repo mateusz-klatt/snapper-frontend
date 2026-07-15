@@ -3348,6 +3348,7 @@ export type Components = {
             balance_payload_source_observation_id?: number | null | undefined;
             position_payload_source_observation_id?: number | null | undefined;
             error?: string | null | undefined;
+            reconciliation: Components["schemas"]["PortfolioReconciliationView"];
         };
         PortfolioAccountStateListResponse: {
             type: "portfolio_account_state_list";
@@ -3358,6 +3359,43 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["PortfolioAccountState"][];
             count: number;
+        };
+        PortfolioReconciliationDriftEpisode: {
+            public_id: string;
+            status: "open";
+            opened_at: string;
+            trigger_observation_id: number;
+            last_observation_id: number;
+            details_source_observation_id: number;
+            latest_full_mismatch_count: number;
+        };
+        PortfolioReconciliationEffectiveStatus: "matched" | "mismatched" | "incomplete" | "unsupported" | "error" | "stale" | "clock_error" | "corrupt";
+        PortfolioReconciliationEvaluationStatus: "matched" | "mismatched" | "incomplete" | "unsupported" | "error";
+        PortfolioReconciliationMethod: "futures_position" | "spot_execution_replay" | "margin_ledger_replay" | "unclassified";
+        PortfolioReconciliationView: {
+            method: Components["schemas"]["PortfolioReconciliationMethod"] | null;
+            evaluation_status: Components["schemas"]["PortfolioReconciliationEvaluationStatus"] | null;
+            effective_status: Components["schemas"]["PortfolioReconciliationEffectiveStatus"];
+            is_authoritative: boolean;
+            evaluated_at: string | null;
+            current_observation_id: number | null;
+            last_full_observation_id: number | null;
+            detail_source_observation_id: number | null;
+            last_full_outcome: ("matched" | "mismatched") | null;
+            consecutive_full_mismatches: number;
+            anchor_public_id: string | null;
+            venue_account_state_public_id: string | null;
+            venue_account_observation_id: number | null;
+            source_watermark_kind: string | null;
+            source_watermark: number | null;
+            expected: Record<string, unknown> | null;
+            actual: Record<string, unknown> | null;
+            difference: Record<string, unknown> | null;
+            tolerance: Record<string, unknown> | null;
+            reconciled_at: string | null;
+            authoritative_until: string | null;
+            error: string | null;
+            open_drift_episode: Components["schemas"]["PortfolioReconciliationDriftEpisode"] | null;
         };
         PositionCycleData: {
             type: "position_cycle";
@@ -4689,7 +4727,6 @@ export type Components = {
             };
             label?: string | null;
         };
-        PortfolioReconciliationMethod: "futures_position" | "spot_execution_replay" | "margin_ledger_replay" | "unclassified";
         SetCredentialReconciliationMethodCommand: {
             type?: "set_credential_reconciliation_method_command";
             sequence_id: number;
