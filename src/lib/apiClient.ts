@@ -376,6 +376,19 @@ class APIClient {
 
     return response.json()
   }
+  public async putJSON<T>(url: string, body?: unknown, options: RequestOptions = {}): Promise<T> {
+    const response = await this.request(url, {
+      ...options,
+      method: 'PUT',
+      body: body ? JSON.stringify(stampProvenance(body)) : undefined,
+    })
+
+    if (!response.ok) {
+      await this.raiseHttpError(response)
+    }
+
+    return response.json()
+  }
   /**
    * Bypass scope-injection for read paths that already encode their
    * own filters server-side (scope-grants, credentials, ai-reviews).

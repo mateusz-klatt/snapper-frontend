@@ -105,6 +105,26 @@
       "reconciliationError": "Módszer: {{method}}. Az egyeztetés nem tudott megbízható ítéletet hozni.",
       "unsupported": "Módszer: {{method}}. Az egyeztetés nem támogatott ennél a fióknál.",
       "unverified": "Módszer: {{method}}. Ez az ítélet nem hiteles, és nem minősül megbízhatóan egyeztetettnek."
+    },
+    "classify": {
+      "action": "Besorolás",
+      "title": "Egyeztetési módszer besorolása",
+      "intro": "Válassza ki, hogyan egyeztetik ezt a tőzsdei fiókot a tőzsde hiteles adataival. Ez a fiókkal kapcsolatos ténymegállapítás, nem pedig preferencia.",
+      "guidance": "Válassza ki azt a módszert, amely megfelel a fiók tényleges tőzsdei működésének: a készpénzes (azonnali) fiókok kizárólag készpénzegyenlegből számolják el az ügyleteket, míg a marginfiókok fedezet ellenében hitelt vehetnek fel. Ha nem biztos a fiók működésében, hagyja besorolatlanul.",
+      "immutabilityWarning": "Ez a besorolás végleges. A beállítást követően nem módosítható és nem távolítható el.",
+      "acknowledge": "Tudomásul veszem, hogy ez a besorolás végleges, és megfelel e fiók működésének.",
+      "methodDescription": {
+        "futuresPosition": "A nyitott származtatott pozíciókat egyezteti a tőzsde hiteles határidős pozícióadataival.",
+        "spotExecutionReplay": "Újrajátssza az azonnali végrehajtásokat a készpénzegyenlegekkel összevetve. Kizárólag készpénzes fiókokhoz, amelyek soha nem folytatnak marginkereskedést.",
+        "marginLedgerReplay": "Újrajátssza a tőzsde margin főkönyvét. Olyan fiókokhoz, amelyek marginkereskedést folytatnak, vagy fedezet ellenében hitelt vesznek fel."
+      },
+      "credentialLoading": "Hitelesítő adat betöltése…",
+      "noCredential": "Ehhez a fiókhoz nem található aktív, valós idejű hitelesítő adat. Az egyeztetés nem sorolható be.",
+      "ambiguousCredential": "Ehhez a fiókhoz több valós idejű hitelesítő adat is tartozik. A besoroláshoz pontosan egy szükséges.",
+      "confirm": "Fiók besorolása",
+      "cancel": "Mégse",
+      "success": "Fiók besorolva: {{method}}",
+      "error": "A besorolás sikertelen: {{message}}"
     }
   }
 }

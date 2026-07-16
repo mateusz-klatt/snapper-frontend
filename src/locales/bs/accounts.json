@@ -105,6 +105,26 @@
       "reconciliationError": "Metoda: {{method}}. Usklađivanje nije moglo donijeti pouzdanu presudu.",
       "unsupported": "Metoda: {{method}}. Usklađivanje nije podržano za ovaj račun.",
       "unverified": "Metoda: {{method}}. Ova presuda nije autoritativna i ne smatra se pouzdanom."
+    },
+    "classify": {
+      "action": "Klasificiraj",
+      "title": "Klasificiraj metodu usklađivanja",
+      "intro": "Odaberite kako se ovaj račun na berzi usklađuje s mjerodavnim podacima berze. Ovo je činjenična izjava o računu, a ne preferencija.",
+      "guidance": "Odaberite metodu koja odgovara načinu na koji račun stvarno funkcioniše na berzi: gotovinski (spot) računi podmiruju transakcije isključivo iz gotovinskih stanja, dok računi s maržom mogu pozajmljivati uz kolateral. Ako niste sigurni kako račun funkcioniše, ostavite ga neklasificiranim.",
+      "immutabilityWarning": "Ova klasifikacija je trajna. Nakon što se postavi, ne može se promijeniti niti ukloniti.",
+      "acknowledge": "Razumijem da je ova klasifikacija trajna i da odgovara načinu na koji ovaj račun funkcioniše.",
+      "methodDescription": {
+        "futuresPosition": "Usklađuje otvorene pozicije izvedenica s mjerodavnim podacima berze o pozicijama fjučersa.",
+        "spotExecutionReplay": "Reproducira spot izvršenja u odnosu na gotovinska stanja. Za račune koji koriste samo gotovinu i nikada ne trguju uz maržu.",
+        "marginLedgerReplay": "Reproducira glavnu knjigu marže berze. Za račune koji trguju uz maržu ili pozajmljuju uz kolateral."
+      },
+      "credentialLoading": "Učitavanje vjerodajnice…",
+      "noCredential": "Za ovaj račun nije pronađena aktivna vjerodajnica za stvarno trgovanje. Metoda usklađivanja se ne može klasificirati.",
+      "ambiguousCredential": "Ovom računu odgovara više vjerodajnica za stvarno trgovanje. Klasifikacija zahtijeva tačno jednu.",
+      "confirm": "Klasificiraj račun",
+      "cancel": "Otkaži",
+      "success": "Račun klasificiran: {{method}}",
+      "error": "Klasifikacija nije uspjela: {{message}}"
     }
   }
 }

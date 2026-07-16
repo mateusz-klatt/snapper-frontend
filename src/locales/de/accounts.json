@@ -105,6 +105,26 @@
       "reconciliationError": "Methode: {{method}}. Der Abgleich konnte kein vertrauenswürdiges Urteil liefern.",
       "unsupported": "Methode: {{method}}. Ein Abgleich wird für dieses Konto nicht unterstützt.",
       "unverified": "Methode: {{method}}. Dieses Urteil ist nicht maßgeblich und wird nicht als abgeglichen vertraut."
+    },
+    "classify": {
+      "action": "Klassifizieren",
+      "title": "Abgleichsmethode klassifizieren",
+      "intro": "Wählen Sie aus, wie dieses Börsenkonto mit den verbindlichen Daten der Börse abgeglichen wird. Dies ist eine Tatsachenfeststellung zum Konto, keine Präferenz.",
+      "guidance": "Wählen Sie die Methode, die der tatsächlichen Funktionsweise des Kontos an der Börse entspricht: Cash-Konten (Spot) wickeln Geschäfte ausschließlich über Barguthaben ab, während Margin-Konten Kredite gegen Sicherheiten aufnehmen können. Wenn Sie nicht sicher sind, wie das Konto funktioniert, lassen Sie es ohne Klassifizierung.",
+      "immutabilityWarning": "Diese Klassifizierung ist dauerhaft. Nach dem Festlegen kann sie weder geändert noch entfernt werden.",
+      "acknowledge": "Ich verstehe, dass diese Klassifizierung dauerhaft ist und der Funktionsweise dieses Kontos entspricht.",
+      "methodDescription": {
+        "futuresPosition": "Gleicht offene Derivatepositionen mit den verbindlichen Futures-Positionsdaten der Börse ab.",
+        "spotExecutionReplay": "Führt ein Spot-Ausführungs-Replay gegen die Barguthaben durch. Für reine Cash-Konten, die niemals auf Margin handeln.",
+        "marginLedgerReplay": "Führt ein Margin-Ledger-Replay der Börse durch. Für Konten, die auf Margin handeln oder Kredite gegen Sicherheiten aufnehmen."
+      },
+      "credentialLoading": "Anmeldedaten werden geladen…",
+      "noCredential": "Für dieses Konto wurden keine aktiven Live-Anmeldedaten gefunden. Die Abgleichsmethode kann nicht klassifiziert werden.",
+      "ambiguousCredential": "Mehrere Live-Anmeldedaten passen zu diesem Konto. Für die Klassifizierung wird genau ein Satz Anmeldedaten benötigt.",
+      "confirm": "Konto klassifizieren",
+      "cancel": "Abbrechen",
+      "success": "Konto klassifiziert: {{method}}",
+      "error": "Klassifizierung fehlgeschlagen: {{message}}"
     }
   }
 }

@@ -105,6 +105,26 @@
       "reconciliationError": "Metod: {{method}}. Usklađivanje nije moglo da proizvede pouzdanu presudu.",
       "unsupported": "Metod: {{method}}. Usklađivanje nije podržano za ovaj nalog.",
       "unverified": "Metod: {{method}}. Ova presuda nije autoritativna i ne smatra se pouzdanom kao usklađenom."
+    },
+    "classify": {
+      "action": "Klasifikuj",
+      "title": "Klasifikuj metod usklađivanja",
+      "intro": "Izaberite kako se ovaj račun na berzi usklađuje sa merodavnim podacima berze. Ovo je konstatacija činjenice o računu, a ne stvar izbora.",
+      "guidance": "Izaberite metod koji odgovara načinu na koji račun zaista funkcioniše na berzi: gotovinski (spot) računi poravnavaju trgovanja isključivo iz gotovinskih bilansa, dok računi sa marginom mogu da pozajmljuju uz kolateral. Ako niste sigurni kako račun funkcioniše, ostavite ga neklasifikovanim.",
+      "immutabilityWarning": "Ova klasifikacija je trajna. Nakon postavljanja ne može se promeniti niti ukloniti.",
+      "acknowledge": "Razumem da je ova klasifikacija trajna i da odgovara načinu na koji ovaj račun funkcioniše.",
+      "methodDescription": {
+        "futuresPosition": "Usklađuje otvorene pozicije derivata sa merodavnim podacima berze o fjučers pozicijama.",
+        "spotExecutionReplay": "Ponovo pušta spot izvršenja u odnosu na gotovinske bilanse. Za isključivo gotovinske račune koji nikada ne trguju uz marginu.",
+        "marginLedgerReplay": "Ponovo pušta knjigu marže berze. Za račune koji trguju uz marginu ili pozajmljuju uz kolateral."
+      },
+      "credentialLoading": "Učitavanje akreditiva…",
+      "noCredential": "Za ovaj račun nije pronađen nijedan aktivni akreditiv za stvarno trgovanje. Usklađivanje se ne može klasifikovati.",
+      "ambiguousCredential": "Ovom računu odgovara više akreditiva za stvarno trgovanje. Za klasifikaciju je potreban tačno jedan.",
+      "confirm": "Klasifikuj račun",
+      "cancel": "Otkaži",
+      "success": "Račun je klasifikovan: {{method}}",
+      "error": "Klasifikacija nije uspela: {{message}}"
     }
   }
 }

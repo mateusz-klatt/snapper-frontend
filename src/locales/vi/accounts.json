@@ -105,6 +105,26 @@
       "reconciliationError": "Phương pháp: {{method}}. Đối soát không thể đưa ra kết luận đáng tin cậy.",
       "unsupported": "Phương pháp: {{method}}. Không hỗ trợ đối soát cho tài khoản này.",
       "unverified": "Phương pháp: {{method}}. Kết luận này không có tính thẩm quyền và không được tin cậy là đã đối soát."
+    },
+    "classify": {
+      "action": "Phân loại",
+      "title": "Phân loại phương pháp đối soát",
+      "intro": "Chọn cách đối soát tài khoản sàn này với dữ liệu chuẩn của sàn. Đây là tuyên bố về thực tế của tài khoản, không phải một lựa chọn theo ý thích.",
+      "guidance": "Chọn phương pháp phù hợp với cách tài khoản thực sự hoạt động tại sàn: tài khoản tiền mặt (spot) chỉ thanh toán giao dịch từ số dư tiền mặt, trong khi tài khoản ký quỹ có thể vay dựa trên tài sản thế chấp. Nếu không chắc chắn về cách tài khoản hoạt động, hãy để tài khoản ở trạng thái chưa phân loại.",
+      "immutabilityWarning": "Phân loại này là vĩnh viễn. Sau khi thiết lập, không thể thay đổi hoặc xóa.",
+      "acknowledge": "Tôi hiểu rằng phân loại này là vĩnh viễn và phù hợp với cách tài khoản này hoạt động.",
+      "methodDescription": {
+        "futuresPosition": "Đối soát các vị thế phái sinh đang mở với dữ liệu chuẩn của sàn về vị thế futures.",
+        "spotExecutionReplay": "Phát lại các lần khớp lệnh spot dựa trên số dư tiền mặt. Dành cho các tài khoản chỉ dùng tiền mặt và không bao giờ giao dịch ký quỹ.",
+        "marginLedgerReplay": "Phát lại sổ cái margin của sàn. Dành cho các tài khoản giao dịch ký quỹ hoặc vay dựa trên tài sản thế chấp."
+      },
+      "credentialLoading": "Đang tải thông tin xác thực…",
+      "noCredential": "Không tìm thấy thông tin xác thực đang hoạt động cho giao dịch thực trên tài khoản này. Không thể phân loại phương pháp đối soát.",
+      "ambiguousCredential": "Nhiều bộ thông tin xác thực cho giao dịch thực khớp với tài khoản này. Việc phân loại yêu cầu chính xác một bộ.",
+      "confirm": "Phân loại tài khoản",
+      "cancel": "Hủy",
+      "success": "Đã phân loại tài khoản: {{method}}",
+      "error": "Phân loại không thành công: {{message}}"
     }
   }
 }

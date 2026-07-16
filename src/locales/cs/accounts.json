@@ -105,6 +105,26 @@
       "reconciliationError": "Metoda: {{method}}. Odsouhlasení nedokázalo vyprodukovat důvěryhodný verdikt.",
       "unsupported": "Metoda: {{method}}. Odsouhlasení pro tento účet není podporováno.",
       "unverified": "Metoda: {{method}}. Tento verdikt není směrodatný a není mu důvěřováno jako odsouhlasenému."
+    },
+    "classify": {
+      "action": "Klasifikovat",
+      "title": "Klasifikovat metodu odsouhlasení",
+      "intro": "Zvolte způsob, jakým je tento účet na burze odsouhlasován se směrodatnými údaji burzy. Jde o konstatování skutečnosti o účtu, nikoli o preferenci.",
+      "guidance": "Vyberte metodu, která odpovídá tomu, jak účet na burze skutečně funguje: hotovostní (spotové) účty vypořádávají obchody pouze z hotovostních zůstatků, zatímco maržové účty si mohou půjčovat proti zajištění. Pokud si nejste jisti, jak účet funguje, ponechte jej neklasifikovaný.",
+      "immutabilityWarning": "Tato klasifikace je trvalá. Po nastavení ji nelze změnit ani odebrat.",
+      "acknowledge": "Rozumím tomu, že tato klasifikace je trvalá a odpovídá tomu, jak tento účet funguje.",
+      "methodDescription": {
+        "futuresPosition": "Odsouhlasuje otevřené derivátové pozice se směrodatnými údaji burzy o futures pozicích.",
+        "spotExecutionReplay": "Přehrává spotové exekuce vůči peněžním zůstatkům. Pro účty používající pouze hotovost, které nikdy neobchodují na marži.",
+        "marginLedgerReplay": "Přehrává maržovou účetní knihu burzy. Pro účty, které obchodují na marži nebo si půjčují proti zajištění."
+      },
+      "credentialLoading": "Načítání pověření…",
+      "noCredential": "Pro tento účet nebylo nalezeno žádné aktivní pověření pro skutečné obchodování. Metodu odsouhlasení nelze klasifikovat.",
+      "ambiguousCredential": "Tomuto účtu odpovídá více pověření pro skutečné obchodování. Klasifikace vyžaduje právě jedno.",
+      "confirm": "Klasifikovat účet",
+      "cancel": "Zrušit",
+      "success": "Účet klasifikován: {{method}}",
+      "error": "Klasifikace se nezdařila: {{message}}"
     }
   }
 }

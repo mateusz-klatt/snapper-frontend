@@ -1,25 +1,65 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { Accounts } from './Accounts'
 import { usePortfolioAccounts } from '../../hooks/queries/portfolio'
 import { CLIENT_AUTHORITY_STALENESS_MS } from '../../lib/accountTruth'
+import { Permission } from '../../types/permissions.generated'
 import type { PortfolioAccountState } from '../../types/api'
 
 const FIXED_NOW = Date.parse('2026-07-13T12:00:00Z')
 const FUTURE = '2026-07-13T12:05:00Z'
 
 const control = vi.hoisted(() => ({ asOf: null as string | null, now: 0 }))
+const authControl = vi.hoisted(() => ({ granted: true, requested: [] as string[] }))
 
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn((selector: (s: { asOf: string | null }) => unknown) =>
     selector({ asOf: control.asOf })
   ),
 }))
+vi.mock('../../stores/auth', () => ({
+  useAuthStore: vi.fn(() => ({
+    hasPermission: (permission: string) => {
+      authControl.requested.push(permission)
+
+      return authControl.granted && permission === 'manage:wallet_credentials'
+    },
+  })),
+}))
 vi.mock('../../hooks/useNow', () => ({
   useNow: vi.fn(() => control.now),
 }))
 vi.mock('../../hooks/queries/portfolio', () => ({
   usePortfolioAccounts: vi.fn(),
+}))
+vi.mock('./ClassifyReconciliationDialog', () => ({
+  ClassifyReconciliationDialog: ({
+    open,
+    onClose,
+    onClassified,
+  }: {
+    open: boolean
+    onClose: () => void
+    onClassified?: (() => void) | undefined
+  }) =>
+    open ? (
+      <div data-testid='classify-dialog'>
+        <button type='button' data-testid='classify-dialog-close' onClick={onClose}>
+          close
+        </button>
+        <button
+          type='button'
+          data-testid='classify-dialog-success'
+          onClick={() => {
+            onClassified?.()
+            onClose()
+          }}
+        >
+          success
+        </button>
+      </div>
+    ) : null,
 }))
 
 type PortfolioReconciliationView = PortfolioAccountState['reconciliation']
@@ -100,6 +140,8 @@ describe('Accounts', () => {
     vi.clearAllMocks()
     control.asOf = null
     control.now = FIXED_NOW
+    authControl.granted = true
+    authControl.requested = []
   })
 
   it('shows loading skeletons while the first fetch is in flight', () => {
@@ -270,5 +312,110 @@ describe('Accounts', () => {
 
     expect(screen.getByTestId('accounts-unavailable')).toBeInTheDocument()
     expect(screen.queryByText('No venue accounts')).not.toBeInTheDocument()
+  })
+
+  it('shows the classify action for an unclassified live classifiable row and toggles the dialog', async () => {
+    const user = userEvent.setup()
+
+    mockAccounts(
+      [makeState({ reconciliation: makeReconciliation({ method: 'unclassified' }) })],
+      false,
+      FIXED_NOW
+    )
+    render(<Accounts />)
+
+    expect(screen.getByTestId('reconciliation-badge-unclassified')).toBeInTheDocument()
+    expect(screen.queryByTestId('classify-dialog')).not.toBeInTheDocument()
+    expect(authControl.requested).toContain(Permission.MANAGE_WALLET_CREDENTIALS)
+    expect(
+      authControl.requested.every(permission => permission === Permission.MANAGE_WALLET_CREDENTIALS)
+    ).toBe(true)
+    await user.click(screen.getByTestId('classify-action-w-1-kraken-live'))
+    expect(screen.getByTestId('classify-dialog')).toBeInTheDocument()
+    await user.click(screen.getByTestId('classify-dialog-close'))
+    expect(screen.queryByTestId('classify-dialog')).not.toBeInTheDocument()
+  })
+
+  it('latches a known classification success and removes the affordance without a refetch', async () => {
+    const user = userEvent.setup()
+
+    mockAccounts(
+      [makeState({ reconciliation: makeReconciliation({ method: 'unclassified' }) })],
+      false,
+      FIXED_NOW
+    )
+    render(<Accounts />)
+
+    await user.click(screen.getByTestId('classify-action-w-1-kraken-live'))
+    await user.click(screen.getByTestId('classify-dialog-success'))
+    expect(screen.queryByTestId('classify-dialog')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('classify-action-w-1-kraken-live')).not.toBeInTheDocument()
+    expect(screen.getByTestId('reconciliation-badge-unclassified')).toBeInTheDocument()
+  })
+
+  it('hides the classify action when the row is not unclassified', () => {
+    mockAccounts([makeState()], false, FIXED_NOW)
+    render(<Accounts />)
+
+    expect(screen.queryByTestId('classify-action-w-1-kraken-live')).not.toBeInTheDocument()
+  })
+
+  it('hides the classify action for an already-classified real method', () => {
+    mockAccounts(
+      [makeState({ reconciliation: makeReconciliation({ method: 'futures_position' }) })],
+      false,
+      FIXED_NOW
+    )
+    render(<Accounts />)
+
+    expect(screen.getByTestId('reconciliation-badge-notReconciled')).toBeInTheDocument()
+    expect(screen.queryByTestId('classify-action-w-1-kraken-live')).not.toBeInTheDocument()
+  })
+
+  it('hides the classify action for a paper-mode row', () => {
+    mockAccounts(
+      [
+        makeState({
+          mode: 'paper',
+          reconciliation: makeReconciliation({ method: 'unclassified' }),
+        }),
+      ],
+      false,
+      FIXED_NOW
+    )
+    render(<Accounts />)
+
+    expect(screen.getByTestId('reconciliation-badge-unclassified')).toBeInTheDocument()
+    expect(screen.queryByTestId('classify-action-w-1-kraken-paper')).not.toBeInTheDocument()
+  })
+
+  it('hides the classify action for a non-classifiable venue', () => {
+    mockAccounts(
+      [
+        makeState({
+          exchange: 'paper',
+          reconciliation: makeReconciliation({ method: 'unclassified' }),
+        }),
+      ],
+      false,
+      FIXED_NOW
+    )
+    render(<Accounts />)
+
+    expect(screen.getByTestId('reconciliation-badge-unclassified')).toBeInTheDocument()
+    expect(screen.queryByTestId('classify-action-w-1-paper-live')).not.toBeInTheDocument()
+  })
+
+  it('hides the classify action without the manage-credentials permission', () => {
+    authControl.granted = false
+    mockAccounts(
+      [makeState({ reconciliation: makeReconciliation({ method: 'unclassified' }) })],
+      false,
+      FIXED_NOW
+    )
+    render(<Accounts />)
+
+    expect(screen.getByTestId('reconciliation-badge-unclassified')).toBeInTheDocument()
+    expect(screen.queryByTestId('classify-action-w-1-kraken-live')).not.toBeInTheDocument()
   })
 })

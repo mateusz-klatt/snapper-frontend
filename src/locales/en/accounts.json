@@ -67,6 +67,26 @@
       "reconciliationError": "Method: {{method}}. Reconciliation could not produce a trustworthy verdict.",
       "unsupported": "Method: {{method}}. Reconciliation is not supported for this account.",
       "unverified": "Method: {{method}}. This verdict is not authoritative and is not trusted as reconciled."
+    },
+    "classify": {
+      "action": "Classify",
+      "title": "Classify reconciliation method",
+      "intro": "Choose how this venue account is reconciled against exchange truth. This is a statement of fact about the account, not a preference.",
+      "guidance": "Pick the method that matches how the account actually operates at the venue: cash (spot) accounts settle trades from cash balances only, while margin accounts can borrow against collateral. If you are not certain how the account operates, leave it unclassified.",
+      "immutabilityWarning": "This classification is permanent. It cannot be changed or removed once set.",
+      "acknowledge": "I understand this classification is permanent and matches how this account operates.",
+      "methodDescription": {
+        "futuresPosition": "Reconciles open derivative positions against the venue's futures position truth.",
+        "spotExecutionReplay": "Replays spot executions against cash balances. For cash-only accounts that never trade on margin.",
+        "marginLedgerReplay": "Replays the venue's margin ledger. For accounts that trade on margin or borrow against collateral."
+      },
+      "credentialLoading": "Loading credential…",
+      "noCredential": "No active live credential found for this account. Reconciliation cannot be classified.",
+      "ambiguousCredential": "Multiple live credentials match this account. Classification requires exactly one.",
+      "confirm": "Classify account",
+      "cancel": "Cancel",
+      "success": "Account classified: {{method}}",
+      "error": "Classification failed: {{message}}"
     }
   },
   "section": {

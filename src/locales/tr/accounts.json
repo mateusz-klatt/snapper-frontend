@@ -105,6 +105,26 @@
       "reconciliationError": "Yöntem: {{method}}. Mutabakat güvenilir bir karar üretemedi.",
       "unsupported": "Yöntem: {{method}}. Bu hesap için mutabakat desteklenmiyor.",
       "unverified": "Yöntem: {{method}}. Bu karar yetkili değildir ve mutabakat sağlandığı kabul edilmez."
+    },
+    "classify": {
+      "action": "Sınıflandır",
+      "title": "Mutabakat yöntemini sınıflandır",
+      "intro": "Bu borsa hesabının borsadaki gerçek kayıtlarla nasıl mutabakat sağlayacağını seçin. Bu, hesapla ilgili bir olgu beyanıdır; tercih değildir.",
+      "guidance": "Hesabın borsada gerçekte nasıl çalıştığına uyan yöntemi seçin: nakit (spot) hesaplar işlemlerin takasını yalnızca nakit bakiyelerinden gerçekleştirirken marjin hesapları teminat karşılığında borçlanabilir. Hesabın nasıl çalıştığından emin değilseniz hesabı sınıflandırılmamış olarak bırakın.",
+      "immutabilityWarning": "Bu sınıflandırma kalıcıdır. Ayarlandıktan sonra değiştirilemez veya kaldırılamaz.",
+      "acknowledge": "Bu sınıflandırmanın kalıcı olduğunu ve bu hesabın çalışma şekliyle eşleştiğini anlıyorum.",
+      "methodDescription": {
+        "futuresPosition": "Açık türev pozisyonlarını borsanın vadeli işlem pozisyonlarına ilişkin gerçek kayıtlarıyla mutabakata tabi tutar.",
+        "spotExecutionReplay": "Spot emir yürütmelerini nakit bakiyeleri üzerinden tekrarlar. Yalnızca nakitle işlem yapan ve hiçbir zaman marjinle işlem yapmayan hesaplar içindir.",
+        "marginLedgerReplay": "Borsanın marjin defterini tekrarlar. Marjinle işlem yapan veya teminat karşılığında borçlanan hesaplar içindir."
+      },
+      "credentialLoading": "Kimlik bilgisi yükleniyor…",
+      "noCredential": "Bu hesap için aktif bir gerçek işlem kimlik bilgisi bulunamadı. Mutabakat sınıflandırılamaz.",
+      "ambiguousCredential": "Bu hesapla birden fazla gerçek işlem kimlik bilgisi eşleşiyor. Sınıflandırma için tam olarak bir tane gerekir.",
+      "confirm": "Hesabı sınıflandır",
+      "cancel": "İptal",
+      "success": "Hesap sınıflandırıldı: {{method}}",
+      "error": "Sınıflandırma başarısız oldu: {{message}}"
     }
   }
 }

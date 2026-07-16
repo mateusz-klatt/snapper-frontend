@@ -105,6 +105,26 @@
       "reconciliationError": "Metoda: {{method}}. Uzgadnianie nie przyniosło wiarygodnego werdyktu.",
       "unsupported": "Metoda: {{method}}. Uzgadnianie nie jest obsługiwane dla tego konta.",
       "unverified": "Metoda: {{method}}. Ten werdykt nie jest miarodajny i nie uznaje się go za uzgodniony."
+    },
+    "classify": {
+      "action": "Klasyfikuj",
+      "title": "Klasyfikuj metodę uzgadniania",
+      "intro": "Wybierz sposób uzgadniania tego konta giełdowego z miarodajnymi danymi giełdy. Jest to stwierdzenie faktu dotyczącego konta, a nie preferencja.",
+      "guidance": "Wybierz metodę odpowiadającą rzeczywistemu sposobowi działania konta na giełdzie: na kontach gotówkowych (spot) transakcje są rozliczane wyłącznie z sald gotówkowych, natomiast konta z depozytem zabezpieczającym umożliwiają zaciąganie pożyczek pod zastaw. Jeśli nie masz pewności, jak działa konto, pozostaw je niesklasyfikowane.",
+      "immutabilityWarning": "Ta klasyfikacja jest trwała. Po jej ustawieniu nie można jej zmienić ani usunąć.",
+      "acknowledge": "Rozumiem, że ta klasyfikacja jest trwała i odpowiada sposobowi działania tego konta.",
+      "methodDescription": {
+        "futuresPosition": "Uzgadnia otwarte pozycje w instrumentach pochodnych z miarodajnymi danymi giełdy o pozycjach futures.",
+        "spotExecutionReplay": "Powtarza egzekucje spot względem sald gotówkowych. Dla kont wyłącznie gotówkowych, na których nigdy nie prowadzi się handlu z depozytem zabezpieczającym.",
+        "marginLedgerReplay": "Powtarza księgę depozytową giełdy. Dla kont, na których prowadzi się handel z depozytem zabezpieczającym lub zaciąga pożyczki pod zastaw."
+      },
+      "credentialLoading": "Ładowanie poświadczenia…",
+      "noCredential": "Nie znaleziono aktywnego poświadczenia do handlu rzeczywistego dla tego konta. Nie można sklasyfikować uzgadniania.",
+      "ambiguousCredential": "Do tego konta pasuje wiele poświadczeń do handlu rzeczywistego. Klasyfikacja wymaga dokładnie jednego.",
+      "confirm": "Klasyfikuj konto",
+      "cancel": "Anuluj",
+      "success": "Konto sklasyfikowane: {{method}}",
+      "error": "Klasyfikacja nie powiodła się: {{message}}"
     }
   }
 }

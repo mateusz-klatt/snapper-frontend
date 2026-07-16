@@ -105,6 +105,26 @@
       "reconciliationError": "Kaedah: {{method}}. Penyelarasan tidak dapat menghasilkan keputusan yang boleh dipercayai.",
       "unsupported": "Kaedah: {{method}}. Penyelarasan tidak disokong untuk akaun ini.",
       "unverified": "Kaedah: {{method}}. Keputusan ini bukan sahih dan tidak dipercayai sebagai diselaraskan."
+    },
+    "classify": {
+      "action": "Kelaskan",
+      "title": "Kelaskan kaedah penyelarasan",
+      "intro": "Pilih cara akaun bursa ini diselaraskan dengan data bursa yang boleh dipercayai. Ini ialah pernyataan fakta tentang akaun, bukan keutamaan.",
+      "guidance": "Pilih kaedah yang sepadan dengan cara sebenar akaun beroperasi di bursa: akaun tunai (lani) menyelesaikan dagangan menggunakan baki tunai sahaja, manakala akaun margin boleh meminjam dengan cagaran. Jika anda tidak pasti cara akaun beroperasi, biarkannya tidak dikelaskan.",
+      "immutabilityWarning": "Pengelasan ini kekal. Ia tidak boleh diubah atau dialih keluar setelah ditetapkan.",
+      "acknowledge": "Saya faham bahawa pengelasan ini kekal dan sepadan dengan cara akaun ini beroperasi.",
+      "methodDescription": {
+        "futuresPosition": "Menyelaraskan kedudukan derivatif terbuka dengan data kedudukan hadapan bursa yang boleh dipercayai.",
+        "spotExecutionReplay": "Memainkan semula pelaksanaan lani terhadap baki tunai. Untuk akaun tunai sahaja yang tidak pernah berdagang secara margin.",
+        "marginLedgerReplay": "Memainkan semula lejar margin bursa. Untuk akaun yang berdagang secara margin atau meminjam dengan cagaran."
+      },
+      "credentialLoading": "Memuatkan kelayakan…",
+      "noCredential": "Tiada kelayakan aktif untuk dagangan sebenar ditemui bagi akaun ini. Penyelarasan tidak dapat dikelaskan.",
+      "ambiguousCredential": "Beberapa kelayakan untuk dagangan sebenar sepadan dengan akaun ini. Pengelasan memerlukan tepat satu kelayakan.",
+      "confirm": "Kelaskan akaun",
+      "cancel": "Batal",
+      "success": "Akaun dikelaskan: {{method}}",
+      "error": "Pengelasan gagal: {{message}}"
     }
   }
 }

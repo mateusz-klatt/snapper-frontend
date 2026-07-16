@@ -105,6 +105,26 @@
       "reconciliationError": "Paraan: {{method}}. Hindi makagawa ng mapagkakatiwalaang hatol ang reconciliation.",
       "unsupported": "Paraan: {{method}}. Hindi suportado ang reconciliation para sa account na ito.",
       "unverified": "Paraan: {{method}}. Ang hatol na ito ay hindi mapagkakatiwalaan at hindi tinatanggap bilang nareconcile na."
+    },
+    "classify": {
+      "action": "Iuri",
+      "title": "Iuri ang paraan ng reconciliation",
+      "intro": "Piliin kung paano nire-reconcile ang account na ito sa mapagkakatiwalaang data ng palitan. Pahayag ito ng katotohanan tungkol sa account, hindi isang kagustuhan.",
+      "guidance": "Piliin ang paraang tumutugma sa aktuwal na paggana ng account sa palitan: ang mga cash (spot) account ay nagse-settle ng mga trade gamit lamang ang balanseng salapi, habang maaaring manghiram ang mga margin account laban sa collateral. Kung hindi ka sigurado kung paano gumagana ang account, hayaan itong hindi pa naiuri.",
+      "immutabilityWarning": "Permanente ang pag-uuring ito. Kapag itinakda na, hindi na ito mababago o maaalis.",
+      "acknowledge": "Nauunawaan kong permanente ang pag-uuring ito at tumutugma sa paggana ng account na ito.",
+      "methodDescription": {
+        "futuresPosition": "Nire-reconcile ang mga bukas na derivative position laban sa mapagkakatiwalaang futures position data ng palitan.",
+        "spotExecutionReplay": "Nire-replay ang mga spot execution laban sa mga balanseng salapi. Para sa mga cash-only account na hindi kailanman nagte-trade gamit ang margin.",
+        "marginLedgerReplay": "Nire-replay ang margin ledger ng palitan. Para sa mga account na nagte-trade gamit ang margin o nanghihiram laban sa collateral."
+      },
+      "credentialLoading": "Nilo-load ang credential…",
+      "noCredential": "Walang nakitang active live credential para sa account na ito. Hindi maaaring iuri ang paraan ng reconciliation.",
+      "ambiguousCredential": "Maraming live credentials ang tumutugma sa account na ito. Eksaktong isa ang kailangan para sa pag-uuri.",
+      "confirm": "Iuri ang account",
+      "cancel": "Kanselahin",
+      "success": "Naiuri ang account: {{method}}",
+      "error": "Nabigo ang pag-uuri: {{message}}"
     }
   }
 }

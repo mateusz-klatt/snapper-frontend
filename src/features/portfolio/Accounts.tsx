@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import clsx from 'clsx'
 import { AlertTriangle, Info } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { usePortfolioAccounts } from '../../hooks/queries/portfolio'
 import { useAppStore } from '../../stores/app'
+import { useAuthStore } from '../../stores/auth'
 import { useNow } from '../../hooks/useNow'
 import { deriveAccountTruth } from '../../lib/accountTruth'
+import { classifiableMethodsForExchange, deriveReconciliation } from '../../lib/reconciliation'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
 import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
+import { Permission } from '../../types/permissions.generated'
 import { AccountTruthBadge } from './AccountTruthBadge'
 import { ReconciliationBadge } from './ReconciliationBadge'
 import { PortfolioTruthBanner } from './PortfolioTruthBanner'
+import { ClassifyReconciliationDialog } from './ClassifyReconciliationDialog'
 import type {
   AccountBalanceEntry,
   AccountPositionEntry,
@@ -167,6 +171,16 @@ const AccountCard: React.FC<Readonly<AccountCardProps>> = ({
   const { t, i18n } = useTranslation('accounts')
   const locale = i18n.language as AppLocale
   const suffix = accountKey(account)
+  const { hasPermission } = useAuthStore()
+  const [classifyOpen, setClassifyOpen] = useState(false)
+  const [classified, setClassified] = useState(false)
+  const presentation = deriveReconciliation(account.reconciliation, isClientAuthoritative)
+  const canClassify =
+    presentation.displayStatus === 'unclassified' &&
+    account.mode === 'live' &&
+    classifiableMethodsForExchange(account.exchange).length > 0 &&
+    hasPermission(Permission.MANAGE_WALLET_CREDENTIALS) &&
+    !classified
 
   return (
     <div
@@ -187,6 +201,24 @@ const AccountCard: React.FC<Readonly<AccountCardProps>> = ({
             reconciliation={account.reconciliation}
             isClientAuthoritative={isClientAuthoritative}
           />
+          {canClassify && (
+            <>
+              <button
+                type='button'
+                onClick={() => setClassifyOpen(true)}
+                data-testid={`classify-action-${suffix}`}
+                className='rounded-full border border-warning-500/40 bg-warning-500/10 px-2 py-1 text-xs font-medium text-warning-600 transition-colors hover:bg-warning-500/20'
+              >
+                {t('reconciliation.classify.action')}
+              </button>
+              <ClassifyReconciliationDialog
+                account={account}
+                open={classifyOpen}
+                onClose={() => setClassifyOpen(false)}
+                onClassified={() => setClassified(true)}
+              />
+            </>
+          )}
         </div>
       </div>
 

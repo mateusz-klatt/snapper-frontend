@@ -105,6 +105,26 @@
       "reconciliationError": "Menetelmä: {{method}}. Täsmäytys ei tuottanut luotettavaa tulosta.",
       "unsupported": "Menetelmä: {{method}}. Täsmäytystä ei tueta tälle tilille.",
       "unverified": "Menetelmä: {{method}}. Tämä tulos ei ole auktorisoitu eikä siihen luoteta täsmäytettynä."
+    },
+    "classify": {
+      "action": "Luokittele",
+      "title": "Luokittele täsmäytysmenetelmä",
+      "intro": "Valitse, miten tämä pörssitili täsmäytetään pörssin luotettaviin tietoihin. Kyse on tiliä koskevasta tosiasiasta, ei mieltymyksestä.",
+      "guidance": "Valitse menetelmä, joka vastaa tilin todellista toimintatapaa pörssissä: käteistilit (spot) selvittävät kaupat vain käteissaldoista, kun taas marginaalitilit voivat ottaa lainaa vakuuksia vastaan. Jos et ole varma tilin toimintatavasta, jätä se luokittelematta.",
+      "immutabilityWarning": "Tämä luokittelu on pysyvä. Kun se on asetettu, sitä ei voi muuttaa eikä poistaa.",
+      "acknowledge": "Ymmärrän, että tämä luokittelu on pysyvä ja vastaa tämän tilin toimintatapaa.",
+      "methodDescription": {
+        "futuresPosition": "Täsmäyttää avoimet johdannaispositiot pörssin luotettaviin futuuripositiotietoihin.",
+        "spotExecutionReplay": "Toistaa spot-toteutukset käteissaldoja vasten. Vain käteistä käyttäville tileille, joilla ei koskaan käydä kauppaa marginaalilla.",
+        "marginLedgerReplay": "Toistaa pörssin marginaalipääkirjan. Tileille, joilla käydään kauppaa marginaalilla tai otetaan lainaa vakuuksia vastaan."
+      },
+      "credentialLoading": "Ladataan tunnistetietoja…",
+      "noCredential": "Tälle tilille ei löytynyt aktiivisia live-tunnistetietoja. Täsmäytysmenetelmää ei voi luokitella.",
+      "ambiguousCredential": "Tätä tiliä vastaa useita live-tunnistetietoja. Luokittelu edellyttää, että tunnistetietoja on täsmälleen yhdet.",
+      "confirm": "Luokittele tili",
+      "cancel": "Peruuta",
+      "success": "Tili luokiteltu: {{method}}",
+      "error": "Luokittelu epäonnistui: {{message}}"
     }
   }
 }

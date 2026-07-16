@@ -105,6 +105,26 @@
       "reconciliationError": "Método: {{method}}. La conciliación no pudo producir un veredicto confiable.",
       "unsupported": "Método: {{method}}. La conciliación no es compatible con esta cuenta.",
       "unverified": "Método: {{method}}. Este veredicto no es autoritativo y no se considera conciliado."
+    },
+    "classify": {
+      "action": "Clasificar",
+      "title": "Clasificar el método de conciliación",
+      "intro": "Elija cómo se concilia esta cuenta de la plataforma con los datos fiables del exchange. Esta es una declaración de hecho sobre la cuenta, no una preferencia.",
+      "guidance": "Elija el método que coincida con el funcionamiento real de la cuenta en la plataforma: las cuentas de efectivo (spot) liquidan las operaciones exclusivamente con saldos de efectivo, mientras que las cuentas de margen pueden pedir préstamos con garantías. Si no sabe con certeza cómo funciona la cuenta, déjela sin clasificar.",
+      "immutabilityWarning": "Esta clasificación es permanente. Una vez establecida, no se puede cambiar ni eliminar.",
+      "acknowledge": "Entiendo que esta clasificación es permanente y coincide con el funcionamiento de esta cuenta.",
+      "methodDescription": {
+        "futuresPosition": "Concilia las posiciones abiertas de derivados con los datos fiables de posiciones de futuros de la plataforma.",
+        "spotExecutionReplay": "Reproduce las ejecuciones spot con respecto a los saldos de efectivo. Para cuentas exclusivamente de efectivo que nunca operan con margen.",
+        "marginLedgerReplay": "Reproduce el libro mayor de margen de la plataforma. Para cuentas que operan con margen o piden préstamos con garantías."
+      },
+      "credentialLoading": "Cargando credencial…",
+      "noCredential": "No se encontró ninguna credencial activa de cuenta real para esta cuenta. No se puede clasificar el método de conciliación.",
+      "ambiguousCredential": "Hay varias credenciales de cuenta real que coinciden con esta cuenta. La clasificación requiere exactamente una.",
+      "confirm": "Clasificar cuenta",
+      "cancel": "Cancelar",
+      "success": "Cuenta clasificada: {{method}}",
+      "error": "La clasificación falló: {{message}}"
     }
   }
 }

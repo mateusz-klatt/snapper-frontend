@@ -105,6 +105,26 @@
       "reconciliationError": "方法：{{method}}。對帳無法產生可靠的判定結果。",
       "unsupported": "方法：{{method}}。此帳戶不支援對帳。",
       "unverified": "方法：{{method}}。此判定結果不具權威性，且不被信任為已對帳。"
+    },
+    "classify": {
+      "action": "分類",
+      "title": "分類對帳方法",
+      "intro": "選擇此交易所帳戶與交易所權威數據進行對帳的方式。這是對此帳戶客觀事實的陳述，而非偏好設定。",
+      "guidance": "請選擇與帳戶在交易所實際運作方式相符的方法：現金（現貨）帳戶僅使用現金餘額結算交易，而保證金帳戶可憑抵押品借款。如果不確定帳戶如何運作，請將其保留為未分類狀態。",
+      "immutabilityWarning": "此分類是永久性的。一旦設定，便無法變更或移除。",
+      "acknowledge": "我明白此分類是永久性的，並且與此帳戶的運作方式相符。",
+      "methodDescription": {
+        "futuresPosition": "將未平倉衍生品倉位與交易所關於期貨倉位的權威數據進行對帳。",
+        "spotExecutionReplay": "根據現金餘額重播現貨成交。適用於僅使用現金、從不進行保證金交易的帳戶。",
+        "marginLedgerReplay": "重播交易所的保證金分類帳。適用於進行保證金交易或以抵押品作為擔保借款的帳戶。"
+      },
+      "credentialLoading": "正在載入憑證…",
+      "noCredential": "未找到此帳戶的有效實盤憑證。無法對該對帳方法進行分類。",
+      "ambiguousCredential": "有多個實盤憑證與此帳戶相符。進行分類時必須有且僅有一個憑證。",
+      "confirm": "分類帳戶",
+      "cancel": "取消",
+      "success": "帳戶已分類：{{method}}",
+      "error": "分類失敗：{{message}}"
     }
   }
 }

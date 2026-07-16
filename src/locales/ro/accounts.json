@@ -105,6 +105,26 @@
       "reconciliationError": "Metodă: {{method}}. Reconcilierea nu a putut produce un verdict de încredere.",
       "unsupported": "Metodă: {{method}}. Reconcilierea nu este acceptată pentru acest cont.",
       "unverified": "Metodă: {{method}}. Acest verdict nu are caracter de autoritate și nu este considerat de încredere ca fiind reconciliat."
+    },
+    "classify": {
+      "action": "Clasificați",
+      "title": "Clasificați metoda de reconciliere",
+      "intro": "Alegeți modul în care acest cont de bursă este reconciliat cu datele de referință ale bursei. Aceasta este o constatare factuală despre cont, nu o preferință.",
+      "guidance": "Alegeți metoda care corespunde modului în care contul operează efectiv la bursă: conturile cu numerar (spot) decontează tranzacțiile exclusiv din soldurile de numerar, în timp ce conturile în marjă se pot împrumuta garantând cu active. Dacă nu cunoașteți cu certitudine modul în care operează contul, lăsați-l neclasificat.",
+      "immutabilityWarning": "Această clasificare este permanentă. Odată stabilită, nu poate fi schimbată sau eliminată.",
+      "acknowledge": "Înțeleg că această clasificare este permanentă și corespunde modului în care operează acest cont.",
+      "methodDescription": {
+        "futuresPosition": "Reconciliază pozițiile deschise pe instrumente derivate cu datele de referință ale bursei privind pozițiile futures.",
+        "spotExecutionReplay": "Reia execuțiile spot în raport cu soldurile de numerar. Pentru conturile exclusiv cu numerar, care nu tranzacționează niciodată în marjă.",
+        "marginLedgerReplay": "Reia registrul de marjă al bursei. Pentru conturile care tranzacționează în marjă sau se împrumută garantând cu active."
+      },
+      "credentialLoading": "Se încarcă credențiala…",
+      "noCredential": "Nu s-a găsit nicio credențială activă de tranzacționare reală pentru acest cont. Reconcilierea nu poate fi clasificată.",
+      "ambiguousCredential": "Mai multe credențiale pentru tranzacționare reală corespund acestui cont. Clasificarea necesită exact una.",
+      "confirm": "Clasificați contul",
+      "cancel": "Anulați",
+      "success": "Cont clasificat: {{method}}",
+      "error": "Clasificarea a eșuat: {{message}}"
     }
   }
 }

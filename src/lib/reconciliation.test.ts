@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import {
+  CLASSIFIABLE_VENUE_METHODS,
+  classifiableMethodsForExchange,
   deriveReconciliation,
   reconciliationTone,
   type ReconciliationDisplayStatus,
   type ReconciliationTone,
 } from './reconciliation'
-import type { PortfolioAccountState } from '../types/api'
+import type { PortfolioAccountState, RealPortfolioReconciliationMethod } from '../types/api'
 
 type Reconciliation = PortfolioAccountState['reconciliation']
 type DriftEpisode = NonNullable<Reconciliation['open_drift_episode']>
@@ -275,5 +277,33 @@ describe('reconciliationTone', () => {
 
   it('maps an unknown display status to the neutral tone', () => {
     expect(reconciliationTone('something-new')).toBe('neutral')
+  })
+})
+
+describe('classifiableMethodsForExchange', () => {
+  const venueCases: ReadonlyArray<readonly [string, readonly RealPortfolioReconciliationMethod[]]> =
+    [
+      ['kraken', ['spot_execution_replay', 'margin_ledger_replay']],
+      ['kraken_futures', ['futures_position']],
+      ['walutomat', ['spot_execution_replay']],
+      ['paper', []],
+      ['kraken_equities', []],
+      ['polygon', []],
+      ['venue-from-the-future', []],
+      ['constructor', []],
+      ['toString', []],
+      ['__proto__', []],
+    ]
+
+  it.each(venueCases)('offers %s the methods %j', (exchange, methods) => {
+    expect(classifiableMethodsForExchange(exchange)).toEqual(methods)
+  })
+
+  it('mirrors the backend policy for exactly the three classifiable venues', () => {
+    expect(Object.keys(CLASSIFIABLE_VENUE_METHODS).sort()).toEqual([
+      'kraken',
+      'kraken_futures',
+      'walutomat',
+    ])
   })
 })

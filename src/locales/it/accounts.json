@@ -105,6 +105,26 @@
       "reconciliationError": "Metodo: {{method}}. La riconciliazione non ha potuto produrre un verdetto affidabile.",
       "unsupported": "Metodo: {{method}}. La riconciliazione non è supportata per questo conto.",
       "unverified": "Metodo: {{method}}. Questo verdetto non è autorevole e non è considerato affidabile come riconciliato."
+    },
+    "classify": {
+      "action": "Classifica",
+      "title": "Classifica il metodo di riconciliazione",
+      "intro": "Scegli il modo in cui questo conto della piattaforma viene riconciliato con i dati autorevoli della piattaforma. Si tratta di un dato di fatto sul conto, non di una preferenza.",
+      "guidance": "Scegli il metodo che corrisponde al funzionamento effettivo del conto sulla piattaforma: i conti di cassa (spot) regolano le operazioni utilizzando esclusivamente i saldi di cassa, mentre i conti margin possono ottenere prestiti a fronte di garanzie. Se non sai con certezza come opera il conto, lascialo non classificato.",
+      "immutabilityWarning": "Questa classificazione è permanente. Una volta impostata, non può essere modificata né rimossa.",
+      "acknowledge": "Comprendo che questa classificazione è permanente e corrisponde al funzionamento di questo conto.",
+      "methodDescription": {
+        "futuresPosition": "Riconcilia le posizioni aperte in derivati con i dati autorevoli della piattaforma sulle posizioni futures.",
+        "spotExecutionReplay": "Esegue il replay delle esecuzioni spot rispetto ai saldi di cassa. Per i conti esclusivamente di cassa che non operano mai a margine.",
+        "marginLedgerReplay": "Esegue il replay del libro mastro margin della piattaforma. Per i conti che operano a margine o ottengono prestiti a fronte di garanzie."
+      },
+      "credentialLoading": "Caricamento della credenziale…",
+      "noCredential": "Non è stata trovata alcuna credenziale attiva in tempo reale per questo conto. La riconciliazione non può essere classificata.",
+      "ambiguousCredential": "Più credenziali in tempo reale corrispondono a questo conto. La classificazione ne richiede esattamente una.",
+      "confirm": "Classifica il conto",
+      "cancel": "Annulla",
+      "success": "Conto classificato: {{method}}",
+      "error": "Classificazione non riuscita: {{message}}"
     }
   }
 }

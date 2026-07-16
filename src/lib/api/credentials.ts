@@ -2,13 +2,16 @@ import { apiClient } from '../apiClient'
 import { validateResponse } from '../schemas/api'
 import {
   CredentialListResponseSchema,
+  CredentialReconciliationMethodResponseSchema,
   CredentialResponseSchema,
 } from '../schemas/api.generated.zod'
 import type {
   CredentialListResponse,
+  CredentialReconciliationMethodResponse,
   CredentialResponse,
   CreateCredentialBody,
   RotateCredentialBody,
+  SetCredentialReconciliationMethodBody,
 } from '../../types/api'
 
 export async function getCredentials(walletPublicId: string): Promise<CredentialListResponse> {
@@ -50,5 +53,22 @@ export async function rotateCredential(
     data,
     CredentialResponseSchema,
     '/wallets/:id/credentials/:id/rotate POST'
+  )
+}
+
+export async function setCredentialReconciliationMethod(
+  walletPublicId: string,
+  credentialPublicId: string,
+  body: SetCredentialReconciliationMethodBody
+): Promise<CredentialReconciliationMethodResponse> {
+  const data = await apiClient.putJSON(
+    `/api/wallets/${encodeURIComponent(walletPublicId)}/credentials/${encodeURIComponent(credentialPublicId)}/reconciliation-method`,
+    body
+  )
+
+  return validateResponse(
+    data,
+    CredentialReconciliationMethodResponseSchema,
+    '/wallets/:id/credentials/:id/reconciliation-method PUT'
   )
 }

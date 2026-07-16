@@ -105,6 +105,26 @@
       "reconciliationError": "Aðferð: {{method}}. Afstemming gat ekki skilað áreiðanlegri niðurstöðu.",
       "unsupported": "Aðferð: {{method}}. Afstemming er ekki studd fyrir þennan reikning.",
       "unverified": "Aðferð: {{method}}. Þessi niðurstaða er ekki áreiðanleg og henni er ekki treyst sem afstemmdri."
+    },
+    "classify": {
+      "action": "Flokka",
+      "title": "Flokka afstemmingaraðferð",
+      "intro": "Veldu hvernig þessi vettvangsreikningur er afstemmdur við áreiðanleg gögn kauphallarinnar. Þetta er staðhæfing um staðreynd varðandi reikninginn, ekki persónulegt val.",
+      "guidance": "Veldu aðferðina sem samsvarar því hvernig reikningurinn starfar í raun á vettvanginum: reiðufjárreikningar (spot) gera upp viðskipti eingöngu af peningainneignum, en margin-reikningar geta tekið lán gegn tryggingum. Ef þú ert ekki viss um hvernig reikningurinn starfar skaltu skilja hann eftir óflokkaðan.",
+      "immutabilityWarning": "Þessi flokkun er varanleg. Ekki er hægt að breyta henni eða fjarlægja hana eftir að hún hefur verið stillt.",
+      "acknowledge": "Ég skil að þessi flokkun er varanleg og samsvarar því hvernig þessi reikningur starfar.",
+      "methodDescription": {
+        "futuresPosition": "Stemmir opnar afleiðustöður af við áreiðanleg gögn vettvangsins um framvirka stöðutöku.",
+        "spotExecutionReplay": "Spilar spot-fyrirmæli aftur og ber þau saman við peningainneignir. Fyrir reiðufjárreikninga sem eiga aldrei viðskipti með margin.",
+        "marginLedgerReplay": "Spilar margin-höfuðbók vettvangsins aftur. Fyrir reikninga sem eiga viðskipti með margin eða taka lán gegn tryggingum."
+      },
+      "credentialLoading": "Hleður skilríki…",
+      "noCredential": "Engin virk rauntímaskilríki fundust fyrir þennan reikning. Ekki er hægt að flokka afstemminguna.",
+      "ambiguousCredential": "Mörg rauntímaskilríki passa við þennan reikning. Til flokkunar þarf nákvæmlega ein skilríki.",
+      "confirm": "Flokka reikning",
+      "cancel": "Hætta við",
+      "success": "Reikningur flokkaður: {{method}}",
+      "error": "Flokkun mistókst: {{message}}"
     }
   }
 }

@@ -105,6 +105,26 @@
       "reconciliationError": "Método: {{method}}. A reconciliação não conseguiu produzir um veredito fiável.",
       "unsupported": "Método: {{method}}. A reconciliação não é suportada para esta conta.",
       "unverified": "Método: {{method}}. Este veredito não é oficial e não é considerado como reconciliado."
+    },
+    "classify": {
+      "action": "Classificar",
+      "title": "Classificar método de reconciliação",
+      "intro": "Escolha como esta conta da corretora é reconciliada com os dados oficiais da corretora. Esta é uma declaração factual sobre a conta, não uma preferência.",
+      "guidance": "Escolha o método que corresponda à forma como a conta realmente opera na corretora: contas de caixa (spot) liquidam negociações apenas com saldos de caixa, enquanto contas de margem podem pedir empréstimos mediante garantia. Se não tiver a certeza de como a conta opera, deixe-a sem classificação.",
+      "immutabilityWarning": "Esta classificação é permanente. Depois de definida, não pode ser alterada nem removida.",
+      "acknowledge": "Compreendo que esta classificação é permanente e corresponde à forma como esta conta opera.",
+      "methodDescription": {
+        "futuresPosition": "Reconcilia posições abertas em derivados com os dados oficiais de posições de futuros da corretora.",
+        "spotExecutionReplay": "Repete execuções spot em relação aos saldos de caixa. Para contas exclusivamente de caixa que nunca negoceiam com margem.",
+        "marginLedgerReplay": "Repete o livro-razão de margem da corretora. Para contas que negoceiam com margem ou pedem empréstimos mediante garantia."
+      },
+      "credentialLoading": "A carregar a credencial…",
+      "noCredential": "Não foi encontrada nenhuma credencial ativa de negociação real para esta conta. A reconciliação não pode ser classificada.",
+      "ambiguousCredential": "Várias credenciais de negociação real correspondem a esta conta. A classificação requer exatamente uma.",
+      "confirm": "Classificar conta",
+      "cancel": "Cancelar",
+      "success": "Conta classificada: {{method}}",
+      "error": "Falha na classificação: {{message}}"
     }
   }
 }

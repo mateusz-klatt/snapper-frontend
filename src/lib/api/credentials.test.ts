@@ -1,7 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
-import { getCredentials, createCredential, rotateCredential } from './credentials'
+import {
+  getCredentials,
+  createCredential,
+  rotateCredential,
+  setCredentialReconciliationMethod,
+} from './credentials'
 
 vi.mock('../utils', () => ({
   getCookie: vi.fn(() => 'test-csrf-token'),
@@ -191,6 +196,82 @@ describe('credentials API methods', () => {
       const url = mockFetch.mock.calls[0]?.[0] as string
 
       expect(url).toContain('/api/wallets/w-1/credentials/cred-1/rotate')
+    })
+  })
+  describe('setCredentialReconciliationMethod', () => {
+    const methodInfo = {
+      type: 'credential_reconciliation_method_info',
+      session_id: 's',
+      sequence_id: 1,
+      public_id: 'cred-1',
+      timestamp: '2026-01-01T00:00:00Z',
+      wallet_public_id: 'w-1',
+      exchange: 'kraken',
+      mode: 'live',
+      method: 'spot_execution_replay',
+    }
+    const response = {
+      type: 'credential_reconciliation_method_response',
+      session_id: 's',
+      sequence_id: 1,
+      public_id: 'p',
+      timestamp: '2026-01-01T00:00:00Z',
+      payload: methodInfo,
+    }
+
+    it('puts the classify command and returns the validated response', async () => {
+      mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => response })
+      const result = await setCredentialReconciliationMethod('w-1', 'cred-1', {
+        reconciliation_method: 'spot_execution_replay',
+      })
+
+      expect(result.payload.method).toBe('spot_execution_replay')
+      const url = mockFetch.mock.calls[0]?.[0] as string
+
+      expect(url).toBe('/api/wallets/w-1/credentials/cred-1/reconciliation-method')
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('PUT')
+      const body = JSON.parse(mockFetch.mock.calls[0]?.[1].body as string)
+
+      expect(body.payload).toEqual({ reconciliation_method: 'spot_execution_replay' })
+    })
+    it('encodes both path ids', async () => {
+      mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => response })
+      await setCredentialReconciliationMethod('w/1', 'cred 1', {
+        reconciliation_method: 'margin_ledger_replay',
+      })
+      const url = mockFetch.mock.calls[0]?.[0] as string
+
+      expect(url).toBe('/api/wallets/w%2F1/credentials/cred%201/reconciliation-method')
+    })
+    it('throws on non-ok response', async () => {
+      const jsonFn = async () => ({ detail: 'Reconciliation method is immutable once classified' })
+
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 409,
+        statusText: 'Conflict',
+        json: jsonFn,
+        clone: () => ({ json: jsonFn }),
+      })
+      await expect(
+        setCredentialReconciliationMethod('w-1', 'cred-1', {
+          reconciliation_method: 'spot_execution_replay',
+        })
+      ).rejects.toThrow('Reconciliation method is immutable once classified')
+    })
+    it('propagates validation failure on a malformed response', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ ...response, payload: { ...methodInfo, method: 'unclassified' } }),
+      })
+      await expect(
+        setCredentialReconciliationMethod('w-1', 'cred-1', {
+          reconciliation_method: 'spot_execution_replay',
+        })
+      ).rejects.toThrow(
+        'API response validation failed for /wallets/:id/credentials/:id/reconciliation-method PUT'
+      )
     })
   })
 })
