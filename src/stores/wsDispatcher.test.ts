@@ -27,6 +27,7 @@ import type {
   AiReviewDecisionAckFrameData,
   AiReviewCapsViolationFrameData,
   AlertEventData,
+  AccountStateChangedEventData,
   WebSocketMessages,
 } from '../types/ws'
 import type { CachedCandle, CachedCandlesResponse } from '../types/api'
@@ -2459,7 +2460,7 @@ describe('WSDispatcher', () => {
       expect(callKeys).toContainEqual(['ai-reviews', 'pending'])
     })
 
-    it('reconnect (connection true) invalidates all three snapshot prefixes', () => {
+    it('reconnect (connection true) invalidates all snapshot prefixes', () => {
       const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
       const dispatcher = new WSDispatcher({ queryClient })
 
@@ -2471,6 +2472,7 @@ describe('WSDispatcher', () => {
       expect(callKeys).toContainEqual(['ai-reviews', 'pending'])
       expect(callKeys).toContainEqual(['positions'])
       expect(callKeys).toContainEqual(['trailingStopState'])
+      expect(callKeys).toContainEqual(['portfolio', 'accounts'])
     })
 
     it('disconnect does not invalidate (no spurious refetch on tab background)', () => {
@@ -2483,7 +2485,7 @@ describe('WSDispatcher', () => {
       expect(invalidate).not.toHaveBeenCalled()
     })
 
-    it('attach onto an already-connected client invalidates all three prefixes', () => {
+    it('attach onto an already-connected client invalidates all snapshot prefixes', () => {
       vi.mocked(mockWsClient.isConnected).mockReturnValue(true)
       const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
       const dispatcher = new WSDispatcher({ queryClient })
@@ -2494,6 +2496,7 @@ describe('WSDispatcher', () => {
       expect(callKeys).toContainEqual(['ai-reviews', 'pending'])
       expect(callKeys).toContainEqual(['positions'])
       expect(callKeys).toContainEqual(['trailingStopState'])
+      expect(callKeys).toContainEqual(['portfolio', 'accounts'])
     })
 
     it('attach onto a disconnected client does not invalidate (defers to onConnection)', () => {
@@ -2502,6 +2505,45 @@ describe('WSDispatcher', () => {
       const dispatcher = new WSDispatcher({ queryClient })
 
       dispatcher.attach(mockWsClient)
+      expect(invalidate).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('account-state invalidation events', () => {
+    const makeAccountStateChanged = (): AccountStateChangedEventData => ({
+      type: 'account_state_changed_event',
+      sequence_id: 4,
+      public_id: 'account-change-1',
+      timestamp: '2026-07-16T12:00:00Z',
+      session_id: 'executor-session',
+      wallet_public_id: 'wallet-1',
+      exchange: 'kraken',
+      mode: 'live',
+      kind: 'snapshot',
+    })
+
+    it('invalidates active portfolio-account queries after a committed change', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      messageHandlers.get('account_state_changed_event')?.(makeAccountStateChanged())
+      expect(invalidate).toHaveBeenCalledWith({
+        queryKey: ['portfolio', 'accounts'],
+        refetchType: 'active',
+      })
+    })
+
+    it('drops a mismatched account-state frame', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      dispatcher.attach(mockWsClient)
+      invalidate.mockClear()
+      messageHandlers.get('account_state_changed_event')?.({
+        type: 'not_account_state_changed',
+      } as unknown as WebSocketMessages)
       expect(invalidate).not.toHaveBeenCalled()
     })
   })

@@ -13,6 +13,7 @@ const APP_SHELL_TOPICS: readonly string[] = Object.freeze([
   'processes.events.summary.',
   'processes.events.configured.',
   'processes.events.runs.',
+  'portfolio.accounts.',
   'strategies.events.list.',
 ])
 

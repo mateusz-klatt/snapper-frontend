@@ -1,4 +1,5 @@
 export type {
+  AccountStateChangedEventData,
   AiReviewCapsViolationFrameData,
   AiReviewDecisionAckFrameData,
   AiReviewRequestFrameData,
@@ -43,6 +44,7 @@ export type {
   WSPongResponse,
 } from './ws.generated'
 import type {
+  AccountStateChangedEventData,
   AiReviewCapsViolationFrameData,
   AiReviewDecisionAckFrameData,
   AiReviewRequestFrameData,
@@ -88,6 +90,7 @@ import type {
 } from './ws.generated'
 
 export type WebSocketMessages =
+  | AccountStateChangedEventData
   | AiReviewCapsViolationFrameData
   | AiReviewDecisionAckFrameData
   | AiReviewRequestFrameData
@@ -177,6 +180,12 @@ export function isAiReviewCapsViolation(
 
 export function isAlertEvent(msg: WebSocketMessages): msg is AlertEventData {
   return msg.type === 'alert_event'
+}
+
+export function isAccountStateChangedEvent(
+  msg: WebSocketMessages
+): msg is AccountStateChangedEventData {
+  return msg.type === 'account_state_changed_event'
 }
 
 export function isProcessSummaryEvent(msg: WebSocketMessages): msg is ProcessSummaryEventData {

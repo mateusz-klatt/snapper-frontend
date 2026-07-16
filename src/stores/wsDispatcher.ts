@@ -28,6 +28,7 @@ import {
   isTrade,
   isHeartbeat,
   isAlertEvent,
+  isAccountStateChangedEvent,
   isAiReviewRequest,
   isAiReviewDecisionAck,
   isAiReviewCapsViolation,
@@ -131,6 +132,10 @@ export class WSDispatcher {
       client.onMessage('ai_review.decision_ack', this.handleAiReviewActivityMessage.bind(this)),
       client.onMessage('ai_review.caps_violation', this.handleAiReviewActivityMessage.bind(this)),
       client.onMessage('alert_event', this.handleAlertEventMessage.bind(this)),
+      client.onMessage(
+        'account_state_changed_event',
+        this.handleAccountStateChangedEvent.bind(this)
+      ),
       client.onMessage('process_summary_event', this.handleProcessSummaryEvent.bind(this)),
       client.onMessage('process_configured_event', this.handleProcessConfiguredEvent.bind(this)),
       client.onMessage('process_run_event', this.handleProcessRunEvent.bind(this)),
@@ -184,6 +189,7 @@ export class WSDispatcher {
     this.invalidateActive(queryKeys.pendingAiReviewsAll)
     this.invalidateActive(queryKeys.positionsAll)
     this.invalidateActive(queryKeys.trailingStopAll)
+    this.invalidateActive(queryKeys.portfolioAccountsAll)
     this.invalidateActive(queryKeys.processSummaryAll)
     this.invalidateActive(queryKeys.configuredProcessesAll)
     this.invalidateActive(queryKeys.processRunsAll)
@@ -603,6 +609,18 @@ export class WSDispatcher {
     if (!isStrategyListEvent(message)) return
 
     this.invalidateActive(queryKeys.strategiesAll)
+  }
+  /**
+   * Refresh the fail-closed REST account projection after a committed change.
+   *
+   * The event intentionally contains only scope and provenance metadata. The
+   * REST read path remains responsible for deriving account and reconciliation
+   * truth, while the slower hook poll heals any dropped WebSocket frame.
+   */
+  private handleAccountStateChangedEvent(message: WebSocketMessages): void {
+    if (!isAccountStateChangedEvent(message)) return
+
+    this.invalidateActive(queryKeys.portfolioAccountsAll)
   }
   /**
    * Mark a query family stale and re-fetch only mounted observers.

@@ -1,6 +1,6 @@
 import { createElement, type ReactNode } from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { renderHook, waitFor } from '@testing-library/react'
+import { act, renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { usePortfolioAccounts } from './portfolio'
 import { getPortfolioAccounts } from '../../lib/api/portfolio'
@@ -107,12 +107,44 @@ describe('usePortfolioAccounts', () => {
     expect(result.current.data?.[0]?.wallet_public_id).toBe('w-1')
   })
 
-  it('disables the live poll while time traveling', async () => {
+  it('runs the live safety-net poll every 60 seconds', async () => {
+    vi.useFakeTimers()
+
+    try {
+      renderHook(() => usePortfolioAccounts(), { wrapper: createWrapper() })
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(0)
+      })
+      expect(getPortfolioAccounts).toHaveBeenCalledTimes(1)
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(59_999)
+      })
+      expect(getPortfolioAccounts).toHaveBeenCalledTimes(1)
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(1)
+      })
+      expect(getPortfolioAccounts).toHaveBeenCalledTimes(2)
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('disables the safety-net poll while time traveling', async () => {
+    vi.useFakeTimers()
     control.asOf = '2026-07-13T00:00:00Z'
-    const { result } = renderHook(() => usePortfolioAccounts(), { wrapper: createWrapper() })
 
-    await waitFor(() => expect(result.current.isSuccess).toBe(true))
-
-    expect(result.current.data).toHaveLength(1)
+    try {
+      renderHook(() => usePortfolioAccounts(), { wrapper: createWrapper() })
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(0)
+      })
+      expect(getPortfolioAccounts).toHaveBeenCalledTimes(1)
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(180_000)
+      })
+      expect(getPortfolioAccounts).toHaveBeenCalledTimes(1)
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })
