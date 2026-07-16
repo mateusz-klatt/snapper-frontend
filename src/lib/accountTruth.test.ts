@@ -127,9 +127,21 @@ describe('deriveAccountTruth', () => {
     expect(truth.pollingStalled).toBe(true)
   })
 
-  it('demotes to stale when polling has stalled past the ceiling', () => {
-    const stale = NOW - CLIENT_AUTHORITY_STALENESS_MS - 1
-    const truth = deriveAccountTruth(makeState({ authoritative_until: FUTURE }), NOW, stale)
+  it('uses three 60-second safety-net intervals as the polling-stall ceiling', () => {
+    expect(CLIENT_AUTHORITY_STALENESS_MS).toBe(180_000)
+  })
+
+  it('stays authoritative exactly at the polling-stall ceiling', () => {
+    const atCeiling = NOW - CLIENT_AUTHORITY_STALENESS_MS
+    const truth = deriveAccountTruth(makeState({ authoritative_until: FUTURE }), NOW, atCeiling)
+
+    expect(truth.pollingStalled).toBe(false)
+    expect(truth.isAuthoritative).toBe(true)
+  })
+
+  it('demotes to stale one millisecond past the polling-stall ceiling', () => {
+    const pastCeiling = NOW - CLIENT_AUTHORITY_STALENESS_MS - 1
+    const truth = deriveAccountTruth(makeState({ authoritative_until: FUTURE }), NOW, pastCeiling)
 
     expect(truth.pollingStalled).toBe(true)
     expect(truth.isAuthoritative).toBe(false)

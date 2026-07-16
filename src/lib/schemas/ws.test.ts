@@ -65,6 +65,38 @@ describe('parseWsMessage', () => {
     expect(result).toMatchObject(message)
   })
 
+  it('parses thin account-state invalidation events', () => {
+    const message = {
+      type: 'account_state_changed_event',
+      sequence_id: 4,
+      public_id: '019dcaf5-0a22-7ef2-8767-9a37d05a7f70',
+      timestamp: '2026-07-16T12:00:00.000Z',
+      session_id: 'executor-session',
+      wallet_public_id: 'wallet-1',
+      exchange: 'kraken',
+      mode: 'live',
+      kind: 'reconciliation',
+    }
+    const result = parseWsMessage(message)
+
+    expect(result).not.toBeNull()
+    expect(result?.type).toBe('account_state_changed_event')
+    expect(result).toMatchObject(message)
+  })
+
+  it('blocks malformed account-state invalidation events as known frames', () => {
+    const result = parseWsMessage({
+      type: 'account_state_changed_event',
+      wallet_public_id: 'wallet-1',
+    })
+
+    expect(result).toBeNull()
+    expect(console.error).toHaveBeenCalledWith(
+      expect.stringContaining('Schema validation FAILED'),
+      expect.any(Array)
+    )
+  })
+
   it('parses ai_review.request frames', () => {
     const message = {
       type: 'ai_review.request',

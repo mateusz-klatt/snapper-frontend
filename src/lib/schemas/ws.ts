@@ -21,6 +21,7 @@ export {
   AiReviewRequestFrameDataSchema as aiReviewRequestFrameSchema,
   AiReviewDecisionAckFrameDataSchema as aiReviewDecisionAckFrameSchema,
   AlertEventDataSchema as alertEventSchema,
+  AccountStateChangedEventDataSchema as accountStateChangedEventSchema,
   WSAuthRequiredResponseSchema as authRequiredMessageSchema,
   WSAuthOkResponseSchema as authOkMessageSchema,
   WSAuthFailedResponseSchema as authFailedMessageSchema,
@@ -60,6 +61,7 @@ import {
   AiReviewRequestFrameDataSchema,
   AiReviewDecisionAckFrameDataSchema,
   AlertEventDataSchema,
+  AccountStateChangedEventDataSchema,
   WSAuthRequiredResponseSchema,
   WSAuthOkResponseSchema,
   WSAuthFailedResponseSchema,
@@ -98,6 +100,7 @@ export const wsMessageUnionSchema = z.discriminatedUnion('type', [
   AiReviewRequestFrameDataSchema,
   AiReviewDecisionAckFrameDataSchema,
   AlertEventDataSchema,
+  AccountStateChangedEventDataSchema,
   WSAuthRequiredResponseSchema,
   WSAuthOkResponseSchema,
   WSAuthFailedResponseSchema,
@@ -127,6 +130,7 @@ export type AiReviewCapsViolation = z.infer<typeof AiReviewCapsViolationFrameDat
 export type AiReviewRequest = z.infer<typeof AiReviewRequestFrameDataSchema>
 export type AiReviewDecisionAck = z.infer<typeof AiReviewDecisionAckFrameDataSchema>
 export type AlertEvent = z.infer<typeof AlertEventDataSchema>
+export type AccountStateChangedEvent = z.infer<typeof AccountStateChangedEventDataSchema>
 const KNOWN_MESSAGE_TYPES = new Set([
   'tick',
   'candle',
@@ -152,6 +156,7 @@ const KNOWN_MESSAGE_TYPES = new Set([
   'ai_review.decision_ack',
   'ai_review.request',
   'alert_event',
+  'account_state_changed_event',
   'auth_expired',
   'auth_failed',
   'auth_ok',

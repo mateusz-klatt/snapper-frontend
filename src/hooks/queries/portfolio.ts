@@ -8,11 +8,12 @@ import { queryKeys } from './keys'
  * List venue-account truth rows (cash balances + open positions) for the
  * current scope.
  *
- * Same bounded latest-state poll as positions: a 5s refetch interval, disabled
- * while time traveling (``asOf``). The account-observer loop refreshes the
- * server-side truth plane out of band; this query just pulls the latest active
- * row per wallet/exchange/mode. ``dataUpdatedAt``/``isError`` from the returned
- * query drive client-side polling-failure demotion in the page.
+ * WebSocket account-state events invalidate the active query for low-latency
+ * refreshes. A 60s safety-net poll, disabled while time traveling (``asOf``),
+ * heals dropped events and keeps ``dataUpdatedAt`` meaningful as a transport
+ * liveness signal. The account-observer loop refreshes the server-side truth
+ * plane out of band; this query pulls its latest active row per
+ * wallet/exchange/mode.
  */
 export const usePortfolioAccounts = () => {
   const { isAuthenticated } = useAuth()
@@ -29,7 +30,7 @@ export const usePortfolioAccounts = () => {
     },
     enabled: isAuthenticated,
     staleTime: Infinity,
-    refetchInterval: asOf ? false : 5_000,
+    refetchInterval: asOf ? false : 60_000,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     throwOnError: false,

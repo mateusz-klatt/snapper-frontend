@@ -114,6 +114,24 @@ describe('App', () => {
       expect(container).toBeInTheDocument()
     })
   })
+  it('subscribes the app shell to all six event topic families', async () => {
+    const { useWSDispatcher } = await import('./hooks/useWSDispatcher')
+
+    renderWithProviders(<App />)
+    await waitFor(() => {
+      expect(useWSDispatcher).toHaveBeenCalledWith({
+        enabled: true,
+        topics: [
+          'ai_reviews.',
+          'processes.events.summary.',
+          'processes.events.configured.',
+          'processes.events.runs.',
+          'portfolio.accounts.',
+          'strategies.events.list.',
+        ],
+      })
+    })
+  })
   it('renders header with title', async () => {
     renderWithProviders(<App />)
     await waitFor(() => {

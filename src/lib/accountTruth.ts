@@ -4,13 +4,14 @@ import type { PortfolioAccountState } from '../types/api'
  * How long the client will keep trusting an ``observed`` row after its last
  * SUCCESSFUL fetch before demoting it to stale on polling grounds.
  *
- * The account list polls every 5s; a row that has not been refreshed within
- * this ceiling means polling is failing (network down, server error, tab
- * throttled) and the last-known "live" snapshot can no longer be presented as
- * authoritative. Set to three missed polls so a single transient hiccup does
- * not flap the badge.
+ * Account-state WebSocket events provide the fast refresh path and the account
+ * list polls every 60s as a safety net. A row that has not been refreshed
+ * within this ceiling means both refresh paths are failing (network down,
+ * server error, tab throttled, or dropped events), so the last-known "live"
+ * snapshot can no longer be presented as authoritative. Set to three missed
+ * safety-net polls so a transient hiccup does not flap the badge.
  */
-export const CLIENT_AUTHORITY_STALENESS_MS = 15_000
+export const CLIENT_AUTHORITY_STALENESS_MS = 180_000
 
 /**
  * Hard cap on how long after its balance observation a row may stay
@@ -36,7 +37,7 @@ const CLIENT_OBSERVATION_MAX_WINDOW_MS = 900_000
  * timestamps, so right after a successful fetch (or a new observation) they
  * legitimately sit a few hundred ms AHEAD of the lagging ``now`` — which a naive
  * ``x > now`` reads as a rolled-back/forged future clock and would flap the row
- * to ``stale`` for up to a tick on every 5s poll. Tolerating this much skew
+ * to ``stale`` for up to a tick after every refresh. Tolerating this much skew
  * removes the false demotion while still failing closed on a genuine clock
  * rollback or a forged far-future timestamp, both of which exceed it by orders
  * of magnitude (seconds→years, versus this sub-tick allowance).

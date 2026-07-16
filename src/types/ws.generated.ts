@@ -6,6 +6,7 @@
 
 export type WebSocketMessages =
   | StrictDataSchema
+  | AccountStateChangedEventData
   | AiReviewCapsViolationFrameData
   | AiReviewDecisionAckFrameData
   | AiReviewDecisionData
@@ -74,15 +75,20 @@ export type WebSocketMessages =
   | WSSubscriptionsListResponse
   | WSUnsubscribeRequest;
 export type Topic = string | null;
-export type Type = "ai_review.caps_violation";
+export type Type = "account_state_changed_event";
 export type Topic1 = string | null;
-export type Type1 = "ai_review.decision_ack";
+export type Exchange = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Mode = "live" | "paper";
+export type Kind = "snapshot" | "reconciliation";
+export type Type1 = "ai_review.caps_violation";
 export type Topic2 = string | null;
-export type Rationale = string | null;
-export type Type2 = "ai_review_decision";
+export type Type2 = "ai_review.decision_ack";
 export type Topic3 = string | null;
-export type Type3 = "ai_review.request";
+export type Rationale = string | null;
+export type Type3 = "ai_review_decision";
 export type Topic4 = string | null;
+export type Type4 = "ai_review.request";
+export type Topic5 = string | null;
 export type JsonValue =
   | JsonPrimitive
   | JsonValue[]
@@ -90,8 +96,8 @@ export type JsonValue =
       [k: string]: JsonValue;
     };
 export type JsonPrimitive = string | number | boolean | null;
-export type Type4 = "alert_event";
-export type Topic5 = string | null;
+export type Type5 = "alert_event";
+export type Topic6 = string | null;
 export type OperatorPublicId = string | null;
 export type WalletPublicId = string | null;
 export type AlertType =
@@ -106,38 +112,38 @@ export type Priority = "low" | "medium" | "high";
 export type DedupKey = string | null;
 export type ThreadKey = string | null;
 export type SourceTopic = string | null;
-export type Type5 = "backtest_progress";
-export type Topic6 = string | null;
+export type Type6 = "backtest_progress";
+export type Topic7 = string | null;
 export type Event = "started" | "progress" | "milestone" | "completed" | "failed" | "cancelled";
 export type Milestone = ("25pct" | "50pct" | "75pct") | null;
 export type TotalCandles = number | null;
-export type Type6 = "candle";
-export type Topic7 = string | null;
-export type Exchange = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+export type Type7 = "candle";
+export type Topic8 = string | null;
+export type Exchange1 = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
 export type Vwap = number | null;
 export type Trades = number | null;
 export type Origin = "live" | "replay";
 export type ReplayWindowStart = string | null;
 export type ReplayWindowEnd = string | null;
-export type Type7 = "caps_violation_after_ai_approve";
-export type Topic8 = string | null;
-export type Type8 = "continuous_candle";
+export type Type8 = "caps_violation_after_ai_approve";
 export type Topic9 = string | null;
+export type Type9 = "continuous_candle";
+export type Topic10 = string | null;
 export type Vwap1 = number | null;
 export type Trades1 = number | null;
 export type AdjustmentFactor = number | null;
-export type Type9 = "contract";
-export type Topic10 = string | null;
+export type Type10 = "contract";
+export type Topic11 = string | null;
 export type ExpiryAt = string | null;
 export type InstrumentKind = string | null;
 export type ContractFamily = string | null;
-export type Type10 = "delegate_offline";
-export type Topic11 = string | null;
-export type Type11 = "egress_pool_snapshot_event";
+export type Type11 = "delegate_offline";
 export type Topic12 = string | null;
+export type Type12 = "egress_pool_snapshot_event";
+export type Topic13 = string | null;
 export type OnAllQuarantined = ("wait" | "raise") | null;
 export type PrivateFallbackRouteId = string | null;
-export type Kind = "direct" | "socks5";
+export type Kind1 = "direct" | "socks5";
 export type ProxyUrl = string | null;
 export type Region = string | null;
 export type ExitIp = string | null;
@@ -146,7 +152,7 @@ export type AllowedExchanges = string[];
 export type QuarantineSecondsRemaining = number | null;
 export type TrafficClass = "public" | "private";
 export type ActiveReservations = EgressActiveReservationSnapshot[];
-export type Kind1 = "ws" | "rest";
+export type Kind2 = "ws" | "rest";
 export type TrafficClass1 = "public" | "private";
 export type LastSeenAt = string | null;
 export type Connections = EgressConnectionSnapshot[];
@@ -154,17 +160,17 @@ export type RxRateBytesPerSecond = number | null;
 export type TxRateBytesPerSecond = number | null;
 export type LatestHandshakeAt = string | null;
 export type Routes = EgressRouteStatusSnapshot[];
-export type Type12 = "egress_transfer_event";
-export type Topic13 = string | null;
+export type Type13 = "egress_transfer_event";
+export type Topic14 = string | null;
 export type RxRateBytesPerSecond1 = number | null;
 export type TxRateBytesPerSecond1 = number | null;
 export type LatestHandshakeAt1 = string | null;
 export type Interfaces = EgressTransferInterfaceSnapshot[];
-export type Type13 = "execution";
-export type Topic14 = string | null;
+export type Type14 = "execution";
+export type Topic15 = string | null;
 export type TradeId = string | null;
 export type ExchangeOrderId = string | null;
-export type Exchange1 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Exchange2 = "paper" | "kraken" | "kraken_futures" | "walutomat";
 export type Side = "buy" | "sell";
 export type Status = "filled" | "partial";
 export type OperatorPublicId1 = string | null;
@@ -173,50 +179,50 @@ export type PairedGroupId = string | null;
 export type PairedGroupSize = number | null;
 export type PairedGroupIndex = number | null;
 export type PairedGroupPolicy = ("simultaneous" | "sequential_handoff") | null;
-export type Type14 = "execution_plan";
-export type Topic15 = string | null;
+export type Type15 = "execution_plan";
+export type Topic16 = string | null;
 export type OperatorPublicId2 = string | null;
 export type PositionCyclePublicId = string | null;
 export type ParentPlanPublicId = string | null;
 export type LastError = string | null;
 export type IdempotencyKey = string | null;
-export type Type15 = "execution_plan_decision";
-export type Topic16 = string | null;
+export type Type16 = "execution_plan_decision";
+export type Topic17 = string | null;
 export type EmittedCommandPublicId = string | null;
 export type NewStatus = string | null;
-export type Type16 = "execution_plan_decision_event";
-export type Topic17 = string | null;
-export type Type17 = "front_month";
+export type Type17 = "execution_plan_decision_event";
 export type Topic18 = string | null;
-export type ContractFamily1 = string | null;
-export type Type18 = "funding_accrual";
+export type Type18 = "front_month";
 export type Topic19 = string | null;
-export type Exchange2 = "paper" | "kraken" | "kraken_futures" | "walutomat";
-export type Mode = "live" | "paper";
-export type AccrualType = "funding" | "rollover" | "borrow";
-export type Type19 = "heartbeat";
+export type ContractFamily1 = string | null;
+export type Type19 = "funding_accrual";
 export type Topic20 = string | null;
+export type Exchange3 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Mode1 = "live" | "paper";
+export type AccrualType = "funding" | "rollover" | "borrow";
+export type Type20 = "heartbeat";
+export type Topic21 = string | null;
 export type Status1 = "healthy" | "warning" | "error";
 export type NextOpen = string | null;
-export type Type20 = "instrument_capability";
-export type Topic21 = string | null;
+export type Type21 = "instrument_capability";
+export type Topic22 = string | null;
 export type SupportedOrderTypes = string[];
 export type MinNotional = number | null;
 export type MaxOrderSize = number | null;
-export type Type21 = "instrument_detail";
-export type Topic22 = string | null;
+export type Type22 = "instrument_detail";
+export type Topic23 = string | null;
 export type InstrumentKind1 = string | null;
 export type ExpiryAt1 = string | null;
-export type Type22 = "order_cancel";
-export type Topic23 = string | null;
-export type Exchange3 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Type23 = "order_cancel";
+export type Topic24 = string | null;
+export type Exchange4 = "paper" | "kraken" | "kraken_futures" | "walutomat";
 export type OperatorPublicId3 = string | null;
 export type UserPublicId1 = string | null;
-export type Type23 = "order";
-export type Topic24 = string | null;
+export type Type24 = "order";
+export type Topic25 = string | null;
 export type ExchangeOrderId1 = string | null;
-export type Exchange4 = "paper" | "kraken" | "kraken_futures" | "walutomat";
-export type Mode1 = "live" | "paper";
+export type Exchange5 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Mode2 = "live" | "paper";
 export type Side1 = "buy" | "sell";
 export type OrderType = "market" | "limit" | "stop" | "stop_limit";
 export type Price = number | null;
@@ -233,9 +239,9 @@ export type PairedGroupId1 = string | null;
 export type PairedGroupSize1 = number | null;
 export type PairedGroupIndex1 = number | null;
 export type PairedGroupPolicy1 = ("simultaneous" | "sequential_handoff") | null;
-export type Type24 = "order_event";
-export type Topic25 = string | null;
-export type Exchange5 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Type25 = "order_event";
+export type Topic26 = string | null;
+export type Exchange6 = "paper" | "kraken" | "kraken_futures" | "walutomat";
 export type Event1 = "submitted" | "accepted" | "rejected" | "cancelled" | "expired" | "replaced" | "unknown";
 export type Reason1 = string | null;
 export type OperatorPublicId5 = string | null;
@@ -244,17 +250,17 @@ export type PairedGroupId2 = string | null;
 export type PairedGroupSize2 = number | null;
 export type PairedGroupIndex2 = number | null;
 export type PairedGroupPolicy2 = ("simultaneous" | "sequential_handoff") | null;
-export type Type25 = "order_replace";
-export type Topic26 = string | null;
-export type Exchange6 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Type26 = "order_replace";
+export type Topic27 = string | null;
+export type Exchange7 = "paper" | "kraken" | "kraken_futures" | "walutomat";
 export type NewQuantity = number | null;
 export type NewPrice = number | null;
 export type OperatorPublicId6 = string | null;
 export type UserPublicId4 = string | null;
-export type Type26 = "order_request";
-export type Topic27 = string | null;
-export type Exchange7 = "paper" | "kraken" | "kraken_futures" | "walutomat";
-export type Mode2 = "live" | "paper";
+export type Type27 = "order_request";
+export type Topic28 = string | null;
+export type Exchange8 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Mode3 = "live" | "paper";
 export type Side2 = "buy" | "sell";
 export type OrderType1 = "market" | "limit" | "stop" | "stop_limit";
 export type Price1 = number | null;
@@ -271,74 +277,74 @@ export type PairedGroupPolicy3 = ("simultaneous" | "sequential_handoff") | null;
 export type Origin1 = "live" | "replay";
 export type ReplayWindowStart1 = string | null;
 export type ReplayWindowEnd1 = string | null;
-export type Type27 = "portfolio_drift_episode_event";
-export type Topic28 = string | null;
-export type Mode3 = "live";
+export type Type28 = "portfolio_drift_episode_event";
+export type Topic29 = string | null;
+export type Mode4 = "live";
 export type Lifecycle = "opened" | "resolved";
 export type ClosedAt = string | null;
 export type ResolutionReason = "matched" | null;
-export type Type28 = "position";
-export type Topic29 = string | null;
-export type Exchange8 = "paper" | "kraken" | "kraken_futures" | "walutomat";
-export type Mode4 = "live" | "paper";
+export type Type29 = "position";
+export type Topic30 = string | null;
+export type Exchange9 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type Mode5 = "live" | "paper";
 export type AveragePrice1 = number | null;
 export type UnrealizedPnl = number | null;
 export type MarkPrice = number | null;
 export type MarkedAt = string | null;
 export type SourceVenueEventId = number | null;
 export type PositionCyclePublicId1 = string | null;
-export type Type29 = "process_command_ack";
-export type Topic30 = string | null;
-export type Detail = string | null;
-export type Type30 = "process_command";
+export type Type30 = "process_command_ack";
 export type Topic31 = string | null;
-export type Type31 = "process_configured_event";
+export type Detail = string | null;
+export type Type31 = "process_command";
 export type Topic32 = string | null;
-export type ProcessNames = string[];
-export type Type32 = "process_run_event";
+export type Type32 = "process_configured_event";
 export type Topic33 = string | null;
+export type ProcessNames = string[];
+export type Type33 = "process_run_event";
+export type Topic34 = string | null;
 export type CompletedAt = string | null;
 export type ExitCode = number | null;
-export type Type33 = "process_summary_event";
-export type Topic34 = string | null;
+export type Type34 = "process_summary_event";
+export type Topic35 = string | null;
 export type CoordinatorLabel = string | null;
 export type ActivePublicId = string | null;
 export type RssBytes = number | null;
 export type CpuPercent = number | null;
 export type Processes = ProcessSummaryItem[];
-export type Type34 = "related_instrument";
-export type Topic35 = string | null;
-export type ContractFamily2 = string | null;
-export type Type35 = "replay_end";
+export type Type35 = "related_instrument";
 export type Topic36 = string | null;
-export type Type36 = "replay_start";
+export type ContractFamily2 = string | null;
+export type Type36 = "replay_end";
 export type Topic37 = string | null;
-export type StartedAt = string | null;
-export type Type37 = "scope_granted";
+export type Type37 = "replay_start";
 export type Topic38 = string | null;
+export type StartedAt = string | null;
+export type Type38 = "scope_granted";
+export type Topic39 = string | null;
 export type ScopeKind = "underlying" | "instrument";
 export type UnderlyingPublicId = string | null;
 export type InstrumentPublicId = string | null;
 export type Reason2 = string | null;
-export type Type38 = "scope_handed_over";
-export type Topic39 = string | null;
+export type Type39 = "scope_handed_over";
+export type Topic40 = string | null;
 export type ScopeKind1 = "underlying" | "instrument";
 export type UnderlyingPublicId1 = string | null;
 export type InstrumentPublicId1 = string | null;
 export type Reason3 = string | null;
-export type Type39 = "scope_revoked";
-export type Topic40 = string | null;
+export type Type40 = "scope_revoked";
+export type Topic41 = string | null;
 export type ScopeKind2 = "underlying" | "instrument";
 export type UnderlyingPublicId2 = string | null;
 export type InstrumentPublicId2 = string | null;
 export type RevokedByUserPublicId = string | null;
 export type Reason4 = string | null;
-export type Type40 = "setting_changed";
-export type Topic41 = string | null;
-export type UpdatedBy = string | null;
-export type Type41 = "signal";
+export type Type41 = "setting_changed";
 export type Topic42 = string | null;
-export type Exchange9 = "paper" | "kraken" | "kraken_futures" | "walutomat";
+export type UpdatedBy = string | null;
+export type Type42 = "signal";
+export type Topic43 = string | null;
+export type Exchange10 = "paper" | "kraken" | "kraken_futures" | "walutomat";
 export type Side3 = "buy" | "sell";
 export type Price2 = number | null;
 export type StrategyName = string | null;
@@ -354,16 +360,16 @@ export type PairedGroupKey = string | null;
 export type Origin2 = "live" | "replay";
 export type ReplayWindowStart2 = string | null;
 export type ReplayWindowEnd2 = string | null;
-export type Type42 = "strategy_list_event";
-export type Topic43 = string | null;
-export type StrategyClasses = string[];
-export type Type43 = "symbol_alias_update";
+export type Type43 = "strategy_list_event";
 export type Topic44 = string | null;
+export type StrategyClasses = string[];
+export type Type44 = "symbol_alias_update";
+export type Topic45 = string | null;
 export type Event2 = "symbol_aliases_updated";
 export type Action = "clear_cache";
-export type Type44 = "tick";
-export type Topic45 = string | null;
-export type Exchange10 = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+export type Type45 = "tick";
+export type Topic46 = string | null;
+export type Exchange11 = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
 export type Bid = number | null;
 export type Ask = number | null;
 export type Last = number | null;
@@ -371,76 +377,76 @@ export type IsExtendedHours = boolean | null;
 export type Origin3 = "live" | "replay";
 export type ReplayWindowStart3 = string | null;
 export type ReplayWindowEnd3 = string | null;
-export type Type45 = "trade";
-export type Topic46 = string | null;
-export type Exchange11 = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+export type Type46 = "trade";
+export type Topic47 = string | null;
+export type Exchange12 = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
 export type ExecutedAt = string | null;
 export type Side4 = string | null;
 export type TradeId1 = string | null;
 export type Origin4 = "live" | "replay";
 export type ReplayWindowStart4 = string | null;
 export type ReplayWindowEnd4 = string | null;
-export type Type46 = "underlying_asset";
-export type Topic47 = string | null;
+export type Type47 = "underlying_asset";
+export type Topic48 = string | null;
 export type Sector = string | null;
 export type Description = string | null;
-export type Type47 = "underlying_instrument";
-export type Topic48 = string | null;
-export type ContractFamily3 = string | null;
-export type Type48 = "user_deactivated";
+export type Type48 = "underlying_instrument";
 export type Topic49 = string | null;
-export type Reason5 = string | null;
-export type Type49 = "venue_fee_schedule";
+export type ContractFamily3 = string | null;
+export type Type49 = "user_deactivated";
 export type Topic50 = string | null;
+export type Reason5 = string | null;
+export type Type50 = "venue_fee_schedule";
+export type Topic51 = string | null;
 export type InstrumentPublicId3 = string | null;
 export type MinVolume30D = number | null;
-export type Type50 = "auth_complete";
-export type Topic51 = string | null;
+export type Type51 = "auth_complete";
+export type Topic52 = string | null;
 export type AvailableTopics = string[];
 export type UserRole = "ai_delegate" | "viewer" | "operator" | "admin";
 export type SessionExpiresAt = string | null;
-export type Type51 = "auth_expired";
-export type Topic52 = string | null;
-export type Type52 = "auth_failed";
+export type Type52 = "auth_expired";
 export type Topic53 = string | null;
-export type Reason6 = string | null;
-export type Type53 = "auth_ok";
+export type Type53 = "auth_failed";
 export type Topic54 = string | null;
-export type Type54 = "auth_required";
+export type Reason6 = string | null;
+export type Type54 = "auth_ok";
 export type Topic55 = string | null;
-export type Type55 = "authenticate";
+export type Type55 = "auth_required";
 export type Topic56 = string | null;
-export type Type56 = "error";
+export type Type56 = "authenticate";
 export type Topic57 = string | null;
-export type Type57 = "get_subscriptions";
+export type Type57 = "error";
 export type Topic58 = string | null;
-export type Type58 = "ping";
+export type Type58 = "get_subscriptions";
 export type Topic59 = string | null;
-export type Type59 = "pong";
+export type Type59 = "ping";
 export type Topic60 = string | null;
-export type Type60 = "reauth_ok";
+export type Type60 = "pong";
 export type Topic61 = string | null;
-export type Type61 = "reauth";
+export type Type61 = "reauth_ok";
 export type Topic62 = string | null;
-export type Type62 = "reauth_required";
+export type Type62 = "reauth";
 export type Topic63 = string | null;
-export type Type63 = "subscribe";
+export type Type63 = "reauth_required";
 export type Topic64 = string | null;
-export type Topics = string[];
-export type Type64 = "subscription_success";
+export type Type64 = "subscribe";
 export type Topic65 = string | null;
+export type Topics = string[];
+export type Type65 = "subscription_success";
+export type Topic66 = string | null;
 export type Action1 = "subscribe" | "unsubscribe";
 export type Status2 = "subscribed" | "unsubscribed" | "partial" | "denied" | "no_topics";
 export type Topics1 = string[];
 export type DeniedTopics = string[];
 export type ActiveSubscriptions = string[];
 export type Message = string | null;
-export type Type65 = "subscriptions_list";
-export type Topic66 = string | null;
+export type Type66 = "subscriptions_list";
+export type Topic67 = string | null;
 export type Subscriptions = string[];
 export type AvailableTopics1 = string[];
-export type Type66 = "unsubscribe";
-export type Topic67 = string | null;
+export type Type67 = "unsubscribe";
+export type Topic68 = string | null;
 export type Topics2 = string[];
 
 export interface StrictDataSchema {
@@ -451,13 +457,25 @@ export interface StrictDataSchema {
   session_id: string;
   topic?: Topic;
 }
-export interface AiReviewCapsViolationFrameData {
+export interface AccountStateChangedEventData {
   type: Type;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic1;
+  wallet_public_id: string;
+  exchange: Exchange;
+  mode: Mode;
+  kind: Kind;
+}
+export interface AiReviewCapsViolationFrameData {
+  type: Type1;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic2;
   review_public_id: string;
   user_public_id: string;
   strategy_public_id: string;
@@ -469,12 +487,12 @@ export interface AiReviewCapsViolationFrameData {
   dispatch_version: number;
 }
 export interface AiReviewDecisionAckFrameData {
-  type: Type1;
+  type: Type2;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic2;
+  topic?: Topic3;
   review_public_id: string;
   user_public_id: string;
   strategy_public_id: string;
@@ -488,12 +506,12 @@ export interface AiReviewDecisionAckFrameData {
   dispatch_version: number;
 }
 export interface AiReviewDecisionData {
-  type: Type2;
+  type: Type3;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic3;
+  topic?: Topic4;
   review_public_id: string;
   responding_delegate_public_id: string;
   decision: string;
@@ -502,12 +520,12 @@ export interface AiReviewDecisionData {
   dispatch_version: number;
 }
 export interface AiReviewRequestFrameData {
-  type: Type3;
+  type: Type4;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic4;
+  topic?: Topic5;
   review_public_id: string;
   user_public_id: string;
   strategy_public_id: string;
@@ -523,12 +541,12 @@ export interface JsonObject {
   [k: string]: JsonValue;
 }
 export interface AlertEventData {
-  type: Type4;
+  type: Type5;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic5;
+  topic?: Topic6;
   user_public_id: string;
   operator_public_id?: OperatorPublicId;
   wallet_public_id?: WalletPublicId;
@@ -543,12 +561,12 @@ export interface AlertEventData {
   source_topic?: SourceTopic;
 }
 export interface BacktestProgressData {
-  type: Type5;
+  type: Type6;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic6;
+  topic?: Topic7;
   run_public_id: string;
   wallet_public_id: string;
   event: Event;
@@ -561,14 +579,14 @@ export interface BacktestProgressData {
   progress_pct: number;
 }
 export interface CandleData {
-  type: Type6;
+  type: Type7;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic7;
+  topic?: Topic8;
   instrument: string;
-  exchange: Exchange;
+  exchange: Exchange1;
   timeframe: string;
   open_at: string;
   open: number;
@@ -584,12 +602,12 @@ export interface CandleData {
   replay_window_end?: ReplayWindowEnd;
 }
 export interface CapsViolationAfterAiApproveData {
-  type: Type7;
+  type: Type8;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic8;
+  topic?: Topic9;
   review_public_id: string;
   user_public_id: string;
   strategy_public_id: string;
@@ -601,12 +619,12 @@ export interface CapsViolationAfterAiApproveData {
   dispatch_version: number;
 }
 export interface ContinuousCandleData {
-  type: Type8;
+  type: Type9;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic9;
+  topic?: Topic10;
   open_at: string;
   timeframe: string;
   open: number;
@@ -620,12 +638,12 @@ export interface ContinuousCandleData {
   adjustment_factor: AdjustmentFactor;
 }
 export interface ContractData {
-  type: Type9;
+  type: Type10;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic10;
+  topic?: Topic11;
   instrument_public_id: string;
   native_symbol: string;
   exchange: string;
@@ -636,23 +654,23 @@ export interface ContractData {
   is_front_month: boolean;
 }
 export interface DelegateOfflineData {
-  type: Type10;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic11;
-  user_public_id: string;
-  delegate_public_id: string;
-  last_seen_at: string;
-}
-export interface EgressPoolSnapshotEventData {
   type: Type11;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic12;
+  user_public_id: string;
+  delegate_public_id: string;
+  last_seen_at: string;
+}
+export interface EgressPoolSnapshotEventData {
+  type: Type12;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic13;
   container: string;
   snapshot: EgressPoolStatusSnapshot;
 }
@@ -665,7 +683,7 @@ export interface EgressPoolStatusSnapshot {
 }
 export interface EgressRouteStatusSnapshot {
   id: string;
-  kind: Kind;
+  kind: Kind1;
   proxy_url?: ProxyUrl;
   region?: Region;
   exit_ip?: ExitIp;
@@ -687,7 +705,7 @@ export interface EgressActiveReservationSnapshot {
 }
 export interface EgressConnectionSnapshot {
   host: string;
-  kind: Kind1;
+  kind: Kind2;
   exchange: string;
   traffic_class: TrafficClass1;
   container?: string;
@@ -708,12 +726,12 @@ export interface EgressTransferSnapshot {
   stale: boolean;
 }
 export interface EgressTransferEventData {
-  type: Type12;
+  type: Type13;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic13;
+  topic?: Topic14;
   interfaces?: Interfaces;
 }
 export interface EgressTransferInterfaceSnapshot {
@@ -728,17 +746,17 @@ export interface EgressTransferInterfaceSnapshot {
   sampled_at: string;
 }
 export interface ExecutionData {
-  type: Type13;
+  type: Type14;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic14;
+  topic?: Topic15;
   trade_id?: TradeId;
   exchange_order_id?: ExchangeOrderId;
   client_order_id: string;
   instrument: string;
-  exchange: Exchange1;
+  exchange: Exchange2;
   side: Side;
   size: number;
   price: number;
@@ -758,12 +776,12 @@ export interface ExecutionData {
   paired_group_policy?: PairedGroupPolicy;
 }
 export interface ExecutionPlanData {
-  type: Type14;
+  type: Type15;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic15;
+  topic?: Topic16;
   plan_type: string;
   status: string;
   instrument_public_id: string;
@@ -786,12 +804,12 @@ export interface Params {
   [k: string]: unknown;
 }
 export interface ExecutionPlanDecisionData {
-  type: Type15;
+  type: Type16;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic16;
+  topic?: Topic17;
   plan_public_id: string;
   decision_type: string;
   decided_at: string;
@@ -807,12 +825,12 @@ export interface JsonObject1 {
   [k: string]: JsonValue;
 }
 export interface ExecutionPlanDecisionEventData {
-  type: Type16;
+  type: Type17;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic17;
+  topic?: Topic18;
   decision_public_id: string;
   plan_public_id: string;
   decision_type: string;
@@ -821,12 +839,12 @@ export interface ExecutionPlanDecisionEventData {
   triggered_at: string;
 }
 export interface FrontMonthData {
-  type: Type17;
+  type: Type18;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic18;
+  topic?: Topic19;
   instrument_public_id: string;
   native_symbol: string;
   exchange: string;
@@ -835,15 +853,15 @@ export interface FrontMonthData {
   contract_family: ContractFamily1;
 }
 export interface FundingAccrualData {
-  type: Type18;
+  type: Type19;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic19;
+  topic?: Topic20;
   instrument: string;
-  exchange: Exchange2;
-  mode: Mode;
+  exchange: Exchange3;
+  mode: Mode1;
   accrual_type: AccrualType;
   accrued_at: string;
   amount: number;
@@ -853,12 +871,12 @@ export interface FundingAccrualData {
   position_quantity: number;
 }
 export interface HeartbeatData {
-  type: Type19;
+  type: Type20;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic20;
+  topic?: Topic21;
   component: string;
   sequence: number;
   status: Status1;
@@ -871,12 +889,12 @@ export interface JsonObject2 {
   [k: string]: JsonValue;
 }
 export interface InstrumentCapabilityData {
-  type: Type20;
+  type: Type21;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic21;
+  topic?: Topic22;
   instrument_public_id: string;
   exchange: string;
   supported_order_types: SupportedOrderTypes;
@@ -896,12 +914,12 @@ export interface InstrumentCapabilityData {
   top_of_book_quality: string;
 }
 export interface InstrumentDetailData {
-  type: Type21;
+  type: Type22;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic22;
+  topic?: Topic23;
   instrument_public_id: string;
   symbol_public_id: string;
   symbol: string;
@@ -913,13 +931,13 @@ export interface InstrumentDetailData {
   expiry_at: ExpiryAt1;
 }
 export interface OrderCancelData {
-  type: Type22;
+  type: Type23;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic23;
-  exchange: Exchange3;
+  topic?: Topic24;
+  exchange: Exchange4;
   instrument: string;
   exchange_order_id: string;
   client_order_id: string;
@@ -928,17 +946,17 @@ export interface OrderCancelData {
   user_public_id?: UserPublicId1;
 }
 export interface OrderData {
-  type: Type23;
+  type: Type24;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic24;
+  topic?: Topic25;
   exchange_order_id?: ExchangeOrderId1;
   client_order_id: string;
   instrument: string;
-  exchange: Exchange4;
-  mode?: Mode1;
+  exchange: Exchange5;
+  mode?: Mode2;
   side: Side1;
   status: string;
   order_type: OrderType;
@@ -963,15 +981,15 @@ export interface OrderData {
   paired_group_policy?: PairedGroupPolicy1;
 }
 export interface OrderEventData {
-  type: Type24;
+  type: Type25;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic25;
+  topic?: Topic26;
   exchange_order_id: string;
   client_order_id: string;
-  exchange: Exchange5;
+  exchange: Exchange6;
   instrument: string;
   event: Event1;
   reason?: Reason1;
@@ -984,13 +1002,13 @@ export interface OrderEventData {
   paired_group_policy?: PairedGroupPolicy2;
 }
 export interface OrderReplaceData {
-  type: Type25;
+  type: Type26;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic26;
-  exchange: Exchange6;
+  topic?: Topic27;
+  exchange: Exchange7;
   instrument: string;
   exchange_order_id: string;
   client_order_id: string;
@@ -1001,16 +1019,16 @@ export interface OrderReplaceData {
   user_public_id?: UserPublicId4;
 }
 export interface OrderRequestData {
-  type: Type26;
+  type: Type27;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic27;
+  topic?: Topic28;
   strategy_id: string;
-  exchange: Exchange7;
+  exchange: Exchange8;
   instrument: string;
-  mode: Mode2;
+  mode: Mode3;
   side: Side2;
   order_type: OrderType1;
   quantity: number;
@@ -1033,15 +1051,15 @@ export interface OrderRequestData {
   replay_window_end?: ReplayWindowEnd1;
 }
 export interface PortfolioDriftEpisodeEventData {
-  type: Type27;
+  type: Type28;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic28;
+  topic?: Topic29;
   wallet_public_id: string;
   exchange: string;
-  mode: Mode3;
+  mode: Mode4;
   episode_public_id: string;
   lifecycle: Lifecycle;
   opened_at: string;
@@ -1050,16 +1068,16 @@ export interface PortfolioDriftEpisodeEventData {
   resolution_reason?: ResolutionReason;
 }
 export interface PositionData {
-  type: Type28;
+  type: Type29;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic29;
+  topic?: Topic30;
   instrument: string;
   instrument_public_id?: string;
-  exchange: Exchange8;
-  mode?: Mode4;
+  exchange: Exchange9;
+  mode?: Mode5;
   quantity: number;
   average_price?: AveragePrice1;
   unrealized_pnl?: UnrealizedPnl;
@@ -1071,20 +1089,6 @@ export interface PositionData {
   wallet_public_id?: string;
 }
 export interface ProcessCommandAckData {
-  type: Type29;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic30;
-  command_id: string;
-  coordinator: string;
-  process_name: string;
-  status: string;
-  detail?: Detail;
-  signature: string;
-}
-export interface ProcessCommandData {
   type: Type30;
   sequence_id: number;
   public_id: string;
@@ -1094,28 +1098,42 @@ export interface ProcessCommandData {
   command_id: string;
   coordinator: string;
   process_name: string;
-  action: string;
-  issued_by: string;
-  issued_at: string;
+  status: string;
+  detail?: Detail;
   signature: string;
 }
-export interface ProcessConfiguredEventData {
+export interface ProcessCommandData {
   type: Type31;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic32;
-  process_names: ProcessNames;
-  snapshot_at: string;
+  command_id: string;
+  coordinator: string;
+  process_name: string;
+  action: string;
+  issued_by: string;
+  issued_at: string;
+  signature: string;
 }
-export interface ProcessRunEventData {
+export interface ProcessConfiguredEventData {
   type: Type32;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic33;
+  process_names: ProcessNames;
+  snapshot_at: string;
+}
+export interface ProcessRunEventData {
+  type: Type33;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic34;
   process_name: string;
   run_id: string;
   status: string;
@@ -1124,12 +1142,12 @@ export interface ProcessRunEventData {
   exit_code?: ExitCode;
 }
 export interface ProcessSummaryEventData {
-  type: Type33;
+  type: Type34;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic34;
+  topic?: Topic35;
   coordinator?: string;
   coordinator_label?: CoordinatorLabel;
   processes: Processes;
@@ -1147,12 +1165,12 @@ export interface ProcessSummaryItem {
   owned?: boolean;
 }
 export interface RelatedInstrumentData {
-  type: Type34;
+  type: Type35;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic35;
+  topic?: Topic36;
   instrument_public_id: string;
   native_symbol: string;
   exchange: string;
@@ -1162,29 +1180,29 @@ export interface RelatedInstrumentData {
   is_selected: boolean;
 }
 export interface ReplayEndData {
-  type: Type35;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic36;
-}
-export interface ReplayStartData {
   type: Type36;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic37;
-  started_at?: StartedAt;
 }
-export interface ScopeGrantedData {
+export interface ReplayStartData {
   type: Type37;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic38;
+  started_at?: StartedAt;
+}
+export interface ScopeGrantedData {
+  type: Type38;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic39;
   grant_public_id: string;
   operator_public_id: string;
   wallet_public_id: string;
@@ -1196,12 +1214,12 @@ export interface ScopeGrantedData {
   reason?: Reason2;
 }
 export interface ScopeHandedOverData {
-  type: Type38;
+  type: Type39;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic39;
+  topic?: Topic40;
   grant_public_id: string;
   from_operator_public_id: string;
   to_operator_public_id: string;
@@ -1214,12 +1232,12 @@ export interface ScopeHandedOverData {
   reason?: Reason3;
 }
 export interface ScopeRevokedData {
-  type: Type39;
+  type: Type40;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic40;
+  topic?: Topic41;
   grant_public_id: string;
   operator_public_id: string;
   wallet_public_id: string;
@@ -1231,26 +1249,26 @@ export interface ScopeRevokedData {
   reason?: Reason4;
 }
 export interface SettingChangedData {
-  type: Type40;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic41;
-  key: string;
-  value: string;
-  category: string;
-  updated_by?: UpdatedBy;
-}
-export interface SignalData {
   type: Type41;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic42;
+  key: string;
+  value: string;
+  category: string;
+  updated_by?: UpdatedBy;
+}
+export interface SignalData {
+  type: Type42;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic43;
   instrument: string;
-  exchange: Exchange9;
+  exchange: Exchange10;
   side: Side3;
   strength: number;
   reason: string;
@@ -1272,34 +1290,34 @@ export interface SignalData {
   replay_window_end?: ReplayWindowEnd2;
 }
 export interface StrategyListEventData {
-  type: Type42;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic43;
-  strategy_classes: StrategyClasses;
-  snapshot_at: string;
-}
-export interface SymbolAliasUpdateData {
   type: Type43;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic44;
-  event: Event2;
-  action: Action;
+  strategy_classes: StrategyClasses;
+  snapshot_at: string;
 }
-export interface TickData {
+export interface SymbolAliasUpdateData {
   type: Type44;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic45;
+  event: Event2;
+  action: Action;
+}
+export interface TickData {
+  type: Type45;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic46;
   instrument: string;
-  exchange: Exchange10;
+  exchange: Exchange11;
   volume: number;
   bid?: Bid;
   ask?: Ask;
@@ -1311,14 +1329,14 @@ export interface TickData {
   replay_window_end?: ReplayWindowEnd3;
 }
 export interface TradeData {
-  type: Type45;
+  type: Type46;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic46;
+  topic?: Topic47;
   instrument: string;
-  exchange: Exchange11;
+  exchange: Exchange12;
   executed_at?: ExecutedAt;
   price: number;
   volume: number;
@@ -1329,12 +1347,12 @@ export interface TradeData {
   replay_window_end?: ReplayWindowEnd4;
 }
 export interface UnderlyingAssetData {
-  type: Type46;
+  type: Type47;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic47;
+  topic?: Topic48;
   ticker: string;
   name: string;
   asset_class: string;
@@ -1343,12 +1361,12 @@ export interface UnderlyingAssetData {
   instrument_count: number;
 }
 export interface UnderlyingInstrumentData {
-  type: Type47;
+  type: Type48;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
-  topic?: Topic48;
+  topic?: Topic49;
   instrument_public_id: string;
   native_symbol: string;
   exchange: string;
@@ -1357,23 +1375,23 @@ export interface UnderlyingInstrumentData {
   contract_family: ContractFamily3;
 }
 export interface UserDeactivatedData {
-  type: Type48;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic49;
-  user_public_id: string;
-  deactivated_at: string;
-  reason?: Reason5;
-}
-export interface VenueFeeScheduleData {
   type: Type49;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic50;
+  user_public_id: string;
+  deactivated_at: string;
+  reason?: Reason5;
+}
+export interface VenueFeeScheduleData {
+  type: Type50;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic51;
   exchange: string;
   instrument_public_id: InstrumentPublicId3;
   fee_tier: string;
@@ -1383,79 +1401,71 @@ export interface VenueFeeScheduleData {
   currency: string;
 }
 export interface WSAuthCompleteResponse {
-  type: Type50;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic51;
-  available_topics: AvailableTopics;
-  user_role: UserRole;
-  session_expires_at?: SessionExpiresAt;
-  ws_token_exp: string;
-}
-export interface WSAuthExpiredResponse {
   type: Type51;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic52;
+  available_topics: AvailableTopics;
+  user_role: UserRole;
+  session_expires_at?: SessionExpiresAt;
+  ws_token_exp: string;
 }
-export interface WSAuthFailedResponse {
+export interface WSAuthExpiredResponse {
   type: Type52;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic53;
-  reason?: Reason6;
 }
-export interface WSAuthOkResponse {
+export interface WSAuthFailedResponse {
   type: Type53;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic54;
-  exp: string;
+  reason?: Reason6;
 }
-export interface WSAuthRequiredResponse {
+export interface WSAuthOkResponse {
   type: Type54;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic55;
-  timeout?: number;
+  exp: string;
 }
-export interface WSAuthenticateRequest {
+export interface WSAuthRequiredResponse {
   type: Type55;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic56;
-  ws_token: string;
+  timeout?: number;
 }
-export interface WSErrorResponse {
+export interface WSAuthenticateRequest {
   type: Type56;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic57;
-  message: string;
+  ws_token: string;
 }
-export interface WSGetSubscriptionsRequest {
+export interface WSErrorResponse {
   type: Type57;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic58;
+  message: string;
 }
-export interface WSPingRequest {
+export interface WSGetSubscriptionsRequest {
   type: Type58;
   sequence_id: number;
   public_id: string;
@@ -1463,58 +1473,66 @@ export interface WSPingRequest {
   session_id: string;
   topic?: Topic59;
 }
-export interface WSPongResponse {
+export interface WSPingRequest {
   type: Type59;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic60;
-  active_connections: number;
 }
-export interface WSReauthOkResponse {
+export interface WSPongResponse {
   type: Type60;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic61;
-  exp: string;
+  active_connections: number;
 }
-export interface WSReauthRequest {
+export interface WSReauthOkResponse {
   type: Type61;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic62;
-  ws_token: string;
+  exp: string;
 }
-export interface WSReauthRequiredResponse {
+export interface WSReauthRequest {
   type: Type62;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic63;
-  deadline: string;
+  ws_token: string;
 }
-export interface WSSubscribeRequest {
+export interface WSReauthRequiredResponse {
   type: Type63;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic64;
-  topics: Topics;
+  deadline: string;
 }
-export interface WSSubscriptionSuccessResponse {
+export interface WSSubscribeRequest {
   type: Type64;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic65;
+  topics: Topics;
+}
+export interface WSSubscriptionSuccessResponse {
+  type: Type65;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic66;
   action: Action1;
   status: Status2;
   topics: Topics1;
@@ -1523,22 +1541,22 @@ export interface WSSubscriptionSuccessResponse {
   message?: Message;
 }
 export interface WSSubscriptionsListResponse {
-  type: Type65;
-  sequence_id: number;
-  public_id: string;
-  timestamp: string;
-  session_id: string;
-  topic?: Topic66;
-  subscriptions: Subscriptions;
-  available_topics: AvailableTopics1;
-  total_available: number;
-}
-export interface WSUnsubscribeRequest {
   type: Type66;
   sequence_id: number;
   public_id: string;
   timestamp: string;
   session_id: string;
   topic?: Topic67;
+  subscriptions: Subscriptions;
+  available_topics: AvailableTopics1;
+  total_available: number;
+}
+export interface WSUnsubscribeRequest {
+  type: Type67;
+  sequence_id: number;
+  public_id: string;
+  timestamp: string;
+  session_id: string;
+  topic?: Topic68;
   topics: Topics2;
 }

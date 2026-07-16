@@ -14,12 +14,28 @@ export type {
   Status2 as HeartbeatStatus,
 } from './ws.generated'
 
-type Exchange = 'kraken' | 'kraken_futures' | 'kraken_equities' | 'walutomat' | 'polygon'
-type Origin = 'live' | 'replay'
-type Exchange2 = 'paper' | 'kraken' | 'kraken_futures' | 'walutomat'
-type TradeSide = 'buy' | 'sell'
+type Exchange = 'paper' | 'kraken' | 'kraken_futures' | 'walutomat'
 type Mode = 'live' | 'paper'
+type Exchange2 = 'kraken' | 'kraken_futures' | 'kraken_equities' | 'walutomat' | 'polygon'
+type Origin = 'live' | 'replay'
+type TradeSide = 'buy' | 'sell'
 type ScopeKind = 'underlying' | 'instrument'
+
+/**
+ * Canonical AccountStateChangedEvent entity.
+ * From WebSocket AccountStateChangedEventData.
+ */
+export interface AccountStateChangedEvent {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  walletPublicId: string
+  exchange: Exchange
+  mode: Mode
+  kind: 'snapshot' | 'reconciliation'
+}
 
 /**
  * Canonical AiReviewCapsViolationFrame entity.
@@ -162,7 +178,7 @@ export interface Candle {
   sessionId: string
   topic?: string | null
   instrument: string
-  exchange: Exchange
+  exchange: Exchange2
   timeframe: string
   openAt: Date
   open: number
@@ -298,7 +314,7 @@ export interface Execution {
   exchangeOrderId?: string | null
   clientOrderId: string
   instrument: string
-  exchange: Exchange2
+  exchange: Exchange
   side: TradeSide
   size: number
   price: number
@@ -416,7 +432,7 @@ export interface FundingAccrual {
   sessionId: string
   topic?: string | null
   instrument: string
-  exchange: Exchange2
+  exchange: Exchange
   mode: Mode
   accrualType: 'funding' | 'rollover' | 'borrow'
   accruedAt: Date
@@ -506,7 +522,7 @@ export interface OrderCancel {
   timestamp: Date
   sessionId: string
   topic?: string | null
-  exchange: Exchange2
+  exchange: Exchange
   instrument: string
   exchangeOrderId: string
   clientOrderId: string
@@ -528,7 +544,7 @@ export interface Order {
   exchangeOrderId?: string | null
   clientOrderId: string
   instrument: string
-  exchange: Exchange2
+  exchange: Exchange
   mode?: Mode
   side: TradeSide
   status: string
@@ -566,7 +582,7 @@ export interface OrderEvent {
   topic?: string | null
   exchangeOrderId: string
   clientOrderId: string
-  exchange: Exchange2
+  exchange: Exchange
   instrument: string
   event: 'submitted' | 'accepted' | 'rejected' | 'cancelled' | 'expired' | 'replaced' | 'unknown'
   reason?: string | null
@@ -589,7 +605,7 @@ export interface OrderReplace {
   timestamp: Date
   sessionId: string
   topic?: string | null
-  exchange: Exchange2
+  exchange: Exchange
   instrument: string
   exchangeOrderId: string
   clientOrderId: string
@@ -611,7 +627,7 @@ export interface OrderRequest {
   sessionId: string
   topic?: string | null
   strategyId: string
-  exchange: Exchange2
+  exchange: Exchange
   instrument: string
   mode: Mode
   side: TradeSide
@@ -669,7 +685,7 @@ export interface Position {
   topic?: string | null
   instrument: string
   instrumentPublicId?: string
-  exchange: Exchange2
+  exchange: Exchange
   mode?: Mode
   quantity: number
   averagePrice?: number | null
@@ -902,7 +918,7 @@ export interface Signal {
   sessionId: string
   topic?: string | null
   instrument: string
-  exchange: Exchange2
+  exchange: Exchange
   side: TradeSide
   strength: number
   reason: string
@@ -963,7 +979,7 @@ export interface Tick {
   sessionId: string
   topic?: string | null
   instrument: string
-  exchange: Exchange
+  exchange: Exchange2
   volume: number
   bid?: number | null
   ask?: number | null
@@ -986,7 +1002,7 @@ export interface Trade {
   sessionId: string
   topic?: string | null
   instrument: string
-  exchange: Exchange
+  exchange: Exchange2
   executedAt?: Date | null
   price: number
   volume: number

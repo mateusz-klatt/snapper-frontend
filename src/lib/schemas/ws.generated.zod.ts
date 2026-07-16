@@ -16,6 +16,21 @@ export const WsMessageBaseSchema = z
   })
   .strict()
 
+export const AccountStateChangedEventDataSchema = z
+  .object({
+    type: z.literal('account_state_changed_event'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+    exchange: z.enum(['paper', 'kraken', 'kraken_futures', 'walutomat']),
+    mode: z.enum(['live', 'paper']),
+    kind: z.enum(['snapshot', 'reconciliation']),
+  })
+  .strict()
+
 export const AiReviewCapsViolationFrameDataSchema = z
   .object({
     type: z.literal('ai_review.caps_violation'),
