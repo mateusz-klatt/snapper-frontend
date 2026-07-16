@@ -15,23 +15,16 @@ const BUDGET_LARGEST_CHUNK_GZIP_BYTES = 80 * 1024
 /** Reset 375 -> 470 kB (2026-07-14): accumulated features + dependency updates grew total JS to ~427 kB gzip (largest chunk 61 kB, well under the 80 kB cap), so the old ceiling failed every build, not just borderline ones. Set with ~10% headroom above the real size to absorb build-to-build gzip variance while still catching a genuine regression. Bump again (with a note) when a real feature legitimately grows it. */
 const BUDGET_TOTAL_JS_GZIP_BYTES = 470 * 1024
 
-const LOCALE_NAMESPACES = [
-  'admin',
-  'aiIntegration',
-  'aiReviews',
-  'auth',
-  'backtests',
-  'common',
-  'health',
-  'market',
-  'orders',
-  'overview',
-  'positions',
-  'processes',
-  'settings',
-  'signals',
-  'strategies',
-]
+/**
+ * Locale namespaces are derived from the en catalog directory so the list can
+ * never go stale. The previous hardcoded list predated the `accounts` and
+ * `alerts` namespaces, so their 45-locale chunks were miscounted as app JS —
+ * translation growth (S4b badge + classify strings) then tripped the total-JS
+ * budget even though the app code barely grew.
+ */
+const LOCALE_NAMESPACES = readdirSync(join(ROOT, 'src', 'locales', 'en'))
+  .filter(name => name.endsWith('.json'))
+  .map(name => name.slice(0, -'.json'.length))
 const LOCALE_CHUNK_RE = new RegExp(
   String.raw`^(?:${LOCALE_NAMESPACES.join('|')})-[A-Za-z0-9_-]+\.js$`
 )
