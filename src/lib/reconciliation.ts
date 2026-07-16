@@ -1,4 +1,4 @@
-import type { PortfolioAccountState } from '../types/api'
+import type { PortfolioAccountState, RealPortfolioReconciliationMethod } from '../types/api'
 
 type PortfolioReconciliationView = PortfolioAccountState['reconciliation']
 
@@ -34,7 +34,7 @@ export interface ReconciliationPresentation {
   openDriftMismatchCount: number | null
 }
 
-const reconciliationMethod = (
+export const reconciliationMethod = (
   method: PortfolioReconciliationView['method']
 ): ReconciliationMethod => {
   switch (method) {
@@ -122,6 +122,32 @@ export const deriveReconciliation = (
     default:
       return { displayStatus: 'unverified', method, openDriftMismatchCount: null }
   }
+}
+
+/**
+ * Client-side mirror of the backend per-venue reconciliation-method policy
+ * (src/snapper/infrastructure/exchanges/reconciliation_policy.py). The server
+ * remains the enforcer (400 on a prohibited method); this map only decides
+ * which classify choices the UI offers. Venues absent from the map (paper,
+ * kraken_equities, polygon, unknown) cannot be classified from the UI.
+ */
+export const CLASSIFIABLE_VENUE_METHODS: Readonly<
+  Record<string, readonly RealPortfolioReconciliationMethod[]>
+> = {
+  kraken: ['spot_execution_replay', 'margin_ledger_replay'],
+  kraken_futures: ['futures_position'],
+  walutomat: ['spot_execution_replay'],
+}
+
+/** Methods the classify UI may offer for one venue (empty = not classifiable). */
+export const classifiableMethodsForExchange = (
+  exchange: string
+): readonly RealPortfolioReconciliationMethod[] => {
+  const methods = Object.hasOwn(CLASSIFIABLE_VENUE_METHODS, exchange)
+    ? CLASSIFIABLE_VENUE_METHODS[exchange]
+    : undefined
+
+  return methods ?? []
 }
 
 /** Map a derived reconciliation state to its badge colour family. */

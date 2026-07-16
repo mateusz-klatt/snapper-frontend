@@ -1,12 +1,19 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { getCredentials, createCredential, rotateCredential } from '../../lib/api/credentials'
+import {
+  getCredentials,
+  createCredential,
+  rotateCredential,
+  setCredentialReconciliationMethod,
+} from '../../lib/api/credentials'
 import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
 import type {
   CredentialListResponse,
+  CredentialReconciliationMethodResponse,
   CredentialResponse,
   CreateCredentialBody,
   RotateCredentialBody,
+  SetCredentialReconciliationMethodBody,
 } from '../../types/api'
 import { queryKeys } from './keys'
 
@@ -54,6 +61,29 @@ export const useRotateCredential = () => {
       queryClient.invalidateQueries({
         queryKey: queryKeys.credentialsForWallet(variables.walletPublicId),
       })
+    },
+  })
+}
+
+export const useSetCredentialReconciliationMethod = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation<
+    CredentialReconciliationMethodResponse,
+    Error,
+    {
+      walletPublicId: string
+      credentialPublicId: string
+      data: SetCredentialReconciliationMethodBody
+    }
+  >({
+    mutationFn: ({ walletPublicId, credentialPublicId, data }) =>
+      setCredentialReconciliationMethod(walletPublicId, credentialPublicId, data),
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.credentialsForWallet(variables.walletPublicId),
+      })
+      queryClient.invalidateQueries({ queryKey: queryKeys.portfolioAccountsAll })
     },
   })
 }

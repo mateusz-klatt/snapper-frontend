@@ -105,6 +105,26 @@
       "reconciliationError": "Metode: {{method}}. Avstemmingen kunne ikke produsere et pålitelig resultat.",
       "unsupported": "Metode: {{method}}. Avstemming støttes ikke for denne kontoen.",
       "unverified": "Metode: {{method}}. Dette resultatet er ikke autoritativt og stoles ikke på som avstemt."
+    },
+    "classify": {
+      "action": "Klassifiser",
+      "title": "Klassifiser avstemmingsmetode",
+      "intro": "Velg hvordan denne børskontoen avstemmes mot børsens autoritative data. Dette angir et faktisk forhold ved kontoen, ikke en preferanse.",
+      "guidance": "Velg metoden som samsvarer med hvordan kontoen faktisk fungerer på børsen: kontantkontoer (spot) gjør opp handler kun fra kontantbeholdninger, mens marginkontoer kan låne mot sikkerhet. Hvis du ikke er sikker på hvordan kontoen fungerer, lar du den være uklassifisert.",
+      "immutabilityWarning": "Denne klassifiseringen er permanent. Den kan ikke endres eller fjernes etter at den er angitt.",
+      "acknowledge": "Jeg forstår at denne klassifiseringen er permanent og samsvarer med hvordan denne kontoen fungerer.",
+      "methodDescription": {
+        "futuresPosition": "Avstemmer åpne derivatposisjoner mot børsens autoritative data for futures-posisjoner.",
+        "spotExecutionReplay": "Gjentar spot-utførelser mot kontantbeholdninger. For kontoer som kun bruker kontanter og aldri handler med margin.",
+        "marginLedgerReplay": "Gjentar børsens margin-hovedbok. For kontoer som handler med margin eller låner mot sikkerhet."
+      },
+      "credentialLoading": "Laster legitimasjon…",
+      "noCredential": "Ingen aktiv legitimasjon for reell handel ble funnet for denne kontoen. Avstemmingen kan ikke klassifiseres.",
+      "ambiguousCredential": "Flere legitimasjoner for reell handel samsvarer med denne kontoen. Klassifisering krever nøyaktig én.",
+      "confirm": "Klassifiser konto",
+      "cancel": "Avbryt",
+      "success": "Konto klassifisert: {{method}}",
+      "error": "Klassifisering mislyktes: {{message}}"
     }
   }
 }

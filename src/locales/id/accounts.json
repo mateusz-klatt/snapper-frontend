@@ -105,6 +105,26 @@
       "reconciliationError": "Metode: {{method}}. Rekonsiliasi tidak dapat menghasilkan putusan yang tepercaya.",
       "unsupported": "Metode: {{method}}. Rekonsiliasi tidak didukung untuk akun ini.",
       "unverified": "Metode: {{method}}. Putusan ini tidak otoritatif dan tidak dipercaya sebagai hasil rekonsiliasi."
+    },
+    "classify": {
+      "action": "Klasifikasikan",
+      "title": "Klasifikasikan metode rekonsiliasi",
+      "intro": "Pilih cara akun bursa ini direkonsiliasi dengan data otoritatif bursa. Ini adalah pernyataan fakta tentang akun, bukan preferensi.",
+      "guidance": "Pilih metode yang sesuai dengan cara akun tersebut benar-benar beroperasi di bursa: akun kas (spot) menyelesaikan transaksi hanya dari saldo kas, sedangkan akun margin dapat meminjam dengan agunan. Jika Anda tidak yakin bagaimana akun tersebut beroperasi, biarkan akun tetap belum diklasifikasi.",
+      "immutabilityWarning": "Klasifikasi ini bersifat permanen. Setelah ditetapkan, klasifikasi ini tidak dapat diubah atau dihapus.",
+      "acknowledge": "Saya memahami bahwa klasifikasi ini bersifat permanen dan sesuai dengan cara akun ini beroperasi.",
+      "methodDescription": {
+        "futuresPosition": "Merekonsiliasi posisi derivatif terbuka dengan data otoritatif posisi futures bursa.",
+        "spotExecutionReplay": "Memutar ulang eksekusi spot terhadap saldo kas. Untuk akun khusus kas yang tidak pernah berdagang dengan margin.",
+        "marginLedgerReplay": "Memutar ulang buku besar margin bursa. Untuk akun yang berdagang dengan margin atau meminjam dengan agunan."
+      },
+      "credentialLoading": "Memuat kredensial…",
+      "noCredential": "Tidak ditemukan kredensial aktif real-time untuk akun ini. Rekonsiliasi tidak dapat diklasifikasikan.",
+      "ambiguousCredential": "Beberapa kredensial real-time cocok dengan akun ini. Klasifikasi memerlukan tepat satu kredensial.",
+      "confirm": "Klasifikasikan akun",
+      "cancel": "Batal",
+      "success": "Akun diklasifikasikan: {{method}}",
+      "error": "Klasifikasi gagal: {{message}}"
     }
   }
 }

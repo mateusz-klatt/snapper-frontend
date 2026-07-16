@@ -105,6 +105,26 @@
       "reconciliationError": "Metode: {{method}}. Afstemningen kunne ikke producere et pålideligt resultat.",
       "unsupported": "Metode: {{method}}. Afstemning understøttes ikke for denne konto.",
       "unverified": "Metode: {{method}}. Dette resultat er ikke autoritativt og har ikke tillid som afstemt."
+    },
+    "classify": {
+      "action": "Klassificer",
+      "title": "Klassificer afstemningsmetode",
+      "intro": "Vælg, hvordan denne børskonto afstemmes mod børsens autoritative data. Dette er en konstatering af fakta om kontoen, ikke en præference.",
+      "guidance": "Vælg den metode, der svarer til, hvordan kontoen reelt fungerer på børsen: kontantkonti (spot) afvikler kun handler fra kontantbeholdninger, mens marginkonti kan låne mod sikkerhed. Hvis du ikke er sikker på, hvordan kontoen fungerer, skal du lade den være uklassificeret.",
+      "immutabilityWarning": "Denne klassificering er permanent. Den kan ikke ændres eller fjernes, når den først er angivet.",
+      "acknowledge": "Jeg forstår, at denne klassificering er permanent og svarer til, hvordan denne konto fungerer.",
+      "methodDescription": {
+        "futuresPosition": "Afstemmer åbne derivatpositioner mod børsens autoritative data om futures-positioner.",
+        "spotExecutionReplay": "Gengiver spot-eksekveringer mod kontantbeholdninger. Til konti, der kun bruger kontanter og aldrig handler på margin.",
+        "marginLedgerReplay": "Gengiver børsens margin-hovedbog. Til konti, der handler på margin eller låner mod sikkerhed."
+      },
+      "credentialLoading": "Indlæser legitimationsoplysninger…",
+      "noCredential": "Der blev ikke fundet aktive legitimationsoplysninger til live trading for denne konto. Afstemningsmetoden kan ikke klassificeres.",
+      "ambiguousCredential": "Flere legitimationsoplysninger til live trading matcher denne konto. Klassificering kræver præcis ét sæt.",
+      "confirm": "Klassificer konto",
+      "cancel": "Annuller",
+      "success": "Konto klassificeret: {{method}}",
+      "error": "Klassificering mislykkedes: {{message}}"
     }
   }
 }

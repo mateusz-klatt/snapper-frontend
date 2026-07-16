@@ -105,6 +105,26 @@
       "reconciliationError": "Metode: {{method}}. Saskaņošana nespēja sniegt uzticamu spriedumu.",
       "unsupported": "Metode: {{method}}. Šim kontam saskaņošana netiek atbalstīta.",
       "unverified": "Metode: {{method}}. Šis spriedums nav autoritatīvs un netiek uzskatīts par saskaņotu."
+    },
+    "classify": {
+      "action": "Klasificēt",
+      "title": "Klasificēt saskaņošanas metodi",
+      "intro": "Izvēlieties, kā šis biržas konts tiek saskaņots ar autoritatīvajiem biržas datiem. Tas ir fakta konstatējums par kontu, nevis priekšroka.",
+      "guidance": "Izvēlieties metodi, kas atbilst tam, kā konts faktiski darbojas biržā: naudas (spot) kontos darījumu norēķini tiek veikti tikai no naudas līdzekļu atlikumiem, savukārt maržas kontos var aizņemties pret nodrošinājumu. Ja neesat pārliecināts, kā konts darbojas, atstājiet to neklasificētu.",
+      "immutabilityWarning": "Šī klasifikācija ir pastāvīga. Pēc iestatīšanas to nevar mainīt vai noņemt.",
+      "acknowledge": "Es saprotu, ka šī klasifikācija ir pastāvīga un atbilst tam, kā šis konts darbojas.",
+      "methodDescription": {
+        "futuresPosition": "Saskaņo atvērtās atvasināto instrumentu pozīcijas ar autoritatīvajiem biržas nākotnes līgumu pozīciju datiem.",
+        "spotExecutionReplay": "Atkārto spot izpildes, salīdzinot tās ar naudas līdzekļu atlikumiem. Tikai naudas kontiem, kuros nekad netiek tirgots ar maržu.",
+        "marginLedgerReplay": "Atkārto biržas maržas virsgrāmatu. Kontiem, kuros tirgo ar maržu vai aizņemas pret nodrošinājumu."
+      },
+      "credentialLoading": "Notiek akreditācijas datu ielāde…",
+      "noCredential": "Šim kontam nav atrasta neviena aktīva reālas tirdzniecības akreditācijas datu kopa. Saskaņošanas metodi nevar klasificēt.",
+      "ambiguousCredential": "Šim kontam atbilst vairākas reālas tirdzniecības akreditācijas datu kopas. Klasifikācijai nepieciešama tieši viena.",
+      "confirm": "Klasificēt kontu",
+      "cancel": "Atcelt",
+      "success": "Konts klasificēts: {{method}}",
+      "error": "Klasifikācija neizdevās: {{message}}"
     }
   }
 }

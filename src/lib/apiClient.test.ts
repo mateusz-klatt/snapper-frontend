@@ -864,4 +864,54 @@ describe('cacheWsTicketFromResponse', () => {
       await expect(apiClient.patchJSON('/api/custom-patch', {})).rejects.toThrow('bad patch')
     })
   })
+  describe('putJSON helper', () => {
+    beforeEach(() => {
+      mockSeqCounter = 0
+    })
+    it('sends PUT with provenance-stamped body and CSRF header', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ ok: 1 }),
+      })
+      const result = await apiClient.putJSON('/api/custom-put', { x: 1 })
+
+      expect(result).toEqual({ ok: 1 })
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('PUT')
+      const body = JSON.parse(mockFetch.mock.calls[0]?.[1].body as string)
+
+      expect(body.payload.x).toBe(1)
+      expect(body.public_id).toBeDefined()
+      expect(body.session_id).toBe('test-session-id')
+      expect(body.sequence_id).toEqual(expect.any(Number))
+      expect(body.timestamp).toBeDefined()
+      const headers = mockFetch.mock.calls[0]?.[1].headers as Headers
+
+      expect(headers.get('X-CSRF-Token')).toBe('test-csrf')
+    })
+    it('sends PUT without body', async () => {
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ ok: 1 }),
+      })
+      const result = await apiClient.putJSON('/api/custom-put')
+
+      expect(result).toEqual({ ok: 1 })
+      expect(mockFetch.mock.calls[0]?.[1].method).toBe('PUT')
+      expect(mockFetch.mock.calls[0]?.[1].body).toBeUndefined()
+    })
+    it('throws APIError on non-ok response', async () => {
+      const jsonFn = async () => ({ detail: 'method is immutable' })
+
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 409,
+        statusText: 'Conflict',
+        json: jsonFn,
+        clone: () => ({ json: jsonFn }),
+      })
+      await expect(apiClient.putJSON('/api/custom-put', {})).rejects.toThrow('method is immutable')
+    })
+  })
 })

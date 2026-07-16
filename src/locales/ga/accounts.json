@@ -105,6 +105,26 @@
       "reconciliationError": "Modh: {{method}}. Ní raibh an t-athmhuintearas in ann fíorasc iontaofa a chruthú.",
       "unsupported": "Modh: {{method}}. Ní thacaítear le hathmhuintearas don chuntas seo.",
       "unverified": "Modh: {{method}}. Níl an fíorasc seo údarásach agus ní mheastar é a bheith athnóite."
+    },
+    "classify": {
+      "action": "Aicmigh",
+      "title": "Aicmigh an modh athmhuintearais",
+      "intro": "Roghnaigh conas a dhéantar athmhuintearas idir an cuntas malartáin seo agus sonraí údarásacha an mhalartáin. Is ráiteas fíorais é seo faoin gcuntas, seachas rogha.",
+      "guidance": "Roghnaigh an modh a mheaitseálann an chaoi a bhfeidhmíonn an cuntas i ndáiríre ag an malartán: socraíonn cuntais airgid thirim (spot) trádálacha ó iarmhéideanna airgid thirim amháin, agus is féidir le cuntais chorrlaigh iasacht a fháil in aghaidh comhthaobhachta. Mura bhfuil tú cinnte conas a fheidhmíonn an cuntas, fág neamhaicmithe é.",
+      "immutabilityWarning": "Tá an t-aicmiú seo buan. Ní féidir é a athrú ná a bhaint a luaithe a shocraítear é.",
+      "acknowledge": "Tuigim go bhfuil an t-aicmiú seo buan agus go dtagann sé leis an gcaoi a bhfeidhmíonn an cuntas seo.",
+      "methodDescription": {
+        "futuresPosition": "Déanann sé athmhuintearas idir suíomhanna díorthach oscailte agus sonraí údarásacha an mhalartáin faoi shuímh todhchaíochtaí.",
+        "spotExecutionReplay": "Athsheinneann sé forghníomhuithe spot i gcoinne iarmhéideanna airgid thirim. Do chuntais airgid thirim amháin nach dtrádálann ar chorrlach riamh.",
+        "marginLedgerReplay": "Athsheinneann sé mórleabhar corrlaigh an mhalartáin. Do chuntais a thrádálann ar chorrlach nó a fhaigheann iasacht in aghaidh comhthaobhachta."
+      },
+      "credentialLoading": "Dintiúr á lódáil…",
+      "noCredential": "Níor aimsíodh aon dintiúr gníomhach fíor-ama don chuntas seo. Ní féidir an modh athmhuintearais a aicmiú.",
+      "ambiguousCredential": "Tá roinnt dintiúr fíor-ama ag teacht leis an gcuntas seo. Teastaíonn dintiúr amháin go díreach don aicmiú.",
+      "confirm": "Aicmigh an cuntas",
+      "cancel": "Cealaigh",
+      "success": "Cuntas aicmithe: {{method}}",
+      "error": "Theip ar an aicmiú: {{message}}"
     }
   }
 }

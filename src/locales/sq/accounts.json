@@ -105,6 +105,26 @@
       "reconciliationError": "Metoda: {{method}}. Rakordimi nuk mundi të prodhonte një verdikt të besueshëm.",
       "unsupported": "Metoda: {{method}}. Rakordimi nuk mbështetet për këtë llogari.",
       "unverified": "Metoda: {{method}}. Ky verdikt nuk është autoritar dhe nuk besohet si i rakorduar."
+    },
+    "classify": {
+      "action": "Klasifiko",
+      "title": "Klasifiko metodën e rakordimit",
+      "intro": "Zgjidhni se si rakordohet kjo llogari e bursës me të dhënat autoritative të bursës. Ky është një konstatim fakti për llogarinë, jo një preferencë.",
+      "guidance": "Zgjidhni metodën që përputhet me mënyrën se si funksionon realisht llogaria në bursë: llogaritë me para të gatshme (spot) shlyejnë tregtitë vetëm nga gjendjet e parave të gatshme, ndërsa llogaritë me marzh mund të marrin hua kundrejt kolateralit. Nëse nuk jeni të sigurt se si funksionon llogaria, lëreni të paklasifikuar.",
+      "immutabilityWarning": "Ky klasifikim është i përhershëm. Pasi të vendoset, nuk mund të ndryshohet ose hiqet.",
+      "acknowledge": "E kuptoj se ky klasifikim është i përhershëm dhe përputhet me mënyrën se si funksionon kjo llogari.",
+      "methodDescription": {
+        "futuresPosition": "Rakordon pozicionet e hapura të derivateve me të dhënat autoritative të bursës për pozicionet e të ardhmes.",
+        "spotExecutionReplay": "Përsërit ekzekutimet spot kundrejt gjendjeve të parave të gatshme. Për llogaritë vetëm me para të gatshme që nuk tregtojnë kurrë me marzh.",
+        "marginLedgerReplay": "Përsërit librin e marzhit të bursës. Për llogaritë që tregtojnë me marzh ose marrin hua kundrejt kolateralit."
+      },
+      "credentialLoading": "Duke ngarkuar kredencialin…",
+      "noCredential": "Nuk u gjet asnjë kredencial aktiv për tregtim real për këtë llogari. Rakordimi nuk mund të klasifikohet.",
+      "ambiguousCredential": "Me këtë llogari përputhen disa kredenciale për tregtim real. Klasifikimi kërkon saktësisht një.",
+      "confirm": "Klasifiko llogarinë",
+      "cancel": "Anulo",
+      "success": "Llogaria u klasifikua: {{method}}",
+      "error": "Klasifikimi dështoi: {{message}}"
     }
   }
 }

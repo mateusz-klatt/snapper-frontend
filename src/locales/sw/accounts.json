@@ -105,6 +105,26 @@
       "reconciliationError": "Njia: {{method}}. Upatanisho haukuweza kutoa uamuzi unaoaminika.",
       "unsupported": "Njia: {{method}}. Upatanisho hautumiki kwa akaunti hii.",
       "unverified": "Njia: {{method}}. Uamuzi huu si rasmi na hauaminiki kama uliopatanishwa."
+    },
+    "classify": {
+      "action": "Ainisha",
+      "title": "Ainisha njia ya upatanisho",
+      "intro": "Chagua jinsi akaunti hii ya soko la kubadilisha inavyopatanishwa na data rasmi za soko hilo. Hii ni kauli ya ukweli kuhusu akaunti, si chaguo la upendeleo.",
+      "guidance": "Chagua njia inayolingana na jinsi akaunti inavyofanya kazi katika soko la kubadilisha: akaunti za fedha taslimu (spot) hukamilisha miamala kwa kutumia salio la fedha taslimu pekee, ilhali akaunti za margin zinaweza kukopa kwa kuweka dhamana. Ikiwa huna uhakika jinsi akaunti inavyofanya kazi, iache bila kuainishwa.",
+      "immutabilityWarning": "Uainishaji huu ni wa kudumu. Hauwezi kubadilishwa wala kuondolewa baada ya kuwekwa.",
+      "acknowledge": "Ninaelewa kuwa uainishaji huu ni wa kudumu na unalingana na jinsi akaunti hii inavyofanya kazi.",
+      "methodDescription": {
+        "futuresPosition": "Hupatanisha nafasi wazi za bidhaa zitokanazo na data rasmi za soko la kubadilisha kuhusu nafasi za futures.",
+        "spotExecutionReplay": "Hurudia utekelezaji wa spot dhidi ya salio la fedha taslimu. Kwa akaunti za fedha taslimu pekee ambazo hazifanyi biashara kwa margin kamwe.",
+        "marginLedgerReplay": "Hurudia leja ya margin ya soko la kubadilisha. Kwa akaunti zinazofanya biashara kwa margin au kukopa kwa kuweka dhamana."
+      },
+      "credentialLoading": "Inapakia kitambulisho…",
+      "noCredential": "Hakuna kitambulisho kinachotumika kwa biashara halisi kilichopatikana kwa akaunti hii. Upatanisho hauwezi kuainishwa.",
+      "ambiguousCredential": "Vitambulisho vingi vya biashara halisi vinalingana na akaunti hii. Uainishaji unahitaji kimoja tu.",
+      "confirm": "Ainisha akaunti",
+      "cancel": "Ghairi",
+      "success": "Akaunti imeainishwa: {{method}}",
+      "error": "Uainishaji umeshindwa: {{message}}"
     }
   }
 }

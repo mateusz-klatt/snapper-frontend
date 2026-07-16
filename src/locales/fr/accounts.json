@@ -105,6 +105,26 @@
       "reconciliationError": "Méthode : {{method}}. Le rapprochement n'a pas pu produire de verdict fiable.",
       "unsupported": "Méthode : {{method}}. Le rapprochement n'est pas pris en charge pour ce compte.",
       "unverified": "Méthode : {{method}}. Ce verdict ne fait pas autorité et n'est pas considéré comme rapproché."
+    },
+    "classify": {
+      "action": "Classifier",
+      "title": "Classifier la méthode de rapprochement",
+      "intro": "Choisissez comment ce compte de plateforme est rapproché des données faisant autorité de la plateforme. Il s’agit d’un constat factuel concernant le compte, et non d’une préférence.",
+      "guidance": "Sélectionnez la méthode qui correspond au fonctionnement réel du compte sur la plateforme : les comptes en espèces (au comptant) règlent les transactions uniquement à partir des soldes en espèces, tandis que les comptes sur marge peuvent emprunter en utilisant des garanties. Si vous n’êtes pas certain du fonctionnement du compte, laissez-le non classifié.",
+      "immutabilityWarning": "Cette classification est définitive. Une fois définie, elle ne peut être ni modifiée ni supprimée.",
+      "acknowledge": "Je comprends que cette classification est définitive et correspond au fonctionnement de ce compte.",
+      "methodDescription": {
+        "futuresPosition": "Rapproche les positions ouvertes sur produits dérivés des données faisant autorité de la plateforme sur les positions futures.",
+        "spotExecutionReplay": "Rejoue les exécutions au comptant par rapport aux soldes en espèces. Pour les comptes exclusivement au comptant qui ne négocient jamais sur marge.",
+        "marginLedgerReplay": "Rejoue le grand livre de marge de la plateforme. Pour les comptes qui négocient sur marge ou empruntent en utilisant des garanties."
+      },
+      "credentialLoading": "Chargement de l’identifiant…",
+      "noCredential": "Aucun identifiant actif en temps réel n’a été trouvé pour ce compte. Le rapprochement ne peut pas être classifié.",
+      "ambiguousCredential": "Plusieurs identifiants en temps réel correspondent à ce compte. La classification en exige exactement un.",
+      "confirm": "Classifier le compte",
+      "cancel": "Annuler",
+      "success": "Compte classifié : {{method}}",
+      "error": "Échec de la classification : {{message}}"
     }
   }
 }

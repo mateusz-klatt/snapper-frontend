@@ -105,6 +105,26 @@
       "reconciliationError": "方法：{{method}}。对账无法产生可靠的判定结果。",
       "unsupported": "方法：{{method}}。此账户不支持对账。",
       "unverified": "方法：{{method}}。此判定结果不具权威性，且不被信任为已对账。"
+    },
+    "classify": {
+      "action": "分类",
+      "title": "分类对账方法",
+      "intro": "选择此交易所账户与交易所权威数据进行对账的方式。这是对此账户客观事实的陈述，而非偏好设置。",
+      "guidance": "请选择与账户在交易所实际运作方式相符的方法：现金（现货）账户仅使用现金余额结算交易，而保证金账户可凭抵押品借款。如果不确定账户如何运作，请将其保留为未分类状态。",
+      "immutabilityWarning": "此分类是永久性的。一旦设置，便无法更改或移除。",
+      "acknowledge": "我明白此分类是永久性的，并且与该账户的运作方式相符。",
+      "methodDescription": {
+        "futuresPosition": "将未平仓衍生品仓位与交易所关于期货仓位的权威数据进行对账。",
+        "spotExecutionReplay": "根据现金余额回放现货成交。适用于仅使用现金、从不进行保证金交易的账户。",
+        "marginLedgerReplay": "回放交易所的保证金分类账。适用于进行保证金交易或以抵押品作为担保借款的账户。"
+      },
+      "credentialLoading": "正在加载凭据…",
+      "noCredential": "未找到此账户的有效实盘凭据。无法对该对账方法进行分类。",
+      "ambiguousCredential": "有多个实盘凭据与此账户匹配。进行分类时必须有且仅有一个凭据。",
+      "confirm": "对账户进行分类",
+      "cancel": "取消",
+      "success": "账户已分类：{{method}}",
+      "error": "分类失败：{{message}}"
     }
   }
 }

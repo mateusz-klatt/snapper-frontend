@@ -105,6 +105,26 @@
       "reconciliationError": "Metóda: {{method}}. Odsúhlasenie nedokázalo vyprodukovať dôveryhodný verdikt.",
       "unsupported": "Metóda: {{method}}. Odsúhlasenie pre tento účet nie je podporované.",
       "unverified": "Metóda: {{method}}. Tento verdikt nie je smerodajný a nedôveruje sa mu ako odsúhlasenému."
+    },
+    "classify": {
+      "action": "Klasifikovať",
+      "title": "Klasifikovať metódu odsúhlasenia",
+      "intro": "Vyberte, ako sa tento účet na burze odsúhlasuje so smerodajnými údajmi burzy. Ide o konštatovanie skutočnosti o účte, nie o preferenciu.",
+      "guidance": "Vyberte metódu, ktorá zodpovedá skutočnému fungovaniu účtu na burze: hotovostné (spotové) účty vyrovnávajú obchody výlučne z peňažných zostatkov, zatiaľ čo maržové účty si môžu požičiavať proti kolaterálu. Ak si nie ste istí, ako účet funguje, ponechajte ho neklasifikovaný.",
+      "immutabilityWarning": "Táto klasifikácia je trvalá. Po nastavení ju nemožno zmeniť ani odstrániť.",
+      "acknowledge": "Rozumiem, že táto klasifikácia je trvalá a zodpovedá tomu, ako tento účet funguje.",
+      "methodDescription": {
+        "futuresPosition": "Odsúhlasuje otvorené derivátové pozície so smerodajnými údajmi burzy o futures pozíciách.",
+        "spotExecutionReplay": "Prehráva spotové exekúcie voči peňažným zostatkom. Pre účty vedené výlučne v hotovosti, ktoré nikdy neobchodujú na maržu.",
+        "marginLedgerReplay": "Prehráva maržovú účtovnú knihu burzy. Pre účty, ktoré obchodujú na maržu alebo si požičiavajú proti kolaterálu."
+      },
+      "credentialLoading": "Načítava sa poverenie…",
+      "noCredential": "Pre tento účet sa nenašlo žiadne aktívne poverenie pre skutočné obchodovanie. Odsúhlasenie nemožno klasifikovať.",
+      "ambiguousCredential": "Tomuto účtu zodpovedá viacero poverení pre skutočné obchodovanie. Klasifikácia vyžaduje presne jedno.",
+      "confirm": "Klasifikovať účet",
+      "cancel": "Zrušiť",
+      "success": "Účet bol klasifikovaný: {{method}}",
+      "error": "Klasifikácia zlyhala: {{message}}"
     }
   }
 }

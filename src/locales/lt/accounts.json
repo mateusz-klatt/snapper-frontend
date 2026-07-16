@@ -105,6 +105,26 @@
       "reconciliationError": "Metodas: {{method}}. Suderinimas negalėjo pateikti patikimo verdikto.",
       "unsupported": "Metodas: {{method}}. Suderinimas šiai paskyrai nepalaikomas.",
       "unverified": "Metodas: {{method}}. Šis verdiktas nėra patikimas ir nelaikomas suderintu."
+    },
+    "classify": {
+      "action": "Klasifikuoti",
+      "title": "Klasifikuoti suderinimo metodą",
+      "intro": "Pasirinkite, kaip ši biržos sąskaita suderinama su patikimais biržos duomenimis. Tai faktinis teiginys apie sąskaitą, o ne pageidavimas.",
+      "guidance": "Pasirinkite metodą, atitinkantį faktinį sąskaitos veikimą biržoje: grynųjų pinigų (spot) sąskaitose už sandorius atsiskaitoma tik iš piniginių lėšų likučių, o maržos sąskaitose galima skolintis už užstatą. Jei tiksliai nežinote, kaip veikia sąskaita, palikite ją neklasifikuotą.",
+      "immutabilityWarning": "Ši klasifikacija yra nuolatinė. Nustačius jos negalima pakeisti ar pašalinti.",
+      "acknowledge": "Suprantu, kad ši klasifikacija yra nuolatinė ir atitinka faktinį šios sąskaitos veikimą.",
+      "methodDescription": {
+        "futuresPosition": "Suderina atviras išvestinių finansinių priemonių pozicijas su patikimais biržos ateities sandorių pozicijų duomenimis.",
+        "spotExecutionReplay": "Pakartoja spot sandorių vykdymus ir palygina juos su piniginių lėšų likučiais. Skirta tik grynųjų pinigų sąskaitoms, kuriose niekada neprekiaujama naudojant maržą.",
+        "marginLedgerReplay": "Pakartoja biržos maržos didžiąją knygą. Skirta sąskaitoms, kuriose prekiaujama naudojant maržą arba skolinamasi už užstatą."
+      },
+      "credentialLoading": "Įkeliamas kredencialas…",
+      "noCredential": "Nerastas aktyvus tikrosios prekybos kredencialas, skirtas šiai sąskaitai. Suderinimo metodo klasifikuoti negalima.",
+      "ambiguousCredential": "Šią sąskaitą atitinka keli tikrosios prekybos kredencialai. Klasifikacijai būtinas lygiai vienas.",
+      "confirm": "Klasifikuoti sąskaitą",
+      "cancel": "Atšaukti",
+      "success": "Sąskaita klasifikuota: {{method}}",
+      "error": "Klasifikacija nepavyko: {{message}}"
     }
   }
 }

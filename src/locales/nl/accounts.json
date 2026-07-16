@@ -105,6 +105,26 @@
       "reconciliationError": "Methode: {{method}}. Reconciliatie kon geen betrouwbaar oordeel produceren.",
       "unsupported": "Methode: {{method}}. Reconciliatie wordt niet ondersteund voor dit account.",
       "unverified": "Methode: {{method}}. Dit oordeel is niet gezaghebbend en wordt niet als gereconcilieerd vertrouwd."
+    },
+    "classify": {
+      "action": "Classificeren",
+      "title": "Reconciliatiemethode classificeren",
+      "intro": "Kies hoe dit beursaccount wordt gereconcilieerd met de gezaghebbende gegevens van de beurs. Dit is een feitelijke vaststelling over het account, geen voorkeur.",
+      "guidance": "Kies de methode die overeenkomt met hoe het account werkelijk functioneert bij de beurs: cashaccounts (spot) wikkelen transacties uitsluitend af vanuit cashsaldi, terwijl marginaccounts tegen onderpand kunnen lenen. Laat het account ongeclassificeerd als u niet zeker weet hoe het functioneert.",
+      "immutabilityWarning": "Deze classificatie is permanent. Na instelling kan deze niet worden gewijzigd of verwijderd.",
+      "acknowledge": "Ik begrijp dat deze classificatie permanent is en overeenkomt met hoe dit account functioneert.",
+      "methodDescription": {
+        "futuresPosition": "Reconcilieert open derivatenposities met de gezaghebbende futures-positiegegevens van de beurs.",
+        "spotExecutionReplay": "Speelt spot-uitvoeringen opnieuw af tegen cashsaldi. Voor uitsluitend cashaccounts die nooit op margin handelen.",
+        "marginLedgerReplay": "Speelt het margin-grootboek van de beurs opnieuw af. Voor accounts die op margin handelen of tegen onderpand lenen."
+      },
+      "credentialLoading": "Credential laden…",
+      "noCredential": "Geen actieve live-credential gevonden voor dit account. Reconciliatie kan niet worden geclassificeerd.",
+      "ambiguousCredential": "Meerdere live-credentials komen overeen met dit account. Voor classificatie is er precies één vereist.",
+      "confirm": "Account classificeren",
+      "cancel": "Annuleren",
+      "success": "Account geclassificeerd: {{method}}",
+      "error": "Classificatie mislukt: {{message}}"
     }
   }
 }

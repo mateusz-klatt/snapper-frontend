@@ -59,6 +59,12 @@ export type CredentialListResponse = Components['schemas']['CredentialListRespon
 export type CredentialResponse = Components['schemas']['CredentialResponse']
 export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
 export type RotateCredentialBody = Components['schemas']['RotateCredentialBody']
+export type SetCredentialReconciliationMethodBody =
+  Components['schemas']['SetCredentialReconciliationMethodBody']
+export type CredentialReconciliationMethodResponse =
+  Components['schemas']['CredentialReconciliationMethodResponse']
+export type RealPortfolioReconciliationMethod =
+  Components['schemas']['RealPortfolioReconciliationMethod']
 export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type ExecutionListResponse = Components['schemas']['ExecutionListResponse']
 export type PositionListResponse = Components['schemas']['PositionListResponse']
