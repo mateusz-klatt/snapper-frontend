@@ -2,6 +2,61 @@
   "page": {
     "title": "Pozycje"
   },
+  "view": {
+    "current": "Bieżące",
+    "timeline": "Oś czasu P&L",
+    "ariaLabel": "Widok pozycji"
+  },
+  "timeline": {
+    "controls": {
+      "window": "Zakres czasu",
+      "windowAriaLabel": "Wybierz zakres czasu osi P&L",
+      "granularity": "Interwał",
+      "granularityAriaLabel": "Wybierz interwał osi P&L",
+      "granularityOptions": {
+        "oneMinute": "1m",
+        "fiveMinutes": "5m",
+        "oneHour": "1h",
+        "oneDay": "1d"
+      },
+      "last24Hours": "Ostatnie 24 godziny",
+      "last7Days": "Ostatnie 7 dni",
+      "last30Days": "Ostatnie 30 dni",
+      "last90Days": "Ostatnie 90 dni"
+    },
+    "loading": "Wczytywanie osi czasu P&L…",
+    "error": {
+      "title": "Nie udało się wczytać osi czasu P&L",
+      "message": "Spróbuj ponownie za chwilę."
+    },
+    "empty": {
+      "title": "Brak historii P&L",
+      "message": "W wybranym zakresie czasu nie ma danych P&L."
+    },
+    "noWallet": {
+      "title": "Wybierz portfel",
+      "message": "Wybierz portfel, aby wyświetlić jego oś czasu P&L."
+    },
+    "incompleteBadge": "Punkty z niepełną wyceną: {{count}}",
+    "chart": {
+      "title": "P&L w czasie",
+      "net": "P&L netto",
+      "realized": "Zrealizowany P&L",
+      "unrealized": "Niezrealizowany P&L",
+      "valuationCurrency": "Waluta wyceny: {{currency}}"
+    },
+    "contributions": {
+      "title": "Najnowsze składowe P&L według instrumentu",
+      "instrument": "Instrument",
+      "realized": "Zrealizowany P&L",
+      "fees": "Opłaty",
+      "accrual": "Naliczenia",
+      "unrealized": "Niezrealizowany P&L",
+      "net": "P&L netto",
+      "noValue": "—",
+      "empty": "Brak składowych P&L dla instrumentów."
+    }
+  },
   "row": {
     "trailingStopBadge": "TS: ${{stop}}",
     "trailingStopPending": "TS: oczekujący",

@@ -2,9 +2,10 @@ import { createElement, type ReactNode } from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { usePortfolioAccounts } from './portfolio'
-import { getPortfolioAccounts } from '../../lib/api/portfolio'
-import type { PortfolioAccountStateListResponse } from '../../types/api'
+import { usePortfolioAccounts, usePortfolioPnlSeries } from './portfolio'
+import { getPortfolioAccounts, getPortfolioPnlSeries } from '../../lib/api/portfolio'
+import { queryKeys } from './keys'
+import type { PnlSeriesResponse, PortfolioAccountStateListResponse } from '../../types/api'
 
 const listResponse: PortfolioAccountStateListResponse = {
   type: 'portfolio_account_state_list',
@@ -58,27 +59,62 @@ const listResponse: PortfolioAccountStateListResponse = {
   count: 1,
 }
 
+const pnlSeriesResponse: PnlSeriesResponse = {
+  type: 'pnl_series',
+  sequence_id: 0,
+  public_id: 'pnl-1',
+  timestamp: '2026-07-13T12:00:00Z',
+  session_id: 's-1',
+  payload: {
+    type: 'pnl_series',
+    sequence_id: 0,
+    public_id: 'pnl-data-1',
+    timestamp: '2026-07-13T12:00:00Z',
+    session_id: 's-1',
+    wallet_public_id: 'w-1',
+    mode: 'live',
+    granularity: '5m',
+    valuation_ccy: 'USD',
+    from_time: '2026-07-12T12:00:00Z',
+    to_time: '2026-07-13T12:00:00Z',
+    as_of: '2026-07-13T12:00:00Z',
+    mark_source: 'close',
+    calc_version: 'v1',
+    points: [],
+  },
+}
+
+const control = vi.hoisted(() => ({
+  asOf: null as string | null,
+  operatorPublicId: null as string | null,
+  walletPublicId: null as string | null,
+  isAuthenticated: true,
+}))
+
 vi.mock('../../lib/api/portfolio', () => ({
   getPortfolioAccounts: vi.fn(() => Promise.resolve(listResponse)),
+  getPortfolioPnlSeries: vi.fn(() => Promise.resolve(pnlSeriesResponse)),
 }))
 vi.mock('../../stores/auth', () => ({
-  useAuth: vi.fn(() => ({ isAuthenticated: true, user: { public_id: 'u-1', role: 'admin' } })),
+  useAuth: vi.fn(() => ({
+    isAuthenticated: control.isAuthenticated,
+    user: { public_id: 'u-1', role: 'admin' },
+  })),
 }))
-const control = vi.hoisted(() => ({ asOf: null as string | null }))
 
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn(
     (
       selector: (s: {
         asOf: string | null
-        currentOperatorPublicId: null
-        currentWalletPublicId: null
+        currentOperatorPublicId: string | null
+        currentWalletPublicId: string | null
       }) => unknown
     ) =>
       selector({
         asOf: control.asOf,
-        currentOperatorPublicId: null,
-        currentWalletPublicId: null,
+        currentOperatorPublicId: control.operatorPublicId,
+        currentWalletPublicId: control.walletPublicId,
       })
   ),
 }))
@@ -95,6 +131,9 @@ describe('usePortfolioAccounts', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     control.asOf = null
+    control.operatorPublicId = null
+    control.walletPublicId = null
+    control.isAuthenticated = true
   })
 
   it('returns the account payload for the current scope', async () => {
@@ -146,5 +185,82 @@ describe('usePortfolioAccounts', () => {
     } finally {
       vi.useRealTimers()
     }
+  })
+})
+
+describe('usePortfolioPnlSeries', () => {
+  const params = {
+    from: '2026-07-12T12:00:00Z',
+    to: '2026-07-13T12:00:00Z',
+    granularity: '5m' as const,
+    mode: 'live',
+  }
+
+  beforeEach(() => {
+    vi.clearAllMocks()
+    control.asOf = '2026-07-13T12:00:00Z'
+    control.operatorPublicId = 'op-1'
+    control.walletPublicId = 'w-1'
+    control.isAuthenticated = true
+  })
+
+  it('returns the series payload with the current store scope', async () => {
+    const { result } = renderHook(() => usePortfolioPnlSeries(params), {
+      wrapper: createWrapper(),
+    })
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+
+    expect(getPortfolioPnlSeries).toHaveBeenCalledWith({
+      mode: 'live',
+      granularity: '5m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+    })
+    expect(result.current.data?.valuation_ccy).toBe('USD')
+    expect(
+      queryKeys.portfolioPnlSeries(
+        control.asOf,
+        control.operatorPublicId,
+        control.walletPublicId,
+        params.from,
+        params.to,
+        params.granularity,
+        params.mode
+      )
+    ).toEqual([
+      'portfolio',
+      'pnl',
+      'series',
+      '2026-07-13T12:00:00Z',
+      'op-1',
+      'w-1',
+      '2026-07-12T12:00:00Z',
+      '2026-07-13T12:00:00Z',
+      '5m',
+      'live',
+    ])
+  })
+
+  it('stays disabled without a selected wallet', () => {
+    control.walletPublicId = null
+
+    const { result } = renderHook(() => usePortfolioPnlSeries(params), {
+      wrapper: createWrapper(),
+    })
+
+    expect(result.current.fetchStatus).toBe('idle')
+    expect(getPortfolioPnlSeries).not.toHaveBeenCalled()
+  })
+
+  it('stays disabled while unauthenticated', () => {
+    control.isAuthenticated = false
+
+    const { result } = renderHook(() => usePortfolioPnlSeries(params), {
+      wrapper: createWrapper(),
+    })
+
+    expect(result.current.fetchStatus).toBe('idle')
+    expect(getPortfolioPnlSeries).not.toHaveBeenCalled()
   })
 })

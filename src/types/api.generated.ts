@@ -948,6 +948,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/portfolio/pnl/series": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_pnl_series_api_portfolio_pnl_series_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/trailing-stops": {
         parameters: {
             query?: never;
@@ -3323,6 +3339,51 @@ export type Components = {
             instrument?: string | null | undefined;
             signal_envelope?: Record<string, unknown> | null | undefined;
         };
+        PnlInstrumentContributionData: {
+            instrument_public_id: string;
+            realized_pnl: number | null;
+            fee_pnl: number | null;
+            accrual_pnl: number | null;
+            unrealized_pnl: number | null;
+        };
+        PnlSeriesData: {
+            type: "pnl_series";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            wallet_public_id: string;
+            mode: string;
+            granularity: string;
+            valuation_ccy: string;
+            from_time: string;
+            to_time: string;
+            as_of: string;
+            mark_source: string;
+            calc_version: string;
+            points: Components["schemas"]["PnlTimelinePointData"][];
+        };
+        PnlSeriesResponse: {
+            type: "pnl_series";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["PnlSeriesData"];
+        };
+        PnlTimelinePointData: {
+            point_time: string;
+            realized_pnl: number | null;
+            fee_pnl: number | null;
+            accrual_pnl: number | null;
+            unrealized_pnl: number | null;
+            net_pnl: number | null;
+            valuation_status: Components["schemas"]["PnlValuationStatus"];
+            per_instrument: Components["schemas"]["PnlInstrumentContributionData"][];
+        };
+        PnlValuationStatus: "complete" | "incomplete";
         PortfolioAccountState: {
             type: "portfolio_account_state";
             sequence_id: number;
@@ -7027,6 +7088,53 @@ export interface Operations {
                 content: {
                     "application/json": Components["schemas"]["HTTPValidationError"];
                 };
+            };
+        };
+    };
+    get_pnl_series_api_portfolio_pnl_series_get: {
+        parameters: {
+            query?: {
+                wallet_public_id?: string | null | undefined;
+                operator_public_id?: string | null | undefined;
+                mode?: string;
+                granularity?: string;
+                from?: string | null | undefined;
+                to?: string | null | undefined;
+                as_of?: string | null | undefined;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["PnlSeriesResponse"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

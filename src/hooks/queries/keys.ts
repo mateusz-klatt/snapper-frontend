@@ -90,6 +90,27 @@ export const queryKeys = {
     ['positions', asOf, opId, walletId] as const,
   portfolioAccounts: (asOf: string | null, opId?: string | null, walletId?: string | null) =>
     ['portfolio', 'accounts', asOf, opId, walletId] as const,
+  portfolioPnlSeries: (
+    asOf: string | null,
+    operatorPublicId: string | null,
+    walletPublicId: string | null,
+    from: string,
+    to: string,
+    granularity: string,
+    mode: string
+  ) =>
+    [
+      'portfolio',
+      'pnl',
+      'series',
+      asOf,
+      operatorPublicId,
+      walletPublicId,
+      from,
+      to,
+      granularity,
+      mode,
+    ] as const,
   signals: (
     strategyId?: string,
     limit?: number,

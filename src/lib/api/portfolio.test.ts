@@ -1,7 +1,51 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
-import { getPortfolioAccounts } from './portfolio'
+import { getPortfolioAccounts, getPortfolioPnlSeries } from './portfolio'
+
+const pnlSeriesResponse = {
+  type: 'pnl_series' as const,
+  sequence_id: 0,
+  public_id: 'pnl-1',
+  timestamp: '2026-07-13T12:00:00Z',
+  session_id: 'test-sid',
+  payload: {
+    type: 'pnl_series' as const,
+    sequence_id: 0,
+    public_id: 'pnl-data-1',
+    timestamp: '2026-07-13T12:00:00Z',
+    session_id: 'test-sid',
+    wallet_public_id: 'w-1',
+    mode: 'live',
+    granularity: '5m',
+    valuation_ccy: 'USD',
+    from_time: '2026-07-12T12:00:00Z',
+    to_time: '2026-07-13T12:00:00Z',
+    as_of: '2026-07-13T12:00:00Z',
+    mark_source: 'close',
+    calc_version: 'v1',
+    points: [
+      {
+        point_time: '2026-07-13T11:55:00Z',
+        realized_pnl: null,
+        fee_pnl: null,
+        accrual_pnl: null,
+        unrealized_pnl: null,
+        net_pnl: null,
+        valuation_status: 'incomplete' as const,
+        per_instrument: [
+          {
+            instrument_public_id: 'instrument-1',
+            realized_pnl: null,
+            fee_pnl: null,
+            accrual_pnl: null,
+            unrealized_pnl: null,
+          },
+        ],
+      },
+    ],
+  },
+}
 
 vi.mock('../utils', () => ({
   getCookie: vi.fn(() => 'test-csrf-token'),
@@ -22,7 +66,7 @@ vi.mock('../sequenceTracker', () => ({
   })),
 }))
 
-describe('portfolio account API', () => {
+describe('portfolio API', () => {
   const apiClient = sharedApiClient
   let mockFetch: ReturnType<typeof vi.fn>
 
@@ -110,5 +154,57 @@ describe('portfolio account API', () => {
       expect.stringContaining('/api/portfolio/accounts'),
       expect.objectContaining({ method: 'GET' })
     )
+  })
+
+  it('getPortfolioPnlSeries sends every explicit timeline parameter', async () => {
+    apiClient.setTimeTravelAsOf('2026-07-13T12:00:00Z')
+    apiClient.setOperatorScope('op-1')
+    apiClient.setWalletScope('w-1')
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => pnlSeriesResponse,
+    })
+
+    const result = await getPortfolioPnlSeries({
+      mode: 'live',
+      granularity: '5m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+    })
+    const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
+
+    expect(result.payload.points[0]?.net_pnl).toBeNull()
+    expect(Object.fromEntries(requestUrl.searchParams)).toEqual({
+      wallet_public_id: 'w-1',
+      operator_public_id: 'op-1',
+      mode: 'live',
+      granularity: '5m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+      as_of: '2026-07-13T12:00:00Z',
+    })
+    expect(requestUrl.searchParams.getAll('wallet_public_id')).toEqual(['w-1'])
+    expect(requestUrl.searchParams.getAll('operator_public_id')).toEqual(['op-1'])
+    expect(requestUrl.searchParams.getAll('as_of')).toEqual(['2026-07-13T12:00:00Z'])
+  })
+
+  it('getPortfolioPnlSeries omits absent optional scope parameters', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => pnlSeriesResponse,
+    })
+
+    await getPortfolioPnlSeries({
+      mode: 'live',
+      granularity: '1m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+    })
+    const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
+
+    expect(requestUrl.searchParams.has('operator_public_id')).toBe(false)
+    expect(requestUrl.searchParams.has('as_of')).toBe(false)
   })
 })

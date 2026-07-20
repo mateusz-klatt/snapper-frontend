@@ -11,6 +11,7 @@ import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import { AttachBracketModal } from './AttachBracketModal'
 import { AttachTrailingStopModal } from './AttachTrailingStopModal'
+import { PortfolioTimeline } from './PortfolioTimeline'
 import type { Position } from '../../types/entities'
 import type { TrailingStopByCycleResult } from '../../types/api'
 
@@ -214,6 +215,7 @@ export const Positions: React.FC = () => {
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
   const [bracketTarget, setBracketTarget] = useState<Position | null>(null)
   const [trailingStopTarget, setTrailingStopTarget] = useState<Position | null>(null)
+  const [activeView, setActiveView] = useState<'current' | 'timeline'>('current')
 
   const handleAttachBracket = (position: Position) => {
     setBracketTarget(position)
@@ -252,45 +254,71 @@ export const Positions: React.FC = () => {
       )}
       <div className='flex items-center justify-between'>
         <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
+        <div
+          className='inline-flex rounded-xl border border-dark-600 bg-alpine-50 p-1'
+          role='group'
+          aria-label={t('view.ariaLabel')}
+        >
+          {(['current', 'timeline'] as const).map(view => (
+            <button
+              key={view}
+              type='button'
+              onClick={() => setActiveView(view)}
+              aria-pressed={activeView === view}
+              className={clsx(
+                'rounded-lg border px-3 py-1.5 text-sm font-medium transition-all duration-200',
+                activeView === view
+                  ? 'border-brand-200 bg-brand-50 text-brand-700'
+                  : 'border-transparent text-muted-700 hover:border-dark-600 hover:bg-dark-700 hover:text-alpine-900'
+              )}
+            >
+              {t(`view.${view}`)}
+            </button>
+          ))}
+        </div>
       </div>
-      <div className='space-y-4'>
-        {isLoading && (
-          <div className='space-y-3'>
-            <OrderCardSkeleton />
-            <OrderCardSkeleton />
-            <OrderCardSkeleton />
-          </div>
-        )}
-        {!isLoading && positions.length === 0 && (
-          <EmptyState
-            icon={
-              <svg className='h-6 w-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M3 12l3-3 4 4 5-5 4 4'
+      {activeView === 'current' ? (
+        <div className='space-y-4'>
+          {isLoading && (
+            <div className='space-y-3'>
+              <OrderCardSkeleton />
+              <OrderCardSkeleton />
+              <OrderCardSkeleton />
+            </div>
+          )}
+          {!isLoading && positions.length === 0 && (
+            <EmptyState
+              icon={
+                <svg className='h-6 w-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M3 12l3-3 4 4 5-5 4 4'
+                  />
+                </svg>
+              }
+              title={t('empty.title')}
+              message={t('empty.message')}
+            />
+          )}
+          {!isLoading && positions.length > 0 && (
+            <div className='grid gap-4'>
+              {positions.map((position: Position) => (
+                <PositionRow
+                  key={positionIdSuffix(position)}
+                  position={position}
+                  onAttachBracket={handleAttachBracket}
+                  onAttachTrailingStop={handleAttachTrailingStop}
+                  isTimeTraveling={isTimeTraveling}
                 />
-              </svg>
-            }
-            title={t('empty.title')}
-            message={t('empty.message')}
-          />
-        )}
-        {!isLoading && positions.length > 0 && (
-          <div className='grid gap-4'>
-            {positions.map((position: Position) => (
-              <PositionRow
-                key={positionIdSuffix(position)}
-                position={position}
-                onAttachBracket={handleAttachBracket}
-                onAttachTrailingStop={handleAttachTrailingStop}
-                isTimeTraveling={isTimeTraveling}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <PortfolioTimeline />
+      )}
     </div>
   )
 }

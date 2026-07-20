@@ -2,6 +2,61 @@
   "page": {
     "title": "Pozíciók"
   },
+  "view": {
+    "current": "Current",
+    "timeline": "P&L Timeline",
+    "ariaLabel": "Positions view"
+  },
+  "timeline": {
+    "controls": {
+      "window": "Window",
+      "windowAriaLabel": "Select timeline window",
+      "granularity": "Granularity",
+      "granularityAriaLabel": "Select timeline granularity",
+      "granularityOptions": {
+        "oneMinute": "1m",
+        "fiveMinutes": "5m",
+        "oneHour": "1h",
+        "oneDay": "1d"
+      },
+      "last24Hours": "Last 24 hours",
+      "last7Days": "Last 7 days",
+      "last30Days": "Last 30 days",
+      "last90Days": "Last 90 days"
+    },
+    "loading": "Loading P&L timeline…",
+    "error": {
+      "title": "Could not load P&L timeline",
+      "message": "Try again in a moment."
+    },
+    "empty": {
+      "title": "No P&L history",
+      "message": "No P&L points are available for this window."
+    },
+    "noWallet": {
+      "title": "Select a wallet",
+      "message": "Choose a wallet to view its P&L timeline."
+    },
+    "incompleteBadge": "Incomplete points: {{count}}",
+    "chart": {
+      "title": "P&L over time",
+      "net": "Net P&L",
+      "realized": "Realized P&L",
+      "unrealized": "Unrealized P&L",
+      "valuationCurrency": "Valuation currency: {{currency}}"
+    },
+    "contributions": {
+      "title": "Latest per-instrument contributions",
+      "instrument": "Instrument",
+      "realized": "Realized P&L",
+      "fees": "Fees",
+      "accrual": "Accrual",
+      "unrealized": "Unrealized P&L",
+      "net": "Net P&L",
+      "noValue": "—",
+      "empty": "No instrument contributions are available."
+    }
+  },
   "row": {
     "trailingStopBadge": "TS: ${{stop}}",
     "trailingStopPending": "TS: függőben",

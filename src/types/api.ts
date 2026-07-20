@@ -73,6 +73,12 @@ export type AccountPositionEntry = Components['schemas']['AccountPositionEntry']
 export type PortfolioAccountState = Components['schemas']['PortfolioAccountState']
 export type PortfolioAccountStateListResponse =
   Components['schemas']['PortfolioAccountStateListResponse']
+export type PnlInstrumentContributionData = Components['schemas']['PnlInstrumentContributionData']
+export type PnlSeriesData = Components['schemas']['PnlSeriesData']
+export type PnlSeriesResponse = Components['schemas']['PnlSeriesResponse']
+export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']
+export type PnlValuationStatus = Components['schemas']['PnlValuationStatus']
+export type PortfolioPnlGranularity = '1m' | '5m' | '1h' | '1d'
 export type SignalListResponse = Components['schemas']['SignalListResponse']
 export type AlertEventInfo = Components['schemas']['AlertEventInfo']
 export type AlertEventResponse = Components['schemas']['AlertEventResponse']

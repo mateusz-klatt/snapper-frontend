@@ -31,6 +31,10 @@ vi.mock('../../hooks/queries/positions', () => ({
   })),
 }))
 
+vi.mock('./PortfolioTimeline', () => ({
+  PortfolioTimeline: () => <div data-testid='mock-portfolio-timeline' />,
+}))
+
 const createQueryClient = () =>
   new QueryClient({
     defaultOptions: {
@@ -120,6 +124,24 @@ describe('Positions', () => {
   it('renders the page title', () => {
     renderWithProviders(<Positions />)
     expect(screen.getByText('Positions')).toBeInTheDocument()
+  })
+
+  it('toggles between the current positions and P&L timeline views', () => {
+    renderWithProviders(<Positions />)
+    const currentButton = screen.getByRole('button', { name: 'Current' })
+    const timelineButton = screen.getByRole('button', { name: 'P&L Timeline' })
+
+    expect(currentButton).toHaveAttribute('aria-pressed', 'true')
+    expect(timelineButton).toHaveAttribute('aria-pressed', 'false')
+
+    fireEvent.click(timelineButton)
+    expect(currentButton).toHaveAttribute('aria-pressed', 'false')
+    expect(timelineButton).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.getByTestId('mock-portfolio-timeline')).toBeInTheDocument()
+
+    fireEvent.click(currentButton)
+    expect(currentButton).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.queryByTestId('mock-portfolio-timeline')).not.toBeInTheDocument()
   })
 
   it('renders empty state when no positions are returned', async () => {
