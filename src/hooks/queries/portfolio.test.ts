@@ -2,10 +2,18 @@ import { createElement, type ReactNode } from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { usePortfolioAccounts, usePortfolioPnlSeries } from './portfolio'
-import { getPortfolioAccounts, getPortfolioPnlSeries } from '../../lib/api/portfolio'
+import { usePortfolioAccounts, usePortfolioPnlSeries, usePortfolioPnlTimeline } from './portfolio'
+import {
+  getPortfolioAccounts,
+  getPortfolioPnlSeries,
+  getPortfolioPnlTimeline,
+} from '../../lib/api/portfolio'
 import { queryKeys } from './keys'
-import type { PnlSeriesResponse, PortfolioAccountStateListResponse } from '../../types/api'
+import type {
+  PnlSeriesResponse,
+  PnlTimelineResponse,
+  PortfolioAccountStateListResponse,
+} from '../../types/api'
 
 const listResponse: PortfolioAccountStateListResponse = {
   type: 'portfolio_account_state_list',
@@ -84,6 +92,18 @@ const pnlSeriesResponse: PnlSeriesResponse = {
   },
 }
 
+const pnlTimelineResponse: PnlTimelineResponse = {
+  ...pnlSeriesResponse,
+  type: 'pnl_timeline',
+  payload: {
+    ...pnlSeriesResponse.payload,
+    type: 'pnl_timeline',
+    marker_limit: 500,
+    markers_truncated: false,
+    markers: [],
+  },
+}
+
 const control = vi.hoisted(() => ({
   asOf: null as string | null,
   operatorPublicId: null as string | null,
@@ -94,6 +114,7 @@ const control = vi.hoisted(() => ({
 vi.mock('../../lib/api/portfolio', () => ({
   getPortfolioAccounts: vi.fn(() => Promise.resolve(listResponse)),
   getPortfolioPnlSeries: vi.fn(() => Promise.resolve(pnlSeriesResponse)),
+  getPortfolioPnlTimeline: vi.fn(() => Promise.resolve(pnlTimelineResponse)),
 }))
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(() => ({
@@ -204,7 +225,7 @@ describe('usePortfolioPnlSeries', () => {
     control.isAuthenticated = true
   })
 
-  it('returns the series payload with the current store scope', async () => {
+  it('returns the series at the global time-travel horizon', async () => {
     const { result } = renderHook(() => usePortfolioPnlSeries(params), {
       wrapper: createWrapper(),
     })
@@ -216,6 +237,7 @@ describe('usePortfolioPnlSeries', () => {
       granularity: '5m',
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
+      asOf: '2026-07-13T12:00:00Z',
     })
     expect(result.current.data?.valuation_ccy).toBe('USD')
     expect(
@@ -262,5 +284,92 @@ describe('usePortfolioPnlSeries', () => {
 
     expect(result.current.fetchStatus).toBe('idle')
     expect(getPortfolioPnlSeries).not.toHaveBeenCalled()
+  })
+})
+
+describe('usePortfolioPnlTimeline', () => {
+  const params = {
+    from: '2026-07-12T12:00:00Z',
+    to: '2026-07-13T12:00:00Z',
+    granularity: '5m' as const,
+    mode: 'live',
+  }
+
+  beforeEach(() => {
+    vi.clearAllMocks()
+    control.asOf = '2026-07-13T12:00:00Z'
+    control.operatorPublicId = 'op-1'
+    control.walletPublicId = 'w-1'
+    control.isAuthenticated = true
+  })
+
+  it('returns the timeline at the global time-travel horizon', async () => {
+    const { result } = renderHook(() => usePortfolioPnlTimeline(params), {
+      wrapper: createWrapper(),
+    })
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+
+    expect(getPortfolioPnlTimeline).toHaveBeenCalledWith({
+      mode: 'live',
+      granularity: '5m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+      asOf: '2026-07-13T12:00:00Z',
+    })
+    expect(result.current.data?.marker_limit).toBe(500)
+    expect(
+      queryKeys.portfolioPnlTimeline(
+        control.asOf,
+        control.operatorPublicId,
+        control.walletPublicId,
+        params.from,
+        params.to,
+        params.granularity,
+        params.mode
+      )
+    ).toEqual([
+      'portfolio',
+      'pnl',
+      'timeline',
+      '2026-07-13T12:00:00Z',
+      'op-1',
+      'w-1',
+      '2026-07-12T12:00:00Z',
+      '2026-07-13T12:00:00Z',
+      '5m',
+      'live',
+    ])
+  })
+
+  it('stays disabled without a selected wallet', () => {
+    control.walletPublicId = null
+
+    const { result } = renderHook(() => usePortfolioPnlTimeline(params), {
+      wrapper: createWrapper(),
+    })
+
+    expect(result.current.fetchStatus).toBe('idle')
+    expect(getPortfolioPnlTimeline).not.toHaveBeenCalled()
+  })
+
+  it('stays disabled while unauthenticated', () => {
+    control.isAuthenticated = false
+
+    const { result } = renderHook(() => usePortfolioPnlTimeline(params), {
+      wrapper: createWrapper(),
+    })
+
+    expect(result.current.fetchStatus).toBe('idle')
+    expect(getPortfolioPnlTimeline).not.toHaveBeenCalled()
+  })
+
+  it('stays disabled when its caller is waiting for wallet metadata', () => {
+    const { result } = renderHook(() => usePortfolioPnlTimeline(params, false), {
+      wrapper: createWrapper(),
+    })
+
+    expect(result.current.fetchStatus).toBe('idle')
+    expect(getPortfolioPnlTimeline).not.toHaveBeenCalled()
   })
 })

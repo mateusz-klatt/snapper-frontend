@@ -111,6 +111,27 @@ export const queryKeys = {
       granularity,
       mode,
     ] as const,
+  portfolioPnlTimeline: (
+    asOf: string | null,
+    operatorPublicId: string | null,
+    walletPublicId: string | null,
+    from: string,
+    to: string,
+    granularity: string,
+    mode: string
+  ) =>
+    [
+      'portfolio',
+      'pnl',
+      'timeline',
+      asOf,
+      operatorPublicId,
+      walletPublicId,
+      from,
+      to,
+      granularity,
+      mode,
+    ] as const,
   signals: (
     strategyId?: string,
     limit?: number,

@@ -38,6 +38,7 @@
       "message": "Choose a wallet to view its P&L timeline."
     },
     "incompleteBadge": "Incomplete points: {{count}}",
+    "timeTravelNotice": "Historical view: showing P&L as known at {{asOf}}.",
     "chart": {
       "title": "P&L over time",
       "net": "Net P&L",
@@ -45,6 +46,54 @@
       "unrealized": "Unrealized P&L",
       "valuationCurrency": "Valuation currency: {{currency}}"
     },
+    "markers": {
+      "show": "Show decision markers",
+      "hide": "Hide decision markers",
+      "legendAriaLabel": "Decision marker legend",
+      "truncated": "Marker results were truncated at {{limit}}. Additional decisions or fills exist in this window.",
+      "legend": {
+        "fillExecuted": "Fill · executed",
+        "signalExecuted": "Signal · executed",
+        "signalNoFill": "Signal · no fill",
+        "aiExecuted": "AI decision · executed",
+        "aiRejected": "AI decision · rejected",
+        "aiNoFill": "AI decision · no fill"
+      },
+      "detail": {
+        "title": "Marker details",
+        "type": "Type",
+        "time": "Time",
+        "instrument": "Instrument",
+        "outcome": "Outcome",
+        "status": "Status",
+        "side": "Side",
+        "size": "Size",
+        "price": "Price",
+        "executionId": "Execution ID",
+        "orderId": "Order ID",
+        "strategyName": "Strategy name",
+        "strength": "Strength",
+        "reason": "Reason",
+        "signalId": "Signal ID",
+        "strategyId": "Strategy ID",
+        "reviewId": "Review ID",
+        "eventId": "Event ID",
+        "decision": "Decision",
+        "rationale": "Rationale",
+        "noValue": "—",
+        "types": {
+          "fill": "Fill",
+          "signal": "Signal",
+          "ai_decision": "AI decision"
+        },
+        "outcomes": {
+          "executed": "Executed",
+          "rejected": "Rejected",
+          "no_fill": "No fill"
+        }
+      }
+    },
+
     "contributions": {
       "title": "Latest per-instrument contributions",
       "instrument": "Instrument",

@@ -38,6 +38,7 @@
       "message": "Wybierz portfel, aby wyświetlić jego oś czasu P&L."
     },
     "incompleteBadge": "Punkty z niepełną wyceną: {{count}}",
+    "timeTravelNotice": "Widok historyczny: P&L według wiedzy dostępnej w chwili {{asOf}}.",
     "chart": {
       "title": "P&L w czasie",
       "net": "P&L netto",
@@ -45,6 +46,54 @@
       "unrealized": "Niezrealizowany P&L",
       "valuationCurrency": "Waluta wyceny: {{currency}}"
     },
+    "markers": {
+      "show": "Pokaż znaczniki decyzji",
+      "hide": "Ukryj znaczniki decyzji",
+      "legendAriaLabel": "Legenda znaczników decyzji",
+      "truncated": "Wyniki znaczników zostały ucięte do limitu {{limit}}. W tym zakresie istnieją dodatkowe decyzje lub realizacje.",
+      "legend": {
+        "fillExecuted": "Realizacja · wykonana",
+        "signalExecuted": "Sygnał · wykonano",
+        "signalNoFill": "Sygnał · bez realizacji",
+        "aiExecuted": "Decyzja AI · wykonano",
+        "aiRejected": "Decyzja AI · odrzucona",
+        "aiNoFill": "Decyzja AI · bez realizacji"
+      },
+      "detail": {
+        "title": "Szczegóły znacznika",
+        "type": "Typ",
+        "time": "Czas",
+        "instrument": "Instrument",
+        "outcome": "Wynik",
+        "status": "Status",
+        "side": "Kierunek",
+        "size": "Wielkość",
+        "price": "Cena",
+        "executionId": "ID realizacji",
+        "orderId": "ID zlecenia",
+        "strategyName": "Nazwa strategii",
+        "strength": "Siła",
+        "reason": "Powód",
+        "signalId": "ID sygnału",
+        "strategyId": "ID strategii",
+        "reviewId": "ID przeglądu",
+        "eventId": "ID zdarzenia",
+        "decision": "Decyzja",
+        "rationale": "Uzasadnienie",
+        "noValue": "—",
+        "types": {
+          "fill": "Realizacja",
+          "signal": "Sygnał",
+          "ai_decision": "Decyzja AI"
+        },
+        "outcomes": {
+          "executed": "Wykonano",
+          "rejected": "Odrzucono",
+          "no_fill": "Bez realizacji"
+        }
+      }
+    },
+
     "contributions": {
       "title": "Najnowsze składowe P&L według instrumentu",
       "instrument": "Instrument",

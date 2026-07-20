@@ -964,6 +964,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/portfolio/pnl/timeline": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_pnl_timeline_api_portfolio_pnl_timeline_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/trailing-stops": {
         parameters: {
             query?: never;
@@ -3339,6 +3355,30 @@ export type Components = {
             instrument?: string | null | undefined;
             signal_envelope?: Record<string, unknown> | null | undefined;
         };
+        PnlAiDecisionMarkerData: {
+            kind: "ai_decision";
+            marker_time: string;
+            instrument_public_id: string;
+            strategy_public_id: string;
+            review_public_id: string;
+            event_public_id: string;
+            decision: string | null;
+            rationale: string | null;
+            outcome: Components["schemas"]["PnlMarkerOutcome"];
+            status: string;
+        };
+        PnlFillMarkerData: {
+            kind: "fill";
+            marker_time: string;
+            instrument_public_id: string;
+            side: string;
+            size: number;
+            price: number;
+            execution_public_id: string;
+            order_public_id: string;
+            outcome: "executed";
+            status: string;
+        };
         PnlInstrumentContributionData: {
             instrument_public_id: string;
             realized_pnl: number | null;
@@ -3346,6 +3386,7 @@ export type Components = {
             accrual_pnl: number | null;
             unrealized_pnl: number | null;
         };
+        PnlMarkerOutcome: "executed" | "rejected" | "no_fill";
         PnlSeriesData: {
             type: "pnl_series";
             sequence_id: number;
@@ -3373,6 +3414,41 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["PnlSeriesData"];
         };
+        PnlSignalMarkerData: {
+            kind: "signal";
+            marker_time: string;
+            instrument_public_id: string;
+            side: string;
+            strategy_name: string | null;
+            strength: number;
+            reason: string;
+            price: number | null;
+            signal_public_id: string;
+            outcome: "executed" | "no_fill";
+            status: "executed" | "no_fill";
+        };
+        PnlTimelineData: {
+            type: "pnl_timeline";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            wallet_public_id: string;
+            mode: string;
+            granularity: string;
+            valuation_ccy: string;
+            from_time: string;
+            to_time: string;
+            as_of: string;
+            mark_source: string;
+            calc_version: string;
+            points: Components["schemas"]["PnlTimelinePointData"][];
+            marker_limit: number;
+            markers_truncated: boolean;
+            markers: Components["schemas"]["PnlTimelineMarkerData"][];
+        };
+        PnlTimelineMarkerData: Components["schemas"]["PnlFillMarkerData"] | Components["schemas"]["PnlSignalMarkerData"] | Components["schemas"]["PnlAiDecisionMarkerData"];
         PnlTimelinePointData: {
             point_time: string;
             realized_pnl: number | null;
@@ -3382,6 +3458,15 @@ export type Components = {
             net_pnl: number | null;
             valuation_status: Components["schemas"]["PnlValuationStatus"];
             per_instrument: Components["schemas"]["PnlInstrumentContributionData"][];
+        };
+        PnlTimelineResponse: {
+            type: "pnl_timeline";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["PnlTimelineData"];
         };
         PnlValuationStatus: "complete" | "incomplete";
         PortfolioAccountState: {
@@ -7100,7 +7185,6 @@ export interface Operations {
                 granularity?: string;
                 from?: string | null | undefined;
                 to?: string | null | undefined;
-                as_of?: string | null | undefined;
             };
             header?: never;
             path?: never;
@@ -7114,6 +7198,52 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["PnlSeriesResponse"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+            500: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_pnl_timeline_api_portfolio_pnl_timeline_get: {
+        parameters: {
+            query?: {
+                wallet_public_id?: string | null | undefined;
+                operator_public_id?: string | null | undefined;
+                mode?: string;
+                granularity?: string;
+                from?: string | null | undefined;
+                to?: string | null | undefined;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["PnlTimelineResponse"];
                 };
             };
             400: {

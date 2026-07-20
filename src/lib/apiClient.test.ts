@@ -718,6 +718,21 @@ describe('cacheWsTicketFromResponse', () => {
 
       expect(url).not.toContain('as_of')
     })
+    it('can omit as_of while preserving operator and wallet scope', async () => {
+      apiClient.setTimeTravelAsOf('2026-03-15T10:00:00Z')
+      apiClient.setOperatorScope('op-current')
+      apiClient.setWalletScope('wallet-current')
+      mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => ({}) })
+
+      await apiClient.get('/api/current-truth', { skipAsOf: true })
+      const url = mockFetch.mock.calls[0]?.[0] as string
+
+      expect(url).not.toContain('as_of')
+      expect(url).toContain('operator_public_id=op-current')
+      expect(url).toContain('wallet_public_id=wallet-current')
+      apiClient.setOperatorScope(null)
+      apiClient.setWalletScope(null)
+    })
     it('blocks POST requests when time-traveling', async () => {
       apiClient.setTimeTravelAsOf('2026-03-15T10:00:00Z')
 
