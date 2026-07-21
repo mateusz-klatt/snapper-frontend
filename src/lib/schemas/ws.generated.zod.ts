@@ -978,7 +978,13 @@ export const VenueFeeScheduleDataSchema = z
   })
   .strict()
 
-export const UserRoleSchema = z.enum(['ai_delegate', 'viewer', 'operator', 'admin'])
+export const UserRoleSchema = z.enum([
+  'ai_researcher',
+  'ai_delegate',
+  'viewer',
+  'operator',
+  'admin',
+])
 
 export const WSAuthExpiredResponseSchema = z
   .object({

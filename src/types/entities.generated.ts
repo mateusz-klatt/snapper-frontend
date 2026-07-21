@@ -1323,6 +1323,19 @@ export interface DelegateDeactivate {
 }
 
 /**
+ * ResearcherCreate request entity.
+ * Use with researcherCreateToAPI() transform.
+ */
+export interface ResearcherCreate {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  payload: Record<string, unknown>
+}
+
+/**
  * AiReviewDecision request entity.
  * Use with aiReviewDecisionToAPI() transform.
  */

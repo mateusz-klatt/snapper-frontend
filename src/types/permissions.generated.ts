@@ -5,6 +5,8 @@
 
 export const Permission = {
   READ_MARKET_DATA: 'read:market_data',
+  READ_MARKET_VIEWS: 'read:market_views',
+  SUBMIT_MARKET_VIEW: 'submit:market_view',
   READ_ORDERS: 'read:orders',
   CREATE_ORDERS: 'create:orders',
   CANCEL_ORDERS: 'cancel:orders',
@@ -33,18 +35,19 @@ export const Permission = {
 
 export type Permission = (typeof Permission)[keyof typeof Permission]
 
-type UserRole = 'ai_delegate' | 'viewer' | 'operator' | 'admin'
+type UserRole = 'ai_researcher' | 'ai_delegate' | 'viewer' | 'operator' | 'admin'
 
 export const ROLE_PERMISSIONS: Record<UserRole, readonly Permission[]> = {
-  ai_delegate: ['cancel:orders', 'create:orders', 'manage:positions', 'read:backtests', 'read:market_data', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status'],
-  viewer: ['manage:notification_devices', 'read:account_state', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:strategies', 'read:system_status'],
-  operator: ['cancel:orders', 'create:orders', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'read:account_state', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'start:strategies', 'stop:strategies'],
-  admin: ['cancel:orders', 'configure:strategies', 'configure:system', 'create:orders', 'impersonate:operator', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'manage:scope_grants', 'manage:users', 'manage:wallet_credentials', 'read:account_state', 'read:backtests', 'read:market_data', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'read:wallet_credentials', 'start:strategies', 'stop:strategies'],
+  ai_researcher: ['read:market_data', 'read:market_views', 'submit:market_view'],
+  ai_delegate: ['cancel:orders', 'create:orders', 'manage:positions', 'read:backtests', 'read:market_data', 'read:market_views', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status'],
+  viewer: ['manage:notification_devices', 'read:account_state', 'read:backtests', 'read:market_data', 'read:market_views', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status'],
+  operator: ['cancel:orders', 'create:orders', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'read:account_state', 'read:backtests', 'read:market_data', 'read:market_views', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'start:strategies', 'stop:strategies'],
+  admin: ['cancel:orders', 'configure:strategies', 'configure:system', 'create:orders', 'impersonate:operator', 'manage:backtests', 'manage:notification_devices', 'manage:paired_execution', 'manage:positions', 'manage:processes', 'manage:scope_grants', 'manage:users', 'manage:wallet_credentials', 'read:account_state', 'read:backtests', 'read:market_data', 'read:market_views', 'read:notifications', 'read:orders', 'read:positions', 'read:signals', 'read:strategies', 'read:system_status', 'read:wallet_credentials', 'start:strategies', 'stop:strategies', 'submit:market_view'],
 } as const
 
 export const RESOURCE_ACCESS: Record<string, readonly UserRole[]> = {
-  'overview': ['ai_delegate', 'viewer', 'operator', 'admin'],
-  'market': ['ai_delegate', 'viewer', 'operator', 'admin'],
+  'overview': ['ai_researcher', 'ai_delegate', 'viewer', 'operator', 'admin'],
+  'market': ['ai_researcher', 'ai_delegate', 'viewer', 'operator', 'admin'],
   'processes': ['operator', 'admin'],
   'strategies': ['ai_delegate', 'viewer', 'operator', 'admin'],
   'orders': ['ai_delegate', 'viewer', 'operator', 'admin'],
@@ -56,6 +59,6 @@ export const RESOURCE_ACCESS: Record<string, readonly UserRole[]> = {
   'settings': ['admin'],
   'backtests': ['ai_delegate', 'viewer', 'operator', 'admin'],
   'ai-integration': ['operator', 'admin'],
-  'ai-reviews': ['ai_delegate', 'operator', 'admin'],
+  'ai-reviews': ['ai_delegate', 'viewer', 'operator', 'admin'],
   'notifications': ['viewer', 'operator', 'admin'],
 } as const
