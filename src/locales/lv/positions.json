@@ -111,6 +111,21 @@
       "net": "Net P&L",
       "noValue": "—",
       "empty": "No instrument contributions are available."
+    },
+    "attribution": {
+      "title": "Latest P&L attribution",
+      "ariaLabel": "Latest P&L attribution by origin and strategy",
+      "origin": "Origin",
+      "noStrategy": "No proven strategy",
+      "withheld": "Withheld",
+      "valueSemantics": "A displayed zero is proven. Withheld means the value could not be proven.",
+      "empty": "Attribution is unavailable for the latest P&L point.",
+      "origins": {
+        "manual": "Manual · direct",
+        "plan": "Plan · automated",
+        "system": "System · automated",
+        "unattributed": "Unattributed · provenance unknown"
+      }
     }
   },
   "row": {

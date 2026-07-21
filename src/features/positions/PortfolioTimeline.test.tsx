@@ -65,6 +65,22 @@ vi.mock('./ContributionTable', () => ({
   ),
 }))
 
+vi.mock('./AttributionBreakdown', () => ({
+  AttributionBreakdown: ({
+    attribution,
+    valuationCcy,
+  }: {
+    attribution: PnlTimelinePointData['attribution']
+    valuationCcy: string
+  }) => (
+    <div data-testid='mock-attribution-breakdown'>
+      {`${attribution
+        .map(value => `${value.origin}:${value.strategy_name ?? 'none'}`)
+        .join(',')}:${valuationCcy}`}
+    </div>
+  ),
+}))
+
 const contribution: PnlInstrumentContributionData = {
   instrument_public_id: 'instrument-latest',
   realized_pnl: 2,
@@ -76,7 +92,17 @@ const contribution: PnlInstrumentContributionData = {
 const point = (
   pointTime: string,
   valuationStatus: 'complete' | 'incomplete',
-  perInstrument: PnlInstrumentContributionData[] = []
+  perInstrument: PnlInstrumentContributionData[] = [],
+  attribution: PnlTimelinePointData['attribution'] = [
+    {
+      origin: 'manual',
+      strategy_name: null,
+      realized_pnl: valuationStatus === 'complete' ? 2 : null,
+      fee_pnl: valuationStatus === 'complete' ? -1 : null,
+      accrual_pnl: valuationStatus === 'complete' ? 0 : null,
+      unrealized_pnl: valuationStatus === 'complete' ? 3 : null,
+    },
+  ]
 ): PnlTimelinePointData => ({
   point_time: pointTime,
   realized_pnl: valuationStatus === 'complete' ? 2 : null,
@@ -86,16 +112,7 @@ const point = (
   net_pnl: valuationStatus === 'complete' ? 4 : null,
   valuation_status: valuationStatus,
   per_instrument: perInstrument,
-  attribution: [
-    {
-      origin: 'manual',
-      strategy_name: null,
-      realized_pnl: valuationStatus === 'complete' ? 2 : null,
-      fee_pnl: valuationStatus === 'complete' ? -1 : null,
-      accrual_pnl: valuationStatus === 'complete' ? 0 : null,
-      unrealized_pnl: valuationStatus === 'complete' ? 3 : null,
-    },
-  ],
+  attribution,
 })
 
 const noFillSignal: PnlTimelineMarkerData = {
@@ -222,7 +239,40 @@ describe('PortfolioTimeline', () => {
 
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
     expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('2:0:true:PLN')
+    expect(screen.getByTestId('mock-attribution-breakdown')).toHaveTextContent('manual:none:PLN')
     expect(screen.getByTestId('mock-contribution-table')).toHaveTextContent('instrument-latest:PLN')
+  })
+
+  it('renders attribution from the latest point at the selected window endpoint', () => {
+    const systemAttribution: PnlTimelinePointData['attribution'] = [
+      {
+        origin: 'system',
+        strategy_name: 'momentum',
+        realized_pnl: 8,
+        fee_pnl: -1,
+        accrual_pnl: 0,
+        unrealized_pnl: 4,
+      },
+    ]
+
+    mockQuery(
+      timeline(
+        [
+          point('2026-07-20T11:59:00Z', 'complete'),
+          point('2026-07-20T12:00:00Z', 'complete', [], systemAttribution),
+        ],
+        [],
+        false,
+        'EUR'
+      )
+    )
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('mock-attribution-breakdown')).toHaveTextContent(
+      'system:momentum:EUR'
+    )
+    expect(screen.getByTestId('mock-attribution-breakdown')).not.toHaveTextContent('manual')
   })
 
   it('omits the incomplete badge when every point is trustworthy', () => {
@@ -394,6 +444,7 @@ describe('PortfolioTimeline', () => {
     render(<PortfolioTimeline />)
 
     expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('0:1:true:USD')
+    expect(screen.queryByTestId('mock-attribution-breakdown')).not.toBeInTheDocument()
     expect(screen.queryByTestId('mock-contribution-table')).not.toBeInTheDocument()
     expect(screen.queryByText('No P&L history')).not.toBeInTheDocument()
   })
