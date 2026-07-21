@@ -105,7 +105,8 @@ const noFillSignal: PnlTimelineMarkerData = {
 const timeline = (
   points: PnlTimelinePointData[],
   markers: PnlTimelineMarkerData[] = [],
-  markersTruncated = false
+  markersTruncated = false,
+  valuationCcy = 'USD'
 ): PnlTimelineData => ({
   type: 'pnl_timeline',
   sequence_id: 1,
@@ -115,7 +116,7 @@ const timeline = (
   wallet_public_id: 'wallet-1',
   mode: 'live',
   granularity: '1m',
-  valuation_ccy: 'USD',
+  valuation_ccy: valuationCcy,
   from_time: '2026-07-19T12:00:00Z',
   to_time: '2026-07-20T12:00:00Z',
   as_of: '2026-07-20T12:00:00Z',
@@ -193,19 +194,24 @@ describe('PortfolioTimeline', () => {
     expect(screen.getByText('No P&L points are available for this window.')).toBeInTheDocument()
   })
 
-  it('renders the chart, latest contributions, valuation currency, and incomplete count', () => {
+  it('renders the chart, latest contributions, echoed valuation currency, and incomplete count', () => {
     mockQuery(
-      timeline([
-        point('2026-07-20T11:59:00Z', 'incomplete'),
-        point('2026-07-20T12:00:00Z', 'complete', [contribution]),
-      ])
+      timeline(
+        [
+          point('2026-07-20T11:59:00Z', 'incomplete'),
+          point('2026-07-20T12:00:00Z', 'complete', [contribution]),
+        ],
+        [],
+        false,
+        'PLN'
+      )
     )
 
     render(<PortfolioTimeline />)
 
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
-    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('2:0:true:USD')
-    expect(screen.getByTestId('mock-contribution-table')).toHaveTextContent('instrument-latest:USD')
+    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('2:0:true:PLN')
+    expect(screen.getByTestId('mock-contribution-table')).toHaveTextContent('instrument-latest:PLN')
   })
 
   it('omits the incomplete badge when every point is trustworthy', () => {
@@ -216,18 +222,29 @@ describe('PortfolioTimeline', () => {
     expect(screen.queryByTestId('pnl-incomplete-badge')).not.toBeInTheDocument()
   })
 
-  it('updates the requested window and granularity from the selectors', () => {
+  it('defaults to USD and updates the requested window, granularity, and valuation currency', () => {
     mockQuery(timeline([point('2026-07-20T12:00:00Z', 'complete')]))
 
     render(<PortfolioTimeline />)
     expect(screen.getByRole('option', { name: 'Last 30 days' })).toBeInTheDocument()
     expect(screen.getByRole('option', { name: 'Last 90 days' })).toBeInTheDocument()
+    expect(screen.getByText('Valuation currency')).toBeInTheDocument()
+
+    const currencySelect = screen.getByLabelText('Select valuation currency')
+
+    expect(currencySelect).toHaveValue('USD')
+    expect(screen.getByRole('option', { name: 'USD' })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: 'PLN' })).toBeInTheDocument()
+    expect(screen.getByRole('option', { name: 'EUR' })).toBeInTheDocument()
 
     fireEvent.change(screen.getByLabelText('Select timeline window'), {
       target: { value: '7d' },
     })
     fireEvent.change(screen.getByLabelText('Select timeline granularity'), {
       target: { value: '1h' },
+    })
+    fireEvent.change(currencySelect, {
+      target: { value: 'PLN' },
     })
 
     expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
@@ -236,6 +253,7 @@ describe('PortfolioTimeline', () => {
         to: '2026-07-20T12:00:00.000Z',
         granularity: '1h',
         mode: 'live',
+        valuationCcy: 'PLN',
       },
       true
     )
@@ -252,6 +270,7 @@ describe('PortfolioTimeline', () => {
         to: '2026-07-10T08:30:00.000Z',
         granularity: '1m',
         mode: 'live',
+        valuationCcy: 'USD',
       },
       true
     )

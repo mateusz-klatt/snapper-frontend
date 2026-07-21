@@ -12,6 +12,7 @@ import { PnlChart } from './PnlChart'
 import { PNL_MARKER_COLORS } from './pnlMarkerStyles'
 
 type TimelineWindow = '24h' | '7d' | '30d' | '90d'
+type TimelineValuationCurrency = 'USD' | 'PLN' | 'EUR'
 
 const WINDOW_DURATIONS_MS: Record<TimelineWindow, number> = {
   '24h': 24 * 60 * 60 * 1_000,
@@ -34,12 +35,25 @@ const GRANULARITIES: readonly {
   { value: '1d', labelKey: 'timeline.controls.granularityOptions.oneDay' },
 ]
 
+const VALUATION_CURRENCIES: readonly {
+  value: TimelineValuationCurrency
+  labelKey:
+    | 'timeline.controls.valuationCurrencyOptions.usd'
+    | 'timeline.controls.valuationCurrencyOptions.pln'
+    | 'timeline.controls.valuationCurrencyOptions.eur'
+}[] = [
+  { value: 'USD', labelKey: 'timeline.controls.valuationCurrencyOptions.usd' },
+  { value: 'PLN', labelKey: 'timeline.controls.valuationCurrencyOptions.pln' },
+  { value: 'EUR', labelKey: 'timeline.controls.valuationCurrencyOptions.eur' },
+]
+
 export const PortfolioTimeline: React.FC = () => {
   const { t } = useTranslation('positions')
   const walletPublicId = useAppStore(s => s.currentWalletPublicId)
   const asOf = useAppStore(s => s.asOf)
   const [window, setWindow] = useState<TimelineWindow>('24h')
   const [granularity, setGranularity] = useState<PortfolioPnlGranularity>('1m')
+  const [valuationCcy, setValuationCcy] = useState<TimelineValuationCurrency>('USD')
   const [showMarkers, setShowMarkers] = useState(true)
   const [liveWindowEnd, setLiveWindowEnd] = useState(() => Date.now())
   const walletQuery = useWallets()
@@ -61,6 +75,7 @@ export const PortfolioTimeline: React.FC = () => {
       to,
       granularity,
       mode,
+      valuationCcy,
     },
     walletModeReady
   )
@@ -92,6 +107,10 @@ export const PortfolioTimeline: React.FC = () => {
     value,
     label: t(labelKey),
   }))
+  const valuationCurrencyOptions = VALUATION_CURRENCIES.map(({ value, labelKey }) => ({
+    value,
+    label: t(labelKey),
+  }))
 
   const controls = (
     <div className='flex flex-wrap items-end gap-3'>
@@ -120,6 +139,21 @@ export const PortfolioTimeline: React.FC = () => {
           onChange={value => setGranularity(value as PortfolioPnlGranularity)}
           options={granularityOptions}
           ariaLabel={t('timeline.controls.granularityAriaLabel')}
+        />
+      </div>
+      <div className='space-y-1'>
+        <label
+          htmlFor='pnl-valuation-currency'
+          className='block text-xs font-medium text-muted-500'
+        >
+          {t('timeline.controls.valuationCurrency')}
+        </label>
+        <NativeSelect
+          id='pnl-valuation-currency'
+          value={valuationCcy}
+          onChange={value => setValuationCcy(value as TimelineValuationCurrency)}
+          options={valuationCurrencyOptions}
+          ariaLabel={t('timeline.controls.valuationCurrencyAriaLabel')}
         />
       </div>
       <button

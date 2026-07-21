@@ -19,6 +19,13 @@
         "oneHour": "1h",
         "oneDay": "1d"
       },
+      "valuationCurrency": "Waluta wyceny",
+      "valuationCurrencyAriaLabel": "Wybierz walutę wyceny",
+      "valuationCurrencyOptions": {
+        "usd": "USD",
+        "pln": "PLN",
+        "eur": "EUR"
+      },
       "last24Hours": "Ostatnie 24 godziny",
       "last7Days": "Ostatnie 7 dni",
       "last30Days": "Ostatnie 30 dni",

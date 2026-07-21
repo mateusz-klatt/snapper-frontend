@@ -14,6 +14,7 @@ export interface PortfolioPnlSeriesQueryParams {
   to: string
   granularity: PortfolioPnlGranularity
   mode: string
+  valuationCcy: string
 }
 
 export type PortfolioPnlTimelineQueryParams = PortfolioPnlSeriesQueryParams
@@ -65,7 +66,8 @@ export const usePortfolioPnlSeries = (params: Readonly<PortfolioPnlSeriesQueryPa
       params.from,
       params.to,
       params.granularity,
-      params.mode
+      params.mode,
+      params.valuationCcy
     ),
     queryFn: async () => {
       const data = await getPortfolioPnlSeries({
@@ -74,6 +76,7 @@ export const usePortfolioPnlSeries = (params: Readonly<PortfolioPnlSeriesQueryPa
         from: params.from,
         to: params.to,
         asOf,
+        valuationCcy: params.valuationCcy,
       })
 
       return data.payload
@@ -100,7 +103,8 @@ export const usePortfolioPnlTimeline = (
       params.from,
       params.to,
       params.granularity,
-      params.mode
+      params.mode,
+      params.valuationCcy
     ),
     queryFn: async () => {
       const data = await getPortfolioPnlTimeline({
@@ -109,6 +113,7 @@ export const usePortfolioPnlTimeline = (
         from: params.from,
         to: params.to,
         asOf,
+        valuationCcy: params.valuationCcy,
       })
 
       return data.payload

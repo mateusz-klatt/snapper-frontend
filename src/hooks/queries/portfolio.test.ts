@@ -215,6 +215,7 @@ describe('usePortfolioPnlSeries', () => {
     to: '2026-07-13T12:00:00Z',
     granularity: '5m' as const,
     mode: 'live',
+    valuationCcy: 'PLN',
   }
 
   beforeEach(() => {
@@ -238,6 +239,7 @@ describe('usePortfolioPnlSeries', () => {
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
       asOf: '2026-07-13T12:00:00Z',
+      valuationCcy: 'PLN',
     })
     expect(result.current.data?.valuation_ccy).toBe('USD')
     expect(
@@ -248,7 +250,8 @@ describe('usePortfolioPnlSeries', () => {
         params.from,
         params.to,
         params.granularity,
-        params.mode
+        params.mode,
+        params.valuationCcy
       )
     ).toEqual([
       'portfolio',
@@ -261,6 +264,7 @@ describe('usePortfolioPnlSeries', () => {
       '2026-07-13T12:00:00Z',
       '5m',
       'live',
+      'PLN',
     ])
   })
 
@@ -293,6 +297,7 @@ describe('usePortfolioPnlTimeline', () => {
     to: '2026-07-13T12:00:00Z',
     granularity: '5m' as const,
     mode: 'live',
+    valuationCcy: 'EUR',
   }
 
   beforeEach(() => {
@@ -316,6 +321,7 @@ describe('usePortfolioPnlTimeline', () => {
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
       asOf: '2026-07-13T12:00:00Z',
+      valuationCcy: 'EUR',
     })
     expect(result.current.data?.marker_limit).toBe(500)
     expect(
@@ -326,7 +332,8 @@ describe('usePortfolioPnlTimeline', () => {
         params.from,
         params.to,
         params.granularity,
-        params.mode
+        params.mode,
+        params.valuationCcy
       )
     ).toEqual([
       'portfolio',
@@ -339,6 +346,7 @@ describe('usePortfolioPnlTimeline', () => {
       '2026-07-13T12:00:00Z',
       '5m',
       'live',
+      'EUR',
     ])
   })
 

@@ -19,6 +19,13 @@
         "oneHour": "1h",
         "oneDay": "1d"
       },
+      "valuationCurrency": "Valuation currency",
+      "valuationCurrencyAriaLabel": "Select valuation currency",
+      "valuationCurrencyOptions": {
+        "usd": "USD",
+        "pln": "PLN",
+        "eur": "EUR"
+      },
       "last24Hours": "Last 24 hours",
       "last7Days": "Last 7 days",
       "last30Days": "Last 30 days",
