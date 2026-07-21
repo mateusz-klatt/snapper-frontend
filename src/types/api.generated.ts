@@ -3382,7 +3382,7 @@ export type Components = {
             instrument_public_id: string;
             side: string;
             size: number;
-            price: number;
+            price: number | null;
             execution_public_id: string;
             order_public_id: string;
             outcome: "executed";

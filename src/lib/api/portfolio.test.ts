@@ -107,6 +107,30 @@ const pnlTimelineResponse = {
         outcome: 'no_fill' as const,
         status: 'no_fill' as const,
       },
+      {
+        kind: 'fill' as const,
+        marker_time: '2026-07-13T11:55:00Z',
+        instrument_public_id: 'instrument-1',
+        side: 'buy',
+        size: 0.5,
+        price: 101.25,
+        execution_public_id: 'execution-priced',
+        order_public_id: 'order-priced',
+        outcome: 'executed' as const,
+        status: 'filled',
+      },
+      {
+        kind: 'fill' as const,
+        marker_time: '2026-07-13T11:56:00Z',
+        instrument_public_id: 'instrument-2',
+        side: 'sell',
+        size: 0.25,
+        price: null,
+        execution_public_id: 'execution-withheld',
+        order_public_id: 'order-withheld',
+        outcome: 'executed' as const,
+        status: 'filled',
+      },
     ],
   },
 }
@@ -302,6 +326,16 @@ describe('portfolio API', () => {
       kind: 'signal',
       outcome: 'no_fill',
       signal_public_id: 'signal-1',
+    })
+    expect(result.payload.markers[1]).toMatchObject({
+      kind: 'fill',
+      price: 101.25,
+      execution_public_id: 'execution-priced',
+    })
+    expect(result.payload.markers[2]).toMatchObject({
+      kind: 'fill',
+      price: null,
+      execution_public_id: 'execution-withheld',
     })
     expect(requestUrl.pathname).toBe('/api/portfolio/pnl/timeline')
     expect(Object.fromEntries(requestUrl.searchParams)).toEqual({

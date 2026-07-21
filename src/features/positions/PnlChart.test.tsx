@@ -92,14 +92,18 @@ const point = (
   ],
 })
 
-const fillMarker = (markerTime = '2026-01-01T00:01:00Z'): PnlTimelineMarkerData => ({
+const fillMarker = (
+  markerTime = '2026-01-01T00:01:00Z',
+  price: number | null = 101.25,
+  executionPublicId = 'execution-1'
+): PnlTimelineMarkerData => ({
   kind: 'fill',
   marker_time: markerTime,
   instrument_public_id: 'instrument-fill',
   side: 'buy',
   size: 1.5,
-  price: 101.25,
-  execution_public_id: 'execution-1',
+  price,
+  execution_public_id: executionPublicId,
   order_public_id: 'order-1',
   outcome: 'executed',
   status: 'filled',
@@ -414,6 +418,28 @@ describe('PnlChart', () => {
     emitChartEvent(mockSubscribeCrosshairMove, { hoveredInfo: { objectId: 'missing-marker' } })
     emitChartEvent(mockSubscribeCrosshairMove, { hoveredInfo: { objectId: null } })
     expect(screen.getByTestId('pnl-marker-detail')).toHaveTextContent('ai-event-empty')
+  })
+
+  it('renders proven and withheld fill prices distinctly', () => {
+    const pricedFill = fillMarker('2026-01-01T00:01:00Z', 101.25, 'execution-priced')
+    const withheldFill = fillMarker('2026-01-01T00:02:00Z', null, 'execution-withheld')
+
+    render(<PnlChart points={[]} markers={[pricedFill, withheldFill]} valuationCcy='USD' />)
+
+    emitChartEvent(mockSubscribeClick, {
+      hoveredObjectId: 'fill:execution-priced:0',
+    })
+    let detail = screen.getByTestId('pnl-marker-detail')
+
+    expect(within(detail).getByText('101.25')).toBeInTheDocument()
+
+    emitChartEvent(mockSubscribeClick, {
+      hoveredObjectId: 'fill:execution-withheld:1',
+    })
+    detail = screen.getByTestId('pnl-marker-detail')
+
+    expect(within(detail).getByText('—')).toBeInTheDocument()
+    expect(within(detail).getByText('execution-withheld')).toBeInTheDocument()
   })
 
   it('clears marker data and selected detail when overlays are hidden', () => {
