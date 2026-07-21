@@ -31,6 +31,13 @@ const pnlSeriesResponse = {
         quote_currency: 'USD',
         exchange: 'kraken',
       },
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'polygon',
+      },
     ],
     calc_version: 'v1',
     points: [
@@ -353,6 +360,13 @@ describe('portfolio API', () => {
         base_currency: 'EUR',
         quote_currency: 'USD',
         exchange: 'kraken',
+      },
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'polygon',
       },
     ])
     expect(requestUrl.pathname).toBe('/api/portfolio/pnl/timeline')

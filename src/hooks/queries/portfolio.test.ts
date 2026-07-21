@@ -95,6 +95,13 @@ const pnlSeriesResponse: PnlSeriesResponse = {
         quote_currency: 'USD',
         exchange: 'kraken',
       },
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'polygon',
+      },
     ],
     calc_version: 'v1',
     points: [
@@ -363,13 +370,22 @@ describe('usePortfolioPnlTimeline', () => {
       valuationCcy: 'EUR',
     })
     expect(result.current.data?.marker_limit).toBe(500)
-    expect(result.current.data?.rate_sources[0]).toEqual({
-      source_currency: 'EUR',
-      valuation_currency: 'USD',
-      base_currency: 'EUR',
-      quote_currency: 'USD',
-      exchange: 'kraken',
-    })
+    expect(result.current.data?.rate_sources).toEqual([
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'kraken',
+      },
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'polygon',
+      },
+    ])
     expect(result.current.data?.points[0]?.attribution[0]?.origin).toBe('system')
     expect(
       queryKeys.portfolioPnlTimeline(
