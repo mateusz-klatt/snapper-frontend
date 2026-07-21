@@ -3367,6 +3367,15 @@ export type Components = {
             outcome: Components["schemas"]["PnlMarkerOutcome"];
             status: string;
         };
+        PnlAttributionContributionData: {
+            origin: Components["schemas"]["PnlAttributionOrigin"];
+            strategy_name: string | null;
+            realized_pnl: number | null;
+            fee_pnl: number | null;
+            accrual_pnl: number | null;
+            unrealized_pnl: number | null;
+        };
+        PnlAttributionOrigin: "manual" | "plan" | "system" | "unattributed";
         PnlFillMarkerData: {
             kind: "fill";
             marker_time: string;
@@ -3458,6 +3467,7 @@ export type Components = {
             net_pnl: number | null;
             valuation_status: Components["schemas"]["PnlValuationStatus"];
             per_instrument: Components["schemas"]["PnlInstrumentContributionData"][];
+            attribution: Components["schemas"]["PnlAttributionContributionData"][];
         };
         PnlTimelineResponse: {
             type: "pnl_timeline";

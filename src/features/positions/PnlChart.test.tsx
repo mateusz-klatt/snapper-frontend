@@ -80,6 +80,16 @@ const point = (
   net_pnl: netPnl,
   valuation_status: valuationStatus,
   per_instrument: [],
+  attribution: [
+    {
+      origin: 'manual',
+      strategy_name: null,
+      realized_pnl: valuationStatus === 'complete' ? realizedPnl : null,
+      fee_pnl: valuationStatus === 'complete' ? 0 : null,
+      accrual_pnl: valuationStatus === 'complete' ? 0 : null,
+      unrealized_pnl: valuationStatus === 'complete' ? unrealizedPnl : null,
+    },
+  ],
 })
 
 const fillMarker = (markerTime = '2026-01-01T00:01:00Z'): PnlTimelineMarkerData => ({
