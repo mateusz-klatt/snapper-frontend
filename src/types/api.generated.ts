@@ -324,6 +324,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/ai-researchers": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: Operations["create_researcher_api_ai_researchers_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/ai-reviews/{review_public_id}/decision": {
         parameters: {
             query?: never;
@@ -4077,6 +4093,28 @@ export type Components = {
             description: string | null;
         };
         RelationshipTypeEnum: "exact" | "derivative" | "proxy";
+        ResearcherCreatedPayload: {
+            researcher: Components["schemas"]["ResearcherRead"];
+            access_token: string;
+            expires_in: number;
+        };
+        ResearcherCreatedResponse: {
+            type: "researcher_created_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["ResearcherCreatedPayload"];
+        };
+        ResearcherRead: {
+            public_id: string;
+            username: string;
+            label: string;
+            created_by_user_public_id: string;
+            created_at: string;
+            is_active: boolean;
+        };
         RestRateData: {
             type: "rest_rate";
             sequence_id: number;
@@ -4600,7 +4638,7 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["UserProfile"];
         };
-        UserRole: "ai_delegate" | "viewer" | "operator" | "admin";
+        UserRole: "ai_researcher" | "ai_delegate" | "viewer" | "operator" | "admin";
         ValidationError: {
             loc: (string | number)[];
             msg: string;
@@ -4773,7 +4811,7 @@ export type Components = {
             remember_me?: boolean;
             permissions?: Components["schemas"]["Permission"][] | null;
         };
-        Permission: "read:market_data" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:processes" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
+        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:processes" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
         RefreshTokenRequest: {
             type?: "refresh_token_request";
             sequence_id: number;
@@ -4941,6 +4979,19 @@ export type Components = {
         };
         DelegateDeactivateBody: {
             reason?: string | null;
+        };
+        ResearcherCreateRequest: {
+            type?: "researcher_create_request";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["ResearcherCreateBody"];
+        };
+        ResearcherCreateBody: {
+            label: string;
+            permissions?: Components["schemas"]["Permission"][] | null;
         };
         AiReviewDecisionCommand: {
             type?: "ai_review_decision_command";
@@ -6006,6 +6057,29 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_researcher_api_ai_researchers_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["ResearcherCreateRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ResearcherCreatedResponse"];
                 };
             };
         };

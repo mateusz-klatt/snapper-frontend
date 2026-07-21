@@ -1522,6 +1522,21 @@ export const RelationshipTypeEnumSchema = _RelationshipTypeEnumRawSchema as unkn
   Components['schemas']['RelationshipTypeEnum']
 >
 
+const _ResearcherReadRawSchema = z
+  .object({
+    public_id: z.string(),
+    username: z.string(),
+    label: z.string(),
+    created_by_user_public_id: z.string(),
+    created_at: z.iso.datetime(),
+    is_active: z.boolean(),
+  })
+  .strict()
+
+export const ResearcherReadSchema = _ResearcherReadRawSchema as unknown as z.ZodType<
+  Components['schemas']['ResearcherRead']
+>
+
 const _RestRateExchangeStatsRawSchema = z
   .object({
     rps_1s: z.number(),
@@ -1873,7 +1888,7 @@ export const UserAlertDefaultInfoSchema = _UserAlertDefaultInfoRawSchema as unkn
   Components['schemas']['UserAlertDefaultInfo']
 >
 
-const _UserRoleRawSchema = z.enum(['ai_delegate', 'viewer', 'operator', 'admin'])
+const _UserRoleRawSchema = z.enum(['ai_researcher', 'ai_delegate', 'viewer', 'operator', 'admin'])
 
 export const UserRoleSchema = _UserRoleRawSchema as unknown as z.ZodType<
   Components['schemas']['UserRole']
@@ -2011,6 +2026,8 @@ export const ZmqConfigSchema = _ZmqConfigRawSchema as unknown as z.ZodType<
 
 const _PermissionRawSchema = z.enum([
   'read:market_data',
+  'read:market_views',
+  'submit:market_view',
   'read:orders',
   'create:orders',
   'cancel:orders',
@@ -3266,6 +3283,19 @@ export const RelatedInstrumentsGroupSchema =
     Components['schemas']['RelatedInstrumentsGroup']
   >
 
+const _ResearcherCreatedPayloadRawSchema = z
+  .object({
+    researcher: ResearcherReadSchema,
+    access_token: z.string(),
+    expires_in: z.number().int(),
+  })
+  .strict()
+
+export const ResearcherCreatedPayloadSchema =
+  _ResearcherCreatedPayloadRawSchema as unknown as z.ZodType<
+    Components['schemas']['ResearcherCreatedPayload']
+  >
+
 const _RestRateDataRawSchema = z
   .object({
     type: z.literal('rest_rate'),
@@ -3810,6 +3840,17 @@ const _LoginBodyRawSchema = z
 
 export const LoginBodySchema = _LoginBodyRawSchema as unknown as z.ZodType<
   Components['schemas']['LoginBody']
+>
+
+const _ResearcherCreateBodyRawSchema = z
+  .object({
+    label: z.string().min(1).max(44),
+    permissions: z.array(PermissionSchema).nullable().optional(),
+  })
+  .strict()
+
+export const ResearcherCreateBodySchema = _ResearcherCreateBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['ResearcherCreateBody']
 >
 
 const _RefreshTokenRequestRawSchema = z
@@ -4586,6 +4627,23 @@ export const RelatedInstrumentsPayloadDataSchema =
     Components['schemas']['RelatedInstrumentsPayloadData']
   >
 
+const _ResearcherCreatedResponseRawSchema = z
+  .object({
+    type: z.literal('researcher_created_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ResearcherCreatedPayloadSchema,
+  })
+  .strict()
+
+export const ResearcherCreatedResponseSchema =
+  _ResearcherCreatedResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ResearcherCreatedResponse']
+  >
+
 const _RestRateResponseRawSchema = z
   .object({
     type: z.literal('rest_rate_response'),
@@ -4839,6 +4897,23 @@ const _LoginRequestRawSchema = z
 export const LoginRequestSchema = _LoginRequestRawSchema as unknown as z.ZodType<
   Components['schemas']['LoginRequest']
 >
+
+const _ResearcherCreateRequestRawSchema = z
+  .object({
+    type: z.literal('researcher_create_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ResearcherCreateBodySchema,
+  })
+  .strict()
+
+export const ResearcherCreateRequestSchema =
+  _ResearcherCreateRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['ResearcherCreateRequest']
+  >
 
 const _EgressHealthResponseRawSchema = z
   .object({
@@ -6150,6 +6225,7 @@ export type RelatedInstrumentData = Components['schemas']['RelatedInstrumentData
 export type RelatedInstrumentsSelected = Components['schemas']['RelatedInstrumentsSelected']
 export type RelatedInstrumentsUnderlying = Components['schemas']['RelatedInstrumentsUnderlying']
 export type RelationshipTypeEnum = Components['schemas']['RelationshipTypeEnum']
+export type ResearcherRead = Components['schemas']['ResearcherRead']
 export type RestRateExchangeStats = Components['schemas']['RestRateExchangeStats']
 export type RetentionPolicyResult = Components['schemas']['RetentionPolicyResult']
 export type RollPointDetail = Components['schemas']['RollPointDetail']
@@ -6265,6 +6341,7 @@ export type CredentialReconciliationMethodInfo =
 export type SetCredentialReconciliationMethodBody =
   Components['schemas']['SetCredentialReconciliationMethodBody']
 export type RelatedInstrumentsGroup = Components['schemas']['RelatedInstrumentsGroup']
+export type ResearcherCreatedPayload = Components['schemas']['ResearcherCreatedPayload']
 export type RestRateData = Components['schemas']['RestRateData']
 export type RetentionRunData = Components['schemas']['RetentionRunData']
 export type ContinuousSeriesPartialResponse =
@@ -6298,6 +6375,7 @@ export type WsTokenResponse = Components['schemas']['WsTokenResponse']
 export type WsStatsData = Components['schemas']['WsStatsData']
 export type ZmqHealthData = Components['schemas']['ZmqHealthData']
 export type LoginBody = Components['schemas']['LoginBody']
+export type ResearcherCreateBody = Components['schemas']['ResearcherCreateBody']
 export type RefreshTokenRequest = Components['schemas']['RefreshTokenRequest']
 export type UpdateAuthMeRequest = Components['schemas']['UpdateAuthMeRequest']
 export type DeactivateUserRequest = Components['schemas']['DeactivateUserRequest']
@@ -6347,6 +6425,7 @@ export type CredentialReconciliationMethodResponse =
 export type SetCredentialReconciliationMethodCommand =
   Components['schemas']['SetCredentialReconciliationMethodCommand']
 export type RelatedInstrumentsPayloadData = Components['schemas']['RelatedInstrumentsPayloadData']
+export type ResearcherCreatedResponse = Components['schemas']['ResearcherCreatedResponse']
 export type RestRateResponse = Components['schemas']['RestRateResponse']
 export type RetentionRunResponse = Components['schemas']['RetentionRunResponse']
 export type SystemMetricsResponse = Components['schemas']['SystemMetricsResponse']
@@ -6362,6 +6441,7 @@ export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
 export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
 export type LoginRequest = Components['schemas']['LoginRequest']
+export type ResearcherCreateRequest = Components['schemas']['ResearcherCreateRequest']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
 export type AdminAiReviewItem = Components['schemas']['AdminAiReviewItem']
