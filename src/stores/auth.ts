@@ -55,6 +55,7 @@ interface AuthState {
   canAccess: (resource: string) => boolean
 }
 const ROLE_HIERARCHY: Record<UserRole, number> = {
+  ai_researcher: -2,
   ai_delegate: -1,
   viewer: 1,
   operator: 2,
