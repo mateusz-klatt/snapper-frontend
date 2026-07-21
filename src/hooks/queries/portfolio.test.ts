@@ -87,6 +87,22 @@ const pnlSeriesResponse: PnlSeriesResponse = {
     to_time: '2026-07-13T12:00:00Z',
     as_of: '2026-07-13T12:00:00Z',
     mark_source: 'close',
+    rate_sources: [
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'kraken',
+      },
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'polygon',
+      },
+    ],
     calc_version: 'v1',
     points: [
       {
@@ -354,6 +370,22 @@ describe('usePortfolioPnlTimeline', () => {
       valuationCcy: 'EUR',
     })
     expect(result.current.data?.marker_limit).toBe(500)
+    expect(result.current.data?.rate_sources).toEqual([
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'kraken',
+      },
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'polygon',
+      },
+    ])
     expect(result.current.data?.points[0]?.attribution[0]?.origin).toBe('system')
     expect(
       queryKeys.portfolioPnlTimeline(

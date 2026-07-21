@@ -356,6 +356,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/ai-reviews/{review_public_id}/aftermath": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["get_ai_review_aftermath_route_api_ai_reviews__review_public_id__aftermath_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/ai-reviews": {
         parameters: {
             query?: never;
@@ -1891,6 +1907,134 @@ export type Components = {
             items: Components["schemas"]["AdminAiReviewItem"][];
             count: number;
         };
+        AiReviewAftermathExecution: {
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            sequence_id: number;
+            trade_id: string | null;
+            exec_id: string | null;
+            order_public_id: string;
+            instrument_public_id: string;
+            exchange_order_id: string | null;
+            client_order_id: string | null;
+            instrument: string;
+            exchange: string;
+            mode: string;
+            scope_sequence: number;
+            side: string;
+            size: number;
+            price: number;
+            fee: number;
+            fee_asset: string;
+            status: string;
+            executed_at: string;
+            wallet_public_id: string | null;
+            operator_public_id: string | null;
+            liquidity_role: string;
+            price_decimal: string | null;
+            size_decimal: string | null;
+            fee_decimal: string | null;
+            counter_amount_decimal: string | null;
+            numeric_provenance: string | null;
+        };
+        AiReviewAftermathOrder: {
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            sequence_id: number;
+            instrument: string;
+            exchange: string;
+            mode: string;
+            client_order_id: string;
+            exchange_order_id: string | null;
+            created_at: string;
+            updated_at: string | null;
+            side: string;
+            order_type: string;
+            price: number | null;
+            size: number;
+            filled_size: number;
+            average_price: number | null;
+            status: string;
+            time_in_force: string | null;
+            error: string | null;
+            leverage: number | null;
+            reduce_only: boolean;
+            wallet_public_id: string | null;
+            operator_public_id: string | null;
+            plan_public_id: string | null;
+        };
+        AiReviewAftermathPosition: {
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            sequence_id: number;
+            instrument: string;
+            instrument_public_id: string;
+            exchange: string;
+            mode: string;
+            quantity: number;
+            average_price: number | null;
+            unrealized_pnl: number | null;
+            realized_pnl: number | null;
+            mark_price: number | null;
+            marked_at: string | null;
+            source_venue_event_id: number | null;
+            position_cycle_public_id: string | null;
+            wallet_public_id: string;
+        };
+        AiReviewAftermathPositionCycleTransition: {
+            cycle_public_id: string;
+            transition: string;
+            occurred_at: string;
+            instrument_public_id: string;
+            exchange: string;
+            mode: string;
+            shard_key: string;
+            wallet_public_id: string;
+            operator_public_id: string | null;
+            direction: string;
+            max_qty: number;
+            status_at_as_of: string;
+            opening_command_public_id: string | null;
+            closing_command_public_id: string | null;
+        };
+        AiReviewAftermathResponse: {
+            review: Components["schemas"]["AiReviewAftermathReview"];
+            window_started_at: string;
+            as_of: string;
+            orders: Components["schemas"]["AiReviewAftermathOrder"][];
+            executions: Components["schemas"]["AiReviewAftermathExecution"][];
+            position_cycle_transitions: Components["schemas"]["AiReviewAftermathPositionCycleTransition"][];
+            current_positions: Components["schemas"]["AiReviewAftermathPosition"][];
+        };
+        AiReviewAftermathReview: {
+            public_id: string;
+            session_id: string;
+            sequence_id: number;
+            user_public_id: string;
+            operator_public_id: string;
+            wallet_public_id: string;
+            instrument_public_id: string;
+            strategy_public_id: string;
+            selected_delegate_public_id: string;
+            responding_delegate_public_id: string | null;
+            resolution_mode: string | null;
+            status: string;
+            signal_envelope: Record<string, unknown>;
+            signal_snapshot_hash: string;
+            instrument_metadata: Record<string, unknown>;
+            deadline: string;
+            fanout_after: string;
+            decision: string | null;
+            rationale: string | null;
+            dispatch_version: number;
+            counter_decremented_at: string | null;
+            created_at: string;
+            updated_at: string;
+            resolved_at: string | null;
+        };
         AiReviewDecisionResponse: {
             success: boolean;
             error_code: string | null;
@@ -3388,6 +3532,13 @@ export type Components = {
             outcome: "executed";
             status: string;
         };
+        PnlFxRateSourceData: {
+            source_currency: string;
+            valuation_currency: string;
+            base_currency: string;
+            quote_currency: string;
+            exchange: string;
+        };
         PnlInstrumentContributionData: {
             instrument_public_id: string;
             realized_pnl: number | null;
@@ -3411,6 +3562,7 @@ export type Components = {
             to_time: string;
             as_of: string;
             mark_source: string;
+            rate_sources: Components["schemas"]["PnlFxRateSourceData"][];
             calc_version: string;
             points: Components["schemas"]["PnlTimelinePointData"][];
         };
@@ -3451,6 +3603,7 @@ export type Components = {
             to_time: string;
             as_of: string;
             mark_source: string;
+            rate_sources: Components["schemas"]["PnlFxRateSourceData"][];
             calc_version: string;
             points: Components["schemas"]["PnlTimelinePointData"][];
             marker_limit: number;
@@ -4618,7 +4771,9 @@ export type Components = {
             username: string;
             password: string;
             remember_me?: boolean;
+            permissions?: Components["schemas"]["Permission"][] | null;
         };
+        Permission: "read:market_data" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:processes" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
         RefreshTokenRequest: {
             type?: "refresh_token_request";
             sequence_id: number;
@@ -4761,6 +4916,7 @@ export type Components = {
             label: string;
             caps?: Components["schemas"]["DelegateCapsBody"];
             operator_public_id?: string | null;
+            permissions?: Components["schemas"]["Permission"][] | null;
         };
         DelegateCapsUpdateRequest: {
             type?: "delegate_caps_update_request";
@@ -5928,6 +6084,45 @@ export interface Operations {
                 content: {
                     "application/json": Components["schemas"]["PendingReviewListResponse"];
                 };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    get_ai_review_aftermath_route_api_ai_reviews__review_public_id__aftermath_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                review_public_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AiReviewAftermathResponse"];
+                };
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
             422: {
                 headers: {

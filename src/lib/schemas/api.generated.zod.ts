@@ -52,6 +52,131 @@ export const AccountPositionEntrySchema = _AccountPositionEntryRawSchema as unkn
   Components['schemas']['AccountPositionEntry']
 >
 
+const _AiReviewAftermathExecutionRawSchema = z
+  .object({
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    sequence_id: z.number().int(),
+    trade_id: z.string().nullable(),
+    exec_id: z.string().nullable(),
+    order_public_id: z.string(),
+    instrument_public_id: z.string(),
+    exchange_order_id: z.string().nullable(),
+    client_order_id: z.string().nullable(),
+    instrument: z.string(),
+    exchange: z.string(),
+    mode: z.string(),
+    scope_sequence: z.number().int(),
+    side: z.string(),
+    size: z.number(),
+    price: z.number(),
+    fee: z.number(),
+    fee_asset: z.string(),
+    status: z.string(),
+    executed_at: z.iso.datetime(),
+    wallet_public_id: z.string().nullable(),
+    operator_public_id: z.string().nullable(),
+    liquidity_role: z.string(),
+    price_decimal: z.string().nullable(),
+    size_decimal: z.string().nullable(),
+    fee_decimal: z.string().nullable(),
+    counter_amount_decimal: z.string().nullable(),
+    numeric_provenance: z.string().nullable(),
+  })
+  .strict()
+
+export const AiReviewAftermathExecutionSchema =
+  _AiReviewAftermathExecutionRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewAftermathExecution']
+  >
+
+const _AiReviewAftermathOrderRawSchema = z
+  .object({
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    sequence_id: z.number().int(),
+    instrument: z.string(),
+    exchange: z.string(),
+    mode: z.string(),
+    client_order_id: z.string(),
+    exchange_order_id: z.string().nullable(),
+    created_at: z.iso.datetime(),
+    updated_at: z.iso.datetime().nullable(),
+    side: z.string(),
+    order_type: z.string(),
+    price: z.number().nullable(),
+    size: z.number(),
+    filled_size: z.number(),
+    average_price: z.number().nullable(),
+    status: z.string(),
+    time_in_force: z.string().nullable(),
+    error: z.string().nullable(),
+    leverage: z.number().int().nullable(),
+    reduce_only: z.boolean(),
+    wallet_public_id: z.string().nullable(),
+    operator_public_id: z.string().nullable(),
+    plan_public_id: z.string().nullable(),
+  })
+  .strict()
+
+export const AiReviewAftermathOrderSchema =
+  _AiReviewAftermathOrderRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewAftermathOrder']
+  >
+
+const _AiReviewAftermathPositionRawSchema = z
+  .object({
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    sequence_id: z.number().int(),
+    instrument: z.string(),
+    instrument_public_id: z.string(),
+    exchange: z.string(),
+    mode: z.string(),
+    quantity: z.number(),
+    average_price: z.number().nullable(),
+    unrealized_pnl: z.number().nullable(),
+    realized_pnl: z.number().nullable(),
+    mark_price: z.number().nullable(),
+    marked_at: z.iso.datetime().nullable(),
+    source_venue_event_id: z.number().int().nullable(),
+    position_cycle_public_id: z.string().nullable(),
+    wallet_public_id: z.string(),
+  })
+  .strict()
+
+export const AiReviewAftermathPositionSchema =
+  _AiReviewAftermathPositionRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewAftermathPosition']
+  >
+
+const _AiReviewAftermathPositionCycleTransitionRawSchema = z
+  .object({
+    cycle_public_id: z.string(),
+    transition: z.string(),
+    occurred_at: z.iso.datetime(),
+    instrument_public_id: z.string(),
+    exchange: z.string(),
+    mode: z.string(),
+    shard_key: z.string(),
+    wallet_public_id: z.string(),
+    operator_public_id: z.string().nullable(),
+    direction: z.string(),
+    max_qty: z.number(),
+    status_at_as_of: z.string(),
+    opening_command_public_id: z.string().nullable(),
+    closing_command_public_id: z.string().nullable(),
+  })
+  .strict()
+
+export const AiReviewAftermathPositionCycleTransitionSchema =
+  _AiReviewAftermathPositionCycleTransitionRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewAftermathPositionCycleTransition']
+  >
+
 const _AsyncioMetricsRawSchema = z
   .object({
     active_tasks: z.number().int(),
@@ -1011,6 +1136,20 @@ export const PnlFillMarkerDataSchema = _PnlFillMarkerDataRawSchema as unknown as
   Components['schemas']['PnlFillMarkerData']
 >
 
+const _PnlFxRateSourceDataRawSchema = z
+  .object({
+    source_currency: z.string(),
+    valuation_currency: z.string(),
+    base_currency: z.string(),
+    quote_currency: z.string(),
+    exchange: z.string(),
+  })
+  .strict()
+
+export const PnlFxRateSourceDataSchema = _PnlFxRateSourceDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlFxRateSourceData']
+>
+
 const _PnlInstrumentContributionDataRawSchema = z
   .object({
     instrument_public_id: z.string(),
@@ -1870,16 +2009,36 @@ export const ZmqConfigSchema = _ZmqConfigRawSchema as unknown as z.ZodType<
   Components['schemas']['ZmqConfig']
 >
 
-const _LoginBodyRawSchema = z
-  .object({
-    username: z.string(),
-    password: z.string(),
-    remember_me: z.boolean().optional(),
-  })
-  .strict()
+const _PermissionRawSchema = z.enum([
+  'read:market_data',
+  'read:orders',
+  'create:orders',
+  'cancel:orders',
+  'read:positions',
+  'manage:positions',
+  'read:account_state',
+  'read:strategies',
+  'read:signals',
+  'start:strategies',
+  'stop:strategies',
+  'configure:strategies',
+  'read:system_status',
+  'manage:processes',
+  'configure:system',
+  'manage:users',
+  'read:wallet_credentials',
+  'manage:wallet_credentials',
+  'manage:scope_grants',
+  'impersonate:operator',
+  'read:backtests',
+  'manage:backtests',
+  'read:notifications',
+  'manage:notification_devices',
+  'manage:paired_execution',
+])
 
-export const LoginBodySchema = _LoginBodyRawSchema as unknown as z.ZodType<
-  Components['schemas']['LoginBody']
+export const PermissionSchema = _PermissionRawSchema as unknown as z.ZodType<
+  Components['schemas']['Permission']
 >
 
 const _RefreshTokenPayloadRawSchema = z
@@ -3640,20 +3799,17 @@ export const ZmqHealthDataSchema = _ZmqHealthDataRawSchema as unknown as z.ZodTy
   Components['schemas']['ZmqHealthData']
 >
 
-const _LoginRequestRawSchema = z
+const _LoginBodyRawSchema = z
   .object({
-    type: z.literal('login_request').optional(),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: LoginBodySchema,
+    username: z.string(),
+    password: z.string(),
+    remember_me: z.boolean().optional(),
+    permissions: z.array(PermissionSchema).nullable().optional(),
   })
   .strict()
 
-export const LoginRequestSchema = _LoginRequestRawSchema as unknown as z.ZodType<
-  Components['schemas']['LoginRequest']
+export const LoginBodySchema = _LoginBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginBody']
 >
 
 const _RefreshTokenRequestRawSchema = z
@@ -4668,6 +4824,22 @@ export const ZmqHealthResponseSchema = _ZmqHealthResponseRawSchema as unknown as
   Components['schemas']['ZmqHealthResponse']
 >
 
+const _LoginRequestRawSchema = z
+  .object({
+    type: z.literal('login_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: LoginBodySchema,
+  })
+  .strict()
+
+export const LoginRequestSchema = _LoginRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginRequest']
+>
+
 const _EgressHealthResponseRawSchema = z
   .object({
     type: z.literal('egress_health_response'),
@@ -4725,6 +4897,40 @@ const _AdminAiReviewItemRawSchema = z
 export const AdminAiReviewItemSchema = _AdminAiReviewItemRawSchema as unknown as z.ZodType<
   Components['schemas']['AdminAiReviewItem']
 >
+
+const _AiReviewAftermathReviewRawSchema = z
+  .object({
+    public_id: z.string(),
+    session_id: z.string(),
+    sequence_id: z.number().int(),
+    user_public_id: z.string(),
+    operator_public_id: z.string(),
+    wallet_public_id: z.string(),
+    instrument_public_id: z.string(),
+    strategy_public_id: z.string(),
+    selected_delegate_public_id: z.string(),
+    responding_delegate_public_id: z.string().nullable(),
+    resolution_mode: z.string().nullable(),
+    status: z.string(),
+    signal_envelope: z.record(z.string(), z.any()),
+    signal_snapshot_hash: z.string(),
+    instrument_metadata: z.record(z.string(), z.any()),
+    deadline: z.iso.datetime(),
+    fanout_after: z.iso.datetime(),
+    decision: z.string().nullable(),
+    rationale: z.string().nullable(),
+    dispatch_version: z.number().int(),
+    counter_decremented_at: z.iso.datetime().nullable(),
+    created_at: z.iso.datetime(),
+    updated_at: z.iso.datetime(),
+    resolved_at: z.iso.datetime().nullable(),
+  })
+  .strict()
+
+export const AiReviewAftermathReviewSchema =
+  _AiReviewAftermathReviewRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewAftermathReview']
+  >
 
 const _AiReviewDecisionResponseRawSchema = z
   .object({
@@ -5158,6 +5364,7 @@ const _PnlSeriesDataRawSchema = z
     to_time: z.iso.datetime(),
     as_of: z.iso.datetime(),
     mark_source: z.string(),
+    rate_sources: z.array(PnlFxRateSourceDataSchema),
     calc_version: z.string(),
     points: z.array(PnlTimelinePointDataSchema),
   })
@@ -5183,6 +5390,7 @@ const _PnlTimelineDataRawSchema = z
     to_time: z.iso.datetime(),
     as_of: z.iso.datetime(),
     mark_source: z.string(),
+    rate_sources: z.array(PnlFxRateSourceDataSchema),
     calc_version: z.string(),
     points: z.array(PnlTimelinePointDataSchema),
     marker_limit: z.number().int(),
@@ -5254,6 +5462,23 @@ const _AdminAiReviewListResponseRawSchema = z
 export const AdminAiReviewListResponseSchema =
   _AdminAiReviewListResponseRawSchema as unknown as z.ZodType<
     Components['schemas']['AdminAiReviewListResponse']
+  >
+
+const _AiReviewAftermathResponseRawSchema = z
+  .object({
+    review: AiReviewAftermathReviewSchema,
+    window_started_at: z.iso.datetime(),
+    as_of: z.iso.datetime(),
+    orders: z.array(AiReviewAftermathOrderSchema),
+    executions: z.array(AiReviewAftermathExecutionSchema),
+    position_cycle_transitions: z.array(AiReviewAftermathPositionCycleTransitionSchema),
+    current_positions: z.array(AiReviewAftermathPositionSchema),
+  })
+  .strict()
+
+export const AiReviewAftermathResponseSchema =
+  _AiReviewAftermathResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['AiReviewAftermathResponse']
   >
 
 const _AlertEventResponseRawSchema = z
@@ -5440,6 +5665,7 @@ const _DelegateCreateBodyRawSchema = z
     label: z.string().min(1).max(48),
     caps: DelegateCapsBodySchema.optional(),
     operator_public_id: z.string().nullable().optional(),
+    permissions: z.array(PermissionSchema).nullable().optional(),
   })
   .strict()
 
@@ -5837,6 +6063,11 @@ export const DelegateCreatedResponseSchema =
 // Type exports
 export type AccountBalanceEntry = Components['schemas']['AccountBalanceEntry']
 export type AccountPositionEntry = Components['schemas']['AccountPositionEntry']
+export type AiReviewAftermathExecution = Components['schemas']['AiReviewAftermathExecution']
+export type AiReviewAftermathOrder = Components['schemas']['AiReviewAftermathOrder']
+export type AiReviewAftermathPosition = Components['schemas']['AiReviewAftermathPosition']
+export type AiReviewAftermathPositionCycleTransition =
+  Components['schemas']['AiReviewAftermathPositionCycleTransition']
 export type AsyncioMetrics = Components['schemas']['AsyncioMetrics']
 export type BacktestComparisonData = Components['schemas']['BacktestComparisonData']
 export type BacktestEquityPointInline = Components['schemas']['BacktestEquityPointInline']
@@ -5890,6 +6121,7 @@ export type PairedHaltInfo = Components['schemas']['PairedHaltInfo']
 export type PairedLegExposure = Components['schemas']['PairedLegExposure']
 export type PnlAttributionOrigin = Components['schemas']['PnlAttributionOrigin']
 export type PnlFillMarkerData = Components['schemas']['PnlFillMarkerData']
+export type PnlFxRateSourceData = Components['schemas']['PnlFxRateSourceData']
 export type PnlInstrumentContributionData = Components['schemas']['PnlInstrumentContributionData']
 export type PnlMarkerOutcome = Components['schemas']['PnlMarkerOutcome']
 export type PnlSignalMarkerData = Components['schemas']['PnlSignalMarkerData']
@@ -5947,7 +6179,7 @@ export type WsTokenData = Components['schemas']['WsTokenData']
 export type ZmqBridgeStats = Components['schemas']['ZmqBridgeStats']
 export type ZmqComponents = Components['schemas']['ZmqComponents']
 export type ZmqConfig = Components['schemas']['ZmqConfig']
-export type LoginBody = Components['schemas']['LoginBody']
+export type Permission = Components['schemas']['Permission']
 export type RefreshTokenPayload = Components['schemas']['RefreshTokenPayload']
 export type UpdateAuthMeBody = Components['schemas']['UpdateAuthMeBody']
 export type DeactivateUserBody = Components['schemas']['DeactivateUserBody']
@@ -6065,7 +6297,7 @@ export type WalletResponse = Components['schemas']['WalletResponse']
 export type WsTokenResponse = Components['schemas']['WsTokenResponse']
 export type WsStatsData = Components['schemas']['WsStatsData']
 export type ZmqHealthData = Components['schemas']['ZmqHealthData']
-export type LoginRequest = Components['schemas']['LoginRequest']
+export type LoginBody = Components['schemas']['LoginBody']
 export type RefreshTokenRequest = Components['schemas']['RefreshTokenRequest']
 export type UpdateAuthMeRequest = Components['schemas']['UpdateAuthMeRequest']
 export type DeactivateUserRequest = Components['schemas']['DeactivateUserRequest']
@@ -6129,9 +6361,11 @@ export type CreateUserRequest = Components['schemas']['CreateUserRequest']
 export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
 export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
+export type LoginRequest = Components['schemas']['LoginRequest']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
 export type AdminAiReviewItem = Components['schemas']['AdminAiReviewItem']
+export type AiReviewAftermathReview = Components['schemas']['AiReviewAftermathReview']
 export type AiReviewDecisionResponse = Components['schemas']['AiReviewDecisionResponse']
 export type AlertEventInfo = Components['schemas']['AlertEventInfo']
 export type AvailableProcess = Components['schemas']['AvailableProcess']
@@ -6157,6 +6391,7 @@ export type RelatedInstrumentsResponse = Components['schemas']['RelatedInstrumen
 export type LoginResponse = Components['schemas']['LoginResponse']
 export type RefreshResponse = Components['schemas']['RefreshResponse']
 export type AdminAiReviewListResponse = Components['schemas']['AdminAiReviewListResponse']
+export type AiReviewAftermathResponse = Components['schemas']['AiReviewAftermathResponse']
 export type AlertEventResponse = Components['schemas']['AlertEventResponse']
 export type AlertHistoryResponse = Components['schemas']['AlertHistoryResponse']
 export type AvailableProcessesResponse = Components['schemas']['AvailableProcessesResponse']
