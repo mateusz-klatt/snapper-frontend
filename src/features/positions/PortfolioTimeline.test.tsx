@@ -86,6 +86,16 @@ const point = (
   net_pnl: valuationStatus === 'complete' ? 4 : null,
   valuation_status: valuationStatus,
   per_instrument: perInstrument,
+  attribution: [
+    {
+      origin: 'manual',
+      strategy_name: null,
+      realized_pnl: valuationStatus === 'complete' ? 2 : null,
+      fee_pnl: valuationStatus === 'complete' ? -1 : null,
+      accrual_pnl: valuationStatus === 'complete' ? 0 : null,
+      unrealized_pnl: valuationStatus === 'complete' ? 3 : null,
+    },
+  ],
 })
 
 const noFillSignal: PnlTimelineMarkerData = {

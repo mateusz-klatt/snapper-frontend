@@ -88,7 +88,36 @@ const pnlSeriesResponse: PnlSeriesResponse = {
     as_of: '2026-07-13T12:00:00Z',
     mark_source: 'close',
     calc_version: 'v1',
-    points: [],
+    points: [
+      {
+        point_time: '2026-07-13T12:00:00Z',
+        realized_pnl: 0,
+        fee_pnl: -0.25,
+        accrual_pnl: 0,
+        unrealized_pnl: 5,
+        net_pnl: 4.75,
+        valuation_status: 'complete',
+        per_instrument: [
+          {
+            instrument_public_id: 'instrument-1',
+            realized_pnl: 0,
+            fee_pnl: -0.25,
+            accrual_pnl: 0,
+            unrealized_pnl: 5,
+          },
+        ],
+        attribution: [
+          {
+            origin: 'system',
+            strategy_name: null,
+            realized_pnl: 0,
+            fee_pnl: -0.25,
+            accrual_pnl: 0,
+            unrealized_pnl: 5,
+          },
+        ],
+      },
+    ],
   },
 }
 
@@ -242,6 +271,7 @@ describe('usePortfolioPnlSeries', () => {
       valuationCcy: 'PLN',
     })
     expect(result.current.data?.valuation_ccy).toBe('USD')
+    expect(result.current.data?.points[0]?.attribution[0]?.origin).toBe('system')
     expect(
       queryKeys.portfolioPnlSeries(
         control.asOf,
@@ -324,6 +354,7 @@ describe('usePortfolioPnlTimeline', () => {
       valuationCcy: 'EUR',
     })
     expect(result.current.data?.marker_limit).toBe(500)
+    expect(result.current.data?.points[0]?.attribution[0]?.origin).toBe('system')
     expect(
       queryKeys.portfolioPnlTimeline(
         control.asOf,

@@ -42,6 +42,44 @@ const pnlSeriesResponse = {
             unrealized_pnl: null,
           },
         ],
+        attribution: [
+          {
+            origin: 'unattributed' as const,
+            strategy_name: null,
+            realized_pnl: null,
+            fee_pnl: null,
+            accrual_pnl: null,
+            unrealized_pnl: null,
+          },
+        ],
+      },
+      {
+        point_time: '2026-07-13T12:00:00Z',
+        realized_pnl: 12.5,
+        fee_pnl: -1.25,
+        accrual_pnl: 0.5,
+        unrealized_pnl: 3.25,
+        net_pnl: 15,
+        valuation_status: 'complete' as const,
+        per_instrument: [
+          {
+            instrument_public_id: 'instrument-1',
+            realized_pnl: 12.5,
+            fee_pnl: -1.25,
+            accrual_pnl: 0.5,
+            unrealized_pnl: 3.25,
+          },
+        ],
+        attribution: [
+          {
+            origin: 'plan' as const,
+            strategy_name: 'momentum',
+            realized_pnl: 12.5,
+            fee_pnl: -1.25,
+            accrual_pnl: 0.5,
+            unrealized_pnl: 3.25,
+          },
+        ],
       },
     ],
   },
@@ -277,5 +315,33 @@ describe('portfolio API', () => {
       valuation_ccy: 'EUR',
     })
     expect(requestUrl.searchParams.getAll('as_of')).toEqual(['2026-07-13T12:00:00Z'])
+  })
+
+  it('getPortfolioPnlTimeline accepts backend-shaped attribution buckets', async () => {
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => pnlTimelineResponse,
+    })
+
+    const result = await getPortfolioPnlTimeline({
+      mode: 'live',
+      granularity: '5m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+      asOf: null,
+      valuationCcy: 'USD',
+    })
+
+    expect(result.payload.points[1]?.attribution).toEqual([
+      {
+        origin: 'plan',
+        strategy_name: 'momentum',
+        realized_pnl: 12.5,
+        fee_pnl: -1.25,
+        accrual_pnl: 0.5,
+        unrealized_pnl: 3.25,
+      },
+    ])
   })
 })
