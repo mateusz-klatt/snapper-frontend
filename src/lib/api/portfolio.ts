@@ -18,6 +18,7 @@ export interface PortfolioPnlSeriesParams {
   from: string
   to: string
   asOf: string | null
+  valuationCcy: string
 }
 
 export type PortfolioPnlTimelineParams = PortfolioPnlSeriesParams
@@ -28,6 +29,7 @@ const buildPnlSearchParams = (params: Readonly<PortfolioPnlSeriesParams>): URLSe
     granularity: params.granularity,
     from: params.from,
     to: params.to,
+    valuation_ccy: params.valuationCcy,
   })
 
   if (params.asOf !== null) {

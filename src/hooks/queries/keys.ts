@@ -97,7 +97,8 @@ export const queryKeys = {
     from: string,
     to: string,
     granularity: string,
-    mode: string
+    mode: string,
+    valuationCcy: string
   ) =>
     [
       'portfolio',
@@ -110,6 +111,7 @@ export const queryKeys = {
       to,
       granularity,
       mode,
+      valuationCcy,
     ] as const,
   portfolioPnlTimeline: (
     asOf: string | null,
@@ -118,7 +120,8 @@ export const queryKeys = {
     from: string,
     to: string,
     granularity: string,
-    mode: string
+    mode: string,
+    valuationCcy: string
   ) =>
     [
       'portfolio',
@@ -131,6 +134,7 @@ export const queryKeys = {
       to,
       granularity,
       mode,
+      valuationCcy,
     ] as const,
   signals: (
     strategyId?: string,

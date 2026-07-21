@@ -198,6 +198,7 @@ describe('portfolio API', () => {
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
       asOf: '2026-07-13T12:00:00Z',
+      valuationCcy: 'PLN',
     })
     const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
 
@@ -210,6 +211,7 @@ describe('portfolio API', () => {
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
       as_of: '2026-07-13T12:00:00Z',
+      valuation_ccy: 'PLN',
     })
     expect(requestUrl.searchParams.getAll('wallet_public_id')).toEqual(['w-1'])
     expect(requestUrl.searchParams.getAll('operator_public_id')).toEqual(['op-1'])
@@ -229,11 +231,13 @@ describe('portfolio API', () => {
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
       asOf: null,
+      valuationCcy: 'USD',
     })
     const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
 
     expect(requestUrl.searchParams.has('operator_public_id')).toBe(false)
     expect(requestUrl.searchParams.has('as_of')).toBe(false)
+    expect(requestUrl.searchParams.get('valuation_ccy')).toBe('USD')
   })
 
   it('getPortfolioPnlTimeline validates markers and sends the timeline window', async () => {
@@ -252,6 +256,7 @@ describe('portfolio API', () => {
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
       asOf: '2026-07-13T12:00:00Z',
+      valuationCcy: 'EUR',
     })
     const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
 
@@ -269,6 +274,7 @@ describe('portfolio API', () => {
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
       as_of: '2026-07-13T12:00:00Z',
+      valuation_ccy: 'EUR',
     })
     expect(requestUrl.searchParams.getAll('as_of')).toEqual(['2026-07-13T12:00:00Z'])
   })
