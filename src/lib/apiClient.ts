@@ -14,6 +14,10 @@ interface RequestOptions {
   body?: string | FormData | URLSearchParams | null | undefined
 }
 
+interface GetRequestOptions extends RequestOptions {
+  skipAsOf?: boolean
+}
+
 interface ErrorPayload {
   message: string
   details?: unknown
@@ -296,8 +300,10 @@ class APIClient {
       this.isLoggingOut = false
     }, 1000)
   }
-  public async get(url: string, options: RequestOptions = {}): Promise<Response> {
-    if (this.timeTravelAsOf) {
+  public async get(url: string, options: GetRequestOptions = {}): Promise<Response> {
+    const { skipAsOf = false, ...requestOptions } = options
+
+    if (this.timeTravelAsOf && !skipAsOf) {
       const separator = url.includes('?') ? '&' : '?'
 
       url = `${url}${separator}as_of=${encodeURIComponent(this.timeTravelAsOf)}`
@@ -315,7 +321,7 @@ class APIClient {
       url = `${url}${separator}wallet_public_id=${encodeURIComponent(this.walletPublicId)}`
     }
 
-    return this.request(url, { ...options, method: 'GET' })
+    return this.request(url, { ...requestOptions, method: 'GET' })
   }
   private static readonly AUTH_PATHS = new Set([
     '/api/auth/login',
@@ -345,7 +351,7 @@ class APIClient {
       return { message: fallbackMessage }
     }
   }
-  public async getJSON<T>(url: string, options: RequestOptions = {}): Promise<T> {
+  public async getJSON<T>(url: string, options: GetRequestOptions = {}): Promise<T> {
     const response = await this.get(url, options)
 
     if (!response.ok) {

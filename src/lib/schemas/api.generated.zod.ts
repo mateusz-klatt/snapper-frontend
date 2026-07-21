@@ -986,6 +986,25 @@ export const PairedLegExposureSchema = _PairedLegExposureRawSchema as unknown as
   Components['schemas']['PairedLegExposure']
 >
 
+const _PnlFillMarkerDataRawSchema = z
+  .object({
+    kind: z.literal('fill'),
+    marker_time: z.iso.datetime(),
+    instrument_public_id: z.string(),
+    side: z.string(),
+    size: z.number(),
+    price: z.number(),
+    execution_public_id: z.string(),
+    order_public_id: z.string(),
+    outcome: z.literal('executed'),
+    status: z.string(),
+  })
+  .strict()
+
+export const PnlFillMarkerDataSchema = _PnlFillMarkerDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlFillMarkerData']
+>
+
 const _PnlInstrumentContributionDataRawSchema = z
   .object({
     instrument_public_id: z.string(),
@@ -1000,6 +1019,32 @@ export const PnlInstrumentContributionDataSchema =
   _PnlInstrumentContributionDataRawSchema as unknown as z.ZodType<
     Components['schemas']['PnlInstrumentContributionData']
   >
+
+const _PnlMarkerOutcomeRawSchema = z.enum(['executed', 'rejected', 'no_fill'])
+
+export const PnlMarkerOutcomeSchema = _PnlMarkerOutcomeRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlMarkerOutcome']
+>
+
+const _PnlSignalMarkerDataRawSchema = z
+  .object({
+    kind: z.literal('signal'),
+    marker_time: z.iso.datetime(),
+    instrument_public_id: z.string(),
+    side: z.string(),
+    strategy_name: z.string().nullable(),
+    strength: z.number(),
+    reason: z.string(),
+    price: z.number().nullable(),
+    signal_public_id: z.string(),
+    outcome: z.enum(['executed', 'no_fill']),
+    status: z.enum(['executed', 'no_fill']),
+  })
+  .strict()
+
+export const PnlSignalMarkerDataSchema = _PnlSignalMarkerDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlSignalMarkerData']
+>
 
 const _PnlValuationStatusRawSchema = z.enum(['complete', 'incomplete'])
 
@@ -2822,6 +2867,26 @@ export const PairedGroupIncidentSchema = _PairedGroupIncidentRawSchema as unknow
   Components['schemas']['PairedGroupIncident']
 >
 
+const _PnlAiDecisionMarkerDataRawSchema = z
+  .object({
+    kind: z.literal('ai_decision'),
+    marker_time: z.iso.datetime(),
+    instrument_public_id: z.string(),
+    strategy_public_id: z.string(),
+    review_public_id: z.string(),
+    event_public_id: z.string(),
+    decision: z.string().nullable(),
+    rationale: z.string().nullable(),
+    outcome: PnlMarkerOutcomeSchema,
+    status: z.string(),
+  })
+  .strict()
+
+export const PnlAiDecisionMarkerDataSchema =
+  _PnlAiDecisionMarkerDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['PnlAiDecisionMarkerData']
+  >
+
 const _PnlTimelinePointDataRawSchema = z
   .object({
     point_time: z.iso.datetime(),
@@ -4235,6 +4300,16 @@ export const PairedGroupTerminalizeResponseSchema =
     Components['schemas']['PairedGroupTerminalizeResponse']
   >
 
+const _PnlTimelineMarkerDataRawSchema = z.union([
+  PnlFillMarkerDataSchema,
+  PnlSignalMarkerDataSchema,
+  PnlAiDecisionMarkerDataSchema,
+])
+
+export const PnlTimelineMarkerDataSchema = _PnlTimelineMarkerDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlTimelineMarkerData']
+>
+
 const _PnlSeriesDataRawSchema = z
   .object({
     type: z.literal('pnl_series'),
@@ -5069,6 +5144,34 @@ export const PairedExecutionIncidentListResponseSchema =
     Components['schemas']['PairedExecutionIncidentListResponse']
   >
 
+const _PnlTimelineDataRawSchema = z
+  .object({
+    type: z.literal('pnl_timeline'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    wallet_public_id: z.string(),
+    mode: z.string(),
+    granularity: z.string(),
+    valuation_ccy: z.string(),
+    from_time: z.iso.datetime(),
+    to_time: z.iso.datetime(),
+    as_of: z.iso.datetime(),
+    mark_source: z.string(),
+    calc_version: z.string(),
+    points: z.array(PnlTimelinePointDataSchema),
+    marker_limit: z.number().int(),
+    markers_truncated: z.boolean(),
+    markers: z.array(PnlTimelineMarkerDataSchema),
+  })
+  .strict()
+
+export const PnlTimelineDataSchema = _PnlTimelineDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlTimelineData']
+>
+
 const _PnlSeriesResponseRawSchema = z
   .object({
     type: z.literal('pnl_series'),
@@ -5528,6 +5631,22 @@ export const ProcessStartRequestSchema = _ProcessStartRequestRawSchema as unknow
   Components['schemas']['ProcessStartRequest']
 >
 
+const _PnlTimelineResponseRawSchema = z
+  .object({
+    type: z.literal('pnl_timeline'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: PnlTimelineDataSchema,
+  })
+  .strict()
+
+export const PnlTimelineResponseSchema = _PnlTimelineResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlTimelineResponse']
+>
+
 const _BacktestRunDetailResponseRawSchema = z
   .object({
     type: z.literal('backtest_run_detail_response'),
@@ -5746,7 +5865,10 @@ export type OrderData = Components['schemas']['OrderData']
 export type OrphanSweepResultData = Components['schemas']['OrphanSweepResultData']
 export type PairedHaltInfo = Components['schemas']['PairedHaltInfo']
 export type PairedLegExposure = Components['schemas']['PairedLegExposure']
+export type PnlFillMarkerData = Components['schemas']['PnlFillMarkerData']
 export type PnlInstrumentContributionData = Components['schemas']['PnlInstrumentContributionData']
+export type PnlMarkerOutcome = Components['schemas']['PnlMarkerOutcome']
+export type PnlSignalMarkerData = Components['schemas']['PnlSignalMarkerData']
 export type PnlValuationStatus = Components['schemas']['PnlValuationStatus']
 export type PortfolioReconciliationDriftEpisode =
   Components['schemas']['PortfolioReconciliationDriftEpisode']
@@ -5871,6 +5993,7 @@ export type OperatorResponse = Components['schemas']['OperatorResponse']
 export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
 export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
+export type PnlAiDecisionMarkerData = Components['schemas']['PnlAiDecisionMarkerData']
 export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']
 export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
 export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
@@ -5958,6 +6081,7 @@ export type JsonObject = Components['schemas']['JsonObject']
 export type MarketDataCoverageResponse = Components['schemas']['MarketDataCoverageResponse']
 export type PairedExecutionIncident = Components['schemas']['PairedExecutionIncident']
 export type PairedGroupTerminalizeResponse = Components['schemas']['PairedGroupTerminalizeResponse']
+export type PnlTimelineMarkerData = Components['schemas']['PnlTimelineMarkerData']
 export type PnlSeriesData = Components['schemas']['PnlSeriesData']
 export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
@@ -6003,6 +6127,7 @@ export type ProcessCreateBody = Components['schemas']['ProcessCreateBody']
 export type ProcessStartBody = Components['schemas']['ProcessStartBody']
 export type PairedExecutionIncidentListResponse =
   Components['schemas']['PairedExecutionIncidentListResponse']
+export type PnlTimelineData = Components['schemas']['PnlTimelineData']
 export type PnlSeriesResponse = Components['schemas']['PnlSeriesResponse']
 export type RelatedInstrumentsResponse = Components['schemas']['RelatedInstrumentsResponse']
 export type LoginResponse = Components['schemas']['LoginResponse']
@@ -6031,6 +6156,7 @@ export type SystemStatusData = Components['schemas']['SystemStatusData']
 export type BacktestCreateCommand = Components['schemas']['BacktestCreateCommand']
 export type ProcessCreateRequest = Components['schemas']['ProcessCreateRequest']
 export type ProcessStartRequest = Components['schemas']['ProcessStartRequest']
+export type PnlTimelineResponse = Components['schemas']['PnlTimelineResponse']
 export type BacktestRunDetailResponse = Components['schemas']['BacktestRunDetailResponse']
 export type BacktestComparisonDetailResponse =
   Components['schemas']['BacktestComparisonDetailResponse']

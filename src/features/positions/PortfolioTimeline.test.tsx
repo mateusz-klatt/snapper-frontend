@@ -1,10 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { PortfolioTimeline } from './PortfolioTimeline'
-import { usePortfolioPnlSeries } from '../../hooks/queries/portfolio'
+import { usePortfolioPnlTimeline } from '../../hooks/queries/portfolio'
+import { useWallets } from '../../hooks/queries/wallets'
 import type {
   PnlInstrumentContributionData,
-  PnlSeriesData,
+  PnlTimelineData,
+  PnlTimelineMarkerData,
   PnlTimelinePointData,
 } from '../../types/api'
 
@@ -24,17 +26,29 @@ vi.mock('../../stores/app', () => ({
 }))
 
 vi.mock('../../hooks/queries/portfolio', () => ({
-  usePortfolioPnlSeries: vi.fn(),
+  usePortfolioPnlTimeline: vi.fn(),
+}))
+
+vi.mock('../../hooks/queries/wallets', () => ({
+  useWallets: vi.fn(),
 }))
 
 vi.mock('./PnlChart', () => ({
   PnlChart: ({
     points,
+    markers,
+    showMarkers,
     valuationCcy,
   }: {
     points: PnlTimelinePointData[]
+    markers: PnlTimelineMarkerData[]
+    showMarkers: boolean
     valuationCcy: string
-  }) => <div data-testid='mock-pnl-chart'>{`${points.length}:${valuationCcy}`}</div>,
+  }) => (
+    <div data-testid='mock-pnl-chart'>
+      {`${points.length}:${markers.length}:${String(showMarkers)}:${valuationCcy}`}
+    </div>
+  ),
 }))
 
 vi.mock('./ContributionTable', () => ({
@@ -74,10 +88,28 @@ const point = (
   per_instrument: perInstrument,
 })
 
-const series = (points: PnlTimelinePointData[]): PnlSeriesData => ({
-  type: 'pnl_series',
+const noFillSignal: PnlTimelineMarkerData = {
+  kind: 'signal',
+  marker_time: '2026-07-20T11:58:30Z',
+  instrument_public_id: 'instrument-signal',
+  side: 'buy',
+  strategy_name: null,
+  strength: 0.7,
+  reason: 'candidate rejected before order',
+  price: null,
+  signal_public_id: 'signal-1',
+  outcome: 'no_fill',
+  status: 'no_fill',
+}
+
+const timeline = (
+  points: PnlTimelinePointData[],
+  markers: PnlTimelineMarkerData[] = [],
+  markersTruncated = false
+): PnlTimelineData => ({
+  type: 'pnl_timeline',
   sequence_id: 1,
-  public_id: 'series-1',
+  public_id: 'timeline-1',
   timestamp: '2026-07-20T12:00:00Z',
   session_id: 'session-1',
   wallet_public_id: 'wallet-1',
@@ -90,10 +122,23 @@ const series = (points: PnlTimelinePointData[]): PnlSeriesData => ({
   mark_source: 'test-marks',
   calc_version: 'test-version',
   points,
+  marker_limit: 500,
+  markers_truncated: markersTruncated,
+  markers,
 })
 
-const mockQuery = (data: PnlSeriesData | undefined, isLoading = false, isError = false): void => {
-  vi.mocked(usePortfolioPnlSeries).mockReturnValue({ data, isLoading, isError } as never)
+const mockQuery = (data: PnlTimelineData | undefined, isLoading = false, isError = false): void => {
+  vi.mocked(usePortfolioPnlTimeline).mockReturnValue({ data, isLoading, isError } as never)
+}
+
+const mockWalletQuery = (
+  wallets: { public_id: string; is_paper: boolean }[] | undefined,
+  isError = false
+): void => {
+  vi.mocked(useWallets).mockReturnValue({
+    data: wallets === undefined ? undefined : { payload: wallets },
+    isError,
+  } as never)
 }
 
 describe('PortfolioTimeline', () => {
@@ -103,6 +148,7 @@ describe('PortfolioTimeline', () => {
     vi.setSystemTime(new Date('2026-07-20T12:00:00Z'))
     scope.walletPublicId = 'wallet-1'
     scope.asOf = null
+    mockWalletQuery([{ public_id: 'wallet-1', is_paper: false }])
     mockQuery(undefined)
   })
 
@@ -139,7 +185,7 @@ describe('PortfolioTimeline', () => {
   })
 
   it('renders the translated empty state when the series has no points', () => {
-    mockQuery(series([]))
+    mockQuery(timeline([]))
 
     render(<PortfolioTimeline />)
 
@@ -149,7 +195,7 @@ describe('PortfolioTimeline', () => {
 
   it('renders the chart, latest contributions, valuation currency, and incomplete count', () => {
     mockQuery(
-      series([
+      timeline([
         point('2026-07-20T11:59:00Z', 'incomplete'),
         point('2026-07-20T12:00:00Z', 'complete', [contribution]),
       ])
@@ -158,12 +204,12 @@ describe('PortfolioTimeline', () => {
     render(<PortfolioTimeline />)
 
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
-    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('2:USD')
+    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('2:0:true:USD')
     expect(screen.getByTestId('mock-contribution-table')).toHaveTextContent('instrument-latest:USD')
   })
 
   it('omits the incomplete badge when every point is trustworthy', () => {
-    mockQuery(series([point('2026-07-20T12:00:00Z', 'complete')]))
+    mockQuery(timeline([point('2026-07-20T12:00:00Z', 'complete')]))
 
     render(<PortfolioTimeline />)
 
@@ -171,7 +217,7 @@ describe('PortfolioTimeline', () => {
   })
 
   it('updates the requested window and granularity from the selectors', () => {
-    mockQuery(series([point('2026-07-20T12:00:00Z', 'complete')]))
+    mockQuery(timeline([point('2026-07-20T12:00:00Z', 'complete')]))
 
     render(<PortfolioTimeline />)
     expect(screen.getByRole('option', { name: 'Last 30 days' })).toBeInTheDocument()
@@ -184,12 +230,15 @@ describe('PortfolioTimeline', () => {
       target: { value: '1h' },
     })
 
-    expect(usePortfolioPnlSeries).toHaveBeenLastCalledWith({
-      from: '2026-07-13T12:00:00.000Z',
-      to: '2026-07-20T12:00:00.000Z',
-      granularity: '1h',
-      mode: 'live',
-    })
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      {
+        from: '2026-07-13T12:00:00.000Z',
+        to: '2026-07-20T12:00:00.000Z',
+        granularity: '1h',
+        mode: 'live',
+      },
+      true
+    )
   })
 
   it('anchors the default window to the point-in-time scope', () => {
@@ -197,11 +246,125 @@ describe('PortfolioTimeline', () => {
 
     render(<PortfolioTimeline />)
 
-    expect(usePortfolioPnlSeries).toHaveBeenCalledWith({
-      from: '2026-07-09T08:30:00.000Z',
-      to: '2026-07-10T08:30:00.000Z',
-      granularity: '1m',
-      mode: 'live',
+    expect(usePortfolioPnlTimeline).toHaveBeenCalledWith(
+      {
+        from: '2026-07-09T08:30:00.000Z',
+        to: '2026-07-10T08:30:00.000Z',
+        granularity: '1m',
+        mode: 'live',
+      },
+      true
+    )
+    expect(screen.getByTestId('pnl-time-travel-notice')).toHaveTextContent(
+      'Historical view: showing P&L as known at 2026-07-10T08:30:00Z.'
+    )
+  })
+
+  it('omits the time-travel notice for a live series', () => {
+    render(<PortfolioTimeline />)
+
+    expect(screen.queryByTestId('pnl-time-travel-notice')).not.toBeInTheDocument()
+  })
+
+  it('requests paper timelines from the selected wallet metadata', () => {
+    mockWalletQuery([{ public_id: 'wallet-1', is_paper: true }])
+
+    render(<PortfolioTimeline />)
+
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ mode: 'paper' }),
+      true
+    )
+  })
+
+  it('waits for wallet metadata before requesting a timeline', () => {
+    mockWalletQuery(undefined)
+
+    render(<PortfolioTimeline />)
+
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ mode: 'live' }),
+      false
+    )
+    expect(screen.getByText('Loading P&L timeline…')).toBeInTheDocument()
+  })
+
+  it('renders an error when the selected wallet is missing from loaded metadata', () => {
+    mockWalletQuery([])
+
+    render(<PortfolioTimeline />)
+
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ mode: 'live' }),
+      false
+    )
+    expect(screen.getByText('Could not load P&L timeline')).toBeInTheDocument()
+  })
+
+  it('renders an error when wallet metadata fails to load', () => {
+    mockWalletQuery(undefined, true)
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByText('Could not load P&L timeline')).toBeInTheDocument()
+  })
+
+  it('toggles marker overlays and renders the outcome-aware legend', () => {
+    mockQuery(timeline([point('2026-07-20T12:00:00Z', 'complete')], [noFillSignal]))
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('pnl-marker-legend')).toHaveAccessibleName('Decision marker legend')
+    expect(screen.getByText('Fill · executed')).toBeInTheDocument()
+    expect(screen.getByText('Signal · no fill')).toBeInTheDocument()
+    expect(screen.getByText('AI decision · rejected')).toBeInTheDocument()
+    expect(screen.getByTestId('pnl-marker-legend-fill-executed')).toHaveStyle({
+      color: '#16a34a',
     })
+    expect(screen.getByTestId('pnl-marker-legend-signal-executed')).toHaveStyle({
+      color: '#2563eb',
+    })
+    expect(screen.getByTestId('pnl-marker-legend-signal-no-fill')).toHaveStyle({
+      color: '#64748b',
+    })
+    expect(screen.getByTestId('pnl-marker-legend-ai-executed')).toHaveStyle({
+      color: '#9333ea',
+    })
+    expect(screen.getByTestId('pnl-marker-legend-ai-rejected')).toHaveStyle({
+      color: '#dc2626',
+    })
+    expect(screen.getByTestId('pnl-marker-legend-ai-no-fill')).toHaveStyle({
+      color: '#d97706',
+    })
+    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('1:1:true:USD')
+
+    fireEvent.click(screen.getByRole('button', { name: 'Hide decision markers' }))
+
+    expect(screen.queryByTestId('pnl-marker-legend')).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Show decision markers' })).toHaveAttribute(
+      'aria-pressed',
+      'false'
+    )
+    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('1:1:false:USD')
+  })
+
+  it('discloses marker truncation with the response limit', () => {
+    mockQuery(timeline([], [], true))
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('pnl-marker-truncation-warning')).toHaveTextContent(
+      'Marker results were truncated at 500. Additional decisions or fills exist in this window.'
+    )
+  })
+
+  it('renders marker-only windows without fabricating a contribution row', () => {
+    mockQuery(timeline([], [noFillSignal]))
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('0:1:true:USD')
+    expect(screen.queryByTestId('mock-contribution-table')).not.toBeInTheDocument()
+    expect(screen.queryByText('No P&L history')).not.toBeInTheDocument()
   })
 })

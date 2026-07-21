@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
-import { getPortfolioAccounts, getPortfolioPnlSeries } from './portfolio'
+import { getPortfolioAccounts, getPortfolioPnlSeries, getPortfolioPnlTimeline } from './portfolio'
 
 const pnlSeriesResponse = {
   type: 'pnl_series' as const,
@@ -42,6 +42,32 @@ const pnlSeriesResponse = {
             unrealized_pnl: null,
           },
         ],
+      },
+    ],
+  },
+}
+
+const pnlTimelineResponse = {
+  ...pnlSeriesResponse,
+  type: 'pnl_timeline' as const,
+  payload: {
+    ...pnlSeriesResponse.payload,
+    type: 'pnl_timeline' as const,
+    marker_limit: 500,
+    markers_truncated: false,
+    markers: [
+      {
+        kind: 'signal' as const,
+        marker_time: '2026-07-13T11:54:00Z',
+        instrument_public_id: 'instrument-1',
+        side: 'buy',
+        strategy_name: 'momentum',
+        strength: 0.8,
+        reason: 'threshold crossed',
+        price: null,
+        signal_public_id: 'signal-1',
+        outcome: 'no_fill' as const,
+        status: 'no_fill' as const,
       },
     ],
   },
@@ -156,8 +182,8 @@ describe('portfolio API', () => {
     )
   })
 
-  it('getPortfolioPnlSeries sends every explicit timeline parameter', async () => {
-    apiClient.setTimeTravelAsOf('2026-07-13T12:00:00Z')
+  it('getPortfolioPnlSeries sends the explicit as_of horizon once', async () => {
+    apiClient.setTimeTravelAsOf('2026-07-14T12:00:00Z')
     apiClient.setOperatorScope('op-1')
     apiClient.setWalletScope('w-1')
     mockFetch.mockResolvedValueOnce({
@@ -171,6 +197,7 @@ describe('portfolio API', () => {
       granularity: '5m',
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
+      asOf: '2026-07-13T12:00:00Z',
     })
     const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
 
@@ -201,10 +228,48 @@ describe('portfolio API', () => {
       granularity: '1m',
       from: '2026-07-12T12:00:00Z',
       to: '2026-07-13T12:00:00Z',
+      asOf: null,
     })
     const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
 
     expect(requestUrl.searchParams.has('operator_public_id')).toBe(false)
     expect(requestUrl.searchParams.has('as_of')).toBe(false)
+  })
+
+  it('getPortfolioPnlTimeline validates markers and sends the timeline window', async () => {
+    apiClient.setTimeTravelAsOf('2026-07-14T12:00:00Z')
+    apiClient.setOperatorScope('op-1')
+    apiClient.setWalletScope('w-1')
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => pnlTimelineResponse,
+    })
+
+    const result = await getPortfolioPnlTimeline({
+      mode: 'live',
+      granularity: '5m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+      asOf: '2026-07-13T12:00:00Z',
+    })
+    const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
+
+    expect(result.payload.markers[0]).toMatchObject({
+      kind: 'signal',
+      outcome: 'no_fill',
+      signal_public_id: 'signal-1',
+    })
+    expect(requestUrl.pathname).toBe('/api/portfolio/pnl/timeline')
+    expect(Object.fromEntries(requestUrl.searchParams)).toEqual({
+      wallet_public_id: 'w-1',
+      operator_public_id: 'op-1',
+      mode: 'live',
+      granularity: '5m',
+      from: '2026-07-12T12:00:00Z',
+      to: '2026-07-13T12:00:00Z',
+      as_of: '2026-07-13T12:00:00Z',
+    })
+    expect(requestUrl.searchParams.getAll('as_of')).toEqual(['2026-07-13T12:00:00Z'])
   })
 })
