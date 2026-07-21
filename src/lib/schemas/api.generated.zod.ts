@@ -999,7 +999,7 @@ const _PnlFillMarkerDataRawSchema = z
     instrument_public_id: z.string(),
     side: z.string(),
     size: z.number(),
-    price: z.number(),
+    price: z.number().nullable(),
     execution_public_id: z.string(),
     order_public_id: z.string(),
     outcome: z.literal('executed'),

@@ -211,7 +211,7 @@ const MarkerDetail: React.FC<{ marker: PnlTimelineMarkerData; locale: AppLocale 
             />
             <DetailRow
               label={t('timeline.markers.detail.price')}
-              value={formatNumber(marker.price)}
+              value={marker.price === null ? noValue : formatNumber(marker.price)}
             />
             <DetailRow
               label={t('timeline.markers.detail.executionId')}
