@@ -131,6 +131,7 @@ const timeline = (
   to_time: '2026-07-20T12:00:00Z',
   as_of: '2026-07-20T12:00:00Z',
   mark_source: 'test-marks',
+  rate_sources: [],
   calc_version: 'test-version',
   points,
   marker_limit: 500,

@@ -23,6 +23,15 @@ const pnlSeriesResponse = {
     to_time: '2026-07-13T12:00:00Z',
     as_of: '2026-07-13T12:00:00Z',
     mark_source: 'close',
+    rate_sources: [
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'kraken',
+      },
+    ],
     calc_version: 'v1',
     points: [
       {
@@ -337,6 +346,15 @@ describe('portfolio API', () => {
       price: null,
       execution_public_id: 'execution-withheld',
     })
+    expect(result.payload.rate_sources).toEqual([
+      {
+        source_currency: 'EUR',
+        valuation_currency: 'USD',
+        base_currency: 'EUR',
+        quote_currency: 'USD',
+        exchange: 'kraken',
+      },
+    ])
     expect(requestUrl.pathname).toBe('/api/portfolio/pnl/timeline')
     expect(Object.fromEntries(requestUrl.searchParams)).toEqual({
       wallet_public_id: 'w-1',
