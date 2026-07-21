@@ -7185,6 +7185,8 @@ export interface Operations {
                 granularity?: string;
                 from?: string | null | undefined;
                 to?: string | null | undefined;
+                as_of?: string | null | undefined;
+                valuation_ccy?: string;
             };
             header?: never;
             path?: never;
@@ -7231,6 +7233,8 @@ export interface Operations {
                 granularity?: string;
                 from?: string | null | undefined;
                 to?: string | null | undefined;
+                as_of?: string | null | undefined;
+                valuation_ccy?: string;
             };
             header?: never;
             path?: never;
