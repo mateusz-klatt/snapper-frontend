@@ -15,7 +15,7 @@
     "position_stop_loss_fired": "Stop-loss aktivizēts"
   },
   "body": {
-    "critical_system_error": "{{0}}/{{1}} ziņoja par {{2}} (secīgu kontrolsignālu skaits: {{3}})",
+    "critical_system_error": "{{0}}/{{1}} ziņoja {{2}} {{3}} secīgos heartbeatos",
     "margin_warning": "{{0}} {{1}} {{2}} bloķēts maržas dēļ: {{3}}",
     "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} izpildīts biržā {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} noraidīts: {{3}}",
