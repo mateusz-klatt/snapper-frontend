@@ -38,6 +38,20 @@ export interface AccountStateChangedEvent {
 }
 
 /**
+ * Canonical AiResearchRequestFrame entity.
+ * From WebSocket AiResearchRequestFrameData.
+ */
+export interface AiResearchRequestFrame {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  roundPublicId: string
+  trigger: string
+}
+
+/**
  * Canonical AiReviewCapsViolationFrame entity.
  * From WebSocket AiReviewCapsViolationFrameData.
  */
