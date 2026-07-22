@@ -23,22 +23,22 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "মার্কেট",
     "quantity": "পরিমাণ",
     "price": "মূল্য",
     "created": "তৈরি হয়েছে",
     "createdUnknown": "N/A",
-    "orderId": "Order ID",
+    "orderId": "অর্ডার ID",
     "leverage": "লিভারেজ",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "রিডিউস-অনলি",
     "cancel": "বাতিল",
     "cancelling": "বাতিল হচ্ছে…",
     "cancelAriaLabel": "{{orderId}} অর্ডার বাতিল করুন"
   },
   "executionCard": {
     "orderNumber": "অর্ডার #{{orderId}}",
-    "filled": "FILLED",
+    "filled": "নির্বাহিত",
     "orderLabel": "অর্ডার {{orderId}}",
     "size": "সাইজ",
     "price": "মূল্য",
@@ -62,11 +62,11 @@
       "quantity": "পরিমাণ",
       "price": "মূল্য",
       "leverage": "লিভারেজ",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "রিডিউস-অনলি",
       "created": "তৈরি হয়েছে"
     },
     "executions": {
-      "orderId": "Order ID",
+      "orderId": "অর্ডার ID",
       "instrument": "ইনস্ট্রুমেন্ট",
       "side": "পক্ষ",
       "size": "সাইজ",
@@ -97,18 +97,18 @@
       "sell": "বিক্রি"
     },
     "orderTypeOptions": {
-      "market": "Market",
+      "market": "মার্কেট",
       "limit": "লিমিট অর্ডার",
       "stop": "স্টপ অর্ডার",
       "stopLimit": "স্টপ লিমিট অর্ডার",
       "stop_limit": "স্টপ লিমিট অর্ডার"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "লাইভ",
+      "paper": "পেপার"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — শুধু মার্কেট ডেটা",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (পেপার)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

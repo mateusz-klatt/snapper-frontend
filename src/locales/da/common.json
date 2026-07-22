@@ -38,7 +38,7 @@
       "ariaLabel": "Aktiv wallet",
       "placeholder": "Wallet",
       "allWallets": "Alle wallets",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktiv operatør",
@@ -62,14 +62,14 @@
   "errorBoundary": {
     "titleDefault": "Noget gik galt",
     "titleWithComponent": "Fejl i {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Stacktrace",
     "tryAgain": "Prøv igen"
   },
   "nav": {
     "accounts": "Børskonti",
     "admin": "Administration",
     "aiIntegration": "AI-integration",
-    "aiReviews": "AI Reviews",
+    "aiReviews": "AI-reviews",
     "alerts": "Alarmer",
     "backtests": "Backtestkørsler",
     "health": "Sundhed",

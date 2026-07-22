@@ -2,7 +2,7 @@
   "page": {
     "title": "Pokyny a provedení",
     "newOrder": "Nový pokyn",
-    "exportCsv": "Export CSV"
+    "exportCsv": "Exportovat CSV"
   },
   "tabs": {
     "orders": "Pokyny ({{total}})",
@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "Tržní",
     "quantity": "Množství",
     "price": "Cena",
     "created": "Vytvořeno",
@@ -104,11 +104,11 @@
       "stop_limit": "Stop-limitní pokyn"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Skutečný",
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — pouze tržní data",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

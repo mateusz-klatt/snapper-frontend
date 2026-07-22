@@ -36,7 +36,7 @@
     "positions": "Suímh",
     "instrumentsCount": "Ionstraimí: {{count}}",
     "empty": "Níl aon sonraí suímh ar fáil",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Sonraí neamhiomlána — tá praghas marcála inúsáidte nó praghas iontrála inúsáidte in easnamh ar roinnt suíomhanna; ní áirítear sna hiomláin ach comhpháirteanna a bhfuil a luach ar eolas"
   },
   "signals": {
     "title": "Comharthaí le Déanaí",

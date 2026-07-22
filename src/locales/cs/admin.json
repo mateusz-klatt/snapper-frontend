@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Vyberte peněženku...",
     "selectWalletPlaceholder": "Vyberte peněženku...",
     "walletLabel": "Peněženka",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Neznámá chyba",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "Klíč API + tajný klíč",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Peněženka je povinná",

@@ -78,11 +78,11 @@
     "chipAriaLabel": "{{exchange}}-এ {{symbol}}-এর সঙ্গে জোড়ার পরিসংখ্যান: Pearson {{pearson}}, p-মান {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "সময়:",
+    "live": "লাইভ",
+    "sliderAriaLabel": "মার্কেটের সময় এগিয়ে-পিছিয়ে দেখুন",
     "presets": {
-      "live": "Live",
+      "live": "লাইভ",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

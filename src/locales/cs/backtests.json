@@ -61,7 +61,7 @@
     "title": "Porovnat",
     "headingFull": "Porovnání backtestů",
     "loading": "Načítání porovnání…",
-    "vs": "vs",
+    "vs": "oproti",
     "runLabel": "Běh {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metriky",
@@ -70,7 +70,7 @@
       "signals": "Signály"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automaticky",
       "manual": "ručně"
     },
     "errors": {
@@ -131,7 +131,7 @@
     "waiting": "Čeká se na průběh…",
     "candles": "{{done}} / {{total}} svíček",
     "candlesNoTotal": "{{done}} svíček",
-    "equity": "equity {{value}}",
+    "equity": "kapitál {{value}}",
     "signalsTrades": "{{signals}} signálů / {{trades}} obchodů",
     "milestoneLine": "milník {{label}}",
     "milestone": {

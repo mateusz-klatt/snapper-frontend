@@ -36,7 +36,7 @@
     "positions": "المراكز",
     "instrumentsCount": "{{count}} أدوات",
     "empty": "لا توجد بيانات مراكز متاحة",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "البيانات غير مكتملة — تفتقر بعض المراكز إلى سعر مرجعي أو سعر دخول صالح للاستخدام؛ ولا تشمل الإجماليات سوى المكونات المعروفة"
   },
   "signals": {
     "title": "الإشارات الأخيرة",

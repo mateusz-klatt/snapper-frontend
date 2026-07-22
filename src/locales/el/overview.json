@@ -20,10 +20,10 @@
   },
   "processStatus": {
     "title": "Κατάσταση διεργασιών",
-    "feeds": "Feeds",
+    "feeds": "Ροές δεδομένων",
     "strategies": "Στρατηγικές",
     "executors": "Εκτελεστές",
-    "brokers": "Brokers"
+    "brokers": "Μεσίτες"
   },
   "portfolio": {
     "title": "Σύνοψη χαρτοφυλακίου",
@@ -36,7 +36,7 @@
     "positions": "Θέσεις",
     "instrumentsCount": "{{count}} μέσα",
     "empty": "Δεν υπάρχουν διαθέσιμα δεδομένα θέσεων",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Ελλιπή δεδομένα — ορισμένες θέσεις δεν διαθέτουν χρησιμοποιήσιμη τιμή αναφοράς ή τιμή εισόδου· τα σύνολα περιλαμβάνουν μόνο τα γνωστά στοιχεία"
   },
   "signals": {
     "title": "Πρόσφατα σήματα",

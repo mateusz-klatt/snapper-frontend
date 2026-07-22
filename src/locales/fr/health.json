@@ -128,27 +128,27 @@
     "tracemallocIdle": "Inactif"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "État des sorties réseau",
+    "loading": "Chargement de l'état des sorties réseau…",
+    "unavailable": "État des sorties réseau indisponible : {{message}}",
+    "fallbackError": "Échec du chargement de l'état des sorties réseau.",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "disabledMessage": "Le pool de sortie est désactivé ; le trafic sortant utilise le chemin réseau par défaut.",
+    "fallbackWarning": "Avertissement : le trafic privé utilise le VPN de secours et non une sortie directe.",
+    "noRoutes": "Aucune route de sortie n'est configurée.",
+    "anyExchange": "Toutes",
+    "none": "Aucun élément",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Conteneurs remontant leur état",
+      "item": "{{container}} · {{age}} · routes : {{routeCount}}",
+      "stale": "· obsolète"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · dernière activité {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "inconnue",
       "kind": {
         "ws": "ws",
         "rest": "rest"
@@ -156,27 +156,27 @@
     },
     "summary": {
       "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
+      "policy": "Politique de quarantaine",
+      "fallbackRoute": "Route privée de secours",
       "routes": "Routes"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Attendre",
+      "raise": "Lever une erreur"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Type",
+      "region": "Région",
+      "exitIp": "IP de sortie",
+      "provider": "Fournisseur",
+      "priority": "Priorité",
+      "allowedExchanges": "Plateformes autorisées",
+      "status": "Statut",
+      "inUse": "Utilisations",
+      "traffic": "Trafic",
+      "reservations": "Réservations actives",
+      "connections": "Connexions"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -190,14 +190,14 @@
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Actif",
+      "quarantined": "En quarantaine",
+      "quarantinedSeconds": "En quarantaine ({{seconds}}s)",
+      "disabled": "Désactivé"
     },
     "trafficClass": {
       "public": "public",
-      "private": "private"
+      "private": "privé"
     }
   },
   "relativeAge": {

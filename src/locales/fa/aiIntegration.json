@@ -97,7 +97,7 @@
     "revoked": "لغو شده",
     "createdAt": "ایجاد شده در",
     "createdBy": "ایجاد شده توسط (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "شناسه عمومی",
     "maxOpenOrders": "حداکثر سفارش باز",
     "maxDailyNotionalUsd": "حداکثر ارزش اسمی روزانه USD",
     "maxCancelsPerMinute": "حداکثر لغو در دقیقه",

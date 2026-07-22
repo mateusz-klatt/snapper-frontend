@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}د",
     "uptimeHours": "{{hours}}س {{minutes}}د",
     "uptimeDays": "{{days}}ي {{hours}}س",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "اختبار رجعي {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "غير متاح",
     "uptimeLabel": "مدة التشغيل",
     "exitCode": "رمز الخروج: {{code}}",
     "service": "خدمة",
-    "backtest": "backtest"
+    "backtest": "اختبار رجعي"
   },
   "dbStats": {
     "title": "إحصاءات قاعدة البيانات",
@@ -61,7 +61,7 @@
     "totalHint": "في PostgreSQL، يكون الإجمالي تقديرًا من مخطط الاستعلامات (دقيقًا ضمن انحراف autovacuum)؛ ويكون دقيقًا على SQLite."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "الخدمة الجانبية للإشعارات",
     "loading": "جارٍ تحميل مقاييس الإشعارات…",
     "unavailable": "مقاييس الإشعارات غير متاحة: {{message}}",
     "fallbackError": "فشل تحميل مقاييس الإشعارات.",
@@ -121,62 +121,62 @@
     "liveConns": "اتصالات مباشرة: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "الكائنات: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "خيوط التنفيذ %",
     "networkConns": "اتصالات الشبكة",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "نشط",
     "tracemallocIdle": "خامل"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "صحة مسارات الخروج",
+    "loading": "جارٍ تحميل صحة مسارات الخروج…",
+    "unavailable": "صحة مسارات الخروج غير متاحة: {{message}}",
+    "fallbackError": "فشل تحميل صحة مسارات الخروج.",
+    "enabled": "مفعّل",
+    "disabled": "معطّل",
+    "disabledMessage": "تجمّع مسارات الخروج معطّل؛ وتستخدم حركة البيانات الصادرة مسار الشبكة الافتراضي.",
+    "fallbackWarning": "تحذير: تستخدم حركة البيانات الخاصة مسار VPN الاحتياطي، لا مسار الخروج المباشر.",
+    "noRoutes": "لم تُضبط أي مسارات خروج.",
+    "anyExchange": "الكل",
+    "none": "لا يوجد",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "الحاويات المُبلِّغة",
+      "item": "{{container}} · {{age}} · المسارات: {{routeCount}}",
+      "stale": "· متقادمة"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · آخر ظهور {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "غير معروف",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "التجمّع",
+      "policy": "سياسة العزل",
+      "fallbackRoute": "المسار الاحتياطي للاتصالات الخاصة",
+      "routes": "المسارات"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "انتظار",
+      "raise": "إطلاق خطأ"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "النوع",
+      "region": "المنطقة",
+      "exitIp": "عنوان IP للخروج",
+      "provider": "موفّر الخدمة",
+      "priority": "الأولوية",
+      "allowedExchanges": "البورصات المسموح بها",
+      "status": "الحالة",
+      "inUse": "قيد الاستخدام",
+      "traffic": "حركة البيانات",
+      "reservations": "الحجوزات النشطة",
+      "connections": "الاتصالات"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "مباشر",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "نشط",
+      "quarantined": "قيد العزل",
+      "quarantinedSeconds": "قيد العزل ({{seconds}}s)",
+      "disabled": "معطّل"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "عامة",
+      "private": "خاصة"
     }
   },
   "relativeAge": {

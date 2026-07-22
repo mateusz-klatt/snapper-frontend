@@ -98,17 +98,17 @@
     },
     "orderTypeOptions": {
       "market": "Αγοράς",
-      "limit": "Limit",
+      "limit": "Ορίου",
       "stop": "Stop",
       "stopLimit": "Stop Limit",
       "stop_limit": "Stop Limit"
     },
     "modeOptions": {
       "live": "Ζωντανή",
-      "paper": "Paper"
+      "paper": "Εικονική"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — μόνο δεδομένα αγοράς",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (εικονικό)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

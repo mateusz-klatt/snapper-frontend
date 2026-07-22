@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "একটি ওয়ালেট বেছে নিন...",
     "selectWalletPlaceholder": "ওয়ালেট নির্বাচন করুন...",
     "walletLabel": "ওয়ালেট",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (পেপার)",
     "unknownError": "অজানা ত্রুটি",
     "dash": "-"
   },
@@ -165,8 +165,8 @@
         "operatorPlaceholder": "অপারেটর নির্বাচন করুন...",
         "wallet": "ওয়ালেট",
         "scopeKind": "স্কোপ ধরন",
-        "underlyingPublicId": "Underlying Public ID",
-        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPublicId": "আন্ডারলাইং পাবলিক ID",
+        "instrumentPublicId": "ইনস্ট্রুমেন্ট পাবলিক ID",
         "underlyingPlaceholder": "যেমন BTC",
         "instrumentPlaceholder": "যেমন BTC-USD-PERP",
         "exchange": "এক্সচেঞ্জ",
@@ -177,7 +177,7 @@
         "notePlaceholder": "ঐচ্ছিক নোট"
       },
       "scopeKinds": {
-        "underlying": "Underlying",
+        "underlying": "আন্ডারলাইং",
         "instrument": "ইনস্ট্রুমেন্ট"
       },
       "validation": {
@@ -277,19 +277,19 @@
         "pemPlaceholder": "PEM ফরম্যাটের প্রাইভেট কী এখানে পেস্ট করুন"
       },
       "fieldLabels": {
-        "api_key": "API Key",
-        "api_secret": "API Secret",
-        "private_key_pem": "Private Key (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "api_key": "API কী",
+        "api_secret": "API সিক্রেট",
+        "private_key_pem": "প্রাইভেট কী (PEM)",
+        "client_id": "ক্লায়েন্ট ID",
+        "client_secret": "ক্লায়েন্ট সিক্রেট",
+        "refresh_token": "রিফ্রেশ টোকেন",
         "initial_balance": "প্রাথমিক ব্যালেন্স"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "API কী + সিক্রেট",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "পেপার"
       },
       "validation": {
         "walletRequired": "ওয়ালেট আবশ্যক",

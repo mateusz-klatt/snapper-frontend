@@ -10,14 +10,14 @@
   },
   "stats": {
     "total": "Kabuuan",
-    "buy": "Buy",
-    "sell": "Sell",
+    "buy": "Bumili",
+    "sell": "Magbenta",
     "avgStrength": "Average na lakas"
   },
   "card": {
     "strength": "Lakas",
     "price": "Presyo",
-    "exchange": "Exchange",
+    "exchange": "Palitan",
     "reason": "Dahilan:",
     "noPrice": "N/A"
   },

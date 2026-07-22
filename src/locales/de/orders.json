@@ -100,8 +100,8 @@
       "market": "Market",
       "limit": "Limit",
       "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop-Limit",
+      "stop_limit": "Stop-Limit"
     },
     "modeOptions": {
       "live": "Live",

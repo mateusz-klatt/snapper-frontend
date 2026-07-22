@@ -38,7 +38,7 @@
       "ariaLabel": "Aktiivinen lompakko",
       "placeholder": "Lompakko",
       "allWallets": "Kaikki lompakot",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktiivinen operaattori",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Jokin meni pieleen",
     "titleWithComponent": "Virhe komponentissa {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Pinojälki",
     "tryAgain": "Yritä uudelleen"
   },
   "nav": {

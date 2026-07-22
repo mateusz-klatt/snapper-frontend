@@ -78,11 +78,11 @@
     "chipAriaLabel": "آمار جفت با {{symbol}} در {{exchange}}: پیرسون {{pearson}}، مقدار p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "زمان:",
+    "live": "زنده",
+    "sliderAriaLabel": "پیمایش زمان بازار",
     "presets": {
-      "live": "Live",
+      "live": "زنده",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

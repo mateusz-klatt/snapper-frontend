@@ -72,9 +72,9 @@
     "typeHint": {
       "array": "(niz)",
       "object": "(objekt)",
-      "string": "(string)",
+      "string": "(niz znakova)",
       "number": "(broj)",
-      "boolean": "(boolean)",
+      "boolean": "(logička vrijednost)",
       "bigint": "(bigint)",
       "function": "(funkcija)",
       "symbol": "(simbol)",

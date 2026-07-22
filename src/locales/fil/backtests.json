@@ -19,11 +19,11 @@
     },
     "fields": {
       "timeframe": "Timeframe",
-      "period": "Period",
-      "initialCash": "Initial Cash",
+      "period": "Panahon",
+      "initialCash": "Panimulang cash",
       "id": "ID"
     },
-    "errorPrefix": "Error: {{message}}",
+    "errorPrefix": "Nagkaroon ng error: {{message}}",
     "filter": {
       "ariaLabel": "I-filter ang backtests ayon sa status",
       "options": {
@@ -44,13 +44,13 @@
     "title": "Pagpapatakbo ng backtest",
     "fields": {
       "strategy": "Strategy",
-      "instrument": "Instrument",
+      "instrument": "Instrumento",
       "status": "Katayuan",
-      "period": "Period",
-      "crossAsset": "Cross-asset attribution",
-      "configHash": "Config hash"
+      "period": "Panahon",
+      "crossAsset": "Attribution sa iba’t ibang asset",
+      "configHash": "Hash ng configuration"
     },
-    "crossAssetFlow": "{{source}} feed → {{target}} fills",
+    "crossAssetFlow": "{{source}} feed → mga execution sa {{target}}",
     "errors": {
       "invalidRunId": "Invalid ang run id — dapat UUID7 (nakuha \"{{id}}\").",
       "loadFailed": "Hindi na-load ang run: {{message}}",
@@ -61,17 +61,17 @@
     "title": "I-compare",
     "headingFull": "Paghahambing ng backtest",
     "loading": "Nilo-load ang comparison…",
-    "vs": "vs",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "vs": "kumpara sa",
+    "runLabel": "Pagpapatakbo {{label}} · {{id}} · {{status}}",
     "sections": {
-      "metrics": "Metrics",
-      "equityOverlay": "Equity overlay",
-      "trades": "Trades",
-      "signals": "Signals"
+      "metrics": "Mga sukatan",
+      "equityOverlay": "Overlay ng equity",
+      "trades": "Mga trade",
+      "signals": "Mga signal"
     },
     "pairingMode": {
-      "auto": "auto",
-      "manual": "manual"
+      "auto": "awtomatiko",
+      "manual": "manwal"
     },
     "errors": {
       "notFound": "Hindi nakita ang comparison sa kasalukuyang wallet.",
@@ -91,7 +91,7 @@
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",
       "source": {
         "allRuns": "lahat ng runs",
-        "sameConfig": "same config"
+        "sameConfig": "parehong configuration"
       },
       "errors": {
         "pickRequired": "pumili ng run mula sa listahan"
@@ -104,17 +104,17 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "P&L ng A",
+        "pnlB": "P&L ng B",
         "delta": "Δ"
       }
     },
     "metrics": {
       "empty": "Walang comparable metrics — parehong runs ay walang recorded values.",
       "columns": {
-        "name": "Metric",
-        "runA": "Run A",
-        "runB": "Run B",
+        "name": "Sukatan",
+        "runA": "Pagpapatakbo A",
+        "runB": "Pagpapatakbo B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,18 +122,18 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "Pagpapatakbo A",
+        "runB": "Pagpapatakbo B"
       }
     }
   },
   "progress": {
     "waiting": "Naghihintay ng progress…",
-    "candles": "{{done}} / {{total}} candles",
-    "candlesNoTotal": "{{done}} candles",
-    "equity": "equity {{value}}",
-    "signalsTrades": "{{signals}} sig / {{trades}} trades",
-    "milestoneLine": "milestone {{label}}",
+    "candles": "{{done}} / {{total}} candle",
+    "candlesNoTotal": "{{done}} candle",
+    "equity": "Equity: {{value}}",
+    "signalsTrades": "{{signals}} signal / {{trades}} trade",
+    "milestoneLine": "yugto {{label}}",
     "milestone": {
       "25pct": "25 %",
       "50pct": "50 %",
@@ -156,21 +156,21 @@
       "strategyPlaceholder": "— Pumili ng strategy —",
       "strategyLoading": "Nilo-load ang mga strategy…",
       "strategyError": "Hindi na-load ang mga strategy",
-      "instrumentLabel": "Instrument",
+      "instrumentLabel": "Instrumento",
       "instrumentPlaceholder": "hal. BTC-USD",
       "instrumentHelp": "Public id ng instrument na iba-backtest",
-      "exchangeLabel": "Exchange (feed source)",
+      "exchangeLabel": "Palitan (pinagmulan ng feed)",
       "exchangePlaceholder": "— Pumili ng exchange —",
       "timeframeLabel": "Timeframe",
-      "startDateLabel": "Start date",
-      "endDateLabel": "End date",
-      "initialCashLabel": "Initial cash",
-      "slippageBpsLabel": "Slippage (bps)",
-      "commissionBpsLabel": "Commission (bps)",
-      "executionModeLabel": "Execution mode",
-      "executionModeDirectDb": "Direct DB",
-      "executionModeZmqReplay": "ZMQ replay",
-      "targetExchangeLabel": "Target execution exchange",
+      "startDateLabel": "Petsa ng simula",
+      "endDateLabel": "Petsa ng pagtatapos",
+      "initialCashLabel": "Panimulang cash",
+      "slippageBpsLabel": "Slippage ng presyo (bps)",
+      "commissionBpsLabel": "Komisyon (bps)",
+      "executionModeLabel": "Paraan ng pagpapatupad",
+      "executionModeDirectDb": "Direktang DB",
+      "executionModeZmqReplay": "Replay ng ZMQ",
+      "targetExchangeLabel": "Target na palitan para sa pagpapatupad",
       "targetExchangeNone": "Wala (single-exchange)",
       "targetExchangeHelp": "Opsyonal — para sa cross-asset runs; iwanang walang laman para sa single-exchange"
     }

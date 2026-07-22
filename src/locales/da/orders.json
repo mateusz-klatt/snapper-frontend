@@ -31,7 +31,7 @@
     "orderId": "Ordre-ID",
     "leverage": "Gearing",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "KUN REDUKTION",
     "cancel": "Annuller",
     "cancelling": "Annullerer…",
     "cancelAriaLabel": "Annuller ordre {{orderId}}"
@@ -56,19 +56,19 @@
   "csv": {
     "orders": {
       "instrument": "Instrument",
-      "side": "Side",
+      "side": "Retning",
       "type": "Type",
       "status": "Status",
       "quantity": "Mængde",
       "price": "Pris",
       "leverage": "Gearing",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "Kun reduktion",
       "created": "Oprettet"
     },
     "executions": {
       "orderId": "Ordre-ID",
       "instrument": "Instrument",
-      "side": "Side",
+      "side": "Retning",
       "size": "Størrelse",
       "price": "Pris",
       "total": "Total",
@@ -83,7 +83,7 @@
     "fields": {
       "exchange": "Børs",
       "instrument": "Instrument",
-      "side": "Side",
+      "side": "Retning",
       "orderType": "Ordretype",
       "quantity": "Mængde",
       "price": "Pris",
@@ -100,15 +100,15 @@
       "market": "Markedsordre",
       "limit": "Limitordre",
       "stop": "Stopordre",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop-limit",
+      "stop_limit": "Stop-limit"
     },
     "modeOptions": {
       "live": "Live",
-      "paper": "Paper"
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — kun markedsdata",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

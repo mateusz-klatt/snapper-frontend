@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "یک کیف پول انتخاب کنید...",
     "selectWalletPlaceholder": "انتخاب کیف پول...",
     "walletLabel": "کیف پول",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (آزمایشی)",
     "unknownError": "خطای نامشخص",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "کلید API",
         "api_secret": "راز API",
         "private_key_pem": "کلید خصوصی (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "شناسه کلاینت",
+        "client_secret": "راز کلاینت",
+        "refresh_token": "توکن تازه‌سازی",
         "initial_balance": "موجودی اولیه"
       },
       "credentialTypes": {
         "api_key_secret": "کلید API + راز",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "آزمایشی"
       },
       "validation": {
         "walletRequired": "کیف پول الزامی است",

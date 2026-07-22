@@ -5,10 +5,10 @@
   },
   "sections": {
     "longRunning": "দীর্ঘমেয়াদি প্রসেস",
-    "executorTemplates": "Executor Templates",
+    "executorTemplates": "এক্সিকিউটর টেমপ্লেট",
     "executorTemplatesHint": "Template config সম্পাদনা করলে restart-এর পর এই exchange-এর সব ওয়ালেটে প্রভাব পড়ে। Templates config-only — executor চালাতে নিচের per-wallet instance শুরু করুন।",
     "walletInstances": "ওয়ালেট ইনস্ট্যান্স",
-    "taskProcesses": "Task Processes"
+    "taskProcesses": "টাস্ক প্রসেস"
   },
   "card": {
     "stop": "বন্ধ করুন",
@@ -44,16 +44,16 @@
     }
   },
   "template": {
-    "badge": "template",
+    "badge": "টেমপ্লেট",
     "mode": "মোড:",
     "parameters": "প্যারামিটার:",
     "paramCount": "{{count}} parameter",
     "noParams": "কোনো parameter সেট নেই"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
-    "manual": "manual"
+    "oneShot": "ওয়ান-শট",
+    "autoStart": "অটো-স্টার্ট",
+    "manual": "ম্যানুয়াল"
   },
   "actions": {
     "stopTitle": "{{name}} বন্ধ করুন",
@@ -63,15 +63,15 @@
   },
   "executionMode": {
     "title": "{{name}} শুরু করুন",
-    "label": "Execution Mode:",
-    "threadName": "Thread Mode",
+    "label": "নির্বাহ মোড:",
+    "threadName": "থ্রেড মোড",
     "threadDescription": "ওয়েব সার্ভারের মধ্যে embedded task হিসেবে চলে। দ্রুত startup, shared memory।",
-    "processName": "Process Mode",
+    "processName": "প্রসেস মোড",
     "processDescription": "আলাদা Python process হিসেবে চলে। Isolated, fault-tolerant, detailed monitoring।",
     "cancel": "বাতিল",
     "start": "{{name}} শুরু করুন",
-    "threadAriaLabel": "Thread Mode",
-    "processAriaLabel": "Process Mode"
+    "threadAriaLabel": "থ্রেড মোড",
+    "processAriaLabel": "প্রসেস মোড"
   },
   "toast": {
     "remoteActionFailed": "দূরবর্তী কাজ ব্যর্থ হয়েছে: {{message}}"

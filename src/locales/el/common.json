@@ -38,7 +38,7 @@
       "ariaLabel": "Ενεργό πορτοφόλι",
       "placeholder": "Πορτοφόλι",
       "allWallets": "Όλα τα πορτοφόλια",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (εικονικό)"
     },
     "operatorPicker": {
       "ariaLabel": "Ενεργός χειριστής",

@@ -97,7 +97,7 @@
     "revoked": "প্রত্যাহৃত",
     "createdAt": "তৈরি হয়েছে",
     "createdBy": "তৈরি করেছেন (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "পাবলিক ID",
     "maxOpenOrders": "সর্বোচ্চ খোলা অর্ডার",
     "maxDailyNotionalUsd": "সর্বোচ্চ দৈনিক notional USD",
     "maxCancelsPerMinute": "প্রতি মিনিটে সর্বোচ্চ বাতিল",

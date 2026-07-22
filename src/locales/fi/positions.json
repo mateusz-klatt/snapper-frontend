@@ -3,160 +3,160 @@
     "title": "Positiot"
   },
   "view": {
-    "current": "Current",
-    "timeline": "P&L Timeline",
-    "ariaLabel": "Positions view"
+    "current": "Nykyiset",
+    "timeline": "P&L-aikajana",
+    "ariaLabel": "Positionäkymä"
   },
   "timeline": {
     "controls": {
-      "window": "Window",
-      "windowAriaLabel": "Select timeline window",
-      "granularity": "Granularity",
-      "granularityAriaLabel": "Select timeline granularity",
+      "window": "Aikaväli",
+      "windowAriaLabel": "Valitse aikajanan aikaväli",
+      "granularity": "Tarkkuus",
+      "granularityAriaLabel": "Valitse aikajanan tarkkuus",
       "granularityOptions": {
         "oneMinute": "1m",
         "fiveMinutes": "5m",
         "oneHour": "1h",
         "oneDay": "1d"
       },
-      "valuationCurrency": "Valuation currency",
-      "valuationCurrencyAriaLabel": "Select valuation currency",
+      "valuationCurrency": "Arvostusvaluutta",
+      "valuationCurrencyAriaLabel": "Valitse arvostusvaluutta",
       "valuationCurrencyOptions": {
         "usd": "USD",
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "Last 24 hours",
-      "last7Days": "Last 7 days",
-      "last30Days": "Last 30 days",
-      "last90Days": "Last 90 days"
+      "last24Hours": "Viimeiset 24 tuntia",
+      "last7Days": "Viimeiset 7 päivää",
+      "last30Days": "Viimeiset 30 päivää",
+      "last90Days": "Viimeiset 90 päivää"
     },
-    "loading": "Loading P&L timeline…",
+    "loading": "Ladataan P&L-aikajanaa…",
     "error": {
-      "title": "Could not load P&L timeline",
-      "message": "Try again in a moment."
+      "title": "P&L-aikajanan lataaminen epäonnistui",
+      "message": "Yritä hetken kuluttua uudelleen."
     },
     "empty": {
-      "title": "No P&L history",
-      "message": "No P&L points are available for this window."
+      "title": "P&L-historiaa ei ole",
+      "message": "Tällä aikavälillä ei ole saatavilla P&L-pisteitä."
     },
     "noWallet": {
-      "title": "Select a wallet",
-      "message": "Choose a wallet to view its P&L timeline."
+      "title": "Valitse lompakko",
+      "message": "Näytä lompakon P&L-aikajana valitsemalla lompakko."
     },
-    "incompleteBadge": "Incomplete points: {{count}}",
+    "incompleteBadge": "Puutteellisia pisteitä: {{count}}",
     "incompleteness": {
-      "title": "Why points are incomplete",
-      "description": "Reasons cover the full loaded window. Counts can overlap when a point has more than one cause.",
-      "affectedPoints": "Affected points: {{count}}",
-      "triggerInstrument": "Trigger instrument: {{instrument}}",
+      "title": "Miksi pisteet ovat puutteellisia",
+      "description": "Syyt koskevat koko ladattua aikaväliä. Määrät voivat mennä päällekkäin, jos pisteellä on useampi kuin yksi syy.",
+      "affectedPoints": "Pisteitä, joihin syy vaikuttaa: {{count}}",
+      "triggerInstrument": "Laukaiseva instrumentti: {{instrument}}",
       "scope": {
-        "global": "Global",
-        "instrument": "Instrument"
+        "global": "Globaali",
+        "instrument": "Instrumentti"
       },
       "tier": {
-        "mark_incomplete": "MARK-incomplete",
-        "untrusted": "UNTRUSTED"
+        "mark_incomplete": "PUUTTEELLINEN MARK-HINTA",
+        "untrusted": "EPÄLUOTETTAVA"
       },
       "reasons": {
-        "scope_order_regression": "Scope order regression",
-        "before_activation": "Point precedes activation",
-        "activation_baseline_non_finite": "Activation baseline is non-finite",
-        "fill_evidence_gap": "Durable fill evidence gap",
-        "seed_quantity_non_finite": "Seed quantity is non-finite",
-        "cost_basis_unavailable": "Cost basis unavailable",
-        "execution_price_provenance_unproven": "Execution price provenance unproven",
-        "execution_size_invalid": "Execution size invalid",
-        "execution_price_invalid": "Execution price invalid",
-        "fx_conversion_unproven": "FX conversion unproven",
-        "mark_unavailable": "Mark unavailable",
-        "cumulative_non_finite": "Cumulative value is non-finite",
-        "unrealized_non_finite": "Unrealized P&L is non-finite",
-        "net_non_finite": "Net P&L is non-finite",
-        "attribution_value_non_finite": "Attribution value is non-finite",
-        "attribution_reconciliation_failed": "Attribution reconciliation failed"
+        "scope_order_regression": "Aikaleima taantui alueen järjestyksessä",
+        "before_activation": "Piste edeltää aktivointia",
+        "activation_baseline_non_finite": "Aktivoinnin lähtöarvo ei ole äärellinen",
+        "fill_evidence_gap": "Puute pysyvästi tallennetuissa toteutustiedoissa",
+        "seed_quantity_non_finite": "Alustava määrä ei ole äärellinen",
+        "cost_basis_unavailable": "Hankintameno ei ole saatavilla",
+        "execution_price_provenance_unproven": "Toteutushinnan alkuperää ei ole todennettu",
+        "execution_size_invalid": "Toteutuksen koko on virheellinen",
+        "execution_price_invalid": "Toteutushinta on virheellinen",
+        "fx_conversion_unproven": "Valuuttamuunnosta ei ole todennettu",
+        "mark_unavailable": "Mark-hinta ei ole saatavilla",
+        "cumulative_non_finite": "Kumulatiivinen arvo ei ole äärellinen",
+        "unrealized_non_finite": "Realisoitumaton P&L ei ole äärellinen",
+        "net_non_finite": "Netto-P&L ei ole äärellinen",
+        "attribution_value_non_finite": "Kohdistusarvo ei ole äärellinen",
+        "attribution_reconciliation_failed": "Kohdistuksen täsmäytys epäonnistui"
       }
     },
-    "timeTravelNotice": "Historical view: showing P&L as known at {{asOf}}.",
+    "timeTravelNotice": "Historiallinen näkymä: P&L näytetään ajankohtana {{asOf}} tiedettyjen tietojen mukaisesti.",
     "chart": {
-      "title": "P&L over time",
-      "net": "Net P&L",
-      "realized": "Realized P&L",
-      "unrealized": "Unrealized P&L",
-      "valuationCurrency": "Valuation currency: {{currency}}"
+      "title": "P&L ajan kuluessa",
+      "net": "Netto-P&L",
+      "realized": "Realisoitunut P&L",
+      "unrealized": "Realisoitumaton P&L",
+      "valuationCurrency": "Arvostusvaluutta: {{currency}}"
     },
     "markers": {
-      "show": "Show decision markers",
-      "hide": "Hide decision markers",
-      "legendAriaLabel": "Decision marker legend",
-      "truncated": "Marker results were truncated at {{limit}}. Additional decisions or fills exist in this window.",
+      "show": "Näytä päätösmerkinnät",
+      "hide": "Piilota päätösmerkinnät",
+      "legendAriaLabel": "Päätösmerkintöjen selite",
+      "truncated": "Merkintätulokset rajattiin {{limit}} tulokseen. Tällä aikavälillä on lisää päätöksiä tai toteutuksia.",
       "legend": {
-        "fillExecuted": "Fill · executed",
-        "signalExecuted": "Signal · executed",
-        "signalNoFill": "Signal · no fill",
-        "aiExecuted": "AI decision · executed",
-        "aiRejected": "AI decision · rejected",
-        "aiNoFill": "AI decision · no fill"
+        "fillExecuted": "Toteutus · toteutettu",
+        "signalExecuted": "Signaali · toteutettu",
+        "signalNoFill": "Signaali · ei toteutusta",
+        "aiExecuted": "AI-päätös · toteutettu",
+        "aiRejected": "AI-päätös · hylätty",
+        "aiNoFill": "AI-päätös · ei toteutusta"
       },
       "detail": {
-        "title": "Marker details",
-        "type": "Type",
-        "time": "Time",
-        "instrument": "Instrument",
-        "outcome": "Outcome",
-        "status": "Status",
-        "side": "Side",
-        "size": "Size",
-        "price": "Price",
-        "executionId": "Execution ID",
-        "orderId": "Order ID",
-        "strategyName": "Strategy name",
-        "strength": "Strength",
-        "reason": "Reason",
-        "signalId": "Signal ID",
-        "strategyId": "Strategy ID",
-        "reviewId": "Review ID",
-        "eventId": "Event ID",
-        "decision": "Decision",
-        "rationale": "Rationale",
+        "title": "Merkinnän tiedot",
+        "type": "Tyyppi",
+        "time": "Aika",
+        "instrument": "Instrumentti",
+        "outcome": "Lopputulos",
+        "status": "Tila",
+        "side": "Suunta",
+        "size": "Koko",
+        "price": "Hinta",
+        "executionId": "Toteutuksen ID",
+        "orderId": "Toimeksiannon ID",
+        "strategyName": "Strategian nimi",
+        "strength": "Vahvuus",
+        "reason": "Syy",
+        "signalId": "Signaalin ID",
+        "strategyId": "Strategian ID",
+        "reviewId": "Tarkistuksen ID",
+        "eventId": "Tapahtuman ID",
+        "decision": "Päätös",
+        "rationale": "Perustelu",
         "noValue": "—",
         "types": {
-          "fill": "Fill",
-          "signal": "Signal",
-          "ai_decision": "AI decision"
+          "fill": "Toteutus",
+          "signal": "Signaali",
+          "ai_decision": "AI-päätös"
         },
         "outcomes": {
-          "executed": "Executed",
-          "rejected": "Rejected",
-          "no_fill": "No fill"
+          "executed": "Toteutettu",
+          "rejected": "Hylätty",
+          "no_fill": "Ei toteutusta"
         }
       }
     },
 
     "contributions": {
-      "title": "Latest per-instrument contributions",
-      "instrument": "Instrument",
-      "realized": "Realized P&L",
-      "fees": "Fees",
-      "accrual": "Accrual",
-      "unrealized": "Unrealized P&L",
-      "net": "Net P&L",
+      "title": "Viimeisimmät instrumenttikohtaiset vaikutukset",
+      "instrument": "Instrumentti",
+      "realized": "Realisoitunut P&L",
+      "fees": "Kulut",
+      "accrual": "Kertynyt rahoitus",
+      "unrealized": "Realisoitumaton P&L",
+      "net": "Netto-P&L",
       "noValue": "—",
-      "empty": "No instrument contributions are available."
+      "empty": "Instrumenttikohtaisia vaikutuksia ei ole saatavilla."
     },
     "attribution": {
-      "title": "Latest P&L attribution",
-      "ariaLabel": "Latest P&L attribution by origin and strategy",
-      "origin": "Origin",
-      "noStrategy": "No proven strategy",
-      "withheld": "Withheld",
-      "valueSemantics": "A displayed zero is proven. Withheld means the value could not be proven.",
-      "empty": "Attribution is unavailable for the latest P&L point.",
+      "title": "Viimeisin P&L-kohdistus",
+      "ariaLabel": "Viimeisin P&L-kohdistus alkuperän ja strategian mukaan",
+      "origin": "Alkuperä",
+      "noStrategy": "Ei todennettua strategiaa",
+      "withheld": "Ei todennettavissa",
+      "valueSemantics": "Näytetty nolla on todennettu. Merkintä ”Ei todennettavissa” tarkoittaa, ettei arvoa voitu todentaa.",
+      "empty": "Uusimman P&L-pisteen kohdistusta ei ole saatavilla.",
       "origins": {
-        "manual": "Manual · direct",
-        "plan": "Plan · automated",
-        "system": "System · automated",
-        "unattributed": "Unattributed · provenance unknown"
+        "manual": "Manuaalinen · suora",
+        "plan": "Suunnitelma · automaattinen",
+        "system": "Järjestelmä · automaattinen",
+        "unattributed": "Kohdistamaton · alkuperä tuntematon"
       }
     }
   },
@@ -164,7 +164,7 @@
     "trailingStopBadge": "TS: ${{stop}}",
     "trailingStopPending": "TS: odottaa",
     "slTpButton": "SL/TP",
-    "trailButton": "Trail",
+    "trailButton": "Liukuva stop",
     "quantity": "Määrä",
     "averageEntry": "Keskim. avaushinta",
     "unrealizedPnl": "Realisoitumaton P&L",

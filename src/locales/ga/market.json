@@ -78,11 +78,11 @@
     "chipAriaLabel": "Staitisticí péire le {{symbol}} ar {{exchange}}: Pearson {{pearson}}, p-luach {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Am:",
+    "live": "Beo",
+    "sliderAriaLabel": "Bog trí amlíne an mhargaidh",
     "presets": {
-      "live": "Live",
+      "live": "Beo",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

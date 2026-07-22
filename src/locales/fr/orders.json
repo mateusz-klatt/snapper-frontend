@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "N/D",
-    "priceMarket": "Market",
+    "priceMarket": "Au marché",
     "quantity": "Quantité",
     "price": "Prix",
     "created": "Créé",
@@ -97,18 +97,18 @@
       "sell": "Vente"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
+      "market": "Au marché",
+      "limit": "Limite",
       "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop-limit",
+      "stop_limit": "Stop-limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Réel",
+      "paper": "Démo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — données de marché uniquement",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (démo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

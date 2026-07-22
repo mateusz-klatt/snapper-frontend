@@ -51,8 +51,8 @@
     "noParams": "ingen parametre sat"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "engangskørsel",
+    "autoStart": "autostart",
     "manual": "manuel"
   },
   "actions": {

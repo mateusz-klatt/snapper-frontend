@@ -280,9 +280,9 @@
         "api_key": "API-Schlüssel",
         "api_secret": "API-Secret",
         "private_key_pem": "Privater Schlüssel (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "Client-ID",
+        "client_secret": "Client-Secret",
+        "refresh_token": "Refresh-Token",
         "initial_balance": "Anfangsguthaben"
       },
       "credentialTypes": {

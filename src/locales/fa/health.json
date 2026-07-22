@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}د",
     "uptimeHours": "{{hours}}س {{minutes}}د",
     "uptimeDays": "{{days}}ر {{hours}}س",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "بک‌تست {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "ناموجود",
     "uptimeLabel": "زمان کارکرد",
     "exitCode": "کد خروج: {{code}}",
     "service": "سرویس",
-    "backtest": "backtest"
+    "backtest": "بک‌تست"
   },
   "dbStats": {
     "title": "آمار پایگاه داده",
@@ -61,7 +61,7 @@
     "totalHint": "در PostgreSQL، مقدار کل یک برآورد برنامه‌ریز است (در محدوده انحراف autovacuum دقیق است)؛ در SQLite دقیق است."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "سایدکار اعلان",
     "loading": "در حال بارگذاری معیارهای اعلان…",
     "unavailable": "معیارهای اعلان در دسترس نیست: {{message}}",
     "fallbackError": "بارگذاری معیارهای اعلان ناموفق بود.",
@@ -121,62 +121,62 @@
     "liveConns": "اتصال‌های زنده: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "اشیا: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "نخ‌های اجرا (%)",
     "networkConns": "اتصال‌های شبکه",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "فعال",
     "tracemallocIdle": "بیکار"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "سلامت خروجی شبکه",
+    "loading": "در حال بارگذاری سلامت خروجی شبکه…",
+    "unavailable": "سلامت خروجی شبکه در دسترس نیست: {{message}}",
+    "fallbackError": "بارگذاری سلامت خروجی شبکه ناموفق بود.",
+    "enabled": "فعال",
+    "disabled": "غیرفعال",
+    "disabledMessage": "استخر خروجی غیرفعال است؛ ترافیک خروجی از مسیر پیش‌فرض شبکه استفاده می‌کند.",
+    "fallbackWarning": "هشدار: ترافیک خصوصی از مسیر جایگزین VPN عبور می‌کند، نه از مسیر خروجی مستقیم.",
+    "noRoutes": "هیچ مسیر خروجی پیکربندی نشده است.",
+    "anyExchange": "همه",
+    "none": "هیچ‌کدام",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "کانتینرهای گزارش‌دهنده",
+      "item": "{{container}} · {{age}} · مسیرها: {{routeCount}}",
+      "stale": "· به‌روزرسانی‌نشده"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · آخرین مشاهده {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "نامشخص",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "استخر",
+      "policy": "سیاست قرنطینه",
+      "fallbackRoute": "مسیر جایگزین ترافیک خصوصی",
+      "routes": "مسیرها"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "انتظار",
+      "raise": "ایجاد خطا"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "نوع",
+      "region": "منطقه",
+      "exitIp": "IP خروجی",
+      "provider": "ارائه‌دهنده",
+      "priority": "اولویت",
+      "allowedExchanges": "صرافی‌های مجاز",
+      "status": "وضعیت",
+      "inUse": "در حال استفاده",
+      "traffic": "ترافیک",
+      "reservations": "رزروهای فعال",
+      "connections": "اتصال‌ها"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "مستقیم",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "فعال",
+      "quarantined": "قرنطینه‌شده",
+      "quarantinedSeconds": "قرنطینه‌شده ({{seconds}}s)",
+      "disabled": "غیرفعال"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "عمومی",
+      "private": "خصوصی"
     }
   },
   "relativeAge": {

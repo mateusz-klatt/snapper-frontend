@@ -78,11 +78,11 @@
     "chipAriaLabel": "Στατιστικά ζεύγους με {{symbol}} στην αγορά {{exchange}}: Pearson {{pearson}}, τιμή p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Χρόνος:",
+    "live": "Ζωντανά",
+    "sliderAriaLabel": "Περιήγηση στη χρονική γραμμή της αγοράς",
     "presets": {
-      "live": "Live",
+      "live": "Ζωντανά",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

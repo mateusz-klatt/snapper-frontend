@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Vælg en wallet...",
     "selectWalletPlaceholder": "Vælg wallet...",
     "walletLabel": "Wallet",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Ukendt fejl",
     "dash": "-"
   },
@@ -166,7 +166,7 @@
         "wallet": "Wallet",
         "scopeKind": "Omfangstype",
         "underlyingPublicId": "Underliggende Public ID",
-        "instrumentPublicId": "Instrument Public ID",
+        "instrumentPublicId": "Instrumentets Public ID",
         "underlyingPlaceholder": "f.eks. BTC",
         "instrumentPlaceholder": "f.eks. BTC-USD-PERP",
         "exchange": "Børs",
@@ -280,16 +280,16 @@
         "api_key": "API-nøgle",
         "api_secret": "API-secret",
         "private_key_pem": "Privat nøgle (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "Klient-ID",
+        "client_secret": "Klienthemmelighed",
+        "refresh_token": "Opdateringstoken",
         "initial_balance": "Startsaldo"
       },
       "credentialTypes": {
         "api_key_secret": "API-nøgle + secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Wallet er påkrævet",

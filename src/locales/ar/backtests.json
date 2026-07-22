@@ -131,7 +131,7 @@
     "waiting": "في انتظار التقدم…",
     "candles": "{{done}} / {{total}} شموع",
     "candlesNoTotal": "{{done}} شموع",
-    "equity": "equity {{value}}",
+    "equity": "حقوق الملكية {{value}}",
     "signalsTrades": "{{signals}} إشارة / {{trades}} صفقات",
     "milestoneLine": "مرحلة {{label}}",
     "milestone": {

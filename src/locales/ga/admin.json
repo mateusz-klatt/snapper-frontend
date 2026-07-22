@@ -280,8 +280,8 @@
         "api_key": "Eochair API",
         "api_secret": "Rún API",
         "private_key_pem": "Eochair Phríobháideach (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
+        "client_id": "ID Cliaint",
+        "client_secret": "Rún Cliaint",
         "refresh_token": "Comhartha Athnuachana",
         "initial_balance": "Iarmhéid Tosaigh"
       },

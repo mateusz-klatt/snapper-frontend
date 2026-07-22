@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Choisir un wallet...",
     "selectWalletPlaceholder": "Sélectionner un wallet...",
     "walletLabel": "Wallet",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (démo)",
     "unknownError": "Erreur inconnue",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "Clé API",
         "api_secret": "Secret API",
         "private_key_pem": "Clé privée (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID client",
+        "client_secret": "Secret client",
+        "refresh_token": "Jeton d'actualisation",
         "initial_balance": "Solde initial"
       },
       "credentialTypes": {
         "api_key_secret": "Clé API + Secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Démo"
       },
       "validation": {
         "walletRequired": "Le wallet est requis",

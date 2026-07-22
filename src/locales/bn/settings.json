@@ -62,7 +62,7 @@
   "jsonEditor": {
     "formEditor": "ফর্ম এডিটর",
     "rawEditor": "Raw JSON এডিটর",
-    "rawJson": "Raw JSON",
+    "rawJson": "র' JSON",
     "switchToForm": "ফর্মে যান",
     "importToForm": "ফর্মে ইমপোর্ট করুন",
     "parseError": "পার্স ত্রুটি: {{message}}",

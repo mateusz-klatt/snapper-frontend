@@ -44,7 +44,7 @@
     },
     "scope": {
       "heading": "Scope",
-      "operatorLabel": "Operator public_id (optional)",
+      "operatorLabel": "public_id des Operators (optional)",
       "operatorPlaceholder": "Leer lassen, um den primären Operator des Aufrufers zu erben"
     },
     "caps": {
@@ -62,7 +62,7 @@
     "review": {
       "heading": "Prüfen & erstellen",
       "rowLabel": "Bezeichnung",
-      "rowOperator": "Operator public_id",
+      "rowOperator": "public_id des Operators",
       "rowMaxOpenOrders": "Max. offene Aufträge",
       "rowMaxDailyNotional": "Max. tägliches Nominal in USD",
       "rowMaxCancelsPerMinute": "Max. Stornierungen pro Minute",

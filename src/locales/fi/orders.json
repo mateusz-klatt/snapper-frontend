@@ -100,15 +100,15 @@
       "market": "Markkina",
       "limit": "Limit-toimeksianto",
       "stop": "Stop-toimeksianto",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop-limit-toimeksianto",
+      "stop_limit": "Stop-limit-toimeksianto"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Oikea",
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — vain markkinatiedot",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

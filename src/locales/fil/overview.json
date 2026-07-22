@@ -20,23 +20,23 @@
   },
   "processStatus": {
     "title": "Katayuan ng mga Proseso",
-    "feeds": "Feeds",
-    "strategies": "Strategies",
-    "executors": "Executors",
-    "brokers": "Brokers"
+    "feeds": "Mga feed",
+    "strategies": "Mga strategy",
+    "executors": "Mga executor",
+    "brokers": "Mga broker"
   },
   "portfolio": {
     "title": "Buod ng portfolio",
     "totalValue": "Kabuuang halaga",
-    "longExposure": "Long exposure",
-    "shortExposure": "Short exposure",
-    "netDelta": "Net delta",
-    "unrealizedPnl": "Unrealized P&L",
+    "longExposure": "Long na exposure",
+    "shortExposure": "Short na exposure",
+    "netDelta": "Netong delta",
+    "unrealizedPnl": "Hindi pa na-realize na P&L",
     "pnlPercent": "P&L %",
     "positions": "Mga position",
     "instrumentsCount": "{{count}} instrument",
     "empty": "Walang positions data available",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Hindi kumpleto ang data — walang magagamit na presyong batayan o presyo ng pagpasok ang ilang posisyon; mga nalalamang bahagi lamang ang kasama sa mga kabuuan"
   },
   "signals": {
     "title": "Kamakailang signals",

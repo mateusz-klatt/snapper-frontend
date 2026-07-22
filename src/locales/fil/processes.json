@@ -23,7 +23,7 @@
     "status": {
       "running": "tumatakbo",
       "stopped": "nakahinto",
-      "error": "error",
+      "error": "may error",
       "starting": "sini-start",
       "stopping": "sini-stop",
       "warning": "babala",
@@ -45,15 +45,15 @@
   },
   "template": {
     "badge": "template",
-    "mode": "Mode:",
+    "mode": "Paraan:",
     "parameters": "Mga parameter:",
     "paramCount": "{{count}} parameter",
     "noParams": "walang naka-set na parameters"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
-    "manual": "manual"
+    "oneShot": "isang takbo",
+    "autoStart": "awtomatikong pagsisimula",
+    "manual": "manwal"
   },
   "actions": {
     "stopTitle": "I-stop ang {{name}}",
@@ -70,8 +70,8 @@
     "processDescription": "Tumatakbo bilang hiwalay na Python process. Isolated, fault-tolerant, at may detailed monitoring.",
     "cancel": "Kanselahin",
     "start": "I-start ang {{name}}",
-    "threadAriaLabel": "Thread Mode",
-    "processAriaLabel": "Process Mode"
+    "threadAriaLabel": "Mode ng thread",
+    "processAriaLabel": "Mode ng proseso"
   },
   "toast": {
     "remoteActionFailed": "Nabigo ang malayuang aksyon: {{message}}"

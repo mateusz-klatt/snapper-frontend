@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Odaberite novčanik...",
     "selectWalletPlaceholder": "Odaberite novčanik...",
     "walletLabel": "Novčanik",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Nepoznata greška",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "API ključ + tajna",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Novčanik je obavezan",

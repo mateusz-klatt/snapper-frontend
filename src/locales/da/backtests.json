@@ -70,7 +70,7 @@
       "signals": "Signaler"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatisk",
       "manual": "manuel"
     },
     "errors": {
@@ -129,9 +129,9 @@
   },
   "progress": {
     "waiting": "Afventer fremdrift…",
-    "candles": "{{done}} / {{total}} candles",
-    "candlesNoTotal": "{{done}} candles",
-    "equity": "equity {{value}}",
+    "candles": "{{done}} / {{total}} kurslys",
+    "candlesNoTotal": "{{done}} kurslys",
+    "equity": "egenkapital {{value}}",
     "signalsTrades": "{{signals}} sig / {{trades}} handler",
     "milestoneLine": "milepæl {{label}}",
     "milestone": {
@@ -165,7 +165,7 @@
       "startDateLabel": "Startdato",
       "endDateLabel": "Slutdato",
       "initialCashLabel": "Startkapital",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Prisglidning (bps)",
       "commissionBpsLabel": "Kurtage (bps)",
       "executionModeLabel": "Udførselstilstand",
       "executionModeDirectDb": "Direkte DB",

@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "ناموجود",
-    "priceMarket": "Market",
+    "priceMarket": "مارکت",
     "quantity": "مقدار",
     "price": "قیمت",
     "created": "ایجاد شد",
@@ -97,18 +97,18 @@
       "sell": "فروش"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "مارکت",
+      "limit": "لیمیت",
+      "stop": "استاپ",
+      "stopLimit": "استاپ لیمیت",
+      "stop_limit": "استاپ لیمیت"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "واقعی",
+      "paper": "آزمایشی"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — فقط داده‌های بازار",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (آزمایشی)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

@@ -33,7 +33,7 @@
     "uptimeMinutes": "{{minutes}} λεπ.",
     "uptimeHours": "{{hours}} ώ. {{minutes}} λεπ.",
     "uptimeDays": "{{days}} ημ. {{hours}} ώ.",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Ιστορικός έλεγχος {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "Χρόνος λειτουργίας",
@@ -61,7 +61,7 @@
     "totalHint": "Στο PostgreSQL, το Σύνολο είναι εκτίμηση του σχεδιαστή ερωτημάτων (ακριβές εντός της απόκλισης του autovacuum)· στο SQLite είναι ακριβές."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "Βοηθητική υπηρεσία ειδοποιήσεων",
     "loading": "Φόρτωση μετρικών ειδοποιήσεων…",
     "unavailable": "Οι μετρικές ειδοποιήσεων δεν είναι διαθέσιμες: {{message}}",
     "fallbackError": "Αποτυχία φόρτωσης μετρικών ειδοποιήσεων.",
@@ -117,9 +117,9 @@
     "asyncioTasks": "Εργασίες Asyncio",
     "asyncioActive": "{{count}} ενεργές",
     "asyncioPending": "+ {{count}} σε εκκρεμότητα",
-    "dbPool": "DB Pool",
+    "dbPool": "Ομάδα συνδέσεων DB",
     "liveConns": "Ζωντανές συνδέσεις: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Γενιές GC 0/1/2",
     "gcObjects": "Αντικείμενα: {{value}}",
     "threadsPercent": "Νήματα %",
     "networkConns": "Συνδέσεις δικτύου",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Αδρανές"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Υγεία εξερχόμενης κίνησης",
+    "loading": "Φόρτωση κατάστασης εξερχόμενης κίνησης…",
+    "unavailable": "Η κατάσταση εξερχόμενης κίνησης δεν είναι διαθέσιμη: {{message}}",
+    "fallbackError": "Αποτυχία φόρτωσης κατάστασης εξερχόμενης κίνησης.",
+    "enabled": "Ενεργοποιημένο",
+    "disabled": "Απενεργοποιημένο",
+    "disabledMessage": "Η ομάδα διαδρομών εξόδου είναι απενεργοποιημένη· η εξερχόμενη κίνηση χρησιμοποιεί την προεπιλεγμένη διαδρομή δικτύου.",
+    "fallbackWarning": "Προειδοποίηση: η ιδιωτική κίνηση χρησιμοποιεί την εφεδρική διαδρομή VPN και όχι απευθείας έξοδο.",
+    "noRoutes": "Δεν έχουν διαμορφωθεί διαδρομές εξερχόμενης κίνησης.",
+    "anyExchange": "Όλες",
+    "none": "Κανένα",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Κοντέινερ που αναφέρουν κατάσταση",
+      "item": "{{container}} · {{age}} · διαδρομές: {{routeCount}}",
+      "stale": "· παρωχημένο"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · τελευταία εμφάνιση {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "άγνωστο",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Ομάδα διαδρομών",
+      "policy": "Πολιτική καραντίνας",
+      "fallbackRoute": "Εφεδρική ιδιωτική διαδρομή",
+      "routes": "Διαδρομές"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Αναμονή",
+      "raise": "Δημιουργία σφάλματος"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Είδος",
+      "region": "Περιοχή",
+      "exitIp": "IP εξόδου",
+      "provider": "Πάροχος",
+      "priority": "Προτεραιότητα",
+      "allowedExchanges": "Επιτρεπόμενες αγορές",
+      "status": "Κατάσταση",
+      "inUse": "Σε χρήση",
+      "traffic": "Κίνηση",
+      "reservations": "Ενεργές δεσμεύσεις",
+      "connections": "Συνδέσεις"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "απευθείας",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Ενεργό",
+      "quarantined": "Σε καραντίνα",
+      "quarantinedSeconds": "Σε καραντίνα ({{seconds}}s)",
+      "disabled": "Απενεργοποιημένο"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "δημόσια",
+      "private": "ιδιωτική"
     }
   },
   "relativeAge": {
