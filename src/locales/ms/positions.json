@@ -45,6 +45,38 @@
       "message": "Choose a wallet to view its P&L timeline."
     },
     "incompleteBadge": "Incomplete points: {{count}}",
+    "incompleteness": {
+      "title": "Why points are incomplete",
+      "description": "Reasons cover the full loaded window. Counts can overlap when a point has more than one cause.",
+      "affectedPoints": "Affected points: {{count}}",
+      "triggerInstrument": "Trigger instrument: {{instrument}}",
+      "scope": {
+        "global": "Global",
+        "instrument": "Instrument"
+      },
+      "tier": {
+        "mark_incomplete": "MARK-incomplete",
+        "untrusted": "UNTRUSTED"
+      },
+      "reasons": {
+        "scope_order_regression": "Scope order regression",
+        "before_activation": "Point precedes activation",
+        "activation_baseline_non_finite": "Activation baseline is non-finite",
+        "fill_evidence_gap": "Durable fill evidence gap",
+        "seed_quantity_non_finite": "Seed quantity is non-finite",
+        "cost_basis_unavailable": "Cost basis unavailable",
+        "execution_price_provenance_unproven": "Execution price provenance unproven",
+        "execution_size_invalid": "Execution size invalid",
+        "execution_price_invalid": "Execution price invalid",
+        "fx_conversion_unproven": "FX conversion unproven",
+        "mark_unavailable": "Mark unavailable",
+        "cumulative_non_finite": "Cumulative value is non-finite",
+        "unrealized_non_finite": "Unrealized P&L is non-finite",
+        "net_non_finite": "Net P&L is non-finite",
+        "attribution_value_non_finite": "Attribution value is non-finite",
+        "attribution_reconciliation_failed": "Attribution reconciliation failed"
+      }
+    },
     "timeTravelNotice": "Historical view: showing P&L as known at {{asOf}}.",
     "chart": {
       "title": "P&L over time",

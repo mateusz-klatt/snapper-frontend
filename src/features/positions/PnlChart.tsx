@@ -71,7 +71,7 @@ const buildSeriesData = (
     const time = toUtc(point.point_time)
     const value = pick(point)
 
-    return point.valuation_status === 'incomplete' || value === null ? { time } : { time, value }
+    return value === null ? { time } : { time, value }
   })
 
 const markerSourceId = (marker: PnlTimelineMarkerData): string => {
@@ -134,10 +134,7 @@ const buildMarkerAnchorData = (
   markerRecords: readonly MarkerRecord[]
 ): LineSeriesData => {
   const valuedPoints = points
-    .filter(
-      (point): point is PnlTimelinePointData & { net_pnl: number } =>
-        point.valuation_status === 'complete' && point.net_pnl !== null
-    )
+    .filter((point): point is PnlTimelinePointData & { net_pnl: number } => point.net_pnl !== null)
     .map(point => ({ time: toUtc(point.point_time), value: point.net_pnl }))
   const markerTimes: UTCTimestamp[] = []
 

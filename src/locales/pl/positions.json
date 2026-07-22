@@ -45,6 +45,38 @@
       "message": "Wybierz portfel, aby wyświetlić jego oś czasu P&L."
     },
     "incompleteBadge": "Punkty z niepełną wyceną: {{count}}",
+    "incompleteness": {
+      "title": "Dlaczego punkty są niepełne",
+      "description": "Powody dotyczą całego wczytanego zakresu. Liczby mogą się nakładać, gdy punkt ma więcej niż jedną przyczynę.",
+      "affectedPoints": "Dotknięte punkty: {{count}}",
+      "triggerInstrument": "Instrument wyzwalający: {{instrument}}",
+      "scope": {
+        "global": "Globalny",
+        "instrument": "Instrument"
+      },
+      "tier": {
+        "mark_incomplete": "Niepełna wycena MARK",
+        "untrusted": "NIEZAUFANE"
+      },
+      "reasons": {
+        "scope_order_regression": "Regresja kolejności zleceń w zakresie",
+        "before_activation": "Punkt sprzed aktywacji",
+        "activation_baseline_non_finite": "Nieskończona lub nieokreślona wartość bazowa aktywacji",
+        "fill_evidence_gap": "Luka w trwałych dowodach realizacji",
+        "seed_quantity_non_finite": "Nieskończona lub nieokreślona początkowa ilość",
+        "cost_basis_unavailable": "Niedostępna baza kosztowa",
+        "execution_price_provenance_unproven": "Niepotwierdzone pochodzenie ceny realizacji",
+        "execution_size_invalid": "Nieprawidłowa wielkość realizacji",
+        "execution_price_invalid": "Nieprawidłowa cena realizacji",
+        "fx_conversion_unproven": "Niepotwierdzone przeliczenie walutowe",
+        "mark_unavailable": "Niedostępna cena mark",
+        "cumulative_non_finite": "Nieskończona lub nieokreślona wartość skumulowana",
+        "unrealized_non_finite": "Nieskończony lub nieokreślony niezrealizowany P&L",
+        "net_non_finite": "Nieskończony lub nieokreślony P&L netto",
+        "attribution_value_non_finite": "Nieskończona lub nieokreślona wartość atrybucji",
+        "attribution_reconciliation_failed": "Nieudane uzgodnienie atrybucji"
+      }
+    },
     "timeTravelNotice": "Widok historyczny: P&L według wiedzy dostępnej w chwili {{asOf}}.",
     "chart": {
       "title": "P&L w czasie",

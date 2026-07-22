@@ -7,6 +7,8 @@ const contribution = (
   overrides: Partial<PnlInstrumentContributionData> = {}
 ): PnlInstrumentContributionData => ({
   instrument_public_id: 'instrument-1',
+  native_symbol: 'BTC-USD',
+  exchange: 'kraken',
   realized_pnl: 10,
   fee_pnl: -2,
   accrual_pnl: 0,
@@ -20,6 +22,8 @@ describe('ContributionTable', () => {
 
     expect(screen.getByText('Latest per-instrument contributions')).toBeInTheDocument()
     expect(screen.getByText('USD')).toBeInTheDocument()
+    expect(screen.getByText('BTC-USD · kraken')).toBeInTheDocument()
+    expect(screen.queryByText('instrument-1')).not.toBeInTheDocument()
     expect(screen.getByTestId('contribution-instrument-1-realized')).toHaveTextContent('+10.00')
     expect(screen.getByTestId('contribution-instrument-1-realized').className).toContain(
       'text-rising-600'
@@ -35,12 +39,35 @@ describe('ContributionTable', () => {
     expect(screen.getByTestId('contribution-instrument-1-net')).toHaveTextContent('+13.00')
   })
 
+  it('falls back to the public id when the as-of identity is unresolved', () => {
+    render(
+      <ContributionTable
+        contributions={[contribution({ native_symbol: null, exchange: null })]}
+        valuationCcy='USD'
+      />
+    )
+
+    expect(screen.getByText('instrument-1')).toBeInTheDocument()
+    expect(screen.queryByText('BTC-USD · kraken')).not.toBeInTheDocument()
+  })
+
+  it('shows the proven symbol without fabricating an unavailable exchange', () => {
+    render(
+      <ContributionTable contributions={[contribution({ exchange: null })]} valuationCcy='USD' />
+    )
+
+    expect(screen.getByText('BTC-USD')).toBeInTheDocument()
+    expect(screen.queryByText('BTC-USD · kraken')).not.toBeInTheDocument()
+  })
+
   it('renders every withheld component and its untrustworthy net as an em dash', () => {
     render(
       <ContributionTable
         contributions={[
           contribution({
             instrument_public_id: 'withheld',
+            native_symbol: null,
+            exchange: null,
             realized_pnl: null,
             fee_pnl: null,
             accrual_pnl: null,

@@ -9,6 +9,7 @@ import { useAppStore } from '../../stores/app'
 import type { PortfolioPnlGranularity } from '../../types/api'
 import { AttributionBreakdown } from './AttributionBreakdown'
 import { ContributionTable } from './ContributionTable'
+import { IncompletenessSummary } from './IncompletenessSummary'
 import { PnlChart } from './PnlChart'
 import { PNL_MARKER_COLORS } from './pnlMarkerStyles'
 
@@ -265,22 +266,12 @@ export const PortfolioTimeline: React.FC = () => {
     )
   } else {
     const series = data as NonNullable<typeof data>
-    const incompleteCount = points.filter(point => point.valuation_status === 'incomplete').length
     const latestPoint = points[points.length - 1]
 
     content = (
       <div className='space-y-4'>
+        <IncompletenessSummary points={points} />
         <section className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'>
-          {incompleteCount > 0 && (
-            <div className='mb-3 flex justify-end'>
-              <span
-                className='rounded-full border border-warning-500/40 bg-warning-500/10 px-2 py-1 text-xs font-medium text-warning-600'
-                data-testid='pnl-incomplete-badge'
-              >
-                {t('timeline.incompleteBadge', { count: incompleteCount })}
-              </span>
-            </div>
-          )}
           <PnlChart
             points={points}
             markers={markers}
