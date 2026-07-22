@@ -1,5 +1,7 @@
 import type { Browser, BrowserContext } from '@playwright/test'
 
+import { TEST_USER } from './envelopes'
+
 const BASE_URL = 'http://localhost:4173'
 
 /**
@@ -39,24 +41,17 @@ export async function authedContext(browser: Browser): Promise<BrowserContext> {
   // is non-null on first paint, matching the post-restart state where
   // the user record is persisted but the in-memory `isAuthenticated`
   // flag has not yet been hydrated.
-  await context.addInitScript(() => {
+  await context.addInitScript(user => {
     globalThis.localStorage.setItem(
       'snapper-auth',
       JSON.stringify({
         state: {
-          user: {
-            type: 'user_profile',
-            public_id: 'usr-e2e',
-            username: 'e2e-user',
-            role: 'admin',
-            is_active: true,
-            created_at: '2026-01-01T00:00:00Z',
-          },
+          user,
         },
         version: 0,
       })
     )
-  })
+  }, TEST_USER)
 
   return context
 }

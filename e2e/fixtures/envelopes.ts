@@ -12,6 +12,9 @@
  * rarely) and isolated (no production code reads from here).
  */
 
+import type { Components } from '../../src/types/api.generated'
+import { ROLE_PERMISSIONS } from '../../src/types/permissions.generated'
+
 const BASE_PROVENANCE = {
   sequence_id: 0,
   public_id: 'e2e-pid',
@@ -41,7 +44,13 @@ export const TEST_USER = {
   role: 'admin' as const,
   is_active: true,
   created_at: '2026-01-01T00:00:00Z',
-}
+  operator_public_ids: ['op-e2e'],
+  primary_operator_public_id: 'op-e2e',
+  active_wallet_public_id: 'wal-e2e',
+  default_language: null,
+  effective_permissions: [...ROLE_PERMISSIONS.admin],
+  delegate_public_id: null,
+} satisfies Components['schemas']['UserProfile']
 
 export const TEST_OPERATOR = {
   type: 'operator_info',
