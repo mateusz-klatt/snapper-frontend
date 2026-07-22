@@ -52,7 +52,7 @@
   },
   "badges": {
     "oneShot": "jednorazowy",
-    "autoStart": "auto-start",
+    "autoStart": "autostart",
     "manual": "ręczny"
   },
   "actions": {

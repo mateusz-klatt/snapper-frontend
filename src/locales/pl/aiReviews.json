@@ -10,7 +10,7 @@
     "newStatus": "status",
     "mode": "tryb",
     "capAttempted": "próba",
-    "capLimit": "vs limit",
+    "capLimit": "przy limicie",
     "capOn": "dla instrumentu",
     "reviewLabel": "przegląd {{reviewId}}",
     "unhandledFrame": "Nieobsłużona ramka aktywności przeglądu AI: {{frame}}"
