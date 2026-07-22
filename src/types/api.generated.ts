@@ -3555,8 +3555,17 @@ export type Components = {
             quote_currency: string;
             exchange: string;
         };
+        PnlIncompletenessReason: "scope_order_regression" | "before_activation" | "activation_baseline_non_finite" | "fill_evidence_gap" | "seed_quantity_non_finite" | "cost_basis_unavailable" | "execution_price_provenance_unproven" | "execution_size_invalid" | "execution_price_invalid" | "fx_conversion_unproven" | "mark_unavailable" | "cumulative_non_finite" | "unrealized_non_finite" | "net_non_finite" | "attribution_value_non_finite" | "attribution_reconciliation_failed";
+        PnlIncompletenessReasonData: {
+            reason: Components["schemas"]["PnlIncompletenessReason"];
+            withholding_tier: Components["schemas"]["PnlWithholdingTier"];
+            withholding_scope: Components["schemas"]["PnlWithholdingScope"];
+            trigger_instrument_public_id: string | null;
+        };
         PnlInstrumentContributionData: {
             instrument_public_id: string;
+            native_symbol: string | null;
+            exchange: string | null;
             realized_pnl: number | null;
             fee_pnl: number | null;
             accrual_pnl: number | null;
@@ -3635,6 +3644,7 @@ export type Components = {
             unrealized_pnl: number | null;
             net_pnl: number | null;
             valuation_status: Components["schemas"]["PnlValuationStatus"];
+            incompleteness_reasons: Components["schemas"]["PnlIncompletenessReasonData"][];
             per_instrument: Components["schemas"]["PnlInstrumentContributionData"][];
             attribution: Components["schemas"]["PnlAttributionContributionData"][];
         };
@@ -3648,6 +3658,8 @@ export type Components = {
             payload: Components["schemas"]["PnlTimelineData"];
         };
         PnlValuationStatus: "complete" | "incomplete";
+        PnlWithholdingScope: "global" | "instrument";
+        PnlWithholdingTier: "mark_incomplete" | "untrusted";
         PortfolioAccountState: {
             type: "portfolio_account_state";
             sequence_id: number;
@@ -4638,7 +4650,7 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["UserProfile"];
         };
-        UserRole: "ai_researcher" | "ai_delegate" | "viewer" | "operator" | "admin";
+        UserRole: "ai_researcher" | "ai_reviewer" | "ai_delegate" | "viewer" | "operator" | "admin";
         ValidationError: {
             loc: (string | number)[];
             msg: string;
@@ -4811,7 +4823,7 @@ export type Components = {
             remember_me?: boolean;
             permissions?: Components["schemas"]["Permission"][] | null;
         };
-        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:processes" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
+        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "submit:ai_review_decision" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:processes" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
         RefreshTokenRequest: {
             type?: "refresh_token_request";
             sequence_id: number;

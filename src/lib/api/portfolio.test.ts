@@ -49,9 +49,34 @@ const pnlSeriesResponse = {
         unrealized_pnl: null,
         net_pnl: null,
         valuation_status: 'incomplete' as const,
+        incompleteness_reasons: [
+          {
+            reason: 'mark_unavailable' as const,
+            withholding_tier: 'mark_incomplete' as const,
+            withholding_scope: 'instrument' as const,
+            trigger_instrument_public_id: 'instrument-1',
+          },
+          {
+            reason: 'execution_price_invalid' as const,
+            withholding_tier: 'untrusted' as const,
+            withholding_scope: 'instrument' as const,
+            trigger_instrument_public_id: 'instrument-2',
+          },
+        ],
         per_instrument: [
           {
             instrument_public_id: 'instrument-1',
+            native_symbol: 'BTC-USD',
+            exchange: 'kraken',
+            realized_pnl: null,
+            fee_pnl: null,
+            accrual_pnl: null,
+            unrealized_pnl: null,
+          },
+          {
+            instrument_public_id: 'instrument-2',
+            native_symbol: null,
+            exchange: null,
             realized_pnl: null,
             fee_pnl: null,
             accrual_pnl: null,
@@ -77,9 +102,12 @@ const pnlSeriesResponse = {
         unrealized_pnl: 3.25,
         net_pnl: 15,
         valuation_status: 'complete' as const,
+        incompleteness_reasons: [],
         per_instrument: [
           {
             instrument_public_id: 'instrument-1',
+            native_symbol: 'BTC-USD',
+            exchange: 'kraken',
             realized_pnl: 12.5,
             fee_pnl: -1.25,
             accrual_pnl: 0.5,
@@ -281,6 +309,20 @@ describe('portfolio API', () => {
     const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
 
     expect(result.payload.points[0]?.net_pnl).toBeNull()
+    expect(result.payload.points[0]?.incompleteness_reasons).toEqual([
+      {
+        reason: 'mark_unavailable',
+        withholding_tier: 'mark_incomplete',
+        withholding_scope: 'instrument',
+        trigger_instrument_public_id: 'instrument-1',
+      },
+      {
+        reason: 'execution_price_invalid',
+        withholding_tier: 'untrusted',
+        withholding_scope: 'instrument',
+        trigger_instrument_public_id: 'instrument-2',
+      },
+    ])
     expect(Object.fromEntries(requestUrl.searchParams)).toEqual({
       wallet_public_id: 'w-1',
       operator_public_id: 'op-1',

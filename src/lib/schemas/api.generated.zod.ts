@@ -1150,9 +1150,35 @@ export const PnlFxRateSourceDataSchema = _PnlFxRateSourceDataRawSchema as unknow
   Components['schemas']['PnlFxRateSourceData']
 >
 
+const _PnlIncompletenessReasonRawSchema = z.enum([
+  'scope_order_regression',
+  'before_activation',
+  'activation_baseline_non_finite',
+  'fill_evidence_gap',
+  'seed_quantity_non_finite',
+  'cost_basis_unavailable',
+  'execution_price_provenance_unproven',
+  'execution_size_invalid',
+  'execution_price_invalid',
+  'fx_conversion_unproven',
+  'mark_unavailable',
+  'cumulative_non_finite',
+  'unrealized_non_finite',
+  'net_non_finite',
+  'attribution_value_non_finite',
+  'attribution_reconciliation_failed',
+])
+
+export const PnlIncompletenessReasonSchema =
+  _PnlIncompletenessReasonRawSchema as unknown as z.ZodType<
+    Components['schemas']['PnlIncompletenessReason']
+  >
+
 const _PnlInstrumentContributionDataRawSchema = z
   .object({
     instrument_public_id: z.string(),
+    native_symbol: z.string().nullable(),
+    exchange: z.string().nullable(),
     realized_pnl: z.number().nullable(),
     fee_pnl: z.number().nullable(),
     accrual_pnl: z.number().nullable(),
@@ -1195,6 +1221,18 @@ const _PnlValuationStatusRawSchema = z.enum(['complete', 'incomplete'])
 
 export const PnlValuationStatusSchema = _PnlValuationStatusRawSchema as unknown as z.ZodType<
   Components['schemas']['PnlValuationStatus']
+>
+
+const _PnlWithholdingScopeRawSchema = z.enum(['global', 'instrument'])
+
+export const PnlWithholdingScopeSchema = _PnlWithholdingScopeRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlWithholdingScope']
+>
+
+const _PnlWithholdingTierRawSchema = z.enum(['mark_incomplete', 'untrusted'])
+
+export const PnlWithholdingTierSchema = _PnlWithholdingTierRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlWithholdingTier']
 >
 
 const _PortfolioReconciliationDriftEpisodeRawSchema = z
@@ -1888,7 +1926,14 @@ export const UserAlertDefaultInfoSchema = _UserAlertDefaultInfoRawSchema as unkn
   Components['schemas']['UserAlertDefaultInfo']
 >
 
-const _UserRoleRawSchema = z.enum(['ai_researcher', 'ai_delegate', 'viewer', 'operator', 'admin'])
+const _UserRoleRawSchema = z.enum([
+  'ai_researcher',
+  'ai_reviewer',
+  'ai_delegate',
+  'viewer',
+  'operator',
+  'admin',
+])
 
 export const UserRoleSchema = _UserRoleRawSchema as unknown as z.ZodType<
   Components['schemas']['UserRole']
@@ -2028,6 +2073,7 @@ const _PermissionRawSchema = z.enum([
   'read:market_data',
   'read:market_views',
   'submit:market_view',
+  'submit:ai_review_decision',
   'read:orders',
   'create:orders',
   'cancel:orders',
@@ -3083,6 +3129,20 @@ const _PnlAiDecisionMarkerDataRawSchema = z
 export const PnlAiDecisionMarkerDataSchema =
   _PnlAiDecisionMarkerDataRawSchema as unknown as z.ZodType<
     Components['schemas']['PnlAiDecisionMarkerData']
+  >
+
+const _PnlIncompletenessReasonDataRawSchema = z
+  .object({
+    reason: PnlIncompletenessReasonSchema,
+    withholding_tier: PnlWithholdingTierSchema,
+    withholding_scope: PnlWithholdingScopeSchema,
+    trigger_instrument_public_id: z.string().nullable(),
+  })
+  .strict()
+
+export const PnlIncompletenessReasonDataSchema =
+  _PnlIncompletenessReasonDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['PnlIncompletenessReasonData']
   >
 
 const _CreateCredentialBodyRawSchema = z
@@ -4502,6 +4562,16 @@ export const PairedGroupTerminalizeResponseSchema =
     Components['schemas']['PairedGroupTerminalizeResponse']
   >
 
+const _PnlTimelineMarkerDataRawSchema = z.union([
+  PnlFillMarkerDataSchema,
+  PnlSignalMarkerDataSchema,
+  PnlAiDecisionMarkerDataSchema,
+])
+
+export const PnlTimelineMarkerDataSchema = _PnlTimelineMarkerDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlTimelineMarkerData']
+>
+
 const _PnlTimelinePointDataRawSchema = z
   .object({
     point_time: z.iso.datetime(),
@@ -4511,6 +4581,7 @@ const _PnlTimelinePointDataRawSchema = z
     unrealized_pnl: z.number().nullable(),
     net_pnl: z.number().nullable(),
     valuation_status: PnlValuationStatusSchema,
+    incompleteness_reasons: z.array(PnlIncompletenessReasonDataSchema),
     per_instrument: z.array(PnlInstrumentContributionDataSchema),
     attribution: z.array(PnlAttributionContributionDataSchema),
   })
@@ -4518,16 +4589,6 @@ const _PnlTimelinePointDataRawSchema = z
 
 export const PnlTimelinePointDataSchema = _PnlTimelinePointDataRawSchema as unknown as z.ZodType<
   Components['schemas']['PnlTimelinePointData']
->
-
-const _PnlTimelineMarkerDataRawSchema = z.union([
-  PnlFillMarkerDataSchema,
-  PnlSignalMarkerDataSchema,
-  PnlAiDecisionMarkerDataSchema,
-])
-
-export const PnlTimelineMarkerDataSchema = _PnlTimelineMarkerDataRawSchema as unknown as z.ZodType<
-  Components['schemas']['PnlTimelineMarkerData']
 >
 
 const _CreateCredentialCommandRawSchema = z
@@ -6197,10 +6258,13 @@ export type PairedLegExposure = Components['schemas']['PairedLegExposure']
 export type PnlAttributionOrigin = Components['schemas']['PnlAttributionOrigin']
 export type PnlFillMarkerData = Components['schemas']['PnlFillMarkerData']
 export type PnlFxRateSourceData = Components['schemas']['PnlFxRateSourceData']
+export type PnlIncompletenessReason = Components['schemas']['PnlIncompletenessReason']
 export type PnlInstrumentContributionData = Components['schemas']['PnlInstrumentContributionData']
 export type PnlMarkerOutcome = Components['schemas']['PnlMarkerOutcome']
 export type PnlSignalMarkerData = Components['schemas']['PnlSignalMarkerData']
 export type PnlValuationStatus = Components['schemas']['PnlValuationStatus']
+export type PnlWithholdingScope = Components['schemas']['PnlWithholdingScope']
+export type PnlWithholdingTier = Components['schemas']['PnlWithholdingTier']
 export type PortfolioReconciliationDriftEpisode =
   Components['schemas']['PortfolioReconciliationDriftEpisode']
 export type PortfolioReconciliationEffectiveStatus =
@@ -6327,6 +6391,7 @@ export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
 export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
 export type PnlAttributionContributionData = Components['schemas']['PnlAttributionContributionData']
 export type PnlAiDecisionMarkerData = Components['schemas']['PnlAiDecisionMarkerData']
+export type PnlIncompletenessReasonData = Components['schemas']['PnlIncompletenessReasonData']
 export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
 export type PositionCycleListResponse = Components['schemas']['PositionCycleListResponse']
 export type PositionListResponse = Components['schemas']['PositionListResponse']
@@ -6415,8 +6480,8 @@ export type JsonObject = Components['schemas']['JsonObject']
 export type MarketDataCoverageResponse = Components['schemas']['MarketDataCoverageResponse']
 export type PairedExecutionIncident = Components['schemas']['PairedExecutionIncident']
 export type PairedGroupTerminalizeResponse = Components['schemas']['PairedGroupTerminalizeResponse']
-export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']
 export type PnlTimelineMarkerData = Components['schemas']['PnlTimelineMarkerData']
+export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']
 export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
 export type ProcessCreateResponse = Components['schemas']['ProcessCreateResponse']
 export type ProcessSummaryResponse = Components['schemas']['ProcessSummaryResponse']

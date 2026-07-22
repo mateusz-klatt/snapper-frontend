@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import type { PnlInstrumentContributionData } from '../../types/api'
+import { formatPnlInstrumentIdentity } from './pnlInstrumentIdentity'
 
 interface Props {
   contributions: PnlInstrumentContributionData[]
@@ -84,7 +85,7 @@ export const ContributionTable: React.FC<Readonly<Props>> = ({ contributions, va
                     key={contribution.instrument_public_id}
                     data-testid={`contribution-${contribution.instrument_public_id}`}
                   >
-                    <td className='py-1 pr-4'>{contribution.instrument_public_id}</td>
+                    <td className='py-1 pr-4'>{formatPnlInstrumentIdentity(contribution)}</td>
                     {values.map(([name, value], index) => (
                       <td
                         key={name}

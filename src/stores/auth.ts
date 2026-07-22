@@ -56,6 +56,7 @@ interface AuthState {
 }
 const ROLE_HIERARCHY: Record<UserRole, number> = {
   ai_researcher: -2,
+  ai_reviewer: -1,
   ai_delegate: -1,
   viewer: 1,
   operator: 2,

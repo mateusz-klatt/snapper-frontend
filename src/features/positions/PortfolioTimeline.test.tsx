@@ -83,6 +83,8 @@ vi.mock('./AttributionBreakdown', () => ({
 
 const contribution: PnlInstrumentContributionData = {
   instrument_public_id: 'instrument-latest',
+  native_symbol: 'BTC-USD',
+  exchange: 'kraken',
   realized_pnl: 2,
   fee_pnl: -1,
   accrual_pnl: 0,
@@ -92,6 +94,7 @@ const contribution: PnlInstrumentContributionData = {
 const point = (
   pointTime: string,
   valuationStatus: 'complete' | 'incomplete',
+  incompletenessReasons: PnlTimelinePointData['incompleteness_reasons'] = [],
   perInstrument: PnlInstrumentContributionData[] = [],
   attribution: PnlTimelinePointData['attribution'] = [
     {
@@ -111,6 +114,7 @@ const point = (
   unrealized_pnl: valuationStatus === 'complete' ? 3 : null,
   net_pnl: valuationStatus === 'complete' ? 4 : null,
   valuation_status: valuationStatus,
+  incompleteness_reasons: incompletenessReasons,
   per_instrument: perInstrument,
   attribution,
 })
@@ -226,8 +230,21 @@ describe('PortfolioTimeline', () => {
     mockQuery(
       timeline(
         [
-          point('2026-07-20T11:59:00Z', 'incomplete'),
-          point('2026-07-20T12:00:00Z', 'complete', [contribution]),
+          point('2026-07-20T11:59:00Z', 'incomplete', [
+            {
+              reason: 'mark_unavailable',
+              withholding_tier: 'mark_incomplete',
+              withholding_scope: 'instrument',
+              trigger_instrument_public_id: 'instrument-mark',
+            },
+            {
+              reason: 'execution_price_invalid',
+              withholding_tier: 'untrusted',
+              withholding_scope: 'instrument',
+              trigger_instrument_public_id: 'instrument-price',
+            },
+          ]),
+          point('2026-07-20T12:00:00Z', 'complete', [], [contribution]),
         ],
         [],
         false,
@@ -238,6 +255,10 @@ describe('PortfolioTimeline', () => {
     render(<PortfolioTimeline />)
 
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
+    expect(screen.getByText('Mark unavailable')).toBeInTheDocument()
+    expect(screen.getByText('Execution price invalid')).toBeInTheDocument()
+    expect(screen.getByText('Trigger instrument: instrument-mark')).toBeInTheDocument()
+    expect(screen.getByText('Trigger instrument: instrument-price')).toBeInTheDocument()
     expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('2:0:true:PLN')
     expect(screen.getByTestId('mock-attribution-breakdown')).toHaveTextContent('manual:none:PLN')
     expect(screen.getByTestId('mock-contribution-table')).toHaveTextContent('instrument-latest:PLN')
@@ -259,7 +280,7 @@ describe('PortfolioTimeline', () => {
       timeline(
         [
           point('2026-07-20T11:59:00Z', 'complete'),
-          point('2026-07-20T12:00:00Z', 'complete', [], systemAttribution),
+          point('2026-07-20T12:00:00Z', 'complete', [], [], systemAttribution),
         ],
         [],
         false,

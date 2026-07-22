@@ -113,9 +113,12 @@ const pnlSeriesResponse: PnlSeriesResponse = {
         unrealized_pnl: 5,
         net_pnl: 4.75,
         valuation_status: 'complete',
+        incompleteness_reasons: [],
         per_instrument: [
           {
             instrument_public_id: 'instrument-1',
+            native_symbol: 'BTC-USD',
+            exchange: 'kraken',
             realized_pnl: 0,
             fee_pnl: -0.25,
             accrual_pnl: 0,

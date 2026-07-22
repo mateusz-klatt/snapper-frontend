@@ -993,6 +993,7 @@ export const VenueFeeScheduleDataSchema = z
 
 export const UserRoleSchema = z.enum([
   'ai_researcher',
+  'ai_reviewer',
   'ai_delegate',
   'viewer',
   'operator',

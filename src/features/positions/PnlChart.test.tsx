@@ -70,24 +70,28 @@ const point = (
   netPnl: number | null,
   realizedPnl: number | null,
   unrealizedPnl: number | null,
-  valuationStatus: 'complete' | 'incomplete' = 'complete'
+  valuationStatus: 'complete' | 'incomplete' = 'complete',
+  incompletenessReasons: PnlTimelinePointData['incompleteness_reasons'] = [],
+  feePnl: number | null = 0,
+  accrualPnl: number | null = 0
 ): PnlTimelinePointData => ({
   point_time: pointTime,
   realized_pnl: realizedPnl,
-  fee_pnl: 0,
-  accrual_pnl: 0,
+  fee_pnl: feePnl,
+  accrual_pnl: accrualPnl,
   unrealized_pnl: unrealizedPnl,
   net_pnl: netPnl,
   valuation_status: valuationStatus,
+  incompleteness_reasons: incompletenessReasons,
   per_instrument: [],
   attribution: [
     {
       origin: 'manual',
       strategy_name: null,
-      realized_pnl: valuationStatus === 'complete' ? realizedPnl : null,
-      fee_pnl: valuationStatus === 'complete' ? 0 : null,
-      accrual_pnl: valuationStatus === 'complete' ? 0 : null,
-      unrealized_pnl: valuationStatus === 'complete' ? unrealizedPnl : null,
+      realized_pnl: realizedPnl,
+      fee_pnl: feePnl,
+      accrual_pnl: accrualPnl,
+      unrealized_pnl: unrealizedPnl,
     },
   ],
 })
@@ -202,11 +206,34 @@ describe('PnlChart', () => {
     expect(getByTestId('pnl-chart').querySelector('[style="height: 240px;"]')).toBeInTheDocument()
   })
 
-  it('preserves withheld values as whitespace while anchoring markers at a real internal value', () => {
+  it('gaps only withheld components and plots realized P&L at a MARK-incomplete point', () => {
     const points = [
-      point('2026-01-01T00:00:00Z', 10, null, 3),
-      point('2026-01-01T00:01:00Z', 20, 8, 12, 'incomplete'),
-      point('2026-01-01T00:02:00Z', null, 0, null),
+      point('2026-01-01T00:00:00Z', 10, 5, 3),
+      point('2026-01-01T00:01:00Z', null, 8, null, 'incomplete', [
+        {
+          reason: 'mark_unavailable',
+          withholding_tier: 'mark_incomplete',
+          withholding_scope: 'instrument',
+          trigger_instrument_public_id: 'instrument-mark',
+        },
+      ]),
+      point(
+        '2026-01-01T00:02:00Z',
+        null,
+        null,
+        null,
+        'incomplete',
+        [
+          {
+            reason: 'cumulative_non_finite',
+            withholding_tier: 'untrusted',
+            withholding_scope: 'instrument',
+            trigger_instrument_public_id: 'instrument-untrusted',
+          },
+        ],
+        null,
+        null
+      ),
     ]
 
     render(<PnlChart points={points} markers={[fillMarker()]} valuationCcy='USD' />)
@@ -221,22 +248,15 @@ describe('PnlChart', () => {
       { time: thirdTime },
     ])
     expect(setRealizedData).toHaveBeenCalledWith([
-      { time: firstTime },
-      { time: secondTime },
-      { time: thirdTime, value: 0 },
+      { time: firstTime, value: 5 },
+      { time: secondTime, value: 8 },
+      { time: thirdTime },
     ])
     expect(setUnrealizedData).toHaveBeenCalledWith([
       { time: firstTime, value: 3 },
       { time: secondTime },
       { time: thirdTime },
     ])
-
-    for (const setData of [setNetData, setRealizedData, setUnrealizedData]) {
-      const incompleteEntry = setData.mock.calls[0]?.[0][1]
-
-      expect(incompleteEntry).toEqual({ time: secondTime })
-      expect(incompleteEntry).not.toHaveProperty('value')
-    }
 
     expect(setMarkerAnchorData).toHaveBeenCalledWith([{ time: secondTime, value: 10 }])
     expect(setMarkers).toHaveBeenCalledWith([
@@ -252,7 +272,25 @@ describe('PnlChart', () => {
   })
 
   it('uses a zero anchor without replacing all-whitespace P&L datasets', () => {
-    const points = [point('2026-01-01T00:01:00Z', null, null, null, 'incomplete')]
+    const points = [
+      point(
+        '2026-01-01T00:01:00Z',
+        null,
+        null,
+        null,
+        'incomplete',
+        [
+          {
+            reason: 'cumulative_non_finite',
+            withholding_tier: 'untrusted',
+            withholding_scope: 'instrument',
+            trigger_instrument_public_id: 'instrument-untrusted',
+          },
+        ],
+        null,
+        null
+      ),
+    ]
 
     render(
       <PnlChart
