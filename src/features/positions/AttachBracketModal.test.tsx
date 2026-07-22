@@ -60,7 +60,7 @@ describe('AttachBracketModal', () => {
   it('shows position info header', () => {
     renderWithProviders(<AttachBracketModal {...defaultProps} />)
     expect(screen.getByText('LONG BTC-USD')).toBeInTheDocument()
-    expect(screen.getByText('$50000.00')).toBeInTheDocument()
+    expect(screen.getByText('50000.00 USD')).toBeInTheDocument()
   })
 
   it('requires at least one price', async () => {
@@ -125,8 +125,8 @@ describe('AttachBracketModal', () => {
     await user.type(screen.getByTestId('tp-price-input'), '55000')
     await user.click(screen.getByTestId('bracket-submit'))
     expect(screen.getByText('Confirm Bracket')).toBeInTheDocument()
-    expect(screen.getByText('$48000.00')).toBeInTheDocument()
-    expect(screen.getByText('$55000.00')).toBeInTheDocument()
+    expect(screen.getByText('48000.00 USD')).toBeInTheDocument()
+    expect(screen.getByText('55000.00 USD')).toBeInTheDocument()
   })
 
   it('calls mutate with SL-only payload on confirm', async () => {
@@ -212,7 +212,7 @@ describe('AttachBracketModal', () => {
     await user.type(screen.getByTestId('tp-price-input'), '45000')
     await user.click(screen.getByTestId('bracket-submit'))
     expect(screen.getByText('Confirm Bracket')).toBeInTheDocument()
-    expect(screen.getByText('$45000.00')).toBeInTheDocument()
+    expect(screen.getByText('45000.00 USD')).toBeInTheDocument()
     expect(screen.queryByText('Stop-Loss')).not.toBeInTheDocument()
   })
 
@@ -292,32 +292,54 @@ describe('AttachBracketModal', () => {
 
 describe('validateBracketPrices', () => {
   it('returns error when both prices are null', () => {
-    expect(validateBracketPrices(null, null, 'LONG', 50000)).toEqual({ key: 'bracketRequired' })
+    expect(validateBracketPrices(null, null, 'LONG', 50000, 'USD')).toEqual({
+      key: 'bracketRequired',
+    })
   })
 
   it('rejects non-finite SL (Infinity)', () => {
-    expect(validateBracketPrices(Infinity, null, 'LONG', 50000)).toEqual({ key: 'invalidSlPrice' })
+    expect(validateBracketPrices(Infinity, null, 'LONG', 50000, 'USD')).toEqual({
+      key: 'invalidSlPrice',
+    })
   })
 
   it('rejects non-finite SL (NaN)', () => {
-    expect(validateBracketPrices(NaN, null, 'LONG', 50000)).toEqual({ key: 'invalidSlPrice' })
+    expect(validateBracketPrices(NaN, null, 'LONG', 50000, 'USD')).toEqual({
+      key: 'invalidSlPrice',
+    })
   })
 
   it('rejects non-finite TP (Infinity)', () => {
-    expect(validateBracketPrices(48000, Infinity, 'LONG', 50000)).toEqual({
+    expect(validateBracketPrices(48000, Infinity, 'LONG', 50000, 'USD')).toEqual({
       key: 'invalidTpPrice',
     })
   })
 
   it('rejects non-finite TP (NaN)', () => {
-    expect(validateBracketPrices(48000, NaN, 'LONG', 50000)).toEqual({ key: 'invalidTpPrice' })
+    expect(validateBracketPrices(48000, NaN, 'LONG', 50000, 'USD')).toEqual({
+      key: 'invalidTpPrice',
+    })
   })
 
   it('returns null for valid LONG SL+TP', () => {
-    expect(validateBracketPrices(48000, 55000, 'LONG', 50000)).toBeNull()
+    expect(validateBracketPrices(48000, 55000, 'LONG', 50000, 'USD')).toBeNull()
   })
 
   it('returns null for valid SHORT SL+TP', () => {
-    expect(validateBracketPrices(55000, 45000, 'SHORT', 50000)).toBeNull()
+    expect(validateBracketPrices(55000, 45000, 'SHORT', 50000, 'USD')).toBeNull()
+  })
+
+  it('formats the entry price with the quote currency in a relation error', () => {
+    expect(validateBracketPrices(51000, null, 'LONG', 50000, 'PLN')).toEqual({
+      key: 'slLongBelowEntry',
+      params: { price: '50000.00 PLN' },
+    })
+  })
+
+  it('omits the currency when the quote is unresolved', () => {
+    expect(validateBracketPrices(51000, null, 'LONG', 50000, '')).toEqual({
+      key: 'slLongBelowEntry',
+      params: { price: '50000.00' },
+    })
   })
 })

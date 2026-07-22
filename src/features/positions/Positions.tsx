@@ -12,6 +12,7 @@ import type { AppLocale } from '../../i18n/types'
 import { AttachBracketModal } from './AttachBracketModal'
 import { AttachTrailingStopModal } from './AttachTrailingStopModal'
 import { PortfolioTimeline } from './PortfolioTimeline'
+import { quoteCurrency } from './instrumentQuote'
 import type { Position } from '../../types/entities'
 import type { TrailingStopByCycleResult } from '../../types/api'
 
@@ -44,17 +45,20 @@ const getPnlClass = (value: number | null | undefined): string => {
   return 'text-muted-400'
 }
 
-const formatPrice = (value: number | null | undefined, noValue: string): string =>
-  value == null ? noValue : `$${value.toFixed(2)}`
+const withQuote = (formatted: string, quote: string): string =>
+  quote === '' ? formatted : `${formatted} ${quote}`
 
-const formatPnl = (value: number | null | undefined, noValue: string): string => {
+const formatPrice = (value: number | null | undefined, quote: string, noValue: string): string =>
+  value == null ? noValue : withQuote(value.toFixed(2), quote)
+
+const formatPnl = (value: number | null | undefined, quote: string, noValue: string): string => {
   if (value == null) return noValue
   const abs = Math.abs(value).toFixed(2)
 
-  if (value > 0) return `+$${abs}`
-  if (value < 0) return `-$${abs}`
+  if (value > 0) return withQuote(`+${abs}`, quote)
+  if (value < 0) return withQuote(`-${abs}`, quote)
 
-  return `$${abs}`
+  return withQuote(abs, quote)
 }
 
 const positionIdSuffix = (position: Position): string =>
@@ -100,6 +104,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
   const absQuantity = Math.abs(position.quantity)
   const noValue = t('row.noValue')
   const suffix = positionIdSuffix(position)
+  const quote = quoteCurrency(position.instrument)
   const hasCycle = !!position.positionCyclePublicId
   const canAttach = hasCycle && side !== 'FLAT' && !isTimeTraveling
   const attachable = position.averagePrice != null
@@ -165,13 +170,13 @@ const PositionRow: React.FC<PositionRowProps> = ({
         <div>
           <div className='text-muted-500'>{t('row.averageEntry')}</div>
           <div className='font-mono text-alpine-900'>
-            {formatPrice(position.averagePrice, noValue)}
+            {formatPrice(position.averagePrice, quote, noValue)}
           </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('row.mark')}</div>
           <div className='font-mono text-alpine-900' data-testid={`position-mark-${suffix}`}>
-            {formatPrice(position.markPrice, noValue)}
+            {formatPrice(position.markPrice, quote, noValue)}
           </div>
           {position.markedAt && (
             <div className='text-xs text-muted-500' data-testid={`position-marked-at-${suffix}`}>
@@ -185,7 +190,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
             className={clsx('font-mono', getPnlClass(position.unrealizedPnl))}
             data-testid={`position-unrealized-${suffix}`}
           >
-            {formatPnl(position.unrealizedPnl, noValue)}
+            {formatPnl(position.unrealizedPnl, quote, noValue)}
           </div>
         </div>
         <div>
@@ -194,7 +199,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
             className={clsx('font-mono', getPnlClass(position.realizedPnl))}
             data-testid={`position-realized-${suffix}`}
           >
-            {formatPnl(position.realizedPnl, noValue)}
+            {formatPnl(position.realizedPnl, quote, noValue)}
           </div>
         </div>
       </div>

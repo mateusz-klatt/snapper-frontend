@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useCreateBracket } from '../../hooks/queries/positions'
 import { validateBracketPrices } from './validation'
+import { formatQuoted, quoteCurrency } from './instrumentQuote'
 
 interface AttachBracketModalProps {
   open: boolean
@@ -27,6 +28,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
   const [tpPrice, setTpPrice] = useState('')
   const [error, setError] = useState('')
   const [confirming, setConfirming] = useState(false)
+  const quote = quoteCurrency(instrument)
 
   const handleClose = () => {
     setSlPrice('')
@@ -41,7 +43,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
     setError('')
     const sl = slPrice ? Number.parseFloat(slPrice) : null
     const tp = tpPrice ? Number.parseFloat(tpPrice) : null
-    const validationError = validateBracketPrices(sl, tp, side, averagePrice)
+    const validationError = validateBracketPrices(sl, tp, side, averagePrice, quote)
 
     if (validationError) {
       const key = `validation.${validationError.key}` as 'validation.bracketRequired'
@@ -96,7 +98,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
             </div>
             <div className='mt-1 flex justify-between'>
               <span className='text-muted-500'>{t('bracketModal.entryPrice')}</span>
-              <span className='font-mono text-alpine-900'>${averagePrice.toFixed(2)}</span>
+              <span className='font-mono text-alpine-900'>{formatQuoted(averagePrice, quote)}</span>
             </div>
           </div>
           <div>
@@ -178,7 +180,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
                 <div className='flex justify-between'>
                   <span className='text-muted-500'>{t('bracketModal.stopLoss')}</span>
                   <span className='font-mono text-falling-400'>
-                    ${Number.parseFloat(slPrice).toFixed(2)}
+                    {formatQuoted(Number.parseFloat(slPrice), quote)}
                   </span>
                 </div>
               )}
@@ -186,7 +188,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
                 <div className='flex justify-between'>
                   <span className='text-muted-500'>{t('bracketModal.takeProfit')}</span>
                   <span className='font-mono text-rising-400'>
-                    ${Number.parseFloat(tpPrice).toFixed(2)}
+                    {formatQuoted(Number.parseFloat(tpPrice), quote)}
                   </span>
                 </div>
               )}
