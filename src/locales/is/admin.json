@@ -10,8 +10,8 @@
       "description": "Fullur lesaðgangur rekstraraðila að reikningum, veskjum og eignasöfnum, merkjum, AI-ákvörðunum, hagnaði og tapi, bakprófunum, stefnum, ferlum og kerfisstöðu. Getur ekki framkvæmt rekstraraðgerðir."
     },
     "operator": {
-      "label": "Operator",
-      "description": "Allt sýnileikaumfang Áhorfanda auk stýringar á viðskiptum, stöðum, stefnum, ferlum, bakprófunum og AI-samþættingu."
+      "label": "Rekstraraðili",
+      "description": "Allt sem áhorfandi getur séð, auk heimilda til að stjórna viðskiptum, stöðum, stefnum, ferlum, bakprófunum og gervigreindarsamþættingum."
     },
     "admin": {
       "label": "Kerfisstjóri",
@@ -20,7 +20,7 @@
     "table": {
       "resource": "Tilfang",
       "viewer": "Áhorfandi",
-      "operator": "Operator",
+      "operator": "Rekstraraðili",
       "admin": "Kerfisstjóri"
     },
     "resources": {
@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Veldu veski...",
     "selectWalletPlaceholder": "Velja veski...",
     "walletLabel": "Veski",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (sýndarviðskipti)",
     "unknownError": "Óþekkt villa",
     "dash": "-"
   },
@@ -106,7 +106,7 @@
       },
       "roles": {
         "viewer": "Áhorfandi",
-        "operator": "Operator",
+        "operator": "Rekstraraðili",
         "admin": "Kerfisstjóri",
         "ai_delegate": "AI-fulltrúi"
       },
@@ -144,7 +144,7 @@
       "createGrant": "Veita umfang",
       "selectWalletPrompt": "Veldu veski hér að ofan til að skoða aðgangsumfang þess.",
       "columns": {
-        "operator": "Operator",
+        "operator": "Rekstraraðili",
         "scope": "Umfang",
         "target": "Markmið",
         "grantedAt": "Veitt",
@@ -161,7 +161,7 @@
     "form": {
       "title": "Veita aðgangsumfang",
       "fields": {
-        "operator": "Operator",
+        "operator": "Rekstraraðili",
         "operatorPlaceholder": "Veldu operator...",
         "wallet": "Veski",
         "scopeKind": "Tegund umfangs",
@@ -280,8 +280,8 @@
         "api_key": "API lykill",
         "api_secret": "API leyndarmál",
         "private_key_pem": "Einkalykill (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
+        "client_id": "Biðlara-ID",
+        "client_secret": "Leynilykill biðlara",
         "refresh_token": "Endurnýjunartoken",
         "initial_balance": "Upphafsstaða"
       },
@@ -289,7 +289,7 @@
         "api_key_secret": "API lykill + leyndarmál",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Sýndarviðskipti"
       },
       "validation": {
         "walletRequired": "Veski er áskilið",

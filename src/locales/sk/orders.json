@@ -104,11 +104,11 @@
       "stop_limit": "Stop-limitný pokyn"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Skutočný",
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — iba trhové dáta",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (papierová)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

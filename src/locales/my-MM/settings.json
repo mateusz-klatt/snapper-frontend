@@ -30,7 +30,7 @@
     "toggleAriaLabel": "{{key}} ကို ပြောင်းဖွင့်/ပိတ်ပါ",
     "badges": {
       "json": "📋 JSON",
-      "sensitive": "🔒 Sensitive"
+      "sensitive": "🔒 လျှို့ဝှက်အချက်အလက်"
     },
     "helpText": {
       "allowShortSelling": "Engine ကို short position ဖွင့်ခွင့်ပြုပါ။ SELL signal များသည် negative desired_units ထုတ်မည်။ ပိတ်ထားလျှင် 0 သို့ clamp လုပ်သည်။",
@@ -40,7 +40,7 @@
   },
   "addModal": {
     "title": "ဆက်တင်အသစ် ထည့်ပါ",
-    "keyLabel": "Key",
+    "keyLabel": "သော့ချက်",
     "valueLabel": "တန်ဖိုး",
     "categoryLabel": "အမျိုးအစား",
     "descriptionLabel": "ဖော်ပြချက်",
@@ -62,7 +62,7 @@
   "jsonEditor": {
     "formEditor": "Form တည်းဖြတ်ကိရိယာ",
     "rawEditor": "Raw JSON တည်းဖြတ်ကိရိယာ",
-    "rawJson": "Raw JSON",
+    "rawJson": "JSON အကြမ်း",
     "switchToForm": "Form သို့ ပြောင်းပါ",
     "importToForm": "Form သို့ import လုပ်ပါ",
     "parseError": "Parse အမှား: {{message}}",

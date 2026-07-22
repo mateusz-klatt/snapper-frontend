@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Kašnjenje podataka",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Kontrolni signal",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -128,7 +128,7 @@
     "submit": "Registruj strategiju",
     "submitting": "Registracija…",
     "scopeSectionLabel": "Opseg",
-    "operatorLabel": "Operator",
+    "operatorLabel": "Operater",
     "operatorPlaceholder": "Odaberite operatora",
     "walletLabel": "Novčanik",
     "walletPlaceholder": "Odaberite novčanik",

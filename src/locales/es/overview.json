@@ -59,7 +59,7 @@
     "statusRunning": "En ejecución",
     "statusStopped": "Detenido",
     "statusDisabled": "Deshabilitado",
-    "containerTotal": "Total MEM {{value}}",
+    "containerTotal": "MEM total {{value}}",
     "cpuTooltip": "El uso de CPU puede superar el 100% en varios núcleos",
     "metricsNa": "No hay CPU/memoria separada por proceso; se ejecuta dentro del proceso (modo de hilos) o no está en ejecución",
     "managedOnly": "Solo procesos de este contenedor",

@@ -3,160 +3,160 @@
     "title": "পজিশন"
   },
   "view": {
-    "current": "Current",
-    "timeline": "P&L Timeline",
-    "ariaLabel": "Positions view"
+    "current": "বর্তমান",
+    "timeline": "P&L টাইমলাইন",
+    "ariaLabel": "পজিশন ভিউ"
   },
   "timeline": {
     "controls": {
-      "window": "Window",
-      "windowAriaLabel": "Select timeline window",
-      "granularity": "Granularity",
-      "granularityAriaLabel": "Select timeline granularity",
+      "window": "সময়সীমা",
+      "windowAriaLabel": "টাইমলাইনের সময়সীমা নির্বাচন করুন",
+      "granularity": "সময়ের ব্যবধান",
+      "granularityAriaLabel": "টাইমলাইনের সময়ের ব্যবধান নির্বাচন করুন",
       "granularityOptions": {
         "oneMinute": "1m",
         "fiveMinutes": "5m",
         "oneHour": "1h",
         "oneDay": "1d"
       },
-      "valuationCurrency": "Valuation currency",
-      "valuationCurrencyAriaLabel": "Select valuation currency",
+      "valuationCurrency": "মূল্যায়ন মুদ্রা",
+      "valuationCurrencyAriaLabel": "মূল্যায়ন মুদ্রা নির্বাচন করুন",
       "valuationCurrencyOptions": {
         "usd": "USD",
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "Last 24 hours",
-      "last7Days": "Last 7 days",
-      "last30Days": "Last 30 days",
-      "last90Days": "Last 90 days"
+      "last24Hours": "গত 24 ঘণ্টা",
+      "last7Days": "গত 7 দিন",
+      "last30Days": "গত 30 দিন",
+      "last90Days": "গত 90 দিন"
     },
-    "loading": "Loading P&L timeline…",
+    "loading": "P&L টাইমলাইন লোড হচ্ছে…",
     "error": {
-      "title": "Could not load P&L timeline",
-      "message": "Try again in a moment."
+      "title": "P&L টাইমলাইন লোড করা যায়নি",
+      "message": "কিছুক্ষণ পর আবার চেষ্টা করুন।"
     },
     "empty": {
-      "title": "No P&L history",
-      "message": "No P&L points are available for this window."
+      "title": "কোনো P&L ইতিহাস নেই",
+      "message": "এই সময়সীমায় কোনো P&L পয়েন্ট উপলভ্য নেই।"
     },
     "noWallet": {
-      "title": "Select a wallet",
-      "message": "Choose a wallet to view its P&L timeline."
+      "title": "একটি ওয়ালেট নির্বাচন করুন",
+      "message": "ওয়ালেটটির P&L টাইমলাইন দেখতে সেটি বেছে নিন।"
     },
-    "incompleteBadge": "Incomplete points: {{count}}",
+    "incompleteBadge": "অসম্পূর্ণ পয়েন্ট: {{count}}",
     "incompleteness": {
-      "title": "Why points are incomplete",
-      "description": "Reasons cover the full loaded window. Counts can overlap when a point has more than one cause.",
-      "affectedPoints": "Affected points: {{count}}",
-      "triggerInstrument": "Trigger instrument: {{instrument}}",
+      "title": "পয়েন্টগুলো কেন অসম্পূর্ণ",
+      "description": "কারণগুলো লোড করা পুরো সময়সীমার জন্য প্রযোজ্য। একটি পয়েন্টের একাধিক কারণ থাকলে গণনায় একই পয়েন্ট একাধিকবার থাকতে পারে।",
+      "affectedPoints": "প্রভাবিত পয়েন্ট: {{count}}",
+      "triggerInstrument": "ট্রিগার ইনস্ট্রুমেন্ট: {{instrument}}",
       "scope": {
-        "global": "Global",
-        "instrument": "Instrument"
+        "global": "গ্লোবাল",
+        "instrument": "ইনস্ট্রুমেন্ট"
       },
       "tier": {
-        "mark_incomplete": "MARK-incomplete",
-        "untrusted": "UNTRUSTED"
+        "mark_incomplete": "মার্ক মূল্য অসম্পূর্ণ",
+        "untrusted": "অবিশ্বস্ত"
       },
       "reasons": {
-        "scope_order_regression": "Scope order regression",
-        "before_activation": "Point precedes activation",
-        "activation_baseline_non_finite": "Activation baseline is non-finite",
-        "fill_evidence_gap": "Durable fill evidence gap",
-        "seed_quantity_non_finite": "Seed quantity is non-finite",
-        "cost_basis_unavailable": "Cost basis unavailable",
-        "execution_price_provenance_unproven": "Execution price provenance unproven",
-        "execution_size_invalid": "Execution size invalid",
-        "execution_price_invalid": "Execution price invalid",
-        "fx_conversion_unproven": "FX conversion unproven",
-        "mark_unavailable": "Mark unavailable",
-        "cumulative_non_finite": "Cumulative value is non-finite",
-        "unrealized_non_finite": "Unrealized P&L is non-finite",
-        "net_non_finite": "Net P&L is non-finite",
-        "attribution_value_non_finite": "Attribution value is non-finite",
-        "attribution_reconciliation_failed": "Attribution reconciliation failed"
+        "scope_order_regression": "স্কোপের ক্রমে পশ্চাদ্গতি",
+        "before_activation": "পয়েন্টটি সক্রিয়করণের আগে",
+        "activation_baseline_non_finite": "সক্রিয়করণের বেসলাইন সসীম নয়",
+        "fill_evidence_gap": "ফিলের স্থায়ী প্রমাণে ঘাটতি",
+        "seed_quantity_non_finite": "প্রারম্ভিক পরিমাণ সসীম নয়",
+        "cost_basis_unavailable": "কস্ট বেসিস অনুপলভ্য",
+        "execution_price_provenance_unproven": "নির্বাহ মূল্যের উৎস প্রমাণিত নয়",
+        "execution_size_invalid": "নির্বাহের সাইজ সঠিক নয়",
+        "execution_price_invalid": "নির্বাহ মূল্য সঠিক নয়",
+        "fx_conversion_unproven": "FX রূপান্তর প্রমাণিত নয়",
+        "mark_unavailable": "মার্ক মূল্য অনুপলভ্য",
+        "cumulative_non_finite": "ক্রমসঞ্চিত মান সসীম নয়",
+        "unrealized_non_finite": "অবাস্তবায়িত P&L সসীম নয়",
+        "net_non_finite": "নিট P&L সসীম নয়",
+        "attribution_value_non_finite": "অ্যাট্রিবিউশন মান সসীম নয়",
+        "attribution_reconciliation_failed": "অ্যাট্রিবিউশন সমন্বয় ব্যর্থ হয়েছে"
       }
     },
-    "timeTravelNotice": "Historical view: showing P&L as known at {{asOf}}.",
+    "timeTravelNotice": "ঐতিহাসিক ভিউ: {{asOf}}-এ জানা তথ্য অনুযায়ী P&L দেখানো হচ্ছে।",
     "chart": {
-      "title": "P&L over time",
-      "net": "Net P&L",
-      "realized": "Realized P&L",
-      "unrealized": "Unrealized P&L",
-      "valuationCurrency": "Valuation currency: {{currency}}"
+      "title": "সময়ভিত্তিক P&L",
+      "net": "নিট P&L",
+      "realized": "বাস্তবায়িত P&L",
+      "unrealized": "অবাস্তবায়িত P&L",
+      "valuationCurrency": "মূল্যায়ন মুদ্রা: {{currency}}"
     },
     "markers": {
-      "show": "Show decision markers",
-      "hide": "Hide decision markers",
-      "legendAriaLabel": "Decision marker legend",
-      "truncated": "Marker results were truncated at {{limit}}. Additional decisions or fills exist in this window.",
+      "show": "সিদ্ধান্তের মার্কার দেখান",
+      "hide": "সিদ্ধান্তের মার্কার লুকান",
+      "legendAriaLabel": "সিদ্ধান্তের মার্কারের লেজেন্ড",
+      "truncated": "মার্কার ফলাফল {{limit}}টি পর্যন্ত দেখানো হয়েছে। এই সময়সীমায় আরও সিদ্ধান্ত বা ফিল রয়েছে।",
       "legend": {
-        "fillExecuted": "Fill · executed",
-        "signalExecuted": "Signal · executed",
-        "signalNoFill": "Signal · no fill",
-        "aiExecuted": "AI decision · executed",
-        "aiRejected": "AI decision · rejected",
-        "aiNoFill": "AI decision · no fill"
+        "fillExecuted": "ফিল · নির্বাহিত",
+        "signalExecuted": "সিগন্যাল · নির্বাহিত",
+        "signalNoFill": "সিগন্যাল · কোনো ফিল নেই",
+        "aiExecuted": "AI সিদ্ধান্ত · নির্বাহিত",
+        "aiRejected": "AI সিদ্ধান্ত · প্রত্যাখ্যাত",
+        "aiNoFill": "AI সিদ্ধান্ত · কোনো ফিল নেই"
       },
       "detail": {
-        "title": "Marker details",
-        "type": "Type",
-        "time": "Time",
-        "instrument": "Instrument",
-        "outcome": "Outcome",
-        "status": "Status",
-        "side": "Side",
-        "size": "Size",
-        "price": "Price",
-        "executionId": "Execution ID",
-        "orderId": "Order ID",
-        "strategyName": "Strategy name",
-        "strength": "Strength",
-        "reason": "Reason",
-        "signalId": "Signal ID",
-        "strategyId": "Strategy ID",
-        "reviewId": "Review ID",
-        "eventId": "Event ID",
-        "decision": "Decision",
-        "rationale": "Rationale",
+        "title": "মার্কারের বিবরণ",
+        "type": "ধরন",
+        "time": "সময়",
+        "instrument": "ইনস্ট্রুমেন্ট",
+        "outcome": "ফলাফল",
+        "status": "স্ট্যাটাস",
+        "side": "পক্ষ",
+        "size": "সাইজ",
+        "price": "মূল্য",
+        "executionId": "নির্বাহ ID",
+        "orderId": "অর্ডার ID",
+        "strategyName": "কৌশলের নাম",
+        "strength": "শক্তি",
+        "reason": "কারণ",
+        "signalId": "সিগন্যাল ID",
+        "strategyId": "কৌশল ID",
+        "reviewId": "পর্যালোচনা ID",
+        "eventId": "ইভেন্ট ID",
+        "decision": "সিদ্ধান্ত",
+        "rationale": "যুক্তি",
         "noValue": "—",
         "types": {
-          "fill": "Fill",
-          "signal": "Signal",
-          "ai_decision": "AI decision"
+          "fill": "ফিল",
+          "signal": "সিগন্যাল",
+          "ai_decision": "AI সিদ্ধান্ত"
         },
         "outcomes": {
-          "executed": "Executed",
-          "rejected": "Rejected",
-          "no_fill": "No fill"
+          "executed": "নির্বাহিত",
+          "rejected": "প্রত্যাখ্যাত",
+          "no_fill": "কোনো ফিল নেই"
         }
       }
     },
 
     "contributions": {
-      "title": "Latest per-instrument contributions",
-      "instrument": "Instrument",
-      "realized": "Realized P&L",
-      "fees": "Fees",
-      "accrual": "Accrual",
-      "unrealized": "Unrealized P&L",
-      "net": "Net P&L",
+      "title": "প্রতি ইনস্ট্রুমেন্টের সর্বশেষ অবদান",
+      "instrument": "ইনস্ট্রুমেন্ট",
+      "realized": "বাস্তবায়িত P&L",
+      "fees": "ফি",
+      "accrual": "সঞ্চিত ফান্ডিং",
+      "unrealized": "অবাস্তবায়িত P&L",
+      "net": "নিট P&L",
       "noValue": "—",
-      "empty": "No instrument contributions are available."
+      "empty": "কোনো ইনস্ট্রুমেন্টের অবদান উপলভ্য নেই।"
     },
     "attribution": {
-      "title": "Latest P&L attribution",
-      "ariaLabel": "Latest P&L attribution by origin and strategy",
-      "origin": "Origin",
-      "noStrategy": "No proven strategy",
-      "withheld": "Withheld",
-      "valueSemantics": "A displayed zero is proven. Withheld means the value could not be proven.",
-      "empty": "Attribution is unavailable for the latest P&L point.",
+      "title": "সর্বশেষ P&L অ্যাট্রিবিউশন",
+      "ariaLabel": "উৎস ও কৌশল অনুযায়ী সর্বশেষ P&L অ্যাট্রিবিউশন",
+      "origin": "উৎস",
+      "noStrategy": "প্রমাণিত কোনো কৌশল নেই",
+      "withheld": "যাচাই করা যায়নি",
+      "valueSemantics": "দেখানো শূন্য মানটি প্রমাণিত। ‘যাচাই করা যায়নি’ মানে মানটি প্রমাণ করা সম্ভব হয়নি।",
+      "empty": "সর্বশেষ P&L পয়েন্টের অ্যাট্রিবিউশন অনুপলভ্য।",
       "origins": {
-        "manual": "Manual · direct",
-        "plan": "Plan · automated",
-        "system": "System · automated",
-        "unattributed": "Unattributed · provenance unknown"
+        "manual": "ম্যানুয়াল · সরাসরি",
+        "plan": "পরিকল্পনা · স্বয়ংক্রিয়",
+        "system": "সিস্টেম · স্বয়ংক্রিয়",
+        "unattributed": "অনির্ধারিত · উৎস অজানা"
       }
     }
   },
@@ -164,13 +164,13 @@
     "trailingStopBadge": "TS: ${{stop}}",
     "trailingStopPending": "TS: অপেক্ষমাণ",
     "slTpButton": "SL/TP",
-    "trailButton": "Trail",
+    "trailButton": "ট্রেইল",
     "quantity": "পরিমাণ",
     "averageEntry": "গড় এন্ট্রি",
     "unrealizedPnl": "অবাস্তবায়িত P&L",
     "realizedPnl": "বাস্তবায়িত P&L",
     "updated": "{{timestamp}} আপডেট হয়েছে",
-    "mark": "Mark",
+    "mark": "মার্ক মূল্য",
     "noValue": "N/A"
   },
   "empty": {
@@ -184,8 +184,8 @@
     "entryPrice": "এন্ট্রি মূল্য",
     "stopLossLabel": "Stop-Loss মূল্য",
     "takeProfitLabel": "Take-Profit মূল্য",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLoss": "স্টপ-লস",
+    "takeProfit": "টেক-প্রফিট",
     "placeholders": {
       "slLong": "${{price}}-এর নিচে",
       "slShort": "${{price}}-এর উপরে",
@@ -205,10 +205,10 @@
     "confirmTitle": "Trailing Stop নিশ্চিত করুন",
     "position": "পজিশন",
     "entryPrice": "এন্ট্রি মূল্য",
-    "trailingDistanceLabel": "Trailing Distance (%)",
+    "trailingDistanceLabel": "ট্রেইলিং দূরত্ব (%)",
     "minLockLabel": "Min Lock Profit (%) — ঐচ্ছিক",
-    "trailingDistance": "Trailing Distance",
-    "minLockProfit": "Min Lock Profit",
+    "trailingDistance": "ট্রেইলিং দূরত্ব",
+    "minLockProfit": "ন্যূনতম লক করা লাভ",
     "placeholders": {
       "trailingPct": "যেমন 5.0",
       "minLockPct": "0 = সঙ্গে সঙ্গে শুরু"

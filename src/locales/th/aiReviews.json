@@ -4,7 +4,7 @@
     "decision": "การตัดสินใจ",
     "capsViolation": "การละเมิดเพดาน",
     "selectedDelegate": "ตัวแทนที่เลือก",
-    "instrument": "instrument",
+    "instrument": "ตราสาร",
     "deadline": "กำหนดเวลา {{time}}",
     "decidedBy": "โดย",
     "newStatus": "สถานะ",
@@ -31,8 +31,8 @@
     "emptyTitle": "ไม่มีการตรวจทานที่รอดำเนินการ",
     "emptyMessage": "คำขอ CONSULT ใหม่ที่ส่งมายังตัวแทนนี้จะแสดงที่นี่",
     "columns": {
-      "instrument": "Instrument",
-      "thesis": "Thesis",
+      "instrument": "ตราสาร",
+      "thesis": "มุมมองการลงทุน",
       "status": "สถานะ",
       "deadline": "กำหนดเวลา",
       "decision": "การตัดสินใจ"

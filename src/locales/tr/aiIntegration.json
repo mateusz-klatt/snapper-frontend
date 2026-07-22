@@ -62,7 +62,7 @@
     "review": {
       "heading": "Gözden geçir ve oluştur",
       "rowLabel": "Etiket",
-      "rowOperator": "Operator public_id",
+      "rowOperator": "Operatör public_id’si",
       "rowMaxOpenOrders": "Maks. açık emir",
       "rowMaxDailyNotional": "Maks. günlük nominal USD",
       "rowMaxCancelsPerMinute": "Dakika başına maks. iptal",

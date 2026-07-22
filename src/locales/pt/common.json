@@ -38,7 +38,7 @@
       "ariaLabel": "Carteira ativa",
       "placeholder": "Carteira",
       "allWallets": "Todas as carteiras",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (simulação)"
     },
     "operatorPicker": {
       "ariaLabel": "Operador ativo",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Algo deu errado",
     "titleWithComponent": "Erro em {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Rastreamento de pilha",
     "tryAgain": "Tentar novamente"
   },
   "nav": {

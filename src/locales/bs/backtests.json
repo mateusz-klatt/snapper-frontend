@@ -61,7 +61,7 @@
     "title": "Uporedi",
     "headingFull": "Poređenje backtestova",
     "loading": "Učitavanje poređenja…",
-    "vs": "vs",
+    "vs": "naspram",
     "runLabel": "Pokretanje {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrike",

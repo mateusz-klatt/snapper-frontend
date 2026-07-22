@@ -61,7 +61,7 @@
     "title": "Сравнить",
     "headingFull": "Сравнение бэктестов",
     "loading": "Загрузка сравнения…",
-    "vs": "vs",
+    "vs": "против",
     "runLabel": "Запуск {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Метрики",
@@ -70,8 +70,8 @@
       "signals": "Сигналы"
     },
     "pairingMode": {
-      "auto": "auto",
-      "manual": "manual"
+      "auto": "автоматически",
+      "manual": "вручную"
     },
     "errors": {
       "notFound": "Сравнение не найдено в текущем кошельке.",
@@ -131,7 +131,7 @@
     "waiting": "Ожидание прогресса…",
     "candles": "{{done}} / {{total}} свечей",
     "candlesNoTotal": "{{done}} свечей",
-    "equity": "equity {{value}}",
+    "equity": "капитал {{value}}",
     "signalsTrades": "{{signals}} сигн. / {{trades}} сделок",
     "milestoneLine": "этап {{label}}",
     "milestone": {

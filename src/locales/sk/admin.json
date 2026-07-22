@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Vyberte peňaženku...",
     "selectWalletPlaceholder": "Vyberte peňaženku...",
     "walletLabel": "Peňaženka",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (papierová)",
     "unknownError": "Neznáma chyba",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "API kľúč",
         "api_secret": "Tajný API kľúč",
         "private_key_pem": "Súkromný kľúč (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID klienta",
+        "client_secret": "Tajný kľúč klienta",
+        "refresh_token": "Obnovovací token",
         "initial_balance": "Počiatočný zostatok"
       },
       "credentialTypes": {
         "api_key_secret": "API kľúč + tajný kľúč",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Peňaženka je povinná",

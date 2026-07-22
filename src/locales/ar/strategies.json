@@ -56,7 +56,7 @@
       "status": "الحالة",
       "dataLag": "تأخير البيانات",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "نبض التشغيل",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

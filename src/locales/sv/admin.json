@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Välj en plånbok...",
     "selectWalletPlaceholder": "Välj plånbok...",
     "walletLabel": "Plånbok",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Okänt fel",
     "dash": "-"
   },
@@ -282,14 +282,14 @@
         "private_key_pem": "Privat nyckel (PEM)",
         "client_id": "Klient-ID",
         "client_secret": "Klienthemlighet",
-        "refresh_token": "Refresh Token",
+        "refresh_token": "Uppdateringstoken",
         "initial_balance": "Startsaldo"
       },
       "credentialTypes": {
         "api_key_secret": "API-nyckel + hemlighet",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Plånbok krävs",

@@ -70,7 +70,7 @@
       "signals": "Signaler"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatisk",
       "manual": "manuell"
     },
     "errors": {
@@ -129,9 +129,9 @@
   },
   "progress": {
     "waiting": "Väntar på framsteg…",
-    "candles": "{{done}} / {{total}} candles",
-    "candlesNoTotal": "{{done}} candles",
-    "equity": "equity {{value}}",
+    "candles": "{{done}} / {{total}} ljus",
+    "candlesNoTotal": "{{done}} ljus",
+    "equity": "portföljvärde {{value}}",
     "signalsTrades": "{{signals}} sig / {{trades}} affärer",
     "milestoneLine": "milstolpe {{label}}",
     "milestone": {
@@ -165,7 +165,7 @@
       "startDateLabel": "Startdatum",
       "endDateLabel": "Slutdatum",
       "initialCashLabel": "Startkapital",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Prisglidning (bps)",
       "commissionBpsLabel": "Courtage (bps)",
       "executionModeLabel": "Utförandeläge",
       "executionModeDirectDb": "Direkt DB",

@@ -56,7 +56,7 @@
       "status": "Trạng thái",
       "dataLag": "Độ trễ dữ liệu",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Nhịp hoạt động",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

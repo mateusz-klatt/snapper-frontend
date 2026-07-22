@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Izvēlieties maku...",
     "selectWalletPlaceholder": "Izvēlēties maku...",
     "walletLabel": "Maks",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Nezināma kļūda",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "API atslēga + noslēpums",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Maks ir obligāts",

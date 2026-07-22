@@ -94,7 +94,7 @@
     },
     "retainDays": "{{days}}d",
     "ok": "OK",
-    "error": "error"
+    "error": "錯誤"
   },
   "systemMetrics": {
     "disk": "磁碟可用",
@@ -117,7 +117,7 @@
     "asyncioTasks": "Asyncio 任務",
     "asyncioActive": "{{count}} 個活躍",
     "asyncioPending": "+ {{count}} 個待處理",
-    "dbPool": "DB Pool",
+    "dbPool": "DB 連線池",
     "liveConns": "即時連線: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "物件: {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "空閒"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "出口網絡健康狀態",
+    "loading": "正在載入出口網絡健康狀態…",
+    "unavailable": "出口網絡健康狀態不可用：{{message}}",
+    "fallbackError": "載入出口網絡健康狀態失敗。",
+    "enabled": "已啟用",
+    "disabled": "已停用",
+    "disabledMessage": "出口路由池已停用；對外流量正使用預設網絡路徑。",
+    "fallbackWarning": "警告：私有流量目前經由 VPN 後備路由，而非直接出口。",
+    "noRoutes": "尚未配置出口路由。",
+    "anyExchange": "全部",
+    "none": "無",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "正在回報的容器",
+      "item": "{{container}}·{{age}}·路由：{{routeCount}}",
+      "stale": "·已過期"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}}·{{kind}}·{{exchange}}/{{trafficClass}}·上次活動：{{lastSeen}}·{{container}}",
+      "lastSeenUnknown": "未知",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "路由池",
+      "policy": "隔離策略",
+      "fallbackRoute": "私有流量後備路由",
+      "routes": "路由"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "等待",
+      "raise": "拋出錯誤"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "類型",
+      "region": "區域",
+      "exitIp": "出口 IP",
+      "provider": "供應商",
+      "priority": "優先次序",
+      "allowedExchanges": "允許的交易所",
+      "status": "狀態",
+      "inUse": "使用中",
+      "traffic": "流量",
+      "reservations": "有效預留",
+      "connections": "連線"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -190,14 +190,14 @@
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "活躍",
+      "quarantined": "已隔離",
+      "quarantinedSeconds": "已隔離（{{seconds}}s）",
+      "disabled": "已停用"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "公開",
+      "private": "私有"
     }
   },
   "relativeAge": {

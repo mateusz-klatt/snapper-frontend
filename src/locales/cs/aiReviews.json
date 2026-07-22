@@ -10,7 +10,7 @@
     "newStatus": "stav",
     "mode": "režim",
     "capAttempted": "pokus",
-    "capLimit": "vs limit",
+    "capLimit": "oproti limitu",
     "capOn": "na instrumentu",
     "reviewLabel": "kontrola {{reviewId}}",
     "unhandledFrame": "Nezpracovaný rámec aktivity AI kontroly: {{frame}}"

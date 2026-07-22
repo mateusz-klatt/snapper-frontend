@@ -38,7 +38,7 @@
       "ariaLabel": "Wallet actif",
       "placeholder": "Wallet",
       "allWallets": "Tous les wallets",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (démo)"
     },
     "operatorPicker": {
       "ariaLabel": "Opérateur actif",

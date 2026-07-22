@@ -51,12 +51,12 @@
     "dataLagAriaLabel": "Datu aizture: {{seconds}} sekundes",
     "lagBadge": "aizture: {{seconds}} s",
     "feedLag": "Feed aizture: {{ms}} ms",
-    "heartbeatAge": "Heartbeat vecums: {{seconds}} s",
+    "heartbeatAge": "Kontrolsignāla vecums: {{seconds}} s",
     "metrics": {
       "status": "Statuss",
       "dataLag": "Datu aizture",
       "dataLagValue": "{{ms}} ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Kontrolsignāls",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -66,7 +66,7 @@
     "outputs": "Izvades ({{count}})",
     "feedPublishers": "Feed publicētāji ({{count}})",
     "lastUpdate": "Pēdējais atjauninājums: {{time}}",
-    "waiting": "Gaida Heartbeat...",
+    "waiting": "Gaida kontrolsignālu...",
     "startAriaLabel": "Palaist stratēģiju {{name}}",
     "stopAriaLabel": "Apturēt stratēģiju {{name}}",
     "start": "Palaist",
@@ -83,7 +83,7 @@
       "healthy": "Vesela — tiek saņemti svaigi dati",
       "warning": "Brīdinājums — dati ir novecojuši",
       "error": "Kļūda — nav nesenu datu",
-      "unknown": "Nezināms — nav Heartbeat datu"
+      "unknown": "Nezināms — nav kontrolsignāla datu"
     },
     "healthShort": {
       "healthy": "VESELA",

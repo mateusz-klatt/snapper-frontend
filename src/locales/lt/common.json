@@ -38,7 +38,7 @@
       "ariaLabel": "Aktyvi piniginė",
       "placeholder": "Piniginė",
       "allWallets": "Visos piniginės",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (popierinė)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktyvus operatorius",

@@ -38,7 +38,7 @@
       "ariaLabel": "Aktivni novčanik",
       "placeholder": "Novčanik",
       "allWallets": "Svi novčanici",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (simulirano)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktivni operater",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Nešto je pošlo po zlu",
     "titleWithComponent": "Pogreška u {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Trag stoga",
     "tryAgain": "Pokušaj ponovno"
   },
   "nav": {

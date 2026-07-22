@@ -61,7 +61,7 @@
     "title": "Comparer",
     "headingFull": "Comparaison de backtests",
     "loading": "Chargement de la comparaison…",
-    "vs": "vs",
+    "vs": "contre",
     "runLabel": "Exécution {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Métriques",
@@ -70,7 +70,7 @@
       "signals": "Signaux"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatique",
       "manual": "manuel"
     },
     "errors": {
@@ -131,8 +131,8 @@
     "waiting": "En attente de progression…",
     "candles": "{{done}} / {{total}} bougies",
     "candlesNoTotal": "{{done}} bougies",
-    "equity": "equity {{value}}",
-    "signalsTrades": "{{signals}} sig / {{trades}} trades",
+    "equity": "capital {{value}}",
+    "signalsTrades": "{{signals}} signaux / {{trades}} transactions",
     "milestoneLine": "jalon {{label}}",
     "milestone": {
       "25pct": "25 %",
@@ -165,7 +165,7 @@
       "startDateLabel": "Date de début",
       "endDateLabel": "Date de fin",
       "initialCashLabel": "Capital initial",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Glissement (bps)",
       "commissionBpsLabel": "Commission (bps)",
       "executionModeLabel": "Mode d'exécution",
       "executionModeDirectDb": "DB directe",

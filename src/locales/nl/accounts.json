@@ -55,7 +55,7 @@
     "size": "Grootte",
     "entryPrice": "Instap",
     "markPrice": "Referentieprijs",
-    "unrealizedPnl": "Ongerealiseerde P&L",
+    "unrealizedPnl": "Niet-gerealiseerde P&L",
     "unrealizedFunding": "Financiering"
   },
   "side": {

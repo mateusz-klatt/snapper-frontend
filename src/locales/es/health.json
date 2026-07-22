@@ -128,27 +128,27 @@
     "tracemallocIdle": "Inactivo"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Estado del tráfico saliente",
+    "loading": "Cargando el estado del tráfico saliente…",
+    "unavailable": "Estado del tráfico saliente no disponible: {{message}}",
+    "fallbackError": "Error al cargar el estado del tráfico saliente.",
+    "enabled": "Habilitado",
+    "disabled": "Deshabilitado",
+    "disabledMessage": "El pool de salida está deshabilitado; el tráfico saliente utiliza la ruta de red predeterminada.",
+    "fallbackWarning": "Advertencia: el tráfico privado utiliza la ruta alternativa por VPN, no una ruta de salida directa.",
+    "noRoutes": "No hay rutas de salida configuradas.",
+    "anyExchange": "Todos",
+    "none": "No hay",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Contenedores que notifican su estado",
+      "item": "{{container}} · {{age}} · rutas: {{routeCount}}",
+      "stale": "· desactualizado"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · última actividad: {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "desconocida",
       "kind": {
         "ws": "ws",
         "rest": "rest"
@@ -156,27 +156,27 @@
     },
     "summary": {
       "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "policy": "Política de cuarentena",
+      "fallbackRoute": "Ruta alternativa para tráfico privado",
+      "routes": "Rutas"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Esperar",
+      "raise": "Generar error"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Tipo",
+      "region": "Región",
+      "exitIp": "IP de salida",
+      "provider": "Proveedor",
+      "priority": "Prioridad",
+      "allowedExchanges": "Exchanges permitidos",
+      "status": "Estado",
+      "inUse": "En uso",
+      "traffic": "Tráfico",
+      "reservations": "Reservas activas",
+      "connections": "Conexiones"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "directa",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Activa",
+      "quarantined": "En cuarentena",
+      "quarantinedSeconds": "En cuarentena ({{seconds}}s)",
+      "disabled": "Deshabilitada"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "público",
+      "private": "privado"
     }
   },
   "relativeAge": {

@@ -62,7 +62,7 @@
   "jsonEditor": {
     "formEditor": "フォームエディター",
     "rawEditor": "Raw JSONエディター",
-    "rawJson": "Raw JSON",
+    "rawJson": "生JSON",
     "switchToForm": "フォームに切り替え",
     "importToForm": "フォームに取り込み",
     "parseError": "解析エラー: {{message}}",

@@ -33,7 +33,7 @@
     "uptimeMinutes": "{{minutes}} mín",
     "uptimeHours": "{{hours}} klst {{minutes}} mín",
     "uptimeDays": "{{days}} d {{hours}} klst",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Bakprófun {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "Keyrslutími",
@@ -117,7 +117,7 @@
     "asyncioTasks": "Asyncio verkefni",
     "asyncioActive": "{{count}} virk",
     "asyncioPending": "+ {{count}} í bið",
-    "dbPool": "DB Pool",
+    "dbPool": "DB-tengisafn",
     "liveConns": "Lifandi tengingar: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Hlutir: {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Óvirkt"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Staða útleiða",
+    "loading": "Hleð stöðu útleiða…",
+    "unavailable": "Staða útleiða er ekki tiltæk: {{message}}",
+    "fallbackError": "Mistókst að hlaða stöðu útleiða.",
+    "enabled": "Virkt",
+    "disabled": "Óvirkt",
+    "disabledMessage": "Útleiðasafnið er óvirkt; umferð á útleið fer um sjálfgefna netleið.",
+    "fallbackWarning": "Viðvörun: einkaumferð fer um VPN-varaleið en ekki beina útleið.",
+    "noRoutes": "Engar leiðir fyrir útleiðarumferð hafa verið stilltar.",
+    "anyExchange": "Allar",
+    "none": "Ekkert",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Gámar sem senda stöðugögn",
+      "item": "{{container}} · {{age}} · leiðir: {{routeCount}}",
+      "stale": "· úrelt"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · sást síðast {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "óþekkt",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Safn",
+      "policy": "Einangrunarstefna",
+      "fallbackRoute": "Varaleið einkaumferðar",
+      "routes": "Leiðir"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Bíða",
+      "raise": "Kasta villu"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Tegund",
+      "region": "Svæði",
+      "exitIp": "Útleiðar-IP",
+      "provider": "Þjónustuveita",
+      "priority": "Forgangur",
+      "allowedExchanges": "Leyfðar kauphallir",
+      "status": "Staða",
+      "inUse": "Í notkun",
+      "traffic": "Umferð",
+      "reservations": "Virkar frátektir",
+      "connections": "Tengingar"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "bein",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Virk",
+      "quarantined": "Einangruð",
+      "quarantinedSeconds": "Einangruð ({{seconds}}s)",
+      "disabled": "Óvirk"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "opinber",
+      "private": "einka"
     }
   },
   "relativeAge": {

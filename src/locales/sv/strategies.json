@@ -56,7 +56,7 @@
       "status": "Status",
       "dataLag": "Datafördröjning",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Hjärtslag",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

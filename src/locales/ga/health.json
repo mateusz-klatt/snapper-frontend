@@ -128,55 +128,55 @@
     "tracemallocIdle": "Díomhaoin"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Sláinte an Tráchta Amach",
+    "loading": "Sláinte an tráchta amach á lódáil…",
+    "unavailable": "Níl sláinte an tráchta amach ar fáil: {{message}}",
+    "fallbackError": "Níorbh fhéidir sláinte an tráchta amach a lódáil.",
+    "enabled": "Cumasaithe",
+    "disabled": "Díchumasaithe",
+    "disabledMessage": "Tá linn an tráchta amach díchumasaithe; úsáideann an trácht amach bealach réamhshocraithe an líonra.",
+    "fallbackWarning": "Rabhadh: tá trácht príobháideach á sheoladh trí bhealach cúltaca an VPN seachas trí bhealach díreach amach.",
+    "noRoutes": "Níl aon bhealach amach cumraithe.",
+    "anyExchange": "Gach malartán",
+    "none": "Gan aon cheann",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Coimeádáin atá ag tuairisciú",
+      "item": "{{container}} · {{age}} · bealaí: {{routeCount}}",
+      "stale": "· as dáta"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · feicthe go deireanach {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "anaithnid",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Linn",
+      "policy": "Beartas coraintín",
+      "fallbackRoute": "Cúltaca do thrácht príobháideach",
+      "routes": "Bealaí"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Fan",
+      "raise": "Caith eisceacht"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Cineál",
+      "region": "Réigiún",
+      "exitIp": "IP scoir",
+      "provider": "Soláthraí",
+      "priority": "Tosaíocht",
+      "allowedExchanges": "Malartáin cheadaithe",
+      "status": "Stádas",
+      "inUse": "In úsáid",
+      "traffic": "Trácht",
+      "reservations": "Áirithintí gníomhacha",
+      "connections": "Naisc"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "díreach",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Gníomhach",
+      "quarantined": "I gcoraintín",
+      "quarantinedSeconds": "I gcoraintín ({{seconds}}s)",
+      "disabled": "Díchumasaithe"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "poiblí",
+      "private": "príobháideach"
     }
   },
   "relativeAge": {

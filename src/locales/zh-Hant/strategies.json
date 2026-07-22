@@ -56,7 +56,7 @@
       "status": "狀態",
       "dataLag": "數據延遲",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "心跳",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

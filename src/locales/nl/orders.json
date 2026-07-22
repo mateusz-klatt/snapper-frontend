@@ -14,16 +14,16 @@
       "all": "Alle orders",
       "new": "Nieuw",
       "open": "Open",
-      "partiallyFilled": "Gedeeltelijk gevuld",
-      "partially_filled": "Gedeeltelijk gevuld",
-      "filled": "Gevuld",
+      "partiallyFilled": "Gedeeltelijk uitgevoerd",
+      "partially_filled": "Gedeeltelijk uitgevoerd",
+      "filled": "Volledig uitgevoerd",
       "cancelled": "Geannuleerd",
       "rejected": "Afgewezen"
     }
   },
   "orderCard": {
     "sideUnknown": "N.v.t.",
-    "priceMarket": "Market",
+    "priceMarket": "Markt",
     "quantity": "Aantal",
     "price": "Prijs",
     "created": "Aangemaakt",
@@ -37,8 +37,8 @@
     "cancelAriaLabel": "Order {{orderId}} annuleren"
   },
   "executionCard": {
-    "orderNumber": "Order #{{orderId}}",
-    "filled": "GEVULD",
+    "orderNumber": "Ordernr. {{orderId}}",
+    "filled": "UITGEVOERD",
     "orderLabel": "Order {{orderId}}",
     "size": "Omvang",
     "price": "Prijs",
@@ -81,7 +81,7 @@
     "titleEdit": "Nieuwe handmatige order",
     "titleConfirm": "Order bevestigen",
     "fields": {
-      "exchange": "Exchange",
+      "exchange": "Beurs",
       "instrument": "Instrument",
       "side": "Zijde",
       "orderType": "Ordertype",
@@ -97,18 +97,18 @@
       "sell": "Verkopen"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
+      "market": "Markt",
+      "limit": "Limiet",
       "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stoplimiet",
+      "stop_limit": "Stoplimiet"
     },
     "modeOptions": {
       "live": "Live",
-      "paper": "Paper"
+      "paper": "Simulatie"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — alleen marktdata",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (simulatie)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

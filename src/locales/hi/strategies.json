@@ -56,7 +56,7 @@
       "status": "स्थिति",
       "dataLag": "डेटा लैग",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "हार्टबीट",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -118,7 +118,7 @@
     "executionModeThread": "एम्बेडेड thread",
     "executionModeProcess": "अलग प्रोसेस",
     "executionModeHelp": "Threads मेमोरी साझा करते हैं, प्रोसेस अधिक मजबूत अलगाव देते हैं।",
-    "flagsLabel": "Flags",
+    "flagsLabel": "फ़्लैग",
     "autostartLabel": "सर्वर बूट पर ऑटोस्टार्ट",
     "startImmediatelyLabel": "पंजीकरण के तुरंत बाद शुरू करें",
     "noteLabel": "नोट (वैकल्पिक)",

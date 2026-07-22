@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Izaberite novčanik...",
     "selectWalletPlaceholder": "Izaberi novčanik...",
     "walletLabel": "Novčanik",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Nepoznata greška",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "API ključ",
         "api_secret": "API tajna",
         "private_key_pem": "Privatni ključ (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID klijenta",
+        "client_secret": "Tajna klijenta",
+        "refresh_token": "Token za osvežavanje",
         "initial_balance": "Početni saldo"
       },
       "credentialTypes": {
         "api_key_secret": "API ključ + tajna",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Novčanik je obavezan",

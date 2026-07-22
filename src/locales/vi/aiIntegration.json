@@ -97,7 +97,7 @@
     "revoked": "Đã thu hồi",
     "createdAt": "Tạo lúc",
     "createdBy": "Tạo bởi (public_id người dùng)",
-    "publicId": "Public ID",
+    "publicId": "ID công khai",
     "maxOpenOrders": "Số lệnh mở tối đa",
     "maxDailyNotionalUsd": "Giá trị danh nghĩa USD tối đa/ngày",
     "maxCancelsPerMinute": "Số lần hủy tối đa mỗi phút",

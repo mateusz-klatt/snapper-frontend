@@ -14,14 +14,14 @@
       "description": "Semua keterlihatan Pemapar serta kawalan dagangan, posisi, strategi, proses, ujian semula dan integrasi AI."
     },
     "admin": {
-      "label": "Admin",
+      "label": "Pentadbir",
       "description": "Akses sistem penuh termasuk pengurusan pengguna, tetapan sistem, konfigurasi API key dan semua kebenaran Operator."
     },
     "table": {
       "resource": "Sumber",
       "viewer": "Pemapar",
       "operator": "Operator",
-      "admin": "Admin"
+      "admin": "Pentadbir"
     },
     "resources": {
       "overview": "Gambaran Keseluruhan",
@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Pilih dompet...",
     "selectWalletPlaceholder": "Pilih dompet...",
     "walletLabel": "Dompet",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (simulasi)",
     "unknownError": "Ralat tidak diketahui",
     "dash": "-"
   },
@@ -165,8 +165,8 @@
         "operatorPlaceholder": "Pilih operator...",
         "wallet": "Dompet",
         "scopeKind": "Jenis Skop",
-        "underlyingPublicId": "Underlying Public ID",
-        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPublicId": "ID Awam Aset Dasar",
+        "instrumentPublicId": "ID Awam Instrumen",
         "underlyingPlaceholder": "cth. BTC",
         "instrumentPlaceholder": "cth. BTC-USD-PERP",
         "exchange": "Bursa",
@@ -177,7 +177,7 @@
         "notePlaceholder": "Nota pilihan"
       },
       "scopeKinds": {
-        "underlying": "Underlying",
+        "underlying": "Aset Dasar",
         "instrument": "Instrumen"
       },
       "validation": {
@@ -277,19 +277,19 @@
         "pemPlaceholder": "Tampal kunci peribadi berformat PEM di sini"
       },
       "fieldLabels": {
-        "api_key": "API Key",
-        "api_secret": "API Secret",
-        "private_key_pem": "Private Key (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "api_key": "Kunci API",
+        "api_secret": "Rahsia API",
+        "private_key_pem": "Kunci Peribadi (PEM)",
+        "client_id": "ID Klien",
+        "client_secret": "Rahsia Klien",
+        "refresh_token": "Token Penyegaran",
         "initial_balance": "Baki Awal"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "Kunci API + Rahsia",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Simulasi"
       },
       "validation": {
         "walletRequired": "Dompet diperlukan",

@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Επιλέξτε πορτοφόλι...",
     "selectWalletPlaceholder": "Επιλογή πορτοφολιού...",
     "walletLabel": "Πορτοφόλι",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (εικονικό)",
     "unknownError": "Άγνωστο σφάλμα",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "Κλειδί API + μυστικό",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Εικονικό"
       },
       "validation": {
         "walletRequired": "Το πορτοφόλι είναι υποχρεωτικό",

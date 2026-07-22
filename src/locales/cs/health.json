@@ -103,7 +103,7 @@
     "loading": "Načítání metrik procesu…",
     "unavailable": "Metriky procesu nejsou dostupné: {{message}}",
     "fallbackError": "Metriky stavu procesu se nepodařilo načíst.",
-    "rawJson": "Raw JSON",
+    "rawJson": "Nezpracovaný JSON",
     "pid": "PID",
     "statusValue": "Stav: {{status}}",
     "uptime": "Doba běhu",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Nečinné"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Stav odchozího provozu",
+    "loading": "Načítání stavu odchozího provozu…",
+    "unavailable": "Stav odchozího provozu není dostupný: {{message}}",
+    "fallbackError": "Stav odchozího provozu se nepodařilo načíst.",
+    "enabled": "Povoleno",
+    "disabled": "Zakázáno",
+    "disabledMessage": "Pool odchozích tras je zakázán; odchozí provoz používá výchozí síťovou cestu.",
+    "fallbackWarning": "Varování: soukromý provoz používá záložní VPN, nikoli přímou odchozí trasu.",
+    "noRoutes": "Nejsou nakonfigurovány žádné odchozí trasy.",
+    "anyExchange": "Všechny",
+    "none": "Žádné",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Ohlašující kontejnery",
+      "item": "{{container}} · {{age}} · trasy: {{routeCount}}",
+      "stale": "· zastaralé"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · naposledy zaznamenáno {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "neznámé",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Pool odchozích tras",
+      "policy": "Zásady karantény",
+      "fallbackRoute": "Záložní trasa soukromého provozu",
+      "routes": "Trasy"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Čekat",
+      "raise": "Vyvolat chybu"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
+      "kind": "Typ",
       "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "exitIp": "Výstupní IP",
+      "provider": "Poskytovatel",
+      "priority": "Priorita",
+      "allowedExchanges": "Povolené burzy",
+      "status": "Stav",
+      "inUse": "Používáno",
+      "traffic": "Provoz",
+      "reservations": "Aktivní rezervace",
+      "connections": "Spojení"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "přímé",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktivní",
+      "quarantined": "V karanténě",
+      "quarantinedSeconds": "V karanténě ({{seconds}}s)",
+      "disabled": "Zakázáno"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "veřejný",
+      "private": "soukromý"
     }
   },
   "relativeAge": {

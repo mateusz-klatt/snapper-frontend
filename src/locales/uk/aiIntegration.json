@@ -97,7 +97,7 @@
     "revoked": "Відкликаний",
     "createdAt": "Створено",
     "createdBy": "Створив (public_id користувача)",
-    "publicId": "Public ID",
+    "publicId": "Публічний ID",
     "maxOpenOrders": "Макс. відкритих ордерів",
     "maxDailyNotionalUsd": "Макс. денний номінал у USD",
     "maxCancelsPerMinute": "Макс. скасувань за хвилину",

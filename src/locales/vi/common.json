@@ -38,7 +38,7 @@
       "ariaLabel": "Ví đang hoạt động",
       "placeholder": "Ví",
       "allWallets": "Tất cả ví",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (mô phỏng)"
     },
     "operatorPicker": {
       "ariaLabel": "Người vận hành đang hoạt động",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Đã xảy ra sự cố",
     "titleWithComponent": "Lỗi trong {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Vết ngăn xếp",
     "tryAgain": "Thử lại"
   },
   "nav": {

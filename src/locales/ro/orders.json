@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "La piață",
     "quantity": "Cantitate",
     "price": "Preț",
     "created": "Creat",
@@ -58,7 +58,7 @@
       "instrument": "Instrument",
       "side": "Sens",
       "type": "Tip",
-      "status": "Status",
+      "status": "Stare",
       "quantity": "Cantitate",
       "price": "Preț",
       "leverage": "Levier",
@@ -81,7 +81,7 @@
     "titleEdit": "Ordin manual nou",
     "titleConfirm": "Confirmați ordinul",
     "fields": {
-      "exchange": "Exchange",
+      "exchange": "Bursă",
       "instrument": "Instrument",
       "side": "Sens",
       "orderType": "Tip ordin",
@@ -104,11 +104,11 @@
       "stop_limit": "Ordin stop-limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Real",
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — doar date de piață",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

@@ -21,7 +21,7 @@
     "running": "Đang chạy"
   },
   "metrics": {
-    "tradingEngine": "Trading Engine",
+    "tradingEngine": "Engine giao dịch",
     "tradingEngineDescription": "Engine thực thi chiến lược",
     "activeBacktests": "Backtest đang hoạt động",
     "activeBacktestsDescription": "Tiến trình Backtest đang chạy",
@@ -117,9 +117,9 @@
     "asyncioTasks": "Tác vụ asyncio",
     "asyncioActive": "{{count}} đang hoạt động",
     "asyncioPending": "+ {{count}} đang chờ",
-    "dbPool": "DB Pool",
+    "dbPool": "Pool kết nối DB",
     "liveConns": "Kết nối live: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC thế hệ 0/1/2",
     "gcObjects": "Đối tượng: {{value}}",
     "threadsPercent": "Luồng %",
     "networkConns": "Kết nối mạng",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Nhàn rỗi"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Tình trạng kết nối ra",
+    "loading": "Đang tải tình trạng kết nối ra…",
+    "unavailable": "Không có dữ liệu tình trạng kết nối ra: {{message}}",
+    "fallbackError": "Không tải được tình trạng kết nối ra.",
+    "enabled": "Đã bật",
+    "disabled": "Đã tắt",
+    "disabledMessage": "Pool kết nối ra đã tắt; lưu lượng ra đang dùng tuyến mạng mặc định.",
+    "fallbackWarning": "Cảnh báo: lưu lượng riêng tư đang đi qua tuyến VPN dự phòng thay vì kết nối ra trực tiếp.",
+    "noRoutes": "Chưa cấu hình tuyến kết nối ra nào.",
+    "anyExchange": "Tất cả",
+    "none": "Không có",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Container đang báo cáo",
+      "item": "{{container}} · {{age}} · tuyến: {{routeCount}}",
+      "stale": "· quá hạn"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ghi nhận lần cuối {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "không rõ",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Nhóm kết nối",
+      "policy": "Chính sách cách ly",
+      "fallbackRoute": "Dự phòng cho lưu lượng riêng tư",
+      "routes": "Tuyến"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Chờ",
+      "raise": "Báo lỗi"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Loại",
+      "region": "Khu vực",
+      "exitIp": "IP đầu ra",
+      "provider": "Nhà cung cấp",
+      "priority": "Ưu tiên",
+      "allowedExchanges": "Sàn được phép",
+      "status": "Trạng thái",
+      "inUse": "Đang sử dụng",
+      "traffic": "Lưu lượng",
+      "reservations": "Lượt giữ chỗ đang hoạt động",
+      "connections": "Kết nối"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "trực tiếp",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Đang hoạt động",
+      "quarantined": "Đang cách ly",
+      "quarantinedSeconds": "Đang cách ly ({{seconds}}s)",
+      "disabled": "Đã tắt"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "công khai",
+      "private": "riêng tư"
     }
   },
   "relativeAge": {

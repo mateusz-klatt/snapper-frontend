@@ -61,7 +61,7 @@
     "totalHint": "På PostgreSQL är Totalt en uppskattning från planeraren (korrekt inom avvikelsen från autovacuum); exakt på SQLite."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "Sidotjänst för aviseringar",
     "loading": "Laddar notifieringsmätvärden…",
     "unavailable": "Notifieringsmätvärden inte tillgängliga: {{message}}",
     "fallbackError": "Det gick inte att ladda notifieringsmätvärden.",
@@ -128,27 +128,27 @@
     "tracemallocIdle": "Inaktiv"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Hälsa för utgående trafik",
+    "loading": "Laddar hälsodata för utgående trafik…",
+    "unavailable": "Hälsodata för utgående trafik är inte tillgängliga: {{message}}",
+    "fallbackError": "Det gick inte att ladda hälsodata för utgående trafik.",
+    "enabled": "Aktiverad",
+    "disabled": "Inaktiverad",
+    "disabledMessage": "Poolen för utgående trafik är inaktiverad; trafiken använder standardvägen i nätverket.",
+    "fallbackWarning": "Varning: privat trafik använder VPN-reservvägen i stället för en direkt utgående väg.",
+    "noRoutes": "Inga vägar för utgående trafik är konfigurerade.",
+    "anyExchange": "Alla",
+    "none": "Ingen",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Rapporterande containrar",
+      "item": "{{container}} · {{age}} · vägar: {{routeCount}}",
+      "stale": "· inaktuell"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · senast sedd {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "okänd",
       "kind": {
         "ws": "ws",
         "rest": "rest"
@@ -156,48 +156,48 @@
     },
     "summary": {
       "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "policy": "Karantänpolicy",
+      "fallbackRoute": "Privat reservväg",
+      "routes": "Vägar"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Vänta",
+      "raise": "Utlös fel"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
+      "kind": "Typ",
       "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "exitIp": "Utgående IP-adress",
+      "provider": "Leverantör",
+      "priority": "Prioritet",
+      "allowedExchanges": "Tillåtna börser",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "Används",
+      "traffic": "Trafik",
+      "reservations": "Aktiva reservationer",
+      "connections": "Anslutningar"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "handskakning {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "direkt",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktiv",
+      "quarantined": "I karantän",
+      "quarantinedSeconds": "I karantän ({{seconds}}s)",
+      "disabled": "Inaktiverad"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "offentlig",
+      "private": "privat"
     }
   },
   "relativeAge": {

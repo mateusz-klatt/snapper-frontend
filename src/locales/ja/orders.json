@@ -31,7 +31,7 @@
     "orderId": "注文ID",
     "leverage": "レバレッジ",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "決済専用",
     "cancel": "キャンセル",
     "cancelling": "キャンセル中…",
     "cancelAriaLabel": "注文 {{orderId}} をキャンセル"
@@ -62,7 +62,7 @@
       "quantity": "数量",
       "price": "価格",
       "leverage": "レバレッジ",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "決済専用",
       "created": "作成日時"
     },
     "executions": {

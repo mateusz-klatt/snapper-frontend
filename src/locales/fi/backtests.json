@@ -70,7 +70,7 @@
       "signals": "Signaalit"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automaattinen",
       "manual": "manuaali"
     },
     "errors": {
@@ -131,9 +131,9 @@
     "waiting": "Odotetaan edistymistä…",
     "candles": "Kynttilät: {{done}} / {{total}}",
     "candlesNoTotal": "Kynttilät: {{done}}",
-    "equity": "equity {{value}}",
+    "equity": "pääoma {{value}}",
     "signalsTrades": "Signaalit: {{signals}} / treidit: {{trades}}",
-    "milestoneLine": "milestone {{label}}",
+    "milestoneLine": "välitavoite {{label}}",
     "milestone": {
       "25pct": "25 %",
       "50pct": "50 %",

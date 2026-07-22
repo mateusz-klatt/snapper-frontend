@@ -38,7 +38,7 @@
       "ariaLabel": "کیف پول فعال",
       "placeholder": "کیف پول",
       "allWallets": "همه کیف پول‌ها",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (آزمایشی)"
     },
     "operatorPicker": {
       "ariaLabel": "اپراتور فعال",

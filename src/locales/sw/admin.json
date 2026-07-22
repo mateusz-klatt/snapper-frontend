@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Chagua pochi...",
     "selectWalletPlaceholder": "Chagua pochi...",
     "walletLabel": "Pochi",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (majaribio)",
     "unknownError": "Hitilafu isiyojulikana",
     "dash": "-"
   },
@@ -98,7 +98,7 @@
         "passwordPlaceholder": "Weka nenosiri",
         "newPassword": "Nenosiri Jipya",
         "newPasswordPlaceholder": "Weka nenosiri jipya",
-        "email": "Email",
+        "email": "Barua pepe",
         "emailPlaceholder": "Weka email",
         "role": "Jukumu",
         "accountActive": "Akaunti inatumika",
@@ -252,7 +252,7 @@
       "addCredential": "Ongeza Kitambulisho",
       "selectWalletPrompt": "Chagua pochi hapo juu ili kuona vitambulisho vyake.",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "Soko",
         "type": "Aina",
         "label": "Lebo",
         "createdAt": "Iliundwa",
@@ -269,7 +269,7 @@
       "title": "Ongeza Kitambulisho",
       "fields": {
         "wallet": "Pochi",
-        "exchange": "Exchange",
+        "exchange": "Soko",
         "exchangePlaceholder": "mf. kraken",
         "credentialType": "Aina ya Kitambulisho",
         "label": "Lebo (hiari)",
@@ -277,19 +277,19 @@
         "pemPlaceholder": "Bandika private key ya muundo wa PEM hapa"
       },
       "fieldLabels": {
-        "api_key": "API Key",
-        "api_secret": "API Secret",
-        "private_key_pem": "Private Key (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "api_key": "Ufunguo wa API",
+        "api_secret": "Siri ya API",
+        "private_key_pem": "Ufunguo Binafsi (PEM)",
+        "client_id": "ID ya Mteja",
+        "client_secret": "Siri ya Mteja",
+        "refresh_token": "Tokeni ya Kuhuisha",
         "initial_balance": "Salio la Awali"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "Ufunguo wa API + Siri",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Majaribio"
       },
       "validation": {
         "walletRequired": "Pochi inahitajika",
@@ -308,7 +308,7 @@
     "rotate": {
       "title": "Zungusha Kitambulisho",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "Soko",
         "type": "Aina",
         "label": "Lebo",
         "newLabel": "Lebo Mpya (hiari)",

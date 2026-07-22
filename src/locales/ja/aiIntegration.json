@@ -97,7 +97,7 @@
     "revoked": "失効済み",
     "createdAt": "作成日時",
     "createdBy": "作成者（user public_id）",
-    "publicId": "Public ID",
+    "publicId": "公開ID",
     "maxOpenOrders": "最大未決注文数",
     "maxDailyNotionalUsd": "1日最大想定元本（USD）",
     "maxCancelsPerMinute": "1分あたり最大キャンセル数",

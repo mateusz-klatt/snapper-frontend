@@ -50,13 +50,13 @@
     "statusAriaLabel": "Status: {{status}}",
     "dataLagAriaLabel": "Lengahan data: {{seconds}} saat",
     "lagBadge": "lengahan: {{seconds}}s",
-    "feedLag": "Feed lag: {{ms}}ms",
-    "heartbeatAge": "HB age: {{seconds}}s",
+    "feedLag": "Lengahan feed: {{ms}}ms",
+    "heartbeatAge": "Usia HB: {{seconds}}s",
     "metrics": {
       "status": "Status",
       "dataLag": "Lengahan Data",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Denyutan",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -64,7 +64,7 @@
     "hideDetails": "Sembunyikan Butiran",
     "inputs": "Input ({{count}})",
     "outputs": "Output ({{count}})",
-    "feedPublishers": "Feed Publishers ({{count}})",
+    "feedPublishers": "Penerbit Feed ({{count}})",
     "lastUpdate": "Kemas kini terakhir: {{time}}",
     "waiting": "Menunggu Heartbeat...",
     "startAriaLabel": "Mulakan strategi {{name}}",
@@ -86,9 +86,9 @@
       "unknown": "Tidak diketahui — tiada data Heartbeat"
     },
     "healthShort": {
-      "healthy": "HEALTHY",
-      "warning": "WARNING",
-      "error": "ERROR"
+      "healthy": "SIHAT",
+      "warning": "AMARAN",
+      "error": "RALAT"
     },
     "backtest": "Backtest",
     "backtestAriaLabel": "Backtest strategi {{name}}",
@@ -118,7 +118,7 @@
     "executionModeThread": "Thread terbenam",
     "executionModeProcess": "Proses terasing",
     "executionModeHelp": "Threads berkongsi memori, processes menyediakan pengasingan lebih kuat.",
-    "flagsLabel": "Flags",
+    "flagsLabel": "Pilihan flag",
     "autostartLabel": "Autostart semasa server boot",
     "startImmediatelyLabel": "Mula serta-merta selepas pendaftaran",
     "noteLabel": "Nota (pilihan)",

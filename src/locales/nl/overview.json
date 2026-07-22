@@ -36,7 +36,7 @@
     "positions": "Posities",
     "instrumentsCount": "{{count}} instrumenten",
     "empty": "Geen positiedata beschikbaar",
-    "incompleteValuation": "Gegevens onvolledig — sommige posities missen een bruikbare mark- of instapprijs; totalen tellen alleen bekende componenten"
+    "incompleteValuation": "Gegevens onvolledig — sommige posities missen een bruikbare markprijs of instapprijs; totalen tellen alleen bekende componenten"
   },
   "signals": {
     "title": "Recente signalen",

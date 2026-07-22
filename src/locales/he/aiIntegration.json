@@ -97,7 +97,7 @@
     "revoked": "בוטל",
     "createdAt": "נוצר ב",
     "createdBy": "נוצר על ידי (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "מזהה ציבורי",
     "maxOpenOrders": "מקסימום פקודות פתוחות",
     "maxDailyNotionalUsd": "מקסימום נומינלי יומי ב-USD",
     "maxCancelsPerMinute": "מקסימום ביטולים לדקה",

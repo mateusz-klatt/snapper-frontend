@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}मि",
     "uptimeHours": "{{hours}}घं {{minutes}}मि",
     "uptimeDays": "{{days}}दि {{hours}}घं",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "बैकटेस्ट {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "लागू नहीं",
     "uptimeLabel": "अपटाइम",
     "exitCode": "एग्ज़िट कोड: {{code}}",
     "service": "सर्विस",
-    "backtest": "backtest"
+    "backtest": "बैकटेस्ट"
   },
   "dbStats": {
     "title": "डेटाबेस आँकड़े",
@@ -61,7 +61,7 @@
     "totalHint": "PostgreSQL पर, कुल प्लानर का अनुमान है (autovacuum ड्रिफ्ट की सीमा में सटीक); SQLite पर सटीक।"
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "नोटिफिकेशन साइडकार",
     "loading": "नोटिफिकेशन मेट्रिक्स लोड हो रहे हैं…",
     "unavailable": "नोटिफिकेशन मेट्रिक्स उपलब्ध नहीं: {{message}}",
     "fallbackError": "नोटिफिकेशन मेट्रिक्स लोड करने में विफल।",
@@ -103,7 +103,7 @@
     "loading": "प्रोसेस मेट्रिक्स लोड हो रहे हैं…",
     "unavailable": "प्रोसेस मेट्रिक्स उपलब्ध नहीं: {{message}}",
     "fallbackError": "प्रोसेस हेल्थ मेट्रिक्स लोड करने में विफल।",
-    "rawJson": "Raw JSON",
+    "rawJson": "रॉ JSON",
     "pid": "PID",
     "statusValue": "स्थिति: {{status}}",
     "uptime": "अपटाइम",
@@ -114,69 +114,69 @@
     "throttled": "{{count}}× थ्रॉटल किया गया",
     "memory": "मेमोरी",
     "saturation": "सैचुरेशन {{percent}}",
-    "asyncioTasks": "Asyncio Tasks",
+    "asyncioTasks": "Asyncio टास्क",
     "asyncioActive": "{{count}} सक्रिय",
     "asyncioPending": "+ {{count}} लंबित",
     "dbPool": "DB पूल",
     "liveConns": "लाइव कनेक्शन: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "ऑब्जेक्ट: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "थ्रेड %",
     "networkConns": "नेटवर्क कनेक्शन",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "सक्रिय",
     "tracemallocIdle": "निष्क्रिय"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "इग्रेस हेल्थ",
+    "loading": "इग्रेस हेल्थ लोड हो रही है…",
+    "unavailable": "इग्रेस हेल्थ उपलब्ध नहीं: {{message}}",
+    "fallbackError": "इग्रेस हेल्थ लोड करने में विफल।",
+    "enabled": "सक्षम",
+    "disabled": "अक्षम",
+    "disabledMessage": "इग्रेस पूल अक्षम है; आउटबाउंड ट्रैफ़िक डिफ़ॉल्ट नेटवर्क पथ का उपयोग कर रहा है।",
+    "fallbackWarning": "चेतावनी: निजी ट्रैफ़िक सीधे इग्रेस के बजाय VPN फ़ॉलबैक पर है।",
+    "noRoutes": "कोई इग्रेस रूट कॉन्फ़िगर नहीं है।",
+    "anyExchange": "सभी",
+    "none": "कोई नहीं",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "रिपोर्ट भेजने वाले कंटेनर",
+      "item": "{{container}} · {{age}} · रूट: {{routeCount}}",
+      "stale": "· पुराना"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · अंतिम बार {{lastSeen}} पर देखा गया · {{container}}",
+      "lastSeenUnknown": "अज्ञात",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "पूल",
+      "policy": "क्वारंटीन नीति",
+      "fallbackRoute": "निजी फ़ॉलबैक",
+      "routes": "रूट"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "प्रतीक्षा करें",
+      "raise": "त्रुटि दें"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "प्रकार",
+      "region": "क्षेत्र",
+      "exitIp": "एग्ज़िट IP",
+      "provider": "प्रदाता",
+      "priority": "प्राथमिकता",
+      "allowedExchanges": "अनुमत एक्सचेंज",
+      "status": "स्थिति",
+      "inUse": "उपयोग में",
+      "traffic": "ट्रैफ़िक",
+      "reservations": "सक्रिय रिज़र्वेशन",
+      "connections": "कनेक्शन"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "प्रत्यक्ष",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "सक्रिय",
+      "quarantined": "क्वारंटीन",
+      "quarantinedSeconds": "क्वारंटीन ({{seconds}}s)",
+      "disabled": "अक्षम"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "सार्वजनिक",
+      "private": "निजी"
     }
   },
   "relativeAge": {

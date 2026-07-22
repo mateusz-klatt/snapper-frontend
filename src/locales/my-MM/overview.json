@@ -28,15 +28,15 @@
   "portfolio": {
     "title": "Portfolio အနှစ်ချုပ်",
     "totalValue": "စုစုပေါင်း တန်ဖိုး",
-    "longExposure": "Long exposure",
-    "shortExposure": "Short exposure",
-    "netDelta": "Net delta",
-    "unrealizedPnl": "မသိမ်းရသေးသော P&L",
+    "longExposure": "Long ထိတွေ့ပမာဏ",
+    "shortExposure": "Short ထိတွေ့ပမာဏ",
+    "netDelta": "အသားတင် delta",
+    "unrealizedPnl": "အကောင်အထည်မပေါ်သေးသော P&L",
     "pnlPercent": "P&L %",
     "positions": "ပိုဇစ်ရှင်များ",
     "instrumentsCount": "Instrument {{count}} ခု",
     "empty": "Position ဒေတာ မရှိပါ",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "ဒေတာ မပြည့်စုံပါ — အချို့ ပိုဇစ်ရှင်များတွင် အသုံးပြုနိုင်သော ရည်ညွှန်းဈေး သို့မဟုတ် ဝင်စျေး မရှိသောကြောင့် စုစုပေါင်းတွင် သိရှိထားသည့် အစိတ်အပိုင်းများကိုသာ ပေါင်းထားသည်"
   },
   "signals": {
     "title": "လတ်တလော အချက်ပြမှုများ",

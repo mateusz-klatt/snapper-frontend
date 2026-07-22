@@ -38,7 +38,7 @@
       "ariaLabel": "المحفظة النشطة",
       "placeholder": "محفظة",
       "allWallets": "كل المحافظ",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (ورقية)"
     },
     "operatorPicker": {
       "ariaLabel": "المشغّل النشط",

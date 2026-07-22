@@ -41,7 +41,7 @@
     }
   },
   "detail": {
-    "title": "Backtest run",
+    "title": "Pokretanje backtesta",
     "fields": {
       "strategy": "Strategija",
       "instrument": "Instrument",
@@ -61,16 +61,16 @@
     "title": "Uporedi",
     "headingFull": "Poređenje backtestova",
     "loading": "Učitavanje poređenja…",
-    "vs": "vs",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "vs": "naspram",
+    "runLabel": "Pokretanje {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrike",
-      "equityOverlay": "Equity overlay",
+      "equityOverlay": "Preklapanje krivih kapitala",
       "trades": "Trgovine",
       "signals": "Signali"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatski",
       "manual": "ručno"
     },
     "errors": {
@@ -113,8 +113,8 @@
       "empty": "Nema uporedivih metrika — nijedan run nije zabeležio vrednosti.",
       "columns": {
         "name": "Metrika",
-        "runA": "Run A",
-        "runB": "Run B",
+        "runA": "Pokretanje A",
+        "runB": "Pokretanje B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,8 +122,8 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "Pokretanje A",
+        "runB": "Pokretanje B"
       }
     }
   },
@@ -131,9 +131,9 @@
     "waiting": "Čekanje napretka…",
     "candles": "{{done}} / {{total}} sveća",
     "candlesNoTotal": "{{done}} sveća",
-    "equity": "equity {{value}}",
+    "equity": "kapital {{value}}",
     "signalsTrades": "{{signals}} sig / {{trades}} trgovina",
-    "milestoneLine": "milestone {{label}}",
+    "milestoneLine": "prekretnica {{label}}",
     "milestone": {
       "25pct": "25 %",
       "50pct": "50 %",
@@ -169,7 +169,7 @@
       "commissionBpsLabel": "Provizija (bps)",
       "executionModeLabel": "Režim izvršenja",
       "executionModeDirectDb": "Direktna DB",
-      "executionModeZmqReplay": "ZMQ replay",
+      "executionModeZmqReplay": "ZMQ reprodukcija",
       "targetExchangeLabel": "Ciljna berza izvršenja",
       "targetExchangeNone": "Nijedna (jedna berza)",
       "targetExchangeHelp": "Opciono — za cross-asset runove; ostavite prazno za jednu berzu"

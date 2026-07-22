@@ -98,17 +98,17 @@
     },
     "orderTypeOptions": {
       "market": "Շուկայական",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "limit": "Լիմիտային",
+      "stop": "Ստոպ",
+      "stopLimit": "Ստոպ-լիմիտային",
+      "stop_limit": "Ստոպ-լիմիտային"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Իրական",
+      "paper": "Փորձնական"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — միայն շուկայի տվյալներ",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (փորձնական)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

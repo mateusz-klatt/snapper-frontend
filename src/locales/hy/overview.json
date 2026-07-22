@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Գործընթացների վիճակ",
-    "feeds": "Feeds",
+    "feeds": "Տվյալների հոսքեր",
     "strategies": "Ռազմավարություններ",
     "executors": "Կատարողներ",
     "brokers": "Բրոքերներ"
@@ -36,7 +36,7 @@
     "positions": "Դիրքեր",
     "instrumentsCount": "{{count}} գործիք",
     "empty": "Դիրքերի տվյալներ հասանելի չեն",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Տվյալները թերի են․ որոշ դիրքերի համար չկա կիրառելի հաշվարկային կամ մուտքի գին, ուստի ընդհանուր արժեքներում գումարվում են միայն հայտնի բաղադրիչները"
   },
   "signals": {
     "title": "Վերջին ազդանշաններ",

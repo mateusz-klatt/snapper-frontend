@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Pénztárca kiválasztása...",
     "selectWalletPlaceholder": "Pénztárca kiválasztása...",
     "walletLabel": "Pénztárca",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demó)",
     "unknownError": "Ismeretlen hiba",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "API-kulcs + titok",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demó"
       },
       "validation": {
         "walletRequired": "A pénztárca megadása kötelező",

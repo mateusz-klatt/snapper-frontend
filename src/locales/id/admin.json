@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Pilih dompet...",
     "selectWalletPlaceholder": "Pilih dompet...",
     "walletLabel": "Dompet",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (simulasi)",
     "unknownError": "Kesalahan tidak diketahui",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "Kunci API",
         "api_secret": "Secret API",
         "private_key_pem": "Kunci Privat (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID Klien",
+        "client_secret": "Secret Klien",
+        "refresh_token": "Token Penyegaran",
         "initial_balance": "Saldo Awal"
       },
       "credentialTypes": {
         "api_key_secret": "Kunci API + Secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Simulasi"
       },
       "validation": {
         "walletRequired": "Dompet wajib diisi",

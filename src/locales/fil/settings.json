@@ -30,7 +30,7 @@
     "toggleAriaLabel": "I-toggle ang {{key}}",
     "badges": {
       "json": "📋 JSON",
-      "sensitive": "🔒 Sensitive"
+      "sensitive": "🔒 Sensitibo"
     },
     "helpText": {
       "allowShortSelling": "Payagan ang engine na mag-open ng short positions. Ang SELL signals ay gagawa ng negative desired_units; iko-clamp sa 0 kapag disabled.",
@@ -40,10 +40,10 @@
   },
   "addModal": {
     "title": "Mag-add ng bagong setting",
-    "keyLabel": "Key",
-    "valueLabel": "Value",
-    "categoryLabel": "Category",
-    "descriptionLabel": "Description",
+    "keyLabel": "Key ng setting",
+    "valueLabel": "Halaga",
+    "categoryLabel": "Kategorya",
+    "descriptionLabel": "Paglalarawan",
     "keyPlaceholder": "hal. walutomat.api_key",
     "keyHint": "Gumamit ng dot notation para sa nested settings (hal. category.subcategory.name)",
     "valuePlaceholder": "Halaga ng setting",
@@ -62,10 +62,10 @@
   "jsonEditor": {
     "formEditor": "Form editor",
     "rawEditor": "Raw JSON editor",
-    "rawJson": "Raw JSON",
+    "rawJson": "JSON (raw)",
     "switchToForm": "Lumipat sa Form",
     "importToForm": "I-import sa Form",
-    "parseError": "Parse error: {{message}}",
+    "parseError": "Error sa pag-parse: {{message}}",
     "arraySummary": "Array ({{length}} item)",
     "addItem": "Mag-add ng Item",
     "remove": "Tanggalin",

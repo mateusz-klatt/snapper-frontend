@@ -100,15 +100,15 @@
       "market": "Tržišni",
       "limit": "Limit nalog",
       "stop": "Stop nalog",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop-limit nalog",
+      "stop_limit": "Stop-limit nalog"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Stvarno",
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — samo tržišni podaci",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

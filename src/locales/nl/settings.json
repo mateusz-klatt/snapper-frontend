@@ -66,7 +66,7 @@
     "switchToForm": "Naar formulier wisselen",
     "importToForm": "Naar formulier importeren",
     "parseError": "Parsefout: {{message}}",
-    "arraySummary": "Array ({{length}} items)",
+    "arraySummary": "Array ({{length}} elementen)",
     "addItem": "Item toevoegen",
     "remove": "Verwijderen",
     "typeHint": {

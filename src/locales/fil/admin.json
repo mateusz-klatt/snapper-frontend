@@ -24,14 +24,14 @@
       "admin": "Admin"
     },
     "resources": {
-      "overview": "Overview",
-      "market": "Market Data",
-      "processes": "Processes",
-      "strategies": "Strategies",
+      "overview": "Pangkalahatang-tingin",
+      "market": "Data ng Merkado",
+      "processes": "Mga Proseso",
+      "strategies": "Mga Strategy",
       "orders": "Orders at Fills",
-      "positions": "Positions",
-      "signals": "Signals",
-      "health": "Health",
+      "positions": "Mga Posisyon",
+      "signals": "Mga Signal",
+      "health": "Kalusugan",
       "admin": "Administrasyon",
       "settings": "Mga Setting"
     }
@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Pumili ng wallet...",
     "selectWalletPlaceholder": "Pumili ng wallet...",
     "walletLabel": "Wallet",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Hindi kilalang error",
     "dash": "-"
   },
@@ -54,7 +54,7 @@
     },
     "list": {
       "title": "Pamamahala ng Users",
-      "countLabel": "{{count}} users",
+      "countLabel": "{{count}} user",
       "showInactive": "Ipakita ang inactive",
       "hideInactive": "Itago ang inactive",
       "addUser": "Mag-add ng User",
@@ -62,13 +62,13 @@
       "columns": {
         "user": "User",
         "role": "Role",
-        "status": "Status",
+        "status": "Katayuan",
         "createdAt": "Ginawa noong",
         "actions": "Mga aksyon"
       },
       "status": {
         "active": "Aktibo",
-        "inactive": "Inactive"
+        "inactive": "Hindi aktibo"
       },
       "unknown": "Hindi kilala",
       "empty": {
@@ -107,7 +107,7 @@
       "roles": {
         "viewer": "Viewer",
         "operator": "Operator",
-        "admin": "Administrator",
+        "admin": "Admin",
         "ai_delegate": "AI Delegate"
       },
       "validation": {
@@ -139,13 +139,13 @@
       "message": "Wala kang permission para mag-manage ng scope grants. Makipag-ugnayan sa system administrator mo."
     },
     "list": {
-      "title": "Scope Grants",
-      "countLabel": "{{count}} grants",
+      "title": "Mga Scope Grant",
+      "countLabel": "{{count}} grant",
       "createGrant": "Gumawa ng Grant",
       "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang scope grants nito.",
       "columns": {
         "operator": "Operator",
-        "scope": "Scope",
+        "scope": "Saklaw",
         "target": "Target",
         "grantedAt": "Na-grant noong",
         "actions": "Mga aksyon"
@@ -164,21 +164,21 @@
         "operator": "Operator",
         "operatorPlaceholder": "Pumili ng operator...",
         "wallet": "Wallet",
-        "scopeKind": "Scope Kind",
-        "underlyingPublicId": "Underlying Public ID",
-        "instrumentPublicId": "Instrument Public ID",
+        "scopeKind": "Uri ng saklaw",
+        "underlyingPublicId": "Public ID ng pinagbabatayang asset",
+        "instrumentPublicId": "Public ID ng instrumento",
         "underlyingPlaceholder": "hal. BTC",
         "instrumentPlaceholder": "hal. BTC-USD-PERP",
         "exchange": "Palitan",
         "exchangePlaceholder": "Pumili ng palitan...",
         "instrumentSelectPlaceholder": "Pumili ng instrumento...",
         "selectExchangeFirst": "Pumili muna ng palitan",
-        "note": "Note (optional)",
-        "notePlaceholder": "Optional note"
+        "note": "Tala (opsyonal)",
+        "notePlaceholder": "Opsyonal na tala"
       },
       "scopeKinds": {
-        "underlying": "Underlying",
-        "instrument": "Instrument"
+        "underlying": "Pinagbabatayang asset",
+        "instrument": "Instrumento"
       },
       "validation": {
         "operatorRequired": "Kailangan ang operator",
@@ -198,7 +198,7 @@
       "title": "I-handover ang Scope Grant",
       "fields": {
         "currentHolder": "Kasalukuyang holder",
-        "scope": "Scope",
+        "scope": "Saklaw",
         "wallet": "Wallet",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "I-transfer sa operator",
@@ -223,7 +223,7 @@
     "form": {
       "title": "Gumawa ng Operator",
       "fields": {
-        "label": "Label",
+        "label": "Pangalan",
         "labelPlaceholder": "hal. desk-alpha",
         "description": "Paglalarawan (optional)",
         "descriptionPlaceholder": "Malayang paglalarawan"
@@ -247,14 +247,14 @@
       "message": "Wala kang permission para mag-manage ng wallet credentials. Makipag-ugnayan sa system administrator mo."
     },
     "list": {
-      "title": "Wallet Credentials",
-      "countLabel": "{{count}} credentials",
+      "title": "Mga Kredensyal ng Wallet",
+      "countLabel": "{{count}} kredensyal",
       "addCredential": "Mag-add ng Credential",
       "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang credentials nito.",
       "columns": {
-        "exchange": "Exchange",
-        "type": "Type",
-        "label": "Label",
+        "exchange": "Palitan",
+        "type": "Uri",
+        "label": "Pangalan",
         "createdAt": "Ginawa noong",
         "actions": "Mga aksyon"
       },
@@ -269,27 +269,27 @@
       "title": "Mag-add ng Credential",
       "fields": {
         "wallet": "Wallet",
-        "exchange": "Exchange",
+        "exchange": "Palitan",
         "exchangePlaceholder": "hal. kraken",
-        "credentialType": "Credential Type",
-        "label": "Label (optional)",
+        "credentialType": "Uri ng kredensyal",
+        "label": "Pangalan (opsyonal)",
         "labelPlaceholder": "hal. Main trading key",
         "pemPlaceholder": "I-paste dito ang PEM-formatted private key"
       },
       "fieldLabels": {
-        "api_key": "API Key",
-        "api_secret": "API Secret",
-        "private_key_pem": "Private Key (PEM)",
+        "api_key": "API key",
+        "api_secret": "API secret",
+        "private_key_pem": "Private key (PEM)",
         "client_id": "Client ID",
-        "client_secret": "Client Secret",
+        "client_secret": "Client secret",
         "refresh_token": "Refresh Token",
-        "initial_balance": "Initial Balance"
+        "initial_balance": "Paunang balanse"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "API key + secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Kailangan ang wallet",
@@ -308,9 +308,9 @@
     "rotate": {
       "title": "I-rotate ang Credential",
       "fields": {
-        "exchange": "Exchange",
-        "type": "Type",
-        "label": "Label",
+        "exchange": "Palitan",
+        "type": "Uri",
+        "label": "Pangalan",
         "newLabel": "Bagong Label (optional)",
         "newLabelPlaceholder": "hal. Rotated key 2026-04",
         "pemPlaceholder": "I-paste dito ang PEM-formatted private key"

@@ -117,7 +117,7 @@
     "asyncioTasks": "Asyncio zadaci",
     "asyncioActive": "{{count}} aktivno",
     "asyncioPending": "+ {{count}} na čekanju",
-    "dbPool": "DB Pool",
+    "dbPool": "Skup DB veza",
     "liveConns": "Aktivne veze: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objekti: {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Neaktivno"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Stanje izlaznog saobraćaja",
+    "loading": "Učitavanje stanja izlaznog saobraćaja…",
+    "unavailable": "Stanje izlaznog saobraćaja nije dostupno: {{message}}",
+    "fallbackError": "Učitavanje stanja izlaznog saobraćaja nije uspjelo.",
+    "enabled": "Omogućeno",
+    "disabled": "Onemogućeno",
+    "disabledMessage": "Skup izlaznih ruta je onemogućen; odlazni saobraćaj koristi zadanu mrežnu putanju.",
+    "fallbackWarning": "Upozorenje: privatni saobraćaj koristi rezervnu VPN rutu, a ne direktni izlaz.",
+    "noRoutes": "Nema konfigurisanih izlaznih ruta.",
+    "anyExchange": "Sve",
+    "none": "Nema",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Kontejneri koji prijavljuju podatke",
+      "item": "{{container}} · {{age}} · rute: {{routeCount}}",
+      "stale": "· zastarjelo"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · posljednji put zabilježeno {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "nepoznato",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Skup izlaznih ruta",
+      "policy": "Pravila karantene",
+      "fallbackRoute": "Rezervna privatna ruta",
+      "routes": "Rute"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Čekanje",
+      "raise": "Izazivanje greške"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "kind": "Vrsta",
+      "region": "Regija",
+      "exitIp": "Izlazni IP",
+      "provider": "Pružalac",
+      "priority": "Prioritet",
+      "allowedExchanges": "Dozvoljene berze",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "U upotrebi",
+      "traffic": "Saobraćaj",
+      "reservations": "Aktivne rezervacije",
+      "connections": "Veze"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "direktno",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktivno",
+      "quarantined": "U karanteni",
+      "quarantinedSeconds": "U karanteni ({{seconds}}s)",
+      "disabled": "Onemogućeno"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "javni",
+      "private": "privatni"
     }
   },
   "relativeAge": {

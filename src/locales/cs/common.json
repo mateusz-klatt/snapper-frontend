@@ -38,7 +38,7 @@
       "ariaLabel": "Aktivní peněženka",
       "placeholder": "Peněženka",
       "allWallets": "Všechny peněženky",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktivní operátor",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Něco se pokazilo",
     "titleWithComponent": "Chyba v {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Výpis zásobníku",
     "tryAgain": "Zkusit znovu"
   },
   "nav": {

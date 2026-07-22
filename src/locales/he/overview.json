@@ -36,7 +36,7 @@
     "positions": "פוזיציות",
     "instrumentsCount": "{{count}} מכשירים",
     "empty": "אין נתוני פוזיציות זמינים",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "הנתונים חלקיים — בחלק מהפוזיציות אין מחיר ייחוס שמיש או מחיר כניסה שמיש; הסכומים הכוללים מחושבים רק מהרכיבים הידועים"
   },
   "signals": {
     "title": "אותות אחרונים",

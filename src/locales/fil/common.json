@@ -1,6 +1,6 @@
 {
   "loading": "Nilo-load...",
-  "error": "Error",
+  "error": "May error",
   "retry": "Subukan ulit",
   "close": "Isara",
   "cancel": "Kanselahin",
@@ -14,11 +14,11 @@
   },
   "chrome": {
     "brand": "Snapper",
-    "console": "Trading Console",
+    "console": "Console para sa Trading",
     "tagline": "Workstation ng presisyon",
     "openSidebar": "Buksan ang sidebar",
     "closeSidebar": "Isara ang sidebar",
-    "sidebar": "Sidebar",
+    "sidebar": "Gilid na menu",
     "mainNavigation": "Pangunahing navigation",
     "tradingContent": "Nilalaman ng trading",
     "skipToContent": "Lumaktaw sa nilalaman ng trading",
@@ -36,13 +36,13 @@
     "lagUnknown": "Hindi alam",
     "walletPicker": {
       "ariaLabel": "Aktibong wallet",
-      "placeholder": "Wallet",
+      "placeholder": "Pumili ng wallet",
       "allWallets": "Lahat ng wallet",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktibong operator",
-      "placeholder": "Operator",
+      "placeholder": "Pumili ng operator",
       "allOperators": "Lahat ng operator"
     },
     "timeTravel": {
@@ -53,7 +53,7 @@
     "marketDataOnly": {
       "defaultTooltip": "Observation-only instrument. Tumatanggap ang Snapper ng market data pero hindi makakapag-place ng orders para sa pares na ito (symbol, exchange).",
       "ariaLabel": "Market-data only na instrument",
-      "badge": "Market-data only"
+      "badge": "Data ng merkado lamang"
     },
     "liveOnly": {
       "notice": "Kasalukuyang state ang ipinapakita ng tab na ito — walang historical view."
@@ -68,12 +68,12 @@
   "nav": {
     "accounts": "Mga Account sa Palitan",
     "admin": "Administrasyon",
-    "aiIntegration": "AI Integration",
-    "aiReviews": "AI Reviews",
+    "aiIntegration": "Integrasyon ng AI",
+    "aiReviews": "Mga Pagsusuri ng AI",
     "alerts": "Mga Alerto",
     "backtests": "Mga Backtest",
     "health": "Kalusugan",
-    "market": "Market Data",
+    "market": "Data ng Merkado",
     "orders": "Mga Order at Execution",
     "overview": "Pangkalahatang-tingin",
     "positions": "Mga Position",

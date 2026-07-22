@@ -97,7 +97,7 @@
     "revoked": "Ingetrokken",
     "createdAt": "Aangemaakt op",
     "createdBy": "Aangemaakt door (gebruiker public_id)",
-    "publicId": "Public ID",
+    "publicId": "Publieke ID",
     "maxOpenOrders": "Max. openstaande orders",
     "maxDailyNotionalUsd": "Max. dagelijkse notional USD",
     "maxCancelsPerMinute": "Max. annuleringen per minuut",

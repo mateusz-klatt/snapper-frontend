@@ -97,7 +97,7 @@
     "revoked": "ملغى",
     "createdAt": "تم الإنشاء في",
     "createdBy": "أنشأه (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "ID العام",
     "maxOpenOrders": "الحد الأقصى للأوامر المفتوحة",
     "maxDailyNotionalUsd": "الحد الأقصى اليومي الاسمي بالدولار",
     "maxCancelsPerMinute": "الحد الأقصى للإلغاءات في الدقيقة",

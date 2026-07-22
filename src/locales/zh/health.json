@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}m",
     "uptimeHours": "{{hours}}h {{minutes}}m",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "回测 {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "运行时长",
     "exitCode": "退出码: {{code}}",
     "service": "服务",
-    "backtest": "backtest"
+    "backtest": "回测"
   },
   "dbStats": {
     "title": "数据库统计",
@@ -94,7 +94,7 @@
     },
     "retainDays": "{{days}}d",
     "ok": "OK",
-    "error": "error"
+    "error": "错误"
   },
   "systemMetrics": {
     "disk": "磁盘可用",
@@ -117,7 +117,7 @@
     "asyncioTasks": "Asyncio 任务",
     "asyncioActive": "{{count}} 个活跃",
     "asyncioPending": "+ {{count}} 个待处理",
-    "dbPool": "DB Pool",
+    "dbPool": "DB 连接池",
     "liveConns": "实时连接: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "对象: {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "空闲"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "出站网络健康",
+    "loading": "正在加载出站网络健康状态…",
+    "unavailable": "出站网络健康状态不可用：{{message}}",
+    "fallbackError": "加载出站网络健康状态失败。",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "disabledMessage": "出站路由池已禁用；出站流量正通过默认网络路径传输。",
+    "fallbackWarning": "警告：私有流量正在使用 VPN 回退路径，而非直接出站。",
+    "noRoutes": "未配置出站路由。",
+    "anyExchange": "所有交易所",
+    "none": "无",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "正在上报的容器",
+      "item": "{{container}} · {{age}} · 路由：{{routeCount}}",
+      "stale": "·已过期"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · 上次活跃：{{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "未知",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "路由池",
+      "policy": "隔离策略",
+      "fallbackRoute": "私有流量回退",
+      "routes": "路由"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "等待",
+      "raise": "抛出异常"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "类型",
+      "region": "地区",
+      "exitIp": "出口 IP",
+      "provider": "提供商",
+      "priority": "优先级",
+      "allowedExchanges": "允许的交易所",
+      "status": "状态",
+      "inUse": "使用中",
+      "traffic": "流量",
+      "reservations": "当前预留",
+      "connections": "连接"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -190,14 +190,14 @@
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "活跃",
+      "quarantined": "已隔离",
+      "quarantinedSeconds": "已隔离（{{seconds}}s）",
+      "disabled": "已禁用"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "公共",
+      "private": "私有"
     }
   },
   "relativeAge": {

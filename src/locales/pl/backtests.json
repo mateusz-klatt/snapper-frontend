@@ -70,7 +70,7 @@
       "signals": "Sygnały"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatyczne",
       "manual": "manualne"
     },
     "errors": {

@@ -61,7 +61,7 @@
     "totalHint": "På PostgreSQL er Total et estimat fra planlæggeren (nøjagtigt inden for drift fra autovacuum); på SQLite er det eksakt."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "Notifikations-sidecar",
     "loading": "Indlæser notifikationsmetrikker…",
     "unavailable": "Notifikationsmetrikker ikke tilgængelige: {{message}}",
     "fallbackError": "Kunne ikke indlæse notifikationsmetrikker.",
@@ -111,13 +111,13 @@
     "openFds": "Åbne FDs",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
-    "throttled": "Throttled {{count}}×",
+    "throttled": "Neddroslet {{count}}×",
     "memory": "Hukommelse",
     "saturation": "Mætning {{percent}}",
-    "asyncioTasks": "Asyncio Tasks",
+    "asyncioTasks": "Asyncio-opgaver",
     "asyncioActive": "{{count}} aktive",
     "asyncioPending": "+ {{count}} afventer",
-    "dbPool": "DB Pool",
+    "dbPool": "DB-pulje",
     "liveConns": "Live-forb.: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objekter: {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Inaktiv"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Egress-status",
+    "loading": "Indlæser egress-status…",
+    "unavailable": "Egress-status er ikke tilgængelig: {{message}}",
+    "fallbackError": "Kunne ikke indlæse egress-status.",
+    "enabled": "Aktiveret",
+    "disabled": "Deaktiveret",
+    "disabledMessage": "Egress-puljen er deaktiveret; udgående trafik bruger standardnetværksruten.",
+    "fallbackWarning": "Advarsel: Privat trafik bruger VPN-reserveruten, ikke en direkte egress-rute.",
+    "noRoutes": "Der er ikke konfigureret nogen egress-ruter.",
+    "anyExchange": "Alle",
+    "none": "Ingen",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Rapporterende containere",
+      "item": "{{container}} · {{age}} · ruter: {{routeCount}}",
+      "stale": "· forældet"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · senest set {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "ukendt",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Pulje",
+      "policy": "Karantænepolitik",
+      "fallbackRoute": "Privat reserverute",
+      "routes": "Ruter"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Vent",
+      "raise": "Kast fejl"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
+      "kind": "Type",
       "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "exitIp": "Udgangs-IP",
+      "provider": "Udbyder",
+      "priority": "Prioritet",
+      "allowedExchanges": "Tilladte børser",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "I brug",
+      "traffic": "Trafik",
+      "reservations": "Aktive reservationer",
+      "connections": "Forbindelser"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "direkte",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktiv",
+      "quarantined": "I karantæne",
+      "quarantinedSeconds": "I karantæne ({{seconds}}s)",
+      "disabled": "Deaktiveret"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "offentlig",
+      "private": "privat"
     }
   },
   "relativeAge": {

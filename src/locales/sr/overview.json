@@ -36,7 +36,7 @@
     "positions": "Pozicije",
     "instrumentsCount": "{{count}} instrumenata",
     "empty": "Nema dostupnih podataka o pozicijama",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Podaci su nepotpuni — za neke pozicije nedostaje upotrebljiva referentna ili ulazna cena; ukupni iznosi obuhvataju samo poznate komponente"
   },
   "signals": {
     "title": "Nedavni signali",

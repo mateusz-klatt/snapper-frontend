@@ -6,22 +6,22 @@
   "rolePermissions": {
     "title": "สิทธิ์ตามบทบาท",
     "viewer": {
-      "label": "Viewer",
-      "description": "มองเห็นข้อมูลระดับผู้ปฏิบัติงานแบบอ่านอย่างเดียวครบถ้วน ทั้งบัญชี กระเป๋าเงินและพอร์ต สัญญาณ การตัดสินใจของ AI กำไรขาดทุน แบ็กเทสต์ กลยุทธ์ กระบวนการ และสถานะระบบ ไม่สามารถดำเนินการปฏิบัติการได้"
+      "label": "ผู้ดู",
+      "description": "ดูข้อมูลการปฏิบัติงานได้แบบอ่านอย่างเดียว ครอบคลุมบัญชี กระเป๋าเงินและพอร์ต สัญญาณ การตัดสินใจของ AI กำไรขาดทุน แบ็คเทสต์ กลยุทธ์ กระบวนการ และสุขภาพระบบ ไม่สามารถดำเนินการด้านปฏิบัติการได้"
     },
     "operator": {
-      "label": "Operator",
-      "description": "มองเห็นทุกอย่างเช่นเดียวกับ Viewer พร้อมควบคุมการเทรด โพซิชัน กลยุทธ์ กระบวนการ แบ็กเทสต์ และการเชื่อมต่อ AI"
+      "label": "ผู้ปฏิบัติงาน",
+      "description": "เข้าถึงข้อมูลทั้งหมดที่ผู้ดูมองเห็นได้ พร้อมสิทธิ์ควบคุมการเทรด สถานะการถือครอง กลยุทธ์ กระบวนการ แบ็คเทสต์ และการเชื่อมต่อ AI"
     },
     "admin": {
-      "label": "Admin",
-      "description": "เข้าถึงระบบเต็มรูปแบบ รวมถึงการจัดการผู้ใช้ การตั้งค่าระบบ การกำหนดค่า API key และสิทธิ์ Operator ทั้งหมด"
+      "label": "ผู้ดูแลระบบ",
+      "description": "เข้าถึงระบบเต็มรูปแบบ รวมถึงการจัดการผู้ใช้ การตั้งค่าระบบ การกำหนดค่า API key และสิทธิ์ทั้งหมดของผู้ปฏิบัติงาน"
     },
     "table": {
       "resource": "ทรัพยากร",
-      "viewer": "Viewer",
-      "operator": "Operator",
-      "admin": "Admin"
+      "viewer": "ผู้ดู",
+      "operator": "ผู้ปฏิบัติงาน",
+      "admin": "ผู้ดูแลระบบ"
     },
     "resources": {
       "overview": "ภาพรวม",
@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "เลือกกระเป๋าเงิน...",
     "selectWalletPlaceholder": "เลือกกระเป๋าเงิน...",
     "walletLabel": "กระเป๋าเงิน",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (จำลอง)",
     "unknownError": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ",
     "dash": "-"
   },
@@ -105,10 +105,10 @@
         "resetUserPassword": "รีเซ็ตรหัสผ่านผู้ใช้"
       },
       "roles": {
-        "viewer": "Viewer",
-        "operator": "Operator",
-        "admin": "Administrator",
-        "ai_delegate": "AI Delegate"
+        "viewer": "ผู้ดู",
+        "operator": "ผู้ปฏิบัติงาน",
+        "admin": "ผู้ดูแลระบบ",
+        "ai_delegate": "ตัวแทน AI"
       },
       "validation": {
         "usernameRequired": "ต้องระบุชื่อผู้ใช้",
@@ -144,7 +144,7 @@
       "createGrant": "ให้ขอบเขต",
       "selectWalletPrompt": "เลือกกระเป๋าเงินด้านบนเพื่อดูขอบเขตสิทธิ์ของกระเป๋านั้น",
       "columns": {
-        "operator": "Operator",
+        "operator": "ผู้ปฏิบัติงาน",
         "scope": "ขอบเขต",
         "target": "เป้าหมาย",
         "grantedAt": "ให้สิทธิ์เมื่อ",
@@ -161,7 +161,7 @@
     "form": {
       "title": "สร้างขอบเขตสิทธิ์",
       "fields": {
-        "operator": "Operator",
+        "operator": "ผู้ปฏิบัติงาน",
         "operatorPlaceholder": "เลือก Operator...",
         "wallet": "กระเป๋าเงิน",
         "scopeKind": "ประเภทขอบเขต",
@@ -178,7 +178,7 @@
       },
       "scopeKinds": {
         "underlying": "สินทรัพย์อ้างอิง",
-        "instrument": "Instrument"
+        "instrument": "ตราสาร"
       },
       "validation": {
         "operatorRequired": "ต้องระบุ Operator",
@@ -252,7 +252,7 @@
       "addCredential": "เพิ่มข้อมูลรับรอง",
       "selectWalletPrompt": "เลือกกระเป๋าเงินด้านบนเพื่อดูข้อมูลรับรองของกระเป๋านั้น",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "ตลาดซื้อขาย",
         "type": "ประเภท",
         "label": "ป้ายกำกับ",
         "createdAt": "สร้างเมื่อ",
@@ -269,7 +269,7 @@
       "title": "เพิ่มข้อมูลรับรอง",
       "fields": {
         "wallet": "กระเป๋าเงิน",
-        "exchange": "Exchange",
+        "exchange": "ตลาดซื้อขาย",
         "exchangePlaceholder": "เช่น kraken",
         "credentialType": "ประเภทข้อมูลรับรอง",
         "label": "ป้ายกำกับ (ไม่บังคับ)",
@@ -277,19 +277,19 @@
         "pemPlaceholder": "วางคีย์ส่วนตัวรูปแบบ PEM ที่นี่"
       },
       "fieldLabels": {
-        "api_key": "API Key",
-        "api_secret": "API Secret",
+        "api_key": "คีย์ API",
+        "api_secret": "รหัสลับ API",
         "private_key_pem": "คีย์ส่วนตัว (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID ไคลเอนต์",
+        "client_secret": "รหัสลับไคลเอนต์",
+        "refresh_token": "โทเคนรีเฟรช",
         "initial_balance": "ยอดตั้งต้น"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "คีย์ API + รหัสลับ",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "จำลอง"
       },
       "validation": {
         "walletRequired": "ต้องระบุกระเป๋าเงิน",
@@ -308,7 +308,7 @@
     "rotate": {
       "title": "เปลี่ยนข้อมูลรับรอง",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "ตลาดซื้อขาย",
         "type": "ประเภท",
         "label": "ป้ายกำกับ",
         "newLabel": "ป้ายกำกับใหม่ (ไม่บังคับ)",

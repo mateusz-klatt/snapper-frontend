@@ -51,8 +51,8 @@
     "noParams": "nie sú nastavené žiadne parametre"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "jednorazový",
+    "autoStart": "automatický štart",
     "manual": "manuálne"
   },
   "actions": {

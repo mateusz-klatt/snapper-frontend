@@ -36,7 +36,7 @@
     "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
-    "uptimeLabel": "Uptime",
+    "uptimeLabel": "Masa operasi",
     "exitCode": "Kod keluar: {{code}}",
     "service": "perkhidmatan",
     "backtest": "Backtest"
@@ -61,7 +61,7 @@
     "totalHint": "Pada PostgreSQL, Jumlah ialah anggaran perancang (tepat dalam julat hanyutan autovacuum); tepat pada SQLite."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "Sidecar Pemberitahuan",
     "loading": "Memuatkan metrik notifikasi…",
     "unavailable": "Metrik notifikasi tidak tersedia: {{message}}",
     "fallbackError": "Gagal memuatkan metrik notifikasi.",
@@ -77,7 +77,7 @@
     "outboxDepthDescription": "Dalam giliran, menunggu retry"
   },
   "retention": {
-    "title": "Retention Scheduler",
+    "title": "Penjadual Pengekalan",
     "loading": "Memuatkan retention run…",
     "unavailable": "Retention run tidak tersedia: {{message}}",
     "fallbackError": "Gagal memuatkan retention run.",
@@ -106,77 +106,77 @@
     "rawJson": "JSON Mentah",
     "pid": "PID",
     "statusValue": "Status: {{status}}",
-    "uptime": "Uptime",
-    "threads": "Threads",
-    "openFds": "Open FDs",
+    "uptime": "Masa Operasi",
+    "threads": "Utas",
+    "openFds": "FD Terbuka",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
-    "throttled": "Throttled {{count}}×",
+    "throttled": "Dihadkan {{count}}×",
     "memory": "Memori",
-    "saturation": "Saturation {{percent}}",
-    "asyncioTasks": "Asyncio Tasks",
+    "saturation": "Ketepuan {{percent}}",
+    "asyncioTasks": "Tugas Asyncio",
     "asyncioActive": "{{count}} aktif",
     "asyncioPending": "+ {{count}} tertunda",
-    "dbPool": "DB Pool",
+    "dbPool": "Kumpulan DB",
     "liveConns": "Sambungan aktif: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
-    "gcObjects": "Objects: {{value}}",
-    "threadsPercent": "Threads %",
-    "networkConns": "Network conns",
+    "gcObjects": "Objek: {{value}}",
+    "threadsPercent": "Utas %",
+    "networkConns": "Sambungan rangkaian",
     "tracemalloc": "Tracemalloc",
-    "tracemallocActive": "Active",
-    "tracemallocIdle": "Idle"
+    "tracemallocActive": "Aktif",
+    "tracemallocIdle": "Melahu"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Kesihatan Trafik Keluar",
+    "loading": "Memuatkan kesihatan trafik keluar…",
+    "unavailable": "Kesihatan trafik keluar tidak tersedia: {{message}}",
+    "fallbackError": "Gagal memuatkan kesihatan trafik keluar.",
+    "enabled": "Didayakan",
+    "disabled": "Dinyahdayakan",
+    "disabledMessage": "Kumpulan laluan keluar dinyahdayakan; trafik keluar menggunakan laluan rangkaian lalai.",
+    "fallbackWarning": "Amaran: trafik peribadi menggunakan laluan sandaran VPN, bukan laluan keluar langsung.",
+    "noRoutes": "Tiada laluan keluar dikonfigurasikan.",
+    "anyExchange": "Semua",
+    "none": "Tiada",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Kontena pelapor",
+      "item": "{{container}} · {{age}} · laluan: {{routeCount}}",
+      "stale": "· lapuk"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · kali terakhir dilihat {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "tidak diketahui",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Kumpulan",
+      "policy": "Dasar kuarantin",
+      "fallbackRoute": "Sandaran peribadi",
+      "routes": "Laluan"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Tunggu",
+      "raise": "Cetuskan ralat"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "kind": "Jenis",
+      "region": "Wilayah",
+      "exitIp": "IP Keluar",
+      "provider": "Penyedia",
+      "priority": "Keutamaan",
+      "allowedExchanges": "Bursa dibenarkan",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "Sedang digunakan",
+      "traffic": "Trafik",
+      "reservations": "Tempahan aktif",
+      "connections": "Sambungan"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "langsung",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktif",
+      "quarantined": "Dikuarantin",
+      "quarantinedSeconds": "Dikuarantin ({{seconds}}s)",
+      "disabled": "Dinyahdayakan"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "awam",
+      "private": "peribadi"
     }
   },
   "relativeAge": {

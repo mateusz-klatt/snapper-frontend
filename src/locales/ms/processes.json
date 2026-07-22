@@ -13,7 +13,7 @@
   "card": {
     "stop": "Henti",
     "start": "Mula",
-    "restart": "Restart",
+    "restart": "Mulakan semula",
     "starting": "Memulakan...",
     "stopping": "Menghentikan...",
     "managedRemotely": "Diurus oleh {{coordinator}}",
@@ -51,14 +51,14 @@
     "noParams": "tiada parameter ditetapkan"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "sekali sahaja",
+    "autoStart": "mula automatik",
     "manual": "manual"
   },
   "actions": {
     "stopTitle": "Hentikan {{name}}",
     "stopMessage": "Ini akan menghentikan proses {{name}}.",
-    "restartTitle": "Restart {{name}}",
+    "restartTitle": "Mulakan semula {{name}}",
     "restartMessage": "Ini akan memulakan semula proses {{name}}."
   },
   "executionMode": {

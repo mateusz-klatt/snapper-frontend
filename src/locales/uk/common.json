@@ -38,7 +38,7 @@
       "ariaLabel": "Активний гаманець",
       "placeholder": "Гаманець",
       "allWallets": "Усі гаманці",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (демо)"
     },
     "operatorPicker": {
       "ariaLabel": "Активний оператор",

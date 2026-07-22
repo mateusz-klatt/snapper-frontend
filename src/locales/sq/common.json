@@ -38,7 +38,7 @@
       "ariaLabel": "Portofoli aktiv",
       "placeholder": "Portofol",
       "allWallets": "Të gjitha portofolet",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (letër)"
     },
     "operatorPicker": {
       "ariaLabel": "Operatori aktiv",

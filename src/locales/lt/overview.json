@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Procesų būsena",
-    "feeds": "Feeds",
+    "feeds": "Duomenų srautai",
     "strategies": "Strategijos",
     "executors": "Vykdytojai",
     "brokers": "Brokeriai"
@@ -36,7 +36,7 @@
     "positions": "Pozicijos",
     "instrumentsCount": "{{count}} instrumentų",
     "empty": "Pozicijų duomenų nėra",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Duomenys neišsamūs — kai kurioms pozicijoms trūksta tinkamos orientacinės arba įėjimo kainos; bendros sumos apima tik žinomus komponentus"
   },
   "signals": {
     "title": "Naujausi signalai",

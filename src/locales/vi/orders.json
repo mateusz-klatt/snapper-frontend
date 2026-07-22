@@ -104,11 +104,11 @@
       "stop_limit": "Lệnh dừng giới hạn"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Giao dịch thực",
+      "paper": "Mô phỏng"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — chỉ dữ liệu thị trường",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (mô phỏng)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

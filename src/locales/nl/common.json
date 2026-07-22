@@ -38,7 +38,7 @@
       "ariaLabel": "Actieve portefeuille",
       "placeholder": "Portefeuille",
       "allWallets": "Alle portefeuilles",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (simulatie)"
     },
     "operatorPicker": {
       "ariaLabel": "Actieve operator",
@@ -51,7 +51,7 @@
       "exitTitle": "Terug naar livemodus"
     },
     "marketDataOnly": {
-      "defaultTooltip": "Instrument alleen voor observatie. Snapper ontvangt marktdata, maar kan geen orders plaatsen voor dit (symbool, exchange)-paar.",
+      "defaultTooltip": "Instrument alleen voor observatie. Snapper ontvangt marktdata, maar kan geen orders plaatsen voor deze combinatie van symbool en beurs.",
       "ariaLabel": "Instrument alleen met marktdata",
       "badge": "Alleen marktdata"
     },

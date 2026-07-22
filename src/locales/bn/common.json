@@ -38,7 +38,7 @@
       "ariaLabel": "সক্রিয় ওয়ালেট",
       "placeholder": "ওয়ালেট",
       "allWallets": "সব ওয়ালেট",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (পেপার)"
     },
     "operatorPicker": {
       "ariaLabel": "সক্রিয় অপারেটর",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "কিছু ভুল হয়েছে",
     "titleWithComponent": "{{componentName}}-এ ত্রুটি",
-    "stackTrace": "Stack trace",
+    "stackTrace": "স্ট্যাক ট্রেস",
     "tryAgain": "আবার চেষ্টা করুন"
   },
   "nav": {

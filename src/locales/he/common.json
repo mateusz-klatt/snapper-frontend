@@ -38,7 +38,7 @@
       "ariaLabel": "ארנק פעיל",
       "placeholder": "ארנק",
       "allWallets": "כל הארנקים",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (הדגמה)"
     },
     "operatorPicker": {
       "ariaLabel": "מפעיל פעיל",

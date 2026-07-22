@@ -61,7 +61,7 @@
     "title": "Krahaso",
     "headingFull": "Krahasim testesh historike",
     "loading": "Duke ngarkuar krahasimin…",
-    "vs": "vs",
+    "vs": "kundrejt",
     "runLabel": "Ekzekutimi {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrika",
@@ -70,7 +70,7 @@
       "signals": "Sinjale"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatik",
       "manual": "manual"
     },
     "errors": {

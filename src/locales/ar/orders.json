@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "غير متاح",
-    "priceMarket": "Market",
+    "priceMarket": "سعر السوق",
     "quantity": "الكمية",
     "price": "السعر",
     "created": "تم الإنشاء",
@@ -97,18 +97,18 @@
       "sell": "بيع"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "سوق",
+      "limit": "محدد",
+      "stop": "إيقاف",
+      "stopLimit": "إيقاف محدد",
+      "stop_limit": "إيقاف محدد"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "فعلي",
+      "paper": "ورقي"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — بيانات السوق فقط",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (ورقية)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

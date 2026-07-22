@@ -38,7 +38,7 @@
       "ariaLabel": "Ակտիվ դրամապանակ",
       "placeholder": "Դրամապանակ",
       "allWallets": "Բոլոր դրամապանակները",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (փորձնական)"
     },
     "operatorPicker": {
       "ariaLabel": "Ակտիվ օպերատոր",

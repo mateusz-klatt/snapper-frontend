@@ -100,15 +100,15 @@
       "market": "Piaci",
       "limit": "Limitáras",
       "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop limitáras",
+      "stop_limit": "Stop limitáras"
     },
     "modeOptions": {
       "live": "Élő",
-      "paper": "Paper"
+      "paper": "Demó"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — csak piaci adatos",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demó)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

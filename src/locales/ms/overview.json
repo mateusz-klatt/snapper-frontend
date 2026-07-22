@@ -31,12 +31,12 @@
     "longExposure": "Pendedahan long",
     "shortExposure": "Pendedahan short",
     "netDelta": "Delta bersih",
-    "unrealizedPnl": "P&L Belum Direalisasi",
+    "unrealizedPnl": "P&L Belum Direalisasikan",
     "pnlPercent": "P&L %",
     "positions": "Posisi",
     "instrumentsCount": "{{count}} instrumen",
     "empty": "Tiada data posisi tersedia",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Data tidak lengkap — sesetengah posisi tiada harga rujukan atau harga masuk yang boleh digunakan; jumlah hanya merangkumi komponen yang diketahui"
   },
   "signals": {
     "title": "Isyarat Terkini",

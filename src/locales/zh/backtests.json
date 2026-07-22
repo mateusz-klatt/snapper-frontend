@@ -61,7 +61,7 @@
     "title": "比较",
     "headingFull": "回测比较",
     "loading": "正在加载比较…",
-    "vs": "vs",
+    "vs": "对比",
     "runLabel": "运行 {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "指标",
@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
         "delta": "Δ"
       }
     },

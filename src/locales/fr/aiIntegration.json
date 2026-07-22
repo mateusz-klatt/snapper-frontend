@@ -97,7 +97,7 @@
     "revoked": "Révoqué",
     "createdAt": "Créé le",
     "createdBy": "Créé par (public_id de l'utilisateur)",
-    "publicId": "Public ID",
+    "publicId": "ID public",
     "maxOpenOrders": "Max. ordres ouverts",
     "maxDailyNotionalUsd": "Max. notionnel journalier USD",
     "maxCancelsPerMinute": "Max. annulations par minute",

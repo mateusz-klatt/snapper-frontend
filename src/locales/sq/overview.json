@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Statusi i proceseve",
-    "feeds": "Feeds",
+    "feeds": "Burime të dhënash",
     "strategies": "Strategji",
     "executors": "Ekzekutorë",
     "brokers": "Brokerë"
@@ -36,7 +36,7 @@
     "positions": "Pozicione",
     "instrumentsCount": "{{count}} instrumente",
     "empty": "Nuk ka të dhëna pozicionesh të disponueshme",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Të dhënat janë të paplota — disa pozicione nuk kanë çmim reference ose çmim hyrjeje të përdorshëm; totalet përmbledhin vetëm përbërësit e njohur"
   },
   "signals": {
     "title": "Sinjalet e fundit",

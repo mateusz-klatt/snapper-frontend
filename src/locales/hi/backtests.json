@@ -131,7 +131,7 @@
     "waiting": "प्रगति की प्रतीक्षा…",
     "candles": "{{done}} / {{total}} कैंडल",
     "candlesNoTotal": "{{done}} कैंडल",
-    "equity": "equity {{value}}",
+    "equity": "इक्विटी {{value}}",
     "signalsTrades": "{{signals}} सिग्नल / {{trades}} ट्रेड",
     "milestoneLine": "माइलस्टोन {{label}}",
     "milestone": {

@@ -125,79 +125,79 @@
     "networkConns": "Verkkoyhteydet",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Aktiivinen",
-    "tracemallocIdle": "Idle"
+    "tracemallocIdle": "Jouten"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Lähtevän liikenteen tila",
+    "loading": "Ladataan lähtevän liikenteen tilaa…",
+    "unavailable": "Lähtevän liikenteen tila ei ole saatavilla: {{message}}",
+    "fallbackError": "Lähtevän liikenteen tilan lataus epäonnistui.",
+    "enabled": "Käytössä",
+    "disabled": "Ei käytössä",
+    "disabledMessage": "Lähtevän liikenteen pooli ei ole käytössä, joten ulospäin suuntautuva liikenne käyttää verkon oletusreittiä.",
+    "fallbackWarning": "Varoitus: yksityinen liikenne käyttää VPN-varareittiä suoran lähtöyhteyden sijasta.",
+    "noRoutes": "Lähtevän liikenteen reittejä ei ole määritetty.",
+    "anyExchange": "Kaikki",
+    "none": "Ei mitään",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Raportoivat kontit",
+      "item": "{{container}} · {{age}} · reitit: {{routeCount}}",
+      "stale": "· vanhentunut"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · nähty viimeksi {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "tuntematon",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Pooli",
+      "policy": "Karanteenikäytäntö",
+      "fallbackRoute": "Yksityisen liikenteen varareitti",
+      "routes": "Reitit"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Odota",
+      "raise": "Nosta poikkeus"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Tyyppi",
+      "region": "Alue",
+      "exitIp": "Lähtö-IP",
+      "provider": "Palveluntarjoaja",
+      "priority": "Prioriteetti",
+      "allowedExchanges": "Sallitut pörssit",
+      "status": "Tila",
+      "inUse": "Käytössä",
+      "traffic": "Liikenne",
+      "reservations": "Aktiiviset varaukset",
+      "connections": "Yhteydet"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "kättely {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "suora",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktiivinen",
+      "quarantined": "Karanteenissa",
+      "quarantinedSeconds": "Karanteenissa ({{seconds}}s)",
+      "disabled": "Ei käytössä"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "julkinen",
+      "private": "yksityinen"
     }
   },
   "relativeAge": {

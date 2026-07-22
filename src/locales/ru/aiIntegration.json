@@ -97,7 +97,7 @@
     "revoked": "Отозван",
     "createdAt": "Создан",
     "createdBy": "Создано пользователем (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "Публичный ID",
     "maxOpenOrders": "Макс. открытых заявок",
     "maxDailyNotionalUsd": "Макс. дневной номинал, USD",
     "maxCancelsPerMinute": "Макс. отмен в минуту",

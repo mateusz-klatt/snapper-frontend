@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Pasirinkite piniginę...",
     "selectWalletPlaceholder": "Pasirinkti piniginę...",
     "walletLabel": "Piniginė",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (popierinė)",
     "unknownError": "Nežinoma klaida",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "API raktas + paslaptis",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demonstracinė prekyba"
       },
       "validation": {
         "walletRequired": "Piniginė privaloma",

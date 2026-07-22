@@ -98,17 +98,17 @@
     },
     "orderTypeOptions": {
       "market": "Rinkos",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "limit": "Ribinis",
+      "stop": "Stabdymo",
+      "stopLimit": "Stabdymo ribinis",
+      "stop_limit": "Stabdymo ribinis"
     },
     "modeOptions": {
       "live": "Tiesioginis",
-      "paper": "Paper"
+      "paper": "Demonstracinis"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — tik rinkos duomenys",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (popierinė)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

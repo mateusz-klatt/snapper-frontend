@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}m",
     "uptimeHours": "{{hours}}h {{minutes}}m",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Jaribio la nyuma {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "Muda wa kuwaka",
-    "exitCode": "Exit code: {{code}}",
+    "exitCode": "Msimbo wa kuondoka: {{code}}",
     "service": "huduma",
-    "backtest": "backtest"
+    "backtest": "jaribio la nyuma"
   },
   "dbStats": {
     "title": "Takwimu za Database",
@@ -61,7 +61,7 @@
     "totalHint": "Kwenye PostgreSQL, Jumla ni makadirio ya mpangaji (sahihi ndani ya mkengeuko wa autovacuum); ni sahihi kabisa kwenye SQLite."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "Huduma Saidizi ya Arifa",
     "loading": "Inapakia vipimo vya arifa…",
     "unavailable": "Vipimo vya arifa havipatikani: {{message}}",
     "fallbackError": "Imeshindwa kupakia vipimo vya arifa.",
@@ -103,11 +103,11 @@
     "loading": "Inapakia vipimo vya process…",
     "unavailable": "Vipimo vya process havipatikani: {{message}}",
     "fallbackError": "Imeshindwa kupakia vipimo vya afya ya process.",
-    "rawJson": "Raw JSON",
+    "rawJson": "JSON ghafi",
     "pid": "PID",
     "statusValue": "Hali: {{status}}",
     "uptime": "Muda wa kuwaka",
-    "threads": "Threads",
+    "threads": "Nyuzi",
     "openFds": "FD Zilizofunguliwa",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
@@ -115,68 +115,68 @@
     "memory": "Kumbukumbu",
     "saturation": "Msongamano {{percent}}",
     "asyncioTasks": "Majukumu ya asyncio",
-    "asyncioActive": "{{count}} active",
-    "asyncioPending": "+ {{count}} pending",
-    "dbPool": "DB Pool",
+    "asyncioActive": "{{count}} yanayotumika",
+    "asyncioPending": "+ {{count}} yanayosubiri",
+    "dbPool": "Hifadhi ya Miunganisho ya DB",
     "liveConns": "Miunganisho ya live: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
-    "gcObjects": "Objects: {{value}}",
-    "threadsPercent": "Threads %",
+    "gcGenerations": "Vizazi vya GC 0/1/2",
+    "gcObjects": "Objekti: {{value}}",
+    "threadsPercent": "Nyuzi %",
     "networkConns": "Miunganisho ya mtandao",
     "tracemalloc": "Tracemalloc",
-    "tracemallocActive": "Active",
-    "tracemallocIdle": "Idle"
+    "tracemallocActive": "Inatumika",
+    "tracemallocIdle": "Haitumiki"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Afya ya Trafiki Inayotoka",
+    "loading": "Inapakia afya ya trafiki inayotoka…",
+    "unavailable": "Afya ya trafiki inayotoka haipatikani: {{message}}",
+    "fallbackError": "Imeshindwa kupakia afya ya trafiki inayotoka.",
+    "enabled": "Imewezeshwa",
+    "disabled": "Imezimwa",
+    "disabledMessage": "Kundi la njia za kutoka limezimwa; trafiki inayotoka inatumia njia chaguo-msingi ya mtandao.",
+    "fallbackWarning": "Onyo: trafiki binafsi inatumia njia mbadala ya VPN, si njia ya moja kwa moja ya kutoka.",
+    "noRoutes": "Hakuna njia za kutoka zilizosanidiwa.",
+    "anyExchange": "Yote",
+    "none": "Hakuna",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Kontena zinazotoa ripoti",
+      "item": "{{container}} · {{age}} · njia: {{routeCount}}",
+      "stale": "· imepitwa na wakati"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ilionekana mwisho {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "haijulikani",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Kundi",
+      "policy": "Sera ya karantini",
+      "fallbackRoute": "Njia mbadala ya trafiki binafsi",
+      "routes": "Njia"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Subiri",
+      "raise": "Toa hitilafu"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Aina",
+      "region": "Eneo",
+      "exitIp": "IP ya kutoka",
+      "provider": "Mtoa huduma",
+      "priority": "Kipaumbele",
+      "allowedExchanges": "Masoko yanayoruhusiwa",
+      "status": "Hali",
+      "inUse": "Inatumika",
+      "traffic": "Trafiki",
+      "reservations": "Hifadhi zinazotumika",
+      "connections": "Miunganisho"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "moja kwa moja",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Inatumika",
+      "quarantined": "Imewekwa karantini",
+      "quarantinedSeconds": "Imewekwa karantini ({{seconds}}s)",
+      "disabled": "Imezimwa"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "ya umma",
+      "private": "binafsi"
     }
   },
   "relativeAge": {

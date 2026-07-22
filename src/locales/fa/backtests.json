@@ -131,7 +131,7 @@
     "waiting": "در انتظار پیشرفت…",
     "candles": "{{done}} / {{total}} کندل",
     "candlesNoTotal": "{{done}} کندل",
-    "equity": "equity {{value}}",
+    "equity": "ارزش خالص حساب {{value}}",
     "signalsTrades": "{{signals}} سیگنال / {{trades}} معامله",
     "milestoneLine": "نقطه عطف {{label}}",
     "milestone": {
@@ -168,7 +168,7 @@
       "slippageBpsLabel": "لغزش (bps)",
       "commissionBpsLabel": "کارمزد (bps)",
       "executionModeLabel": "حالت اجرا",
-      "executionModeDirectDb": "Direct DB",
+      "executionModeDirectDb": "DB مستقیم",
       "executionModeZmqReplay": "بازپخش ZMQ",
       "targetExchangeLabel": "صرافی اجرای هدف",
       "targetExchangeNone": "هیچ‌کدام (تک‌صرافی)",

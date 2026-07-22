@@ -32,7 +32,7 @@
     },
     "detail": {
       "wallet": "Carteira",
-      "template": "Template",
+      "template": "Modelo",
       "last_run": "Última execução",
       "unknownWallet": "desconhecida"
     },
@@ -44,15 +44,15 @@
     }
   },
   "template": {
-    "badge": "template",
+    "badge": "modelo",
     "mode": "Modo:",
     "parameters": "Parâmetros:",
     "paramCount": "{{count}} parâmetro(s)",
     "noParams": "nenhum parâmetro definido"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "execução única",
+    "autoStart": "início automático",
     "manual": "manual"
   },
   "actions": {

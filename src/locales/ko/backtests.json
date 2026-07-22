@@ -61,7 +61,7 @@
     "title": "비교",
     "headingFull": "백테스트 비교",
     "loading": "비교 로딩 중…",
-    "vs": "vs",
+    "vs": "대",
     "runLabel": "실행 {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "지표",

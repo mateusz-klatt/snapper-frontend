@@ -51,8 +51,8 @@
     "noParams": "niciun parametru setat"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "rulare unică",
+    "autoStart": "pornire automată",
     "manual": "manual"
   },
   "actions": {

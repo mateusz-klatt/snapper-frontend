@@ -87,9 +87,9 @@
       "unverified": "Hindi na-verify"
     },
     "method": {
-      "futuresPosition": "Futures positions",
-      "spotExecutionReplay": "Spot execution replay",
-      "marginLedgerReplay": "Margin ledger replay",
+      "futuresPosition": "Mga posisyon sa futures",
+      "spotExecutionReplay": "Replay ng mga spot execution",
+      "marginLedgerReplay": "Replay ng margin ledger",
       "unclassified": "Hindi pa naiuri",
       "notAssigned": "Walang nakatalagang paraan",
       "unknown": "Hindi kilalang paraan"

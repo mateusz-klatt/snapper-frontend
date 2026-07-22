@@ -61,7 +61,7 @@
     "title": "Comparar",
     "headingFull": "Comparación de backtests",
     "loading": "Cargando comparación…",
-    "vs": "vs",
+    "vs": "frente a",
     "runLabel": "Ejecución {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Métricas",
@@ -165,7 +165,7 @@
       "startDateLabel": "Fecha de inicio",
       "endDateLabel": "Fecha de fin",
       "initialCashLabel": "Efectivo inicial",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Deslizamiento (bps)",
       "commissionBpsLabel": "Comisión (bps)",
       "executionModeLabel": "Modo de ejecución",
       "executionModeDirectDb": "DB directa",

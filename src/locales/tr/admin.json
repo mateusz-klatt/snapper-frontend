@@ -10,17 +10,17 @@
       "description": "Hesaplar, cüzdanlar ve portföyler, sinyaller, yapay zekâ kararları, kâr ve zarar, geriye dönük testler, stratejiler, süreçler ve sistem durumu üzerinde tam salt okunur operatör görünürlüğü. Operasyonel işlem yapamaz."
     },
     "operator": {
-      "label": "Operator",
-      "description": "Görüntüleyicinin tüm görünürlüğüne ek olarak alım satım, pozisyon, strateji, süreç, geriye dönük test ve yapay zekâ entegrasyonu kontrolleri."
+      "label": "Operatör",
+      "description": "Görüntüleyicinin tüm görünürlük yetkilerine ek olarak alım satım, pozisyon, strateji, süreç, geriye dönük test ve yapay zekâ entegrasyonu kontrolleri."
     },
     "admin": {
       "label": "Yönetici",
-      "description": "Kullanıcı yönetimi, sistem ayarları, API anahtarı yapılandırması ve tüm Operator izinleri dahil tam sistem erişimi."
+      "description": "Kullanıcı yönetimi, sistem ayarları, API anahtarı yapılandırması ve tüm Operatör izinleri dahil tam sistem erişimi."
     },
     "table": {
       "resource": "Kaynak",
       "viewer": "Görüntüleyici",
-      "operator": "Operator",
+      "operator": "Operatör",
       "admin": "Yönetici"
     },
     "resources": {
@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Bir cüzdan seç...",
     "selectWalletPlaceholder": "Cüzdan seç...",
     "walletLabel": "Cüzdan",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Bilinmeyen hata",
     "dash": "-"
   },
@@ -106,7 +106,7 @@
       },
       "roles": {
         "viewer": "Görüntüleyici",
-        "operator": "Operator",
+        "operator": "Operatör",
         "admin": "Yönetici",
         "ai_delegate": "AI temsilcisi"
       },
@@ -144,7 +144,7 @@
       "createGrant": "Kapsam ata",
       "selectWalletPrompt": "Kapsam yetkilerini görmek için yukarıdan bir cüzdan seçin.",
       "columns": {
-        "operator": "Operator",
+        "operator": "Operatör",
         "scope": "Kapsam",
         "target": "Hedef",
         "grantedAt": "Atanma",
@@ -161,7 +161,7 @@
     "form": {
       "title": "Kapsam yetkisi oluştur",
       "fields": {
-        "operator": "Operator",
+        "operator": "Operatör",
         "operatorPlaceholder": "Operator seç...",
         "wallet": "Cüzdan",
         "scopeKind": "Kapsam türü",
@@ -280,16 +280,16 @@
         "api_key": "API Anahtarı",
         "api_secret": "API Sırrı",
         "private_key_pem": "Özel Anahtar (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "İstemci ID’si",
+        "client_secret": "İstemci sırrı",
+        "refresh_token": "Yenileme tokenı",
         "initial_balance": "Başlangıç Bakiyesi"
       },
       "credentialTypes": {
         "api_key_secret": "API Anahtarı + Sır",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Cüzdan gerekli",

@@ -98,17 +98,17 @@
     },
     "orderTypeOptions": {
       "market": "Tirgus",
-      "limit": "Limit",
+      "limit": "Limita",
       "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "stopLimit": "Stop limita",
+      "stop_limit": "Stop limita"
     },
     "modeOptions": {
       "live": "Tiešraide",
-      "paper": "Paper"
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — tikai tirgus dati",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

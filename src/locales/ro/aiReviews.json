@@ -7,7 +7,7 @@
     "instrument": "instrument",
     "deadline": "termen {{time}}",
     "decidedBy": "de",
-    "newStatus": "status",
+    "newStatus": "stare",
     "mode": "mod",
     "capAttempted": "încercat",
     "capLimit": "vs limită",
@@ -33,7 +33,7 @@
     "columns": {
       "instrument": "Instrument",
       "thesis": "Teză",
-      "status": "Status",
+      "status": "Stare",
       "deadline": "Termen",
       "decision": "Decizie"
     },

@@ -38,7 +38,7 @@
       "ariaLabel": "Portafoglio attivo",
       "placeholder": "Portafoglio",
       "allWallets": "Tutti i portafogli",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Operatore attivo",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Si è verificato un problema",
     "titleWithComponent": "Errore in {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Traccia dello stack",
     "tryAgain": "Riprova"
   },
   "nav": {

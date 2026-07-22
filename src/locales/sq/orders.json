@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "Me çmim tregu",
     "quantity": "Sasi",
     "price": "Çmim",
     "created": "Krijuar",
@@ -97,18 +97,18 @@
       "sell": "Shitje"
     },
     "orderTypeOptions": {
-      "market": "Market",
+      "market": "Urdhër tregu",
       "limit": "Urdhër limit",
       "stop": "Urdhër ndalimi",
       "stopLimit": "Urdhër stop-limit",
       "stop_limit": "Urdhër stop-limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Real",
+      "paper": "Në letër"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — vetëm të dhëna tregu",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (letër)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

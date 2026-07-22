@@ -56,7 +56,7 @@
       "status": "Staða",
       "dataLag": "Gagnatöf",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Hjartsláttur",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

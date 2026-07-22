@@ -97,7 +97,7 @@
     "revoked": "เพิกถอนแล้ว",
     "createdAt": "สร้างเมื่อ",
     "createdBy": "สร้างโดย (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "ID สาธารณะ",
     "maxOpenOrders": "คำสั่งเปิดสูงสุด",
     "maxDailyNotionalUsd": "มูลค่า notional รายวันสูงสุด (USD)",
     "maxCancelsPerMinute": "การยกเลิกสูงสุดต่อนาที",

@@ -14,7 +14,7 @@
   "status": {
     "healthy": "Malusog",
     "stopped": "Nakahinto",
-    "error": "Error",
+    "error": "May error",
     "warning": "Babala",
     "completed": "Tapos na",
     "unknown": "Hindi kilala",
@@ -36,9 +36,9 @@
     "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
-    "uptimeLabel": "Uptime",
-    "exitCode": "Exit code: {{code}}",
-    "service": "service",
+    "uptimeLabel": "Tagal ng pagtakbo",
+    "exitCode": "Code ng pag-exit: {{code}}",
+    "service": "serbisyo",
     "backtest": "backtest"
   },
   "dbStats": {
@@ -46,10 +46,10 @@
     "loading": "Nilo-load ang database stats…",
     "unavailable": "Hindi available ang database stats: {{message}}",
     "fallbackError": "Hindi na-load ang database statistics.",
-    "sampled": "sampled {{age}}",
-    "samplerSummary": "Sampler interval: {{seconds}}s · {{count}} tables",
+    "sampled": "na-sample {{age}}",
+    "samplerSummary": "Agwat ng sampler: {{seconds}}s · {{count}} talahanayan",
     "columns": {
-      "table": "Table",
+      "table": "Talahanayan",
       "kind": "Uri",
       "total": "Kabuuan",
       "current": "Kasalukuyan",
@@ -57,36 +57,36 @@
       "archivable": "Puwedeng i-archive",
       "status": "Katayuan"
     },
-    "stale": "stale",
+    "stale": "lipas na",
     "totalHint": "Sa PostgreSQL, ang Kabuuan ay pagtatantya ng tagaplano ng query (tumpak sa loob ng drift ng autovacuum); eksakto sa SQLite."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "Sidecar para sa mga notification",
     "loading": "Nilo-load ang notification metrics…",
     "unavailable": "Hindi available ang notification metrics: {{message}}",
     "fallbackError": "Hindi na-load ang notification metrics.",
     "sent": "Naipadala",
-    "sentDescription": "Terminal: sent",
+    "sentDescription": "Terminal: naipadala",
     "failed": "Nabigo",
     "failedDescription": "Naubos ang retry budget",
     "unregistered": "Hindi registered",
     "unregisteredDescription": "APNs 410 (BadDeviceToken)",
     "cancelledScope": "Kinansela (scope)",
-    "cancelledScopeDescription": "Scope revoke / user deactivate",
+    "cancelledScopeDescription": "Pagbawi ng saklaw / pag-deactivate ng user",
     "outboxDepth": "Lalim ng outbox",
     "outboxDepthDescription": "Queued, naghihintay ng retry"
   },
   "retention": {
-    "title": "Retention Scheduler",
+    "title": "Scheduler ng retention",
     "loading": "Nilo-load ang retention run…",
     "unavailable": "Hindi available ang retention run: {{message}}",
     "fallbackError": "Hindi na-load ang retention run.",
     "lastRun": "huling run {{age}}",
     "dryRunNotice": "Dry-run mode: naka-archive ang rows pero hindi na-purge mula sa DB.",
     "columns": {
-      "table": "Table",
+      "table": "Talahanayan",
       "retain": "I-retain",
-      "archivedWindow": "Archived window",
+      "archivedWindow": "Na-archive na saklaw",
       "archived": "Na-archive",
       "purged": "Na-purge",
       "files": "Mga file",
@@ -94,7 +94,7 @@
     },
     "retainDays": "{{days}}d",
     "ok": "OK",
-    "error": "error"
+    "error": "may error"
   },
   "systemMetrics": {
     "disk": "Libreng disk",
@@ -103,52 +103,52 @@
     "loading": "Nilo-load ang process metrics…",
     "unavailable": "Hindi available ang process metrics: {{message}}",
     "fallbackError": "Hindi na-load ang process health metrics.",
-    "rawJson": "Raw JSON",
+    "rawJson": "JSON (raw)",
     "pid": "PID",
     "statusValue": "Katayuan: {{status}}",
-    "uptime": "Uptime",
-    "threads": "Threads",
-    "openFds": "Open FDs",
+    "uptime": "Tagal ng pagtakbo",
+    "threads": "Mga thread",
+    "openFds": "Mga bukas na FD",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
-    "throttled": "Throttled {{count}}×",
-    "memory": "Memory",
-    "saturation": "Saturation {{percent}}",
-    "asyncioTasks": "Asyncio Tasks",
-    "asyncioActive": "{{count}} active",
+    "throttled": "Na-throttle nang {{count}}×",
+    "memory": "Memorya",
+    "saturation": "Antas ng saturation: {{percent}}",
+    "asyncioTasks": "Mga task ng Asyncio",
+    "asyncioActive": "{{count}} aktibo",
     "asyncioPending": "+ {{count}} naka-pending",
-    "dbPool": "DB Pool",
+    "dbPool": "Pool ng DB",
     "liveConns": "Mga aktibong koneksyon: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
-    "gcObjects": "Objects: {{value}}",
-    "threadsPercent": "Threads %",
-    "networkConns": "Network conns",
+    "gcObjects": "Mga object: {{value}}",
+    "threadsPercent": "Mga thread %",
+    "networkConns": "Mga koneksyon sa network",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Aktibo",
-    "tracemallocIdle": "Idle"
+    "tracemallocIdle": "Walang aktibidad"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Kalagayan ng Egress",
+    "loading": "Nilo-load ang kalagayan ng egress…",
+    "unavailable": "Hindi available ang kalagayan ng egress: {{message}}",
+    "fallbackError": "Hindi na-load ang kalagayan ng egress.",
+    "enabled": "Naka-enable",
+    "disabled": "Naka-disable",
+    "disabledMessage": "Naka-disable ang egress pool; ginagamit ng papalabas na trapiko ang default na network path.",
+    "fallbackWarning": "Babala: nasa VPN fallback ang pribadong trapiko, hindi sa direktang egress.",
+    "noRoutes": "Walang naka-configure na ruta ng egress.",
+    "anyExchange": "Lahat",
+    "none": "Wala",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Mga nag-uulat na container",
+      "item": "{{container}} · {{age}} · mga ruta: {{routeCount}}",
+      "stale": "· lipas na"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · huling nakita {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "hindi alam",
       "kind": {
         "ws": "ws",
         "rest": "rest"
@@ -156,27 +156,27 @@
     },
     "summary": {
       "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "policy": "Patakaran sa quarantine",
+      "fallbackRoute": "Pribadong fallback",
+      "routes": "Mga ruta"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Maghintay",
+      "raise": "Maglabas ng error"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Uri",
+      "region": "Rehiyon",
+      "exitIp": "Papalabas na IP",
+      "provider": "Tagapagbigay",
+      "priority": "Prayoridad",
+      "allowedExchanges": "Mga pinapayagang palitan",
+      "status": "Katayuan",
+      "inUse": "Ginagamit",
+      "traffic": "Trapiko",
+      "reservations": "Mga aktibong reserbasyon",
+      "connections": "Mga koneksyon"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -190,14 +190,14 @@
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktibo",
+      "quarantined": "Naka-quarantine",
+      "quarantinedSeconds": "Naka-quarantine ({{seconds}}s)",
+      "disabled": "Naka-disable"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "pampubliko",
+      "private": "pribado"
     }
   },
   "relativeAge": {

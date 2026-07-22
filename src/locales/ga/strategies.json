@@ -56,7 +56,7 @@
       "status": "Stádas",
       "dataLag": "Moill Sonraí",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Comhartha beochta",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

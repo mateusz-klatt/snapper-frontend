@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Zgjidh një portofol...",
     "selectWalletPlaceholder": "Zgjidh portofol...",
     "walletLabel": "Portofol",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (letër)",
     "unknownError": "Gabim i panjohur",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "Çelës API",
         "api_secret": "Sekret API",
         "private_key_pem": "Çelës privat (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID e klientit",
+        "client_secret": "Sekreti i klientit",
+        "refresh_token": "Tokeni i rifreskimit",
         "initial_balance": "Bilanci fillestar"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "Çelës API + sekret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Tregtim në letër"
       },
       "validation": {
         "walletRequired": "Portofoli është i detyrueshëm",

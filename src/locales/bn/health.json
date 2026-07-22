@@ -33,11 +33,11 @@
     "uptimeMinutes": "{{minutes}}m",
     "uptimeHours": "{{hours}}h {{minutes}}m",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "ব্যাকটেস্ট {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
-    "uptimeLabel": "Uptime",
-    "exitCode": "Exit code: {{code}}",
+    "uptimeLabel": "আপটাইম",
+    "exitCode": "এক্সিট কোড: {{code}}",
     "service": "সার্ভিস",
     "backtest": "Backtest"
   },
@@ -57,11 +57,11 @@
       "archivable": "আর্কাইভযোগ্য",
       "status": "স্ট্যাটাস"
     },
-    "stale": "stale",
+    "stale": "হালনাগাদ নয়",
     "totalHint": "PostgreSQL-এ, মোট হলো পরিকল্পনাকারীর একটি অনুমান (autovacuum ড্রিফটের সীমার মধ্যে সঠিক); SQLite-এ এটি নির্ভুল।"
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "নোটিফিকেশন সাইডকার",
     "loading": "Notification metrics লোড হচ্ছে…",
     "unavailable": "Notification metrics অনুপলভ্য: {{message}}",
     "fallbackError": "Notification metrics লোড করতে ব্যর্থ।",
@@ -73,11 +73,11 @@
     "unregisteredDescription": "APNs 410 (BadDeviceToken)",
     "cancelledScope": "বাতিল (স্কোপ)",
     "cancelledScopeDescription": "স্কোপ প্রত্যাহার / ব্যবহারকারী নিষ্ক্রিয়",
-    "outboxDepth": "Outbox depth",
+    "outboxDepth": "আউটবক্স কিউয়ের দৈর্ঘ্য",
     "outboxDepthDescription": "কিউতে আছে, retry-র অপেক্ষায়"
   },
   "retention": {
-    "title": "Retention Scheduler",
+    "title": "রিটেনশন শিডিউলার",
     "loading": "Retention run লোড হচ্ছে…",
     "unavailable": "Retention run অনুপলভ্য: {{message}}",
     "fallbackError": "Retention run লোড করতে ব্যর্থ।",
@@ -86,7 +86,7 @@
     "columns": {
       "table": "টেবিল",
       "retain": "রাখুন",
-      "archivedWindow": "Archived window",
+      "archivedWindow": "আর্কাইভ করা সময়সীমা",
       "archived": "আর্কাইভ হয়েছে",
       "purged": "purged",
       "files": "ফাইল",
@@ -103,80 +103,80 @@
     "loading": "Process metrics লোড হচ্ছে…",
     "unavailable": "Process metrics অনুপলভ্য: {{message}}",
     "fallbackError": "Process health metrics লোড করতে ব্যর্থ।",
-    "rawJson": "Raw JSON",
+    "rawJson": "র' JSON",
     "pid": "PID",
     "statusValue": "স্ট্যাটাস: {{status}}",
-    "uptime": "Uptime",
-    "threads": "Threads",
-    "openFds": "Open FDs",
+    "uptime": "আপটাইম",
+    "threads": "থ্রেড",
+    "openFds": "খোলা FD",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
-    "throttled": "Throttled {{count}}×",
+    "throttled": "থ্রটল করা হয়েছে {{count}}×",
     "memory": "মেমরি",
-    "saturation": "Saturation {{percent}}",
-    "asyncioTasks": "Asyncio Tasks",
+    "saturation": "স্যাচুরেশন {{percent}}",
+    "asyncioTasks": "Asyncio টাস্ক",
     "asyncioActive": "{{count}} সক্রিয়",
     "asyncioPending": "+ {{count}} অপেক্ষমাণ",
-    "dbPool": "DB Pool",
+    "dbPool": "DB পুল",
     "liveConns": "সক্রিয় সংযোগ: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
-    "gcObjects": "Objects: {{value}}",
-    "threadsPercent": "Threads %",
-    "networkConns": "Network conns",
+    "gcObjects": "অবজেক্ট: {{value}}",
+    "threadsPercent": "থ্রেড %",
+    "networkConns": "নেটওয়ার্ক সংযোগ",
     "tracemalloc": "Tracemalloc",
-    "tracemallocActive": "Active",
-    "tracemallocIdle": "Idle"
+    "tracemallocActive": "সক্রিয়",
+    "tracemallocIdle": "নিষ্ক্রিয়"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "ইগ্রেসের স্বাস্থ্য",
+    "loading": "ইগ্রেসের স্বাস্থ্য লোড হচ্ছে…",
+    "unavailable": "ইগ্রেসের স্বাস্থ্য অনুপলভ্য: {{message}}",
+    "fallbackError": "ইগ্রেসের স্বাস্থ্য লোড করতে ব্যর্থ।",
+    "enabled": "সক্রিয়",
+    "disabled": "নিষ্ক্রিয়",
+    "disabledMessage": "ইগ্রেস পুল নিষ্ক্রিয়; বহির্গামী ট্রাফিক ডিফল্ট নেটওয়ার্ক পথ ব্যবহার করছে।",
+    "fallbackWarning": "সতর্কতা: প্রাইভেট ট্রাফিক সরাসরি ইগ্রেসের পরিবর্তে VPN ফলব্যাক ব্যবহার করছে।",
+    "noRoutes": "কোনো ইগ্রেস রুট কনফিগার করা নেই।",
+    "anyExchange": "সব",
+    "none": "কোনোটিই নয়",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "রিপোর্টকারী কন্টেইনার",
+      "item": "{{container}} · {{age}} · রুট: {{routeCount}}",
+      "stale": "· হালনাগাদ নয়"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · শেষ দেখা {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "অজানা",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "পুল",
+      "policy": "কোয়ারেন্টাইন নীতি",
+      "fallbackRoute": "প্রাইভেট ফলব্যাক",
+      "routes": "রুট"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "অপেক্ষা",
+      "raise": "ত্রুটি উত্থাপন"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "ধরন",
+      "region": "অঞ্চল",
+      "exitIp": "এক্সিট IP",
+      "provider": "প্রদানকারী",
+      "priority": "অগ্রাধিকার",
+      "allowedExchanges": "অনুমোদিত এক্সচেঞ্জ",
+      "status": "স্ট্যাটাস",
+      "inUse": "ব্যবহৃত হচ্ছে",
+      "traffic": "ট্রাফিক",
+      "reservations": "সক্রিয় রিজার্ভেশন",
+      "connections": "সংযোগ"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "সরাসরি",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "সক্রিয়",
+      "quarantined": "কোয়ারেন্টাইনে",
+      "quarantinedSeconds": "কোয়ারেন্টাইনে ({{seconds}}s)",
+      "disabled": "নিষ্ক্রিয়"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "পাবলিক",
+      "private": "প্রাইভেট"
     }
   },
   "relativeAge": {

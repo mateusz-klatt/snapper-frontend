@@ -36,7 +36,7 @@
     "positions": "Pozíciók",
     "instrumentsCount": "Instrumentumok: {{count}}",
     "empty": "Nem érhetők el pozícióadatok",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Hiányos adatok — egyes pozícióknál nincs használható referenciaár vagy belépési ár; az összesítések csak az ismert összetevőket tartalmazzák"
   },
   "signals": {
     "title": "Legutóbbi jelzések",

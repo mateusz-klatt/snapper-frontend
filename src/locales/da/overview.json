@@ -22,8 +22,8 @@
     "title": "Processtatus",
     "feeds": "Feeds",
     "strategies": "Strategier",
-    "executors": "Executors",
-    "brokers": "Brokers"
+    "executors": "Eksekveringsprocesser",
+    "brokers": "Brokere"
   },
   "portfolio": {
     "title": "Porteføljeoversigt",

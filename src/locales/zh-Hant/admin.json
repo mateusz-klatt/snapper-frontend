@@ -277,16 +277,16 @@
         "pemPlaceholder": "在此處貼上 PEM 格式的私鑰"
       },
       "fieldLabels": {
-        "api_key": "API Key",
-        "api_secret": "API Secret",
+        "api_key": "API 金鑰",
+        "api_secret": "API 秘密金鑰",
         "private_key_pem": "私鑰 (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "客戶端 ID",
+        "client_secret": "客戶端密鑰",
+        "refresh_token": "重新整理權杖",
         "initial_balance": "初始餘額"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "API 金鑰及秘密金鑰",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
         "paper": "模擬"

@@ -43,7 +43,7 @@
       "labelHelpSuffix": "."
     },
     "scope": {
-      "heading": "Scope",
+      "heading": "Ambito",
       "operatorLabel": "public_id dell'operatore (opzionale)",
       "operatorPlaceholder": "Lascia vuoto per ereditare l'operatore principale del chiamante"
     },
@@ -97,7 +97,7 @@
     "revoked": "Revocato",
     "createdAt": "Creato il",
     "createdBy": "Creato da (public_id utente)",
-    "publicId": "Public ID",
+    "publicId": "ID pubblico",
     "maxOpenOrders": "Max ordini aperti",
     "maxDailyNotionalUsd": "Max nozionale giornaliero USD",
     "maxCancelsPerMinute": "Max annullamenti al minuto",

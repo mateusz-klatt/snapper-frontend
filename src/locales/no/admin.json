@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Velg en lommebok...",
     "selectWalletPlaceholder": "Velg lommebok...",
     "walletLabel": "Lommebok",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (papir)",
     "unknownError": "Ukjent feil",
     "dash": "-"
   },
@@ -282,14 +282,14 @@
         "private_key_pem": "Privat nøkkel (PEM)",
         "client_id": "Klient-ID",
         "client_secret": "Klienthemmelighet",
-        "refresh_token": "Refresh Token",
+        "refresh_token": "Oppdateringstoken",
         "initial_balance": "Startsaldo"
       },
       "credentialTypes": {
         "api_key_secret": "API-nøkkel + hemmelighet",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Lommebok er påkrevd",

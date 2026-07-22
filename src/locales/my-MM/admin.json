@@ -145,7 +145,7 @@
       "selectWalletPrompt": "၎င်း၏ scope grant များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
       "columns": {
         "operator": "လုပ်ဆောင်သူ",
-        "scope": "Scope",
+        "scope": "လုပ်ပိုင်ခွင့်နယ်ပယ်",
         "target": "ပစ်မှတ်",
         "grantedAt": "Grant ပေးချိန်",
         "actions": "လုပ်ဆောင်ချက်များ"
@@ -165,8 +165,8 @@
         "operatorPlaceholder": "Operator ရွေးပါ...",
         "wallet": "ဝေါလက်",
         "scopeKind": "Scope အမျိုးအစား",
-        "underlyingPublicId": "Underlying Public ID",
-        "instrumentPublicId": "Instrument Public ID",
+        "underlyingPublicId": "အခြေခံပိုင်ဆိုင်မှု အများသုံး ID",
+        "instrumentPublicId": "ကုန်သွယ်ရေးတူရိယာ အများသုံး ID",
         "underlyingPlaceholder": "ဥပမာ BTC",
         "instrumentPlaceholder": "ဥပမာ BTC-USD-PERP",
         "exchange": "စတော့အိတ်ချိန်း",
@@ -177,8 +177,8 @@
         "notePlaceholder": "Optional မှတ်ချက်"
       },
       "scopeKinds": {
-        "underlying": "Underlying",
-        "instrument": "Instrument"
+        "underlying": "အခြေခံပိုင်ဆိုင်မှု",
+        "instrument": "ကုန်သွယ်ရေးတူရိယာ"
       },
       "validation": {
         "operatorRequired": "Operator လိုအပ်သည်",
@@ -198,7 +198,7 @@
       "title": "Scope Grant လွှဲပြောင်းပါ",
       "fields": {
         "currentHolder": "လက်ရှိ ကိုင်ထားသူ",
-        "scope": "Scope",
+        "scope": "လုပ်ပိုင်ခွင့်နယ်ပယ်",
         "wallet": "ဝေါလက်",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "Operator သို့ လွှဲပြောင်းပါ",
@@ -252,7 +252,7 @@
       "addCredential": "Credential ထည့်ပါ",
       "selectWalletPrompt": "၎င်း၏ credential များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "အိတ်ချိန်း",
         "type": "အမျိုးအစား",
         "label": "အညွှန်း",
         "createdAt": "ဖန်တီးချိန်",
@@ -269,7 +269,7 @@
       "title": "Credential ထည့်ပါ",
       "fields": {
         "wallet": "ဝေါလက်",
-        "exchange": "Exchange",
+        "exchange": "အိတ်ချိန်း",
         "exchangePlaceholder": "ဥပမာ kraken",
         "credentialType": "Credential အမျိုးအစား",
         "label": "အညွှန်း (optional)",
@@ -277,16 +277,16 @@
         "pemPlaceholder": "PEM format private key ကို ဒီမှာ paste လုပ်ပါ"
       },
       "fieldLabels": {
-        "api_key": "API Key",
-        "api_secret": "API Secret",
-        "private_key_pem": "Private Key (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "api_key": "API သော့",
+        "api_secret": "API လျှို့ဝှက်ချက်",
+        "private_key_pem": "သီးသန့်သော့ (PEM)",
+        "client_id": "ကလိုင်းယင့် ID",
+        "client_secret": "ကလိုင်းယင့် လျှို့ဝှက်ချက်",
+        "refresh_token": "ပြန်လည်ရယူ တိုကင်",
         "initial_balance": "စတင်လက်ကျန်"
       },
       "credentialTypes": {
-        "api_key_secret": "API Key + Secret",
+        "api_key_secret": "API သော့ + လျှို့ဝှက်ချက်",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
         "paper": "စမ်းသပ်"
@@ -308,7 +308,7 @@
     "rotate": {
       "title": "Credential Rotate လုပ်ပါ",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "အိတ်ချိန်း",
         "type": "အမျိုးအစား",
         "label": "အညွှန်း",
         "newLabel": "Label အသစ် (optional)",

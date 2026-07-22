@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}m",
     "uptimeHours": "{{hours}}h {{minutes}}m",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "နောက်ကြောင်းပြန် စမ်းသပ်မှု {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "လည်ပတ်ချိန်",
     "exitCode": "ထွက်ကုဒ်: {{code}}",
-    "service": "service",
-    "backtest": "backtest"
+    "service": "ဝန်ဆောင်မှု",
+    "backtest": "နောက်ကြောင်းပြန် စမ်းသပ်မှု"
   },
   "dbStats": {
     "title": "Database Statistic များ",
@@ -77,7 +77,7 @@
     "outboxDepthDescription": "Queue ထဲရှိပြီး retry စောင့်နေသည်"
   },
   "retention": {
-    "title": "Retention Scheduler",
+    "title": "ဒေတာထိန်းသိမ်းမှု အချိန်ဇယားစီမံကိရိယာ",
     "loading": "Retention run တင်နေသည်…",
     "unavailable": "Retention run မရနိုင်ပါ: {{message}}",
     "fallbackError": "Retention run တင်၍ မရပါ။",
@@ -94,7 +94,7 @@
     },
     "retainDays": "{{days}}d",
     "ok": "OK",
-    "error": "error"
+    "error": "အမှား"
   },
   "systemMetrics": {
     "disk": "ဒစ်ခ် လွတ်နေရာ",
@@ -103,7 +103,7 @@
     "loading": "လုပ်ငန်းစဉ် metric များ တင်နေသည်…",
     "unavailable": "Process metric များ မရနိုင်ပါ: {{message}}",
     "fallbackError": "လုပ်ငန်းစဉ်ကျန်းမာရေး metric များ တင်၍ မရပါ။",
-    "rawJson": "Raw JSON",
+    "rawJson": "JSON အကြမ်း",
     "pid": "PID",
     "statusValue": "အခြေအနေ: {{status}}",
     "uptime": "လည်ပတ်ချိန်",
@@ -111,7 +111,7 @@
     "openFds": "ဖွင့်ထားသော FD များ",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
-    "throttled": "Throttled {{count}}×",
+    "throttled": "နှုန်းကန့်သတ်ခံရမှု {{count}}×",
     "memory": "မမ်မိုရီ",
     "saturation": "ပြည့်နှုန်း {{percent}}",
     "asyncioTasks": "Asyncio Task များ",
@@ -121,62 +121,62 @@
     "liveConns": "တိုက်ရိုက်ချိတ်ဆက်မှုများ: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Object များ: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Thread များ %",
     "networkConns": "ကွန်ရက်ချိတ်ဆက်မှုများ",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "လှုပ်ရှားနေသည်",
     "tracemallocIdle": "နားနေသည်"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "အထွက်ကွန်ရက် ကျန်းမာရေး",
+    "loading": "အထွက်ကွန်ရက် ကျန်းမာရေးကို တင်နေသည်…",
+    "unavailable": "အထွက်ကွန်ရက် ကျန်းမာရေးကို မရနိုင်ပါ: {{message}}",
+    "fallbackError": "အထွက်ကွန်ရက် ကျန်းမာရေးကို တင်၍ မရပါ။",
+    "enabled": "ဖွင့်ထားသည်",
+    "disabled": "ပိတ်ထားသည်",
+    "disabledMessage": "အထွက်ကွန်ရက် ပူးလ်ကို ပိတ်ထားသဖြင့် အပြင်သို့ပို့သော traffic သည် မူလကွန်ရက်လမ်းကြောင်းကို အသုံးပြုနေသည်။",
+    "fallbackWarning": "သတိပေးချက်: သီးသန့် traffic သည် တိုက်ရိုက်အထွက်လမ်းကြောင်းအစား VPN အရန်လမ်းကြောင်းကို အသုံးပြုနေသည်။",
+    "noRoutes": "အထွက်ကွန်ရက် လမ်းကြောင်းများကို ပြင်ဆင်သတ်မှတ်ထားခြင်း မရှိပါ။",
+    "anyExchange": "အားလုံး",
+    "none": "မရှိ",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "အခြေအနေတင်ပြနေသော ကွန်တိန်နာများ",
+      "item": "{{container}} · {{age}} · လမ်းကြောင်း: {{routeCount}}",
+      "stale": "· ဒေတာဟောင်း"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · နောက်ဆုံးတွေ့ရှိချိန် {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "မသိပါ",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "ပူးလ်",
+      "policy": "သီးခြားခွဲထားမှု မူဝါဒ",
+      "fallbackRoute": "သီးသန့် အရန်လမ်းကြောင်း",
+      "routes": "လမ်းကြောင်းများ"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "စောင့်ဆိုင်းရန်",
+      "raise": "အမှားပစ်ထုတ်ရန်"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "အမျိုးအစား",
+      "region": "ဒေသ",
+      "exitIp": "အထွက် IP",
+      "provider": "ဝန်ဆောင်မှုပေးသူ",
+      "priority": "ဦးစားပေးအဆင့်",
+      "allowedExchanges": "ခွင့်ပြုထားသော အိတ်ချိန်းများ",
+      "status": "အခြေအနေ",
+      "inUse": "အသုံးပြုနေသည်",
+      "traffic": "ဒေတာစီးဆင်းမှု",
+      "reservations": "အသက်ဝင်နေသော သီးသန့်ခွဲဝေမှုများ",
+      "connections": "ချိတ်ဆက်မှုများ"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "တိုက်ရိုက်",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "အသက်ဝင်နေသည်",
+      "quarantined": "သီးခြားခွဲထားသည်",
+      "quarantinedSeconds": "သီးခြားခွဲထားသည် ({{seconds}}s)",
+      "disabled": "ပိတ်ထားသည်"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "အများသုံး",
+      "private": "သီးသန့်"
     }
   },
   "relativeAge": {

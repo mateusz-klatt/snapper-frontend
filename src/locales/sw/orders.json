@@ -23,13 +23,13 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "Bei ya soko",
     "quantity": "Kiasi",
     "price": "Bei",
     "created": "Iliundwa",
     "createdUnknown": "N/A",
     "orderId": "ID ya Oda",
-    "leverage": "Leverage",
+    "leverage": "Kiwango cha mkopo",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "PUNGUZA-TU",
     "cancel": "Ghairi",
@@ -61,7 +61,7 @@
       "status": "Hali",
       "quantity": "Kiasi",
       "price": "Bei",
-      "leverage": "Leverage",
+      "leverage": "Kiwango cha mkopo",
       "reduceOnly": "Punguza Tu",
       "created": "Iliundwa"
     },
@@ -81,7 +81,7 @@
     "titleEdit": "Oda Mpya ya Manual",
     "titleConfirm": "Thibitisha Oda",
     "fields": {
-      "exchange": "Exchange",
+      "exchange": "Soko",
       "instrument": "Instrumenti",
       "side": "Upande",
       "orderType": "Aina ya Oda",
@@ -97,18 +97,18 @@
       "sell": "Uza"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "Oda ya soko",
+      "limit": "Oda ya kikomo",
+      "stop": "Oda ya kusimamisha",
+      "stopLimit": "Oda ya kusimamisha yenye kikomo",
+      "stop_limit": "Oda ya kusimamisha yenye kikomo"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Halisi",
+      "paper": "Majaribio"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — data ya soko pekee",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (majaribio)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

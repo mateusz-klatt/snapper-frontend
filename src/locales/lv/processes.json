@@ -52,7 +52,7 @@
   },
   "badges": {
     "oneShot": "vienreizējs",
-    "autoStart": "auto-start",
+    "autoStart": "automātiska palaišana",
     "manual": "manuāls"
   },
   "actions": {

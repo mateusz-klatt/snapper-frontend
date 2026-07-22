@@ -18,7 +18,7 @@
       "create": "Nuovo backtest"
     },
     "fields": {
-      "timeframe": "Timeframe",
+      "timeframe": "Intervallo temporale",
       "period": "Periodo",
       "initialCash": "Capitale iniziale",
       "id": "ID"
@@ -161,7 +161,7 @@
       "instrumentHelp": "ID pubblico dello strumento da sottoporre a backtest",
       "exchangeLabel": "Exchange (sorgente feed)",
       "exchangePlaceholder": "— Seleziona un exchange —",
-      "timeframeLabel": "Timeframe",
+      "timeframeLabel": "Intervallo temporale",
       "startDateLabel": "Data di inizio",
       "endDateLabel": "Data di fine",
       "initialCashLabel": "Capitale iniziale",

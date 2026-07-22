@@ -31,7 +31,7 @@
     "orderId": "ID naloga",
     "leverage": "Poluga",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "SAMO SMANJENJE",
     "cancel": "Otkaži",
     "cancelling": "Otkazivanje…",
     "cancelAriaLabel": "Otkaži nalog {{orderId}}"
@@ -104,11 +104,11 @@
       "stop_limit": "Stop Limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Stvarno",
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — samo tržišni podaci",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

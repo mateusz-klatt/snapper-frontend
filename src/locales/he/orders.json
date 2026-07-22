@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "לא זמין",
-    "priceMarket": "Market",
+    "priceMarket": "שוק",
     "quantity": "כמות",
     "price": "מחיר",
     "created": "נוצר",
@@ -97,18 +97,18 @@
       "sell": "מכירה"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "שוק",
+      "limit": "לימיט",
+      "stop": "סטופ",
+      "stopLimit": "סטופ-לימיט",
+      "stop_limit": "סטופ-לימיט"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "אמיתי",
+      "paper": "הדגמה"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — נתוני שוק בלבד",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (הדגמה)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

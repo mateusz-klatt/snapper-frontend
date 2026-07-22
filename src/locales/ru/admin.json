@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Выберите кошелёк...",
     "selectWalletPlaceholder": "Выберите кошелёк...",
     "walletLabel": "Кошелёк",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (демо)",
     "unknownError": "Неизвестная ошибка",
     "dash": "-"
   },
@@ -98,7 +98,7 @@
         "passwordPlaceholder": "Введите пароль",
         "newPassword": "Новый пароль",
         "newPasswordPlaceholder": "Введите новый пароль",
-        "email": "Email",
+        "email": "Электронная почта",
         "emailPlaceholder": "Введите email",
         "role": "Роль",
         "accountActive": "Аккаунт активен",
@@ -280,16 +280,16 @@
         "api_key": "API-ключ",
         "api_secret": "API-секрет",
         "private_key_pem": "Закрытый ключ (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID клиента",
+        "client_secret": "Секрет клиента",
+        "refresh_token": "Токен обновления",
         "initial_balance": "Начальный баланс"
       },
       "credentialTypes": {
         "api_key_secret": "API-ключ + секрет",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Демо"
       },
       "validation": {
         "walletRequired": "Кошелёк обязателен",

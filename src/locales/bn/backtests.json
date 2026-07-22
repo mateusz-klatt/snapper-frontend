@@ -47,8 +47,8 @@
       "instrument": "ইনস্ট্রুমেন্ট",
       "status": "স্ট্যাটাস",
       "period": "সময়কাল",
-      "crossAsset": "Cross-asset attribution",
-      "configHash": "Config hash"
+      "crossAsset": "ক্রস-অ্যাসেট অ্যাট্রিবিউশন",
+      "configHash": "কনফিগ হ্যাশ"
     },
     "crossAssetFlow": "{{source}} Feed → {{target}} নির্বাহ",
     "errors": {
@@ -61,17 +61,17 @@
     "title": "তুলনা",
     "headingFull": "ব্যাকটেস্ট তুলনা",
     "loading": "তুলনা লোড হচ্ছে…",
-    "vs": "vs",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "vs": "বনাম",
+    "runLabel": "রান {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "মেট্রিক",
-      "equityOverlay": "Equity overlay",
+      "equityOverlay": "ইকুইটি ওভারলে",
       "trades": "ট্রেড",
       "signals": "সিগন্যাল"
     },
     "pairingMode": {
-      "auto": "auto",
-      "manual": "manual"
+      "auto": "স্বয়ংক্রিয়",
+      "manual": "ম্যানুয়াল"
     },
     "errors": {
       "notFound": "বর্তমান ওয়ালেটে তুলনা পাওয়া যায়নি।",
@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "A-এর P&L",
+        "pnlB": "B-এর P&L",
         "delta": "Δ"
       }
     },
@@ -113,8 +113,8 @@
       "empty": "তুলনাযোগ্য মেট্রিক নেই — দুই run-এ কোনো মান রেকর্ড হয়নি।",
       "columns": {
         "name": "মেট্রিক",
-        "runA": "Run A",
-        "runB": "Run B",
+        "runA": "রান A",
+        "runB": "রান B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,8 +122,8 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "রান A",
+        "runB": "রান B"
       }
     }
   },
@@ -131,9 +131,9 @@
     "waiting": "অগ্রগতির জন্য অপেক্ষা হচ্ছে…",
     "candles": "{{done}} / {{total}} ক্যান্ডল",
     "candlesNoTotal": "{{done}} ক্যান্ডল",
-    "equity": "equity {{value}}",
+    "equity": "ইকুইটি {{value}}",
     "signalsTrades": "{{signals}} sig / {{trades}} ট্রেড",
-    "milestoneLine": "milestone {{label}}",
+    "milestoneLine": "মাইলস্টোন {{label}}",
     "milestone": {
       "25pct": "25 %",
       "50pct": "50 %",
@@ -168,7 +168,7 @@
       "slippageBpsLabel": "স্লিপেজ (bps)",
       "commissionBpsLabel": "কমিশন (bps)",
       "executionModeLabel": "নির্বাহ মোড",
-      "executionModeDirectDb": "Direct DB",
+      "executionModeDirectDb": "সরাসরি DB",
       "executionModeZmqReplay": "ZMQ রিপ্লে",
       "targetExchangeLabel": "লক্ষ্য নির্বাহ এক্সচেঞ্জ",
       "targetExchangeNone": "কোনোটি নয় (একক-এক্সচেঞ্জ)",

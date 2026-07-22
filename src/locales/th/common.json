@@ -38,11 +38,11 @@
       "ariaLabel": "กระเป๋าเงินที่ใช้งานอยู่",
       "placeholder": "กระเป๋าเงิน",
       "allWallets": "กระเป๋าเงินทั้งหมด",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (จำลอง)"
     },
     "operatorPicker": {
       "ariaLabel": "Operator ที่ใช้งานอยู่",
-      "placeholder": "Operator",
+      "placeholder": "ผู้ปฏิบัติงาน",
       "allOperators": "Operator ทั้งหมด"
     },
     "timeTravel": {
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "มีบางอย่างผิดพลาด",
     "titleWithComponent": "ข้อผิดพลาดใน {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "สแตกเทรซ",
     "tryAgain": "ลองอีกครั้ง"
   },
   "nav": {

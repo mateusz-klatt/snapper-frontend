@@ -38,7 +38,7 @@
       "ariaLabel": "सक्रिय वॉलेट",
       "placeholder": "वॉलेट",
       "allWallets": "सभी वॉलेट",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (पेपर)"
     },
     "operatorPicker": {
       "ariaLabel": "सक्रिय ऑपरेटर",

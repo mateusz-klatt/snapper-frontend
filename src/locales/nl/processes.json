@@ -6,7 +6,7 @@
   "sections": {
     "longRunning": "Langlopende processen",
     "executorTemplates": "Executor-templates",
-    "executorTemplatesHint": "Wijzigingen aan de templateconfiguratie zijn na een herstart van toepassing op alle portefeuilles op deze exchange. Templates zijn alleen configuratie — start hieronder de portefeuille-specifieke instantie om een executor te draaien.",
+    "executorTemplatesHint": "Wijzigingen aan de templateconfiguratie zijn na een herstart van toepassing op alle portefeuilles op deze beurs. Templates zijn alleen configuratie — start hieronder de portefeuille-specifieke instantie om een executor te draaien.",
     "walletInstances": "Portefeuille-instanties",
     "taskProcesses": "Taakprocessen"
   },
@@ -47,12 +47,12 @@
     "badge": "template",
     "mode": "Modus:",
     "parameters": "Parameters:",
-    "paramCount": "{{count}} parameter(s)",
+    "paramCount": "Aantal parameters: {{count}}",
     "noParams": "geen parameters ingesteld"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "eenmalig",
+    "autoStart": "autostart",
     "manual": "handmatig"
   },
   "actions": {

@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "N/B",
-    "priceMarket": "Market",
+    "priceMarket": "Praghas margaidh",
     "quantity": "Cainníocht",
     "price": "Praghas",
     "created": "Cruthaithe",
@@ -97,11 +97,11 @@
       "sell": "Díol"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "Ordú margaidh",
+      "limit": "Ordú teorann",
+      "stop": "Stadordú",
+      "stopLimit": "Stadordú teorann",
+      "stop_limit": "Stadordú teorann"
     },
     "modeOptions": {
       "live": "Beo",

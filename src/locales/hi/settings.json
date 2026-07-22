@@ -40,7 +40,7 @@
   },
   "addModal": {
     "title": "नई सेटिंग जोड़ें",
-    "keyLabel": "Key",
+    "keyLabel": "कुंजी",
     "valueLabel": "मान",
     "categoryLabel": "श्रेणी",
     "descriptionLabel": "विवरण",
@@ -62,7 +62,7 @@
   "jsonEditor": {
     "formEditor": "फ़ॉर्म एडिटर",
     "rawEditor": "Raw JSON एडिटर",
-    "rawJson": "Raw JSON",
+    "rawJson": "रॉ JSON",
     "switchToForm": "फ़ॉर्म पर स्विच करें",
     "importToForm": "फ़ॉर्म में आयात करें",
     "parseError": "Parse त्रुटि: {{message}}",

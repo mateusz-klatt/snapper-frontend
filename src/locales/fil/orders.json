@@ -23,12 +23,12 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "Market order",
     "quantity": "Dami",
     "price": "Presyo",
     "created": "Ginawa",
     "createdUnknown": "N/A",
-    "orderId": "Order ID",
+    "orderId": "ID ng order",
     "leverage": "Leverage",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "REDUCE-ONLY",
@@ -37,9 +37,9 @@
     "cancelAriaLabel": "Kanselahin ang order {{orderId}}"
   },
   "executionCard": {
-    "orderNumber": "Order #{{orderId}}",
-    "filled": "FILLED",
-    "orderLabel": "Order {{orderId}}",
+    "orderNumber": "Order blg. {{orderId}}",
+    "filled": "NAISAGAWA",
+    "orderLabel": "Order blg. {{orderId}}",
     "size": "Laki",
     "price": "Presyo",
     "total": "Kabuuan",
@@ -55,25 +55,25 @@
   },
   "csv": {
     "orders": {
-      "instrument": "Instrument",
-      "side": "Side",
-      "type": "Type",
+      "instrument": "Instrumento",
+      "side": "Panig",
+      "type": "Uri",
       "status": "Katayuan",
       "quantity": "Dami",
       "price": "Presyo",
       "leverage": "Leverage",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "Reduce-only",
       "created": "Ginawa"
     },
     "executions": {
-      "orderId": "Order ID",
-      "instrument": "Instrument",
-      "side": "Side",
+      "orderId": "ID ng order",
+      "instrument": "Instrumento",
+      "side": "Panig",
       "size": "Laki",
       "price": "Presyo",
       "total": "Kabuuan",
-      "fee": "Fee",
-      "feeAsset": "Fee Asset",
+      "fee": "Bayarin",
+      "feeAsset": "Asset ng bayarin",
       "executed": "Na-execute"
     }
   },
@@ -81,34 +81,34 @@
     "titleEdit": "Bagong Manual Order",
     "titleConfirm": "Kumpirmahin ang Order",
     "fields": {
-      "exchange": "Exchange",
-      "instrument": "Instrument",
-      "side": "Side",
-      "orderType": "Order Type",
+      "exchange": "Palitan",
+      "instrument": "Instrumento",
+      "side": "Panig",
+      "orderType": "Uri ng order",
       "quantity": "Dami",
       "price": "Presyo",
-      "stopPrice": "Stop Price",
-      "mode": "Mode",
+      "stopPrice": "Presyo ng stop",
+      "mode": "Paraan",
       "wallet": "Wallet",
-      "type": "Type"
+      "type": "Uri"
     },
     "sideOptions": {
-      "buy": "Buy",
-      "sell": "Sell"
+      "buy": "Bumili",
+      "sell": "Magbenta"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "Market order",
+      "limit": "Limit order",
+      "stop": "Stop order",
+      "stopLimit": "Stop-limit order",
+      "stop_limit": "Stop-limit order"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Aktuwal",
+      "paper": "Demo"
     },
-    "instrumentMarketDataOnlySuffix": "{{symbol}} — market-data only",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "instrumentMarketDataOnlySuffix": "{{symbol}} — para sa data ng merkado lamang",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

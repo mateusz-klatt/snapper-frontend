@@ -61,7 +61,7 @@
     "title": "Porovnať",
     "headingFull": "Porovnanie backtestov",
     "loading": "Načítava sa porovnanie…",
-    "vs": "vs",
+    "vs": "oproti",
     "runLabel": "Beh {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metriky",
@@ -70,7 +70,7 @@
       "signals": "Signály"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automaticky",
       "manual": "manuálne"
     },
     "errors": {
@@ -131,7 +131,7 @@
     "waiting": "Čaká sa na priebeh…",
     "candles": "{{done}} / {{total}} sviečok",
     "candlesNoTotal": "{{done}} sviečok",
-    "equity": "equity {{value}}",
+    "equity": "kapitál {{value}}",
     "signalsTrades": "{{signals}} signálov / {{trades}} obchodov",
     "milestoneLine": "míľnik {{label}}",
     "milestone": {

@@ -97,7 +97,7 @@
     "revoked": "철회됨",
     "createdAt": "생성일",
     "createdBy": "생성자 (사용자 public_id)",
-    "publicId": "Public ID",
+    "publicId": "공개 ID",
     "maxOpenOrders": "최대 오픈 주문",
     "maxDailyNotionalUsd": "일일 최대 명목 금액 USD",
     "maxCancelsPerMinute": "분당 최대 취소 수",

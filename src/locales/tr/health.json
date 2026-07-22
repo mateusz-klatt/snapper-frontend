@@ -117,7 +117,7 @@
     "asyncioTasks": "Asyncio Görevleri",
     "asyncioActive": "{{count}} aktif",
     "asyncioPending": "+ {{count}} bekliyor",
-    "dbPool": "DB Pool",
+    "dbPool": "DB Havuzu",
     "liveConns": "Canlı bağlantılar: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Nesneler: {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Boşta"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Çıkış Trafiği Durumu",
+    "loading": "Çıkış trafiği durumu yükleniyor…",
+    "unavailable": "Çıkış trafiği durumu kullanılamıyor: {{message}}",
+    "fallbackError": "Çıkış trafiği durumu yüklenemedi.",
+    "enabled": "Etkin",
+    "disabled": "Devre dışı",
+    "disabledMessage": "Çıkış havuzu devre dışı; giden trafik varsayılan ağ yolunu kullanıyor.",
+    "fallbackWarning": "Uyarı: özel trafik doğrudan çıkışı değil, yedek VPN yolunu kullanıyor.",
+    "noRoutes": "Yapılandırılmış çıkış rotası yok.",
+    "anyExchange": "Tümü",
+    "none": "Yok",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Raporlayan konteynerler",
+      "item": "{{container}} · {{age}} · rota: {{routeCount}}",
+      "stale": "· güncel değil"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · son görülme {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "bilinmiyor",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Havuz",
+      "policy": "Karantina politikası",
+      "fallbackRoute": "Özel trafik yedeği",
+      "routes": "Rotalar"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Bekle",
+      "raise": "Hata oluştur"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Tür",
+      "region": "Bölge",
+      "exitIp": "Çıkış IP’si",
+      "provider": "Sağlayıcı",
+      "priority": "Öncelik",
+      "allowedExchanges": "İzin verilen borsalar",
+      "status": "Durum",
+      "inUse": "Kullanımda",
+      "traffic": "Trafik",
+      "reservations": "Etkin rezervasyonlar",
+      "connections": "Bağlantılar"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "doğrudan",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Etkin",
+      "quarantined": "Karantinada",
+      "quarantinedSeconds": "Karantinada ({{seconds}}s)",
+      "disabled": "Devre dışı"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "genel",
+      "private": "özel"
     }
   },
   "relativeAge": {

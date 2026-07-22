@@ -52,7 +52,7 @@
   },
   "badges": {
     "oneShot": "մեկանգամյա",
-    "autoStart": "auto-start",
+    "autoStart": "ավտոմատ մեկնարկ",
     "manual": "ձեռքով"
   },
   "actions": {

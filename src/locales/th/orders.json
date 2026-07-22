@@ -23,22 +23,22 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "ราคาตลาด",
     "quantity": "ปริมาณ",
     "price": "ราคา",
     "created": "สร้างเมื่อ",
     "createdUnknown": "N/A",
-    "orderId": "Order ID",
+    "orderId": "ID คำสั่ง",
     "leverage": "เลเวอเรจ",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "ลดสถานะการถือครองเท่านั้น",
     "cancel": "ยกเลิก",
     "cancelling": "กำลังยกเลิก…",
     "cancelAriaLabel": "ยกเลิกคำสั่ง {{orderId}}"
   },
   "executionCard": {
     "orderNumber": "คำสั่ง #{{orderId}}",
-    "filled": "FILLED",
+    "filled": "ดำเนินคำสั่งครบแล้ว",
     "orderLabel": "คำสั่ง {{orderId}}",
     "size": "ขนาด",
     "price": "ราคา",
@@ -55,19 +55,19 @@
   },
   "csv": {
     "orders": {
-      "instrument": "Instrument",
+      "instrument": "ตราสาร",
       "side": "ฝั่ง",
       "type": "ประเภท",
       "status": "สถานะ",
       "quantity": "ปริมาณ",
       "price": "ราคา",
       "leverage": "เลเวอเรจ",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "ลดสถานะการถือครองเท่านั้น",
       "created": "สร้างเมื่อ"
     },
     "executions": {
-      "orderId": "Order ID",
-      "instrument": "Instrument",
+      "orderId": "ID คำสั่ง",
+      "instrument": "ตราสาร",
       "side": "ฝั่ง",
       "size": "ขนาด",
       "price": "ราคา",
@@ -81,8 +81,8 @@
     "titleEdit": "คำสั่งด้วยตนเองใหม่",
     "titleConfirm": "ยืนยันคำสั่ง",
     "fields": {
-      "exchange": "Exchange",
-      "instrument": "Instrument",
+      "exchange": "ตลาดซื้อขาย",
+      "instrument": "ตราสาร",
       "side": "ฝั่ง",
       "orderType": "ประเภทคำสั่ง",
       "quantity": "ปริมาณ",
@@ -97,18 +97,18 @@
       "sell": "ขาย"
     },
     "orderTypeOptions": {
-      "market": "Market",
+      "market": "คำสั่งตลาด",
       "limit": "คำสั่ง limit",
       "stop": "คำสั่ง stop",
       "stopLimit": "คำสั่ง stop-limit",
       "stop_limit": "คำสั่ง stop-limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "ซื้อขายจริง",
+      "paper": "จำลอง"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — เฉพาะข้อมูลตลาด",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (จำลอง)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

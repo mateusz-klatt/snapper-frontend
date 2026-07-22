@@ -50,7 +50,7 @@
     "statusAriaLabel": "Statusi: {{status}}",
     "dataLagAriaLabel": "Vonesë të dhënash: {{seconds}} sekonda",
     "lagBadge": "vonesë: {{seconds}}s",
-    "feedLag": "Feed lag: {{ms}}ms",
+    "feedLag": "Vonesa e burimit të të dhënave: {{ms}}ms",
     "heartbeatAge": "Mosha e Heartbeat: {{seconds}}s",
     "metrics": {
       "status": "Status",

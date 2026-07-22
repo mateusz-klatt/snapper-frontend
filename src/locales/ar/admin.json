@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "اختر محفظة...",
     "selectWalletPlaceholder": "اختر محفظة...",
     "walletLabel": "محفظة",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (ورقية)",
     "unknownError": "خطأ غير معروف",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "مفتاح API",
         "api_secret": "سر API",
         "private_key_pem": "المفتاح الخاص (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID العميل",
+        "client_secret": "سر العميل",
+        "refresh_token": "رمز التحديث",
         "initial_balance": "الرصيد الأولي"
       },
       "credentialTypes": {
         "api_key_secret": "مفتاح API + السر",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "ورقية"
       },
       "validation": {
         "walletRequired": "المحفظة مطلوبة",
