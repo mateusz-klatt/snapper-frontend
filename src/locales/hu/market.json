@@ -78,11 +78,11 @@
     "chipAriaLabel": "Párstatisztika a(z) {{symbol}} instrumentummal a(z) {{exchange}} tőzsdén: Pearson {{pearson}}, p-érték {{pvalue}}"
   },
   "scrubber": {
-    "label": "Idő:",
-    "live": "Élő",
-    "sliderAriaLabel": "Piaci időpont léptetése",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "Élő",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

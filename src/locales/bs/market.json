@@ -78,11 +78,11 @@
     "chipAriaLabel": "Statistika para sa {{symbol}} na {{exchange}}: Pearson {{pearson}}, p-vrijednost {{pvalue}}"
   },
   "scrubber": {
-    "label": "Vrijeme:",
-    "live": "Uživo",
-    "sliderAriaLabel": "Pomjeranje kroz vrijeme tržišta",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "Uživo",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

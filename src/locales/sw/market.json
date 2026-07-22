@@ -48,7 +48,7 @@
   "assetClass": {
     "crypto": "Sarafu fiche",
     "commodity": "Bidhaa",
-    "forex": "Fedha za kigeni",
+    "forex": "Forex",
     "index": "Fahirisi",
     "yield": "Mavuno",
     "unknown": "Nyingine"
@@ -78,11 +78,11 @@
     "chipAriaLabel": "Takwimu za jozi na {{symbol}} kwenye {{exchange}}: Pearson {{pearson}}, thamani ya p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Wakati:",
-    "live": "Moja kwa moja",
-    "sliderAriaLabel": "Sogeza wakati wa soko",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "Moja kwa moja",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

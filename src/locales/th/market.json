@@ -4,7 +4,7 @@
   },
   "controls": {
     "exchange": "ตลาด:",
-    "instrument": "ตราสาร:",
+    "instrument": "Instrument:",
     "timeframe": "กรอบเวลา:",
     "selectExchange": "เลือก Exchange",
     "searchInstrument": "ค้นหา instrument..."
@@ -78,11 +78,11 @@
     "chipAriaLabel": "สถิติคู่กับ {{symbol}} บน {{exchange}}: Pearson {{pearson}}, ค่า p {{pvalue}}"
   },
   "scrubber": {
-    "label": "เวลา:",
-    "live": "เรียลไทม์",
-    "sliderAriaLabel": "เลื่อนดูเวลาของตลาด",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "เรียลไทม์",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

@@ -78,11 +78,11 @@
     "chipAriaLabel": "Parstatistikk med {{symbol}} på {{exchange}}: Pearson {{pearson}}, p-verdi {{pvalue}}"
   },
   "scrubber": {
-    "label": "Tid:",
-    "live": "Sanntid",
-    "sliderAriaLabel": "Juster markedstidspunkt",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "Sanntid",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

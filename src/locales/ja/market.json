@@ -78,11 +78,11 @@
     "chipAriaLabel": "{{exchange}}の{{symbol}}とのペア統計: Pearson {{pearson}}、p値 {{pvalue}}"
   },
   "scrubber": {
-    "label": "時刻：",
-    "live": "ライブ",
-    "sliderAriaLabel": "市場時刻を調整",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "ライブ",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

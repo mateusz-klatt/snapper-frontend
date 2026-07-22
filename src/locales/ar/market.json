@@ -78,11 +78,11 @@
     "chipAriaLabel": "إحصاءات الزوج مع {{symbol}} على {{exchange}}: بيرسون {{pearson}}، قيمة p {{pvalue}}"
   },
   "scrubber": {
-    "label": "الوقت:",
-    "live": "مباشر",
-    "sliderAriaLabel": "استعراض زمن السوق",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "مباشر",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

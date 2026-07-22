@@ -78,11 +78,11 @@
     "chipAriaLabel": "Statistici de pereche cu {{symbol}} pe {{exchange}}: Pearson {{pearson}}, valoare p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Timp:",
-    "live": "În timp real",
-    "sliderAriaLabel": "Parcurgeți cronologia pieței",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "În timp real",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

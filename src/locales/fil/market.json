@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Data ng Merkado"
+    "title": "Market Data"
   },
   "controls": {
     "exchange": "Palitan:",
-    "instrument": "Instrumento:",
+    "instrument": "Instrument:",
     "timeframe": "Timeframe:",
     "selectExchange": "Pumili ng exchange",
     "searchInstrument": "Maghanap ng instrument..."
@@ -49,8 +49,8 @@
     "crypto": "Cryptocurrency",
     "commodity": "Kalakal",
     "forex": "Forex",
-    "index": "Indeks",
-    "yield": "Antas ng kita",
+    "index": "Index",
+    "yield": "Yield",
     "unknown": "Iba pa"
   },
   "sector": {
@@ -78,11 +78,11 @@
     "chipAriaLabel": "Istatistika ng pares kasama ang {{symbol}} sa {{exchange}}: Pearson {{pearson}}, p-value {{pvalue}}"
   },
   "scrubber": {
-    "label": "Oras:",
-    "live": "Real-time",
-    "sliderAriaLabel": "Mag-navigate sa oras ng merkado",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "Real-time",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

@@ -48,7 +48,7 @@
   "assetClass": {
     "crypto": "Tiền mã hóa",
     "commodity": "Hàng hóa",
-    "forex": "Ngoại hối",
+    "forex": "Forex",
     "index": "Chỉ số",
     "yield": "Lợi suất",
     "unknown": "Khác"
@@ -78,11 +78,11 @@
     "chipAriaLabel": "Thống kê cặp với {{symbol}} trên {{exchange}}: Pearson {{pearson}}, giá trị p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Thời gian:",
-    "live": "Thời gian thực",
-    "sliderAriaLabel": "Điều chỉnh thời gian thị trường",
+    "label": "Time:",
+    "live": "Live",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
-      "live": "Thời gian thực",
+      "live": "Live",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

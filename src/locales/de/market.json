@@ -78,9 +78,9 @@
     "chipAriaLabel": "Paarstatistik mit {{symbol}} auf {{exchange}}: Pearson {{pearson}}, p-Wert {{pvalue}}"
   },
   "scrubber": {
-    "label": "Zeit:",
+    "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Marktzeit durchsuchen",
+    "sliderAriaLabel": "Scrub market time",
     "presets": {
       "live": "Live",
       "h1": "-1h",
