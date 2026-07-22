@@ -92,7 +92,7 @@ describe('Positions', () => {
     expect(screen.getByTestId('position-unrealized-BTC-USD-kraken-live')).toHaveTextContent('N/A')
     expect(screen.getByTestId('position-mark-BTC-USD-kraken-live')).toHaveTextContent('N/A')
     expect(screen.queryByTestId('position-marked-at-BTC-USD-kraken-live')).not.toBeInTheDocument()
-    expect(screen.getByTestId('position-mark-ETH-USD-kraken-live')).toHaveTextContent('$2050.00')
+    expect(screen.getByTestId('position-mark-ETH-USD-kraken-live')).toHaveTextContent('2050.00 USD')
     expect(screen.getByTestId('position-marked-at-ETH-USD-kraken-live')).toHaveTextContent(/2026/)
   })
 
@@ -186,7 +186,7 @@ describe('Positions', () => {
     expect(screen.getByTestId('position-side-BTC-USD-kraken-live')).toHaveTextContent('LONG')
     expect(screen.getByText('2.5000')).toBeInTheDocument()
     expect(screen.getByTestId('position-unrealized-BTC-USD-kraken-live')).toHaveTextContent(
-      '+$1000.00'
+      '+1000.00 USD'
     )
   })
 
@@ -211,9 +211,11 @@ describe('Positions', () => {
     expect(sideBadge.className).toContain('text-falling-400')
     expect(screen.getByText('3.0000')).toBeInTheDocument()
     expect(screen.getByTestId('position-unrealized-ETH-USD-kraken-live')).toHaveTextContent(
-      '-$150.00'
+      '-150.00 USD'
     )
-    expect(screen.getByTestId('position-realized-ETH-USD-kraken-live')).toHaveTextContent('+$50.00')
+    expect(screen.getByTestId('position-realized-ETH-USD-kraken-live')).toHaveTextContent(
+      '+50.00 USD'
+    )
   })
 
   it('renders a FLAT position with neutral badge and zero P&L formatting', async () => {
@@ -235,7 +237,53 @@ describe('Positions', () => {
 
     expect(sideBadge).toHaveTextContent('FLAT')
     expect(sideBadge.className).toContain('text-muted-400')
-    expect(screen.getByTestId('position-unrealized-SOL-USD-kraken-live')).toHaveTextContent('$0.00')
+    expect(screen.getByTestId('position-unrealized-SOL-USD-kraken-live')).toHaveTextContent(
+      '0.00 USD'
+    )
+  })
+
+  it('renders a non-USD position in its own quote currency, not dollars', async () => {
+    const euroZloty = makePosition({
+      instrument: 'EUR-PLN',
+      quantity: 20,
+      averagePrice: 4.38,
+      markPrice: 4.33,
+      unrealizedPnl: -1,
+      realizedPnl: 0,
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({
+      data: [euroZloty],
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Positions />)
+
+    expect(screen.getByTestId('position-mark-EUR-PLN-kraken-live')).toHaveTextContent('4.33 PLN')
+    expect(screen.getByTestId('position-unrealized-EUR-PLN-kraken-live')).toHaveTextContent(
+      '-1.00 PLN'
+    )
+  })
+
+  it('renders a bare number when the symbol has no resolvable quote currency', async () => {
+    const malformed = makePosition({
+      instrument: 'BTCUSD',
+      markPrice: 66000,
+      unrealizedPnl: 12,
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({
+      data: [malformed],
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Positions />)
+
+    const mark = screen.getByTestId('position-mark-BTCUSD-kraken-live')
+
+    expect(mark).toHaveTextContent('66000.00')
+    expect(mark.textContent).not.toContain('$')
+    expect(screen.getByTestId('position-unrealized-BTCUSD-kraken-live')).toHaveTextContent('+12.00')
   })
 
   it('renders multiple positions side by side', async () => {

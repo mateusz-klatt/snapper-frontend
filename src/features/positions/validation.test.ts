@@ -4,36 +4,36 @@ import { validateBracketPrices, validateTrailingStopParams } from './validation'
 
 describe('validateBracketPrices', () => {
   it('requires at least one bracket price', () => {
-    expect(validateBracketPrices(null, null, 'LONG', 100)).toEqual({
+    expect(validateBracketPrices(null, null, 'LONG', 100, 'USD')).toEqual({
       key: 'bracketRequired',
     })
   })
 
   it('validates long-side bracket relations', () => {
-    expect(validateBracketPrices(110, null, 'LONG', 100)).toEqual({
+    expect(validateBracketPrices(110, null, 'LONG', 100, 'USD')).toEqual({
       key: 'slLongBelowEntry',
-      params: { price: '$100.00' },
+      params: { price: '100.00 USD' },
     })
-    expect(validateBracketPrices(null, 90, 'LONG', 100)).toEqual({
+    expect(validateBracketPrices(null, 90, 'LONG', 100, 'USD')).toEqual({
       key: 'tpLongAboveEntry',
-      params: { price: '$100.00' },
+      params: { price: '100.00 USD' },
     })
   })
 
   it('validates short-side bracket relations', () => {
-    expect(validateBracketPrices(90, null, 'SHORT', 100)).toEqual({
+    expect(validateBracketPrices(90, null, 'SHORT', 100, 'USD')).toEqual({
       key: 'slShortAboveEntry',
-      params: { price: '$100.00' },
+      params: { price: '100.00 USD' },
     })
-    expect(validateBracketPrices(null, 110, 'SHORT', 100)).toEqual({
+    expect(validateBracketPrices(null, 110, 'SHORT', 100, 'USD')).toEqual({
       key: 'tpShortBelowEntry',
-      params: { price: '$100.00' },
+      params: { price: '100.00 USD' },
     })
   })
 
   it('returns null for valid bracket prices', () => {
-    expect(validateBracketPrices(95, 110, 'LONG', 100)).toBeNull()
-    expect(validateBracketPrices(105, 90, 'SHORT', 100)).toBeNull()
+    expect(validateBracketPrices(95, 110, 'LONG', 100, 'USD')).toBeNull()
+    expect(validateBracketPrices(105, 90, 'SHORT', 100, 'USD')).toBeNull()
   })
 })
 

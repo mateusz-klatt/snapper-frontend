@@ -54,7 +54,8 @@ export const validateBracketPrices = (
   sl: number | null,
   tp: number | null,
   side: 'LONG' | 'SHORT',
-  averagePrice: number
+  averagePrice: number,
+  quote: string
 ): ValidationError | null => {
   if (sl === null && tp === null) return { key: 'bracketRequired' }
 
@@ -66,7 +67,8 @@ export const validateBracketPrices = (
 
   if (takeProfitError !== null) return takeProfitError
 
-  const fmt = `$${averagePrice.toFixed(2)}`
+  const price = averagePrice.toFixed(2)
+  const fmt = quote === '' ? price : `${price} ${quote}`
 
   if (side === 'LONG') {
     return validateLongBracketRelation(sl, tp, averagePrice, fmt)
