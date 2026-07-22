@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { ExecutionModeModal } from './ExecutionModeModal'
+import { startExecutionModeWhenAllowed } from './executionModeGuard'
 
 const renderWithMocks = (ui: ReactNode) => {
   return render(ui)
@@ -23,6 +24,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     const buttons = screen.getAllByText('Start Test Component')
@@ -37,9 +39,37 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     expect(screen.queryByText('Start Test Component')).not.toBeInTheDocument()
+  })
+  it('blocks start when process management is denied', async () => {
+    const user = userEvent.setup()
+
+    renderWithMocks(
+      <ExecutionModeModal
+        open={true}
+        onClose={mockOnClose}
+        onStart={mockOnStart}
+        componentName='Test Component'
+        description='Test description'
+        canManage={false}
+      />
+    )
+    const startButton = screen.getAllByRole('button', { name: /Start Test Component/i })[0]
+
+    expect(startButton).toBeDisabled()
+    startButton?.removeAttribute('disabled')
+    await user.click(startButton as HTMLElement)
+    expect(mockOnStart).not.toHaveBeenCalled()
+    expect(mockOnClose).not.toHaveBeenCalled()
+  })
+  it('rejects a direct start attempt when permission is denied', () => {
+    startExecutionModeWhenAllowed(false, 'thread', mockOnStart, mockOnClose)
+
+    expect(mockOnStart).not.toHaveBeenCalled()
+    expect(mockOnClose).not.toHaveBeenCalled()
   })
   it('calls onStart with thread mode by default', async () => {
     const user = userEvent.setup()
@@ -51,6 +81,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     const startButton = screen.getAllByRole('button', { name: /Start Test Component/i })[0]
@@ -71,6 +102,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     const processRadio = screen.getByRole('radio', { name: /Process Mode/i })
@@ -93,6 +125,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     const processRadio = screen.getByRole('radio', { name: /Process Mode/i })
@@ -113,6 +146,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     const cancelButton = screen.getByRole('button', { name: /Cancel/i })
@@ -129,6 +163,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     const processRadio = screen.getByRole('radio', { name: /Process Mode/i })
@@ -141,6 +176,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     rerender(
@@ -150,6 +186,7 @@ describe('ExecutionModeModal', () => {
         onStart={mockOnStart}
         componentName='Test Component'
         description='Test description'
+        canManage={true}
       />
     )
     const threadRadio = screen.getByRole('radio', { name: /Thread Mode/i })

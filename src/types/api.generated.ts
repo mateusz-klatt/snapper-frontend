@@ -3515,6 +3515,7 @@ export type Components = {
             instrument?: string | null | undefined;
             signal_envelope?: Record<string, unknown> | null | undefined;
         };
+        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "submit:ai_review_decision" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:runtime_diagnostics" | "read:processes" | "manage:processes" | "read:ai_reviews" | "read:ai_integration" | "manage:ai_integration" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "create:backtest_comparisons" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
         PnlAiDecisionMarkerData: {
             kind: "ai_decision";
             marker_time: string;
@@ -4640,6 +4641,8 @@ export type Components = {
             primary_operator_public_id?: string | null | undefined;
             active_wallet_public_id?: string | null | undefined;
             default_language?: string | null | undefined;
+            effective_permissions: Components["schemas"]["Permission"][];
+            delegate_public_id?: string | null | undefined;
         };
         UserResponse: {
             type: "user_response";
@@ -4823,7 +4826,6 @@ export type Components = {
             remember_me?: boolean;
             permissions?: Components["schemas"]["Permission"][] | null;
         };
-        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "submit:ai_review_decision" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:processes" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
         RefreshTokenRequest: {
             type?: "refresh_token_request";
             sequence_id: number;

@@ -34,6 +34,7 @@ export function makeUserProfile(
     is_active: true,
     created_at: overrides.created_at ?? '2026-01-01T00:00:00Z',
     operator_public_ids: overrides.operator_public_ids ?? [],
+    effective_permissions: overrides.effective_permissions ?? [],
     ...overrides,
   })
 }

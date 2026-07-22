@@ -8,6 +8,12 @@ import { useOperators, useWallets } from '../../hooks/queries/wallets'
 import { useUsers } from '../../hooks/queries/users'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 
+const mockHasPermission = vi.fn<(permission: string) => boolean>(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+
 vi.mock('../../hooks/queries/processes', () => ({
   useProcessSchema: vi.fn(() => ({ data: null, isLoading: false })),
   useUpdateProcessConfig: vi.fn(),
@@ -97,6 +103,7 @@ describe('StrategyScopeEditModal', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
     vi.mocked(useIsReadOnly).mockReturnValue(false)
     mockCatalogues({ operators: OPERATORS, wallets: WALLETS, users: USERS })
     mockSchema({ ai_review_user_public_id: 'user' })
@@ -106,6 +113,28 @@ describe('StrategyScopeEditModal', () => {
   it('renders nothing when target is null', () => {
     renderWithProviders(<StrategyScopeEditModal open={false} onClose={onClose} target={null} />)
     expect(screen.queryByText('Edit strategy scope')).not.toBeInTheDocument()
+  })
+
+  it('does not expose scope controls with START_STRATEGIES but without CONFIGURE_STRATEGIES', () => {
+    mockHasPermission.mockImplementation(permission => permission === 'start:strategies')
+    const mutate = mockMutation()
+
+    renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={TARGET} />)
+
+    expect(screen.queryByText('Edit strategy scope')).not.toBeInTheDocument()
+    expect(mutate).not.toHaveBeenCalled()
+  })
+
+  it('rechecks CONFIGURE_STRATEGIES before an already-rendered scope saves', () => {
+    const mutate = mockMutation()
+
+    renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={TARGET} />)
+    const saveButton = screen.getByRole('button', { name: 'Save scope' })
+
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(saveButton)
+
+    expect(mutate).not.toHaveBeenCalled()
   })
 
   it('pre-fills label operator/wallet resolved to public_id and reference to the label value', () => {
@@ -183,10 +212,15 @@ describe('StrategyScopeEditModal', () => {
 
   it('disables save in read-only mode', () => {
     vi.mocked(useIsReadOnly).mockReturnValue(true)
+    const mutate = mockMutation()
+
     renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={TARGET} />)
-    expect((screen.getByRole('button', { name: 'Save scope' }) as HTMLButtonElement).disabled).toBe(
-      true
-    )
+    const saveButton = screen.getByRole('button', { name: 'Save scope' }) as HTMLButtonElement
+
+    expect(saveButton.disabled).toBe(true)
+    saveButton.removeAttribute('disabled')
+    fireEvent.click(saveButton)
+    expect(mutate).not.toHaveBeenCalled()
   })
 
   it('closes via the cancel button', () => {

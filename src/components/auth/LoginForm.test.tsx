@@ -31,7 +31,6 @@ describe('LoginForm', () => {
       silentLogout: vi.fn(),
       isAuthenticated: false,
       refreshToken: vi.fn(),
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn(),
     } as never)
@@ -102,7 +101,6 @@ describe('LoginForm', () => {
       silentLogout: vi.fn(),
       isAuthenticated: false,
       refreshToken: vi.fn(),
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn(),
     } as never)
@@ -121,7 +119,6 @@ describe('LoginForm', () => {
       silentLogout: vi.fn(),
       isAuthenticated: false,
       refreshToken: vi.fn(),
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn(),
     } as never)

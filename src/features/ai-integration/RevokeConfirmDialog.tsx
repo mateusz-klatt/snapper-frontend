@@ -4,6 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
 import { useDeactivateAiDelegate } from '../../hooks/queries/ai-delegates'
 import type { DelegateRead } from '../../types/api'
+import { useAuth } from '../../stores/auth'
+import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { Permission } from '../../types/permissions.generated'
 
 export function RevokeConfirmDialog({
   delegate,
@@ -16,6 +19,9 @@ export function RevokeConfirmDialog({
 }>): React.ReactElement {
   const { t } = useTranslation('aiIntegration')
   const deactivate = useDeactivateAiDelegate()
+  const { hasPermission } = useAuth()
+  const readOnly = useIsReadOnly()
+  const hasManagePermission = hasPermission(Permission.MANAGE_AI_INTEGRATION)
   const mountedRef = useRef(true)
 
   useEffect(() => {
@@ -27,6 +33,8 @@ export function RevokeConfirmDialog({
   }, [])
 
   const handleConfirm = async (): Promise<void> => {
+    if (!hasPermission(Permission.MANAGE_AI_INTEGRATION) || readOnly) return
+
     try {
       await deactivate.mutateAsync(delegate.public_id)
 
@@ -43,7 +51,7 @@ export function RevokeConfirmDialog({
 
   return (
     <ConfirmDialog
-      open={open}
+      open={open && hasManagePermission}
       title={t('revokeDialog.title', { label: delegate.label })}
       message={t('revokeDialog.message')}
       confirmText={t('revokeDialog.confirm')}

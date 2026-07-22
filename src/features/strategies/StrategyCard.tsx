@@ -126,8 +126,7 @@ interface StrategyCardProps {
 interface StrategyActionControlsProps {
   displayName: string
   showStopButton: boolean
-  onStart?: (() => void) | undefined
-  onStop?: (() => void) | undefined
+  action: () => void
   isStarting: boolean
   isStopping: boolean
   isRestarting: boolean
@@ -137,8 +136,7 @@ interface StrategyActionControlsProps {
 const StrategyActionControls: React.FC<Readonly<StrategyActionControlsProps>> = ({
   displayName,
   showStopButton,
-  onStart,
-  onStop,
+  action,
   isStarting,
   isStopping,
   isRestarting,
@@ -150,7 +148,7 @@ const StrategyActionControls: React.FC<Readonly<StrategyActionControlsProps>> = 
   if (showStopButton) {
     return (
       <button
-        onClick={onStop}
+        onClick={action}
         disabled={controlsDisabled}
         aria-label={t('card.stopAriaLabel', { name: displayName })}
         className={clsx(
@@ -174,7 +172,7 @@ const StrategyActionControls: React.FC<Readonly<StrategyActionControlsProps>> = 
 
   return (
     <button
-      onClick={onStart}
+      onClick={action}
       disabled={controlsDisabled}
       aria-label={t('card.startAriaLabel', { name: displayName })}
       className={clsx(
@@ -221,6 +219,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
     const healthFresh = useHealthFreshness(health)
     const isRunning = running || isStarting
     const showStopButton = running || isStopping
+    const primaryAction = showStopButton ? onStop : onStart
     const healthColor = resolveHealthColor(health)
     const healthLabel = health
       ? t(`card.health.${health.status}` as const)
@@ -417,16 +416,15 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             })}
           </p>
         )}
-        {(onStart || onStop || onRestart || onBacktest || onEditScope) && (
+        {(primaryAction || onRestart || onBacktest || onEditScope) && (
           <div
             className={clsx('flex space-x-2 pt-2', !managedRemotely && 'border-t border-dark-600')}
           >
-            {(onStart || onStop) && (
+            {primaryAction && (
               <StrategyActionControls
                 displayName={displayName}
                 showStopButton={showStopButton}
-                onStart={onStart}
-                onStop={onStop}
+                action={primaryAction}
                 isStarting={isStarting}
                 isStopping={isStopping}
                 isRestarting={isRestarting}

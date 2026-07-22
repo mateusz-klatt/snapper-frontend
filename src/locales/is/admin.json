@@ -7,11 +7,11 @@
     "title": "Heimildir hlutverka",
     "viewer": {
       "label": "Áhorfandi",
-      "description": "Lesaðgangur að yfirliti og markaðsgögnum. Getur ekki stýrt ferlum, stefnum eða kerfisstillingum."
+      "description": "Fullur lesaðgangur rekstraraðila að reikningum, veskjum og eignasöfnum, merkjum, AI-ákvörðunum, hagnaði og tapi, bakprófunum, stefnum, ferlum og kerfisstöðu. Getur ekki framkvæmt rekstraraðgerðir."
     },
     "operator": {
       "label": "Operator",
-      "description": "Allar heimildir áhorfanda auk viðskiptaaðgerða, framkvæmdar stefna, ferlastjórnunar og vöktunar á heilsu kerfisins."
+      "description": "Allt sýnileikaumfang Áhorfanda auk stýringar á viðskiptum, stöðum, stefnum, ferlum, bakprófunum og AI-samþættingu."
     },
     "admin": {
       "label": "Kerfisstjóri",

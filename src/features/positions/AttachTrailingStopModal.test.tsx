@@ -7,6 +7,14 @@ import { validateTrailingStopParams } from './validation'
 
 const mockMutate = vi.fn()
 const mockReset = vi.fn()
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
 
 vi.mock('../../hooks/queries/positions', () => ({
   useCreateTrailingStop: vi.fn(() => ({
@@ -40,6 +48,7 @@ const defaultProps = {
 
 beforeEach(() => {
   vi.clearAllMocks()
+  mockHasPermission.mockReturnValue(true)
 })
 
 describe('validateTrailingStopParams', () => {
@@ -72,6 +81,33 @@ describe('validateTrailingStopParams', () => {
 })
 
 describe('AttachTrailingStopModal', () => {
+  it('does not expose trailing-stop controls without create:orders', () => {
+    mockHasPermission.mockReturnValue(false)
+    renderWithProviders(<AttachTrailingStopModal {...defaultProps} />)
+
+    expect(screen.queryByTestId('trailing-stop-submit')).not.toBeInTheDocument()
+    expect(mockMutate).not.toHaveBeenCalled()
+  })
+
+  it('rechecks create:orders before trailing-stop review', () => {
+    renderWithProviders(<AttachTrailingStopModal {...defaultProps} />)
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(screen.getByTestId('trailing-stop-submit'))
+
+    expect(screen.queryByTestId('trailing-stop-error')).not.toBeInTheDocument()
+    expect(mockMutate).not.toHaveBeenCalled()
+  })
+
+  it('rechecks create:orders before trailing-stop confirmation', () => {
+    renderWithProviders(<AttachTrailingStopModal {...defaultProps} />)
+    fireEvent.change(screen.getByTestId('trailing-pct-input'), { target: { value: '5' } })
+    fireEvent.click(screen.getByTestId('trailing-stop-submit'))
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(screen.getByTestId('trailing-stop-confirm'))
+
+    expect(mockMutate).not.toHaveBeenCalled()
+  })
+
   it('renders modal with position info', () => {
     renderWithProviders(<AttachTrailingStopModal {...defaultProps} />)
 

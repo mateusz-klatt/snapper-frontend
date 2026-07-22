@@ -7,6 +7,8 @@ import { useProcessSchema, useUpdateProcessConfig } from '../../hooks/queries/pr
 import { useOperators, useWallets } from '../../hooks/queries/wallets'
 import { useUsers } from '../../hooks/queries/users'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 import { ScopeFields } from './ScopeFields'
 
 const LABEL_PREFIX = 'label:'
@@ -54,6 +56,9 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
 }) => {
   const { t } = useTranslation('strategies')
   const readOnly = useIsReadOnly()
+  const { hasPermission } = useAuth()
+  const hasConfigurePermission = hasPermission(Permission.CONFIGURE_STRATEGIES)
+  const canConfigure = hasConfigurePermission && !readOnly
   const { data: operatorsData } = useOperators()
   const { data: walletsData } = useWallets()
   const { data: usersData } = useUsers(false)
@@ -64,7 +69,9 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
   const wallets = useMemo<WalletInfo[]>(() => walletsData?.payload ?? [], [walletsData?.payload])
   const users = useMemo<UserProfile[]>(() => usersData?.payload ?? [], [usersData?.payload])
   const template = target?.template ?? ''
-  const processSchema = useProcessSchema(template, { enabled: open && template.length > 0 })
+  const processSchema = useProcessSchema(template, {
+    enabled: open && hasConfigurePermission && template.length > 0,
+  })
   const referenceParams = useMemo<Record<string, string>>(() => {
     const raw = processSchema.data?.payload.reference_identity_params
 
@@ -112,9 +119,25 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
   const referenceComplete = referenceEntries.every(([name]) => Boolean(referenceValues[name]))
   const scopeComplete = Boolean(operatorId) && Boolean(walletId) && referenceComplete
 
+  const handleSave = (): void => {
+    if (!hasPermission(Permission.CONFIGURE_STRATEGIES) || readOnly || target === null) return
+
+    update.mutate(
+      {
+        name: target.processName,
+        body: {
+          operator_public_id: operatorId,
+          wallet_public_id: walletId,
+          reference_identity_params: referenceValues,
+        },
+      },
+      { onSuccess: () => setSaved(true) }
+    )
+  }
+
   return (
     <Modal
-      open={open && target !== null}
+      open={open && target !== null && hasConfigurePermission}
       onClose={onClose}
       title={t('editScopeModal.title')}
       size='lg'
@@ -170,20 +193,8 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
             {!saved && (
               <button
                 type='button'
-                onClick={() =>
-                  update.mutate(
-                    {
-                      name: target.processName,
-                      body: {
-                        operator_public_id: operatorId,
-                        wallet_public_id: walletId,
-                        reference_identity_params: referenceValues,
-                      },
-                    },
-                    { onSuccess: () => setSaved(true) }
-                  )
-                }
-                disabled={readOnly || update.isPending || scopeBlocked || !scopeComplete}
+                onClick={handleSave}
+                disabled={!canConfigure || update.isPending || scopeBlocked || !scopeComplete}
                 className='px-4 py-2 bg-info-600 text-info-50 text-sm font-medium rounded-md hover:bg-info-700 disabled:opacity-50 disabled:cursor-not-allowed'
               >
                 {update.isPending ? t('editScopeModal.saving') : t('editScopeModal.save')}

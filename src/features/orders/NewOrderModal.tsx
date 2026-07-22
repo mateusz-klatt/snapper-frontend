@@ -9,6 +9,9 @@ import { useCreateOrder } from '../../hooks/queries/orders'
 import { useWallets } from '../../hooks/queries/wallets'
 import { APIError } from '../../lib/apiClient'
 import { lookupOrderErrorMessageKey } from './errorMessages'
+import { useAuth } from '../../stores/auth'
+import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { Permission } from '../../types/permissions.generated'
 
 interface NewOrderModalProps {
   open: boolean
@@ -17,6 +20,9 @@ interface NewOrderModalProps {
 
 export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) => {
   const { t } = useTranslation('orders')
+  const { hasPermission } = useAuth()
+  const readOnly = useIsReadOnly()
+  const canCreateOrders = hasPermission(Permission.CREATE_ORDERS) && !readOnly
   const exchangeSelectId = 'new-order-exchange'
   const instrumentSelectId = 'new-order-instrument'
   const sideSelectId = 'new-order-side'
@@ -144,6 +150,8 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   }
 
   const handleSubmit = () => {
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+
     setError('')
 
     if (!exchange || !instrument || !quantity || !walletPublicId) {
@@ -191,6 +199,8 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   }
 
   const handleConfirm = async () => {
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+
     const idempotencyKey = uuid7()
 
     const body = {
@@ -315,7 +325,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               </button>
               <button
                 onClick={handleConfirm}
-                disabled={createOrder.isPending}
+                disabled={!canCreateOrders || createOrder.isPending}
                 className='px-4 py-2 text-sm font-medium rounded-lg bg-brand-600 text-white hover:bg-brand-500 disabled:opacity-50 transition-colors'
               >
                 {createOrder.isPending
@@ -465,7 +475,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               </button>
               <button
                 onClick={handleSubmit}
-                disabled={selectedIsMarketDataOnly}
+                disabled={!canCreateOrders || selectedIsMarketDataOnly}
                 className='px-4 py-2 text-sm font-medium rounded-lg bg-brand-600 text-white hover:bg-brand-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
               >
                 {t('newOrderModal.buttons.reviewOrder')}

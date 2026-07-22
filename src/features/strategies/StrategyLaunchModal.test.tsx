@@ -9,6 +9,15 @@ import { useProcessSchema } from '../../hooks/queries/processes'
 import { useOperators, useWallets } from '../../hooks/queries/wallets'
 import { useUsers } from '../../hooks/queries/users'
 
+const mockHasPermission = vi.fn<(permission: string) => boolean>(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
+
 vi.mock('../../hooks/queries/processes', () => ({
   useProcessSchema: vi.fn(() => ({
     data: null,
@@ -83,6 +92,7 @@ describe('StrategyLaunchModal', () => {
 
   beforeEach(() => {
     vi.resetAllMocks()
+    mockHasPermission.mockReturnValue(true)
     vi.mocked(useProcessSchema).mockReturnValue({
       data: null,
       isLoading: false,
@@ -100,6 +110,50 @@ describe('StrategyLaunchModal', () => {
       />
     )
     expect(screen.getByText('Register Strategy Process')).toBeTruthy()
+  })
+
+  it('does not expose registration controls without CONFIGURE_STRATEGIES', () => {
+    mockHasPermission.mockReturnValue(false)
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+
+    expect(screen.queryByText('Register strategy')).not.toBeInTheDocument()
+    expect(mockOnSubmit).not.toHaveBeenCalled()
+  })
+  it('lets configure-only users register a disabled, not-started strategy', async () => {
+    const user = userEvent.setup()
+
+    mockHasPermission.mockImplementation(permission => permission === 'configure:strategies')
+    mockOnSubmit.mockResolvedValue(undefined)
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    const autostart = await screen.findByRole('checkbox', {
+      name: /Autostart on server boot/i,
+    })
+    const startImmediately = screen.getByRole('checkbox', { name: /Start immediately/i })
+
+    expect(autostart).toBeDisabled()
+    expect(autostart).not.toBeChecked()
+    expect(startImmediately).toBeDisabled()
+    expect(startImmediately).not.toBeChecked()
+    await user.click(screen.getByText('Register strategy'))
+    await waitFor(() => {
+      expect(mockOnSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({ autostart: false, startImmediately: false })
+      )
+    })
   })
   it('does not render when closed', () => {
     renderWithProviders(
@@ -268,6 +322,24 @@ describe('StrategyLaunchModal', () => {
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalled()
     })
+  })
+  it('rechecks CONFIGURE_STRATEGIES before an already-rendered registration submits', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    const submitButton = await screen.findByText('Register strategy')
+
+    mockHasPermission.mockReturnValue(false)
+    await user.click(submitButton)
+
+    expect(mockOnSubmit).not.toHaveBeenCalled()
   })
   it('repopulates default names after clearing inputs', async () => {
     const user = userEvent.setup()

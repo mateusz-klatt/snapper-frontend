@@ -6,6 +6,7 @@ import { useAuth } from '../../stores/auth'
 import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import type { AdminAiReviewItem } from '../../types/api'
+import { Permission } from '../../types/permissions.generated'
 import {
   useAiReviewActivity,
   useAiReviews,
@@ -21,28 +22,29 @@ const ACTIVITY_DISPLAY_LIMIT = 50
  *
  * Two surfaces stitched together:
  *
- *   1. **Pending list** — REST poll of ``GET /api/ai-reviews/pending``
- *      (5s + refetch-on-focus); the snapshot of every CONSULT review
- *      currently waiting on this delegate's decision.
+ *   1. **Pending list** — REST snapshot from ``GET /api/ai-reviews/pending``;
+ *      WebSocket events and reconnects invalidate it when authoritative state
+ *      may have changed.
  *   2. **Activity stream** — WS-driven view of the last
  *      ``ACTIVITY_DISPLAY_LIMIT`` frames maintained by
  *      :class:`WSDispatcher`. Reverses chronological order so the
  *      most recent event is at the top.
  *
- * Non-delegate roles are routed here by the resource gate but the
- * REST returns 422 + the WS scope filter drops every ai_reviews
- * frame, so the page renders a role-aware notice instead.
+ * Principals without both the delegate lifecycle identity and the
+ * effective signal-read capability use the read-only audit surface instead.
+ * Decision controls are independently gated by the order-create capability.
  */
 export function AiReviewInbox(): React.ReactElement {
   const { t } = useTranslation('aiReviews')
-  const { user } = useAuth()
-  const isDelegate = user?.role === 'ai_delegate'
+  const { user, hasPermission } = useAuth()
+  const canReadPending = user?.delegate_public_id != null && hasPermission(Permission.READ_SIGNALS)
+  const canSubmitDecision = hasPermission(Permission.CREATE_ORDERS)
   const pendingQuery = usePendingAiReviews()
   const activity = useAiReviewActivity()
   const recent = useMemo(() => [...activity].slice(-ACTIVITY_DISPLAY_LIMIT).reverse(), [activity])
 
-  if (!isDelegate) {
-    return <OperatorDecisionsView />
+  if (!canReadPending) {
+    return <AuditDecisionsView />
   }
 
   return (
@@ -56,6 +58,7 @@ export function AiReviewInbox(): React.ReactElement {
         loading={pendingQuery.isLoading}
         error={pendingQuery.error}
         items={pendingQuery.data?.items ?? []}
+        canSubmitDecision={canSubmitDecision}
       />
 
       <ActivitySection frames={recent} totalBuffered={activity.length} />
@@ -168,8 +171,15 @@ function ReviewTable({
   )
 }
 
-function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): React.ReactElement {
+function PendingReviewRow({
+  item,
+  canSubmitDecision,
+}: Readonly<{
+  item: PendingReviewItem
+  canSubmitDecision: boolean
+}>): React.ReactElement {
   const { t, i18n } = useTranslation('aiReviews')
+  const { hasPermission } = useAuth()
   const [rationale, setRationale] = useState('')
   const submit = useSubmitAiReviewDecision()
   const thesis = (item.signal_envelope?.['thesis'] ?? null) as string | null
@@ -177,6 +187,8 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
   const isSubmitting = submit.isPending
 
   const submitDecision = (decision: 'approve' | 'reject'): void => {
+    if (!hasPermission(Permission.CREATE_ORDERS)) return
+
     submit.mutate({
       reviewPublicId: item.review_public_id,
       decision,
@@ -202,44 +214,48 @@ function PendingReviewRow({ item }: Readonly<{ item: PendingReviewItem }>): Reac
         {formatDateTime(new Date(item.deadline), i18n.language as AppLocale)}
       </td>
       <td className='px-4 py-2'>
-        <div className='flex flex-col gap-2 min-w-[12rem]'>
-          <input
-            type='text'
-            placeholder={t('pending.rationalePlaceholder')}
-            value={rationale}
-            onChange={event => setRationale(event.target.value)}
-            disabled={isSubmitting}
-            aria-label={t('pending.rationaleAriaLabel', { reviewId: item.review_public_id })}
-            className='rounded border border-dark-600 bg-alpine-50 px-2 py-1 text-xs text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500 disabled:opacity-50'
-          />
-          <div className='flex gap-2'>
-            <button
-              type='button'
-              onClick={() => submitDecision('approve')}
+        {canSubmitDecision ? (
+          <div className='flex flex-col gap-2 min-w-[12rem]'>
+            <input
+              type='text'
+              placeholder={t('pending.rationalePlaceholder')}
+              value={rationale}
+              onChange={event => setRationale(event.target.value)}
               disabled={isSubmitting}
-              data-testid={`approve-${item.review_public_id}`}
-              className='inline-flex items-center gap-1 rounded border border-gain-500 px-2 py-1 text-xs font-medium text-gain-700 hover:bg-gain-50 disabled:cursor-not-allowed disabled:opacity-50'
-            >
-              <Check size={12} />
-              {t('pending.approve')}
-            </button>
-            <button
-              type='button'
-              onClick={() => submitDecision('reject')}
-              disabled={isSubmitting}
-              data-testid={`reject-${item.review_public_id}`}
-              className='inline-flex items-center gap-1 rounded border border-loss-500 px-2 py-1 text-xs font-medium text-loss-700 hover:bg-loss-50 disabled:cursor-not-allowed disabled:opacity-50'
-            >
-              <X size={12} />
-              {t('pending.reject')}
-            </button>
+              aria-label={t('pending.rationaleAriaLabel', { reviewId: item.review_public_id })}
+              className='rounded border border-dark-600 bg-alpine-50 px-2 py-1 text-xs text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-hidden focus:ring-1 focus:ring-brand-500 disabled:opacity-50'
+            />
+            <div className='flex gap-2'>
+              <button
+                type='button'
+                onClick={() => submitDecision('approve')}
+                disabled={isSubmitting}
+                data-testid={`approve-${item.review_public_id}`}
+                className='inline-flex items-center gap-1 rounded border border-gain-500 px-2 py-1 text-xs font-medium text-gain-700 hover:bg-gain-50 disabled:cursor-not-allowed disabled:opacity-50'
+              >
+                <Check size={12} />
+                {t('pending.approve')}
+              </button>
+              <button
+                type='button'
+                onClick={() => submitDecision('reject')}
+                disabled={isSubmitting}
+                data-testid={`reject-${item.review_public_id}`}
+                className='inline-flex items-center gap-1 rounded border border-loss-500 px-2 py-1 text-xs font-medium text-loss-700 hover:bg-loss-50 disabled:cursor-not-allowed disabled:opacity-50'
+              >
+                <X size={12} />
+                {t('pending.reject')}
+              </button>
+            </div>
+            {submit.isError && (
+              <span className='text-[10px] text-loss-700' role='alert'>
+                {t('pending.submitError', { message: submit.error.message })}
+              </span>
+            )}
           </div>
-          {submit.isError && (
-            <span className='text-[10px] text-loss-700' role='alert'>
-              {t('pending.submitError', { message: submit.error.message })}
-            </span>
-          )}
-        </div>
+        ) : (
+          <span className='text-muted-500'>—</span>
+        )}
       </td>
     </tr>
   )
@@ -249,6 +265,7 @@ function PendingReviewsSection({
   loading,
   error,
   items,
+  canSubmitDecision,
 }: Readonly<{
   loading: boolean
   error: Error | null
@@ -263,6 +280,7 @@ function PendingReviewsSection({
     instrument?: string | null | undefined
     signal_envelope?: Record<string, unknown> | null | undefined
   }>
+  canSubmitDecision: boolean
 }>): React.ReactElement {
   const { t } = useTranslation('aiReviews')
   const errorText = error !== null ? t('pending.loadError', { message: error.message }) : ''
@@ -293,7 +311,11 @@ function PendingReviewsSection({
           ]}
         >
           {items.map(item => (
-            <PendingReviewRow key={item.review_public_id} item={item} />
+            <PendingReviewRow
+              key={item.review_public_id}
+              item={item}
+              canSubmitDecision={canSubmitDecision}
+            />
           ))}
         </ReviewTable>
       </ReviewSectionState>
@@ -356,16 +378,14 @@ function ActivitySection({
 }
 
 /**
- * Operator/admin read-only AI decisions view.
+ * Permission-gated read-only AI decisions view.
  *
- * Non-delegate roles are routed to the AI Reviews screen by the resource
- * gate but the delegate inbox (pending list + WS activity) is empty for
- * them (`GET /api/ai-reviews/pending` 422s; the WS scope filter drops
- * every ai_reviews frame). This surface answers "what did the AI decide?"
- * by polling the operator-scoped `GET /api/ai-reviews`, which returns
- * terminal decided rows with the decision + rationale.
+ * Principals without pending-decision capability use this surface to answer
+ * "what did the AI decide?" by polling the permission-scoped
+ * `GET /api/ai-reviews`, which returns terminal decided rows with the
+ * decision and rationale.
  */
-function OperatorDecisionsView(): React.ReactElement {
+function AuditDecisionsView(): React.ReactElement {
   const { t, i18n } = useTranslation('aiReviews')
   const reviewsQuery = useAiReviews()
   const items = reviewsQuery.data?.items ?? []

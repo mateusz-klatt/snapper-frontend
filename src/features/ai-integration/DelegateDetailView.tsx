@@ -9,6 +9,8 @@ import { RevokeConfirmDialog } from './RevokeConfirmDialog'
 import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import type { DelegateCapsBody } from '../../types/api'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 
 export function DelegateDetailView({
   publicId,
@@ -17,6 +19,9 @@ export function DelegateDetailView({
   const { t, i18n } = useTranslation('aiIntegration')
   const detailQuery = useAiDelegate(publicId)
   const readOnly = useIsReadOnly()
+  const { hasPermission } = useAuth()
+  const hasManagePermission = hasPermission(Permission.MANAGE_AI_INTEGRATION)
+  const canManage = hasManagePermission && !readOnly
   const updateMutation = useUpdateAiDelegateCaps()
   const [editing, setEditing] = useState(false)
   const [revokeOpen, setRevokeOpen] = useState(false)
@@ -59,6 +64,8 @@ export function DelegateDetailView({
   }
 
   const submitCapsUpdate = async (activeDraft: NonNullable<typeof draft>): Promise<void> => {
+    if (!hasPermission(Permission.MANAGE_AI_INTEGRATION) || readOnly) return
+
     const parsedOpen = parseNullableInt(activeDraft.maxOpenOrders)
     const parsedDaily = parseNullableInt(activeDraft.maxDailyNotionalUsd)
     const parsedCancels = parseNullableInt(activeDraft.maxCancelsPerMinute)
@@ -96,18 +103,18 @@ export function DelegateDetailView({
           {t('detail.backToList')}
         </Button>
         <div className='flex items-center gap-2'>
-          {!editing && (
+          {!editing && hasManagePermission && (
             <Button
               variant='secondary'
               onClick={startEditing}
-              disabled={readOnly || !delegate.is_active}
+              disabled={!delegate.is_active || !canManage}
             >
               <Edit3 className='w-4 h-4 mr-1 inline' />
               {t('detail.updateCaps')}
             </Button>
           )}
-          {delegate.is_active && (
-            <Button variant='danger' onClick={() => setRevokeOpen(true)} disabled={readOnly}>
+          {delegate.is_active && hasManagePermission && (
+            <Button variant='danger' onClick={() => setRevokeOpen(true)} disabled={!canManage}>
               <PowerOff className='w-4 h-4 mr-1 inline' />
               {t('detail.revoke')}
             </Button>
@@ -175,7 +182,7 @@ export function DelegateDetailView({
                 <Button
                   variant='primary'
                   onClick={() => submitCapsUpdate(draft)}
-                  disabled={readOnly || updateMutation.isPending}
+                  disabled={!canManage || updateMutation.isPending}
                   loading={updateMutation.isPending}
                 >
                   <Save className='w-4 h-4 mr-1 inline' />

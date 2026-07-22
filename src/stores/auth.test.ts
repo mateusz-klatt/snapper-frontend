@@ -66,11 +66,6 @@ describe('auth store', () => {
     state.setLoading(true)
     expect(useAuthStore.getState().isLoading).toBe(true)
   })
-  it('provides hasRole helper', () => {
-    const state = useAuthStore.getState()
-
-    expect(typeof state.hasRole).toBe('function')
-  })
   it('provides hasPermission helper', () => {
     const state = useAuthStore.getState()
 
@@ -94,6 +89,7 @@ describe('auth store', () => {
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: [],
       },
       isAuthenticated: true,
       isLoading: false,
@@ -106,79 +102,12 @@ describe('auth store', () => {
     expect(typeof result.current.login).toBe('function')
     expect(typeof result.current.hasPermission).toBe('function')
   })
-  it('hasRole returns false when no user', () => {
-    const state = useAuthStore.getState()
-
-    expect(state.hasRole('admin')).toBe(false)
-  })
-  it('hasRole returns true for user role', () => {
-    useAuthStore.setState({
-      user: {
-        type: 'user_profile' as const,
-        sequence_id: 0,
-        public_id: 'test-pid',
-        timestamp: '2024-01-01T00:00:00Z',
-        session_id: 'test-sid',
-        username: 'admin',
-        role: 'admin',
-        is_active: true,
-        created_at: '2026-01-01T00:00:00Z',
-        operator_public_ids: [],
-      },
-      isAuthenticated: true,
-    })
-    const state = useAuthStore.getState()
-
-    expect(state.hasRole('admin')).toBe(true)
-  })
-  it('hasRole supports role hierarchy - admin has operator role', () => {
-    useAuthStore.setState({
-      user: {
-        type: 'user_profile' as const,
-        sequence_id: 0,
-        public_id: 'test-pid',
-        timestamp: '2024-01-01T00:00:00Z',
-        session_id: 'test-sid',
-        username: 'admin',
-        role: 'admin',
-        is_active: true,
-        created_at: '2026-01-01T00:00:00Z',
-        operator_public_ids: [],
-      },
-      isAuthenticated: true,
-    })
-    const state = useAuthStore.getState()
-
-    expect(state.hasRole('operator')).toBe(true)
-    expect(state.hasRole('viewer')).toBe(true)
-  })
-  it('hasRole supports role hierarchy - operator has viewer role', () => {
-    useAuthStore.setState({
-      user: {
-        type: 'user_profile' as const,
-        sequence_id: 0,
-        public_id: 'test-pid',
-        timestamp: '2024-01-01T00:00:00Z',
-        session_id: 'test-sid',
-        username: 'operator',
-        role: 'operator',
-        is_active: true,
-        created_at: '2026-01-01T00:00:00Z',
-        operator_public_ids: [],
-      },
-      isAuthenticated: true,
-    })
-    const state = useAuthStore.getState()
-
-    expect(state.hasRole('viewer')).toBe(true)
-    expect(state.hasRole('admin')).toBe(false)
-  })
   it('hasPermission returns false when no user', () => {
     const state = useAuthStore.getState()
 
     expect(state.hasPermission('manage:users')).toBe(false)
   })
-  it('hasPermission returns true for admin with all permissions', () => {
+  it('hasPermission reads the effective token grant without an admin bypass', () => {
     useAuthStore.setState({
       user: {
         type: 'user_profile' as const,
@@ -191,6 +120,7 @@ describe('auth store', () => {
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: ['manage:users', 'read:market_data', 'configure:system'],
       },
       isAuthenticated: true,
     })
@@ -200,7 +130,7 @@ describe('auth store', () => {
     expect(state.hasPermission('read:market_data')).toBe(true)
     expect(state.hasPermission('configure:system')).toBe(true)
   })
-  it('hasPermission checks operator permissions', () => {
+  it('hasPermission checks an operator effective scope', () => {
     useAuthStore.setState({
       user: {
         type: 'user_profile' as const,
@@ -213,6 +143,7 @@ describe('auth store', () => {
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: ['read:market_data', 'create:orders'],
       },
       isAuthenticated: true,
     })
@@ -222,7 +153,7 @@ describe('auth store', () => {
     expect(state.hasPermission('create:orders')).toBe(true)
     expect(state.hasPermission('manage:users')).toBe(false)
   })
-  it('hasPermission checks viewer permissions', () => {
+  it('hasPermission checks a viewer effective scope', () => {
     useAuthStore.setState({
       user: {
         type: 'user_profile' as const,
@@ -235,6 +166,7 @@ describe('auth store', () => {
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: ['read:market_data'],
       },
       isAuthenticated: true,
     })
@@ -244,7 +176,7 @@ describe('auth store', () => {
     expect(state.hasPermission('create:orders')).toBe(false)
     expect(state.hasPermission('manage:users')).toBe(false)
   })
-  it('hasPermission falls back to empty permissions for unknown role', () => {
+  it('hasPermission fails closed when effective permissions are absent', () => {
     useAuthStore.setState({
       user: {
         type: 'user_profile' as const,
@@ -252,11 +184,12 @@ describe('auth store', () => {
         public_id: 'test-pid',
         timestamp: '2024-01-01T00:00:00Z',
         session_id: 'test-sid',
-        username: 'mystery',
-        role: 'unknown' as unknown as 'viewer',
+        username: 'admin-without-session-grant',
+        role: 'admin',
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: undefined as never,
       },
       isAuthenticated: true,
     })
@@ -282,6 +215,7 @@ describe('auth store', () => {
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: ['manage:users', 'configure:system'],
       },
       isAuthenticated: true,
     })
@@ -304,6 +238,7 @@ describe('auth store', () => {
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: ['read:orders'],
       },
       isAuthenticated: true,
     })
@@ -327,6 +262,16 @@ describe('auth store', () => {
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
         operator_public_ids: [],
+        effective_permissions: [
+          'read:market_data',
+          'read:orders',
+          'read:strategies',
+          'read:signals',
+          'read:system_status',
+          'read:processes',
+          'read:ai_reviews',
+          'read:ai_integration',
+        ],
       },
       isAuthenticated: true,
     })
@@ -338,8 +283,52 @@ describe('auth store', () => {
     expect(state.canAccess('strategies')).toBe(true)
     expect(state.canAccess('signals')).toBe(true)
     expect(state.canAccess('health')).toBe(true)
-    expect(state.canAccess('processes')).toBe(false)
+    expect(state.canAccess('processes')).toBe(true)
+    expect(state.canAccess('ai-reviews')).toBe(true)
+    expect(state.canAccess('ai-integration')).toBe(true)
     expect(state.canAccess('admin')).toBe(false)
+  })
+  it('canAccess accepts any permission alternative for a resource', () => {
+    useAuthStore.setState({
+      user: {
+        type: 'user_profile' as const,
+        sequence_id: 0,
+        public_id: 'reviewer-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'reviewer-sid',
+        username: 'reviewer',
+        role: 'ai_reviewer',
+        is_active: true,
+        created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
+        effective_permissions: ['submit:ai_review_decision'],
+      },
+      isAuthenticated: true,
+    })
+
+    expect(useAuthStore.getState().canAccess('ai-reviews')).toBe(true)
+  })
+  it('canAccess allows authenticated empty requirements and denies unknown resources', () => {
+    useAuthStore.setState({
+      user: {
+        type: 'user_profile' as const,
+        sequence_id: 0,
+        public_id: 'empty-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'empty-sid',
+        username: 'empty-scope',
+        role: 'viewer',
+        is_active: true,
+        created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: [],
+        effective_permissions: [],
+      },
+      isAuthenticated: true,
+    })
+    const state = useAuthStore.getState()
+
+    expect(state.canAccess('overview')).toBe(true)
+    expect(state.canAccess('does-not-exist')).toBe(false)
   })
   describe('login', () => {
     it('successfully logs in user', async () => {
@@ -484,6 +473,7 @@ describe('auth store', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
         isAuthenticated: true,
         csrfToken: 'test-csrf',
@@ -554,6 +544,7 @@ describe('auth store', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
         isAuthenticated: true,
       })
@@ -644,6 +635,7 @@ describe('auth store', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
         isAuthenticated: true,
       })
@@ -668,6 +660,7 @@ describe('auth store', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
         isAuthenticated: true,
       })
@@ -898,6 +891,7 @@ describe('auth store', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
         isAuthenticated: true,
         csrfToken: 'test-csrf',
@@ -949,6 +943,7 @@ describe('auth store', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
         isAuthenticated: true,
       })
@@ -979,6 +974,7 @@ describe('auth store', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
         isAuthenticated: true,
       })

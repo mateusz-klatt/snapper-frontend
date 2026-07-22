@@ -7,11 +7,11 @@
     "title": "Role Permission များ",
     "viewer": {
       "label": "ကြည့်ရှုသူ",
-      "description": "Overview နှင့် Market Data ကို ဖတ်ရန်သာ ဝင်ခွင့်ရှိသည်။ Process များ၊ strategy များ သို့မဟုတ် စနစ် setting များကို စီမံနိုင်မည်မဟုတ်ပါ။"
+      "description": "အကောင့်များ၊ wallet နှင့် portfolio များ၊ signal များ၊ AI ဆုံးဖြတ်ချက်များ၊ အရှုံးအမြတ်၊ backtest များ၊ strategy များ၊ process များနှင့် စနစ်အခြေအနေတို့ကို operator အဆင့်ဖြင့် ဖတ်ရှုနိုင်သည်။ လုပ်ငန်းလည်ပတ်မှု action များ မလုပ်နိုင်ပါ။"
     },
     "operator": {
       "label": "လုပ်ဆောင်သူ",
-      "description": "Viewer permission အားလုံးအပြင် trading operation များ၊ strategy run ခြင်း၊ process စီမံခြင်းနှင့် system health စောင့်ကြည့်ခြင်းတို့ ပါဝင်သည်။"
+      "description": "Viewer မြင်နိုင်သမျှအားလုံးအပြင် trading၊ position၊ strategy၊ process၊ backtest နှင့် AI integration များကို ထိန်းချုပ်နိုင်သည်။"
     },
     "admin": {
       "label": "စီမံခန့်ခွဲသူ",

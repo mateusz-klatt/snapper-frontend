@@ -7,11 +7,11 @@
     "title": "Oprávnění rolí",
     "viewer": {
       "label": "Pozorovatel",
-      "description": "Přístup pouze pro čtení k Přehledu a Tržním datům. Nemůže spravovat procesy, strategie ani systémová nastavení."
+      "description": "Úplná viditelnost operátora pouze pro čtení zahrnující účty, peněženky a portfolia, signály, rozhodnutí AI, zisk a ztrátu, backtesty, strategie, procesy a stav systému. Nemůže provádět provozní akce."
     },
     "operator": {
       "label": "Operátor",
-      "description": "Všechna oprávnění Pozorovatele plus obchodní operace, spouštění strategií, správa procesů a monitorování stavu systému."
+      "description": "Veškerá viditelnost Pozorovatele plus ovládání obchodování, pozic, strategií, procesů, backtestů a integrace AI."
     },
     "admin": {
       "label": "Administrátor",

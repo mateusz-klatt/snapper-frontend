@@ -6,6 +6,8 @@ import { useProcessSchema } from '../../hooks/queries/processes'
 import { useOperators, useWallets } from '../../hooks/queries/wallets'
 import { useUsers } from '../../hooks/queries/users'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 import { ScopeFields } from './ScopeFields'
 
 export interface StrategyLaunchData {
@@ -48,6 +50,9 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
 }) => {
   const { t } = useTranslation('strategies')
   const readOnly = useIsReadOnly()
+  const { hasPermission } = useAuth()
+  const canConfigure = hasPermission(Permission.CONFIGURE_STRATEGIES) && !readOnly
+  const canStart = hasPermission(Permission.START_STRATEGIES) && !readOnly
   const sortedTemplates = useMemo(
     () => [...templates].sort((a, b) => a.name.localeCompare(b.name)),
     [templates]
@@ -63,7 +68,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
   const [walletId, setWalletId] = useState<string>('')
   const [referenceValues, setReferenceValues] = useState<Record<string, string>>({})
   const processSchema = useProcessSchema(selectedTemplate, {
-    enabled: open && selectedTemplate.length > 0,
+    enabled: open && canConfigure && selectedTemplate.length > 0,
   })
   const defaultKwargs = useMemo(() => {
     const raw = processSchema.data?.payload.default_parameters ?? {}
@@ -144,6 +149,11 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
 
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (!hasPermission(Permission.CONFIGURE_STRATEGIES) || readOnly) return
+
+    const canStartNow = hasPermission(Permission.START_STRATEGIES) && !readOnly
+
     const template = selectedTemplate
     const params: Record<string, unknown> = {
       ...defaultKwargs,
@@ -184,8 +194,8 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
         processName: sanitizeName(processName),
         strategyName: sanitizeName(strategyName),
         executionMode,
-        autostart,
-        startImmediately,
+        autostart: canStartNow && autostart,
+        startImmediately: canStartNow && startImmediately,
         ...(trimmedNote ? { note: trimmedNote } : {}),
         parameters: params,
       })
@@ -195,7 +205,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
   }
 
   return (
-    <Modal open={open} onClose={onClose} title={t('launchModal.title')} size='lg'>
+    <Modal open={open && canConfigure} onClose={onClose} title={t('launchModal.title')} size='lg'>
       {templates.length === 0 ? (
         <div className='space-y-3 text-sm text-muted-600'>
           <p>{t('launchModal.emptyTemplates')}</p>
@@ -337,8 +347,9 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 <input
                   type='checkbox'
                   className='mr-2 text-info-500 focus:ring-brand-500'
-                  checked={autostart}
+                  checked={canStart && autostart}
                   onChange={e => setAutostart(e.target.checked)}
+                  disabled={!canStart}
                 />{' '}
                 {t('launchModal.autostartLabel')}
               </label>
@@ -346,8 +357,9 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 <input
                   type='checkbox'
                   className='mr-2 text-info-500 focus:ring-brand-500'
-                  checked={startImmediately}
+                  checked={canStart && startImmediately}
                   onChange={e => setStartImmediately(e.target.checked)}
+                  disabled={!canStart}
                 />{' '}
                 {t('launchModal.startImmediatelyLabel')}
               </label>
@@ -383,7 +395,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
             <button
               type='submit'
               disabled={
-                readOnly ||
+                !canConfigure ||
                 isSubmitting ||
                 processSchema.isLoading ||
                 !!processSchema.error ||

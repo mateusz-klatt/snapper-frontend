@@ -7,11 +7,11 @@
     "title": "Uprawnienia ról",
     "viewer": {
       "label": "Obserwator",
-      "description": "Dostęp tylko do odczytu do Przeglądu i Danych Rynkowych. Nie może zarządzać procesami, strategiami ani ustawieniami systemu."
+      "description": "Pełny wgląd operatora tylko do odczytu w konta, portfele i portfolia, sygnały, decyzje AI, zyski i straty, backtesty, strategie, procesy oraz stan systemu. Nie może wykonywać działań operacyjnych."
     },
     "operator": {
       "label": "Operator",
-      "description": "Wszystkie uprawnienia Obserwatora oraz operacje handlowe, wykonywanie strategii, zarządzanie procesami i monitorowanie kondycji systemu."
+      "description": "Cała widoczność Obserwatora oraz kontrola handlu, pozycji, strategii, procesów, backtestów i integracji AI."
     },
     "admin": {
       "label": "Administrator",

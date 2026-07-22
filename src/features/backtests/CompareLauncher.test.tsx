@@ -7,6 +7,15 @@ import { createBacktestComparison, getBacktests } from '../../lib/api/backtests'
 import { useAppStore } from '../../stores/app'
 import type { BacktestRunData } from '../../types/api'
 
+const mockHasPermission = vi.fn<(permission: string) => boolean>(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
+
 vi.mock('../../lib/api/backtests', () => ({
   getBacktests: vi.fn(),
   createBacktestComparison: vi.fn(),
@@ -58,6 +67,7 @@ const mockSameConfig = (runs: BacktestRunData[]) => {
 
 beforeEach(() => {
   vi.clearAllMocks()
+  mockHasPermission.mockReturnValue(true)
   useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
   globalThis.location.hash = ''
 })
@@ -67,6 +77,35 @@ afterEach(() => {
 })
 
 describe('CompareLauncher', () => {
+  it('renders no compare controls or candidate queries without CREATE_BACKTEST_COMPARISONS', () => {
+    mockHasPermission.mockReturnValue(false)
+    renderWithClient(<CompareLauncher currentRun={makeRun()} />)
+
+    expect(screen.queryByTestId('compare-manual-submit')).toBeNull()
+    expect(getBacktests).not.toHaveBeenCalled()
+    expect(createBacktestComparison).not.toHaveBeenCalled()
+  })
+
+  it('allows comparisons with CREATE_BACKTEST_COMPARISONS without MANAGE_BACKTESTS', async () => {
+    mockHasPermission.mockImplementation(permission => permission === 'create:backtest_comparisons')
+    mockSameConfig([makeRun({ public_id: 'reviewer-sibling' })])
+    ;(createBacktestComparison as ReturnType<typeof vi.fn>).mockResolvedValue({
+      type: 'backtest_comparison_response',
+      payload: { public_id: 'cmp-reviewer' },
+    })
+
+    renderWithClient(<CompareLauncher currentRun={makeRun()} />)
+
+    fireEvent.click(await screen.findByTestId('compare-auto-pair'))
+    await waitFor(() => expect(globalThis.location.hash).toBe('#backtests/compare/cmp-reviewer'))
+    expect(getBacktests).toHaveBeenCalledWith(20, 0, undefined, undefined, 'cfg-deadbeef')
+    expect(createBacktestComparison).toHaveBeenCalledWith({
+      mode: 'auto',
+      config_hash: 'cfg-deadbeef',
+      anchor_run_public_id: 'run-current',
+    })
+  })
+
   it('(g) renders the terminal-gate message + fires zero queries when run is not terminal', () => {
     renderWithClient(<CompareLauncher currentRun={makeRun({ status: 'running' })} />)
     expect(
@@ -242,6 +281,19 @@ describe('CompareLauncher', () => {
       run_a_public_id: 'run-current',
       run_b_public_id: 'r-other',
     })
+  })
+
+  it('rechecks CREATE_BACKTEST_COMPARISONS before an already-rendered comparison submits', async () => {
+    const other = makeRun({ public_id: 'r-other' })
+
+    mockSameConfig([other])
+    renderWithClient(<CompareLauncher currentRun={makeRun()} />)
+    await screen.findByText(/r-other/)
+    fireEvent.change(screen.getByTestId('compare-combobox'), { target: { value: 'r-other' } })
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(screen.getByTestId('compare-manual-submit'))
+
+    expect(createBacktestComparison).not.toHaveBeenCalled()
   })
 
   it('shows overflow note when same-config returns >= SAME_CONFIG_LIMIT (20)', async () => {

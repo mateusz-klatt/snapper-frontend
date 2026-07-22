@@ -7,11 +7,11 @@
     "title": "Lejet e roleve",
     "viewer": {
       "label": "Shikues",
-      "description": "Akses vetëm për lexim te Përmbledhje dhe Të dhëna tregu. Nuk mund të menaxhojë procese, strategji ose cilësime sistemi."
+      "description": "Dukshmëri e plotë e operatorit vetëm për lexim mbi llogaritë, kuletat dhe portofolet, sinjalet, vendimet e IA-së, fitimin dhe humbjen, backtest-et, strategjitë, proceset dhe gjendjen e sistemit. Nuk mund të kryejë veprime operacionale."
     },
     "operator": {
       "label": "Operator",
-      "description": "Të gjitha lejet e Shikuesit plus operacionet e tregtimit, ekzekutimin e strategjive, menaxhimin e proceseve dhe monitorimin e shëndetit të sistemit."
+      "description": "E gjithë dukshmëria e Shikuesit plus kontrollet e tregtimit, pozicioneve, strategjive, proceseve, backtest-eve dhe integrimit të IA-së."
     },
     "admin": {
       "label": "Administrator",

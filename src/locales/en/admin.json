@@ -7,11 +7,11 @@
     "title": "Role Permissions",
     "viewer": {
       "label": "Viewer",
-      "description": "Read-only access to Overview and Market Data. Cannot manage processes, strategies, or system settings."
+      "description": "Read-only operator visibility across accounts, wallets and portfolios, signals, AI decisions, P&L, backtests, strategies, processes, and health. Cannot perform operational actions."
     },
     "operator": {
       "label": "Operator",
-      "description": "All Viewer permissions plus trading operations, strategy execution, process management, and system health monitoring."
+      "description": "All Viewer visibility plus trading, position, strategy, process, backtest, and AI-integration controls."
     },
     "admin": {
       "label": "Admin",

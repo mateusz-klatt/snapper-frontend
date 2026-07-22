@@ -7,11 +7,11 @@
     "title": "Ruhusa za Majukumu",
     "viewer": {
       "label": "Mtazamaji",
-      "description": "Ufikiaji wa kusoma pekee kwa Muhtasari na Data ya Soko. Hawezi kusimamia michakato, mikakati, au mipangilio ya mfumo."
+      "description": "Mwonekano kamili wa opereta wa kusoma pekee kwa akaunti, pochi na portfolio, ishara, maamuzi ya AI, faida na hasara, backtest, mikakati, michakato na afya ya mfumo. Hawezi kutekeleza vitendo vya uendeshaji."
     },
     "operator": {
       "label": "Opereta",
-      "description": "Ruhusa zote za Mtazamaji pamoja na operesheni za trading, utekelezaji wa mikakati, usimamizi wa michakato, na ufuatiliaji wa afya ya mfumo."
+      "description": "Mwonekano wote wa Mtazamaji pamoja na vidhibiti vya biashara, nafasi, mikakati, michakato, backtest na ujumuishaji wa AI."
     },
     "admin": {
       "label": "Msimamizi",

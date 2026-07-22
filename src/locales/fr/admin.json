@@ -7,11 +7,11 @@
     "title": "Permissions des rôles",
     "viewer": {
       "label": "Observateur",
-      "description": "Accès en lecture seule à la Vue d'ensemble et aux Données de marché. Ne peut pas gérer les processus, les stratégies ni les paramètres système."
+      "description": "Visibilité complète d’un opérateur en lecture seule sur les comptes, portefeuilles, signaux, décisions de l’IA, pertes et profits, backtests, stratégies, processus et état du système. Ne peut effectuer aucune action opérationnelle."
     },
     "operator": {
       "label": "Opérateur",
-      "description": "Toutes les permissions de l'Observateur, plus les opérations de trading, l'exécution des stratégies, la gestion des processus et la supervision de l'état du système."
+      "description": "Toute la visibilité de l’Observateur, plus les commandes de trading, de positions, de stratégies, de processus, de backtests et d’intégration de l’IA."
     },
     "admin": {
       "label": "Administrateur",

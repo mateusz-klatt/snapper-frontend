@@ -34,7 +34,6 @@ const createMockAuth = (overrides = {}) => ({
   silentLogout: vi.fn(),
   isAuthenticated: false,
   refreshToken: vi.fn(),
-  hasRole: vi.fn(),
   hasPermission: vi.fn(),
   canAccess: vi.fn(),
   ...overrides,
@@ -57,6 +56,11 @@ describe('UserProfile', () => {
         },
         logout: mockLogout,
         isAuthenticated: true,
+        hasPermission: vi.fn((permission: string) =>
+          ['manage:users', 'create:orders', 'start:strategies', 'read:market_data'].includes(
+            permission
+          )
+        ),
       }) as never
     )
   })
@@ -82,14 +86,14 @@ describe('UserProfile', () => {
     await user.click(screen.getByText('testuser'))
     expect(screen.getByText('Permissions:')).toBeInTheDocument()
   })
-  it('shows admin permissions in dropdown', async () => {
+  it('shows full administration when MANAGE_USERS is granted', async () => {
     const user = userEvent.setup()
 
     renderWithMocks(<UserProfile />)
     await user.click(screen.getByText('testuser'))
     expect(screen.getByText(/Full system administration/i)).toBeInTheDocument()
   })
-  it('does not show admin permissions for operator', async () => {
+  it('hides full administration when MANAGE_USERS is absent', async () => {
     mockUseAuth.mockReturnValue(
       createMockAuth({
         user: {
@@ -106,6 +110,31 @@ describe('UserProfile', () => {
     renderWithMocks(<UserProfile />)
     await user.click(screen.getByText('operator'))
     expect(screen.queryByText(/Full system administration/i)).not.toBeInTheDocument()
+  })
+  it('derives capability bullets from permissions instead of the role badge', async () => {
+    mockUseAuth.mockReturnValue(
+      createMockAuth({
+        user: {
+          username: 'permission-driven-viewer',
+          role: 'viewer',
+          is_active: true,
+        },
+        logout: mockLogout,
+        isAuthenticated: true,
+        hasPermission: vi.fn((permission: string) =>
+          ['create:orders', 'read:market_data'].includes(permission)
+        ),
+      }) as never
+    )
+    const user = userEvent.setup()
+
+    renderWithMocks(<UserProfile />)
+    await user.click(screen.getByText('permission-driven-viewer'))
+
+    expect(screen.getByText(/Trading operations/i)).toBeInTheDocument()
+    expect(screen.getByText(/Market data access/i)).toBeInTheDocument()
+    expect(screen.queryByText(/Full system administration/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Strategy execution/i)).not.toBeInTheDocument()
   })
   it('displays correct role color for admin', () => {
     renderWithMocks(<UserProfile />)

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Admin } from './Admin'
 
@@ -59,16 +59,22 @@ describe('Admin', () => {
     expect(screen.getByText('Signals')).toBeInTheDocument()
     expect(screen.getByText('Health')).toBeInTheDocument()
     expect(screen.getByText('Settings')).toBeInTheDocument()
-    expect(
-      screen.getByText(
-        'Read-only access to Overview and Market Data. Cannot manage processes, strategies, or system settings.'
-      )
-    ).toBeInTheDocument()
+    expect(screen.getByText(/read-only operator/i)).toBeInTheDocument()
+    const processRow = screen.getByText('Processes').closest('tr')
+    const settingsRow = screen.getByText('Settings').closest('tr')
+
+    expect(processRow).not.toBeNull()
+    expect(settingsRow).not.toBeNull()
+    const processCells = within(processRow as HTMLElement).getAllByRole('cell')
+    const settingsCells = within(settingsRow as HTMLElement).getAllByRole('cell')
+
+    expect(processCells[1]).toHaveTextContent('✓')
+    expect(processCells[2]).toHaveTextContent('✓')
+    expect(processCells[3]).toHaveTextContent('✓')
+    expect(settingsCells[1]).toHaveTextContent('—')
+    expect(settingsCells[2]).toHaveTextContent('—')
+    expect(settingsCells[3]).toHaveTextContent('✓')
     await user.click(toggleButton)
-    expect(
-      screen.queryByText(
-        'Read-only access to Overview and Market Data. Cannot manage processes, strategies, or system settings.'
-      )
-    ).not.toBeInTheDocument()
+    expect(screen.queryByText(/read-only operator/i)).not.toBeInTheDocument()
   })
 })

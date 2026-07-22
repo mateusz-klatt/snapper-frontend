@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { startExecutionModeWhenAllowed } from './executionModeGuard'
 
 interface ExecutionModeModalProps {
   open: boolean
@@ -9,6 +10,7 @@ interface ExecutionModeModalProps {
   onStart: (options: { executionMode: 'thread' | 'process' }) => void
   componentName: string
   description: string
+  canManage: boolean
 }
 
 export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = ({
@@ -17,6 +19,7 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
   onStart,
   componentName,
   description,
+  canManage,
 }) => {
   const { t } = useTranslation('processes')
   const readOnly = useIsReadOnly()
@@ -29,8 +32,7 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
   }, [open])
 
   const handleStart = () => {
-    onStart({ executionMode })
-    onClose()
+    startExecutionModeWhenAllowed(canManage && !readOnly, executionMode, onStart, onClose)
   }
 
   return (
@@ -98,7 +100,7 @@ export const ExecutionModeModal: React.FC<Readonly<ExecutionModeModalProps>> = (
           </button>
           <button
             onClick={handleStart}
-            disabled={readOnly}
+            disabled={readOnly || !canManage}
             className='px-4 py-2 bg-primary-600 text-white rounded hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
           >
             {t('executionMode.start', { name: componentName })}

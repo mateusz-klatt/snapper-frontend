@@ -38,9 +38,10 @@ interface BacktestRowProps {
   run: BacktestRunData
   onCancel: (publicId: string) => void
   onRerun: (publicId: string) => void
+  canManage: boolean
 }
 
-const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => {
+const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun, canManage }) => {
   const { t, i18n } = useTranslation('backtests')
   const canCancel = run.status === 'pending' || run.status === 'running'
   const statusLabel = t(`status.${run.status}`, { defaultValue: run.status })
@@ -71,7 +72,7 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
           </span>
         </a>
         <div className='flex items-center gap-2'>
-          {canCancel && (
+          {canManage && canCancel && (
             <button
               type='button'
               onClick={() => onCancel(run.public_id)}
@@ -82,15 +83,17 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun }) => 
               {t('list.actions.cancel')}
             </button>
           )}
-          <button
-            type='button'
-            onClick={() => onRerun(run.public_id)}
-            className='flex items-center gap-1 rounded-lg border border-brand-500 px-2 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20'
-            data-testid={`rerun-${run.public_id}`}
-          >
-            <RotateCcw size={12} />
-            {t('list.actions.rerun')}
-          </button>
+          {canManage && (
+            <button
+              type='button'
+              onClick={() => onRerun(run.public_id)}
+              className='flex items-center gap-1 rounded-lg border border-brand-500 px-2 py-1 text-xs font-medium text-brand-500 transition-colors hover:bg-brand-900/20'
+              data-testid={`rerun-${run.public_id}`}
+            >
+              <RotateCcw size={12} />
+              {t('list.actions.rerun')}
+            </button>
+          )}
         </div>
       </div>
       <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-4'>
@@ -127,7 +130,7 @@ export const Backtests: React.FC = () => {
   const { t } = useTranslation('backtests')
   const { hasPermission } = useAuth()
   const readOnly = useIsReadOnly()
-  const canCreate = hasPermission(Permission.MANAGE_BACKTESTS) && !readOnly
+  const canManage = hasPermission(Permission.MANAGE_BACKTESTS) && !readOnly
   const [statusFilter, setStatusFilter] = useState<string>('')
   const [createOpen, setCreateOpen] = useState<boolean>(false)
   const { data, isLoading } = useBacktests(undefined, statusFilter || undefined)
@@ -136,12 +139,22 @@ export const Backtests: React.FC = () => {
 
   const runs = data?.payload ?? []
 
+  const runIfCanManage = (action: () => void): void => {
+    if (!hasPermission(Permission.MANAGE_BACKTESTS) || readOnly) return
+
+    action()
+  }
+
   const handleCancel = (publicId: string) => {
-    cancelMutation.mutate(publicId)
+    runIfCanManage(() => cancelMutation.mutate(publicId))
   }
 
   const handleRerun = (publicId: string) => {
-    rerunMutation.mutate(publicId)
+    runIfCanManage(() => rerunMutation.mutate(publicId))
+  }
+
+  const openCreateForm = (): void => {
+    runIfCanManage(() => setCreateOpen(true))
   }
 
   return (
@@ -149,10 +162,10 @@ export const Backtests: React.FC = () => {
       <div className='flex items-center justify-between'>
         <h2 className='text-xl font-semibold text-alpine-900'>{t('list.title')}</h2>
         <div className='flex items-center gap-2'>
-          {canCreate && (
+          {canManage && (
             <button
               type='button'
-              onClick={() => setCreateOpen(true)}
+              onClick={openCreateForm}
               className='rounded-md bg-brand-600 px-4 py-1 text-sm font-medium text-white hover:bg-brand-700'
               data-testid='new-backtest'
             >
@@ -197,13 +210,14 @@ export const Backtests: React.FC = () => {
                 run={run}
                 onCancel={handleCancel}
                 onRerun={handleRerun}
+                canManage={canManage}
               />
             ))}
           </div>
         )}
       </div>
       <BacktestCreateForm
-        open={createOpen}
+        open={createOpen && canManage}
         onClose={() => setCreateOpen(false)}
         onSuccess={runPublicId => {
           globalThis.location.hash = `#backtests/${runPublicId}${currentHashQuery()}`

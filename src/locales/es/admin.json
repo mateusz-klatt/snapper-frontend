@@ -7,11 +7,11 @@
     "title": "Permisos de rol",
     "viewer": {
       "label": "Observador",
-      "description": "Acceso de solo lectura al Resumen y a los Datos de mercado. No puede gestionar procesos, estrategias ni la configuración del sistema."
+      "description": "Visibilidad completa de operador en modo solo lectura sobre cuentas, carteras y portafolios, señales, decisiones de IA, pérdidas y ganancias, backtests, estrategias, procesos y estado del sistema. No puede realizar acciones operativas."
     },
     "operator": {
       "label": "Operador",
-      "description": "Todos los permisos del Observador más operaciones de trading, ejecución de estrategias, gestión de procesos y monitorización del estado del sistema."
+      "description": "Toda la visibilidad del Observador más controles de trading, posiciones, estrategias, procesos, backtests e integración de IA."
     },
     "admin": {
       "label": "Administrador",

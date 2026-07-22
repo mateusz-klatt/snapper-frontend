@@ -11,6 +11,11 @@ const mockMutation = {
   isPending: false,
 }
 const mockUseIsReadOnly = vi.fn()
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
 
 vi.mock('../../hooks/queries/ai-delegates', () => ({
   useCreateAiDelegate: () => mockMutation,
@@ -60,6 +65,7 @@ async function fillLabelAndAdvance(label: string): Promise<void> {
 describe('CreateDelegateWizard', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
     mockUseIsReadOnly.mockReturnValue(false)
     mockMutation.isPending = false
     mockMutation.mutateAsync.mockReset()
@@ -70,6 +76,14 @@ describe('CreateDelegateWizard', () => {
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     expect(screen.getByText('1. Identity')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled()
+  })
+
+  it('does not expose delegate creation without manage permission', () => {
+    mockHasPermission.mockReturnValue(false)
+    render(<CreateDelegateWizard open onClose={vi.fn()} />)
+
+    expect(screen.queryByText('1. Identity')).not.toBeInTheDocument()
+    expect(mockMutation.mutateAsync).not.toHaveBeenCalled()
   })
 
   it('advances identity → scope-and-caps → review → submit → done', async () => {
@@ -418,7 +432,12 @@ describe('CreateDelegateWizard', () => {
     await act(async () => {
       await user.type(labelInput, 'alpha')
     })
-    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled()
+    const nextButton = screen.getByRole('button', { name: 'Next' })
+
+    expect(nextButton).toBeDisabled()
+    nextButton.removeAttribute('disabled')
+    await user.click(nextButton)
+    expect(screen.getByText('1. Identity')).toBeInTheDocument()
   })
 
   it('Next button on scope-and-caps disabled when read-only', async () => {
@@ -439,6 +458,26 @@ describe('CreateDelegateWizard', () => {
     await act(async () => {
       await user.click(screen.getByRole('button', { name: 'Next' }))
     })
-    expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled()
+    const nextButton = screen.getByRole('button', { name: 'Next' })
+
+    expect(nextButton).toBeDisabled()
+    nextButton.removeAttribute('disabled')
+    await user.click(nextButton)
+    expect(screen.queryByRole('heading', { name: /Review & create/ })).not.toBeInTheDocument()
+  })
+
+  it('rechecks manage permission before submitting an already-reviewed delegate', async () => {
+    const user = userEvent.setup()
+
+    render(<CreateDelegateWizard open onClose={vi.fn()} />)
+    await fillLabelAndAdvance('alpha-desk')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    const createButton = screen.getByRole('button', { name: /Create delegate/ })
+
+    mockHasPermission.mockReturnValue(false)
+    await user.click(createButton)
+
+    expect(mockMutation.mutateAsync).not.toHaveBeenCalled()
+    expect(screen.queryByText(/Save these credentials now/)).not.toBeInTheDocument()
   })
 })

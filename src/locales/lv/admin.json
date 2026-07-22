@@ -7,11 +7,11 @@
     "title": "Lomu atļaujas",
     "viewer": {
       "label": "Skatītājs",
-      "description": "Tikai lasīšanas piekļuve pārskatam un tirgus datiem. Nevar pārvaldīt procesus, stratēģijas vai sistēmas iestatījumus."
+      "description": "Pilnīga operatora tikai lasīšanas redzamība kontiem, makiem un portfeļiem, signāliem, MI lēmumiem, peļņai un zaudējumiem, atpakaļtestiem, stratēģijām, procesiem un sistēmas stāvoklim. Nevar veikt operatīvas darbības."
     },
     "operator": {
       "label": "Operators",
-      "description": "Visas skatītāja atļaujas, kā arī tirdzniecības operācijas, stratēģiju izpilde, procesu pārvaldība un sistēmas veselības uzraudzība."
+      "description": "Visa Skatītāja redzamība, kā arī tirdzniecības, pozīciju, stratēģiju, procesu, atpakaļtestu un MI integrācijas vadība."
     },
     "admin": {
       "label": "Administrators",

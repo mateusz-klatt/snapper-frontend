@@ -14,7 +14,6 @@ describe('ProtectedRoute', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: false,
       user: null,
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn(),
     } as never)
@@ -30,7 +29,6 @@ describe('ProtectedRoute', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: false,
       user: null,
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn(),
     } as never)
@@ -46,7 +44,6 @@ describe('ProtectedRoute', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'viewer' },
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn(),
     } as never)
@@ -57,43 +54,10 @@ describe('ProtectedRoute', () => {
     )
     expect(screen.getByText('Protected Content')).toBeInTheDocument()
   })
-  it('shows access denied when role requirement not met', () => {
-    vi.mocked(stores.useAuth).mockReturnValue({
-      isAuthenticated: true,
-      user: { username: 'testuser', role: 'viewer' },
-      hasRole: vi.fn().mockReturnValue(false),
-      hasPermission: vi.fn(),
-      canAccess: vi.fn(),
-    } as never)
-    render(
-      <ProtectedRoute requiredRole='admin'>
-        <div>Protected Content</div>
-      </ProtectedRoute>
-    )
-    expect(screen.getByText('Access Denied')).toBeInTheDocument()
-    expect(screen.getByText(/need admin access or higher/i)).toBeInTheDocument()
-    expect(screen.getByText('viewer')).toBeInTheDocument()
-  })
-  it('renders children when role requirement met', () => {
-    vi.mocked(stores.useAuth).mockReturnValue({
-      isAuthenticated: true,
-      user: { username: 'testuser', role: 'admin' },
-      hasRole: vi.fn().mockReturnValue(true),
-      hasPermission: vi.fn(),
-      canAccess: vi.fn(),
-    } as never)
-    render(
-      <ProtectedRoute requiredRole='admin'>
-        <div>Protected Content</div>
-      </ProtectedRoute>
-    )
-    expect(screen.getByText('Protected Content')).toBeInTheDocument()
-  })
   it('shows insufficient permissions when permission requirement not met', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'viewer' },
-      hasRole: vi.fn(),
       hasPermission: vi.fn().mockReturnValue(false),
       canAccess: vi.fn(),
     } as never)
@@ -109,7 +73,6 @@ describe('ProtectedRoute', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'admin' },
-      hasRole: vi.fn(),
       hasPermission: vi.fn().mockReturnValue(true),
       canAccess: vi.fn(),
     } as never)
@@ -124,7 +87,6 @@ describe('ProtectedRoute', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'viewer' },
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn().mockReturnValue(false),
     } as never)
@@ -140,7 +102,6 @@ describe('ProtectedRoute', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'admin' },
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess: vi.fn().mockReturnValue(true),
     } as never)
@@ -151,30 +112,12 @@ describe('ProtectedRoute', () => {
     )
     expect(screen.getByText('Protected Content')).toBeInTheDocument()
   })
-  it('checks role requirement with hasRole function', () => {
-    const hasRole = vi.fn().mockReturnValue(true)
-
-    vi.mocked(stores.useAuth).mockReturnValue({
-      isAuthenticated: true,
-      user: { username: 'testuser', role: 'admin' },
-      hasRole,
-      hasPermission: vi.fn(),
-      canAccess: vi.fn(),
-    } as never)
-    render(
-      <ProtectedRoute requiredRole='operator'>
-        <div>Protected Content</div>
-      </ProtectedRoute>
-    )
-    expect(hasRole).toHaveBeenCalledWith('operator')
-  })
   it('checks permission requirement with hasPermission function', () => {
     const hasPermission = vi.fn().mockReturnValue(true)
 
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'admin' },
-      hasRole: vi.fn(),
       hasPermission,
       canAccess: vi.fn(),
     } as never)
@@ -191,7 +134,6 @@ describe('ProtectedRoute', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'admin' },
-      hasRole: vi.fn(),
       hasPermission: vi.fn(),
       canAccess,
     } as never)
@@ -202,28 +144,21 @@ describe('ProtectedRoute', () => {
     )
     expect(canAccess).toHaveBeenCalledWith('settings')
   })
-  it('applies multiple requirements together', () => {
-    const hasRole = vi.fn().mockReturnValue(true)
+  it('applies permission and resource requirements together', () => {
     const hasPermission = vi.fn().mockReturnValue(true)
     const canAccess = vi.fn().mockReturnValue(true)
 
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: true,
       user: { username: 'testuser', role: 'admin' },
-      hasRole,
       hasPermission,
       canAccess,
     } as never)
     render(
-      <ProtectedRoute
-        requiredRole='admin'
-        requiredPermission={'write:data' as never}
-        resource='settings'
-      >
+      <ProtectedRoute requiredPermission={'write:data' as never} resource='settings'>
         <div>Protected Content</div>
       </ProtectedRoute>
     )
-    expect(hasRole).toHaveBeenCalledWith('admin')
     expect(hasPermission).toHaveBeenCalledWith('write:data')
     expect(canAccess).toHaveBeenCalledWith('settings')
     expect(screen.getByText('Protected Content')).toBeInTheDocument()

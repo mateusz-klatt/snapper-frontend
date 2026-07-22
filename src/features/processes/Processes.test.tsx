@@ -39,6 +39,11 @@ const mockStopProcessMutate = vi.fn()
 const mockPatchDesiredStateMutate = vi.fn()
 const mockPatchDesiredStateMutateAsync = vi.fn()
 const mockCreateProcessConfig = vi.fn()
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
 
 vi.mock('../../hooks/queries/processes', () => ({
   useConfiguredProcesses: vi.fn(() => ({
@@ -96,6 +101,7 @@ const renderWithProviders = (ui: ReactNode) => {
 describe('Processes', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
     mockPatchDesiredStateMutate.mockReset()
     mockPatchDesiredStateMutateAsync.mockReset()
     mockPatchDesiredStateMutateAsync.mockReturnValue(new Promise(() => {}))
@@ -2489,6 +2495,74 @@ describe('Processes', () => {
     expect(screen.getAllByRole('button', { name: /stop/i }).length).toBeGreaterThan(0)
     expect(screen.getByText('00000000…')).toBeTruthy()
     expect(screen.getByText('Executor_kraken')).toBeTruthy()
+  })
+  it('keeps processes visible but disables controls without manage:processes', async () => {
+    mockHasPermission.mockReturnValue(false)
+    const items = [
+      makeConfiguredProcess({
+        name: 'viewer_visible_service',
+        kind: 'instance',
+        running: false,
+        enabled: true,
+        class_path: 'snapper.viewer_visible_service',
+        method: 'main',
+        parameters: {},
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+
+    await screen.findByText('viewer_visible_service')
+    const startButton = screen.getByRole('button', { name: /^start$/i })
+
+    expect(startButton).toBeDisabled()
+    fireEvent.click(startButton)
+    expect(mockStartProcessMutate).not.toHaveBeenCalled()
+    expect(mockStopProcessMutate).not.toHaveBeenCalled()
+    expect(mockPatchDesiredStateMutateAsync).not.toHaveBeenCalled()
+  })
+  it('rechecks manage:processes when an already-rendered control is invoked', async () => {
+    const items = [
+      makeConfiguredProcess({
+        name: 'permission_revoked_service',
+        kind: 'instance',
+        running: false,
+        enabled: true,
+        class_path: 'snapper.permission_revoked_service',
+        method: 'main',
+        parameters: {},
+        lifecycle: 'long_running',
+        role: 'core',
+        tags: [],
+        is_one_shot: false,
+      }),
+    ]
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: makeListEnvelope('configured_processes', items),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Processes />)
+    await screen.findByText('permission_revoked_service')
+    const startButton = screen.getByRole('button', { name: /^start$/i })
+
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(startButton)
+
+    expect(screen.queryByText('Execution Mode:')).not.toBeInTheDocument()
+    expect(mockStartProcessMutate).not.toHaveBeenCalled()
   })
   it('renders Wallet Instance with null wallet_public_id falling back to "unknown"', async () => {
     const items = [

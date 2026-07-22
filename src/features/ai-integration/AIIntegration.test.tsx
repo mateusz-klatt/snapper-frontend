@@ -17,6 +17,11 @@ const mockUseAiDelegate = vi.fn<() => AiDelegateQueryShape>(() => ({
   isLoading: false,
 }))
 const mockUseIsReadOnly = vi.fn()
+const mockHasPermission = vi.fn((_permission: string) => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
 
 vi.mock('../../hooks/queries/ai-delegates', () => ({
   useAiDelegates: () => mockUseAiDelegates(),
@@ -76,6 +81,7 @@ const mkListResponse = (payload: DelegateRead[]): DelegateListResponse => ({
 describe('AIIntegration', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
     mockUseIsReadOnly.mockReturnValue(false)
     mockUseAiDelegates.mockReturnValue({ data: undefined, isLoading: false })
   })
@@ -135,6 +141,23 @@ describe('AIIntegration', () => {
     expect(screen.getByText('Active')).toBeInTheDocument()
   })
 
+  it('keeps delegate list and detail readable but hides mutations without manage permission', () => {
+    const delegate = mkDelegate()
+
+    mockHasPermission.mockImplementation(permission => permission === 'read:ai_integration')
+    mockUseFeatureFlags.mockReturnValue({ isEnabled: true, isLoading: false })
+    mockUseAiDelegates.mockReturnValue({ data: mkListResponse([delegate]), isLoading: false })
+    mockUseAiDelegate.mockReturnValue({ data: { payload: delegate }, isLoading: false })
+    renderWithProviders(<AIIntegration />)
+
+    expect(screen.getByText('Alpha')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Create delegate/ })).not.toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: /View delegate Alpha/ }))
+    expect(screen.getByRole('heading', { name: 'Alpha' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Update caps/ })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Revoke/ })).not.toBeInTheDocument()
+  })
+
   it('marks_revoked_delegate_rows', () => {
     mockUseFeatureFlags.mockReturnValue({ isEnabled: true, isLoading: false })
     mockUseAiDelegates.mockReturnValue({
@@ -171,7 +194,12 @@ describe('AIIntegration', () => {
     mockUseIsReadOnly.mockReturnValue(true)
     mockUseAiDelegates.mockReturnValue({ data: mkListResponse([]), isLoading: false })
     renderWithProviders(<AIIntegration />)
-    expect(screen.getByRole('button', { name: /Create delegate/ })).toBeDisabled()
+    const createButton = screen.getByRole('button', { name: /Create delegate/ })
+
+    expect(createButton).toBeDisabled()
+    createButton.removeAttribute('disabled')
+    fireEvent.click(createButton)
+    expect(screen.queryByRole('heading', { name: 'Create AI delegate' })).not.toBeInTheDocument()
   })
 
   it('opens_wizard_modal_when_create_clicked', () => {

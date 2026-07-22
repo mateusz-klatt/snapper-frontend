@@ -11,6 +11,8 @@ import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import type { DelegateRead } from '../../types/api'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 
 export function AIIntegration(): React.ReactElement {
   const { isEnabled, isLoading } = useFeatureFlags()
@@ -53,6 +55,8 @@ function EnabledShell(): React.ReactElement {
   const { t } = useTranslation('aiIntegration')
   const delegatesQuery = useAiDelegates()
   const readOnly = useIsReadOnly()
+  const { hasPermission } = useAuth()
+  const canManage = hasPermission(Permission.MANAGE_AI_INTEGRATION)
   const [wizardOpen, setWizardOpen] = useState(false)
   const [detailPublicId, setDetailPublicId] = useState<string | null>(null)
 
@@ -68,9 +72,11 @@ function EnabledShell(): React.ReactElement {
           <h1 className='text-2xl font-bold'>{t('page.title')}</h1>
           <p className='text-sm text-muted-500'>{t('page.subtitle')}</p>
         </div>
-        <Button variant='primary' onClick={() => setWizardOpen(true)} disabled={readOnly}>
-          {t('page.createDelegate')}
-        </Button>
+        {canManage && (
+          <Button variant='primary' onClick={() => setWizardOpen(true)} disabled={readOnly}>
+            {t('page.createDelegate')}
+          </Button>
+        )}
       </header>
 
       <DelegateList
@@ -79,7 +85,7 @@ function EnabledShell(): React.ReactElement {
         onSelect={setDetailPublicId}
       />
 
-      <CreateDelegateWizard open={wizardOpen} onClose={() => setWizardOpen(false)} />
+      <CreateDelegateWizard open={wizardOpen && canManage} onClose={() => setWizardOpen(false)} />
     </div>
   )
 }

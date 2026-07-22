@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown, ChevronUp, Shield, Users, Eye } from 'lucide-react'
-import { RESOURCE_ACCESS } from '../../types/permissions.generated'
+import {
+  RESOURCE_PERMISSIONS,
+  ROLE_PERMISSIONS,
+  type Permission,
+} from '../../types/permissions.generated'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import UserManagement from './UserManagement/UserManagement'
 import ScopeGrantManagement from './ScopeGrantManagement/ScopeGrantManagement'
@@ -20,19 +24,40 @@ const TAB_KEYS = [
   'settings',
 ] as const
 
+type MatrixRole = 'viewer' | 'operator' | 'admin'
+type MatrixResource = (typeof TAB_KEYS)[number]
+
+const roleCanAccessResource = (role: MatrixRole, resource: MatrixResource): boolean => {
+  const requirements = RESOURCE_PERMISSIONS[resource] as readonly Permission[]
+
+  if (requirements.length === 0) return true
+  const rolePermissions = ROLE_PERMISSIONS[role]
+
+  return requirements.some(permission => rolePermissions.includes(permission))
+}
+
+const ACCESS_MARKS = [
+  { className: 'text-muted-400', symbol: '—' },
+  { className: 'text-accent-600', symbol: '✓' },
+] as const
+
+function AccessMark({ granted }: Readonly<{ granted: boolean }>): React.ReactElement {
+  const mark = ACCESS_MARKS[Number(granted) as 0 | 1]
+
+  return <span className={mark.className}>{mark.symbol}</span>
+}
+
 export const Admin: React.FC = () => {
   const readOnly = useIsReadOnly()
   const [showRoleInfo, setShowRoleInfo] = useState(false)
   const { t } = useTranslation('admin')
 
   const rolePermissions = TAB_KEYS.map(tabId => {
-    const roles = RESOURCE_ACCESS[tabId] as readonly string[]
-
     return {
       resource: t(`rolePermissions.resources.${tabId}`),
-      viewer: roles.includes('viewer'),
-      operator: roles.includes('operator'),
-      admin: roles.includes('admin'),
+      viewer: roleCanAccessResource('viewer', tabId),
+      operator: roleCanAccessResource('operator', tabId),
+      admin: roleCanAccessResource('admin', tabId),
     }
   })
 
@@ -111,21 +136,13 @@ export const Admin: React.FC = () => {
                     <tr key={row.resource} className='border-b border-dark-600'>
                       <td className='py-2 px-3 text-alpine-900'>{row.resource}</td>
                       <td className='py-2 px-3 text-center'>
-                        {row.viewer ? (
-                          <span className='text-accent-600'>&#10003;</span>
-                        ) : (
-                          <span className='text-muted-400'>&#8212;</span>
-                        )}
+                        <AccessMark granted={row.viewer} />
                       </td>
                       <td className='py-2 px-3 text-center'>
-                        {row.operator ? (
-                          <span className='text-accent-600'>&#10003;</span>
-                        ) : (
-                          <span className='text-muted-400'>&#8212;</span>
-                        )}
+                        <AccessMark granted={row.operator} />
                       </td>
                       <td className='py-2 px-3 text-center'>
-                        <span className='text-accent-600'>&#10003;</span>
+                        <AccessMark granted={row.admin} />
                       </td>
                     </tr>
                   ))}

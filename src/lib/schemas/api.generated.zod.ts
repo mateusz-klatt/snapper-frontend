@@ -1111,6 +1111,47 @@ export const PairedLegExposureSchema = _PairedLegExposureRawSchema as unknown as
   Components['schemas']['PairedLegExposure']
 >
 
+const _PermissionRawSchema = z.enum([
+  'read:market_data',
+  'read:market_views',
+  'submit:market_view',
+  'submit:ai_review_decision',
+  'read:orders',
+  'create:orders',
+  'cancel:orders',
+  'read:positions',
+  'manage:positions',
+  'read:account_state',
+  'read:strategies',
+  'read:signals',
+  'start:strategies',
+  'stop:strategies',
+  'configure:strategies',
+  'read:system_status',
+  'manage:runtime_diagnostics',
+  'read:processes',
+  'manage:processes',
+  'read:ai_reviews',
+  'read:ai_integration',
+  'manage:ai_integration',
+  'configure:system',
+  'manage:users',
+  'read:wallet_credentials',
+  'manage:wallet_credentials',
+  'manage:scope_grants',
+  'impersonate:operator',
+  'read:backtests',
+  'create:backtest_comparisons',
+  'manage:backtests',
+  'read:notifications',
+  'manage:notification_devices',
+  'manage:paired_execution',
+])
+
+export const PermissionSchema = _PermissionRawSchema as unknown as z.ZodType<
+  Components['schemas']['Permission']
+>
+
 const _PnlAttributionOriginRawSchema = z.enum(['manual', 'plan', 'system', 'unattributed'])
 
 export const PnlAttributionOriginSchema = _PnlAttributionOriginRawSchema as unknown as z.ZodType<
@@ -2067,41 +2108,6 @@ const _ZmqConfigRawSchema = z
 
 export const ZmqConfigSchema = _ZmqConfigRawSchema as unknown as z.ZodType<
   Components['schemas']['ZmqConfig']
->
-
-const _PermissionRawSchema = z.enum([
-  'read:market_data',
-  'read:market_views',
-  'submit:market_view',
-  'submit:ai_review_decision',
-  'read:orders',
-  'create:orders',
-  'cancel:orders',
-  'read:positions',
-  'manage:positions',
-  'read:account_state',
-  'read:strategies',
-  'read:signals',
-  'start:strategies',
-  'stop:strategies',
-  'configure:strategies',
-  'read:system_status',
-  'manage:processes',
-  'configure:system',
-  'manage:users',
-  'read:wallet_credentials',
-  'manage:wallet_credentials',
-  'manage:scope_grants',
-  'impersonate:operator',
-  'read:backtests',
-  'manage:backtests',
-  'read:notifications',
-  'manage:notification_devices',
-  'manage:paired_execution',
-])
-
-export const PermissionSchema = _PermissionRawSchema as unknown as z.ZodType<
-  Components['schemas']['Permission']
 >
 
 const _RefreshTokenPayloadRawSchema = z
@@ -3095,6 +3101,30 @@ export const PairedGroupIncidentSchema = _PairedGroupIncidentRawSchema as unknow
   Components['schemas']['PairedGroupIncident']
 >
 
+const _LoginBodyRawSchema = z
+  .object({
+    username: z.string(),
+    password: z.string(),
+    remember_me: z.boolean().optional(),
+    permissions: z.array(PermissionSchema).nullable().optional(),
+  })
+  .strict()
+
+export const LoginBodySchema = _LoginBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginBody']
+>
+
+const _ResearcherCreateBodyRawSchema = z
+  .object({
+    label: z.string().min(1).max(44),
+    permissions: z.array(PermissionSchema).nullable().optional(),
+  })
+  .strict()
+
+export const ResearcherCreateBodySchema = _ResearcherCreateBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['ResearcherCreateBody']
+>
+
 const _PnlAttributionContributionDataRawSchema = z
   .object({
     origin: PnlAttributionOriginSchema,
@@ -3737,6 +3767,8 @@ const _UserProfileRawSchema = z
     primary_operator_public_id: z.string().nullable().optional(),
     active_wallet_public_id: z.string().nullable().optional(),
     default_language: z.string().nullable().optional(),
+    effective_permissions: z.array(PermissionSchema),
+    delegate_public_id: z.string().nullable().optional(),
   })
   .strict()
 
@@ -3887,30 +3919,6 @@ const _ZmqHealthDataRawSchema = z
 
 export const ZmqHealthDataSchema = _ZmqHealthDataRawSchema as unknown as z.ZodType<
   Components['schemas']['ZmqHealthData']
->
-
-const _LoginBodyRawSchema = z
-  .object({
-    username: z.string(),
-    password: z.string(),
-    remember_me: z.boolean().optional(),
-    permissions: z.array(PermissionSchema).nullable().optional(),
-  })
-  .strict()
-
-export const LoginBodySchema = _LoginBodyRawSchema as unknown as z.ZodType<
-  Components['schemas']['LoginBody']
->
-
-const _ResearcherCreateBodyRawSchema = z
-  .object({
-    label: z.string().min(1).max(44),
-    permissions: z.array(PermissionSchema).nullable().optional(),
-  })
-  .strict()
-
-export const ResearcherCreateBodySchema = _ResearcherCreateBodyRawSchema as unknown as z.ZodType<
-  Components['schemas']['ResearcherCreateBody']
 >
 
 const _RefreshTokenRequestRawSchema = z
@@ -4562,6 +4570,39 @@ export const PairedGroupTerminalizeResponseSchema =
     Components['schemas']['PairedGroupTerminalizeResponse']
   >
 
+const _LoginRequestRawSchema = z
+  .object({
+    type: z.literal('login_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: LoginBodySchema,
+  })
+  .strict()
+
+export const LoginRequestSchema = _LoginRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['LoginRequest']
+>
+
+const _ResearcherCreateRequestRawSchema = z
+  .object({
+    type: z.literal('researcher_create_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ResearcherCreateBodySchema,
+  })
+  .strict()
+
+export const ResearcherCreateRequestSchema =
+  _ResearcherCreateRequestRawSchema as unknown as z.ZodType<
+    Components['schemas']['ResearcherCreateRequest']
+  >
+
 const _PnlTimelineMarkerDataRawSchema = z.union([
   PnlFillMarkerDataSchema,
   PnlSignalMarkerDataSchema,
@@ -4942,39 +4983,6 @@ const _ZmqHealthResponseRawSchema = z
 export const ZmqHealthResponseSchema = _ZmqHealthResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['ZmqHealthResponse']
 >
-
-const _LoginRequestRawSchema = z
-  .object({
-    type: z.literal('login_request').optional(),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: LoginBodySchema,
-  })
-  .strict()
-
-export const LoginRequestSchema = _LoginRequestRawSchema as unknown as z.ZodType<
-  Components['schemas']['LoginRequest']
->
-
-const _ResearcherCreateRequestRawSchema = z
-  .object({
-    type: z.literal('researcher_create_request').optional(),
-    sequence_id: z.number().int(),
-    public_id: z.string(),
-    timestamp: z.iso.datetime(),
-    session_id: z.string(),
-    topic: z.string().nullable().optional(),
-    payload: ResearcherCreateBodySchema,
-  })
-  .strict()
-
-export const ResearcherCreateRequestSchema =
-  _ResearcherCreateRequestRawSchema as unknown as z.ZodType<
-    Components['schemas']['ResearcherCreateRequest']
-  >
 
 const _EgressHealthResponseRawSchema = z
   .object({
@@ -6255,6 +6263,7 @@ export type OrderData = Components['schemas']['OrderData']
 export type OrphanSweepResultData = Components['schemas']['OrphanSweepResultData']
 export type PairedHaltInfo = Components['schemas']['PairedHaltInfo']
 export type PairedLegExposure = Components['schemas']['PairedLegExposure']
+export type Permission = Components['schemas']['Permission']
 export type PnlAttributionOrigin = Components['schemas']['PnlAttributionOrigin']
 export type PnlFillMarkerData = Components['schemas']['PnlFillMarkerData']
 export type PnlFxRateSourceData = Components['schemas']['PnlFxRateSourceData']
@@ -6319,7 +6328,6 @@ export type WsTokenData = Components['schemas']['WsTokenData']
 export type ZmqBridgeStats = Components['schemas']['ZmqBridgeStats']
 export type ZmqComponents = Components['schemas']['ZmqComponents']
 export type ZmqConfig = Components['schemas']['ZmqConfig']
-export type Permission = Components['schemas']['Permission']
 export type RefreshTokenPayload = Components['schemas']['RefreshTokenPayload']
 export type UpdateAuthMeBody = Components['schemas']['UpdateAuthMeBody']
 export type DeactivateUserBody = Components['schemas']['DeactivateUserBody']
@@ -6389,6 +6397,8 @@ export type OperatorResponse = Components['schemas']['OperatorResponse']
 export type OrderListResponse = Components['schemas']['OrderListResponse']
 export type OrphanSweepResponse = Components['schemas']['OrphanSweepResponse']
 export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
+export type LoginBody = Components['schemas']['LoginBody']
+export type ResearcherCreateBody = Components['schemas']['ResearcherCreateBody']
 export type PnlAttributionContributionData = Components['schemas']['PnlAttributionContributionData']
 export type PnlAiDecisionMarkerData = Components['schemas']['PnlAiDecisionMarkerData']
 export type PnlIncompletenessReasonData = Components['schemas']['PnlIncompletenessReasonData']
@@ -6439,8 +6449,6 @@ export type WalletResponse = Components['schemas']['WalletResponse']
 export type WsTokenResponse = Components['schemas']['WsTokenResponse']
 export type WsStatsData = Components['schemas']['WsStatsData']
 export type ZmqHealthData = Components['schemas']['ZmqHealthData']
-export type LoginBody = Components['schemas']['LoginBody']
-export type ResearcherCreateBody = Components['schemas']['ResearcherCreateBody']
 export type RefreshTokenRequest = Components['schemas']['RefreshTokenRequest']
 export type UpdateAuthMeRequest = Components['schemas']['UpdateAuthMeRequest']
 export type DeactivateUserRequest = Components['schemas']['DeactivateUserRequest']
@@ -6480,6 +6488,8 @@ export type JsonObject = Components['schemas']['JsonObject']
 export type MarketDataCoverageResponse = Components['schemas']['MarketDataCoverageResponse']
 export type PairedExecutionIncident = Components['schemas']['PairedExecutionIncident']
 export type PairedGroupTerminalizeResponse = Components['schemas']['PairedGroupTerminalizeResponse']
+export type LoginRequest = Components['schemas']['LoginRequest']
+export type ResearcherCreateRequest = Components['schemas']['ResearcherCreateRequest']
 export type PnlTimelineMarkerData = Components['schemas']['PnlTimelineMarkerData']
 export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']
 export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']
@@ -6505,8 +6515,6 @@ export type CreateUserRequest = Components['schemas']['CreateUserRequest']
 export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
 export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
-export type LoginRequest = Components['schemas']['LoginRequest']
-export type ResearcherCreateRequest = Components['schemas']['ResearcherCreateRequest']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
 export type AdminAiReviewItem = Components['schemas']['AdminAiReviewItem']

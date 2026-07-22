@@ -7,11 +7,11 @@
     "title": "Permessi dei ruoli",
     "viewer": {
       "label": "Osservatore",
-      "description": "Accesso in sola lettura a Panoramica e Dati di mercato. Non può gestire processi, strategie o impostazioni di sistema."
+      "description": "Visibilità completa da operatore in sola lettura su conti, wallet e portafogli, segnali, decisioni IA, profitti e perdite, backtest, strategie, processi e stato del sistema. Non può eseguire azioni operative."
     },
     "operator": {
       "label": "Operatore",
-      "description": "Tutti i permessi dell'Osservatore più operazioni di trading, esecuzione delle strategie, gestione dei processi e monitoraggio della salute del sistema."
+      "description": "Tutta la visibilità dell’Osservatore più i controlli di trading, posizioni, strategie, processi, backtest e integrazione IA."
     },
     "admin": {
       "label": "Admin",

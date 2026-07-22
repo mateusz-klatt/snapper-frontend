@@ -7,6 +7,9 @@ import {
 } from '../../hooks/queries/backtests'
 import { useAllTerminalRuns } from './hooks/useAllTerminalRuns'
 import { currentHashQuery } from '../../lib/hash/currentHashQuery'
+import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 import type { BacktestCompareBody, BacktestRunData } from '../../types/api'
 
 interface Props {
@@ -36,15 +39,20 @@ const formatOptionLabel = (t: TFunction<'backtests'>, run: BacktestRunData): str
  */
 export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
   const { t } = useTranslation('backtests')
+  const { hasPermission } = useAuth()
+  const readOnly = useIsReadOnly()
+  const canCreateComparison = hasPermission(Permission.CREATE_BACKTEST_COMPARISONS) && !readOnly
   const isTerminal = TERMINAL_STATUSES.has(currentRun.status)
   const configHash = currentRun.config_hash ?? null
   const sameConfigQuery = useBacktestRunsByConfigHash(
-    isTerminal ? configHash : null,
+    isTerminal && canCreateComparison ? configHash : null,
     SAME_CONFIG_LIMIT
   )
   const [showAllToggled, setShowAllToggled] = useState(false)
   const showAll = configHash === null ? true : showAllToggled
-  const allRunsQuery = useAllTerminalRuns({ enabled: isTerminal && showAll })
+  const allRunsQuery = useAllTerminalRuns({
+    enabled: isTerminal && showAll && canCreateComparison,
+  })
   const createCompare = useCreateBacktestComparison()
   const [pickedOther, setPickedOther] = useState<string>('')
   const [clientError, setClientError] = useState<string | null>(null)
@@ -65,6 +73,8 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
     : t('compare.launcher.source.sameConfig')
   const autoPairCandidate = sameConfigCandidates[0]
 
+  if (!canCreateComparison) return null
+
   if (!isTerminal) {
     return (
       <div className='rounded-lg border border-dark-600 bg-alpine-50 p-3 text-sm text-muted-500'>
@@ -74,6 +84,8 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
   }
 
   const submit = (mode: 'auto' | 'manual', other: BacktestRunData) => {
+    if (!hasPermission(Permission.CREATE_BACKTEST_COMPARISONS) || readOnly) return
+
     setClientError(null)
     const body: BacktestCompareBody =
       mode === 'auto'

@@ -44,6 +44,36 @@ describe('StrategyCard', () => {
     expect(mockOnRestart).toHaveBeenCalledTimes(1)
   })
 
+  it('does not substitute Start for a missing Stop action on a running strategy', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_start_only'
+        running={true}
+        autoStartEnabled={true}
+        mode='thread'
+        onStart={mockOnStart}
+      />
+    )
+
+    expect(screen.queryByRole('button', { name: /Start START ONLY strategy/i })).toBeNull()
+    expect(screen.queryByRole('button', { name: /Stop START ONLY strategy/i })).toBeNull()
+  })
+
+  it('does not substitute Stop for a missing Start action on a stopped strategy', () => {
+    renderWithMocks(
+      <StrategyCard
+        name='strategy_stop_only'
+        running={false}
+        autoStartEnabled={false}
+        mode='thread'
+        onStop={mockOnStop}
+      />
+    )
+
+    expect(screen.queryByRole('button', { name: /Start STOP ONLY strategy/i })).toBeNull()
+    expect(screen.queryByRole('button', { name: /Stop STOP ONLY strategy/i })).toBeNull()
+  })
+
   it('shows Restart for a remote enabled strategy even when stopped (parked recovery)', () => {
     renderWithMocks(
       <StrategyCard

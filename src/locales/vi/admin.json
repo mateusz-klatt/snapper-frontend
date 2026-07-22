@@ -7,11 +7,11 @@
     "title": "Quyền theo vai trò",
     "viewer": {
       "label": "Người xem",
-      "description": "Quyền chỉ đọc đối với Tổng quan và Dữ liệu thị trường. Không thể quản lý tiến trình, chiến lược hoặc cài đặt hệ thống."
+      "description": "Khả năng quan sát đầy đủ ở cấp Người vận hành, chỉ đọc, đối với tài khoản, ví và danh mục, tín hiệu, quyết định AI, lãi lỗ, backtest, chiến lược, tiến trình và tình trạng hệ thống. Không thể thực hiện thao tác vận hành."
     },
     "operator": {
       "label": "Người vận hành",
-      "description": "Bao gồm toàn bộ quyền của Người xem, cộng thêm vận hành giao dịch, thực thi chiến lược, quản lý tiến trình và giám sát sức khỏe hệ thống."
+      "description": "Toàn bộ khả năng quan sát của Người xem, cộng thêm quyền điều khiển giao dịch, vị thế, chiến lược, tiến trình, backtest và tích hợp AI."
     },
     "admin": {
       "label": "Quản trị viên",

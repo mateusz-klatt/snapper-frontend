@@ -14,34 +14,47 @@ import type {
   DelegateCapsUpdateBody,
 } from '../../types/api'
 import { queryKeys } from './keys'
+import { Permission } from '../../types/permissions.generated'
+
+const permissionDenied = (permission: string): Error =>
+  new Error(`Permission denied: ${permission} required`)
 
 export const useAiDelegates = () => {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, hasPermission } = useAuth()
+  const canRead = hasPermission(Permission.READ_AI_INTEGRATION)
 
   return useQuery({
     queryKey: queryKeys.aiDelegates(),
     queryFn: () => listAiDelegates(),
-    enabled: isAuthenticated,
+    enabled: isAuthenticated && canRead,
     throwOnError: false,
   })
 }
 
 export const useAiDelegate = (publicId: string | null) => {
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, hasPermission } = useAuth()
+  const canRead = hasPermission(Permission.READ_AI_INTEGRATION)
 
   return useQuery({
     queryKey: queryKeys.aiDelegate(publicId ?? ''),
     queryFn: () => getAiDelegate(publicId as string),
-    enabled: isAuthenticated && !!publicId,
+    enabled: isAuthenticated && canRead && !!publicId,
     throwOnError: false,
   })
 }
 
 export const useCreateAiDelegate = () => {
   const queryClient = useQueryClient()
+  const { hasPermission } = useAuth()
 
   return useMutation<DelegateCreatedResponse, Error, DelegateCreateBody>({
-    mutationFn: body => createAiDelegate(body),
+    mutationFn: body => {
+      if (!hasPermission(Permission.MANAGE_AI_INTEGRATION)) {
+        throw permissionDenied(Permission.MANAGE_AI_INTEGRATION)
+      }
+
+      return createAiDelegate(body)
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.aiDelegates() })
     },
@@ -51,9 +64,16 @@ export const useCreateAiDelegate = () => {
 
 export const useUpdateAiDelegateCaps = () => {
   const queryClient = useQueryClient()
+  const { hasPermission } = useAuth()
 
   return useMutation<DelegateResponse, Error, { publicId: string; body: DelegateCapsUpdateBody }>({
-    mutationFn: ({ publicId, body }) => updateAiDelegateCaps(publicId, body),
+    mutationFn: ({ publicId, body }) => {
+      if (!hasPermission(Permission.MANAGE_AI_INTEGRATION)) {
+        throw permissionDenied(Permission.MANAGE_AI_INTEGRATION)
+      }
+
+      return updateAiDelegateCaps(publicId, body)
+    },
     onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.aiDelegates() })
       queryClient.invalidateQueries({ queryKey: queryKeys.aiDelegate(variables.publicId) })
@@ -63,9 +83,16 @@ export const useUpdateAiDelegateCaps = () => {
 
 export const useDeactivateAiDelegate = () => {
   const queryClient = useQueryClient()
+  const { hasPermission } = useAuth()
 
   return useMutation<DelegateResponse, Error, string>({
-    mutationFn: publicId => deactivateAiDelegate(publicId),
+    mutationFn: publicId => {
+      if (!hasPermission(Permission.MANAGE_AI_INTEGRATION)) {
+        throw permissionDenied(Permission.MANAGE_AI_INTEGRATION)
+      }
+
+      return deactivateAiDelegate(publicId)
+    },
     onSuccess: (_data, publicId) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.aiDelegates() })
       queryClient.invalidateQueries({ queryKey: queryKeys.aiDelegate(publicId) })

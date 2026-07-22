@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useAuth } from '../../stores/auth'
 import { useChangePassword } from '../../hooks/queries/users'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { Permission } from '../../types/permissions.generated'
 import { Modal } from '../ui/Modal'
 
 interface UserProfileProps {
@@ -20,11 +21,16 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
   const [passwordError, setPasswordError] = useState('')
   const [passwordSuccess, setPasswordSuccess] = useState('')
   const [isChangingPassword, setIsChangingPassword] = useState(false)
-  const { user, logout, isLoading } = useAuth()
+  const { user, logout, isLoading, hasPermission } = useAuth()
   const changePasswordMutation = useChangePassword()
   const { t } = useTranslation('auth')
 
   if (!user) return null
+
+  const hasFullAdministration = hasPermission(Permission.MANAGE_USERS)
+  const hasTradingOperations = hasPermission(Permission.CREATE_ORDERS)
+  const hasStrategyExecution = hasPermission(Permission.START_STRATEGIES)
+  const hasMarketDataAccess = hasPermission(Permission.READ_MARKET_DATA)
 
   const handleLogout = async () => {
     try {
@@ -151,16 +157,18 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
             <div className='px-4 py-2 text-sm text-muted-600'>
               <div className='font-medium mb-1'>{t('profile.permissionsLabel')}</div>
               <div className='text-xs space-y-1'>
-                {user.role === 'admin' && (
+                {hasFullAdministration && (
                   <div className='text-loss-600'>• {t('profile.fullAdmin')}</div>
                 )}
-                {(user.role === 'admin' || user.role === 'operator') && (
-                  <>
-                    <div className='text-brand-600'>• {t('profile.tradingOperations')}</div>
-                    <div className='text-brand-600'>• {t('profile.strategyExecution')}</div>
-                  </>
+                {hasTradingOperations && (
+                  <div className='text-brand-600'>• {t('profile.tradingOperations')}</div>
                 )}
-                <div className='text-accent-600'>• {t('profile.marketDataAccess')}</div>
+                {hasStrategyExecution && (
+                  <div className='text-brand-600'>• {t('profile.strategyExecution')}</div>
+                )}
+                {hasMarketDataAccess && (
+                  <div className='text-accent-600'>• {t('profile.marketDataAccess')}</div>
+                )}
               </div>
             </div>
             <div className='border-t border-dark-600 mt-2 pt-2'>

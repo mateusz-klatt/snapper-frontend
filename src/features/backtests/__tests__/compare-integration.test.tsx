@@ -31,7 +31,6 @@ vi.mock('../../../stores/auth', () => ({
     isAuthenticated: true,
     user: { username: 'test', role: 'admin' },
     canAccess: () => true,
-    hasRole: () => true,
     hasPermission: () => true,
   })),
 }))
