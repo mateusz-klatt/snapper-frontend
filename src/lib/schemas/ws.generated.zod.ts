@@ -31,6 +31,19 @@ export const AccountStateChangedEventDataSchema = z
   })
   .strict()
 
+export const AiResearchRequestFrameDataSchema = z
+  .object({
+    type: z.literal('ai_research.request'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    round_public_id: z.string(),
+    trigger: z.string(),
+  })
+  .strict()
+
 export const AiReviewCapsViolationFrameDataSchema = z
   .object({
     type: z.literal('ai_review.caps_violation'),
