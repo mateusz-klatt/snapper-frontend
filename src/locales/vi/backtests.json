@@ -168,8 +168,8 @@
       "slippageBpsLabel": "Trượt giá (bps)",
       "commissionBpsLabel": "Phí hoa hồng (bps)",
       "executionModeLabel": "Chế độ thực thi",
-      "executionModeDirectDb": "Direct DB",
-      "executionModeZmqReplay": "ZMQ replay",
+      "executionModeDirectDb": "DB trực tiếp",
+      "executionModeZmqReplay": "Phát lại ZMQ",
       "targetExchangeLabel": "Sàn thực thi mục tiêu",
       "targetExchangeNone": "Không (đơn sàn)",
       "targetExchangeHelp": "Tùy chọn — dành cho lượt chạy chéo tài sản; để trống cho đơn sàn"

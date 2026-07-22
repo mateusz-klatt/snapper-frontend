@@ -61,7 +61,7 @@
     "title": "比較",
     "headingFull": "回測比較",
     "loading": "正在載入比較…",
-    "vs": "vs",
+    "vs": "對比",
     "runLabel": "運行 {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "指標",
@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
         "delta": "Δ"
       }
     },
@@ -168,7 +168,7 @@
       "slippageBpsLabel": "滑點（bps）",
       "commissionBpsLabel": "手續費（bps）",
       "executionModeLabel": "執行模式",
-      "executionModeDirectDb": "Direct DB",
+      "executionModeDirectDb": "直接存取 DB",
       "executionModeZmqReplay": "ZMQ 回放",
       "targetExchangeLabel": "目標執行交易所",
       "targetExchangeNone": "無（單一交易所）",

@@ -20,10 +20,10 @@
   },
   "processStatus": {
     "title": "Processtatus",
-    "feeds": "Feeds",
+    "feeds": "Dataflöden",
     "strategies": "Strategier",
     "executors": "Exekverare",
-    "brokers": "Brokers"
+    "brokers": "Mäklare"
   },
   "portfolio": {
     "title": "Portföljsammanfattning",

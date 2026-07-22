@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Оберіть гаманець...",
     "selectWalletPlaceholder": "Виберіть гаманець...",
     "walletLabel": "Гаманець",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (демо)",
     "unknownError": "Невідома помилка",
     "dash": "-"
   },
@@ -98,7 +98,7 @@
         "passwordPlaceholder": "Введіть пароль",
         "newPassword": "Новий пароль",
         "newPasswordPlaceholder": "Введіть новий пароль",
-        "email": "Email",
+        "email": "Електронна пошта",
         "emailPlaceholder": "Введіть email",
         "role": "Роль",
         "accountActive": "Обліковий запис активний",
@@ -280,16 +280,16 @@
         "api_key": "API-ключ",
         "api_secret": "API-секрет",
         "private_key_pem": "Приватний ключ (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID клієнта",
+        "client_secret": "Секрет клієнта",
+        "refresh_token": "Токен оновлення",
         "initial_balance": "Початковий баланс"
       },
       "credentialTypes": {
         "api_key_secret": "API-ключ + секрет",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Демо"
       },
       "validation": {
         "walletRequired": "Гаманець обов'язковий",

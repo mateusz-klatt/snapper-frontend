@@ -31,7 +31,7 @@
     "orderId": "ID da ordem",
     "leverage": "Alavancagem",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "SOMENTE REDUÇÃO",
     "cancel": "Cancelar",
     "cancelling": "Cancelando…",
     "cancelAriaLabel": "Cancelar ordem {{orderId}}"
@@ -62,7 +62,7 @@
       "quantity": "Quantidade",
       "price": "Preço",
       "leverage": "Alavancagem",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "Somente redução",
       "created": "Criada"
     },
     "executions": {
@@ -104,11 +104,11 @@
       "stop_limit": "Stop Limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Ao vivo",
+      "paper": "Simulação"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — somente dados de mercado",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (simulação)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

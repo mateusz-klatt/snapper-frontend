@@ -44,7 +44,7 @@
     "title": "การรันแบ็คเทสต์",
     "fields": {
       "strategy": "กลยุทธ์",
-      "instrument": "Instrument",
+      "instrument": "ตราสาร",
       "status": "สถานะ",
       "period": "ช่วงเวลา",
       "crossAsset": "การระบุที่มาแบบ cross-asset",
@@ -62,7 +62,7 @@
     "headingFull": "การเปรียบเทียบแบ็คเทสต์",
     "loading": "กำลังโหลดการเปรียบเทียบ…",
     "vs": "เทียบกับ",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "runLabel": "รัน {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "เมตริก",
       "equityOverlay": "เส้นทุนซ้อนทับ",
@@ -113,8 +113,8 @@
       "empty": "ไม่มีเมตริกที่เปรียบเทียบได้ — ทั้งสอง run ไม่มีค่าที่บันทึกไว้",
       "columns": {
         "name": "เมตริก",
-        "runA": "Run A",
-        "runB": "Run B",
+        "runA": "รัน A",
+        "runB": "รัน B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,8 +122,8 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "รัน A",
+        "runB": "รัน B"
       }
     }
   },
@@ -156,7 +156,7 @@
       "strategyPlaceholder": "— เลือกกลยุทธ์ —",
       "strategyLoading": "กำลังโหลดกลยุทธ์…",
       "strategyError": "โหลดกลยุทธ์ไม่สำเร็จ",
-      "instrumentLabel": "Instrument",
+      "instrumentLabel": "ตราสาร",
       "instrumentPlaceholder": "เช่น BTC-USD",
       "instrumentHelp": "Public id ของ instrument ที่จะแบ็คเทสต์",
       "exchangeLabel": "Exchange (แหล่ง feed)",
@@ -165,11 +165,11 @@
       "startDateLabel": "วันที่เริ่มต้น",
       "endDateLabel": "วันที่สิ้นสุด",
       "initialCashLabel": "เงินสดตั้งต้น",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "ความคลาดเคลื่อนของราคา (bps)",
       "commissionBpsLabel": "ค่าคอมมิชชัน (bps)",
       "executionModeLabel": "โหมดการดำเนินการ",
-      "executionModeDirectDb": "Direct DB",
-      "executionModeZmqReplay": "ZMQ replay",
+      "executionModeDirectDb": "DB โดยตรง",
+      "executionModeZmqReplay": "เล่นซ้ำผ่าน ZMQ",
       "targetExchangeLabel": "Exchange เป้าหมายสำหรับการดำเนินการ",
       "targetExchangeNone": "ไม่มี (exchange เดียว)",
       "targetExchangeHelp": "ไม่บังคับ — สำหรับการรันแบบ cross-asset; เว้นว่างไว้สำหรับ exchange เดียว"

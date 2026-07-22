@@ -62,7 +62,7 @@
   "jsonEditor": {
     "formEditor": "Editor formulára",
     "rawEditor": "Editor Raw JSON",
-    "rawJson": "Raw JSON",
+    "rawJson": "Nespracovaný JSON",
     "switchToForm": "Prepnúť na formulár",
     "importToForm": "Importovať do formulára",
     "parseError": "Chyba parsovania: {{message}}",

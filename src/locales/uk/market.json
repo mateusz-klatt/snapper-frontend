@@ -78,11 +78,11 @@
     "chipAriaLabel": "Статистика пари з {{symbol}} на {{exchange}}: Pearson {{pearson}}, p-значення {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Час:",
+    "live": "У реальному часі",
+    "sliderAriaLabel": "Переміщення часовою шкалою ринку",
     "presets": {
-      "live": "Live",
+      "live": "У реальному часі",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

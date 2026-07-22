@@ -50,21 +50,21 @@
     "statusAriaLabel": "สถานะ: {{status}}",
     "dataLagAriaLabel": "ความหน่วงข้อมูล: {{seconds}} วินาที",
     "lagBadge": "ความหน่วง: {{seconds}}s",
-    "feedLag": "Feed lag: {{ms}}ms",
+    "feedLag": "ความหน่วงของ Feed: {{ms}}ms",
     "heartbeatAge": "อายุ HB: {{seconds}}s",
     "metrics": {
       "status": "สถานะ",
       "dataLag": "ความหน่วงข้อมูล",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "ฮาร์ตบีต",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
     "showDetails": "แสดงรายละเอียด",
     "hideDetails": "ซ่อนรายละเอียด",
-    "inputs": "Inputs ({{count}})",
-    "outputs": "Outputs ({{count}})",
-    "feedPublishers": "Feed Publishers ({{count}})",
+    "inputs": "อินพุต ({{count}})",
+    "outputs": "เอาต์พุต ({{count}})",
+    "feedPublishers": "ผู้เผยแพร่ Feed ({{count}})",
     "lastUpdate": "อัปเดตล่าสุด: {{time}}",
     "waiting": "กำลังรอ Heartbeat...",
     "startAriaLabel": "เริ่มกลยุทธ์ {{name}}",
@@ -86,9 +86,9 @@
       "unknown": "ไม่ทราบ — ไม่มีข้อมูล Heartbeat"
     },
     "healthShort": {
-      "healthy": "HEALTHY",
-      "warning": "WARNING",
-      "error": "ERROR"
+      "healthy": "ปกติ",
+      "warning": "คำเตือน",
+      "error": "ข้อผิดพลาด"
     },
     "backtest": "แบ็คเทสต์",
     "backtestAriaLabel": "แบ็คเทสต์กลยุทธ์ {{name}}",
@@ -118,7 +118,7 @@
     "executionModeThread": "Thread แบบฝัง",
     "executionModeProcess": "Process แบบแยก",
     "executionModeHelp": "Threads ใช้หน่วยความจำร่วมกัน ส่วน processes ให้การแยกส่วนที่เข้มงวดกว่า",
-    "flagsLabel": "Flags",
+    "flagsLabel": "แฟล็ก",
     "autostartLabel": "Autostart เมื่อเซิร์ฟเวอร์เริ่ม",
     "startImmediatelyLabel": "เริ่มทันทีหลังลงทะเบียน",
     "noteLabel": "หมายเหตุ (ไม่บังคับ)",

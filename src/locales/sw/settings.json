@@ -40,7 +40,7 @@
   },
   "addModal": {
     "title": "Ongeza Mpangilio Mpya",
-    "keyLabel": "Key",
+    "keyLabel": "Ufunguo",
     "valueLabel": "Thamani",
     "categoryLabel": "Kategoria",
     "descriptionLabel": "Maelezo",
@@ -62,7 +62,7 @@
   "jsonEditor": {
     "formEditor": "Kihariri cha Fomu",
     "rawEditor": "Kihariri cha Raw JSON",
-    "rawJson": "Raw JSON",
+    "rawJson": "JSON ghafi",
     "switchToForm": "Badilisha kwenda Fomu",
     "importToForm": "Ingiza kwenye Fomu",
     "parseError": "Hitilafu ya kuchanganua: {{message}}",
@@ -70,14 +70,14 @@
     "addItem": "Ongeza Kipengee",
     "remove": "Ondoa",
     "typeHint": {
-      "array": "(array)",
-      "object": "(object)",
-      "string": "(string)",
-      "number": "(number)",
-      "boolean": "(boolean)",
+      "array": "(safu)",
+      "object": "(objekti)",
+      "string": "(mfuatano)",
+      "number": "(nambari)",
+      "boolean": "(mantiki)",
       "bigint": "(bigint)",
-      "function": "(function)",
-      "symbol": "(symbol)",
+      "function": "(kitendakazi)",
+      "symbol": "(alama)",
       "undefined": "(undefined)",
       "null": "(null)"
     }

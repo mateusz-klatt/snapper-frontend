@@ -36,7 +36,7 @@
     "positions": "Vị thế",
     "instrumentsCount": "{{count}} công cụ",
     "empty": "Không có dữ liệu vị thế",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Dữ liệu chưa đầy đủ — một số vị thế không có giá tham chiếu hoặc giá vào lệnh dùng được; tổng chỉ bao gồm các thành phần đã biết"
   },
   "signals": {
     "title": "Tín hiệu gần đây",

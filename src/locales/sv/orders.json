@@ -31,13 +31,13 @@
     "orderId": "Order-ID",
     "leverage": "Hävstång",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "ENDAST MINSKNING",
     "cancel": "Makulera",
     "cancelling": "Makulerar…",
     "cancelAriaLabel": "Makulera order {{orderId}}"
   },
   "executionCard": {
-    "orderNumber": "Order #{{orderId}}",
+    "orderNumber": "Order nr {{orderId}}",
     "filled": "FYLLD",
     "orderLabel": "Order {{orderId}}",
     "size": "Storlek",
@@ -104,11 +104,11 @@
       "stop_limit": "Stop-limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Skarpt",
+      "paper": "Simulerat"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — endast marknadsdata",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

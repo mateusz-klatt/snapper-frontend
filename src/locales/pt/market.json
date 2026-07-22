@@ -5,7 +5,7 @@
   "controls": {
     "exchange": "Bolsa:",
     "instrument": "Instrumento:",
-    "timeframe": "Timeframe:",
+    "timeframe": "Intervalo:",
     "selectExchange": "Selecionar exchange",
     "searchInstrument": "Buscar instrumento..."
   },
@@ -78,15 +78,15 @@
     "chipAriaLabel": "Estatísticas do par com {{symbol}} em {{exchange}}: Pearson {{pearson}}, valor p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Tempo:",
+    "live": "Ao vivo",
+    "sliderAriaLabel": "Navegar pela linha do tempo do mercado",
     "presets": {
-      "live": "Live",
+      "live": "Ao vivo",
       "h1": "-1h",
       "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "w1": "-1 sem.",
+      "mo1": "-1 mês"
     }
   }
 }

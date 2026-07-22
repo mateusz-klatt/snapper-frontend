@@ -36,7 +36,7 @@
     "positions": "Poziții",
     "instrumentsCount": "{{count}} instrumente",
     "empty": "Nu există date disponibile despre poziții",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Date incomplete — unor poziții le lipsește un preț de referință sau de intrare utilizabil; totalurile includ numai componentele cunoscute"
   },
   "signals": {
     "title": "Semnale recente",
@@ -59,7 +59,7 @@
     "statusRunning": "Rulează",
     "statusStopped": "Oprit",
     "statusDisabled": "Dezactivat",
-    "containerTotal": "Total MEM {{value}}",
+    "containerTotal": "Memorie totală {{value}}",
     "cpuTooltip": "Utilizarea CPU poate depăși 100% pe mai multe nuclee",
     "metricsNa": "Nu există CPU/memorie separată pe proces; rulează în cadrul procesului (mod thread) sau nu rulează",
     "managedOnly": "Doar procesele acestui container",

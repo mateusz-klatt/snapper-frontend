@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}m",
     "uptimeHours": "{{hours}}h {{minutes}}m",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Test historik {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "Kohë pune",
     "exitCode": "Kodi i daljes: {{code}}",
     "service": "shërbim",
-    "backtest": "backtest"
+    "backtest": "test historik"
   },
   "dbStats": {
     "title": "Statistikat e bazës së të dhënave",
@@ -107,11 +107,11 @@
     "pid": "PID",
     "statusValue": "Statusi: {{status}}",
     "uptime": "Kohë pune",
-    "threads": "Threads",
+    "threads": "Fije",
     "openFds": "FD të hapura",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
-    "throttled": "Throttled {{count}}×",
+    "throttled": "Kufizuar {{count}}×",
     "memory": "Memorie",
     "saturation": "Ngopje {{percent}}",
     "asyncioTasks": "Detyra Asyncio",
@@ -121,62 +121,62 @@
     "liveConns": "Lidhje live: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objekte: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Fije %",
     "networkConns": "Lidhje rrjeti",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Aktive",
     "tracemallocIdle": "Joaktive"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Gjendja e daljes së rrjetit",
+    "loading": "Duke ngarkuar gjendjen e daljes së rrjetit…",
+    "unavailable": "Gjendja e daljes së rrjetit nuk disponohet: {{message}}",
+    "fallbackError": "Ngarkimi i gjendjes së daljes së rrjetit dështoi.",
+    "enabled": "Aktivizuar",
+    "disabled": "Çaktivizuar",
+    "disabledMessage": "Grupi i daljeve është çaktivizuar; trafiku dalës po përdor rrugën e parazgjedhur të rrjetit.",
+    "fallbackWarning": "Paralajmërim: trafiku privat po kalon nga rruga rezervë VPN, jo nga dalja e drejtpërdrejtë.",
+    "noRoutes": "Nuk është konfiguruar asnjë rrugë daljeje.",
+    "anyExchange": "Të gjitha",
+    "none": "Asnjë",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Kontejnerët raportues",
+      "item": "{{container}} · {{age}} · rrugë: {{routeCount}}",
+      "stale": "· i vjetruar"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · parë së fundi {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "i panjohur",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Grupi",
+      "policy": "Politika e karantinës",
+      "fallbackRoute": "Rruga rezervë private",
+      "routes": "Rrugë"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Prit",
+      "raise": "Sinjalizo gabim"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "kind": "Lloj",
+      "region": "Rajon",
+      "exitIp": "IP e daljes",
+      "provider": "Ofrues",
+      "priority": "Përparësi",
+      "allowedExchanges": "Bursat e lejuara",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "Në përdorim",
+      "traffic": "Trafik",
+      "reservations": "Rezervime aktive",
+      "connections": "Lidhje"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "drejtpërdrejt",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktiv",
+      "quarantined": "Në karantinë",
+      "quarantinedSeconds": "Në karantinë ({{seconds}}s)",
+      "disabled": "Çaktivizuar"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "publik",
+      "private": "privat"
     }
   },
   "relativeAge": {

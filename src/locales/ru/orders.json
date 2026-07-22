@@ -104,11 +104,11 @@
       "stop_limit": "Стоп-лимитная"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Реальная торговля",
+      "paper": "Демо"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — только рыночные данные",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (демо)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

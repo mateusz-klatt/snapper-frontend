@@ -97,7 +97,7 @@
     "revoked": "Återkallad",
     "createdAt": "Skapad",
     "createdBy": "Skapad av (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "Publikt ID",
     "maxOpenOrders": "Max öppna ordrar",
     "maxDailyNotionalUsd": "Max dagligt nominellt USD-värde",
     "maxCancelsPerMinute": "Max makuleringar per minut",

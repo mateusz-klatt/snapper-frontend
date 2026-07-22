@@ -51,8 +51,8 @@
     "noParams": "ไม่ได้ตั้งค่าพารามิเตอร์"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "ทำงานครั้งเดียว",
+    "autoStart": "เริ่มอัตโนมัติ",
     "manual": "ด้วยตนเอง"
   },
   "actions": {

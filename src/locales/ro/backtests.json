@@ -45,7 +45,7 @@
     "fields": {
       "strategy": "Strategie",
       "instrument": "Instrument",
-      "status": "Status",
+      "status": "Stare",
       "period": "Perioadă",
       "crossAsset": "Atribuire cross-asset",
       "configHash": "Hash configurație"
@@ -61,11 +61,11 @@
     "title": "Comparați",
     "headingFull": "Comparație backtesturi",
     "loading": "Se încarcă comparația…",
-    "vs": "vs",
+    "vs": "vs.",
     "runLabel": "Rulare {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrici",
-      "equityOverlay": "Suprapunere equity",
+      "equityOverlay": "Suprapunerea curbelor de capital",
       "trades": "Tranzacții",
       "signals": "Semnale"
     },
@@ -131,7 +131,7 @@
     "waiting": "Se așteaptă progresul…",
     "candles": "{{done}} / {{total}} lumânări",
     "candlesNoTotal": "{{done}} lumânări",
-    "equity": "equity {{value}}",
+    "equity": "capital {{value}}",
     "signalsTrades": "{{signals}} semnale / {{trades}} tranzacții",
     "milestoneLine": "reper {{label}}",
     "milestone": {
@@ -165,7 +165,7 @@
       "startDateLabel": "Data de început",
       "endDateLabel": "Data de sfârșit",
       "initialCashLabel": "Capital inițial",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Deviație de preț (bps)",
       "commissionBpsLabel": "Comision (bps)",
       "executionModeLabel": "Mod de execuție",
       "executionModeDirectDb": "DB direct",

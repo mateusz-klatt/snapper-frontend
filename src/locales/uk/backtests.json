@@ -61,7 +61,7 @@
     "title": "Порівняти",
     "headingFull": "Порівняння бектестів",
     "loading": "Завантаження порівняння…",
-    "vs": "vs",
+    "vs": "проти",
     "runLabel": "Запуск {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Метрики",

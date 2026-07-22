@@ -38,11 +38,11 @@
       "ariaLabel": "Aktif cüzdan",
       "placeholder": "Cüzdan",
       "allWallets": "Tüm cüzdanlar",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktif operator",
-      "placeholder": "Operator",
+      "placeholder": "Operatör",
       "allOperators": "Tüm operatorler"
     },
     "timeTravel": {

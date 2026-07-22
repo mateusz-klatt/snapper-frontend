@@ -20,10 +20,10 @@
   },
   "processStatus": {
     "title": "Status dos processos",
-    "feeds": "Feeds",
+    "feeds": "Feeds de dados",
     "strategies": "Estratégias",
     "executors": "Executores",
-    "brokers": "Brokers"
+    "brokers": "Corretoras"
   },
   "portfolio": {
     "title": "Resumo da carteira",
@@ -36,7 +36,7 @@
     "positions": "Posições",
     "instrumentsCount": "{{count}} instrumentos",
     "empty": "Nenhum dado de posição disponível",
-    "incompleteValuation": "Dados incompletos — algumas posições não têm preço mark ou de entrada utilizável; os totais somam apenas componentes conhecidos"
+    "incompleteValuation": "Dados incompletos — algumas posições não têm preço de referência ou de entrada utilizável; os totais somam apenas componentes conhecidos"
   },
   "signals": {
     "title": "Sinais recentes",

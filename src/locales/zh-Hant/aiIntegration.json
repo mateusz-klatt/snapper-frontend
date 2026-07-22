@@ -97,7 +97,7 @@
     "revoked": "已撤銷",
     "createdAt": "建立時間",
     "createdBy": "建立者 (用戶 public_id)",
-    "publicId": "Public ID",
+    "publicId": "公開 ID",
     "maxOpenOrders": "最大未完成訂單數",
     "maxDailyNotionalUsd": "每日最大名義金額 USD",
     "maxCancelsPerMinute": "每分鐘最大撤單數",

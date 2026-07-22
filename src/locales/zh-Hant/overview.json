@@ -20,10 +20,10 @@
   },
   "processStatus": {
     "title": "進程狀態",
-    "feeds": "Feeds",
+    "feeds": "行情來源",
     "strategies": "策略",
     "executors": "執行器",
-    "brokers": "Brokers"
+    "brokers": "經紀商"
   },
   "portfolio": {
     "title": "投資組合摘要",

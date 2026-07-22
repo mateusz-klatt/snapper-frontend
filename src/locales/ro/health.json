@@ -36,7 +36,7 @@
     "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
-    "uptimeLabel": "Uptime",
+    "uptimeLabel": "Timp de funcționare",
     "exitCode": "Cod ieșire: {{code}}",
     "service": "serviciu",
     "backtest": "backtest"
@@ -55,13 +55,13 @@
       "current": "Curent",
       "closed": "Închis",
       "archivable": "Arhivabil",
-      "status": "Status"
+      "status": "Stare"
     },
     "stale": "învechit",
     "totalHint": "În PostgreSQL, Total este o estimare a planificatorului (precisă în limitele derivei autovacuum); exactă în SQLite."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "Container auxiliar pentru notificări",
     "loading": "Se încarcă metricile de notificări…",
     "unavailable": "Metricile de notificări nu sunt disponibile: {{message}}",
     "fallbackError": "Încărcarea metricilor de notificări a eșuat.",
@@ -90,7 +90,7 @@
       "archived": "Arhivate",
       "purged": "Șterse",
       "files": "Fișiere",
-      "status": "Status"
+      "status": "Stare"
     },
     "retainDays": "{{days}}z",
     "ok": "OK",
@@ -105,8 +105,8 @@
     "fallbackError": "Încărcarea metricilor de sănătate ale proceselor a eșuat.",
     "rawJson": "JSON brut",
     "pid": "PID",
-    "statusValue": "Status: {{status}}",
-    "uptime": "Uptime",
+    "statusValue": "Stare: {{status}}",
+    "uptime": "Timp de funcționare",
     "threads": "Threaduri",
     "openFds": "FD-uri deschise",
     "cpu": "CPU",
@@ -117,7 +117,7 @@
     "asyncioTasks": "Taskuri Asyncio",
     "asyncioActive": "{{count}} active",
     "asyncioPending": "+ {{count}} în așteptare",
-    "dbPool": "DB Pool",
+    "dbPool": "Grup de conexiuni DB",
     "liveConns": "Conexiuni live: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Obiecte: {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Inactiv"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Starea traficului de ieșire",
+    "loading": "Se încarcă starea traficului de ieșire…",
+    "unavailable": "Starea traficului de ieșire nu este disponibilă: {{message}}",
+    "fallbackError": "Încărcarea stării traficului de ieșire a eșuat.",
+    "enabled": "Activat",
+    "disabled": "Dezactivat",
+    "disabledMessage": "Grupul de rute de ieșire este dezactivat; traficul de ieșire utilizează ruta de rețea implicită.",
+    "fallbackWarning": "Avertisment: traficul privat utilizează ruta de rezervă VPN, nu ieșirea directă.",
+    "noRoutes": "Nu sunt configurate rute de ieșire.",
+    "anyExchange": "Toate",
+    "none": "Niciuna",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Containere care raportează",
+      "item": "{{container}} · {{age}} · rute: {{routeCount}}",
+      "stale": "· neactualizat"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ultima observare: {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "necunoscut",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Grup de rute",
+      "policy": "Politică de carantină",
+      "fallbackRoute": "Rută privată de rezervă",
+      "routes": "Rute"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Așteptare",
+      "raise": "Generare eroare"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Tip",
+      "region": "Regiune",
+      "exitIp": "IP de ieșire",
+      "provider": "Furnizor",
+      "priority": "Prioritate",
+      "allowedExchanges": "Burse permise",
+      "status": "Stare",
+      "inUse": "În utilizare",
+      "traffic": "Trafic",
+      "reservations": "Rezervări active",
+      "connections": "Conexiuni"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -190,10 +190,10 @@
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Activ",
+      "quarantined": "În carantină",
+      "quarantinedSeconds": "În carantină ({{seconds}}s)",
+      "disabled": "Dezactivat"
     },
     "trafficClass": {
       "public": "public",

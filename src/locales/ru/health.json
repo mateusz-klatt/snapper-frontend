@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}m",
     "uptimeHours": "{{hours}}h {{minutes}}m",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Бэктест {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Н/Д",
     "uptimeLabel": "Время работы",
     "exitCode": "Код выхода: {{code}}",
     "service": "сервис",
-    "backtest": "backtest"
+    "backtest": "бэктест"
   },
   "dbStats": {
     "title": "Статистика базы данных",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Простой"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Состояние исходящих маршрутов",
+    "loading": "Загрузка состояния исходящих маршрутов…",
+    "unavailable": "Состояние исходящих маршрутов недоступно: {{message}}",
+    "fallbackError": "Не удалось загрузить состояние исходящих маршрутов.",
+    "enabled": "Включён",
+    "disabled": "Отключён",
+    "disabledMessage": "Пул исходящих маршрутов отключён; исходящий трафик направляется по маршруту по умолчанию.",
+    "fallbackWarning": "Предупреждение: приватный трафик направлен через резервный VPN-маршрут, а не напрямую.",
+    "noRoutes": "Исходящие маршруты не настроены.",
+    "anyExchange": "Все",
+    "none": "Нет",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Контейнеры, передающие данные",
+      "item": "{{container}} · {{age}} · маршрутов: {{routeCount}}",
+      "stale": "· устаревшие данные"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · последняя активность {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "неизвестно",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Пул",
+      "policy": "Политика карантина",
+      "fallbackRoute": "Резервный маршрут приватного трафика",
+      "routes": "Маршруты"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Ожидать",
+      "raise": "Вызвать ошибку"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Тип",
+      "region": "Регион",
+      "exitIp": "Выходной IP-адрес",
+      "provider": "Провайдер",
+      "priority": "Приоритет",
+      "allowedExchanges": "Разрешённые биржи",
+      "status": "Статус",
+      "inUse": "Используется",
+      "traffic": "Трафик",
+      "reservations": "Активные резервирования",
+      "connections": "Подключения"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "прямой",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Активен",
+      "quarantined": "В карантине",
+      "quarantinedSeconds": "В карантине ({{seconds}}s)",
+      "disabled": "Отключён"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "публичный",
+      "private": "приватный"
     }
   },
   "relativeAge": {

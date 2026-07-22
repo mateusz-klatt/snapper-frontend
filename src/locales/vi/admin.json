@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Chọn một ví...",
     "selectWalletPlaceholder": "Chọn ví...",
     "walletLabel": "Ví",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (mô phỏng)",
     "unknownError": "Lỗi không xác định",
     "dash": "-"
   },
@@ -278,18 +278,18 @@
       },
       "fieldLabels": {
         "api_key": "Khóa API",
-        "api_secret": "API Secret",
+        "api_secret": "Khóa bí mật API",
         "private_key_pem": "Khóa riêng (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID ứng dụng khách",
+        "client_secret": "Mã bí mật ứng dụng khách",
+        "refresh_token": "Token làm mới",
         "initial_balance": "Số dư ban đầu"
       },
       "credentialTypes": {
         "api_key_secret": "Khóa API + Secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Mô phỏng"
       },
       "validation": {
         "walletRequired": "Bắt buộc chọn ví",

@@ -78,11 +78,11 @@
     "chipAriaLabel": "Statistikat e çiftit me {{symbol}} në {{exchange}}: Pearson {{pearson}}, vlera p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Koha:",
+    "live": "Drejtpërdrejt",
+    "sliderAriaLabel": "Lëviz në kohën e tregut",
     "presets": {
-      "live": "Live",
+      "live": "Drejtpërdrejt",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

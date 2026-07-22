@@ -56,7 +56,7 @@
       "status": "Статус",
       "dataLag": "Затримка даних",
       "dataLagValue": "{{ms}}мс",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Сигнал активності",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

@@ -78,11 +78,11 @@
     "chipAriaLabel": "与 {{exchange}} 上 {{symbol}} 的配对统计: Pearson {{pearson}}, p 值 {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "时间：",
+    "live": "实时",
+    "sliderAriaLabel": "拖动浏览市场时间",
     "presets": {
-      "live": "Live",
+      "live": "实时",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

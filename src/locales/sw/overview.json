@@ -20,10 +20,10 @@
   },
   "processStatus": {
     "title": "Hali ya Michakato",
-    "feeds": "Feeds",
+    "feeds": "Vyanzo vya data",
     "strategies": "Mikakati",
     "executors": "Watekelezaji",
-    "brokers": "Brokers"
+    "brokers": "Madalali"
   },
   "portfolio": {
     "title": "Muhtasari wa Portofolio",
@@ -36,7 +36,7 @@
     "positions": "Nafasi",
     "instrumentsCount": "Instrumenti {{count}}",
     "empty": "Hakuna data ya nafasi inayopatikana",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Data haijakamilika — baadhi ya nafasi hazina bei ya marejeleo au bei ya kuingia inayoweza kutumika; jumla inahusisha vipengele vinavyojulikana pekee"
   },
   "signals": {
     "title": "Ishara za Karibuni",

@@ -31,7 +31,7 @@
     "orderId": "ID ордера",
     "leverage": "Плече",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "ЛИШЕ ЗМЕНШЕННЯ",
     "cancel": "Скасувати",
     "cancelling": "Скасування…",
     "cancelAriaLabel": "Скасувати ордер {{orderId}}"
@@ -62,7 +62,7 @@
       "quantity": "Кількість",
       "price": "Ціна",
       "leverage": "Плече",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "Лише зменшення",
       "created": "Створено"
     },
     "executions": {
@@ -104,11 +104,11 @@
       "stop_limit": "Стоп-лімітний ордер"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Реальний",
+      "paper": "Демо"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — лише ринкові дані",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (демо)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

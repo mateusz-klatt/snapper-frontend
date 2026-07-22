@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "Yok",
-    "priceMarket": "Market",
+    "priceMarket": "Piyasa",
     "quantity": "Miktar",
     "price": "Fiyat",
     "created": "Oluşturuldu",
@@ -97,18 +97,18 @@
       "sell": "Satım"
     },
     "orderTypeOptions": {
-      "market": "Market",
+      "market": "Piyasa",
       "limit": "Limit",
       "stop": "Stop",
       "stopLimit": "Stop Limit",
       "stop_limit": "Stop Limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Canlı",
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — yalnızca piyasa verisi",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

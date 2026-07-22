@@ -54,7 +54,7 @@
     "side": "Сторона",
     "size": "Размер",
     "entryPrice": "Цена входа",
-    "markPrice": "Марк-цена",
+    "markPrice": "Маркировочная цена",
     "unrealizedPnl": "Нереализованная прибыль/убыток",
     "unrealizedFunding": "Фандинг"
   },

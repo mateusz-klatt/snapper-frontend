@@ -17,7 +17,7 @@
   "card": {
     "strength": "ความแรง",
     "price": "ราคา",
-    "exchange": "Exchange",
+    "exchange": "ตลาดซื้อขาย",
     "reason": "เหตุผล:",
     "noPrice": "N/A"
   },

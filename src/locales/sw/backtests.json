@@ -61,17 +61,17 @@
     "title": "Linganisha",
     "headingFull": "Ulinganisho wa backtest",
     "loading": "Inapakia ulinganisho…",
-    "vs": "vs",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "vs": "dhidi ya",
+    "runLabel": "Uendeshaji {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Vipimo",
       "equityOverlay": "Overlay ya equity",
-      "trades": "Trades",
+      "trades": "Miamala",
       "signals": "Ishara"
     },
     "pairingMode": {
-      "auto": "auto",
-      "manual": "manual"
+      "auto": "otomatiki",
+      "manual": "kwa mkono"
     },
     "errors": {
       "notFound": "Ulinganisho haukupatikana kwenye pochi ya sasa.",
@@ -113,8 +113,8 @@
       "empty": "Hakuna vipimo vinavyolinganishwa — run zote mbili hazikuwa na thamani zilizorekodiwa.",
       "columns": {
         "name": "Kipimo",
-        "runA": "Run A",
-        "runB": "Run B",
+        "runA": "Uendeshaji A",
+        "runB": "Uendeshaji B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,8 +122,8 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "Uendeshaji A",
+        "runB": "Uendeshaji B"
       }
     }
   },
@@ -131,7 +131,7 @@
     "waiting": "Inasubiri maendeleo…",
     "candles": "candles {{done}} / {{total}}",
     "candlesNoTotal": "candles {{done}}",
-    "equity": "equity {{value}}",
+    "equity": "thamani ya akaunti {{value}}",
     "signalsTrades": "{{signals}} ishara / {{trades}} trades",
     "milestoneLine": "hatua {{label}}",
     "milestone": {
@@ -165,11 +165,11 @@
       "startDateLabel": "Tarehe ya kuanza",
       "endDateLabel": "Tarehe ya mwisho",
       "initialCashLabel": "Mtaji wa awali",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Mkengeuko wa bei (bps)",
       "commissionBpsLabel": "Komisheni (bps)",
       "executionModeLabel": "Hali ya utekelezaji",
       "executionModeDirectDb": "DB ya moja kwa moja",
-      "executionModeZmqReplay": "ZMQ replay",
+      "executionModeZmqReplay": "Marudio ya ZMQ",
       "targetExchangeLabel": "Exchange lengwa ya utekelezaji",
       "targetExchangeNone": "Hakuna (exchange moja)",
       "targetExchangeHelp": "Hiari — kwa run za cross-asset; acha bila kuweka kwa exchange moja"

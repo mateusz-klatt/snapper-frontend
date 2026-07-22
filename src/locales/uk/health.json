@@ -33,7 +33,7 @@
     "uptimeMinutes": "{{minutes}} хв",
     "uptimeHours": "{{hours}} год {{minutes}} хв",
     "uptimeDays": "{{days}} д {{hours}} год",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Бектест {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Н/Д",
     "uptimeLabel": "Час роботи",
@@ -94,7 +94,7 @@
     },
     "retainDays": "{{days}} д",
     "ok": "OK",
-    "error": "error"
+    "error": "помилка"
   },
   "systemMetrics": {
     "disk": "Вільне місце на диску",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Простій"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Стан вихідного трафіку",
+    "loading": "Завантаження стану вихідного трафіку…",
+    "unavailable": "Стан вихідного трафіку недоступний: {{message}}",
+    "fallbackError": "Не вдалося завантажити стан вихідного трафіку.",
+    "enabled": "Увімкнено",
+    "disabled": "Вимкнено",
+    "disabledMessage": "Пул вихідних маршрутів вимкнено; вихідний трафік спрямовується стандартним мережевим маршрутом.",
+    "fallbackWarning": "Попередження: приватний трафік спрямовано через резервний VPN-маршрут, а не безпосередньо.",
+    "noRoutes": "Маршрути вихідного трафіку не налаштовано.",
+    "anyExchange": "Усі",
+    "none": "Немає",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Контейнери, що передають дані",
+      "item": "{{container}} · {{age}} · кількість маршрутів: {{routeCount}}",
+      "stale": "· дані застаріли"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · остання активність {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "невідомо",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Пул",
+      "policy": "Політика карантину",
+      "fallbackRoute": "Резервний маршрут приватного трафіку",
+      "routes": "Маршрути"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Очікувати",
+      "raise": "Викликати помилку"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Тип",
+      "region": "Регіон",
+      "exitIp": "Вихідна IP-адреса",
+      "provider": "Провайдер",
+      "priority": "Пріоритет",
+      "allowedExchanges": "Дозволені біржі",
+      "status": "Статус",
+      "inUse": "Використовується",
+      "traffic": "Трафік",
+      "reservations": "Активні резервування",
+      "connections": "З'єднання"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "прямий",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Активний",
+      "quarantined": "На карантині",
+      "quarantinedSeconds": "На карантині ({{seconds}}s)",
+      "disabled": "Вимкнений"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "публічний",
+      "private": "приватний"
     }
   },
   "relativeAge": {

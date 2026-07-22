@@ -18,7 +18,7 @@
       "create": "Novo backtest"
     },
     "fields": {
-      "timeframe": "Timeframe",
+      "timeframe": "Intervalo",
       "period": "Período",
       "initialCash": "Capital inicial",
       "id": "ID"
@@ -61,16 +61,16 @@
     "title": "Comparar",
     "headingFull": "Comparação de backtests",
     "loading": "Carregando comparação…",
-    "vs": "vs",
+    "vs": "vs.",
     "runLabel": "Execução {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Métricas",
       "equityOverlay": "Sobreposição de equity",
-      "trades": "Trades",
+      "trades": "Operações",
       "signals": "Sinais"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automático",
       "manual": "manual"
     },
     "errors": {
@@ -129,9 +129,9 @@
   },
   "progress": {
     "waiting": "Aguardando progresso…",
-    "candles": "{{done}} / {{total}} candles",
-    "candlesNoTotal": "{{done}} candles",
-    "equity": "equity {{value}}",
+    "candles": "{{done}} / {{total}} velas",
+    "candlesNoTotal": "{{done}} velas",
+    "equity": "patrimônio {{value}}",
     "signalsTrades": "{{signals}} sinais / {{trades}} trades",
     "milestoneLine": "marco {{label}}",
     "milestone": {
@@ -161,11 +161,11 @@
       "instrumentHelp": "ID público do instrumento a testar",
       "exchangeLabel": "Exchange (fonte do feed)",
       "exchangePlaceholder": "— Selecione uma exchange —",
-      "timeframeLabel": "Timeframe",
+      "timeframeLabel": "Intervalo",
       "startDateLabel": "Data inicial",
       "endDateLabel": "Data final",
       "initialCashLabel": "Capital inicial",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Derrapagem (bps)",
       "commissionBpsLabel": "Comissão (bps)",
       "executionModeLabel": "Modo de execução",
       "executionModeDirectDb": "DB direto",

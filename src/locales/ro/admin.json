@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Alegeți un portofel...",
     "selectWalletPlaceholder": "Selectați portofelul...",
     "walletLabel": "Portofel",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Eroare necunoscută",
     "dash": "-"
   },
@@ -62,7 +62,7 @@
       "columns": {
         "user": "Utilizator",
         "role": "Rol",
-        "status": "Status",
+        "status": "Stare",
         "createdAt": "Creat la",
         "actions": "Acțiuni"
       },
@@ -252,7 +252,7 @@
       "addCredential": "Adăugați credențială",
       "selectWalletPrompt": "Alegeți un portofel mai sus pentru a vedea credențialele sale.",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "Bursă",
         "type": "Tip",
         "label": "Etichetă",
         "createdAt": "Creat la",
@@ -269,7 +269,7 @@
       "title": "Adăugați credențială",
       "fields": {
         "wallet": "Portofel",
-        "exchange": "Exchange",
+        "exchange": "Bursă",
         "exchangePlaceholder": "ex. kraken",
         "credentialType": "Tip credențială",
         "label": "Etichetă (opțional)",
@@ -280,16 +280,16 @@
         "api_key": "Cheie API",
         "api_secret": "Secret API",
         "private_key_pem": "Cheie privată (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "ID client",
+        "client_secret": "Secret client",
+        "refresh_token": "Token de reîmprospătare",
         "initial_balance": "Sold inițial"
       },
       "credentialTypes": {
         "api_key_secret": "Cheie API + Secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Portofelul este obligatoriu",
@@ -308,7 +308,7 @@
     "rotate": {
       "title": "Schimbare credențiale",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "Bursă",
         "type": "Tip",
         "label": "Etichetă",
         "newLabel": "Etichetă nouă (opțional)",

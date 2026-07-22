@@ -78,11 +78,11 @@
     "chipAriaLabel": "Štatistiky páru s {{symbol}} na burze {{exchange}}: Pearson {{pearson}}, p-hodnota {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Čas:",
+    "live": "Naživo",
+    "sliderAriaLabel": "Posúvať čas trhu",
     "presets": {
-      "live": "Live",
+      "live": "Naživo",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

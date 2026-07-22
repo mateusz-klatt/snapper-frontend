@@ -97,7 +97,7 @@
     "revoked": "Opozvan",
     "createdAt": "Kreirano",
     "createdBy": "Kreirao (public_id korisnika)",
-    "publicId": "Public ID",
+    "publicId": "Javni ID",
     "maxOpenOrders": "Maks. otvorenih naloga",
     "maxDailyNotionalUsd": "Maks. dnevna nominalna vrednost u USD",
     "maxCancelsPerMinute": "Maks. otkazivanja po minuti",

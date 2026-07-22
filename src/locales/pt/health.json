@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}min",
     "uptimeHours": "{{hours}}h {{minutes}}min",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Teste retrospectivo {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Tempo ativo",
     "exitCode": "Código de saída: {{code}}",
     "service": "serviço",
-    "backtest": "backtest"
+    "backtest": "teste retrospectivo"
   },
   "dbStats": {
     "title": "Estatísticas do banco de dados",
@@ -107,7 +107,7 @@
     "pid": "PID",
     "statusValue": "Status: {{status}}",
     "uptime": "Tempo ativo",
-    "threads": "Threads",
+    "threads": "Nº de threads",
     "openFds": "FDs abertos",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
@@ -121,62 +121,62 @@
     "liveConns": "Conexões ativas: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Objetos: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Uso de threads",
     "networkConns": "Conexões de rede",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Ativo",
     "tracemallocIdle": "Ocioso"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Estado da saída de rede",
+    "loading": "Carregando o estado da saída de rede…",
+    "unavailable": "Estado da saída de rede indisponível: {{message}}",
+    "fallbackError": "Falha ao carregar o estado da saída de rede.",
+    "enabled": "Ativado",
+    "disabled": "Desativado",
+    "disabledMessage": "O pool de rotas de saída está desativado; o tráfego de saída usa o caminho de rede padrão.",
+    "fallbackWarning": "Aviso: o tráfego privado está usando a rota alternativa via VPN, e não a saída direta.",
+    "noRoutes": "Nenhuma rota de saída configurada.",
+    "anyExchange": "Todas",
+    "none": "Nenhuma",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Contêineres que enviam dados",
+      "item": "{{container}} · {{age}} · rotas: {{routeCount}}",
+      "stale": "· desatualizado"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · última atividade: {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "desconhecido",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Pool de saída",
+      "policy": "Política de quarentena",
+      "fallbackRoute": "Rota alternativa privada",
+      "routes": "Rotas"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Aguardar",
+      "raise": "Gerar exceção"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "kind": "Tipo",
+      "region": "Região",
+      "exitIp": "IP de saída",
+      "provider": "Provedor",
+      "priority": "Prioridade",
+      "allowedExchanges": "Exchanges permitidas",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "Em uso",
+      "traffic": "Tráfego",
+      "reservations": "Reservas ativas",
+      "connections": "Conexões"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "direta",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Ativo",
+      "quarantined": "Em quarentena",
+      "quarantinedSeconds": "Em quarentena ({{seconds}}s)",
+      "disabled": "Desativado"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "público",
+      "private": "privado"
     }
   },
   "relativeAge": {

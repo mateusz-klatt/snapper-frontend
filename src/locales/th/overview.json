@@ -22,8 +22,8 @@
     "title": "สถานะกระบวนการ",
     "feeds": "Feed",
     "strategies": "กลยุทธ์",
-    "executors": "Executors",
-    "brokers": "Brokers"
+    "executors": "ตัวดำเนินคำสั่ง",
+    "brokers": "โบรกเกอร์"
   },
   "portfolio": {
     "title": "สรุปพอร์ต",
@@ -34,9 +34,9 @@
     "unrealizedPnl": "P&L ที่ยังไม่รับรู้",
     "pnlPercent": "P&L %",
     "positions": "สถานะ",
-    "instrumentsCount": "{{count}} instruments",
+    "instrumentsCount": "{{count}} ตราสาร",
     "empty": "ไม่มีข้อมูลสถานะ",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "ข้อมูลไม่สมบูรณ์ — สถานะการถือครองบางรายการไม่มีราคาอ้างอิงหรือราคาเข้าที่ใช้งานได้ ยอดรวมจึงนับเฉพาะองค์ประกอบที่ทราบค่า"
   },
   "signals": {
     "title": "สัญญาณล่าสุด",

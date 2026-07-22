@@ -19,7 +19,7 @@
       "created": "Creat",
       "maxOpenOrders": "Ordine deschise max.",
       "maxDailyUsd": "USD zilnic max.",
-      "status": "Status",
+      "status": "Stare",
       "actions": "Acțiuni"
     },
     "status": {
@@ -92,7 +92,7 @@
     "save": "Salvați",
     "cancel": "Anulați",
     "tradingCaps": "Limite de trading",
-    "status": "Status",
+    "status": "Stare",
     "active": "Activ",
     "revoked": "Revocat",
     "createdAt": "Creat la",

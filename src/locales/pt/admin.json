@@ -14,14 +14,14 @@
       "description": "Toda a visibilidade do Visualizador mais controles de trading, posições, estratégias, processos, backtests e integração de IA."
     },
     "admin": {
-      "label": "Admin",
+      "label": "Administrador",
       "description": "Acesso completo ao sistema, incluindo gerenciamento de usuários, configurações do sistema, configuração de chaves API e todas as permissões de Operador."
     },
     "table": {
       "resource": "Recurso",
       "viewer": "Visualizador",
       "operator": "Operador",
-      "admin": "Admin"
+      "admin": "Administrador"
     },
     "resources": {
       "overview": "Visão geral",
@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Escolha uma carteira...",
     "selectWalletPlaceholder": "Selecionar carteira...",
     "walletLabel": "Carteira",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (simulação)",
     "unknownError": "Erro desconhecido",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "Chave API + Segredo",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Simulação"
       },
       "validation": {
         "walletRequired": "Carteira é obrigatória",

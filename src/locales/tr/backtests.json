@@ -61,7 +61,7 @@
     "title": "Karşılaştır",
     "headingFull": "Backtest karşılaştırması",
     "loading": "Karşılaştırma yükleniyor…",
-    "vs": "vs",
+    "vs": "ile",
     "runLabel": "Çalıştırma {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrikler",
@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
         "delta": "Δ"
       }
     },
@@ -131,7 +131,7 @@
     "waiting": "İlerleme bekleniyor…",
     "candles": "{{done}} / {{total}} mum",
     "candlesNoTotal": "{{done}} mum",
-    "equity": "equity {{value}}",
+    "equity": "özkaynak {{value}}",
     "signalsTrades": "{{signals}} sinyal / {{trades}} trade",
     "milestoneLine": "kilometre taşı {{label}}",
     "milestone": {

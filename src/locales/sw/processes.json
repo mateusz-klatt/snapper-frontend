@@ -47,13 +47,13 @@
     "badge": "kiolezo",
     "mode": "Hali:",
     "parameters": "Vigezo:",
-    "paramCount": "{{count}} parameter(s)",
+    "paramCount": "Vigezo: {{count}}",
     "noParams": "hakuna vigezo vilivyowekwa"
   },
   "badges": {
     "oneShot": "mara moja",
-    "autoStart": "auto-start",
-    "manual": "manual"
+    "autoStart": "kuanza kiotomatiki",
+    "manual": "ya mkono"
   },
   "actions": {
     "stopTitle": "Simamisha {{name}}",

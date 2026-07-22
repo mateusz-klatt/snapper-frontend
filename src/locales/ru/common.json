@@ -38,7 +38,7 @@
       "ariaLabel": "Активный кошелёк",
       "placeholder": "Кошелёк",
       "allWallets": "Все кошельки",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (демо)"
     },
     "operatorPicker": {
       "ariaLabel": "Активный оператор",
