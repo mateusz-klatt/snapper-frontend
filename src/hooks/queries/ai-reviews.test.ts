@@ -26,7 +26,8 @@ vi.mock('../../lib/api/ai-reviews', () => ({
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(() => ({
     isAuthenticated: true,
-    user: { public_id: 'user-default', role: 'admin' },
+    user: { public_id: 'user-default', role: 'viewer', delegate_public_id: null },
+    hasPermission: (permission: string) => permission === 'read:ai_reviews',
   })),
 }))
 
@@ -53,79 +54,86 @@ const createWrapperWithClient = () => {
   return { queryClient, wrapper }
 }
 
+const authFor = (
+  permissions: readonly string[],
+  delegatePublicId: string | null = null,
+  role: string = 'viewer'
+): ReturnType<typeof useAuth> =>
+  ({
+    isAuthenticated: true,
+    user: {
+      public_id: 'user-permission-test',
+      role,
+      delegate_public_id: delegatePublicId,
+    },
+    hasPermission: (permission: string) => permissions.includes(permission),
+  }) as unknown as ReturnType<typeof useAuth>
+
 describe('ai-reviews queries', () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
 
   describe('AI Reviews hooks', () => {
-    it('usePendingAiReviews stays disabled when caller is not an AI delegate', async () => {
-      vi.mocked(useAuth).mockReturnValueOnce({
-        isAuthenticated: true,
-        user: { role: 'operator', public_id: 'user-op-1' },
-      } as ReturnType<typeof useAuth>)
+    it('usePendingAiReviews stays disabled without READ_SIGNALS or delegate state', () => {
+      vi.mocked(useAuth).mockReturnValueOnce(authFor([], null, 'operator'))
       const { result } = renderHook(() => usePendingAiReviews(), { wrapper: createWrapper() })
 
       expect(result.current.isPending).toBe(true)
       expect(vi.mocked(listPendingAiReviews)).not.toHaveBeenCalled()
     })
-    it('useAiReviews stays disabled for an AI delegate caller', () => {
-      vi.mocked(useAuth).mockReturnValueOnce({
-        isAuthenticated: true,
-        user: { role: 'ai_delegate', public_id: 'user-del-1' },
-      } as ReturnType<typeof useAuth>)
+    it('usePendingAiReviews stays disabled when delegate state lacks READ_SIGNALS', () => {
+      vi.mocked(useAuth).mockReturnValueOnce(authFor([], 'delegate-1', 'ai_delegate'))
+      const { result } = renderHook(() => usePendingAiReviews(), { wrapper: createWrapper() })
+
+      expect(result.current.isPending).toBe(true)
+      expect(vi.mocked(listPendingAiReviews)).not.toHaveBeenCalled()
+    })
+    it('usePendingAiReviews stays disabled when READ_SIGNALS lacks delegate state', () => {
+      vi.mocked(useAuth).mockReturnValueOnce(authFor(['read:signals'], null, 'ai_delegate'))
+      const { result } = renderHook(() => usePendingAiReviews(), { wrapper: createWrapper() })
+
+      expect(result.current.isPending).toBe(true)
+      expect(vi.mocked(listPendingAiReviews)).not.toHaveBeenCalled()
+    })
+    it('useAiReviews stays disabled when READ_AI_REVIEWS is absent', () => {
+      vi.mocked(useAuth).mockReturnValueOnce(
+        authFor(['create:orders'], 'delegate-1', 'ai_delegate')
+      )
       const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
 
       expect(result.current.isPending).toBe(true)
       expect(vi.mocked(listAiReviews)).not.toHaveBeenCalled()
     })
-    it('useAiReviews fetches the decision list for an operator', async () => {
-      vi.mocked(useAuth).mockReturnValueOnce({
-        isAuthenticated: true,
-        user: { role: 'operator', public_id: 'user-op-2' },
-      } as ReturnType<typeof useAuth>)
+    it('useAiReviews fetches the decision list with READ_AI_REVIEWS', async () => {
+      vi.mocked(useAuth).mockReturnValueOnce(authFor(['read:ai_reviews'], null, 'viewer'))
       const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(vi.mocked(listAiReviews)).toHaveBeenCalledWith({ limit: 100 })
     })
 
-    it('useAiReviews fetches the decision list for an admin', async () => {
-      vi.mocked(useAuth).mockReturnValueOnce({
-        isAuthenticated: true,
-        user: { role: 'admin', public_id: 'user-adm-1' },
-      } as ReturnType<typeof useAuth>)
-      const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
-
-      await waitFor(() => expect(result.current.isSuccess).toBe(true))
-      expect(vi.mocked(listAiReviews)).toHaveBeenCalledWith({ limit: 100 })
-    })
-
-    it('useAiReviews stays disabled for a viewer', () => {
-      vi.mocked(useAuth).mockReturnValueOnce({
-        isAuthenticated: true,
-        user: { role: 'viewer', public_id: 'user-view-1' },
-      } as ReturnType<typeof useAuth>)
+    it('useAiReviews has no implicit admin bypass', () => {
+      vi.mocked(useAuth).mockReturnValueOnce(authFor([], null, 'admin'))
       const { result } = renderHook(() => useAiReviews(), { wrapper: createWrapper() })
 
       expect(result.current.isPending).toBe(true)
       expect(vi.mocked(listAiReviews)).not.toHaveBeenCalled()
     })
+
     it('usePendingAiReviews stays disabled when no user is authenticated', () => {
       vi.mocked(useAuth).mockReturnValueOnce({
         isAuthenticated: true,
         user: null,
+        hasPermission: () => true,
       } as unknown as ReturnType<typeof useAuth>)
       const { result } = renderHook(() => usePendingAiReviews(), { wrapper: createWrapper() })
 
       expect(result.current.isPending).toBe(true)
       expect(vi.mocked(listPendingAiReviews)).not.toHaveBeenCalled()
     })
-    it('usePendingAiReviews fetches when caller is ai_delegate', async () => {
-      vi.mocked(useAuth).mockReturnValue({
-        isAuthenticated: true,
-        user: { role: 'ai_delegate', public_id: 'user-del-1' },
-      } as ReturnType<typeof useAuth>)
+    it('usePendingAiReviews fetches with READ_SIGNALS without CREATE_ORDERS', async () => {
+      vi.mocked(useAuth).mockReturnValue(authFor(['read:signals'], 'delegate-1', 'ai_reviewer'))
       vi.mocked(listPendingAiReviews).mockResolvedValueOnce({
         items: [
           {
@@ -144,16 +152,10 @@ describe('ai-reviews queries', () => {
 
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(result.current.data?.count).toBe(1)
-      expect(vi.mocked(listPendingAiReviews)).toHaveBeenCalledWith({
-        wallet_public_id: undefined,
-        limit: undefined,
-      })
+      expect(vi.mocked(listPendingAiReviews)).toHaveBeenCalledWith({})
     })
     it('usePendingAiReviews threads walletPublicId + limit through to apiClient', async () => {
-      vi.mocked(useAuth).mockReturnValue({
-        isAuthenticated: true,
-        user: { role: 'ai_delegate', public_id: 'user-del-1' },
-      } as ReturnType<typeof useAuth>)
+      vi.mocked(useAuth).mockReturnValue(authFor(['read:signals'], 'delegate-1', 'ai_delegate'))
       vi.mocked(listPendingAiReviews).mockResolvedValueOnce({ items: [], count: 0 })
       renderHook(() => usePendingAiReviews({ walletPublicId: 'wal-99', limit: 25 }), {
         wrapper: createWrapper(),

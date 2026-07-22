@@ -3,6 +3,15 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { BacktestCreateForm } from './BacktestCreateForm'
 import { useBacktestStrategyClasses, useCreateBacktest } from '../../hooks/queries/backtests'
 
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
+
 vi.mock('../../hooks/queries/backtests', () => ({
   useBacktestStrategyClasses: vi.fn(),
   useCreateBacktest: vi.fn(),
@@ -39,11 +48,39 @@ const fillRequired = (): void => {
 
 beforeEach(() => {
   vi.clearAllMocks()
+  mockHasPermission.mockReturnValue(true)
   mockedClasses.mockReturnValue(classesResult())
   mockedCreate.mockReturnValue(createResult(vi.fn()))
 })
 
 describe('BacktestCreateForm', () => {
+  it('does not expose the form without manage:backtests', () => {
+    mockHasPermission.mockReturnValue(false)
+    render(<BacktestCreateForm open={true} onClose={vi.fn()} />)
+
+    expect(screen.queryByText('New backtest')).toBeFalsy()
+    expect(mockedClasses).toHaveBeenCalledWith(false)
+  })
+
+  it('rechecks manage:backtests before submitting an already-rendered form', () => {
+    const mutateAsync = vi.fn()
+
+    mockedCreate.mockReturnValue(createResult(mutateAsync))
+    render(<BacktestCreateForm open={true} onClose={vi.fn()} />)
+    fillRequired()
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(screen.getByText('Start backtest'))
+
+    expect(mutateAsync).not.toHaveBeenCalled()
+  })
+
+  it('handles an unavailable strategy catalogue', () => {
+    mockedClasses.mockReturnValue(classesResult({ data: undefined }))
+    render(<BacktestCreateForm open={true} onClose={vi.fn()} />)
+
+    expect((screen.getByLabelText('Strategy') as HTMLSelectElement).options).toHaveLength(1)
+  })
+
   it('renders the modal with strategy options when open', () => {
     render(<BacktestCreateForm open={true} onClose={vi.fn()} />)
     expect(screen.getByText('New backtest')).toBeTruthy()

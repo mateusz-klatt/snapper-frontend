@@ -7,11 +7,11 @@
     "title": "Roolien oikeudet",
     "viewer": {
       "label": "Tarkkailija",
-      "description": "Vain lukuoikeus yleisnäkymään ja markkinatietoihin. Ei voi hallita prosesseja, strategioita tai järjestelmäasetuksia."
+      "description": "Täysi vain luku -operaattorinäkymä tileihin, lompakoihin ja salkkuihin, signaaleihin, tekoälypäätöksiin, tulokseen, backtesteihin, strategioihin, prosesseihin ja järjestelmän tilaan. Ei voi suorittaa operatiivisia toimia."
     },
     "operator": {
       "label": "Operaattori",
-      "description": "Kaikki Tarkkailijan oikeudet sekä kaupankäyntitoiminnot, strategioiden suoritus, prosessien hallinta ja järjestelmän tilan valvonta."
+      "description": "Kaikki Tarkkailijan näkyvyys sekä kaupankäynnin, positioiden, strategioiden, prosessien, backtestien ja tekoälyintegraation hallinta."
     },
     "admin": {
       "label": "Pääkäyttäjä",

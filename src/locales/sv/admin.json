@@ -7,11 +7,11 @@
     "title": "Rollbehörigheter",
     "viewer": {
       "label": "Tittare",
-      "description": "Skrivskyddad åtkomst till Översikt och Marknadsdata. Kan inte hantera processer, strategier eller systeminställningar."
+      "description": "Fullständig skrivskyddad operatörsinsyn i konton, plånböcker och portföljer, signaler, AI-beslut, resultat, backtester, strategier, processer och systemstatus. Kan inte utföra operativa åtgärder."
     },
     "operator": {
       "label": "Operatör",
-      "description": "Alla behörigheter för Tittare plus tradingåtgärder, strategiutförande, processhantering och övervakning av systemhälsa."
+      "description": "All synlighet för Tittare samt styrning av handel, positioner, strategier, processer, backtester och AI-integration."
     },
     "admin": {
       "label": "Administratör",

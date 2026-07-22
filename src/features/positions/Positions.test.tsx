@@ -5,6 +5,12 @@ import type { ReactNode } from 'react'
 import { Positions } from './Positions'
 import type { Position } from '../../types/entities'
 
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn((selector: (s: { isTimeTraveling: boolean }) => boolean) =>
     selector({ isTimeTraveling: false })
@@ -66,6 +72,7 @@ const makePosition = (overrides: Partial<Position> = {}): Position => ({
 describe('Positions', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
   })
 
   it('renders honest N/A for null valuation and shows the mark with its timestamp', async () => {
@@ -460,6 +467,26 @@ describe('Positions', () => {
     expect(screen.getByText('Attach Trailing Stop — BTC-USD')).toBeInTheDocument()
   })
 
+  it('rechecks create:orders before already-rendered attach controls open modals', async () => {
+    const pos = makePosition({
+      quantity: 1.5,
+      positionCyclePublicId: 'cycle-123',
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [pos], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+    const bracketButton = screen.getByTestId('attach-bracket-BTC-USD-kraken-live')
+    const trailingButton = screen.getByTestId('attach-trailing-stop-BTC-USD-kraken-live')
+
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(bracketButton)
+    fireEvent.click(trailingButton)
+
+    expect(screen.queryByText('Attach SL/TP — BTC-USD')).not.toBeInTheDocument()
+    expect(screen.queryByText('Attach Trailing Stop — BTC-USD')).not.toBeInTheDocument()
+  })
+
   it('closes trailing stop modal when onClose fires', async () => {
     const pos = makePosition({
       quantity: 1.5,
@@ -522,6 +549,25 @@ describe('Positions', () => {
     const badge = screen.getByTestId('trailing-stop-badge')
 
     expect(badge).toHaveTextContent('TS: $95000.00')
+  })
+
+  it('keeps protective-order state visible but hides attach controls without create:orders', async () => {
+    mockHasPermission.mockReturnValue(false)
+    const pos = makePosition({
+      quantity: 1.5,
+      positionCyclePublicId: 'cycle-123',
+    })
+    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [pos], isLoading: false } as never)
+    vi.mocked(useTrailingStopForCycle).mockReturnValue({
+      data: { type: 'trailing_stop_state', payload: { current_stop: 95000 } },
+    } as never)
+    renderWithProviders(<Positions />)
+
+    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: $95000.00')
+    expect(screen.queryByTestId('attach-bracket-BTC-USD-kraken-live')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('attach-trailing-stop-BTC-USD-kraken-live')).not.toBeInTheDocument()
   })
 
   it('shows pending badge when stop is not yet activated', async () => {

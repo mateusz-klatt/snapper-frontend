@@ -7,11 +7,11 @@
     "title": "Rolrechten",
     "viewer": {
       "label": "Kijker",
-      "description": "Alleen-leestoegang tot Overzicht en Marktdata. Kan processen, strategieën of systeeminstellingen niet beheren."
+      "description": "Volledige alleen-lezen operatorweergave van accounts, wallets en portefeuilles, signalen, AI-besluiten, winst en verlies, backtests, strategieën, processen en systeemstatus. Kan geen operationele acties uitvoeren."
     },
     "operator": {
       "label": "Operator",
-      "description": "Alle Kijker-rechten plus tradingoperaties, strategie-uitvoering, procesbeheer en systeemstatusbewaking."
+      "description": "Alle zichtbaarheid van de Kijker plus bediening van trading, posities, strategieën, processen, backtests en AI-integratie."
     },
     "admin": {
       "label": "Admin",

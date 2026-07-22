@@ -7,11 +7,11 @@
     "title": "Rol İzinleri",
     "viewer": {
       "label": "Görüntüleyici",
-      "description": "Genel Bakış ve Piyasa verilerine salt okunur erişim. Süreçleri, stratejileri veya sistem ayarlarını yönetemez."
+      "description": "Hesaplar, cüzdanlar ve portföyler, sinyaller, yapay zekâ kararları, kâr ve zarar, geriye dönük testler, stratejiler, süreçler ve sistem durumu üzerinde tam salt okunur operatör görünürlüğü. Operasyonel işlem yapamaz."
     },
     "operator": {
       "label": "Operator",
-      "description": "Tüm Görüntüleyici izinlerine ek olarak trading işlemleri, strateji yürütme, süreç yönetimi ve sistem sağlığı izleme."
+      "description": "Görüntüleyicinin tüm görünürlüğüne ek olarak alım satım, pozisyon, strateji, süreç, geriye dönük test ve yapay zekâ entegrasyonu kontrolleri."
     },
     "admin": {
       "label": "Yönetici",

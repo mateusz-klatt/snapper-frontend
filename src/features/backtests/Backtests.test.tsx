@@ -40,6 +40,7 @@ vi.mock('../../stores/app', () => ({
 const mockGetBacktests = vi.fn()
 const mockCancelBacktest = vi.fn()
 const mockRerunBacktest = vi.fn()
+const mockHasPermission = vi.fn(() => true)
 
 vi.mock('../../lib/api/backtests', () => ({
   getBacktests: (...args: unknown[]) => mockGetBacktests(...args),
@@ -84,9 +85,10 @@ function renderWithQuery(ui: React.ReactElement) {
 describe('Backtests', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
     mockedUseAuth.mockReturnValue({
       isAuthenticated: true,
-      hasPermission: vi.fn(() => true),
+      hasPermission: mockHasPermission,
     } as unknown as ReturnType<typeof useAuth>)
   })
 
@@ -301,6 +303,31 @@ describe('Backtests', () => {
     })
   })
 
+  it('rechecks manage:backtests before invoking already-rendered actions', async () => {
+    mockGetBacktests.mockResolvedValue({
+      type: 'backtest_run_list',
+      session_id: 's1',
+      sequence_id: 1,
+      public_id: 'resp-1',
+      timestamp: NOW,
+      payload: [makeRun({ status: 'running' })],
+      count: 1,
+    })
+    renderWithQuery(<Backtests />)
+    const cancelButton = await screen.findByTestId('cancel-run-abc123')
+    const rerunButton = screen.getByTestId('rerun-run-abc123')
+    const createButton = screen.getByTestId('new-backtest')
+
+    mockHasPermission.mockReturnValue(false)
+    fireEvent.click(cancelButton)
+    fireEvent.click(rerunButton)
+    fireEvent.click(createButton)
+
+    expect(mockCancelBacktest).not.toHaveBeenCalled()
+    expect(mockRerunBacktest).not.toHaveBeenCalled()
+    expect(screen.queryByTestId('backtest-create-form')).not.toBeInTheDocument()
+  })
+
   it('renders a navigable anchor on each row pointing at #backtests/{id}', async () => {
     mockGetBacktests.mockResolvedValue({
       type: 'backtest_run_list',
@@ -366,7 +393,7 @@ describe('Backtests', () => {
     globalThis.location.hash = ''
   })
 
-  it('hides the New backtest button without manage:backtests', async () => {
+  it('keeps runs readable but hides every mutation without manage:backtests', async () => {
     mockedUseAuth.mockReturnValue({
       isAuthenticated: true,
       hasPermission: vi.fn(() => false),
@@ -377,13 +404,17 @@ describe('Backtests', () => {
       sequence_id: 1,
       public_id: 'resp-1',
       timestamp: NOW,
-      payload: [],
-      count: 0,
+      payload: [makeRun({ status: 'running' })],
+      count: 1,
     })
 
     renderWithQuery(<Backtests />)
-    await screen.findByText('No backtests')
+    await screen.findByText('sma_cross')
     expect(screen.queryByTestId('new-backtest')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('cancel-run-abc123')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('rerun-run-abc123')).not.toBeInTheDocument()
+    expect(mockCancelBacktest).not.toHaveBeenCalled()
+    expect(mockRerunBacktest).not.toHaveBeenCalled()
   })
 
   it('hides the New backtest button in read-only (time-travel) mode', async () => {

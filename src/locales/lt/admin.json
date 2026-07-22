@@ -7,11 +7,11 @@
     "title": "Rolių teisės",
     "viewer": {
       "label": "Stebėtojas",
-      "description": "Tik skaitymo prieiga prie apžvalgos ir rinkos duomenų. Negali valdyti procesų, strategijų ar sistemos nustatymų."
+      "description": "Visiška tik skaitymo operatoriaus prieiga prie sąskaitų, piniginių ir portfelių, signalų, DI sprendimų, pelno ir nuostolių, retrospektyvių testų, strategijų, procesų ir sistemos būklės. Negali atlikti operacinių veiksmų."
     },
     "operator": {
       "label": "Operatorius",
-      "description": "Visos stebėtojo teisės, taip pat prekybos operacijos, strategijų vykdymas, procesų valdymas ir sistemos būklės stebėsena."
+      "description": "Visa Stebėtojo matoma informacija ir prekybos, pozicijų, strategijų, procesų, retrospektyvių testų bei DI integracijos valdymas."
     },
     "admin": {
       "label": "Administratorius",

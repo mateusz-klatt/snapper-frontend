@@ -50,10 +50,13 @@ vi.mock('../../lib/api/ai-delegates', () => ({
     Promise.resolve(envelope('delegate_response', { payload: {} }))
   ),
 }))
+const mockHasPermission = vi.fn((_permission: string) => true)
+
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(() => ({
     isAuthenticated: true,
     user: { public_id: 'user-default', role: 'admin' },
+    hasPermission: mockHasPermission,
   })),
 }))
 
@@ -83,6 +86,7 @@ const createWrapperWithClient = () => {
 describe('ai-delegates queries', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
   })
 
   describe('AI integration hooks', () => {
@@ -144,6 +148,17 @@ describe('ai-delegates queries', () => {
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(result.current.data?.payload.public_id).toBe('d-1')
       expect(vi.mocked(getAiDelegate)).toHaveBeenCalledWith('d-1')
+    })
+    it('read hooks stay disabled without read:ai_integration', () => {
+      mockHasPermission.mockReturnValue(false)
+
+      const list = renderHook(() => useAiDelegates(), { wrapper: createWrapper() })
+      const detail = renderHook(() => useAiDelegate('d-1'), { wrapper: createWrapper() })
+
+      expect(list.result.current.fetchStatus).toBe('idle')
+      expect(detail.result.current.fetchStatus).toBe('idle')
+      expect(vi.mocked(listAiDelegates)).not.toHaveBeenCalled()
+      expect(vi.mocked(getAiDelegate)).not.toHaveBeenCalled()
     })
     it('useCreateAiDelegate invalidates ai-delegates list on success', async () => {
       const { queryClient, wrapper } = createWrapperWithClient()
@@ -210,6 +225,32 @@ describe('ai-delegates queries', () => {
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(invalidateSpy).toHaveBeenCalledWith({ queryKey: ['ai-delegates'] })
       expect(invalidateSpy).toHaveBeenCalledWith({ queryKey: ['ai-delegates', 'd-1'] })
+    })
+    it('all mutations reject locally without manage:ai_integration', async () => {
+      mockHasPermission.mockReturnValue(false)
+      const wrapper = createWrapper()
+      const create = renderHook(() => useCreateAiDelegate(), { wrapper })
+      const update = renderHook(() => useUpdateAiDelegateCaps(), { wrapper })
+      const deactivate = renderHook(() => useDeactivateAiDelegate(), { wrapper })
+      const caps = {
+        max_open_orders: null,
+        max_daily_notional_usd: null,
+        max_cancels_per_minute: null,
+        max_order_quantity_per_instrument: null,
+      }
+
+      await expect(
+        create.result.current.mutateAsync({ label: 'Denied', caps, operator_public_id: null })
+      ).rejects.toThrow('Permission denied: manage:ai_integration required')
+      await expect(
+        update.result.current.mutateAsync({ publicId: 'd-1', body: { caps } })
+      ).rejects.toThrow('Permission denied: manage:ai_integration required')
+      await expect(deactivate.result.current.mutateAsync('d-1')).rejects.toThrow(
+        'Permission denied: manage:ai_integration required'
+      )
+      expect(vi.mocked(createAiDelegate)).not.toHaveBeenCalled()
+      expect(vi.mocked(updateAiDelegateCaps)).not.toHaveBeenCalled()
+      expect(vi.mocked(deactivateAiDelegate)).not.toHaveBeenCalled()
     })
   })
 })

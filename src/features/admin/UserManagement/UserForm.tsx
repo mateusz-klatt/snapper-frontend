@@ -173,6 +173,14 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
 
   const isPending =
     createMutation.isPending || updateMutation.isPending || resetPasswordMutation.isPending
+  const roleDescription =
+    formData.role === 'viewer'
+      ? t('rolePermissions.viewer.description')
+      : formData.role === 'operator'
+        ? t('rolePermissions.operator.description')
+        : formData.role === 'admin'
+          ? t('rolePermissions.admin.description')
+          : undefined
 
   return (
     <AdminFormModal
@@ -260,17 +268,24 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
           placeholder=''
         />
       ) : (
-        <AdminSelectField
-          id='role'
-          label={t('users.form.fields.role')}
-          value={formData.role}
-          onChange={val => handleInputChange('role', val)}
-          options={[
-            { value: 'viewer', label: t('users.form.roles.viewer') },
-            { value: 'operator', label: t('users.form.roles.operator') },
-            { value: 'admin', label: t('users.form.roles.admin') },
-          ]}
-        />
+        <div>
+          <AdminSelectField
+            id='role'
+            label={t('users.form.fields.role')}
+            value={formData.role}
+            onChange={val => handleInputChange('role', val)}
+            options={[
+              { value: 'viewer', label: t('users.form.roles.viewer') },
+              { value: 'operator', label: t('users.form.roles.operator') },
+              { value: 'admin', label: t('users.form.roles.admin') },
+            ]}
+          />
+          {roleDescription && (
+            <p className='mt-2 text-sm text-alpine-600' aria-live='polite'>
+              {roleDescription}
+            </p>
+          )}
+        </div>
       )}
       <div className='flex items-center'>
         <input

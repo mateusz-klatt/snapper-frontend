@@ -7,6 +7,8 @@ import { useCreateAiDelegate } from '../../hooks/queries/ai-delegates'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { ConfigSnippetGenerator } from './ConfigSnippetGenerator'
 import type { DelegateCreateBody, DelegateCreatedPayload, DelegateCapsBody } from '../../types/api'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 
 type WizardStep = 'identity' | 'scope-and-caps' | 'review' | 'done'
 
@@ -137,6 +139,9 @@ export function CreateDelegateWizard({
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
   const mutation = useCreateAiDelegate()
   const readOnly = useIsReadOnly()
+  const { hasPermission } = useAuth()
+  const hasManagePermission = hasPermission(Permission.MANAGE_AI_INTEGRATION)
+  const canManage = hasManagePermission && !readOnly
   const mountedRef = useRef(true)
   const resetRef = useRef(mutation.reset)
   const noop = useCallback(() => {}, [])
@@ -185,6 +190,8 @@ export function CreateDelegateWizard({
   }
 
   const handleSubmit = async (): Promise<void> => {
+    if (!hasPermission(Permission.MANAGE_AI_INTEGRATION) || readOnly) return
+
     const parsedCaps = parseCapsToBody(state.caps, capsErrors) as DelegateCapsBody
     const body: DelegateCreateBody = {
       label: state.label.trim(),
@@ -215,7 +222,12 @@ export function CreateDelegateWizard({
   const modalOnClose = mutation.isPending ? noop : handleClose
 
   return (
-    <Modal open={open} onClose={modalOnClose} title={t('wizard.title')} size='lg'>
+    <Modal
+      open={open && hasManagePermission}
+      onClose={modalOnClose}
+      title={t('wizard.title')}
+      size='lg'
+    >
       <div className='space-y-4'>
         <StepIndicator step={state.step} />
 
@@ -225,7 +237,7 @@ export function CreateDelegateWizard({
             onChange={value => dispatch({ type: 'set-label', value })}
             onNext={advanceFromIdentity}
             onCancel={handleClose}
-            readOnly={readOnly}
+            readOnly={!canManage}
           />
         )}
 
@@ -238,7 +250,7 @@ export function CreateDelegateWizard({
             onCapChange={(key, value) => dispatch({ type: 'set-cap', key, value })}
             onBack={() => dispatch({ type: 'goto', step: 'identity' })}
             onNext={advanceToReview}
-            readOnly={readOnly}
+            readOnly={!canManage}
           />
         )}
 
@@ -250,7 +262,7 @@ export function CreateDelegateWizard({
             isPending={mutation.isPending}
             onBack={() => dispatch({ type: 'goto', step: 'scope-and-caps' })}
             onSubmit={handleSubmit}
-            readOnly={readOnly}
+            readOnly={!canManage}
           />
         )}
 

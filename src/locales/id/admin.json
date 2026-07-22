@@ -7,11 +7,11 @@
     "title": "Izin Peran",
     "viewer": {
       "label": "Pengamat",
-      "description": "Akses hanya baca ke Ringkasan dan Data pasar. Tidak dapat mengelola proses, strategi, atau pengaturan sistem."
+      "description": "Visibilitas operator penuh hanya-baca untuk akun, dompet dan portofolio, sinyal, keputusan AI, untung-rugi, backtest, strategi, proses, dan kesehatan sistem. Tidak dapat melakukan tindakan operasional."
     },
     "operator": {
       "label": "Operator",
-      "description": "Semua izin Pengamat ditambah operasi trading, eksekusi strategi, manajemen proses, dan pemantauan kesehatan sistem."
+      "description": "Seluruh visibilitas Pengamat ditambah kontrol trading, posisi, strategi, proses, backtest, dan integrasi AI."
     },
     "admin": {
       "label": "Administrator",

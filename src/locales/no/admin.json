@@ -7,11 +7,11 @@
     "title": "Rollerettigheter",
     "viewer": {
       "label": "Tilskuer",
-      "description": "Skrivebeskyttet tilgang til Oversikt og Markedsdata. Kan ikke administrere prosesser, strategier eller systeminnstillinger."
+      "description": "Full skrivebeskyttet operatørinnsikt i kontoer, lommebøker og porteføljer, signaler, AI-beslutninger, resultat, backtester, strategier, prosesser og systemstatus. Kan ikke utføre operative handlinger."
     },
     "operator": {
       "label": "Operatør",
-      "description": "Alle Tilskuer-rettigheter pluss tradingoperasjoner, strategiutførelse, prosessadministrasjon og overvåking av systemhelse."
+      "description": "All Tilskuer-synlighet samt styring av handel, posisjoner, strategier, prosesser, backtester og AI-integrasjon."
     },
     "admin": {
       "label": "Administrator",

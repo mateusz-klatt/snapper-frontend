@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { Components } from '../types/api.generated'
 import type { LoginBody } from '../types/api'
-import { RESOURCE_ACCESS, ROLE_PERMISSIONS } from '../types/permissions.generated'
+import { RESOURCE_PERMISSIONS } from '../types/permissions.generated'
 import type { Permission } from '../types/permissions.generated'
 import i18n from '../i18n/config'
 import { apiClient } from '../lib/apiClient'
@@ -10,7 +10,6 @@ import { queryClient } from '../lib/queryClient'
 import { storeWsTicket } from '../lib/wsTicketCache'
 
 type User = Components['schemas']['UserProfile']
-type UserRole = Components['schemas']['UserRole']
 
 /**
  * Tagged-union arg for ``refreshToken``.
@@ -50,17 +49,8 @@ interface AuthState {
   refreshToken: (nextWallet?: RefreshWalletHint) => Promise<void>
   clearError: () => void
   setLoading: (loading: boolean) => void
-  hasRole: (role: UserRole) => boolean
   hasPermission: (permission: Permission) => boolean
   canAccess: (resource: string) => boolean
-}
-const ROLE_HIERARCHY: Record<UserRole, number> = {
-  ai_researcher: -2,
-  ai_reviewer: -1,
-  ai_delegate: -1,
-  viewer: 1,
-  operator: 2,
-  admin: 3,
 }
 
 const isTransportError = (error: unknown): boolean =>
@@ -235,33 +225,26 @@ export const useAuthStore = create<AuthState>()(
         },
         clearError: () => set({ error: null }),
         setLoading: (loading: boolean) => set({ isLoading: loading }),
-        hasRole: (role: UserRole) => {
-          const { user } = get()
-
-          if (!user) return false
-
-          return ROLE_HIERARCHY[user.role] >= ROLE_HIERARCHY[role]
-        },
         hasPermission: (permission: Permission) => {
           const { user } = get()
 
           if (!user) return false
+          const userPermissions = user.effective_permissions ?? []
 
-          if (user.role === 'admin') {
-            return true
-          }
-
-          const userPermissions: readonly Permission[] = ROLE_PERMISSIONS[user.role] || []
-
-          return userPermissions.includes(permission)
+          return userPermissions.some(value => value === permission)
         },
         canAccess: (resource: string) => {
           const { user } = get()
 
           if (!user) return false
-          const allowedRoles = RESOURCE_ACCESS[resource] || []
+          const requirements = Object.hasOwn(RESOURCE_PERMISSIONS, resource)
+            ? RESOURCE_PERMISSIONS[resource]
+            : undefined
 
-          return allowedRoles.includes(user.role)
+          if (requirements === undefined) return false
+          if (requirements.length === 0) return true
+
+          return requirements.some(permission => get().hasPermission(permission))
         },
       }
     },
@@ -287,7 +270,6 @@ export const useAuth = () => {
     silentLogout: authStore.silentLogout,
     refreshToken: authStore.refreshToken,
     clearError: authStore.clearError,
-    hasRole: authStore.hasRole,
     hasPermission: authStore.hasPermission,
     canAccess: authStore.canAccess,
   }

@@ -100,6 +100,15 @@ describe('UserForm', () => {
     expect(screen.getByLabelText(/^Password$/i)).toBeTruthy()
     expect(screen.getByLabelText(/role/i)).toBeTruthy()
   })
+  it('explains the selected role permission set', async () => {
+    renderWithProviders(<UserForm open={true} onClose={mockOnClose} />)
+
+    expect(screen.getByText(/read-only operator visibility/i)).toBeTruthy()
+
+    await userEvent.selectOptions(screen.getByLabelText(/role/i), 'operator')
+
+    expect(screen.getByText(/trading, position, strategy, process/i)).toBeTruthy()
+  })
   it('shows edit mode with existing user', () => {
     const existingUser: UserProfile = makeUserProfile({
       username: 'testuser',

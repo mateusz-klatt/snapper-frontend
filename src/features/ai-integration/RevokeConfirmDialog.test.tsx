@@ -5,6 +5,14 @@ import { RevokeConfirmDialog } from './RevokeConfirmDialog'
 import type { DelegateRead } from '../../types/api'
 
 const mockDeactivate = { mutateAsync: vi.fn() }
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
 
 vi.mock('../../hooks/queries/ai-delegates', () => ({
   useDeactivateAiDelegate: () => mockDeactivate,
@@ -35,6 +43,7 @@ const delegate: DelegateRead = {
 describe('RevokeConfirmDialog', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
   })
 
   it('renders title with delegate label and danger-variant confirm button', () => {
@@ -44,6 +53,28 @@ describe('RevokeConfirmDialog', () => {
     const confirmButton = confirmButtons.find(el => el.className.includes('bg-loss-600'))
 
     expect(confirmButton).toBeDefined()
+  })
+
+  it('does not expose revocation without manage permission', () => {
+    mockHasPermission.mockReturnValue(false)
+    render(<RevokeConfirmDialog delegate={delegate} open onClose={vi.fn()} />)
+
+    expect(screen.queryByText(/Revoke delegate/)).not.toBeInTheDocument()
+    expect(mockDeactivate.mutateAsync).not.toHaveBeenCalled()
+  })
+
+  it('rechecks manage permission before an already-open revocation confirms', async () => {
+    const user = userEvent.setup()
+
+    render(<RevokeConfirmDialog delegate={delegate} open onClose={vi.fn()} />)
+    const confirmButton = screen
+      .getAllByRole('button', { name: 'Revoke' })
+      .find(element => element.className.includes('bg-loss-600')) as HTMLElement
+
+    mockHasPermission.mockReturnValue(false)
+    await user.click(confirmButton)
+
+    expect(mockDeactivate.mutateAsync).not.toHaveBeenCalled()
   })
 
   it('invokes mutation with delegate public_id on confirm + toasts + closes', async () => {

@@ -10,6 +10,14 @@ import type { AppLocale } from '../../i18n/types'
 import type { Order, Execution } from '../../types/entities'
 
 const fmtDt = (d: Date): string => formatDateTime(d, i18n.language as AppLocale)
+const mockHasPermission = vi.fn((_permission: string) => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
 
 vi.mock('../../lib/csvExport', () => ({
   exportToCSV: vi.fn(),
@@ -91,6 +99,7 @@ const renderWithProviders = (ui: ReactNode) => {
 describe('Orders', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
   })
   it('renders orders page', () => {
     renderWithProviders(<Orders />)
@@ -1270,6 +1279,13 @@ describe('Orders', () => {
     })
   })
 
+  it('evaluates order creation independently from cancellation permission', () => {
+    mockHasPermission.mockImplementation(permission => permission !== 'create:orders')
+    renderWithProviders(<Orders />)
+
+    expect(screen.queryByText('New Order')).not.toBeInTheDocument()
+  })
+
   it('renders cancel button on non-terminal order and invokes mutation', async () => {
     const mockOrders: Order[] = [
       {
@@ -1302,6 +1318,73 @@ describe('Orders', () => {
 
     await userEvent.click(cancelBtn)
     expect(cancelMutate).toHaveBeenCalledWith('cid-open')
+  })
+
+  it('keeps open orders visible but hides cancel without cancel:orders', async () => {
+    mockHasPermission.mockImplementation(permission => permission !== 'cancel:orders')
+    const mockOrders: Order[] = [
+      {
+        sequenceId: 0,
+        publicId: 'test-pid',
+        timestamp: new Date('2024-01-01T00:00:00Z'),
+        sessionId: 'test-sid',
+        clientOrderId: 'cid-readonly',
+        instrument: 'BTC/USD',
+        exchange: 'kraken',
+        side: 'buy',
+        orderType: 'limit',
+        size: 1,
+        filledSize: 0,
+        price: 50000,
+        status: 'open',
+        createdAt: new Date('2024-01-01T00:00:00Z'),
+        updatedAt: null,
+      },
+    ]
+    const { useOrders } = await import('../../hooks/queries/orders')
+
+    vi.mocked(useOrders).mockReturnValue({ data: mockOrders, isLoading: false } as never)
+    renderWithProviders(<Orders />)
+
+    await screen.findByText('BTC/USD')
+    expect(screen.queryByTestId('cancel-order-cid-readonly')).not.toBeInTheDocument()
+    expect(screen.getByText('New Order')).toBeInTheDocument()
+    expect(cancelMutate).not.toHaveBeenCalled()
+  })
+
+  it('rechecks order permissions before already-rendered controls execute', async () => {
+    const mockOrders: Order[] = [
+      {
+        sequenceId: 0,
+        publicId: 'test-pid',
+        timestamp: new Date('2024-01-01T00:00:00Z'),
+        sessionId: 'test-sid',
+        clientOrderId: 'cid-revoked',
+        instrument: 'BTC/USD',
+        exchange: 'kraken',
+        side: 'buy',
+        orderType: 'limit',
+        size: 1,
+        filledSize: 0,
+        price: 50000,
+        status: 'open',
+        createdAt: new Date('2024-01-01T00:00:00Z'),
+        updatedAt: null,
+      },
+    ]
+    const { useOrders } = await import('../../hooks/queries/orders')
+
+    vi.mocked(useOrders).mockReturnValue({ data: mockOrders, isLoading: false } as never)
+    renderWithProviders(<Orders />)
+    const cancelButton = await screen.findByTestId('cancel-order-cid-revoked')
+    const createButton = screen.getByText('New Order')
+
+    mockHasPermission.mockReturnValue(false)
+    await userEvent.click(cancelButton)
+    await userEvent.click(createButton)
+
+    expect(cancelMutate).not.toHaveBeenCalled()
+    expect(screen.queryByTestId('new-order-modal-close')).not.toBeInTheDocument()
   })
 
   it('hides cancel button on terminal order statuses', async () => {

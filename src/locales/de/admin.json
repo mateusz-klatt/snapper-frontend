@@ -7,11 +7,11 @@
     "title": "Rollenberechtigungen",
     "viewer": {
       "label": "Betrachter",
-      "description": "Lesezugriff auf Übersicht und Marktdaten. Kann keine Prozesse, Strategien oder Systemeinstellungen verwalten."
+      "description": "Vollständige schreibgeschützte Operator-Sicht auf Konten, Wallets und Portfolios, Signale, KI-Entscheidungen, Gewinn und Verlust, Backtests, Strategien, Prozesse und Systemzustand. Kann keine operativen Aktionen ausführen."
     },
     "operator": {
       "label": "Operator",
-      "description": "Alle Betrachter-Berechtigungen sowie Trading-Operationen, Strategieausführung, Prozessverwaltung und Überwachung des Systemzustands."
+      "description": "Die gesamte Sichtbarkeit des Betrachters sowie Steuerung von Handel, Positionen, Strategien, Prozessen, Backtests und KI-Integration."
     },
     "admin": {
       "label": "Administrator",

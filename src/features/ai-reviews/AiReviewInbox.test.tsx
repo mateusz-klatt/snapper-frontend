@@ -11,6 +11,17 @@ const mockUseAiReviewActivity = vi.fn()
 const mockUseAiReviews = vi.fn()
 const mockSubmitMutate = vi.fn()
 
+const auditAuth = () => ({
+  user: { role: 'viewer', delegate_public_id: null },
+  hasPermission: (permission: string) => permission === 'read:ai_reviews',
+})
+
+const pendingAuth = () => ({
+  user: { role: 'ai_delegate', delegate_public_id: 'delegate-1' },
+  hasPermission: (permission: string) =>
+    permission === 'read:signals' || permission === 'create:orders',
+})
+
 interface MockSubmitState {
   mutate: typeof mockSubmitMutate
   isPending: boolean
@@ -63,6 +74,7 @@ const requestFrame = {
 describe('AiReviewInbox', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockUseAuth.mockReturnValue(auditAuth())
     mockUsePendingAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -97,15 +109,13 @@ describe('AiReviewInbox', () => {
     ...overrides,
   })
 
-  it('shows the operator decisions loading state', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+  it('shows the audit decisions loading state', () => {
     mockUseAiReviews.mockReturnValue({ isLoading: true, error: null, data: undefined })
     renderWithProviders(<AiReviewInbox />)
     expect(screen.getByText(/Loading AI decisions/)).toBeTruthy()
   })
 
-  it('shows the operator decisions error state', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'admin' } })
+  it('shows the audit decisions error state', () => {
     mockUseAiReviews.mockReturnValue({
       isLoading: false,
       error: new Error('reviews 503'),
@@ -115,14 +125,12 @@ describe('AiReviewInbox', () => {
     expect(screen.getByText(/reviews 503/)).toBeTruthy()
   })
 
-  it('shows the operator decisions empty state', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+  it('shows the audit decisions empty state', () => {
     renderWithProviders(<AiReviewInbox />)
     expect(screen.getByText('No AI decisions yet')).toBeTruthy()
   })
 
-  it('renders a decision row with instrument, decision, and rationale for operators', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
+  it('renders a decision row with instrument, decision, and rationale in the audit view', () => {
     mockUseAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -136,7 +144,6 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders a pending decision with em-dashes for missing rationale and resolved_at', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
     mockUseAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -160,7 +167,6 @@ describe('AiReviewInbox', () => {
   })
 
   it('truncates a long rationale to 120 chars with an ellipsis', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
     const longRationale = 'B'.repeat(150)
 
     mockUseAiReviews.mockReturnValue({
@@ -173,7 +179,6 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders a rejected decision in the loss style', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
     mockUseAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -197,7 +202,6 @@ describe('AiReviewInbox', () => {
   })
 
   it('handles a null signal_envelope without an instrument', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'operator' } })
     mockUseAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -210,8 +214,85 @@ describe('AiReviewInbox', () => {
     expect(screen.getByTestId('ai-decision-row-rev-null-env')).toBeTruthy()
   })
 
+  it('selects the pending surface from capability and delegate state, not role', () => {
+    mockUseAuth.mockReturnValue({
+      user: { role: 'viewer', delegate_public_id: 'future-delegate' },
+      hasPermission: (permission: string) => permission === 'read:signals',
+    })
+
+    renderWithProviders(<AiReviewInbox />)
+
+    expect(screen.getByText('No pending reviews')).toBeTruthy()
+    expect(screen.queryByText('No AI decisions yet')).toBeNull()
+  })
+
+  it('uses the audit surface when delegate state is absent despite signal-read capability', () => {
+    mockUseAuth.mockReturnValue({
+      user: { role: 'ai_delegate', delegate_public_id: null },
+      hasPermission: (permission: string) => permission === 'read:signals',
+    })
+
+    renderWithProviders(<AiReviewInbox />)
+
+    expect(screen.getByText('No AI decisions yet')).toBeTruthy()
+    expect(screen.queryByText('No pending reviews')).toBeNull()
+  })
+
+  it('shows pending reviews without decision controls for READ_SIGNALS without CREATE_ORDERS', () => {
+    mockUseAuth.mockReturnValue({
+      user: { role: 'ai_delegate', delegate_public_id: 'delegate-without-orders' },
+      hasPermission: (permission: string) => permission === 'read:signals',
+    })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-read-only',
+            selected_delegate_public_id: 'delegate-without-orders',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+          },
+        ],
+        count: 1,
+      },
+    })
+
+    renderWithProviders(<AiReviewInbox />)
+
+    expect(screen.getByTestId('pending-review-row-rev-read-only')).toBeTruthy()
+    expect(screen.queryByTestId('approve-rev-read-only')).toBeNull()
+    expect(screen.queryByTestId('reject-rev-read-only')).toBeNull()
+    expect(screen.queryByLabelText(/Rationale for review rev-read-only/i)).toBeNull()
+    expect(mockSubmitMutate).not.toHaveBeenCalled()
+  })
+
+  it('uses the audit surface when delegate state lacks READ_SIGNALS', () => {
+    mockUseAuth.mockReturnValue({
+      user: { role: 'ai_delegate', delegate_public_id: 'delegate-without-signals' },
+      hasPermission: (permission: string) => permission === 'read:ai_reviews',
+    })
+
+    renderWithProviders(<AiReviewInbox />)
+
+    expect(screen.getByText('No AI decisions yet')).toBeTruthy()
+    expect(screen.queryByText('No pending reviews')).toBeNull()
+  })
+
+  it('uses the audit surface when no user profile is available', () => {
+    mockUseAuth.mockReturnValue({ user: null, hasPermission: () => true })
+
+    renderWithProviders(<AiReviewInbox />)
+
+    expect(screen.getByText('No AI decisions yet')).toBeTruthy()
+  })
+
   it('renders loading state while pending reviews query is in flight', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUsePendingAiReviews.mockReturnValue({
       isLoading: true,
       error: null,
@@ -222,7 +303,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders error banner when the pending reviews query fails', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUsePendingAiReviews.mockReturnValue({
       isLoading: false,
       error: new Error('upstream 503'),
@@ -233,14 +314,14 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders empty states when there are no pending reviews and no activity', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     renderWithProviders(<AiReviewInbox />)
     expect(screen.getByText('No pending reviews')).toBeTruthy()
     expect(screen.getByText('No activity yet')).toBeTruthy()
   })
 
   it('renders a row per pending review when the snapshot is non-empty', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUsePendingAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -274,7 +355,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders the activity stream and reports buffered count', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     const frames: AiReviewActivityFrame[] = Array.from({ length: 3 }, (_, i) => ({
       ...(requestFrame as unknown as Record<string, unknown>),
       review_public_id: `rev-${i}`,
@@ -290,7 +371,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders instrument ticker, side badge, and full thesis when supplied', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     const shortThesis = 'Breakout continuation above $104 after Hormuz tape.'
 
     mockUsePendingAiReviews.mockReturnValue({
@@ -320,7 +401,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('truncates thesis to 120 chars with ellipsis when longer', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     const longThesis = 'A'.repeat(150)
 
     mockUsePendingAiReviews.mockReturnValue({
@@ -348,7 +429,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders em-dash placeholders when instrument and signal_envelope are absent', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUsePendingAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -374,7 +455,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('approve button submits decision with rationale via the mutation hook', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUsePendingAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -407,8 +488,41 @@ describe('AiReviewInbox', () => {
     })
   })
 
+  it('rechecks CREATE_ORDERS before an already-rendered decision control submits', () => {
+    const granted = new Set(['read:signals', 'create:orders'])
+
+    mockUseAuth.mockReturnValue({
+      user: { role: 'ai_delegate', delegate_public_id: 'delegate-1' },
+      hasPermission: (permission: string) => granted.has(permission),
+    })
+    mockUsePendingAiReviews.mockReturnValue({
+      isLoading: false,
+      error: null,
+      data: {
+        items: [
+          {
+            review_public_id: 'rev-revoked',
+            selected_delegate_public_id: 'delegate-1',
+            wallet_public_id: 'wal-1',
+            dispatch_version: 0,
+            status: 'pending',
+            deadline: '2026-04-27T10:05:00Z',
+            fanout_after: '2026-04-27T10:00:00Z',
+          },
+        ],
+        count: 1,
+      },
+    })
+    renderWithProviders(<AiReviewInbox />)
+
+    granted.delete('create:orders')
+    fireEvent.click(screen.getByTestId('approve-rev-revoked'))
+
+    expect(mockSubmitMutate).not.toHaveBeenCalled()
+  })
+
   it('reject button submits decision without rationale when input left empty', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUsePendingAiReviews.mockReturnValue({
       isLoading: false,
       error: null,
@@ -439,7 +553,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('disables decision controls while the mutation is in flight', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUseSubmitAiReviewDecision.mockReturnValueOnce({
       mutate: mockSubmitMutate,
       isPending: true,
@@ -471,7 +585,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('renders mutation error inline with role=alert', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     mockUseSubmitAiReviewDecision.mockReturnValueOnce({
       mutate: mockSubmitMutate,
       isPending: false,
@@ -501,7 +615,7 @@ describe('AiReviewInbox', () => {
   })
 
   it('caps the activity stream rendering at 50 frames even if buffer holds more', () => {
-    mockUseAuth.mockReturnValue({ user: { role: 'ai_delegate' } })
+    mockUseAuth.mockReturnValue(pendingAuth())
     const frames: AiReviewActivityFrame[] = Array.from({ length: 60 }, (_, i) => ({
       ...(requestFrame as unknown as Record<string, unknown>),
       review_public_id: `rev-${i}`,

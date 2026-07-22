@@ -7,11 +7,11 @@
     "title": "Permissões por função",
     "viewer": {
       "label": "Visualizador",
-      "description": "Acesso somente leitura à Visão geral e aos Dados de mercado. Não pode gerenciar processos, estratégias nem configurações do sistema."
+      "description": "Visibilidade completa de operador em modo somente leitura sobre contas, carteiras e portfólios, sinais, decisões de IA, lucros e perdas, backtests, estratégias, processos e saúde do sistema. Não pode executar ações operacionais."
     },
     "operator": {
       "label": "Operador",
-      "description": "Todas as permissões do Visualizador, além de operações de trading, execução de estratégias, gerenciamento de processos e monitoramento da saúde do sistema."
+      "description": "Toda a visibilidade do Visualizador mais controles de trading, posições, estratégias, processos, backtests e integração de IA."
     },
     "admin": {
       "label": "Admin",

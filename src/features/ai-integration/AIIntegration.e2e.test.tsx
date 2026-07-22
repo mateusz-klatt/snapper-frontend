@@ -33,7 +33,7 @@ vi.mock('../../lib/apiClient', () => ({
 }))
 
 vi.mock('../../stores/auth', () => ({
-  useAuth: vi.fn(() => ({ isAuthenticated: true })),
+  useAuth: vi.fn(() => ({ isAuthenticated: true, hasPermission: () => true })),
 }))
 
 vi.mock('../../stores/app', () => ({

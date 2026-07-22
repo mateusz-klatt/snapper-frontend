@@ -8,6 +8,11 @@ const mockUseAiDelegate = vi.fn()
 const mockUseIsReadOnly = vi.fn()
 const mockUpdateMutation = { mutateAsync: vi.fn(), isPending: false }
 const mockDeactivateMutation = { mutateAsync: vi.fn() }
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
 
 vi.mock('../../hooks/queries/ai-delegates', () => ({
   useAiDelegate: (publicId: string | null) => mockUseAiDelegate(publicId),
@@ -42,6 +47,7 @@ const buildDelegate = (overrides: Partial<DelegateRead> = {}): DelegateRead => (
 describe('DelegateDetailView', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
     mockUseIsReadOnly.mockReturnValue(false)
     mockUpdateMutation.isPending = false
   })
@@ -82,6 +88,20 @@ describe('DelegateDetailView', () => {
     expect(screen.getByText('10000')).toBeInTheDocument()
   })
 
+  it('keeps delegate details readable but hides mutations without manage permission', () => {
+    const delegate = buildDelegate()
+
+    mockHasPermission.mockReturnValue(false)
+    mockUseAiDelegate.mockReturnValue({ data: { payload: delegate }, isLoading: false })
+    render(<DelegateDetailView publicId={delegate.public_id} onBack={vi.fn()} />)
+
+    expect(screen.getByRole('heading', { name: 'Alpha' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Update caps/ })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Revoke/ })).not.toBeInTheDocument()
+    expect(mockUpdateMutation.mutateAsync).not.toHaveBeenCalled()
+    expect(mockDeactivateMutation.mutateAsync).not.toHaveBeenCalled()
+  })
+
   it('renders per-instrument caps JSON when present', () => {
     const delegate = buildDelegate({
       caps: {
@@ -103,8 +123,17 @@ describe('DelegateDetailView', () => {
 
     mockUseAiDelegate.mockReturnValue({ data: { payload: delegate }, isLoading: false })
     render(<DelegateDetailView publicId={delegate.public_id} onBack={vi.fn()} />)
-    expect(screen.getByRole('button', { name: /Update caps/ })).toBeDisabled()
-    expect(screen.getByRole('button', { name: /Revoke/ })).toBeDisabled()
+    const updateButton = screen.getByRole('button', { name: /Update caps/ })
+    const revokeButton = screen.getByRole('button', { name: /Revoke/ })
+
+    expect(updateButton).toBeDisabled()
+    expect(revokeButton).toBeDisabled()
+    updateButton.removeAttribute('disabled')
+    revokeButton.removeAttribute('disabled')
+    fireEvent.click(updateButton)
+    fireEvent.click(revokeButton)
+    expect(screen.queryByLabelText('Max open orders')).not.toBeInTheDocument()
+    expect(screen.queryByText(/Revoke delegate/)).not.toBeInTheDocument()
   })
 
   it('hides Revoke + Update buttons when delegate is already inactive', () => {
@@ -156,6 +185,21 @@ describe('DelegateDetailView', () => {
         },
       },
     })
+  })
+
+  it('rechecks manage permission before saving an already-open caps editor', async () => {
+    const user = userEvent.setup()
+    const delegate = buildDelegate()
+
+    mockUseAiDelegate.mockReturnValue({ data: { payload: delegate }, isLoading: false })
+    render(<DelegateDetailView publicId={delegate.public_id} onBack={vi.fn()} />)
+    await user.click(screen.getByRole('button', { name: /Update caps/ }))
+    const saveButton = screen.getByRole('button', { name: /Save/ })
+
+    mockHasPermission.mockReturnValue(false)
+    await user.click(saveButton)
+
+    expect(mockUpdateMutation.mutateAsync).not.toHaveBeenCalled()
   })
 
   it('toasts error when caps editor contains negative number', async () => {

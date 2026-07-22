@@ -11,6 +11,9 @@ import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import { EmptyState } from '../../components/ui'
 import clsx from 'clsx'
+import { useAuth } from '../../stores/auth'
+import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { Permission } from '../../types/permissions.generated'
 
 const TERMINAL_ORDER_STATUSES = new Set([
   'filled',
@@ -22,10 +25,20 @@ const TERMINAL_ORDER_STATUSES = new Set([
   'closed',
 ])
 
-const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
+const OrderCard: React.FC<{
+  order: Order
+  canCancel: boolean
+  canCancelNow: () => boolean
+}> = ({ order, canCancel, canCancelNow }) => {
   const { t, i18n } = useTranslation('orders')
   const cancelOrder = useCancelOrder()
   const isTerminal = TERMINAL_ORDER_STATUSES.has(order.status.toLowerCase())
+
+  const handleCancel = (): void => {
+    if (!canCancelNow()) return
+
+    cancelOrder.mutate(order.clientOrderId)
+  }
 
   const getStatusColor = (status: string) => {
     /**
@@ -96,10 +109,10 @@ const OrderCard: React.FC<{ order: Order }> = ({ order }) => {
               defaultValue: order.status,
             })}
           </span>
-          {!isTerminal && (
+          {!isTerminal && canCancel && (
             <button
               type='button'
-              onClick={() => cancelOrder.mutate(order.clientOrderId)}
+              onClick={handleCancel}
               disabled={cancelOrder.isPending}
               aria-label={t('orderCard.cancelAriaLabel', { orderId: order.clientOrderId })}
               data-testid={`cancel-order-${order.clientOrderId}`}
@@ -212,6 +225,10 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
 
 export const Orders: React.FC = () => {
   const { t, i18n } = useTranslation('orders')
+  const { hasPermission } = useAuth()
+  const readOnly = useIsReadOnly()
+  const canCreateOrders = hasPermission(Permission.CREATE_ORDERS) && !readOnly
+  const canCancelOrders = hasPermission(Permission.CANCEL_ORDERS) && !readOnly
   const [activeTab, setActiveTab] = useState<'orders' | 'executions'>('orders')
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [showNewOrder, setShowNewOrder] = useState(false)
@@ -220,6 +237,12 @@ export const Orders: React.FC = () => {
   const filteredOrders = orders.filter(
     (order: Order) => statusFilter === 'all' || order.status.toLowerCase() === statusFilter
   )
+
+  const openNewOrder = (): void => {
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+
+    setShowNewOrder(true)
+  }
 
   const handleExportOrders = () => {
     const headers = [
@@ -287,17 +310,22 @@ export const Orders: React.FC = () => {
 
   return (
     <div className='space-y-6'>
-      <NewOrderModal open={showNewOrder} onClose={() => setShowNewOrder(false)} />
+      <NewOrderModal
+        open={showNewOrder && canCreateOrders}
+        onClose={() => setShowNewOrder(false)}
+      />
       <div className='flex items-center justify-between'>
         <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
         <div className='flex items-center gap-2'>
-          <button
-            onClick={() => setShowNewOrder(true)}
-            className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-brand-600 text-white hover:bg-brand-500 rounded-lg transition-colors'
-          >
-            <Plus size={14} />
-            {t('page.newOrder')}
-          </button>
+          {canCreateOrders && (
+            <button
+              onClick={openNewOrder}
+              className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-brand-600 text-white hover:bg-brand-500 rounded-lg transition-colors'
+            >
+              <Plus size={14} />
+              {t('page.newOrder')}
+            </button>
+          )}
           <button
             onClick={activeTab === 'orders' ? handleExportOrders : handleExportExecutions}
             disabled={
@@ -382,7 +410,12 @@ export const Orders: React.FC = () => {
             {!ordersLoading && filteredOrders.length > 0 && (
               <div className='grid gap-4'>
                 {filteredOrders.map((order: Order) => (
-                  <OrderCard key={order.clientOrderId} order={order} />
+                  <OrderCard
+                    key={order.clientOrderId}
+                    order={order}
+                    canCancel={canCancelOrders}
+                    canCancelNow={() => hasPermission(Permission.CANCEL_ORDERS) && !readOnly}
+                  />
                 ))}
               </div>
             )}

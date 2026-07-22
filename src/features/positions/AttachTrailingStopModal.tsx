@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useCreateTrailingStop } from '../../hooks/queries/positions'
+import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 import { validateTrailingStopParams } from './validation'
 
 interface AttachTrailingStopModalProps {
@@ -22,6 +25,9 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
   averagePrice,
 }) => {
   const { t } = useTranslation('positions')
+  const { hasPermission } = useAuth()
+  const readOnly = useIsReadOnly()
+  const canCreateOrders = hasPermission(Permission.CREATE_ORDERS) && !readOnly
   const createTrailingStop = useCreateTrailingStop()
   const [trailingPct, setTrailingPct] = useState('')
   const [minLockPct, setMinLockPct] = useState('')
@@ -38,6 +44,8 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
   }
 
   const handleSubmit = () => {
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+
     setError('')
     const pct = trailingPct ? Number.parseFloat(trailingPct) : null
     const lock = minLockPct ? Number.parseFloat(minLockPct) : null
@@ -55,6 +63,8 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
   }
 
   const handleConfirm = () => {
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+
     const pct = Number.parseFloat(trailingPct)
     const lock = Number.parseFloat(minLockPct || '0')
 
@@ -80,7 +90,7 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
 
   return (
     <Modal
-      open={open}
+      open={open && canCreateOrders}
       onClose={handleClose}
       title={t('trailingStopModal.title', { instrument })}
       size='sm'
@@ -152,6 +162,7 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
             <button
               type='button'
               onClick={handleSubmit}
+              disabled={!canCreateOrders}
               className='rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-500'
               data-testid='trailing-stop-submit'
             >
@@ -203,7 +214,7 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
             <button
               type='button'
               onClick={handleConfirm}
-              disabled={createTrailingStop.isPending}
+              disabled={!canCreateOrders || createTrailingStop.isPending}
               className='rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-500 disabled:opacity-50'
               data-testid='trailing-stop-confirm'
             >

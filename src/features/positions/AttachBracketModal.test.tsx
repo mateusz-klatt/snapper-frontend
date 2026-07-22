@@ -8,6 +8,14 @@ import { validateBracketPrices } from './validation'
 
 const mockMutate = vi.fn()
 const mockReset = vi.fn()
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
 
 vi.mock('../../hooks/queries/positions', () => ({
   useCreateBracket: vi.fn(() => ({
@@ -42,6 +50,7 @@ const defaultProps = {
 describe('AttachBracketModal', () => {
   beforeEach(async () => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
     const { useCreateBracket } = await import('../../hooks/queries/positions')
 
     vi.mocked(useCreateBracket).mockReturnValue({
@@ -55,6 +64,37 @@ describe('AttachBracketModal', () => {
     renderWithProviders(<AttachBracketModal {...defaultProps} />)
     expect(screen.getByTestId('sl-price-input')).toBeInTheDocument()
     expect(screen.getByTestId('tp-price-input')).toBeInTheDocument()
+  })
+
+  it('does not expose bracket controls without create:orders', () => {
+    mockHasPermission.mockReturnValue(false)
+    renderWithProviders(<AttachBracketModal {...defaultProps} />)
+
+    expect(screen.queryByTestId('bracket-submit')).not.toBeInTheDocument()
+    expect(mockMutate).not.toHaveBeenCalled()
+  })
+
+  it('rechecks create:orders before bracket review', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<AttachBracketModal {...defaultProps} />)
+    mockHasPermission.mockReturnValue(false)
+    await user.click(screen.getByTestId('bracket-submit'))
+
+    expect(screen.queryByTestId('bracket-error')).not.toBeInTheDocument()
+    expect(mockMutate).not.toHaveBeenCalled()
+  })
+
+  it('rechecks create:orders before bracket confirmation', async () => {
+    const user = userEvent.setup()
+
+    renderWithProviders(<AttachBracketModal {...defaultProps} />)
+    await user.type(screen.getByTestId('sl-price-input'), '49000')
+    await user.click(screen.getByTestId('bracket-submit'))
+    mockHasPermission.mockReturnValue(false)
+    await user.click(screen.getByTestId('bracket-confirm'))
+
+    expect(mockMutate).not.toHaveBeenCalled()
   })
 
   it('shows position info header', () => {

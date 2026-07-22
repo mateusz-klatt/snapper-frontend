@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useCreateBracket } from '../../hooks/queries/positions'
+import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 import { validateBracketPrices } from './validation'
 import { formatQuoted, quoteCurrency } from './instrumentQuote'
 
@@ -23,6 +26,9 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
   averagePrice,
 }) => {
   const { t } = useTranslation('positions')
+  const { hasPermission } = useAuth()
+  const readOnly = useIsReadOnly()
+  const canCreateOrders = hasPermission(Permission.CREATE_ORDERS) && !readOnly
   const createBracket = useCreateBracket()
   const [slPrice, setSlPrice] = useState('')
   const [tpPrice, setTpPrice] = useState('')
@@ -40,6 +46,8 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
   }
 
   const handleSubmit = () => {
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+
     setError('')
     const sl = slPrice ? Number.parseFloat(slPrice) : null
     const tp = tpPrice ? Number.parseFloat(tpPrice) : null
@@ -57,6 +65,8 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
   }
 
   const handleConfirm = () => {
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+
     const sl = slPrice ? Number.parseFloat(slPrice) : null
     const tp = tpPrice ? Number.parseFloat(tpPrice) : null
 
@@ -82,7 +92,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
 
   return (
     <Modal
-      open={open}
+      open={open && canCreateOrders}
       onClose={handleClose}
       title={t('bracketModal.title', { instrument })}
       size='sm'
@@ -158,6 +168,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
             <button
               type='button'
               onClick={handleSubmit}
+              disabled={!canCreateOrders}
               className='rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-500'
               data-testid='bracket-submit'
             >
@@ -206,7 +217,7 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
             <button
               type='button'
               onClick={handleConfirm}
-              disabled={createBracket.isPending}
+              disabled={!canCreateOrders || createBracket.isPending}
               className='rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-500 disabled:opacity-50'
               data-testid='bracket-confirm'
             >

@@ -5,6 +5,15 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { NewOrderModal } from './NewOrderModal'
 
+const mockHasPermission = vi.fn(() => true)
+
+vi.mock('../../stores/auth', () => ({
+  useAuth: () => ({ hasPermission: mockHasPermission }),
+}))
+vi.mock('../../hooks/useIsReadOnly', () => ({
+  useIsReadOnly: () => false,
+}))
+
 vi.mock('../../components/ui/Modal', () => ({
   Modal: (props: { open: boolean; onClose: () => void; children: ReactNode }) =>
     props.open ? <div data-testid='modal'>{props.children}</div> : null,
@@ -86,6 +95,7 @@ function createWrapper() {
 describe('NewOrderModal', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    mockHasPermission.mockReturnValue(true)
   })
 
   it('does not render when closed', () => {
@@ -101,6 +111,44 @@ describe('NewOrderModal', () => {
     })
     expect(screen.getByText('New Manual Order')).toBeTruthy()
     expect(screen.getByText('Review Order')).toBeTruthy()
+  })
+
+  it('does not expose order creation without create:orders', () => {
+    mockHasPermission.mockReturnValue(false)
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, {
+      wrapper: createWrapper(),
+    })
+
+    expect(screen.getByTestId('modal')).toBeInTheDocument()
+    expect(screen.getByText('Review Order')).toBeDisabled()
+    expect(mockMutateAsync).not.toHaveBeenCalled()
+  })
+
+  it('rechecks create:orders before reviewing an already-rendered order', async () => {
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, {
+      wrapper: createWrapper(),
+    })
+    mockHasPermission.mockReturnValue(false)
+    await userEvent.click(screen.getByText('Review Order'))
+
+    expect(screen.queryByText('All required fields must be filled')).not.toBeInTheDocument()
+    expect(mockMutateAsync).not.toHaveBeenCalled()
+  })
+
+  it('rechecks create:orders before confirming an already-reviewed order', async () => {
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, {
+      wrapper: createWrapper(),
+    })
+    const inputs = screen.getAllByPlaceholderText('0.00')
+
+    fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
+    fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
+    await userEvent.click(screen.getByText('Review Order'))
+    await screen.findByRole('button', { name: 'Confirm Order' })
+    mockHasPermission.mockReturnValue(false)
+    await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+
+    expect(mockMutateAsync).not.toHaveBeenCalled()
   })
 
   it('shows validation error when required fields empty', async () => {

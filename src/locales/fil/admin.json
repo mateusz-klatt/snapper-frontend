@@ -7,11 +7,11 @@
     "title": "Permissions ng Role",
     "viewer": {
       "label": "Viewer",
-      "description": "Read-only access sa Overview at Market Data. Hindi puwedeng mag-manage ng processes, strategies, o system settings."
+      "description": "Kumpletong read-only na visibility ng operator sa mga account, wallet at portfolio, signal, desisyon ng AI, P&L, backtest, strategy, process, at kalagayan ng system. Hindi makakagawa ng mga operasyonal na aksyon."
     },
     "operator": {
       "label": "Operator",
-      "description": "Lahat ng Viewer permissions, plus trading operations, strategy execution, process management, at system health monitoring."
+      "description": "Lahat ng visibility ng Viewer, kasama ang mga kontrol sa trading, position, strategy, process, backtest, at AI integration."
     },
     "admin": {
       "label": "Admin",

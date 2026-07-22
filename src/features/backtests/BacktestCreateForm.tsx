@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { useBacktestStrategyClasses, useCreateBacktest } from '../../hooks/queries/backtests'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 import type { BacktestCreateBody } from '../../types/api'
 
 export interface BacktestCreateFormProps {
@@ -31,7 +33,10 @@ export const BacktestCreateForm: React.FC<Readonly<BacktestCreateFormProps>> = (
 }) => {
   const { t } = useTranslation('backtests')
   const readOnly = useIsReadOnly()
-  const strategyClasses = useBacktestStrategyClasses(open)
+  const { hasPermission } = useAuth()
+  const hasManagePermission = hasPermission(Permission.MANAGE_BACKTESTS)
+  const canManage = hasManagePermission && !readOnly
+  const strategyClasses = useBacktestStrategyClasses(open && hasManagePermission)
   const createBacktest = useCreateBacktest()
 
   const [strategyClass, setStrategyClass] = useState<string>('')
@@ -84,6 +89,9 @@ export const BacktestCreateForm: React.FC<Readonly<BacktestCreateFormProps>> = (
 
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (!hasPermission(Permission.MANAGE_BACKTESTS) || readOnly) return
+
     setClientError(null)
 
     if (startDate !== '' && endDate !== '' && new Date(endDate) <= new Date(startDate)) {
@@ -119,7 +127,7 @@ export const BacktestCreateForm: React.FC<Readonly<BacktestCreateFormProps>> = (
   }
 
   return (
-    <Modal open={open} onClose={onClose} title={t('create.title')} size='lg'>
+    <Modal open={open && hasManagePermission} onClose={onClose} title={t('create.title')} size='lg'>
       <form onSubmit={handleSubmit} className='space-y-5'>
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
           <div>
@@ -322,7 +330,7 @@ export const BacktestCreateForm: React.FC<Readonly<BacktestCreateFormProps>> = (
           </button>
           <button
             type='submit'
-            disabled={readOnly || createBacktest.isPending || !requiredFilled}
+            disabled={!canManage || createBacktest.isPending || !requiredFilled}
             className='px-4 py-2 bg-info-600 text-info-50 text-sm font-medium rounded-md hover:bg-info-700 disabled:opacity-50 disabled:cursor-not-allowed'
           >
             {createBacktest.isPending ? t('create.submitting') : t('create.submit')}

@@ -11,16 +11,17 @@ import {
   AI_REVIEW_ACTIVITY_QUERY_KEY_ROOT,
   aiReviewActivityQueryKey,
 } from '../../stores/wsDispatcher'
+import { Permission } from '../../types/permissions.generated'
 import { queryKeys } from './keys'
 
 /**
  * List pending CONSULT reviews for the authenticated AI delegate.
  *
- * Gated by ``role === 'ai_delegate'`` because the REST endpoint
- * (`GET /api/ai-reviews/pending`) returns 422 for any other role:
- * the snapshot is keyed by ``AuthPrincipal.delegate_public_id`` which
- * is only populated for delegate principals. Pre-empting the call
- * client-side keeps non-delegate UIs free of misleading 422 errors.
+ * Gated by the effective READ_SIGNALS capability plus a resolved delegate
+ * lifecycle identity because the REST snapshot is keyed by
+ * ``AuthPrincipal.delegate_public_id``. Pre-empting the call client-side
+ * keeps principals without that complete capability and state free of
+ * misleading 422 errors.
  *
  * Snapshot-only REST: a single fetch on mount, then refreshes are
  * driven exclusively by the WSDispatcher's invalidation hook on
@@ -32,10 +33,10 @@ import { queryKeys } from './keys'
 export const usePendingAiReviews = (
   params: Readonly<{ walletPublicId?: string | null; limit?: number | undefined }> = {}
 ) => {
-  const { isAuthenticated, user } = useAuth()
+  const { isAuthenticated, user, hasPermission } = useAuth()
   const walletPublicId = params.walletPublicId ?? null
   const limit = params.limit ?? null
-  const isDelegate = user?.role === 'ai_delegate'
+  const canReadPending = user?.delegate_public_id != null && hasPermission(Permission.READ_SIGNALS)
   const userPublicId = user?.public_id ?? null
 
   return useQuery({
@@ -45,7 +46,7 @@ export const usePendingAiReviews = (
         ...(walletPublicId === null ? {} : { wallet_public_id: walletPublicId }),
         ...(limit === null ? {} : { limit }),
       }),
-    enabled: isAuthenticated && isDelegate && userPublicId !== null,
+    enabled: isAuthenticated && canReadPending && userPublicId !== null,
     staleTime: Infinity,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
@@ -56,19 +57,15 @@ export const usePendingAiReviews = (
 const AI_REVIEWS_DEFAULT_LIMIT = 100
 
 /**
- * List AI reviews (newest-first) for the operator/admin audit view.
+ * List AI reviews (newest-first) for the audit view.
  *
- * Backs the read-only "AI decisions" surface for non-delegate roles.
- * Gated to NON-delegate operator/admin principals: the backend
- * `GET /api/ai-reviews` requires the OPERATOR role (delegates use the
- * pending inbox instead), so a delegate call would 403. Enabling it only
- * for the audience that can read it keeps the delegate UI free of the
- * error. Snapshot poll (30s) plus refetch-on-focus so an operator sees
- * fresh decisions without a manual reload.
+ * Backs the read-only "AI decisions" surface for principals with the
+ * effective READ_AI_REVIEWS permission. Snapshot poll (30s) plus
+ * refetch-on-focus keeps decisions fresh without a manual reload.
  */
 export const useAiReviews = (limit: number = AI_REVIEWS_DEFAULT_LIMIT) => {
-  const { isAuthenticated, user } = useAuth()
-  const canReadDecisions = user?.role === 'operator' || user?.role === 'admin'
+  const { isAuthenticated, hasPermission } = useAuth()
+  const canReadDecisions = hasPermission(Permission.READ_AI_REVIEWS)
 
   return useQuery({
     queryKey: queryKeys.aiReviews(limit),
@@ -123,11 +120,9 @@ export const useSubmitAiReviewDecision = () => {
  * ``(type, review_public_id, dispatch_version)`` and capped at
  * :data:`AI_REVIEW_ACTIVITY_RING_CAP`.
  *
- * Unlike :func:`usePendingAiReviews` this hook does not gate by role
- * because non-delegate sockets receive zero ai_reviews frames anyway
- * (the WS scope filter at ``snapper.interface.websocket.scope_filter``
- * drops them), so the cache stays empty for non-delegates without
- * extra logic here.
+ * Unlike :func:`usePendingAiReviews` this hook needs no client capability
+ * gate because the server filters frames by effective permissions and
+ * delegate lifecycle state before they enter this cache.
  */
 export const useAiReviewActivity = () => {
   const queryClient = useQueryClient()

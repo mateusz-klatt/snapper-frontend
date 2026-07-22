@@ -14,6 +14,7 @@ import {
 import { useHeartbeats, type HeartbeatData } from '../../hooks/useHeartbeats'
 import { useConfirmDialog } from '../../hooks/useConfirmDialog'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
 import { formatDateTime } from '../../lib/dateFormat'
 import type { AppLocale } from '../../i18n/types'
 import { ProcessControlCard } from './ProcessControlCard'
@@ -22,6 +23,7 @@ import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
 import { ProcessesSkeleton } from '../../components/Skeleton'
 import type { ConfiguredProcess, AvailableProcess, ProcessRun } from '../../types/api'
 import { noop } from '../../lib/noop'
+import { Permission } from '../../types/permissions.generated'
 
 const UNKNOWN_HEARTBEAT: HeartbeatData = {
   status: 'unknown',
@@ -37,6 +39,16 @@ type RemoteProcessAction = 'enable' | 'disable' | 'restart'
 export const Processes: React.FC = () => {
   const { t, i18n } = useTranslation('processes')
   const readOnly = useIsReadOnly()
+  const { hasPermission } = useAuth()
+  const canControlProcesses = hasPermission(Permission.MANAGE_PROCESSES) && !readOnly
+  const runIfCanControl = React.useCallback(
+    (action: () => void): void => {
+      if (!hasPermission(Permission.MANAGE_PROCESSES) || readOnly) return
+
+      action()
+    },
+    [hasPermission, readOnly]
+  )
   const { openConfirm, dialogProps: confirmDialogProps } = useConfirmDialog()
 
   const resolveStatusBadge = (process: ConfiguredProcess): string => {
@@ -198,33 +210,42 @@ export const Processes: React.FC = () => {
 
   const handleStart = React.useCallback(
     (name: string, description: string) => {
-      showExecutionModeModal(name, description, ({ executionMode }) =>
-        startProcess.mutate({ name, mode: executionMode })
-      )
+      runIfCanControl(() => {
+        showExecutionModeModal(name, description, ({ executionMode }) => {
+          runIfCanControl(() => startProcess.mutate({ name, mode: executionMode }))
+        })
+      })
     },
-    [startProcess, showExecutionModeModal]
+    [runIfCanControl, startProcess, showExecutionModeModal]
   )
 
   const handleStop = React.useCallback(
     (processName: string, message: string) => {
-      openConfirm({
-        title: t('actions.stopTitle', { name: processName }),
-        message,
-        onConfirm: () => stopProcess.mutate({ name: processName }),
+      runIfCanControl(() => {
+        openConfirm({
+          title: t('actions.stopTitle', { name: processName }),
+          message,
+          onConfirm: () => runIfCanControl(() => stopProcess.mutate({ name: processName })),
+        })
       })
     },
-    [stopProcess, openConfirm, t]
+    [runIfCanControl, stopProcess, openConfirm, t]
   )
 
   const handleRestart = React.useCallback(
     (processName: string, stopMessage: string, openStartModal: () => void) => {
-      openConfirm({
-        title: t('actions.restartTitle', { name: processName }),
-        message: stopMessage,
-        onConfirm: () => stopProcess.mutate({ name: processName }, { onSuccess: openStartModal }),
+      runIfCanControl(() => {
+        openConfirm({
+          title: t('actions.restartTitle', { name: processName }),
+          message: stopMessage,
+          onConfirm: () =>
+            runIfCanControl(() =>
+              stopProcess.mutate({ name: processName }, { onSuccess: openStartModal })
+            ),
+        })
       })
     },
-    [stopProcess, openConfirm, t]
+    [runIfCanControl, stopProcess, openConfirm, t]
   )
 
   const clearPendingRemote = React.useCallback((name: string) => {
@@ -239,21 +260,26 @@ export const Processes: React.FC = () => {
 
   const runRemote = React.useCallback(
     (name: string, action: RemoteProcessAction, restartNonce?: string) => {
-      setPendingRemote(prev => ({ ...prev, [name]: action }))
-      patchDesiredState
-        .mutateAsync({
-          name,
-          body: { action, ...(restartNonce === undefined ? {} : { restart_nonce: restartNonce }) },
-        })
-        .catch((error: Error) => {
-          toast.error(t('toast.remoteActionFailed', { message: error.message }), {
-            duration: 5000,
-            icon: '⚠️',
+      runIfCanControl(() => {
+        setPendingRemote(prev => ({ ...prev, [name]: action }))
+        patchDesiredState
+          .mutateAsync({
+            name,
+            body: {
+              action,
+              ...(restartNonce === undefined ? {} : { restart_nonce: restartNonce }),
+            },
           })
-        })
-        .finally(() => clearPendingRemote(name))
+          .catch((error: Error) => {
+            toast.error(t('toast.remoteActionFailed', { message: error.message }), {
+              duration: 5000,
+              icon: '⚠️',
+            })
+          })
+          .finally(() => clearPendingRemote(name))
+      })
     },
-    [patchDesiredState, clearPendingRemote, t]
+    [runIfCanControl, patchDesiredState, clearPendingRemote, t]
   )
 
   const remotePending = React.useCallback(
@@ -262,32 +288,38 @@ export const Processes: React.FC = () => {
   )
 
   const handleRemoteEnable = React.useCallback(
-    (name: string) => runRemote(name, 'enable'),
+    (name: string) => {
+      runRemote(name, 'enable')
+    },
     [runRemote]
   )
 
   const handleRemoteDisable = React.useCallback(
     (name: string, message: string) => {
-      openConfirm({
-        title: t('actions.stopTitle', { name }),
-        message,
-        onConfirm: () => runRemote(name, 'disable'),
+      runIfCanControl(() => {
+        openConfirm({
+          title: t('actions.stopTitle', { name }),
+          message,
+          onConfirm: () => runRemote(name, 'disable'),
+        })
       })
     },
-    [runRemote, openConfirm, t]
+    [runIfCanControl, runRemote, openConfirm, t]
   )
 
   const handleRemoteRestart = React.useCallback(
     (name: string, message: string) => {
-      const restartNonce = uuid7()
+      runIfCanControl(() => {
+        const restartNonce = uuid7()
 
-      openConfirm({
-        title: t('actions.restartTitle', { name }),
-        message,
-        onConfirm: () => runRemote(name, 'restart', restartNonce),
+        openConfirm({
+          title: t('actions.restartTitle', { name }),
+          message,
+          onConfirm: () => runRemote(name, 'restart', restartNonce),
+        })
       })
     },
-    [runRemote, openConfirm, t]
+    [runIfCanControl, runRemote, openConfirm, t]
   )
 
   const getHeartbeat = React.useCallback(
@@ -380,7 +412,7 @@ export const Processes: React.FC = () => {
                     : stopProcess.isPending && stopProcess.variables?.name === process.name
                 }
                 isRestarting={process.managed_remotely && remotePending(process.name, 'restart')}
-                readOnly={readOnly}
+                readOnly={!canControlProcesses}
                 managedRemotely={process.managed_remotely}
                 enabled={process.enabled}
                 coordinator={process.coordinator}
@@ -484,7 +516,7 @@ export const Processes: React.FC = () => {
                   isStopping={
                     stopProcess.isPending && stopProcess.variables?.name === instance.name
                   }
-                  readOnly={readOnly}
+                  readOnly={!canControlProcesses}
                 />
               )
             })}
@@ -522,7 +554,7 @@ export const Processes: React.FC = () => {
                   status={status}
                   statusBadge={statusBadge}
                   details={details}
-                  readOnly={readOnly}
+                  readOnly={!canControlProcesses}
                   onStart={() => handleStart(process.name, description)}
                   onStop={() =>
                     handleStop(process.name, t('actions.stopMessage', { name: process.name }))
@@ -552,6 +584,7 @@ export const Processes: React.FC = () => {
         onStart={executionModeModal.onStart}
         componentName={executionModeModal.componentName}
         description={executionModeModal.description}
+        canManage={canControlProcesses}
       />
     </div>
   )

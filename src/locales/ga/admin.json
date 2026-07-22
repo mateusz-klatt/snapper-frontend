@@ -7,11 +7,11 @@
     "title": "Ceadanna Ról",
     "viewer": {
       "label": "Amharcóir",
-      "description": "Rochtain inléite amháin ar an bhForbhreathnú agus ar Shonraí Margaidh. Ní féidir próisis, straitéisí ná socruithe córais a bhainistiú."
+      "description": "Infheictheacht iomlán oibreora inléite amháin ar chuntais, sparán agus punanna, comharthaí, cinntí AI, brabús agus caillteanas, cúltástálacha, straitéisí, próisis agus sláinte an chórais. Ní féidir gníomhartha oibríochtúla a dhéanamh."
     },
     "operator": {
       "label": "Oibreoir",
-      "description": "Gach cead Amharcóra, móide oibríochtaí trádála, rith straitéisí, bainistiú próiseas agus monatóireacht ar shláinte an chórais."
+      "description": "Infheictheacht uile an Amharcóra, chomh maith le rialuithe trádála, suíomhanna, straitéisí, próisis, cúltástálacha agus comhtháthú AI."
     },
     "admin": {
       "label": "Riarthóir",

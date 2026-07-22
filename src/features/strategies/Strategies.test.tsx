@@ -1224,6 +1224,75 @@ describe('Strategies', () => {
     })
     expect(mockStartMutateAsync).not.toHaveBeenCalled()
   })
+  it('persists a configure-only launch as disabled and never starts it', async () => {
+    const {
+      useAvailableProcesses,
+      useCreateProcessConfig,
+      useStartProcessByName,
+      useProcessSchema,
+    } = await import('../../hooks/queries/processes')
+    const { useAuth } = await import('../../stores/auth')
+
+    vi.mocked(useAuth).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'configure:strategies',
+    } as never)
+    vi.mocked(useAvailableProcesses).mockReturnValue({
+      data: {
+        payload: [
+          {
+            name: 'strategy_macd',
+            class_path: 'snapper.strategy_macd',
+            method: 'main',
+            description: 'MACD Template',
+            lifecycle: 'long_running',
+            role: 'strategy',
+            tags: [],
+          },
+        ],
+      },
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useProcessSchema).mockReturnValue({
+      data: {
+        payload: {
+          default_args: [],
+          default_parameters: { name: 'macd_default' },
+          default_mode: 'thread',
+        },
+      },
+      isLoading: false,
+      error: null,
+    } as never)
+    const createConfig = vi.fn().mockResolvedValue({})
+    const startConfig = vi.fn().mockResolvedValue({})
+
+    vi.mocked(useCreateProcessConfig).mockReturnValue({
+      mutateAsync: createConfig,
+      isPending: false,
+    } as never)
+    vi.mocked(useStartProcessByName).mockReturnValue({
+      mutate: vi.fn(),
+      mutateAsync: startConfig,
+      isPending: false,
+    } as never)
+    const user = (await import('@testing-library/user-event')).default.setup()
+
+    renderWithProviders(<Strategies />)
+    const registerButtons = await screen.findAllByText('Register Strategy')
+
+    await user.click(registerButtons[0] as HTMLElement)
+    const submitButtons = await screen.findAllByRole('button', { name: /Register strategy/i })
+    const submit = submitButtons.find(button => button.getAttribute('type') === 'submit')
+
+    expect(submit).toBeDefined()
+    await user.click(submit as HTMLElement)
+    await waitFor(() => {
+      expect(createConfig).toHaveBeenCalledWith(expect.objectContaining({ enabled: false }))
+    })
+    expect(startConfig).not.toHaveBeenCalled()
+    vi.mocked(useAuth).mockReturnValue({ hasPermission: () => true } as never)
+  })
   it('handles strategy launch error', async () => {
     const { useAvailableProcesses, useCreateProcessConfig, useProcessSchema } =
       await import('../../hooks/queries/processes')
@@ -1873,7 +1942,7 @@ describe('Strategies', () => {
       expect(screen.getByText('Register Strategy Process')).toBeTruthy()
     })
   })
-  it('hides action buttons for viewer without manage permission', async () => {
+  it('hides action buttons without any strategy mutation permission', async () => {
     const { useAuth } = await import('../../stores/auth')
 
     vi.mocked(useAuth).mockReturnValue({
@@ -1898,6 +1967,181 @@ describe('Strategies', () => {
     vi.mocked(useAuth).mockReturnValue({
       hasPermission: () => true,
     } as never)
+  })
+  it('shows only Start for a stopped strategy with START_STRATEGIES alone', async () => {
+    const { useAuth } = await import('../../stores/auth')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useAuth).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'start:strategies',
+    } as never)
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [
+        makeStrategyProcess({ name: 'strategy_start_only', running: false }),
+      ]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+
+    await screen.findByText('START ONLY')
+    expect(screen.getByRole('button', { name: /Start START ONLY strategy/i })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Stop START ONLY strategy/i })).toBeNull()
+    expect(screen.queryByText('Register Strategy')).toBeNull()
+    expect(screen.queryByText('Edit scope')).toBeNull()
+    vi.mocked(useAuth).mockReturnValue({ hasPermission: () => true } as never)
+  })
+  it('shows only Stop for a running strategy with STOP_STRATEGIES alone', async () => {
+    const { useAuth } = await import('../../stores/auth')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useAuth).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'stop:strategies',
+    } as never)
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [
+        makeStrategyProcess({
+          name: 'strategy_stop_only',
+          running: true,
+          enabled: true,
+          managed_remotely: true,
+        }),
+      ]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+
+    await screen.findByText('STOP ONLY')
+    expect(screen.getByRole('button', { name: /Stop STOP ONLY strategy/i })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Restart STOP ONLY strategy/i })).toBeNull()
+    expect(screen.queryByText('Register Strategy')).toBeNull()
+    vi.mocked(useAuth).mockReturnValue({ hasPermission: () => true } as never)
+  })
+  it('shows configure controls without execution controls for CONFIGURE_STRATEGIES alone', async () => {
+    const { useAuth } = await import('../../stores/auth')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+    const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
+
+    vi.mocked(useAuth).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'configure:strategies',
+    } as never)
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [
+        makeStrategyProcess({ name: 'strategy_configure_only', running: false }),
+      ]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useConfiguredProcesses).mockReturnValue({
+      data: {
+        payload: [
+          makeConfiguredProcess({
+            name: 'strategy_configure_only',
+            role: 'strategy',
+            parameters: { operator_public_id: 'label:default' },
+          }),
+        ],
+      },
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Strategies />)
+
+    await screen.findByText('CONFIGURE ONLY')
+    expect(screen.getAllByText('Register Strategy').length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText('Edit scope')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Start CONFIGURE ONLY strategy/i })).toBeNull()
+    expect(screen.queryByRole('button', { name: /Stop CONFIGURE ONLY strategy/i })).toBeNull()
+    vi.mocked(useAuth).mockReturnValue({ hasPermission: () => true } as never)
+  })
+  it('shows Restart only when a remote strategy grants both START and STOP', async () => {
+    const { useAuth } = await import('../../stores/auth')
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useAuth).mockReturnValue({
+      hasPermission: (permission: string) =>
+        permission === 'start:strategies' || permission === 'stop:strategies',
+    } as never)
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [
+        makeStrategyProcess({
+          name: 'strategy_restart_grants',
+          running: true,
+          enabled: true,
+          managed_remotely: true,
+        }),
+      ]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+
+    await screen.findByText('RESTART GRANTS')
+    expect(
+      screen.getByRole('button', { name: /Restart RESTART GRANTS strategy/i })
+    ).toBeInTheDocument()
+    expect(screen.queryByText('Register Strategy')).toBeNull()
+    vi.mocked(useAuth).mockReturnValue({ hasPermission: () => true } as never)
+  })
+  it('rechecks START_STRATEGIES before an already-rendered strategy control executes', async () => {
+    const { useAuth } = await import('../../stores/auth')
+    const hasPermission = vi.fn<(permission: string) => boolean>(() => true)
+
+    vi.mocked(useAuth).mockReturnValue({ hasPermission } as never)
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [
+        makeStrategyProcess({ name: 'strategy_permission_revoked', running: false }),
+      ]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await screen.findByText('PERMISSION REVOKED')
+    const startButton = screen.getByRole('button', {
+      name: /Start PERMISSION REVOKED strategy/i,
+    })
+
+    hasPermission.mockReturnValue(false)
+    fireEvent.click(startButton)
+
+    expect(screen.queryByText(/Start strategy_permission_revoked/)).not.toBeInTheDocument()
+    expect(mockStartProcess).not.toHaveBeenCalled()
+    vi.mocked(useAuth).mockReturnValue({ hasPermission: () => true } as never)
+  })
+  it('does not open stop or restart handlers after STOP_STRATEGIES is revoked', async () => {
+    const { useAuth } = await import('../../stores/auth')
+    const granted = new Set(['start:strategies', 'stop:strategies'])
+    const hasPermission = vi.fn((permission: string) => granted.has(permission))
+
+    vi.mocked(useAuth).mockReturnValue({ hasPermission } as never)
+    const { useStrategies } = await import('../../hooks/queries/strategies')
+
+    vi.mocked(useStrategies).mockReturnValue({
+      data: makeListEnvelope('strategy_list', [
+        makeStrategyProcess({
+          name: 'strategy_stop_revoked',
+          running: true,
+          enabled: true,
+          managed_remotely: true,
+        }),
+      ]),
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Strategies />)
+    await screen.findByText('STOP REVOKED')
+    const stopButton = screen.getByRole('button', { name: /Stop STOP REVOKED strategy/i })
+    const restartButton = screen.getByRole('button', { name: /Restart STOP REVOKED strategy/i })
+
+    granted.delete('stop:strategies')
+    fireEvent.click(stopButton)
+    fireEvent.click(restartButton)
+
+    expect(screen.queryByRole('button', { name: /confirm/i })).toBeNull()
+    expect(mockPatchDesiredStateAsync).not.toHaveBeenCalled()
+    vi.mocked(useAuth).mockReturnValue({ hasPermission: () => true } as never)
   })
   it('shows viewer empty state without register button', async () => {
     const { useAuth } = await import('../../stores/auth')

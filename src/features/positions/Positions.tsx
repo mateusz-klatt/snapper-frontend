@@ -4,6 +4,7 @@ import { Shield, TrendingDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { usePositions, useTrailingStopForCycle } from '../../hooks/queries/positions'
 import { useAppStore } from '../../stores/app'
+import { useAuth } from '../../stores/auth'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
@@ -15,6 +16,7 @@ import { PortfolioTimeline } from './PortfolioTimeline'
 import { quoteCurrency } from './instrumentQuote'
 import type { Position } from '../../types/entities'
 import type { TrailingStopByCycleResult } from '../../types/api'
+import { Permission } from '../../types/permissions.generated'
 
 type PositionSide = 'LONG' | 'SHORT' | 'FLAT'
 
@@ -69,6 +71,7 @@ interface PositionRowProps {
   onAttachBracket: (position: Position) => void
   onAttachTrailingStop: (position: Position) => void
   isTimeTraveling: boolean
+  canCreateOrders: boolean
 }
 
 const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined }> = ({ cyclePublicId }) => {
@@ -98,6 +101,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
   onAttachBracket,
   onAttachTrailingStop,
   isTimeTraveling,
+  canCreateOrders,
 }) => {
   const { t, i18n } = useTranslation('positions')
   const side = getPositionSide(position.quantity)
@@ -106,7 +110,8 @@ const PositionRow: React.FC<PositionRowProps> = ({
   const suffix = positionIdSuffix(position)
   const quote = quoteCurrency(position.instrument)
   const hasCycle = !!position.positionCyclePublicId
-  const canAttach = hasCycle && side !== 'FLAT' && !isTimeTraveling
+  const showLiveProtectiveState = hasCycle && side !== 'FLAT' && !isTimeTraveling
+  const canAttach = showLiveProtectiveState && canCreateOrders
   const attachable = position.averagePrice != null
 
   return (
@@ -125,7 +130,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
           >
             {side}
           </span>
-          {canAttach && (
+          {showLiveProtectiveState && (
             <TrailingStopBadge cyclePublicId={position.positionCyclePublicId as string} />
           )}
         </div>
@@ -216,17 +221,39 @@ const PositionRow: React.FC<PositionRowProps> = ({
 
 export const Positions: React.FC = () => {
   const { t } = useTranslation('positions')
+  const { hasPermission } = useAuth()
   const { data: positions = [], isLoading } = usePositions()
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
+  const canCreateOrders = hasPermission(Permission.CREATE_ORDERS) && !isTimeTraveling
   const [bracketTarget, setBracketTarget] = useState<Position | null>(null)
   const [trailingStopTarget, setTrailingStopTarget] = useState<Position | null>(null)
   const [activeView, setActiveView] = useState<'current' | 'timeline'>('current')
 
   const handleAttachBracket = (position: Position) => {
+    if (
+      !hasPermission(Permission.CREATE_ORDERS) ||
+      isTimeTraveling ||
+      position.positionCyclePublicId == null ||
+      position.averagePrice == null ||
+      getPositionSide(position.quantity) === 'FLAT'
+    ) {
+      return
+    }
+
     setBracketTarget(position)
   }
 
   const handleAttachTrailingStop = (position: Position) => {
+    if (
+      !hasPermission(Permission.CREATE_ORDERS) ||
+      isTimeTraveling ||
+      position.positionCyclePublicId == null ||
+      position.averagePrice == null ||
+      getPositionSide(position.quantity) === 'FLAT'
+    ) {
+      return
+    }
+
     setTrailingStopTarget(position)
   }
 
@@ -237,26 +264,30 @@ export const Positions: React.FC = () => {
 
   return (
     <div className='space-y-6'>
-      {bracketTarget?.positionCyclePublicId && bracketTarget.averagePrice != null && (
-        <AttachBracketModal
-          open={true}
-          onClose={() => setBracketTarget(null)}
-          positionCyclePublicId={bracketTarget.positionCyclePublicId}
-          instrument={bracketTarget.instrument}
-          side={bracketSide}
-          averagePrice={bracketTarget.averagePrice}
-        />
-      )}
-      {trailingStopTarget?.positionCyclePublicId && trailingStopTarget.averagePrice != null && (
-        <AttachTrailingStopModal
-          open={true}
-          onClose={() => setTrailingStopTarget(null)}
-          positionCyclePublicId={trailingStopTarget.positionCyclePublicId}
-          instrument={trailingStopTarget.instrument}
-          side={trailingStopSide}
-          averagePrice={trailingStopTarget.averagePrice}
-        />
-      )}
+      {canCreateOrders &&
+        bracketTarget?.positionCyclePublicId &&
+        bracketTarget.averagePrice != null && (
+          <AttachBracketModal
+            open={true}
+            onClose={() => setBracketTarget(null)}
+            positionCyclePublicId={bracketTarget.positionCyclePublicId}
+            instrument={bracketTarget.instrument}
+            side={bracketSide}
+            averagePrice={bracketTarget.averagePrice}
+          />
+        )}
+      {canCreateOrders &&
+        trailingStopTarget?.positionCyclePublicId &&
+        trailingStopTarget.averagePrice != null && (
+          <AttachTrailingStopModal
+            open={true}
+            onClose={() => setTrailingStopTarget(null)}
+            positionCyclePublicId={trailingStopTarget.positionCyclePublicId}
+            instrument={trailingStopTarget.instrument}
+            side={trailingStopSide}
+            averagePrice={trailingStopTarget.averagePrice}
+          />
+        )}
       <div className='flex items-center justify-between'>
         <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
         <div
@@ -316,6 +347,7 @@ export const Positions: React.FC = () => {
                   onAttachBracket={handleAttachBracket}
                   onAttachTrailingStop={handleAttachTrailingStop}
                   isTimeTraveling={isTimeTraveling}
+                  canCreateOrders={canCreateOrders}
                 />
               ))}
             </div>

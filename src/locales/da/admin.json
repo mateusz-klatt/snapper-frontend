@@ -7,11 +7,11 @@
     "title": "Rolletilladelser",
     "viewer": {
       "label": "Læser",
-      "description": "Skrivebeskyttet adgang til Overblik og Markedsdata. Kan ikke administrere processer, strategier eller systemindstillinger."
+      "description": "Fuld skrivebeskyttet operatørindsigt i konti, wallets og porteføljer, signaler, AI-beslutninger, resultat, backtests, strategier, processer og systemtilstand. Kan ikke udføre driftsmæssige handlinger."
     },
     "operator": {
       "label": "Operatør",
-      "description": "Alle læsertilladelser plus tradingdrift, strategiudførsel, procesadministration og overvågning af systemsundhed."
+      "description": "Al Læser-synlighed plus styring af handel, positioner, strategier, processer, backtests og AI-integration."
     },
     "admin": {
       "label": "Administrator",

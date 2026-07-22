@@ -114,6 +114,7 @@ describe('user management API methods', () => {
             is_active: true,
             created_at: '2024-01-01T00:00:00Z',
             operator_public_ids: [],
+            effective_permissions: [],
           },
         ],
         count: 1,
@@ -170,6 +171,7 @@ describe('user management API methods', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
       }),
     })
@@ -208,6 +210,7 @@ describe('user management API methods', () => {
           is_active: true,
           created_at: '2026-01-01T00:00:00Z',
           operator_public_ids: [],
+          effective_permissions: [],
         },
       }),
     })

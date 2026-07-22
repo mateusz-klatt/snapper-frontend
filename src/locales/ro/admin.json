@@ -7,11 +7,11 @@
     "title": "Permisiuni pe roluri",
     "viewer": {
       "label": "Observator",
-      "description": "Acces doar pentru citire la Prezentare generală și Date de piață. Nu poate gestiona procese, strategii sau setări de sistem."
+      "description": "Vizibilitate completă de operator, doar pentru citire, asupra conturilor, portofelelor și portofoliilor, semnalelor, deciziilor IA, profitului și pierderii, backtesturilor, strategiilor, proceselor și stării sistemului. Nu poate efectua acțiuni operaționale."
     },
     "operator": {
       "label": "Operator",
-      "description": "Toate permisiunile Observatorului, plus operațiuni de trading, execuția strategiilor, gestionarea proceselor și monitorizarea stării sistemului."
+      "description": "Toată vizibilitatea Observatorului, plus controlul tranzacționării, pozițiilor, strategiilor, proceselor, backtesturilor și integrării IA."
     },
     "admin": {
       "label": "Administrator",

@@ -33,9 +33,18 @@ import type { StrategyProcess, ConfiguredProcess } from '../../types/api'
 type RemoteProcessAction = 'enable' | 'disable' | 'restart'
 type StrategyCardAction = () => void
 
+const remoteActionPermissions = (action: RemoteProcessAction): readonly Permission[] => {
+  if (action === 'enable') return [Permission.START_STRATEGIES]
+  if (action === 'disable') return [Permission.STOP_STRATEGIES]
+
+  return [Permission.START_STRATEGIES, Permission.STOP_STRATEGIES]
+}
+
 interface StrategyCardRenderParams {
   strategy: StrategyProcess
-  canManage: boolean
+  canConfigure: boolean
+  canStart: boolean
+  canStop: boolean
   canBacktest: boolean
   readOnly: boolean
   health: HealthStatus | undefined
@@ -54,7 +63,7 @@ interface StrategyCardRenderParams {
 }
 
 function startAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
-  if (!params.canManage) {
+  if (!params.canStart) {
     return undefined
   }
 
@@ -66,7 +75,7 @@ function startAction(params: StrategyCardRenderParams): StrategyCardAction | und
 }
 
 function stopAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
-  if (!params.canManage) {
+  if (!params.canStop) {
     return undefined
   }
 
@@ -78,7 +87,7 @@ function stopAction(params: StrategyCardRenderParams): StrategyCardAction | unde
 }
 
 function restartAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
-  if (!params.canManage || !params.strategy.managed_remotely) {
+  if (!params.canStart || !params.canStop || !params.strategy.managed_remotely) {
     return undefined
   }
 
@@ -98,7 +107,7 @@ function backtestAction(params: StrategyCardRenderParams): StrategyCardAction | 
 function editScopeAction(params: StrategyCardRenderParams): StrategyCardAction | undefined {
   const config = params.config
 
-  if (!params.canManage || params.readOnly || config === undefined) {
+  if (!params.canConfigure || params.readOnly || config === undefined) {
     return undefined
   }
 
@@ -163,7 +172,10 @@ export const Strategies: React.FC = () => {
   const { t } = useTranslation('strategies')
   const { hasPermission } = useAuth()
   const readOnly = useIsReadOnly()
-  const canManage = hasPermission(Permission.MANAGE_PROCESSES)
+  const canConfigure = hasPermission(Permission.CONFIGURE_STRATEGIES)
+  const canStart = hasPermission(Permission.START_STRATEGIES)
+  const canStop = hasPermission(Permission.STOP_STRATEGIES)
+  const canControl = canStart || canStop
   const canBacktest = hasPermission(Permission.MANAGE_BACKTESTS)
   const [strategyModalOpen, setStrategyModalOpen] = useState(false)
   const [backtestStrategyClass, setBacktestStrategyClass] = useState<string | null>(null)
@@ -193,11 +205,19 @@ export const Strategies: React.FC = () => {
   )
   const [editScopeTarget, setEditScopeTarget] = useState<StrategyScopeEditTarget | null>(null)
 
+  const runIfAllowed = <T,>(permissions: readonly Permission[], action: () => T): T | undefined => {
+    if (readOnly || permissions.some(permission => !hasPermission(permission))) return undefined
+
+    return action()
+  }
+
   const requestEditScope = (config: ConfiguredProcess): void => {
-    setEditScopeTarget({
-      processName: config.name,
-      template: config.template ?? null,
-      parameters: config.parameters,
+    runIfAllowed([Permission.CONFIGURE_STRATEGIES], () => {
+      setEditScopeTarget({
+        processName: config.name,
+        template: config.template ?? null,
+        parameters: config.parameters,
+      })
     })
   }
 
@@ -264,50 +284,58 @@ export const Strategies: React.FC = () => {
   }, [strategies, wsClient, isTimeTraveling])
 
   const handleStrategyLaunch = async (data: StrategyLaunchData) => {
-    try {
-      await createProcessConfig.mutateAsync({
-        name: data.processName,
-        template: data.template,
-        enabled: data.autostart,
-        mode: data.executionMode,
-        parameters: data.parameters,
-        ...(data.note === undefined ? {} : { note: data.note }),
-      })
-      toast.success(t('toast.saved', { name: data.processName }))
+    await runIfAllowed([Permission.CONFIGURE_STRATEGIES], async () => {
+      try {
+        const canStartNow = hasPermission(Permission.START_STRATEGIES) && !readOnly
 
-      if (data.startImmediately) {
-        await startProcess.mutateAsync({
+        await createProcessConfig.mutateAsync({
           name: data.processName,
+          template: data.template,
+          enabled: canStartNow && data.autostart,
           mode: data.executionMode,
+          parameters: data.parameters,
+          ...(data.note === undefined ? {} : { note: data.note }),
         })
-        toast.success(t('toast.started', { name: data.processName }))
-        setActiveStrategyProcess(data.processName)
+        toast.success(t('toast.saved', { name: data.processName }))
+
+        if (canStartNow && data.startImmediately) {
+          await startProcess.mutateAsync({
+            name: data.processName,
+            mode: data.executionMode,
+          })
+          toast.success(t('toast.started', { name: data.processName }))
+          setActiveStrategyProcess(data.processName)
+        }
+
+        setStrategyModalOpen(false)
+        queryClient.invalidateQueries({ queryKey: ['strategies'] })
+      } catch (error) {
+        const message = error instanceof Error ? error.message : t('toast.unknownError')
+
+        toast.error(t('toast.registerFailed', { message }))
       }
-
-      setStrategyModalOpen(false)
-      queryClient.invalidateQueries({ queryKey: ['strategies'] })
-    } catch (error) {
-      const message = error instanceof Error ? error.message : t('toast.unknownError')
-
-      toast.error(t('toast.registerFailed', { message }))
-    }
+    })
   }
 
   const requestStartStrategy = (processName: string, mode: string) => {
-    openConfirm({
-      title: t('confirm.startTitle', { name: processName }),
-      message: t('confirm.startMessage', { name: processName }),
-      variant: 'default',
-      onConfirm: () => handleStartStrategy(processName, mode),
+    runIfAllowed([Permission.START_STRATEGIES], () => {
+      openConfirm({
+        title: t('confirm.startTitle', { name: processName }),
+        message: t('confirm.startMessage', { name: processName }),
+        variant: 'default',
+        onConfirm: () => handleStartStrategy(processName, mode),
+      })
     })
   }
 
   const requestStopStrategy = (processName: string) => {
-    openConfirm({
-      title: t('confirm.stopTitle', { name: processName }),
-      message: t('confirm.stopMessage', { name: processName }),
-      variant: 'danger',
-      onConfirm: () => handleStopStrategy(processName),
+    runIfAllowed([Permission.STOP_STRATEGIES], () => {
+      openConfirm({
+        title: t('confirm.stopTitle', { name: processName }),
+        message: t('confirm.stopMessage', { name: processName }),
+        variant: 'danger',
+        onConfirm: () => handleStopStrategy(processName),
+      })
     })
   }
 
@@ -317,186 +345,198 @@ export const Strategies: React.FC = () => {
     callbacks: { onSuccess: () => void; onError: (error: Error) => void },
     restartNonce?: string
   ) => {
-    setActiveStrategyProcess(name)
-    setPendingRemote(prev => ({ ...prev, [name]: action }))
-    patchDesiredState
-      .mutateAsync({
-        name,
-        body: { action, ...(restartNonce === undefined ? {} : { restart_nonce: restartNonce }) },
-      })
-      .then(callbacks.onSuccess)
-      .catch((error: unknown) =>
-        callbacks.onError(error instanceof Error ? error : new Error(String(error)))
-      )
-      .finally(() => {
-        setPendingRemote(prev => {
-          const next = { ...prev }
-
-          delete next[name]
-
-          return next
+    runIfAllowed(remoteActionPermissions(action), () => {
+      setActiveStrategyProcess(name)
+      setPendingRemote(prev => ({ ...prev, [name]: action }))
+      patchDesiredState
+        .mutateAsync({
+          name,
+          body: { action, ...(restartNonce === undefined ? {} : { restart_nonce: restartNonce }) },
         })
-      })
+        .then(callbacks.onSuccess)
+        .catch((error: unknown) =>
+          callbacks.onError(error instanceof Error ? error : new Error(String(error)))
+        )
+        .finally(() => {
+          setPendingRemote(prev => {
+            const next = { ...prev }
+
+            delete next[name]
+
+            return next
+          })
+        })
+    })
   }
 
   const remotePending = (name: string, action: RemoteProcessAction): boolean =>
     pendingRemote[name] === action
 
   const requestRemoteEnable = (processName: string) => {
-    openConfirm({
-      title: t('confirm.startTitle', { name: processName }),
-      message: t('confirm.startMessage', { name: processName }),
-      variant: 'default',
-      onConfirm: () =>
-        mutateRemote(processName, 'enable', {
-          onSuccess: () => {
-            toast.success(t('toast.startSuccess'), { duration: 3000, icon: '🚀' })
-          },
-          onError: (error: Error) => {
-            setActiveStrategyProcess(null)
-            toast.error(t('toast.startFailed', { message: error.message }), {
-              duration: 5000,
-              icon: '⚠️',
-            })
-          },
-        }),
-    })
-  }
-
-  const requestRemoteDisable = (processName: string) => {
-    openConfirm({
-      title: t('confirm.stopTitle', { name: processName }),
-      message: t('confirm.stopMessage', { name: processName }),
-      variant: 'danger',
-      onConfirm: () =>
-        mutateRemote(processName, 'disable', {
-          onSuccess: () => {
-            setActiveStrategyProcess(null)
-            toast.success(t('toast.stopSuccess'), { duration: 3000, icon: '✋' })
-          },
-          onError: (error: Error) => {
-            setActiveStrategyProcess(null)
-            toast.error(t('toast.stopFailed', { message: error.message }), {
-              duration: 5000,
-              icon: '⚠️',
-            })
-          },
-        }),
-    })
-  }
-
-  const requestRemoteRestart = (processName: string) => {
-    const restartNonce = uuid7()
-
-    openConfirm({
-      title: t('confirm.restartTitle', { name: processName }),
-      message: t('confirm.restartMessage', { name: processName }),
-      variant: 'default',
-      onConfirm: () =>
-        mutateRemote(
-          processName,
-          'restart',
-          {
+    runIfAllowed([Permission.START_STRATEGIES], () => {
+      openConfirm({
+        title: t('confirm.startTitle', { name: processName }),
+        message: t('confirm.startMessage', { name: processName }),
+        variant: 'default',
+        onConfirm: () =>
+          mutateRemote(processName, 'enable', {
             onSuccess: () => {
-              toast.success(t('toast.restartSuccess'), { duration: 3000, icon: '🔄' })
+              toast.success(t('toast.startSuccess'), { duration: 3000, icon: '🚀' })
             },
             onError: (error: Error) => {
               setActiveStrategyProcess(null)
-              toast.error(t('toast.restartFailed', { message: error.message }), {
+              toast.error(t('toast.startFailed', { message: error.message }), {
                 duration: 5000,
                 icon: '⚠️',
               })
             },
-          },
-          restartNonce
-        ),
+          }),
+      })
+    })
+  }
+
+  const requestRemoteDisable = (processName: string) => {
+    runIfAllowed([Permission.STOP_STRATEGIES], () => {
+      openConfirm({
+        title: t('confirm.stopTitle', { name: processName }),
+        message: t('confirm.stopMessage', { name: processName }),
+        variant: 'danger',
+        onConfirm: () =>
+          mutateRemote(processName, 'disable', {
+            onSuccess: () => {
+              setActiveStrategyProcess(null)
+              toast.success(t('toast.stopSuccess'), { duration: 3000, icon: '✋' })
+            },
+            onError: (error: Error) => {
+              setActiveStrategyProcess(null)
+              toast.error(t('toast.stopFailed', { message: error.message }), {
+                duration: 5000,
+                icon: '⚠️',
+              })
+            },
+          }),
+      })
+    })
+  }
+
+  const requestRemoteRestart = (processName: string) => {
+    runIfAllowed([Permission.START_STRATEGIES, Permission.STOP_STRATEGIES], () => {
+      const restartNonce = uuid7()
+
+      openConfirm({
+        title: t('confirm.restartTitle', { name: processName }),
+        message: t('confirm.restartMessage', { name: processName }),
+        variant: 'default',
+        onConfirm: () =>
+          mutateRemote(
+            processName,
+            'restart',
+            {
+              onSuccess: () => {
+                toast.success(t('toast.restartSuccess'), { duration: 3000, icon: '🔄' })
+              },
+              onError: (error: Error) => {
+                setActiveStrategyProcess(null)
+                toast.error(t('toast.restartFailed', { message: error.message }), {
+                  duration: 5000,
+                  icon: '⚠️',
+                })
+              },
+            },
+            restartNonce
+          ),
+      })
     })
   }
 
   const handleStartStrategy = (processName: string, mode: string) => {
-    setActiveStrategyProcess(processName)
-    startProcess.mutate(
-      {
-        name: processName,
-        mode: (mode || 'thread') as 'thread' | 'process',
-      },
-      {
-        onSuccess: () => {
-          toast.success(t('toast.startSuccess'), {
-            duration: 3000,
-            icon: '🚀',
-          })
-          queryClient.invalidateQueries({ queryKey: ['strategies'] })
+    runIfAllowed([Permission.START_STRATEGIES], () => {
+      setActiveStrategyProcess(processName)
+      startProcess.mutate(
+        {
+          name: processName,
+          mode: (mode || 'thread') as 'thread' | 'process',
         },
-        onError: (error: Error) => {
-          setActiveStrategyProcess(null)
-          const errorMessage = error.message.toLowerCase()
+        {
+          onSuccess: () => {
+            toast.success(t('toast.startSuccess'), {
+              duration: 3000,
+              icon: '🚀',
+            })
+            queryClient.invalidateQueries({ queryKey: ['strategies'] })
+          },
+          onError: (error: Error) => {
+            setActiveStrategyProcess(null)
+            const errorMessage = error.message.toLowerCase()
 
-          if (errorMessage.includes('already running')) {
-            toast.error(t('toast.alreadyRunning'), {
-              duration: 4000,
-              icon: '⚠️',
-            })
-          } else if (errorMessage.includes('not found')) {
-            toast.error(t('toast.configNotFound'), {
-              duration: 5000,
-              icon: '❌',
-            })
-          } else if (errorMessage.includes('network') || errorMessage.includes('timeout')) {
-            toast.error(t('toast.networkError'), {
-              duration: 5000,
-              icon: '🌐',
-            })
-          } else {
-            toast.error(t('toast.startFailed', { message: error.message }), {
-              duration: 5000,
-              icon: '⚠️',
-            })
-          }
-        },
-      }
-    )
+            if (errorMessage.includes('already running')) {
+              toast.error(t('toast.alreadyRunning'), {
+                duration: 4000,
+                icon: '⚠️',
+              })
+            } else if (errorMessage.includes('not found')) {
+              toast.error(t('toast.configNotFound'), {
+                duration: 5000,
+                icon: '❌',
+              })
+            } else if (errorMessage.includes('network') || errorMessage.includes('timeout')) {
+              toast.error(t('toast.networkError'), {
+                duration: 5000,
+                icon: '🌐',
+              })
+            } else {
+              toast.error(t('toast.startFailed', { message: error.message }), {
+                duration: 5000,
+                icon: '⚠️',
+              })
+            }
+          },
+        }
+      )
+    })
   }
 
   const handleStopStrategy = (processName: string) => {
-    setActiveStrategyProcess(processName)
-    stopProcess.mutate(
-      { name: processName },
-      {
-        onSuccess: () => {
-          setActiveStrategyProcess(null)
-          toast.success(t('toast.stopSuccess'), {
-            duration: 3000,
-            icon: '✋',
-          })
-          queryClient.invalidateQueries({ queryKey: ['strategies'] })
-        },
-        onError: (error: Error) => {
-          const errorMessage = error.message.toLowerCase()
-
-          if (errorMessage.includes('not running')) {
-            toast.error(t('toast.notRunning'), {
-              duration: 4000,
-              icon: '⚠️',
+    runIfAllowed([Permission.STOP_STRATEGIES], () => {
+      setActiveStrategyProcess(processName)
+      stopProcess.mutate(
+        { name: processName },
+        {
+          onSuccess: () => {
+            setActiveStrategyProcess(null)
+            toast.success(t('toast.stopSuccess'), {
+              duration: 3000,
+              icon: '✋',
             })
+            queryClient.invalidateQueries({ queryKey: ['strategies'] })
+          },
+          onError: (error: Error) => {
+            const errorMessage = error.message.toLowerCase()
 
-            if (activeStrategyProcess === processName) {
-              setActiveStrategyProcess(null)
+            if (errorMessage.includes('not running')) {
+              toast.error(t('toast.notRunning'), {
+                duration: 4000,
+                icon: '⚠️',
+              })
+
+              if (activeStrategyProcess === processName) {
+                setActiveStrategyProcess(null)
+              }
+            } else if (errorMessage.includes('network') || errorMessage.includes('timeout')) {
+              toast.error(t('toast.networkError'), {
+                duration: 5000,
+                icon: '🌐',
+              })
+            } else {
+              toast.error(t('toast.stopFailed', { message: error.message }), {
+                duration: 5000,
+                icon: '⚠️',
+              })
             }
-          } else if (errorMessage.includes('network') || errorMessage.includes('timeout')) {
-            toast.error(t('toast.networkError'), {
-              duration: 5000,
-              icon: '🌐',
-            })
-          } else {
-            toast.error(t('toast.stopFailed', { message: error.message }), {
-              duration: 5000,
-              icon: '⚠️',
-            })
-          }
-        },
-      }
-    )
+          },
+        }
+      )
+    })
   }
 
   if (isLoading) {
@@ -521,7 +561,7 @@ export const Strategies: React.FC = () => {
       <div className='space-y-2'>
         <div className='flex flex-wrap items-center justify-between gap-2'>
           <h2 className='text-xl font-bold text-alpine-900'>{t('page.title')}</h2>
-          {canManage && (
+          {canConfigure && (
             <button
               onClick={() => setStrategyModalOpen(true)}
               disabled={createProcessConfig.isPending || startProcess.isPending || readOnly}
@@ -532,7 +572,9 @@ export const Strategies: React.FC = () => {
           )}
         </div>
         <p className='text-xs text-muted-500'>
-          {canManage ? t('page.descriptionCanManage') : t('page.descriptionViewer')}
+          {canConfigure || canControl
+            ? t('page.descriptionCanManage')
+            : t('page.descriptionViewer')}
         </p>
       </div>
       {}
@@ -565,7 +607,9 @@ export const Strategies: React.FC = () => {
             {filteredStrategies.map(strategy =>
               renderStrategyCard({
                 strategy,
-                canManage,
+                canConfigure,
+                canStart,
+                canStop,
                 canBacktest,
                 readOnly,
                 health: healthStatuses[strategy.name],
@@ -606,9 +650,9 @@ export const Strategies: React.FC = () => {
             </div>
             <p className='text-muted-500 font-medium'>{t('page.emptyTitle')}</p>
             <p className='text-sm text-muted-400 mt-1'>
-              {canManage ? t('page.emptyCanManage') : t('page.emptyViewer')}
+              {canConfigure || canControl ? t('page.emptyCanManage') : t('page.emptyViewer')}
             </p>
-            {canManage && (
+            {canConfigure && (
               <button
                 onClick={() => setStrategyModalOpen(true)}
                 disabled={readOnly}
@@ -623,19 +667,19 @@ export const Strategies: React.FC = () => {
       {}
       <ConfirmDialog {...confirmDialogProps} />
       <StrategyLaunchModal
-        open={strategyModalOpen}
+        open={strategyModalOpen && canConfigure && !readOnly}
         onClose={() => setStrategyModalOpen(false)}
         templates={strategyTemplates}
         onSubmit={handleStrategyLaunch}
         isSubmitting={createProcessConfig.isPending || startProcess.isPending}
       />
       <StrategyScopeEditModal
-        open={editScopeTarget !== null}
+        open={editScopeTarget !== null && canConfigure && !readOnly}
         onClose={() => setEditScopeTarget(null)}
         target={editScopeTarget}
       />
       <BacktestCreateForm
-        open={backtestStrategyClass !== null}
+        open={backtestStrategyClass !== null && canBacktest && !readOnly}
         onClose={() => setBacktestStrategyClass(null)}
         preSelectedStrategy={backtestStrategyClass ?? undefined}
         onSuccess={runPublicId => {
