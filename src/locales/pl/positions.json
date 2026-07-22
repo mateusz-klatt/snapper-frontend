@@ -111,6 +111,21 @@
       "net": "P&L netto",
       "noValue": "—",
       "empty": "Brak składowych P&L dla instrumentów."
+    },
+    "attribution": {
+      "title": "Najnowszy podział P&L według źródła",
+      "ariaLabel": "Najnowszy podział P&L według źródła i strategii",
+      "origin": "Źródło",
+      "noStrategy": "Brak potwierdzonej strategii",
+      "withheld": "Wartość wstrzymana",
+      "valueSemantics": "Wyświetlone zero jest potwierdzone. „Wartość wstrzymana” oznacza, że wartości nie udało się potwierdzić.",
+      "empty": "Dane o źródłach P&L są niedostępne dla najnowszego punktu.",
+      "origins": {
+        "manual": "Ręczne · bezpośrednie",
+        "plan": "Plan · automatyczny",
+        "system": "System · automatyczny",
+        "unattributed": "Nieprzypisane · źródło nieznane"
+      }
     }
   },
   "row": {

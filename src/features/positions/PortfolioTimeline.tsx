@@ -7,6 +7,7 @@ import { usePortfolioPnlTimeline } from '../../hooks/queries/portfolio'
 import { useWallets } from '../../hooks/queries/wallets'
 import { useAppStore } from '../../stores/app'
 import type { PortfolioPnlGranularity } from '../../types/api'
+import { AttributionBreakdown } from './AttributionBreakdown'
 import { ContributionTable } from './ContributionTable'
 import { PnlChart } from './PnlChart'
 import { PNL_MARKER_COLORS } from './pnlMarkerStyles'
@@ -288,10 +289,16 @@ export const PortfolioTimeline: React.FC = () => {
           />
         </section>
         {latestPoint !== undefined && (
-          <ContributionTable
-            contributions={latestPoint.per_instrument}
-            valuationCcy={series.valuation_ccy}
-          />
+          <>
+            <AttributionBreakdown
+              attribution={latestPoint.attribution}
+              valuationCcy={series.valuation_ccy}
+            />
+            <ContributionTable
+              contributions={latestPoint.per_instrument}
+              valuationCcy={series.valuation_ccy}
+            />
+          </>
         )}
       </div>
     )
