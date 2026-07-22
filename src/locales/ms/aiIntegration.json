@@ -97,7 +97,7 @@
     "revoked": "Dibatalkan",
     "createdAt": "Dicipta pada",
     "createdBy": "Dicipta oleh (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "ID Awam",
     "maxOpenOrders": "Maks pesanan terbuka",
     "maxDailyNotionalUsd": "Maks nosional harian USD",
     "maxCancelsPerMinute": "Maks pembatalan seminit",

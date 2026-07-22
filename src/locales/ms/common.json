@@ -38,7 +38,7 @@
       "ariaLabel": "Dompet aktif",
       "placeholder": "Dompet",
       "allWallets": "Semua dompet",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (simulasi)"
     },
     "operatorPicker": {
       "ariaLabel": "Operator aktif",

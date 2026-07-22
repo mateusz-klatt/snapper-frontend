@@ -38,7 +38,7 @@
       "ariaLabel": "Aktív pénztárca",
       "placeholder": "Pénztárca",
       "allWallets": "Minden pénztárca",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (demó)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktív operátor",

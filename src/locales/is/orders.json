@@ -98,17 +98,17 @@
     },
     "orderTypeOptions": {
       "market": "Markaður",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "limit": "Verðtakmörk",
+      "stop": "Stöðvun",
+      "stopLimit": "Stöðvun með verðtakmörkum",
+      "stop_limit": "Stöðvun með verðtakmörkum"
     },
     "modeOptions": {
       "live": "Lifandi",
-      "paper": "Paper"
+      "paper": "Sýndarviðskipti"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — aðeins markaðsgögn",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (sýndarviðskipti)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

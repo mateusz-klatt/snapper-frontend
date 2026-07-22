@@ -36,7 +36,7 @@
     "positions": "Posisi",
     "instrumentsCount": "{{count}} instrumen",
     "empty": "Data posisi tidak tersedia",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Data tidak lengkap — beberapa posisi tidak memiliki harga mark atau harga entry yang dapat digunakan; total hanya menjumlahkan komponen yang diketahui"
   },
   "signals": {
     "title": "Sinyal Terbaru",

@@ -4,7 +4,7 @@
   },
   "controls": {
     "exchange": "စတော့အိတ်ချိန်း:",
-    "instrument": "Instrument:",
+    "instrument": "ကုန်သွယ်ရေးတူရိယာ:",
     "timeframe": "အချိန်ဘောင်:",
     "selectExchange": "Exchange ရွေးပါ",
     "searchInstrument": "Instrument ရှာပါ..."
@@ -78,11 +78,11 @@
     "chipAriaLabel": "{{exchange}} ပေါ်ရှိ {{symbol}} နှင့် တွဲဖက်စာရင်းအင်း: Pearson {{pearson}}, p-value {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "အချိန်:",
+    "live": "တိုက်ရိုက်",
+    "sliderAriaLabel": "စျေးကွက်အချိန်ကို ရွှေ့ကြည့်ရန်",
     "presets": {
-      "live": "Live",
+      "live": "တိုက်ရိုက်",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

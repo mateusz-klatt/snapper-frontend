@@ -28,7 +28,7 @@
       "market": "Marktdata",
       "processes": "Processen",
       "strategies": "Strategieën",
-      "orders": "Orders en fills",
+      "orders": "Orders en executies",
       "positions": "Posities",
       "signals": "Signalen",
       "health": "Status",
@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Kies een portefeuille...",
     "selectWalletPlaceholder": "Selecteer portefeuille...",
     "walletLabel": "Portefeuille",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (simulatie)",
     "unknownError": "Onbekende fout",
     "dash": "-"
   },
@@ -140,7 +140,7 @@
     },
     "list": {
       "title": "Scope grants",
-      "countLabel": "{{count}} grants",
+      "countLabel": "{{count}} toekenningen",
       "createGrant": "Grant aanmaken",
       "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende scope grants te bekijken.",
       "columns": {
@@ -165,8 +165,8 @@
         "operatorPlaceholder": "Selecteer operator...",
         "wallet": "Portefeuille",
         "scopeKind": "Soort scope",
-        "underlyingPublicId": "Public ID onderliggende waarde",
-        "instrumentPublicId": "Public ID instrument",
+        "underlyingPublicId": "Publieke ID van de onderliggende waarde",
+        "instrumentPublicId": "Publieke ID van het instrument",
         "underlyingPlaceholder": "bijv. BTC",
         "instrumentPlaceholder": "bijv. BTC-USD-PERP",
         "exchange": "Beurs",
@@ -248,11 +248,11 @@
     },
     "list": {
       "title": "Portefeuillecredentials",
-      "countLabel": "{{count}} credentials",
+      "countLabel": "{{count}} toegangsgegevens",
       "addCredential": "Credential toevoegen",
       "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende credentials te bekijken.",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "Beurs",
         "type": "Type",
         "label": "Label",
         "createdAt": "Aangemaakt op",
@@ -269,7 +269,7 @@
       "title": "Credential toevoegen",
       "fields": {
         "wallet": "Portefeuille",
-        "exchange": "Exchange",
+        "exchange": "Beurs",
         "exchangePlaceholder": "bijv. kraken",
         "credentialType": "Soort credential",
         "label": "Label (optioneel)",
@@ -280,20 +280,20 @@
         "api_key": "API-sleutel",
         "api_secret": "API-secret",
         "private_key_pem": "Privésleutel (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "Client-ID",
+        "client_secret": "Clientgeheim",
+        "refresh_token": "Vernieuwingstoken",
         "initial_balance": "Beginsaldo"
       },
       "credentialTypes": {
         "api_key_secret": "API-sleutel + secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Simulatie"
       },
       "validation": {
         "walletRequired": "Portefeuille is verplicht",
-        "exchangeRequired": "Exchange is verplicht",
+        "exchangeRequired": "Beurs is verplicht",
         "fieldRequired": "{{field}} is verplicht"
       },
       "actions": {
@@ -301,14 +301,14 @@
       },
       "toast": {
         "created": "Credential aangemaakt",
-        "conflictError": "Conflict: deze portefeuille heeft al een actieve credential voor deze exchange",
+        "conflictError": "Conflict: deze portefeuille heeft al een actieve credential voor deze beurs",
         "createError": "Fout bij aanmaken credential"
       }
     },
     "rotate": {
       "title": "Credential roteren",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "Beurs",
         "type": "Type",
         "label": "Label",
         "newLabel": "Nieuw label (optioneel)",

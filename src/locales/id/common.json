@@ -18,11 +18,11 @@
     "tagline": "Workstation presisi",
     "openSidebar": "Buka sidebar",
     "closeSidebar": "Tutup sidebar",
-    "sidebar": "Sidebar",
+    "sidebar": "Bilah samping",
     "mainNavigation": "Navigasi utama",
     "tradingContent": "Konten trading",
     "skipToContent": "Lewati ke konten trading",
-    "lag": "Lag:",
+    "lag": "Latensi:",
     "lagTitle": "Latensi pulang-pergi ke server WebSocket",
     "topics": "Topik:",
     "topicsTitle": "Jumlah topik WebSocket yang dilanggan",
@@ -38,7 +38,7 @@
       "ariaLabel": "Dompet aktif",
       "placeholder": "Dompet",
       "allWallets": "Semua dompet",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (simulasi)"
     },
     "operatorPicker": {
       "ariaLabel": "Operator aktif",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Terjadi kesalahan",
     "titleWithComponent": "Kesalahan di {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Jejak tumpukan",
     "tryAgain": "Coba lagi"
   },
   "nav": {

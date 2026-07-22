@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "တစ်ခုခု မှားသွားသည်",
     "titleWithComponent": "{{componentName}} တွင် အမှားဖြစ်သည်",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Stack trace မှတ်တမ်း",
     "tryAgain": "ထပ်စမ်းပါ"
   },
   "nav": {

@@ -51,8 +51,8 @@
     "noParams": "nema postavljenih parametara"
   },
   "badges": {
-    "oneShot": "one-shot",
-    "autoStart": "auto-start",
+    "oneShot": "jednokratno",
+    "autoStart": "automatsko pokretanje",
     "manual": "ručno"
   },
   "actions": {

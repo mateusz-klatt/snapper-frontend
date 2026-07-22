@@ -6,7 +6,7 @@
     "exchange": "Beurs:",
     "instrument": "Instrument:",
     "timeframe": "Tijdframe:",
-    "selectExchange": "Selecteer exchange",
+    "selectExchange": "Selecteer beurs",
     "searchInstrument": "Instrument zoeken..."
   },
   "timeframes": {
@@ -78,9 +78,9 @@
     "chipAriaLabel": "Pairstatistieken met {{symbol}} op {{exchange}}: Pearson {{pearson}}, p-waarde {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
+    "label": "Tijd:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "Door de markttijd navigeren",
     "presets": {
       "live": "Live",
       "h1": "-1h",

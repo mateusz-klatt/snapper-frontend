@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Staða ferla",
-    "feeds": "Feeds",
+    "feeds": "Gagnastraumar",
     "strategies": "Stefnur",
     "executors": "Framkvæmendur",
     "brokers": "Miðlarar"
@@ -36,7 +36,7 @@
     "positions": "Stöður",
     "instrumentsCount": "{{count}} gerningar",
     "empty": "Engin stöðugögn tiltæk",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Gögnin eru ófullnægjandi — fyrir sumar stöður vantar nothæft viðmiðunarverð eða inngangsverð; heildartölur taka aðeins til þekktra liða"
   },
   "signals": {
     "title": "Nýleg merki",

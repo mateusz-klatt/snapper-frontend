@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}}ד׳",
     "uptimeHours": "{{hours}}ש׳ {{minutes}}ד׳",
     "uptimeDays": "{{days}}י׳ {{hours}}ש׳",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "בקטסט {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "לא זמין",
     "uptimeLabel": "זמן פעילות",
     "exitCode": "קוד יציאה: {{code}}",
     "service": "שירות",
-    "backtest": "backtest"
+    "backtest": "בקטסט"
   },
   "dbStats": {
     "title": "סטטיסטיקות מסד נתונים",
@@ -61,7 +61,7 @@
     "totalHint": "ב-PostgreSQL, סה״כ הוא אומדן של המתכנן (מדויק במסגרת הסטייה של autovacuum); מדויק ב-SQLite."
   },
   "notification": {
-    "title": "Notification Sidecar",
+    "title": "שירות נלווה להתראות",
     "loading": "טוען מדדי התראות…",
     "unavailable": "מדדי התראות אינם זמינים: {{message}}",
     "fallbackError": "טעינת מדדי התראות נכשלה.",
@@ -121,62 +121,62 @@
     "liveConns": "חיבורים חיים: {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "אובייקטים: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "תהליכונים (%)",
     "networkConns": "חיבורי רשת",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "פעיל",
     "tracemallocIdle": "לא פעיל"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "תקינות התעבורה היוצאת",
+    "loading": "טוען את תקינות התעבורה היוצאת…",
+    "unavailable": "נתוני תקינות התעבורה היוצאת אינם זמינים: {{message}}",
+    "fallbackError": "טעינת נתוני תקינות התעבורה היוצאת נכשלה.",
+    "enabled": "מופעל",
+    "disabled": "מושבת",
+    "disabledMessage": "מאגר נתיבי היציאה מושבת; התעבורה היוצאת משתמשת בנתיב הרשת המוגדר כברירת מחדל.",
+    "fallbackWarning": "אזהרה: התעבורה הפרטית עוברת בנתיב הגיבוי של ה-VPN ולא ביציאה ישירה.",
+    "noRoutes": "לא הוגדרו נתיבי יציאה.",
+    "anyExchange": "הכול",
+    "none": "ללא",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "קונטיינרים שמדווחים",
+      "item": "{{container}} · {{age}} · נתיבים: {{routeCount}}",
+      "stale": "· מיושן"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · נראה לאחרונה {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "לא ידוע",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "מאגר",
+      "policy": "מדיניות הסגר",
+      "fallbackRoute": "נתיב גיבוי פרטי",
+      "routes": "נתיבים"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "המתנה",
+      "raise": "העלאת שגיאה"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "סוג",
+      "region": "אזור",
+      "exitIp": "כתובת IP ביציאה",
+      "provider": "ספק",
+      "priority": "עדיפות",
+      "allowedExchanges": "בורסות מותרות",
+      "status": "סטטוס",
+      "inUse": "בשימוש",
+      "traffic": "תעבורה",
+      "reservations": "הקצאות פעילות",
+      "connections": "חיבורים"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "ישיר",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "פעיל",
+      "quarantined": "בהסגר",
+      "quarantinedSeconds": "בהסגר ({{seconds}}s)",
+      "disabled": "מושבת"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "ציבורית",
+      "private": "פרטית"
     }
   },
   "relativeAge": {

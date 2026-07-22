@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
         "delta": "Δ"
       }
     },

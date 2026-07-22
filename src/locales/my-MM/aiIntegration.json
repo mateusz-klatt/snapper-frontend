@@ -26,7 +26,7 @@
       "active": "လှုပ်ရှားနေသည်",
       "revoked": "ရုပ်သိမ်းပြီး"
     },
-    "default": "default",
+    "default": "မူလသတ်မှတ်ချက်",
     "details": "အသေးစိတ်",
     "viewAriaLabel": "Delegate {{label}} ကို ကြည့်ပါ"
   },
@@ -43,8 +43,8 @@
       "labelHelpSuffix": "."
     },
     "scope": {
-      "heading": "Scope",
-      "operatorLabel": "Operator public_id (optional)",
+      "heading": "လုပ်ပိုင်ခွင့်နယ်ပယ်",
+      "operatorLabel": "လုပ်ဆောင်သူ public_id (ချန်လှပ်နိုင်)",
       "operatorPlaceholder": "Caller primary operator ကို inherit လုပ်ရန် ဗလာထားပါ"
     },
     "caps": {
@@ -54,7 +54,7 @@
       "maxCancelsPerMinute": "တစ်မိနစ် cancel အများဆုံး",
       "perInstrument": "Instrument တစ်ခုစီအတွက် max quantity (JSON)",
       "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
-      "default": "default",
+      "default": "မူလသတ်မှတ်ချက်",
       "errorInvalidJson": "max_order_quantity_per_instrument သည် valid JSON ဖြစ်ရမည်",
       "errorJsonObject": "max_order_quantity_per_instrument သည် JSON object သို့မဟုတ် ဗလာ ဖြစ်ရမည်",
       "errorNegative": "Cap များသည် non-negative integer သို့မဟုတ် ဗလာ ဖြစ်ရမည်။"
@@ -62,13 +62,13 @@
     "review": {
       "heading": "ပြန်လည်သုံးသပ်ပြီး ဖန်တီးပါ",
       "rowLabel": "အညွှန်း",
-      "rowOperator": "Operator public_id",
+      "rowOperator": "လုပ်ဆောင်သူ public_id",
       "rowMaxOpenOrders": "အများဆုံး open order",
       "rowMaxDailyNotional": "နေ့စဉ် notional USD အများဆုံး",
       "rowMaxCancelsPerMinute": "တစ်မိနစ် cancel အများဆုံး",
       "rowPerInstrument": "Instrument တစ်ခုစီအတွက် max quantity",
       "operatorDefault": "(ခေါ်ဆိုသူ၏ primary operator)",
-      "defaultValue": "(default)"
+      "defaultValue": "(မူလသတ်မှတ်ချက်)"
     },
     "buttons": {
       "cancel": "ပယ်ဖျက်",
@@ -97,13 +97,13 @@
     "revoked": "ရုပ်သိမ်းပြီး",
     "createdAt": "ဖန်တီးချိန်",
     "createdBy": "ဖန်တီးသူ (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "အများသုံး ID",
     "maxOpenOrders": "အများဆုံး open order",
     "maxDailyNotionalUsd": "နေ့စဉ် notional USD အများဆုံး",
     "maxCancelsPerMinute": "တစ်မိနစ် cancel အများဆုံး",
     "perInstrument": "Instrument တစ်ခုစီအတွက် max quantity",
-    "defaultValue": "(default)",
-    "editorPlaceholder": "(default)",
+    "defaultValue": "(မူလသတ်မှတ်ချက်)",
+    "editorPlaceholder": "(မူလသတ်မှတ်ချက်)",
     "toast": {
       "capsUpdated": "Cap များ ပြင်ဆင်ပြီးပါပြီ",
       "failedToUpdateCaps": "Cap များ ပြင်ဆင်၍ မရပါ",

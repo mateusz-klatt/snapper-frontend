@@ -41,7 +41,7 @@
     }
   },
   "detail": {
-    "title": "Backtest run",
+    "title": "Izvođenje backtesta",
     "fields": {
       "strategy": "Strategija",
       "instrument": "Instrument",
@@ -61,16 +61,16 @@
     "title": "Usporedi",
     "headingFull": "Usporedba backtestova",
     "loading": "Učitavanje usporedbe…",
-    "vs": "vs",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "vs": "naspram",
+    "runLabel": "Izvođenje {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrike",
-      "equityOverlay": "Equity overlay",
+      "equityOverlay": "Preklapanje krivulja kapitala",
       "trades": "Trgovanja",
       "signals": "Signali"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatski",
       "manual": "ručno"
     },
     "errors": {
@@ -113,8 +113,8 @@
       "empty": "Nema usporedivih metrika — nijedan run nije zabilježio vrijednosti.",
       "columns": {
         "name": "Metrika",
-        "runA": "Run A",
-        "runB": "Run B",
+        "runA": "Izvođenje A",
+        "runB": "Izvođenje B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,8 +122,8 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "Izvođenje A",
+        "runB": "Izvođenje B"
       }
     }
   },
@@ -131,9 +131,9 @@
     "waiting": "Čekanje napretka…",
     "candles": "{{done}} / {{total}} svijeća",
     "candlesNoTotal": "{{done}} svijeća",
-    "equity": "equity {{value}}",
+    "equity": "kapital {{value}}",
     "signalsTrades": "{{signals}} sig / {{trades}} trgovanja",
-    "milestoneLine": "milestone {{label}}",
+    "milestoneLine": "prekretnica {{label}}",
     "milestone": {
       "25pct": "25 %",
       "50pct": "50 %",

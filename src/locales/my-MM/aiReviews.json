@@ -4,7 +4,7 @@
     "decision": "ဆုံးဖြတ်ချက်",
     "capsViolation": "Cap ကန့်သတ်ချက် ချိုးဖောက်မှု",
     "selectedDelegate": "ရွေးထားသော delegate",
-    "instrument": "instrument",
+    "instrument": "ကုန်သွယ်ရေးတူရိယာ",
     "deadline": "နောက်ဆုံးအချိန် {{time}}",
     "decidedBy": "ဆုံးဖြတ်သူ",
     "newStatus": "အခြေအနေ",
@@ -31,7 +31,7 @@
     "emptyTitle": "စောင့်ဆိုင်းနေသည့် ပြန်လည်သုံးသပ်မှု မရှိပါ",
     "emptyMessage": "ဤ delegate သို့ route လုပ်ထားသော CONSULT တောင်းဆိုချက်အသစ်များ ဒီမှာ ပေါ်လာမည်။",
     "columns": {
-      "instrument": "Instrument",
+      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
       "thesis": "အဆိုပြုချက်",
       "status": "အခြေအနေ",
       "deadline": "နောက်ဆုံးအချိန်",

@@ -33,7 +33,7 @@
     "uptimeMinutes": "{{minutes}} ր",
     "uptimeHours": "{{hours}} ժ {{minutes}} ր",
     "uptimeDays": "{{days}} օ {{hours}} ժ",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Հետադարձ թեստ {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "Աշխատաժամանակ",
@@ -117,7 +117,7 @@
     "asyncioTasks": "Asyncio առաջադրանքներ",
     "asyncioActive": "{{count}} ակտիվ",
     "asyncioPending": "+ {{count}} սպասող",
-    "dbPool": "DB Pool",
+    "dbPool": "DB միացումների պուլ",
     "liveConns": "Live միացումներ՝ {{count}}",
     "gcGenerations": "GC Gen0/1/2",
     "gcObjects": "Օբյեկտներ՝ {{value}}",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Ոչ ակտիվ"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Ելքային կապերի վիճակ",
+    "loading": "Ելքային կապերի վիճակը բեռնվում է…",
+    "unavailable": "Ելքային կապերի վիճակը հասանելի չէ՝ {{message}}",
+    "fallbackError": "Չհաջողվեց բեռնել ելքային կապերի վիճակը։",
+    "enabled": "Միացված",
+    "disabled": "Անջատված",
+    "disabledMessage": "Ելքային կապերի պուլն անջատված է․ ելքային տրաֆիկն օգտագործում է լռելյայն ցանցային ուղին։",
+    "fallbackWarning": "Նախազգուշացում․ մասնավոր տրաֆիկն անցնում է պահուստային VPN-ով, ոչ թե ուղիղ ելքով։",
+    "noRoutes": "Ելքային երթուղիներ կազմաձևված չեն։",
+    "anyExchange": "Բոլորը",
+    "none": "Չկա",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Տվյալներ հաղորդող կոնտեյներներ",
+      "item": "{{container}} · {{age}} · երթուղիներ՝ {{routeCount}}",
+      "stale": "· հնացած"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · վերջին անգամ նկատվել է {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "անհայտ",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Պուլ",
+      "policy": "Կարանտինի քաղաքականություն",
+      "fallbackRoute": "Մասնավոր տրաֆիկի պահուստային ուղի",
+      "routes": "Երթուղիներ"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Սպասել",
+      "raise": "Բացառություն առաջացնել"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Տեսակ",
+      "region": "Տարածաշրջան",
+      "exitIp": "Ելքային IP",
+      "provider": "Մատակարար",
+      "priority": "Առաջնահերթություն",
+      "allowedExchanges": "Թույլատրված բորսաներ",
+      "status": "Վիճակ",
+      "inUse": "Օգտագործվում է",
+      "traffic": "Տրաֆիկ",
+      "reservations": "Ակտիվ ամրագրումներ",
+      "connections": "Միացումներ"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "ուղիղ",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Ակտիվ",
+      "quarantined": "Կարանտինում",
+      "quarantinedSeconds": "Կարանտինում ({{seconds}}s)",
+      "disabled": "Անջատված"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "հանրային",
+      "private": "մասնավոր"
     }
   },
   "relativeAge": {

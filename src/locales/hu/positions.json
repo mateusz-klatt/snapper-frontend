@@ -3,160 +3,160 @@
     "title": "Pozíciók"
   },
   "view": {
-    "current": "Current",
-    "timeline": "P&L Timeline",
-    "ariaLabel": "Positions view"
+    "current": "Aktuális",
+    "timeline": "P&L-idővonal",
+    "ariaLabel": "Pozíciók nézete"
   },
   "timeline": {
     "controls": {
-      "window": "Window",
-      "windowAriaLabel": "Select timeline window",
-      "granularity": "Granularity",
-      "granularityAriaLabel": "Select timeline granularity",
+      "window": "Időablak",
+      "windowAriaLabel": "Idővonal időablakának kiválasztása",
+      "granularity": "Felbontás",
+      "granularityAriaLabel": "Idővonal felbontásának kiválasztása",
       "granularityOptions": {
         "oneMinute": "1m",
         "fiveMinutes": "5m",
         "oneHour": "1h",
         "oneDay": "1d"
       },
-      "valuationCurrency": "Valuation currency",
-      "valuationCurrencyAriaLabel": "Select valuation currency",
+      "valuationCurrency": "Értékelési pénznem",
+      "valuationCurrencyAriaLabel": "Értékelési pénznem kiválasztása",
       "valuationCurrencyOptions": {
         "usd": "USD",
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "Last 24 hours",
-      "last7Days": "Last 7 days",
-      "last30Days": "Last 30 days",
-      "last90Days": "Last 90 days"
+      "last24Hours": "Elmúlt 24 óra",
+      "last7Days": "Elmúlt 7 nap",
+      "last30Days": "Elmúlt 30 nap",
+      "last90Days": "Elmúlt 90 nap"
     },
-    "loading": "Loading P&L timeline…",
+    "loading": "P&L-idővonal betöltése…",
     "error": {
-      "title": "Could not load P&L timeline",
-      "message": "Try again in a moment."
+      "title": "Nem sikerült betölteni a P&L-idővonalat",
+      "message": "Próbálja újra rövidesen."
     },
     "empty": {
-      "title": "No P&L history",
-      "message": "No P&L points are available for this window."
+      "title": "Nincsenek P&L-előzmények",
+      "message": "Ehhez az időablakhoz nem állnak rendelkezésre P&L-pontok."
     },
     "noWallet": {
-      "title": "Select a wallet",
-      "message": "Choose a wallet to view its P&L timeline."
+      "title": "Válasszon pénztárcát",
+      "message": "Válasszon pénztárcát a P&L-idővonal megtekintéséhez."
     },
-    "incompleteBadge": "Incomplete points: {{count}}",
+    "incompleteBadge": "Hiányos pontok: {{count}}",
     "incompleteness": {
-      "title": "Why points are incomplete",
-      "description": "Reasons cover the full loaded window. Counts can overlap when a point has more than one cause.",
-      "affectedPoints": "Affected points: {{count}}",
-      "triggerInstrument": "Trigger instrument: {{instrument}}",
+      "title": "Miért hiányosak a pontok?",
+      "description": "Az okok a teljes betöltött időablakra vonatkoznak. A darabszámok átfedhetnek, ha egy pontnak több oka is van.",
+      "affectedPoints": "Érintett pontok: {{count}}",
+      "triggerInstrument": "Kiváltó instrumentum: {{instrument}}",
       "scope": {
-        "global": "Global",
-        "instrument": "Instrument"
+        "global": "Globális",
+        "instrument": "Instrumentum"
       },
       "tier": {
-        "mark_incomplete": "MARK-incomplete",
-        "untrusted": "UNTRUSTED"
+        "mark_incomplete": "HIÁNYOS REFERENCIAÁR",
+        "untrusted": "NEM MEGBÍZHATÓ"
       },
       "reasons": {
-        "scope_order_regression": "Scope order regression",
-        "before_activation": "Point precedes activation",
-        "activation_baseline_non_finite": "Activation baseline is non-finite",
-        "fill_evidence_gap": "Durable fill evidence gap",
-        "seed_quantity_non_finite": "Seed quantity is non-finite",
-        "cost_basis_unavailable": "Cost basis unavailable",
-        "execution_price_provenance_unproven": "Execution price provenance unproven",
-        "execution_size_invalid": "Execution size invalid",
-        "execution_price_invalid": "Execution price invalid",
-        "fx_conversion_unproven": "FX conversion unproven",
-        "mark_unavailable": "Mark unavailable",
-        "cumulative_non_finite": "Cumulative value is non-finite",
-        "unrealized_non_finite": "Unrealized P&L is non-finite",
-        "net_non_finite": "Net P&L is non-finite",
-        "attribution_value_non_finite": "Attribution value is non-finite",
-        "attribution_reconciliation_failed": "Attribution reconciliation failed"
+        "scope_order_regression": "Visszalépés a hatókör sorrendjében",
+        "before_activation": "A pont megelőzi az aktiválást",
+        "activation_baseline_non_finite": "Az aktiválási alapérték nem véges",
+        "fill_evidence_gap": "Tartós hiány a teljesítést igazoló adatokban",
+        "seed_quantity_non_finite": "A kiindulási mennyiség nem véges",
+        "cost_basis_unavailable": "A bekerülési érték nem érhető el",
+        "execution_price_provenance_unproven": "A teljesítési ár eredete nem igazolt",
+        "execution_size_invalid": "Érvénytelen teljesítési mennyiség",
+        "execution_price_invalid": "Érvénytelen teljesítési ár",
+        "fx_conversion_unproven": "Az FX-átváltás nem igazolt",
+        "mark_unavailable": "A referenciaár nem érhető el",
+        "cumulative_non_finite": "A kumulatív érték nem véges",
+        "unrealized_non_finite": "A nem realizált P&L nem véges",
+        "net_non_finite": "A nettó P&L nem véges",
+        "attribution_value_non_finite": "Az attribúciós érték nem véges",
+        "attribution_reconciliation_failed": "Az attribúció egyeztetése sikertelen"
       }
     },
-    "timeTravelNotice": "Historical view: showing P&L as known at {{asOf}}.",
+    "timeTravelNotice": "Előzménynézet: a P&L a(z) {{asOf}} időpontban ismert állapotot mutatja.",
     "chart": {
-      "title": "P&L over time",
-      "net": "Net P&L",
-      "realized": "Realized P&L",
-      "unrealized": "Unrealized P&L",
-      "valuationCurrency": "Valuation currency: {{currency}}"
+      "title": "P&L időbeli alakulása",
+      "net": "Nettó P&L",
+      "realized": "Realizált P&L",
+      "unrealized": "Nem realizált P&L",
+      "valuationCurrency": "Értékelési pénznem: {{currency}}"
     },
     "markers": {
-      "show": "Show decision markers",
-      "hide": "Hide decision markers",
-      "legendAriaLabel": "Decision marker legend",
-      "truncated": "Marker results were truncated at {{limit}}. Additional decisions or fills exist in this window.",
+      "show": "Döntési jelölők megjelenítése",
+      "hide": "Döntési jelölők elrejtése",
+      "legendAriaLabel": "Döntési jelölők jelmagyarázata",
+      "truncated": "Legfeljebb {{limit}} jelölőeredmény jelenik meg. Ebben az időablakban további döntések vagy teljesítések is vannak.",
       "legend": {
-        "fillExecuted": "Fill · executed",
-        "signalExecuted": "Signal · executed",
-        "signalNoFill": "Signal · no fill",
-        "aiExecuted": "AI decision · executed",
-        "aiRejected": "AI decision · rejected",
-        "aiNoFill": "AI decision · no fill"
+        "fillExecuted": "Teljesítés · végrehajtva",
+        "signalExecuted": "Jelzés · végrehajtva",
+        "signalNoFill": "Jelzés · nincs teljesítés",
+        "aiExecuted": "AI-döntés · végrehajtva",
+        "aiRejected": "AI-döntés · elutasítva",
+        "aiNoFill": "AI-döntés · nincs teljesítés"
       },
       "detail": {
-        "title": "Marker details",
-        "type": "Type",
-        "time": "Time",
-        "instrument": "Instrument",
-        "outcome": "Outcome",
-        "status": "Status",
-        "side": "Side",
-        "size": "Size",
-        "price": "Price",
-        "executionId": "Execution ID",
-        "orderId": "Order ID",
-        "strategyName": "Strategy name",
-        "strength": "Strength",
-        "reason": "Reason",
-        "signalId": "Signal ID",
-        "strategyId": "Strategy ID",
-        "reviewId": "Review ID",
-        "eventId": "Event ID",
-        "decision": "Decision",
-        "rationale": "Rationale",
+        "title": "Jelölő részletei",
+        "type": "Típus",
+        "time": "Időpont",
+        "instrument": "Instrumentum",
+        "outcome": "Eredmény",
+        "status": "Állapot",
+        "side": "Oldal",
+        "size": "Méret",
+        "price": "Ár",
+        "executionId": "Teljesítésazonosító",
+        "orderId": "Megbízásazonosító",
+        "strategyName": "Stratégia neve",
+        "strength": "Erősség",
+        "reason": "Indok",
+        "signalId": "Jelzésazonosító",
+        "strategyId": "Stratégiaazonosító",
+        "reviewId": "Felülvizsgálat azonosítója",
+        "eventId": "Eseményazonosító",
+        "decision": "Döntés",
+        "rationale": "Indoklás",
         "noValue": "—",
         "types": {
-          "fill": "Fill",
-          "signal": "Signal",
-          "ai_decision": "AI decision"
+          "fill": "Teljesítés",
+          "signal": "Jelzés",
+          "ai_decision": "AI-döntés"
         },
         "outcomes": {
-          "executed": "Executed",
-          "rejected": "Rejected",
-          "no_fill": "No fill"
+          "executed": "Végrehajtva",
+          "rejected": "Elutasítva",
+          "no_fill": "Nincs teljesítés"
         }
       }
     },
 
     "contributions": {
-      "title": "Latest per-instrument contributions",
-      "instrument": "Instrument",
-      "realized": "Realized P&L",
-      "fees": "Fees",
-      "accrual": "Accrual",
-      "unrealized": "Unrealized P&L",
-      "net": "Net P&L",
+      "title": "Legutóbbi hozzájárulások instrumentumonként",
+      "instrument": "Instrumentum",
+      "realized": "Realizált P&L",
+      "fees": "Díjak",
+      "accrual": "Felhalmozott finanszírozás",
+      "unrealized": "Nem realizált P&L",
+      "net": "Nettó P&L",
       "noValue": "—",
-      "empty": "No instrument contributions are available."
+      "empty": "Nem érhető el instrumentumonkénti hozzájárulás."
     },
     "attribution": {
-      "title": "Latest P&L attribution",
-      "ariaLabel": "Latest P&L attribution by origin and strategy",
-      "origin": "Origin",
-      "noStrategy": "No proven strategy",
-      "withheld": "Withheld",
-      "valueSemantics": "A displayed zero is proven. Withheld means the value could not be proven.",
-      "empty": "Attribution is unavailable for the latest P&L point.",
+      "title": "Legutóbbi P&L-attribúció",
+      "ariaLabel": "Legutóbbi P&L-attribúció eredet és stratégia szerint",
+      "origin": "Eredet",
+      "noStrategy": "Nincs igazolt stratégia",
+      "withheld": "Nem igazolható",
+      "valueSemantics": "A megjelenített nulla igazolt érték. A „Nem igazolható” azt jelenti, hogy az értéket nem lehetett igazolni.",
+      "empty": "A legutóbbi P&L-ponthoz nem érhető el attribúció.",
       "origins": {
-        "manual": "Manual · direct",
-        "plan": "Plan · automated",
-        "system": "System · automated",
-        "unattributed": "Unattributed · provenance unknown"
+        "manual": "Kézi · közvetlen",
+        "plan": "Terv · automatizált",
+        "system": "Rendszer · automatizált",
+        "unattributed": "Nem attribuált · ismeretlen eredet"
       }
     }
   },
@@ -164,13 +164,13 @@
     "trailingStopBadge": "TS: ${{stop}}",
     "trailingStopPending": "TS: függőben",
     "slTpButton": "SL/TP",
-    "trailButton": "Trail",
+    "trailButton": "Követő stop",
     "quantity": "Mennyiség",
     "averageEntry": "Átlagos belépő",
     "unrealizedPnl": "Nem realizált P&L",
     "realizedPnl": "Realizált P&L",
     "updated": "Frissítve: {{timestamp}}",
-    "mark": "Mark",
+    "mark": "Referenciaár",
     "noValue": "N/A"
   },
   "empty": {
@@ -205,10 +205,10 @@
     "confirmTitle": "Trailing Stop megerősítése",
     "position": "Pozíció",
     "entryPrice": "Belépési ár",
-    "trailingDistanceLabel": "Trailing Distance (%)",
+    "trailingDistanceLabel": "Követési távolság (%)",
     "minLockLabel": "Min Lock Profit (%) — opcionális",
-    "trailingDistance": "Trailing Distance",
-    "minLockProfit": "Min Lock Profit",
+    "trailingDistance": "Követési távolság",
+    "minLockProfit": "Minimális rögzített nyereség",
     "placeholders": {
       "trailingPct": "pl. 5.0",
       "minLockPct": "0 = azonnali indítás"

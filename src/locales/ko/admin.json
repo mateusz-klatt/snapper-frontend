@@ -278,11 +278,11 @@
       },
       "fieldLabels": {
         "api_key": "API 키",
-        "api_secret": "API Secret",
+        "api_secret": "API 시크릿",
         "private_key_pem": "개인 키 (PEM)",
         "client_id": "클라이언트 ID",
         "client_secret": "클라이언트 Secret",
-        "refresh_token": "Refresh Token",
+        "refresh_token": "리프레시 토큰",
         "initial_balance": "초기 잔고"
       },
       "credentialTypes": {

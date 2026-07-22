@@ -5,7 +5,7 @@
   "controls": {
     "exchange": "Borsa:",
     "instrument": "Strumento:",
-    "timeframe": "Timeframe:",
+    "timeframe": "Intervallo temporale:",
     "selectExchange": "Seleziona exchange",
     "searchInstrument": "Cerca strumento..."
   },
@@ -78,11 +78,11 @@
     "chipAriaLabel": "Statistiche della coppia con {{symbol}} su {{exchange}}: Pearson {{pearson}}, valore p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Ora:",
+    "live": "Tempo reale",
+    "sliderAriaLabel": "Scorri la cronologia di mercato",
     "presets": {
-      "live": "Live",
+      "live": "Tempo reale",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

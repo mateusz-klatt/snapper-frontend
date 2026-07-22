@@ -61,7 +61,7 @@
     "title": "Összehasonlítás",
     "headingFull": "Backtest összehasonlítás",
     "loading": "Összehasonlítás betöltése…",
-    "vs": "vs",
+    "vs": "kontra",
     "runLabel": "Futtatás {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrikák",
@@ -131,7 +131,7 @@
     "waiting": "Várakozás az előrehaladásra…",
     "candles": "Gyertyák: {{done}} / {{total}}",
     "candlesNoTotal": "Gyertyák: {{done}}",
-    "equity": "equity {{value}}",
+    "equity": "saját tőke: {{value}}",
     "signalsTrades": "jelzések: {{signals}} / kötések: {{trades}}",
     "milestoneLine": "mérföldkő {{label}}",
     "milestone": {

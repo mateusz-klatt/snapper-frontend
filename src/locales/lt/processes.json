@@ -52,7 +52,7 @@
   },
   "badges": {
     "oneShot": "vienkartinis",
-    "autoStart": "auto-start",
+    "autoStart": "automatinis paleidimas",
     "manual": "rankinis"
   },
   "actions": {

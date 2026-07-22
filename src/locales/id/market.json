@@ -5,7 +5,7 @@
   "controls": {
     "exchange": "Bursa:",
     "instrument": "Instrumen:",
-    "timeframe": "Timeframe:",
+    "timeframe": "Kerangka waktu:",
     "selectExchange": "Pilih bursa",
     "searchInstrument": "Cari instrumen..."
   },
@@ -78,11 +78,11 @@
     "chipAriaLabel": "Statistik pasangan dengan {{symbol}} di {{exchange}}: Pearson {{pearson}}, nilai p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Waktu:",
+    "live": "Waktu nyata",
+    "sliderAriaLabel": "Geser waktu pasar",
     "presets": {
-      "live": "Live",
+      "live": "Waktu nyata",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

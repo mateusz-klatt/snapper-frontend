@@ -26,7 +26,7 @@
       "active": "Aktif",
       "revoked": "Dicabut"
     },
-    "default": "default",
+    "default": "bawaan",
     "details": "Detail",
     "viewAriaLabel": "Lihat delegat {{label}}"
   },
@@ -54,7 +54,7 @@
       "maxCancelsPerMinute": "Maks pembatalan per menit",
       "perInstrument": "Kuantitas maks per instrumen (JSON)",
       "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
-      "default": "default",
+      "default": "bawaan",
       "errorInvalidJson": "max_order_quantity_per_instrument harus berupa JSON yang valid",
       "errorJsonObject": "max_order_quantity_per_instrument harus berupa objek JSON atau kosong",
       "errorNegative": "Batas harus berupa bilangan bulat non-negatif atau kosong."
@@ -68,7 +68,7 @@
       "rowMaxCancelsPerMinute": "Maks pembatalan per menit",
       "rowPerInstrument": "Kuantitas maks per instrumen",
       "operatorDefault": "(operator utama pemanggil)",
-      "defaultValue": "(default)"
+      "defaultValue": "(bawaan)"
     },
     "buttons": {
       "cancel": "Batal",
@@ -102,8 +102,8 @@
     "maxDailyNotionalUsd": "Maks notional USD harian",
     "maxCancelsPerMinute": "Maks pembatalan per menit",
     "perInstrument": "Kuantitas maks per instrumen",
-    "defaultValue": "(default)",
-    "editorPlaceholder": "(default)",
+    "defaultValue": "(bawaan)",
+    "editorPlaceholder": "(bawaan)",
     "toast": {
       "capsUpdated": "Batas diperbarui",
       "failedToUpdateCaps": "Gagal memperbarui batas",

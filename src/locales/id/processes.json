@@ -32,7 +32,7 @@
     },
     "detail": {
       "wallet": "Dompet",
-      "template": "Template",
+      "template": "Templat",
       "last_run": "Eksekusi terakhir",
       "unknownWallet": "tidak diketahui"
     },
@@ -44,7 +44,7 @@
     }
   },
   "template": {
-    "badge": "template",
+    "badge": "templat",
     "mode": "Mode:",
     "parameters": "Parameter:",
     "paramCount": "{{count}} parameter",
@@ -52,7 +52,7 @@
   },
   "badges": {
     "oneShot": "sekali jalan",
-    "autoStart": "auto-start",
+    "autoStart": "mulai otomatis",
     "manual": "manual"
   },
   "actions": {

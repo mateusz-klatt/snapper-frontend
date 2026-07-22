@@ -78,11 +78,11 @@
     "chipAriaLabel": "סטטיסטיקת זוג עם {{symbol}} ב-{{exchange}}: פירסון {{pearson}}, ערך p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "זמן:",
+    "live": "חי",
+    "sliderAriaLabel": "נווט לאורך ציר הזמן של השוק",
     "presets": {
-      "live": "Live",
+      "live": "חי",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

@@ -128,27 +128,27 @@
     "tracemallocIdle": "Inaktiv"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Egress-status",
+    "loading": "Laster egress-status…",
+    "unavailable": "Egress-status utilgjengelig: {{message}}",
+    "fallbackError": "Kunne ikke laste egress-status.",
+    "enabled": "Aktivert",
+    "disabled": "Deaktivert",
+    "disabledMessage": "Egress-poolen er deaktivert; utgående trafikk bruker standard nettverksrute.",
+    "fallbackWarning": "Advarsel: privat trafikk bruker VPN-reserveruten, ikke direkte egress.",
+    "noRoutes": "Ingen egress-ruter er konfigurert.",
+    "anyExchange": "Alle",
+    "none": "Ingen",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Rapporterende containere",
+      "item": "{{container}} · {{age}} · ruter: {{routeCount}}",
+      "stale": "· foreldet"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · sist sett {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "ukjent",
       "kind": {
         "ws": "ws",
         "rest": "rest"
@@ -156,27 +156,27 @@
     },
     "summary": {
       "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "policy": "Karantenepolicy",
+      "fallbackRoute": "Privat reserverute",
+      "routes": "Ruter"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Vent",
+      "raise": "Utløs feil"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
+      "kind": "Type",
       "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "exitIp": "Utgående IP",
+      "provider": "Leverandør",
+      "priority": "Prioritet",
+      "allowedExchanges": "Tillatte børser",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "I bruk",
+      "traffic": "Trafikk",
+      "reservations": "Aktive reservasjoner",
+      "connections": "Tilkoblinger"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "direkte",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktiv",
+      "quarantined": "I karantene",
+      "quarantinedSeconds": "I karantene ({{seconds}}s)",
+      "disabled": "Deaktivert"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "offentlig",
+      "private": "privat"
     }
   },
   "relativeAge": {

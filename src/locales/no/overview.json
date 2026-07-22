@@ -22,7 +22,7 @@
     "title": "Prosessstatus",
     "feeds": "Feeder",
     "strategies": "Strategier",
-    "executors": "Executors",
+    "executors": "Executorer",
     "brokers": "Brokere"
   },
   "portfolio": {

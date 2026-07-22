@@ -10,7 +10,7 @@
   "alertType": {
     "critical_system_error": "Ralat sistem",
     "margin_warning": "Amaran margin",
-    "order_fill_full": "Pesanan dipenuhi",
+    "order_fill_full": "Pesanan dilaksanakan sepenuhnya",
     "order_rejected": "Pesanan ditolak",
     "position_stop_loss_fired": "Stop-loss dicetuskan"
   },
@@ -51,7 +51,7 @@
   "title": {
     "critical_system_error": "Sistem merosot: {{0}}",
     "margin_warning": "Amaran margin",
-    "order_fill_full": "Pesanan dipenuhi",
+    "order_fill_full": "Pesanan dilaksanakan sepenuhnya",
     "order_rejected": "Pesanan ditolak",
     "order_unknown": "Status pesanan tidak diketahui",
     "position_stop_loss_fired": "Stop-loss dicetuskan"

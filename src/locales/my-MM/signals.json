@@ -17,7 +17,7 @@
   "card": {
     "strength": "အားကောင်းမှု",
     "price": "စျေးနှုန်း",
-    "exchange": "Exchange",
+    "exchange": "အိတ်ချိန်း",
     "reason": "အကြောင်းရင်း:",
     "noPrice": "N/A"
   },

@@ -36,7 +36,7 @@
     "positions": "पोजीशन",
     "instrumentsCount": "{{count}} इंस्ट्रूमेंट",
     "empty": "कोई पोजीशन डेटा उपलब्ध नहीं",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "डेटा अधूरा है — कुछ पोजीशन के लिए उपयोग योग्य संदर्भ मूल्य या एंट्री मूल्य उपलब्ध नहीं है; कुल में केवल ज्ञात घटक शामिल हैं"
   },
   "signals": {
     "title": "हाल के सिग्नल",

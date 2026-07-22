@@ -56,7 +56,7 @@
       "status": "סטטוס",
       "dataLag": "השהיית נתונים",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "אות חיים",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

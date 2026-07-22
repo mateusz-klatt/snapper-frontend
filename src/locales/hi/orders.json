@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "लागू नहीं",
-    "priceMarket": "Market",
+    "priceMarket": "मार्केट",
     "quantity": "मात्रा",
     "price": "कीमत",
     "created": "बनाया गया",
@@ -97,18 +97,18 @@
       "sell": "बिक्री"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "मार्केट",
+      "limit": "लिमिट",
+      "stop": "स्टॉप",
+      "stopLimit": "स्टॉप लिमिट",
+      "stop_limit": "स्टॉप लिमिट"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "लाइव",
+      "paper": "पेपर"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — केवल बाजार डेटा",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (पेपर)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

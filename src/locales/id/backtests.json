@@ -18,7 +18,7 @@
       "create": "Backtest baru"
     },
     "fields": {
-      "timeframe": "Timeframe",
+      "timeframe": "Kerangka Waktu",
       "period": "Periode",
       "initialCash": "Kas Awal",
       "id": "ID"
@@ -161,11 +161,11 @@
       "instrumentHelp": "ID publik instrumen untuk di-backtest",
       "exchangeLabel": "Bursa (sumber feed)",
       "exchangePlaceholder": "— Pilih bursa —",
-      "timeframeLabel": "Timeframe",
+      "timeframeLabel": "Kerangka waktu",
       "startDateLabel": "Tanggal mulai",
       "endDateLabel": "Tanggal akhir",
       "initialCashLabel": "Kas awal",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Selisih harga eksekusi (bps)",
       "commissionBpsLabel": "Komisi (bps)",
       "executionModeLabel": "Mode eksekusi",
       "executionModeDirectDb": "DB langsung",

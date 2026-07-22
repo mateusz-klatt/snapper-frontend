@@ -33,7 +33,7 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} val. {{minutes}} min",
     "uptimeDays": "{{days}} d. {{hours}} val.",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Backtestas {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "Veikimo laikas",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Neaktyvu"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Išeinančio srauto būklė",
+    "loading": "Įkeliama išeinančio srauto būklė…",
+    "unavailable": "Išeinančio srauto būklės duomenys nepasiekiami: {{message}}",
+    "fallbackError": "Nepavyko įkelti išeinančio srauto būklės.",
+    "enabled": "Įjungtas",
+    "disabled": "Išjungtas",
+    "disabledMessage": "Išeinančio srauto telkinys išjungtas; srautas nukreipiamas numatytuoju tinklo maršrutu.",
+    "fallbackWarning": "Įspėjimas: privatus srautas nukreiptas atsarginiu VPN maršrutu, o ne tiesioginiu išėjimo maršrutu.",
+    "noRoutes": "Išeinančio srauto maršrutų nesukonfigūruota.",
+    "anyExchange": "Visos",
+    "none": "Nėra",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Duomenis teikiantys konteineriai",
+      "item": "{{container}} · {{age}} · maršrutai: {{routeCount}}",
+      "stale": "· pasenęs"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · paskutinė veikla: {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "nežinoma",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Telkinys",
+      "policy": "Karantino politika",
+      "fallbackRoute": "Privataus srauto atsarginis maršrutas",
+      "routes": "Maršrutai"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Laukti",
+      "raise": "Sukelti klaidą"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Tipas",
+      "region": "Regionas",
+      "exitIp": "Išėjimo IP",
+      "provider": "Teikėjas",
+      "priority": "Prioritetas",
+      "allowedExchanges": "Leidžiamos biržos",
+      "status": "Būsena",
+      "inUse": "Naudojimų skaičius",
+      "traffic": "Srautas",
+      "reservations": "Aktyvios rezervacijos",
+      "connections": "Ryšiai"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "tiesioginis",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktyvus",
+      "quarantined": "Karantine",
+      "quarantinedSeconds": "Karantine ({{seconds}} s)",
+      "disabled": "Išjungtas"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "viešasis",
+      "private": "privatusis"
     }
   },
   "relativeAge": {

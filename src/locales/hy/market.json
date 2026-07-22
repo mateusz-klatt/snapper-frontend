@@ -78,11 +78,11 @@
     "chipAriaLabel": "Զույգի վիճակագրություն {{exchange}} բորսայում {{symbol}}-ի հետ՝ Pearson {{pearson}}, p-արժեք {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Ժամանակ՝",
+    "live": "Իրական ժամանակ",
+    "sliderAriaLabel": "Ընտրել շուկայի ժամանակը",
     "presets": {
-      "live": "Live",
+      "live": "Իրական ժամանակ",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

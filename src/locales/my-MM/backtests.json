@@ -44,11 +44,11 @@
     "title": "နောက်ကြောင်းပြန် စမ်းသပ်မှု run",
     "fields": {
       "strategy": "ဗျူဟာ",
-      "instrument": "Instrument",
+      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
       "status": "အခြေအနေ",
       "period": "ကာလ",
       "crossAsset": "အက်ဆက်ဖြတ်ကျော် attribution",
-      "configHash": "Config hash"
+      "configHash": "ပြင်ဆင်သတ်မှတ်ချက် hash တန်ဖိုး"
     },
     "crossAssetFlow": "{{source}} feed → {{target}} fill များ",
     "errors": {
@@ -61,17 +61,17 @@
     "title": "နှိုင်းယှဉ်ပါ",
     "headingFull": "နောက်ကြောင်းပြန် စမ်းသပ်မှု နှိုင်းယှဉ်ချက်",
     "loading": "နှိုင်းယှဉ်ချက် တင်နေသည်…",
-    "vs": "vs",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "vs": "နှင့် ယှဉ်လျှင်",
+    "runLabel": "စမ်းသပ်မှု {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metric များ",
-      "equityOverlay": "Equity overlay",
+      "equityOverlay": "အရင်းအနှီး ထပ်ဆင့်ပြကွက်",
       "trades": "ကုန်သွယ်မှုများ",
       "signals": "အချက်ပြမှုများ"
     },
     "pairingMode": {
-      "auto": "auto",
-      "manual": "manual"
+      "auto": "အလိုအလျောက်",
+      "manual": "လက်ဖြင့်"
     },
     "errors": {
       "notFound": "လက်ရှိ wallet တွင် comparison မတွေ့ပါ။",
@@ -104,17 +104,17 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "A P&L",
+        "pnlB": "B P&L",
         "delta": "Δ"
       }
     },
     "metrics": {
       "empty": "နှိုင်းယှဉ်နိုင်သော metric မရှိပါ — run နှစ်ခုစလုံးတွင် recorded value မရှိပါ။",
       "columns": {
-        "name": "Metric",
-        "runA": "Run A",
-        "runB": "Run B",
+        "name": "တိုင်းတာချက်",
+        "runA": "စမ်းသပ်မှု A",
+        "runB": "စမ်းသပ်မှု B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,8 +122,8 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "စမ်းသပ်မှု A",
+        "runB": "စမ်းသပ်မှု B"
       }
     }
   },
@@ -131,9 +131,9 @@
     "waiting": "Progress စောင့်နေသည်…",
     "candles": "{{done}} / {{total}} candle",
     "candlesNoTotal": "{{done}} candle",
-    "equity": "equity {{value}}",
+    "equity": "အရင်းအနှီး {{value}}",
     "signalsTrades": "{{signals}} signal / {{trades}} trade",
-    "milestoneLine": "milestone {{label}}",
+    "milestoneLine": "မှတ်တိုင် {{label}}",
     "milestone": {
       "25pct": "25 %",
       "50pct": "50 %",
@@ -156,20 +156,20 @@
       "strategyPlaceholder": "— ဗျူဟာတစ်ခု ရွေးပါ —",
       "strategyLoading": "ဗျူဟာများ load လုပ်နေသည်…",
       "strategyError": "ဗျူဟာများ load လုပ်၍ မရပါ",
-      "instrumentLabel": "Instrument",
+      "instrumentLabel": "ကုန်သွယ်ရေးတူရိယာ",
       "instrumentPlaceholder": "ဥပမာ BTC-USD",
       "instrumentHelp": "နောက်ကြောင်းပြန် စမ်းသပ်ရန် instrument ၏ public id",
-      "exchangeLabel": "Exchange (feed source)",
+      "exchangeLabel": "အိတ်ချိန်း (ဒေတာ feed ရင်းမြစ်)",
       "exchangePlaceholder": "— exchange တစ်ခု ရွေးပါ —",
       "timeframeLabel": "အချိန်ဘောင်",
       "startDateLabel": "စတင်ရက်စွဲ",
       "endDateLabel": "ပြီးဆုံးရက်စွဲ",
       "initialCashLabel": "စတင် Cash",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "စျေးချော်မှု (bps)",
       "commissionBpsLabel": "ကော်မရှင် (bps)",
       "executionModeLabel": "လုပ်ဆောင်မှု မုဒ်",
-      "executionModeDirectDb": "Direct DB",
-      "executionModeZmqReplay": "ZMQ replay",
+      "executionModeDirectDb": "DB တိုက်ရိုက်",
+      "executionModeZmqReplay": "ZMQ ပြန်ဖွင့်မှု",
       "targetExchangeLabel": "ပစ်မှတ် လုပ်ဆောင်မှု exchange",
       "targetExchangeNone": "မရှိ (single-exchange)",
       "targetExchangeHelp": "Optional — cross-asset run များအတွက်; single-exchange အတွက် မသတ်မှတ်ဘဲ ထားပါ"

@@ -38,7 +38,7 @@
       "ariaLabel": "Aktiv lommebok",
       "placeholder": "Lommebok",
       "allWallets": "Alle lommebøker",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (papir)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktiv operatør",
@@ -62,7 +62,7 @@
   "errorBoundary": {
     "titleDefault": "Noe gikk galt",
     "titleWithComponent": "Feil i {{componentName}}",
-    "stackTrace": "Stack trace",
+    "stackTrace": "Stakksporing",
     "tryAgain": "Prøv igjen"
   },
   "nav": {

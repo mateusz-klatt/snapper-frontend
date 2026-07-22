@@ -14,31 +14,31 @@
       "all": "Semua Pesanan",
       "new": "Baharu",
       "open": "Terbuka",
-      "partiallyFilled": "Diisi Sebahagian",
-      "partially_filled": "Diisi Sebahagian",
-      "filled": "Diisi",
+      "partiallyFilled": "Dilaksanakan Sebahagiannya",
+      "partially_filled": "Dilaksanakan Sebahagiannya",
+      "filled": "Dilaksanakan Sepenuhnya",
       "cancelled": "Dibatalkan",
       "rejected": "Ditolak"
     }
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "Pasaran",
     "quantity": "Kuantiti",
     "price": "Harga",
     "created": "Dicipta",
     "createdUnknown": "N/A",
-    "orderId": "Order ID",
+    "orderId": "ID Pesanan",
     "leverage": "Leveraj",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "KURANGKAN SAHAJA",
     "cancel": "Batal",
     "cancelling": "Membatalkan…",
     "cancelAriaLabel": "Batalkan pesanan {{orderId}}"
   },
   "executionCard": {
     "orderNumber": "Pesanan #{{orderId}}",
-    "filled": "FILLED",
+    "filled": "DILAKSANAKAN",
     "orderLabel": "Pesanan {{orderId}}",
     "size": "Saiz",
     "price": "Harga",
@@ -62,11 +62,11 @@
       "quantity": "Kuantiti",
       "price": "Harga",
       "leverage": "Leveraj",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "Kurangkan Sahaja",
       "created": "Dicipta"
     },
     "executions": {
-      "orderId": "Order ID",
+      "orderId": "ID Pesanan",
       "instrument": "Instrumen",
       "side": "Sisi",
       "size": "Saiz",
@@ -97,18 +97,18 @@
       "sell": "Jual"
     },
     "orderTypeOptions": {
-      "market": "Market",
+      "market": "Pasaran",
       "limit": "Pesanan limit",
       "stop": "Pesanan stop",
       "stopLimit": "Pesanan stop limit",
       "stop_limit": "Pesanan stop limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Langsung",
+      "paper": "Simulasi"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — data pasaran sahaja",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (simulasi)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

@@ -94,7 +94,7 @@
     },
     "retainDays": "{{days}}d",
     "ok": "OK",
-    "error": "error"
+    "error": "エラー"
   },
   "systemMetrics": {
     "disk": "ディスク空き",
@@ -103,7 +103,7 @@
     "loading": "プロセスメトリクスを読み込み中…",
     "unavailable": "プロセスメトリクスを利用できません: {{message}}",
     "fallbackError": "プロセスヘルスメトリクスの読み込みに失敗しました。",
-    "rawJson": "Raw JSON",
+    "rawJson": "生JSON",
     "pid": "PID",
     "statusValue": "ステータス: {{status}}",
     "uptime": "稼働時間",
@@ -119,7 +119,7 @@
     "asyncioPending": "+ {{count}}件保留中",
     "dbPool": "DBプール",
     "liveConns": "ライブ接続: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC世代0/1/2",
     "gcObjects": "オブジェクト: {{value}}",
     "threadsPercent": "スレッド %",
     "networkConns": "ネットワーク接続",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "アイドル"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "外向き通信ヘルス",
+    "loading": "外向き通信ヘルスを読み込み中…",
+    "unavailable": "外向き通信ヘルスを利用できません：{{message}}",
+    "fallbackError": "外向き通信ヘルスの読み込みに失敗しました。",
+    "enabled": "有効",
+    "disabled": "無効",
+    "disabledMessage": "外向き通信プールは無効です。外向きトラフィックには既定のネットワーク経路が使用されています。",
+    "fallbackWarning": "警告：プライベートトラフィックは直接経路ではなくVPNフォールバックを使用しています。",
+    "noRoutes": "外向き通信経路が設定されていません。",
+    "anyExchange": "すべて",
+    "none": "なし",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "報告元コンテナ",
+      "item": "{{container}} · {{age}} · 経路：{{routeCount}}",
+      "stale": "· 情報が古い"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · 最終確認{{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "不明",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "プール",
+      "policy": "隔離ポリシー",
+      "fallbackRoute": "プライベート通信フォールバック",
+      "routes": "経路"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "待機",
+      "raise": "例外送出"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "種別",
+      "region": "リージョン",
+      "exitIp": "出口IP",
+      "provider": "プロバイダー",
+      "priority": "優先度",
+      "allowedExchanges": "許可済み取引所",
+      "status": "ステータス",
+      "inUse": "使用中",
+      "traffic": "トラフィック",
+      "reservations": "有効な予約",
+      "connections": "接続"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "直接",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "アクティブ",
+      "quarantined": "隔離中",
+      "quarantinedSeconds": "隔離中（{{seconds}}s）",
+      "disabled": "無効"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "パブリック",
+      "private": "プライベート"
     }
   },
   "relativeAge": {

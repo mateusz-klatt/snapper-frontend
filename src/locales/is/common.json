@@ -38,11 +38,11 @@
       "ariaLabel": "Virkt veski",
       "placeholder": "Veski",
       "allWallets": "Öll veski",
-      "optionPaper": "{{label}} (paper)"
+      "optionPaper": "{{label}} (sýndarviðskipti)"
     },
     "operatorPicker": {
       "ariaLabel": "Virkur operator",
-      "placeholder": "Operator",
+      "placeholder": "Rekstraraðili",
       "allOperators": "Allir operatorar"
     },
     "timeTravel": {

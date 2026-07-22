@@ -31,7 +31,7 @@
     "orderId": "주문 ID",
     "leverage": "레버리지",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "리듀스 온리",
     "cancel": "취소",
     "cancelling": "취소 중…",
     "cancelAriaLabel": "주문 {{orderId}} 취소"
@@ -62,7 +62,7 @@
       "quantity": "수량",
       "price": "가격",
       "leverage": "레버리지",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "리듀스 온리",
       "created": "생성일"
     },
     "executions": {

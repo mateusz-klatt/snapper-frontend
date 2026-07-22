@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "Ընտրեք դրամապանակ...",
     "selectWalletPlaceholder": "Ընտրել դրամապանակ...",
     "walletLabel": "Դրամապանակ",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (փորձնական)",
     "unknownError": "Անհայտ սխալ",
     "dash": "-"
   },
@@ -289,7 +289,7 @@
         "api_key_secret": "API բանալի + գաղտնիք",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "Փորձնական"
       },
       "validation": {
         "walletRequired": "Դրամապանակը պարտադիր է",

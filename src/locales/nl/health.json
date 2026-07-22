@@ -108,10 +108,10 @@
     "statusValue": "Status: {{status}}",
     "uptime": "Uptime",
     "threads": "Threads",
-    "openFds": "Open FDs",
+    "openFds": "Open FD's",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
-    "throttled": "Throttled {{count}}×",
+    "throttled": "Begrensd {{count}}×",
     "memory": "Geheugen",
     "saturation": "Verzadiging {{percent}}",
     "asyncioTasks": "Asyncio-taken",
@@ -128,27 +128,27 @@
     "tracemallocIdle": "Inactief"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Egress-status",
+    "loading": "Egress-status laden…",
+    "unavailable": "Egress-status niet beschikbaar: {{message}}",
+    "fallbackError": "Laden egress-status mislukt.",
+    "enabled": "Ingeschakeld",
+    "disabled": "Uitgeschakeld",
+    "disabledMessage": "De egresspool is uitgeschakeld; uitgaand verkeer gebruikt het standaardnetwerkpad.",
+    "fallbackWarning": "Waarschuwing: privéverkeer gebruikt de VPN-fallback in plaats van directe egress.",
+    "noRoutes": "Geen egressroutes geconfigureerd.",
+    "anyExchange": "Alle beurzen",
+    "none": "Geen",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
+      "title": "Rapporterende containers",
       "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "stale": "· verouderd"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · laatst gezien {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "onbekend",
       "kind": {
         "ws": "ws",
         "rest": "rest"
@@ -156,27 +156,27 @@
     },
     "summary": {
       "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
+      "policy": "Quarantainebeleid",
+      "fallbackRoute": "Fallback voor privéverkeer",
       "routes": "Routes"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Wachten",
+      "raise": "Fout opwerpen"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
+      "kind": "Soort",
+      "region": "Regio",
+      "exitIp": "Uitgaand IP-adres",
       "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
+      "priority": "Prioriteit",
+      "allowedExchanges": "Toegestane beurzen",
       "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "inUse": "In gebruik",
+      "traffic": "Verkeer",
+      "reservations": "Actieve reserveringen",
+      "connections": "Verbindingen"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -190,14 +190,14 @@
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Actief",
+      "quarantined": "In quarantaine",
+      "quarantinedSeconds": "In quarantaine ({{seconds}}s)",
+      "disabled": "Uitgeschakeld"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "openbaar",
+      "private": "privé"
     }
   },
   "relativeAge": {

@@ -61,8 +61,8 @@
     "title": "Bandingkan",
     "headingFull": "Perbandingan backtest",
     "loading": "Memuatkan perbandingan…",
-    "vs": "vs",
-    "runLabel": "Run {{label}} · {{id}} · {{status}}",
+    "vs": "lwn.",
+    "runLabel": "Larian {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrik",
       "equityOverlay": "Overlay ekuiti",
@@ -70,7 +70,7 @@
       "signals": "Isyarat"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatik",
       "manual": "manual"
     },
     "errors": {
@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
         "delta": "Δ"
       }
     },
@@ -113,8 +113,8 @@
       "empty": "Tiada metrik boleh dibandingkan — kedua-dua run tiada nilai direkodkan.",
       "columns": {
         "name": "Metrik",
-        "runA": "Run A",
-        "runB": "Run B",
+        "runA": "Larian A",
+        "runB": "Larian B",
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
@@ -122,8 +122,8 @@
     },
     "equity": {
       "legend": {
-        "runA": "Run A",
-        "runB": "Run B"
+        "runA": "Larian A",
+        "runB": "Larian B"
       }
     }
   },
@@ -133,7 +133,7 @@
     "candlesNoTotal": "{{done}} lilin",
     "equity": "ekuiti {{value}}",
     "signalsTrades": "{{signals}} sig / {{trades}} dagangan",
-    "milestoneLine": "milestone {{label}}",
+    "milestoneLine": "pencapaian {{label}}",
     "milestone": {
       "25pct": "25 %",
       "50pct": "50 %",
@@ -165,7 +165,7 @@
       "startDateLabel": "Tarikh mula",
       "endDateLabel": "Tarikh tamat",
       "initialCashLabel": "Tunai awal",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Gelinciran (bps)",
       "commissionBpsLabel": "Komisen (bps)",
       "executionModeLabel": "Mod pelaksanaan",
       "executionModeDirectDb": "DB Terus",

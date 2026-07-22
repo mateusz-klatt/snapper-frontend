@@ -28,10 +28,10 @@
     "price": "စျေးနှုန်း",
     "created": "ဖန်တီးချိန်",
     "createdUnknown": "N/A",
-    "orderId": "Order ID",
-    "leverage": "Leverage",
+    "orderId": "အော်ဒါ ID",
+    "leverage": "လီဗာရေ့ချ်",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "ပိုဇစ်ရှင် လျှော့ချရန်သာ",
     "cancel": "ပယ်ဖျက်",
     "cancelling": "ပယ်ဖျက်နေသည်…",
     "cancelAriaLabel": "အော်ဒါ {{orderId}} ကို ပယ်ဖျက်ပါ"
@@ -55,25 +55,25 @@
   },
   "csv": {
     "orders": {
-      "instrument": "Instrument",
+      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
       "side": "ဘက်",
       "type": "အမျိုးအစား",
       "status": "အခြေအနေ",
       "quantity": "အရေအတွက်",
       "price": "စျေးနှုန်း",
-      "leverage": "Leverage",
-      "reduceOnly": "လျှော့ချရန်သာ",
+      "leverage": "လီဗာရေ့ချ်",
+      "reduceOnly": "ပိုဇစ်ရှင် လျှော့ချရန်သာ",
       "created": "ဖန်တီးချိန်"
     },
     "executions": {
       "orderId": "အော်ဒါ ID",
-      "instrument": "Instrument",
+      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
       "side": "ဘက်",
       "size": "အရွယ်အစား",
       "price": "စျေးနှုန်း",
       "total": "စုစုပေါင်း",
-      "fee": "Fee",
-      "feeAsset": "Fee Asset",
+      "fee": "အခကြေးငွေ",
+      "feeAsset": "အခကြေးငွေပေးသည့် ပိုင်ဆိုင်မှု",
       "executed": "အကောင်အထည်ဖော်ပြီး"
     }
   },
@@ -81,8 +81,8 @@
     "titleEdit": "လက်ဖြင့် အော်ဒါအသစ်",
     "titleConfirm": "အော်ဒါ အတည်ပြုပါ",
     "fields": {
-      "exchange": "Exchange",
-      "instrument": "Instrument",
+      "exchange": "အိတ်ချိန်း",
+      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
       "side": "ဘက်",
       "orderType": "အော်ဒါ အမျိုးအစား",
       "quantity": "အရေအတွက်",
@@ -97,14 +97,14 @@
       "sell": "ရောင်း"
     },
     "orderTypeOptions": {
-      "market": "Market",
-      "limit": "Limit",
-      "stop": "Stop",
-      "stopLimit": "Stop Limit",
-      "stop_limit": "Stop Limit"
+      "market": "စျေးကွက်အော်ဒါ",
+      "limit": "ကန့်သတ်အော်ဒါ",
+      "stop": "Stop အော်ဒါ",
+      "stopLimit": "Stop-Limit အော်ဒါ",
+      "stop_limit": "Stop-Limit အော်ဒါ"
     },
     "modeOptions": {
-      "live": "Live",
+      "live": "တိုက်ရိုက်",
       "paper": "စမ်းသပ်"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — စျေးကွက်ဒေတာသာ",

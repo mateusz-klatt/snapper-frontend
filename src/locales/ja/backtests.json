@@ -61,7 +61,7 @@
     "title": "比較",
     "headingFull": "バックテスト比較",
     "loading": "比較を読み込み中…",
-    "vs": "vs",
+    "vs": "対",
     "runLabel": "実行 {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "メトリクス",

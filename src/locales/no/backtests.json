@@ -129,10 +129,10 @@
   },
   "progress": {
     "waiting": "Venter på fremdrift…",
-    "candles": "{{done}} / {{total}} candles",
-    "candlesNoTotal": "{{done}} candles",
-    "equity": "equity {{value}}",
-    "signalsTrades": "{{signals}} sig / {{trades}} handler",
+    "candles": "{{done}} / {{total}} lysestaker",
+    "candlesNoTotal": "{{done}} lysestaker",
+    "equity": "egenkapital {{value}}",
+    "signalsTrades": "{{signals}} signaler / {{trades}} handler",
     "milestoneLine": "milepæl {{label}}",
     "milestone": {
       "25pct": "25 %",

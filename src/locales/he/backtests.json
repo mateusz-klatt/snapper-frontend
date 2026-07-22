@@ -131,7 +131,7 @@
     "waiting": "ממתין להתקדמות…",
     "candles": "{{done}} / {{total}} נרות",
     "candlesNoTotal": "{{done}} נרות",
-    "equity": "equity {{value}}",
+    "equity": "הון עצמי {{value}}",
     "signalsTrades": "{{signals}} אותות / {{trades}} עסקאות",
     "milestoneLine": "אבן דרך {{label}}",
     "milestone": {

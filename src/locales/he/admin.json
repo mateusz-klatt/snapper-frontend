@@ -43,7 +43,7 @@
     "chooseWalletPlaceholder": "בחר ארנק...",
     "selectWalletPlaceholder": "בחר ארנק...",
     "walletLabel": "ארנק",
-    "paperAnnotation": " (paper)",
+    "paperAnnotation": " (הדגמה)",
     "unknownError": "שגיאה לא ידועה",
     "dash": "-"
   },
@@ -280,16 +280,16 @@
         "api_key": "מפתח API",
         "api_secret": "סוד API",
         "private_key_pem": "מפתח פרטי (PEM)",
-        "client_id": "Client ID",
-        "client_secret": "Client Secret",
-        "refresh_token": "Refresh Token",
+        "client_id": "מזהה לקוח",
+        "client_secret": "סוד לקוח",
+        "refresh_token": "אסימון רענון",
         "initial_balance": "יתרת פתיחה"
       },
       "credentialTypes": {
         "api_key_secret": "מפתח API + סוד",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Paper"
+        "paper": "הדגמה"
       },
       "validation": {
         "walletRequired": "ארנק הוא חובה",

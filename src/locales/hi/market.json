@@ -78,11 +78,11 @@
     "chipAriaLabel": "{{exchange}} पर {{symbol}} के साथ जोड़ी के आँकड़े: पियर्सन {{pearson}}, p-मान {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "समय:",
+    "live": "लाइव",
+    "sliderAriaLabel": "बाज़ार का समय चुनें",
     "presets": {
-      "live": "Live",
+      "live": "लाइव",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

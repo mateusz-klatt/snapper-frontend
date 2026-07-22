@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "A-ի P&L",
+        "pnlB": "B-ի P&L",
         "delta": "Δ"
       }
     },

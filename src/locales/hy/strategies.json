@@ -56,7 +56,7 @@
       "status": "Վիճակ",
       "dataLag": "Տվյալների ուշացում",
       "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "heartbeat": "Կենսունակության ազդանշան",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },

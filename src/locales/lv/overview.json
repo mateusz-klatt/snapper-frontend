@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Procesu statuss",
-    "feeds": "Feeds",
+    "feeds": "Datu plūsmas",
     "strategies": "Stratēģijas",
     "executors": "Izpildītāji",
     "brokers": "Brokeri"
@@ -36,7 +36,7 @@
     "positions": "Pozīcijas",
     "instrumentsCount": "{{count}} instrumenti",
     "empty": "Pozīciju dati nav pieejami",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Dati ir nepilnīgi — dažām pozīcijām nav izmantojamas atsauces cenas vai ieejas cenas; kopsummās ir iekļauti tikai zināmie komponenti"
   },
   "signals": {
     "title": "Nesenie signāli",

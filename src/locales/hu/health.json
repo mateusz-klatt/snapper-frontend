@@ -33,7 +33,7 @@
     "uptimeMinutes": "{{minutes}}m",
     "uptimeHours": "{{hours}}h {{minutes}}m",
     "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "backtestName": "Backteszt {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/A",
     "uptimeLabel": "Üzemidő",
@@ -128,55 +128,55 @@
     "tracemallocIdle": "Tétlen"
   },
   "egress": {
-    "title": "Egress Health",
-    "loading": "Loading egress health…",
-    "unavailable": "Egress health unavailable: {{message}}",
-    "fallbackError": "Failed to load egress health.",
-    "enabled": "Enabled",
-    "disabled": "Disabled",
-    "disabledMessage": "Egress pool is disabled; outbound traffic is using the default network path.",
-    "fallbackWarning": "Warning: private traffic is on the VPN fallback, not direct egress.",
-    "noRoutes": "No egress routes configured.",
-    "anyExchange": "All",
-    "none": "None",
+    "title": "Kimenő hálózat állapota",
+    "loading": "Kimenő hálózat állapotának betöltése…",
+    "unavailable": "A kimenő hálózat állapota nem érhető el: {{message}}",
+    "fallbackError": "Nem sikerült betölteni a kimenő hálózat állapotát.",
+    "enabled": "Engedélyezve",
+    "disabled": "Letiltva",
+    "disabledMessage": "A kimenő kapcsolati pool le van tiltva; a kimenő forgalom az alapértelmezett hálózati útvonalat használja.",
+    "fallbackWarning": "Figyelmeztetés: a privát forgalom közvetlen kimenő útvonal helyett a tartalék VPN-útvonalat használja.",
+    "noRoutes": "Nincsenek beállítva kimenő útvonalak.",
+    "anyExchange": "Összes",
+    "none": "Nincs",
     "reservation": "{{exchange}} · {{trafficClass}} · {{container}}",
     "containers": {
-      "title": "Reporting containers",
-      "item": "{{container}} · {{age}} · routes: {{routeCount}}",
-      "stale": "· stale"
+      "title": "Állapotot jelentő konténerek",
+      "item": "{{container}} · {{age}} · útvonalak: {{routeCount}}",
+      "stale": "· elavult"
     },
     "connection": {
       "ws": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · ×{{count}} · {{container}}",
-      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · last seen {{lastSeen}} · {{container}}",
-      "lastSeenUnknown": "unknown",
+      "rest": "{{host}} · {{kind}} · {{exchange}}/{{trafficClass}} · utolsó észlelés: {{lastSeen}} · {{container}}",
+      "lastSeenUnknown": "ismeretlen",
       "kind": {
         "ws": "ws",
         "rest": "rest"
       }
     },
     "summary": {
-      "pool": "Pool",
-      "policy": "Quarantine policy",
-      "fallbackRoute": "Private fallback",
-      "routes": "Routes"
+      "pool": "Kapcsolati pool",
+      "policy": "Karanténszabályzat",
+      "fallbackRoute": "Privát tartalék útvonal",
+      "routes": "Útvonalak"
     },
     "policy": {
-      "wait": "Wait",
-      "raise": "Raise"
+      "wait": "Várakozás",
+      "raise": "Hiba jelzése"
     },
     "columns": {
       "id": "ID",
-      "kind": "Kind",
-      "region": "Region",
-      "exitIp": "Exit IP",
-      "provider": "Provider",
-      "priority": "Priority",
-      "allowedExchanges": "Allowed exchanges",
-      "status": "Status",
-      "inUse": "In use",
-      "traffic": "Traffic",
-      "reservations": "Active reservations",
-      "connections": "Connections"
+      "kind": "Típus",
+      "region": "Régió",
+      "exitIp": "Kilépési IP",
+      "provider": "Szolgáltató",
+      "priority": "Prioritás",
+      "allowedExchanges": "Engedélyezett tőzsdék",
+      "status": "Állapot",
+      "inUse": "Használatban",
+      "traffic": "Forgalom",
+      "reservations": "Aktív foglalások",
+      "connections": "Kapcsolatok"
     },
     "traffic": {
       "rxBytes": "↓ {{bytes}}",
@@ -186,18 +186,18 @@
       "handshake": "hs {{age}}"
     },
     "kind": {
-      "direct": "direct",
+      "direct": "közvetlen",
       "socks5": "socks5"
     },
     "status": {
-      "active": "Active",
-      "quarantined": "Quarantined",
-      "quarantinedSeconds": "Quarantined ({{seconds}}s)",
-      "disabled": "Disabled"
+      "active": "Aktív",
+      "quarantined": "Karanténban",
+      "quarantinedSeconds": "Karanténban ({{seconds}}s)",
+      "disabled": "Letiltva"
     },
     "trafficClass": {
-      "public": "public",
-      "private": "private"
+      "public": "nyilvános",
+      "private": "privát"
     }
   },
   "relativeAge": {

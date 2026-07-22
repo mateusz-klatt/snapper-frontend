@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "N/A",
-    "priceMarket": "Market",
+    "priceMarket": "Pasar",
     "quantity": "Kuantitas",
     "price": "Harga",
     "created": "Dibuat",
@@ -31,7 +31,7 @@
     "orderId": "ID Pesanan",
     "leverage": "Leverage",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "HANYA MENGURANGI POSISI",
     "cancel": "Batalkan",
     "cancelling": "Membatalkan…",
     "cancelAriaLabel": "Batalkan pesanan {{orderId}}"
@@ -62,7 +62,7 @@
       "quantity": "Kuantitas",
       "price": "Harga",
       "leverage": "Leverage",
-      "reduceOnly": "Reduce Only",
+      "reduceOnly": "Hanya mengurangi posisi",
       "created": "Dibuat"
     },
     "executions": {
@@ -97,7 +97,7 @@
       "sell": "Jual"
     },
     "orderTypeOptions": {
-      "market": "Market",
+      "market": "Pasar",
       "limit": "Limit",
       "stop": "Stop",
       "stopLimit": "Stop Limit",
@@ -105,10 +105,10 @@
     },
     "modeOptions": {
       "live": "Live",
-      "paper": "Paper"
+      "paper": "Simulasi"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — khusus data pasar",
-    "walletPaperSuffix": "{{label}} (paper)",
+    "walletPaperSuffix": "{{label}} (simulasi)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

@@ -78,11 +78,11 @@
     "chipAriaLabel": "Pāra statistika ar {{symbol}} biržā {{exchange}}: Pearson {{pearson}}, p vērtība {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Laiks:",
+    "live": "Reāllaikā",
+    "sliderAriaLabel": "Izvēlēties tirgus datu laiku",
     "presets": {
-      "live": "Live",
+      "live": "Reāllaikā",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

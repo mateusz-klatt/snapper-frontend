@@ -50,7 +50,7 @@
       "crossAsset": "Cross-asset-attributie",
       "configHash": "Confighash"
     },
-    "crossAssetFlow": "{{source}}-feed → {{target}}-fills",
+    "crossAssetFlow": "{{source}}-feed → uitvoeringen op {{target}}",
     "errors": {
       "invalidRunId": "Ongeldige run-id — moet een UUID7 zijn (ontvangen \"{{id}}\").",
       "loadFailed": "Laden run mislukt: {{message}}",
@@ -66,7 +66,7 @@
     "sections": {
       "metrics": "Metrieken",
       "equityOverlay": "Equity-overlay",
-      "trades": "Trades",
+      "trades": "Transacties",
       "signals": "Signalen"
     },
     "pairingMode": {
@@ -104,8 +104,8 @@
     },
     "trades": {
       "card": {
-        "pnlA": "A pnl",
-        "pnlB": "B pnl",
+        "pnlA": "P&L A",
+        "pnlB": "P&L B",
         "delta": "Δ"
       }
     },
@@ -132,7 +132,7 @@
     "candles": "{{done}} / {{total}} candles",
     "candlesNoTotal": "{{done}} candles",
     "equity": "equity {{value}}",
-    "signalsTrades": "{{signals}} sig / {{trades}} trades",
+    "signalsTrades": "{{signals}} signalen / {{trades}} transacties",
     "milestoneLine": "mijlpaal {{label}}",
     "milestone": {
       "25pct": "25 %",
@@ -158,9 +158,9 @@
       "strategyError": "Laden van strategieën mislukt",
       "instrumentLabel": "Instrument",
       "instrumentPlaceholder": "bijv. BTC-USD",
-      "instrumentHelp": "Publieke id van het te backtesten instrument",
-      "exchangeLabel": "Exchange (feedbron)",
-      "exchangePlaceholder": "— Selecteer een exchange —",
+      "instrumentHelp": "Publieke ID van het te backtesten instrument",
+      "exchangeLabel": "Beurs (feedbron)",
+      "exchangePlaceholder": "— Selecteer een beurs —",
       "timeframeLabel": "Tijdframe",
       "startDateLabel": "Startdatum",
       "endDateLabel": "Einddatum",
@@ -170,9 +170,9 @@
       "executionModeLabel": "Uitvoeringsmodus",
       "executionModeDirectDb": "Directe DB",
       "executionModeZmqReplay": "ZMQ-replay",
-      "targetExchangeLabel": "Doel-uitvoeringsexchange",
-      "targetExchangeNone": "Geen (enkele exchange)",
-      "targetExchangeHelp": "Optioneel — voor cross-asset-runs; laat leeg voor één exchange"
+      "targetExchangeLabel": "Doelbeurs voor uitvoering",
+      "targetExchangeNone": "Geen (één beurs)",
+      "targetExchangeHelp": "Optioneel — voor cross-asset-runs; laat leeg bij gebruik van één beurs"
     }
   }
 }

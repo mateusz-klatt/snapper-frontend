@@ -78,11 +78,11 @@
     "chipAriaLabel": "Paratölfræði með {{symbol}} á {{exchange}}: Pearson {{pearson}}, p-gildi {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "Tími:",
+    "live": "Í rauntíma",
+    "sliderAriaLabel": "Velja tíma markaðsgagna",
     "presets": {
-      "live": "Live",
+      "live": "Í rauntíma",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",

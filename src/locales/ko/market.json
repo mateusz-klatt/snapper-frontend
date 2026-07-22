@@ -78,11 +78,11 @@
     "chipAriaLabel": "{{exchange}}의 {{symbol}}와의 페어 통계: Pearson {{pearson}}, p값 {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "label": "시간:",
+    "live": "실시간",
+    "sliderAriaLabel": "시장 시점 탐색",
     "presets": {
-      "live": "Live",
+      "live": "실시간",
       "h1": "-1h",
       "d1": "-1d",
       "w1": "-1w",
