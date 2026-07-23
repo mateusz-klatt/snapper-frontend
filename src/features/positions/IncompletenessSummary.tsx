@@ -94,34 +94,61 @@ const reasonRenderKey = (reason: IncompletenessReasonData): string =>
     .map(value => (value === null ? 'N' : `S${value.length}:${value}`))
     .join('')
 
+const uniqueReasons = (
+  reasons: readonly IncompletenessReasonData[]
+): IncompletenessReasonData[] => {
+  const unique: IncompletenessReasonData[] = []
+
+  for (const reason of reasons) {
+    if (unique.some(candidate => sameReasonIdentity(candidate, reason))) continue
+    unique.push(reason)
+  }
+
+  return unique
+}
+
+const findTriggerContribution = (
+  point: PnlTimelinePointData,
+  reason: IncompletenessReasonData
+): PnlInstrumentContributionData | null => {
+  const triggerInstrumentPublicId = reason.trigger_instrument_public_id
+
+  if (triggerInstrumentPublicId === null) return null
+
+  return (
+    point.per_instrument.find(
+      contribution => contribution.instrument_public_id === triggerInstrumentPublicId
+    ) ?? null
+  )
+}
+
+const addReasonOccurrence = (
+  groups: ReasonGroup[],
+  point: PnlTimelinePointData,
+  reason: IncompletenessReasonData
+): void => {
+  const triggerContribution = findTriggerContribution(point, reason)
+  const group = groups.find(candidate => sameReasonIdentity(candidate.reason, reason))
+
+  if (group === undefined) {
+    groups.push({ reason, affectedPointCount: 1, triggerContribution })
+
+    return
+  }
+
+  group.affectedPointCount += 1
+
+  if (group.triggerContribution === null && triggerContribution !== null) {
+    group.triggerContribution = triggerContribution
+  }
+}
+
 const groupReasons = (points: readonly PnlTimelinePointData[]): ReasonGroup[] => {
   const groups: ReasonGroup[] = []
 
   for (const point of points) {
-    const reasonsAtPoint: IncompletenessReasonData[] = []
-
-    for (const reason of point.incompleteness_reasons) {
-      if (reasonsAtPoint.some(candidate => sameReasonIdentity(candidate, reason))) continue
-      reasonsAtPoint.push(reason)
-
-      const triggerContribution =
-        reason.trigger_instrument_public_id === null
-          ? null
-          : (point.per_instrument.find(
-              contribution =>
-                contribution.instrument_public_id === reason.trigger_instrument_public_id
-            ) ?? null)
-      const group = groups.find(candidate => sameReasonIdentity(candidate.reason, reason))
-
-      if (group === undefined) {
-        groups.push({ reason, affectedPointCount: 1, triggerContribution })
-      } else {
-        group.affectedPointCount += 1
-
-        if (group.triggerContribution === null && triggerContribution !== null) {
-          group.triggerContribution = triggerContribution
-        }
-      }
+    for (const reason of uniqueReasons(point.incompleteness_reasons)) {
+      addReasonOccurrence(groups, point, reason)
     }
   }
 

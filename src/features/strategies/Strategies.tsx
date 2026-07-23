@@ -33,6 +33,11 @@ import type { StrategyProcess, ConfiguredProcess } from '../../types/api'
 type RemoteProcessAction = 'enable' | 'disable' | 'restart'
 type StrategyCardAction = () => void
 
+interface RemoteMutationCallbacks {
+  onSuccess: () => void
+  onError: (error: Error) => void
+}
+
 const remoteActionPermissions = (action: RemoteProcessAction): readonly Permission[] => {
   if (action === 'enable') return [Permission.START_STRATEGIES]
   if (action === 'disable') return [Permission.STOP_STRATEGIES]
@@ -339,12 +344,22 @@ export const Strategies: React.FC = () => {
     })
   }
 
+  const clearPendingRemote = (name: string): void => {
+    setPendingRemote(prev => {
+      const next = { ...prev }
+
+      delete next[name]
+
+      return next
+    })
+  }
+
   const mutateRemote = (
     name: string,
     action: RemoteProcessAction,
-    callbacks: { onSuccess: () => void; onError: (error: Error) => void },
+    callbacks: RemoteMutationCallbacks,
     restartNonce?: string
-  ) => {
+  ): void => {
     runIfAllowed(remoteActionPermissions(action), () => {
       setActiveStrategyProcess(name)
       setPendingRemote(prev => ({ ...prev, [name]: action }))
@@ -357,20 +372,31 @@ export const Strategies: React.FC = () => {
         .catch((error: unknown) =>
           callbacks.onError(error instanceof Error ? error : new Error(String(error)))
         )
-        .finally(() => {
-          setPendingRemote(prev => {
-            const next = { ...prev }
-
-            delete next[name]
-
-            return next
-          })
-        })
+        .finally(clearPendingRemote.bind(null, name))
     })
   }
 
   const remotePending = (name: string, action: RemoteProcessAction): boolean =>
     pendingRemote[name] === action
+
+  const remoteEnableSucceeded = (): void => {
+    toast.success(t('toast.startSuccess'), { duration: 3000, icon: '🚀' })
+  }
+
+  const remoteEnableFailed = (error: Error): void => {
+    setActiveStrategyProcess(null)
+    toast.error(t('toast.startFailed', { message: error.message }), {
+      duration: 5000,
+      icon: '⚠️',
+    })
+  }
+
+  const confirmRemoteEnable = (processName: string): void => {
+    mutateRemote(processName, 'enable', {
+      onSuccess: remoteEnableSucceeded,
+      onError: remoteEnableFailed,
+    })
+  }
 
   const requestRemoteEnable = (processName: string) => {
     runIfAllowed([Permission.START_STRATEGIES], () => {
@@ -378,20 +404,28 @@ export const Strategies: React.FC = () => {
         title: t('confirm.startTitle', { name: processName }),
         message: t('confirm.startMessage', { name: processName }),
         variant: 'default',
-        onConfirm: () =>
-          mutateRemote(processName, 'enable', {
-            onSuccess: () => {
-              toast.success(t('toast.startSuccess'), { duration: 3000, icon: '🚀' })
-            },
-            onError: (error: Error) => {
-              setActiveStrategyProcess(null)
-              toast.error(t('toast.startFailed', { message: error.message }), {
-                duration: 5000,
-                icon: '⚠️',
-              })
-            },
-          }),
+        onConfirm: confirmRemoteEnable.bind(null, processName),
       })
+    })
+  }
+
+  const remoteDisableSucceeded = (): void => {
+    setActiveStrategyProcess(null)
+    toast.success(t('toast.stopSuccess'), { duration: 3000, icon: '✋' })
+  }
+
+  const remoteDisableFailed = (error: Error): void => {
+    setActiveStrategyProcess(null)
+    toast.error(t('toast.stopFailed', { message: error.message }), {
+      duration: 5000,
+      icon: '⚠️',
+    })
+  }
+
+  const confirmRemoteDisable = (processName: string): void => {
+    mutateRemote(processName, 'disable', {
+      onSuccess: remoteDisableSucceeded,
+      onError: remoteDisableFailed,
     })
   }
 
@@ -401,22 +435,33 @@ export const Strategies: React.FC = () => {
         title: t('confirm.stopTitle', { name: processName }),
         message: t('confirm.stopMessage', { name: processName }),
         variant: 'danger',
-        onConfirm: () =>
-          mutateRemote(processName, 'disable', {
-            onSuccess: () => {
-              setActiveStrategyProcess(null)
-              toast.success(t('toast.stopSuccess'), { duration: 3000, icon: '✋' })
-            },
-            onError: (error: Error) => {
-              setActiveStrategyProcess(null)
-              toast.error(t('toast.stopFailed', { message: error.message }), {
-                duration: 5000,
-                icon: '⚠️',
-              })
-            },
-          }),
+        onConfirm: confirmRemoteDisable.bind(null, processName),
       })
     })
+  }
+
+  const remoteRestartSucceeded = (): void => {
+    toast.success(t('toast.restartSuccess'), { duration: 3000, icon: '🔄' })
+  }
+
+  const remoteRestartFailed = (error: Error): void => {
+    setActiveStrategyProcess(null)
+    toast.error(t('toast.restartFailed', { message: error.message }), {
+      duration: 5000,
+      icon: '⚠️',
+    })
+  }
+
+  const confirmRemoteRestart = (processName: string, restartNonce: string): void => {
+    mutateRemote(
+      processName,
+      'restart',
+      {
+        onSuccess: remoteRestartSucceeded,
+        onError: remoteRestartFailed,
+      },
+      restartNonce
+    )
   }
 
   const requestRemoteRestart = (processName: string) => {
@@ -427,24 +472,7 @@ export const Strategies: React.FC = () => {
         title: t('confirm.restartTitle', { name: processName }),
         message: t('confirm.restartMessage', { name: processName }),
         variant: 'default',
-        onConfirm: () =>
-          mutateRemote(
-            processName,
-            'restart',
-            {
-              onSuccess: () => {
-                toast.success(t('toast.restartSuccess'), { duration: 3000, icon: '🔄' })
-              },
-              onError: (error: Error) => {
-                setActiveStrategyProcess(null)
-                toast.error(t('toast.restartFailed', { message: error.message }), {
-                  duration: 5000,
-                  icon: '⚠️',
-                })
-              },
-            },
-            restartNonce
-          ),
+        onConfirm: confirmRemoteRestart.bind(null, processName, restartNonce),
       })
     })
   }
@@ -563,6 +591,7 @@ export const Strategies: React.FC = () => {
           <h2 className='text-xl font-bold text-alpine-900'>{t('page.title')}</h2>
           {canConfigure && (
             <button
+              type='button'
               onClick={() => setStrategyModalOpen(true)}
               disabled={createProcessConfig.isPending || startProcess.isPending || readOnly}
               className='px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-md hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed'
@@ -633,6 +662,7 @@ export const Strategies: React.FC = () => {
           <div className='bg-alpine-50 border border-dark-600 rounded-2xl p-6 text-center'>
             <p className='text-muted-500'>{t('page.noMatches')}</p>
             <button
+              type='button'
               onClick={() => {
                 setSearchTerm('')
                 setStatusFilter('all')
@@ -654,6 +684,7 @@ export const Strategies: React.FC = () => {
             </p>
             {canConfigure && (
               <button
+                type='button'
                 onClick={() => setStrategyModalOpen(true)}
                 disabled={readOnly}
                 className='mt-3 px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-md hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed'
