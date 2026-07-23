@@ -116,6 +116,7 @@ export const Settings = () => {
             <p className='text-muted-600 text-sm'>{t('page.subtitle')}</p>
           </div>
           <button
+            type='button'
             onClick={() => setShowAddModal(true)}
             disabled={readOnly}
             className='px-3 py-1.5 text-sm bg-brand-600 hover:bg-brand-700 text-white rounded-lg transition-colors flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed'

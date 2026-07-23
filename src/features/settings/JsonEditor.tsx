@@ -68,6 +68,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
           </h3>
           <div className='flex gap-2'>
             <button
+              type='button'
               onClick={handleImportRaw}
               disabled={parseError !== null || readOnly}
               className='px-3 py-1 text-xs rounded bg-primary-600 text-white hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed'
@@ -75,6 +76,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
               {t('jsonEditor.importToForm')}
             </button>
             <button
+              type='button'
               onClick={() => setMode('form')}
               className='px-3 py-1 text-xs rounded bg-muted-100 text-alpine-900 hover:bg-muted-200'
             >
@@ -109,6 +111,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
           {t('jsonEditor.formEditor')}
         </h3>
         <button
+          type='button'
           onClick={() => setMode('raw')}
           className='px-3 py-1 text-xs rounded bg-muted-100 text-alpine-900 hover:bg-muted-200 flex items-center gap-1'
         >
@@ -182,6 +185,7 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
         </span>
         {!readOnly && (
           <button
+            type='button'
             onClick={handleAddItem}
             className='text-xs px-2 py-1 rounded bg-muted-100 text-alpine-900 hover:bg-muted-200 flex items-center gap-1'
           >
@@ -204,6 +208,7 @@ const ArrayEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
             </div>
             {!readOnly && (
               <button
+                type='button'
                 onClick={() => handleRemoveItem(index)}
                 className='mt-6 text-xs px-2 py-1 rounded bg-loss-500/10 text-loss-400 hover:bg-loss-500/20 flex items-center gap-1'
               >
@@ -246,6 +251,7 @@ const ObjectEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
           <div key={key} className='border border-dark-600 rounded p-2'>
             <div className='flex items-center justify-between mb-2'>
               <button
+                type='button'
                 onClick={() => toggleExpanded(key)}
                 className='text-sm font-medium text-alpine-900 hover:text-alpine-900 flex items-center gap-2'
               >

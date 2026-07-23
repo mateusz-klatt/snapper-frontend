@@ -178,6 +178,7 @@ export const Signals: React.FC = () => {
             ]}
           />
           <button
+            type='button'
             onClick={handleExport}
             className='flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-lg border border-dark-600 text-muted-700 hover:bg-dark-700 transition-colors'
             disabled={filteredSignals.length === 0}

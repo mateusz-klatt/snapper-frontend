@@ -49,6 +49,7 @@ export const TimeTravelPicker: React.FC = () => {
       />
       {isTimeTraveling && (
         <button
+          type='button'
           onClick={handleClear}
           className='rounded-md p-1 text-loss-600 hover:bg-dark-700'
           aria-label={t('chrome.timeTravel.exitAriaLabel')}

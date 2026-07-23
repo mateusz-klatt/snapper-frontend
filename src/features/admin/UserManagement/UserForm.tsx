@@ -173,14 +173,15 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
 
   const isPending =
     createMutation.isPending || updateMutation.isPending || resetPasswordMutation.isPending
-  const roleDescription =
-    formData.role === 'viewer'
-      ? t('rolePermissions.viewer.description')
-      : formData.role === 'operator'
-        ? t('rolePermissions.operator.description')
-        : formData.role === 'admin'
-          ? t('rolePermissions.admin.description')
-          : undefined
+  let roleDescription: string | undefined
+
+  if (formData.role === 'viewer') {
+    roleDescription = t('rolePermissions.viewer.description')
+  } else if (formData.role === 'operator') {
+    roleDescription = t('rolePermissions.operator.description')
+  } else if (formData.role === 'admin') {
+    roleDescription = t('rolePermissions.admin.description')
+  }
 
   return (
     <AdminFormModal

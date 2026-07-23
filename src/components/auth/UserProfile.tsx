@@ -115,6 +115,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
   return (
     <div className={`relative ${className}`}>
       <button
+        type='button'
         onClick={() => setShowDropdown(!showDropdown)}
         className='flex items-center space-x-2 text-sm bg-alpine-50 border border-dark-600 rounded-lg px-3 py-2 hover:bg-dark-700 transition-colors'
       >
@@ -173,6 +174,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
             </div>
             <div className='border-t border-dark-600 mt-2 pt-2'>
               <button
+                type='button'
                 onClick={() => {
                   setShowPasswordForm(true)
                   setShowDropdown(false)
@@ -183,6 +185,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                 {t('profile.changePassword')}
               </button>
               <button
+                type='button'
                 onClick={() => {
                   setShowHelpDialog(true)
                   setShowDropdown(false)
@@ -192,6 +195,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                 {t('profile.helpDocumentation')}
               </button>
               <button
+                type='button'
                 onClick={handleLogout}
                 disabled={isLoading}
                 className='w-full text-left px-4 py-2 text-sm text-loss-600 hover:bg-loss-50 disabled:opacity-50 disabled:cursor-not-allowed'

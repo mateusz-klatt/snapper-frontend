@@ -70,6 +70,7 @@ export const Admin: React.FC = () => {
       {}
       <div className='panel'>
         <button
+          type='button'
           onClick={() => setShowRoleInfo(prev => !prev)}
           className='flex w-full items-center justify-between text-left'
         >

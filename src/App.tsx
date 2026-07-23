@@ -61,6 +61,7 @@ function App() {
             <p className='mt-1 hidden text-sm text-muted-600 md:block'>{t('chrome.tagline')}</p>
           </div>
           <button
+            type='button'
             className='rounded-lg p-1 text-muted-600 hover:bg-dark-700 md:hidden'
             onClick={() => setSidebarOpen(false)}
             aria-label={t('chrome.closeSidebar')}
@@ -101,6 +102,7 @@ function App() {
         <header className='border-b border-dark-600 bg-alpine-50 px-4 py-4 sm:px-6'>
           <div className='flex items-center justify-between gap-3'>
             <button
+              type='button'
               className='rounded-lg p-1 text-muted-600 hover:bg-dark-700 md:hidden'
               onClick={() => setSidebarOpen(true)}
               aria-label={t('chrome.openSidebar')}
@@ -142,6 +144,7 @@ function App() {
               </span>
               <LocaleSwitcher />
               <button
+                type='button'
                 onClick={toggleDarkMode}
                 className='rounded-lg p-2 text-muted-600 hover:bg-dark-700 transition-colors'
                 aria-label={

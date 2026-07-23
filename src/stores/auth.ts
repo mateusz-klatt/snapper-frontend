@@ -231,7 +231,7 @@ export const useAuthStore = create<AuthState>()(
           if (!user) return false
           const userPermissions = user.effective_permissions ?? []
 
-          return userPermissions.some(value => value === permission)
+          return userPermissions.includes(permission)
         },
         canAccess: (resource: string) => {
           const { user } = get()
