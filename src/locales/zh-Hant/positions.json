@@ -74,7 +74,9 @@
         "unrealized_non_finite": "未實現 P&L 並非有限數值",
         "net_non_finite": "淨 P&L 並非有限數值",
         "attribution_value_non_finite": "歸因值並非有限數值",
-        "attribution_reconciliation_failed": "歸因對帳失敗"
+        "attribution_reconciliation_failed": "歸因對帳失敗",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "歷史檢視：顯示截至 {{asOf}} 已知的 P&L。",

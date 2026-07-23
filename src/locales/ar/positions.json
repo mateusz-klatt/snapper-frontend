@@ -74,7 +74,9 @@
         "unrealized_non_finite": "قيمة P&L غير المحقق ليست عددًا محدودًا",
         "net_non_finite": "قيمة صافي P&L ليست عددًا محدودًا",
         "attribution_value_non_finite": "قيمة الإسناد ليست عددًا محدودًا",
-        "attribution_reconciliation_failed": "فشلت تسوية الإسناد"
+        "attribution_reconciliation_failed": "فشلت تسوية الإسناد",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "عرض تاريخي: يُعرض P&L وفقًا لما كان معلومًا في {{asOf}}.",

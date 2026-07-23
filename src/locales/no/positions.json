@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Urealisert P&L er ikke-endelig",
         "net_non_finite": "Netto P&L er ikke-endelig",
         "attribution_value_non_finite": "Attribusjonsverdien er ikke-endelig",
-        "attribution_reconciliation_failed": "Avstemming av attribusjon mislyktes"
+        "attribution_reconciliation_failed": "Avstemming av attribusjon mislyktes",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historisk visning: viser P&L slik den var kjent på tidspunktet {{asOf}}.",

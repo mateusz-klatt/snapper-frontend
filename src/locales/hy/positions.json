@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Չիրացված P&L-ը վերջավոր չէ",
         "net_non_finite": "Զուտ P&L-ը վերջավոր չէ",
         "attribution_value_non_finite": "Վերագրման արժեքը վերջավոր չէ",
-        "attribution_reconciliation_failed": "Վերագրման համաձայնեցումը ձախողվել է"
+        "attribution_reconciliation_failed": "Վերագրման համաձայնեցումը ձախողվել է",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Պատմական դիտում․ ցուցադրվում է {{asOf}}-ի դրությամբ հայտնի P&L-ը։",

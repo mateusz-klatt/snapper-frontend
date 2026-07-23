@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L belum direalisasikan bukan nombor terhingga",
         "net_non_finite": "P&L bersih bukan nombor terhingga",
         "attribution_value_non_finite": "Nilai atribusi bukan nombor terhingga",
-        "attribution_reconciliation_failed": "Penyelarasan atribusi gagal"
+        "attribution_reconciliation_failed": "Penyelarasan atribusi gagal",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Paparan sejarah: menunjukkan P&L seperti yang diketahui pada {{asOf}}.",

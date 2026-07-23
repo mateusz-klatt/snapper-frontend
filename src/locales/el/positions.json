@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Το μη πραγματοποιημένο P&L δεν είναι πεπερασμένο",
         "net_non_finite": "Το καθαρό P&L δεν είναι πεπερασμένο",
         "attribution_value_non_finite": "Η αξία επιμερισμού δεν είναι πεπερασμένη",
-        "attribution_reconciliation_failed": "Η συμφωνία του επιμερισμού απέτυχε"
+        "attribution_reconciliation_failed": "Η συμφωνία του επιμερισμού απέτυχε",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Ιστορική προβολή: εμφανίζεται το P&L όπως ήταν γνωστό τη χρονική στιγμή {{asOf}}.",

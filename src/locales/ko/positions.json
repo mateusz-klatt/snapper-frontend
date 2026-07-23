@@ -74,7 +74,9 @@
         "unrealized_non_finite": "미실현 P&L이 유한하지 않음",
         "net_non_finite": "순 P&L이 유한하지 않음",
         "attribution_value_non_finite": "귀속값이 유한하지 않음",
-        "attribution_reconciliation_failed": "귀속값 대사 실패"
+        "attribution_reconciliation_failed": "귀속값 대사 실패",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "과거 시점 보기: {{asOf}} 당시 확인된 P&L을 표시합니다.",

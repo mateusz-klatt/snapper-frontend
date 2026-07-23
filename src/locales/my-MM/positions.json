@@ -74,7 +74,9 @@
         "unrealized_non_finite": "အကောင်အထည်မပေါ်သေးသော P&L သည် finite ကိန်းဂဏန်း မဟုတ်ပါ",
         "net_non_finite": "အသားတင် P&L သည် finite ကိန်းဂဏန်း မဟုတ်ပါ",
         "attribution_value_non_finite": "ခွဲဝေတွက်ချက်သည့် တန်ဖိုးသည် finite ကိန်းဂဏန်း မဟုတ်ပါ",
-        "attribution_reconciliation_failed": "ခွဲဝေတွက်ချက်မှု ကိုက်ညှိစစ်ဆေးခြင်း မအောင်မြင်ပါ"
+        "attribution_reconciliation_failed": "ခွဲဝေတွက်ချက်မှု ကိုက်ညှိစစ်ဆေးခြင်း မအောင်မြင်ပါ",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "သမိုင်းမှတ်တမ်း မြင်ကွင်း: {{asOf}} အချိန်တွင် သိရှိထားသည့် P&L ကို ပြထားသည်။",

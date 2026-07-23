@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Nieskończony lub nieokreślony niezrealizowany P&L",
         "net_non_finite": "Nieskończony lub nieokreślony P&L netto",
         "attribution_value_non_finite": "Nieskończona lub nieokreślona wartość atrybucji",
-        "attribution_reconciliation_failed": "Nieudane uzgodnienie atrybucji"
+        "attribution_reconciliation_failed": "Nieudane uzgodnienie atrybucji",
+        "instrument_reconciliation_failed": "Nieudane uzgodnienie instrumentu",
+        "late_pre_activation_execution": "Spóźniona realizacja sprzed aktywacji"
       }
     },
     "timeTravelNotice": "Widok historyczny: P&L według wiedzy dostępnej w chwili {{asOf}}.",

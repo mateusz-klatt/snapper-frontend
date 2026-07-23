@@ -74,7 +74,9 @@
         "unrealized_non_finite": "未实现 P&L 不是有限值",
         "net_non_finite": "净 P&L 不是有限值",
         "attribution_value_non_finite": "归因值不是有限值",
-        "attribution_reconciliation_failed": "归因对账失败"
+        "attribution_reconciliation_failed": "归因对账失败",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "历史视图：显示截至 {{asOf}} 已知的 P&L。",

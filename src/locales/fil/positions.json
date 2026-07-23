@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Hindi finite ang hindi pa na-realize na P&L",
         "net_non_finite": "Hindi finite ang netong P&L",
         "attribution_value_non_finite": "Hindi finite ang halaga ng attribution",
-        "attribution_reconciliation_failed": "Nabigo ang reconciliation ng attribution"
+        "attribution_reconciliation_failed": "Nabigo ang reconciliation ng attribution",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historikal na view: ipinapakita ang P&L ayon sa nalalaman noong {{asOf}}.",

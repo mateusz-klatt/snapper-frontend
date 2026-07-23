@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Нереализованный P&L не является конечным числом",
         "net_non_finite": "Чистый P&L не является конечным числом",
         "attribution_value_non_finite": "Значение атрибуции не является конечным числом",
-        "attribution_reconciliation_failed": "Не удалось выполнить сверку атрибуции"
+        "attribution_reconciliation_failed": "Не удалось выполнить сверку атрибуции",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Исторический режим: P&L показан по данным на {{asOf}}.",

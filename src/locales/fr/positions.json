@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L latent non fini",
         "net_non_finite": "P&L net non fini",
         "attribution_value_non_finite": "Valeur d'attribution non finie",
-        "attribution_reconciliation_failed": "Échec du rapprochement de l'attribution"
+        "attribution_reconciliation_failed": "Échec du rapprochement de l'attribution",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Vue historique : le P&L est affiché tel qu'il était connu au {{asOf}}.",

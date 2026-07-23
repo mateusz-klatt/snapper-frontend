@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Gerçekleşmemiş P&L sonlu değil",
         "net_non_finite": "Net P&L sonlu değil",
         "attribution_value_non_finite": "Atıf değeri sonlu değil",
-        "attribution_reconciliation_failed": "Atıf mutabakatı başarısız"
+        "attribution_reconciliation_failed": "Atıf mutabakatı başarısız",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Geçmiş görünüm: {{asOf}} itibarıyla bilinen P&L gösteriliyor.",

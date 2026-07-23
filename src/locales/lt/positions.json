@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Nerealizuoto P&L reikšmė nėra baigtinė",
         "net_non_finite": "Grynojo P&L reikšmė nėra baigtinė",
         "attribution_value_non_finite": "Atribucijos reikšmė nėra baigtinė",
-        "attribution_reconciliation_failed": "Nepavyko suderinti atribucijos"
+        "attribution_reconciliation_failed": "Nepavyko suderinti atribucijos",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Istorinis rodinys: rodomas P&L pagal {{asOf}} žinotus duomenis.",

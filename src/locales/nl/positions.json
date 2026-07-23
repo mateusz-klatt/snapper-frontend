@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Niet-gerealiseerde P&L is niet-eindig",
         "net_non_finite": "Netto P&L is niet-eindig",
         "attribution_value_non_finite": "Attributiewaarde is niet-eindig",
-        "attribution_reconciliation_failed": "Afstemming van attributie mislukt"
+        "attribution_reconciliation_failed": "Afstemming van attributie mislukt",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historische weergave: toont P&L zoals bekend op {{asOf}}.",

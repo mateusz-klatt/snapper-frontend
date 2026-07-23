@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Óinnleyst P&L er ekki endanleg tala",
         "net_non_finite": "Nettó P&L er ekki endanleg tala",
         "attribution_value_non_finite": "Gildi framlagsgreiningar er ekki endanleg tala",
-        "attribution_reconciliation_failed": "Afstemming framlagsgreiningar mistókst"
+        "attribution_reconciliation_failed": "Afstemming framlagsgreiningar mistókst",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Söguleg sýn: P&L miðast við það sem vitað var {{asOf}}.",

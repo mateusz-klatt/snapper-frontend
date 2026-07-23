@@ -1208,6 +1208,8 @@ const _PnlIncompletenessReasonRawSchema = z.enum([
   'net_non_finite',
   'attribution_value_non_finite',
   'attribution_reconciliation_failed',
+  'instrument_reconciliation_failed',
+  'late_pre_activation_execution',
 ])
 
 export const PnlIncompletenessReasonSchema =

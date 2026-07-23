@@ -74,7 +74,9 @@
         "unrealized_non_finite": "未実現P&Lが有限値ではありません",
         "net_non_finite": "純P&Lが有限値ではありません",
         "attribution_value_non_finite": "帰属値が有限値ではありません",
-        "attribution_reconciliation_failed": "帰属値の照合に失敗しました"
+        "attribution_reconciliation_failed": "帰属値の照合に失敗しました",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "履歴表示：{{asOf}}時点で把握されていたP&Lを表示しています。",

@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Nerealizovaný P&L nie je konečný",
         "net_non_finite": "Čistý P&L nie je konečný",
         "attribution_value_non_finite": "Hodnota priradenia nie je konečná",
-        "attribution_reconciliation_failed": "Odsúhlasenie priradenia zlyhalo"
+        "attribution_reconciliation_failed": "Odsúhlasenie priradenia zlyhalo",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historické zobrazenie: P&L podľa stavu známeho k {{asOf}}.",
