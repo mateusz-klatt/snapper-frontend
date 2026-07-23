@@ -51,6 +51,7 @@ export function ErrorFallback({
         </details>
       )}
       <button
+        type='button'
         onClick={resetError}
         className='px-4 py-2 bg-loss-600 hover:bg-loss-700 text-white rounded-md transition-colors text-sm font-medium'
       >

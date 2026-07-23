@@ -319,6 +319,7 @@ export const Orders: React.FC = () => {
         <div className='flex items-center gap-2'>
           {canCreateOrders && (
             <button
+              type='button'
               onClick={openNewOrder}
               className='flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-brand-600 text-white hover:bg-brand-500 rounded-lg transition-colors'
             >
@@ -327,6 +328,7 @@ export const Orders: React.FC = () => {
             </button>
           )}
           <button
+            type='button'
             onClick={activeTab === 'orders' ? handleExportOrders : handleExportExecutions}
             disabled={
               activeTab === 'orders' ? filteredOrders.length === 0 : executions.length === 0
@@ -340,6 +342,7 @@ export const Orders: React.FC = () => {
       </div>
       <div className='flex space-x-1 rounded-xl border border-dark-600 bg-dark-700 p-1'>
         <button
+          type='button'
           onClick={() => setActiveTab('orders')}
           className={clsx(
             'flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors',
@@ -351,6 +354,7 @@ export const Orders: React.FC = () => {
           {t('tabs.orders', { total: orders.length })}
         </button>
         <button
+          type='button'
           onClick={() => setActiveTab('executions')}
           className={clsx(
             'flex-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors',

@@ -148,6 +148,7 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
                 {title}
               </h3>
               <button
+                type='button'
                 onClick={onClose}
                 className='text-muted-500 transition-colors hover:text-alpine-900'
                 aria-label={t('close')}

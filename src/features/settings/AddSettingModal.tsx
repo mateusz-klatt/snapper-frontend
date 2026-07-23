@@ -160,12 +160,14 @@ export const AddSettingModal = ({
         </div>
         <div className='flex justify-end gap-2 pt-2'>
           <button
+            type='button'
             onClick={handleClose}
             className='px-4 py-2 text-sm bg-muted-100 hover:bg-muted-200 text-alpine-900 rounded-lg transition-colors'
           >
             {t('addModal.cancel')}
           </button>
           <button
+            type='button'
             onClick={handleSave}
             disabled={saving || readOnly}
             className='px-4 py-2 text-sm bg-brand-600 hover:bg-brand-700 disabled:bg-brand-800 disabled:cursor-not-allowed text-white rounded-lg transition-colors'

@@ -7,6 +7,17 @@
  * match the `['ai-reviews', 'pending', ...]` query key.
  */
 
+export interface PortfolioPnlQueryKeyParams {
+  readonly asOf: string | null
+  readonly operatorPublicId: string | null
+  readonly walletPublicId: string | null
+  readonly from: string
+  readonly to: string
+  readonly granularity: string
+  readonly mode: string
+  readonly valuationCcy: string
+}
+
 export const queryKeys = {
   systemStatus: ['system', 'status'] as const,
   systemMetrics: ['system', 'metrics'] as const,
@@ -90,52 +101,10 @@ export const queryKeys = {
     ['positions', asOf, opId, walletId] as const,
   portfolioAccounts: (asOf: string | null, opId?: string | null, walletId?: string | null) =>
     ['portfolio', 'accounts', asOf, opId, walletId] as const,
-  portfolioPnlSeries: (
-    asOf: string | null,
-    operatorPublicId: string | null,
-    walletPublicId: string | null,
-    from: string,
-    to: string,
-    granularity: string,
-    mode: string,
-    valuationCcy: string
-  ) =>
-    [
-      'portfolio',
-      'pnl',
-      'series',
-      asOf,
-      operatorPublicId,
-      walletPublicId,
-      from,
-      to,
-      granularity,
-      mode,
-      valuationCcy,
-    ] as const,
-  portfolioPnlTimeline: (
-    asOf: string | null,
-    operatorPublicId: string | null,
-    walletPublicId: string | null,
-    from: string,
-    to: string,
-    granularity: string,
-    mode: string,
-    valuationCcy: string
-  ) =>
-    [
-      'portfolio',
-      'pnl',
-      'timeline',
-      asOf,
-      operatorPublicId,
-      walletPublicId,
-      from,
-      to,
-      granularity,
-      mode,
-      valuationCcy,
-    ] as const,
+  portfolioPnlSeries: (params: Readonly<PortfolioPnlQueryKeyParams>) =>
+    ['portfolio', 'pnl', 'series', params] as const,
+  portfolioPnlTimeline: (params: Readonly<PortfolioPnlQueryKeyParams>) =>
+    ['portfolio', 'pnl', 'timeline', params] as const,
   signals: (
     strategyId?: string,
     limit?: number,

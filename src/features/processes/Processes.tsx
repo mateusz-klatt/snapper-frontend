@@ -36,6 +36,10 @@ const EXECUTOR_INSTANCE_PATTERN = /^(.+)_w([a-f0-9]{12})$/
 
 type RemoteProcessAction = 'enable' | 'disable' | 'restart'
 
+interface ExecutionModeOptions {
+  executionMode: 'thread' | 'process'
+}
+
 export const Processes: React.FC = () => {
   const { t, i18n } = useTranslation('processes')
   const readOnly = useIsReadOnly()
@@ -62,7 +66,7 @@ export const Processes: React.FC = () => {
     open: boolean
     componentName: string
     description: string
-    onStart: (options: { executionMode: 'thread' | 'process' }) => void
+    onStart: (options: ExecutionModeOptions) => void
   }>({
     open: false,
     componentName: '',
@@ -196,7 +200,7 @@ export const Processes: React.FC = () => {
     (
       componentName: string,
       description: string,
-      onStart: (options: { executionMode: 'thread' | 'process' }) => void
+      onStart: (options: ExecutionModeOptions) => void
     ) => {
       setExecutionModeModal({
         open: true,
@@ -208,15 +212,27 @@ export const Processes: React.FC = () => {
     []
   )
 
+  const startConfirmed = React.useCallback(
+    (name: string, { executionMode }: ExecutionModeOptions) => {
+      runIfCanControl(() => startProcess.mutate({ name, mode: executionMode }))
+    },
+    [runIfCanControl, startProcess]
+  )
+
   const handleStart = React.useCallback(
     (name: string, description: string) => {
       runIfCanControl(() => {
-        showExecutionModeModal(name, description, ({ executionMode }) => {
-          runIfCanControl(() => startProcess.mutate({ name, mode: executionMode }))
-        })
+        showExecutionModeModal(name, description, startConfirmed.bind(null, name))
       })
     },
-    [runIfCanControl, startProcess, showExecutionModeModal]
+    [runIfCanControl, showExecutionModeModal, startConfirmed]
+  )
+
+  const stopConfirmed = React.useCallback(
+    (processName: string) => {
+      runIfCanControl(() => stopProcess.mutate({ name: processName }))
+    },
+    [runIfCanControl, stopProcess]
   )
 
   const handleStop = React.useCallback(
@@ -225,11 +241,20 @@ export const Processes: React.FC = () => {
         openConfirm({
           title: t('actions.stopTitle', { name: processName }),
           message,
-          onConfirm: () => runIfCanControl(() => stopProcess.mutate({ name: processName })),
+          onConfirm: stopConfirmed.bind(null, processName),
         })
       })
     },
-    [runIfCanControl, stopProcess, openConfirm, t]
+    [runIfCanControl, stopConfirmed, openConfirm, t]
+  )
+
+  const restartConfirmed = React.useCallback(
+    (processName: string, openStartModal: () => void) => {
+      runIfCanControl(() =>
+        stopProcess.mutate({ name: processName }, { onSuccess: openStartModal })
+      )
+    },
+    [runIfCanControl, stopProcess]
   )
 
   const handleRestart = React.useCallback(
@@ -238,14 +263,11 @@ export const Processes: React.FC = () => {
         openConfirm({
           title: t('actions.restartTitle', { name: processName }),
           message: stopMessage,
-          onConfirm: () =>
-            runIfCanControl(() =>
-              stopProcess.mutate({ name: processName }, { onSuccess: openStartModal })
-            ),
+          onConfirm: restartConfirmed.bind(null, processName, openStartModal),
         })
       })
     },
-    [runIfCanControl, stopProcess, openConfirm, t]
+    [runIfCanControl, restartConfirmed, openConfirm, t]
   )
 
   const clearPendingRemote = React.useCallback((name: string) => {

@@ -73,6 +73,7 @@ const SaveCancelButtons: React.FC<SaveCancelButtonsProps> = ({
   return (
     <div className='flex gap-2'>
       <button
+        type='button'
         onClick={onSave}
         disabled={isSaving || readOnly}
         className='px-3 py-1 text-xs bg-brand-600 hover:bg-brand-700 disabled:bg-brand-800 disabled:cursor-not-allowed text-white rounded transition-colors'
@@ -80,6 +81,7 @@ const SaveCancelButtons: React.FC<SaveCancelButtonsProps> = ({
         {isSaving ? t('item.saving') : t('item.save')}
       </button>
       <button
+        type='button'
         onClick={onCancel}
         disabled={isSaving}
         className='px-3 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 disabled:bg-muted-100 disabled:cursor-not-allowed text-alpine-900 rounded transition-colors'
@@ -194,6 +196,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
         )}
         {isLongJson && (
           <button
+            type='button'
             onClick={() => setIsCollapsed(prev => !prev)}
             className='flex items-center gap-1 mt-1 text-xs text-brand-600 hover:text-brand-700 transition-colors'
           >
@@ -213,6 +216,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
         <div className='flex items-center gap-2 p-2 bg-loss-50 border border-loss-700 rounded'>
           <span className='text-xs text-loss-700'>{t('item.deleteConfirm')}</span>
           <button
+            type='button'
             onClick={async () => {
               await onDelete(setting.key)
               setShowDeleteConfirm(false)
@@ -223,6 +227,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
             {isSaving ? t('item.deleting') : t('item.yesDelete')}
           </button>
           <button
+            type='button'
             onClick={() => setShowDeleteConfirm(false)}
             disabled={isSaving}
             className='px-2 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 disabled:cursor-not-allowed text-alpine-900 rounded transition-colors'
@@ -234,6 +239,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
         <div className='flex justify-between items-center'>
           <div className='flex gap-2'>
             <button
+              type='button'
               onClick={() => setIsEditing(true)}
               disabled={readOnly}
               className='px-3 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 text-alpine-900 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
@@ -241,6 +247,7 @@ const DisplayView: React.FC<DisplayViewProps> = ({
               {t('item.edit')}
             </button>
             <button
+              type='button'
               onClick={() => setShowDeleteConfirm(true)}
               disabled={readOnly}
               className='px-3 py-1 text-xs bg-loss-50 hover:bg-loss-800 text-loss-700 hover:text-white rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed'

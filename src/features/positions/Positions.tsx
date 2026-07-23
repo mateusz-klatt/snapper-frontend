@@ -290,11 +290,8 @@ export const Positions: React.FC = () => {
         )}
       <div className='flex items-center justify-between'>
         <h2 className='text-xl font-semibold text-alpine-900'>{t('page.title')}</h2>
-        <div
-          className='inline-flex rounded-xl border border-dark-600 bg-alpine-50 p-1'
-          role='group'
-          aria-label={t('view.ariaLabel')}
-        >
+        <fieldset className='inline-flex rounded-xl border border-dark-600 bg-alpine-50 p-1'>
+          <legend className='sr-only'>{t('view.ariaLabel')}</legend>
           {(['current', 'timeline'] as const).map(view => (
             <button
               key={view}
@@ -311,7 +308,7 @@ export const Positions: React.FC = () => {
               {t(`view.${view}`)}
             </button>
           ))}
-        </div>
+        </fieldset>
       </div>
       {activeView === 'current' ? (
         <div className='space-y-4'>

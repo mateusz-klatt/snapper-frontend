@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { BacktestDetailPage } from './BacktestDetailPage'
@@ -118,7 +118,7 @@ describe('BacktestDetailPage', () => {
       payload: makeRunPayload({ config_hash: null }),
     })
     renderWithQuery(<BacktestDetailPage runPublicId={VALID_RUN} />)
-    await waitFor(() => expect(screen.getByTestId('compare-launcher-mount')).toBeTruthy())
+    expect(await screen.findByTestId('compare-launcher-mount')).toBeTruthy()
     expect(screen.queryByText('Config hash')).toBeNull()
   })
   it('renders fallback when payload is empty', async () => {
@@ -158,7 +158,7 @@ describe('BacktestDetailPage', () => {
       payload: makeRunPayload({ target_execution_exchange: null }),
     })
     renderWithQuery(<BacktestDetailPage runPublicId={VALID_RUN} />)
-    await waitFor(() => expect(screen.getByTestId('compare-launcher-mount')).toBeTruthy())
+    expect(await screen.findByTestId('compare-launcher-mount')).toBeTruthy()
     expect(screen.queryByText('Cross-asset attribution')).toBeNull()
   })
 })

@@ -148,6 +148,7 @@ const StrategyActionControls: React.FC<Readonly<StrategyActionControlsProps>> = 
   if (showStopButton) {
     return (
       <button
+        type='button'
         onClick={action}
         disabled={controlsDisabled}
         aria-label={t('card.stopAriaLabel', { name: displayName })}
@@ -172,6 +173,7 @@ const StrategyActionControls: React.FC<Readonly<StrategyActionControlsProps>> = 
 
   return (
     <button
+      type='button'
       onClick={action}
       disabled={controlsDisabled}
       aria-label={t('card.startAriaLabel', { name: displayName })}
@@ -319,6 +321,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             </div>
             {}
             <button
+              type='button'
               onClick={() => setExpanded(!expanded)}
               className='w-full text-xs text-muted-500 hover:text-alpine-900 transition-colors flex items-center justify-center space-x-1'
             >

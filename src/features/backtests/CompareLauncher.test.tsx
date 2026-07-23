@@ -126,7 +126,7 @@ describe('CompareLauncher', () => {
   it('(b) hides auto-pair + shows "no other runs" when candidates.length === 0', async () => {
     mockSameConfig([])
     renderWithClient(<CompareLauncher currentRun={makeRun()} />)
-    await waitFor(() => expect(screen.getByTestId('compare-no-siblings')).toBeDefined())
+    expect(await screen.findByTestId('compare-no-siblings')).toBeDefined()
     expect(screen.queryByTestId('compare-auto-pair')).toBeNull()
   })
 
@@ -147,7 +147,7 @@ describe('CompareLauncher', () => {
   it('(d) on mount fires exactly one same-config query with the correct args', async () => {
     mockSameConfig([])
     renderWithClient(<CompareLauncher currentRun={makeRun()} />)
-    await waitFor(() => expect(screen.getByTestId('compare-no-siblings')).toBeDefined())
+    expect(await screen.findByTestId('compare-no-siblings')).toBeDefined()
     expect(getBacktests).toHaveBeenCalledTimes(1)
     expect(getBacktests).toHaveBeenCalledWith(20, 0, undefined, undefined, 'cfg-deadbeef')
   })

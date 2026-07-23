@@ -57,9 +57,7 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: /(poland|pholainn)/i })).toBeInTheDocument()
-    )
+    expect(await screen.findByRole('button', { name: /(poland|pholainn)/i })).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: /(poland|pholainn)/i }))
     await waitFor(() => {
       expect(useAppStore.getState().locale).toBe('pl')
@@ -71,9 +69,7 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: /(germany|ghearmáin)/i })).toBeInTheDocument()
-    )
+    expect(await screen.findByRole('button', { name: /(germany|ghearmáin)/i })).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: /(germany|ghearmáin)/i }))
     await waitFor(() => {
       expect(useAppStore.getState().locale).toBe('de')
@@ -85,9 +81,7 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(screen.getByRole('button', { name: /(poland|pholainn)/i })).toBeInTheDocument()
-    )
+    expect(await screen.findByRole('button', { name: /(poland|pholainn)/i })).toBeInTheDocument()
     const flagButtons = screen
       .getAllByRole('button')
       .filter(
@@ -103,11 +97,9 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(
-        screen.getByRole('button', { name: /current language: (ireland|éire)/i })
-      ).toBeInTheDocument()
-    )
+    expect(
+      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+    ).toBeInTheDocument()
     const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
 
     ieButton.focus()
@@ -124,11 +116,9 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(
-        screen.getByRole('button', { name: /current language: (ireland|éire)/i })
-      ).toBeInTheDocument()
-    )
+    expect(
+      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+    ).toBeInTheDocument()
     const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
 
     ieButton.focus()
@@ -143,11 +133,9 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(
-        screen.getByRole('button', { name: /current language: (ireland|éire)/i })
-      ).toBeInTheDocument()
-    )
+    expect(
+      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+    ).toBeInTheDocument()
     const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
 
     ieButton.focus()
@@ -165,7 +153,7 @@ describe('LocaleSwitcher', () => {
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     const currentRe = /current language: (czechia|česko)/i
 
-    await waitFor(() => expect(screen.getByRole('button', { name: currentRe })).toBeInTheDocument())
+    expect(await screen.findByRole('button', { name: currentRe })).toBeInTheDocument()
     const czButton = screen.getByRole('button', { name: currentRe })
 
     czButton.focus()
@@ -180,11 +168,9 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(
-        screen.getByRole('button', { name: /current language: (ireland|éire)/i })
-      ).toBeInTheDocument()
-    )
+    expect(
+      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+    ).toBeInTheDocument()
     const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
 
     ieButton.focus()
@@ -202,7 +188,7 @@ describe('LocaleSwitcher', () => {
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     const currentRe = /current language: (china|中国)/i
 
-    await waitFor(() => expect(screen.getByRole('button', { name: currentRe })).toBeInTheDocument())
+    expect(await screen.findByRole('button', { name: currentRe })).toBeInTheDocument()
     const cnButton = screen.getByRole('button', { name: currentRe })
 
     cnButton.focus()
@@ -219,11 +205,9 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    await waitFor(() =>
-      expect(
-        screen.getByRole('button', { name: /current language: (ireland|éire)/i })
-      ).toBeInTheDocument()
-    )
+    expect(
+      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+    ).toBeInTheDocument()
     const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
 
     ieButton.focus()

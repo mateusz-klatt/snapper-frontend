@@ -88,9 +88,7 @@ describe('RevokeConfirmDialog', () => {
       .getAllByRole('button', { name: 'Revoke' })
       .find(el => el.className.includes('bg-loss-600')) as HTMLElement
 
-    await act(async () => {
-      await user.click(confirmBtn)
-    })
+    await user.click(confirmBtn)
     expect(mockDeactivate.mutateAsync).toHaveBeenCalledWith('d-1')
     expect(toast.success).toHaveBeenCalledWith('Delegate revoked')
     expect(onClose).toHaveBeenCalled()
@@ -107,9 +105,7 @@ describe('RevokeConfirmDialog', () => {
       .getAllByRole('button', { name: 'Revoke' })
       .find(el => el.className.includes('bg-loss-600')) as HTMLElement
 
-    await act(async () => {
-      await user.click(confirmBtn)
-    })
+    await user.click(confirmBtn)
     expect(toast.error).toHaveBeenCalledWith('database is locked')
     expect(onClose).not.toHaveBeenCalled()
   })
@@ -124,9 +120,7 @@ describe('RevokeConfirmDialog', () => {
       .getAllByRole('button', { name: 'Revoke' })
       .find(el => el.className.includes('bg-loss-600')) as HTMLElement
 
-    await act(async () => {
-      await user.click(confirmBtn)
-    })
+    await user.click(confirmBtn)
     expect(toast.error).toHaveBeenCalledWith('Failed to revoke delegate')
   })
 
@@ -155,9 +149,7 @@ describe('RevokeConfirmDialog', () => {
       .getAllByRole('button', { name: 'Revoke' })
       .find(el => el.className.includes('bg-loss-600')) as HTMLElement
 
-    await act(async () => {
-      await user.click(confirmBtn)
-    })
+    await user.click(confirmBtn)
     unmount()
     await act(async () => {
       if (resolveFn !== null) resolveFn({ payload: { is_active: false } })
@@ -181,9 +173,7 @@ describe('RevokeConfirmDialog', () => {
       .getAllByRole('button', { name: 'Revoke' })
       .find(el => el.className.includes('bg-loss-600')) as HTMLElement
 
-    await act(async () => {
-      await user.click(confirmBtn)
-    })
+    await user.click(confirmBtn)
     unmount()
     await act(async () => {
       if (rejectFn !== null) rejectFn(new Error('boom'))

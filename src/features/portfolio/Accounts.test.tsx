@@ -214,7 +214,7 @@ describe('Accounts', () => {
     )
     render(<Accounts />)
 
-    expect(screen.getAllByTestId('account-truth-badge-observed').length).toBe(2)
+    expect(screen.getAllByTestId('account-truth-badge-observed')).toHaveLength(2)
     expect(screen.getByTestId('reconciliation-badge-reconciled')).toHaveTextContent('Reconciled')
     expect(screen.getByTestId('reconciliation-badge-notReconciled')).toHaveTextContent(
       'Not yet reconciled'

@@ -292,28 +292,30 @@ describe('usePortfolioPnlSeries', () => {
     expect(result.current.data?.valuation_ccy).toBe('USD')
     expect(result.current.data?.points[0]?.attribution[0]?.origin).toBe('system')
     expect(
-      queryKeys.portfolioPnlSeries(
-        control.asOf,
-        control.operatorPublicId,
-        control.walletPublicId,
-        params.from,
-        params.to,
-        params.granularity,
-        params.mode,
-        params.valuationCcy
-      )
+      queryKeys.portfolioPnlSeries({
+        asOf: control.asOf,
+        operatorPublicId: control.operatorPublicId,
+        walletPublicId: control.walletPublicId,
+        from: params.from,
+        to: params.to,
+        granularity: params.granularity,
+        mode: params.mode,
+        valuationCcy: params.valuationCcy,
+      })
     ).toEqual([
       'portfolio',
       'pnl',
       'series',
-      '2026-07-13T12:00:00Z',
-      'op-1',
-      'w-1',
-      '2026-07-12T12:00:00Z',
-      '2026-07-13T12:00:00Z',
-      '5m',
-      'live',
-      'PLN',
+      {
+        asOf: '2026-07-13T12:00:00Z',
+        operatorPublicId: 'op-1',
+        walletPublicId: 'w-1',
+        from: '2026-07-12T12:00:00Z',
+        to: '2026-07-13T12:00:00Z',
+        granularity: '5m',
+        mode: 'live',
+        valuationCcy: 'PLN',
+      },
     ])
   })
 
@@ -391,28 +393,30 @@ describe('usePortfolioPnlTimeline', () => {
     ])
     expect(result.current.data?.points[0]?.attribution[0]?.origin).toBe('system')
     expect(
-      queryKeys.portfolioPnlTimeline(
-        control.asOf,
-        control.operatorPublicId,
-        control.walletPublicId,
-        params.from,
-        params.to,
-        params.granularity,
-        params.mode,
-        params.valuationCcy
-      )
+      queryKeys.portfolioPnlTimeline({
+        asOf: control.asOf,
+        operatorPublicId: control.operatorPublicId,
+        walletPublicId: control.walletPublicId,
+        from: params.from,
+        to: params.to,
+        granularity: params.granularity,
+        mode: params.mode,
+        valuationCcy: params.valuationCcy,
+      })
     ).toEqual([
       'portfolio',
       'pnl',
       'timeline',
-      '2026-07-13T12:00:00Z',
-      'op-1',
-      'w-1',
-      '2026-07-12T12:00:00Z',
-      '2026-07-13T12:00:00Z',
-      '5m',
-      'live',
-      'EUR',
+      {
+        asOf: '2026-07-13T12:00:00Z',
+        operatorPublicId: 'op-1',
+        walletPublicId: 'w-1',
+        from: '2026-07-12T12:00:00Z',
+        to: '2026-07-13T12:00:00Z',
+        granularity: '5m',
+        mode: 'live',
+        valuationCcy: 'EUR',
+      },
     ])
   })
 

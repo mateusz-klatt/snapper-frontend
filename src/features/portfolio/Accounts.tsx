@@ -301,14 +301,13 @@ export const Accounts: React.FC = () => {
     return (
       <div className='space-y-6'>
         {header}
-        <div
-          role='status'
+        <output
           data-testid='accounts-live-only'
           className='flex items-center gap-2 rounded-lg border border-info-200 bg-info-50 px-4 py-3 text-sm text-info-700'
         >
-          <Info className='h-4 w-4 shrink-0' />
+          <Info className='h-4 w-4 shrink-0' aria-hidden='true' />
           <span>{tCommon('chrome.liveOnly.notice')}</span>
-        </div>
+        </output>
       </div>
     )
   }
@@ -333,17 +332,16 @@ export const Accounts: React.FC = () => {
           </div>
         )}
         {!isLoading && isError && rows.length === 0 && (
-          <div
-            role='status'
+          <output
             data-testid='accounts-unavailable'
             className='flex items-start gap-2 rounded-lg border border-warning-500/40 bg-warning-500/10 px-4 py-3 text-warning-600'
           >
-            <AlertTriangle className='mt-0.5 h-4 w-4 shrink-0' />
-            <div>
-              <div className='text-sm font-medium'>{t('unavailable.title')}</div>
-              <div className='text-xs'>{t('unavailable.message')}</div>
-            </div>
-          </div>
+            <AlertTriangle className='mt-0.5 h-4 w-4 shrink-0' aria-hidden='true' />
+            <span>
+              <span className='block text-sm font-medium'>{t('unavailable.title')}</span>
+              <span className='block text-xs'>{t('unavailable.message')}</span>
+            </span>
+          </output>
         )}
         {!isLoading && !isError && rows.length === 0 && (
           <EmptyState

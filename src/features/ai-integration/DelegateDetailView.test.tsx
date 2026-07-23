@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, act, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { DelegateDetailView } from './DelegateDetailView'
 import type { DelegateRead } from '../../types/api'
@@ -167,13 +167,9 @@ describe('DelegateDetailView', () => {
     await user.click(screen.getByRole('button', { name: /Update caps/ }))
     const openInput = screen.getByLabelText('Max open orders') as HTMLInputElement
 
-    await act(async () => {
-      await user.clear(openInput)
-      await user.type(openInput, '25')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Save/ }))
-    })
+    await user.clear(openInput)
+    await user.type(openInput, '25')
+    await user.click(screen.getByRole('button', { name: /Save/ }))
     expect(mockUpdateMutation.mutateAsync).toHaveBeenCalledWith({
       publicId: delegate.public_id,
       body: {
@@ -212,13 +208,9 @@ describe('DelegateDetailView', () => {
     await user.click(screen.getByRole('button', { name: /Update caps/ }))
     const openInput = screen.getByLabelText('Max open orders') as HTMLInputElement
 
-    await act(async () => {
-      await user.clear(openInput)
-      await user.type(openInput, '-5')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Save/ }))
-    })
+    await user.clear(openInput)
+    await user.type(openInput, '-5')
+    await user.click(screen.getByRole('button', { name: /Save/ }))
     expect(toast.error).toHaveBeenCalledWith('Caps must be non-negative integers or empty.')
     expect(mockUpdateMutation.mutateAsync).not.toHaveBeenCalled()
   })
@@ -232,9 +224,7 @@ describe('DelegateDetailView', () => {
     mockUpdateMutation.mutateAsync.mockRejectedValueOnce(new Error('boom'))
     render(<DelegateDetailView publicId={delegate.public_id} onBack={vi.fn()} />)
     await user.click(screen.getByRole('button', { name: /Update caps/ }))
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Save/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /Save/ }))
     expect(toast.error).toHaveBeenCalledWith('boom')
   })
 
@@ -247,9 +237,7 @@ describe('DelegateDetailView', () => {
     mockUpdateMutation.mutateAsync.mockRejectedValueOnce('not-an-error')
     render(<DelegateDetailView publicId={delegate.public_id} onBack={vi.fn()} />)
     await user.click(screen.getByRole('button', { name: /Update caps/ }))
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Save/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /Save/ }))
     expect(toast.error).toHaveBeenCalledWith('Failed to update caps')
   })
 
@@ -298,15 +286,11 @@ describe('DelegateDetailView', () => {
     const dailyInput = screen.getByLabelText('Max daily notional USD') as HTMLInputElement
     const cancelsInput = screen.getByLabelText('Max cancels per minute') as HTMLInputElement
 
-    await act(async () => {
-      await user.clear(dailyInput)
-      await user.type(dailyInput, '5000')
-      await user.clear(cancelsInput)
-      await user.type(cancelsInput, '3')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Save/ }))
-    })
+    await user.clear(dailyInput)
+    await user.type(dailyInput, '5000')
+    await user.clear(cancelsInput)
+    await user.type(cancelsInput, '3')
+    await user.click(screen.getByRole('button', { name: /Save/ }))
     expect(mockUpdateMutation.mutateAsync).toHaveBeenCalledWith({
       publicId: delegate.public_id,
       body: {

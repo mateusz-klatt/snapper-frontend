@@ -167,8 +167,8 @@ describe('Compare flow integration', () => {
       globalThis.dispatchEvent(new HashChangeEvent('hashchange'))
     })
 
-    await waitFor(() => expect(screen.getByTestId('compare-page')).toBeDefined())
-    await waitFor(() => expect(screen.getByTestId('metrics-diff-table')).toBeDefined())
+    expect(await screen.findByTestId('compare-page')).toBeDefined()
+    expect(await screen.findByTestId('metrics-diff-table')).toBeDefined()
     expect(screen.getByTestId('equity-overlay-chart')).toBeDefined()
     expect(screen.getByTestId('trades-diff-list')).toBeDefined()
     expect(screen.getByTestId('signals-diff-list')).toBeDefined()
@@ -207,7 +207,7 @@ describe('Compare flow integration', () => {
     globalThis.location.hash = '#backtests/compare/cmp-1'
     renderApp()
 
-    await waitFor(() => expect(screen.getByTestId('compare-pairing-mode')).toBeDefined())
+    expect(await screen.findByTestId('compare-pairing-mode')).toBeDefined()
     expect(getBacktestComparison).toHaveBeenCalledTimes(1)
 
     act(() => {

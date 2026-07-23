@@ -151,6 +151,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
         <div className='flex space-x-2'>
           {isRunning ? (
             <button
+              type='button'
               onClick={onStop}
               disabled={controlsBusy || readOnly}
               className={clsx(
@@ -171,6 +172,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
             </button>
           ) : (
             <button
+              type='button'
               onClick={onStart}
               disabled={controlsBusy || readOnly}
               className={clsx(
@@ -193,6 +195,7 @@ export const ProcessControlCard: React.FC<Readonly<ProcessControlCardProps>> = (
           {}
           {(isRunning || (managedRemotely === true && enabled === true)) && (
             <button
+              type='button'
               onClick={onRestart}
               disabled={controlsBusy || readOnly}
               className='flex-1 px-4 py-2 rounded-md text-sm font-medium bg-info-600 text-info-50 hover:bg-info-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'

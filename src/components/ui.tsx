@@ -62,6 +62,7 @@ export const Button: React.FC<Readonly<ButtonProps>> = ({
   children,
   className,
   disabled,
+  type = 'button',
   ...props
 }) => {
   const { t } = useTranslation('common')
@@ -80,6 +81,7 @@ export const Button: React.FC<Readonly<ButtonProps>> = ({
 
   return (
     <button
+      type={type}
       className={clsx(
         baseClasses,
         variantClasses[variant],

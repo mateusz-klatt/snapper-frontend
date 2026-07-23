@@ -331,7 +331,7 @@ describe('Strategies', () => {
 
     try {
       renderWithProviders(<Strategies />)
-      await waitFor(() => expect(screen.getByText('MACD BTC')).toBeTruthy())
+      expect(await screen.findByText('MACD BTC')).toBeTruthy()
       expect(screen.queryByText('Backtest')).toBeNull()
     } finally {
       vi.mocked(useAuth).mockReturnValue({
@@ -357,7 +357,7 @@ describe('Strategies', () => {
 
     try {
       renderWithProviders(<Strategies />)
-      await waitFor(() => expect(screen.getByText('MACD BTC')).toBeTruthy())
+      expect(await screen.findByText('MACD BTC')).toBeTruthy()
       expect(screen.queryByText('Backtest')).toBeNull()
     } finally {
       vi.mocked(useAppStore).mockImplementation(selector =>

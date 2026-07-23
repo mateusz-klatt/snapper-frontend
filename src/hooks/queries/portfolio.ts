@@ -59,16 +59,16 @@ export const usePortfolioPnlSeries = (params: Readonly<PortfolioPnlSeriesQueryPa
   const walletPublicId = useAppStore(s => s.currentWalletPublicId)
 
   return useQuery({
-    queryKey: queryKeys.portfolioPnlSeries(
+    queryKey: queryKeys.portfolioPnlSeries({
       asOf,
       operatorPublicId,
       walletPublicId,
-      params.from,
-      params.to,
-      params.granularity,
-      params.mode,
-      params.valuationCcy
-    ),
+      from: params.from,
+      to: params.to,
+      granularity: params.granularity,
+      mode: params.mode,
+      valuationCcy: params.valuationCcy,
+    }),
     queryFn: async () => {
       const data = await getPortfolioPnlSeries({
         mode: params.mode,
@@ -96,16 +96,16 @@ export const usePortfolioPnlTimeline = (
   const walletPublicId = useAppStore(s => s.currentWalletPublicId)
 
   return useQuery({
-    queryKey: queryKeys.portfolioPnlTimeline(
+    queryKey: queryKeys.portfolioPnlTimeline({
       asOf,
       operatorPublicId,
       walletPublicId,
-      params.from,
-      params.to,
-      params.granularity,
-      params.mode,
-      params.valuationCcy
-    ),
+      from: params.from,
+      to: params.to,
+      granularity: params.granularity,
+      mode: params.mode,
+      valuationCcy: params.valuationCcy,
+    }),
     queryFn: async () => {
       const data = await getPortfolioPnlTimeline({
         mode: params.mode,

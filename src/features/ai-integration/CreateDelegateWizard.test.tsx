@@ -54,12 +54,8 @@ async function fillLabelAndAdvance(label: string): Promise<void> {
   const user = userEvent.setup()
   const labelInput = screen.getByLabelText('Label')
 
-  await act(async () => {
-    await user.type(labelInput, label)
-  })
-  await act(async () => {
-    await user.click(screen.getByRole('button', { name: 'Next' }))
-  })
+  await user.type(labelInput, label)
+  await user.click(screen.getByRole('button', { name: 'Next' }))
 }
 
 describe('CreateDelegateWizard', () => {
@@ -93,13 +89,9 @@ describe('CreateDelegateWizard', () => {
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha-desk')
     expect(screen.getByRole('heading', { name: 'Scope' })).toBeInTheDocument()
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('heading', { name: /Review & create/ })).toBeInTheDocument()
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     expect(mockMutation.mutateAsync).toHaveBeenCalledWith({
       label: 'alpha-desk',
       caps: {
@@ -119,18 +111,12 @@ describe('CreateDelegateWizard', () => {
     mockMutation.mutateAsync.mockResolvedValueOnce(envelope)
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.type(screen.getByLabelText(/Operator public_id/), 'op-1')
-      await user.type(screen.getByLabelText('Max open orders'), '5')
-      await user.type(screen.getByLabelText('Max daily notional USD'), '1000')
-      await user.type(screen.getByLabelText('Max cancels per minute'), '20')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.type(screen.getByLabelText(/Operator public_id/), 'op-1')
+    await user.type(screen.getByLabelText('Max open orders'), '5')
+    await user.type(screen.getByLabelText('Max daily notional USD'), '1000')
+    await user.type(screen.getByLabelText('Max cancels per minute'), '20')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     expect(mockMutation.mutateAsync).toHaveBeenCalledWith({
       label: 'alpha',
       caps: {
@@ -149,15 +135,9 @@ describe('CreateDelegateWizard', () => {
     mockMutation.mutateAsync.mockResolvedValueOnce(envelope)
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.type(screen.getByLabelText(/Per-instrument max quantity/), '{{"inst":5}')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.type(screen.getByLabelText(/Per-instrument max quantity/), '{{"inst":5}')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     expect(mockMutation.mutateAsync).toHaveBeenCalledWith(
       expect.objectContaining({
         caps: expect.objectContaining({
@@ -172,12 +152,8 @@ describe('CreateDelegateWizard', () => {
 
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.type(screen.getByLabelText(/Per-instrument max quantity/), 'not-json')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.type(screen.getByLabelText(/Per-instrument max quantity/), 'not-json')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('alert')).toHaveTextContent(/valid JSON/)
     expect(screen.queryByRole('heading', { name: /Review & create/ })).not.toBeInTheDocument()
   })
@@ -189,12 +165,8 @@ describe('CreateDelegateWizard', () => {
     await fillLabelAndAdvance('alpha')
     const jsonField = screen.getByLabelText(/Per-instrument max quantity/)
 
-    await act(async () => {
-      fireEvent.change(jsonField, { target: { value: '[1,2,3]' } })
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    fireEvent.change(jsonField, { target: { value: '[1,2,3]' } })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('alert')).toHaveTextContent(/JSON object or empty/)
   })
 
@@ -205,12 +177,8 @@ describe('CreateDelegateWizard', () => {
     await fillLabelAndAdvance('alpha')
     const openInput = screen.getByLabelText('Max open orders') as HTMLInputElement
 
-    await act(async () => {
-      await user.type(openInput, '-3')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.type(openInput, '-3')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('alert')).toHaveTextContent(/non-negative integers/)
   })
 
@@ -219,21 +187,13 @@ describe('CreateDelegateWizard', () => {
 
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('heading', { name: /Review & create/ })).toBeInTheDocument()
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Back' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Back' }))
     const jsonField = screen.getByLabelText(/Per-instrument max quantity/) as HTMLInputElement
 
-    await act(async () => {
-      await user.type(jsonField, 'broken')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.type(jsonField, 'broken')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('alert')).toHaveTextContent(/valid JSON/)
   })
 
@@ -243,9 +203,7 @@ describe('CreateDelegateWizard', () => {
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
     mockMutation.isPending = true
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('button', { name: /Loading/ })).toBeDisabled()
   })
 
@@ -256,12 +214,8 @@ describe('CreateDelegateWizard', () => {
     mockMutation.mutateAsync.mockRejectedValueOnce(new Error('boom'))
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     expect(toast.error).toHaveBeenCalledWith('boom')
     expect(screen.queryByText(/Save these credentials now/)).not.toBeInTheDocument()
   })
@@ -273,12 +227,8 @@ describe('CreateDelegateWizard', () => {
     mockMutation.mutateAsync.mockRejectedValueOnce('boom-string')
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     expect(toast.error).toHaveBeenCalledWith('Failed to create delegate')
   })
 
@@ -287,9 +237,7 @@ describe('CreateDelegateWizard', () => {
     const onClose = vi.fn()
 
     render(<CreateDelegateWizard open onClose={onClose} />)
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Cancel' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Cancel' }))
     expect(onClose).toHaveBeenCalled()
     expect(mockResetFn).toHaveBeenCalled()
   })
@@ -299,9 +247,7 @@ describe('CreateDelegateWizard', () => {
 
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('persisted')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Back' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Back' }))
     expect((screen.getByLabelText('Label') as HTMLInputElement).value).toBe('persisted')
   })
 
@@ -310,12 +256,8 @@ describe('CreateDelegateWizard', () => {
 
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Back' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: 'Back' }))
     expect(screen.getByRole('heading', { name: 'Scope' })).toBeInTheDocument()
   })
 
@@ -326,15 +268,9 @@ describe('CreateDelegateWizard', () => {
     mockMutation.mutateAsync.mockResolvedValueOnce(envelope)
     render(<CreateDelegateWizard open onClose={onClose} />)
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /I have saved these/ }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
+    await user.click(screen.getByRole('button', { name: /I have saved these/ }))
     expect(onClose).toHaveBeenCalled()
     expect(mockResetFn).toHaveBeenCalled()
   })
@@ -368,12 +304,8 @@ describe('CreateDelegateWizard', () => {
     const { unmount } = render(<CreateDelegateWizard open onClose={vi.fn()} />)
 
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     unmount()
     await act(async () => {
       if (rejectFn !== null) rejectFn(new Error('boom'))
@@ -394,12 +326,8 @@ describe('CreateDelegateWizard', () => {
     const { unmount } = render(<CreateDelegateWizard open onClose={onClose} />)
 
     await fillLabelAndAdvance('alpha')
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     unmount()
     await act(async () => {
       if (resolveFn !== null) resolveFn(envelope)
@@ -429,9 +357,7 @@ describe('CreateDelegateWizard', () => {
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     const labelInput = screen.getByLabelText('Label')
 
-    await act(async () => {
-      await user.type(labelInput, 'alpha')
-    })
+    await user.type(labelInput, 'alpha')
     const nextButton = screen.getByRole('button', { name: 'Next' })
 
     expect(nextButton).toBeDisabled()
@@ -452,12 +378,8 @@ describe('CreateDelegateWizard', () => {
     render(<CreateDelegateWizard open onClose={vi.fn()} />)
     const labelInput = screen.getByLabelText('Label')
 
-    await act(async () => {
-      await user.type(labelInput, 'alpha')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.type(labelInput, 'alpha')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     const nextButton = screen.getByRole('button', { name: 'Next' })
 
     expect(nextButton).toBeDisabled()
