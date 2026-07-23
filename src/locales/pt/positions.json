@@ -74,7 +74,9 @@
         "unrealized_non_finite": "O P&L não realizado não é finito",
         "net_non_finite": "O P&L líquido não é finito",
         "attribution_value_non_finite": "O valor da atribuição não é finito",
-        "attribution_reconciliation_failed": "Falha na reconciliação da atribuição"
+        "attribution_reconciliation_failed": "Falha na reconciliação da atribuição",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Visualização histórica: P&L com base nos dados conhecidos em {{asOf}}.",

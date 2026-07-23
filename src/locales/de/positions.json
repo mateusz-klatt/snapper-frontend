@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Unrealisierter P&L ist nicht endlich",
         "net_non_finite": "Netto-P&L ist nicht endlich",
         "attribution_value_non_finite": "Attributionswert ist nicht endlich",
-        "attribution_reconciliation_failed": "Abgleich der Attribution fehlgeschlagen"
+        "attribution_reconciliation_failed": "Abgleich der Attribution fehlgeschlagen",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historische Ansicht: P&L gemäß Kenntnisstand vom {{asOf}}.",

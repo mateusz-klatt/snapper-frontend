@@ -3556,7 +3556,7 @@ export type Components = {
             quote_currency: string;
             exchange: string;
         };
-        PnlIncompletenessReason: "scope_order_regression" | "before_activation" | "activation_baseline_non_finite" | "fill_evidence_gap" | "seed_quantity_non_finite" | "cost_basis_unavailable" | "execution_price_provenance_unproven" | "execution_size_invalid" | "execution_price_invalid" | "fx_conversion_unproven" | "mark_unavailable" | "cumulative_non_finite" | "unrealized_non_finite" | "net_non_finite" | "attribution_value_non_finite" | "attribution_reconciliation_failed";
+        PnlIncompletenessReason: "scope_order_regression" | "before_activation" | "activation_baseline_non_finite" | "fill_evidence_gap" | "seed_quantity_non_finite" | "cost_basis_unavailable" | "execution_price_provenance_unproven" | "execution_size_invalid" | "execution_price_invalid" | "fx_conversion_unproven" | "mark_unavailable" | "cumulative_non_finite" | "unrealized_non_finite" | "net_non_finite" | "attribution_value_non_finite" | "attribution_reconciliation_failed" | "instrument_reconciliation_failed" | "late_pre_activation_execution";
         PnlIncompletenessReasonData: {
             reason: Components["schemas"]["PnlIncompletenessReason"];
             withholding_tier: Components["schemas"]["PnlWithholdingTier"];

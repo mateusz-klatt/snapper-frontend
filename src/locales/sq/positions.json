@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L i parealizuar nuk është i fundëm",
         "net_non_finite": "P&L neto nuk është i fundëm",
         "attribution_value_non_finite": "Vlera e atribuimit nuk është e fundme",
-        "attribution_reconciliation_failed": "Rakordimi i atribuimit dështoi"
+        "attribution_reconciliation_failed": "Rakordimi i atribuimit dështoi",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Pamje historike: shfaqet P&L siç njihej në {{asOf}}.",

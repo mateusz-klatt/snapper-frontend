@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L تحقق‌نیافته متناهی نیست",
         "net_non_finite": "P&L خالص متناهی نیست",
         "attribution_value_non_finite": "مقدار انتساب متناهی نیست",
-        "attribution_reconciliation_failed": "تطبیق انتساب ناموفق بود"
+        "attribution_reconciliation_failed": "تطبیق انتساب ناموفق بود",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "نمای تاریخی: P&L مطابق اطلاعات موجود در {{asOf}} نمایش داده می‌شود.",

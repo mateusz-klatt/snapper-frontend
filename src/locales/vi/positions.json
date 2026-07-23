@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L chưa thực hiện không hữu hạn",
         "net_non_finite": "P&L ròng không hữu hạn",
         "attribution_value_non_finite": "Giá trị phân bổ không hữu hạn",
-        "attribution_reconciliation_failed": "Đối soát phân bổ thất bại"
+        "attribution_reconciliation_failed": "Đối soát phân bổ thất bại",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Chế độ xem lịch sử: hiển thị P&L theo dữ liệu đã biết tại {{asOf}}.",

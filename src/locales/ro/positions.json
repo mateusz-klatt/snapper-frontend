@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L nerealizat nu este finit",
         "net_non_finite": "P&L net nu este finit",
         "attribution_value_non_finite": "Valoarea atribuirii nu este finită",
-        "attribution_reconciliation_failed": "Reconcilierea atribuirii a eșuat"
+        "attribution_reconciliation_failed": "Reconcilierea atribuirii a eșuat",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Vizualizare istorică: se afișează P&L așa cum era cunoscut la {{asOf}}.",

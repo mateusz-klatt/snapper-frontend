@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Nerealizētais P&L nav galīgs skaitlis",
         "net_non_finite": "Neto P&L nav galīgs skaitlis",
         "attribution_value_non_finite": "Attiecinājuma vērtība nav galīgs skaitlis",
-        "attribution_reconciliation_failed": "Attiecinājuma saskaņošana neizdevās"
+        "attribution_reconciliation_failed": "Attiecinājuma saskaņošana neizdevās",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Vēsturiskais skats: redzams P&L pēc datiem, kas bija zināmi {{asOf}} brīdī.",

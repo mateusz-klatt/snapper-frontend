@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Nerealizirani P&L nije konačan broj",
         "net_non_finite": "Neto P&L nije konačan broj",
         "attribution_value_non_finite": "Vrijednost atribucije nije konačan broj",
-        "attribution_reconciliation_failed": "Usklađivanje atribucije nije uspjelo"
+        "attribution_reconciliation_failed": "Usklađivanje atribucije nije uspjelo",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Povijesni prikaz: prikazuje se P&L kakav je bio poznat u trenutku {{asOf}}.",

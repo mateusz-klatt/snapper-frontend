@@ -74,7 +74,9 @@
         "unrealized_non_finite": "ה-P&L הלא ממומש אינו מספר סופי",
         "net_non_finite": "ה-P&L נטו אינו מספר סופי",
         "attribution_value_non_finite": "ערך השיוך אינו מספר סופי",
-        "attribution_reconciliation_failed": "התאמת השיוך נכשלה"
+        "attribution_reconciliation_failed": "התאמת השיוך נכשלה",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "תצוגה היסטורית: מוצג ה-P&L כפי שהיה ידוע נכון ל-{{asOf}}.",

@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Orealiserad P&L är inte ändlig",
         "net_non_finite": "P&L netto är inte ändlig",
         "attribution_value_non_finite": "Attributionsvärdet är inte ändligt",
-        "attribution_reconciliation_failed": "Attributionsavstämningen misslyckades"
+        "attribution_reconciliation_failed": "Attributionsavstämningen misslyckades",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historisk vy: visar P&L enligt informationen vid {{asOf}}.",

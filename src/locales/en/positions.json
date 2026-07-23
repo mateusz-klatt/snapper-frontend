@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Unrealized P&L is non-finite",
         "net_non_finite": "Net P&L is non-finite",
         "attribution_value_non_finite": "Attribution value is non-finite",
-        "attribution_reconciliation_failed": "Attribution reconciliation failed"
+        "attribution_reconciliation_failed": "Attribution reconciliation failed",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historical view: showing P&L as known at {{asOf}}.",

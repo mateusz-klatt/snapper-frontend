@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L ambayo bado haijapatikana si nambari yenye ukomo",
         "net_non_finite": "P&L halisi si thamani yenye kikomo",
         "attribution_value_non_finite": "Thamani ya uhusishaji si yenye kikomo",
-        "attribution_reconciliation_failed": "Upatanisho wa uhusishaji umeshindikana"
+        "attribution_reconciliation_failed": "Upatanisho wa uhusishaji umeshindikana",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Mwonekano wa kihistoria: P&L inaonyeshwa kama ilivyojulikana wakati wa {{asOf}}.",

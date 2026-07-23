@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Níl P&L neamhréadaithe críochta",
         "net_non_finite": "Níl P&L glan críochta",
         "attribution_value_non_finite": "Níl luach an tsannta críochta",
-        "attribution_reconciliation_failed": "Theip ar athmhuintearas an tsannta"
+        "attribution_reconciliation_failed": "Theip ar athmhuintearas an tsannta",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Amharc stairiúil: P&L á thaispeáint de réir an eolais a bhí ar fáil ag {{asOf}}.",

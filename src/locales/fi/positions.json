@@ -74,7 +74,9 @@
         "unrealized_non_finite": "Realisoitumaton P&L ei ole äärellinen",
         "net_non_finite": "Netto-P&L ei ole äärellinen",
         "attribution_value_non_finite": "Kohdistusarvo ei ole äärellinen",
-        "attribution_reconciliation_failed": "Kohdistuksen täsmäytys epäonnistui"
+        "attribution_reconciliation_failed": "Kohdistuksen täsmäytys epäonnistui",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Historiallinen näkymä: P&L näytetään ajankohtana {{asOf}} tiedettyjen tietojen mukaisesti.",

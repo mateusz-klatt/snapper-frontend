@@ -74,7 +74,9 @@
         "unrealized_non_finite": "A nem realizált P&L nem véges",
         "net_non_finite": "A nettó P&L nem véges",
         "attribution_value_non_finite": "Az attribúciós érték nem véges",
-        "attribution_reconciliation_failed": "Az attribúció egyeztetése sikertelen"
+        "attribution_reconciliation_failed": "Az attribúció egyeztetése sikertelen",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "Előzménynézet: a P&L a(z) {{asOf}} időpontban ismert állapotot mutatja.",

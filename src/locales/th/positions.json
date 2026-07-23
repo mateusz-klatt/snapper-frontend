@@ -74,7 +74,9 @@
         "unrealized_non_finite": "P&L ที่ยังไม่รับรู้ไม่ใช่จำนวนจำกัด",
         "net_non_finite": "P&L สุทธิไม่ใช่จำนวนจำกัด",
         "attribution_value_non_finite": "ค่าที่ระบุที่มาไม่ใช่จำนวนจำกัด",
-        "attribution_reconciliation_failed": "กระทบยอดการระบุที่มาไม่สำเร็จ"
+        "attribution_reconciliation_failed": "กระทบยอดการระบุที่มาไม่สำเร็จ",
+        "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
     "timeTravelNotice": "มุมมองย้อนหลัง: แสดง P&L ตามข้อมูลที่ทราบ ณ {{asOf}}",
