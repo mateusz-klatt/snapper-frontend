@@ -299,14 +299,13 @@ export const PortfolioTimeline: React.FC = () => {
     <div className='space-y-4' data-testid='portfolio-timeline'>
       {controls}
       {asOf !== null && (
-        <div
+        <output
           className='flex items-center gap-2 rounded-lg border border-info-200 bg-info-50 px-4 py-3 text-sm text-info-700'
-          role='status'
           data-testid='pnl-time-travel-notice'
         >
           <Info className='h-4 w-4 shrink-0' aria-hidden='true' />
           <span>{t('timeline.timeTravelNotice', { asOf })}</span>
-        </div>
+        </output>
       )}
       {markerLegend}
       {data?.markers_truncated === true && (

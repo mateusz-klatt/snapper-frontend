@@ -151,7 +151,7 @@ const aiMarker = (
 
 const emitChartEvent = (
   subscription: ReturnType<typeof vi.fn>,
-  event: { hoveredInfo?: { objectId?: unknown }; hoveredObjectId?: unknown }
+  event: { hoveredInfo?: { objectId?: unknown } }
 ): void => {
   const handler = subscription.mock.calls[0]?.[0] as ((value: never) => void) | undefined
 
@@ -394,7 +394,6 @@ describe('PnlChart', () => {
 
     emitChartEvent(mockSubscribeCrosshairMove, {
       hoveredInfo: { objectId: 'fill:execution-1:0' },
-      hoveredObjectId: 'signal:signal-executed:1',
     })
     let detail = screen.getByTestId('pnl-marker-detail')
 
@@ -430,21 +429,23 @@ describe('PnlChart', () => {
     expect(within(detail).getByText('signal-executed')).toBeInTheDocument()
 
     emitChartEvent(mockSubscribeCrosshairMove, {
-      hoveredObjectId: 'signal:signal-empty:2',
+      hoveredInfo: { objectId: 'signal:signal-empty:2' },
     })
     detail = screen.getByTestId('pnl-marker-detail')
     expect(within(detail).getByText('No fill')).toBeInTheDocument()
     expect(within(detail).getAllByText('—')).toHaveLength(2)
 
     emitChartEvent(mockSubscribeClick, {
-      hoveredInfo: { objectId: 99 },
-      hoveredObjectId: 'ai_decision:ai-event-rejected:3',
+      hoveredInfo: { objectId: 'ai_decision:ai-event-rejected:3' },
     })
     detail = screen.getByTestId('pnl-marker-detail')
     expect(within(detail).getByText('AI decision')).toBeInTheDocument()
     expect(within(detail).getByText('Rejected')).toBeInTheDocument()
     expect(within(detail).getByText('declined')).toBeInTheDocument()
     expect(within(detail).getByText('risk policy result')).toBeInTheDocument()
+
+    emitChartEvent(mockSubscribeClick, { hoveredInfo: { objectId: 99 } })
+    expect(screen.getByTestId('pnl-marker-detail')).toHaveTextContent('ai-event-rejected')
 
     emitChartEvent(mockSubscribeCrosshairMove, {
       hoveredInfo: { objectId: 'ai_decision:ai-event-empty:4' },
@@ -465,14 +466,14 @@ describe('PnlChart', () => {
     render(<PnlChart points={[]} markers={[pricedFill, withheldFill]} valuationCcy='USD' />)
 
     emitChartEvent(mockSubscribeClick, {
-      hoveredObjectId: 'fill:execution-priced:0',
+      hoveredInfo: { objectId: 'fill:execution-priced:0' },
     })
     let detail = screen.getByTestId('pnl-marker-detail')
 
     expect(within(detail).getByText('101.25')).toBeInTheDocument()
 
     emitChartEvent(mockSubscribeClick, {
-      hoveredObjectId: 'fill:execution-withheld:1',
+      hoveredInfo: { objectId: 'fill:execution-withheld:1' },
     })
     detail = screen.getByTestId('pnl-marker-detail')
 
@@ -486,7 +487,9 @@ describe('PnlChart', () => {
       <PnlChart points={[]} markers={[marker]} showMarkers valuationCcy='USD' />
     )
 
-    emitChartEvent(mockSubscribeClick, { hoveredObjectId: 'fill:execution-1:0' })
+    emitChartEvent(mockSubscribeClick, {
+      hoveredInfo: { objectId: 'fill:execution-1:0' },
+    })
     expect(screen.getByTestId('pnl-marker-detail')).toBeInTheDocument()
 
     rerender(<PnlChart points={[]} markers={[marker]} showMarkers={false} valuationCcy='USD' />)

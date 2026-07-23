@@ -23,16 +23,15 @@ export const PortfolioTruthBanner: React.FC<Readonly<PortfolioTruthBannerProps>>
   if (!visible) return null
 
   return (
-    <div
-      role='status'
+    <output
       data-testid='portfolio-truth-banner'
       className='flex items-start gap-2 rounded-lg border border-warning-500/40 bg-warning-500/10 px-4 py-3 text-warning-600'
     >
-      <AlertTriangle className='mt-0.5 h-4 w-4 shrink-0' />
-      <div>
-        <div className='text-sm font-medium'>{t('banner.title')}</div>
-        <div className='text-xs'>{t('banner.message')}</div>
-      </div>
-    </div>
+      <AlertTriangle className='mt-0.5 h-4 w-4 shrink-0' aria-hidden='true' />
+      <span>
+        <span className='block text-sm font-medium'>{t('banner.title')}</span>
+        <span className='block text-xs'>{t('banner.message')}</span>
+      </span>
+    </output>
   )
 }

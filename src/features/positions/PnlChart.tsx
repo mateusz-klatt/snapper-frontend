@@ -141,7 +141,7 @@ const buildMarkerAnchorData = (
   for (const record of markerRecords) {
     const time = record.seriesMarker.time
 
-    if (markerTimes[markerTimes.length - 1] !== time) markerTimes.push(time)
+    if (markerTimes.at(-1) !== time) markerTimes.push(time)
   }
 
   let pointIndex = 0
@@ -342,8 +342,7 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
     chartRef.current = chart
 
     const selectMarker = (event: MouseEventParams<Time>): void => {
-      const richObjectId = event.hoveredInfo?.objectId
-      const objectId = typeof richObjectId === 'string' ? richObjectId : event.hoveredObjectId
+      const objectId = event.hoveredInfo?.objectId
 
       if (typeof objectId !== 'string') return
       const marker = markerByIdRef.current.get(objectId)
