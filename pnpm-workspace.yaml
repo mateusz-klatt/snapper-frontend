@@ -5,7 +5,7 @@ engineStrict: true
 
 overrides:
   lodash-es: '>=4.17.23'
-  js-yaml@<4.2.0: '^4.2.0'
+  js-yaml@<4.3.0: '^4.3.0'
 
 allowBuilds:
   puppeteer: true
