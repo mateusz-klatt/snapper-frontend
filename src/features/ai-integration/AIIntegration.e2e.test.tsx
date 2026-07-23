@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, act, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
@@ -143,30 +143,20 @@ describe('AIIntegration — end-to-end create flow', () => {
     })
     expect(mockApiClient.listAiDelegates).toHaveBeenCalled()
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
     expect(screen.getByRole('heading', { name: 'Create AI delegate' })).toBeInTheDocument()
 
-    await act(async () => {
-      await user.type(screen.getByLabelText('Label'), 'alpha-prop')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.type(screen.getByLabelText('Label'), 'alpha-prop')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('heading', { name: 'Scope' })).toBeInTheDocument()
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Next' }))
     expect(screen.getByRole('heading', { name: /Review & create/ })).toBeInTheDocument()
 
     const submitButtons = screen.getAllByRole('button', { name: /Create delegate/ })
     const wizardSubmit = submitButtons[submitButtons.length - 1]
 
-    await act(async () => {
-      await user.click(wizardSubmit as HTMLElement)
-    })
+    await user.click(wizardSubmit as HTMLElement)
 
     expect(mockApiClient.createAiDelegate).toHaveBeenCalledWith({
       label: 'alpha-prop',
@@ -198,9 +188,7 @@ describe('AIIntegration — end-to-end create flow', () => {
 
     const clipboardSpy = vi.spyOn(navigator.clipboard, 'writeText')
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Copy config snippet to clipboard/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /Copy config snippet to clipboard/ }))
     expect(clipboardSpy).toHaveBeenCalledWith(expect.stringContaining('access-token-xyz'))
 
     mockApiClient.listAiDelegates.mockResolvedValueOnce({
@@ -209,9 +197,7 @@ describe('AIIntegration — end-to-end create flow', () => {
       count: 1,
     })
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /I have saved these/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /I have saved these/ }))
 
     await waitFor(() => {
       expect(screen.queryByRole('heading', { name: 'Create AI delegate' })).not.toBeInTheDocument()
@@ -261,18 +247,14 @@ describe('AIIntegration — end-to-end create flow', () => {
       expect(screen.getByText('alpha-prop')).toBeInTheDocument()
     })
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /View delegate alpha-prop/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /View delegate alpha-prop/ }))
 
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: 'alpha-prop' })).toBeInTheDocument()
     })
     expect(mockApiClient.getAiDelegate).toHaveBeenCalledWith(createdDelegate.public_id)
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Revoke' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Revoke' }))
 
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: /Revoke delegate/ })).toBeInTheDocument()
@@ -281,9 +263,7 @@ describe('AIIntegration — end-to-end create flow', () => {
     const confirmButtons = screen.getAllByRole('button', { name: 'Revoke' })
     const dialogConfirm = confirmButtons[confirmButtons.length - 1]
 
-    await act(async () => {
-      await user.click(dialogConfirm as HTMLElement)
-    })
+    await user.click(dialogConfirm as HTMLElement)
 
     await waitFor(() => {
       expect(mockApiClient.deactivateAiDelegate).toHaveBeenCalledWith(createdDelegate.public_id)
@@ -325,28 +305,20 @@ describe('AIIntegration — end-to-end create flow', () => {
       expect(screen.getByText('alpha-prop')).toBeInTheDocument()
     })
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /View delegate alpha-prop/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /View delegate alpha-prop/ }))
 
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: 'alpha-prop' })).toBeInTheDocument()
     })
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Update caps' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Update caps' }))
 
     const maxOpenOrdersInput = screen.getByLabelText(/max open orders/i) as HTMLInputElement
 
-    await act(async () => {
-      await user.clear(maxOpenOrdersInput)
-      await user.type(maxOpenOrdersInput, '25')
-    })
+    await user.clear(maxOpenOrdersInput)
+    await user.type(maxOpenOrdersInput, '25')
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /^Save$/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /^Save$/ }))
 
     await waitFor(() => {
       expect(mockApiClient.updateAiDelegateCaps).toHaveBeenCalledWith(
@@ -371,26 +343,16 @@ describe('AIIntegration — end-to-end create flow', () => {
       expect(screen.getByText('No AI delegates yet')).toBeInTheDocument()
     })
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /Create delegate/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /Create delegate/ }))
 
-    await act(async () => {
-      await user.type(screen.getByLabelText('Label'), 'alpha-prop')
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Next' }))
-    })
+    await user.type(screen.getByLabelText('Label'), 'alpha-prop')
+    await user.click(screen.getByRole('button', { name: 'Next' }))
+    await user.click(screen.getByRole('button', { name: 'Next' }))
 
     const submitButtons = screen.getAllByRole('button', { name: /Create delegate/ })
     const wizardSubmit = submitButtons[submitButtons.length - 1]
 
-    await act(async () => {
-      await user.click(wizardSubmit as HTMLElement)
-    })
+    await user.click(wizardSubmit as HTMLElement)
 
     await waitFor(() => {
       expect(mockApiClient.createAiDelegate).toHaveBeenCalled()
@@ -425,28 +387,20 @@ describe('AIIntegration — end-to-end create flow', () => {
       expect(screen.getByText('alpha-prop')).toBeInTheDocument()
     })
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /View delegate alpha-prop/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /View delegate alpha-prop/ }))
 
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: 'alpha-prop' })).toBeInTheDocument()
     })
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: 'Update caps' }))
-    })
+    await user.click(screen.getByRole('button', { name: 'Update caps' }))
 
     const maxOpenOrdersInput = screen.getByLabelText(/max open orders/i) as HTMLInputElement
 
-    await act(async () => {
-      await user.clear(maxOpenOrdersInput)
-      await user.type(maxOpenOrdersInput, '999999')
-    })
+    await user.clear(maxOpenOrdersInput)
+    await user.type(maxOpenOrdersInput, '999999')
 
-    await act(async () => {
-      await user.click(screen.getByRole('button', { name: /^Save$/ }))
-    })
+    await user.click(screen.getByRole('button', { name: /^Save$/ }))
 
     await waitFor(() => {
       expect(mockApiClient.updateAiDelegateCaps).toHaveBeenCalled()

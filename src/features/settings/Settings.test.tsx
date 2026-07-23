@@ -309,14 +309,14 @@ describe('Settings', () => {
       () => new Promise(resolve => (resolveUpdate = resolve as (v: never) => void))
     )
     renderSettings(<Settings />)
-    await waitFor(() => expect(screen.getByText('busy.key')).toBeTruthy())
+    expect(await screen.findByText('busy.key')).toBeTruthy()
     await userEvent.click(screen.getByText('Edit'))
     const textarea = screen.getByPlaceholderText('Enter setting value...')
 
     await userEvent.clear(textarea)
     await userEvent.type(textarea, 'new-value')
     await userEvent.click(screen.getByText('Save'))
-    await waitFor(() => expect(screen.getByText('Saving...')).toBeTruthy())
+    expect(await screen.findByText('Saving...')).toBeTruthy()
     resolveUpdate({
       key: 'busy.key',
       value: 'val',
@@ -350,10 +350,10 @@ describe('Settings', () => {
       () => new Promise(resolve => (resolveDelete = resolve as (v: never) => void))
     )
     renderSettings(<Settings />)
-    await waitFor(() => expect(screen.getByText('del.busy')).toBeTruthy())
+    expect(await screen.findByText('del.busy')).toBeTruthy()
     await userEvent.click(screen.getByRole('button', { name: /delete/i }))
     await userEvent.click(screen.getByRole('button', { name: /Yes, Delete/i }))
-    await waitFor(() => expect(screen.getByText('Deleting...')).toBeTruthy())
+    expect(await screen.findByText('Deleting...')).toBeTruthy()
     resolveDelete({ message: 'deleted' } as never)
     await waitFor(() => expect(screen.queryByText('Deleting...')).toBeNull())
   })

@@ -83,9 +83,7 @@ describe('ConfigSnippetGenerator', () => {
     const clipboardWrite = vi.spyOn(navigator.clipboard, 'writeText')
     const button = screen.getByRole('button', { name: /Copy config snippet to clipboard/ })
 
-    await act(async () => {
-      await user.click(button)
-    })
+    await user.click(button)
     expect(clipboardWrite).toHaveBeenCalledWith(expect.stringContaining('token-access'))
     expect(screen.getByText('Copied')).toBeInTheDocument()
   })
@@ -106,9 +104,7 @@ describe('ConfigSnippetGenerator', () => {
       render(<ConfigSnippetGenerator payload={payload} />)
       const button = screen.getByRole('button', { name: /Copy config snippet to clipboard/ })
 
-      await act(async () => {
-        await user.click(button)
-      })
+      await user.click(button)
       expect(screen.getByText('Copied')).toBeInTheDocument()
       await act(async () => {
         vi.advanceTimersByTime(2500)
@@ -129,9 +125,7 @@ describe('ConfigSnippetGenerator', () => {
       render(<ConfigSnippetGenerator payload={payload} />)
       const button = screen.getByRole('button', { name: /Copy config snippet to clipboard/ })
 
-      await act(async () => {
-        await user.click(button)
-      })
+      await user.click(button)
       const callsAfterFirst = clearSpy.mock.calls.length
 
       await act(async () => {
