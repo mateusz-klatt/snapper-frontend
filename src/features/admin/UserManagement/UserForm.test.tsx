@@ -108,6 +108,10 @@ describe('UserForm', () => {
     await userEvent.selectOptions(screen.getByLabelText(/role/i), 'operator')
 
     expect(screen.getByText(/trading, position, strategy, process/i)).toBeTruthy()
+
+    await userEvent.selectOptions(screen.getByLabelText(/role/i), 'admin')
+
+    expect(screen.getByText(/full system access including user management/i)).toBeTruthy()
   })
   it('shows edit mode with existing user', () => {
     const existingUser: UserProfile = makeUserProfile({
