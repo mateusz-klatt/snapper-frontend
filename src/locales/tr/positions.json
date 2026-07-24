@@ -87,6 +87,34 @@
       "unrealized": "Gerçekleşmemiş P&L",
       "valuationCurrency": "Değerleme para birimi: {{currency}}"
     },
+    "equity": {
+      "title": "Özkaynak yer paylaşımı",
+      "seriesLabel": "Özkaynak",
+      "seriesLabelSpotOnly": "Özkaynak (spot işlem yeri)",
+      "latest": "En son: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Düşüş",
+        "current": "Mevcut düşüş",
+        "max": "Maksimum düşüş",
+        "definition": "Özkaynağın o ana kadarki zirvesine oranı.",
+        "flowsCaveat": "Nakit akışlarına göre düzeltilmiş bir işlem düşüşü değildir.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Nasıl yorumlanır",
+        "spotOnly": "Yalnızca spot işlem yeri — diğer işlem yerlerindeki bakiyeler dahil değildir.",
+        "flowsUnadjusted": "Harici para yatırma ve çekme işlemleri hariç tutulmamıştır."
+      },
+      "cashPosition": {
+        "title": "Nakit ve pozisyon dağılımı",
+        "position": "Pozisyon değeri",
+        "positionHint": "Açık pozisyonların piyasa değeri.",
+        "cash": "Nakit",
+        "cashHint": "Kalan mutabakatı yapılmış nakit bakiyesi.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Karar işaretçilerini göster",
       "hide": "Karar işaretçilerini gizle",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Enstrüman bazında son katkılar",
       "instrument": "Enstrüman",

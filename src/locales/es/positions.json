@@ -87,6 +87,34 @@
       "unrealized": "P&L no realizado",
       "valuationCurrency": "Moneda de valoración: {{currency}}"
     },
+    "equity": {
+      "title": "Superposición de patrimonio",
+      "seriesLabel": "Patrimonio",
+      "seriesLabelSpotOnly": "Patrimonio (mercado al contado)",
+      "latest": "Último: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Caída desde máximos",
+        "current": "Drawdown actual",
+        "max": "Drawdown máximo",
+        "definition": "Proporción respecto al máximo acumulado del patrimonio.",
+        "flowsCaveat": "No es un drawdown de trading ajustado por flujos.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Cómo interpretar estos datos",
+        "spotOnly": "Solo mercado al contado; se excluyen los saldos mantenidos en otros mercados.",
+        "flowsUnadjusted": "No se excluyen los depósitos ni los retiros externos."
+      },
+      "cashPosition": {
+        "title": "Desglose de efectivo y posición",
+        "position": "Valor de la posición",
+        "positionHint": "Valor a mercado de las posiciones abiertas.",
+        "cash": "Efectivo",
+        "cashHint": "Saldo de efectivo liquidado restante.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Mostrar marcadores de decisión",
       "hide": "Ocultar marcadores de decisión",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Últimas contribuciones por instrumento",
       "instrument": "Instrumento",

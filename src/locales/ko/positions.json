@@ -87,6 +87,34 @@
       "unrealized": "미실현 P&L",
       "valuationCurrency": "평가 통화: {{currency}}"
     },
+    "equity": {
+      "title": "자기자본 오버레이",
+      "seriesLabel": "자기자본",
+      "seriesLabelSpotOnly": "자기자본(현물 거래소)",
+      "latest": "최신: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "낙폭",
+        "current": "현재 낙폭",
+        "max": "최대 낙폭",
+        "definition": "현재까지의 자기자본 최고점 대비 비율입니다.",
+        "flowsCaveat": "자금 흐름을 조정한 거래 낙폭이 아닙니다.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "데이터 해석 방법",
+        "spotOnly": "현물 거래소만 포함되며 다른 거래소의 잔액은 제외됩니다.",
+        "flowsUnadjusted": "외부 입금과 출금은 제외되지 않았습니다."
+      },
+      "cashPosition": {
+        "title": "현금 및 포지션 구성",
+        "position": "포지션 가치",
+        "positionHint": "미결제 포지션 보유분의 시가 평가액입니다.",
+        "cash": "현금",
+        "cashHint": "남아 있는 결제 완료 현금 잔액입니다.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "결정 마커 표시",
       "hide": "결정 마커 숨기기",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "종목별 최신 P&L 기여액",
       "instrument": "종목",

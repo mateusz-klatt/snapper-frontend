@@ -87,6 +87,34 @@
       "unrealized": "Urealiseret P&L",
       "valuationCurrency": "Værdiansættelsesvaluta: {{currency}}"
     },
+    "equity": {
+      "title": "Overlejring af egenkapital",
+      "seriesLabel": "Egenkapital",
+      "seriesLabelSpotOnly": "Egenkapital (spotbørs)",
+      "latest": "Seneste: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Tilbagefald",
+        "current": "Aktuelt drawdown",
+        "max": "Maksimalt drawdown",
+        "definition": "Andel af det løbende maksimum for egenkapitalen.",
+        "flowsCaveat": "Ikke et handels-drawdown korrigeret for pengestrømme.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Sådan læses dette",
+        "spotOnly": "Kun spotbørsen — saldi på andre børser er ikke medtaget.",
+        "flowsUnadjusted": "Eksterne ind- og udbetalinger er ikke fratrukket."
+      },
+      "cashPosition": {
+        "title": "Fordeling på kontanter og position",
+        "position": "Positionsværdi",
+        "positionHint": "Markedsværdi af beholdningen i åbne positioner.",
+        "cash": "Kontanter",
+        "cashHint": "Resterende afviklet kontantsaldo.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Vis beslutningsmarkører",
       "hide": "Skjul beslutningsmarkører",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Seneste bidrag pr. instrument",
       "instrument": "Instrument",

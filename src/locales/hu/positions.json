@@ -87,6 +87,34 @@
       "unrealized": "Nem realizált P&L",
       "valuationCurrency": "Értékelési pénznem: {{currency}}"
     },
+    "equity": {
+      "title": "Sajáttőke-átfedés",
+      "seriesLabel": "Sajáttőke",
+      "seriesLabelSpotOnly": "Sajáttőke (spot kereskedési hely)",
+      "latest": "Legutóbbi: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Visszaesés",
+        "current": "Aktuális visszaesés",
+        "max": "Maximális visszaesés",
+        "definition": "A sajáttőke addigi csúcsához viszonyított arány.",
+        "flowsCaveat": "Nem pénzmozgásokkal korrigált kereskedési visszaesés.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Az adatok értelmezése",
+        "spotOnly": "Csak a spot kereskedési hely — a más helyeken tartott egyenlegek nincsenek benne.",
+        "flowsUnadjusted": "A külső befizetések és kifizetések nincsenek kiszűrve."
+      },
+      "cashPosition": {
+        "title": "Készpénz és pozíció megoszlása",
+        "position": "Pozíció értéke",
+        "positionHint": "A nyitott pozíciók piaci áron számított értéke.",
+        "cash": "Készpénz",
+        "cashHint": "Fennmaradó elszámolt készpénzegyenleg.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Döntési jelölők megjelenítése",
       "hide": "Döntési jelölők elrejtése",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Legutóbbi hozzájárulások instrumentumonként",
       "instrument": "Instrumentum",

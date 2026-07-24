@@ -87,6 +87,34 @@
       "unrealized": "Nerealizuotas P&L",
       "valuationCurrency": "Vertinimo valiuta: {{currency}}"
     },
+    "equity": {
+      "title": "Nuosavo kapitalo perdanga",
+      "seriesLabel": "Nuosavas kapitalas",
+      "seriesLabelSpotOnly": "Nuosavas kapitalas (neatidėliotinų sandorių birža)",
+      "latest": "Naujausia: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Nuosmukis",
+        "current": "Dabartinis nuosmukis",
+        "max": "Didžiausias nuosmukis",
+        "definition": "Dalis nuo iki šiol pasiekto nuosavo kapitalo maksimumo.",
+        "flowsCaveat": "Tai nėra pagal srautus pakoreguotas prekybos nuosmukis.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Kaip tai interpretuoti",
+        "spotOnly": "Tik neatidėliotinų sandorių birža — likučiai kitose biržose neįtraukti.",
+        "flowsUnadjusted": "Išoriniai įnašai ir išėmimai nėra atimti."
+      },
+      "cashPosition": {
+        "title": "Grynųjų pinigų ir pozicijos dalys",
+        "position": "Pozicijos vertė",
+        "positionHint": "Atvirų pozicijų vertė rinkos kainomis.",
+        "cash": "Grynieji pinigai",
+        "cashHint": "Likęs atsiskaitytų grynųjų pinigų likutis.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Rodyti sprendimų žymeklius",
       "hide": "Slėpti sprendimų žymeklius",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Naujausi instrumentų P&L indėliai",
       "instrument": "Instrumentas",

@@ -87,6 +87,34 @@
       "unrealized": "Hindi pa na-realize na P&L",
       "valuationCurrency": "Currency ng valuation: {{currency}}"
     },
+    "equity": {
+      "title": "Overlay ng equity",
+      "seriesLabel": "Kapital",
+      "seriesLabelSpotOnly": "Equity (spot na venue)",
+      "latest": "Pinakabago: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Pagbaba mula sa peak",
+        "current": "Kasalukuyang drawdown",
+        "max": "Pinakamalaking drawdown",
+        "definition": "Bahagi ng pinakamataas na equity hanggang sa kasalukuyan.",
+        "flowsCaveat": "Hindi ito drawdown sa trading na inayos para sa mga daloy.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Paano ito basahin",
+        "spotOnly": "Spot venue lamang — hindi kasama ang mga balanseng nasa ibang venue.",
+        "flowsUnadjusted": "Hindi ibinawas ang mga panlabas na deposito at withdrawal."
+      },
+      "cashPosition": {
+        "title": "Hati ng cash at posisyon",
+        "position": "Halaga ng posisyon",
+        "positionHint": "Halaga sa merkado ng mga bukas na posisyon.",
+        "cash": "Pera",
+        "cashHint": "Natitirang na-settle na balanse ng cash.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Ipakita ang mga marker ng desisyon",
       "hide": "Itago ang mga marker ng desisyon",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Pinakabagong ambag ng bawat instrumento",
       "instrument": "Instrumento",

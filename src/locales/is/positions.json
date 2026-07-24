@@ -87,6 +87,34 @@
       "unrealized": "Óinnleyst P&L",
       "valuationCurrency": "Verðmatsgjaldmiðill: {{currency}}"
     },
+    "equity": {
+      "title": "Yfirlag eigin fjár",
+      "seriesLabel": "Eigið fé",
+      "seriesLabelSpotOnly": "Eigið fé (stundarmarkaður)",
+      "latest": "Nýjast: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Lækkun",
+        "current": "Núverandi lækkun",
+        "max": "Mesta lækkun",
+        "definition": "Hlutfall af hæsta gildi eigin fjár fram að þessu.",
+        "flowsCaveat": "Ekki lækkun í viðskiptum leiðrétt fyrir fjárflæði.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Hvernig á að lesa þetta",
+        "spotOnly": "Aðeins stundarmarkaður — innistæður á öðrum mörkuðum eru undanskildar.",
+        "flowsUnadjusted": "Ytri inn- og útborganir eru ekki dregnar frá."
+      },
+      "cashPosition": {
+        "title": "Skipting reiðufjár og stöðu",
+        "position": "Virði stöðu",
+        "positionHint": "Markaðsvirði opinna staða.",
+        "cash": "Reiðufé",
+        "cashHint": "Eftirstöðvar uppgerðs reiðufjár.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Sýna ákvörðunarmerki",
       "hide": "Fela ákvörðunarmerki",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Nýjustu framlög hvers gernings",
       "instrument": "Gerningur",

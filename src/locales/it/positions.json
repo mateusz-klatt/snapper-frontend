@@ -87,6 +87,34 @@
       "unrealized": "P&L non realizzato",
       "valuationCurrency": "Valuta di riferimento: {{currency}}"
     },
+    "equity": {
+      "title": "Sovrapposizione del patrimonio",
+      "seriesLabel": "Patrimonio",
+      "seriesLabelSpotOnly": "Patrimonio (sede spot)",
+      "latest": "Ultimo: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Flessione",
+        "current": "Drawdown attuale",
+        "max": "Drawdown massimo",
+        "definition": "Quota rispetto al massimo progressivo del patrimonio.",
+        "flowsCaveat": "Non è un drawdown di trading rettificato per i flussi.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Come interpretare questi dati",
+        "spotOnly": "Solo sede spot — sono esclusi i saldi detenuti su altre sedi.",
+        "flowsUnadjusted": "I depositi e i prelievi esterni non sono esclusi."
+      },
+      "cashPosition": {
+        "title": "Ripartizione tra liquidità e posizione",
+        "position": "Valore della posizione",
+        "positionHint": "Valore di mercato delle posizioni aperte.",
+        "cash": "Liquidità",
+        "cashHint": "Saldo residuo della liquidità regolata.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Mostra indicatori delle decisioni",
       "hide": "Nascondi indicatori delle decisioni",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Contributi più recenti per strumento",
       "instrument": "Strumento",

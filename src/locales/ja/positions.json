@@ -87,6 +87,34 @@
       "unrealized": "未実現P&L",
       "valuationCurrency": "評価通貨：{{currency}}"
     },
+    "equity": {
+      "title": "エクイティのオーバーレイ",
+      "seriesLabel": "エクイティ",
+      "seriesLabelSpotOnly": "エクイティ（現物取引所）",
+      "latest": "最新：{{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "ドローダウン",
+        "current": "現在のドローダウン",
+        "max": "最大ドローダウン",
+        "definition": "それまでのエクイティ最高値に対する割合です。",
+        "flowsCaveat": "資金フロー調整後の取引ドローダウンではありません。",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "データの見方",
+        "spotOnly": "現物取引所のみです。他の取引所で保有する残高は含まれません。",
+        "flowsUnadjusted": "外部からの入金と出金は除外されていません。"
+      },
+      "cashPosition": {
+        "title": "現金とポジションの内訳",
+        "position": "ポジション価値",
+        "positionHint": "未決済ポジションを時価評価した金額です。",
+        "cash": "現金",
+        "cashHint": "決済済み現金の残高です。",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "判断マーカーを表示",
       "hide": "判断マーカーを非表示",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "銘柄別の最新P&L寄与額",
       "instrument": "銘柄",

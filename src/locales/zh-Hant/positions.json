@@ -87,6 +87,34 @@
       "unrealized": "未實現 P&L",
       "valuationCurrency": "估值貨幣：{{currency}}"
     },
+    "equity": {
+      "title": "權益疊加層",
+      "seriesLabel": "權益",
+      "seriesLabelSpotOnly": "權益（現貨交易場所）",
+      "latest": "最新：{{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "回撤",
+        "current": "目前回撤",
+        "max": "最大回撤",
+        "definition": "占截至當時權益峰值的比例。",
+        "flowsCaveat": "並非經資金流調整的交易回撤。",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "資料解讀說明",
+        "spotOnly": "僅限現貨交易場所——不包括其他交易場所持有的餘額。",
+        "flowsUnadjusted": "未剔除外部存款和提款。"
+      },
+      "cashPosition": {
+        "title": "現金與持倉構成",
+        "position": "持倉價值",
+        "positionHint": "未平倉部位按市價計算的價值。",
+        "cash": "現金",
+        "cashHint": "剩餘已結算現金餘額。",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "顯示決策標記",
       "hide": "隱藏決策標記",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "各品種最新貢獻明細",
       "instrument": "品種",

@@ -87,6 +87,34 @@
       "unrealized": "Nerealizovaný P&L",
       "valuationCurrency": "Měna ocenění: {{currency}}"
     },
+    "equity": {
+      "title": "Překryv vlastního kapitálu",
+      "seriesLabel": "Vlastní kapitál",
+      "seriesLabelSpotOnly": "Vlastní kapitál (spotová burza)",
+      "latest": "Nejnovější: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Propad",
+        "current": "Aktuální propad",
+        "max": "Maximální propad",
+        "definition": "Podíl z průběžného maxima vlastního kapitálu.",
+        "flowsCaveat": "Nejde o obchodní propad očištěný o peněžní toky.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Jak údaje číst",
+        "spotOnly": "Pouze spotová burza — zůstatky na jiných burzách nejsou zahrnuty.",
+        "flowsUnadjusted": "Externí vklady a výběry nejsou odečteny."
+      },
+      "cashPosition": {
+        "title": "Rozdělení hotovosti a pozice",
+        "position": "Hodnota pozice",
+        "positionHint": "Tržně oceněná hodnota otevřených pozic.",
+        "cash": "Hotovost",
+        "cashHint": "Zbývající vypořádaný zůstatek hotovosti.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Zobrazit značky rozhodnutí",
       "hide": "Skrýt značky rozhodnutí",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Nejnovější příspěvky podle instrumentu",
       "instrument": "Instrument",

@@ -87,6 +87,34 @@
       "unrealized": "Realisoitumaton P&L",
       "valuationCurrency": "Arvostusvaluutta: {{currency}}"
     },
+    "equity": {
+      "title": "Oman pääoman peittokuva",
+      "seriesLabel": "Oma pääoma",
+      "seriesLabelSpotOnly": "Oma pääoma (spot-markkinapaikka)",
+      "latest": "Viimeisin: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Arvonlasku",
+        "current": "Nykyinen arvonlasku",
+        "max": "Suurin arvonlasku",
+        "definition": "Osuus oman pääoman siihenastisesta huipusta.",
+        "flowsCaveat": "Ei rahavirroilla oikaistu kaupankäynnin arvonlasku.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Näin tietoja tulkitaan",
+        "spotOnly": "Vain spot-markkinapaikka — muiden markkinapaikkojen saldot eivät sisälly.",
+        "flowsUnadjusted": "Ulkoisia talletuksia ja nostoja ei ole vähennetty."
+      },
+      "cashPosition": {
+        "title": "Käteisen ja position jakauma",
+        "position": "Position arvo",
+        "positionHint": "Avointen positioiden markkina-arvo.",
+        "cash": "Käteinen",
+        "cashHint": "Jäljellä oleva selvitetty käteissaldo.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Näytä päätösmerkinnät",
       "hide": "Piilota päätösmerkinnät",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Viimeisimmät instrumenttikohtaiset vaikutukset",
       "instrument": "Instrumentti",

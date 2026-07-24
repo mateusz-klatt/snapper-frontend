@@ -87,6 +87,34 @@
       "unrealized": "P&L nerealizat",
       "valuationCurrency": "Monedă de evaluare: {{currency}}"
     },
+    "equity": {
+      "title": "Suprapunere capital propriu",
+      "seriesLabel": "Capital propriu",
+      "seriesLabelSpotOnly": "Capital propriu (piață spot)",
+      "latest": "Cel mai recent: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Declin",
+        "current": "Declin curent",
+        "max": "Declin maxim",
+        "definition": "Pondere din maximul curent al capitalului propriu.",
+        "flowsCaveat": "Nu este un declin de tranzacționare ajustat cu fluxurile.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Cum se interpretează",
+        "spotOnly": "Doar piața spot — soldurile deținute pe alte piețe sunt excluse.",
+        "flowsUnadjusted": "Depunerile și retragerile externe nu sunt eliminate."
+      },
+      "cashPosition": {
+        "title": "Împărțire numerar și poziție",
+        "position": "Valoarea poziției",
+        "positionHint": "Valoarea la piață a pozițiilor deschise.",
+        "cash": "Numerar",
+        "cashHint": "Soldul de numerar decontat rămas.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Afișați marcajele deciziilor",
       "hide": "Ascundeți marcajele deciziilor",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Cele mai recente contribuții pentru fiecare instrument",
       "instrument": "Instrument",

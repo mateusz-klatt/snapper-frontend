@@ -74,6 +74,7 @@ export type PortfolioAccountState = Components['schemas']['PortfolioAccountState
 export type PortfolioAccountStateListResponse =
   Components['schemas']['PortfolioAccountStateListResponse']
 export type PnlInstrumentContributionData = Components['schemas']['PnlInstrumentContributionData']
+export type PnlEquityCoverageData = Components['schemas']['PnlEquityCoverageData']
 export type PnlSeriesData = Components['schemas']['PnlSeriesData']
 export type PnlSeriesResponse = Components['schemas']['PnlSeriesResponse']
 export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']

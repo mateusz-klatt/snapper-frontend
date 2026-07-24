@@ -8,7 +8,9 @@ import { useWallets } from '../../hooks/queries/wallets'
 import { useAppStore } from '../../stores/app'
 import type { PortfolioPnlGranularity } from '../../types/api'
 import { AttributionBreakdown } from './AttributionBreakdown'
+import { CashPositionSplit } from './CashPositionSplit'
 import { ContributionTable } from './ContributionTable'
+import { EquityCoverageSummary } from './EquityCoverageSummary'
 import { IncompletenessSummary } from './IncompletenessSummary'
 import { PnlChart } from './PnlChart'
 import { PNL_MARKER_COLORS } from './pnlMarkerStyles'
@@ -267,16 +269,20 @@ export const PortfolioTimeline: React.FC = () => {
   } else {
     const series = data as NonNullable<typeof data>
     const latestPoint = points[points.length - 1]
+    const coverage = series.equity_coverage
 
     content = (
       <div className='space-y-4'>
         <IncompletenessSummary points={points} />
+        <EquityCoverageSummary coverage={coverage} points={points} />
         <section className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'>
           <PnlChart
             points={points}
             markers={markers}
             showMarkers={showMarkers}
             valuationCcy={series.valuation_ccy}
+            equitySampled={coverage.sampled}
+            equityVenueScope={coverage.venue_scope}
           />
         </section>
         {latestPoint !== undefined && (
@@ -287,6 +293,11 @@ export const PortfolioTimeline: React.FC = () => {
             />
             <ContributionTable
               contributions={latestPoint.per_instrument}
+              valuationCcy={series.valuation_ccy}
+            />
+            <CashPositionSplit
+              coverage={coverage}
+              points={points}
               valuationCcy={series.valuation_ccy}
             />
           </>

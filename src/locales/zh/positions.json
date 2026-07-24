@@ -87,6 +87,34 @@
       "unrealized": "未实现 P&L",
       "valuationCurrency": "计价货币：{{currency}}"
     },
+    "equity": {
+      "title": "权益叠加层",
+      "seriesLabel": "权益",
+      "seriesLabelSpotOnly": "权益（现货交易场所）",
+      "latest": "最新：{{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "回撤",
+        "current": "当前回撤",
+        "max": "最大回撤",
+        "definition": "占截至当时权益峰值的比例。",
+        "flowsCaveat": "并非经资金流调整的交易回撤。",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "数据解读说明",
+        "spotOnly": "仅限现货交易场所——不包括其他交易场所持有的余额。",
+        "flowsUnadjusted": "未剔除外部存款和取款。"
+      },
+      "cashPosition": {
+        "title": "现金与持仓构成",
+        "position": "持仓价值",
+        "positionHint": "未平仓头寸按市价计算的价值。",
+        "cash": "现金",
+        "cashHint": "剩余已结算现金余额。",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "显示决策标记",
       "hide": "隐藏决策标记",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "最新各品种 P&L 贡献",
       "instrument": "品种",

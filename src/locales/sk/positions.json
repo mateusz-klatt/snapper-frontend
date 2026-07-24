@@ -87,6 +87,34 @@
       "unrealized": "Nerealizovaný P&L",
       "valuationCurrency": "Mena ocenenia: {{currency}}"
     },
+    "equity": {
+      "title": "Prekrytie vlastného imania",
+      "seriesLabel": "Vlastné imanie",
+      "seriesLabelSpotOnly": "Vlastné imanie (spotová burza)",
+      "latest": "Najnovšie: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Pokles",
+        "current": "Aktuálny pokles",
+        "max": "Maximálny pokles",
+        "definition": "Podiel z priebežného maxima vlastného imania.",
+        "flowsCaveat": "Nejde o obchodný pokles očistený o peňažné toky.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Ako údaje čítať",
+        "spotOnly": "Len spotová burza — zostatky na iných burzách nie sú zahrnuté.",
+        "flowsUnadjusted": "Externé vklady a výbery nie sú odpočítané."
+      },
+      "cashPosition": {
+        "title": "Rozdelenie hotovosti a pozície",
+        "position": "Hodnota pozície",
+        "positionHint": "Trhová hodnota otvorených pozícií.",
+        "cash": "Hotovosť",
+        "cashHint": "Zostávajúci vyrovnaný hotovostný zostatok.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Zobraziť značky rozhodnutí",
       "hide": "Skryť značky rozhodnutí",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Najnovšie príspevky inštrumentov k P&L",
       "instrument": "Inštrument",

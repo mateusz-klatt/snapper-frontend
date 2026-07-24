@@ -87,6 +87,34 @@
       "unrealized": "Nerealizovani P&L",
       "valuationCurrency": "Valuta vrednovanja: {{currency}}"
     },
+    "equity": {
+      "title": "Преклапање капитала",
+      "seriesLabel": "Капитал",
+      "seriesLabelSpotOnly": "Капитал (спот берза)",
+      "latest": "Најновије: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Пад вредности",
+        "current": "Тренутни пад вредности",
+        "max": "Максимални пад вредности",
+        "definition": "Удео текућег максимума капитала.",
+        "flowsCaveat": "Није пад трговања прилагођен за токове.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Како ово тумачити",
+        "spotOnly": "Само спот берза — стања на другим берзама нису укључена.",
+        "flowsUnadjusted": "Спољне уплате и исплате нису искључене."
+      },
+      "cashPosition": {
+        "title": "Подела на готовину и позицију",
+        "position": "Вредност позиције",
+        "positionHint": "Тржишно вреднована вредност отворених позиција.",
+        "cash": "Готовина",
+        "cashHint": "Преостало салдирано стање готовине.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Prikaži markere odluka",
       "hide": "Sakrij markere odluka",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Najnoviji doprinosi po instrumentu",
       "instrument": "Instrument",
