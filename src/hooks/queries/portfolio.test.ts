@@ -104,6 +104,15 @@ const pnlSeriesResponse: PnlSeriesResponse = {
       },
     ],
     calc_version: 'v1',
+    equity_coverage: {
+      sampled: false,
+      venue_scope: null,
+      external_flows_adjusted: null,
+      complete_minutes: 0,
+      first_minute: null,
+      last_minute: null,
+      sample_calc_version: null,
+    },
     points: [
       {
         point_time: '2026-07-13T12:00:00Z',
@@ -112,6 +121,10 @@ const pnlSeriesResponse: PnlSeriesResponse = {
         accrual_pnl: 0,
         unrealized_pnl: 5,
         net_pnl: 4.75,
+        equity: null,
+        cash: null,
+        position_value: null,
+        drawdown: null,
         valuation_status: 'complete',
         incompleteness_reasons: [],
         per_instrument: [

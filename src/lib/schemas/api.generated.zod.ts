@@ -1158,6 +1158,22 @@ export const PnlAttributionOriginSchema = _PnlAttributionOriginRawSchema as unkn
   Components['schemas']['PnlAttributionOrigin']
 >
 
+const _PnlEquityCoverageDataRawSchema = z
+  .object({
+    sampled: z.boolean(),
+    venue_scope: z.literal('spot_only').nullable(),
+    external_flows_adjusted: z.boolean().nullable(),
+    complete_minutes: z.number().int(),
+    first_minute: z.iso.datetime().nullable(),
+    last_minute: z.iso.datetime().nullable(),
+    sample_calc_version: z.string().nullable(),
+  })
+  .strict()
+
+export const PnlEquityCoverageDataSchema = _PnlEquityCoverageDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlEquityCoverageData']
+>
+
 const _PnlFillMarkerDataRawSchema = z
   .object({
     kind: z.literal('fill'),
@@ -4623,6 +4639,10 @@ const _PnlTimelinePointDataRawSchema = z
     accrual_pnl: z.number().nullable(),
     unrealized_pnl: z.number().nullable(),
     net_pnl: z.number().nullable(),
+    equity: z.number().nullable(),
+    cash: z.number().nullable(),
+    position_value: z.number().nullable(),
+    drawdown: z.number().nullable(),
     valuation_status: PnlValuationStatusSchema,
     incompleteness_reasons: z.array(PnlIncompletenessReasonDataSchema),
     per_instrument: z.array(PnlInstrumentContributionDataSchema),
@@ -5512,6 +5532,7 @@ const _PnlSeriesDataRawSchema = z
     mark_source: z.string(),
     rate_sources: z.array(PnlFxRateSourceDataSchema),
     calc_version: z.string(),
+    equity_coverage: PnlEquityCoverageDataSchema,
     points: z.array(PnlTimelinePointDataSchema),
   })
   .strict()
@@ -5538,6 +5559,7 @@ const _PnlTimelineDataRawSchema = z
     mark_source: z.string(),
     rate_sources: z.array(PnlFxRateSourceDataSchema),
     calc_version: z.string(),
+    equity_coverage: PnlEquityCoverageDataSchema,
     points: z.array(PnlTimelinePointDataSchema),
     marker_limit: z.number().int(),
     markers_truncated: z.boolean(),
@@ -6267,6 +6289,7 @@ export type PairedHaltInfo = Components['schemas']['PairedHaltInfo']
 export type PairedLegExposure = Components['schemas']['PairedLegExposure']
 export type Permission = Components['schemas']['Permission']
 export type PnlAttributionOrigin = Components['schemas']['PnlAttributionOrigin']
+export type PnlEquityCoverageData = Components['schemas']['PnlEquityCoverageData']
 export type PnlFillMarkerData = Components['schemas']['PnlFillMarkerData']
 export type PnlFxRateSourceData = Components['schemas']['PnlFxRateSourceData']
 export type PnlIncompletenessReason = Components['schemas']['PnlIncompletenessReason']
