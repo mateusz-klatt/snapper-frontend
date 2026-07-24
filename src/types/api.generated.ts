@@ -3537,6 +3537,15 @@ export type Components = {
             unrealized_pnl: number | null;
         };
         PnlAttributionOrigin: "manual" | "plan" | "system" | "unattributed";
+        PnlEquityCoverageData: {
+            sampled: boolean;
+            venue_scope: "spot_only" | null;
+            external_flows_adjusted: boolean | null;
+            complete_minutes: number;
+            first_minute: string | null;
+            last_minute: string | null;
+            sample_calc_version: string | null;
+        };
         PnlFillMarkerData: {
             kind: "fill";
             marker_time: string;
@@ -3590,6 +3599,7 @@ export type Components = {
             mark_source: string;
             rate_sources: Components["schemas"]["PnlFxRateSourceData"][];
             calc_version: string;
+            equity_coverage: Components["schemas"]["PnlEquityCoverageData"];
             points: Components["schemas"]["PnlTimelinePointData"][];
         };
         PnlSeriesResponse: {
@@ -3631,6 +3641,7 @@ export type Components = {
             mark_source: string;
             rate_sources: Components["schemas"]["PnlFxRateSourceData"][];
             calc_version: string;
+            equity_coverage: Components["schemas"]["PnlEquityCoverageData"];
             points: Components["schemas"]["PnlTimelinePointData"][];
             marker_limit: number;
             markers_truncated: boolean;
@@ -3644,6 +3655,10 @@ export type Components = {
             accrual_pnl: number | null;
             unrealized_pnl: number | null;
             net_pnl: number | null;
+            equity: number | null;
+            cash: number | null;
+            position_value: number | null;
+            drawdown: number | null;
             valuation_status: Components["schemas"]["PnlValuationStatus"];
             incompleteness_reasons: Components["schemas"]["PnlIncompletenessReasonData"][];
             per_instrument: Components["schemas"]["PnlInstrumentContributionData"][];
