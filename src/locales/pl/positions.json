@@ -87,6 +87,34 @@
       "unrealized": "Niezrealizowany P&L",
       "valuationCurrency": "Waluta wyceny: {{currency}}"
     },
+    "equity": {
+      "title": "Nakładka kapitału",
+      "seriesLabel": "Kapitał",
+      "seriesLabelSpotOnly": "Kapitał (giełda spot)",
+      "latest": "Ostatnio: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Obsunięcie kapitału",
+        "current": "Bieżące obsunięcie",
+        "max": "Maksymalne obsunięcie",
+        "definition": "Udział w bieżącym szczycie kapitału.",
+        "flowsCaveat": "To nie jest obsunięcie handlowe skorygowane o przepływy.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Jak to czytać",
+        "spotOnly": "Tylko giełda spot — salda na innych giełdach są wykluczone.",
+        "flowsUnadjusted": "Zewnętrzne wpłaty i wypłaty nie są odejmowane."
+      },
+      "cashPosition": {
+        "title": "Podział na gotówkę i pozycje",
+        "position": "Wartość pozycji",
+        "positionHint": "Wyceniona wartość otwartych pozycji.",
+        "cash": "Gotówka",
+        "cashHint": "Pozostałe rozliczone saldo gotówkowe.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Pokaż znaczniki decyzji",
       "hide": "Ukryj znaczniki decyzji",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Najnowsze składowe P&L według instrumentu",
       "instrument": "Instrument",

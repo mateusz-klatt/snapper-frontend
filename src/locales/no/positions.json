@@ -87,6 +87,34 @@
       "unrealized": "Urealisert P&L",
       "valuationCurrency": "Verdsettingsvaluta: {{currency}}"
     },
+    "equity": {
+      "title": "Overlegg for egenkapital",
+      "seriesLabel": "Egenkapital",
+      "seriesLabelSpotOnly": "Egenkapital (spotmarkedsplass)",
+      "latest": "Siste: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Verdifall",
+        "current": "Gjeldende drawdown",
+        "max": "Maksimal drawdown",
+        "definition": "Andel av den løpende toppen i egenkapitalen.",
+        "flowsCaveat": "Ikke en handelsdrawdown justert for pengestrømmer.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Slik leser du dette",
+        "spotOnly": "Kun spotmarkedsplassen — saldoer på andre markedsplasser er utelatt.",
+        "flowsUnadjusted": "Eksterne innskudd og uttak er ikke trukket fra."
+      },
+      "cashPosition": {
+        "title": "Fordeling mellom kontanter og posisjon",
+        "position": "Posisjonsverdi",
+        "positionHint": "Markedsverdi av åpne posisjoner.",
+        "cash": "Kontanter",
+        "cashHint": "Gjenværende oppgjort kontantsaldo.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Vis beslutningsmarkører",
       "hide": "Skjul beslutningsmarkører",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Siste bidrag per instrument",
       "instrument": "Instrument",

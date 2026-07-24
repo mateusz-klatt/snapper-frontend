@@ -87,6 +87,34 @@
       "unrealized": "P&L belum direalisasikan",
       "valuationCurrency": "Mata wang penilaian: {{currency}}"
     },
+    "equity": {
+      "title": "Tindihan ekuiti",
+      "seriesLabel": "Ekuiti",
+      "seriesLabelSpotOnly": "Ekuiti (bursa spot)",
+      "latest": "Terkini: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Pengurangan",
+        "current": "Pengurangan semasa",
+        "max": "Pengurangan maksimum",
+        "definition": "Bahagian daripada puncak ekuiti setakat ini.",
+        "flowsCaveat": "Bukan pengurangan dagangan yang dilaraskan mengikut aliran.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Cara membaca data ini",
+        "spotOnly": "Bursa spot sahaja — baki yang disimpan di bursa lain tidak disertakan.",
+        "flowsUnadjusted": "Deposit dan pengeluaran luaran tidak ditolak."
+      },
+      "cashPosition": {
+        "title": "Pecahan tunai dan posisi",
+        "position": "Nilai posisi",
+        "positionHint": "Nilai pasaran inventori posisi terbuka.",
+        "cash": "Tunai",
+        "cashHint": "Baki tunai selesai yang tinggal.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Tunjukkan penanda keputusan",
       "hide": "Sembunyikan penanda keputusan",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Sumbangan terkini bagi setiap instrumen",
       "instrument": "Instrumen",

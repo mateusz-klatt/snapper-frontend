@@ -87,6 +87,34 @@
       "unrealized": "P&L neamhréadaithe",
       "valuationCurrency": "Airgeadra luachála: {{currency}}"
     },
+    "equity": {
+      "title": "Forleagan cothromais",
+      "seriesLabel": "Cothromas",
+      "seriesLabelSpotOnly": "Cothromas (ionad spotmhargaidh)",
+      "latest": "Is déanaí: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Íostarraingt",
+        "current": "Íostarraingt reatha",
+        "max": "Íostarraingt uasta",
+        "definition": "Sciar den bhuaic leanúnach cothromais.",
+        "flowsCaveat": "Ní íostarraingt trádála í arna coigeartú do shreafaí.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Conas é seo a léamh",
+        "spotOnly": "An t-ionad spotmhargaidh amháin — ní áirítear iarmhéideanna ar ionaid eile.",
+        "flowsUnadjusted": "Níor baineadh taiscí ná aistarraingtí seachtracha as."
+      },
+      "cashPosition": {
+        "title": "Roinnt airgid agus suímh",
+        "position": "Luach an tsuímh",
+        "positionHint": "Luach margaidh na suíomhanna oscailte.",
+        "cash": "Airgead",
+        "cashHint": "Iarmhéid airgid socraithe atá fágtha.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Taispeáin marcóirí cinnidh",
       "hide": "Folaigh marcóirí cinnidh",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Ranníocaíochtaí is déanaí de réir ionstraime",
       "instrument": "Ionstraim",

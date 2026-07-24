@@ -87,6 +87,34 @@
       "unrealized": "Unrealized P&L",
       "valuationCurrency": "Valuation currency: {{currency}}"
     },
+    "equity": {
+      "title": "Equity overlay",
+      "seriesLabel": "Equity",
+      "seriesLabelSpotOnly": "Equity (spot venue)",
+      "latest": "Latest: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Drawdown",
+        "current": "Current drawdown",
+        "max": "Max drawdown",
+        "definition": "Share of the running equity peak.",
+        "flowsCaveat": "Not a flow-adjusted trading drawdown.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "How to read this",
+        "spotOnly": "Spot venue only — balances held on other venues are excluded.",
+        "flowsUnadjusted": "External deposits and withdrawals are not adjusted out."
+      },
+      "cashPosition": {
+        "title": "Cash and position split",
+        "position": "Position value",
+        "positionHint": "Marked value of open position inventory.",
+        "cash": "Cash",
+        "cashHint": "Remaining settled cash balance.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Show decision markers",
       "hide": "Hide decision markers",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Latest per-instrument contributions",
       "instrument": "Instrument",

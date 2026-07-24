@@ -87,6 +87,34 @@
       "unrealized": "Niet-gerealiseerde P&L",
       "valuationCurrency": "Waarderingsvaluta: {{currency}}"
     },
+    "equity": {
+      "title": "Overlay van eigen vermogen",
+      "seriesLabel": "Eigen vermogen",
+      "seriesLabelSpotOnly": "Eigen vermogen (spothandelsplatform)",
+      "latest": "Meest recent: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Terugval",
+        "current": "Huidige drawdown",
+        "max": "Maximale drawdown",
+        "definition": "Aandeel van de tot dan toe hoogste waarde van het eigen vermogen.",
+        "flowsCaveat": "Geen voor geldstromen gecorrigeerde tradingdrawdown.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Zo lees je dit",
+        "spotOnly": "Alleen het spothandelsplatform — saldi op andere platforms zijn uitgesloten.",
+        "flowsUnadjusted": "Externe stortingen en opnames zijn niet uitgefilterd."
+      },
+      "cashPosition": {
+        "title": "Verdeling cash en positie",
+        "position": "Positiewaarde",
+        "positionHint": "Tegen marktwaarde gewaardeerde open posities.",
+        "cash": "Contanten",
+        "cashHint": "Resterend vereffend cashsaldo.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Beslissingsmarkeringen tonen",
       "hide": "Beslissingsmarkeringen verbergen",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Laatste bijdragen per instrument",
       "instrument": "Instrument",

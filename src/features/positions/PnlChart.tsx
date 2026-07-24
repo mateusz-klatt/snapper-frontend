@@ -18,7 +18,12 @@ import { getIntlLocale } from '../../i18n/countryLanguages'
 import type { AppLocale } from '../../i18n/types'
 import { formatDateTime } from '../../lib/dateFormat'
 import { useAppStore } from '../../stores/app'
-import type { PnlTimelineMarkerData, PnlTimelinePointData } from '../../types/api'
+import type {
+  PnlEquityCoverageData,
+  PnlTimelineMarkerData,
+  PnlTimelinePointData,
+} from '../../types/api'
+import { latestSampledPoint } from './equityOverlay'
 import { PNL_MARKER_COLORS } from './pnlMarkerStyles'
 
 type LineSeriesData = SeriesDataItemTypeMap<Time>['Line'][]
@@ -28,6 +33,8 @@ interface Props {
   markers?: readonly PnlTimelineMarkerData[]
   showMarkers?: boolean
   valuationCcy: string
+  equitySampled?: boolean
+  equityVenueScope?: PnlEquityCoverageData['venue_scope']
   height?: number
   className?: string
 }
@@ -58,6 +65,7 @@ const DARK_THEME = {
 const NET_COLOR = '#3b82f6'
 const REALIZED_COLOR = '#22c55e'
 const UNREALIZED_COLOR = '#f97316'
+const EQUITY_COLOR = '#14b8a6'
 const EMPTY_MARKERS: readonly PnlTimelineMarkerData[] = []
 
 const toUtc = (iso: string): UTCTimestamp =>
@@ -276,6 +284,8 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
   markers = EMPTY_MARKERS,
   showMarkers = true,
   valuationCcy,
+  equitySampled = false,
+  equityVenueScope = null,
   height = 300,
   className = '',
 }) => {
@@ -285,12 +295,22 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
   const netSeriesRef = useRef<ISeriesApi<'Line'> | null>(null)
   const realizedSeriesRef = useRef<ISeriesApi<'Line'> | null>(null)
   const unrealizedSeriesRef = useRef<ISeriesApi<'Line'> | null>(null)
+  const equitySeriesRef = useRef<ISeriesApi<'Line'> | null>(null)
   const markerAnchorSeriesRef = useRef<ISeriesApi<'Line'> | null>(null)
   const markerPluginRef = useRef<ISeriesMarkersPluginApi<Time> | null>(null)
   const markerByIdRef = useRef<Map<string, PnlTimelineMarkerData>>(new Map())
   const [selectedMarker, setSelectedMarker] = useState<PnlTimelineMarkerData | null>(null)
   const isDarkMode = useAppStore(state => state.isDarkMode)
   const locale = useAppStore(state => state.locale)
+  const latestEquity = equitySampled ? (latestSampledPoint(points)?.equity ?? null) : null
+  const latestEquityText =
+    latestEquity === null
+      ? t('timeline.equity.noValue')
+      : formatMarkerNumber(latestEquity, getIntlLocale(locale))
+  const equitySeriesLabel =
+    equityVenueScope === 'spot_only'
+      ? t('timeline.equity.seriesLabelSpotOnly')
+      : t('timeline.equity.seriesLabel')
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -324,6 +344,12 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
     unrealizedSeriesRef.current = chart.addSeries(LineSeries, {
       color: UNREALIZED_COLOR,
       lineWidth: 2,
+    })
+    equitySeriesRef.current = chart.addSeries(LineSeries, {
+      color: EQUITY_COLOR,
+      lineWidth: 2,
+      priceScaleId: 'left',
+      priceLineVisible: false,
     })
     markerAnchorSeriesRef.current = chart.addSeries(LineSeries, {
       color: 'transparent',
@@ -371,6 +397,7 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
       netSeriesRef.current = null
       realizedSeriesRef.current = null
       unrealizedSeriesRef.current = null
+      equitySeriesRef.current = null
       markerAnchorSeriesRef.current = null
       markerPluginRef.current = null
       markerByIdRef.current.clear()
@@ -407,6 +434,19 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
       chartRef.current.timeScale().fitContent()
     }
   }, [height, points])
+
+  useEffect(() => {
+    if (!equitySeriesRef.current || !chartRef.current) return
+
+    equitySeriesRef.current.setData(
+      equitySampled ? buildSeriesData(points, point => point.equity) : []
+    )
+    const theme = isDarkMode ? DARK_THEME : LIGHT_THEME
+
+    chartRef.current.applyOptions({
+      leftPriceScale: { visible: equitySampled, borderColor: theme.border },
+    })
+  }, [equitySampled, height, isDarkMode, points])
 
   useEffect(() => {
     if (!markerAnchorSeriesRef.current || !markerPluginRef.current || !chartRef.current) return
@@ -452,6 +492,18 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
           />
           <span>{t('timeline.chart.unrealized')}</span>
         </span>
+        {equitySampled && (
+          <span className='flex items-center gap-1' data-testid='pnl-equity-legend'>
+            <span
+              className='inline-block h-2 w-3 rounded-sm'
+              style={{ backgroundColor: EQUITY_COLOR }}
+            />
+            <span>{equitySeriesLabel}</span>
+            <span className='font-mono text-alpine-900'>
+              {t('timeline.equity.latest', { value: latestEquityText, currency: valuationCcy })}
+            </span>
+          </span>
+        )}
         <span>{t('timeline.chart.valuationCurrency', { currency: valuationCcy })}</span>
       </div>
       {selectedMarker !== null && <MarkerDetail marker={selectedMarker} locale={locale} />}

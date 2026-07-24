@@ -87,6 +87,34 @@
       "unrealized": "Unrealisierter P&L",
       "valuationCurrency": "Bewertungswährung: {{currency}}"
     },
+    "equity": {
+      "title": "Eigenkapital-Overlay",
+      "seriesLabel": "Eigenkapital",
+      "seriesLabelSpotOnly": "Eigenkapital (Spot-Handelsplatz)",
+      "latest": "Aktuell: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Kapitalrückgang",
+        "current": "Aktueller Drawdown",
+        "max": "Maximaler Drawdown",
+        "definition": "Anteil am bisherigen Höchststand des Eigenkapitals.",
+        "flowsCaveat": "Kein um Zahlungsströme bereinigter Trading-Drawdown.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Hinweise zur Interpretation",
+        "spotOnly": "Nur Spot-Handelsplatz — Guthaben an anderen Handelsplätzen sind ausgeschlossen.",
+        "flowsUnadjusted": "Externe Ein- und Auszahlungen sind nicht herausgerechnet."
+      },
+      "cashPosition": {
+        "title": "Aufteilung in Barbestand und Position",
+        "position": "Positionswert",
+        "positionHint": "Zum Marktpreis bewerteter Bestand offener Positionen.",
+        "cash": "Barbestand",
+        "cashHint": "Verbleibender abgewickelter Barbestand.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Entscheidungsmarkierungen anzeigen",
       "hide": "Entscheidungsmarkierungen ausblenden",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Neueste Beiträge je Instrument",
       "instrument": "Instrument",

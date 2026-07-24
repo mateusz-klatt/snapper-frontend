@@ -87,6 +87,34 @@
       "unrealized": "Orealiserad P&L",
       "valuationCurrency": "Värderingsvaluta: {{currency}}"
     },
+    "equity": {
+      "title": "Överlagring av eget kapital",
+      "seriesLabel": "Eget kapital",
+      "seriesLabelSpotOnly": "Eget kapital (spotmarknadsplats)",
+      "latest": "Senaste: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Nedgång",
+        "current": "Aktuell nedgång",
+        "max": "Maximal nedgång",
+        "definition": "Andel av den dittills högsta nivån för eget kapital.",
+        "flowsCaveat": "Inte en handelsnedgång justerad för penningflöden.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Så tolkar du detta",
+        "spotOnly": "Endast spotmarknadsplatsen — saldon på andra marknadsplatser ingår inte.",
+        "flowsUnadjusted": "Externa insättningar och uttag har inte räknats bort."
+      },
+      "cashPosition": {
+        "title": "Fördelning mellan kontanter och position",
+        "position": "Positionsvärde",
+        "positionHint": "Marknadsvärde för öppna positioner.",
+        "cash": "Kontanter",
+        "cashHint": "Återstående avräknat kontantsaldo.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Visa beslutsmarkörer",
       "hide": "Dölj beslutsmarkörer",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Senaste P&L-bidrag per instrument",
       "instrument": "Instrument",

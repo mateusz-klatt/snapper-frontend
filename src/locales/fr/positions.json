@@ -87,6 +87,34 @@
       "unrealized": "P&L latent",
       "valuationCurrency": "Devise de valorisation : {{currency}}"
     },
+    "equity": {
+      "title": "Superposition des fonds propres",
+      "seriesLabel": "Fonds propres",
+      "seriesLabelSpotOnly": "Fonds propres (plateforme au comptant)",
+      "latest": "Dernière valeur : {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Repli",
+        "current": "Drawdown actuel",
+        "max": "Drawdown maximal",
+        "definition": "Part du plus haut historique courant des fonds propres.",
+        "flowsCaveat": "Il ne s’agit pas d’un drawdown de trading corrigé des flux.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Comment interpréter ces données",
+        "spotOnly": "Plateforme au comptant uniquement — les soldes détenus sur d’autres plateformes sont exclus.",
+        "flowsUnadjusted": "Les dépôts et retraits externes ne sont pas neutralisés."
+      },
+      "cashPosition": {
+        "title": "Répartition liquidités/position",
+        "position": "Valeur de la position",
+        "positionHint": "Valeur de marché des positions ouvertes.",
+        "cash": "Liquidités",
+        "cashHint": "Solde de liquidités réglées restant.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Afficher les marqueurs de décision",
       "hide": "Masquer les marqueurs de décision",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Dernières contributions par instrument",
       "instrument": "Instrument",

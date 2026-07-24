@@ -87,6 +87,34 @@
       "unrealized": "P&L ambayo bado haijapatikana",
       "valuationCurrency": "Sarafu ya uthamini: {{currency}}"
     },
+    "equity": {
+      "title": "Safu ya juu ya mtaji",
+      "seriesLabel": "Mtaji",
+      "seriesLabelSpotOnly": "Mtaji (soko la papo hapo)",
+      "latest": "Ya hivi karibuni: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Upungufu kutoka kileleni",
+        "current": "Upungufu wa sasa kutoka kileleni",
+        "max": "Upungufu mkubwa zaidi kutoka kileleni",
+        "definition": "Sehemu ya kilele cha mtaji kilichofikiwa hadi sasa.",
+        "flowsCaveat": "Si upungufu wa biashara uliorekebishwa kwa mitiririko.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Jinsi ya kusoma data hii",
+        "spotOnly": "Soko la papo hapo pekee — salio kwenye masoko mengine hayajajumuishwa.",
+        "flowsUnadjusted": "Amana na utoaji wa nje haujaondolewa."
+      },
+      "cashPosition": {
+        "title": "Mgawanyo wa fedha taslimu na nafasi",
+        "position": "Thamani ya nafasi",
+        "positionHint": "Thamani ya soko ya nafasi zilizo wazi.",
+        "cash": "Fedha taslimu",
+        "cashHint": "Salio lililobaki la fedha taslimu zilizokamilishwa.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Onyesha alama za maamuzi",
       "hide": "Ficha alama za maamuzi",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Michango ya karibuni kwa kila instrumenti",
       "instrument": "Instrumenti",

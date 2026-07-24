@@ -87,6 +87,34 @@
       "unrealized": "P&L Belum Terealisasi",
       "valuationCurrency": "Mata uang valuasi: {{currency}}"
     },
+    "equity": {
+      "title": "Overlay ekuitas",
+      "seriesLabel": "Ekuitas",
+      "seriesLabelSpotOnly": "Ekuitas (bursa spot)",
+      "latest": "Terbaru: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Penurunan",
+        "current": "Drawdown saat ini",
+        "max": "Drawdown maksimum",
+        "definition": "Proporsi terhadap puncak ekuitas berjalan.",
+        "flowsCaveat": "Bukan drawdown perdagangan yang disesuaikan dengan arus dana.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Cara membaca data ini",
+        "spotOnly": "Hanya bursa spot — saldo yang disimpan di bursa lain tidak disertakan.",
+        "flowsUnadjusted": "Setoran dan penarikan eksternal tidak dikeluarkan."
+      },
+      "cashPosition": {
+        "title": "Pembagian kas dan posisi",
+        "position": "Nilai posisi",
+        "positionHint": "Nilai pasar persediaan posisi terbuka.",
+        "cash": "Kas",
+        "cashHint": "Sisa saldo kas yang telah diselesaikan.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Tampilkan penanda keputusan",
       "hide": "Sembunyikan penanda keputusan",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Kontribusi terbaru per instrumen",
       "instrument": "Instrumen",

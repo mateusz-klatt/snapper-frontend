@@ -87,6 +87,34 @@
       "unrealized": "Nerealizētais P&L",
       "valuationCurrency": "Novērtējuma valūta: {{currency}}"
     },
+    "equity": {
+      "title": "Pašu kapitāla pārklājums",
+      "seriesLabel": "Pašu kapitāls",
+      "seriesLabelSpotOnly": "Pašu kapitāls (tūlītējo darījumu birža)",
+      "latest": "Jaunākais: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Kritums",
+        "current": "Pašreizējais kritums",
+        "max": "Maksimālais kritums",
+        "definition": "Daļa no līdzšinējā pašu kapitāla maksimuma.",
+        "flowsCaveat": "Tas nav pēc plūsmām koriģēts tirdzniecības kritums.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Kā interpretēt šos datus",
+        "spotOnly": "Tikai tūlītējo darījumu birža — citās biržās turētie atlikumi nav iekļauti.",
+        "flowsUnadjusted": "Ārējās iemaksas un izmaksas nav atskaitītas."
+      },
+      "cashPosition": {
+        "title": "Naudas un pozīcijas sadalījums",
+        "position": "Pozīcijas vērtība",
+        "positionHint": "Atvērto pozīciju vērtība pēc tirgus cenas.",
+        "cash": "Nauda",
+        "cashHint": "Atlikušais norēķinātais naudas atlikums.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Rādīt lēmumu marķierus",
       "hide": "Slēpt lēmumu marķierus",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Jaunākais katra instrumenta devums",
       "instrument": "Instruments",

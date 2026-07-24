@@ -20,6 +20,7 @@ vi.mock('../../stores/app', () => ({
 const setNetData = vi.fn()
 const setRealizedData = vi.fn()
 const setUnrealizedData = vi.fn()
+const setEquityData = vi.fn()
 const setMarkerAnchorData = vi.fn()
 const setMarkers = vi.fn()
 const detachMarkers = vi.fn()
@@ -51,7 +52,13 @@ const mockChart = () => ({
 })
 
 const configureSeriesMocks = () => {
-  const setDataMocks = [setNetData, setRealizedData, setUnrealizedData, setMarkerAnchorData]
+  const setDataMocks = [
+    setNetData,
+    setRealizedData,
+    setUnrealizedData,
+    setEquityData,
+    setMarkerAnchorData,
+  ]
 
   mockAddSeries.mockImplementation(() => ({
     setData: setDataMocks[(mockAddSeries.mock.calls.length - 1) % setDataMocks.length],
@@ -73,7 +80,11 @@ const point = (
   valuationStatus: 'complete' | 'incomplete' = 'complete',
   incompletenessReasons: PnlTimelinePointData['incompleteness_reasons'] = [],
   feePnl: number | null = 0,
-  accrualPnl: number | null = 0
+  accrualPnl: number | null = 0,
+  equity: number | null = null,
+  cash: number | null = null,
+  positionValue: number | null = null,
+  drawdown: number | null = null
 ): PnlTimelinePointData => ({
   point_time: pointTime,
   realized_pnl: realizedPnl,
@@ -81,10 +92,10 @@ const point = (
   accrual_pnl: accrualPnl,
   unrealized_pnl: unrealizedPnl,
   net_pnl: netPnl,
-  equity: null,
-  cash: null,
-  position_value: null,
-  drawdown: null,
+  equity,
+  cash,
+  position_value: positionValue,
+  drawdown,
   valuation_status: valuationStatus,
   incompleteness_reasons: incompletenessReasons,
   per_instrument: [],
@@ -170,6 +181,7 @@ beforeEach(() => {
   setNetData.mockReset()
   setRealizedData.mockReset()
   setUnrealizedData.mockReset()
+  setEquityData.mockReset()
   setMarkerAnchorData.mockReset()
   setMarkers.mockReset()
   detachMarkers.mockReset()
@@ -179,17 +191,23 @@ beforeEach(() => {
 })
 
 describe('PnlChart', () => {
-  it('creates three P&L lines plus an invisible marker anchor and renders the legend', () => {
-    const { getByText, getByTestId } = render(
+  it('creates three P&L lines, a left-scale equity line, and an invisible marker anchor', () => {
+    const { getByText, getByTestId, queryByTestId } = render(
       <PnlChart points={[]} valuationCcy='USD' height={240} className='custom-chart' />
     )
 
-    expect(mockAddSeries).toHaveBeenCalledTimes(4)
+    expect(mockAddSeries).toHaveBeenCalledTimes(5)
     expect(mockAddSeries.mock.calls[0]?.[0]).toBe('LineSeries')
     expect(mockAddSeries.mock.calls[0]?.[1]).toMatchObject({ color: '#3b82f6', lineWidth: 2 })
     expect(mockAddSeries.mock.calls[1]?.[1]).toMatchObject({ color: '#22c55e', lineWidth: 2 })
     expect(mockAddSeries.mock.calls[2]?.[1]).toMatchObject({ color: '#f97316', lineWidth: 2 })
     expect(mockAddSeries.mock.calls[3]?.[1]).toEqual({
+      color: '#14b8a6',
+      lineWidth: 2,
+      priceScaleId: 'left',
+      priceLineVisible: false,
+    })
+    expect(mockAddSeries.mock.calls[4]?.[1]).toEqual({
       color: 'transparent',
       lineVisible: false,
       pointMarkersVisible: false,
@@ -197,7 +215,7 @@ describe('PnlChart', () => {
       lastValueVisible: false,
       crosshairMarkerVisible: false,
     })
-    expect(mockCreateSeriesMarkers).toHaveBeenCalledWith(mockAddSeries.mock.results[3]?.value, [], {
+    expect(mockCreateSeriesMarkers).toHaveBeenCalledWith(mockAddSeries.mock.results[4]?.value, [], {
       autoScale: true,
       zOrder: 'top',
     })
@@ -206,8 +224,84 @@ describe('PnlChart', () => {
     expect(getByText('Realized P&L')).toBeInTheDocument()
     expect(getByText('Unrealized P&L')).toBeInTheDocument()
     expect(getByText('Valuation currency: USD')).toBeInTheDocument()
+    expect(queryByTestId('pnl-equity-legend')).not.toBeInTheDocument()
     expect(getByTestId('pnl-chart')).toHaveClass('custom-chart')
     expect(getByTestId('pnl-chart').querySelector('[style="height: 240px;"]')).toBeInTheDocument()
+  })
+
+  it('hides the equity line and left scale when the window is not sampled', () => {
+    render(<PnlChart points={[point('2026-01-01T00:00:00Z', 10, 5, 3)]} valuationCcy='USD' />)
+
+    expect(setEquityData).toHaveBeenCalledWith([])
+    expect(mockApplyOptions).toHaveBeenCalledWith({
+      leftPriceScale: { visible: false, borderColor: '#e6e3dc' },
+    })
+  })
+
+  it('plots the equity line on the left scale with a whitespace gap and latest-value legend', () => {
+    const points = [
+      point('2026-01-01T00:00:00Z', 10, 5, 3, 'complete', [], 0, 0, 1000.5, 600, 400.5, 0.05),
+      point(
+        '2026-01-01T00:01:00Z',
+        null,
+        null,
+        null,
+        'incomplete',
+        [
+          {
+            reason: 'mark_unavailable',
+            withholding_tier: 'mark_incomplete',
+            withholding_scope: 'instrument',
+            trigger_instrument_public_id: 'instrument-mark',
+          },
+        ],
+        null,
+        null
+      ),
+      point('2026-01-01T00:02:00Z', 30, 15, 15, 'complete', [], 0, 0, 1250, 700, 550, 0.12),
+    ]
+
+    const { getByTestId } = render(
+      <PnlChart points={points} valuationCcy='USD' equitySampled equityVenueScope='spot_only' />
+    )
+
+    expect(setEquityData).toHaveBeenCalledWith([
+      { time: 1_767_225_600, value: 1000.5 },
+      { time: 1_767_225_660 },
+      { time: 1_767_225_720, value: 1250 },
+    ])
+    expect(mockApplyOptions).toHaveBeenCalledWith({
+      leftPriceScale: { visible: true, borderColor: '#e6e3dc' },
+    })
+
+    const legend = getByTestId('pnl-equity-legend')
+
+    expect(within(legend).getByText('Equity (spot venue)')).toBeInTheDocument()
+    expect(within(legend).getByText('Latest: 1,250 USD')).toBeInTheDocument()
+  })
+
+  it('uses a neutral equity label and makes no spot claim when the venue scope is not spot-only', () => {
+    const points = [
+      point('2026-01-01T00:00:00Z', 10, 5, 3, 'complete', [], 0, 0, 1000, 600, 400, 0.1),
+    ]
+
+    const { getByTestId, queryByText } = render(
+      <PnlChart points={points} valuationCcy='USD' equitySampled equityVenueScope={null} />
+    )
+
+    const legend = getByTestId('pnl-equity-legend')
+
+    expect(within(legend).getByText('Equity')).toBeInTheDocument()
+    expect(within(legend).getByText('Latest: 1,000 USD')).toBeInTheDocument()
+    expect(queryByText('Equity (spot venue)')).not.toBeInTheDocument()
+  })
+
+  it('labels the equity legend with an em dash when sampled points expose no equity', () => {
+    const points = [point('2026-01-01T00:00:00Z', 10, 5, 3)]
+
+    const { getByTestId } = render(<PnlChart points={points} valuationCcy='USD' equitySampled />)
+
+    expect(within(getByTestId('pnl-equity-legend')).getByText('Latest: — USD')).toBeInTheDocument()
   })
 
   it('gaps only withheld components and plots realized P&L at a MARK-incomplete point', () => {
@@ -608,6 +702,7 @@ describe('PnlChart', () => {
     const netSeriesRef = { current: null as unknown }
     const realizedSeriesRef = { current: null as unknown }
     const unrealizedSeriesRef = { current: null as unknown }
+    const equitySeriesRef = { current: null as unknown }
     const markerAnchorSeriesRef = { current: null as unknown }
     const markerPluginRef = { current: null as unknown }
     const markerByIdRef = { current: new Map() }
@@ -617,6 +712,7 @@ describe('PnlChart', () => {
       netSeriesRef,
       realizedSeriesRef,
       unrealizedSeriesRef,
+      equitySeriesRef,
       markerAnchorSeriesRef,
       markerPluginRef,
       markerByIdRef,

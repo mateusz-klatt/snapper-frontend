@@ -87,6 +87,34 @@
       "unrealized": "P&L não realizado",
       "valuationCurrency": "Moeda de avaliação: {{currency}}"
     },
+    "equity": {
+      "title": "Sobreposição do capital próprio",
+      "seriesLabel": "Capital próprio",
+      "seriesLabelSpotOnly": "Capital próprio (plataforma à vista)",
+      "latest": "Mais recente: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Perda desde o máximo",
+        "current": "Drawdown atual",
+        "max": "Drawdown máximo",
+        "definition": "Proporção face ao máximo acumulado do capital próprio.",
+        "flowsCaveat": "Não é um drawdown de negociação ajustado aos fluxos.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Como interpretar estes dados",
+        "spotOnly": "Apenas a plataforma à vista — os saldos noutras plataformas são excluídos.",
+        "flowsUnadjusted": "Os depósitos e levantamentos externos não são excluídos."
+      },
+      "cashPosition": {
+        "title": "Divisão entre numerário e posição",
+        "position": "Valor da posição",
+        "positionHint": "Valor de mercado das posições abertas.",
+        "cash": "Numerário",
+        "cashHint": "Saldo restante de numerário liquidado.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Mostrar marcadores de decisão",
       "hide": "Ocultar marcadores de decisão",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Contribuições mais recentes por instrumento",
       "instrument": "Instrumento",

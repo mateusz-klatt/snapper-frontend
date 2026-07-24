@@ -87,6 +87,34 @@
       "unrealized": "P&L chưa thực hiện",
       "valuationCurrency": "Đồng tiền định giá: {{currency}}"
     },
+    "equity": {
+      "title": "Lớp phủ vốn chủ sở hữu",
+      "seriesLabel": "Vốn chủ sở hữu",
+      "seriesLabelSpotOnly": "Vốn chủ sở hữu (sàn giao ngay)",
+      "latest": "Mới nhất: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Mức sụt giảm",
+        "current": "Mức sụt giảm hiện tại",
+        "max": "Mức sụt giảm tối đa",
+        "definition": "Tỷ lệ so với đỉnh vốn chủ sở hữu tính đến thời điểm đó.",
+        "flowsCaveat": "Không phải mức sụt giảm giao dịch đã điều chỉnh theo luồng tiền.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Cách đọc dữ liệu này",
+        "spotOnly": "Chỉ sàn giao ngay — không bao gồm số dư được giữ tại các sàn khác.",
+        "flowsUnadjusted": "Các khoản nạp và rút bên ngoài chưa được loại trừ."
+      },
+      "cashPosition": {
+        "title": "Phân bổ tiền mặt và vị thế",
+        "position": "Giá trị vị thế",
+        "positionHint": "Giá trị theo thị trường của các vị thế đang mở.",
+        "cash": "Tiền mặt",
+        "cashHint": "Số dư tiền mặt đã thanh toán còn lại.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Hiện dấu mốc quyết định",
       "hide": "Ẩn dấu mốc quyết định",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Đóng góp mới nhất theo từng công cụ",
       "instrument": "Công cụ",

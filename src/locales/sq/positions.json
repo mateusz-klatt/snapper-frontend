@@ -87,6 +87,34 @@
       "unrealized": "P&L i parealizuar",
       "valuationCurrency": "Monedha e vlerësimit: {{currency}}"
     },
+    "equity": {
+      "title": "Mbivendosja e kapitalit",
+      "seriesLabel": "Kapitali",
+      "seriesLabelSpotOnly": "Kapitali (bursa spot)",
+      "latest": "Më e fundit: {{value}} {{currency}}",
+      "noValue": "—",
+      "drawdown": {
+        "title": "Rënia",
+        "current": "Rënia aktuale",
+        "max": "Rënia maksimale",
+        "definition": "Pjesa ndaj kulmit të deritanishëm të kapitalit.",
+        "flowsCaveat": "Nuk është rënie tregtimi e përshtatur sipas flukseve.",
+        "noValue": "—"
+      },
+      "honesty": {
+        "title": "Si të interpretohet",
+        "spotOnly": "Vetëm bursa spot — përjashtohen gjendjet e mbajtura në bursa të tjera.",
+        "flowsUnadjusted": "Depozitat dhe tërheqjet e jashtme nuk janë hequr."
+      },
+      "cashPosition": {
+        "title": "Ndarja e parasë dhe pozicionit",
+        "position": "Vlera e pozicionit",
+        "positionHint": "Vlera e tregut e pozicioneve të hapura.",
+        "cash": "Para të gatshme",
+        "cashHint": "Gjendja e mbetur e parave të shlyera.",
+        "noValue": "—"
+      }
+    },
     "markers": {
       "show": "Shfaq shënuesit e vendimeve",
       "hide": "Fshih shënuesit e vendimeve",
@@ -134,7 +162,6 @@
         }
       }
     },
-
     "contributions": {
       "title": "Kontributet më të fundit sipas instrumentit",
       "instrument": "Instrument",

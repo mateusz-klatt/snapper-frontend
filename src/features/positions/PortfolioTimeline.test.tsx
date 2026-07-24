@@ -4,6 +4,7 @@ import { PortfolioTimeline } from './PortfolioTimeline'
 import { usePortfolioPnlTimeline } from '../../hooks/queries/portfolio'
 import { useWallets } from '../../hooks/queries/wallets'
 import type {
+  PnlEquityCoverageData,
   PnlInstrumentContributionData,
   PnlTimelineData,
   PnlTimelineMarkerData,
@@ -39,14 +40,49 @@ vi.mock('./PnlChart', () => ({
     markers,
     showMarkers,
     valuationCcy,
+    equitySampled,
+    equityVenueScope,
   }: {
     points: PnlTimelinePointData[]
     markers: PnlTimelineMarkerData[]
     showMarkers: boolean
     valuationCcy: string
+    equitySampled: boolean
+    equityVenueScope: PnlEquityCoverageData['venue_scope']
   }) => (
     <div data-testid='mock-pnl-chart'>
       {`${points.length}:${markers.length}:${String(showMarkers)}:${valuationCcy}`}
+      <span data-testid='mock-pnl-chart-equity'>
+        {`${String(equitySampled)}:${String(equityVenueScope)}`}
+      </span>
+    </div>
+  ),
+}))
+
+vi.mock('./EquityCoverageSummary', () => ({
+  EquityCoverageSummary: ({
+    coverage,
+    points,
+  }: {
+    coverage: PnlEquityCoverageData
+    points: PnlTimelinePointData[]
+  }) => (
+    <div data-testid='mock-equity-coverage'>{`${String(coverage.sampled)}:${points.length}`}</div>
+  ),
+}))
+
+vi.mock('./CashPositionSplit', () => ({
+  CashPositionSplit: ({
+    coverage,
+    points,
+    valuationCcy,
+  }: {
+    coverage: PnlEquityCoverageData
+    points: PnlTimelinePointData[]
+    valuationCcy: string
+  }) => (
+    <div data-testid='mock-cash-position-split'>
+      {`${String(coverage.sampled)}:${points.length}:${valuationCcy}`}
     </div>
   ),
 }))
@@ -137,11 +173,22 @@ const noFillSignal: PnlTimelineMarkerData = {
   status: 'no_fill',
 }
 
+const UNSAMPLED_COVERAGE: PnlEquityCoverageData = {
+  sampled: false,
+  venue_scope: null,
+  external_flows_adjusted: null,
+  complete_minutes: 0,
+  first_minute: null,
+  last_minute: null,
+  sample_calc_version: null,
+}
+
 const timeline = (
   points: PnlTimelinePointData[],
   markers: PnlTimelineMarkerData[] = [],
   markersTruncated = false,
-  valuationCcy = 'USD'
+  valuationCcy = 'USD',
+  equityCoverage: PnlEquityCoverageData = UNSAMPLED_COVERAGE
 ): PnlTimelineData => ({
   type: 'pnl_timeline',
   sequence_id: 1,
@@ -158,15 +205,7 @@ const timeline = (
   mark_source: 'test-marks',
   rate_sources: [],
   calc_version: 'test-version',
-  equity_coverage: {
-    sampled: false,
-    venue_scope: null,
-    external_flows_adjusted: null,
-    complete_minutes: 0,
-    first_minute: null,
-    last_minute: null,
-    sample_calc_version: null,
-  },
+  equity_coverage: equityCoverage,
   points,
   marker_limit: 500,
   markers_truncated: markersTruncated,
@@ -275,6 +314,45 @@ describe('PortfolioTimeline', () => {
     expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('2:0:true:PLN')
     expect(screen.getByTestId('mock-attribution-breakdown')).toHaveTextContent('manual:none:PLN')
     expect(screen.getByTestId('mock-contribution-table')).toHaveTextContent('instrument-latest:PLN')
+  })
+
+  it('wires sampled equity coverage into the chart, drawdown summary, and cash split', () => {
+    mockQuery(
+      timeline(
+        [
+          point('2026-07-20T11:59:00Z', 'complete'),
+          point('2026-07-20T12:00:00Z', 'complete', [], [contribution]),
+        ],
+        [],
+        false,
+        'USD',
+        {
+          sampled: true,
+          venue_scope: 'spot_only',
+          external_flows_adjusted: false,
+          complete_minutes: 2,
+          first_minute: '2026-07-20T11:59:00Z',
+          last_minute: '2026-07-20T12:00:00Z',
+          sample_calc_version: 'v1',
+        }
+      )
+    )
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('mock-pnl-chart-equity')).toHaveTextContent('true:spot_only')
+    expect(screen.getByTestId('mock-equity-coverage')).toHaveTextContent('true:2')
+    expect(screen.getByTestId('mock-cash-position-split')).toHaveTextContent('true:2:USD')
+  })
+
+  it('leaves the equity overlay unsampled by default', () => {
+    mockQuery(timeline([point('2026-07-20T12:00:00Z', 'complete')]))
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('mock-pnl-chart-equity')).toHaveTextContent('false:null')
+    expect(screen.getByTestId('mock-equity-coverage')).toHaveTextContent('false:1')
+    expect(screen.getByTestId('mock-cash-position-split')).toHaveTextContent('false:1:USD')
   })
 
   it('renders attribution from the latest point at the selected window endpoint', () => {
