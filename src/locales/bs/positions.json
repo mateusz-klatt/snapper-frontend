@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Operater koriguje istoriju izvršenja trgovine",
+      "summary": "Operater je poništio evidentirana izvršenja trgovine u ovom obimu. Svaka ovdje navedena ispravka isključena je iz svih brojčanih zbroja prikazanih na ovoj stranici.",
+      "correctionCount": "Primijenjene ispravke: {{count}}",
+      "showDetails": "Prikaži ispravke",
+      "hideDetails": "Sakrij ispravke",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Ispravljeno u {{time}}",
+      "targetExecutionId": "Poništeno izvršenje trgovine",
+      "correctionId": "Zapis o ispravci",
+      "reasons": {
+        "unwitnessed_phantom": "Ne postoji ispuna berzanske trgovine koja služi kao dokaz za ovu rezervaciju.",
+        "unwitnessed_legacy_lineage": "Naslijeđeni zapisi za koje nema popunjavanja trgovine na berzi ne služi kao dokaz."
+      }
+    },
     "timeTravelNotice": "Historijski prikaz: prikazuje se P&L prema podacima poznatim u {{asOf}}.",
     "chart": {
       "title": "P&L kroz vrijeme",

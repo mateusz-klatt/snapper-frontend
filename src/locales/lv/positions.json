@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Operatora labota darījumu izpildes vēsture",
+      "summary": "Operators anulēja reģistrētos tirdzniecības darījumus šajā jomā. Katrs šeit norādītais labojums tiek izslēgts no visām šajā lapā redzamajām skaitliskajām summām.",
+      "correctionCount": "Piemēroti labojumi: {{count}}",
+      "showDetails": "Rādīt labojumus",
+      "hideDetails": "Slēpt labojumus",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Labots plkst. {{time}}",
+      "targetExecutionId": "Anulēta darījuma izpilde",
+      "correctionId": "Korekcijas ieraksts",
+      "reasons": {
+        "unwitnessed_phantom": "Nav biržas tirdzniecības aizpildījuma, kas kalpo kā pierādījums šai rezervācijai.",
+        "unwitnessed_legacy_lineage": "Mantojums iegūts ieraksts, kuram par pierādījumu netiek izmantots biržas tirdzniecības aizpildījums."
+      }
+    },
     "timeTravelNotice": "Vēsturiskais skats: redzams P&L pēc datiem, kas bija zināmi {{asOf}} brīdī.",
     "chart": {
       "title": "P&L laika gaitā",

@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Riwayat eksekusi perdagangan dikoreksi oleh operator",
+      "summary": "Operator membatalkan eksekusi perdagangan yang tercatat dalam lingkup ini. Setiap koreksi yang tercantum di sini dikecualikan dari semua total numerik yang ditampilkan di halaman ini.",
+      "correctionCount": "Koreksi diterapkan: {{count}}",
+      "showDetails": "Tampilkan koreksi",
+      "hideDetails": "Sembunyikan koreksi",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Dikoreksi pada {{time}}",
+      "targetExecutionId": "Eksekusi perdagangan dibatalkan",
+      "correctionId": "Catatan koreksi",
+      "reasons": {
+        "unwitnessed_phantom": "Tidak ada isi perdagangan pertukaran yang menjadi bukti pemesanan ini.",
+        "unwitnessed_legacy_lineage": "Catatan turunan lama yang tidak ada bukti perdagangan bursa yang berfungsi sebagai bukti."
+      }
+    },
     "timeTravelNotice": "Tampilan historis: menampilkan P&L sebagaimana diketahui pada {{asOf}}.",
     "chart": {
       "title": "P&L dari waktu ke waktu",

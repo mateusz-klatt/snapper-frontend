@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Spóźniona realizacja sprzed aktywacji"
       }
     },
+    "executionHistory": {
+      "title": "Historia wykonań skorygowana przez operatora",
+      "summary": "Operator unieważnił zapisane wykonania w tym zakresie. Każda wymieniona tu korekta jest wyłączona z wartości na tej stronie.",
+      "correctionCount": "Zastosowane korekty: {{count}}",
+      "showDetails": "Pokaż korekty",
+      "hideDetails": "Ukryj korekty",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Skorygowano {{time}}",
+      "targetExecutionId": "Unieważnione wykonanie",
+      "correctionId": "Zapis korekty",
+      "reasons": {
+        "unwitnessed_phantom": "Żadne wypełnienie z giełdy nie potwierdziło tego zapisu",
+        "unwitnessed_legacy_lineage": "Zapis ze starego rodowodu bez potwierdzającego wypełnienia"
+      }
+    },
     "timeTravelNotice": "Widok historyczny: P&L według wiedzy dostępnej w chwili {{asOf}}.",
     "chart": {
       "title": "P&L w czasie",

@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Історія виконання угод виправлена ​​оператором",
+      "summary": "Оператор скасував зареєстроване виконання торгів у цьому діапазоні. Кожне виправлення, наведене тут, виключено з усіх числових підсумків, які відображаються на цій сторінці.",
+      "correctionCount": "Застосовано виправлень: {{count}}",
+      "showDetails": "Показати виправлення",
+      "hideDetails": "Приховати виправлення",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Виправлено о {{time}}",
+      "targetExecutionId": "Виконання угоди скасовано",
+      "correctionId": "Запис виправлення",
+      "reasons": {
+        "unwitnessed_phantom": "Немає заповнення біржової торгівлі, яка б служила доказом цього бронювання.",
+        "unwitnessed_legacy_lineage": "Успадкований запис, доказом якого не є заповнення біржової торгівлі."
+      }
+    },
     "timeTravelNotice": "Історичний режим: P&L показано за даними станом на {{asOf}}.",
     "chart": {
       "title": "Динаміка P&L",

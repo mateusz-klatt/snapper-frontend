@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "ประวัติการดำเนินการซื้อขายได้รับการแก้ไขโดยผู้ดำเนินการ",
+      "summary": "ผู้ดำเนินการยกเลิกการดำเนินการซื้อขายที่บันทึกไว้ในขอบเขตนี้ การแก้ไขทุกรายการที่แสดงที่นี่จะไม่รวมอยู่ในผลรวมตัวเลขทั้งหมดที่แสดงในหน้านี้",
+      "correctionCount": "ใช้การแก้ไข: {{count}}",
+      "showDetails": "แสดงการแก้ไข",
+      "hideDetails": "ซ่อนการแก้ไข",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "แก้ไขเมื่อ {{time}}",
+      "targetExecutionId": "การดำเนินการซื้อขายเป็นโมฆะ",
+      "correctionId": "บันทึกการแก้ไข",
+      "reasons": {
+        "unwitnessed_phantom": "ไม่มีการกรอกข้อมูลการค้าแลกเปลี่ยนที่ทำหน้าที่เป็นหลักฐานสำหรับการจองนี้",
+        "unwitnessed_legacy_lineage": "บันทึกที่ได้รับมาแบบดั้งเดิมซึ่งไม่มีการกรอกข้อมูลการค้าแลกเปลี่ยนทำหน้าที่เป็นหลักฐาน"
+      }
+    },
     "timeTravelNotice": "มุมมองย้อนหลัง: แสดง P&L ตามข้อมูลที่ทราบ ณ {{asOf}}",
     "chart": {
       "title": "P&L ตามช่วงเวลา",

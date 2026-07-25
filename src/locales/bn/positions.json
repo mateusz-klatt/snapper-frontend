@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "বাণিজ্য সম্পাদনের ইতিহাস অপারেটর দ্বারা সংশোধন করা হয়েছে",
+      "summary": "একজন অপারেটর এই সুযোগে রেকর্ড করা ট্রেড এক্সিকিউশন বাতিল করেছে। এখানে তালিকাভুক্ত প্রতিটি সংশোধন এই পৃষ্ঠায় প্রদর্শিত সমস্ত সংখ্যাগত মোট থেকে বাদ দেওয়া হয়েছে।",
+      "correctionCount": "সংশোধন প্রয়োগ করা হয়েছে: {{count}}",
+      "showDetails": "সংশোধন দেখান",
+      "hideDetails": "সংশোধন লুকান",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "{{time}} এ সংশোধন করা হয়েছে",
+      "targetExecutionId": "বাতিল বাণিজ্য নির্বাহ",
+      "correctionId": "সংশোধন রেকর্ড",
+      "reasons": {
+        "unwitnessed_phantom": "এই বুকিং এর প্রমাণ হিসাবে কাজ করে এমন কোন বিনিময় ট্রেড ফিল নেই।",
+        "unwitnessed_legacy_lineage": "উত্তরাধিকার থেকে প্রাপ্ত রেকর্ড যার জন্য কোন বিনিময় বাণিজ্য পূরণ প্রমাণ হিসাবে কাজ করে না।"
+      }
+    },
     "timeTravelNotice": "ঐতিহাসিক ভিউ: {{asOf}}-এ জানা তথ্য অনুযায়ী P&L দেখানো হচ্ছে।",
     "chart": {
       "title": "সময়ভিত্তিক P&L",

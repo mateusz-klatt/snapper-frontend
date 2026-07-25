@@ -49,6 +49,10 @@ const pnlSeriesResponse = {
       last_minute: null,
       sample_calc_version: null,
     },
+    execution_history: {
+      status: 'as_recorded',
+      corrections: [],
+    },
     points: [
       {
         point_time: '2026-07-13T11:55:00Z',

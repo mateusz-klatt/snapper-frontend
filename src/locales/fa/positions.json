@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "تاریخچه اجرای معامله توسط اپراتور تصحیح شد",
+      "summary": "یک اپراتور اعدام های تجاری ثبت شده در این محدوده را باطل کرد. هر تصحیح فهرست شده در اینجا از مجموع عددی نمایش داده شده در این صفحه حذف می شود.",
+      "correctionCount": "اصلاحات اعمال شده: {{count}}",
+      "showDetails": "نمایش اصلاحات",
+      "hideDetails": "اصلاحات را پنهان کنید",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "در {{time}} تصحیح شد",
+      "targetExecutionId": "اجرای تجارت باطل شد",
+      "correctionId": "ثبت تصحیح",
+      "reasons": {
+        "unwitnessed_phantom": "هیچ مبادله ای مبادله ای وجود ندارد که به عنوان مدرکی برای این رزرو عمل کند.",
+        "unwitnessed_legacy_lineage": "سوابق برگرفته از میراث که هیچ گونه مبادله ای مبادله ای برای آن به عنوان مدرک استفاده نمی شود."
+      }
+    },
     "timeTravelNotice": "نمای تاریخی: P&L مطابق اطلاعات موجود در {{asOf}} نمایش داده می‌شود.",
     "chart": {
       "title": "P&L در گذر زمان",

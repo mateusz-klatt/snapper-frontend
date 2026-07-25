@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Histórico de execução de negociações corrigido pela operadora",
+      "summary": "Uma operadora anulou as execuções de negócios registadas neste âmbito. Cada correção listada aqui é excluída de todos os totais numéricos exibidos nesta página.",
+      "correctionCount": "Correções aplicadas: {{count}}",
+      "showDetails": "Mostrar correções",
+      "hideDetails": "Ocultar correções",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Corrigido em {{time}}",
+      "targetExecutionId": "Execução comercial anulada",
+      "correctionId": "Registro de correção",
+      "reasons": {
+        "unwitnessed_phantom": "Não há preenchimento de negociação cambial que sirva de prova para esta reserva.",
+        "unwitnessed_legacy_lineage": "Registro derivado de legado para o qual nenhum preenchimento de negociação em bolsa serve como evidência."
+      }
+    },
     "timeTravelNotice": "Visualização histórica: P&L com base nos dados conhecidos em {{asOf}}.",
     "chart": {
       "title": "P&L ao longo do tempo",

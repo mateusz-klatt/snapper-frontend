@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Operator-corrected execution history",
+      "summary": "An operator repudiated recorded executions in this scope. Every correction listed here is excluded from the figures on this page.",
+      "correctionCount": "Corrections applied: {{count}}",
+      "showDetails": "Show corrections",
+      "hideDetails": "Hide corrections",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Corrected at {{time}}",
+      "targetExecutionId": "Repudiated execution",
+      "correctionId": "Correction record",
+      "reasons": {
+        "unwitnessed_phantom": "No exchange fill witnessed this booking",
+        "unwitnessed_legacy_lineage": "Legacy lineage with no witnessing fill"
+      }
+    },
     "timeTravelNotice": "Historical view: showing P&L as known at {{asOf}}.",
     "chart": {
       "title": "P&L over time",

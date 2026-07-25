@@ -1174,6 +1174,23 @@ export const PnlEquityCoverageDataSchema = _PnlEquityCoverageDataRawSchema as un
   Components['schemas']['PnlEquityCoverageData']
 >
 
+const _PnlExecutionCorrectionReasonRawSchema = z.enum([
+  'unwitnessed_phantom',
+  'unwitnessed_legacy_lineage',
+])
+
+export const PnlExecutionCorrectionReasonSchema =
+  _PnlExecutionCorrectionReasonRawSchema as unknown as z.ZodType<
+    Components['schemas']['PnlExecutionCorrectionReason']
+  >
+
+const _PnlExecutionHistoryStatusRawSchema = z.enum(['as_recorded', 'operator_corrected'])
+
+export const PnlExecutionHistoryStatusSchema =
+  _PnlExecutionHistoryStatusRawSchema as unknown as z.ZodType<
+    Components['schemas']['PnlExecutionHistoryStatus']
+  >
+
 const _PnlFillMarkerDataRawSchema = z
   .object({
     kind: z.literal('fill'),
@@ -3159,6 +3176,22 @@ export const PnlAttributionContributionDataSchema =
     Components['schemas']['PnlAttributionContributionData']
   >
 
+const _PnlExecutionCorrectionDataRawSchema = z
+  .object({
+    correction_public_id: z.string(),
+    target_execution_public_id: z.string(),
+    exchange: z.string(),
+    scope_sequence: z.number().int(),
+    reason: PnlExecutionCorrectionReasonSchema,
+    correction_time: z.iso.datetime(),
+  })
+  .strict()
+
+export const PnlExecutionCorrectionDataSchema =
+  _PnlExecutionCorrectionDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['PnlExecutionCorrectionData']
+  >
+
 const _PnlAiDecisionMarkerDataRawSchema = z
   .object({
     kind: z.literal('ai_decision'),
@@ -4621,6 +4654,18 @@ export const ResearcherCreateRequestSchema =
     Components['schemas']['ResearcherCreateRequest']
   >
 
+const _PnlExecutionHistoryDataRawSchema = z
+  .object({
+    status: PnlExecutionHistoryStatusSchema,
+    corrections: z.array(PnlExecutionCorrectionDataSchema),
+  })
+  .strict()
+
+export const PnlExecutionHistoryDataSchema =
+  _PnlExecutionHistoryDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['PnlExecutionHistoryData']
+  >
+
 const _PnlTimelineMarkerDataRawSchema = z.union([
   PnlFillMarkerDataSchema,
   PnlSignalMarkerDataSchema,
@@ -5533,6 +5578,7 @@ const _PnlSeriesDataRawSchema = z
     rate_sources: z.array(PnlFxRateSourceDataSchema),
     calc_version: z.string(),
     equity_coverage: PnlEquityCoverageDataSchema,
+    execution_history: PnlExecutionHistoryDataSchema,
     points: z.array(PnlTimelinePointDataSchema),
   })
   .strict()
@@ -5560,6 +5606,7 @@ const _PnlTimelineDataRawSchema = z
     rate_sources: z.array(PnlFxRateSourceDataSchema),
     calc_version: z.string(),
     equity_coverage: PnlEquityCoverageDataSchema,
+    execution_history: PnlExecutionHistoryDataSchema,
     points: z.array(PnlTimelinePointDataSchema),
     marker_limit: z.number().int(),
     markers_truncated: z.boolean(),
@@ -6290,6 +6337,8 @@ export type PairedLegExposure = Components['schemas']['PairedLegExposure']
 export type Permission = Components['schemas']['Permission']
 export type PnlAttributionOrigin = Components['schemas']['PnlAttributionOrigin']
 export type PnlEquityCoverageData = Components['schemas']['PnlEquityCoverageData']
+export type PnlExecutionCorrectionReason = Components['schemas']['PnlExecutionCorrectionReason']
+export type PnlExecutionHistoryStatus = Components['schemas']['PnlExecutionHistoryStatus']
 export type PnlFillMarkerData = Components['schemas']['PnlFillMarkerData']
 export type PnlFxRateSourceData = Components['schemas']['PnlFxRateSourceData']
 export type PnlIncompletenessReason = Components['schemas']['PnlIncompletenessReason']
@@ -6425,6 +6474,7 @@ export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
 export type LoginBody = Components['schemas']['LoginBody']
 export type ResearcherCreateBody = Components['schemas']['ResearcherCreateBody']
 export type PnlAttributionContributionData = Components['schemas']['PnlAttributionContributionData']
+export type PnlExecutionCorrectionData = Components['schemas']['PnlExecutionCorrectionData']
 export type PnlAiDecisionMarkerData = Components['schemas']['PnlAiDecisionMarkerData']
 export type PnlIncompletenessReasonData = Components['schemas']['PnlIncompletenessReasonData']
 export type CreateCredentialBody = Components['schemas']['CreateCredentialBody']
@@ -6515,6 +6565,7 @@ export type PairedExecutionIncident = Components['schemas']['PairedExecutionInci
 export type PairedGroupTerminalizeResponse = Components['schemas']['PairedGroupTerminalizeResponse']
 export type LoginRequest = Components['schemas']['LoginRequest']
 export type ResearcherCreateRequest = Components['schemas']['ResearcherCreateRequest']
+export type PnlExecutionHistoryData = Components['schemas']['PnlExecutionHistoryData']
 export type PnlTimelineMarkerData = Components['schemas']['PnlTimelineMarkerData']
 export type PnlTimelinePointData = Components['schemas']['PnlTimelinePointData']
 export type CreateCredentialCommand = Components['schemas']['CreateCredentialCommand']

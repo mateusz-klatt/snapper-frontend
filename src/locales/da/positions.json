@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Handelsudførelseshistorik rettet af operatøren",
+      "summary": "En operatør annullerede de registrerede handelsudførelser i dette omfang. Hver rettelse, der er angivet her, er udelukket fra alle numeriske totaler, der vises på denne side.",
+      "correctionCount": "Påførte rettelser: {{count}}",
+      "showDetails": "Vis rettelser",
+      "hideDetails": "Skjul rettelser",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Rettet kl. {{time}}",
+      "targetExecutionId": "Annulleret handelsudførelse",
+      "correctionId": "Rettelse rekord",
+      "reasons": {
+        "unwitnessed_phantom": "Der er ingen byttehandel, der tjener som bevis for denne reservation.",
+        "unwitnessed_legacy_lineage": "Legacy-afledt post, for hvilken ingen børshandel fylder tjener som bevis."
+      }
+    },
     "timeTravelNotice": "Historisk visning: viser P&L som kendt pr. {{asOf}}.",
     "chart": {
       "title": "P&L over tid",

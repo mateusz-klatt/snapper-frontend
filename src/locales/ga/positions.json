@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Stair feidhmiúcháin trádála ceartaithe ag an oibreoir",
+      "summary": "Chuir oibreoir na feidhmíochtaí trádála taifeadta sa raon feidhme seo ar neamhní. Tá gach ceartúchán atá liostaithe anseo eisiata ó na hiomláin uimhriúla go léir a thaispeántar ar an leathanach seo.",
+      "correctionCount": "Ceartúcháin curtha i bhfeidhm: {{count}}",
+      "showDetails": "Taispeáin ceartúcháin",
+      "hideDetails": "Folaigh ceartúcháin",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Ceartaithe ag {{time}}",
+      "targetExecutionId": "Cur i gcrích trádála ar neamhní",
+      "correctionId": "Taifead ceartúcháin",
+      "reasons": {
+        "unwitnessed_phantom": "Níl aon líonadh trádála malairte ann a fheidhmíonn mar fhianaise don áirithint seo.",
+        "unwitnessed_legacy_lineage": "Taifead oidhreacht-díorthaithe nach bhfuil aon líonadh trádála malairte mar fhianaise ina leith."
+      }
+    },
     "timeTravelNotice": "Amharc stairiúil: P&L á thaispeáint de réir an eolais a bhí ar fáil ag {{asOf}}.",
     "chart": {
       "title": "P&L le himeacht ama",

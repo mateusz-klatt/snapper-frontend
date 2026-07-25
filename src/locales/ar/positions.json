@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "تم تصحيح تاريخ تنفيذ التجارة من قبل المشغل",
+      "summary": "ألغى أحد المشغلين عمليات تنفيذ التجارة المسجلة في هذا النطاق. يتم استبعاد كل تصحيح مدرج هنا من جميع المجاميع الرقمية المعروضة في هذه الصفحة.",
+      "correctionCount": "التصحيحات المطبقة: {{count}}",
+      "showDetails": "إظهار التصحيحات",
+      "hideDetails": "إخفاء التصحيحات",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "تم التصحيح في {{time}}",
+      "targetExecutionId": "تم إلغاء تنفيذ التجارة",
+      "correctionId": "سجل التصحيح",
+      "reasons": {
+        "unwitnessed_phantom": "لا يوجد تعبئة تجارية للتبادل تكون بمثابة دليل على هذا الحجز.",
+        "unwitnessed_legacy_lineage": "السجل المشتق من التراث الذي لا يوجد فيه أي تعبئة تجارية في البورصة بمثابة دليل."
+      }
+    },
     "timeTravelNotice": "عرض تاريخي: يُعرض P&L وفقًا لما كان معلومًا في {{asOf}}.",
     "chart": {
       "title": "P&L عبر الزمن",

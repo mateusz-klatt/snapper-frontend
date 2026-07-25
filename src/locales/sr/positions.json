@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Оператер је исправио историју извршења трговине",
+      "summary": "Оператер је поништио евидентирана извршења трговине у овом обиму. Свака исправка наведена овде је искључена из свих бројчаних укупних вредности приказаних на овој страници.",
+      "correctionCount": "Примењене исправке: {{count}}",
+      "showDetails": "Прикажи исправке",
+      "hideDetails": "Сакриј исправке",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Исправљено у {{time}}",
+      "targetExecutionId": "Поништено извршење трговине",
+      "correctionId": "Запис о исправци",
+      "reasons": {
+        "unwitnessed_phantom": "Не постоји испуна размене која служи као доказ за ову резервацију.",
+        "unwitnessed_legacy_lineage": "Заслеђени записи за које нема попуњавања размене не служи као доказ."
+      }
+    },
     "timeTravelNotice": "Istorijski prikaz: prikazuje se P&L poznat u trenutku {{asOf}}.",
     "chart": {
       "title": "P&L kroz vreme",

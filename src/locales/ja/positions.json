@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "オペレーターにより修正された取引約定履歴",
+      "summary": "オペレーターは、このスコープ内で記録された取引約定を取り消しました。ここにリストされているすべての修正は、このページに表示されるすべての数値合計から除外されます。",
+      "correctionCount": "適用された修正: {{count}}",
+      "showDetails": "修正を表示",
+      "hideDetails": "修正を隠す",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "{{time}} に修正されました",
+      "targetExecutionId": "取り消された取引執行",
+      "correctionId": "訂正記録",
+      "reasons": {
+        "unwitnessed_phantom": "この予約の証拠となる為替取引約定はありません。",
+        "unwitnessed_legacy_lineage": "取引所取引約定が証拠として機能しない、レガシー由来の記録。"
+      }
+    },
     "timeTravelNotice": "履歴表示：{{asOf}}時点で把握されていたP&Lを表示しています。",
     "chart": {
       "title": "P&Lの推移",

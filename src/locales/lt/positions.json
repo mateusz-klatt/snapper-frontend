@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Operatoriaus pataisyta sandorio vykdymo istorija",
+      "summary": "Operatorius anuliavo užregistruotus sandorių vykdymus šioje srityje. Kiekvienas čia nurodytas pataisymas neįtraukiamas į visas šiame puslapyje rodomas sumas.",
+      "correctionCount": "Pritaikyti pataisymai: {{count}}",
+      "showDetails": "Rodyti pataisymus",
+      "hideDetails": "Slėpti pataisymus",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Ištaisyta {{time}}",
+      "targetExecutionId": "Anuliuotas sandorio vykdymas",
+      "correctionId": "Pataisos įrašas",
+      "reasons": {
+        "unwitnessed_phantom": "Nėra biržos prekybos užpildymo, kuris būtų šio užsakymo įrodymas.",
+        "unwitnessed_legacy_lineage": "Pasenęs įrašas, kurio įrodymas nėra biržos prekybos užpildymas."
+      }
+    },
     "timeTravelNotice": "Istorinis rodinys: rodomas P&L pagal {{asOf}} žinotus duomenis.",
     "chart": {
       "title": "P&L dinamika",

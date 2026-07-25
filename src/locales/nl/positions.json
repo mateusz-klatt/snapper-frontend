@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Geschiedenis van de handelsuitvoering gecorrigeerd door de operator",
+      "summary": "Een operator heeft de geregistreerde handelsuitvoeringen in dit kader geannuleerd. Elke hier vermelde correctie is uitgesloten van alle numerieke totalen die op deze pagina worden weergegeven.",
+      "correctionCount": "Correcties toegepast: {{count}}",
+      "showDetails": "Correcties weergeven",
+      "hideDetails": "Correcties verbergen",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Gecorrigeerd om {{time}}",
+      "targetExecutionId": "Nietig verklaarde handelsuitvoering",
+      "correctionId": "Correctierecord",
+      "reasons": {
+        "unwitnessed_phantom": "Er is geen ruiltransactieformulier dat als bewijs voor deze boeking dient.",
+        "unwitnessed_legacy_lineage": "Uit het verleden afkomstige record waarvoor geen enkele ruiltransactie als bewijs dient."
+      }
+    },
     "timeTravelNotice": "Historische weergave: toont P&L zoals bekend op {{asOf}}.",
     "chart": {
       "title": "P&L in de tijd",

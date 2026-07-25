@@ -11,6 +11,7 @@ import { AttributionBreakdown } from './AttributionBreakdown'
 import { CashPositionSplit } from './CashPositionSplit'
 import { ContributionTable } from './ContributionTable'
 import { EquityCoverageSummary } from './EquityCoverageSummary'
+import { ExecutionHistoryBanner } from './ExecutionHistoryBanner'
 import { IncompletenessSummary } from './IncompletenessSummary'
 import { PnlChart } from './PnlChart'
 import { PNL_MARKER_COLORS } from './pnlMarkerStyles'
@@ -85,6 +86,7 @@ export const PortfolioTimeline: React.FC = () => {
   )
   const points = data?.points ?? []
   const markers = data?.markers ?? []
+  const executionHistory = data?.execution_history
   const isWalletMetadataLoading =
     !walletModeReady && walletQuery.data === undefined && !walletQuery.isError
   const isWalletMetadataError = !walletModeReady && !isWalletMetadataLoading
@@ -318,6 +320,7 @@ export const PortfolioTimeline: React.FC = () => {
           <span>{t('timeline.timeTravelNotice', { asOf })}</span>
         </output>
       )}
+      {executionHistory !== undefined && <ExecutionHistoryBanner history={executionHistory} />}
       {markerLegend}
       {data?.markers_truncated === true && (
         <div
