@@ -19,7 +19,7 @@ const auditAuth = () => ({
 const pendingAuth = () => ({
   user: { role: 'ai_delegate', delegate_public_id: 'delegate-1' },
   hasPermission: (permission: string) =>
-    permission === 'read:signals' || permission === 'create:orders',
+    permission === 'read:signals' || permission === 'submit:ai_review_decision',
 })
 
 interface MockSubmitState {
@@ -238,7 +238,7 @@ describe('AiReviewInbox', () => {
     expect(screen.queryByText('No pending reviews')).toBeNull()
   })
 
-  it('shows pending reviews without decision controls for READ_SIGNALS without CREATE_ORDERS', () => {
+  it('shows pending reviews without decision controls for READ_SIGNALS without the decision permission', () => {
     mockUseAuth.mockReturnValue({
       user: { role: 'ai_delegate', delegate_public_id: 'delegate-without-orders' },
       hasPermission: (permission: string) => permission === 'read:signals',
@@ -488,8 +488,8 @@ describe('AiReviewInbox', () => {
     })
   })
 
-  it('rechecks CREATE_ORDERS before an already-rendered decision control submits', () => {
-    const granted = new Set(['read:signals', 'create:orders'])
+  it('rechecks submit:ai_review_decision before an already-rendered decision control submits', () => {
+    const granted = new Set(['read:signals', 'submit:ai_review_decision'])
 
     mockUseAuth.mockReturnValue({
       user: { role: 'ai_delegate', delegate_public_id: 'delegate-1' },
@@ -515,7 +515,7 @@ describe('AiReviewInbox', () => {
     })
     renderWithProviders(<AiReviewInbox />)
 
-    granted.delete('create:orders')
+    granted.delete('submit:ai_review_decision')
     fireEvent.click(screen.getByTestId('approve-rev-revoked'))
 
     expect(mockSubmitMutate).not.toHaveBeenCalled()
