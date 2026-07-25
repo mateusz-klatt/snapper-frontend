@@ -32,13 +32,15 @@ const ACTIVITY_DISPLAY_LIMIT = 50
  *
  * Principals without both the delegate lifecycle identity and the
  * effective signal-read capability use the read-only audit surface instead.
- * Decision controls are independently gated by the order-create capability.
+ * Decision controls are independently gated by the dedicated review-decision
+ * capability, mirroring the backend gate on
+ * `POST /api/ai-reviews/{id}/decision`.
  */
 export function AiReviewInbox(): React.ReactElement {
   const { t } = useTranslation('aiReviews')
   const { user, hasPermission } = useAuth()
   const canReadPending = user?.delegate_public_id != null && hasPermission(Permission.READ_SIGNALS)
-  const canSubmitDecision = hasPermission(Permission.CREATE_ORDERS)
+  const canSubmitDecision = hasPermission(Permission.SUBMIT_AI_REVIEW_DECISION)
   const pendingQuery = usePendingAiReviews()
   const activity = useAiReviewActivity()
   const recent = useMemo(() => [...activity].slice(-ACTIVITY_DISPLAY_LIMIT).reverse(), [activity])
@@ -187,7 +189,7 @@ function PendingReviewRow({
   const isSubmitting = submit.isPending
 
   const submitDecision = (decision: 'approve' | 'reject'): void => {
-    if (!hasPermission(Permission.CREATE_ORDERS)) return
+    if (!hasPermission(Permission.SUBMIT_AI_REVIEW_DECISION)) return
 
     submit.mutate({
       reviewPublicId: item.review_public_id,
