@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Historie provádění obchodů opravena operátorem",
+      "summary": "Provozovatel v tomto rozsahu anuloval evidované realizace obchodů. Každá zde uvedená oprava je vyloučena ze všech číselných součtů zobrazených na této stránce.",
+      "correctionCount": "Použité opravy: {{count}}",
+      "showDetails": "Zobrazit opravy",
+      "hideDetails": "Skrýt opravy",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Opraveno v {{time}}",
+      "targetExecutionId": "Anulovaná exekuce obchodu",
+      "correctionId": "Opravný záznam",
+      "reasons": {
+        "unwitnessed_phantom": "Jako důkaz pro tuto rezervaci neexistuje žádná burzovní výplň.",
+        "unwitnessed_legacy_lineage": "Záznam odvozený ze staršího data, pro který jako důkaz neslouží žádná výměna."
+      }
+    },
     "timeTravelNotice": "Historické zobrazení: P&L podle stavu známého k {{asOf}}.",
     "chart": {
       "title": "Vývoj P&L v čase",

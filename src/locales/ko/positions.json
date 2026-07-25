@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "운영자가 수정한 거래실행 내역",
+      "summary": "운영자는 이 범위에서 기록된 거래 실행을 취소했습니다. 여기에 나열된 모든 수정 사항은 이 페이지에 표시된 모든 수치 합계에서 제외됩니다.",
+      "correctionCount": "수정사항 적용됨: {{count}}",
+      "showDetails": "수정사항 표시",
+      "hideDetails": "수정사항 숨기기",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "{{time}}에 수정됨",
+      "targetExecutionId": "무효화된 거래 실행",
+      "correctionId": "정정기록",
+      "reasons": {
+        "unwitnessed_phantom": "이 예약에 대한 증거로 사용되는 거래소 거래 채우기가 없습니다.",
+        "unwitnessed_legacy_lineage": "거래소 거래 기록이 증거로 제공되지 않는 레거시 파생 기록입니다."
+      }
+    },
     "timeTravelNotice": "과거 시점 보기: {{asOf}} 당시 확인된 P&L을 표시합니다.",
     "chart": {
       "title": "P&L 추이",

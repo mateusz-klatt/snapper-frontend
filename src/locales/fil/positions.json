@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Ang kasaysayan ng pagpapatupad ng kalakalan ay naitama ng operator",
+      "summary": "Pinawalang-bisa ng isang operator ang naitalang mga pagpapatupad ng kalakalan sa saklaw na ito. Ang bawat pagwawasto na nakalista dito ay hindi kasama sa lahat ng mga numerical na kabuuan na ipinapakita sa pahinang ito.",
+      "correctionCount": "Inilapat ang mga pagwawasto: {{count}}",
+      "showDetails": "Ipakita ang mga pagwawasto",
+      "hideDetails": "Itago ang mga pagwawasto",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Itinama sa {{time}}",
+      "targetExecutionId": "Pinawalang-bisa ang pagpapatupad ng kalakalan",
+      "correctionId": "Talaan ng pagwawasto",
+      "reasons": {
+        "unwitnessed_phantom": "Walang exchange trade fill na nagsisilbing ebidensya para sa booking na ito.",
+        "unwitnessed_legacy_lineage": "Legacy-derived record kung saan walang exchange trade fill ang nagsisilbing ebidensya."
+      }
+    },
     "timeTravelNotice": "Historikal na view: ipinapakita ang P&L ayon sa nalalaman noong {{asOf}}.",
     "chart": {
       "title": "P&L sa paglipas ng panahon",

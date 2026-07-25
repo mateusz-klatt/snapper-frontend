@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Historia e ekzekutimit të tregtisë e korrigjuar nga operatori",
+      "summary": "Një operator anuloi ekzekutimet e regjistruara tregtare në këtë fushë. Çdo korrigjim i listuar këtu përjashtohet nga të gjitha totalet numerike të shfaqura në këtë faqe.",
+      "correctionCount": "Korrigjimet e zbatuara: {{count}}",
+      "showDetails": "Shfaq korrigjimet",
+      "hideDetails": "Fshih korrigjimet",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Korrigjuar në {{time}}",
+      "targetExecutionId": "Anulohet ekzekutimi i tregtisë",
+      "correctionId": "Regjistrimi i korrigjimit",
+      "reasons": {
+        "unwitnessed_phantom": "Nuk ka asnjë mbushje tregtare në shkëmbim që shërben si dëshmi për këtë rezervim.",
+        "unwitnessed_legacy_lineage": "Të dhënat e përftuara nga trashëgimia për të cilat asnjë këmbim tregtar nuk shërben si dëshmi."
+      }
+    },
     "timeTravelNotice": "Pamje historike: shfaqet P&L siç njihej në {{asOf}}.",
     "chart": {
       "title": "P&L me kalimin e kohës",

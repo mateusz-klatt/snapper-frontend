@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Sejarah pelaksanaan perdagangan diperbetulkan oleh pengendali",
+      "summary": "Pengendali membatalkan pelaksanaan perdagangan yang direkodkan dalam skop ini. Setiap pembetulan yang disenaraikan di sini dikecualikan daripada semua jumlah berangka yang dipaparkan pada halaman ini.",
+      "correctionCount": "Pembetulan digunakan: {{count}}",
+      "showDetails": "Tunjukkan pembetulan",
+      "hideDetails": "Sembunyikan pembetulan",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Dibetulkan pada {{time}}",
+      "targetExecutionId": "Pelaksanaan perdagangan dibatalkan",
+      "correctionId": "Rekod pembetulan",
+      "reasons": {
+        "unwitnessed_phantom": "Tiada isian perdagangan pertukaran yang berfungsi sebagai bukti untuk tempahan ini.",
+        "unwitnessed_legacy_lineage": "Rekod terbitan warisan yang tiada isian perdagangan pertukaran berfungsi sebagai bukti."
+      }
+    },
     "timeTravelNotice": "Paparan sejarah: menunjukkan P&L seperti yang diketahui pada {{asOf}}.",
     "chart": {
       "title": "P&L mengikut masa",

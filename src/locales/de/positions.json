@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Vom Operator korrigierte Ausführungshistorie",
+      "summary": "Ein Operator hat die in diesem Bereich erfassten Ausführungen annulliert. Jede hier aufgeführte Korrektur ist von den Zahlen auf dieser Seite ausgeschlossen.",
+      "correctionCount": "Angewandte Korrekturen: {{count}}",
+      "showDetails": "Korrekturen anzeigen",
+      "hideDetails": "Korrekturen ausblenden",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Korrigiert um {{time}}",
+      "targetExecutionId": "Handelsausführung annulliert",
+      "correctionId": "Korrekturprotokoll",
+      "reasons": {
+        "unwitnessed_phantom": "Es gibt keine Börsenausfüllung, die als Beleg für diese Buchung dient.",
+        "unwitnessed_legacy_lineage": "Aus dem Altbestand abgeleiteter Datensatz, für den keine Börsenhandelsausfüllung als Beweis dient."
+      }
+    },
     "timeTravelNotice": "Historische Ansicht: P&L gemäß Kenntnisstand vom {{asOf}}.",
     "chart": {
       "title": "P&L im Zeitverlauf",

@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Historia ya utekelezaji wa biashara iliyorekebishwa na opereta",
+      "summary": "Opereta alibatilisha utekelezaji wa biashara uliorekodiwa katika mawanda haya. Kila masahihisho yaliyoorodheshwa hapa yametengwa kutoka kwa jumla za nambari zinazoonyeshwa kwenye ukurasa huu.",
+      "correctionCount": "Marekebisho yametumika: {{count}}",
+      "showDetails": "Onyesha masahihisho",
+      "hideDetails": "Ficha masahihisho",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Ilirekebishwa saa {{time}}",
+      "targetExecutionId": "Utekelezaji wa biashara uliobatilishwa",
+      "correctionId": "Rekodi ya kusahihisha",
+      "reasons": {
+        "unwitnessed_phantom": "Hakuna ujazo wa biashara ya kubadilishana ambao hutumika kama ushahidi wa uhifadhi huu.",
+        "unwitnessed_legacy_lineage": "Rekodi inayotokana na urithi ambayo hakuna ujazo wa biashara ya kubadilishana hutumika kama ushahidi."
+      }
+    },
     "timeTravelNotice": "Mwonekano wa kihistoria: P&L inaonyeshwa kama ilivyojulikana wakati wa {{asOf}}.",
     "chart": {
       "title": "P&L kwa muda",

@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "由操作員更正的交易執行歷史記錄",
+      "summary": "操作員取消了此範圍內記錄的交易執行。此處列出的每個更正均不包含在此頁面上顯示的所有數字總數中。",
+      "correctionCount": "已套用更正：{{count}}",
+      "showDetails": "顯示更正",
+      "hideDetails": "隱藏更正",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "於 {{time}} 更正",
+      "targetExecutionId": "取消交易執行",
+      "correctionId": "更正記錄",
+      "reasons": {
+        "unwitnessed_phantom": "沒有任何交易所交易記錄可以作為此預訂的證據。",
+        "unwitnessed_legacy_lineage": "沒有交易所交易填充作為證據的遺留記錄。"
+      }
+    },
     "timeTravelNotice": "歷史檢視：顯示截至 {{asOf}} 已知的 P&L。",
     "chart": {
       "title": "P&L 走勢",

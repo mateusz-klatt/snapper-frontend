@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Operatör tarafından düzeltilen ticari işlem geçmişi",
+      "summary": "Bu kapsamda kaydedilen ticari işlemleri bir operatör iptal etti. Burada listelenen her düzeltme, bu sayfada görüntülenen tüm sayısal toplamların dışında bırakılır.",
+      "correctionCount": "Uygulanan düzeltmeler: {{count}}",
+      "showDetails": "Düzeltmeleri göster",
+      "hideDetails": "Düzeltmeleri gizle",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "{{time}} tarihinde düzeltildi",
+      "targetExecutionId": "İptal edilen ticaret uygulaması",
+      "correctionId": "Düzeltme kaydı",
+      "reasons": {
+        "unwitnessed_phantom": "Bu rezervasyona kanıt teşkil edecek herhangi bir döviz ticareti dolgusu bulunmamaktadır.",
+        "unwitnessed_legacy_lineage": "Hiçbir borsa ticareti dolgusunun kanıt olarak hizmet etmediği eski türetilmiş kayıt."
+      }
+    },
     "timeTravelNotice": "Geçmiş görünüm: {{asOf}} itibarıyla bilinen P&L gösteriliyor.",
     "chart": {
       "title": "Zaman içinde P&L",

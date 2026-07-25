@@ -3546,6 +3546,20 @@ export type Components = {
             last_minute: string | null;
             sample_calc_version: string | null;
         };
+        PnlExecutionCorrectionData: {
+            correction_public_id: string;
+            target_execution_public_id: string;
+            exchange: string;
+            scope_sequence: number;
+            reason: Components["schemas"]["PnlExecutionCorrectionReason"];
+            correction_time: string;
+        };
+        PnlExecutionCorrectionReason: "unwitnessed_phantom" | "unwitnessed_legacy_lineage";
+        PnlExecutionHistoryData: {
+            status: Components["schemas"]["PnlExecutionHistoryStatus"];
+            corrections: Components["schemas"]["PnlExecutionCorrectionData"][];
+        };
+        PnlExecutionHistoryStatus: "as_recorded" | "operator_corrected";
         PnlFillMarkerData: {
             kind: "fill";
             marker_time: string;
@@ -3600,6 +3614,7 @@ export type Components = {
             rate_sources: Components["schemas"]["PnlFxRateSourceData"][];
             calc_version: string;
             equity_coverage: Components["schemas"]["PnlEquityCoverageData"];
+            execution_history: Components["schemas"]["PnlExecutionHistoryData"];
             points: Components["schemas"]["PnlTimelinePointData"][];
         };
         PnlSeriesResponse: {
@@ -3642,6 +3657,7 @@ export type Components = {
             rate_sources: Components["schemas"]["PnlFxRateSourceData"][];
             calc_version: string;
             equity_coverage: Components["schemas"]["PnlEquityCoverageData"];
+            execution_history: Components["schemas"]["PnlExecutionHistoryData"];
             points: Components["schemas"]["PnlTimelinePointData"][];
             marker_limit: number;
             markers_truncated: boolean;

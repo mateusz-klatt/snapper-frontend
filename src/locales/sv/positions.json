@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Handelsutförandehistorik korrigerad av operatören",
+      "summary": "En operatör ogiltigförklarade de registrerade handelsutförandena i denna omfattning. Varje korrigering som listas här är exkluderad från alla numeriska summor som visas på denna sida.",
+      "correctionCount": "Tillämpade korrigeringar: {{count}}",
+      "showDetails": "Visa korrigeringar",
+      "hideDetails": "Dölj korrigeringar",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Rättad kl. {{time}}",
+      "targetExecutionId": "Ogiltigförklarad handelsutförande",
+      "correctionId": "Rättelsepost",
+      "reasons": {
+        "unwitnessed_phantom": "Det finns ingen byteshandel som fungerar som bevis för denna bokning.",
+        "unwitnessed_legacy_lineage": "Legacy-härledd post för vilken ingen börshandel fyller fungerar som bevis."
+      }
+    },
     "timeTravelNotice": "Historisk vy: visar P&L enligt informationen vid {{asOf}}.",
     "chart": {
       "title": "P&L över tid",

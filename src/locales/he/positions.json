@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "היסטוריית ביצוע מסחר שתוקנה על ידי המפעיל",
+      "summary": "מפעיל ביטל את ביצוע הסחר שנרשם בהיקף זה. כל תיקון המופיע כאן אינו נכלל מכל הסכומים המספריים המוצגים בדף זה.",
+      "correctionCount": "תיקונים שהוחלו: {{count}}",
+      "showDetails": "הצג תיקונים",
+      "hideDetails": "הסתר תיקונים",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "תוקן בשעה {{time}}",
+      "targetExecutionId": "ביטול ביצוע סחר",
+      "correctionId": "רישום תיקון",
+      "reasons": {
+        "unwitnessed_phantom": "אין מילוי סחר חליפין המשמש כהוכחה להזמנה זו.",
+        "unwitnessed_legacy_lineage": "רשומה מדור קודם ששום מילוי סחר חליפין עבורו אינו משמש כראיה."
+      }
+    },
     "timeTravelNotice": "תצוגה היסטורית: מוצג ה-P&L כפי שהיה ידוע נכון ל-{{asOf}}.",
     "chart": {
       "title": "P&L לאורך זמן",

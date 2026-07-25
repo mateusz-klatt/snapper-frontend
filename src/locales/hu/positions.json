@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Az üzemeltető által javított ügyletvégrehajtási előzmények",
+      "summary": "Egy üzemeltető megsemmisítette az ebben a körben rögzített kereskedelmi végrehajtásokat. Az itt felsorolt ​​összes javítás nem szerepel az ezen az oldalon megjelenő összes számszerű összegből.",
+      "correctionCount": "Alkalmazott korrekciók: {{count}}",
+      "showDetails": "Javítások megjelenítése",
+      "hideDetails": "Javítások elrejtése",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Javítva: {{time}}",
+      "targetExecutionId": "Megsemmisített kereskedelmi végrehajtás",
+      "correctionId": "Javítási jegyzőkönyv",
+      "reasons": {
+        "unwitnessed_phantom": "Nincs tőzsdei kereskedés kitöltése, amely bizonyítékul szolgálna ehhez a foglaláshoz.",
+        "unwitnessed_legacy_lineage": "Örökségből származó rekord, amelyre nincs tőzsdei kereskedési kitöltés bizonyítékként."
+      }
+    },
     "timeTravelNotice": "Előzménynézet: a P&L a(z) {{asOf}} időpontban ismert állapotot mutatja.",
     "chart": {
       "title": "P&L időbeli alakulása",

@@ -3,8 +3,10 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { PortfolioTimeline } from './PortfolioTimeline'
 import { usePortfolioPnlTimeline } from '../../hooks/queries/portfolio'
 import { useWallets } from '../../hooks/queries/wallets'
+import type { AppLocale } from '../../i18n/types'
 import type {
   PnlEquityCoverageData,
+  PnlExecutionHistoryData,
   PnlInstrumentContributionData,
   PnlTimelineData,
   PnlTimelineMarkerData,
@@ -18,10 +20,17 @@ const scope = vi.hoisted(() => ({
 
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn(
-    (selector: (state: { currentWalletPublicId: string | null; asOf: string | null }) => unknown) =>
+    (
+      selector: (state: {
+        currentWalletPublicId: string | null
+        asOf: string | null
+        locale: AppLocale
+      }) => unknown
+    ) =>
       selector({
         currentWalletPublicId: scope.walletPublicId,
         asOf: scope.asOf,
+        locale: 'ie',
       })
   ),
 }))
@@ -183,12 +192,32 @@ const UNSAMPLED_COVERAGE: PnlEquityCoverageData = {
   sample_calc_version: null,
 }
 
+const AS_RECORDED_HISTORY: PnlExecutionHistoryData = {
+  status: 'as_recorded',
+  corrections: [],
+}
+
+const CORRECTED_HISTORY: PnlExecutionHistoryData = {
+  status: 'operator_corrected',
+  corrections: [
+    {
+      correction_public_id: 'correction-1',
+      target_execution_public_id: 'execution-9',
+      exchange: 'kraken',
+      scope_sequence: 7,
+      reason: 'unwitnessed_phantom',
+      correction_time: '2026-07-19T21:54:00Z',
+    },
+  ],
+}
+
 const timeline = (
   points: PnlTimelinePointData[],
   markers: PnlTimelineMarkerData[] = [],
   markersTruncated = false,
   valuationCcy = 'USD',
-  equityCoverage: PnlEquityCoverageData = UNSAMPLED_COVERAGE
+  equityCoverage: PnlEquityCoverageData = UNSAMPLED_COVERAGE,
+  executionHistory: PnlExecutionHistoryData = AS_RECORDED_HISTORY
 ): PnlTimelineData => ({
   type: 'pnl_timeline',
   sequence_id: 1,
@@ -206,6 +235,7 @@ const timeline = (
   rate_sources: [],
   calc_version: 'test-version',
   equity_coverage: equityCoverage,
+  execution_history: executionHistory,
   points,
   marker_limit: 500,
   markers_truncated: markersTruncated,
@@ -559,5 +589,50 @@ describe('PortfolioTimeline', () => {
     expect(screen.queryByTestId('mock-attribution-breakdown')).not.toBeInTheDocument()
     expect(screen.queryByTestId('mock-contribution-table')).not.toBeInTheDocument()
     expect(screen.queryByText('No P&L history')).not.toBeInTheDocument()
+  })
+
+  it('surfaces the correction banner whenever the envelope reports a corrected history', () => {
+    mockQuery(
+      timeline(
+        [point('2026-07-20T11:59:00Z', 'complete')],
+        [],
+        false,
+        'USD',
+        UNSAMPLED_COVERAGE,
+        CORRECTED_HISTORY
+      )
+    )
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('pnl-execution-history-banner')).toBeInTheDocument()
+    expect(screen.getByTestId('pnl-execution-history-count')).toHaveTextContent(
+      'Corrections applied: 1'
+    )
+  })
+
+  it('keeps the correction banner on an empty window, where it matters most', () => {
+    mockQuery(timeline([], [], false, 'USD', UNSAMPLED_COVERAGE, CORRECTED_HISTORY))
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByText('No P&L history')).toBeInTheDocument()
+    expect(screen.getByTestId('pnl-execution-history-banner')).toBeInTheDocument()
+  })
+
+  it('shows no correction banner for an as-recorded history', () => {
+    mockQuery(timeline([point('2026-07-20T11:59:00Z', 'complete')]))
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.queryByTestId('pnl-execution-history-banner')).not.toBeInTheDocument()
+  })
+
+  it('shows no correction banner while the timeline has not loaded', () => {
+    mockQuery(undefined, true)
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.queryByTestId('pnl-execution-history-banner')).not.toBeInTheDocument()
   })
 })

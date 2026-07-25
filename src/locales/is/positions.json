@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Framkvæmdasaga viðskipta leiðrétt af rekstraraðila",
+      "summary": "Rekstraraðili ógilti skráðar viðskiptaaftökur í þessu umfangi. Sérhver leiðrétting sem skráð er hér er útilokuð frá öllum tölulegum heildartölum sem birtar eru á þessari síðu.",
+      "correctionCount": "Leiðréttingar beitt: {{count}}",
+      "showDetails": "Sýna leiðréttingar",
+      "hideDetails": "Fela leiðréttingar",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Leiðrétt kl. {{time}}",
+      "targetExecutionId": "Ógilda framkvæmd viðskipta",
+      "correctionId": "Leiðréttingarskrá",
+      "reasons": {
+        "unwitnessed_phantom": "Það er engin skiptiviðskiptafylling sem þjónar sem sönnun fyrir þessari bókun.",
+        "unwitnessed_legacy_lineage": "Arfleifð skrá sem engin skiptiviðskipti fylla þjónar sem sönnunargögn."
+      }
+    },
     "timeTravelNotice": "Söguleg sýn: P&L miðast við það sem vitað var {{asOf}}.",
     "chart": {
       "title": "P&L yfir tíma",

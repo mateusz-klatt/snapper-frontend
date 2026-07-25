@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "ट्रेड निष्पादन इतिहास को ऑपरेटर द्वारा सही किया गया",
+      "summary": "एक ऑपरेटर ने इस दायरे में रिकॉर्ड किए गए व्यापार निष्पादन को रद्द कर दिया। यहां सूचीबद्ध प्रत्येक सुधार को इस पृष्ठ पर प्रदर्शित सभी संख्यात्मक योगों से बाहर रखा गया है।",
+      "correctionCount": "सुधार लागू: {{count}}",
+      "showDetails": "सुधार दिखाएँ",
+      "hideDetails": "सुधार छिपाएँ",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "{{time}} पर ठीक किया गया",
+      "targetExecutionId": "व्यापार निष्पादन रद्द कर दिया गया",
+      "correctionId": "सुधार रिकार्ड",
+      "reasons": {
+        "unwitnessed_phantom": "ऐसा कोई विनिमय व्यापार भरण नहीं है जो इस बुकिंग के लिए साक्ष्य के रूप में कार्य करता हो।",
+        "unwitnessed_legacy_lineage": "विरासत-व्युत्पन्न रिकॉर्ड जिसके लिए कोई विनिमय व्यापार भरण साक्ष्य के रूप में कार्य नहीं करता है।"
+      }
+    },
     "timeTravelNotice": "ऐतिहासिक दृश्य: {{asOf}} तक ज्ञात P&L दिखाया जा रहा है।",
     "chart": {
       "title": "समय के साथ P&L",

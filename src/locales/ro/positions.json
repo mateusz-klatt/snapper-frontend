@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Istoricul execuției tranzacțiilor corectat de operator",
+      "summary": "Un operator a anulat execuțiile comerciale înregistrate în acest domeniu. Fiecare corecție enumerată aici este exclusă din toate totalurile numerice afișate pe această pagină.",
+      "correctionCount": "Corecții aplicate: {{count}}",
+      "showDetails": "Afișați corecțiile",
+      "hideDetails": "Ascunde corecțiile",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Corectat la {{time}}",
+      "targetExecutionId": "Execuția comercială anulată",
+      "correctionId": "Dosarul de corectare",
+      "reasons": {
+        "unwitnessed_phantom": "Nu există nicio completare a schimburilor comerciale care să servească drept dovadă pentru această rezervare.",
+        "unwitnessed_legacy_lineage": "Înregistrare derivată din moștenire pentru care nicio completare a schimburilor comerciale nu servește drept dovadă."
+      }
+    },
     "timeTravelNotice": "Vizualizare istorică: se afișează P&L așa cum era cunoscut la {{asOf}}.",
     "chart": {
       "title": "Evoluția P&L",

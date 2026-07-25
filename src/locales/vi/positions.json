@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Lịch sử thực hiện giao dịch được nhà điều hành sửa chữa",
+      "summary": "Nhà điều hành đã hủy bỏ các giao dịch thực hiện giao dịch được ghi lại trong phạm vi này. Mọi sửa đổi được liệt kê ở đây đều bị loại trừ khỏi tất cả các tổng số được hiển thị trên trang này.",
+      "correctionCount": "Các sửa đổi đã được áp dụng: {{count}}",
+      "showDetails": "Hiển thị các chỉnh sửa",
+      "hideDetails": "Ẩn phần chỉnh sửa",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Đã sửa vào lúc {{time}}",
+      "targetExecutionId": "Thực hiện giao dịch bị hủy bỏ",
+      "correctionId": "Biên bản sửa chữa",
+      "reasons": {
+        "unwitnessed_phantom": "Không có giao dịch trao đổi nào làm bằng chứng cho việc đặt chỗ này.",
+        "unwitnessed_legacy_lineage": "Bản ghi có nguồn gốc kế thừa mà không có giao dịch trao đổi nào được dùng làm bằng chứng."
+      }
+    },
     "timeTravelNotice": "Chế độ xem lịch sử: hiển thị P&L theo dữ liệu đã biết tại {{asOf}}.",
     "chart": {
       "title": "P&L theo thời gian",

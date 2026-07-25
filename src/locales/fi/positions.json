@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Operaattorin korjaama kaupan toteutushistoria",
+      "summary": "Toimija mitätöi rekisteröidyt kaupankäynnit tässä laajuudessa. Kaikki tässä luetellut korjaukset jätetään pois kaikista tällä sivulla näytettävistä numeerisista kokonaismääristä.",
+      "correctionCount": "Korjauksia käytetty: {{count}}",
+      "showDetails": "Näytä korjaukset",
+      "hideDetails": "Piilota korjaukset",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Korjattu {{time}}",
+      "targetExecutionId": "Kaupan täytäntöönpano kumottu",
+      "correctionId": "Korjauskirja",
+      "reasons": {
+        "unwitnessed_phantom": "Ei pörssikaupan täyttöä, joka toimii todisteena tälle varaukselle.",
+        "unwitnessed_legacy_lineage": "Perinnöstä johdettu tietue, jolle mikään pörssikauppatäyttö ei ole todisteena."
+      }
+    },
     "timeTravelNotice": "Historiallinen näkymä: P&L näytetään ajankohtana {{asOf}} tiedettyjen tietojen mukaisesti.",
     "chart": {
       "title": "P&L ajan kuluessa",

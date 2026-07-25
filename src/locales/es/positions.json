@@ -79,6 +79,21 @@
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
+    "executionHistory": {
+      "title": "Historial de ejecución comercial corregido por el operador",
+      "summary": "Un operador anuló las ejecuciones comerciales registradas en este ámbito. Todas las correcciones enumeradas aquí están excluidas de todos los totales numéricos que se muestran en esta página.",
+      "correctionCount": "Correcciones aplicadas: {{count}}",
+      "showDetails": "Mostrar correcciones",
+      "hideDetails": "Ocultar correcciones",
+      "scopeSequence": "{{exchange}} #{{sequence}}",
+      "correctionTime": "Corregido a las {{time}}",
+      "targetExecutionId": "Ejecución comercial anulada",
+      "correctionId": "Registro de corrección",
+      "reasons": {
+        "unwitnessed_phantom": "No existe ningún intercambio comercial que sirva como prueba de esta reserva.",
+        "unwitnessed_legacy_lineage": "Registro derivado de legado para el cual ningún intercambio comercial sirve como evidencia."
+      }
+    },
     "timeTravelNotice": "Vista histórica: se muestra el P&L conocido a fecha de {{asOf}}.",
     "chart": {
       "title": "Evolución del P&L",
