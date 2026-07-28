@@ -39,7 +39,8 @@ describe('Skeleton', () => {
     render(<Skeleton width='50%' height='2rem' />)
     const skeleton = screen.getByTestId('skeleton')
 
-    expect(skeleton).toHaveStyle({ width: '50%', height: '2rem' })
+    expect(skeleton.style.width).toBe('50%')
+    expect(skeleton.style.height).toBe('2rem')
   })
   it('renders with different rounded values', () => {
     const { rerender } = render(<Skeleton rounded='none' />)
