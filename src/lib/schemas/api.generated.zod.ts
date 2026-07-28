@@ -1136,6 +1136,7 @@ const _PermissionRawSchema = z.enum([
   'manage:ai_integration',
   'configure:system',
   'manage:users',
+  'manage:desk_memberships',
   'read:wallet_credentials',
   'manage:wallet_credentials',
   'manage:scope_grants',

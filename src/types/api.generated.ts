@@ -116,6 +116,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/auth/desks/{operator_public_id}/members/{username}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: Operations["attach_viewer_to_desk_api_auth_desks__operator_public_id__members__username__post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/auth/users/{user_id}/update": {
         parameters: {
             query?: never;
@@ -3515,7 +3531,7 @@ export type Components = {
             instrument?: string | null | undefined;
             signal_envelope?: Record<string, unknown> | null | undefined;
         };
-        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "submit:ai_review_decision" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:runtime_diagnostics" | "read:processes" | "manage:processes" | "read:ai_reviews" | "read:ai_integration" | "manage:ai_integration" | "configure:system" | "manage:users" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "create:backtest_comparisons" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
+        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "submit:ai_review_decision" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:runtime_diagnostics" | "read:processes" | "manage:processes" | "read:ai_reviews" | "read:ai_integration" | "manage:ai_integration" | "configure:system" | "manage:users" | "manage:desk_memberships" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "create:backtest_comparisons" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
         PnlAiDecisionMarkerData: {
             kind: "ai_decision";
             marker_time: string;
@@ -5617,6 +5633,36 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["UserResponse"];
+                };
+            };
+        };
+    };
+    attach_viewer_to_desk_api_auth_desks__operator_public_id__members__username__post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                operator_public_id: string;
+                username: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["MessageResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
                 };
             };
         };
