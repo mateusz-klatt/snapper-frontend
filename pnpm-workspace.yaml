@@ -6,6 +6,8 @@ engineStrict: true
 overrides:
   lodash-es: '>=4.17.23'
   js-yaml@<4.3.0: '^4.3.0'
+  'minimatch@3>brace-expansion': 5.0.9
+  'minimatch@5>brace-expansion': 5.0.9
 
 allowBuilds:
   puppeteer: true
@@ -30,3 +32,7 @@ minimumReleaseAgeExclude:
   - i18next@26.3.3
   - prettier@3.8.5
   - eslint@10.6.0
+  - brace-expansion@5.0.9
+
+patchedDependencies:
+  brace-expansion@5.0.9: patches/brace-expansion@5.0.9.patch
