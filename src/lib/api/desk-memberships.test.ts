@@ -68,6 +68,9 @@ describe('desk membership API', () => {
     vi.spyOn(apiClient, 'requestJSON').mockResolvedValue({ payload: [] })
     const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined)
 
+    await expect(getDeskMembers('private/desk')).rejects.toMatchObject({
+      endpoint: '/api/auth/desks/:operator_public_id/members',
+    })
     await expect(getDeskMembers('private/desk', '2026-07-31T10:00:00Z')).rejects.toMatchObject({
       endpoint: '/api/auth/desks/:operator_public_id/members',
     })
