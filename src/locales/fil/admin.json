@@ -36,6 +36,62 @@
       "settings": "Mga Setting"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Walang access",
+      "message": "Wala kang pahintulot na pamahalaan ang mga miyembro ng desk."
+    },
+    "title": "Mga miyembro ng desk",
+    "subtitle": "Magdagdag ng mga aktibong viewer sa desk o alisin ang kasalukuyan nilang access dito.",
+    "memberCount": "Mga miyembro: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Pumili ng desk..."
+    },
+    "add": {
+      "usernameLabel": "Username ng viewer",
+      "usernamePlaceholder": "Ilagay ang eksaktong username",
+      "usernameHint": "Mga aktibong viewer na tunay na tao lamang ang maaaring idagdag.",
+      "action": "Magdagdag ng viewer",
+      "validation": {
+        "usernameRequired": "Kailangan ang username"
+      }
+    },
+    "columns": {
+      "username": "Username",
+      "role": "Role",
+      "membership": "Pagiging miyembro",
+      "actions": "Mga aksyon"
+    },
+    "primary": "Pangunahin",
+    "member": "Miyembro",
+    "remove": {
+      "action": "Alisin",
+      "actionFor": "Alisin si {{username}} sa desk",
+      "viewerOnly": "Mga viewer lamang ang maaaring alisin dito",
+      "title": "Alisin ang miyembro ng desk",
+      "message": "Alisin si \"{{username}}\" sa desk na ito? Tatapusin ang mga aktibo niyang session at kakailanganin niyang mag-sign in muli.",
+      "confirm": "Alisin ang miyembro"
+    },
+    "empty": {
+      "noDesks": "Walang available na desk",
+      "noDesksHint": "Sa ngayon, wala kang access sa desk na maaaring pamahalaan.",
+      "selectDesk": "Pumili ng desk",
+      "selectDeskHint": "Pumili ng desk para makita at pamahalaan ang mga miyembro nito.",
+      "noMembers": "Walang aktibong miyembro",
+      "noMembersHint": "Walang aktibong miyembrong tunay na tao ang desk na ito."
+    },
+    "errors": {
+      "loadDesks": "Nagkaroon ng error sa pag-load ng mga desk: {{message}}",
+      "loadMembers": "Nagkaroon ng error sa pag-load ng mga miyembro ng desk: {{message}}"
+    },
+    "toast": {
+      "attached": "Idinagdag si {{username}} sa desk",
+      "attachError": "Nagkaroon ng error sa pagdagdag ng viewer sa desk",
+      "detached": "Inalis si {{username}} sa desk",
+      "detachError": "Nagkaroon ng error sa pag-alis ng viewer sa desk"
+    }
+  },
   "common": {
     "cancel": "Kanselahin",
     "selectWallet": "Pumili ng wallet",

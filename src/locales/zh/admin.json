@@ -36,6 +36,62 @@
       "settings": "设置"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "访问被拒绝",
+      "message": "你没有管理交易台成员的权限。"
+    },
+    "title": "交易台成员",
+    "subtitle": "将活跃的查看者添加到交易台，或移除他们当前的交易台访问权限。",
+    "memberCount": "成员：{{count}}",
+    "desk": {
+      "label": "交易台",
+      "placeholder": "选择交易台..."
+    },
+    "add": {
+      "usernameLabel": "查看者用户名",
+      "usernamePlaceholder": "输入完全匹配的用户名",
+      "usernameHint": "只能添加活跃的人类查看者。",
+      "action": "添加查看者",
+      "validation": {
+        "usernameRequired": "必须输入用户名"
+      }
+    },
+    "columns": {
+      "username": "用户名",
+      "role": "角色",
+      "membership": "成员资格",
+      "actions": "操作"
+    },
+    "primary": "主要",
+    "member": "成员",
+    "remove": {
+      "action": "移除",
+      "actionFor": "从交易台移除 {{username}}",
+      "viewerOnly": "此处只能移除查看者",
+      "title": "移除交易台成员",
+      "message": "要从此交易台移除“{{username}}”吗？该用户的活跃会话将会终止，并且需要重新登录。",
+      "confirm": "移除成员"
+    },
+    "empty": {
+      "noDesks": "没有可用的交易台",
+      "noDesksHint": "你目前无法访问任何可管理的交易台。",
+      "selectDesk": "选择交易台",
+      "selectDeskHint": "选择交易台以查看和管理其成员。",
+      "noMembers": "没有活跃成员",
+      "noMembersHint": "此交易台没有活跃的人类成员。"
+    },
+    "errors": {
+      "loadDesks": "加载交易台时出错：{{message}}",
+      "loadMembers": "加载交易台成员时出错：{{message}}"
+    },
+    "toast": {
+      "attached": "已将 {{username}} 添加到交易台",
+      "attachError": "将查看者添加到交易台时出错",
+      "detached": "已从交易台移除 {{username}}",
+      "detachError": "从交易台移除查看者时出错"
+    }
+  },
   "common": {
     "cancel": "取消",
     "selectWallet": "选择钱包",

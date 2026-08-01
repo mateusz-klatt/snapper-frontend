@@ -36,6 +36,62 @@
       "settings": "Ayarlar"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Erişim reddedildi",
+      "message": "İşlem masası üyeliklerini yönetme izniniz yok."
+    },
+    "title": "İşlem masası üyelikleri",
+    "subtitle": "Etkin görüntüleyicileri bir işlem masasına ekleyin veya mevcut masa erişimlerini kaldırın.",
+    "memberCount": "Üyeler: {{count}}",
+    "desk": {
+      "label": "İşlem masası",
+      "placeholder": "Bir işlem masası seçin..."
+    },
+    "add": {
+      "usernameLabel": "Görüntüleyici kullanıcı adı",
+      "usernamePlaceholder": "Kullanıcı adını tam olarak girin",
+      "usernameHint": "Yalnızca etkin insan görüntüleyiciler eklenebilir.",
+      "action": "Görüntüleyici ekle",
+      "validation": {
+        "usernameRequired": "Kullanıcı adı gerekli"
+      }
+    },
+    "columns": {
+      "username": "Kullanıcı adı",
+      "role": "Rol",
+      "membership": "Üyelik",
+      "actions": "Eylemler"
+    },
+    "primary": "Birincil",
+    "member": "Üye",
+    "remove": {
+      "action": "Kaldır",
+      "actionFor": "{{username}} kullanıcısını işlem masasından kaldır",
+      "viewerOnly": "Burada yalnızca görüntüleyiciler kaldırılabilir",
+      "title": "İşlem masası üyesini kaldır",
+      "message": "\"{{username}}\" kullanıcısı bu işlem masasından kaldırılsın mı? Etkin oturumları sonlandırılacak ve tekrar giriş yapması gerekecek.",
+      "confirm": "Üyeyi kaldır"
+    },
+    "empty": {
+      "noDesks": "Kullanılabilir işlem masası yok",
+      "noDesksHint": "Şu anda yönetilebilir bir işlem masasına erişiminiz yok.",
+      "selectDesk": "Bir işlem masası seçin",
+      "selectDeskHint": "Üyelerini görüntülemek ve yönetmek için bir işlem masası seçin.",
+      "noMembers": "Etkin üye yok",
+      "noMembersHint": "Bu işlem masasında etkin insan üye yok."
+    },
+    "errors": {
+      "loadDesks": "İşlem masaları yüklenirken hata oluştu: {{message}}",
+      "loadMembers": "İşlem masası üyeleri yüklenirken hata oluştu: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} işlem masasına eklendi",
+      "attachError": "Görüntüleyici işlem masasına eklenirken hata oluştu",
+      "detached": "{{username}} işlem masasından kaldırıldı",
+      "detachError": "Görüntüleyici işlem masasından kaldırılırken hata oluştu"
+    }
+  },
   "common": {
     "cancel": "İptal",
     "selectWallet": "Cüzdan seç",

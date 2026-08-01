@@ -36,6 +36,62 @@
       "settings": "Setări"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Acces refuzat",
+      "message": "Nu aveți permisiunea de a gestiona apartenența la birourile de tranzacționare."
+    },
+    "title": "Membrii birourilor de tranzacționare",
+    "subtitle": "Adăugați observatori activi la un birou de tranzacționare sau eliminați accesul lor curent.",
+    "memberCount": "Membri: {{count}}",
+    "desk": {
+      "label": "Birou de tranzacționare",
+      "placeholder": "Selectați un birou de tranzacționare..."
+    },
+    "add": {
+      "usernameLabel": "Numele de utilizator al observatorului",
+      "usernamePlaceholder": "Introduceți numele de utilizator exact",
+      "usernameHint": "Pot fi adăugați numai observatori activi care sunt persoane.",
+      "action": "Adăugați observator",
+      "validation": {
+        "usernameRequired": "Numele de utilizator este obligatoriu"
+      }
+    },
+    "columns": {
+      "username": "Nume de utilizator",
+      "role": "Rol",
+      "membership": "Apartenență",
+      "actions": "Acțiuni"
+    },
+    "primary": "Principal",
+    "member": "Membru",
+    "remove": {
+      "action": "Eliminați",
+      "actionFor": "Eliminați utilizatorul {{username}} din birou",
+      "viewerOnly": "Aici pot fi eliminați numai observatorii",
+      "title": "Eliminați membrul biroului",
+      "message": "Eliminați utilizatorul \"{{username}}\" din acest birou? Sesiunile active vor fi încheiate, iar utilizatorul va trebui să se conecteze din nou.",
+      "confirm": "Eliminați membrul"
+    },
+    "empty": {
+      "noDesks": "Nu există birouri de tranzacționare disponibile",
+      "noDesksHint": "În prezent nu aveți acces la un birou de tranzacționare care poate fi gestionat.",
+      "selectDesk": "Selectați un birou de tranzacționare",
+      "selectDeskHint": "Alegeți un birou pentru a-i vedea și gestiona membrii.",
+      "noMembers": "Nu există membri activi",
+      "noMembersHint": "Acest birou nu are membri umani activi."
+    },
+    "errors": {
+      "loadDesks": "Eroare la încărcarea birourilor de tranzacționare: {{message}}",
+      "loadMembers": "Eroare la încărcarea membrilor biroului: {{message}}"
+    },
+    "toast": {
+      "attached": "Utilizatorul {{username}} a fost adăugat la birou",
+      "attachError": "Eroare la adăugarea observatorului la birou",
+      "detached": "Utilizatorul {{username}} a fost eliminat din birou",
+      "detachError": "Eroare la eliminarea observatorului din birou"
+    }
+  },
   "common": {
     "cancel": "Anulați",
     "selectWallet": "Selectați portofelul",

@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChevronDown, ChevronUp, Shield, Users, Eye } from 'lucide-react'
 import {
+  Permission,
   RESOURCE_PERMISSIONS,
   ROLE_PERMISSIONS,
-  type Permission,
 } from '../../types/permissions.generated'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuthStore } from '../../stores/auth'
 import UserManagement from './UserManagement/UserManagement'
 import ScopeGrantManagement from './ScopeGrantManagement/ScopeGrantManagement'
 import CredentialManagement from './CredentialManagement/CredentialManagement'
+import DeskMembershipManagement from './DeskMembershipManagement/DeskMembershipManagement'
 
 const TAB_KEYS = [
   'overview',
@@ -29,9 +31,13 @@ type MatrixResource = (typeof TAB_KEYS)[number]
 
 const roleCanAccessResource = (role: MatrixRole, resource: MatrixResource): boolean => {
   const requirements = RESOURCE_PERMISSIONS[resource] as readonly Permission[]
+  const rolePermissions = ROLE_PERMISSIONS[role]
 
   if (requirements.length === 0) return true
-  const rolePermissions = ROLE_PERMISSIONS[role]
+
+  if (resource === 'admin' && rolePermissions.includes(Permission.MANAGE_DESK_MEMBERSHIPS)) {
+    return true
+  }
 
   return requirements.some(permission => rolePermissions.includes(permission))
 }
@@ -51,6 +57,11 @@ export const Admin: React.FC = () => {
   const readOnly = useIsReadOnly()
   const [showRoleInfo, setShowRoleInfo] = useState(false)
   const { t } = useTranslation('admin')
+  const hasPermission = useAuthStore(state => state.hasPermission)
+  const canManageDeskMemberships = hasPermission(Permission.MANAGE_DESK_MEMBERSHIPS)
+  const canManageUsers = hasPermission(Permission.MANAGE_USERS)
+  const canManageScopeGrants = hasPermission(Permission.MANAGE_SCOPE_GRANTS)
+  const canManageCredentials = hasPermission(Permission.MANAGE_WALLET_CREDENTIALS)
 
   const rolePermissions = TAB_KEYS.map(tabId => {
     return {
@@ -65,9 +76,10 @@ export const Admin: React.FC = () => {
     <div className='space-y-6'>
       <div className='mb-6'>
         <h1 className='text-3xl font-bold text-alpine-900 mb-2'>{t('page.title')}</h1>
-        <p className='text-muted-600'>{t('page.subtitle')}</p>
+        <p className='text-muted-600'>
+          {canManageUsers ? t('page.subtitle') : t('deskMemberships.subtitle')}
+        </p>
       </div>
-      {}
       <div className='panel'>
         <button
           type='button'
@@ -153,9 +165,10 @@ export const Admin: React.FC = () => {
           </div>
         )}
       </div>
-      <UserManagement readOnly={readOnly} />
-      <ScopeGrantManagement readOnly={readOnly} />
-      <CredentialManagement readOnly={readOnly} />
+      {canManageDeskMemberships && <DeskMembershipManagement readOnly={readOnly} />}
+      {canManageUsers && <UserManagement readOnly={readOnly} />}
+      {canManageScopeGrants && <ScopeGrantManagement readOnly={readOnly} />}
+      {canManageCredentials && <CredentialManagement readOnly={readOnly} />}
     </div>
   )
 }

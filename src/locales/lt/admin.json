@@ -36,6 +36,62 @@
       "settings": "Nustatymai"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Prieiga atmesta",
+      "message": "Neturite teisės valdyti prekybos skyriaus narystės."
+    },
+    "title": "Prekybos skyriaus narystė",
+    "subtitle": "Pridėkite aktyvius stebėtojus prie prekybos skyriaus arba panaikinkite jų dabartinę prieigą.",
+    "memberCount": "Nariai: {{count}}",
+    "desk": {
+      "label": "Prekybos skyrius",
+      "placeholder": "Pasirinkite prekybos skyrių..."
+    },
+    "add": {
+      "usernameLabel": "Stebėtojo naudotojo vardas",
+      "usernamePlaceholder": "Įveskite tikslų naudotojo vardą",
+      "usernameHint": "Galima pridėti tik aktyvius stebėtojus, kurie yra žmonės.",
+      "action": "Pridėti stebėtoją",
+      "validation": {
+        "usernameRequired": "Naudotojo vardas yra privalomas"
+      }
+    },
+    "columns": {
+      "username": "Naudotojo vardas",
+      "role": "Rolė",
+      "membership": "Narystė",
+      "actions": "Veiksmai"
+    },
+    "primary": "Pagrindinis",
+    "member": "Narys",
+    "remove": {
+      "action": "Pašalinti",
+      "actionFor": "Pašalinti {{username}} iš prekybos skyriaus",
+      "viewerOnly": "Čia galima pašalinti tik stebėtojus",
+      "title": "Pašalinti prekybos skyriaus narį",
+      "message": "Pašalinti \"{{username}}\" iš šio prekybos skyriaus? Aktyvūs naudotojo seansai bus nutraukti ir jam reikės prisijungti iš naujo.",
+      "confirm": "Pašalinti narį"
+    },
+    "empty": {
+      "noDesks": "Nėra pasiekiamų prekybos skyrių",
+      "noDesksHint": "Šiuo metu neturite prieigos prie valdomo prekybos skyriaus.",
+      "selectDesk": "Pasirinkite prekybos skyrių",
+      "selectDeskHint": "Pasirinkite skyrių, kad peržiūrėtumėte ir valdytumėte jo narius.",
+      "noMembers": "Nėra aktyvių narių",
+      "noMembersHint": "Šis prekybos skyrius neturi aktyvių narių, kurie yra žmonės."
+    },
+    "errors": {
+      "loadDesks": "Klaida įkeliant prekybos skyrius: {{message}}",
+      "loadMembers": "Klaida įkeliant prekybos skyriaus narius: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} pridėtas prie prekybos skyriaus",
+      "attachError": "Klaida pridedant stebėtoją prie prekybos skyriaus",
+      "detached": "{{username}} pašalintas iš prekybos skyriaus",
+      "detachError": "Klaida šalinant stebėtoją iš prekybos skyriaus"
+    }
+  },
   "common": {
     "cancel": "Atšaukti",
     "selectWallet": "Pasirinkite piniginę",

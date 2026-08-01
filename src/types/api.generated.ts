@@ -116,6 +116,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/auth/desks/{operator_public_id}/members": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["list_desk_members_api_auth_desks__operator_public_id__members_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/auth/desks/{operator_public_id}/members/{username}": {
         parameters: {
             query?: never;
@@ -126,7 +142,7 @@ export type Paths = {
         get?: never;
         put?: never;
         post: Operations["attach_viewer_to_desk_api_auth_desks__operator_public_id__members__username__post"];
-        delete?: never;
+        delete: Operations["detach_viewer_from_desk_api_auth_desks__operator_public_id__members__username__delete"];
         options?: never;
         head?: never;
         patch?: never;
@@ -5637,7 +5653,68 @@ export interface Operations {
             };
         };
     };
+    list_desk_members_api_auth_desks__operator_public_id__members_get: {
+        parameters: {
+            query?: {
+                as_of?: string | null | undefined;
+            };
+            header?: never;
+            path: {
+                operator_public_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["UserListResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     attach_viewer_to_desk_api_auth_desks__operator_public_id__members__username__post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                operator_public_id: string;
+                username: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["MessageResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    detach_viewer_from_desk_api_auth_desks__operator_public_id__members__username__delete: {
         parameters: {
             query?: never;
             header?: never;
@@ -6749,7 +6826,9 @@ export interface Operations {
     };
     list_operators_api_operators_get: {
         parameters: {
-            query?: never;
+            query?: {
+                as_of?: string | null | undefined;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -6762,6 +6841,14 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["OperatorListResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
                 };
             };
         };

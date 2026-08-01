@@ -36,6 +36,62 @@
       "settings": "設定"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "拒絕存取",
+      "message": "你沒有管理交易台成員的權限。"
+    },
+    "title": "交易台成員",
+    "subtitle": "將活躍的檢視者加入交易台，或移除他們目前的交易台存取權。",
+    "memberCount": "成員：{{count}}",
+    "desk": {
+      "label": "交易台",
+      "placeholder": "選擇交易台..."
+    },
+    "add": {
+      "usernameLabel": "檢視者的用戶名稱",
+      "usernamePlaceholder": "輸入完全相符的用戶名稱",
+      "usernameHint": "只能加入活躍的人類檢視者。",
+      "action": "加入檢視者",
+      "validation": {
+        "usernameRequired": "必須輸入用戶名稱"
+      }
+    },
+    "columns": {
+      "username": "用戶名稱",
+      "role": "角色",
+      "membership": "成員資格",
+      "actions": "操作"
+    },
+    "primary": "主要",
+    "member": "成員",
+    "remove": {
+      "action": "移除",
+      "actionFor": "從交易台移除 {{username}}",
+      "viewerOnly": "這裡只能移除檢視者",
+      "title": "移除交易台成員",
+      "message": "要從這個交易台移除「{{username}}」嗎？該用戶的活躍工作階段將會終止，並且需要重新登入。",
+      "confirm": "移除成員"
+    },
+    "empty": {
+      "noDesks": "沒有可用的交易台",
+      "noDesksHint": "你目前無法存取任何可管理的交易台。",
+      "selectDesk": "選擇交易台",
+      "selectDeskHint": "選擇交易台以檢視和管理其成員。",
+      "noMembers": "沒有活躍成員",
+      "noMembersHint": "這個交易台沒有活躍的人類成員。"
+    },
+    "errors": {
+      "loadDesks": "載入交易台時發生錯誤：{{message}}",
+      "loadMembers": "載入交易台成員時發生錯誤：{{message}}"
+    },
+    "toast": {
+      "attached": "已將 {{username}} 加入交易台",
+      "attachError": "將檢視者加入交易台時發生錯誤",
+      "detached": "已從交易台移除 {{username}}",
+      "detachError": "從交易台移除檢視者時發生錯誤"
+    }
+  },
   "common": {
     "cancel": "取消",
     "selectWallet": "選擇錢包",

@@ -36,6 +36,62 @@
       "settings": "Innstillinger"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Ingen tilgang",
+      "message": "Du har ikke rettighet til å administrere medlemskap i handelsdesker."
+    },
+    "title": "Medlemskap i handelsdesker",
+    "subtitle": "Legg aktive tilskuere til en handelsdesk, eller fjern deres nåværende tilgang.",
+    "memberCount": "Medlemmer: {{count}}",
+    "desk": {
+      "label": "Handelsdesk",
+      "placeholder": "Velg en handelsdesk..."
+    },
+    "add": {
+      "usernameLabel": "Tilskuerens brukernavn",
+      "usernamePlaceholder": "Skriv inn nøyaktig brukernavn",
+      "usernameHint": "Bare aktive, menneskelige tilskuere kan legges til.",
+      "action": "Legg til tilskuer",
+      "validation": {
+        "usernameRequired": "Brukernavn er påkrevd"
+      }
+    },
+    "columns": {
+      "username": "Brukernavn",
+      "role": "Rolle",
+      "membership": "Medlemskap",
+      "actions": "Handlinger"
+    },
+    "primary": "Primær",
+    "member": "Medlem",
+    "remove": {
+      "action": "Fjern",
+      "actionFor": "Fjern {{username}} fra handelsdesken",
+      "viewerOnly": "Bare tilskuere kan fjernes her",
+      "title": "Fjern medlem fra handelsdesk",
+      "message": "Vil du fjerne \"{{username}}\" fra denne handelsdesken? Aktive økter avsluttes, og brukeren må logge inn på nytt.",
+      "confirm": "Fjern medlem"
+    },
+    "empty": {
+      "noDesks": "Ingen handelsdesker tilgjengelig",
+      "noDesksHint": "Du har for øyeblikket ikke tilgang til en handelsdesk som kan administreres.",
+      "selectDesk": "Velg en handelsdesk",
+      "selectDeskHint": "Velg en desk for å vise og administrere medlemmene.",
+      "noMembers": "Ingen aktive medlemmer",
+      "noMembersHint": "Denne handelsdesken har ingen aktive, menneskelige medlemmer."
+    },
+    "errors": {
+      "loadDesks": "Feil ved lasting av handelsdesker: {{message}}",
+      "loadMembers": "Feil ved lasting av medlemmer i handelsdesken: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} ble lagt til i handelsdesken",
+      "attachError": "Feil ved tilføying av tilskuer til handelsdesken",
+      "detached": "{{username}} ble fjernet fra handelsdesken",
+      "detachError": "Feil ved fjerning av tilskuer fra handelsdesken"
+    }
+  },
   "common": {
     "cancel": "Avbryt",
     "selectWallet": "Velg lommebok",

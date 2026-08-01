@@ -36,6 +36,62 @@
       "settings": "Iestatījumi"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Piekļuve liegta",
+      "message": "Jums nav atļaujas pārvaldīt tirdzniecības nodaļas dalību."
+    },
+    "title": "Tirdzniecības nodaļas dalība",
+    "subtitle": "Pievienojiet aktīvus skatītājus tirdzniecības nodaļai vai noņemiet viņu pašreizējo piekļuvi.",
+    "memberCount": "Dalībnieki: {{count}}",
+    "desk": {
+      "label": "Tirdzniecības nodaļa",
+      "placeholder": "Atlasiet tirdzniecības nodaļu..."
+    },
+    "add": {
+      "usernameLabel": "Skatītāja lietotājvārds",
+      "usernamePlaceholder": "Ievadiet precīzu lietotājvārdu",
+      "usernameHint": "Var pievienot tikai aktīvus skatītājus, kuri ir cilvēki.",
+      "action": "Pievienot skatītāju",
+      "validation": {
+        "usernameRequired": "Lietotājvārds ir obligāts"
+      }
+    },
+    "columns": {
+      "username": "Lietotājvārds",
+      "role": "Loma",
+      "membership": "Dalība",
+      "actions": "Darbības"
+    },
+    "primary": "Primārais",
+    "member": "Dalībnieks",
+    "remove": {
+      "action": "Noņemt",
+      "actionFor": "Noņemt {{username}} no tirdzniecības nodaļas",
+      "viewerOnly": "Šeit var noņemt tikai skatītājus",
+      "title": "Noņemt tirdzniecības nodaļas dalībnieku",
+      "message": "Vai noņemt \"{{username}}\" no šīs tirdzniecības nodaļas? Lietotāja aktīvās sesijas tiks pārtrauktas, un viņam būs jāpierakstās vēlreiz.",
+      "confirm": "Noņemt dalībnieku"
+    },
+    "empty": {
+      "noDesks": "Nav pieejamu tirdzniecības nodaļu",
+      "noDesksHint": "Pašlaik jums nav piekļuves pārvaldāmai tirdzniecības nodaļai.",
+      "selectDesk": "Atlasiet tirdzniecības nodaļu",
+      "selectDeskHint": "Izvēlieties nodaļu, lai skatītu un pārvaldītu tās dalībniekus.",
+      "noMembers": "Nav aktīvu dalībnieku",
+      "noMembersHint": "Šajā tirdzniecības nodaļā nav aktīvu dalībnieku, kuri ir cilvēki."
+    },
+    "errors": {
+      "loadDesks": "Kļūda, ielādējot tirdzniecības nodaļas: {{message}}",
+      "loadMembers": "Kļūda, ielādējot tirdzniecības nodaļas dalībniekus: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} pievienots tirdzniecības nodaļai",
+      "attachError": "Kļūda, pievienojot skatītāju tirdzniecības nodaļai",
+      "detached": "{{username}} noņemts no tirdzniecības nodaļas",
+      "detachError": "Kļūda, noņemot skatītāju no tirdzniecības nodaļas"
+    }
+  },
   "common": {
     "cancel": "Atcelt",
     "selectWallet": "Izvēlieties maku",

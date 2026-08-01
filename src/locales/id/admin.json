@@ -36,6 +36,62 @@
       "settings": "Pengaturan"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Akses ditolak",
+      "message": "Anda tidak memiliki izin untuk mengelola keanggotaan desk perdagangan."
+    },
+    "title": "Keanggotaan desk perdagangan",
+    "subtitle": "Tambahkan pengamat aktif ke desk perdagangan atau hapus akses desk mereka saat ini.",
+    "memberCount": "Anggota: {{count}}",
+    "desk": {
+      "label": "Desk perdagangan",
+      "placeholder": "Pilih desk perdagangan..."
+    },
+    "add": {
+      "usernameLabel": "Nama pengguna pengamat",
+      "usernamePlaceholder": "Masukkan nama pengguna yang tepat",
+      "usernameHint": "Hanya pengamat manusia yang aktif yang dapat ditambahkan.",
+      "action": "Tambahkan pengamat",
+      "validation": {
+        "usernameRequired": "Nama pengguna wajib diisi"
+      }
+    },
+    "columns": {
+      "username": "Nama pengguna",
+      "role": "Peran",
+      "membership": "Keanggotaan",
+      "actions": "Tindakan"
+    },
+    "primary": "Utama",
+    "member": "Anggota",
+    "remove": {
+      "action": "Hapus",
+      "actionFor": "Hapus {{username}} dari desk",
+      "viewerOnly": "Hanya pengamat yang dapat dihapus di sini",
+      "title": "Hapus anggota desk",
+      "message": "Hapus \"{{username}}\" dari desk ini? Sesi aktif pengguna tersebut akan dihentikan dan pengguna harus masuk lagi.",
+      "confirm": "Hapus anggota"
+    },
+    "empty": {
+      "noDesks": "Tidak ada desk perdagangan yang tersedia",
+      "noDesksHint": "Saat ini Anda tidak memiliki akses ke desk perdagangan yang dapat dikelola.",
+      "selectDesk": "Pilih desk perdagangan",
+      "selectDeskHint": "Pilih desk untuk melihat dan mengelola anggotanya.",
+      "noMembers": "Tidak ada anggota aktif",
+      "noMembersHint": "Desk ini tidak memiliki anggota manusia yang aktif."
+    },
+    "errors": {
+      "loadDesks": "Kesalahan saat memuat desk perdagangan: {{message}}",
+      "loadMembers": "Kesalahan saat memuat anggota desk: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} ditambahkan ke desk",
+      "attachError": "Kesalahan saat menambahkan pengamat ke desk",
+      "detached": "{{username}} dihapus dari desk",
+      "detachError": "Kesalahan saat menghapus pengamat dari desk"
+    }
+  },
   "common": {
     "cancel": "Batal",
     "selectWallet": "Pilih dompet",

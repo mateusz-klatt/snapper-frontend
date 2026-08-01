@@ -36,6 +36,62 @@
       "settings": "Asetukset"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Pääsy evätty",
+      "message": "Sinulla ei ole oikeutta hallita kaupankäyntiyksikön jäsenyyksiä."
+    },
+    "title": "Kaupankäyntiyksikön jäsenyydet",
+    "subtitle": "Lisää aktiivisia tarkkailijoita kaupankäyntiyksikköön tai poista heidän nykyinen käyttöoikeutensa.",
+    "memberCount": "Jäseniä: {{count}}",
+    "desk": {
+      "label": "Kaupankäyntiyksikkö",
+      "placeholder": "Valitse kaupankäyntiyksikkö..."
+    },
+    "add": {
+      "usernameLabel": "Tarkkailijan käyttäjänimi",
+      "usernamePlaceholder": "Anna täsmällinen käyttäjänimi",
+      "usernameHint": "Vain aktiivisia ihmiskäyttäjinä toimivia tarkkailijoita voi lisätä.",
+      "action": "Lisää tarkkailija",
+      "validation": {
+        "usernameRequired": "Käyttäjänimi vaaditaan"
+      }
+    },
+    "columns": {
+      "username": "Käyttäjänimi",
+      "role": "Rooli",
+      "membership": "Jäsenyys",
+      "actions": "Toiminnot"
+    },
+    "primary": "Ensisijainen",
+    "member": "Jäsen",
+    "remove": {
+      "action": "Poista",
+      "actionFor": "Poista {{username}} kaupankäyntiyksiköstä",
+      "viewerOnly": "Tässä voi poistaa vain tarkkailijoita",
+      "title": "Poista kaupankäyntiyksikön jäsen",
+      "message": "Poistetaanko \"{{username}}\" tästä kaupankäyntiyksiköstä? Käyttäjän aktiiviset istunnot päätetään, ja hänen on kirjauduttava uudelleen.",
+      "confirm": "Poista jäsen"
+    },
+    "empty": {
+      "noDesks": "Kaupankäyntiyksiköitä ei ole saatavilla",
+      "noDesksHint": "Sinulla ei tällä hetkellä ole pääsyä hallittavaan kaupankäyntiyksikköön.",
+      "selectDesk": "Valitse kaupankäyntiyksikkö",
+      "selectDeskHint": "Valitse kaupankäyntiyksikkö nähdäksesi sen jäsenet ja hallitaksesi niitä.",
+      "noMembers": "Ei aktiivisia jäseniä",
+      "noMembersHint": "Tässä kaupankäyntiyksikössä ei ole aktiivisia ihmisjäseniä."
+    },
+    "errors": {
+      "loadDesks": "Virhe ladattaessa kaupankäyntiyksiköitä: {{message}}",
+      "loadMembers": "Virhe ladattaessa kaupankäyntiyksikön jäseniä: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} lisättiin kaupankäyntiyksikköön",
+      "attachError": "Virhe lisättäessä tarkkailijaa kaupankäyntiyksikköön",
+      "detached": "{{username}} poistettiin kaupankäyntiyksiköstä",
+      "detachError": "Virhe poistettaessa tarkkailijaa kaupankäyntiyksiköstä"
+    }
+  },
   "common": {
     "cancel": "Peruuta",
     "selectWallet": "Valitse lompakko",

@@ -36,6 +36,62 @@
       "settings": "Stillingar"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Aðgangi hafnað",
+      "message": "Þú hefur ekki heimild til að stjórna aðild að viðskiptaborðum."
+    },
+    "title": "Aðild að viðskiptaborðum",
+    "subtitle": "Bættu virkum áhorfendum við viðskiptaborð eða fjarlægðu núverandi aðgang þeirra.",
+    "memberCount": "Meðlimir: {{count}}",
+    "desk": {
+      "label": "Viðskiptaborð",
+      "placeholder": "Veldu viðskiptaborð..."
+    },
+    "add": {
+      "usernameLabel": "Notandanafn áhorfanda",
+      "usernamePlaceholder": "Sláðu inn nákvæmt notandanafn",
+      "usernameHint": "Aðeins er hægt að bæta við virkum áhorfendum sem eru einstaklingar.",
+      "action": "Bæta við áhorfanda",
+      "validation": {
+        "usernameRequired": "Notandanafn er nauðsynlegt"
+      }
+    },
+    "columns": {
+      "username": "Notandanafn",
+      "role": "Hlutverk",
+      "membership": "Aðild",
+      "actions": "Aðgerðir"
+    },
+    "primary": "Aðal",
+    "member": "Meðlimur",
+    "remove": {
+      "action": "Fjarlægja",
+      "actionFor": "Fjarlægja {{username}} af viðskiptaborðinu",
+      "viewerOnly": "Aðeins er hægt að fjarlægja áhorfendur hér",
+      "title": "Fjarlægja meðlim viðskiptaborðs",
+      "message": "Fjarlægja \"{{username}}\" af þessu viðskiptaborði? Virkum lotum notandans verður lokað og hann þarf að skrá sig inn aftur.",
+      "confirm": "Fjarlægja meðlim"
+    },
+    "empty": {
+      "noDesks": "Engin viðskiptaborð í boði",
+      "noDesksHint": "Þú hefur ekki aðgang að viðskiptaborði sem hægt er að stjórna eins og er.",
+      "selectDesk": "Veldu viðskiptaborð",
+      "selectDeskHint": "Veldu viðskiptaborð til að skoða og stjórna meðlimum þess.",
+      "noMembers": "Engir virkir meðlimir",
+      "noMembersHint": "Þetta viðskiptaborð hefur enga virka meðlimi sem eru einstaklingar."
+    },
+    "errors": {
+      "loadDesks": "Villa við að hlaða viðskiptaborðum: {{message}}",
+      "loadMembers": "Villa við að hlaða meðlimum viðskiptaborðs: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} var bætt við viðskiptaborðið",
+      "attachError": "Villa við að bæta áhorfanda við viðskiptaborðið",
+      "detached": "{{username}} var fjarlægður af viðskiptaborðinu",
+      "detachError": "Villa við að fjarlægja áhorfanda af viðskiptaborðinu"
+    }
+  },
   "common": {
     "cancel": "Hætta við",
     "selectWallet": "Velja veski",

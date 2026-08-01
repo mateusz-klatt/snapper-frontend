@@ -36,6 +36,62 @@
       "settings": "설정"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "접근 거부",
+      "message": "트레이딩 데스크 멤버십을 관리할 권한이 없습니다."
+    },
+    "title": "트레이딩 데스크 멤버십",
+    "subtitle": "활성 뷰어를 트레이딩 데스크에 추가하거나 현재 데스크 접근 권한을 제거합니다.",
+    "memberCount": "멤버: {{count}}",
+    "desk": {
+      "label": "트레이딩 데스크",
+      "placeholder": "트레이딩 데스크 선택..."
+    },
+    "add": {
+      "usernameLabel": "뷰어 사용자 이름",
+      "usernamePlaceholder": "정확한 사용자 이름 입력",
+      "usernameHint": "활성 상태인 실제 사용자 뷰어만 추가할 수 있습니다.",
+      "action": "뷰어 추가",
+      "validation": {
+        "usernameRequired": "사용자 이름은 필수입니다"
+      }
+    },
+    "columns": {
+      "username": "사용자 이름",
+      "role": "역할",
+      "membership": "멤버십",
+      "actions": "작업"
+    },
+    "primary": "기본",
+    "member": "멤버",
+    "remove": {
+      "action": "제거",
+      "actionFor": "데스크에서 {{username}} 제거",
+      "viewerOnly": "여기서는 뷰어만 제거할 수 있습니다",
+      "title": "데스크 멤버 제거",
+      "message": "이 데스크에서 \"{{username}}\"을(를) 제거하시겠습니까? 활성 세션이 종료되며 다시 로그인해야 합니다.",
+      "confirm": "멤버 제거"
+    },
+    "empty": {
+      "noDesks": "사용 가능한 트레이딩 데스크가 없습니다",
+      "noDesksHint": "현재 관리할 수 있는 트레이딩 데스크에 접근할 수 없습니다.",
+      "selectDesk": "트레이딩 데스크 선택",
+      "selectDeskHint": "멤버를 보고 관리할 데스크를 선택하세요.",
+      "noMembers": "활성 멤버가 없습니다",
+      "noMembersHint": "이 데스크에는 활성 상태인 실제 사용자 멤버가 없습니다."
+    },
+    "errors": {
+      "loadDesks": "트레이딩 데스크를 불러오는 중 오류 발생: {{message}}",
+      "loadMembers": "데스크 멤버를 불러오는 중 오류 발생: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}}을(를) 데스크에 추가했습니다",
+      "attachError": "뷰어를 데스크에 추가하는 중 오류 발생",
+      "detached": "{{username}}을(를) 데스크에서 제거했습니다",
+      "detachError": "뷰어를 데스크에서 제거하는 중 오류 발생"
+    }
+  },
   "common": {
     "cancel": "취소",
     "selectWallet": "지갑 선택",

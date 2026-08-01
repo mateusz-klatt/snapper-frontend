@@ -36,6 +36,62 @@
       "settings": "הגדרות"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "הגישה נדחתה",
+      "message": "אין לך הרשאה לנהל חברויות בדסק המסחר."
+    },
+    "title": "חברויות בדסק המסחר",
+    "subtitle": "הוסף צופים פעילים לדסק מסחר או הסר את הגישה הנוכחית שלהם אליו.",
+    "memberCount": "חברים: {{count}}",
+    "desk": {
+      "label": "דסק מסחר",
+      "placeholder": "בחר דסק מסחר..."
+    },
+    "add": {
+      "usernameLabel": "שם המשתמש של הצופה",
+      "usernamePlaceholder": "הזן את שם המשתמש המדויק",
+      "usernameHint": "ניתן להוסיף רק צופים פעילים שהם משתמשים אנושיים.",
+      "action": "הוסף צופה",
+      "validation": {
+        "usernameRequired": "שם משתמש הוא שדה חובה"
+      }
+    },
+    "columns": {
+      "username": "שם משתמש",
+      "role": "תפקיד",
+      "membership": "חברות",
+      "actions": "פעולות"
+    },
+    "primary": "ראשי",
+    "member": "חבר",
+    "remove": {
+      "action": "הסר",
+      "actionFor": "הסר את {{username}} מהדסק",
+      "viewerOnly": "ניתן להסיר כאן רק צופים",
+      "title": "הסר חבר מהדסק",
+      "message": "להסיר את \"{{username}}\" מהדסק הזה? ההפעלות הפעילות שלו יסתיימו והוא יצטרך להיכנס שוב.",
+      "confirm": "הסר חבר"
+    },
+    "empty": {
+      "noDesks": "אין דסקי מסחר זמינים",
+      "noDesksHint": "אין לך כרגע גישה לדסק מסחר שניתן לנהל.",
+      "selectDesk": "בחר דסק מסחר",
+      "selectDeskHint": "בחר דסק כדי להציג ולנהל את חבריו.",
+      "noMembers": "אין חברים פעילים",
+      "noMembersHint": "בדסק הזה אין חברים אנושיים פעילים."
+    },
+    "errors": {
+      "loadDesks": "שגיאה בטעינת דסקי המסחר: {{message}}",
+      "loadMembers": "שגיאה בטעינת חברי הדסק: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} נוסף לדסק",
+      "attachError": "שגיאה בהוספת הצופה לדסק",
+      "detached": "{{username}} הוסר מהדסק",
+      "detachError": "שגיאה בהסרת הצופה מהדסק"
+    }
+  },
   "common": {
     "cancel": "בטל",
     "selectWallet": "בחר ארנק",

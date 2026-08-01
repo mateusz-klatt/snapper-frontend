@@ -36,6 +36,62 @@
       "settings": "Settings"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Access denied",
+      "message": "You do not have permission to manage desk memberships."
+    },
+    "title": "Desk memberships",
+    "subtitle": "Add active viewers to a desk or remove their current desk access.",
+    "memberCount": "Members: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Select a desk..."
+    },
+    "add": {
+      "usernameLabel": "Viewer username",
+      "usernamePlaceholder": "Enter the exact username",
+      "usernameHint": "Only active human viewers can be added.",
+      "action": "Add viewer",
+      "validation": {
+        "usernameRequired": "Username is required"
+      }
+    },
+    "columns": {
+      "username": "Username",
+      "role": "Role",
+      "membership": "Membership",
+      "actions": "Actions"
+    },
+    "primary": "Primary",
+    "member": "Member",
+    "remove": {
+      "action": "Remove",
+      "actionFor": "Remove {{username}} from the desk",
+      "viewerOnly": "Only viewers can be removed here",
+      "title": "Remove desk member",
+      "message": "Remove \"{{username}}\" from this desk? Their active sessions will be terminated and they will need to sign in again.",
+      "confirm": "Remove member"
+    },
+    "empty": {
+      "noDesks": "No desks available",
+      "noDesksHint": "You do not currently have access to a desk that can be managed.",
+      "selectDesk": "Select a desk",
+      "selectDeskHint": "Choose a desk to view and manage its members.",
+      "noMembers": "No active members",
+      "noMembersHint": "This desk has no active human members."
+    },
+    "errors": {
+      "loadDesks": "Error loading desks: {{message}}",
+      "loadMembers": "Error loading desk members: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} was added to the desk",
+      "attachError": "Error adding viewer to the desk",
+      "detached": "{{username}} was removed from the desk",
+      "detachError": "Error removing viewer from the desk"
+    }
+  },
   "common": {
     "cancel": "Cancel",
     "selectWallet": "Select wallet",

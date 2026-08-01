@@ -36,6 +36,62 @@
       "settings": "Inställningar"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Åtkomst nekad",
+      "message": "Du saknar behörighet att hantera medlemskap i handelsdeskar."
+    },
+    "title": "Medlemskap i handelsdeskar",
+    "subtitle": "Lägg till aktiva tittare i en handelsdesk eller ta bort deras nuvarande åtkomst.",
+    "memberCount": "Medlemmar: {{count}}",
+    "desk": {
+      "label": "Handelsdesk",
+      "placeholder": "Välj en handelsdesk..."
+    },
+    "add": {
+      "usernameLabel": "Tittarens användarnamn",
+      "usernamePlaceholder": "Ange det exakta användarnamnet",
+      "usernameHint": "Endast aktiva mänskliga tittare kan läggas till.",
+      "action": "Lägg till tittare",
+      "validation": {
+        "usernameRequired": "Användarnamn krävs"
+      }
+    },
+    "columns": {
+      "username": "Användarnamn",
+      "role": "Roll",
+      "membership": "Medlemskap",
+      "actions": "Åtgärder"
+    },
+    "primary": "Primär",
+    "member": "Medlem",
+    "remove": {
+      "action": "Ta bort",
+      "actionFor": "Ta bort {{username}} från handelsdesken",
+      "viewerOnly": "Endast tittare kan tas bort här",
+      "title": "Ta bort medlem från handelsdesk",
+      "message": "Ta bort \"{{username}}\" från den här handelsdesken? Aktiva sessioner avslutas och användaren måste logga in igen.",
+      "confirm": "Ta bort medlem"
+    },
+    "empty": {
+      "noDesks": "Inga handelsdeskar tillgängliga",
+      "noDesksHint": "Du har för närvarande inte åtkomst till någon handelsdesk som kan hanteras.",
+      "selectDesk": "Välj en handelsdesk",
+      "selectDeskHint": "Välj en handelsdesk för att visa och hantera dess medlemmar.",
+      "noMembers": "Inga aktiva medlemmar",
+      "noMembersHint": "Den här handelsdesken har inga aktiva mänskliga medlemmar."
+    },
+    "errors": {
+      "loadDesks": "Fel vid inläsning av handelsdeskar: {{message}}",
+      "loadMembers": "Fel vid inläsning av handelsdeskens medlemmar: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} lades till i handelsdesken",
+      "attachError": "Fel när tittaren lades till i handelsdesken",
+      "detached": "{{username}} togs bort från handelsdesken",
+      "detachError": "Fel när tittaren togs bort från handelsdesken"
+    }
+  },
   "common": {
     "cancel": "Avbryt",
     "selectWallet": "Välj plånbok",

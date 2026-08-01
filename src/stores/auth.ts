@@ -2,8 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { Components } from '../types/api.generated'
 import type { LoginBody } from '../types/api'
-import { RESOURCE_PERMISSIONS } from '../types/permissions.generated'
-import type { Permission } from '../types/permissions.generated'
+import { Permission, RESOURCE_PERMISSIONS } from '../types/permissions.generated'
 import i18n from '../i18n/config'
 import { apiClient } from '../lib/apiClient'
 import { queryClient } from '../lib/queryClient'
@@ -237,6 +236,11 @@ export const useAuthStore = create<AuthState>()(
           const { user } = get()
 
           if (!user) return false
+
+          if (resource === 'admin' && get().hasPermission(Permission.MANAGE_DESK_MEMBERSHIPS)) {
+            return true
+          }
+
           const requirements = Object.hasOwn(RESOURCE_PERMISSIONS, resource)
             ? RESOURCE_PERMISSIONS[resource]
             : undefined

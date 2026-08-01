@@ -36,6 +36,62 @@
       "settings": "設定"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "アクセス拒否",
+      "message": "トレーディングデスクのメンバーを管理する権限がありません。"
+    },
+    "title": "トレーディングデスクのメンバー",
+    "subtitle": "有効な閲覧者をトレーディングデスクに追加するか、現在のデスクへのアクセス権を削除します。",
+    "memberCount": "メンバー: {{count}}",
+    "desk": {
+      "label": "トレーディングデスク",
+      "placeholder": "トレーディングデスクを選択..."
+    },
+    "add": {
+      "usernameLabel": "閲覧者のユーザー名",
+      "usernamePlaceholder": "正確なユーザー名を入力",
+      "usernameHint": "有効な人間の閲覧者のみ追加できます。",
+      "action": "閲覧者を追加",
+      "validation": {
+        "usernameRequired": "ユーザー名は必須です"
+      }
+    },
+    "columns": {
+      "username": "ユーザー名",
+      "role": "役割",
+      "membership": "所属",
+      "actions": "操作"
+    },
+    "primary": "プライマリ",
+    "member": "メンバー",
+    "remove": {
+      "action": "削除",
+      "actionFor": "{{username}} をデスクから削除",
+      "viewerOnly": "ここでは閲覧者のみ削除できます",
+      "title": "デスクメンバーを削除",
+      "message": "このデスクから \"{{username}}\" を削除しますか？有効なセッションは終了し、再度サインインする必要があります。",
+      "confirm": "メンバーを削除"
+    },
+    "empty": {
+      "noDesks": "利用可能なトレーディングデスクがありません",
+      "noDesksHint": "現在、管理できるトレーディングデスクへのアクセス権がありません。",
+      "selectDesk": "トレーディングデスクを選択",
+      "selectDeskHint": "メンバーを表示および管理するデスクを選択してください。",
+      "noMembers": "有効なメンバーがいません",
+      "noMembersHint": "このデスクには有効な人間のメンバーがいません。"
+    },
+    "errors": {
+      "loadDesks": "トレーディングデスクの読み込みエラー: {{message}}",
+      "loadMembers": "デスクメンバーの読み込みエラー: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} をデスクに追加しました",
+      "attachError": "閲覧者をデスクに追加できませんでした",
+      "detached": "{{username}} をデスクから削除しました",
+      "detachError": "閲覧者をデスクから削除できませんでした"
+    }
+  },
   "common": {
     "cancel": "キャンセル",
     "selectWallet": "ウォレットを選択",
