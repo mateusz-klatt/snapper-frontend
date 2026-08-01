@@ -36,6 +36,62 @@
       "settings": "Nastavení"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Přístup odepřen",
+      "message": "Nemáte oprávnění spravovat členství v desku."
+    },
+    "title": "Členství v desku",
+    "subtitle": "Přidejte aktivní pozorovatele do desku nebo jim odeberte aktuální přístup k desku.",
+    "memberCount": "Členové: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Vyberte desk..."
+    },
+    "add": {
+      "usernameLabel": "Uživatelské jméno pozorovatele",
+      "usernamePlaceholder": "Zadejte přesné uživatelské jméno",
+      "usernameHint": "Lze přidat pouze aktivní pozorovatele, kteří jsou skutečnými osobami.",
+      "action": "Přidat pozorovatele",
+      "validation": {
+        "usernameRequired": "Uživatelské jméno je povinné"
+      }
+    },
+    "columns": {
+      "username": "Uživatelské jméno",
+      "role": "Role",
+      "membership": "Členství",
+      "actions": "Akce"
+    },
+    "primary": "Primární",
+    "member": "Člen",
+    "remove": {
+      "action": "Odebrat",
+      "actionFor": "Odebrat uživatele {{username}} z desku",
+      "viewerOnly": "Zde lze odebrat pouze pozorovatele",
+      "title": "Odebrat člena desku",
+      "message": "Odebrat uživatele \"{{username}}\" z tohoto desku? Jeho aktivní relace budou ukončeny a bude se muset znovu přihlásit.",
+      "confirm": "Odebrat člena"
+    },
+    "empty": {
+      "noDesks": "Nejsou k dispozici žádné desky",
+      "noDesksHint": "Momentálně nemáte přístup k desku, který lze spravovat.",
+      "selectDesk": "Vyberte desk",
+      "selectDeskHint": "Vyberte desk, jehož členy chcete zobrazit a spravovat.",
+      "noMembers": "Žádní aktivní členové",
+      "noMembersHint": "Tento desk nemá žádné aktivní členy, kteří jsou skutečnými osobami."
+    },
+    "errors": {
+      "loadDesks": "Chyba při načítání desků: {{message}}",
+      "loadMembers": "Chyba při načítání členů desku: {{message}}"
+    },
+    "toast": {
+      "attached": "Uživatel {{username}} byl přidán do desku",
+      "attachError": "Chyba při přidávání pozorovatele do desku",
+      "detached": "Uživatel {{username}} byl odebrán z desku",
+      "detachError": "Chyba při odebírání pozorovatele z desku"
+    }
+  },
   "common": {
     "cancel": "Zrušit",
     "selectWallet": "Vybrat peněženku",

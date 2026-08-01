@@ -36,6 +36,62 @@
       "settings": "Beállítások"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Hozzáférés megtagadva",
+      "message": "Nincs jogosultsága a kereskedési részleg tagságainak kezeléséhez."
+    },
+    "title": "Kereskedési részleg tagságai",
+    "subtitle": "Adjon aktív megfigyelőket egy kereskedési részleghez, vagy szüntesse meg a jelenlegi hozzáférésüket.",
+    "memberCount": "Tagok: {{count}}",
+    "desk": {
+      "label": "Kereskedési részleg",
+      "placeholder": "Válasszon kereskedési részleget..."
+    },
+    "add": {
+      "usernameLabel": "Megfigyelő felhasználóneve",
+      "usernamePlaceholder": "Adja meg a pontos felhasználónevet",
+      "usernameHint": "Csak aktív, emberi megfigyelők adhatók hozzá.",
+      "action": "Megfigyelő hozzáadása",
+      "validation": {
+        "usernameRequired": "A felhasználónév megadása kötelező"
+      }
+    },
+    "columns": {
+      "username": "Felhasználónév",
+      "role": "Szerep",
+      "membership": "Tagság",
+      "actions": "Műveletek"
+    },
+    "primary": "Elsődleges",
+    "member": "Tag",
+    "remove": {
+      "action": "Eltávolítás",
+      "actionFor": "{{username}} eltávolítása a részlegből",
+      "viewerOnly": "Itt csak megfigyelők távolíthatók el",
+      "title": "Részlegtag eltávolítása",
+      "message": "Eltávolítja \"{{username}}\" felhasználót ebből a részlegből? Aktív munkamenetei megszakadnak, és újra be kell jelentkeznie.",
+      "confirm": "Tag eltávolítása"
+    },
+    "empty": {
+      "noDesks": "Nincs elérhető kereskedési részleg",
+      "noDesksHint": "Jelenleg nincs hozzáférése kezelhető kereskedési részleghez.",
+      "selectDesk": "Válasszon kereskedési részleget",
+      "selectDeskHint": "Válasszon egy részleget a tagok megtekintéséhez és kezeléséhez.",
+      "noMembers": "Nincsenek aktív tagok",
+      "noMembersHint": "Ennek a részlegnek nincsenek aktív emberi tagjai."
+    },
+    "errors": {
+      "loadDesks": "Hiba a kereskedési részlegek betöltésekor: {{message}}",
+      "loadMembers": "Hiba a részleg tagjainak betöltésekor: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} hozzáadva a részleghez",
+      "attachError": "Hiba a megfigyelő részleghez adásakor",
+      "detached": "{{username}} eltávolítva a részlegből",
+      "detachError": "Hiba a megfigyelő részlegből való eltávolításakor"
+    }
+  },
   "common": {
     "cancel": "Mégse",
     "selectWallet": "Pénztárca kiválasztása",

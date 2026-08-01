@@ -349,6 +349,7 @@ describe('App', () => {
             'backtests',
             'health',
             'notifications',
+            'admin',
             'ai-integration',
             'settings',
           ].includes(resource)
@@ -358,6 +359,7 @@ describe('App', () => {
       await waitFor(() => {
         expect(screen.getAllByText('AI Integration').length).toBeGreaterThan(0)
       })
+      expect(screen.getByText('Administration')).toBeInTheDocument()
     })
     it('hides AI Integration entry for readonly role via App.tsx:22 canAccess filter', async () => {
       const { useAuth } = await import('./stores/auth')

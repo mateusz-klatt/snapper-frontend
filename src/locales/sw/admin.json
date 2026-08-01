@@ -36,6 +36,62 @@
       "settings": "Mipangilio"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Ufikiaji umekataliwa",
+      "message": "Huna ruhusa ya kusimamia uanachama wa madawati ya biashara."
+    },
+    "title": "Uanachama wa madawati ya biashara",
+    "subtitle": "Ongeza watazamaji wanaotumika kwenye dawati la biashara au uondoe ufikiaji wao wa sasa.",
+    "memberCount": "Wanachama: {{count}}",
+    "desk": {
+      "label": "Dawati la biashara",
+      "placeholder": "Chagua dawati la biashara..."
+    },
+    "add": {
+      "usernameLabel": "Jina la mtumiaji la mtazamaji",
+      "usernamePlaceholder": "Weka jina kamili la mtumiaji",
+      "usernameHint": "Watazamaji wanaotumika ambao ni watu pekee ndio wanaoweza kuongezwa.",
+      "action": "Ongeza mtazamaji",
+      "validation": {
+        "usernameRequired": "Jina la mtumiaji linahitajika"
+      }
+    },
+    "columns": {
+      "username": "Jina la mtumiaji",
+      "role": "Jukumu",
+      "membership": "Uanachama",
+      "actions": "Vitendo"
+    },
+    "primary": "Msingi",
+    "member": "Mwanachama",
+    "remove": {
+      "action": "Ondoa",
+      "actionFor": "Ondoa {{username}} kwenye dawati la biashara",
+      "viewerOnly": "Watazamaji pekee ndio wanaoweza kuondolewa hapa",
+      "title": "Ondoa mwanachama wa dawati",
+      "message": "Uondoe \"{{username}}\" kwenye dawati hili? Vipindi vyake vinavyotumika vitasitishwa na atalazimika kuingia tena.",
+      "confirm": "Ondoa mwanachama"
+    },
+    "empty": {
+      "noDesks": "Hakuna madawati ya biashara yanayopatikana",
+      "noDesksHint": "Kwa sasa huna ufikiaji wa dawati la biashara linaloweza kusimamiwa.",
+      "selectDesk": "Chagua dawati la biashara",
+      "selectDeskHint": "Chagua dawati ili kuona na kusimamia wanachama wake.",
+      "noMembers": "Hakuna wanachama wanaotumika",
+      "noMembersHint": "Dawati hili halina wanachama wanaotumika ambao ni watu."
+    },
+    "errors": {
+      "loadDesks": "Hitilafu wakati wa kupakia madawati ya biashara: {{message}}",
+      "loadMembers": "Hitilafu wakati wa kupakia wanachama wa dawati: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} ameongezwa kwenye dawati",
+      "attachError": "Hitilafu wakati wa kuongeza mtazamaji kwenye dawati",
+      "detached": "{{username}} ameondolewa kwenye dawati",
+      "detachError": "Hitilafu wakati wa kuondoa mtazamaji kwenye dawati"
+    }
+  },
   "common": {
     "cancel": "Ghairi",
     "selectWallet": "Chagua pochi",

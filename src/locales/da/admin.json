@@ -36,6 +36,62 @@
       "settings": "Indstillinger"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Adgang nægtet",
+      "message": "Du har ikke tilladelse til at administrere deskmedlemskaber."
+    },
+    "title": "Deskmedlemskaber",
+    "subtitle": "Føj aktive læsere til en desk, eller fjern deres nuværende deskadgang.",
+    "memberCount": "Medlemmer: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Vælg en desk..."
+    },
+    "add": {
+      "usernameLabel": "Læserens brugernavn",
+      "usernamePlaceholder": "Indtast det nøjagtige brugernavn",
+      "usernameHint": "Kun aktive, menneskelige læsere kan tilføjes.",
+      "action": "Tilføj læser",
+      "validation": {
+        "usernameRequired": "Brugernavn er påkrævet"
+      }
+    },
+    "columns": {
+      "username": "Brugernavn",
+      "role": "Rolle",
+      "membership": "Medlemskab",
+      "actions": "Handlinger"
+    },
+    "primary": "Primær",
+    "member": "Medlem",
+    "remove": {
+      "action": "Fjern",
+      "actionFor": "Fjern {{username}} fra desken",
+      "viewerOnly": "Kun læsere kan fjernes her",
+      "title": "Fjern deskmedlem",
+      "message": "Vil du fjerne \"{{username}}\" fra denne desk? Brugerens aktive sessioner afsluttes, og brugeren skal logge ind igen.",
+      "confirm": "Fjern medlem"
+    },
+    "empty": {
+      "noDesks": "Ingen tilgængelige desks",
+      "noDesksHint": "Du har i øjeblikket ikke adgang til en desk, der kan administreres.",
+      "selectDesk": "Vælg en desk",
+      "selectDeskHint": "Vælg en desk for at se og administrere dens medlemmer.",
+      "noMembers": "Ingen aktive medlemmer",
+      "noMembersHint": "Denne desk har ingen aktive, menneskelige medlemmer."
+    },
+    "errors": {
+      "loadDesks": "Fejl ved indlæsning af desks: {{message}}",
+      "loadMembers": "Fejl ved indlæsning af deskmedlemmer: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} blev føjet til desken",
+      "attachError": "Fejl ved tilføjelse af læser til desken",
+      "detached": "{{username}} blev fjernet fra desken",
+      "detachError": "Fejl ved fjernelse af læser fra desken"
+    }
+  },
   "common": {
     "cancel": "Annuller",
     "selectWallet": "Vælg wallet",

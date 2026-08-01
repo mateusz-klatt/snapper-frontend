@@ -36,6 +36,62 @@
       "settings": "Einstellungen"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Zugriff verweigert",
+      "message": "Sie sind nicht berechtigt, Desk-Mitgliedschaften zu verwalten."
+    },
+    "title": "Desk-Mitgliedschaften",
+    "subtitle": "Fügen Sie einem Desk aktive Betrachter hinzu oder entfernen Sie deren aktuellen Desk-Zugriff.",
+    "memberCount": "Mitglieder: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Desk auswählen..."
+    },
+    "add": {
+      "usernameLabel": "Benutzername des Betrachters",
+      "usernamePlaceholder": "Genauen Benutzernamen eingeben",
+      "usernameHint": "Es können nur aktive menschliche Betrachter hinzugefügt werden.",
+      "action": "Betrachter hinzufügen",
+      "validation": {
+        "usernameRequired": "Benutzername ist erforderlich"
+      }
+    },
+    "columns": {
+      "username": "Benutzername",
+      "role": "Rolle",
+      "membership": "Mitgliedschaft",
+      "actions": "Aktionen"
+    },
+    "primary": "Primär",
+    "member": "Mitglied",
+    "remove": {
+      "action": "Entfernen",
+      "actionFor": "{{username}} aus dem Desk entfernen",
+      "viewerOnly": "Hier können nur Betrachter entfernt werden",
+      "title": "Desk-Mitglied entfernen",
+      "message": "\"{{username}}\" aus diesem Desk entfernen? Aktive Sitzungen werden beendet und der Benutzer muss sich erneut anmelden.",
+      "confirm": "Mitglied entfernen"
+    },
+    "empty": {
+      "noDesks": "Keine Desks verfügbar",
+      "noDesksHint": "Sie haben derzeit keinen Zugriff auf einen verwaltbaren Desk.",
+      "selectDesk": "Desk auswählen",
+      "selectDeskHint": "Wählen Sie einen Desk aus, um seine Mitglieder anzuzeigen und zu verwalten.",
+      "noMembers": "Keine aktiven Mitglieder",
+      "noMembersHint": "Dieser Desk hat keine aktiven menschlichen Mitglieder."
+    },
+    "errors": {
+      "loadDesks": "Fehler beim Laden der Desks: {{message}}",
+      "loadMembers": "Fehler beim Laden der Desk-Mitglieder: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} wurde dem Desk hinzugefügt",
+      "attachError": "Fehler beim Hinzufügen des Betrachters zum Desk",
+      "detached": "{{username}} wurde aus dem Desk entfernt",
+      "detachError": "Fehler beim Entfernen des Betrachters aus dem Desk"
+    }
+  },
   "common": {
     "cancel": "Abbrechen",
     "selectWallet": "Wallet auswählen",

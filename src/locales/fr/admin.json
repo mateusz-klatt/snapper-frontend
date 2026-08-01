@@ -36,6 +36,62 @@
       "settings": "Paramètres"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Accès refusé",
+      "message": "Vous n'avez pas l'autorisation de gérer les membres des desks."
+    },
+    "title": "Membres des desks",
+    "subtitle": "Ajoutez des observateurs actifs à un desk ou supprimez leur accès actuel.",
+    "memberCount": "Membres : {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Sélectionnez un desk..."
+    },
+    "add": {
+      "usernameLabel": "Nom d'utilisateur de l'observateur",
+      "usernamePlaceholder": "Saisissez le nom d'utilisateur exact",
+      "usernameHint": "Seuls les observateurs actifs correspondant à des personnes peuvent être ajoutés.",
+      "action": "Ajouter un observateur",
+      "validation": {
+        "usernameRequired": "Le nom d'utilisateur est obligatoire"
+      }
+    },
+    "columns": {
+      "username": "Nom d'utilisateur",
+      "role": "Rôle",
+      "membership": "Appartenance",
+      "actions": "Actions"
+    },
+    "primary": "Principal",
+    "member": "Membre",
+    "remove": {
+      "action": "Supprimer",
+      "actionFor": "Supprimer {{username}} du desk",
+      "viewerOnly": "Seuls les observateurs peuvent être supprimés ici",
+      "title": "Supprimer un membre du desk",
+      "message": "Supprimer \"{{username}}\" de ce desk ? Ses sessions actives seront interrompues et cette personne devra se reconnecter.",
+      "confirm": "Supprimer le membre"
+    },
+    "empty": {
+      "noDesks": "Aucun desk disponible",
+      "noDesksHint": "Vous n'avez actuellement accès à aucun desk pouvant être géré.",
+      "selectDesk": "Sélectionner un desk",
+      "selectDeskHint": "Choisissez un desk pour afficher et gérer ses membres.",
+      "noMembers": "Aucun membre actif",
+      "noMembersHint": "Ce desk ne compte aucun membre humain actif."
+    },
+    "errors": {
+      "loadDesks": "Erreur lors du chargement des desks : {{message}}",
+      "loadMembers": "Erreur lors du chargement des membres du desk : {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} a été ajouté au desk",
+      "attachError": "Erreur lors de l'ajout de l'observateur au desk",
+      "detached": "{{username}} a été supprimé du desk",
+      "detachError": "Erreur lors de la suppression de l'observateur du desk"
+    }
+  },
   "common": {
     "cancel": "Annuler",
     "selectWallet": "Sélectionner un wallet",

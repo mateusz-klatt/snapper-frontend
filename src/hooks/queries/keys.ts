@@ -124,6 +124,10 @@ export const queryKeys = {
   settingCategories: (asOf: string | null) => ['settings', 'categories', asOf] as const,
   users: (includeInactive: boolean, asOf: string | null) =>
     ['users', includeInactive, asOf] as const,
+  deskMembersForDesk: (operatorPublicId: string) => ['desk-memberships', operatorPublicId] as const,
+  deskMembers: (operatorPublicId: string, asOf: string | null) =>
+    ['desk-memberships', operatorPublicId, asOf] as const,
+  deskMembersAll: ['desk-memberships'] as const,
   featureFlags: () => ['feature-flags'] as const,
   aiDelegates: () => ['ai-delegates'] as const,
   aiDelegate: (publicId: string) => ['ai-delegates', publicId] as const,

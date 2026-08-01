@@ -63,6 +63,30 @@ describe('wallets API methods', () => {
       expect(result.payload).toHaveLength(1)
       expect(result.payload[0]?.label).toBe('alice')
     })
+
+    it('uses the global time-travel horizon for the desk catalogue', async () => {
+      const horizon = '2025-01-02T03:04:05Z'
+      const payload = {
+        type: 'operator_list_response',
+        session_id: 's',
+        sequence_id: 1,
+        public_id: 'p',
+        timestamp: horizon,
+        count: 0,
+        payload: [],
+      }
+
+      apiClient.setTimeTravelAsOf(horizon)
+      mockFetch.mockResolvedValueOnce({ ok: true, status: 200, json: async () => payload })
+
+      await getOperators()
+
+      expect(mockFetch).toHaveBeenCalledWith(
+        `/api/operators?as_of=${encodeURIComponent(horizon)}`,
+        expect.any(Object)
+      )
+      apiClient.setTimeTravelAsOf(null)
+    })
   })
   describe('createOperator', () => {
     it('posts and validates the created operator', async () => {

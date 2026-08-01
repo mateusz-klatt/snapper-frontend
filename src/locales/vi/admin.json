@@ -36,6 +36,62 @@
       "settings": "Cài đặt"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Từ chối truy cập",
+      "message": "Bạn không có quyền quản lý thành viên bàn giao dịch."
+    },
+    "title": "Thành viên bàn giao dịch",
+    "subtitle": "Thêm người xem đang hoạt động vào bàn giao dịch hoặc xóa quyền truy cập hiện tại của họ.",
+    "memberCount": "Thành viên: {{count}}",
+    "desk": {
+      "label": "Bàn giao dịch",
+      "placeholder": "Chọn bàn giao dịch..."
+    },
+    "add": {
+      "usernameLabel": "Tên người dùng của người xem",
+      "usernamePlaceholder": "Nhập chính xác tên người dùng",
+      "usernameHint": "Chỉ có thể thêm người xem đang hoạt động là con người.",
+      "action": "Thêm người xem",
+      "validation": {
+        "usernameRequired": "Bắt buộc nhập tên người dùng"
+      }
+    },
+    "columns": {
+      "username": "Tên người dùng",
+      "role": "Vai trò",
+      "membership": "Tư cách thành viên",
+      "actions": "Thao tác"
+    },
+    "primary": "Chính",
+    "member": "Thành viên",
+    "remove": {
+      "action": "Xóa",
+      "actionFor": "Xóa {{username}} khỏi bàn giao dịch",
+      "viewerOnly": "Chỉ có thể xóa người xem tại đây",
+      "title": "Xóa thành viên bàn giao dịch",
+      "message": "Xóa \"{{username}}\" khỏi bàn giao dịch này? Các phiên đang hoạt động sẽ bị chấm dứt và người dùng sẽ cần đăng nhập lại.",
+      "confirm": "Xóa thành viên"
+    },
+    "empty": {
+      "noDesks": "Không có bàn giao dịch khả dụng",
+      "noDesksHint": "Hiện tại bạn không có quyền truy cập vào bàn giao dịch có thể quản lý.",
+      "selectDesk": "Chọn bàn giao dịch",
+      "selectDeskHint": "Chọn bàn giao dịch để xem và quản lý thành viên.",
+      "noMembers": "Không có thành viên đang hoạt động",
+      "noMembersHint": "Bàn giao dịch này không có thành viên đang hoạt động là con người."
+    },
+    "errors": {
+      "loadDesks": "Lỗi khi tải bàn giao dịch: {{message}}",
+      "loadMembers": "Lỗi khi tải thành viên bàn giao dịch: {{message}}"
+    },
+    "toast": {
+      "attached": "Đã thêm {{username}} vào bàn giao dịch",
+      "attachError": "Lỗi khi thêm người xem vào bàn giao dịch",
+      "detached": "Đã xóa {{username}} khỏi bàn giao dịch",
+      "detachError": "Lỗi khi xóa người xem khỏi bàn giao dịch"
+    }
+  },
   "common": {
     "cancel": "Hủy",
     "selectWallet": "Chọn ví",

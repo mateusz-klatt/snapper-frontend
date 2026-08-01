@@ -36,6 +36,62 @@
       "settings": "Postavke"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Pristup odbijen",
+      "message": "Nemate ovlasti za upravljanje članstvima u desku."
+    },
+    "title": "Članstva u desku",
+    "subtitle": "Dodajte aktivne promatrače u desk ili uklonite njihov trenutačni pristup desku.",
+    "memberCount": "Članovi: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Odaberite desk..."
+    },
+    "add": {
+      "usernameLabel": "Korisničko ime promatrača",
+      "usernamePlaceholder": "Unesite točno korisničko ime",
+      "usernameHint": "Mogu se dodati samo aktivni promatrači koji su stvarne osobe.",
+      "action": "Dodaj promatrača",
+      "validation": {
+        "usernameRequired": "Korisničko ime je obvezno"
+      }
+    },
+    "columns": {
+      "username": "Korisničko ime",
+      "role": "Uloga",
+      "membership": "Članstvo",
+      "actions": "Radnje"
+    },
+    "primary": "Primarno",
+    "member": "Član",
+    "remove": {
+      "action": "Ukloni",
+      "actionFor": "Ukloni korisnika {{username}} iz deska",
+      "viewerOnly": "Ovdje se mogu ukloniti samo promatrači",
+      "title": "Ukloni člana deska",
+      "message": "Ukloniti korisnika \"{{username}}\" iz ovog deska? Njegove aktivne sesije bit će prekinute i morat će se ponovno prijaviti.",
+      "confirm": "Ukloni člana"
+    },
+    "empty": {
+      "noDesks": "Nema dostupnih deskova",
+      "noDesksHint": "Trenutačno nemate pristup desku kojim se može upravljati.",
+      "selectDesk": "Odaberite desk",
+      "selectDeskHint": "Odaberite desk kako biste pregledali njegove članove i upravljali njima.",
+      "noMembers": "Nema aktivnih članova",
+      "noMembersHint": "Ovaj desk nema aktivnih članova koji su stvarne osobe."
+    },
+    "errors": {
+      "loadDesks": "Pogreška pri učitavanju deskova: {{message}}",
+      "loadMembers": "Pogreška pri učitavanju članova deska: {{message}}"
+    },
+    "toast": {
+      "attached": "Korisnik {{username}} dodan je u desk",
+      "attachError": "Pogreška pri dodavanju promatrača u desk",
+      "detached": "Korisnik {{username}} uklonjen je iz deska",
+      "detachError": "Pogreška pri uklanjanju promatrača iz deska"
+    }
+  },
   "common": {
     "cancel": "Odustani",
     "selectWallet": "Odaberi novčanik",

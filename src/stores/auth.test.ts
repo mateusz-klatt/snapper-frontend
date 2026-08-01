@@ -249,6 +249,26 @@ describe('auth store', () => {
     expect(state.canAccess('admin')).toBe(false)
     expect(state.canAccess('settings')).toBe(false)
   })
+  it('canAccess exposes Administration to a desk membership manager', () => {
+    useAuthStore.setState({
+      user: {
+        type: 'user_profile' as const,
+        sequence_id: 0,
+        public_id: 'operator-pid',
+        timestamp: '2024-01-01T00:00:00Z',
+        session_id: 'operator-sid',
+        username: 'operator',
+        role: 'operator',
+        is_active: true,
+        created_at: '2026-01-01T00:00:00Z',
+        operator_public_ids: ['desk-1'],
+        effective_permissions: ['manage:desk_memberships'],
+      },
+      isAuthenticated: true,
+    })
+
+    expect(useAuthStore.getState().canAccess('admin')).toBe(true)
+  })
   it('canAccess checks viewer resource access', () => {
     useAuthStore.setState({
       user: {

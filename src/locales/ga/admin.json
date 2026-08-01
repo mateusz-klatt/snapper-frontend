@@ -36,6 +36,62 @@
       "settings": "Socruithe"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Rochtain diúltaithe",
+      "message": "Níl cead agat ballraíochtaí deisce trádála a bhainistiú."
+    },
+    "title": "Ballraíochtaí deisce trádála",
+    "subtitle": "Cuir amharcóirí gníomhacha le deasc trádála nó bain an rochtain atá acu uirthi faoi láthair.",
+    "memberCount": "Baill: {{count}}",
+    "desk": {
+      "label": "Deasc trádála",
+      "placeholder": "Roghnaigh deasc trádála..."
+    },
+    "add": {
+      "usernameLabel": "Ainm úsáideora an amharcóra",
+      "usernamePlaceholder": "Cuir isteach an t-ainm úsáideora cruinn",
+      "usernameHint": "Ní féidir ach amharcóirí gníomhacha ar daoine iad a chur leis.",
+      "action": "Cuir amharcóir leis",
+      "validation": {
+        "usernameRequired": "Tá ainm úsáideora riachtanach"
+      }
+    },
+    "columns": {
+      "username": "Ainm úsáideora",
+      "role": "Ról",
+      "membership": "Ballraíocht",
+      "actions": "Gníomhartha"
+    },
+    "primary": "Príomhúil",
+    "member": "Ball",
+    "remove": {
+      "action": "Bain",
+      "actionFor": "Bain {{username}} den deasc",
+      "viewerOnly": "Ní féidir ach amharcóirí a bhaint anseo",
+      "title": "Bain ball den deasc",
+      "message": "An bhfuil fonn ort \"{{username}}\" a bhaint den deasc seo? Cuirfear deireadh lena seisiúin ghníomhacha agus beidh air logáil isteach arís.",
+      "confirm": "Bain an ball"
+    },
+    "empty": {
+      "noDesks": "Níl aon deasc trádála ar fáil",
+      "noDesksHint": "Níl rochtain agat faoi láthair ar dheasc trádála is féidir a bhainistiú.",
+      "selectDesk": "Roghnaigh deasc trádála",
+      "selectDeskHint": "Roghnaigh deasc chun a baill a fheiceáil agus a bhainistiú.",
+      "noMembers": "Níl aon bhall gníomhach ann",
+      "noMembersHint": "Níl aon bhall daonna gníomhach ag an deasc seo."
+    },
+    "errors": {
+      "loadDesks": "Earráid agus deasca trádála á lódáil: {{message}}",
+      "loadMembers": "Earráid agus baill na deisce á lódáil: {{message}}"
+    },
+    "toast": {
+      "attached": "Cuireadh {{username}} leis an deasc",
+      "attachError": "Earráid agus amharcóir á chur leis an deasc",
+      "detached": "Baineadh {{username}} den deasc",
+      "detachError": "Earráid agus amharcóir á bhaint den deasc"
+    }
+  },
   "common": {
     "cancel": "Cealaigh",
     "selectWallet": "Roghnaigh sparán",

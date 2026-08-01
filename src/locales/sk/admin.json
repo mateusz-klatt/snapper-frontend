@@ -36,6 +36,62 @@
       "settings": "Nastavenia"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Prístup zamietnutý",
+      "message": "Nemáte oprávnenie spravovať členstvá v desku."
+    },
+    "title": "Členstvá v desku",
+    "subtitle": "Pridajte aktívnych pozorovateľov do desku alebo im odstráňte aktuálny prístup k desku.",
+    "memberCount": "Členovia: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Vyberte desk..."
+    },
+    "add": {
+      "usernameLabel": "Používateľské meno pozorovateľa",
+      "usernamePlaceholder": "Zadajte presné používateľské meno",
+      "usernameHint": "Možno pridať iba aktívnych pozorovateľov, ktorí sú skutočnými osobami.",
+      "action": "Pridať pozorovateľa",
+      "validation": {
+        "usernameRequired": "Používateľské meno je povinné"
+      }
+    },
+    "columns": {
+      "username": "Používateľské meno",
+      "role": "Rola",
+      "membership": "Členstvo",
+      "actions": "Akcie"
+    },
+    "primary": "Primárne",
+    "member": "Člen",
+    "remove": {
+      "action": "Odstrániť",
+      "actionFor": "Odstrániť používateľa {{username}} z desku",
+      "viewerOnly": "Tu možno odstrániť iba pozorovateľov",
+      "title": "Odstrániť člena desku",
+      "message": "Odstrániť používateľa \"{{username}}\" z tohto desku? Jeho aktívne relácie sa ukončia a bude sa musieť znova prihlásiť.",
+      "confirm": "Odstrániť člena"
+    },
+    "empty": {
+      "noDesks": "Nie sú dostupné žiadne desky",
+      "noDesksHint": "Momentálne nemáte prístup k desku, ktorý možno spravovať.",
+      "selectDesk": "Vyberte desk",
+      "selectDeskHint": "Vyberte desk, ktorého členov chcete zobraziť a spravovať.",
+      "noMembers": "Žiadni aktívni členovia",
+      "noMembersHint": "Tento desk nemá žiadnych aktívnych členov, ktorí sú skutočnými osobami."
+    },
+    "errors": {
+      "loadDesks": "Chyba pri načítavaní deskov: {{message}}",
+      "loadMembers": "Chyba pri načítavaní členov desku: {{message}}"
+    },
+    "toast": {
+      "attached": "Používateľ {{username}} bol pridaný do desku",
+      "attachError": "Chyba pri pridávaní pozorovateľa do desku",
+      "detached": "Používateľ {{username}} bol odstránený z desku",
+      "detachError": "Chyba pri odstraňovaní pozorovateľa z desku"
+    }
+  },
   "common": {
     "cancel": "Zrušiť",
     "selectWallet": "Vybrať peňaženku",

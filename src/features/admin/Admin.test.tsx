@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { beforeEach, describe, it, expect, vi } from 'vitest'
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Admin } from './Admin'
@@ -12,19 +12,65 @@ vi.mock('./ScopeGrantManagement/ScopeGrantManagement', () => ({
 vi.mock('./CredentialManagement/CredentialManagement', () => ({
   default: () => <div data-testid='credential-management'>Credentials</div>,
 }))
+vi.mock('./DeskMembershipManagement/DeskMembershipManagement', () => ({
+  default: () => <div data-testid='desk-membership-management'>Desk Memberships</div>,
+}))
+
+const authControl = vi.hoisted(() => ({
+  permissions: new Set<string>(),
+}))
+
+vi.mock('../../stores/auth', () => ({
+  useAuthStore: (
+    selector: (state: { hasPermission: (permission: string) => boolean }) => unknown
+  ) => selector({ hasPermission: permission => authControl.permissions.has(permission) }),
+}))
+
 describe('Admin', () => {
+  beforeEach(() => {
+    authControl.permissions = new Set([
+      'manage:desk_memberships',
+      'manage:users',
+      'manage:scope_grants',
+      'manage:wallet_credentials',
+    ])
+  })
+
   it('renders admin page header', () => {
     render(<Admin />)
     expect(screen.getByText('Administration')).toBeInTheDocument()
     expect(screen.getByText(/Manage users and system configuration/i)).toBeInTheDocument()
   })
   it.each([
+    ['renders desk membership component', 'desk-membership-management'],
     ['renders user management component', 'user-management'],
     ['renders scope grant management component', 'scope-grant-management'],
     ['renders credential management component', 'credential-management'],
   ])('%s', (_name, testId) => {
     render(<Admin />)
     expect(screen.getByTestId(testId)).toBeInTheDocument()
+  })
+  it('shows only desk membership management to an operator-level manager', () => {
+    authControl.permissions = new Set(['manage:desk_memberships'])
+
+    render(<Admin />)
+
+    expect(screen.getByTestId('desk-membership-management')).toBeInTheDocument()
+    expect(screen.getByText(/Add active viewers to a desk/i)).toBeInTheDocument()
+    expect(screen.queryByTestId('user-management')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('scope-grant-management')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('credential-management')).not.toBeInTheDocument()
+  })
+  it.each([
+    ['desk memberships and scope grants', ['manage:desk_memberships', 'manage:scope_grants']],
+    ['desk memberships and credentials', ['manage:desk_memberships', 'manage:wallet_credentials']],
+    ['scope grants without desk memberships', ['manage:scope_grants']],
+  ])('uses the general subtitle for %s', (_scenario, permissions) => {
+    authControl.permissions = new Set(permissions)
+
+    render(<Admin />)
+
+    expect(screen.getByText(/Manage users and system configuration/i)).toBeInTheDocument()
   })
   it('applies correct styling classes', () => {
     const { container } = render(<Admin />)
@@ -74,6 +120,15 @@ describe('Admin', () => {
     expect(settingsCells[1]).toHaveTextContent('—')
     expect(settingsCells[2]).toHaveTextContent('—')
     expect(settingsCells[3]).toHaveTextContent('✓')
+    const administrationCell = screen
+      .getAllByText('Administration')
+      .find(element => element.tagName === 'TD')
+    const administrationRow = administrationCell?.closest('tr')
+
+    expect(administrationRow).not.toBeNull()
+    const administrationCells = within(administrationRow as HTMLElement).getAllByRole('cell')
+
+    expect(administrationCells[2]).toHaveTextContent('✓')
     await user.click(toggleButton)
     expect(screen.queryByText(/read-only operator/i)).not.toBeInTheDocument()
   })

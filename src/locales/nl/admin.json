@@ -36,6 +36,62 @@
       "settings": "Instellingen"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Toegang geweigerd",
+      "message": "U hebt geen rechten om lidmaatschappen van handelsdesks te beheren."
+    },
+    "title": "Lidmaatschappen van handelsdesks",
+    "subtitle": "Voeg actieve kijkers toe aan een handelsdesk of verwijder hun huidige toegang.",
+    "memberCount": "Leden: {{count}}",
+    "desk": {
+      "label": "Handelsdesk",
+      "placeholder": "Selecteer een handelsdesk..."
+    },
+    "add": {
+      "usernameLabel": "Gebruikersnaam van kijker",
+      "usernamePlaceholder": "Voer de exacte gebruikersnaam in",
+      "usernameHint": "Alleen actieve menselijke kijkers kunnen worden toegevoegd.",
+      "action": "Kijker toevoegen",
+      "validation": {
+        "usernameRequired": "Gebruikersnaam is verplicht"
+      }
+    },
+    "columns": {
+      "username": "Gebruikersnaam",
+      "role": "Rol",
+      "membership": "Lidmaatschap",
+      "actions": "Acties"
+    },
+    "primary": "Primair",
+    "member": "Lid",
+    "remove": {
+      "action": "Verwijderen",
+      "actionFor": "{{username}} uit de desk verwijderen",
+      "viewerOnly": "Hier kunnen alleen kijkers worden verwijderd",
+      "title": "Desklid verwijderen",
+      "message": "\"{{username}}\" uit deze desk verwijderen? Actieve sessies worden beëindigd en de gebruiker moet opnieuw inloggen.",
+      "confirm": "Lid verwijderen"
+    },
+    "empty": {
+      "noDesks": "Geen handelsdesks beschikbaar",
+      "noDesksHint": "U hebt momenteel geen toegang tot een handelsdesk die kan worden beheerd.",
+      "selectDesk": "Selecteer een handelsdesk",
+      "selectDeskHint": "Kies een desk om de leden ervan te bekijken en beheren.",
+      "noMembers": "Geen actieve leden",
+      "noMembersHint": "Deze desk heeft geen actieve menselijke leden."
+    },
+    "errors": {
+      "loadDesks": "Fout bij het laden van handelsdesks: {{message}}",
+      "loadMembers": "Fout bij het laden van deskleden: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} is aan de desk toegevoegd",
+      "attachError": "Fout bij het toevoegen van de kijker aan de desk",
+      "detached": "{{username}} is uit de desk verwijderd",
+      "detachError": "Fout bij het verwijderen van de kijker uit de desk"
+    }
+  },
   "common": {
     "cancel": "Annuleren",
     "selectWallet": "Portefeuille selecteren",

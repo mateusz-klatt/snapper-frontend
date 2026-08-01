@@ -36,6 +36,62 @@
       "settings": "Ustawienia"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Brak dostępu",
+      "message": "Nie masz uprawnień do zarządzania członkostwem w deskach."
+    },
+    "title": "Członkowie desku",
+    "subtitle": "Dodawaj aktywnych obserwatorów do desku lub odbieraj im bieżący dostęp.",
+    "memberCount": "Członkowie: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Wybierz desk..."
+    },
+    "add": {
+      "usernameLabel": "Nazwa użytkownika obserwatora",
+      "usernamePlaceholder": "Wpisz dokładną nazwę użytkownika",
+      "usernameHint": "Można dodawać tylko aktywnych obserwatorów będących osobami.",
+      "action": "Dodaj obserwatora",
+      "validation": {
+        "usernameRequired": "Nazwa użytkownika jest wymagana"
+      }
+    },
+    "columns": {
+      "username": "Nazwa użytkownika",
+      "role": "Rola",
+      "membership": "Członkostwo",
+      "actions": "Akcje"
+    },
+    "primary": "Główny",
+    "member": "Członek",
+    "remove": {
+      "action": "Usuń",
+      "actionFor": "Usuń użytkownika {{username}} z desku",
+      "viewerOnly": "Tutaj można usuwać tylko obserwatorów",
+      "title": "Usuń członka desku",
+      "message": "Usunąć użytkownika \"{{username}}\" z tego desku? Jego aktywne sesje zostaną zakończone i będzie musiał zalogować się ponownie.",
+      "confirm": "Usuń członka"
+    },
+    "empty": {
+      "noDesks": "Brak dostępnych desków",
+      "noDesksHint": "Nie masz obecnie dostępu do desku, którym możesz zarządzać.",
+      "selectDesk": "Wybierz desk",
+      "selectDeskHint": "Wybierz desk, aby wyświetlić jego członków i nimi zarządzać.",
+      "noMembers": "Brak aktywnych członków",
+      "noMembersHint": "Ten desk nie ma aktywnych członków będących osobami."
+    },
+    "errors": {
+      "loadDesks": "Błąd ładowania desków: {{message}}",
+      "loadMembers": "Błąd ładowania członków desku: {{message}}"
+    },
+    "toast": {
+      "attached": "Użytkownik {{username}} został dodany do desku",
+      "attachError": "Błąd dodawania obserwatora do desku",
+      "detached": "Użytkownik {{username}} został usunięty z desku",
+      "detachError": "Błąd usuwania obserwatora z desku"
+    }
+  },
   "common": {
     "cancel": "Anuluj",
     "selectWallet": "Wybierz portfel",

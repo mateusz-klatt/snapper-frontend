@@ -36,6 +36,62 @@
       "settings": "Configurações"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Acesso negado",
+      "message": "Sem permissão para gerenciar membros das mesas de operações."
+    },
+    "title": "Membros das mesas de operações",
+    "subtitle": "Adicione visualizadores ativos a uma mesa de operações ou remova o acesso atual deles.",
+    "memberCount": "Membros: {{count}}",
+    "desk": {
+      "label": "Mesa de operações",
+      "placeholder": "Selecione uma mesa de operações..."
+    },
+    "add": {
+      "usernameLabel": "Nome de usuário do visualizador",
+      "usernamePlaceholder": "Digite o nome de usuário exato",
+      "usernameHint": "Somente visualizadores humanos ativos podem ser adicionados.",
+      "action": "Adicionar visualizador",
+      "validation": {
+        "usernameRequired": "O nome de usuário é obrigatório"
+      }
+    },
+    "columns": {
+      "username": "Nome de usuário",
+      "role": "Função",
+      "membership": "Participação",
+      "actions": "Ações"
+    },
+    "primary": "Principal",
+    "member": "Membro",
+    "remove": {
+      "action": "Remover",
+      "actionFor": "Remover {{username}} da mesa",
+      "viewerOnly": "Somente visualizadores podem ser removidos aqui",
+      "title": "Remover membro da mesa",
+      "message": "Remover \"{{username}}\" desta mesa? As sessões ativas serão encerradas e o usuário precisará entrar novamente.",
+      "confirm": "Remover membro"
+    },
+    "empty": {
+      "noDesks": "Nenhuma mesa de operações disponível",
+      "noDesksHint": "Você não tem acesso no momento a uma mesa de operações que possa ser gerenciada.",
+      "selectDesk": "Selecione uma mesa de operações",
+      "selectDeskHint": "Escolha uma mesa para visualizar e gerenciar seus membros.",
+      "noMembers": "Nenhum membro ativo",
+      "noMembersHint": "Esta mesa não tem membros humanos ativos."
+    },
+    "errors": {
+      "loadDesks": "Erro ao carregar mesas de operações: {{message}}",
+      "loadMembers": "Erro ao carregar membros da mesa: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} foi adicionado à mesa",
+      "attachError": "Erro ao adicionar visualizador à mesa",
+      "detached": "{{username}} foi removido da mesa",
+      "detachError": "Erro ao remover visualizador da mesa"
+    }
+  },
   "common": {
     "cancel": "Cancelar",
     "selectWallet": "Selecionar carteira",

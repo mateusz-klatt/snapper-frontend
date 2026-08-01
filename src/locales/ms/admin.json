@@ -36,6 +36,62 @@
       "settings": "Tetapan"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Akses ditolak",
+      "message": "Anda tidak mempunyai kebenaran untuk mengurus keahlian meja dagangan."
+    },
+    "title": "Keahlian meja dagangan",
+    "subtitle": "Tambahkan pemapar aktif ke meja dagangan atau alih keluar akses semasa mereka.",
+    "memberCount": "Ahli: {{count}}",
+    "desk": {
+      "label": "Meja dagangan",
+      "placeholder": "Pilih meja dagangan..."
+    },
+    "add": {
+      "usernameLabel": "Nama pengguna pemapar",
+      "usernamePlaceholder": "Masukkan nama pengguna yang tepat",
+      "usernameHint": "Hanya pemapar manusia yang aktif boleh ditambahkan.",
+      "action": "Tambah pemapar",
+      "validation": {
+        "usernameRequired": "Nama pengguna diperlukan"
+      }
+    },
+    "columns": {
+      "username": "Nama pengguna",
+      "role": "Peranan",
+      "membership": "Keahlian",
+      "actions": "Tindakan"
+    },
+    "primary": "Utama",
+    "member": "Ahli",
+    "remove": {
+      "action": "Alih keluar",
+      "actionFor": "Alih keluar {{username}} daripada meja dagangan",
+      "viewerOnly": "Hanya pemapar boleh dialih keluar di sini",
+      "title": "Alih keluar ahli meja dagangan",
+      "message": "Alih keluar \"{{username}}\" daripada meja dagangan ini? Sesi aktif pengguna akan ditamatkan dan pengguna perlu mendaftar masuk semula.",
+      "confirm": "Alih keluar ahli"
+    },
+    "empty": {
+      "noDesks": "Tiada meja dagangan tersedia",
+      "noDesksHint": "Anda tidak mempunyai akses kepada meja dagangan yang boleh diurus pada masa ini.",
+      "selectDesk": "Pilih meja dagangan",
+      "selectDeskHint": "Pilih meja dagangan untuk melihat dan mengurus ahlinya.",
+      "noMembers": "Tiada ahli aktif",
+      "noMembersHint": "Meja dagangan ini tidak mempunyai ahli manusia yang aktif."
+    },
+    "errors": {
+      "loadDesks": "Ralat memuatkan meja dagangan: {{message}}",
+      "loadMembers": "Ralat memuatkan ahli meja dagangan: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} telah ditambahkan ke meja dagangan",
+      "attachError": "Ralat menambahkan pemapar ke meja dagangan",
+      "detached": "{{username}} telah dialih keluar daripada meja dagangan",
+      "detachError": "Ralat mengalih keluar pemapar daripada meja dagangan"
+    }
+  },
   "common": {
     "cancel": "Batal",
     "selectWallet": "Pilih dompet",

@@ -36,6 +36,62 @@
       "settings": "Configuración"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Acceso denegado",
+      "message": "No tiene permiso para gestionar los miembros de las mesas de operaciones."
+    },
+    "title": "Miembros de las mesas de operaciones",
+    "subtitle": "Añada observadores activos a una mesa de operaciones o retire su acceso actual.",
+    "memberCount": "Miembros: {{count}}",
+    "desk": {
+      "label": "Mesa de operaciones",
+      "placeholder": "Seleccione una mesa de operaciones..."
+    },
+    "add": {
+      "usernameLabel": "Nombre de usuario del observador",
+      "usernamePlaceholder": "Introduzca el nombre de usuario exacto",
+      "usernameHint": "Solo se pueden añadir observadores activos que sean personas.",
+      "action": "Añadir observador",
+      "validation": {
+        "usernameRequired": "El nombre de usuario es obligatorio"
+      }
+    },
+    "columns": {
+      "username": "Nombre de usuario",
+      "role": "Rol",
+      "membership": "Pertenencia",
+      "actions": "Acciones"
+    },
+    "primary": "Principal",
+    "member": "Miembro",
+    "remove": {
+      "action": "Retirar",
+      "actionFor": "Retirar a {{username}} de la mesa",
+      "viewerOnly": "Aquí solo se pueden retirar observadores",
+      "title": "Retirar miembro de la mesa",
+      "message": "¿Retirar a \"{{username}}\" de esta mesa? Sus sesiones activas finalizarán y tendrá que iniciar sesión de nuevo.",
+      "confirm": "Retirar miembro"
+    },
+    "empty": {
+      "noDesks": "No hay mesas de operaciones disponibles",
+      "noDesksHint": "Actualmente no tiene acceso a ninguna mesa de operaciones que pueda gestionar.",
+      "selectDesk": "Seleccione una mesa de operaciones",
+      "selectDeskHint": "Elija una mesa para ver y gestionar sus miembros.",
+      "noMembers": "No hay miembros activos",
+      "noMembersHint": "Esta mesa no tiene miembros humanos activos."
+    },
+    "errors": {
+      "loadDesks": "Error al cargar las mesas de operaciones: {{message}}",
+      "loadMembers": "Error al cargar los miembros de la mesa: {{message}}"
+    },
+    "toast": {
+      "attached": "Se añadió a {{username}} a la mesa",
+      "attachError": "Error al añadir el observador a la mesa",
+      "detached": "Se retiró a {{username}} de la mesa",
+      "detachError": "Error al retirar el observador de la mesa"
+    }
+  },
   "common": {
     "cancel": "Cancelar",
     "selectWallet": "Seleccionar cartera",

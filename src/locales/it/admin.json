@@ -36,6 +36,62 @@
       "settings": "Impostazioni"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Accesso negato",
+      "message": "Non hai i permessi per gestire i membri dei desk."
+    },
+    "title": "Membri dei desk",
+    "subtitle": "Aggiungi osservatori attivi a un desk o rimuovi il loro accesso corrente.",
+    "memberCount": "Membri: {{count}}",
+    "desk": {
+      "label": "Desk",
+      "placeholder": "Seleziona un desk..."
+    },
+    "add": {
+      "usernameLabel": "Nome utente dell'osservatore",
+      "usernamePlaceholder": "Inserisci il nome utente esatto",
+      "usernameHint": "È possibile aggiungere solo osservatori attivi che siano persone.",
+      "action": "Aggiungi osservatore",
+      "validation": {
+        "usernameRequired": "Il nome utente è obbligatorio"
+      }
+    },
+    "columns": {
+      "username": "Nome utente",
+      "role": "Ruolo",
+      "membership": "Appartenenza",
+      "actions": "Azioni"
+    },
+    "primary": "Principale",
+    "member": "Membro",
+    "remove": {
+      "action": "Rimuovi",
+      "actionFor": "Rimuovi {{username}} dal desk",
+      "viewerOnly": "Qui è possibile rimuovere solo gli osservatori",
+      "title": "Rimuovi membro del desk",
+      "message": "Rimuovere \"{{username}}\" da questo desk? Le sue sessioni attive verranno terminate e dovrà accedere di nuovo.",
+      "confirm": "Rimuovi membro"
+    },
+    "empty": {
+      "noDesks": "Nessun desk disponibile",
+      "noDesksHint": "Al momento non hai accesso a un desk che possa essere gestito.",
+      "selectDesk": "Seleziona un desk",
+      "selectDeskHint": "Scegli un desk per visualizzare e gestire i suoi membri.",
+      "noMembers": "Nessun membro attivo",
+      "noMembersHint": "Questo desk non ha membri umani attivi."
+    },
+    "errors": {
+      "loadDesks": "Errore durante il caricamento dei desk: {{message}}",
+      "loadMembers": "Errore durante il caricamento dei membri del desk: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} è stato aggiunto al desk",
+      "attachError": "Errore durante l'aggiunta dell'osservatore al desk",
+      "detached": "{{username}} è stato rimosso dal desk",
+      "detachError": "Errore durante la rimozione dell'osservatore dal desk"
+    }
+  },
   "common": {
     "cancel": "Annulla",
     "selectWallet": "Seleziona portafoglio",

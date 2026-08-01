@@ -36,6 +36,62 @@
       "settings": "Cilësime"
     }
   },
+  "deskMemberships": {
+    "accessDenied": {
+      "title": "Aksesi u refuzua",
+      "message": "Nuk keni leje për të menaxhuar anëtarësimet në tryezat e tregtimit."
+    },
+    "title": "Anëtarësimet në tryezat e tregtimit",
+    "subtitle": "Shtoni shikues aktivë në një tryezë tregtimi ose hiqni aksesin e tyre aktual.",
+    "memberCount": "Anëtarë: {{count}}",
+    "desk": {
+      "label": "Tryezë tregtimi",
+      "placeholder": "Zgjidhni një tryezë tregtimi..."
+    },
+    "add": {
+      "usernameLabel": "Emri i përdoruesit të shikuesit",
+      "usernamePlaceholder": "Shkruani emrin e saktë të përdoruesit",
+      "usernameHint": "Mund të shtohen vetëm shikues aktivë që janë persona.",
+      "action": "Shto shikues",
+      "validation": {
+        "usernameRequired": "Emri i përdoruesit është i detyrueshëm"
+      }
+    },
+    "columns": {
+      "username": "Emër përdoruesi",
+      "role": "Rol",
+      "membership": "Anëtarësim",
+      "actions": "Veprime"
+    },
+    "primary": "Kryesor",
+    "member": "Anëtar",
+    "remove": {
+      "action": "Hiq",
+      "actionFor": "Hiq {{username}} nga tryeza e tregtimit",
+      "viewerOnly": "Këtu mund të hiqen vetëm shikuesit",
+      "title": "Hiq anëtarin e tryezës",
+      "message": "Të hiqet \"{{username}}\" nga kjo tryezë tregtimi? Sesionet aktive do të përfundojnë dhe përdoruesi do të duhet të hyjë përsëri.",
+      "confirm": "Hiq anëtarin"
+    },
+    "empty": {
+      "noDesks": "Nuk ka tryeza tregtimi të disponueshme",
+      "noDesksHint": "Aktualisht nuk keni akses në një tryezë tregtimi që mund të menaxhohet.",
+      "selectDesk": "Zgjidhni një tryezë tregtimi",
+      "selectDeskHint": "Zgjidhni një tryezë për të parë dhe menaxhuar anëtarët e saj.",
+      "noMembers": "Nuk ka anëtarë aktivë",
+      "noMembersHint": "Kjo tryezë nuk ka anëtarë aktivë që janë persona."
+    },
+    "errors": {
+      "loadDesks": "Gabim gjatë ngarkimit të tryezave të tregtimit: {{message}}",
+      "loadMembers": "Gabim gjatë ngarkimit të anëtarëve të tryezës: {{message}}"
+    },
+    "toast": {
+      "attached": "{{username}} u shtua në tryezën e tregtimit",
+      "attachError": "Gabim gjatë shtimit të shikuesit në tryezë",
+      "detached": "{{username}} u hoq nga tryeza e tregtimit",
+      "detachError": "Gabim gjatë heqjes së shikuesit nga tryeza"
+    }
+  },
   "common": {
     "cancel": "Anulo",
     "selectWallet": "Zgjidh portofol",
