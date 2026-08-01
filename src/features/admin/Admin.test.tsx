@@ -61,6 +61,17 @@ describe('Admin', () => {
     expect(screen.queryByTestId('scope-grant-management')).not.toBeInTheDocument()
     expect(screen.queryByTestId('credential-management')).not.toBeInTheDocument()
   })
+  it.each([
+    ['desk memberships and scope grants', ['manage:desk_memberships', 'manage:scope_grants']],
+    ['desk memberships and credentials', ['manage:desk_memberships', 'manage:wallet_credentials']],
+    ['scope grants without desk memberships', ['manage:scope_grants']],
+  ])('uses the general subtitle for %s', (_scenario, permissions) => {
+    authControl.permissions = new Set(permissions)
+
+    render(<Admin />)
+
+    expect(screen.getByText(/Manage users and system configuration/i)).toBeInTheDocument()
+  })
   it('applies correct styling classes', () => {
     const { container } = render(<Admin />)
     const mainDiv = container.firstChild as HTMLElement

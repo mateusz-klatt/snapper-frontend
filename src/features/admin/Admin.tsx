@@ -62,6 +62,8 @@ export const Admin: React.FC = () => {
   const canManageUsers = hasPermission(Permission.MANAGE_USERS)
   const canManageScopeGrants = hasPermission(Permission.MANAGE_SCOPE_GRANTS)
   const canManageCredentials = hasPermission(Permission.MANAGE_WALLET_CREDENTIALS)
+  const canOnlyManageDeskMemberships =
+    canManageDeskMemberships && !canManageUsers && !canManageScopeGrants && !canManageCredentials
 
   const rolePermissions = TAB_KEYS.map(tabId => {
     return {
@@ -77,7 +79,7 @@ export const Admin: React.FC = () => {
       <div className='mb-6'>
         <h1 className='text-3xl font-bold text-alpine-900 mb-2'>{t('page.title')}</h1>
         <p className='text-muted-600'>
-          {canManageUsers ? t('page.subtitle') : t('deskMemberships.subtitle')}
+          {canOnlyManageDeskMemberships ? t('deskMemberships.subtitle') : t('page.subtitle')}
         </p>
       </div>
       <div className='panel'>
