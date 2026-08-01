@@ -64,9 +64,23 @@ describe('desk membership API', () => {
     })
   })
 
-  it('rejects a malformed member response', async () => {
+  it('redacts dynamic identifiers from malformed-response diagnostics', async () => {
     vi.spyOn(apiClient, 'requestJSON').mockResolvedValue({ payload: [] })
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined)
 
-    await expect(getDeskMembers('desk-1')).rejects.toThrow()
+    await expect(getDeskMembers('private/desk', '2026-07-31T10:00:00Z')).rejects.toMatchObject({
+      endpoint: '/api/auth/desks/:operator_public_id/members',
+    })
+    await expect(attachViewerToDesk('private/desk', 'private/viewer')).rejects.toMatchObject({
+      endpoint: '/api/auth/desks/:operator_public_id/members/:username POST',
+    })
+    await expect(detachViewerFromDesk('private/desk', 'private/viewer')).rejects.toMatchObject({
+      endpoint: '/api/auth/desks/:operator_public_id/members/:username DELETE',
+    })
+
+    const diagnostics = consoleError.mock.calls.flat().join(' ')
+
+    expect(diagnostics).not.toContain('private')
+    expect(diagnostics).not.toContain('2026-07-31')
   })
 })
