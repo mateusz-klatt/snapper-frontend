@@ -39,7 +39,7 @@ jobs:
           restore-keys: playwright-${{ runner.os }}-
 
       - name: Install Chromium (with system deps)
-        run: pnpm exec playwright install chromium --with-deps
+        run: ./node_modules/.bin/playwright install chromium --with-deps
 
       - name: Build production bundle
         run: pnpm build
