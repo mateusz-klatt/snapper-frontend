@@ -11,6 +11,11 @@ const coverage = (overrides: Partial<PnlEquityCoverageData> = {}): PnlEquityCove
   first_minute: '2026-01-01T00:00:00Z',
   last_minute: '2026-01-01T00:05:00Z',
   sample_calc_version: 'v1',
+  valuation_basis: 'USD',
+  converted_from: null,
+  conversion_rate_source: null,
+  conversion_withheld_minutes: 0,
+  drawdown_withheld_reason: null,
   ...overrides,
 })
 

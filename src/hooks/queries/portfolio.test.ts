@@ -112,6 +112,11 @@ const pnlSeriesResponse: PnlSeriesResponse = {
       first_minute: null,
       last_minute: null,
       sample_calc_version: null,
+      valuation_basis: null,
+      converted_from: null,
+      conversion_rate_source: null,
+      conversion_withheld_minutes: 0,
+      drawdown_withheld_reason: null,
     },
     execution_history: {
       status: 'as_recorded',
