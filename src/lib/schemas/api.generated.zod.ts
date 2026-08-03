@@ -728,6 +728,22 @@ export const FrontMonthDataSchema = _FrontMonthDataRawSchema as unknown as z.Zod
   Components['schemas']['FrontMonthData']
 >
 
+const _FxShadowPinMetricsRawSchema = z
+  .object({
+    creation: z.number().int(),
+    reuse: z.number().int(),
+    conflict: z.number().int(),
+    upgrade_required: z.number().int(),
+    mismatch: z.number().int(),
+    failure: z.number().int(),
+    dropped: z.number().int(),
+  })
+  .strict()
+
+export const FxShadowPinMetricsSchema = _FxShadowPinMetricsRawSchema as unknown as z.ZodType<
+  Components['schemas']['FxShadowPinMetrics']
+>
+
 const _GapStatsRawSchema = z
   .object({
     gaps_detected: z.number().int(),
@@ -3511,6 +3527,7 @@ const _SystemMetricsDataRawSchema = z
     saturation: SaturationMetricsSchema,
     db_internal: DbInternalMetricsSchema,
     disk: DiskMetricsSchema,
+    fx_shadow_pins: FxShadowPinMetricsSchema,
     tracemalloc_active: z.boolean(),
     cgroup_version: z.enum(['v1', 'v2']).nullable(),
   })
@@ -3538,6 +3555,7 @@ const _SystemMetricsHistoryItemRawSchema = z
     saturation: SaturationMetricsSchema,
     db_internal: DbInternalMetricsSchema,
     disk: DiskMetricsSchema,
+    fx_shadow_pins: FxShadowPinMetricsSchema,
     tracemalloc_active: z.boolean(),
     cgroup_version: z.enum(['v1', 'v2']).nullable(),
   })
@@ -6315,6 +6333,7 @@ export type ExecutionData = Components['schemas']['ExecutionData']
 export type ExecutionPlanData = Components['schemas']['ExecutionPlanData']
 export type FeatureFlagsPayload = Components['schemas']['FeatureFlagsPayload']
 export type FrontMonthData = Components['schemas']['FrontMonthData']
+export type FxShadowPinMetrics = Components['schemas']['FxShadowPinMetrics']
 export type GapStats = Components['schemas']['GapStats']
 export type GcMetrics = Components['schemas']['GcMetrics']
 export type HealthTopics = Components['schemas']['HealthTopics']

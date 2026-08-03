@@ -3046,6 +3046,15 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["FrontMonthData"];
         };
+        FxShadowPinMetrics: {
+            creation: number;
+            reuse: number;
+            conflict: number;
+            upgrade_required: number;
+            mismatch: number;
+            failure: number;
+            dropped: number;
+        };
         GapDetectionStats: {
             bridge: Components["schemas"]["GapStats"];
             rest_clients: {
@@ -4463,6 +4472,7 @@ export type Components = {
             saturation: Components["schemas"]["SaturationMetrics"];
             db_internal: Components["schemas"]["DbInternalMetrics"];
             disk: Components["schemas"]["DiskMetrics"];
+            fx_shadow_pins: Components["schemas"]["FxShadowPinMetrics"];
             tracemalloc_active: boolean;
             cgroup_version: ("v1" | "v2") | null;
         };
@@ -4483,6 +4493,7 @@ export type Components = {
             saturation: Components["schemas"]["SaturationMetrics"];
             db_internal: Components["schemas"]["DbInternalMetrics"];
             disk: Components["schemas"]["DiskMetrics"];
+            fx_shadow_pins: Components["schemas"]["FxShadowPinMetrics"];
             tracemalloc_active: boolean;
             cgroup_version: ("v1" | "v2") | null;
         };
