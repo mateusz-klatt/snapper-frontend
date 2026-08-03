@@ -3,11 +3,10 @@
  * Do not make direct changes to the file.
  */
 
-type MarketDataExchange = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
-
 type Side = "buy" | "sell";
 type Role = "core" | "task" | "strategy" | "backtest";
 type Status = "healthy" | "warning" | "error";
+type MarketDataExchange = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
 type Mode = "live" | "paper";
 type Lifecycle = "long_running" | "one_shot";
 type Exchange = "paper" | "kraken" | "kraken_futures" | "walutomat";
