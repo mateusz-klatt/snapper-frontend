@@ -19,7 +19,7 @@ help:
 	@echo ""
 	@echo "  test           vitest run"
 	@echo "  test-watch     vitest watch mode"
-	@echo "  cov            vitest with coverage"
+	@echo "  cov            Vitest + executable-script coverage"
 	@echo ""
 	@echo "  dead-code      knip (dead-code analysis)"
 	@echo "  dead-code-fix  knip --fix"

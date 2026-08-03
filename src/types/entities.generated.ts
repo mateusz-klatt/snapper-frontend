@@ -19,8 +19,8 @@ type Mode = 'live' | 'paper'
 type Exchange2 = 'kraken' | 'kraken_futures' | 'kraken_equities' | 'walutomat' | 'polygon'
 type Origin = 'live' | 'replay'
 type TradeSide = 'buy' | 'sell'
-type ScopeKind = 'underlying' | 'instrument'
 type PairedGroupPolicy = 'simultaneous' | 'sequential_handoff'
+type ScopeKind = 'underlying' | 'instrument'
 
 /**
  * Canonical AccountStateChangedEvent entity.

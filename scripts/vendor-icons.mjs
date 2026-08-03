@@ -4,8 +4,8 @@
  * adding new entries to `src/components/InstrumentIcon/registry/crypto.ts`
  * or `src/components/InstrumentIcon/registry/fiat.ts`.
  *
- * Required tools: Git at `/usr/bin/git` on POSIX or the standard
- * `C:/Program Files/Git/cmd/git.exe` location on Windows.
+ * Required tools: Git in one of the controlled absolute installation paths
+ * supported by `gitCandidatePaths()`.
  * Output: SVGs copied into public/icons/{crypto,flags}/ (relative to repo
  * root). Idempotent: re-runs overwrite existing files with current upstream.
  *
@@ -22,46 +22,90 @@ import {
   mkdtempSync,
   readFileSync,
   readdirSync,
+  realpathSync,
   rmSync,
   writeFileSync,
 } from 'node:fs'
-import { tmpdir } from 'node:os'
-import { dirname, join, resolve } from 'node:path'
+import { homedir, tmpdir } from 'node:os'
+import { dirname, join, posix, resolve, win32 } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
 const REPO_ROOT = resolve(SCRIPT_DIR, '..')
-const PUBLIC_ICONS = resolve(REPO_ROOT, 'public', 'icons')
-const GIT_EXECUTABLE =
-  process.platform === 'win32' ? 'C:/Program Files/Git/cmd/git.exe' : '/usr/bin/git'
-const TMP_DIR = mkdtempSync(join(tmpdir(), 'snapper-icons-'))
 
 const CRYPTO_REPO = 'https://github.com/spothq/cryptocurrency-icons.git'
 const FLAGS_REPO = 'https://github.com/HatScripts/circle-flags.git'
 
-function cleanup() {
-  rmSync(TMP_DIR, { recursive: true, force: true })
+export function gitCandidatePaths(platform = process.platform, homeDirectory = homedir()) {
+  if (platform === 'win32') {
+    return [
+      'C:\\Program Files\\Git\\cmd\\git.exe',
+      'C:\\Program Files (x86)\\Git\\cmd\\git.exe',
+      'C:\\ProgramData\\chocolatey\\bin\\git.exe',
+      win32.join(homeDirectory, 'AppData', 'Local', 'Programs', 'Git', 'cmd', 'git.exe'),
+      win32.join(homeDirectory, 'scoop', 'shims', 'git.exe'),
+    ]
+  }
+
+  return [
+    '/usr/bin/git',
+    '/usr/local/bin/git',
+    '/opt/homebrew/bin/git',
+    '/opt/local/bin/git',
+    '/run/current-system/sw/bin/git',
+    '/nix/var/nix/profiles/default/bin/git',
+    posix.join(homeDirectory, '.nix-profile', 'bin', 'git'),
+  ]
 }
 
-process.on('exit', cleanup)
-process.on('SIGINT', () => process.exit(130))
-process.on('SIGTERM', () => process.exit(143))
+export function gitExecutable({
+  platform = process.platform,
+  homeDirectory = homedir(),
+  candidates = gitCandidatePaths(platform, homeDirectory),
+  exists = existsSync,
+  canonicalize = realpathSync,
+} = {}) {
+  const pathApi = platform === 'win32' ? win32 : posix
 
-function gitClone(url, dest) {
-  const result = spawnSync(GIT_EXECUTABLE, ['clone', '--depth', '1', '--quiet', url, dest], {
+  for (const candidate of candidates) {
+    if (!pathApi.isAbsolute(candidate) || !exists(candidate)) continue
+
+    const canonicalPath = canonicalize(candidate)
+    const executableName = pathApi.basename(canonicalPath)
+
+    if (pathApi.isAbsolute(canonicalPath) && /^git(?:\.exe)?$/i.test(executableName)) {
+      return canonicalPath
+    }
+  }
+
+  throw new Error(
+    `Cannot locate Git in a supported absolute installation path: ${candidates.join(', ')}`
+  )
+}
+
+export function gitClone(
+  url,
+  dest,
+  { executable = gitExecutable(), spawn = spawnSync, logError = console.error } = {}
+) {
+  const result = spawn(executable, ['clone', '--depth', '1', '--quiet', url, dest], {
     stdio: 'inherit',
     shell: false,
   })
 
   if (result.error) {
-    console.error(`Failed to invoke git: ${result.error.message}`)
-    process.exit(1)
+    logError(`Failed to invoke git: ${result.error.message}`)
+
+    return 1
   }
 
   if (result.status !== 0) {
-    console.error(`git clone failed for ${url}`)
-    process.exit(result.status ?? 1)
+    logError(`git clone failed for ${url}`)
+
+    return result.status ?? 1
   }
+
+  return 0
 }
 
 /**
@@ -69,7 +113,7 @@ function gitClone(url, dest) {
  * registry source file. Mirrors the bash awk pattern `/<name>\(/{print $2}`
  * with single-quote field separator.
  */
-function extractRegistryTokens(filePath, fnName) {
+export function extractRegistryTokens(filePath, fnName) {
   const source = readFileSync(filePath, 'utf8')
   const pattern = new RegExp(String.raw`${fnName}\('([^']+)'`, 'g')
   const tokens = new Set()
@@ -82,69 +126,6 @@ function extractRegistryTokens(filePath, fnName) {
   return [...tokens].sort((a, b) => a.localeCompare(b, 'en'))
 }
 
-console.log(`Cloning upstream repos to ${TMP_DIR} ...`)
-gitClone(CRYPTO_REPO, join(TMP_DIR, 'crypto-src'))
-gitClone(FLAGS_REPO, join(TMP_DIR, 'flags-src'))
-
-console.log('Extracting required tokens from registry/crypto.ts ...')
-const cryptos = extractRegistryTokens(
-  resolve(REPO_ROOT, 'src', 'components', 'InstrumentIcon', 'registry', 'crypto.ts'),
-  'cryptoIcon'
-)
-
-console.log('Extracting required country codes from registry/fiat.ts ...')
-const flags = extractRegistryTokens(
-  resolve(REPO_ROOT, 'src', 'components', 'InstrumentIcon', 'registry', 'fiat.ts'),
-  'flag'
-)
-
-mkdirSync(resolve(PUBLIC_ICONS, 'crypto'), { recursive: true })
-mkdirSync(resolve(PUBLIC_ICONS, 'flags'), { recursive: true })
-
-let cryptoCopied = 0
-const cryptoMissing = []
-
-for (const sym of cryptos) {
-  const src = resolve(TMP_DIR, 'crypto-src', 'svg', 'color', `${sym}.svg`)
-
-  if (existsSync(src)) {
-    copyFileSync(src, resolve(PUBLIC_ICONS, 'crypto', `${sym}.svg`))
-    cryptoCopied += 1
-  } else {
-    cryptoMissing.push(sym)
-  }
-}
-
-let flagCopied = 0
-const flagMissing = []
-
-for (const cc of flags) {
-  const src = resolve(TMP_DIR, 'flags-src', 'flags', `${cc}.svg`)
-
-  if (existsSync(src)) {
-    copyFileSync(src, resolve(PUBLIC_ICONS, 'flags', `${cc}.svg`))
-    flagCopied += 1
-  } else {
-    flagMissing.push(cc)
-  }
-}
-
-console.log('')
-console.log('Vendor sync complete:')
-console.log(`  crypto: ${cryptoCopied} SVGs copied`)
-
-if (cryptoMissing.length > 0) {
-  console.log(
-    `  crypto MISSING from upstream (will use textual fallback): ${cryptoMissing.join(' ')}`
-  )
-}
-
-console.log(`  flags : ${flagCopied} SVGs copied`)
-
-if (flagMissing.length > 0) {
-  console.log(`  flags MISSING from upstream: ${flagMissing.join(' ')}`)
-}
-
 /**
  * Generate the vendored-asset manifest. RemoteSvg.tsx consumes it to skip the
  * <img> path entirely for symbols not present locally — keeps the textual
@@ -152,37 +133,166 @@ if (flagMissing.length > 0) {
  * SPA-fallback handler defeats by returning index.html with HTTP 200 for
  * missing static assets in dev mode).
  */
-function listVendoredSet(dir) {
+export function listVendoredSet(dir) {
   return readdirSync(dir)
     .filter(name => name.endsWith('.svg'))
     .map(name => name.slice(0, -4))
     .sort((a, b) => a.localeCompare(b, 'en'))
 }
 
-const cryptoSet = listVendoredSet(resolve(PUBLIC_ICONS, 'crypto'))
-const flagSet = listVendoredSet(resolve(PUBLIC_ICONS, 'flags'))
+export function installSignalCleanup(tempDirectory, runtime = process, remove = rmSync) {
+  const cleanup = () => remove(tempDirectory, { recursive: true, force: true })
+  const interrupt = () => {
+    cleanup()
+    runtime.exit(130)
+  }
+  const terminate = () => {
+    cleanup()
+    runtime.exit(143)
+  }
 
-const manifestPath = resolve(
-  REPO_ROOT,
-  'src',
-  'components',
-  'InstrumentIcon',
-  'iconManifest.generated.ts'
-)
-const manifestLines = [
-  '// AUTO-GENERATED by scripts/vendor-icons.mjs — do not edit by hand.',
-  "// Re-run 'pnpm icons:vendor' to regenerate after adding registry entries.",
-  '',
-  'export const VENDORED_CRYPTO_ICONS: ReadonlySet<string> = new Set([',
-  ...cryptoSet.map(sym => `  '${sym}',`),
-  '])',
-  '',
-  'export const VENDORED_FLAG_ICONS: ReadonlySet<string> = new Set([',
-  ...flagSet.map(cc => `  '${cc}',`),
-  '])',
-  '',
-]
+  runtime.on('SIGINT', interrupt)
+  runtime.on('SIGTERM', terminate)
 
-writeFileSync(manifestPath, manifestLines.join('\n'), 'utf8')
+  return () => {
+    runtime.off('SIGINT', interrupt)
+    runtime.off('SIGTERM', terminate)
+    cleanup()
+  }
+}
 
-console.log(`Generated manifest: ${manifestPath}`)
+export function vendorIcons({
+  repoRoot = REPO_ROOT,
+  tempRoot = tmpdir(),
+  clone = gitClone,
+  runtime = process,
+  log = console.log,
+} = {}) {
+  const publicIcons = resolve(repoRoot, 'public', 'icons')
+  const tempDirectory = mkdtempSync(join(tempRoot, 'snapper-icons-'))
+  const cleanup = installSignalCleanup(tempDirectory, runtime)
+
+  try {
+    log(`Cloning upstream repos to ${tempDirectory} ...`)
+    let exitCode = clone(CRYPTO_REPO, join(tempDirectory, 'crypto-src'))
+
+    if (exitCode !== 0) return exitCode
+
+    exitCode = clone(FLAGS_REPO, join(tempDirectory, 'flags-src'))
+
+    if (exitCode !== 0) return exitCode
+
+    log('Extracting required tokens from registry/crypto.ts ...')
+    const cryptos = extractRegistryTokens(
+      resolve(repoRoot, 'src', 'components', 'InstrumentIcon', 'registry', 'crypto.ts'),
+      'cryptoIcon'
+    )
+
+    log('Extracting required country codes from registry/fiat.ts ...')
+    const flags = extractRegistryTokens(
+      resolve(repoRoot, 'src', 'components', 'InstrumentIcon', 'registry', 'fiat.ts'),
+      'flag'
+    )
+
+    mkdirSync(resolve(publicIcons, 'crypto'), { recursive: true })
+    mkdirSync(resolve(publicIcons, 'flags'), { recursive: true })
+
+    let cryptoCopied = 0
+    const cryptoMissing = []
+
+    for (const sym of cryptos) {
+      const src = resolve(tempDirectory, 'crypto-src', 'svg', 'color', `${sym}.svg`)
+
+      if (existsSync(src)) {
+        copyFileSync(src, resolve(publicIcons, 'crypto', `${sym}.svg`))
+        cryptoCopied += 1
+      } else {
+        cryptoMissing.push(sym)
+      }
+    }
+
+    let flagCopied = 0
+    const flagMissing = []
+
+    for (const cc of flags) {
+      const src = resolve(tempDirectory, 'flags-src', 'flags', `${cc}.svg`)
+
+      if (existsSync(src)) {
+        copyFileSync(src, resolve(publicIcons, 'flags', `${cc}.svg`))
+        flagCopied += 1
+      } else {
+        flagMissing.push(cc)
+      }
+    }
+
+    log('')
+    log('Vendor sync complete:')
+    log(`  crypto: ${cryptoCopied} SVGs copied`)
+
+    if (cryptoMissing.length > 0) {
+      log(`  crypto MISSING from upstream (will use textual fallback): ${cryptoMissing.join(' ')}`)
+    }
+
+    log(`  flags : ${flagCopied} SVGs copied`)
+
+    if (flagMissing.length > 0) {
+      log(`  flags MISSING from upstream: ${flagMissing.join(' ')}`)
+    }
+
+    const cryptoSet = listVendoredSet(resolve(publicIcons, 'crypto'))
+    const flagSet = listVendoredSet(resolve(publicIcons, 'flags'))
+    const manifestPath = resolve(
+      repoRoot,
+      'src',
+      'components',
+      'InstrumentIcon',
+      'iconManifest.generated.ts'
+    )
+    const manifestLines = [
+      '// AUTO-GENERATED by scripts/vendor-icons.mjs — do not edit by hand.',
+      "// Re-run 'pnpm icons:vendor' to regenerate after adding registry entries.",
+      '',
+      'export const VENDORED_CRYPTO_ICONS: ReadonlySet<string> = new Set([',
+      ...cryptoSet.map(sym => `  '${sym}',`),
+      '])',
+      '',
+      'export const VENDORED_FLAG_ICONS: ReadonlySet<string> = new Set([',
+      ...flagSet.map(cc => `  '${cc}',`),
+      '])',
+      '',
+    ]
+
+    writeFileSync(manifestPath, manifestLines.join('\n'), 'utf8')
+    log(`Generated manifest: ${manifestPath}`)
+
+    return 0
+  } finally {
+    cleanup()
+  }
+}
+
+export function runVendorIcons(options = {}) {
+  const logError = options.logError ?? console.error
+
+  try {
+    return vendorIcons(options)
+  } catch (error) {
+    logError('Icon vendor sync failed:', error)
+
+    return 1
+  }
+}
+
+export function setProcessExitCode(exitCode) {
+  process.exitCode = exitCode
+}
+
+export function runVendorIconsIfMain(
+  isMain = import.meta.main,
+  run = runVendorIcons,
+  setExitCode = setProcessExitCode
+) {
+  if (isMain) setExitCode(run())
+}
+
+runVendorIconsIfMain()

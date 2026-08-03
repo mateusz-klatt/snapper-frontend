@@ -11,18 +11,20 @@
  *   <code>/index.html         — 13 screens for one locale
  *   by-screen/<screen>.html   — all 45 locales of one screen (compare)
  */
-import { writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const VIEWPORT = globalThis.process?.env?.VIEWPORT === 'mobile' ? 'mobile' : 'desktop'
-const OUT = resolve(
-  __dirname,
-  VIEWPORT === 'mobile'
-    ? '../../proprietary/screenshots/frontend-mobile'
-    : '../../proprietary/screenshots/frontend'
-)
+const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
+
+export function screenshotOutputDirectory(viewport, scriptDirectory = SCRIPT_DIR) {
+  return resolve(
+    scriptDirectory,
+    viewport === 'mobile'
+      ? '../../proprietary/screenshots/frontend-mobile'
+      : '../../proprietary/screenshots/frontend'
+  )
+}
 
 const LOCALES = [
   ['ie', '🇮🇪', 'Ireland (ga)'],
@@ -130,7 +132,7 @@ const nav = base => `
   ${SCREENS.map(s => `<a href="${base}by-screen/${s}.html">${s}</a>`).join(' ')}
 </div>`
 
-async function buildHome() {
+async function buildHome(out, write = writeFile) {
   const cards = LOCALES.map(
     ([code, flag, label]) => `
     <div class="card">
@@ -148,10 +150,10 @@ async function buildHome() {
 ${nav('./')}
 <div class="grid locale-grid">${cards}</div>
 </body></html>`
-  await writeFile(resolve(OUT, 'index.html'), html)
+  await write(resolve(out, 'index.html'), html)
 }
 
-async function buildLocalePage(code, flag, label) {
+async function buildLocalePage(out, code, flag, label, write = writeFile) {
   const cards = SCREENS.map(
     s => `
     <div class="card">
@@ -170,10 +172,10 @@ ${nav('../')}
 </div>
 <div class="grid screen-grid">${cards}</div>
 </body></html>`
-  await writeFile(resolve(OUT, code, 'index.html'), html)
+  await write(resolve(out, code, 'index.html'), html)
 }
 
-async function buildScreenPage(screen) {
+async function buildScreenPage(out, screen, write = writeFile, makeDirectory = mkdir) {
   const cards = LOCALES.map(
     ([code, flag, label]) => `
     <div class="card">
@@ -196,28 +198,58 @@ ${nav('../')}
 </div>
 <div class="grid screen-grid">${cards}</div>
 </body></html>`
-  const { mkdir } = await import('node:fs/promises')
-  await mkdir(resolve(OUT, 'by-screen'), { recursive: true })
-  await writeFile(resolve(OUT, 'by-screen', `${screen}.html`), html)
+  await makeDirectory(resolve(out, 'by-screen'), { recursive: true })
+  await write(resolve(out, 'by-screen', `${screen}.html`), html)
 }
 
-async function main() {
-  await buildHome()
+export async function buildScreenshotIndex({
+  out,
+  write = writeFile,
+  makeDirectory = mkdir,
+  log = console.log,
+}) {
+  await buildHome(out, write)
   for (const [code, flag, label] of LOCALES) {
-    await buildLocalePage(code, flag, label)
+    await buildLocalePage(out, code, flag, label, write)
   }
   for (const s of SCREENS) {
-    await buildScreenPage(s)
+    await buildScreenPage(out, s, write, makeDirectory)
   }
-  console.log(
-    `Built index.html + ${LOCALES.length} locale pages + ${SCREENS.length} screen-compare pages`
-  )
-  console.log(`Open: file://${OUT}/index.html`)
+  log(`Built index.html + ${LOCALES.length} locale pages + ${SCREENS.length} screen-compare pages`)
+  log(`Open: file://${out}/index.html`)
 }
 
-try {
-  await main()
-} catch (error) {
-  console.error(error)
-  process.exit(1)
+export async function runScreenshotIndex({
+  viewport = globalThis.process?.env?.VIEWPORT === 'mobile' ? 'mobile' : 'desktop',
+  scriptDirectory = SCRIPT_DIR,
+  write = writeFile,
+  makeDirectory = mkdir,
+  log = console.log,
+  logError = console.error,
+} = {}) {
+  try {
+    const out = screenshotOutputDirectory(viewport, scriptDirectory)
+
+    await buildScreenshotIndex({ out, write, makeDirectory, log })
+
+    return 0
+  } catch (error) {
+    logError(error)
+
+    return 1
+  }
 }
+
+export function setProcessExitCode(exitCode) {
+  process.exitCode = exitCode
+}
+
+export async function runScreenshotIndexIfMain(
+  isMain = import.meta.main,
+  run = runScreenshotIndex,
+  setExitCode = setProcessExitCode
+) {
+  if (isMain) setExitCode(await run())
+}
+
+await runScreenshotIndexIfMain()

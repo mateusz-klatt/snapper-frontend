@@ -33,13 +33,15 @@
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
+import { fileURLToPath } from 'node:url'
 
 const DEFAULT_RELATIVE_ROOTS = ['src']
 const SKIP_DIRS = new Set(['node_modules', 'dist', 'build', 'coverage', '.git', '.vite', '.cache'])
 const FILE_EXTENSIONS = new Set(['.ts', '.tsx', '.mts', '.cts'])
 const GENERATED_RE = /\.generated(?:\.\w+)*\.(ts|tsx|mts|cts)$/
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 
-function shouldSkipPath(filepath) {
+export function shouldSkipPath(filepath) {
   const parts = filepath.split(path.sep)
   if (parts.some(part => SKIP_DIRS.has(part))) {
     return true
@@ -47,13 +49,13 @@ function shouldSkipPath(filepath) {
   return GENERATED_RE.test(path.basename(filepath))
 }
 
-async function iterTypeScriptFiles(root, relativeRoots) {
+export async function iterTypeScriptFiles(root, relativeRoots, fsApi = fs) {
   const out = []
 
   async function walk(dir) {
     let entries
     try {
-      entries = await fs.readdir(dir, { withFileTypes: true })
+      entries = await fsApi.readdir(dir, { withFileTypes: true })
     } catch {
       return
     }
@@ -83,7 +85,7 @@ async function iterTypeScriptFiles(root, relativeRoots) {
   return out.sort((left, right) => left.localeCompare(right, 'en'))
 }
 
-class TSScanContext {
+export class TSScanContext {
   constructor(text) {
     this.text = text
     this.length = text.length
@@ -214,7 +216,7 @@ function advanceBlock(ctx) {
   ctx.advance(1)
 }
 
-function findNonDocComments(text) {
+export function findNonDocComments(text) {
   const ctx = new TSScanContext(text)
   while (ctx.cursor < ctx.length) {
     if (ctx.text[ctx.cursor] === '\n') {
@@ -238,8 +240,6 @@ function findNonDocComments(text) {
       case 'block':
         advanceBlock(ctx)
         break
-      default:
-        ctx.advance(1)
     }
   }
   if (ctx.state === 'block' && !ctx.blockDoc) {
@@ -248,11 +248,11 @@ function findNonDocComments(text) {
   return ctx.findings
 }
 
-async function scanFiles(root, relativeRoots) {
-  const files = await iterTypeScriptFiles(root, relativeRoots)
+export async function scanFiles(root, relativeRoots, fsApi = fs) {
+  const files = await iterTypeScriptFiles(root, relativeRoots, fsApi)
   const results = []
   for (const filepath of files) {
-    const text = await fs.readFile(filepath, 'utf8')
+    const text = await fsApi.readFile(filepath, 'utf8')
     const findings = findNonDocComments(text)
     if (findings.length > 0) {
       results.push({ filepath, findings })
@@ -261,25 +261,25 @@ async function scanFiles(root, relativeRoots) {
   return results
 }
 
-function printResults(results, root) {
+export function printResults(results, root, log = console.log) {
   if (results.length === 0) {
-    console.log('  No TypeScript comments found')
+    log('  No TypeScript comments found')
     return 0
   }
   let total = 0
   for (const { filepath, findings } of results) {
     const rel = path.relative(root, filepath)
-    console.log(`\n  ${rel}`)
+    log(`\n  ${rel}`)
     for (const [lineNo, text] of findings) {
       const display = text.length > 80 ? `${text.slice(0, 80)}...` : text
-      console.log(`     L${lineNo}: ${display}`)
+      log(`     L${lineNo}: ${display}`)
       total += 1
     }
   }
   return total
 }
 
-function parseArguments(argv) {
+export function parseArguments(argv) {
   let strictMode = false
   const overrides = []
   for (let i = 0; i < argv.length; i += 1) {
@@ -303,46 +303,70 @@ function parseArguments(argv) {
   return { strictMode, overrides }
 }
 
-async function main() {
-  const { strictMode, overrides } = parseArguments(process.argv.slice(2))
-  const scriptDir = path.dirname(new URL(import.meta.url).pathname)
-  const root = path.resolve(scriptDir, '..')
+export async function checkNoComments({
+  argv = process.argv.slice(2),
+  root = ROOT,
+  fsApi = fs,
+  log = console.log,
+} = {}) {
+  const { strictMode, overrides } = parseArguments(argv)
   const relativeRoots = overrides.length > 0 ? overrides : DEFAULT_RELATIVE_ROOTS
   const heading = '='.repeat(70)
-  console.log(heading)
-  console.log('TypeScript Comment Scanner')
-  console.log(heading)
-  console.log(`\nScanning: ${root}`)
+  log(heading)
+  log('TypeScript Comment Scanner')
+  log(heading)
+  log(`\nScanning: ${root}`)
   const modeLabel = strictMode ? 'STRICT (will fail on findings)' : 'Report only'
-  console.log(`Mode: ${modeLabel}`)
-  console.log(`Relative roots: ${relativeRoots.join(', ')}`)
-  const results = await scanFiles(root, relativeRoots)
-  console.log(`\n${'-'.repeat(70)}`)
-  console.log('TYPESCRIPT FILES (.ts / .tsx)')
-  console.log('-'.repeat(70))
-  const total = printResults(results, root)
-  console.log(`\n${heading}`)
-  console.log('SUMMARY')
-  console.log(heading)
-  console.log(`\n  TypeScript non-doc comments: ${total}`)
+  log(`Mode: ${modeLabel}`)
+  log(`Relative roots: ${relativeRoots.join(', ')}`)
+  const results = await scanFiles(root, relativeRoots, fsApi)
+  log(`\n${'-'.repeat(70)}`)
+  log('TYPESCRIPT FILES (.ts / .tsx)')
+  log('-'.repeat(70))
+  const total = printResults(results, root, log)
+  log(`\n${heading}`)
+  log('SUMMARY')
+  log(heading)
+  log(`\n  TypeScript non-doc comments: ${total}`)
   if (total > 0) {
-    console.log(
+    log(
       '\nFound non-doc comments. Move rationale and guidance into JSDoc blocks (`/** ... */`) or remove them.'
     )
     if (strictMode) {
-      console.log('\nSTRICT MODE: Failing due to comments found.')
+      log('\nSTRICT MODE: Failing due to comments found.')
+
       return 1
     }
+
     return 0
   }
-  console.log('\nNo TypeScript non-doc comments found. Clean docstring-first codebase!')
+  log('\nNo TypeScript non-doc comments found. Clean docstring-first codebase!')
+
   return 0
 }
 
-try {
-  const exitCode = await main()
-  process.exit(exitCode)
-} catch (error) {
-  console.error('Scanner failed:', error)
-  process.exit(2)
+export async function runCheckNoComments(options = {}) {
+  const logError = options.logError ?? console.error
+
+  try {
+    return await checkNoComments(options)
+  } catch (error) {
+    logError('Scanner failed:', error)
+
+    return 2
+  }
 }
+
+export function setProcessExitCode(exitCode) {
+  process.exitCode = exitCode
+}
+
+export async function runCheckNoCommentsIfMain(
+  isMain = import.meta.main,
+  run = runCheckNoComments,
+  setExitCode = setProcessExitCode
+) {
+  if (isMain) setExitCode(await run())
+}
+
+await runCheckNoCommentsIfMain()
