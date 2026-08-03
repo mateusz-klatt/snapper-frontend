@@ -39,9 +39,9 @@ const FLAGS_REPO = 'https://github.com/HatScripts/circle-flags.git'
 export function gitCandidatePaths(platform = process.platform, homeDirectory = homedir()) {
   if (platform === 'win32') {
     return [
-      'C:\\Program Files\\Git\\cmd\\git.exe',
-      'C:\\Program Files (x86)\\Git\\cmd\\git.exe',
-      'C:\\ProgramData\\chocolatey\\bin\\git.exe',
+      String.raw`C:\Program Files\Git\cmd\git.exe`,
+      String.raw`C:\Program Files (x86)\Git\cmd\git.exe`,
+      String.raw`C:\ProgramData\chocolatey\bin\git.exe`,
       win32.join(homeDirectory, 'AppData', 'Local', 'Programs', 'Git', 'cmd', 'git.exe'),
       win32.join(homeDirectory, 'scoop', 'shims', 'git.exe'),
     ]
