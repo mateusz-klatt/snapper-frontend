@@ -5,6 +5,14 @@
 
 type MarketDataExchange = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
 
+type Side = "buy" | "sell";
+type Role = "core" | "task" | "strategy" | "backtest";
+type Status = "healthy" | "warning" | "error";
+type Mode = "live" | "paper";
+type Lifecycle = "long_running" | "one_shot";
+type Exchange = "paper" | "kraken" | "kraken_futures" | "walutomat";
+type Mode2 = "thread" | "process";
+
 export type Paths = {
     "/api/auth/login": {
         parameters: {
@@ -2150,8 +2158,8 @@ export type Components = {
             class_path: string;
             method: string;
             description: string;
-            lifecycle: "long_running" | "one_shot";
-            role: "core" | "task" | "strategy" | "backtest";
+            lifecycle: Lifecycle;
+            role: Role;
             tags: string[];
             parameters_schema?: Record<string, unknown> | null | undefined;
         };
@@ -2538,13 +2546,13 @@ export type Components = {
             name: string;
             enabled: boolean;
             running: boolean;
-            mode: "thread" | "process";
+            mode: Mode2;
             class_path: string;
             method: string;
             parameters: Record<string, unknown>;
             note?: string | null | undefined;
-            lifecycle: "long_running" | "one_shot";
-            role: "core" | "task" | "strategy" | "backtest";
+            lifecycle: Lifecycle;
+            role: Role;
             tags: string[];
             parameters_schema?: Record<string, unknown> | null | undefined;
             is_one_shot: boolean;
@@ -2819,7 +2827,7 @@ export type Components = {
             percent_used: number | null;
             disk_low: boolean;
             disk_critical: boolean;
-            status: "healthy" | "warning" | "error";
+            status: Status;
         };
         EgressActiveReservationSnapshot: {
             exchange: string;
@@ -2920,8 +2928,8 @@ export type Components = {
             exchange_order_id?: string | null | undefined;
             client_order_id: string;
             instrument: string;
-            exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
-            side: "buy" | "sell";
+            exchange: Exchange;
+            side: Side;
             size: number;
             price: number;
             last_size: number;
@@ -3100,7 +3108,7 @@ export type Components = {
             timestamp: string;
             session_id: string;
             topic?: string | null | undefined;
-            status: "healthy" | "warning" | "error";
+            status: Status;
             version: string;
             connections: Components["schemas"]["ConnectionStats"];
             topics: Components["schemas"]["HealthTopics"];
@@ -3409,9 +3417,9 @@ export type Components = {
             exchange_order_id?: string | null | undefined;
             client_order_id: string;
             instrument: string;
-            exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
-            mode: "live" | "paper";
-            side: "buy" | "sell";
+            exchange: Exchange;
+            mode: Mode;
+            side: Side;
             status: string;
             order_type: "market" | "limit" | "stop" | "stop_limit";
             size: number;
@@ -3748,8 +3756,8 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             wallet_public_id: string;
-            exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
-            mode: "live" | "paper";
+            exchange: Exchange;
+            mode: Mode;
             sync_status: string;
             effective_status: string;
             is_authoritative: boolean;
@@ -3852,8 +3860,8 @@ export type Components = {
             topic?: string | null | undefined;
             instrument: string;
             instrument_public_id: string;
-            exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
-            mode: "live" | "paper";
+            exchange: Exchange;
+            mode: Mode;
             quantity: number;
             average_price?: number | null | undefined;
             unrealized_pnl?: number | null | undefined;
@@ -3962,8 +3970,8 @@ export type Components = {
             topic?: string | null | undefined;
             process_name: string;
             status: "running" | "succeeded" | "failed" | "cancelled";
-            role: "core" | "task" | "strategy" | "backtest";
-            lifecycle: "long_running" | "one_shot";
+            role: Role;
+            lifecycle: Lifecycle;
             parameters?: Record<string, unknown> | null | undefined;
             result?: Record<string, unknown> | null | undefined;
             error?: string | null | undefined;
@@ -3993,13 +4001,13 @@ export type Components = {
             class_path: string;
             method: string;
             default_enabled: boolean;
-            default_mode: "thread" | "process";
+            default_mode: Mode2;
             default_parameters: Record<string, unknown>;
             reference_identity_params: {
                 [key: string]: string;
             };
             seeded_identity_params: string[];
-            lifecycle: "long_running" | "one_shot";
+            lifecycle: Lifecycle;
         };
         ProcessSchemaResponse: {
             type: "process_schema_response";
@@ -4379,8 +4387,8 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             instrument: string;
-            exchange: "paper" | "kraken" | "kraken_futures" | "walutomat";
-            side: "buy" | "sell";
+            exchange: Exchange;
+            side: Side;
             strength: number;
             reason: string;
             price?: number | null | undefined;
@@ -4436,7 +4444,7 @@ export type Components = {
             name: string;
             running: boolean;
             enabled: boolean;
-            mode: "thread" | "process";
+            mode: Mode2;
             strategy_class?: string | null | undefined;
             coordinator?: string | null | undefined;
             coordinator_label?: string | null | undefined;
@@ -4874,7 +4882,7 @@ export type Components = {
             timestamp: string;
             session_id: string;
             topic?: string | null | undefined;
-            status: "healthy" | "warning" | "error";
+            status: Status;
             components: Components["schemas"]["ZmqComponents"];
             config: Components["schemas"]["ZmqConfig"];
             connections: Components["schemas"]["ConnectionStats"];
@@ -5313,8 +5321,8 @@ export type Components = {
             instrument: string;
             instrument_public_id: string;
             exchange: string;
-            mode?: "live" | "paper";
-            side: "buy" | "sell";
+            mode?: Mode;
+            side: Side;
             order_type: "market" | "limit" | "stop" | "stop_limit";
             quantity: number;
             price?: number | null;
