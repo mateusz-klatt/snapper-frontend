@@ -1184,6 +1184,11 @@ const _PnlEquityCoverageDataRawSchema = z
     first_minute: z.iso.datetime().nullable(),
     last_minute: z.iso.datetime().nullable(),
     sample_calc_version: z.string().nullable(),
+    valuation_basis: z.string().nullable(),
+    converted_from: z.string().nullable(),
+    conversion_rate_source: z.string().nullable(),
+    conversion_withheld_minutes: z.number().int(),
+    drawdown_withheld_reason: z.literal('currency_basis_unsupported').nullable(),
   })
   .strict()
 

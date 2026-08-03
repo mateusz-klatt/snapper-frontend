@@ -3586,6 +3586,11 @@ export type Components = {
             first_minute: string | null;
             last_minute: string | null;
             sample_calc_version: string | null;
+            valuation_basis: string | null;
+            converted_from: string | null;
+            conversion_rate_source: string | null;
+            conversion_withheld_minutes: number;
+            drawdown_withheld_reason: "currency_basis_unsupported" | null;
         };
         PnlExecutionCorrectionData: {
             correction_public_id: string;
