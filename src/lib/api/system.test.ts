@@ -142,6 +142,15 @@ describe('system API methods', () => {
           },
           tracemalloc_active: false,
           cgroup_version: null,
+          fx_shadow_pins: {
+            creation: 0,
+            reuse: 0,
+            conflict: 0,
+            upgrade_required: 0,
+            mismatch: 0,
+            failure: 0,
+            dropped: 0,
+          },
         },
       }),
     })
