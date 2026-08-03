@@ -80,7 +80,7 @@ async function iterTypeScriptFiles(root, relativeRoots) {
     const searchRoot = path.join(root, relativeRoot)
     await walk(searchRoot)
   }
-  return out.sort()
+  return out.sort((left, right) => left.localeCompare(right, 'en'))
 }
 
 class TSScanContext {
@@ -339,9 +339,10 @@ async function main() {
   return 0
 }
 
-main()
-  .then(exitCode => process.exit(exitCode))
-  .catch(error => {
-    console.error('Scanner failed:', error)
-    process.exit(2)
-  })
+try {
+  const exitCode = await main()
+  process.exit(exitCode)
+} catch (error) {
+  console.error('Scanner failed:', error)
+  process.exit(2)
+}

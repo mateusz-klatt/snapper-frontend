@@ -1,6 +1,21 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
-import { renderHook, act } from '@testing-library/react'
+import { createElement } from 'react'
+import { render, renderHook, act, fireEvent } from '@testing-library/react'
 import { useTabRouting, useHashSubpath, type ValidTab } from './useHashRouting'
+
+function TabRoutingHarness({ nextRoute }: Readonly<{ nextRoute: ValidTab }>) {
+  const [activeRoute, navigate] = useTabRouting()
+
+  return createElement(
+    'button',
+    { type: 'button', onClick: () => navigate(nextRoute) },
+    activeRoute
+  )
+}
+
+function renderTabRoutingHarness(nextRoute: ValidTab) {
+  return render(createElement(TabRoutingHarness, { nextRoute }))
+}
 
 describe('useHashRouting', () => {
   let originalHash: string
@@ -75,12 +90,11 @@ describe('useHashRouting', () => {
     expectedHash: string
   }[])('$name', ({ initialHash, nextRoute, expectedRoute, expectedHash }) => {
     globalThis.location.hash = initialHash
-    const { result } = renderHook(() => useTabRouting())
+    const view = renderTabRoutingHarness(nextRoute)
+    const button = view.getByRole('button')
 
-    act(() => {
-      result.current[1](nextRoute)
-    })
-    expect(result.current[0]).toBe(expectedRoute)
+    fireEvent.click(button)
+    expect(button).toHaveTextContent(expectedRoute)
     expect(globalThis.location.hash).toBe(expectedHash)
   })
   it('handles all valid tabs', () => {
@@ -100,13 +114,14 @@ describe('useHashRouting', () => {
       'ai-reviews',
       'settings',
     ]
-    const { result } = renderHook(() => useTabRouting())
+    const view = renderTabRoutingHarness('overview')
 
     validTabs.forEach(tab => {
-      act(() => {
-        result.current[1](tab)
-      })
-      expect(result.current[0]).toBe(tab)
+      view.rerender(createElement(TabRoutingHarness, { nextRoute: tab }))
+      const button = view.getByRole('button')
+
+      fireEvent.click(button)
+      expect(button).toHaveTextContent(tab)
       expect(globalThis.location.hash).toBe(`#${tab}`)
     })
   })
@@ -130,17 +145,16 @@ describe('useHashRouting', () => {
     expect(result.current[0]).toBe('health')
   })
   it('ignores invalid hashchange events', () => {
-    const { result } = renderHook(() => useTabRouting())
+    const view = renderTabRoutingHarness('orders')
+    const button = view.getByRole('button')
 
-    act(() => {
-      result.current[1]('orders')
-    })
-    expect(result.current[0]).toBe('orders')
+    fireEvent.click(button)
+    expect(button).toHaveTextContent('orders')
     act(() => {
       globalThis.location.hash = '#not-valid-route'
       globalThis.dispatchEvent(new HashChangeEvent('hashchange'))
     })
-    expect(result.current[0]).toBe('overview')
+    expect(button).toHaveTextContent('overview')
   })
   it('does not set hash when default already present', () => {
     globalThis.location.hash = '#overview'
@@ -157,13 +171,12 @@ describe('useHashRouting', () => {
     removeEventListenerSpy.mockRestore()
   })
   it('maintains route state across re-renders', () => {
-    const { result, rerender } = renderHook(() => useTabRouting())
+    const view = renderTabRoutingHarness('admin')
+    const button = view.getByRole('button')
 
-    act(() => {
-      result.current[1]('admin')
-    })
-    rerender()
-    expect(result.current[0]).toBe('admin')
+    fireEvent.click(button)
+    view.rerender(createElement(TabRoutingHarness, { nextRoute: 'admin' }))
+    expect(view.getByRole('button')).toHaveTextContent('admin')
   })
 })
 

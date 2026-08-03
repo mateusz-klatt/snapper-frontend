@@ -20,6 +20,7 @@ type Exchange2 = 'kraken' | 'kraken_futures' | 'kraken_equities' | 'walutomat' |
 type Origin = 'live' | 'replay'
 type TradeSide = 'buy' | 'sell'
 type ScopeKind = 'underlying' | 'instrument'
+type PairedGroupPolicy = 'simultaneous' | 'sequential_handoff'
 
 /**
  * Canonical AccountStateChangedEvent entity.
@@ -345,7 +346,7 @@ export interface Execution {
   pairedGroupId?: string | null
   pairedGroupSize?: number | null
   pairedGroupIndex?: number | null
-  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
+  pairedGroupPolicy?: PairedGroupPolicy | null
 }
 
 /**
@@ -581,7 +582,7 @@ export interface Order {
   pairedGroupId?: string | null
   pairedGroupSize?: number | null
   pairedGroupIndex?: number | null
-  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
+  pairedGroupPolicy?: PairedGroupPolicy | null
 }
 
 /**
@@ -606,7 +607,7 @@ export interface OrderEvent {
   pairedGroupId?: string | null
   pairedGroupSize?: number | null
   pairedGroupIndex?: number | null
-  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
+  pairedGroupPolicy?: PairedGroupPolicy | null
 }
 
 /**
@@ -660,7 +661,7 @@ export interface OrderRequest {
   pairedGroupId?: string | null
   pairedGroupSize?: number | null
   pairedGroupIndex?: number | null
-  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
+  pairedGroupPolicy?: PairedGroupPolicy | null
   origin?: Origin
   replayWindowStart?: Date | null
   replayWindowEnd?: Date | null
@@ -947,7 +948,7 @@ export interface Signal {
   pairedGroupId?: string | null
   pairedGroupSize?: number | null
   pairedGroupIndex?: number | null
-  pairedGroupPolicy?: 'simultaneous' | 'sequential_handoff' | null
+  pairedGroupPolicy?: PairedGroupPolicy | null
   pairedGroupKey?: string | null
   origin?: Origin
   replayWindowStart?: Date | null

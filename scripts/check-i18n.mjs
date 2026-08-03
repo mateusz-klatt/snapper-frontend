@@ -158,14 +158,14 @@ function scanContent(content, relPath) {
 
 function isAllowlisted(hit, allowlist) {
   const probe = `${hit.file}:${hit.line}`
-  return allowlist.some(entry => entry === probe)
+  return allowlist.includes(probe)
 }
 
 async function main() {
   const allowlist = await loadAllowlist()
   const files = []
   await walk(SRC_ROOT, files)
-  files.sort()
+  files.sort((left, right) => left.localeCompare(right, 'en'))
 
   const violations = []
   for (const absPath of files) {
@@ -201,7 +201,9 @@ async function main() {
   process.exit(1)
 }
 
-main().catch(err => {
-  console.error('check-i18n: unexpected error:', err)
+try {
+  await main()
+} catch (error) {
+  console.error('check-i18n: unexpected error:', error)
   process.exit(2)
-})
+}

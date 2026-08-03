@@ -161,7 +161,8 @@ async function buildLocalePage(code, flag, label) {
       </a>
     </div>`
   ).join('\n')
-  const html = `${head(`${label} — Snapper sweep`)}
+  const title = `${label} — Snapper sweep`
+  const html = `${head(title)}
 ${nav('../')}
 <div class="breadcrumb">
   <a href="../index.html" style="color:#58a6ff">← all locales</a> &middot;
@@ -186,7 +187,8 @@ async function buildScreenPage(screen) {
       </a>
     </div>`
   ).join('\n')
-  const html = `${head(`${screen} — all 45 locales`)}
+  const title = `${screen} — all 45 locales`
+  const html = `${head(title)}
 ${nav('../')}
 <div class="breadcrumb">
   <a href="../index.html" style="color:#58a6ff">← all locales</a> &middot;
@@ -213,7 +215,9 @@ async function main() {
   console.log(`Open: file://${OUT}/index.html`)
 }
 
-main().catch(e => {
-  console.error(e)
+try {
+  await main()
+} catch (error) {
+  console.error(error)
   process.exit(1)
-})
+}

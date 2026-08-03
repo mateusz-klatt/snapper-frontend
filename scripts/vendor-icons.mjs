@@ -4,7 +4,8 @@
  * adding new entries to `src/components/InstrumentIcon/registry/crypto.ts`
  * or `src/components/InstrumentIcon/registry/fiat.ts`.
  *
- * Required tools: git on PATH.
+ * Required tools: Git at `/usr/bin/git` on POSIX or the standard
+ * `C:/Program Files/Git/cmd/git.exe` location on Windows.
  * Output: SVGs copied into public/icons/{crypto,flags}/ (relative to repo
  * root). Idempotent: re-runs overwrite existing files with current upstream.
  *
@@ -31,6 +32,8 @@ import { fileURLToPath } from 'node:url'
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url))
 const REPO_ROOT = resolve(SCRIPT_DIR, '..')
 const PUBLIC_ICONS = resolve(REPO_ROOT, 'public', 'icons')
+const GIT_EXECUTABLE =
+  process.platform === 'win32' ? 'C:/Program Files/Git/cmd/git.exe' : '/usr/bin/git'
 const TMP_DIR = mkdtempSync(join(tmpdir(), 'snapper-icons-'))
 
 const CRYPTO_REPO = 'https://github.com/spothq/cryptocurrency-icons.git'
@@ -45,7 +48,7 @@ process.on('SIGINT', () => process.exit(130))
 process.on('SIGTERM', () => process.exit(143))
 
 function gitClone(url, dest) {
-  const result = spawnSync('git', ['clone', '--depth', '1', '--quiet', url, dest], {
+  const result = spawnSync(GIT_EXECUTABLE, ['clone', '--depth', '1', '--quiet', url, dest], {
     stdio: 'inherit',
     shell: false,
   })
@@ -68,7 +71,7 @@ function gitClone(url, dest) {
  */
 function extractRegistryTokens(filePath, fnName) {
   const source = readFileSync(filePath, 'utf8')
-  const pattern = new RegExp(`${fnName}\\('([^']+)'`, 'g')
+  const pattern = new RegExp(String.raw`${fnName}\('([^']+)'`, 'g')
   const tokens = new Set()
   let match
 
