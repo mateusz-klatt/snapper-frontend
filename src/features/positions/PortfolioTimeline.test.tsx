@@ -190,6 +190,11 @@ const UNSAMPLED_COVERAGE: PnlEquityCoverageData = {
   first_minute: null,
   last_minute: null,
   sample_calc_version: null,
+  valuation_basis: null,
+  converted_from: null,
+  conversion_rate_source: null,
+  conversion_withheld_minutes: 0,
+  drawdown_withheld_reason: null,
 }
 
 const AS_RECORDED_HISTORY: PnlExecutionHistoryData = {
@@ -364,6 +369,11 @@ describe('PortfolioTimeline', () => {
           first_minute: '2026-07-20T11:59:00Z',
           last_minute: '2026-07-20T12:00:00Z',
           sample_calc_version: 'v1',
+          valuation_basis: 'USD',
+          converted_from: null,
+          conversion_rate_source: null,
+          conversion_withheld_minutes: 0,
+          drawdown_withheld_reason: null,
         }
       )
     )
