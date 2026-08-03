@@ -82,10 +82,10 @@ const PATTERNS = [
   },
 ]
 
-async function loadAllowlist() {
+export async function loadAllowlist(allowlistPath = ALLOWLIST_PATH, fsApi = fs) {
   let raw
   try {
-    raw = await fs.readFile(ALLOWLIST_PATH, 'utf8')
+    raw = await fsApi.readFile(allowlistPath, 'utf8')
   } catch (err) {
     if (err.code === 'ENOENT') {
       return []
@@ -98,10 +98,10 @@ async function loadAllowlist() {
     .filter(line => line.length > 0 && !line.startsWith('#'))
 }
 
-async function walk(root, out) {
+export async function walk(root, out, fsApi = fs) {
   let entries
   try {
-    entries = await fs.readdir(root, { withFileTypes: true })
+    entries = await fsApi.readdir(root, { withFileTypes: true })
   } catch {
     return
   }
@@ -114,7 +114,7 @@ async function walk(root, out) {
       if (SKIP_DIRS.has(entry.name)) {
         continue
       }
-      await walk(full, out)
+      await walk(full, out, fsApi)
       continue
     }
     if (!entry.isFile()) {
@@ -131,7 +131,7 @@ async function walk(root, out) {
   }
 }
 
-function lineNumberAt(content, offset) {
+export function lineNumberAt(content, offset) {
   let count = 1
   for (let i = 0; i < offset && i < content.length; i++) {
     if (content[i] === '\n') count++
@@ -139,7 +139,7 @@ function lineNumberAt(content, offset) {
   return count
 }
 
-function scanContent(content, relPath) {
+export function scanContent(content, relPath) {
   const hits = []
   for (const { name, regex } of PATTERNS) {
     regex.lastIndex = 0
@@ -156,23 +156,29 @@ function scanContent(content, relPath) {
   return hits
 }
 
-function isAllowlisted(hit, allowlist) {
+export function isAllowlisted(hit, allowlist) {
   const probe = `${hit.file}:${hit.line}`
-  return allowlist.some(entry => entry === probe)
+  return allowlist.includes(probe)
 }
 
-async function main() {
-  const allowlist = await loadAllowlist()
+export async function checkI18n({
+  frontendRoot = FRONTEND_ROOT,
+  srcRoot = SRC_ROOT,
+  allowlistPath = ALLOWLIST_PATH,
+  fsApi = fs,
+  logError = console.error,
+} = {}) {
+  const allowlist = await loadAllowlist(allowlistPath, fsApi)
   const files = []
-  await walk(SRC_ROOT, files)
-  files.sort()
+  await walk(srcRoot, files, fsApi)
+  files.sort((left, right) => left.localeCompare(right, 'en'))
 
   const violations = []
   for (const absPath of files) {
-    const relPath = path.relative(FRONTEND_ROOT, absPath)
+    const relPath = path.relative(frontendRoot, absPath)
     let content
     try {
-      content = await fs.readFile(absPath, 'utf8')
+      content = await fsApi.readFile(absPath, 'utf8')
     } catch {
       continue
     }
@@ -186,22 +192,44 @@ async function main() {
   }
 
   if (violations.length === 0) {
-    process.exit(0)
+    return 0
   }
 
-  console.error('check-i18n: hardcoded user-facing literals found:')
+  logError('check-i18n: hardcoded user-facing literals found:')
   for (const v of violations) {
-    console.error(`  ${v.file}:${v.line}: ${v.attr}=${JSON.stringify(v.literal)}`)
+    logError(`  ${v.file}:${v.line}: ${v.attr}=${JSON.stringify(v.literal)}`)
   }
-  console.error('')
-  console.error(
+  logError('')
+  logError(
     'Route the value through useTranslation(...).t(key), ' +
       'or add a justified entry to scripts/check-i18n-allowlist.txt.'
   )
-  process.exit(1)
+
+  return 1
 }
 
-main().catch(err => {
-  console.error('check-i18n: unexpected error:', err)
-  process.exit(2)
-})
+export async function runCheckI18n(options = {}) {
+  const logError = options.logError ?? console.error
+
+  try {
+    return await checkI18n(options)
+  } catch (error) {
+    logError('check-i18n: unexpected error:', error)
+
+    return 2
+  }
+}
+
+export function setProcessExitCode(exitCode) {
+  process.exitCode = exitCode
+}
+
+export async function runCheckI18nIfMain(
+  isMain = import.meta.main,
+  run = runCheckI18n,
+  setExitCode = setProcessExitCode
+) {
+  if (isMain) setExitCode(await run())
+}
+
+await runCheckI18nIfMain()

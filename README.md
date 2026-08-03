@@ -62,7 +62,7 @@ Other useful targets:
 make typecheck    # tsc --noEmit
 make lint         # eslint, fails on any warning
 make test         # vitest run
-make cov          # vitest with coverage (100% threshold)
+make cov          # Vitest + executable-script coverage (100% threshold)
 make check-all    # lint + format + typecheck + test + dead-code + cov + build
 ```
 

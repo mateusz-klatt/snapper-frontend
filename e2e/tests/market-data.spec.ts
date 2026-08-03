@@ -65,11 +65,11 @@ test.describe('market data', () => {
     ]
 
     for (const tab of tabs) {
-      await page
-        .locator('nav')
-        .getByRole('button', { name: new RegExp(`^${tab}$`) })
-        .click()
-      await page.waitForTimeout(200)
+      const tabButton = page.locator('nav').getByRole('button', { name: new RegExp(`^${tab}$`) })
+
+      await tabButton.click()
+      await expect(tabButton).toHaveAttribute('aria-current', 'page')
+      await expect(page.getByRole('heading', { name: tab, exact: true })).toBeVisible()
     }
 
     // No JS exception surfaced via console.error during navigation.

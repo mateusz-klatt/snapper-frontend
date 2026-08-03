@@ -3,6 +3,8 @@
  * Do not make direct changes to the file.
  */
 
+type MarketDataExchange = "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+
 export type Paths = {
     "/api/auth/login": {
         parameters: {
@@ -2501,7 +2503,7 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             instrument: string;
-            exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+            exchange: MarketDataExchange;
             timeframe: string;
             open_at: string;
             open: number;
@@ -8884,7 +8886,7 @@ export interface Operations {
         parameters: {
             query: {
                 instrument: string;
-                exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+                exchange: MarketDataExchange;
                 timeframe: string;
                 limit?: number;
                 as_of?: string | null | undefined;
@@ -8931,7 +8933,7 @@ export interface Operations {
         parameters: {
             query: {
                 instrument: string;
-                exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+                exchange: MarketDataExchange;
                 timeframe: string;
                 limit?: number;
                 as_of?: string | null | undefined;
@@ -8976,7 +8978,7 @@ export interface Operations {
         parameters: {
             query: {
                 instrument: string;
-                exchange: "kraken" | "kraken_futures" | "kraken_equities" | "walutomat" | "polygon";
+                exchange: MarketDataExchange;
                 timeframe?: string;
                 limit?: number;
             };

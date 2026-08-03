@@ -161,7 +161,7 @@ describe('Sonar test classification contract', () => {
     expect(propertyValue('sonar.sources')).toBe('.')
     expect(propertyValue('sonar.tests')).toBe('.')
     expect(propertyValue('sonar.test.inclusions')).toBe(
-      'e2e/**,src/test/**,**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx'
+      'e2e/**,src/test/**,**/*.test.mjs,**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx'
     )
     expect(sonarProperties).not.toMatch(
       /^sonar\.(?:exclusions|coverage\.exclusions|cpd\.exclusions|issue\.ignore)/m
