@@ -120,10 +120,10 @@
         "title": "Sådan læses dette",
         "spotOnly": "Kun spotbørsen — saldi på andre børser er ikke medtaget.",
         "flowsUnadjusted": "Eksterne ind- og udbetalinger er ikke fratrukket.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Disse tal er omregnet fra {{from}} ved hvert minuts lukningskurs og er ikke oprindeligt målt i denne valuta.",
+        "pricedOn": "Prissat på {{plane}}.",
+        "conversionWithheld": "Minutter udeladt på grund af manglende verificeret lukningskurs: {{count}}.",
+        "drawdownConverted": "Drawdown vises ikke omregnet, fordi det løbende maksimum registreres i den valuta, hvor egenkapitalen oprindeligt måles."
       },
       "cashPosition": {
         "title": "Fordeling på kontanter og position",

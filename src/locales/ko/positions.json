@@ -120,10 +120,10 @@
         "title": "데이터 해석 방법",
         "spotOnly": "현물 거래소만 포함되며 다른 거래소의 잔액은 제외됩니다.",
         "flowsUnadjusted": "외부 입금과 출금은 제외되지 않았습니다.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "이 수치는 이 통화로 직접 샘플링된 것이 아니라, 매분 종가를 기준으로 {{from}}에서 환산된 것입니다.",
+        "pricedOn": "가격 기준: {{plane}}.",
+        "conversionWithheld": "입증된 종가가 없어 제외된 1분 구간 수: {{count}}.",
+        "drawdownConverted": "현재까지의 최고점이 샘플링된 통화로 추적되기 때문에, 환산 기준의 낙폭은 표시되지 않습니다."
       },
       "cashPosition": {
         "title": "현금 및 포지션 구성",

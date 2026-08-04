@@ -120,10 +120,10 @@
         "title": "Cara membaca data ini",
         "spotOnly": "Hanya bursa spot — saldo yang disimpan di bursa lain tidak disertakan.",
         "flowsUnadjusted": "Setoran dan penarikan eksternal tidak dikeluarkan.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Angka-angka ini dihitung ulang dari {{from}} berdasarkan kurs penutupan setiap menit, bukan diukur langsung dalam mata uang ini.",
+        "pricedOn": "Dinilai berdasarkan {{plane}}.",
+        "conversionWithheld": "Menit yang diabaikan karena tidak ada kurs penutupan yang terbukti: {{count}}.",
+        "drawdownConverted": "Drawdown tidak ditampilkan dalam bentuk konversi, karena puncak berjalan dilacak dalam mata uang asal pengukuran."
       },
       "cashPosition": {
         "title": "Pembagian kas dan posisi",

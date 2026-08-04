@@ -120,10 +120,10 @@
         "title": "Så tolkar du detta",
         "spotOnly": "Endast spotmarknadsplatsen — saldon på andra marknadsplatser ingår inte.",
         "flowsUnadjusted": "Externa insättningar och uttag har inte räknats bort.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Dessa siffror är konverterade från {{from}} vid varje minuts stängningskurs och mäts inte ursprungligen i denna valuta.",
+        "pricedOn": "Prissatt på {{plane}}.",
+        "conversionWithheld": "Minuter uteslutna på grund av avsaknad av en styrkt stängningskurs: {{count}}.",
+        "drawdownConverted": "Nedgången visas inte konverterad, eftersom den dittills högsta nivån följs i den valuta där den ursprungligen mäts."
       },
       "cashPosition": {
         "title": "Fördelning mellan kontanter och position",

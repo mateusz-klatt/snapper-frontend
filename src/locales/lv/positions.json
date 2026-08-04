@@ -120,10 +120,10 @@
         "title": "Kā interpretēt šos datus",
         "spotOnly": "Tikai tūlītējo darījumu birža — citās biržās turētie atlikumi nav iekļauti.",
         "flowsUnadjusted": "Ārējās iemaksas un izmaksas nav atskaitītas.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Šie dati ir pārrēķināti no {{from}} pēc katras minūtes slēgšanas kursa, nevis tieši mērīti šajā valūtā.",
+        "pricedOn": "Cena noteikta pēc {{plane}}.",
+        "conversionWithheld": "Minūtes, kas izlaistas pierādīta slēgšanas kursa trūkuma dēļ: {{count}}.",
+        "drawdownConverted": "Kritums konvertētā izteiksmē netiek rādīts, jo līdzšinējais maksimums tiek uzskaitīts sākotnējā mērījumu valūtā."
       },
       "cashPosition": {
         "title": "Naudas un pozīcijas sadalījums",

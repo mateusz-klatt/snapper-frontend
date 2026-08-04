@@ -120,10 +120,10 @@
         "title": "Näin tietoja tulkitaan",
         "spotOnly": "Vain spot-markkinapaikka — muiden markkinapaikkojen saldot eivät sisälly.",
         "flowsUnadjusted": "Ulkoisia talletuksia ja nostoja ei ole vähennetty.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Nämä luvut on muunnettu valuutasta {{from}} kunkin minuutin päätöskurssin mukaan, eikä niitä ole alun perin mitattu tässä valuutassa.",
+        "pricedOn": "Hinnoiteltu {{plane}}-kurssin perusteella.",
+        "conversionWithheld": "Minuutteja jätetty pois, koska todennettua päätöskurssia ei ollut saatavilla: {{count}}.",
+        "drawdownConverted": "Arvonlaskua ei näytetä muunnettuna, koska tähänastista huippua seurataan siinä valuutassa, jossa se alun perin mitataan."
       },
       "cashPosition": {
         "title": "Käteisen ja position jakauma",

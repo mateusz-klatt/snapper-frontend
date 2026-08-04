@@ -120,10 +120,10 @@
         "title": "Slik leser du dette",
         "spotOnly": "Kun spotmarkedsplassen — saldoer på andre markedsplasser er utelatt.",
         "flowsUnadjusted": "Eksterne innskudd og uttak er ikke trukket fra.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Disse tallene er konvertert fra {{from}} ved hvert minutts stengekurs og måles ikke opprinnelig i denne valutaen.",
+        "pricedOn": "Priset på {{plane}}.",
+        "conversionWithheld": "Minutter utelatt fordi det manglet en verifisert stengekurs: {{count}}.",
+        "drawdownConverted": "Drawdown vises ikke konvertert, fordi den løpende toppen følges i valutaen som den opprinnelig måles i."
       },
       "cashPosition": {
         "title": "Fordeling mellom kontanter og posisjon",

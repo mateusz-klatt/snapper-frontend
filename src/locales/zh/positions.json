@@ -120,10 +120,10 @@
         "title": "数据解读说明",
         "spotOnly": "仅限现货交易场所——不包括其他交易场所持有的余额。",
         "flowsUnadjusted": "未剔除外部存款和取款。",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "这些数据按每分钟的收盘汇率由{{from}}折算而来，并非以该货币直接采样。",
+        "pricedOn": "定价基准：{{plane}}。",
+        "conversionWithheld": "因缺乏经证实的收盘汇率而剔除的分钟数：{{count}}。",
+        "drawdownConverted": "换算后的回撤数据不予显示，因为截至当时的峰值是以采样货币追踪的。"
       },
       "cashPosition": {
         "title": "现金与持仓构成",

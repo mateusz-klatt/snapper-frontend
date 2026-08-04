@@ -120,10 +120,10 @@
         "title": "Як тлумачити дані",
         "spotOnly": "Лише спотовий майданчик — залишки на інших майданчиках не враховуються.",
         "flowsUnadjusted": "Зовнішні поповнення та виведення коштів не виключено.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Ці дані перераховані з {{from}} за курсом закриття кожної хвилини й не були безпосередньо виміряні в цій валюті.",
+        "pricedOn": "Оцінено за {{plane}}.",
+        "conversionWithheld": "Хвилини пропущено через відсутність підтвердженого курсу закриття: {{count}}.",
+        "drawdownConverted": "Просідання не показується в перерахованому вигляді, оскільки поточний пік відстежується у вихідній валюті."
       },
       "cashPosition": {
         "title": "Розподіл коштів і позиції",

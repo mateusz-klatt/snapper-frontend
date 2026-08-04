@@ -120,10 +120,10 @@
         "title": "Az adatok értelmezése",
         "spotOnly": "Csak a spot kereskedési hely — a más helyeken tartott egyenlegek nincsenek benne.",
         "flowsUnadjusted": "A külső befizetések és kifizetések nincsenek kiszűrve.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Ezek az adatok {{from}} pénznemből vannak újraszámítva minden perc záró árfolyamán, nem pedig eredetileg ebben a pénznemben mintavételezve.",
+        "pricedOn": "Árazás {{plane}} alapján.",
+        "conversionWithheld": "Igazolt záró árfolyam hiányában kihagyott percek: {{count}}.",
+        "drawdownConverted": "A visszaesés átváltott alapon nem jelenik meg, mert az addigi csúcsot a mintavételezett pénznemben követjük."
       },
       "cashPosition": {
         "title": "Készpénz és pozíció megoszlása",

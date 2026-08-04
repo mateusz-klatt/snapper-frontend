@@ -120,10 +120,10 @@
         "title": "Cum se interpretează",
         "spotOnly": "Doar piața spot — soldurile deținute pe alte piețe sunt excluse.",
         "flowsUnadjusted": "Depunerile și retragerile externe nu sunt eliminate.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Aceste cifre sunt recalculate din {{from}} la cursul de închidere al fiecărui minut și nu sunt măsurate inițial în această monedă.",
+        "pricedOn": "Evaluat pe baza {{plane}}.",
+        "conversionWithheld": "Minute omise din lipsa unui curs de închidere dovedit: {{count}}.",
+        "drawdownConverted": "Declinul nu este afișat în formă convertită, deoarece maximul curent este urmărit în moneda în care s-a efectuat măsurarea inițială."
       },
       "cashPosition": {
         "title": "Împărțire numerar și poziție",

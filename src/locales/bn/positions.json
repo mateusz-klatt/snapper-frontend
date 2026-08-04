@@ -120,10 +120,10 @@
         "title": "এটি যেভাবে পড়বেন",
         "spotOnly": "শুধু স্পট ভেন্যু — অন্য ভেন্যুতে থাকা ব্যালেন্স অন্তর্ভুক্ত নয়।",
         "flowsUnadjusted": "বাহ্যিক জমা ও উত্তোলন বাদ দেওয়া হয়নি।",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "এই সংখ্যাগুলো প্রতিটি মিনিটের সমাপনী দরে {{from}} থেকে পুনর্গণনা করা হয়েছে; এই মুদ্রায় সরাসরি নমুনা নেওয়া হয়নি।",
+        "pricedOn": "{{plane}} অনুযায়ী মূল্য নির্ধারিত।",
+        "conversionWithheld": "প্রমাণিত সমাপনী দর না থাকায় বাদ দেওয়া মিনিট: {{count}}।",
+        "drawdownConverted": "রূপান্তরিত ভিত্তিতে ড্রডাউন দেখানো হয় না, কারণ চলমান সর্বোচ্চ মান নমুনা নেওয়া মুদ্রায় ট্র্যাক করা হয়।"
       },
       "cashPosition": {
         "title": "নগদ ও পজিশনের বিভাজন",

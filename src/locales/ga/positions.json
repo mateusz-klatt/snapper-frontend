@@ -120,10 +120,10 @@
         "title": "Conas é seo a léamh",
         "spotOnly": "An t-ionad spotmhargaidh amháin — ní áirítear iarmhéideanna ar ionaid eile.",
         "flowsUnadjusted": "Níor baineadh taiscí ná aistarraingtí seachtracha as.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Athráitear na figiúirí seo ó {{from}} ag clabhsúr gach nóiméid, ní samplaithe go dúchasach san airgeadra seo iad.",
+        "pricedOn": "Praghsáilte ar {{plane}}.",
+        "conversionWithheld": "Nóiméid a fágadh ar lár cheal clabhsúir fhíoraithe: {{count}}.",
+        "drawdownConverted": "Coinnítear siar an íostarraingt ar bhonn comhshóite, toisc go leantar an bhuaic leanúnach san airgeadra samplaithe."
       },
       "cashPosition": {
         "title": "Roinnt airgid agus suímh",

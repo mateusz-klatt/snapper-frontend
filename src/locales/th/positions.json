@@ -120,10 +120,10 @@
         "title": "วิธีอ่านข้อมูลนี้",
         "spotOnly": "เฉพาะตลาดสปอต — ไม่รวมยอดคงเหลือที่อยู่ในตลาดอื่น",
         "flowsUnadjusted": "ไม่ได้หักเงินฝากและถอนจากภายนอกออก",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "ตัวเลขเหล่านี้แปลงมาจาก {{from}} ด้วยราคาปิดของแต่ละนาที ไม่ได้บันทึกโดยตรงในสกุลเงินนี้",
+        "pricedOn": "อ้างอิงราคาจาก {{plane}}",
+        "conversionWithheld": "จำนวนนาทีที่ถูกตัดออกเนื่องจากไม่มีราคาปิดที่ยืนยันได้: {{count}}",
+        "drawdownConverted": "จะไม่แสดงการลดลงจากจุดสูงสุดหลังการแปลงค่า เนื่องจากติดตามจุดสูงสุดจนถึงขณะนั้นในสกุลเงินที่ใช้บันทึกข้อมูล"
       },
       "cashPosition": {
         "title": "สัดส่วนเงินสดและสถานะ",

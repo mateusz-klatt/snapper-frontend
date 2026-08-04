@@ -120,10 +120,10 @@
         "title": "Како ово тумачити",
         "spotOnly": "Само спот берза — стања на другим берзама нису укључена.",
         "flowsUnadjusted": "Спољне уплате и исплате нису искључене.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Ови подаци су прерачунати из {{from}} по завршном курсу сваког минута и нису изворно мерени у овој валути.",
+        "pricedOn": "Вредновано према {{plane}}.",
+        "conversionWithheld": "Број изостављених минута због недостатка доказаног завршног курса: {{count}}.",
+        "drawdownConverted": "Пад вредности се не приказује прерачунато, јер се текући максимум прати у валути изворног мерења."
       },
       "cashPosition": {
         "title": "Подела на готовину и позицију",

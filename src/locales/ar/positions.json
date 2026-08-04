@@ -120,10 +120,10 @@
         "title": "كيفية قراءة هذه البيانات",
         "spotOnly": "منصة التداول الفوري فقط — لا تشمل الأرصدة المحتفظ بها في منصات أخرى.",
         "flowsUnadjusted": "لم تُستبعد الإيداعات والسحوبات الخارجية.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "هذه الأرقام مُعاد بيانها من {{from}} عند إغلاق كل دقيقة، وليست مرصودة أصلاً بهذه العملة.",
+        "pricedOn": "مُسعّرة على {{plane}}.",
+        "conversionWithheld": "دقائق محذوفة لعدم توفّر إغلاق مُثبَت: {{count}}.",
+        "drawdownConverted": "يُحجب التراجع على أساس محوَّل، لأن أعلى مستوى متحقق يُتتبَّع بالعملة المرصودة."
       },
       "cashPosition": {
         "title": "توزيع النقد والمركز",
