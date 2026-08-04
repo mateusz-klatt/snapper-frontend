@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Como interpretar estes dados",
         "spotOnly": "Apenas a plataforma à vista — os saldos noutras plataformas são excluídos.",
-        "flowsUnadjusted": "Os depósitos e levantamentos externos não são excluídos."
+        "flowsUnadjusted": "Os depósitos e levantamentos externos não são excluídos.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Divisão entre numerário e posição",

@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Πώς διαβάζονται τα στοιχεία",
         "spotOnly": "Μόνο η αγορά spot — τα υπόλοιπα σε άλλες αγορές εξαιρούνται.",
-        "flowsUnadjusted": "Οι εξωτερικές καταθέσεις και αναλήψεις δεν έχουν αφαιρεθεί."
+        "flowsUnadjusted": "Οι εξωτερικές καταθέσεις και αναλήψεις δεν έχουν αφαιρεθεί.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Κατανομή μετρητών και θέσης",

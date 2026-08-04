@@ -119,7 +119,11 @@
       "honesty": {
         "title": "데이터 해석 방법",
         "spotOnly": "현물 거래소만 포함되며 다른 거래소의 잔액은 제외됩니다.",
-        "flowsUnadjusted": "외부 입금과 출금은 제외되지 않았습니다."
+        "flowsUnadjusted": "외부 입금과 출금은 제외되지 않았습니다.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "현금 및 포지션 구성",

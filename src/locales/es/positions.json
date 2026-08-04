@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Cómo interpretar estos datos",
         "spotOnly": "Solo mercado al contado; se excluyen los saldos mantenidos en otros mercados.",
-        "flowsUnadjusted": "No se excluyen los depósitos ni los retiros externos."
+        "flowsUnadjusted": "No se excluyen los depósitos ni los retiros externos.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Desglose de efectivo y posición",

@@ -129,4 +129,69 @@ describe('EquityCoverageSummary', () => {
     expect(screen.queryByText(/external deposits/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/flow-adjusted/i)).not.toBeInTheDocument()
   })
+
+  const converted = (overrides: Partial<PnlEquityCoverageData> = {}): PnlEquityCoverageData =>
+    coverage({
+      venue_scope: null,
+      external_flows_adjusted: null,
+      valuation_basis: 'PLN',
+      converted_from: 'USD',
+      conversion_rate_source: 'PLN/USD@walutomat',
+      drawdown_withheld_reason: 'currency_basis_unsupported',
+      ...overrides,
+    })
+
+  it('says a converted figure was restated and names the plane it priced with', () => {
+    render(<EquityCoverageSummary coverage={converted()} points={[point({ equity: 100 })]} />)
+
+    expect(screen.getByTestId('pnl-equity-honesty')).toBeInTheDocument()
+    expect(screen.getByTestId('pnl-equity-honesty-restated')).toHaveTextContent('restated from USD')
+    expect(screen.getByTestId('pnl-equity-honesty-plane')).toHaveTextContent(
+      'Priced on PLN/USD@walutomat.'
+    )
+  })
+
+  it('explains the blank drawdown tiles on a converted basis', () => {
+    render(<EquityCoverageSummary coverage={converted()} points={[point({ equity: 100 })]} />)
+
+    expect(screen.getByTestId('pnl-drawdown-current')).toHaveTextContent('—')
+    expect(screen.getByTestId('pnl-equity-honesty-drawdown')).toHaveTextContent(
+      'Drawdown is withheld on a converted basis'
+    )
+  })
+
+  it('discloses how many minutes were dropped for want of a proven close', () => {
+    render(
+      <EquityCoverageSummary
+        coverage={converted({ conversion_withheld_minutes: 7 })}
+        points={[point({ equity: 100 })]}
+      />
+    )
+
+    expect(screen.getByTestId('pnl-equity-honesty-withheld')).toHaveTextContent(
+      'Minutes dropped for want of a proven close: 7.'
+    )
+  })
+
+  it('claims no dropped minutes and names no plane when neither is present', () => {
+    render(
+      <EquityCoverageSummary
+        coverage={converted({ conversion_rate_source: null, conversion_withheld_minutes: 0 })}
+        points={[point({ equity: 100 })]}
+      />
+    )
+
+    expect(screen.getByTestId('pnl-equity-honesty-restated')).toBeInTheDocument()
+    expect(screen.queryByTestId('pnl-equity-honesty-plane')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('pnl-equity-honesty-withheld')).not.toBeInTheDocument()
+  })
+
+  it('never presents a natively sampled figure as restated', () => {
+    render(<EquityCoverageSummary coverage={coverage()} points={[point({ equity: 100 })]} />)
+
+    expect(screen.queryByTestId('pnl-equity-honesty-restated')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('pnl-equity-honesty-plane')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('pnl-equity-honesty-drawdown')).not.toBeInTheDocument()
+    expect(screen.queryByText(/restated/i)).not.toBeInTheDocument()
+  })
 })

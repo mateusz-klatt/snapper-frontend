@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Paano ito basahin",
         "spotOnly": "Spot venue lamang — hindi kasama ang mga balanseng nasa ibang venue.",
-        "flowsUnadjusted": "Hindi ibinawas ang mga panlabas na deposito at withdrawal."
+        "flowsUnadjusted": "Hindi ibinawas ang mga panlabas na deposito at withdrawal.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Hati ng cash at posisyon",

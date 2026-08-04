@@ -119,7 +119,11 @@
       "honesty": {
         "title": "এটি যেভাবে পড়বেন",
         "spotOnly": "শুধু স্পট ভেন্যু — অন্য ভেন্যুতে থাকা ব্যালেন্স অন্তর্ভুক্ত নয়।",
-        "flowsUnadjusted": "বাহ্যিক জমা ও উত্তোলন বাদ দেওয়া হয়নি।"
+        "flowsUnadjusted": "বাহ্যিক জমা ও উত্তোলন বাদ দেওয়া হয়নি।",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "নগদ ও পজিশনের বিভাজন",

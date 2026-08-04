@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Ինչպես մեկնաբանել",
         "spotOnly": "Միայն սպոտ հարթակը. այլ հարթակներում պահվող մնացորդները ներառված չեն։",
-        "flowsUnadjusted": "Արտաքին մուտքերն ու ելքերը հանված չեն։"
+        "flowsUnadjusted": "Արտաքին մուտքերն ու ելքերը հանված չեն։",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Կանխիկի և դիրքի բաժանում",
