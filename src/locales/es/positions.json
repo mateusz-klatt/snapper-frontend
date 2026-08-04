@@ -120,10 +120,10 @@
         "title": "Cómo interpretar estos datos",
         "spotOnly": "Solo mercado al contado; se excluyen los saldos mantenidos en otros mercados.",
         "flowsUnadjusted": "No se excluyen los depósitos ni los retiros externos.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Estas cifras están convertidas a partir de {{from}} según el tipo de cambio de cierre de cada minuto y no se miden de forma nativa en esta moneda.",
+        "pricedOn": "Valorado según {{plane}}.",
+        "conversionWithheld": "Minutos omitidos por falta de un tipo de cambio de cierre verificado: {{count}}.",
+        "drawdownConverted": "El drawdown no se muestra de forma convertida, porque el máximo acumulado se registra en la moneda en la que se mide de forma nativa."
       },
       "cashPosition": {
         "title": "Desglose de efectivo y posición",

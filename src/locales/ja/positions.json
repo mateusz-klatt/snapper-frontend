@@ -120,10 +120,10 @@
         "title": "データの見方",
         "spotOnly": "現物取引所のみです。他の取引所で保有する残高は含まれません。",
         "flowsUnadjusted": "外部からの入金と出金は除外されていません。",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "これらの数値は毎分の終値で{{from}}から換算されたものであり、この通貨で直接サンプリングされたものではありません。",
+        "pricedOn": "価格基準：{{plane}}。",
+        "conversionWithheld": "確証された終値がないため除外された1分間隔の数：{{count}}。",
+        "drawdownConverted": "それまでの最高値はサンプリングされた通貨で追跡されるため、換算ベースでのドローダウンは非表示となっています。"
       },
       "cashPosition": {
         "title": "現金とポジションの内訳",

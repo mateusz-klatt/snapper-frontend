@@ -120,10 +120,10 @@
         "title": "Cara membaca data ini",
         "spotOnly": "Bursa spot sahaja — baki yang disimpan di bursa lain tidak disertakan.",
         "flowsUnadjusted": "Deposit dan pengeluaran luaran tidak ditolak.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Angka-angka ini dikira semula daripada {{from}} berdasarkan kadar penutupan setiap minit, bukan diukur secara langsung dalam mata wang ini.",
+        "pricedOn": "Dinilai berdasarkan {{plane}}.",
+        "conversionWithheld": "Minit digugurkan kerana tiada kadar penutupan yang terbukti: {{count}}.",
+        "drawdownConverted": "Pengurangan dalam bentuk yang ditukar tidak ditunjukkan, kerana puncak setakat ini dijejak dalam mata wang asal pengukuran."
       },
       "cashPosition": {
         "title": "Pecahan tunai dan posisi",

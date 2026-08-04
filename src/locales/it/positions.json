@@ -120,10 +120,10 @@
         "title": "Come interpretare questi dati",
         "spotOnly": "Solo sede spot — sono esclusi i saldi detenuti su altre sedi.",
         "flowsUnadjusted": "I depositi e i prelievi esterni non sono esclusi.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Questi valori sono convertiti a partire da {{from}} al tasso di chiusura di ogni minuto e non sono rilevati nativamente in questa valuta.",
+        "pricedOn": "Valutato su {{plane}}.",
+        "conversionWithheld": "Minuti esclusi per mancanza di un tasso di chiusura comprovato: {{count}}.",
+        "drawdownConverted": "Il drawdown non viene mostrato su base convertita, perché il massimo progressivo è tracciato nella valuta rilevata nativamente."
       },
       "cashPosition": {
         "title": "Ripartizione tra liquidità e posizione",

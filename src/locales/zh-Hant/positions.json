@@ -120,10 +120,10 @@
         "title": "資料解讀說明",
         "spotOnly": "僅限現貨交易場所——不包括其他交易場所持有的餘額。",
         "flowsUnadjusted": "未剔除外部存款和提款。",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "這些資料按每分鐘的收盤匯率由{{from}}折算而來，並非以該貨幣直接採樣。",
+        "pricedOn": "定價基準：{{plane}}。",
+        "conversionWithheld": "因缺乏經證實的收盤匯率而剔除的分鐘數：{{count}}。",
+        "drawdownConverted": "換算後的回撤資料不予顯示，因為截至當時的峰值是以採樣貨幣追蹤的。"
       },
       "cashPosition": {
         "title": "現金與持倉構成",

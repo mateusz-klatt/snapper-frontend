@@ -120,10 +120,10 @@
         "title": "Cách đọc dữ liệu này",
         "spotOnly": "Chỉ sàn giao ngay — không bao gồm số dư được giữ tại các sàn khác.",
         "flowsUnadjusted": "Các khoản nạp và rút bên ngoài chưa được loại trừ.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Các số liệu này được quy đổi từ {{from}} theo tỷ giá đóng cửa của từng phút, chứ không được đo trực tiếp bằng loại tiền tệ này.",
+        "pricedOn": "Được định giá theo {{plane}}.",
+        "conversionWithheld": "Số phút bị loại bỏ do thiếu tỷ giá đóng cửa đã được xác thực: {{count}}.",
+        "drawdownConverted": "Mức sụt giảm trên cơ sở quy đổi không được hiển thị, vì đỉnh tính đến thời điểm đó được theo dõi bằng loại tiền tệ dùng để đo ban đầu."
       },
       "cashPosition": {
         "title": "Phân bổ tiền mặt và vị thế",

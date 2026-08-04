@@ -120,10 +120,10 @@
         "title": "Zo lees je dit",
         "spotOnly": "Alleen het spothandelsplatform — saldi op andere platforms zijn uitgesloten.",
         "flowsUnadjusted": "Externe stortingen en opnames zijn niet uitgefilterd.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Deze cijfers zijn omgerekend vanuit {{from}} op basis van de slotkoers van elke minuut en worden niet rechtstreeks in deze valuta gemeten.",
+        "pricedOn": "Geprijsd op {{plane}}.",
+        "conversionWithheld": "Minuten weggelaten wegens het ontbreken van een bewezen slotkoers: {{count}}.",
+        "drawdownConverted": "De drawdown wordt niet op omgerekende basis getoond, omdat de tot dan toe hoogste waarde wordt bijgehouden in de valuta waarin de oorspronkelijke metingen plaatsvinden."
       },
       "cashPosition": {
         "title": "Verdeling cash en positie",

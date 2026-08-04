@@ -120,10 +120,10 @@
         "title": "Jak to czytać",
         "spotOnly": "Tylko giełda spot — salda na innych giełdach są wykluczone.",
         "flowsUnadjusted": "Zewnętrzne wpłaty i wypłaty nie są odejmowane.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Te dane są przeliczone z {{from}} po kursie zamknięcia z każdej minuty i nie są pierwotnie mierzone w tej walucie.",
+        "pricedOn": "Wycena według {{plane}}.",
+        "conversionWithheld": "Liczba pominiętych minut z powodu braku potwierdzonego kursu zamknięcia: {{count}}.",
+        "drawdownConverted": "Obsunięcie jest wstrzymywane w ujęciu przeliczonym, ponieważ bieżący szczyt jest śledzony w walucie źródłowej."
       },
       "cashPosition": {
         "title": "Podział na gotówkę i pozycje",

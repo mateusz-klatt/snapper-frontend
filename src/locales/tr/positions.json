@@ -120,10 +120,10 @@
         "title": "Nasıl yorumlanır",
         "spotOnly": "Yalnızca spot işlem yeri — diğer işlem yerlerindeki bakiyeler dahil değildir.",
         "flowsUnadjusted": "Harici para yatırma ve çekme işlemleri hariç tutulmamıştır.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Bu rakamlar her dakikanın kapanış kuruyla {{from}} biriminden yeniden hesaplanır; bu para biriminde doğrudan ölçülmez.",
+        "pricedOn": "{{plane}} üzerinden fiyatlandırıldı.",
+        "conversionWithheld": "Kanıtlanmış kapanış kuru bulunmadığı için atlanan dakikalar: {{count}}.",
+        "drawdownConverted": "Düşüş, dönüştürülmüş bazda gösterilmez; çünkü süregelen zirve, örneklenen para biriminde izlenir."
       },
       "cashPosition": {
         "title": "Nakit ve pozisyon dağılımı",

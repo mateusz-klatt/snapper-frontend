@@ -120,10 +120,10 @@
         "title": "Si të interpretohet",
         "spotOnly": "Vetëm bursa spot — përjashtohen gjendjet e mbajtura në bursa të tjera.",
         "flowsUnadjusted": "Depozitat dhe tërheqjet e jashtme nuk janë hequr.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Këto shifra janë rikonvertuar nga {{from}} sipas çmimit të mbylljes së çdo minute dhe nuk janë matur fillimisht në këtë monedhë.",
+        "pricedOn": "Vlerësuar sipas {{plane}}.",
+        "conversionWithheld": "Minuta të hequra për mungesë të një çmimi mbylljeje të vërtetuar: {{count}}.",
+        "drawdownConverted": "Rënia nuk shfaqet në formë të konvertuar, sepse kulmi i deritanishëm gjurmohet në monedhën e matjes fillestare."
       },
       "cashPosition": {
         "title": "Ndarja e parasë dhe pozicionit",

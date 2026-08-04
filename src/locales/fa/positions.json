@@ -120,10 +120,10 @@
         "title": "نحوه تفسیر این داده‌ها",
         "spotOnly": "فقط بازار نقدی — موجودی‌های نگهداری‌شده در بازارهای دیگر لحاظ نمی‌شوند.",
         "flowsUnadjusted": "واریزها و برداشت‌های خارجی حذف نشده‌اند.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "این ارقام با نرخ بسته‌شدن هر دقیقه از {{from}} بازمحاسبه شده‌اند و مستقیماً در این ارز نمونه‌برداری نشده‌اند.",
+        "pricedOn": "بر پایهٔ {{plane}} قیمت‌گذاری شده است.",
+        "conversionWithheld": "دقایق حذف‌شده به‌دلیل نبود نرخ بسته‌شدن اثبات‌شده: {{count}}.",
+        "drawdownConverted": "افت بر مبنای تبدیل‌شده نمایش داده نمی‌شود، زیرا بالاترین سطح جاری در ارز نمونه‌برداری‌شده رصد می‌شود."
       },
       "cashPosition": {
         "title": "تفکیک وجه نقد و موقعیت",

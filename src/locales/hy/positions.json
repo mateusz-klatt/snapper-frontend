@@ -120,10 +120,10 @@
         "title": "Ինչպես մեկնաբանել",
         "spotOnly": "Միայն սպոտ հարթակը. այլ հարթակներում պահվող մնացորդները ներառված չեն։",
         "flowsUnadjusted": "Արտաքին մուտքերն ու ելքերը հանված չեն։",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Այս ցուցանիշները վերահաշվարկված են {{from}}-ից՝ յուրաքանչյուր րոպեի փակման փոխարժեքով, և ուղղակիորեն այս արժույթով չեն նմուշառվել։",
+        "pricedOn": "Գնանշված է {{plane}}-ով։",
+        "conversionWithheld": "Ապացուցված փակման փոխարժեքի բացակայության պատճառով բաց թողնված րոպեներ՝ {{count}}։",
+        "drawdownConverted": "Անկումը փոխարկված հիմունքով չի ցուցադրվում, քանի որ մինչ այժմ գրանցված գագաթնակետը հետևվում է նմուշառված արժույթով։"
       },
       "cashPosition": {
         "title": "Կանխիկի և դիրքի բաժանում",

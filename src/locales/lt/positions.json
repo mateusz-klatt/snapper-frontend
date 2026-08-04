@@ -120,10 +120,10 @@
         "title": "Kaip tai interpretuoti",
         "spotOnly": "Tik neatidėliotinų sandorių birža — likučiai kitose biržose neįtraukti.",
         "flowsUnadjusted": "Išoriniai įnašai ir išėmimai nėra atimti.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Šie duomenys perskaičiuoti iš {{from}} pagal kiekvienos minutės uždarymo kursą, o ne tiesiogiai išmatuoti šia valiuta.",
+        "pricedOn": "Įkainota pagal {{plane}}.",
+        "conversionWithheld": "Dėl patvirtinto uždarymo kurso trūkumo praleistos minutės: {{count}}.",
+        "drawdownConverted": "Nuosmukis konvertuotu pagrindu nerodomas, nes iki šiol pasiektas maksimumas sekamas pradine matavimo valiuta."
       },
       "cashPosition": {
         "title": "Grynųjų pinigų ir pozicijos dalys",

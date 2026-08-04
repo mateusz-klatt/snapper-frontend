@@ -120,10 +120,10 @@
         "title": "Kako ovo tumačiti",
         "spotOnly": "Samo spot burza — salda na drugim burzama nisu uključena.",
         "flowsUnadjusted": "Vanjske uplate i isplate nisu isključene.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Ovi podaci preračunati su iz {{from}} po zaključnom tečaju svake minute te nisu izvorno mjereni u ovoj valuti.",
+        "pricedOn": "Vrednovano prema {{plane}}.",
+        "conversionWithheld": "Broj izostavljenih minuta zbog nedostatka dokazanog zaključnog tečaja: {{count}}.",
+        "drawdownConverted": "Pad vrijednosti ne prikazuje se preračunato, jer se tekući maksimum prati u valuti izvornog mjerenja."
       },
       "cashPosition": {
         "title": "Podjela na gotovinu i poziciju",

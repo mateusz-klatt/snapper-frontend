@@ -120,10 +120,10 @@
         "title": "Hinweise zur Interpretation",
         "spotOnly": "Nur Spot-Handelsplatz — Guthaben an anderen Handelsplätzen sind ausgeschlossen.",
         "flowsUnadjusted": "Externe Ein- und Auszahlungen sind nicht herausgerechnet.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Diese Zahlen sind zum Schlusskurs jeder Minute aus {{from}} umgerechnet und werden nicht nativ in dieser Währung erfasst.",
+        "pricedOn": "Bewertet anhand von {{plane}}.",
+        "conversionWithheld": "Minuten ausgelassen, weil kein nachgewiesener Schlusskurs vorlag: {{count}}.",
+        "drawdownConverted": "Der Drawdown wird nicht auf umgerechneter Basis ausgewiesen, weil der bisherige Höchststand in der nativ erfassten Währung geführt wird."
       },
       "cashPosition": {
         "title": "Aufteilung in Barbestand und Position",

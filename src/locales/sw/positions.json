@@ -120,10 +120,10 @@
         "title": "Jinsi ya kusoma data hii",
         "spotOnly": "Soko la papo hapo pekee — salio kwenye masoko mengine hayajajumuishwa.",
         "flowsUnadjusted": "Amana na utoaji wa nje haujaondolewa.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Takwimu hizi zimehesabiwa upya kutoka {{from}} kwa kiwango cha kufunga cha kila dakika, na hazikupimwa moja kwa moja katika sarafu hii.",
+        "pricedOn": "Imethaminiwa kwa {{plane}}.",
+        "conversionWithheld": "Dakika zilizoachwa kwa kukosa kiwango cha kufunga kilichothibitishwa: {{count}}.",
+        "drawdownConverted": "Upungufu kutoka kileleni hauonyeshwi baada ya ubadilishaji, kwa sababu kilele kilichofikiwa hadi sasa kinafuatiliwa katika sarafu ya kipimo cha awali."
       },
       "cashPosition": {
         "title": "Mgawanyo wa fedha taslimu na nafasi",

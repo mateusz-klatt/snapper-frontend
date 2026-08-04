@@ -120,10 +120,10 @@
         "title": "ဤအချက်အလက်ကို ဖတ်ရှုနည်း",
         "spotOnly": "လက်ငင်းဈေးကွက်သာ — အခြားဈေးကွက်များရှိ လက်ကျန်များ မပါဝင်ပါ။",
         "flowsUnadjusted": "ပြင်ပငွေသွင်းခြင်းနှင့် ငွေထုတ်ခြင်းများကို နုတ်ပယ်မထားပါ။",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "ဤကိန်းဂဏန်းများကို ဤငွေကြေးဖြင့် မူလတိုင်းတာထားခြင်းမဟုတ်ဘဲ မိနစ်တိုင်း၏ အပိတ်နှုန်းဖြင့် {{from}} မှ ပြန်လည်တွက်ချက်ထားခြင်းဖြစ်သည်။",
+        "pricedOn": "စျေးနှုန်းကို {{plane}} ပေါ်တွင် အခြေခံထားသည်။",
+        "conversionWithheld": "ခိုင်လုံသော အပိတ်နှုန်း မရှိသောကြောင့် ဖယ်ရှားထားသည့် မိနစ်များ: {{count}}။",
+        "drawdownConverted": "မူလတိုင်းတာသည့် ငွေကြေးဖြင့် ယခုအထိ အမြင့်ဆုံးတန်ဖိုးကို ခြေရာခံထားသောကြောင့် ပြောင်းလဲတွက်ချက်ထားသည့် တန်ဖိုးကျဆင်းမှုကို မဖော်ပြပါ။"
       },
       "cashPosition": {
         "title": "ငွေသားနှင့် ပိုဇီရှင် ခွဲခြားမှု",

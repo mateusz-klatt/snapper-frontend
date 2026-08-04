@@ -120,10 +120,10 @@
         "title": "Jak údaje číst",
         "spotOnly": "Pouze spotová burza — zůstatky na jiných burzách nejsou zahrnuty.",
         "flowsUnadjusted": "Externí vklady a výběry nejsou odečteny.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Tyto údaje jsou přepočteny z {{from}} podle závěrečného kurzu každé minuty a nejsou původně měřeny v této měně.",
+        "pricedOn": "Oceněno podle {{plane}}.",
+        "conversionWithheld": "Počet vynechaných minut kvůli chybějícímu doloženému závěrečnému kurzu: {{count}}.",
+        "drawdownConverted": "Propad se v přepočtené podobě nezobrazuje, protože průběžné maximum se sleduje v měně původního měření."
       },
       "cashPosition": {
         "title": "Rozdělení hotovosti a pozice",

@@ -120,10 +120,10 @@
         "title": "Hvernig á að lesa þetta",
         "spotOnly": "Aðeins stundarmarkaður — innistæður á öðrum mörkuðum eru undanskildar.",
         "flowsUnadjusted": "Ytri inn- og útborganir eru ekki dregnar frá.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Þessar tölur eru umreiknaðar úr {{from}} miðað við lokagengi hverrar mínútu og eru ekki mældar upprunalega í þessum gjaldmiðli.",
+        "pricedOn": "Verðlagt á {{plane}}.",
+        "conversionWithheld": "Mínútum sleppt vegna skorts á staðfestu lokagengi: {{count}}.",
+        "drawdownConverted": "Lækkunin er ekki sýnd umreiknuð, því hæsta gildi eigin fjár fram að þessu er rakið í gjaldmiðli upprunalegu mælinganna."
       },
       "cashPosition": {
         "title": "Skipting reiðufjár og stöðu",

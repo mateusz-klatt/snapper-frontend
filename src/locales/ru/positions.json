@@ -120,10 +120,10 @@
         "title": "Как интерпретировать данные",
         "spotOnly": "Только спотовая площадка — остатки на других площадках не учитываются.",
         "flowsUnadjusted": "Внешние пополнения и выводы средств не исключены.",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "Эти данные пересчитаны из {{from}} по курсу закрытия каждой минуты и не были изначально измерены в этой валюте.",
+        "pricedOn": "Оценено по {{plane}}.",
+        "conversionWithheld": "Минуты пропущены из-за отсутствия подтверждённого курса закрытия: {{count}}.",
+        "drawdownConverted": "Просадка не показывается в пересчитанном виде, так как текущий пик отслеживается в исходной валюте."
       },
       "cashPosition": {
         "title": "Разделение денежных средств и позиции",

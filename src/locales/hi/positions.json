@@ -120,10 +120,10 @@
         "title": "इसे कैसे पढ़ें",
         "spotOnly": "केवल स्पॉट वेन्यू — अन्य वेन्यू में रखी शेष राशियाँ शामिल नहीं हैं।",
         "flowsUnadjusted": "बाहरी जमा और निकासी घटाई नहीं गई हैं।",
-        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
-        "pricedOn": "Priced on {{plane}}.",
-        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
-        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
+        "restatedFrom": "ये आँकड़े प्रत्येक मिनट की समापन दर के अनुसार {{from}} से पुनर्गणित किए गए हैं; इन्हें मूल रूप से इस मुद्रा में सैंपल नहीं किया गया है।",
+        "pricedOn": "{{plane}} पर मूल्य निर्धारित।",
+        "conversionWithheld": "प्रमाणित समापन दर के अभाव में हटाए गए मिनट: {{count}}।",
+        "drawdownConverted": "रूपांतरित आधार पर ड्रॉडाउन नहीं दिखाया जाता, क्योंकि चालू शिखर को नमूने वाली मुद्रा में ट्रैक किया जाता है।"
       },
       "cashPosition": {
         "title": "नकदी और पोज़िशन का विभाजन",
