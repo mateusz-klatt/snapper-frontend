@@ -119,7 +119,11 @@
       "honesty": {
         "title": "資料解讀說明",
         "spotOnly": "僅限現貨交易場所——不包括其他交易場所持有的餘額。",
-        "flowsUnadjusted": "未剔除外部存款和提款。"
+        "flowsUnadjusted": "未剔除外部存款和提款。",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "現金與持倉構成",

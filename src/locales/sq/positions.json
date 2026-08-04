@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Si të interpretohet",
         "spotOnly": "Vetëm bursa spot — përjashtohen gjendjet e mbajtura në bursa të tjera.",
-        "flowsUnadjusted": "Depozitat dhe tërheqjet e jashtme nuk janë hequr."
+        "flowsUnadjusted": "Depozitat dhe tërheqjet e jashtme nuk janë hequr.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Ndarja e parasë dhe pozicionit",

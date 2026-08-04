@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Cara membaca data ini",
         "spotOnly": "Bursa spot sahaja — baki yang disimpan di bursa lain tidak disertakan.",
-        "flowsUnadjusted": "Deposit dan pengeluaran luaran tidak ditolak."
+        "flowsUnadjusted": "Deposit dan pengeluaran luaran tidak ditolak.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Pecahan tunai dan posisi",

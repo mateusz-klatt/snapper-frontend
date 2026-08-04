@@ -119,7 +119,11 @@
       "honesty": {
         "title": "כיצד לקרוא נתונים אלה",
         "spotOnly": "זירת המסחר המיידי בלבד — יתרות המוחזקות בזירות אחרות אינן נכללות.",
-        "flowsUnadjusted": "הפקדות ומשיכות חיצוניות לא נוכו."
+        "flowsUnadjusted": "הפקדות ומשיכות חיצוניות לא נוכו.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "חלוקה בין מזומן לפוזיציה",

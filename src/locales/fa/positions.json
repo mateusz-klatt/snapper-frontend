@@ -119,7 +119,11 @@
       "honesty": {
         "title": "نحوه تفسیر این داده‌ها",
         "spotOnly": "فقط بازار نقدی — موجودی‌های نگهداری‌شده در بازارهای دیگر لحاظ نمی‌شوند.",
-        "flowsUnadjusted": "واریزها و برداشت‌های خارجی حذف نشده‌اند."
+        "flowsUnadjusted": "واریزها و برداشت‌های خارجی حذف نشده‌اند.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "تفکیک وجه نقد و موقعیت",

@@ -119,7 +119,11 @@
       "honesty": {
         "title": "ဤအချက်အလက်ကို ဖတ်ရှုနည်း",
         "spotOnly": "လက်ငင်းဈေးကွက်သာ — အခြားဈေးကွက်များရှိ လက်ကျန်များ မပါဝင်ပါ။",
-        "flowsUnadjusted": "ပြင်ပငွေသွင်းခြင်းနှင့် ငွေထုတ်ခြင်းများကို နုတ်ပယ်မထားပါ။"
+        "flowsUnadjusted": "ပြင်ပငွေသွင်းခြင်းနှင့် ငွေထုတ်ခြင်းများကို နုတ်ပယ်မထားပါ။",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "ငွေသားနှင့် ပိုဇီရှင် ခွဲခြားမှု",

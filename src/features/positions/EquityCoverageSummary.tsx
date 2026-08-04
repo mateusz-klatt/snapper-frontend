@@ -28,6 +28,11 @@ export const EquityCoverageSummary: React.FC<Readonly<Props>> = ({ coverage, poi
   const worstDrawdown = maxDrawdown(points)
   const showSpotOnly = coverage.venue_scope === 'spot_only'
   const showFlows = coverage.external_flows_adjusted === false
+  const restatedFrom = coverage.converted_from
+  const pricedOn = coverage.conversion_rate_source
+  const withheldMinutes = coverage.conversion_withheld_minutes
+  const showHonesty =
+    showSpotOnly || showFlows || restatedFrom !== null || coverage.drawdown_withheld_reason !== null
 
   return (
     <section
@@ -61,7 +66,7 @@ export const EquityCoverageSummary: React.FC<Readonly<Props>> = ({ coverage, poi
           </span>
         )}
       </p>
-      {(showSpotOnly || showFlows) && (
+      {showHonesty && (
         <div
           className='mt-4 space-y-1 rounded-xl border border-info-200 bg-info-50 px-4 py-3 text-xs text-info-700'
           data-testid='pnl-equity-honesty'
@@ -73,6 +78,26 @@ export const EquityCoverageSummary: React.FC<Readonly<Props>> = ({ coverage, poi
           {showFlows && (
             <div data-testid='pnl-equity-honesty-flows'>
               {t('timeline.equity.honesty.flowsUnadjusted')}
+            </div>
+          )}
+          {restatedFrom !== null && (
+            <div data-testid='pnl-equity-honesty-restated'>
+              {t('timeline.equity.honesty.restatedFrom', { from: restatedFrom })}
+            </div>
+          )}
+          {pricedOn !== null && (
+            <div data-testid='pnl-equity-honesty-plane'>
+              {t('timeline.equity.honesty.pricedOn', { plane: pricedOn })}
+            </div>
+          )}
+          {withheldMinutes > 0 && (
+            <div data-testid='pnl-equity-honesty-withheld'>
+              {t('timeline.equity.honesty.conversionWithheld', { count: withheldMinutes })}
+            </div>
+          )}
+          {coverage.drawdown_withheld_reason !== null && (
+            <div data-testid='pnl-equity-honesty-drawdown'>
+              {t('timeline.equity.honesty.drawdownConverted')}
             </div>
           )}
         </div>

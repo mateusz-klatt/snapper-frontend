@@ -119,7 +119,11 @@
       "honesty": {
         "title": "データの見方",
         "spotOnly": "現物取引所のみです。他の取引所で保有する残高は含まれません。",
-        "flowsUnadjusted": "外部からの入金と出金は除外されていません。"
+        "flowsUnadjusted": "外部からの入金と出金は除外されていません。",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "現金とポジションの内訳",

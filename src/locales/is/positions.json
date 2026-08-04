@@ -119,7 +119,11 @@
       "honesty": {
         "title": "Hvernig á að lesa þetta",
         "spotOnly": "Aðeins stundarmarkaður — innistæður á öðrum mörkuðum eru undanskildar.",
-        "flowsUnadjusted": "Ytri inn- og útborganir eru ekki dregnar frá."
+        "flowsUnadjusted": "Ytri inn- og útborganir eru ekki dregnar frá.",
+        "restatedFrom": "These figures are restated from {{from}} at each minute's close, not sampled natively in this currency.",
+        "pricedOn": "Priced on {{plane}}.",
+        "conversionWithheld": "Minutes dropped for want of a proven close: {{count}}.",
+        "drawdownConverted": "Drawdown is withheld on a converted basis, because the running peak is tracked in the sampled currency."
       },
       "cashPosition": {
         "title": "Skipting reiðufjár og stöðu",
