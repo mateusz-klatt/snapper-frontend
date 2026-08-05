@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { EventEmitter } from 'node:events'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
-import { mkdir, mkdtemp, readFile, readdir, rm, symlink, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { after, test } from 'node:test'
@@ -172,6 +172,41 @@ test('screenshot index renders every locale and screen and reports failures', as
   exerciseProcessExitCode(setScreenshotExitCode)
 })
 
+/**
+ * Wrap an fs module so one directory reports an extra entry that is neither a
+ * file nor a directory.
+ *
+ * Both scanners classify entries purely by dirent type — `isDirectory()` then
+ * `isFile()`, skipping anything that answers false to both. Reaching that skip
+ * used to mean creating a real symlink, which fails with EPERM on Windows
+ * unless the shell is elevated or Developer Mode is on, so the suite passed on
+ * Linux and CI and broke on the maintainer's own machine.
+ *
+ * The branch is a property of the dirent, not of the filesystem, so it is
+ * injected instead. That also widens the case: a synthetic entry stands in for
+ * every non-file type, including the FIFOs, sockets and devices a symlink test
+ * would never have covered.
+ *
+ * @param {object} realFs fs/promises module to delegate to.
+ * @param {string} directory Absolute directory whose listing gains the entry.
+ * @param {string} name Entry name to inject.
+ * @returns {object} fs-like API for the scanners' `fsApi` parameter.
+ */
+function withNonFileEntry(realFs, directory, name) {
+  return {
+    ...realFs,
+    async readdir(dir, options) {
+      const entries = await realFs.readdir(dir, options)
+
+      if (String(dir) === directory) {
+        entries.push({ name, isDirectory: () => false, isFile: () => false })
+      }
+
+      return entries
+    },
+  }
+}
+
 test('i18n scanner walks source trees, honors exact allowlisting, and reports literals', async () => {
   const frontendRoot = await makeTemporaryDirectory('snapper-i18n-')
   const srcRoot = join(frontendRoot, 'src')
@@ -192,11 +227,10 @@ test('i18n scanner walks source trees, honors exact allowlisting, and reports li
     '<button aria-label="Ignored">x</button>\n'
   )
   await put(join(srcRoot, 'notes.txt'), 'not TypeScript\n')
-  await symlink(join(srcRoot, 'notes.txt'), join(srcRoot, 'notes-link'))
   await put(allowlistPath, '# Exact source location\n\nsrc/Allowed.tsx:1\nsrc/App.tsx:100\n')
 
   const fsApi = {
-    ...(await import('node:fs/promises')),
+    ...withNonFileEntry(await import('node:fs/promises'), srcRoot, 'notes-link'),
     async readFile(filePath, encoding) {
       if (String(filePath).endsWith('Unreadable.tsx')) throw new Error('unreadable')
 
@@ -316,14 +350,15 @@ test('comment scanner covers lexical states, path filtering, and CLI modes', asy
   await put(join(srcRoot, 'node_modules', 'Ignored.ts'), '// ignored\n')
   await put(join(srcRoot, 'nested', 'Nested.ts'), 'export const nested = true\n')
   await put(join(srcRoot, 'notes.js'), '// ignored extension\n')
-  await symlink(join(srcRoot, 'notes.js'), join(srcRoot, 'notes-link'))
+
+  const commentsFs = withNonFileEntry(await import('node:fs/promises'), srcRoot, 'notes-link')
 
   assert.equal(shouldSkipPath(join(root, 'node_modules', 'x.ts')), true)
   assert.equal(shouldSkipPath(join(root, 'Thing.generated.client.ts')), true)
   assert.equal(shouldSkipPath(join(root, 'src', 'Thing.ts')), false)
   assert.deepEqual(await iterTypeScriptFiles(root, ['missing']), [])
 
-  const files = await iterTypeScriptFiles(root, ['src'])
+  const files = await iterTypeScriptFiles(root, ['src'], commentsFs)
 
   assert.deepEqual(
     files.map(filePath => filePath.slice(srcRoot.length + 1)),
