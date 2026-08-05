@@ -156,6 +156,10 @@ export function scanContent(content, relPath) {
   return hits
 }
 
+export function toPosixPath(relativePath, separator = path.sep) {
+  return separator === '/' ? relativePath : relativePath.split(separator).join('/')
+}
+
 export function isAllowlisted(hit, allowlist) {
   const probe = `${hit.file}:${hit.line}`
   return allowlist.includes(probe)
@@ -175,7 +179,7 @@ export async function checkI18n({
 
   const violations = []
   for (const absPath of files) {
-    const relPath = path.relative(frontendRoot, absPath)
+    const relPath = toPosixPath(path.relative(frontendRoot, absPath))
     let content
     try {
       content = await fsApi.readFile(absPath, 'utf8')
