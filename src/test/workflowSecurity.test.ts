@@ -1,4 +1,4 @@
-import sonarProperties from '../../sonar-project.properties?raw'
+import rawSonarProperties from '../../sonar-project.properties?raw'
 import { describe, expect, it } from 'vitest'
 
 type PermissionLevel = 'read' | 'write'
@@ -9,8 +9,15 @@ const workflowModules = import.meta.glob('../../.github/workflows/*.yml', {
   query: '?raw',
 }) as Record<string, string>
 
+const toUnixNewlines = (source: string): string => source.replace(/\r\n/g, '\n')
+
+const sonarProperties = toUnixNewlines(rawSonarProperties)
+
 const workflows = Object.fromEntries(
-  Object.entries(workflowModules).map(([path, source]) => [path.split('/').at(-1) ?? path, source])
+  Object.entries(workflowModules).map(([path, source]) => [
+    path.split('/').at(-1) ?? path,
+    toUnixNewlines(source),
+  ])
 ) as Record<string, string>
 
 const EXPECTED_JOB_PERMISSIONS = {
