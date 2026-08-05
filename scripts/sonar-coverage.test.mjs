@@ -210,6 +210,7 @@ function withNonFileEntry(realFs, directory, name) {
 
 test('i18n paths are forward-slashed on every platform', () => {
   assert.equal(toPosixPath('src\\features\\App.tsx', '\\'), 'src/features/App.tsx')
+  assert.equal(toPosixPath('src/features/App.tsx', '/'), 'src/features/App.tsx')
   assert.equal(toPosixPath('src/features/App.tsx'), 'src/features/App.tsx')
 })
 
