@@ -20,6 +20,7 @@ import {
   loadAllowlist,
   runCheckI18n,
   runCheckI18nIfMain,
+  toPosixPath,
   scanContent,
   setProcessExitCode as setI18nExitCode,
   walk,
@@ -206,6 +207,11 @@ function withNonFileEntry(realFs, directory, name) {
     },
   }
 }
+
+test('i18n paths are forward-slashed on every platform', () => {
+  assert.equal(toPosixPath('src\\features\\App.tsx', '\\'), 'src/features/App.tsx')
+  assert.equal(toPosixPath('src/features/App.tsx'), 'src/features/App.tsx')
+})
 
 test('i18n scanner walks source trees, honors exact allowlisting, and reports literals', async () => {
   const frontendRoot = await makeTemporaryDirectory('snapper-i18n-')
