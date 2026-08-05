@@ -655,6 +655,7 @@ export interface OrderRequest {
   strategyTag?: string | null
   leverage?: number | null
   reduceOnly?: boolean
+  postOnly?: boolean
   walletPublicId?: string
   operatorPublicId?: string | null
   userPublicId?: string | null

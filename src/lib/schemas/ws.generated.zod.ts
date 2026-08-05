@@ -571,6 +571,7 @@ export const OrderRequestDataSchema = z
     strategy_tag: z.string().nullable().optional(),
     leverage: z.number().int().nullable().optional(),
     reduce_only: z.boolean(),
+    post_only: z.boolean(),
     wallet_public_id: z.string(),
     operator_public_id: z.string().nullable().optional(),
     user_public_id: z.string().nullable().optional(),

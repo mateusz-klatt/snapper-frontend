@@ -1052,6 +1052,7 @@ export interface OrderRequestData {
   strategy_tag?: StrategyTag;
   leverage?: Leverage1;
   reduce_only?: boolean;
+  post_only?: boolean;
   wallet_public_id?: string;
   operator_public_id?: OperatorPublicId7;
   user_public_id?: UserPublicId5;
