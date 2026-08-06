@@ -1263,7 +1263,9 @@ const _PnlIncompletenessReasonRawSchema = z.enum([
   'net_non_finite',
   'attribution_value_non_finite',
   'attribution_reconciliation_failed',
+  'attribution_sum_unrepresentable',
   'instrument_reconciliation_failed',
+  'instrument_sum_unrepresentable',
   'late_pre_activation_execution',
 ])
 

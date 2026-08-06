@@ -75,7 +75,9 @@
         "net_non_finite": "नेट P&L परिमित संख्या नहीं है",
         "attribution_value_non_finite": "एट्रिब्यूशन मान परिमित संख्या नहीं है",
         "attribution_reconciliation_failed": "एट्रिब्यूशन मिलान विफल हुआ",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

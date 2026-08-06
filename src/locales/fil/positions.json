@@ -75,7 +75,9 @@
         "net_non_finite": "Hindi finite ang netong P&L",
         "attribution_value_non_finite": "Hindi finite ang halaga ng attribution",
         "attribution_reconciliation_failed": "Nabigo ang reconciliation ng attribution",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
