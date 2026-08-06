@@ -75,7 +75,9 @@
         "net_non_finite": "淨 P&L 並非有限數值",
         "attribution_value_non_finite": "歸因值並非有限數值",
         "attribution_reconciliation_failed": "歸因對帳失敗",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

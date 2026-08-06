@@ -75,7 +75,9 @@
         "net_non_finite": "P&L halisi si thamani yenye kikomo",
         "attribution_value_non_finite": "Thamani ya uhusishaji si yenye kikomo",
         "attribution_reconciliation_failed": "Upatanisho wa uhusishaji umeshindikana",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

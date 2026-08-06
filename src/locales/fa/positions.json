@@ -75,7 +75,9 @@
         "net_non_finite": "P&L خالص متناهی نیست",
         "attribution_value_non_finite": "مقدار انتساب متناهی نیست",
         "attribution_reconciliation_failed": "تطبیق انتساب ناموفق بود",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

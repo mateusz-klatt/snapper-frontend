@@ -37,8 +37,11 @@ const REASON_LABEL_KEYS = {
   attribution_value_non_finite: 'timeline.incompleteness.reasons.attribution_value_non_finite',
   attribution_reconciliation_failed:
     'timeline.incompleteness.reasons.attribution_reconciliation_failed',
+  attribution_sum_unrepresentable:
+    'timeline.incompleteness.reasons.attribution_sum_unrepresentable',
   instrument_reconciliation_failed:
     'timeline.incompleteness.reasons.instrument_reconciliation_failed',
+  instrument_sum_unrepresentable: 'timeline.incompleteness.reasons.instrument_sum_unrepresentable',
   late_pre_activation_execution: 'timeline.incompleteness.reasons.late_pre_activation_execution',
 } as const satisfies Record<IncompletenessReason, string>
 

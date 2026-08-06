@@ -75,7 +75,9 @@
         "net_non_finite": "P&L ròng không hữu hạn",
         "attribution_value_non_finite": "Giá trị phân bổ không hữu hạn",
         "attribution_reconciliation_failed": "Đối soát phân bổ thất bại",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

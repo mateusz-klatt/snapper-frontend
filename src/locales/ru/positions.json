@@ -75,7 +75,9 @@
         "net_non_finite": "Чистый P&L не является конечным числом",
         "attribution_value_non_finite": "Значение атрибуции не является конечным числом",
         "attribution_reconciliation_failed": "Не удалось выполнить сверку атрибуции",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

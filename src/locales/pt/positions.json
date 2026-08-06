@@ -75,7 +75,9 @@
         "net_non_finite": "O P&L líquido não é finito",
         "attribution_value_non_finite": "O valor da atribuição não é finito",
         "attribution_reconciliation_failed": "Falha na reconciliação da atribuição",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

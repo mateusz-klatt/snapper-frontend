@@ -75,7 +75,9 @@
         "net_non_finite": "নিট P&L সসীম নয়",
         "attribution_value_non_finite": "অ্যাট্রিবিউশন মান সসীম নয়",
         "attribution_reconciliation_failed": "অ্যাট্রিবিউশন সমন্বয় ব্যর্থ হয়েছে",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },

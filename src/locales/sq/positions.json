@@ -75,7 +75,9 @@
         "net_non_finite": "P&L neto nuk është i fundëm",
         "attribution_value_non_finite": "Vlera e atribuimit nuk është e fundme",
         "attribution_reconciliation_failed": "Rakordimi i atribuimit dështoi",
+        "attribution_sum_unrepresentable": "Attribution sum is not representable",
         "instrument_reconciliation_failed": "Instrument reconciliation failed",
+        "instrument_sum_unrepresentable": "Instrument sum is not representable",
         "late_pre_activation_execution": "Late pre-activation execution"
       }
     },
