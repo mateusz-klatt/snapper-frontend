@@ -1549,6 +1549,22 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/livez": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["liveness_check_api_livez_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/candles": {
         parameters: {
             query?: never;
@@ -3234,6 +3250,9 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             payload: Components["schemas"]["ListedCachedStatsPayload"];
+        };
+        LivenessResponse: {
+            status: "ok";
         };
         LoginData: {
             type: "login";
@@ -8885,6 +8904,25 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    liveness_check_api_livez_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["LivenessResponse"];
                 };
             };
         };

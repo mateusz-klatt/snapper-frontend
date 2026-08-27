@@ -896,6 +896,16 @@ export const LimitsMetricsSchema = _LimitsMetricsRawSchema as unknown as z.ZodTy
   Components['schemas']['LimitsMetrics']
 >
 
+const _LivenessResponseRawSchema = z
+  .object({
+    status: z.literal('ok'),
+  })
+  .strict()
+
+export const LivenessResponseSchema = _LivenessResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['LivenessResponse']
+>
+
 const _MarketDataCoverageExchangeRawSchema = z
   .object({
     exchange: z.string(),
@@ -6350,6 +6360,7 @@ export type InstrumentFeedHealthRowSchema = Components['schemas']['InstrumentFee
 export type InstrumentListResponse = Components['schemas']['InstrumentListResponse']
 export type JsonPrimitive = Components['schemas']['JsonPrimitive']
 export type LimitsMetrics = Components['schemas']['LimitsMetrics']
+export type LivenessResponse = Components['schemas']['LivenessResponse']
 export type MarketDataCoverageExchange = Components['schemas']['MarketDataCoverageExchange']
 export type MemoryMetrics = Components['schemas']['MemoryMetrics']
 export type MessageResponse = Components['schemas']['MessageResponse']
