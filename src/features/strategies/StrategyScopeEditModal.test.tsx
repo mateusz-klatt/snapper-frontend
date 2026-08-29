@@ -29,15 +29,20 @@ vi.mock('../../hooks/useIsReadOnly', () => ({
   useIsReadOnly: vi.fn(() => false),
 }))
 
+const DEFAULT_OPERATOR_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000010'
+const DESK_OPERATOR_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000011'
+const PAPER_WALLET_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000012'
+const LIVE_WALLET_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000013'
+const BOB_USER_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000014'
 const OPERATORS = [
-  { public_id: 'op-default-uuid', label: 'default' },
-  { public_id: 'op-desk-uuid', label: 'desk' },
+  { public_id: DEFAULT_OPERATOR_PUBLIC_ID, label: 'default' },
+  { public_id: DESK_OPERATOR_PUBLIC_ID, label: 'desk' },
 ]
 const WALLETS = [
-  { public_id: 'wal-paper-uuid', label: 'paper', is_paper: true },
-  { public_id: 'wal-live-uuid', label: 'live', is_paper: false },
+  { public_id: PAPER_WALLET_PUBLIC_ID, label: 'paper', is_paper: true },
+  { public_id: LIVE_WALLET_PUBLIC_ID, label: 'live', is_paper: false },
 ]
-const USERS = [{ public_id: 'usr-bob-uuid', username: 'bob' }]
+const USERS = [{ public_id: BOB_USER_PUBLIC_ID, username: 'bob' }]
 
 const mockCatalogues = (options?: {
   operators?: { public_id: string; label: string }[]
@@ -137,15 +142,19 @@ describe('StrategyScopeEditModal', () => {
     expect(mutate).not.toHaveBeenCalled()
   })
 
-  it('pre-fills label operator/wallet resolved to public_id and reference to the label value', () => {
+  it('pre-fills legacy labels as canonical public_id option values', () => {
     renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={TARGET} />)
     expect(screen.getByText('Edit strategy scope')).toBeInTheDocument()
     expect(screen.getByText(/p7_heartbeat_consult_btc_1h/)).toBeInTheDocument()
-    expect((screen.getByLabelText('Operator') as HTMLSelectElement).value).toBe('op-default-uuid')
-    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('wal-paper-uuid')
+    expect((screen.getByLabelText('Operator') as HTMLSelectElement).value).toBe(
+      DEFAULT_OPERATOR_PUBLIC_ID
+    )
+    expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe(
+      PAPER_WALLET_PUBLIC_ID
+    )
     const refSelect = screen.getByLabelText('Strategy owner (user)') as HTMLSelectElement
 
-    expect(refSelect.value).toBe('label:bob')
+    expect(refSelect.value).toBe(BOB_USER_PUBLIC_ID)
   })
 
   it('leaves the picker empty when a label has no matching entity', () => {
@@ -161,12 +170,63 @@ describe('StrategyScopeEditModal', () => {
   it('passes a concrete public_id through unchanged and ignores a non-string scope value', () => {
     const target: StrategyScopeEditTarget = {
       ...TARGET,
-      parameters: { operator_public_id: 'op-desk-uuid', wallet_public_id: 42, params: null },
+      parameters: {
+        operator_public_id: DESK_OPERATOR_PUBLIC_ID,
+        wallet_public_id: 42,
+        params: null,
+      },
     }
 
     renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={target} />)
-    expect((screen.getByLabelText('Operator') as HTMLSelectElement).value).toBe('op-desk-uuid')
+    expect((screen.getByLabelText('Operator') as HTMLSelectElement).value).toBe(
+      DESK_OPERATOR_PUBLIC_ID
+    )
     expect((screen.getByLabelText('Wallet') as HTMLSelectElement).value).toBe('')
+  })
+
+  it('falls back to empty catalogues while catalogue data is unavailable', () => {
+    mockCatalogues()
+
+    renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={TARGET} />)
+
+    expect(screen.getByText(/No operators exist yet/)).toBeInTheDocument()
+    expect((screen.getByRole('button', { name: 'Save scope' }) as HTMLButtonElement).disabled).toBe(
+      true
+    )
+  })
+
+  it('resolves legacy reference labels by kind and rejects an unknown kind', () => {
+    mockCatalogues({
+      operators: [{ public_id: DEFAULT_OPERATOR_PUBLIC_ID, label: 'shared' }],
+      wallets: [{ public_id: PAPER_WALLET_PUBLIC_ID, label: 'shared', is_paper: true }],
+      users: [{ public_id: BOB_USER_PUBLIC_ID, username: 'shared' }],
+    })
+    mockSchema({ delegate_operator: 'operator', funding_wallet: 'wallet', mystery: 'bogus' })
+    const target: StrategyScopeEditTarget = {
+      ...TARGET,
+      parameters: {
+        operator_public_id: 'label:shared',
+        wallet_public_id: 'label:shared',
+        params: {
+          delegate_operator: 'label:shared',
+          funding_wallet: 'label:shared',
+          mystery: 'label:shared',
+        },
+      },
+    }
+
+    renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={target} />)
+
+    expect((screen.getByLabelText('Operator reference') as HTMLSelectElement).value).toBe(
+      DEFAULT_OPERATOR_PUBLIC_ID
+    )
+    expect((screen.getByLabelText('Wallet reference') as HTMLSelectElement).value).toBe(
+      PAPER_WALLET_PUBLIC_ID
+    )
+    expect((screen.getByLabelText('bogus') as HTMLSelectElement).value).toBe('')
+    expect((screen.getByRole('button', { name: 'Save scope' }) as HTMLButtonElement).disabled).toBe(
+      true
+    )
   })
 
   it('renders the no-operators warning when the operator catalogue is empty', () => {
@@ -188,12 +248,43 @@ describe('StrategyScopeEditModal', () => {
 
     expect(vars.name).toBe('p7_heartbeat_consult_btc_1h')
     expect(vars.body).toEqual({
-      operator_public_id: 'op-default-uuid',
-      wallet_public_id: 'wal-paper-uuid',
-      reference_identity_params: { ai_review_user_public_id: 'label:bob' },
+      operator_public_id: DEFAULT_OPERATOR_PUBLIC_ID,
+      wallet_public_id: PAPER_WALLET_PUBLIC_ID,
+      reference_identity_params: { ai_review_user_public_id: BOB_USER_PUBLIC_ID },
     })
     expect(screen.getByText(/Restart the strategy/)).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Save scope' })).not.toBeInTheDocument()
+  })
+
+  it('binds and saves a canonical scope for a legacy empty configuration', () => {
+    const mutate = vi.fn()
+    const target: StrategyScopeEditTarget = {
+      ...TARGET,
+      parameters: {},
+    }
+
+    mockSchema(null)
+    mockMutation({ mutate })
+    renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={target} />)
+    fireEvent.change(screen.getByLabelText('Operator'), {
+      target: { value: DEFAULT_OPERATOR_PUBLIC_ID },
+    })
+    fireEvent.change(screen.getByLabelText('Wallet'), {
+      target: { value: PAPER_WALLET_PUBLIC_ID },
+    })
+    fireEvent.click(screen.getByRole('button', { name: 'Save scope' }))
+
+    expect(mutate).toHaveBeenCalledWith(
+      {
+        name: 'p7_heartbeat_consult_btc_1h',
+        body: {
+          operator_public_id: DEFAULT_OPERATOR_PUBLIC_ID,
+          wallet_public_id: PAPER_WALLET_PUBLIC_ID,
+          reference_identity_params: {},
+        },
+      },
+      expect.any(Object)
+    )
   })
 
   it('shows a save error when the mutation fails', () => {
@@ -245,9 +336,19 @@ describe('StrategyScopeEditModal', () => {
 
     expect(save.disabled).toBe(true)
     fireEvent.change(screen.getByLabelText('Strategy owner (user)'), {
-      target: { value: 'label:bob' },
+      target: { value: BOB_USER_PUBLIC_ID },
     })
     await waitFor(() => expect(save.disabled).toBe(false))
+  })
+
+  it('uses the process name for schema lookup when no parent template is persisted', () => {
+    const target: StrategyScopeEditTarget = { ...TARGET, template: null }
+
+    renderWithProviders(<StrategyScopeEditModal open onClose={onClose} target={target} />)
+
+    expect(useProcessSchema).toHaveBeenCalledWith(target.processName, {
+      enabled: true,
+    })
   })
 
   it('falls back to an empty reference map when the schema has no reference params', () => {

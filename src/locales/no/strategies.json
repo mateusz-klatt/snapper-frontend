@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operatørreferanse",
     "refWalletLabel": "Lommebokreferanse",
     "referencePlaceholder": "Velg",
-    "scopeHelp": "Eieren bestemmes ut fra brukernavn, og omfanget kontrolleres mot valgt operatør når strategien startes.",
+    "scopeHelp": "Den aktive eieren som velges fra katalogen, lagres som en offentlig ID, valideres ved lagring og valideres på nytt hver gang strategien startes.",
     "noOperatorsWarning": "Det finnes ingen operatører ennå. Opprett en operatør og en omfangstildeling før du starter en strategi med omfang."
   },
   "editScopeModal": {
     "title": "Rediger strategiens omfang",
     "subtitle": "Målrett “{{name}}” på nytt — operatør, lommebok og vurderer. Endringer trer i kraft ved neste omstart.",
     "restartRequiredBanner": "Omfang lagret. Start strategien på nytt for at det nye omfanget skal tre i kraft.",
-    "help": "Endringer i omfang valideres når strategien startes på nytt (operatørmedlemskap, lommebok-tildeling, utdatadekning).",
+    "help": "Før omfangsendringer lagres, valideres medlemskap hos den endelige operatøren, en aktiv lommebok som operatøren har tilgang til og som samsvarer med modusen, aktive nestede identiteter, lommeboktildelingen og utdatadekningen; hele omfanget valideres på nytt når strategien startes på nytt.",
     "saveError": "Kunne ikke lagre omfang: {{message}}",
     "save": "Lagre omfang",
     "saving": "Lagrer…",

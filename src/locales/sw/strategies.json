@@ -137,14 +137,14 @@
     "refOperatorLabel": "Rejeleo la mwendeshaji",
     "refWalletLabel": "Rejeleo la pochi",
     "referencePlaceholder": "Chagua",
-    "scopeHelp": "Mmiliki hutambuliwa kwa jina la mtumiaji na upeo wake hukaguliwa dhidi ya mwendeshaji aliyechaguliwa mkakati unapoanzishwa.",
+    "scopeHelp": "Mmiliki hai aliyechaguliwa kutoka kwenye katalogi huhifadhiwa kama kitambulisho cha umma, huthibitishwa wakati wa kuhifadhi na huthibitishwa tena kila mkakati unapoanzishwa.",
     "noOperatorsWarning": "Bado hakuna waendeshaji. Unda mwendeshaji na ruhusa ya upeo kabla ya kuanzisha mkakati wenye upeo."
   },
   "editScopeModal": {
     "title": "Hariri upeo wa mkakati",
     "subtitle": "Elekeza upya “{{name}}” — mwendeshaji, pochi na mkaguzi. Mabadiliko yataanza kutumika kwenye uanzishaji upya unaofuata.",
     "restartRequiredBanner": "Upeo umehifadhiwa. Anzisha upya mkakati ili upeo mpya uanze kutumika.",
-    "help": "Mabadiliko ya upeo huthibitishwa mkakati unapoanzishwa upya (uanachama wa mwendeshaji, ruhusa ya pochi, ufikiaji wa matokeo).",
+    "help": "Kabla ya mabadiliko ya upeo kuhifadhiwa, uanachama katika mwendeshaji wa mwisho, pochi hai inayofikika na mwendeshaji huyo na inayolingana na hali ya uendeshaji, vitambulisho hai vilivyopachikwa, ruhusa ya pochi na ufikiaji wa matokeo huthibitishwa; upeo wote huthibitishwa tena mkakati unapoanzishwa upya.",
     "saveError": "Imeshindwa kuhifadhi upeo: {{message}}",
     "save": "Hifadhi upeo",
     "saving": "Inahifadhi…",

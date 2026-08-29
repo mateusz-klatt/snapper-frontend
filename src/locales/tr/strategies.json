@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operatör referansı",
     "refWalletLabel": "Cüzdan referansı",
     "referencePlaceholder": "Seç",
-    "scopeHelp": "Sahip kullanıcı adına göre çözümlenir ve strateji başlatıldığında kapsamı seçili operatöre göre denetlenir.",
+    "scopeHelp": "Katalogdan seçilen etkin sahip Public ID olarak kaydedilir, kaydedilirken doğrulanır ve strateji her başlatıldığında yeniden doğrulanır.",
     "noOperatorsWarning": "Henüz operatör yok. Kapsamlı bir strateji başlatmadan önce bir operatör ve kapsam izni oluşturun."
   },
   "editScopeModal": {
     "title": "Strateji kapsamını düzenle",
     "subtitle": "“{{name}}” için yeniden hedef belirleyin — operatör, cüzdan ve inceleyici. Değişiklikler bir sonraki yeniden başlatmada geçerli olur.",
     "restartRequiredBanner": "Kapsam kaydedildi. Yeni kapsamın geçerli olması için stratejiyi yeniden başlatın.",
-    "help": "Kapsam değişiklikleri strateji yeniden başlatıldığında doğrulanır (operatör üyeliği, cüzdan izni, çıktı kapsamı).",
+    "help": "Kapsam değişiklikleri kaydedilmeden önce nihai operatör üyeliği, bu operatörün erişebildiği ve modla eşleşen etkin bir cüzdan, etkin iç içe kimlikler, cüzdan izni ve çıktı kapsamı doğrulanır; strateji yeniden başlatıldığında kapsamın tamamı yeniden doğrulanır.",
     "saveError": "Kapsam kaydedilemedi: {{message}}",
     "save": "Kapsamı kaydet",
     "saving": "Kaydediliyor…",

@@ -13,7 +13,7 @@ const buildReferenceOptions = (
   paperAnnotation: string
 ): { value: string; label: string }[] => {
   if (kind === 'user') {
-    return users.map(user => ({ value: `label:${user.username}`, label: user.username }))
+    return users.map(user => ({ value: user.public_id, label: user.username }))
   }
 
   if (kind === 'operator') {
@@ -49,8 +49,9 @@ interface ScopeFieldsProps {
  *
  * Native `<select>`s (unaffected by the Radix-in-modal portal issue) reused by
  * both the strategy launch modal (register) and the scope-edit modal (retarget
- * an existing config). User reference values are `label:<username>` strings so
- * they resolve at (re)start; operator / wallet options carry their public_id.
+ * an existing config). Every option carries a canonical public_id; usernames and
+ * labels are display text only. Create/edit validates those IDs in operator scope
+ * before persistence, and every start rechecks the resulting scope.
  * When the operator catalogue is empty the section renders a warning instead of
  * unusable pickers.
  */
@@ -68,6 +69,12 @@ export const ScopeFields: React.FC<Readonly<ScopeFieldsProps>> = ({
   scopeBlocked,
 }) => {
   const { t } = useTranslation('strategies')
+
+  const handleOperatorChange = (value: string): void => {
+    onOperatorChange(value)
+    onWalletChange('')
+    for (const [name] of referenceEntries) onReferenceChange(name, '')
+  }
 
   const referenceLabel = (kind: string): string => {
     if (kind === 'user') return t('launchModal.refUserLabel')
@@ -91,7 +98,7 @@ export const ScopeFields: React.FC<Readonly<ScopeFieldsProps>> = ({
           <select
             id='scope-operator'
             value={operatorId}
-            onChange={e => onOperatorChange(e.target.value)}
+            onChange={e => handleOperatorChange(e.target.value)}
             className={SCOPE_SELECT_CLASS}
           >
             <option value=''>{t('launchModal.operatorPlaceholder')}</option>
@@ -150,7 +157,9 @@ export const ScopeFields: React.FC<Readonly<ScopeFieldsProps>> = ({
           </select>
         </div>
       ))}
-      <p className='text-xs text-muted-400'>{t('launchModal.scopeHelp')}</p>
+      {referenceEntries.length > 0 && (
+        <p className='text-xs text-muted-400'>{t('launchModal.scopeHelp')}</p>
+      )}
     </div>
   )
 }

@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operatørreference",
     "refWalletLabel": "Wallet-reference",
     "referencePlaceholder": "Vælg",
-    "scopeHelp": "Ejeren findes via brugernavn og scope-kontrolleres mod den valgte operatør, når strategien startes.",
+    "scopeHelp": "Den aktive ejer, der vælges i kataloget, gemmes som et offentligt ID, valideres ved lagring og valideres igen, hver gang strategien startes.",
     "noOperatorsWarning": "Der findes endnu ingen operatører. Opret en operatør og en scope-tildeling, før du starter en scoped strategi."
   },
   "editScopeModal": {
     "title": "Rediger strategiens omfang",
     "subtitle": "Målret “{{name}}” igen — operatør, wallet og reviewer. Ændringer træder i kraft ved næste genstart.",
     "restartRequiredBanner": "Omfang gemt. Genstart strategien, for at det nye omfang træder i kraft.",
-    "help": "Ændringer af omfang valideres, når strategien genstartes (operatørmedlemskab, wallet-tildeling, outputdækning).",
+    "help": "Før scopeændringer gemmes, valideres medlemskab hos den endelige operatør, en aktiv wallet, som operatøren har adgang til, og som matcher kørselstilstanden, aktive indlejrede identiteter, wallet-tildelingen og outputdækningen; hele scopet valideres igen, når strategien genstartes.",
     "saveError": "Kunne ikke gemme omfang: {{message}}",
     "save": "Gem omfang",
     "saving": "Gemmer…",

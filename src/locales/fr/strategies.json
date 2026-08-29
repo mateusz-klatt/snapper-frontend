@@ -137,14 +137,14 @@
     "refOperatorLabel": "Référence de l’opérateur",
     "refWalletLabel": "Référence du portefeuille",
     "referencePlaceholder": "Sélectionner",
-    "scopeHelp": "Le propriétaire est résolu par nom d’utilisateur et son périmètre est vérifié par rapport à l’opérateur sélectionné au lancement de la stratégie.",
+    "scopeHelp": "Le propriétaire actif sélectionné dans le catalogue est enregistré sous forme d’identifiant public, validé lors de l’enregistrement, puis validé de nouveau à chaque démarrage de la stratégie.",
     "noOperatorsWarning": "Aucun opérateur n’existe encore. Créez un opérateur et une autorisation de périmètre avant de lancer une stratégie avec périmètre."
   },
   "editScopeModal": {
     "title": "Modifier le périmètre de la stratégie",
     "subtitle": "Recibler « {{name}} » — opérateur, portefeuille et réviseur. Les changements s’appliquent au prochain redémarrage.",
     "restartRequiredBanner": "Périmètre enregistré. Redémarrez la stratégie pour que le nouveau périmètre prenne effet.",
-    "help": "Les changements de périmètre sont validés au redémarrage de la stratégie (appartenance à l’opérateur, autorisation de portefeuille, couverture des sorties).",
+    "help": "Avant l’enregistrement des changements de périmètre, l’appartenance à l’opérateur final, un portefeuille actif accessible à cet opérateur et correspondant au mode, les identités imbriquées actives, l’autorisation du portefeuille et la couverture des sorties sont validés ; l’ensemble du périmètre est validé de nouveau au redémarrage de la stratégie.",
     "saveError": "Échec de l’enregistrement du périmètre : {{message}}",
     "save": "Enregistrer le périmètre",
     "saving": "Enregistrement…",

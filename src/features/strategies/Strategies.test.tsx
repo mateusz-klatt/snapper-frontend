@@ -32,6 +32,18 @@ const mockStopProcess = vi.fn()
 const mockPatchDesiredState = vi.fn()
 const mockPatchDesiredStateAsync = vi.fn()
 const mockCreateProcessConfig = vi.fn()
+const mockUpdateProcessConfig = vi.fn()
+const TEST_OPERATOR_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000001'
+const TEST_WALLET_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000002'
+const TEST_OPERATOR_QUERY = {
+  data: { payload: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }] },
+}
+const TEST_WALLET_QUERY = {
+  data: {
+    payload: [{ public_id: TEST_WALLET_PUBLIC_ID, label: 'paper', is_paper: true }],
+  },
+}
+const TEST_USER_QUERY = { data: { payload: [] } }
 let storedHeartbeatCallback: ((msg: unknown) => void) | null = null
 let storedConnectionCallback: ((connected: boolean) => void) | null = null
 const mockWsClient = {
@@ -77,7 +89,7 @@ vi.mock('../../hooks/queries/processes', () => ({
     isLoading: false,
   })),
   useUpdateProcessConfig: vi.fn(() => ({
-    mutate: vi.fn(),
+    mutate: mockUpdateProcessConfig,
     isPending: false,
     isError: false,
     error: null,
@@ -88,6 +100,13 @@ vi.mock('../../hooks/queries/strategies', () => ({
     data: null,
     isLoading: false,
   })),
+}))
+vi.mock('../../hooks/queries/wallets', () => ({
+  useOperators: vi.fn(() => TEST_OPERATOR_QUERY),
+  useWallets: vi.fn(() => TEST_WALLET_QUERY),
+}))
+vi.mock('../../hooks/queries/users', () => ({
+  useUsers: vi.fn(() => TEST_USER_QUERY),
 }))
 vi.mock('../../stores/websocket', () => ({
   useWebSocketStore: vi.fn(() => ({
@@ -147,11 +166,21 @@ const renderWithProviders = (ui: ReactNode) => {
   return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
 }
 
+const selectLaunchScope = async (): Promise<void> => {
+  fireEvent.change(await screen.findByLabelText('Operator'), {
+    target: { value: TEST_OPERATOR_PUBLIC_ID },
+  })
+  fireEvent.change(screen.getByLabelText('Wallet'), {
+    target: { value: TEST_WALLET_PUBLIC_ID },
+  })
+}
+
 describe('Strategies', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockPatchDesiredState.mockReset()
     mockPatchDesiredStateAsync.mockReset()
+    mockUpdateProcessConfig.mockReset()
     mockPatchDesiredStateAsync.mockReturnValue(new Promise(() => {}))
     storedHeartbeatCallback = null
     storedConnectionCallback = null
@@ -232,7 +261,7 @@ describe('Strategies', () => {
     await user.click(screen.getByRole('button', { name: 'Cancel' }))
     await waitFor(() => expect(screen.queryByText('Edit strategy scope')).toBeNull())
   })
-  it('hides Edit scope for a strategy whose config carries no operator/wallet scope', async () => {
+  it('opens Edit scope for a legacy strategy with no operator or wallet', async () => {
     const { useStrategies } = await import('../../hooks/queries/strategies')
     const { useConfiguredProcesses } = await import('../../hooks/queries/processes')
 
@@ -254,9 +283,28 @@ describe('Strategies', () => {
       },
       isLoading: false,
     } as never)
+    const user = (await import('@testing-library/user-event')).default.setup()
+
     renderWithProviders(<Strategies />)
     await screen.findByText('MACD BTC')
-    expect(screen.queryByText('Edit scope')).toBeNull()
+    await user.click(screen.getByText('Edit scope'))
+    expect(screen.getByText('Edit strategy scope')).toBeTruthy()
+
+    await user.selectOptions(screen.getByLabelText('Operator'), TEST_OPERATOR_PUBLIC_ID)
+    await user.selectOptions(screen.getByLabelText('Wallet'), TEST_WALLET_PUBLIC_ID)
+    await user.click(screen.getByRole('button', { name: 'Save scope' }))
+
+    expect(mockUpdateProcessConfig).toHaveBeenCalledWith(
+      {
+        name: 'strategy_macd_btc',
+        body: {
+          operator_public_id: TEST_OPERATOR_PUBLIC_ID,
+          wallet_public_id: TEST_WALLET_PUBLIC_ID,
+          reference_identity_params: {},
+        },
+      },
+      expect.any(Object)
+    )
   })
   it('opens the scope editor for a scoped strategy config that has no parent template', async () => {
     const { useStrategies } = await import('../../hooks/queries/strategies')
@@ -1133,6 +1181,7 @@ describe('Strategies', () => {
       expect(processNameInput.value).toBeTruthy()
     })
     await user.type(screen.getByPlaceholderText(/Describe purpose or parameters/i), 'covered note')
+    await selectLaunchScope()
     const buttons = screen.getAllByRole('button', { name: /Register strategy/i })
     const submitButton =
       buttons.find(btn => btn.getAttribute('type') === 'submit') || buttons[buttons.length - 1]
@@ -1140,7 +1189,13 @@ describe('Strategies', () => {
     await user.click(submitButton as HTMLElement)
     await waitFor(() => {
       expect(mockMutateAsync).toHaveBeenCalledWith(
-        expect.objectContaining({ note: 'covered note' })
+        expect.objectContaining({
+          note: 'covered note',
+          parameters: expect.objectContaining({
+            operator_public_id: TEST_OPERATOR_PUBLIC_ID,
+            wallet_public_id: TEST_WALLET_PUBLIC_ID,
+          }),
+        })
       )
     })
     await waitFor(() => {
@@ -1212,6 +1267,7 @@ describe('Strategies', () => {
       name: /Start immediately/i,
     })
 
+    await selectLaunchScope()
     await user.click(startImmediatelyCheckbox)
     const submitButtons = screen.getAllByRole('button', { name: /Register strategy/i })
     const submitButton =
@@ -1286,6 +1342,7 @@ describe('Strategies', () => {
     const submit = submitButtons.find(button => button.getAttribute('type') === 'submit')
 
     expect(submit).toBeDefined()
+    await selectLaunchScope()
     await user.click(submit as HTMLElement)
     await waitFor(() => {
       expect(createConfig).toHaveBeenCalledWith(expect.objectContaining({ enabled: false }))
@@ -1351,6 +1408,7 @@ describe('Strategies', () => {
 
       expect(processNameInput.value).toBeTruthy()
     })
+    await selectLaunchScope()
     const buttons = screen.getAllByRole('button', { name: /Register strategy/i })
     const submitButton =
       buttons.find(btn => btn.getAttribute('type') === 'submit') || buttons[buttons.length - 1]
@@ -1413,6 +1471,7 @@ describe('Strategies', () => {
     await waitFor(() => {
       expect(screen.getByText('Register Strategy Process')).toBeTruthy()
     })
+    await selectLaunchScope()
     const buttons = screen.getAllByRole('button', { name: /Register strategy/i })
     const submitButton =
       buttons.find(btn => btn.getAttribute('type') === 'submit') || buttons[buttons.length - 1]

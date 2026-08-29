@@ -137,14 +137,14 @@
     "refOperatorLabel": "Referencia operátora",
     "refWalletLabel": "Referencia peňaženky",
     "referencePlaceholder": "Vybrať",
-    "scopeHelp": "Vlastník sa určí podľa používateľského mena a pri spustení stratégie sa jeho rozsah skontroluje voči vybranému operátorovi.",
+    "scopeHelp": "Aktívny vlastník vybraný z katalógu sa uloží ako verejné ID, overí sa pri uložení a znova sa overí pri každom spustení stratégie.",
     "noOperatorsWarning": "Zatiaľ neexistujú žiadni operátori. Pred spustením stratégie s rozsahom vytvorte operátora a udelenie rozsahu."
   },
   "editScopeModal": {
     "title": "Upraviť rozsah stratégie",
     "subtitle": "Presmerovať „{{name}}“ — operátor, peňaženka a kontrolór. Zmeny sa prejavia pri nasledujúcom reštarte.",
     "restartRequiredBanner": "Rozsah uložený. Reštartujte stratégiu, aby sa nový rozsah prejavil.",
-    "help": "Zmeny rozsahu sa overujú pri reštarte stratégie (členstvo v operátorovi, udelenie peňaženky, pokrytie výstupu).",
+    "help": "Pred uložením zmien rozsahu sa overí členstvo vo finálnom operátorovi, aktívna peňaženka dostupná tomuto operátorovi a zodpovedajúca režimu, aktívne vnorené identity, oprávnenie k peňaženke a pokrytie výstupov; celý rozsah sa znova overí pri reštarte stratégie.",
     "saveError": "Nepodarilo sa uložiť rozsah: {{message}}",
     "save": "Uložiť rozsah",
     "saving": "Ukladá sa…",

@@ -137,14 +137,14 @@
     "refOperatorLabel": "Referencë operatori",
     "refWalletLabel": "Referencë portofoli",
     "referencePlaceholder": "Zgjidh",
-    "scopeHelp": "Pronari përcaktohet nga emri i përdoruesit dhe fushëveprimi i tij kontrollohet ndaj operatorit të zgjedhur kur niset strategjia.",
+    "scopeHelp": "Pronari aktiv i zgjedhur nga katalogu ruhet si ID publike, vërtetohet gjatë ruajtjes dhe rivërtetohet sa herë që niset strategjia.",
     "noOperatorsWarning": "Ende nuk ka operatorë. Krijoni një operator dhe një dhënie fushëveprimi përpara se të nisni një strategji me fushëveprim."
   },
   "editScopeModal": {
     "title": "Modifiko fushëveprimin e strategjisë",
     "subtitle": "Rioriento “{{name}}” — operator, portofol dhe rishikues. Ndryshimet zbatohen në rinisjen e radhës.",
     "restartRequiredBanner": "Fushëveprimi u ruajt. Rinise strategjinë që fushëveprimi i ri të hyjë në fuqi.",
-    "help": "Ndryshimet e fushëveprimit vërtetohen kur strategjia rinis (anëtarësimi te operatori, dhënia e portofolit, mbulimi i daljes).",
+    "help": "Para se të ruhen ndryshimet e fushëveprimit, vërtetohen anëtarësimi te operatori përfundimtar, një portofol aktiv që është i qasshëm për atë operator dhe përputhet me modalitetin, identitetet aktive të folezuara, dhënia e portofolit dhe mbulimi i daljes; i gjithë fushëveprimi rivërtetohet kur strategjia riniset.",
     "saveError": "Ruajtja e fushëveprimit dështoi: {{message}}",
     "save": "Ruaj fushëveprimin",
     "saving": "Po ruhet…",

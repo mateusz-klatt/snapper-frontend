@@ -10,6 +10,9 @@ import { useOperators, useWallets } from '../../hooks/queries/wallets'
 import { useUsers } from '../../hooks/queries/users'
 
 const mockHasPermission = vi.fn<(permission: string) => boolean>(() => true)
+const TEST_OPERATOR_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000001'
+const TEST_PAPER_WALLET_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000002'
+const TEST_LIVE_WALLET_PUBLIC_ID = '01975a8b-3c7d-7000-8000-000000000003'
 
 vi.mock('../../stores/auth', () => ({
   useAuth: () => ({ hasPermission: mockHasPermission }),
@@ -69,6 +72,15 @@ const renderWithProviders = (ui: ReactNode) => {
   return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
 }
 
+const selectRequiredScope = async (): Promise<void> => {
+  fireEvent.change(await screen.findByLabelText('Operator'), {
+    target: { value: TEST_OPERATOR_PUBLIC_ID },
+  })
+  fireEvent.change(screen.getByLabelText('Wallet'), {
+    target: { value: TEST_PAPER_WALLET_PUBLIC_ID },
+  })
+}
+
 describe('StrategyLaunchModal', () => {
   const mockOnClose = vi.fn()
   const mockOnSubmit = vi.fn()
@@ -98,7 +110,10 @@ describe('StrategyLaunchModal', () => {
       isLoading: false,
       error: null,
     } as never)
-    mockCatalogues()
+    mockCatalogues({
+      operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }],
+      wallets: [{ public_id: TEST_PAPER_WALLET_PUBLIC_ID, label: 'paper', is_paper: true }],
+    })
   })
   it('renders modal when open', () => {
     renderWithProviders(
@@ -148,6 +163,7 @@ describe('StrategyLaunchModal', () => {
     expect(autostart).not.toBeChecked()
     expect(startImmediately).toBeDisabled()
     expect(startImmediately).not.toBeChecked()
+    await selectRequiredScope()
     await user.click(screen.getByText('Register strategy'))
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
@@ -318,6 +334,7 @@ describe('StrategyLaunchModal', () => {
     })
     const submitButton = screen.getByText('Register strategy')
 
+    await selectRequiredScope()
     await user.click(submitButton)
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalled()
@@ -336,6 +353,7 @@ describe('StrategyLaunchModal', () => {
     )
     const submitButton = await screen.findByText('Register strategy')
 
+    await selectRequiredScope()
     mockHasPermission.mockReturnValue(false)
     await user.click(submitButton)
 
@@ -389,6 +407,7 @@ describe('StrategyLaunchModal', () => {
     await user.type(strategyNameInput, 'macd_custom')
     const submitButton = screen.getByText('Register strategy')
 
+    await selectRequiredScope()
     await user.click(submitButton)
     await waitFor(() => {
       expect(consoleSpy).toHaveBeenCalled()
@@ -441,11 +460,14 @@ describe('StrategyLaunchModal', () => {
     await waitFor(() => {
       expect(screen.getAllByRole('combobox').length).toBeGreaterThan(0)
     })
+    await selectRequiredScope()
     const selects = screen.getAllByRole('combobox')
 
     await user.selectOptions(selects[0] as HTMLElement, 'strategy_rsi')
     await waitFor(() => {
       expect(selects[0]).toHaveValue('strategy_rsi')
+      expect(screen.getByLabelText('Operator')).toHaveValue('')
+      expect(screen.getByLabelText('Wallet')).toHaveValue('')
     })
   })
   it('uses empty parameters when default_parameters is not an object', async () => {
@@ -478,6 +500,7 @@ describe('StrategyLaunchModal', () => {
     })
     const submitButton = screen.getByText('Register strategy')
 
+    await selectRequiredScope()
     await user.click(submitButton)
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
@@ -505,6 +528,7 @@ describe('StrategyLaunchModal', () => {
     fireEvent.change(strategyNameInput, { target: { value: '__macd alpha__' } })
     const submitButton = screen.getByText('Register strategy')
 
+    await selectRequiredScope()
     await user.click(submitButton)
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
@@ -580,13 +604,7 @@ describe('StrategyLaunchModal', () => {
         onSubmit={mockOnSubmit}
       />
     )
-    await waitFor(() => {
-      const selects = screen.getAllByRole('combobox')
-
-      expect(selects.length).toBeGreaterThan(1)
-    })
-    const selects = screen.getAllByRole('combobox')
-    const executionModeSelect = selects[1]
+    const executionModeSelect = await screen.findByLabelText('Execution mode')
 
     await user.selectOptions(executionModeSelect as HTMLElement, 'process')
     expect(executionModeSelect).toHaveValue('process')
@@ -614,10 +632,7 @@ describe('StrategyLaunchModal', () => {
       />
     )
     await waitFor(() => {
-      const selects = screen.getAllByRole('combobox')
-      const executionModeSelect = selects[1]
-
-      expect(executionModeSelect).toHaveValue('process')
+      expect(screen.getByLabelText('Execution mode')).toHaveValue('process')
     })
   })
   it('handles output transformation with prefix', async () => {
@@ -650,6 +665,7 @@ describe('StrategyLaunchModal', () => {
     })
     const submitButton = screen.getByText('Register strategy')
 
+    await selectRequiredScope()
     await user.click(submitButton)
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
@@ -688,6 +704,7 @@ describe('StrategyLaunchModal', () => {
     )
     const submitButton = screen.getByText('Register strategy')
 
+    await selectRequiredScope()
     await user.click(submitButton)
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
@@ -738,8 +755,8 @@ describe('StrategyLaunchModal', () => {
       reference_identity_params: { ai_review_user_public_id: 'user' },
     })
     mockCatalogues({
-      operators: [{ public_id: 'op-1', label: 'desk' }],
-      wallets: [{ public_id: 'w-1', label: 'paper', is_paper: true }],
+      operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }],
+      wallets: [{ public_id: TEST_PAPER_WALLET_PUBLIC_ID, label: 'paper', is_paper: true }],
       users: [{ public_id: 'u-1', username: 'alice' }],
     })
     renderWithProviders(
@@ -756,6 +773,28 @@ describe('StrategyLaunchModal', () => {
       expect(screen.getByLabelText('Wallet')).toBeTruthy()
       expect(screen.getByLabelText('Strategy owner (user)')).toBeTruthy()
     })
+  })
+
+  it('requires scope for a strategy without reference identity params', async () => {
+    mockSchemaPayload({
+      default_parameters: { name: 'macd' },
+      default_mode: 'thread',
+      reference_identity_params: {},
+    })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+
+    expect(await screen.findByLabelText('Operator')).toBeTruthy()
+    expect(screen.getByLabelText('Wallet')).toBeTruthy()
+    expect(screen.getByText('Register strategy')).toBeDisabled()
+    await selectRequiredScope()
+    expect(screen.getByText('Register strategy')).not.toBeDisabled()
   })
 
   it('shows the fail-closed warning and disables submit when no operators exist', async () => {
@@ -786,8 +825,8 @@ describe('StrategyLaunchModal', () => {
       reference_identity_params: { ai_review_user_public_id: 'user' },
     })
     mockCatalogues({
-      operators: [{ public_id: 'op-1', label: 'desk' }],
-      wallets: [{ public_id: 'w-1', label: 'paper', is_paper: true }],
+      operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }],
+      wallets: [{ public_id: TEST_PAPER_WALLET_PUBLIC_ID, label: 'paper', is_paper: true }],
       users: [{ public_id: 'u-1', username: 'alice' }],
     })
     renderWithProviders(
@@ -804,7 +843,42 @@ describe('StrategyLaunchModal', () => {
     expect(screen.getByText('Register strategy')).toBeDisabled()
   })
 
-  it('submits a scoped strategy with operator, wallet, and a label user reference', async () => {
+  it('clears wallet and nested references when the operator changes', async () => {
+    const user = userEvent.setup()
+    const secondOperator = '01975a8b-3c7d-7000-8000-000000000004'
+
+    mockSchemaPayload({
+      default_parameters: { name: 'heartbeat', params: {} },
+      default_mode: 'thread',
+      reference_identity_params: { ai_review_user_public_id: 'user' },
+    })
+    mockCatalogues({
+      operators: [
+        { public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk-a' },
+        { public_id: secondOperator, label: 'desk-b' },
+      ],
+      wallets: [{ public_id: TEST_PAPER_WALLET_PUBLIC_ID, label: 'paper', is_paper: true }],
+      users: [{ public_id: 'u-1', username: 'alice' }],
+    })
+    renderWithProviders(
+      <StrategyLaunchModal
+        open={true}
+        onClose={mockOnClose}
+        templates={mockTemplates}
+        onSubmit={mockOnSubmit}
+      />
+    )
+    await user.selectOptions(await screen.findByLabelText('Operator'), TEST_OPERATOR_PUBLIC_ID)
+    await user.selectOptions(screen.getByLabelText('Wallet'), TEST_PAPER_WALLET_PUBLIC_ID)
+    await user.selectOptions(screen.getByLabelText('Strategy owner (user)'), 'u-1')
+
+    await user.selectOptions(screen.getByLabelText('Operator'), secondOperator)
+
+    expect(screen.getByLabelText('Wallet')).toHaveValue('')
+    expect(screen.getByLabelText('Strategy owner (user)')).toHaveValue('')
+  })
+
+  it('submits a scoped strategy with canonical operator, wallet, and user IDs', async () => {
     const user = userEvent.setup()
 
     mockOnSubmit.mockResolvedValue(undefined)
@@ -814,10 +888,10 @@ describe('StrategyLaunchModal', () => {
       reference_identity_params: { ai_review_user_public_id: 'user' },
     })
     mockCatalogues({
-      operators: [{ public_id: 'op-1', label: 'desk' }],
+      operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }],
       wallets: [
-        { public_id: 'w-1', label: 'paper', is_paper: true },
-        { public_id: 'w-2', label: 'live', is_paper: false },
+        { public_id: TEST_PAPER_WALLET_PUBLIC_ID, label: 'paper', is_paper: true },
+        { public_id: TEST_LIVE_WALLET_PUBLIC_ID, label: 'live', is_paper: false },
       ],
       users: [{ public_id: 'u-1', username: 'alice' }],
     })
@@ -829,9 +903,9 @@ describe('StrategyLaunchModal', () => {
         onSubmit={mockOnSubmit}
       />
     )
-    await user.selectOptions(await screen.findByLabelText('Operator'), 'op-1')
-    await user.selectOptions(screen.getByLabelText('Wallet'), 'w-1')
-    await user.selectOptions(screen.getByLabelText('Strategy owner (user)'), 'label:alice')
+    await user.selectOptions(await screen.findByLabelText('Operator'), TEST_OPERATOR_PUBLIC_ID)
+    await user.selectOptions(screen.getByLabelText('Wallet'), TEST_PAPER_WALLET_PUBLIC_ID)
+    await user.selectOptions(screen.getByLabelText('Strategy owner (user)'), 'u-1')
     await user.type(screen.getByPlaceholderText(/Describe purpose or parameters/i), 'scoped note')
     await user.click(screen.getByText('Register strategy'))
     await waitFor(() => {
@@ -839,11 +913,11 @@ describe('StrategyLaunchModal', () => {
         expect.objectContaining({
           note: 'scoped note',
           parameters: expect.objectContaining({
-            operator_public_id: 'op-1',
-            wallet_public_id: 'w-1',
+            operator_public_id: TEST_OPERATOR_PUBLIC_ID,
+            wallet_public_id: TEST_PAPER_WALLET_PUBLIC_ID,
             params: expect.objectContaining({
               existing: 'keep',
-              ai_review_user_public_id: 'label:alice',
+              ai_review_user_public_id: 'u-1',
             }),
           }),
         })
@@ -858,10 +932,10 @@ describe('StrategyLaunchModal', () => {
       reference_identity_params: { delegate_op: 'operator', maker_wallet: 'wallet' },
     })
     mockCatalogues({
-      operators: [{ public_id: 'op-1', label: 'desk' }],
+      operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }],
       wallets: [
-        { public_id: 'w-1', label: 'mm', is_paper: true },
-        { public_id: 'w-2', label: 'live', is_paper: false },
+        { public_id: TEST_PAPER_WALLET_PUBLIC_ID, label: 'mm', is_paper: true },
+        { public_id: TEST_LIVE_WALLET_PUBLIC_ID, label: 'live', is_paper: false },
       ],
     })
     renderWithProviders(
@@ -884,7 +958,7 @@ describe('StrategyLaunchModal', () => {
       default_mode: 'thread',
       reference_identity_params: { mystery: 'bogus' },
     })
-    mockCatalogues({ operators: [{ public_id: 'op-1', label: 'desk' }] })
+    mockCatalogues({ operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }] })
     renderWithProviders(
       <StrategyLaunchModal
         open={true}
@@ -908,8 +982,8 @@ describe('StrategyLaunchModal', () => {
       reference_identity_params: { ai_review_user_public_id: 'user' },
     })
     mockCatalogues({
-      operators: [{ public_id: 'op-1', label: 'desk' }],
-      wallets: [{ public_id: 'w-1', label: 'paper', is_paper: true }],
+      operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }],
+      wallets: [{ public_id: TEST_PAPER_WALLET_PUBLIC_ID, label: 'paper', is_paper: true }],
       users: [{ public_id: 'u-1', username: 'alice' }],
     })
     renderWithProviders(
@@ -920,28 +994,31 @@ describe('StrategyLaunchModal', () => {
         onSubmit={mockOnSubmit}
       />
     )
-    await user.selectOptions(await screen.findByLabelText('Operator'), 'op-1')
-    await user.selectOptions(screen.getByLabelText('Wallet'), 'w-1')
-    await user.selectOptions(screen.getByLabelText('Strategy owner (user)'), 'label:alice')
+    await user.selectOptions(await screen.findByLabelText('Operator'), TEST_OPERATOR_PUBLIC_ID)
+    await user.selectOptions(screen.getByLabelText('Wallet'), TEST_PAPER_WALLET_PUBLIC_ID)
+    await user.selectOptions(screen.getByLabelText('Strategy owner (user)'), 'u-1')
     await user.click(screen.getByText('Register strategy'))
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           parameters: expect.objectContaining({
-            params: { ai_review_user_public_id: 'label:alice' },
+            params: { ai_review_user_public_id: 'u-1' },
           }),
         })
       )
     })
   })
 
-  it('does not render scope pickers for a non-strategy template', async () => {
+  it('does not inject strategy scope for a non-strategy template', async () => {
+    const user = userEvent.setup()
+
+    mockOnSubmit.mockResolvedValue(undefined)
     mockSchemaPayload({
       default_parameters: { name: 'x' },
       default_mode: 'thread',
       reference_identity_params: { ai_review_user_public_id: 'user' },
     })
-    mockCatalogues({ operators: [{ public_id: 'op-1', label: 'desk' }] })
+    mockCatalogues({ operators: [{ public_id: TEST_OPERATOR_PUBLIC_ID, label: 'desk' }] })
     const coreTemplates: AvailableProcess[] = [
       {
         type: 'available_process' as const,
@@ -968,9 +1045,25 @@ describe('StrategyLaunchModal', () => {
         onSubmit={mockOnSubmit}
       />
     )
+    const submitButton = await screen.findByRole('button', { name: 'Register strategy' })
+
     await waitFor(() => {
-      expect(screen.getByText('Register strategy')).toBeTruthy()
+      expect(submitButton).toBeEnabled()
     })
-    expect(screen.queryByText('Scope')).toBeFalsy()
+    expect(screen.queryByText('Scope')).not.toBeInTheDocument()
+
+    await user.click(submitButton)
+
+    await waitFor(() => {
+      expect(mockOnSubmit).toHaveBeenCalledWith({
+        template: 'zmq_broker',
+        processName: 'zmq_broker_instance',
+        strategyName: 'x',
+        executionMode: 'thread',
+        autostart: false,
+        startImmediately: true,
+        parameters: { name: 'x' },
+      })
+    })
   })
 })

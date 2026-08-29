@@ -137,14 +137,14 @@
     "refOperatorLabel": "Referência do operador",
     "refWalletLabel": "Referência da carteira",
     "referencePlaceholder": "Selecionar",
-    "scopeHelp": "O proprietário é resolvido pelo nome de usuário e tem o escopo verificado em relação ao operador selecionado quando a estratégia é iniciada.",
+    "scopeHelp": "O proprietário ativo selecionado no catálogo é salvo como ID público, validado ao salvar e revalidado sempre que a estratégia é iniciada.",
     "noOperatorsWarning": "Ainda não existem operadores. Crie um operador e uma concessão de escopo antes de iniciar uma estratégia com escopo."
   },
   "editScopeModal": {
     "title": "Editar o escopo da estratégia",
     "subtitle": "Redirecionar “{{name}}” — operador, carteira e revisor. As alterações são aplicadas na próxima reinicialização.",
     "restartRequiredBanner": "Escopo salvo. Reinicie a estratégia para que o novo escopo entre em vigor.",
-    "help": "As alterações de escopo são validadas quando a estratégia é reiniciada (associação ao operador, concessão de carteira, cobertura de saída).",
+    "help": "Antes de salvar as alterações de escopo, validam-se a associação ao operador final, uma carteira ativa acessível a esse operador e compatível com o modo, as identidades aninhadas ativas, a concessão da carteira e a cobertura de saída; o escopo completo é revalidado quando a estratégia é reiniciada.",
     "saveError": "Falha ao salvar o escopo: {{message}}",
     "save": "Salvar escopo",
     "saving": "Salvando…",

@@ -137,14 +137,14 @@
     "refOperatorLabel": "Tham chiếu nhà vận hành",
     "refWalletLabel": "Tham chiếu ví",
     "referencePlaceholder": "Chọn",
-    "scopeHelp": "Chủ sở hữu được xác định theo tên người dùng và phạm vi được kiểm tra với nhà vận hành đã chọn khi chiến lược khởi chạy.",
+    "scopeHelp": "Chủ sở hữu đang hoạt động được chọn từ danh mục sẽ được lưu dưới dạng ID công khai, được xác thực khi lưu và được xác thực lại mỗi khi chiến lược khởi chạy.",
     "noOperatorsWarning": "Chưa có nhà vận hành nào. Tạo một nhà vận hành và một cấp quyền phạm vi trước khi khởi chạy chiến lược có phạm vi."
   },
   "editScopeModal": {
     "title": "Chỉnh sửa phạm vi chiến lược",
     "subtitle": "Chuyển hướng “{{name}}” — nhà vận hành, ví và người duyệt. Các thay đổi được áp dụng ở lần khởi động lại tiếp theo.",
     "restartRequiredBanner": "Đã lưu phạm vi. Khởi động lại chiến lược để phạm vi mới có hiệu lực.",
-    "help": "Các thay đổi phạm vi được xác thực khi chiến lược được khởi động lại (tư cách thành viên nhà vận hành, cấp quyền ví, phạm vi bao phủ đầu ra).",
+    "help": "Trước khi lưu các thay đổi phạm vi, hệ thống xác thực tư cách thành viên của nhà vận hành cuối cùng, một ví đang hoạt động mà nhà vận hành đó có thể truy cập và phù hợp với chế độ, các danh tính lồng nhau đang hoạt động, cấp quyền ví và phạm vi bao phủ đầu ra; toàn bộ phạm vi được xác thực lại khi chiến lược khởi động lại.",
     "saveError": "Không thể lưu phạm vi: {{message}}",
     "save": "Lưu phạm vi",
     "saving": "Đang lưu…",

@@ -137,14 +137,14 @@
     "refOperatorLabel": "Referensi operator",
     "refWalletLabel": "Referensi dompet",
     "referencePlaceholder": "Pilih",
-    "scopeHelp": "Pemilik ditentukan berdasarkan nama pengguna dan cakupannya diperiksa terhadap operator yang dipilih saat strategi diluncurkan.",
+    "scopeHelp": "Pemilik aktif yang dipilih dari katalog disimpan sebagai ID publik, divalidasi saat disimpan, dan divalidasi ulang setiap kali strategi dimulai.",
     "noOperatorsWarning": "Belum ada operator. Buat operator dan grant cakupan sebelum meluncurkan strategi bercakupan."
   },
   "editScopeModal": {
     "title": "Edit cakupan strategi",
     "subtitle": "Arahkan ulang “{{name}}” — operator, dompet, dan peninjau. Perubahan diterapkan pada mulai ulang berikutnya.",
     "restartRequiredBanner": "Cakupan disimpan. Mulai ulang strategi agar cakupan baru berlaku.",
-    "help": "Perubahan cakupan divalidasi saat strategi dimulai ulang (keanggotaan operator, grant dompet, cakupan output).",
+    "help": "Sebelum perubahan cakupan disimpan, keanggotaan pada operator akhir, dompet aktif yang dapat diakses operator tersebut dan sesuai dengan mode, identitas bertingkat yang aktif, grant dompet, serta cakupan output divalidasi; seluruh cakupan divalidasi ulang saat strategi dimulai ulang.",
     "saveError": "Gagal menyimpan cakupan: {{message}}",
     "save": "Simpan cakupan",
     "saving": "Menyimpan…",

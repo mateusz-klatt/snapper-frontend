@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operatörsreferens",
     "refWalletLabel": "Plånboksreferens",
     "referencePlaceholder": "Välj",
-    "scopeHelp": "Ägaren bestäms via användarnamn och omfattningen kontrolleras mot den valda operatören när strategin startas.",
+    "scopeHelp": "Den aktiva ägaren som väljs i katalogen sparas som ett offentligt ID, valideras vid lagring och valideras på nytt varje gång strategin startas.",
     "noOperatorsWarning": "Det finns inga operatörer ännu. Skapa en operatör och en omfattningstilldelning innan du startar en strategi med omfattning."
   },
   "editScopeModal": {
     "title": "Redigera strategins omfattning",
     "subtitle": "Rikta om “{{name}}” — operatör, plånbok och granskare. Ändringarna tillämpas vid nästa omstart.",
     "restartRequiredBanner": "Omfattning sparad. Starta om strategin för att den nya omfattningen ska träda i kraft.",
-    "help": "Ändringar av omfattning valideras när strategin startas om (operatörsmedlemskap, plånbokstilldelning, utdatatäckning).",
+    "help": "Innan omfattningsändringar sparas valideras medlemskapet hos den slutliga operatören, en aktiv plånbok som operatören har åtkomst till och som matchar läget, aktiva nästlade identiteter, plånbokstilldelningen och utdatatäckningen; hela omfattningen valideras på nytt när strategin startas om.",
     "saveError": "Det gick inte att spara omfattningen: {{message}}",
     "save": "Spara omfattning",
     "saving": "Sparar…",

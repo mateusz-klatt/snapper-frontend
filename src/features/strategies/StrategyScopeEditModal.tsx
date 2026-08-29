@@ -68,7 +68,7 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
   )
   const wallets = useMemo<WalletInfo[]>(() => walletsData?.payload ?? [], [walletsData?.payload])
   const users = useMemo<UserProfile[]>(() => usersData?.payload ?? [], [usersData?.payload])
-  const template = target?.template ?? ''
+  const template = target?.template ?? target?.processName ?? ''
   const processSchema = useProcessSchema(template, {
     enabled: open && hasConfigurePermission && template.length > 0,
   })
@@ -85,6 +85,10 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
   const walletByLabel = useMemo(
     () => new Map(wallets.map(wallet => [wallet.label, wallet.public_id])),
     [wallets]
+  )
+  const userByUsername = useMemo(
+    () => new Map(users.map(user => [user.username, user.public_id])),
+    [users]
   )
 
   const [operatorId, setOperatorId] = useState('')
@@ -107,13 +111,22 @@ export const StrategyScopeEditModal: React.FC<Readonly<StrategyScopeEditModalPro
       nested !== null && typeof nested === 'object' ? (nested as Record<string, unknown>) : {}
     const prefill: Record<string, string> = {}
 
-    for (const [name] of referenceEntries) {
-      prefill[name] = readString(nestedRecord[name])
+    for (const [name, kind] of referenceEntries) {
+      const byLabel =
+        kind === 'user'
+          ? userByUsername
+          : kind === 'operator'
+            ? operatorByLabel
+            : kind === 'wallet'
+              ? walletByLabel
+              : new Map<string, string>()
+
+      prefill[name] = resolveScopeOptionValue(nestedRecord[name], byLabel)
     }
 
     setReferenceValues(prefill)
     setSaved(false)
-  }, [open, target, operatorByLabel, walletByLabel, referenceEntries])
+  }, [open, target, operatorByLabel, walletByLabel, userByUsername, referenceEntries])
 
   const scopeBlocked = operators.length === 0
   const referenceComplete = referenceEntries.every(([name]) => Boolean(referenceValues[name]))

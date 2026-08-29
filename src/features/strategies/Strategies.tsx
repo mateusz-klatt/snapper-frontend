@@ -116,13 +116,6 @@ function editScopeAction(params: StrategyCardRenderParams): StrategyCardAction |
     return undefined
   }
 
-  const parameters = config.parameters
-  const isScoped = 'operator_public_id' in parameters || 'wallet_public_id' in parameters
-
-  if (!isScoped) {
-    return undefined
-  }
-
   return () => params.requestEditScope(config)
 }
 

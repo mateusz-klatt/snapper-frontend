@@ -137,14 +137,14 @@
     "refOperatorLabel": "Rujukan operator",
     "refWalletLabel": "Rujukan dompet",
     "referencePlaceholder": "Pilih",
-    "scopeHelp": "Pemilik diselesaikan melalui nama pengguna dan skopnya disemak terhadap operator yang dipilih apabila strategi dilancarkan.",
+    "scopeHelp": "Pemilik aktif yang dipilih daripada katalog disimpan sebagai ID awam, disahkan semasa disimpan dan disahkan semula setiap kali strategi dimulakan.",
     "noOperatorsWarning": "Belum ada operator. Cipta operator dan geran skop sebelum melancarkan strategi berskop."
   },
   "editScopeModal": {
     "title": "Edit skop strategi",
     "subtitle": "Sasarkan semula “{{name}}” — operator, dompet dan penyemak. Perubahan berkuat kuasa pada mula semula seterusnya.",
     "restartRequiredBanner": "Skop disimpan. Mula semula strategi supaya skop baharu berkuat kuasa.",
-    "help": "Perubahan skop disahkan apabila strategi dimulakan semula (keahlian operator, geran dompet, liputan output).",
+    "help": "Sebelum perubahan skop disimpan, keahlian pada operator akhir, dompet aktif yang boleh dicapai oleh operator tersebut dan sepadan dengan mod, identiti bersarang yang aktif, geran dompet serta liputan output disahkan; keseluruhan skop disahkan semula apabila strategi dimulakan semula.",
     "saveError": "Gagal menyimpan skop: {{message}}",
     "save": "Simpan skop",
     "saving": "Menyimpan…",

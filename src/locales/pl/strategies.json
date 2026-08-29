@@ -137,14 +137,14 @@
     "refOperatorLabel": "Referencja operatora",
     "refWalletLabel": "Referencja portfela",
     "referencePlaceholder": "Wybierz",
-    "scopeHelp": "Właściciel jest ustalany na podstawie nazwy użytkownika, a podczas uruchamiania strategii jego zakres jest sprawdzany względem wybranego operatora.",
+    "scopeHelp": "Aktywny właściciel wybrany z katalogu jest zapisywany jako publiczny identyfikator, walidowany przy zapisie i ponownie walidowany przy każdym uruchomieniu strategii.",
     "noOperatorsWarning": "Nie ma jeszcze operatorów. Utwórz operatora i nadanie zakresu przed uruchomieniem strategii z zakresem."
   },
   "editScopeModal": {
     "title": "Edytuj zakres strategii",
     "subtitle": "Zmień cel „{{name}}” — operator, portfel, recenzent. Zmiany wejdą po restarcie.",
     "restartRequiredBanner": "Zakres zapisany. Zrestartuj strategię, aby nowy zakres zadziałał.",
-    "help": "Zmiany zakresu są walidowane przy restarcie strategii (członkostwo operatora, grant portfela, pokrycie wyjść).",
+    "help": "Przed zapisaniem zmian zakresu walidowane są członkostwo w finalnym operatorze, aktywny portfel dostępny dla tego operatora i zgodny z trybem, aktywne zagnieżdżone tożsamości, grant portfela oraz pokrycie wyjść; cały zakres jest ponownie walidowany przy restarcie strategii.",
     "saveError": "Nie udało się zapisać zakresu: {{message}}",
     "save": "Zapisz zakres",
     "saving": "Zapisywanie…",

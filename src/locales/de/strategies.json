@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operator-Referenz",
     "refWalletLabel": "Wallet-Referenz",
     "referencePlaceholder": "Auswählen",
-    "scopeHelp": "Der Eigentümer wird über den Benutzernamen aufgelöst und beim Start der Strategie gegen den ausgewählten Operator auf den Scope geprüft.",
+    "scopeHelp": "Der aktive, aus dem Katalog ausgewählte Eigentümer wird als öffentliche ID gespeichert, beim Speichern validiert und bei jedem Start der Strategie erneut validiert.",
     "noOperatorsWarning": "Es sind noch keine Operatoren vorhanden. Erstellen Sie einen Operator und eine Scope-Freigabe, bevor Sie eine Strategie mit Scope starten."
   },
   "editScopeModal": {
     "title": "Strategie-Scope bearbeiten",
     "subtitle": "„{{name}}“ neu ausrichten — Operator, Wallet und Reviewer. Änderungen werden beim nächsten Neustart wirksam.",
     "restartRequiredBanner": "Scope gespeichert. Starten Sie die Strategie neu, damit der neue Scope wirksam wird.",
-    "help": "Scope-Änderungen werden beim Neustart der Strategie geprüft (Operator-Mitgliedschaft, Wallet-Freigabe, Output-Abdeckung).",
+    "help": "Vor dem Speichern von Scope-Änderungen werden die Mitgliedschaft beim finalen Operator, eine aktive, für diesen Operator zugängliche und zum Modus passende Wallet, aktive verschachtelte Identitäten, die Wallet-Freigabe und die Output-Abdeckung validiert; beim Neustart der Strategie wird der gesamte Scope erneut validiert.",
     "saveError": "Scope konnte nicht gespeichert werden: {{message}}",
     "save": "Scope speichern",
     "saving": "Wird gespeichert…",

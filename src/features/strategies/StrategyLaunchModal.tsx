@@ -90,7 +90,7 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
   }, [processSchema.data?.payload.reference_identity_params])
   const referenceEntries = Object.entries(referenceParams)
   const selectedRole = sortedTemplates.find(item => item.name === selectedTemplate)?.role
-  const isScoped = selectedRole === 'strategy' && referenceEntries.length > 0
+  const isScoped = selectedRole === 'strategy'
   const noOperators = operators.length === 0
   const referenceComplete = referenceEntries.every(([name]) => Boolean(referenceValues[name]))
   const scopeComplete = !isScoped || (Boolean(operatorId) && Boolean(walletId) && referenceComplete)
@@ -235,6 +235,8 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
                 setSelectedTemplate(e.target.value)
                 setProcessName('')
                 setStrategyName('')
+                setOperatorId('')
+                setWalletId('')
                 setReferenceValues({})
               }}
               className='w-full px-3 py-2 bg-alpine-50 border border-dark-600 rounded-md text-alpine-900 focus:outline-hidden focus:ring-2 focus:ring-brand-500'

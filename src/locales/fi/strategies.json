@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operaattorin viite",
     "refWalletLabel": "Lompakon viite",
     "referencePlaceholder": "Valitse",
-    "scopeHelp": "Omistaja ratkaistaan käyttäjänimen perusteella ja hänen scope-oikeutensa tarkistetaan valittua operaattoria vasten strategian käynnistyessä.",
+    "scopeHelp": "Luettelosta valittu aktiivinen omistaja tallennetaan julkisena tunnisteena, tarkistetaan tallennuksen yhteydessä ja tarkistetaan uudelleen aina strategian käynnistyessä.",
     "noOperatorsWarning": "Operaattoreita ei ole vielä. Luo operaattori ja scope-valtuutus ennen scoped-strategian käynnistämistä."
   },
   "editScopeModal": {
     "title": "Muokkaa strategian scopea",
     "subtitle": "Kohdista “{{name}}” uudelleen — operaattori, lompakko ja tarkistaja. Muutokset tulevat voimaan seuraavassa uudelleenkäynnistyksessä.",
     "restartRequiredBanner": "Scope tallennettu. Käynnistä strategia uudelleen, jotta uusi scope tulee voimaan.",
-    "help": "Scope-muutokset tarkistetaan, kun strategia käynnistetään uudelleen (operaattorin jäsenyys, lompakon valtuutus, tulosteen kattavuus).",
+    "help": "Ennen scope-muutosten tallentamista tarkistetaan jäsenyys lopullisessa operaattorissa, operaattorin käytettävissä oleva aktiivinen ja ajotilaa vastaava lompakko, aktiiviset sisäkkäiset identiteetit, lompakon valtuutus ja tulosteiden kattavuus; koko scope tarkistetaan uudelleen strategian uudelleenkäynnistyksen yhteydessä.",
     "saveError": "Scopen tallennus epäonnistui: {{message}}",
     "save": "Tallenna scope",
     "saving": "Tallennetaan…",

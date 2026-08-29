@@ -137,14 +137,14 @@
     "refOperatorLabel": "Referencia del operador",
     "refWalletLabel": "Referencia de la billetera",
     "referencePlaceholder": "Seleccionar",
-    "scopeHelp": "El propietario se resuelve por nombre de usuario y se valida su ámbito contra el operador seleccionado cuando se lanza la estrategia.",
+    "scopeHelp": "El propietario activo seleccionado del catálogo se guarda como un ID público, se valida al guardar y se vuelve a validar cada vez que se inicia la estrategia.",
     "noOperatorsWarning": "Aún no existen operadores. Cree un operador y una concesión de ámbito antes de lanzar una estrategia con ámbito."
   },
   "editScopeModal": {
     "title": "Editar el ámbito de la estrategia",
     "subtitle": "Redirigir «{{name}}» — operador, billetera y revisor. Los cambios se aplican en el próximo reinicio.",
     "restartRequiredBanner": "Ámbito guardado. Reinicie la estrategia para que el nuevo ámbito surta efecto.",
-    "help": "Los cambios de ámbito se validan cuando se reinicia la estrategia (pertenencia al operador, concesión de billetera, cobertura de salida).",
+    "help": "Antes de guardar los cambios de ámbito, se validan la pertenencia al operador final, una billetera activa accesible para ese operador y compatible con el modo, las identidades anidadas activas, la concesión de la billetera y la cobertura de salida; el ámbito completo se vuelve a validar cuando se reinicia la estrategia.",
     "saveError": "Error al guardar el ámbito: {{message}}",
     "save": "Guardar ámbito",
     "saving": "Guardando…",

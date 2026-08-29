@@ -137,14 +137,14 @@
     "refOperatorLabel": "Riferimento operatore",
     "refWalletLabel": "Riferimento portafoglio",
     "referencePlaceholder": "Seleziona",
-    "scopeHelp": "Il proprietario viene risolto tramite nome utente e il suo ambito viene verificato rispetto all'operatore selezionato quando la strategia viene avviata.",
+    "scopeHelp": "Il proprietario attivo selezionato dal catalogo viene salvato come ID pubblico, convalidato al salvataggio e riconvalidato a ogni avvio della strategia.",
     "noOperatorsWarning": "Non esistono ancora operatori. Crea un operatore e una concessione di ambito prima di avviare una strategia con ambito."
   },
   "editScopeModal": {
     "title": "Modifica l'ambito della strategia",
     "subtitle": "Riorienta “{{name}}” — operatore, portafoglio e revisore. Le modifiche vengono applicate al prossimo riavvio.",
     "restartRequiredBanner": "Ambito salvato. Riavvia la strategia affinché il nuovo ambito abbia effetto.",
-    "help": "Le modifiche all'ambito vengono convalidate al riavvio della strategia (appartenenza all'operatore, concessione del portafoglio, copertura dell'output).",
+    "help": "Prima di salvare le modifiche all'ambito, si convalidano l'appartenenza all'operatore finale, un portafoglio attivo accessibile a tale operatore e compatibile con la modalità, le identità annidate attive, la concessione del portafoglio e la copertura dell'output; l'intero ambito viene riconvalidato al riavvio della strategia.",
     "saveError": "Impossibile salvare l'ambito: {{message}}",
     "save": "Salva ambito",
     "saving": "Salvataggio…",

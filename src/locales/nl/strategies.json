@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operatorreferentie",
     "refWalletLabel": "Portefeuillereferentie",
     "referencePlaceholder": "Selecteren",
-    "scopeHelp": "De eigenaar wordt op gebruikersnaam bepaald en bij het starten van de strategie op scope gecontroleerd ten opzichte van de geselecteerde operator.",
+    "scopeHelp": "De actieve eigenaar die uit de catalogus is geselecteerd, wordt opgeslagen als openbare ID, bij het opslaan gevalideerd en telkens wanneer de strategie start opnieuw gevalideerd.",
     "noOperatorsWarning": "Er zijn nog geen operators. Maak een operator en een scope-toekenning aan voordat u een strategie met scope start."
   },
   "editScopeModal": {
     "title": "Strategiescope bewerken",
     "subtitle": "“{{name}}” opnieuw toewijzen — operator, portefeuille en beoordelaar. Wijzigingen worden bij de volgende herstart toegepast.",
     "restartRequiredBanner": "Scope opgeslagen. Herstart de strategie om de nieuwe scope van kracht te laten worden.",
-    "help": "Scope-wijzigingen worden gevalideerd wanneer de strategie opnieuw wordt gestart (operatorlidmaatschap, portefeuilletoekenning, outputdekking).",
+    "help": "Voordat scope-wijzigingen worden opgeslagen, worden het lidmaatschap bij de uiteindelijke operator, een actieve portefeuille die voor die operator toegankelijk is en bij de modus past, actieve geneste identiteiten, de portefeuilletoekenning en de outputdekking gevalideerd; de volledige scope wordt opnieuw gevalideerd wanneer de strategie opnieuw wordt gestart.",
     "saveError": "Kan scope niet opslaan: {{message}}",
     "save": "Scope opslaan",
     "saving": "Opslaan…",

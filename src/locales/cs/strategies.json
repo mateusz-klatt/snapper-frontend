@@ -137,14 +137,14 @@
     "refOperatorLabel": "Reference operátora",
     "refWalletLabel": "Reference peněženky",
     "referencePlaceholder": "Vybrat",
-    "scopeHelp": "Vlastník se určí podle uživatelského jména a při spuštění strategie se zkontroluje jeho rozsah vůči vybranému operátorovi.",
+    "scopeHelp": "Aktivní vlastník vybraný z katalogu se uloží jako veřejné ID, ověří se při uložení a znovu se ověří při každém spuštění strategie.",
     "noOperatorsWarning": "Zatím neexistují žádní operátoři. Před spuštěním strategie s rozsahem vytvořte operátora a udělení rozsahu."
   },
   "editScopeModal": {
     "title": "Upravit rozsah strategie",
     "subtitle": "Přesměrovat „{{name}}“ — operátor, peněženka a kontrolor. Změny se projeví při příštím restartu.",
     "restartRequiredBanner": "Rozsah uložen. Restartujte strategii, aby se nový rozsah projevil.",
-    "help": "Změny rozsahu se ověřují při restartu strategie (členství v operátorovi, udělení peněženky, pokrytí výstupů).",
+    "help": "Před uložením změn rozsahu se ověří členství u finálního operátora, aktivní peněženka, která je tomuto operátorovi přístupná a odpovídá režimu, aktivní vnořené identity, oprávnění k peněžence a pokrytí výstupů; celý rozsah se znovu ověří při restartu strategie.",
     "saveError": "Uložení rozsahu se nezdařilo: {{message}}",
     "save": "Uložit rozsah",
     "saving": "Ukládání…",

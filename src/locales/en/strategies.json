@@ -137,14 +137,14 @@
     "refOperatorLabel": "Operator reference",
     "refWalletLabel": "Wallet reference",
     "referencePlaceholder": "Select",
-    "scopeHelp": "The owner is resolved by username and scope-checked against the selected operator when the strategy launches.",
+    "scopeHelp": "The active owner selected from the catalogue is stored as a public ID, validated when saved, and revalidated every time the strategy starts.",
     "noOperatorsWarning": "No operators exist yet. Create an operator and a scope grant before launching a scoped strategy."
   },
   "editScopeModal": {
     "title": "Edit strategy scope",
     "subtitle": "Retarget “{{name}}” — operator, wallet, and reviewer. Changes apply on the next restart.",
     "restartRequiredBanner": "Scope saved. Restart the strategy for the new scope to take effect.",
-    "help": "Scope changes are validated when the strategy is restarted (operator membership, wallet grant, output coverage).",
+    "help": "Before scope changes are saved, final operator membership, an active wallet accessible to that operator and matching the mode, active nested identities, the wallet grant, and output coverage are validated; the full scope is revalidated when the strategy restarts.",
     "saveError": "Failed to save scope: {{message}}",
     "save": "Save scope",
     "saving": "Saving…",

@@ -137,14 +137,14 @@
     "refOperatorLabel": "Referenca operatora",
     "refWalletLabel": "Referenca novčanika",
     "referencePlaceholder": "Izaberite",
-    "scopeHelp": "Vlasnik se određuje prema korisničkom imenu i pri pokretanju strategije proverava se njegov opseg u odnosu na izabranog operatora.",
+    "scopeHelp": "Aktivni vlasnik izabran iz kataloga čuva se kao javni ID, proverava pri čuvanju i ponovo proverava pri svakom pokretanju strategije.",
     "noOperatorsWarning": "Još nema operatora. Kreirajte operatora i dodelu opsega pre pokretanja strategije sa opsegom."
   },
   "editScopeModal": {
     "title": "Uredi opseg strategije",
     "subtitle": "Preusmeri “{{name}}” — operator, novčanik i recenzent. Promene se primenjuju pri sledećem ponovnom pokretanju.",
     "restartRequiredBanner": "Opseg je sačuvan. Ponovo pokrenite strategiju da bi novi opseg stupio na snagu.",
-    "help": "Promene opsega proveravaju se pri ponovnom pokretanju strategije (članstvo u operatoru, dodela novčanika, pokrivenost izlaza).",
+    "help": "Pre čuvanja promena opsega proveravaju se članstvo u konačnom operatoru, aktivan novčanik koji mu je dostupan i odgovara režimu, aktivni ugnežđeni identiteti, dodela novčanika i pokrivenost izlaza; ceo opseg se ponovo proverava pri ponovnom pokretanju strategije.",
     "saveError": "Čuvanje opsega nije uspelo: {{message}}",
     "save": "Sačuvaj opseg",
     "saving": "Čuvanje…",

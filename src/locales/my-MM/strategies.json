@@ -137,14 +137,14 @@
     "refOperatorLabel": "လုပ်ဆောင်သူ ကိုးကားချက်",
     "refWalletLabel": "ဝေါလက် ကိုးကားချက်",
     "referencePlaceholder": "ရွေးပါ",
-    "scopeHelp": "ပိုင်ရှင်ကို username ဖြင့် resolve လုပ်ပြီး ဗျူဟာကို launch လုပ်သည့်အခါ ရွေးထားသော operator နှင့် scope စစ်ဆေးသည်။",
+    "scopeHelp": "ကတ်တလောက်မှ ရွေးချယ်ထားသော အသုံးပြုနေဆဲ ပိုင်ရှင်ကို public ID အဖြစ် သိမ်းဆည်းပြီး၊ သိမ်းဆည်းချိန်တွင် validate လုပ်ကာ၊ strategy စတင်သည့်အကြိမ်တိုင်း ပြန်လည် validate လုပ်သည်။",
     "noOperatorsWarning": "Operator မရှိသေးပါ။ scoped strategy ကို launch မလုပ်မီ operator တစ်ခုနှင့် scope grant တစ်ခု ဖန်တီးပါ။"
   },
   "editScopeModal": {
     "title": "မဟာဗျူဟာ Scope ကို တည်းဖြတ်ရန်",
     "subtitle": "“{{name}}” ကို operator၊ wallet နှင့် reviewer အတွက် ပြန်လည်ချိန်ညှိပါ။ ပြောင်းလဲမှုများသည် နောက်တစ်ကြိမ် restart တွင် သက်ရောက်ပါမည်။",
     "restartRequiredBanner": "Scope ကို သိမ်းဆည်းပြီးပါပြီ။ Scope အသစ် သက်ရောက်စေရန် မဟာဗျူဟာကို restart လုပ်ပါ။",
-    "help": "Scope ပြောင်းလဲမှုများကို မဟာဗျူဟာ restart လုပ်သည့်အခါ စစ်ဆေးသည် (operator membership၊ wallet grant၊ output coverage)။",
+    "help": "Scope ပြောင်းလဲမှုများကို မသိမ်းဆည်းမီ final operator membership၊ ထို operator အသုံးပြုနိုင်ပြီး mode နှင့်ကိုက်ညီသော active wallet၊ active nested identities၊ wallet grant နှင့် output coverage တို့ကို validate လုပ်သည်။ Strategy ကို restart လုပ်သည့်အခါ scope တစ်ခုလုံးကို ပြန်လည် validate လုပ်သည်။",
     "saveError": "Scope သိမ်းဆည်း၍ မရပါ: {{message}}",
     "save": "Scope ကို သိမ်းရန်",
     "saving": "သိမ်းဆည်းနေသည်…",

@@ -137,14 +137,14 @@
     "refOperatorLabel": "Tilvísun rekstraraðila",
     "refWalletLabel": "Tilvísun veskis",
     "referencePlaceholder": "Veldu",
-    "scopeHelp": "Eigandinn er fundinn út frá notandanafni og umfang hans er athugað gagnvart völdum rekstraraðila þegar stefnan er ræst.",
+    "scopeHelp": "Virki eigandinn sem valinn er úr skránni er vistaður sem opinbert auðkenni, staðfestur við vistun og staðfestur aftur í hvert sinn sem stefnan er ræst.",
     "noOperatorsWarning": "Engir rekstraraðilar eru til enn. Búðu til rekstraraðila og umfangsheimild áður en þú ræsir stefnu með umfangi."
   },
   "editScopeModal": {
     "title": "Breyta umfangi stefnu",
     "subtitle": "Endurbeina „{{name}}“ — rekstraraðili, veski og rýnir. Breytingar taka gildi við næstu endurræsingu.",
     "restartRequiredBanner": "Umfang vistað. Endurræstu stefnuna til að nýja umfangið taki gildi.",
-    "help": "Umfangsbreytingar eru staðfestar þegar stefnan er endurræst (aðild að rekstraraðila, veskisheimild, þekja úttaks).",
+    "help": "Áður en umfangsbreytingar eru vistaðar eru aðild að endanlegum rekstraraðila, virkt veski sem hann hefur aðgang að og samsvarar keyrsluham, virk hreiðruð auðkenni, veskisheimild og þekja úttaks staðfest; allt umfangið er staðfest aftur þegar stefnan er endurræst.",
     "saveError": "Ekki tókst að vista umfang: {{message}}",
     "save": "Vista umfang",
     "saving": "Vista…",
