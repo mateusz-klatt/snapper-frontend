@@ -105,30 +105,30 @@ export async function walk(root, out, fsApi = fs) {
   } catch {
     return
   }
-  for (const entry of entries) {
+  await Array.fromAsync(entries, async entry => {
     if (entry.name.startsWith('.')) {
-      continue
+      return
     }
     const full = path.join(root, entry.name)
     if (entry.isDirectory()) {
       if (SKIP_DIRS.has(entry.name)) {
-        continue
+        return
       }
       await walk(full, out, fsApi)
-      continue
+      return
     }
     if (!entry.isFile()) {
-      continue
+      return
     }
     const ext = path.extname(entry.name)
     if (!FILE_EXTENSIONS.has(ext)) {
-      continue
+      return
     }
     if (TEST_RE.test(entry.name) || GENERATED_RE.test(entry.name)) {
-      continue
+      return
     }
     out.push(full)
-  }
+  })
 }
 
 export function lineNumberAt(content, offset) {
@@ -178,13 +178,13 @@ export async function checkI18n({
   files.sort((left, right) => left.localeCompare(right, 'en'))
 
   const violations = []
-  for (const absPath of files) {
+  await Array.fromAsync(files, async absPath => {
     const relPath = toPosixPath(path.relative(frontendRoot, absPath))
     let content
     try {
       content = await fsApi.readFile(absPath, 'utf8')
     } catch {
-      continue
+      return
     }
     const hits = scanContent(content, relPath)
     for (const hit of hits) {
@@ -193,7 +193,7 @@ export async function checkI18n({
       }
       violations.push(hit)
     }
-  }
+  })
 
   if (violations.length === 0) {
     return 0

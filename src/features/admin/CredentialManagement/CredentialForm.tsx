@@ -82,7 +82,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!validateForm()) return

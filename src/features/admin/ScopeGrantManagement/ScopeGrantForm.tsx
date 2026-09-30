@@ -76,7 +76,7 @@ const ScopeGrantForm: React.FC<Readonly<ScopeGrantFormProps>> = ({ open, onClose
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!validateForm()) return

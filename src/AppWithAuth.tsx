@@ -54,7 +54,7 @@ function AppWithAuth() {
       }
     }
 
-    initializeAuth()
+    void initializeAuth()
   }, [isAuthenticated, refreshToken])
 
   return (

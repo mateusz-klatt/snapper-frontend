@@ -59,29 +59,29 @@ export async function iterTypeScriptFiles(root, relativeRoots, fsApi = fs) {
     } catch {
       return
     }
-    for (const entry of entries) {
+    await Array.fromAsync(entries, async entry => {
       const fullPath = path.join(dir, entry.name)
       if (shouldSkipPath(fullPath)) {
-        continue
+        return
       }
       if (entry.isDirectory()) {
         await walk(fullPath)
-        continue
+        return
       }
       if (!entry.isFile()) {
-        continue
+        return
       }
       const ext = path.extname(entry.name)
       if (FILE_EXTENSIONS.has(ext)) {
         out.push(fullPath)
       }
-    }
+    })
   }
 
-  for (const relativeRoot of relativeRoots) {
+  await Array.fromAsync(relativeRoots, async relativeRoot => {
     const searchRoot = path.join(root, relativeRoot)
     await walk(searchRoot)
-  }
+  })
   return out.sort((left, right) => left.localeCompare(right, 'en'))
 }
 
@@ -251,13 +251,13 @@ export function findNonDocComments(text) {
 export async function scanFiles(root, relativeRoots, fsApi = fs) {
   const files = await iterTypeScriptFiles(root, relativeRoots, fsApi)
   const results = []
-  for (const filepath of files) {
+  await Array.fromAsync(files, async filepath => {
     const text = await fsApi.readFile(filepath, 'utf8')
     const findings = findNonDocComments(text)
     if (findings.length > 0) {
       results.push({ filepath, findings })
     }
-  }
+  })
   return results
 }
 

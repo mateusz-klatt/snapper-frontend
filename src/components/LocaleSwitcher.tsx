@@ -97,7 +97,7 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
 
   const handleSelect = useCallback(
     (code: AppLocale) => {
-      setLocale(code)
+      void setLocale(code)
       setOpen(false)
     },
     [setLocale]

@@ -90,7 +90,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!validateForm()) {

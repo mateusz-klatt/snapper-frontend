@@ -47,7 +47,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
     setPasswordError('')
   }
 
-  const handleChangePassword = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleChangePassword = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
     setPasswordError('')
     setPasswordSuccess('')

@@ -186,13 +186,13 @@ export function useWebSocketConnection(url?: string, options?: WebSocketConnecti
 
         if (isMounted && useAuthStore.getState().isAuthenticated) {
           retryTimeout = setTimeout(() => {
-            attemptConnection()
+            void attemptConnection()
           }, retryDelay)
         }
       }
     }
 
-    attemptConnection()
+    void attemptConnection()
 
     return () => {
       isMounted = false
