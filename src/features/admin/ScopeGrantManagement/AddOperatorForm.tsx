@@ -30,7 +30,7 @@ const AddOperatorForm: React.FC<Readonly<AddOperatorFormProps>> = ({ open, onClo
     onClose()
   }
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!label.trim()) {

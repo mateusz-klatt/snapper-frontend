@@ -209,12 +209,10 @@ export async function buildScreenshotIndex({
   log = console.log,
 }) {
   await buildHome(out, write)
-  for (const [code, flag, label] of LOCALES) {
-    await buildLocalePage(out, code, flag, label, write)
-  }
-  for (const s of SCREENS) {
-    await buildScreenPage(out, s, write, makeDirectory)
-  }
+  await Promise.all(
+    LOCALES.map(([code, flag, label]) => buildLocalePage(out, code, flag, label, write))
+  )
+  await Promise.all(SCREENS.map(screen => buildScreenPage(out, screen, write, makeDirectory)))
   log(`Built index.html + ${LOCALES.length} locale pages + ${SCREENS.length} screen-compare pages`)
   log(`Open: file://${out}/index.html`)
 }

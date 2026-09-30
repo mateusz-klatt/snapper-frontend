@@ -308,7 +308,7 @@ async function main() {
   const total = LOCALES.length * SCREENS.length
   const startedAt = Date.now()
 
-  for (const locale of LOCALES) {
+  await Array.fromAsync(LOCALES, async locale => {
     try {
       const wasAuth = await isAuthenticated(page)
       if (!wasAuth) {
@@ -319,21 +319,21 @@ async function main() {
       await selectLocale(page, locale)
     } catch (err) {
       console.error(`  FAILED to setup locale ${locale}: ${err.message}`)
-      continue
+      return
     }
 
-    for (const screen of SCREENS) {
+    await Array.fromAsync(SCREENS, async screen => {
       try {
         await screenshotScreen(page, locale, screen)
         done += 1
       } catch (err) {
         console.error(`  FAILED ${locale}/${screen}: ${err.message}`)
       }
-    }
+    })
 
     const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1)
     console.log(`  [${done}/${total}] ${locale} done  (${elapsed}s)`)
-  }
+  })
 
   await browser.close()
   const elapsed = ((Date.now() - startedAt) / 1000).toFixed(1)
