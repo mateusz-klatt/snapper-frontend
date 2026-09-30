@@ -85,7 +85,7 @@
       "autoPair": "Comparer avec la plus récente",
       "terminalGate": "comparaison disponible une fois cette exécution dans un statut terminal",
       "noSiblings": "aucune autre exécution avec cette configuration",
-      "limitNotice": "affichage des {{count}} plus récentes — utilisez l'appariement manuel pour les plus anciennes",
+      "limitNotice": "Nombre de backtests récents affichés : {{count}} — utilisez une paire manuelle pour les backtests plus anciens",
       "pickPlaceholder": "— choisir une exécution à comparer —",
       "showAllLabel": "Afficher toutes les exécutions (pas uniquement même configuration)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

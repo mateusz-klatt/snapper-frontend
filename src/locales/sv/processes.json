@@ -47,7 +47,7 @@
     "badge": "mall",
     "mode": "Läge:",
     "parameters": "Parametrar:",
-    "paramCount": "{{count}} parameter/parametrar",
+    "paramCount": "{{count}}",
     "noParams": "inga parametrar angivna"
   },
   "badges": {

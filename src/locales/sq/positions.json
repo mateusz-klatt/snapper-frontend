@@ -75,10 +75,10 @@
         "net_non_finite": "P&L neto nuk është i fundëm",
         "attribution_value_non_finite": "Vlera e atribuimit nuk është e fundme",
         "attribution_reconciliation_failed": "Rakordimi i atribuimit dështoi",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Shuma e vlerave P&L të atribuuara nuk mund të paraqitet saktësisht numerikisht",
+        "instrument_reconciliation_failed": "Rakordimi i P&L sipas instrumenteve dështoi",
+        "instrument_sum_unrepresentable": "Shuma e vlerave të instrumenteve nuk mund të paraqitet saktësisht numerikisht",
+        "late_pre_activation_execution": "Ekzekutim urdhri i mbërritur me vonesë, me vulë kohore para aktivizimit"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: në pritje",
     "slTpButton": "SL/TP",
     "trailButton": "Ndjekje",
@@ -237,10 +237,10 @@
     "stopLoss": "Ndalimi i humbjes",
     "takeProfit": "Realizimi i fitimit",
     "placeholders": {
-      "slLong": "Nën ${{price}}",
-      "slShort": "Mbi ${{price}}",
-      "tpLong": "Mbi ${{price}}",
-      "tpShort": "Nën ${{price}}"
+      "slLong": "Nën {{price}}",
+      "slShort": "Mbi {{price}}",
+      "tpLong": "Mbi {{price}}",
+      "tpShort": "Nën {{price}}"
     },
     "buttons": {
       "cancel": "Anulo",

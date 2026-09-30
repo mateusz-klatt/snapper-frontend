@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "Μετακίνηση στη χρονική ιστορία της αγοράς με το ρυθμιστικό",
     "presets": {
       "live": "Live",
       "h1": "-1h",

@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L Isiyotekelezwa",
     "pnlPercent": "P&L %",
     "positions": "Nafasi",
-    "instrumentsCount": "Instrumenti {{count}}",
+    "instrumentsCount": "Instrumenti: {{count}}",
     "empty": "Hakuna data ya nafasi inayopatikana",
     "incompleteValuation": "Data haijakamilika — baadhi ya nafasi hazina bei ya marejeleo au bei ya kuingia inayoweza kutumika; jumla inahusisha vipengele vinavyojulikana pekee"
   },

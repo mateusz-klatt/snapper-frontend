@@ -455,7 +455,7 @@ describe('UserList', () => {
     )
     renderWithProviders(<UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />)
     await waitFor(() => {
-      expect(screen.getByText('2 users')).toBeTruthy()
+      expect(screen.getByText('Users: 2')).toBeTruthy()
     })
   })
   it('calls edit when edit button clicked', async () => {

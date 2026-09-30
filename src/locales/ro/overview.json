@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L nerealizat",
     "pnlPercent": "P&L %",
     "positions": "Poziții",
-    "instrumentsCount": "{{count}} instrumente",
+    "instrumentsCount": "Instrumente: {{count}}",
     "empty": "Nu există date disponibile despre poziții",
     "incompleteValuation": "Date incomplete — unor poziții le lipsește un preț de referință sau de intrare utilizabil; totalurile includ numai componentele cunoscute"
   },

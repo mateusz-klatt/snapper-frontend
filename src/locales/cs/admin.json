@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Rozsahy oprávnění",
-      "countLabel": "Rozsahy oprávnění: {{count}}",
+      "countLabel": "Přístupová oprávnění: {{count}}",
       "createGrant": "Udělit rozsah",
       "selectWalletPrompt": "Vyberte výše peněženku pro zobrazení jejích rozsahů oprávnění.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Pověření peněženky",
-      "countLabel": "Pověření: {{count}}",
+      "countLabel": "Přístupové údaje: {{count}}",
       "addCredential": "Přidat pověření",
       "selectWalletPrompt": "Vyberte výše peněženku pro zobrazení jejích pověření.",
       "columns": {

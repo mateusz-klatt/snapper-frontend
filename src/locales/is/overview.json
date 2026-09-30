@@ -34,7 +34,7 @@
     "unrealizedPnl": "Óinnleyst P&L",
     "pnlPercent": "P&L %",
     "positions": "Stöður",
-    "instrumentsCount": "{{count}} gerningar",
+    "instrumentsCount": "Gerningar: {{count}}",
     "empty": "Engin stöðugögn tiltæk",
     "incompleteValuation": "Gögnin eru ófullnægjandi — fyrir sumar stöður vantar nothæft viðmiðunarverð eða inngangsverð; heildartölur taka aðeins til þekktra liða"
   },

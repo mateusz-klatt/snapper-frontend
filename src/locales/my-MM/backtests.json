@@ -85,7 +85,7 @@
       "autoPair": "နောက်ဆုံး run နှင့် နှိုင်းယှဉ်ပါ",
       "terminalGate": "ဤ run သည် terminal status ရောက်ပြီးမှ compare အသုံးပြုနိုင်သည်",
       "noSiblings": "ဤ config ဖြင့် အခြား run မရှိပါ",
-      "limitNotice": "နောက်ဆုံး {{count}} ခုကို ပြထားသည် — run အဟောင်းများအတွက် manual pair ကို သုံးပါ",
+      "limitNotice": "ပြထားသော နောက်ဆုံး စမ်းသပ်လုပ်ဆောင်မှု အရေအတွက်: {{count}} — အဟောင်းများအတွက် ကိုယ်တိုင်ရွေးချယ်ထားသော အတွဲကို သုံးပါ",
       "pickPlaceholder": "— နှိုင်းယှဉ်ရန် run တစ်ခု ရွေးပါ —",
       "showAllLabel": "Run အားလုံး ပြပါ (config တူသော run များသာမဟုတ်)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

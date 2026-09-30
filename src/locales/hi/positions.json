@@ -75,10 +75,10 @@
         "net_non_finite": "नेट P&L परिमित संख्या नहीं है",
         "attribution_value_non_finite": "एट्रिब्यूशन मान परिमित संख्या नहीं है",
         "attribution_reconciliation_failed": "एट्रिब्यूशन मिलान विफल हुआ",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "एट्रिब्यूट किए गए P&L मानों का योग सटीक संख्यात्मक अंकगणित में निरूपित नहीं किया जा सकता",
+        "instrument_reconciliation_failed": "इंस्ट्रूमेंट-वार P&L योग का कुल P&L से मिलान विफल हुआ",
+        "instrument_sum_unrepresentable": "इंस्ट्रूमेंट-वार मानों का योग सटीक संख्यात्मक अंकगणित में निरूपित नहीं किया जा सकता",
+        "late_pre_activation_execution": "सक्रियण से पहले के टाइमस्टैम्प वाला देर से पहुँचा ऑर्डर निष्पादन"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: लंबित",
     "slTpButton": "SL/TP",
     "trailButton": "ट्रेल",
@@ -237,10 +237,10 @@
     "stopLoss": "स्टॉप-लॉस",
     "takeProfit": "टेक-प्रॉफ़िट",
     "placeholders": {
-      "slLong": "${{price}} से नीचे",
-      "slShort": "${{price}} से ऊपर",
-      "tpLong": "${{price}} से ऊपर",
-      "tpShort": "${{price}} से नीचे"
+      "slLong": "{{price}} से नीचे",
+      "slShort": "{{price}} से ऊपर",
+      "tpLong": "{{price}} से ऊपर",
+      "tpShort": "{{price}} से नीचे"
     },
     "buttons": {
       "cancel": "रद्द करें",

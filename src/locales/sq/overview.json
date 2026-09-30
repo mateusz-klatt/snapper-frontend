@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L i parealizuar",
     "pnlPercent": "P&L %",
     "positions": "Pozicione",
-    "instrumentsCount": "{{count}} instrumente",
+    "instrumentsCount": "Instrumente: {{count}}",
     "empty": "Nuk ka të dhëna pozicionesh të disponueshme",
     "incompleteValuation": "Të dhënat janë të paplota — disa pozicione nuk kanë çmim reference ose çmim hyrjeje të përdorshëm; totalet përmbledhin vetëm përbërësit e njohur"
   },

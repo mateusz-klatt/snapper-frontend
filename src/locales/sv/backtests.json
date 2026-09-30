@@ -85,7 +85,7 @@
       "autoPair": "Jämför med senaste",
       "terminalGate": "jämförelse är tillgänglig när denna körning når slutstatus",
       "noSiblings": "inga andra körningar med denna konfiguration",
-      "limitNotice": "visar {{count}} senaste — använd manuell parning för äldre körningar",
+      "limitNotice": "Senaste körningar som visas: {{count}} — använd ett manuellt par för äldre körningar",
       "pickPlaceholder": "— välj en körning att jämföra —",
       "showAllLabel": "Visa alla körningar (inte bara samma konfiguration)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

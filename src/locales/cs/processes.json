@@ -47,7 +47,7 @@
     "badge": "šablona",
     "mode": "Režim:",
     "parameters": "Parametry:",
-    "paramCount": "{{count}} parametrů",
+    "paramCount": "{{count}}",
     "noParams": "nejsou nastaveny žádné parametry"
   },
   "badges": {

@@ -14,12 +14,29 @@
     "order_rejected": "订单已拒绝",
     "position_stop_loss_fired": "止损已触发"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "交易所响应含义不明确",
+      "unknown": "未知原因"
+    },
+    "side": {
+      "buy": "买入",
+      "sell": "卖出"
+    },
+    "status": {
+      "error": "错误",
+      "healthy": "健康",
+      "warning": "警告"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} 报告 {{2}}，已连续 {{3}} 次心跳",
     "margin_warning": "{{0}} {{1}} {{2}} 因保证金不足被阻止：{{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} 以 ${{3}} 在 {{4}} 成交",
+    "order_fill_full": "{{0}} {{1}} {{2}} 以 {{3}} 在 {{4}} 成交",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} 以 {{3}} 在 {{4}} 成交",
     "order_rejected": "{{0}} {{1}} {{2}} 已拒绝：{{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} 状态未知：{{3}} — 正在与交易所核实",
+    "order_unknown": "{{0}} {{1}} {{2}} 状态未知：{{3}} — 正在等待交易所核实；请勿假定仓位已平仓",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} 状态未知：{{3}} — 正在等待交易所核实；请勿假定仓位已平仓",
     "position_stop_loss_fired": "{{0}}（{{1}}）触发止损"
   },
   "detail": {

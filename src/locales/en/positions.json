@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: pending",
     "slTpButton": "SL/TP",
     "trailButton": "Trail",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Below ${{price}}",
-      "slShort": "Above ${{price}}",
-      "tpLong": "Above ${{price}}",
-      "tpShort": "Below ${{price}}"
+      "slLong": "Below {{price}}",
+      "slShort": "Above {{price}}",
+      "tpLong": "Above {{price}}",
+      "tpShort": "Below {{price}}"
     },
     "buttons": {
       "cancel": "Cancel",

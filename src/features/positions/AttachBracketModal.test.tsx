@@ -103,6 +103,29 @@ describe('AttachBracketModal', () => {
     expect(screen.getByText('50000.00 USD')).toBeInTheDocument()
   })
 
+  it.each(['LONG', 'SHORT'] as const)(
+    'keeps the actual quote and full entry precision in %s protective-price hints',
+    side => {
+      renderWithProviders(
+        <AttachBracketModal
+          {...defaultProps}
+          instrument='EUR-PLN'
+          averagePrice={4.3836}
+          side={side}
+        />
+      )
+      expect(screen.getByText('4.3836 PLN')).toBeInTheDocument()
+      expect(screen.getByTestId('sl-price-input')).toHaveAttribute(
+        'placeholder',
+        `${side === 'LONG' ? 'Below' : 'Above'} 4.3836 PLN`
+      )
+      expect(screen.getByTestId('tp-price-input')).toHaveAttribute(
+        'placeholder',
+        `${side === 'LONG' ? 'Above' : 'Below'} 4.3836 PLN`
+      )
+    }
+  )
+
   it('requires at least one price', async () => {
     const user = userEvent.setup()
 

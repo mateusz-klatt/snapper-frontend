@@ -85,7 +85,7 @@
       "autoPair": "Uporedi sa najnovijim",
       "terminalGate": "poređenje je dostupno kada ovaj run dostigne završni status",
       "noSiblings": "nema drugih runova sa ovom konfiguracijom",
-      "limitNotice": "prikazuje se {{count}} najnovijih — koristite ručno uparivanje za starije runove",
+      "limitNotice": "Prikaz najnovijih pokretanja: {{count}} — za starija pokretanja ručno izaberite par",
       "pickPlaceholder": "— izaberite run za poređenje —",
       "showAllLabel": "Prikaži sve runove (ne samo istu konfiguraciju)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

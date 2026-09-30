@@ -47,7 +47,7 @@
     "badge": "шаблон",
     "mode": "Режим:",
     "parameters": "Параметры:",
-    "paramCount": "Параметры: {{count}}",
+    "paramCount": "{{count}}",
     "noParams": "параметры не заданы"
   },
   "badges": {

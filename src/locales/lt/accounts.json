@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metodas: {{method}}. Patikimi suderinimo įrodymai sutapo.",
       "driftDetected": "Metodas: {{method}}. Patikimi suderinimo įrodymai atskleidė neatitikimą.",
-      "openDrift": "Metodas: {{method}}. Atviras nuokrypio epizodas išlieka po {{count}} iš eilės einančių visiškų neatitikimų.",
+      "openDrift": "Metodas: {{method}}. Atviras nuokrypio epizodas tebėra. Iš eilės einančių visiškų neatitikimų skaičius: {{count}}.",
       "unclassified": "Metodas: {{method}}. Prieš vykdant suderinimą, operatorius turi atlikti klasifikaciją.",
       "notReconciled": "Metodas: {{method}}. Suderinimo įrodymai dar nėra išsamūs.",
       "stale": "Metodas: {{method}}. Suderinimo verdiktas per senas, kad būtų patikimas.",

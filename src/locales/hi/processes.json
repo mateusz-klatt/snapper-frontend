@@ -47,7 +47,7 @@
     "badge": "टेम्पलेट",
     "mode": "मोड:",
     "parameters": "पैरामीटर:",
-    "paramCount": "{{count}} पैरामीटर",
+    "paramCount": "{{count}}",
     "noParams": "कोई पैरामीटर सेट नहीं"
   },
   "badges": {

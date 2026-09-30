@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Methode: {{method}}. Maßgebliche Abgleichsnachweise stimmten überein.",
       "driftDetected": "Methode: {{method}}. Maßgebliche Abgleichsnachweise ergaben eine Unstimmigkeit.",
-      "openDrift": "Methode: {{method}}. Eine offene Abweichungsepisode verbleibt nach {{count}} aufeinanderfolgenden vollständigen Unstimmigkeiten.",
+      "openDrift": "Methode: {{method}}. Eine Abweichungsepisode ist weiterhin offen. Vollständige Abweichungen beim Abgleich in Folge: {{count}}.",
       "unclassified": "Methode: {{method}}. Eine Klassifizierung durch den Operator ist erforderlich, bevor der Abgleich ausgeführt werden kann.",
       "notReconciled": "Methode: {{method}}. Die Abgleichsnachweise sind noch nicht vollständig.",
       "stale": "Methode: {{method}}. Das Abgleichsurteil ist zu alt, um vertrauenswürdig zu sein.",

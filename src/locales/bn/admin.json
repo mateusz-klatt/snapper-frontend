@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "ব্যবহারকারী ব্যবস্থাপনা",
-      "countLabel": "{{count}} ব্যবহারকারী",
+      "countLabel": "ব্যবহারকারী: {{count}}",
       "showInactive": "নিষ্ক্রিয় দেখান",
       "hideInactive": "নিষ্ক্রিয় লুকান",
       "addUser": "ব্যবহারকারী যোগ করুন",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "স্কোপ অনুমতি",
-      "countLabel": "{{count}} অনুমতি",
+      "countLabel": "অ্যাক্সেস অনুমোদন: {{count}}",
       "createGrant": "স্কোপ দিন",
       "selectWalletPrompt": "এর স্কোপ অনুমতি দেখতে উপরের ওয়ালেট বেছে নিন।",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "ওয়ালেট ক্রেডেনশিয়াল",
-      "countLabel": "{{count}} ক্রেডেনশিয়াল",
+      "countLabel": "ক্রেডেনশিয়াল: {{count}}",
       "addCredential": "ক্রেডেনশিয়াল যোগ করুন",
       "selectWalletPrompt": "এর ক্রেডেনশিয়াল দেখতে উপরের ওয়ালেট বেছে নিন।",
       "columns": {

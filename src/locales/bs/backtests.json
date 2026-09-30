@@ -85,7 +85,7 @@
       "autoPair": "Uporedi s najnovijim",
       "terminalGate": "poređenje je dostupno kada ovo pokretanje dosegne terminalni status",
       "noSiblings": "nema drugih pokretanja s ovom konfiguracijom",
-      "limitNotice": "prikazuje se {{count}} najnovijih — koristite ručno uparivanje za starija pokretanja",
+      "limitNotice": "Prikazana najnovija pokretanja: {{count}} — za starija pokretanja koristite ručno odabran par",
       "pickPlaceholder": "— odaberite pokretanje za poređenje —",
       "showAllLabel": "Prikaži sva pokretanja (ne samo istu konfiguraciju)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

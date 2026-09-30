@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "उपयोगकर्ता प्रबंधन",
-      "countLabel": "{{count}} उपयोगकर्ता",
+      "countLabel": "उपयोगकर्ता: {{count}}",
       "showInactive": "निष्क्रिय दिखाएँ",
       "hideInactive": "निष्क्रिय छिपाएँ",
       "addUser": "उपयोगकर्ता जोड़ें",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "स्कोप अनुमतियाँ",
-      "countLabel": "{{count}} अनुदान",
+      "countLabel": "पहुँच अधिकार: {{count}}",
       "createGrant": "स्कोप दें",
       "selectWalletPrompt": "उसकी स्कोप अनुमतियाँ देखने के लिए ऊपर एक वॉलेट चुनें।",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "वॉलेट क्रेडेंशियल",
-      "countLabel": "{{count}} क्रेडेंशियल",
+      "countLabel": "क्रेडेंशियल: {{count}}",
       "addCredential": "क्रेडेंशियल जोड़ें",
       "selectWalletPrompt": "उसके क्रेडेंशियल देखने के लिए ऊपर एक वॉलेट चुनें।",
       "columns": {

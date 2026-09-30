@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metod: {{method}}. Autoritativni dokazi usklađivanja se podudaraju.",
       "driftDetected": "Metod: {{method}}. Autoritativni dokazi usklađivanja su pronašli nepodudaranje.",
-      "openDrift": "Metod: {{method}}. Otvorena epizoda odstupanja preostaje nakon {{count}} uzastopnih potpunih nepodudaranja.",
+      "openDrift": "Metod: {{method}}. Epizoda otvorenog odstupanja i dalje traje. Broj uzastopnih potpunih poređenja usklađivanja koja se ne podudaraju: {{count}}.",
       "unclassified": "Metod: {{method}}. Klasifikacija operatera je neophodna pre pokretanja usklađivanja.",
       "notReconciled": "Metod: {{method}}. Dokazi usklađivanja još uvek nisu potpuni.",
       "stale": "Metod: {{method}}. Presuda o usklađivanju je prestara da bi se njoj verovalo.",

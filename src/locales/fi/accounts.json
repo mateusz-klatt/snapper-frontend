@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Menetelmä: {{method}}. Luotettavat täsmäytystodisteet täsmäsivät.",
       "driftDetected": "Menetelmä: {{method}}. Luotettavissa täsmäytystodisteissa havaittiin epäsuhta.",
-      "openDrift": "Menetelmä: {{method}}. Avoin poikkeamaepisodi on jäljellä {{count}} peräkkäisen täyden epäsuhdan jälkeen.",
+      "openDrift": "Menetelmä: {{method}}. Avoin poikkeamajakso on edelleen käynnissä. Peräkkäisten täydellisten täsmäytyspoikkeamien määrä: {{count}}.",
       "unclassified": "Menetelmä: {{method}}. Operaattorin luokittelu vaaditaan ennen kuin täsmäytys voidaan suorittaa.",
       "notReconciled": "Menetelmä: {{method}}. Täsmäytystodisteet eivät ole vielä valmiit.",
       "stale": "Menetelmä: {{method}}. Täsmäytystulos on liian vanha ollakseen luotettava.",

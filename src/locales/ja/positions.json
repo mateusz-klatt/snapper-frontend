@@ -75,10 +75,10 @@
         "net_non_finite": "純P&Lが有限値ではありません",
         "attribution_value_non_finite": "帰属値が有限値ではありません",
         "attribution_reconciliation_failed": "帰属値の照合に失敗しました",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "帰属P&L値の合計を正確に表現できません",
+        "instrument_reconciliation_failed": "銘柄別P&L合計の照合に失敗しました",
+        "instrument_sum_unrepresentable": "銘柄別の値の合計を正確に表現できません",
+        "late_pre_activation_execution": "有効化前のタイムスタンプを持つ、遅れて到着した約定"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: 保留中",
     "slTpButton": "SL/TP",
     "trailButton": "トレール",
@@ -237,10 +237,10 @@
     "stopLoss": "ストップロス",
     "takeProfit": "テイクプロフィット",
     "placeholders": {
-      "slLong": "${{price}}未満",
-      "slShort": "${{price}}超",
-      "tpLong": "${{price}}超",
-      "tpShort": "${{price}}未満"
+      "slLong": "{{price}}未満",
+      "slShort": "{{price}}超",
+      "tpLong": "{{price}}超",
+      "tpShort": "{{price}}未満"
     },
     "buttons": {
       "cancel": "キャンセル",

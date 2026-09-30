@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "ဈေးကွက်သမိုင်းကြောင်းတစ်လျှောက် အချိန်ကို ရွှေ့ပါ",
     "presets": {
       "live": "Live",
       "h1": "-1h",

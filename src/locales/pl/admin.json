@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Uprawnienia zakresowe",
-      "countLabel": "Uprawnienia zakresowe: {{count}}",
+      "countLabel": "Uprawnienia dostępu: {{count}}",
       "createGrant": "Nadaj zakres",
       "selectWalletPrompt": "Wybierz portfel powyżej, aby zobaczyć jego przyznania zakresów.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Poświadczenia portfela",
-      "countLabel": "{{count}} poświadczeń",
+      "countLabel": "Poświadczenia API/logowania: {{count}}",
       "addCredential": "Dodaj poświadczenie",
       "selectWalletPrompt": "Wybierz portfel powyżej, aby zobaczyć jego poświadczenia.",
       "columns": {

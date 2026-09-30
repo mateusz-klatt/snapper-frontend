@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "ユーザー管理",
-      "countLabel": "{{count}}ユーザー",
+      "countLabel": "ユーザー数: {{count}}",
       "showInactive": "非アクティブを表示",
       "hideInactive": "非アクティブを非表示",
       "addUser": "ユーザーを追加",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "スコープ権限",
-      "countLabel": "{{count}}件の権限",
+      "countLabel": "アクセス権付与数: {{count}}",
       "createGrant": "権限を付与",
       "selectWalletPrompt": "上でウォレットを選択すると、そのスコープ権限を表示できます。",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "ウォレット認証情報",
-      "countLabel": "{{count}}件の認証情報",
+      "countLabel": "認証情報数: {{count}}",
       "addCredential": "認証情報を追加",
       "selectWalletPrompt": "上でウォレットを選択すると、その認証情報を表示できます。",
       "columns": {

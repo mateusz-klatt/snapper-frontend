@@ -14,12 +14,29 @@
     "order_rejected": "Ordre avvist",
     "position_stop_loss_fired": "Stop-loss utløst"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Tvetydig svar fra børsen",
+      "unknown": "Ukjent årsak"
+    },
+    "side": {
+      "buy": "KJØP",
+      "sell": "SALG"
+    },
+    "status": {
+      "error": "Feil",
+      "healthy": "Frisk",
+      "warning": "Advarsel"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} rapporterte {{2}} i {{3}} påfølgende heartbeats",
     "margin_warning": "{{0}} {{1}} {{2}} blokkert av marginkrav: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} utført på {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} utført på {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} utført på {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} avvist: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} status ukjent: {{3}} — verifisering pågår",
+    "order_unknown": "{{0}} {{1}} {{2}} har ukjent status: {{3}} — verifisering hos børsen avventes; ikke anta at posisjonen er lukket",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} har ukjent status: {{3}} — verifisering hos børsen avventes; ikke anta at posisjonen er lukket",
     "position_stop_loss_fired": "Stop-loss utløst for {{0}} ({{1}})"
   },
   "detail": {

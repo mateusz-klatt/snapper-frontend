@@ -9,11 +9,11 @@ import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
 import { formatDateTime } from '../../lib/dateFormat'
-import type { AppLocale } from '../../i18n/types'
 import { AttachBracketModal } from './AttachBracketModal'
 import { AttachTrailingStopModal } from './AttachTrailingStopModal'
 import { PortfolioTimeline } from './PortfolioTimeline'
-import { quoteCurrency } from './instrumentQuote'
+import { formatQuoted, quoteCurrency } from './instrumentQuote'
+import { formatNumber } from '../../lib/utils'
 import type { Position } from '../../types/entities'
 import type { TrailingStopByCycleResult } from '../../types/api'
 import { Permission } from '../../types/permissions.generated'
@@ -47,20 +47,13 @@ const getPnlClass = (value: number | null | undefined): string => {
   return 'text-muted-400'
 }
 
-const withQuote = (formatted: string, quote: string): string =>
-  quote === '' ? formatted : `${formatted} ${quote}`
-
 const formatPrice = (value: number | null | undefined, quote: string, noValue: string): string =>
-  value == null ? noValue : withQuote(value.toFixed(2), quote)
+  value == null ? noValue : formatQuoted(value, quote)
 
 const formatPnl = (value: number | null | undefined, quote: string, noValue: string): string => {
   if (value == null) return noValue
-  const abs = Math.abs(value).toFixed(2)
 
-  if (value > 0) return withQuote(`+${abs}`, quote)
-  if (value < 0) return withQuote(`-${abs}`, quote)
-
-  return withQuote(abs, quote)
+  return formatQuoted(value, quote, { signDisplay: 'exceptZero' })
 }
 
 const positionIdSuffix = (position: Position): string =>
@@ -74,7 +67,10 @@ interface PositionRowProps {
   canCreateOrders: boolean
 }
 
-const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined }> = ({ cyclePublicId }) => {
+const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined; quote: string }> = ({
+  cyclePublicId,
+  quote,
+}) => {
   const { t } = useTranslation('positions')
   const { data } = useTrailingStopForCycle(cyclePublicId)
 
@@ -90,7 +86,7 @@ const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined }> = ({ cy
       data-testid='trailing-stop-badge'
     >
       {currentStop > 0
-        ? t('row.trailingStopBadge', { stop: currentStop.toFixed(2) })
+        ? t('row.trailingStopBadge', { stop: formatQuoted(currentStop, quote) })
         : t('row.trailingStopPending')}
     </span>
   )
@@ -131,7 +127,10 @@ const PositionRow: React.FC<PositionRowProps> = ({
             {side}
           </span>
           {showLiveProtectiveState && (
-            <TrailingStopBadge cyclePublicId={position.positionCyclePublicId as string} />
+            <TrailingStopBadge
+              cyclePublicId={position.positionCyclePublicId as string}
+              quote={quote}
+            />
           )}
         </div>
         <div className='flex items-center gap-2'>
@@ -170,7 +169,9 @@ const PositionRow: React.FC<PositionRowProps> = ({
       <div className='grid grid-cols-2 gap-4 text-sm md:grid-cols-5'>
         <div>
           <div className='text-muted-500'>{t('row.quantity')}</div>
-          <div className='font-mono text-alpine-900'>{absQuantity.toFixed(4)}</div>
+          <div className='font-mono text-alpine-900'>
+            {formatNumber(absQuantity, { minimumFractionDigits: 4, maximumFractionDigits: 20 })}
+          </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('row.averageEntry')}</div>
@@ -185,7 +186,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
           </div>
           {position.markedAt && (
             <div className='text-xs text-muted-500' data-testid={`position-marked-at-${suffix}`}>
-              {formatDateTime(position.markedAt, i18n.language as AppLocale)}
+              {formatDateTime(position.markedAt, i18n.language)}
             </div>
           )}
         </div>
@@ -211,7 +212,7 @@ const PositionRow: React.FC<PositionRowProps> = ({
       {position.timestamp && (
         <div className='mt-3 text-xs text-muted-500'>
           {t('row.updated', {
-            timestamp: formatDateTime(position.timestamp, i18n.language as AppLocale),
+            timestamp: formatDateTime(position.timestamp, i18n.language),
           })}
         </div>
       )}

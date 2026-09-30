@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Phương pháp: {{method}}. Bằng chứng đối soát đáng tin cậy đã khớp.",
       "driftDetected": "Phương pháp: {{method}}. Bằng chứng đối soát đáng tin cậy đã phát hiện sự không khớp.",
-      "openDrift": "Phương pháp: {{method}}. Vẫn còn một đợt sai lệch đang mở sau {{count}} lần hoàn toàn không khớp liên tiếp.",
+      "openDrift": "Phương pháp: {{method}}. Một đợt sai lệch đang mở vẫn còn. Số phép đối soát đầy đủ liên tiếp không khớp: {{count}}.",
       "unclassified": "Phương pháp: {{method}}. Cần có sự phân loại của người vận hành trước khi có thể chạy đối soát.",
       "notReconciled": "Phương pháp: {{method}}. Bằng chứng đối soát chưa đầy đủ.",
       "stale": "Phương pháp: {{method}}. Kết luận đối soát đã quá cũ để có thể tin cậy.",

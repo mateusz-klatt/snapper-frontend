@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L לא ממומש",
     "pnlPercent": "P&L %",
     "positions": "פוזיציות",
-    "instrumentsCount": "{{count}} מכשירים",
+    "instrumentsCount": "מכשירים: {{count}}",
     "empty": "אין נתוני פוזיציות זמינים",
     "incompleteValuation": "הנתונים חלקיים — בחלק מהפוזיציות אין מחיר ייחוס שמיש או מחיר כניסה שמיש; הסכומים הכוללים מחושבים רק מהרכיבים הידועים"
   },

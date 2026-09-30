@@ -47,7 +47,7 @@
     "badge": "mal",
     "mode": "Modus:",
     "parameters": "Parametere:",
-    "paramCount": "{{count}} parameter(e)",
+    "paramCount": "{{count}}",
     "noParams": "ingen parametere satt"
   },
   "badges": {

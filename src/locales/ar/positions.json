@@ -75,10 +75,10 @@
         "net_non_finite": "قيمة صافي P&L ليست عددًا محدودًا",
         "attribution_value_non_finite": "قيمة الإسناد ليست عددًا محدودًا",
         "attribution_reconciliation_failed": "فشلت تسوية الإسناد",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "لا يمكن تمثيل مجموع قيم P&L المُسنَدة عدديًا بدقة",
+        "instrument_reconciliation_failed": "فشلت مطابقة إجماليات P&L حسب الأداة مع إجمالي P&L الكلي",
+        "instrument_sum_unrepresentable": "لا يمكن تمثيل مجموع قيم الأدوات عدديًا بدقة",
+        "late_pre_activation_execution": "تنفيذ صفقة وصل متأخرًا ويحمل طابعًا زمنيًا يسبق التفعيل"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: معلق",
     "slTpButton": "SL/TP",
     "trailButton": "وقف متحرك",
@@ -237,10 +237,10 @@
     "stopLoss": "وقف الخسارة",
     "takeProfit": "جني الأرباح",
     "placeholders": {
-      "slLong": "أقل من ${{price}}",
-      "slShort": "أعلى من ${{price}}",
-      "tpLong": "أعلى من ${{price}}",
-      "tpShort": "أقل من ${{price}}"
+      "slLong": "أقل من {{price}}",
+      "slShort": "أعلى من {{price}}",
+      "tpLong": "أعلى من {{price}}",
+      "tpShort": "أقل من {{price}}"
     },
     "buttons": {
       "cancel": "إلغاء",

@@ -14,12 +14,29 @@
     "order_rejected": "Nalog odbijen",
     "position_stop_loss_fired": "Stop-loss aktiviran"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Nejasan odgovor berze",
+      "unknown": "Nepoznat razlog"
+    },
+    "side": {
+      "buy": "KUPOVINA",
+      "sell": "PRODAJA"
+    },
+    "status": {
+      "error": "Greška",
+      "healthy": "Ispravno",
+      "warning": "Upozorenje"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} je prijavio {{2}} tokom {{3}} uzastopnih heartbeatova",
     "margin_warning": "{{0}} {{1}} {{2}} blokirano zbog margine: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} izvršeno na {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} izvršeno na {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} izvršeno na {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} odbijeno: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} status nepoznat: {{3}} — provera u toku",
+    "order_unknown": "{{0}} {{1}} {{2}} status nije poznat: {{3}} — čeka se potvrda berze; nemojte pretpostaviti da je pozicija zatvorena",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} status nije poznat: {{3}} — čeka se potvrda berze; nemojte pretpostaviti da je pozicija zatvorena",
     "position_stop_loss_fired": "Stop-loss aktiviran za {{0}} ({{1}})"
   },
   "detail": {

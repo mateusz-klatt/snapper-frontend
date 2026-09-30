@@ -85,7 +85,7 @@
       "autoPair": "I-compare sa pinakabagong run",
       "terminalGate": "available ang compare kapag umabot ang run sa terminal status",
       "noSiblings": "walang ibang runs na may ganitong config",
-      "limitNotice": "ipinapakita ang {{count}} pinakabago — gamitin ang manual pair para sa mas lumang runs",
+      "limitNotice": "Bilang ng pinakabagong run na ipinapakita: {{count}} — gumamit ng manual na pares para sa mas lumang run",
       "pickPlaceholder": "— pumili ng run na iko-compare —",
       "showAllLabel": "Ipakita ang lahat ng runs (hindi lang same config)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

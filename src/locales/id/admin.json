@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Manajemen Pengguna",
-      "countLabel": "{{count}} pengguna",
+      "countLabel": "Pengguna: {{count}}",
       "showInactive": "Tampilkan nonaktif",
       "hideInactive": "Sembunyikan nonaktif",
       "addUser": "Tambah Pengguna",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Lingkup Izin",
-      "countLabel": "{{count}} izin",
+      "countLabel": "Pemberian akses: {{count}}",
       "createGrant": "Buat Izin",
       "selectWalletPrompt": "Pilih dompet di atas untuk melihat lingkup izinnya.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Kredensial Dompet",
-      "countLabel": "{{count}} kredensial",
+      "countLabel": "Kredensial: {{count}}",
       "addCredential": "Tambah Kredensial",
       "selectWalletPrompt": "Pilih dompet di atas untuk melihat kredensialnya.",
       "columns": {

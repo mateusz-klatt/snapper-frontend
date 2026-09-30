@@ -16,6 +16,11 @@ const ROWS: readonly [readonly AppLocale[], readonly AppLocale[], readonly AppLo
   ROW_3,
 ] as const
 const COLS = 15
+const DISPLAY_LANGUAGE_TAGS: Readonly<Partial<Record<AppLocale, string>>> = {
+  cn: 'zh-Hans',
+  rs: 'sr-Latn',
+  mm: 'my',
+}
 
 interface Neighbours {
   readonly left: AppLocale
@@ -52,24 +57,26 @@ const buildNeighbourMap = (): Readonly<Record<AppLocale, Neighbours>> => {
 const NEIGHBOURS: Readonly<Record<AppLocale, Neighbours>> = buildNeighbourMap()
 
 const buildNameMap = (language: string): Readonly<Record<AppLocale, string>> => {
-  const display = new Intl.DisplayNames([language], { type: 'region' })
+  const display = new Intl.DisplayNames([language], { type: 'language' })
   const out: Record<string, string> = {}
 
   for (const row of ROWS) {
     for (const code of row) {
-      out[code] = display.of(code.toUpperCase()) as string
+      const displayTag = DISPLAY_LANGUAGE_TAGS[code] ?? getCatalogLanguage(code)
+
+      out[code] = display.of(displayTag) as string
     }
   }
 
   return out as Record<AppLocale, string>
 }
 
-const COUNTRY_NAMES_BY_LANG: Record<string, Readonly<Record<AppLocale, string>>> = {}
+const LANGUAGE_NAMES_BY_LANG: Record<string, Readonly<Record<AppLocale, string>>> = {}
 
-const countryName = (code: AppLocale, displayLanguage: string): string => {
-  const cached = COUNTRY_NAMES_BY_LANG[displayLanguage] ?? buildNameMap(displayLanguage)
+const languageName = (code: AppLocale, displayLanguage: string): string => {
+  const cached = LANGUAGE_NAMES_BY_LANG[displayLanguage] ?? buildNameMap(displayLanguage)
 
-  COUNTRY_NAMES_BY_LANG[displayLanguage] = cached
+  LANGUAGE_NAMES_BY_LANG[displayLanguage] = cached
 
   return cached[code]
 }
@@ -85,7 +92,8 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
 }) => {
   const locale = useAppStore(s => s.locale)
   const setLocale = useAppStore(s => s.setLocale)
-  const { t } = useTranslation('common')
+  const { t, i18n } = useTranslation('common')
+  const direction = i18n.dir()
   const [open, setOpen] = useState(false)
   const buttonRefs = useRef<Map<AppLocale, HTMLButtonElement>>(new Map())
 
@@ -110,14 +118,14 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
 
       if (key === 'ArrowRight') {
         event.preventDefault()
-        focusByCode(neighbours.right)
+        focusByCode(direction === 'rtl' ? neighbours.left : neighbours.right)
 
         return
       }
 
       if (key === 'ArrowLeft') {
         event.preventDefault()
-        focusByCode(neighbours.left)
+        focusByCode(direction === 'rtl' ? neighbours.right : neighbours.left)
 
         return
       }
@@ -134,7 +142,7 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
         focusByCode(neighbours.up)
       }
     },
-    [focusByCode]
+    [direction, focusByCode]
   )
 
   return (
@@ -162,6 +170,7 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content
+          dir={direction}
           side='bottom'
           align={align}
           sideOffset={6}
@@ -176,7 +185,7 @@ const LocaleSwitcher: React.FC<Readonly<LocaleSwitcherProps>> = ({
               <div key={row.join('-')} className='flex flex-nowrap gap-0.5'>
                 {row.map(code => {
                   const isCurrent = code === locale
-                  const country = countryName(code, displayLanguage)
+                  const country = languageName(code, displayLanguage)
                   const labelKey = isCurrent
                     ? 'localeSwitcher.currentAriaLabel'
                     : 'localeSwitcher.flagAriaLabel'

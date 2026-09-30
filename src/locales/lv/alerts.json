@@ -14,12 +14,29 @@
     "order_rejected": "Rīkojums noraidīts",
     "position_stop_loss_fired": "Stop-loss aktivizēts"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Neviennozīmīga biržas atbilde",
+      "unknown": "Nezināms iemesls"
+    },
+    "side": {
+      "buy": "PIRKŠANA",
+      "sell": "PĀRDOŠANA"
+    },
+    "status": {
+      "error": "Kļūda",
+      "healthy": "Vesels",
+      "warning": "Brīdinājums"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} ziņoja {{2}} {{3}} secīgos heartbeatos",
     "margin_warning": "{{0}} {{1}} {{2}} bloķēts maržas dēļ: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} izpildīts biržā {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} izpildīts biržā {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} izpildīts biržā {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} noraidīts: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} statuss nezināms: {{3}} — notiek pārbaude",
+    "order_unknown": "{{0}} {{1}} {{2}} statuss nav zināms: {{3}} — biržas pārbaude vēl nav pabeigta; nepieņemiet, ka pozīcija ir slēgta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} statuss nav zināms: {{3}} — biržas pārbaude vēl nav pabeigta; nepieņemiet, ka pozīcija ir slēgta",
     "position_stop_loss_fired": "Stop-loss aktivizēts {{0}} ({{1}})"
   },
   "detail": {

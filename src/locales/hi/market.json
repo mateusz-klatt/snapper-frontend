@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "बाज़ार के इतिहास में समय बदलें",
     "presets": {
       "live": "Live",
       "h1": "-1h",

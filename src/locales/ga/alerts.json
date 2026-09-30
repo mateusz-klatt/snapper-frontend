@@ -14,12 +14,29 @@
     "order_rejected": "Ordú diúltaithe",
     "position_stop_loss_fired": "Spreagadh stopchaillteanas"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Freagra débhríoch ón malartán",
+      "unknown": "Cúis anaithnid"
+    },
+    "side": {
+      "buy": "CEANNACH",
+      "sell": "DÍOL"
+    },
+    "status": {
+      "error": "Earráid",
+      "healthy": "Sláintiúil",
+      "warning": "Rabhadh"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} thuairiscigh {{2}} ar feadh {{3}} chomhartha heartbeat as a chéile",
     "margin_warning": "{{0}} {{1}} {{2}} blocáilte mar gheall ar chorrlach: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} comhlíonta ar {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} comhlíonta ar {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} comhlíonta ar {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} diúltaithe: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} stádas anaithnid: {{3}} — fíorú ar siúl",
+    "order_unknown": "{{0}} {{1}} {{2}} stádas anaithnid: {{3}} — tá fíorú an mhalartáin ar feitheamh; ná glac leis go bhfuil an suíomh dúnta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} stádas anaithnid: {{3}} — tá fíorú an mhalartáin ar feitheamh; ná glac leis go bhfuil an suíomh dúnta",
     "position_stop_loss_fired": "Spreagadh stopchaillteanas do {{0}} ({{1}})"
   },
   "detail": {

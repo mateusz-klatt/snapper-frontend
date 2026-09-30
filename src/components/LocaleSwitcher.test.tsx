@@ -29,7 +29,7 @@ describe('LocaleSwitcher', () => {
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     await waitFor(() => {
-      expect(screen.getByRole('button', { name: /(poland|pholainn)/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /(polish|polainnis)/i })).toBeInTheDocument()
     })
     const popoverButtons = screen
       .getAllByRole('button')
@@ -57,20 +57,20 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    expect(await screen.findByRole('button', { name: /(poland|pholainn)/i })).toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: /(poland|pholainn)/i }))
+    expect(await screen.findByRole('button', { name: /(polish|polainnis)/i })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /(polish|polainnis)/i }))
     await waitFor(() => {
       expect(useAppStore.getState().locale).toBe('pl')
     })
   })
 
-  it('selecting a non-EN/PL country (de) sets store locale + falls back to en text', async () => {
+  it('selecting German updates the store locale', async () => {
     const user = userEvent.setup()
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    expect(await screen.findByRole('button', { name: /(germany|ghearmáin)/i })).toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: /(germany|ghearmáin)/i }))
+    expect(await screen.findByRole('button', { name: /(german|gearmáinis)/i })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /(german|gearmáinis)/i }))
     await waitFor(() => {
       expect(useAppStore.getState().locale).toBe('de')
     })
@@ -81,7 +81,7 @@ describe('LocaleSwitcher', () => {
 
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    expect(await screen.findByRole('button', { name: /(poland|pholainn)/i })).toBeInTheDocument()
+    expect(await screen.findByRole('button', { name: /(polish|polainnis)/i })).toBeInTheDocument()
     const flagButtons = screen
       .getAllByRole('button')
       .filter(
@@ -98,16 +98,14 @@ describe('LocaleSwitcher', () => {
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     expect(
-      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+      await screen.findByRole('button', { name: /current language: (irish|gaeilge)/i })
     ).toBeInTheDocument()
-    const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
+    const ieButton = screen.getByRole('button', { name: /current language: (irish|gaeilge)/i })
 
     ieButton.focus()
     fireEvent.keyDown(ieButton, { key: 'ArrowRight' })
     await waitFor(() => {
-      expect(document.activeElement?.getAttribute('aria-label')).toMatch(
-        /united states|stáit aontaithe/i
-      )
+      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/english|béarla/i)
     })
   })
 
@@ -117,14 +115,14 @@ describe('LocaleSwitcher', () => {
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     expect(
-      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+      await screen.findByRole('button', { name: /current language: (irish|gaeilge)/i })
     ).toBeInTheDocument()
-    const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
+    const ieButton = screen.getByRole('button', { name: /current language: (irish|gaeilge)/i })
 
     ieButton.focus()
     fireEvent.keyDown(ieButton, { key: 'ArrowLeft' })
     await waitFor(() => {
-      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/greece|ghréig/i)
+      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/greek|gréigis/i)
     })
   })
 
@@ -134,14 +132,16 @@ describe('LocaleSwitcher', () => {
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     expect(
-      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+      await screen.findByRole('button', { name: /current language: (irish|gaeilge)/i })
     ).toBeInTheDocument()
-    const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
+    const ieButton = screen.getByRole('button', { name: /current language: (irish|gaeilge)/i })
 
     ieButton.focus()
     fireEvent.keyDown(ieButton, { key: 'ArrowDown' })
     await waitFor(() => {
-      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/china|an tsín|中国|中國/i)
+      expect(document.activeElement?.getAttribute('aria-label')).toMatch(
+        /chinese|sínis|简体中文|簡體中文/i
+      )
     })
   })
 
@@ -151,7 +151,7 @@ describe('LocaleSwitcher', () => {
     useAppStore.setState({ locale: 'cz' })
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    const currentRe = /current language: (czechia|česko)/i
+    const currentRe = /current language: (czech|čeština)/i
 
     expect(await screen.findByRole('button', { name: currentRe })).toBeInTheDocument()
     const czButton = screen.getByRole('button', { name: currentRe })
@@ -159,7 +159,7 @@ describe('LocaleSwitcher', () => {
     czButton.focus()
     fireEvent.keyDown(czButton, { key: 'ArrowDown' })
     await waitFor(() => {
-      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/czechia|česko/i)
+      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/czech|čeština/i)
     })
   })
 
@@ -169,14 +169,14 @@ describe('LocaleSwitcher', () => {
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     expect(
-      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+      await screen.findByRole('button', { name: /current language: (irish|gaeilge)/i })
     ).toBeInTheDocument()
-    const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
+    const ieButton = screen.getByRole('button', { name: /current language: (irish|gaeilge)/i })
 
     ieButton.focus()
     fireEvent.keyDown(ieButton, { key: 'ArrowUp' })
     await waitFor(() => {
-      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/ireland|éire/i)
+      expect(document.activeElement?.getAttribute('aria-label')).toMatch(/irish|gaeilge/i)
     })
   })
 
@@ -186,7 +186,7 @@ describe('LocaleSwitcher', () => {
     useAppStore.setState({ locale: 'cn' })
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
-    const currentRe = /current language: (china|中国)/i
+    const currentRe = /current language: (chinese|简体中文)/i
 
     expect(await screen.findByRole('button', { name: currentRe })).toBeInTheDocument()
     const cnButton = screen.getByRole('button', { name: currentRe })
@@ -196,7 +196,7 @@ describe('LocaleSwitcher', () => {
     await waitFor(() => {
       const label = document.activeElement?.getAttribute('aria-label') ?? ''
 
-      expect(label.toLowerCase()).toMatch(/ireland|éire|爱尔兰|愛爾蘭/)
+      expect(label.toLowerCase()).toMatch(/irish|gaeilge|爱尔兰语|愛爾蘭語/)
     })
   })
 
@@ -206,16 +206,16 @@ describe('LocaleSwitcher', () => {
     renderWithI18n(<LocaleSwitcher />)
     await user.click(screen.getByRole('button', { name: /switch language/i }))
     expect(
-      await screen.findByRole('button', { name: /current language: (ireland|éire)/i })
+      await screen.findByRole('button', { name: /current language: (irish|gaeilge)/i })
     ).toBeInTheDocument()
-    const ieButton = screen.getByRole('button', { name: /current language: (ireland|éire)/i })
+    const ieButton = screen.getByRole('button', { name: /current language: (irish|gaeilge)/i })
 
     ieButton.focus()
     fireEvent.keyDown(ieButton, { key: 'Tab' })
     expect(useAppStore.getState().locale).toBe('ie')
   })
 
-  it('uses native Polish country name when current locale is pl', async () => {
+  it('uses native Polish language name when current locale is pl', async () => {
     const user = userEvent.setup()
 
     useAppStore.setState({ locale: 'pl' })
@@ -229,11 +229,52 @@ describe('LocaleSwitcher', () => {
         const polishLabel = screen
           .getAllByRole('button')
           .map(b => b.getAttribute('aria-label') ?? '')
-          .find(l => /Polska/.test(l))
+          .find(l => /polski/.test(l))
 
         expect(polishLabel).toBeDefined()
       },
       { timeout: 3000 }
     )
   })
+
+  it('announces the language and available script rather than a flag country', async () => {
+    const user = userEvent.setup()
+
+    useAppStore.setState({ locale: 'us' })
+    renderWithI18n(<LocaleSwitcher />)
+    await user.click(screen.getByTestId('locale-switcher-trigger'))
+
+    for (const language of [
+      'Irish',
+      'Portuguese',
+      'Simplified Chinese',
+      'Traditional Chinese',
+      'Serbian (Latin)',
+    ]) {
+      expect(screen.getByRole('button', { name: `Switch to ${language}` })).toBeInTheDocument()
+    }
+
+    expect(screen.queryByRole('button', { name: 'Switch to Brazil' })).not.toBeInTheDocument()
+  })
+
+  it.each(['ar', 'he', 'fa'] as const)(
+    'moves horizontal focus in the visual direction for %s',
+    async language => {
+      const user = userEvent.setup()
+
+      renderWithI18n(<LocaleSwitcher />, language)
+      await user.click(screen.getByTestId('locale-switcher-trigger'))
+      const english = document.querySelector<HTMLButtonElement>('[data-locale="us"]')
+
+      expect(english?.closest('[dir]')).toHaveAttribute('dir', 'rtl')
+      expect(english).not.toBeNull()
+      if (english === null) throw new Error('English language button missing')
+      english.focus()
+      fireEvent.keyDown(english, { key: 'ArrowRight' })
+      expect(document.activeElement).toHaveAttribute('data-locale', 'ie')
+      english.focus()
+      fireEvent.keyDown(english, { key: 'ArrowLeft' })
+      expect(document.activeElement).toHaveAttribute('data-locale', 'pl')
+    }
+  )
 })

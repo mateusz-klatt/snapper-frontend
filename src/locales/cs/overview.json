@@ -34,7 +34,7 @@
     "unrealizedPnl": "Nerealizovaný P&L",
     "pnlPercent": "P&L %",
     "positions": "Pozice",
-    "instrumentsCount": "Instrumentů: {{count}}",
+    "instrumentsCount": "Instrumenty: {{count}}",
     "empty": "Nejsou dostupná data o pozicích",
     "incompleteValuation": "Neúplná data — některým pozicím chybí použitelná mark cena nebo vstupní cena; součty zahrnují jen známé složky"
   },

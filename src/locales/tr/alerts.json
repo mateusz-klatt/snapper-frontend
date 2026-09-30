@@ -14,12 +14,29 @@
     "order_rejected": "Emir reddedildi",
     "position_stop_loss_fired": "Zarar durdur tetiklendi"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Borsadan belirsiz yanıt",
+      "unknown": "Bilinmeyen neden"
+    },
+    "side": {
+      "buy": "ALIŞ",
+      "sell": "SATIŞ"
+    },
+    "status": {
+      "error": "Hata",
+      "healthy": "Sağlıklı",
+      "warning": "Uyarı"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} {{2}} durumunu {{3}} ardışık heartbeat boyunca bildirdi",
     "margin_warning": "{{0}} {{1}} {{2}} marjin nedeniyle engellendi: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} {{4}} üzerinde gerçekleşti",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} {{4}} üzerinde gerçekleşti",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} {{4}} üzerinde gerçekleşti",
     "order_rejected": "{{0}} {{1}} {{2}} reddedildi: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} durumu bilinmiyor: {{3}} — doğrulama sürüyor",
+    "order_unknown": "{{0}} {{1}} {{2}} durumu bilinmiyor: {{3}} — borsa doğrulaması bekleniyor; pozisyonun kapandığını varsaymayın",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} durumu bilinmiyor: {{3}} — borsa doğrulaması bekleniyor; pozisyonun kapandığını varsaymayın",
     "position_stop_loss_fired": "Zarar durdur {{0}} ({{1}}) için tetiklendi"
   },
   "detail": {

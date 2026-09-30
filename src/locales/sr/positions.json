@@ -75,25 +75,25 @@
         "net_non_finite": "Neto P&L nije konačan broj",
         "attribution_value_non_finite": "Vrednost atribucije nije konačan broj",
         "attribution_reconciliation_failed": "Usklađivanje atribucije nije uspelo",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Zbir atribuiranih P&L vrednosti ne može se tačno numerički predstaviti",
+        "instrument_reconciliation_failed": "Zbir P&L vrednosti po instrumentima ne podudara se sa ukupnim P&L-om",
+        "instrument_sum_unrepresentable": "Zbir vrednosti po instrumentima ne može se tačno numerički predstaviti",
+        "late_pre_activation_execution": "Naknadno pristiglo izvršenje trgovine sa vremenskom oznakom pre aktivacije"
       }
     },
     "executionHistory": {
-      "title": "Оператер је исправио историју извршења трговине",
-      "summary": "Оператер је поништио евидентирана извршења трговине у овом обиму. Свака исправка наведена овде је искључена из свих бројчаних укупних вредности приказаних на овој страници.",
-      "correctionCount": "Примењене исправке: {{count}}",
-      "showDetails": "Прикажи исправке",
-      "hideDetails": "Сакриј исправке",
+      "title": "Istorija izvršenja ispravljena od strane operatera",
+      "summary": "Operater je poništio evidentirana izvršenja u ovom opsegu. Svaka ovde navedena ispravka isključena je iz svih brojčanih vrednosti prikazanih na ovoj stranici.",
+      "correctionCount": "Primenjene ispravke: {{count}}",
+      "showDetails": "Prikaži ispravke",
+      "hideDetails": "Sakrij ispravke",
       "scopeSequence": "{{exchange}} #{{sequence}}",
-      "correctionTime": "Исправљено у {{time}}",
-      "targetExecutionId": "Поништено извршење трговине",
-      "correctionId": "Запис о исправци",
+      "correctionTime": "Ispravljeno u {{time}}",
+      "targetExecutionId": "Poništeno izvršenje",
+      "correctionId": "Zapis ispravke",
       "reasons": {
-        "unwitnessed_phantom": "Не постоји испуна размене која служи као доказ за ову резервацију.",
-        "unwitnessed_legacy_lineage": "Заслеђени записи за које нема попуњавања размене не служи као доказ."
+        "unwitnessed_phantom": "Nijedno izvršenje naloga na berzi ne potvrđuje ovu evidentiranu stavku",
+        "unwitnessed_legacy_lineage": "Istorijski zapis bez izvršenja na berzi koje bi ga potvrdilo"
       }
     },
     "timeTravelNotice": "Istorijski prikaz: prikazuje se P&L poznat u trenutku {{asOf}}.",
@@ -105,34 +105,34 @@
       "valuationCurrency": "Valuta vrednovanja: {{currency}}"
     },
     "equity": {
-      "title": "Преклапање капитала",
-      "seriesLabel": "Капитал",
-      "seriesLabelSpotOnly": "Капитал (спот берза)",
-      "latest": "Најновије: {{value}} {{currency}}",
+      "title": "Sloj kapitala",
+      "seriesLabel": "Kapital",
+      "seriesLabelSpotOnly": "Kapital (samo spot berza)",
+      "latest": "Najnovija vrednost: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
-        "title": "Пад вредности",
-        "current": "Тренутни пад вредности",
-        "max": "Максимални пад вредности",
-        "definition": "Удео текућег максимума капитала.",
-        "flowsCaveat": "Није пад трговања прилагођен за токове.",
+        "title": "Pad vrednosti",
+        "current": "Trenutni pad vrednosti",
+        "max": "Maksimalni pad vrednosti",
+        "definition": "Pad kao udeo u dotadašnjem maksimumu kapitala.",
+        "flowsCaveat": "Ovo nije pad vrednosti trgovanja prilagođen tokovima sredstava.",
         "noValue": "—"
       },
       "honesty": {
-        "title": "Како ово тумачити",
-        "spotOnly": "Само спот берза — стања на другим берзама нису укључена.",
-        "flowsUnadjusted": "Спољне уплате и исплате нису искључене.",
-        "restatedFrom": "Ови подаци су прерачунати из {{from}} по завршном курсу сваког минута и нису изворно мерени у овој валути.",
-        "pricedOn": "Вредновано према {{plane}}.",
-        "conversionWithheld": "Број изостављених минута због недостатка доказаног завршног курса: {{count}}.",
-        "drawdownConverted": "Пад вредности се не приказује прерачунато, јер се текући максимум прати у валути изворног мерења."
+        "title": "Kako ovo tumačiti",
+        "spotOnly": "Samo spot berza — salda na drugim berzama nisu uključena.",
+        "flowsUnadjusted": "Spoljne uplate i isplate nisu uklonjene iz izračuna.",
+        "restatedFrom": "Ovi podaci su preračunati iz {{from}} po kursu zatvaranja za svaki minut; nisu izvorno mereni u ovoj valuti.",
+        "pricedOn": "Vrednovano prema {{plane}}.",
+        "conversionWithheld": "Broj izostavljenih minuta zbog nedostatka dokazanog kursa zatvaranja: {{count}}.",
+        "drawdownConverted": "Pad vrednosti se ne prikazuje u preračunatom obliku zato što se dotadašnji maksimum prati u valuti u kojoj je vrednost izvorno uzorkovana."
       },
       "cashPosition": {
-        "title": "Подела на готовину и позицију",
-        "position": "Вредност позиције",
-        "positionHint": "Тржишно вреднована вредност отворених позиција.",
-        "cash": "Готовина",
-        "cashHint": "Преостало салдирано стање готовине.",
+        "title": "Podela na gotovinu i poziciju",
+        "position": "Vrednost pozicije",
+        "positionHint": "Tržišna vrednost otvorenih pozicija.",
+        "cash": "Gotovina",
+        "cashHint": "Preostalo izmireno stanje gotovine.",
         "noValue": "—"
       }
     },
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: na čekanju",
     "slTpButton": "SL/TP",
     "trailButton": "Trailing",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Ispod ${{price}}",
-      "slShort": "Iznad ${{price}}",
-      "tpLong": "Iznad ${{price}}",
-      "tpShort": "Ispod ${{price}}"
+      "slLong": "Ispod {{price}}",
+      "slShort": "Iznad {{price}}",
+      "tpLong": "Iznad {{price}}",
+      "tpShort": "Ispod {{price}}"
     },
     "buttons": {
       "cancel": "Otkaži",

@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Modh: {{method}}. Meaitseáil fianaise údarásach athmhuintearais.",
       "driftDetected": "Modh: {{method}}. Fuair fianaise údarásach athmhuintearais neamhréir.",
-      "openDrift": "Modh: {{method}}. Tá eachtra srutha oscailte fágtha tar éis {{count}} neamhréireanna iomlána as a chéile.",
+      "openDrift": "Modh: {{method}}. Tá eachtra dialla fós oscailte. Líon na neamhréireachtaí iomlána as a chéile sa réiteach: {{count}}.",
       "unclassified": "Modh: {{method}}. Tá aicmiú oibreora ag teastáil sular féidir athmhuintearas a rith.",
       "notReconciled": "Modh: {{method}}. Níl an fhianaise athmhuintearais iomlán fós.",
       "stale": "Modh: {{method}}. Tá an fíorasc athmhuintearais ró-shean le bheith iontaofa.",

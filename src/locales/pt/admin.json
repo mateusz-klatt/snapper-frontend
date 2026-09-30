@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Gerenciamento de usuários",
-      "countLabel": "{{count}} usuários",
+      "countLabel": "Usuários: {{count}}",
       "showInactive": "Mostrar inativos",
       "hideInactive": "Ocultar inativos",
       "addUser": "Adicionar usuário",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Permissões de escopo",
-      "countLabel": "{{count}} permissões",
+      "countLabel": "Concessões de acesso: {{count}}",
       "createGrant": "Conceder escopo",
       "selectWalletPrompt": "Escolha uma carteira acima para ver suas permissões de escopo.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Credenciais da carteira",
-      "countLabel": "{{count}} credenciais",
+      "countLabel": "Credenciais de API/login: {{count}}",
       "addCredential": "Adicionar credencial",
       "selectWalletPrompt": "Escolha uma carteira acima para ver suas credenciais.",
       "columns": {

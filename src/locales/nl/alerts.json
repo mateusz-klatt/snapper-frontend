@@ -14,12 +14,29 @@
     "order_rejected": "Order geweigerd",
     "position_stop_loss_fired": "Stop-loss geactiveerd"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Dubbelzinnig antwoord van de beurs",
+      "unknown": "Onbekende reden"
+    },
+    "side": {
+      "buy": "KOOP",
+      "sell": "VERKOOP"
+    },
+    "status": {
+      "error": "Fout",
+      "healthy": "Gezond",
+      "warning": "Waarschuwing"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} meldde {{2}} gedurende {{3}} opeenvolgende heartbeats",
     "margin_warning": "{{0}} {{1}} {{2}} geblokkeerd door margin: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} uitgevoerd op {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} uitgevoerd op {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} uitgevoerd op {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} geweigerd: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} status onbekend: {{3}} — verificatie loopt",
+    "order_unknown": "{{0}} {{1}} {{2}} heeft een onbekende status: {{3}} — beursverificatie is nog in afwachting; neem niet aan dat de positie gesloten is",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} heeft een onbekende status: {{3}} — beursverificatie is nog in afwachting; neem niet aan dat de positie gesloten is",
     "position_stop_loss_fired": "Stop-loss geactiveerd voor {{0}} ({{1}})"
   },
   "detail": {

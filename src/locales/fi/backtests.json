@@ -85,7 +85,7 @@
       "autoPair": "Vertaa uusimpaan",
       "terminalGate": "vertailu käytettävissä, kun tämä ajo saavuttaa päätösstatuksen",
       "noSiblings": "ei muita ajoja tällä konfiguraatiolla",
-      "limitNotice": "Uusimmat ajot: {{count}} — käytä manuaalista paria vanhemmille ajoille",
+      "limitNotice": "Näytettävien uusimpien ajojen määrä: {{count}} — käytä manuaalista paria vanhemmille ajoille",
       "pickPlaceholder": "— valitse vertailtava ajo —",
       "showAllLabel": "Näytä kaikki ajot (ei vain sama konfiguraatio)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

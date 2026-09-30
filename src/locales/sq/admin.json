@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Menaxhimi i përdoruesve",
-      "countLabel": "{{count}} përdorues",
+      "countLabel": "Përdorues: {{count}}",
       "showInactive": "Shfaq joaktivët",
       "hideInactive": "Fshih joaktivët",
       "addUser": "Shto përdorues",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Fushëveprime aksesi",
-      "countLabel": "{{count}} fushëveprime",
+      "countLabel": "Autorizime aksesi: {{count}}",
       "createGrant": "Jep fushëveprim",
       "selectWalletPrompt": "Zgjidhni një portofol më sipër për të parë fushëveprimet e tij të aksesit.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Kredencialet e portofolit",
-      "countLabel": "{{count}} kredenciale",
+      "countLabel": "Kredenciale API/hyrjeje: {{count}}",
       "addCredential": "Shto kredencial",
       "selectWalletPrompt": "Zgjidhni një portofol më sipër për të parë kredencialet e tij.",
       "columns": {

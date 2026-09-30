@@ -14,12 +14,29 @@
     "order_rejected": "Ordre rejeté",
     "position_stop_loss_fired": "Stop loss déclenché"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Réponse ambiguë de la plateforme d’échange",
+      "unknown": "Raison inconnue"
+    },
+    "side": {
+      "buy": "ACHAT",
+      "sell": "VENTE"
+    },
+    "status": {
+      "error": "Erreur",
+      "healthy": "Sain",
+      "warning": "Avertissement"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} a signalé {{2}} pendant {{3}} heartbeats consécutifs",
     "margin_warning": "{{0}} {{1}} {{2}} bloqué par la marge : {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} exécuté sur {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} exécuté sur {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} exécuté sur {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rejeté : {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} état inconnu : {{3}} — vérification en cours",
+    "order_unknown": "{{0}} {{1}} {{2}} état inconnu : {{3}} — la vérification auprès de la plateforme d’échange est en attente ; ne supposez pas que la position est clôturée",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} état inconnu : {{3}} — la vérification auprès de la plateforme d’échange est en attente ; ne supposez pas que la position est clôturée",
     "position_stop_loss_fired": "Stop loss déclenché sur {{0}} ({{1}})"
   },
   "detail": {

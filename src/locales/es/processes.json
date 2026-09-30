@@ -47,7 +47,7 @@
     "badge": "plantilla",
     "mode": "Modo:",
     "parameters": "Parámetros:",
-    "paramCount": "{{count}} parámetro(s)",
+    "paramCount": "{{count}}",
     "noParams": "no se han definido parámetros"
   },
   "badges": {

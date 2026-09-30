@@ -85,7 +85,7 @@
       "autoPair": "Palyginti su naujausiu",
       "terminalGate": "palyginimas pasiekiamas, kai šis vykdymas pasiekia galutinę būseną",
       "noSiblings": "kitų vykdymų su šia konfigūracija nėra",
-      "limitNotice": "rodoma {{count}} naujausių — senesniems vykdymams naudokite rankinę porą",
+      "limitNotice": "Rodomų naujausių vykdymų skaičius: {{count}} — senesniems vykdymams naudokite rankiniu būdu pasirinktą porą",
       "pickPlaceholder": "— pasirinkite vykdymą palyginimui —",
       "showAllLabel": "Rodyti visus vykdymus (ne tik su ta pačia konfigūracija)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

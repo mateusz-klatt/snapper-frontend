@@ -85,7 +85,7 @@
       "autoPair": "Porovnať s najnovším",
       "terminalGate": "porovnanie je dostupné, keď tento beh dosiahne terminálny stav",
       "noSiblings": "žiadne ďalšie behy s touto konfiguráciou",
-      "limitNotice": "zobrazuje sa {{count}} najnovších — pre staršie behy použite manuálne párovanie",
+      "limitNotice": "Počet zobrazených najnovších behov: {{count}} — pre staršie behy použite manuálne vybranú dvojicu",
       "pickPlaceholder": "— vyberte beh na porovnanie —",
       "showAllLabel": "Zobraziť všetky behy (nielen s rovnakou konfiguráciou)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Naudotojų valdymas",
-      "countLabel": "{{count}} naudotojų",
+      "countLabel": "Naudotojų skaičius: {{count}}",
       "showInactive": "Rodyti neaktyvius",
       "hideInactive": "Slėpti neaktyvius",
       "addUser": "Pridėti naudotoją",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Prieigos sritys",
-      "countLabel": "{{count}} sričių",
+      "countLabel": "Suteiktų prieigos teisių skaičius: {{count}}",
       "createGrant": "Suteikti sritį",
       "selectWalletPrompt": "Pasirinkite piniginę aukščiau, kad peržiūrėtumėte jos prieigos sritis.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Piniginės kredencialai",
-      "countLabel": "{{count}} kredencialų",
+      "countLabel": "Kredencialų skaičius: {{count}}",
       "addCredential": "Pridėti kredencialą",
       "selectWalletPrompt": "Pasirinkite piniginę aukščiau, kad peržiūrėtumėte jos kredencialus.",
       "columns": {

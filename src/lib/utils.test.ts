@@ -1,5 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { formatBytes, formatNumber, getCookie } from './utils'
+import i18n from '../i18n/config'
 
 describe('getCookie', () => {
   beforeEach(() => {
@@ -36,13 +37,39 @@ describe('getCookie', () => {
 })
 
 describe('formatNumber', () => {
-  it('uses en-US grouping regardless of host locale', () => {
+  afterEach(async () => {
+    await i18n.changeLanguage('en')
+  })
+
+  it('uses US grouping for the English catalog', () => {
     expect(formatNumber(1234567)).toBe('1,234,567')
   })
   it('forwards Intl.NumberFormatOptions for currency-style formatting', () => {
     expect(formatNumber(1234.5, { minimumFractionDigits: 2, maximumFractionDigits: 2 })).toBe(
       '1,234.50'
     )
+  })
+
+  it('uses the active German language for decimal and grouping separators', async () => {
+    await i18n.changeLanguage('de')
+    expect(formatNumber(1234.5)).toBe('1.234,5')
+  })
+
+  it('maps a Portuguese catalog to the Brazilian formatting locale', async () => {
+    await i18n.changeLanguage('pt')
+    expect(formatNumber(1234.5)).toBe('1.234,5')
+  })
+
+  it('uses the configured default when the active language cannot be resolved', () => {
+    const previousLanguage = i18n.language
+
+    i18n.language = 'invalid_tag'
+
+    try {
+      expect(formatNumber(1234.5)).toBe('1,234.5')
+    } finally {
+      i18n.language = previousLanguage
+    }
   })
 })
 

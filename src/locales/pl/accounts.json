@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metoda: {{method}}. Miarydowne dowody uzgadniania są zgodne.",
       "driftDetected": "Metode: {{method}}. Miarydowne dowody uzgadniania wykazały niezgodność.",
-      "openDrift": "Metoda: {{method}}. Otwarty epizod odchylenia utrzymuje się po {{count}} kolejnych pełnych niezgodnościach.",
+      "openDrift": "Metoda: {{method}}. Otwarty epizod odchylenia nadal trwa. Liczba kolejnych pełnych niezgodności: {{count}}.",
       "unclassified": "Metoda: {{method}}. Klasyfikacja operatora jest wymagana przed uruchomieniem uzgadniania.",
       "notReconciled": "Metoda: {{method}}. Dowody uzgadniania nie są jeszcze kompletne.",
       "stale": "Metoda: {{method}}. Werdykt uzgadniania jest zbyt stary, aby można było mu zaufać.",

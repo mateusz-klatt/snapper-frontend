@@ -306,7 +306,7 @@ describe('CompareLauncher', () => {
 
     mockSameConfig(siblings)
     renderWithClient(<CompareLauncher currentRun={makeRun()} />)
-    expect(await screen.findByText(/showing 20 most recent/i)).toBeDefined()
+    expect(await screen.findByText(/Most recent runs shown: 20/i)).toBeDefined()
   })
 
   it('blocks self-compare client-side when picked id equals currentRun.public_id', async () => {

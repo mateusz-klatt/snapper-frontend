@@ -14,12 +14,29 @@
     "order_rejected": "Order abgelehnt",
     "position_stop_loss_fired": "Stop-Loss ausgelöst"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Mehrdeutige Antwort des Handelsplatzes",
+      "unknown": "Unbekannter Grund"
+    },
+    "side": {
+      "buy": "KAUF",
+      "sell": "VERKAUF"
+    },
+    "status": {
+      "error": "Fehler",
+      "healthy": "In Ordnung",
+      "warning": "Warnung"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} meldet {{2}} für {{3}} aufeinanderfolgende Heartbeats",
     "margin_warning": "{{0}} {{1}} {{2}} wegen Margin blockiert: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} ausgeführt auf {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} ausgeführt auf {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} ausgeführt auf {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} abgelehnt: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} Status unbekannt: {{3}} — Überprüfung läuft",
+    "order_unknown": "{{0}} {{1}} {{2}} hat einen unbekannten Status: {{3}} — die Verifizierung durch den Handelsplatz steht noch aus; gehen Sie nicht davon aus, dass die Position geschlossen ist",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hat einen unbekannten Status: {{3}} — die Verifizierung durch den Handelsplatz steht noch aus; gehen Sie nicht davon aus, dass die Position geschlossen ist",
     "position_stop_loss_fired": "Stop-Loss ausgelöst für {{0}} ({{1}})"
   },
   "detail": {

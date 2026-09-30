@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Benutzerverwaltung",
-      "countLabel": "{{count}} Benutzer",
+      "countLabel": "Benutzer: {{count}}",
       "showInactive": "Inaktive anzeigen",
       "hideInactive": "Inaktive ausblenden",
       "addUser": "Benutzer hinzufügen",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Scope-Grants",
-      "countLabel": "{{count}} Grants",
+      "countLabel": "Zugriffsberechtigungen: {{count}}",
       "createGrant": "Grant erstellen",
       "selectWalletPrompt": "Wählen Sie oben ein Wallet aus, um dessen Scope-Grants anzuzeigen.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Wallet-Anmeldedaten",
-      "countLabel": "{{count}} Anmeldedaten",
+      "countLabel": "Anmeldedaten: {{count}}",
       "addCredential": "Anmeldedaten hinzufügen",
       "selectWalletPrompt": "Wählen Sie oben ein Wallet aus, um dessen Anmeldedaten anzuzeigen.",
       "columns": {

@@ -75,10 +75,10 @@
         "net_non_finite": "净 P&L 不是有限值",
         "attribution_value_non_finite": "归因值不是有限值",
         "attribution_reconciliation_failed": "归因对账失败",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "无法精确表示已归因 P&L 值的总和",
+        "instrument_reconciliation_failed": "各品种的 P&L 之和与总体 P&L 不一致",
+        "instrument_sum_unrepresentable": "无法精确表示各品种数值的总和",
+        "late_pre_activation_execution": "延迟到达且时间戳早于激活时间的成交"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: 待生效",
     "slTpButton": "SL/TP",
     "trailButton": "追踪止损",
@@ -237,10 +237,10 @@
     "stopLoss": "止损",
     "takeProfit": "止盈",
     "placeholders": {
-      "slLong": "低于 ${{price}}",
-      "slShort": "高于 ${{price}}",
-      "tpLong": "高于 ${{price}}",
-      "tpShort": "低于 ${{price}}"
+      "slLong": "低于 {{price}}",
+      "slShort": "高于 {{price}}",
+      "tpLong": "高于 {{price}}",
+      "tpShort": "低于 {{price}}"
     },
     "buttons": {
       "cancel": "取消",

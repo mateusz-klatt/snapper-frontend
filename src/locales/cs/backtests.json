@@ -85,7 +85,7 @@
       "autoPair": "Porovnat s nejnovějším",
       "terminalGate": "porovnání je dostupné, jakmile tento běh dosáhne koncového stavu",
       "noSiblings": "žádné další běhy s touto konfigurací",
-      "limitNotice": "zobrazeno {{count}} nejnovějších — pro starší běhy použijte ruční párování",
+      "limitNotice": "Zobrazené nejnovější běhy: {{count}} — pro starší běhy použijte ručně vybranou dvojici",
       "pickPlaceholder": "— vyberte běh k porovnání —",
       "showAllLabel": "Zobrazit všechny běhy (nejen se stejnou konfigurací)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

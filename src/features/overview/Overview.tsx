@@ -10,14 +10,15 @@ import { useLatestSignals } from '../../hooks/queries/signals'
 import { ProcessResourceTable } from './ProcessResourceTable'
 import { useProcessMetricsStore } from '../../stores/processMetrics'
 import { formatDate, formatTime } from '../../lib/dateFormat'
-import type { AppLocale } from '../../i18n/types'
+import { formatNumber } from '../../lib/utils'
+import { formatQuoted, quoteCurrency } from '../positions/instrumentQuote'
 import type { Signal, Execution } from '../../types/entities'
 import type { ProcessSummaryData } from '../../types/api'
 import type { ProcessSummaryItem } from '../../types/ws.generated'
 
 const CURRENCY_FORMAT = { minimumFractionDigits: 2, maximumFractionDigits: 2 }
 
-const formatCurrency = (value: number): string => value.toLocaleString('en-US', CURRENCY_FORMAT)
+const formatCurrency = (value: number): string => formatNumber(value, CURRENCY_FORMAT)
 
 const pnlSign = (value: number): string => (value >= 0 ? '+' : '')
 
@@ -118,7 +119,7 @@ const PortfolioContent: React.FC<PortfolioContentProps> = ({
         <span className='text-sm font-medium'>{t('portfolio.pnlPercent')}</span>
         <span className={`font-mono text-right ${pnlColorClass(pnlPercent)}`}>
           {pnlSign(pnlPercent)}
-          {pnlPercent.toFixed(2)}%
+          {formatNumber(pnlPercent, CURRENCY_FORMAT)}%
         </span>
       </div>
       <div className='flex items-center justify-between'>
@@ -157,14 +158,14 @@ const SignalRow: React.FC<Readonly<{ signal: Signal; index: number }>> = ({ sign
           </span>
         )}
         {signal.price != null && (
-          <span className='font-mono text-xs text-alpine-900'>${signal.price.toFixed(2)}</span>
+          <span className='font-mono text-xs text-alpine-900'>
+            {formatQuoted(signal.price, quoteCurrency(signal.instrument))}
+          </span>
         )}
         <span className='text-xs text-muted-500'>{(signal.strength * 100).toFixed(0)}%</span>
       </div>
       <div className='shrink-0 text-xs text-muted-500'>
-        {signal.firedAt
-          ? formatTime(signal.firedAt, i18n.language as AppLocale)
-          : t('signals.noTime')}
+        {signal.firedAt ? formatTime(signal.firedAt, i18n.language) : t('signals.noTime')}
       </div>
     </div>
   )
@@ -181,12 +182,13 @@ const ExecutionRow: React.FC<Readonly<{ execution: Execution }>> = ({ execution 
         </StatusBadge>
         <span className='text-sm font-medium'>{execution.instrument}</span>
         <span className='font-mono text-xs text-alpine-900'>
-          {execution.size} @ ${execution.price}
+          {formatNumber(execution.size, { maximumFractionDigits: 20 })} @{' '}
+          {formatQuoted(execution.price, quoteCurrency(execution.instrument))}
         </span>
       </div>
       <div className='shrink-0 text-xs text-muted-500'>
         {execution.executedAt
-          ? formatTime(execution.executedAt, i18n.language as AppLocale)
+          ? formatTime(execution.executedAt, i18n.language)
           : t('executions.noTime')}
       </div>
     </div>
@@ -307,7 +309,7 @@ export const Overview: React.FC = () => {
           label={
             asOf
               ? t('metrics.executionsOn', {
-                  date: formatDate(referenceDate, i18n.language as AppLocale),
+                  date: formatDate(referenceDate, i18n.language),
                 })
               : t('metrics.todaysExecutions')
           }

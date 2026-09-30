@@ -85,7 +85,7 @@
       "autoPair": "가장 최근 실행과 비교",
       "terminalGate": "이 실행이 종료 상태에 도달하면 비교할 수 있습니다",
       "noSiblings": "동일 설정의 다른 실행이 없습니다",
-      "limitNotice": "최근 {{count}}개 표시 중 — 이전 실행은 수동 페어를 사용하세요",
+      "limitNotice": "표시 중인 최근 실행 수: {{count}} — 이전 실행에는 수동 페어를 사용하세요",
       "pickPlaceholder": "— 비교할 실행 선택 —",
       "showAllLabel": "모든 실행 표시(동일 설정만 아님)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

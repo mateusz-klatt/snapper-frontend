@@ -75,10 +75,10 @@
         "net_non_finite": "Netto-P&L ist nicht endlich",
         "attribution_value_non_finite": "Attributionswert ist nicht endlich",
         "attribution_reconciliation_failed": "Abgleich der Attribution fehlgeschlagen",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Die Summe der zugeordneten P&L-Werte lässt sich numerisch nicht exakt darstellen",
+        "instrument_reconciliation_failed": "Die P&L-Summen der Instrumente stimmen nicht mit dem Gesamt-P&L überein",
+        "instrument_sum_unrepresentable": "Die Summe der Instrumentwerte lässt sich numerisch nicht exakt darstellen",
+        "late_pre_activation_execution": "Verspätet eingegangene Handelsausführung mit Zeitstempel vor der Aktivierung"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: ausstehend",
     "slTpButton": "SL/TP",
     "trailButton": "Trailing",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Unter ${{price}}",
-      "slShort": "Über ${{price}}",
-      "tpLong": "Über ${{price}}",
-      "tpShort": "Unter ${{price}}"
+      "slLong": "Unter {{price}}",
+      "slShort": "Über {{price}}",
+      "tpLong": "Über {{price}}",
+      "tpShort": "Unter {{price}}"
     },
     "buttons": {
       "cancel": "Abbrechen",

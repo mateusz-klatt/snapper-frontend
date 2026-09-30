@@ -77,7 +77,7 @@ const badgeCases: ReadonlyArray<BadgeCase> = [
     displayStatus: 'openDrift',
     label: 'Drift detected · open (4)',
     tooltip:
-      'Method: Spot execution replay. An open drift episode remains after 4 consecutive full mismatches.',
+      'Method: Spot execution replay. An open drift episode remains. Consecutive full mismatches: 4.',
     toneClass: 'loss',
   },
   {

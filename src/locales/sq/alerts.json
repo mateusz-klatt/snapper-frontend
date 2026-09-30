@@ -14,12 +14,29 @@
     "order_rejected": "Porosia u refuzua",
     "position_stop_loss_fired": "Stop-loss u aktivizua"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Përgjigje e paqartë nga bursa",
+      "unknown": "Arsye e panjohur"
+    },
+    "side": {
+      "buy": "BLERJE",
+      "sell": "SHITJE"
+    },
+    "status": {
+      "error": "Gabim",
+      "healthy": "Në rregull",
+      "warning": "Paralajmërim"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} raportoi {{2}} për {{3}} heartbeat-e radhazi",
     "margin_warning": "{{0}} {{1}} {{2}} u bllokua nga marzhi: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} u ekzekutua në {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} u ekzekutua në {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} u ekzekutua në {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} u refuzua: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} gjendje e panjohur: {{3}} — verifikimi në proces",
+    "order_unknown": "{{0}} {{1}} {{2}} — gjendje e panjohur: {{3}} — verifikimi nga bursa është në pritje; mos supozoni se pozicioni është mbyllur",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — gjendje e panjohur: {{3}} — verifikimi nga bursa është në pritje; mos supozoni se pozicioni është mbyllur",
     "position_stop_loss_fired": "Stop-loss u aktivizua për {{0}} ({{1}})"
   },
   "detail": {

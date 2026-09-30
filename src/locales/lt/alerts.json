@@ -14,12 +14,29 @@
     "order_rejected": "Pavedimas atmestas",
     "position_stop_loss_fired": "Suveikė stop-loss"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Dviprasmiškas biržos atsakas",
+      "unknown": "Nežinoma priežastis"
+    },
+    "side": {
+      "buy": "PIRKIMAS",
+      "sell": "PARDAVIMAS"
+    },
+    "status": {
+      "error": "Klaida",
+      "healthy": "Sveika",
+      "warning": "Įspėjimas"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} pranešė {{2}} per {{3}} iš eilės einančius heartbeatus",
     "margin_warning": "{{0}} {{1}} {{2}} užblokuota dėl maržos: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} įvykdyta biržoje {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} įvykdyta biržoje {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} įvykdyta biržoje {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} atmesta: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} būsena nežinoma: {{3}} — vyksta patikra",
+    "order_unknown": "{{0}} {{1}} {{2}} būsena nežinoma: {{3}} — vis dar laukiama biržos patikros; nemanykite, kad pozicija uždaryta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} būsena nežinoma: {{3}} — vis dar laukiama biržos patikros; nemanykite, kad pozicija uždaryta",
     "position_stop_loss_fired": "Stop-loss suveikė {{0}} ({{1}})"
   },
   "detail": {

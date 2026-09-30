@@ -47,7 +47,7 @@
     "badge": "sniðmát",
     "mode": "Hamur:",
     "parameters": "Færibreytur:",
-    "paramCount": "{{count}} færibreyta/-ur",
+    "paramCount": "{{count}}",
     "noParams": "engar færibreytur stilltar"
   },
   "badges": {

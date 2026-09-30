@@ -75,10 +75,10 @@
         "net_non_finite": "P&L สุทธิไม่ใช่จำนวนจำกัด",
         "attribution_value_non_finite": "ค่าที่ระบุที่มาไม่ใช่จำนวนจำกัด",
         "attribution_reconciliation_failed": "กระทบยอดการระบุที่มาไม่สำเร็จ",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "ไม่สามารถแทนผลรวมของค่า P&L ที่ระบุแหล่งที่มาได้อย่างแม่นยำ",
+        "instrument_reconciliation_failed": "ผลรวม P&L แยกตามตราสารไม่ตรงกับ P&L รวม",
+        "instrument_sum_unrepresentable": "ไม่สามารถแทนผลรวมของค่าตามตราสารได้อย่างแม่นยำ",
+        "late_pre_activation_execution": "การดำเนินการซื้อขายที่มาถึงล่าช้าโดยมีเวลาประทับก่อนเปิดใช้งาน"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: รอดำเนินการ",
     "slTpButton": "SL/TP",
     "trailButton": "เลื่อนตามราคา",
@@ -237,10 +237,10 @@
     "stopLoss": "ตัดขาดทุน",
     "takeProfit": "ทำกำไร",
     "placeholders": {
-      "slLong": "ต่ำกว่า ${{price}}",
-      "slShort": "สูงกว่า ${{price}}",
-      "tpLong": "สูงกว่า ${{price}}",
-      "tpShort": "ต่ำกว่า ${{price}}"
+      "slLong": "ต่ำกว่า {{price}}",
+      "slShort": "สูงกว่า {{price}}",
+      "tpLong": "สูงกว่า {{price}}",
+      "tpShort": "ต่ำกว่า {{price}}"
     },
     "buttons": {
       "cancel": "ยกเลิก",

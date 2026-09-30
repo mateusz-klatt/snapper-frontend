@@ -47,7 +47,7 @@
     "badge": "mẫu",
     "mode": "Chế độ:",
     "parameters": "Tham số:",
-    "paramCount": "{{count}} tham số",
+    "paramCount": "{{count}}",
     "noParams": "chưa đặt tham số"
   },
   "badges": {

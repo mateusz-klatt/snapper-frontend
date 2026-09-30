@@ -47,7 +47,7 @@
     "badge": "템플릿",
     "mode": "모드:",
     "parameters": "파라미터:",
-    "paramCount": "{{count}}개 파라미터",
+    "paramCount": "{{count}}",
     "noParams": "설정된 파라미터 없음"
   },
   "badges": {

@@ -14,12 +14,29 @@
     "order_rejected": "Ordin respins",
     "position_stop_loss_fired": "Stop-loss declanșat"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Răspuns ambiguu al bursei",
+      "unknown": "Motiv necunoscut"
+    },
+    "side": {
+      "buy": "CUMPĂRARE",
+      "sell": "VÂNZARE"
+    },
+    "status": {
+      "error": "Eroare",
+      "healthy": "Funcțional",
+      "warning": "Avertisment"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} a raportat {{2}} timp de {{3}} heartbeaturi consecutive",
     "margin_warning": "{{0}} {{1}} {{2}} blocat de marjă: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} executat pe {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} executat pe {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} executat pe {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} respins: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} stare necunoscută: {{3}} — verificare în curs",
+    "order_unknown": "{{0}} {{1}} {{2}} — stare necunoscută: {{3}} — verificarea bursei este în așteptare; nu presupuneți că poziția este închisă",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stare necunoscută: {{3}} — verificarea bursei este în așteptare; nu presupuneți că poziția este închisă",
     "position_stop_loss_fired": "Stop-loss declanșat pe {{0}} ({{1}})"
   },
   "detail": {

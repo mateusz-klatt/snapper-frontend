@@ -75,10 +75,10 @@
         "net_non_finite": "P&L bersih bukan angka berhingga",
         "attribution_value_non_finite": "Nilai atribusi bukan angka berhingga",
         "attribution_reconciliation_failed": "Rekonsiliasi atribusi gagal",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Jumlah nilai P&L yang diatribusikan tidak dapat direpresentasikan secara tepat",
+        "instrument_reconciliation_failed": "Rekonsiliasi total P&L instrumen gagal",
+        "instrument_sum_unrepresentable": "Jumlah nilai instrumen tidak dapat direpresentasikan secara tepat",
+        "late_pre_activation_execution": "Eksekusi perdagangan yang terlambat tiba dengan stempel waktu sebelum aktivasi"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: tertunda",
     "slTpButton": "SL/TP",
     "trailButton": "Trailing",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Di bawah ${{price}}",
-      "slShort": "Di atas ${{price}}",
-      "tpLong": "Di atas ${{price}}",
-      "tpShort": "Di bawah ${{price}}"
+      "slLong": "Di bawah {{price}}",
+      "slShort": "Di atas {{price}}",
+      "tpLong": "Di atas {{price}}",
+      "tpShort": "Di bawah {{price}}"
     },
     "buttons": {
       "cancel": "Batal",

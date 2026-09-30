@@ -75,10 +75,10 @@
         "net_non_finite": "Neto P&L nije konačan broj",
         "attribution_value_non_finite": "Vrijednost atribucije nije konačan broj",
         "attribution_reconciliation_failed": "Usklađivanje atribucije nije uspjelo",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Zbroj pripisanih vrijednosti P&L-a nije moguće prikazati u egzaktnoj numeričkoj aritmetici",
+        "instrument_reconciliation_failed": "Usklađivanje zbrojeva P&L-a po instrumentima s ukupnim P&L-om nije uspjelo",
+        "instrument_sum_unrepresentable": "Zbroj vrijednosti po instrumentima nije moguće prikazati u egzaktnoj numeričkoj aritmetici",
+        "late_pre_activation_execution": "Zakašnjelo izvršenje naloga s vremenskom oznakom prije aktivacije"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: na čekanju",
     "slTpButton": "SL/TP",
     "trailButton": "Trailing",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Ispod ${{price}}",
-      "slShort": "Iznad ${{price}}",
-      "tpLong": "Iznad ${{price}}",
-      "tpShort": "Ispod ${{price}}"
+      "slLong": "Ispod {{price}}",
+      "slShort": "Iznad {{price}}",
+      "tpLong": "Iznad {{price}}",
+      "tpShort": "Ispod {{price}}"
     },
     "buttons": {
       "cancel": "Odustani",

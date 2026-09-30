@@ -85,7 +85,7 @@
       "autoPair": "Compare with most recent",
       "terminalGate": "compare available once this run reaches a terminal status",
       "noSiblings": "no other runs with this config",
-      "limitNotice": "showing {{count}} most recent — use manual pair for older runs",
+      "limitNotice": "Most recent runs shown: {{count}} — use a manual pair for older runs",
       "pickPlaceholder": "— pick a run to compare —",
       "showAllLabel": "Show all runs (not just same config)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

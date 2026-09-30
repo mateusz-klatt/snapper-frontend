@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metode: {{method}}. Autitatīvi saskaņošanas pierādījumi sakrita.",
       "driftDetected": "Metode: {{method}}. Autitatīvi saskaņošanas pierādījumi atklāja neatbilstību.",
-      "openDrift": "Metode: {{method}}. Pēc {{count}} secīgām pilnīgām neatbilstībām joprojām ir atvērta novirzes epizode.",
+      "openDrift": "Metode: {{method}}. Atvērtā novirzes epizode joprojām pastāv. Secīgu pilnīgu neatbilstību skaits: {{count}}.",
       "unclassified": "Metode: {{method}}. Pirms saskaņošanas palaišanas nepieciešama operatora klasifikācija.",
       "notReconciled": "Metode: {{method}}. Saskaņošanas pierādījumi vēl nav pilnīgi.",
       "stale": "Metode: {{method}}. Saskaņošanas spriedums ir pārāk vecs, lai tam uzticētos.",

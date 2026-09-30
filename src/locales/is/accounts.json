@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Aðferð: {{method}}. Áreiðanleg afstemmingargögn stemmdu.",
       "driftDetected": "Aðferð: {{method}}. Áreiðanleg afstemmingargögn sýndu misræmi.",
-      "openDrift": "Aðferð: {{method}}. Opið fráviksatvik er enn til staðar eftir {{count}} samfelld algjör misræmi.",
+      "openDrift": "Aðferð: {{method}}. Opið fráviksatvik er enn til staðar. Fjöldi samfelldra algjörra misræma: {{count}}.",
       "unclassified": "Aðferð: {{method}}. Rekstraraðili verður að flokka áður en afstemming getur farið fram.",
       "notReconciled": "Aðferð: {{method}}. Afstemmingargögn eru ekki enn fullkomin.",
       "stale": "Aðferð: {{method}}. Niðurstaða afstemmingar er of gömul til að vera treyst.",

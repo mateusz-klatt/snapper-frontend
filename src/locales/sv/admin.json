@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Användarhantering",
-      "countLabel": "{{count}} användare",
+      "countLabel": "Användare: {{count}}",
       "showInactive": "Visa inaktiva",
       "hideInactive": "Dölj inaktiva",
       "addUser": "Lägg till användare",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Behörighetsomfång",
-      "countLabel": "{{count}} omfång",
+      "countLabel": "Tilldelade behörigheter: {{count}}",
       "createGrant": "Bevilja omfång",
       "selectWalletPrompt": "Välj en plånbok ovan för att visa dess behörighetsomfång.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Plånboksreferenser",
-      "countLabel": "{{count}} referenser",
+      "countLabel": "Autentiseringsuppgifter: {{count}}",
       "addCredential": "Lägg till referens",
       "selectWalletPrompt": "Välj en plånbok ovan för att visa dess referenser.",
       "columns": {

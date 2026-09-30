@@ -47,7 +47,7 @@
     "badge": "template",
     "mode": "Mode:",
     "parameters": "Parameters:",
-    "paramCount": "{{count}} parameter(s)",
+    "paramCount": "{{count}}",
     "noParams": "no parameters set"
   },
   "badges": {

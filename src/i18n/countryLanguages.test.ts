@@ -4,8 +4,45 @@ import {
   COUNTRY_TO_INTL_LOCALE,
   getCatalogLanguage,
   getIntlLocale,
+  resolveLanguageTag,
 } from './countryLanguages'
 import { SUPPORTED_LOCALES } from './types'
+
+describe('resolveLanguageTag', () => {
+  it.each(SUPPORTED_LOCALES)('round-trips the declared locale for %s', code => {
+    expect(resolveLanguageTag(getIntlLocale(code))).toBe(code)
+    expect(resolveLanguageTag(getCatalogLanguage(code))).toBe(code)
+  })
+
+  it.each([
+    ['zh', 'cn'],
+    ['zh-Hant', 'hk'],
+    ['zh-Hant-CN', 'hk'],
+    ['zh-Hans-HK', 'cn'],
+    ['zh-TW', 'hk'],
+    ['zh-MO', 'hk'],
+    ['zh-SG', 'cn'],
+    ['nb-NO', 'no'],
+    ['no', 'no'],
+    ['sr-Cyrl-RS', 'rs'],
+    ['en-DE', 'us'],
+    ['en-u-rg-plzzzz', 'us'],
+    ['iw-IL', 'il'],
+    ['in-ID', 'id'],
+    ['tl-PH', 'ph'],
+    ['en_US', 'us'],
+    ['zh_Hant_HK', 'hk'],
+  ])('resolves %s without replacing its language', (tag, expected) => {
+    expect(resolveLanguageTag(tag)).toBe(expected)
+  })
+
+  it.each(['', 'invalid_tag', 'en__US', 'nn-NO', 'zz-PL'])(
+    'rejects unsupported or malformed %s',
+    tag => {
+      expect(resolveLanguageTag(tag)).toBeNull()
+    }
+  )
+})
 
 const NATIVE_LANGUAGE_COUNTRIES = [
   'ie',

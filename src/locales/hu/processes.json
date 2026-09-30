@@ -47,7 +47,7 @@
     "badge": "sablon",
     "mode": "Mód:",
     "parameters": "Paraméterek:",
-    "paramCount": "{{count}} paraméter",
+    "paramCount": "{{count}}",
     "noParams": "nincsenek beállított paraméterek"
   },
   "badges": {

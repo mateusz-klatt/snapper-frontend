@@ -34,7 +34,7 @@
     "unrealizedPnl": "Hindi pa na-realize na P&L",
     "pnlPercent": "P&L %",
     "positions": "Mga position",
-    "instrumentsCount": "{{count}} instrument",
+    "instrumentsCount": "Mga instrumento: {{count}}",
     "empty": "Walang positions data available",
     "incompleteValuation": "Hindi kumpleto ang data — walang magagamit na presyong batayan o presyo ng pagpasok ang ilang posisyon; mga nalalamang bahagi lamang ang kasama sa mga kabuuan"
   },

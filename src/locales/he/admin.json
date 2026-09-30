@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "ניהול משתמשים",
-      "countLabel": "{{count}} משתמשים",
+      "countLabel": "משתמשים: {{count}}",
       "showInactive": "הצג לא פעילים",
       "hideInactive": "הסתר לא פעילים",
       "addUser": "הוסף משתמש",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "טווחי הרשאות",
-      "countLabel": "{{count}} הענקות",
+      "countLabel": "הרשאות גישה: {{count}}",
       "createGrant": "הענק טווח",
       "selectWalletPrompt": "בחר ארנק למעלה כדי להציג את טווחי ההרשאות שלו.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "אישורי כניסה של ארנק",
-      "countLabel": "{{count}} אישורי כניסה",
+      "countLabel": "פרטי גישה: {{count}}",
       "addCredential": "הוסף אישור כניסה",
       "selectWalletPrompt": "בחר ארנק למעלה כדי להציג את אישורי הכניסה שלו.",
       "columns": {

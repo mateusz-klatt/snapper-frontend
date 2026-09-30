@@ -14,12 +14,29 @@
     "order_rejected": "Pöntun hafnað",
     "position_stop_loss_fired": "Stop-loss virkjað"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Óljóst svar kauphallar",
+      "unknown": "Óþekkt ástæða"
+    },
+    "side": {
+      "buy": "KAUP",
+      "sell": "SALA"
+    },
+    "status": {
+      "error": "Villa",
+      "healthy": "Heilbrigt",
+      "warning": "Viðvörun"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} tilkynnti {{2}} í {{3}} heartbeat-merkjum í röð",
     "margin_warning": "{{0}} {{1}} {{2}} lokað vegna tryggingarfjár: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} framkvæmt á {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} framkvæmt á {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} framkvæmt á {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} hafnað: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} staða óþekkt: {{3}} — staðfesting í gangi",
+    "order_unknown": "{{0}} {{1}} {{2}} staða óþekkt: {{3}} — staðfesting hjá kauphöll er enn í bið, ekki gera ráð fyrir að stöðunni hafi verið lokað",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} staða óþekkt: {{3}} — staðfesting hjá kauphöll er enn í bið, ekki gera ráð fyrir að stöðunni hafi verið lokað",
     "position_stop_loss_fired": "Stop-loss virkjað fyrir {{0}} ({{1}})"
   },
   "detail": {

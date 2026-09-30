@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metodo: {{method}}. Le prove di riconciliazione autorevoli corrispondono.",
       "driftDetected": "Metodo: {{method}}. Le prove di riconciliazione autorevoli hanno rilevato una discrepanza.",
-      "openDrift": "Metodo: {{method}}. Rimane un episodio di deriva aperto dopo {{count}} discrepanze totali consecutive.",
+      "openDrift": "Metodo: {{method}}. Rimane un episodio di deriva aperto. Numero di discrepanze totali consecutive: {{count}}.",
       "unclassified": "Metodo: {{method}}. È richiesta la classificazione dell'operatore prima di eseguire la riconciliazione.",
       "notReconciled": "Metodo: {{method}}. Le prove di riconciliazione non sono ancora complete.",
       "stale": "Metodo: {{method}}. Il verdetto di riconciliazione è troppo vecchio per essere affidabile.",

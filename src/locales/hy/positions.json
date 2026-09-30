@@ -75,10 +75,10 @@
         "net_non_finite": "Զուտ P&L-ը վերջավոր չէ",
         "attribution_value_non_finite": "Վերագրման արժեքը վերջավոր չէ",
         "attribution_reconciliation_failed": "Վերագրման համաձայնեցումը ձախողվել է",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Վերագրված P&L արժեքների գումարը հնարավոր չէ ճշգրիտ ներկայացնել",
+        "instrument_reconciliation_failed": "Գործիքների P&L հանրագումարների համաձայնեցումը ձախողվել է",
+        "instrument_sum_unrepresentable": "Գործիքների արժեքների գումարը հնարավոր չէ ճշգրիտ ներկայացնել",
+        "late_pre_activation_execution": "Ակտիվացումից առաջ ժամանակագրված, ուշ հասած առևտրային կատարում"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: սպասում է",
     "slTpButton": "SL/TP",
     "trailButton": "Հետևող ստոպ",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "${{price}}-ից ցածր",
-      "slShort": "${{price}}-ից բարձր",
-      "tpLong": "${{price}}-ից բարձր",
-      "tpShort": "${{price}}-ից ցածր"
+      "slLong": "{{price}}-ից ցածր",
+      "slShort": "{{price}}-ից բարձր",
+      "tpLong": "{{price}}-ից բարձր",
+      "tpShort": "{{price}}-ից ցածր"
     },
     "buttons": {
       "cancel": "Չեղարկել",

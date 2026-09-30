@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Njia: {{method}}. Uthibitisho rasmi wa upatanisho ulingana.",
       "driftDetected": "Njia: {{method}}. Uthibitisho rasmi wa upatanisho ulipata hitilafu ya kutolingana.",
-      "openDrift": "Njia: {{method}}. Tukio la mchepuko ulio wazi linasalia baada ya {{count}} kamili za kutolingana zinazofuatana.",
+      "openDrift": "Njia: {{method}}. Tukio la mchepuko lililo wazi bado linaendelea. Idadi ya ulinganisho kamili wa upatanisho usiolingana mfululizo: {{count}}.",
       "unclassified": "Njia: {{method}}. Uainishaji wa opereta unahitajika kabla ya upatanisho kuanzishwa.",
       "notReconciled": "Njia: {{method}}. Uthibitisho wa upatanisho bado haujakamilika.",
       "stale": "Njia: {{method}}. Uamuzi wa upatanisho ni wa zamani mno kuweza kuaminika.",

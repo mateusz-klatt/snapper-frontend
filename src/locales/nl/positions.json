@@ -75,10 +75,10 @@
         "net_non_finite": "Netto P&L is niet-eindig",
         "attribution_value_non_finite": "Attributiewaarde is niet-eindig",
         "attribution_reconciliation_failed": "Afstemming van attributie mislukt",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "De som van toegewezen P&L-waarden kan niet exact numeriek worden weergegeven",
+        "instrument_reconciliation_failed": "Afstemming van de P&L per instrument is mislukt",
+        "instrument_sum_unrepresentable": "De instrumentsom kan niet exact numeriek worden weergegeven",
+        "late_pre_activation_execution": "Laat ontvangen orderexecutie met een tijdstempel van vóór activering"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: in afwachting",
     "slTpButton": "SL/TP",
     "trailButton": "Trailing stop",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Onder ${{price}}",
-      "slShort": "Boven ${{price}}",
-      "tpLong": "Boven ${{price}}",
-      "tpShort": "Onder ${{price}}"
+      "slLong": "Onder {{price}}",
+      "slShort": "Boven {{price}}",
+      "tpLong": "Boven {{price}}",
+      "tpShort": "Onder {{price}}"
     },
     "buttons": {
       "cancel": "Annuleren",

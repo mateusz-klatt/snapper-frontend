@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Método: {{method}}. La evidencia de conciliación autorizada coincidió.",
       "driftDetected": "Método: {{method}}. La evidencia de conciliación autorizada encontró una discrepancia.",
-      "openDrift": "Método: {{method}}. Queda un episodio de desviación abierto después de {{count}} discrepancias totales consecutivas.",
+      "openDrift": "Método: {{method}}. Sigue abierto un episodio de desviación. Discrepancias completas consecutivas en la conciliación: {{count}}.",
       "unclassified": "Método: {{method}}. Se requiere la clasificación del operador antes de poder ejecutar la conciliación.",
       "notReconciled": "Método: {{method}}. La evidencia de conciliación aún no está completa.",
       "stale": "Método: {{method}}. El veredicto de conciliación es demasiado antiguo para ser confiable.",

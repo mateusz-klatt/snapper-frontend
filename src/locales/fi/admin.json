@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Käyttöoikeusalueet",
-      "countLabel": "Käyttöoikeusalueet: {{count}}",
+      "countLabel": "Käyttöoikeudet: {{count}}",
       "createGrant": "Myönnä alue",
       "selectWalletPrompt": "Valitse yllä lompakko nähdäksesi sen käyttöoikeusalueet.",
       "columns": {

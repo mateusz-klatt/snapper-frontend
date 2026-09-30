@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, waitFor, fireEvent, act } from '@testing-library/react'
+import { render, screen, waitFor, fireEvent, act, within } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Processes } from './Processes'
@@ -2287,7 +2287,10 @@ describe('Processes', () => {
         'Editing template config affects all wallets on this exchange after restart. Templates are config-only — start the per-wallet instance below to run an executor.'
       )
     ).toBeTruthy()
-    expect(screen.getByText('1 parameter(s)')).toBeTruthy()
+    const template = screen.getByTestId('executor-template-executor_kraken')
+
+    expect(within(template).getByText('Parameters:')).toBeTruthy()
+    expect(within(template).getByText('1')).toBeTruthy()
   })
   it('reflects a pending local stop on the matching wallet instance', async () => {
     const items = [

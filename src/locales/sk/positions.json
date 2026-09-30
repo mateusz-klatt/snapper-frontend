@@ -75,10 +75,10 @@
         "net_non_finite": "Čistý P&L nie je konečný",
         "attribution_value_non_finite": "Hodnota priradenia nie je konečná",
         "attribution_reconciliation_failed": "Odsúhlasenie priradenia zlyhalo",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Súčet priradených hodnôt P&L nemožno numericky presne reprezentovať",
+        "instrument_reconciliation_failed": "Odsúhlasenie P&L podľa inštrumentov zlyhalo",
+        "instrument_sum_unrepresentable": "Súčet hodnôt za jednotlivé inštrumenty nemožno numericky presne reprezentovať",
+        "late_pre_activation_execution": "Oneskorene prijaté plnenie príkazu s časovou pečiatkou spred aktivácie"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: čaká",
     "slTpButton": "SL/TP",
     "trailButton": "Posuvný stop",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Pod ${{price}}",
-      "slShort": "Nad ${{price}}",
-      "tpLong": "Nad ${{price}}",
-      "tpShort": "Pod ${{price}}"
+      "slLong": "Pod {{price}}",
+      "slShort": "Nad {{price}}",
+      "tpLong": "Nad {{price}}",
+      "tpShort": "Pod {{price}}"
     },
     "buttons": {
       "cancel": "Zrušiť",

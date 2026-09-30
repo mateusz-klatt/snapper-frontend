@@ -85,7 +85,7 @@
       "autoPair": "Comparar com o mais recente",
       "terminalGate": "comparação disponível quando esta execução atingir um status terminal",
       "noSiblings": "nenhuma outra execução com esta configuração",
-      "limitNotice": "mostrando {{count}} mais recentes — use pareamento manual para execuções mais antigas",
+      "limitNotice": "Quantidade de rodadas mais recentes exibidas: {{count}} — use um par selecionado manualmente para rodadas mais antigas",
       "pickPlaceholder": "— escolha uma execução para comparar —",
       "showAllLabel": "Mostrar todas as execuções (não apenas a mesma configuração)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

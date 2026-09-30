@@ -34,7 +34,7 @@
     "unrealizedPnl": "Niet-gerealiseerde P&L",
     "pnlPercent": "P&L %",
     "positions": "Posities",
-    "instrumentsCount": "{{count}} instrumenten",
+    "instrumentsCount": "Instrumenten: {{count}}",
     "empty": "Geen positiedata beschikbaar",
     "incompleteValuation": "Gegevens onvolledig — sommige posities missen een bruikbare markprijs of instapprijs; totalen tellen alleen bekende componenten"
   },

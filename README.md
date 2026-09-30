@@ -129,7 +129,7 @@ Targets **WCAG 2.1 AA** for the shipped UI flows (login, navigation, market data
 
 ### Internationalisation
 
-The UI uses i18next catalogs with 45 picker locales. Locale choice is stored in `localStorage` as `snapper-locale`, falls back from the browser region to the default locale, and updates `<html lang>` / `<html dir>` for RTL languages. Date, number, and financial formatting use the selected locale. The financial color convention defaults from locale (`rising-red` for CN/HK/JP/KR, Western green-up elsewhere) and can be overridden in Settings.
+The UI uses i18next catalogs with 45 picker locales. Locale choice is stored in `localStorage` as `snapper-locale`, falls back through supported browser language and script preferences to the default locale, and updates `<html lang>` / `<html dir>` for RTL languages. Date, number, and financial formatting use the selected locale. The financial color convention defaults from locale (`rising-red` for CN/HK/JP/KR, Western green-up elsewhere) and can be overridden in Settings.
 
 ### Privacy + storage
 

@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Méthode : {{method}}. Les preuves de rapprochement faisant autorité correspondent.",
       "driftDetected": "Méthode : {{method}}. Les preuves de rapprochement faisant autorité ont révélé une incohérence.",
-      "openDrift": "Méthode : {{method}}. Un épisode de dérive ouvert subsiste après {{count}} incohérences totales consécutives.",
+      "openDrift": "Méthode : {{method}}. Un épisode de dérive reste ouvert. Nombre d’incohérences complètes de rapprochement consécutives : {{count}}.",
       "unclassified": "Méthode : {{method}}. Une classification par l'opérateur est requise avant de pouvoir exécuter le rapprochement.",
       "notReconciled": "Méthode : {{method}}. Les preuves de rapprochement ne sont pas encore complètes.",
       "stale": "Méthode : {{method}}. Le verdict de rapprochement est trop ancien pour être fiable.",

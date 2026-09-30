@@ -47,7 +47,7 @@
     "badge": "şablon",
     "mode": "Mod:",
     "parameters": "Parametreler:",
-    "paramCount": "{{count}} parametre",
+    "paramCount": "{{count}}",
     "noParams": "parametre ayarlanmadı"
   },
   "badges": {

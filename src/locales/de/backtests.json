@@ -85,7 +85,7 @@
       "autoPair": "Mit neuestem vergleichen",
       "terminalGate": "Vergleich verfügbar, sobald dieser Lauf einen Endstatus erreicht",
       "noSiblings": "keine anderen Läufe mit dieser Konfiguration",
-      "limitNotice": "zeige die {{count}} neuesten — manuelle Paarung für ältere verwenden",
+      "limitNotice": "Angezeigte neueste Läufe: {{count}} — verwenden Sie für ältere Läufe ein manuell ausgewähltes Paar",
       "pickPlaceholder": "— Lauf zum Vergleich wählen —",
       "showAllLabel": "Alle Läufe anzeigen (nicht nur gleiche Konfiguration)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

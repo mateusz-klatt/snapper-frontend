@@ -47,7 +47,7 @@
     "badge": "قالب",
     "mode": "الوضع:",
     "parameters": "المعلمات:",
-    "paramCount": "{{count}} معلمة",
+    "paramCount": "{{count}}",
     "noParams": "لم يتم تعيين معلمات"
   },
   "badges": {

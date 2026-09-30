@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "User Management",
-      "countLabel": "{{count}} users",
+      "countLabel": "Users: {{count}}",
       "showInactive": "Show inactive",
       "hideInactive": "Hide inactive",
       "addUser": "Add User",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Scope Grants",
-      "countLabel": "{{count}} grants",
+      "countLabel": "Grants: {{count}}",
       "createGrant": "Create Grant",
       "selectWalletPrompt": "Choose a wallet above to view its scope grants.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Wallet Credentials",
-      "countLabel": "{{count}} credentials",
+      "countLabel": "Credentials: {{count}}",
       "addCredential": "Add Credential",
       "selectWalletPrompt": "Choose a wallet above to view its credentials.",
       "columns": {
