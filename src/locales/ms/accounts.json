@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Kaedah: {{method}}. Bukti penyelarasan sahih sepadan.",
       "driftDetected": "Kaedah: {{method}}. Bukti penyelarasan sahih mendapati ketidakpadanan.",
-      "openDrift": "Kaedah: {{method}}. Episod penyimpangan terbuka kekal selepas {{count}} ketidakpadanan penuh berturut-turut.",
+      "openDrift": "Kaedah: {{method}}. Episod penyimpangan terbuka masih kekal. Bilangan ketidakpadanan penuh berturut-turut: {{count}}.",
       "unclassified": "Kaedah: {{method}}. Pengelasan operator diperlukan sebelum penyelarasan boleh dijalankan.",
       "notReconciled": "Kaedah: {{method}}. Bukti penyelarasan belum lengkap lagi.",
       "stale": "Kaedah: {{method}}. Keputusan penyelarasan terlalu lama untuk dipercayai.",

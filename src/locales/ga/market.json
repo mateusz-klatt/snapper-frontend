@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "Bog trí stair an mhargaidh",
     "presets": {
       "live": "Live",
       "h1": "-1h",

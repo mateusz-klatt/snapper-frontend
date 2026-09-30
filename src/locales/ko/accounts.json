@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "방법: {{method}}. 신뢰할 수 있는 대조 증거가 일치합니다.",
       "driftDetected": "방법: {{method}}. 신뢰할 수 있는 대조 증거에서 불일치가 발견되었습니다.",
-      "openDrift": "방법: {{method}}. {{count}}회 연속 완전 불일치 후 미해결 편차 에피소드가 남아 있습니다.",
+      "openDrift": "방법: {{method}}. 미해결 편차 에피소드가 남아 있습니다. 연속 완전 불일치 횟수: {{count}}.",
       "unclassified": "방법: {{method}}. 대조를 실행하기 전에 운영자 분류가 필요합니다.",
       "notReconciled": "방법: {{method}}. 대조 증거가 아직 완료되지 않았습니다.",
       "stale": "방법: {{method}}. 대조 결과가 너무 오래되어 신뢰할 수 없습니다.",

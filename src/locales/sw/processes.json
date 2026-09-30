@@ -47,7 +47,7 @@
     "badge": "kiolezo",
     "mode": "Hali:",
     "parameters": "Vigezo:",
-    "paramCount": "Vigezo: {{count}}",
+    "paramCount": "{{count}}",
     "noParams": "hakuna vigezo vilivyowekwa"
   },
   "badges": {

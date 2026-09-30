@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Methode: {{method}}. Gezaghebbend reconciliatiebewijs kwam overeen.",
       "driftDetected": "Methode: {{method}}. Gezaghebbend reconciliatiebewijs vond een mismatch.",
-      "openDrift": "Methode: {{method}}. Een open afwijkingsepisode blijft over na {{count}} opeenvolgende volledige mismatches.",
+      "openDrift": "Methode: {{method}}. Er blijft een open afwijkingsepisode bestaan. Aantal opeenvolgende volledige mismatches: {{count}}.",
       "unclassified": "Methode: {{method}}. Classificatie door operator is vereist voordat reconciliatie kan worden uitgevoerd.",
       "notReconciled": "Methode: {{method}}. Reconciliatiebewijs is nog niet compleet.",
       "stale": "Methode: {{method}}. Het reconciliatie-oordeel is te oud om te vertrouwen.",

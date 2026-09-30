@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metoda: {{method}}. Směrodatné důkazy odsouhlasení se shodují.",
       "driftDetected": "Metoda: {{method}}. Směrodatné důkazy odsouhlasení nalezly neshodu.",
-      "openDrift": "Metoda: {{method}}. Otevřená epizoda odchylky přetrvává po {{count}} po sobě jdoucích úplných neshodách.",
+      "openDrift": "Metoda: {{method}}. Jedna epizoda odchylky zůstává otevřená. Po sobě jdoucí úplné neshody při odsouhlasení: {{count}}.",
       "unclassified": "Metoda: {{method}}. Před spuštěním odsouhlasení je vyžadována klasifikace operátorem.",
       "notReconciled": "Metoda: {{method}}. Důkazy odsouhlasení zatím nejsou kompletní.",
       "stale": "Metoda: {{method}}. Verdikt odsouhlasení je příliš starý na to, aby mu bylo možné důvěřovat.",

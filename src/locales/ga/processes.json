@@ -47,7 +47,7 @@
     "badge": "teimpléad",
     "mode": "Mód:",
     "parameters": "Paraiméadair:",
-    "paramCount": "Paraiméadair: {{count}}",
+    "paramCount": "{{count}}",
     "noParams": "níl aon pharaiméadar socraithe"
   },
   "badges": {

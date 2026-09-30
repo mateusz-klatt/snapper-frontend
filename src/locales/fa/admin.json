@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "مدیریت کاربران",
-      "countLabel": "{{count}} کاربر",
+      "countLabel": "کاربران: {{count}}",
       "showInactive": "نمایش غیرفعال‌ها",
       "hideInactive": "پنهان کردن غیرفعال‌ها",
       "addUser": "افزودن کاربر",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "محدوده‌های دسترسی",
-      "countLabel": "{{count}} اعطا",
+      "countLabel": "مجوزهای دسترسی: {{count}}",
       "createGrant": "اعطای محدوده",
       "selectWalletPrompt": "برای مشاهده محدوده‌های دسترسی، یک کیف پول از بالا انتخاب کنید.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "اعتبارنامه‌های کیف پول",
-      "countLabel": "{{count}} اعتبارنامه",
+      "countLabel": "اعتبارنامه‌ها: {{count}}",
       "addCredential": "افزودن اعتبارنامه",
       "selectWalletPrompt": "برای مشاهده اعتبارنامه‌ها، یک کیف پول از بالا انتخاب کنید.",
       "columns": {

@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metode: {{method}}. Bukti rekonsiliasi yang otoritatif cocok.",
       "driftDetected": "Metode: {{method}}. Bukti rekonsiliasi yang otoritatif menemukan ketidakcocokan.",
-      "openDrift": "Metode: {{method}}. Episode penyimpangan terbuka tersisa setelah {{count}} ketidakcocokan penuh secara berturut-turut.",
+      "openDrift": "Metode: {{method}}. Episode penyimpangan terbuka masih ada. Jumlah ketidakcocokan penuh berturut-turut: {{count}}.",
       "unclassified": "Metode: {{method}}. Klasifikasi operator diperlukan sebelum rekonsiliasi dapat dijalankan.",
       "notReconciled": "Metode: {{method}}. Bukti rekonsiliasi belum lengkap.",
       "stale": "Metode: {{method}}. Putusan rekonsiliasi terlalu usang untuk dipercaya.",

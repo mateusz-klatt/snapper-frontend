@@ -47,7 +47,7 @@
     "badge": "predložak",
     "mode": "Način:",
     "parameters": "Parametri:",
-    "paramCount": "{{count}} parametar(a)",
+    "paramCount": "{{count}}",
     "noParams": "nema postavljenih parametara"
   },
   "badges": {

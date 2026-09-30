@@ -47,7 +47,7 @@
     "badge": "veidne",
     "mode": "Režīms:",
     "parameters": "Parametri:",
-    "paramCount": "{{count}} parametrs(-i)",
+    "paramCount": "{{count}}",
     "noParams": "parametri nav iestatīti"
   },
   "badges": {

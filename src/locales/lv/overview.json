@@ -34,7 +34,7 @@
     "unrealizedPnl": "Nerealizētais P&L",
     "pnlPercent": "P&L %",
     "positions": "Pozīcijas",
-    "instrumentsCount": "{{count}} instrumenti",
+    "instrumentsCount": "Instrumentu skaits: {{count}}",
     "empty": "Pozīciju dati nav pieejami",
     "incompleteValuation": "Dati ir nepilnīgi — dažām pozīcijām nav izmantojamas atsauces cenas vai ieejas cenas; kopsummās ir iekļauti tikai zināmie komponenti"
   },

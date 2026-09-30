@@ -34,7 +34,7 @@
     "unrealizedPnl": "Нереалізований P&L",
     "pnlPercent": "P&L %",
     "positions": "Позиції",
-    "instrumentsCount": "{{count}} інструментів",
+    "instrumentsCount": "Інструменти: {{count}}",
     "empty": "Дані позицій недоступні",
     "incompleteValuation": "Дані неповні — частина позицій не має придатної ціни марк або входу; підсумки сумують лише відомі компоненти"
   },

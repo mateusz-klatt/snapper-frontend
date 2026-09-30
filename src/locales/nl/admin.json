@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Gebruikersbeheer",
-      "countLabel": "{{count}} gebruikers",
+      "countLabel": "Gebruikers: {{count}}",
       "showInactive": "Inactieve tonen",
       "hideInactive": "Inactieve verbergen",
       "addUser": "Gebruiker toevoegen",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Scope grants",
-      "countLabel": "{{count}} toekenningen",
+      "countLabel": "Toegangstoekenningen: {{count}}",
       "createGrant": "Grant aanmaken",
       "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende scope grants te bekijken.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Portefeuillecredentials",
-      "countLabel": "{{count}} toegangsgegevens",
+      "countLabel": "API-/inloggegevens: {{count}}",
       "addCredential": "Credential toevoegen",
       "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende credentials te bekijken.",
       "columns": {

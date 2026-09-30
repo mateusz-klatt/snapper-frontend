@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "用戶管理",
-      "countLabel": "{{count}} 個用戶",
+      "countLabel": "用戶：{{count}}",
       "showInactive": "顯示停用用戶",
       "hideInactive": "隱藏停用用戶",
       "addUser": "新增用戶",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "權限範圍",
-      "countLabel": "{{count}} 個授權",
+      "countLabel": "存取授權：{{count}}",
       "createGrant": "建立授權",
       "selectWalletPrompt": "選擇上方錢包以查看其權限範圍。",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "錢包憑證",
-      "countLabel": "{{count}} 個憑證",
+      "countLabel": "API/登入憑證：{{count}}",
       "addCredential": "新增憑證",
       "selectWalletPrompt": "選擇上方錢包以查看其憑證。",
       "columns": {

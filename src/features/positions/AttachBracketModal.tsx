@@ -123,8 +123,12 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               onChange={e => setSlPrice(e.target.value)}
               placeholder={
                 side === 'LONG'
-                  ? t('bracketModal.placeholders.slLong', { price: averagePrice.toFixed(2) })
-                  : t('bracketModal.placeholders.slShort', { price: averagePrice.toFixed(2) })
+                  ? t('bracketModal.placeholders.slLong', {
+                      price: formatQuoted(averagePrice, quote),
+                    })
+                  : t('bracketModal.placeholders.slShort', {
+                      price: formatQuoted(averagePrice, quote),
+                    })
               }
               className='w-full rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-none'
               data-testid='sl-price-input'
@@ -142,8 +146,12 @@ export const AttachBracketModal: React.FC<AttachBracketModalProps> = ({
               onChange={e => setTpPrice(e.target.value)}
               placeholder={
                 side === 'LONG'
-                  ? t('bracketModal.placeholders.tpLong', { price: averagePrice.toFixed(2) })
-                  : t('bracketModal.placeholders.tpShort', { price: averagePrice.toFixed(2) })
+                  ? t('bracketModal.placeholders.tpLong', {
+                      price: formatQuoted(averagePrice, quote),
+                    })
+                  : t('bracketModal.placeholders.tpShort', {
+                      price: formatQuoted(averagePrice, quote),
+                    })
               }
               className='w-full rounded-lg border border-dark-600 bg-dark-700 px-3 py-2 text-sm text-alpine-900 placeholder-muted-500 focus:border-brand-500 focus:outline-none'
               data-testid='tp-price-input'

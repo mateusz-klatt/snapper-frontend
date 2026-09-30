@@ -75,10 +75,10 @@
         "net_non_finite": "Netto-P&L ei ole äärellinen",
         "attribution_value_non_finite": "Kohdistusarvo ei ole äärellinen",
         "attribution_reconciliation_failed": "Kohdistuksen täsmäytys epäonnistui",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Kohdistettujen P&L-arvojen summaa ei voida esittää tarkassa numeerisessa laskennassa",
+        "instrument_reconciliation_failed": "Instrumenttikohtaisten P&L-summien täsmäytys kokonais-P&L:ään epäonnistui",
+        "instrument_sum_unrepresentable": "Instrumenttikohtaisten arvojen summaa ei voida esittää tarkassa numeerisessa laskennassa",
+        "late_pre_activation_execution": "Myöhässä saapunut, ennen aktivointia aikaleimattu kaupankäyntitoteutus"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: odottaa",
     "slTpButton": "SL/TP",
     "trailButton": "Liukuva stop",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Alle ${{price}}",
-      "slShort": "Yli ${{price}}",
-      "tpLong": "Yli ${{price}}",
-      "tpShort": "Alle ${{price}}"
+      "slLong": "Alle {{price}}",
+      "slShort": "Yli {{price}}",
+      "tpLong": "Yli {{price}}",
+      "tpShort": "Alle {{price}}"
     },
     "buttons": {
       "cancel": "Peruuta",

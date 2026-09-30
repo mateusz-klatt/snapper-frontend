@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Brugeradministration",
-      "countLabel": "{{count}} brugere",
+      "countLabel": "Brugere: {{count}}",
       "showInactive": "Vis inaktive",
       "hideInactive": "Skjul inaktive",
       "addUser": "Tilføj bruger",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Adgangsomfang",
-      "countLabel": "{{count}} adgangsomfang",
+      "countLabel": "Adgangstildelinger: {{count}}",
       "createGrant": "Tildel omfang",
       "selectWalletPrompt": "Vælg en wallet ovenfor for at se dens adgangsomfang.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Wallet-legitimationsoplysninger",
-      "countLabel": "{{count}} legitimationsoplysninger",
+      "countLabel": "Legitimationsoplysninger: {{count}}",
       "addCredential": "Tilføj legitimationsoplysninger",
       "selectWalletPrompt": "Vælg en wallet ovenfor for at se dens legitimationsoplysninger.",
       "columns": {

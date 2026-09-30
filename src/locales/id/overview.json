@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L Belum Terealisasi",
     "pnlPercent": "P&L %",
     "positions": "Posisi",
-    "instrumentsCount": "{{count}} instrumen",
+    "instrumentsCount": "Instrumen: {{count}}",
     "empty": "Data posisi tidak tersedia",
     "incompleteValuation": "Data tidak lengkap — beberapa posisi tidak memiliki harga mark atau harga entry yang dapat digunakan; total hanya menjumlahkan komponen yang diketahui"
   },

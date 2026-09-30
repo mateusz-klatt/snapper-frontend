@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "إدارة المستخدمين",
-      "countLabel": "{{count}} مستخدمين",
+      "countLabel": "عدد المستخدمين: {{count}}",
       "showInactive": "إظهار غير النشطين",
       "hideInactive": "إخفاء غير النشطين",
       "addUser": "إضافة مستخدم",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "نطاقات الصلاحيات",
-      "countLabel": "{{count}} منح",
+      "countLabel": "منح الوصول: {{count}}",
       "createGrant": "منح نطاق",
       "selectWalletPrompt": "اختر محفظة أعلاه لعرض نطاقات صلاحياتها.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "بيانات اعتماد المحفظة",
-      "countLabel": "{{count}} بيانات اعتماد",
+      "countLabel": "بيانات الاعتماد: {{count}}",
       "addCredential": "إضافة بيانات اعتماد",
       "selectWalletPrompt": "اختر محفظة أعلاه لعرض بيانات اعتمادها.",
       "columns": {

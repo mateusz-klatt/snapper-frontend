@@ -75,10 +75,10 @@
         "net_non_finite": "ה-P&L נטו אינו מספר סופי",
         "attribution_value_non_finite": "ערך השיוך אינו מספר סופי",
         "attribution_reconciliation_failed": "התאמת השיוך נכשלה",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "לא ניתן לייצג את סכום ערכי ה-P&L המשויכים באריתמטיקה מספרית מדויקת",
+        "instrument_reconciliation_failed": "התאמת סכומי ה-P&L לפי מכשיר לסכום ה-P&L הכולל נכשלה",
+        "instrument_sum_unrepresentable": "לא ניתן לייצג את סכום הערכים לפי מכשיר באריתמטיקה מספרית מדויקת",
+        "late_pre_activation_execution": "ביצוע פקודת מסחר שהתקבל באיחור וחותמת הזמן שלו קודמת להפעלה"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: ממתין",
     "slTpButton": "SL/TP",
     "trailButton": "סטופ נגרר",
@@ -237,10 +237,10 @@
     "stopLoss": "סטופ-לוס",
     "takeProfit": "טייק-פרופיט",
     "placeholders": {
-      "slLong": "מתחת ל-${{price}}",
-      "slShort": "מעל ${{price}}",
-      "tpLong": "מעל ${{price}}",
-      "tpShort": "מתחת ל-${{price}}"
+      "slLong": "מתחת ל-{{price}}",
+      "slShort": "מעל {{price}}",
+      "tpLong": "מעל {{price}}",
+      "tpShort": "מתחת ל-{{price}}"
     },
     "buttons": {
       "cancel": "בטל",

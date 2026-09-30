@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Gestionare utilizatori",
-      "countLabel": "{{count}} utilizatori",
+      "countLabel": "Utilizatori: {{count}}",
       "showInactive": "Afișați inactivi",
       "hideInactive": "Ascundeți inactivi",
       "addUser": "Adăugați utilizator",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Domenii de acces",
-      "countLabel": "{{count}} domenii acordate",
+      "countLabel": "Autorizări de acces: {{count}}",
       "createGrant": "Acordați domeniu",
       "selectWalletPrompt": "Alegeți un portofel mai sus pentru a vedea domeniile sale de acces.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Credențiale portofel",
-      "countLabel": "{{count}} credențiale",
+      "countLabel": "Credențiale API/autentificare: {{count}}",
       "addCredential": "Adăugați credențială",
       "selectWalletPrompt": "Alegeți un portofel mai sus pentru a vedea credențialele sale.",
       "columns": {

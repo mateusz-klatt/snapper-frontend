@@ -14,12 +14,29 @@
     "order_rejected": "Toimeksianto hylätty",
     "position_stop_loss_fired": "Stop-loss aktivoitui"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Pörssin monitulkintainen vastaus",
+      "unknown": "Tuntematon syy"
+    },
+    "side": {
+      "buy": "OSTO",
+      "sell": "MYYNTI"
+    },
+    "status": {
+      "error": "Virhe",
+      "healthy": "Kunnossa",
+      "warning": "Varoitus"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} ilmoitti tilan {{2}} {{3}} peräkkäisen heartbeatin ajan",
     "margin_warning": "{{0}} {{1}} {{2}} estetty vakuusvaatimuksen takia: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} toteutettu pörssissä {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} toteutettu pörssissä {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} toteutettu pörssissä {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} hylätty: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} tila tuntematon: {{3}} — vahvistus käynnissä",
+    "order_unknown": "{{0}} {{1}} {{2}} tila tuntematon: {{3}} — pörssivarmennus on kesken; älä oleta position olevan suljettu",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} tila tuntematon: {{3}} — pörssivarmennus on kesken; älä oleta position olevan suljettu",
     "position_stop_loss_fired": "Stop-loss aktivoitui kohteessa {{0}} ({{1}})"
   },
   "detail": {

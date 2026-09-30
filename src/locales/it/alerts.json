@@ -14,12 +14,29 @@
     "order_rejected": "Ordine rifiutato",
     "position_stop_loss_fired": "Stop-loss attivato"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Risposta ambigua dell'exchange",
+      "unknown": "Motivo sconosciuto"
+    },
+    "side": {
+      "buy": "ACQUISTO",
+      "sell": "VENDITA"
+    },
+    "status": {
+      "error": "Errore",
+      "healthy": "Sano",
+      "warning": "Avviso"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} ha segnalato {{2}} per {{3}} heartbeat consecutivi",
     "margin_warning": "{{0}} {{1}} {{2}} bloccato dal margine: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} eseguito su {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} eseguito su {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} eseguito su {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rifiutato: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} stato sconosciuto: {{3}} — verifica in corso",
+    "order_unknown": "{{0}} {{1}} {{2}} stato sconosciuto: {{3}} — verifica presso l'exchange ancora in sospeso, non presumere che la posizione sia chiusa",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} stato sconosciuto: {{3}} — verifica presso l'exchange ancora in sospeso, non presumere che la posizione sia chiusa",
     "position_stop_loss_fired": "Stop-loss attivato su {{0}} ({{1}})"
   },
   "detail": {

@@ -85,7 +85,7 @@
       "autoPair": "Salīdzināt ar jaunāko",
       "terminalGate": "salīdzinājums pieejams, kad šī izpilde sasniedz terminālu statusu",
       "noSiblings": "nav citu izpilžu ar šo konfigurāciju",
-      "limitNotice": "rādīti {{count}} jaunākie — vecākām izpildēm izmantojiet manuālo pāri",
+      "limitNotice": "Rādīto jaunāko izpilžu skaits: {{count}} — vecākām izpildēm izmantojiet manuāli izvēlētu pāri",
       "pickPlaceholder": "— izvēlieties izpildi salīdzināšanai —",
       "showAllLabel": "Rādīt visas izpildes (ne tikai ar to pašu konfigurāciju)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

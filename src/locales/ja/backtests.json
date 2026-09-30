@@ -85,7 +85,7 @@
       "autoPair": "直近の実行と比較",
       "terminalGate": "この実行が終了状態になると比較できます",
       "noSiblings": "この設定の他の実行はありません",
-      "limitNotice": "直近{{count}}件を表示中 — それ以前の実行は手動ペアを使用してください",
+      "limitNotice": "表示中の直近実行数: {{count}} — それ以前の実行には手動ペアを使用してください",
       "pickPlaceholder": "— 比較する実行を選択 —",
       "showAllLabel": "すべての実行を表示（同一設定のみではない）",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

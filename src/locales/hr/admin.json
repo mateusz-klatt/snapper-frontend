@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Upravljanje korisnicima",
-      "countLabel": "{{count}} korisnika",
+      "countLabel": "Korisnici: {{count}}",
       "showInactive": "Prikaži neaktivne",
       "hideInactive": "Sakrij neaktivne",
       "addUser": "Dodaj korisnika",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Opsezi ovlasti",
-      "countLabel": "{{count}} opsega ovlasti",
+      "countLabel": "Ovlasti pristupa: {{count}}",
       "createGrant": "Dodijeli opseg",
       "selectWalletPrompt": "Odaberite novčanik iznad za prikaz njegovih opsega ovlasti.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Vjerodajnice novčanika",
-      "countLabel": "{{count}} vjerodajnica",
+      "countLabel": "Vjerodajnice: {{count}}",
       "addCredential": "Dodaj vjerodajnicu",
       "selectWalletPrompt": "Odaberite novčanik iznad za prikaz njegovih vjerodajnica.",
       "columns": {

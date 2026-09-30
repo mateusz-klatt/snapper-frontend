@@ -85,7 +85,7 @@
       "autoPair": "Sammenlign med seneste",
       "terminalGate": "sammenligning er tilgængelig, når denne kørsel når terminal status",
       "noSiblings": "ingen andre kørsler med denne config",
-      "limitNotice": "viser {{count}} seneste — brug manuel parring for ældre kørsler",
+      "limitNotice": "Viste seneste kørsler: {{count}} — brug et manuelt valgt par til ældre kørsler",
       "pickPlaceholder": "— vælg en kørsel at sammenligne —",
       "showAllLabel": "Vis alle kørsler (ikke kun samme config)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

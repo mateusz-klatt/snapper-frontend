@@ -85,7 +85,7 @@
       "autoPair": "Cuir i gcomparáid leis an gceann is déanaí",
       "terminalGate": "beidh comparáid ar fáil nuair a shroichfidh an rith stádas críochnaitheach",
       "noSiblings": "níl aon rith eile leis an gcumraíocht seo",
-      "limitNotice": "{{count}} ceann is déanaí á dtaispeáint — úsáid péireáil láimhe do ritheanna níos sine",
+      "limitNotice": "Líon na ritheanna is déanaí a thaispeántar: {{count}} — úsáid péire de láimh do ritheanna níos sine",
       "pickPlaceholder": "— roghnaigh rith le comparáid —",
       "showAllLabel": "Taispeáin gach rith (ní hamháin an chumraíocht chéanna)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

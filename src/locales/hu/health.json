@@ -47,7 +47,7 @@
     "unavailable": "Az adatbázis-statisztika nem érhető el: {{message}}",
     "fallbackError": "Nem sikerült betölteni az adatbázis-statisztikát.",
     "sampled": "mintavétel: {{age}}",
-    "samplerSummary": "Mintavételező intervallum: {{seconds}}s · táblák: {{count}}",
+    "samplerSummary": "Mintavételezési időköz: {{seconds}} s · táblák száma: {{count}}",
     "columns": {
       "table": "Tábla",
       "kind": "Típus",
@@ -116,7 +116,7 @@
     "saturation": "Telítettség {{percent}}",
     "asyncioTasks": "Asyncio feladatok",
     "asyncioActive": "Aktív: {{count}}",
-    "asyncioPending": "+ függő: {{count}}",
+    "asyncioPending": "Függőben: {{count}}",
     "dbPool": "DB-pool",
     "liveConns": "Élő kapcsolatok: {{count}}",
     "gcGenerations": "GC Gen0/1/2",

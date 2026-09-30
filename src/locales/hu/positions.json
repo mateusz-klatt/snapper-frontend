@@ -75,10 +75,10 @@
         "net_non_finite": "A nettó P&L nem véges",
         "attribution_value_non_finite": "Az attribúciós érték nem véges",
         "attribution_reconciliation_failed": "Az attribúció egyeztetése sikertelen",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "A hozzárendelt P&L-értékek összege nem ábrázolható egzakt numerikus aritmetikában",
+        "instrument_reconciliation_failed": "Az instrumentumonkénti P&L-összegek egyeztetése a teljes P&L-lel sikertelen",
+        "instrument_sum_unrepresentable": "Az instrumentumonkénti értékek összege nem ábrázolható egzakt numerikus aritmetikában",
+        "late_pre_activation_execution": "Késve érkezett, aktiválás előtti időbélyegű megbízásteljesítés"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: függőben",
     "slTpButton": "SL/TP",
     "trailButton": "Követő stop",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "${{price}} alatt",
-      "slShort": "${{price}} felett",
-      "tpLong": "${{price}} felett",
-      "tpShort": "${{price}} alatt"
+      "slLong": "{{price}} alatt",
+      "slShort": "{{price}} felett",
+      "tpLong": "{{price}} felett",
+      "tpShort": "{{price}} alatt"
     },
     "buttons": {
       "cancel": "Mégse",

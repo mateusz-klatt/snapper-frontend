@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "Lëvizni nëpër historikun e tregut",
     "presets": {
       "live": "Live",
       "h1": "-1h",

@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L تحقق‌نیافته",
     "pnlPercent": "P&L %",
     "positions": "موقعیت‌ها",
-    "instrumentsCount": "{{count}} ابزار",
+    "instrumentsCount": "ابزارها: {{count}}",
     "empty": "داده موقعیت در دسترس نیست",
     "incompleteValuation": "داده‌ها ناقص‌اند — برخی موقعیت‌ها قیمت مبنا یا قیمت ورود قابل‌استفاده ندارند؛ مجموع‌ها فقط مؤلفه‌های معلوم را در بر می‌گیرند"
   },

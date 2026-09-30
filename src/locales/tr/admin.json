@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Kullanıcı Yönetimi",
-      "countLabel": "{{count}} kullanıcı",
+      "countLabel": "Kullanıcılar: {{count}}",
       "showInactive": "Pasifleri göster",
       "hideInactive": "Pasifleri gizle",
       "addUser": "Kullanıcı ekle",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Kapsam yetkileri",
-      "countLabel": "{{count}} yetki",
+      "countLabel": "Erişim yetkileri: {{count}}",
       "createGrant": "Kapsam ata",
       "selectWalletPrompt": "Kapsam yetkilerini görmek için yukarıdan bir cüzdan seçin.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Cüzdan Kimlik Bilgileri",
-      "countLabel": "{{count}} kimlik bilgisi",
+      "countLabel": "API/giriş kimlik bilgileri: {{count}}",
       "addCredential": "Kimlik bilgisi ekle",
       "selectWalletPrompt": "Kimlik bilgilerini görmek için yukarıdan bir cüzdan seçin.",
       "columns": {

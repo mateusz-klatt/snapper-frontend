@@ -72,3 +72,31 @@ export const COUNTRY_TO_INTL_LOCALE: Readonly<Record<AppLocale, string>> = build
 export const getCatalogLanguage = (code: AppLocale): CatalogLanguage => COUNTRY_TO_LANGUAGE[code]
 
 export const getIntlLocale = (code: AppLocale): string => COUNTRY_TO_INTL_LOCALE[code]
+
+const LANGUAGE_TO_COUNTRY = new Map<string, AppLocale>(
+  SUPPORTED_LOCALES.map(code => [COUNTRY_TO_LANGUAGE[code], code])
+)
+
+const chineseCountry = ({ script, region }: Intl.Locale): AppLocale => {
+  if (script === 'Hant') return 'hk'
+  if (script === 'Hans') return 'cn'
+
+  return ['HK', 'TW', 'MO'].includes(region ?? '') ? 'hk' : 'cn'
+}
+
+/** Resolve a preferred language tag without replacing its language with its region. */
+export const resolveLanguageTag = (tag: string): AppLocale | null => {
+  let locale: Intl.Locale
+
+  try {
+    locale = new Intl.Locale(tag.replaceAll('_', '-'))
+  } catch {
+    return null
+  }
+
+  if (locale.language === 'zh') return chineseCountry(locale)
+  if (locale.language === 'nb') return 'no'
+  if (locale.language === 'my') return 'mm'
+
+  return LANGUAGE_TO_COUNTRY.get(locale.language) ?? null
+}

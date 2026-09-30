@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metod: {{method}}. Auktoritativa avstämningsbevis stämde överens.",
       "driftDetected": "Metod: {{method}}. Auktoritativa avstämningsbevis hittade en bristande överensstämmelse.",
-      "openDrift": "Metod: {{method}}. En öppen avvikelseepisod kvarstår efter {{count}} på varandra följande fullständiga avvikelser.",
+      "openDrift": "Metod: {{method}}. Ett öppet avvikelseförlopp kvarstår. Antal på varandra följande fullständiga avstämningsjämförelser som inte stämmer överens: {{count}}.",
       "unclassified": "Metod: {{method}}. Operatörsklassificering krävs innan avstämning kan köras.",
       "notReconciled": "Metod: {{method}}. Avstämningsbevis är inte kompletta ännu.",
       "stale": "Metod: {{method}}. Avstämningsutfallet är för gammalt för att vara tillförlitligt.",

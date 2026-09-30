@@ -14,12 +14,29 @@
     "order_rejected": "Lệnh bị từ chối",
     "position_stop_loss_fired": "Cắt lỗ đã kích hoạt"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Phản hồi không rõ ràng từ sàn giao dịch",
+      "unknown": "Không rõ lý do"
+    },
+    "side": {
+      "buy": "MUA",
+      "sell": "BÁN"
+    },
+    "status": {
+      "error": "Lỗi",
+      "healthy": "Ổn định",
+      "warning": "Cảnh báo"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} đã báo cáo {{2}} trong {{3}} heartbeat liên tiếp",
     "margin_warning": "{{0}} {{1}} {{2}} bị chặn bởi ký quỹ: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} đã khớp trên {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} đã khớp trên {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} đã khớp trên {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} bị từ chối: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} trạng thái không xác định: {{3}} — đang xác minh với sàn",
+    "order_unknown": "{{0}} {{1}} {{2}} không xác định được trạng thái: {{3}} — đang chờ sàn xác minh; không được cho rằng vị thế đã đóng",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} không xác định được trạng thái: {{3}} — đang chờ sàn xác minh; không được cho rằng vị thế đã đóng",
     "position_stop_loss_fired": "Cắt lỗ đã kích hoạt cho {{0}} ({{1}})"
   },
   "detail": {

@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Notendastjórnun",
-      "countLabel": "{{count}} notendur",
+      "countLabel": "Notendur: {{count}}",
       "showInactive": "Sýna óvirka",
       "hideInactive": "Fela óvirka",
       "addUser": "Bæta við notanda",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Aðgangsumfang",
-      "countLabel": "{{count}} umfang",
+      "countLabel": "Aðgangsheimildir: {{count}}",
       "createGrant": "Veita umfang",
       "selectWalletPrompt": "Veldu veski hér að ofan til að skoða aðgangsumfang þess.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Skilríki veskis",
-      "countLabel": "{{count}} skilríki",
+      "countLabel": "Skilríki: {{count}}",
       "addCredential": "Bæta við skilríki",
       "selectWalletPrompt": "Veldu veski hér að ofan til að skoða skilríki þess.",
       "columns": {

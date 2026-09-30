@@ -47,7 +47,7 @@
     "badge": "πρότυπο",
     "mode": "Λειτουργία:",
     "parameters": "Παράμετροι:",
-    "paramCount": "{{count}} παράμετρος(-οι)",
+    "paramCount": "{{count}}",
     "noParams": "δεν έχουν οριστεί παράμετροι"
   },
   "badges": {

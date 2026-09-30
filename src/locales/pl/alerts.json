@@ -14,12 +14,29 @@
     "order_rejected": "Zlecenie odrzucone",
     "position_stop_loss_fired": "Stop loss aktywowany"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Niejednoznaczna odpowiedź giełdy",
+      "unknown": "Nieznana przyczyna"
+    },
+    "side": {
+      "buy": "KUPNO",
+      "sell": "SPRZEDAŻ"
+    },
+    "status": {
+      "error": "Błąd",
+      "healthy": "Prawidłowy",
+      "warning": "Ostrzeżenie"
+    }
+  },
   "body": {
-    "critical_system_error": "{{0}}/{{1}} zgłasza {{2}} przez {{3}} kolejnych heartbeatów",
+    "critical_system_error": "Raport {{0}}/{{1}}: {{2}}; liczba kolejnych sygnałów heartbeat z tym stanem: {{3}}",
     "margin_warning": "{{0}} {{1}} {{2}} zablokowano z powodu depozytu zabezpieczającego: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} zrealizowane na {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} zrealizowane na {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} zrealizowane na {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} odrzucono: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} stan nieznany: {{3}} — trwa weryfikacja na giełdzie",
+    "order_unknown": "{{0}} {{1}} {{2}} — stan nieznany: {{3}} — oczekiwanie na weryfikację giełdy; nie zakładaj, że pozycja jest zamknięta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stan nieznany: {{3}} — oczekiwanie na weryfikację giełdy; nie zakładaj, że pozycja jest zamknięta",
     "position_stop_loss_fired": "Stop loss aktywowany dla {{0}} ({{1}})"
   },
   "detail": {

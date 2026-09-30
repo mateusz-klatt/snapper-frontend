@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Yöntem: {{method}}. Yetkili mutabakat kanıtları eşleşti.",
       "driftDetected": "Yöntem: {{method}}. Yetkili mutabakat kanıtlarında eşleşmezlik bulundu.",
-      "openDrift": "Yöntem: {{method}}. Art arda {{count}} tam eşleşmezlikten sonra açık bir sapma durumu devam ediyor.",
+      "openDrift": "Yöntem: {{method}}. Açık bir sapma olayı sürüyor. Birbirini izleyen ve eşleşmeyen tam mutabakat karşılaştırmalarının sayısı: {{count}}.",
       "unclassified": "Yöntem: {{method}}. Mutabakatın çalıştırılabilmesi için operatör sınıflandırması gereklidir.",
       "notReconciled": "Yöntem: {{method}}. Mutabakat kanıtları henüz tamamlanmadı.",
       "stale": "Yöntem: {{method}}. Mutabakat kararı güvenilemeyecek kadar eski.",

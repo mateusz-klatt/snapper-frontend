@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Gestione utenti",
-      "countLabel": "{{count}} utenti",
+      "countLabel": "Utenti: {{count}}",
       "showInactive": "Mostra inattivi",
       "hideInactive": "Nascondi inattivi",
       "addUser": "Aggiungi utente",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Grant degli scope",
-      "countLabel": "{{count}} grant",
+      "countLabel": "Autorizzazioni di accesso: {{count}}",
       "createGrant": "Crea grant",
       "selectWalletPrompt": "Scegli un portafoglio sopra per visualizzare i suoi grant degli scope.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Credenziali del portafoglio",
-      "countLabel": "{{count}} credenziali",
+      "countLabel": "Credenziali: {{count}}",
       "addCredential": "Aggiungi credenziale",
       "selectWalletPrompt": "Scegli un portafoglio sopra per visualizzare le sue credenziali.",
       "columns": {

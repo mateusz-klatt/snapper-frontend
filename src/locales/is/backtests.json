@@ -85,7 +85,7 @@
       "autoPair": "Bera saman við það nýjasta",
       "terminalGate": "samanburður er tiltækur þegar þessi keyrsla nær lokastöðu",
       "noSiblings": "engar aðrar keyrslur með þessari stillingu",
-      "limitNotice": "sýni {{count}} nýjustu — notaðu handvirkt par fyrir eldri keyrslur",
+      "limitNotice": "Nýjustu keyrslur sýndar: {{count}} — notaðu handvirkt par fyrir eldri keyrslur",
       "pickPlaceholder": "— veldu keyrslu til samanburðar —",
       "showAllLabel": "Sýna allar keyrslur (ekki aðeins sömu stillingu)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

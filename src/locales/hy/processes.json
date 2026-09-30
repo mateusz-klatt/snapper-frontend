@@ -47,7 +47,7 @@
     "badge": "ձևանմուշ",
     "mode": "Ռեժիմ՝",
     "parameters": "Պարամետրեր՝",
-    "paramCount": "{{count}} պարամետր",
+    "paramCount": "{{count}}",
     "noParams": "պարամետրեր սահմանված չեն"
   },
   "badges": {

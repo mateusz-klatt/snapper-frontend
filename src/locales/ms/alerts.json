@@ -14,12 +14,29 @@
     "order_rejected": "Pesanan ditolak",
     "position_stop_loss_fired": "Stop-loss dicetuskan"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Respons bursa yang tidak jelas",
+      "unknown": "Sebab tidak diketahui"
+    },
+    "side": {
+      "buy": "BELI",
+      "sell": "JUAL"
+    },
+    "status": {
+      "error": "Ralat",
+      "healthy": "Sihat",
+      "warning": "Amaran"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} melaporkan {{2}} selama {{3}} heartbeat berturut-turut",
     "margin_warning": "{{0}} {{1}} {{2}} disekat oleh margin: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} dilaksanakan di {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} dilaksanakan di {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} dilaksanakan di {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} ditolak: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — pengesahan sedang dijalankan",
+    "order_unknown": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — pengesahan dengan bursa masih belum selesai, jangan anggap posisi telah ditutup",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — pengesahan dengan bursa masih belum selesai, jangan anggap posisi telah ditutup",
     "position_stop_loss_fired": "Stop-loss dicetuskan pada {{0}} ({{1}})"
   },
   "detail": {

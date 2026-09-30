@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L غير محقق",
     "pnlPercent": "P&L %",
     "positions": "المراكز",
-    "instrumentsCount": "{{count}} أدوات",
+    "instrumentsCount": "عدد الأدوات: {{count}}",
     "empty": "لا توجد بيانات مراكز متاحة",
     "incompleteValuation": "البيانات غير مكتملة — تفتقر بعض المراكز إلى سعر مرجعي أو سعر دخول صالح للاستخدام؛ ولا تشمل الإجماليات سوى المكونات المعروفة"
   },

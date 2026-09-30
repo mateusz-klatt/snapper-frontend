@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "方法：{{method}}。權威對帳證據相符。",
       "driftDetected": "方法：{{method}}。權威對帳證據發現不一致。",
-      "openDrift": "方法：{{method}}。在 {{count}} 次連續完全不一致後，仍有未解決的偏差事件。",
+      "openDrift": "方法：{{method}}。仍存在未結束的偏差事件。連續結果不一致的完整核對比較次數：{{count}}。",
       "unclassified": "方法：{{method}}。執行對帳前需要操作員進行分類。",
       "notReconciled": "方法：{{method}}。對帳證據尚未完整。",
       "stale": "方法：{{method}}。對帳判定結果太舊，無法信任。",

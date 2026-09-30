@@ -14,12 +14,29 @@
     "order_rejected": "Tinanggihan ang order",
     "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Malabong tugon ng exchange",
+      "unknown": "Hindi kilalang dahilan"
+    },
+    "side": {
+      "buy": "PAGBILI",
+      "sell": "PAGBEBENTA"
+    },
+    "status": {
+      "error": "May error",
+      "healthy": "Malusog",
+      "warning": "Babala"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} nag-ulat ng {{2}} sa loob ng {{3}} sunod-sunod na heartbeat",
     "margin_warning": "{{0}} {{1}} {{2}} hinarang dahil sa margin: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} naisagawa sa {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} naisagawa sa {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} naisagawa sa {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} tinanggihan: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} hindi alam ang status: {{3}} — isinasagawa ang beripikasyon",
+    "order_unknown": "{{0}} {{1}} {{2}} hindi alam ang status: {{3}} — nakabinbin ang beripikasyon sa exchange; huwag ipagpalagay na sarado ang posisyon",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hindi alam ang status: {{3}} — nakabinbin ang beripikasyon sa exchange; huwag ipagpalagay na sarado ang posisyon",
     "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi sa {{0}} ({{1}})"
   },
   "detail": {

@@ -85,7 +85,7 @@
       "autoPair": "Bandingkan dengan yang paling terkini",
       "terminalGate": "perbandingan tersedia apabila run ini mencapai status terminal",
       "noSiblings": "tiada run lain dengan config ini",
-      "limitNotice": "memaparkan {{count}} paling terkini — gunakan pasangan manual untuk run lebih lama",
+      "limitNotice": "Run terkini yang dipaparkan: {{count}} — gunakan pasangan manual untuk run yang lebih lama",
       "pickPlaceholder": "— pilih run untuk dibandingkan —",
       "showAllLabel": "Tunjuk semua run (bukan hanya config sama)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

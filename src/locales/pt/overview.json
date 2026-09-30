@@ -34,7 +34,7 @@
     "unrealizedPnl": "P&L não realizado",
     "pnlPercent": "P&L %",
     "positions": "Posições",
-    "instrumentsCount": "{{count}} instrumentos",
+    "instrumentsCount": "Instrumentos: {{count}}",
     "empty": "Nenhum dado de posição disponível",
     "incompleteValuation": "Dados incompletos — algumas posições não têm preço de referência ou de entrada utilizável; os totais somam apenas componentes conhecidos"
   },

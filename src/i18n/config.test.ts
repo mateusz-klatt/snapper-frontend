@@ -70,14 +70,40 @@ describe('detectInitialLocale', () => {
     expect(detectInitialLocale()).toBe('pl')
   })
 
-  it('skips unsupported regions and tries the next', () => {
-    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['en-GB', 'pl-PL'])
+  it('skips unsupported languages and tries the next', () => {
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['nn-NO', 'pl-PL'])
     expect(detectInitialLocale()).toBe('pl')
   })
 
   it('falls back to DEFAULT_LOCALE when no match', () => {
-    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['en'])
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['nn-NO'])
     expect(detectInitialLocale()).toBe(DEFAULT_LOCALE)
+  })
+
+  it.each([
+    ['en', 'us'],
+    ['en-GB', 'us'],
+    ['en-IE', 'us'],
+    ['en-PL', 'us'],
+    ['ga', 'ie'],
+    ['zh-Hant-HK', 'hk'],
+    ['sr-Latn-RS', 'rs'],
+    ['pt-PT', 'br'],
+    ['my-MM', 'mm'],
+  ])('resolves the preferred language %s to %s', (tag, expected) => {
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue([tag])
+    expect(detectInitialLocale()).toBe(expected)
+  })
+
+  it('keeps the stored choice ahead of browser language preferences', () => {
+    localStorage.setItem(LOCALE_STORAGE_KEY, 'pl')
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['en-GB'])
+    expect(detectInitialLocale()).toBe('pl')
+  })
+
+  it('skips malformed tags before using a later valid preference', () => {
+    vi.spyOn(navigator, 'languages', 'get').mockReturnValue(['invalid_tag', 'ja-JP'])
+    expect(detectInitialLocale()).toBe('jp')
   })
 
   it('falls back to DEFAULT_LOCALE on empty navigator.languages', () => {

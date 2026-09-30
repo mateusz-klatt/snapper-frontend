@@ -75,10 +75,10 @@
         "net_non_finite": "Чистый P&L не является конечным числом",
         "attribution_value_non_finite": "Значение атрибуции не является конечным числом",
         "attribution_reconciliation_failed": "Не удалось выполнить сверку атрибуции",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Сумму атрибутированных значений P&L невозможно точно представить численно",
+        "instrument_reconciliation_failed": "Не удалось сверить суммы P&L по инструментам",
+        "instrument_sum_unrepresentable": "Сумму значений по инструментам невозможно точно представить численно",
+        "late_pre_activation_execution": "Поздно поступившее исполнение заявки с меткой времени до активации"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: ожидает",
     "slTpButton": "SL/TP",
     "trailButton": "Трейлинг-стоп",
@@ -237,10 +237,10 @@
     "stopLoss": "Стоп-лосс",
     "takeProfit": "Тейк-профит",
     "placeholders": {
-      "slLong": "Ниже ${{price}}",
-      "slShort": "Выше ${{price}}",
-      "tpLong": "Выше ${{price}}",
-      "tpShort": "Ниже ${{price}}"
+      "slLong": "Ниже {{price}}",
+      "slShort": "Выше {{price}}",
+      "tpLong": "Выше {{price}}",
+      "tpShort": "Ниже {{price}}"
     },
     "buttons": {
       "cancel": "Отменить",

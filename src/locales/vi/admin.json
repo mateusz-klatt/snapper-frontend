@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Quản lý người dùng",
-      "countLabel": "{{count}} người dùng",
+      "countLabel": "Người dùng: {{count}}",
       "showInactive": "Hiển thị không hoạt động",
       "hideInactive": "Ẩn không hoạt động",
       "addUser": "Thêm người dùng",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Phạm vi quyền",
-      "countLabel": "{{count}} lượt cấp",
+      "countLabel": "Quyền truy cập đã cấp: {{count}}",
       "createGrant": "Cấp phạm vi",
       "selectWalletPrompt": "Chọn ví ở trên để xem các phạm vi quyền của ví.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Thông tin xác thực của ví",
-      "countLabel": "{{count}} thông tin xác thực",
+      "countLabel": "Thông tin xác thực API/đăng nhập: {{count}}",
       "addCredential": "Thêm thông tin xác thực",
       "selectWalletPrompt": "Chọn ví ở trên để xem thông tin xác thực của ví.",
       "columns": {

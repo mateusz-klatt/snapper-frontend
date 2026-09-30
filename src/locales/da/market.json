@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "Gennemse markedshistorikken med tidsskyderen",
     "presets": {
       "live": "Live",
       "h1": "-1h",

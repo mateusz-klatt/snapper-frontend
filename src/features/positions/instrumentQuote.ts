@@ -1,3 +1,5 @@
+import { formatNumber } from '../../lib/utils'
+
 /**
  * Resolve the quote-currency code from a canonical native instrument symbol.
  *
@@ -17,13 +19,22 @@ export const quoteCurrency = (instrument: string): string => {
 }
 
 /**
- * Render a price fixed to two decimals with its quote-currency code appended.
+ * Render a localized price without discarding fractional quote precision.
  *
  * An empty quote (an unresolved symbol) yields the bare number rather than a
  * misleading hardcoded currency symbol.
  */
-export const formatQuoted = (value: number, quote: string): string => {
-  const formatted = value.toFixed(2)
+export const formatQuoted = (
+  value: number,
+  quote: string,
+  options?: Intl.NumberFormatOptions
+): string => {
+  const formatted = formatNumber(value, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 20,
+    useGrouping: false,
+    ...options,
+  })
 
   return quote === '' ? formatted : `${formatted} ${quote}`
 }

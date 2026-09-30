@@ -16,10 +16,10 @@
     "restart": "Ponovo pokreni",
     "starting": "Pokretanje...",
     "stopping": "Zaustavljanje...",
-    "managedRemotely": "Управља {{coordinator}}",
-    "remoteCoordinatorUnknown": "други контејнер",
-    "marketClosed": "Тржиште затворено",
-    "reopensAt": "поново се отвара {{time}}",
+    "managedRemotely": "Upravlja {{coordinator}}",
+    "remoteCoordinatorUnknown": "drugi kontejner",
+    "marketClosed": "Tržište je zatvoreno",
+    "reopensAt": "ponovo se otvara u {{time}}",
     "status": {
       "running": "pokrenuto",
       "stopped": "zaustavljeno",
@@ -47,7 +47,7 @@
     "badge": "šablon",
     "mode": "Režim:",
     "parameters": "Parametri:",
-    "paramCount": "{{count}} parametara",
+    "paramCount": "{{count}}",
     "noParams": "nema podešenih parametara"
   },
   "badges": {
@@ -74,6 +74,6 @@
     "processAriaLabel": "Procesni režim"
   },
   "toast": {
-    "remoteActionFailed": "Удаљена радња није успела: {{message}}"
+    "remoteActionFailed": "Udaljena radnja nije uspela: {{message}}"
   }
 }

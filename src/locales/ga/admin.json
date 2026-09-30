@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Deontais Scóipe",
-      "countLabel": "Deontais: {{count}}",
+      "countLabel": "Deontais rochtana: {{count}}",
       "createGrant": "Cruthaigh Deontas",
       "selectWalletPrompt": "Roghnaigh sparán thuas chun a dheontais scóipe a fheiceáil.",
       "columns": {

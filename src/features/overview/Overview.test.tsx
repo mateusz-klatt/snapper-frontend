@@ -439,8 +439,35 @@ describe('Overview', () => {
     } as never)
     renderWithMocks(<Overview />)
     expect(screen.getByText('momentum-breakout')).toBeInTheDocument()
-    expect(screen.getByText('$64136.90')).toBeInTheDocument()
+    expect(screen.getByText('64136.90')).toBeInTheDocument()
     expect(screen.getByText('62%')).toBeInTheDocument()
+  })
+
+  it('localizes signal and execution prices without replacing their quote currencies', async () => {
+    const { useLatestSignals } = await import('../../hooks/queries/signals')
+    const { useExecutions } = await import('../../hooks/queries/orders')
+
+    vi.mocked(useLatestSignals).mockReturnValue({
+      isLoading: false,
+      data: [{ publicId: 1, instrument: 'EUR-PLN', side: 'buy', strength: 0.5, price: 4.3836 }],
+    } as never)
+    vi.mocked(useExecutions).mockReturnValue({
+      isLoading: false,
+      data: [
+        {
+          publicId: 2,
+          instrument: 'ETH-BTC',
+          side: 'buy',
+          size: 1.5,
+          price: 0.000012345,
+          executedAt: new Date('2026-01-01T12:00:00Z'),
+        },
+      ],
+    } as never)
+
+    renderWithI18n(<Overview />, 'pl')
+    expect(screen.getByText('4,3836 PLN')).toBeInTheDocument()
+    expect(screen.getByText('1,5 @ 0,000012345 BTC')).toBeInTheDocument()
   })
   it('shows N/A when signal timestamp is undefined', async () => {
     const { useLatestSignals } = await import('../../hooks/queries/signals')

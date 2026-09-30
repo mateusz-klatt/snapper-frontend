@@ -47,7 +47,7 @@
     "badge": "テンプレート",
     "mode": "モード:",
     "parameters": "パラメーター:",
-    "paramCount": "{{count}}件のパラメーター",
+    "paramCount": "{{count}}",
     "noParams": "パラメーター未設定"
   },
   "badges": {

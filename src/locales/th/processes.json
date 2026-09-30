@@ -47,7 +47,7 @@
     "badge": "เทมเพลต",
     "mode": "โหมด:",
     "parameters": "พารามิเตอร์:",
-    "paramCount": "{{count}} พารามิเตอร์",
+    "paramCount": "{{count}}",
     "noParams": "ไม่ได้ตั้งค่าพารามิเตอร์"
   },
   "badges": {

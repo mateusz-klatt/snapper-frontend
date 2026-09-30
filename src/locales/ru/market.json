@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "Прокрутка времени по истории рынка",
     "presets": {
       "live": "Live",
       "h1": "-1h",

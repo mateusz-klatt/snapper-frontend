@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Usimamizi wa Watumiaji",
-      "countLabel": "watumiaji {{count}}",
+      "countLabel": "Watumiaji: {{count}}",
       "showInactive": "Onyesha wasiotumika",
       "hideInactive": "Ficha wasiotumika",
       "addUser": "Ongeza Mtumiaji",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Ruhusa za Upeo",
-      "countLabel": "ruhusa {{count}}",
+      "countLabel": "Ruhusa za ufikiaji: {{count}}",
       "createGrant": "Unda Ruhusa",
       "selectWalletPrompt": "Chagua pochi hapo juu ili kuona ruhusa zake za upeo.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Vitambulisho vya Pochi",
-      "countLabel": "vitambulisho {{count}}",
+      "countLabel": "Taarifa za uthibitishaji za API/kuingia: {{count}}",
       "addCredential": "Ongeza Kitambulisho",
       "selectWalletPrompt": "Chagua pochi hapo juu ili kuona vitambulisho vyake.",
       "columns": {

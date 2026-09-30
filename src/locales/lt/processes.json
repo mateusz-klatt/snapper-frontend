@@ -47,7 +47,7 @@
     "badge": "šablonas",
     "mode": "Režimas:",
     "parameters": "Parametrai:",
-    "paramCount": "{{count}} parametras (-ai)",
+    "paramCount": "{{count}}",
     "noParams": "parametrų nenustatyta"
   },
   "badges": {

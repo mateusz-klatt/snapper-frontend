@@ -75,10 +75,10 @@
         "net_non_finite": "নিট P&L সসীম নয়",
         "attribution_value_non_finite": "অ্যাট্রিবিউশন মান সসীম নয়",
         "attribution_reconciliation_failed": "অ্যাট্রিবিউশন সমন্বয় ব্যর্থ হয়েছে",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "অ্যাট্রিবিউট করা P&L মানগুলোর যোগফল নির্ভুলভাবে সংখ্যায় উপস্থাপন করা যায় না",
+        "instrument_reconciliation_failed": "ইনস্ট্রুমেন্টভিত্তিক P&L-এর মোট মান সামগ্রিক P&L-এর মোট মানের সঙ্গে মেলেনি",
+        "instrument_sum_unrepresentable": "ইনস্ট্রুমেন্ট মানগুলোর যোগফল নির্ভুলভাবে সংখ্যায় উপস্থাপন করা যায় না",
+        "late_pre_activation_execution": "সক্রিয়করণের আগের টাইমস্ট্যাম্পসহ বিলম্বে আসা ট্রেড এক্সিকিউশন"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: অপেক্ষমাণ",
     "slTpButton": "SL/TP",
     "trailButton": "ট্রেইল",
@@ -237,10 +237,10 @@
     "stopLoss": "স্টপ-লস",
     "takeProfit": "টেক-প্রফিট",
     "placeholders": {
-      "slLong": "${{price}}-এর নিচে",
-      "slShort": "${{price}}-এর উপরে",
-      "tpLong": "${{price}}-এর উপরে",
-      "tpShort": "${{price}}-এর নিচে"
+      "slLong": "{{price}}-এর নিচে",
+      "slShort": "{{price}}-এর উপরে",
+      "tpLong": "{{price}}-এর উপরে",
+      "tpShort": "{{price}}-এর নিচে"
     },
     "buttons": {
       "cancel": "বাতিল",

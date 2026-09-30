@@ -14,12 +14,29 @@
     "order_rejected": "Agizo limekataliwa",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Jibu lisiloeleweka kutoka soko la biashara",
+      "unknown": "Sababu haijulikani"
+    },
+    "side": {
+      "buy": "UNUNUZI",
+      "sell": "UUZAJI"
+    },
+    "status": {
+      "error": "Hitilafu",
+      "healthy": "Inafanya kazi vizuri",
+      "warning": "Onyo"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} iliripoti {{2}} kwa heartbeat {{3}} mfululizo",
     "margin_warning": "{{0}} {{1}} {{2}} limezuiwa na dhamana: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} limetekelezwa kwenye {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} limetekelezwa kwenye {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} limetekelezwa kwenye {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} limekataliwa: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} hali haijulikani: {{3}} — uthibitisho unaendelea",
+    "order_unknown": "{{0}} {{1}} {{2}} hali haijulikani: {{3}} — uthibitishaji kutoka soko la biashara unasubiriwa; usidhani kuwa nafasi imefungwa",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hali haijulikani: {{3}} — uthibitishaji kutoka soko la biashara unasubiriwa; usidhani kuwa nafasi imefungwa",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa kwa {{0}} ({{1}})"
   },
   "detail": {

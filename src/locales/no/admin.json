@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Brukeradministrasjon",
-      "countLabel": "{{count}} brukere",
+      "countLabel": "Brukere: {{count}}",
       "showInactive": "Vis inaktive",
       "hideInactive": "Skjul inaktive",
       "addUser": "Legg til bruker",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Tilgangsomfang",
-      "countLabel": "{{count}} tilgangsomfang",
+      "countLabel": "Tilgangstildelinger: {{count}}",
       "createGrant": "Tildel omfang",
       "selectWalletPrompt": "Velg en lommebok ovenfor for å vise tilgangsomfang.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Lommeboklegitimasjon",
-      "countLabel": "{{count}} legitimasjoner",
+      "countLabel": "API-/påloggingsopplysninger: {{count}}",
       "addCredential": "Legg til legitimasjon",
       "selectWalletPrompt": "Velg en lommebok ovenfor for å vise legitimasjonen.",
       "columns": {

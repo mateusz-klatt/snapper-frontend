@@ -1,3 +1,7 @@
+import i18n from '../i18n/config'
+import { getIntlLocale, resolveLanguageTag } from '../i18n/countryLanguages'
+import { DEFAULT_LOCALE } from '../i18n/types'
+
 export function getCookie(name: string): string {
   const prefix = name + '='
 
@@ -10,7 +14,9 @@ export function getCookie(name: string): string {
 }
 
 export function formatNumber(value: number, options?: Intl.NumberFormatOptions): string {
-  return value.toLocaleString('en-US', options)
+  const locale = resolveLanguageTag(i18n.language) ?? DEFAULT_LOCALE
+
+  return value.toLocaleString(getIntlLocale(locale), options)
 }
 
 const BYTES_PER_KIB = 1024

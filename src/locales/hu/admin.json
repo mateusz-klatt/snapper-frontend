@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Hatáskör jogosultságok",
-      "countLabel": "Jogosultságok: {{count}}",
+      "countLabel": "Hozzáférési jogosultságok: {{count}}",
       "createGrant": "Hatáskör hozzárendelése",
       "selectWalletPrompt": "A hatáskör jogosultságok megtekintéséhez válasszon fent egy pénztárcát.",
       "columns": {

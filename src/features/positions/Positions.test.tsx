@@ -548,7 +548,21 @@ describe('Positions', () => {
     renderWithProviders(<Positions />)
     const badge = screen.getByTestId('trailing-stop-badge')
 
-    expect(badge).toHaveTextContent('TS: $95000.00')
+    expect(badge).toHaveTextContent('TS: 95000.00 USD')
+  })
+
+  it('preserves the quote currency and precision of a small active trailing stop', async () => {
+    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({
+      data: [makePosition({ instrument: 'ETH-BTC', positionCyclePublicId: 'cycle-btc' })],
+      isLoading: false,
+    } as never)
+    vi.mocked(useTrailingStopForCycle).mockReturnValue({
+      data: { type: 'trailing_stop_state', payload: { current_stop: 0.000012345 } },
+    } as never)
+    renderWithProviders(<Positions />)
+    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: 0.000012345 BTC')
   })
 
   it('keeps protective-order state visible but hides attach controls without create:orders', async () => {
@@ -565,7 +579,7 @@ describe('Positions', () => {
     } as never)
     renderWithProviders(<Positions />)
 
-    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: $95000.00')
+    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: 95000.00 USD')
     expect(screen.queryByTestId('attach-bracket-BTC-USD-kraken-live')).not.toBeInTheDocument()
     expect(screen.queryByTestId('attach-trailing-stop-BTC-USD-kraken-live')).not.toBeInTheDocument()
   })

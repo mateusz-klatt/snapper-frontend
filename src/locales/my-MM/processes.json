@@ -47,7 +47,7 @@
     "badge": "ပုံစံ",
     "mode": "မုဒ်:",
     "parameters": "ပါရာမီတာများ:",
-    "paramCount": "ပါရာမီတာ {{count}} ခု",
+    "paramCount": "{{count}}",
     "noParams": "ပါရာမီတာ မသတ်မှတ်ထားပါ"
   },
   "badges": {

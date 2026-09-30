@@ -3,6 +3,55 @@ import type { AlertEventInfo } from '../../types/api'
 
 const ALERTS_NAMESPACE_PREFIX = 'alerts.'
 
+type TokenKeys = ReadonlyMap<string, string>
+
+const SIDE_KEYS: TokenKeys = new Map([
+  ['buy', 'argument.side.buy'],
+  ['sell', 'argument.side.sell'],
+])
+const REASON_KEYS: TokenKeys = new Map([
+  ['unknown reason', 'argument.reason.unknown'],
+  ['ambiguous venue response', 'argument.reason.ambiguous'],
+])
+const STATUS_KEYS: TokenKeys = new Map([
+  ['healthy', 'argument.status.healthy'],
+  ['warning', 'argument.status.warning'],
+  ['error', 'argument.status.error'],
+])
+const ARGUMENT_KEYS: ReadonlyMap<string, ReadonlyMap<number, TokenKeys>> = new Map([
+  ['body.order_fill_full', new Map([[0, SIDE_KEYS]])],
+  ['body.order_fill_full_quoted', new Map([[0, SIDE_KEYS]])],
+  [
+    'body.order_rejected',
+    new Map([
+      [0, SIDE_KEYS],
+      [3, REASON_KEYS],
+    ]),
+  ],
+  [
+    'body.margin_warning',
+    new Map([
+      [0, SIDE_KEYS],
+      [3, REASON_KEYS],
+    ]),
+  ],
+  [
+    'body.order_unknown',
+    new Map([
+      [0, SIDE_KEYS],
+      [3, REASON_KEYS],
+    ]),
+  ],
+  [
+    'body.order_unknown_unresolved',
+    new Map([
+      [0, SIDE_KEYS],
+      [3, REASON_KEYS],
+    ]),
+  ],
+  ['body.critical_system_error', new Map([[2, STATUS_KEYS]])],
+])
+
 /**
  * Build the `{ "0": "...", "1": "..." }` arg map i18next expects when
  * a template uses positional placeholders (`{{0}}`, `{{1}}`, …).
@@ -18,6 +67,28 @@ function argsToObject(args: readonly string[] | null | undefined): Record<string
   args.forEach((value, index) => {
     out[index.toString()] = value
   })
+
+  return out
+}
+
+/** Translate recognized semantic tokens while leaving the wire arguments intact. */
+function localizedBodyArgs(
+  key: string,
+  args: readonly string[] | null | undefined,
+  t: TFunction<'alerts'>
+): Record<string, string> {
+  const out = argsToObject(args)
+
+  for (const [index, tokenKeys] of ARGUMENT_KEYS.get(key) ?? []) {
+    const value = out[index.toString()]
+
+    if (value === undefined) continue
+    const argumentKey = tokenKeys.get(value.toLowerCase())
+
+    if (argumentKey !== undefined) {
+      out[index.toString()] = t(argumentKey as never, { defaultValue: value })
+    }
+  }
 
   return out
 }
@@ -70,8 +141,8 @@ export function resolveAlertBody(alert: AlertEventInfo, t: TFunction<'alerts'>):
     return alert.body
   }
 
-  const argsMap = argsToObject(alert.body_loc_args)
   const namespacedKey = stripAlertsNamespace(alert.body_loc_key)
+  const argsMap = localizedBodyArgs(namespacedKey, alert.body_loc_args, t)
 
   return t(namespacedKey as never, { ...argsMap, defaultValue: alert.body })
 }

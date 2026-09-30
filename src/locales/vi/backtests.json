@@ -85,7 +85,7 @@
       "autoPair": "So sánh với lượt gần nhất",
       "terminalGate": "có thể so sánh khi lượt chạy này đạt trạng thái kết thúc",
       "noSiblings": "không có lượt chạy nào khác với cấu hình này",
-      "limitNotice": "đang hiển thị {{count}} lượt gần nhất — dùng ghép thủ công cho lượt cũ hơn",
+      "limitNotice": "Các lượt chạy gần nhất được hiển thị: {{count}} — hãy ghép cặp thủ công cho các lượt cũ hơn",
       "pickPlaceholder": "— chọn một lượt chạy để so sánh —",
       "showAllLabel": "Hiển thị tất cả lượt chạy (không chỉ cùng cấu hình)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

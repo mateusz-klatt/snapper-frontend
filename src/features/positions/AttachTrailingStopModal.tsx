@@ -6,6 +6,7 @@ import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { useAuth } from '../../stores/auth'
 import { Permission } from '../../types/permissions.generated'
 import { validateTrailingStopParams } from './validation'
+import { formatQuoted, quoteCurrency } from './instrumentQuote'
 
 interface AttachTrailingStopModalProps {
   open: boolean
@@ -106,7 +107,9 @@ export const AttachTrailingStopModal: React.FC<AttachTrailingStopModalProps> = (
             </div>
             <div className='mt-1 flex justify-between'>
               <span className='text-muted-500'>{t('trailingStopModal.entryPrice')}</span>
-              <span className='font-mono text-alpine-900'>${averagePrice.toFixed(2)}</span>
+              <span className='font-mono text-alpine-900'>
+                {formatQuoted(averagePrice, quoteCurrency(instrument))}
+              </span>
             </div>
           </div>
           <div>

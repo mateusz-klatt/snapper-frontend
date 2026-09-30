@@ -75,10 +75,10 @@
         "net_non_finite": "P&L ròng không hữu hạn",
         "attribution_value_non_finite": "Giá trị phân bổ không hữu hạn",
         "attribution_reconciliation_failed": "Đối soát phân bổ thất bại",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Không thể biểu diễn chính xác tổng các giá trị P&L được phân bổ",
+        "instrument_reconciliation_failed": "Tổng các giá trị P&L theo công cụ không khớp với tổng P&L chung",
+        "instrument_sum_unrepresentable": "Không thể biểu diễn chính xác tổng các giá trị theo công cụ",
+        "late_pre_activation_execution": "Lần khớp lệnh đến muộn có dấu thời gian trước khi kích hoạt"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: đang chờ",
     "slTpButton": "SL/TP",
     "trailButton": "Bám giá",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Dưới ${{price}}",
-      "slShort": "Trên ${{price}}",
-      "tpLong": "Trên ${{price}}",
-      "tpShort": "Dưới ${{price}}"
+      "slLong": "Dưới {{price}}",
+      "slShort": "Trên {{price}}",
+      "tpLong": "Trên {{price}}",
+      "tpShort": "Dưới {{price}}"
     },
     "buttons": {
       "cancel": "Hủy",

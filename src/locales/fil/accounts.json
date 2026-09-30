@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Paraan: {{method}}. Tumugma ang mapagkakatiwalaang ebidensya ng reconciliation.",
       "driftDetected": "Paraan: {{method}}. Nakahanap ng hindi pagkakatugma sa mapagkakatiwalaang ebidensya ng reconciliation.",
-      "openDrift": "Paraan: {{method}}. May natitirang open drift episode pagkatapos ng {{count}} na magkakasunod at buong hindi pagkakatugma.",
+      "openDrift": "Paraan: {{method}}. May natitirang bukas na yugto ng drift. Bilang ng magkakasunod na kumpletong hindi pagtutugma sa reconciliation: {{count}}.",
       "unclassified": "Paraan: {{method}}. Kinakailangan ang pag-uuri ng operator bago patakbuhin ang reconciliation.",
       "notReconciled": "Paraan: {{method}}. Hindi pa kumpleto ang ebidensya ng reconciliation.",
       "stale": "Paraan: {{method}}. Masyadong luma ang hatol ng reconciliation para pagkatiwalaan.",

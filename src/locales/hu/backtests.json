@@ -85,7 +85,7 @@
       "autoPair": "Összehasonlítás a legutóbbival",
       "terminalGate": "az összehasonlítás akkor érhető el, ha ez a futtatás terminális állapotba kerül",
       "noSiblings": "nincs más futtatás ezzel a konfigurációval",
-      "limitNotice": "a legutóbbiak megjelenítése: {{count}} — régebbi futtatásokhoz használjon kézi párosítást",
+      "limitNotice": "A megjelenített legutóbbi futások száma: {{count}} — régebbi futásokhoz használjon kézi párosítást",
       "pickPlaceholder": "— válasszon futtatást az összehasonlításhoz —",
       "showAllLabel": "Minden futtatás megjelenítése (nem csak azonos konfiguráció)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

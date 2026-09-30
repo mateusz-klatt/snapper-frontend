@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Pamamahala ng Users",
-      "countLabel": "{{count}} user",
+      "countLabel": "Mga user: {{count}}",
       "showInactive": "Ipakita ang inactive",
       "hideInactive": "Itago ang inactive",
       "addUser": "Mag-add ng User",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Mga Scope Grant",
-      "countLabel": "{{count}} grant",
+      "countLabel": "Mga pahintulot sa pag-access: {{count}}",
       "createGrant": "Gumawa ng Grant",
       "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang scope grants nito.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Mga Kredensyal ng Wallet",
-      "countLabel": "{{count}} kredensyal",
+      "countLabel": "Mga kredensyal: {{count}}",
       "addCredential": "Mag-add ng Credential",
       "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang credentials nito.",
       "columns": {

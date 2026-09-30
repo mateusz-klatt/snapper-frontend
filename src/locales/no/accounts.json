@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metode: {{method}}. Autoritativt avstemmingsbevis stemte overens.",
       "driftDetected": "Metode: {{method}}. Autoritativt avstemmingsbevis fant et avvik.",
-      "openDrift": "Metode: {{method}}. En åpen avviksepisode gjenstår etter {{count}} påfølgende fulle uoverensstemmelser.",
+      "openDrift": "Metode: {{method}}. En åpen avviksepisode gjenstår. Antall påfølgende fulle uoverensstemmelser: {{count}}.",
       "unclassified": "Metode: {{method}}. Operatørklassifisering er nødvendig før avstemming kan kjøres.",
       "notReconciled": "Metode: {{method}}. Avstemmingsbevis er ikke komplett ennå.",
       "stale": "Metode: {{method}}. Avstemmingsresultatet er for gammelt til å være pålitelig.",

@@ -1,13 +1,27 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { formatQuoted, quoteCurrency } from './instrumentQuote'
+import i18n from '../../i18n/config'
 
 describe('formatQuoted', () => {
-  it('appends the quote-currency code to a fixed-decimal price', () => {
-    expect(formatQuoted(4.3836, 'PLN')).toBe('4.38 PLN')
+  afterEach(async () => {
+    await i18n.changeLanguage('en')
+  })
+
+  it('appends the quote-currency code without rounding away quote precision', () => {
+    expect(formatQuoted(4.3836, 'PLN')).toBe('4.3836 PLN')
   })
 
   it('renders the bare number when the quote is unresolved', () => {
-    expect(formatQuoted(4.3836, '')).toBe('4.38')
+    expect(formatQuoted(4.3836, '')).toBe('4.3836')
+  })
+
+  it('keeps a small nonzero quote price visible', () => {
+    expect(formatQuoted(0.000000012345, 'BTC')).toBe('0.000000012345 BTC')
+  })
+
+  it('localizes the decimal separator while keeping the instrument currency', async () => {
+    await i18n.changeLanguage('pl')
+    expect(formatQuoted(4.3836, 'PLN')).toBe('4,3836 PLN')
   })
 })
 

@@ -75,10 +75,10 @@
         "net_non_finite": "Net P&L sonlu değil",
         "attribution_value_non_finite": "Atıf değeri sonlu değil",
         "attribution_reconciliation_failed": "Atıf mutabakatı başarısız",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Atfedilen P&L değerlerinin toplamı tam olarak temsil edilemiyor",
+        "instrument_reconciliation_failed": "Enstrüman bazındaki P&L değerlerinin toplamı genel P&L toplamıyla uyuşmuyor",
+        "instrument_sum_unrepresentable": "Enstrüman değerlerinin toplamı tam olarak temsil edilemiyor",
+        "late_pre_activation_execution": "Etkinleştirme öncesine ait zaman damgası taşıyan ve geç ulaşan işlem gerçekleşmesi"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: bekliyor",
     "slTpButton": "SL/TP",
     "trailButton": "İz Süren Stop",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "${{price}} altında",
-      "slShort": "${{price}} üstünde",
-      "tpLong": "${{price}} üstünde",
-      "tpShort": "${{price}} altında"
+      "slLong": "{{price}} altında",
+      "slShort": "{{price}} üstünde",
+      "tpLong": "{{price}} üstünde",
+      "tpShort": "{{price}} altında"
     },
     "buttons": {
       "cancel": "İptal",

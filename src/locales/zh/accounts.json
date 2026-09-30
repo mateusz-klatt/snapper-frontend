@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "方法：{{method}}。权威对账证据相符。",
       "driftDetected": "方法：{{method}}。权威对账证据发现不一致。",
-      "openDrift": "方法：{{method}}。在 {{count}} 次连续完全不一致后，仍有未解决的偏差事件。",
+      "openDrift": "方法：{{method}}。仍存在未结束的偏差事件。连续结果不一致的完整对账比较次数：{{count}}。",
       "unclassified": "方法：{{method}}。运行对账前需要操作员进行分类。",
       "notReconciled": "方法：{{method}}。对账证据尚未完整。",
       "stale": "方法：{{method}}。对账判定结果太旧，无法信任。",

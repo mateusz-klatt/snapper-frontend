@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "用户管理",
-      "countLabel": "{{count}} 个用户",
+      "countLabel": "用户：{{count}}",
       "showInactive": "显示停用用户",
       "hideInactive": "隐藏停用用户",
       "addUser": "添加用户",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "权限范围",
-      "countLabel": "{{count}} 个授权",
+      "countLabel": "访问授权：{{count}}",
       "createGrant": "创建授权",
       "selectWalletPrompt": "选择上方钱包以查看其权限范围。",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "钱包凭据",
-      "countLabel": "{{count}} 个凭据",
+      "countLabel": "API/登录凭据：{{count}}",
       "addCredential": "添加凭据",
       "selectWalletPrompt": "选择上方钱包以查看其凭据。",
       "columns": {

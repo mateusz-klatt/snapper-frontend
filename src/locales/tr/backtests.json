@@ -85,7 +85,7 @@
       "autoPair": "En yeniyle karşılaştır",
       "terminalGate": "karşılaştırma bu çalıştırma terminal duruma ulaştığında kullanılabilir",
       "noSiblings": "bu yapılandırmayla başka çalıştırma yok",
-      "limitNotice": "en yeni {{count}} gösteriliyor — daha eski çalıştırmalar için manuel eşleştirme kullanın",
+      "limitNotice": "Gösterilen en son çalıştırmalar: {{count}} — daha eski çalıştırmalar için elle bir çift seçin",
       "pickPlaceholder": "— karşılaştırmak için bir çalıştırma seç —",
       "showAllLabel": "Tüm çalıştırmaları göster (yalnızca aynı yapılandırma değil)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

@@ -47,7 +47,7 @@
     "badge": "模板",
     "mode": "模式：",
     "parameters": "參數：",
-    "paramCount": "{{count}} 個參數",
+    "paramCount": "{{count}}",
     "noParams": "未設定參數"
   },
   "badges": {

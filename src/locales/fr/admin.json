@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Gestion des utilisateurs",
-      "countLabel": "{{count}} utilisateurs",
+      "countLabel": "Utilisateurs : {{count}}",
       "showInactive": "Afficher les inactifs",
       "hideInactive": "Masquer les inactifs",
       "addUser": "Ajouter un utilisateur",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Attributions de scope",
-      "countLabel": "{{count}} attributions",
+      "countLabel": "Autorisations d’accès : {{count}}",
       "createGrant": "Créer une attribution",
       "selectWalletPrompt": "Choisissez un wallet ci-dessus pour afficher ses attributions de scope.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Identifiants du wallet",
-      "countLabel": "{{count}} identifiants",
+      "countLabel": "Identifiants d’accès : {{count}}",
       "addCredential": "Ajouter un identifiant",
       "selectWalletPrompt": "Choisissez un wallet ci-dessus pour afficher ses identifiants.",
       "columns": {

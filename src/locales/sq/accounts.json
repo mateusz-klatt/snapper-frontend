@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metoda: {{method}}. Dëshmitë autoritare të rakordimit përputhen.",
       "driftDetected": "Metoda: {{method}}. Dëshmitë autoritare të rakordimit gjetën një mospërputhje.",
-      "openDrift": "Metoda: {{method}}. Mbetet një episod i hapur zhvendosjeje pas {{count}} mospërputhjeve të plota të njëpasnjëshme.",
+      "openDrift": "Metoda: {{method}}. Një episod devijimi mbetet i hapur. Numri i mospërputhjeve të plota të njëpasnjëshme: {{count}}.",
       "unclassified": "Metoda: {{method}}. Klasifikimi i operatorit kërkohet përpara se të mund të ekzekutohet rakordimi.",
       "notReconciled": "Metoda: {{method}}. Dëshmitë e rakordimit nuk janë ende të plota.",
       "stale": "Metoda: {{method}}. Verdikti i rakordimit është shumë i vjetër për t'u besuar.",

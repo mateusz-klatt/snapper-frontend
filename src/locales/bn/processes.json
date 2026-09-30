@@ -47,7 +47,7 @@
     "badge": "টেমপ্লেট",
     "mode": "মোড:",
     "parameters": "প্যারামিটার:",
-    "paramCount": "{{count}} parameter",
+    "paramCount": "{{count}}",
     "noParams": "কোনো parameter সেট নেই"
   },
   "badges": {

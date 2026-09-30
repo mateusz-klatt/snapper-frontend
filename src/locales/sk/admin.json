@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Rozsahy oprávnení",
-      "countLabel": "Rozsahy oprávnení: {{count}}",
+      "countLabel": "Pridelenia prístupu: {{count}}",
       "createGrant": "Udeliť rozsah",
       "selectWalletPrompt": "Vyberte vyššie peňaženku na zobrazenie jej rozsahov oprávnení.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Poverenia peňaženky",
-      "countLabel": "Poverenia: {{count}}",
+      "countLabel": "API/prihlasovacie údaje: {{count}}",
       "addCredential": "Pridať poverenie",
       "selectWalletPrompt": "Vyberte vyššie peňaženku na zobrazenie jej poverení.",
       "columns": {

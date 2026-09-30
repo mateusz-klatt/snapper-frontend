@@ -80,7 +80,7 @@
   "scrubber": {
     "label": "Time:",
     "live": "Live",
-    "sliderAriaLabel": "Scrub market time",
+    "sliderAriaLabel": "Տեղաշարժել շուկայի ժամանակագիծը",
     "presets": {
       "live": "Live",
       "h1": "-1h",

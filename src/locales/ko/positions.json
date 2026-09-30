@@ -75,10 +75,10 @@
         "net_non_finite": "순 P&L이 유한하지 않음",
         "attribution_value_non_finite": "귀속값이 유한하지 않음",
         "attribution_reconciliation_failed": "귀속값 대사 실패",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "귀속된 P&L 값의 합계를 정확히 표현할 수 없음",
+        "instrument_reconciliation_failed": "종목별 P&L 합계 대사 실패",
+        "instrument_sum_unrepresentable": "종목별 값의 합계를 정확히 표현할 수 없음",
+        "late_pre_activation_execution": "활성화 전 타임스탬프를 가진 지연 도착 체결"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: 대기 중",
     "slTpButton": "SL/TP",
     "trailButton": "트레일링",
@@ -237,10 +237,10 @@
     "stopLoss": "스탑로스",
     "takeProfit": "테이크프로핏",
     "placeholders": {
-      "slLong": "${{price}} 아래",
-      "slShort": "${{price}} 위",
-      "tpLong": "${{price}} 위",
-      "tpShort": "${{price}} 아래"
+      "slLong": "{{price}} 아래",
+      "slShort": "{{price}} 위",
+      "tpLong": "{{price}} 위",
+      "tpShort": "{{price}} 아래"
     },
     "buttons": {
       "cancel": "취소",

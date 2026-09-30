@@ -14,12 +14,29 @@
     "order_rejected": "Pokyn zamietnutý",
     "position_stop_loss_fired": "Stop-loss spustený"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Nejednoznačná odpoveď burzy",
+      "unknown": "Neznámy dôvod"
+    },
+    "side": {
+      "buy": "NÁKUP",
+      "sell": "PREDAJ"
+    },
+    "status": {
+      "error": "Chyba",
+      "healthy": "V poriadku",
+      "warning": "Upozornenie"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} hlási {{2}} počas {{3}} po sebe idúcich heartbeatov",
     "margin_warning": "{{0}} {{1}} {{2}} zablokované kvôli marži: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} vykonané na {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} vykonané na {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} vykonané na {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} zamietnuté: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} stav neznámy: {{3}} — prebieha overenie",
+    "order_unknown": "{{0}} {{1}} {{2}} — stav neznámy: {{3}} — čaká sa na overenie burzou; nepredpokladajte, že pozícia je zatvorená",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stav neznámy: {{3}} — čaká sa na overenie burzou; nepredpokladajte, že pozícia je zatvorená",
     "position_stop_loss_fired": "Stop-loss spustený pre {{0}} ({{1}})"
   },
   "detail": {

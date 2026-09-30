@@ -14,12 +14,29 @@
     "order_rejected": "Ordem rejeitada",
     "position_stop_loss_fired": "Stop-loss acionado"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Resposta ambígua da exchange",
+      "unknown": "Motivo desconhecido"
+    },
+    "side": {
+      "buy": "COMPRA",
+      "sell": "VENDA"
+    },
+    "status": {
+      "error": "Erro",
+      "healthy": "Saudável",
+      "warning": "Aviso"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} relatou {{2}} por {{3}} heartbeats consecutivos",
     "margin_warning": "{{0}} {{1}} {{2}} bloqueada pela margem: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} executada na {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} executada na {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} executada na {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rejeitada: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} status desconhecido: {{3}} — verificação em andamento",
+    "order_unknown": "{{0}} {{1}} {{2}} — estado desconhecido: {{3}} — verificação da exchange pendente; não presuma que a posição esteja encerrada",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — estado desconhecido: {{3}} — verificação da exchange pendente; não presuma que a posição esteja encerrada",
     "position_stop_loss_fired": "Stop-loss acionado em {{0}} ({{1}})"
   },
   "detail": {

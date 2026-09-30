@@ -3,7 +3,7 @@ import resourcesToBackend from 'i18next-resources-to-backend'
 import { initReactI18next } from 'react-i18next'
 import { BOOT_NAMESPACES, BOOT_RESOURCES } from './bootResources'
 import { DEFAULT_LOCALE, isLocale } from './types'
-import { getCatalogLanguage } from './countryLanguages'
+import { getCatalogLanguage, resolveLanguageTag } from './countryLanguages'
 import type { AppLocale, CatalogLanguage } from './types'
 
 const STORAGE_KEY = 'snapper-locale'
@@ -22,11 +22,10 @@ const parseNavigatorLocale = (): AppLocale | null => {
   const languages = Array.isArray(navigator.languages) ? navigator.languages : []
 
   for (const tag of languages) {
-    const parts = tag.toLowerCase().split('-')
-    const region = parts.length > 1 ? parts[1] : null
+    const locale = resolveLanguageTag(tag)
 
-    if (region !== null && isLocale(region)) {
-      return region
+    if (locale !== null) {
+      return locale
     }
   }
 

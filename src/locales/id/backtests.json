@@ -85,7 +85,7 @@
       "autoPair": "Bandingkan dengan yang terbaru",
       "terminalGate": "perbandingan tersedia setelah sesi ini mencapai status terminal",
       "noSiblings": "tidak ada sesi lain dengan konfigurasi ini",
-      "limitNotice": "menampilkan {{count}} terbaru — gunakan pasangan manual untuk sesi yang lebih lama",
+      "limitNotice": "Uji balik terbaru yang ditampilkan: {{count}} — gunakan pasangan yang dipilih manual untuk uji balik yang lebih lama",
       "pickPlaceholder": "— pilih sesi untuk dibandingkan —",
       "showAllLabel": "Tampilkan semua sesi (bukan hanya konfigurasi sama)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

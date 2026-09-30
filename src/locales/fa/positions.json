@@ -75,10 +75,10 @@
         "net_non_finite": "P&L خالص متناهی نیست",
         "attribution_value_non_finite": "مقدار انتساب متناهی نیست",
         "attribution_reconciliation_failed": "تطبیق انتساب ناموفق بود",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "مجموع مقادیر P&L منتسب‌شده در محاسبات عددی دقیق قابل بازنمایی نیست",
+        "instrument_reconciliation_failed": "تطبیق مجموع P&L ابزارها با P&L کل ناموفق بود",
+        "instrument_sum_unrepresentable": "مجموع مقادیر ابزارها در محاسبات عددی دقیق قابل بازنمایی نیست",
+        "late_pre_activation_execution": "اجرای معاملاتی دیررس با مُهر زمانی پیش از فعال‌سازی"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: در انتظار",
     "slTpButton": "SL/TP",
     "trailButton": "تریل",
@@ -237,10 +237,10 @@
     "stopLoss": "حد ضرر",
     "takeProfit": "حد سود",
     "placeholders": {
-      "slLong": "زیر ${{price}}",
-      "slShort": "بالای ${{price}}",
-      "tpLong": "بالای ${{price}}",
-      "tpShort": "زیر ${{price}}"
+      "slLong": "زیر {{price}}",
+      "slShort": "بالای {{price}}",
+      "tpLong": "بالای {{price}}",
+      "tpShort": "زیر {{price}}"
     },
     "buttons": {
       "cancel": "لغو",

@@ -85,7 +85,7 @@
       "autoPair": "Vergelijken met meest recente",
       "terminalGate": "vergelijken beschikbaar zodra deze run een terminale status bereikt",
       "noSiblings": "geen andere runs met deze configuratie",
-      "limitNotice": "toont {{count}} meest recente — gebruik handmatige paring voor oudere runs",
+      "limitNotice": "Aantal weergegeven meest recente runs: {{count}} — gebruik voor oudere runs een handmatig gekozen paar",
       "pickPlaceholder": "— kies een run om te vergelijken —",
       "showAllLabel": "Alle runs tonen (niet alleen dezelfde configuratie)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

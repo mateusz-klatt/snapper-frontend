@@ -75,10 +75,10 @@
         "net_non_finite": "P&L halisi si thamani yenye kikomo",
         "attribution_value_non_finite": "Thamani ya uhusishaji si yenye kikomo",
         "attribution_reconciliation_failed": "Upatanisho wa uhusishaji umeshindikana",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Jumla ya thamani za P&L zilizohusishwa haiwezi kuwakilishwa kwa usahihi",
+        "instrument_reconciliation_failed": "Jumla ya P&L za instrumenti zote hailingani na P&L ya jumla",
+        "instrument_sum_unrepresentable": "Jumla ya thamani za instrumenti haiwezi kuwakilishwa kwa usahihi",
+        "late_pre_activation_execution": "Utekelezaji wa agizo uliowasili kwa kuchelewa wenye muhuri wa muda wa kabla ya uanzishaji"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: inasubiri",
     "slTpButton": "SL/TP",
     "trailButton": "Fuatilia",
@@ -237,10 +237,10 @@
     "stopLoss": "Kusitisha Hasara",
     "takeProfit": "Kuchukua Faida",
     "placeholders": {
-      "slLong": "Chini ya ${{price}}",
-      "slShort": "Juu ya ${{price}}",
-      "tpLong": "Juu ya ${{price}}",
-      "tpShort": "Chini ya ${{price}}"
+      "slLong": "Chini ya {{price}}",
+      "slShort": "Juu ya {{price}}",
+      "tpLong": "Juu ya {{price}}",
+      "tpShort": "Chini ya {{price}}"
     },
     "buttons": {
       "cancel": "Ghairi",

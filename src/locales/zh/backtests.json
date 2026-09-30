@@ -85,7 +85,7 @@
       "autoPair": "与最近一次比较",
       "terminalGate": "此运行达到终态后可比较",
       "noSiblings": "没有使用相同配置的其他运行",
-      "limitNotice": "显示最近 {{count}} 个 — 如需更早运行，请手动配对",
+      "limitNotice": "显示的最近回测运行次数：{{count}} — 对于更早的运行，请手动选择配对",
       "pickPlaceholder": "— 选择要比较的运行 —",
       "showAllLabel": "显示所有运行（不只相同配置）",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

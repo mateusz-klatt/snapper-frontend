@@ -75,10 +75,10 @@
         "net_non_finite": "Το καθαρό P&L δεν είναι πεπερασμένο",
         "attribution_value_non_finite": "Η αξία επιμερισμού δεν είναι πεπερασμένη",
         "attribution_reconciliation_failed": "Η συμφωνία του επιμερισμού απέτυχε",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Το άθροισμα των επιμερισμένων τιμών P&L δεν μπορεί να αναπαρασταθεί αριθμητικά με ακρίβεια",
+        "instrument_reconciliation_failed": "Τα σύνολα P&L ανά μέσο δεν συμφωνούν με το συνολικό P&L",
+        "instrument_sum_unrepresentable": "Το άθροισμα των τιμών των μέσων δεν μπορεί να αναπαρασταθεί αριθμητικά με ακρίβεια",
+        "late_pre_activation_execution": "Εκτέλεση συναλλαγής που έφτασε καθυστερημένα με χρονική σήμανση πριν από την ενεργοποίηση"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: σε εκκρεμότητα",
     "slTpButton": "SL/TP",
     "trailButton": "Trailing Stop",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Κάτω από ${{price}}",
-      "slShort": "Πάνω από ${{price}}",
-      "tpLong": "Πάνω από ${{price}}",
-      "tpShort": "Κάτω από ${{price}}"
+      "slLong": "Κάτω από {{price}}",
+      "slShort": "Πάνω από {{price}}",
+      "tpLong": "Πάνω από {{price}}",
+      "tpShort": "Κάτω από {{price}}"
     },
     "buttons": {
       "cancel": "Ακύρωση",

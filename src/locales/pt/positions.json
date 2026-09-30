@@ -75,10 +75,10 @@
         "net_non_finite": "O P&L líquido não é finito",
         "attribution_value_non_finite": "O valor da atribuição não é finito",
         "attribution_reconciliation_failed": "Falha na reconciliação da atribuição",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "A soma dos valores de P&L atribuídos não pode ser representada numericamente com exatidão",
+        "instrument_reconciliation_failed": "Falha na conciliação do P&L por instrumento",
+        "instrument_sum_unrepresentable": "A soma dos valores por instrumento não pode ser representada numericamente com exatidão",
+        "late_pre_activation_execution": "Execução de ordem recebida com atraso, com carimbo de data/hora anterior à ativação"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: pendente",
     "slTpButton": "SL/TP",
     "trailButton": "Stop móvel",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Abaixo de ${{price}}",
-      "slShort": "Acima de ${{price}}",
-      "tpLong": "Acima de ${{price}}",
-      "tpShort": "Abaixo de ${{price}}"
+      "slLong": "Abaixo de {{price}}",
+      "slShort": "Acima de {{price}}",
+      "tpLong": "Acima de {{price}}",
+      "tpShort": "Abaixo de {{price}}"
     },
     "buttons": {
       "cancel": "Cancelar",

@@ -85,7 +85,7 @@
       "autoPair": "Porównaj z najnowszym",
       "terminalGate": "porównanie dostępne po osiągnięciu stanu końcowego",
       "noSiblings": "brak innych przebiegów z tą konfiguracją",
-      "limitNotice": "pokazano {{count}} najnowszych — użyj wyboru ręcznego dla starszych",
+      "limitNotice": "Liczba wyświetlonych najnowszych przebiegów: {{count}} — dla starszych przebiegów użyj pary wybranej ręcznie",
       "pickPlaceholder": "— wybierz przebieg do porównania —",
       "showAllLabel": "Pokaż wszystkie przebiegi (nie tylko z tą samą konfiguracją)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

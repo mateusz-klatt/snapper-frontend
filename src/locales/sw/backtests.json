@@ -85,7 +85,7 @@
       "autoPair": "Linganisha na ya karibuni zaidi",
       "terminalGate": "ulinganisho hupatikana run hii ikifika hali ya mwisho",
       "noSiblings": "hakuna run nyingine zenye usanidi huu",
-      "limitNotice": "inaonyesha {{count}} za karibuni zaidi — tumia ulinganisho wa manual kwa run za zamani",
+      "limitNotice": "Majaribio ya hivi karibuni yanayoonyeshwa: {{count}} — chagua jozi mwenyewe kwa majaribio ya zamani",
       "pickPlaceholder": "— chagua run ya kulinganisha —",
       "showAllLabel": "Onyesha run zote (si zenye usanidi sawa pekee)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

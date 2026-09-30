@@ -85,7 +85,7 @@
       "autoPair": "Krahaso me më të fundit",
       "terminalGate": "krahasimi është i disponueshëm pasi ky ekzekutim të arrijë status terminal",
       "noSiblings": "nuk ka ekzekutime të tjera me këtë konfigurim",
-      "limitNotice": "po shfaqen {{count}} më të fundit — përdorni çiftimin manual për ekzekutime më të vjetra",
+      "limitNotice": "Numri i testeve më të fundit të shfaqura: {{count}} — përdorni një çift të zgjedhur manualisht për teste më të vjetra",
       "pickPlaceholder": "— zgjidhni një ekzekutim për krahasim —",
       "showAllLabel": "Shfaq të gjitha ekzekutimet (jo vetëm të njëjtin konfigurim)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

@@ -107,7 +107,7 @@ describe('DbStatsCard', () => {
     expect(screen.getByText('12,345')).toBeInTheDocument()
     expect(screen.getByText('78,910')).toBeInTheDocument()
     expect(screen.getByText('stale')).toBeInTheDocument()
-    expect(screen.getByText(/Sampler interval: 60s · 2 tables/)).toBeInTheDocument()
+    expect(screen.getByText('Sampler interval: 60s · table count: 2')).toBeInTheDocument()
   })
 
   it('explains the Total estimate via a tooltip on the column header', async () => {

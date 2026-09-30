@@ -1,3 +1,5 @@
+import { formatQuoted } from './instrumentQuote'
+
 export interface ValidationError {
   /** i18n key suffix under ``positions:validation`` */
   key: string
@@ -67,8 +69,7 @@ export const validateBracketPrices = (
 
   if (takeProfitError !== null) return takeProfitError
 
-  const price = averagePrice.toFixed(2)
-  const fmt = quote === '' ? price : `${price} ${quote}`
+  const fmt = formatQuoted(averagePrice, quote)
 
   if (side === 'LONG') {
     return validateLongBracketRelation(sl, tp, averagePrice, fmt)

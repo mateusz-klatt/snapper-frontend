@@ -47,7 +47,7 @@
     "badge": "قالب",
     "mode": "حالت:",
     "parameters": "پارامترها:",
-    "paramCount": "{{count}} پارامتر",
+    "paramCount": "{{count}}",
     "noParams": "پارامتری تنظیم نشده است"
   },
   "badges": {

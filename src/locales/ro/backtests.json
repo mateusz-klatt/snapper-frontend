@@ -85,7 +85,7 @@
       "autoPair": "Comparați cu cea mai recentă rulare",
       "terminalGate": "comparația este disponibilă după ce această rulare ajunge la un status terminal",
       "noSiblings": "nu există alte rulări cu această configurație",
-      "limitNotice": "se afișează cele mai recente {{count}} — folosiți pereche manuală pentru rulări mai vechi",
+      "limitNotice": "Număr de rulări recente afișate: {{count}} — folosiți o pereche selectată manual pentru rulările mai vechi",
       "pickPlaceholder": "— alegeți o rulare pentru comparație —",
       "showAllLabel": "Afișați toate rulările (nu doar aceeași configurație)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

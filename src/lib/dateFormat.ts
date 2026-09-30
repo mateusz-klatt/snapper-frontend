@@ -1,25 +1,27 @@
-import { COUNTRY_TO_INTL_LOCALE } from '../i18n/countryLanguages'
-import type { AppLocale } from '../i18n/types'
+import { getIntlLocale, resolveLanguageTag } from '../i18n/countryLanguages'
+import { DEFAULT_LOCALE, isLocale } from '../i18n/types'
 
-const intlLocale = (locale: AppLocale): string => COUNTRY_TO_INTL_LOCALE[locale]
+/** Accept picker countries first, then catalog languages or browser language tags. */
+const intlLocale = (locale: string): string =>
+  getIntlLocale(isLocale(locale) ? locale : (resolveLanguageTag(locale) ?? DEFAULT_LOCALE))
 
 export const formatDate = (
   date: Date,
-  locale: AppLocale,
+  locale: string,
   options?: Intl.DateTimeFormatOptions
 ): string =>
   new Intl.DateTimeFormat(intlLocale(locale), options ?? { dateStyle: 'medium' }).format(date)
 
 export const formatTime = (
   date: Date,
-  locale: AppLocale,
+  locale: string,
   options?: Intl.DateTimeFormatOptions
 ): string =>
   new Intl.DateTimeFormat(intlLocale(locale), options ?? { timeStyle: 'short' }).format(date)
 
 export const formatDateTime = (
   date: Date,
-  locale: AppLocale,
+  locale: string,
   options?: Intl.DateTimeFormatOptions
 ): string =>
   new Intl.DateTimeFormat(

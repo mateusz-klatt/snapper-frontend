@@ -59,7 +59,7 @@
     "statusTooltip": {
       "reconciled": "Method: {{method}}. Authoritative reconciliation evidence matched.",
       "driftDetected": "Method: {{method}}. Authoritative reconciliation evidence found a mismatch.",
-      "openDrift": "Method: {{method}}. An open drift episode remains after {{count}} consecutive full mismatches.",
+      "openDrift": "Method: {{method}}. An open drift episode remains. Consecutive full mismatches: {{count}}.",
       "unclassified": "Method: {{method}}. Operator classification is required before reconciliation can run.",
       "notReconciled": "Method: {{method}}. Reconciliation evidence is not complete yet.",
       "stale": "Method: {{method}}. The reconciliation verdict is too old to trust.",

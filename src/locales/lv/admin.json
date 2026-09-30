@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Lietotāju pārvaldība",
-      "countLabel": "{{count}} lietotāji",
+      "countLabel": "Lietotāju skaits: {{count}}",
       "showInactive": "Rādīt neaktīvos",
       "hideInactive": "Slēpt neaktīvos",
       "addUser": "Pievienot lietotāju",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Piekļuves jomas",
-      "countLabel": "{{count}} jomas",
+      "countLabel": "Piekļuves piešķīrumu skaits: {{count}}",
       "createGrant": "Piešķirt jomu",
       "selectWalletPrompt": "Izvēlieties maku augstāk, lai skatītu tā piekļuves jomas.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Maka akreditācijas dati",
-      "countLabel": "{{count}} akreditācijas dati",
+      "countLabel": "Akreditācijas datu skaits: {{count}}",
       "addCredential": "Pievienot akreditācijas datus",
       "selectWalletPrompt": "Izvēlieties maku augstāk, lai skatītu tā akreditācijas datus.",
       "columns": {

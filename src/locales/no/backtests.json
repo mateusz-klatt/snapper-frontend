@@ -85,7 +85,7 @@
       "autoPair": "Sammenlign med nyeste",
       "terminalGate": "sammenligning er tilgjengelig når denne kjøringen får terminal status",
       "noSiblings": "ingen andre kjøringer med denne konfigurasjonen",
-      "limitNotice": "viser {{count}} nyeste — bruk manuell paring for eldre kjøringer",
+      "limitNotice": "Viste nyeste kjøringer: {{count}} — bruk et manuelt par for eldre kjøringer",
       "pickPlaceholder": "— velg en kjøring å sammenligne —",
       "showAllLabel": "Vis alle kjøringer (ikke bare samme konfigurasjon)",
       "optionLabel": "{{id}} · {{strategy}} · {{status}}",

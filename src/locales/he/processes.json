@@ -47,7 +47,7 @@
     "badge": "תבנית",
     "mode": "מצב:",
     "parameters": "פרמטרים:",
-    "paramCount": "{{count}} פרמטרים",
+    "paramCount": "{{count}}",
     "noParams": "לא הוגדרו פרמטרים"
   },
   "badges": {

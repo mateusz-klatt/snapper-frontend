@@ -14,12 +14,29 @@
     "order_rejected": "Megbízás elutasítva",
     "position_stop_loss_fired": "Stop-loss aktiválódott"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Nem egyértelmű tőzsdei válasz",
+      "unknown": "Ismeretlen ok"
+    },
+    "side": {
+      "buy": "VÉTEL",
+      "sell": "ELADÁS"
+    },
+    "status": {
+      "error": "Hiba",
+      "healthy": "Rendben",
+      "warning": "Figyelmeztetés"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} {{2}} állapotot jelzett {{3}} egymást követő heartbeat során",
     "margin_warning": "{{0}} {{1}} {{2}} fedezethiány miatt blokkolva: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} teljesült a(z) {{4}} tőzsdén",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} teljesült a(z) {{4}} tőzsdén",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} teljesült a(z) {{4}} tőzsdén",
     "order_rejected": "{{0}} {{1}} {{2}} elutasítva: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} állapot ismeretlen: {{3}} — ellenőrzés folyamatban",
+    "order_unknown": "{{0}} {{1}} {{2}} állapota ismeretlen: {{3}} — a tőzsdei ellenőrzés függőben van; ne feltételezze, hogy a pozíció le van zárva",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} állapota ismeretlen: {{3}} — a tőzsdei ellenőrzés függőben van; ne feltételezze, hogy a pozíció le van zárva",
     "position_stop_loss_fired": "Stop-loss aktiválódott ehhez: {{0}} ({{1}})"
   },
   "detail": {

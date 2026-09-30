@@ -14,12 +14,29 @@
     "order_rejected": "Order rejected",
     "position_stop_loss_fired": "Stop-loss fired"
   },
+  "argument": {
+    "reason": {
+      "ambiguous": "Ambiguous exchange response",
+      "unknown": "Unknown reason"
+    },
+    "side": {
+      "buy": "BUY",
+      "sell": "SELL"
+    },
+    "status": {
+      "error": "Error",
+      "healthy": "Healthy",
+      "warning": "Warning"
+    }
+  },
   "body": {
     "critical_system_error": "{{0}}/{{1}} reported {{2}} for {{3}} consecutive heartbeats",
     "margin_warning": "{{0}} {{1}} {{2}} blocked by margin: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ ${{3}} filled on {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} filled on {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} filled on {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rejected: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} state unknown: {{3}} — verifying with exchange",
+    "order_unknown": "{{0}} {{1}} {{2}} state unknown: {{3}} — venue verification pending, do not assume the position is closed",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} state unknown: {{3}} — venue verification pending, do not assume the position is closed",
     "position_stop_loss_fired": "Stop-loss fired on {{0}} ({{1}})"
   },
   "detail": {

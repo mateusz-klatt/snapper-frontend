@@ -47,7 +47,7 @@
     "unavailable": "Tietokantatilastot eivät ole saatavilla: {{message}}",
     "fallbackError": "Tietokantatilastojen lataus epäonnistui.",
     "sampled": "näyte {{age}}",
-    "samplerSummary": "Näytteenottoväli: {{seconds}}s · taulut: {{count}}",
+    "samplerSummary": "Näytteenottoväli: {{seconds}} s · taulujen määrä: {{count}}",
     "columns": {
       "table": "Taulu",
       "kind": "Tyyppi",
@@ -116,7 +116,7 @@
     "saturation": "Saturaatio {{percent}}",
     "asyncioTasks": "Asyncio-tehtävät",
     "asyncioActive": "Aktiiviset: {{count}}",
-    "asyncioPending": "+ odottaa: {{count}}",
+    "asyncioPending": "Odottavat: {{count}}",
     "dbPool": "DB-pooli",
     "liveConns": "Live-yhteydet: {{count}}",
     "gcGenerations": "GC Gen0/1/2",

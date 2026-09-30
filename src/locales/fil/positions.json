@@ -75,10 +75,10 @@
         "net_non_finite": "Hindi finite ang netong P&L",
         "attribution_value_non_finite": "Hindi finite ang halaga ng attribution",
         "attribution_reconciliation_failed": "Nabigo ang reconciliation ng attribution",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Hindi maaaring eksaktong katawanin sa numerikal na aritmetika ang kabuuan ng mga na-attribute na halaga ng P&L",
+        "instrument_reconciliation_failed": "Nabigo ang pagtutugma ng mga kabuuang P&L ayon sa instrumento sa kabuuang P&L",
+        "instrument_sum_unrepresentable": "Hindi maaaring eksaktong katawanin sa numerikal na aritmetika ang kabuuan ng mga halaga ayon sa instrumento",
+        "late_pre_activation_execution": "Nahuling dumating na execution ng order na may timestamp bago ang pag-activate"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: naka-pending",
     "slTpButton": "SL/TP",
     "trailButton": "Trailing stop",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-loss",
     "takeProfit": "Take-profit",
     "placeholders": {
-      "slLong": "Mas mababa sa ${{price}}",
-      "slShort": "Mas mataas sa ${{price}}",
-      "tpLong": "Mas mataas sa ${{price}}",
-      "tpShort": "Mas mababa sa ${{price}}"
+      "slLong": "Mas mababa sa {{price}}",
+      "slShort": "Mas mataas sa {{price}}",
+      "tpLong": "Mas mataas sa {{price}}",
+      "tpShort": "Mas mababa sa {{price}}"
     },
     "buttons": {
       "cancel": "Kanselahin",

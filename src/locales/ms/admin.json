@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Pengurusan Pengguna",
-      "countLabel": "{{count}} pengguna",
+      "countLabel": "Pengguna: {{count}}",
       "showInactive": "Tunjuk tidak aktif",
       "hideInactive": "Sembunyikan tidak aktif",
       "addUser": "Tambah Pengguna",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Skop kebenaran",
-      "countLabel": "{{count}} kebenaran",
+      "countLabel": "Pemberian akses: {{count}}",
       "createGrant": "Beri skop",
       "selectWalletPrompt": "Pilih dompet di atas untuk melihat skop kebenarannya.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Kelayakan Dompet",
-      "countLabel": "{{count}} kelayakan",
+      "countLabel": "Kelayakan: {{count}}",
       "addCredential": "Tambah Kelayakan",
       "selectWalletPrompt": "Pilih dompet di atas untuk melihat kelayakannya.",
       "columns": {

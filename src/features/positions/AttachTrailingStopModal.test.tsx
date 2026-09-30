@@ -113,7 +113,14 @@ describe('AttachTrailingStopModal', () => {
 
     expect(screen.getByText('Attach Trailing Stop — BTC-USD')).toBeInTheDocument()
     expect(screen.getByText('LONG BTC-USD')).toBeInTheDocument()
-    expect(screen.getByText('$50000.00')).toBeInTheDocument()
+    expect(screen.getByText('50000.00 USD')).toBeInTheDocument()
+  })
+
+  it('preserves a small non-USD entry value in the protection form', () => {
+    renderWithProviders(
+      <AttachTrailingStopModal {...defaultProps} instrument='ETH-BTC' averagePrice={0.000012345} />
+    )
+    expect(screen.getByText('0.000012345 BTC')).toBeInTheDocument()
   })
 
   it('shows validation error for empty trailing pct', () => {

@@ -47,7 +47,7 @@
     "badge": "malli",
     "mode": "Tila:",
     "parameters": "Parametrit:",
-    "paramCount": "Parametrit: {{count}}",
+    "paramCount": "{{count}}",
     "noParams": "parametreja ei asetettu"
   },
   "badges": {

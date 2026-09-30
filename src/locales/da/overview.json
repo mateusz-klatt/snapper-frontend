@@ -34,7 +34,7 @@
     "unrealizedPnl": "Urealiseret P&L",
     "pnlPercent": "P&L %",
     "positions": "Positioner",
-    "instrumentsCount": "{{count}} instrumenter",
+    "instrumentsCount": "Instrumenter: {{count}}",
     "empty": "Ingen positionsdata tilgængelige",
     "incompleteValuation": "Ufuldstændige data — nogle positioner mangler brugbar mark- eller indgangspris; summerne omfatter kun kendte komponenter"
   },

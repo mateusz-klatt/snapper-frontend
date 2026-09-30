@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "Gestión de usuarios",
-      "countLabel": "{{count}} usuarios",
+      "countLabel": "Usuarios: {{count}}",
       "showInactive": "Mostrar inactivos",
       "hideInactive": "Ocultar inactivos",
       "addUser": "Añadir usuario",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Concesiones de alcance",
-      "countLabel": "{{count}} concesiones",
+      "countLabel": "Concesiones de acceso: {{count}}",
       "createGrant": "Crear concesión",
       "selectWalletPrompt": "Elija una cartera arriba para ver sus concesiones de alcance.",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Credenciales de cartera",
-      "countLabel": "{{count}} credenciales",
+      "countLabel": "Credenciales: {{count}}",
       "addCredential": "Añadir credencial",
       "selectWalletPrompt": "Elija una cartera arriba para ver sus credenciales.",
       "columns": {

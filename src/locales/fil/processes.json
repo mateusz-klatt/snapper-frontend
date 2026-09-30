@@ -47,7 +47,7 @@
     "badge": "template",
     "mode": "Paraan:",
     "parameters": "Mga parameter:",
-    "paramCount": "{{count}} parameter",
+    "paramCount": "{{count}}",
     "noParams": "walang naka-set na parameters"
   },
   "badges": {

@@ -75,10 +75,10 @@
         "net_non_finite": "Nettó P&L er ekki endanleg tala",
         "attribution_value_non_finite": "Gildi framlagsgreiningar er ekki endanleg tala",
         "attribution_reconciliation_failed": "Afstemming framlagsgreiningar mistókst",
-        "attribution_sum_unrepresentable": "Attribution sum is not representable",
-        "instrument_reconciliation_failed": "Instrument reconciliation failed",
-        "instrument_sum_unrepresentable": "Instrument sum is not representable",
-        "late_pre_activation_execution": "Late pre-activation execution"
+        "attribution_sum_unrepresentable": "Ekki er hægt að tákna summu P&L-gilda framlagsgreiningar nákvæmlega",
+        "instrument_reconciliation_failed": "Afstemming P&L-samtalna eftir gerningum mistókst",
+        "instrument_sum_unrepresentable": "Ekki er hægt að tákna summu gerningagilda nákvæmlega",
+        "late_pre_activation_execution": "Seint móttekin viðskiptaframkvæmd með tímastimpil fyrir virkjun"
       }
     },
     "executionHistory": {
@@ -211,7 +211,7 @@
     }
   },
   "row": {
-    "trailingStopBadge": "TS: ${{stop}}",
+    "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: í bið",
     "slTpButton": "SL/TP",
     "trailButton": "Eltistopp",
@@ -237,10 +237,10 @@
     "stopLoss": "Stop-Loss",
     "takeProfit": "Take-Profit",
     "placeholders": {
-      "slLong": "Undir ${{price}}",
-      "slShort": "Yfir ${{price}}",
-      "tpLong": "Yfir ${{price}}",
-      "tpShort": "Undir ${{price}}"
+      "slLong": "Undir {{price}}",
+      "slShort": "Yfir {{price}}",
+      "tpLong": "Yfir {{price}}",
+      "tpShort": "Undir {{price}}"
     },
     "buttons": {
       "cancel": "Hætta við",

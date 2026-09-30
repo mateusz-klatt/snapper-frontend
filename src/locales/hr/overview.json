@@ -34,7 +34,7 @@
     "unrealizedPnl": "Nerealizirani P&L",
     "pnlPercent": "P&L %",
     "positions": "Pozicije",
-    "instrumentsCount": "{{count}} instrumenata",
+    "instrumentsCount": "Instrumenti: {{count}}",
     "empty": "Nema dostupnih podataka o pozicijama",
     "incompleteValuation": "Podaci su nepotpuni — za neke pozicije nema upotrebljive referentne ili ulazne cijene; ukupni iznosi obuhvaćaju samo poznate komponente"
   },

@@ -97,7 +97,7 @@
     "statusTooltip": {
       "reconciled": "Metodă: {{method}}. Dovezile de reconciliere cu caracter de autoritate s-au potrivit.",
       "driftDetected": "Metodă: {{method}}. Dovezile de reconciliere cu caracter de autoritate au găsit o neconcordanță.",
-      "openDrift": "Metodă: {{method}}. Un episod de derivă deschis rămâne după {{count}} neconcordanțe totale consecutive.",
+      "openDrift": "Metodă: {{method}}. Rămâne un episod de derivă deschis. Număr de neconcordanțe complete consecutive: {{count}}.",
       "unclassified": "Metodă: {{method}}. Clasificarea de către operator este necesară înainte ca reconcilierea să poată rula.",
       "notReconciled": "Metodă: {{method}}. Dovezile de reconciliere nu sunt încă complete.",
       "stale": "Metodă: {{method}}. Verdictul de reconciliere este prea vechi pentru a fi de încredere.",

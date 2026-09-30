@@ -110,7 +110,7 @@
     },
     "list": {
       "title": "အသုံးပြုသူ စီမံခန့်ခွဲမှု",
-      "countLabel": "အသုံးပြုသူ {{count}} ဦး",
+      "countLabel": "အသုံးပြုသူများ: {{count}}",
       "showInactive": "Inactive များ ပြပါ",
       "hideInactive": "Inactive များ ဖျောက်ပါ",
       "addUser": "အသုံးပြုသူ ထည့်ပါ",
@@ -196,7 +196,7 @@
     },
     "list": {
       "title": "Scope Grant များ",
-      "countLabel": "grant {{count}} ခု",
+      "countLabel": "ဝင်ရောက်ခွင့်ပြုချက်များ: {{count}}",
       "createGrant": "Grant ဖန်တီးပါ",
       "selectWalletPrompt": "၎င်း၏ scope grant များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
       "columns": {
@@ -304,7 +304,7 @@
     },
     "list": {
       "title": "Wallet Credential များ",
-      "countLabel": "credential {{count}} ခု",
+      "countLabel": "API/အကောင့်ဝင် အထောက်အထားများ: {{count}}",
       "addCredential": "Credential ထည့်ပါ",
       "selectWalletPrompt": "၎င်း၏ credential များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
       "columns": {
