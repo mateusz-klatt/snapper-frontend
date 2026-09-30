@@ -1,5 +1,5 @@
 import { vi, beforeAll, afterAll } from 'vitest'
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/vitest'
 import { configure } from '@testing-library/react'
 
 configure({ asyncUtilTimeout: 5000 })
