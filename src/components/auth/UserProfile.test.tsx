@@ -292,8 +292,9 @@ describe('UserProfile', () => {
       expect(screen.getByText('Password must be at least 8 characters')).toBeInTheDocument()
     })
     it('calls changePassword API on successful submit', async () => {
+      vi.useFakeTimers({ shouldAdvanceTime: true })
       mockChangePassword.mockResolvedValue({ payload: 'Password changed' })
-      const user = userEvent.setup()
+      const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime })
 
       renderWithMocks(<UserProfile />)
       await user.click(screen.getByText('testuser'))
@@ -310,6 +311,9 @@ describe('UserProfile', () => {
       })
       await waitFor(() => {
         expect(screen.getByText('Password changed successfully')).toBeInTheDocument()
+      })
+      await act(async () => {
+        vi.runAllTimers()
       })
     })
     it('closes password form after successful change timeout', async () => {
