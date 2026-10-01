@@ -12,7 +12,7 @@ Thanks for your interest. This is a single-maintainer project but PRs and issues
 
 ## Local setup
 
-Prerequisites: **Node 26+**, **pnpm 11** (auto-installed via Corepack from `packageManager` in `package.json`).
+Prerequisites: **Node 26+**, **pnpm 12.8.1** (selected by Corepack from `packageManager` in `package.json`). Install Corepack first if your Node installation does not provide it.
 
 ```bash
 corepack enable        # one-time
@@ -33,6 +33,8 @@ The dev server proxies `/api`, `/api/ws`, `/docs`, `/redoc`, `/openapi.json` to 
 
 - `make test` — vitest run
 - `make cov` — coverage report
+- `pnpm prepush` — strict comment and i18n scans alongside format, lint, types, and coverage
+- `pnpm bundle:check` — CI's bundle-size check; run after `make check-all` has built the bundle
 - New features should land with tests covering the happy path and at least one edge case
 
 ## What lands fast
