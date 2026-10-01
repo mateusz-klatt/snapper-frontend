@@ -12,11 +12,12 @@
 ## Checklist
 
 - [ ] `make check-all` is green locally (lint, format, typecheck, test, dead-code, cov, build)
+- [ ] `pnpm prepush` and `pnpm bundle:check` pass (strict comments, i18n, and bundle-size checks)
 - [ ] New code has tests covering happy path + at least one edge case
 - [ ] No `any` introduced in new TypeScript code
 - [ ] No internal monorepo paths or identifiers leaked (file paths, internal hostnames, internal email domains)
 - [ ] Touched user-visible behaviour → updated `README.md` / `CONTRIBUTING.md` if relevant
-- [ ] Generated files (`*.generated.*`) not hand-edited — regenerated via `make gen` if affected
+- [ ] Generated files (`*.generated.*`) not hand-edited — regenerated with the owning backend generator, or `make gen` for its OpenAPI/WS subset
 
 ## Notes for reviewer
 
