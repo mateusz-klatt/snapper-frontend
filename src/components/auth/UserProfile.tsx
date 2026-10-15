@@ -129,6 +129,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
           </div>
         </div>
         <svg
+          aria-hidden='true'
           className={`w-4 h-4 text-muted-500 transition-transform ${showDropdown ? 'rotate-180' : ''}`}
           fill='none'
           stroke='currentColor'
