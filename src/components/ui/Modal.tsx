@@ -153,7 +153,13 @@ export const Modal: React.FC<Readonly<ModalProps>> = ({
                 className='text-muted-500 transition-colors hover:text-alpine-900'
                 aria-label={t('close')}
               >
-                <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                <svg
+                  aria-hidden='true'
+                  className='w-6 h-6'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'

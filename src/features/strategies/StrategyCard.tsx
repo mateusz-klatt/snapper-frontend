@@ -327,6 +327,7 @@ export const StrategyCard: React.FC<Readonly<StrategyCardProps>> = React.memo(
             >
               <span>{expanded ? t('card.hideDetails') : t('card.showDetails')}</span>
               <svg
+                aria-hidden='true'
                 className={clsx('w-4 h-4 transition-transform', { 'rotate-180': expanded })}
                 fill='none'
                 viewBox='0 0 24 24'
