@@ -1309,6 +1309,54 @@ export type Paths = {
         patch?: never;
         trace?: never;
     };
+    "/api/devices/android/config": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["android_push_config_api_devices_android_config_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/devices/android/registration-state": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["android_registration_state_api_devices_android_registration_state_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/devices/android": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: Operations["list_android_devices_api_devices_android_get"];
+        put?: never;
+        post: Operations["register_android_device_api_devices_android_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/devices": {
         parameters: {
             query?: never;
@@ -2141,6 +2189,90 @@ export type Components = {
             payload: Components["schemas"]["AlertEventInfo"][];
             count: number;
             next_cursor?: string | null | undefined;
+        };
+        AndroidDeviceInfo: {
+            type: "android_device_info";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            user_public_id: string;
+            installation_id: string;
+            binding_id: string;
+            configuration_id: string;
+            protocol: "fcm_fid";
+            platform: "android";
+            package_name: string;
+            status: "active";
+            registered_at: string;
+            last_seen_at: string | null;
+        };
+        AndroidDeviceListResponse: {
+            type: "android_device_list_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["AndroidDeviceInfo"][];
+            count: number;
+        };
+        AndroidDeviceResponse: {
+            type: "android_device_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["AndroidDeviceInfo"];
+        };
+        AndroidPushConfigInfo: {
+            type: "android_push_config_info";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            availability: "configured" | "unavailable";
+            configuration: Components["schemas"]["AndroidPushConfiguration"] | null;
+        };
+        AndroidPushConfigResponse: {
+            type: "android_push_config_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["AndroidPushConfigInfo"];
+        };
+        AndroidPushConfiguration: {
+            configuration_id: string;
+            protocol: "fcm_fid";
+            package_name: string;
+            project_id: string;
+            application_id: string;
+            api_key: string;
+            messaging_sender_id: string;
+        };
+        AndroidRegistrationStateInfo: {
+            type: "android_registration_state_info";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            revision: string;
+            current_binding_id: string | null;
+        };
+        AndroidRegistrationStateResponse: {
+            type: "android_registration_state_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["AndroidRegistrationStateInfo"];
         };
         AsyncioMetrics: {
             active_tasks: number;
@@ -5121,6 +5253,26 @@ export type Components = {
             alert_type: "order_fill_full" | "order_rejected" | "order_unknown" | "position_stop_loss_fired" | "margin_warning" | "critical_system_error" | "drift";
             enabled?: boolean;
             min_priority?: "low" | "medium" | "high";
+        };
+        RegisterAndroidDeviceCommand: {
+            type?: "register_android_device_command";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["RegisterAndroidDeviceBody"];
+        };
+        RegisterAndroidDeviceBody: {
+            protocol: "fcm_fid";
+            configuration_id: string;
+            package_name: string;
+            installation_id: string;
+            binding_id: string;
+            expected_revision: string;
+            firebase_installation_id: string;
+            expected_user_public_id: string;
+            app_version?: string | null;
         };
         BacktestCreateCommand: {
             type?: "backtest_create_command";
@@ -8443,6 +8595,97 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    android_push_config_api_devices_android_config_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AndroidPushConfigResponse"];
+                };
+            };
+        };
+    };
+    android_registration_state_api_devices_android_registration_state_get: {
+        parameters: {
+            query: {
+                configuration_id: string;
+                installation_id: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AndroidRegistrationStateResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_android_devices_api_devices_android_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AndroidDeviceListResponse"];
+                };
+            };
+        };
+    };
+    register_android_device_api_devices_android_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["RegisterAndroidDeviceCommand"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AndroidDeviceResponse"];
                 };
             };
         };
