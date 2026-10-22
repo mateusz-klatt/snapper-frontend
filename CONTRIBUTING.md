@@ -53,4 +53,5 @@ The dev server proxies `/api`, `/api/ws`, `/docs`, `/redoc`, `/openapi.json` to 
 
 ## License
 
-By contributing you agree your work is released under the [MIT license](LICENSE).
+By contributing you agree your work is released under the
+[Apache License, Version 2.0](LICENSE), unless explicitly stated otherwise.
