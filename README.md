@@ -6,7 +6,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=mateusz-klatt_snapper-frontend&metric=bugs)](https://sonarcloud.io/summary/overall?id=mateusz-klatt_snapper-frontend)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=mateusz-klatt_snapper-frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/overall?id=mateusz-klatt_snapper-frontend)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=mateusz-klatt_snapper-frontend&metric=code_smells)](https://sonarcloud.io/summary/overall?id=mateusz-klatt_snapper-frontend)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](LICENSE)
 
 Vite + React + TypeScript trading UI for the [Snapper](https://github.com/mateusz-klatt/snapper) platform.
 
@@ -177,7 +177,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Forks welcome; PRs get reviewed against 
 
 ## License
 
-[MIT](LICENSE) — Mateusz Klatt, 2026.
+[Apache License, Version 2.0](LICENSE) — Mateusz Klatt, 2026. See [NOTICE](NOTICE)
+for attribution. Vendored icons keep their original CC0/MIT terms in
+[public/icons/LICENSE.md](public/icons/LICENSE.md).
+
+Revisions through the `last-mit` tag were released under MIT. Subsequent original
+work is licensed under Apache-2.0; earlier MIT grants remain valid.
 
 ### Bundled assets
 
