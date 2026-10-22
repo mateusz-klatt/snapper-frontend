@@ -177,6 +177,66 @@ export const AiReviewAftermathPositionCycleTransitionSchema =
     Components['schemas']['AiReviewAftermathPositionCycleTransition']
   >
 
+const _AndroidDeviceInfoRawSchema = z
+  .object({
+    type: z.literal('android_device_info'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    user_public_id: z.string(),
+    installation_id: z.string(),
+    binding_id: z.string(),
+    configuration_id: z.string(),
+    protocol: z.literal('fcm_fid'),
+    platform: z.literal('android'),
+    package_name: z.string(),
+    status: z.literal('active'),
+    registered_at: z.iso.datetime(),
+    last_seen_at: z.iso.datetime().nullable(),
+  })
+  .strict()
+
+export const AndroidDeviceInfoSchema = _AndroidDeviceInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['AndroidDeviceInfo']
+>
+
+const _AndroidPushConfigurationRawSchema = z
+  .object({
+    configuration_id: z.string(),
+    protocol: z.literal('fcm_fid'),
+    package_name: z.string().min(1).max(255),
+    project_id: z.string().min(1).max(255),
+    application_id: z.string().min(1).max(255),
+    api_key: z.string().min(1).max(255),
+    messaging_sender_id: z.string().min(1).max(255),
+  })
+  .strict()
+
+export const AndroidPushConfigurationSchema =
+  _AndroidPushConfigurationRawSchema as unknown as z.ZodType<
+    Components['schemas']['AndroidPushConfiguration']
+  >
+
+const _AndroidRegistrationStateInfoRawSchema = z
+  .object({
+    type: z.literal('android_registration_state_info'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    revision: z.string(),
+    current_binding_id: z.string().nullable(),
+  })
+  .strict()
+
+export const AndroidRegistrationStateInfoSchema =
+  _AndroidRegistrationStateInfoRawSchema as unknown as z.ZodType<
+    Components['schemas']['AndroidRegistrationStateInfo']
+  >
+
 const _AsyncioMetricsRawSchema = z
   .object({
     active_tasks: z.number().int(),
@@ -2294,6 +2354,25 @@ export const UserAlertDefaultBodySchema = _UserAlertDefaultBodyRawSchema as unkn
   Components['schemas']['UserAlertDefaultBody']
 >
 
+const _RegisterAndroidDeviceBodyRawSchema = z
+  .object({
+    protocol: z.literal('fcm_fid'),
+    configuration_id: z.string(),
+    package_name: z.string().min(1).max(255),
+    installation_id: z.string(),
+    binding_id: z.string(),
+    expected_revision: z.string().min(64).max(64),
+    firebase_installation_id: z.string().min(1).max(256),
+    expected_user_public_id: z.string(),
+    app_version: z.string().max(32).nullable().optional(),
+  })
+  .strict()
+
+export const RegisterAndroidDeviceBodySchema =
+  _RegisterAndroidDeviceBodyRawSchema as unknown as z.ZodType<
+    Components['schemas']['RegisterAndroidDeviceBody']
+  >
+
 const _BacktestCompareBodyRawSchema = z
   .object({
     mode: z.enum(['manual', 'auto']),
@@ -2548,6 +2627,74 @@ const _CreateWalletBodyRawSchema = z
 export const CreateWalletBodySchema = _CreateWalletBodyRawSchema as unknown as z.ZodType<
   Components['schemas']['CreateWalletBody']
 >
+
+const _AndroidDeviceListResponseRawSchema = z
+  .object({
+    type: z.literal('android_device_list_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: z.array(AndroidDeviceInfoSchema),
+    count: z.number().int(),
+  })
+  .strict()
+
+export const AndroidDeviceListResponseSchema =
+  _AndroidDeviceListResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['AndroidDeviceListResponse']
+  >
+
+const _AndroidDeviceResponseRawSchema = z
+  .object({
+    type: z.literal('android_device_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: AndroidDeviceInfoSchema,
+  })
+  .strict()
+
+export const AndroidDeviceResponseSchema = _AndroidDeviceResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['AndroidDeviceResponse']
+>
+
+const _AndroidPushConfigInfoRawSchema = z
+  .object({
+    type: z.literal('android_push_config_info'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    availability: z.enum(['configured', 'unavailable']),
+    configuration: AndroidPushConfigurationSchema.nullable(),
+  })
+  .strict()
+
+export const AndroidPushConfigInfoSchema = _AndroidPushConfigInfoRawSchema as unknown as z.ZodType<
+  Components['schemas']['AndroidPushConfigInfo']
+>
+
+const _AndroidRegistrationStateResponseRawSchema = z
+  .object({
+    type: z.literal('android_registration_state_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: AndroidRegistrationStateInfoSchema,
+  })
+  .strict()
+
+export const AndroidRegistrationStateResponseSchema =
+  _AndroidRegistrationStateResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['AndroidRegistrationStateResponse']
+  >
 
 const _BacktestComparisonListResponseRawSchema = z
   .object({
@@ -4179,6 +4326,23 @@ export const UpdateUserAlertDefaultCommandSchema =
     Components['schemas']['UpdateUserAlertDefaultCommand']
   >
 
+const _RegisterAndroidDeviceCommandRawSchema = z
+  .object({
+    type: z.literal('register_android_device_command').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: RegisterAndroidDeviceBodySchema,
+  })
+  .strict()
+
+export const RegisterAndroidDeviceCommandSchema =
+  _RegisterAndroidDeviceCommandRawSchema as unknown as z.ZodType<
+    Components['schemas']['RegisterAndroidDeviceCommand']
+  >
+
 const _BacktestCompareRequestRawSchema = z
   .object({
     type: z.literal('backtest_compare_request').optional(),
@@ -4493,6 +4657,23 @@ const _CreateWalletCommandRawSchema = z
 export const CreateWalletCommandSchema = _CreateWalletCommandRawSchema as unknown as z.ZodType<
   Components['schemas']['CreateWalletCommand']
 >
+
+const _AndroidPushConfigResponseRawSchema = z
+  .object({
+    type: z.literal('android_push_config_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: AndroidPushConfigInfoSchema,
+  })
+  .strict()
+
+export const AndroidPushConfigResponseSchema =
+  _AndroidPushConfigResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['AndroidPushConfigResponse']
+  >
 
 const _CachedCandlesResponseRawSchema = z
   .object({
@@ -6309,6 +6490,9 @@ export type AiReviewAftermathOrder = Components['schemas']['AiReviewAftermathOrd
 export type AiReviewAftermathPosition = Components['schemas']['AiReviewAftermathPosition']
 export type AiReviewAftermathPositionCycleTransition =
   Components['schemas']['AiReviewAftermathPositionCycleTransition']
+export type AndroidDeviceInfo = Components['schemas']['AndroidDeviceInfo']
+export type AndroidPushConfiguration = Components['schemas']['AndroidPushConfiguration']
+export type AndroidRegistrationStateInfo = Components['schemas']['AndroidRegistrationStateInfo']
 export type AsyncioMetrics = Components['schemas']['AsyncioMetrics']
 export type BacktestComparisonData = Components['schemas']['BacktestComparisonData']
 export type BacktestEquityPointInline = Components['schemas']['BacktestEquityPointInline']
@@ -6440,6 +6624,7 @@ export type RemoveSettingBody = Components['schemas']['RemoveSettingBody']
 export type DelegateDeactivateBody = Components['schemas']['DelegateDeactivateBody']
 export type AiReviewDecisionRequest = Components['schemas']['AiReviewDecisionRequest']
 export type UserAlertDefaultBody = Components['schemas']['UserAlertDefaultBody']
+export type RegisterAndroidDeviceBody = Components['schemas']['RegisterAndroidDeviceBody']
 export type BacktestCompareBody = Components['schemas']['BacktestCompareBody']
 export type BacktestCancelBody = Components['schemas']['BacktestCancelBody']
 export type RotateCredentialBody = Components['schemas']['RotateCredentialBody']
@@ -6459,6 +6644,11 @@ export type RevokeScopeGrantBody = Components['schemas']['RevokeScopeGrantBody']
 export type TrailingStopCreateBody = Components['schemas']['TrailingStopCreateBody']
 export type TrailingStopCancelBody = Components['schemas']['TrailingStopCancelBody']
 export type CreateWalletBody = Components['schemas']['CreateWalletBody']
+export type AndroidDeviceListResponse = Components['schemas']['AndroidDeviceListResponse']
+export type AndroidDeviceResponse = Components['schemas']['AndroidDeviceResponse']
+export type AndroidPushConfigInfo = Components['schemas']['AndroidPushConfigInfo']
+export type AndroidRegistrationStateResponse =
+  Components['schemas']['AndroidRegistrationStateResponse']
 export type BacktestComparisonListResponse = Components['schemas']['BacktestComparisonListResponse']
 export type BacktestComparisonResponse = Components['schemas']['BacktestComparisonResponse']
 export type BacktestEquityPointListResponse =
@@ -6562,6 +6752,7 @@ export type RemoveSettingRequest = Components['schemas']['RemoveSettingRequest']
 export type DelegateDeactivateRequest = Components['schemas']['DelegateDeactivateRequest']
 export type AiReviewDecisionCommand = Components['schemas']['AiReviewDecisionCommand']
 export type UpdateUserAlertDefaultCommand = Components['schemas']['UpdateUserAlertDefaultCommand']
+export type RegisterAndroidDeviceCommand = Components['schemas']['RegisterAndroidDeviceCommand']
 export type BacktestCompareRequest = Components['schemas']['BacktestCompareRequest']
 export type BacktestCancelCommand = Components['schemas']['BacktestCancelCommand']
 export type RotateCredentialCommand = Components['schemas']['RotateCredentialCommand']
@@ -6581,6 +6772,7 @@ export type RevokeScopeGrantCommand = Components['schemas']['RevokeScopeGrantCom
 export type TrailingStopCreateCommand = Components['schemas']['TrailingStopCreateCommand']
 export type TrailingStopCancelCommand = Components['schemas']['TrailingStopCancelCommand']
 export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
+export type AndroidPushConfigResponse = Components['schemas']['AndroidPushConfigResponse']
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
 export type EgressHealthData = Components['schemas']['EgressHealthData']

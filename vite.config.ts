@@ -50,11 +50,7 @@ export default defineConfig({
           if (id.includes('@tanstack/react-query') || id.includes('zustand')) {
             return 'vendor-query'
           }
-          if (
-            id.includes('react-dom') ||
-            id.includes('scheduler') ||
-            /[\\/]react[\\/]/.exec(id) !== null
-          ) {
+          if (/[\\/]node_modules[\\/](?:react-dom|react|scheduler)[\\/]/.exec(id) !== null) {
             return 'vendor-react'
           }
 
