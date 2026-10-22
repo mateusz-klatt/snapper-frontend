@@ -12,1959 +12,537 @@ type Lifecycle = "long_running" | "one_shot";
 type Exchange = "paper" | "kraken" | "kraken_futures" | "walutomat";
 type Mode2 = "thread" | "process";
 
+type OpenApiOperationAdminResetUserPasswordApiAuthUsersUserIdAdminResetPasswordPost = Operations["admin_reset_user_password_api_auth_users__user_id__admin_reset_password_post"];
+type OpenApiOperationAndroidPushConfigApiDevicesAndroidConfigGet = Operations["android_push_config_api_devices_android_config_get"];
+type OpenApiOperationAndroidRegistrationStateApiDevicesAndroidRegistrationStateGet = Operations["android_registration_state_api_devices_android_registration_state_get"];
+type OpenApiOperationAttachViewerToDeskApiAuthDesksOperatorPublicIdMembersUsernamePost = Operations["attach_viewer_to_desk_api_auth_desks__operator_public_id__members__username__post"];
+type OpenApiOperationCancelBacktestApiBacktestsRunIdCancelPost = Operations["cancel_backtest_api_backtests__run_id__cancel_post"];
+type OpenApiOperationCancelBracketApiExecutionPlansPlanPublicIdCancelPost = Operations["cancel_bracket_api_execution_plans__plan_public_id__cancel_post"];
+type OpenApiOperationCancelOrderApiOrdersPlanPublicIdCancelPost = Operations["cancel_order_api_orders__plan_public_id__cancel_post"];
+type OpenApiOperationCancelOrderByClientOrderIdApiOrdersByClientOrderIdClientOrderIdCancelPost = Operations["cancel_order_by_client_order_id_api_orders_by_client_order_id__client_order_id__cancel_post"];
+type OpenApiOperationCancelTrailingStopApiTrailingStopsPlanPublicIdCancelPost = Operations["cancel_trailing_stop_api_trailing_stops__plan_public_id__cancel_post"];
+type OpenApiOperationChangeUserPasswordApiAuthUsersUserIdChangePasswordPost = Operations["change_user_password_api_auth_users__user_id__change_password_post"];
+type OpenApiOperationCloseOrphanCycleApiPositionCyclesCloseOrphanPost = Operations["close_orphan_cycle_api_position_cycles_close_orphan_post"];
+type OpenApiOperationCreateBacktestApiBacktestsPost = Operations["create_backtest_api_backtests_post"];
+type OpenApiOperationCreateBracketApiExecutionPlansPost = Operations["create_bracket_api_execution_plans_post"];
+type OpenApiOperationCreateComparisonApiBacktestsComparePost = Operations["create_comparison_api_backtests_compare_post"];
+type OpenApiOperationCreateCredentialApiWalletsWalletPublicIdCredentialsPost = Operations["create_credential_api_wallets__wallet_public_id__credentials_post"];
+type OpenApiOperationCreateDelegateApiAiDelegatesPost = Operations["create_delegate_api_ai_delegates_post"];
+type OpenApiOperationCreateOperatorApiOperatorsPost = Operations["create_operator_api_operators_post"];
+type OpenApiOperationCreateOrderApiOrdersPost = Operations["create_order_api_orders_post"];
+type OpenApiOperationCreateProcessConfigurationApiProcessesPost = Operations["create_process_configuration_api_processes_post"];
+type OpenApiOperationCreateResearcherApiAiResearchersPost = Operations["create_researcher_api_ai_researchers_post"];
+type OpenApiOperationCreateScopeGrantApiScopeGrantsPost = Operations["create_scope_grant_api_scope_grants_post"];
+type OpenApiOperationCreateTrailingStopApiTrailingStopsPost = Operations["create_trailing_stop_api_trailing_stops_post"];
+type OpenApiOperationCreateUserApiAuthUsersPost = Operations["create_user_api_auth_users_post"];
+type OpenApiOperationCreateWalletApiWalletsPost = Operations["create_wallet_api_wallets_post"];
+type OpenApiOperationDeactivateDelegateApiAiDelegatesDelegatePublicIdDeactivatePost = Operations["deactivate_delegate_api_ai_delegates__delegate_public_id__deactivate_post"];
+type OpenApiOperationDeactivateUserApiAuthUsersUserIdDeactivatePost = Operations["deactivate_user_api_auth_users__user_id__deactivate_post"];
+type OpenApiOperationDeleteDeviceApiDevicesDevicePublicIdDelete = Operations["delete_device_api_devices__device_public_id__delete"];
+type OpenApiOperationDetachViewerFromDeskApiAuthDesksOperatorPublicIdMembersUsernameDelete = Operations["detach_viewer_from_desk_api_auth_desks__operator_public_id__members__username__delete"];
+type OpenApiOperationGetAiReviewAftermathRouteApiAiReviewsReviewPublicIdAftermathGet = Operations["get_ai_review_aftermath_route_api_ai_reviews__review_public_id__aftermath_get"];
+type OpenApiOperationGetAlertEventApiAlertsAlertPublicIdGet = Operations["get_alert_event_api_alerts__alert_public_id__get"];
+type OpenApiOperationGetAllSettingsApiSettingsGet = Operations["get_all_settings_api_settings_get"];
+type OpenApiOperationGetBacktestApiBacktestsRunIdGet = Operations["get_backtest_api_backtests__run_id__get"];
+type OpenApiOperationGetBacktestEquityApiBacktestsRunIdEquityGet = Operations["get_backtest_equity_api_backtests__run_id__equity_get"];
+type OpenApiOperationGetBacktestEventsApiBacktestsRunIdEventsGet = Operations["get_backtest_events_api_backtests__run_id__events_get"];
+type OpenApiOperationGetBacktestSignalsApiBacktestsRunIdSignalsGet = Operations["get_backtest_signals_api_backtests__run_id__signals_get"];
+type OpenApiOperationGetBacktestTradesApiBacktestsRunIdTradesGet = Operations["get_backtest_trades_api_backtests__run_id__trades_get"];
+type OpenApiOperationGetBracketApiExecutionPlansPlanPublicIdGet = Operations["get_bracket_api_execution_plans__plan_public_id__get"];
+type OpenApiOperationGetCacheHealthApiMarketCacheHealthGet = Operations["get_cache_health_api_market_cache_health_get"];
+type OpenApiOperationGetCachedPairStatsApiMarketCacheStatsExchangeASymbolAExchangeBSymbolBGet = Operations["get_cached_pair_stats_api_market_cache_stats__exchange_a___symbol_a___exchange_b___symbol_b__get"];
+type OpenApiOperationGetCandlesApiCandlesGet = Operations["get_candles_api_candles_get"];
+type OpenApiOperationGetCandlesCacheApiCandlesCacheGet = Operations["get_candles_cache_api_candles_cache_get"];
+type OpenApiOperationGetCandlesDbApiCandlesDbGet = Operations["get_candles_db_api_candles_db_get"];
+type OpenApiOperationGetComparisonApiBacktestsCompareComparisonPublicIdGet = Operations["get_comparison_api_backtests_compare__comparison_public_id__get"];
+type OpenApiOperationGetConfiguredCachedPairStatsApiMarketCacheStatsConfiguredGet = Operations["get_configured_cached_pair_stats_api_market_cache_stats_configured_get"];
+type OpenApiOperationGetContinuousSeriesApiUnderlyingsTickerContinuousGet = Operations["_get_continuous_series_api_underlyings__ticker__continuous_get"];
+type OpenApiOperationGetContractsApiUnderlyingsTickerContractsGet = Operations["_get_contracts_api_underlyings__ticker__contracts_get"];
+type OpenApiOperationGetCurrentUserProfileApiAuthMeGet = Operations["get_current_user_profile_api_auth_me_get"];
+type OpenApiOperationGetDbTableStatsApiMetricsDbTablesGet = Operations["get_db_table_stats_api_metrics_db_tables_get"];
+type OpenApiOperationGetDelegateApiAiDelegatesDelegatePublicIdGet = Operations["get_delegate_api_ai_delegates__delegate_public_id__get"];
+type OpenApiOperationGetEgressHealthApiHealthEgressGet = Operations["get_egress_health_api_health_egress_get"];
+type OpenApiOperationGetExchangeInstrumentsApiExchangesExchangeInstrumentsGet = Operations["get_exchange_instruments_api_exchanges__exchange__instruments_get"];
+type OpenApiOperationGetExchangeInstrumentsDetailApiExchangesExchangeInstrumentsDetailGet = Operations["get_exchange_instruments_detail_api_exchanges__exchange__instruments_detail_get"];
+type OpenApiOperationGetExchangesApiExchangesGet = Operations["get_exchanges_api_exchanges_get"];
+type OpenApiOperationGetExecutionsApiExecutionsGet = Operations["get_executions_api_executions_get"];
+type OpenApiOperationGetFrontMonthApiUnderlyingsTickerFrontMonthGet = Operations["_get_front_month_api_underlyings__ticker__front_month_get"];
+type OpenApiOperationGetInstrumentCapabilitiesApiInstrumentCapabilitiesGet = Operations["get_instrument_capabilities_api_instrument_capabilities_get"];
+type OpenApiOperationGetMarketDataCoverageApiMarketCoverageGet = Operations["get_market_data_coverage_api_market_coverage_get"];
+type OpenApiOperationGetMarketFeedHealthApiMarketFeedHealthGet = Operations["get_market_feed_health_api_market_feed_health_get"];
+type OpenApiOperationGetNotificationMetricsApiMetricsNotificationsGet = Operations["get_notification_metrics_api_metrics_notifications_get"];
+type OpenApiOperationGetOrdersApiOrdersGet = Operations["get_orders_api_orders_get"];
+type OpenApiOperationGetPnlSeriesApiPortfolioPnlSeriesGet = Operations["get_pnl_series_api_portfolio_pnl_series_get"];
+type OpenApiOperationGetPnlTimelineApiPortfolioPnlTimelineGet = Operations["get_pnl_timeline_api_portfolio_pnl_timeline_get"];
+type OpenApiOperationGetPortfolioAccountsApiPortfolioAccountsGet = Operations["get_portfolio_accounts_api_portfolio_accounts_get"];
+type OpenApiOperationGetPositionsApiPositionsGet = Operations["get_positions_api_positions_get"];
+type OpenApiOperationGetProcessSchemaApiProcessesSchemaNameGet = Operations["get_process_schema_api_processes_schema__name__get"];
+type OpenApiOperationGetProcessSummaryApiProcessesSummaryGet = Operations["get_process_summary_api_processes_summary_get"];
+type OpenApiOperationGetPublicFeatureFlagsApiSettingsFeaturesGet = Operations["get_public_feature_flags_api_settings_features_get"];
+type OpenApiOperationGetPushBetaUsersApiSettingsPushBetaUsersGet = Operations["get_push_beta_users_api_settings_push_beta_users_get"];
+type OpenApiOperationGetRelatedInstrumentsApiInstrumentsExchangeNativeSymbolRelatedGet = Operations["_get_related_instruments_api_instruments__exchange___native_symbol__related_get"];
+type OpenApiOperationGetRetentionMetricsApiMetricsRetentionGet = Operations["get_retention_metrics_api_metrics_retention_get"];
+type OpenApiOperationGetSettingCategoriesApiSettingsCategoriesGet = Operations["get_setting_categories_api_settings_categories_get"];
+type OpenApiOperationGetSignalsApiSignalsGet = Operations["get_signals_api_signals_get"];
+type OpenApiOperationGetSystemMetricsApiMetricsSystemGet = Operations["get_system_metrics_api_metrics_system_get"];
+type OpenApiOperationGetSystemMetricsHistoryApiMetricsSystemHistoryGet = Operations["get_system_metrics_history_api_metrics_system_history_get"];
+type OpenApiOperationGetSystemStatusApiStatusGet = Operations["get_system_status_api_status_get"];
+type OpenApiOperationGetTrailingStopApiTrailingStopsPlanPublicIdGet = Operations["get_trailing_stop_api_trailing_stops__plan_public_id__get"];
+type OpenApiOperationGetTrailingStopByCycleApiTrailingStopsByCycleCyclePublicIdGet = Operations["get_trailing_stop_by_cycle_api_trailing_stops_by_cycle__cycle_public_id__get"];
+type OpenApiOperationGetUnderlyingInstrumentsApiUnderlyingsTickerInstrumentsGet = Operations["_get_underlying_instruments_api_underlyings__ticker__instruments_get"];
+type OpenApiOperationGetUnderlyingsApiUnderlyingsGet = Operations["_get_underlyings_api_underlyings_get"];
+type OpenApiOperationGetUsersApiAuthUsersGet = Operations["get_users_api_auth_users_get"];
+type OpenApiOperationGetVenueFeeSchedulesApiVenueFeeSchedulesGet = Operations["get_venue_fee_schedules_api_venue_fee_schedules_get"];
+type OpenApiOperationHandoverScopeGrantApiScopeGrantsHandoverPost = Operations["handover_scope_grant_api_scope_grants_handover_post"];
+type OpenApiOperationHealthCheckApiHealthGet = Operations["health_check_api_health_get"];
+type OpenApiOperationIssueWsTokenApiAuthWsTokenPost = Operations["issue_ws_token_api_auth_ws_token_post"];
+type OpenApiOperationListAiReviewsRouteApiAiReviewsGet = Operations["list_ai_reviews_route_api_ai_reviews_get"];
+type OpenApiOperationListAlertDefaultsApiAlertDefaultsGet = Operations["list_alert_defaults_api_alert_defaults_get"];
+type OpenApiOperationListAlertHistoryApiAlertsHistoryGet = Operations["list_alert_history_api_alerts_history_get"];
+type OpenApiOperationListAndroidDevicesApiDevicesAndroidGet = Operations["list_android_devices_api_devices_android_get"];
+type OpenApiOperationListAvailableProcessesApiProcessesAvailableGet = Operations["list_available_processes_api_processes_available_get"];
+type OpenApiOperationListBacktestsApiBacktestsGet = Operations["list_backtests_api_backtests_get"];
+type OpenApiOperationListBracketDecisionsApiExecutionPlansPlanPublicIdDecisionsGet = Operations["list_bracket_decisions_api_execution_plans__plan_public_id__decisions_get"];
+type OpenApiOperationListComparisonsApiBacktestsCompareGet = Operations["list_comparisons_api_backtests_compare_get"];
+type OpenApiOperationListConfiguredProcessesApiProcessesConfiguredGet = Operations["list_configured_processes_api_processes_configured_get"];
+type OpenApiOperationListCredentialsApiWalletsWalletPublicIdCredentialsGet = Operations["list_credentials_api_wallets__wallet_public_id__credentials_get"];
+type OpenApiOperationListDelegatesApiAiDelegatesGet = Operations["list_delegates_api_ai_delegates_get"];
+type OpenApiOperationListDeskMembersApiAuthDesksOperatorPublicIdMembersGet = Operations["list_desk_members_api_auth_desks__operator_public_id__members_get"];
+type OpenApiOperationListDevicePrefsApiDevicesDevicePublicIdPrefsGet = Operations["list_device_prefs_api_devices__device_public_id__prefs_get"];
+type OpenApiOperationListDevicesApiDevicesGet = Operations["list_devices_api_devices_get"];
+type OpenApiOperationListOpenCyclesApiPositionCyclesOpenGet = Operations["list_open_cycles_api_position_cycles_open_get"];
+type OpenApiOperationListOperatorsApiOperatorsGet = Operations["list_operators_api_operators_get"];
+type OpenApiOperationListPairedExecutionIncidentsApiPairedExecutionIncidentsGet = Operations["list_paired_execution_incidents_api_paired_execution_incidents_get"];
+type OpenApiOperationListPendingAiReviewsApiAiReviewsPendingGet = Operations["list_pending_ai_reviews_api_ai_reviews_pending_get"];
+type OpenApiOperationListProcessRunsApiProcessesRunsGet = Operations["list_process_runs_api_processes_runs_get"];
+type OpenApiOperationListScopeGrantsApiScopeGrantsGet = Operations["list_scope_grants_api_scope_grants_get"];
+type OpenApiOperationListStrategiesApiStrategiesGet = Operations["list_strategies_api_strategies_get"];
+type OpenApiOperationListStrategyClassesApiBacktestsStrategyClassesGet = Operations["list_strategy_classes_api_backtests_strategy_classes_get"];
+type OpenApiOperationListTrailingStopDecisionsApiTrailingStopsPlanPublicIdDecisionsGet = Operations["list_trailing_stop_decisions_api_trailing_stops__plan_public_id__decisions_get"];
+type OpenApiOperationListWalletsApiWalletsGet = Operations["list_wallets_api_wallets_get"];
+type OpenApiOperationLoginApiAuthLoginPost = Operations["login_api_auth_login_post"];
+type OpenApiOperationLogoutApiAuthLogoutPost = Operations["logout_api_auth_logout_post"];
+type OpenApiOperationPostSystemMetricsTracemallocStartApiMetricsSystemTracemallocStartPost = Operations["post_system_metrics_tracemalloc_start_api_metrics_system_tracemalloc_start_post"];
+type OpenApiOperationPostSystemMetricsTracemallocStopApiMetricsSystemTracemallocStopPost = Operations["post_system_metrics_tracemalloc_stop_api_metrics_system_tracemalloc_stop_post"];
+type OpenApiOperationRefreshTokenApiAuthRefreshPost = Operations["refresh_token_api_auth_refresh_post"];
+type OpenApiOperationRegisterAndroidDeviceApiDevicesAndroidPost = Operations["register_android_device_api_devices_android_post"];
+type OpenApiOperationRegisterDeviceApiDevicesPost = Operations["register_device_api_devices_post"];
+type OpenApiOperationRemoveSettingApiSettingsKeyRemovePost = Operations["remove_setting_api_settings__key__remove_post"];
+type OpenApiOperationRerunBacktestApiBacktestsRunIdRerunPost = Operations["rerun_backtest_api_backtests__run_id__rerun_post"];
+type OpenApiOperationRestRateMetricsApiMetricsRestRateGet = Operations["rest_rate_metrics_api_metrics_rest_rate_get"];
+type OpenApiOperationRevokeDevicePrefApiDevicesDevicePublicIdPrefsPrefPublicIdRevokePost = Operations["revoke_device_pref_api_devices__device_public_id__prefs__pref_public_id__revoke_post"];
+type OpenApiOperationRevokeScopeGrantApiScopeGrantsGrantPublicIdRevokePost = Operations["revoke_scope_grant_api_scope_grants__grant_public_id__revoke_post"];
+type OpenApiOperationRotateCredentialApiWalletsWalletPublicIdCredentialsCredentialPublicIdRotatePost = Operations["rotate_credential_api_wallets__wallet_public_id__credentials__credential_public_id__rotate_post"];
+type OpenApiOperationSetCredentialReconciliationMethodApiWalletsWalletPublicIdCredentialsCredentialPublicIdReconciliationMethodPut = Operations["set_credential_reconciliation_method_api_wallets__wallet_public_id__credentials__credential_public_id__reconciliation_method_put"];
+type OpenApiOperationSetProcessDesiredStateApiProcessesNameDesiredStatePatch = Operations["set_process_desired_state_api_processes__name__desired_state_patch"];
+type OpenApiOperationSetPushBetaUsersApiSettingsPushBetaUsersPost = Operations["set_push_beta_users_api_settings_push_beta_users_post"];
+type OpenApiOperationSetSettingApiSettingsKeySetPost = Operations["set_setting_api_settings__key__set_post"];
+type OpenApiOperationStartProcessApiProcessesNameStartPost = Operations["start_process_api_processes__name__start_post"];
+type OpenApiOperationStopProcessApiProcessesNameStopPost = Operations["stop_process_api_processes__name__stop_post"];
+type OpenApiOperationSubmitAiReviewDecisionRouteApiAiReviewsReviewPublicIdDecisionPost = Operations["submit_ai_review_decision_route_api_ai_reviews__review_public_id__decision_post"];
+type OpenApiOperationSweepOrphanCyclesApiPositionCyclesSweepOrphansPost = Operations["sweep_orphan_cycles_api_position_cycles_sweep_orphans_post"];
+type OpenApiOperationTerminalizePairedExecutionGroupApiPairedExecutionGroupsGroupPublicIdTerminalizePost = Operations["terminalize_paired_execution_group_api_paired_execution_groups__group_public_id__terminalize_post"];
+type OpenApiOperationUpdateAlertDefaultApiAlertDefaultsPatch = Operations["update_alert_default_api_alert_defaults_patch"];
+type OpenApiOperationUpdateCurrentUserPreferencesApiAuthMeUpdatePost = Operations["update_current_user_preferences_api_auth_me_update_post"];
+type OpenApiOperationUpdateDelegateCapsApiAiDelegatesDelegatePublicIdPatch = Operations["update_delegate_caps_api_ai_delegates__delegate_public_id__patch"];
+type OpenApiOperationUpdateDevicePrefApiDevicesDevicePublicIdPrefsPatch = Operations["update_device_pref_api_devices__device_public_id__prefs_patch"];
+type OpenApiOperationUpdateProcessScopeConfigApiProcessesNameConfigPatch = Operations["update_process_scope_config_api_processes__name__config_patch"];
+type OpenApiOperationUpdateUserApiAuthUsersUserIdUpdatePost = Operations["update_user_api_auth_users__user_id__update_post"];
+type OpenApiOperationWebsocketStatsApiWsStatsGet = Operations["websocket_stats_api_ws_stats_get"];
+type OpenApiOperationZmqHealthCheckApiZmqHealthGet = Operations["zmq_health_check_api_zmq_health_get"];
+
+type OpenApiPathItem<T, P = {
+    query?: never;
+    header?: never;
+    path?: never;
+    cookie?: never;
+}> = { parameters: P } & T & {
+    [M in Exclude<"get" | "put" | "post" | "delete" | "options" | "head" | "patch" | "trace", keyof T>]?: never;
+};
+
 export type Paths = {
-    "/api/auth/login": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["login_api_auth_login_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/refresh": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["refresh_token_api_auth_refresh_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/ws_token": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["issue_ws_token_api_auth_ws_token_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_current_user_profile_api_auth_me_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/me/update": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["update_current_user_preferences_api_auth_me_update_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/logout": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["logout_api_auth_logout_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/users": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_users_api_auth_users_get"];
-        put?: never;
-        post: Operations["create_user_api_auth_users_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/desks/{operator_public_id}/members": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_desk_members_api_auth_desks__operator_public_id__members_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/desks/{operator_public_id}/members/{username}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["attach_viewer_to_desk_api_auth_desks__operator_public_id__members__username__post"];
-        delete: Operations["detach_viewer_from_desk_api_auth_desks__operator_public_id__members__username__delete"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/users/{user_id}/update": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["update_user_api_auth_users__user_id__update_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/users/{user_id}/deactivate": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["deactivate_user_api_auth_users__user_id__deactivate_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/users/{user_id}/change-password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["change_user_password_api_auth_users__user_id__change_password_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/auth/users/{user_id}/admin-reset-password": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["admin_reset_user_password_api_auth_users__user_id__admin_reset_password_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/settings/features": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_public_feature_flags_api_settings_features_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/settings": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_all_settings_api_settings_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/settings/categories": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_setting_categories_api_settings_categories_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/settings/{key}/set": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["set_setting_api_settings__key__set_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/settings/push-beta/users": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_push_beta_users_api_settings_push_beta_users_get"];
-        put?: never;
-        post: Operations["set_push_beta_users_api_settings_push_beta_users_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/settings/{key}/remove": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["remove_setting_api_settings__key__remove_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ai-delegates": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_delegates_api_ai_delegates_get"];
-        put?: never;
-        post: Operations["create_delegate_api_ai_delegates_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ai-delegates/{delegate_public_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_delegate_api_ai_delegates__delegate_public_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: Operations["update_delegate_caps_api_ai_delegates__delegate_public_id__patch"];
-        trace?: never;
-    };
-    "/api/ai-delegates/{delegate_public_id}/deactivate": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["deactivate_delegate_api_ai_delegates__delegate_public_id__deactivate_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ai-researchers": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["create_researcher_api_ai_researchers_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ai-reviews/{review_public_id}/decision": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["submit_ai_review_decision_route_api_ai_reviews__review_public_id__decision_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ai-reviews/pending": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_pending_ai_reviews_api_ai_reviews_pending_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ai-reviews/{review_public_id}/aftermath": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_ai_review_aftermath_route_api_ai_reviews__review_public_id__aftermath_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ai-reviews": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_ai_reviews_route_api_ai_reviews_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes/available": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_available_processes_api_processes_available_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes/configured": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_configured_processes_api_processes_configured_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes/summary": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_process_summary_api_processes_summary_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["create_process_configuration_api_processes_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes/schema/{name}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_process_schema_api_processes_schema__name__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes/{name}/start": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["start_process_api_processes__name__start_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes/{name}/stop": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["stop_process_api_processes__name__stop_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/processes/{name}/desired-state": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: Operations["set_process_desired_state_api_processes__name__desired_state_patch"];
-        trace?: never;
-    };
-    "/api/processes/{name}/config": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: Operations["update_process_scope_config_api_processes__name__config_patch"];
-        trace?: never;
-    };
-    "/api/processes/runs": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_process_runs_api_processes_runs_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/strategies": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_strategies_api_strategies_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/wallets": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_wallets_api_wallets_get"];
-        put?: never;
-        post: Operations["create_wallet_api_wallets_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/operators": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_operators_api_operators_get"];
-        put?: never;
-        post: Operations["create_operator_api_operators_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/paired-execution/incidents": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_paired_execution_incidents_api_paired_execution_incidents_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/paired-execution/groups/{group_public_id}/terminalize": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["terminalize_paired_execution_group_api_paired_execution_groups__group_public_id__terminalize_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/scope-grants": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_scope_grants_api_scope_grants_get"];
-        put?: never;
-        post: Operations["create_scope_grant_api_scope_grants_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/scope-grants/handover": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["handover_scope_grant_api_scope_grants_handover_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/scope-grants/{grant_public_id}/revoke": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["revoke_scope_grant_api_scope_grants__grant_public_id__revoke_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/market/cache/stats/configured": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_configured_cached_pair_stats_api_market_cache_stats_configured_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/market/cache/stats/{exchange_a}/{symbol_a}/{exchange_b}/{symbol_b}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_cached_pair_stats_api_market_cache_stats__exchange_a___symbol_a___exchange_b___symbol_b__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/market/cache/health": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_cache_health_api_market_cache_health_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/market/coverage": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_market_data_coverage_api_market_coverage_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/market/feed-health": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_market_feed_health_api_market_feed_health_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/wallets/{wallet_public_id}/credentials": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_credentials_api_wallets__wallet_public_id__credentials_get"];
-        put?: never;
-        post: Operations["create_credential_api_wallets__wallet_public_id__credentials_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/wallets/{wallet_public_id}/credentials/{credential_public_id}/reconciliation-method": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put: Operations["set_credential_reconciliation_method_api_wallets__wallet_public_id__credentials__credential_public_id__reconciliation_method_put"];
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/wallets/{wallet_public_id}/credentials/{credential_public_id}/rotate": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["rotate_credential_api_wallets__wallet_public_id__credentials__credential_public_id__rotate_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/orders": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_orders_api_orders_get"];
-        put?: never;
-        post: Operations["create_order_api_orders_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/orders/{plan_public_id}/cancel": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["cancel_order_api_orders__plan_public_id__cancel_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/orders/by-client-order-id/{client_order_id}/cancel": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["cancel_order_by_client_order_id_api_orders_by_client_order_id__client_order_id__cancel_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/execution-plans": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["create_bracket_api_execution_plans_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/execution-plans/{plan_public_id}/cancel": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["cancel_bracket_api_execution_plans__plan_public_id__cancel_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/execution-plans/{plan_public_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_bracket_api_execution_plans__plan_public_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/execution-plans/{plan_public_id}/decisions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_bracket_decisions_api_execution_plans__plan_public_id__decisions_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/position-cycles/open": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_open_cycles_api_position_cycles_open_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/position-cycles/close-orphan": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["close_orphan_cycle_api_position_cycles_close_orphan_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/position-cycles/sweep-orphans": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["sweep_orphan_cycles_api_position_cycles_sweep_orphans_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/portfolio/pnl/series": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_pnl_series_api_portfolio_pnl_series_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/portfolio/pnl/timeline": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_pnl_timeline_api_portfolio_pnl_timeline_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/trailing-stops": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["create_trailing_stop_api_trailing_stops_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/trailing-stops/{plan_public_id}/cancel": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["cancel_trailing_stop_api_trailing_stops__plan_public_id__cancel_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/trailing-stops/{plan_public_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_trailing_stop_api_trailing_stops__plan_public_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/trailing-stops/{plan_public_id}/decisions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_trailing_stop_decisions_api_trailing_stops__plan_public_id__decisions_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/trailing-stops/by-cycle/{cycle_public_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_trailing_stop_by_cycle_api_trailing_stops_by_cycle__cycle_public_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_backtests_api_backtests_get"];
-        put?: never;
-        post: Operations["create_backtest_api_backtests_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/strategy-classes": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_strategy_classes_api_backtests_strategy_classes_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/compare": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_comparisons_api_backtests_compare_get"];
-        put?: never;
-        post: Operations["create_comparison_api_backtests_compare_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/compare/{comparison_public_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_comparison_api_backtests_compare__comparison_public_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/{run_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_backtest_api_backtests__run_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/{run_id}/cancel": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["cancel_backtest_api_backtests__run_id__cancel_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/{run_id}/rerun": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["rerun_backtest_api_backtests__run_id__rerun_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/{run_id}/trades": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_backtest_trades_api_backtests__run_id__trades_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/{run_id}/signals": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_backtest_signals_api_backtests__run_id__signals_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/{run_id}/events": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_backtest_events_api_backtests__run_id__events_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/backtests/{run_id}/equity": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_backtest_equity_api_backtests__run_id__equity_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/devices/android/config": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["android_push_config_api_devices_android_config_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/devices/android/registration-state": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["android_registration_state_api_devices_android_registration_state_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/devices/android": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_android_devices_api_devices_android_get"];
-        put?: never;
-        post: Operations["register_android_device_api_devices_android_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/devices": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_devices_api_devices_get"];
-        put?: never;
-        post: Operations["register_device_api_devices_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/devices/{device_public_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete: Operations["delete_device_api_devices__device_public_id__delete"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/devices/{device_public_id}/prefs": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_device_prefs_api_devices__device_public_id__prefs_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: Operations["update_device_pref_api_devices__device_public_id__prefs_patch"];
-        trace?: never;
-    };
-    "/api/devices/{device_public_id}/prefs/{pref_public_id}/revoke": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["revoke_device_pref_api_devices__device_public_id__prefs__pref_public_id__revoke_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/health/egress": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_egress_health_api_health_egress_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/alert_defaults": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_alert_defaults_api_alert_defaults_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch: Operations["update_alert_default_api_alert_defaults_patch"];
-        trace?: never;
-    };
-    "/api/metrics/notifications": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_notification_metrics_api_metrics_notifications_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/metrics/system": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_system_metrics_api_metrics_system_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/metrics/system/history": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_system_metrics_history_api_metrics_system_history_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/metrics/system/tracemalloc/start": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["post_system_metrics_tracemalloc_start_api_metrics_system_tracemalloc_start_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/metrics/system/tracemalloc/stop": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post: Operations["post_system_metrics_tracemalloc_stop_api_metrics_system_tracemalloc_stop_post"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/metrics/retention": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_retention_metrics_api_metrics_retention_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/metrics/db/tables": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_db_table_stats_api_metrics_db_tables_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/alerts/history": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["list_alert_history_api_alerts_history_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/alerts/{alert_public_id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_alert_event_api_alerts__alert_public_id__get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/candles": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_candles_api_candles_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/candles/db": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_candles_db_api_candles_db_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/candles/cache": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_candles_cache_api_candles_cache_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/signals": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_signals_api_signals_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/exchanges": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_exchanges_api_exchanges_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/exchanges/{exchange}/instruments": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_exchange_instruments_api_exchanges__exchange__instruments_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/exchanges/{exchange}/instruments/detail": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_exchange_instruments_detail_api_exchanges__exchange__instruments_detail_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/underlyings": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["_get_underlyings_api_underlyings_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/underlyings/{ticker}/instruments": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["_get_underlying_instruments_api_underlyings__ticker__instruments_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/underlyings/{ticker}/front-month": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["_get_front_month_api_underlyings__ticker__front_month_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/underlyings/{ticker}/contracts": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["_get_contracts_api_underlyings__ticker__contracts_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/underlyings/{ticker}/continuous": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["_get_continuous_series_api_underlyings__ticker__continuous_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/instruments/{exchange}/{native_symbol}/related": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["_get_related_instruments_api_instruments__exchange___native_symbol__related_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/executions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_executions_api_executions_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/positions": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_positions_api_positions_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/portfolio/accounts": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_portfolio_accounts_api_portfolio_accounts_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/instrument-capabilities": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_instrument_capabilities_api_instrument_capabilities_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/venue-fee-schedules": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_venue_fee_schedules_api_venue_fee_schedules_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/health": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["health_check_api_health_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/ws/stats": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["websocket_stats_api_ws_stats_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/zmq/health": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["zmq_health_check_api_zmq_health_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/metrics/rest-rate": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["rest_rate_metrics_api_metrics_rest_rate_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/api/status": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get: Operations["get_system_status_api_status_get"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
+    "/api/auth/login": OpenApiPathItem<{
+        post: OpenApiOperationLoginApiAuthLoginPost;
+    }>;
+    "/api/auth/refresh": OpenApiPathItem<{
+        post: OpenApiOperationRefreshTokenApiAuthRefreshPost;
+    }>;
+    "/api/auth/ws_token": OpenApiPathItem<{
+        post: OpenApiOperationIssueWsTokenApiAuthWsTokenPost;
+    }>;
+    "/api/auth/me": OpenApiPathItem<{
+        get: OpenApiOperationGetCurrentUserProfileApiAuthMeGet;
+    }>;
+    "/api/auth/me/update": OpenApiPathItem<{
+        post: OpenApiOperationUpdateCurrentUserPreferencesApiAuthMeUpdatePost;
+    }>;
+    "/api/auth/logout": OpenApiPathItem<{
+        post: OpenApiOperationLogoutApiAuthLogoutPost;
+    }>;
+    "/api/auth/users": OpenApiPathItem<{
+        get: OpenApiOperationGetUsersApiAuthUsersGet;
+        post: OpenApiOperationCreateUserApiAuthUsersPost;
+    }>;
+    "/api/auth/desks/{operator_public_id}/members": OpenApiPathItem<{
+        get: OpenApiOperationListDeskMembersApiAuthDesksOperatorPublicIdMembersGet;
+    }>;
+    "/api/auth/desks/{operator_public_id}/members/{username}": OpenApiPathItem<{
+        post: OpenApiOperationAttachViewerToDeskApiAuthDesksOperatorPublicIdMembersUsernamePost;
+        delete: OpenApiOperationDetachViewerFromDeskApiAuthDesksOperatorPublicIdMembersUsernameDelete;
+    }>;
+    "/api/auth/users/{user_id}/update": OpenApiPathItem<{
+        post: OpenApiOperationUpdateUserApiAuthUsersUserIdUpdatePost;
+    }>;
+    "/api/auth/users/{user_id}/deactivate": OpenApiPathItem<{
+        post: OpenApiOperationDeactivateUserApiAuthUsersUserIdDeactivatePost;
+    }>;
+    "/api/auth/users/{user_id}/change-password": OpenApiPathItem<{
+        post: OpenApiOperationChangeUserPasswordApiAuthUsersUserIdChangePasswordPost;
+    }>;
+    "/api/auth/users/{user_id}/admin-reset-password": OpenApiPathItem<{
+        post: OpenApiOperationAdminResetUserPasswordApiAuthUsersUserIdAdminResetPasswordPost;
+    }>;
+    "/api/settings/features": OpenApiPathItem<{
+        get: OpenApiOperationGetPublicFeatureFlagsApiSettingsFeaturesGet;
+    }>;
+    "/api/settings": OpenApiPathItem<{
+        get: OpenApiOperationGetAllSettingsApiSettingsGet;
+    }>;
+    "/api/settings/categories": OpenApiPathItem<{
+        get: OpenApiOperationGetSettingCategoriesApiSettingsCategoriesGet;
+    }>;
+    "/api/settings/{key}/set": OpenApiPathItem<{
+        post: OpenApiOperationSetSettingApiSettingsKeySetPost;
+    }>;
+    "/api/settings/push-beta/users": OpenApiPathItem<{
+        get: OpenApiOperationGetPushBetaUsersApiSettingsPushBetaUsersGet;
+        post: OpenApiOperationSetPushBetaUsersApiSettingsPushBetaUsersPost;
+    }>;
+    "/api/settings/{key}/remove": OpenApiPathItem<{
+        post: OpenApiOperationRemoveSettingApiSettingsKeyRemovePost;
+    }>;
+    "/api/ai-delegates": OpenApiPathItem<{
+        get: OpenApiOperationListDelegatesApiAiDelegatesGet;
+        post: OpenApiOperationCreateDelegateApiAiDelegatesPost;
+    }>;
+    "/api/ai-delegates/{delegate_public_id}": OpenApiPathItem<{
+        get: OpenApiOperationGetDelegateApiAiDelegatesDelegatePublicIdGet;
+        patch: OpenApiOperationUpdateDelegateCapsApiAiDelegatesDelegatePublicIdPatch;
+    }>;
+    "/api/ai-delegates/{delegate_public_id}/deactivate": OpenApiPathItem<{
+        post: OpenApiOperationDeactivateDelegateApiAiDelegatesDelegatePublicIdDeactivatePost;
+    }>;
+    "/api/ai-researchers": OpenApiPathItem<{
+        post: OpenApiOperationCreateResearcherApiAiResearchersPost;
+    }>;
+    "/api/ai-reviews/{review_public_id}/decision": OpenApiPathItem<{
+        post: OpenApiOperationSubmitAiReviewDecisionRouteApiAiReviewsReviewPublicIdDecisionPost;
+    }>;
+    "/api/ai-reviews/pending": OpenApiPathItem<{
+        get: OpenApiOperationListPendingAiReviewsApiAiReviewsPendingGet;
+    }>;
+    "/api/ai-reviews/{review_public_id}/aftermath": OpenApiPathItem<{
+        get: OpenApiOperationGetAiReviewAftermathRouteApiAiReviewsReviewPublicIdAftermathGet;
+    }>;
+    "/api/ai-reviews": OpenApiPathItem<{
+        get: OpenApiOperationListAiReviewsRouteApiAiReviewsGet;
+    }>;
+    "/api/processes/available": OpenApiPathItem<{
+        get: OpenApiOperationListAvailableProcessesApiProcessesAvailableGet;
+    }>;
+    "/api/processes/configured": OpenApiPathItem<{
+        get: OpenApiOperationListConfiguredProcessesApiProcessesConfiguredGet;
+    }>;
+    "/api/processes/summary": OpenApiPathItem<{
+        get: OpenApiOperationGetProcessSummaryApiProcessesSummaryGet;
+    }>;
+    "/api/processes": OpenApiPathItem<{
+        post: OpenApiOperationCreateProcessConfigurationApiProcessesPost;
+    }>;
+    "/api/processes/schema/{name}": OpenApiPathItem<{
+        get: OpenApiOperationGetProcessSchemaApiProcessesSchemaNameGet;
+    }>;
+    "/api/processes/{name}/start": OpenApiPathItem<{
+        post: OpenApiOperationStartProcessApiProcessesNameStartPost;
+    }>;
+    "/api/processes/{name}/stop": OpenApiPathItem<{
+        post: OpenApiOperationStopProcessApiProcessesNameStopPost;
+    }>;
+    "/api/processes/{name}/desired-state": OpenApiPathItem<{
+        patch: OpenApiOperationSetProcessDesiredStateApiProcessesNameDesiredStatePatch;
+    }>;
+    "/api/processes/{name}/config": OpenApiPathItem<{
+        patch: OpenApiOperationUpdateProcessScopeConfigApiProcessesNameConfigPatch;
+    }>;
+    "/api/processes/runs": OpenApiPathItem<{
+        get: OpenApiOperationListProcessRunsApiProcessesRunsGet;
+    }>;
+    "/api/strategies": OpenApiPathItem<{
+        get: OpenApiOperationListStrategiesApiStrategiesGet;
+    }>;
+    "/api/wallets": OpenApiPathItem<{
+        get: OpenApiOperationListWalletsApiWalletsGet;
+        post: OpenApiOperationCreateWalletApiWalletsPost;
+    }>;
+    "/api/operators": OpenApiPathItem<{
+        get: OpenApiOperationListOperatorsApiOperatorsGet;
+        post: OpenApiOperationCreateOperatorApiOperatorsPost;
+    }>;
+    "/api/paired-execution/incidents": OpenApiPathItem<{
+        get: OpenApiOperationListPairedExecutionIncidentsApiPairedExecutionIncidentsGet;
+    }>;
+    "/api/paired-execution/groups/{group_public_id}/terminalize": OpenApiPathItem<{
+        post: OpenApiOperationTerminalizePairedExecutionGroupApiPairedExecutionGroupsGroupPublicIdTerminalizePost;
+    }>;
+    "/api/scope-grants": OpenApiPathItem<{
+        get: OpenApiOperationListScopeGrantsApiScopeGrantsGet;
+        post: OpenApiOperationCreateScopeGrantApiScopeGrantsPost;
+    }>;
+    "/api/scope-grants/handover": OpenApiPathItem<{
+        post: OpenApiOperationHandoverScopeGrantApiScopeGrantsHandoverPost;
+    }>;
+    "/api/scope-grants/{grant_public_id}/revoke": OpenApiPathItem<{
+        post: OpenApiOperationRevokeScopeGrantApiScopeGrantsGrantPublicIdRevokePost;
+    }>;
+    "/api/market/cache/stats/configured": OpenApiPathItem<{
+        get: OpenApiOperationGetConfiguredCachedPairStatsApiMarketCacheStatsConfiguredGet;
+    }>;
+    "/api/market/cache/stats/{exchange_a}/{symbol_a}/{exchange_b}/{symbol_b}": OpenApiPathItem<{
+        get: OpenApiOperationGetCachedPairStatsApiMarketCacheStatsExchangeASymbolAExchangeBSymbolBGet;
+    }>;
+    "/api/market/cache/health": OpenApiPathItem<{
+        get: OpenApiOperationGetCacheHealthApiMarketCacheHealthGet;
+    }>;
+    "/api/market/coverage": OpenApiPathItem<{
+        get: OpenApiOperationGetMarketDataCoverageApiMarketCoverageGet;
+    }>;
+    "/api/market/feed-health": OpenApiPathItem<{
+        get: OpenApiOperationGetMarketFeedHealthApiMarketFeedHealthGet;
+    }>;
+    "/api/wallets/{wallet_public_id}/credentials": OpenApiPathItem<{
+        get: OpenApiOperationListCredentialsApiWalletsWalletPublicIdCredentialsGet;
+        post: OpenApiOperationCreateCredentialApiWalletsWalletPublicIdCredentialsPost;
+    }>;
+    "/api/wallets/{wallet_public_id}/credentials/{credential_public_id}/reconciliation-method": OpenApiPathItem<{
+        put: OpenApiOperationSetCredentialReconciliationMethodApiWalletsWalletPublicIdCredentialsCredentialPublicIdReconciliationMethodPut;
+    }>;
+    "/api/wallets/{wallet_public_id}/credentials/{credential_public_id}/rotate": OpenApiPathItem<{
+        post: OpenApiOperationRotateCredentialApiWalletsWalletPublicIdCredentialsCredentialPublicIdRotatePost;
+    }>;
+    "/api/orders": OpenApiPathItem<{
+        get: OpenApiOperationGetOrdersApiOrdersGet;
+        post: OpenApiOperationCreateOrderApiOrdersPost;
+    }>;
+    "/api/orders/{plan_public_id}/cancel": OpenApiPathItem<{
+        post: OpenApiOperationCancelOrderApiOrdersPlanPublicIdCancelPost;
+    }>;
+    "/api/orders/by-client-order-id/{client_order_id}/cancel": OpenApiPathItem<{
+        post: OpenApiOperationCancelOrderByClientOrderIdApiOrdersByClientOrderIdClientOrderIdCancelPost;
+    }>;
+    "/api/execution-plans": OpenApiPathItem<{
+        post: OpenApiOperationCreateBracketApiExecutionPlansPost;
+    }>;
+    "/api/execution-plans/{plan_public_id}/cancel": OpenApiPathItem<{
+        post: OpenApiOperationCancelBracketApiExecutionPlansPlanPublicIdCancelPost;
+    }>;
+    "/api/execution-plans/{plan_public_id}": OpenApiPathItem<{
+        get: OpenApiOperationGetBracketApiExecutionPlansPlanPublicIdGet;
+    }>;
+    "/api/execution-plans/{plan_public_id}/decisions": OpenApiPathItem<{
+        get: OpenApiOperationListBracketDecisionsApiExecutionPlansPlanPublicIdDecisionsGet;
+    }>;
+    "/api/position-cycles/open": OpenApiPathItem<{
+        get: OpenApiOperationListOpenCyclesApiPositionCyclesOpenGet;
+    }>;
+    "/api/position-cycles/close-orphan": OpenApiPathItem<{
+        post: OpenApiOperationCloseOrphanCycleApiPositionCyclesCloseOrphanPost;
+    }>;
+    "/api/position-cycles/sweep-orphans": OpenApiPathItem<{
+        post: OpenApiOperationSweepOrphanCyclesApiPositionCyclesSweepOrphansPost;
+    }>;
+    "/api/portfolio/pnl/series": OpenApiPathItem<{
+        get: OpenApiOperationGetPnlSeriesApiPortfolioPnlSeriesGet;
+    }>;
+    "/api/portfolio/pnl/timeline": OpenApiPathItem<{
+        get: OpenApiOperationGetPnlTimelineApiPortfolioPnlTimelineGet;
+    }>;
+    "/api/trailing-stops": OpenApiPathItem<{
+        post: OpenApiOperationCreateTrailingStopApiTrailingStopsPost;
+    }>;
+    "/api/trailing-stops/{plan_public_id}/cancel": OpenApiPathItem<{
+        post: OpenApiOperationCancelTrailingStopApiTrailingStopsPlanPublicIdCancelPost;
+    }>;
+    "/api/trailing-stops/{plan_public_id}": OpenApiPathItem<{
+        get: OpenApiOperationGetTrailingStopApiTrailingStopsPlanPublicIdGet;
+    }>;
+    "/api/trailing-stops/{plan_public_id}/decisions": OpenApiPathItem<{
+        get: OpenApiOperationListTrailingStopDecisionsApiTrailingStopsPlanPublicIdDecisionsGet;
+    }>;
+    "/api/trailing-stops/by-cycle/{cycle_public_id}": OpenApiPathItem<{
+        get: OpenApiOperationGetTrailingStopByCycleApiTrailingStopsByCycleCyclePublicIdGet;
+    }>;
+    "/api/backtests": OpenApiPathItem<{
+        get: OpenApiOperationListBacktestsApiBacktestsGet;
+        post: OpenApiOperationCreateBacktestApiBacktestsPost;
+    }>;
+    "/api/backtests/strategy-classes": OpenApiPathItem<{
+        get: OpenApiOperationListStrategyClassesApiBacktestsStrategyClassesGet;
+    }>;
+    "/api/backtests/compare": OpenApiPathItem<{
+        get: OpenApiOperationListComparisonsApiBacktestsCompareGet;
+        post: OpenApiOperationCreateComparisonApiBacktestsComparePost;
+    }>;
+    "/api/backtests/compare/{comparison_public_id}": OpenApiPathItem<{
+        get: OpenApiOperationGetComparisonApiBacktestsCompareComparisonPublicIdGet;
+    }>;
+    "/api/backtests/{run_id}": OpenApiPathItem<{
+        get: OpenApiOperationGetBacktestApiBacktestsRunIdGet;
+    }>;
+    "/api/backtests/{run_id}/cancel": OpenApiPathItem<{
+        post: OpenApiOperationCancelBacktestApiBacktestsRunIdCancelPost;
+    }>;
+    "/api/backtests/{run_id}/rerun": OpenApiPathItem<{
+        post: OpenApiOperationRerunBacktestApiBacktestsRunIdRerunPost;
+    }>;
+    "/api/backtests/{run_id}/trades": OpenApiPathItem<{
+        get: OpenApiOperationGetBacktestTradesApiBacktestsRunIdTradesGet;
+    }>;
+    "/api/backtests/{run_id}/signals": OpenApiPathItem<{
+        get: OpenApiOperationGetBacktestSignalsApiBacktestsRunIdSignalsGet;
+    }>;
+    "/api/backtests/{run_id}/events": OpenApiPathItem<{
+        get: OpenApiOperationGetBacktestEventsApiBacktestsRunIdEventsGet;
+    }>;
+    "/api/backtests/{run_id}/equity": OpenApiPathItem<{
+        get: OpenApiOperationGetBacktestEquityApiBacktestsRunIdEquityGet;
+    }>;
+    "/api/devices/android/config": OpenApiPathItem<{
+        get: OpenApiOperationAndroidPushConfigApiDevicesAndroidConfigGet;
+    }>;
+    "/api/devices/android/registration-state": OpenApiPathItem<{
+        get: OpenApiOperationAndroidRegistrationStateApiDevicesAndroidRegistrationStateGet;
+    }>;
+    "/api/devices/android": OpenApiPathItem<{
+        get: OpenApiOperationListAndroidDevicesApiDevicesAndroidGet;
+        post: OpenApiOperationRegisterAndroidDeviceApiDevicesAndroidPost;
+    }>;
+    "/api/devices": OpenApiPathItem<{
+        get: OpenApiOperationListDevicesApiDevicesGet;
+        post: OpenApiOperationRegisterDeviceApiDevicesPost;
+    }>;
+    "/api/devices/{device_public_id}": OpenApiPathItem<{
+        delete: OpenApiOperationDeleteDeviceApiDevicesDevicePublicIdDelete;
+    }>;
+    "/api/devices/{device_public_id}/prefs": OpenApiPathItem<{
+        get: OpenApiOperationListDevicePrefsApiDevicesDevicePublicIdPrefsGet;
+        patch: OpenApiOperationUpdateDevicePrefApiDevicesDevicePublicIdPrefsPatch;
+    }>;
+    "/api/devices/{device_public_id}/prefs/{pref_public_id}/revoke": OpenApiPathItem<{
+        post: OpenApiOperationRevokeDevicePrefApiDevicesDevicePublicIdPrefsPrefPublicIdRevokePost;
+    }>;
+    "/api/health/egress": OpenApiPathItem<{
+        get: OpenApiOperationGetEgressHealthApiHealthEgressGet;
+    }>;
+    "/api/alert_defaults": OpenApiPathItem<{
+        get: OpenApiOperationListAlertDefaultsApiAlertDefaultsGet;
+        patch: OpenApiOperationUpdateAlertDefaultApiAlertDefaultsPatch;
+    }>;
+    "/api/metrics/notifications": OpenApiPathItem<{
+        get: OpenApiOperationGetNotificationMetricsApiMetricsNotificationsGet;
+    }>;
+    "/api/metrics/system": OpenApiPathItem<{
+        get: OpenApiOperationGetSystemMetricsApiMetricsSystemGet;
+    }>;
+    "/api/metrics/system/history": OpenApiPathItem<{
+        get: OpenApiOperationGetSystemMetricsHistoryApiMetricsSystemHistoryGet;
+    }>;
+    "/api/metrics/system/tracemalloc/start": OpenApiPathItem<{
+        post: OpenApiOperationPostSystemMetricsTracemallocStartApiMetricsSystemTracemallocStartPost;
+    }>;
+    "/api/metrics/system/tracemalloc/stop": OpenApiPathItem<{
+        post: OpenApiOperationPostSystemMetricsTracemallocStopApiMetricsSystemTracemallocStopPost;
+    }>;
+    "/api/metrics/retention": OpenApiPathItem<{
+        get: OpenApiOperationGetRetentionMetricsApiMetricsRetentionGet;
+    }>;
+    "/api/metrics/db/tables": OpenApiPathItem<{
+        get: OpenApiOperationGetDbTableStatsApiMetricsDbTablesGet;
+    }>;
+    "/api/alerts/history": OpenApiPathItem<{
+        get: OpenApiOperationListAlertHistoryApiAlertsHistoryGet;
+    }>;
+    "/api/alerts/{alert_public_id}": OpenApiPathItem<{
+        get: OpenApiOperationGetAlertEventApiAlertsAlertPublicIdGet;
+    }>;
+    "/api/candles": OpenApiPathItem<{
+        get: OpenApiOperationGetCandlesApiCandlesGet;
+    }>;
+    "/api/candles/db": OpenApiPathItem<{
+        get: OpenApiOperationGetCandlesDbApiCandlesDbGet;
+    }>;
+    "/api/candles/cache": OpenApiPathItem<{
+        get: OpenApiOperationGetCandlesCacheApiCandlesCacheGet;
+    }>;
+    "/api/signals": OpenApiPathItem<{
+        get: OpenApiOperationGetSignalsApiSignalsGet;
+    }>;
+    "/api/exchanges": OpenApiPathItem<{
+        get: OpenApiOperationGetExchangesApiExchangesGet;
+    }>;
+    "/api/exchanges/{exchange}/instruments": OpenApiPathItem<{
+        get: OpenApiOperationGetExchangeInstrumentsApiExchangesExchangeInstrumentsGet;
+    }>;
+    "/api/exchanges/{exchange}/instruments/detail": OpenApiPathItem<{
+        get: OpenApiOperationGetExchangeInstrumentsDetailApiExchangesExchangeInstrumentsDetailGet;
+    }>;
+    "/api/underlyings": OpenApiPathItem<{
+        get: OpenApiOperationGetUnderlyingsApiUnderlyingsGet;
+    }>;
+    "/api/underlyings/{ticker}/instruments": OpenApiPathItem<{
+        get: OpenApiOperationGetUnderlyingInstrumentsApiUnderlyingsTickerInstrumentsGet;
+    }>;
+    "/api/underlyings/{ticker}/front-month": OpenApiPathItem<{
+        get: OpenApiOperationGetFrontMonthApiUnderlyingsTickerFrontMonthGet;
+    }>;
+    "/api/underlyings/{ticker}/contracts": OpenApiPathItem<{
+        get: OpenApiOperationGetContractsApiUnderlyingsTickerContractsGet;
+    }>;
+    "/api/underlyings/{ticker}/continuous": OpenApiPathItem<{
+        get: OpenApiOperationGetContinuousSeriesApiUnderlyingsTickerContinuousGet;
+    }>;
+    "/api/instruments/{exchange}/{native_symbol}/related": OpenApiPathItem<{
+        get: OpenApiOperationGetRelatedInstrumentsApiInstrumentsExchangeNativeSymbolRelatedGet;
+    }>;
+    "/api/executions": OpenApiPathItem<{
+        get: OpenApiOperationGetExecutionsApiExecutionsGet;
+    }>;
+    "/api/positions": OpenApiPathItem<{
+        get: OpenApiOperationGetPositionsApiPositionsGet;
+    }>;
+    "/api/portfolio/accounts": OpenApiPathItem<{
+        get: OpenApiOperationGetPortfolioAccountsApiPortfolioAccountsGet;
+    }>;
+    "/api/instrument-capabilities": OpenApiPathItem<{
+        get: OpenApiOperationGetInstrumentCapabilitiesApiInstrumentCapabilitiesGet;
+    }>;
+    "/api/venue-fee-schedules": OpenApiPathItem<{
+        get: OpenApiOperationGetVenueFeeSchedulesApiVenueFeeSchedulesGet;
+    }>;
+    "/api/health": OpenApiPathItem<{
+        get: OpenApiOperationHealthCheckApiHealthGet;
+    }>;
+    "/api/ws/stats": OpenApiPathItem<{
+        get: OpenApiOperationWebsocketStatsApiWsStatsGet;
+    }>;
+    "/api/zmq/health": OpenApiPathItem<{
+        get: OpenApiOperationZmqHealthCheckApiZmqHealthGet;
+    }>;
+    "/api/metrics/rest-rate": OpenApiPathItem<{
+        get: OpenApiOperationRestRateMetricsApiMetricsRestRateGet;
+    }>;
+    "/api/status": OpenApiPathItem<{
+        get: OpenApiOperationGetSystemStatusApiStatusGet;
+    }>;
 };
 export type webhooks = Record<string, never>;
 export type Components = {
