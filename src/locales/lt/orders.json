@@ -90,7 +90,8 @@
       "stopPrice": "Stop kaina",
       "mode": "Režimas",
       "wallet": "Piniginė",
-      "type": "Tipas"
+      "type": "Tipas",
+      "postOnly": "Tik maker"
     },
     "sideOptions": {
       "buy": "Pirkimas",

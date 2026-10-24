@@ -90,7 +90,8 @@
       "stopPrice": "Stop cena",
       "mode": "Režim",
       "wallet": "Peňaženka",
-      "type": "Typ"
+      "type": "Typ",
+      "postOnly": "Iba maker"
     },
     "sideOptions": {
       "buy": "Nákup",

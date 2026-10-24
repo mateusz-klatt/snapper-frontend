@@ -2503,7 +2503,7 @@ const _CreateOrderBodyRawSchema = z
     quantity: z.number(),
     price: z.number().nullable().optional(),
     stop_price: z.number().nullable().optional(),
-    time_in_force: z.string().optional(),
+    time_in_force: z.literal('GTC').optional(),
     post_only: z.boolean().optional(),
     leverage: z.number().int().nullable().optional(),
     reduce_only: z.boolean().optional(),

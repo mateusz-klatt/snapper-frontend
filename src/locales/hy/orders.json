@@ -90,7 +90,8 @@
       "stopPrice": "Stop գին",
       "mode": "Ռեժիմ",
       "wallet": "Դրամապանակ",
-      "type": "Տեսակ"
+      "type": "Տեսակ",
+      "postOnly": "Միայն մեյքեր"
     },
     "sideOptions": {
       "buy": "Գնում",

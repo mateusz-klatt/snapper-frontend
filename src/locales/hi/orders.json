@@ -90,7 +90,8 @@
       "stopPrice": "Stop कीमत",
       "mode": "मोड",
       "wallet": "वॉलेट",
-      "type": "प्रकार"
+      "type": "प्रकार",
+      "postOnly": "केवल मेकर"
     },
     "sideOptions": {
       "buy": "खरीद",

@@ -90,7 +90,8 @@
       "stopPrice": "Stop cena",
       "mode": "Režim",
       "wallet": "Peněženka",
-      "type": "Typ"
+      "type": "Typ",
+      "postOnly": "Pouze maker"
     },
     "sideOptions": {
       "buy": "Nákup",

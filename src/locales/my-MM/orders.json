@@ -90,7 +90,8 @@
       "stopPrice": "Stop စျေးနှုန်း",
       "mode": "မုဒ်",
       "wallet": "ဝေါလက်",
-      "type": "အမျိုးအစား"
+      "type": "အမျိုးအစား",
+      "postOnly": "Maker သီးသန့်"
     },
     "sideOptions": {
       "buy": "ဝယ်",

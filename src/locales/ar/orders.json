@@ -90,7 +90,8 @@
       "stopPrice": "سعر الإيقاف",
       "mode": "الوضع",
       "wallet": "محفظة",
-      "type": "النوع"
+      "type": "النوع",
+      "postOnly": "صانع سيولة فقط"
     },
     "sideOptions": {
       "buy": "شراء",

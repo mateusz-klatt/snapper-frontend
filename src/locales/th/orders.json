@@ -90,7 +90,8 @@
       "stopPrice": "ราคา stop",
       "mode": "โหมด",
       "wallet": "กระเป๋าเงิน",
-      "type": "ประเภท"
+      "type": "ประเภท",
+      "postOnly": "เฉพาะเมกเกอร์"
     },
     "sideOptions": {
       "buy": "ซื้อ",

@@ -90,7 +90,8 @@
       "stopPrice": "Cena stop",
       "mode": "Tryb",
       "wallet": "Portfel",
-      "type": "Typ"
+      "type": "Typ",
+      "postOnly": "Tylko maker"
     },
     "sideOptions": {
       "buy": "Kup",

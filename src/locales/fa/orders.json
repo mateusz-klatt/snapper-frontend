@@ -90,7 +90,8 @@
       "stopPrice": "قیمت Stop",
       "mode": "حالت",
       "wallet": "کیف پول",
-      "type": "نوع"
+      "type": "نوع",
+      "postOnly": "فقط میکر"
     },
     "sideOptions": {
       "buy": "خرید",

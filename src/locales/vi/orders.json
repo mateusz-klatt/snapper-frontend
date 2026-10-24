@@ -90,7 +90,8 @@
       "stopPrice": "Giá dừng",
       "mode": "Chế độ",
       "wallet": "Ví",
-      "type": "Loại"
+      "type": "Loại",
+      "postOnly": "Chỉ maker"
     },
     "sideOptions": {
       "buy": "Mua",

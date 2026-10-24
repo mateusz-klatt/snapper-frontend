@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
 import { v7 as uuid7 } from 'uuid'
 import { useTranslation } from 'react-i18next'
 import { Modal } from '../../components/ui/Modal'
 import { NativeSelect } from '../../components/NativeSelect'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
+import { parseInstrument } from '../../components/InstrumentIcon/parseInstrument'
 import { useExchanges, useExchangeInstrumentsDetail } from '../../hooks/queries/market'
 import { useCreateOrder } from '../../hooks/queries/orders'
 import { useWallets } from '../../hooks/queries/wallets'
@@ -12,6 +13,7 @@ import { lookupOrderErrorMessageKey } from './errorMessages'
 import { useAuth } from '../../stores/auth'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { Permission } from '../../types/permissions.generated'
+import { formatQuoted } from '../positions/instrumentQuote'
 
 interface NewOrderModalProps {
   open: boolean
@@ -71,9 +73,15 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   const [price, setPrice] = useState('')
   const [stopPrice, setStopPrice] = useState('')
   const [mode, setMode] = useState('live')
+  const [postOnly, setPostOnly] = useState(false)
+  const [reduceOnly, setReduceOnly] = useState(false)
   const [walletPublicId, setWalletPublicId] = useState('')
   const [error, setError] = useState('')
   const [confirming, setConfirming] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const submissionAttempt = useRef<{ fingerprint: string; key: string } | null>(null)
+  const submissionInFlight = useRef(false)
+  const ticketGeneration = useRef(0)
 
   const { data: instruments } = useExchangeInstrumentsDetail(exchange || null)
   const capabilityMap = useMemo(() => {
@@ -133,6 +141,49 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
 
   const needsPrice = orderType === 'limit' || orderType === 'stop_limit'
   const needsStopPrice = orderType === 'stop' || orderType === 'stop_limit'
+  const supportsPostOnly =
+    mode === 'live' &&
+    ((exchange === 'kraken' && needsPrice) ||
+      (exchange === 'kraken_futures' && orderType === 'limit'))
+  const supportsReduceOnly = mode === 'live' && exchange === 'kraken_futures'
+  const effectivePostOnly = supportsPostOnly && postOnly
+  const effectiveReduceOnly = supportsReduceOnly && reduceOnly
+  const quote = parseInstrument(instrument, exchange).quote ?? ''
+  const orderBody = {
+    instrument,
+    instrument_public_id: instrumentPublicId,
+    exchange,
+    mode,
+    side,
+    order_type: orderType,
+    quantity: Number.parseFloat(quantity),
+    price: needsPrice ? Number.parseFloat(price) : null,
+    stop_price: needsStopPrice ? Number.parseFloat(stopPrice) : null,
+    wallet_public_id: walletPublicId,
+    ...(effectivePostOnly ? { post_only: true } : {}),
+    ...(effectiveReduceOnly ? { reduce_only: true } : {}),
+  }
+  const submissionFingerprint = JSON.stringify(orderBody)
+
+  useEffect(() => {
+    submissionAttempt.current = null
+  }, [submissionFingerprint])
+
+  useEffect(() => {
+    ticketGeneration.current += 1
+    submissionAttempt.current = null
+    submissionInFlight.current = false
+    setIsSubmitting(false)
+
+    return () => {
+      ticketGeneration.current += 1
+    }
+  }, [open])
+
+  useEffect(() => {
+    if (!supportsPostOnly) setPostOnly(false)
+    if (!supportsReduceOnly) setReduceOnly(false)
+  }, [supportsPostOnly, supportsReduceOnly])
 
   const handleInstrumentChange = (val: string) => {
     setInstrument(val)
@@ -150,7 +201,7 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   }
 
   const handleSubmit = () => {
-    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly || selectedIsMarketDataOnly) return
 
     setError('')
 
@@ -199,28 +250,23 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
   }
 
   const handleConfirm = async () => {
-    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly) return
+    if (!hasPermission(Permission.CREATE_ORDERS) || readOnly || selectedIsMarketDataOnly) return
+    if (submissionInFlight.current) return
 
-    const idempotencyKey = uuid7()
+    const attempt = submissionAttempt.current
+    const idempotencyKey = attempt?.fingerprint === submissionFingerprint ? attempt.key : uuid7()
 
-    const body = {
-      instrument,
-      instrument_public_id: instrumentPublicId,
-      exchange,
-      mode,
-      side,
-      order_type: orderType,
-      quantity: Number.parseFloat(quantity),
-      price: needsPrice ? Number.parseFloat(price) : null,
-      stop_price: needsStopPrice ? Number.parseFloat(stopPrice) : null,
-      wallet_public_id: walletPublicId,
-      idempotency_key: idempotencyKey,
-    }
+    submissionAttempt.current = { fingerprint: submissionFingerprint, key: idempotencyKey }
+    submissionInFlight.current = true
+    setIsSubmitting(true)
+    const generation = ticketGeneration.current
 
     try {
-      await createOrder.mutateAsync(body)
+      await createOrder.mutateAsync({ ...orderBody, idempotency_key: idempotencyKey })
+      if (generation !== ticketGeneration.current) return
       handleClose()
     } catch (err) {
+      if (generation !== ticketGeneration.current) return
       setConfirming(false)
 
       if (err instanceof APIError) {
@@ -232,10 +278,18 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
       }
 
       setError(err instanceof Error ? err.message : t('newOrderModal.errors.createFailed'))
+    } finally {
+      if (generation === ticketGeneration.current) {
+        submissionInFlight.current = false
+        setIsSubmitting(false)
+      }
     }
   }
 
   const handleClose = () => {
+    ticketGeneration.current += 1
+    submissionInFlight.current = false
+    setIsSubmitting(false)
     setExchange('')
     setInstrument('')
     setInstrumentPublicId('')
@@ -245,9 +299,12 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
     setPrice('')
     setStopPrice('')
     setMode('live')
+    setPostOnly(false)
+    setReduceOnly(false)
     setWalletPublicId('')
     setError('')
     setConfirming(false)
+    submissionAttempt.current = null
     onClose()
   }
 
@@ -300,14 +357,24 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               {needsPrice && (
                 <div className='flex justify-between'>
                   <span className='text-muted-500'>{t('newOrderModal.fields.price')}</span>
-                  <span className='text-alpine-900'>${price}</span>
+                  <span className='text-alpine-900'>
+                    {formatQuoted(Number.parseFloat(price), quote)}
+                  </span>
                 </div>
               )}
               {needsStopPrice && (
                 <div className='flex justify-between'>
                   <span className='text-muted-500'>{t('newOrderModal.fields.stopPrice')}</span>
-                  <span className='text-alpine-900'>${stopPrice}</span>
+                  <span className='text-alpine-900'>
+                    {formatQuoted(Number.parseFloat(stopPrice), quote)}
+                  </span>
                 </div>
+              )}
+              {effectivePostOnly && (
+                <div className='text-alpine-900'>{t('newOrderModal.fields.postOnly')}</div>
+              )}
+              {effectiveReduceOnly && (
+                <div className='text-alpine-900'>{t('csv.orders.reduceOnly')}</div>
               )}
               <div className='flex justify-between'>
                 <span className='text-muted-500'>{t('newOrderModal.fields.mode')}</span>
@@ -320,17 +387,18 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
               <button
                 type='button'
                 onClick={() => setConfirming(false)}
-                className='px-4 py-2 text-sm text-muted-600 hover:text-alpine-900 transition-colors'
+                disabled={isSubmitting}
+                className='px-4 py-2 text-sm text-muted-600 hover:text-alpine-900 disabled:opacity-50 disabled:cursor-not-allowed transition-colors'
               >
                 {t('newOrderModal.buttons.back')}
               </button>
               <button
                 type='button'
                 onClick={handleConfirm}
-                disabled={!canCreateOrders || createOrder.isPending}
+                disabled={!canCreateOrders || isSubmitting || selectedIsMarketDataOnly}
                 className='px-4 py-2 text-sm font-medium rounded-lg bg-brand-600 text-white hover:bg-brand-500 disabled:opacity-50 transition-colors'
               >
-                {createOrder.isPending
+                {isSubmitting
                   ? t('newOrderModal.buttons.submitting')
                   : t('newOrderModal.buttons.confirmOrder')}
               </button>
@@ -468,6 +536,28 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
                 />
               </div>
             </div>
+            {supportsPostOnly && (
+              <label className='flex items-center gap-2 text-sm text-alpine-900'>
+                <input
+                  type='checkbox'
+                  checked={postOnly}
+                  onChange={event => setPostOnly(event.target.checked)}
+                  className='h-4 w-4 accent-brand-500'
+                />
+                {t('newOrderModal.fields.postOnly')}
+              </label>
+            )}
+            {supportsReduceOnly && (
+              <label className='flex items-center gap-2 text-sm text-alpine-900'>
+                <input
+                  type='checkbox'
+                  checked={reduceOnly}
+                  onChange={event => setReduceOnly(event.target.checked)}
+                  className='h-4 w-4 accent-brand-500'
+                />
+                {t('csv.orders.reduceOnly')}
+              </label>
+            )}
             <div className='flex justify-end gap-3 pt-2'>
               <button
                 type='button'

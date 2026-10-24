@@ -90,7 +90,8 @@
       "stopPrice": "Stopprijs",
       "mode": "Modus",
       "wallet": "Portefeuille",
-      "type": "Type"
+      "type": "Type",
+      "postOnly": "Alleen maker"
     },
     "sideOptions": {
       "buy": "Kopen",

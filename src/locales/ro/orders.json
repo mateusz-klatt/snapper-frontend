@@ -90,7 +90,8 @@
       "stopPrice": "Preț stop",
       "mode": "Mod",
       "wallet": "Portofel",
-      "type": "Tip"
+      "type": "Tip",
+      "postOnly": "Doar maker"
     },
     "sideOptions": {
       "buy": "Cumpărare",

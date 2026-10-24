@@ -90,7 +90,8 @@
       "stopPrice": "Çmim ndalimi",
       "mode": "Modalitet",
       "wallet": "Portofol",
-      "type": "Lloj"
+      "type": "Lloj",
+      "postOnly": "Vetëm maker"
     },
     "sideOptions": {
       "buy": "Blerje",
