@@ -90,7 +90,8 @@
       "stopPrice": "Stoppris",
       "mode": "Modus",
       "wallet": "Lommebok",
-      "type": "Type"
+      "type": "Type",
+      "postOnly": "Kun maker"
     },
     "sideOptions": {
       "buy": "Kjøp",

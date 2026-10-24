@@ -90,7 +90,8 @@
       "stopPrice": "Precio stop",
       "mode": "Modo",
       "wallet": "Cartera",
-      "type": "Tipo"
+      "type": "Tipo",
+      "postOnly": "Solo maker"
     },
     "sideOptions": {
       "buy": "Compra",

@@ -90,7 +90,8 @@
       "stopPrice": "Harga Stop",
       "mode": "Mode",
       "wallet": "Dompet",
-      "type": "Tipe"
+      "type": "Tipe",
+      "postOnly": "Hanya maker"
     },
     "sideOptions": {
       "buy": "Beli",

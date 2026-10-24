@@ -90,7 +90,8 @@
       "stopPrice": "Stop-hinta",
       "mode": "Tila",
       "wallet": "Lompakko",
-      "type": "Tyyppi"
+      "type": "Tyyppi",
+      "postOnly": "Vain maker"
     },
     "sideOptions": {
       "buy": "Osto",

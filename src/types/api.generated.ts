@@ -4056,7 +4056,7 @@ export type Components = {
             quantity: number;
             price?: number | null;
             stop_price?: number | null;
-            time_in_force?: string;
+            time_in_force?: "GTC";
             post_only?: boolean;
             leverage?: number | null;
             reduce_only?: boolean;

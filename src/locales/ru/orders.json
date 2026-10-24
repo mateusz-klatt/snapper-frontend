@@ -90,7 +90,8 @@
       "stopPrice": "Стоп-цена",
       "mode": "Режим",
       "wallet": "Кошелёк",
-      "type": "Тип"
+      "type": "Тип",
+      "postOnly": "Только мейкер"
     },
     "sideOptions": {
       "buy": "Покупка",

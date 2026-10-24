@@ -90,7 +90,8 @@
       "stopPrice": "止損價",
       "mode": "模式",
       "wallet": "錢包",
-      "type": "類型"
+      "type": "類型",
+      "postOnly": "只做掛單"
     },
     "sideOptions": {
       "buy": "買入",

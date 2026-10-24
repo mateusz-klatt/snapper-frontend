@@ -90,7 +90,8 @@
       "stopPrice": "Praghas Stop",
       "mode": "Mód",
       "wallet": "Sparán",
-      "type": "Cineál"
+      "type": "Cineál",
+      "postOnly": "Orduithe maker amháin"
     },
     "sideOptions": {
       "buy": "Ceannaigh",

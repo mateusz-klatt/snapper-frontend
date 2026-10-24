@@ -90,7 +90,8 @@
       "stopPrice": "Stop verð",
       "mode": "Hamur",
       "wallet": "Veski",
-      "type": "Tegund"
+      "type": "Tegund",
+      "postOnly": "Aðeins maker"
     },
     "sideOptions": {
       "buy": "Kaup",

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import { act, render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
@@ -92,10 +92,36 @@ function createWrapper() {
   )
 }
 
+function fillLimitOrder(): void {
+  fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '0.5' } })
+  fireEvent.change(screen.getByLabelText('Price'), { target: { value: '50000' } })
+}
+
+async function confirmOrder(): Promise<void> {
+  await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+  await userEvent.click(await screen.findByRole('button', { name: 'Confirm Order' }))
+}
+
+function pendingSubmission(): {
+  promise: Promise<void>
+  resolve: () => void
+  reject: (error: Error) => void
+} {
+  let resolve!: () => void
+  let reject!: (error: Error) => void
+  const promise = new Promise<void>((resolvePromise, rejectPromise) => {
+    resolve = resolvePromise
+    reject = rejectPromise
+  })
+
+  return { promise, resolve, reject }
+}
+
 describe('NewOrderModal', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     mockHasPermission.mockReturnValue(true)
+    mockCreateOrderState.isPending = false
   })
 
   it('does not render when closed', () => {
@@ -435,24 +461,17 @@ describe('NewOrderModal', () => {
     expect(screen.getAllByText('Sell').length).toBeGreaterThan(0)
   })
 
-  it('shows submitting label while create order mutation is pending', async () => {
-    mockCreateOrderState.isPending = true
+  it('shows submitting label only while the current ticket request is pending', async () => {
+    const pending = pendingSubmission()
 
-    try {
-      render(<NewOrderModal open={true} onClose={vi.fn()} />, {
-        wrapper: createWrapper(),
-      })
-      const inputs = screen.getAllByPlaceholderText('0.00')
-
-      fireEvent.change(inputs[0] as HTMLElement, { target: { value: '0.5' } })
-      fireEvent.change(inputs[1] as HTMLElement, { target: { value: '50000' } })
-      await userEvent.click(screen.getByText('Review Order'))
-      await waitFor(() => {
-        expect(screen.getByText('Submitting...')).toBeTruthy()
-      })
-    } finally {
-      mockCreateOrderState.isPending = false
-    }
+    mockMutateAsync.mockImplementationOnce(() => pending.promise)
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fillLimitOrder()
+    await confirmOrder()
+    expect(screen.getByRole('button', { name: 'Submitting...' })).toBeDisabled()
+    await act(async () => {
+      pending.resolve()
+    })
   })
 
   it('confirmation shows stop price and mode', async () => {
@@ -471,7 +490,7 @@ describe('NewOrderModal', () => {
       expect(screen.getAllByText('Confirm Order').length).toBeGreaterThan(0)
     })
     expect(screen.getByText('Stop Price')).toBeTruthy()
-    expect(screen.getByText('$48000')).toBeTruthy()
+    expect(screen.getByText('48000.00 USD')).toBeTruthy()
   })
 
   it('handles instrument change via select', () => {
@@ -593,5 +612,377 @@ describe('NewOrderModal', () => {
     await waitFor(() => {
       expect(screen.getByText('raw 500 message')).toBeTruthy()
     })
+  })
+
+  it('reuses the submission key after a lost response and equivalent numeric formatting', async () => {
+    mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fillLimitOrder()
+    await confirmOrder()
+    await screen.findByText('Response lost')
+    fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '0.5000' } })
+    await confirmOrder()
+
+    const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+    const retry = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+
+    expect(retry.idempotency_key).toBe(first.idempotency_key)
+    expect(retry).toEqual(first)
+  })
+
+  it.each([
+    ['Quantity', '1'],
+    ['Price', '49000'],
+    ['Side', 'sell'],
+    ['Exchange', 'walutomat'],
+    ['Instrument', 'ETH-USD'],
+    ['Wallet', 'wallet-2'],
+    ['Mode', 'paper'],
+    ['Order Type', 'market'],
+  ])('rotates the submission key after changing %s', async (label: string, value: string) => {
+    mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fillLimitOrder()
+    await confirmOrder()
+    await screen.findByText('Response lost')
+    fireEvent.change(screen.getByLabelText(label), { target: { value } })
+    await confirmOrder()
+
+    const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+    const changed = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+
+    expect(changed.idempotency_key).not.toBe(first.idempotency_key)
+  })
+
+  it('rotates the key when a material edit is reverted before retry', async () => {
+    mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fillLimitOrder()
+    await confirmOrder()
+    await screen.findByText('Response lost')
+    fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '1' } })
+    fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '0.5' } })
+    await confirmOrder()
+
+    const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+    const changed = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+
+    expect(changed.idempotency_key).not.toBe(first.idempotency_key)
+  })
+
+  it('starts another submission when an unchanged ticket is closed and reopened by its parent', async () => {
+    mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
+    const onClose = vi.fn()
+    const { rerender } = render(<NewOrderModal open={true} onClose={onClose} />, {
+      wrapper: createWrapper(),
+    })
+
+    fillLimitOrder()
+    await confirmOrder()
+    await screen.findByText('Response lost')
+    rerender(<NewOrderModal open={false} onClose={onClose} />)
+    rerender(<NewOrderModal open={true} onClose={onClose} />)
+    await confirmOrder()
+
+    const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+    const reopened = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+
+    expect(reopened.idempotency_key).not.toBe(first.idempotency_key)
+  })
+
+  it('does not submit twice while the first confirmation is still in flight', async () => {
+    let finishSubmission!: () => void
+
+    mockMutateAsync.mockImplementationOnce(
+      () =>
+        new Promise<void>(resolve => {
+          finishSubmission = resolve
+        })
+    )
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fillLimitOrder()
+    await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+    const confirm = await screen.findByRole('button', { name: 'Confirm Order' })
+
+    act(() => {
+      fireEvent.click(confirm)
+      fireEvent.click(confirm)
+    })
+    expect(mockMutateAsync).toHaveBeenCalledTimes(1)
+    await act(async () => {
+      finishSubmission()
+    })
+  })
+
+  it('prevents editing a ticket while its confirmation is pending', async (): Promise<void> => {
+    const pending = pendingSubmission()
+    const onClose = vi.fn()
+
+    mockMutateAsync.mockImplementationOnce(() => pending.promise)
+    render(<NewOrderModal open={true} onClose={onClose} />, { wrapper: createWrapper() })
+    fillLimitOrder()
+    await confirmOrder()
+    const back = screen.getByRole('button', { name: 'Back' })
+
+    expect(back).toBeDisabled()
+    await userEvent.click(back)
+    expect(screen.getByRole('heading', { name: 'Confirm Order' })).toBeInTheDocument()
+    expect(screen.queryByLabelText('Quantity')).not.toBeInTheDocument()
+    expect(mockMutateAsync).toHaveBeenCalledTimes(1)
+    expect(mockMutateAsync).toHaveBeenCalledWith(
+      expect.objectContaining({ quantity: 0.5, price: 50000 })
+    )
+    expect(onClose).not.toHaveBeenCalled()
+    await act(async () => {
+      pending.resolve()
+    })
+    expect(onClose).toHaveBeenCalledTimes(1)
+  })
+
+  it.each([
+    ['EUR-PLN', 'walutomat', 'PLN'],
+    ['NVDAx-EUR', 'kraken', 'EUR'],
+    ['BTC-USD-PERP', 'kraken_futures', 'USD'],
+    ['BTC-USD-261225-INV', 'kraken_futures', 'USD'],
+    ['BTC-USD-BTNL', 'kraken', 'USD'],
+    ['SPX', 'kraken_equities', ''],
+  ])(
+    'reviews %s prices in their quote currency',
+    async (symbol: string, exchange: string, quote: string) => {
+      const previous = {
+        exchanges: mockHookState.exchanges,
+        instruments: mockHookState.instruments,
+      }
+
+      mockHookState.exchanges = { payload: [exchange] }
+      mockHookState.instruments = { payload: [{ symbol, can_trade: true }] }
+
+      try {
+        render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+        fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: 'stop_limit' } })
+        fillLimitOrder()
+        fireEvent.change(screen.getByLabelText('Stop Price'), { target: { value: '48000' } })
+        await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+        expect(
+          screen.getByText(quote === '' ? '50000.00' : `50000.00 ${quote}`)
+        ).toBeInTheDocument()
+        expect(
+          screen.getByText(quote === '' ? '48000.00' : `48000.00 ${quote}`)
+        ).toBeInTheDocument()
+      } finally {
+        mockHookState.exchanges = previous.exchanges
+        mockHookState.instruments = previous.instruments
+      }
+    }
+  )
+
+  it.each([
+    ['kraken', 'limit', 'live', true, false],
+    ['kraken', 'stop_limit', 'live', true, false],
+    ['kraken', 'market', 'live', false, false],
+    ['kraken', 'stop', 'live', false, false],
+    ['kraken_futures', 'limit', 'live', true, true],
+    ['kraken_futures', 'stop_limit', 'live', false, true],
+    ['kraken_futures', 'market', 'live', false, true],
+    ['walutomat', 'limit', 'live', false, false],
+    ['kraken_equities', 'limit', 'live', false, false],
+    ['kraken', 'limit', 'paper', false, false],
+    ['kraken_futures', 'limit', 'paper', false, false],
+  ] as const)(
+    'offers only effective modifiers for %s %s in %s mode',
+    (exchange: string, orderType: string, mode: string, maker: boolean, reduce: boolean): void => {
+      const previous = mockHookState.exchanges
+
+      mockHookState.exchanges = { payload: [exchange] }
+
+      try {
+        render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+        fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: orderType } })
+        fireEvent.change(screen.getByLabelText('Mode'), { target: { value: mode } })
+        expect(screen.queryByRole('checkbox', { name: 'Maker only' }) !== null).toBe(maker)
+        expect(screen.queryByRole('checkbox', { name: 'Reduce Only' }) !== null).toBe(reduce)
+        expect(screen.queryByLabelText('Leverage')).not.toBeInTheDocument()
+      } finally {
+        mockHookState.exchanges = previous
+      }
+    }
+  )
+
+  it('reviews and submits maker-only and reduce-only futures intent', async () => {
+    const previous = mockHookState.exchanges
+
+    mockHookState.exchanges = { payload: ['kraken_futures'] }
+
+    try {
+      render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+      fillLimitOrder()
+      await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
+      await userEvent.click(screen.getByRole('checkbox', { name: 'Reduce Only' }))
+      await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+      expect(screen.getByText('Maker only')).toBeInTheDocument()
+      expect(screen.getByText('Reduce Only')).toBeInTheDocument()
+      await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+      expect(mockMutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          exchange: 'kraken_futures',
+          post_only: true,
+          reduce_only: true,
+        })
+      )
+    } finally {
+      mockHookState.exchanges = previous
+    }
+  })
+
+  it('resets maker-only when a changed order type cannot carry it', async () => {
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
+    fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: 'market' } })
+    fireEvent.change(screen.getByLabelText('Order Type'), { target: { value: 'limit' } })
+    expect(screen.getByRole('checkbox', { name: 'Maker only' })).not.toBeChecked()
+  })
+
+  it('resets futures modifiers when switching away from live mode', async () => {
+    const previous = mockHookState.exchanges
+
+    mockHookState.exchanges = { payload: ['kraken_futures'] }
+
+    try {
+      render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+      await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
+      await userEvent.click(screen.getByRole('checkbox', { name: 'Reduce Only' }))
+      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'paper' } })
+      fireEvent.change(screen.getByLabelText('Mode'), { target: { value: 'live' } })
+      expect(screen.getByRole('checkbox', { name: 'Maker only' })).not.toBeChecked()
+      expect(screen.getByRole('checkbox', { name: 'Reduce Only' })).not.toBeChecked()
+    } finally {
+      mockHookState.exchanges = previous
+    }
+  })
+
+  it('rotates the submission key when changing a requested execution modifier', async () => {
+    mockMutateAsync.mockRejectedValueOnce(new Error('Response lost')).mockResolvedValueOnce({})
+    render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+    fillLimitOrder()
+    await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
+    await confirmOrder()
+    await screen.findByText('Response lost')
+    await userEvent.click(screen.getByRole('checkbox', { name: 'Maker only' }))
+    await confirmOrder()
+
+    const first = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+    const changed = mockMutateAsync.mock.calls[1]?.[0] as Record<string, unknown>
+
+    expect(first.post_only).toBe(true)
+    expect(changed).not.toHaveProperty('post_only')
+    expect(changed.idempotency_key).not.toBe(first.idempotency_key)
+  })
+
+  it.each(['success', 'error'] as const)(
+    'ignores stale %s completion after a new ticket starts another pending submission',
+    async (outcome: 'success' | 'error') => {
+      const first = pendingSubmission()
+      const second = pendingSubmission()
+      const onClose = vi.fn()
+
+      mockMutateAsync.mockImplementationOnce(() => {
+        mockCreateOrderState.isPending = true
+
+        return first.promise
+      })
+      mockMutateAsync.mockImplementationOnce(() => second.promise)
+      const { rerender } = render(<NewOrderModal open={true} onClose={onClose} />, {
+        wrapper: createWrapper(),
+      })
+
+      fillLimitOrder()
+      await confirmOrder()
+      rerender(<NewOrderModal open={false} onClose={onClose} />)
+      rerender(<NewOrderModal open={true} onClose={onClose} />)
+      await userEvent.click(screen.getByRole('button', { name: 'Back' }))
+      fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '2' } })
+      await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+      expect(screen.getByRole('button', { name: 'Confirm Order' })).toBeEnabled()
+      await userEvent.click(screen.getByRole('button', { name: 'Confirm Order' }))
+      expect(mockMutateAsync).toHaveBeenCalledTimes(2)
+      await act(async () => {
+        if (outcome === 'success') first.resolve()
+        else first.reject(new Error('Stale request failed'))
+      })
+      expect(onClose).not.toHaveBeenCalled()
+      expect(screen.getByRole('heading', { name: 'Confirm Order' })).toBeInTheDocument()
+      expect(screen.queryByText('Stale request failed')).not.toBeInTheDocument()
+      fireEvent.click(screen.getByRole('button', { name: 'Submitting...' }))
+      expect(mockMutateAsync).toHaveBeenCalledTimes(2)
+      await act(async () => {
+        second.resolve()
+      })
+      expect(onClose).toHaveBeenCalledTimes(1)
+    }
+  )
+
+  it('blocks confirmation when the reviewed instrument becomes market-data-only', async () => {
+    const previous = mockHookState.instruments
+    const onClose = vi.fn()
+    const { rerender } = render(<NewOrderModal open={true} onClose={onClose} />, {
+      wrapper: createWrapper(),
+    })
+
+    fillLimitOrder()
+    await userEvent.click(screen.getByRole('button', { name: 'Review Order' }))
+    mockHookState.instruments = { payload: [{ symbol: 'BTC-USD', can_trade: false }] }
+
+    try {
+      rerender(<NewOrderModal open={true} onClose={onClose} />)
+      const confirm = screen.getByRole('button', { name: 'Confirm Order' })
+
+      expect(confirm).toBeDisabled()
+      fireEvent.click(confirm)
+      expect(mockMutateAsync).not.toHaveBeenCalled()
+    } finally {
+      mockHookState.instruments = previous
+    }
+  })
+
+  it('ignores an old successful request after the ticket unmounts and is created again', async () => {
+    const pending = pendingSubmission()
+    const onClose = vi.fn()
+
+    mockMutateAsync.mockImplementationOnce(() => pending.promise)
+    const previous = render(<NewOrderModal open={true} onClose={onClose} />, {
+      wrapper: createWrapper(),
+    })
+
+    fillLimitOrder()
+    await confirmOrder()
+    previous.unmount()
+    render(<NewOrderModal open={true} onClose={onClose} />, { wrapper: createWrapper() })
+    fireEvent.change(screen.getByLabelText('Quantity'), { target: { value: '2' } })
+    await act(async () => {
+      pending.resolve()
+    })
+    expect(onClose).not.toHaveBeenCalled()
+    expect(screen.getByLabelText('Quantity')).toHaveValue(2)
+  })
+
+  it('does not advertise margin or add leverage fields to an xStock order', async () => {
+    const previous = mockHookState.instruments
+
+    mockHookState.instruments = { payload: [{ symbol: 'NVDAx-EUR', can_trade: true }] }
+
+    try {
+      render(<NewOrderModal open={true} onClose={vi.fn()} />, { wrapper: createWrapper() })
+      expect(screen.queryByLabelText('Leverage')).not.toBeInTheDocument()
+      expect(screen.queryByRole('checkbox', { name: 'Reduce Only' })).not.toBeInTheDocument()
+      fillLimitOrder()
+      await confirmOrder()
+      const body = mockMutateAsync.mock.calls[0]?.[0] as Record<string, unknown>
+
+      expect(body.instrument).toBe('NVDAx-EUR')
+      expect(body).not.toHaveProperty('leverage')
+      expect(body).not.toHaveProperty('reduce_only')
+    } finally {
+      mockHookState.instruments = previous
+    }
   })
 })

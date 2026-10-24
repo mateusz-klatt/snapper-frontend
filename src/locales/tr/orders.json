@@ -90,7 +90,8 @@
       "stopPrice": "Stop Fiyatı",
       "mode": "Mod",
       "wallet": "Cüzdan",
-      "type": "Tür"
+      "type": "Tür",
+      "postOnly": "Yalnızca maker"
     },
     "sideOptions": {
       "buy": "Alım",

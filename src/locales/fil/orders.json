@@ -90,7 +90,8 @@
       "stopPrice": "Presyo ng stop",
       "mode": "Paraan",
       "wallet": "Wallet",
-      "type": "Uri"
+      "type": "Uri",
+      "postOnly": "Maker lamang"
     },
     "sideOptions": {
       "buy": "Bumili",

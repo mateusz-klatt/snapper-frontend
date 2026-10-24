@@ -90,7 +90,8 @@
       "stopPrice": "Stoppris",
       "mode": "Läge",
       "wallet": "Plånbok",
-      "type": "Typ"
+      "type": "Typ",
+      "postOnly": "Endast maker"
     },
     "sideOptions": {
       "buy": "Köp",

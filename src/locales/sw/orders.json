@@ -90,7 +90,8 @@
       "stopPrice": "Bei ya Stop",
       "mode": "Hali",
       "wallet": "Pochi",
-      "type": "Aina"
+      "type": "Aina",
+      "postOnly": "Maker pekee"
     },
     "sideOptions": {
       "buy": "Nunua",

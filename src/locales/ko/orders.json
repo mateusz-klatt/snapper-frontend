@@ -90,7 +90,8 @@
       "stopPrice": "스탑 가격",
       "mode": "모드",
       "wallet": "지갑",
-      "type": "유형"
+      "type": "유형",
+      "postOnly": "포스트 온리"
     },
     "sideOptions": {
       "buy": "매수",

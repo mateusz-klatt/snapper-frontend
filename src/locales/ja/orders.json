@@ -90,7 +90,8 @@
       "stopPrice": "逆指値価格",
       "mode": "モード",
       "wallet": "ウォレット",
-      "type": "種類"
+      "type": "種類",
+      "postOnly": "ポストオンリー"
     },
     "sideOptions": {
       "buy": "買い",

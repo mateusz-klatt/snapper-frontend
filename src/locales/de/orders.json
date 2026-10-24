@@ -90,7 +90,8 @@
       "stopPrice": "Stop-Preis",
       "mode": "Modus",
       "wallet": "Wallet",
-      "type": "Typ"
+      "type": "Typ",
+      "postOnly": "Nur Maker"
     },
     "sideOptions": {
       "buy": "Kauf",

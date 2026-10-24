@@ -90,7 +90,8 @@
       "stopPrice": "Stoppris",
       "mode": "Tilstand",
       "wallet": "Wallet",
-      "type": "Type"
+      "type": "Type",
+      "postOnly": "Kun maker"
     },
     "sideOptions": {
       "buy": "Køb",

@@ -90,7 +90,8 @@
       "stopPrice": "止损价",
       "mode": "模式",
       "wallet": "钱包",
-      "type": "类型"
+      "type": "类型",
+      "postOnly": "只做挂单"
     },
     "sideOptions": {
       "buy": "买入",

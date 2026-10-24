@@ -90,7 +90,8 @@
       "stopPrice": "Stop cijena",
       "mode": "Način",
       "wallet": "Novčanik",
-      "type": "Vrsta"
+      "type": "Vrsta",
+      "postOnly": "Samo maker"
     },
     "sideOptions": {
       "buy": "Kupovina",

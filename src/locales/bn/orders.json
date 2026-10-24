@@ -90,7 +90,8 @@
       "stopPrice": "স্টপ মূল্য",
       "mode": "মোড",
       "wallet": "ওয়ালেট",
-      "type": "ধরন"
+      "type": "ধরন",
+      "postOnly": "শুধুমাত্র মেকার"
     },
     "sideOptions": {
       "buy": "কেনা",

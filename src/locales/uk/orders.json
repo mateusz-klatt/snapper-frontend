@@ -90,7 +90,8 @@
       "stopPrice": "Стоп-ціна",
       "mode": "Режим",
       "wallet": "Гаманець",
-      "type": "Тип"
+      "type": "Тип",
+      "postOnly": "Лише мейкер"
     },
     "sideOptions": {
       "buy": "Купівля",

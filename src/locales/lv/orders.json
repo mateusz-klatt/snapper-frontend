@@ -90,7 +90,8 @@
       "stopPrice": "Stop cena",
       "mode": "Režīms",
       "wallet": "Maks",
-      "type": "Tips"
+      "type": "Tips",
+      "postOnly": "Tikai maker"
     },
     "sideOptions": {
       "buy": "Pirkšana",

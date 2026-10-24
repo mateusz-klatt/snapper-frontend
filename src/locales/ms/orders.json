@@ -90,7 +90,8 @@
       "stopPrice": "Harga stop",
       "mode": "Mod",
       "wallet": "Dompet",
-      "type": "Jenis"
+      "type": "Jenis",
+      "postOnly": "Maker sahaja"
     },
     "sideOptions": {
       "buy": "Beli",

@@ -90,7 +90,8 @@
       "stopPrice": "Stop cena",
       "mode": "Režim",
       "wallet": "Novčanik",
-      "type": "Tip"
+      "type": "Tip",
+      "postOnly": "Само maker"
     },
     "sideOptions": {
       "buy": "Kupovina",

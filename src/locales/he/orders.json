@@ -90,7 +90,8 @@
       "stopPrice": "מחיר Stop",
       "mode": "מצב",
       "wallet": "ארנק",
-      "type": "סוג"
+      "type": "סוג",
+      "postOnly": "Maker בלבד"
     },
     "sideOptions": {
       "buy": "קנייה",

@@ -90,7 +90,8 @@
       "stopPrice": "Stop ár",
       "mode": "Mód",
       "wallet": "Pénztárca",
-      "type": "Típus"
+      "type": "Típus",
+      "postOnly": "Csak maker"
     },
     "sideOptions": {
       "buy": "Vétel",

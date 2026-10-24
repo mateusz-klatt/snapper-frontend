@@ -90,7 +90,8 @@
       "stopPrice": "Τιμή stop",
       "mode": "Λειτουργία",
       "wallet": "Πορτοφόλι",
-      "type": "Τύπος"
+      "type": "Τύπος",
+      "postOnly": "Μόνο maker"
     },
     "sideOptions": {
       "buy": "Αγορά",

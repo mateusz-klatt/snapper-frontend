@@ -90,7 +90,8 @@
       "stopPrice": "Prix stop",
       "mode": "Mode",
       "wallet": "Wallet",
-      "type": "Type"
+      "type": "Type",
+      "postOnly": "Maker uniquement"
     },
     "sideOptions": {
       "buy": "Achat",
