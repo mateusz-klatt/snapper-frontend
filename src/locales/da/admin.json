@@ -21,7 +21,8 @@
       "resource": "Ressource",
       "viewer": "Læser",
       "operator": "Operatør",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Revisor"
     },
     "resources": {
       "overview": "Overblik",
@@ -34,6 +35,10 @@
       "health": "Sundhed",
       "admin": "Administration",
       "settings": "Indstillinger"
+    },
+    "auditor": {
+      "label": "Revisor",
+      "description": "Administratoradgang med læserettigheder til alle tegnebøger, brugere og indstillinger. Kan ikke ændre data eller handle."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Wallet",
     "paperAnnotation": " (demo)",
     "unknownError": "Ukendt fejl",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Kun læseadgang — ændringer er deaktiveret."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Læser",
         "operator": "Operatør",
         "admin": "Administrator",
-        "ai_delegate": "AI-delegeret"
+        "ai_delegate": "AI-delegeret",
+        "auditor": "Revisor"
       },
       "validation": {
         "usernameRequired": "Brugernavn er påkrævet",

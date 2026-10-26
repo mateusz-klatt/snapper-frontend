@@ -6,7 +6,8 @@
     "searchPlaceholder": "Einstellungen suchen...",
     "noResults": "Keine Einstellungen entsprechen Ihren Kriterien.",
     "allCategories": "Alle Kategorien",
-    "categoryFilterAriaLabel": "Einstellungen nach Kategorie filtern"
+    "categoryFilterAriaLabel": "Einstellungen nach Kategorie filtern",
+    "readOnly": "Nur Lesezugriff — Änderungen sind deaktiviert."
   },
   "errors": {
     "loadFailed": "Einstellungen konnten nicht geladen werden",

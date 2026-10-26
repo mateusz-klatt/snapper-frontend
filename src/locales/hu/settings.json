@@ -6,7 +6,8 @@
     "searchPlaceholder": "Beállítások keresése...",
     "noResults": "Nem találhatók a feltételeknek megfelelő beállítások.",
     "allCategories": "Minden kategória",
-    "categoryFilterAriaLabel": "Beállítások szűrése kategória szerint"
+    "categoryFilterAriaLabel": "Beállítások szűrése kategória szerint",
+    "readOnly": "Csak olvasási hozzáférés — a módosítások le vannak tiltva."
   },
   "errors": {
     "loadFailed": "Nem sikerült betölteni a beállításokat",

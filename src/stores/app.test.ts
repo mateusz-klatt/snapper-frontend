@@ -5,6 +5,7 @@ import { apiClient } from '../lib/apiClient'
 import i18n from '../i18n/config'
 import { queryClient } from '../lib/queryClient'
 import { queryKeys } from '../hooks/queries/keys'
+import { makeUserProfile } from '../test/factories'
 
 describe('useAppStore', () => {
   beforeEach(() => {
@@ -18,7 +19,10 @@ describe('useAppStore', () => {
       isTimeTraveling: false,
       locale: 'us',
     })
-    useAuthStore.setState({ isAuthenticated: false })
+    useAuthStore.setState({
+      isAuthenticated: false,
+      user: makeUserProfile({ username: 'viewer', effective_permissions: ['manage:self_account'] }),
+    })
     vi.clearAllMocks()
   })
   afterEach(() => {
@@ -206,6 +210,24 @@ describe('useAppStore', () => {
     })
   })
   describe('setLocale', () => {
+    it('keeps auditor language changes local without mutating the shared account', async () => {
+      useAuthStore.setState({
+        isAuthenticated: true,
+        user: makeUserProfile({
+          username: 'auditor',
+          role: 'auditor',
+          effective_permissions: ['read:users'],
+        }),
+      })
+      const postSpy = vi.spyOn(apiClient, 'postJSON')
+      const invalidateSpy = vi.spyOn(queryClient, 'invalidateQueries')
+
+      await useAppStore.getState().setLocale('pl')
+      expect(useAppStore.getState().locale).toBe('pl')
+      expect(localStorage.getItem('snapper-locale')).toBe('pl')
+      expect(postSpy).not.toHaveBeenCalled()
+      expect(invalidateSpy).not.toHaveBeenCalled()
+    })
     afterEach(() => {
       localStorage.removeItem('snapper-locale')
       document.documentElement.lang = ''

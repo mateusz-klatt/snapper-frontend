@@ -6,7 +6,8 @@
     "searchPlaceholder": "Cari pengaturan...",
     "noResults": "Tidak ada pengaturan yang cocok dengan kriteria Anda.",
     "allCategories": "Semua Kategori",
-    "categoryFilterAriaLabel": "Filter pengaturan berdasarkan kategori"
+    "categoryFilterAriaLabel": "Filter pengaturan berdasarkan kategori",
+    "readOnly": "Akses hanya baca — perubahan dinonaktifkan."
   },
   "errors": {
     "loadFailed": "Gagal memuat pengaturan",

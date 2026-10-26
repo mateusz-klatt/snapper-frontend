@@ -192,13 +192,20 @@ describe('CredentialList', () => {
     fireEvent.click(screen.getByText('Rotate'))
     expect(onRotate).toHaveBeenCalledWith(mockCredentials.payload[0])
   })
-  it('disables Add Credential when readOnly', () => {
+  it('allows read-only credential form previews', () => {
+    mockUseCredentials.mockReturnValue({ data: mockCredentials, isLoading: false, error: null })
     renderWithQuery(
       <CredentialList onCreateCredential={onCreateCredential} onRotate={onRotate} readOnly />
     )
     const btn = screen.getByText('Add Credential').closest('button')
 
-    expect(btn?.disabled).toBe(true)
+    expect(btn).toBeEnabled()
+    expect(btn).toHaveAttribute('title', 'Read-only access — changes are disabled.')
+    fireEvent.click(btn as HTMLButtonElement)
+    expect(onCreateCredential).toHaveBeenCalled()
+    fireEvent.change(screen.getByTestId('cred-wallet-filter'), { target: { value: 'w-1' } })
+    fireEvent.click(screen.getByText('Rotate'))
+    expect(onRotate).toHaveBeenCalledWith(mockCredentials.payload[0])
   })
   it('handles undefined wallets data gracefully', () => {
     mockUseWallets.mockReturnValue({ data: undefined })

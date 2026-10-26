@@ -21,7 +21,8 @@
       "resource": "משאב",
       "viewer": "צופה",
       "operator": "מפעיל",
-      "admin": "מנהל"
+      "admin": "מנהל",
+      "auditor": "מבקר"
     },
     "resources": {
       "overview": "סקירה",
@@ -34,6 +35,10 @@
       "health": "בריאות",
       "admin": "ניהול",
       "settings": "הגדרות"
+    },
+    "auditor": {
+      "label": "מבקר",
+      "description": "גישת מנהל לקריאה בלבד לכל הארנקים, המשתמשים וההגדרות. ללא אפשרות לשנות נתונים או לבצע מסחר."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "ארנק",
     "paperAnnotation": " (הדגמה)",
     "unknownError": "שגיאה לא ידועה",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "גישה לקריאה בלבד — השינויים מושבתים."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "צופה",
         "operator": "מפעיל",
         "admin": "מנהל",
-        "ai_delegate": "נציג AI"
+        "ai_delegate": "נציג AI",
+        "auditor": "מבקר"
       },
       "validation": {
         "usernameRequired": "שם משתמש הוא חובה",

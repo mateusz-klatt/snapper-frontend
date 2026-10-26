@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen, waitFor, act } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -57,9 +57,13 @@ describe('UserProfile', () => {
         logout: mockLogout,
         isAuthenticated: true,
         hasPermission: vi.fn((permission: string) =>
-          ['manage:users', 'create:orders', 'start:strategies', 'read:market_data'].includes(
-            permission
-          )
+          [
+            'manage:users',
+            'manage:self_account',
+            'create:orders',
+            'start:strategies',
+            'read:market_data',
+          ].includes(permission)
         ),
       }) as never
     )
@@ -78,6 +82,43 @@ describe('UserProfile', () => {
   it('renders user profile button', () => {
     renderWithMocks(<UserProfile />)
     expect(screen.getByText('testuser')).toBeInTheDocument()
+  })
+  it('shows auditor access and keeps the shared account password locked', async () => {
+    mockUseAuth.mockReturnValue(
+      createMockAuth({
+        user: { username: 'auditor', role: 'auditor', is_active: true },
+        logout: mockLogout,
+        isAuthenticated: true,
+        hasPermission: vi.fn((permission: string) =>
+          ['read:users', 'read:market_data'].includes(permission)
+        ),
+      }) as never
+    )
+    renderWithMocks(<UserProfile />)
+    expect(screen.getByText('Auditor')).toHaveClass('bg-accent-100')
+    await userEvent.click(screen.getByText('auditor'))
+    expect(screen.getByText(/Read-only administrator access/)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Change password' })).toBeDisabled()
+    await userEvent.click(screen.getByRole('button', { name: 'Help & Documentation' }))
+    expect(screen.getAllByText('Auditor')).toHaveLength(2)
+    expect(mockChangePassword).not.toHaveBeenCalled()
+  })
+  it('rejects password submission after self-account permission is revoked', async () => {
+    renderWithMocks(<UserProfile />)
+    await userEvent.click(screen.getByText('testuser'))
+    await userEvent.click(screen.getByRole('button', { name: 'Change password' }))
+    mockUseAuth.mockReturnValue(
+      createMockAuth({
+        user: { username: 'testuser', role: 'auditor', is_active: true },
+        isAuthenticated: true,
+        hasPermission: () => false,
+      }) as never
+    )
+    fireEvent.change(screen.getByLabelText('New Password'), {
+      target: { value: 'example-password' },
+    })
+    fireEvent.submit(screen.getByLabelText('New Password').closest('form') as HTMLFormElement)
+    expect(mockChangePassword).not.toHaveBeenCalled()
   })
   it('shows dropdown on click', async () => {
     const user = userEvent.setup()

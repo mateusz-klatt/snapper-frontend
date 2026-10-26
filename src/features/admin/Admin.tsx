@@ -26,7 +26,7 @@ const TAB_KEYS = [
   'settings',
 ] as const
 
-type MatrixRole = 'viewer' | 'operator' | 'admin'
+type MatrixRole = 'viewer' | 'operator' | 'auditor' | 'admin'
 type MatrixResource = (typeof TAB_KEYS)[number]
 
 const roleCanAccessResource = (role: MatrixRole, resource: MatrixResource): boolean => {
@@ -62,14 +62,23 @@ export const Admin: React.FC = () => {
   const canManageUsers = hasPermission(Permission.MANAGE_USERS)
   const canManageScopeGrants = hasPermission(Permission.MANAGE_SCOPE_GRANTS)
   const canManageCredentials = hasPermission(Permission.MANAGE_WALLET_CREDENTIALS)
+  const canReadDeskMemberships =
+    hasPermission(Permission.READ_DESK_MEMBERSHIPS) || canManageDeskMemberships
+  const canReadUsers = hasPermission(Permission.READ_USERS) || canManageUsers
+  const canReadScopeGrants =
+    (hasPermission(Permission.READ_SCOPE_GRANTS) && hasPermission(Permission.READ_ALL_SCOPES)) ||
+    canManageScopeGrants
+  const canReadCredentials =
+    hasPermission(Permission.READ_WALLET_CREDENTIALS) || canManageCredentials
   const canOnlyManageDeskMemberships =
-    canManageDeskMemberships && !canManageUsers && !canManageScopeGrants && !canManageCredentials
+    canReadDeskMemberships && !canReadUsers && !canReadScopeGrants && !canReadCredentials
 
   const rolePermissions = TAB_KEYS.map(tabId => {
     return {
       resource: t(`rolePermissions.resources.${tabId}`),
       viewer: roleCanAccessResource('viewer', tabId),
       operator: roleCanAccessResource('operator', tabId),
+      auditor: roleCanAccessResource('auditor', tabId),
       admin: roleCanAccessResource('admin', tabId),
     }
   })
@@ -97,7 +106,7 @@ export const Admin: React.FC = () => {
         </button>
         {showRoleInfo && (
           <div className='mt-4 space-y-4'>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>
               <div className='border border-dark-600 rounded-xl p-4'>
                 <div className='flex items-center gap-2 mb-2'>
                   <Eye size={16} className='text-accent-600' />
@@ -117,6 +126,15 @@ export const Admin: React.FC = () => {
                 <p className='text-xs text-muted-600'>
                   {t('rolePermissions.operator.description')}
                 </p>
+              </div>
+              <div className='border border-dark-600 rounded-xl p-4'>
+                <div className='flex items-center gap-2 mb-2'>
+                  <Eye size={16} className='text-accent-600' />
+                  <h3 className='font-medium text-alpine-900'>
+                    {t('rolePermissions.auditor.label')}
+                  </h3>
+                </div>
+                <p className='text-xs text-muted-600'>{t('rolePermissions.auditor.description')}</p>
               </div>
               <div className='border border-dark-600 rounded-xl p-4'>
                 <div className='flex items-center gap-2 mb-2'>
@@ -142,6 +160,9 @@ export const Admin: React.FC = () => {
                       {t('rolePermissions.table.operator')}
                     </th>
                     <th className='text-center py-2 px-3 text-xs font-medium text-muted-600 uppercase'>
+                      {t('rolePermissions.table.auditor')}
+                    </th>
+                    <th className='text-center py-2 px-3 text-xs font-medium text-muted-600 uppercase'>
                       {t('rolePermissions.table.admin')}
                     </th>
                   </tr>
@@ -157,6 +178,9 @@ export const Admin: React.FC = () => {
                         <AccessMark granted={row.operator} />
                       </td>
                       <td className='py-2 px-3 text-center'>
+                        <AccessMark granted={row.auditor} />
+                      </td>
+                      <td className='py-2 px-3 text-center'>
                         <AccessMark granted={row.admin} />
                       </td>
                     </tr>
@@ -167,10 +191,10 @@ export const Admin: React.FC = () => {
           </div>
         )}
       </div>
-      {canManageDeskMemberships && <DeskMembershipManagement readOnly={readOnly} />}
-      {canManageUsers && <UserManagement readOnly={readOnly} />}
-      {canManageScopeGrants && <ScopeGrantManagement readOnly={readOnly} />}
-      {canManageCredentials && <CredentialManagement readOnly={readOnly} />}
+      {canReadDeskMemberships && <DeskMembershipManagement readOnly={readOnly} />}
+      {canReadUsers && <UserManagement readOnly={readOnly} />}
+      {canReadScopeGrants && <ScopeGrantManagement readOnly={readOnly} />}
+      {canReadCredentials && <CredentialManagement readOnly={readOnly} />}
     </div>
   )
 }

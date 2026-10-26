@@ -6,7 +6,8 @@
     "searchPlaceholder": "設定を検索...",
     "noResults": "条件に一致する設定が見つかりません。",
     "allCategories": "すべてのカテゴリー",
-    "categoryFilterAriaLabel": "カテゴリーで設定を絞り込み"
+    "categoryFilterAriaLabel": "カテゴリーで設定を絞り込み",
+    "readOnly": "読み取り専用アクセス — 変更は無効です。"
   },
   "errors": {
     "loadFailed": "設定の読み込みに失敗しました",

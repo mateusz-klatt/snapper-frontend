@@ -6,7 +6,8 @@
     "searchPlaceholder": "सेटिंग्स खोजें...",
     "noResults": "आपकी शर्तों से मेल खाने वाली कोई सेटिंग नहीं मिली।",
     "allCategories": "सभी श्रेणियाँ",
-    "categoryFilterAriaLabel": "श्रेणी से सेटिंग्स फ़िल्टर करें"
+    "categoryFilterAriaLabel": "श्रेणी से सेटिंग्स फ़िल्टर करें",
+    "readOnly": "केवल पढ़ने की पहुँच — बदलाव बंद हैं।"
   },
   "errors": {
     "loadFailed": "सेटिंग्स लोड करने में विफल",

@@ -112,6 +112,23 @@ describe('UserForm', () => {
     await userEvent.selectOptions(screen.getByLabelText(/role/i), 'admin')
 
     expect(screen.getByText(/full system access including user management/i)).toBeTruthy()
+    await userEvent.selectOptions(screen.getByLabelText(/role/i), 'auditor')
+    expect(screen.getByText(/Read-only administrator access/)).toBeInTheDocument()
+  })
+  it('allows read-only user inspection but refuses form submissions', () => {
+    renderWithProviders(
+      <UserForm
+        open
+        onClose={mockOnClose}
+        readOnly
+        user={makeUserProfile({ username: 'auditor', role: 'auditor' })}
+      />
+    )
+    expect(screen.getByRole('status')).toHaveTextContent('Read-only access')
+    fireEvent.submit(screen.getByLabelText(/username/i).closest('form') as HTMLFormElement)
+    expect(updateUser).not.toHaveBeenCalled()
+    expect(createUser).not.toHaveBeenCalled()
+    expect(adminResetPassword).not.toHaveBeenCalled()
   })
   it('shows edit mode with existing user', () => {
     const existingUser: UserProfile = makeUserProfile({

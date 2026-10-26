@@ -6,7 +6,8 @@
     "searchPlaceholder": "Sök inställningar...",
     "noResults": "Inga inställningar matchar kriterierna.",
     "allCategories": "Alla kategorier",
-    "categoryFilterAriaLabel": "Filtrera inställningar efter kategori"
+    "categoryFilterAriaLabel": "Filtrera inställningar efter kategori",
+    "readOnly": "Endast läsåtkomst — ändringar är inaktiverade."
   },
   "errors": {
     "loadFailed": "Det gick inte att ladda inställningar",

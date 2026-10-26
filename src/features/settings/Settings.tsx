@@ -12,10 +12,14 @@ import {
   useDeleteSetting,
 } from '../../hooks/queries/settings'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
+import { useAuth } from '../../stores/auth'
+import { Permission } from '../../types/permissions.generated'
 
 export const Settings = () => {
   const { t } = useTranslation('settings')
-  const readOnly = useIsReadOnly()
+  const isTimeTraveling = useIsReadOnly()
+  const { hasPermission } = useAuth()
+  const readOnly = isTimeTraveling || !hasPermission(Permission.CONFIGURE_SYSTEM)
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [showAddModal, setShowAddModal] = useState(false)
@@ -50,6 +54,8 @@ export const Settings = () => {
     category: string,
     description?: string | null
   ) => {
+    if (readOnly) return
+
     try {
       await updateMutation.mutateAsync({
         key,
@@ -66,6 +72,8 @@ export const Settings = () => {
     category: string,
     description: string
   ) => {
+    if (readOnly) return
+
     if (settings.some(s => s.key === key)) {
       throw new Error(t('errors.alreadyExists', { key }))
     }
@@ -74,6 +82,8 @@ export const Settings = () => {
   }
 
   const deleteSetting = async (key: string) => {
+    if (readOnly) return
+
     try {
       await deleteMutation.mutateAsync(key)
     } catch {
@@ -114,11 +124,15 @@ export const Settings = () => {
           <div>
             <h1 className='text-2xl font-bold text-alpine-900 mb-1'>{t('page.title')}</h1>
             <p className='text-muted-600 text-sm'>{t('page.subtitle')}</p>
+            {readOnly && (
+              <p role='status' className='text-sm text-accent-600'>
+                {t('page.readOnly')}
+              </p>
+            )}
           </div>
           <button
             type='button'
             onClick={() => setShowAddModal(true)}
-            disabled={readOnly}
             className='px-3 py-1.5 text-sm bg-brand-600 hover:bg-brand-700 text-white rounded-lg transition-colors flex items-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed'
           >
             <svg
@@ -204,6 +218,7 @@ export const Settings = () => {
         onClose={() => setShowAddModal(false)}
         onSave={createSetting}
         existingCategories={categories.filter(c => c !== 'all')}
+        readOnly={readOnly}
       />
     </div>
   )

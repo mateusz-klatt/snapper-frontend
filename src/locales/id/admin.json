@@ -21,7 +21,8 @@
       "resource": "Sumber daya",
       "viewer": "Pengamat",
       "operator": "Operator",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Ringkasan",
@@ -34,6 +35,10 @@
       "health": "Kesehatan",
       "admin": "Administrasi",
       "settings": "Pengaturan"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Akses administrator hanya baca ke semua dompet, pengguna, dan pengaturan. Tidak dapat mengubah data atau melakukan perdagangan."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Dompet",
     "paperAnnotation": " (simulasi)",
     "unknownError": "Kesalahan tidak diketahui",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Akses hanya baca — perubahan dinonaktifkan."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Pengamat",
         "operator": "Operator",
         "admin": "Administrator",
-        "ai_delegate": "Delegat AI"
+        "ai_delegate": "Delegat AI",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "Nama pengguna wajib diisi",

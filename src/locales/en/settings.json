@@ -6,7 +6,8 @@
     "searchPlaceholder": "Search settings...",
     "noResults": "No settings found matching your criteria.",
     "allCategories": "All Categories",
-    "categoryFilterAriaLabel": "Filter settings by category"
+    "categoryFilterAriaLabel": "Filter settings by category",
+    "readOnly": "Read-only access — changes are disabled."
   },
   "errors": {
     "loadFailed": "Failed to load settings",

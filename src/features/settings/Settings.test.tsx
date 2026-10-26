@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { screen, waitFor } from '@testing-library/react'
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -13,6 +13,8 @@ import {
 import { makeEnvelope, makeSettingRead } from '../../test/factories'
 import { renderWithI18n } from '../../test/renderWithI18n'
 import type { SettingResponse } from '../../types/api'
+
+const authControl = vi.hoisted(() => ({ canConfigure: true }))
 
 const updateSettingResponse = (key: string, value: string): SettingResponse =>
   makeEnvelope('setting_response', makeSettingRead({ key, value })) as SettingResponse
@@ -59,7 +61,10 @@ vi.mock('../../lib/api/settings', () => ({
   removeSetting: vi.fn(),
 }))
 vi.mock('../../stores/auth', () => ({
-  useAuth: vi.fn(() => ({ isAuthenticated: true })),
+  useAuth: vi.fn(() => ({
+    isAuthenticated: true,
+    hasPermission: () => authControl.canConfigure,
+  })),
 }))
 
 const createQueryClient = () =>
@@ -79,6 +84,40 @@ const renderSettings = (ui: ReactNode) => {
 describe('Settings', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    authControl.canConfigure = true
+  })
+  it('lets an auditor inspect existing settings without enabling writes', async () => {
+    authControl.canConfigure = false
+    vi.mocked(getSettingCategories).mockResolvedValue(['api'])
+    vi.mocked(getSettings).mockResolvedValue({
+      payload: [
+        makeSettingRead({ key: 'api.endpoint', value: 'https://example.com', category: 'api' }),
+      ],
+      count: 1,
+    } as never)
+    renderSettings(<Settings />)
+    await screen.findByText('api.endpoint')
+    expect(screen.getByRole('status')).toHaveTextContent('Read-only access')
+    expect(screen.getByRole('button', { name: 'Delete' })).toBeDisabled()
+    fireEvent.click(screen.getByRole('button', { name: 'Edit' }))
+    expect(screen.getByDisplayValue('https://example.com')).toHaveAttribute('readonly')
+    expect(screen.getByRole('button', { name: 'Save' })).toBeDisabled()
+    expect(updateSetting).not.toHaveBeenCalled()
+    expect(removeSetting).not.toHaveBeenCalled()
+  })
+  it('lets an auditor preview a new setting but refuses submission', async () => {
+    authControl.canConfigure = false
+    vi.mocked(getSettingCategories).mockResolvedValue(['api'])
+    vi.mocked(getSettings).mockResolvedValue({ payload: [], count: 0 } as never)
+    renderSettings(<Settings />)
+    fireEvent.click(await screen.findByRole('button', { name: /Add Setting/i }))
+    expect(screen.getByLabelText(/Key/)).toHaveAttribute('readonly')
+    expect(screen.getByRole('button', { name: /Create Setting/i })).toBeDisabled()
+    fireEvent.submit(
+      screen.getByRole('button', { name: /Create Setting/i }).closest('form') as HTMLFormElement
+    )
+    expect(updateSetting).not.toHaveBeenCalled()
+    expect(removeSetting).not.toHaveBeenCalled()
   })
   it('displays loading state initially', () => {
     vi.mocked(getSettings).mockImplementation(() => new Promise(() => {}))

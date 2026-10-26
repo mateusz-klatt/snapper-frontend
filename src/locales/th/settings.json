@@ -6,7 +6,8 @@
     "searchPlaceholder": "ค้นหาการตั้งค่า...",
     "noResults": "ไม่พบการตั้งค่าที่ตรงกับเกณฑ์",
     "allCategories": "หมวดหมู่ทั้งหมด",
-    "categoryFilterAriaLabel": "กรองการตั้งค่าตามหมวดหมู่"
+    "categoryFilterAriaLabel": "กรองการตั้งค่าตามหมวดหมู่",
+    "readOnly": "สิทธิ์อ่านอย่างเดียว — ปิดใช้งานการแก้ไข"
   },
   "errors": {
     "loadFailed": "โหลดการตั้งค่าไม่สำเร็จ",

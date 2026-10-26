@@ -21,7 +21,8 @@
       "resource": "Sumber",
       "viewer": "Pemapar",
       "operator": "Operator",
-      "admin": "Pentadbir"
+      "admin": "Pentadbir",
+      "auditor": "Juruaudit"
     },
     "resources": {
       "overview": "Gambaran Keseluruhan",
@@ -34,6 +35,10 @@
       "health": "Kesihatan",
       "admin": "Pentadbiran",
       "settings": "Tetapan"
+    },
+    "auditor": {
+      "label": "Juruaudit",
+      "description": "Akses pentadbir baca sahaja kepada semua dompet, pengguna dan tetapan. Tidak boleh mengubah data atau berdagang."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Dompet",
     "paperAnnotation": " (simulasi)",
     "unknownError": "Ralat tidak diketahui",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Akses baca sahaja — perubahan dinyahdayakan."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Pemapar",
         "operator": "Operator",
         "admin": "Pentadbir",
-        "ai_delegate": "Wakil AI"
+        "ai_delegate": "Wakil AI",
+        "auditor": "Juruaudit"
       },
       "validation": {
         "usernameRequired": "Nama pengguna diperlukan",

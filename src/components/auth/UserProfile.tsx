@@ -11,7 +11,7 @@ interface UserProfileProps {
 }
 
 const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) => {
-  const readOnly = useIsReadOnly()
+  const isTimeTraveling = useIsReadOnly()
   const [showDropdown, setShowDropdown] = useState(false)
   const [showPasswordForm, setShowPasswordForm] = useState(false)
   const [showHelpDialog, setShowHelpDialog] = useState(false)
@@ -22,12 +22,14 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
   const [passwordSuccess, setPasswordSuccess] = useState('')
   const [isChangingPassword, setIsChangingPassword] = useState(false)
   const { user, logout, isLoading, hasPermission } = useAuth()
+  const readOnly = isTimeTraveling || !hasPermission(Permission.MANAGE_SELF_ACCOUNT)
   const changePasswordMutation = useChangePassword()
   const { t } = useTranslation('auth')
 
   if (!user) return null
 
   const hasFullAdministration = hasPermission(Permission.MANAGE_USERS)
+  const hasReadOnlyAdministration = hasPermission(Permission.READ_USERS) && !hasFullAdministration
   const hasTradingOperations = hasPermission(Permission.CREATE_ORDERS)
   const hasStrategyExecution = hasPermission(Permission.START_STRATEGIES)
   const hasMarketDataAccess = hasPermission(Permission.READ_MARKET_DATA)
@@ -49,6 +51,7 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
 
   const handleChangePassword = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (readOnly) return
     setPasswordError('')
     setPasswordSuccess('')
 
@@ -90,6 +93,8 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
     switch (role) {
       case 'admin':
         return 'bg-loss-100 text-loss-800 border border-loss-200'
+      case 'auditor':
+        return 'bg-accent-100 text-accent-800 border border-accent-200'
       case 'operator':
         return 'bg-brand-100 text-brand-800 border border-brand-200'
       case 'viewer':
@@ -103,6 +108,8 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
     switch (role) {
       case 'admin':
         return '👑'
+      case 'auditor':
+        return '🔎'
       case 'operator':
         return '🔧'
       case 'viewer':
@@ -161,6 +168,9 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
               <div className='text-xs space-y-1'>
                 {hasFullAdministration && (
                   <div className='text-loss-600'>• {t('profile.fullAdmin')}</div>
+                )}
+                {hasReadOnlyAdministration && (
+                  <div className='text-accent-600'>• {t('profile.readOnlyAdministration')}</div>
                 )}
                 {hasTradingOperations && (
                   <div className='text-brand-600'>• {t('profile.tradingOperations')}</div>
@@ -324,6 +334,12 @@ const UserProfile: React.FC<Readonly<UserProfileProps>> = ({ className = '' }) =
                   {t('profile.help.roleCapabilities.adminPrefix')}
                 </span>{' '}
                 {t('profile.help.roleCapabilities.adminDescription')}
+              </div>
+              <div>
+                <span className='font-medium text-accent-600'>
+                  {t('profile.help.roleCapabilities.auditorPrefix')}
+                </span>{' '}
+                {t('profile.help.roleCapabilities.auditorDescription')}
               </div>
               <div>
                 <span className='font-medium text-brand-600'>

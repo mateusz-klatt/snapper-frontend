@@ -997,6 +997,7 @@ export const UserRoleSchema = z.enum([
   'ai_reviewer',
   'ai_delegate',
   'viewer',
+  'auditor',
   'operator',
   'admin',
 ])

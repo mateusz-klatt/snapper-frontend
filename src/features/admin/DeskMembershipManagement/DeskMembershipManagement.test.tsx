@@ -12,6 +12,7 @@ interface MutationCallbacks {
 
 const controls = vi.hoisted(() => ({
   canManage: true,
+  canRead: false,
   operatorsQuery: {
     data: undefined as unknown,
     isLoading: false,
@@ -32,8 +33,13 @@ const controls = vi.hoisted(() => ({
 }))
 
 vi.mock('../../../stores/auth', () => ({
-  useAuthStore: (selector: (state: { hasPermission: () => boolean }) => unknown) =>
-    selector({ hasPermission: () => controls.canManage }),
+  useAuthStore: (
+    selector: (state: { hasPermission: (permission: string) => boolean }) => unknown
+  ) =>
+    selector({
+      hasPermission: permission =>
+        permission === 'read:desk_memberships' ? controls.canRead : controls.canManage,
+    }),
 }))
 
 vi.mock('../../../hooks/queries/wallets', () => ({
@@ -131,6 +137,7 @@ describe('DeskMembershipManagement', () => {
     await i18n.changeLanguage('en')
     vi.clearAllMocks()
     controls.canManage = true
+    controls.canRead = false
     controls.operatorsQuery.data = undefined
     controls.operatorsQuery.isLoading = false
     controls.operatorsQuery.error = null
@@ -150,6 +157,20 @@ describe('DeskMembershipManagement', () => {
 
     expect(screen.getByText('Access denied')).toBeInTheDocument()
     expect(screen.queryByText('Desk memberships')).not.toBeInTheDocument()
+  })
+  it('shows desk members to auditors while rejecting membership changes', () => {
+    controls.canRead = true
+    controls.canManage = false
+    controls.membersQuery.data = userList([makeUserProfile({ username: 'viewer', role: 'viewer' })])
+    const { container } = render(<DeskMembershipManagement />)
+
+    expect(screen.getByText('viewer')).toBeInTheDocument()
+    expect(screen.getByLabelText('Desk')).toBeEnabled()
+    expect(screen.getByRole('button', { name: 'Add viewer' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: 'Remove viewer from the desk' })).toBeDisabled()
+    fireEvent.submit(container.querySelector('form') as HTMLFormElement)
+    expect(controls.attachMutate).not.toHaveBeenCalled()
+    expect(controls.detachMutate).not.toHaveBeenCalled()
   })
 
   it('shows desk loading, error, and empty states', () => {

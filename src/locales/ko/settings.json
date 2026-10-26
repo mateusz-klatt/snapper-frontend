@@ -6,7 +6,8 @@
     "searchPlaceholder": "설정 검색...",
     "noResults": "조건과 일치하는 설정이 없습니다.",
     "allCategories": "모든 카테고리",
-    "categoryFilterAriaLabel": "카테고리별 설정 필터"
+    "categoryFilterAriaLabel": "카테고리별 설정 필터",
+    "readOnly": "읽기 전용 접근 — 변경이 비활성화되어 있습니다."
   },
   "errors": {
     "loadFailed": "설정 로드 실패",

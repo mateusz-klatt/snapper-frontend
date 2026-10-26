@@ -7,6 +7,7 @@ import { AppState } from '../types/ui'
 import i18n, { LOCALE_STORAGE_KEY, detectInitialLocale } from '../i18n/config'
 import { getCatalogLanguage } from '../i18n/countryLanguages'
 import { queryKeys } from '../hooks/queries/keys'
+import { Permission } from '../types/permissions.generated'
 import type { AppLocale } from '../i18n/types'
 import {
   loadStoredFinancialColorPreference,
@@ -37,9 +38,9 @@ const applyLocaleSideEffects = (locale: AppLocale): void => {
 }
 
 const persistDefaultLanguageToBackend = async (locale: AppLocale): Promise<boolean> => {
-  const { isAuthenticated } = useAuthStore.getState()
+  const { isAuthenticated, hasPermission } = useAuthStore.getState()
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !hasPermission(Permission.MANAGE_SELF_ACCOUNT)) {
     return false
   }
 

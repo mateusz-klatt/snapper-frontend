@@ -21,7 +21,8 @@
       "resource": "リソース",
       "viewer": "閲覧者",
       "operator": "オペレーター",
-      "admin": "管理者"
+      "admin": "管理者",
+      "auditor": "監査者"
     },
     "resources": {
       "overview": "概要",
@@ -34,6 +35,10 @@
       "health": "ヘルス",
       "admin": "管理",
       "settings": "設定"
+    },
+    "auditor": {
+      "label": "監査者",
+      "description": "すべてのウォレット、ユーザー、設定に対する読み取り専用の管理者アクセス。データの変更や取引はできません。"
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "ウォレット",
     "paperAnnotation": " (ペーパー)",
     "unknownError": "不明なエラー",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "読み取り専用アクセス — 変更は無効です。"
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "閲覧者",
         "operator": "オペレーター",
         "admin": "管理者",
-        "ai_delegate": "AI代理人"
+        "ai_delegate": "AI代理人",
+        "auditor": "監査者"
       },
       "validation": {
         "usernameRequired": "ユーザー名は必須です",

@@ -6,7 +6,8 @@
     "searchPlaceholder": "Cari tetapan...",
     "noResults": "Tiada tetapan ditemui yang sepadan dengan kriteria anda.",
     "allCategories": "Semua Kategori",
-    "categoryFilterAriaLabel": "Tapis tetapan mengikut kategori"
+    "categoryFilterAriaLabel": "Tapis tetapan mengikut kategori",
+    "readOnly": "Akses baca sahaja — perubahan dinyahdayakan."
   },
   "errors": {
     "loadFailed": "Gagal memuatkan tetapan",

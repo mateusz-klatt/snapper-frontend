@@ -25,7 +25,10 @@ const createQueryClient = () =>
 const renderWithProviders = (ui: ReactNode) => {
   const queryClient = createQueryClient()
 
-  return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
+  return {
+    ...render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>),
+    queryClient,
+  }
 }
 
 describe('UserList', () => {
@@ -35,6 +38,47 @@ describe('UserList', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     vi.mocked(listUsers).mockResolvedValue(makeListEnvelope('user_list', []) as never)
+  })
+  it('shows the auditor badge and enables previews while disabling deactivation', async () => {
+    vi.mocked(listUsers).mockResolvedValue(
+      makeListEnvelope('user_list', [
+        makeUserProfile({ username: 'audit-user', role: 'auditor' }),
+      ]) as never
+    )
+    renderWithProviders(
+      <UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} readOnly />
+    )
+    const table = await screen.findByRole('table')
+
+    expect(within(table).getByText('Auditor').parentElement).toHaveClass('bg-accent-100')
+    await userEvent.click(screen.getByRole('button', { name: 'Add User' }))
+    expect(mockOnCreateUser).toHaveBeenCalled()
+    const row = within(table).getByText('audit-user').closest('tr') as HTMLTableRowElement
+    const buttons = within(row).getAllByRole('button')
+
+    await userEvent.click(buttons[0] as HTMLButtonElement)
+    expect(mockOnEditUser).toHaveBeenCalledWith(expect.objectContaining({ role: 'auditor' }))
+    expect(buttons[1]).toBeDisabled()
+    expect(deactivateUser).not.toHaveBeenCalled()
+  })
+  it('refuses an already-open deactivation after write access is lost', async () => {
+    vi.mocked(listUsers).mockResolvedValue(
+      makeListEnvelope('user_list', [makeUserProfile({ username: 'pending-user' })]) as never
+    )
+    const { rerender, queryClient } = renderWithProviders(
+      <UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} />
+    )
+    const table = await screen.findByRole('table')
+    const row = within(table).getByText('pending-user').closest('tr') as HTMLTableRowElement
+
+    await userEvent.click(within(row).getAllByRole('button')[1] as HTMLButtonElement)
+    rerender(
+      <QueryClientProvider client={queryClient}>
+        <UserList onCreateUser={mockOnCreateUser} onEditUser={mockOnEditUser} readOnly />
+      </QueryClientProvider>
+    )
+    await userEvent.click(screen.getByRole('button', { name: 'Deactivate' }))
+    expect(deactivateUser).not.toHaveBeenCalled()
   })
   it.each([
     { name: 'renders user list', expectedText: 'User Management' },

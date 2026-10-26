@@ -21,7 +21,8 @@
       "resource": "Ressource",
       "viewer": "Betrachter",
       "operator": "Operator",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Übersicht",
@@ -34,6 +35,10 @@
       "health": "Systemzustand",
       "admin": "Administration",
       "settings": "Einstellungen"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Schreibgeschützter Administratorzugriff auf alle Wallets, Benutzer und Einstellungen. Keine Datenänderungen oder Handelsaktionen."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Wallet",
     "paperAnnotation": " (Paper)",
     "unknownError": "Unbekannter Fehler",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Nur Lesezugriff — Änderungen sind deaktiviert."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Betrachter",
         "operator": "Operator",
         "admin": "Administrator",
-        "ai_delegate": "KI-Delegierter"
+        "ai_delegate": "KI-Delegierter",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "Benutzername ist erforderlich",

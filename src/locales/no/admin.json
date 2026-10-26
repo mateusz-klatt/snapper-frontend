@@ -21,7 +21,8 @@
       "resource": "Ressurs",
       "viewer": "Tilskuer",
       "operator": "Operatør",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Revisor"
     },
     "resources": {
       "overview": "Oversikt",
@@ -34,6 +35,10 @@
       "health": "Helse",
       "admin": "Administrasjon",
       "settings": "Innstillinger"
+    },
+    "auditor": {
+      "label": "Revisor",
+      "description": "Administratortilgang med kun leserettigheter til alle lommebøker, brukere og innstillinger. Kan ikke endre data eller handle."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Lommebok",
     "paperAnnotation": " (papir)",
     "unknownError": "Ukjent feil",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Kun lesetilgang — endringer er deaktivert."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Tilskuer",
         "operator": "Operatør",
         "admin": "Administrator",
-        "ai_delegate": "AI-delegat"
+        "ai_delegate": "AI-delegat",
+        "auditor": "Revisor"
       },
       "validation": {
         "usernameRequired": "Brukernavn er påkrevd",

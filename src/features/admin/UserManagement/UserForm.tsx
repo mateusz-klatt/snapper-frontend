@@ -175,6 +175,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
     createMutation.isPending || updateMutation.isPending || resetPasswordMutation.isPending
   const roleDescriptions: { readonly [Role in UserRole]?: string } = {
     viewer: t('rolePermissions.viewer.description'),
+    auditor: t('rolePermissions.auditor.description'),
     operator: t('rolePermissions.operator.description'),
     admin: t('rolePermissions.admin.description'),
   }
@@ -274,6 +275,7 @@ const UserForm: React.FC<Readonly<UserFormProps>> = ({ user, open, onClose, read
             onChange={val => handleInputChange('role', val)}
             options={[
               { value: 'viewer', label: t('users.form.roles.viewer') },
+              { value: 'auditor', label: t('users.form.roles.auditor') },
               { value: 'operator', label: t('users.form.roles.operator') },
               { value: 'admin', label: t('users.form.roles.admin') },
             ]}

@@ -21,7 +21,8 @@
       "resource": "Zdroj",
       "viewer": "Pozorovateľ",
       "operator": "Operátor",
-      "admin": "Administrátor"
+      "admin": "Administrátor",
+      "auditor": "Audítor"
     },
     "resources": {
       "overview": "Prehľad",
@@ -34,6 +35,10 @@
       "health": "Stav",
       "admin": "Administrácia",
       "settings": "Nastavenia"
+    },
+    "auditor": {
+      "label": "Audítor",
+      "description": "Prístup správcu iba na čítanie ku všetkým peňaženkám, používateľom a nastaveniam. Bez možnosti meniť údaje alebo obchodovať."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Peňaženka",
     "paperAnnotation": " (papierová)",
     "unknownError": "Neznáma chyba",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Prístup iba na čítanie — zmeny sú zakázané."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Pozorovateľ",
         "operator": "Operátor",
         "admin": "Administrátor",
-        "ai_delegate": "Delegát AI"
+        "ai_delegate": "Delegát AI",
+        "auditor": "Audítor"
       },
       "validation": {
         "usernameRequired": "Používateľské meno je povinné",

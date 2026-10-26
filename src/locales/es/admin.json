@@ -21,7 +21,8 @@
       "resource": "Recurso",
       "viewer": "Observador",
       "operator": "Operador",
-      "admin": "Administrador"
+      "admin": "Administrador",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Resumen",
@@ -34,6 +35,10 @@
       "health": "Estado",
       "admin": "Administración",
       "settings": "Configuración"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Acceso de administrador de solo lectura a todas las carteras, usuarios y ajustes. No permite modificar datos ni operar."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Cartera",
     "paperAnnotation": " (papel)",
     "unknownError": "Error desconocido",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Acceso de solo lectura — los cambios están deshabilitados."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Observador",
         "operator": "Operador",
         "admin": "Administrador",
-        "ai_delegate": "Delegado IA"
+        "ai_delegate": "Delegado IA",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "El nombre de usuario es obligatorio",

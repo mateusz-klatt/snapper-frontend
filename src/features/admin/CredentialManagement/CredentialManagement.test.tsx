@@ -12,11 +12,13 @@ vi.mock('./CredentialList', () => ({
   default: ({
     onCreateCredential,
     onRotate,
+    readOnly,
   }: {
     onCreateCredential: () => void
     onRotate: (c: unknown) => void
+    readOnly?: boolean
   }) => (
-    <div data-testid='credential-list'>
+    <div data-testid='credential-list' data-readonly={readOnly}>
       <button onClick={onCreateCredential}>Create</button>
       <button
         onClick={() =>
@@ -39,9 +41,17 @@ vi.mock('./CredentialList', () => ({
   ),
 }))
 vi.mock('./CredentialForm', () => ({
-  default: ({ open, onClose }: { open: boolean; onClose: () => void }) =>
+  default: ({
+    open,
+    onClose,
+    readOnly,
+  }: {
+    open: boolean
+    onClose: () => void
+    readOnly?: boolean
+  }) =>
     open ? (
-      <div data-testid='credential-form'>
+      <div data-testid='credential-form' data-readonly={readOnly}>
         <button onClick={onClose}>Close Form</button>
       </div>
     ) : null,
@@ -66,6 +76,18 @@ function renderWithQuery(ui: React.ReactElement) {
 describe('CredentialManagement', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(useAuthStore).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'manage:wallet_credentials',
+    } as never)
+  })
+  it('allows credential readers to inspect a disabled creation form', () => {
+    vi.mocked(useAuthStore).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'read:wallet_credentials',
+    } as never)
+    renderWithQuery(<CredentialManagement />)
+    expect(screen.getByTestId('credential-list')).toHaveAttribute('data-readonly', 'true')
+    act(() => screen.getByText('Create').click())
+    expect(screen.getByTestId('credential-form')).toHaveAttribute('data-readonly', 'true')
   })
   it('renders list component when user has permission', () => {
     renderWithQuery(<CredentialManagement />)

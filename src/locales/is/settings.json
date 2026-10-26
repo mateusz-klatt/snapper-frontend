@@ -6,7 +6,8 @@
     "searchPlaceholder": "Leita í stillingum...",
     "noResults": "Engar stillingar fundust sem passa við skilyrðin.",
     "allCategories": "Allir flokkar",
-    "categoryFilterAriaLabel": "Sía stillingar eftir flokki"
+    "categoryFilterAriaLabel": "Sía stillingar eftir flokki",
+    "readOnly": "Aðeins lesaðgangur — breytingar eru óvirkar."
   },
   "errors": {
     "loadFailed": "Mistókst að hlaða stillingum",

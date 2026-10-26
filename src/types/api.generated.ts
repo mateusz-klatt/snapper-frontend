@@ -2275,7 +2275,7 @@ export type Components = {
             instrument?: string | null | undefined;
             signal_envelope?: Record<string, unknown> | null | undefined;
         };
-        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "submit:ai_review_decision" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:runtime_diagnostics" | "read:processes" | "manage:processes" | "read:ai_reviews" | "read:ai_integration" | "manage:ai_integration" | "configure:system" | "manage:users" | "manage:desk_memberships" | "read:wallet_credentials" | "manage:wallet_credentials" | "manage:scope_grants" | "impersonate:operator" | "read:backtests" | "create:backtest_comparisons" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
+        Permission: "read:market_data" | "read:market_views" | "submit:market_view" | "submit:ai_review_decision" | "read:orders" | "create:orders" | "cancel:orders" | "read:positions" | "manage:positions" | "read:account_state" | "read:strategies" | "read:signals" | "start:strategies" | "stop:strategies" | "configure:strategies" | "read:system_status" | "manage:runtime_diagnostics" | "read:processes" | "manage:processes" | "read:ai_reviews" | "read:ai_integration" | "manage:ai_integration" | "read:system_settings" | "configure:system" | "read:users" | "manage:users" | "manage:self_account" | "read:desk_memberships" | "manage:desk_memberships" | "read:wallet_credentials" | "manage:wallet_credentials" | "read:scope_grants" | "manage:scope_grants" | "read:all_scopes" | "read:position_cycles" | "initialize:pnl_anchors" | "impersonate:operator" | "read:backtests" | "create:backtest_comparisons" | "manage:backtests" | "read:notifications" | "manage:notification_devices" | "manage:paired_execution";
         PnlAiDecisionMarkerData: {
             kind: "ai_decision";
             marker_time: string;
@@ -3451,7 +3451,7 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["UserProfile"];
         };
-        UserRole: "ai_researcher" | "ai_reviewer" | "ai_delegate" | "viewer" | "operator" | "admin";
+        UserRole: "ai_researcher" | "ai_reviewer" | "ai_delegate" | "viewer" | "auditor" | "operator" | "admin";
         ValidationError: {
             loc: (string | number)[];
             msg: string;

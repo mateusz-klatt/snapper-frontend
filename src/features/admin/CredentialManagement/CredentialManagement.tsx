@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { KeyRound } from 'lucide-react'
 import { useAuthStore } from '../../../stores/auth'
+import { Permission } from '../../../types/permissions.generated'
 import CredentialList from './CredentialList'
 import CredentialForm from './CredentialForm'
 import RotateDialog from './RotateDialog'
@@ -11,13 +12,17 @@ interface CredentialManagementProps {
   readOnly?: boolean
 }
 
-const CredentialManagement: React.FC<Readonly<CredentialManagementProps>> = ({ readOnly }) => {
+const CredentialManagement: React.FC<Readonly<CredentialManagementProps>> = ({
+  readOnly: inheritedReadOnly,
+}) => {
   const { t } = useTranslation('admin')
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [rotateCredential, setRotateCredential] = useState<CredentialSummary | null>(null)
   const { hasPermission } = useAuthStore()
+  const canManage = hasPermission(Permission.MANAGE_WALLET_CREDENTIALS)
+  const readOnly = inheritedReadOnly || !canManage
 
-  if (!hasPermission('manage:wallet_credentials')) {
+  if (!hasPermission(Permission.READ_WALLET_CREDENTIALS) && !canManage) {
     return (
       <div className='flex flex-col items-center justify-center min-h-[40vh] text-center'>
         <KeyRound className='w-16 h-16 text-muted-400 mb-4' />

@@ -28,11 +28,13 @@ const errorMessage = (error: unknown, fallback: string): string =>
   error instanceof Error && error.message.length > 0 ? error.message : fallback
 
 const DeskMembershipManagement: React.FC<Readonly<DeskMembershipManagementProps>> = ({
-  readOnly,
+  readOnly: inheritedReadOnly,
 }) => {
   const { t } = useTranslation('admin')
   const hasPermission = useAuthStore(state => state.hasPermission)
   const canManage = hasPermission(Permission.MANAGE_DESK_MEMBERSHIPS)
+  const canRead = hasPermission(Permission.READ_DESK_MEMBERSHIPS) || canManage
+  const readOnly = inheritedReadOnly || !canManage
   const [selectedDeskId, setSelectedDeskId] = useState('')
   const [username, setUsername] = useState('')
   const [usernameError, setUsernameError] = useState('')
@@ -47,7 +49,7 @@ const DeskMembershipManagement: React.FC<Readonly<DeskMembershipManagementProps>
   const detachMutation = useDetachViewerFromDesk()
   const members: DeskMemberInfo[] = membersQuery.data?.payload ?? []
 
-  if (!canManage) {
+  if (!canRead) {
     return (
       <div className='panel'>
         <EmptyState

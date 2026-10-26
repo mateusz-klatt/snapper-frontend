@@ -21,7 +21,8 @@
       "resource": "Resursă",
       "viewer": "Observator",
       "operator": "Operator",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Prezentare generală",
@@ -34,6 +35,10 @@
       "health": "Stare sistem",
       "admin": "Administrare",
       "settings": "Setări"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Acces de administrator doar pentru citire la toate portofelele, utilizatorii și setările. Nu poate modifica date sau tranzacționa."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Portofel",
     "paperAnnotation": " (demo)",
     "unknownError": "Eroare necunoscută",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Acces doar pentru citire — modificările sunt dezactivate."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Observator",
         "operator": "Operator",
         "admin": "Administrator",
-        "ai_delegate": "Delegat AI"
+        "ai_delegate": "Delegat AI",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "Numele de utilizator este obligatoriu",

@@ -21,7 +21,8 @@
       "resource": "Išteklius",
       "viewer": "Stebėtojas",
       "operator": "Operatorius",
-      "admin": "Administratorius"
+      "admin": "Administratorius",
+      "auditor": "Auditorius"
     },
     "resources": {
       "overview": "Apžvalga",
@@ -34,6 +35,10 @@
       "health": "Būklė",
       "admin": "Administravimas",
       "settings": "Nustatymai"
+    },
+    "auditor": {
+      "label": "Auditorius",
+      "description": "Administratoriaus prieiga tik skaityti prie visų piniginių, naudotojų ir nustatymų. Negalima keisti duomenų ar prekiauti."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Piniginė",
     "paperAnnotation": " (popierinė)",
     "unknownError": "Nežinoma klaida",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Prieiga tik skaityti — pakeitimai išjungti."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Stebėtojas",
         "operator": "Operatorius",
         "admin": "Administratorius",
-        "ai_delegate": "AI delegatas"
+        "ai_delegate": "AI delegatas",
+        "auditor": "Auditorius"
       },
       "validation": {
         "usernameRequired": "Naudotojo vardas privalomas",

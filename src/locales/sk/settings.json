@@ -6,7 +6,8 @@
     "searchPlaceholder": "Hľadať nastavenia...",
     "noResults": "Nenašli sa žiadne nastavenia zodpovedajúce kritériám.",
     "allCategories": "Všetky kategórie",
-    "categoryFilterAriaLabel": "Filtrovať nastavenia podľa kategórie"
+    "categoryFilterAriaLabel": "Filtrovať nastavenia podľa kategórie",
+    "readOnly": "Prístup iba na čítanie — zmeny sú zakázané."
   },
   "errors": {
     "loadFailed": "Nastavenia sa nepodarilo načítať",

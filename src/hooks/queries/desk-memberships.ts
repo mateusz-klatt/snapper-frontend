@@ -19,12 +19,14 @@ export interface DeskMembershipTarget {
 export const useDeskMembers = (operatorPublicId: string) => {
   const { isAuthenticated, hasPermission } = useAuth()
   const asOf = useAppStore(state => state.asOf)
-  const canManage = hasPermission(Permission.MANAGE_DESK_MEMBERSHIPS)
+  const canRead =
+    hasPermission(Permission.READ_DESK_MEMBERSHIPS) ||
+    hasPermission(Permission.MANAGE_DESK_MEMBERSHIPS)
 
   return useQuery<UserListResponse>({
     queryKey: queryKeys.deskMembers(operatorPublicId, asOf),
     queryFn: () => getDeskMembers(operatorPublicId, asOf),
-    enabled: isAuthenticated && canManage && operatorPublicId.length > 0,
+    enabled: isAuthenticated && canRead && operatorPublicId.length > 0,
     staleTime: 30 * 1000,
     throwOnError: false,
   })

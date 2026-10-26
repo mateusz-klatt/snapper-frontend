@@ -6,7 +6,8 @@
     "searchPlaceholder": "Căutați setări...",
     "noResults": "Nu s-au găsit setări care să corespundă criteriilor.",
     "allCategories": "Toate categoriile",
-    "categoryFilterAriaLabel": "Filtrați setările după categorie"
+    "categoryFilterAriaLabel": "Filtrați setările după categorie",
+    "readOnly": "Acces doar pentru citire — modificările sunt dezactivate."
   },
   "errors": {
     "loadFailed": "Încărcarea setărilor a eșuat",

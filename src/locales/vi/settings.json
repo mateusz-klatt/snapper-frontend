@@ -6,7 +6,8 @@
     "searchPlaceholder": "Tìm cài đặt...",
     "noResults": "Không tìm thấy cài đặt nào khớp với tiêu chí của bạn.",
     "allCategories": "Tất cả danh mục",
-    "categoryFilterAriaLabel": "Lọc cài đặt theo danh mục"
+    "categoryFilterAriaLabel": "Lọc cài đặt theo danh mục",
+    "readOnly": "Quyền chỉ đọc — không cho phép thay đổi."
   },
   "errors": {
     "loadFailed": "Không tải được cài đặt",

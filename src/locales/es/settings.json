@@ -6,7 +6,8 @@
     "searchPlaceholder": "Buscar ajustes...",
     "noResults": "No se encontraron ajustes que coincidan con sus criterios.",
     "allCategories": "Todas las categorías",
-    "categoryFilterAriaLabel": "Filtrar ajustes por categoría"
+    "categoryFilterAriaLabel": "Filtrar ajustes por categoría",
+    "readOnly": "Acceso de solo lectura — los cambios están deshabilitados."
   },
   "errors": {
     "loadFailed": "Error al cargar los ajustes",

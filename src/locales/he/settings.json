@@ -6,7 +6,8 @@
     "searchPlaceholder": "חפש הגדרות...",
     "noResults": "לא נמצאו הגדרות שתואמות לקריטריונים שלך.",
     "allCategories": "כל הקטגוריות",
-    "categoryFilterAriaLabel": "סנן הגדרות לפי קטגוריה"
+    "categoryFilterAriaLabel": "סנן הגדרות לפי קטגוריה",
+    "readOnly": "גישה לקריאה בלבד — השינויים מושבתים."
   },
   "errors": {
     "loadFailed": "טעינת ההגדרות נכשלה",

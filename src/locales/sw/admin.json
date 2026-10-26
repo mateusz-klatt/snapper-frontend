@@ -21,7 +21,8 @@
       "resource": "Rasilimali",
       "viewer": "Mtazamaji",
       "operator": "Opereta",
-      "admin": "Msimamizi"
+      "admin": "Msimamizi",
+      "auditor": "Mkaguzi"
     },
     "resources": {
       "overview": "Muhtasari",
@@ -34,6 +35,10 @@
       "health": "Afya",
       "admin": "Usimamizi",
       "settings": "Mipangilio"
+    },
+    "auditor": {
+      "label": "Mkaguzi",
+      "description": "Ufikiaji wa msimamizi wa kusoma tu kwa pochi, watumiaji na mipangilio yote. Hawezi kubadilisha data au kufanya biashara."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Pochi",
     "paperAnnotation": " (majaribio)",
     "unknownError": "Hitilafu isiyojulikana",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Ufikiaji wa kusoma tu — mabadiliko yamezimwa."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Mtazamaji",
         "operator": "Opereta",
         "admin": "Msimamizi",
-        "ai_delegate": "Mwakilishi wa AI"
+        "ai_delegate": "Mwakilishi wa AI",
+        "auditor": "Mkaguzi"
       },
       "validation": {
         "usernameRequired": "Jina la mtumiaji linahitajika",

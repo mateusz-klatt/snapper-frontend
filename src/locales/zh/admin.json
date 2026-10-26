@@ -21,7 +21,8 @@
       "resource": "资源",
       "viewer": "查看者",
       "operator": "操作员",
-      "admin": "管理员"
+      "admin": "管理员",
+      "auditor": "审计员"
     },
     "resources": {
       "overview": "概览",
@@ -34,6 +35,10 @@
       "health": "系统健康",
       "admin": "管理",
       "settings": "设置"
+    },
+    "auditor": {
+      "label": "审计员",
+      "description": "以只读管理员权限查看所有钱包、用户和设置。不能修改数据或进行交易。"
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "钱包",
     "paperAnnotation": " (模拟)",
     "unknownError": "未知错误",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "只读访问 — 已禁用修改。"
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "查看者",
         "operator": "操作员",
         "admin": "管理员",
-        "ai_delegate": "AI 代理人"
+        "ai_delegate": "AI 代理人",
+        "auditor": "审计员"
       },
       "validation": {
         "usernameRequired": "必须填写用户名",

@@ -115,7 +115,7 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
               key={action.label}
               variant={action.variant}
               onClick={action.onClick}
-              disabled={readOnly}
+              title={readOnly ? t('common.readOnly') : undefined}
               className='flex items-center space-x-2'
             >
               <Plus className='w-4 h-4' />
@@ -239,7 +239,7 @@ const ScopeGrantList: React.FC<Readonly<ScopeGrantListProps>> = ({
                         variant='secondary'
                         size='sm'
                         onClick={() => onHandover(grant)}
-                        disabled={readOnly}
+                        title={readOnly ? t('common.readOnly') : undefined}
                         className='text-brand-600 hover:text-brand-900'
                       >
                         <ArrowRightLeft className='w-4 h-4' />

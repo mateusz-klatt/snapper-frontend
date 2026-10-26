@@ -241,7 +241,6 @@ const DisplayView: React.FC<DisplayViewProps> = ({
             <button
               type='button'
               onClick={() => setIsEditing(true)}
-              disabled={readOnly}
               className='px-3 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 text-alpine-900 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
             >
               {t('item.edit')}

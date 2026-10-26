@@ -8,11 +8,13 @@ vi.mock('./UserList', () => ({
   default: ({
     onCreateUser,
     onEditUser,
+    readOnly,
   }: {
     onCreateUser: () => void
     onEditUser: (user: never) => void
+    readOnly?: boolean
   }) => (
-    <div data-testid='user-list'>
+    <div data-testid='user-list' data-readonly={readOnly}>
       <button onClick={onCreateUser}>Create User</button>
       <button
         onClick={() =>
@@ -34,12 +36,14 @@ vi.mock('./UserForm', () => ({
     open,
     onClose,
     user,
+    readOnly,
   }: {
     open: boolean
     onClose: () => void
     user?: { username: string }
+    readOnly?: boolean
   }) => (
-    <div data-testid='user-form' data-open={open}>
+    <div data-testid='user-form' data-open={open} data-readonly={readOnly}>
       {user ? `Editing ${user.username}` : 'Creating new user'}
       <button onClick={onClose}>Close</button>
     </div>
@@ -49,6 +53,23 @@ vi.mock('../../../stores/auth', () => ({
   useAuthStore: vi.fn(),
 }))
 describe('UserManagement', () => {
+  it('allows a read-only user to inspect the edit form without write access', async () => {
+    vi.mocked(authStore.useAuthStore).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'read:users',
+    } as never)
+    render(<UserManagement />)
+    expect(screen.getByTestId('user-list')).toHaveAttribute('data-readonly', 'true')
+    await userEvent.click(screen.getByText('Edit User'))
+    expect(screen.getByTestId('user-form')).toHaveAttribute('data-open', 'true')
+    expect(screen.getByTestId('user-form')).toHaveAttribute('data-readonly', 'true')
+  })
+  it('preserves inherited read-only mode for a user manager', () => {
+    vi.mocked(authStore.useAuthStore).mockReturnValue({
+      hasPermission: () => true,
+    } as never)
+    render(<UserManagement readOnly />)
+    expect(screen.getByTestId('user-form')).toHaveAttribute('data-readonly', 'true')
+  })
   it('shows access denied when user lacks permission', () => {
     vi.mocked(authStore.useAuthStore).mockReturnValue({
       hasPermission: vi.fn().mockReturnValue(false),

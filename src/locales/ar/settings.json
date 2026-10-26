@@ -6,7 +6,8 @@
     "searchPlaceholder": "ابحث في الإعدادات...",
     "noResults": "لم يتم العثور على إعدادات تطابق معاييرك.",
     "allCategories": "كل الفئات",
-    "categoryFilterAriaLabel": "تصفية الإعدادات حسب الفئة"
+    "categoryFilterAriaLabel": "تصفية الإعدادات حسب الفئة",
+    "readOnly": "وصول للقراءة فقط — التغييرات معطّلة."
   },
   "errors": {
     "loadFailed": "فشل تحميل الإعدادات",

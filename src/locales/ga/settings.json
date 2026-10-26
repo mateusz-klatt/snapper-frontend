@@ -6,7 +6,8 @@
     "searchPlaceholder": "Cuardaigh socruithe...",
     "noResults": "Níor aimsíodh socruithe a oireann do do chritéir.",
     "allCategories": "Gach Catagóir",
-    "categoryFilterAriaLabel": "Scag socruithe de réir catagóire"
+    "categoryFilterAriaLabel": "Scag socruithe de réir catagóire",
+    "readOnly": "Rochtain inléite amháin — tá athruithe díchumasaithe."
   },
   "errors": {
     "loadFailed": "Theip ar lódáil socruithe",

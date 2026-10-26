@@ -6,7 +6,8 @@
     "searchPlaceholder": "Pretraži postavke...",
     "noResults": "Nema postavki koje odgovaraju kriterijima.",
     "allCategories": "Sve kategorije",
-    "categoryFilterAriaLabel": "Filtriraj postavke po kategoriji"
+    "categoryFilterAriaLabel": "Filtriraj postavke po kategoriji",
+    "readOnly": "Pristup samo za čitanje — izmjene su onemogućene."
   },
   "errors": {
     "loadFailed": "Učitavanje postavki nije uspjelo",

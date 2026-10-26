@@ -21,7 +21,8 @@
       "resource": "Kaynak",
       "viewer": "Görüntüleyici",
       "operator": "Operatör",
-      "admin": "Yönetici"
+      "admin": "Yönetici",
+      "auditor": "Denetçi"
     },
     "resources": {
       "overview": "Genel Bakış",
@@ -34,6 +35,10 @@
       "health": "Sağlık",
       "admin": "Yönetim",
       "settings": "Ayarlar"
+    },
+    "auditor": {
+      "label": "Denetçi",
+      "description": "Tüm cüzdanlara, kullanıcılara ve ayarlara salt okunur yönetici erişimi. Verileri değiştiremez veya alım satım yapamaz."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Cüzdan",
     "paperAnnotation": " (demo)",
     "unknownError": "Bilinmeyen hata",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Salt okunur erişim — değişiklikler devre dışı."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Görüntüleyici",
         "operator": "Operatör",
         "admin": "Yönetici",
-        "ai_delegate": "AI temsilcisi"
+        "ai_delegate": "AI temsilcisi",
+        "auditor": "Denetçi"
       },
       "validation": {
         "usernameRequired": "Kullanıcı adı gerekli",
