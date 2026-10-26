@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import type { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Settings } from './Settings'
+import { AddSettingModal } from './AddSettingModal'
 import {
   getSettingCategories,
   getSettings,
@@ -13,6 +14,7 @@ import {
 import { makeEnvelope, makeSettingRead } from '../../test/factories'
 import { renderWithI18n } from '../../test/renderWithI18n'
 import type { SettingResponse } from '../../types/api'
+import { useAppStore } from '../../stores/app'
 
 const authControl = vi.hoisted(() => ({ canConfigure: true }))
 
@@ -118,6 +120,26 @@ describe('Settings', () => {
     )
     expect(updateSetting).not.toHaveBeenCalled()
     expect(removeSetting).not.toHaveBeenCalled()
+  })
+  it('blocks a standalone setting modal during time travel without an explicit read-only prop', () => {
+    const onSave = vi.fn().mockResolvedValue(undefined)
+
+    useAppStore.setState({ isTimeTraveling: true })
+
+    try {
+      renderWithI18n(
+        <AddSettingModal open onClose={vi.fn()} onSave={onSave} existingCategories={['api']} />
+      )
+      expect(screen.getByLabelText(/Key/)).toHaveAttribute('readonly')
+      expect(screen.getByRole('combobox')).toBeDisabled()
+      const createButton = screen.getByRole('button', { name: /Create Setting/i })
+
+      expect(createButton).toBeDisabled()
+      fireEvent.submit(createButton.closest('form') as HTMLFormElement)
+      expect(onSave).not.toHaveBeenCalled()
+    } finally {
+      useAppStore.setState({ isTimeTraveling: false })
+    }
   })
   it('displays loading state initially', () => {
     vi.mocked(getSettings).mockImplementation(() => new Promise(() => {}))
