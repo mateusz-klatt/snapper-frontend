@@ -403,6 +403,7 @@ export const SettingItem = ({
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const isBoolean = isBooleanString(setting.value) && !isSensitive(setting.key)
   const isJson = isJsonString(setting.value) && !isBooleanString(setting.value)
+  const maskReadOnlyValue = readOnly && isSensitive(setting.key)
   const [jsonValue, setJsonValue] = useState<JsonValue | null>(null)
 
   useEffect(() => {
@@ -464,10 +465,14 @@ export const SettingItem = ({
   } else if (isEditing) {
     content = (
       <EditingView
-        isJson={isJson}
+        isJson={isJson && !maskReadOnlyValue}
         jsonValue={jsonValue}
         setJsonValue={setJsonValue}
-        localValue={localValue}
+        localValue={
+          maskReadOnlyValue
+            ? getMaskedValue(setting.key, setting.value, t('item.emptyValue'))
+            : localValue
+        }
         setLocalValue={setLocalValue}
         onJsonSave={handleJsonSave}
         onSave={handleSave}
