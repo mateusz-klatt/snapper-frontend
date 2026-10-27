@@ -6,7 +6,8 @@
     "searchPlaceholder": "Szukaj ustawień...",
     "noResults": "Nie znaleziono ustawień pasujących do kryteriów.",
     "allCategories": "Wszystkie kategorie",
-    "categoryFilterAriaLabel": "Filtruj ustawienia według kategorii"
+    "categoryFilterAriaLabel": "Filtruj ustawienia według kategorii",
+    "readOnly": "Dostęp tylko do odczytu — wprowadzanie zmian jest wyłączone."
   },
   "errors": {
     "loadFailed": "Nie udało się załadować ustawień",

@@ -6,7 +6,8 @@
     "searchPlaceholder": "Søg indstillinger...",
     "noResults": "Ingen indstillinger matcher kriterierne.",
     "allCategories": "Alle kategorier",
-    "categoryFilterAriaLabel": "Filtrer indstillinger efter kategori"
+    "categoryFilterAriaLabel": "Filtrer indstillinger efter kategori",
+    "readOnly": "Kun læseadgang — ændringer er deaktiveret."
   },
   "errors": {
     "loadFailed": "Kunne ikke indlæse indstillinger",

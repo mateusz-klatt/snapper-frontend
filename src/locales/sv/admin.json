@@ -21,7 +21,8 @@
       "resource": "Resurs",
       "viewer": "Tittare",
       "operator": "Operatör",
-      "admin": "Administratör"
+      "admin": "Administratör",
+      "auditor": "Granskare"
     },
     "resources": {
       "overview": "Översikt",
@@ -34,6 +35,10 @@
       "health": "Hälsa",
       "admin": "Administration",
       "settings": "Inställningar"
+    },
+    "auditor": {
+      "label": "Granskare",
+      "description": "Administratörsåtkomst med endast läsbehörighet till alla plånböcker, användare och inställningar. Kan inte ändra data eller handla."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Plånbok",
     "paperAnnotation": " (demo)",
     "unknownError": "Okänt fel",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Endast läsåtkomst — ändringar är inaktiverade."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Tittare",
         "operator": "Operatör",
         "admin": "Administratör",
-        "ai_delegate": "AI-delegat"
+        "ai_delegate": "AI-delegat",
+        "auditor": "Granskare"
       },
       "validation": {
         "usernameRequired": "Användarnamn krävs",

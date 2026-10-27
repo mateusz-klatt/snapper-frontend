@@ -85,6 +85,7 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    if (readOnly) return
     if (!validateForm()) return
     if (!isCredentialType(credentialType)) return
 
@@ -131,6 +132,11 @@ const CredentialForm: React.FC<Readonly<CredentialFormProps>> = ({ open, onClose
   return (
     <Modal open={open} onClose={handleClose} title={t('credentials.form.title')} size='md'>
       <form onSubmit={handleSubmit} className='space-y-6'>
+        {readOnly && (
+          <p role='status' className='text-sm text-muted-600'>
+            {t('common.readOnly')}
+          </p>
+        )}
         <fieldset disabled={readOnly} className='space-y-6'>
           <div>
             <label htmlFor='cred-wallet' className='block text-sm font-medium text-alpine-900 mb-2'>

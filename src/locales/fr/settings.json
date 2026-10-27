@@ -6,7 +6,8 @@
     "searchPlaceholder": "Rechercher des paramètres...",
     "noResults": "Aucun paramètre ne correspond à vos critères.",
     "allCategories": "Toutes les catégories",
-    "categoryFilterAriaLabel": "Filtrer les paramètres par catégorie"
+    "categoryFilterAriaLabel": "Filtrer les paramètres par catégorie",
+    "readOnly": "Accès en lecture seule — les modifications sont désactivées."
   },
   "errors": {
     "loadFailed": "Échec du chargement des paramètres",

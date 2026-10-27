@@ -6,7 +6,8 @@
     "searchPlaceholder": "搜尋設定...",
     "noResults": "未找到符合條件的設定。",
     "allCategories": "所有分類",
-    "categoryFilterAriaLabel": "按分類篩選設定"
+    "categoryFilterAriaLabel": "按分類篩選設定",
+    "readOnly": "唯讀存取 — 已停用修改。"
   },
   "errors": {
     "loadFailed": "載入設定失敗",

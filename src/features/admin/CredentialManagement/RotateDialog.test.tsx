@@ -236,7 +236,13 @@ describe('RotateDialog', () => {
     expect(screen.queryByText('Private Key (PEM) is required')).toBeNull()
   })
   it('disables Rotate button when readOnly', () => {
-    renderWithQuery(<RotateDialog credential={testCredential} open onClose={onClose} readOnly />)
+    const { container } = renderWithQuery(
+      <RotateDialog credential={testCredential} open onClose={onClose} readOnly />
+    )
+
+    expect(screen.getByLabelText('API Key')).toHaveAttribute('readonly')
+    fireEvent.submit(container.querySelector('form') as HTMLFormElement)
+    expect(mockRotateMutation.mutate).not.toHaveBeenCalled()
     const btn = screen.getByText('Rotate').closest('button')
 
     expect(btn?.disabled).toBe(true)

@@ -44,6 +44,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
   }
 
   const handleHandover = () => {
+    if (readOnly) return
     if (!grant || !toOperatorId) return
     const trimmedReason = reason.trim()
 
@@ -78,7 +79,18 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
 
   return (
     <Modal open={open} onClose={handleClose} title={t('scopeGrants.handover.title')} size='md'>
-      <div className='space-y-6'>
+      <form
+        onSubmit={event => {
+          event.preventDefault()
+          handleHandover()
+        }}
+        className='space-y-6'
+      >
+        {readOnly && (
+          <p role='status' className='text-sm text-muted-600'>
+            {t('common.readOnly')}
+          </p>
+        )}
         {grant && (
           <div className='bg-dark-700 rounded-lg p-4 space-y-2'>
             <div className='flex justify-between text-sm'>
@@ -112,6 +124,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             {t('scopeGrants.handover.fields.transferTo')}
           </label>
           <ThemeSelect
+            disabled={readOnly ?? false}
             id='handover-operator'
             value={toOperatorId}
             onChange={setToOperatorId}
@@ -127,6 +140,7 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             {t('scopeGrants.handover.fields.reason')}
           </label>
           <input
+            readOnly={readOnly}
             type='text'
             id='handover-reason'
             value={reason}
@@ -147,18 +161,17 @@ const HandoverDialog: React.FC<Readonly<HandoverDialogProps>> = ({
             {t('common.cancel')}
           </Button>
           <Button
-            type='button'
+            type='submit'
             variant='primary'
             size='sm'
             loading={handoverMutation.isPending}
             disabled={!toOperatorId || readOnly}
-            onClick={handleHandover}
           >
             <ArrowRightLeft className='w-3.5 h-3.5' />
             {t('scopeGrants.handover.actions.handover')}
           </Button>
         </div>
-      </div>
+      </form>
     </Modal>
   )
 }

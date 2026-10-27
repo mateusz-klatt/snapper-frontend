@@ -21,7 +21,8 @@
       "resource": "Recurso",
       "viewer": "Visualizador",
       "operator": "Operador",
-      "admin": "Administrador"
+      "admin": "Administrador",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Visão geral",
@@ -34,6 +35,10 @@
       "health": "Saúde",
       "admin": "Administração",
       "settings": "Configurações"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Acesso de administrador apenas de leitura a todas as carteiras, utilizadores e definições. Não permite alterar dados nem negociar."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Carteira",
     "paperAnnotation": " (simulação)",
     "unknownError": "Erro desconhecido",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Acesso apenas de leitura — as alterações estão desativadas."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Visualizador",
         "operator": "Operador",
         "admin": "Administrador",
-        "ai_delegate": "Delegado de IA"
+        "ai_delegate": "Delegado de IA",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "Nome de usuário é obrigatório",

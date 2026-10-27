@@ -59,7 +59,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
         </div>
         <Button
           onClick={onCreateCredential}
-          disabled={readOnly}
+          title={readOnly ? t('common.readOnly') : undefined}
           className='flex items-center space-x-2'
         >
           <Plus className='w-4 h-4' />
@@ -159,7 +159,7 @@ const CredentialList: React.FC<Readonly<CredentialListProps>> = ({
                         variant='secondary'
                         size='sm'
                         onClick={() => onRotate(cred)}
-                        disabled={readOnly}
+                        title={readOnly ? t('common.readOnly') : undefined}
                         className='text-brand-600 hover:text-brand-900'
                       >
                         <RotateCw className='w-4 h-4' />

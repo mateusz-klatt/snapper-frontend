@@ -21,7 +21,8 @@
       "resource": "Resurss",
       "viewer": "Skatītājs",
       "operator": "Operators",
-      "admin": "Administrators"
+      "admin": "Administrators",
+      "auditor": "Auditors"
     },
     "resources": {
       "overview": "Pārskats",
@@ -34,6 +35,10 @@
       "health": "Veselība",
       "admin": "Administrēšana",
       "settings": "Iestatījumi"
+    },
+    "auditor": {
+      "label": "Auditors",
+      "description": "Administratora piekļuve tikai lasīšanai visiem makiem, lietotājiem un iestatījumiem. Nevar mainīt datus vai tirgoties."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Maks",
     "paperAnnotation": " (demo)",
     "unknownError": "Nezināma kļūda",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Piekļuve tikai lasīšanai — izmaiņas ir atspējotas."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Skatītājs",
         "operator": "Operators",
         "admin": "Administrators",
-        "ai_delegate": "AI delegāts"
+        "ai_delegate": "AI delegāts",
+        "auditor": "Auditors"
       },
       "validation": {
         "usernameRequired": "Lietotājvārds ir obligāts",

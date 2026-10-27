@@ -302,13 +302,20 @@ describe('ScopeGrantList', () => {
     fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
     expect(screen.getByText('BTC-USD-PERP')).toBeDefined()
   })
-  it('disables Create Grant when readOnly', () => {
+  it('allows read-only scope form previews', () => {
+    mockUseScopeGrants.mockReturnValue({ data: mockGrants, isLoading: false, error: null })
     renderWithQuery(
       <ScopeGrantList onCreateGrant={onCreateGrant} onHandover={onHandover} readOnly />
     )
     const btn = screen.getByText('Create Grant').closest('button')
 
-    expect(btn?.disabled).toBe(true)
+    expect(btn).toBeEnabled()
+    expect(btn).toHaveAttribute('title', 'Read-only access — changes are disabled.')
+    fireEvent.click(btn as HTMLButtonElement)
+    expect(onCreateGrant).toHaveBeenCalled()
+    fireEvent.change(screen.getByTestId('wallet-filter'), { target: { value: 'w-1' } })
+    fireEvent.click(screen.getByText('Handover'))
+    expect(onHandover).toHaveBeenCalledWith(mockGrants.payload[0])
   })
   it('handles undefined wallets data gracefully', () => {
     mockUseWallets.mockReturnValue({ data: undefined })

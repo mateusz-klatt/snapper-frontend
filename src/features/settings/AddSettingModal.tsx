@@ -9,6 +9,7 @@ interface AddSettingModalProps {
   onClose: () => void
   onSave: (key: string, value: string, category: string, description: string) => Promise<void>
   existingCategories: string[]
+  readOnly?: boolean
 }
 
 export const AddSettingModal = ({
@@ -16,9 +17,11 @@ export const AddSettingModal = ({
   onClose,
   onSave,
   existingCategories,
+  readOnly: inheritedReadOnly = false,
 }: AddSettingModalProps) => {
   const { t } = useTranslation('settings')
-  const readOnly = useIsReadOnly()
+  const isTimeTraveling = useIsReadOnly()
+  const readOnly = isTimeTraveling || inheritedReadOnly
   const [key, setKey] = useState('')
   const [value, setValue] = useState('')
   const [category, setCategory] = useState('')
@@ -42,6 +45,8 @@ export const AddSettingModal = ({
   }
 
   const handleSave = async () => {
+    if (readOnly) return
+
     if (!key.trim()) {
       setError(t('addModal.validation.keyRequired'))
 
@@ -76,7 +81,18 @@ export const AddSettingModal = ({
 
   return (
     <Modal open={open} onClose={handleClose} title={t('addModal.title')} size='md'>
-      <div className='space-y-4'>
+      <form
+        onSubmit={event => {
+          event.preventDefault()
+          void handleSave()
+        }}
+        className='space-y-4'
+      >
+        {readOnly && (
+          <p role='status' className='text-sm text-accent-600'>
+            {t('page.readOnly')}
+          </p>
+        )}
         {error && (
           <div className='p-3 bg-loss-50 border border-loss-500 rounded-lg'>
             <p className='text-loss-700 text-sm'>{error}</p>
@@ -88,6 +104,7 @@ export const AddSettingModal = ({
           </label>
           <input
             id='setting-key'
+            readOnly={readOnly}
             type='text'
             value={key}
             onChange={e => setKey(e.target.value)}
@@ -102,6 +119,7 @@ export const AddSettingModal = ({
           </label>
           <textarea
             id='setting-value'
+            readOnly={readOnly}
             value={value}
             onChange={e => setValue(e.target.value)}
             placeholder={t('addModal.valuePlaceholder')}
@@ -119,6 +137,7 @@ export const AddSettingModal = ({
           <div className='flex gap-2'>
             <ThemeSelect
               id='setting-category'
+              disabled={readOnly}
               value={category}
               onChange={val => {
                 setCategory(val)
@@ -132,6 +151,7 @@ export const AddSettingModal = ({
           <div className='mt-2'>
             <input
               type='text'
+              readOnly={readOnly}
               value={newCategory}
               onChange={e => {
                 setNewCategory(e.target.value)
@@ -151,6 +171,7 @@ export const AddSettingModal = ({
           </label>
           <textarea
             id='setting-description'
+            readOnly={readOnly}
             value={description}
             onChange={e => setDescription(e.target.value)}
             placeholder={t('addModal.descriptionPlaceholder')}
@@ -167,15 +188,14 @@ export const AddSettingModal = ({
             {t('addModal.cancel')}
           </button>
           <button
-            type='button'
-            onClick={handleSave}
+            type='submit'
             disabled={saving || readOnly}
             className='px-4 py-2 text-sm bg-brand-600 hover:bg-brand-700 disabled:bg-brand-800 disabled:cursor-not-allowed text-white rounded-lg transition-colors'
           >
             {saving ? t('addModal.creating') : t('addModal.create')}
           </button>
         </div>
-      </div>
+      </form>
     </Modal>
   )
 }

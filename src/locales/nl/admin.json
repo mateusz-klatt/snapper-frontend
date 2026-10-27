@@ -21,7 +21,8 @@
       "resource": "Bron",
       "viewer": "Kijker",
       "operator": "Operator",
-      "admin": "Admin"
+      "admin": "Admin",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Overzicht",
@@ -34,6 +35,10 @@
       "health": "Status",
       "admin": "Beheer",
       "settings": "Instellingen"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Alleen-lezen beheerderstoegang tot alle wallets, gebruikers en instellingen. Gegevens wijzigen en handelen zijn niet toegestaan."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Portefeuille",
     "paperAnnotation": " (simulatie)",
     "unknownError": "Onbekende fout",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Alleen-lezen toegang — wijzigingen zijn uitgeschakeld."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Kijker",
         "operator": "Operator",
         "admin": "Administrator",
-        "ai_delegate": "AI-gemachtigde"
+        "ai_delegate": "AI-gemachtigde",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "Gebruikersnaam is verplicht",

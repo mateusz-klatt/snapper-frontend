@@ -21,7 +21,8 @@
       "resource": "資源",
       "viewer": "檢視者",
       "operator": "操作員",
-      "admin": "管理員"
+      "admin": "管理員",
+      "auditor": "稽核員"
     },
     "resources": {
       "overview": "概覽",
@@ -34,6 +35,10 @@
       "health": "系統健康",
       "admin": "管理",
       "settings": "設定"
+    },
+    "auditor": {
+      "label": "稽核員",
+      "description": "以唯讀管理員權限查看所有錢包、使用者和設定。無法修改資料或進行交易。"
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "錢包",
     "paperAnnotation": " (模擬)",
     "unknownError": "未知錯誤",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "唯讀存取 — 已停用修改。"
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "檢視者",
         "operator": "操作員",
         "admin": "管理員",
-        "ai_delegate": "AI 代理人"
+        "ai_delegate": "AI 代理人",
+        "auditor": "稽核員"
       },
       "validation": {
         "usernameRequired": "必須填寫用戶名稱",

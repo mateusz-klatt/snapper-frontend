@@ -32,6 +32,7 @@ const messageResponse = {
 const authState = vi.hoisted(() => ({
   isAuthenticated: true,
   canManage: true,
+  canRead: false,
 }))
 
 const appState = vi.hoisted(() => ({
@@ -47,7 +48,8 @@ vi.mock('../../lib/api/desk-memberships', () => ({
 vi.mock('../../stores/auth', () => ({
   useAuth: () => ({
     isAuthenticated: authState.isAuthenticated,
-    hasPermission: () => authState.canManage,
+    hasPermission: (permission: string) =>
+      permission === 'read:desk_memberships' ? authState.canRead : authState.canManage,
   }),
 }))
 
@@ -72,6 +74,7 @@ describe('desk membership queries', () => {
     vi.clearAllMocks()
     authState.isAuthenticated = true
     authState.canManage = true
+    authState.canRead = false
     appState.asOf = null
   })
 
@@ -88,6 +91,15 @@ describe('desk membership queries', () => {
         exact: true,
       })
     ).toBeDefined()
+  })
+  it('loads desk members for an auditor without mutation permissions', async () => {
+    authState.canRead = true
+    authState.canManage = false
+    const { wrapper } = createWrapper()
+    const { result } = renderHook(() => useDeskMembers('desk-1'), { wrapper })
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    expect(getDeskMembers).toHaveBeenCalledWith('desk-1', null)
   })
 
   it.each([

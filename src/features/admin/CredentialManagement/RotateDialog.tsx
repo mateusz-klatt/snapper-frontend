@@ -55,6 +55,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
   }
 
   const handleRotate = () => {
+    if (readOnly) return
     if (!credential) return
     if (!validateForm()) return
 
@@ -89,7 +90,18 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
 
   return (
     <Modal open={open} onClose={handleClose} title={t('credentials.rotate.title')} size='md'>
-      <div className='space-y-6'>
+      <form
+        onSubmit={event => {
+          event.preventDefault()
+          handleRotate()
+        }}
+        className='space-y-6'
+      >
+        {readOnly && (
+          <p role='status' className='text-sm text-muted-600'>
+            {t('common.readOnly')}
+          </p>
+        )}
         {credential && (
           <div className='bg-dark-700 rounded-lg p-4 space-y-2'>
             <div className='flex justify-between text-sm'>
@@ -120,6 +132,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
             </label>
             {field === 'private_key_pem' ? (
               <textarea
+                readOnly={readOnly}
                 id={`rotate-field-${field}`}
                 value={fields[field] ?? ''}
                 onChange={e => {
@@ -135,6 +148,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
               />
             ) : (
               <input
+                readOnly={readOnly}
                 type={
                   field.includes('secret') || field.includes('key') || field.includes('token')
                     ? 'password'
@@ -160,6 +174,7 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
             {t('credentials.rotate.fields.newLabel')}
           </label>
           <input
+            readOnly={readOnly}
             type='text'
             id='rotate-label'
             value={label}
@@ -180,18 +195,17 @@ const RotateDialog: React.FC<Readonly<RotateDialogProps>> = ({
             {t('common.cancel')}
           </Button>
           <Button
-            type='button'
+            type='submit'
             variant='primary'
             size='sm'
             loading={rotateMutation.isPending}
             disabled={readOnly}
-            onClick={handleRotate}
           >
             <RotateCw className='w-3.5 h-3.5' />
             {t('credentials.rotate.actions.rotate')}
           </Button>
         </div>
-      </div>
+      </form>
     </Modal>
   )
 }

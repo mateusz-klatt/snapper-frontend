@@ -12,11 +12,13 @@ vi.mock('./ScopeGrantList', () => ({
   default: ({
     onCreateGrant,
     onHandover,
+    readOnly,
   }: {
     onCreateGrant: () => void
     onHandover: (g: unknown) => void
+    readOnly?: boolean
   }) => (
-    <div data-testid='scope-grant-list'>
+    <div data-testid='scope-grant-list' data-readonly={readOnly}>
       <button onClick={onCreateGrant}>Create</button>
       <button
         onClick={() =>
@@ -43,9 +45,17 @@ vi.mock('./ScopeGrantList', () => ({
   ),
 }))
 vi.mock('./ScopeGrantForm', () => ({
-  default: ({ open, onClose }: { open: boolean; onClose: () => void }) =>
+  default: ({
+    open,
+    onClose,
+    readOnly,
+  }: {
+    open: boolean
+    onClose: () => void
+    readOnly?: boolean
+  }) =>
     open ? (
-      <div data-testid='scope-grant-form'>
+      <div data-testid='scope-grant-form' data-readonly={readOnly}>
         <button onClick={onClose}>Close Form</button>
       </div>
     ) : null,
@@ -70,6 +80,26 @@ function renderWithQuery(ui: React.ReactElement) {
 describe('ScopeGrantManagement', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(useAuthStore).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'manage:scope_grants',
+    } as never)
+  })
+  it('allows scope readers to inspect a disabled creation form', () => {
+    vi.mocked(useAuthStore).mockReturnValue({
+      hasPermission: (permission: string) =>
+        ['read:scope_grants', 'read:all_scopes'].includes(permission),
+    } as never)
+    renderWithQuery(<ScopeGrantManagement />)
+    expect(screen.getByTestId('scope-grant-list')).toHaveAttribute('data-readonly', 'true')
+    act(() => screen.getByText('Create').click())
+    expect(screen.getByTestId('scope-grant-form')).toHaveAttribute('data-readonly', 'true')
+  })
+  it('keeps scoped scope-grant readers outside global administration', () => {
+    vi.mocked(useAuthStore).mockReturnValue({
+      hasPermission: (permission: string) => permission === 'read:scope_grants',
+    } as never)
+    renderWithQuery(<ScopeGrantManagement />)
+    expect(screen.getByText('Access Denied')).toBeInTheDocument()
   })
   it('renders list component when user has permission', () => {
     renderWithQuery(<ScopeGrantManagement />)

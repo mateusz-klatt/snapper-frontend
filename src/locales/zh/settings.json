@@ -6,7 +6,8 @@
     "searchPlaceholder": "搜索设置...",
     "noResults": "未找到符合条件的设置。",
     "allCategories": "所有分类",
-    "categoryFilterAriaLabel": "按分类筛选设置"
+    "categoryFilterAriaLabel": "按分类筛选设置",
+    "readOnly": "只读访问 — 已禁用修改。"
   },
   "errors": {
     "loadFailed": "加载设置失败",

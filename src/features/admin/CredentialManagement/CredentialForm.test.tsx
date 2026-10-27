@@ -72,6 +72,15 @@ function renderWithQuery(ui: React.ReactElement) {
 describe('CredentialForm', () => {
   const onClose = vi.fn()
 
+  it('shows a read-only preview and refuses a submitted form', () => {
+    const { container } = renderWithQuery(<CredentialForm open onClose={onClose} readOnly />)
+
+    expect(screen.getByRole('status')).toHaveTextContent('Read-only access')
+    expect(screen.getByLabelText('Exchange')).toBeDisabled()
+    fireEvent.submit(container.querySelector('form') as HTMLFormElement)
+    expect(mockCreateMutation.mutate).not.toHaveBeenCalled()
+  })
+
   beforeEach(() => {
     vi.clearAllMocks()
     mockCreateMutation.mutate = vi.fn()

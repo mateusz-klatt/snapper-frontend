@@ -21,7 +21,8 @@
       "resource": "Resource",
       "viewer": "Viewer",
       "operator": "Operator",
-      "admin": "Admin"
+      "admin": "Admin",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Pangkalahatang-tingin",
@@ -34,6 +35,10 @@
       "health": "Kalusugan",
       "admin": "Administrasyon",
       "settings": "Mga Setting"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Read-only na access ng administrator sa lahat ng wallet, user at setting. Hindi maaaring magbago ng data o mag-trade."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Wallet",
     "paperAnnotation": " (demo)",
     "unknownError": "Hindi kilalang error",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Read-only na access — hindi pinapayagan ang mga pagbabago."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Viewer",
         "operator": "Operator",
         "admin": "Admin",
-        "ai_delegate": "AI Delegate"
+        "ai_delegate": "AI Delegate",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "Kailangan ang username",

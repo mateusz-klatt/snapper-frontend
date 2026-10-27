@@ -21,7 +21,8 @@
       "resource": "Tilfang",
       "viewer": "Áhorfandi",
       "operator": "Rekstraraðili",
-      "admin": "Kerfisstjóri"
+      "admin": "Kerfisstjóri",
+      "auditor": "Úttektaraðili"
     },
     "resources": {
       "overview": "Yfirlit",
@@ -34,6 +35,10 @@
       "health": "Heilsa",
       "admin": "Stjórnun",
       "settings": "Stillingar"
+    },
+    "auditor": {
+      "label": "Úttektaraðili",
+      "description": "Lesaðgangur stjórnanda að öllum veskjum, notendum og stillingum. Getur hvorki breytt gögnum né átt viðskipti."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Veski",
     "paperAnnotation": " (sýndarviðskipti)",
     "unknownError": "Óþekkt villa",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Aðeins lesaðgangur — breytingar eru óvirkar."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Áhorfandi",
         "operator": "Rekstraraðili",
         "admin": "Kerfisstjóri",
-        "ai_delegate": "AI-fulltrúi"
+        "ai_delegate": "AI-fulltrúi",
+        "auditor": "Úttektaraðili"
       },
       "validation": {
         "usernameRequired": "Notandanafn er áskilið",

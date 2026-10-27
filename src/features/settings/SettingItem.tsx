@@ -241,7 +241,6 @@ const DisplayView: React.FC<DisplayViewProps> = ({
             <button
               type='button'
               onClick={() => setIsEditing(true)}
-              disabled={readOnly}
               className='px-3 py-1 text-xs border border-dark-600 bg-alpine-50 hover:bg-muted-200 text-alpine-900 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
             >
               {t('item.edit')}
@@ -404,6 +403,7 @@ export const SettingItem = ({
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
   const isBoolean = isBooleanString(setting.value) && !isSensitive(setting.key)
   const isJson = isJsonString(setting.value) && !isBooleanString(setting.value)
+  const maskReadOnlyValue = readOnly && isSensitive(setting.key)
   const [jsonValue, setJsonValue] = useState<JsonValue | null>(null)
 
   useEffect(() => {
@@ -465,10 +465,14 @@ export const SettingItem = ({
   } else if (isEditing) {
     content = (
       <EditingView
-        isJson={isJson}
+        isJson={isJson && !maskReadOnlyValue}
         jsonValue={jsonValue}
         setJsonValue={setJsonValue}
-        localValue={localValue}
+        localValue={
+          maskReadOnlyValue
+            ? getMaskedValue(setting.key, setting.value, t('item.emptyValue'))
+            : localValue
+        }
         setLocalValue={setLocalValue}
         onJsonSave={handleJsonSave}
         onSave={handleSave}

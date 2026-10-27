@@ -6,7 +6,8 @@
     "searchPlaceholder": "Kërko cilësime...",
     "noResults": "Nuk u gjet asnjë cilësim që përputhet me kriteret tuaja.",
     "allCategories": "Të gjitha kategoritë",
-    "categoryFilterAriaLabel": "Filtro cilësimet sipas kategorisë"
+    "categoryFilterAriaLabel": "Filtro cilësimet sipas kategorisë",
+    "readOnly": "Qasje vetëm për lexim — ndryshimet janë çaktivizuar."
   },
   "errors": {
     "loadFailed": "Ngarkimi i cilësimeve dështoi",

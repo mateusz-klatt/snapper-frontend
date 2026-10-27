@@ -6,7 +6,8 @@
     "searchPlaceholder": "Ieškoti nustatymų...",
     "noResults": "Nerasta nustatymų, atitinkančių kriterijus.",
     "allCategories": "Visos kategorijos",
-    "categoryFilterAriaLabel": "Filtruoti nustatymus pagal kategoriją"
+    "categoryFilterAriaLabel": "Filtruoti nustatymus pagal kategoriją",
+    "readOnly": "Prieiga tik skaityti — pakeitimai išjungti."
   },
   "errors": {
     "loadFailed": "Nepavyko įkelti nustatymų",

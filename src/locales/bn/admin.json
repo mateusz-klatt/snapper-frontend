@@ -21,7 +21,8 @@
       "resource": "রিসোর্স",
       "viewer": "দর্শক",
       "operator": "অপারেটর",
-      "admin": "অ্যাডমিন"
+      "admin": "অ্যাডমিন",
+      "auditor": "অডিটর"
     },
     "resources": {
       "overview": "ওভারভিউ",
@@ -34,6 +35,10 @@
       "health": "সিস্টেম স্বাস্থ্য",
       "admin": "প্রশাসন",
       "settings": "সেটিংস"
+    },
+    "auditor": {
+      "label": "অডিটর",
+      "description": "সব ওয়ালেট, ব্যবহারকারী ও সেটিংসে প্রশাসকের শুধু পড়ার অনুমতি। ডেটা পরিবর্তন বা ট্রেড করা যাবে না।"
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "ওয়ালেট",
     "paperAnnotation": " (পেপার)",
     "unknownError": "অজানা ত্রুটি",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "শুধু পড়ার অনুমতি — পরিবর্তন নিষ্ক্রিয়।"
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "দর্শক",
         "operator": "অপারেটর",
         "admin": "অ্যাডমিনিস্ট্রেটর",
-        "ai_delegate": "AI প্রতিনিধি"
+        "ai_delegate": "AI প্রতিনিধি",
+        "auditor": "অডিটর"
       },
       "validation": {
         "usernameRequired": "ব্যবহারকারীর নাম আবশ্যক",

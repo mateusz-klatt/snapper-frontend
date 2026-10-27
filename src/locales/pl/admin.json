@@ -21,7 +21,8 @@
       "resource": "Zasób",
       "viewer": "Obserwator",
       "operator": "Operator",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Audytor"
     },
     "resources": {
       "overview": "Przegląd",
@@ -34,6 +35,10 @@
       "health": "Kondycja",
       "admin": "Administracja",
       "settings": "Ustawienia"
+    },
+    "auditor": {
+      "label": "Audytor",
+      "description": "Dostęp administratora tylko do odczytu do wszystkich portfeli, użytkowników i ustawień. Bez możliwości zmiany danych i handlu."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Portfel",
     "paperAnnotation": " (papierowy)",
     "unknownError": "Nieznany błąd",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Dostęp tylko do odczytu — wprowadzanie zmian jest wyłączone."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Obserwator",
         "operator": "Operator",
         "admin": "Administrator",
-        "ai_delegate": "Delegat AI"
+        "ai_delegate": "Delegat AI",
+        "auditor": "Audytor"
       },
       "validation": {
         "usernameRequired": "Nazwa użytkownika jest wymagana",

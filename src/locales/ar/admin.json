@@ -21,7 +21,8 @@
       "resource": "المورد",
       "viewer": "مشاهد",
       "operator": "مشغّل",
-      "admin": "مسؤول"
+      "admin": "مسؤول",
+      "auditor": "مدقق"
     },
     "resources": {
       "overview": "نظرة عامة",
@@ -34,6 +35,10 @@
       "health": "الصحة",
       "admin": "الإدارة",
       "settings": "الإعدادات"
+    },
+    "auditor": {
+      "label": "مدقق",
+      "description": "وصول مسؤول للقراءة فقط إلى جميع المحافظ والمستخدمين والإعدادات. لا يمكن تعديل البيانات أو التداول."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "محفظة",
     "paperAnnotation": " (ورقية)",
     "unknownError": "خطأ غير معروف",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "وصول للقراءة فقط — التغييرات معطّلة."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "مشاهد",
         "operator": "مشغّل",
         "admin": "مسؤول",
-        "ai_delegate": "مفوّض الذكاء الاصطناعي"
+        "ai_delegate": "مفوّض الذكاء الاصطناعي",
+        "auditor": "مدقق"
       },
       "validation": {
         "usernameRequired": "اسم المستخدم مطلوب",

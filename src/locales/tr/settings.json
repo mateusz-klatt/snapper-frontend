@@ -6,7 +6,8 @@
     "searchPlaceholder": "Ayarlarda ara...",
     "noResults": "Ölçütlerinize uyan ayar bulunamadı.",
     "allCategories": "Tüm Kategoriler",
-    "categoryFilterAriaLabel": "Ayarları kategoriye göre filtrele"
+    "categoryFilterAriaLabel": "Ayarları kategoriye göre filtrele",
+    "readOnly": "Salt okunur erişim — değişiklikler devre dışı."
   },
   "errors": {
     "loadFailed": "Ayarlar yüklenemedi",

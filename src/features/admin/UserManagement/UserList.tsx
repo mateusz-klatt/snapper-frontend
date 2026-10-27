@@ -40,6 +40,8 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
     switch (role) {
       case 'admin':
         return 'bg-loss-100 text-loss-800 border-loss-200'
+      case 'auditor':
+        return 'bg-accent-100 text-accent-800 border-accent-200'
       case 'operator':
         return 'bg-brand-100 text-brand-800 border-brand-200'
       case 'viewer':
@@ -55,6 +57,8 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
     switch (role) {
       case 'admin':
         return <Shield className='w-3 h-3' />
+      case 'auditor':
+        return <Eye className='w-3 h-3' />
       case 'operator':
         return <Users className='w-3 h-3' />
       case 'viewer':
@@ -123,7 +127,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
           </Button>
           <Button
             onClick={onCreateUser}
-            disabled={readOnly}
+            title={readOnly ? t('common.readOnly') : undefined}
             className='flex items-center space-x-2'
           >
             <UserPlus className='w-4 h-4' />
@@ -155,7 +159,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                   variant='secondary'
                   size='sm'
                   onClick={() => onEditUser(user)}
-                  disabled={readOnly}
+                  title={readOnly ? t('common.readOnly') : undefined}
                   className='text-brand-600 hover:text-brand-900'
                 >
                   <Edit className='w-4 h-4' />
@@ -256,7 +260,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
                       variant='secondary'
                       size='sm'
                       onClick={() => onEditUser(user)}
-                      disabled={readOnly}
+                      title={readOnly ? t('common.readOnly') : undefined}
                       className='text-brand-600 hover:text-brand-900'
                     >
                       <Edit className='w-4 h-4' />
@@ -300,6 +304,7 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
         confirmText={t('users.list.deactivate.confirm')}
         variant='danger'
         onConfirm={() => {
+          if (readOnly) return
           deleteUserMutation.mutate((userToDelete as UserProfile).username)
           setUserToDelete(null)
         }}

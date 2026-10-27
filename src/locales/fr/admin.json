@@ -21,7 +21,8 @@
       "resource": "Ressource",
       "viewer": "Observateur",
       "operator": "Opérateur",
-      "admin": "Administrateur"
+      "admin": "Administrateur",
+      "auditor": "Auditeur"
     },
     "resources": {
       "overview": "Vue d'ensemble",
@@ -34,6 +35,10 @@
       "health": "État du système",
       "admin": "Administration",
       "settings": "Paramètres"
+    },
+    "auditor": {
+      "label": "Auditeur",
+      "description": "Accès administrateur en lecture seule à tous les portefeuilles, utilisateurs et paramètres. Aucune modification de données ni opération de trading."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Wallet",
     "paperAnnotation": " (démo)",
     "unknownError": "Erreur inconnue",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Accès en lecture seule — les modifications sont désactivées."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Observateur",
         "operator": "Opérateur",
         "admin": "Administrateur",
-        "ai_delegate": "Délégué IA"
+        "ai_delegate": "Délégué IA",
+        "auditor": "Auditeur"
       },
       "validation": {
         "usernameRequired": "Le nom d'utilisateur est requis",

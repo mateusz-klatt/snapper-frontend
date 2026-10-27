@@ -95,7 +95,11 @@ export const useAuthStore = create<AuthState>()(
 
             apiClient.setCsrfToken(data.csrf_token ?? null)
 
-            if (data.user.default_language && data.user.default_language !== i18n.language) {
+            if (
+              data.user.effective_permissions?.includes(Permission.MANAGE_SELF_ACCOUNT) &&
+              data.user.default_language &&
+              data.user.default_language !== i18n.language
+            ) {
               void i18n.changeLanguage(data.user.default_language)
             }
 

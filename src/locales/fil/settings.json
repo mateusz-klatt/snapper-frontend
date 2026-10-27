@@ -6,7 +6,8 @@
     "searchPlaceholder": "Maghanap ng settings...",
     "noResults": "Walang settings na tugma sa criteria mo.",
     "allCategories": "Lahat ng category",
-    "categoryFilterAriaLabel": "I-filter ang settings ayon sa category"
+    "categoryFilterAriaLabel": "I-filter ang settings ayon sa category",
+    "readOnly": "Read-only na access — hindi pinapayagan ang mga pagbabago."
   },
   "errors": {
     "loadFailed": "Hindi na-load ang settings",

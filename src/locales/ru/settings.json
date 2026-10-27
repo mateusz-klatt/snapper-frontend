@@ -6,7 +6,8 @@
     "searchPlaceholder": "Поиск настроек...",
     "noResults": "Настройки, соответствующие критериям, не найдены.",
     "allCategories": "Все категории",
-    "categoryFilterAriaLabel": "Фильтр настроек по категории"
+    "categoryFilterAriaLabel": "Фильтр настроек по категории",
+    "readOnly": "Доступ только для чтения — изменения отключены."
   },
   "errors": {
     "loadFailed": "Не удалось загрузить настройки",

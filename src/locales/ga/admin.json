@@ -21,7 +21,8 @@
       "resource": "Acmhainn",
       "viewer": "Amharcóir",
       "operator": "Oibreoir",
-      "admin": "Riarthóir"
+      "admin": "Riarthóir",
+      "auditor": "Iniúchóir"
     },
     "resources": {
       "overview": "Forbhreathnú",
@@ -34,6 +35,10 @@
       "health": "Sláinte",
       "admin": "Riarachán",
       "settings": "Socruithe"
+    },
+    "auditor": {
+      "label": "Iniúchóir",
+      "description": "Rochtain riarthóra inléite amháin ar gach sparán, úsáideoir agus socrú. Ní féidir sonraí a athrú ná trádáil a dhéanamh."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Sparán",
     "paperAnnotation": " (páipéir)",
     "unknownError": "Earráid anaithnid",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Rochtain inléite amháin — tá athruithe díchumasaithe."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Amharcóir",
         "operator": "Oibreoir",
         "admin": "Riarthóir",
-        "ai_delegate": "Toscaire AI"
+        "ai_delegate": "Toscaire AI",
+        "auditor": "Iniúchóir"
       },
       "validation": {
         "usernameRequired": "Tá ainm úsáideora riachtanach",

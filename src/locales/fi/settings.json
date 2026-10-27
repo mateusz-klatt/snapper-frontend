@@ -6,7 +6,8 @@
     "searchPlaceholder": "Hae asetuksia...",
     "noResults": "Hakuehtoihin sopivia asetuksia ei löytynyt.",
     "allCategories": "Kaikki kategoriat",
-    "categoryFilterAriaLabel": "Suodata asetuksia kategorian mukaan"
+    "categoryFilterAriaLabel": "Suodata asetuksia kategorian mukaan",
+    "readOnly": "Vain luku -käyttöoikeus — muutokset on estetty."
   },
   "errors": {
     "loadFailed": "Asetusten lataus epäonnistui",

@@ -24,7 +24,7 @@ export function createAuthOk(overrides: { exp?: string } = {}) {
 export function createAuthComplete(
   overrides: {
     available_topics?: string[]
-    user_role?: 'viewer' | 'operator' | 'admin'
+    user_role?: UserRole
     ws_token_exp?: string
     session_expires_at?: string | null
   } = {}
@@ -359,3 +359,5 @@ export function createExecution(
     executed_at: overrides.executed_at ?? PROVENANCE.timestamp,
   }
 }
+
+import type { UserRole } from '../types/api'

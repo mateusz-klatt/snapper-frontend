@@ -21,7 +21,8 @@
       "resource": "Resource",
       "viewer": "Viewer",
       "operator": "Operator",
-      "admin": "Admin"
+      "admin": "Admin",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Overview",
@@ -34,6 +35,10 @@
       "health": "Health",
       "admin": "Administration",
       "settings": "Settings"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Read-only administrator access to all wallets, users and settings. Cannot change data or trade."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Wallet",
     "paperAnnotation": " (paper)",
     "unknownError": "Unknown error",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Read-only access — changes are disabled."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Viewer",
         "operator": "Operator",
         "admin": "Administrator",
-        "ai_delegate": "AI Delegate"
+        "ai_delegate": "AI Delegate",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "Username is required",

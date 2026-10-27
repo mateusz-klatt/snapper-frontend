@@ -6,7 +6,8 @@
     "searchPlaceholder": "Buscar configurações...",
     "noResults": "Nenhuma configuração encontrada com estes critérios.",
     "allCategories": "Todas as categorias",
-    "categoryFilterAriaLabel": "Filtrar configurações por categoria"
+    "categoryFilterAriaLabel": "Filtrar configurações por categoria",
+    "readOnly": "Acesso apenas de leitura — as alterações estão desativadas."
   },
   "errors": {
     "loadFailed": "Falha ao carregar configurações",

@@ -61,6 +61,25 @@ describe('Admin', () => {
     expect(screen.queryByTestId('scope-grant-management')).not.toBeInTheDocument()
     expect(screen.queryByTestId('credential-management')).not.toBeInTheDocument()
   })
+  it('exposes every administrative section with only read permissions', () => {
+    authControl.permissions = new Set([
+      'read:desk_memberships',
+      'read:users',
+      'read:scope_grants',
+      'read:wallet_credentials',
+      'read:all_scopes',
+    ])
+    render(<Admin />)
+    expect(screen.getByTestId('desk-membership-management')).toBeInTheDocument()
+    expect(screen.getByTestId('user-management')).toBeInTheDocument()
+    expect(screen.getByTestId('scope-grant-management')).toBeInTheDocument()
+    expect(screen.getByTestId('credential-management')).toBeInTheDocument()
+  })
+  it('does not expose scope administration for a scoped read grant', () => {
+    authControl.permissions = new Set(['read:scope_grants'])
+    render(<Admin />)
+    expect(screen.queryByTestId('scope-grant-management')).not.toBeInTheDocument()
+  })
   it.each([
     ['desk memberships and scope grants', ['manage:desk_memberships', 'manage:scope_grants']],
     ['desk memberships and credentials', ['manage:desk_memberships', 'manage:wallet_credentials']],
@@ -95,6 +114,7 @@ describe('Admin', () => {
     await user.click(toggleButton)
     expect(screen.getAllByText('Viewer').length).toBeGreaterThanOrEqual(2)
     expect(screen.getAllByText('Operator').length).toBeGreaterThanOrEqual(2)
+    expect(screen.getAllByText('Auditor').length).toBeGreaterThanOrEqual(2)
     expect(screen.getAllByText('Admin').length).toBeGreaterThanOrEqual(1)
     expect(screen.getByText('Overview')).toBeInTheDocument()
     expect(screen.getByText('Market Data')).toBeInTheDocument()
@@ -120,6 +140,7 @@ describe('Admin', () => {
     expect(settingsCells[1]).toHaveTextContent('—')
     expect(settingsCells[2]).toHaveTextContent('—')
     expect(settingsCells[3]).toHaveTextContent('✓')
+    expect(settingsCells[4]).toHaveTextContent('✓')
     const administrationCell = screen
       .getAllByText('Administration')
       .find(element => element.tagName === 'TD')

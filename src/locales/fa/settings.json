@@ -6,7 +6,8 @@
     "searchPlaceholder": "جستجو در تنظیمات...",
     "noResults": "هیچ تنظیمی مطابق معیارهای شما یافت نشد.",
     "allCategories": "همه دسته‌ها",
-    "categoryFilterAriaLabel": "فیلتر تنظیمات بر اساس دسته"
+    "categoryFilterAriaLabel": "فیلتر تنظیمات بر اساس دسته",
+    "readOnly": "دسترسی فقط برای خواندن — تغییرات غیرفعال است."
   },
   "errors": {
     "loadFailed": "بارگذاری تنظیمات ناموفق بود",

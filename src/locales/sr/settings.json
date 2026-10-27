@@ -6,7 +6,8 @@
     "searchPlaceholder": "Pretraži podešavanja...",
     "noResults": "Nema podešavanja koja odgovaraju zadatim kriterijumima.",
     "allCategories": "Sve kategorije",
-    "categoryFilterAriaLabel": "Filtriraj podešavanja po kategoriji"
+    "categoryFilterAriaLabel": "Filtriraj podešavanja po kategoriji",
+    "readOnly": "Pristup samo za čitanje — izmene su onemogućene."
   },
   "errors": {
     "loadFailed": "Učitavanje podešavanja nije uspelo",

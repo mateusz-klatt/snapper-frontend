@@ -248,7 +248,12 @@ describe('HandoverDialog', () => {
     expect(screen.getByText('op-unknown')).toBeDefined()
   })
   it('disables Handover button when readOnly', () => {
-    renderWithQuery(<HandoverDialog grant={testGrant} open onClose={onClose} readOnly />)
+    const { container } = renderWithQuery(
+      <HandoverDialog grant={testGrant} open onClose={onClose} readOnly />
+    )
+
+    fireEvent.submit(container.querySelector('form') as HTMLFormElement)
+    expect(mockHandoverMutation.mutate).not.toHaveBeenCalled()
     fireEvent.change(screen.getByTestId('handover-operator'), { target: { value: 'op-2' } })
     const btn = screen.getByText('Handover').closest('button')
 

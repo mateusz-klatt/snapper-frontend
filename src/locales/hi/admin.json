@@ -21,7 +21,8 @@
       "resource": "संसाधन",
       "viewer": "व्यूअर",
       "operator": "ऑपरेटर",
-      "admin": "एडमिन"
+      "admin": "एडमिन",
+      "auditor": "ऑडिटर"
     },
     "resources": {
       "overview": "ओवरव्यू",
@@ -34,6 +35,10 @@
       "health": "हेल्थ",
       "admin": "प्रशासन",
       "settings": "सेटिंग्स"
+    },
+    "auditor": {
+      "label": "ऑडिटर",
+      "description": "सभी वॉलेट, उपयोगकर्ताओं और सेटिंग्स तक व्यवस्थापक की केवल पढ़ने की पहुँच। डेटा बदलना या ट्रेड करना संभव नहीं है।"
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "वॉलेट",
     "paperAnnotation": " (पेपर)",
     "unknownError": "अज्ञात त्रुटि",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "केवल पढ़ने की पहुँच — बदलाव बंद हैं।"
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "व्यूअर",
         "operator": "ऑपरेटर",
         "admin": "एडमिन",
-        "ai_delegate": "AI प्रतिनिधि"
+        "ai_delegate": "AI प्रतिनिधि",
+        "auditor": "ऑडिटर"
       },
       "validation": {
         "usernameRequired": "उपयोगकर्ता नाम आवश्यक है",

@@ -21,7 +21,8 @@
       "resource": "Burim",
       "viewer": "Shikues",
       "operator": "Operator",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Auditues"
     },
     "resources": {
       "overview": "Përmbledhje",
@@ -34,6 +35,10 @@
       "health": "Shëndeti",
       "admin": "Administrim",
       "settings": "Cilësime"
+    },
+    "auditor": {
+      "label": "Auditues",
+      "description": "Qasje administratori vetëm për lexim në të gjitha kuletat, përdoruesit dhe cilësimet. Nuk mund të ndryshojë të dhëna ose të tregtojë."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Portofol",
     "paperAnnotation": " (letër)",
     "unknownError": "Gabim i panjohur",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Qasje vetëm për lexim — ndryshimet janë çaktivizuar."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Shikues",
         "operator": "Operator",
         "admin": "Administrator",
-        "ai_delegate": "Delegat AI"
+        "ai_delegate": "Delegat AI",
+        "auditor": "Auditues"
       },
       "validation": {
         "usernameRequired": "Emri i përdoruesit është i detyrueshëm",

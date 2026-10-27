@@ -21,7 +21,8 @@
       "resource": "Erőforrás",
       "viewer": "Megfigyelő",
       "operator": "Operátor",
-      "admin": "Adminisztrátor"
+      "admin": "Adminisztrátor",
+      "auditor": "Auditor"
     },
     "resources": {
       "overview": "Áttekintés",
@@ -34,6 +35,10 @@
       "health": "Állapot",
       "admin": "Adminisztráció",
       "settings": "Beállítások"
+    },
+    "auditor": {
+      "label": "Auditor",
+      "description": "Csak olvasási rendszergazdai hozzáférés minden tárcához, felhasználóhoz és beállításhoz. Nem módosíthat adatokat és nem kereskedhet."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Pénztárca",
     "paperAnnotation": " (demó)",
     "unknownError": "Ismeretlen hiba",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Csak olvasási hozzáférés — a módosítások le vannak tiltva."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Megfigyelő",
         "operator": "Operátor",
         "admin": "Adminisztrátor",
-        "ai_delegate": "AI-megbízott"
+        "ai_delegate": "AI-megbízott",
+        "auditor": "Auditor"
       },
       "validation": {
         "usernameRequired": "A felhasználónév megadása kötelező",

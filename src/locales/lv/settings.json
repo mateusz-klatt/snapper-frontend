@@ -6,7 +6,8 @@
     "searchPlaceholder": "Meklēt iestatījumus...",
     "noResults": "Nav atrasti iestatījumi, kas atbilst kritērijiem.",
     "allCategories": "Visas kategorijas",
-    "categoryFilterAriaLabel": "Filtrēt iestatījumus pēc kategorijas"
+    "categoryFilterAriaLabel": "Filtrēt iestatījumus pēc kategorijas",
+    "readOnly": "Piekļuve tikai lasīšanai — izmaiņas ir atspējotas."
   },
   "errors": {
     "loadFailed": "Neizdevās ielādēt iestatījumus",

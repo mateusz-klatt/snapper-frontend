@@ -21,7 +21,8 @@
       "resource": "منبع",
       "viewer": "بیننده",
       "operator": "اپراتور",
-      "admin": "مدیر"
+      "admin": "مدیر",
+      "auditor": "حسابرس"
     },
     "resources": {
       "overview": "نمای کلی",
@@ -34,6 +35,10 @@
       "health": "سلامت",
       "admin": "مدیریت",
       "settings": "تنظیمات"
+    },
+    "auditor": {
+      "label": "حسابرس",
+      "description": "دسترسی مدیر فقط برای خواندن به همه کیف پول‌ها، کاربران و تنظیمات. امکان تغییر داده‌ها یا معامله وجود ندارد."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "کیف پول",
     "paperAnnotation": " (آزمایشی)",
     "unknownError": "خطای نامشخص",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "دسترسی فقط برای خواندن — تغییرات غیرفعال است."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "بیننده",
         "operator": "اپراتور",
         "admin": "مدیر",
-        "ai_delegate": "نماینده هوش مصنوعی"
+        "ai_delegate": "نماینده هوش مصنوعی",
+        "auditor": "حسابرس"
       },
       "validation": {
         "usernameRequired": "نام کاربری الزامی است",

@@ -6,7 +6,8 @@
     "searchPlaceholder": "Tafuta mipangilio...",
     "noResults": "Hakuna mipangilio iliyopatikana inayolingana na vigezo vyako.",
     "allCategories": "Kategoria Zote",
-    "categoryFilterAriaLabel": "Chuja mipangilio kwa kategoria"
+    "categoryFilterAriaLabel": "Chuja mipangilio kwa kategoria",
+    "readOnly": "Ufikiaji wa kusoma tu — mabadiliko yamezimwa."
   },
   "errors": {
     "loadFailed": "Imeshindwa kupakia mipangilio",

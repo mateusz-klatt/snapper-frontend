@@ -6,7 +6,8 @@
     "searchPlaceholder": "Instellingen zoeken...",
     "noResults": "Geen instellingen gevonden die aan uw criteria voldoen.",
     "allCategories": "Alle categorieën",
-    "categoryFilterAriaLabel": "Filter instellingen op categorie"
+    "categoryFilterAriaLabel": "Filter instellingen op categorie",
+    "readOnly": "Alleen-lezen toegang — wijzigingen zijn uitgeschakeld."
   },
   "errors": {
     "loadFailed": "Laden instellingen mislukt",

@@ -21,7 +21,8 @@
       "resource": "Resurssi",
       "viewer": "Tarkkailija",
       "operator": "Operaattori",
-      "admin": "Pääkäyttäjä"
+      "admin": "Pääkäyttäjä",
+      "auditor": "Tarkastaja"
     },
     "resources": {
       "overview": "Yleisnäkymä",
@@ -34,6 +35,10 @@
       "health": "Tila",
       "admin": "Hallinta",
       "settings": "Asetukset"
+    },
+    "auditor": {
+      "label": "Tarkastaja",
+      "description": "Vain luku -ylläpitäjäkäyttöoikeus kaikkiin lompakoihin, käyttäjiin ja asetuksiin. Ei oikeutta muuttaa tietoja tai käydä kauppaa."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Lompakko",
     "paperAnnotation": " (demo)",
     "unknownError": "Tuntematon virhe",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Vain luku -käyttöoikeus — muutokset on estetty."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Tarkkailija",
         "operator": "Operaattori",
         "admin": "Pääkäyttäjä",
-        "ai_delegate": "AI-valtuutettu"
+        "ai_delegate": "AI-valtuutettu",
+        "auditor": "Tarkastaja"
       },
       "validation": {
         "usernameRequired": "Käyttäjänimi vaaditaan",

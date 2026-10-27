@@ -3,6 +3,8 @@ import { renderHook } from '@testing-library/react'
 import { useAuth, useAuthStore } from './auth'
 import { apiClient } from '../lib/apiClient'
 import { queryClient } from '../lib/queryClient'
+import { makeUserProfile } from '../test/factories'
+import { Permission, ROLE_PERMISSIONS } from '../types/permissions.generated'
 
 vi.mock('../lib/apiClient', () => ({
   apiClient: {
@@ -27,6 +29,46 @@ vi.mock('../lib/queryClient', () => ({
   },
 }))
 describe('auth store', () => {
+  it('opens every application resource for auditors without granting writes', () => {
+    useAuthStore.setState({
+      user: makeUserProfile({
+        username: 'auditor',
+        role: 'auditor',
+        effective_permissions: [...ROLE_PERMISSIONS.auditor],
+      }),
+      isAuthenticated: true,
+    })
+    const { canAccess, hasPermission } = useAuthStore.getState()
+
+    for (const resource of [
+      'overview',
+      'market',
+      'accounts',
+      'orders',
+      'positions',
+      'signals',
+      'strategies',
+      'processes',
+      'health',
+      'admin',
+      'settings',
+      'backtests',
+      'ai-integration',
+      'ai-reviews',
+      'notifications',
+    ]) {
+      expect(canAccess(resource)).toBe(true)
+    }
+
+    for (const permission of [
+      'manage:users',
+      'configure:system',
+      'create:orders',
+      'manage:self_account',
+    ] as const) {
+      expect(hasPermission(permission)).toBe(false)
+    }
+  })
   beforeEach(() => {
     vi.clearAllMocks()
     useAuthStore.setState({
@@ -395,7 +437,10 @@ describe('auth store', () => {
     })
     it('applies user.default_language to i18n on login when it differs from current', async () => {
       const i18nModule = await import('../i18n/config')
-      const changeSpy = vi.spyOn(i18nModule.default, 'changeLanguage')
+      const changeSpy = vi
+        .spyOn(i18nModule.default, 'changeLanguage')
+        .mockResolvedValue(i18nModule.default.t)
+      const defaultLanguage = i18nModule.default.language === 'pl' ? 'de' : 'pl'
       const mockUser = {
         type: 'user_profile' as const,
         sequence_id: 0,
@@ -406,7 +451,8 @@ describe('auth store', () => {
         role: 'admin' as const,
         is_active: true,
         created_at: '2026-01-01T00:00:00Z',
-        default_language: 'pl',
+        default_language: defaultLanguage,
+        effective_permissions: [Permission.MANAGE_SELF_ACCOUNT],
       }
 
       vi.mocked(apiClient.post).mockResolvedValueOnce({
@@ -416,9 +462,54 @@ describe('auth store', () => {
       const state = useAuthStore.getState()
 
       await state.login({ username: 'testuser', password: 'password', remember_me: false })
-      expect(changeSpy).toHaveBeenCalledWith('pl')
+      expect(changeSpy).toHaveBeenCalledWith(defaultLanguage)
       changeSpy.mockRestore()
     })
+    it.each(['auditor', 'unchanged', 'unset'] as const)(
+      'preserves the local language on login for %s account preferences',
+      async scenario => {
+        const { default: i18n } = await import('../i18n/config')
+        const changeSpy = vi.spyOn(i18n, 'changeLanguage').mockResolvedValue(i18n.t)
+        const localLanguage = i18n.language
+        const mockUser = makeUserProfile({
+          username: scenario,
+          role: scenario === 'auditor' ? 'auditor' : 'admin',
+          effective_permissions:
+            scenario === 'auditor'
+              ? [...ROLE_PERMISSIONS.auditor]
+              : [Permission.MANAGE_SELF_ACCOUNT],
+          default_language:
+            scenario === 'unset'
+              ? null
+              : scenario === 'unchanged'
+                ? localLanguage
+                : localLanguage === 'pl'
+                  ? 'de'
+                  : 'pl',
+        })
+
+        useAuthStore.setState({
+          user: makeUserProfile({
+            username: 'previous-admin',
+            effective_permissions: [Permission.MANAGE_SELF_ACCOUNT],
+          }),
+        })
+        vi.mocked(apiClient.post).mockResolvedValueOnce(
+          refreshResponse({ payload: { user: mockUser } })
+        )
+
+        await useAuthStore.getState().login({
+          username: scenario,
+          password: 'password',
+          remember_me: false,
+        })
+
+        expect(changeSpy).not.toHaveBeenCalled()
+        expect(i18n.language).toBe(localLanguage)
+        expect(useAuthStore.getState().user).toEqual(mockUser)
+        changeSpy.mockRestore()
+      }
+    )
     it('handles login failure without detail', async () => {
       vi.mocked(apiClient.post).mockResolvedValueOnce({
         ok: false,

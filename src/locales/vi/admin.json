@@ -21,7 +21,8 @@
       "resource": "Tài nguyên",
       "viewer": "Người xem",
       "operator": "Người vận hành",
-      "admin": "Quản trị viên"
+      "admin": "Quản trị viên",
+      "auditor": "Kiểm toán viên"
     },
     "resources": {
       "overview": "Tổng quan",
@@ -34,6 +35,10 @@
       "health": "Sức khỏe hệ thống",
       "admin": "Quản trị",
       "settings": "Cài đặt"
+    },
+    "auditor": {
+      "label": "Kiểm toán viên",
+      "description": "Quyền quản trị chỉ đọc đối với tất cả ví, người dùng và cài đặt. Không thể thay đổi dữ liệu hoặc giao dịch."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Ví",
     "paperAnnotation": " (mô phỏng)",
     "unknownError": "Lỗi không xác định",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Quyền chỉ đọc — không cho phép thay đổi."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Người xem",
         "operator": "Người vận hành",
         "admin": "Quản trị viên",
-        "ai_delegate": "Đại diện AI"
+        "ai_delegate": "Đại diện AI",
+        "auditor": "Kiểm toán viên"
       },
       "validation": {
         "usernameRequired": "Bắt buộc nhập tên người dùng",

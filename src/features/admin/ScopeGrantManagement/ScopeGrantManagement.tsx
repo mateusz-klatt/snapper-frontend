@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link2 } from 'lucide-react'
 import { useAuthStore } from '../../../stores/auth'
+import { Permission } from '../../../types/permissions.generated'
 import ScopeGrantList from './ScopeGrantList'
 import ScopeGrantForm from './ScopeGrantForm'
 import HandoverDialog from './HandoverDialog'
@@ -11,13 +12,21 @@ interface ScopeGrantManagementProps {
   readOnly?: boolean
 }
 
-const ScopeGrantManagement: React.FC<Readonly<ScopeGrantManagementProps>> = ({ readOnly }) => {
+const ScopeGrantManagement: React.FC<Readonly<ScopeGrantManagementProps>> = ({
+  readOnly: inheritedReadOnly,
+}) => {
   const { t } = useTranslation('admin')
   const [showCreateForm, setShowCreateForm] = useState(false)
   const [handoverGrant, setHandoverGrant] = useState<ScopeGrantInfo | null>(null)
   const { hasPermission } = useAuthStore()
+  const canManage = hasPermission(Permission.MANAGE_SCOPE_GRANTS)
+  const readOnly = inheritedReadOnly || !canManage
 
-  if (!hasPermission('manage:scope_grants')) {
+  const canRead =
+    (hasPermission(Permission.READ_SCOPE_GRANTS) && hasPermission(Permission.READ_ALL_SCOPES)) ||
+    canManage
+
+  if (!canRead) {
     return (
       <div className='flex flex-col items-center justify-center min-h-[40vh] text-center'>
         <Link2 className='w-16 h-16 text-muted-400 mb-4' />

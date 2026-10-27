@@ -24,6 +24,14 @@ Highlights:
 - **Order entry** — bracket and trailing-stop dialogs with capability-guard error mapping.
 - **Full operator surface** — overview, market, processes, strategies, orders, positions, signals, backtests, health, alerts, administration, AI integration, AI reviews, and settings.
 
+The `viewer` role provides the operator read surface within its assigned scope. The `auditor` role
+provides the administrator read surface across all wallets, users, desk memberships, scope grants,
+credential summaries and settings. Administrative forms remain available for inspection, with their
+save and destructive actions disabled. Auditors cannot change the shared account password. Local
+display preferences and navigation remain interactive. The backend independently enforces the
+permission boundary for HTTP requests and WebSocket commands; browser controls use the generated
+permission catalog and preserve the existing presentation of sensitive values.
+
 ## Screenshots
 
 Snapshots from a local instance running against the [snapper](https://github.com/mateusz-klatt/snapper) backend with a seeded paper-mode portfolio: long BTC-USD-PERP + short ETH-USD-PERP on Kraken Futures, four completed backtests spanning crypto and CME / NYMEX commodity futures, a multi-commodity 1h research panel (June WTI crude, June Gold, June Brent, June Copper), a Hormuz-driven AI review pending in the delegate inbox.

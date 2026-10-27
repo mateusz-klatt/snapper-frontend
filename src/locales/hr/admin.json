@@ -21,7 +21,8 @@
       "resource": "Resurs",
       "viewer": "Promatrač",
       "operator": "Operater",
-      "admin": "Administrator"
+      "admin": "Administrator",
+      "auditor": "Revizor"
     },
     "resources": {
       "overview": "Pregled",
@@ -34,6 +35,10 @@
       "health": "Zdravlje",
       "admin": "Administracija",
       "settings": "Postavke"
+    },
+    "auditor": {
+      "label": "Revizor",
+      "description": "Administratorski pristup samo za čitanje svim novčanicima, korisnicima i postavkama. Bez mogućnosti izmjene podataka ili trgovanja."
     }
   },
   "deskMemberships": {
@@ -101,7 +106,8 @@
     "walletLabel": "Novčanik",
     "paperAnnotation": " (simulirano)",
     "unknownError": "Nepoznata pogreška",
-    "dash": "-"
+    "dash": "-",
+    "readOnly": "Pristup samo za čitanje — izmjene su onemogućene."
   },
   "users": {
     "accessDenied": {
@@ -164,7 +170,8 @@
         "viewer": "Promatrač",
         "operator": "Operater",
         "admin": "Administrator",
-        "ai_delegate": "AI delegat"
+        "ai_delegate": "AI delegat",
+        "auditor": "Revizor"
       },
       "validation": {
         "usernameRequired": "Korisničko ime je obvezno",
