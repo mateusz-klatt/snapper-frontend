@@ -95,12 +95,12 @@
     "json-schema-to-zod": "^2.8.1",
     "knip": "^6.43.0",
     "openapi-typescript": "^7.13.0",
-    "postcss": "^8.5.31",
+    "postcss": "^8.5.32",
     "prettier": "^3.9.10",
     "puppeteer": "^25.16.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.0",
+    "typescript-eslint": "^8.72.1",
     "vite": "^8.3.5",
     "vitest": "^5.0.5"
   }
