@@ -19,10 +19,11 @@
     "1d": "1 dan"
   },
   "stats": {
-    "currentPrice": "Trenutna cijena",
+    "currentPrice": "Posljednja zaključna cijena",
     "change24h": "Promjena 24h",
     "high24h": "Najviša 24h",
-    "low24h": "Najniža 24h"
+    "low24h": "Najniža 24h",
+    "incomplete": "Potpuna historija za 24 sata nije dostupna"
   },
   "chart": {
     "title": "Grafikon cijene",

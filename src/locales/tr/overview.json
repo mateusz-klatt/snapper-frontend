@@ -36,7 +36,8 @@
     "positions": "Pozisyonlar",
     "instrumentsCount": "Enstrümanlar: {{count}}",
     "empty": "Pozisyon verisi yok",
-    "incompleteValuation": "Veriler eksik — bazı pozisyonların kullanılabilir mark veya giriş fiyatı yok; toplamlar yalnızca bilinen bileşenleri içerir"
+    "incompleteValuation": "Bazı açık pozisyonların değerleme verileri eksik veya geçersiz.",
+    "aggregationUnavailable": "Portföy toplamları doğrulanmış para birimi ve sözleşme değerleme temeli gerektirir. Pozisyonlar bölümünü açıp {{tab}} seçin."
   },
   "signals": {
     "title": "Son Sinyaller",

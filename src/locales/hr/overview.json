@@ -36,7 +36,8 @@
     "positions": "Pozicije",
     "instrumentsCount": "Instrumenti: {{count}}",
     "empty": "Nema dostupnih podataka o pozicijama",
-    "incompleteValuation": "Podaci su nepotpuni — za neke pozicije nema upotrebljive referentne ili ulazne cijene; ukupni iznosi obuhvaćaju samo poznate komponente"
+    "incompleteValuation": "Neke otvorene pozicije imaju nedostajuće ili nevažeće podatke za vrednovanje.",
+    "aggregationUnavailable": "Ukupni iznosi portfelja zahtijevaju potvrđenu valutu i osnovu vrednovanja ugovora. Otvorite Pozicije pa odaberite {{tab}}."
   },
   "signals": {
     "title": "Nedavni signali",

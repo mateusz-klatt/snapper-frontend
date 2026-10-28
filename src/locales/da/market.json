@@ -19,10 +19,11 @@
     "1d": "1 dag"
   },
   "stats": {
-    "currentPrice": "Aktuel pris",
+    "currentPrice": "Seneste lukkekurs",
     "change24h": "24t ændring",
     "high24h": "24t høj",
-    "low24h": "24t lav"
+    "low24h": "24t lav",
+    "incomplete": "Komplet historik for 24 timer er ikke tilgængelig"
   },
   "chart": {
     "title": "Prischart",

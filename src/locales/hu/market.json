@@ -19,10 +19,11 @@
     "1d": "1 nap"
   },
   "stats": {
-    "currentPrice": "Aktuális ár",
+    "currentPrice": "Legutóbbi záróár",
     "change24h": "24 órás változás",
     "high24h": "24 órás csúcs",
-    "low24h": "24 órás mélypont"
+    "low24h": "24 órás mélypont",
+    "incomplete": "A teljes 24 órás előzmény nem érhető el"
   },
   "chart": {
     "title": "Árfolyamgrafikon",

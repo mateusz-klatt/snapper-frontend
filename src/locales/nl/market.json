@@ -19,10 +19,11 @@
     "1d": "1 dag"
   },
   "stats": {
-    "currentPrice": "Huidige prijs",
+    "currentPrice": "Laatste slotkoers",
     "change24h": "24u-verandering",
     "high24h": "24u-hoog",
-    "low24h": "24u-laag"
+    "low24h": "24u-laag",
+    "incomplete": "Volledige geschiedenis van 24 uur niet beschikbaar"
   },
   "chart": {
     "title": "Prijsgrafiek",

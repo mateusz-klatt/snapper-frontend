@@ -36,7 +36,8 @@
     "positions": "Pozíciók",
     "instrumentsCount": "Instrumentumok: {{count}}",
     "empty": "Nem érhetők el pozícióadatok",
-    "incompleteValuation": "Hiányos adatok — egyes pozícióknál nincs használható referenciaár vagy belépési ár; az összesítések csak az ismert összetevőket tartalmazzák"
+    "incompleteValuation": "Egyes nyitott pozíciók értékelési adatai hiányoznak vagy érvénytelenek.",
+    "aggregationUnavailable": "A portfólió összesítéséhez ellenőrzött deviza és szerződésértékelési alap szükséges. Nyissa meg a Pozíciók oldalt, majd válassza a {{tab}} lapot."
   },
   "signals": {
     "title": "Legutóbbi jelzések",

@@ -36,7 +36,8 @@
     "positions": "Suímh",
     "instrumentsCount": "Ionstraimí: {{count}}",
     "empty": "Níl aon sonraí suímh ar fáil",
-    "incompleteValuation": "Sonraí neamhiomlána — tá praghas marcála inúsáidte nó praghas iontrála inúsáidte in easnamh ar roinnt suíomhanna; ní áirítear sna hiomláin ach comhpháirteanna a bhfuil a luach ar eolas"
+    "incompleteValuation": "Tá sonraí luachála ar iarraidh nó neamhbhailí i roinnt suíomhanna oscailte.",
+    "aggregationUnavailable": "Teastaíonn airgeadra agus bonn luachála conartha fíoraithe ó iomláin na punainne. Oscail Suímh agus roghnaigh {{tab}}."
   },
   "signals": {
     "title": "Comharthaí le Déanaí",

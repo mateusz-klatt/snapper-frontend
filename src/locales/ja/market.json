@@ -19,10 +19,11 @@
     "1d": "1日"
   },
   "stats": {
-    "currentPrice": "現在価格",
+    "currentPrice": "直近の終値",
     "change24h": "24時間変化率",
     "high24h": "24時間高値",
-    "low24h": "24時間安値"
+    "low24h": "24時間安値",
+    "incomplete": "24時間分の完全な履歴を利用できません"
   },
   "chart": {
     "title": "価格チャート",

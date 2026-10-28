@@ -36,7 +36,8 @@
     "positions": "Vị thế",
     "instrumentsCount": "Công cụ: {{count}}",
     "empty": "Không có dữ liệu vị thế",
-    "incompleteValuation": "Dữ liệu chưa đầy đủ — một số vị thế không có giá tham chiếu hoặc giá vào lệnh dùng được; tổng chỉ bao gồm các thành phần đã biết"
+    "incompleteValuation": "Một số vị thế mở thiếu dữ liệu định giá hoặc có dữ liệu không hợp lệ.",
+    "aggregationUnavailable": "Tổng danh mục cần đồng tiền và cơ sở định giá hợp đồng đã xác minh. Mở Vị thế, rồi chọn {{tab}}."
   },
   "signals": {
     "title": "Tín hiệu gần đây",

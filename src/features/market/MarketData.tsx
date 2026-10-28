@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Card } from '../../components/ui'
+import { formatDateTime } from '../../lib/dateFormat'
 import { InstrumentIcon } from '../../components/InstrumentIcon'
 import { MarketDataOnlyBadge } from '../../components/MarketDataOnlyBadge'
 import { MarketChart } from './MarketChart'
@@ -13,7 +14,7 @@ import {
   useCachedCandles,
   useExchanges,
   useExchangeInstrumentsDetail,
-  useTimeTravelCandles,
+  useMarketStats,
 } from '../../hooks/queries/market'
 import { MarketTimeScrubber } from './MarketTimeScrubber'
 import { useAppStore } from '../../stores/app'
@@ -23,20 +24,11 @@ import { useWebSocketStore } from '../../stores/websocket'
 import { useWSDispatcher } from '../../hooks/useWSDispatcher'
 import * as Select from '@radix-ui/react-select'
 import { ChevronDownIcon } from 'lucide-react'
-import { Time } from 'lightweight-charts'
 import {
   assetClassForExchange,
   formatAtPrecision,
   priceDisplayPrecision,
 } from '../../lib/formatPrice'
-
-interface FormattedCandle {
-  time: Time
-  open: number
-  high: number
-  low: number
-  close: number
-}
 
 const TIMEFRAME_VALUES = ['1m', '5m', '15m', '30m', '1h', '4h', '1d'] as const
 
@@ -46,20 +38,9 @@ const TIMEFRAME_SET: ReadonlySet<string> = new Set(TIMEFRAME_VALUES)
 
 const isTimeframeValue = (value: string): value is TimeframeValue => TIMEFRAME_SET.has(value)
 
-const TIMEFRAME_SECONDS: Record<TimeframeValue, number> = {
-  '1m': 60,
-  '5m': 300,
-  '15m': 900,
-  '30m': 1800,
-  '1h': 3600,
-  '4h': 14400,
-  '1d': 86400,
-}
-
-const REPLAY_BARS = 400
-
 export function MarketData() {
   const { t } = useTranslation('market')
+  const { t: tCommon } = useTranslation('common')
   const {
     selectedExchange,
     selectedInstrument,
@@ -82,7 +63,7 @@ export function MarketData() {
 
   useEffect(() => {
     setReplayAt(null)
-  }, [selectedInstrument, selectedExchange, selectedTimeframe])
+  }, [selectedInstrument, selectedExchange])
 
   useEffect(() => {
     setAutoLodEnabled(true)
@@ -113,14 +94,15 @@ export function MarketData() {
 
   const { isConnected } = useWebSocketStore()
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
+  const locale = useAppStore(s => s.locale)
   const dispatcher = useWSDispatcher({ enabled: !isTimeTraveling })
   const subscribed = useMarketSubscription({
-    instrument: isReplay ? null : selectedInstrument,
+    instrument: isReplay || isTimeTraveling ? null : selectedInstrument,
     exchange: selectedExchange,
     timeframe: selectedTimeframe,
     dispatcher,
   })
-  const snapshotEnabled = subscribed || !isConnected || isTimeTraveling
+  const snapshotEnabled = subscribed || !isConnected
   const { data: exchanges } = useExchanges()
   const { data: instruments } = useExchangeInstrumentsDetail(selectedExchange)
   const capabilityMap = useMemo(() => {
@@ -139,7 +121,7 @@ export function MarketData() {
     selectedInstrument,
     selectedTimeframe,
     100,
-    snapshotEnabled && !isReplay
+    snapshotEnabled && !isReplay && !isTimeTraveling
   )
   const candles = cachedResponse?.payload.candles
   const isWarm = cachedResponse?.payload.is_warm ?? true
@@ -147,7 +129,7 @@ export function MarketData() {
   const cacheSource = cachedResponse?.payload.source ?? 'cache'
 
   const liveCandle = useMemo<WindowCandle | null>(() => {
-    if (isReplay) {
+    if (isReplay || isTimeTraveling) {
       return null
     }
 
@@ -166,45 +148,13 @@ export function MarketData() {
       volume: last.volume,
       complete: false,
     }
-  }, [isReplay, candles])
+  }, [isReplay, isTimeTraveling, candles])
 
-  const replayWindow = useMemo(() => {
-    if (replayAt === null) {
-      return null
-    }
-
-    const tfSeconds = TIMEFRAME_SECONDS[selectedTimeframe as TimeframeValue]
-    const halfMs = (REPLAY_BARS / 2) * tfSeconds * 1000
-
-    return {
-      start: new Date(replayAt - halfMs).toISOString(),
-      end: new Date(replayAt + halfMs).toISOString(),
-    }
-  }, [replayAt, selectedTimeframe])
-  const { data: replayCandles, isFetching: replayFetching } = useTimeTravelCandles(
-    selectedExchange,
-    selectedInstrument,
-    selectedTimeframe,
-    replayWindow?.start ?? null,
-    replayWindow?.end ?? null,
-    REPLAY_BARS,
-    isReplay
-  )
-  const sourceCandles = useMemo(() => {
-    if (isReplay) {
-      return (replayCandles ?? []).map(candle => ({
-        open_at_ms: Date.parse(candle.open_at),
-        open: candle.open,
-        high: candle.high,
-        low: candle.low,
-        close: candle.close,
-        volume: candle.volume,
-      }))
-    }
-
-    return candles ?? []
-  }, [isReplay, replayCandles, candles])
-  const effectiveFetching = isReplay ? replayFetching : isFetching
+  const {
+    data: stats,
+    isLoading: statsLoading,
+    error: statsError,
+  } = useMarketStats(selectedExchange, selectedInstrument, replayAt)
   const flushedRef = useRef(false)
 
   useEffect(() => {
@@ -218,6 +168,8 @@ export function MarketData() {
   useEffect(() => {
     if (
       candles &&
+      !isTimeTraveling &&
+      !isReplay &&
       !isFetching &&
       dispatcher &&
       selectedInstrument &&
@@ -227,7 +179,16 @@ export function MarketData() {
       dispatcher.flushBuffer(selectedInstrument, selectedExchange, selectedTimeframe)
       flushedRef.current = true
     }
-  }, [candles, isFetching, dispatcher, selectedInstrument, selectedExchange, selectedTimeframe])
+  }, [
+    candles,
+    isFetching,
+    isTimeTraveling,
+    isReplay,
+    dispatcher,
+    selectedInstrument,
+    selectedExchange,
+    selectedTimeframe,
+  ])
   const allInstrumentSymbols = useMemo(
     () => (instruments?.payload ?? []).map(row => row.symbol),
     [instruments]
@@ -257,56 +218,6 @@ export function MarketData() {
       setInstrumentInput(selectedInstrument ?? '')
     }
   }
-
-  const chartData: FormattedCandle[] = useMemo(() => {
-    if (!sourceCandles.length || effectiveFetching) return []
-    const sortedCandles = [...sourceCandles].sort((a, b) => a.open_at_ms - b.open_at_ms)
-    const deduped: FormattedCandle[] = []
-
-    for (const candle of sortedCandles) {
-      const unixTime = Math.floor(candle.open_at_ms / 1000)
-      const previous = deduped.at(-1)
-
-      if (previous?.time === unixTime) {
-        deduped[deduped.length - 1] = {
-          time: unixTime as Time,
-          open: candle.open,
-          high: candle.high,
-          low: candle.low,
-          close: candle.close,
-        }
-      } else {
-        deduped.push({
-          time: unixTime as Time,
-          open: candle.open,
-          high: candle.high,
-          low: candle.low,
-          close: candle.close,
-        })
-      }
-    }
-
-    return deduped
-  }, [sourceCandles, effectiveFetching])
-
-  const stats = useMemo(() => {
-    if (!chartData.length) return null
-    const latest = chartData.at(-1) as FormattedCandle
-    const previous = chartData.length > 1 ? (chartData.at(-2) as FormattedCandle) : null
-    const change = previous ? latest.close - previous.close : 0
-    const changePercent = previous ? (change / previous.close) * 100 : 0
-    const prices = chartData.map(c => c.close)
-    const high24h = Math.max(...prices)
-    const low24h = Math.min(...prices)
-
-    return {
-      price: latest.close,
-      change,
-      changePercent,
-      high24h,
-      low24h,
-    }
-  }, [chartData])
 
   const instrumentKind = useMemo(
     () =>
@@ -442,51 +353,81 @@ export function MarketData() {
         onSelect={({ exchange, symbol }) => setSelectedMarket({ exchange, instrument: symbol })}
       />
       {}
-      {stats && (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
-          <Card title={t('stats.currentPrice')} className='p-4'>
-            <div>
-              <p className='text-sm text-muted-500'>{t('stats.currentPrice')}</p>
-              <p className='text-lg font-semibold'>
-                {formatAtPrecision(stats.price, pricePrecision)}
-              </p>
-            </div>
-          </Card>
-          <Card title={t('stats.change24h')} className='p-4'>
-            <div className='flex items-center justify-between'>
+      {statsLoading && <p role='status'>{tCommon('loading')}</p>}
+      {statsError !== null && (
+        <p role='alert' className='text-loss-600'>
+          {tCommon('error')}: {statsError.message}
+        </p>
+      )}
+      {stats && statsError === null && (
+        <div className='space-y-2'>
+          <p className='text-xs text-muted-500'>
+            {t('scrubber.label')}{' '}
+            <time dateTime={stats.windowEnd}>
+              {formatDateTime(new Date(stats.windowEnd), locale, {
+                dateStyle: 'medium',
+                timeStyle: 'long',
+              })}
+            </time>
+          </p>
+          {stats.change === null && (
+            <p role='status' className='text-sm text-muted-500'>
+              {t('stats.incomplete')}
+            </p>
+          )}
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+            <Card title={t('stats.currentPrice')} className='p-4'>
               <div>
-                <p className='text-sm text-muted-500'>{t('stats.change24h')}</p>
-                <p
-                  className={`text-lg font-semibold ${stats.change >= 0 ? 'text-rising-600' : 'text-falling-600'}`}
-                >
-                  {stats.change >= 0 ? '+' : ''}
-                  {formatAtPrecision(stats.change, pricePrecision)} (
-                  {stats.changePercent.toFixed(2)}%)
+                <p className='text-sm text-muted-500'>{t('stats.currentPrice')}</p>
+                <p className='text-lg font-semibold'>
+                  {stats.price === null ? '—' : formatAtPrecision(stats.price, pricePrecision)}
                 </p>
               </div>
-            </div>
-          </Card>
-          <Card title={t('stats.high24h')} className='p-4'>
-            <div>
-              <p className='text-sm text-muted-500'>{t('stats.high24h')}</p>
-              <p className='text-lg font-semibold text-rising-600'>
-                {formatAtPrecision(stats.high24h, pricePrecision)}
-              </p>
-            </div>
-          </Card>
-          <Card title={t('stats.low24h')} className='p-4'>
-            <div>
-              <p className='text-sm text-muted-500'>{t('stats.low24h')}</p>
-              <p className='text-lg font-semibold text-falling-600'>
-                {formatAtPrecision(stats.low24h, pricePrecision)}
-              </p>
-            </div>
-          </Card>
+            </Card>
+            <Card title={t('stats.change24h')} className='p-4'>
+              <div className='flex items-center justify-between'>
+                <div>
+                  <p className='text-sm text-muted-500'>{t('stats.change24h')}</p>
+                  <p
+                    className={`text-lg font-semibold ${stats.change === null ? '' : stats.change >= 0 ? 'text-rising-600' : 'text-falling-600'}`}
+                  >
+                    {stats.change === null ? (
+                      '—'
+                    ) : (
+                      <>
+                        {stats.change >= 0 ? '+' : ''}
+                        {formatAtPrecision(stats.change, pricePrecision)}
+                        {stats.changePercent === null
+                          ? ''
+                          : ` (${stats.changePercent.toFixed(2)}%)`}
+                      </>
+                    )}
+                  </p>
+                </div>
+              </div>
+            </Card>
+            <Card title={t('stats.high24h')} className='p-4'>
+              <div>
+                <p className='text-sm text-muted-500'>{t('stats.high24h')}</p>
+                <p className='text-lg font-semibold text-rising-600'>
+                  {stats.high24h === null ? '—' : formatAtPrecision(stats.high24h, pricePrecision)}
+                </p>
+              </div>
+            </Card>
+            <Card title={t('stats.low24h')} className='p-4'>
+              <div>
+                <p className='text-sm text-muted-500'>{t('stats.low24h')}</p>
+                <p className='text-lg font-semibold text-falling-600'>
+                  {stats.low24h === null ? '—' : formatAtPrecision(stats.low24h, pricePrecision)}
+                </p>
+              </div>
+            </Card>
+          </div>
         </div>
       )}
       {}
       <Card title={t('chart.title')} className='flex-1 p-6'>
-        {!isReplay && (
+        {!isReplay && !isTimeTraveling && (
           <CacheWarmingBanner
             isWarm={isWarm}
             sampleCount={sampleCount}

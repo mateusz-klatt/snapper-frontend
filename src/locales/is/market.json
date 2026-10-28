@@ -19,10 +19,11 @@
     "1d": "1 dagur"
   },
   "stats": {
-    "currentPrice": "Núverandi verð",
+    "currentPrice": "Síðasta lokaverð",
     "change24h": "24 klst breyting",
     "high24h": "24 klst hæsta",
-    "low24h": "24 klst lægsta"
+    "low24h": "24 klst lægsta",
+    "incomplete": "Heildarsaga síðustu 24 klukkustunda er ekki tiltæk"
   },
   "chart": {
     "title": "Verðrit",

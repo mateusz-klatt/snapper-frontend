@@ -19,10 +19,11 @@
     "1d": "1 ditë"
   },
   "stats": {
-    "currentPrice": "Çmimi aktual",
+    "currentPrice": "Çmimi i fundit i mbylljes",
     "change24h": "Ndryshimi 24h",
     "high24h": "Maksimumi 24h",
-    "low24h": "Minimumi 24h"
+    "low24h": "Minimumi 24h",
+    "incomplete": "Historiku i plotë për 24 orë nuk është i disponueshëm"
   },
   "chart": {
     "title": "Grafiku i çmimit",

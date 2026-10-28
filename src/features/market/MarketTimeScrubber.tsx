@@ -36,7 +36,7 @@ interface MarketTimeScrubberProps {
  * Timeline scrubber for the market view.
  *
  * Drag the handle (or pick a preset) to rewind the chart to a market-time
- * midpoint; the chart then loads a window centered on that instant. Snapping
+ * anchor; the chart loads history ending at that instant. Snapping
  * the handle to the right edge — or the Live preset — returns to the live
  * cache + websocket stream (``value === null``). It is market-LOCAL: it never
  * engages the app-wide time-travel mode, so order placement stays enabled
@@ -49,6 +49,7 @@ export function MarketTimeScrubber({
 }: Readonly<MarketTimeScrubberProps>) {
   const { t } = useTranslation('market')
   const locale = useAppStore(s => s.locale)
+  const asOf = useAppStore(s => s.asOf)
   const [now, setNow] = useState(() => Date.now())
 
   useEffect(() => {
@@ -58,13 +59,14 @@ export function MarketTimeScrubber({
   }, [])
 
   const isReplay = value !== null
-  const sliderMin = Math.min(now - SLIDER_LOOKBACK_MS, value ?? now)
-  const sliderValue = value ?? now
+  const horizon = asOf === null ? now : Date.parse(asOf)
+  const sliderMin = Math.min(horizon - SLIDER_LOOKBACK_MS, value ?? horizon)
+  const sliderValue = Math.min(value ?? horizon, horizon)
 
   const handleSlider = (event: React.ChangeEvent<HTMLInputElement>) => {
     const next = Number(event.target.value)
 
-    onChange(next >= now - LIVE_EDGE_MS ? null : next)
+    onChange(next >= horizon - LIVE_EDGE_MS ? null : next)
   }
 
   return (
@@ -80,13 +82,15 @@ export function MarketTimeScrubber({
           className={`font-semibold ${isReplay ? 'text-brand-600' : 'text-rising-600'}`}
           aria-live='polite'
         >
-          {value === null ? t('scrubber.live') : formatDateTime(new Date(value), locale)}
+          {value === null && asOf === null
+            ? t('scrubber.live')
+            : formatDateTime(new Date(sliderValue), locale)}
         </span>
       </div>
       <input
         type='range'
         min={sliderMin}
-        max={now}
+        max={horizon}
         step={MINUTE_MS}
         value={sliderValue}
         onChange={handleSlider}
@@ -103,14 +107,16 @@ export function MarketTimeScrubber({
               key={preset.key}
               type='button'
               disabled={disabled}
-              onClick={() => onChange(preset.deltaMs === null ? null : now - preset.deltaMs)}
+              onClick={() => onChange(preset.deltaMs === null ? null : horizon - preset.deltaMs)}
               className={`rounded-sm px-2 py-1 text-xs font-medium transition-colors disabled:opacity-50 ${
                 active
                   ? 'bg-brand-500 text-white'
                   : 'border border-dark-600 text-muted-600 hover:bg-dark-700'
               }`}
             >
-              {t(`scrubber.presets.${preset.key}`)}
+              {preset.key === 'live' && asOf !== null
+                ? formatDateTime(new Date(horizon), locale)
+                : t(`scrubber.presets.${preset.key}`)}
             </button>
           )
         })}

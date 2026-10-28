@@ -36,7 +36,8 @@
     "positions": "Stöður",
     "instrumentsCount": "Gerningar: {{count}}",
     "empty": "Engin stöðugögn tiltæk",
-    "incompleteValuation": "Gögnin eru ófullnægjandi — fyrir sumar stöður vantar nothæft viðmiðunarverð eða inngangsverð; heildartölur taka aðeins til þekktra liða"
+    "incompleteValuation": "Sumar opnar stöður hafa vantar eða ógild verðmatsgögn.",
+    "aggregationUnavailable": "Heildartölur eignasafns krefjast staðfests gjaldmiðils og verðmatsgrundvallar samninga. Opnaðu Stöður og veldu {{tab}}."
   },
   "signals": {
     "title": "Nýleg merki",

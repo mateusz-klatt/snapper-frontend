@@ -19,10 +19,11 @@
     "1d": "1 dag"
   },
   "stats": {
-    "currentPrice": "Aktuellt pris",
+    "currentPrice": "Senaste stängningskurs",
     "change24h": "24 h-förändring",
     "high24h": "24 h-högsta",
-    "low24h": "24 h-lägsta"
+    "low24h": "24 h-lägsta",
+    "incomplete": "Fullständig historik för 24 timmar är inte tillgänglig"
   },
   "chart": {
     "title": "Prisdiagram",

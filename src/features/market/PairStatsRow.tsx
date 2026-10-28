@@ -126,6 +126,7 @@ export function PairStatsRow({ selectedExchange, selectedInstrument, onSelect }:
       data-testid='pair-stats-row'
     >
       <span className='text-xs text-muted-500 mr-1'>{t('pairStats.label')}</span>
+      <span className='text-xs text-muted-500'>{t('scrubber.live')}</span>
       {chips.map(chip => {
         const cointegrated = isCointegrated(chip.stats.coint_pvalue)
         const baseClass =

@@ -36,7 +36,8 @@
     "positions": "Poziții",
     "instrumentsCount": "Instrumente: {{count}}",
     "empty": "Nu există date disponibile despre poziții",
-    "incompleteValuation": "Date incomplete — unor poziții le lipsește un preț de referință sau de intrare utilizabil; totalurile includ numai componentele cunoscute"
+    "incompleteValuation": "Unele poziții deschise au date de evaluare lipsă sau nevalide.",
+    "aggregationUnavailable": "Totalurile portofoliului necesită o monedă și o bază de evaluare a contractelor verificate. Deschideți Poziții, apoi selectați {{tab}}."
   },
   "signals": {
     "title": "Semnale recente",

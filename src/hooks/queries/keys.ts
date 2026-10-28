@@ -12,7 +12,7 @@ export interface PortfolioPnlQueryKeyParams {
   readonly operatorPublicId: string | null
   readonly walletPublicId: string | null
   readonly from: string
-  readonly to: string
+  readonly to: string | undefined
   readonly granularity: string
   readonly mode: string
   readonly valuationCcy: string
@@ -56,25 +56,12 @@ export const queryKeys = {
     limit: number,
     asOf: string | null
   ) => ['market', 'cache', 'candles', exchange, nativeSymbol, timeframe, limit, asOf] as const,
-  timeTravelCandles: (
+  marketStats: (
     exchange: string,
     nativeSymbol: string,
-    timeframe: string,
-    start: string,
-    end: string,
-    limit: number
-  ) =>
-    [
-      'market',
-      'timetravel',
-      'candles',
-      exchange,
-      nativeSymbol,
-      timeframe,
-      start,
-      end,
-      limit,
-    ] as const,
+    anchorMs: number | null,
+    asOf: string | null
+  ) => ['market', 'stats24h', exchange, nativeSymbol, anchorMs, asOf] as const,
   cachedPairStats: (
     exchangeA: string,
     symbolA: string,

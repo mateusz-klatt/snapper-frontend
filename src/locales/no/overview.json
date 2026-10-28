@@ -36,7 +36,8 @@
     "positions": "Posisjoner",
     "instrumentsCount": "Instrumenter: {{count}}",
     "empty": "Ingen posisjonsdata tilgjengelig",
-    "incompleteValuation": "Ufullstendige data — noen posisjoner mangler brukbar mark- eller inngangspris; summene omfatter bare kjente komponenter"
+    "incompleteValuation": "Noen åpne posisjoner har manglende eller ugyldige verdsettingsdata.",
+    "aggregationUnavailable": "Porteføljesummer krever bekreftet valuta og verdsettingsgrunnlag for kontrakter. Åpne Posisjoner og velg {{tab}}."
   },
   "signals": {
     "title": "Siste signaler",

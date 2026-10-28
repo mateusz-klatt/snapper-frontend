@@ -36,7 +36,8 @@
     "positions": "Positions",
     "instrumentsCount": "Instruments : {{count}}",
     "empty": "Aucune donnée de position disponible",
-    "incompleteValuation": "Données incomplètes — certaines positions n'ont pas de prix de référence ou d'entrée utilisable ; les totaux n'additionnent que les composants connus"
+    "incompleteValuation": "Certaines positions ouvertes ont des données de valorisation manquantes ou invalides.",
+    "aggregationUnavailable": "Les totaux du portefeuille nécessitent une devise et une base de valorisation des contrats vérifiées. Ouvrez Positions, puis sélectionnez {{tab}}."
   },
   "signals": {
     "title": "Signaux récents",

@@ -36,7 +36,8 @@
     "positions": "Pozicione",
     "instrumentsCount": "Instrumente: {{count}}",
     "empty": "Nuk ka të dhëna pozicionesh të disponueshme",
-    "incompleteValuation": "Të dhënat janë të paplota — disa pozicione nuk kanë çmim reference ose çmim hyrjeje të përdorshëm; totalet përmbledhin vetëm përbërësit e njohur"
+    "incompleteValuation": "Disa pozicione të hapura kanë të dhëna vlerësimi që mungojnë ose janë të pavlefshme.",
+    "aggregationUnavailable": "Totalet e portofolit kërkojnë monedhë dhe bazë vlerësimi kontratash të verifikuara. Hapni Pozicionet, pastaj zgjidhni {{tab}}."
   },
   "signals": {
     "title": "Sinjalet e fundit",

@@ -19,10 +19,11 @@
     "1d": "1 diena"
   },
   "stats": {
-    "currentPrice": "Dabartinė kaina",
+    "currentPrice": "Paskutinė uždarymo kaina",
     "change24h": "24 val. pokytis",
     "high24h": "24 val. maksimumas",
-    "low24h": "24 val. minimumas"
+    "low24h": "24 val. minimumas",
+    "incomplete": "Visa 24 valandų istorija neprieinama"
   },
   "chart": {
     "title": "Kainos grafikas",

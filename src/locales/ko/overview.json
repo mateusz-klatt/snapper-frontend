@@ -36,7 +36,8 @@
     "positions": "포지션",
     "instrumentsCount": "종목 수: {{count}}",
     "empty": "사용 가능한 포지션 데이터가 없습니다",
-    "incompleteValuation": "데이터가 불완전합니다 — 일부 포지션에 사용 가능한 마크 가격 또는 진입 가격이 없습니다. 합계는 알려진 구성 요소만 합산합니다"
+    "incompleteValuation": "일부 미결제 포지션의 평가 데이터가 없거나 유효하지 않습니다.",
+    "aggregationUnavailable": "포트폴리오 합계에는 검증된 통화와 계약 평가 기준이 필요합니다. 포지션을 열고 {{tab}}을 선택하세요."
   },
   "signals": {
     "title": "최근 시그널",

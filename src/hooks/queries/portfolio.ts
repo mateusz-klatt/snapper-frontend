@@ -11,7 +11,7 @@ import { queryKeys } from './keys'
 
 export interface PortfolioPnlSeriesQueryParams {
   from: string
-  to: string
+  to?: string | undefined
   granularity: PortfolioPnlGranularity
   mode: string
   valuationCcy: string
@@ -119,6 +119,9 @@ export const usePortfolioPnlTimeline = (
       return data.payload
     },
     enabled: enabled && isAuthenticated && walletPublicId !== null,
+    staleTime: 0,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
     throwOnError: false,
   })
 }

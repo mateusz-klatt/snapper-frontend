@@ -1,7 +1,12 @@
 import { createElement, type ReactNode } from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { act, renderHook, waitFor } from '@testing-library/react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import {
+  focusManager,
+  onlineManager,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { usePortfolioAccounts, usePortfolioPnlSeries, usePortfolioPnlTimeline } from './portfolio'
 import {
   getPortfolioAccounts,
@@ -210,9 +215,9 @@ vi.mock('../../stores/app', () => ({
   ),
 }))
 
-const createWrapper = () => {
-  const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
-
+const createWrapper = (
+  queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+) => {
   return function Wrapper({ children }: { children: ReactNode }) {
     return createElement(QueryClientProvider, { client: queryClient }, children)
   }
@@ -471,5 +476,81 @@ describe('usePortfolioPnlTimeline', () => {
 
     expect(result.current.fetchStatus).toBe('idle')
     expect(getPortfolioPnlTimeline).not.toHaveBeenCalled()
+  })
+
+  it('does not add a second minute poll to the caller-owned live clock', async () => {
+    vi.useFakeTimers()
+    control.asOf = null
+    const { unmount } = renderHook(() => usePortfolioPnlTimeline({ ...params, to: undefined }), {
+      wrapper: createWrapper(),
+    })
+
+    try {
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(0)
+      })
+      expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+      expect(getPortfolioPnlTimeline).toHaveBeenLastCalledWith(
+        expect.objectContaining({ asOf: null, to: undefined })
+      )
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(180_000)
+      })
+      expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+    } finally {
+      unmount()
+      vi.useRealTimers()
+    }
+  })
+
+  it('does not duplicate live requests on focus and reconnect', async () => {
+    control.asOf = null
+    const { result, unmount } = renderHook(
+      () => usePortfolioPnlTimeline({ ...params, to: undefined }),
+      { wrapper: createWrapper() }
+    )
+
+    try {
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      await act(async () => {
+        focusManager.setFocused(false)
+        onlineManager.setOnline(false)
+        await Promise.resolve()
+        focusManager.setFocused(true)
+        onlineManager.setOnline(true)
+        await new Promise(resolve => setTimeout(resolve, 0))
+      })
+
+      expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+    } finally {
+      unmount()
+      focusManager.setFocused(undefined)
+      onlineManager.setOnline(true)
+    }
+  })
+
+  it('refetches a cached live window once when returning from time travel', async () => {
+    control.asOf = null
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false, staleTime: 60_000 } },
+    })
+    const { result, rerender } = renderHook(
+      () =>
+        usePortfolioPnlTimeline({ ...params, to: control.asOf === null ? undefined : params.to }),
+      { wrapper: createWrapper(queryClient) }
+    )
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+
+    control.asOf = '2026-07-13T12:00:00Z'
+    rerender()
+    await waitFor(() => expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(2))
+    control.asOf = null
+    rerender()
+    await waitFor(() => expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(3))
+    expect(getPortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ asOf: null, to: undefined })
+    )
   })
 })

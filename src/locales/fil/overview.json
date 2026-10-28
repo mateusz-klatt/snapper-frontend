@@ -36,7 +36,8 @@
     "positions": "Mga position",
     "instrumentsCount": "Mga instrumento: {{count}}",
     "empty": "Walang positions data available",
-    "incompleteValuation": "Hindi kumpleto ang data — walang magagamit na presyong batayan o presyo ng pagpasok ang ilang posisyon; mga nalalamang bahagi lamang ang kasama sa mga kabuuan"
+    "incompleteValuation": "May nawawala o hindi wastong datos ng pagpapahalaga ang ilang bukas na posisyon.",
+    "aggregationUnavailable": "Kailangan ng mga kabuuan ng portfolio ang beripikadong salapi at batayan ng pagpapahalaga ng kontrata. Buksan ang Mga Posisyon, at piliin ang {{tab}}."
   },
   "signals": {
     "title": "Kamakailang signals",

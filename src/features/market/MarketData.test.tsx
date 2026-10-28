@@ -3,12 +3,29 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
+import { useMarketStats } from '../../hooks/queries/market'
+import type { MarketStats } from '../../lib/api/marketStats'
+import type { WindowCandle } from './chartNavigation'
 import { MarketData } from './MarketData'
 
 const mockSetSelectedExchange = vi.fn()
 const mockSetSelectedInstrument = vi.fn()
 const mockSetSelectedMarket = vi.fn()
 const mockSetSelectedTimeframe = vi.fn()
+const mockChartProps = vi.hoisted(() => vi.fn())
+
+const completeStats: MarketStats = {
+  windowEnd: '2026-06-10T12:00:00Z',
+  price: 1.085,
+  change: 0.005,
+  changePercent: 0.46,
+  high24h: 1.12,
+  low24h: 1.01,
+}
+
+const mockStatsResult = (data: MarketStats): void => {
+  vi.mocked(useMarketStats).mockReturnValue({ data, isLoading: false, error: null } as never)
+}
 
 interface BareCandle {
   open_at: string
@@ -51,7 +68,7 @@ vi.mock('../../hooks/queries/market', () => ({
     error: null,
     isFetching: false,
   })),
-  useTimeTravelCandles: vi.fn(() => ({
+  useMarketStats: vi.fn(() => ({
     data: undefined,
     isLoading: false,
     error: null,
@@ -95,7 +112,7 @@ vi.mock('../../stores/market', () => ({
 }))
 vi.mock('../../stores/app', () => ({
   useAppStore: vi.fn((selector: (s: Record<string, unknown>) => unknown) =>
-    selector({ asOf: null, isTimeTraveling: false })
+    selector({ asOf: null, isTimeTraveling: false, locale: 'us' })
   ),
 }))
 vi.mock('../../hooks/useMarketSubscription', () => ({
@@ -118,18 +135,24 @@ vi.mock('./MarketChart', () => ({
     instrument,
     timeframe,
     onLodTimeframe,
+    liveCandle,
   }: {
     instrument: string | null
     timeframe: string
     onLodTimeframe?: (tf: string) => void
-  }) => (
-    <div data-testid='market-chart'>
-      Chart {instrument} {timeframe}
-      <button data-testid='lod-trigger' onClick={() => onLodTimeframe?.('5m')}>
-        lod
-      </button>
-    </div>
-  ),
+    liveCandle?: WindowCandle | null
+  }) => {
+    mockChartProps({ liveCandle })
+
+    return (
+      <div data-testid='market-chart'>
+        Chart {instrument} {timeframe}
+        <button data-testid='lod-trigger' onClick={() => onLodTimeframe?.('5m')}>
+          lod
+        </button>
+      </div>
+    )
+  },
 }))
 const createQueryClient = () =>
   new QueryClient({
@@ -141,12 +164,21 @@ const createQueryClient = () =>
 const renderWithProviders = (ui: ReactNode) => {
   const queryClient = createQueryClient()
 
-  return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
+  return render(ui, {
+    wrapper: ({ children }: { children: ReactNode }) => (
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    ),
+  })
 }
 
 describe('MarketData', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(useMarketStats).mockReturnValue({
+      data: undefined,
+      isLoading: false,
+      error: null,
+    } as never)
   })
   it('renders market data component', () => {
     renderWithProviders(<MarketData />)
@@ -215,7 +247,7 @@ describe('MarketData', () => {
   })
   it('displays no data message when candles are empty', async () => {
     renderWithProviders(<MarketData />)
-    expect(screen.queryByText(/Current Price/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Last closed price/)).not.toBeInTheDocument()
   })
   it('shows loading state while fetching candles', async () => {
     const { useCachedCandles } = await import('../../hooks/queries/market')
@@ -228,7 +260,7 @@ describe('MarketData', () => {
       refetch: vi.fn(),
     } as never)
     renderWithProviders(<MarketData />)
-    expect(screen.queryByText(/Current Price/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Last closed price/)).not.toBeInTheDocument()
   })
   it('displays exchange dropdown with options', async () => {
     const user = userEvent.setup()
@@ -278,27 +310,13 @@ describe('MarketData', () => {
 
     expect(useCachedCandles).toHaveBeenCalledWith('kraken', 'EUR-USD', '1h', 100, true)
   })
-  it('displays stats when candles data is available', async () => {
-    const mockCandles = [
-      { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
-      { open_at: '2024-01-01T01:00:00Z', open: 1.082, high: 1.086, low: 1.081, close: 1.085 },
-    ]
-    const { useCachedCandles } = await import('../../hooks/queries/market')
-
-    vi.mocked(useCachedCandles).mockReturnValue({
-      data: buildCachedEnvelope(mockCandles),
-      isLoading: false,
-      error: null,
-      isFetching: false,
-      refetch: vi.fn(),
-    } as never)
+  it('displays true one-day statistics from their independent query', () => {
+    mockStatsResult(completeStats)
     renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      expect(screen.getAllByText('Current Price').length).toBeGreaterThan(0)
-      expect(screen.getAllByText('24h Change').length).toBeGreaterThan(0)
-      expect(screen.getAllByText('24h High').length).toBeGreaterThan(0)
-      expect(screen.getAllByText('24h Low').length).toBeGreaterThan(0)
-    })
+    expect(screen.getAllByText('Last closed price').length).toBeGreaterThan(0)
+    expect(screen.getByText('1.1200')).toBeInTheDocument()
+    expect(screen.getByText('1.0100')).toBeInTheDocument()
+    expect(document.querySelector('time')?.dateTime).toBe(completeStats.windowEnd)
   })
   it('displays chart when candles data is available', async () => {
     const mockCandles = [
@@ -319,164 +337,107 @@ describe('MarketData', () => {
       expect(screen.getByText('Price Chart')).toBeInTheDocument()
     })
   })
-  it('handles duplicate open_at by keeping the last one', async () => {
-    const mockCandles = [
-      { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
-      { open_at: '2024-01-01T00:00:00Z', open: 1.0825, high: 1.0855, low: 1.08, close: 1.084 },
-      { open_at: '2024-01-01T01:00:00Z', open: 1.084, high: 1.087, low: 1.083, close: 1.086 },
-    ]
+  it('does not calculate statistics from a duplicate or short live cache', async () => {
     const { useCachedCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCachedCandles).mockReturnValue({
-      data: buildCachedEnvelope(mockCandles),
-      isLoading: false,
-      error: null,
+      data: buildCachedEnvelope([
+        { open_at: '2024-01-01T00:00:00Z', open: 100, high: 999, low: 1, close: 200 },
+        { open_at: '2024-01-01T00:00:00Z', open: 200, high: 999, low: 1, close: 300 },
+      ]),
       isFetching: false,
-      refetch: vi.fn(),
     } as never)
+    mockStatsResult(completeStats)
     renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      expect(screen.getAllByText('Current Price').length).toBeGreaterThan(0)
-    })
+    expect(screen.getByText('1.0850')).toBeInTheDocument()
+    expect(screen.getByText('1.1200')).toBeInTheDocument()
+    expect(screen.queryByText('300.0000')).not.toBeInTheDocument()
   })
-  it('displays positive change with green color', async () => {
-    const mockCandles = [
-      { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.08 },
-      { open_at: '2024-01-01T01:00:00Z', open: 1.08, high: 1.086, low: 1.079, close: 1.085 },
-    ]
-    const { useCachedCandles } = await import('../../hooks/queries/market')
-
-    vi.mocked(useCachedCandles).mockReturnValue({
-      data: buildCachedEnvelope(mockCandles),
-      isLoading: false,
-      error: null,
-      isFetching: false,
-      refetch: vi.fn(),
-    } as never)
+  it('displays positive change with green color', () => {
+    mockStatsResult(completeStats)
     renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      const changeElement = screen.getByText(/\+0\.0050/)
-
-      expect(changeElement).toBeInTheDocument()
-      expect(changeElement).toHaveClass('text-rising-600')
-    })
+    expect(screen.getByText(/\+0\.0050/)).toHaveClass('text-rising-600')
   })
-  it('displays negative change with red color', async () => {
-    const mockCandles = [
-      { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.085 },
-      { open_at: '2024-01-01T01:00:00Z', open: 1.085, high: 1.086, low: 1.079, close: 1.08 },
-    ]
-    const { useCachedCandles } = await import('../../hooks/queries/market')
-
-    vi.mocked(useCachedCandles).mockReturnValue({
-      data: buildCachedEnvelope(mockCandles),
-      isLoading: false,
-      error: null,
-      isFetching: false,
-      refetch: vi.fn(),
-    } as never)
+  it('displays negative change with red color', () => {
+    mockStatsResult({ ...completeStats, change: -0.005, changePercent: -0.46 })
     renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      const changeElement = screen.getByText(/-0\.0050/)
-
-      expect(changeElement).toBeInTheDocument()
-      expect(changeElement).toHaveClass('text-falling-600')
-    })
+    expect(screen.getByText(/-0\.0050/)).toHaveClass('text-falling-600')
   })
-  it('switches the chart to a market-time window when scrubbed into the past', async () => {
-    const replayCandles = [
-      {
-        type: 'candle',
-        session_id: '',
-        sequence_id: 0,
-        public_id: 'r1',
-        timestamp: '2024-01-01T00:00:00Z',
-        instrument: 'EUR-USD',
-        exchange: 'kraken',
-        timeframe: '1h',
-        open_at: '2024-01-01T00:00:00Z',
-        open: 1.08,
-        high: 1.085,
-        low: 1.079,
-        close: 1.08,
-        vwap: 1.08,
-        trades: 1,
-        volume: 1,
-      },
-      {
-        type: 'candle',
-        session_id: '',
-        sequence_id: 0,
-        public_id: 'r2',
-        timestamp: '2024-01-01T01:00:00Z',
-        instrument: 'EUR-USD',
-        exchange: 'kraken',
-        timeframe: '1h',
-        open_at: '2024-01-01T01:00:00Z',
-        open: 1.08,
-        high: 1.09,
-        low: 1.079,
-        close: 1.088,
-        vwap: 1.08,
-        trades: 1,
-        volume: 1,
-      },
-    ]
-    const { useCachedCandles, useTimeTravelCandles } = await import('../../hooks/queries/market')
+  it('anchors statistics at the scrubber time without a future half-window', async () => {
+    const user = userEvent.setup()
 
-    vi.mocked(useCachedCandles).mockReturnValue({
+    renderWithProviders(<MarketData />)
+    await user.click(screen.getByRole('button', { name: '-1d' }))
+    const lastCall = vi.mocked(useMarketStats).mock.calls.at(-1)
+
+    expect(lastCall?.[0]).toBe('kraken')
+    expect(lastCall?.[1]).toBe('EUR-USD')
+    expect(lastCall?.[2]).toBeLessThan(Date.now())
+    expect(lastCall).toHaveLength(3)
+  })
+
+  it('preserves the replay anchor and statistics identity when chart timeframe changes', async () => {
+    const { useMarketStore } = await import('../../stores/market')
+    const initial = useMarketStore()
+    const { rerender } = renderWithProviders(<MarketData />)
+
+    fireEvent.click(screen.getByRole('button', { name: '-1d' }))
+    const previous = vi.mocked(useMarketStats).mock.calls.at(-1)
+
+    try {
+      vi.mocked(useMarketStore).mockReturnValue({ ...initial, selectedTimeframe: '5m' })
+      rerender(<MarketData />)
+      expect(vi.mocked(useMarketStats).mock.calls.at(-1)).toEqual(previous)
+    } finally {
+      vi.mocked(useMarketStore).mockReturnValue(initial)
+    }
+  })
+  it('shows loading without reusing previous statistics while replay is pending', async () => {
+    vi.mocked(useMarketStats).mockReturnValue({
       data: undefined,
-      isLoading: false,
+      isLoading: true,
       error: null,
-      isFetching: false,
-      refetch: vi.fn(),
-    } as never)
-    vi.mocked(useTimeTravelCandles).mockReturnValue({
-      data: replayCandles,
-      isLoading: false,
-      error: null,
-      isFetching: false,
-      refetch: vi.fn(),
     } as never)
     const user = userEvent.setup()
 
     renderWithProviders(<MarketData />)
     await user.click(screen.getByRole('button', { name: '-1d' }))
-    await waitFor(() => {
-      expect(screen.getAllByText('Current Price').length).toBeGreaterThan(0)
-    })
-    expect(vi.mocked(useTimeTravelCandles)).toHaveBeenCalledWith(
-      'kraken',
-      'EUR-USD',
-      '1h',
-      expect.any(String),
-      expect.any(String),
-      400,
-      true
-    )
+    expect(screen.getByText('Loading...')).toBeInTheDocument()
+    expect(screen.queryByText('Last closed price')).not.toBeInTheDocument()
   })
 
-  it('keeps an empty stats window while scrubbing before replay candles load', async () => {
-    const { useCachedCandles, useTimeTravelCandles } = await import('../../hooks/queries/market')
-
-    vi.mocked(useCachedCandles).mockReturnValue({
-      data: undefined,
-      isFetching: false,
-    } as never)
-    vi.mocked(useTimeTravelCandles).mockReturnValue({
-      data: undefined,
-      isFetching: false,
-    } as never)
-    const user = userEvent.setup()
-
+  it('keeps partial history honest without fabricating a zero return', () => {
+    mockStatsResult({
+      ...completeStats,
+      change: null,
+      changePercent: null,
+      high24h: null,
+      low24h: null,
+    })
     renderWithProviders(<MarketData />)
-    await user.click(screen.getByRole('button', { name: '-1d' }))
-    await waitFor(() => {
-      expect(screen.getByTestId('market-chart')).toBeInTheDocument()
-    })
-    expect(screen.queryByText('Current Price')).not.toBeInTheDocument()
+    expect(screen.getByText('Complete 24h history unavailable')).toBeInTheDocument()
+    expect(screen.getAllByText('—')).toHaveLength(3)
+    expect(screen.queryByText(/0.00%/)).not.toBeInTheDocument()
   })
 
+  it('shows unavailable price and omits percentage for a zero baseline', () => {
+    mockStatsResult({ ...completeStats, price: null, change: 0, changePercent: null })
+    renderWithProviders(<MarketData />)
+    expect(screen.getByText('—')).toBeInTheDocument()
+    expect(screen.getByText('+0.00')).toBeInTheDocument()
+    expect(screen.queryByText(/%/)).not.toBeInTheDocument()
+  })
+
+  it('reports a failed statistics query instead of showing stale values', () => {
+    vi.mocked(useMarketStats).mockReturnValue({
+      data: completeStats,
+      isLoading: false,
+      error: new Error('range failed'),
+    } as never)
+    renderWithProviders(<MarketData />)
+    expect(screen.getByRole('alert')).toHaveTextContent('range failed')
+    expect(screen.queryByText('Last closed price')).not.toBeInTheDocument()
+  })
   it('uses raw timeframe text when selected timeframe is unknown', async () => {
     const { useCachedCandles } = await import('../../hooks/queries/market')
     const { useMarketStore } = await import('../../stores/market')
@@ -626,7 +587,7 @@ describe('MarketData', () => {
       refetch: vi.fn(),
     } as never)
     renderWithProviders(<MarketData />)
-    expect(screen.queryByText('Current Price')).not.toBeInTheDocument()
+    expect(screen.queryByText('Last closed price')).not.toBeInTheDocument()
   })
   it('handles undefined exchanges data', async () => {
     const { useExchanges } = await import('../../hooks/queries/market')
@@ -650,23 +611,26 @@ describe('MarketData', () => {
     renderWithProviders(<MarketData />)
     expect(screen.getByText(/Market Data/i)).toBeInTheDocument()
   })
-  it('calculates stats from single candle', async () => {
-    const mockCandles = [
-      { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
-    ]
+  it('does not manufacture 24h statistics from a single cached candle', async () => {
     const { useCachedCandles } = await import('../../hooks/queries/market')
 
     vi.mocked(useCachedCandles).mockReturnValue({
-      data: buildCachedEnvelope(mockCandles),
-      isLoading: false,
-      error: null,
+      data: buildCachedEnvelope([
+        { open_at: '2024-01-01T00:00:00Z', open: 1.08, high: 1.085, low: 1.079, close: 1.082 },
+      ]),
       isFetching: false,
-      refetch: vi.fn(),
     } as never)
-    renderWithProviders(<MarketData />)
-    await waitFor(() => {
-      expect(screen.getAllByText('Current Price').length).toBeGreaterThan(0)
+    mockStatsResult({
+      ...completeStats,
+      price: null,
+      change: null,
+      changePercent: null,
+      high24h: null,
+      low24h: null,
     })
+    renderWithProviders(<MarketData />)
+    expect(screen.getByText('Complete 24h history unavailable')).toBeInTheDocument()
+    expect(screen.getAllByText('—')).toHaveLength(4)
   })
   it('shows selected instrument in input', async () => {
     renderWithProviders(<MarketData />)
@@ -708,15 +672,23 @@ describe('MarketData', () => {
       false
     )
   })
-  it('enables candle fetch in time travel even without subscription', async () => {
+  it('disables the live cache and subscription throughout global time travel', async () => {
     const { useAppStore } = await import('../../stores/app')
     const { useMarketSubscription } = await import('../../hooks/useMarketSubscription')
 
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: Record<string, unknown>) => unknown
-    ) => selector({ asOf: '2024-01-01T00:00:00Z', isTimeTraveling: true })) as never)
+    ) => selector({ asOf: '2024-01-01T00:00:00Z', isTimeTraveling: true, locale: 'us' })) as never)
     vi.mocked(useMarketSubscription).mockReturnValue(false)
     const { useCachedCandles } = await import('../../hooks/queries/market')
+
+    vi.mocked(useCachedCandles).mockReturnValue({
+      data: buildCachedEnvelope(
+        [{ open_at: '2026-06-20T00:00:00Z', open: 100, high: 101, low: 99, close: 100 }],
+        { isWarm: false }
+      ),
+      isFetching: false,
+    } as never)
 
     renderWithProviders(<MarketData />)
     await waitFor(() => {
@@ -725,12 +697,17 @@ describe('MarketData', () => {
         expect.any(String),
         expect.any(String),
         expect.any(Number),
-        true
+        false
       )
     })
+    expect(useMarketSubscription).toHaveBeenCalledWith(
+      expect.objectContaining({ instrument: null })
+    )
+    expect(mockChartProps).toHaveBeenLastCalledWith({ liveCandle: null })
+    expect(screen.queryByText(/Cache warming up/)).not.toBeInTheDocument()
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: Record<string, unknown>) => unknown
-    ) => selector({ asOf: null, isTimeTraveling: false })) as never)
+    ) => selector({ asOf: null, isTimeTraveling: false, locale: 'us' })) as never)
     vi.mocked(useMarketSubscription).mockReturnValue(true)
   })
 

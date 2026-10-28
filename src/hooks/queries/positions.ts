@@ -50,38 +50,40 @@ export const usePositions = () => {
   })
 }
 
+/**
+ * Preserve position coverage without inventing a portfolio valuation basis.
+ *
+ * The position projection has no verified reporting currency, settlement or
+ * contract multiplier, and no account cash. Its fields cannot establish equity,
+ * cross-position monetary totals or a return denominator. Those aggregates stay
+ * unknown; the reconstructed P&L timeline supplies explicit valuation coverage.
+ */
 export const usePositionsSummary = () => {
   const { data: positions, ...rest } = usePositions()
   const summary = React.useMemo(() => {
     if (!positions) return null
-    const longCost = positions
-      .filter(p => p.quantity > 0)
-      .reduce((sum, p) => sum + p.quantity * (p.averagePrice ?? 0), 0)
-    const shortCost = positions
-      .filter(p => p.quantity < 0)
-      .reduce((sum, p) => sum + Math.abs(p.quantity) * (p.averagePrice ?? 0), 0)
-    const totalExposure = longCost + shortCost
-    const totalUnrealizedPnl = positions.reduce((sum, p) => sum + (p.unrealizedPnl ?? 0), 0)
-    const totalRealizedPnl = positions.reduce((sum, p) => sum + p.realizedPnl, 0)
-    const totalPnL = totalUnrealizedPnl + totalRealizedPnl
-    const totalValue = totalExposure + totalPnL
-    const pnlPercent = totalExposure > 0 ? (totalPnL / totalExposure) * 100 : 0
-    const incompleteValuation = positions.some(
-      p =>
-        Math.abs(p.quantity) > 1e-12 &&
-        (p.markPrice == null || p.unrealizedPnl == null || p.averagePrice == null)
-    )
+    const incompleteValuation = positions.some(position => {
+      if (!Number.isFinite(position.quantity)) return true
+      if (Math.abs(position.quantity) <= 1e-12) return false
+
+      return [
+        position.averagePrice,
+        position.markPrice,
+        position.unrealizedPnl,
+        position.realizedPnl,
+      ].some(value => !Number.isFinite(value))
+    })
 
     return {
       count: positions.length,
-      totalValue,
-      totalPnL,
-      totalUnrealizedPnl,
-      totalRealizedPnl,
-      longCost,
-      shortCost,
-      totalExposure,
-      pnlPercent,
+      totalValue: null,
+      totalPnL: null,
+      totalUnrealizedPnl: null,
+      totalRealizedPnl: null,
+      longCost: null,
+      shortCost: null,
+      totalExposure: null,
+      pnlPercent: null,
       incompleteValuation,
       instruments: [...new Set(positions.map(p => p.instrument))],
     }

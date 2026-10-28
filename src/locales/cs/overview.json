@@ -36,7 +36,8 @@
     "positions": "Pozice",
     "instrumentsCount": "Instrumenty: {{count}}",
     "empty": "Nejsou dostupná data o pozicích",
-    "incompleteValuation": "Neúplná data — některým pozicím chybí použitelná mark cena nebo vstupní cena; součty zahrnují jen známé složky"
+    "incompleteValuation": "U některých otevřených pozic chybí údaje pro ocenění nebo jsou neplatné.",
+    "aggregationUnavailable": "Souhrny portfolia vyžadují ověřenou měnu a základ ocenění kontraktů. Otevřete Pozice a vyberte {{tab}}."
   },
   "signals": {
     "title": "Nedávné signály",

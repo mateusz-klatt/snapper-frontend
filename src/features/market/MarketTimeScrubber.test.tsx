@@ -5,7 +5,7 @@ import { useAppStore } from '../../stores/app'
 
 describe('MarketTimeScrubber', () => {
   beforeEach(() => {
-    useAppStore.setState({ locale: 'us' })
+    useAppStore.setState({ locale: 'us', asOf: null, isTimeTraveling: false })
     vi.clearAllMocks()
   })
 
@@ -86,5 +86,30 @@ describe('MarketTimeScrubber', () => {
     } finally {
       vi.useRealTimers()
     }
+  })
+  it('bounds presets and the slider by global knowledge time and never calls it live', () => {
+    const asOf = '2026-06-10T12:00:00Z'
+    const horizon = Date.parse(asOf)
+    const onChange = vi.fn()
+
+    useAppStore.setState({ asOf, isTimeTraveling: true })
+    render(<MarketTimeScrubber value={null} onChange={onChange} />)
+    const slider = screen.getByRole('slider') as HTMLInputElement
+
+    expect(slider.max).toBe(String(horizon))
+    expect(slider.value).toBe(String(horizon))
+    expect(screen.queryByText('Live')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: '-1d' }))
+    expect(onChange).toHaveBeenCalledWith(horizon - 24 * 60 * 60 * 1000)
+    fireEvent.click(screen.getAllByRole('button')[0] as HTMLButtonElement)
+    expect(onChange).toHaveBeenLastCalledWith(null)
+  })
+
+  it('clamps a later business-time selection to the knowledge horizon', () => {
+    const asOf = '2026-06-10T12:00:00Z'
+
+    useAppStore.setState({ asOf, isTimeTraveling: true })
+    render(<MarketTimeScrubber value={Date.parse('2026-06-11T12:00:00Z')} onChange={vi.fn()} />)
+    expect((screen.getByRole('slider') as HTMLInputElement).value).toBe(String(Date.parse(asOf)))
   })
 })

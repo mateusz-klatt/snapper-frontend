@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useSyncExternalStore } from 'react'
 import { ChartNoAxesCombined, Info, TriangleAlert, WalletCards } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { NativeSelect } from '../../components/NativeSelect'
@@ -18,6 +18,30 @@ import { PNL_MARKER_COLORS } from './pnlMarkerStyles'
 
 type TimelineWindow = '24h' | '7d' | '30d' | '90d'
 type TimelineValuationCurrency = 'USD' | 'PLN' | 'EUR'
+
+const MINUTE_MS = 60_000
+
+const currentClosedMinute = (): number => Math.floor(Date.now() / MINUTE_MS) * MINUTE_MS
+
+const subscribeClosedMinutes = (onChange: () => void): (() => void) => {
+  let timer: ReturnType<typeof setTimeout>
+
+  const schedule = () => {
+    timer = setTimeout(
+      () => {
+        schedule()
+        onChange()
+      },
+      MINUTE_MS - (Date.now() % MINUTE_MS)
+    )
+  }
+
+  schedule()
+
+  return () => clearTimeout(timer)
+}
+
+const subscribeFrozenMinute = (): (() => void) => () => undefined
 
 const WINDOW_DURATIONS_MS: Record<TimelineWindow, number> = {
   '24h': 24 * 60 * 60 * 1_000,
@@ -60,16 +84,22 @@ export const PortfolioTimeline: React.FC = () => {
   const [granularity, setGranularity] = useState<PortfolioPnlGranularity>('1m')
   const [valuationCcy, setValuationCcy] = useState<TimelineValuationCurrency>('USD')
   const [showMarkers, setShowMarkers] = useState(true)
-  const [liveWindowEnd, setLiveWindowEnd] = useState(() => Date.now())
   const walletQuery = useWallets()
   const selectedWallet = walletQuery.data?.payload.find(
     wallet => wallet.public_id === walletPublicId
   )
   const walletModeReady = selectedWallet !== undefined
   const mode = selectedWallet?.is_paper === true ? 'paper' : 'live'
+  const liveWindowEnd = useSyncExternalStore(
+    asOf === null && walletModeReady && walletPublicId !== null
+      ? subscribeClosedMinutes
+      : subscribeFrozenMinute,
+    currentClosedMinute,
+    currentClosedMinute
+  )
   const anchorMs = asOf === null ? liveWindowEnd : new Date(asOf).getTime()
   const from = new Date(anchorMs - WINDOW_DURATIONS_MS[window]).toISOString()
-  const to = new Date(anchorMs).toISOString()
+  const to = asOf === null ? undefined : new Date(anchorMs).toISOString()
   const {
     data,
     isLoading: isTimelineLoading,
@@ -129,7 +159,6 @@ export const PortfolioTimeline: React.FC = () => {
           value={window}
           onChange={value => {
             setWindow(value as TimelineWindow)
-            setLiveWindowEnd(Date.now())
           }}
           options={windowOptions}
           ariaLabel={t('timeline.controls.windowAriaLabel')}

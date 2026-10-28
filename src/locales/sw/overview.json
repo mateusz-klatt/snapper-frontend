@@ -36,7 +36,8 @@
     "positions": "Nafasi",
     "instrumentsCount": "Instrumenti: {{count}}",
     "empty": "Hakuna data ya nafasi inayopatikana",
-    "incompleteValuation": "Data haijakamilika — baadhi ya nafasi hazina bei ya marejeleo au bei ya kuingia inayoweza kutumika; jumla inahusisha vipengele vinavyojulikana pekee"
+    "incompleteValuation": "Baadhi ya nafasi zilizo wazi zina data ya uthamini inayokosekana au isiyo sahihi.",
+    "aggregationUnavailable": "Jumla za jalada zinahitaji sarafu na msingi wa uthamini wa mikataba uliothibitishwa. Fungua Nafasi, kisha chagua {{tab}}."
   },
   "signals": {
     "title": "Ishara za Karibuni",

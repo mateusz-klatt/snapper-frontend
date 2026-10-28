@@ -19,10 +19,11 @@
     "1d": "1 lá"
   },
   "stats": {
-    "currentPrice": "Praghas Reatha",
+    "currentPrice": "An praghas dúnta is déanaí",
     "change24h": "Athrú 24h",
     "high24h": "Ard 24h",
-    "low24h": "Íseal 24h"
+    "low24h": "Íseal 24h",
+    "incomplete": "Níl stair iomlán 24 uair ar fáil"
   },
   "chart": {
     "title": "Cairt Phraghais",

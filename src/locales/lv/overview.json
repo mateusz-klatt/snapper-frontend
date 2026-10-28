@@ -36,7 +36,8 @@
     "positions": "Pozīcijas",
     "instrumentsCount": "Instrumentu skaits: {{count}}",
     "empty": "Pozīciju dati nav pieejami",
-    "incompleteValuation": "Dati ir nepilnīgi — dažām pozīcijām nav izmantojamas atsauces cenas vai ieejas cenas; kopsummās ir iekļauti tikai zināmie komponenti"
+    "incompleteValuation": "Dažām atvērtajām pozīcijām trūkst vērtēšanas datu vai tie nav derīgi.",
+    "aggregationUnavailable": "Portfeļa kopsummām nepieciešama pārbaudīta valūta un līgumu vērtēšanas bāze. Atveriet Pozīcijas un izvēlieties {{tab}}."
   },
   "signals": {
     "title": "Nesenie signāli",
