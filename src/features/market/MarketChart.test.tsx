@@ -3,6 +3,7 @@ import * as React from 'react'
 import { render, screen, waitFor, act } from '@testing-library/react'
 import type { CandleData } from '../../types/api'
 import { MarketChart } from './MarketChart'
+import { useAppStore } from '../../stores/app'
 
 const mocks = vi.hoisted(() => {
   const handlerRef = { current: null as null | (() => void) }
@@ -105,6 +106,7 @@ const baseProps = {
 
 describe('MarketChart', () => {
   beforeEach(() => {
+    useAppStore.setState({ asOf: null, isTimeTraveling: false })
     vi.clearAllMocks()
     mocks.handlerRef.current = null
     mocks.timeScale.getVisibleLogicalRange.mockReturnValue(null)
@@ -141,6 +143,94 @@ describe('MarketChart', () => {
     const call = mocks.getCandlesRange.mock.calls[0]
 
     expect(call?.[4]).toBe(new Date(anchorMs).toISOString())
+  })
+
+  it('reloads the chart at the global knowledge horizon without changing market selection', async () => {
+    mocks.getCandlesRange.mockResolvedValue([candleRow('2026-06-10T11:00:00Z')])
+    render(<MarketChart {...baseProps} />)
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(1))
+
+    act(() => useAppStore.getState().setAsOf('2026-06-10T12:00:00Z'))
+
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    const call = mocks.getCandlesRange.mock.calls.at(-1)
+
+    expect(call?.[4]).toBe('2026-06-10T12:00:00.000Z')
+    expect(call?.[6]).toBe('2026-06-10T12:00:00Z')
+  })
+
+  it('reloads a fixed business-time anchor when its knowledge horizon changes', async () => {
+    const anchorMs = Date.parse('2026-06-09T12:00:00Z')
+
+    useAppStore.setState({ asOf: '2026-06-10T12:00:00Z', isTimeTraveling: true })
+    mocks.getCandlesRange.mockResolvedValue([candleRow('2026-06-09T11:00:00Z')])
+    render(<MarketChart {...baseProps} anchorMs={anchorMs} />)
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(1))
+
+    act(() => useAppStore.getState().setAsOf('2026-06-11T12:00:00Z'))
+
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    const call = mocks.getCandlesRange.mock.calls.at(-1)
+
+    expect(call?.[4]).toBe('2026-06-09T12:00:00.000Z')
+    expect(call?.[6]).toBe('2026-06-11T12:00:00Z')
+  })
+
+  it('hides the previous horizon while replacement history is pending and returns to live', async () => {
+    mocks.getCandlesRange.mockResolvedValue([candleRow('2026-06-10T11:00:00Z')])
+    render(<MarketChart {...baseProps} />)
+    await waitFor(() =>
+      expect(screen.getByTestId('chart-shell').parentElement).toHaveStyle({ visibility: 'visible' })
+    )
+    const pending = deferred<CandleData[]>()
+
+    mocks.getCandlesRange.mockReturnValueOnce(pending.promise)
+    act(() => useAppStore.getState().setAsOf('2026-06-10T12:00:00Z'))
+    expect(screen.getByTestId('chart-shell').parentElement).toHaveStyle({ visibility: 'hidden' })
+    await act(async () => {
+      pending.resolve([candleRow('2026-06-10T11:59:00Z')])
+      await pending.promise
+    })
+    expect(screen.getByTestId('chart-shell').parentElement).toHaveStyle({ visibility: 'visible' })
+
+    act(() => useAppStore.getState().clearAsOf())
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(3))
+    expect(mocks.getCandlesRange.mock.calls.at(-1)?.[6]).toBeNull()
+  })
+
+  it('bounds a later business anchor by the knowledge horizon', async () => {
+    useAppStore.setState({ asOf: '2026-06-10T12:00:00Z', isTimeTraveling: true })
+    render(<MarketChart {...baseProps} anchorMs={Date.parse('2026-06-11T12:00:00Z')} />)
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalled())
+    expect(mocks.getCandlesRange.mock.calls[0]?.[4]).toBe('2026-06-10T12:00:00.000Z')
+  })
+
+  it('never folds a live candle into a globally historical chart', async () => {
+    useAppStore.setState({ asOf: '2026-06-10T12:00:00Z', isTimeTraveling: true })
+    mocks.getCandlesRange.mockResolvedValue([candleRow('2026-06-10T11:59:00Z')])
+    render(<MarketChart {...baseProps} liveCandle={liveWc('2026-06-20T00:01:00Z')} />)
+
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalled())
+    expect(mocks.series.update).not.toHaveBeenCalled()
+  })
+
+  it('discards a prior horizon result after a newer historical request completes', async () => {
+    const previous = deferred<CandleData[]>()
+
+    mocks.getCandlesRange.mockReturnValueOnce(previous.promise)
+    render(<MarketChart {...baseProps} />)
+    mocks.getCandlesRange.mockResolvedValueOnce([candleRow('2026-06-10T11:00:00Z')])
+    act(() => useAppStore.getState().setAsOf('2026-06-10T12:00:00Z'))
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalled())
+    mocks.series.setData.mockClear()
+
+    await act(async () => {
+      previous.resolve([candleRow('2026-06-20T00:00:00Z')])
+      await previous.promise
+    })
+
+    expect(mocks.series.setData).not.toHaveBeenCalled()
   })
 
   it('folds a live candle into the chart when not scrubbed', async () => {

@@ -19,10 +19,11 @@
     "1d": "1 Araw"
   },
   "stats": {
-    "currentPrice": "Kasalukuyang presyo",
+    "currentPrice": "Huling presyo ng pagsasara",
     "change24h": "24h change",
     "high24h": "24h high",
-    "low24h": "24h low"
+    "low24h": "24h low",
+    "incomplete": "Hindi available ang kumpletong kasaysayan ng 24 oras"
   },
   "chart": {
     "title": "Chart ng presyo",

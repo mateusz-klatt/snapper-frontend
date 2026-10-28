@@ -16,7 +16,7 @@ export interface PortfolioPnlSeriesParams {
   mode: string
   granularity: PortfolioPnlGranularity
   from: string
-  to: string
+  to?: string | undefined
   asOf: string | null
   valuationCcy: string
 }
@@ -28,9 +28,12 @@ const buildPnlSearchParams = (params: Readonly<PortfolioPnlSeriesParams>): URLSe
     mode: params.mode,
     granularity: params.granularity,
     from: params.from,
-    to: params.to,
     valuation_ccy: params.valuationCcy,
   })
+
+  if (params.to !== undefined) {
+    search.set('to', params.to)
+  }
 
   if (params.asOf !== null) {
     search.set('as_of', params.asOf)

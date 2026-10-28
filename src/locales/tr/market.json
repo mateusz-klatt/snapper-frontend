@@ -19,10 +19,11 @@
     "1d": "1 Gün"
   },
   "stats": {
-    "currentPrice": "Güncel Fiyat",
+    "currentPrice": "Son kapanış fiyatı",
     "change24h": "24s Değişim",
     "high24h": "24s En Yüksek",
-    "low24h": "24s En Düşük"
+    "low24h": "24s En Düşük",
+    "incomplete": "Tam 24 saatlik geçmiş kullanılamıyor"
   },
   "chart": {
     "title": "Fiyat Grafiği",

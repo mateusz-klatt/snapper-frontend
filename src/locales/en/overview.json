@@ -36,7 +36,8 @@
     "positions": "Positions",
     "instrumentsCount": "Instruments: {{count}}",
     "empty": "No positions data available",
-    "incompleteValuation": "Data incomplete — some positions lack a usable mark or entry price; totals sum only known components"
+    "incompleteValuation": "Some open positions have missing or invalid valuation data.",
+    "aggregationUnavailable": "Portfolio totals require a verified currency and contract basis. Open Positions, then select {{tab}}."
   },
   "signals": {
     "title": "Recent Signals",

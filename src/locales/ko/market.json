@@ -19,10 +19,11 @@
     "1d": "1일"
   },
   "stats": {
-    "currentPrice": "현재가",
+    "currentPrice": "최근 종가",
     "change24h": "24시간 변동",
     "high24h": "24시간 고가",
-    "low24h": "24시간 저가"
+    "low24h": "24시간 저가",
+    "incomplete": "전체 24시간 기록을 사용할 수 없습니다"
   },
   "chart": {
     "title": "가격 차트",

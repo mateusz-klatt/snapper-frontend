@@ -19,10 +19,11 @@
     "1d": "1 Tag"
   },
   "stats": {
-    "currentPrice": "Aktueller Kurs",
+    "currentPrice": "Letzter Schlusskurs",
     "change24h": "Veränderung 24h",
     "high24h": "Hoch 24h",
-    "low24h": "Tief 24h"
+    "low24h": "Tief 24h",
+    "incomplete": "Vollständiger 24-Stunden-Verlauf nicht verfügbar"
   },
   "chart": {
     "title": "Kurschart",

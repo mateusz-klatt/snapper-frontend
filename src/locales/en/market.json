@@ -19,10 +19,11 @@
     "1d": "1 Day"
   },
   "stats": {
-    "currentPrice": "Current Price",
+    "currentPrice": "Last closed price",
     "change24h": "24h Change",
     "high24h": "24h High",
-    "low24h": "24h Low"
+    "low24h": "24h Low",
+    "incomplete": "Complete 24h history unavailable"
   },
   "chart": {
     "title": "Price Chart",

@@ -19,10 +19,11 @@
     "1d": "1 ngày"
   },
   "stats": {
-    "currentPrice": "Giá hiện tại",
+    "currentPrice": "Giá đóng cửa gần nhất",
     "change24h": "Biến động 24h",
     "high24h": "Cao nhất 24h",
-    "low24h": "Thấp nhất 24h"
+    "low24h": "Thấp nhất 24h",
+    "incomplete": "Không có lịch sử đầy đủ trong 24 giờ"
   },
   "chart": {
     "title": "Biểu đồ giá",

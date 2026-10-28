@@ -8,6 +8,7 @@ import {
   useCreateTrailingStop,
   useTrailingStopForCycle,
 } from './positions'
+import type { PositionData } from '../../types/api'
 import { useAuth } from '../../stores/auth'
 import { useAppStore } from '../../stores/app'
 import {
@@ -71,6 +72,25 @@ vi.mock('../../lib/transforms', () => ({
   })),
 }))
 
+const positionFixture = (overrides: Partial<PositionData> = {}): PositionData => ({
+  type: 'position',
+  sequence_id: 1,
+  public_id: 'position-1',
+  timestamp: '2026-06-20T12:00:00Z',
+  session_id: 'test-session',
+  instrument: 'BTC-USD',
+  instrument_public_id: 'instrument-1',
+  exchange: 'kraken',
+  mode: 'paper',
+  wallet_public_id: 'wallet-1',
+  quantity: 1,
+  average_price: 100,
+  mark_price: 120,
+  unrealized_pnl: 20,
+  realized_pnl: 0,
+  ...overrides,
+})
+
 const createQueryClient = () =>
   new QueryClient({
     defaultOptions: {
@@ -92,6 +112,45 @@ describe('positions queries', () => {
   })
 
   describe('usePositionsSummary', () => {
+    it('preserves a missing open-position mark and unrealized value as unknown aggregates', async () => {
+      vi.mocked(getPositions).mockResolvedValueOnce(
+        envelope('position_list', {
+          payload: [positionFixture({ mark_price: null, unrealized_pnl: null })],
+          count: 1,
+        }) as never
+      )
+      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(result.current.data?.count).toBe(1)
+      expect(result.current.data?.incompleteValuation).toBe(true)
+      expect(result.current.data?.totalUnrealizedPnl).toBeNull()
+      expect(result.current.data?.totalPnL).toBeNull()
+      expect(result.current.data?.totalValue).toBeNull()
+      expect(result.current.data?.pnlPercent).toBeNull()
+    })
+
+    it.each([
+      [positionFixture({ instrument: 'BTC-USD' }), positionFixture({ instrument: 'ETH-EUR' })],
+      [positionFixture({ exchange: 'kraken_futures', instrument: 'BTC-USD-PERP' })],
+      [positionFixture({ exchange: 'kraken_futures', instrument: 'BTC-USD' })],
+    ])(
+      'does not invent common-currency aggregates or derivative contract economics (%j)',
+      async (...positions) => {
+        vi.mocked(getPositions).mockResolvedValueOnce(
+          envelope('position_list', { payload: positions, count: positions.length }) as never
+        )
+        const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+
+        await waitFor(() => expect(result.current.isSuccess).toBe(true))
+        expect(result.current.data?.count).toBe(positions.length)
+        expect(result.current.data?.totalUnrealizedPnl).toBeNull()
+        expect(result.current.data?.longCost).toBeNull()
+        expect(result.current.data?.totalValue).toBeNull()
+        expect(result.current.data?.pnlPercent).toBeNull()
+      }
+    )
+
     it('polls latest-state positions every five seconds', async () => {
       vi.useFakeTimers()
 
@@ -132,218 +191,123 @@ describe('positions queries', () => {
         })
       }
     })
-    it('flags incomplete valuation and sums only unrealized under its own total', async () => {
+    it.each([
+      ['quantity', Number.NaN],
+      ['quantity', Number.POSITIVE_INFINITY],
+      ['quantity', Number.NEGATIVE_INFINITY],
+      ['average_price', null],
+      ['average_price', Number.NaN],
+      ['average_price', Number.POSITIVE_INFINITY],
+      ['mark_price', null],
+      ['mark_price', Number.NaN],
+      ['mark_price', Number.NEGATIVE_INFINITY],
+      ['unrealized_pnl', null],
+      ['unrealized_pnl', Number.NaN],
+      ['unrealized_pnl', Number.POSITIVE_INFINITY],
+      ['realized_pnl', Number.NaN],
+      ['realized_pnl', Number.NEGATIVE_INFINITY],
+    ] as const)('flags invalid open-position valuation data (%s)', async (field, value) => {
       vi.mocked(getPositions).mockResolvedValueOnce(
         envelope('position_list', {
-          payload: [
-            {
-              type: 'position' as const,
-              public_id: '1',
-              timestamp: new Date().toISOString(),
-              instrument: 'BTC/USD',
-              exchange: 'kraken' as const,
-              quantity: 2,
-              average_price: 100,
-              unrealized_pnl: 40,
-              realized_pnl: 10,
-              mark_price: 120,
-              marked_at: new Date().toISOString(),
-            },
-            {
-              type: 'position' as const,
-              public_id: '2',
-              timestamp: new Date().toISOString(),
-              instrument: 'ETH/USD',
-              exchange: 'kraken' as const,
-              quantity: -3,
-              average_price: null,
-              unrealized_pnl: null,
-              realized_pnl: 5,
-            },
-            {
-              type: 'position' as const,
-              public_id: '3',
-              timestamp: new Date().toISOString(),
-              instrument: 'SOL/USD',
-              exchange: 'kraken' as const,
-              quantity: 4,
-              average_price: null,
-              unrealized_pnl: null,
-              realized_pnl: 0,
-            },
-          ],
-          count: 3,
-        }) as never
-      )
-      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
-
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
-      })
-      expect(result.current.data?.incompleteValuation).toBe(true)
-      expect(result.current.data?.totalUnrealizedPnl).toBe(40)
-      expect(result.current.data?.totalRealizedPnl).toBe(15)
-      expect(result.current.data?.longCost).toBe(200)
-      expect(result.current.data?.count).toBe(3)
-      expect(result.current.data?.shortCost).toBe(0)
-    })
-    it('reports complete valuation when every open position carries a mark', async () => {
-      vi.mocked(getPositions).mockResolvedValueOnce(
-        envelope('position_list', {
-          payload: [
-            {
-              type: 'position' as const,
-              public_id: '1',
-              timestamp: new Date().toISOString(),
-              instrument: 'BTC/USD',
-              exchange: 'kraken' as const,
-              quantity: 1,
-              average_price: 100,
-              unrealized_pnl: 20,
-              realized_pnl: 0,
-              mark_price: 120,
-              marked_at: new Date().toISOString(),
-            },
-          ],
+          payload: [positionFixture({ [field]: value })],
           count: 1,
         }) as never
       )
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(result.current.data?.incompleteValuation).toBe(true)
+      expect(result.current.data?.count).toBe(1)
+      expect(result.current.data?.totalUnrealizedPnl).toBeNull()
+      expect(result.current.data?.totalValue).toBeNull()
+      expect(result.current.data?.pnlPercent).toBeNull()
+    })
+
+    it('does not confuse complete marks with an authoritative aggregate valuation basis', async () => {
+      vi.mocked(getPositions).mockResolvedValueOnce(
+        envelope('position_list', {
+          payload: [positionFixture(), positionFixture({ public_id: 'position-2', quantity: -1 })],
+          count: 2,
+        }) as never
+      )
+      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(result.current.data).toEqual({
+        count: 2,
+        instruments: ['BTC-USD'],
+        incompleteValuation: false,
+        totalValue: null,
+        totalPnL: null,
+        totalUnrealizedPnl: null,
+        totalRealizedPnl: null,
+        longCost: null,
+        shortCost: null,
+        totalExposure: null,
+        pnlPercent: null,
       })
+    })
+
+    it('preserves count and unknown aggregates when switching to all-wallet scope', async () => {
+      const original = useAppStore.getState()
+
+      useAppStore.setState({
+        currentWalletPublicId: 'wallet-1',
+        currentOperatorPublicId: 'operator-1',
+        asOf: null,
+      })
+      vi.mocked(getPositions)
+        .mockResolvedValueOnce(
+          envelope('position_list', { payload: [positionFixture()], count: 1 }) as never
+        )
+        .mockResolvedValueOnce(
+          envelope('position_list', {
+            payload: [
+              positionFixture(),
+              positionFixture({
+                public_id: 'position-2',
+                instrument: 'ETH-EUR',
+                wallet_public_id: 'wallet-2',
+              }),
+            ],
+            count: 2,
+          }) as never
+        )
+
+      try {
+        const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+
+        await waitFor(() => expect(result.current.data?.count).toBe(1))
+        act(() =>
+          useAppStore.setState({ currentWalletPublicId: null, currentOperatorPublicId: null })
+        )
+        await waitFor(() => expect(result.current.data?.count).toBe(2))
+        expect(result.current.data?.instruments).toEqual(['BTC-USD', 'ETH-EUR'])
+        expect(result.current.data?.totalValue).toBeNull()
+        expect(result.current.data?.totalUnrealizedPnl).toBeNull()
+      } finally {
+        useAppStore.setState({
+          currentWalletPublicId: original.currentWalletPublicId,
+          currentOperatorPublicId: original.currentOperatorPublicId,
+          asOf: original.asOf,
+        })
+      }
+    })
+
+    it('keeps empty-portfolio counts while leaving monetary basis unknown', async () => {
+      vi.mocked(getPositions).mockResolvedValueOnce(
+        envelope('position_list', { payload: [], count: 0 }) as never
+      )
+      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(result.current.data?.count).toBe(0)
+      expect(result.current.data?.instruments).toEqual([])
       expect(result.current.data?.incompleteValuation).toBe(false)
+      expect(result.current.data?.totalValue).toBeNull()
+      expect(result.current.data?.pnlPercent).toBeNull()
     })
-    it('calculates summary for all-long positions', async () => {
-      vi.mocked(getPositions).mockResolvedValueOnce(
-        envelope('position_list', {
-          payload: [
-            {
-              type: 'position' as const,
-              public_id: '1',
-              timestamp: new Date().toISOString(),
-              instrument: 'BTC/USD',
-              exchange: 'kraken' as const,
-              quantity: 10,
-              average_price: 100,
-              unrealized_pnl: 50,
-              realized_pnl: 20,
-            },
-            {
-              type: 'position' as const,
-              public_id: '2',
-              timestamp: new Date().toISOString(),
-              instrument: 'ETH/USD',
-              exchange: 'kraken' as const,
-              quantity: 5,
-              average_price: 200,
-              unrealized_pnl: -10,
-              realized_pnl: 30,
-            },
-          ],
-          count: 2,
-        }) as never
-      )
-      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
-      })
-      expect(result.current.data).toBeDefined()
-      expect(result.current.data?.count).toBe(2)
-      expect(result.current.data?.instruments).toContain('BTC/USD')
-      expect(result.current.data?.instruments).toContain('ETH/USD')
-      expect(result.current.data?.totalPnL).toBe(90)
-      expect(result.current.data?.longCost).toBe(2000)
-      expect(result.current.data?.shortCost).toBe(0)
-      expect(result.current.data?.totalExposure).toBe(2000)
-      expect(result.current.data?.pnlPercent).toBeCloseTo(4.5, 5)
-    })
-    it('calculates summary for all-short positions (regression: pnlPercent must not be hidden)', async () => {
-      vi.mocked(getPositions).mockResolvedValueOnce(
-        envelope('position_list', {
-          payload: [
-            {
-              type: 'position' as const,
-              public_id: '1',
-              timestamp: new Date().toISOString(),
-              instrument: 'BTC/USD',
-              exchange: 'kraken' as const,
-              quantity: -10,
-              average_price: 100,
-              unrealized_pnl: 50,
-              realized_pnl: 20,
-            },
-            {
-              type: 'position' as const,
-              public_id: '2',
-              timestamp: new Date().toISOString(),
-              instrument: 'ETH/USD',
-              exchange: 'kraken' as const,
-              quantity: -5,
-              average_price: 200,
-              unrealized_pnl: 25,
-              realized_pnl: 5,
-            },
-          ],
-          count: 2,
-        }) as never
-      )
-      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
-
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
-      })
-      expect(result.current.data?.count).toBe(2)
-      expect(result.current.data?.totalPnL).toBe(100)
-      expect(result.current.data?.longCost).toBe(0)
-      expect(result.current.data?.shortCost).toBe(2000)
-      expect(result.current.data?.totalExposure).toBe(2000)
-      expect(result.current.data?.pnlPercent).toBeCloseTo(5.0, 5)
-    })
-    it('calculates summary for mixed long and short positions', async () => {
-      vi.mocked(getPositions).mockResolvedValueOnce(
-        envelope('position_list', {
-          payload: [
-            {
-              type: 'position' as const,
-              public_id: '1',
-              timestamp: new Date().toISOString(),
-              instrument: 'BTC/USD',
-              exchange: 'kraken' as const,
-              quantity: 10,
-              average_price: 100,
-              unrealized_pnl: 50,
-              realized_pnl: 0,
-            },
-            {
-              type: 'position' as const,
-              public_id: '2',
-              timestamp: new Date().toISOString(),
-              instrument: 'ETH/USD',
-              exchange: 'kraken' as const,
-              quantity: -5,
-              average_price: 200,
-              unrealized_pnl: 25,
-              realized_pnl: 0,
-            },
-          ],
-          count: 2,
-        }) as never
-      )
-      const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
-
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
-      })
-      expect(result.current.data?.count).toBe(2)
-      expect(result.current.data?.longCost).toBe(1000)
-      expect(result.current.data?.shortCost).toBe(1000)
-      expect(result.current.data?.totalExposure).toBe(2000)
-      expect(result.current.data?.totalPnL).toBe(75)
-      expect(result.current.data?.pnlPercent).toBeCloseTo(3.75, 5)
-    })
     it('returns null when positions data is unavailable', async () => {
       vi.mocked(getPositions).mockResolvedValueOnce(null as never)
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
@@ -353,31 +317,26 @@ describe('positions queries', () => {
       })
       expect(result.current.data).toBeNull()
     })
-    it('handles zero exposure (flat position) without dividing by zero', async () => {
+    it('does not warn about absent marks on a flat position or divide by zero', async () => {
       vi.mocked(getPositions).mockResolvedValueOnce(
         envelope('position_list', {
           payload: [
-            {
-              public_id: '1',
-              instrument: 'BTC/USD',
+            positionFixture({
               quantity: 0,
-              average_price: 0,
-              unrealized_pnl: 0,
-              realized_pnl: 0,
-            },
+              average_price: null,
+              mark_price: null,
+              unrealized_pnl: null,
+            }),
           ],
           count: 1,
         }) as never
       )
       const { result } = renderHook(() => usePositionsSummary(), { wrapper: createWrapper() })
 
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
-      })
-      expect(result.current.data?.longCost).toBe(0)
-      expect(result.current.data?.shortCost).toBe(0)
-      expect(result.current.data?.totalExposure).toBe(0)
-      expect(result.current.data?.pnlPercent).toBe(0)
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(result.current.data?.incompleteValuation).toBe(false)
+      expect(result.current.data?.count).toBe(1)
+      expect(result.current.data?.pnlPercent).toBeNull()
     })
   })
 

@@ -36,7 +36,8 @@
     "positions": "Posiciones",
     "instrumentsCount": "Instrumentos: {{count}}",
     "empty": "No hay datos de posiciones disponibles",
-    "incompleteValuation": "Datos incompletos — algunas posiciones carecen de precio mark o de entrada utilizable; los totales suman solo componentes conocidos"
+    "incompleteValuation": "Algunas posiciones abiertas tienen datos de valoración ausentes o no válidos.",
+    "aggregationUnavailable": "Los totales de la cartera requieren una moneda y una base de valoración de contratos verificadas. Abra Posiciones y seleccione {{tab}}."
   },
   "signals": {
     "title": "Señales recientes",

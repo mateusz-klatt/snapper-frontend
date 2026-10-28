@@ -19,10 +19,11 @@
     "1d": "1 天"
   },
   "stats": {
-    "currentPrice": "目前價格",
+    "currentPrice": "最新收盤價",
     "change24h": "24h 升跌",
     "high24h": "24h 高位",
-    "low24h": "24h 低位"
+    "low24h": "24h 低位",
+    "incomplete": "暫無完整的24小時歷史資料"
   },
   "chart": {
     "title": "價格圖表",

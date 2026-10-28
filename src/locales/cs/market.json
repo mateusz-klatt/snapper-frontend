@@ -19,10 +19,11 @@
     "1d": "1 den"
   },
   "stats": {
-    "currentPrice": "Aktuální cena",
+    "currentPrice": "Poslední zavírací cena",
     "change24h": "24h změna",
     "high24h": "24h maximum",
-    "low24h": "24h minimum"
+    "low24h": "24h minimum",
+    "incomplete": "Úplná historie za 24 hodin není dostupná"
   },
   "chart": {
     "title": "Cenový graf",

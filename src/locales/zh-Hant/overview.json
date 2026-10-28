@@ -36,7 +36,8 @@
     "positions": "倉位",
     "instrumentsCount": "品種：{{count}}",
     "empty": "沒有可用倉位數據",
-    "incompleteValuation": "資料不完整 — 部分持倉缺少可用的標記價格或進場價格；總計僅彙總已知部分"
+    "incompleteValuation": "部分未平倉部位的估值資料缺失或無效。",
+    "aggregationUnavailable": "投資組合彙總需要經過核實的幣別和合約估值依據。請開啟持倉，然後選擇{{tab}}。"
   },
   "signals": {
     "title": "最近信號",

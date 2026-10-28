@@ -181,6 +181,40 @@ describe('market API methods', () => {
       getCandlesRange('BTC/USD', 'kraken', '1d', '2023-01-01T00:00:00Z', '2023-01-04T00:00:00Z')
     ).rejects.toThrow('HTTP 500: Server Error')
   })
+  it.each([
+    ['2023-01-05T00:00:00Z', '2023-01-05T00:00:00Z'],
+    [null, null],
+    [undefined, '2024-01-01T00:00:00Z'],
+  ])('pins the range knowledge horizon when explicitly supplied (%s)', async (asOf, expected) => {
+    apiClient.setTimeTravelAsOf('2024-01-01T00:00:00Z')
+    mockFetch.mockResolvedValueOnce({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'candle_list',
+        session_id: '',
+        sequence_id: 0,
+        public_id: 'range-env',
+        timestamp: '2024-01-01T00:00:00Z',
+        payload: [],
+        count: 0,
+      }),
+    })
+
+    await getCandlesRange(
+      'BTC/USD',
+      'kraken',
+      '1m',
+      '2023-01-01T00:00:00Z',
+      '2023-01-02T00:00:00Z',
+      1000,
+      asOf
+    )
+
+    const url = new URL(String(mockFetch.mock.calls[0]?.[0]), 'https://example.test')
+
+    expect(url.searchParams.get('as_of')).toBe(expected)
+  })
   it('getExchanges returns exchange list', async () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,

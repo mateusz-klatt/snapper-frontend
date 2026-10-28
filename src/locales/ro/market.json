@@ -19,10 +19,11 @@
     "1d": "1 zi"
   },
   "stats": {
-    "currentPrice": "Preț curent",
+    "currentPrice": "Ultimul preț de închidere",
     "change24h": "Variație 24h",
     "high24h": "Maxim 24h",
-    "low24h": "Minim 24h"
+    "low24h": "Minim 24h",
+    "incomplete": "Istoricul complet pentru 24 de ore nu este disponibil"
   },
   "chart": {
     "title": "Grafic preț",

@@ -5,13 +5,13 @@ import {
   getCachedPairStats,
   getCacheHealth,
   getCandles,
-  getCandlesRange,
   getExchanges,
   getExchangeInstruments,
   getExchangeInstrumentsDetail,
   getRelatedInstruments,
   getUnderlyings,
 } from '../../lib/api/market'
+import { getMarketStats } from '../../lib/api/marketStats'
 import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
 import { queryKeys } from './keys'
@@ -120,7 +120,7 @@ export const useCachedCandles = (
   return useQuery({
     queryKey: queryKeys.cachedCandles(exchangeKey, symbolKey, timeframe, limit, asOf),
     queryFn: () => getCachedCandles(exchangeKey, symbolKey, timeframe, limit),
-    enabled: enabled && isAuthenticated && !!exchange && !!nativeSymbol,
+    enabled: enabled && asOf === null && isAuthenticated && !!exchange && !!nativeSymbol,
     staleTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
@@ -130,35 +130,23 @@ export const useCachedCandles = (
   })
 }
 
-export const useTimeTravelCandles = (
+export const useMarketStats = (
   exchange: string | null,
   nativeSymbol: string | null,
-  timeframe: string,
-  start: string | null,
-  end: string | null,
-  limit: number,
+  anchorMs: number | null,
   enabled: boolean = true
 ) => {
   const { isAuthenticated } = useAuth()
+  const asOf = useAppStore(s => s.asOf)
   const exchangeKey = exchange ?? ''
   const symbolKey = nativeSymbol ?? ''
-  const startKey = start ?? ''
-  const endKey = end ?? ''
 
   return useQuery({
-    queryKey: queryKeys.timeTravelCandles(
-      exchangeKey,
-      symbolKey,
-      timeframe,
-      startKey,
-      endKey,
-      limit
-    ),
-    queryFn: () => getCandlesRange(symbolKey, exchangeKey, timeframe, startKey, endKey, limit),
-    enabled:
-      enabled && isAuthenticated && !!exchange && !!nativeSymbol && start !== null && end !== null,
-    staleTime: Infinity,
-    refetchOnMount: false,
+    queryKey: queryKeys.marketStats(exchangeKey, symbolKey, anchorMs, asOf),
+    queryFn: () => getMarketStats(symbolKey, exchangeKey, anchorMs, asOf),
+    enabled: enabled && isAuthenticated && !!exchange && !!nativeSymbol,
+    staleTime: asOf === null ? 30_000 : Infinity,
+    refetchInterval: asOf === null && anchorMs === null ? 30_000 : false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
     throwOnError: false,

@@ -36,7 +36,8 @@
     "positions": "持仓",
     "instrumentsCount": "品种：{{count}}",
     "empty": "没有可用持仓数据",
-    "incompleteValuation": "数据不完整 — 部分持仓缺少可用的标记价格或入场价格；总计仅汇总已知部分"
+    "incompleteValuation": "部分未平仓持仓的估值数据缺失或无效。",
+    "aggregationUnavailable": "投资组合汇总需要经过核实的币种和合约估值依据。请打开持仓，然后选择{{tab}}。"
   },
   "signals": {
     "title": "最近信号",

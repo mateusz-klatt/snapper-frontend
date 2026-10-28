@@ -386,6 +386,35 @@ describe('portfolio API', () => {
     expect(requestUrl.searchParams.get('valuation_ccy')).toBe('USD')
   })
 
+  it.each([
+    ['series', getPortfolioPnlSeries, pnlSeriesResponse],
+    ['timeline', getPortfolioPnlTimeline, pnlTimelineResponse],
+  ] as const)(
+    'getPortfolioPnl%s leaves the live end to the server',
+    async (path, getPnl, response) => {
+      apiClient.setTimeTravelAsOf('2026-07-14T12:00:00Z')
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => response,
+      })
+
+      await getPnl({
+        mode: 'live',
+        granularity: '1m',
+        from: '2026-07-12T12:00:00Z',
+        asOf: null,
+        valuationCcy: 'USD',
+      })
+      const requestUrl = new URL(String(mockFetch.mock.calls[0]?.[0]), 'http://localhost')
+
+      expect(requestUrl.pathname).toBe(`/api/portfolio/pnl/${path}`)
+      expect(requestUrl.searchParams.has('to')).toBe(false)
+      expect(requestUrl.searchParams.has('as_of')).toBe(false)
+      expect(requestUrl.searchParams.get('from')).toBe('2026-07-12T12:00:00Z')
+    }
+  )
+
   it('getPortfolioPnlTimeline validates markers and sends the timeline window', async () => {
     apiClient.setTimeTravelAsOf('2026-07-14T12:00:00Z')
     apiClient.setOperatorScope('op-1')

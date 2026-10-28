@@ -1,188 +1,351 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useAppStore } from '../stores/app'
 import { useOperators, useWallets } from './queries/wallets'
 
 const STORAGE_KEY_WALLET = 'snapper-current-wallet'
 const STORAGE_KEY_OPERATOR = 'snapper-current-operator'
 const SENTINEL_ALL = '__all__'
+const ISO_WITH_OFFSET =
+  /^(\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01]))T(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d{1,3})?)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)$/
 
-type ScopeIds = {
-  readonly wallet: string | null
-  readonly operator: string | null
-}
-
-type UrlScope = ScopeIds & {
+type ScopeIds = { readonly wallet: string | null; readonly operator: string | null }
+type ScopeSnapshot = ScopeIds & { readonly asOf: string | null }
+type UrlScope = ScopeIds & { readonly hasParams: boolean }
+type IdList = ReadonlyArray<{ readonly public_id: string }>
+type Preference = { readonly specified: boolean; readonly value: string | null }
+type Preferences = { readonly wallet: Preference; readonly operator: Preference }
+type NavigationIntent = Preferences & {
+  readonly asOf: string | null
+  readonly validTime: boolean
   readonly hasParams: boolean
 }
+type PendingSelection = { readonly intent: NavigationIntent; readonly version: number }
 
-export function readUrlScope(): UrlScope {
+const preference = (raw: string | null): Preference => ({
+  specified: raw !== null,
+  value: raw === SENTINEL_ALL ? null : raw,
+})
+
+const hashParams = (): URLSearchParams => {
   const hash = globalThis.location.hash
   const queryIdx = hash.indexOf('?')
 
-  if (queryIdx === -1) {
-    return { wallet: null, operator: null, hasParams: false }
-  }
+  return new URLSearchParams(queryIdx === -1 ? '' : hash.slice(queryIdx + 1))
+}
 
-  const params = new URLSearchParams(hash.slice(queryIdx + 1))
-  const walletParam = params.get('wallet')
-  const operatorParam = params.get('operator')
+export function readUrlScope(): UrlScope {
+  const params = hashParams()
 
   return {
-    wallet: walletParam === SENTINEL_ALL ? null : walletParam,
-    operator: operatorParam === SENTINEL_ALL ? null : operatorParam,
+    wallet: preference(params.get('wallet')).value,
+    operator: preference(params.get('operator')).value,
     hasParams: params.has('wallet') || params.has('operator'),
   }
 }
 
-export function readLocalStorageScope(): ScopeIds {
+function storedPreferences(): Preferences {
   try {
-    const wallet = globalThis.localStorage.getItem(STORAGE_KEY_WALLET)
-    const operator = globalThis.localStorage.getItem(STORAGE_KEY_OPERATOR)
-
     return {
-      wallet: wallet === SENTINEL_ALL || wallet === null ? null : wallet,
-      operator: operator === SENTINEL_ALL || operator === null ? null : operator,
+      wallet: preference(globalThis.localStorage.getItem(STORAGE_KEY_WALLET)),
+      operator: preference(globalThis.localStorage.getItem(STORAGE_KEY_OPERATOR)),
     }
   } catch {
-    return { wallet: null, operator: null }
+    return { wallet: preference(null), operator: preference(null) }
   }
 }
 
-export function writeUrlScope(wallet: string | null, operator: string | null): void {
+export function readLocalStorageScope(): ScopeIds {
+  const stored = storedPreferences()
+
+  return { wallet: stored.wallet.value, operator: stored.operator.value }
+}
+
+export function writeUrlScope(
+  wallet: string | null,
+  operator: string | null,
+  asOf?: string | null
+): void {
   const hash = globalThis.location.hash
   const queryIdx = hash.indexOf('?')
   const route = queryIdx === -1 ? hash.slice(1) : hash.slice(1, queryIdx)
-  const params = new URLSearchParams()
+  const params = hashParams()
 
-  if (wallet) {
-    params.set('wallet', wallet)
+  params.set('wallet', wallet ?? SENTINEL_ALL)
+  params.set('operator', operator ?? SENTINEL_ALL)
+
+  if (asOf !== undefined) {
+    if (asOf === null) params.delete('as_of')
+    else params.set('as_of', asOf)
   }
 
-  if (operator) {
-    params.set('operator', operator)
-  }
+  const next = `#${route}?${params.toString()}`
 
-  const qs = params.toString()
-  const next = qs ? `#${route}?${qs}` : `#${route}`
-
-  if (globalThis.location.hash !== next) {
-    globalThis.history.replaceState(null, '', next)
-  }
+  if (globalThis.location.hash !== next) globalThis.history.replaceState(null, '', next)
 }
 
-/**
- * Best-effort persistence of the active scope (wallet + operator) into
- * `localStorage`. Failure is silently swallowed because the URL hash
- * remains the primary source of truth — `localStorage` is only a
- * cross-tab convenience and may be unavailable in private mode or under
- * quota pressure.
- */
 export function writeLocalStorageScope(wallet: string | null, operator: string | null): void {
   try {
-    if (wallet) {
-      globalThis.localStorage.setItem(STORAGE_KEY_WALLET, wallet)
-    } else {
-      globalThis.localStorage.removeItem(STORAGE_KEY_WALLET)
-    }
-
-    if (operator) {
-      globalThis.localStorage.setItem(STORAGE_KEY_OPERATOR, operator)
-    } else {
-      globalThis.localStorage.removeItem(STORAGE_KEY_OPERATOR)
-    }
+    globalThis.localStorage.setItem(STORAGE_KEY_WALLET, wallet ?? SENTINEL_ALL)
+    globalThis.localStorage.setItem(STORAGE_KEY_OPERATOR, operator ?? SENTINEL_ALL)
   } catch {
     void 0
   }
 }
 
-type IdList = ReadonlyArray<{ readonly public_id: string }>
+const snapshot = (): ScopeSnapshot => {
+  const state = useAppStore.getState()
 
-function pickValidId(candidate: string | null, list: IdList): string | null {
-  if (candidate === null) {
-    return null
+  return {
+    wallet: state.currentWalletPublicId,
+    operator: state.currentOperatorPublicId,
+    asOf: state.asOf,
+  }
+}
+
+const sameScope = (left: ScopeSnapshot, right: ScopeSnapshot): boolean =>
+  left.wallet === right.wallet && left.operator === right.operator && left.asOf === right.asOf
+
+const snapshotIntent = (scope: ScopeSnapshot): NavigationIntent => ({
+  wallet: { specified: true, value: scope.wallet },
+  operator: { specified: true, value: scope.operator },
+  asOf: scope.asOf,
+  validTime: true,
+  hasParams: true,
+})
+
+function navigationIntent(): NavigationIntent {
+  const params = hashParams()
+  const raw = params.get('as_of')
+  const match = raw === null ? null : ISO_WITH_OFFSET.exec(raw)
+  const parsed = raw === null ? Number.NaN : Date.parse(raw)
+  const validTime =
+    raw === null ||
+    (match !== null &&
+      Number.isFinite(parsed) &&
+      new Date(`${match[1]}T00:00:00Z`).toISOString().slice(0, 10) === match[1])
+
+  return {
+    wallet: preference(params.get('wallet')),
+    operator: preference(params.get('operator')),
+    hasParams: params.has('wallet') || params.has('operator'),
+    validTime,
+    asOf: raw !== null && validTime ? new Date(parsed).toISOString() : null,
+  }
+}
+
+const pickValidId = (candidate: string | null, list: IdList): string | null =>
+  candidate !== null && list.some(item => item.public_id === candidate) ? candidate : null
+
+function resolvePreference(
+  pref: Preference,
+  list: IdList,
+  fallback: string | null,
+  current: string | null
+): string | null {
+  if (!pref.specified) return fallback
+  if (pref.value === null) return null
+
+  return pickValidId(pref.value, list) ?? pickValidId(current, list)
+}
+
+class ScopeSynchronizer {
+  private pending: PendingSelection | null = null
+  private running = false
+  private stopped = false
+  private initial = true
+  private generation = 0
+  private locationKey: string | null = null
+  private needsRefresh = false
+  private commitTarget: ScopeSnapshot | null = null
+  private activeGeneration = 0
+  private readonly unsubscribe: () => void
+  private readonly onLocation = (): void => {
+    const intent = navigationIntent()
+    const key = JSON.stringify(intent)
+
+    if (key === this.locationKey) return
+
+    this.locationKey = key
+    this.generation += 1
+    this.pending = { intent, version: useAppStore.getState().reserveScopeSelection() }
+    if (!this.running) void this.drain()
   }
 
-  return list.some(item => item.public_id === candidate) ? candidate : null
-}
+  constructor(
+    private wallets: IdList,
+    private operators: IdList
+  ) {
+    globalThis.addEventListener('hashchange', this.onLocation)
+    globalThis.addEventListener('popstate', this.onLocation)
+    this.unsubscribe = useAppStore.subscribe((state, previous) => {
+      if (
+        state.currentWalletPublicId !== previous.currentWalletPublicId ||
+        state.currentOperatorPublicId !== previous.currentOperatorPublicId ||
+        state.asOf !== previous.asOf
+      ) {
+        const current = snapshot()
 
-function resolveInitialScope(
-  url: UrlScope,
-  storage: ScopeIds,
-  wallets: IdList,
-  operators: IdList
-): ScopeIds {
-  const operator =
-    pickValidId(url.operator, operators) ?? pickValidId(storage.operator, operators) ?? null
-  const walletFromUrl = pickValidId(url.wallet, wallets)
-  const walletFromStorage = pickValidId(storage.wallet, wallets)
-  const walletAutoPick =
-    !url.hasParams && storage.wallet === null ? (wallets[0]?.public_id ?? null) : null
-  const wallet = walletFromUrl ?? walletFromStorage ?? walletAutoPick
+        if (
+          this.running &&
+          this.commitTarget !== null &&
+          this.activeGeneration === this.generation &&
+          sameScope(current, this.commitTarget)
+        )
+          return
 
-  return { wallet, operator }
-}
+        this.generation += 1
+        const store = useAppStore.getState()
+        const version =
+          state.currentWalletPublicId !== previous.currentWalletPublicId ||
+          state.currentOperatorPublicId !== previous.currentOperatorPublicId
+            ? store.reserveScopeSelection()
+            : store.invalidateScopeSelection()
 
-const EMPTY_LIST: ReadonlyArray<{ readonly public_id: string }> = []
+        if (this.running) {
+          const intent = snapshotIntent(current)
 
-export function useScopePersistence(): void {
-  const walletsResult = useWallets()
-  const operatorsResult = useOperators()
-  const wallets = useMemo(() => walletsResult.data?.payload ?? EMPTY_LIST, [walletsResult.data])
-  const operators = useMemo(
-    () => operatorsResult.data?.payload ?? EMPTY_LIST,
-    [operatorsResult.data]
-  )
-  const currentWalletPublicId = useAppStore(s => s.currentWalletPublicId)
-  const currentOperatorPublicId = useAppStore(s => s.currentOperatorPublicId)
-  const setOperator = useAppStore(s => s.setCurrentOperatorPublicId)
-  const selectWallet = useAppStore(s => s.selectWalletAndRefresh)
-  const initializedRef = useRef(false)
-  const lastWrittenRef = useRef<ScopeIds>({ wallet: null, operator: null })
+          this.pending = { intent, version }
+          this.locationKey = JSON.stringify(intent)
+        }
 
-  useEffect(() => {
-    if (!initializedRef.current) {
-      if (wallets.length === 0 && operators.length === 0) {
-        return
+        this.persist()
       }
+    })
+    this.onLocation()
+  }
 
-      const url = readUrlScope()
-      const storage = readLocalStorageScope()
-      const resolved = resolveInitialScope(url, storage, wallets, operators)
-
-      initializedRef.current = true
-      lastWrittenRef.current = { wallet: resolved.wallet, operator: resolved.operator }
-
-      writeUrlScope(resolved.wallet, resolved.operator)
-      writeLocalStorageScope(resolved.wallet, resolved.operator)
-
-      if (resolved.operator !== null && resolved.operator !== currentOperatorPublicId) {
-        setOperator(resolved.operator)
-      }
-
-      if (resolved.wallet !== currentWalletPublicId) {
-        void selectWallet(resolved.wallet)
-      }
-
-      return
-    }
+  update(wallets: IdList, operators: IdList): void {
+    this.wallets = wallets
+    this.operators = operators
+    const current = snapshot()
 
     if (
-      currentWalletPublicId !== lastWrittenRef.current.wallet ||
-      currentOperatorPublicId !== lastWrittenRef.current.operator
-    ) {
-      lastWrittenRef.current = {
-        wallet: currentWalletPublicId,
-        operator: currentOperatorPublicId,
-      }
-      writeUrlScope(currentWalletPublicId, currentOperatorPublicId)
-      writeLocalStorageScope(currentWalletPublicId, currentOperatorPublicId)
+      (current.wallet !== null && pickValidId(current.wallet, wallets) === null) ||
+      (current.operator !== null && pickValidId(current.operator, operators) === null)
+    )
+      this.locationKey = null
+    this.onLocation()
+  }
+
+  stop(): void {
+    this.stopped = true
+    this.generation += 1
+    this.pending = null
+    this.unsubscribe()
+    globalThis.removeEventListener('hashchange', this.onLocation)
+    globalThis.removeEventListener('popstate', this.onLocation)
+  }
+
+  private persist(): void {
+    const current = snapshot()
+
+    writeUrlScope(current.wallet, current.operator, current.asOf)
+    writeLocalStorageScope(current.wallet, current.operator)
+    this.locationKey = JSON.stringify(navigationIntent())
+  }
+
+  private resolve(intent: NavigationIntent): ScopeSnapshot {
+    const current = snapshot()
+    const saved = storedPreferences()
+    const walletFallback = this.initial
+      ? saved.wallet.specified
+        ? pickValidId(saved.wallet.value, this.wallets)
+        : intent.hasParams
+          ? null
+          : (this.wallets[0]?.public_id ?? null)
+      : pickValidId(current.wallet, this.wallets)
+    const operatorFallback = this.initial
+      ? pickValidId(saved.operator.value, this.operators)
+      : pickValidId(current.operator, this.operators)
+
+    return {
+      wallet: resolvePreference(intent.wallet, this.wallets, walletFallback, current.wallet),
+      operator: resolvePreference(
+        intent.operator,
+        this.operators,
+        operatorFallback,
+        current.operator
+      ),
+      asOf: intent.validTime ? intent.asOf : current.asOf,
     }
-  }, [
-    wallets,
-    operators,
-    currentWalletPublicId,
-    currentOperatorPublicId,
-    setOperator,
-    selectWallet,
-  ])
+  }
+
+  private async drain(): Promise<void> {
+    this.running = true
+
+    try {
+      while (this.pending !== null && !this.stopped) {
+        const { intent, version } = this.pending
+        const target = this.resolve(intent)
+        const initial = this.initial
+        const generation = this.generation
+
+        this.pending = null
+        this.initial = false
+        this.commitTarget = target
+        this.activeGeneration = generation
+
+        try {
+          const pendingRefresh = useAppStore.getState().isWalletSelectionPending()
+
+          if (initial || this.needsRefresh || pendingRefresh || !sameScope(target, snapshot())) {
+            const committed = await useAppStore
+              .getState()
+              .selectScopeAndRefresh(
+                target,
+                initial || this.needsRefresh || pendingRefresh,
+                () =>
+                  !this.stopped &&
+                  this.generation === generation &&
+                  (target.wallet === null || pickValidId(target.wallet, this.wallets) !== null) &&
+                  (target.operator === null ||
+                    pickValidId(target.operator, this.operators) !== null),
+                version
+              )
+
+            this.needsRefresh = !committed
+
+            if (
+              !committed &&
+              !this.stopped &&
+              this.pending === null &&
+              useAppStore.getState().isScopeSelectionCurrent(version)
+            ) {
+              this.pending = { intent: snapshotIntent(snapshot()), version }
+            }
+          }
+        } catch {
+          this.needsRefresh = false
+        }
+
+        if (this.pending === null && !this.stopped) this.persist()
+      }
+    } finally {
+      this.running = false
+    }
+  }
+}
+
+export function useScopePersistence(): void {
+  const wallets = useWallets().data
+  const operators = useOperators().data
+  const synchronizer = useRef<ScopeSynchronizer | null>(null)
+
+  useEffect(() => {
+    if (wallets === undefined || operators === undefined) return
+
+    if (synchronizer.current === null) {
+      synchronizer.current = new ScopeSynchronizer(wallets.payload, operators.payload)
+    } else {
+      synchronizer.current.update(wallets.payload, operators.payload)
+    }
+  }, [wallets, operators])
+
+  useEffect(
+    () => () => {
+      synchronizer.current?.stop()
+      synchronizer.current = null
+    },
+    []
+  )
 }

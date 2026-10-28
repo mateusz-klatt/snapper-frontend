@@ -16,6 +16,37 @@ import {
 } from '../theme/financialColorPreference'
 
 const DARK_MODE_KEY = 'snapper-dark-mode'
+let scopeSelectionVersion = 0
+let walletSelectionVersion = 0
+let walletRefreshQueue: Promise<void> = Promise.resolve()
+let pendingWalletRefreshes = 0
+
+const refreshWalletSelection = (
+  wallet: string | null,
+  isCurrent: () => boolean
+): Promise<boolean> => {
+  pendingWalletRefreshes += 1
+  const pending = walletRefreshQueue.then(async () => {
+    if (!isCurrent()) return false
+
+    const hint = wallet === null ? { clear: true as const } : { walletId: wallet }
+
+    await useAuthStore.getState().refreshToken(hint)
+
+    return isCurrent()
+  })
+
+  walletRefreshQueue = pending.then(
+    () => {
+      pendingWalletRefreshes -= 1
+    },
+    () => {
+      pendingWalletRefreshes -= 1
+    }
+  )
+
+  return pending
+}
 
 const loadDarkModePreference = (): boolean => {
   const stored = localStorage.getItem(DARK_MODE_KEY)
@@ -57,6 +88,12 @@ const persistDefaultLanguageToBackend = async (locale: AppLocale): Promise<boole
   }
 }
 
+interface ScopeSelection {
+  wallet: string | null
+  operator: string | null
+  asOf: string | null
+}
+
 interface AppStore extends AppState {
   setConnected: (connected: boolean) => void
   setConnectionLag: (lag: number) => void
@@ -68,6 +105,16 @@ interface AppStore extends AppState {
   setCurrentOperatorPublicId: (id: string | null) => void
   setCurrentWalletPublicId: (id: string | null) => void
   selectWalletAndRefresh: (nextWalletId: string | null) => Promise<void>
+  reserveScopeSelection: () => number
+  invalidateScopeSelection: () => number
+  isScopeSelectionCurrent: (version: number) => boolean
+  isWalletSelectionPending: () => boolean
+  selectScopeAndRefresh: (
+    next: ScopeSelection,
+    forceRefresh?: boolean,
+    isCurrent?: () => boolean,
+    selectionVersion?: number
+  ) => Promise<boolean>
   setLocale: (locale: AppLocale) => Promise<void>
   setFinancialColorPreference: (preference: FinancialColorPreference) => void
 }
@@ -98,21 +145,27 @@ export const useAppStore = create<AppStore>()(
         return { isDarkMode: next }
       }),
     setAsOf: (asOf: string) => {
+      scopeSelectionVersion += 1
       apiClient.setTimeTravelAsOf(asOf)
       set({ asOf, isTimeTraveling: true })
     },
     clearAsOf: () => {
+      scopeSelectionVersion += 1
       apiClient.setTimeTravelAsOf(null)
       set({ asOf: null, isTimeTraveling: false })
       queryClient.invalidateQueries()
     },
     setCurrentOperatorPublicId: (id: string | null) => {
+      scopeSelectionVersion += 1
+      walletSelectionVersion += 1
       apiClient.setOperatorScope(id)
       apiClient.setWalletScope(null)
       set({ currentOperatorPublicId: id, currentWalletPublicId: null })
       queryClient.invalidateQueries()
     },
     setCurrentWalletPublicId: (id: string | null) => {
+      scopeSelectionVersion += 1
+      walletSelectionVersion += 1
       apiClient.setWalletScope(id)
       set({ currentWalletPublicId: id })
       queryClient.invalidateQueries()
@@ -129,12 +182,57 @@ export const useAppStore = create<AppStore>()(
      * `useAuthStore` logs + throws so the caller sees the error.
      */
     selectWalletAndRefresh: async (nextWalletId: string | null) => {
-      const hint = nextWalletId === null ? { clear: true as const } : { walletId: nextWalletId }
+      scopeSelectionVersion += 1
+      const version = ++walletSelectionVersion
+      const accepted = await refreshWalletSelection(
+        nextWalletId,
+        () => version === walletSelectionVersion
+      )
 
-      await useAuthStore.getState().refreshToken(hint)
+      if (!accepted) return
+
       apiClient.setWalletScope(nextWalletId)
       set({ currentWalletPublicId: nextWalletId })
       queryClient.invalidateQueries()
+    },
+    reserveScopeSelection: () => {
+      walletSelectionVersion += 1
+
+      return ++scopeSelectionVersion
+    },
+    invalidateScopeSelection: () => ++scopeSelectionVersion,
+    isScopeSelectionCurrent: version => version === scopeSelectionVersion,
+    isWalletSelectionPending: () => pendingWalletRefreshes > 0,
+    selectScopeAndRefresh: async (next, forceRefresh = false, isCurrent, selectionVersion) => {
+      const before = _get()
+      const version = selectionVersion ?? _get().reserveScopeSelection()
+      const active = (): boolean => version === scopeSelectionVersion && (isCurrent?.() ?? true)
+
+      if (
+        forceRefresh ||
+        pendingWalletRefreshes > 0 ||
+        next.wallet !== before.currentWalletPublicId ||
+        next.operator !== before.currentOperatorPublicId
+      ) {
+        const accepted = await refreshWalletSelection(next.wallet, active)
+
+        if (!accepted) return false
+      }
+
+      if (!active()) return false
+
+      apiClient.setOperatorScope(next.operator)
+      apiClient.setWalletScope(next.wallet)
+      apiClient.setTimeTravelAsOf(next.asOf)
+      set({
+        currentOperatorPublicId: next.operator,
+        currentWalletPublicId: next.wallet,
+        asOf: next.asOf,
+        isTimeTraveling: next.asOf !== null,
+      })
+      queryClient.invalidateQueries()
+
+      return true
     },
     setLocale: async (locale: AppLocale): Promise<void> => {
       set({ locale })

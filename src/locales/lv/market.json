@@ -19,10 +19,11 @@
     "1d": "1 diena"
   },
   "stats": {
-    "currentPrice": "Pašreizējā cena",
+    "currentPrice": "Pēdējā slēgšanas cena",
     "change24h": "24 st. izmaiņa",
     "high24h": "24 st. maksimums",
-    "low24h": "24 st. minimums"
+    "low24h": "24 st. minimums",
+    "incomplete": "Pilna 24 stundu vēsture nav pieejama"
   },
   "chart": {
     "title": "Cenas grafiks",

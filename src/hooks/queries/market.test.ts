@@ -1,6 +1,6 @@
 import { createElement, type ReactNode } from 'react'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { renderHook, waitFor } from '@testing-library/react'
+import { renderHook, waitFor, act } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   useAllConfiguredPairStats,
@@ -12,9 +12,11 @@ import {
   useExchangeInstruments,
   useExchangeInstrumentsDetail,
   useRelatedInstruments,
-  useTimeTravelCandles,
+  useMarketStats,
   useUnderlyings,
 } from './market'
+import { getMarketStats } from '../../lib/api/marketStats'
+import { useAppStore } from '../../stores/app'
 import { useAuth } from '../../stores/auth'
 import {
   getAllConfiguredPairStats,
@@ -22,7 +24,6 @@ import {
   getCachedPairStats,
   getCacheHealth,
   getCandles,
-  getCandlesRange,
   getExchangeInstruments,
   getRelatedInstruments,
 } from '../../lib/api/market'
@@ -145,7 +146,6 @@ vi.mock('../../lib/api/market', () => ({
       })
     )
   ),
-  getCandlesRange: vi.fn(() => Promise.resolve([])),
   getCachedPairStats: vi.fn(() =>
     Promise.resolve(
       envelope('cached_stats', {
@@ -179,6 +179,18 @@ vi.mock('../../lib/api/market', () => ({
     )
   ),
 }))
+vi.mock('../../lib/api/marketStats', () => ({
+  getMarketStats: vi.fn(() =>
+    Promise.resolve({
+      windowEnd: '2026-06-10T12:00:00Z',
+      price: 10,
+      change: 1,
+      changePercent: 10,
+      high24h: 12,
+      low24h: 8,
+    })
+  ),
+}))
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(() => ({
     isAuthenticated: true,
@@ -204,90 +216,127 @@ const createWrapper = () => {
 describe('market queries', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    useAppStore.setState({ asOf: null, isTimeTraveling: false })
   })
 
-  describe('useTimeTravelCandles', () => {
-    it('fetches a market-time window when all params are provided', async () => {
-      const { result } = renderHook(
-        () =>
-          useTimeTravelCandles(
-            'kraken',
-            'BTC-USD',
-            '1d',
-            '2023-01-01T00:00:00Z',
-            '2023-01-04T00:00:00Z',
-            400
-          ),
-        { wrapper: createWrapper() }
-      )
+  describe('useMarketStats', () => {
+    it('does not fetch for an unauthenticated visitor', () => {
+      vi.mocked(useAuth).mockReturnValue({ isAuthenticated: false } as ReturnType<typeof useAuth>)
 
-      await waitFor(() => {
-        expect(result.current.isFetched).toBe(true)
+      try {
+        const { result } = renderHook(() => useMarketStats('kraken', 'BTC-USD', null), {
+          wrapper: createWrapper(),
+        })
+
+        expect(result.current.fetchStatus).toBe('idle')
+        expect(getMarketStats).not.toHaveBeenCalled()
+      } finally {
+        vi.mocked(useAuth).mockReturnValue({ isAuthenticated: true } as ReturnType<typeof useAuth>)
+      }
+    })
+    it('loads an independent one-day statistic query for the selected market', async () => {
+      const { result } = renderHook(() => useMarketStats('kraken', 'BTC-USD', null), {
+        wrapper: createWrapper(),
       })
-      expect(vi.mocked(getCandlesRange)).toHaveBeenCalledWith(
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      expect(getMarketStats).toHaveBeenCalledWith('BTC-USD', 'kraken', null, null)
+    })
+
+    it.each([
+      [null, 'BTC-USD', true],
+      ['kraken', null, true],
+      ['kraken', 'BTC-USD', false],
+    ] as const)(
+      'does not load incomplete or disabled selection (%s,%s,%s)',
+      async (exchange, symbol, enabled) => {
+        const { result } = renderHook(() => useMarketStats(exchange, symbol, null, enabled), {
+          wrapper: createWrapper(),
+        })
+
+        expect(result.current.fetchStatus).toBe('idle')
+        expect(getMarketStats).not.toHaveBeenCalled()
+      }
+    )
+
+    it('keeps business time fixed and reloads when knowledge time changes', async () => {
+      const anchor = Date.parse('2026-06-09T00:00:00Z')
+      const live = {
+        windowEnd: '2026-06-09T00:00:00Z',
+        price: 20,
+        change: 1,
+        changePercent: 10,
+        high24h: 22,
+        low24h: 18,
+      }
+
+      vi.mocked(getMarketStats).mockResolvedValueOnce(live)
+      const { result } = renderHook(() => useMarketStats('kraken', 'BTC-USD', anchor), {
+        wrapper: createWrapper(),
+      })
+
+      await waitFor(() => expect(result.current.isSuccess).toBe(true))
+      act(() => useAppStore.getState().setAsOf('2026-06-10T12:00:00Z'))
+      await waitFor(() => expect(getMarketStats).toHaveBeenCalledTimes(2))
+      expect(getMarketStats).toHaveBeenLastCalledWith(
         'BTC-USD',
         'kraken',
-        '1d',
-        '2023-01-01T00:00:00Z',
-        '2023-01-04T00:00:00Z',
-        400
+        anchor,
+        '2026-06-10T12:00:00Z'
       )
+      act(() => useAppStore.getState().clearAsOf())
+      await waitFor(() => expect(result.current.data).toEqual(live))
     })
 
-    it('does not fetch when the window bounds are null', async () => {
-      vi.mocked(getCandlesRange).mockClear()
-      const { result } = renderHook(
-        () => useTimeTravelCandles('kraken', 'BTC-USD', '1d', null, null, 400),
-        { wrapper: createWrapper() }
+    it('hides an old market result while the new scope is pending', async () => {
+      const old = {
+        windowEnd: '2026-06-10T12:00:00Z',
+        price: 10,
+        change: 1,
+        changePercent: 10,
+        high24h: 12,
+        low24h: 8,
+      }
+
+      vi.mocked(getMarketStats).mockResolvedValueOnce(old)
+      const { result, rerender } = renderHook(
+        ({ symbol }) => useMarketStats('kraken', symbol, null),
+        { initialProps: { symbol: 'BTC-USD' }, wrapper: createWrapper() }
       )
 
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
-      })
-      expect(vi.mocked(getCandlesRange)).not.toHaveBeenCalled()
+      await waitFor(() => expect(result.current.data).toEqual(old))
+      vi.mocked(getMarketStats).mockImplementationOnce(() => new Promise(() => undefined))
+      rerender({ symbol: 'ETH-USD' })
+      expect(result.current.data).toBeUndefined()
     })
 
-    it('does not fetch when exchange and symbol are null', async () => {
-      vi.mocked(getCandlesRange).mockClear()
-      const { result } = renderHook(
-        () =>
-          useTimeTravelCandles(
-            null,
-            null,
-            '1d',
-            '2023-01-01T00:00:00Z',
-            '2023-01-04T00:00:00Z',
-            400
-          ),
-        { wrapper: createWrapper() }
-      )
-
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
+    it('ignores a live result that arrives after historical statistics', async () => {
+      let resolveLive!: (value: Awaited<ReturnType<typeof getMarketStats>>) => void
+      const pending = new Promise<Awaited<ReturnType<typeof getMarketStats>>>(resolve => {
+        resolveLive = resolve
       })
-      expect(vi.mocked(getCandlesRange)).not.toHaveBeenCalled()
-    })
+      const historical = {
+        windowEnd: '2026-06-10T12:00:00Z',
+        price: 10,
+        change: 1,
+        changePercent: 10,
+        high24h: 12,
+        low24h: 8,
+      }
 
-    it('does not fetch when explicitly disabled', async () => {
-      vi.mocked(getCandlesRange).mockClear()
-      const { result } = renderHook(
-        () =>
-          useTimeTravelCandles(
-            'kraken',
-            'BTC-USD',
-            '1d',
-            '2023-01-01T00:00:00Z',
-            '2023-01-04T00:00:00Z',
-            400,
-            false
-          ),
-        { wrapper: createWrapper() }
-      )
-
-      await waitFor(() => {
-        expect(result.current.isLoading).toBe(false)
+      vi.mocked(getMarketStats).mockReturnValueOnce(pending).mockResolvedValueOnce(historical)
+      const { result } = renderHook(() => useMarketStats('kraken', 'BTC-USD', null), {
+        wrapper: createWrapper(),
       })
-      expect(vi.mocked(getCandlesRange)).not.toHaveBeenCalled()
+
+      await waitFor(() => expect(getMarketStats).toHaveBeenCalledTimes(1))
+      act(() => useAppStore.getState().setAsOf('2026-06-10T12:00:00Z'))
+      await waitFor(() => expect(result.current.data).toEqual(historical))
+      await act(async () => {
+        resolveLive({ ...historical, price: 999 })
+        await pending
+      })
+      expect(result.current.data).toEqual(historical)
     })
   })
 
@@ -432,6 +481,15 @@ describe('market queries', () => {
   })
 
   describe('useCachedCandles', () => {
+    it('never fetches the live cache under a historical knowledge horizon', () => {
+      useAppStore.setState({ asOf: '2026-06-10T12:00:00Z', isTimeTraveling: true })
+      const { result } = renderHook(() => useCachedCandles('kraken', 'BTC-USD'), {
+        wrapper: createWrapper(),
+      })
+
+      expect(result.current.fetchStatus).toBe('idle')
+      expect(getCachedCandles).not.toHaveBeenCalled()
+    })
     it('fetches when exchange and symbol are provided', async () => {
       const { result } = renderHook(() => useCachedCandles('kraken', 'BTC-USD', '1m', 100), {
         wrapper: createWrapper(),

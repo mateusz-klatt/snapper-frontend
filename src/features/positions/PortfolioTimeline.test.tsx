@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import { PortfolioTimeline } from './PortfolioTimeline'
 import { usePortfolioPnlTimeline } from '../../hooks/queries/portfolio'
 import { useWallets } from '../../hooks/queries/wallets'
@@ -463,7 +463,7 @@ describe('PortfolioTimeline', () => {
     expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
       {
         from: '2026-07-13T12:00:00.000Z',
-        to: '2026-07-20T12:00:00.000Z',
+        to: undefined,
         granularity: '1h',
         mode: 'live',
         valuationCcy: 'PLN',
@@ -490,6 +490,65 @@ describe('PortfolioTimeline', () => {
     expect(screen.getByTestId('pnl-time-travel-notice')).toHaveTextContent(
       'Historical view: showing P&L as known at 2026-07-10T08:30:00Z.'
     )
+  })
+
+  it('omits the live end and anchors its rolling start to the current closed minute', () => {
+    vi.setSystemTime(new Date('2026-07-20T12:00:22.792Z'))
+
+    render(<PortfolioTimeline />)
+
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ from: '2026-07-19T12:00:00.000Z', to: undefined }),
+      true
+    )
+  })
+
+  it('advances the live window once when the next minute closes', () => {
+    vi.setSystemTime(new Date('2026-07-20T12:00:22.792Z'))
+    render(<PortfolioTimeline />)
+    vi.mocked(usePortfolioPnlTimeline).mockClear()
+
+    act(() => vi.advanceTimersByTime(37_207))
+    expect(usePortfolioPnlTimeline).not.toHaveBeenCalled()
+    act(() => vi.advanceTimersByTime(1))
+
+    expect(usePortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ from: '2026-07-19T12:01:00.000Z', to: undefined }),
+      true
+    )
+  })
+
+  it('stops the minute clock in history and returns to a fresh live window once', () => {
+    vi.setSystemTime(new Date('2026-07-20T12:00:22.792Z'))
+    const { rerender } = render(<PortfolioTimeline />)
+
+    scope.asOf = '2026-07-10T08:30:00Z'
+    rerender(<PortfolioTimeline />)
+    vi.mocked(usePortfolioPnlTimeline).mockClear()
+
+    act(() => vi.advanceTimersByTime(600_000))
+    expect(usePortfolioPnlTimeline).not.toHaveBeenCalled()
+    scope.asOf = null
+    rerender(<PortfolioTimeline />)
+
+    expect(usePortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ from: '2026-07-19T12:10:00.000Z', to: undefined }),
+      true
+    )
+  })
+
+  it('cancels the live minute clock when unmounted', () => {
+    const { unmount } = render(<PortfolioTimeline />)
+
+    vi.mocked(usePortfolioPnlTimeline).mockClear()
+    unmount()
+
+    act(() => vi.advanceTimersByTime(180_000))
+
+    expect(usePortfolioPnlTimeline).not.toHaveBeenCalled()
+    expect(vi.getTimerCount()).toBe(0)
   })
 
   it('omits the time-travel notice for a live series', () => {

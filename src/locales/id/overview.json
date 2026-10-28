@@ -36,7 +36,8 @@
     "positions": "Posisi",
     "instrumentsCount": "Instrumen: {{count}}",
     "empty": "Data posisi tidak tersedia",
-    "incompleteValuation": "Data tidak lengkap — beberapa posisi tidak memiliki harga mark atau harga entry yang dapat digunakan; total hanya menjumlahkan komponen yang diketahui"
+    "incompleteValuation": "Beberapa posisi terbuka memiliki data penilaian yang hilang atau tidak valid.",
+    "aggregationUnavailable": "Total portofolio memerlukan mata uang dan dasar penilaian kontrak yang terverifikasi. Buka Posisi, lalu pilih {{tab}}."
   },
   "signals": {
     "title": "Sinyal Terbaru",

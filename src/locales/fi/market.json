@@ -19,10 +19,11 @@
     "1d": "1 päivä"
   },
   "stats": {
-    "currentPrice": "Nykyhinta",
+    "currentPrice": "Viimeisin päätöskurssi",
     "change24h": "24h muutos",
     "high24h": "24h ylin",
-    "low24h": "24h alin"
+    "low24h": "24h alin",
+    "incomplete": "Täydellistä 24 tunnin historiaa ei ole saatavilla"
   },
   "chart": {
     "title": "Hintakaavio",

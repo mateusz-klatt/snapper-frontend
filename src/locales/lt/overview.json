@@ -36,7 +36,8 @@
     "positions": "Pozicijos",
     "instrumentsCount": "Instrumentų skaičius: {{count}}",
     "empty": "Pozicijų duomenų nėra",
-    "incompleteValuation": "Duomenys neišsamūs — kai kurioms pozicijoms trūksta tinkamos orientacinės arba įėjimo kainos; bendros sumos apima tik žinomus komponentus"
+    "incompleteValuation": "Kai kurių atvirų pozicijų vertinimo duomenų trūksta arba jie netinkami.",
+    "aggregationUnavailable": "Portfelio sumoms reikia patvirtintos valiutos ir sutarčių vertinimo pagrindo. Atverkite Pozicijos ir pasirinkite {{tab}}."
   },
   "signals": {
     "title": "Naujausi signalai",

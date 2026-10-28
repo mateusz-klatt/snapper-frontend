@@ -19,10 +19,11 @@
     "1d": "1 deň"
   },
   "stats": {
-    "currentPrice": "Aktuálna cena",
+    "currentPrice": "Posledná zatváracia cena",
     "change24h": "24h zmena",
     "high24h": "24h maximum",
-    "low24h": "24h minimum"
+    "low24h": "24h minimum",
+    "incomplete": "Úplná história za 24 hodín nie je dostupná"
   },
   "chart": {
     "title": "Cenový graf",

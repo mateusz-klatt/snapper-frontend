@@ -36,7 +36,8 @@
     "positions": "Posities",
     "instrumentsCount": "Instrumenten: {{count}}",
     "empty": "Geen positiedata beschikbaar",
-    "incompleteValuation": "Gegevens onvolledig — sommige posities missen een bruikbare markprijs of instapprijs; totalen tellen alleen bekende componenten"
+    "incompleteValuation": "Sommige open posities hebben ontbrekende of ongeldige waarderingsgegevens.",
+    "aggregationUnavailable": "Portefeuilletotalen vereisen een geverifieerde valuta en waarderingsgrondslag voor contracten. Open Posities en selecteer {{tab}}."
   },
   "signals": {
     "title": "Recente signalen",

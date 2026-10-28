@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { screen } from '@testing-library/react'
 import type { ReactElement } from 'react'
+import { usePositionsSummary } from '../../hooks/queries/positions'
 import { Overview } from './Overview'
 import { renderWithI18n } from '../../test/renderWithI18n'
 import { useProcessMetricsStore } from '../../stores/processMetrics'
@@ -42,6 +43,7 @@ const renderWithMocks = (ui: ReactElement) => {
 describe('Overview', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    vi.mocked(usePositionsSummary).mockReturnValue({ data: null, isLoading: false } as never)
     useProcessMetricsStore.getState().reset()
   })
   it.each([
@@ -105,6 +107,45 @@ describe('Overview', () => {
     renderWithMocks(<Overview />)
     expect(screen.getByText('Recent Signals')).toBeInTheDocument()
   })
+  it('shows neutral unknown valuation, preserves count, and links to the scoped Positions landing', async () => {
+    const { usePositionsSummary } = await import('../../hooks/queries/positions')
+    const previousHash = globalThis.location.hash
+
+    globalThis.location.hash =
+      '#overview?wallet=wallet-1&operator=operator-1&as_of=2026-06-20T12%3A00%3A00Z'
+    vi.mocked(usePositionsSummary).mockReturnValue({
+      isLoading: false,
+      data: {
+        totalValue: null,
+        totalPnL: null,
+        totalUnrealizedPnl: null,
+        pnlPercent: null,
+        count: 1,
+        longCost: null,
+        shortCost: null,
+        incompleteValuation: true,
+      },
+    } as never)
+
+    try {
+      renderWithMocks(<Overview />)
+      const unrealized = screen.getByText('Unrealized P&L').parentElement?.lastElementChild
+      const percent = screen.getByText('P&L %').parentElement?.lastElementChild
+
+      expect(unrealized).toHaveTextContent(/^—$/)
+      expect(percent).toHaveTextContent(/^—$/)
+      expect(unrealized).not.toHaveClass('text-rising-600', 'text-falling-600')
+      expect(screen.getByTestId('overview-position-count')).toHaveTextContent(/^1$/)
+      expect(screen.getByRole('link', { name: 'Positions' })).toHaveAttribute(
+        'href',
+        '#positions?wallet=wallet-1&operator=operator-1&as_of=2026-06-20T12%3A00%3A00Z'
+      )
+      expect(screen.getByText(/verified currency and contract basis/)).toBeInTheDocument()
+    } finally {
+      globalThis.location.hash = previousHash
+    }
+  })
+
   it('displays portfolio data when available', async () => {
     const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
@@ -123,9 +164,10 @@ describe('Overview', () => {
     } as never)
     renderWithMocks(<Overview />)
     expect(screen.getByText('Total Value')).toBeInTheDocument()
-    expect(screen.getByTestId('overview-long-exposure')).toHaveTextContent('$6,000.00')
-    expect(screen.getByTestId('overview-short-exposure')).toHaveTextContent('$4,000.00')
-    expect(screen.getByTestId('overview-net-delta')).toHaveTextContent('+$2,000.00')
+    expect(screen.getByTestId('overview-long-exposure')).toHaveTextContent(/^—$/)
+    expect(screen.getByTestId('overview-short-exposure')).toHaveTextContent(/^—$/)
+    expect(screen.getByTestId('overview-net-delta')).toHaveTextContent(/^—$/)
+    expect(screen.getByTestId('overview-position-count')).toHaveTextContent(/^3$/)
   })
 
   it('surfaces the incomplete-valuation indicator when a position lacks a mark', async () => {
@@ -146,10 +188,11 @@ describe('Overview', () => {
     } as never)
     renderWithMocks(<Overview />)
     expect(screen.getByTestId('overview-incomplete-valuation')).toBeInTheDocument()
-    expect(screen.getByText('+$300.00')).toBeInTheDocument()
+    expect(screen.getByTestId('overview-unrealized-pnl')).toHaveTextContent(/^—$/)
+    expect(screen.queryByText('+$300.00')).not.toBeInTheDocument()
     expect(screen.queryByText('+$500.00')).not.toBeInTheDocument()
   })
-  it('shows negative net delta as red when net short', async () => {
+  it('keeps an unverified net delta neutral even when the raw projection is short', async () => {
     const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositionsSummary).mockReturnValue({
@@ -168,8 +211,8 @@ describe('Overview', () => {
     renderWithMocks(<Overview />)
     const netDelta = screen.getByTestId('overview-net-delta')
 
-    expect(netDelta).toHaveTextContent('$-6,000.00')
-    expect(netDelta.className).toContain('text-falling-600')
+    expect(netDelta).toHaveTextContent(/^—$/)
+    expect(netDelta).not.toHaveClass('text-rising-600', 'text-falling-600')
   })
   it('displays running feeds status', async () => {
     const { useProcessSummary } = await import('../../hooks/queries/processes')
@@ -349,7 +392,7 @@ describe('Overview', () => {
     renderWithMocks(<Overview />)
     expect(screen.getAllByText('SELL').length).toBeGreaterThan(0)
   })
-  it('displays negative PnL with correct styling', async () => {
+  it('preserves P&L labels while aggregate valuation remains unavailable', async () => {
     const { usePositionsSummary } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositionsSummary).mockReturnValue({

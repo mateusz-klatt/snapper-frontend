@@ -36,7 +36,8 @@
     "positions": "Positiot",
     "instrumentsCount": "Instrumentit: {{count}}",
     "empty": "Positiodataa ei ole saatavilla",
-    "incompleteValuation": "Tiedot puutteelliset — osalta positioista puuttuu käyttökelpoinen mark- tai aloitushinta; summat sisältävät vain tunnetut osat"
+    "incompleteValuation": "Joidenkin avoimien positioiden arvostustiedot puuttuvat tai ovat virheellisiä.",
+    "aggregationUnavailable": "Salkun yhteissummat edellyttävät vahvistettua valuuttaa ja sopimusten arvostusperustetta. Avaa Positiot ja valitse {{tab}}."
   },
   "signals": {
     "title": "Viimeaikaiset signaalit",

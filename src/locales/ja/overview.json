@@ -36,7 +36,8 @@
     "positions": "ポジション",
     "instrumentsCount": "銘柄数: {{count}}",
     "empty": "ポジションデータはありません",
-    "incompleteValuation": "データが不完全です — 一部のポジションに有効なマーク価格または取得価格がありません。合計は既知の要素のみを集計します"
+    "incompleteValuation": "一部の未決済ポジションに評価データの欠落または無効な値があります。",
+    "aggregationUnavailable": "ポートフォリオの合計には、確認済みの通貨と契約評価基準が必要です。「ポジション」を開き、{{tab}}を選択してください。"
   },
   "signals": {
     "title": "最近のシグナル",

@@ -10,17 +10,12 @@ import { useLatestSignals } from '../../hooks/queries/signals'
 import { ProcessResourceTable } from './ProcessResourceTable'
 import { useProcessMetricsStore } from '../../stores/processMetrics'
 import { formatDate, formatTime } from '../../lib/dateFormat'
+import { currentHashQuery } from '../../lib/hash/currentHashQuery'
 import { formatNumber } from '../../lib/utils'
 import { formatQuoted, quoteCurrency } from '../positions/instrumentQuote'
 import type { Signal, Execution } from '../../types/entities'
 import type { ProcessSummaryData } from '../../types/api'
 import type { ProcessSummaryItem } from '../../types/ws.generated'
-
-const CURRENCY_FORMAT = { minimumFractionDigits: 2, maximumFractionDigits: 2 }
-
-const formatCurrency = (value: number): string => formatNumber(value, CURRENCY_FORMAT)
-
-const pnlSign = (value: number): string => (value >= 0 ? '+' : '')
 
 const runningBadgeStatus = (count: number): 'connected' | 'disconnected' =>
   count > 0 ? 'connected' : 'disconnected'
@@ -50,82 +45,46 @@ const ProcessStatusRow: React.FC<
 }
 
 interface PortfolioContentProps {
-  readonly totalValue: number
-  readonly totalUnrealizedPnl: number
-  readonly pnlPercent: number
   readonly count: number
-  readonly longCost: number
-  readonly shortCost: number
   readonly incompleteValuation: boolean
 }
 
-const PortfolioContent: React.FC<PortfolioContentProps> = ({
-  totalValue,
-  totalUnrealizedPnl,
-  pnlPercent,
-  count,
-  longCost,
-  shortCost,
-  incompleteValuation,
-}) => {
+const UNAVAILABLE_PORTFOLIO_METRICS = [
+  ['portfolio.totalValue', 'overview-total-value'],
+  ['portfolio.longExposure', 'overview-long-exposure'],
+  ['portfolio.shortExposure', 'overview-short-exposure'],
+  ['portfolio.netDelta', 'overview-net-delta'],
+  ['portfolio.unrealizedPnl', 'overview-unrealized-pnl'],
+  ['portfolio.pnlPercent', 'overview-pnl-percent'],
+] as const
+
+const PortfolioContent: React.FC<PortfolioContentProps> = ({ count, incompleteValuation }) => {
   const { t } = useTranslation('overview')
-
-  const pnlColorClass = (value: number): string => {
-    if (value > 0) return 'text-rising-600'
-    if (value < 0) return 'text-falling-600'
-
-    return 'text-alpine-700 dark:text-alpine-300'
-  }
-
-  const netDelta = longCost - shortCost
+  const { t: tPositions } = useTranslation('positions')
+  const { t: tCommon } = useTranslation('common')
 
   return (
     <div className='space-y-3'>
-      <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>{t('portfolio.totalValue')}</span>
-        <span className='font-mono text-right'>${formatCurrency(totalValue)}</span>
-      </div>
-      <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>{t('portfolio.longExposure')}</span>
-        <span className='font-mono text-right text-rising-600' data-testid='overview-long-exposure'>
-          ${formatCurrency(longCost)}
-        </span>
-      </div>
-      <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>{t('portfolio.shortExposure')}</span>
-        <span
-          className='font-mono text-right text-falling-600'
-          data-testid='overview-short-exposure'
-        >
-          ${formatCurrency(shortCost)}
-        </span>
-      </div>
-      <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>{t('portfolio.netDelta')}</span>
-        <span
-          className={`font-mono text-right ${pnlColorClass(netDelta)}`}
-          data-testid='overview-net-delta'
-        >
-          {pnlSign(netDelta)}${formatCurrency(netDelta)}
-        </span>
-      </div>
-      <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>{t('portfolio.unrealizedPnl')}</span>
-        <span className={`font-mono text-right ${pnlColorClass(totalUnrealizedPnl)}`}>
-          {pnlSign(totalUnrealizedPnl)}${formatCurrency(totalUnrealizedPnl)}
-        </span>
-      </div>
-      <div className='flex items-center justify-between'>
-        <span className='text-sm font-medium'>{t('portfolio.pnlPercent')}</span>
-        <span className={`font-mono text-right ${pnlColorClass(pnlPercent)}`}>
-          {pnlSign(pnlPercent)}
-          {formatNumber(pnlPercent, CURRENCY_FORMAT)}%
-        </span>
-      </div>
+      {UNAVAILABLE_PORTFOLIO_METRICS.map(([label, testId]) => (
+        <div key={label} className='flex items-center justify-between'>
+          <span className='text-sm font-medium'>{t(label)}</span>
+          <span className='font-mono text-right text-muted-500' data-testid={testId}>
+            —
+          </span>
+        </div>
+      ))}
       <div className='flex items-center justify-between'>
         <span className='text-sm font-medium'>{t('portfolio.positions')}</span>
-        <span className='font-mono text-right'>{t('portfolio.instrumentsCount', { count })}</span>
+        <span className='font-mono text-right' data-testid='overview-position-count'>
+          {formatNumber(count)}
+        </span>
       </div>
+      <p className='text-xs text-muted-500'>
+        {t('portfolio.aggregationUnavailable', { tab: tPositions('view.timeline') })}
+      </p>
+      <a href={`#positions${currentHashQuery()}`} className='text-sm text-brand-600 underline'>
+        {tCommon('nav.positions')}
+      </a>
       {incompleteValuation && (
         <div className='text-xs text-warning-600' data-testid='overview-incomplete-valuation'>
           {t('portfolio.incompleteValuation')}

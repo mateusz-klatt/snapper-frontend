@@ -91,6 +91,7 @@ describe('PairStatsRow', () => {
 
     expect(screen.getByText('ETH-USD')).toBeTruthy()
     expect(screen.getByText('SOL-USD')).toBeTruthy()
+    expect(screen.getByText('Live')).toBeInTheDocument()
   })
 
   it('skips pairs with malformed keys missing the colon separator', () => {

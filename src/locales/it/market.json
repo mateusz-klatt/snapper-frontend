@@ -19,10 +19,11 @@
     "1d": "1 giorno"
   },
   "stats": {
-    "currentPrice": "Prezzo corrente",
+    "currentPrice": "Ultimo prezzo di chiusura",
     "change24h": "Variazione 24h",
     "high24h": "Massimo 24h",
-    "low24h": "Minimo 24h"
+    "low24h": "Minimo 24h",
+    "incomplete": "Storico completo delle 24 ore non disponibile"
   },
   "chart": {
     "title": "Grafico dei prezzi",

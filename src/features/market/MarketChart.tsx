@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { LightweightChart, type ChartHandle } from '../../components/LightweightChart'
 import { LoadingSpinner } from '../../components/ui'
 import { getCandlesRange } from '../../lib/api/market'
+import { useAppStore } from '../../stores/app'
 import { createChartNavAdapter } from './chartNavAdapter'
 import {
   FETCH_PAGE_BARS,
@@ -56,12 +57,13 @@ export function MarketChart({
   height = 400,
 }: Readonly<MarketChartProps>) {
   const { t } = useTranslation('market')
+  const asOf = useAppStore(s => s.asOf)
   const [state, setState] = useState<ControllerState>(INITIAL_STATE)
   const [initialLoading, setInitialLoading] = useState(false)
   const [initialError, setInitialError] = useState<string | null>(null)
   /** Identity of the params whose initial window has been reset into the controller. */
   const [readyKey, setReadyKey] = useState<string | null>(null)
-  const currentKey = `${exchange}|${instrument}|${timeframe}|${anchorMs ?? 'live'}`
+  const currentKey = `${exchange}|${instrument}|${timeframe}|${anchorMs ?? 'live'}|${asOf ?? 'now'}`
 
   const fetchOlder = useCallback(
     async (range: { start: string; end: string }) => {
@@ -75,12 +77,13 @@ export function MarketChart({
         timeframe,
         range.start,
         range.end,
-        FETCH_PAGE_BARS
+        FETCH_PAGE_BARS,
+        asOf
       )
 
       return rows.map(toWindowCandle)
     },
-    [exchange, instrument, timeframe]
+    [exchange, instrument, timeframe, asOf]
   )
 
   const [controller] = useState(
@@ -122,9 +125,11 @@ export function MarketChart({
 
     setInitialLoading(true)
     setInitialError(null)
+    setReadyKey(null)
     controller.setTimeframe(timeframe)
 
-    const end = anchorMs ?? Date.now()
+    const horizon = asOf === null ? Date.now() : Date.parse(asOf)
+    const end = Math.min(anchorMs ?? horizon, horizon)
     const start = end - FETCH_PAGE_BARS * TIMEFRAME_SECONDS[timeframe] * 1000
 
     getCandlesRange(
@@ -133,7 +138,8 @@ export function MarketChart({
       timeframe,
       new Date(start).toISOString(),
       new Date(end).toISOString(),
-      FETCH_PAGE_BARS
+      FETCH_PAGE_BARS,
+      asOf
     )
       .then(rows => {
         if (cancelled) {
@@ -156,15 +162,15 @@ export function MarketChart({
     return () => {
       cancelled = true
     }
-  }, [controller, enabled, exchange, instrument, timeframe, anchorMs, currentKey])
+  }, [controller, enabled, exchange, instrument, timeframe, anchorMs, asOf, currentKey])
 
   useEffect(() => {
-    if (!liveCandle || anchorMs !== null || readyKey !== currentKey) {
+    if (!liveCandle || anchorMs !== null || asOf !== null || readyKey !== currentKey) {
       return
     }
 
     controller.applyLive(liveCandle)
-  }, [controller, liveCandle, anchorMs, readyKey, currentKey])
+  }, [controller, liveCandle, anchorMs, asOf, readyKey, currentKey])
 
   useEffect(
     () => () => {
@@ -178,12 +184,14 @@ export function MarketChart({
 
   return (
     <div className='relative' style={{ height: `${height}px` }}>
-      <LightweightChart
-        data={[]}
-        height={height}
-        precision={precision}
-        onChartReady={onChartReady}
-      />
+      <div style={{ visibility: readyKey === currentKey ? 'visible' : 'hidden' }}>
+        <LightweightChart
+          data={[]}
+          height={height}
+          precision={precision}
+          onChartReady={onChartReady}
+        />
+      </div>
       {state.olderInFlight && (
         <div className='absolute left-2 top-2' data-testid='older-loading'>
           <LoadingSpinner />

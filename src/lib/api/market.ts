@@ -57,7 +57,8 @@ export async function getCandlesRange(
   timeframe: string,
   start: string,
   end: string,
-  limit: number = 1000
+  limit: number = 1000,
+  asOf?: string | null
 ): Promise<CandleData[]> {
   const params = new URLSearchParams({
     instrument,
@@ -67,7 +68,15 @@ export async function getCandlesRange(
     end,
     limit: String(limit),
   })
-  const response = await apiClient.get(`/api/candles?${params}`)
+
+  if (asOf !== undefined && asOf !== null) {
+    params.set('as_of', asOf)
+  }
+
+  const response = await apiClient.get(
+    `/api/candles?${params}`,
+    asOf === undefined ? {} : { skipAsOf: true }
+  )
 
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`)

@@ -19,10 +19,11 @@
     "1d": "Siku 1"
   },
   "stats": {
-    "currentPrice": "Bei ya Sasa",
+    "currentPrice": "Bei ya mwisho ya kufunga",
     "change24h": "Mabadiliko 24h",
     "high24h": "Juu 24h",
-    "low24h": "Chini 24h"
+    "low24h": "Chini 24h",
+    "incomplete": "Historia kamili ya saa 24 haipatikani"
   },
   "chart": {
     "title": "Chati ya Bei",

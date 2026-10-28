@@ -36,7 +36,8 @@
     "positions": "Positionen",
     "instrumentsCount": "Instrumente: {{count}}",
     "empty": "Keine Positionsdaten verfügbar",
-    "incompleteValuation": "Daten unvollständig — einigen Positionen fehlt ein verwendbarer Mark- oder Einstiegspreis; Summen umfassen nur bekannte Komponenten"
+    "incompleteValuation": "Bei einigen offenen Positionen fehlen Bewertungsdaten oder sie sind ungültig.",
+    "aggregationUnavailable": "Portfoliosummen erfordern eine bestätigte Währung und Kontraktbewertungsgrundlage. Öffnen Sie Positionen und wählen Sie {{tab}}."
   },
   "signals": {
     "title": "Letzte Signale",

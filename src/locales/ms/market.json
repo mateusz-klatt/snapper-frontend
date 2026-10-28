@@ -19,10 +19,11 @@
     "1d": "1 Hari"
   },
   "stats": {
-    "currentPrice": "Harga Semasa",
+    "currentPrice": "Harga penutupan terakhir",
     "change24h": "Perubahan 24j",
     "high24h": "Tinggi 24j",
-    "low24h": "Rendah 24j"
+    "low24h": "Rendah 24j",
+    "incomplete": "Sejarah lengkap 24 jam tidak tersedia"
   },
   "chart": {
     "title": "Carta Harga",

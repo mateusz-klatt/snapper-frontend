@@ -10,6 +10,22 @@
 
 Vite + React + TypeScript trading UI for the [Snapper](https://github.com/mateusz-klatt/snapper) platform.
 
+## Scope and time-travel links
+
+Wallet and operator query parameters in the URL hash remain authoritative during navigation,
+browser history and reload. IDs are checked against the caller's readable access lists; explicit
+`__all__` selections override saved IDs and survive reload. Scope writes preserve unrelated query
+parameters and route subpaths.
+
+`as_of` accepts an ISO timestamp with an explicit timezone and normalizes it to UTC. It updates both
+the global time-travel state and API requests. A URL without `as_of` represents Live mode; the time
+picker adds or removes this parameter. Invalid IDs or timestamps canonicalize to confirmed valid
+state rather than substituting another saved wallet or inventing a historical moment.
+
+Wallet changes refresh the session claim before operator, wallet and knowledge time are committed
+together. Refreshes are serialized; superseded or unmounted selections cannot publish client
+scope. A newer URL or picker decision wins, and refresh failure preserves the confirmed selection.
+
 ## What it is
 
 The browser-side dashboard for Snapper — a role-, wallet-, and operator-scoped portfolio + execution platform that talks to crypto, futures, equities, and forex venues over WebSocket and REST. This repo contains only the UI; the backend (FastAPI + SQLAlchemy + ZMQ) lives in the parent repo.
@@ -31,6 +47,30 @@ save and destructive actions disabled. Auditors cannot change the shared account
 display preferences and navigation remain interactive. The backend independently enforces the
 permission boundary for HTTP requests and WebSocket commands; browser controls use the generated
 permission catalog and preserve the existing presentation of sensitive values.
+
+## Portfolio valuation
+
+Overview preserves position counts and reports portfolio monetary totals and return percentages as
+unavailable. The position projection does not establish a reporting currency, derivative contract
+basis or account cash. Missing or non-finite valuation fields on open positions produce a coverage
+warning and are never substituted with zero. Open **Positions**, then select **P&L Timeline** to
+inspect reconstructed P&L in a chosen valuation currency with its coverage diagnostics. The
+Overview link preserves the current wallet, operator and time-travel query parameters.
+
+## Market history
+
+Global time travel selects the knowledge horizon for market history. The market scrubber selects
+an independent business-time anchor, bounded by that horizon. Changing either reloads the chart;
+historical views exclude live cache updates. Changing the chart timeframe preserves the replay
+anchor. Cointegration diagnostics show their current state and carry a **Live** label.
+
+The statistics cards use closed one-minute candles for a full 24-hour window ending at the displayed
+timestamp, independently of the chart timeframe. High and low use candle highs and lows; change
+compares the final close with the close exactly 24 hours earlier. Both bounded range requests share
+one explicit knowledge horizon. Missing, unfinished, invalid or conflicting minutes produce
+unavailable statistics rather than synthetic returns. An exact latest closed price can remain
+available when the rest of the window is incomplete. A zero baseline has no percentage return;
+negative baselines use their absolute magnitude as the percentage denominator.
 
 ## Screenshots
 

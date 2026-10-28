@@ -17,6 +17,8 @@ describe('useAppStore', () => {
       isDarkMode: true,
       asOf: null,
       isTimeTraveling: false,
+      currentWalletPublicId: null,
+      currentOperatorPublicId: null,
       locale: 'us',
     })
     useAuthStore.setState({
@@ -405,6 +407,86 @@ describe('useAppStore', () => {
       const { useAppStore: freshStore } = await import('./app')
 
       expect(freshStore.getState().financialColorPreference).toBe('auto')
+    })
+  })
+  describe('atomic URL scope selection', () => {
+    it('refreshes the wallet claim before publishing one complete scope and horizon', async () => {
+      const refresh = vi.spyOn(useAuthStore.getState(), 'refreshToken').mockResolvedValue(undefined)
+      const seen: Array<[string | null, string | null, string | null, boolean]> = []
+      const unsubscribe = useAppStore.subscribe(state =>
+        seen.push([
+          state.currentWalletPublicId,
+          state.currentOperatorPublicId,
+          state.asOf,
+          state.isTimeTraveling,
+        ])
+      )
+
+      try {
+        const committed = await useAppStore.getState().selectScopeAndRefresh({
+          wallet: 'w-main',
+          operator: 'o-main',
+          asOf: '2026-10-27T17:00:00.000Z',
+        })
+
+        expect(committed).toBe(true)
+        expect(refresh).toHaveBeenCalledExactlyOnceWith({ walletId: 'w-main' })
+        expect(seen).toEqual([['w-main', 'o-main', '2026-10-27T17:00:00.000Z', true]])
+      } finally {
+        unsubscribe()
+      }
+    })
+    it('changes only knowledge time without an unnecessary token refresh', async () => {
+      const refresh = vi.spyOn(useAuthStore.getState(), 'refreshToken').mockResolvedValue(undefined)
+      const committed = await useAppStore
+        .getState()
+        .selectScopeAndRefresh({ wallet: null, operator: null, asOf: '2026-10-27T17:00:00.000Z' })
+
+      expect(committed).toBe(true)
+      expect(refresh).not.toHaveBeenCalled()
+      expect(useAppStore.getState().asOf).toBe('2026-10-27T17:00:00.000Z')
+    })
+    it('refreshes for an operator change even if the wallet is unchanged', async () => {
+      const refresh = vi.spyOn(useAuthStore.getState(), 'refreshToken').mockResolvedValue(undefined)
+      const committed = await useAppStore
+        .getState()
+        .selectScopeAndRefresh({ wallet: null, operator: 'o-main', asOf: null })
+
+      expect(committed).toBe(true)
+      expect(refresh).toHaveBeenCalledExactlyOnceWith({ clear: true })
+      expect(useAppStore.getState().currentOperatorPublicId).toBe('o-main')
+    })
+    it('never publishes a cancelled time-only URL decision', async () => {
+      const refresh = vi.spyOn(useAuthStore.getState(), 'refreshToken').mockResolvedValue(undefined)
+      const setTime = vi.spyOn(apiClient, 'setTimeTravelAsOf')
+      const committed = await useAppStore
+        .getState()
+        .selectScopeAndRefresh(
+          { wallet: null, operator: null, asOf: '2026-10-27T17:00:00.000Z' },
+          false,
+          () => false
+        )
+
+      expect(committed).toBe(false)
+      expect(refresh).not.toHaveBeenCalled()
+      expect(setTime).not.toHaveBeenCalled()
+      expect(useAppStore.getState().asOf).toBeNull()
+    })
+    it('preserves a newer time-picker decision while a normal wallet selection awaits refresh', async () => {
+      let resolve!: () => void
+      const pending = new Promise<void>(done => {
+        resolve = done
+      })
+
+      vi.spyOn(useAuthStore.getState(), 'refreshToken').mockReturnValueOnce(pending)
+      const selection = useAppStore.getState().selectWalletAndRefresh('w-main')
+
+      await Promise.resolve()
+      useAppStore.getState().setAsOf('2026-10-27T17:00:00Z')
+      resolve()
+      await selection
+      expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+      expect(useAppStore.getState().asOf).toBe('2026-10-27T17:00:00Z')
     })
   })
 })
