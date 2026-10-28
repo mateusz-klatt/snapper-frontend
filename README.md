@@ -58,7 +58,7 @@ Snapshots from a local instance running against the [snapper](https://github.com
 
 ## Getting started
 
-Prerequisites: **Node 26+**, **pnpm 12.15.0** (pinned by `packageManager` in `package.json`; use Corepack to select it), a running Snapper backend at `http://localhost:8000`. If your Node installation does not provide Corepack, install Corepack before running the commands below.
+Prerequisites: **Node 26+**, **pnpm 12.16.1** (pinned by `packageManager` in `package.json`; use Corepack to select it), a running Snapper backend at `http://localhost:8000`. If your Node installation does not provide Corepack, install Corepack before running the commands below.
 
 ```bash
 corepack enable        # one-time, enables packageManager pnpm pin
@@ -138,7 +138,7 @@ Stable from `1.0.0` onward; subsequent releases follow Semantic Versioning:
 ### Supported runtime
 
 - **Browsers** — current and previous major release of Chrome, Edge, Firefox, Safari (two major versions in total). This is the support target. The `ci.yml` workflow runs Node-based checks, and `e2e.yml` builds the production bundle and runs Playwright Chromium tests. These workflows do not test a matrix of every supported browser and major version. Open an issue if you hit a regression in scope.
-- **Node + pnpm (for contributors)** — Node `>=26`; use the pnpm `12.15.0` package-manager pin. The package's declared pnpm minimum is `>=11`.
+- **Node + pnpm (for contributors)** — Node `>=26`; use the pnpm `12.16.1` package-manager pin. The package's declared pnpm minimum is `>=11`.
 - **Backend pairing** — this frontend release pairs with the `mateusz-klatt/snapper` backend at the submodule pointer recorded against the matching frontend tag. Generated types (`src/types/*.generated.ts`, `src/lib/schemas/*.generated.zod.ts`) are committed; regenerate with `make gen` against a local backend if you point at a different commit.
 
 ### Accessibility target
