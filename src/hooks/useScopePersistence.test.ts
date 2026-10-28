@@ -24,7 +24,7 @@ vi.mock('../lib/apiClient', () => ({
 }))
 
 vi.mock('../lib/queryClient', () => ({
-  queryClient: { invalidateQueries: vi.fn() },
+  queryClient: { invalidateQueries: vi.fn(), refetchQueries: vi.fn() },
 }))
 
 const refreshToken = vi.hoisted(() => vi.fn<() => Promise<void>>())

@@ -21,6 +21,38 @@ let walletSelectionVersion = 0
 let walletRefreshQueue: Promise<void> = Promise.resolve()
 let pendingWalletRefreshes = 0
 
+const isScopeAwareRead = (key: readonly unknown[]): boolean => {
+  if (key[0] === 'portfolio' && key[1] === 'pnl') return true
+  if (key[0] !== 'backtests' && key[0] !== 'backtest-compare') return false
+
+  const scope = key.at(-1)
+
+  return typeof scope === 'object' && scope !== null && 'asOf' in scope
+}
+
+const matchesConfirmedReadScope = (key: readonly unknown[], confirmed: ScopeSelection): boolean => {
+  const scope = key.at(-1)
+
+  if (typeof scope !== 'object' || scope === null) return false
+
+  const fields = scope as Record<string, unknown>
+
+  return (
+    fields['asOf'] === confirmed.asOf &&
+    fields['operatorPublicId'] === confirmed.operator &&
+    fields['walletPublicId'] === confirmed.wallet
+  )
+}
+
+const refetchConfirmedReads = (unchanged?: ScopeSelection): void => {
+  void queryClient.refetchQueries({
+    type: 'active',
+    predicate: query =>
+      !isScopeAwareRead(query.queryKey) ||
+      (unchanged !== undefined && matchesConfirmedReadScope(query.queryKey, unchanged)),
+  })
+}
+
 const refreshWalletSelection = (
   wallet: string | null,
   isCurrent: () => boolean
@@ -152,23 +184,26 @@ export const useAppStore = create<AppStore>()(
     clearAsOf: () => {
       scopeSelectionVersion += 1
       apiClient.setTimeTravelAsOf(null)
+      queryClient.invalidateQueries({ refetchType: 'none' })
       set({ asOf: null, isTimeTraveling: false })
-      queryClient.invalidateQueries()
+      refetchConfirmedReads()
     },
     setCurrentOperatorPublicId: (id: string | null) => {
       scopeSelectionVersion += 1
       walletSelectionVersion += 1
       apiClient.setOperatorScope(id)
       apiClient.setWalletScope(null)
+      queryClient.invalidateQueries({ refetchType: 'none' })
       set({ currentOperatorPublicId: id, currentWalletPublicId: null })
-      queryClient.invalidateQueries()
+      refetchConfirmedReads()
     },
     setCurrentWalletPublicId: (id: string | null) => {
       scopeSelectionVersion += 1
       walletSelectionVersion += 1
       apiClient.setWalletScope(id)
+      queryClient.invalidateQueries({ refetchType: 'none' })
       set({ currentWalletPublicId: id })
-      queryClient.invalidateQueries()
+      refetchConfirmedReads()
     },
     /**
      * Wallet-picker sync. Mints a new JWT with the chosen wallet claim
@@ -192,8 +227,9 @@ export const useAppStore = create<AppStore>()(
       if (!accepted) return
 
       apiClient.setWalletScope(nextWalletId)
+      queryClient.invalidateQueries({ refetchType: 'none' })
       set({ currentWalletPublicId: nextWalletId })
-      queryClient.invalidateQueries()
+      refetchConfirmedReads()
     },
     reserveScopeSelection: () => {
       walletSelectionVersion += 1
@@ -224,13 +260,19 @@ export const useAppStore = create<AppStore>()(
       apiClient.setOperatorScope(next.operator)
       apiClient.setWalletScope(next.wallet)
       apiClient.setTimeTravelAsOf(next.asOf)
+      queryClient.invalidateQueries({ refetchType: 'none' })
       set({
         currentOperatorPublicId: next.operator,
         currentWalletPublicId: next.wallet,
         asOf: next.asOf,
         isTimeTraveling: next.asOf !== null,
       })
-      queryClient.invalidateQueries()
+      const unchanged =
+        next.wallet === before.currentWalletPublicId &&
+        next.operator === before.currentOperatorPublicId &&
+        next.asOf === before.asOf
+
+      refetchConfirmedReads(unchanged ? next : undefined)
 
       return true
     },

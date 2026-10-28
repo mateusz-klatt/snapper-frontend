@@ -128,12 +128,13 @@ const BacktestRow: React.FC<BacktestRowProps> = ({ run, onCancel, onRerun, canMa
 
 export const Backtests: React.FC = () => {
   const { t } = useTranslation('backtests')
+  const { t: tCommon } = useTranslation('common')
   const { hasPermission } = useAuth()
   const readOnly = useIsReadOnly()
   const canManage = hasPermission(Permission.MANAGE_BACKTESTS) && !readOnly
   const [statusFilter, setStatusFilter] = useState<string>('')
   const [createOpen, setCreateOpen] = useState<boolean>(false)
-  const { data, isLoading } = useBacktests(undefined, statusFilter || undefined)
+  const { data, isLoading, isError, refetch } = useBacktests(undefined, statusFilter || undefined)
   const cancelMutation = useCancelBacktest()
   const rerunMutation = useRerunBacktest()
 
@@ -189,13 +190,30 @@ export const Backtests: React.FC = () => {
         </div>
       </div>
       <div className='space-y-4'>
+        {isError && (
+          <div
+            role='alert'
+            className='flex items-center justify-between gap-3 rounded-lg border border-loss-500 p-4 text-sm text-loss-500'
+          >
+            <span>
+              {tCommon('errorBoundary.titleWithComponent', { componentName: t('list.title') })}
+            </span>
+            <button
+              type='button'
+              onClick={() => void refetch()}
+              className='rounded-md border border-loss-500 px-3 py-1 hover:bg-loss-900/20'
+            >
+              {tCommon('retry')}
+            </button>
+          </div>
+        )}
         {isLoading && (
           <div className='space-y-3'>
             <OrderCardSkeleton />
             <OrderCardSkeleton />
           </div>
         )}
-        {!isLoading && runs.length === 0 && (
+        {!isLoading && !isError && runs.length === 0 && (
           <EmptyState
             icon={<Play className='h-6 w-6' />}
             title={t('list.empty.title')}

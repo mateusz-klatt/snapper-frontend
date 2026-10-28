@@ -15,6 +15,7 @@ import {
   useCreateBacktestComparison,
 } from './backtests'
 import { APIError } from '../../lib/api/error'
+import { queryKeys, type BacktestReadScope } from './keys'
 import {
   createBacktest,
   createBacktestComparison,
@@ -233,10 +234,20 @@ describe('backtests queries', () => {
 
   describe('useBacktestComparison*', () => {
     let appStoreModule: typeof import('../../stores/app')
+    const scope: BacktestReadScope = {
+      asOf: null,
+      operatorPublicId: null,
+      walletPublicId: 'wallet-1',
+    }
 
     beforeEach(async () => {
       appStoreModule = await import('../../stores/app')
-      appStoreModule.useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
+      appStoreModule.useAppStore.setState({
+        asOf: null,
+        isTimeTraveling: false,
+        currentOperatorPublicId: null,
+        currentWalletPublicId: 'wallet-1',
+      })
     })
     afterEach(() => {
       appStoreModule.useAppStore.setState({ currentWalletPublicId: null })
@@ -249,7 +260,9 @@ describe('backtests queries', () => {
       await waitFor(() => expect(result.current.isSuccess).toBe(true))
       expect(getBacktestComparison).toHaveBeenCalledWith('cmp-1')
       expect(
-        queryClient.getQueryCache().find({ queryKey: ['backtest-compare', 'wallet-1', 'cmp-1'] })
+        queryClient.getQueryCache().find({
+          queryKey: queryKeys.backtestCompare('wallet-1', 'cmp-1', scope),
+        })
       ).toBeDefined()
     })
 
@@ -298,7 +311,7 @@ describe('backtests queries', () => {
       expect(
         queryClient
           .getQueryCache()
-          .find({ queryKey: ['backtest-compare', 'list', 'wallet-1', 20, 0] })
+          .find({ queryKey: queryKeys.backtestCompareList('wallet-1', 20, 0, scope) })
       ).toBeDefined()
 
       const { result: customResult } = renderHook(() => useBacktestComparisons(50, 100), {
@@ -310,7 +323,7 @@ describe('backtests queries', () => {
       expect(
         queryClient
           .getQueryCache()
-          .find({ queryKey: ['backtest-compare', 'list', 'wallet-1', 50, 100] })
+          .find({ queryKey: queryKeys.backtestCompareList('wallet-1', 50, 100, scope) })
       ).toBeDefined()
     })
 

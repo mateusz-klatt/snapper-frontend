@@ -15,11 +15,21 @@ import {
 import { APIError } from '../../lib/api/error'
 import { useAppStore } from '../../stores/app'
 import type { BacktestCompareBody } from '../../types/api'
-import { queryKeys } from './keys'
+import { queryKeys, type BacktestReadScope } from './keys'
+
+const useBacktestReadScope = (): BacktestReadScope => {
+  const asOf = useAppStore(s => s.asOf)
+  const operatorPublicId = useAppStore(s => s.currentOperatorPublicId)
+  const walletPublicId = useAppStore(s => s.currentWalletPublicId)
+
+  return { asOf, operatorPublicId, walletPublicId }
+}
 
 export const useBacktests = (strategy?: string, status?: string) => {
+  const scope = useBacktestReadScope()
+
   return useQuery({
-    queryKey: queryKeys.backtestsByStrategyStatus(strategy, status),
+    queryKey: queryKeys.backtestsByStrategyStatus(strategy, status, scope),
     queryFn: () => getBacktests(50, 0, strategy, status),
   })
 }
@@ -43,32 +53,40 @@ export const useBacktestStrategyClasses = (enabled: boolean) => {
  * have no hash and auto-pair is not applicable.
  */
 export const useBacktestRunsByConfigHash = (configHash: string | null, limit: number = 20) => {
+  const scope = useBacktestReadScope()
+
   return useQuery({
-    queryKey: queryKeys.backtestsByConfigHash(configHash, limit),
+    queryKey: queryKeys.backtestsByConfigHash(configHash, limit, scope),
     queryFn: () => getBacktests(limit, 0, undefined, undefined, configHash),
     enabled: configHash !== null,
   })
 }
 
 export const useBacktest = (runId: string | undefined) => {
+  const scope = useBacktestReadScope()
+
   return useQuery({
-    queryKey: queryKeys.backtest(runId),
+    queryKey: queryKeys.backtest(runId, scope),
     queryFn: () => getBacktest(runId as string),
     enabled: !!runId,
   })
 }
 
 export const useBacktestTrades = (runId: string | undefined) => {
+  const scope = useBacktestReadScope()
+
   return useQuery({
-    queryKey: queryKeys.backtestTrades(runId),
+    queryKey: queryKeys.backtestTrades(runId, scope),
     queryFn: () => getBacktestTrades(runId as string),
     enabled: !!runId,
   })
 }
 
 export const useBacktestSignals = (runId: string | undefined) => {
+  const scope = useBacktestReadScope()
+
   return useQuery({
-    queryKey: queryKeys.backtestSignals(runId),
+    queryKey: queryKeys.backtestSignals(runId, scope),
     queryFn: () => getBacktestSignals(runId as string),
     enabled: !!runId,
   })
@@ -86,10 +104,10 @@ export const useCreateBacktest = () => {
 }
 
 export const useBacktestComparison = (comparisonId: string | undefined) => {
-  const walletId = useAppStore(s => s.currentWalletPublicId)
+  const scope = useBacktestReadScope()
 
   return useQuery({
-    queryKey: queryKeys.backtestCompare(walletId, comparisonId),
+    queryKey: queryKeys.backtestCompare(scope.walletPublicId, comparisonId, scope),
     queryFn: () => getBacktestComparison(comparisonId as string),
     enabled: !!comparisonId,
     retry: (failureCount, error) => {
@@ -101,10 +119,10 @@ export const useBacktestComparison = (comparisonId: string | undefined) => {
 }
 
 export const useBacktestComparisons = (limit: number = 20, offset: number = 0) => {
-  const walletId = useAppStore(s => s.currentWalletPublicId)
+  const scope = useBacktestReadScope()
 
   return useQuery({
-    queryKey: queryKeys.backtestCompareList(walletId, limit, offset),
+    queryKey: queryKeys.backtestCompareList(scope.walletPublicId, limit, offset, scope),
     queryFn: () => getBacktestComparisons(limit, offset),
   })
 }
