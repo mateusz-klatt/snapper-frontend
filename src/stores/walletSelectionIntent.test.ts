@@ -31,6 +31,173 @@ describe('authoritative wallet selection intent observers', () => {
     vi.restoreAllMocks()
   })
 
+  it.each([
+    { outer: 'operator', newer: 'operator' },
+    { outer: 'operator', newer: 'wallet' },
+    { outer: 'wallet', newer: 'operator' },
+    { outer: 'wallet', newer: 'wallet' },
+  ] as const)(
+    'keeps the newer synchronous $newer selection when the $outer setter observer reenters',
+    ({ outer, newer }) => {
+      const publishWallet = vi.spyOn(apiClient, 'setWalletScope')
+      const publishOperator = vi.spyOn(apiClient, 'setOperatorScope')
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const committed: Array<[string | null, string | null]> = []
+      let nested = false
+      const unsubscribe = subscribeWalletSelectionIntent(() => {
+        if (nested) return
+
+        nested = true
+        if (newer === 'operator') useAppStore.getState().setCurrentOperatorPublicId('o-new')
+        else useAppStore.getState().setCurrentWalletPublicId('w-new')
+      })
+      const stopState = useAppStore.subscribe(state => {
+        committed.push([state.currentOperatorPublicId, state.currentWalletPublicId])
+      })
+
+      try {
+        if (outer === 'operator') useAppStore.getState().setCurrentOperatorPublicId('o-old')
+        else useAppStore.getState().setCurrentWalletPublicId('w-old')
+
+        const expectedOperator = newer === 'operator' ? 'o-new' : null
+        const expectedWallet = newer === 'wallet' ? 'w-new' : null
+
+        expect(committed).toEqual([[expectedOperator, expectedWallet]])
+        expect(useAppStore.getState().currentOperatorPublicId).toBe(expectedOperator)
+        expect(useAppStore.getState().currentWalletPublicId).toBe(expectedWallet)
+        expect(apiClient.getOperatorScope()).toBe(expectedOperator)
+        expect(apiClient.getWalletScope()).toBe(expectedWallet)
+        expect(publishWallet).toHaveBeenCalledExactlyOnceWith(expectedWallet)
+        expect(invalidate).toHaveBeenCalledTimes(2)
+
+        if (newer === 'operator') {
+          expect(publishOperator).toHaveBeenCalledExactlyOnceWith(expectedOperator)
+        } else expect(publishOperator).not.toHaveBeenCalled()
+      } finally {
+        unsubscribe()
+        stopState()
+      }
+    }
+  )
+
+  it.each([
+    { outer: 'operator', newer: 'operator' },
+    { outer: 'operator', newer: 'wallet' },
+    { outer: 'wallet', newer: 'operator' },
+    { outer: 'wallet', newer: 'wallet' },
+  ] as const)(
+    'keeps a newer $newer selection started by the $outer setter query invalidation',
+    ({ outer, newer }) => {
+      queryClient.setQueryData(['wallet-intent-reentrant-invalidation'], true)
+      const refetch = vi.spyOn(queryClient, 'refetchQueries')
+      const committed: Array<[string | null, string | null]> = []
+      const beforeNested: Array<[string | null, string | null, string | null, string | null]> = []
+      let nested = false
+      const unsubscribe = queryClient.getQueryCache().subscribe(event => {
+        if (event.type !== 'updated' || event.action.type !== 'invalidate' || nested) return
+
+        nested = true
+        beforeNested.push([
+          useAppStore.getState().currentOperatorPublicId,
+          useAppStore.getState().currentWalletPublicId,
+          apiClient.getOperatorScope(),
+          apiClient.getWalletScope(),
+        ])
+        if (newer === 'operator') useAppStore.getState().setCurrentOperatorPublicId('o-new')
+        else useAppStore.getState().setCurrentWalletPublicId('w-new')
+      })
+      const stopState = useAppStore.subscribe(state => {
+        committed.push([state.currentOperatorPublicId, state.currentWalletPublicId])
+      })
+
+      try {
+        if (outer === 'operator') useAppStore.getState().setCurrentOperatorPublicId('o-old')
+        else useAppStore.getState().setCurrentWalletPublicId('w-old')
+
+        const expectedOperator = newer === 'operator' ? 'o-new' : null
+        const expectedWallet = newer === 'wallet' ? 'w-new' : null
+
+        expect(nested).toBe(true)
+        expect(beforeNested).toEqual([[null, 'w-main', null, 'w-main']])
+        expect(committed).toEqual([[expectedOperator, expectedWallet]])
+        expect(useAppStore.getState().currentOperatorPublicId).toBe(expectedOperator)
+        expect(useAppStore.getState().currentWalletPublicId).toBe(expectedWallet)
+        expect(apiClient.getOperatorScope()).toBe(expectedOperator)
+        expect(apiClient.getWalletScope()).toBe(expectedWallet)
+        expect(refetch).toHaveBeenCalledTimes(1)
+      } finally {
+        unsubscribe()
+        stopState()
+      }
+    }
+  )
+
+  it.each(['operator', 'wallet'] as const)(
+    'keeps confirmed API and store scope when the %s query invalidation only reserves newer intent',
+    setter => {
+      queryClient.setQueryData(['wallet-intent-reserved-invalidation'], true)
+      const publishWallet = vi.spyOn(apiClient, 'setWalletScope')
+      const publishOperator = vi.spyOn(apiClient, 'setOperatorScope')
+      const refetch = vi.spyOn(queryClient, 'refetchQueries')
+      const publishState = vi.fn()
+      let nested = false
+      const unsubscribe = queryClient.getQueryCache().subscribe(event => {
+        if (event.type !== 'updated' || event.action.type !== 'invalidate' || nested) return
+
+        nested = true
+        useAppStore.getState().reserveScopeSelection()
+      })
+      const stopState = useAppStore.subscribe(publishState)
+
+      try {
+        if (setter === 'operator') useAppStore.getState().setCurrentOperatorPublicId('o-old')
+        else useAppStore.getState().setCurrentWalletPublicId('w-old')
+
+        expect(nested).toBe(true)
+        expect(publishWallet).not.toHaveBeenCalled()
+        expect(publishOperator).not.toHaveBeenCalled()
+        expect(publishState).not.toHaveBeenCalled()
+        expect(refetch).not.toHaveBeenCalled()
+        expect(apiClient.getOperatorScope()).toBeNull()
+        expect(apiClient.getWalletScope()).toBe('w-main')
+        expect(useAppStore.getState().currentOperatorPublicId).toBeNull()
+        expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+      } finally {
+        unsubscribe()
+        stopState()
+      }
+    }
+  )
+
+  it.each(['operator', 'wallet'] as const)(
+    'does not publish an obsolete synchronous %s selection after an observer reserves newer scope',
+    setter => {
+      const publishWallet = vi.spyOn(apiClient, 'setWalletScope')
+      const publishOperator = vi.spyOn(apiClient, 'setOperatorScope')
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      let nested = false
+      const unsubscribe = subscribeWalletSelectionIntent(() => {
+        if (nested) return
+
+        nested = true
+        useAppStore.getState().reserveScopeSelection()
+      })
+
+      try {
+        if (setter === 'operator') useAppStore.getState().setCurrentOperatorPublicId('o-old')
+        else useAppStore.getState().setCurrentWalletPublicId('w-old')
+
+        expect(publishWallet).not.toHaveBeenCalled()
+        expect(publishOperator).not.toHaveBeenCalled()
+        expect(invalidate).not.toHaveBeenCalled()
+        expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+        expect(useAppStore.getState().currentOperatorPublicId).toBeNull()
+      } finally {
+        unsubscribe()
+      }
+    }
+  )
+
   it('observes all four real coordinator advances but not independent historical-time decisions', async () => {
     const seen: number[] = []
     const initial = getWalletSelectionIntentVersion()

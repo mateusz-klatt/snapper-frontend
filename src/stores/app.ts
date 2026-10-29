@@ -237,18 +237,30 @@ export const useAppStore = create<AppStore>()(
     },
     setCurrentOperatorPublicId: (id: string | null) => {
       scopeSelectionVersion += 1
-      advanceWalletSelectionIntent()
+      const version = advanceWalletSelectionIntent()
+
+      if (version !== walletSelectionVersion) return
+
+      queryClient.invalidateQueries({ refetchType: 'none' })
+
+      if (version !== walletSelectionVersion) return
+
       apiClient.setOperatorScope(id)
       apiClient.setWalletScope(null)
-      queryClient.invalidateQueries({ refetchType: 'none' })
       set({ currentOperatorPublicId: id, currentWalletPublicId: null })
       refetchConfirmedReads()
     },
     setCurrentWalletPublicId: (id: string | null) => {
       scopeSelectionVersion += 1
-      advanceWalletSelectionIntent()
-      apiClient.setWalletScope(id)
+      const version = advanceWalletSelectionIntent()
+
+      if (version !== walletSelectionVersion) return
+
       queryClient.invalidateQueries({ refetchType: 'none' })
+
+      if (version !== walletSelectionVersion) return
+
+      apiClient.setWalletScope(id)
       set({ currentWalletPublicId: id })
       refetchConfirmedReads()
     },

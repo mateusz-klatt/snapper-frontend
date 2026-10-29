@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { WalletPicker } from './WalletPicker'
-import { useAppStore } from '../stores/app'
+import { subscribeWalletSelectionIntent, useAppStore } from '../stores/app'
 import { useAuthStore } from '../stores/auth'
 import { apiClient } from '../lib/apiClient'
 import { queryClient } from '../lib/queryClient'
@@ -85,6 +85,87 @@ describe('WalletPicker feedback follows authoritative coordinator intent', () =>
     queryClient.clear()
     vi.restoreAllMocks()
   })
+
+  it.each(['before mount', 'after mount'] as const)(
+    'does not restore a provisional choice when an observer registered %s starts newer wallet intent',
+    async registration => {
+      const pending = deferred()
+      const user = userEvent.setup()
+      const refresh = vi.fn().mockReturnValueOnce(pending.promise)
+      let nested = false
+      let newer!: Promise<void>
+
+      useAuthStore.setState({ refreshToken: refresh })
+      if (registration === 'after mount') render(<WalletPicker />)
+      const unsubscribe = subscribeWalletSelectionIntent(() => {
+        if (nested) return
+
+        nested = true
+        newer = useAppStore.getState().selectWalletAndRefresh('w-main')
+      })
+
+      if (registration === 'before mount') render(<WalletPicker />)
+
+      try {
+        await choose(user, 'Practice (paper)')
+        expect(refresh).toHaveBeenCalledExactlyOnceWith({ walletId: 'w-main' })
+        expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+        expect(screen.getByRole('combobox')).toHaveTextContent('Main')
+        expect(screen.queryByRole('status')).not.toBeInTheDocument()
+        await act(async () => {
+          pending.resolve()
+          await newer
+          await useAppStore.getState().waitForWalletSelection()
+        })
+        expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+        expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+      } finally {
+        unsubscribe()
+        await act(async () => {
+          pending.resolve()
+          await useAppStore.getState().waitForWalletSelection()
+        })
+      }
+    }
+  )
+
+  it.each(['logout and login', 'different user'] as const)(
+    'does not restore obsolete failure feedback when its dispatch observer triggers %s',
+    async transition => {
+      const pending = deferred()
+      const user = userEvent.setup()
+      let nested = false
+
+      useAuthStore.setState({ refreshToken: vi.fn().mockReturnValueOnce(pending.promise) })
+      render(<WalletPicker />)
+      const unsubscribe = subscribeWalletSelectionIntent(() => {
+        if (nested) return
+
+        nested = true
+        if (transition === 'logout and login') {
+          useAuthStore.setState({ isAuthenticated: false })
+          useAuthStore.setState({ isAuthenticated: true })
+        } else
+          useAuthStore.setState({
+            user: makeUserProfile({ public_id: 'user-b', username: 'auditor-b' }),
+          })
+      })
+
+      try {
+        await choose(user, 'Practice (paper)')
+        await act(async () => pending.reject(new TypeError('obsolete dispatch failure')))
+        expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+        expect(screen.queryByRole('status')).not.toBeInTheDocument()
+        expect(screen.getByRole('combobox')).toHaveTextContent('Main')
+      } finally {
+        unsubscribe()
+        await act(async () => {
+          pending.resolve()
+          await useAppStore.getState().waitForWalletSelection()
+        })
+      }
+    }
+  )
 
   it('retires a previous operator wallet and spinner immediately, before the obsolete refresh settles', async () => {
     const old = deferred()

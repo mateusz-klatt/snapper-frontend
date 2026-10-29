@@ -63,12 +63,17 @@ export const WalletPicker: React.FC = () => {
   }, [])
 
   const selectWallet = async (value: string): Promise<void> => {
-    const pending = selectWalletAndRefresh(value === '__all__' ? null : value)
-    const intentVersion = getWalletSelectionIntentVersion()
     const version = ++selectionVersion.current
+    const intentVersion = getWalletSelectionIntentVersion() + 1
+    const pending = selectWalletAndRefresh(value === '__all__' ? null : value)
 
-    setPendingValue(value)
-    setSelectionFailed(false)
+    if (
+      version === selectionVersion.current &&
+      intentVersion === getWalletSelectionIntentVersion()
+    ) {
+      setPendingValue(value)
+      setSelectionFailed(false)
+    }
 
     try {
       await pending

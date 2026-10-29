@@ -40,6 +40,9 @@ or authenticated-user changes and unmounting retire local feedback. Intent obser
 interrupt the coordinator's refresh or acknowledgement fence if they fail or unsubscribe.
 Each scope reservation keeps its own ticket before observers run, so a reentrant newer scope
 selection keeps priority over the older caller.
+Synchronous wallet and operator setters recheck their ticket after intent observers and query
+invalidation, before publishing stale state. The picker captures its local attempt and expected
+intent before dispatch, so reentrant selections or login-state changes cannot restore old feedback.
 
 Restored wallet scope is acknowledged by the authenticated session before dependent views mount.
 Wallet-bearing and background refreshes share the same rotation coordinator. Failed hydration offers
