@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAppStore } from '../stores/app'
 import { useOperators, useWallets } from './queries/wallets'
 
@@ -20,6 +20,7 @@ type NavigationIntent = Preferences & {
   readonly hasParams: boolean
 }
 type PendingSelection = { readonly intent: NavigationIntent; readonly version: number }
+type ScopeStatus = 'loading' | 'ready' | 'error'
 
 const preference = (raw: string | null): Preference => ({
   specified: raw !== null,
@@ -166,6 +167,7 @@ class ScopeSynchronizer {
     if (key === this.locationKey) return
 
     this.locationKey = key
+    this.onStatus('loading')
     this.generation += 1
     this.pending = { intent, version: useAppStore.getState().reserveScopeSelection() }
     if (!this.running) void this.drain()
@@ -173,7 +175,8 @@ class ScopeSynchronizer {
 
   constructor(
     private wallets: IdList,
-    private operators: IdList
+    private operators: IdList,
+    private readonly onStatus: (status: ScopeStatus) => void
   ) {
     globalThis.addEventListener('hashchange', this.onLocation)
     globalThis.addEventListener('popstate', this.onLocation)
@@ -236,6 +239,12 @@ class ScopeSynchronizer {
     globalThis.removeEventListener('popstate', this.onLocation)
   }
 
+  retry(): void {
+    this.needsRefresh = true
+    this.locationKey = null
+    this.onLocation()
+  }
+
   private persist(): void {
     const current = snapshot()
 
@@ -284,6 +293,7 @@ class ScopeSynchronizer {
         this.initial = false
         this.commitTarget = target
         this.activeGeneration = generation
+        let failed = false
 
         try {
           const pendingRefresh = useAppStore.getState().isWalletSelectionPending()
@@ -305,20 +315,25 @@ class ScopeSynchronizer {
 
             this.needsRefresh = !committed
 
-            if (
-              !committed &&
-              !this.stopped &&
-              this.pending === null &&
-              useAppStore.getState().isScopeSelectionCurrent(version)
-            ) {
-              this.pending = { intent: snapshotIntent(snapshot()), version }
+            if (!committed && !this.stopped && this.pending === null) {
+              await useAppStore.getState().waitForWalletSelection()
+              if (!this.stopped)
+                this.pending ??= {
+                  intent: snapshotIntent(snapshot()),
+                  version: useAppStore.getState().reserveScopeSelection(),
+                }
             }
           }
         } catch {
           this.needsRefresh = false
+          failed = true
         }
 
-        if (this.pending === null && !this.stopped) this.persist()
+        if (this.pending === null && !this.stopped) {
+          this.persist()
+          if (failed) this.onStatus('error')
+          else this.onStatus('ready')
+        }
       }
     } finally {
       this.running = false
@@ -326,20 +341,28 @@ class ScopeSynchronizer {
   }
 }
 
-export function useScopePersistence(): void {
-  const wallets = useWallets().data
-  const operators = useOperators().data
+export function useScopePersistence(): { status: ScopeStatus; retry: () => void } {
+  const { data: wallets, isError: walletError, refetch: retryWallets } = useWallets()
+  const { data: operators, isError: operatorError, refetch: retryOperators } = useOperators()
+  const accessFailed = walletError || operatorError
   const synchronizer = useRef<ScopeSynchronizer | null>(null)
+  const [status, setStatus] = useState<ScopeStatus>('loading')
+  const retry = useCallback(() => {
+    if (accessFailed) {
+      void retryWallets()
+      void retryOperators()
+    } else synchronizer.current?.retry()
+  }, [accessFailed, retryWallets, retryOperators])
 
   useEffect(() => {
-    if (wallets === undefined || operators === undefined) return
+    if (wallets === undefined || operators === undefined || accessFailed) return
 
     if (synchronizer.current === null) {
-      synchronizer.current = new ScopeSynchronizer(wallets.payload, operators.payload)
+      synchronizer.current = new ScopeSynchronizer(wallets.payload, operators.payload, setStatus)
     } else {
       synchronizer.current.update(wallets.payload, operators.payload)
     }
-  }, [wallets, operators])
+  }, [wallets, operators, accessFailed])
 
   useEffect(
     () => () => {
@@ -348,4 +371,6 @@ export function useScopePersistence(): void {
     },
     []
   )
+
+  return { status: accessFailed ? 'error' : status, retry }
 }

@@ -172,20 +172,13 @@ export const useAuthStore = create<AuthState>()(
         refreshToken: async (nextWallet?: RefreshWalletHint) => {
           try {
             const body = buildRefreshBody(nextWallet)
-            let envelope: RefreshEnvelope
+            const response = await apiClient.refreshSession(body)
 
-            if (body === undefined) {
-              const response = await apiClient.refreshSession()
-
-              if (!response.ok) {
-                throw new Error(`Refresh failed with status ${response.status}`)
-              }
-
-              envelope = (await response.json()) as RefreshEnvelope
-            } else {
-              envelope = await apiClient.postJSON('/api/auth/refresh', body)
+            if (!response.ok) {
+              throw new Error(`Refresh failed with status ${response.status}`)
             }
 
+            const envelope = (await response.json()) as RefreshEnvelope
             const data = envelope.payload
 
             if (typeof data.ws_token === 'string' && typeof data.ws_token_exp === 'string') {
@@ -209,6 +202,15 @@ export const useAuthStore = create<AuthState>()(
               const meEnvelope: { payload: User } = await userResponse.json()
 
               userData = meEnvelope.payload
+            }
+
+            if (
+              nextWallet !== undefined &&
+              (data.user === undefined ||
+                (data.user.active_wallet_public_id ?? null) !==
+                  ('clear' in nextWallet ? null : nextWallet.walletId))
+            ) {
+              throw new Error('Session wallet context was not confirmed')
             }
 
             set({

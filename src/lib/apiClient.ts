@@ -18,6 +18,8 @@ interface GetRequestOptions extends RequestOptions {
   skipAsOf?: boolean
 }
 
+type RefreshSessionBody = { active_wallet_public_id?: string; clear_active_wallet?: true }
+
 interface ErrorPayload {
   message: string
   details?: unknown
@@ -176,15 +178,26 @@ class APIClient {
       headers.set('X-CSRF-Token', csrfToken)
     }
   }
-  public refreshSession(): Promise<Response> {
-    this.refreshPromise ??= this.runRefreshFlight().finally(() => {
-      this.refreshPromise = null
-    })
+  public refreshSession(body?: RefreshSessionBody): Promise<Response> {
+    if (body !== undefined || this.refreshPromise === null) {
+      const previous = this.refreshPromise
+      const operation =
+        previous === null
+          ? this.runRefreshFlight(body)
+          : previous.catch(() => undefined).then(() => this.runRefreshFlight(body))
+      const pending = operation.finally(() => {
+        if (this.refreshPromise === pending) this.refreshPromise = null
+      })
+
+      this.refreshPromise = pending
+    }
 
     return this.refreshPromise.then(response => response.clone())
   }
-  private async runRefreshFlight(): Promise<Response> {
+  private async runRefreshFlight(body?: RefreshSessionBody): Promise<Response> {
+    const encoded = body === undefined ? {} : { body: JSON.stringify(stampProvenance(body)) }
     const attempt = await fetch('/api/auth/refresh', {
+      ...encoded,
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -204,6 +217,7 @@ class APIClient {
 
     if (typeof errorData.detail === 'string' && errorData.detail.includes('CSRF')) {
       return fetch('/api/auth/refresh', {
+        ...encoded,
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

@@ -11,6 +11,7 @@ import UserProfile from './components/auth/UserProfile'
 import { TimeTravelPicker } from './components/TimeTravelPicker'
 import { OperatorPicker } from './components/OperatorPicker'
 import { WalletPicker } from './components/WalletPicker'
+import { LoadingSpinner } from './components/ui'
 import LocaleSwitcher from './components/LocaleSwitcher'
 import { Menu, Wifi, WifiOff, X, Sun, Moon, Clock } from 'lucide-react'
 
@@ -20,7 +21,7 @@ function App() {
   const { isConnected, connectionLag, subscribedTopicsCount } = useAppShell()
   const { t } = useTranslation('common')
 
-  useScopePersistence()
+  const { status: scopeStatus, retry: retryScope } = useScopePersistence()
   const isDarkMode = useAppStore(s => s.isDarkMode)
   const toggleDarkMode = useAppStore(s => s.toggleDarkMode)
   const isTimeTraveling = useAppStore(s => s.isTimeTraveling)
@@ -179,7 +180,18 @@ function App() {
               {t('chrome.skipToContent')}
             </a>
             <div className='mx-auto w-full max-w-screen-2xl'>
-              <AppRoutes activeTab={activeTab} />
+              {scopeStatus === 'ready' ? (
+                <AppRoutes activeTab={activeTab} />
+              ) : scopeStatus === 'error' ? (
+                <div role='alert'>
+                  <p>{t('error')}</p>
+                  <button type='button' onClick={retryScope}>
+                    {t('retry')}
+                  </button>
+                </div>
+              ) : (
+                <LoadingSpinner />
+              )}
             </div>
             <span id='trading-content-end' aria-hidden='true' />
           </section>
