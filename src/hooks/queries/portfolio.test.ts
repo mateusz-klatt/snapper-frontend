@@ -8,6 +8,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { usePortfolioAccounts, usePortfolioPnlSeries, usePortfolioPnlTimeline } from './portfolio'
+import type { PortfolioPnlTimelineQueryParams } from './portfolio'
 import {
   getPortfolioAccounts,
   getPortfolioPnlSeries,
@@ -184,6 +185,7 @@ const control = vi.hoisted(() => ({
   operatorPublicId: null as string | null,
   walletPublicId: null as string | null,
   isAuthenticated: true,
+  userPublicId: 'u-1' as string | null,
 }))
 
 vi.mock('../../lib/api/portfolio', () => ({
@@ -194,7 +196,7 @@ vi.mock('../../lib/api/portfolio', () => ({
 vi.mock('../../stores/auth', () => ({
   useAuth: vi.fn(() => ({
     isAuthenticated: control.isAuthenticated,
-    user: { public_id: 'u-1', role: 'admin' },
+    user: control.userPublicId === null ? null : { public_id: control.userPublicId, role: 'admin' },
   })),
 }))
 
@@ -221,6 +223,15 @@ const createWrapper = (
   return function Wrapper({ children }: { children: ReactNode }) {
     return createElement(QueryClientProvider, { client: queryClient }, children)
   }
+}
+
+const deferred = <T>() => {
+  let resolve!: (value: T) => void
+  const promise = new Promise<T>(res => {
+    resolve = res
+  })
+
+  return { promise, resolve }
 }
 
 describe('usePortfolioAccounts', () => {
@@ -359,6 +370,7 @@ describe('usePortfolioPnlSeries', () => {
 
   it('stays disabled while unauthenticated', () => {
     control.isAuthenticated = false
+    control.userPublicId = null
 
     const { result } = renderHook(() => usePortfolioPnlSeries(params), {
       wrapper: createWrapper(),
@@ -384,6 +396,7 @@ describe('usePortfolioPnlTimeline', () => {
     control.operatorPublicId = 'op-1'
     control.walletPublicId = 'w-1'
     control.isAuthenticated = true
+    control.userPublicId = 'u-1'
   })
 
   it('returns the timeline at the global time-travel horizon', async () => {
@@ -447,6 +460,149 @@ describe('usePortfolioPnlTimeline', () => {
     ])
   })
 
+  it('retains a successful Live response while the next same-scope minute is refreshing', async () => {
+    const next = deferred<PnlTimelineResponse>()
+    const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+
+    control.asOf = null
+    vi.mocked(getPortfolioPnlTimeline)
+      .mockResolvedValueOnce(pnlTimelineResponse)
+      .mockReturnValueOnce(next.promise)
+    const view = renderHook(
+      ({ from }: { from: string }) => usePortfolioPnlTimeline({ ...params, from, to: undefined }),
+      {
+        initialProps: { from: '2026-07-12T12:00:00Z' },
+        wrapper: createWrapper(queryClient),
+      }
+    )
+
+    try {
+      await waitFor(() => expect(view.result.current.isSuccess).toBe(true))
+      view.rerender({ from: '2026-07-12T12:01:00Z' })
+      await waitFor(() => expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(2))
+      expect(view.result.current.data).toEqual(pnlTimelineResponse.payload)
+      expect(view.result.current.isLoading).toBe(false)
+      expect(view.result.current.isFetching).toBe(true)
+    } finally {
+      view.unmount()
+      next.resolve(pnlTimelineResponse)
+      queryClient.clear()
+    }
+  })
+
+  it.each([
+    'wallet',
+    'operator',
+    'currency',
+    'granularity',
+    'mode',
+    'horizon',
+    'end',
+    'window',
+    'user',
+  ])('does not borrow successful values across the %s boundary', async boundary => {
+    const next = deferred<PnlTimelineResponse>()
+    const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+    const initial: PortfolioPnlTimelineQueryParams = { ...params, to: undefined }
+
+    control.asOf = null
+    vi.mocked(getPortfolioPnlTimeline)
+      .mockResolvedValueOnce(pnlTimelineResponse)
+      .mockReturnValueOnce(next.promise)
+    const view = renderHook(
+      (request: PortfolioPnlTimelineQueryParams) => usePortfolioPnlTimeline(request),
+      {
+        initialProps: initial,
+        wrapper: createWrapper(queryClient),
+      }
+    )
+
+    try {
+      await waitFor(() => expect(view.result.current.isSuccess).toBe(true))
+      const request: PortfolioPnlTimelineQueryParams = { ...initial, from: '2026-07-12T12:01:00Z' }
+
+      if (boundary === 'wallet') control.walletPublicId = 'w-2'
+      if (boundary === 'operator') control.operatorPublicId = 'op-2'
+      if (boundary === 'currency') request.valuationCcy = 'PLN'
+      if (boundary === 'granularity') request.granularity = '1h'
+      if (boundary === 'mode') request.mode = 'paper'
+      if (boundary === 'horizon') control.asOf = '2026-07-13T12:00:00Z'
+      if (boundary === 'end') request.to = '2026-07-13T12:01:00Z'
+      if (boundary === 'window') request.from = '2026-07-06T12:00:00Z'
+      if (boundary === 'user') control.userPublicId = 'u-2'
+      view.rerender(request)
+      await act(async () => {
+        await Promise.resolve()
+      })
+      expect(view.result.current.data).toBeUndefined()
+    } finally {
+      view.unmount()
+      next.resolve(pnlTimelineResponse)
+      queryClient.clear()
+    }
+  })
+
+  it('retires old successful values across logout and login even when scope IDs are unchanged', async () => {
+    const next = deferred<PnlTimelineResponse>()
+    const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+
+    control.asOf = null
+    vi.mocked(getPortfolioPnlTimeline)
+      .mockResolvedValueOnce(pnlTimelineResponse)
+      .mockReturnValueOnce(next.promise)
+    const view = renderHook(() => usePortfolioPnlTimeline({ ...params, to: undefined }), {
+      wrapper: createWrapper(queryClient),
+    })
+
+    try {
+      await waitFor(() => expect(view.result.current.isSuccess).toBe(true))
+      control.isAuthenticated = false
+      view.rerender()
+      expect(view.result.current.data).toBeUndefined()
+      control.isAuthenticated = true
+      view.rerender()
+      await waitFor(() => expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(2))
+      expect(view.result.current.data).toBeUndefined()
+    } finally {
+      view.unmount()
+      next.resolve(pnlTimelineResponse)
+      queryClient.clear()
+    }
+  })
+
+  it.each(['same', 'forward'] as const)(
+    'retires previous values when rolling duration changes with %s from',
+    async advance => {
+      const next = deferred<PnlTimelineResponse>()
+      const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+      const initial = { ...params, to: undefined, rollingWindowMs: 86_400_000 }
+
+      control.asOf = null
+      vi.mocked(getPortfolioPnlTimeline)
+        .mockResolvedValueOnce(pnlTimelineResponse)
+        .mockReturnValueOnce(next.promise)
+      const view = renderHook((request: typeof initial) => usePortfolioPnlTimeline(request), {
+        initialProps: initial,
+        wrapper: createWrapper(queryClient),
+      })
+
+      try {
+        await waitFor(() => expect(view.result.current.isSuccess).toBe(true))
+        view.rerender({
+          ...initial,
+          rollingWindowMs: 604_800_000,
+          from: advance === 'forward' ? '2026-07-12T12:01:00Z' : initial.from,
+        })
+        await waitFor(() => expect(getPortfolioPnlTimeline).toHaveBeenCalledTimes(2))
+        expect(view.result.current.data).toBeUndefined()
+      } finally {
+        view.unmount()
+        next.resolve(pnlTimelineResponse)
+        queryClient.clear()
+      }
+    }
+  )
+
   it('stays disabled without a selected wallet', () => {
     control.walletPublicId = null
 
@@ -460,6 +616,7 @@ describe('usePortfolioPnlTimeline', () => {
 
   it('stays disabled while unauthenticated', () => {
     control.isAuthenticated = false
+    control.userPublicId = null
 
     const { result } = renderHook(() => usePortfolioPnlTimeline(params), {
       wrapper: createWrapper(),

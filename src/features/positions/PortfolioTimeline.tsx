@@ -1,4 +1,4 @@
-import React, { useState, useSyncExternalStore } from 'react'
+import React, { useLayoutEffect, useState, useSyncExternalStore } from 'react'
 import { ChartNoAxesCombined, Info, TriangleAlert, WalletCards } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { NativeSelect } from '../../components/NativeSelect'
@@ -6,6 +6,7 @@ import { EmptyState, LoadingSpinner } from '../../components/ui'
 import { usePortfolioPnlTimeline } from '../../hooks/queries/portfolio'
 import { useWallets } from '../../hooks/queries/wallets'
 import { useAppStore } from '../../stores/app'
+import { useAuth } from '../../stores/auth'
 import type { PortfolioPnlGranularity } from '../../types/api'
 import { AttributionBreakdown } from './AttributionBreakdown'
 import { CashPositionSplit } from './CashPositionSplit'
@@ -80,6 +81,8 @@ export const PortfolioTimeline: React.FC = () => {
   const { t } = useTranslation('positions')
   const walletPublicId = useAppStore(s => s.currentWalletPublicId)
   const asOf = useAppStore(s => s.asOf)
+  const operatorPublicId = useAppStore(s => s.currentOperatorPublicId)
+  const { isAuthenticated, user } = useAuth()
   const [window, setWindow] = useState<TimelineWindow>('24h')
   const [granularity, setGranularity] = useState<PortfolioPnlGranularity>('1m')
   const [valuationCcy, setValuationCcy] = useState<TimelineValuationCurrency>('USD')
@@ -90,13 +93,27 @@ export const PortfolioTimeline: React.FC = () => {
   )
   const walletModeReady = selectedWallet !== undefined
   const mode = selectedWallet?.is_paper === true ? 'paper' : 'live'
-  const liveWindowEnd = useSyncExternalStore(
+  const desiredLiveEnd = useSyncExternalStore(
     asOf === null && walletModeReady && walletPublicId !== null
       ? subscribeClosedMinutes
       : subscribeFrozenMinute,
     currentClosedMinute,
     currentClosedMinute
   )
+  const clockScope = JSON.stringify([
+    walletPublicId,
+    operatorPublicId,
+    asOf,
+    window,
+    granularity,
+    valuationCcy,
+    mode,
+    walletModeReady,
+    isAuthenticated,
+    user?.public_id ?? null,
+  ])
+  const [submittedWindow, setSubmittedWindow] = useState({ scope: clockScope, end: desiredLiveEnd })
+  const liveWindowEnd = submittedWindow.scope === clockScope ? submittedWindow.end : desiredLiveEnd
   const anchorMs = asOf === null ? liveWindowEnd : new Date(asOf).getTime()
   const from = new Date(anchorMs - WINDOW_DURATIONS_MS[window]).toISOString()
   const to = asOf === null ? undefined : new Date(anchorMs).toISOString()
@@ -104,6 +121,7 @@ export const PortfolioTimeline: React.FC = () => {
     data,
     isLoading: isTimelineLoading,
     isError: isTimelineError,
+    isFetching,
   } = usePortfolioPnlTimeline(
     {
       from,
@@ -111,9 +129,20 @@ export const PortfolioTimeline: React.FC = () => {
       granularity,
       mode,
       valuationCcy,
+      rollingWindowMs: WINDOW_DURATIONS_MS[window],
     },
     walletModeReady
   )
+
+  useLayoutEffect(() => {
+    if (
+      submittedWindow.scope !== clockScope ||
+      (asOf === null && !isFetching && submittedWindow.end !== desiredLiveEnd)
+    ) {
+      setSubmittedWindow({ scope: clockScope, end: desiredLiveEnd })
+    }
+  }, [submittedWindow, clockScope, asOf, isFetching, desiredLiveEnd])
+
   const points = data?.points ?? []
   const markers = data?.markers ?? []
   const executionHistory = data?.execution_history
@@ -340,6 +369,15 @@ export const PortfolioTimeline: React.FC = () => {
   return (
     <div className='space-y-4' data-testid='portfolio-timeline'>
       {controls}
+      {isFetching && data !== undefined && !isLoading && (
+        <div
+          className='flex items-center gap-2 text-sm text-muted-500'
+          data-testid='pnl-refreshing'
+        >
+          <LoadingSpinner size='sm' />
+          <span>{t('timeline.loading')}</span>
+        </div>
+      )}
       {asOf !== null && (
         <output
           className='flex items-center gap-2 rounded-lg border border-info-200 bg-info-50 px-4 py-3 text-sm text-info-700'

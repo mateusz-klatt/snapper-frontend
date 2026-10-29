@@ -47,13 +47,26 @@ const getPnlClass = (value: number | null | undefined): string => {
   return 'text-muted-400'
 }
 
+/** Presentation precision only; the source values and shared order-preview formatter stay intact. */
+const positionNumberOptions = (value: number): Intl.NumberFormatOptions => {
+  if (!Number.isFinite(value) || Math.abs(value) >= 1e19) return {}
+
+  const magnitude = value === 0 ? 0 : Math.floor(Math.log10(Math.abs(value)))
+  const minimumSignificantDigits = Math.min(21, Math.max(1, magnitude + 3))
+
+  return {
+    minimumSignificantDigits,
+    maximumSignificantDigits: Math.max(12, minimumSignificantDigits),
+  }
+}
+
 const formatPrice = (value: number | null | undefined, quote: string, noValue: string): string =>
-  value == null ? noValue : formatQuoted(value, quote)
+  value == null ? noValue : formatQuoted(value, quote, positionNumberOptions(value))
 
 const formatPnl = (value: number | null | undefined, quote: string, noValue: string): string => {
   if (value == null) return noValue
 
-  return formatQuoted(value, quote, { signDisplay: 'exceptZero' })
+  return formatQuoted(value, quote, { ...positionNumberOptions(value), signDisplay: 'exceptZero' })
 }
 
 const positionIdSuffix = (position: Position): string =>
