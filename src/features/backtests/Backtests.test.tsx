@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { act, render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Backtests } from './Backtests'
 import { useAuth } from '../../stores/auth'
@@ -79,7 +79,10 @@ function renderWithQuery(ui: React.ReactElement) {
     defaultOptions: { queries: { retry: false } },
   })
 
-  return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>)
+  return {
+    ...render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>),
+    queryClient,
+  }
 }
 
 describe('Backtests', () => {
@@ -122,6 +125,41 @@ describe('Backtests', () => {
     expect(await screen.findByText('sma_cross')).toBeInTheDocument()
     expect(screen.getByText('BTC-USD')).toBeInTheDocument()
     expect(screen.getAllByText('Completed').length).toBeGreaterThan(0)
+  })
+
+  it('shows a retriable read error instead of claiming that no backtests exist', async () => {
+    mockHasPermission.mockReturnValue(false)
+    mockGetBacktests.mockRejectedValueOnce(new Error('Request failed'))
+    mockGetBacktests.mockResolvedValue({ payload: [], count: 0 })
+
+    renderWithQuery(<Backtests />)
+
+    expect(await screen.findByRole('alert')).toHaveTextContent('Error in Backtests')
+    expect(screen.queryByText('No backtests')).not.toBeInTheDocument()
+    expect(mockCancelBacktest).not.toHaveBeenCalled()
+    expect(mockRerunBacktest).not.toHaveBeenCalled()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Retry' }))
+
+    expect(await screen.findByText('No backtests')).toBeInTheDocument()
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    expect(mockGetBacktests).toHaveBeenCalledTimes(2)
+  })
+
+  it('keeps previously loaded runs visible while reporting a failed refresh', async () => {
+    mockGetBacktests.mockResolvedValueOnce({ payload: [makeRun()], count: 1 })
+    const { queryClient } = renderWithQuery(<Backtests />)
+
+    await screen.findByText('sma_cross')
+    mockGetBacktests.mockRejectedValue(new Error('Refresh failed'))
+
+    await act(async () => {
+      await queryClient.refetchQueries()
+    })
+
+    expect(await screen.findByRole('alert')).toHaveTextContent('Error in Backtests')
+    expect(screen.getByText('sma_cross')).toBeInTheDocument()
+    expect(screen.queryByText('No backtests')).not.toBeInTheDocument()
   })
 
   it('renders cross-asset attribution arrow when target_execution_exchange is set', async () => {

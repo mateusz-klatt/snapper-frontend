@@ -18,6 +18,17 @@ export interface PortfolioPnlQueryKeyParams {
   readonly valuationCcy: string
 }
 
+export interface BacktestReadScope {
+  readonly asOf: string | null
+  readonly operatorPublicId: string | null
+  readonly walletPublicId: string | null
+}
+
+const withBacktestReadScope = <const Key extends readonly unknown[]>(
+  key: Key,
+  scope?: BacktestReadScope
+) => (scope === undefined ? key : ([...key, scope] as const))
+
 export const queryKeys = {
   systemStatus: ['system', 'status'] as const,
   systemMetrics: ['system', 'metrics'] as const,
@@ -149,17 +160,27 @@ export const queryKeys = {
     ['trailingStopState', cyclePublicId] as const,
   backtestsAll: ['backtests'] as const,
   backtestStrategyClasses: ['backtests', 'strategy-classes'] as const,
-  backtestsByStrategyStatus: (strategy?: string, status?: string) =>
-    ['backtests', strategy, status] as const,
-  backtestsByConfigHash: (configHash: string | null, limit: number) =>
-    ['backtests', 'by-hash', configHash, limit] as const,
-  backtest: (runId: string | undefined) => ['backtests', runId] as const,
-  backtestTrades: (runId: string | undefined) => ['backtests', runId, 'trades'] as const,
-  backtestSignals: (runId: string | undefined) => ['backtests', runId, 'signals'] as const,
-  backtestCompare: (walletId: string | null, comparisonId: string | undefined) =>
-    ['backtest-compare', walletId, comparisonId] as const,
-  backtestCompareList: (walletId: string | null, limit: number, offset: number) =>
-    ['backtest-compare', 'list', walletId, limit, offset] as const,
+  backtestsByStrategyStatus: (strategy?: string, status?: string, scope?: BacktestReadScope) =>
+    withBacktestReadScope(['backtests', strategy, status] as const, scope),
+  backtestsByConfigHash: (configHash: string | null, limit: number, scope?: BacktestReadScope) =>
+    withBacktestReadScope(['backtests', 'by-hash', configHash, limit] as const, scope),
+  backtest: (runId: string | undefined, scope?: BacktestReadScope) =>
+    withBacktestReadScope(['backtests', runId] as const, scope),
+  backtestTrades: (runId: string | undefined, scope?: BacktestReadScope) =>
+    withBacktestReadScope(['backtests', runId, 'trades'] as const, scope),
+  backtestSignals: (runId: string | undefined, scope?: BacktestReadScope) =>
+    withBacktestReadScope(['backtests', runId, 'signals'] as const, scope),
+  backtestCompare: (
+    walletId: string | null,
+    comparisonId: string | undefined,
+    scope?: BacktestReadScope
+  ) => withBacktestReadScope(['backtest-compare', walletId, comparisonId] as const, scope),
+  backtestCompareList: (
+    walletId: string | null,
+    limit: number,
+    offset: number,
+    scope?: BacktestReadScope
+  ) => withBacktestReadScope(['backtest-compare', 'list', walletId, limit, offset] as const, scope),
   backtestCompareListForWallet: (walletId: string | null) =>
     ['backtest-compare', 'list', walletId] as const,
   processStatusAll: ['process', 'status'] as const,

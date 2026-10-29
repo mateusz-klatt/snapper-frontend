@@ -26,6 +26,10 @@ Wallet changes refresh the session claim before operator, wallet and knowledge t
 together. Refreshes are serialized; superseded or unmounted selections cannot publish client
 scope. A newer URL or picker decision wins, and refresh failure preserves the confirmed selection.
 
+Returning from Time Travel marks cached P&L windows stale without refetching the obsolete
+historical observer. The Live window fetches fresh data when its scope becomes active; other
+active reads continue to refresh.
+
 ## What it is
 
 The browser-side dashboard for Snapper — a role-, wallet-, and operator-scoped portfolio + execution platform that talks to crypto, futures, equities, and forex venues over WebSocket and REST. This repo contains only the UI; the backend (FastAPI + SQLAlchemy + ZMQ) lives in the parent repo.
@@ -47,6 +51,12 @@ save and destructive actions disabled. Auditors cannot change the shared account
 display preferences and navigation remain interactive. The backend independently enforces the
 permission boundary for HTTP requests and WebSocket commands; browser controls use the generated
 permission catalog and preserve the existing presentation of sensitive values.
+
+Backtests distinguishes failed list reads from a successful empty result. A read failure displays
+an error and a **Retry** action; previously loaded runs remain visible if a refresh fails. Retry
+repeats the list read and is available to read-only users without granting run-management actions.
+List, detail, trades, signals and comparison caches include the selected wallet, operator and
+knowledge horizon. A delayed response from an earlier scope cannot replace the selected view.
 
 ## Portfolio valuation
 
