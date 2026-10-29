@@ -72,6 +72,14 @@ warning and are never substituted with zero. Open **Positions**, then select **P
 inspect reconstructed P&L in a chosen valuation currency with its coverage diagnostics. The
 Overview link preserves the current wallet, operator and time-travel query parameters.
 
+Live P&L keeps the last successful result visible with a loading indicator while the same selected
+view refreshes. A new minute waits for the active read to finish; if more minutes pass, one follow-up
+uses the latest minute. Changing the wallet, operator, valuation currency, granularity, time window
+or knowledge horizon starts an isolated view. Signing out retires earlier results, including when
+the same account signs in again. Coverage warnings remain visible during refreshes. Native position
+prices and P&L retain their instrument currency and use display rounding to suppress floating-point
+noise; stored values and calculations are unchanged.
+
 ## Market history
 
 Global time travel selects the knowledge horizon for market history. The market scrubber selects

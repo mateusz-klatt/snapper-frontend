@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Positions } from './Positions'
 import type { Position } from '../../types/entities'
+import { formatQuoted } from './instrumentQuote'
 
 const mockHasPermission = vi.fn(() => true)
 
@@ -271,6 +272,92 @@ describe('Positions', () => {
       '-1.00 PLN'
     )
   })
+
+  it('formats native position values without binary tails while keeping shared quote previews unchanged', async () => {
+    const position = makePosition({
+      instrument: 'EUR-PLN',
+      quantity: 20,
+      averagePrice: 7.123000000000001,
+      markPrice: Number('7.129450000000001'),
+      unrealizedPnl: Number('0.06450000000000073'),
+      realizedPnl: -Number('0.06450000000000073'),
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+
+    expect(screen.getByText('7.123 PLN')).toBeInTheDocument()
+    expect(screen.getByTestId('position-mark-EUR-PLN-kraken-live')).toHaveTextContent('7.12945 PLN')
+    expect(screen.getByTestId('position-unrealized-EUR-PLN-kraken-live')).toHaveTextContent(
+      '+0.0645 PLN'
+    )
+    expect(screen.getByTestId('position-realized-EUR-PLN-kraken-live')).toHaveTextContent(
+      '-0.0645 PLN'
+    )
+    expect(formatQuoted(Number('7.129450000000001'), 'PLN')).toBe('7.129450000000001 PLN')
+  })
+
+  it('keeps a tiny nonzero native position value visible in its own quote', async () => {
+    const position = makePosition({
+      instrument: 'TINY-BTC',
+      quantity: 20,
+      averagePrice: 0.000000000000012345,
+      markPrice: 0.000000000000012345,
+      unrealizedPnl: 0.000000000000012345,
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+
+    expect(screen.getByTestId('position-mark-TINY-BTC-kraken-live')).toHaveTextContent(
+      '0.000000000000012345 BTC'
+    )
+    expect(screen.getByTestId('position-unrealized-TINY-BTC-kraken-live')).toHaveTextContent(
+      '+0.000000000000012345 BTC'
+    )
+  })
+
+  it.each([1, -1])(
+    'renders a value just below the Intl significant-digit boundary without throwing (PnL sign %s)',
+    async sign => {
+      const nearUpper = 1e19 - 2048
+      const position = makePosition({
+        instrument: 'EUR-PLN',
+        quantity: 1,
+        averagePrice: nearUpper,
+        markPrice: nearUpper,
+        unrealizedPnl: sign * nearUpper,
+      })
+      const { usePositions } = await import('../../hooks/queries/positions')
+
+      vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
+      expect(() => renderWithProviders(<Positions />)).not.toThrow()
+      const mark = screen.getByTestId('position-mark-EUR-PLN-kraken-live')
+      const pnl = screen.getByTestId('position-unrealized-EUR-PLN-kraken-live')
+
+      expect(mark).toHaveTextContent(/^9[0-9., ]+PLN$/)
+      expect(pnl.textContent?.startsWith(sign > 0 ? '+' : '-')).toBe(true)
+      expect(pnl).toHaveTextContent('PLN')
+      expect(pnl.textContent).not.toContain('NaN')
+    }
+  )
+
+  it.each([Number.NaN, 1e19])(
+    'keeps the existing formatter fallback for an outlying value %s without inventing zero',
+    async value => {
+      const position = makePosition({ instrument: 'EUR-PLN', quantity: 1, markPrice: value })
+      const { usePositions } = await import('../../hooks/queries/positions')
+
+      vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
+      expect(() => renderWithProviders(<Positions />)).not.toThrow()
+      const mark = screen.getByTestId('position-mark-EUR-PLN-kraken-live')
+
+      expect(mark).toHaveTextContent('PLN')
+      expect(mark.textContent).not.toBe('0.00 PLN')
+    }
+  )
 
   it('renders a bare number when the symbol has no resolvable quote currency', async () => {
     const malformed = makePosition({

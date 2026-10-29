@@ -247,8 +247,18 @@ const timeline = (
   markers,
 })
 
-const mockQuery = (data: PnlTimelineData | undefined, isLoading = false, isError = false): void => {
-  vi.mocked(usePortfolioPnlTimeline).mockReturnValue({ data, isLoading, isError } as never)
+const mockQuery = (
+  data: PnlTimelineData | undefined,
+  isLoading = false,
+  isError = false,
+  isFetching = false
+): void => {
+  vi.mocked(usePortfolioPnlTimeline).mockReturnValue({
+    data,
+    isLoading,
+    isError,
+    isFetching,
+  } as never)
 }
 
 const mockWalletQuery = (
@@ -293,6 +303,16 @@ describe('PortfolioTimeline', () => {
 
     expect(screen.getByRole('status')).toHaveAccessibleName('Loading...')
     expect(screen.getByText('Loading P&L timeline…')).toBeInTheDocument()
+  })
+
+  it('marks retained data as refreshing while preserving its incompleteness evidence', () => {
+    mockQuery(timeline([point('2026-07-20T11:59:00Z', 'incomplete')]), false, false, true)
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('pnl-refreshing')).toHaveTextContent('Loading P&L timeline…')
+    expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
+    expect(screen.getByTestId('mock-pnl-chart')).toBeInTheDocument()
   })
 
   it('renders the translated error state', () => {
@@ -467,6 +487,7 @@ describe('PortfolioTimeline', () => {
         granularity: '1h',
         mode: 'live',
         valuationCcy: 'PLN',
+        rollingWindowMs: 604_800_000,
       },
       true
     )
@@ -484,6 +505,7 @@ describe('PortfolioTimeline', () => {
         granularity: '1m',
         mode: 'live',
         valuationCcy: 'USD',
+        rollingWindowMs: 86_400_000,
       },
       true
     )
@@ -512,9 +534,60 @@ describe('PortfolioTimeline', () => {
     expect(usePortfolioPnlTimeline).not.toHaveBeenCalled()
     act(() => vi.advanceTimersByTime(1))
 
-    expect(usePortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+    expect(
+      new Set(
+        vi
+          .mocked(usePortfolioPnlTimeline)
+          .mock.calls.map(([request]) => request.from)
+          .filter(from => from !== '2026-07-19T12:00:00.000Z')
+      )
+    ).toEqual(new Set(['2026-07-19T12:01:00.000Z']))
     expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
       expect.objectContaining({ from: '2026-07-19T12:01:00.000Z', to: undefined }),
+      true
+    )
+  })
+
+  it('coalesces minute boundaries behind a pending same-scope request before submitting the newest window', () => {
+    vi.setSystemTime(new Date('2026-07-20T12:00:59.000Z'))
+    mockQuery(undefined, true, false, true)
+    const view = render(<PortfolioTimeline />)
+
+    act(() => vi.advanceTimersByTime(121_000))
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ from: '2026-07-19T12:00:00.000Z', to: undefined }),
+      true
+    )
+    mockQuery(undefined, false, false, false)
+    view.rerender(<PortfolioTimeline />)
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ from: '2026-07-19T12:03:00.000Z', to: undefined }),
+      true
+    )
+  })
+
+  it('lets a different selected window start fresh while the previous window is still pending', () => {
+    mockQuery(undefined, true, false, true)
+    render(<PortfolioTimeline />)
+    act(() => vi.advanceTimersByTime(120_000))
+    fireEvent.change(screen.getByLabelText('Select timeline window'), { target: { value: '7d' } })
+
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ from: '2026-07-13T12:02:00.000Z', to: undefined }),
+      true
+    )
+  })
+
+  it('submits the newest pending minute after a request fails instead of freezing the old window', () => {
+    mockQuery(undefined, true, false, true)
+    const view = render(<PortfolioTimeline />)
+
+    act(() => vi.advanceTimersByTime(120_000))
+    mockQuery(undefined, false, true, false)
+    view.rerender(<PortfolioTimeline />)
+
+    expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
+      expect.objectContaining({ from: '2026-07-19T12:02:00.000Z', to: undefined }),
       true
     )
   })
@@ -532,7 +605,9 @@ describe('PortfolioTimeline', () => {
     scope.asOf = null
     rerender(<PortfolioTimeline />)
 
-    expect(usePortfolioPnlTimeline).toHaveBeenCalledTimes(1)
+    expect(
+      new Set(vi.mocked(usePortfolioPnlTimeline).mock.calls.map(([request]) => request.from))
+    ).toEqual(new Set(['2026-07-19T12:10:00.000Z']))
     expect(usePortfolioPnlTimeline).toHaveBeenLastCalledWith(
       expect.objectContaining({ from: '2026-07-19T12:10:00.000Z', to: undefined }),
       true

@@ -16,6 +16,10 @@ export interface PortfolioPnlQueryKeyParams {
   readonly granularity: string
   readonly mode: string
   readonly valuationCcy: string
+  readonly rollingWindowMs?: number | undefined
+  readonly authUserPublicId?: string | null
+  readonly authGeneration?: number
+  readonly authIsAuthenticated?: boolean
 }
 
 export interface BacktestReadScope {
