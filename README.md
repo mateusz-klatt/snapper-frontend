@@ -31,8 +31,15 @@ The confirmed application scope stays unchanged until the session acknowledges t
 Choosing the previously confirmed wallet, including All wallets, supersedes a pending change.
 Failed changes restore the confirmed choice and show an error; an older completion cannot clear a
 newer pending choice.
-Confirmed wallet, operator or knowledge-time changes retire feedback from the previous context,
-including a late failure after returning to an earlier scope.
+
+Wallet feedback follows the same authoritative intentions as the refresh coordinator. A newer
+wallet, operator or URL-scope intention immediately retires the older provisional choice and
+error, even when the confirmed scope ultimately stays the same. A standalone knowledge-time
+change preserves a still-current wallet attempt and its legitimate failure feedback. Login-state
+or authenticated-user changes and unmounting retire local feedback. Intent observers cannot
+interrupt the coordinator's refresh or acknowledgement fence if they fail or unsubscribe.
+Each scope reservation keeps its own ticket before observers run, so a reentrant newer scope
+selection keeps priority over the older caller.
 
 Restored wallet scope is acknowledged by the authenticated session before dependent views mount.
 Wallet-bearing and background refreshes share the same rotation coordinator. Failed hydration offers
@@ -106,6 +113,11 @@ Time Travel or rebuilding shell subscriptions keeps the market listener attached
 connection, so finalized candles continue to reach history reconciliation. Unmounting the market
 retires its dispatcher; the next market mount receives a fresh instance. Replacing a connection
 rebinds the active consumers to the new client. Shell setup still clears the process-metrics snapshot.
+
+The shell applies global cache updates, alert notifications and process events once. The market
+dispatcher observes candle notifications and retains buffered updates for replay after HTTP
+snapshots; it does not repeat global event actions. Finalized older candles still reach the chart's
+history reconciliation listener.
 
 The statistics cards use closed one-minute candles for a full 24-hour window ending at the displayed
 timestamp, independently of the chart timeframe. High and low use candle highs and lows; change
