@@ -30,7 +30,9 @@
     "errorPrefix": "Eroare la încărcarea datelor graficului:",
     "unknownError": "Eroare necunoscută",
     "noDataTitle": "Nu există date disponibile pentru {{instrument}}",
-    "noDataHint": "Instrumentul poate să nu existe sau să nu aibă date pentru intervalul {{timeframe}}"
+    "noDataHint": "Instrumentul poate să nu existe sau să nu aibă date pentru intervalul {{timeframe}}",
+    "updatesUnconfirmed": "Unele actualizări ale graficului nu sunt încă confirmate.",
+    "reloadRecent": "Reîncarcă datele recente"
   },
   "related": {
     "labelSeparator": "{{label}}:",

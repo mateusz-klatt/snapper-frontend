@@ -30,7 +30,9 @@
     "errorPrefix": "Pogreška pri učitavanju podataka grafikona:",
     "unknownError": "Nepoznata pogreška",
     "noDataTitle": "Nema dostupnih podataka za {{instrument}}",
-    "noDataHint": "Instrument možda ne postoji ili nema podatke za {{timeframe}}"
+    "noDataHint": "Instrument možda ne postoji ili nema podatke za {{timeframe}}",
+    "updatesUnconfirmed": "Neka ažuriranja grafikona još nisu potvrđena.",
+    "reloadRecent": "Ponovno učitaj novije podatke"
   },
   "related": {
     "labelSeparator": "{{label}}:",

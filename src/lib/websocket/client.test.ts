@@ -14,6 +14,7 @@ import {
   createTick,
   createHeartbeat,
   createPong,
+  createOrder,
   createSubscriptionsList,
 } from '@/test/wsMessageFactories'
 
@@ -727,7 +728,158 @@ describe('WebSocketClient', () => {
       const expectedTopic = 'market.kraken.BTC-USD.candles.1m'
 
       expect(handler).not.toHaveBeenCalled()
-      expect((client as any).pendingMessages.get(expectedTopic)).toEqual(barMsg)
+      expect((client as any).pendingMessages.get(expectedTopic)).toEqual([barMsg])
+    })
+    it('delivers the newest open and older correction from one throttled burst', async () => {
+      const reconnect = await import('./reconnect')
+      const actual = await vi.importActual<typeof import('./reconnect')>('./reconnect')
+
+      vi.mocked(reconnect.flushThrottledMessages).mockImplementation(actual.flushThrottledMessages)
+      const handler = vi.fn()
+      const newest = createCandle({ open_at: '2026-06-20T00:36:00Z' })
+      const older = createCandle({ open_at: '2026-06-20T00:31:00Z' })
+
+      client.onMessage('candle', handler)
+      client.connect()
+      await vi.advanceTimersByTimeAsync(50)
+      const socket = Reflect.get(client, 'ws') as MockWebSocket
+
+      socket.onmessage?.call(
+        socket as unknown as WebSocket,
+        { data: JSON.stringify(newest) } as MessageEvent
+      )
+      socket.onmessage?.call(
+        socket as unknown as WebSocket,
+        { data: JSON.stringify(older) } as MessageEvent
+      )
+      await vi.advanceTimersByTimeAsync(200)
+
+      expect(handler.mock.calls.map(call => call[0].open_at)).toEqual([
+        newest.open_at,
+        older.open_at,
+      ])
+      vi.mocked(reconnect.flushThrottledMessages).mockReset()
+    })
+    it('bounds each candle batch while forwarding overflow and retaining the newest open', async () => {
+      const handler = vi.fn()
+
+      client.onMessage('candle', handler)
+      client.connect()
+      await vi.advanceTimersByTimeAsync(50)
+      const socket = Reflect.get(client, 'ws') as MockWebSocket
+
+      for (let minute = 39; minute >= 0; minute -= 1) {
+        socket.onmessage?.call(
+          socket as unknown as WebSocket,
+          {
+            data: JSON.stringify(
+              createCandle({ open_at: new Date(minute * 60_000).toISOString() })
+            ),
+          } as MessageEvent
+        )
+      }
+
+      const pending = Reflect.get(client, 'pendingMessages') as Map<string, { open_at: string }[]>
+      const batch = pending.get('market.kraken.BTC-USD.candles.1m')
+
+      expect(batch).toHaveLength(32)
+      expect(batch?.[0]?.open_at).toBe(new Date(39 * 60_000).toISOString())
+      expect(handler).toHaveBeenCalledTimes(8)
+      socket.onmessage?.call(
+        socket as unknown as WebSocket,
+        {
+          data: JSON.stringify(
+            createCandle({ open_at: new Date(39 * 60_000).toISOString(), close: 999 })
+          ),
+        } as MessageEvent
+      )
+      expect(pending.get('market.kraken.BTC-USD.candles.1m')).toHaveLength(32)
+    })
+    it('retains the existing throttling path for non-candle messages', async () => {
+      client.connect()
+      await vi.advanceTimersByTimeAsync(50)
+      const socket = Reflect.get(client, 'ws') as MockWebSocket
+      const order = { ...createOrder(), mode: 'live', wallet_public_id: 'synthetic-wallet' }
+
+      socket.onmessage?.call(
+        socket as unknown as WebSocket,
+        { data: JSON.stringify(order) } as MessageEvent
+      )
+      const pending = Reflect.get(client, 'pendingMessages') as Map<string, unknown>
+
+      expect([...pending.values()]).toEqual([order])
+    })
+    it('coalesces equivalent open times while retaining the newest queued author version', async () => {
+      client.connect()
+      await vi.advanceTimersByTimeAsync(50)
+      const socket = Reflect.get(client, 'ws') as MockWebSocket
+      const newest = createCandle({
+        open_at: '2026-06-20T00:39:00Z',
+        timestamp: '2026-06-20T00:40:00Z',
+        close: 139,
+      })
+      const older = createCandle({
+        open_at: '2026-06-20T00:39:00.000Z',
+        timestamp: '2026-06-20T00:39:00Z',
+        close: 39,
+      })
+
+      for (const candle of [newest, older]) {
+        socket.onmessage?.call(
+          socket as unknown as WebSocket,
+          { data: JSON.stringify(candle) } as MessageEvent
+        )
+      }
+
+      const pending = Reflect.get(client, 'pendingMessages') as Map<string, unknown>
+
+      expect(pending.get('market.kraken.BTC-USD.candles.1m')).toEqual([newest])
+    })
+    it('keeps a final bar over an equal-author provisional duplicate while admitting a newer author', async () => {
+      client.connect()
+      await vi.advanceTimersByTimeAsync(50)
+      const socket = Reflect.get(client, 'ws') as MockWebSocket
+      const forming = createCandle({ complete: false, close: 100 })
+      const final = createCandle({ complete: true, close: 101 })
+
+      const send = (candle: ReturnType<typeof createCandle>): void => {
+        socket.onmessage?.call(
+          socket as unknown as WebSocket,
+          { data: JSON.stringify(candle) } as MessageEvent
+        )
+      }
+
+      for (const candle of [forming, final, forming]) send(candle)
+      const pending = Reflect.get(client, 'pendingMessages') as Map<string, unknown>
+
+      expect(pending.get('market.kraken.BTC-USD.candles.1m')).toEqual([final])
+      const newer = createCandle({ complete: false, timestamp: '2024-01-01T00:00:01Z', close: 102 })
+
+      send(newer)
+      expect(pending.get('market.kraken.BTC-USD.candles.1m')).toEqual([newer])
+    })
+    it('discards queued bars on unsubscribe and unexpected close before the throttle can deliver them', async () => {
+      client.connect()
+      await vi.advanceTimersByTimeAsync(50)
+      const socket = Reflect.get(client, 'ws') as MockWebSocket
+
+      const send = (): void => {
+        socket.onmessage?.call(
+          socket as unknown as WebSocket,
+          { data: JSON.stringify(createCandle()) } as MessageEvent
+        )
+      }
+
+      const pending = Reflect.get(client, 'pendingMessages') as Map<string, unknown>
+
+      send()
+      client.unsubscribe(['other.'])
+      expect(pending.size).toBe(1)
+      client.unsubscribe(['market.'])
+      expect(pending.size).toBe(0)
+      send()
+      socket.onclose?.call(socket as unknown as WebSocket, new CloseEvent('close'))
+      expect(pending.size).toBe(0)
     })
     it('covers auth control and secure gating branches', () => {
       const secureClient = new WebSocketClient({ secure: true })

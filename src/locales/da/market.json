@@ -30,7 +30,9 @@
     "errorPrefix": "Fejl ved indlæsning af chartdata:",
     "unknownError": "Ukendt fejl",
     "noDataTitle": "Ingen data tilgængelige for {{instrument}}",
-    "noDataHint": "Instrumentet findes muligvis ikke eller har ingen {{timeframe}}-data"
+    "noDataHint": "Instrumentet findes muligvis ikke eller har ingen {{timeframe}}-data",
+    "updatesUnconfirmed": "Nogle diagramopdateringer er endnu ikke bekræftet.",
+    "reloadRecent": "Genindlæs nyere data"
   },
   "related": {
     "labelSeparator": "{{label}}:",

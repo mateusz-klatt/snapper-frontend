@@ -30,7 +30,9 @@
     "errorPrefix": "Errore nel caricamento dei dati del grafico:",
     "unknownError": "Errore sconosciuto",
     "noDataTitle": "Nessun dato disponibile per {{instrument}}",
-    "noDataHint": "Lo strumento potrebbe non esistere o non avere dati {{timeframe}}"
+    "noDataHint": "Lo strumento potrebbe non esistere o non avere dati {{timeframe}}",
+    "updatesUnconfirmed": "Alcuni aggiornamenti del grafico non sono ancora confermati.",
+    "reloadRecent": "Ricarica i dati recenti"
   },
   "related": {
     "labelSeparator": "{{label}}:",

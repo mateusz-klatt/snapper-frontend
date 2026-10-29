@@ -30,7 +30,9 @@
     "errorPrefix": "Ralat memuatkan data carta:",
     "unknownError": "Ralat tidak diketahui",
     "noDataTitle": "Tiada data tersedia untuk {{instrument}}",
-    "noDataHint": "Instrumen mungkin tidak wujud atau tiada data {{timeframe}}"
+    "noDataHint": "Instrumen mungkin tidak wujud atau tiada data {{timeframe}}",
+    "updatesUnconfirmed": "Sesetengah kemas kini carta masih belum disahkan.",
+    "reloadRecent": "Muat semula data terkini"
   },
   "related": {
     "labelSeparator": "{{label}}:",

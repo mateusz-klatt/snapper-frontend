@@ -30,7 +30,9 @@
     "errorPrefix": "Kļūda, ielādējot grafika datus:",
     "unknownError": "Nezināma kļūda",
     "noDataTitle": "Nav datu par {{instrument}}",
-    "noDataHint": "Instruments var nepastāvēt vai tam nav {{timeframe}} datu"
+    "noDataHint": "Instruments var nepastāvēt vai tam nav {{timeframe}} datu",
+    "updatesUnconfirmed": "Daži diagrammas atjauninājumi vēl nav apstiprināti.",
+    "reloadRecent": "Pārlādēt jaunākos datus"
   },
   "related": {
     "labelSeparator": "{{label}}:",

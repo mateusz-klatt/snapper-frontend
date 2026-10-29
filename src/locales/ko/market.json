@@ -30,7 +30,9 @@
     "errorPrefix": "차트 데이터 로딩 오류:",
     "unknownError": "알 수 없는 오류",
     "noDataTitle": "{{instrument}}에 사용할 수 있는 데이터가 없습니다",
-    "noDataHint": "종목이 존재하지 않거나 {{timeframe}} 데이터가 없을 수 있습니다"
+    "noDataHint": "종목이 존재하지 않거나 {{timeframe}} 데이터가 없을 수 있습니다",
+    "updatesUnconfirmed": "일부 차트 업데이트가 아직 확인되지 않았습니다.",
+    "reloadRecent": "최근 데이터 다시 불러오기"
   },
   "related": {
     "labelSeparator": "{{label}}:",

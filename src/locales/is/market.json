@@ -30,7 +30,9 @@
     "errorPrefix": "Villa við að hlaða grafgögnum:",
     "unknownError": "Óþekkt villa",
     "noDataTitle": "Engin gögn tiltæk fyrir {{instrument}}",
-    "noDataHint": "Gerningurinn er hugsanlega ekki til eða hefur engin {{timeframe}} gögn"
+    "noDataHint": "Gerningurinn er hugsanlega ekki til eða hefur engin {{timeframe}} gögn",
+    "updatesUnconfirmed": "Sumar uppfærslur grafsins eru enn óstaðfestar.",
+    "reloadRecent": "Endurhlaða nýlegum gögnum"
   },
   "related": {
     "labelSeparator": "{{label}}:",

@@ -30,7 +30,9 @@
     "errorPrefix": "Lỗi khi tải dữ liệu biểu đồ:",
     "unknownError": "Lỗi không xác định",
     "noDataTitle": "Không có dữ liệu cho {{instrument}}",
-    "noDataHint": "Công cụ có thể không tồn tại hoặc chưa có dữ liệu {{timeframe}}"
+    "noDataHint": "Công cụ có thể không tồn tại hoặc chưa có dữ liệu {{timeframe}}",
+    "updatesUnconfirmed": "Một số cập nhật biểu đồ vẫn chưa được xác nhận.",
+    "reloadRecent": "Tải lại dữ liệu gần đây"
   },
   "related": {
     "labelSeparator": "{{label}}:",

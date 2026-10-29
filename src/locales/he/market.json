@@ -30,7 +30,9 @@
     "errorPrefix": "שגיאה בטעינת נתוני תרשים:",
     "unknownError": "שגיאה לא ידועה",
     "noDataTitle": "אין נתונים זמינים עבור {{instrument}}",
-    "noDataHint": "ייתכן שהמכשיר אינו קיים או שאין לו נתוני {{timeframe}}"
+    "noDataHint": "ייתכן שהמכשיר אינו קיים או שאין לו נתוני {{timeframe}}",
+    "updatesUnconfirmed": "חלק מעדכוני התרשים עדיין לא אושרו.",
+    "reloadRecent": "טעינה מחדש של נתונים עדכניים"
   },
   "related": {
     "labelSeparator": "{{label}}:",

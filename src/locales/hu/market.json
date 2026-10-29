@@ -30,7 +30,9 @@
     "errorPrefix": "Hiba a grafikonadatok betöltésekor:",
     "unknownError": "Ismeretlen hiba",
     "noDataTitle": "Nincs elérhető adat ehhez: {{instrument}}",
-    "noDataHint": "Lehet, hogy az instrumentum nem létezik, vagy nincs {{timeframe}} adata"
+    "noDataHint": "Lehet, hogy az instrumentum nem létezik, vagy nincs {{timeframe}} adata",
+    "updatesUnconfirmed": "A diagram egyes frissítései még nincsenek megerősítve.",
+    "reloadRecent": "Friss adatok újratöltése"
   },
   "related": {
     "labelSeparator": "{{label}}:",

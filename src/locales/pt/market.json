@@ -30,7 +30,9 @@
     "errorPrefix": "Erro ao carregar dados do gráfico:",
     "unknownError": "Erro desconhecido",
     "noDataTitle": "Nenhum dado disponível para {{instrument}}",
-    "noDataHint": "O instrumento pode não existir ou não ter dados de {{timeframe}}"
+    "noDataHint": "O instrumento pode não existir ou não ter dados de {{timeframe}}",
+    "updatesUnconfirmed": "Algumas atualizações do gráfico continuam por confirmar.",
+    "reloadRecent": "Recarregar dados recentes"
   },
   "related": {
     "labelSeparator": "{{label}}:",

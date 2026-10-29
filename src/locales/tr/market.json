@@ -30,7 +30,9 @@
     "errorPrefix": "Grafik verileri yüklenirken hata:",
     "unknownError": "Bilinmeyen hata",
     "noDataTitle": "{{instrument}} için veri yok",
-    "noDataHint": "Enstrüman mevcut olmayabilir veya {{timeframe}} verisi yok"
+    "noDataHint": "Enstrüman mevcut olmayabilir veya {{timeframe}} verisi yok",
+    "updatesUnconfirmed": "Bazı grafik güncellemeleri henüz doğrulanmadı.",
+    "reloadRecent": "Son verileri yeniden yükle"
   },
   "related": {
     "labelSeparator": "{{label}}:",

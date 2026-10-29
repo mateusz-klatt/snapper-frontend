@@ -30,7 +30,9 @@
     "errorPrefix": "Помилка завантаження даних графіка:",
     "unknownError": "Невідома помилка",
     "noDataTitle": "Немає даних для {{instrument}}",
-    "noDataHint": "Інструмент може не існувати або не мати даних за {{timeframe}}"
+    "noDataHint": "Інструмент може не існувати або не мати даних за {{timeframe}}",
+    "updatesUnconfirmed": "Деякі оновлення графіка ще не підтверджені.",
+    "reloadRecent": "Перезавантажити останні дані"
   },
   "related": {
     "labelSeparator": "{{label}}:",

@@ -30,7 +30,9 @@
     "errorPrefix": "Gabim gjatë ngarkimit të të dhënave të grafikut:",
     "unknownError": "Gabim i panjohur",
     "noDataTitle": "Nuk ka të dhëna të disponueshme për {{instrument}}",
-    "noDataHint": "Instrumenti mund të mos ekzistojë ose të mos ketë të dhëna {{timeframe}}"
+    "noDataHint": "Instrumenti mund të mos ekzistojë ose të mos ketë të dhëna {{timeframe}}",
+    "updatesUnconfirmed": "Disa përditësime të grafikut ende nuk janë konfirmuar.",
+    "reloadRecent": "Ringarko të dhënat e fundit"
   },
   "related": {
     "labelSeparator": "{{label}}:",

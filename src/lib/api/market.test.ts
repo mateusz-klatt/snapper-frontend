@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { getCookie } from '../utils'
 import { apiClient as sharedApiClient } from '../apiClient'
+import { LateCandleReconciler } from '../../features/market/lateCandleReconciler'
+import type { CandleData } from '../../types/ws'
 import {
   getAllConfiguredPairStats,
   getCachedCandles,
@@ -46,6 +48,79 @@ describe('market API methods', () => {
     apiClient.setTimeTravelAsOf(null)
     apiClient.setOperatorScope(null)
     apiClient.setWalletScope(null)
+  })
+
+  it('sends a singleton reconciliation through the real API/schema path with positive range and explicit Live H', async () => {
+    vi.useFakeTimers()
+    vi.setSystemTime('2026-10-29T16:45:00Z')
+    const candle: CandleData = {
+      type: 'candle',
+      sequence_id: 1,
+      public_id: 'synthetic-bar',
+      timestamp: '2026-10-29T16:40:00Z',
+      session_id: 'synthetic-publisher',
+      instrument: 'BTC-USD',
+      exchange: 'kraken',
+      timeframe: '1m',
+      open_at: '2026-10-29T16:31:00Z',
+      open: 10,
+      high: 11,
+      low: 9,
+      close: 10,
+      volume: 1,
+      complete: true,
+      origin: 'live',
+    }
+    const apply = vi.fn()
+    const onError = vi.fn()
+    const reconciler = new LateCandleReconciler({
+      instrument: 'BTC-USD',
+      exchange: 'kraken',
+      timeframe: '1m',
+      needsReconciliation: () => true,
+      latestOpenMs: () => null,
+      isCurrent: () => true,
+      apply,
+      onError,
+      onUnresolved: vi.fn(),
+      fetchRange: (start, end, limit, horizon) =>
+        getCandlesRange('BTC-USD', 'kraken', '1m', start, end, limit, horizon),
+    })
+
+    apiClient.setTimeTravelAsOf('2020-01-01T00:00:00Z')
+    mockFetch.mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        type: 'candle_list',
+        sequence_id: 0,
+        public_id: 'synthetic-envelope',
+        timestamp: '2026-10-29T16:45:00Z',
+        session_id: 'synthetic-api',
+        payload: [candle],
+        count: 1,
+      }),
+    })
+
+    try {
+      reconciler.notify(candle)
+      await vi.advanceTimersByTimeAsync(100)
+      const url = new URL(String(mockFetch.mock.calls[0]?.[0]), 'https://example.test')
+      const start = url.searchParams.get('start')
+      const end = url.searchParams.get('end')
+
+      expect(start).toBe('2026-10-29T16:31:00.000Z')
+      expect(end).toBe('2026-10-29T16:31:59.999Z')
+      expect(Date.parse(String(start))).toBeLessThan(Date.parse(String(end)))
+      expect(url.searchParams.get('limit')).toBe('1')
+      expect(url.searchParams.get('as_of')).toBe('2026-10-29T16:45:00.100Z')
+      expect(apply).toHaveBeenCalledExactlyOnceWith([expect.objectContaining({ close: 10 })])
+      expect(onError).toHaveBeenCalledExactlyOnceWith(null)
+    } finally {
+      reconciler.destroy()
+      apiClient.setTimeTravelAsOf(null)
+      vi.useRealTimers()
+    }
   })
 
   it('getCandles returns candle data', async () => {

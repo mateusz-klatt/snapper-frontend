@@ -30,7 +30,9 @@
     "errorPrefix": "Fel vid laddning av diagramdata:",
     "unknownError": "Okänt fel",
     "noDataTitle": "Inga data tillgängliga för {{instrument}}",
-    "noDataHint": "Instrumentet kanske inte finns eller saknar {{timeframe}}-data"
+    "noDataHint": "Instrumentet kanske inte finns eller saknar {{timeframe}}-data",
+    "updatesUnconfirmed": "Vissa diagramuppdateringar är ännu inte bekräftade.",
+    "reloadRecent": "Läs in senaste data igen"
   },
   "related": {
     "labelSeparator": "{{label}}:",

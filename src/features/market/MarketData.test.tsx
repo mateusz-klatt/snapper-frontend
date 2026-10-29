@@ -6,6 +6,7 @@ import type { ReactNode } from 'react'
 import { useMarketStats } from '../../hooks/queries/market'
 import type { MarketStats } from '../../lib/api/marketStats'
 import type { WindowCandle } from './chartNavigation'
+import type { WSDispatcher } from '../../stores/wsDispatcher'
 import { MarketData } from './MarketData'
 
 const mockSetSelectedExchange = vi.fn()
@@ -128,6 +129,7 @@ vi.mock('../../hooks/useWSDispatcher', () => ({
     startBuffering: vi.fn(),
     flushBuffer: vi.fn(),
     stopBuffering: vi.fn(),
+    onLiveCandle: vi.fn(() => vi.fn()),
   })),
 }))
 vi.mock('./MarketChart', () => ({
@@ -136,13 +138,15 @@ vi.mock('./MarketChart', () => ({
     timeframe,
     onLodTimeframe,
     liveCandle,
+    dispatcher,
   }: {
     instrument: string | null
     timeframe: string
     onLodTimeframe?: (tf: string) => void
     liveCandle?: WindowCandle | null
+    dispatcher?: Pick<WSDispatcher, 'onLiveCandle'> | null
   }) => {
-    mockChartProps({ liveCandle })
+    mockChartProps({ liveCandle, dispatcher })
 
     return (
       <div data-testid='market-chart'>
@@ -183,6 +187,11 @@ describe('MarketData', () => {
   it('renders market data component', () => {
     renderWithProviders(<MarketData />)
     expect(screen.getByText(/Market Data/i)).toBeInTheDocument()
+    expect(mockChartProps).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        dispatcher: expect.objectContaining({ onLiveCandle: expect.any(Function) }),
+      })
+    )
   })
   it('renders the instrument description banner between title and controls', async () => {
     const { useRelatedInstruments } = await import('../../hooks/queries/market')
@@ -703,7 +712,7 @@ describe('MarketData', () => {
     expect(useMarketSubscription).toHaveBeenCalledWith(
       expect.objectContaining({ instrument: null })
     )
-    expect(mockChartProps).toHaveBeenLastCalledWith({ liveCandle: null })
+    expect(mockChartProps).toHaveBeenLastCalledWith(expect.objectContaining({ liveCandle: null }))
     expect(screen.queryByText(/Cache warming up/)).not.toBeInTheDocument()
     vi.mocked(useAppStore).mockImplementation(((
       selector: (s: Record<string, unknown>) => unknown

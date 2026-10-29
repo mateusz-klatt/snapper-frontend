@@ -30,7 +30,9 @@
     "errorPrefix": "Գրաֆիկի տվյալները բեռնելիս սխալ՝",
     "unknownError": "Անհայտ սխալ",
     "noDataTitle": "{{instrument}} գործիքի համար տվյալներ չկան",
-    "noDataHint": "Գործիքը կարող է գոյություն չունենալ կամ չունենալ {{timeframe}} տվյալներ"
+    "noDataHint": "Գործիքը կարող է գոյություն չունենալ կամ չունենալ {{timeframe}} տվյալներ",
+    "updatesUnconfirmed": "Գծապատկերի որոշ թարմացումներ դեռ հաստատված չեն։",
+    "reloadRecent": "Վերաբեռնել վերջին տվյալները"
   },
   "related": {
     "labelSeparator": "{{label}}:",

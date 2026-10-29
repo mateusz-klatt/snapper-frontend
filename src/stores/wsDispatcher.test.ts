@@ -233,6 +233,70 @@ describe('WSDispatcher', () => {
     })
   })
   describe('message handling', () => {
+    it('publishes the captured newest/late sequence without replacing the live tail or frozen cache', () => {
+      const dispatcher = new WSDispatcher({ queryClient })
+      const rows = [31, 32, 33, 35].map(minute => ({
+        open_at: `2026-10-29T16:${minute}:00Z`,
+        open: minute,
+        high: minute + 1,
+        low: minute - 1,
+        close: minute,
+        volume: minute,
+      }))
+      const frozenKey = cachedKey(100, '2026-10-29T16:35:00Z')
+      const frozen = cachedEnv(rows)
+      const received = vi.fn()
+      const unsubscribe = dispatcher.onLiveCandle(received)
+
+      queryClient.setQueryData(cachedKey(100, null), cachedEnv(rows))
+      queryClient.setQueryData(frozenKey, frozen)
+      dispatcher.attach(mockWsClient)
+
+      const send = (minute: number): void => {
+        messageHandlers.get('candle')?.({
+          type: 'candle',
+          sequence_id: minute,
+          public_id: `bar-${minute}`,
+          session_id: 'publisher',
+          timestamp: '2026-10-29T16:40:00Z',
+          open_at: `2026-10-29T16:${minute}:00Z`,
+          instrument: 'BTC-USD',
+          exchange: 'kraken',
+          timeframe: '1m',
+          complete: true,
+          open: minute,
+          high: minute + 1,
+          low: minute - 1,
+          close: minute + 10,
+          volume: minute,
+        })
+      }
+
+      for (const minute of [36, 31, 32, 33, 39]) send(minute)
+      expect(received.mock.calls.map(call => call[0].open_at)).toEqual(
+        [36, 31, 32, 33, 39].map(minute => `2026-10-29T16:${minute}:00Z`)
+      )
+      expect(
+        queryClient
+          .getQueryData<CachedCandlesResponse>(cachedKey(100, null))
+          ?.payload.candles.at(-1)?.open_at_ms
+      ).toBe(Date.parse('2026-10-29T16:39:00Z'))
+      expect(queryClient.getQueryData(frozenKey)).toEqual(frozen)
+      dispatcher.startBuffering('BTC-USD', 'kraken', '1m')
+      send(32)
+      expect(received).toHaveBeenCalledTimes(5)
+      dispatcher.flushBuffer('BTC-USD', 'kraken', '1m')
+      expect(received).toHaveBeenCalledTimes(6)
+      dispatcher.startBuffering('BTC-USD', 'kraken', '1m')
+      send(33)
+      dispatcher.stopBuffering('BTC-USD', 'kraken', '1m')
+      dispatcher.flushBuffer('BTC-USD', 'kraken', '1m')
+      expect(received).toHaveBeenCalledTimes(6)
+      unsubscribe()
+      send(31)
+      expect(received).toHaveBeenCalledTimes(6)
+    })
+
     it('handles candle message and updates market store', () => {
       const dispatcher = new WSDispatcher({ queryClient })
 

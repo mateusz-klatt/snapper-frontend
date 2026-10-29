@@ -30,7 +30,9 @@
     "errorPrefix": "Hitilafu kupakia data ya chati:",
     "unknownError": "Hitilafu isiyojulikana",
     "noDataTitle": "Hakuna data inayopatikana kwa {{instrument}}",
-    "noDataHint": "Instrumenti inaweza isiwepo au haina data ya {{timeframe}}"
+    "noDataHint": "Instrumenti inaweza isiwepo au haina data ya {{timeframe}}",
+    "updatesUnconfirmed": "Baadhi ya masasisho ya chati bado hayajathibitishwa.",
+    "reloadRecent": "Pakia upya data za hivi karibuni"
   },
   "related": {
     "labelSeparator": "{{label}}:",
