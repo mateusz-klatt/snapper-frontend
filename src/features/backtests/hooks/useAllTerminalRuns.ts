@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { queryKeys, type BacktestReadScope } from '../../../hooks/queries/keys'
 import { getBacktests } from '../../../lib/api/backtests'
 import { useAppStore } from '../../../stores/app'
 import type { BacktestRunData } from '../../../types/api'
@@ -16,14 +17,17 @@ const TERMINAL_STATUSES = ['completed', 'failed', 'cancelled'] as const
  * three terminal slices are fetched in parallel via Promise.all
  * inside one queryFn (single cache entry, single subscription, no
  * three-key explosion). The merged list is sorted by ``timestamp DESC``
- * client-side. Wallet-scoped via the cache key so the wallet-picker
- * change invalidates correctly.
+ * client-side. The full read scope owns the cache entry so time travel,
+ * operator changes, and wallet changes cannot reuse another context's runs.
  */
 export function useAllTerminalRuns({ enabled }: Options) {
+  const asOf = useAppStore(s => s.asOf)
+  const operatorPublicId = useAppStore(s => s.currentOperatorPublicId)
   const walletId = useAppStore(s => s.currentWalletPublicId)
+  const scope: BacktestReadScope = { asOf, operatorPublicId, walletPublicId: walletId }
 
   return useQuery({
-    queryKey: ['backtests', 'all-terminal', walletId],
+    queryKey: queryKeys.backtestsAllTerminal(walletId, scope),
     queryFn: async (): Promise<BacktestRunData[]> => {
       const responses = await Promise.all(
         TERMINAL_STATUSES.map(status => getBacktests(50, 0, undefined, status))

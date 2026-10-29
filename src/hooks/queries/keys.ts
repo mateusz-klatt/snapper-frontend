@@ -160,6 +160,8 @@ export const queryKeys = {
     ['trailingStopState', cyclePublicId] as const,
   backtestsAll: ['backtests'] as const,
   backtestStrategyClasses: ['backtests', 'strategy-classes'] as const,
+  backtestsAllTerminal: (walletId: string | null, scope?: BacktestReadScope) =>
+    withBacktestReadScope(['backtests', 'all-terminal', walletId] as const, scope),
   backtestsByStrategyStatus: (strategy?: string, status?: string, scope?: BacktestReadScope) =>
     withBacktestReadScope(['backtests', strategy, status] as const, scope),
   backtestsByConfigHash: (configHash: string | null, limit: number, scope?: BacktestReadScope) =>

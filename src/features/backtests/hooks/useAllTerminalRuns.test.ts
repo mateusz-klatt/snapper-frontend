@@ -1,16 +1,20 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { renderHook, waitFor } from '@testing-library/react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { act, renderHook, waitFor } from '@testing-library/react'
+import { QueryClient, QueryClientProvider, QueryObserver } from '@tanstack/react-query'
 import { createElement, type ReactNode } from 'react'
 import { useAllTerminalRuns } from './useAllTerminalRuns'
 import { getBacktests } from '../../../lib/api/backtests'
 import { useAppStore } from '../../../stores/app'
+import { apiClient } from '../../../lib/apiClient'
+import { queryClient as sharedQueryClient } from '../../../lib/queryClient'
+import { queryKeys, type BacktestReadScope } from '../../../hooks/queries/keys'
+import type { BacktestRunData, BacktestRunListResponse } from '../../../types/api'
 
 vi.mock('../../../lib/api/backtests', () => ({
   getBacktests: vi.fn(),
 }))
 
-const makeRun = (publicId: string, ts: string) => ({
+const makeRun = (publicId: string, ts: string): BacktestRunData => ({
   type: 'backtest_run',
   sequence_id: 1,
   public_id: publicId,
@@ -32,8 +36,25 @@ const makeRun = (publicId: string, ts: string) => ({
   commission_bps: 0,
 })
 
-const renderWithClient = () => {
-  const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+const scope: BacktestReadScope = {
+  asOf: null,
+  operatorPublicId: 'operator-1',
+  walletPublicId: 'wallet-1',
+}
+const cut = '2026-10-28T17:33:00Z'
+const response = (payload: BacktestRunData[]): BacktestRunListResponse => ({
+  type: 'backtest_run_list',
+  sequence_id: 1,
+  public_id: 'response',
+  timestamp: '2026-10-28T22:00:00Z',
+  session_id: 'session',
+  payload,
+  count: payload.length,
+})
+
+const renderWithClient = (
+  queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+) => {
   const wrapper = ({ children }: { children: ReactNode }) =>
     createElement(QueryClientProvider, { client: queryClient }, children)
 
@@ -43,10 +64,26 @@ const renderWithClient = () => {
 describe('useAllTerminalRuns', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    useAppStore.setState({ currentWalletPublicId: 'wallet-1' })
+    useAppStore.setState({
+      asOf: null,
+      isTimeTraveling: false,
+      currentOperatorPublicId: scope.operatorPublicId,
+      currentWalletPublicId: scope.walletPublicId,
+    })
+    apiClient.setTimeTravelAsOf(null)
+    apiClient.setOperatorScope(scope.operatorPublicId)
+    apiClient.setWalletScope(scope.walletPublicId)
   })
   afterEach(() => {
-    useAppStore.setState({ currentWalletPublicId: null })
+    useAppStore.setState({
+      asOf: null,
+      isTimeTraveling: false,
+      currentOperatorPublicId: null,
+      currentWalletPublicId: null,
+    })
+    apiClient.setTimeTravelAsOf(null)
+    apiClient.setOperatorScope(null)
+    apiClient.setWalletScope(null)
   })
 
   it('fires three parallel typed queries (completed/failed/cancelled) merged + sorted desc', async () => {
@@ -126,8 +163,152 @@ describe('useAllTerminalRuns', () => {
     renderHook(() => useAllTerminalRuns({ enabled: true }), { wrapper })
     await waitFor(() =>
       expect(
-        queryClient.getQueryCache().find({ queryKey: ['backtests', 'all-terminal', 'wallet-1'] })
+        queryClient.getQueryCache().find({
+          queryKey: queryKeys.backtestsAllTerminal('wallet-1', scope),
+        })
       ).toBeDefined()
     )
+  })
+
+  it.each([
+    { name: 'time', patch: { asOf: cut } },
+    { name: 'operator', patch: { currentOperatorPublicId: 'operator-2' } },
+    { name: 'wallet', patch: { currentWalletPublicId: 'wallet-2' } },
+  ])('refetches all three status slices when $name changes', async ({ patch }) => {
+    vi.mocked(getBacktests).mockResolvedValue(response([]))
+    const { queryClient, wrapper } = renderWithClient()
+    const { result } = renderHook(() => useAllTerminalRuns({ enabled: true }), { wrapper })
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    expect(getBacktests).toHaveBeenCalledTimes(3)
+
+    act(() => useAppStore.setState(patch))
+
+    await waitFor(() => expect(getBacktests).toHaveBeenCalledTimes(6))
+    expect(queryClient.getQueryCache().getAll()).toHaveLength(2)
+  })
+
+  it('keeps delayed parallel responses isolated from the new historical scope', async () => {
+    const pending = new Map<string, (value: BacktestRunListResponse) => void>()
+    const acquisitions: { asOf: string | null; status: string | undefined }[] = []
+
+    vi.mocked(getBacktests).mockImplementation((_limit, _offset, _strategy, status) => {
+      const asOf = apiClient.getTimeTravelAsOf()
+
+      acquisitions.push({ asOf, status })
+
+      if (asOf === null) {
+        return new Promise<BacktestRunListResponse>(resolve => {
+          pending.set(status ?? '', resolve)
+        })
+      }
+
+      return Promise.resolve(response([makeRun(`historical-${status}`, '2026-10-28T17:00:00Z')]))
+    })
+    const { queryClient, wrapper } = renderWithClient()
+    const { result } = renderHook(() => useAllTerminalRuns({ enabled: true }), { wrapper })
+
+    await waitFor(() => expect(pending.size).toBe(3))
+
+    act(() => useAppStore.getState().setAsOf(cut))
+
+    const historicalIds = ['historical-completed', 'historical-failed', 'historical-cancelled']
+
+    await waitFor(() =>
+      expect(result.current.data?.map(row => row.public_id)).toEqual(historicalIds)
+    )
+    await act(async () => {
+      for (const [status, resolve] of pending) {
+        resolve(response([makeRun(`old-${status}`, '2026-10-28T22:00:00Z')]))
+      }
+
+      await Promise.resolve()
+    })
+    await waitFor(() =>
+      expect(
+        queryClient.getQueryData<BacktestRunData[]>(
+          queryKeys.backtestsAllTerminal('wallet-1', scope)
+        )
+      ).toHaveLength(3)
+    )
+    expect(result.current.data?.map(row => row.public_id)).toEqual(historicalIds)
+    expect(getBacktests).toHaveBeenCalledTimes(6)
+    expect(acquisitions).toEqual([
+      ...['completed', 'failed', 'cancelled'].map(status => ({ asOf: null, status })),
+      ...['completed', 'failed', 'cancelled'].map(status => ({ asOf: cut, status })),
+    ])
+  })
+
+  it('does not eagerly refetch the retained old terminal cache in the new wallet context', async () => {
+    vi.mocked(getBacktests).mockResolvedValue(
+      response([makeRun('original-wallet', '2026-10-28T17:00:00Z')])
+    )
+    const { wrapper } = renderWithClient(sharedQueryClient)
+    const { result, unmount } = renderHook(() => useAllTerminalRuns({ enabled: true }), {
+      wrapper,
+    })
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    const oldQuery = sharedQueryClient
+      .getQueryCache()
+      .findAll({ queryKey: ['backtests', 'all-terminal'] })[0]
+
+    if (oldQuery === undefined) throw new Error('Expected the terminal query to be mounted')
+    const oldData = oldQuery.state.data
+    const readOld = vi.fn(async () => [makeRun('wrong-wallet', '2026-10-28T22:00:00Z')])
+    const retained = new QueryObserver(sharedQueryClient, {
+      queryKey: oldQuery.queryKey,
+      queryFn: readOld,
+      staleTime: Infinity,
+    })
+    const stopRetained = retained.subscribe(() => undefined)
+
+    try {
+      vi.mocked(getBacktests).mockResolvedValue(
+        response([makeRun('selected-wallet', '2026-10-28T22:00:00Z')])
+      )
+      act(() => useAppStore.getState().setCurrentWalletPublicId('wallet-2'))
+      await waitFor(() =>
+        expect(result.current.data?.every(row => row.public_id === 'selected-wallet')).toBe(true)
+      )
+      expect(readOld).not.toHaveBeenCalled()
+      expect(sharedQueryClient.getQueryData(oldQuery.queryKey)).toEqual(oldData)
+    } finally {
+      stopRetained()
+      unmount()
+      sharedQueryClient.removeQueries({ queryKey: ['backtests', 'all-terminal'] })
+    }
+  })
+
+  it('preserves the old terminal prefix and existing mutation invalidation', async () => {
+    const { queryClient } = renderWithClient()
+    const liveKey = queryKeys.backtestsAllTerminal('wallet-1', scope)
+    const historicalKey = queryKeys.backtestsAllTerminal('wallet-1', { ...scope, asOf: cut })
+
+    queryClient.setQueryData(liveKey, [])
+    queryClient.setQueryData(historicalKey, [])
+    queryClient.setQueryData(['unrelated'], [])
+
+    await queryClient.invalidateQueries({ queryKey: queryKeys.backtestsAll, refetchType: 'none' })
+
+    expect(queryKeys.backtestsAllTerminal('wallet-1')).toEqual([
+      'backtests',
+      'all-terminal',
+      'wallet-1',
+    ])
+    expect(liveKey).toEqual(['backtests', 'all-terminal', 'wallet-1', scope])
+    expect(queryClient.getQueryState(liveKey)?.isInvalidated).toBe(true)
+    expect(queryClient.getQueryState(historicalKey)?.isInvalidated).toBe(true)
+    expect(queryClient.getQueryState(['unrelated'])?.isInvalidated).toBe(false)
+  })
+
+  it('keeps an explicitly enabled null-wallet read enabled', async () => {
+    useAppStore.setState({ currentWalletPublicId: null })
+    vi.mocked(getBacktests).mockResolvedValue(response([]))
+    const { wrapper } = renderWithClient()
+    const { result } = renderHook(() => useAllTerminalRuns({ enabled: true }), { wrapper })
+
+    await waitFor(() => expect(result.current.isSuccess).toBe(true))
+    expect(getBacktests).toHaveBeenCalledTimes(3)
   })
 })
