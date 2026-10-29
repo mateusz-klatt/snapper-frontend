@@ -5,6 +5,7 @@ import {
   WSDispatcher,
   getDispatcher,
   resetDispatcher,
+  releaseDispatcher,
   AI_REVIEW_ACTIVITY_RING_CAP,
   ALERT_HISTORY_QUERY_KEY_PREFIX,
   ALERT_TOAST_RING_CAP,
@@ -1375,6 +1376,36 @@ describe('WSDispatcher', () => {
       processMetricsReset.mockClear()
       resetDispatcher()
       expect(processMetricsReset).toHaveBeenCalledTimes(1)
+    })
+    it('releases only the matching default owner without resetting process metrics', () => {
+      const dispatcher = getDispatcher(queryClient)
+
+      dispatcher.attach(mockWsClient)
+      processMetricsReset.mockClear()
+      releaseDispatcher(dispatcher)
+      expect(dispatcher.isAttached()).toBe(false)
+      expect(getDispatcher(queryClient)).not.toBe(dispatcher)
+      expect(processMetricsReset).not.toHaveBeenCalled()
+    })
+    it('does not release the default instance for an unrelated custom dispatcher', () => {
+      const dispatcher = getDispatcher(queryClient)
+      const custom = new WSDispatcher({ queryClient, topics: ['custom.topic'] })
+
+      dispatcher.attach(mockWsClient)
+      releaseDispatcher(custom)
+      expect(getDispatcher(queryClient)).toBe(dispatcher)
+      expect(dispatcher.isAttached()).toBe(true)
+    })
+    it('does not release a replacement instance when an older owner cleans up twice', () => {
+      const previous = getDispatcher(queryClient)
+
+      releaseDispatcher(previous)
+      const current = getDispatcher(queryClient)
+
+      current.attach(mockWsClient)
+      releaseDispatcher(previous)
+      expect(getDispatcher(queryClient)).toBe(current)
+      expect(current.isAttached()).toBe(true)
     })
   })
   describe('additional message handling', () => {

@@ -4,7 +4,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 import { useWebSocketStore } from '../stores/websocket'
 
-const { mockDetach, mockDispatcher, mockGetDispatcher, mockResetDispatcher } = vi.hoisted(() => {
+const {
+  mockDetach,
+  mockDispatcher,
+  mockGetDispatcher,
+  mockResetDispatcher,
+  mockReleaseDispatcher,
+} = vi.hoisted(() => {
   const mockAttach = vi.fn()
   const mockDetach = vi.fn()
   const mockDispatcher = {
@@ -19,6 +25,7 @@ const { mockDetach, mockDispatcher, mockGetDispatcher, mockResetDispatcher } = v
     mockDispatcher,
     mockGetDispatcher: vi.fn(() => mockDispatcher),
     mockResetDispatcher: vi.fn(),
+    mockReleaseDispatcher: vi.fn((dispatcher: typeof mockDispatcher) => dispatcher.detach()),
   }
 })
 
@@ -31,6 +38,7 @@ vi.mock('../stores/websocket', () => ({
 vi.mock('../stores/wsDispatcher', () => ({
   getDispatcher: mockGetDispatcher,
   resetDispatcher: mockResetDispatcher,
+  releaseDispatcher: mockReleaseDispatcher,
   WSDispatcher: function () {
     return mockDispatcher
   },
@@ -81,7 +89,7 @@ describe('useWSDispatcher', () => {
     await waitFor(() => {
       expect(result.current).toBeDefined()
     })
-    expect(mockResetDispatcher).toHaveBeenCalled()
+    expect(mockResetDispatcher).not.toHaveBeenCalled()
   })
   it('attaches dispatcher when websocket is connected', async () => {
     const wsClient = { id: 'ws-client' }
@@ -126,14 +134,11 @@ describe('useWSDispatcher', () => {
       expect(mockDetach).toHaveBeenCalled()
     })
   })
-  it('skips cleanup when dispatcher is null', async () => {
-    mockGetDispatcher.mockReturnValueOnce(null as never)
-    const { unmount } = renderHook(() => useWSDispatcher(), { wrapper })
+  it('does not acquire or clean up a dispatcher when disabled', () => {
+    const { unmount } = renderHook(() => useWSDispatcher({ enabled: false }), { wrapper })
 
-    await waitFor(() => {
-      expect(mockGetDispatcher).toHaveBeenCalled()
-    })
     unmount()
+    expect(mockGetDispatcher).not.toHaveBeenCalled()
     expect(mockDetach).not.toHaveBeenCalled()
   })
 })

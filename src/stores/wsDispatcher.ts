@@ -681,6 +681,13 @@ export function getDispatcher(queryClient: QueryClient): WSDispatcher {
   return dispatcherInstance
 }
 
+export function releaseDispatcher(dispatcher: WSDispatcher): void {
+  if (dispatcherInstance !== dispatcher) return
+
+  dispatcherInstance = null
+  dispatcher.detach()
+}
+
 export function resetDispatcher(): void {
   if (dispatcherInstance) {
     dispatcherInstance.detach()

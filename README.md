@@ -26,6 +26,14 @@ Wallet changes refresh the session claim before operator, wallet and knowledge t
 together. Refreshes are serialized; superseded or unmounted selections cannot publish client
 scope. A newer URL or picker decision wins, and refresh failure preserves the confirmed selection.
 
+While a wallet change is pending, the picker shows the requested choice with a loading indicator.
+The confirmed application scope stays unchanged until the session acknowledges the latest choice.
+Choosing the previously confirmed wallet, including All wallets, supersedes a pending change.
+Failed changes restore the confirmed choice and show an error; an older completion cannot clear a
+newer pending choice.
+Confirmed wallet, operator or knowledge-time changes retire feedback from the previous context,
+including a late failure after returning to an earlier scope.
+
 Restored wallet scope is acknowledged by the authenticated session before dependent views mount.
 Wallet-bearing and background refreshes share the same rotation coordinator. Failed hydration offers
 an explicit retry; stale reads are retired before a new wallet rotation and cannot publish results
@@ -92,6 +100,12 @@ before changing older bars. Confirmed corrections and gaps inside the loaded ran
 preserving the latest candle and chart position; global Time Travel and local replay remain isolated
 from Live updates. If updates remain unconfirmed, the chart shows a warning. **Reload recent data**
 chooses a new, bounded recent Live view; it does not claim that all earlier history has been repaired.
+
+Shell subscriptions and the market chart retain separate dispatcher ownership. Returning from
+Time Travel or rebuilding shell subscriptions keeps the market listener attached to the current
+connection, so finalized candles continue to reach history reconciliation. Unmounting the market
+retires its dispatcher; the next market mount receives a fresh instance. Replacing a connection
+rebinds the active consumers to the new client. Shell setup still clears the process-metrics snapshot.
 
 The statistics cards use closed one-minute candles for a full 24-hour window ending at the displayed
 timestamp, independently of the chart timeframe. High and low use candle highs and lows; change

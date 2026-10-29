@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useWebSocketStore } from '../stores/websocket'
-import { WSDispatcher, getDispatcher, resetDispatcher } from '../stores/wsDispatcher'
+import { WSDispatcher, getDispatcher, releaseDispatcher } from '../stores/wsDispatcher'
+import { useProcessMetricsStore } from '../stores/processMetrics'
 
 interface UseWSDispatcherOptions {
   enabled?: boolean
@@ -13,7 +14,6 @@ export function useWSDispatcher(options: UseWSDispatcherOptions = {}): WSDispatc
   const queryClient = useQueryClient()
   const { wsClient, isConnected } = useWebSocketStore()
   const [dispatcher, setDispatcher] = useState<WSDispatcher | null>(null)
-  const dispatcherRef = useRef<WSDispatcher | null>(null)
 
   useEffect(() => {
     if (!enabled) {
@@ -25,7 +25,7 @@ export function useWSDispatcher(options: UseWSDispatcherOptions = {}): WSDispatc
     let newDispatcher: WSDispatcher
 
     if (topics) {
-      resetDispatcher()
+      useProcessMetricsStore.getState().reset()
       newDispatcher = new WSDispatcher({
         queryClient,
         topics,
@@ -34,26 +34,26 @@ export function useWSDispatcher(options: UseWSDispatcherOptions = {}): WSDispatc
       newDispatcher = getDispatcher(queryClient)
     }
 
-    dispatcherRef.current = newDispatcher
     setDispatcher(newDispatcher)
 
     return () => {
-      if (dispatcherRef.current) {
-        dispatcherRef.current.detach()
-      }
+      if (topics) newDispatcher.detach()
+      else releaseDispatcher(newDispatcher)
     }
   }, [enabled, queryClient, topics])
   useEffect(() => {
-    if (!enabled || !dispatcherRef.current) {
+    if (!enabled || !dispatcher) {
       return
     }
 
     if (wsClient && isConnected) {
-      dispatcherRef.current.attach(wsClient)
+      dispatcher.attach(wsClient)
     } else {
-      dispatcherRef.current.detach()
+      dispatcher.detach()
     }
-  }, [enabled, wsClient, isConnected])
+
+    return () => dispatcher.detach()
+  }, [enabled, dispatcher, wsClient, isConnected])
 
   return dispatcher
 }
