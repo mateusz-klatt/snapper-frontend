@@ -4,6 +4,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import App from './App'
 import { useAppStore } from './stores/app'
+import { useScopePersistence } from './hooks/useScopePersistence'
+
+vi.mock('./hooks/useScopePersistence', () => ({ useScopePersistence: vi.fn() }))
+vi.mock('./components/AppRoutes', () => ({
+  AppRoutes: () => <div data-testid='dependent-routes'>Routes</div>,
+}))
 
 vi.mock('./stores/app', () => ({
   useAppStore: vi.fn(),
@@ -99,6 +105,26 @@ describe('App', () => {
     vi.clearAllMocks()
     globalThis.localStorage.clear()
     mockAppStore()
+    vi.mocked(useScopePersistence).mockReturnValue({ status: 'ready', retry: vi.fn() })
+  })
+  it('holds dependent routes until restored session scope is confirmed', () => {
+    vi.mocked(useScopePersistence).mockReturnValue({ status: 'loading', retry: vi.fn() })
+    const { rerender } = renderWithProviders(<App />)
+
+    expect(screen.queryByTestId('dependent-routes')).not.toBeInTheDocument()
+    vi.mocked(useScopePersistence).mockReturnValue({ status: 'ready', retry: vi.fn() })
+    rerender(<App />)
+    expect(screen.getByTestId('dependent-routes')).toBeInTheDocument()
+  })
+  it('keeps failed scope hydration visible and retries without mounting dependent reads', () => {
+    const retry = vi.fn()
+
+    vi.mocked(useScopePersistence).mockReturnValue({ status: 'error', retry })
+    renderWithProviders(<App />)
+    expect(screen.getByRole('alert')).toBeInTheDocument()
+    expect(screen.queryByTestId('dependent-routes')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Retry' }))
+    expect(retry).toHaveBeenCalledOnce()
   })
   it('renders app', async () => {
     const { container } = renderWithProviders(<App />)

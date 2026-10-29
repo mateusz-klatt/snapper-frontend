@@ -925,59 +925,74 @@ describe('auth store', () => {
     })
 
     it('forwards walletId hint as active_wallet_public_id body', async () => {
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          ws_token: 'token',
-          ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-          csrf_token: 'csrf',
-          user: {
-            type: 'user_profile' as const,
-            sequence_id: 0,
-            public_id: 'test-pid',
-            timestamp: '2024-01-01T00:00:00Z',
-            session_id: 'test-sid',
-            username: 'admin',
-            role: 'admin' as const,
-            is_active: true,
-            created_at: '2026-01-01T00:00:00Z',
-            operator_public_ids: [],
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            user: makeUserProfile({ username: 'auditor', active_wallet_public_id: 'wallet-7' }),
           },
-        },
-      })
+        })
+      )
       const state = useAuthStore.getState()
 
       await state.refreshToken({ walletId: 'wallet-7' })
-      expect(apiClient.postJSON).toHaveBeenCalledWith('/api/auth/refresh', {
+      expect(apiClient.refreshSession).toHaveBeenCalledWith({
         active_wallet_public_id: 'wallet-7',
       })
     })
 
     it('forwards clear hint as clear_active_wallet body', async () => {
-      vi.mocked(apiClient.postJSON).mockResolvedValueOnce({
-        payload: {
-          ws_token: 'token',
-          ws_token_exp: new Date(Date.now() + 3600000).toISOString(),
-          csrf_token: 'csrf',
-          user: {
-            type: 'user_profile' as const,
-            sequence_id: 0,
-            public_id: 'test-pid',
-            timestamp: '2024-01-01T00:00:00Z',
-            session_id: 'test-sid',
-            username: 'admin',
-            role: 'admin' as const,
-            is_active: true,
-            created_at: '2026-01-01T00:00:00Z',
-            operator_public_ids: [],
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            user: makeUserProfile({ username: 'auditor', active_wallet_public_id: null }),
           },
-        },
-      })
+        })
+      )
       const state = useAuthStore.getState()
 
       await state.refreshToken({ clear: true })
-      expect(apiClient.postJSON).toHaveBeenCalledWith('/api/auth/refresh', {
+      expect(apiClient.refreshSession).toHaveBeenCalledWith({
         clear_active_wallet: true,
       })
+    })
+    it.each([
+      { hint: { walletId: 'w-main' }, confirmed: null },
+      { hint: { clear: true as const }, confirmed: 'w-old' },
+    ])('refuses an unconfirmed wallet rotation: $confirmed', async ({ hint, confirmed }) => {
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(
+        refreshResponse({
+          payload: {
+            user: makeUserProfile({ username: 'auditor', active_wallet_public_id: confirmed }),
+          },
+        })
+      )
+      const error = vi.spyOn(console, 'error').mockImplementation(() => {})
+
+      try {
+        await expect(useAuthStore.getState().refreshToken(hint)).rejects.toThrow(
+          'Session wallet context was not confirmed'
+        )
+        expect(useAuthStore.getState().isAuthenticated).toBe(false)
+      } finally {
+        error.mockRestore()
+      }
+    })
+    it('does not confirm a wallet selection from an older cached profile', async () => {
+      useAuthStore.setState({
+        user: makeUserProfile({ username: 'auditor', active_wallet_public_id: 'w-main' }),
+        isAuthenticated: true,
+      })
+      vi.mocked(apiClient.refreshSession).mockResolvedValueOnce(refreshResponse({ payload: {} }))
+      const error = vi.spyOn(console, 'error').mockImplementation(() => {})
+
+      try {
+        await expect(useAuthStore.getState().refreshToken({ walletId: 'w-main' })).rejects.toThrow(
+          'Session wallet context was not confirmed'
+        )
+        expect(useAuthStore.getState().isAuthenticated).toBe(false)
+      } finally {
+        error.mockRestore()
+      }
     })
   })
   describe('useAuth hook', () => {

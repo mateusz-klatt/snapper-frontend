@@ -26,6 +26,11 @@ Wallet changes refresh the session claim before operator, wallet and knowledge t
 together. Refreshes are serialized; superseded or unmounted selections cannot publish client
 scope. A newer URL or picker decision wins, and refresh failure preserves the confirmed selection.
 
+Restored wallet scope is acknowledged by the authenticated session before dependent views mount.
+Wallet-bearing and background refreshes share the same rotation coordinator. Failed hydration offers
+an explicit retry; stale reads are retired before a new wallet rotation and cannot publish results
+under an earlier scope.
+
 Returning from Time Travel marks cached P&L windows stale without refetching the obsolete
 historical observer. The Live window fetches fresh data when its scope becomes active; other
 active reads continue to refresh.

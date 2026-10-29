@@ -24,7 +24,7 @@ vi.mock('../lib/apiClient', () => ({
 }))
 
 vi.mock('../lib/queryClient', () => ({
-  queryClient: { invalidateQueries: vi.fn(), refetchQueries: vi.fn() },
+  queryClient: { cancelQueries: vi.fn(), invalidateQueries: vi.fn(), refetchQueries: vi.fn() },
 }))
 
 const refreshToken = vi.hoisted(() => vi.fn<() => Promise<void>>())
@@ -545,6 +545,87 @@ describe('pending URL selection generations', () => {
       data: { payload: [{ public_id: 'o-1' }, { public_id: 'o-2' }] },
     } as never)
   })
+  it.each([null, 'w-main'])(
+    'waits for a newer picker that supersedes initial hydration from %s',
+    async visible => {
+      useAppStore.setState({ currentWalletPublicId: visible })
+      const initial = deferred()
+      const latest = deferred()
+
+      refreshToken
+        .mockImplementationOnce(() => initial.promise)
+        .mockImplementationOnce(() => latest.promise)
+      const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+      await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(1))
+      const selection = useAppStore.getState().selectWalletAndRefresh('w-main')
+
+      await act(async () => initial.resolve())
+      await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(2))
+      expect(result.current.status).toBe('loading')
+      await act(async () => {
+        latest.resolve()
+        await selection
+      })
+      await waitFor(() => expect(result.current.status).toBe('ready'))
+      expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+    }
+  )
+  it('does not reserve or publish a scope after unmount while awaiting a newer picker', async () => {
+    const initial = deferred()
+    const latest = deferred()
+
+    refreshToken
+      .mockImplementationOnce(() => initial.promise)
+      .mockImplementationOnce(() => latest.promise)
+    const { unmount } = renderHook(() => useScopePersistence(), { wrapper })
+
+    await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(1))
+    const selection = useAppStore.getState().selectWalletAndRefresh('w-main')
+
+    await act(async () => initial.resolve())
+    await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(2))
+    unmount()
+    const reserve = vi.spyOn(useAppStore.getState(), 'reserveScopeSelection')
+
+    await act(async () => {
+      latest.resolve()
+      await selection
+    })
+    expect(reserve).not.toHaveBeenCalled()
+    reserve.mockRestore()
+  })
+  it('preserves the latest picker queued while superseded bootstrap awaits an older picker', async () => {
+    const initial = deferred()
+    const middle = deferred()
+    const latest = deferred()
+
+    refreshToken
+      .mockImplementationOnce(() => initial.promise)
+      .mockImplementationOnce(() => middle.promise)
+      .mockImplementationOnce(() => latest.promise)
+    const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+    await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(1))
+    const firstPicker = useAppStore.getState().selectWalletAndRefresh('w-main')
+
+    await act(async () => initial.resolve())
+    await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(2))
+    const lastPicker = useAppStore.getState().selectWalletAndRefresh('w-paper')
+
+    await act(async () => {
+      middle.resolve()
+      await firstPicker
+    })
+    await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(3))
+    expect(result.current.status).toBe('loading')
+    await act(async () => {
+      latest.resolve()
+      await lastPicker
+    })
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+    expect(useAppStore.getState().currentWalletPublicId).toBe('w-paper')
+  })
   it('never publishes a stale URL scope, and realigns JWT even when latest URL returns to the visible wallet', async () => {
     renderHook(() => useScopePersistence(), { wrapper })
     await waitFor(() => expect(useAppStore.getState().currentWalletPublicId).toBe('w-paper'))
@@ -804,6 +885,75 @@ describe('scope access hydration', () => {
     vi.mocked(useWallets).mockReturnValue({ data: { payload: [{ public_id: 'w-main' }] } } as never)
     vi.mocked(useOperators).mockReturnValue({ data: { payload: [] } } as never)
   })
+  it('waits for the server refresh even when restored scope already matches the UI', async () => {
+    history.replaceState(
+      null,
+      '',
+      '#backtests?wallet=w-main&operator=__all__&as_of=2026-10-28T17%3A33%3A00Z'
+    )
+    useAppStore.setState({
+      currentWalletPublicId: 'w-main',
+      asOf: '2026-10-28T17:33:00.000Z',
+      isTimeTraveling: true,
+    })
+    let finish!: () => void
+
+    refreshToken.mockReturnValueOnce(
+      new Promise<void>(resolve => {
+        finish = resolve
+      })
+    )
+    const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+    await waitFor(() => expect(refreshToken).toHaveBeenCalledWith({ walletId: 'w-main' }))
+    expect(result.current.status).toBe('loading')
+    await act(async () => finish())
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+    expect(useAppStore.getState().asOf).toBe('2026-10-28T17:33:00.000Z')
+  })
+  it('reports a failed initial refresh and only becomes ready after an explicit retry', async () => {
+    refreshToken.mockRejectedValueOnce(new TypeError('offline'))
+    const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+    await waitFor(() => expect(result.current.status).toBe('error'))
+    expect(useAppStore.getState().currentWalletPublicId).toBeNull()
+    act(() => result.current.retry())
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+    expect(refreshToken).toHaveBeenLastCalledWith({ clear: true })
+  })
+  it('does not refresh or expose dependent scope before access-list hydration', () => {
+    vi.mocked(useWallets).mockReturnValue({ data: undefined } as never)
+    const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+    act(() => result.current.retry())
+    expect(result.current.status).toBe('loading')
+    expect(refreshToken).not.toHaveBeenCalled()
+  })
+  it.each(['wallet', 'operator'] as const)(
+    'reports failed %s access-list hydration and retries both catalogs without a token change',
+    field => {
+      const wallets = vi.fn()
+      const operators = vi.fn()
+
+      vi.mocked(useWallets).mockReturnValue({
+        data: field === 'wallet' ? undefined : { payload: [{ public_id: 'w-main' }] },
+        isError: field === 'wallet',
+        refetch: wallets,
+      } as never)
+      vi.mocked(useOperators).mockReturnValue({
+        data: field === 'operator' ? undefined : { payload: [] },
+        isError: field === 'operator',
+        refetch: operators,
+      } as never)
+      const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+      expect(result.current.status).toBe('error')
+      act(() => result.current.retry())
+      expect(wallets).toHaveBeenCalledOnce()
+      expect(operators).toHaveBeenCalledOnce()
+      expect(refreshToken).not.toHaveBeenCalled()
+    }
+  )
   it('saved explicit All does not auto-pick a wallet after reload', async () => {
     localStorage.setItem('snapper-current-wallet', '__all__')
     localStorage.setItem('snapper-current-operator', '__all__')

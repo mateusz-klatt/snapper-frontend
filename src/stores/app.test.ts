@@ -6,6 +6,7 @@ import i18n from '../i18n/config'
 import { queryClient } from '../lib/queryClient'
 import { queryKeys } from '../hooks/queries/keys'
 import { makeUserProfile } from '../test/factories'
+import { QueryObserver } from '@tanstack/react-query'
 
 describe('useAppStore', () => {
   beforeEach(() => {
@@ -410,6 +411,53 @@ describe('useAppStore', () => {
     })
   })
   describe('atomic URL scope selection', () => {
+    it.each([false, true])(
+      'retires old scoped reads across a wallet rotation and resumes them on failure: %s',
+      async fail => {
+        queryClient.clear()
+        useAppStore.setState({ currentWalletPublicId: 'w-old' })
+        const key = queryKeys.backtestsByStrategyStatus(undefined, undefined, {
+          walletPublicId: 'w-old',
+          operatorPublicId: null,
+          asOf: null,
+        })
+        let finishOld!: (value: { owner: string }) => void
+        const old = new Promise<{ owner: string }>(resolve => {
+          finishOld = resolve
+        })
+        const load = vi
+          .fn<() => Promise<{ owner: string }>>()
+          .mockReturnValueOnce(old)
+          .mockResolvedValue({ owner: 'w-old' })
+        const observer = new QueryObserver(queryClient, {
+          queryKey: key,
+          queryFn: load,
+          retry: false,
+        })
+        const unsubscribe = observer.subscribe(() => {})
+        const refresh = vi.spyOn(useAuthStore.getState(), 'refreshToken')
+
+        if (fail) refresh.mockRejectedValueOnce(new TypeError('offline'))
+        else refresh.mockResolvedValueOnce(undefined)
+
+        try {
+          const selection = useAppStore.getState().selectWalletAndRefresh('w-new')
+
+          if (fail) await expect(selection).rejects.toThrow('offline')
+          else await selection
+          finishOld({ owner: 'w-new' })
+          await old
+          await vi.waitFor(() => expect(queryClient.getQueryState(key)?.fetchStatus).toBe('idle'))
+          await vi.waitFor(() =>
+            expect(queryClient.getQueryData(key)).toEqual(fail ? { owner: 'w-old' } : undefined)
+          )
+          expect(load).toHaveBeenCalledTimes(fail ? 2 : 1)
+        } finally {
+          unsubscribe()
+          queryClient.clear()
+        }
+      }
+    )
     it('refreshes the wallet claim before publishing one complete scope and horizon', async () => {
       const refresh = vi.spyOn(useAuthStore.getState(), 'refreshToken').mockResolvedValue(undefined)
       const seen: Array<[string | null, string | null, string | null, boolean]> = []

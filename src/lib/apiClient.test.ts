@@ -195,6 +195,64 @@ describe('APIClient', () => {
       expect(mockFetch).toHaveBeenCalledTimes(2)
       expect(third.ok).toBe(true)
     })
+    it('queues a wallet refresh after an existing unhinted rotation and shares its result', async () => {
+      let finishFirst!: (response: Response) => void
+      const firstResponse = new Promise<Response>(resolve => {
+        finishFirst = resolve
+      })
+
+      mockFetch
+        .mockReturnValueOnce(firstResponse)
+        .mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: { wallet: 'w-main' } })))
+      const first = apiClient.refreshSession()
+      const selected = apiClient.refreshSession({ active_wallet_public_id: 'w-main' })
+      const background = apiClient.refreshSession()
+
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+      finishFirst(selfCloningResponse(async () => ({ payload: { wallet: null } })))
+      await first
+      const [selection, concurrent] = await Promise.all([selected, background])
+
+      expect(mockFetch).toHaveBeenCalledTimes(2)
+      const request = mockFetch.mock.calls[1]?.[1] as RequestInit
+
+      expect(JSON.parse(request.body as string).payload).toEqual({
+        active_wallet_public_id: 'w-main',
+      })
+      expect(await selection.json()).toEqual({ payload: { wallet: 'w-main' } })
+      expect(await concurrent.json()).toEqual({ payload: { wallet: 'w-main' } })
+    })
+    it('runs an explicit wallet selection after an earlier background transport failure', async () => {
+      let rejectFirst!: (error: Error) => void
+
+      mockFetch
+        .mockReturnValueOnce(
+          new Promise<Response>((_resolve, reject) => {
+            rejectFirst = reject
+          })
+        )
+        .mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+      const first = apiClient.refreshSession()
+      const failure = expect(first).rejects.toThrow('offline')
+      const selected = apiClient.refreshSession({ clear_active_wallet: true })
+
+      rejectFirst(new TypeError('offline'))
+      await failure
+      expect((await selected).ok).toBe(true)
+      expect(mockFetch).toHaveBeenCalledTimes(2)
+    })
+    it('preserves a wallet hint when the refresh retries without a stale CSRF header', async () => {
+      const rejected = selfCloningResponse(async () => ({ detail: 'CSRF token invalid' }))
+
+      Object.assign(rejected, { ok: false, status: 403 })
+      mockFetch
+        .mockResolvedValueOnce(rejected)
+        .mockResolvedValueOnce(selfCloningResponse(async () => ({ payload: {} })))
+      await apiClient.refreshSession({ active_wallet_public_id: 'w-main' })
+      expect(mockFetch.mock.calls[1]?.[1]).toEqual(
+        expect.objectContaining({ body: mockFetch.mock.calls[0]?.[1].body })
+      )
+    })
     it('retries the refresh flight without the CSRF header on 403 CSRF rejection', async () => {
       const csrfReject = {
         ok: false,

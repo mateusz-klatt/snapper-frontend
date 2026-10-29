@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import type { Query } from '@tanstack/react-query'
 import { subscribeWithSelector } from 'zustand/middleware'
 import { apiClient } from '../lib/apiClient'
 import { queryClient } from '../lib/queryClient'
@@ -45,11 +46,15 @@ const matchesConfirmedReadScope = (key: readonly unknown[], confirmed: ScopeSele
 }
 
 const refetchConfirmedReads = (unchanged?: ScopeSelection): void => {
+  const predicate = (query: Query): boolean =>
+    !isScopeAwareRead(query.queryKey) ||
+    (unchanged !== undefined && matchesConfirmedReadScope(query.queryKey, unchanged))
+
+  void queryClient.cancelQueries({ predicate })
+  void queryClient.invalidateQueries({ predicate, refetchType: 'none' })
   void queryClient.refetchQueries({
     type: 'active',
-    predicate: query =>
-      !isScopeAwareRead(query.queryKey) ||
-      (unchanged !== undefined && matchesConfirmedReadScope(query.queryKey, unchanged)),
+    predicate,
   })
 }
 
@@ -63,7 +68,20 @@ const refreshWalletSelection = (
 
     const hint = wallet === null ? { clear: true as const } : { walletId: wallet }
 
-    await useAuthStore.getState().refreshToken(hint)
+    void queryClient.cancelQueries({ predicate: query => isScopeAwareRead(query.queryKey) })
+
+    try {
+      await useAuthStore.getState().refreshToken(hint)
+    } catch (error: unknown) {
+      const state = useAppStore.getState()
+
+      refetchConfirmedReads({
+        wallet: state.currentWalletPublicId,
+        operator: state.currentOperatorPublicId,
+        asOf: state.asOf,
+      })
+      throw error
+    }
 
     return isCurrent()
   })
@@ -139,8 +157,8 @@ interface AppStore extends AppState {
   selectWalletAndRefresh: (nextWalletId: string | null) => Promise<void>
   reserveScopeSelection: () => number
   invalidateScopeSelection: () => number
-  isScopeSelectionCurrent: (version: number) => boolean
   isWalletSelectionPending: () => boolean
+  waitForWalletSelection: () => Promise<void>
   selectScopeAndRefresh: (
     next: ScopeSelection,
     forceRefresh?: boolean,
@@ -237,8 +255,15 @@ export const useAppStore = create<AppStore>()(
       return ++scopeSelectionVersion
     },
     invalidateScopeSelection: () => ++scopeSelectionVersion,
-    isScopeSelectionCurrent: version => version === scopeSelectionVersion,
     isWalletSelectionPending: () => pendingWalletRefreshes > 0,
+    waitForWalletSelection: async () => {
+      let observed: Promise<void>
+
+      do {
+        observed = walletRefreshQueue
+        await observed
+      } while (observed !== walletRefreshQueue)
+    },
     selectScopeAndRefresh: async (next, forceRefresh = false, isCurrent, selectionVersion) => {
       const before = _get()
       const version = selectionVersion ?? _get().reserveScopeSelection()
