@@ -1,9 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import * as React from 'react'
-import { render, screen, waitFor, act } from '@testing-library/react'
-import type { CandleData } from '../../types/api'
+import { render, screen, waitFor, act, fireEvent } from '@testing-library/react'
+import type { CandleData, CachedCandlesResponse } from '../../types/api'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
+import { WSDispatcher } from '../../stores/wsDispatcher'
+import type { WebSocketMessages } from '../../types/ws'
 import { MarketChart } from './MarketChart'
 import { useAppStore } from '../../stores/app'
+import { useAuthStore } from '../../stores/auth'
+import type { CandleData as LiveCandleData } from '../../types/ws'
+import { useWebSocketStore } from '../../stores/websocket'
+import { useMarketStore } from '../../stores/market'
+import { makeUserProfile } from '../../test/factories'
+import type WebSocketClient from '../../lib/websocket/client'
 
 const mocks = vi.hoisted(() => {
   const handlerRef = { current: null as null | (() => void) }
@@ -55,7 +64,7 @@ vi.mock('react-i18next', () => ({
   }),
 }))
 
-const candleRow = (openAt: string, close = 100): CandleData => ({
+const candleRow = (openAt: string, close = 100): CandleData & LiveCandleData => ({
   type: 'candle',
   sequence_id: 1,
   public_id: 'pid',
@@ -104,14 +113,435 @@ const baseProps = {
   enabled: true,
 }
 
+const candleDispatcher = () => {
+  const listeners = new Set<(candle: LiveCandleData) => void>()
+
+  return {
+    onLiveCandle: (listener: (candle: LiveCandleData) => void) => {
+      listeners.add(listener)
+
+      return () => {
+        listeners.delete(listener)
+      }
+    },
+    emit: (candle: LiveCandleData) => listeners.forEach(listener => listener(candle)),
+  }
+}
+
 describe('MarketChart', () => {
   beforeEach(() => {
     useAppStore.setState({ asOf: null, isTimeTraveling: false })
+    useAuthStore.setState({ isAuthenticated: true, user: null, csrfToken: null })
+    useWebSocketStore.setState({ isConnected: true, wsClient: null })
+    useMarketStore.setState({
+      selectedExchange: 'kraken',
+      selectedInstrument: 'EUR-USD',
+      selectedTimeframe: '1m',
+    })
     vi.clearAllMocks()
     mocks.handlerRef.current = null
     mocks.timeScale.getVisibleLogicalRange.mockReturnValue(null)
     mocks.series.barsInLogicalRange.mockReturnValue({ barsBefore: 500, barsAfter: 0 })
     mocks.getCandlesRange.mockResolvedValue([])
+  })
+
+  it('reconciles a late burst through a small authoritative read and redraws interior bars', async () => {
+    let receive: ((candle: LiveCandleData) => void) | undefined
+    const dispatcher = {
+      onLiveCandle: vi.fn((handler: (candle: LiveCandleData) => void) => {
+        receive = handler
+
+        return vi.fn()
+      }),
+    }
+    const rows = [31, 32, 33, 35].map(minute => candleRow(`2026-06-20T00:${minute}:00Z`, minute))
+    const corrected = rows.slice(0, 3).map(row => ({
+      ...row,
+      timestamp: '2026-06-20T00:40:00Z',
+      close: row.close + 10,
+    }))
+
+    mocks.getCandlesRange.mockResolvedValueOnce(rows).mockResolvedValueOnce(corrected)
+    const { rerender } = render(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    rerender(
+      <MarketChart
+        {...baseProps}
+        dispatcher={dispatcher}
+        liveCandle={liveWc('2026-06-20T00:39:00Z', 39)}
+      />
+    )
+    mocks.timeScale.getVisibleLogicalRange.mockReturnValue({ from: 1, to: 3 })
+    act(() => {
+      for (const row of corrected) {
+        receive?.(row)
+        receive?.(row)
+      }
+    })
+
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    const call = mocks.getCandlesRange.mock.calls[1]
+
+    expect(call?.slice(3, 6)).toEqual(['2026-06-20T00:31:00.000Z', '2026-06-20T00:33:59.999Z', 3])
+    expect(Date.parse(String(call?.[6]))).toBeGreaterThan(Date.parse('2026-06-20T00:40:00Z'))
+    await waitFor(() =>
+      expect(mocks.series.setData).toHaveBeenLastCalledWith(
+        [41, 42, 43, 35, 39].map((close, index) => ({
+          time: Date.parse(`2026-06-20T00:${[31, 32, 33, 35, 39][index]}:00Z`) / 1000,
+          open: [31, 32, 33, 35, 39][index],
+          high: Number([31, 32, 33, 35, 39][index]) + 1,
+          low: Number([31, 32, 33, 35, 39][index]) - 1,
+          close,
+        }))
+      )
+    )
+    expect(mocks.timeScale.setVisibleLogicalRange).toHaveBeenLastCalledWith({ from: 1, to: 3 })
+    expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2)
+  })
+
+  it('retains real dispatcher burst hints until the React cache tail actually advances', async () => {
+    const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+    const key = ['market', 'cache', 'candles', 'kraken', 'EUR-USD', '1m', 100, null]
+    const first = candleRow('2026-10-29T16:36:00Z', 36)
+    const seed: CachedCandlesResponse = {
+      type: 'cached_candles',
+      sequence_id: 0,
+      public_id: 'synthetic-cache',
+      timestamp: first.timestamp,
+      session_id: 'synthetic-cache',
+      topic: null,
+      payload: {
+        candles: [
+          {
+            open_at_ms: Date.parse(first.open_at),
+            timeframe: '1m',
+            open: first.open,
+            high: first.high,
+            low: first.low,
+            close: first.close,
+            volume: first.volume,
+          },
+        ],
+        sample_count: 1,
+        is_warm: true,
+        source: 'cache',
+      },
+    }
+    const handlers = new Map<string, (message: WebSocketMessages) => void>()
+    const socket = {
+      onMessage: (type: string, handler: (message: WebSocketMessages) => void) => {
+        handlers.set(type, handler)
+
+        return () => {
+          handlers.delete(type)
+        }
+      },
+      onConnection: () => () => {},
+      subscribe: vi.fn(),
+      getSubscribedTopics: () => [],
+      isConnected: () => false,
+    } as unknown as WebSocketClient
+    const dispatcher = new WSDispatcher({ queryClient })
+
+    queryClient.setQueryData(key, seed)
+    dispatcher.attach(socket)
+    useWebSocketStore.setState({ wsClient: socket })
+    mocks.getCandlesRange
+      .mockResolvedValueOnce([first])
+      .mockResolvedValueOnce([
+        candleRow('2026-10-29T16:37:00Z', 37),
+        candleRow('2026-10-29T16:38:00Z', 38),
+      ])
+
+    function LiveCacheChart(): React.JSX.Element {
+      const { data } = useQuery({ queryKey: key, queryFn: async () => seed, enabled: false })
+      const last = data?.payload.candles.at(-1)
+
+      return (
+        <MarketChart
+          {...baseProps}
+          dispatcher={dispatcher}
+          liveCandle={
+            last
+              ? {
+                  openAtMs: last.open_at_ms,
+                  open: last.open,
+                  high: last.high,
+                  low: last.low,
+                  close: last.close,
+                  volume: last.volume,
+                  complete: false,
+                }
+              : null
+          }
+        />
+      )
+    }
+
+    const view = render(
+      <QueryClientProvider client={queryClient}>
+        <LiveCacheChart />
+      </QueryClientProvider>
+    )
+
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    act(() => {
+      for (const minute of [39, 38, 37]) {
+        handlers.get('candle')?.(candleRow(`2026-10-29T16:${minute}:00Z`, minute))
+      }
+    })
+    await waitFor(() =>
+      expect(mocks.series.update).toHaveBeenLastCalledWith(expect.objectContaining({ close: 39 }))
+    )
+    expect(
+      queryClient.getQueryData<CachedCandlesResponse>(key)?.payload.candles.map(row => row.close)
+    ).toEqual([36, 39])
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    expect(mocks.getCandlesRange.mock.calls[1]?.slice(3, 6)).toEqual([
+      '2026-10-29T16:37:00.000Z',
+      '2026-10-29T16:38:59.999Z',
+      2,
+    ])
+    await waitFor(() =>
+      expect(mocks.series.setData).toHaveBeenLastCalledWith(
+        [36, 37, 38, 39].map(minute => ({
+          time: Date.parse(`2026-10-29T16:${minute}:00Z`) / 1000,
+          open: minute,
+          high: minute + 1,
+          low: minute - 1,
+          close: minute,
+        }))
+      )
+    )
+    view.unmount()
+    dispatcher.detach()
+    queryClient.clear()
+  })
+
+  it('confirms a missing notified minute through HTTP without inventing its absent neighbor', async () => {
+    const dispatcher = candleDispatcher()
+    const corrected = candleRow('2026-06-20T00:37:00Z', 137)
+
+    mocks.getCandlesRange
+      .mockResolvedValueOnce([candleRow('2026-06-20T00:36:00Z'), candleRow('2026-06-20T00:39:00Z')])
+      .mockResolvedValueOnce([corrected])
+    render(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    act(() => dispatcher.emit(corrected))
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(2))
+    expect(
+      mocks.series.setData.mock.calls.at(-1)?.[0].map((bar: { time: number }) => bar.time)
+    ).toEqual([36, 37, 39].map(minute => Date.parse(`2026-06-20T00:${minute}:00Z`) / 1000))
+    const call = mocks.getCandlesRange.mock.calls[1]
+
+    expect(call?.[5]).toBe(1)
+    expect(Date.parse(String(call?.[4]))).toBeGreaterThan(Date.parse(String(call?.[3])))
+  })
+
+  it.each([
+    'global-H',
+    'anchor',
+    'instrument',
+    'exchange',
+    'timeframe',
+    'disabled',
+    'logout',
+    'csrf',
+    'user',
+    'disconnect',
+    'socket',
+    'market-store',
+    'unmount',
+  ])('rejects a deferred reconciliation after the %s boundary', async boundary => {
+    const dispatcher = candleDispatcher()
+    const pending = deferred<CandleData[]>()
+    const original = candleRow('2026-06-20T00:31:00Z', 31)
+    const corrected = { ...original, close: 131 }
+
+    mocks.getCandlesRange
+      .mockResolvedValueOnce([original, candleRow('2026-06-20T00:39:00Z')])
+      .mockReturnValueOnce(pending.promise)
+      .mockResolvedValue([])
+    const view = render(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    act(() => dispatcher.emit(corrected))
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    act(() => {
+      if (boundary === 'global-H') useAppStore.getState().setAsOf('2026-06-20T00:30:00Z')
+      if (boundary === 'logout') useAuthStore.setState({ isAuthenticated: false })
+      if (boundary === 'csrf') useAuthStore.setState({ csrfToken: 'another-session' })
+      if (boundary === 'user')
+        useAuthStore.setState({
+          user: makeUserProfile({ username: 'other', public_id: 'other-user' }),
+        })
+      if (boundary === 'disconnect') useWebSocketStore.setState({ isConnected: false })
+      if (boundary === 'socket')
+        useWebSocketStore.setState({ wsClient: { isConnected: () => true } as WebSocketClient })
+      if (boundary === 'market-store') useMarketStore.setState({ selectedTimeframe: '5m' })
+      if (boundary === 'anchor')
+        view.rerender(
+          <MarketChart
+            {...baseProps}
+            dispatcher={dispatcher}
+            anchorMs={Date.parse('2026-06-20T00:30:00Z')}
+          />
+        )
+      if (boundary === 'instrument')
+        view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} instrument='ETH-USD' />)
+      if (boundary === 'exchange')
+        view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} exchange='polygon' />)
+      if (boundary === 'timeframe')
+        view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} timeframe='5m' />)
+      if (boundary === 'disabled')
+        view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} enabled={false} />)
+      if (boundary === 'unmount') view.unmount()
+    })
+    await act(async () => {
+      await Promise.resolve()
+    })
+    const draws = mocks.series.setData.mock.calls.length
+
+    await act(async () => {
+      pending.resolve([corrected])
+      await pending.promise
+    })
+    expect(mocks.series.setData).toHaveBeenCalledTimes(draws)
+    expect(screen.queryByTestId('reconciliation-error')).not.toBeInTheDocument()
+  })
+
+  it('does not merge a response when the selected tuple changes before React can clean up', async () => {
+    const dispatcher = candleDispatcher()
+    const pending = deferred<CandleData[]>()
+    const corrected = candleRow('2026-06-20T00:31:00Z', 131)
+
+    mocks.getCandlesRange
+      .mockResolvedValueOnce([
+        candleRow('2026-06-20T00:31:00Z', 31),
+        candleRow('2026-06-20T00:39:00Z'),
+      ])
+      .mockReturnValueOnce(pending.promise)
+    render(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    act(() => dispatcher.emit(corrected))
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    await act(async () => {
+      useMarketStore.setState({ selectedInstrument: 'different' })
+      pending.resolve([corrected])
+      await pending.promise
+    })
+    expect(mocks.series.setData).toHaveBeenCalledTimes(1)
+  })
+
+  it('renders a reconciliation transport error without deleting the existing series', async () => {
+    const dispatcher = candleDispatcher()
+
+    mocks.getCandlesRange
+      .mockResolvedValueOnce([
+        candleRow('2026-06-20T00:31:00Z', 31),
+        candleRow('2026-06-20T00:39:00Z'),
+      ])
+      .mockRejectedValueOnce(new Error('HTTP 503'))
+    render(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    act(() => dispatcher.emit(candleRow('2026-06-20T00:31:00Z', 131)))
+    expect(await screen.findByTestId('reconciliation-error')).toHaveTextContent('HTTP 503')
+    expect(mocks.series.setData).toHaveBeenCalledTimes(1)
+  })
+
+  it('keeps overflow unresolved and lets the user choose a fresh bounded recent view while fencing old responses', async () => {
+    const dispatcher = candleDispatcher()
+    const pending = deferred<CandleData[]>()
+    const reload = deferred<CandleData[]>()
+    const start = Date.parse('2026-06-20T00:00:00Z')
+    const fresh = candleRow(
+      new Date(Math.floor(Date.now() / 60_000) * 60_000 - 60_000).toISOString(),
+      10
+    )
+    const prior = candleRow(new Date(Date.parse(fresh.open_at) - 60_000).toISOString(), 9)
+    const incoming = Array.from({ length: 5002 }, (_, index) =>
+      candleRow(new Date(start + (index + 1) * 60_000).toISOString(), index + 1)
+    )
+
+    mocks.getCandlesRange
+      .mockResolvedValueOnce([
+        candleRow(new Date(start).toISOString()),
+        candleRow(new Date(start + 6000 * 60_000).toISOString()),
+      ])
+      .mockReturnValueOnce(pending.promise)
+      .mockReturnValueOnce(reload.promise)
+      .mockResolvedValue([])
+    const view = render(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    act(() => incoming.forEach(candle => dispatcher.emit(candle)))
+    expect(screen.getByTestId('reconciliation-unresolved')).toHaveTextContent(
+      'chart.updatesUnconfirmed'
+    )
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(2))
+    fireEvent.click(screen.getByRole('button', { name: 'chart.reloadRecent' }))
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(3))
+    expect(screen.getByTestId('reconciliation-unresolved')).toBeInTheDocument()
+    await act(async () => {
+      reload.resolve([prior, fresh])
+      await reload.promise
+    })
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(2))
+    const call = mocks.getCandlesRange.mock.calls[2]
+
+    expect(call?.[5]).toBe(600)
+    expect(Date.parse(String(call?.[4])) - Date.parse(String(call?.[3]))).toBe(600 * 60_000)
+    expect(call?.[6]).toBe(call?.[4])
+    expect(screen.queryByTestId('reconciliation-unresolved')).not.toBeInTheDocument()
+    await act(async () => {
+      pending.resolve(incoming.slice(1, 33))
+      await pending.promise
+    })
+    expect(mocks.series.setData).toHaveBeenCalledTimes(2)
+    expect(screen.queryByTestId('reconciliation-unresolved')).not.toBeInTheDocument()
+    mocks.getCandlesRange.mockRejectedValueOnce(new Error('HTTP 503'))
+    act(() => dispatcher.emit({ ...prior, close: 19 }))
+    expect(await screen.findByTestId('reconciliation-unresolved')).toBeInTheDocument()
+    view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} enabled={false} />)
+    view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(5))
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(3))
+    expect(screen.getByTestId('reconciliation-unresolved')).toBeInTheDocument()
+    view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} instrument='ETH-USD' />)
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(6))
+    expect(mocks.getCandlesRange.mock.calls[5]?.[6]).toBeNull()
+    expect(screen.queryByTestId('reconciliation-unresolved')).not.toBeInTheDocument()
+  })
+
+  it('keeps the old-view warning when a requested recent view fails and clears it on selection reset', async () => {
+    const dispatcher = candleDispatcher()
+    const start = Date.parse('2026-06-20T00:00:00Z')
+
+    mocks.getCandlesRange
+      .mockResolvedValueOnce([
+        candleRow(new Date(start).toISOString()),
+        candleRow(new Date(start + 6000 * 60_000).toISOString()),
+      ])
+      .mockRejectedValueOnce(new Error('HTTP 503'))
+      .mockResolvedValue([])
+    const view = render(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+
+    await waitFor(() => expect(mocks.series.setData).toHaveBeenCalledTimes(1))
+    act(() => {
+      for (let minute = 1; minute <= 5001; minute += 1) {
+        dispatcher.emit(candleRow(new Date(start + minute * 60_000).toISOString(), minute))
+      }
+    })
+    fireEvent.click(screen.getByRole('button', { name: 'chart.reloadRecent' }))
+    expect(await screen.findByTestId('chart-error')).toHaveTextContent('HTTP 503')
+    expect(screen.getByTestId('reconciliation-unresolved')).toBeInTheDocument()
+    view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} instrument='ETH-USD' />)
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(3))
+    expect(screen.queryByTestId('reconciliation-unresolved')).not.toBeInTheDocument()
+    view.rerender(<MarketChart {...baseProps} dispatcher={dispatcher} />)
+    await waitFor(() => expect(mocks.getCandlesRange).toHaveBeenCalledTimes(4))
+    expect(screen.queryByTestId('reconciliation-unresolved')).not.toBeInTheDocument()
   })
 
   it('fetches initial history by market time and renders the chart', async () => {

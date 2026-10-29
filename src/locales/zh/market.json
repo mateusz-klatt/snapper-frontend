@@ -30,7 +30,9 @@
     "errorPrefix": "加载图表数据失败:",
     "unknownError": "未知错误",
     "noDataTitle": "{{instrument}} 没有可用数据",
-    "noDataHint": "该品种可能不存在，或没有 {{timeframe}} 数据"
+    "noDataHint": "该品种可能不存在，或没有 {{timeframe}} 数据",
+    "updatesUnconfirmed": "部分图表更新尚未确认。",
+    "reloadRecent": "重新加载近期数据"
   },
   "related": {
     "labelSeparator": "{{label}}:",

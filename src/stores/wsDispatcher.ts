@@ -107,6 +107,7 @@ export class WSDispatcher {
   private readonly topics: string[]
   private readonly maxCandles: number
   private readonly candleBuffers: Map<string, CandleData[]> = new Map()
+  private readonly candleListeners = new Set<(candle: CandleData) => void>()
   private orderBuffer: OrderData[] | null = null
   private executionBuffer: ExecutionData[] | null = null
   private signalBuffer: SignalData[] | null = null
@@ -250,6 +251,11 @@ export class WSDispatcher {
 
     this.candleBuffers.delete(bufferKey)
   }
+  onLiveCandle(listener: (candle: CandleData) => void): UnsubscribeFn {
+    this.candleListeners.add(listener)
+
+    return () => this.candleListeners.delete(listener)
+  }
   startTradeBuffering(): void {
     this.orderBuffer = []
     this.executionBuffer = []
@@ -295,6 +301,10 @@ export class WSDispatcher {
       buffer.push(envelope)
 
       return
+    }
+
+    for (const listener of this.candleListeners) {
+      listener(envelope)
     }
 
     const cachedPopulated = this.queryClient

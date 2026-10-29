@@ -7,6 +7,7 @@ import type {
   WSAuthFailedResponse,
   WSReauthRequiredResponse,
   WSReauthOkResponse,
+  CandleData,
 } from '../../types/ws'
 import { parseWsMessage } from '../schemas/ws'
 import {
@@ -72,7 +73,7 @@ class WebSocketClient {
   private readonly messageHandlers = new Map<string, MessageHandler[]>()
   private readonly connectionHandlers: ConnectionHandler[] = []
   private readonly subscribedTopics = new Set<string>()
-  private readonly pendingMessages = new Map<string, WebSocketMessages>()
+  private readonly pendingMessages = new Map<string, WebSocketMessages | CandleData[]>()
   private readonly lastMessageTime = new Map<string, number>()
   private pingSentAt: number | null = null
   private readonly pendingSubscribes = new Set<string>()
@@ -93,7 +94,13 @@ class WebSocketClient {
         this.pendingMessages,
         this.lastMessageTime,
         this.throttleInterval,
-        message => this.notifyHandlers(message)
+        message => {
+          if (Array.isArray(message)) {
+            message.forEach(candle => this.notifyHandlers(candle))
+          } else {
+            this.notifyHandlers(message)
+          }
+        }
       )
     }, this.throttleInterval)
   }
@@ -213,7 +220,39 @@ class WebSocketClient {
       const topic = getMessageTopic(message)
 
       if (topic && shouldThrottle(message.type)) {
-        this.pendingMessages.set(topic, message)
+        if (message.type === 'candle') {
+          const pending = this.pendingMessages.get(topic)
+          const candles = Array.isArray(pending) ? pending : []
+          const byOpen = new Map(candles.map(candle => [Date.parse(candle.open_at), candle]))
+          const openMs = Date.parse(message.open_at)
+          const previous = byOpen.get(openMs)
+          const authorMs = Date.parse(message.timestamp)
+          const previousAuthorMs = previous ? Date.parse(previous.timestamp) : 0
+
+          if (
+            !previous ||
+            (authorMs >= previousAuthorMs &&
+              !(
+                authorMs === previousAuthorMs &&
+                previous.complete === true &&
+                message.complete === false
+              ))
+          ) {
+            byOpen.set(openMs, message)
+          }
+
+          const batch = [...byOpen.values()].sort(
+            (left, right) => Date.parse(right.open_at) - Date.parse(left.open_at)
+          )
+
+          this.pendingMessages.set(topic, batch.slice(0, 32))
+
+          for (const overflow of batch.slice(32)) {
+            this.notifyHandlers(overflow)
+          }
+        } else {
+          this.pendingMessages.set(topic, message)
+        }
       } else {
         this.notifyHandlers(message)
       }
@@ -222,6 +261,8 @@ class WebSocketClient {
     }
   }
   private handleClose(): void {
+    this.pendingMessages.clear()
+    this.lastMessageTime.clear()
     this.isAuthenticated = false
     this.sessionExpiresAt = null
     this.pendingWsTokenExp = null
@@ -563,6 +604,13 @@ class WebSocketClient {
   }
   unsubscribe(topics: string[]): void {
     topics.forEach(topic => {
+      for (const key of this.pendingMessages.keys()) {
+        if (key.startsWith(topic)) {
+          this.pendingMessages.delete(key)
+          this.lastMessageTime.delete(key)
+        }
+      }
+
       this.subscribedTopics.delete(topic)
       this.pendingUnsubscribes.add(topic)
       this.pendingSubscribes.delete(topic)

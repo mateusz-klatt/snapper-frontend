@@ -30,7 +30,9 @@
     "errorPrefix": "ข้อผิดพลาดในการโหลดข้อมูลกราฟ:",
     "unknownError": "ข้อผิดพลาดที่ไม่ทราบสาเหตุ",
     "noDataTitle": "ไม่มีข้อมูลสำหรับ {{instrument}}",
-    "noDataHint": "Instrument อาจไม่มีอยู่หรือไม่มีข้อมูล {{timeframe}}"
+    "noDataHint": "Instrument อาจไม่มีอยู่หรือไม่มีข้อมูล {{timeframe}}",
+    "updatesUnconfirmed": "การอัปเดตกราฟบางส่วนยังไม่ได้รับการยืนยัน",
+    "reloadRecent": "โหลดข้อมูลล่าสุดอีกครั้ง"
   },
   "related": {
     "labelSeparator": "{{label}}:",

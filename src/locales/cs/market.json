@@ -30,7 +30,9 @@
     "errorPrefix": "Chyba při načítání dat grafu:",
     "unknownError": "Neznámá chyba",
     "noDataTitle": "Pro instrument {{instrument}} nejsou dostupná žádná data",
-    "noDataHint": "Instrument nemusí existovat nebo nemá data pro {{timeframe}}"
+    "noDataHint": "Instrument nemusí existovat nebo nemá data pro {{timeframe}}",
+    "updatesUnconfirmed": "Některé aktualizace grafu zůstávají nepotvrzené.",
+    "reloadRecent": "Znovu načíst aktuální data"
   },
   "related": {
     "labelSeparator": "{{label}}:",

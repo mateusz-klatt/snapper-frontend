@@ -444,6 +444,7 @@ export function MarketData() {
             anchorMs={replayAt}
             enabled={selectedExchange !== null}
             liveCandle={liveCandle}
+            dispatcher={dispatcher}
             autoLod={autoLodEnabled && replayAt === null}
             onLodTimeframe={handleLodTimeframe}
           />

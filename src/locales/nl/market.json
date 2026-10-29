@@ -30,7 +30,9 @@
     "errorPrefix": "Fout bij laden grafiekdata:",
     "unknownError": "Onbekende fout",
     "noDataTitle": "Geen data beschikbaar voor {{instrument}}",
-    "noDataHint": "Het instrument bestaat mogelijk niet of heeft geen {{timeframe}}-data"
+    "noDataHint": "Het instrument bestaat mogelijk niet of heeft geen {{timeframe}}-data",
+    "updatesUnconfirmed": "Sommige grafiekupdates zijn nog niet bevestigd.",
+    "reloadRecent": "Recente gegevens opnieuw laden"
   },
   "related": {
     "labelSeparator": "{{label}}:",

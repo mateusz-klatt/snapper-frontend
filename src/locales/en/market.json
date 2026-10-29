@@ -30,7 +30,9 @@
     "errorPrefix": "Error loading chart data:",
     "unknownError": "Unknown error",
     "noDataTitle": "No data available for {{instrument}}",
-    "noDataHint": "The instrument may not exist or has no {{timeframe}} data"
+    "noDataHint": "The instrument may not exist or has no {{timeframe}} data",
+    "updatesUnconfirmed": "Some chart updates remain unconfirmed.",
+    "reloadRecent": "Reload recent data"
   },
   "related": {
     "labelSeparator": "{{label}}:",

@@ -30,7 +30,9 @@
     "errorPrefix": "Błąd ładowania danych wykresu:",
     "unknownError": "Nieznany błąd",
     "noDataTitle": "Brak danych dla {{instrument}}",
-    "noDataHint": "Instrument może nie istnieć albo nie mieć danych dla interwału {{timeframe}}"
+    "noDataHint": "Instrument może nie istnieć albo nie mieć danych dla interwału {{timeframe}}",
+    "updatesUnconfirmed": "Niektóre aktualizacje wykresu pozostają niepotwierdzone.",
+    "reloadRecent": "Wczytaj ponownie najnowsze dane"
   },
   "related": {
     "labelSeparator": "{{label}}:",

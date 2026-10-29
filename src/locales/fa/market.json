@@ -30,7 +30,9 @@
     "errorPrefix": "خطا در بارگذاری داده‌های نمودار:",
     "unknownError": "خطای نامشخص",
     "noDataTitle": "داده‌ای برای {{instrument}} در دسترس نیست",
-    "noDataHint": "ممکن است ابزار وجود نداشته باشد یا داده {{timeframe}} نداشته باشد"
+    "noDataHint": "ممکن است ابزار وجود نداشته باشد یا داده {{timeframe}} نداشته باشد",
+    "updatesUnconfirmed": "برخی به‌روزرسانی‌های نمودار هنوز تأیید نشده‌اند.",
+    "reloadRecent": "بارگیری دوباره داده‌های اخیر"
   },
   "related": {
     "labelSeparator": "{{label}}:",

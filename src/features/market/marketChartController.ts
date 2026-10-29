@@ -17,9 +17,12 @@ import {
   MAX_CHART_BARS,
   TIMEFRAME_SECONDS,
   appendLive,
+  authoritativeSpan,
   barsPerPixel,
   decideLodTimeframe,
   mergeOlder,
+  mergeAuthoritative,
+  sameCandleValues,
   olderRange,
   shiftLogicalSpan,
   shouldFetchOlder,
@@ -68,6 +71,11 @@ export class MarketChartController {
   private historyExhausted = false
   private error: string | null = null
   private lastViewport: LogicalSpan | null = null
+  private repairingHistory = false
+  private repairViewport: { before: LogicalSpan; target: LogicalSpan; settled: boolean } | null =
+    null
+  private deferredAuthoritative: WindowCandle[] = []
+  private onUnresolved: (firstOpenMs: number, lastOpenMs: number) => void = () => {}
   private tfSeconds: number
   private timeframe: TimeframeValue
   private destroyed = false
@@ -101,6 +109,10 @@ export class MarketChartController {
     this.autoLod = enabled
   }
 
+  setOnUnresolved(handler: (firstOpenMs: number, lastOpenMs: number) => void): void {
+    this.onUnresolved = handler
+  }
+
   /** Register the callback invoked when a zoom level warrants a timeframe switch. */
   setOnLodTimeframe(onLodTimeframe: (timeframe: TimeframeValue) => void): void {
     this.onLodTimeframe = onLodTimeframe
@@ -117,6 +129,8 @@ export class MarketChartController {
 
   /** Update the timeframe used to size older-history requests + LOD decisions. */
   setTimeframe(timeframe: TimeframeValue): void {
+    this.deferredAuthoritative = []
+    this.repairViewport = null
     const changed = timeframe !== this.timeframe
 
     this.timeframe = timeframe
@@ -136,6 +150,8 @@ export class MarketChartController {
     this.olderInFlight = false
     this.error = null
     this.lastViewport = null
+    this.repairViewport = null
+    this.deferredAuthoritative = []
     this.generation += 1
     this.renderInitialView()
     this.emit()
@@ -245,6 +261,92 @@ export class MarketChartController {
     this.emit()
   }
 
+  needsReconciliation(candle: WindowCandle): boolean {
+    const first = this.window.at(0)
+    const last = this.window.at(-1)
+    const previous = this.window.find(row => row.openAtMs === candle.openAtMs)
+
+    return (
+      first !== undefined &&
+      last !== undefined &&
+      candle.openAtMs >= first.openAtMs &&
+      candle.openAtMs < last.openAtMs &&
+      (!previous || !sameCandleValues(previous, candle) || (!previous.complete && candle.complete))
+    )
+  }
+
+  latestOpenMs(): number | null {
+    return this.window.at(-1)?.openAtMs ?? null
+  }
+
+  applyAuthoritative(candles: readonly WindowCandle[]): boolean {
+    if (this.destroyed) {
+      return false
+    }
+
+    const patch = [
+      ...new Map(
+        [...this.deferredAuthoritative, ...candles].map(row => [row.openAtMs, row])
+      ).values(),
+    ]
+    let merged = mergeAuthoritative(this.window, patch, this.maxBars)
+    const before = this.adapter?.getVisibleLogicalRange()
+    let restored = before ? authoritativeSpan(before, this.window, merged) : null
+
+    if (before && !restored) {
+      const existing = new Set(this.window.map(row => row.openAtMs))
+
+      this.deferredAuthoritative = patch
+        .filter(row => !existing.has(row.openAtMs))
+        .sort((left, right) => right.openAtMs - left.openAtMs)
+      const overflow = this.deferredAuthoritative.slice(MAX_CHART_BARS)
+
+      if (overflow.length > 0) {
+        this.onUnresolved(
+          Math.min(...overflow.map(row => row.openAtMs)),
+          Math.max(...overflow.map(row => row.openAtMs))
+        )
+        this.deferredAuthoritative = this.deferredAuthoritative.slice(0, MAX_CHART_BARS)
+      }
+
+      merged = mergeAuthoritative(
+        this.window,
+        patch.filter(row => existing.has(row.openAtMs)),
+        this.maxBars
+      )
+      restored = before
+    } else {
+      this.deferredAuthoritative = []
+    }
+
+    const changed =
+      merged.length !== this.window.length ||
+      merged.some((row, index) => row !== this.window[index])
+
+    if (!changed) {
+      return false
+    }
+
+    this.window = merged
+    this.repairViewport = before && restored ? { before, target: restored, settled: false } : null
+    this.repairingHistory = true
+
+    try {
+      this.adapter?.setData(toChartData(this.window))
+
+      if (restored) {
+        this.adapter?.setVisibleLogicalRange(restored)
+        this.lastViewport = restored
+      }
+    } finally {
+      this.repairingHistory = false
+    }
+
+    this.emit()
+
+    return true
+  }
+
   /**
    * Append that crossed the cap and evicted oldest bars. Front eviction shifts
    * every retained bar left, and setData() does not adjust the visible range, so
@@ -322,6 +424,18 @@ export class MarketChartController {
 
     this.lastViewport = range
 
+    if (this.repairingHistory || this.isRepairEcho(range)) {
+      return
+    }
+
+    const deferred = this.deferredAuthoritative
+
+    this.deferredAuthoritative = []
+
+    if (deferred.length > 0 && this.applyAuthoritative(deferred)) {
+      return
+    }
+
     if (this.maybeSwitchLod(adapter, range)) {
       return
     }
@@ -348,6 +462,32 @@ export class MarketChartController {
     ) {
       void this.loadOlder(range)
     }
+  }
+
+  private isRepairEcho(range: LogicalSpan): boolean {
+    const repair = this.repairViewport
+
+    if (!repair) {
+      return false
+    }
+
+    /** Pixel/bar-spacing round trips introduce fractions far below a visible bar movement. */
+    const matches = (expected: LogicalSpan): boolean =>
+      Math.abs(range.from - expected.from) <= 1e-7 && Math.abs(range.to - expected.to) <= 1e-7
+
+    if (matches(repair.target)) {
+      repair.settled = true
+
+      return true
+    }
+
+    if (!repair.settled && matches(repair.before)) {
+      return true
+    }
+
+    this.repairViewport = null
+
+    return false
   }
 
   private async loadOlder(capturedRange: LogicalSpan): Promise<void> {

@@ -355,3 +355,63 @@ export function appendLive(
 export function shiftLogicalSpan(range: LogicalSpan, shift: number): LogicalSpan {
   return { from: range.from + shift, to: range.to + shift }
 }
+
+export function sameCandleValues(left: WindowCandle, right: WindowCandle): boolean {
+  return (
+    left.open === right.open &&
+    left.high === right.high &&
+    left.low === right.low &&
+    left.close === right.close &&
+    left.volume === right.volume
+  )
+}
+
+/** Only authoritative, final rows inside the loaded market-time interval may repair it. */
+export function mergeAuthoritative(
+  existing: readonly WindowCandle[],
+  rows: readonly WindowCandle[],
+  maxBars = MAX_CHART_BARS
+): WindowCandle[] {
+  const first = existing.at(0)
+  const last = existing.at(-1)
+
+  if (!first || !last) {
+    return []
+  }
+
+  const byOpen = new Map(existing.map(candle => [candle.openAtMs, candle]))
+
+  for (const row of rows) {
+    if (!row.complete || row.openAtMs < first.openAtMs || row.openAtMs >= last.openAtMs) {
+      continue
+    }
+
+    const previous = byOpen.get(row.openAtMs)
+
+    if (!previous || !sameCandleValues(previous, row) || !previous.complete) {
+      byOpen.set(row.openAtMs, row)
+    }
+  }
+
+  return [...byOpen.values()].sort((left, right) => left.openAtMs - right.openAtMs).slice(-maxBars)
+}
+
+/** Preserve the visible bar anchors when an interior insertion shifts logical indices. */
+export function authoritativeSpan(
+  range: LogicalSpan,
+  before: readonly WindowCandle[],
+  after: readonly WindowCandle[]
+): LogicalSpan | null {
+  const anchor = (position: number): number | null => {
+    const index = Math.max(0, Math.min(Math.floor(position), before.length - 1))
+    const candle = before[index]
+    const nextIndex = after.findIndex(row => row.openAtMs === candle?.openAtMs)
+
+    return nextIndex < 0 ? null : position + nextIndex - index
+  }
+
+  const from = anchor(range.from)
+  const to = anchor(range.to)
+
+  return from === null || to === null ? null : { from, to }
+}

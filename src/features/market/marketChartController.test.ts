@@ -107,12 +107,197 @@ describe('MarketChartController', () => {
   it('starts empty', () => {
     const controller = makeController(fetchOlder)
 
+    expect(controller.latestOpenMs()).toBeNull()
+
     expect(controller.getState()).toEqual({
       barCount: 0,
       olderInFlight: false,
       historyExhausted: false,
       error: null,
     })
+  })
+
+  it('inserts a confirmed missing interior minute without moving the tail or visible bar anchors', () => {
+    const adapter = new FakeAdapter()
+    const controller = makeController(fetchOlder)
+
+    controller.attach(adapter)
+    controller.reset([wc(36 * 60_000), wc(39 * 60_000)])
+    adapter.visibleRange = { from: 0, to: 1 }
+    controller.applyAuthoritative([wc(37 * 60_000, 137)])
+
+    expect(adapter.setDataCalls.at(-1)?.map(row => row.time)).toEqual([2160, 2220, 2340])
+    expect(controller.getState().barCount).toBe(3)
+    expect(adapter.setVisibleCalls.at(-1)).toEqual({ from: 0, to: 2 })
+  })
+
+  it('requests only changed or missing interior keys, including a changed synthetic facade row', () => {
+    const controller = makeController(fetchOlder)
+
+    expect(controller.needsReconciliation(wc(31 * 60_000))).toBe(false)
+    controller.reset([wc(31 * 60_000), wc(33 * 60_000), wc(39 * 60_000)])
+    expect(controller.needsReconciliation(wc(31 * 60_000))).toBe(false)
+    expect(controller.needsReconciliation(wc(31 * 60_000, 101))).toBe(true)
+    expect(controller.needsReconciliation(wc(32 * 60_000))).toBe(true)
+    expect(controller.needsReconciliation(wc(30 * 60_000))).toBe(false)
+    expect(controller.needsReconciliation(wc(39 * 60_000, 101))).toBe(false)
+    expect(controller.needsReconciliation(wc(40 * 60_000))).toBe(false)
+    controller.reset([{ ...wc(38 * 60_000), complete: false }, wc(39 * 60_000)])
+    expect(controller.needsReconciliation(wc(38 * 60_000))).toBe(true)
+  })
+
+  it('suppresses synchronous and delayed repair range echoes while preserving later user navigation', async () => {
+    const adapter = new FakeAdapter()
+    const controller = new MarketChartController({ timeframe: '5m', fetchOlder })
+    const onLod = vi.fn()
+    const existing = Array.from({ length: 222 }, (_, index) => wc(index * 600_000))
+
+    controller.attach(adapter)
+    controller.reset(existing)
+    controller.setAutoLod(true)
+    controller.setOnLodTimeframe(onLod)
+    adapter.widthValue = 400
+    adapter.visibleRange = { from: 0, to: 220 }
+    adapter.barsBeforeValue = 0
+    const setData = adapter.setData.bind(adapter)
+    const setRange = adapter.setVisibleLogicalRange.bind(adapter)
+
+    adapter.setData = data => {
+      setData(data)
+      adapter.handler?.()
+    }
+
+    adapter.setVisibleLogicalRange = range => {
+      setRange(range)
+      adapter.visibleRange = range
+      adapter.handler?.()
+    }
+
+    controller.applyAuthoritative([wc(300_000)])
+    expect(onLod).not.toHaveBeenCalled()
+    expect(fetchOlder).not.toHaveBeenCalled()
+    adapter.visibleRange = { from: 0, to: 220 }
+    adapter.handler?.()
+    adapter.visibleRange = { from: 0, to: 221 }
+    adapter.handler?.()
+    adapter.handler?.()
+    await flush()
+    expect(onLod).not.toHaveBeenCalled()
+    expect(fetchOlder).not.toHaveBeenCalled()
+    adapter.visibleRange = { from: 0, to: 222 }
+    adapter.handler?.()
+    expect(onLod).toHaveBeenCalledExactlyOnceWith('15m')
+  })
+
+  it('recognizes floating point range echoes from chart pixel arithmetic and preserves real user navigation', async () => {
+    const adapter = new FakeAdapter()
+    const onLod = vi.fn()
+    const controller = new MarketChartController({ timeframe: '5m', fetchOlder })
+
+    fetchOlder.mockResolvedValue([wc(-600_000)])
+    controller.attach(adapter)
+    controller.reset(Array.from({ length: 100 }, (_, index) => wc(index * 600_000)))
+    controller.setAutoLod(true)
+    controller.setOnLodTimeframe(onLod)
+    adapter.widthValue = 320
+    adapter.visibleRange = { from: 0, to: 27 }
+    adapter.barsBeforeValue = 0
+    controller.applyAuthoritative([wc(300_000)])
+    const width = 320
+    const spacing = width / 29
+    const roundedLeft = 28 - width / spacing + 1
+
+    expect(roundedLeft).not.toBe(0)
+    adapter.visibleRange = { from: roundedLeft, to: 28 }
+    adapter.handler?.()
+    await flush()
+    expect(fetchOlder).not.toHaveBeenCalled()
+    expect(onLod).not.toHaveBeenCalled()
+    adapter.visibleRange = { from: 1, to: 29 }
+    adapter.handler?.()
+    await flush()
+    expect(fetchOlder).toHaveBeenCalledTimes(1)
+    adapter.visibleRange = { from: 0, to: 300 }
+    adapter.handler?.()
+    expect(onLod).toHaveBeenCalledExactlyOnceWith('15m')
+  })
+
+  it('applies corrections without an adapter, ignores identical patches and stops after destroy', () => {
+    const controller = makeController(fetchOlder)
+    const adapter = new FakeAdapter()
+
+    controller.reset([wc(60_000), wc(120_000)])
+    controller.applyAuthoritative([wc(60_000, 101)])
+    controller.attach(adapter)
+    expect(adapter.setDataCalls).toHaveLength(1)
+    controller.applyAuthoritative([wc(60_000, 101)])
+    expect(adapter.setDataCalls).toHaveLength(1)
+    controller.destroy()
+    controller.applyAuthoritative([wc(60_000, 102)])
+    expect(adapter.setDataCalls).toHaveLength(1)
+  })
+
+  it('protects a visible oldest anchor instead of evicting it to insert a gap at the cap', () => {
+    const adapter = new FakeAdapter()
+    const controller = new MarketChartController({ timeframe: '1m', fetchOlder, maxBars: 3 })
+
+    controller.attach(adapter)
+    controller.reset([wc(60_000), wc(180_000), wc(240_000)])
+    adapter.visibleRange = { from: 0, to: 1 }
+    controller.applyAuthoritative([wc(120_000)])
+    expect(adapter.setDataCalls).toHaveLength(1)
+    expect(controller.getState().barCount).toBe(3)
+    adapter.visibleRange = { from: 1, to: 2 }
+    adapter.handler?.()
+    expect(adapter.setDataCalls.at(-1)?.map(row => row.time)).toEqual([120, 180, 240])
+  })
+
+  it('retains more than32 confirmed insertions until a pan while applying visible existing-key corrections immediately', () => {
+    const adapter = new FakeAdapter()
+    const controller = new MarketChartController({ timeframe: '1m', fetchOlder, maxBars: 100 })
+    const existing = Array.from({ length: 100 }, (_, index) => wc(index * 120_000))
+
+    controller.attach(adapter)
+    controller.reset(existing)
+    adapter.visibleRange = { from: 0, to: 10 }
+    controller.applyAuthoritative([
+      wc(0, 101),
+      ...Array.from({ length: 33 }, (_, index) => wc((index * 2 + 1) * 60_000)),
+    ])
+    expect(adapter.setDataCalls).toHaveLength(2)
+    expect(adapter.setDataCalls.at(-1)).toHaveLength(100)
+    expect(Reflect.get(controller, 'deferredAuthoritative')).toHaveLength(33)
+    adapter.visibleRange = { from: 50, to: 60 }
+    adapter.handler?.()
+    expect(Reflect.get(controller, 'deferredAuthoritative')).toHaveLength(0)
+    expect(adapter.setDataCalls.at(-1)?.map(row => row.time)).toEqual(
+      [
+        ...Array.from({ length: 33 }, (_, index) => index + 33),
+        ...Array.from({ length: 67 }, (_, index) => (index + 33) * 2),
+      ].map(minute => minute * 60)
+    )
+    expect(adapter.setDataCalls.at(-1)?.at(-1)?.time).toBe(198 * 60)
+  })
+
+  it('bounds confirmed deferred work and reports excess gaps as unresolved until an explicit new view', () => {
+    const adapter = new FakeAdapter()
+    const controller = new MarketChartController({ timeframe: '1m', fetchOlder, maxBars: 2 })
+
+    controller.attach(adapter)
+    controller.reset([wc(0), wc(6000 * 60_000)])
+    adapter.visibleRange = { from: 0, to: 1 }
+    controller.applyAuthoritative(
+      Array.from({ length: 5001 }, (_, index) => wc((index + 1) * 60_000))
+    )
+    expect(Reflect.get(controller, 'deferredAuthoritative')).toHaveLength(5000)
+    const onUnresolved = vi.fn()
+
+    controller.setOnUnresolved(onUnresolved)
+    controller.applyAuthoritative([wc(5002 * 60_000)])
+    expect(onUnresolved).toHaveBeenCalledExactlyOnceWith(2 * 60_000, 2 * 60_000)
+    controller.reset([wc(6001 * 60_000)])
+    expect(Reflect.get(controller, 'deferredAuthoritative')).toHaveLength(0)
+    expect(controller.getState().barCount).toBe(1)
   })
 
   it('reset without an adapter stores the window and emits', () => {

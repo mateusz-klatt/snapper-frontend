@@ -30,7 +30,9 @@
     "errorPrefix": "チャートデータの読み込みエラー:",
     "unknownError": "不明なエラー",
     "noDataTitle": "{{instrument}}のデータはありません",
-    "noDataHint": "銘柄が存在しないか、{{timeframe}}データがありません"
+    "noDataHint": "銘柄が存在しないか、{{timeframe}}データがありません",
+    "updatesUnconfirmed": "一部のチャート更新はまだ確認されていません。",
+    "reloadRecent": "最近のデータを再読み込み"
   },
   "related": {
     "labelSeparator": "{{label}}:",

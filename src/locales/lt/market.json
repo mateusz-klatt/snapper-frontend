@@ -30,7 +30,9 @@
     "errorPrefix": "Klaida įkeliant grafiko duomenis:",
     "unknownError": "Nežinoma klaida",
     "noDataTitle": "Nėra duomenų apie {{instrument}}",
-    "noDataHint": "Instrumento gali nebūti arba jis neturi {{timeframe}} duomenų"
+    "noDataHint": "Instrumento gali nebūti arba jis neturi {{timeframe}} duomenų",
+    "updatesUnconfirmed": "Kai kurie diagramos atnaujinimai dar nepatvirtinti.",
+    "reloadRecent": "Iš naujo įkelti naujausius duomenis"
   },
   "related": {
     "labelSeparator": "{{label}}:",

@@ -30,7 +30,9 @@
     "errorPrefix": "Chart ဒေတာ တင်ရာတွင် အမှား:",
     "unknownError": "မသိသော အမှား",
     "noDataTitle": "{{instrument}} အတွက် ဒေတာ မရှိပါ",
-    "noDataHint": "Instrument မရှိနိုင်ပါ သို့မဟုတ် {{timeframe}} ဒေတာ မရှိနိုင်ပါ"
+    "noDataHint": "Instrument မရှိနိုင်ပါ သို့မဟုတ် {{timeframe}} ဒေတာ မရှိနိုင်ပါ",
+    "updatesUnconfirmed": "ဇယားအပ်ဒိတ်အချို့ကို အတည်မပြုရသေးပါ။",
+    "reloadRecent": "လတ်တလောဒေတာကို ပြန်တင်ပါ"
   },
   "related": {
     "labelSeparator": "{{label}}:",

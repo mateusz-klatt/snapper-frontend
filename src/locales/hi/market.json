@@ -30,7 +30,9 @@
     "errorPrefix": "चार्ट डेटा लोड करने में त्रुटि:",
     "unknownError": "अज्ञात त्रुटि",
     "noDataTitle": "{{instrument}} के लिए कोई डेटा उपलब्ध नहीं",
-    "noDataHint": "इंस्ट्रूमेंट मौजूद नहीं हो सकता या उसमें {{timeframe}} डेटा नहीं है"
+    "noDataHint": "इंस्ट्रूमेंट मौजूद नहीं हो सकता या उसमें {{timeframe}} डेटा नहीं है",
+    "updatesUnconfirmed": "चार्ट के कुछ अपडेट की अभी पुष्टि नहीं हुई है।",
+    "reloadRecent": "हाल का डेटा फिर से लोड करें"
   },
   "related": {
     "labelSeparator": "{{label}}:",

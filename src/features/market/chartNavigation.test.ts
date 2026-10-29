@@ -7,12 +7,15 @@ import {
   LEFT_PREFETCH_BARS,
   MAX_CHART_BARS,
   appendLive,
+  authoritativeSpan,
   barsPerPixel,
   coarserTimeframe,
   decideLodTimeframe,
   finerTimeframe,
   isTimeframeValue,
   mergeOlder,
+  mergeAuthoritative,
+  sameCandleValues,
   olderRange,
   shiftLogicalSpan,
   shouldFetchOlder,
@@ -22,6 +25,74 @@ import {
   type TimeframeValue,
   type WindowCandle,
 } from './chartNavigation'
+
+describe('authoritative interior reconciliation', () => {
+  it('merges only returned final keys in the loaded interval and leaves gaps and tail untouched', () => {
+    const existing = [candle(0), candle(120_000), candle(240_000)]
+    const rows = [
+      candle(60_000, 160),
+      candle(-60_000),
+      candle(240_000, 999),
+      candle(300_000),
+      { ...candle(180_000), complete: false },
+      candle(120_000, 220),
+    ]
+    const merged = mergeAuthoritative(existing, rows)
+
+    expect(merged.map(row => [row.openAtMs, row.close])).toEqual([
+      [0, 100],
+      [60_000, 160],
+      [120_000, 220],
+      [240_000, 100],
+    ])
+    expect(mergeAuthoritative(merged, rows)).toEqual(merged)
+    expect(mergeAuthoritative([], rows)).toEqual([])
+  })
+
+  it('retains existing references for equal values and upgrades a forming interior through HTTP', () => {
+    const final = candle(0)
+    const forming = { ...candle(60_000), complete: false }
+    const merged = mergeAuthoritative(
+      [final, forming, candle(120_000)],
+      [candle(0), candle(60_000)]
+    )
+
+    expect(merged[0]).toBe(final)
+    expect(merged[1]?.complete).toBe(true)
+    expect(sameCandleValues(candle(0), { ...candle(0), high: 102 })).toBe(false)
+    expect(sameCandleValues(candle(0), { ...candle(0), low: 90 })).toBe(false)
+    expect(sameCandleValues(candle(0), { ...candle(0), open: 90 })).toBe(false)
+    expect(sameCandleValues(candle(0), { ...candle(0), volume: 90 })).toBe(false)
+  })
+
+  it('retains the maximum tail and cap5000 when confirmed gaps are inserted', () => {
+    const existing = Array.from({ length: MAX_CHART_BARS }, (_, index) => candle(index * 120_000))
+    const merged = mergeAuthoritative(existing, [candle(60_000, 99)])
+
+    expect(merged).toHaveLength(MAX_CHART_BARS)
+    expect(merged[0]?.openAtMs).toBe(60_000)
+    expect(merged.at(-1)).toBe(existing.at(-1))
+    expect(new Set(merged.map(row => row.openAtMs)).size).toBe(MAX_CHART_BARS)
+    expect(authoritativeSpan({ from: 10.5, to: 20.5 }, existing, merged)).toEqual({
+      from: 10.5,
+      to: 20.5,
+    })
+    expect(authoritativeSpan({ from: 0, to: 20 }, existing, merged)).toBeNull()
+  })
+
+  it('preserves visible bar anchors and rejects ranges whose retained anchor was evicted', () => {
+    const before = [candle(0), candle(120_000), candle(240_000)]
+    const after = mergeAuthoritative(before, [candle(60_000)])
+
+    expect(authoritativeSpan({ from: 1.25, to: 2.25 }, before, after)).toEqual({
+      from: 2.25,
+      to: 3.25,
+    })
+    expect(authoritativeSpan({ from: -1, to: 3 }, before, after)).toEqual({ from: -1, to: 4 })
+    expect(authoritativeSpan({ from: 0, to: 2 }, before, before.slice(0, 2))).toBeNull()
+    expect(authoritativeSpan({ from: 0, to: 0 }, [], [])).toBeNull()
+  })
+})
 
 const candle = (openAtMs: number, close = 100): WindowCandle => ({
   openAtMs,

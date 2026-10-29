@@ -30,7 +30,9 @@
     "errorPrefix": "Earráid agus sonraí cairte á lódáil:",
     "unknownError": "Earráid anaithnid",
     "noDataTitle": "Níl aon sonraí ar fáil do {{instrument}}",
-    "noDataHint": "B'fhéidir nach ann don ionstraim nó nach bhfuil sonraí {{timeframe}} aici"
+    "noDataHint": "B'fhéidir nach ann don ionstraim nó nach bhfuil sonraí {{timeframe}} aici",
+    "updatesUnconfirmed": "Tá roinnt nuashonruithe cairte fós gan deimhniú.",
+    "reloadRecent": "Athlódáil sonraí le déanaí"
   },
   "related": {
     "labelSeparator": "{{label}}:",

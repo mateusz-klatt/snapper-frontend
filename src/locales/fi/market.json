@@ -30,7 +30,9 @@
     "errorPrefix": "Virhe kaaviodatan latauksessa:",
     "unknownError": "Tuntematon virhe",
     "noDataTitle": "Dataa ei saatavilla instrumentille {{instrument}}",
-    "noDataHint": "Instrumenttia ei ehkä ole tai sillä ei ole {{timeframe}}-dataa"
+    "noDataHint": "Instrumenttia ei ehkä ole tai sillä ei ole {{timeframe}}-dataa",
+    "updatesUnconfirmed": "Joitakin kaaviopäivityksiä ei ole vielä vahvistettu.",
+    "reloadRecent": "Lataa tuoreet tiedot uudelleen"
   },
   "related": {
     "labelSeparator": "{{label}}:",

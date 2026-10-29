@@ -30,7 +30,9 @@
     "errorPrefix": "চার্ট ডেটা লোড করতে ত্রুটি:",
     "unknownError": "অজানা ত্রুটি",
     "noDataTitle": "{{instrument}}-এর জন্য কোনো ডেটা নেই",
-    "noDataHint": "ইনস্ট্রুমেন্টটি নাও থাকতে পারে বা {{timeframe}} ডেটা নাও থাকতে পারে"
+    "noDataHint": "ইনস্ট্রুমেন্টটি নাও থাকতে পারে বা {{timeframe}} ডেটা নাও থাকতে পারে",
+    "updatesUnconfirmed": "চার্টের কিছু আপডেট এখনও নিশ্চিত করা হয়নি।",
+    "reloadRecent": "সাম্প্রতিক তথ্য আবার লোড করুন"
   },
   "related": {
     "labelSeparator": "{{label}}:",

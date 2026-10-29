@@ -30,7 +30,9 @@
     "errorPrefix": "Error sa pag-load ng chart data:",
     "unknownError": "Hindi alam na error",
     "noDataTitle": "Walang data para sa {{instrument}}",
-    "noDataHint": "Maaaring wala ang instrument o walang {{timeframe}} data"
+    "noDataHint": "Maaaring wala ang instrument o walang {{timeframe}} data",
+    "updatesUnconfirmed": "Hindi pa nakukumpirma ang ilang update sa chart.",
+    "reloadRecent": "I-load muli ang kamakailang datos"
   },
   "related": {
     "labelSeparator": "{{label}}:",

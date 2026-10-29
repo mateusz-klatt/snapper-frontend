@@ -30,7 +30,9 @@
     "errorPrefix": "Kesalahan saat memuat data grafik:",
     "unknownError": "Kesalahan tidak diketahui",
     "noDataTitle": "Tidak ada data tersedia untuk {{instrument}}",
-    "noDataHint": "Instrumen mungkin tidak ada atau tidak memiliki data {{timeframe}}"
+    "noDataHint": "Instrumen mungkin tidak ada atau tidak memiliki data {{timeframe}}",
+    "updatesUnconfirmed": "Sebagian pembaruan grafik belum terkonfirmasi.",
+    "reloadRecent": "Muat ulang data terbaru"
   },
   "related": {
     "labelSeparator": "{{label}}:",

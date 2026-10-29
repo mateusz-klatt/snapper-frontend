@@ -79,6 +79,12 @@ an independent business-time anchor, bounded by that horizon. Changing either re
 historical views exclude live cache updates. Changing the chart timeframe preserves the replay
 anchor. Cointegration diagnostics show their current state and carry a **Live** label.
 
+Late finalized Live notifications are checked against HTTP history at a fresh knowledge horizon
+before changing older bars. Confirmed corrections and gaps inside the loaded range are merged while
+preserving the latest candle and chart position; global Time Travel and local replay remain isolated
+from Live updates. If updates remain unconfirmed, the chart shows a warning. **Reload recent data**
+chooses a new, bounded recent Live view; it does not claim that all earlier history has been repaired.
+
 The statistics cards use closed one-minute candles for a full 24-hour window ending at the displayed
 timestamp, independently of the chart timeframe. High and low use candle highs and lows; change
 compares the final close with the close exactly 24 hours earlier. Both bounded range requests share
