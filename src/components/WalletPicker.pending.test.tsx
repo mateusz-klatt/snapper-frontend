@@ -270,7 +270,11 @@ describe('WalletPicker pending intentions through the real select widget', () =>
 
       try {
         await selectOption(user, 'Practice (paper)')
-        const external = useAppStore.getState().selectScopeAndRefresh(next)
+        let external!: Promise<boolean>
+
+        act(() => {
+          external = useAppStore.getState().selectScopeAndRefresh(next)
+        })
 
         await act(async () => old.reject(new TypeError('offline')))
         await waitFor(() => expect(refresh).toHaveBeenCalledTimes(2))
@@ -308,9 +312,12 @@ describe('WalletPicker pending intentions through the real select widget', () =>
       transition: () => useAppStore.getState().setCurrentOperatorPublicId('o-new'),
     },
     {
-      name: 'knowledge time',
+      name: 'reserved knowledge time',
       initial: 'w-main',
-      transition: () => useAppStore.getState().setAsOf('2026-10-28T17:33:00Z'),
+      transition: () => {
+        useAppStore.getState().reserveScopeSelection()
+        useAppStore.getState().setAsOf('2026-10-28T17:33:00Z')
+      },
     },
     {
       name: 'wallet roundtrip',

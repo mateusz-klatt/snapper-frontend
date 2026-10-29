@@ -19,8 +19,37 @@ import {
 const DARK_MODE_KEY = 'snapper-dark-mode'
 let scopeSelectionVersion = 0
 let walletSelectionVersion = 0
+const walletSelectionIntentListeners = new Set<(version: number) => void>()
 let walletRefreshQueue: Promise<void> = Promise.resolve()
 let pendingWalletRefreshes = 0
+
+export const getWalletSelectionIntentVersion = (): number => walletSelectionVersion
+
+export const subscribeWalletSelectionIntent = (
+  listener: (version: number) => void
+): (() => void) => {
+  walletSelectionIntentListeners.add(listener)
+
+  return () => {
+    walletSelectionIntentListeners.delete(listener)
+  }
+}
+
+const advanceWalletSelectionIntent = (): number => {
+  const version = ++walletSelectionVersion
+
+  for (const listener of [...walletSelectionIntentListeners]) {
+    if (!walletSelectionIntentListeners.has(listener)) continue
+
+    try {
+      listener(version)
+    } catch {
+      console.error('Wallet selection intent listener failed')
+    }
+  }
+
+  return version
+}
 
 const isScopeAwareRead = (key: readonly unknown[]): boolean => {
   if (key[0] === 'portfolio' && key[1] === 'pnl') return true
@@ -208,18 +237,30 @@ export const useAppStore = create<AppStore>()(
     },
     setCurrentOperatorPublicId: (id: string | null) => {
       scopeSelectionVersion += 1
-      walletSelectionVersion += 1
+      const version = advanceWalletSelectionIntent()
+
+      if (version !== walletSelectionVersion) return
+
+      queryClient.invalidateQueries({ refetchType: 'none' })
+
+      if (version !== walletSelectionVersion) return
+
       apiClient.setOperatorScope(id)
       apiClient.setWalletScope(null)
-      queryClient.invalidateQueries({ refetchType: 'none' })
       set({ currentOperatorPublicId: id, currentWalletPublicId: null })
       refetchConfirmedReads()
     },
     setCurrentWalletPublicId: (id: string | null) => {
       scopeSelectionVersion += 1
-      walletSelectionVersion += 1
-      apiClient.setWalletScope(id)
+      const version = advanceWalletSelectionIntent()
+
+      if (version !== walletSelectionVersion) return
+
       queryClient.invalidateQueries({ refetchType: 'none' })
+
+      if (version !== walletSelectionVersion) return
+
+      apiClient.setWalletScope(id)
       set({ currentWalletPublicId: id })
       refetchConfirmedReads()
     },
@@ -236,7 +277,7 @@ export const useAppStore = create<AppStore>()(
      */
     selectWalletAndRefresh: async (nextWalletId: string | null) => {
       scopeSelectionVersion += 1
-      const version = ++walletSelectionVersion
+      const version = advanceWalletSelectionIntent()
       const accepted = await refreshWalletSelection(
         nextWalletId,
         () => version === walletSelectionVersion
@@ -250,9 +291,11 @@ export const useAppStore = create<AppStore>()(
       refetchConfirmedReads()
     },
     reserveScopeSelection: () => {
-      walletSelectionVersion += 1
+      const version = ++scopeSelectionVersion
 
-      return ++scopeSelectionVersion
+      advanceWalletSelectionIntent()
+
+      return version
     },
     invalidateScopeSelection: () => ++scopeSelectionVersion,
     isWalletSelectionPending: () => pendingWalletRefreshes > 0,

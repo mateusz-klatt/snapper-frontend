@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ThemeSelect } from './ThemeSelect'
-import { useAppStore } from '../stores/app'
+import {
+  getWalletSelectionIntentVersion,
+  subscribeWalletSelectionIntent,
+  useAppStore,
+} from '../stores/app'
+import { useAuthStore } from '../stores/auth'
 import { useWallets } from '../hooks/queries/wallets'
 import type { WalletInfo } from '../types/api'
 import { LoadingSpinner } from './ui'
@@ -11,7 +16,6 @@ export const WalletPicker: React.FC = () => {
   const currentId = useAppStore(s => s.currentWalletPublicId)
   const selectWalletAndRefresh = useAppStore(s => s.selectWalletAndRefresh)
   const selectionVersion = useRef(0)
-  const confirmedScopeVersion = useRef(0)
   const [pendingValue, setPendingValue] = useState<string | null>(null)
   const [selectionFailed, setSelectionFailed] = useState(false)
   const { data } = useWallets()
@@ -25,34 +29,59 @@ export const WalletPicker: React.FC = () => {
   ]
 
   useEffect(() => {
+    const clearSelectionFeedback = (): void => {
+      setPendingValue(null)
+      setSelectionFailed(false)
+    }
+
     const unsubscribe = useAppStore.subscribe((state, previous) => {
       if (
         state.currentWalletPublicId !== previous.currentWalletPublicId ||
         state.currentOperatorPublicId !== previous.currentOperatorPublicId ||
         state.asOf !== previous.asOf
       ) {
-        confirmedScopeVersion.current += 1
         setSelectionFailed(false)
+      }
+    })
+    const unsubscribeIntent = subscribeWalletSelectionIntent(clearSelectionFeedback)
+    const unsubscribeAuth = useAuthStore.subscribe((state, previous) => {
+      if (
+        state.isAuthenticated !== previous.isAuthenticated ||
+        state.user?.public_id !== previous.user?.public_id
+      ) {
+        selectionVersion.current += 1
+        clearSelectionFeedback()
       }
     })
 
     return () => {
       selectionVersion.current += 1
       unsubscribe()
+      unsubscribeIntent()
+      unsubscribeAuth()
     }
   }, [])
 
   const selectWallet = async (value: string): Promise<void> => {
     const version = ++selectionVersion.current
-    const scopeVersion = confirmedScopeVersion.current
+    const intentVersion = getWalletSelectionIntentVersion() + 1
+    const pending = selectWalletAndRefresh(value === '__all__' ? null : value)
 
-    setPendingValue(value)
-    setSelectionFailed(false)
+    if (
+      version === selectionVersion.current &&
+      intentVersion === getWalletSelectionIntentVersion()
+    ) {
+      setPendingValue(value)
+      setSelectionFailed(false)
+    }
 
     try {
-      await selectWalletAndRefresh(value === '__all__' ? null : value)
+      await pending
     } catch {
-      if (version === selectionVersion.current && scopeVersion === confirmedScopeVersion.current) {
+      if (
+        version === selectionVersion.current &&
+        intentVersion === getWalletSelectionIntentVersion()
+      ) {
         setSelectionFailed(true)
       }
     } finally {

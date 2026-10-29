@@ -96,6 +96,7 @@ interface DispatcherConfig {
   queryClient: QueryClient
   topics?: string[]
   maxCandles?: number
+  marketObserverOnly?: boolean
 }
 
 const DEFAULT_MAX_CANDLES = 100
@@ -106,6 +107,7 @@ export class WSDispatcher {
   private unsubscribers: UnsubscribeFn[] = []
   private readonly topics: string[]
   private readonly maxCandles: number
+  private readonly marketObserverOnly: boolean
   private readonly candleBuffers: Map<string, CandleData[]> = new Map()
   private readonly candleListeners = new Set<(candle: CandleData) => void>()
   private orderBuffer: OrderData[] | null = null
@@ -116,15 +118,19 @@ export class WSDispatcher {
     this.queryClient = config.queryClient
     this.maxCandles = config.maxCandles ?? DEFAULT_MAX_CANDLES
     this.topics = config.topics ?? []
+    this.marketObserverOnly = config.marketObserverOnly ?? false
   }
   attach(client: WebSocketClient): void {
     this.detach()
     this.wsClient = client
+    this.unsubscribers.push(client.onMessage('candle', this.handleCandleMessage.bind(this)))
+
+    if (this.marketObserverOnly) return
+
     this.unsubscribers.push(
       client.onMessage('order', this.handleOrderMessage.bind(this)),
       client.onMessage('execution', this.handleExecutionMessage.bind(this)),
       client.onMessage('signal', this.handleSignalMessage.bind(this)),
-      client.onMessage('candle', this.handleCandleMessage.bind(this)),
       client.onMessage('tick', this.handleTickMessage.bind(this)),
       client.onMessage('trade', this.handleTradeMessage.bind(this)),
       client.onMessage('heartbeat', this.handleHeartbeatMessage.bind(this)),
@@ -219,12 +225,13 @@ export class WSDispatcher {
   private handleCandleMessage(message: WebSocketMessages): void {
     if (!isCandle(message)) return
 
-    if (message.close !== undefined && message.close !== null) {
+    if (!this.marketObserverOnly && message.close !== undefined && message.close !== null) {
       useMarketStore.getState().updateLastPrice(message.close)
     }
 
     if (message.instrument && message.exchange && message.timeframe) {
-      this.mergeCandleIntoCache(message)
+      if (this.marketObserverOnly) this.deliverLiveCandle(message)
+      else this.mergeCandleIntoCache(message)
     }
   }
   startBuffering(instrument: string, exchange: string, timeframe: string): void {
@@ -293,19 +300,25 @@ export class WSDispatcher {
     this.executionBuffer = null
     this.signalBuffer = null
   }
-  private mergeCandleIntoCache(envelope: CandleData): void {
+  private deliverLiveCandle(envelope: CandleData): boolean {
     const bufferKey = `${envelope.instrument}:${envelope.exchange}:${envelope.timeframe}`
     const buffer = this.candleBuffers.get(bufferKey)
 
     if (buffer) {
       buffer.push(envelope)
 
-      return
+      return false
     }
 
     for (const listener of this.candleListeners) {
       listener(envelope)
     }
+
+    return true
+  }
+
+  private mergeCandleIntoCache(envelope: CandleData): void {
+    if (!this.deliverLiveCandle(envelope)) return
 
     const cachedPopulated = this.queryClient
       .getQueriesData<CachedCandlesResponse>({
@@ -676,7 +689,7 @@ export class WSDispatcher {
 let dispatcherInstance: WSDispatcher | null = null
 
 export function getDispatcher(queryClient: QueryClient): WSDispatcher {
-  dispatcherInstance ??= new WSDispatcher({ queryClient })
+  dispatcherInstance ??= new WSDispatcher({ queryClient, marketObserverOnly: true })
 
   return dispatcherInstance
 }
