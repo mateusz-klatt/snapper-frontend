@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { navigateHash } from '../lib/hash/navigation'
 
 export type ValidTab =
   | 'overview'
@@ -59,7 +60,7 @@ function useHashRouting<T extends string>(
     const queryIdx = globalThis.location.hash.indexOf('?')
     const queryString = queryIdx === -1 ? '' : globalThis.location.hash.slice(queryIdx)
 
-    globalThis.location.hash = `${route}${queryString}`
+    navigateHash(`${route}${queryString}`)
   }
 
   useEffect(() => {
@@ -68,7 +69,7 @@ function useHashRouting<T extends string>(
     }
 
     if (!globalThis.location.hash && defaultRoute) {
-      globalThis.location.hash = defaultRoute
+      navigateHash(defaultRoute)
     }
 
     globalThis.addEventListener('hashchange', handleHashChange)

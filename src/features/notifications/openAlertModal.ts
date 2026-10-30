@@ -1,6 +1,7 @@
 import toast from 'react-hot-toast'
 
 import { currentHashQuery } from '../../lib/hash/currentHashQuery'
+import { navigateHash } from '../../lib/hash/navigation'
 
 /**
  * Dismiss the alert toast and deep-link to the alert detail modal.
@@ -24,5 +25,5 @@ export function openAlertModal(publicId: string, toastId: string): void {
   toast.dismiss(toastId)
   const encoded = encodeURIComponent(publicId)
 
-  globalThis.location.hash = `#notifications/${encoded}${currentHashQuery()}`
+  navigateHash(`#notifications/${encoded}${currentHashQuery()}`)
 }

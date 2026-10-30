@@ -24,6 +24,7 @@ import { StrategyLaunchModal, type StrategyLaunchData } from './StrategyLaunchMo
 import { StrategyScopeEditModal, type StrategyScopeEditTarget } from './StrategyScopeEditModal'
 import { BacktestCreateForm } from '../backtests/BacktestCreateForm'
 import { currentHashQuery } from '../../lib/hash/currentHashQuery'
+import { navigateHash } from '../../lib/hash/navigation'
 import { StrategyCard, type FeedHealth, type HealthStatus } from './StrategyCard'
 import { StrategiesSkeleton } from '../../components/Skeleton'
 import { ConfirmDialog } from '../../components/ui/ConfirmDialog'
@@ -714,7 +715,7 @@ export const Strategies: React.FC = () => {
         onClose={() => setBacktestStrategyClass(null)}
         preSelectedStrategy={backtestStrategyClass ?? undefined}
         onSuccess={runPublicId => {
-          globalThis.location.hash = `#backtests/${runPublicId}${currentHashQuery()}`
+          navigateHash(`#backtests/${runPublicId}${currentHashQuery()}`)
         }}
       />
     </div>

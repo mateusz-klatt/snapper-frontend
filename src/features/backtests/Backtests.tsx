@@ -7,6 +7,7 @@ import { BacktestCreateForm } from './BacktestCreateForm'
 import { useAuth } from '../../stores/auth'
 import { Permission } from '../../types/permissions.generated'
 import { currentHashQuery } from '../../lib/hash/currentHashQuery'
+import { navigateHash } from '../../lib/hash/navigation'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
@@ -238,7 +239,7 @@ export const Backtests: React.FC = () => {
         open={createOpen && canManage}
         onClose={() => setCreateOpen(false)}
         onSuccess={runPublicId => {
-          globalThis.location.hash = `#backtests/${runPublicId}${currentHashQuery()}`
+          navigateHash(`#backtests/${runPublicId}${currentHashQuery()}`)
         }}
       />
     </div>
