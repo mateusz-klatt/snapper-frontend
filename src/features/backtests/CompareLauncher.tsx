@@ -7,6 +7,7 @@ import {
 } from '../../hooks/queries/backtests'
 import { useAllTerminalRuns } from './hooks/useAllTerminalRuns'
 import { currentHashQuery } from '../../lib/hash/currentHashQuery'
+import { navigateHash } from '../../lib/hash/navigation'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { useAuth } from '../../stores/auth'
 import { Permission } from '../../types/permissions.generated'
@@ -102,7 +103,7 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
 
     createCompare.mutate(body, {
       onSuccess: response => {
-        globalThis.location.hash = `#backtests/compare/${response.payload.public_id}${currentHashQuery()}`
+        navigateHash(`#backtests/compare/${response.payload.public_id}${currentHashQuery()}`)
       },
     })
   }

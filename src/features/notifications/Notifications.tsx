@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHashSubpath } from '../../hooks/useHashRouting'
 import { currentHashQuery } from '../../lib/hash/currentHashQuery'
+import { navigateHash } from '../../lib/hash/navigation'
 import { AlertDetailModal } from './AlertDetailModal'
 import { NotificationsList } from './NotificationsList'
 import { useAlertsLiveSubscription } from './hooks/useAlertsLiveSubscription'
@@ -34,12 +35,12 @@ export const Notifications: React.FC = () => {
 
   const handleOpen = useCallback((publicId: string) => {
     setOpenPid(publicId)
-    globalThis.location.hash = `#${HASH_PREFIX}/${encodeURIComponent(publicId)}${currentHashQuery()}`
+    navigateHash(`#${HASH_PREFIX}/${encodeURIComponent(publicId)}${currentHashQuery()}`)
   }, [])
 
   const handleClose = useCallback(() => {
     setOpenPid(null)
-    globalThis.location.hash = `#${HASH_PREFIX}${currentHashQuery()}`
+    navigateHash(`#${HASH_PREFIX}${currentHashQuery()}`)
   }, [])
 
   return (

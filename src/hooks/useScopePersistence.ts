@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAppStore } from '../stores/app'
+import { isAppHashNavigationPending, observeAppHashNavigation } from '../lib/hash/navigation'
 import { useOperators, useWallets } from './queries/wallets'
 
 const STORAGE_KEY_WALLET = 'snapper-current-wallet'
@@ -160,11 +161,16 @@ class ScopeSynchronizer {
   private commitTarget: ScopeSnapshot | null = null
   private activeGeneration = 0
   private readonly unsubscribe: () => void
-  private readonly onLocation = (): void => {
+  private readonly stopObservingNavigation: () => void
+  private readonly onLocation = (event?: Event): void => {
     const intent = navigationIntent()
     const key = JSON.stringify(intent)
+    const isPendingHistoryRestore =
+      event?.type === 'popstate' &&
+      useAppStore.getState().isWalletSelectionPending() &&
+      !isAppHashNavigationPending()
 
-    if (key === this.locationKey) return
+    if (key === this.locationKey && !isPendingHistoryRestore) return
 
     this.locationKey = key
     this.onStatus('loading')
@@ -178,6 +184,7 @@ class ScopeSynchronizer {
     private operators: IdList,
     private readonly onStatus: (status: ScopeStatus) => void
   ) {
+    this.stopObservingNavigation = observeAppHashNavigation()
     globalThis.addEventListener('hashchange', this.onLocation)
     globalThis.addEventListener('popstate', this.onLocation)
     this.unsubscribe = useAppStore.subscribe((state, previous) => {
@@ -235,6 +242,7 @@ class ScopeSynchronizer {
     this.generation += 1
     this.pending = null
     this.unsubscribe()
+    this.stopObservingNavigation()
     globalThis.removeEventListener('hashchange', this.onLocation)
     globalThis.removeEventListener('popstate', this.onLocation)
   }

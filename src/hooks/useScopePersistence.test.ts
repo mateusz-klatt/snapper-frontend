@@ -36,7 +36,7 @@ vi.mock('../stores/auth', () => ({
 }))
 
 import { useWallets, useOperators } from './queries/wallets'
-import { useAppStore } from '../stores/app'
+import { getWalletSelectionIntentVersion, useAppStore } from '../stores/app'
 import { apiClient } from '../lib/apiClient'
 
 const wrapper = ({ children }: { children: ReactNode }): ReactNode => {
@@ -811,6 +811,108 @@ describe('pending URL selection generations', () => {
     expect(globalThis.location.hash).toContain('#market?')
     expect(globalThis.location.hash).toContain('wallet=w-main')
     expect(refreshToken).toHaveBeenCalledTimes(2)
+  })
+  it('keeps the confirmed Main scope after native Back supersedes a pending Paper acknowledgement', async () => {
+    const backtests = '#backtests?wallet=w-main&operator=o-1'
+
+    history.replaceState(null, '', backtests)
+    const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+    act(() => {
+      history.pushState(null, '', '#overview?wallet=w-main&operator=o-1')
+      globalThis.dispatchEvent(new HashChangeEvent('hashchange'))
+    })
+    const old = deferred()
+    const latest = deferred()
+
+    refreshToken
+      .mockImplementationOnce(() => old.promise)
+      .mockImplementationOnce(() => latest.promise)
+    const selection = useAppStore.getState().selectWalletAndRefresh('w-paper')
+
+    try {
+      await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(2))
+      act(() => history.back())
+      await waitFor(() => expect(location.hash).toBe(backtests))
+      await act(async () => {
+        old.resolve()
+        await selection
+      })
+      expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+      await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(3))
+      expect(refreshToken).toHaveBeenLastCalledWith({ walletId: 'w-main' })
+      await act(async () => latest.resolve())
+      await waitFor(() => expect(result.current.status).toBe('ready'))
+      expect(location.hash).toBe(backtests)
+      expect(refreshToken).toHaveBeenCalledTimes(3)
+    } finally {
+      await act(async () => {
+        old.resolve()
+        latest.resolve()
+        await useAppStore.getState().waitForWalletSelection()
+      })
+    }
+  })
+  it('does not reserve another wallet intent for same-scope native history without a pending choice', async () => {
+    const backtests = '#backtests?wallet=w-main&operator=o-1'
+
+    history.replaceState(null, '', backtests)
+    const { result } = renderHook(() => useScopePersistence(), { wrapper })
+
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+    act(() => {
+      history.pushState(null, '', '#overview?wallet=w-main&operator=o-1')
+      globalThis.dispatchEvent(new HashChangeEvent('hashchange'))
+    })
+    const version = getWalletSelectionIntentVersion()
+    const restored = new Promise<void>(resolve => {
+      globalThis.addEventListener('popstate', () => resolve(), { once: true })
+    })
+
+    await act(async () => {
+      history.back()
+      await restored
+    })
+    expect(location.hash).toBe(backtests)
+    expect(result.current.status).toBe('ready')
+    expect(getWalletSelectionIntentVersion()).toBe(version)
+    expect(refreshToken).toHaveBeenCalledTimes(1)
+  })
+  it('preserves a pending picker across an unchanged catalog rerender', async () => {
+    const { rerender, result } = renderHook(() => useScopePersistence(), { wrapper })
+
+    await waitFor(() => expect(result.current.status).toBe('ready'))
+    const pending = deferred()
+
+    refreshToken.mockImplementationOnce(() => pending.promise)
+    const selection = useAppStore.getState().selectWalletAndRefresh('w-main')
+
+    try {
+      await waitFor(() => expect(refreshToken).toHaveBeenCalledTimes(2))
+      const version = getWalletSelectionIntentVersion()
+
+      vi.mocked(useWallets).mockReturnValue({
+        data: { payload: [{ public_id: 'w-paper' }, { public_id: 'w-main' }] },
+      } as never)
+      vi.mocked(useOperators).mockReturnValue({
+        data: { payload: [{ public_id: 'o-1' }, { public_id: 'o-2' }] },
+      } as never)
+      rerender()
+      expect(getWalletSelectionIntentVersion()).toBe(version)
+      expect(useAppStore.getState().currentWalletPublicId).toBe('w-paper')
+      await act(async () => {
+        pending.resolve()
+        await selection
+      })
+      expect(useAppStore.getState().currentWalletPublicId).toBe('w-main')
+      expect(refreshToken).toHaveBeenCalledTimes(2)
+    } finally {
+      await act(async () => {
+        pending.resolve()
+        await useAppStore.getState().waitForWalletSelection()
+      })
+    }
   })
   it.each(['wallet', 'operator'] as const)(
     'rejects access revoked during a pending refresh (%s)',
