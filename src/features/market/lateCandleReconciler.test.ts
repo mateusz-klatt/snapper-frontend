@@ -443,14 +443,18 @@ describe('LateCandleReconciler', () => {
 
   it('bounds deduplication metadata across many successfully reconciled batches', async () => {
     const { options, reconciler } = setup()
+    const candles = Array.from({ length: 5001 }, (_, index) => row(index))
 
-    options.fetchRange.mockImplementation(async (start, end) =>
-      Array.from({ length: 5001 }, (_, index) => row(index)).filter(
-        candle =>
-          Date.parse(candle.open_at) >= Date.parse(start) &&
-          Date.parse(candle.open_at) <= Date.parse(end)
-      )
-    )
+    options.fetchRange.mockImplementation(async (start, end) => {
+      const firstMs = Date.parse(start)
+      const lastMs = Date.parse(end)
+
+      return candles.filter(candle => {
+        const openMs = Date.parse(candle.open_at)
+
+        return openMs >= firstMs && openMs <= lastMs
+      })
+    })
 
     for (let batch = 0; batch < 5001; batch += 32) {
       for (let minute = batch; minute < Math.min(batch + 32, 5001); minute += 1) {
