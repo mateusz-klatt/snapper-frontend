@@ -2297,6 +2297,14 @@ export type Components = {
             unrealized_pnl: number | null;
         };
         PnlAttributionOrigin: "manual" | "plan" | "system" | "unattributed";
+        PnlCarriedInputData: {
+            instrument_public_id: string;
+            role: Components["schemas"]["PnlCarriedInputRole"];
+            source_minute: string;
+            age_minutes: number;
+            source_plane: string | null;
+        };
+        PnlCarriedInputRole: "mark" | "fx" | "event";
         PnlEquityCoverageData: {
             sampled: boolean;
             venue_scope: "spot_only" | null;
@@ -2444,6 +2452,8 @@ export type Components = {
             incompleteness_reasons: Components["schemas"]["PnlIncompletenessReasonData"][];
             per_instrument: Components["schemas"]["PnlInstrumentContributionData"][];
             attribution: Components["schemas"]["PnlAttributionContributionData"][];
+            carried_inputs?: Components["schemas"]["PnlCarriedInputData"][];
+            max_carry_age_minutes?: number | null | undefined;
         };
         PnlTimelineResponse: {
             type: "pnl_timeline";
