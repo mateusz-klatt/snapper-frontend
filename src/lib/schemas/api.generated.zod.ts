@@ -1243,6 +1243,12 @@ export const PnlAttributionOriginSchema = _PnlAttributionOriginRawSchema as unkn
   Components['schemas']['PnlAttributionOrigin']
 >
 
+const _PnlCarriedInputRoleRawSchema = z.enum(['mark', 'fx', 'event'])
+
+export const PnlCarriedInputRoleSchema = _PnlCarriedInputRoleRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlCarriedInputRole']
+>
+
 const _PnlEquityCoverageDataRawSchema = z
   .object({
     sampled: z.boolean(),
@@ -3356,6 +3362,20 @@ export const PnlAttributionContributionDataSchema =
     Components['schemas']['PnlAttributionContributionData']
   >
 
+const _PnlCarriedInputDataRawSchema = z
+  .object({
+    instrument_public_id: z.string(),
+    role: PnlCarriedInputRoleSchema,
+    source_minute: z.iso.datetime(),
+    age_minutes: z.number().int(),
+    source_plane: z.string().nullable(),
+  })
+  .strict()
+
+export const PnlCarriedInputDataSchema = _PnlCarriedInputDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlCarriedInputData']
+>
+
 const _PnlExecutionCorrectionDataRawSchema = z
   .object({
     correction_public_id: z.string(),
@@ -4908,6 +4928,8 @@ const _PnlTimelinePointDataRawSchema = z
     incompleteness_reasons: z.array(PnlIncompletenessReasonDataSchema),
     per_instrument: z.array(PnlInstrumentContributionDataSchema),
     attribution: z.array(PnlAttributionContributionDataSchema),
+    carried_inputs: z.array(PnlCarriedInputDataSchema).optional(),
+    max_carry_age_minutes: z.number().int().nullable().optional(),
   })
   .strict()
 
@@ -6556,6 +6578,7 @@ export type PairedHaltInfo = Components['schemas']['PairedHaltInfo']
 export type PairedLegExposure = Components['schemas']['PairedLegExposure']
 export type Permission = Components['schemas']['Permission']
 export type PnlAttributionOrigin = Components['schemas']['PnlAttributionOrigin']
+export type PnlCarriedInputRole = Components['schemas']['PnlCarriedInputRole']
 export type PnlEquityCoverageData = Components['schemas']['PnlEquityCoverageData']
 export type PnlExecutionCorrectionReason = Components['schemas']['PnlExecutionCorrectionReason']
 export type PnlExecutionHistoryStatus = Components['schemas']['PnlExecutionHistoryStatus']
@@ -6700,6 +6723,7 @@ export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
 export type LoginBody = Components['schemas']['LoginBody']
 export type ResearcherCreateBody = Components['schemas']['ResearcherCreateBody']
 export type PnlAttributionContributionData = Components['schemas']['PnlAttributionContributionData']
+export type PnlCarriedInputData = Components['schemas']['PnlCarriedInputData']
 export type PnlExecutionCorrectionData = Components['schemas']['PnlExecutionCorrectionData']
 export type PnlAiDecisionMarkerData = Components['schemas']['PnlAiDecisionMarkerData']
 export type PnlIncompletenessReasonData = Components['schemas']['PnlIncompletenessReasonData']
