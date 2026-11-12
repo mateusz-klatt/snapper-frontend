@@ -100,7 +100,7 @@ describe('IncompletenessSummary', () => {
     expect(screen.getAllByText('Execution price invalid')).toHaveLength(2)
     expect(screen.getAllByText('MARK-incomplete')).toHaveLength(2)
     expect(screen.getAllByText('UNTRUSTED')).toHaveLength(3)
-    expect(screen.getAllByText('Global')).toHaveLength(2)
+    expect(screen.getAllByText('Portfolio-wide')).toHaveLength(2)
     expect(screen.getAllByText('Instrument')).toHaveLength(3)
     expect(screen.getAllByText('Trigger instrument: BTC-USD · kraken')).toHaveLength(2)
     expect(screen.getAllByText('Trigger instrument: instrument-B')).toHaveLength(2)

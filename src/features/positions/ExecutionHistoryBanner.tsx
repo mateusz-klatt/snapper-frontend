@@ -27,13 +27,13 @@ export const ExecutionHistoryBanner: React.FC<Readonly<Props>> = ({ history }) =
 
   return (
     <section
-      className='rounded-2xl border border-warning-500/40 bg-warning-500/10 p-5'
+      className='rounded-2xl border border-dark-600 bg-alpine-50 p-5'
       aria-labelledby={titleId}
       data-testid='pnl-execution-history-banner'
     >
       <div className='flex flex-wrap items-start justify-between gap-3'>
         <div className='flex min-w-0 items-start gap-2'>
-          <PencilLine className='mt-0.5 h-4 w-4 shrink-0 text-warning-600' aria-hidden='true' />
+          <PencilLine className='mt-0.5 h-4 w-4 shrink-0 text-muted-500' aria-hidden='true' />
           <div className='min-w-0'>
             <h3 id={titleId} className='font-semibold text-alpine-900'>
               {t('timeline.executionHistory.title')}
@@ -43,7 +43,7 @@ export const ExecutionHistoryBanner: React.FC<Readonly<Props>> = ({ history }) =
         </div>
         <div className='flex shrink-0 flex-wrap items-center gap-2'>
           <span
-            className='rounded-full border border-warning-500/40 bg-alpine-50 px-2 py-1 text-xs font-medium text-warning-600'
+            className='rounded-full border border-dark-600 bg-alpine-50 px-2 py-1 text-xs font-medium text-muted-500'
             data-testid='pnl-execution-history-count'
           >
             {t('timeline.executionHistory.correctionCount', {
@@ -52,7 +52,7 @@ export const ExecutionHistoryBanner: React.FC<Readonly<Props>> = ({ history }) =
           </span>
           <button
             type='button'
-            className='rounded-lg border border-warning-500/40 px-3 py-1.5 text-xs font-medium text-warning-600 transition-colors hover:bg-warning-500/20'
+            className='rounded-lg border border-dark-600 px-3 py-1.5 text-xs font-medium text-muted-500 transition-colors hover:bg-alpine-100'
             aria-expanded={showDetails}
             aria-controls={detailsId}
             onClick={() => setShowDetails(current => !current)}
@@ -76,7 +76,7 @@ export const ExecutionHistoryBanner: React.FC<Readonly<Props>> = ({ history }) =
                 <span className='font-medium text-alpine-900'>
                   {t(REASON_LABEL_KEYS[correction.reason])}
                 </span>
-                <span className='rounded-full border border-warning-500/40 bg-warning-500/10 px-2 py-0.5 text-xs font-medium text-warning-600'>
+                <span className='rounded-full border border-dark-600 bg-alpine-50 px-2 py-0.5 text-xs font-medium text-muted-500'>
                   {t('timeline.executionHistory.scopeSequence', {
                     exchange: correction.exchange,
                     sequence: correction.scope_sequence,

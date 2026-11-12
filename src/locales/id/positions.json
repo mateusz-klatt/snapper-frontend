@@ -51,7 +51,7 @@
       "affectedPoints": "Titik terdampak: {{count}}",
       "triggerInstrument": "Instrumen pemicu: {{instrument}}",
       "scope": {
-        "global": "Global",
+        "global": "Seluruh portofolio",
         "instrument": "Instrumen"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Riwayat eksekusi perdagangan dikoreksi oleh operator",
-      "summary": "Operator membatalkan eksekusi perdagangan yang tercatat dalam lingkup ini. Setiap koreksi yang tercantum di sini dikecualikan dari semua total numerik yang ditampilkan di halaman ini.",
-      "correctionCount": "Koreksi diterapkan: {{count}}",
+      "title": "Riwayat perhitungan",
+      "summary": "Koreksi eksekusi yang tercatat dapat mendahului periode yang dipilih. Riwayat ini terpisah dari peringatan untuk titik P&L yang ditampilkan.",
+      "correctionCount": "Koreksi tercatat: {{count}}",
       "showDetails": "Tampilkan koreksi",
       "hideDetails": "Sembunyikan koreksi",
       "scopeSequence": "{{exchange}} #{{sequence}}",

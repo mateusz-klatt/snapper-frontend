@@ -51,7 +51,7 @@
       "affectedPoints": "Affected points: {{count}}",
       "triggerInstrument": "Trigger instrument: {{instrument}}",
       "scope": {
-        "global": "Global",
+        "global": "Portfolio-wide",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Operator-corrected execution history",
-      "summary": "An operator repudiated recorded executions in this scope. Every correction listed here is excluded from the figures on this page.",
-      "correctionCount": "Corrections applied: {{count}}",
+      "title": "Calculation history",
+      "summary": "Recorded execution corrections may predate the selected period. This history is separate from warnings for the displayed P&L points.",
+      "correctionCount": "Recorded corrections: {{count}}",
       "showDetails": "Show corrections",
       "hideDetails": "Hide corrections",
       "scopeSequence": "{{exchange}} #{{sequence}}",

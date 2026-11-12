@@ -51,7 +51,7 @@
       "affectedPoints": "Zahvaćene točke: {{count}}",
       "triggerInstrument": "Pokretački instrument: {{instrument}}",
       "scope": {
-        "global": "Globalno",
+        "global": "Cijeli portfelj",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Povijest izvršenja trgovine ispravljena od strane operatera",
-      "summary": "Operater je poništio zabilježena izvršenja trgovine u ovom opsegu. Svaki ovdje naveden ispravak isključen je iz svih numeričkih ukupnih iznosa prikazanih na ovoj stranici.",
-      "correctionCount": "Primijenjeni ispravci: {{count}}",
+      "title": "Povijest izračuna",
+      "summary": "Zabilježeni ispravci izvršenja mogu prethoditi odabranom razdoblju. Ova je povijest odvojena od upozorenja za prikazane P&L točke.",
+      "correctionCount": "Zabilježeni ispravci: {{count}}",
       "showDetails": "Prikaži ispravke",
       "hideDetails": "Sakrij ispravke",
       "scopeSequence": "{{exchange}} #{{sequence}}",

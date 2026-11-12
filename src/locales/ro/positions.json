@@ -51,7 +51,7 @@
       "affectedPoints": "Puncte afectate: {{count}}",
       "triggerInstrument": "Instrument declanșator: {{instrument}}",
       "scope": {
-        "global": "Global",
+        "global": "Întregul portofoliu",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Istoricul execuției tranzacțiilor corectat de operator",
-      "summary": "Un operator a anulat execuțiile comerciale înregistrate în acest domeniu. Fiecare corecție enumerată aici este exclusă din toate totalurile numerice afișate pe această pagină.",
-      "correctionCount": "Corecții aplicate: {{count}}",
+      "title": "Istoricul calculului",
+      "summary": "Corecțiile de execuție înregistrate pot preceda perioada selectată. Acest istoric este separat de avertismentele pentru punctele P&L afișate.",
+      "correctionCount": "Corecții înregistrate: {{count}}",
       "showDetails": "Afișați corecțiile",
       "hideDetails": "Ascunde corecțiile",
       "scopeSequence": "{{exchange}} #{{sequence}}",

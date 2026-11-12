@@ -51,7 +51,7 @@
       "affectedPoints": "Titik terjejas: {{count}}",
       "triggerInstrument": "Instrumen pencetus: {{instrument}}",
       "scope": {
-        "global": "Global",
+        "global": "Seluruh portfolio",
         "instrument": "Instrumen"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Sejarah pelaksanaan perdagangan diperbetulkan oleh pengendali",
-      "summary": "Pengendali membatalkan pelaksanaan perdagangan yang direkodkan dalam skop ini. Setiap pembetulan yang disenaraikan di sini dikecualikan daripada semua jumlah berangka yang dipaparkan pada halaman ini.",
-      "correctionCount": "Pembetulan digunakan: {{count}}",
+      "title": "Sejarah pengiraan",
+      "summary": "Pembetulan pelaksanaan yang direkodkan mungkin mendahului tempoh yang dipilih. Sejarah ini berasingan daripada amaran bagi titik P&L yang dipaparkan.",
+      "correctionCount": "Pembetulan direkodkan: {{count}}",
       "showDetails": "Tunjukkan pembetulan",
       "hideDetails": "Sembunyikan pembetulan",
       "scopeSequence": "{{exchange}} #{{sequence}}",

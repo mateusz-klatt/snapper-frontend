@@ -51,7 +51,7 @@
       "affectedPoints": "Ovplyvnené body: {{count}}",
       "triggerInstrument": "Spúšťací inštrument: {{instrument}}",
       "scope": {
-        "global": "Globálny",
+        "global": "Celé portfólio",
         "instrument": "Inštrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "História vykonania obchodu opravená operátorom",
-      "summary": "Prevádzkovateľ v tomto rozsahu anuloval evidované uskutočnenie obchodu. Každá tu uvedená oprava je vylúčená zo všetkých číselných súčtov zobrazených na tejto stránke.",
-      "correctionCount": "Použité opravy: {{count}}",
+      "title": "História výpočtu",
+      "summary": "Zaznamenané opravy realizácií môžu predchádzať vybranému obdobiu. Táto história je oddelená od upozornení pre zobrazené body P&L.",
+      "correctionCount": "Zaznamenané opravy: {{count}}",
       "showDetails": "Zobraziť opravy",
       "hideDetails": "Skryť opravy",
       "scopeSequence": "{{exchange}} #{{sequence}}",

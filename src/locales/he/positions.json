@@ -51,7 +51,7 @@
       "affectedPoints": "נקודות מושפעות: {{count}}",
       "triggerInstrument": "המכשיר שגרם לכך: {{instrument}}",
       "scope": {
-        "global": "כללי",
+        "global": "כל התיק",
         "instrument": "מכשיר"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "היסטוריית ביצוע מסחר שתוקנה על ידי המפעיל",
-      "summary": "מפעיל ביטל את ביצוע הסחר שנרשם בהיקף זה. כל תיקון המופיע כאן אינו נכלל מכל הסכומים המספריים המוצגים בדף זה.",
-      "correctionCount": "תיקונים שהוחלו: {{count}}",
+      "title": "היסטוריית החישוב",
+      "summary": "תיקוני ביצוע שנרשמו עשויים להיות מוקדמים מהתקופה שנבחרה. היסטוריה זו נפרדת מהאזהרות לגבי נקודות ה-P&L המוצגות.",
+      "correctionCount": "תיקונים שנרשמו: {{count}}",
       "showDetails": "הצג תיקונים",
       "hideDetails": "הסתר תיקונים",
       "scopeSequence": "{{exchange}} #{{sequence}}",

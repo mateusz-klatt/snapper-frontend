@@ -51,7 +51,7 @@
       "affectedPoints": "該当データポイント：{{count}}件",
       "triggerInstrument": "トリガー銘柄：{{instrument}}",
       "scope": {
-        "global": "全体",
+        "global": "ポートフォリオ全体",
         "instrument": "銘柄"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "オペレーターにより修正された取引約定履歴",
-      "summary": "オペレーターは、このスコープ内で記録された取引約定を取り消しました。ここにリストされているすべての修正は、このページに表示されるすべての数値合計から除外されます。",
-      "correctionCount": "適用された修正: {{count}}",
+      "title": "計算履歴",
+      "summary": "記録された約定の修正は、選択した期間より前のものである場合があります。この履歴は、表示されているP&Lポイントに関する警告とは別の情報です。",
+      "correctionCount": "記録された修正：{{count}}",
       "showDetails": "修正を表示",
       "hideDetails": "修正を隠す",
       "scopeSequence": "{{exchange}} #{{sequence}}",

@@ -51,7 +51,7 @@
       "affectedPoints": "Pika të prekura: {{count}}",
       "triggerInstrument": "Instrumenti nxitës: {{instrument}}",
       "scope": {
-        "global": "I përgjithshëm",
+        "global": "I gjithë portofoli",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Historia e ekzekutimit të tregtisë e korrigjuar nga operatori",
-      "summary": "Një operator anuloi ekzekutimet e regjistruara tregtare në këtë fushë. Çdo korrigjim i listuar këtu përjashtohet nga të gjitha totalet numerike të shfaqura në këtë faqe.",
-      "correctionCount": "Korrigjimet e zbatuara: {{count}}",
+      "title": "Historiku i llogaritjes",
+      "summary": "Korrigjimet e regjistruara të ekzekutimit mund të jenë përpara periudhës së zgjedhur. Ky historik është i veçantë nga paralajmërimet për pikat P&L të shfaqura.",
+      "correctionCount": "Korrigjime të regjistruara: {{count}}",
       "showDetails": "Shfaq korrigjimet",
       "hideDetails": "Fshih korrigjimet",
       "scopeSequence": "{{exchange}} #{{sequence}}",

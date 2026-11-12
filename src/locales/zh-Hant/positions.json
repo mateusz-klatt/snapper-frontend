@@ -51,7 +51,7 @@
       "affectedPoints": "受影響數據點：{{count}}",
       "triggerInstrument": "觸發品種：{{instrument}}",
       "scope": {
-        "global": "全域",
+        "global": "整個投資組合",
         "instrument": "品種"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "由操作員更正的交易執行歷史記錄",
-      "summary": "操作員取消了此範圍內記錄的交易執行。此處列出的每個更正均不包含在此頁面上顯示的所有數字總數中。",
-      "correctionCount": "已套用更正：{{count}}",
+      "title": "計算歷史",
+      "summary": "記錄的成交更正可能早於所選時段。此歷史記錄與所顯示P&L資料點的警告分開。",
+      "correctionCount": "已記錄的更正：{{count}}",
       "showDetails": "顯示更正",
       "hideDetails": "隱藏更正",
       "scopeSequence": "{{exchange}} #{{sequence}}",

@@ -51,7 +51,7 @@
       "affectedPoints": "Nukta zilizoathiriwa: {{count}}",
       "triggerInstrument": "Instrumenti iliyochochea: {{instrument}}",
       "scope": {
-        "global": "Ya jumla",
+        "global": "Jalada lote",
         "instrument": "Instrumenti"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Historia ya utekelezaji wa biashara iliyorekebishwa na opereta",
-      "summary": "Opereta alibatilisha utekelezaji wa biashara uliorekodiwa katika mawanda haya. Kila masahihisho yaliyoorodheshwa hapa yametengwa kutoka kwa jumla za nambari zinazoonyeshwa kwenye ukurasa huu.",
-      "correctionCount": "Marekebisho yametumika: {{count}}",
+      "title": "Historia ya hesabu",
+      "summary": "Masahihisho ya utekelezaji yaliyorekodiwa yanaweza kutangulia kipindi kilichochaguliwa. Historia hii ni tofauti na maonyo ya pointi za P&L zinazoonyeshwa.",
+      "correctionCount": "Masahihisho yaliyorekodiwa: {{count}}",
       "showDetails": "Onyesha masahihisho",
       "hideDetails": "Ficha masahihisho",
       "scopeSequence": "{{exchange}} #{{sequence}}",

@@ -98,6 +98,12 @@ the same account signs in again. Coverage warnings remain visible during refresh
 prices and P&L retain their instrument currency and use display rounding to suppress floating-point
 noise; stored values and calculations are unchanged.
 
+P&L warnings summarize the points returned for the loaded window. A portfolio-wide warning describes
+its affected scope, rather than an all-time date range. Recorded execution corrections appear below
+the results as neutral **Calculation history**, with their details collapsed initially. That audit
+history can predate the selected period; its presence alone does not establish an effect on every
+displayed point. All supplied correction identities remain available, including for empty windows.
+
 ## Market history
 
 Global time travel selects the knowledge horizon for market history. The market scrubber selects

@@ -51,7 +51,7 @@
       "affectedPoints": "Punti interessati: {{count}}",
       "triggerInstrument": "Strumento che ha attivato il punto: {{instrument}}",
       "scope": {
-        "global": "Globale",
+        "global": "Intero portafoglio",
         "instrument": "Strumento"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Cronologia dell'esecuzione delle transazioni corretta dall'operatore",
-      "summary": "Un operatore ha annullato le esecuzioni commerciali registrate in questo ambito. Ogni correzione qui elencata è esclusa da tutti i totali numerici visualizzati in questa pagina.",
-      "correctionCount": "Correzioni applicate: {{count}}",
+      "title": "Cronologia del calcolo",
+      "summary": "Le correzioni di esecuzione registrate possono precedere il periodo selezionato. Questa cronologia è separata dagli avvisi per i punti P&L visualizzati.",
+      "correctionCount": "Correzioni registrate: {{count}}",
       "showDetails": "Mostra correzioni",
       "hideDetails": "Nascondi correzioni",
       "scopeSequence": "{{exchange}} #{{sequence}}",
