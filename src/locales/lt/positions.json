@@ -51,7 +51,7 @@
       "affectedPoints": "Paveikti taškai: {{count}}",
       "triggerInstrument": "Tašką sukėlęs instrumentas: {{instrument}}",
       "scope": {
-        "global": "Visa sistema",
+        "global": "Visas portfelis",
         "instrument": "Instrumentas"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Operatoriaus pataisyta sandorio vykdymo istorija",
-      "summary": "Operatorius anuliavo užregistruotus sandorių vykdymus šioje srityje. Kiekvienas čia nurodytas pataisymas neįtraukiamas į visas šiame puslapyje rodomas sumas.",
-      "correctionCount": "Pritaikyti pataisymai: {{count}}",
+      "title": "Skaičiavimo istorija",
+      "summary": "Užregistruoti vykdymo pataisymai gali būti ankstesni už pasirinktą laikotarpį. Ši istorija atskirta nuo įspėjimų apie rodomus P&L taškus.",
+      "correctionCount": "Užregistruoti pataisymai: {{count}}",
       "showDetails": "Rodyti pataisymus",
       "hideDetails": "Slėpti pataisymus",
       "scopeSequence": "{{exchange}} #{{sequence}}",

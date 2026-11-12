@@ -51,7 +51,7 @@
       "affectedPoints": "Punktar sem þetta hefur áhrif á: {{count}}",
       "triggerInstrument": "Gerningur sem kom þessu af stað: {{instrument}}",
       "scope": {
-        "global": "Allt kerfið",
+        "global": "Allt eignasafnið",
         "instrument": "Gerningur"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Framkvæmdasaga viðskipta leiðrétt af rekstraraðila",
-      "summary": "Rekstraraðili ógilti skráðar viðskiptaaftökur í þessu umfangi. Sérhver leiðrétting sem skráð er hér er útilokuð frá öllum tölulegum heildartölum sem birtar eru á þessari síðu.",
-      "correctionCount": "Leiðréttingar beitt: {{count}}",
+      "title": "Útreikningssaga",
+      "summary": "Skráðar leiðréttingar á framkvæmd geta verið frá því fyrir valið tímabil. Þessi saga er aðskilin frá viðvörunum fyrir sýnda P&L-punkta.",
+      "correctionCount": "Skráðar leiðréttingar: {{count}}",
       "showDetails": "Sýna leiðréttingar",
       "hideDetails": "Fela leiðréttingar",
       "scopeSequence": "{{exchange}} #{{sequence}}",

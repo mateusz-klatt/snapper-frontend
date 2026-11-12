@@ -51,7 +51,7 @@
       "affectedPoints": "Pisteitä, joihin syy vaikuttaa: {{count}}",
       "triggerInstrument": "Laukaiseva instrumentti: {{instrument}}",
       "scope": {
-        "global": "Globaali",
+        "global": "Koko salkku",
         "instrument": "Instrumentti"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Operaattorin korjaama kaupan toteutushistoria",
-      "summary": "Toimija mitätöi rekisteröidyt kaupankäynnit tässä laajuudessa. Kaikki tässä luetellut korjaukset jätetään pois kaikista tällä sivulla näytettävistä numeerisista kokonaismääristä.",
-      "correctionCount": "Korjauksia käytetty: {{count}}",
+      "title": "Laskennan historia",
+      "summary": "Tallennetut toteutuskorjaukset voivat edeltää valittua ajanjaksoa. Tämä historia on erillinen näytettyjen P&L-pisteiden varoituksista.",
+      "correctionCount": "Tallennetut korjaukset: {{count}}",
       "showDetails": "Näytä korjaukset",
       "hideDetails": "Piilota korjaukset",
       "scopeSequence": "{{exchange}} #{{sequence}}",

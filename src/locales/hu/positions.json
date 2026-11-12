@@ -51,7 +51,7 @@
       "affectedPoints": "Érintett pontok: {{count}}",
       "triggerInstrument": "Kiváltó instrumentum: {{instrument}}",
       "scope": {
-        "global": "Globális",
+        "global": "Teljes portfólió",
         "instrument": "Instrumentum"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Az üzemeltető által javított ügyletvégrehajtási előzmények",
-      "summary": "Egy üzemeltető megsemmisítette az ebben a körben rögzített kereskedelmi végrehajtásokat. Az itt felsorolt ​​összes javítás nem szerepel az ezen az oldalon megjelenő összes számszerű összegből.",
-      "correctionCount": "Alkalmazott korrekciók: {{count}}",
+      "title": "Számítási előzmények",
+      "summary": "A rögzített végrehajtási korrekciók megelőzhetik a kiválasztott időszakot. Ezek az előzmények elkülönülnek a megjelenített P&L-pontok figyelmeztetéseitől.",
+      "correctionCount": "Rögzített korrekciók: {{count}}",
       "showDetails": "Javítások megjelenítése",
       "hideDetails": "Javítások elrejtése",
       "scopeSequence": "{{exchange}} #{{sequence}}",

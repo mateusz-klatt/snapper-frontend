@@ -252,6 +252,57 @@ describe('PortfolioTimeline real query refresh flow', () => {
     expect(screen.getByTestId('refresh-chart-values')).toHaveTextContent('7 USD')
   })
 
+  it('clears displayed old warnings and audit history while a different window loads', async () => {
+    mount()
+    await tick()
+    const first = requests[0]
+
+    if (!first) throw new Error('Expected the initial owned request')
+    const old = response(first, 12, true)
+    const withheld = old.payload.points[1]
+
+    if (!withheld) throw new Error('Expected an incomplete synthetic point')
+    withheld.incompleteness_reasons = [
+      {
+        reason: 'attribution_sum_unrepresentable',
+        withholding_tier: 'untrusted',
+        withholding_scope: 'global',
+        trigger_instrument_public_id: null,
+      },
+    ]
+    old.payload.execution_history = {
+      status: 'operator_corrected',
+      corrections: [
+        {
+          correction_public_id: '00000000-0000-7000-8000-0000000000d9',
+          target_execution_public_id: '00000000-0000-7000-8000-0000000000e1',
+          exchange: 'kraken',
+          scope_sequence: 7,
+          reason: 'unwitnessed_phantom',
+          correction_time: '2026-01-01T00:00:00Z',
+        },
+      ],
+    }
+    await act(async () => {
+      first.response.resolve(old)
+      await first.response.promise
+      await vi.advanceTimersByTimeAsync(0)
+    })
+    expect(screen.getByText('Attribution sum is not representable')).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: 'Calculation history' })).toBeInTheDocument()
+    fireEvent.change(screen.getByLabelText('Select timeline window'), { target: { value: '7d' } })
+    await tick()
+    expect(requests).toHaveLength(2)
+    expect(requests[1]?.params.from).toBe('2026-07-13T12:00:00.000Z')
+    expect(screen.queryByTestId('pnl-incompleteness-summary')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('pnl-execution-history-banner')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('refresh-chart-values')).not.toBeInTheDocument()
+    await settle(1, 7)
+    expect(screen.getByTestId('refresh-chart-values')).toHaveTextContent('7 USD')
+    expect(screen.queryByTestId('pnl-incompleteness-summary')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('pnl-execution-history-banner')).not.toBeInTheDocument()
+  })
+
   it('isolates wallet changes from an earlier pending request', async () => {
     mount()
     await tick()

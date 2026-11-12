@@ -51,7 +51,7 @@
       "affectedPoints": "Betrokken punten: {{count}}",
       "triggerInstrument": "Activerend instrument: {{instrument}}",
       "scope": {
-        "global": "Globaal",
+        "global": "Hele portefeuille",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Geschiedenis van de handelsuitvoering gecorrigeerd door de operator",
-      "summary": "Een operator heeft de geregistreerde handelsuitvoeringen in dit kader geannuleerd. Elke hier vermelde correctie is uitgesloten van alle numerieke totalen die op deze pagina worden weergegeven.",
-      "correctionCount": "Correcties toegepast: {{count}}",
+      "title": "Berekeningsgeschiedenis",
+      "summary": "Vastgelegde uitvoeringscorrecties kunnen vóór de geselecteerde periode liggen. Deze geschiedenis staat los van waarschuwingen voor de getoonde P&L-punten.",
+      "correctionCount": "Vastgelegde correcties: {{count}}",
       "showDetails": "Correcties weergeven",
       "hideDetails": "Correcties verbergen",
       "scopeSequence": "{{exchange}} #{{sequence}}",

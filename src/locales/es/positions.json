@@ -51,7 +51,7 @@
       "affectedPoints": "Puntos afectados: {{count}}",
       "triggerInstrument": "Instrumento desencadenante: {{instrument}}",
       "scope": {
-        "global": "Global",
+        "global": "Toda la cartera",
         "instrument": "Instrumento"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Historial de ejecución comercial corregido por el operador",
-      "summary": "Un operador anuló las ejecuciones comerciales registradas en este ámbito. Todas las correcciones enumeradas aquí están excluidas de todos los totales numéricos que se muestran en esta página.",
-      "correctionCount": "Correcciones aplicadas: {{count}}",
+      "title": "Historial de cálculo",
+      "summary": "Las correcciones de ejecución registradas pueden ser anteriores al período seleccionado. Este historial es independiente de las advertencias sobre los puntos P&L mostrados.",
+      "correctionCount": "Correcciones registradas: {{count}}",
       "showDetails": "Mostrar correcciones",
       "hideDetails": "Ocultar correcciones",
       "scopeSequence": "{{exchange}} #{{sequence}}",

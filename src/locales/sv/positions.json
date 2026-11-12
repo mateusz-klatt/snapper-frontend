@@ -51,7 +51,7 @@
       "affectedPoints": "Berörda punkter: {{count}}",
       "triggerInstrument": "Utlösande instrument: {{instrument}}",
       "scope": {
-        "global": "Global",
+        "global": "Hela portföljen",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Handelsutförandehistorik korrigerad av operatören",
-      "summary": "En operatör ogiltigförklarade de registrerade handelsutförandena i denna omfattning. Varje korrigering som listas här är exkluderad från alla numeriska summor som visas på denna sida.",
-      "correctionCount": "Tillämpade korrigeringar: {{count}}",
+      "title": "Beräkningshistorik",
+      "summary": "Registrerade utförandekorrigeringar kan vara från före den valda perioden. Denna historik är skild från varningar för de visade P&L-punkterna.",
+      "correctionCount": "Registrerade korrigeringar: {{count}}",
       "showDetails": "Visa korrigeringar",
       "hideDetails": "Dölj korrigeringar",
       "scopeSequence": "{{exchange}} #{{sequence}}",

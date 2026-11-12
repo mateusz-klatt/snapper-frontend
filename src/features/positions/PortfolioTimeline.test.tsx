@@ -751,17 +751,77 @@ describe('PortfolioTimeline', () => {
 
     expect(screen.getByTestId('pnl-execution-history-banner')).toBeInTheDocument()
     expect(screen.getByTestId('pnl-execution-history-count')).toHaveTextContent(
-      'Corrections applied: 1'
+      'Recorded corrections: 1'
     )
   })
 
-  it('keeps the correction banner on an empty window, where it matters most', () => {
+  it('retains neutral audit history on an empty window without claiming a window effect', () => {
     mockQuery(timeline([], [], false, 'USD', UNSAMPLED_COVERAGE, CORRECTED_HISTORY))
 
     render(<PortfolioTimeline />)
 
     expect(screen.getByText('No P&L history')).toBeInTheDocument()
     expect(screen.getByTestId('pnl-execution-history-banner')).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: 'Calculation history' })).toHaveTextContent(
+      'may predate the selected period'
+    )
+    expect(screen.queryByTestId('pnl-incompleteness-summary')).not.toBeInTheDocument()
+  })
+
+  it('does not turn an old correction into a warning for complete current points', () => {
+    mockQuery(
+      timeline(
+        [point('2026-11-12T08:00:00Z', 'complete')],
+        [],
+        false,
+        'EUR',
+        UNSAMPLED_COVERAGE,
+        CORRECTED_HISTORY
+      )
+    )
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByRole('region', { name: 'Calculation history' })).toBeInTheDocument()
+    expect(screen.getByTestId('pnl-execution-history-toggle')).toHaveAttribute(
+      'aria-expanded',
+      'false'
+    )
+    expect(screen.queryByTestId('pnl-incompleteness-summary')).not.toBeInTheDocument()
+    expect(screen.getByTestId('mock-pnl-chart')).toHaveTextContent('1:0:true:EUR')
+    expect(
+      screen
+        .getByTestId('mock-pnl-chart')
+        .compareDocumentPosition(screen.getByTestId('pnl-execution-history-banner')) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).not.toBe(0)
+  })
+
+  it('keeps a current numeric refusal visible beside historical audit metadata', () => {
+    const current = point('2026-11-12T08:00:00Z', 'incomplete')
+
+    current.incompleteness_reasons = [
+      {
+        reason: 'attribution_sum_unrepresentable',
+        withholding_tier: 'untrusted',
+        withholding_scope: 'global',
+        trigger_instrument_public_id: null,
+      },
+    ]
+    mockQuery(timeline([current], [], false, 'EUR', UNSAMPLED_COVERAGE, CORRECTED_HISTORY))
+
+    render(<PortfolioTimeline />)
+
+    expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
+    expect(screen.getByText('Attribution sum is not representable')).toBeInTheDocument()
+    expect(screen.getByText('Portfolio-wide')).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: 'Calculation history' })).toBeInTheDocument()
+    expect(
+      screen
+        .getByTestId('pnl-incompleteness-summary')
+        .compareDocumentPosition(screen.getByTestId('pnl-execution-history-banner')) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).not.toBe(0)
   })
 
   it('shows no correction banner for an as-recorded history', () => {

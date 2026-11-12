@@ -31,13 +31,28 @@ describe('ExecutionHistoryBanner', () => {
     expect(container).toBeEmptyDOMElement()
   })
 
-  it('discloses the corrected status and the applied correction count', () => {
+  it('discloses the calculation history and recorded correction count', () => {
     render(<ExecutionHistoryBanner history={corrected([correction(), correction()])} />)
 
     expect(screen.getByTestId('pnl-execution-history-banner')).toBeInTheDocument()
-    expect(screen.getByText('Operator-corrected execution history')).toBeInTheDocument()
+    expect(screen.getByText('Calculation history')).toBeInTheDocument()
     expect(screen.getByTestId('pnl-execution-history-count')).toHaveTextContent(
-      'Corrections applied: 2'
+      'Recorded corrections: 2'
+    )
+  })
+
+  it('keeps historical dates in collapsed audit metadata rather than period warnings', () => {
+    render(<ExecutionHistoryBanner history={corrected()} />)
+
+    const history = screen.getByRole('region', { name: 'Calculation history' })
+
+    expect(history).toHaveTextContent('may predate the selected period')
+    expect(history).toHaveTextContent('separate from warnings for the displayed P&L points')
+    expect(history).not.toHaveClass('bg-warning-500/10')
+    expect(screen.queryByTestId('pnl-execution-history-correction-time')).not.toBeInTheDocument()
+    expect(screen.getByTestId('pnl-execution-history-toggle')).toHaveAttribute(
+      'aria-expanded',
+      'false'
     )
   })
 
@@ -122,7 +137,7 @@ describe('ExecutionHistoryBanner', () => {
 
     expect(screen.queryByTestId('pnl-execution-history-correction')).not.toBeInTheDocument()
     expect(screen.getByTestId('pnl-execution-history-count')).toHaveTextContent(
-      'Corrections applied: 1'
+      'Recorded corrections: 1'
     )
   })
 

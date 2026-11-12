@@ -387,7 +387,6 @@ export const PortfolioTimeline: React.FC = () => {
           <span>{t('timeline.timeTravelNotice', { asOf })}</span>
         </output>
       )}
-      {executionHistory !== undefined && <ExecutionHistoryBanner history={executionHistory} />}
       {markerLegend}
       {data?.markers_truncated === true && (
         <div
@@ -400,6 +399,7 @@ export const PortfolioTimeline: React.FC = () => {
         </div>
       )}
       {content}
+      {executionHistory !== undefined && <ExecutionHistoryBanner history={executionHistory} />}
     </div>
   )
 }

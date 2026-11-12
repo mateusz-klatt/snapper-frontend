@@ -51,7 +51,7 @@
       "affectedPoints": "Berørte punkter: {{count}}",
       "triggerInstrument": "Udløsende instrument: {{instrument}}",
       "scope": {
-        "global": "Global",
+        "global": "Hele porteføljen",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Handelsudførelseshistorik rettet af operatøren",
-      "summary": "En operatør annullerede de registrerede handelsudførelser i dette omfang. Hver rettelse, der er angivet her, er udelukket fra alle numeriske totaler, der vises på denne side.",
-      "correctionCount": "Påførte rettelser: {{count}}",
+      "title": "Beregningshistorik",
+      "summary": "Registrerede rettelser af handelsudførelser kan ligge før den valgte periode. Denne historik er adskilt fra advarsler for de viste P&L-punkter.",
+      "correctionCount": "Registrerede rettelser: {{count}}",
       "showDetails": "Vis rettelser",
       "hideDetails": "Skjul rettelser",
       "scopeSequence": "{{exchange}} #{{sequence}}",

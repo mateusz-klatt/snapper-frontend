@@ -51,7 +51,7 @@
       "affectedPoints": "Ietekmētie datu punkti: {{count}}",
       "triggerInstrument": "Aktivizējošais instruments: {{instrument}}",
       "scope": {
-        "global": "Globāls",
+        "global": "Viss portfelis",
         "instrument": "Instruments"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Operatora labota darījumu izpildes vēsture",
-      "summary": "Operators anulēja reģistrētos tirdzniecības darījumus šajā jomā. Katrs šeit norādītais labojums tiek izslēgts no visām šajā lapā redzamajām skaitliskajām summām.",
-      "correctionCount": "Piemēroti labojumi: {{count}}",
+      "title": "Aprēķinu vēsture",
+      "summary": "Reģistrētie izpildes labojumi var būt veikti pirms atlasītā perioda. Šī vēsture ir atsevišķa no brīdinājumiem par attēlotajiem P&L punktiem.",
+      "correctionCount": "Reģistrētie labojumi: {{count}}",
       "showDetails": "Rādīt labojumus",
       "hideDetails": "Slēpt labojumus",
       "scopeSequence": "{{exchange}} #{{sequence}}",

@@ -51,7 +51,7 @@
       "affectedPoints": "Pointí lena mbaineann: {{count}}",
       "triggerInstrument": "Ionstraim truicir: {{instrument}}",
       "scope": {
-        "global": "Domhanda",
+        "global": "An phunann iomlán",
         "instrument": "Ionstraim"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Stair feidhmiúcháin trádála ceartaithe ag an oibreoir",
-      "summary": "Chuir oibreoir na feidhmíochtaí trádála taifeadta sa raon feidhme seo ar neamhní. Tá gach ceartúchán atá liostaithe anseo eisiata ó na hiomláin uimhriúla go léir a thaispeántar ar an leathanach seo.",
-      "correctionCount": "Ceartúcháin curtha i bhfeidhm: {{count}}",
+      "title": "Stair an ríofa",
+      "summary": "D’fhéadfadh ceartúcháin fhorghníomhaithe taifeadta a bheith roimh an tréimhse roghnaithe. Tá an stair seo ar leithligh ó rabhaidh do na pointí P&L ar taispeáint.",
+      "correctionCount": "Ceartúcháin taifeadta: {{count}}",
       "showDetails": "Taispeáin ceartúcháin",
       "hideDetails": "Folaigh ceartúcháin",
       "scopeSequence": "{{exchange}} #{{sequence}}",

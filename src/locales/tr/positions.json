@@ -51,7 +51,7 @@
       "affectedPoints": "Etkilenen noktalar: {{count}}",
       "triggerInstrument": "Tetikleyen enstrüman: {{instrument}}",
       "scope": {
-        "global": "Genel",
+        "global": "Tüm portföy",
         "instrument": "Enstrüman"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Operatör tarafından düzeltilen ticari işlem geçmişi",
-      "summary": "Bu kapsamda kaydedilen ticari işlemleri bir operatör iptal etti. Burada listelenen her düzeltme, bu sayfada görüntülenen tüm sayısal toplamların dışında bırakılır.",
-      "correctionCount": "Uygulanan düzeltmeler: {{count}}",
+      "title": "Hesaplama geçmişi",
+      "summary": "Kaydedilen işlem düzeltmeleri seçilen dönemden önceye ait olabilir. Bu geçmiş, gösterilen P&L noktalarına ilişkin uyarılardan ayrıdır.",
+      "correctionCount": "Kaydedilen düzeltmeler: {{count}}",
       "showDetails": "Düzeltmeleri göster",
       "hideDetails": "Düzeltmeleri gizle",
       "scopeSequence": "{{exchange}} #{{sequence}}",

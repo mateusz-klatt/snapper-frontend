@@ -51,7 +51,7 @@
       "affectedPoints": "Mga apektadong punto: {{count}}",
       "triggerInstrument": "Instrumentong nag-trigger: {{instrument}}",
       "scope": {
-        "global": "Pangkalahatan",
+        "global": "Buong portfolio",
         "instrument": "Instrumento"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Ang kasaysayan ng pagpapatupad ng kalakalan ay naitama ng operator",
-      "summary": "Pinawalang-bisa ng isang operator ang naitalang mga pagpapatupad ng kalakalan sa saklaw na ito. Ang bawat pagwawasto na nakalista dito ay hindi kasama sa lahat ng mga numerical na kabuuan na ipinapakita sa pahinang ito.",
-      "correctionCount": "Inilapat ang mga pagwawasto: {{count}}",
+      "title": "Kasaysayan ng pagkalkula",
+      "summary": "Maaaring mas nauna sa napiling panahon ang mga naitalang pagwawasto sa pagpapatupad. Hiwalay ang kasaysayang ito sa mga babala para sa mga ipinapakitang P&L point.",
+      "correctionCount": "Mga naitalang pagwawasto: {{count}}",
       "showDetails": "Ipakita ang mga pagwawasto",
       "hideDetails": "Itago ang mga pagwawasto",
       "scopeSequence": "{{exchange}} #{{sequence}}",

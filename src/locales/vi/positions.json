@@ -51,7 +51,7 @@
       "affectedPoints": "Điểm bị ảnh hưởng: {{count}}",
       "triggerInstrument": "Công cụ kích hoạt: {{instrument}}",
       "scope": {
-        "global": "Toàn cục",
+        "global": "Toàn bộ danh mục",
         "instrument": "Công cụ"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Lịch sử thực hiện giao dịch được nhà điều hành sửa chữa",
-      "summary": "Nhà điều hành đã hủy bỏ các giao dịch thực hiện giao dịch được ghi lại trong phạm vi này. Mọi sửa đổi được liệt kê ở đây đều bị loại trừ khỏi tất cả các tổng số được hiển thị trên trang này.",
-      "correctionCount": "Các sửa đổi đã được áp dụng: {{count}}",
+      "title": "Lịch sử tính toán",
+      "summary": "Các bản sửa khớp lệnh đã ghi nhận có thể có trước khoảng thời gian được chọn. Lịch sử này tách biệt với cảnh báo cho các điểm P&L đang hiển thị.",
+      "correctionCount": "Bản sửa đã ghi nhận: {{count}}",
       "showDetails": "Hiển thị các chỉnh sửa",
       "hideDetails": "Ẩn phần chỉnh sửa",
       "scopeSequence": "{{exchange}} #{{sequence}}",

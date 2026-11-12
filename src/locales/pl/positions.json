@@ -51,7 +51,7 @@
       "affectedPoints": "Dotknięte punkty: {{count}}",
       "triggerInstrument": "Instrument wyzwalający: {{instrument}}",
       "scope": {
-        "global": "Globalny",
+        "global": "Cały portfel",
         "instrument": "Instrument"
       },
       "tier": {
@@ -82,9 +82,9 @@
       }
     },
     "executionHistory": {
-      "title": "Historia wykonań skorygowana przez operatora",
-      "summary": "Operator unieważnił zapisane wykonania w tym zakresie. Każda wymieniona tu korekta jest wyłączona z wartości na tej stronie.",
-      "correctionCount": "Zastosowane korekty: {{count}}",
+      "title": "Historia obliczeń",
+      "summary": "Zapisane korekty wykonań mogą pochodzić sprzed wybranego okresu. Ta historia jest odrębna od ostrzeżeń dotyczących wyświetlanych punktów P&L.",
+      "correctionCount": "Zapisane korekty: {{count}}",
       "showDetails": "Pokaż korekty",
       "hideDetails": "Ukryj korekty",
       "scopeSequence": "{{exchange}} #{{sequence}}",
