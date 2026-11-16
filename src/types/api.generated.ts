@@ -70,6 +70,7 @@ type OpenApiOperationGetFrontMonthApiUnderlyingsTickerFrontMonthGet = Operations
 type OpenApiOperationGetInstrumentCapabilitiesApiInstrumentCapabilitiesGet = Operations["get_instrument_capabilities_api_instrument_capabilities_get"];
 type OpenApiOperationGetMarketDataCoverageApiMarketCoverageGet = Operations["get_market_data_coverage_api_market_coverage_get"];
 type OpenApiOperationGetMarketFeedHealthApiMarketFeedHealthGet = Operations["get_market_feed_health_api_market_feed_health_get"];
+type OpenApiOperationGetMarketSnapshotFreshnessApiMetricsMarketSnapshotsFreshnessGet = Operations["get_market_snapshot_freshness_api_metrics_market_snapshots_freshness_get"];
 type OpenApiOperationGetNotificationMetricsApiMetricsNotificationsGet = Operations["get_notification_metrics_api_metrics_notifications_get"];
 type OpenApiOperationGetOrdersApiOrdersGet = Operations["get_orders_api_orders_get"];
 type OpenApiOperationGetPnlSeriesApiPortfolioPnlSeriesGet = Operations["get_pnl_series_api_portfolio_pnl_series_get"];
@@ -467,6 +468,9 @@ export type Paths = {
     }>;
     "/api/metrics/db/tables": OpenApiPathItem<{
         get: OpenApiOperationGetDbTableStatsApiMetricsDbTablesGet;
+    }>;
+    "/api/metrics/market-snapshots/freshness": OpenApiPathItem<{
+        get: OpenApiOperationGetMarketSnapshotFreshnessApiMetricsMarketSnapshotsFreshnessGet;
     }>;
     "/api/alerts/history": OpenApiPathItem<{
         get: OpenApiOperationListAlertHistoryApiAlertsHistoryGet;
@@ -1626,6 +1630,15 @@ export type Components = {
             payload: string[];
             count: number;
         };
+        ExcludedMarketSnapshotFxInstrument: {
+            instrument_public_id: string;
+            native_symbol: string;
+            exchange: string;
+            base: string;
+            quote: string;
+            asset_type: string;
+            reason: Components["schemas"]["FxExclusionReason"];
+        };
         ExecutionData: {
             type: "execution";
             sequence_id: number;
@@ -1742,6 +1755,7 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["FeatureFlagsPayload"];
         };
+        FreshnessFailureReason: "missing_snapshot" | "invalid_timestamp" | "future_timestamp" | "stale_snapshot" | "invalid_price";
         FrontMonthData: {
             type: "front_month";
             sequence_id: number;
@@ -1765,6 +1779,7 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["FrontMonthData"];
         };
+        FxExclusionReason: "fx_venue_not_selected";
         FxShadowPinMetrics: {
             creation: number;
             reuse: number;
@@ -2002,6 +2017,42 @@ export type Components = {
             session_id: string;
             topic?: string | null | undefined;
             payload: Components["schemas"]["MarketFeedHealthPayload"];
+        };
+        MarketSnapshotFreshnessData: {
+            type: "market_snapshot_freshness";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            requested_instrument_public_ids: string[];
+            configured_fx_exchanges: string[];
+            scope_digest: string;
+            checked_at: string;
+            freshness_ready: boolean;
+            unresolved_fx_currencies: string[];
+            instruments: Components["schemas"]["MarketSnapshotFreshnessItem"][];
+            excluded_fx_instruments: Components["schemas"]["ExcludedMarketSnapshotFxInstrument"][];
+        };
+        MarketSnapshotFreshnessItem: {
+            instrument_public_id: string;
+            native_symbol: string;
+            exchange: string;
+            base: string;
+            quote: string;
+            asset_type: string;
+            snapshot_timestamp: string | null;
+            age_seconds: number | null;
+            reason: Components["schemas"]["FreshnessFailureReason"] | null;
+        };
+        MarketSnapshotFreshnessResponse: {
+            type: "market_snapshot_freshness_response";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["MarketSnapshotFreshnessData"];
         };
         MemoryMetrics: {
             rss_bytes: number;
@@ -7657,6 +7708,36 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["DbStatsResponse"];
+                };
+            };
+        };
+    };
+    get_market_snapshot_freshness_api_metrics_market_snapshots_freshness_get: {
+        parameters: {
+            query: {
+                instrument_public_ids: string[];
+                fx_exchanges: string[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["MarketSnapshotFreshnessResponse"];
+                };
+            };
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["HTTPValidationError"];
                 };
             };
         };
