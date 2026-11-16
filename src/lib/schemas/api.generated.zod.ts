@@ -767,6 +767,19 @@ export const FeatureFlagsPayloadSchema = _FeatureFlagsPayloadRawSchema as unknow
   Components['schemas']['FeatureFlagsPayload']
 >
 
+const _FreshnessFailureReasonRawSchema = z.enum([
+  'missing_snapshot',
+  'invalid_timestamp',
+  'future_timestamp',
+  'stale_snapshot',
+  'invalid_price',
+])
+
+export const FreshnessFailureReasonSchema =
+  _FreshnessFailureReasonRawSchema as unknown as z.ZodType<
+    Components['schemas']['FreshnessFailureReason']
+  >
+
 const _FrontMonthDataRawSchema = z
   .object({
     type: z.literal('front_month'),
@@ -786,6 +799,12 @@ const _FrontMonthDataRawSchema = z
 
 export const FrontMonthDataSchema = _FrontMonthDataRawSchema as unknown as z.ZodType<
   Components['schemas']['FrontMonthData']
+>
+
+const _FxExclusionReasonRawSchema = z.literal('fx_venue_not_selected')
+
+export const FxExclusionReasonSchema = _FxExclusionReasonRawSchema as unknown as z.ZodType<
+  Components['schemas']['FxExclusionReason']
 >
 
 const _FxShadowPinMetricsRawSchema = z
@@ -3087,6 +3106,25 @@ export const FeatureFlagsResponseSchema = _FeatureFlagsResponseRawSchema as unkn
   Components['schemas']['FeatureFlagsResponse']
 >
 
+const _MarketSnapshotFreshnessItemRawSchema = z
+  .object({
+    instrument_public_id: z.string(),
+    native_symbol: z.string(),
+    exchange: z.string(),
+    base: z.string(),
+    quote: z.string(),
+    asset_type: z.string(),
+    snapshot_timestamp: z.iso.datetime().nullable(),
+    age_seconds: z.number().nullable(),
+    reason: FreshnessFailureReasonSchema.nullable(),
+  })
+  .strict()
+
+export const MarketSnapshotFreshnessItemSchema =
+  _MarketSnapshotFreshnessItemRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketSnapshotFreshnessItem']
+  >
+
 const _FrontMonthResponseRawSchema = z
   .object({
     type: z.literal('front_month'),
@@ -3102,6 +3140,23 @@ const _FrontMonthResponseRawSchema = z
 export const FrontMonthResponseSchema = _FrontMonthResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['FrontMonthResponse']
 >
+
+const _ExcludedMarketSnapshotFxInstrumentRawSchema = z
+  .object({
+    instrument_public_id: z.string(),
+    native_symbol: z.string(),
+    exchange: z.string(),
+    base: z.string(),
+    quote: z.string(),
+    asset_type: z.string(),
+    reason: FxExclusionReasonSchema,
+  })
+  .strict()
+
+export const ExcludedMarketSnapshotFxInstrumentSchema =
+  _ExcludedMarketSnapshotFxInstrumentRawSchema as unknown as z.ZodType<
+    Components['schemas']['ExcludedMarketSnapshotFxInstrument']
+  >
 
 const _GapDetectionStatsRawSchema = z
   .object({
@@ -4758,6 +4813,30 @@ export const EgressHealthDataSchema = _EgressHealthDataRawSchema as unknown as z
   Components['schemas']['EgressHealthData']
 >
 
+const _MarketSnapshotFreshnessDataRawSchema = z
+  .object({
+    type: z.literal('market_snapshot_freshness'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    requested_instrument_public_ids: z.array(z.string()),
+    configured_fx_exchanges: z.array(z.string()),
+    scope_digest: z.string(),
+    checked_at: z.iso.datetime(),
+    freshness_ready: z.boolean(),
+    unresolved_fx_currencies: z.array(z.string()),
+    instruments: z.array(MarketSnapshotFreshnessItemSchema),
+    excluded_fx_instruments: z.array(ExcludedMarketSnapshotFxInstrumentSchema),
+  })
+  .strict()
+
+export const MarketSnapshotFreshnessDataSchema =
+  _MarketSnapshotFreshnessDataRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketSnapshotFreshnessData']
+  >
+
 const _HealthCheckDataRawSchema = z
   .object({
     type: z.literal('health_check'),
@@ -5304,6 +5383,23 @@ const _EgressHealthResponseRawSchema = z
 export const EgressHealthResponseSchema = _EgressHealthResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['EgressHealthResponse']
 >
+
+const _MarketSnapshotFreshnessResponseRawSchema = z
+  .object({
+    type: z.literal('market_snapshot_freshness_response'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: MarketSnapshotFreshnessDataSchema,
+  })
+  .strict()
+
+export const MarketSnapshotFreshnessResponseSchema =
+  _MarketSnapshotFreshnessResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['MarketSnapshotFreshnessResponse']
+  >
 
 const _HealthCheckResponseRawSchema = z
   .object({
@@ -6554,7 +6650,9 @@ export type ExchangeListResponse = Components['schemas']['ExchangeListResponse']
 export type ExecutionData = Components['schemas']['ExecutionData']
 export type ExecutionPlanData = Components['schemas']['ExecutionPlanData']
 export type FeatureFlagsPayload = Components['schemas']['FeatureFlagsPayload']
+export type FreshnessFailureReason = Components['schemas']['FreshnessFailureReason']
 export type FrontMonthData = Components['schemas']['FrontMonthData']
+export type FxExclusionReason = Components['schemas']['FxExclusionReason']
 export type FxShadowPinMetrics = Components['schemas']['FxShadowPinMetrics']
 export type GapStats = Components['schemas']['GapStats']
 export type GcMetrics = Components['schemas']['GcMetrics']
@@ -6704,7 +6802,10 @@ export type EgressRouteStatusSnapshot = Components['schemas']['EgressRouteStatus
 export type ExecutionListResponse = Components['schemas']['ExecutionListResponse']
 export type ExecutionPlanResponse = Components['schemas']['ExecutionPlanResponse']
 export type FeatureFlagsResponse = Components['schemas']['FeatureFlagsResponse']
+export type MarketSnapshotFreshnessItem = Components['schemas']['MarketSnapshotFreshnessItem']
 export type FrontMonthResponse = Components['schemas']['FrontMonthResponse']
+export type ExcludedMarketSnapshotFxInstrument =
+  Components['schemas']['ExcludedMarketSnapshotFxInstrument']
 export type GapDetectionStats = Components['schemas']['GapDetectionStats']
 export type InstrumentCapabilityListResponse =
   Components['schemas']['InstrumentCapabilityListResponse']
@@ -6809,6 +6910,7 @@ export type AndroidPushConfigResponse = Components['schemas']['AndroidPushConfig
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
 export type EgressHealthData = Components['schemas']['EgressHealthData']
+export type MarketSnapshotFreshnessData = Components['schemas']['MarketSnapshotFreshnessData']
 export type HealthCheckData = Components['schemas']['HealthCheckData']
 export type MarketFeedHealthResponse = Components['schemas']['MarketFeedHealthResponse']
 export type JsonObject = Components['schemas']['JsonObject']
@@ -6844,6 +6946,8 @@ export type UpdateUserRequest = Components['schemas']['UpdateUserRequest']
 export type WsStatsResponse = Components['schemas']['WsStatsResponse']
 export type ZmqHealthResponse = Components['schemas']['ZmqHealthResponse']
 export type EgressHealthResponse = Components['schemas']['EgressHealthResponse']
+export type MarketSnapshotFreshnessResponse =
+  Components['schemas']['MarketSnapshotFreshnessResponse']
 export type HealthCheckResponse = Components['schemas']['HealthCheckResponse']
 export type AdminAiReviewItem = Components['schemas']['AdminAiReviewItem']
 export type AiReviewAftermathReview = Components['schemas']['AiReviewAftermathReview']
