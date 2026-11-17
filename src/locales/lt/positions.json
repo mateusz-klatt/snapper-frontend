@@ -47,7 +47,9 @@
     "incompleteBadge": "Neišsamūs taškai: {{count}}",
     "incompleteness": {
       "title": "Kodėl taškai neišsamūs",
+      "displayedPoints": "Neišsamūs rodomi taškai: {{incomplete}} iš {{total}}.",
       "description": "Priežastys apima visą įkeltą laikotarpį. Daugiau nei vieną priežastį turintis taškas gali būti įskaičiuotas kelis kartus.",
+      "cumulativeNote": "P&L reikšmės yra kaupiamos nuo aktyvavimo, todėl skaičiavimai gali priklausyti nuo ankstesnės veiklos.",
       "affectedPoints": "Paveikti taškai: {{count}}",
       "triggerInstrument": "Tašką sukėlęs instrumentas: {{instrument}}",
       "scope": {

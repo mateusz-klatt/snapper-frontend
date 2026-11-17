@@ -47,7 +47,9 @@
     "incompleteBadge": "Nepilnīgi datu punkti: {{count}}",
     "incompleteness": {
       "title": "Kāpēc datu punkti ir nepilnīgi",
+      "displayedPoints": "Nepilnīgi attēlotie datu punkti: {{incomplete}} no {{total}}.",
       "description": "Iemesli attiecas uz visu ielādēto periodu. Datu punktu skaits pa iemesliem var pārklāties, ja vienam punktam ir vairāki cēloņi.",
+      "cumulativeNote": "P&L vērtības ir kumulatīvas kopš aktivizēšanas, tāpēc aprēķini var būt atkarīgi no agrākas darbības.",
       "affectedPoints": "Ietekmētie datu punkti: {{count}}",
       "triggerInstrument": "Aktivizējošais instruments: {{instrument}}",
       "scope": {

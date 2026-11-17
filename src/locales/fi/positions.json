@@ -47,7 +47,9 @@
     "incompleteBadge": "Puutteellisia pisteitä: {{count}}",
     "incompleteness": {
       "title": "Miksi pisteet ovat puutteellisia",
+      "displayedPoints": "Näytetyistä pisteistä puutteellisia: {{incomplete}} / {{total}}.",
       "description": "Syyt koskevat koko ladattua aikaväliä. Määrät voivat mennä päällekkäin, jos pisteellä on useampi kuin yksi syy.",
+      "cumulativeNote": "P&L-arvot ovat kumulatiivisia aktivoinnista lähtien, joten laskelmat voivat riippua aiemmasta toiminnasta.",
       "affectedPoints": "Pisteitä, joihin syy vaikuttaa: {{count}}",
       "triggerInstrument": "Laukaiseva instrumentti: {{instrument}}",
       "scope": {

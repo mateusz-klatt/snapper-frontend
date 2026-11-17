@@ -47,7 +47,9 @@
     "incompleteBadge": "Nukta zisizokamilika: {{count}}",
     "incompleteness": {
       "title": "Kwa nini nukta hazijakamilika",
+      "displayedPoints": "Nukta {{incomplete}} kati ya {{total}} zinazoonyeshwa hazijakamilika.",
       "description": "Sababu zinahusu kipindi kizima kilichopakiwa. Hesabu zinaweza kuingiliana ikiwa nukta ina sababu zaidi ya moja.",
+      "cumulativeNote": "Thamani za P&L hujilimbikiza tangu uwezeshaji, hivyo hesabu zinaweza kutegemea shughuli za awali.",
       "affectedPoints": "Nukta zilizoathiriwa: {{count}}",
       "triggerInstrument": "Instrumenti iliyochochea: {{instrument}}",
       "scope": {

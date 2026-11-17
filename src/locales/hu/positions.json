@@ -47,7 +47,9 @@
     "incompleteBadge": "Hiányos pontok: {{count}}",
     "incompleteness": {
       "title": "Miért hiányosak a pontok?",
+      "displayedPoints": "A megjelenített {{total}} pontból {{incomplete}} hiányos.",
       "description": "Az okok a teljes betöltött időablakra vonatkoznak. A darabszámok átfedhetnek, ha egy pontnak több oka is van.",
+      "cumulativeNote": "A P&L-értékek az aktiválástól kezdve halmozottak, így a számítások függhetnek a korábbi tevékenységtől.",
       "affectedPoints": "Érintett pontok: {{count}}",
       "triggerInstrument": "Kiváltó instrumentum: {{instrument}}",
       "scope": {

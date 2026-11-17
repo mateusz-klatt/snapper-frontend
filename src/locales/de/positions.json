@@ -47,7 +47,9 @@
     "incompleteBadge": "Unvollständige Datenpunkte: {{count}}",
     "incompleteness": {
       "title": "Warum Datenpunkte unvollständig sind",
+      "displayedPoints": "{{incomplete}} von {{total}} angezeigten Datenpunkten sind unvollständig.",
       "description": "Die Gründe beziehen sich auf den gesamten geladenen Zeitraum. Die Anzahlen können sich überschneiden, wenn ein Datenpunkt mehrere Ursachen hat.",
+      "cumulativeNote": "P&L-Werte sind seit der Aktivierung kumulativ, daher können Berechnungen von früherer Aktivität abhängen.",
       "affectedPoints": "Betroffene Datenpunkte: {{count}}",
       "triggerInstrument": "Auslösendes Instrument: {{instrument}}",
       "scope": {

@@ -47,7 +47,9 @@
     "incompleteBadge": "نقاط غير مكتملة: {{count}}",
     "incompleteness": {
       "title": "أسباب عدم اكتمال النقاط",
+      "displayedPoints": "{{incomplete}} من أصل {{total}} من النقاط المعروضة غير مكتملة.",
       "description": "تشمل الأسباب كامل النطاق الزمني المحمّل. وقد تتداخل الأعداد عندما يكون للنقطة أكثر من سبب.",
+      "cumulativeNote": "قيم P&L تراكمية منذ التفعيل، لذلك قد تعتمد الحسابات على نشاط سابق.",
       "affectedPoints": "النقاط المتأثرة: {{count}}",
       "triggerInstrument": "الأداة المُحفِّزة: {{instrument}}",
       "scope": {

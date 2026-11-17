@@ -47,7 +47,9 @@
     "incompleteBadge": "Neúplné body: {{count}}",
     "incompleteness": {
       "title": "Proč jsou body neúplné",
+      "displayedPoints": "Neúplných ze zobrazených bodů: {{incomplete}} z {{total}}.",
       "description": "Důvody se vztahují na celé načtené období. Počty se mohou překrývat, pokud má bod více než jednu příčinu.",
+      "cumulativeNote": "Hodnoty P&L jsou kumulativní od aktivace, takže výpočty mohou záviset na dřívější aktivitě.",
       "affectedPoints": "Dotčené body: {{count}}",
       "triggerInstrument": "Spouštěcí instrument: {{instrument}}",
       "scope": {

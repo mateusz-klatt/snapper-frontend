@@ -47,7 +47,9 @@
     "incompleteBadge": "불완전한 포인트: {{count}}개",
     "incompleteness": {
       "title": "포인트가 불완전한 이유",
+      "displayedPoints": "표시된 {{total}}개 포인트 중 {{incomplete}}개가 불완전합니다.",
       "description": "사유는 불러온 전체 기간을 기준으로 합니다. 한 포인트에 원인이 여러 개이면 집계가 중복될 수 있습니다.",
+      "cumulativeNote": "P&L 값은 활성화 시점부터 누적되므로 계산이 이전 활동에 영향을 받을 수 있습니다.",
       "affectedPoints": "영향을 받은 포인트: {{count}}개",
       "triggerInstrument": "트리거 종목: {{instrument}}",
       "scope": {

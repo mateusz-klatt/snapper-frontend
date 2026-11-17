@@ -178,11 +178,23 @@ export const IncompletenessSummary: React.FC<Readonly<Props>> = ({ points }) => 
       data-testid='pnl-incompleteness-summary'
     >
       <div className='flex flex-wrap items-start justify-between gap-3'>
-        <div>
+        <div className='space-y-1'>
           <h3 id={titleId} className='font-semibold text-alpine-900'>
             {t('timeline.incompleteness.title')}
           </h3>
-          <p className='mt-1 text-xs text-muted-500'>{t('timeline.incompleteness.description')}</p>
+          <p
+            className='text-xs font-medium text-alpine-900'
+            data-testid='pnl-incompleteness-displayed-points'
+          >
+            {t('timeline.incompleteness.displayedPoints', {
+              incomplete: incompletePointCount,
+              total: points.length,
+            })}
+          </p>
+          <p className='text-xs text-muted-500'>{t('timeline.incompleteness.description')}</p>
+          <p className='text-xs text-muted-500' data-testid='pnl-incompleteness-cumulative-note'>
+            {t('timeline.incompleteness.cumulativeNote')}
+          </p>
         </div>
         <span
           className='rounded-full border border-warning-500/40 bg-alpine-50 px-2 py-1 text-xs font-medium text-warning-600'

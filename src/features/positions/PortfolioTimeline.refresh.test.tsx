@@ -233,9 +233,13 @@ describe('PortfolioTimeline real query refresh flow', () => {
     expect(screen.getByTestId('refresh-chart-values')).toHaveTextContent('12,withheld USD')
     expect(screen.getByTestId('pnl-refreshing')).toBeInTheDocument()
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
+    expect(screen.getByTestId('pnl-incompleteness-displayed-points')).toHaveTextContent(
+      '1 of 2 displayed points are incomplete.'
+    )
     await settle(1, 34)
     expect(requests).toHaveLength(2)
     expect(screen.getByTestId('refresh-chart-values')).toHaveTextContent('34 USD')
+    expect(screen.queryByTestId('pnl-incompleteness-summary')).not.toBeInTheDocument()
     expect(screen.queryByTestId('pnl-refreshing')).not.toBeInTheDocument()
   })
 

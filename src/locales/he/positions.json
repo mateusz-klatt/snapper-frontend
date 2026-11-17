@@ -47,7 +47,9 @@
     "incompleteBadge": "נקודות לא שלמות: {{count}}",
     "incompleteness": {
       "title": "מדוע הנקודות אינן שלמות",
+      "displayedPoints": "{{incomplete}} מתוך {{total}} נקודות מוצגות אינן שלמות.",
       "description": "הסיבות מתייחסות לכל חלון הזמן שנטען. נקודה בעלת יותר מסיבה אחת עשויה להיספר כמה פעמים.",
+      "cumulativeNote": "ערכי ה-P&L מצטברים ממועד ההפעלה, ולכן החישובים עשויים להיות תלויים בפעילות מוקדמת יותר.",
       "affectedPoints": "נקודות מושפעות: {{count}}",
       "triggerInstrument": "המכשיר שגרם לכך: {{instrument}}",
       "scope": {

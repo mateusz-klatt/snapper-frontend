@@ -47,7 +47,9 @@
     "incompleteBadge": "Puncte incomplete: {{count}}",
     "incompleteness": {
       "title": "De ce unele puncte sunt incomplete",
+      "displayedPoints": "{{incomplete}} din {{total}} puncte afișate sunt incomplete.",
       "description": "Motivele acoperă întregul interval încărcat. Un punct poate fi numărat la mai multe motive dacă are mai multe cauze.",
+      "cumulativeNote": "Valorile P&L sunt cumulative de la activare, astfel încât calculele pot depinde de activitatea anterioară.",
       "affectedPoints": "Puncte afectate: {{count}}",
       "triggerInstrument": "Instrument declanșator: {{instrument}}",
       "scope": {

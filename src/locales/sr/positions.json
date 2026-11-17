@@ -47,7 +47,9 @@
     "incompleteBadge": "Nepotpune tačke: {{count}}",
     "incompleteness": {
       "title": "Zašto su tačke nepotpune",
+      "displayedPoints": "Nepotpunih među prikazanim tačkama: {{incomplete}} od {{total}}.",
       "description": "Razlozi obuhvataju ceo učitani period. Brojevi se mogu preklapati kada tačka ima više uzroka.",
+      "cumulativeNote": "Vrednosti P&L su kumulativne od aktivacije, pa obračuni mogu zavisiti od ranije aktivnosti.",
       "affectedPoints": "Obuhvaćene tačke: {{count}}",
       "triggerInstrument": "Instrument okidača: {{instrument}}",
       "scope": {

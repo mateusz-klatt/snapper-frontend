@@ -47,7 +47,9 @@
     "incompleteBadge": "Mga hindi kumpletong punto: {{count}}",
     "incompleteness": {
       "title": "Bakit hindi kumpleto ang mga punto",
+      "displayedPoints": "{{incomplete}} sa {{total}} na ipinapakitang punto ay hindi kumpleto.",
       "description": "Nalalapat ang mga dahilan sa buong na-load na saklaw. Maaaring mag-overlap ang mga bilang kapag mahigit sa isa ang sanhi ng isang punto.",
+      "cumulativeNote": "Pinagsama-sama ang mga halaga ng P&L mula sa pag-activate, kaya maaaring umasa ang mga kalkulasyon sa mas naunang aktibidad.",
       "affectedPoints": "Mga apektadong punto: {{count}}",
       "triggerInstrument": "Instrumentong nag-trigger: {{instrument}}",
       "scope": {
