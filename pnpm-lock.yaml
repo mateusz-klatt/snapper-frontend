@@ -3648,8 +3648,8 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
-  uri-js-replace@1.0.2:
-    resolution: {integrity: sha512-VeBBt/nMxedczht3KDL2yBBMJqIxpCQLMZp3UJ1otcWwUHdQW4IiyHpJivExzSK+FdxTowRfGL4FmwDqH9+S8Q==}
+  uri-js-replace@1.0.3:
+    resolution: {integrity: sha512-MMvVPvWo7I8nHX2Qn3+cji4YPAvEqBKjBoUqt7Z0RpE5hLdDpRLqaNfJtTwf56m40EQt2fJfptnrQdL2LXR99A==}
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -4751,7 +4751,7 @@ snapshots:
       fast-deep-equal: 3.1.3
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
-      uri-js-replace: 1.0.2
+      uri-js-replace: 1.0.3
 
   '@redocly/config@0.22.0': {}
 
@@ -7284,7 +7284,7 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  uri-js-replace@1.0.2: {}
+  uri-js-replace@1.0.3: {}
 
   uri-js@4.4.1:
     dependencies:
