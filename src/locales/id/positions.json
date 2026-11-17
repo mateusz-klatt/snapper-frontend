@@ -47,7 +47,9 @@
     "incompleteBadge": "Titik tidak lengkap: {{count}}",
     "incompleteness": {
       "title": "Mengapa titik tidak lengkap",
+      "displayedPoints": "{{incomplete}} dari {{total}} titik yang ditampilkan tidak lengkap.",
       "description": "Alasan mencakup seluruh rentang yang dimuat. Jumlah dapat tumpang tindih jika satu titik memiliki lebih dari satu penyebab.",
+      "cumulativeNote": "Nilai P&L bersifat kumulatif sejak aktivasi, sehingga perhitungan dapat bergantung pada aktivitas sebelumnya.",
       "affectedPoints": "Titik terdampak: {{count}}",
       "triggerInstrument": "Instrumen pemicu: {{instrument}}",
       "scope": {

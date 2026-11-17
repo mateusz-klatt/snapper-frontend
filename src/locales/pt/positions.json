@@ -47,7 +47,9 @@
     "incompleteBadge": "Pontos incompletos: {{count}}",
     "incompleteness": {
       "title": "Por que os pontos estão incompletos",
+      "displayedPoints": "{{incomplete}} de {{total}} pontos apresentados estão incompletos.",
       "description": "Os motivos abrangem toda a janela carregada. As contagens podem se sobrepor quando um ponto tem mais de uma causa.",
+      "cumulativeNote": "Os valores de P&L são cumulativos desde a ativação, pelo que os cálculos podem depender de atividade anterior.",
       "affectedPoints": "Pontos afetados: {{count}}",
       "triggerInstrument": "Instrumento acionador: {{instrument}}",
       "scope": {

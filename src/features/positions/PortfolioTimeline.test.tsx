@@ -312,6 +312,9 @@ describe('PortfolioTimeline', () => {
 
     expect(screen.getByTestId('pnl-refreshing')).toHaveTextContent('Loading P&L timeline…')
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
+    expect(screen.getByTestId('pnl-incompleteness-displayed-points')).toHaveTextContent(
+      '1 of 1 displayed points are incomplete.'
+    )
     expect(screen.getByTestId('mock-pnl-chart')).toBeInTheDocument()
   })
 
@@ -362,6 +365,12 @@ describe('PortfolioTimeline', () => {
     render(<PortfolioTimeline />)
 
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
+    expect(screen.getByTestId('pnl-incompleteness-displayed-points')).toHaveTextContent(
+      '1 of 2 displayed points are incomplete.'
+    )
+    expect(screen.getByTestId('pnl-incompleteness-cumulative-note')).toHaveTextContent(
+      'P&L values are cumulative from activation, so calculations can depend on earlier activity.'
+    )
     expect(screen.getByText('Mark unavailable')).toBeInTheDocument()
     expect(screen.getByText('Execution price invalid')).toBeInTheDocument()
     expect(screen.getByText('Trigger instrument: instrument-mark')).toBeInTheDocument()
@@ -813,6 +822,12 @@ describe('PortfolioTimeline', () => {
     render(<PortfolioTimeline />)
 
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 1')
+    expect(screen.getByTestId('pnl-incompleteness-displayed-points')).toHaveTextContent(
+      '1 of 1 displayed points are incomplete.'
+    )
+    expect(screen.getByTestId('pnl-incompleteness-cumulative-note')).toHaveTextContent(
+      'P&L values are cumulative from activation, so calculations can depend on earlier activity.'
+    )
     expect(screen.getByText('Attribution sum is not representable')).toBeInTheDocument()
     expect(screen.getByText('Portfolio-wide')).toBeInTheDocument()
     expect(screen.getByRole('region', { name: 'Calculation history' })).toBeInTheDocument()

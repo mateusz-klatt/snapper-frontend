@@ -36,8 +36,12 @@ const markUnavailable: IncompletenessReasonData = {
 }
 
 describe('IncompletenessSummary', () => {
-  it('renders nothing for a complete loaded window', () => {
-    render(<IncompletenessSummary points={[point('2026-01-01T00:00:00Z', 'complete', [])]} />)
+  it('renders nothing for an empty or complete loaded window', () => {
+    const { rerender } = render(<IncompletenessSummary points={[]} />)
+
+    expect(screen.queryByTestId('pnl-incompleteness-summary')).not.toBeInTheDocument()
+
+    rerender(<IncompletenessSummary points={[point('2026-01-01T00:00:00Z', 'complete', [])]} />)
 
     expect(screen.queryByTestId('pnl-incompleteness-summary')).not.toBeInTheDocument()
   })
@@ -96,7 +100,13 @@ describe('IncompletenessSummary', () => {
     render(<IncompletenessSummary points={points} />)
 
     expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 2')
+    expect(screen.getByTestId('pnl-incompleteness-displayed-points')).toHaveTextContent(
+      '2 of 3 displayed points are incomplete.'
+    )
     expect(screen.getByText(/Counts can overlap/)).toBeInTheDocument()
+    expect(screen.getByTestId('pnl-incompleteness-cumulative-note')).toHaveTextContent(
+      'P&L values are cumulative from activation, so calculations can depend on earlier activity.'
+    )
     expect(screen.getAllByText('Execution price invalid')).toHaveLength(2)
     expect(screen.getAllByText('MARK-incomplete')).toHaveLength(2)
     expect(screen.getAllByText('UNTRUSTED')).toHaveLength(3)
@@ -165,5 +175,25 @@ describe('IncompletenessSummary', () => {
 
     expect(screen.getByText('Trigger instrument: BTC-USD · kraken')).toBeInTheDocument()
     expect(screen.getByText('Affected points: 2')).toBeInTheDocument()
+  })
+
+  it('computes N of M from actual displayed slice length rather than a fixed minute count', () => {
+    const coarsePoints = [
+      point('2026-01-01T00:00:00Z', 'complete', []),
+      point('2026-01-02T00:00:00Z', 'incomplete', [markUnavailable]),
+      point('2026-01-03T00:00:00Z', 'complete', []),
+      point('2026-01-04T00:00:00Z', 'incomplete', [markUnavailable]),
+      point('2026-01-05T00:00:00Z', 'complete', []),
+      point('2026-01-06T00:00:00Z', 'complete', []),
+      point('2026-01-07T00:00:00Z', 'incomplete', [markUnavailable]),
+    ]
+
+    render(<IncompletenessSummary points={coarsePoints} />)
+
+    expect(screen.getByTestId('pnl-incomplete-badge')).toHaveTextContent('Incomplete points: 3')
+    expect(screen.getByTestId('pnl-incompleteness-displayed-points')).toHaveTextContent(
+      '3 of 7 displayed points are incomplete.'
+    )
+    expect(screen.getByText('Affected points: 3')).toBeInTheDocument()
   })
 })

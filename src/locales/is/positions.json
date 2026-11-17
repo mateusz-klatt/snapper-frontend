@@ -47,7 +47,9 @@
     "incompleteBadge": "Ófullnægjandi punktar: {{count}}",
     "incompleteness": {
       "title": "Hvers vegna punktar eru ófullnægjandi",
+      "displayedPoints": "{{incomplete}} af {{total}} sýndum punktum eru ófullnægjandi.",
       "description": "Ástæðurnar ná yfir allt tímabilið sem var hlaðið. Talningar geta skarast þegar punktur á sér fleiri en eina orsök.",
+      "cumulativeNote": "P&L-gildi eru uppsöfnuð frá virkjun, þannig að útreikningar geta ráðist af fyrri virkni.",
       "affectedPoints": "Punktar sem þetta hefur áhrif á: {{count}}",
       "triggerInstrument": "Gerningur sem kom þessu af stað: {{instrument}}",
       "scope": {

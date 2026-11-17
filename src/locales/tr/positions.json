@@ -47,7 +47,9 @@
     "incompleteBadge": "Eksik noktalar: {{count}}",
     "incompleteness": {
       "title": "Noktalar neden eksik?",
+      "displayedPoints": "Gösterilen {{total}} noktadan {{incomplete}} tanesi eksik.",
       "description": "Nedenler, yüklenen pencerenin tamamını kapsar. Bir noktanın birden fazla nedeni olduğunda sayılar çakışabilir.",
+      "cumulativeNote": "P&L değerleri etkinleştirmeden itibaren birikimlidir; bu nedenle hesaplamalar önceki etkinliklere bağlı olabilir.",
       "affectedPoints": "Etkilenen noktalar: {{count}}",
       "triggerInstrument": "Tetikleyen enstrüman: {{instrument}}",
       "scope": {

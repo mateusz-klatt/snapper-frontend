@@ -47,7 +47,9 @@
     "incompleteBadge": "Pointí neamhiomlána: {{count}}",
     "incompleteness": {
       "title": "Cúiseanna le pointí neamhiomlána",
+      "displayedPoints": "Tá {{incomplete}} as {{total}} pointe ar taispeáint neamhiomlán.",
       "description": "Clúdaíonn na cúiseanna an fhuinneog lódáilte ina hiomláine. Féadfaidh na comhairimh forluí nuair a bhíonn níos mó ná cúis amháin le pointe.",
+      "cumulativeNote": "Is luachanna carntha ón ngníomhachtú iad luachanna P&L, mar sin féadfaidh ríomhanna brath ar ghníomhaíocht níos luaithe.",
       "affectedPoints": "Pointí lena mbaineann: {{count}}",
       "triggerInstrument": "Ionstraim truicir: {{instrument}}",
       "scope": {

@@ -47,7 +47,9 @@
     "incompleteBadge": "Points incomplets : {{count}}",
     "incompleteness": {
       "title": "Pourquoi certains points sont incomplets",
+      "displayedPoints": "{{incomplete}} sur {{total}} points affichés sont incomplets.",
       "description": "Les motifs couvrent toute la période chargée. Un même point peut être comptabilisé plusieurs fois s'il a plusieurs causes.",
+      "cumulativeNote": "Les valeurs de P&L sont cumulées depuis l’activation ; les calculs peuvent donc dépendre d’une activité antérieure.",
       "affectedPoints": "Points concernés : {{count}}",
       "triggerInstrument": "Instrument déclencheur : {{instrument}}",
       "scope": {

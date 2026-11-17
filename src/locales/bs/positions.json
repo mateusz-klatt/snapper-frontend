@@ -47,7 +47,9 @@
     "incompleteBadge": "Nepotpune tačke: {{count}}",
     "incompleteness": {
       "title": "Zašto su tačke nepotpune",
+      "displayedPoints": "Nepotpuno prikazanih tačaka: {{incomplete}} od {{total}}.",
       "description": "Razlozi obuhvataju cijeli učitani raspon. Brojevi se mogu preklapati kada tačka ima više uzroka.",
+      "cumulativeNote": "Vrijednosti P&L su kumulativne od aktivacije, pa izračuni mogu zavisiti od ranije aktivnosti.",
       "affectedPoints": "Obuhvaćene tačke: {{count}}",
       "triggerInstrument": "Instrument koji je bio okidač: {{instrument}}",
       "scope": {

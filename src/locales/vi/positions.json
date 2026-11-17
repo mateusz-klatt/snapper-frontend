@@ -47,7 +47,9 @@
     "incompleteBadge": "Điểm chưa đầy đủ: {{count}}",
     "incompleteness": {
       "title": "Vì sao điểm dữ liệu chưa đầy đủ",
+      "displayedPoints": "{{incomplete}} trên {{total}} điểm đang hiển thị chưa đầy đủ.",
       "description": "Các lý do áp dụng cho toàn bộ khoảng thời gian đã tải. Số lượng có thể trùng lặp khi một điểm có nhiều nguyên nhân.",
+      "cumulativeNote": "Giá trị P&L được cộng dồn từ thời điểm kích hoạt, nên các phép tính có thể phụ thuộc vào hoạt động trước đó.",
       "affectedPoints": "Điểm bị ảnh hưởng: {{count}}",
       "triggerInstrument": "Công cụ kích hoạt: {{instrument}}",
       "scope": {

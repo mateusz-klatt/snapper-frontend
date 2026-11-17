@@ -47,7 +47,9 @@
     "incompleteBadge": "Pika të paplota: {{count}}",
     "incompleteness": {
       "title": "Pse pikat janë të paplota",
+      "displayedPoints": "{{incomplete}} nga {{total}} pika të shfaqura janë të paplota.",
       "description": "Arsyet mbulojnë të gjithë intervalin e ngarkuar. Numërimet mund të mbivendosen kur një pikë ka më shumë se një shkak.",
+      "cumulativeNote": "Vlerat e P&L janë kumulative që nga aktivizimi, ndaj përllogaritjet mund të varen nga aktiviteti i mëparshëm.",
       "affectedPoints": "Pika të prekura: {{count}}",
       "triggerInstrument": "Instrumenti nxitës: {{instrument}}",
       "scope": {

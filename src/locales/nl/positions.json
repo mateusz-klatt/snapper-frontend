@@ -47,7 +47,9 @@
     "incompleteBadge": "Onvolledige punten: {{count}}",
     "incompleteness": {
       "title": "Waarom punten onvolledig zijn",
+      "displayedPoints": "{{incomplete}} van {{total}} getoonde punten zijn onvolledig.",
       "description": "De redenen hebben betrekking op het volledige geladen venster. Aantallen kunnen overlappen wanneer een punt meer dan één oorzaak heeft.",
+      "cumulativeNote": "P&L-waarden zijn cumulatief vanaf de activering, waardoor berekeningen kunnen afhangen van eerdere activiteit.",
       "affectedPoints": "Betrokken punten: {{count}}",
       "triggerInstrument": "Activerend instrument: {{instrument}}",
       "scope": {

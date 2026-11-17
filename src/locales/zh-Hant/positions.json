@@ -47,7 +47,9 @@
     "incompleteBadge": "不完整數據點：{{count}}",
     "incompleteness": {
       "title": "數據點不完整的原因",
+      "displayedPoints": "所顯示的 {{total}} 個數據點中有 {{incomplete}} 個不完整。",
       "description": "原因涵蓋整個已載入時間範圍。若一個數據點有多個原因，計數可能重疊。",
+      "cumulativeNote": "P&L 數值自啟用起累計計算，因此結果可能取決於更早的交易活動。",
       "affectedPoints": "受影響數據點：{{count}}",
       "triggerInstrument": "觸發品種：{{instrument}}",
       "scope": {

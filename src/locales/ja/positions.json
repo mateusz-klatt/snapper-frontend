@@ -47,7 +47,9 @@
     "incompleteBadge": "不完全なデータポイント：{{count}}件",
     "incompleteness": {
       "title": "データポイントが不完全な理由",
+      "displayedPoints": "表示されている{{total}}件のデータポイントのうち{{incomplete}}件が不完全です。",
       "description": "理由は読み込み済み期間全体を対象とします。1つのデータポイントに複数の原因がある場合、件数は重複することがあります。",
+      "cumulativeNote": "P&L値は有効化時点からの累積であるため、計算はそれ以前の取引履歴に依存する場合があります。",
       "affectedPoints": "該当データポイント：{{count}}件",
       "triggerInstrument": "トリガー銘柄：{{instrument}}",
       "scope": {

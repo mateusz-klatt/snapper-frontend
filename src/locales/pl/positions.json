@@ -47,7 +47,9 @@
     "incompleteBadge": "Punkty z niepełną wyceną: {{count}}",
     "incompleteness": {
       "title": "Dlaczego punkty są niepełne",
+      "displayedPoints": "Niepełne punkty wśród wyświetlanych: {{incomplete}} z {{total}}.",
       "description": "Powody dotyczą całego wczytanego zakresu. Liczby mogą się nakładać, gdy punkt ma więcej niż jedną przyczynę.",
+      "cumulativeNote": "Wartości P&L są skumulowane od momentu aktywacji, dlatego obliczenia mogą zależeć od wcześniejszej aktywności.",
       "affectedPoints": "Dotknięte punkty: {{count}}",
       "triggerInstrument": "Instrument wyzwalający: {{instrument}}",
       "scope": {

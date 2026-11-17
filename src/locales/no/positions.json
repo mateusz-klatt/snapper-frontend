@@ -47,7 +47,9 @@
     "incompleteBadge": "Ufullstendige punkter: {{count}}",
     "incompleteness": {
       "title": "Hvorfor punkter er ufullstendige",
+      "displayedPoints": "{{incomplete}} av {{total}} viste punkter er ufullstendige.",
       "description": "Årsakene gjelder hele det innlastede vinduet. Antallene kan overlappe når et punkt har mer enn én årsak.",
+      "cumulativeNote": "P&L-verdier er kumulative fra aktiveringen, så beregninger kan avhenge av tidligere aktivitet.",
       "affectedPoints": "Berørte punkter: {{count}}",
       "triggerInstrument": "Utløsende instrument: {{instrument}}",
       "scope": {

@@ -47,7 +47,9 @@
     "incompleteBadge": "Incomplete points: {{count}}",
     "incompleteness": {
       "title": "Why points are incomplete",
+      "displayedPoints": "{{incomplete}} of {{total}} displayed points are incomplete.",
       "description": "Reasons cover the full loaded window. Counts can overlap when a point has more than one cause.",
+      "cumulativeNote": "P&L values are cumulative from activation, so calculations can depend on earlier activity.",
       "affectedPoints": "Affected points: {{count}}",
       "triggerInstrument": "Trigger instrument: {{instrument}}",
       "scope": {

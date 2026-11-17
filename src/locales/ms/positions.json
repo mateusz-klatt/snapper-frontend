@@ -47,7 +47,9 @@
     "incompleteBadge": "Titik tidak lengkap: {{count}}",
     "incompleteness": {
       "title": "Mengapa titik tidak lengkap",
+      "displayedPoints": "{{incomplete}} daripada {{total}} titik yang dipaparkan tidak lengkap.",
       "description": "Sebab merangkumi keseluruhan julat yang dimuatkan. Bilangan boleh bertindih apabila satu titik mempunyai lebih daripada satu punca.",
+      "cumulativeNote": "Nilai P&L adalah terkumpul sejak pengaktifan, jadi pengiraan boleh bergantung pada aktiviti terdahulu.",
       "affectedPoints": "Titik terjejas: {{count}}",
       "triggerInstrument": "Instrumen pencetus: {{instrument}}",
       "scope": {
