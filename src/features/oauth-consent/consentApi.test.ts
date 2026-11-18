@@ -97,14 +97,14 @@ describe('consentApi', () => {
       approveConsent({ request: 'r', operatorPublicId: 'op-1', replaceExistingGrant: true })
     ).resolves.toBe('https://client.example/cb')
     expect(postJSON).toHaveBeenCalledWith('/api/mcp-oauth/consent/approve', {
-      request: 'r',
+      oauth_request: 'r',
       operator_public_id: 'op-1',
       replace_existing_grant: true,
     })
 
     await expect(denyConsent('r', null)).resolves.toBe('https://client.example/cb')
     expect(postJSON).toHaveBeenLastCalledWith('/api/mcp-oauth/consent/deny', {
-      request: 'r',
+      oauth_request: 'r',
       operator_public_id: null,
     })
   })

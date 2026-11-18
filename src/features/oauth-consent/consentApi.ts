@@ -109,7 +109,7 @@ export interface ApproveInput {
 export const approveConsent = async (input: ApproveInput): Promise<string> =>
   redirectOf(
     await apiClient.postJSON<PayloadEnvelope<ConsentRedirect>>(`${CONSENT_URL}/approve`, {
-      request: input.request,
+      oauth_request: input.request,
       operator_public_id: input.operatorPublicId,
       replace_existing_grant: input.replaceExistingGrant,
     })
@@ -121,7 +121,7 @@ export const denyConsent = async (
 ): Promise<string> =>
   redirectOf(
     await apiClient.postJSON<PayloadEnvelope<ConsentRedirect>>(`${CONSENT_URL}/deny`, {
-      request,
+      oauth_request: request,
       operator_public_id: operatorPublicId,
     })
   )
