@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import App from './App'
 import { AuthenticatedApp } from './components/AuthenticatedApp'
 import AuthErrorBoundary from './components/auth/AuthErrorBoundary'
@@ -8,6 +8,7 @@ import { apiClient } from './lib/apiClient'
 import { resolveFinancialColorConvention } from './theme/financialColorPreference'
 import { OAUTH_CONSENT_PATH } from './features/oauth-consent/consentApi'
 import { OAuthConsentPage } from './features/oauth-consent/OAuthConsentPage'
+import { captureConsentRequest } from './features/oauth-consent/consentRequest'
 
 function AppWithAuth() {
   const { isAuthenticated, refreshToken } = useAuth()
@@ -59,16 +60,19 @@ function AppWithAuth() {
     void initializeAuth()
   }, [isAuthenticated, refreshToken])
 
-  const isConsentRoute = globalThis.location.pathname === OAUTH_CONSENT_PATH
+  const [isConsentRoute] = useState(() => {
+    const consentRoute = globalThis.location.pathname === OAUTH_CONSENT_PATH
+
+    if (consentRoute) captureConsentRequest()
+
+    return consentRoute
+  })
 
   return (
     <AuthErrorBoundary key={`auth-${isAuthenticated}`}>
       <AuthenticatedApp>
         {isConsentRoute ? (
-          <OAuthConsentPage
-            search={globalThis.location.search}
-            navigate={url => globalThis.location.assign(url)}
-          />
+          <OAuthConsentPage navigate={url => globalThis.location.assign(url)} />
         ) : (
           <App />
         )}

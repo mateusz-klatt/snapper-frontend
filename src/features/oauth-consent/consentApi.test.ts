@@ -5,7 +5,6 @@ import {
   classifyConsentError,
   denyConsent,
   fetchConsent,
-  readConsentRequest,
   safeRedirectTarget,
   scopesApprovable,
 } from './consentApi'
@@ -31,12 +30,6 @@ const apiError = (status: number, details?: unknown): APIError =>
 describe('consentApi', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-  })
-
-  it('reads the opaque request once from the query string', () => {
-    expect(readConsentRequest('?request=abc%2Bdef&other=1')).toBe('abc+def')
-    expect(readConsentRequest('?request=')).toBeNull()
-    expect(readConsentRequest('')).toBeNull()
   })
 
   it('approves only read access that includes snapper.read', () => {
@@ -78,7 +71,7 @@ describe('consentApi', () => {
     expect(classifyConsentError(new Error('network'))).toBe('unknown')
   })
 
-  it('loads the consent payload without the app scope parameters', async () => {
+  it('loads the consent payload with the capability only in a request header', async () => {
     const details = {
       client_name: 'Claude',
       scopes: ['snapper.read'],
@@ -90,9 +83,10 @@ describe('consentApi', () => {
 
     requestJSON.mockResolvedValue({ type: 'mcp_oauth_consent_request', payload: details })
 
-    await expect(fetchConsent('a b')).resolves.toEqual(details)
-    expect(requestJSON).toHaveBeenCalledWith('/api/mcp-oauth/consent?request=a%20b', {
+    await expect(fetchConsent('opaque-1')).resolves.toEqual(details)
+    expect(requestJSON).toHaveBeenCalledWith('/api/mcp-oauth/consent', {
       method: 'GET',
+      headers: { 'X-MCP-OAuth-Request': 'opaque-1' },
     })
   })
 

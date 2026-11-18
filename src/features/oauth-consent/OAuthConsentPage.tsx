@@ -9,12 +9,12 @@ import {
   denyConsent,
   fetchConsent,
   isAllowedScope,
-  readConsentRequest,
   scopesApprovable,
   type ConsentDetails,
   type ConsentOperator,
   type ConsentErrorKind,
 } from './consentApi'
+import { releaseConsentRequest, useConsentFlow } from './consentRequest'
 
 type TerminalKind = Exclude<ConsentErrorKind, 'replacement_required'> | 'expired'
 
@@ -44,15 +44,26 @@ const initialOperator = (details: ConsentDetails): string | null =>
   details.operators.length === 1 ? (details.operators.at(0) as ConsentOperator).public_id : null
 
 interface OAuthConsentPageProps {
-  search: string
   navigate: (url: string) => void
 }
 
 export function OAuthConsentPage({
-  search,
   navigate,
 }: Readonly<OAuthConsentPageProps>): React.ReactElement {
-  const [request] = useState(() => readConsentRequest(search))
+  const flow = useConsentFlow()
+
+  return <ConsentFlowView key={flow.generation} request={flow.request} navigate={navigate} />
+}
+
+interface ConsentFlowViewProps {
+  request: string | null
+  navigate: (url: string) => void
+}
+
+function ConsentFlowView({
+  request,
+  navigate,
+}: Readonly<ConsentFlowViewProps>): React.ReactElement {
   const [state, setState] = useState<PageState>(() =>
     request === null ? { status: 'failed', kind: 'invalid_request' } : { status: 'loading' }
   )
@@ -77,6 +88,12 @@ export function OAuthConsentPage({
       active = false
     }
   }, [request])
+
+  const terminal = state.status === 'failed' || state.status === 'redirecting'
+
+  useEffect(() => {
+    if (terminal) releaseConsentRequest()
+  }, [terminal])
 
   const deadline = state.status === 'ready' ? state.deadline : null
 

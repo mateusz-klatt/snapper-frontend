@@ -69,12 +69,6 @@ export const isAllowedScope = (scope: string): scope is AllowedScope =>
 export const scopesApprovable = (scopes: readonly string[]): boolean =>
   scopes.includes('snapper.read') && scopes.every(isAllowedScope)
 
-export const readConsentRequest = (search: string): string | null => {
-  const value = new URLSearchParams(search).get('request')
-
-  return value === null || value.length === 0 ? null : value
-}
-
 export const safeRedirectTarget = (value: unknown): string | null => {
   if (typeof value !== 'string') return null
 
@@ -95,11 +89,13 @@ const redirectOf = (response: PayloadEnvelope<ConsentRedirect>): string => {
   return target
 }
 
+const CONSENT_REQUEST_HEADER = 'X-MCP-OAuth-Request'
+
 export const fetchConsent = async (request: string): Promise<ConsentDetails> => {
-  const response = await apiClient.requestJSON<PayloadEnvelope<ConsentDetails>>(
-    `${CONSENT_URL}?request=${encodeURIComponent(request)}`,
-    { method: 'GET' }
-  )
+  const response = await apiClient.requestJSON<PayloadEnvelope<ConsentDetails>>(CONSENT_URL, {
+    method: 'GET',
+    headers: { [CONSENT_REQUEST_HEADER]: request },
+  })
 
   return response.payload
 }

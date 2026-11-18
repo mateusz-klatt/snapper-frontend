@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { APIError } from '../../lib/api/error'
 import { OAuthConsentPage } from './OAuthConsentPage'
 import type { ConsentDetails } from './consentApi'
+import { releaseConsentRequest } from './consentRequest'
 
 const fetchConsent = vi.fn()
 const approveConsent = vi.fn()
@@ -43,9 +44,11 @@ const deferred = <T,>() => {
   return { promise, resolve, reject }
 }
 
-const renderPage = (search = '?request=opaque-1') => {
+const renderPage = (fragment = '#request=opaque-1') => {
   const navigate = vi.fn()
-  const view = render(<OAuthConsentPage search={search} navigate={navigate} />)
+
+  globalThis.history.replaceState(null, '', `/oauth/authorize${fragment}`)
+  const view = render(<OAuthConsentPage navigate={navigate} />)
 
   return { navigate, ...view }
 }
@@ -55,10 +58,12 @@ const approveButton = (): HTMLElement => screen.getByRole('button', { name: 'All
 describe('OAuthConsentPage', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    releaseConsentRequest()
   })
 
   afterEach(() => {
     vi.useRealTimers()
+    globalThis.history.replaceState(null, '', '/')
   })
 
   it('rejects a missing request without contacting the backend', () => {
@@ -68,6 +73,50 @@ describe('OAuthConsentPage', () => {
       'This authorization request is no longer valid'
     )
     expect(fetchConsent).not.toHaveBeenCalled()
+  })
+
+  it('keeps the captured request across a remount and forgets it after the decision', async () => {
+    const user = userEvent.setup()
+
+    fetchConsent.mockResolvedValue(details())
+    denyConsent.mockResolvedValue('https://client.example/cb?error=access_denied')
+    const first = renderPage()
+
+    await screen.findByRole('button', { name: 'Deny' })
+    expect(globalThis.location.hash).toBe('')
+    first.unmount()
+
+    const second = renderPage('')
+
+    await user.click(await screen.findByRole('button', { name: 'Deny' }))
+    expect(fetchConsent).toHaveBeenNthCalledWith(2, 'opaque-1')
+    expect(second.navigate).toHaveBeenCalledWith('https://client.example/cb?error=access_denied')
+    second.unmount()
+
+    renderPage('')
+    expect(screen.getByRole('alert')).toHaveTextContent(
+      'This authorization request is no longer valid'
+    )
+    expect(fetchConsent).toHaveBeenCalledTimes(2)
+  })
+
+  it('starts over when a new authorization fragment arrives', async () => {
+    fetchConsent.mockImplementation(async (request: string) =>
+      details({ client_name: request === 'opaque-2' ? 'ChatGPT' : 'Claude' })
+    )
+    renderPage()
+
+    await screen.findByText('Claude is asking to connect to your Snapper account.')
+
+    act(() => {
+      globalThis.history.replaceState(null, '', '/oauth/authorize#request=opaque-2')
+      globalThis.dispatchEvent(new HashChangeEvent('hashchange'))
+    })
+
+    expect(
+      await screen.findByText('ChatGPT is asking to connect to your Snapper account.')
+    ).toBeInTheDocument()
+    expect(fetchConsent).toHaveBeenLastCalledWith('opaque-2')
   })
 
   it('shows the request, the read-only guarantee and approves for the only operator', async () => {
@@ -264,7 +313,7 @@ describe('OAuthConsentPage', () => {
 
     fetchConsent.mockReturnValueOnce(success.promise).mockReturnValueOnce(failure.promise)
     const first = renderPage()
-    const second = renderPage('?request=opaque-2')
+    const second = renderPage('#request=opaque-2')
 
     first.unmount()
     second.unmount()
