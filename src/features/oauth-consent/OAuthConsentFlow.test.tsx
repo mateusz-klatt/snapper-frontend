@@ -54,14 +54,16 @@ describe('OAuth consent entry flow', () => {
 
   it('keeps the capability out of every URL from unauthenticated entry through login', async () => {
     const user = userEvent.setup()
-    const fetchMock = vi.fn(async (input: RequestInfo | URL): Promise<Response> => {
-      const url = String(input)
+    const fetchMock = vi.fn(
+      async (input: RequestInfo | URL, _init?: RequestInit): Promise<Response> => {
+        const url = String(input)
 
-      if (url === '/api/auth/login') return loginResponse()
-      if (url === '/api/mcp-oauth/consent') return consentResponse()
+        if (url === '/api/auth/login') return loginResponse()
+        if (url === '/api/mcp-oauth/consent') return consentResponse()
 
-      return json({ detail: 'unexpected' }, 404)
-    })
+        return json({ detail: 'unexpected' }, 404)
+      }
+    )
 
     vi.stubGlobal('fetch', fetchMock)
     globalThis.history.replaceState(null, '', `/oauth/authorize#request=${SENTINEL}`)
@@ -80,7 +82,7 @@ describe('OAuth consent entry flow', () => {
     expect(screen.queryByTestId('app')).not.toBeInTheDocument()
 
     const consentCall = fetchMock.mock.calls.find(([url]) => url === '/api/mcp-oauth/consent')
-    const headers = new Headers((consentCall?.[1] as RequestInit).headers)
+    const headers = new Headers(consentCall?.[1]?.headers)
 
     expect(headers.get('X-MCP-OAuth-Request')).toBe(SENTINEL)
     expect(fetchMock.mock.calls.every(([url]) => !String(url).includes(SENTINEL))).toBe(true)
