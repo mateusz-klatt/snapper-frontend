@@ -46,7 +46,6 @@ type OpenApiOperationDeactivateUserApiAuthUsersUserIdDeactivatePost = Operations
 type OpenApiOperationDeleteDeviceApiDevicesDevicePublicIdDelete = Operations["delete_device_api_devices__device_public_id__delete"];
 type OpenApiOperationDenyConsentApiMcpOauthConsentDenyPost = Operations["deny_consent_api_mcp_oauth_consent_deny_post"];
 type OpenApiOperationDetachViewerFromDeskApiAuthDesksOperatorPublicIdMembersUsernameDelete = Operations["detach_viewer_from_desk_api_auth_desks__operator_public_id__members__username__delete"];
-type OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete = Operations["dynamic_client_registration_api_mcp_register_delete"];
 type OpenApiOperationGetAiReviewAftermathRouteApiAiReviewsReviewPublicIdAftermathGet = Operations["get_ai_review_aftermath_route_api_ai_reviews__review_public_id__aftermath_get"];
 type OpenApiOperationGetAlertEventApiAlertsAlertPublicIdGet = Operations["get_alert_event_api_alerts__alert_public_id__get"];
 type OpenApiOperationGetAllSettingsApiSettingsGet = Operations["get_all_settings_api_settings_get"];
@@ -587,12 +586,6 @@ export type Paths = {
     }>;
     "/api/mcp-oauth/consent/deny": OpenApiPathItem<{
         post: OpenApiOperationDenyConsentApiMcpOauthConsentDenyPost;
-    }>;
-    "/api/mcp/register": OpenApiPathItem<{
-        get: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
-        put: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
-        post: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
-        delete: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
     }>;
 };
 export type webhooks = Record<string, never>;
@@ -8965,82 +8958,6 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["ConsentRedirectResponse"];
-                };
-            };
-        };
-    };
-    dynamic_client_registration_api_mcp_register_delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": unknown;
-                };
-            };
-        };
-    };
-    dynamic_client_registration_api_mcp_register_delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": unknown;
-                };
-            };
-        };
-    };
-    dynamic_client_registration_api_mcp_register_delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": unknown;
-                };
-            };
-        };
-    };
-    dynamic_client_registration_api_mcp_register_delete: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": unknown;
                 };
             };
         };
