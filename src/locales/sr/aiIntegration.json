@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopiraj konfiguracioni isečak u privremenu memoriju",
     "copy": "Kopiraj u privremenu memoriju",
     "copied": "Kopirano"
+  },
+  "consent": {
+    "title": "Odobrite AI konektor",
+    "loading": "Učitavanje zahteva za autorizaciju…",
+    "intro": "{{client}} traži povezivanje sa vašim Snapper nalogom.",
+    "readOnlyGuarantee": "Pristup samo za čitanje, ograničen na vaše postojeće dozvole. Ovaj konektor ne može postavljati, menjati ni otkazivati naloge.",
+    "scopesHeading": "Traženi pristup",
+    "scopes": {
+      "snapperRead": "Čitanje tržišnih podataka, naloga, pozicija i signala, samo u okviru vaših sopstvenih dozvola.",
+      "offlineAccess": "Ostanite povezani bez ponovnog zahteva za prijavu."
+    },
+    "unrecognizedScope": "Neprepoznata dozvola: {{scope}}",
+    "notApprovable": "Ovim zahtevom traži se pristup koji Snapper ne može da odobri. Odbijte ga i proverite konfiguraciju konektora.",
+    "resourceLabel": "Resurs",
+    "operatorLabel": "Operater",
+    "operatorPlaceholder": "Izaberite operatera",
+    "approve": "Dozvoli pristup",
+    "deny": "Odbij",
+    "redirecting": "Povratak na konektor…",
+    "submitFailed": "Odluku nije bilo moguće poslati. Pokušajte ponovo.",
+    "replace": {
+      "title": "Zameniti postojeću vezu?",
+      "message": "{{client}} već ima vezu sa drugačijim pristupom. Odobravanje ovog zahteva opoziva postojeću vezu i zamenjuje je novom.",
+      "confirm": "Zameni vezu",
+      "cancel": "Zadrži postojeću"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Ovaj zahtev za autorizaciju više nije važeći",
+        "message": "Možda je istekao ili je već iskorišćen. Ponovo pokrenite povezivanje iz konektora."
+      },
+      "expired": {
+        "title": "Ovaj zahtev za autorizaciju je istekao",
+        "message": "Ponovo pokrenite povezivanje iz konektora."
+      },
+      "accessDenied": {
+        "title": "Ne možete da odobrite ovaj konektor",
+        "message": "Vaš nalog nema dozvolu za upravljanje AI integracijama za ovog operatera."
+      },
+      "disabled": {
+        "title": "AI integracija je onemogućena",
+        "message": "Administrator mora da omogući AI integraciju pre nego što se konektori mogu odobriti."
+      },
+      "unknown": {
+        "title": "Došlo je do greške",
+        "message": "Zahtev za autorizaciju nije bilo moguće učitati. Pokušajte ponovo kasnije."
+      }
+    }
   }
 }

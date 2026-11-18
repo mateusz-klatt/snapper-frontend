@@ -129,5 +129,53 @@
     "copyAriaLabel": "Copia lo snippet di configurazione negli appunti",
     "copy": "Copia negli appunti",
     "copied": "Copiato"
+  },
+  "consent": {
+    "title": "Autorizza un connettore AI",
+    "loading": "Caricamento della richiesta di autorizzazione…",
+    "intro": "{{client}} chiede di connettersi al tuo account Snapper.",
+    "readOnlyGuarantee": "Accesso in sola lettura limitato alle tue autorizzazioni attuali. Questo connettore non può inserire, modificare o annullare ordini.",
+    "scopesHeading": "Accesso richiesto",
+    "scopes": {
+      "snapperRead": "Leggere dati di mercato, ordini, posizioni e segnali, solo nei limiti consentiti dalle tue autorizzazioni.",
+      "offlineAccess": "Mantenere la connessione senza chiederti di effettuare nuovamente l’accesso."
+    },
+    "unrecognizedScope": "Autorizzazione non riconosciuta: {{scope}}",
+    "notApprovable": "Questa richiesta prevede un accesso che Snapper non può concedere. Rifiutala e verifica la configurazione del connettore.",
+    "resourceLabel": "Risorsa",
+    "operatorLabel": "Operatore",
+    "operatorPlaceholder": "Seleziona un operatore",
+    "approve": "Consenti accesso",
+    "deny": "Rifiuta",
+    "redirecting": "Ritorno al connettore…",
+    "submitFailed": "Impossibile inviare la decisione. Riprova.",
+    "replace": {
+      "title": "Sostituire la connessione esistente?",
+      "message": "{{client}} dispone già di una connessione con autorizzazioni di accesso diverse. Consentendo questa richiesta, la connessione esistente viene revocata e sostituita.",
+      "confirm": "Sostituisci connessione",
+      "cancel": "Mantieni quella esistente"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Questa richiesta di autorizzazione non è più valida",
+        "message": "Potrebbe essere scaduta o essere già stata utilizzata. Avvia nuovamente la connessione dal connettore."
+      },
+      "expired": {
+        "title": "Questa richiesta di autorizzazione è scaduta",
+        "message": "Avvia nuovamente la connessione dal connettore."
+      },
+      "accessDenied": {
+        "title": "Non puoi autorizzare questo connettore",
+        "message": "Il tuo account non dispone dell’autorizzazione per gestire le integrazioni AI per questo operatore."
+      },
+      "disabled": {
+        "title": "L’integrazione AI è disabilitata",
+        "message": "Un amministratore deve abilitare l’integrazione AI prima che sia possibile autorizzare i connettori."
+      },
+      "unknown": {
+        "title": "Si è verificato un errore",
+        "message": "Impossibile caricare la richiesta di autorizzazione. Riprova più tardi."
+      }
+    }
   }
 }

@@ -129,5 +129,53 @@
     "copyAriaLabel": "將配置片段複製到剪貼簿",
     "copy": "複製到剪貼簿",
     "copied": "已複製"
+  },
+  "consent": {
+    "title": "授權 AI 連接器",
+    "loading": "正在載入授權請求…",
+    "intro": "{{client}} 請求連線至您的 Snapper 帳戶。",
+    "readOnlyGuarantee": "僅提供唯讀存取，且存取範圍僅限於您現有的權限。此連接器無法下單、修改訂單或撤單。",
+    "scopesHeading": "請求的存取權限",
+    "scopes": {
+      "snapperRead": "僅在您自身權限允許的範圍內讀取市場資料、訂單、持倉和訊號。",
+      "offlineAccess": "保持連線，無需您再次登入。"
+    },
+    "unrecognizedScope": "無法識別的權限：{{scope}}",
+    "notApprovable": "此請求要求的存取權限超出了 Snapper 可授予的範圍。請拒絕此請求並檢查連接器的配置。",
+    "resourceLabel": "資源",
+    "operatorLabel": "操作員",
+    "operatorPlaceholder": "選擇操作員",
+    "approve": "允許存取",
+    "deny": "拒絕",
+    "redirecting": "正在返回連接器…",
+    "submitFailed": "無法提交您的決定。請重試。",
+    "replace": {
+      "title": "取代現有連線？",
+      "message": "{{client}} 已有一個存取權限不同的連線。允許此請求將撤銷現有連線並將其取代。",
+      "confirm": "取代連線",
+      "cancel": "保留現有連線"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "此授權請求已失效",
+        "message": "此請求可能已過期或已被使用。請從連接器重新發起連線。"
+      },
+      "expired": {
+        "title": "此授權請求已過期",
+        "message": "請從連接器重新發起連線。"
+      },
+      "accessDenied": {
+        "title": "您無法授權此連接器",
+        "message": "您的帳戶無權管理此操作員的 AI 整合。"
+      },
+      "disabled": {
+        "title": "AI 整合已停用",
+        "message": "管理員必須先啟用 AI 整合，才能授權連接器。"
+      },
+      "unknown": {
+        "title": "發生錯誤",
+        "message": "無法載入授權請求。請稍後重試。"
+      }
+    }
   }
 }

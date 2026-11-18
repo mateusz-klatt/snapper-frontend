@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopēt konfigurācijas fragmentu starpliktuvē",
     "copy": "Kopēt starpliktuvē",
     "copied": "Nokopēts"
+  },
+  "consent": {
+    "title": "Autorizēt AI savienotāju",
+    "loading": "Notiek autorizācijas pieprasījuma ielāde…",
+    "intro": "{{client}} lūdz izveidot savienojumu ar jūsu Snapper kontu.",
+    "readOnlyGuarantee": "Tikai lasīšanas piekļuve jūsu esošo atļauju robežās. Šis savienotājs nevar iesniegt, mainīt vai atcelt rīkojumus.",
+    "scopesHeading": "Pieprasītā piekļuve",
+    "scopes": {
+      "snapperRead": "Tirgus datu, rīkojumu, pozīciju un signālu lasīšana tikai jūsu pašu atļauju robežās.",
+      "offlineAccess": "Savienojuma uzturēšana, nelūdzot jums atkārtoti pierakstīties."
+    },
+    "unrecognizedScope": "Neatpazīta atļauja: {{scope}}",
+    "notApprovable": "Šajā pieprasījumā tiek lūgta piekļuve, ko Snapper nevar piešķirt. Noraidiet to un pārbaudiet savienotāja konfigurāciju.",
+    "resourceLabel": "Resurss",
+    "operatorLabel": "Operators",
+    "operatorPlaceholder": "Izvēlieties operatoru",
+    "approve": "Atļaut piekļuvi",
+    "deny": "Noraidīt",
+    "redirecting": "Atgriešanās pie savienotāja…",
+    "submitFailed": "Neizdevās nosūtīt lēmumu. Mēģiniet vēlreiz.",
+    "replace": {
+      "title": "Aizstāt esošo savienojumu?",
+      "message": "{{client}} jau ir savienojums ar atšķirīgu piekļuvi. Apstiprinot šo pieprasījumu, esošais savienojums tiks atsaukts un aizstāts ar jaunu.",
+      "confirm": "Aizstāt savienojumu",
+      "cancel": "Saglabāt esošo"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Šis autorizācijas pieprasījums vairs nav derīgs",
+        "message": "Iespējams, tā derīguma termiņš ir beidzies vai tas jau ir izmantots. Sāciet savienojuma izveidi vēlreiz no savienotāja."
+      },
+      "expired": {
+        "title": "Šī autorizācijas pieprasījuma derīguma termiņš ir beidzies",
+        "message": "Sāciet savienojuma izveidi vēlreiz no savienotāja."
+      },
+      "accessDenied": {
+        "title": "Jūs nevarat autorizēt šo savienotāju",
+        "message": "Jūsu kontam nav atļaujas pārvaldīt šī operatora AI integrācijas."
+      },
+      "disabled": {
+        "title": "AI integrācija ir izslēgta",
+        "message": "Lai savienotājus varētu autorizēt, administratoram jāieslēdz AI integrācija."
+      },
+      "unknown": {
+        "title": "Radās kļūda",
+        "message": "Neizdevās ielādēt autorizācijas pieprasījumu. Mēģiniet vēlreiz vēlāk."
+      }
+    }
   }
 }

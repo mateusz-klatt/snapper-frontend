@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopyahin ang config snippet sa clipboard",
     "copy": "Kopyahin sa clipboard",
     "copied": "Nakopya"
+  },
+  "consent": {
+    "title": "Pahintulutan ang konektor ng AI",
+    "loading": "Nilo-load ang kahilingan sa pahintulot…",
+    "intro": "Humihiling ang {{client}} na kumonekta sa iyong Snapper account.",
+    "readOnlyGuarantee": "Para sa pagbasa lamang ang pag-access at limitado sa iyong kasalukuyang mga pahintulot. Hindi maaaring maglagay, magbago o magkansela ng mga order ang konektor na ito.",
+    "scopesHeading": "Hinihiling na pag-access",
+    "scopes": {
+      "snapperRead": "Basahin ang datos ng merkado, mga order, posisyon at signal, sa saklaw lamang na pinapayagan ng sarili mong mga pahintulot.",
+      "offlineAccess": "Manatiling nakakonekta nang hindi ka hinihilingang mag-sign in muli."
+    },
+    "unrecognizedScope": "Hindi kinikilalang pahintulot: {{scope}}",
+    "notApprovable": "Humihiling ito ng pag-access na hindi maibibigay ng Snapper. Tanggihan ang kahilingan at suriin ang pagsasaayos ng konektor.",
+    "resourceLabel": "Pinagkukunan",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Pumili ng operator",
+    "approve": "Payagan ang pag-access",
+    "deny": "Tanggihan",
+    "redirecting": "Ibinabalik ka sa konektor…",
+    "submitFailed": "Hindi maipadala ang desisyon. Subukan muli.",
+    "replace": {
+      "title": "Palitan ang kasalukuyang koneksyon?",
+      "message": "May koneksyon na ang {{client}} na may ibang pag-access. Kapag pinayagan ang kahilingang ito, ire-revoke at papalitan ang kasalukuyang koneksyon.",
+      "confirm": "Palitan ang koneksyon",
+      "cancel": "Panatilihin ang kasalukuyang koneksyon"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Hindi na balido ang kahilingan sa pahintulot na ito",
+        "message": "Maaaring nag-expire na ito o nagamit na. Simulang muli ang koneksyon mula sa konektor."
+      },
+      "expired": {
+        "title": "Nag-expire na ang kahilingan sa pahintulot na ito",
+        "message": "Simulang muli ang koneksyon mula sa konektor."
+      },
+      "accessDenied": {
+        "title": "Hindi mo maaaring pahintulutan ang konektor na ito",
+        "message": "Walang pahintulot ang iyong account na pamahalaan ang mga integrasyon ng AI para sa operator na ito."
+      },
+      "disabled": {
+        "title": "Naka-disable ang integrasyon ng AI",
+        "message": "Dapat munang i-enable ng tagapangasiwa ang integrasyon ng AI bago mapahintulutan ang mga konektor."
+      },
+      "unknown": {
+        "title": "Nagkaroon ng problema",
+        "message": "Hindi ma-load ang kahilingan sa pahintulot. Subukan muli mamaya."
+      }
+    }
   }
 }

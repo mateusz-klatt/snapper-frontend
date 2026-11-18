@@ -129,5 +129,53 @@
     "copyAriaLabel": "Nakili kipande cha usanidi kwenye clipboard",
     "copy": "Nakili kwenye clipboard",
     "copied": "Imenakiliwa"
+  },
+  "consent": {
+    "title": "Idhinisha kiunganishi cha AI",
+    "loading": "Inapakia ombi la idhini…",
+    "intro": "{{client}} inaomba kuunganishwa na akaunti yako ya Snapper.",
+    "readOnlyGuarantee": "Ufikiaji wa kusoma tu, unaozingatia mipaka ya ruhusa zako zilizopo. Kiunganishi hiki hakiwezi kuweka, kubadilisha au kughairi oda.",
+    "scopesHeading": "Ufikiaji unaoombwa",
+    "scopes": {
+      "snapperRead": "Kusoma data za soko, oda, nafasi za biashara na ishara, pale tu ruhusa zako mwenyewe zinaporuhusu.",
+      "offlineAccess": "Kuendelea kuunganishwa bila kukuomba uingie tena."
+    },
+    "unrecognizedScope": "Ruhusa isiyotambuliwa: {{scope}}",
+    "notApprovable": "Ombi hili linaomba ufikiaji ambao Snapper haiwezi kutoa. Likatae na ukague usanidi wa kiunganishi.",
+    "resourceLabel": "Rasilimali",
+    "operatorLabel": "Opereta",
+    "operatorPlaceholder": "Chagua opereta",
+    "approve": "Ruhusu ufikiaji",
+    "deny": "Kataa",
+    "redirecting": "Inakurudisha kwenye kiunganishi…",
+    "submitFailed": "Uamuzi haukuweza kutumwa. Jaribu tena.",
+    "replace": {
+      "title": "Ungependa kubadilisha muunganisho uliopo?",
+      "message": "{{client}} tayari ina muunganisho wenye ufikiaji tofauti. Kuruhusu ombi hili kunabatilisha muunganisho uliopo na kuweka mwingine badala yake.",
+      "confirm": "Badilisha muunganisho",
+      "cancel": "Weka muunganisho uliopo"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Ombi hili la idhini si halali tena",
+        "message": "Huenda muda wake umeisha au tayari limetumika. Anzisha muunganisho tena kutoka kwenye kiunganishi."
+      },
+      "expired": {
+        "title": "Muda wa ombi hili la idhini umeisha",
+        "message": "Anzisha muunganisho tena kutoka kwenye kiunganishi."
+      },
+      "accessDenied": {
+        "title": "Huwezi kuidhinisha kiunganishi hiki",
+        "message": "Akaunti yako haina ruhusa ya kusimamia miunganisho ya AI kwa opereta huyu."
+      },
+      "disabled": {
+        "title": "Muunganisho wa AI umezimwa",
+        "message": "Msimamizi lazima awashe muunganisho wa AI kabla ya viunganishi kuidhinishwa."
+      },
+      "unknown": {
+        "title": "Hitilafu imetokea",
+        "message": "Ombi la idhini halikuweza kupakiwa. Jaribu tena baadaye."
+      }
+    }
   }
 }

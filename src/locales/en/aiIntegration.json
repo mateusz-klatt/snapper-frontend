@@ -129,5 +129,53 @@
     "copyAriaLabel": "Copy config snippet to clipboard",
     "copy": "Copy to clipboard",
     "copied": "Copied"
+  },
+  "consent": {
+    "title": "Authorize an AI connector",
+    "loading": "Loading the authorization request…",
+    "intro": "{{client}} is asking to connect to your Snapper account.",
+    "readOnlyGuarantee": "Read-only access limited to your existing permissions. This connector cannot place, change or cancel orders.",
+    "scopesHeading": "Requested access",
+    "scopes": {
+      "snapperRead": "Read market data, orders, positions and signals, only where your own permissions allow it.",
+      "offlineAccess": "Stay connected without asking you to sign in again."
+    },
+    "unrecognizedScope": "Unrecognized permission: {{scope}}",
+    "notApprovable": "This request asks for access that Snapper cannot grant. Deny it and check the connector's configuration.",
+    "resourceLabel": "Resource",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Choose an operator",
+    "approve": "Allow access",
+    "deny": "Deny",
+    "redirecting": "Returning you to the connector…",
+    "submitFailed": "The decision could not be sent. Try again.",
+    "replace": {
+      "title": "Replace the existing connection?",
+      "message": "{{client}} already has a connection with different access. Allowing this request revokes the existing connection and replaces it.",
+      "confirm": "Replace connection",
+      "cancel": "Keep existing"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "This authorization request is no longer valid",
+        "message": "It may have expired or already been used. Start the connection again from the connector."
+      },
+      "expired": {
+        "title": "This authorization request has expired",
+        "message": "Start the connection again from the connector."
+      },
+      "accessDenied": {
+        "title": "You cannot authorize this connector",
+        "message": "Your account does not have permission to manage AI integrations for this operator."
+      },
+      "disabled": {
+        "title": "AI integration is disabled",
+        "message": "An administrator must enable AI integration before connectors can be authorized."
+      },
+      "unknown": {
+        "title": "Something went wrong",
+        "message": "The authorization request could not be loaded. Try again later."
+      }
+    }
   }
 }

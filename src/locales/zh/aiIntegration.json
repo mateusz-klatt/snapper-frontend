@@ -129,5 +129,53 @@
     "copyAriaLabel": "将配置片段复制到剪贴板",
     "copy": "复制到剪贴板",
     "copied": "已复制"
+  },
+  "consent": {
+    "title": "授权 AI 连接器",
+    "loading": "正在加载授权请求…",
+    "intro": "{{client}} 请求连接到您的 Snapper 账户。",
+    "readOnlyGuarantee": "仅提供只读访问，且访问范围仅限于您现有的权限。此连接器无法下单、修改订单或撤单。",
+    "scopesHeading": "请求的访问权限",
+    "scopes": {
+      "snapperRead": "仅在您自身权限允许的范围内读取市场数据、订单、持仓和信号。",
+      "offlineAccess": "保持连接，无需您再次登录。"
+    },
+    "unrecognizedScope": "无法识别的权限：{{scope}}",
+    "notApprovable": "此请求要求的访问权限超出了 Snapper 可授予的范围。请拒绝此请求并检查连接器的配置。",
+    "resourceLabel": "资源",
+    "operatorLabel": "操作员",
+    "operatorPlaceholder": "选择操作员",
+    "approve": "允许访问",
+    "deny": "拒绝",
+    "redirecting": "正在返回连接器…",
+    "submitFailed": "无法提交您的决定。请重试。",
+    "replace": {
+      "title": "替换现有连接？",
+      "message": "{{client}} 已有一个访问权限不同的连接。允许此请求将撤销现有连接并将其替换。",
+      "confirm": "替换连接",
+      "cancel": "保留现有连接"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "此授权请求已失效",
+        "message": "此请求可能已过期或已被使用。请从连接器重新发起连接。"
+      },
+      "expired": {
+        "title": "此授权请求已过期",
+        "message": "请从连接器重新发起连接。"
+      },
+      "accessDenied": {
+        "title": "您无法授权此连接器",
+        "message": "您的账户无权管理此操作员的 AI 集成。"
+      },
+      "disabled": {
+        "title": "AI 集成已禁用",
+        "message": "管理员必须先启用 AI 集成，才能授权连接器。"
+      },
+      "unknown": {
+        "title": "出现错误",
+        "message": "无法加载授权请求。请稍后重试。"
+      }
+    }
   }
 }

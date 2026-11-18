@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopijuoti konfigūracijos fragmentą į iškarpinę",
     "copy": "Kopijuoti į iškarpinę",
     "copied": "Nukopijuota"
+  },
+  "consent": {
+    "title": "Suteikti leidimą AI jungčiai",
+    "loading": "Įkeliama leidimo užklausa…",
+    "intro": "{{client}} prašo prisijungti prie jūsų Snapper paskyros.",
+    "readOnlyGuarantee": "Tik skaitymo prieiga, apribota jūsų esamomis teisėmis. Ši jungtis negali pateikti, keisti ar atšaukti pavedimų.",
+    "scopesHeading": "Prašoma prieiga",
+    "scopes": {
+      "snapperRead": "Rinkos duomenų, pavedimų, pozicijų ir signalų skaitymas tik tiek, kiek leidžia jūsų pačių teisės.",
+      "offlineAccess": "Ryšio palaikymas neprašant prisijungti iš naujo."
+    },
+    "unrecognizedScope": "Neatpažinta teisė: {{scope}}",
+    "notApprovable": "Šia užklausa prašoma prieigos, kurios Snapper negali suteikti. Atmeskite ją ir patikrinkite jungties konfigūraciją.",
+    "resourceLabel": "Išteklius",
+    "operatorLabel": "Operatorius",
+    "operatorPlaceholder": "Pasirinkite operatorių",
+    "approve": "Leisti prieigą",
+    "deny": "Atmesti",
+    "redirecting": "Grįžtama į jungtį…",
+    "submitFailed": "Nepavyko išsiųsti sprendimo. Bandykite dar kartą.",
+    "replace": {
+      "title": "Pakeisti esamą ryšį?",
+      "message": "{{client}} jau turi ryšį su kitokia prieiga. Patvirtinus šią užklausą esamas ryšys bus atšauktas ir pakeistas nauju.",
+      "confirm": "Pakeisti ryšį",
+      "cancel": "Palikti esamą"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Ši leidimo užklausa nebegalioja",
+        "message": "Jos galiojimo laikas galėjo baigtis arba ji jau buvo panaudota. Iš naujo pradėkite jungimąsi iš jungties."
+      },
+      "expired": {
+        "title": "Šios leidimo užklausos galiojimo laikas baigėsi",
+        "message": "Iš naujo pradėkite jungimąsi iš jungties."
+      },
+      "accessDenied": {
+        "title": "Negalite suteikti leidimo šiai jungčiai",
+        "message": "Jūsų paskyra neturi teisės valdyti šio operatoriaus AI integracijų."
+      },
+      "disabled": {
+        "title": "AI integracija išjungta",
+        "message": "Kad būtų galima suteikti leidimus jungtims, administratorius turi įjungti AI integraciją."
+      },
+      "unknown": {
+        "title": "Įvyko klaida",
+        "message": "Nepavyko įkelti leidimo užklausos. Bandykite dar kartą vėliau."
+      }
+    }
   }
 }

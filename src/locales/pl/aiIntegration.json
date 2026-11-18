@@ -129,5 +129,53 @@
     "copyAriaLabel": "Skopiuj fragment konfiguracji do schowka",
     "copy": "Kopiuj do schowka",
     "copied": "Skopiowano"
+  },
+  "consent": {
+    "title": "Autoryzuj konektor AI",
+    "loading": "Ładowanie prośby o autoryzację…",
+    "intro": "{{client}} prosi o połączenie z Twoim kontem Snapper.",
+    "readOnlyGuarantee": "Dostęp tylko do odczytu, ograniczony do Twoich obecnych uprawnień. Ten konektor nie może składać, zmieniać ani anulować zleceń.",
+    "scopesHeading": "Żądany dostęp",
+    "scopes": {
+      "snapperRead": "Odczyt danych rynkowych, zleceń, pozycji i sygnałów wyłącznie w zakresie dozwolonym przez Twoje własne uprawnienia.",
+      "offlineAccess": "Utrzymywanie połączenia bez konieczności ponownego logowania."
+    },
+    "unrecognizedScope": "Nierozpoznane uprawnienie: {{scope}}",
+    "notApprovable": "Ta prośba dotyczy dostępu, którego Snapper nie może przyznać. Odrzuć ją i sprawdź konfigurację konektora.",
+    "resourceLabel": "Zasób",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Wybierz operatora",
+    "approve": "Zezwól na dostęp",
+    "deny": "Odrzuć",
+    "redirecting": "Powrót do konektora…",
+    "submitFailed": "Nie udało się wysłać decyzji. Spróbuj ponownie.",
+    "replace": {
+      "title": "Zastąpić istniejące połączenie?",
+      "message": "{{client}} ma już połączenie z innym zakresem dostępu. Zatwierdzenie tej prośby odwoła istniejące połączenie i zastąpi je nowym.",
+      "confirm": "Zastąp połączenie",
+      "cancel": "Zachowaj istniejące"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Ta prośba o autoryzację nie jest już ważna",
+        "message": "Mogła wygasnąć lub zostać już wykorzystana. Rozpocznij ponownie łączenie z poziomu konektora."
+      },
+      "expired": {
+        "title": "Ta prośba o autoryzację wygasła",
+        "message": "Rozpocznij ponownie łączenie z poziomu konektora."
+      },
+      "accessDenied": {
+        "title": "Nie możesz autoryzować tego konektora",
+        "message": "Twoje konto nie ma uprawnień do zarządzania integracjami AI dla tego operatora."
+      },
+      "disabled": {
+        "title": "Integracja AI jest wyłączona",
+        "message": "Administrator musi włączyć integrację AI, aby można było autoryzować konektory."
+      },
+      "unknown": {
+        "title": "Wystąpił błąd",
+        "message": "Nie udało się załadować prośby o autoryzację. Spróbuj ponownie później."
+      }
+    }
   }
 }

@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopier konfigurasjonssnutt til utklippstavlen",
     "copy": "Kopier til utklippstavlen",
     "copied": "Kopiert"
+  },
+  "consent": {
+    "title": "Autoriser en AI-kobling",
+    "loading": "Laster autorisasjonsforespørselen…",
+    "intro": "{{client}} ber om å koble til Snapper-kontoen din.",
+    "readOnlyGuarantee": "Kun lesetilgang, begrenset til dine eksisterende tillatelser. Denne koblingen kan ikke legge inn, endre eller kansellere ordre.",
+    "scopesHeading": "Forespurt tilgang",
+    "scopes": {
+      "snapperRead": "Lese markedsdata, ordre, posisjoner og signaler, bare der dine egne tillatelser gir tilgang.",
+      "offlineAccess": "Forbli tilkoblet uten å be deg om å logge inn på nytt."
+    },
+    "unrecognizedScope": "Ukjent tillatelse: {{scope}}",
+    "notApprovable": "Denne forespørselen ber om tilgang som Snapper ikke kan gi. Avslå den og kontroller konfigurasjonen til koblingen.",
+    "resourceLabel": "Ressurs",
+    "operatorLabel": "Operatør",
+    "operatorPlaceholder": "Velg en operatør",
+    "approve": "Tillat tilgang",
+    "deny": "Avslå",
+    "redirecting": "Sender deg tilbake til koblingen…",
+    "submitFailed": "Beslutningen kunne ikke sendes. Prøv igjen.",
+    "replace": {
+      "title": "Erstatte den eksisterende tilkoblingen?",
+      "message": "{{client}} har allerede en tilkobling med annen tilgang. Hvis du tillater denne forespørselen, blir den eksisterende tilkoblingen tilbakekalt og erstattet.",
+      "confirm": "Erstatt tilkobling",
+      "cancel": "Behold eksisterende"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Denne autorisasjonsforespørselen er ikke lenger gyldig",
+        "message": "Den kan ha utløpt eller allerede blitt brukt. Start tilkoblingen på nytt fra koblingen."
+      },
+      "expired": {
+        "title": "Denne autorisasjonsforespørselen har utløpt",
+        "message": "Start tilkoblingen på nytt fra koblingen."
+      },
+      "accessDenied": {
+        "title": "Du kan ikke autorisere denne koblingen",
+        "message": "Kontoen din har ikke tillatelse til å administrere AI-integrasjoner for denne operatøren."
+      },
+      "disabled": {
+        "title": "AI-integrasjon er deaktivert",
+        "message": "En administrator må aktivere AI-integrasjon før koblinger kan autoriseres."
+      },
+      "unknown": {
+        "title": "Noe gikk galt",
+        "message": "Autorisasjonsforespørselen kunne ikke lastes. Prøv igjen senere."
+      }
+    }
   }
 }

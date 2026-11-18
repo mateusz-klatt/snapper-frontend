@@ -129,5 +129,53 @@
     "copyAriaLabel": "Salin cuplikan konfigurasi ke clipboard",
     "copy": "Salin ke clipboard",
     "copied": "Disalin"
+  },
+  "consent": {
+    "title": "Otorisasi konektor AI",
+    "loading": "Memuat permintaan otorisasi…",
+    "intro": "{{client}} meminta untuk terhubung ke akun Snapper Anda.",
+    "readOnlyGuarantee": "Akses hanya-baca yang terbatas pada izin yang Anda miliki saat ini. Konektor ini tidak dapat membuat, mengubah, atau membatalkan pesanan.",
+    "scopesHeading": "Akses yang diminta",
+    "scopes": {
+      "snapperRead": "Membaca data pasar, pesanan, posisi, dan sinyal, hanya dalam batas yang diizinkan oleh izin Anda sendiri.",
+      "offlineAccess": "Tetap terhubung tanpa meminta Anda masuk lagi."
+    },
+    "unrecognizedScope": "Izin tidak dikenali: {{scope}}",
+    "notApprovable": "Permintaan ini meminta akses yang tidak dapat diberikan oleh Snapper. Tolak permintaan ini dan periksa konfigurasi konektor.",
+    "resourceLabel": "Sumber daya",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Pilih operator",
+    "approve": "Izinkan akses",
+    "deny": "Tolak",
+    "redirecting": "Mengembalikan Anda ke konektor…",
+    "submitFailed": "Keputusan tidak dapat dikirim. Coba lagi.",
+    "replace": {
+      "title": "Ganti koneksi yang sudah ada?",
+      "message": "{{client}} sudah memiliki koneksi dengan akses yang berbeda. Mengizinkan permintaan ini akan mencabut koneksi yang sudah ada dan menggantinya.",
+      "confirm": "Ganti koneksi",
+      "cancel": "Pertahankan koneksi yang ada"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Permintaan otorisasi ini tidak lagi valid",
+        "message": "Permintaan mungkin telah kedaluwarsa atau sudah digunakan. Mulai kembali koneksi dari konektor."
+      },
+      "expired": {
+        "title": "Permintaan otorisasi ini telah kedaluwarsa",
+        "message": "Mulai kembali koneksi dari konektor."
+      },
+      "accessDenied": {
+        "title": "Anda tidak dapat mengotorisasi konektor ini",
+        "message": "Akun Anda tidak memiliki izin untuk mengelola integrasi AI bagi operator ini."
+      },
+      "disabled": {
+        "title": "Integrasi AI dinonaktifkan",
+        "message": "Administrator harus mengaktifkan integrasi AI sebelum konektor dapat diotorisasi."
+      },
+      "unknown": {
+        "title": "Terjadi kesalahan",
+        "message": "Permintaan otorisasi tidak dapat dimuat. Coba lagi nanti."
+      }
+    }
   }
 }

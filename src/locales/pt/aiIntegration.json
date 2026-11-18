@@ -129,5 +129,53 @@
     "copyAriaLabel": "Copiar trecho de configuração para a área de transferência",
     "copy": "Copiar para a área de transferência",
     "copied": "Copiado"
+  },
+  "consent": {
+    "title": "Autorizar um conector de IA",
+    "loading": "Carregando a solicitação de autorização…",
+    "intro": "{{client}} solicita uma conexão com sua conta Snapper.",
+    "readOnlyGuarantee": "Acesso somente de leitura limitado às suas permissões atuais. Este conector não pode enviar, alterar ou cancelar ordens.",
+    "scopesHeading": "Acesso solicitado",
+    "scopes": {
+      "snapperRead": "Ler dados de mercado, ordens, posições e sinais, apenas onde suas próprias permissões permitirem.",
+      "offlineAccess": "Manter a conexão sem solicitar que você entre novamente."
+    },
+    "unrecognizedScope": "Permissão não reconhecida: {{scope}}",
+    "notApprovable": "Esta solicitação pede um acesso que o Snapper não pode conceder. Negue-a e verifique a configuração do conector.",
+    "resourceLabel": "Recurso",
+    "operatorLabel": "Operador",
+    "operatorPlaceholder": "Selecione um operador",
+    "approve": "Permitir acesso",
+    "deny": "Negar",
+    "redirecting": "Retornando ao conector…",
+    "submitFailed": "Não foi possível enviar a decisão. Tente novamente.",
+    "replace": {
+      "title": "Substituir a conexão existente?",
+      "message": "{{client}} já tem uma conexão com um acesso diferente. Permitir esta solicitação revoga a conexão existente e a substitui.",
+      "confirm": "Substituir conexão",
+      "cancel": "Manter a existente"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Esta solicitação de autorização não é mais válida",
+        "message": "Ela pode ter expirado ou já ter sido usada. Inicie a conexão novamente pelo conector."
+      },
+      "expired": {
+        "title": "Esta solicitação de autorização expirou",
+        "message": "Inicie a conexão novamente pelo conector."
+      },
+      "accessDenied": {
+        "title": "Você não pode autorizar este conector",
+        "message": "Sua conta não tem permissão para gerenciar integrações de IA para este operador."
+      },
+      "disabled": {
+        "title": "Integração de IA desativada",
+        "message": "Um administrador deve ativar a integração de IA antes que os conectores possam ser autorizados."
+      },
+      "unknown": {
+        "title": "Ocorreu um erro",
+        "message": "Não foi possível carregar a solicitação de autorização. Tente novamente mais tarde."
+      }
+    }
   }
 }

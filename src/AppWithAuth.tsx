@@ -6,6 +6,8 @@ import { useAuth, useAuthStore } from './stores/auth'
 import { useAppStore } from './stores/app'
 import { apiClient } from './lib/apiClient'
 import { resolveFinancialColorConvention } from './theme/financialColorPreference'
+import { OAUTH_CONSENT_PATH } from './features/oauth-consent/consentApi'
+import { OAuthConsentPage } from './features/oauth-consent/OAuthConsentPage'
 
 function AppWithAuth() {
   const { isAuthenticated, refreshToken } = useAuth()
@@ -57,10 +59,19 @@ function AppWithAuth() {
     void initializeAuth()
   }, [isAuthenticated, refreshToken])
 
+  const isConsentRoute = globalThis.location.pathname === OAUTH_CONSENT_PATH
+
   return (
     <AuthErrorBoundary key={`auth-${isAuthenticated}`}>
       <AuthenticatedApp>
-        <App />
+        {isConsentRoute ? (
+          <OAuthConsentPage
+            search={globalThis.location.search}
+            navigate={url => globalThis.location.assign(url)}
+          />
+        ) : (
+          <App />
+        )}
       </AuthenticatedApp>
     </AuthErrorBoundary>
   )

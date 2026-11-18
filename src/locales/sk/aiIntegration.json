@@ -129,5 +129,53 @@
     "copyAriaLabel": "Skopírovať úryvok konfigurácie do schránky",
     "copy": "Skopírovať do schránky",
     "copied": "Skopírované"
+  },
+  "consent": {
+    "title": "Autorizovať konektor AI",
+    "loading": "Načítava sa žiadosť o autorizáciu…",
+    "intro": "{{client}} žiada o pripojenie k vášmu účtu Snapper.",
+    "readOnlyGuarantee": "Prístup iba na čítanie, obmedzený na vaše existujúce oprávnenia. Tento konektor nemôže zadávať, meniť ani rušiť pokyny.",
+    "scopesHeading": "Požadovaný prístup",
+    "scopes": {
+      "snapperRead": "Čítanie trhových údajov, pokynov, pozícií a signálov iba v rozsahu povolenom vašimi vlastnými oprávneniami.",
+      "offlineAccess": "Zachovanie pripojenia bez potreby opätovného prihlásenia."
+    },
+    "unrecognizedScope": "Nerozpoznané oprávnenie: {{scope}}",
+    "notApprovable": "Táto žiadosť požaduje prístup, ktorý Snapper nemôže udeliť. Zamietnite ju a skontrolujte konfiguráciu konektora.",
+    "resourceLabel": "Zdroj",
+    "operatorLabel": "Operátor",
+    "operatorPlaceholder": "Vyberte operátora",
+    "approve": "Povoliť prístup",
+    "deny": "Zamietnuť",
+    "redirecting": "Návrat ku konektoru…",
+    "submitFailed": "Rozhodnutie sa nepodarilo odoslať. Skúste to znova.",
+    "replace": {
+      "title": "Nahradiť existujúce pripojenie?",
+      "message": "{{client}} už má pripojenie s iným rozsahom prístupu. Schválením tejto žiadosti sa existujúce pripojenie odvolá a nahradí novým.",
+      "confirm": "Nahradiť pripojenie",
+      "cancel": "Ponechať existujúce"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Táto žiadosť o autorizáciu už nie je platná",
+        "message": "Jej platnosť mohla vypršať alebo už bola použitá. Znova začnite pripojenie z konektora."
+      },
+      "expired": {
+        "title": "Platnosť tejto žiadosti o autorizáciu vypršala",
+        "message": "Znova začnite pripojenie z konektora."
+      },
+      "accessDenied": {
+        "title": "Tento konektor nemôžete autorizovať",
+        "message": "Váš účet nemá oprávnenie spravovať integrácie AI pre tohto operátora."
+      },
+      "disabled": {
+        "title": "Integrácia AI je vypnutá",
+        "message": "Pred autorizáciou konektorov musí správca zapnúť integráciu AI."
+      },
+      "unknown": {
+        "title": "Vyskytla sa chyba",
+        "message": "Žiadosť o autorizáciu sa nepodarilo načítať. Skúste to znova neskôr."
+      }
+    }
   }
 }

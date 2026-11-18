@@ -129,5 +129,53 @@
     "copyAriaLabel": "Cóipeáil sliocht cumraíochta chuig an ngearrthaisce",
     "copy": "Cóipeáil chuig an ngearrthaisce",
     "copied": "Cóipeáilte"
+  },
+  "consent": {
+    "title": "Údaraigh nascóir AI",
+    "loading": "An t-iarratas ar údarú á lódáil…",
+    "intro": "Tá {{client}} ag iarraidh nascadh le do chuntas Snapper.",
+    "readOnlyGuarantee": "Rochtain inléite amháin atá teoranta do na ceadanna atá agat cheana. Ní féidir leis an nascóir seo orduithe a chur isteach, a athrú ná a chealú.",
+    "scopesHeading": "An rochtain a iarrtar",
+    "scopes": {
+      "snapperRead": "Sonraí margaidh, orduithe, suíomhanna trádála agus comharthaí a léamh, ach amháin nuair a cheadaíonn do cheadanna féin é.",
+      "offlineAccess": "Fanacht ceangailte gan iarraidh ort síniú isteach arís."
+    },
+    "unrecognizedScope": "Cead nach n-aithnítear: {{scope}}",
+    "notApprovable": "Iarrtar rochtain san iarratas seo nach féidir le Snapper a thabhairt. Diúltaigh dó agus seiceáil cumraíocht an nascóra.",
+    "resourceLabel": "Acmhainn",
+    "operatorLabel": "Oibreoir",
+    "operatorPlaceholder": "Roghnaigh oibreoir",
+    "approve": "Ceadaigh rochtain",
+    "deny": "Diúltaigh",
+    "redirecting": "Á thabhairt ar ais chuig an nascóir thú…",
+    "submitFailed": "Níorbh fhéidir an cinneadh a sheoladh. Bain triail eile as.",
+    "replace": {
+      "title": "An bhfuil fonn ort an nasc atá ann cheana a athsholáthar?",
+      "message": "Tá nasc ag {{client}} cheana le rochtain dhifriúil. Má cheadaítear an t-iarratas seo, cúlghairfear an nasc atá ann cheana agus cuirfear nasc nua ina áit.",
+      "confirm": "Athsholáthair an nasc",
+      "cancel": "Coinnigh an nasc atá ann cheana"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Níl an t-iarratas seo ar údarú bailí a thuilleadh",
+        "message": "Seans go bhfuil sé imithe in éag nó gur úsáideadh é cheana. Tosaigh an nasc arís ón nascóir."
+      },
+      "expired": {
+        "title": "Tá an t-iarratas seo ar údarú imithe in éag",
+        "message": "Tosaigh an nasc arís ón nascóir."
+      },
+      "accessDenied": {
+        "title": "Ní féidir leat an nascóir seo a údarú",
+        "message": "Níl cead ag do chuntas comhtháthuithe AI a bhainistiú don oibreoir seo."
+      },
+      "disabled": {
+        "title": "Tá comhtháthú AI díchumasaithe",
+        "message": "Ní mór do riarthóir comhtháthú AI a chumasú sular féidir nascóirí a údarú."
+      },
+      "unknown": {
+        "title": "Tharla earráid",
+        "message": "Níorbh fhéidir an t-iarratas ar údarú a lódáil. Bain triail eile as ar ball."
+      }
+    }
   }
 }

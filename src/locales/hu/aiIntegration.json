@@ -129,5 +129,53 @@
     "copyAriaLabel": "Konfigurációs részlet másolása a vágólapra",
     "copy": "Másolás a vágólapra",
     "copied": "Másolva"
+  },
+  "consent": {
+    "title": "AI-csatlakozó engedélyezése",
+    "loading": "Engedélyezési kérelem betöltése…",
+    "intro": "A(z) {{client}} csatlakozni szeretne az Ön Snapper-fiókjához.",
+    "readOnlyGuarantee": "Csak olvasási hozzáférés, az Ön meglévő jogosultságaira korlátozva. Ez a csatlakozó nem adhat fel, nem módosíthat és nem vonhat vissza megbízásokat.",
+    "scopesHeading": "Kért hozzáférés",
+    "scopes": {
+      "snapperRead": "Piaci adatok, megbízások, pozíciók és jelzések olvasása, kizárólag az Ön saját jogosultságainak keretein belül.",
+      "offlineAccess": "A kapcsolat fenntartása újbóli bejelentkezés kérése nélkül."
+    },
+    "unrecognizedScope": "Ismeretlen jogosultság: {{scope}}",
+    "notApprovable": "Ez a kérelem olyan hozzáférést kér, amelyet a Snapper nem tud megadni. Utasítsa el, és ellenőrizze a csatlakozó konfigurációját.",
+    "resourceLabel": "Erőforrás",
+    "operatorLabel": "Operátor",
+    "operatorPlaceholder": "Válasszon operátort",
+    "approve": "Hozzáférés engedélyezése",
+    "deny": "Elutasítás",
+    "redirecting": "Visszairányítás a csatlakozóhoz…",
+    "submitFailed": "Nem sikerült elküldeni a döntést. Próbálja újra.",
+    "replace": {
+      "title": "Lecseréli a meglévő kapcsolatot?",
+      "message": "A(z) {{client}} már rendelkezik egy eltérő hozzáférésű kapcsolattal. A kérelem jóváhagyása visszavonja a meglévő kapcsolatot, és egy újra cseréli.",
+      "confirm": "Kapcsolat lecserélése",
+      "cancel": "Meglévő megtartása"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Ez az engedélyezési kérelem már nem érvényes",
+        "message": "Lehet, hogy lejárt vagy már felhasználták. Indítsa újra a csatlakozást a csatlakozóból."
+      },
+      "expired": {
+        "title": "Ez az engedélyezési kérelem lejárt",
+        "message": "Indítsa újra a csatlakozást a csatlakozóból."
+      },
+      "accessDenied": {
+        "title": "Nem engedélyezheti ezt a csatlakozót",
+        "message": "Az Ön fiókja nem jogosult az ehhez az operátorhoz tartozó AI-integrációk kezelésére."
+      },
+      "disabled": {
+        "title": "Az AI-integráció le van tiltva",
+        "message": "A csatlakozók engedélyezése előtt egy rendszergazdának engedélyeznie kell az AI-integrációt."
+      },
+      "unknown": {
+        "title": "Hiba történt",
+        "message": "Nem sikerült betölteni az engedélyezési kérelmet. Próbálja újra később."
+      }
+    }
   }
 }

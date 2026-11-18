@@ -129,5 +129,53 @@
     "copyAriaLabel": "Salin snippet config ke papan klip",
     "copy": "Salin ke papan klip",
     "copied": "Disalin"
+  },
+  "consent": {
+    "title": "Benarkan penyambung AI",
+    "loading": "Memuatkan permintaan kebenaran…",
+    "intro": "{{client}} meminta untuk bersambung ke akaun Snapper anda.",
+    "readOnlyGuarantee": "Akses baca sahaja yang terhad kepada kebenaran sedia ada anda. Penyambung ini tidak boleh membuat, mengubah atau membatalkan pesanan.",
+    "scopesHeading": "Akses yang diminta",
+    "scopes": {
+      "snapperRead": "Membaca data pasaran, pesanan, kedudukan dan isyarat, hanya dalam skop yang dibenarkan oleh kebenaran anda sendiri.",
+      "offlineAccess": "Kekal bersambung tanpa meminta anda log masuk semula."
+    },
+    "unrecognizedScope": "Kebenaran tidak dikenali: {{scope}}",
+    "notApprovable": "Permintaan ini meminta akses yang tidak dapat diberikan oleh Snapper. Tolak permintaan ini dan semak konfigurasi penyambung.",
+    "resourceLabel": "Sumber",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Pilih operator",
+    "approve": "Benarkan akses",
+    "deny": "Tolak",
+    "redirecting": "Mengembalikan anda ke penyambung…",
+    "submitFailed": "Keputusan tidak dapat dihantar. Cuba lagi.",
+    "replace": {
+      "title": "Gantikan sambungan sedia ada?",
+      "message": "{{client}} sudah mempunyai sambungan dengan akses yang berbeza. Membenarkan permintaan ini akan membatalkan sambungan sedia ada dan menggantikannya.",
+      "confirm": "Gantikan sambungan",
+      "cancel": "Kekalkan sambungan sedia ada"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Permintaan kebenaran ini tidak lagi sah",
+        "message": "Permintaan ini mungkin telah tamat tempoh atau sudah digunakan. Mulakan semula sambungan daripada penyambung."
+      },
+      "expired": {
+        "title": "Permintaan kebenaran ini telah tamat tempoh",
+        "message": "Mulakan semula sambungan daripada penyambung."
+      },
+      "accessDenied": {
+        "title": "Anda tidak boleh membenarkan penyambung ini",
+        "message": "Akaun anda tidak mempunyai kebenaran untuk mengurus integrasi AI bagi operator ini."
+      },
+      "disabled": {
+        "title": "Integrasi AI dinyahdayakan",
+        "message": "Pentadbir mesti mendayakan integrasi AI sebelum penyambung boleh dibenarkan."
+      },
+      "unknown": {
+        "title": "Ralat telah berlaku",
+        "message": "Permintaan kebenaran tidak dapat dimuatkan. Cuba lagi kemudian."
+      }
+    }
   }
 }

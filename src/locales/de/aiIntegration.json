@@ -129,5 +129,53 @@
     "copyAriaLabel": "Konfigurations-Snippet in die Zwischenablage kopieren",
     "copy": "In Zwischenablage kopieren",
     "copied": "Kopiert"
+  },
+  "consent": {
+    "title": "KI-Konnektor autorisieren",
+    "loading": "Autorisierungsanfrage wird geladen…",
+    "intro": "{{client}} bittet um eine Verbindung mit Ihrem Snapper-Konto.",
+    "readOnlyGuarantee": "Nur Lesezugriff, beschränkt auf Ihre bestehenden Berechtigungen. Dieser Konnektor kann keine Aufträge erteilen, ändern oder stornieren.",
+    "scopesHeading": "Angeforderter Zugriff",
+    "scopes": {
+      "snapperRead": "Marktdaten, Aufträge, Positionen und Signale lesen, jedoch nur, soweit Ihre eigenen Berechtigungen dies erlauben.",
+      "offlineAccess": "Verbunden bleiben, ohne Sie erneut zur Anmeldung aufzufordern."
+    },
+    "unrecognizedScope": "Unbekannte Berechtigung: {{scope}}",
+    "notApprovable": "Diese Anfrage fordert Zugriff an, den Snapper nicht gewähren kann. Lehnen Sie sie ab und prüfen Sie die Konfiguration des Konnektors.",
+    "resourceLabel": "Ressource",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Wählen Sie einen Operator",
+    "approve": "Zugriff erlauben",
+    "deny": "Ablehnen",
+    "redirecting": "Sie werden zum Konnektor zurückgeleitet…",
+    "submitFailed": "Ihre Entscheidung konnte nicht gesendet werden. Versuchen Sie es erneut.",
+    "replace": {
+      "title": "Bestehende Verbindung ersetzen?",
+      "message": "{{client}} hat bereits eine Verbindung mit anderen Zugriffsrechten. Wenn Sie diese Anfrage erlauben, wird die bestehende Verbindung widerrufen und ersetzt.",
+      "confirm": "Verbindung ersetzen",
+      "cancel": "Bestehende beibehalten"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Diese Autorisierungsanfrage ist nicht mehr gültig",
+        "message": "Sie ist möglicherweise abgelaufen oder wurde bereits verwendet. Starten Sie den Verbindungsvorgang erneut über den Konnektor."
+      },
+      "expired": {
+        "title": "Diese Autorisierungsanfrage ist abgelaufen",
+        "message": "Starten Sie den Verbindungsvorgang erneut über den Konnektor."
+      },
+      "accessDenied": {
+        "title": "Sie können diesen Konnektor nicht autorisieren",
+        "message": "Ihr Konto hat keine Berechtigung, KI-Integrationen für diesen Operator zu verwalten."
+      },
+      "disabled": {
+        "title": "KI-Integration ist deaktiviert",
+        "message": "Ein Administrator muss die KI-Integration aktivieren, bevor Konnektoren autorisiert werden können."
+      },
+      "unknown": {
+        "title": "Etwas ist schiefgelaufen",
+        "message": "Die Autorisierungsanfrage konnte nicht geladen werden. Versuchen Sie es später erneut."
+      }
+    }
   }
 }

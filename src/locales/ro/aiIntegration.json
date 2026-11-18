@@ -129,5 +129,53 @@
     "copyAriaLabel": "Copiați fragmentul de configurare în clipboard",
     "copy": "Copiați în clipboard",
     "copied": "Copiat"
+  },
+  "consent": {
+    "title": "Autorizați un conector AI",
+    "loading": "Se încarcă cererea de autorizare…",
+    "intro": "{{client}} solicită conectarea la contul dumneavoastră Snapper.",
+    "readOnlyGuarantee": "Acces doar pentru citire, limitat la permisiunile dumneavoastră existente. Acest conector nu poate plasa, modifica sau anula ordine.",
+    "scopesHeading": "Acces solicitat",
+    "scopes": {
+      "snapperRead": "Citirea datelor de piață, a ordinelor, a pozițiilor și a semnalelor, numai în limitele permise de propriile dumneavoastră permisiuni.",
+      "offlineAccess": "Menținerea conexiunii fără a vi se cere să vă autentificați din nou."
+    },
+    "unrecognizedScope": "Permisiune nerecunoscută: {{scope}}",
+    "notApprovable": "Această cerere solicită un acces pe care Snapper nu îl poate acorda. Respingeți-o și verificați configurația conectorului.",
+    "resourceLabel": "Resursă",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Alegeți un operator",
+    "approve": "Permiteți accesul",
+    "deny": "Respingeți",
+    "redirecting": "Revenire la conector…",
+    "submitFailed": "Decizia nu a putut fi trimisă. Încercați din nou.",
+    "replace": {
+      "title": "Înlocuiți conexiunea existentă?",
+      "message": "{{client}} are deja o conexiune cu un acces diferit. Aprobarea acestei cereri revocă conexiunea existentă și o înlocuiește.",
+      "confirm": "Înlocuiți conexiunea",
+      "cancel": "Păstrați conexiunea existentă"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Această cerere de autorizare nu mai este valabilă",
+        "message": "Este posibil să fi expirat sau să fi fost deja utilizată. Inițiați din nou conectarea din conector."
+      },
+      "expired": {
+        "title": "Această cerere de autorizare a expirat",
+        "message": "Inițiați din nou conectarea din conector."
+      },
+      "accessDenied": {
+        "title": "Nu puteți autoriza acest conector",
+        "message": "Contul dumneavoastră nu are permisiunea de a gestiona integrările AI pentru acest operator."
+      },
+      "disabled": {
+        "title": "Integrarea AI este dezactivată",
+        "message": "Un administrator trebuie să activeze integrarea AI înainte de a putea autoriza conectorii."
+      },
+      "unknown": {
+        "title": "A apărut o eroare",
+        "message": "Cererea de autorizare nu a putut fi încărcată. Încercați din nou mai târziu."
+      }
+    }
   }
 }

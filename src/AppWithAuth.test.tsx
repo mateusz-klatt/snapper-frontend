@@ -19,6 +19,17 @@ vi.mock('./components/auth/AuthErrorBoundary', () => ({
     <div data-testid='auth-error-boundary'>{children}</div>
   ),
 }))
+vi.mock('./features/oauth-consent/OAuthConsentPage', () => ({
+  OAuthConsentPage: ({ search, navigate }: { search: string; navigate: (url: string) => void }) => (
+    <button
+      type='button'
+      data-testid='oauth-consent'
+      onClick={() => navigate('https://client.example/cb')}
+    >
+      {search}
+    </button>
+  ),
+}))
 vi.mock('./stores/auth', () => ({
   useAuth: vi.fn(),
   useAuthStore: { getState: vi.fn(() => ({ user: null })) },
@@ -85,6 +96,33 @@ describe('AppWithAuth', () => {
     rerender(<AppWithAuth />)
     expect(getByTestId('auth-error-boundary')).not.toBe(boundaryBeforeFlip)
   })
+  it('renders the consent page instead of the app on the OAuth authorize path', () => {
+    mockUnauthenticatedSession()
+    const assign = vi.fn()
+    const originalLocation = globalThis.location
+
+    globalThis.history.pushState(null, '', '/oauth/authorize?request=opaque-1')
+    const locationSpy = vi.spyOn(globalThis, 'location', 'get').mockReturnValue({
+      ...originalLocation,
+      pathname: originalLocation.pathname,
+      search: originalLocation.search,
+      assign,
+    })
+
+    try {
+      const { getByTestId, queryByTestId } = render(<AppWithAuth />)
+      const consent = getByTestId('oauth-consent')
+
+      expect(consent).toHaveTextContent('?request=opaque-1')
+      expect(queryByTestId('app')).not.toBeInTheDocument()
+      consent.click()
+      expect(assign).toHaveBeenCalledWith('https://client.example/cb')
+    } finally {
+      locationSpy.mockRestore()
+      globalThis.history.pushState(null, '', '/')
+    }
+  })
+
   it('renders wrapped app structure', () => {
     vi.mocked(stores.useAuth).mockReturnValue({
       isAuthenticated: false,
