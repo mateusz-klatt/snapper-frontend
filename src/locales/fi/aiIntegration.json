@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopioi konfiguraatiokatkelma leikepöydälle",
     "copy": "Kopioi leikepöydälle",
     "copied": "Kopioitu"
+  },
+  "consent": {
+    "title": "Valtuuta AI-liitin",
+    "loading": "Ladataan valtuutuspyyntöä…",
+    "intro": "{{client}} pyytää lupaa muodostaa yhteyden Snapper-tiliisi.",
+    "readOnlyGuarantee": "Vain lukuoikeus, joka rajoittuu nykyisiin käyttöoikeuksiisi. Tämä liitin ei voi tehdä, muuttaa tai peruuttaa toimeksiantoja.",
+    "scopesHeading": "Pyydetyt käyttöoikeudet",
+    "scopes": {
+      "snapperRead": "Lue markkinatietoja, toimeksiantoja, positioita ja signaaleja vain omien käyttöoikeuksiesi sallimissa rajoissa.",
+      "offlineAccess": "Säilytä yhteys pyytämättä sinua kirjautumaan uudelleen sisään."
+    },
+    "unrecognizedScope": "Tuntematon käyttöoikeus: {{scope}}",
+    "notApprovable": "Tässä pyynnössä pyydetään käyttöoikeuksia, joita Snapper ei voi myöntää. Hylkää pyyntö ja tarkista liittimen asetukset.",
+    "resourceLabel": "Resurssi",
+    "operatorLabel": "Operaattori",
+    "operatorPlaceholder": "Valitse operaattori",
+    "approve": "Salli pääsy",
+    "deny": "Hylkää",
+    "redirecting": "Palataan liittimeen…",
+    "submitFailed": "Päätöstä ei voitu lähettää. Yritä uudelleen.",
+    "replace": {
+      "title": "Korvataanko nykyinen yhteys?",
+      "message": "{{client}} on jo muodostanut yhteyden, jolla on eri käyttöoikeudet. Tämän pyynnön hyväksyminen peruu nykyisen yhteyden ja korvaa sen uudella.",
+      "confirm": "Korvaa yhteys",
+      "cancel": "Säilytä nykyinen"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Tämä valtuutuspyyntö ei ole enää voimassa",
+        "message": "Se on saattanut vanhentua tai se on jo käytetty. Aloita yhteyden muodostaminen uudelleen liittimestä."
+      },
+      "expired": {
+        "title": "Tämä valtuutuspyyntö on vanhentunut",
+        "message": "Aloita yhteyden muodostaminen uudelleen liittimestä."
+      },
+      "accessDenied": {
+        "title": "Et voi valtuuttaa tätä liitintä",
+        "message": "Tililläsi ei ole oikeutta hallita tämän operaattorin AI-integraatioita."
+      },
+      "disabled": {
+        "title": "AI-integraatio on poistettu käytöstä",
+        "message": "Ylläpitäjän on otettava AI-integraatio käyttöön, ennen kuin liittimiä voidaan valtuuttaa."
+      },
+      "unknown": {
+        "title": "Jokin meni pieleen",
+        "message": "Valtuutuspyyntöä ei voitu ladata. Yritä myöhemmin uudelleen."
+      }
+    }
   }
 }

@@ -129,5 +129,53 @@
     "copyAriaLabel": "Sao chép đoạn cấu hình vào clipboard",
     "copy": "Sao chép vào clipboard",
     "copied": "Đã sao chép"
+  },
+  "consent": {
+    "title": "Cấp quyền cho trình kết nối AI",
+    "loading": "Đang tải yêu cầu cấp quyền…",
+    "intro": "{{client}} đang yêu cầu kết nối với tài khoản Snapper của bạn.",
+    "readOnlyGuarantee": "Quyền truy cập chỉ đọc và bị giới hạn trong phạm vi các quyền hiện có của bạn. Trình kết nối này không thể đặt, sửa đổi hoặc hủy lệnh.",
+    "scopesHeading": "Quyền truy cập được yêu cầu",
+    "scopes": {
+      "snapperRead": "Đọc dữ liệu thị trường, lệnh, vị thế và tín hiệu, chỉ trong phạm vi mà các quyền của chính bạn cho phép.",
+      "offlineAccess": "Duy trì kết nối mà không yêu cầu bạn đăng nhập lại."
+    },
+    "unrecognizedScope": "Quyền không được nhận diện: {{scope}}",
+    "notApprovable": "Yêu cầu này đòi hỏi quyền truy cập mà Snapper không thể cấp. Hãy từ chối yêu cầu và kiểm tra cấu hình của trình kết nối.",
+    "resourceLabel": "Tài nguyên",
+    "operatorLabel": "Người vận hành",
+    "operatorPlaceholder": "Chọn người vận hành",
+    "approve": "Cho phép truy cập",
+    "deny": "Từ chối",
+    "redirecting": "Đang đưa bạn trở lại trình kết nối…",
+    "submitFailed": "Không thể gửi quyết định. Vui lòng thử lại.",
+    "replace": {
+      "title": "Thay thế kết nối hiện có?",
+      "message": "{{client}} đã có một kết nối với quyền truy cập khác. Việc cho phép yêu cầu này sẽ thu hồi kết nối hiện có và thay thế bằng kết nối mới.",
+      "confirm": "Thay thế kết nối",
+      "cancel": "Giữ kết nối hiện có"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Yêu cầu cấp quyền này không còn hợp lệ",
+        "message": "Yêu cầu có thể đã hết hạn hoặc đã được sử dụng. Hãy bắt đầu kết nối lại từ trình kết nối."
+      },
+      "expired": {
+        "title": "Yêu cầu cấp quyền này đã hết hạn",
+        "message": "Hãy bắt đầu kết nối lại từ trình kết nối."
+      },
+      "accessDenied": {
+        "title": "Bạn không thể cấp quyền cho trình kết nối này",
+        "message": "Tài khoản của bạn không có quyền quản lý tích hợp AI cho người vận hành này."
+      },
+      "disabled": {
+        "title": "Tích hợp AI đang bị tắt",
+        "message": "Quản trị viên phải bật tích hợp AI trước khi có thể cấp quyền cho các trình kết nối."
+      },
+      "unknown": {
+        "title": "Đã xảy ra lỗi",
+        "message": "Không thể tải yêu cầu cấp quyền. Vui lòng thử lại sau."
+      }
+    }
   }
 }

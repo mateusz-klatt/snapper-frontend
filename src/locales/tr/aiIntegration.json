@@ -129,5 +129,53 @@
     "copyAriaLabel": "Yapılandırma parçasını panoya kopyala",
     "copy": "Panoya kopyala",
     "copied": "Kopyalandı"
+  },
+  "consent": {
+    "title": "Bir AI bağlayıcısını yetkilendirin",
+    "loading": "Yetkilendirme isteği yükleniyor…",
+    "intro": "{{client}}, Snapper hesabınıza bağlanmak istiyor.",
+    "readOnlyGuarantee": "Mevcut izinlerinizle sınırlı, salt okunur erişim. Bu bağlayıcı emir veremez, emirleri değiştiremez veya iptal edemez.",
+    "scopesHeading": "İstenen erişim",
+    "scopes": {
+      "snapperRead": "Piyasa verilerini, emirleri, pozisyonları ve sinyalleri yalnızca kendi izinlerinizin elverdiği ölçüde okuma.",
+      "offlineAccess": "Tekrar oturum açmanızı istemeden bağlı kalma."
+    },
+    "unrecognizedScope": "Tanınmayan izin: {{scope}}",
+    "notApprovable": "Bu istek, Snapper’ın veremeyeceği bir erişim talep ediyor. İsteği reddedin ve bağlayıcının yapılandırmasını kontrol edin.",
+    "resourceLabel": "Kaynak",
+    "operatorLabel": "Operatör",
+    "operatorPlaceholder": "Bir operatör seçin",
+    "approve": "Erişime izin ver",
+    "deny": "Reddet",
+    "redirecting": "Bağlayıcıya geri yönlendiriliyorsunuz…",
+    "submitFailed": "Karar gönderilemedi. Tekrar deneyin.",
+    "replace": {
+      "title": "Mevcut bağlantı değiştirilsin mi?",
+      "message": "{{client}} zaten farklı erişime sahip bir bağlantı kullanıyor. Bu isteğe izin vermek, mevcut bağlantıyı iptal eder ve yerine yeni bağlantıyı kurar.",
+      "confirm": "Bağlantıyı değiştir",
+      "cancel": "Mevcut bağlantıyı koru"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Bu yetkilendirme isteği artık geçerli değil",
+        "message": "Süresi dolmuş veya daha önce kullanılmış olabilir. Bağlayıcıdan bağlantıyı yeniden başlatın."
+      },
+      "expired": {
+        "title": "Bu yetkilendirme isteğinin süresi doldu",
+        "message": "Bağlayıcıdan bağlantıyı yeniden başlatın."
+      },
+      "accessDenied": {
+        "title": "Bu bağlayıcıyı yetkilendiremezsiniz",
+        "message": "Hesabınızın bu operatör için AI entegrasyonlarını yönetme izni yok."
+      },
+      "disabled": {
+        "title": "AI entegrasyonu devre dışı",
+        "message": "Bağlayıcılar yetkilendirilmeden önce bir yöneticinin AI entegrasyonunu etkinleştirmesi gerekir."
+      },
+      "unknown": {
+        "title": "Bir sorun oluştu",
+        "message": "Yetkilendirme isteği yüklenemedi. Daha sonra tekrar deneyin."
+      }
+    }
   }
 }

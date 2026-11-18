@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopjo fragmentin e konfigurimit në kujtesë",
     "copy": "Kopjo në kujtesë",
     "copied": "U kopjua"
+  },
+  "consent": {
+    "title": "Autorizoni një konektor AI",
+    "loading": "Duke ngarkuar kërkesën për autorizim…",
+    "intro": "{{client}} kërkon të lidhet me llogarinë tuaj Snapper.",
+    "readOnlyGuarantee": "Qasje vetëm për lexim, e kufizuar në lejet tuaja ekzistuese. Ky konektor nuk mund të vendosë, ndryshojë ose anulojë urdhra.",
+    "scopesHeading": "Qasja e kërkuar",
+    "scopes": {
+      "snapperRead": "Leximi i të dhënave të tregut, urdhrave, pozicioneve dhe sinjaleve, vetëm brenda kufijve të lejeve tuaja.",
+      "offlineAccess": "Ruajtja e lidhjes pa ju kërkuar të identifikoheni përsëri."
+    },
+    "unrecognizedScope": "Leje e panjohur: {{scope}}",
+    "notApprovable": "Kjo kërkesë kërkon qasje që Snapper nuk mund ta japë. Refuzojeni dhe kontrolloni konfigurimin e konektorit.",
+    "resourceLabel": "Burim",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Zgjidhni një operator",
+    "approve": "Lejo qasjen",
+    "deny": "Refuzo",
+    "redirecting": "Duke ju kthyer te konektori…",
+    "submitFailed": "Vendimi nuk mund të dërgohej. Provoni përsëri.",
+    "replace": {
+      "title": "Të zëvendësohet lidhja ekzistuese?",
+      "message": "{{client}} tashmë ka një lidhje me qasje të ndryshme. Miratimi i kësaj kërkese revokon lidhjen ekzistuese dhe e zëvendëson atë.",
+      "confirm": "Zëvendëso lidhjen",
+      "cancel": "Mbaj ekzistuesen"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Kjo kërkesë për autorizim nuk është më e vlefshme",
+        "message": "Mund të ketë skaduar ose të jetë përdorur tashmë. Niseni përsëri lidhjen nga konektori."
+      },
+      "expired": {
+        "title": "Kjo kërkesë për autorizim ka skaduar",
+        "message": "Niseni përsëri lidhjen nga konektori."
+      },
+      "accessDenied": {
+        "title": "Nuk mund ta autorizoni këtë konektor",
+        "message": "Llogaria juaj nuk ka leje për të menaxhuar integrimet AI për këtë operator."
+      },
+      "disabled": {
+        "title": "Integrimi AI është çaktivizuar",
+        "message": "Një administrator duhet të aktivizojë integrimin AI përpara se të mund të autorizohen konektorët."
+      },
+      "unknown": {
+        "title": "Ndodhi një gabim",
+        "message": "Kërkesa për autorizim nuk mund të ngarkohej. Provoni përsëri më vonë."
+      }
+    }
   }
 }

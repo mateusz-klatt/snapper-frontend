@@ -129,5 +129,53 @@
     "copyAriaLabel": "Copier l'extrait de configuration dans le presse-papiers",
     "copy": "Copier dans le presse-papiers",
     "copied": "Copié"
+  },
+  "consent": {
+    "title": "Autoriser un connecteur IA",
+    "loading": "Chargement de la demande d’autorisation…",
+    "intro": "{{client}} demande à se connecter à votre compte Snapper.",
+    "readOnlyGuarantee": "Accès en lecture seule limité à vos autorisations existantes. Ce connecteur ne peut ni passer, ni modifier, ni annuler d’ordres.",
+    "scopesHeading": "Accès demandé",
+    "scopes": {
+      "snapperRead": "Lire les données de marché, les ordres, les positions et les signaux, uniquement dans les limites de vos propres autorisations.",
+      "offlineAccess": "Maintenir la connexion sans vous demander de vous reconnecter."
+    },
+    "unrecognizedScope": "Autorisation non reconnue : {{scope}}",
+    "notApprovable": "Cette demande sollicite un accès que Snapper ne peut pas accorder. Refusez-la et vérifiez la configuration du connecteur.",
+    "resourceLabel": "Ressource",
+    "operatorLabel": "Opérateur",
+    "operatorPlaceholder": "Choisissez un opérateur",
+    "approve": "Autoriser l’accès",
+    "deny": "Refuser",
+    "redirecting": "Retour vers le connecteur…",
+    "submitFailed": "Votre décision n’a pas pu être envoyée. Réessayez.",
+    "replace": {
+      "title": "Remplacer la connexion existante ?",
+      "message": "{{client}} dispose déjà d’une connexion avec des droits d’accès différents. Autoriser cette demande révoque la connexion existante et la remplace.",
+      "confirm": "Remplacer la connexion",
+      "cancel": "Conserver la connexion existante"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Cette demande d’autorisation n’est plus valide",
+        "message": "Elle a peut-être expiré ou a déjà été utilisée. Relancez la connexion depuis le connecteur."
+      },
+      "expired": {
+        "title": "Cette demande d’autorisation a expiré",
+        "message": "Relancez la connexion depuis le connecteur."
+      },
+      "accessDenied": {
+        "title": "Vous ne pouvez pas autoriser ce connecteur",
+        "message": "Votre compte ne dispose pas de l’autorisation nécessaire pour gérer les intégrations IA de cet opérateur."
+      },
+      "disabled": {
+        "title": "L’intégration IA est désactivée",
+        "message": "Un administrateur doit activer l’intégration IA avant que les connecteurs puissent être autorisés."
+      },
+      "unknown": {
+        "title": "Une erreur s’est produite",
+        "message": "La demande d’autorisation n’a pas pu être chargée. Réessayez plus tard."
+      }
+    }
   }
 }

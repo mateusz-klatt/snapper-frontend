@@ -129,5 +129,53 @@
     "copyAriaLabel": "Configsnippet naar klembord kopiëren",
     "copy": "Kopieer naar klembord",
     "copied": "Gekopieerd"
+  },
+  "consent": {
+    "title": "Een AI-connector autoriseren",
+    "loading": "Autorisatieverzoek laden…",
+    "intro": "{{client}} vraagt om verbinding te maken met uw Snapper-account.",
+    "readOnlyGuarantee": "Alleen leestoegang, beperkt tot uw bestaande machtigingen. Deze connector kan geen orders plaatsen, wijzigen of annuleren.",
+    "scopesHeading": "Gevraagde toegang",
+    "scopes": {
+      "snapperRead": "Marktgegevens, orders, posities en signalen lezen, uitsluitend voor zover uw eigen machtigingen dit toestaan.",
+      "offlineAccess": "Verbonden blijven zonder u te vragen opnieuw in te loggen."
+    },
+    "unrecognizedScope": "Onbekende machtiging: {{scope}}",
+    "notApprovable": "Dit verzoek vraagt om toegang die Snapper niet kan verlenen. Weiger het verzoek en controleer de configuratie van de connector.",
+    "resourceLabel": "Bron",
+    "operatorLabel": "Operator",
+    "operatorPlaceholder": "Kies een operator",
+    "approve": "Toegang toestaan",
+    "deny": "Weigeren",
+    "redirecting": "U wordt teruggeleid naar de connector…",
+    "submitFailed": "Uw beslissing kon niet worden verzonden. Probeer het opnieuw.",
+    "replace": {
+      "title": "De bestaande verbinding vervangen?",
+      "message": "{{client}} heeft al een verbinding met andere toegangsrechten. Als u dit verzoek toestaat, wordt de bestaande verbinding ingetrokken en vervangen.",
+      "confirm": "Verbinding vervangen",
+      "cancel": "Bestaande behouden"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Dit autorisatieverzoek is niet meer geldig",
+        "message": "Het is mogelijk verlopen of al gebruikt. Start de verbinding opnieuw vanuit de connector."
+      },
+      "expired": {
+        "title": "Dit autorisatieverzoek is verlopen",
+        "message": "Start de verbinding opnieuw vanuit de connector."
+      },
+      "accessDenied": {
+        "title": "U kunt deze connector niet autoriseren",
+        "message": "Uw account heeft geen toestemming om AI-integraties voor deze operator te beheren."
+      },
+      "disabled": {
+        "title": "AI-integratie is uitgeschakeld",
+        "message": "Een beheerder moet AI-integratie inschakelen voordat connectoren kunnen worden geautoriseerd."
+      },
+      "unknown": {
+        "title": "Er is iets misgegaan",
+        "message": "Het autorisatieverzoek kon niet worden geladen. Probeer het later opnieuw."
+      }
+    }
   }
 }

@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopiér konfigurationsudsnit til udklipsholder",
     "copy": "Kopiér til udklipsholder",
     "copied": "Kopieret"
+  },
+  "consent": {
+    "title": "Godkend en AI-connector",
+    "loading": "Indlæser anmodningen om godkendelse…",
+    "intro": "{{client}} beder om at oprette forbindelse til din Snapper-konto.",
+    "readOnlyGuarantee": "Kun læseadgang, begrænset til dine eksisterende tilladelser. Denne connector kan ikke afgive, ændre eller annullere ordrer.",
+    "scopesHeading": "Anmodet adgang",
+    "scopes": {
+      "snapperRead": "Læs markedsdata, ordrer, positioner og signaler, men kun hvor dine egne tilladelser giver adgang.",
+      "offlineAccess": "Bevar forbindelsen uden at bede dig om at logge ind igen."
+    },
+    "unrecognizedScope": "Ukendt tilladelse: {{scope}}",
+    "notApprovable": "Denne anmodning beder om adgang, som Snapper ikke kan give. Afvis den, og kontrollér connectorens konfiguration.",
+    "resourceLabel": "Ressource",
+    "operatorLabel": "Operatør",
+    "operatorPlaceholder": "Vælg en operatør",
+    "approve": "Tillad adgang",
+    "deny": "Afvis",
+    "redirecting": "Sender dig tilbage til connectoren…",
+    "submitFailed": "Beslutningen kunne ikke sendes. Prøv igen.",
+    "replace": {
+      "title": "Erstat den eksisterende forbindelse?",
+      "message": "{{client}} har allerede en forbindelse med en anden adgang. Hvis du godkender denne anmodning, tilbagekaldes den eksisterende forbindelse og erstattes af en ny.",
+      "confirm": "Erstat forbindelse",
+      "cancel": "Behold den eksisterende"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Denne anmodning om godkendelse er ikke længere gyldig",
+        "message": "Den kan være udløbet eller allerede være brugt. Start forbindelsen igen fra connectoren."
+      },
+      "expired": {
+        "title": "Denne anmodning om godkendelse er udløbet",
+        "message": "Start forbindelsen igen fra connectoren."
+      },
+      "accessDenied": {
+        "title": "Du kan ikke godkende denne connector",
+        "message": "Din konto har ikke tilladelse til at administrere AI-integrationer for denne operatør."
+      },
+      "disabled": {
+        "title": "AI-integration er deaktiveret",
+        "message": "En administrator skal aktivere AI-integration, før connectorer kan godkendes."
+      },
+      "unknown": {
+        "title": "Noget gik galt",
+        "message": "Anmodningen om godkendelse kunne ikke indlæses. Prøv igen senere."
+      }
+    }
   }
 }

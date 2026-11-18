@@ -129,5 +129,53 @@
     "copyAriaLabel": "Afrita stillingabút á klemmuspjald",
     "copy": "Afrita á klemmuspjald",
     "copied": "Afritað"
+  },
+  "consent": {
+    "title": "Heimila AI-tengi",
+    "loading": "Hleð heimildarbeiðni…",
+    "intro": "{{client}} óskar eftir að tengjast Snapper-reikningnum þínum.",
+    "readOnlyGuarantee": "Aðeins lesaðgangur, takmarkaður við núverandi heimildir þínar. Þetta tengi getur ekki lagt inn, breytt eða afturkallað pantanir.",
+    "scopesHeading": "Umbeðinn aðgangur",
+    "scopes": {
+      "snapperRead": "Lesa markaðsgögn, pantanir, stöður og merki, aðeins þar sem þínar eigin heimildir leyfa.",
+      "offlineAccess": "Halda tengingu án þess að biðja þig um að skrá þig inn aftur."
+    },
+    "unrecognizedScope": "Óþekkt heimild: {{scope}}",
+    "notApprovable": "Þessi beiðni óskar eftir aðgangi sem Snapper getur ekki veitt. Hafnaðu henni og athugaðu stillingar tengisins.",
+    "resourceLabel": "Tilfang",
+    "operatorLabel": "Rekstraraðili",
+    "operatorPlaceholder": "Veldu rekstraraðila",
+    "approve": "Heimila aðgang",
+    "deny": "Hafna",
+    "redirecting": "Fer aftur í tengið…",
+    "submitFailed": "Ekki tókst að senda ákvörðunina. Reyndu aftur.",
+    "replace": {
+      "title": "Skipta út núverandi tengingu?",
+      "message": "{{client}} er þegar með tengingu með öðrum aðgangsheimildum. Ef þessi beiðni er samþykkt verður núverandi tenging afturkölluð og henni skipt út.",
+      "confirm": "Skipta út tengingu",
+      "cancel": "Halda núverandi tengingu"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Þessi heimildarbeiðni er ekki lengur gild",
+        "message": "Hún gæti verið útrunnin eða þegar verið notuð. Byrjaðu tengingarferlið aftur í tenginu."
+      },
+      "expired": {
+        "title": "Þessi heimildarbeiðni er útrunnin",
+        "message": "Byrjaðu tengingarferlið aftur í tenginu."
+      },
+      "accessDenied": {
+        "title": "Þú getur ekki heimilað þetta tengi",
+        "message": "Reikningurinn þinn hefur ekki heimild til að stjórna AI samþættingum fyrir þennan rekstraraðila."
+      },
+      "disabled": {
+        "title": "AI samþætting er óvirk",
+        "message": "Kerfisstjóri þarf að virkja AI samþættingu áður en hægt er að heimila tengi."
+      },
+      "unknown": {
+        "title": "Eitthvað fór úrskeiðis",
+        "message": "Ekki tókst að hlaða heimildarbeiðninni. Reyndu aftur síðar."
+      }
+    }
   }
 }

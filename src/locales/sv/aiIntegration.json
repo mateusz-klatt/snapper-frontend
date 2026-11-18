@@ -129,5 +129,53 @@
     "copyAriaLabel": "Kopiera konfigurationsutdrag till urklipp",
     "copy": "Kopiera till urklipp",
     "copied": "Kopierat"
+  },
+  "consent": {
+    "title": "Auktorisera en AI-koppling",
+    "loading": "Laddar auktoriseringsbegäran…",
+    "intro": "{{client}} ber om att få ansluta till ditt Snapper-konto.",
+    "readOnlyGuarantee": "Endast läsåtkomst, begränsad till dina befintliga behörigheter. Den här kopplingen kan inte lägga, ändra eller makulera ordrar.",
+    "scopesHeading": "Begärd åtkomst",
+    "scopes": {
+      "snapperRead": "Läsa marknadsdata, ordrar, positioner och signaler, endast där dina egna behörigheter tillåter det.",
+      "offlineAccess": "Fortsätta vara ansluten utan att be dig logga in igen."
+    },
+    "unrecognizedScope": "Okänd behörighet: {{scope}}",
+    "notApprovable": "Den här begäran gäller åtkomst som Snapper inte kan bevilja. Neka den och kontrollera kopplingens konfiguration.",
+    "resourceLabel": "Resurs",
+    "operatorLabel": "Operatör",
+    "operatorPlaceholder": "Välj en operatör",
+    "approve": "Tillåt åtkomst",
+    "deny": "Neka",
+    "redirecting": "Du skickas tillbaka till kopplingen…",
+    "submitFailed": "Beslutet kunde inte skickas. Försök igen.",
+    "replace": {
+      "title": "Ersätta den befintliga anslutningen?",
+      "message": "{{client}} har redan en anslutning med annan åtkomst. Om du tillåter den här begäran återkallas och ersätts den befintliga anslutningen.",
+      "confirm": "Ersätt anslutning",
+      "cancel": "Behåll befintlig"
+    },
+    "errors": {
+      "invalidRequest": {
+        "title": "Den här auktoriseringsbegäran är inte längre giltig",
+        "message": "Den kan ha löpt ut eller redan ha använts. Starta anslutningen på nytt från kopplingen."
+      },
+      "expired": {
+        "title": "Den här auktoriseringsbegäran har löpt ut",
+        "message": "Starta anslutningen på nytt från kopplingen."
+      },
+      "accessDenied": {
+        "title": "Du kan inte auktorisera den här kopplingen",
+        "message": "Ditt konto har inte behörighet att hantera AI-integrationer för den här operatören."
+      },
+      "disabled": {
+        "title": "AI-integration är inaktiverad",
+        "message": "En administratör måste aktivera AI-integration innan kopplingar kan auktoriseras."
+      },
+      "unknown": {
+        "title": "Något gick fel",
+        "message": "Auktoriseringsbegäran kunde inte laddas. Försök igen senare."
+      }
+    }
   }
 }
