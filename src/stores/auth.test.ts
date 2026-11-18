@@ -852,7 +852,7 @@ describe('auth store', () => {
       await state.refreshToken()
       expect(storeWsTicket).toHaveBeenCalledWith(null)
     })
-    it('sets null csrf token when refresh response omits it', async () => {
+    it('keeps the server csrf cookie when the refresh response omits the token', async () => {
       const mockUser = {
         type: 'user_profile' as const,
         sequence_id: 0,
@@ -877,7 +877,7 @@ describe('auth store', () => {
       const state = useAuthStore.getState()
 
       await state.refreshToken()
-      expect(apiClient.setCsrfToken).toHaveBeenCalledWith(null)
+      expect(apiClient.setCsrfToken).not.toHaveBeenCalled()
       expect(useAuthStore.getState().csrfToken).toBeNull()
     })
     it('throws error when fetching user info fails', async () => {

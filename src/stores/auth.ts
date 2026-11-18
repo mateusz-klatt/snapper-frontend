@@ -5,10 +5,31 @@ import type { LoginBody } from '../types/api'
 import { Permission, RESOURCE_PERMISSIONS } from '../types/permissions.generated'
 import i18n from '../i18n/config'
 import { apiClient } from '../lib/apiClient'
+import { getCookie } from '../lib/utils'
 import { queryClient } from '../lib/queryClient'
 import { storeWsTicket } from '../lib/wsTicketCache'
 
 type User = Components['schemas']['UserProfile']
+
+/**
+ * Adopt the CSRF token from an auth payload without discarding the server cookie.
+ *
+ * The server sets the readable ``csrf_token`` cookie on login and refresh, but
+ * only the refresh payload echoes the value. An absent or empty payload token
+ * therefore leaves the server cookie in place; clearing it is reserved for
+ * logout and explicit invalidation.
+ */
+const adoptCsrfToken = (token: string | null | undefined): string | null => {
+  if (typeof token === 'string' && token.length > 0) {
+    apiClient.setCsrfToken(token)
+
+    return token
+  }
+
+  const cookie = getCookie('csrf_token')
+
+  return cookie === '' ? null : cookie
+}
 
 /**
  * Tagged-union arg for ``refreshToken``.
@@ -93,7 +114,7 @@ export const useAuthStore = create<AuthState>()(
             const envelope: { payload: { user: User; csrf_token?: string } } = await response.json()
             const data = envelope.payload
 
-            apiClient.setCsrfToken(data.csrf_token ?? null)
+            const csrfToken = adoptCsrfToken(data.csrf_token)
 
             if (
               data.user.effective_permissions?.includes(Permission.MANAGE_SELF_ACCOUNT) &&
@@ -106,7 +127,7 @@ export const useAuthStore = create<AuthState>()(
             set({
               user: data.user,
               isAuthenticated: true,
-              csrfToken: data.csrf_token ?? null,
+              csrfToken,
               isLoading: false,
               error: null,
             })
@@ -189,7 +210,7 @@ export const useAuthStore = create<AuthState>()(
               storeWsTicket(null)
             }
 
-            apiClient.setCsrfToken(data.csrf_token ?? null)
+            const csrfToken = adoptCsrfToken(data.csrf_token)
             let userData = data.user ?? get().user
 
             if (!userData) {
@@ -216,7 +237,7 @@ export const useAuthStore = create<AuthState>()(
             set({
               user: userData,
               isAuthenticated: true,
-              csrfToken: data.csrf_token ?? null,
+              csrfToken,
             })
           } catch (error) {
             if (isTransportError(error)) {
