@@ -248,6 +248,27 @@ export const AsyncioMetricsSchema = _AsyncioMetricsRawSchema as unknown as z.Zod
   Components['schemas']['AsyncioMetrics']
 >
 
+const _AuthorizationServerMetadataRawSchema = z
+  .object({
+    issuer: z.string(),
+    authorization_endpoint: z.string(),
+    token_endpoint: z.string(),
+    revocation_endpoint: z.string(),
+    scopes_supported: z.array(z.string()),
+    response_types_supported: z.array(z.string()),
+    grant_types_supported: z.array(z.string()),
+    code_challenge_methods_supported: z.array(z.string()),
+    token_endpoint_auth_methods_supported: z.array(z.string()),
+    revocation_endpoint_auth_methods_supported: z.array(z.string()),
+    authorization_response_iss_parameter_supported: z.boolean(),
+  })
+  .strict()
+
+export const AuthorizationServerMetadataSchema =
+  _AuthorizationServerMetadataRawSchema as unknown as z.ZodType<
+    Components['schemas']['AuthorizationServerMetadata']
+  >
+
 const _BacktestComparisonDataRawSchema = z
   .object({
     type: z.literal('backtest_comparison'),
@@ -456,6 +477,27 @@ const _ConnectionStatsRawSchema = z
 
 export const ConnectionStatsSchema = _ConnectionStatsRawSchema as unknown as z.ZodType<
   Components['schemas']['ConnectionStats']
+>
+
+const _ConsentOperatorOptionRawSchema = z
+  .object({
+    public_id: z.string(),
+    name: z.string(),
+  })
+  .strict()
+
+export const ConsentOperatorOptionSchema = _ConsentOperatorOptionRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConsentOperatorOption']
+>
+
+const _ConsentRedirectRawSchema = z
+  .object({
+    redirect_to: z.string(),
+  })
+  .strict()
+
+export const ConsentRedirectSchema = _ConsentRedirectRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConsentRedirect']
 >
 
 const _ContinuousCandleDataRawSchema = z
@@ -1669,6 +1711,20 @@ export const ProcessSummaryItemSchema = _ProcessSummaryItemRawSchema as unknown 
   Components['schemas']['ProcessSummaryItem']
 >
 
+const _ProtectedResourceMetadataRawSchema = z
+  .object({
+    resource: z.string(),
+    authorization_servers: z.array(z.string()),
+    scopes_supported: z.array(z.string()),
+    bearer_methods_supported: z.array(z.string()),
+  })
+  .strict()
+
+export const ProtectedResourceMetadataSchema =
+  _ProtectedResourceMetadataRawSchema as unknown as z.ZodType<
+    Components['schemas']['ProtectedResourceMetadata']
+  >
+
 const _PushBetaConfigReadRawSchema = z
   .object({
     type: z.literal('push_beta_config_read'),
@@ -1798,6 +1854,12 @@ const _RetentionPolicyResultRawSchema = z
 
 export const RetentionPolicyResultSchema = _RetentionPolicyResultRawSchema as unknown as z.ZodType<
   Components['schemas']['RetentionPolicyResult']
+>
+
+const _RevocationResponseRawSchema = z.object({}).strict()
+
+export const RevocationResponseSchema = _RevocationResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['RevocationResponse']
 >
 
 const _RollPointDetailRawSchema = z
@@ -1983,6 +2045,20 @@ const _TableStatsItemRawSchema = z
 
 export const TableStatsItemSchema = _TableStatsItemRawSchema as unknown as z.ZodType<
   Components['schemas']['TableStatsItem']
+>
+
+const _TokenResponseRawSchema = z
+  .object({
+    access_token: z.string(),
+    token_type: z.string(),
+    expires_in: z.number().int(),
+    scope: z.string(),
+    refresh_token: z.string().nullable().optional(),
+  })
+  .strict()
+
+export const TokenResponseSchema = _TokenResponseRawSchema as unknown as z.ZodType<
+  Components['schemas']['TokenResponse']
 >
 
 const _TopicMetricSnapshotRawSchema = z
@@ -2515,6 +2591,29 @@ export const BracketCancelBodySchema = _BracketCancelBodyRawSchema as unknown as
   Components['schemas']['BracketCancelBody']
 >
 
+const _ConsentApproveBodyRawSchema = z
+  .object({
+    oauth_request: z.string().min(1).max(512),
+    operator_public_id: z.string().nullable().optional(),
+    replace_existing_grant: z.boolean().optional(),
+  })
+  .strict()
+
+export const ConsentApproveBodySchema = _ConsentApproveBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConsentApproveBody']
+>
+
+const _ConsentDenyBodyRawSchema = z
+  .object({
+    oauth_request: z.string().min(1).max(512),
+    operator_public_id: z.string().nullable().optional(),
+  })
+  .strict()
+
+export const ConsentDenyBodySchema = _ConsentDenyBodyRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConsentDenyBody']
+>
+
 const _CreateOperatorBodyRawSchema = z
   .object({
     label: z.string().min(1).max(128),
@@ -2910,6 +3009,38 @@ const _CandleListResponseRawSchema = z
 export const CandleListResponseSchema = _CandleListResponseRawSchema as unknown as z.ZodType<
   Components['schemas']['CandleListResponse']
 >
+
+const _ConsentRequestDetailRawSchema = z
+  .object({
+    client_name: z.string(),
+    scopes: z.array(z.string()),
+    resource: z.string(),
+    operators: z.array(ConsentOperatorOptionSchema),
+    read_only: z.boolean(),
+    expires_in: z.number().int(),
+  })
+  .strict()
+
+export const ConsentRequestDetailSchema = _ConsentRequestDetailRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConsentRequestDetail']
+>
+
+const _ConsentRedirectResponseRawSchema = z
+  .object({
+    type: z.literal('mcp_oauth_consent_redirect'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ConsentRedirectSchema,
+  })
+  .strict()
+
+export const ConsentRedirectResponseSchema =
+  _ConsentRedirectResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ConsentRedirectResponse']
+  >
 
 const _ContinuousCandleListResponseRawSchema = z
   .object({
@@ -4559,6 +4690,38 @@ export const BracketCancelCommandSchema = _BracketCancelCommandRawSchema as unkn
   Components['schemas']['BracketCancelCommand']
 >
 
+const _ConsentApproveRequestRawSchema = z
+  .object({
+    type: z.literal('mcp_oauth_consent_approve_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ConsentApproveBodySchema,
+  })
+  .strict()
+
+export const ConsentApproveRequestSchema = _ConsentApproveRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConsentApproveRequest']
+>
+
+const _ConsentDenyRequestRawSchema = z
+  .object({
+    type: z.literal('mcp_oauth_consent_deny_request').optional(),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ConsentDenyBodySchema,
+  })
+  .strict()
+
+export const ConsentDenyRequestSchema = _ConsentDenyRequestRawSchema as unknown as z.ZodType<
+  Components['schemas']['ConsentDenyRequest']
+>
+
 const _CreateOperatorCommandRawSchema = z
   .object({
     type: z.literal('create_operator_command').optional(),
@@ -4790,6 +4953,23 @@ const _ListedCachedStatsResponseRawSchema = z
 export const ListedCachedStatsResponseSchema =
   _ListedCachedStatsResponseRawSchema as unknown as z.ZodType<
     Components['schemas']['ListedCachedStatsResponse']
+  >
+
+const _ConsentRequestResponseRawSchema = z
+  .object({
+    type: z.literal('mcp_oauth_consent_request'),
+    sequence_id: z.number().int(),
+    public_id: z.string(),
+    timestamp: z.iso.datetime(),
+    session_id: z.string(),
+    topic: z.string().nullable().optional(),
+    payload: ConsentRequestDetailSchema,
+  })
+  .strict()
+
+export const ConsentRequestResponseSchema =
+  _ConsentRequestResponseRawSchema as unknown as z.ZodType<
+    Components['schemas']['ConsentRequestResponse']
   >
 
 const _EgressHealthDataRawSchema = z
@@ -6621,6 +6801,7 @@ export type AndroidDeviceInfo = Components['schemas']['AndroidDeviceInfo']
 export type AndroidPushConfiguration = Components['schemas']['AndroidPushConfiguration']
 export type AndroidRegistrationStateInfo = Components['schemas']['AndroidRegistrationStateInfo']
 export type AsyncioMetrics = Components['schemas']['AsyncioMetrics']
+export type AuthorizationServerMetadata = Components['schemas']['AuthorizationServerMetadata']
 export type BacktestComparisonData = Components['schemas']['BacktestComparisonData']
 export type BacktestEquityPointInline = Components['schemas']['BacktestEquityPointInline']
 export type BacktestEventData = Components['schemas']['BacktestEventData']
@@ -6633,6 +6814,8 @@ export type CachedCandle = Components['schemas']['CachedCandle']
 export type CachedStatsPayload = Components['schemas']['CachedStatsPayload']
 export type CandleData = Components['schemas']['CandleData']
 export type ConnectionStats = Components['schemas']['ConnectionStats']
+export type ConsentOperatorOption = Components['schemas']['ConsentOperatorOption']
+export type ConsentRedirect = Components['schemas']['ConsentRedirect']
 export type ContinuousCandleData = Components['schemas']['ContinuousCandleData']
 export type ContractData = Components['schemas']['ContractData']
 export type CpuMetrics = Components['schemas']['CpuMetrics']
@@ -6706,6 +6889,7 @@ export type ProcessStartData = Components['schemas']['ProcessStartData']
 export type ProcessStatus = Components['schemas']['ProcessStatus']
 export type ProcessStopData = Components['schemas']['ProcessStopData']
 export type ProcessSummaryItem = Components['schemas']['ProcessSummaryItem']
+export type ProtectedResourceMetadata = Components['schemas']['ProtectedResourceMetadata']
 export type PushBetaConfigRead = Components['schemas']['PushBetaConfigRead']
 export type RealPortfolioReconciliationMethod =
   Components['schemas']['RealPortfolioReconciliationMethod']
@@ -6716,6 +6900,7 @@ export type RelationshipTypeEnum = Components['schemas']['RelationshipTypeEnum']
 export type ResearcherRead = Components['schemas']['ResearcherRead']
 export type RestRateExchangeStats = Components['schemas']['RestRateExchangeStats']
 export type RetentionPolicyResult = Components['schemas']['RetentionPolicyResult']
+export type RevocationResponse = Components['schemas']['RevocationResponse']
 export type RollPointDetail = Components['schemas']['RollPointDetail']
 export type SaturationMetrics = Components['schemas']['SaturationMetrics']
 export type ScopeGrantInfo = Components['schemas']['ScopeGrantInfo']
@@ -6726,6 +6911,7 @@ export type SignalDiffEntry = Components['schemas']['SignalDiffEntry']
 export type StrategyProcess = Components['schemas']['StrategyProcess']
 export type SubscriptionsStats = Components['schemas']['SubscriptionsStats']
 export type TableStatsItem = Components['schemas']['TableStatsItem']
+export type TokenResponse = Components['schemas']['TokenResponse']
 export type TopicMetricSnapshot = Components['schemas']['TopicMetricSnapshot']
 export type TracemallocState = Components['schemas']['TracemallocState']
 export type TradeDiffEntry = Components['schemas']['TradeDiffEntry']
@@ -6763,6 +6949,8 @@ export type DeviceAlertPrefBody = Components['schemas']['DeviceAlertPrefBody']
 export type RevokeDevicePrefBody = Components['schemas']['RevokeDevicePrefBody']
 export type BracketCreateBody = Components['schemas']['BracketCreateBody']
 export type BracketCancelBody = Components['schemas']['BracketCancelBody']
+export type ConsentApproveBody = Components['schemas']['ConsentApproveBody']
+export type ConsentDenyBody = Components['schemas']['ConsentDenyBody']
 export type CreateOperatorBody = Components['schemas']['CreateOperatorBody']
 export type CreateOrderBody = Components['schemas']['CreateOrderBody']
 export type CancelOrderBody = Components['schemas']['CancelOrderBody']
@@ -6791,6 +6979,8 @@ export type CachedCandlesPayload = Components['schemas']['CachedCandlesPayload']
 export type CachedStatsResponse = Components['schemas']['CachedStatsResponse']
 export type ListedCachedStatsPayload = Components['schemas']['ListedCachedStatsPayload']
 export type CandleListResponse = Components['schemas']['CandleListResponse']
+export type ConsentRequestDetail = Components['schemas']['ConsentRequestDetail']
+export type ConsentRedirectResponse = Components['schemas']['ConsentRedirectResponse']
 export type ContinuousCandleListResponse = Components['schemas']['ContinuousCandleListResponse']
 export type ContractListResponse = Components['schemas']['ContractListResponse']
 export type CredentialListResponse = Components['schemas']['CredentialListResponse']
@@ -6895,6 +7085,8 @@ export type UpdateDevicePrefCommand = Components['schemas']['UpdateDevicePrefCom
 export type RevokeDevicePrefCommand = Components['schemas']['RevokeDevicePrefCommand']
 export type BracketCreateCommand = Components['schemas']['BracketCreateCommand']
 export type BracketCancelCommand = Components['schemas']['BracketCancelCommand']
+export type ConsentApproveRequest = Components['schemas']['ConsentApproveRequest']
+export type ConsentDenyRequest = Components['schemas']['ConsentDenyRequest']
 export type CreateOperatorCommand = Components['schemas']['CreateOperatorCommand']
 export type CreateOrderCommand = Components['schemas']['CreateOrderCommand']
 export type CancelOrderCommand = Components['schemas']['CancelOrderCommand']
@@ -6909,6 +7101,7 @@ export type CreateWalletCommand = Components['schemas']['CreateWalletCommand']
 export type AndroidPushConfigResponse = Components['schemas']['AndroidPushConfigResponse']
 export type CachedCandlesResponse = Components['schemas']['CachedCandlesResponse']
 export type ListedCachedStatsResponse = Components['schemas']['ListedCachedStatsResponse']
+export type ConsentRequestResponse = Components['schemas']['ConsentRequestResponse']
 export type EgressHealthData = Components['schemas']['EgressHealthData']
 export type MarketSnapshotFreshnessData = Components['schemas']['MarketSnapshotFreshnessData']
 export type HealthCheckData = Components['schemas']['HealthCheckData']

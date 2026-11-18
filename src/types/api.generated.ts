@@ -15,7 +15,11 @@ type Mode2 = "thread" | "process";
 type OpenApiOperationAdminResetUserPasswordApiAuthUsersUserIdAdminResetPasswordPost = Operations["admin_reset_user_password_api_auth_users__user_id__admin_reset_password_post"];
 type OpenApiOperationAndroidPushConfigApiDevicesAndroidConfigGet = Operations["android_push_config_api_devices_android_config_get"];
 type OpenApiOperationAndroidRegistrationStateApiDevicesAndroidRegistrationStateGet = Operations["android_registration_state_api_devices_android_registration_state_get"];
+type OpenApiOperationApproveConsentApiMcpOauthConsentApprovePost = Operations["approve_consent_api_mcp_oauth_consent_approve_post"];
 type OpenApiOperationAttachViewerToDeskApiAuthDesksOperatorPublicIdMembersUsernamePost = Operations["attach_viewer_to_desk_api_auth_desks__operator_public_id__members__username__post"];
+type OpenApiOperationAuthorizationServerMetadataApiMcpWellKnownOauthAuthorizationServerGet = Operations["authorization_server_metadata_api_mcp__well_known_oauth_authorization_server_get"];
+type OpenApiOperationAuthorizationServerMetadataWellKnownOauthAuthorizationServerApiMcpGet = Operations["authorization_server_metadata__well_known_oauth_authorization_server_api_mcp_get"];
+type OpenApiOperationAuthorizeApiMcpAuthorizeGet = Operations["authorize_api_mcp_authorize_get"];
 type OpenApiOperationCancelBacktestApiBacktestsRunIdCancelPost = Operations["cancel_backtest_api_backtests__run_id__cancel_post"];
 type OpenApiOperationCancelBracketApiExecutionPlansPlanPublicIdCancelPost = Operations["cancel_bracket_api_execution_plans__plan_public_id__cancel_post"];
 type OpenApiOperationCancelOrderApiOrdersPlanPublicIdCancelPost = Operations["cancel_order_api_orders__plan_public_id__cancel_post"];
@@ -23,6 +27,7 @@ type OpenApiOperationCancelOrderByClientOrderIdApiOrdersByClientOrderIdClientOrd
 type OpenApiOperationCancelTrailingStopApiTrailingStopsPlanPublicIdCancelPost = Operations["cancel_trailing_stop_api_trailing_stops__plan_public_id__cancel_post"];
 type OpenApiOperationChangeUserPasswordApiAuthUsersUserIdChangePasswordPost = Operations["change_user_password_api_auth_users__user_id__change_password_post"];
 type OpenApiOperationCloseOrphanCycleApiPositionCyclesCloseOrphanPost = Operations["close_orphan_cycle_api_position_cycles_close_orphan_post"];
+type OpenApiOperationConsentRequestApiMcpOauthConsentGet = Operations["consent_request_api_mcp_oauth_consent_get"];
 type OpenApiOperationCreateBacktestApiBacktestsPost = Operations["create_backtest_api_backtests_post"];
 type OpenApiOperationCreateBracketApiExecutionPlansPost = Operations["create_bracket_api_execution_plans_post"];
 type OpenApiOperationCreateComparisonApiBacktestsComparePost = Operations["create_comparison_api_backtests_compare_post"];
@@ -39,7 +44,9 @@ type OpenApiOperationCreateWalletApiWalletsPost = Operations["create_wallet_api_
 type OpenApiOperationDeactivateDelegateApiAiDelegatesDelegatePublicIdDeactivatePost = Operations["deactivate_delegate_api_ai_delegates__delegate_public_id__deactivate_post"];
 type OpenApiOperationDeactivateUserApiAuthUsersUserIdDeactivatePost = Operations["deactivate_user_api_auth_users__user_id__deactivate_post"];
 type OpenApiOperationDeleteDeviceApiDevicesDevicePublicIdDelete = Operations["delete_device_api_devices__device_public_id__delete"];
+type OpenApiOperationDenyConsentApiMcpOauthConsentDenyPost = Operations["deny_consent_api_mcp_oauth_consent_deny_post"];
 type OpenApiOperationDetachViewerFromDeskApiAuthDesksOperatorPublicIdMembersUsernameDelete = Operations["detach_viewer_from_desk_api_auth_desks__operator_public_id__members__username__delete"];
+type OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete = Operations["dynamic_client_registration_api_mcp_register_delete"];
 type OpenApiOperationGetAiReviewAftermathRouteApiAiReviewsReviewPublicIdAftermathGet = Operations["get_ai_review_aftermath_route_api_ai_reviews__review_public_id__aftermath_get"];
 type OpenApiOperationGetAlertEventApiAlertsAlertPublicIdGet = Operations["get_alert_event_api_alerts__alert_public_id__get"];
 type OpenApiOperationGetAllSettingsApiSettingsGet = Operations["get_all_settings_api_settings_get"];
@@ -125,12 +132,15 @@ type OpenApiOperationLoginApiAuthLoginPost = Operations["login_api_auth_login_po
 type OpenApiOperationLogoutApiAuthLogoutPost = Operations["logout_api_auth_logout_post"];
 type OpenApiOperationPostSystemMetricsTracemallocStartApiMetricsSystemTracemallocStartPost = Operations["post_system_metrics_tracemalloc_start_api_metrics_system_tracemalloc_start_post"];
 type OpenApiOperationPostSystemMetricsTracemallocStopApiMetricsSystemTracemallocStopPost = Operations["post_system_metrics_tracemalloc_stop_api_metrics_system_tracemalloc_stop_post"];
+type OpenApiOperationProtectedResourceMetadataApiMcpWellKnownOauthProtectedResourceGet = Operations["protected_resource_metadata_api_mcp__well_known_oauth_protected_resource_get"];
+type OpenApiOperationProtectedResourceMetadataWellKnownOauthProtectedResourceApiMcpGet = Operations["protected_resource_metadata__well_known_oauth_protected_resource_api_mcp_get"];
 type OpenApiOperationRefreshTokenApiAuthRefreshPost = Operations["refresh_token_api_auth_refresh_post"];
 type OpenApiOperationRegisterAndroidDeviceApiDevicesAndroidPost = Operations["register_android_device_api_devices_android_post"];
 type OpenApiOperationRegisterDeviceApiDevicesPost = Operations["register_device_api_devices_post"];
 type OpenApiOperationRemoveSettingApiSettingsKeyRemovePost = Operations["remove_setting_api_settings__key__remove_post"];
 type OpenApiOperationRerunBacktestApiBacktestsRunIdRerunPost = Operations["rerun_backtest_api_backtests__run_id__rerun_post"];
 type OpenApiOperationRestRateMetricsApiMetricsRestRateGet = Operations["rest_rate_metrics_api_metrics_rest_rate_get"];
+type OpenApiOperationRevokeApiMcpRevokePost = Operations["revoke_api_mcp_revoke_post"];
 type OpenApiOperationRevokeDevicePrefApiDevicesDevicePublicIdPrefsPrefPublicIdRevokePost = Operations["revoke_device_pref_api_devices__device_public_id__prefs__pref_public_id__revoke_post"];
 type OpenApiOperationRevokeScopeGrantApiScopeGrantsGrantPublicIdRevokePost = Operations["revoke_scope_grant_api_scope_grants__grant_public_id__revoke_post"];
 type OpenApiOperationRotateCredentialApiWalletsWalletPublicIdCredentialsCredentialPublicIdRotatePost = Operations["rotate_credential_api_wallets__wallet_public_id__credentials__credential_public_id__rotate_post"];
@@ -143,6 +153,7 @@ type OpenApiOperationStopProcessApiProcessesNameStopPost = Operations["stop_proc
 type OpenApiOperationSubmitAiReviewDecisionRouteApiAiReviewsReviewPublicIdDecisionPost = Operations["submit_ai_review_decision_route_api_ai_reviews__review_public_id__decision_post"];
 type OpenApiOperationSweepOrphanCyclesApiPositionCyclesSweepOrphansPost = Operations["sweep_orphan_cycles_api_position_cycles_sweep_orphans_post"];
 type OpenApiOperationTerminalizePairedExecutionGroupApiPairedExecutionGroupsGroupPublicIdTerminalizePost = Operations["terminalize_paired_execution_group_api_paired_execution_groups__group_public_id__terminalize_post"];
+type OpenApiOperationTokenApiMcpTokenPost = Operations["token_api_mcp_token_post"];
 type OpenApiOperationUpdateAlertDefaultApiAlertDefaultsPatch = Operations["update_alert_default_api_alert_defaults_patch"];
 type OpenApiOperationUpdateCurrentUserPreferencesApiAuthMeUpdatePost = Operations["update_current_user_preferences_api_auth_me_update_post"];
 type OpenApiOperationUpdateDelegateCapsApiAiDelegatesDelegatePublicIdPatch = Operations["update_delegate_caps_api_ai_delegates__delegate_public_id__patch"];
@@ -547,6 +558,42 @@ export type Paths = {
     "/api/status": OpenApiPathItem<{
         get: OpenApiOperationGetSystemStatusApiStatusGet;
     }>;
+    "/api/mcp/.well-known/oauth-protected-resource": OpenApiPathItem<{
+        get: OpenApiOperationProtectedResourceMetadataApiMcpWellKnownOauthProtectedResourceGet;
+    }>;
+    "/.well-known/oauth-protected-resource/api/mcp": OpenApiPathItem<{
+        get: OpenApiOperationProtectedResourceMetadataWellKnownOauthProtectedResourceApiMcpGet;
+    }>;
+    "/api/mcp/.well-known/oauth-authorization-server": OpenApiPathItem<{
+        get: OpenApiOperationAuthorizationServerMetadataApiMcpWellKnownOauthAuthorizationServerGet;
+    }>;
+    "/.well-known/oauth-authorization-server/api/mcp": OpenApiPathItem<{
+        get: OpenApiOperationAuthorizationServerMetadataWellKnownOauthAuthorizationServerApiMcpGet;
+    }>;
+    "/api/mcp/authorize": OpenApiPathItem<{
+        get: OpenApiOperationAuthorizeApiMcpAuthorizeGet;
+    }>;
+    "/api/mcp/token": OpenApiPathItem<{
+        post: OpenApiOperationTokenApiMcpTokenPost;
+    }>;
+    "/api/mcp/revoke": OpenApiPathItem<{
+        post: OpenApiOperationRevokeApiMcpRevokePost;
+    }>;
+    "/api/mcp-oauth/consent": OpenApiPathItem<{
+        get: OpenApiOperationConsentRequestApiMcpOauthConsentGet;
+    }>;
+    "/api/mcp-oauth/consent/approve": OpenApiPathItem<{
+        post: OpenApiOperationApproveConsentApiMcpOauthConsentApprovePost;
+    }>;
+    "/api/mcp-oauth/consent/deny": OpenApiPathItem<{
+        post: OpenApiOperationDenyConsentApiMcpOauthConsentDenyPost;
+    }>;
+    "/api/mcp/register": OpenApiPathItem<{
+        get: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
+        put: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
+        post: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
+        delete: OpenApiOperationDynamicClientRegistrationApiMcpRegisterDelete;
+    }>;
 };
 export type webhooks = Record<string, never>;
 export type Components = {
@@ -859,6 +906,19 @@ export type Components = {
         AsyncioMetrics: {
             active_tasks: number;
             pending_tasks: number;
+        };
+        AuthorizationServerMetadata: {
+            issuer: string;
+            authorization_endpoint: string;
+            token_endpoint: string;
+            revocation_endpoint: string;
+            scopes_supported: string[];
+            response_types_supported: string[];
+            grant_types_supported: string[];
+            code_challenge_methods_supported: string[];
+            token_endpoint_auth_methods_supported: string[];
+            revocation_endpoint_auth_methods_supported: string[];
+            authorization_response_iss_parameter_supported: boolean;
         };
         AvailableProcess: {
             type: "available_process";
@@ -1294,6 +1354,39 @@ export type Components = {
             subscriber_tasks: number;
             active_topics: number;
             active_clients: number;
+        };
+        ConsentOperatorOption: {
+            public_id: string;
+            name: string;
+        };
+        ConsentRedirect: {
+            redirect_to: string;
+        };
+        ConsentRedirectResponse: {
+            type: "mcp_oauth_consent_redirect";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["ConsentRedirect"];
+        };
+        ConsentRequestDetail: {
+            client_name: string;
+            scopes: string[];
+            resource: string;
+            operators: Components["schemas"]["ConsentOperatorOption"][];
+            read_only: true;
+            expires_in: number;
+        };
+        ConsentRequestResponse: {
+            type: "mcp_oauth_consent_request";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null | undefined;
+            payload: Components["schemas"]["ConsentRequestDetail"];
         };
         ContinuousCandleData: {
             type: "continuous_candle";
@@ -2872,6 +2965,12 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["ProcessSummaryData"];
         };
+        ProtectedResourceMetadata: {
+            resource: string;
+            authorization_servers: string[];
+            scopes_supported: string[];
+            bearer_methods_supported: string[];
+        };
         PushBetaConfigRead: {
             type: "push_beta_config_read";
             sequence_id: number;
@@ -3044,6 +3143,7 @@ export type Components = {
             topic?: string | null | undefined;
             payload: Components["schemas"]["RetentionRunData"];
         };
+        RevocationResponse: Record<string, never>;
         RevokeDevicePrefResponse: {
             type: "revoke_device_pref_response";
             sequence_id: number;
@@ -3332,6 +3432,13 @@ export type Components = {
             archivable: number | null;
             is_stale: boolean;
             last_sampled_at: string;
+        };
+        TokenResponse: {
+            access_token: string;
+            token_type: string;
+            expires_in: number;
+            scope: string;
+            refresh_token?: string | null | undefined;
         };
         TopicMetricSnapshot: {
             active_subscribers: number;
@@ -4084,6 +4191,33 @@ export type Components = {
         };
         BracketCancelBody: {
             reason?: string | null;
+        };
+        ConsentApproveRequest: {
+            type?: "mcp_oauth_consent_approve_request";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["ConsentApproveBody"];
+        };
+        ConsentApproveBody: {
+            oauth_request: string;
+            operator_public_id?: string | null;
+            replace_existing_grant?: boolean;
+        };
+        ConsentDenyRequest: {
+            type?: "mcp_oauth_consent_deny_request";
+            sequence_id: number;
+            public_id: string;
+            timestamp: string;
+            session_id: string;
+            topic?: string | null;
+            payload: Components["schemas"]["ConsentDenyBody"];
+        };
+        ConsentDenyBody: {
+            oauth_request: string;
+            operator_public_id?: string | null;
         };
         CreateOperatorCommand: {
             type?: "create_operator_command";
@@ -8633,6 +8767,280 @@ export interface Operations {
                 };
                 content: {
                     "application/json": Components["schemas"]["SystemStatusResponse"];
+                };
+            };
+        };
+    };
+    protected_resource_metadata_api_mcp__well_known_oauth_protected_resource_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ProtectedResourceMetadata"];
+                };
+            };
+        };
+    };
+    protected_resource_metadata__well_known_oauth_protected_resource_api_mcp_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ProtectedResourceMetadata"];
+                };
+            };
+        };
+    };
+    authorization_server_metadata_api_mcp__well_known_oauth_authorization_server_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AuthorizationServerMetadata"];
+                };
+            };
+        };
+    };
+    authorization_server_metadata__well_known_oauth_authorization_server_api_mcp_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["AuthorizationServerMetadata"];
+                };
+            };
+        };
+    };
+    authorize_api_mcp_authorize_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    token_api_mcp_token_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["TokenResponse"];
+                };
+            };
+        };
+    };
+    revoke_api_mcp_revoke_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["RevocationResponse"];
+                };
+            };
+        };
+    };
+    consent_request_api_mcp_oauth_consent_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ConsentRequestResponse"];
+                };
+            };
+        };
+    };
+    approve_consent_api_mcp_oauth_consent_approve_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["ConsentApproveRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ConsentRedirectResponse"];
+                };
+            };
+        };
+    };
+    deny_consent_api_mcp_oauth_consent_deny_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": Components["schemas"]["ConsentDenyRequest"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Components["schemas"]["ConsentRedirectResponse"];
+                };
+            };
+        };
+    };
+    dynamic_client_registration_api_mcp_register_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    dynamic_client_registration_api_mcp_register_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    dynamic_client_registration_api_mcp_register_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    dynamic_client_registration_api_mcp_register_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
                 };
             };
         };

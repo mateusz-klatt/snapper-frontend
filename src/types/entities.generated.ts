@@ -1374,6 +1374,32 @@ export interface BacktestCompare {
 }
 
 /**
+ * ConsentApprove request entity.
+ * Use with consentApproveToAPI() transform.
+ */
+export interface ConsentApprove {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  payload: Record<string, unknown>
+}
+
+/**
+ * ConsentDeny request entity.
+ * Use with consentDenyToAPI() transform.
+ */
+export interface ConsentDeny {
+  sequenceId: number
+  publicId: string
+  timestamp: Date
+  sessionId: string
+  topic?: string | null
+  payload: Record<string, unknown>
+}
+
+/**
  * ProcessCreate request entity.
  * Use with processCreateToAPI() transform.
  */
