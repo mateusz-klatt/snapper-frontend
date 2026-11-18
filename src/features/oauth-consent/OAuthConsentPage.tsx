@@ -16,10 +16,11 @@ import {
 } from './consentApi'
 import { releaseConsentRequest, useConsentFlow } from './consentRequest'
 
-type TerminalKind = Exclude<ConsentErrorKind, 'replacement_required'> | 'expired'
+type TerminalKind = Exclude<ConsentErrorKind, 'replacement_required' | 'unknown'> | 'expired'
 
 type PageState =
   | { status: 'loading' }
+  | { status: 'loadFailed' }
   | { status: 'ready'; details: ConsentDetails; deadline: number }
   | { status: 'failed'; kind: TerminalKind }
   | { status: 'redirecting' }
@@ -34,11 +35,12 @@ const ERROR_KEYS = {
   expired: 'expired',
   access_denied: 'accessDenied',
   disabled: 'disabled',
-  unknown: 'unknown',
 } as const satisfies Readonly<Record<TerminalKind, string>>
 
-const terminalKindOf = (kind: ConsentErrorKind): TerminalKind =>
-  kind === 'replacement_required' ? 'unknown' : kind
+const isTerminal = (
+  kind: ConsentErrorKind
+): kind is Exclude<ConsentErrorKind, 'replacement_required' | 'unknown'> =>
+  kind !== 'replacement_required' && kind !== 'unknown'
 
 const initialOperator = (details: ConsentDetails): string | null =>
   details.operators.length === 1 ? (details.operators.at(0) as ConsentOperator).public_id : null
@@ -67,6 +69,9 @@ function ConsentFlowView({
   const [state, setState] = useState<PageState>(() =>
     request === null ? { status: 'failed', kind: 'invalid_request' } : { status: 'loading' }
   )
+  const [attempt, setAttempt] = useState(0)
+  const submittingRef = useRef(false)
+  const expiredDuringSubmitRef = useRef(false)
 
   useEffect(() => {
     if (request === null) return
@@ -79,15 +84,22 @@ function ConsentFlowView({
         }
       },
       (error: unknown) => {
-        if (active)
-          setState({ status: 'failed', kind: terminalKindOf(classifyConsentError(error)) })
+        if (!active) return
+        const kind = classifyConsentError(error)
+
+        setState(isTerminal(kind) ? { status: 'failed', kind } : { status: 'loadFailed' })
       }
     )
 
     return () => {
       active = false
     }
-  }, [request])
+  }, [request, attempt])
+
+  const retry = useCallback((): void => {
+    setState({ status: 'loading' })
+    setAttempt(current => current + 1)
+  }, [])
 
   const terminal = state.status === 'failed' || state.status === 'redirecting'
 
@@ -100,7 +112,13 @@ function ConsentFlowView({
   useEffect(() => {
     if (deadline === null) return
     const timer = setTimeout(
-      () => setState({ status: 'failed', kind: 'expired' }),
+      () => {
+        if (submittingRef.current) {
+          expiredDuringSubmitRef.current = true
+        } else {
+          setState({ status: 'failed', kind: 'expired' })
+        }
+      },
       Math.max(0, deadline - Date.now())
     )
 
@@ -117,27 +135,55 @@ function ConsentFlowView({
 
   const fail = useCallback((kind: TerminalKind): void => setState({ status: 'failed', kind }), [])
 
+  const startSubmit = useCallback((): void => {
+    submittingRef.current = true
+  }, [])
+
+  const settleSubmit = useCallback((): boolean => {
+    submittingRef.current = false
+    if (!expiredDuringSubmitRef.current) return false
+    setState({ status: 'failed', kind: 'expired' })
+
+    return true
+  }, [])
+
   return (
     <div className='min-h-screen flex items-center justify-center bg-alpine-100 dark:bg-dark-900 px-4 py-8'>
       <main className='w-full max-w-lg rounded-2xl border border-dark-600 bg-alpine-50 p-6 shadow-sm'>
-        <ConsentBody state={state} request={request} onRedirect={redirect} onFail={fail} />
+        <ConsentBody
+          state={state}
+          request={request}
+          lifecycle={{
+            onRedirect: redirect,
+            onFail: fail,
+            onRetry: retry,
+            onSubmitStart: startSubmit,
+            onSubmitSettled: settleSubmit,
+          }}
+        />
       </main>
     </div>
   )
 }
 
+interface FlowLifecycle {
+  onRedirect: (url: string) => void
+  onFail: (kind: TerminalKind) => void
+  onRetry: () => void
+  onSubmitStart: () => void
+  onSubmitSettled: () => boolean
+}
+
 interface ConsentBodyProps {
   state: PageState
   request: string | null
-  onRedirect: (url: string) => void
-  onFail: (kind: TerminalKind) => void
+  lifecycle: FlowLifecycle
 }
 
 function ConsentBody({
   state,
   request,
-  onRedirect,
-  onFail,
+  lifecycle,
 }: Readonly<ConsentBodyProps>): React.ReactElement {
   const { t } = useTranslation('aiIntegration')
 
@@ -147,14 +193,9 @@ function ConsentBody({
 
   if (state.status === 'failed') return <FailurePanel kind={state.kind} />
 
-  return (
-    <ConsentForm
-      details={state.details}
-      request={request as string}
-      onRedirect={onRedirect}
-      onFail={onFail}
-    />
-  )
+  if (state.status === 'loadFailed') return <LoadFailedPanel onRetry={lifecycle.onRetry} />
+
+  return <ConsentForm details={state.details} request={request as string} lifecycle={lifecycle} />
 }
 
 function Pending({ label }: Readonly<{ label: string }>): React.ReactElement {
@@ -183,18 +224,38 @@ function FailurePanel({ kind }: Readonly<{ kind: TerminalKind }>): React.ReactEl
   )
 }
 
+function LoadFailedPanel({ onRetry }: Readonly<{ onRetry: () => void }>): React.ReactElement {
+  const { t } = useTranslation('aiIntegration')
+  const { t: tCommon } = useTranslation('common')
+
+  return (
+    <section className='space-y-4' data-testid='oauth-consent-load-failed'>
+      <div role='alert' className='flex items-start gap-3'>
+        <ShieldAlert className='mt-0.5 h-5 w-5 shrink-0 text-warning-600' aria-hidden='true' />
+        <div>
+          <h1 className='mb-1 text-lg font-semibold text-alpine-900'>
+            {t('consent.errors.unknown.title')}
+          </h1>
+          <p className='text-sm text-muted-600'>{t('consent.errors.unknown.message')}</p>
+        </div>
+      </div>
+      <div className='flex justify-end'>
+        <Button onClick={onRetry}>{tCommon('retry')}</Button>
+      </div>
+    </section>
+  )
+}
+
 interface ConsentFormProps {
   details: ConsentDetails
   request: string
-  onRedirect: (url: string) => void
-  onFail: (kind: TerminalKind) => void
+  lifecycle: FlowLifecycle
 }
 
 function ConsentForm({
   details,
   request,
-  onRedirect,
-  onFail,
+  lifecycle,
 }: Readonly<ConsentFormProps>): React.ReactElement {
   const { t } = useTranslation('aiIntegration')
   const [operatorPublicId, setOperatorPublicId] = useState<string | null>(() =>
@@ -220,22 +281,29 @@ function ConsentForm({
   const submit = async (decide: () => Promise<string>): Promise<void> => {
     setSubmitting(true)
     setSubmitFailed(false)
+    lifecycle.onSubmitStart()
 
     try {
       const target = await decide()
 
-      if (mountedRef.current) onRedirect(target)
+      if (mountedRef.current) lifecycle.onRedirect(target)
     } catch (error) {
       if (!mountedRef.current) return
-      setSubmitting(false)
       const kind = classifyConsentError(error)
+
+      if (isTerminal(kind)) {
+        lifecycle.onFail(kind)
+
+        return
+      }
+
+      if (lifecycle.onSubmitSettled()) return
+      setSubmitting(false)
 
       if (kind === 'replacement_required') {
         setConfirmingReplacement(true)
-      } else if (kind === 'unknown') {
-        setSubmitFailed(true)
       } else {
-        onFail(kind)
+        setSubmitFailed(true)
       }
     }
   }
@@ -314,7 +382,11 @@ function ConsentForm({
         </p>
       )}
       <div className='flex flex-wrap justify-end gap-3'>
-        <Button variant='secondary' disabled={submitting} onClick={() => void deny()}>
+        <Button
+          variant='secondary'
+          disabled={!operatorChosen || submitting}
+          onClick={() => void deny()}
+        >
           {t('consent.deny')}
         </Button>
         <Button

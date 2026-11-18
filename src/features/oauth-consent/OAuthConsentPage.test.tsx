@@ -167,16 +167,35 @@ describe('OAuthConsentPage', () => {
     const { navigate } = renderPage()
     const picker = await screen.findByRole('combobox', { name: 'Operator' })
 
+    const denyButton = screen.getByRole('button', { name: 'Deny' })
+
     expect(approveButton()).toBeDisabled()
+    expect(denyButton).toBeDisabled()
     await user.selectOptions(picker, 'op-2')
     expect(approveButton()).toBeEnabled()
+    expect(denyButton).toBeEnabled()
     await user.selectOptions(picker, '')
     expect(approveButton()).toBeDisabled()
+    expect(denyButton).toBeDisabled()
     await user.selectOptions(picker, 'op-1')
     await user.click(screen.getByRole('button', { name: 'Deny' }))
 
     expect(denyConsent).toHaveBeenCalledWith('opaque-1', 'op-1')
     expect(navigate).toHaveBeenCalledWith('https://client.example/cb?error=access_denied')
+  })
+
+  it('sends the only operator explicitly when denying', async () => {
+    const user = userEvent.setup()
+
+    fetchConsent.mockResolvedValue(details({ scopes: ['snapper.trade'] }))
+    denyConsent.mockResolvedValue('https://client.example/cb?error=access_denied')
+    renderPage()
+
+    const denyButton = await screen.findByRole('button', { name: 'Deny' })
+
+    expect(approveButton()).toBeDisabled()
+    await user.click(denyButton)
+    expect(denyConsent).toHaveBeenCalledWith('opaque-1', 'op-1')
   })
 
   it('sends no operator when the request has none', async () => {
@@ -219,14 +238,121 @@ describe('OAuthConsentPage', () => {
     [apiError(400, 'consent_request_invalid'), 'This authorization request is no longer valid'],
     [apiError(403, 'consent_access_denied'), 'You cannot authorize this connector'],
     [apiError(503), 'AI integration is disabled'],
-    [apiError(409, 'grant_replacement_required'), 'Something went wrong'],
-    [new Error('network'), 'Something went wrong'],
   ])('shows a terminal state when loading fails (%s)', async (error, title) => {
     fetchConsent.mockRejectedValue(error)
     renderPage()
 
     expect(await screen.findByRole('alert')).toHaveTextContent(title)
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
+  })
+
+  it.each([[new Error('network')], [apiError(500)], [apiError(409, 'grant_replacement_required')]])(
+    'keeps the capability and offers a retry after a transient load failure (%s)',
+    async error => {
+      const user = userEvent.setup()
+
+      fetchConsent
+        .mockRejectedValueOnce(error)
+        .mockRejectedValueOnce(error)
+        .mockResolvedValueOnce(details())
+      const first = renderPage()
+
+      expect(await screen.findByRole('alert')).toHaveTextContent('Something went wrong')
+      first.unmount()
+
+      renderPage('')
+      await user.click(await screen.findByRole('button', { name: 'Retry' }))
+
+      expect(
+        await screen.findByText('Claude is asking to connect to your Snapper account.')
+      ).toBeInTheDocument()
+      expect(fetchConsent).toHaveBeenNthCalledWith(3, 'opaque-1')
+    }
+  )
+
+  it('lets the server decide when the lifetime ends during a decision', async () => {
+    vi.useFakeTimers()
+    const approved = deferred<string>()
+
+    fetchConsent.mockResolvedValue(details({ expires_in: 1 }))
+    approveConsent.mockReturnValue(approved.promise)
+    const { navigate } = renderPage()
+
+    await act(async () => {
+      await Promise.resolve()
+    })
+    await act(async () => {
+      approveButton().click()
+      await Promise.resolve()
+    })
+    await act(async () => {
+      vi.advanceTimersByTime(1_000)
+    })
+
+    expect(screen.queryByText('This authorization request has expired')).not.toBeInTheDocument()
+
+    await act(async () => {
+      approved.resolve('https://client.example/cb')
+      await Promise.resolve()
+    })
+
+    expect(navigate).toHaveBeenCalledWith('https://client.example/cb')
+  })
+
+  it.each([[new Error('network')], [apiError(409, 'grant_replacement_required')]])(
+    'expires after a non-final decision outcome once the lifetime has passed (%s)',
+    async error => {
+      vi.useFakeTimers()
+      const approved = deferred<string>()
+
+      fetchConsent.mockResolvedValue(details({ expires_in: 1 }))
+      approveConsent.mockReturnValue(approved.promise)
+      renderPage()
+
+      await act(async () => {
+        await Promise.resolve()
+      })
+      await act(async () => {
+        approveButton().click()
+        await Promise.resolve()
+      })
+      await act(async () => {
+        vi.advanceTimersByTime(1_000)
+      })
+      await act(async () => {
+        approved.reject(error)
+        await Promise.resolve()
+      })
+
+      expect(screen.getByRole('alert')).toHaveTextContent('This authorization request has expired')
+      expect(screen.queryByText('Replace the existing connection?')).not.toBeInTheDocument()
+    }
+  )
+
+  it('lets a final server refusal win over a lapsed lifetime', async () => {
+    vi.useFakeTimers()
+    const denied = deferred<string>()
+
+    fetchConsent.mockResolvedValue(details({ expires_in: 1 }))
+    denyConsent.mockReturnValue(denied.promise)
+    renderPage()
+
+    await act(async () => {
+      await Promise.resolve()
+    })
+    await act(async () => {
+      screen.getByRole('button', { name: 'Deny' }).click()
+      await Promise.resolve()
+    })
+    await act(async () => {
+      vi.advanceTimersByTime(1_000)
+    })
+    await act(async () => {
+      denied.reject(apiError(403, 'consent_access_denied'))
+      await Promise.resolve()
+    })
+
+    expect(screen.getByRole('alert')).toHaveTextContent('You cannot authorize this connector')
   })
 
   it('asks for explicit confirmation before replacing an existing grant', async () => {

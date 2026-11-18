@@ -69,13 +69,20 @@ export const isAllowedScope = (scope: string): scope is AllowedScope =>
 export const scopesApprovable = (scopes: readonly string[]): boolean =>
   scopes.includes('snapper.read') && scopes.every(isAllowedScope)
 
+const LOOPBACK_REDIRECT_HOSTS: ReadonlySet<string> = new Set(['localhost', '127.0.0.1', '[::1]'])
+
 export const safeRedirectTarget = (value: unknown): string | null => {
   if (typeof value !== 'string') return null
 
   try {
     const url = new URL(value)
+    const loopbackHttp =
+      url.protocol === 'http:' && LOOPBACK_REDIRECT_HOSTS.has(url.hostname.toLowerCase())
+    const allowedScheme = url.protocol === 'https:' || loopbackHttp
 
-    return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : null
+    return allowedScheme && url.hash === '' && url.username === '' && url.password === ''
+      ? url.href
+      : null
   } catch {
     return null
   }

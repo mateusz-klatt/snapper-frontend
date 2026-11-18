@@ -40,11 +40,21 @@ describe('consentApi', () => {
     expect(scopesApprovable(['snapper.read', 'snapper.trade'])).toBe(false)
   })
 
-  it('accepts only absolute http(s) redirect targets', () => {
+  it('accepts only the redirect forms the backend can register', () => {
     expect(safeRedirectTarget('https://client.example/cb?code=x&state=y')).toBe(
       'https://client.example/cb?code=x&state=y'
     )
     expect(safeRedirectTarget('http://127.0.0.1:8080/cb')).toBe('http://127.0.0.1:8080/cb')
+    expect(safeRedirectTarget('http://localhost/cb')).toBe('http://localhost/cb')
+    expect(safeRedirectTarget('http://LOCALHOST:3000/cb')).toBe('http://localhost:3000/cb')
+    expect(safeRedirectTarget('http://[::1]:9000/cb')).toBe('http://[::1]:9000/cb')
+    expect(safeRedirectTarget('http://client.example/cb')).toBeNull()
+    expect(safeRedirectTarget('http://127.0.0.2/cb')).toBeNull()
+    expect(safeRedirectTarget('http://0.0.0.0/cb')).toBeNull()
+    expect(safeRedirectTarget('https://client.example/cb#fragment')).toBeNull()
+    expect(safeRedirectTarget('https://user@client.example/cb')).toBeNull()
+    expect(safeRedirectTarget('https://:pass@client.example/cb')).toBeNull()
+    expect(safeRedirectTarget('ftp://client.example/cb')).toBeNull()
     expect(safeRedirectTarget('javascript:alert(1)')).toBeNull()
     expect(safeRedirectTarget('/relative')).toBeNull()
     expect(safeRedirectTarget(42)).toBeNull()
