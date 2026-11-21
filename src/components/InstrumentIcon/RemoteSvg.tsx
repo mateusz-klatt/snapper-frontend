@@ -76,6 +76,8 @@ export function RemoteSvg({
       loading='lazy'
       decoding='async'
       style={{
+        width: size,
+        height: size,
         borderRadius: shape === 'circle' ? '50%' : 4,
         display: 'block',
         objectFit: 'cover',

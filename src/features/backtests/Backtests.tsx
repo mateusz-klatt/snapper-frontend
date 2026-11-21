@@ -175,6 +175,8 @@ export const Backtests: React.FC = () => {
             </button>
           )}
           <select
+            id='backtests-status-filter'
+            name='status-filter'
             aria-label={t('list.filter.ariaLabel')}
             className='rounded-lg border border-dark-600 bg-alpine-50 px-3 py-1 text-sm text-alpine-900'
             value={statusFilter}

@@ -153,6 +153,8 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
       )}
       <div className='flex items-center gap-2'>
         <select
+          id='compare-run-select'
+          name='compare-run-select'
           className='flex-1 rounded-lg border border-dark-600 bg-alpine-50 px-2 py-1 text-xs text-alpine-900'
           value={pickedOther}
           onChange={e => setPickedOther(e.target.value)}
@@ -177,6 +179,8 @@ export const CompareLauncher: React.FC<Props> = ({ currentRun }) => {
       {configHash !== null && (
         <label className='flex items-center gap-2 text-xs text-muted-500'>
           <input
+            id='compare-show-all'
+            name='compare-show-all'
             type='checkbox'
             checked={showAllToggled}
             onChange={e => {

@@ -19,16 +19,25 @@ describe('JsonEditor', () => {
     renderWithMocks(<JsonEditor value={{}} onChange={mockOnChange} />)
     expect(screen.getByText(/Form Editor/i)).toBeTruthy()
   })
-  it('displays primitive values', () => {
-    renderWithMocks(<JsonEditor value='test string' onChange={mockOnChange} />)
-    expect(screen.getByDisplayValue('test string')).toBeTruthy()
+  it('displays primitive values with a non-empty fallback field name at the root', () => {
+    const { rerender } = renderWithMocks(<JsonEditor value='test string' onChange={mockOnChange} />)
+    const textInput = screen.getByDisplayValue('test string')
+
+    expect(textInput).toBeTruthy()
+    expect(textInput.getAttribute('name')).toBe('json-value')
+
+    rerender(<JsonEditor value={42} onChange={mockOnChange} />)
+    expect(screen.getByDisplayValue('42').getAttribute('name')).toBe('json-value')
+
+    rerender(<JsonEditor value={true} onChange={mockOnChange} />)
+    expect(screen.getByRole('checkbox').getAttribute('name')).toBe('json-value')
   })
   it('displays object with nested properties', () => {
     const value = { name: 'test', age: 25 }
 
     renderWithMocks(<JsonEditor value={value} onChange={mockOnChange} />)
-    expect(screen.getByDisplayValue('test')).toBeTruthy()
-    expect(screen.getByDisplayValue('25')).toBeTruthy()
+    expect(screen.getByDisplayValue('test').getAttribute('name')).toBe('.name')
+    expect(screen.getByDisplayValue('25').getAttribute('name')).toBe('.age')
   })
   it('displays array items', () => {
     const value = ['item1', 'item2', 'item3']

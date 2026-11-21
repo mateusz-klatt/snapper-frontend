@@ -197,6 +197,8 @@ export const ProcessResourceTable: React.FC = () => {
               title={t('processResources.managedOnlyHint')}
             >
               <input
+                id='process-resources-managed-only'
+                name='managedOnly'
                 type='checkbox'
                 checked={managedOnly}
                 onChange={event => setManagedOnly(event.target.checked)}
@@ -205,6 +207,8 @@ export const ProcessResourceTable: React.FC = () => {
             </label>
             <label className='flex items-center gap-2 text-sm text-muted-600'>
               <input
+                id='process-resources-hide-disabled'
+                name='hideDisabled'
                 type='checkbox'
                 checked={hideDisabled}
                 onChange={event => setHideDisabled(event.target.checked)}

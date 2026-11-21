@@ -93,6 +93,7 @@ export const JsonEditor: React.FC<Readonly<JsonEditorProps>> = ({
           </div>
         )}
         <textarea
+          name='json-raw-editor'
           value={rawJson}
           onChange={handleRawChange}
           readOnly={readOnly}
@@ -292,13 +293,16 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   value,
   onChange,
   readOnly,
+  path,
 }) => {
   const { t } = useTranslation('settings')
+  const fieldName = path || 'json-value'
 
   if (typeof value === 'boolean') {
     return (
       <label className='flex items-center gap-2 cursor-pointer'>
         <input
+          name={fieldName}
           type='checkbox'
           checked={value}
           onChange={e => onChange(e.target.checked)}
@@ -315,6 +319,7 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   if (typeof value === 'number') {
     return (
       <input
+        name={fieldName}
         type='number'
         value={value}
         onChange={e => onChange(Number(e.target.value))}
@@ -328,6 +333,7 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
 
   return (
     <input
+      name={fieldName}
       type='text'
       value={stringValue}
       onChange={e => onChange(e.target.value)}

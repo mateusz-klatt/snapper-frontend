@@ -88,6 +88,8 @@ export function MarketTimeScrubber({
         </span>
       </div>
       <input
+        id='market-time-scrubber'
+        name='market-time-scrubber'
         type='range'
         min={sliderMin}
         max={horizon}

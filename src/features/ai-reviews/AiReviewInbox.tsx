@@ -219,6 +219,8 @@ function PendingReviewRow({
         {canSubmitDecision ? (
           <div className='flex flex-col gap-2 min-w-[12rem]'>
             <input
+              id={`ai-review-rationale-${item.review_public_id}`}
+              name={`rationale-${item.review_public_id}`}
               type='text'
               placeholder={t('pending.rationalePlaceholder')}
               value={rationale}

@@ -150,6 +150,8 @@ export const AddSettingModal = ({
           </div>
           <div className='mt-2'>
             <input
+              id='setting-new-category'
+              name='setting-new-category'
               type='text'
               readOnly={readOnly}
               value={newCategory}

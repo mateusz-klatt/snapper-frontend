@@ -355,6 +355,8 @@ function ConsentForm({
         <label className='block space-y-1 text-sm'>
           <span className='text-muted-500'>{t('consent.operatorLabel')}</span>
           <select
+            id='oauth-consent-operator'
+            name='operator_public_id'
             className='input w-full'
             value={operatorPublicId ?? ''}
             onChange={event =>

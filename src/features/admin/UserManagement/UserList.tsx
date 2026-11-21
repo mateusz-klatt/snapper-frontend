@@ -138,6 +138,8 @@ const UserList: React.FC<Readonly<UserListProps>> = ({ onCreateUser, onEditUser,
       {}
       <div>
         <input
+          id='user-list-search'
+          name='user-list-search'
           type='text'
           placeholder={t('users.list.searchPlaceholder')}
           value={searchTerm}

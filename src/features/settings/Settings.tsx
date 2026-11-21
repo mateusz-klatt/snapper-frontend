@@ -161,6 +161,8 @@ export const Settings = () => {
         <div className='flex flex-col sm:flex-row gap-3 items-stretch sm:items-center'>
           <div className='flex-1'>
             <input
+              id='settings-search'
+              name='settings-search'
               type='text'
               placeholder={t('page.searchPlaceholder')}
               value={searchTerm}
