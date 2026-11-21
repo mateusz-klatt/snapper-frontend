@@ -20,6 +20,7 @@ import {
   type AiReviewDecisionAckFrameData,
   type AiReviewRequestFrameData,
   type AlertEventData,
+  type ProcessSummaryEventData,
   isOrder,
   isExecution,
   isSignal,
@@ -91,6 +92,33 @@ function aiReviewActivityDedupKey(frame: AiReviewActivityFrame): string {
   return `${frame.type}|${frame.review_public_id}|${frame.dispatch_version}`
 }
 
+/**
+ * Compute a structural signature for one coordinator's process summary snapshot.
+ *
+ * Excludes volatile ``rss_bytes`` and ``cpu_percent`` readings (which flow
+ * straight into ``useProcessMetricsStore``) so periodic 5 s metric heartbeats
+ * do not trigger redundant ``GET /api/processes/summary`` refetches while
+ * process membership and lifecycle status are unchanged.
+ */
+function processSummaryStructureSignature(
+  items: readonly ProcessSummaryEventData['processes'][number][]
+): string {
+  return [...items]
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(item =>
+      [
+        item.name,
+        item.running,
+        item.enabled,
+        item.owned ?? false,
+        item.role,
+        item.lifecycle,
+        item.active_public_id ?? '',
+      ].join('\u001f')
+    )
+    .join('\u001e')
+}
+
 type UnsubscribeFn = () => void
 interface DispatcherConfig {
   queryClient: QueryClient
@@ -114,6 +142,8 @@ export class WSDispatcher {
   private executionBuffer: ExecutionData[] | null = null
   private signalBuffer: SignalData[] | null = null
   private readonly toastIds: string[] = []
+  private readonly lastProcessSummarySignature = new Map<string, string>()
+  private readonly pendingHiddenInvalidations = new Map<string, readonly unknown[]>()
   constructor(config: DispatcherConfig) {
     this.queryClient = config.queryClient
     this.maxCandles = config.maxCandles ?? DEFAULT_MAX_CANDLES
@@ -127,7 +157,17 @@ export class WSDispatcher {
 
     if (this.marketObserverOnly) return
 
+    const onVisibilityChange = () => {
+      if (!document.hidden) {
+        this.flushPendingHiddenInvalidations()
+      }
+    }
+
+    document.addEventListener('visibilitychange', onVisibilityChange)
     this.unsubscribers.push(
+      () => {
+        document.removeEventListener('visibilitychange', onVisibilityChange)
+      },
       client.onMessage('order', this.handleOrderMessage.bind(this)),
       client.onMessage('execution', this.handleExecutionMessage.bind(this)),
       client.onMessage('signal', this.handleSignalMessage.bind(this)),
@@ -193,6 +233,7 @@ export class WSDispatcher {
    * will go stale until the next manual refresh.
    */
   private invalidateOnReconnect(): void {
+    this.lastProcessSummarySignature.clear()
     this.invalidateActive(queryKeys.pendingAiReviewsAll)
     this.invalidateActive(queryKeys.positionsAll)
     this.invalidateActive(queryKeys.trailingStopAll)
@@ -205,6 +246,8 @@ export class WSDispatcher {
   detach(): void {
     this.unsubscribers.forEach(unsub => unsub())
     this.unsubscribers = []
+    this.lastProcessSummarySignature.clear()
+    this.pendingHiddenInvalidations.clear()
     this.wsClient = null
   }
   private handleOrderMessage(message: WebSocketMessages): void {
@@ -599,23 +642,32 @@ export class WSDispatcher {
    * Invalidate paths the four 2026-05-14 emit-site topics drive.
    *
    * Backend `ProcessLauncherService` publishes a full snapshot on
-   * each topic, but the event payloads do not match the REST cache
-   * shapes 1:1 (summary returns aggregated category counts, configured
-   * is a `ConfiguredProcess` list, etc.) so we invalidate and let
-   * React Query refetch via the existing REST path. `refetchType:
-   * 'active'` keeps background tabs from re-fetching unnecessarily.
+   * each topic every ~5 s per coordinator to stream CPU/RSS metrics.
+   * Metrics always update `useProcessMetricsStore` in place; REST
+   * invalidation only fires when a coordinator's structural process
+   * set or lifecycle state changes (and pauses while `document.hidden`).
    */
   private handleProcessSummaryEvent(message: WebSocketMessages): void {
     if (!isProcessSummaryEvent(message)) return
 
+    const coordinator = message.coordinator ?? ''
+
     useProcessMetricsStore
       .getState()
       .setSnapshot(
-        message.coordinator ?? '',
+        coordinator,
         message.coordinator_label ?? null,
         message.processes,
         message.snapshot_at
       )
+
+    const signature = processSummaryStructureSignature(message.processes)
+
+    if (this.lastProcessSummarySignature.get(coordinator) === signature) {
+      return
+    }
+
+    this.lastProcessSummarySignature.set(coordinator, signature)
     this.invalidateActive(queryKeys.processSummaryAll)
   }
   private handleProcessConfiguredEvent(message: WebSocketMessages): void {
@@ -646,20 +698,31 @@ export class WSDispatcher {
     this.invalidateActive(queryKeys.portfolioAccountsAll)
   }
   /**
-   * Mark a query family stale and re-fetch only mounted observers.
+   * Mark a query family stale and refetch mounted observers only while visible.
    *
-   * The polling sweep on 2026-05-14 dropped ``refetchInterval`` from
-   * ``usePendingAiReviews`` / ``usePositions`` /
-   * ``useTrailingStopForCycle`` in favour of snapshot-only REST plus
-   * this invalidate-on-WS-frame hook. ``refetchType: 'active'`` keeps
-   * the refetch off background tabs and unmounted hooks; React Query
-   * coalesces concurrent invalidations on the same key, so a burst of
-   * order/execution frames does not multiply REST calls.
+   * In TanStack Query, `refetchType: 'active'` filters mounted observers rather
+   * than tab visibility, so background tabs would still issue REST refetches on
+   * every WS frame. When `document.hidden` is true, we mark the cache stale
+   * with `refetchType: 'none'` and coalesce the query family into
+   * `pendingHiddenInvalidations`, flushing once when `visibilitychange` returns
+   * the tab to the foreground.
    */
   private invalidateActive(queryKey: readonly unknown[]): void {
+    const refetchType = document.hidden ? 'none' : 'active'
+
+    if (document.hidden) {
+      this.pendingHiddenInvalidations.set(JSON.stringify(queryKey), queryKey)
+    }
+
     this.queryClient
-      .invalidateQueries({ queryKey, refetchType: 'active' })
+      .invalidateQueries({ queryKey, refetchType })
       .catch(error => console.error('Failed to invalidate active query:', error))
+  }
+  private flushPendingHiddenInvalidations(): void {
+    const pending = [...this.pendingHiddenInvalidations.values()]
+
+    this.pendingHiddenInvalidations.clear()
+    pending.forEach(queryKey => this.invalidateActive(queryKey))
   }
   private mergeAiReviewActivity(frame: AiReviewActivityFrame): void {
     const userPublicId = useAuthStore.getState().user?.public_id ?? null
