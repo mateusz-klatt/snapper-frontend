@@ -2854,5 +2854,276 @@ describe('WSDispatcher', () => {
       expect(callKeys).toContainEqual(['processes', 'runs'])
       expect(callKeys).toContainEqual(['strategies'])
     })
+
+    it('skips redundant process-summary invalidations on unchanged metric heartbeats', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      try {
+        dispatcher.attach(mockWsClient)
+        invalidate.mockClear()
+        processMetricsSetSnapshot.mockClear()
+
+        const makeMultiProcessSummary = (
+          rssA: number,
+          cpuA: number,
+          runningB: boolean,
+          reversed = false
+        ) => {
+          const procA = {
+            name: 'alpha_feed',
+            running: true,
+            enabled: true,
+            owned: true,
+            role: 'feed',
+            lifecycle: 'long_running',
+            active_public_id: 'run-a',
+            rss_bytes: rssA,
+            cpu_percent: cpuA,
+          }
+          const procB = {
+            name: 'beta_worker',
+            running: runningB,
+            enabled: true,
+            role: 'worker',
+            lifecycle: 'long_running',
+            rss_bytes: 200,
+            cpu_percent: 1.5,
+          }
+
+          return {
+            type: 'process_summary_event',
+            public_id: `summary-${rssA}-${runningB}-${reversed}`,
+            timestamp: '2026-05-14T12:00:05Z',
+            session_id: 'sid',
+            sequence_id: 2,
+            coordinator: 'alpha',
+            coordinator_label: 'API',
+            processes: reversed ? [procB, procA] : [procA, procB],
+            snapshot_at: '2026-05-14T12:00:05Z',
+          } as unknown as WebSocketMessages
+        }
+
+        messageHandlers.get('process_summary_event')?.(
+          makeMultiProcessSummary(100, 2.0, true, false)
+        )
+        expect(invalidate).toHaveBeenCalledTimes(1)
+        expect(processMetricsSetSnapshot).toHaveBeenCalledTimes(1)
+
+        invalidate.mockClear()
+        messageHandlers.get('process_summary_event')?.(
+          makeMultiProcessSummary(250, 9.5, true, true)
+        )
+        expect(invalidate).not.toHaveBeenCalled()
+        expect(processMetricsSetSnapshot).toHaveBeenCalledTimes(2)
+
+        messageHandlers.get('process_summary_event')?.(
+          makeMultiProcessSummary(250, 9.5, false, false)
+        )
+        expect(invalidate).toHaveBeenCalledTimes(1)
+        expect(invalidate).toHaveBeenCalledWith({
+          queryKey: ['processes', 'summary'],
+          refetchType: 'active',
+        })
+      } finally {
+        dispatcher.detach()
+      }
+    })
+
+    it('isolates coordinator signatures, detects label/empty changes, and prunes silent coordinators after TTL', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      let nowMs = 1_000_000
+      const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => nowMs)
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      const makeCoordSummary = (
+        coordinator: string,
+        coordinatorLabel: string | null,
+        processName: string | null
+      ) =>
+        ({
+          type: 'process_summary_event',
+          public_id: `summary-${coordinator}-${nowMs}`,
+          timestamp: '2026-05-14T12:00:00Z',
+          session_id: 'sid',
+          sequence_id: 1,
+          coordinator,
+          coordinator_label: coordinatorLabel,
+          processes: processName
+            ? [
+                {
+                  name: processName,
+                  running: true,
+                  enabled: true,
+                  owned: true,
+                  role: 'core',
+                  lifecycle: 'long_running',
+                },
+              ]
+            : [],
+          snapshot_at: '2026-05-14T12:00:00Z',
+        }) as unknown as WebSocketMessages
+
+      try {
+        dispatcher.attach(mockWsClient)
+        invalidate.mockClear()
+
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-api', 'API', 'api_worker')
+        )
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-feed', 'Feed', 'feed_worker')
+        )
+        expect(invalidate).toHaveBeenCalledTimes(2)
+
+        invalidate.mockClear()
+        nowMs += 5_000
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-api', 'API', 'api_worker')
+        )
+        expect(invalidate).not.toHaveBeenCalled()
+
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-feed', 'Feed-2', 'feed_worker')
+        )
+        expect(invalidate).toHaveBeenCalledTimes(1)
+
+        invalidate.mockClear()
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-feed', 'Feed-2', null)
+        )
+        expect(invalidate).toHaveBeenCalledTimes(1)
+
+        invalidate.mockClear()
+        nowMs += 10_000
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-api', 'API', 'api_worker')
+        )
+        expect(invalidate).not.toHaveBeenCalled()
+
+        nowMs += 6_000
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-api', 'API', 'api_worker')
+        )
+        expect(invalidate).toHaveBeenCalledTimes(1)
+
+        invalidate.mockClear()
+        nowMs += 5_000
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-api', 'API', 'api_worker')
+        )
+        expect(invalidate).not.toHaveBeenCalled()
+
+        messageHandlers.get('process_summary_event')?.(
+          makeCoordSummary('coord-feed', 'Feed-2', null)
+        )
+        expect(invalidate).toHaveBeenCalledTimes(1)
+      } finally {
+        dispatcher.detach()
+        nowSpy.mockRestore()
+      }
+    })
+
+    it('invalidates when a lone coordinator restarts with an identical snapshot after TTL expiry', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      let nowMs = 2_000_000
+      const nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => nowMs)
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      try {
+        dispatcher.attach(mockWsClient)
+        invalidate.mockClear()
+
+        messageHandlers.get('process_summary_event')?.(makeProcessSummary())
+        expect(invalidate).toHaveBeenCalledTimes(1)
+
+        invalidate.mockClear()
+        nowMs += 20_000
+        messageHandlers.get('process_summary_event')?.(makeProcessSummary())
+        expect(invalidate).toHaveBeenCalledTimes(1)
+      } finally {
+        dispatcher.detach()
+        nowSpy.mockRestore()
+      }
+    })
+
+    it('pauses active refetches while document.hidden is true and flushes once on tab return', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const hiddenSpy = vi.spyOn(document, 'hidden', 'get').mockReturnValue(false)
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      try {
+        dispatcher.attach(mockWsClient)
+        invalidate.mockClear()
+        hiddenSpy.mockReturnValue(true)
+
+        messageHandlers.get('process_summary_event')?.(makeProcessSummary())
+        messageHandlers.get('process_configured_event')?.(makeProcessConfigured())
+        messageHandlers.get('process_configured_event')?.(makeProcessConfigured())
+
+        expect(invalidate).toHaveBeenCalledWith({
+          queryKey: ['processes', 'summary'],
+          refetchType: 'none',
+        })
+        expect(invalidate).toHaveBeenCalledWith({
+          queryKey: ['processes', 'configured'],
+          refetchType: 'none',
+        })
+        expect(
+          invalidate.mock.calls.some(
+            c => (c[0] as { refetchType?: string }).refetchType === 'active'
+          )
+        ).toBe(false)
+
+        document.dispatchEvent(new Event('visibilitychange'))
+        expect(
+          invalidate.mock.calls.some(
+            c => (c[0] as { refetchType?: string }).refetchType === 'active'
+          )
+        ).toBe(false)
+
+        invalidate.mockClear()
+        hiddenSpy.mockReturnValue(false)
+        document.dispatchEvent(new Event('visibilitychange'))
+
+        expect(invalidate).toHaveBeenCalledTimes(2)
+        expect(invalidate).toHaveBeenCalledWith({
+          queryKey: ['processes', 'summary'],
+          refetchType: 'active',
+        })
+        expect(invalidate).toHaveBeenCalledWith({
+          queryKey: ['processes', 'configured'],
+          refetchType: 'active',
+        })
+
+        invalidate.mockClear()
+        document.dispatchEvent(new Event('visibilitychange'))
+        expect(invalidate).not.toHaveBeenCalled()
+      } finally {
+        dispatcher.detach()
+        hiddenSpy.mockRestore()
+      }
+    })
+
+    it('clears visibility listener and pending hidden invalidations on detach', () => {
+      const invalidate = vi.spyOn(queryClient, 'invalidateQueries')
+      const hiddenSpy = vi.spyOn(document, 'hidden', 'get').mockReturnValue(true)
+      const dispatcher = new WSDispatcher({ queryClient })
+
+      try {
+        dispatcher.attach(mockWsClient)
+        invalidate.mockClear()
+        messageHandlers.get('process_run_event')?.(makeProcessRun())
+        dispatcher.detach()
+
+        invalidate.mockClear()
+        hiddenSpy.mockReturnValue(false)
+        document.dispatchEvent(new Event('visibilitychange'))
+        expect(invalidate).not.toHaveBeenCalled()
+      } finally {
+        dispatcher.detach()
+        hiddenSpy.mockRestore()
+      }
+    })
   })
 })
