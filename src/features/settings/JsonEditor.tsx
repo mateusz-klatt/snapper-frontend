@@ -296,12 +296,13 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   path,
 }) => {
   const { t } = useTranslation('settings')
+  const fieldName = path || 'json-value'
 
   if (typeof value === 'boolean') {
     return (
       <label className='flex items-center gap-2 cursor-pointer'>
         <input
-          name={path}
+          name={fieldName}
           type='checkbox'
           checked={value}
           onChange={e => onChange(e.target.checked)}
@@ -318,7 +319,7 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
   if (typeof value === 'number') {
     return (
       <input
-        name={path}
+        name={fieldName}
         type='number'
         value={value}
         onChange={e => onChange(Number(e.target.value))}
@@ -332,7 +333,7 @@ const PrimitiveEditor: React.FC<Readonly<JsonValueEditorProps>> = ({
 
   return (
     <input
-      name={path}
+      name={fieldName}
       type='text'
       value={stringValue}
       onChange={e => onChange(e.target.value)}
