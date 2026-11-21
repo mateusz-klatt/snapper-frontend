@@ -98,12 +98,13 @@ function aiReviewActivityDedupKey(frame: AiReviewActivityFrame): string {
  * Excludes volatile ``rss_bytes`` and ``cpu_percent`` readings (which flow
  * straight into ``useProcessMetricsStore``) so periodic 5 s metric heartbeats
  * do not trigger redundant ``GET /api/processes/summary`` refetches while
- * process membership and lifecycle status are unchanged.
+ * coordinator label, process membership, and lifecycle status are unchanged.
  */
 function processSummaryStructureSignature(
+  coordinatorLabel: string | null,
   items: readonly ProcessSummaryEventData['processes'][number][]
 ): string {
-  return [...items]
+  const processPart = [...items]
     .sort((a, b) => a.name.localeCompare(b.name))
     .map(item =>
       [
@@ -117,6 +118,8 @@ function processSummaryStructureSignature(
       ].join('\u001f')
     )
     .join('\u001e')
+
+  return `${coordinatorLabel ?? ''}\u001d${processPart}`
 }
 
 type UnsubscribeFn = () => void
@@ -127,7 +130,13 @@ interface DispatcherConfig {
   marketObserverOnly?: boolean
 }
 
+interface ProcessSummarySignatureEntry {
+  signature: string
+  lastSeenMs: number
+}
+
 const DEFAULT_MAX_CANDLES = 100
+const PROCESS_SUMMARY_COORDINATOR_TTL_MS = 15_000
 
 export class WSDispatcher {
   private wsClient: WebSocketClient | null = null
@@ -142,7 +151,7 @@ export class WSDispatcher {
   private executionBuffer: ExecutionData[] | null = null
   private signalBuffer: SignalData[] | null = null
   private readonly toastIds: string[] = []
-  private readonly lastProcessSummarySignature = new Map<string, string>()
+  private readonly lastProcessSummarySignature = new Map<string, ProcessSummarySignatureEntry>()
   private readonly pendingHiddenInvalidations = new Map<string, readonly unknown[]>()
   constructor(config: DispatcherConfig) {
     this.queryClient = config.queryClient
@@ -642,32 +651,43 @@ export class WSDispatcher {
    * Invalidate paths the four 2026-05-14 emit-site topics drive.
    *
    * Backend `ProcessLauncherService` publishes a full snapshot on
-   * each topic every ~5 s per coordinator to stream CPU/RSS metrics.
-   * Metrics always update `useProcessMetricsStore` in place; REST
-   * invalidation only fires when a coordinator's structural process
-   * set or lifecycle state changes (and pauses while `document.hidden`).
+   * each topic every ~5 s per coordinator to stream CPU/RSS metrics,
+   * and `RemoteSummaryCache` expires silent coordinators after 15 s
+   * without emitting an empty frame. Metrics always update
+   * `useProcessMetricsStore` in place; REST invalidation fires when
+   * a coordinator's structural signature changes OR when a silent
+   * coordinator entry expires past `PROCESS_SUMMARY_COORDINATOR_TTL_MS`
+   * (and pauses while `document.hidden`).
    */
   private handleProcessSummaryEvent(message: WebSocketMessages): void {
     if (!isProcessSummaryEvent(message)) return
 
     const coordinator = message.coordinator ?? ''
+    const coordinatorLabel = message.coordinator_label ?? null
 
     useProcessMetricsStore
       .getState()
-      .setSnapshot(
-        coordinator,
-        message.coordinator_label ?? null,
-        message.processes,
-        message.snapshot_at
-      )
+      .setSnapshot(coordinator, coordinatorLabel, message.processes, message.snapshot_at)
 
-    const signature = processSummaryStructureSignature(message.processes)
+    const now = Date.now()
+    let prunedAny = false
 
-    if (this.lastProcessSummarySignature.get(coordinator) === signature) {
+    for (const [key, entry] of this.lastProcessSummarySignature) {
+      if (now - entry.lastSeenMs > PROCESS_SUMMARY_COORDINATOR_TTL_MS) {
+        this.lastProcessSummarySignature.delete(key)
+        prunedAny = true
+      }
+    }
+
+    const signature = processSummaryStructureSignature(coordinatorLabel, message.processes)
+    const previous = this.lastProcessSummarySignature.get(coordinator)
+
+    this.lastProcessSummarySignature.set(coordinator, { signature, lastSeenMs: now })
+
+    if (!prunedAny && previous?.signature === signature) {
       return
     }
 
-    this.lastProcessSummarySignature.set(coordinator, signature)
     this.invalidateActive(queryKeys.processSummaryAll)
   }
   private handleProcessConfiguredEvent(message: WebSocketMessages): void {
@@ -708,9 +728,10 @@ export class WSDispatcher {
    * the tab to the foreground.
    */
   private invalidateActive(queryKey: readonly unknown[]): void {
-    const refetchType = document.hidden ? 'none' : 'active'
+    const isHidden = document.hidden
+    const refetchType = isHidden ? 'none' : 'active'
 
-    if (document.hidden) {
+    if (isHidden) {
       this.pendingHiddenInvalidations.set(JSON.stringify(queryKey), queryKey)
     }
 
