@@ -141,6 +141,7 @@ const EditingView: React.FC<EditingViewProps> = ({
   return (
     <div className='space-y-2'>
       <textarea
+        name='setting-value'
         value={localValue}
         onChange={e => setLocalValue(e.target.value)}
         readOnly={readOnly}

@@ -345,6 +345,8 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               </span>
               <label className='flex items-center text-sm text-muted-600'>
                 <input
+                  id='strategy-launch-autostart'
+                  name='autostart'
                   type='checkbox'
                   className='mr-2 text-info-500 focus:ring-brand-500'
                   checked={canStart && autostart}
@@ -355,6 +357,8 @@ export const StrategyLaunchModal: React.FC<Readonly<StrategyLaunchModalProps>> =
               </label>
               <label className='flex items-center text-sm text-muted-600'>
                 <input
+                  id='strategy-launch-start-immediately'
+                  name='start_immediately'
                   type='checkbox'
                   className='mr-2 text-info-500 focus:ring-brand-500'
                   checked={canStart && startImmediately}

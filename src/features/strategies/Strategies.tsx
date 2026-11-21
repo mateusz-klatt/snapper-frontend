@@ -611,6 +611,8 @@ export const Strategies: React.FC = () => {
       <div className='flex items-center gap-3'>
         <div className='flex-1'>
           <input
+            id='strategies-search'
+            name='strategies-search'
             type='text'
             placeholder={t('page.searchPlaceholder')}
             value={searchTerm}

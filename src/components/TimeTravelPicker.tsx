@@ -40,6 +40,8 @@ export const TimeTravelPicker: React.FC = () => {
     <div className='flex items-center gap-2'>
       <Clock size={14} className={isTimeTraveling ? 'text-brand-500' : 'text-muted-600'} />
       <input
+        id='time-travel-picker'
+        name='time-travel-picker'
         type='datetime-local'
         lang='en-CA'
         value={inputValue}

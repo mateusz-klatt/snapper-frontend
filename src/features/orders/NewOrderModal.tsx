@@ -539,6 +539,8 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             {supportsPostOnly && (
               <label className='flex items-center gap-2 text-sm text-alpine-900'>
                 <input
+                  id='new-order-post-only'
+                  name='post_only'
                   type='checkbox'
                   checked={postOnly}
                   onChange={event => setPostOnly(event.target.checked)}
@@ -550,6 +552,8 @@ export const NewOrderModal: React.FC<NewOrderModalProps> = ({ open, onClose }) =
             {supportsReduceOnly && (
               <label className='flex items-center gap-2 text-sm text-alpine-900'>
                 <input
+                  id='new-order-reduce-only'
+                  name='reduce_only'
                   type='checkbox'
                   checked={reduceOnly}
                   onChange={event => setReduceOnly(event.target.checked)}
