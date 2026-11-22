@@ -2433,6 +2433,10 @@ export type Components = {
             accrual_pnl: number | null;
             unrealized_pnl: number | null;
         };
+        PnlAttributionKeyData: {
+            origin: Components["schemas"]["PnlAttributionOrigin"];
+            strategy_name: string | null;
+        };
         PnlAttributionOrigin: "manual" | "plan" | "system" | "unattributed";
         PnlCarriedInputData: {
             instrument_public_id: string;
@@ -2591,6 +2595,11 @@ export type Components = {
             attribution: Components["schemas"]["PnlAttributionContributionData"][];
             carried_inputs?: Components["schemas"]["PnlCarriedInputData"][];
             max_carry_age_minutes?: number | null | undefined;
+            total_rounding_adjusted?: boolean | null | undefined;
+            total_deviation_ulps?: number | null | undefined;
+            absorber_deviation_ulps?: number | null | undefined;
+            instrument_absorber_id?: string | null | undefined;
+            attribution_absorber_key?: Components["schemas"]["PnlAttributionKeyData"] | null | undefined;
         };
         PnlTimelineResponse: {
             type: "pnl_timeline";
