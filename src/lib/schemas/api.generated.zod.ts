@@ -3548,6 +3548,17 @@ export const PnlAttributionContributionDataSchema =
     Components['schemas']['PnlAttributionContributionData']
   >
 
+const _PnlAttributionKeyDataRawSchema = z
+  .object({
+    origin: PnlAttributionOriginSchema,
+    strategy_name: z.string().nullable(),
+  })
+  .strict()
+
+export const PnlAttributionKeyDataSchema = _PnlAttributionKeyDataRawSchema as unknown as z.ZodType<
+  Components['schemas']['PnlAttributionKeyData']
+>
+
 const _PnlCarriedInputDataRawSchema = z
   .object({
     instrument_public_id: z.string(),
@@ -5189,6 +5200,11 @@ const _PnlTimelinePointDataRawSchema = z
     attribution: z.array(PnlAttributionContributionDataSchema),
     carried_inputs: z.array(PnlCarriedInputDataSchema).optional(),
     max_carry_age_minutes: z.number().int().nullable().optional(),
+    total_rounding_adjusted: z.boolean().nullable().optional(),
+    total_deviation_ulps: z.number().nullable().optional(),
+    absorber_deviation_ulps: z.number().nullable().optional(),
+    instrument_absorber_id: z.string().nullable().optional(),
+    attribution_absorber_key: PnlAttributionKeyDataSchema.nullable().optional(),
   })
   .strict()
 
@@ -7014,6 +7030,7 @@ export type PairedGroupIncident = Components['schemas']['PairedGroupIncident']
 export type LoginBody = Components['schemas']['LoginBody']
 export type ResearcherCreateBody = Components['schemas']['ResearcherCreateBody']
 export type PnlAttributionContributionData = Components['schemas']['PnlAttributionContributionData']
+export type PnlAttributionKeyData = Components['schemas']['PnlAttributionKeyData']
 export type PnlCarriedInputData = Components['schemas']['PnlCarriedInputData']
 export type PnlExecutionCorrectionData = Components['schemas']['PnlExecutionCorrectionData']
 export type PnlAiDecisionMarkerData = Components['schemas']['PnlAiDecisionMarkerData']
