@@ -100,9 +100,9 @@
     "orderTypeOptions": {
       "market": "Piyasa",
       "limit": "Limit",
-      "stop": "Stop emri",
-      "stopLimit": "Stop limit emri",
-      "stop_limit": "Stop limit emri"
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
     },
     "modeOptions": {
       "live": "Canlı",

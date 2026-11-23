@@ -10,20 +10,20 @@
     "searchInstrument": "Maghanap ng instrument..."
   },
   "timeframes": {
-    "1m": "1 Minuto",
-    "5m": "5 Minuto",
-    "15m": "15 Minuto",
-    "30m": "30 Minuto",
-    "1h": "1 Oras",
-    "4h": "4 Oras",
-    "1d": "1 Araw"
+    "1m": "1 Minuto",
+    "5m": "5 Minuto",
+    "15m": "15 Minuto",
+    "30m": "30 Minuto",
+    "1h": "1 Oras",
+    "4h": "4 Oras",
+    "1d": "1 Araw"
   },
   "stats": {
     "currentPrice": "Huling presyo ng pagsasara",
-    "change24h": "24h change",
-    "high24h": "24h high",
-    "low24h": "24h low",
-    "incomplete": "Hindi available ang kumpletong kasaysayan ng 24 oras"
+    "change24h": "24 h change",
+    "high24h": "24 h high",
+    "low24h": "24 h low",
+    "incomplete": "Hindi available ang kumpletong kasaysayan ng 24 oras"
   },
   "chart": {
     "title": "Chart ng presyo",
@@ -71,7 +71,7 @@
     "message": "Nagwa-warm up ang cache: {{sampleCount}} / {{expected}} candles available {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(derived mula sa 1m)",
+      "derived": "(derived mula sa 1 min)",
       "db": "(mula sa DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Mag-navigate sa kasaysayan ng merkado",
     "presets": {
       "live": "Kasalukuyan",
-      "h1": "-1 Oras",
-      "d1": "-1 Araw",
-      "w1": "-1 linggo",
-      "mo1": "-1 buwan"
+      "h1": "-1 oras",
+      "d1": "-1 araw",
+      "w1": "-1 linggo",
+      "mo1": "-1 buwan"
     }
   }
 }

@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "ယခုလေးတင်",
-    "minutesAgo": "{{count}}m အကြာက",
-    "hoursAgo": "{{count}}h အကြာက"
+    "minutesAgo": "{{count}} မိနစ် အကြာက",
+    "hoursAgo": "{{count}} နာရီ အကြာက"
   },
   "empty": {
     "title": "အချက်ပြမှု မတွေ့ပါ",

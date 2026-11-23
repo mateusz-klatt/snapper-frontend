@@ -99,8 +99,8 @@
     },
     "orderTypeOptions": {
       "market": "Markt",
-      "limit": "Limitauftrag",
-      "stop": "Stoppauftrag",
+      "limit": "Limit",
+      "stop": "Stop",
       "stopLimit": "Stop-Limit",
       "stop_limit": "Stop-Limit"
     },

@@ -49,13 +49,13 @@
     "autostartDisabled": "Autostart: deaktivert",
     "statusAriaLabel": "Status: {{status}}",
     "dataLagAriaLabel": "Dataforsinkelse: {{seconds}} sekunder",
-    "lagBadge": "forsinkelse: {{seconds}}s",
-    "feedLag": "Feed-forsinkelse: {{ms}}ms",
-    "heartbeatAge": "HB-alder: {{seconds}}s",
+    "lagBadge": "forsinkelse: {{seconds}} s",
+    "feedLag": "Feed-forsinkelse: {{ms}} ms",
+    "heartbeatAge": "HB-alder: {{seconds}} s",
     "metrics": {
       "status": "Status",
       "dataLag": "Dataforsinkelse",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "Livstegn",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

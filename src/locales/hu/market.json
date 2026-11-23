@@ -10,13 +10,13 @@
     "searchInstrument": "Instrumentum keresése..."
   },
   "timeframes": {
-    "1m": "1 perc",
-    "5m": "5 perc",
-    "15m": "15 perc",
-    "30m": "30 perc",
-    "1h": "1 óra",
-    "4h": "4 óra",
-    "1d": "1 nap"
+    "1m": "1 perc",
+    "5m": "5 perc",
+    "15m": "15 perc",
+    "30m": "30 perc",
+    "1h": "1 óra",
+    "4h": "4 óra",
+    "1d": "1 nap"
   },
   "stats": {
     "currentPrice": "Legutóbbi záróár",
@@ -71,7 +71,7 @@
     "message": "Cache bemelegítése: elérhető gyertyák: {{sampleCount}} / {{expected}} {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(1m-ből származtatva)",
+      "derived": "(1 p-ből származtatva)",
       "db": "(DB-ből)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Navigálás a piaci előzményekben",
     "presets": {
       "live": "Élő",
-      "h1": "-1 ó",
-      "d1": "-1 nap",
-      "w1": "-1 hét",
-      "mo1": "-1 hó"
+      "h1": "-1 ó",
+      "d1": "-1 nap",
+      "w1": "-1 hét",
+      "mo1": "-1 hó"
     }
   }
 }

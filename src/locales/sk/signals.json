@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Práve teraz",
-    "minutesAgo": "pred {{count}}m",
-    "hoursAgo": "pred {{count}}h"
+    "minutesAgo": "pred {{count}} min",
+    "hoursAgo": "pred {{count}} h"
   },
   "empty": {
     "title": "Nenašli sa žiadne signály",

@@ -49,13 +49,13 @@
     "autostartDisabled": "Autostart: dinyahdayakan",
     "statusAriaLabel": "Status: {{status}}",
     "dataLagAriaLabel": "Lengahan data: {{seconds}} saat",
-    "lagBadge": "lengahan: {{seconds}}s",
-    "feedLag": "Lengahan feed: {{ms}}ms",
-    "heartbeatAge": "Usia HB: {{seconds}}s",
+    "lagBadge": "lengahan: {{seconds}} s",
+    "feedLag": "Lengahan feed: {{ms}} ms",
+    "heartbeatAge": "Usia HB: {{seconds}} s",
     "metrics": {
       "status": "Status",
       "dataLag": "Lengahan Data",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "Denyutan",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

@@ -14,10 +14,10 @@
       "granularity": "Opløsning",
       "granularityAriaLabel": "Vælg tidslinjens opløsning",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 t",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 t",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Værdiansættelsesvaluta",
       "valuationCurrencyAriaLabel": "Vælg værdiansættelsesvaluta",
@@ -270,7 +270,7 @@
       "trailingPct": "f.eks. 5.0",
       "minLockPct": "0 = start straks"
     },
-    "minLockWarning": "Trailing Stop aktiveres først, når prisen bevæger sig {{minLockPct}}% i favør.",
+    "minLockWarning": "Trailing Stop aktiveres først, når prisen bevæger sig {{minLockPct}} % i favør.",
     "buttons": {
       "cancel": "Annuller",
       "review": "Gennemse",

@@ -61,7 +61,7 @@
     "statusStopped": "Detenido",
     "statusDisabled": "Deshabilitado",
     "containerTotal": "MEM total {{value}}",
-    "cpuTooltip": "El uso de CPU puede superar el 100% en varios núcleos",
+    "cpuTooltip": "El uso de CPU puede superar el 100 % en varios núcleos",
     "metricsNa": "No hay CPU/memoria separada por proceso; se ejecuta dentro del proceso (modo de hilos) o no está en ejecución",
     "managedOnly": "Solo procesos de este contenedor",
     "managedOnlyHint": "Cada contenedor gestiona un subconjunto de procesos (su perfil de autoinicio); los demás procesos solo se muestran aquí como en ejecución en otro lugar. Desmarca para ver todos los procesos que reporta cada contenedor.",

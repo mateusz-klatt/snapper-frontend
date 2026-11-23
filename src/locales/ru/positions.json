@@ -14,10 +14,10 @@
       "granularity": "Детализация",
       "granularityAriaLabel": "Выбрать детализацию",
       "granularityOptions": {
-        "oneMinute": "1 мин",
-        "fiveMinutes": "5 мин",
-        "oneHour": "1 ч",
-        "oneDay": "1 д"
+        "oneMinute": "1 мин",
+        "fiveMinutes": "5 мин",
+        "oneHour": "1 ч",
+        "oneDay": "1 д"
       },
       "valuationCurrency": "Валюта оценки",
       "valuationCurrencyAriaLabel": "Выбрать валюту оценки",
@@ -270,7 +270,7 @@
       "trailingPct": "например, 5.0",
       "minLockPct": "0 = начать сразу"
     },
-    "minLockWarning": "Трейлинг-стоп не активируется, пока цена не пройдёт {{minLockPct}}% в благоприятном направлении.",
+    "minLockWarning": "Трейлинг-стоп не активируется, пока цена не пройдёт {{minLockPct}} % в благоприятном направлении.",
     "buttons": {
       "cancel": "Отменить",
       "review": "Проверить",

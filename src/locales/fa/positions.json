@@ -14,10 +14,10 @@
       "granularity": "تفکیک زمانی",
       "granularityAriaLabel": "انتخاب تفکیک زمانی خط زمانی",
       "granularityOptions": {
-        "oneMinute": "1 د",
-        "fiveMinutes": "5 د",
-        "oneHour": "1 س",
-        "oneDay": "1 ر"
+        "oneMinute": "1 د",
+        "fiveMinutes": "5 د",
+        "oneHour": "1 س",
+        "oneDay": "1 ر"
       },
       "valuationCurrency": "ارز ارزش‌گذاری",
       "valuationCurrencyAriaLabel": "انتخاب ارز ارزش‌گذاری",
@@ -270,7 +270,7 @@
       "trailingPct": "مثلاً 5.0",
       "minLockPct": "0 = شروع فوری"
     },
-    "minLockWarning": "Trailing Stop تا زمانی که قیمت {{minLockPct}}% به نفع شما حرکت نکند فعال نمی‌شود.",
+    "minLockWarning": "Trailing Stop تا زمانی که قیمت {{minLockPct}}٪ به نفع شما حرکت نکند فعال نمی‌شود.",
     "buttons": {
       "cancel": "لغو",
       "review": "بازبینی",

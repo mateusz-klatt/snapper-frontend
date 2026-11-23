@@ -14,10 +14,10 @@
       "granularity": "ความละเอียด",
       "granularityAriaLabel": "เลือกความละเอียดของไทม์ไลน์",
       "granularityOptions": {
-        "oneMinute": "1 นาที",
-        "fiveMinutes": "5 นาที",
-        "oneHour": "1 ชั่วโมง",
-        "oneDay": "1 วัน"
+        "oneMinute": "1 นาที",
+        "fiveMinutes": "5 นาที",
+        "oneHour": "1 ชม.",
+        "oneDay": "1 วัน"
       },
       "valuationCurrency": "สกุลเงินประเมินมูลค่า",
       "valuationCurrencyAriaLabel": "เลือกสกุลเงินประเมินมูลค่า",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "24 ชั่วโมงที่ผ่านมา",
-      "last7Days": "7 วันที่ผ่านมา",
-      "last30Days": "30 วันที่ผ่านมา",
-      "last90Days": "90 วันที่ผ่านมา"
+      "last24Hours": "24 ชั่วโมงที่ผ่านมา",
+      "last7Days": "7 วันที่ผ่านมา",
+      "last30Days": "30 วันที่ผ่านมา",
+      "last90Days": "90 วันที่ผ่านมา"
     },
     "loading": "กำลังโหลดไทม์ไลน์ P&L…",
     "error": {

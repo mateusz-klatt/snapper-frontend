@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "ناموجود",
-    "uptimeMinutes": "{{minutes}}د",
-    "uptimeHours": "{{hours}}س {{minutes}}د",
-    "uptimeDays": "{{days}}ر {{hours}}س",
+    "uptimeMinutes": "{{minutes}} د",
+    "uptimeHours": "{{hours}} س {{minutes}} د",
+    "uptimeDays": "{{days}} ر {{hours}} س",
     "backtestName": "بک‌تست {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "ناموجود",
@@ -47,7 +47,7 @@
     "unavailable": "آمار پایگاه داده در دسترس نیست: {{message}}",
     "fallbackError": "بارگذاری آمار پایگاه داده ناموفق بود.",
     "sampled": "نمونه‌برداری شد {{age}}",
-    "samplerSummary": "فاصلهٔ نمونه‌برداری: {{seconds}} ثانیه · تعداد جدول‌ها: {{count}}",
+    "samplerSummary": "فاصلهٔ نمونه‌برداری: {{seconds}} ثانیه · تعداد جدول‌ها: {{count}}",
     "columns": {
       "table": "جدول",
       "kind": "نوع",
@@ -92,13 +92,13 @@
       "files": "فایل‌ها",
       "status": "وضعیت"
     },
-    "retainDays": "{{days}}ر",
+    "retainDays": "{{days}} ر",
     "ok": "سالم",
     "error": "خطا"
   },
   "systemMetrics": {
     "disk": "فضای آزاد دیسک",
-    "diskUsage": "{{percent}}% استفاده‌شده · {{mount}}",
+    "diskUsage": "{{percent}}٪ استفاده‌شده · {{mount}}",
     "title": "سلامت فرایند",
     "loading": "در حال بارگذاری معیارهای فرایند…",
     "unavailable": "معیارهای فرایند در دسترس نیست: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "نخ‌های اجرا",
     "openFds": "FDهای گشوده",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}}٪",
     "throttled": "{{count}}× محدود شد",
     "memory": "حافظه",
     "saturation": "اشباع {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "فعال",
       "quarantined": "قرنطینه‌شده",
-      "quarantinedSeconds": "قرنطینه‌شده ({{seconds}}s)",
+      "quarantinedSeconds": "قرنطینه‌شده ({{seconds}} ث)",
       "disabled": "غیرفعال"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "همین حالا",
-    "seconds": "{{seconds}}ث قبل",
-    "minutes": "{{minutes}}د قبل",
-    "hours": "{{hours}}س قبل",
-    "days": "{{days}}ر قبل"
+    "seconds": "{{seconds}} ث قبل",
+    "minutes": "{{minutes}} د قبل",
+    "hours": "{{hours}} س قبل",
+    "days": "{{days}} ر قبل"
   },
   "duration": {
-    "seconds": "{{seconds}}ث",
-    "minutes": "{{minutes}}د",
-    "hours": "{{hours}}س",
-    "days": "{{days}}ر"
+    "seconds": "{{seconds}} ث",
+    "minutes": "{{minutes}} د",
+    "hours": "{{hours}} س",
+    "days": "{{days}} ر"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

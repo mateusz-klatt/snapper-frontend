@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Justo ahora",
-    "minutesAgo": "hace {{count}}m",
-    "hoursAgo": "hace {{count}}h"
+    "minutesAgo": "hace {{count}} min",
+    "hoursAgo": "hace {{count}} h"
   },
   "empty": {
     "title": "No se encontraron señales",

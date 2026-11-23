@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Hindi available",
-    "uptimeMinutes": "{{minutes}} minuto",
-    "uptimeHours": "{{hours}} oras {{minutes}} minuto",
-    "uptimeDays": "{{days}} araw {{hours}} oras",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} oras {{minutes}} min",
+    "uptimeDays": "{{days}} araw {{hours}} oras",
     "backtestName": "Pagsubok sa nakaraang datos {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Hindi available",
@@ -47,7 +47,7 @@
     "unavailable": "Hindi available ang database stats: {{message}}",
     "fallbackError": "Hindi na-load ang database statistics.",
     "sampled": "na-sample {{age}}",
-    "samplerSummary": "Agwat ng sampler: {{seconds}}s · bilang ng mga talahanayan: {{count}}",
+    "samplerSummary": "Agwat ng sampler: {{seconds}} segundo · bilang ng mga talahanayan: {{count}}",
     "columns": {
       "table": "Talahanayan",
       "kind": "Uri",
@@ -92,7 +92,7 @@
       "files": "Mga file",
       "status": "Katayuan"
     },
-    "retainDays": "{{days}} araw",
+    "retainDays": "{{days}} araw",
     "ok": "Maayos",
     "error": "may error"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktibo",
       "quarantined": "Naka-quarantine",
-      "quarantinedSeconds": "Naka-quarantine ({{seconds}}s)",
+      "quarantinedSeconds": "Naka-quarantine ({{seconds}} segundo)",
       "disabled": "Naka-disable"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "ngayon lang",
-    "seconds": "{{seconds}}s ang nakalipas",
-    "minutes": "{{minutes}}min ang nakalipas",
-    "hours": "{{hours}}h ang nakalipas",
-    "days": "{{days}}d ang nakalipas"
+    "seconds": "{{seconds}} segundo ang nakalipas",
+    "minutes": "{{minutes}} min ang nakalipas",
+    "hours": "{{hours}} oras ang nakalipas",
+    "days": "{{days}} araw ang nakalipas"
   },
   "duration": {
-    "seconds": "{{seconds}} segundo",
-    "minutes": "{{minutes}} minuto",
-    "hours": "{{hours}} oras",
-    "days": "{{days}} araw"
+    "seconds": "{{seconds}} segundo",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} oras",
+    "days": "{{days}} araw"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

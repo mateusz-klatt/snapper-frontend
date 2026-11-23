@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "N.v.t.",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}u {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}u",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} u {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} u",
     "backtestName": "Historische test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N.v.t.",
@@ -47,7 +47,7 @@
     "unavailable": "Databasestatistieken niet beschikbaar: {{message}}",
     "fallbackError": "Laden databasestatistieken mislukt.",
     "sampled": "bemonsterd {{age}}",
-    "samplerSummary": "Samplerinterval: {{seconds}}s · Aantal tabellen: {{count}}",
+    "samplerSummary": "Samplerinterval: {{seconds}} s · Aantal tabellen: {{count}}",
     "columns": {
       "table": "Tabel",
       "kind": "Soort",
@@ -92,7 +92,7 @@
       "files": "Bestanden",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "In orde",
     "error": "fout"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Actief",
       "quarantined": "In quarantaine",
-      "quarantinedSeconds": "In quarantaine ({{seconds}}s)",
+      "quarantinedSeconds": "In quarantaine ({{seconds}} s)",
       "disabled": "Uitgeschakeld"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "zojuist",
-    "seconds": "{{seconds}}s geleden",
-    "minutes": "{{minutes}}min geleden",
-    "hours": "{{hours}}u geleden",
-    "days": "{{days}}d geleden"
+    "seconds": "{{seconds}} s geleden",
+    "minutes": "{{minutes}} min geleden",
+    "hours": "{{hours}} u geleden",
+    "days": "{{days}} d geleden"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}u",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} u",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

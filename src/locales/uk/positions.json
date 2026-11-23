@@ -14,10 +14,10 @@
       "granularity": "Деталізація",
       "granularityAriaLabel": "Вибрати деталізацію",
       "granularityOptions": {
-        "oneMinute": "1 хв",
-        "fiveMinutes": "5 хв",
-        "oneHour": "1 год",
-        "oneDay": "1 д"
+        "oneMinute": "1 хв",
+        "fiveMinutes": "5 хв",
+        "oneHour": "1 год",
+        "oneDay": "1 д"
       },
       "valuationCurrency": "Валюта оцінки",
       "valuationCurrencyAriaLabel": "Вибрати валюту оцінки",

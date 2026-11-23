@@ -61,7 +61,7 @@
     "statusStopped": "Pysäytetty",
     "statusDisabled": "Poistettu käytöstä",
     "containerTotal": "MEM yhteensä {{value}}",
-    "cpuTooltip": "CPU-käyttö voi ylittää 100 % useilla ytimillä",
+    "cpuTooltip": "CPU-käyttö voi ylittää 100 % useilla ytimillä",
     "metricsNa": "Ei erillistä prosessikohtaista CPU-/muistitietoa; tämä toimii prosessin sisällä (säietila) tai ei ole käynnissä",
     "managedOnly": "Vain tämän kontin prosessit",
     "managedOnlyHint": "Jokainen kontti hallitsee prosessien osajoukkoa (autostart-profiilinsa); muut prosessit näytetään tässä vain muualla käynnissä olevina. Poista valinta nähdäksesi kaikki prosessit, jotka kukin kontti raportoi.",

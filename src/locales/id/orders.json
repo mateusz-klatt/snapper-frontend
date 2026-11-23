@@ -99,10 +99,10 @@
     },
     "orderTypeOptions": {
       "market": "Pasar",
-      "limit": "Batas harga",
-      "stop": "Henti",
-      "stopLimit": "Henti berbatas",
-      "stop_limit": "Henti berbatas"
+      "limit": "Limit",
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
     },
     "modeOptions": {
       "live": "Langsung",

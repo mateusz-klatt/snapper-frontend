@@ -14,10 +14,10 @@
       "granularity": "Intervāls",
       "granularityAriaLabel": "Izvēlieties laika skalas intervālu",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 st.",
-        "oneDay": "1 d."
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 st.",
+        "oneDay": "1 d."
       },
       "valuationCurrency": "Novērtējuma valūta",
       "valuationCurrencyAriaLabel": "Izvēlieties novērtējuma valūtu",

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "brak",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}godz. {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}godz.",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} godz. {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} godz.",
     "backtestName": "Test historyczny {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "brak",
@@ -47,7 +47,7 @@
     "unavailable": "Statystyki bazy niedostępne: {{message}}",
     "fallbackError": "Nie udało się załadować statystyk bazy danych.",
     "sampled": "próbka sprzed {{age}}",
-    "samplerSummary": "Interwał próbkowania: {{seconds}}s · Liczba tabel: {{count}}",
+    "samplerSummary": "Interwał próbkowania: {{seconds}} s · Liczba tabel: {{count}}",
     "columns": {
       "table": "Tabela",
       "kind": "Rodzaj",
@@ -92,7 +92,7 @@
       "files": "Pliki",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "W porządku",
     "error": "błąd"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktywna",
       "quarantined": "Kwarantanna",
-      "quarantinedSeconds": "Kwarantanna ({{seconds}}s)",
+      "quarantinedSeconds": "Kwarantanna ({{seconds}} s)",
       "disabled": "Wyłączona"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "przed chwilą",
-    "seconds": "{{seconds}}s temu",
-    "minutes": "{{minutes}}min temu",
-    "hours": "{{hours}}h temu",
-    "days": "{{days}}d temu"
+    "seconds": "{{seconds}} s temu",
+    "minutes": "{{minutes}} min temu",
+    "hours": "{{hours}} godz. temu",
+    "days": "{{days}} d temu"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}godz.",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} godz.",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

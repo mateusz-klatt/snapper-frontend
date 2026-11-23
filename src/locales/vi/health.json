@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Không có dữ liệu",
-    "uptimeMinutes": "{{minutes}}p",
-    "uptimeHours": "{{hours}}g {{minutes}}p",
-    "uptimeDays": "{{days}}n {{hours}}g",
+    "uptimeMinutes": "{{minutes}} phút",
+    "uptimeHours": "{{hours}} giờ {{minutes}} phút",
+    "uptimeDays": "{{days}} ngày {{hours}} giờ",
     "backtestName": "Kiểm thử trên dữ liệu quá khứ {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Không có dữ liệu",
@@ -47,7 +47,7 @@
     "unavailable": "Không có thống kê cơ sở dữ liệu: {{message}}",
     "fallbackError": "Không tải được thống kê cơ sở dữ liệu.",
     "sampled": "lấy mẫu {{age}}",
-    "samplerSummary": "Khoảng lấy mẫu: {{seconds}} giây · số bảng: {{count}}",
+    "samplerSummary": "Khoảng lấy mẫu: {{seconds}} giây · số bảng: {{count}}",
     "columns": {
       "table": "Bảng",
       "kind": "Loại",
@@ -92,7 +92,7 @@
       "files": "Tệp",
       "status": "Trạng thái"
     },
-    "retainDays": "{{days}}n",
+    "retainDays": "{{days}} ngày",
     "ok": "Bình thường",
     "error": "lỗi"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Đang hoạt động",
       "quarantined": "Đang cách ly",
-      "quarantinedSeconds": "Đang cách ly ({{seconds}}s)",
+      "quarantinedSeconds": "Đang cách ly ({{seconds}} giây)",
       "disabled": "Đã tắt"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "vừa xong",
-    "seconds": "{{seconds}} giây trước",
-    "minutes": "{{minutes}} phút trước",
-    "hours": "{{hours}} giờ trước",
-    "days": "{{days}} ngày trước"
+    "seconds": "{{seconds}} giây trước",
+    "minutes": "{{minutes}} phút trước",
+    "hours": "{{hours}} giờ trước",
+    "days": "{{days}} ngày trước"
   },
   "duration": {
-    "seconds": "{{seconds}} giây",
-    "minutes": "{{minutes}} phút",
-    "hours": "{{hours}} giờ",
-    "days": "{{days}} ngày"
+    "seconds": "{{seconds}} giây",
+    "minutes": "{{minutes}} phút",
+    "hours": "{{hours}} giờ",
+    "days": "{{days}} ngày"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

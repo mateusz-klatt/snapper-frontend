@@ -14,10 +14,10 @@
       "granularity": "Granularité",
       "granularityAriaLabel": "Sélectionner la granularité de la chronologie",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1h",
-        "oneDay": "1 j"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 j"
       },
       "valuationCurrency": "Devise de valorisation",
       "valuationCurrencyAriaLabel": "Sélectionner la devise de valorisation",
@@ -270,7 +270,7 @@
       "trailingPct": "p. ex. 5.0",
       "minLockPct": "0 = démarrer immédiatement"
     },
-    "minLockWarning": "Le trailing stop ne s'activera pas tant que le prix n'aura pas évolué de {{minLockPct}}% en votre faveur.",
+    "minLockWarning": "Le trailing stop ne s'activera pas tant que le prix n'aura pas évolué de {{minLockPct}} % en votre faveur.",
     "buttons": {
       "cancel": "Annuler",
       "review": "Vérifier",

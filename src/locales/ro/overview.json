@@ -61,7 +61,7 @@
     "statusStopped": "Oprit",
     "statusDisabled": "Dezactivat",
     "containerTotal": "Memorie totală {{value}}",
-    "cpuTooltip": "Utilizarea CPU poate depăși 100% pe mai multe nuclee",
+    "cpuTooltip": "Utilizarea CPU poate depăși 100 % pe mai multe nuclee",
     "metricsNa": "Nu există CPU/memorie separată pe proces; rulează în cadrul procesului (mod thread) sau nu rulează",
     "managedOnly": "Doar procesele acestui container",
     "managedOnlyHint": "Fiecare container gestionează un subset de procese (profilul său autostart); celelalte procese sunt raportate aici doar ca rulând în altă parte. Debifați pentru a vedea fiecare proces raportat de fiecare container.",

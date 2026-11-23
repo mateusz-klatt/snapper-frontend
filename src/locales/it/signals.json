@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Adesso",
-    "minutesAgo": "{{count}} min fa",
-    "hoursAgo": "{{count}} h fa"
+    "minutesAgo": "{{count}} min fa",
+    "hoursAgo": "{{count}} h fa"
   },
   "empty": {
     "title": "Nessun segnale trovato",

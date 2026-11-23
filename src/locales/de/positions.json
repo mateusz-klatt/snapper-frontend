@@ -14,10 +14,10 @@
       "granularity": "Granularität",
       "granularityAriaLabel": "Granularität der Zeitachse auswählen",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1h",
-        "oneDay": "1 T"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 T"
       },
       "valuationCurrency": "Bewertungswährung",
       "valuationCurrencyAriaLabel": "Bewertungswährung auswählen",
@@ -270,7 +270,7 @@
       "trailingPct": "z. B. 5.0",
       "minLockPct": "0 = sofort starten"
     },
-    "minLockWarning": "Trailing Stop wird erst aktiviert, wenn sich der Kurs um {{minLockPct}}% zu Ihren Gunsten bewegt.",
+    "minLockWarning": "Trailing Stop wird erst aktiviert, wenn sich der Kurs um {{minLockPct}} % zu Ihren Gunsten bewegt.",
     "buttons": {
       "cancel": "Abbrechen",
       "review": "Prüfen",

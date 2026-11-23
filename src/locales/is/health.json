@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Ekki tiltækt",
-    "uptimeMinutes": "{{minutes}} mín",
-    "uptimeHours": "{{hours}} klst {{minutes}} mín",
-    "uptimeDays": "{{days}} d {{hours}} klst",
+    "uptimeMinutes": "{{minutes}} mín.",
+    "uptimeHours": "{{hours}} klst. {{minutes}} mín.",
+    "uptimeDays": "{{days}} d {{hours}} klst.",
     "backtestName": "Bakprófun {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Ekki tiltækt",
@@ -47,7 +47,7 @@
     "unavailable": "Tölfræði gagnagrunns er ekki tiltæk: {{message}}",
     "fallbackError": "Mistókst að hlaða tölfræði gagnagrunns.",
     "sampled": "sýni tekið {{age}}",
-    "samplerSummary": "Sýnatökubil: {{seconds}} s · fjöldi taflna: {{count}}",
+    "samplerSummary": "Sýnatökubil: {{seconds}} s · fjöldi taflna: {{count}}",
     "columns": {
       "table": "Tafla",
       "kind": "Tegund",
@@ -92,7 +92,7 @@
       "files": "Skrár",
       "status": "Staða"
     },
-    "retainDays": "{{days}} d",
+    "retainDays": "{{days}} d",
     "ok": "Í lagi",
     "error": "villa"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Virk",
       "quarantined": "Einangruð",
-      "quarantinedSeconds": "Einangruð ({{seconds}}s)",
+      "quarantinedSeconds": "Einangruð ({{seconds}} s)",
       "disabled": "Óvirk"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "rétt í þessu",
-    "seconds": "fyrir {{seconds}}s",
-    "minutes": "fyrir {{minutes}} mín",
-    "hours": "fyrir {{hours}} klst",
-    "days": "fyrir {{days}} d"
+    "seconds": "fyrir {{seconds}} s",
+    "minutes": "fyrir {{minutes}} mín.",
+    "hours": "fyrir {{hours}} klst.",
+    "days": "fyrir {{days}} d"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}} mín",
-    "hours": "{{hours}} klst",
-    "days": "{{days}} d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} mín.",
+    "hours": "{{hours}} klst.",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

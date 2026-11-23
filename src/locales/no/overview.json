@@ -61,7 +61,7 @@
     "statusStopped": "Stoppet",
     "statusDisabled": "Deaktivert",
     "containerTotal": "Totalt MEM {{value}}",
-    "cpuTooltip": "CPU-bruk kan overstige 100 % på tvers av flere kjerner",
+    "cpuTooltip": "CPU-bruk kan overstige 100 % på tvers av flere kjerner",
     "metricsNa": "Ingen separat CPU-/minnedata per prosess; dette kjører i prosessen (trådmodus) eller kjører ikke",
     "managedOnly": "Bare prosessene i denne containeren",
     "managedOnlyHint": "Hver container administrerer et delsett av prosesser (autostart-profilen sin); andre prosesser rapporteres her bare som kjørende et annet sted. Fjern avmerkingen for å se alle prosesser som hver container rapporterer.",

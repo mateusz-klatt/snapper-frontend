@@ -49,13 +49,13 @@
     "autostartDisabled": "Automatikus indítás: letiltva",
     "statusAriaLabel": "Állapot: {{status}}",
     "dataLagAriaLabel": "Adatkésés másodpercben: {{seconds}}",
-    "lagBadge": "késés: {{seconds}}s",
-    "feedLag": "Feed késés: {{ms}}ms",
-    "heartbeatAge": "Heartbeat kora: {{seconds}}s",
+    "lagBadge": "késés: {{seconds}} s",
+    "feedLag": "Feed késés: {{ms}} ms",
+    "heartbeatAge": "Heartbeat kora: {{seconds}} s",
     "metrics": {
       "status": "Állapot",
       "dataLag": "Adatkésés",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "Életjel",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

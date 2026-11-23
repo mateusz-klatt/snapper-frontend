@@ -14,10 +14,10 @@
       "granularity": "Resolusi",
       "granularityAriaLabel": "Pilih resolusi garis masa",
       "granularityOptions": {
-        "oneMinute": "1 Minit",
-        "fiveMinutes": "5 Minit",
-        "oneHour": "1 Jam",
-        "oneDay": "1 Hari"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 j",
+        "oneDay": "1 hari"
       },
       "valuationCurrency": "Mata wang penilaian",
       "valuationCurrencyAriaLabel": "Pilih mata wang penilaian",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "24 jam terakhir",
-      "last7Days": "7 hari terakhir",
-      "last30Days": "30 hari terakhir",
-      "last90Days": "90 hari terakhir"
+      "last24Hours": "24 jam terakhir",
+      "last7Days": "7 hari terakhir",
+      "last30Days": "30 hari terakhir",
+      "last90Days": "90 hari terakhir"
     },
     "loading": "Memuatkan garis masa P&L…",
     "error": {

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Ikke tilgængelig",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}t {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}t",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} t {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} t",
     "backtestName": "Historisk test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Ikke tilgængelig",
@@ -47,7 +47,7 @@
     "unavailable": "Databasestatistik ikke tilgængelig: {{message}}",
     "fallbackError": "Kunne ikke indlæse databasestatistik.",
     "sampled": "målt {{age}}",
-    "samplerSummary": "Samplerinterval: {{seconds}} s · Antal tabeller: {{count}}",
+    "samplerSummary": "Samplerinterval: {{seconds}} s · Antal tabeller: {{count}}",
     "columns": {
       "table": "Tabel",
       "kind": "Type",
@@ -92,13 +92,13 @@
       "files": "Filer",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "I orden",
     "error": "fejl"
   },
   "systemMetrics": {
     "disk": "Ledig diskplads",
-    "diskUsage": "{{percent}}% brugt · {{mount}}",
+    "diskUsage": "{{percent}} % brugt · {{mount}}",
     "title": "Processundhed",
     "loading": "Indlæser procesmetrikker…",
     "unavailable": "Procesmetrikker ikke tilgængelige: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Tråde",
     "openFds": "Åbne FDs",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Neddroslet {{count}}×",
     "memory": "Hukommelse",
     "saturation": "Mætning {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktiv",
       "quarantined": "I karantæne",
-      "quarantinedSeconds": "I karantæne ({{seconds}}s)",
+      "quarantinedSeconds": "I karantæne ({{seconds}} s)",
       "disabled": "Deaktiveret"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "lige nu",
-    "seconds": "{{seconds}}s siden",
-    "minutes": "{{minutes}}min siden",
-    "hours": "{{hours}}t siden",
-    "days": "{{days}}d siden"
+    "seconds": "{{seconds}} s siden",
+    "minutes": "{{minutes}} min siden",
+    "hours": "{{hours}} t siden",
+    "days": "{{days}} d siden"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}t",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} t",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

@@ -100,7 +100,7 @@
     "orderTypeOptions": {
       "market": "Tirgus",
       "limit": "Limita",
-      "stop": "Stop rīkojums",
+      "stop": "Stop",
       "stopLimit": "Stop limita",
       "stop_limit": "Stop limita"
     },

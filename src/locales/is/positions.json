@@ -14,10 +14,10 @@
       "granularity": "Upplausn",
       "granularityAriaLabel": "Veldu upplausn tímalínunnar",
       "granularityOptions": {
-        "oneMinute": "1 mín.",
-        "fiveMinutes": "5 mín.",
-        "oneHour": "1 klst.",
-        "oneDay": "1 d"
+        "oneMinute": "1 mín.",
+        "fiveMinutes": "5 mín.",
+        "oneHour": "1 klst.",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Verðmatsgjaldmiðill",
       "valuationCurrencyAriaLabel": "Veldu verðmatsgjaldmiðil",

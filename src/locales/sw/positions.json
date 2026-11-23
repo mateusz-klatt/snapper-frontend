@@ -14,10 +14,10 @@
       "granularity": "Kiwango cha muda",
       "granularityAriaLabel": "Chagua kiwango cha muda cha mfululizo",
       "granularityOptions": {
-        "oneMinute": "dak 1",
-        "fiveMinutes": "dak 5",
-        "oneHour": "saa 1",
-        "oneDay": "siku 1"
+        "oneMinute": "dak 1",
+        "fiveMinutes": "dak 5",
+        "oneHour": "saa 1",
+        "oneDay": "siku 1"
       },
       "valuationCurrency": "Sarafu ya uthamini",
       "valuationCurrencyAriaLabel": "Chagua sarafu ya uthamini",

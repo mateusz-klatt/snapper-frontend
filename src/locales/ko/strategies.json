@@ -50,12 +50,12 @@
     "statusAriaLabel": "상태: {{status}}",
     "dataLagAriaLabel": "데이터 지연: {{seconds}}초",
     "lagBadge": "지연: {{seconds}}초",
-    "feedLag": "피드 지연: {{ms}}ms",
+    "feedLag": "피드 지연: {{ms}} ms",
     "heartbeatAge": "HB 경과: {{seconds}}초",
     "metrics": {
       "status": "상태",
       "dataLag": "데이터 지연",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "하트비트",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

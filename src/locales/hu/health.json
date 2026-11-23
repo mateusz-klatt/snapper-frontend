@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Nem érhető el",
-    "uptimeMinutes": "{{minutes}}p",
-    "uptimeHours": "{{hours}}ó {{minutes}}p",
-    "uptimeDays": "{{days}}nap {{hours}}ó",
+    "uptimeMinutes": "{{minutes}} p",
+    "uptimeHours": "{{hours}} ó {{minutes}} p",
+    "uptimeDays": "{{days}} nap {{hours}} ó",
     "backtestName": "Backteszt {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Nem érhető el",
@@ -47,7 +47,7 @@
     "unavailable": "Az adatbázis-statisztika nem érhető el: {{message}}",
     "fallbackError": "Nem sikerült betölteni az adatbázis-statisztikát.",
     "sampled": "mintavétel: {{age}}",
-    "samplerSummary": "Mintavételezési időköz: {{seconds}} s · táblák száma: {{count}}",
+    "samplerSummary": "Mintavételezési időköz: {{seconds}} s · táblák száma: {{count}}",
     "columns": {
       "table": "Tábla",
       "kind": "Típus",
@@ -92,7 +92,7 @@
       "files": "Fájlok",
       "status": "Állapot"
     },
-    "retainDays": "{{days}}nap",
+    "retainDays": "{{days}} nap",
     "ok": "Rendben",
     "error": "hiba"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktív",
       "quarantined": "Karanténban",
-      "quarantinedSeconds": "Karanténban ({{seconds}}s)",
+      "quarantinedSeconds": "Karanténban ({{seconds}} s)",
       "disabled": "Letiltva"
     },
     "trafficClass": {
@@ -208,13 +208,13 @@
     "days": "Eltelt napok: {{days}}"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}p",
-    "hours": "{{hours}}ó",
-    "days": "{{days}}nap"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} p",
+    "hours": "{{hours}} ó",
+    "days": "{{days}} nap"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

@@ -100,7 +100,7 @@
     "orderTypeOptions": {
       "market": "Au marché",
       "limit": "Limite",
-      "stop": "Ordre à seuil de déclenchement",
+      "stop": "Stop",
       "stopLimit": "Stop-limit",
       "stop_limit": "Stop-limit"
     },

@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Az önce",
-    "minutesAgo": "{{count}}dk önce",
-    "hoursAgo": "{{count}}s önce"
+    "minutesAgo": "{{count}} dk. önce",
+    "hoursAgo": "{{count}} sa. önce"
   },
   "empty": {
     "title": "Sinyal bulunamadı",

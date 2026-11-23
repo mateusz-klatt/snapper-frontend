@@ -14,10 +14,10 @@
       "granularity": "အသေးစိတ်အဆင့်",
       "granularityAriaLabel": "အချိန်လိုင်း အသေးစိတ်အဆင့်ကို ရွေးပါ",
       "granularityOptions": {
-        "oneMinute": "1 မိနစ်",
-        "fiveMinutes": "5 မိနစ်",
-        "oneHour": "1 နာရီ",
-        "oneDay": "1 ရက်"
+        "oneMinute": "1 မိနစ်",
+        "fiveMinutes": "5 မိနစ်",
+        "oneHour": "1 နာရီ",
+        "oneDay": "1 ရက်"
       },
       "valuationCurrency": "တန်ဖိုးဖြတ် ငွေကြေး",
       "valuationCurrencyAriaLabel": "တန်ဖိုးဖြတ် ငွေကြေးကို ရွေးပါ",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "ပြီးခဲ့သော 24 နာရီ",
-      "last7Days": "ပြီးခဲ့သော 7 ရက်",
-      "last30Days": "ပြီးခဲ့သော 30 ရက်",
-      "last90Days": "ပြီးခဲ့သော 90 ရက်"
+      "last24Hours": "ပြီးခဲ့သော 24 နာရီ",
+      "last7Days": "ပြီးခဲ့သော 7 ရက်",
+      "last30Days": "ပြီးခဲ့သော 30 ရက်",
+      "last90Days": "ပြီးခဲ့သော 90 ရက်"
     },
     "loading": "P&L အချိန်လိုင်း တင်နေသည်…",
     "error": {

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Nije dostupno",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} h",
     "backtestName": "Test na historijskim podacima {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Nije dostupno",
@@ -47,7 +47,7 @@
     "unavailable": "Statistika baze podataka nije dostupna: {{message}}",
     "fallbackError": "Učitavanje statistike baze podataka nije uspjelo.",
     "sampled": "uzorkovano {{age}}",
-    "samplerSummary": "Interval uzorkovanja: {{seconds}} s · Broj tabela: {{count}}",
+    "samplerSummary": "Interval uzorkovanja: {{seconds}} s · Broj tabela: {{count}}",
     "columns": {
       "table": "Tabela",
       "kind": "Vrsta",
@@ -92,7 +92,7 @@
       "files": "Datoteke",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "U redu",
     "error": "greška"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktivno",
       "quarantined": "U karanteni",
-      "quarantinedSeconds": "U karanteni ({{seconds}}s)",
+      "quarantinedSeconds": "U karanteni ({{seconds}} s)",
       "disabled": "Onemogućeno"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "upravo sada",
-    "seconds": "{{seconds}}s prije",
-    "minutes": "{{minutes}}min prije",
-    "hours": "{{hours}}h prije",
-    "days": "{{days}}d prije"
+    "seconds": "{{seconds}} s prije",
+    "minutes": "{{minutes}} min prije",
+    "hours": "{{hours}} h prije",
+    "days": "{{days}} d prije"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

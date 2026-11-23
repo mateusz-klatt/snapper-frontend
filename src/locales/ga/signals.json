@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Anois díreach",
-    "minutesAgo": "{{count}}n ó shin",
-    "hoursAgo": "{{count}}u ó shin"
+    "minutesAgo": "{{count}} nóim ó shin",
+    "hoursAgo": "{{count}} u ó shin"
   },
   "empty": {
     "title": "Níor aimsíodh comharthaí",

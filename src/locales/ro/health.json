@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Indisponibil",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}z {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} z {{hours}} h",
     "backtestName": "Test pe date istorice {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Indisponibil",
@@ -47,7 +47,7 @@
     "unavailable": "Statisticile bazei de date nu sunt disponibile: {{message}}",
     "fallbackError": "Încărcarea statisticilor bazei de date a eșuat.",
     "sampled": "eșantionat {{age}}",
-    "samplerSummary": "Interval de eșantionare: {{seconds}}s · Număr de tabele: {{count}}",
+    "samplerSummary": "Interval de eșantionare: {{seconds}} s · Număr de tabele: {{count}}",
     "columns": {
       "table": "Tabel",
       "kind": "Tip",
@@ -92,13 +92,13 @@
       "files": "Fișiere",
       "status": "Stare"
     },
-    "retainDays": "{{days}}z",
+    "retainDays": "{{days}} z",
     "ok": "În regulă",
     "error": "eroare"
   },
   "systemMetrics": {
     "disk": "Disc liber",
-    "diskUsage": "{{percent}}% utilizat · {{mount}}",
+    "diskUsage": "{{percent}} % utilizat · {{mount}}",
     "title": "Sănătate proces",
     "loading": "Se încarcă metricile proceselor…",
     "unavailable": "Metricile de sănătate ale proceselor nu sunt disponibile: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Threaduri",
     "openFds": "FD-uri deschise",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Limitat {{count}}×",
     "memory": "Memorie",
     "saturation": "Saturație {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Activ",
       "quarantined": "În carantină",
-      "quarantinedSeconds": "În carantină ({{seconds}}s)",
+      "quarantinedSeconds": "În carantină ({{seconds}} s)",
       "disabled": "Dezactivat"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "chiar acum",
-    "seconds": "{{seconds}}s în urmă",
-    "minutes": "{{minutes}}min în urmă",
-    "hours": "{{hours}}h în urmă",
-    "days": "{{days}}z în urmă"
+    "seconds": "{{seconds}} s în urmă",
+    "minutes": "{{minutes}} min în urmă",
+    "hours": "{{hours}} h în urmă",
+    "days": "{{days}} z în urmă"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}z"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} z"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

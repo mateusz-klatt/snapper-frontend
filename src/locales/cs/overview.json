@@ -61,7 +61,7 @@
     "statusStopped": "Zastaveno",
     "statusDisabled": "Zakázáno",
     "containerTotal": "Celkem MEM {{value}}",
-    "cpuTooltip": "Využití CPU může na více jádrech překročit 100 %",
+    "cpuTooltip": "Využití CPU může na více jádrech překročit 100 %",
     "metricsNa": "Nejsou samostatné metriky CPU/paměti pro proces; běží v rámci procesu (režim vláken) nebo neběží",
     "managedOnly": "Pouze procesy tohoto kontejneru",
     "managedOnlyHint": "Každý kontejner spravuje podmnožinu procesů (svůj profil automatického spuštění); ostatní procesy se zde uvádějí jen jako běžící jinde. Zrušte zaškrtnutí, chcete-li zobrazit každý proces hlášený jednotlivými kontejnery.",

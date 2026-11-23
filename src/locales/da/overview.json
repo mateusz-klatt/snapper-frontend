@@ -61,7 +61,7 @@
     "statusStopped": "Stoppet",
     "statusDisabled": "Deaktiveret",
     "containerTotal": "Samlet MEM {{value}}",
-    "cpuTooltip": "CPU-forbrug kan overstige 100 % på tværs af flere kerner",
+    "cpuTooltip": "CPU-forbrug kan overstige 100 % på tværs af flere kerner",
     "metricsNa": "Ingen separate CPU-/hukommelsesdata pr. proces; den kører i samme proces (trådtilstand) eller kører ikke",
     "managedOnly": "Kun denne containers processer",
     "managedOnlyHint": "Hver container administrerer et udsnit af processer (dens autostartprofil); andre processer vises her kun som kørende et andet sted. Fjern markeringen for at se alle processer, som hver container rapporterer.",

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "غير متاح",
-    "uptimeMinutes": "{{minutes}}د",
-    "uptimeHours": "{{hours}}س {{minutes}}د",
-    "uptimeDays": "{{days}}ي {{hours}}س",
+    "uptimeMinutes": "{{minutes}} د",
+    "uptimeHours": "{{hours}} س {{minutes}} د",
+    "uptimeDays": "{{days}} ي {{hours}} س",
     "backtestName": "اختبار رجعي {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "غير متاح",
@@ -47,7 +47,7 @@
     "unavailable": "إحصاءات قاعدة البيانات غير متاحة: {{message}}",
     "fallbackError": "فشل تحميل إحصاءات قاعدة البيانات.",
     "sampled": "تم أخذ عينة {{age}}",
-    "samplerSummary": "فاصل أخذ العينات: {{seconds}} ث · عدد الجداول: {{count}}",
+    "samplerSummary": "فاصل أخذ العينات: {{seconds}} ث · عدد الجداول: {{count}}",
     "columns": {
       "table": "الجدول",
       "kind": "النوع",
@@ -92,7 +92,7 @@
       "files": "الملفات",
       "status": "الحالة"
     },
-    "retainDays": "{{days}}ي",
+    "retainDays": "{{days}} ي",
     "ok": "سليم",
     "error": "خطأ"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "نشط",
       "quarantined": "قيد العزل",
-      "quarantinedSeconds": "قيد العزل ({{seconds}}s)",
+      "quarantinedSeconds": "قيد العزل ({{seconds}} ث)",
       "disabled": "معطّل"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "الآن",
-    "seconds": "قبل {{seconds}}ث",
-    "minutes": "قبل {{minutes}}د",
-    "hours": "قبل {{hours}}س",
-    "days": "قبل {{days}}ي"
+    "seconds": "قبل {{seconds}} ث",
+    "minutes": "قبل {{minutes}} د",
+    "hours": "قبل {{hours}} س",
+    "days": "قبل {{days}} ي"
   },
   "duration": {
-    "seconds": "{{seconds}}ث",
-    "minutes": "{{minutes}}د",
-    "hours": "{{hours}}س",
-    "days": "{{days}}ي"
+    "seconds": "{{seconds}} ث",
+    "minutes": "{{minutes}} د",
+    "hours": "{{hours}} س",
+    "days": "{{days}} ي"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

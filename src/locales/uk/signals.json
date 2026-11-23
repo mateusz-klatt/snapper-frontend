@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Щойно",
-    "minutesAgo": "{{count}}хв тому",
-    "hoursAgo": "{{count}}год тому"
+    "minutesAgo": "{{count}} хв тому",
+    "hoursAgo": "{{count}} год тому"
   },
   "empty": {
     "title": "Сигналів не знайдено",

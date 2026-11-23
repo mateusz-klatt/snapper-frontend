@@ -10,20 +10,20 @@
     "searchInstrument": "Enstrüman ara..."
   },
   "timeframes": {
-    "1m": "1 Dakika",
-    "5m": "5 Dakika",
-    "15m": "15 Dakika",
-    "30m": "30 Dakika",
-    "1h": "1 Saat",
-    "4h": "4 Saat",
-    "1d": "1 Gün"
+    "1m": "1 Dakika",
+    "5m": "5 Dakika",
+    "15m": "15 Dakika",
+    "30m": "30 Dakika",
+    "1h": "1 Saat",
+    "4h": "4 Saat",
+    "1d": "1 Gün"
   },
   "stats": {
     "currentPrice": "Son kapanış fiyatı",
-    "change24h": "24s Değişim",
-    "high24h": "24s En Yüksek",
-    "low24h": "24s En Düşük",
-    "incomplete": "Tam 24 saatlik geçmiş kullanılamıyor"
+    "change24h": "24 sa. Değişim",
+    "high24h": "24 sa. En Yüksek",
+    "low24h": "24 sa. En Düşük",
+    "incomplete": "Tam 24 saatlik geçmiş kullanılamıyor"
   },
   "chart": {
     "title": "Fiyat Grafiği",
@@ -71,7 +71,7 @@
     "message": "Önbellek ısınıyor: {{sampleCount}} / {{expected}} mum mevcut {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(1m'den türetildi)",
+      "derived": "(1 dk. verisinden türetildi)",
       "db": "(DB'den)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Zaman kaydırıcısını piyasa geçmişinde hareket ettirin",
     "presets": {
       "live": "Canlı",
-      "h1": "-1 sa",
-      "d1": "-1 g",
-      "w1": "-1 hf",
-      "mo1": "-1 ay"
+      "h1": "-1 sa.",
+      "d1": "-1 gün",
+      "w1": "-1 hf.",
+      "mo1": "-1 ay"
     }
   }
 }

@@ -61,7 +61,7 @@
     "statusStopped": "Arrêté",
     "statusDisabled": "Désactivé",
     "containerTotal": "Mémoire totale {{value}}",
-    "cpuTooltip": "L'utilisation CPU peut dépasser 100 % sur plusieurs cœurs",
+    "cpuTooltip": "L'utilisation CPU peut dépasser 100 % sur plusieurs cœurs",
     "metricsNa": "Pas de CPU/mémoire séparée par processus ; il s'exécute dans le processus (mode thread) ou n'est pas en cours d'exécution",
     "managedOnly": "Uniquement les processus de ce conteneur",
     "managedOnlyHint": "Chaque conteneur gère un sous-ensemble de processus (son profil de démarrage automatique) ; les autres processus ne sont signalés ici que comme exécutés ailleurs. Décochez pour voir chaque processus signalé par chaque conteneur.",

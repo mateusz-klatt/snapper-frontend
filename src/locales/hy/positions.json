@@ -14,10 +14,10 @@
       "granularity": "Ժամանակային քայլ",
       "granularityAriaLabel": "Ընտրել ժամանակագծի ժամանակային քայլը",
       "granularityOptions": {
-        "oneMinute": "1 ր",
-        "fiveMinutes": "5 ր",
-        "oneHour": "1 ժ",
-        "oneDay": "1 օ"
+        "oneMinute": "1 ր",
+        "fiveMinutes": "5 ր",
+        "oneHour": "1 ժ",
+        "oneDay": "1 օր"
       },
       "valuationCurrency": "Գնահատման արժույթ",
       "valuationCurrencyAriaLabel": "Ընտրել գնահատման արժույթը",

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Nie je k dispozícii",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} h",
     "backtestName": "Test na historických dátach {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Nie je k dispozícii",
@@ -47,7 +47,7 @@
     "unavailable": "Štatistiky databázy nie sú dostupné: {{message}}",
     "fallbackError": "Štatistiky databázy sa nepodarilo načítať.",
     "sampled": "vzorka pred {{age}}",
-    "samplerSummary": "Interval vzorkovania: {{seconds}}s · Počet tabuliek: {{count}}",
+    "samplerSummary": "Interval vzorkovania: {{seconds}} s · Počet tabuliek: {{count}}",
     "columns": {
       "table": "Tabuľka",
       "kind": "Typ",
@@ -92,13 +92,13 @@
       "files": "Súbory",
       "status": "Stav"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "V poriadku",
     "error": "chyba"
   },
   "systemMetrics": {
     "disk": "Voľný disk",
-    "diskUsage": "{{percent}}% využité · {{mount}}",
+    "diskUsage": "{{percent}} % využité · {{mount}}",
     "title": "Stav procesu",
     "loading": "Načítavajú sa metriky procesu…",
     "unavailable": "Metriky procesu nie sú dostupné: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Vlákna",
     "openFds": "Otvorené FD",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Obmedzené {{count}}×",
     "memory": "Pamäť",
     "saturation": "Saturácia {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktívne",
       "quarantined": "V karanténe",
-      "quarantinedSeconds": "V karanténe ({{seconds}}s)",
+      "quarantinedSeconds": "V karanténe ({{seconds}} s)",
       "disabled": "Deaktivované"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "práve teraz",
-    "seconds": "pred {{seconds}}s",
-    "minutes": "pred {{minutes}}min",
-    "hours": "pred {{hours}}h",
-    "days": "pred {{days}}d"
+    "seconds": "pred {{seconds}} s",
+    "minutes": "pred {{minutes}} min",
+    "hours": "pred {{hours}} h",
+    "days": "pred {{days}} d"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

@@ -49,13 +49,13 @@
     "autostartDisabled": "Autostart: nonaktif",
     "statusAriaLabel": "Status: {{status}}",
     "dataLagAriaLabel": "Lag data: {{seconds}} detik",
-    "lagBadge": "lag: {{seconds}} dtk",
-    "feedLag": "Lag Feed: {{ms}}ms",
-    "heartbeatAge": "Usia HB: {{seconds}} dtk",
+    "lagBadge": "lag: {{seconds}} dtk",
+    "feedLag": "Lag Feed: {{ms}} ms",
+    "heartbeatAge": "Usia HB: {{seconds}} dtk",
     "metrics": {
       "status": "Status",
       "dataLag": "Lag Data",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "Detak proses",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

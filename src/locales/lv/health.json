@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Nav datu",
-    "uptimeMinutes": "{{minutes}} min",
-    "uptimeHours": "{{hours}} st. {{minutes}} min",
-    "uptimeDays": "{{days}} d. {{hours}} st.",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} st. {{minutes}} min",
+    "uptimeDays": "{{days}} d. {{hours}} st.",
     "backtestName": "Backtests {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Nav datu",
@@ -47,7 +47,7 @@
     "unavailable": "Datubāzes statistika nav pieejama: {{message}}",
     "fallbackError": "Neizdevās ielādēt datubāzes statistiku.",
     "sampled": "paraugs ņemts {{age}}",
-    "samplerSummary": "Paraugošanas intervāls: {{seconds}} s · tabulu skaits: {{count}}",
+    "samplerSummary": "Paraugošanas intervāls: {{seconds}} s · tabulu skaits: {{count}}",
     "columns": {
       "table": "Tabula",
       "kind": "Veids",
@@ -92,7 +92,7 @@
       "files": "Faili",
       "status": "Statuss"
     },
-    "retainDays": "{{days}} d.",
+    "retainDays": "{{days}} d.",
     "ok": "Kārtībā",
     "error": "kļūda"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktīvs",
       "quarantined": "Karantīnā",
-      "quarantinedSeconds": "Karantīnā ({{seconds}} s)",
+      "quarantinedSeconds": "Karantīnā ({{seconds}} s)",
       "disabled": "Atspējots"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "tikko",
-    "seconds": "pirms {{seconds}} s",
-    "minutes": "pirms {{minutes}} min",
-    "hours": "pirms {{hours}} st.",
-    "days": "pirms {{days}} d."
+    "seconds": "pirms {{seconds}} s",
+    "minutes": "pirms {{minutes}} min",
+    "hours": "pirms {{hours}} st.",
+    "days": "pirms {{days}} d."
   },
   "duration": {
-    "seconds": "{{seconds}} s",
-    "minutes": "{{minutes}} min",
-    "hours": "{{hours}} st.",
-    "days": "{{days}} d."
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} st.",
+    "days": "{{days}} d."
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

@@ -10,20 +10,20 @@
     "searchInstrument": "Kërko instrument..."
   },
   "timeframes": {
-    "1m": "1 minutë",
-    "5m": "5 minuta",
-    "15m": "15 minuta",
-    "30m": "30 minuta",
-    "1h": "1 orë",
-    "4h": "4 orë",
-    "1d": "1 ditë"
+    "1m": "1 minutë",
+    "5m": "5 minuta",
+    "15m": "15 minuta",
+    "30m": "30 minuta",
+    "1h": "1 orë",
+    "4h": "4 orë",
+    "1d": "1 ditë"
   },
   "stats": {
     "currentPrice": "Çmimi i fundit i mbylljes",
-    "change24h": "Ndryshimi 24h",
-    "high24h": "Maksimumi 24h",
-    "low24h": "Minimumi 24h",
-    "incomplete": "Historiku i plotë për 24 orë nuk është i disponueshëm"
+    "change24h": "Ndryshimi 24 orë",
+    "high24h": "Maksimumi 24 orë",
+    "low24h": "Minimumi 24 orë",
+    "incomplete": "Historiku i plotë për 24 orë nuk është i disponueshëm"
   },
   "chart": {
     "title": "Grafiku i çmimit",
@@ -71,7 +71,7 @@
     "message": "Cache po ngrohet: {{sampleCount}} / {{expected}} qirinj të disponueshëm {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(nxjerrë nga 1m)",
+      "derived": "(nxjerrë nga 1 min)",
       "db": "(nga DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Lëvizni nëpër historikun e tregut",
     "presets": {
       "live": "Drejtpërdrejt",
-      "h1": "-1 orë",
-      "d1": "-1 ditë",
-      "w1": "-1 javë",
-      "mo1": "-1 muaj"
+      "h1": "-1 orë",
+      "d1": "-1 ditë",
+      "w1": "-1 javë",
+      "mo1": "-1 muaj"
     }
   }
 }

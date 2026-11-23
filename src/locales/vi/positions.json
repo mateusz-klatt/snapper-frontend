@@ -14,10 +14,10 @@
       "granularity": "Độ phân giải",
       "granularityAriaLabel": "Chọn độ phân giải dòng thời gian",
       "granularityOptions": {
-        "oneMinute": "1 phút",
-        "fiveMinutes": "5 phút",
-        "oneHour": "1 giờ",
-        "oneDay": "1 ngày"
+        "oneMinute": "1 phút",
+        "fiveMinutes": "5 phút",
+        "oneHour": "1 giờ",
+        "oneDay": "1 ngày"
       },
       "valuationCurrency": "Đồng tiền định giá",
       "valuationCurrencyAriaLabel": "Chọn đồng tiền định giá",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "24 giờ qua",
-      "last7Days": "7 ngày qua",
-      "last30Days": "30 ngày qua",
-      "last90Days": "90 ngày qua"
+      "last24Hours": "24 giờ qua",
+      "last7Days": "7 ngày qua",
+      "last30Days": "30 ngày qua",
+      "last90Days": "90 ngày qua"
     },
     "loading": "Đang tải dòng thời gian P&L…",
     "error": {

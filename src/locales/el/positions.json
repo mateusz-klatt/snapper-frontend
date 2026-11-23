@@ -14,10 +14,10 @@
       "granularity": "Χρονική ανάλυση",
       "granularityAriaLabel": "Επιλογή χρονικής ανάλυσης χρονογραμμής",
       "granularityOptions": {
-        "oneMinute": "1 λεπ.",
-        "fiveMinutes": "5 λεπ.",
-        "oneHour": "1 ώ.",
-        "oneDay": "1 ημ."
+        "oneMinute": "1 λεπ.",
+        "fiveMinutes": "5 λεπ.",
+        "oneHour": "1 ώ.",
+        "oneDay": "1 ημ."
       },
       "valuationCurrency": "Νόμισμα αποτίμησης",
       "valuationCurrencyAriaLabel": "Επιλογή νομίσματος αποτίμησης",

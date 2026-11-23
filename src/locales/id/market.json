@@ -10,20 +10,20 @@
     "searchInstrument": "Cari instrumen..."
   },
   "timeframes": {
-    "1m": "1 Menit",
-    "5m": "5 Menit",
-    "15m": "15 Menit",
-    "30m": "30 Menit",
-    "1h": "1 Jam",
-    "4h": "4 Jam",
-    "1d": "1 Hari"
+    "1m": "1 Menit",
+    "5m": "5 Menit",
+    "15m": "15 Menit",
+    "30m": "30 Menit",
+    "1h": "1 Jam",
+    "4h": "4 Jam",
+    "1d": "1 Hari"
   },
   "stats": {
     "currentPrice": "Harga penutupan terakhir",
-    "change24h": "Perubahan 24j",
-    "high24h": "Tertinggi 24j",
-    "low24h": "Terendah 24j",
-    "incomplete": "Riwayat lengkap 24 jam tidak tersedia"
+    "change24h": "Perubahan 24 j",
+    "high24h": "Tertinggi 24 j",
+    "low24h": "Terendah 24 j",
+    "incomplete": "Riwayat lengkap 24 jam tidak tersedia"
   },
   "chart": {
     "title": "Grafik Harga",
@@ -71,7 +71,7 @@
     "message": "Pemanasan cache: {{sampleCount}} / {{expected}} candle tersedia {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(diturunkan dari 1m)",
+      "derived": "(diturunkan dari 1 mnt)",
       "db": "(dari DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Geser waktu pasar",
     "presets": {
       "live": "Langsung",
-      "h1": "-1 Jam",
-      "d1": "-1 Hari",
-      "w1": "-1 minggu",
-      "mo1": "-1 bulan"
+      "h1": "-1 j",
+      "d1": "-1 hr",
+      "w1": "-1 mgg",
+      "mo1": "-1 bln"
     }
   }
 }

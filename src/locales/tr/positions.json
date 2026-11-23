@@ -14,10 +14,10 @@
       "granularity": "Ayrıntı düzeyi",
       "granularityAriaLabel": "Zaman çizelgesinin ayrıntı düzeyini seçin",
       "granularityOptions": {
-        "oneMinute": "1 dk",
-        "fiveMinutes": "5 dk",
-        "oneHour": "1 sa",
-        "oneDay": "1 g"
+        "oneMinute": "1 dk.",
+        "fiveMinutes": "5 dk.",
+        "oneHour": "1 sa.",
+        "oneDay": "1 gün"
       },
       "valuationCurrency": "Değerleme para birimi",
       "valuationCurrencyAriaLabel": "Değerleme para birimini seçin",
@@ -270,7 +270,7 @@
       "trailingPct": "örn. 5.0",
       "minLockPct": "0 = hemen başlat"
     },
-    "minLockWarning": "Trailing Stop, fiyat lehinize {{minLockPct}}% hareket edene kadar etkinleşmez.",
+    "minLockWarning": "Trailing Stop, fiyat lehinize %{{minLockPct}} hareket edene kadar etkinleşmez.",
     "buttons": {
       "cancel": "İptal",
       "review": "Gözden geçir",

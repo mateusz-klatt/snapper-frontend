@@ -14,10 +14,10 @@
       "granularity": "רזולוציה",
       "granularityAriaLabel": "בחר רזולוציה לציר הזמן",
       "granularityOptions": {
-        "oneMinute": "1 דק׳",
-        "fiveMinutes": "5 דק׳",
-        "oneHour": "1 שע׳",
-        "oneDay": "1 י׳"
+        "oneMinute": "1 דק׳",
+        "fiveMinutes": "5 דק׳",
+        "oneHour": "1 שע׳",
+        "oneDay": "1 י׳"
       },
       "valuationCurrency": "מטבע הערכת שווי",
       "valuationCurrencyAriaLabel": "בחר מטבע הערכת שווי",

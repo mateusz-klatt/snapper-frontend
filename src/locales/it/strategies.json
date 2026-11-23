@@ -49,13 +49,13 @@
     "autostartDisabled": "Autostart: disabilitato",
     "statusAriaLabel": "Stato: {{status}}",
     "dataLagAriaLabel": "Latenza dati: {{seconds}} secondi",
-    "lagBadge": "latenza: {{seconds}}s",
-    "feedLag": "Latenza feed: {{ms}}ms",
-    "heartbeatAge": "Età HB: {{seconds}}s",
+    "lagBadge": "latenza: {{seconds}} s",
+    "feedLag": "Latenza feed: {{ms}} ms",
+    "heartbeatAge": "Età HB: {{seconds}} s",
     "metrics": {
       "status": "Stato",
       "dataLag": "Latenza dati",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "Segnale di attività",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

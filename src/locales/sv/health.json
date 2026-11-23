@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Ej tillgängligt",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} h",
     "backtestName": "Historiskt test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Ej tillgängligt",
@@ -47,7 +47,7 @@
     "unavailable": "Databasstatistik inte tillgänglig: {{message}}",
     "fallbackError": "Det gick inte att ladda databasstatistik.",
     "sampled": "mätt {{age}}",
-    "samplerSummary": "Samplingsintervall: {{seconds}} s · antal tabeller: {{count}}",
+    "samplerSummary": "Samplingsintervall: {{seconds}} s · antal tabeller: {{count}}",
     "columns": {
       "table": "Tabell",
       "kind": "Typ",
@@ -92,13 +92,13 @@
       "files": "Filer",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "I ordning",
     "error": "fel"
   },
   "systemMetrics": {
     "disk": "Ledigt diskutrymme",
-    "diskUsage": "{{percent}}% använt · {{mount}}",
+    "diskUsage": "{{percent}} % använt · {{mount}}",
     "title": "Processhälsa",
     "loading": "Laddar processmätvärden…",
     "unavailable": "Processmätvärden inte tillgängliga: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Trådar",
     "openFds": "Öppna FDs",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Strypningar {{count}}×",
     "memory": "Minne",
     "saturation": "Mättnad {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktiv",
       "quarantined": "I karantän",
-      "quarantinedSeconds": "I karantän ({{seconds}}s)",
+      "quarantinedSeconds": "I karantän ({{seconds}} s)",
       "disabled": "Inaktiverad"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "just nu",
-    "seconds": "{{seconds}}s sedan",
-    "minutes": "{{minutes}} min sedan",
-    "hours": "{{hours}}h sedan",
-    "days": "{{days}}d sedan"
+    "seconds": "{{seconds}} s sedan",
+    "minutes": "{{minutes}} min sedan",
+    "hours": "{{hours}} h sedan",
+    "days": "{{days}} d sedan"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}} min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

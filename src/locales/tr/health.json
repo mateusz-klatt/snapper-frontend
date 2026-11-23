@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Yok",
-    "uptimeMinutes": "{{minutes}}dk",
-    "uptimeHours": "{{hours}}s {{minutes}}dk",
-    "uptimeDays": "{{days}}g {{hours}}s",
+    "uptimeMinutes": "{{minutes}} dk.",
+    "uptimeHours": "{{hours}} sa. {{minutes}} dk.",
+    "uptimeDays": "{{days}} gün {{hours}} sa.",
     "backtestName": "Geriye dönük test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Yok",
@@ -47,7 +47,7 @@
     "unavailable": "Veritabanı istatistikleri kullanılamıyor: {{message}}",
     "fallbackError": "Veritabanı istatistikleri yüklenemedi.",
     "sampled": "örneklendi {{age}}",
-    "samplerSummary": "Örnekleme aralığı: {{seconds}} sn · tablo sayısı: {{count}}",
+    "samplerSummary": "Örnekleme aralığı: {{seconds}} sn · tablo sayısı: {{count}}",
     "columns": {
       "table": "Tablo",
       "kind": "Tür",
@@ -92,13 +92,13 @@
       "files": "Dosyalar",
       "status": "Durum"
     },
-    "retainDays": "{{days}}g",
+    "retainDays": "{{days}} gün",
     "ok": "Normal",
     "error": "hata"
   },
   "systemMetrics": {
     "disk": "Boş disk alanı",
-    "diskUsage": "{{percent}}% kullanıldı · {{mount}}",
+    "diskUsage": "%{{percent}} kullanıldı · {{mount}}",
     "title": "Süreç Sağlığı",
     "loading": "Süreç metrikleri yükleniyor…",
     "unavailable": "Süreç metrikleri kullanılamıyor: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Thread'ler",
     "openFds": "Açık FD'ler",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "%{{percent}}",
     "throttled": "{{count}}× kısıtlandı",
     "memory": "Bellek",
     "saturation": "Doygunluk {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Etkin",
       "quarantined": "Karantinada",
-      "quarantinedSeconds": "Karantinada ({{seconds}}s)",
+      "quarantinedSeconds": "Karantinada ({{seconds}} sn)",
       "disabled": "Devre dışı"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "az önce",
-    "seconds": "{{seconds}}s önce",
-    "minutes": "{{minutes}}dk önce",
-    "hours": "{{hours}}s önce",
-    "days": "{{days}}g önce"
+    "seconds": "{{seconds}} sn önce",
+    "minutes": "{{minutes}} dk. önce",
+    "hours": "{{hours}} sa. önce",
+    "days": "{{days}} gün önce"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}dk",
-    "hours": "{{hours}}s",
-    "days": "{{days}}g"
+    "seconds": "{{seconds}} sn",
+    "minutes": "{{minutes}} dk.",
+    "hours": "{{hours}} sa.",
+    "days": "{{days}} gün"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

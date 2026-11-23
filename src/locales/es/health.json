@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} h",
     "backtestName": "Prueba retrospectiva {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
@@ -47,7 +47,7 @@
     "unavailable": "Estadísticas de base de datos no disponibles: {{message}}",
     "fallbackError": "Error al cargar las estadísticas de la base de datos.",
     "sampled": "muestreado hace {{age}}",
-    "samplerSummary": "Intervalo de muestreo: {{seconds}} s · Número de tablas: {{count}}",
+    "samplerSummary": "Intervalo de muestreo: {{seconds}} s · Número de tablas: {{count}}",
     "columns": {
       "table": "Tabla",
       "kind": "Tipo",
@@ -92,13 +92,13 @@
       "files": "Ficheros",
       "status": "Estado"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "Correcto",
     "error": "error"
   },
   "systemMetrics": {
     "disk": "Disco libre",
-    "diskUsage": "{{percent}}% usado · {{mount}}",
+    "diskUsage": "{{percent}} % usado · {{mount}}",
     "title": "Estado del proceso",
     "loading": "Cargando métricas de proceso…",
     "unavailable": "Métricas de proceso no disponibles: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Hilos",
     "openFds": "FDs abiertos",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Limitado {{count}}×",
     "memory": "Memoria",
     "saturation": "Saturación {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Activa",
       "quarantined": "En cuarentena",
-      "quarantinedSeconds": "En cuarentena ({{seconds}}s)",
+      "quarantinedSeconds": "En cuarentena ({{seconds}} s)",
       "disabled": "Deshabilitada"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "justo ahora",
-    "seconds": "hace {{seconds}}s",
-    "minutes": "hace {{minutes}}min",
-    "hours": "hace {{hours}}h",
-    "days": "hace {{days}}d"
+    "seconds": "hace {{seconds}} s",
+    "minutes": "hace {{minutes}} min",
+    "hours": "hace {{hours}} h",
+    "days": "hace {{days}} d"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

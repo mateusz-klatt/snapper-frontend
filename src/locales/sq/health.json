@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Nuk ka të dhëna",
-    "uptimeMinutes": "{{minutes}} min",
-    "uptimeHours": "{{hours}} orë {{minutes}} min",
-    "uptimeDays": "{{days}} ditë {{hours}} orë",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} orë {{minutes}} min",
+    "uptimeDays": "{{days}} ditë {{hours}} orë",
     "backtestName": "Test historik {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Nuk ka të dhëna",
@@ -47,7 +47,7 @@
     "unavailable": "Statistikat e bazës së të dhënave nuk janë të disponueshme: {{message}}",
     "fallbackError": "Ngarkimi i statistikave të bazës së të dhënave dështoi.",
     "sampled": "mostruar {{age}}",
-    "samplerSummary": "Intervali i kampionimit: {{seconds}}s · Numri i tabelave: {{count}}",
+    "samplerSummary": "Intervali i kampionimit: {{seconds}} s · Numri i tabelave: {{count}}",
     "columns": {
       "table": "Tabelë",
       "kind": "Lloj",
@@ -92,7 +92,7 @@
       "files": "Skedarë",
       "status": "Status"
     },
-    "retainDays": "{{days}} ditë",
+    "retainDays": "{{days}} ditë",
     "ok": "Në rregull",
     "error": "gabim"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktiv",
       "quarantined": "Në karantinë",
-      "quarantinedSeconds": "Në karantinë ({{seconds}}s)",
+      "quarantinedSeconds": "Në karantinë ({{seconds}} s)",
       "disabled": "Çaktivizuar"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "tani sapo",
-    "seconds": "{{seconds}}s më parë",
-    "minutes": "{{minutes}}min më parë",
-    "hours": "{{hours}}h më parë",
-    "days": "{{days}}d më parë"
+    "seconds": "{{seconds}} s më parë",
+    "minutes": "{{minutes}} min më parë",
+    "hours": "{{hours}} orë më parë",
+    "days": "{{days}} ditë më parë"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}} orë",
-    "days": "{{days}} ditë"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} orë",
+    "days": "{{days}} ditë"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

@@ -14,10 +14,10 @@
       "granularity": "Felbontás",
       "granularityAriaLabel": "Idővonal felbontásának kiválasztása",
       "granularityOptions": {
-        "oneMinute": "1 p",
-        "fiveMinutes": "5 p",
-        "oneHour": "1 ó",
-        "oneDay": "1 nap"
+        "oneMinute": "1 p",
+        "fiveMinutes": "5 p",
+        "oneHour": "1 ó",
+        "oneDay": "1 nap"
       },
       "valuationCurrency": "Értékelési pénznem",
       "valuationCurrencyAriaLabel": "Értékelési pénznem kiválasztása",

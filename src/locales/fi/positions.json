@@ -14,10 +14,10 @@
       "granularity": "Tarkkuus",
       "granularityAriaLabel": "Valitse aikajanan tarkkuus",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 t",
-        "oneDay": "1 pv"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 t",
+        "oneDay": "1 pv"
       },
       "valuationCurrency": "Arvostusvaluutta",
       "valuationCurrencyAriaLabel": "Valitse arvostusvaluutta",
@@ -270,7 +270,7 @@
       "trailingPct": "esim. 5.0",
       "minLockPct": "0 = aloita heti"
     },
-    "minLockWarning": "Trailing Stop aktivoituu vasta, kun hinta liikkuu {{minLockPct}}% eduksesi.",
+    "minLockWarning": "Trailing Stop aktivoituu vasta, kun hinta liikkuu {{minLockPct}} % eduksesi.",
     "buttons": {
       "cancel": "Peruuta",
       "review": "Tarkista",

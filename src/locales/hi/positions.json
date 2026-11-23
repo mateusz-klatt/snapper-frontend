@@ -14,10 +14,10 @@
       "granularity": "अंतराल",
       "granularityAriaLabel": "टाइमलाइन अंतराल चुनें",
       "granularityOptions": {
-        "oneMinute": "1 मिनट",
-        "fiveMinutes": "5 मिनट",
-        "oneHour": "1 घंटा",
-        "oneDay": "1 दिन"
+        "oneMinute": "1 मि",
+        "fiveMinutes": "5 मि",
+        "oneHour": "1 घं",
+        "oneDay": "1 दिन"
       },
       "valuationCurrency": "मूल्यांकन मुद्रा",
       "valuationCurrencyAriaLabel": "मूल्यांकन मुद्रा चुनें",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "पिछले 24 घंटे",
-      "last7Days": "पिछले 7 दिन",
-      "last30Days": "पिछले 30 दिन",
-      "last90Days": "पिछले 90 दिन"
+      "last24Hours": "पिछले 24 घंटे",
+      "last7Days": "पिछले 7 दिन",
+      "last30Days": "पिछले 30 दिन",
+      "last90Days": "पिछले 90 दिन"
     },
     "loading": "P&L टाइमलाइन लोड हो रही है…",
     "error": {

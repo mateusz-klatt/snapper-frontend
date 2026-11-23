@@ -14,10 +14,10 @@
       "granularity": "Granularitate",
       "granularityAriaLabel": "Selectați granularitatea cronologiei",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 h",
-        "oneDay": "1 z"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 z"
       },
       "valuationCurrency": "Monedă de evaluare",
       "valuationCurrencyAriaLabel": "Selectați moneda de evaluare",
@@ -270,7 +270,7 @@
       "trailingPct": "ex. 5.0",
       "minLockPct": "0 = pornește imediat"
     },
-    "minLockWarning": "Stopul dinamic nu se va activa până când prețul nu evoluează cu {{minLockPct}}% în favoarea dvs.",
+    "minLockWarning": "Stopul dinamic nu se va activa până când prețul nu evoluează cu {{minLockPct}} % în favoarea dvs.",
     "buttons": {
       "cancel": "Anulați",
       "review": "Revizuiți",

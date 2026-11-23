@@ -10,20 +10,20 @@
     "searchInstrument": "Søk etter instrument..."
   },
   "timeframes": {
-    "1m": "1 minutt",
-    "5m": "5 minutter",
-    "15m": "15 minutter",
-    "30m": "30 minutter",
-    "1h": "1 time",
-    "4h": "4 timer",
-    "1d": "1 dag"
+    "1m": "1 minutt",
+    "5m": "5 minutter",
+    "15m": "15 minutter",
+    "30m": "30 minutter",
+    "1h": "1 time",
+    "4h": "4 timer",
+    "1d": "1 dag"
   },
   "stats": {
     "currentPrice": "Siste sluttkurs",
-    "change24h": "24t endring",
-    "high24h": "24t høy",
-    "low24h": "24t lav",
-    "incomplete": "Fullstendig historikk for 24 timer er ikke tilgjengelig"
+    "change24h": "24 t endring",
+    "high24h": "24 t høy",
+    "low24h": "24 t lav",
+    "incomplete": "Fullstendig historikk for 24 timer er ikke tilgjengelig"
   },
   "chart": {
     "title": "Prischart",
@@ -71,7 +71,7 @@
     "message": "Cache varmes opp: {{sampleCount}} / {{expected}} candles tilgjengelig {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(avledet fra 1m)",
+      "derived": "(avledet fra 1 min)",
       "db": "(fra DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Dra gjennom markedshistorikken",
     "presets": {
       "live": "Sanntid",
-      "h1": "-1 t",
-      "d1": "-1d",
-      "w1": "-1 u",
-      "mo1": "-1 md."
+      "h1": "-1 t",
+      "d1": "-1 d",
+      "w1": "-1 u",
+      "mo1": "-1 md."
     }
   }
 }

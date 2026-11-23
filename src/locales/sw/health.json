@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Haipatikani",
-    "uptimeMinutes": "dak {{minutes}}",
-    "uptimeHours": "saa {{hours}} dak {{minutes}}",
-    "uptimeDays": "siku {{days}} saa {{hours}}",
+    "uptimeMinutes": "dak {{minutes}}",
+    "uptimeHours": "saa {{hours}} dak {{minutes}}",
+    "uptimeDays": "siku {{days}} saa {{hours}}",
     "backtestName": "Jaribio la nyuma {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Haipatikani",
@@ -47,7 +47,7 @@
     "unavailable": "Takwimu za database hazipatikani: {{message}}",
     "fallbackError": "Imeshindwa kupakia takwimu za database.",
     "sampled": "sampuli {{age}}",
-    "samplerSummary": "Muda wa sampuli: {{seconds}}s · idadi ya majedwali: {{count}}",
+    "samplerSummary": "Muda wa sampuli: sek {{seconds}} · idadi ya majedwali: {{count}}",
     "columns": {
       "table": "Meza",
       "kind": "Aina",
@@ -92,7 +92,7 @@
       "files": "Faili",
       "status": "Hali"
     },
-    "retainDays": "siku {{days}}",
+    "retainDays": "siku {{days}}",
     "ok": "Sawa",
     "error": "hitilafu"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Inatumika",
       "quarantined": "Imewekwa karantini",
-      "quarantinedSeconds": "Imewekwa karantini ({{seconds}}s)",
+      "quarantinedSeconds": "Imewekwa karantini (sek {{seconds}})",
       "disabled": "Imezimwa"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "sasa hivi",
-    "seconds": "{{seconds}}s zilizopita",
-    "minutes": "{{minutes}}min zilizopita",
-    "hours": "{{hours}}h zilizopita",
-    "days": "{{days}}d zilizopita"
+    "seconds": "sek {{seconds}} zilizopita",
+    "minutes": "dak {{minutes}} zilizopita",
+    "hours": "saa {{hours}} zilizopita",
+    "days": "siku {{days}} zilizopita"
   },
   "duration": {
-    "seconds": "sek {{seconds}}",
-    "minutes": "dak {{minutes}}",
-    "hours": "saa {{hours}}",
-    "days": "siku {{days}}"
+    "seconds": "sek {{seconds}}",
+    "minutes": "dak {{minutes}}",
+    "hours": "saa {{hours}}",
+    "days": "siku {{days}}"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

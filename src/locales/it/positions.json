@@ -14,10 +14,10 @@
       "granularity": "Granularità",
       "granularityAriaLabel": "Seleziona la granularità della cronologia",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1h",
-        "oneDay": "1 g"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 g"
       },
       "valuationCurrency": "Valuta di riferimento",
       "valuationCurrencyAriaLabel": "Seleziona la valuta di riferimento",

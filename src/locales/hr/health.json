@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} h",
     "backtestName": "Test na povijesnim podacima {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
@@ -47,7 +47,7 @@
     "unavailable": "Statistika baze podataka nije dostupna: {{message}}",
     "fallbackError": "Učitavanje statistike baze podataka nije uspjelo.",
     "sampled": "uzorkovano prije {{age}}",
-    "samplerSummary": "Interval uzorkovanja: {{seconds}} s · broj tablica: {{count}}",
+    "samplerSummary": "Interval uzorkovanja: {{seconds}} s · broj tablica: {{count}}",
     "columns": {
       "table": "Tablica",
       "kind": "Vrsta",
@@ -92,13 +92,13 @@
       "files": "Datoteke",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
+    "retainDays": "{{days}} d",
     "ok": "U redu",
     "error": "pogreška"
   },
   "systemMetrics": {
     "disk": "Slobodan disk",
-    "diskUsage": "{{percent}}% iskorišteno · {{mount}}",
+    "diskUsage": "{{percent}} % iskorišteno · {{mount}}",
     "title": "Zdravlje procesa",
     "loading": "Učitavanje metrika procesa…",
     "unavailable": "Metrike procesa nisu dostupne: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Threadovi",
     "openFds": "Otvoreni FD-ovi",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Ograničeno {{count}}×",
     "memory": "Memorija",
     "saturation": "Zasićenje {{percent}}",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktivno",
       "quarantined": "U karanteni",
-      "quarantinedSeconds": "U karanteni ({{seconds}}s)",
+      "quarantinedSeconds": "U karanteni ({{seconds}} s)",
       "disabled": "Onemogućeno"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "upravo sada",
-    "seconds": "prije {{seconds}}s",
-    "minutes": "prije {{minutes}}min",
-    "hours": "prije {{hours}}h",
-    "days": "prije {{days}}d"
+    "seconds": "prije {{seconds}} s",
+    "minutes": "prije {{minutes}} min",
+    "hours": "prije {{hours}} h",
+    "days": "prije {{days}} d"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

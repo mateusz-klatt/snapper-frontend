@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Baru saja",
-    "minutesAgo": "{{count}} mnt lalu",
-    "hoursAgo": "{{count}} jam lalu"
+    "minutesAgo": "{{count}} mnt lalu",
+    "hoursAgo": "{{count}} jam lalu"
   },
   "empty": {
     "title": "Tidak ada sinyal ditemukan",

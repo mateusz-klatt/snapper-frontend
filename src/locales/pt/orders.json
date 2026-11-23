@@ -100,9 +100,9 @@
     "orderTypeOptions": {
       "market": "Mercado",
       "limit": "Limite",
-      "stop": "Ordem stop",
-      "stopLimit": "Ordem stop limitada",
-      "stop_limit": "Ordem stop limitada"
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
     },
     "modeOptions": {
       "live": "Ao vivo",

@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Только что",
-    "minutesAgo": "{{count}} мин назад",
-    "hoursAgo": "{{count}} ч назад"
+    "minutesAgo": "{{count}} мин назад",
+    "hoursAgo": "{{count}} ч назад"
   },
   "empty": {
     "title": "Сигналы не найдены",

@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Gerade eben",
-    "minutesAgo": "vor {{count}} min",
-    "hoursAgo": "vor {{count}} h"
+    "minutesAgo": "vor {{count}} min",
+    "hoursAgo": "vor {{count}} h"
   },
   "empty": {
     "title": "Keine Signale gefunden",

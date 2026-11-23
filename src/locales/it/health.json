@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}g {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} g {{hours}} h",
     "backtestName": "Test storico {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
@@ -47,7 +47,7 @@
     "unavailable": "Statistiche del database non disponibili: {{message}}",
     "fallbackError": "Caricamento delle statistiche del database non riuscito.",
     "sampled": "campionato {{age}}",
-    "samplerSummary": "Intervallo del sampler: {{seconds}} s · numero di tabelle: {{count}}",
+    "samplerSummary": "Intervallo del sampler: {{seconds}} s · numero di tabelle: {{count}}",
     "columns": {
       "table": "Tabella",
       "kind": "Tipo",
@@ -92,7 +92,7 @@
       "files": "File",
       "status": "Stato"
     },
-    "retainDays": "{{days}}g",
+    "retainDays": "{{days}} g",
     "ok": "Regolare",
     "error": "errore"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Attivo",
       "quarantined": "In quarantena",
-      "quarantinedSeconds": "In quarantena ({{seconds}}s)",
+      "quarantinedSeconds": "In quarantena ({{seconds}} s)",
       "disabled": "Disabilitato"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "adesso",
-    "seconds": "{{seconds}}s fa",
-    "minutes": "{{minutes}}min fa",
-    "hours": "{{hours}}h fa",
-    "days": "{{days}}g fa"
+    "seconds": "{{seconds}} s fa",
+    "minutes": "{{minutes}} min fa",
+    "hours": "{{hours}} h fa",
+    "days": "{{days}} g fa"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}g"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} g"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

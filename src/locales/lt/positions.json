@@ -14,10 +14,10 @@
       "granularity": "Intervalas",
       "granularityAriaLabel": "Pasirinkti laiko skalės intervalą",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 val.",
-        "oneDay": "1 d."
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 val.",
+        "oneDay": "1 d."
       },
       "valuationCurrency": "Vertinimo valiuta",
       "valuationCurrencyAriaLabel": "Pasirinkti vertinimo valiutą",
@@ -270,7 +270,7 @@
       "trailingPct": "pvz., 5.0",
       "minLockPct": "0 = pradėti iš karto"
     },
-    "minLockWarning": "Trailing Stop nebus aktyvuotas, kol kaina pajudės {{minLockPct}}% jums palankia kryptimi.",
+    "minLockWarning": "Trailing Stop nebus aktyvuotas, kol kaina pajudės {{minLockPct}} % jums palankia kryptimi.",
     "buttons": {
       "cancel": "Atšaukti",
       "review": "Peržiūrėti",

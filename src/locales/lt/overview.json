@@ -61,7 +61,7 @@
     "statusStopped": "Sustabdyta",
     "statusDisabled": "Išjungta",
     "containerTotal": "Iš viso MEM {{value}}",
-    "cpuTooltip": "CPU naudojimas keliuose branduoliuose gali viršyti 100 %",
+    "cpuTooltip": "CPU naudojimas keliuose branduoliuose gali viršyti 100 %",
     "metricsNa": "Nėra atskirų CPU/atminties duomenų pagal procesą; jis veikia proceso viduje (gijų režimu) arba neveikia",
     "managedOnly": "Tik šio konteinerio procesai",
     "managedOnlyHint": "Kiekvienas konteineris valdo procesų poaibį (savo autostart profilį); kiti procesai čia rodomi tik kaip veikiantys kitur. Nuimkite žymėjimą, kad matytumėte kiekvieną procesą, apie kurį praneša kiekvienas konteineris.",

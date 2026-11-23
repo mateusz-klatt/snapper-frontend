@@ -47,7 +47,7 @@
     "unavailable": "数据库统计不可用: {{message}}",
     "fallbackError": "加载数据库统计失败。",
     "sampled": "采样于 {{age}}",
-    "samplerSummary": "采样间隔：{{seconds}} 秒 · 表数量：{{count}}",
+    "samplerSummary": "采样间隔：{{seconds}}秒 · 表数量：{{count}}",
     "columns": {
       "table": "表",
       "kind": "类型",
@@ -192,7 +192,7 @@
     "status": {
       "active": "活跃",
       "quarantined": "已隔离",
-      "quarantinedSeconds": "已隔离（{{seconds}}s）",
+      "quarantinedSeconds": "已隔离（{{seconds}}秒）",
       "disabled": "已禁用"
     },
     "trafficClass": {
@@ -202,10 +202,10 @@
   },
   "relativeAge": {
     "justNow": "刚刚",
-    "seconds": "{{seconds}}s 前",
-    "minutes": "{{minutes}}min 前",
-    "hours": "{{hours}}h 前",
-    "days": "{{days}}d 前"
+    "seconds": "{{seconds}}秒前",
+    "minutes": "{{minutes}}分钟前",
+    "hours": "{{hours}}小时前",
+    "days": "{{days}}天前"
   },
   "duration": {
     "seconds": "{{seconds}}秒",
@@ -214,7 +214,7 @@
     "days": "{{days}}天"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

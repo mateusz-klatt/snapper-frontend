@@ -10,20 +10,20 @@
     "searchInstrument": "Cari instrumen..."
   },
   "timeframes": {
-    "1m": "1 Minit",
-    "5m": "5 Minit",
-    "15m": "15 Minit",
-    "30m": "30 Minit",
-    "1h": "1 Jam",
-    "4h": "4 Jam",
-    "1d": "1 Hari"
+    "1m": "1 Minit",
+    "5m": "5 Minit",
+    "15m": "15 Minit",
+    "30m": "30 Minit",
+    "1h": "1 Jam",
+    "4h": "4 Jam",
+    "1d": "1 Hari"
   },
   "stats": {
     "currentPrice": "Harga penutupan terakhir",
-    "change24h": "Perubahan 24j",
-    "high24h": "Tinggi 24j",
-    "low24h": "Rendah 24j",
-    "incomplete": "Sejarah lengkap 24 jam tidak tersedia"
+    "change24h": "Perubahan 24 j",
+    "high24h": "Tinggi 24 j",
+    "low24h": "Rendah 24 j",
+    "incomplete": "Sejarah lengkap 24 jam tidak tersedia"
   },
   "chart": {
     "title": "Carta Harga",
@@ -71,7 +71,7 @@
     "message": "Cache sedang dipanaskan: {{sampleCount}} / {{expected}} lilin tersedia {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(diterbitkan daripada 1m)",
+      "derived": "(diterbitkan daripada 1 min)",
       "db": "(daripada DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Gerakkan peluncur masa melalui sejarah pasaran",
     "presets": {
       "live": "Langsung",
-      "h1": "-1 Jam",
-      "d1": "-1 Hari",
-      "w1": "-1 minggu",
-      "mo1": "-1 bulan"
+      "h1": "-1 j",
+      "d1": "-1 hari",
+      "w1": "-1 mgu",
+      "mo1": "-1 bln"
     }
   }
 }

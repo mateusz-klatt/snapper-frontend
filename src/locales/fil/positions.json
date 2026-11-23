@@ -14,10 +14,10 @@
       "granularity": "Resolusyon ng oras",
       "granularityAriaLabel": "Piliin ang resolusyon ng oras sa timeline",
       "granularityOptions": {
-        "oneMinute": "1 Minuto",
-        "fiveMinutes": "5 Minuto",
-        "oneHour": "1 Oras",
-        "oneDay": "1 Araw"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 oras",
+        "oneDay": "1 araw"
       },
       "valuationCurrency": "Currency ng valuation",
       "valuationCurrencyAriaLabel": "Piliin ang currency ng valuation",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "Huling 24 oras",
-      "last7Days": "Huling 7 araw",
-      "last30Days": "Huling 30 araw",
-      "last90Days": "Huling 90 araw"
+      "last24Hours": "Huling 24 oras",
+      "last7Days": "Huling 7 araw",
+      "last30Days": "Huling 30 araw",
+      "last90Days": "Huling 90 araw"
     },
     "loading": "Nilo-load ang timeline ng P&L…",
     "error": {

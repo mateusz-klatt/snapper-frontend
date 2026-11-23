@@ -14,10 +14,10 @@
       "granularity": "Granulariteti",
       "granularityAriaLabel": "Zgjidh granularitetin e kronologjisë",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 orë",
-        "oneDay": "1 ditë"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 orë",
+        "oneDay": "1 ditë"
       },
       "valuationCurrency": "Monedha e vlerësimit",
       "valuationCurrencyAriaLabel": "Zgjidh monedhën e vlerësimit",

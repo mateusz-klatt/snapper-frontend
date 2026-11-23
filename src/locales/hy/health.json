@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Հասանելի չէ",
-    "uptimeMinutes": "{{minutes}} ր",
-    "uptimeHours": "{{hours}} ժ {{minutes}} ր",
-    "uptimeDays": "{{days}} օ {{hours}} ժ",
+    "uptimeMinutes": "{{minutes}} ր",
+    "uptimeHours": "{{hours}} ժ {{minutes}} ր",
+    "uptimeDays": "{{days}} օր {{hours}} ժ",
     "backtestName": "Հետադարձ թեստ {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Հասանելի չէ",
@@ -47,7 +47,7 @@
     "unavailable": "Տվյալների բազայի վիճակագրությունը հասանելի չէ՝ {{message}}",
     "fallbackError": "Չհաջողվեց բեռնել տվյալների բազայի վիճակագրությունը։",
     "sampled": "նմուշառվել է {{age}}",
-    "samplerSummary": "Նմուշառման միջակայք՝ {{seconds}} վ · աղյուսակների քանակ՝ {{count}}",
+    "samplerSummary": "Նմուշառման միջակայք՝ {{seconds}} վ · աղյուսակների քանակ՝ {{count}}",
     "columns": {
       "table": "Աղյուսակ",
       "kind": "Տեսակ",
@@ -92,7 +92,7 @@
       "files": "Ֆայլեր",
       "status": "Վիճակ"
     },
-    "retainDays": "{{days}} օ",
+    "retainDays": "{{days}} օր",
     "ok": "Նորմալ",
     "error": "սխալ"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Ակտիվ",
       "quarantined": "Կարանտինում",
-      "quarantinedSeconds": "Կարանտինում ({{seconds}}s)",
+      "quarantinedSeconds": "Կարանտինում ({{seconds}} s)",
       "disabled": "Անջատված"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "հենց հիմա",
-    "seconds": "{{seconds}}s առաջ",
-    "minutes": "{{minutes}} ր առաջ",
-    "hours": "{{hours}} ժ առաջ",
-    "days": "{{days}} օ առաջ"
+    "seconds": "{{seconds}} s առաջ",
+    "minutes": "{{minutes}} ր առաջ",
+    "hours": "{{hours}} ժ առաջ",
+    "days": "{{days}} օր առաջ"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}} ր",
-    "hours": "{{hours}} ժ",
-    "days": "{{days}} օ"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} ր",
+    "hours": "{{hours}} ժ",
+    "days": "{{days}} օր"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

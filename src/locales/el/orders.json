@@ -100,9 +100,9 @@
     "orderTypeOptions": {
       "market": "Αγοράς",
       "limit": "Ορίου",
-      "stop": "Εντολή stop",
-      "stopLimit": "Εντολή stop limit",
-      "stop_limit": "Εντολή stop limit"
+      "stop": "Stop",
+      "stopLimit": "Stop Limit",
+      "stop_limit": "Stop Limit"
     },
     "modeOptions": {
       "live": "Ζωντανή",

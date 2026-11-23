@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "উপলভ্য নয়",
-    "uptimeMinutes": "{{minutes}} মিনিট",
-    "uptimeHours": "{{hours}} ঘণ্টা {{minutes}} মিনিট",
-    "uptimeDays": "{{days}} দিন {{hours}} ঘণ্টা",
+    "uptimeMinutes": "{{minutes}} মিনিট",
+    "uptimeHours": "{{hours}} ঘণ্টা {{minutes}} মিনিট",
+    "uptimeDays": "{{days}} দিন {{hours}} ঘণ্টা",
     "backtestName": "ব্যাকটেস্ট {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "উপলভ্য নয়",
@@ -47,7 +47,7 @@
     "unavailable": "ডেটাবেস stats অনুপলভ্য: {{message}}",
     "fallbackError": "ডেটাবেস পরিসংখ্যান লোড করতে ব্যর্থ।",
     "sampled": "{{age}} আগে sampled",
-    "samplerSummary": "স্যাম্পলিং ব্যবধান: {{seconds}} সেকেন্ড · টেবিলের সংখ্যা: {{count}}",
+    "samplerSummary": "স্যাম্পলিং ব্যবধান: {{seconds}} সেকেন্ড · টেবিলের সংখ্যা: {{count}}",
     "columns": {
       "table": "টেবিল",
       "kind": "ধরন",
@@ -92,7 +92,7 @@
       "files": "ফাইল",
       "status": "স্ট্যাটাস"
     },
-    "retainDays": "{{days}} দিন",
+    "retainDays": "{{days}} দিন",
     "ok": "ঠিক আছে",
     "error": "ত্রুটি"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "সক্রিয়",
       "quarantined": "কোয়ারেন্টাইনে",
-      "quarantinedSeconds": "কোয়ারেন্টাইনে ({{seconds}}s)",
+      "quarantinedSeconds": "কোয়ারেন্টাইনে ({{seconds}} সেকেন্ড)",
       "disabled": "নিষ্ক্রিয়"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "এইমাত্র",
-    "seconds": "{{seconds}}s আগে",
-    "minutes": "{{minutes}}min আগে",
-    "hours": "{{hours}}h আগে",
-    "days": "{{days}}d আগে"
+    "seconds": "{{seconds}} সেকেন্ড আগে",
+    "minutes": "{{minutes}} মিনিট আগে",
+    "hours": "{{hours}} ঘণ্টা আগে",
+    "days": "{{days}} দিন আগে"
   },
   "duration": {
-    "seconds": "{{seconds}} সেকেন্ড",
-    "minutes": "{{minutes}} মিনিট",
-    "hours": "{{hours}} ঘণ্টা",
-    "days": "{{days}} দিন"
+    "seconds": "{{seconds}} সেকেন্ড",
+    "minutes": "{{minutes}} মিনিট",
+    "hours": "{{hours}} ঘণ্টা",
+    "days": "{{days}} দিন"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

@@ -14,10 +14,10 @@
       "granularity": "Interwał",
       "granularityAriaLabel": "Wybierz interwał osi P&L",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 godz.",
-        "oneDay": "1 dzień"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Waluta wyceny",
       "valuationCurrencyAriaLabel": "Wybierz walutę wyceny",

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "לא זמין",
-    "uptimeMinutes": "{{minutes}}ד׳",
-    "uptimeHours": "{{hours}}ש׳ {{minutes}}ד׳",
-    "uptimeDays": "{{days}}י׳ {{hours}}ש׳",
+    "uptimeMinutes": "{{minutes}} דק׳",
+    "uptimeHours": "{{hours}} שע׳ {{minutes}} דק׳",
+    "uptimeDays": "{{days}} י׳ {{hours}} שע׳",
     "backtestName": "בקטסט {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "לא זמין",
@@ -47,7 +47,7 @@
     "unavailable": "סטטיסטיקות מסד נתונים אינן זמינות: {{message}}",
     "fallbackError": "טעינת סטטיסטיקות מסד הנתונים נכשלה.",
     "sampled": "נדגם {{age}}",
-    "samplerSummary": "מרווח דגימה: {{seconds}} שנ׳ · מספר הטבלאות: {{count}}",
+    "samplerSummary": "מרווח דגימה: {{seconds}} שנ׳ · מספר הטבלאות: {{count}}",
     "columns": {
       "table": "טבלה",
       "kind": "סוג",
@@ -92,7 +92,7 @@
       "files": "קבצים",
       "status": "סטטוס"
     },
-    "retainDays": "{{days}}י׳",
+    "retainDays": "{{days}} י׳",
     "ok": "תקין",
     "error": "שגיאה"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "פעיל",
       "quarantined": "בהסגר",
-      "quarantinedSeconds": "בהסגר ({{seconds}}s)",
+      "quarantinedSeconds": "בהסגר ({{seconds}} שנ׳)",
       "disabled": "מושבת"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "כרגע",
-    "seconds": "לפני {{seconds}}ש׳",
-    "minutes": "לפני {{minutes}}ד׳",
-    "hours": "לפני {{hours}}ש׳",
-    "days": "לפני {{days}}י׳"
+    "seconds": "לפני {{seconds}} שנ׳",
+    "minutes": "לפני {{minutes}} דק׳",
+    "hours": "לפני {{hours}} שע׳",
+    "days": "לפני {{days}} י׳"
   },
   "duration": {
-    "seconds": "{{seconds}}ש׳",
-    "minutes": "{{minutes}}ד׳",
-    "hours": "{{hours}}ש׳",
-    "days": "{{days}}י׳"
+    "seconds": "{{seconds}} שנ׳",
+    "minutes": "{{minutes}} דק׳",
+    "hours": "{{hours}} שע׳",
+    "days": "{{days}} י׳"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

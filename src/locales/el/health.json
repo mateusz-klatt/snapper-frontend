@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Μη διαθέσιμο",
-    "uptimeMinutes": "{{minutes}} λεπ.",
-    "uptimeHours": "{{hours}} ώ. {{minutes}} λεπ.",
-    "uptimeDays": "{{days}} ημ. {{hours}} ώ.",
+    "uptimeMinutes": "{{minutes}} λεπ.",
+    "uptimeHours": "{{hours}} ώ. {{minutes}} λεπ.",
+    "uptimeDays": "{{days}} ημ. {{hours}} ώ.",
     "backtestName": "Ιστορικός έλεγχος {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Μη διαθέσιμο",
@@ -47,7 +47,7 @@
     "unavailable": "Τα στατιστικά βάσης δεδομένων δεν είναι διαθέσιμα: {{message}}",
     "fallbackError": "Αποτυχία φόρτωσης στατιστικών βάσης δεδομένων.",
     "sampled": "δειγματολήφθηκε {{age}}",
-    "samplerSummary": "Διάστημα δειγματοληψίας: {{seconds}} δευτ. · Πλήθος πινάκων: {{count}}",
+    "samplerSummary": "Διάστημα δειγματοληψίας: {{seconds}} δευτ. · Πλήθος πινάκων: {{count}}",
     "columns": {
       "table": "Πίνακας",
       "kind": "Είδος",
@@ -92,7 +92,7 @@
       "files": "Αρχεία",
       "status": "Κατάσταση"
     },
-    "retainDays": "{{days}} ημ.",
+    "retainDays": "{{days}} ημ.",
     "ok": "Εντάξει",
     "error": "σφάλμα"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Ενεργό",
       "quarantined": "Σε καραντίνα",
-      "quarantinedSeconds": "Σε καραντίνα ({{seconds}}s)",
+      "quarantinedSeconds": "Σε καραντίνα ({{seconds}} s)",
       "disabled": "Απενεργοποιημένο"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "μόλις τώρα",
-    "seconds": "πριν από {{seconds}}s",
-    "minutes": "πριν από {{minutes}} λεπ.",
-    "hours": "πριν από {{hours}} ώ.",
-    "days": "πριν από {{days}} ημ."
+    "seconds": "πριν από {{seconds}} s",
+    "minutes": "πριν από {{minutes}} λεπ.",
+    "hours": "πριν από {{hours}} ώ.",
+    "days": "πριν από {{days}} ημ."
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}} λεπ.",
-    "hours": "{{hours}} ώ.",
-    "days": "{{days}} ημ."
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} λεπ.",
+    "hours": "{{hours}} ώ.",
+    "days": "{{days}} ημ."
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

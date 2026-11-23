@@ -10,20 +10,20 @@
     "searchInstrument": "Instrument zoeken..."
   },
   "timeframes": {
-    "1m": "1 minuut",
-    "5m": "5 minuten",
-    "15m": "15 minuten",
-    "30m": "30 minuten",
-    "1h": "1 uur",
-    "4h": "4 uur",
-    "1d": "1 dag"
+    "1m": "1 minuut",
+    "5m": "5 minuten",
+    "15m": "15 minuten",
+    "30m": "30 minuten",
+    "1h": "1 uur",
+    "4h": "4 uur",
+    "1d": "1 dag"
   },
   "stats": {
     "currentPrice": "Laatste slotkoers",
-    "change24h": "24u-verandering",
-    "high24h": "24u-hoog",
-    "low24h": "24u-laag",
-    "incomplete": "Volledige geschiedenis van 24 uur niet beschikbaar"
+    "change24h": "24 u-verandering",
+    "high24h": "24 u-hoog",
+    "low24h": "24 u-laag",
+    "incomplete": "Volledige geschiedenis van 24 uur niet beschikbaar"
   },
   "chart": {
     "title": "Prijsgrafiek",
@@ -71,7 +71,7 @@
     "message": "Cache aan het opwarmen: {{sampleCount}} / {{expected}} candles beschikbaar {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(afgeleid van 1m)",
+      "derived": "(afgeleid van 1 min)",
       "db": "(uit DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Schuif door de marktgeschiedenis",
     "presets": {
       "live": "Actueel",
-      "h1": "-1 u",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1 mnd."
+      "h1": "-1 u",
+      "d1": "-1 d",
+      "w1": "-1 w",
+      "mo1": "-1 mnd."
     }
   }
 }

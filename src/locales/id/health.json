@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Tidak tersedia",
-    "uptimeMinutes": "{{minutes}} mnt",
-    "uptimeHours": "{{hours}} jam {{minutes}} mnt",
-    "uptimeDays": "{{days}} hari {{hours}} jam",
+    "uptimeMinutes": "{{minutes}} mnt",
+    "uptimeHours": "{{hours}} jam {{minutes}} mnt",
+    "uptimeDays": "{{days}} hari {{hours}} jam",
     "backtestName": "Uji historis {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Tidak tersedia",
@@ -47,7 +47,7 @@
     "unavailable": "Statistik database tidak tersedia: {{message}}",
     "fallbackError": "Gagal memuat statistik database.",
     "sampled": "diambil sampel {{age}}",
-    "samplerSummary": "Interval sampler: {{seconds}} dtk · jumlah tabel: {{count}}",
+    "samplerSummary": "Interval sampler: {{seconds}} dtk · jumlah tabel: {{count}}",
     "columns": {
       "table": "Tabel",
       "kind": "Jenis",
@@ -92,7 +92,7 @@
       "files": "File",
       "status": "Status"
     },
-    "retainDays": "{{days}} hari",
+    "retainDays": "{{days}} hari",
     "ok": "Baik",
     "error": "kesalahan"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktif",
       "quarantined": "Dikarantina",
-      "quarantinedSeconds": "Dikarantina ({{seconds}}s)",
+      "quarantinedSeconds": "Dikarantina ({{seconds}} dtk)",
       "disabled": "Dinonaktifkan"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "baru saja",
-    "seconds": "{{seconds}} dtk lalu",
-    "minutes": "{{minutes}} mnt lalu",
-    "hours": "{{hours}} jam lalu",
-    "days": "{{days}} hari lalu"
+    "seconds": "{{seconds}} dtk lalu",
+    "minutes": "{{minutes}} mnt lalu",
+    "hours": "{{hours}} jam lalu",
+    "days": "{{days}} hari lalu"
   },
   "duration": {
-    "seconds": "{{seconds}} dtk",
-    "minutes": "{{minutes}} mnt",
-    "hours": "{{hours}} jam",
-    "days": "{{days}} hari"
+    "seconds": "{{seconds}} dtk",
+    "minutes": "{{minutes}} mnt",
+    "hours": "{{hours}} jam",
+    "days": "{{days}} hari"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

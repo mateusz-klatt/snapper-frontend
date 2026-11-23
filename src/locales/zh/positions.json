@@ -14,10 +14,10 @@
       "granularity": "粒度",
       "granularityAriaLabel": "选择时间线粒度",
       "granularityOptions": {
-        "oneMinute": "1 分钟",
-        "fiveMinutes": "5 分钟",
-        "oneHour": "1 小时",
-        "oneDay": "1 天"
+        "oneMinute": "1分钟",
+        "fiveMinutes": "5分钟",
+        "oneHour": "1小时",
+        "oneDay": "1天"
       },
       "valuationCurrency": "计价货币",
       "valuationCurrencyAriaLabel": "选择计价货币",

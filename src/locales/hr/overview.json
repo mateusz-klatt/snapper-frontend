@@ -61,7 +61,7 @@
     "statusStopped": "Zaustavljeno",
     "statusDisabled": "Onemogućeno",
     "containerTotal": "Ukupno MEM {{value}}",
-    "cpuTooltip": "Upotreba CPU-a može premašiti 100 % na više jezgri",
+    "cpuTooltip": "Upotreba CPU-a može premašiti 100 % na više jezgri",
     "metricsNa": "Nema zasebnih CPU/memorijskih metrika po procesu; ovo se izvodi unutar procesa (način niti) ili nije pokrenuto",
     "managedOnly": "Samo procesi ovog spremnika",
     "managedOnlyHint": "Svaki spremnik upravlja podskupom procesa (svojim autostart profilom); ostali se procesi ovdje prijavljuju samo kao pokrenuti drugdje. Uklonite oznaku za prikaz svakog procesa koji svaki spremnik prijavljuje.",

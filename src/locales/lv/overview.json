@@ -61,7 +61,7 @@
     "statusStopped": "Apturēts",
     "statusDisabled": "Atspējots",
     "containerTotal": "Kopā MEM {{value}}",
-    "cpuTooltip": "CPU lietojums vairākos kodolos var pārsniegt 100 %",
+    "cpuTooltip": "CPU lietojums vairākos kodolos var pārsniegt 100%",
     "metricsNa": "Nav atsevišķu CPU/atmiņas datu katram procesam; tas darbojas procesa ietvaros (pavedienu režīmā) vai nedarbojas",
     "managedOnly": "Tikai šī konteinera procesi",
     "managedOnlyHint": "Katrs konteiners pārvalda procesu apakškopu (savu autostart profilu); citi procesi šeit tiek rādīti tikai kā darbojošies citur. Noņemiet atzīmi, lai redzētu katru procesu, par kuru ziņo katrs konteiners.",

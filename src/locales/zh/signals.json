@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "刚刚",
-    "minutesAgo": "{{count}}m 前",
-    "hoursAgo": "{{count}}h 前"
+    "minutesAgo": "{{count}}分钟前",
+    "hoursAgo": "{{count}}小时前"
   },
   "empty": {
     "title": "未找到信号",

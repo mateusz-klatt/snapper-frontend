@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Just nu",
-    "minutesAgo": "{{count}} min sedan",
-    "hoursAgo": "{{count}}h sedan"
+    "minutesAgo": "{{count}} min sedan",
+    "hoursAgo": "{{count}} h sedan"
   },
   "empty": {
     "title": "Inga signaler hittades",

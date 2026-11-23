@@ -14,10 +14,10 @@
       "granularity": "সময়ের ব্যবধান",
       "granularityAriaLabel": "টাইমলাইনের সময়ের ব্যবধান নির্বাচন করুন",
       "granularityOptions": {
-        "oneMinute": "1 মিনিট",
-        "fiveMinutes": "5 মিনিট",
-        "oneHour": "1 ঘণ্টা",
-        "oneDay": "1 দিন"
+        "oneMinute": "1 মিঃ",
+        "fiveMinutes": "5 মিঃ",
+        "oneHour": "1 ঘঃ",
+        "oneDay": "1 দিন"
       },
       "valuationCurrency": "মূল্যায়ন মুদ্রা",
       "valuationCurrencyAriaLabel": "মূল্যায়ন মুদ্রা নির্বাচন করুন",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "গত 24 ঘণ্টা",
-      "last7Days": "গত 7 দিন",
-      "last30Days": "গত 30 দিন",
-      "last90Days": "গত 90 দিন"
+      "last24Hours": "গত 24 ঘণ্টা",
+      "last7Days": "গত 7 দিন",
+      "last30Days": "গত 30 দিন",
+      "last90Days": "গত 90 দিন"
     },
     "loading": "P&L টাইমলাইন লোড হচ্ছে…",
     "error": {

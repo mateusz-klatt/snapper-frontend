@@ -49,13 +49,13 @@
     "autostartDisabled": "Inicio automático: deshabilitado",
     "statusAriaLabel": "Estado: {{status}}",
     "dataLagAriaLabel": "Retraso de datos: {{seconds}} segundos",
-    "lagBadge": "retraso: {{seconds}}s",
-    "feedLag": "Retraso del feed: {{ms}}ms",
-    "heartbeatAge": "Edad HB: {{seconds}}s",
+    "lagBadge": "retraso: {{seconds}} s",
+    "feedLag": "Retraso del feed: {{ms}} ms",
+    "heartbeatAge": "Edad HB: {{seconds}} s",
     "metrics": {
       "status": "Estado",
       "dataLag": "Retraso de datos",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "Señal de vida",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

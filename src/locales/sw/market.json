@@ -10,20 +10,20 @@
     "searchInstrument": "Tafuta instrumenti..."
   },
   "timeframes": {
-    "1m": "Dakika 1",
-    "5m": "Dakika 5",
-    "15m": "Dakika 15",
-    "30m": "Dakika 30",
-    "1h": "Saa 1",
-    "4h": "Saa 4",
-    "1d": "Siku 1"
+    "1m": "Dakika 1",
+    "5m": "Dakika 5",
+    "15m": "Dakika 15",
+    "30m": "Dakika 30",
+    "1h": "Saa 1",
+    "4h": "Saa 4",
+    "1d": "Siku 1"
   },
   "stats": {
     "currentPrice": "Bei ya mwisho ya kufunga",
-    "change24h": "Mabadiliko 24h",
-    "high24h": "Juu 24h",
-    "low24h": "Chini 24h",
-    "incomplete": "Historia kamili ya saa 24 haipatikani"
+    "change24h": "Mabadiliko saa 24",
+    "high24h": "Juu saa 24",
+    "low24h": "Chini saa 24",
+    "incomplete": "Historia kamili ya saa 24 haipatikani"
   },
   "chart": {
     "title": "Chati ya Bei",
@@ -71,7 +71,7 @@
     "message": "Cache inaandaliwa: candles {{sampleCount}} / {{expected}} zinapatikana {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(imetokana na 1m)",
+      "derived": "(imetokana na dak 1)",
       "db": "(kutoka DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Sogeza kitelezi cha muda kupitia historia ya soko",
     "presets": {
       "live": "Moja kwa moja",
-      "h1": "-saa 1",
-      "d1": "-siku 1",
-      "w1": "-wiki 1",
-      "mo1": "-mwezi 1"
+      "h1": "saa -1",
+      "d1": "siku -1",
+      "w1": "wiki -1",
+      "mo1": "mwezi -1"
     }
   }
 }

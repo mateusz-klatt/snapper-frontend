@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "N/B",
-    "uptimeMinutes": "{{minutes}}n",
-    "uptimeHours": "{{hours}}u {{minutes}}n",
-    "uptimeDays": "{{days}}l {{hours}}u",
+    "uptimeMinutes": "{{minutes}} nóim",
+    "uptimeHours": "{{hours}} u {{minutes}} nóim",
+    "uptimeDays": "{{days}} lá {{hours}} u",
     "backtestName": "Tástáil stairiúil {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/B",
@@ -47,7 +47,7 @@
     "unavailable": "Níl staitisticí bunachair sonraí ar fáil: {{message}}",
     "fallbackError": "Theip ar lódáil staitisticí bunachair sonraí.",
     "sampled": "sampláilte {{age}}",
-    "samplerSummary": "Eatramh samplála: {{seconds}}s · líon na dtáblaí: {{count}}",
+    "samplerSummary": "Eatramh samplála: {{seconds}} s · líon na dtáblaí: {{count}}",
     "columns": {
       "table": "Tábla",
       "kind": "Cineál",
@@ -92,7 +92,7 @@
       "files": "Comhaid",
       "status": "Stádas"
     },
-    "retainDays": "{{days}}l",
+    "retainDays": "{{days}} lá",
     "ok": "Ceart go leor",
     "error": "earráid"
   },
@@ -192,7 +192,7 @@
     "status": {
       "active": "Gníomhach",
       "quarantined": "I gcoraintín",
-      "quarantinedSeconds": "I gcoraintín ({{seconds}}s)",
+      "quarantinedSeconds": "I gcoraintín ({{seconds}} s)",
       "disabled": "Díchumasaithe"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "anois díreach",
-    "seconds": "{{seconds}}s ó shin",
-    "minutes": "{{minutes}}n ó shin",
-    "hours": "{{hours}}u ó shin",
-    "days": "{{days}}l ó shin"
+    "seconds": "{{seconds}} s ó shin",
+    "minutes": "{{minutes}} nóim ó shin",
+    "hours": "{{hours}} u ó shin",
+    "days": "{{days}} lá ó shin"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}n",
-    "hours": "{{hours}}u",
-    "days": "{{days}}l"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} nóim",
+    "hours": "{{hours}} u",
+    "days": "{{days}} lá"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

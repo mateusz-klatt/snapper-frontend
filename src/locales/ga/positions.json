@@ -14,10 +14,10 @@
       "granularity": "Gráinneacht",
       "granularityAriaLabel": "Roghnaigh gráinneacht na hamlíne",
       "granularityOptions": {
-        "oneMinute": "1 nóim",
-        "fiveMinutes": "5 nóim",
-        "oneHour": "1 u",
-        "oneDay": "1 l"
+        "oneMinute": "1 nóim",
+        "fiveMinutes": "5 nóim",
+        "oneHour": "1 u",
+        "oneDay": "1 lá"
       },
       "valuationCurrency": "Airgeadra luachála",
       "valuationCurrencyAriaLabel": "Roghnaigh airgeadra luachála",

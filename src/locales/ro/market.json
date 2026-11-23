@@ -10,19 +10,19 @@
     "searchInstrument": "Căutați instrument..."
   },
   "timeframes": {
-    "1m": "1 minut",
-    "5m": "5 minute",
-    "15m": "15 minute",
-    "30m": "30 minute",
-    "1h": "1 oră",
-    "4h": "4 ore",
-    "1d": "1 zi"
+    "1m": "1 minut",
+    "5m": "5 minute",
+    "15m": "15 minute",
+    "30m": "30 minute",
+    "1h": "1 oră",
+    "4h": "4 ore",
+    "1d": "1 zi"
   },
   "stats": {
     "currentPrice": "Ultimul preț de închidere",
-    "change24h": "Variație 24h",
-    "high24h": "Maxim 24h",
-    "low24h": "Minim 24h",
+    "change24h": "Variație 24 h",
+    "high24h": "Maxim 24 h",
+    "low24h": "Minim 24 h",
     "incomplete": "Istoricul complet pentru 24 de ore nu este disponibil"
   },
   "chart": {
@@ -71,7 +71,7 @@
     "message": "Cache în încălzire: {{sampleCount}} / {{expected}} lumânări disponibile {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(derivat din 1m)",
+      "derived": "(derivat din 1 min)",
       "db": "(din DB)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Parcurgeți istoricul pieței",
     "presets": {
       "live": "În timp real",
-      "h1": "-1 h",
-      "d1": "-1 z",
-      "w1": "-1 săpt.",
-      "mo1": "-1 lună"
+      "h1": "-1 h",
+      "d1": "-1 z",
+      "w1": "-1 săpt.",
+      "mo1": "-1 lună"
     }
   }
 }

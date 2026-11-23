@@ -14,10 +14,10 @@
       "granularity": "Tidsupplösning",
       "granularityAriaLabel": "Välj tidslinjens upplösning",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Värderingsvaluta",
       "valuationCurrencyAriaLabel": "Välj värderingsvaluta",
@@ -270,7 +270,7 @@
       "trailingPct": "t.ex. 5.0",
       "minLockPct": "0 = starta direkt"
     },
-    "minLockWarning": "Trailing Stop aktiveras först när priset rör sig {{minLockPct}}% i gynnsam riktning.",
+    "minLockWarning": "Trailing Stop aktiveras först när priset rör sig {{minLockPct}} % i gynnsam riktning.",
     "buttons": {
       "cancel": "Avbryt",
       "review": "Granska",

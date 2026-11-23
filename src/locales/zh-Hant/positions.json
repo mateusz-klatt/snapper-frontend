@@ -14,10 +14,10 @@
       "granularity": "粒度",
       "granularityAriaLabel": "選擇時間線粒度",
       "granularityOptions": {
-        "oneMinute": "1 分鐘",
-        "fiveMinutes": "5 分鐘",
-        "oneHour": "1 小時",
-        "oneDay": "1 天"
+        "oneMinute": "1分鐘",
+        "fiveMinutes": "5分鐘",
+        "oneHour": "1小時",
+        "oneDay": "1天"
       },
       "valuationCurrency": "估值貨幣",
       "valuationCurrencyAriaLabel": "選擇估值貨幣",

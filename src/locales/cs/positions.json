@@ -14,10 +14,10 @@
       "granularity": "Rozlišení",
       "granularityAriaLabel": "Vybrat rozlišení časové osy",
       "granularityOptions": {
-        "oneMinute": "1 min",
-        "fiveMinutes": "5 min",
-        "oneHour": "1 h",
-        "oneDay": "1 d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Měna ocenění",
       "valuationCurrencyAriaLabel": "Vybrat měnu ocenění",
@@ -270,7 +270,7 @@
       "trailingPct": "např. 5.0",
       "minLockPct": "0 = spustit okamžitě"
     },
-    "minLockWarning": "Trailing Stop se neaktivuje, dokud se cena nepohne o {{minLockPct}} % ve váš prospěch.",
+    "minLockWarning": "Trailing Stop se neaktivuje, dokud se cena nepohne o {{minLockPct}} % ve váš prospěch.",
     "buttons": {
       "cancel": "Zrušit",
       "review": "Zkontrolovat",

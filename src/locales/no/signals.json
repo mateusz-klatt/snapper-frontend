@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Akkurat nå",
-    "minutesAgo": "{{count}} min siden",
-    "hoursAgo": "{{count}}t siden"
+    "minutesAgo": "{{count}} min siden",
+    "hoursAgo": "{{count}} t siden"
   },
   "empty": {
     "title": "Ingen signaler funnet",

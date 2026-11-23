@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Հենց հիմա",
-    "minutesAgo": "{{count}} ր առաջ",
-    "hoursAgo": "{{count}} ժ առաջ"
+    "minutesAgo": "{{count}} ր առաջ",
+    "hoursAgo": "{{count}} ժ առաջ"
   },
   "empty": {
     "title": "Ազդանշաններ չեն գտնվել",

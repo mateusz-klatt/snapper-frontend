@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Vừa xong",
-    "minutesAgo": "{{count}}p trước",
-    "hoursAgo": "{{count}}g trước"
+    "minutesAgo": "{{count}} phút trước",
+    "hoursAgo": "{{count}} giờ trước"
   },
   "empty": {
     "title": "Không tìm thấy tín hiệu",
