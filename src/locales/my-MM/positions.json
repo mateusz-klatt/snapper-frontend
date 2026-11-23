@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "ဖုန် ({{count}})",
+    "show": "ဖုန်ရာထူးများ ပြရန်",
+    "hide": "ဖုန်ရာထူးများ ဖျောက်ရန်"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: စောင့်ဆိုင်းနေသည်",

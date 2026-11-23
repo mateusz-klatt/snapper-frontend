@@ -12,8 +12,21 @@ import { formatDateTime } from '../../lib/dateFormat'
 import { AttachBracketModal } from './AttachBracketModal'
 import { AttachTrailingStopModal } from './AttachTrailingStopModal'
 import { PortfolioTimeline } from './PortfolioTimeline'
-import { formatQuoted, quoteCurrency } from './instrumentQuote'
-import { formatNumber } from '../../lib/utils'
+import { NumericValue } from '../../components/NumericValue'
+import { readDisplayFields } from '../../lib/displayFields'
+import {
+  formatMoney,
+  formatPrice,
+  formatQuantity,
+  intlLocaleFromLanguage,
+  isDustPosition,
+  maxFractionDigits,
+  priceFractionDigits,
+  quantityFractionDigits,
+  signedTone,
+  type FormattedNumber,
+} from '../../lib/numberFormat'
+import { quoteCurrency } from './instrumentQuote'
 import type { Position } from '../../types/entities'
 import type { TrailingStopByCycleResult } from '../../types/api'
 import { Permission } from '../../types/permissions.generated'
@@ -39,52 +52,65 @@ const getSideBadgeClass = (side: PositionSide): string => {
   }
 }
 
-const getPnlClass = (value: number | null | undefined): string => {
-  if (value == null) return 'text-muted-400'
-  if (value > 0) return 'text-rising-400'
-  if (value < 0) return 'text-falling-400'
+const POSITION_TONE = {
+  up: 'text-rising-400',
+  down: 'text-falling-400',
+  flat: 'text-muted-400',
+} as const
 
-  return 'text-muted-400'
-}
+const toneClass = (formatted: FormattedNumber | null): string =>
+  POSITION_TONE[signedTone(formatted)]
 
-/** Presentation precision only; the source values and shared order-preview formatter stay intact. */
-const positionNumberOptions = (value: number): Intl.NumberFormatOptions => {
-  if (!Number.isFinite(value) || Math.abs(value) >= 1e19) return {}
+const withUnit = (text: string, unit: string): string => (unit === '' ? text : `${text} ${unit}`)
 
-  const magnitude = value === 0 ? 0 : Math.floor(Math.log10(Math.abs(value)))
-  const minimumSignificantDigits = Math.min(21, Math.max(1, magnitude + 3))
+const sectionQuantityDigits = (rows: readonly Position[]): number =>
+  maxFractionDigits(
+    rows.map(position =>
+      quantityFractionDigits(
+        Math.abs(position.quantity),
+        readDisplayFields(position).quantityDecimals
+      )
+    )
+  )
 
-  return {
-    minimumSignificantDigits,
-    maximumSignificantDigits: Math.max(12, minimumSignificantDigits),
-  }
-}
+const sectionPriceDigits = (rows: readonly Position[]): number =>
+  maxFractionDigits(
+    rows.flatMap(position => {
+      const display = readDisplayFields(position)
 
-const formatPrice = (value: number | null | undefined, quote: string, noValue: string): string =>
-  value == null ? noValue : formatQuoted(value, quote, positionNumberOptions(value))
-
-const formatPnl = (value: number | null | undefined, quote: string, noValue: string): string => {
-  if (value == null) return noValue
-
-  return formatQuoted(value, quote, { ...positionNumberOptions(value), signDisplay: 'exceptZero' })
-}
+      return [position.averagePrice, position.markPrice].flatMap(price =>
+        typeof price === 'number' && Number.isFinite(price)
+          ? [
+              priceFractionDigits(price, {
+                priceDecimals: display.priceDecimals,
+                exchange: position.exchange,
+              }),
+            ]
+          : []
+      )
+    })
+  )
 
 const positionIdSuffix = (position: Position): string =>
   `${position.instrument}-${position.exchange}-${position.mode ?? 'live'}`
 
 interface PositionRowProps {
   position: Position
+  quantityDigits: number
+  priceDigits: number
   onAttachBracket: (position: Position) => void
   onAttachTrailingStop: (position: Position) => void
   isTimeTraveling: boolean
   canCreateOrders: boolean
 }
 
-const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined; quote: string }> = ({
-  cyclePublicId,
-  quote,
-}) => {
-  const { t } = useTranslation('positions')
+const TrailingStopBadge: React.FC<{
+  cyclePublicId: string | undefined
+  quote: string
+  exchange: Position['exchange']
+  priceDecimals: number | null
+}> = ({ cyclePublicId, quote, exchange, priceDecimals }) => {
+  const { t, i18n } = useTranslation('positions')
   const { data } = useTrailingStopForCycle(cyclePublicId)
 
   if (!data) return null
@@ -95,11 +121,20 @@ const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined; quote: st
 
   return (
     <span
-      className='rounded-full bg-brand-900/20 px-2 py-1 text-xs font-medium text-brand-400'
+      className='rounded-full bg-brand-900/20 px-2 py-1 text-xs font-medium tabular-nums text-brand-400'
       data-testid='trailing-stop-badge'
     >
       {currentStop > 0
-        ? t('row.trailingStopBadge', { stop: formatQuoted(currentStop, quote) })
+        ? t('row.trailingStopBadge', {
+            stop: withUnit(
+              formatPrice(currentStop, {
+                locale: intlLocaleFromLanguage(i18n.language),
+                exchange,
+                priceDecimals,
+              }).text,
+              quote
+            ),
+          })
         : t('row.trailingStopPending')}
     </span>
   )
@@ -107,6 +142,8 @@ const TrailingStopBadge: React.FC<{ cyclePublicId: string | undefined; quote: st
 
 const PositionRow: React.FC<PositionRowProps> = ({
   position,
+  quantityDigits,
+  priceDigits,
   onAttachBracket,
   onAttachTrailingStop,
   isTimeTraveling,
@@ -118,6 +155,35 @@ const PositionRow: React.FC<PositionRowProps> = ({
   const noValue = t('row.noValue')
   const suffix = positionIdSuffix(position)
   const quote = quoteCurrency(position.instrument)
+  const locale = intlLocaleFromLanguage(i18n.language)
+  const display = readDisplayFields(position)
+  const quantity = formatQuantity(absQuantity, {
+    locale,
+    quantityDecimals: display.quantityDecimals,
+    fractionDigits: quantityDigits,
+  })
+
+  const priceOf = (value: number | null | undefined): FormattedNumber | null => {
+    if (value == null) return null
+
+    return formatPrice(value, {
+      locale,
+      fractionDigits: priceDigits,
+      priceDecimals: display.priceDecimals,
+      exchange: position.exchange,
+    })
+  }
+
+  const moneyOf = (value: number | null | undefined): FormattedNumber | null => {
+    if (value == null || !Number.isFinite(value)) return null
+
+    return formatMoney(value, { locale, currency: quote, signDisplay: 'exceptZero' })
+  }
+
+  const average = priceOf(position.averagePrice)
+  const mark = priceOf(position.markPrice)
+  const unrealized = moneyOf(position.unrealizedPnl)
+  const realized = moneyOf(position.realizedPnl)
   const hasCycle = !!position.positionCyclePublicId
   const showLiveProtectiveState = hasCycle && side !== 'FLAT' && !isTimeTraveling
   const canAttach = showLiveProtectiveState && canCreateOrders
@@ -143,6 +209,8 @@ const PositionRow: React.FC<PositionRowProps> = ({
             <TrailingStopBadge
               cyclePublicId={position.positionCyclePublicId as string}
               quote={quote}
+              exchange={position.exchange}
+              priceDecimals={display.priceDecimals}
             />
           )}
         </div>
@@ -183,19 +251,33 @@ const PositionRow: React.FC<PositionRowProps> = ({
         <div>
           <div className='text-muted-500'>{t('row.quantity')}</div>
           <div className='font-mono text-alpine-900'>
-            {formatNumber(absQuantity, { minimumFractionDigits: 4, maximumFractionDigits: 20 })}
+            <NumericValue formatted={quantity} />
           </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('row.averageEntry')}</div>
           <div className='font-mono text-alpine-900'>
-            {formatPrice(position.averagePrice, quote, noValue)}
+            {average === null ? (
+              noValue
+            ) : (
+              <>
+                <NumericValue formatted={average} />
+                {quote === '' ? null : ` ${quote}`}
+              </>
+            )}
           </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('row.mark')}</div>
           <div className='font-mono text-alpine-900' data-testid={`position-mark-${suffix}`}>
-            {formatPrice(position.markPrice, quote, noValue)}
+            {mark === null ? (
+              noValue
+            ) : (
+              <>
+                <NumericValue formatted={mark} />
+                {quote === '' ? null : ` ${quote}`}
+              </>
+            )}
           </div>
           {position.markedAt && (
             <div className='text-xs text-muted-500' data-testid={`position-marked-at-${suffix}`}>
@@ -206,19 +288,33 @@ const PositionRow: React.FC<PositionRowProps> = ({
         <div>
           <div className='text-muted-500'>{t('row.unrealizedPnl')}</div>
           <div
-            className={clsx('font-mono', getPnlClass(position.unrealizedPnl))}
+            className={clsx('font-mono', toneClass(unrealized))}
             data-testid={`position-unrealized-${suffix}`}
           >
-            {formatPnl(position.unrealizedPnl, quote, noValue)}
+            {unrealized === null ? (
+              noValue
+            ) : (
+              <>
+                <NumericValue formatted={unrealized} />
+                {quote === '' ? null : ` ${quote}`}
+              </>
+            )}
           </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('row.realizedPnl')}</div>
           <div
-            className={clsx('font-mono', getPnlClass(position.realizedPnl))}
+            className={clsx('font-mono', toneClass(realized))}
             data-testid={`position-realized-${suffix}`}
           >
-            {formatPnl(position.realizedPnl, quote, noValue)}
+            {realized === null ? (
+              noValue
+            ) : (
+              <>
+                <NumericValue formatted={realized} />
+                {quote === '' ? null : ` ${quote}`}
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -233,6 +329,66 @@ const PositionRow: React.FC<PositionRowProps> = ({
   )
 }
 
+interface PositionListProps {
+  positions: Position[]
+  onAttachBracket: (position: Position) => void
+  onAttachTrailingStop: (position: Position) => void
+  isTimeTraveling: boolean
+  canCreateOrders: boolean
+}
+
+const PositionList: React.FC<PositionListProps> = ({
+  positions,
+  onAttachBracket,
+  onAttachTrailingStop,
+  isTimeTraveling,
+  canCreateOrders,
+}) => {
+  const quantityDigits = sectionQuantityDigits(positions)
+  const priceDigits = sectionPriceDigits(positions)
+
+  return (
+    <div className='grid gap-4'>
+      {positions.map(position => (
+        <PositionRow
+          key={positionIdSuffix(position)}
+          position={position}
+          quantityDigits={quantityDigits}
+          priceDigits={priceDigits}
+          onAttachBracket={onAttachBracket}
+          onAttachTrailingStop={onAttachTrailingStop}
+          isTimeTraveling={isTimeTraveling}
+          canCreateOrders={canCreateOrders}
+        />
+      ))}
+    </div>
+  )
+}
+
+const DustPositions: React.FC<PositionListProps> = props => {
+  const { t } = useTranslation('positions')
+  const [open, setOpen] = useState(false)
+
+  return (
+    <section data-testid='dust-positions'>
+      <button
+        type='button'
+        aria-expanded={open}
+        aria-controls='dust-position-list'
+        title={open ? t('dust.hide') : t('dust.show')}
+        onClick={() => setOpen(current => !current)}
+        data-testid='dust-toggle'
+        className='rounded-xl border border-dark-600 bg-alpine-50 px-4 py-3 text-sm font-medium text-alpine-900'
+      >
+        {t('dust.title', { count: props.positions.length })}
+      </button>
+      <div id='dust-position-list' hidden={!open} data-testid='dust-position-list' className='mt-4'>
+        {open ? <PositionList {...props} /> : null}
+      </div>
+    </section>
+  )
+}
+
 export const Positions: React.FC = () => {
   const { t } = useTranslation('positions')
   const { hasPermission } = useAuth()
@@ -242,6 +398,22 @@ export const Positions: React.FC = () => {
   const [bracketTarget, setBracketTarget] = useState<Position | null>(null)
   const [trailingStopTarget, setTrailingStopTarget] = useState<Position | null>(null)
   const [activeView, setActiveView] = useState<'current' | 'timeline'>('current')
+  const activePositions: Position[] = []
+  const dustPositions: Position[] = []
+
+  for (const position of positions) {
+    const display = readDisplayFields(position)
+    const dust = isDustPosition({
+      quantity: position.quantity,
+      quantityDecimals: display.quantityDecimals,
+      markPrice: position.markPrice,
+      averagePrice: position.averagePrice,
+      isDust: display.isDust,
+    })
+
+    if (dust) dustPositions.push(position)
+    else activePositions.push(position)
+  }
 
   const handleAttachBracket = (position: Position) => {
     if (
@@ -355,19 +527,23 @@ export const Positions: React.FC = () => {
               message={t('empty.message')}
             />
           )}
-          {!isLoading && positions.length > 0 && (
-            <div className='grid gap-4'>
-              {positions.map((position: Position) => (
-                <PositionRow
-                  key={positionIdSuffix(position)}
-                  position={position}
-                  onAttachBracket={handleAttachBracket}
-                  onAttachTrailingStop={handleAttachTrailingStop}
-                  isTimeTraveling={isTimeTraveling}
-                  canCreateOrders={canCreateOrders}
-                />
-              ))}
-            </div>
+          {!isLoading && activePositions.length > 0 && (
+            <PositionList
+              positions={activePositions}
+              onAttachBracket={handleAttachBracket}
+              onAttachTrailingStop={handleAttachTrailingStop}
+              isTimeTraveling={isTimeTraveling}
+              canCreateOrders={canCreateOrders}
+            />
+          )}
+          {!isLoading && dustPositions.length > 0 && (
+            <DustPositions
+              positions={dustPositions}
+              onAttachBracket={handleAttachBracket}
+              onAttachTrailingStop={handleAttachTrailingStop}
+              isTimeTraveling={isTimeTraveling}
+              canCreateOrders={canCreateOrders}
+            />
           )}
         </div>
       ) : (

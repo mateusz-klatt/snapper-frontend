@@ -1,7 +1,14 @@
 import React, { useId } from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
+import { NumericValue } from '../../components/NumericValue'
 import type { PnlTimelinePointData } from '../../types/api'
+import {
+  formatMoney,
+  intlLocaleFromLanguage,
+  signedTone,
+  type FormattedNumber,
+} from '../../lib/numberFormat'
 
 type Attribution = PnlTimelinePointData['attribution']
 type AttributionContribution = Attribution[number]
@@ -41,21 +48,24 @@ const MONETARY_COLUMNS: readonly {
   { field: 'unrealized_pnl', labelKey: 'timeline.contributions.unrealized' },
 ]
 
-const getPnlClass = (value: number | null): string => {
-  if (value === null || value === 0) return 'text-muted-500'
-  if (value > 0) return 'text-rising-600'
+const TONE_CLASS = {
+  up: 'text-rising-600',
+  down: 'text-falling-600',
+  flat: 'text-muted-500',
+} as const
 
-  return 'text-falling-600'
-}
-
-const formatPnl = (value: number | null, withheld: string, locale: string): string =>
+const formatPnl = (
+  value: number | null,
+  locale: string,
+  currency: string
+): FormattedNumber | null =>
   value === null
-    ? withheld
-    : new Intl.NumberFormat(locale, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 8,
+    ? null
+    : formatMoney(value, {
+        locale: intlLocaleFromLanguage(locale),
+        currency,
         signDisplay: 'exceptZero',
-      }).format(value)
+      })
 
 export const AttributionBreakdown: React.FC<Readonly<Props>> = ({ attribution, valuationCcy }) => {
   const { t, i18n } = useTranslation('positions')
@@ -89,7 +99,7 @@ export const AttributionBreakdown: React.FC<Readonly<Props>> = ({ attribution, v
       ) : (
         <div className='overflow-x-auto'>
           <table
-            className='w-full text-left text-sm'
+            className='w-full text-left text-sm tabular-nums'
             aria-label={t('timeline.attribution.ariaLabel')}
             data-testid='attribution-table'
           >
@@ -130,14 +140,18 @@ export const AttributionBreakdown: React.FC<Readonly<Props>> = ({ attribution, v
                   </th>
                   {MONETARY_COLUMNS.map(column => {
                     const value = contribution[column.field]
+                    const formatted = formatPnl(value, i18n.language, valuationCcy)
 
                     return (
                       <td
                         key={column.field}
-                        className={clsx('py-1 pr-4 font-mono last:pr-0', getPnlClass(value))}
+                        className={clsx(
+                          'py-1 pr-4 font-mono last:pr-0',
+                          TONE_CLASS[signedTone(formatted)]
+                        )}
                         data-testid={`attribution-${contribution.origin}-${index}-${column.field}`}
                       >
-                        {formatPnl(value, withheld, i18n.language)}
+                        {formatted === null ? withheld : <NumericValue formatted={formatted} />}
                       </td>
                     )
                   })}

@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Damm ({{count}})",
+    "show": "Visa dammpositioner",
+    "hide": "Dölj dammpositioner"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: väntar",

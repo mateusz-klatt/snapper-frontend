@@ -10,7 +10,20 @@ import { deriveAccountTruth } from '../../lib/accountTruth'
 import { classifiableMethodsForExchange, deriveReconciliation } from '../../lib/reconciliation'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { EmptyState } from '../../components/ui'
+import { NumericValue } from '../../components/NumericValue'
+import { readDisplayFields } from '../../lib/displayFields'
 import { formatDateTime } from '../../lib/dateFormat'
+import {
+  formatMoney,
+  formatPrice,
+  formatQuantity,
+  intlLocaleFromLanguage,
+  maxFractionDigits,
+  priceFractionDigits,
+  quantityFractionDigits,
+  signedTone,
+} from '../../lib/numberFormat'
+import { quoteCurrency } from '../positions/instrumentQuote'
 import type { AppLocale } from '../../i18n/types'
 import { Permission } from '../../types/permissions.generated'
 import { AccountTruthBadge } from './AccountTruthBadge'
@@ -39,30 +52,11 @@ const formatTimestamp = (value: string, locale: AppLocale): string => {
   return Number.isNaN(date.getTime()) ? value : formatDateTime(date, locale)
 }
 
-const formatNumber = (value: number, locale: string): string =>
-  new Intl.NumberFormat(locale, { minimumFractionDigits: 2, maximumFractionDigits: 8 }).format(
-    value
-  )
-
-const formatNullable = (
-  value: number | null | undefined,
-  noValue: string,
-  locale: string
-): string => (value == null ? noValue : formatNumber(value, locale))
-
-const formatPnl = (value: number, locale: string): string =>
-  new Intl.NumberFormat(locale, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 8,
-    signDisplay: 'exceptZero',
-  }).format(value)
-
-const getPnlClass = (value: number): string => {
-  if (value > 0) return 'text-rising-600'
-  if (value < 0) return 'text-falling-600'
-
-  return 'text-muted-500'
-}
+const TONE_CLASS = {
+  up: 'text-rising-600',
+  down: 'text-falling-600',
+  flat: 'text-muted-500',
+} as const
 
 interface BalancesTableProps {
   balances: AccountBalanceEntry[] | null | undefined
@@ -71,7 +65,7 @@ interface BalancesTableProps {
 
 const BalancesTable: React.FC<Readonly<BalancesTableProps>> = ({ balances, suffix }) => {
   const { t, i18n } = useTranslation('accounts')
-  const locale = i18n.language as AppLocale
+  const locale = intlLocaleFromLanguage(i18n.language)
   const noValue = t('noValue')
 
   if (balances == null || balances.length === 0) {
@@ -83,7 +77,10 @@ const BalancesTable: React.FC<Readonly<BalancesTableProps>> = ({ balances, suffi
   }
 
   return (
-    <table className='w-full text-left text-sm' data-testid={`account-balances-${suffix}`}>
+    <table
+      className='w-full text-left text-sm tabular-nums'
+      data-testid={`account-balances-${suffix}`}
+    >
       <thead>
         <tr className='text-muted-500'>
           <th className='py-1 pr-4 font-medium'>{t('balance.currency')}</th>
@@ -96,9 +93,29 @@ const BalancesTable: React.FC<Readonly<BalancesTableProps>> = ({ balances, suffi
         {balances.map(entry => (
           <tr key={entry.currency} data-testid={`account-balance-${suffix}-${entry.currency}`}>
             <td className='py-1 pr-4'>{entry.currency}</td>
-            <td className='py-1 pr-4'>{formatNumber(entry.total, locale)}</td>
-            <td className='py-1 pr-4'>{formatNullable(entry.free, noValue, locale)}</td>
-            <td className='py-1'>{formatNullable(entry.used, noValue, locale)}</td>
+            <td className='py-1 pr-4'>
+              <NumericValue
+                formatted={formatMoney(entry.total, { locale, currency: entry.currency })}
+              />
+            </td>
+            <td className='py-1 pr-4'>
+              {entry.free == null ? (
+                noValue
+              ) : (
+                <NumericValue
+                  formatted={formatMoney(entry.free, { locale, currency: entry.currency })}
+                />
+              )}
+            </td>
+            <td className='py-1'>
+              {entry.used == null ? (
+                noValue
+              ) : (
+                <NumericValue
+                  formatted={formatMoney(entry.used, { locale, currency: entry.currency })}
+                />
+              )}
+            </td>
           </tr>
         ))}
       </tbody>
@@ -109,11 +126,16 @@ const BalancesTable: React.FC<Readonly<BalancesTableProps>> = ({ balances, suffi
 interface PositionsTableProps {
   positions: AccountPositionEntry[] | null | undefined
   suffix: string
+  exchange: string
 }
 
-const PositionsTable: React.FC<Readonly<PositionsTableProps>> = ({ positions, suffix }) => {
+const PositionsTable: React.FC<Readonly<PositionsTableProps>> = ({
+  positions,
+  suffix,
+  exchange,
+}) => {
   const { t, i18n } = useTranslation('accounts')
-  const locale = i18n.language as AppLocale
+  const locale = intlLocaleFromLanguage(i18n.language)
 
   if (positions == null || positions.length === 0) {
     return (
@@ -124,7 +146,10 @@ const PositionsTable: React.FC<Readonly<PositionsTableProps>> = ({ positions, su
   }
 
   return (
-    <table className='w-full text-left text-sm' data-testid={`account-positions-${suffix}`}>
+    <table
+      className='w-full text-left text-sm tabular-nums'
+      data-testid={`account-positions-${suffix}`}
+    >
       <thead>
         <tr className='text-muted-500'>
           <th className='py-1 pr-4 font-medium'>{t('position.symbol')}</th>
@@ -137,21 +162,76 @@ const PositionsTable: React.FC<Readonly<PositionsTableProps>> = ({ positions, su
         </tr>
       </thead>
       <tbody className='font-mono text-alpine-900'>
-        {positions.map(entry => (
-          <tr key={entry.symbol} data-testid={`account-position-${suffix}-${entry.symbol}`}>
-            <td className='py-1 pr-4'>{entry.symbol}</td>
-            <td className='py-1 pr-4'>{t(`side.${entry.side}`, { defaultValue: entry.side })}</td>
-            <td className='py-1 pr-4'>{formatNumber(entry.size, locale)}</td>
-            <td className='py-1 pr-4'>{formatNumber(entry.entry_price, locale)}</td>
-            <td className='py-1 pr-4'>{formatNumber(entry.mark_price, locale)}</td>
-            <td className={clsx('py-1 pr-4', getPnlClass(entry.unrealized_pnl))}>
-              {formatPnl(entry.unrealized_pnl, locale)}
-            </td>
-            <td className={clsx('py-1', getPnlClass(entry.unrealized_funding))}>
-              {formatPnl(entry.unrealized_funding, locale)}
-            </td>
-          </tr>
-        ))}
+        {positions.map(entry => {
+          const display = readDisplayFields(entry)
+          const quote = quoteCurrency(entry.symbol)
+          const quantityDigits = maxFractionDigits(
+            positions.map(row =>
+              quantityFractionDigits(Math.abs(row.size), readDisplayFields(row).quantityDecimals)
+            )
+          )
+          const priceDigits = maxFractionDigits(
+            positions.flatMap(row => {
+              const rowDisplay = readDisplayFields(row)
+
+              return [row.entry_price, row.mark_price].map(price =>
+                priceFractionDigits(price, {
+                  priceDecimals: rowDisplay.priceDecimals,
+                  exchange,
+                })
+              )
+            })
+          )
+          const size = formatQuantity(entry.size, {
+            locale,
+            quantityDecimals: display.quantityDecimals,
+            fractionDigits: quantityDigits,
+          })
+          const entryPrice = formatPrice(entry.entry_price, {
+            locale,
+            exchange,
+            priceDecimals: display.priceDecimals,
+            fractionDigits: priceDigits,
+          })
+          const markPrice = formatPrice(entry.mark_price, {
+            locale,
+            exchange,
+            priceDecimals: display.priceDecimals,
+            fractionDigits: priceDigits,
+          })
+          const unrealized = formatMoney(entry.unrealized_pnl, {
+            locale,
+            currency: quote,
+            signDisplay: 'exceptZero',
+          })
+          const funding = formatMoney(entry.unrealized_funding, {
+            locale,
+            currency: quote,
+            signDisplay: 'exceptZero',
+          })
+
+          return (
+            <tr key={entry.symbol} data-testid={`account-position-${suffix}-${entry.symbol}`}>
+              <td className='py-1 pr-4'>{entry.symbol}</td>
+              <td className='py-1 pr-4'>{t(`side.${entry.side}`, { defaultValue: entry.side })}</td>
+              <td className='py-1 pr-4'>
+                <NumericValue formatted={size} />
+              </td>
+              <td className='py-1 pr-4'>
+                <NumericValue formatted={entryPrice} />
+              </td>
+              <td className='py-1 pr-4'>
+                <NumericValue formatted={markPrice} />
+              </td>
+              <td className={clsx('py-1 pr-4', TONE_CLASS[signedTone(unrealized)])}>
+                <NumericValue formatted={unrealized} />
+              </td>
+              <td className={clsx('py-1', TONE_CLASS[signedTone(funding)])}>
+                <NumericValue formatted={funding} />
+              </td>
+            </tr>
+          )
+        })}
       </tbody>
     </table>
   )
@@ -244,7 +324,11 @@ const AccountCard: React.FC<Readonly<AccountCardProps>> = ({
           <div className='mb-1 text-xs font-semibold uppercase tracking-wide text-muted-500'>
             {t('section.positions')}
           </div>
-          <PositionsTable positions={account.open_positions} suffix={suffix} />
+          <PositionsTable
+            positions={account.open_positions}
+            suffix={suffix}
+            exchange={account.exchange}
+          />
           {account.position_observed_at != null && (
             <div
               className='mt-1 text-xs text-muted-500'

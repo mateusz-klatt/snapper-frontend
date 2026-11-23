@@ -1,7 +1,9 @@
 import React from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
+import { NumericValue } from '../../components/NumericValue'
 import type { PnlInstrumentContributionData } from '../../types/api'
+import { formatMoney, intlLocaleFromLanguage, signedTone } from '../../lib/numberFormat'
 import { formatPnlInstrumentIdentity } from './pnlInstrumentIdentity'
 
 interface Props {
@@ -24,21 +26,11 @@ const getNetContribution = (contribution: PnlInstrumentContributionData): number
   return values.reduce((total, value) => total + value, 0)
 }
 
-const getPnlClass = (value: number | null): string => {
-  if (value === null || value === 0) return 'text-muted-500'
-  if (value > 0) return 'text-rising-600'
-
-  return 'text-falling-600'
-}
-
-const formatPnl = (value: number | null, noValue: string, locale: string): string =>
-  value === null
-    ? noValue
-    : new Intl.NumberFormat(locale, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 8,
-        signDisplay: 'exceptZero',
-      }).format(value)
+const TONE_CLASS = {
+  up: 'text-rising-600',
+  down: 'text-falling-600',
+  flat: 'text-muted-500',
+} as const
 
 export const ContributionTable: React.FC<Readonly<Props>> = ({ contributions, valuationCcy }) => {
   const { t, i18n } = useTranslation('positions')
@@ -58,7 +50,10 @@ export const ContributionTable: React.FC<Readonly<Props>> = ({ contributions, va
         </div>
       ) : (
         <div className='overflow-x-auto'>
-          <table className='w-full text-left text-sm' data-testid='contributions-table'>
+          <table
+            className='w-full text-left text-sm tabular-nums'
+            data-testid='contributions-table'
+          >
             <thead>
               <tr className='text-muted-500'>
                 <th className='py-1 pr-4 font-medium'>{t('timeline.contributions.instrument')}</th>
@@ -72,6 +67,7 @@ export const ContributionTable: React.FC<Readonly<Props>> = ({ contributions, va
             <tbody className='font-mono text-alpine-900'>
               {contributions.map(contribution => {
                 const net = getNetContribution(contribution)
+                const locale = intlLocaleFromLanguage(i18n.language)
                 const values = [
                   ['realized', contribution.realized_pnl],
                   ['fees', contribution.fee_pnl],
@@ -86,19 +82,30 @@ export const ContributionTable: React.FC<Readonly<Props>> = ({ contributions, va
                     data-testid={`contribution-${contribution.instrument_public_id}`}
                   >
                     <td className='py-1 pr-4'>{formatPnlInstrumentIdentity(contribution)}</td>
-                    {values.map(([name, value], index) => (
-                      <td
-                        key={name}
-                        className={clsx(
-                          'py-1',
-                          index < values.length - 1 && 'pr-4',
-                          getPnlClass(value)
-                        )}
-                        data-testid={`contribution-${contribution.instrument_public_id}-${name}`}
-                      >
-                        {formatPnl(value, noValue, i18n.language)}
-                      </td>
-                    ))}
+                    {values.map(([name, value], index) => {
+                      const formatted =
+                        value === null
+                          ? null
+                          : formatMoney(value, {
+                              locale,
+                              currency: valuationCcy,
+                              signDisplay: 'exceptZero',
+                            })
+
+                      return (
+                        <td
+                          key={name}
+                          className={clsx(
+                            'py-1',
+                            index < values.length - 1 && 'pr-4',
+                            TONE_CLASS[signedTone(formatted)]
+                          )}
+                          data-testid={`contribution-${contribution.instrument_public_id}-${name}`}
+                        >
+                          {formatted === null ? noValue : <NumericValue formatted={formatted} />}
+                        </td>
+                      )
+                    })}
                   </tr>
                 )
               })}

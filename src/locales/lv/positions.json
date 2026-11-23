@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Putekļi ({{count}})",
+    "show": "Rādīt putekļu pozīcijas",
+    "hide": "Paslēpt putekļu pozīcijas"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: gaida",

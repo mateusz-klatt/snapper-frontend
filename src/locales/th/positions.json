@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "ฝุ่น ({{count}})",
+    "show": "แสดงสถานะฝุ่น",
+    "hide": "ซ่อนสถานะฝุ่น"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: รอดำเนินการ",

@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Deannach ({{count}})",
+    "show": "Taispeáin poist deannaigh",
+    "hide": "Folaigh poist deannaigh"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: ar feitheamh",

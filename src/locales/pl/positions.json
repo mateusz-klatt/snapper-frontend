@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Pył ({{count}})",
+    "show": "Pokaż pozycje pyłu",
+    "hide": "Ukryj pozycje pyłu"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: oczekujący",

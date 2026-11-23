@@ -1,4 +1,5 @@
 import { z } from 'zod/v4'
+import { attachDisplayFields, detachDisplayFields } from '../displayFields'
 
 export {
   TickDataSchema as tickSchema,
@@ -175,11 +176,17 @@ const KNOWN_MESSAGE_TYPES = new Set([
 ])
 
 export function parseWsMessage(raw: unknown): WsMessageUnion | null {
+  const displayFields = detachDisplayFields(raw)
   const unionResult = wsMessageUnionSchema.safeParse(raw)
 
   if (unionResult.success) {
+    attachDisplayFields(unionResult.data, displayFields)
+    attachDisplayFields(raw, displayFields)
+
     return unionResult.data
   }
+
+  attachDisplayFields(raw, displayFields)
 
   const rawObject = typeof raw === 'object' && raw !== null ? raw : null
   const rawType =

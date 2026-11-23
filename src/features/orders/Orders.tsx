@@ -6,14 +6,39 @@ import { NewOrderModal } from './NewOrderModal'
 import type { Order, Execution } from '../../types/entities'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { ThemeSelect } from '../../components/ThemeSelect'
+import { NumericValue } from '../../components/NumericValue'
 import { exportToCSV } from '../../lib/csvExport'
+import { readDisplayFields } from '../../lib/displayFields'
 import { formatDateTime } from '../../lib/dateFormat'
+import {
+  formatMoney,
+  formatPrice,
+  formatQuantity,
+  intlLocaleFromLanguage,
+} from '../../lib/numberFormat'
 import type { AppLocale } from '../../i18n/types'
+import { quoteCurrency } from '../positions/instrumentQuote'
 import { EmptyState } from '../../components/ui'
 import clsx from 'clsx'
 import { useAuth } from '../../stores/auth'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { Permission } from '../../types/permissions.generated'
+
+const quantityLabel = (value: number, source: object, locale: string): string =>
+  formatQuantity(value, {
+    locale,
+    quantityDecimals: readDisplayFields(source).quantityDecimals,
+  }).text
+
+const priceLabel = (value: number, source: object, locale: string, exchange: string): string =>
+  formatPrice(value, {
+    locale,
+    exchange,
+    priceDecimals: readDisplayFields(source).priceDecimals,
+  }).text
+
+const moneyLabel = (value: number, locale: string, currency: string): string =>
+  formatMoney(value, { locale, currency }).text
 
 const TERMINAL_ORDER_STATUSES = new Set([
   'filled',
@@ -76,9 +101,19 @@ const OrderCard: React.FC<{
     return side === 'buy' ? 'text-rising-400' : 'text-falling-400'
   }
 
-  const formatPrice = (price: number | null | undefined) => {
-    return price ? `$${price.toFixed(2)}` : t('orderCard.priceMarket')
-  }
+  const locale = intlLocaleFromLanguage(i18n.language)
+  const quote = quoteCurrency(order.instrument)
+  const quantity = formatQuantity(order.size, {
+    locale,
+    quantityDecimals: readDisplayFields(order).quantityDecimals,
+  })
+  const price = order.price
+    ? formatPrice(order.price, {
+        locale,
+        exchange: order.exchange,
+        priceDecimals: readDisplayFields(order).priceDecimals,
+      })
+    : null
 
   return (
     <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5 transition-colors hover:border-muted-400'>
@@ -127,11 +162,22 @@ const OrderCard: React.FC<{
       <div className='grid grid-cols-2 gap-4 text-sm'>
         <div>
           <div className='text-muted-500'>{t('orderCard.quantity')}</div>
-          <div className='font-mono text-alpine-900'>{order.size.toFixed(4)}</div>
+          <div className='font-mono text-alpine-900'>
+            <NumericValue formatted={quantity} />
+          </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('orderCard.price')}</div>
-          <div className='font-mono text-alpine-900'>{formatPrice(order.price)}</div>
+          <div className='font-mono text-alpine-900'>
+            {price === null ? (
+              t('orderCard.priceMarket')
+            ) : (
+              <>
+                <NumericValue formatted={price} />
+                {quote === '' ? null : ` ${quote}`}
+              </>
+            )}
+          </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('orderCard.created')}</div>
@@ -173,8 +219,21 @@ const OrderCard: React.FC<{
 
 const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
   const { t, i18n } = useTranslation('orders')
+  const locale = intlLocaleFromLanguage(i18n.language)
+  const quote = quoteCurrency(execution.instrument)
   const totalCost = execution.price * execution.size
   const fees = execution.fee || 0
+  const quantity = formatQuantity(execution.size, {
+    locale,
+    quantityDecimals: readDisplayFields(execution).quantityDecimals,
+  })
+  const price = formatPrice(execution.price, {
+    locale,
+    exchange: execution.exchange,
+    priceDecimals: readDisplayFields(execution).priceDecimals,
+  })
+  const total = formatMoney(totalCost, { locale, currency: quote })
+  const fee = formatMoney(fees, { locale, currency: execution.feeAsset || quote })
 
   return (
     <div className='rounded-2xl border border-dark-600 bg-alpine-50 p-5 transition-colors hover:border-muted-400'>
@@ -194,15 +253,23 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
       <div className='grid grid-cols-3 gap-4 text-sm'>
         <div>
           <div className='text-muted-500'>{t('executionCard.size')}</div>
-          <div className='font-mono text-alpine-900'>{execution.size.toFixed(4)}</div>
+          <div className='font-mono text-alpine-900'>
+            <NumericValue formatted={quantity} />
+          </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('executionCard.price')}</div>
-          <div className='font-mono text-alpine-900'>${execution.price.toFixed(2)}</div>
+          <div className='font-mono text-alpine-900'>
+            <NumericValue formatted={price} />
+            {quote === '' ? null : ` ${quote}`}
+          </div>
         </div>
         <div>
           <div className='text-muted-500'>{t('executionCard.total')}</div>
-          <div className='font-mono text-alpine-900'>${totalCost.toFixed(2)}</div>
+          <div className='font-mono text-alpine-900'>
+            <NumericValue formatted={total} />
+            {quote === '' ? null : ` ${quote}`}
+          </div>
         </div>
         <div className='col-span-2'>
           <div className='text-muted-500'>{t('executionCard.executed')}</div>
@@ -214,7 +281,8 @@ const ExecutionCard: React.FC<{ execution: Execution }> = ({ execution }) => {
           <div>
             <div className='text-muted-500'>{t('executionCard.fees')}</div>
             <div className='text-loss-400 text-xs font-mono'>
-              ${fees.toFixed(2)} {execution.feeAsset}
+              <NumericValue formatted={fee} />
+              {execution.feeAsset ? ` ${execution.feeAsset}` : null}
             </div>
           </div>
         )}
@@ -245,6 +313,7 @@ export const Orders: React.FC = () => {
   }
 
   const handleExportOrders = () => {
+    const locale = intlLocaleFromLanguage(i18n.language)
     const headers = [
       t('csv.orders.instrument'),
       t('csv.orders.side'),
@@ -261,8 +330,8 @@ export const Orders: React.FC = () => {
       o.side ?? '',
       o.orderType,
       o.status,
-      o.size.toFixed(4),
-      o.price ? o.price.toFixed(2) : t('orderCard.priceMarket'),
+      quantityLabel(o.size, o, locale),
+      o.price ? priceLabel(o.price, o, locale, o.exchange) : t('orderCard.priceMarket'),
       o.leverage?.toString() ?? '',
       o.reduceOnly === true ? 'true' : 'false',
       o.createdAt ? formatDateTime(o.createdAt, i18n.language as AppLocale) : '',
@@ -272,6 +341,7 @@ export const Orders: React.FC = () => {
   }
 
   const handleExportExecutions = () => {
+    const locale = intlLocaleFromLanguage(i18n.language)
     const headers = [
       t('csv.executions.orderId'),
       t('csv.executions.instrument'),
@@ -287,10 +357,10 @@ export const Orders: React.FC = () => {
       e.clientOrderId,
       e.instrument,
       e.side,
-      e.size.toFixed(4),
-      e.price.toFixed(2),
-      (e.price * e.size).toFixed(2),
-      e.fee ? e.fee.toFixed(2) : '0',
+      quantityLabel(e.size, e, locale),
+      priceLabel(e.price, e, locale, e.exchange),
+      moneyLabel(e.price * e.size, locale, quoteCurrency(e.instrument)),
+      moneyLabel(e.fee || 0, locale, e.feeAsset || quoteCurrency(e.instrument)),
       e.feeAsset ?? '',
       formatDateTime(e.executedAt, i18n.language as AppLocale),
     ])

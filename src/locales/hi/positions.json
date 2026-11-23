@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "धूल ({{count}})",
+    "show": "धूल पोजीशन दिखाएँ",
+    "hide": "धूल पोजीशन छिपाएँ"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: लंबित",

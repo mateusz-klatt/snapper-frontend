@@ -10,13 +10,21 @@ import {
   type SeriesDataItemTypeMap,
   type SeriesMarker,
   type SeriesMarkerBar,
+  type BarPrice,
   type Time,
   type UTCTimestamp,
 } from 'lightweight-charts'
 import { useTranslation } from 'react-i18next'
+import { NumericValue } from '../../components/NumericValue'
 import { getIntlLocale } from '../../i18n/countryLanguages'
 import type { AppLocale } from '../../i18n/types'
 import { formatDateTime } from '../../lib/dateFormat'
+import {
+  currencyFractionDigits,
+  formatMoney,
+  formatPrice,
+  formatQuantity,
+} from '../../lib/numberFormat'
 import { useAppStore } from '../../stores/app'
 import type {
   PnlEquityCoverageData,
@@ -168,8 +176,9 @@ const buildMarkerAnchorData = (
   })
 }
 
-const formatMarkerNumber = (value: number, locale: string): string =>
-  new Intl.NumberFormat(locale, { maximumFractionDigits: 8 }).format(value)
+const formatMarkerQuantity = (value: number, locale: string) => formatQuantity(value, { locale })
+
+const formatMarkerPrice = (value: number, locale: string) => formatPrice(value, { locale })
 
 const DetailRow: React.FC<Readonly<DetailRowProps>> = ({ label, value }) => (
   <div className='grid gap-1 sm:grid-cols-[10rem_1fr]'>
@@ -186,7 +195,13 @@ const MarkerDetail: React.FC<{ marker: PnlTimelineMarkerData; locale: AppLocale 
   const noValue = t('timeline.markers.detail.noValue')
   const kindLabel = t(`timeline.markers.detail.types.${marker.kind}`)
   const outcomeLabel = t(`timeline.markers.detail.outcomes.${marker.outcome}`)
-  const formatNumber = (value: number): string => formatMarkerNumber(value, getIntlLocale(locale))
+  const intlLocale = getIntlLocale(locale)
+  const quantityText = (value: number) => (
+    <NumericValue formatted={formatMarkerQuantity(value, intlLocale)} />
+  )
+  const priceText = (value: number) => (
+    <NumericValue formatted={formatMarkerPrice(value, intlLocale)} />
+  )
 
   return (
     <section
@@ -212,11 +227,11 @@ const MarkerDetail: React.FC<{ marker: PnlTimelineMarkerData; locale: AppLocale 
             <DetailRow label={t('timeline.markers.detail.side')} value={marker.side} />
             <DetailRow
               label={t('timeline.markers.detail.size')}
-              value={formatNumber(marker.size)}
+              value={quantityText(marker.size)}
             />
             <DetailRow
               label={t('timeline.markers.detail.price')}
-              value={marker.price === null ? noValue : formatNumber(marker.price)}
+              value={marker.price === null ? noValue : priceText(marker.price)}
             />
             <DetailRow
               label={t('timeline.markers.detail.executionId')}
@@ -237,12 +252,12 @@ const MarkerDetail: React.FC<{ marker: PnlTimelineMarkerData; locale: AppLocale 
             />
             <DetailRow
               label={t('timeline.markers.detail.strength')}
-              value={formatNumber(marker.strength)}
+              value={quantityText(marker.strength)}
             />
             <DetailRow label={t('timeline.markers.detail.reason')} value={marker.reason} />
             <DetailRow
               label={t('timeline.markers.detail.price')}
-              value={marker.price === null ? noValue : formatNumber(marker.price)}
+              value={marker.price === null ? noValue : priceText(marker.price)}
             />
             <DetailRow
               label={t('timeline.markers.detail.signalId')}
@@ -306,7 +321,10 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
   const latestEquityText =
     latestEquity === null
       ? t('timeline.equity.noValue')
-      : formatMarkerNumber(latestEquity, getIntlLocale(locale))
+      : formatMoney(latestEquity, {
+          locale: getIntlLocale(locale),
+          currency: valuationCcy,
+        }).text
   const equitySeriesLabel =
     equityVenueScope === 'spot_only'
       ? t('timeline.equity.seriesLabelSpotOnly')
@@ -405,6 +423,34 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
   }, [height])
 
   useEffect(() => {
+    const format = (value: number): string =>
+      formatMoney(value, {
+        locale: getIntlLocale(locale),
+        currency: valuationCcy,
+        signDisplay: 'auto',
+      }).text
+    const priceFormat = {
+      type: 'custom' as const,
+      minMove: 10 ** -currencyFractionDigits(valuationCcy),
+      formatter: (value: BarPrice) => format(value),
+      tickmarksFormatter: (values: BarPrice[]) => values.map(value => format(value)),
+    }
+
+    netSeriesRef.current?.applyOptions({ priceFormat })
+    realizedSeriesRef.current?.applyOptions({ priceFormat })
+    unrealizedSeriesRef.current?.applyOptions({ priceFormat })
+    equitySeriesRef.current?.applyOptions({ priceFormat })
+    markerAnchorSeriesRef.current?.applyOptions({ priceFormat })
+    chartRef.current?.applyOptions({
+      localization: {
+        locale: getIntlLocale(locale),
+        priceFormatter: (value: BarPrice) => format(value),
+        tickmarksPriceFormatter: (values: BarPrice[]) => values.map(value => format(value)),
+      },
+    })
+  }, [height, locale, valuationCcy])
+
+  useEffect(() => {
     if (!chartRef.current) return
     const theme = isDarkMode ? DARK_THEME : LIGHT_THEME
 
@@ -499,7 +545,7 @@ export const PnlChart: React.FC<Readonly<Props>> = ({
               style={{ backgroundColor: EQUITY_COLOR }}
             />
             <span>{equitySeriesLabel}</span>
-            <span className='font-mono text-alpine-900'>
+            <span className='font-mono tabular-nums text-alpine-900'>
               {t('timeline.equity.latest', { value: latestEquityText, currency: valuationCcy })}
             </span>
           </span>

@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Vumbi ({{count}})",
+    "show": "Onyesha nafasi za vumbi",
+    "hide": "Ficha nafasi za vumbi"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: inasubiri",

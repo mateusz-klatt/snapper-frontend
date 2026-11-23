@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "ধুলা ({{count}})",
+    "show": "ধুলোর পজিশন দেখান",
+    "hide": "ধুলোর পজিশন লুকান"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: অপেক্ষমাণ",

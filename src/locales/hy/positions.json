@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Փոշի ({{count}})",
+    "show": "Ցույց տալ փոշու դիրքերը",
+    "hide": "Թաքցնել փոշու դիրքերը"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: սպասում է",

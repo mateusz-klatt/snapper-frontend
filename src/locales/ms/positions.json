@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Habuk ({{count}})",
+    "show": "Tunjukkan posisi habuk",
+    "hide": "Sembunyikan posisi habuk"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: tertunda",

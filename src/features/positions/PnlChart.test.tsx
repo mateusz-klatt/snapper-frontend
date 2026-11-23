@@ -25,6 +25,7 @@ const setMarkerAnchorData = vi.fn()
 const setMarkers = vi.fn()
 const detachMarkers = vi.fn()
 const mockApplyOptions = vi.fn()
+const mockSeriesApplyOptions = vi.fn()
 const mockTimeScaleFitContent = vi.fn()
 const mockRemove = vi.fn()
 const mockAddSeries = vi.fn()
@@ -62,6 +63,7 @@ const configureSeriesMocks = () => {
 
   mockAddSeries.mockImplementation(() => ({
     setData: setDataMocks[(mockAddSeries.mock.calls.length - 1) % setDataMocks.length],
+    applyOptions: mockSeriesApplyOptions,
   }))
 }
 
@@ -277,7 +279,7 @@ describe('PnlChart', () => {
     const legend = getByTestId('pnl-equity-legend')
 
     expect(within(legend).getByText('Equity (spot venue)')).toBeInTheDocument()
-    expect(within(legend).getByText('Latest: 1,250 USD')).toBeInTheDocument()
+    expect(within(legend).getByText('Latest: 1,250.00 USD')).toBeInTheDocument()
   })
 
   it('uses a neutral equity label and makes no spot claim when the venue scope is not spot-only', () => {
@@ -292,7 +294,7 @@ describe('PnlChart', () => {
     const legend = getByTestId('pnl-equity-legend')
 
     expect(within(legend).getByText('Equity')).toBeInTheDocument()
-    expect(within(legend).getByText('Latest: 1,000 USD')).toBeInTheDocument()
+    expect(within(legend).getByText('Latest: 1,000.00 USD')).toBeInTheDocument()
     expect(queryByText('Equity (spot venue)')).not.toBeInTheDocument()
   })
 
@@ -519,11 +521,7 @@ describe('PnlChart', () => {
     detail = screen.getByTestId('pnl-marker-detail')
     expect(within(detail).getByText('Signal')).toBeInTheDocument()
     expect(within(detail).getByText('momentum')).toBeInTheDocument()
-    expect(
-      within(detail).getByText(
-        new Intl.NumberFormat(getIntlLocale('pl'), { maximumFractionDigits: 8 }).format(102.5)
-      )
-    ).toBeInTheDocument()
+    expect(within(detail).getByText('102,50')).toBeInTheDocument()
     expect(within(detail).getByText('signal-executed')).toBeInTheDocument()
 
     emitChartEvent(mockSubscribeCrosshairMove, {
@@ -738,5 +736,59 @@ describe('PnlChart', () => {
     expect(mockApplyOptions).not.toHaveBeenCalled()
     vi.doUnmock('react')
     vi.resetModules()
+  })
+
+  it('keeps negative zero off the chart axis', () => {
+    render(<PnlChart points={[]} valuationCcy='EUR' />)
+    const localization = mockApplyOptions.mock.calls
+      .map(
+        call =>
+          call[0] as {
+            localization?: {
+              priceFormatter: (value: number) => string
+              tickmarksPriceFormatter: (values: number[]) => string[]
+            }
+          }
+      )
+      .find(options => options.localization)?.localization
+
+    expect(localization?.priceFormatter(0)).toBe('0.00')
+    expect(localization?.priceFormatter(-0)).toBe('0.00')
+    expect(localization?.priceFormatter(-1e-9)).toBe('≈ 0.00')
+    expect(localization?.priceFormatter(-1.2)).toBe('-1.20')
+    expect(localization?.tickmarksPriceFormatter([-0, -1.2])).toEqual(['0.00', '-1.20'])
+
+    const priceFormat = mockSeriesApplyOptions.mock.calls
+      .map(
+        call =>
+          call[0] as {
+            priceFormat?: {
+              formatter: (value: number) => string
+              tickmarksFormatter: (values: number[]) => string[]
+            }
+          }
+      )
+      .find(options => options.priceFormat)?.priceFormat
+
+    expect(priceFormat?.formatter(0)).toBe('0.00')
+    expect(priceFormat?.formatter(-0)).toBe('0.00')
+    expect(priceFormat?.formatter(-1e-9)).toBe('≈ 0.00')
+    expect(priceFormat?.tickmarksFormatter([-0, -1.2])).toEqual(['0.00', '-1.20'])
+  })
+
+  it('localizes chart axis labels for the selected currency', () => {
+    appState.locale = 'pl'
+    render(<PnlChart points={[]} valuationCcy='PLN' />)
+    const localization = mockApplyOptions.mock.calls
+      .map(
+        call =>
+          call[0] as {
+            localization?: { priceFormatter: (value: number) => string }
+          }
+      )
+      .find(options => options.localization)?.localization
+
+    expect(localization?.priceFormatter(1.5)).toBe('1,50')
+    expect(localization?.priceFormatter(-1e-9)).toBe('≈ 0,00')
   })
 })

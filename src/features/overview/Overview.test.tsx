@@ -482,7 +482,7 @@ describe('Overview', () => {
     } as never)
     renderWithMocks(<Overview />)
     expect(screen.getByText('momentum-breakout')).toBeInTheDocument()
-    expect(screen.getByText('64136.90')).toBeInTheDocument()
+    expect(screen.getByText('64136.90 USD')).toBeInTheDocument()
     expect(screen.getByText('62%')).toBeInTheDocument()
   })
 

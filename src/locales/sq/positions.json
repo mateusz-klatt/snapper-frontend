@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Pluhur ({{count}})",
+    "show": "Shfaq pozicionet e pluhurit",
+    "hide": "Fshih pozicionet e pluhurit"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: në pritje",

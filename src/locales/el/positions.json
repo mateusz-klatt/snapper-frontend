@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Σκόνη ({{count}})",
+    "show": "Εμφάνιση θέσεων σκόνης",
+    "hide": "Απόκρυψη θέσεων σκόνης"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: σε εκκρεμότητα",

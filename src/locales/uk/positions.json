@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Пил ({{count}})",
+    "show": "Показати пилові позиції",
+    "hide": "Сховати пилові позиції"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: очікує",

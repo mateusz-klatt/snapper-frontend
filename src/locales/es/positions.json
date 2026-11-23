@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Polvo ({{count}})",
+    "show": "Mostrar posiciones de polvo",
+    "hide": "Ocultar posiciones de polvo"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: pendiente",

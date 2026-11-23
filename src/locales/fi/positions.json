@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Pöly ({{count}})",
+    "show": "Näytä pölypositiot",
+    "hide": "Piilota pölypositiot"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: odottaa",

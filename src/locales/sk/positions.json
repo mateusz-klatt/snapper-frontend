@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Prach ({{count}})",
+    "show": "Zobraziť prachové pozície",
+    "hide": "Skryť prachové pozície"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: čaká",

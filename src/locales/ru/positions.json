@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Пыль ({{count}})",
+    "show": "Показать пылевые позиции",
+    "hide": "Скрыть пылевые позиции"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: ожидает",

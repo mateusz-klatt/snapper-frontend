@@ -576,6 +576,34 @@ describe('Position Transformers', () => {
 
     expect(result.mode).toBe('paper')
   })
+  it('copies optional display fields onto the position entity', () => {
+    const apiPosition = {
+      type: 'position',
+      sequence_id: 0,
+      public_id: 'pos-uuid-display',
+      timestamp: '2026-01-15T10:30:00Z',
+      session_id: 'test-sid',
+      instrument: 'XRP/EUR',
+      instrument_public_id: 'inst-uuid-display',
+      exchange: 'kraken',
+      mode: 'live',
+      quantity: 1e-8,
+      average_price: 0.5,
+      unrealized_pnl: 0,
+      realized_pnl: 0,
+      wallet_public_id: 'wal-uuid-1',
+      quantity_decimals: 8,
+      price_decimals: 5,
+      is_dust: false,
+    } as unknown as PositionData
+    const result = positionFromAPI(apiPosition)
+
+    expect(result).toMatchObject({
+      quantityDecimals: 8,
+      priceDecimals: 5,
+      isDust: false,
+    })
+  })
   it('throws when API position has no timestamp', () => {
     const apiPosition = {
       type: 'position',

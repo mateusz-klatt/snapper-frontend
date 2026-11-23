@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Alikabok ({{count}})",
+    "show": "Ipakita ang mga posisyong alikabok",
+    "hide": "Itago ang mga posisyong alikabok"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: naka-pending",

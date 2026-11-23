@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Støv ({{count}})",
+    "show": "Vis støvpositioner",
+    "hide": "Skjul støvpositioner"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: afventer",

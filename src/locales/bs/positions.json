@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Prašina ({{count}})",
+    "show": "Prikaži pozicije prašine",
+    "hide": "Sakrij pozicije prašine"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: na čekanju",

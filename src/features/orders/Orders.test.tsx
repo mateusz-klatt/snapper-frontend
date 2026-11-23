@@ -387,7 +387,7 @@ describe('Orders', () => {
     await waitFor(() => {
       expect(screen.getByText('BTC/USD')).toBeInTheDocument()
       expect(screen.getByText('Buy')).toBeInTheDocument()
-      expect(screen.getByText('$50000.00')).toBeInTheDocument()
+      expect(screen.getByText('50,000.00').parentElement).toHaveTextContent('50,000.00 USD')
     })
   })
   it('displays order card with sell side', async () => {
@@ -523,9 +523,9 @@ describe('Orders', () => {
     await user.click(executionsTab)
     await waitFor(() => {
       expect(screen.getByText('Order #10')).toBeInTheDocument()
-      expect(screen.getByText('$50000.00')).toBeInTheDocument()
-      expect(screen.getByText('$75000.00')).toBeInTheDocument()
-      expect(screen.getByText('$25.00 USD')).toBeInTheDocument()
+      expect(screen.getByText('50,000.00').parentElement).toHaveTextContent('50,000.00 USD')
+      expect(screen.getByText('75,000.00').parentElement).toHaveTextContent('75,000.00 USD')
+      expect(screen.getByText('25.00').parentElement).toHaveTextContent('25.00 USD')
     })
   })
   it('switches back to orders tab', async () => {
@@ -1043,7 +1043,7 @@ describe('Orders', () => {
         'Reduce Only',
         'Created',
       ],
-      [['ETH/USD', '', 'market', 'open', '2.0000', 'Market', '', 'false', '']]
+      [['ETH/USD', '', 'market', 'open', '2', 'Market', '', 'false', '']]
     )
   })
   it('exports executions with zero fee and null feeAsset', async () => {
@@ -1095,10 +1095,10 @@ describe('Orders', () => {
           'client-20',
           'BTC/USD',
           'sell',
-          '1.0000',
-          '30000.00',
-          '30000.00',
-          '0',
+          '1',
+          '30,000.00',
+          '30,000.00',
+          '0.00',
           '',
           fmtDt(executedDate),
         ],
@@ -1261,7 +1261,7 @@ describe('Orders', () => {
         'Reduce Only',
         'Created',
       ],
-      [['BTC/USD', 'sell', 'limit', 'open', '1.5000', '50000.00', '4', 'true', fmtDt(created)]]
+      [['BTC/USD', 'sell', 'limit', 'open', '1.5', '50,000.00', '4', 'true', fmtDt(created)]]
     )
   })
 
@@ -1522,5 +1522,65 @@ describe('Orders', () => {
 
     expect(cancelBtn).toBeDisabled()
     expect(cancelBtn).toHaveTextContent(/Cancelling/i)
+  })
+
+  it('renders an unresolved symbol as a bare number', async () => {
+    const user = userEvent.setup()
+    const { useOrders, useExecutions } = await import('../../hooks/queries/orders')
+
+    vi.mocked(useOrders).mockReturnValue({
+      data: [
+        {
+          sequenceId: 0,
+          publicId: 'bare',
+          timestamp: new Date('2024-01-01T00:00:00Z'),
+          sessionId: 'test-sid',
+          clientOrderId: 'bare-1',
+          instrument: 'BTCUSD',
+          exchange: 'kraken',
+          side: 'buy',
+          orderType: 'limit',
+          size: 1,
+          filledSize: 0,
+          price: 50000,
+          status: 'open',
+          createdAt: new Date('2024-01-01T00:00:00Z'),
+          updatedAt: new Date('2024-01-01T00:00:00Z'),
+        },
+      ],
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    vi.mocked(useExecutions).mockReturnValue({
+      data: [
+        {
+          sequenceId: 0,
+          publicId: 'bare-exec',
+          timestamp: new Date('2024-01-01T00:00:00Z'),
+          sessionId: 'test-sid',
+          clientOrderId: 'bare-1',
+          size: 1,
+          price: 50000,
+          lastSize: 1,
+          lastPrice: 50000,
+          fee: 1,
+          feeAsset: '',
+          executedAt: new Date('2024-01-01T00:00:00Z'),
+          instrument: 'BTCUSD',
+          side: 'buy',
+          exchange: 'kraken',
+          status: 'filled',
+        },
+      ],
+      isLoading: false,
+      refetch: vi.fn(),
+    } as never)
+    renderWithProviders(<Orders />)
+    expect(await screen.findByText('50,000.00')).toBeInTheDocument()
+    expect(
+      screen.getByText('50,000.00').parentElement?.textContent?.replace(/\s+/g, ' ').trim()
+    ).toBe('50,000.00')
+    await user.click(screen.getByRole('button', { name: /Executions/i }))
+    expect(await screen.findAllByText('50,000.00')).not.toHaveLength(0)
   })
 })
