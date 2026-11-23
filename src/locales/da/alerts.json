@@ -17,7 +17,7 @@
   },
   "argument": {
     "reason": {
-      "ambiguous": "Tvetydigt svar fra handelsstedet",
+      "ambiguous": "Tvetydigt svar fra børsen",
       "unknown": "Ukendt årsag"
     },
     "side": {
@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} udført på {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} udført på {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} afvist: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} har ukendt status: {{3}} — verificering hos handelsstedet afventer; antag ikke, at positionen er lukket",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} har ukendt status: {{3}} — verificering hos handelsstedet afventer; antag ikke, at positionen er lukket",
+    "order_unknown": "{{0}} {{1}} {{2}} har ukendt status: {{3}} — verificering hos handelsplatformen afventer; antag ikke, at positionen er lukket",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} har ukendt status: {{3}} — verificering hos handelsplatformen afventer; antag ikke, at positionen er lukket",
     "position_stop_loss_fired": "Stop-loss udløst for {{0}} ({{1}})"
   },
   "detail": {

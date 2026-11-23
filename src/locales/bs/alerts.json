@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} izvršeno na {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} izvršeno na {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} odbijeno: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} ima nepoznato stanje: {{3}} — provjera na berzi još nije završena; nemojte pretpostaviti da je pozicija zatvorena",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} ima nepoznato stanje: {{3}} — provjera na berzi još nije završena; nemojte pretpostaviti da je pozicija zatvorena",
+    "order_unknown": "{{0}} {{1}} {{2}} ima nepoznato stanje: {{3}} — provjera na platformi još nije završena; nemojte pretpostaviti da je pozicija zatvorena",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} ima nepoznato stanje: {{3}} — provjera na platformi još nije završena; nemojte pretpostaviti da je pozicija zatvorena",
     "position_stop_loss_fired": "Stop-loss aktiviran za {{0}} ({{1}})"
   },
   "detail": {

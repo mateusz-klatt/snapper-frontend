@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} executat pe {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} executat pe {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} respins: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} — stare necunoscută: {{3}} — verificarea bursei este în așteptare; nu presupuneți că poziția este închisă",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stare necunoscută: {{3}} — verificarea bursei este în așteptare; nu presupuneți că poziția este închisă",
+    "order_unknown": "{{0}} {{1}} {{2}} — stare necunoscută: {{3}} — verificarea platformei este în așteptare; nu presupuneți că poziția este închisă",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stare necunoscută: {{3}} — verificarea platformei este în așteptare; nu presupuneți că poziția este închisă",
     "position_stop_loss_fired": "Stop-loss declanșat pe {{0}} ({{1}})"
   },
   "detail": {
