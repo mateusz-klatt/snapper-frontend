@@ -38,7 +38,7 @@
       "ariaLabel": "Aktiv lommebok",
       "placeholder": "Lommebok",
       "allWallets": "Alle lommebøker",
-      "optionPaper": "{{label}} (papir)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktiv operatør",

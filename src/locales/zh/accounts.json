@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "在有效期内获取的交易所实时权威数据。",
-    "simulated": "纸面交易数据 — 非真实交易所余额。",
+    "simulated": "模拟交易数据 — 非真实交易所余额。",
     "stale": "最后已知快照；有效期已过或数据轮询已停滞。",
     "clockError": "观察时间戳与服务器时钟不一致。",
     "corrupt": "存储的快照未通过验证。",
@@ -87,7 +87,7 @@
       "unverified": "未验证"
     },
     "method": {
-      "futuresPosition": "期货仓位",
+      "futuresPosition": "期货持仓",
       "spotExecutionReplay": "现货成交回放",
       "marginLedgerReplay": "保证金分类账回放",
       "unclassified": "未分类",
@@ -114,7 +114,7 @@
       "immutabilityWarning": "此分类是永久性的。一旦设置，便无法更改或移除。",
       "acknowledge": "我明白此分类是永久性的，并且与该账户的运作方式相符。",
       "methodDescription": {
-        "futuresPosition": "将未平仓衍生品仓位与交易所关于期货仓位的权威数据进行对账。",
+        "futuresPosition": "将未平仓衍生品持仓与交易所关于期货持仓的权威数据进行对账。",
         "spotExecutionReplay": "根据现金余额回放现货成交。适用于仅使用现金、从不进行保证金交易的账户。",
         "marginLedgerReplay": "回放交易所的保证金分类账。适用于进行保证金交易或以抵押品作为担保借款的账户。"
       },

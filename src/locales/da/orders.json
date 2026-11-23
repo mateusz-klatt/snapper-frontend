@@ -89,7 +89,7 @@
       "price": "Pris",
       "stopPrice": "Stoppris",
       "mode": "Tilstand",
-      "wallet": "Tegnebog",
+      "wallet": "Wallet",
       "type": "Type",
       "postOnly": "Kun maker"
     },

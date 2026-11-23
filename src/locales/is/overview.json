@@ -5,7 +5,7 @@
   "metrics": {
     "feedsRunning": "Feed í gangi",
     "strategiesActive": "Virkar stefnur",
-    "openOrders": "Opnar pantanir",
+    "openOrders": "Opin fyrirmæli",
     "todaysExecutions": "Framkvæmdir dagsins",
     "executionsOn": "Framkvæmdir ({{date}})"
   },

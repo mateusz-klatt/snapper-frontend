@@ -65,7 +65,7 @@
     "runLabel": "Lauf {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metriken",
-      "equityOverlay": "Equity-Overlay",
+      "equityOverlay": "Eigenkapital-Overlay",
       "trades": "Geschäfte",
       "signals": "Signale"
     },

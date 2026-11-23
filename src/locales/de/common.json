@@ -36,9 +36,9 @@
     "lagUnknown": "Unbekannt",
     "walletPicker": {
       "ariaLabel": "Aktives Wallet",
-      "placeholder": "Geldbörse",
+      "placeholder": "Wallet",
       "allWallets": "Alle Wallets",
-      "optionPaper": "{{label}} (Paper)"
+      "optionPaper": "{{label}} (Simulation)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktiver Operator",
@@ -51,7 +51,7 @@
       "exitTitle": "Zurück zum Live-Modus"
     },
     "marketDataOnly": {
-      "defaultTooltip": "Instrument nur zur Beobachtung. Snapper empfängt Marktdaten, kann aber für dieses (Symbol, Börse)-Paar keine Aufträge platzieren.",
+      "defaultTooltip": "Instrument nur zur Beobachtung. Snapper empfängt Marktdaten, kann aber für dieses (Symbol, Börse)-Paar keine Orders platzieren.",
       "ariaLabel": "Instrument nur mit Marktdaten",
       "badge": "Nur Marktdaten"
     },
@@ -74,7 +74,7 @@
     "backtests": "Backtestläufe",
     "health": "Systemzustand",
     "market": "Marktdaten",
-    "orders": "Aufträge & Ausführungen",
+    "orders": "Orders & Ausführungen",
     "overview": "Übersicht",
     "positions": "Positionen",
     "processes": "Prozesse",

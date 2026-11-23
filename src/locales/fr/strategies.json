@@ -90,7 +90,7 @@
       "warning": "AVERTISSEMENT",
       "error": "ERREUR"
     },
-    "backtest": "Test historique",
+    "backtest": "Backtest",
     "backtestAriaLabel": "Backtester la stratégie {{name}}",
     "managedRemotely": "Géré par {{coordinator}}",
     "remoteCoordinatorUnknown": "un autre conteneur",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Sélectionner un opérateur",
     "walletLabel": "Portefeuille",
     "walletPlaceholder": "Sélectionner un portefeuille",
-    "paperAnnotation": " (papier)",
+    "paperAnnotation": " (démo)",
     "refUserLabel": "Propriétaire de la stratégie (utilisateur)",
     "refOperatorLabel": "Référence de l’opérateur",
     "refWalletLabel": "Référence du portefeuille",

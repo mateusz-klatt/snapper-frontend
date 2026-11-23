@@ -227,7 +227,7 @@
     "unrealizedPnl": "Nerealizovaný P&L",
     "realizedPnl": "Realizovaný P&L",
     "updated": "Aktualizováno {{timestamp}}",
-    "mark": "Mark cena",
+    "mark": "Referenční cena",
     "noValue": "Není k dispozici"
   },
   "empty": {
@@ -239,10 +239,10 @@
     "confirmTitle": "Potvrdit Bracket",
     "position": "Pozice",
     "entryPrice": "Vstupní cena",
-    "stopLossLabel": "Cena omezení ztráty",
-    "takeProfitLabel": "Cena realizace zisku",
-    "stopLoss": "Omezení ztráty",
-    "takeProfit": "Realizace zisku",
+    "stopLossLabel": "Cena stop-lossu",
+    "takeProfitLabel": "Cena take-profitu",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Pod {{price}}",
       "slShort": "Nad {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Připojit Trailing Stop — {{instrument}}",
-    "confirmTitle": "Potvrdit Trailing Stop",
+    "title": "Připojit posuvný stop — {{instrument}}",
+    "confirmTitle": "Potvrdit posuvný stop",
     "position": "Pozice",
     "entryPrice": "Vstupní cena",
     "trailingDistanceLabel": "Trailing vzdálenost (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "např. 5.0",
       "minLockPct": "0 = spustit okamžitě"
     },
-    "minLockWarning": "Trailing Stop se neaktivuje, dokud se cena nepohne o {{minLockPct}} % ve váš prospěch.",
+    "minLockWarning": "Posuvný stop se neaktivuje, dokud se cena nepohne o {{minLockPct}} % ve váš prospěch.",
     "buttons": {
       "cancel": "Zrušit",
       "review": "Zkontrolovat",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Je vyžadována alespoň jedna cena SL nebo TP",
-    "invalidSlPrice": "Neplatná cena omezení ztráty",
-    "slPricePositive": "Cena omezení ztráty musí být kladná",
-    "invalidTpPrice": "Neplatná cena realizace zisku",
-    "tpPricePositive": "Cena realizace zisku musí být kladná",
+    "invalidSlPrice": "Neplatná cena stop-lossu",
+    "slPricePositive": "Cena stop-lossu musí být kladná",
+    "invalidTpPrice": "Neplatná cena take-profitu",
+    "tpPricePositive": "Cena take-profitu musí být kladná",
     "slLongBelowEntry": "Cena SL musí být pod vstupní cenou ({{price}})",
     "tpLongAboveEntry": "Cena TP musí být nad vstupní cenou ({{price}})",
     "slShortAboveEntry": "Cena SL musí být nad vstupní cenou ({{price}})",

@@ -28,9 +28,9 @@
   "statusTooltip": {
     "observed": "Sonraí malartáin iontaofa fíor-ama, taifeadta laistigh den tréimhse bailíochta.",
     "simulated": "Figiúirí trádála ionsamhlaithe — ní fíoriarmhéideanna malartáin iad.",
-    "stale": "An seat is déanaí; tá an fhuinneog údaráis imithe in éag.",
+    "stale": "An léargas sealadach is déanaí; tá an fhuinneog údaráis imithe in éag.",
     "clockError": "Níl an stampa ama cothrom le clog an fhreastalaí.",
-    "corrupt": "Theip ar bhailíochtú an tsuímh stóráilte.",
+    "corrupt": "Theip ar bhailíochtú an léargais shealadaigh stóráilte.",
     "unsupported": "Ní dhéanann an t-ionad seo tuairisciú ar stádas cuntais.",
     "notApplicable": "Ní bhaineann an chomhpháirt seo leis an ionad.",
     "unknown": "Ní fhéadfaí an stádas a rangú."
@@ -54,7 +54,7 @@
     "side": "Taobh",
     "size": "Méid",
     "entryPrice": "Praghas iontrála",
-    "markPrice": "Praghas tagartha",
+    "markPrice": "Praghas marcála",
     "unrealizedPnl": "P&L neamhréadaithe",
     "unrealizedFunding": "Maoiniú"
   },
@@ -64,7 +64,7 @@
   },
   "mode": {
     "live": "Fíor",
-    "paper": "Taispeána"
+    "paper": "Ionsamhlaithe"
   },
   "meta": {
     "balancesObserved": "Iarmhéideanna feicthe {{timestamp}}",
@@ -75,14 +75,14 @@
   "noValue": "N/B",
   "reconciliation": {
     "status": {
-      "reconciled": "Athnóite",
+      "reconciled": "Réitithe",
       "driftDetected": "Sruth braite",
       "openDrift": "Sruth braite · oscailte ({{count}})",
       "unclassified": "Neamhaicmithe — aicmiú de dhíth",
-      "notReconciled": "Níl athnóite go fóill",
+      "notReconciled": "Níl réitithe go fóill",
       "stale": "Seanchaite",
       "clockError": "Earráid cloig",
-      "reconciliationError": "Earráid athmhuintearais",
+      "reconciliationError": "Earráid réitigh",
       "unsupported": "Gan tacaíocht",
       "unverified": "Neamhdheimhnithe"
     },
@@ -95,31 +95,31 @@
       "unknown": "Modh anaithnid"
     },
     "statusTooltip": {
-      "reconciled": "Modh: {{method}}. Meaitseáil fianaise údarásach athmhuintearais.",
-      "driftDetected": "Modh: {{method}}. Fuair fianaise údarásach athmhuintearais neamhréir.",
+      "reconciled": "Modh: {{method}}. Meaitseáil fianaise údarásach réitigh.",
+      "driftDetected": "Modh: {{method}}. Fuair fianaise údarásach réitigh neamhréir.",
       "openDrift": "Modh: {{method}}. Tá eachtra dialla fós oscailte. Líon na neamhréireachtaí iomlána as a chéile sa réiteach: {{count}}.",
-      "unclassified": "Modh: {{method}}. Tá aicmiú oibreora ag teastáil sular féidir athmhuintearas a rith.",
-      "notReconciled": "Modh: {{method}}. Níl an fhianaise athmhuintearais iomlán fós.",
-      "stale": "Modh: {{method}}. Tá an fíorasc athmhuintearais ró-shean le bheith iontaofa.",
-      "clockError": "Modh: {{method}}. Tá stampaí ama athmhuintearais ag teacht salach ar chlog an fhreastalaí.",
-      "reconciliationError": "Modh: {{method}}. Ní raibh an t-athmhuintearas in ann fíorasc iontaofa a chruthú.",
-      "unsupported": "Modh: {{method}}. Ní thacaítear le hathmhuintearas don chuntas seo.",
-      "unverified": "Modh: {{method}}. Níl an fíorasc seo údarásach agus ní mheastar é a bheith athnóite."
+      "unclassified": "Modh: {{method}}. Tá aicmiú oibreora ag teastáil sular féidir réiteach a rith.",
+      "notReconciled": "Modh: {{method}}. Níl an fhianaise réitigh iomlán fós.",
+      "stale": "Modh: {{method}}. Tá an fíorasc réitigh ró-shean le bheith iontaofa.",
+      "clockError": "Modh: {{method}}. Tá stampaí ama réitigh ag teacht salach ar chlog an fhreastalaí.",
+      "reconciliationError": "Modh: {{method}}. Ní raibh an réiteach in ann fíorasc iontaofa a chruthú.",
+      "unsupported": "Modh: {{method}}. Ní thacaítear le réiteach don chuntas seo.",
+      "unverified": "Modh: {{method}}. Níl an fíorasc seo údarásach agus ní mheastar é a bheith réitithe."
     },
     "classify": {
       "action": "Aicmigh",
-      "title": "Aicmigh an modh athmhuintearais",
-      "intro": "Roghnaigh conas a dhéantar athmhuintearas idir an cuntas malartáin seo agus sonraí údarásacha an mhalartáin. Is ráiteas fíorais é seo faoin gcuntas, seachas rogha.",
+      "title": "Aicmigh an modh réitigh",
+      "intro": "Roghnaigh conas a dhéantar réiteach idir an cuntas malartáin seo agus sonraí údarásacha an mhalartáin. Is ráiteas fíorais é seo faoin gcuntas, seachas rogha.",
       "guidance": "Roghnaigh an modh a mheaitseálann an chaoi a bhfeidhmíonn an cuntas i ndáiríre ag an malartán: socraíonn cuntais airgid thirim (spot) trádálacha ó iarmhéideanna airgid thirim amháin, agus is féidir le cuntais chorrlaigh iasacht a fháil in aghaidh comhthaobhachta. Mura bhfuil tú cinnte conas a fheidhmíonn an cuntas, fág neamhaicmithe é.",
       "immutabilityWarning": "Tá an t-aicmiú seo buan. Ní féidir é a athrú ná a bhaint a luaithe a shocraítear é.",
       "acknowledge": "Tuigim go bhfuil an t-aicmiú seo buan agus go dtagann sé leis an gcaoi a bhfeidhmíonn an cuntas seo.",
       "methodDescription": {
-        "futuresPosition": "Déanann sé athmhuintearas idir suíomhanna díorthach oscailte agus sonraí údarásacha an mhalartáin faoi shuímh todhchaíochtaí.",
+        "futuresPosition": "Déanann sé réiteach idir suíomhanna díorthach oscailte agus sonraí údarásacha an mhalartáin faoi shuímh todhchaíochtaí.",
         "spotExecutionReplay": "Athsheinneann sé forghníomhuithe spot i gcoinne iarmhéideanna airgid thirim. Do chuntais airgid thirim amháin nach dtrádálann ar chorrlach riamh.",
         "marginLedgerReplay": "Athsheinneann sé mórleabhar corrlaigh an mhalartáin. Do chuntais a thrádálann ar chorrlach nó a fhaigheann iasacht in aghaidh comhthaobhachta."
       },
       "credentialLoading": "Dintiúr á lódáil…",
-      "noCredential": "Níor aimsíodh aon dintiúr gníomhach fíor-ama don chuntas seo. Ní féidir an modh athmhuintearais a aicmiú.",
+      "noCredential": "Níor aimsíodh aon dintiúr gníomhach fíor-ama don chuntas seo. Ní féidir an modh réitigh a aicmiú.",
       "ambiguousCredential": "Tá roinnt dintiúr fíor-ama ag teacht leis an gcuntas seo. Teastaíonn dintiúr amháin go díreach don aicmiú.",
       "confirm": "Aicmigh an cuntas",
       "cancel": "Cealaigh",

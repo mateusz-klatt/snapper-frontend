@@ -109,7 +109,7 @@
     "equity": {
       "title": "Накладання власного капіталу",
       "seriesLabel": "Власний капітал",
-      "seriesLabelSpotOnly": "Власний капітал (спотовий майданчик)",
+      "seriesLabelSpotOnly": "Власний капітал (спотова біржа)",
       "latest": "Останнє значення: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Як тлумачити дані",
-        "spotOnly": "Лише спотовий майданчик — залишки на інших майданчиках не враховуються.",
+        "spotOnly": "Лише спотова біржа — залишки на інших біржах не враховуються.",
         "flowsUnadjusted": "Зовнішні поповнення та виведення коштів не виключено.",
         "restatedFrom": "Ці дані перераховані з {{from}} за курсом закриття кожної хвилини й не були безпосередньо виміряні в цій валюті.",
         "pricedOn": "Оцінено за {{plane}}.",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Додати Trailing Stop — {{instrument}}",
-    "confirmTitle": "Підтвердити Trailing Stop",
+    "title": "Додати трейлінг-стоп — {{instrument}}",
+    "confirmTitle": "Підтвердити трейлінг-стоп",
     "position": "Позиція",
     "entryPrice": "Ціна входу",
     "trailingDistanceLabel": "Дистанція Trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "наприклад 5.0",
       "minLockPct": "0 = почати негайно"
     },
-    "minLockWarning": "Trailing Stop не активується, доки ціна не пройде {{minLockPct}}% у сприятливому напрямку.",
+    "minLockWarning": "Трейлінг-стоп не активується, доки ціна не пройде {{minLockPct}}% у сприятливому напрямку.",
     "buttons": {
       "cancel": "Скасувати",
       "review": "Переглянути",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Потрібна хоча б одна ціна SL або TP",
-    "invalidSlPrice": "Некоректна ціна Stop-Loss",
-    "slPricePositive": "Ціна Stop-Loss має бути додатною",
-    "invalidTpPrice": "Некоректна ціна Take-Profit",
-    "tpPricePositive": "Ціна Take-Profit має бути додатною",
+    "invalidSlPrice": "Некоректна ціна стоп-лосу",
+    "slPricePositive": "Ціна стоп-лосу має бути додатною",
+    "invalidTpPrice": "Некоректна ціна тейк-профіту",
+    "tpPricePositive": "Ціна тейк-профіту має бути додатною",
     "slLongBelowEntry": "Ціна SL має бути нижчою за ціну входу ({{price}})",
     "tpLongAboveEntry": "Ціна TP має бути вищою за ціну входу ({{price}})",
     "slShortAboveEntry": "Ціна SL має бути вищою за ціну входу ({{price}})",

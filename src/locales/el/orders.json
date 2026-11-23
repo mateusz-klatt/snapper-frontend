@@ -81,7 +81,7 @@
     "titleEdit": "Νέα χειροκίνητη εντολή",
     "titleConfirm": "Επιβεβαίωση εντολής",
     "fields": {
-      "exchange": "Αγορά",
+      "exchange": "Ανταλλακτήριο",
       "instrument": "Μέσο",
       "side": "Πλευρά",
       "orderType": "Τύπος εντολής",

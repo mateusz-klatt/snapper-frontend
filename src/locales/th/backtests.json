@@ -50,7 +50,7 @@
       "crossAsset": "การระบุที่มาแบบ cross-asset",
       "configHash": "แฮชการกำหนดค่า"
     },
-    "crossAssetFlow": "{{source}} Feed → การดำเนินการบน {{target}}",
+    "crossAssetFlow": "{{source}} Feed → การจับคู่คำสั่งซื้อขายบน {{target}}",
     "errors": {
       "invalidRunId": "run id ไม่ถูกต้อง — ต้องเป็น UUID7 (ได้รับ \"{{id}}\")",
       "loadFailed": "โหลด run ไม่สำเร็จ: {{message}}",

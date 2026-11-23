@@ -1,11 +1,11 @@
 {
   "page": {
     "title": "Akaun Bursa",
-    "subtitle": "Baki tunai bursa dan kedudukan terbuka, dilabel mengikut laporan bursa."
+    "subtitle": "Baki tunai bursa dan posisi terbuka, dilabel mengikut laporan bursa."
   },
   "empty": {
     "title": "Tiada akaun",
-    "message": "Baki dan kedudukan akan muncul di sini setelah akaun dikesan."
+    "message": "Baki dan posisi akan muncul di sini setelah akaun dikesan."
   },
   "banner": {
     "title": "Sesetengah data akaun bukan masa nyata",
@@ -27,8 +27,8 @@
   },
   "statusTooltip": {
     "observed": "Data bursa masa nyata yang boleh dipercayai, direkodkan dalam tempoh sah.",
-    "simulated": "Angka dagangan kertas — bukan baki bursa sebenar.",
-    "stale": "Rekod terakhir yang diketahui; tempoh sah telah tamat atau pengambilan data terhenti.",
+    "simulated": "Angka dagangan simulasi — bukan baki bursa sebenar.",
+    "stale": "Snapshot terakhir yang diketahui; tempoh sah telah tamat atau pengambilan data terhenti.",
     "clockError": "Cap masa pemerhatian tidak konsisten dengan pelayan.",
     "corrupt": "Snapshot yang disimpan gagal disahkan.",
     "unsupported": "Bursa ini tidak melaporkan keadaan akaun.",
@@ -37,11 +37,11 @@
   },
   "section": {
     "balances": "Baki",
-    "positions": "Kedudukan terbuka"
+    "positions": "Posisi terbuka"
   },
   "sectionEmpty": {
     "balances": "Tiada baki dilaporkan",
-    "positions": "Tiada kedudukan terbuka"
+    "positions": "Tiada posisi terbuka"
   },
   "balance": {
     "currency": "Mata Wang",
@@ -64,11 +64,11 @@
   },
   "mode": {
     "live": "Sebenar",
-    "paper": "Demo"
+    "paper": "Simulasi"
   },
   "meta": {
     "balancesObserved": "Baki diperhatikan {{timestamp}}",
-    "positionsObserved": "Kedudukan diperhatikan {{timestamp}}",
+    "positionsObserved": "Posisi diperhatikan {{timestamp}}",
     "authoritativeUntil": "Sahih sehingga {{timestamp}}",
     "error": "Ralat: {{message}}"
   },
@@ -87,7 +87,7 @@
       "unverified": "Tidak disahkan"
     },
     "method": {
-      "futuresPosition": "Kedudukan hadapan",
+      "futuresPosition": "Posisi niaga hadapan",
       "spotExecutionReplay": "Ulang tayang pelaksanaan lani",
       "marginLedgerReplay": "Ulang tayang lejar margin",
       "unclassified": "Tidak dikelaskan",
@@ -114,7 +114,7 @@
       "immutabilityWarning": "Pengelasan ini kekal. Ia tidak boleh diubah atau dialih keluar setelah ditetapkan.",
       "acknowledge": "Saya faham bahawa pengelasan ini kekal dan sepadan dengan cara akaun ini beroperasi.",
       "methodDescription": {
-        "futuresPosition": "Menyelaraskan kedudukan derivatif terbuka dengan data kedudukan hadapan bursa yang boleh dipercayai.",
+        "futuresPosition": "Menyelaraskan posisi derivatif terbuka dengan data posisi niaga hadapan bursa yang boleh dipercayai.",
         "spotExecutionReplay": "Memainkan semula pelaksanaan lani terhadap baki tunai. Untuk akaun tunai sahaja yang tidak pernah berdagang secara margin.",
         "marginLedgerReplay": "Memainkan semula lejar margin bursa. Untuk akaun yang berdagang secara margin atau meminjam dengan cagaran."
       },

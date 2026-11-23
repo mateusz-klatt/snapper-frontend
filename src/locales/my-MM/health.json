@@ -24,7 +24,7 @@
     "tradingEngine": "ကုန်သွယ်ရေး Engine",
     "tradingEngineDescription": "ဗျူဟာ အကောင်အထည်ဖော် engine",
     "activeBacktests": "လှုပ်ရှားနေသော နောက်ကြောင်းပြန် စမ်းသပ်မှုများ",
-    "activeBacktestsDescription": "လည်ပတ်နေသော backtest လုပ်ငန်းစဉ်များ",
+    "activeBacktestsDescription": "လည်ပတ်နေသော နောက်ကြောင်းပြန် စမ်းသပ်မှု လုပ်ငန်းစဉ်များ",
     "active": "လှုပ်ရှားနေသည်",
     "inactive": "မလှုပ်ရှားပါ"
   },

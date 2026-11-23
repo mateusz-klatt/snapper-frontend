@@ -65,7 +65,7 @@
     "runLabel": "Εκτέλεση {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Μετρικές",
-      "equityOverlay": "Επικάλυψη καμπύλης κεφαλαίου",
+      "equityOverlay": "Επικάλυψη καμπύλης καθαρής θέσης",
       "trades": "Συναλλαγές",
       "signals": "Σήματα"
     },
@@ -131,7 +131,7 @@
     "waiting": "Αναμονή προόδου…",
     "candles": "{{done}} / {{total}} κεριά",
     "candlesNoTotal": "{{done}} κεριά",
-    "equity": "κεφάλαιο {{value}}",
+    "equity": "καθαρή θέση {{value}}",
     "signalsTrades": "{{signals}} sig / {{trades}} συναλλαγές",
     "milestoneLine": "ορόσημο {{label}}",
     "milestone": {

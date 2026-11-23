@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} u {{minutes}} min",
     "uptimeDays": "{{days}} d {{hours}} u",
-    "backtestName": "Historische test {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N.v.t.",
     "uptimeLabel": "Bedrijfstijd",
     "exitCode": "Exitcode: {{code}}",
     "service": "dienst",
-    "backtest": "historische test"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Databasestatistieken",

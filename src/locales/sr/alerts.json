@@ -9,7 +9,7 @@
   },
   "alertType": {
     "critical_system_error": "Greška sistema",
-    "margin_warning": "Upozorenje o marginu",
+    "margin_warning": "Upozorenje o margini",
     "order_fill_full": "Nalog izvršen",
     "order_rejected": "Nalog odbijen",
     "position_stop_loss_fired": "Stop-loss aktiviran"
@@ -67,7 +67,7 @@
   },
   "title": {
     "critical_system_error": "Sistem degradiran: {{0}}",
-    "margin_warning": "Upozorenje o marginu",
+    "margin_warning": "Upozorenje o margini",
     "order_fill_full": "Nalog izvršen",
     "order_rejected": "Nalog odbijen",
     "order_unknown": "Status naloga nepoznat",

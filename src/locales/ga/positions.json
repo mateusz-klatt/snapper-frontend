@@ -64,7 +64,7 @@
         "scope_order_regression": "Cúlchéim in ord na scóipe",
         "before_activation": "Tá an pointe roimh an ngníomhachtú",
         "activation_baseline_non_finite": "Ní luach críochta í bunlíne an ghníomhachtaithe",
-        "fill_evidence_gap": "Bearna san fhianaise bhuan ar líonadh",
+        "fill_evidence_gap": "Bearna san fhianaise bhuan ar fhorghníomhú ordaithe",
         "seed_quantity_non_finite": "Ní luach críochta í an chainníocht thosaigh",
         "cost_basis_unavailable": "Níl bonn costais ar fáil",
         "execution_price_provenance_unproven": "Níor fíoraíodh bunús an phraghais forghníomhaithe",
@@ -76,7 +76,7 @@
         "unrealized_non_finite": "Níl P&L neamhréadaithe críochta",
         "net_non_finite": "Níl P&L glan críochta",
         "attribution_value_non_finite": "Níl luach an tsannta críochta",
-        "attribution_reconciliation_failed": "Theip ar athmhuintearas an tsannta",
+        "attribution_reconciliation_failed": "Theip ar réiteach an tsannta",
         "attribution_sum_unrepresentable": "Ní féidir suim na luachanna P&L sannta a léiriú in uimhríocht uimhriúil bheacht",
         "instrument_reconciliation_failed": "Theip ar shuimeanna P&L de réir ionstraime a réiteach leis an P&L iomlán",
         "instrument_sum_unrepresentable": "Ní féidir suim na luachanna de réir ionstraime a léiriú in uimhríocht uimhriúil bheacht",
@@ -109,7 +109,7 @@
     "equity": {
       "title": "Forleagan cothromais",
       "seriesLabel": "Cothromas",
-      "seriesLabelSpotOnly": "Cothromas (ionad spotmhargaidh)",
+      "seriesLabelSpotOnly": "Cothromas (malartán spot)",
       "latest": "Is déanaí: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Conas é seo a léamh",
-        "spotOnly": "An t-ionad spotmhargaidh amháin — ní áirítear iarmhéideanna ar ionaid eile.",
+        "spotOnly": "An malartán spot amháin — ní áirítear iarmhéideanna ar mhalartáin eile.",
         "flowsUnadjusted": "Níor baineadh taiscí ná aistarraingtí seachtracha as.",
         "restatedFrom": "Athráitear na figiúirí seo ó {{from}} ag clabhsúr gach nóiméid, ní samplaithe go dúchasach san airgeadra seo iad.",
         "pricedOn": "Praghsáilte ar {{plane}}.",
@@ -142,14 +142,14 @@
       "show": "Taispeáin marcóirí cinnidh",
       "hide": "Folaigh marcóirí cinnidh",
       "legendAriaLabel": "Eochair na marcóirí cinnidh",
-      "truncated": "Teorannaíodh torthaí na marcóirí go {{limit}}. Tá cinntí nó líonta breise san fhuinneog seo.",
+      "truncated": "Teorannaíodh torthaí na marcóirí go {{limit}}. Tá cinntí nó forghníomhuithe orduithe breise san fhuinneog seo.",
       "legend": {
-        "fillExecuted": "Líonadh · forghníomhaithe",
+        "fillExecuted": "Forghníomhú ordaithe · forghníomhaithe",
         "signalExecuted": "Comhartha · forghníomhaithe",
-        "signalNoFill": "Comhartha · gan líonadh",
+        "signalNoFill": "Comhartha · gan fhorghníomhú ordaithe",
         "aiExecuted": "Cinneadh AI · forghníomhaithe",
         "aiRejected": "Cinneadh AI · diúltaithe",
-        "aiNoFill": "Cinneadh AI · gan líonadh"
+        "aiNoFill": "Cinneadh AI · gan fhorghníomhú ordaithe"
       },
       "detail": {
         "title": "Sonraí marcóra",
@@ -174,14 +174,14 @@
         "rationale": "Réasúnaíocht",
         "noValue": "—",
         "types": {
-          "fill": "Líonadh",
+          "fill": "Forghníomhú ordaithe",
           "signal": "Comhartha",
           "ai_decision": "Cinneadh AI"
         },
         "outcomes": {
           "executed": "Forghníomhaithe",
           "rejected": "Diúltaithe",
-          "no_fill": "Gan líonadh"
+          "no_fill": "Gan fhorghníomhú ordaithe"
         }
       }
     },
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Ceangail Trailing Stop — {{instrument}}",
-    "confirmTitle": "Deimhnigh Trailing Stop",
+    "title": "Ceangail Stad leantach — {{instrument}}",
+    "confirmTitle": "Deimhnigh Stad leantach",
     "position": "Suíomh",
     "entryPrice": "Praghas Iontrála",
     "trailingDistanceLabel": "Fad Trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "m.sh. 5.0",
       "minLockPct": "0 = tosaigh láithreach"
     },
-    "minLockWarning": "Ní ghníomhachtóidh an trailing stop go dtí go mbogfaidh an praghas {{minLockPct}}% i do threo.",
+    "minLockWarning": "Ní ghníomhachtóidh an stad leantach go dtí go mbogfaidh an praghas {{minLockPct}}% i do threo.",
     "buttons": {
       "cancel": "Cealaigh",
       "review": "Athbhreithnigh",

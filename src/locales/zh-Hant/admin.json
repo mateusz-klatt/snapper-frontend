@@ -11,7 +11,7 @@
     },
     "operator": {
       "label": "操作員",
-      "description": "擁有檢視者的全部可見範圍，並可控制交易、部位、策略、進程、回測和 AI 整合。"
+      "description": "擁有檢視者的全部可見範圍，並可控制交易、倉位、策略、進程、回測和 AI 整合。"
     },
     "admin": {
       "label": "管理員",
@@ -31,7 +31,7 @@
       "strategies": "策略",
       "orders": "訂單與成交",
       "positions": "倉位",
-      "signals": "信號",
+      "signals": "訊號",
       "health": "系統健康",
       "admin": "管理",
       "settings": "設定"

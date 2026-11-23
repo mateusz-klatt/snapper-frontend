@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Geçerlilik süresi içinde alınmış güvenilir ve gerçek zamanlı borsa verileri.",
-    "simulated": "Kağıt ticareti rakamları — gerçek borsa bakiyeleri değil.",
+    "simulated": "Demo işlem rakamları — gerçek borsa bakiyeleri değil.",
     "stale": "Bilinen son anlık görüntü; geçerlilik süresi doldu veya veri alımı durdu.",
     "clockError": "Gözlem zaman damgası sunucu saatiyle tutarsız.",
     "corrupt": "Depolanan anlık görüntü doğrulanamadı.",
@@ -54,7 +54,7 @@
     "side": "Yön",
     "size": "Büyüklük",
     "entryPrice": "Giriş",
-    "markPrice": "Referans fiyatı",
+    "markPrice": "Mark fiyatı",
     "unrealizedPnl": "Gerçekleşmemiş kâr/zarar",
     "unrealizedFunding": "Fonlama"
   },

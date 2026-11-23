@@ -50,7 +50,7 @@
       "crossAsset": "Atribúidiú tras-sócmhainne",
       "configHash": "Hais cumraíochta"
     },
-    "crossAssetFlow": "fotha {{source}} → líonta {{target}}",
+    "crossAssetFlow": "fotha {{source}} → forghníomhuithe orduithe {{target}}",
     "errors": {
       "invalidRunId": "ID rite neamhbhailí — caithfidh sé a bheith ina UUID7 (fuarthas \"{{id}}\").",
       "loadFailed": "Theip ar lódáil an rite: {{message}}",

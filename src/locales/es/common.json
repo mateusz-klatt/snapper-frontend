@@ -38,7 +38,7 @@
       "ariaLabel": "Cartera activa",
       "placeholder": "Cartera",
       "allWallets": "Todas las carteras",
-      "optionPaper": "{{label}} (papel)"
+      "optionPaper": "{{label}} (simulado)"
     },
     "operatorPicker": {
       "ariaLabel": "Operador activo",
@@ -51,7 +51,7 @@
       "exitTitle": "Volver al modo en vivo"
     },
     "marketDataOnly": {
-      "defaultTooltip": "Instrumento solo de observación. Snapper recibe datos de mercado, pero no puede enviar órdenes para este par (símbolo, exchange).",
+      "defaultTooltip": "Instrumento solo de observación. Snapper recibe datos de mercado, pero no puede enviar órdenes para este par (símbolo, plataforma de intercambio).",
       "ariaLabel": "Instrumento solo con datos de mercado",
       "badge": "Solo datos de mercado"
     },
@@ -71,7 +71,7 @@
     "aiIntegration": "Integración con IA",
     "aiReviews": "Revisiones de IA",
     "alerts": "Alertas",
-    "backtests": "Pruebas retrospectivas",
+    "backtests": "Backtests",
     "health": "Estado",
     "market": "Datos de mercado",
     "orders": "Órdenes y ejecuciones",

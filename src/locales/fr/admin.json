@@ -50,7 +50,7 @@
     "subtitle": "Ajoutez des observateurs actifs à un desk ou supprimez leur accès actuel.",
     "memberCount": "Membres : {{count}}",
     "desk": {
-      "label": "Bureau de négociation",
+      "label": "Desk",
       "placeholder": "Sélectionnez un desk..."
     },
     "add": {
@@ -99,10 +99,10 @@
   },
   "common": {
     "cancel": "Annuler",
-    "selectWallet": "Sélectionner un wallet",
-    "selectAWallet": "Sélectionnez un wallet",
-    "chooseWalletPlaceholder": "Choisir un wallet...",
-    "selectWalletPlaceholder": "Sélectionner un wallet...",
+    "selectWallet": "Sélectionner un portefeuille",
+    "selectAWallet": "Sélectionnez un portefeuille",
+    "chooseWalletPlaceholder": "Choisir un portefeuille...",
+    "selectWalletPlaceholder": "Sélectionner un portefeuille...",
     "walletLabel": "Portefeuille",
     "paperAnnotation": " (démo)",
     "unknownError": "Erreur inconnue",
@@ -205,7 +205,7 @@
       "title": "Attributions de scope",
       "countLabel": "Autorisations d’accès : {{count}}",
       "createGrant": "Créer une attribution",
-      "selectWalletPrompt": "Choisissez un wallet ci-dessus pour afficher ses attributions de scope.",
+      "selectWalletPrompt": "Choisissez un portefeuille ci-dessus pour afficher ses attributions de scope.",
       "columns": {
         "operator": "Opérateur",
         "scope": "Périmètre",
@@ -215,11 +215,11 @@
       },
       "empty": {
         "noGrants": "Aucune attribution trouvée",
-        "noGrantsHint": "Ce wallet n'a aucune attribution de scope active."
+        "noGrantsHint": "Ce portefeuille n'a aucune attribution de scope active."
       },
       "errorLoading": "Erreur lors du chargement des attributions : {{message}}",
       "handover": "Transférer",
-      "allWallets": "Tous les wallets"
+      "allWallets": "Tous les portefeuilles"
     },
     "form": {
       "title": "Créer une attribution de scope",
@@ -232,7 +232,7 @@
         "instrumentPublicId": "Public ID de l'instrument",
         "underlyingPlaceholder": "p. ex. BTC",
         "instrumentPlaceholder": "p. ex. BTC-USD-PERP",
-        "exchange": "Plateforme",
+        "exchange": "Plateforme d’échange",
         "exchangePlaceholder": "Sélectionner une plateforme...",
         "instrumentSelectPlaceholder": "Sélectionner un instrument...",
         "selectExchangeFirst": "Sélectionnez d'abord une plateforme",
@@ -245,7 +245,7 @@
       },
       "validation": {
         "operatorRequired": "L'opérateur est requis",
-        "walletRequired": "Le wallet est requis",
+        "walletRequired": "Le portefeuille est requis",
         "targetRequired": "L'identifiant de cible est requis"
       },
       "actions": {
@@ -307,15 +307,15 @@
   "credentials": {
     "accessDenied": {
       "title": "Accès refusé",
-      "message": "Vous n'avez pas l'autorisation de gérer les identifiants de wallet. Contactez votre administrateur système."
+      "message": "Vous n'avez pas l'autorisation de gérer les identifiants de portefeuille. Contactez votre administrateur système."
     },
     "list": {
-      "title": "Identifiants du wallet",
+      "title": "Identifiants du portefeuille",
       "countLabel": "Identifiants d’accès : {{count}}",
       "addCredential": "Ajouter un identifiant",
-      "selectWalletPrompt": "Choisissez un wallet ci-dessus pour afficher ses identifiants.",
+      "selectWalletPrompt": "Choisissez un portefeuille ci-dessus pour afficher ses identifiants.",
       "columns": {
-        "exchange": "Plateforme",
+        "exchange": "Plateforme d’échange",
         "type": "Type",
         "label": "Libellé",
         "createdAt": "Créé le",
@@ -323,7 +323,7 @@
       },
       "empty": {
         "noCredentials": "Aucun identifiant trouvé",
-        "noCredentialsHint": "Ce wallet n'a aucun identifiant actif."
+        "noCredentialsHint": "Ce portefeuille n'a aucun identifiant actif."
       },
       "errorLoading": "Erreur lors du chargement des identifiants : {{message}}",
       "rotate": "Faire pivoter"
@@ -332,7 +332,7 @@
       "title": "Ajouter un identifiant",
       "fields": {
         "wallet": "Portefeuille",
-        "exchange": "Plateforme",
+        "exchange": "Plateforme d’échange",
         "exchangePlaceholder": "p. ex. kraken",
         "credentialType": "Type d'identifiant",
         "label": "Libellé (optionnel)",
@@ -355,7 +355,7 @@
         "paper": "Démo"
       },
       "validation": {
-        "walletRequired": "Le wallet est requis",
+        "walletRequired": "Le portefeuille est requis",
         "exchangeRequired": "La plateforme est requise",
         "fieldRequired": "{{field}} est requis"
       },
@@ -364,14 +364,14 @@
       },
       "toast": {
         "created": "Identifiant créé",
-        "conflictError": "Conflit : ce wallet a déjà un identifiant actif pour cette plateforme",
+        "conflictError": "Conflit : ce portefeuille a déjà un identifiant actif pour cette plateforme",
         "createError": "Erreur lors de la création de l'identifiant"
       }
     },
     "rotate": {
       "title": "Faire pivoter l'identifiant",
       "fields": {
-        "exchange": "Plateforme",
+        "exchange": "Plateforme d’échange",
         "type": "Type",
         "label": "Libellé",
         "newLabel": "Nouveau libellé (optionnel)",

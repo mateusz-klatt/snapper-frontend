@@ -3,7 +3,7 @@
     "title": "État du système",
     "healthMetricsHeading": "Métriques de santé",
     "processStatusHeading": "État des processus",
-    "activeBacktestsHeading": "Tests historiques actifs",
+    "activeBacktestsHeading": "Backtests actifs",
     "quickActionsHeading": "Actions rapides",
     "featureNotImplemented": "Fonctionnalité pas encore implémentée",
     "restartServices": "Redémarrer les services",
@@ -23,8 +23,8 @@
   "metrics": {
     "tradingEngine": "Moteur de trading",
     "tradingEngineDescription": "Moteur d'exécution des stratégies",
-    "activeBacktests": "Tests historiques actifs",
-    "activeBacktestsDescription": "Processus de tests historiques en cours",
+    "activeBacktests": "Backtests actifs",
+    "activeBacktestsDescription": "Processus de backtests en cours",
     "active": "Actif",
     "inactive": "Inactif"
   },
@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} h {{minutes}} min",
     "uptimeDays": "{{days}} j {{hours}} h",
-    "backtestName": "Test historique {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Temps de fonctionnement",
     "exitCode": "Code de sortie : {{code}}",
     "service": "service",
-    "backtest": "test historique"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Statistiques de la base de données",

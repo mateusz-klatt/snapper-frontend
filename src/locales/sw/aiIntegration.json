@@ -52,7 +52,7 @@
       "maxOpenOrders": "Oda wazi za juu",
       "maxDailyNotionalUsd": "Notional USD ya juu kwa siku",
       "maxCancelsPerMinute": "Kughairi kwa juu kwa dakika",
-      "perInstrument": "Kiasi cha juu kwa instrumenti (JSON)",
+      "perInstrument": "Kiasi cha juu kwa chombo cha kifedha (JSON)",
       "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
       "default": "chaguo-msingi",
       "errorInvalidJson": "max_order_quantity_per_instrument lazima iwe JSON sahihi",
@@ -66,7 +66,7 @@
       "rowMaxOpenOrders": "Oda wazi za juu",
       "rowMaxDailyNotional": "Notional USD ya juu kwa siku",
       "rowMaxCancelsPerMinute": "Kughairi kwa juu kwa dakika",
-      "rowPerInstrument": "Kiasi cha juu kwa instrumenti",
+      "rowPerInstrument": "Kiasi cha juu kwa chombo cha kifedha",
       "operatorDefault": "(opereta mkuu wa mpigaji)",
       "defaultValue": "(chaguo-msingi)"
     },
@@ -101,7 +101,7 @@
     "maxOpenOrders": "Oda wazi za juu",
     "maxDailyNotionalUsd": "Notional USD ya juu kwa siku",
     "maxCancelsPerMinute": "Kughairi kwa juu kwa dakika",
-    "perInstrument": "Kiasi cha juu kwa instrumenti",
+    "perInstrument": "Kiasi cha juu kwa chombo cha kifedha",
     "defaultValue": "(chaguo-msingi)",
     "editorPlaceholder": "(chaguo-msingi)",
     "toast": {

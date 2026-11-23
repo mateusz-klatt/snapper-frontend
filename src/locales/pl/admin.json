@@ -44,14 +44,14 @@
   "deskMemberships": {
     "accessDenied": {
       "title": "Brak dostępu",
-      "message": "Nie masz uprawnień do zarządzania członkostwem w deskach."
+      "message": "Nie masz uprawnień do zarządzania członkostwem w zespołach tradingowych."
     },
-    "title": "Członkowie desku",
-    "subtitle": "Dodawaj aktywnych obserwatorów do desku lub odbieraj im bieżący dostęp.",
+    "title": "Członkowie zespołu tradingowego",
+    "subtitle": "Dodawaj aktywnych obserwatorów do zespołu tradingowego lub odbieraj im bieżący dostęp.",
     "memberCount": "Członkowie: {{count}}",
     "desk": {
       "label": "Zespół tradingowy",
-      "placeholder": "Wybierz desk..."
+      "placeholder": "Wybierz zespół tradingowy..."
     },
     "add": {
       "usernameLabel": "Nazwa użytkownika obserwatora",
@@ -72,29 +72,29 @@
     "member": "Członek",
     "remove": {
       "action": "Usuń",
-      "actionFor": "Usuń użytkownika {{username}} z desku",
+      "actionFor": "Usuń użytkownika {{username}} z zespołu tradingowego",
       "viewerOnly": "Tutaj można usuwać tylko obserwatorów",
-      "title": "Usuń członka desku",
-      "message": "Usunąć użytkownika \"{{username}}\" z tego desku? Jego aktywne sesje zostaną zakończone i będzie musiał zalogować się ponownie.",
+      "title": "Usuń członka zespołu tradingowego",
+      "message": "Usunąć użytkownika \"{{username}}\" z tego zespołu tradingowego? Jego aktywne sesje zostaną zakończone i będzie musiał zalogować się ponownie.",
       "confirm": "Usuń członka"
     },
     "empty": {
-      "noDesks": "Brak dostępnych desków",
-      "noDesksHint": "Nie masz obecnie dostępu do desku, którym możesz zarządzać.",
-      "selectDesk": "Wybierz desk",
-      "selectDeskHint": "Wybierz desk, aby wyświetlić jego członków i nimi zarządzać.",
+      "noDesks": "Brak dostępnych zespołów tradingowych",
+      "noDesksHint": "Nie masz obecnie dostępu do zespołu tradingowego, którym możesz zarządzać.",
+      "selectDesk": "Wybierz zespół tradingowy",
+      "selectDeskHint": "Wybierz zespół tradingowy, aby wyświetlić jego członków i nimi zarządzać.",
       "noMembers": "Brak aktywnych członków",
-      "noMembersHint": "Ten desk nie ma aktywnych członków będących osobami."
+      "noMembersHint": "Ten zespół tradingowy nie ma aktywnych członków będących osobami."
     },
     "errors": {
-      "loadDesks": "Błąd ładowania desków: {{message}}",
-      "loadMembers": "Błąd ładowania członków desku: {{message}}"
+      "loadDesks": "Błąd ładowania zespołów tradingowych: {{message}}",
+      "loadMembers": "Błąd ładowania członków zespołu tradingowego: {{message}}"
     },
     "toast": {
-      "attached": "Użytkownik {{username}} został dodany do desku",
-      "attachError": "Błąd dodawania obserwatora do desku",
-      "detached": "Użytkownik {{username}} został usunięty z desku",
-      "detachError": "Błąd usuwania obserwatora z desku"
+      "attached": "Użytkownik {{username}} został dodany do zespołu tradingowego",
+      "attachError": "Błąd dodawania obserwatora do zespołu tradingowego",
+      "detached": "Użytkownik {{username}} został usunięty z zespołu tradingowego",
+      "detachError": "Błąd usuwania obserwatora z zespołu tradingowego"
     }
   },
   "common": {
@@ -104,7 +104,7 @@
     "chooseWalletPlaceholder": "Wybierz portfel...",
     "selectWalletPlaceholder": "Wybierz portfel...",
     "walletLabel": "Portfel",
-    "paperAnnotation": " (papierowy)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Nieznany błąd",
     "dash": "-",
     "readOnly": "Dostęp tylko do odczytu — wprowadzanie zmian jest wyłączone."
@@ -352,7 +352,7 @@
         "api_key_secret": "Klucz API + Sekret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Papierowe"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Portfel jest wymagany",

@@ -6,8 +6,8 @@
   "sections": {
     "longRunning": "Processus de longue durée",
     "executorTemplates": "Modèles d'exécuteur",
-    "executorTemplatesHint": "La modification de la configuration du modèle affecte tous les wallets de cette plateforme après redémarrage. Les modèles servent uniquement à la configuration — démarrez l'instance par wallet ci-dessous pour lancer un exécuteur.",
-    "walletInstances": "Instances par wallet",
+    "executorTemplatesHint": "La modification de la configuration du modèle affecte tous les portefeuilles de cette plateforme après redémarrage. Les modèles servent uniquement à la configuration — démarrez l'instance par portefeuille ci-dessous pour lancer un exécuteur.",
+    "walletInstances": "Instances par portefeuille",
     "taskProcesses": "Processus de tâches"
   },
   "card": {

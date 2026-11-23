@@ -38,7 +38,7 @@
       "ariaLabel": "المحفظة النشطة",
       "placeholder": "محفظة",
       "allWallets": "كل المحافظ",
-      "optionPaper": "{{label}} (ورقية)"
+      "optionPaper": "{{label}} (تجريبية)"
     },
     "operatorPicker": {
       "ariaLabel": "المشغّل النشط",

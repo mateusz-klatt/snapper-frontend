@@ -109,7 +109,7 @@
     "equity": {
       "title": "שכבת הון עצמי",
       "seriesLabel": "הון עצמי",
-      "seriesLabelSpotOnly": "הון עצמי (זירת מסחר מיידי)",
+      "seriesLabelSpotOnly": "הון עצמי (בורסת ספוט)",
       "latest": "אחרון: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "כיצד לקרוא נתונים אלה",
-        "spotOnly": "זירת המסחר המיידי בלבד — יתרות המוחזקות בזירות אחרות אינן נכללות.",
+        "spotOnly": "בורסת ספוט בלבד — יתרות המוחזקות בבורסות אחרות אינן נכללות.",
         "flowsUnadjusted": "הפקדות ומשיכות חיצוניות לא נוכו.",
         "restatedFrom": "נתונים אלה מחושבים מחדש מ־{{from}} לפי שער הסגירה של כל דקה, ואינם נדגמים במקור במטבע זה.",
         "pricedOn": "מתומחר לפי {{plane}}.",
@@ -145,8 +145,8 @@
       "truncated": "תוצאות הסמנים הוגבלו ל-{{limit}}. יש בחלון זמן זה החלטות או ביצועי פקודות נוספים.",
       "legend": {
         "fillExecuted": "ביצוע פקודה · הושלם",
-        "signalExecuted": "אות · בוצע",
-        "signalNoFill": "אות · ללא ביצוע פקודה",
+        "signalExecuted": "איתות · בוצע",
+        "signalNoFill": "איתות · ללא ביצוע פקודה",
         "aiExecuted": "החלטת AI · בוצעה",
         "aiRejected": "החלטת AI · נדחתה",
         "aiNoFill": "החלטת AI · ללא ביצוע פקודה"
@@ -166,7 +166,7 @@
         "strategyName": "שם אסטרטגיה",
         "strength": "עוצמה",
         "reason": "סיבה",
-        "signalId": "מזהה אות",
+        "signalId": "מזהה איתות",
         "strategyId": "מזהה אסטרטגיה",
         "reviewId": "מזהה סקירה",
         "eventId": "מזהה אירוע",
@@ -175,7 +175,7 @@
         "noValue": "—",
         "types": {
           "fill": "ביצוע פקודה",
-          "signal": "אות",
+          "signal": "איתות",
           "ai_decision": "החלטת AI"
         },
         "outcomes": {
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "צרף Trailing Stop — {{instrument}}",
-    "confirmTitle": "אשר Trailing Stop",
+    "title": "צרף סטופ נגרר — {{instrument}}",
+    "confirmTitle": "אשר סטופ נגרר",
     "position": "פוזיציה",
     "entryPrice": "מחיר כניסה",
     "trailingDistanceLabel": "מרחק Trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "למשל 5.0",
       "minLockPct": "0 = התחל מיד"
     },
-    "minLockWarning": "Trailing Stop לא יופעל עד שהמחיר ינוע {{minLockPct}}% לטובתך.",
+    "minLockWarning": "סטופ נגרר לא יופעל עד שהמחיר ינוע {{minLockPct}}% לטובתך.",
     "buttons": {
       "cancel": "בטל",
       "review": "בדוק",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "נדרש לפחות מחיר SL או TP אחד",
-    "invalidSlPrice": "מחיר Stop-Loss לא תקין",
-    "slPricePositive": "מחיר Stop-Loss חייב להיות חיובי",
-    "invalidTpPrice": "מחיר Take-Profit לא תקין",
-    "tpPricePositive": "מחיר Take-Profit חייב להיות חיובי",
+    "invalidSlPrice": "מחיר סטופ-לוס לא תקין",
+    "slPricePositive": "מחיר סטופ-לוס חייב להיות חיובי",
+    "invalidTpPrice": "מחיר טייק-פרופיט לא תקין",
+    "tpPricePositive": "מחיר טייק-פרופיט חייב להיות חיובי",
     "slLongBelowEntry": "מחיר SL חייב להיות מתחת למחיר הכניסה ({{price}})",
     "tpLongAboveEntry": "מחיר TP חייב להיות מעל מחיר הכניסה ({{price}})",
     "slShortAboveEntry": "מחיר SL חייב להיות מעל מחיר הכניסה ({{price}})",

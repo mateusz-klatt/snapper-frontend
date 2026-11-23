@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} mnt",
     "uptimeHours": "{{hours}} jam {{minutes}} mnt",
     "uptimeDays": "{{days}} hari {{hours}} jam",
-    "backtestName": "Uji historis {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Tidak tersedia",
     "uptimeLabel": "Waktu aktif",
     "exitCode": "Kode keluar: {{code}}",
     "service": "layanan",
-    "backtest": "uji historis"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Statistik Database",

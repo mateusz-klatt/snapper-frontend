@@ -109,7 +109,7 @@
     "equity": {
       "title": "Overlegg for egenkapital",
       "seriesLabel": "Egenkapital",
-      "seriesLabelSpotOnly": "Egenkapital (spotmarkedsplass)",
+      "seriesLabelSpotOnly": "Egenkapital (spotbørs)",
       "latest": "Siste: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Slik leser du dette",
-        "spotOnly": "Kun spotmarkedsplassen — saldoer på andre markedsplasser er utelatt.",
+        "spotOnly": "Kun spotbørsen — saldoer på andre børser er utelatt.",
         "flowsUnadjusted": "Eksterne innskudd og uttak er ikke trukket fra.",
         "restatedFrom": "Disse tallene er konvertert fra {{from}} ved hvert minutts stengekurs og måles ikke opprinnelig i denne valutaen.",
         "pricedOn": "Priset på {{plane}}.",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bekreft Bracket",
     "position": "Posisjon",
     "entryPrice": "Inngangspris",
-    "stopLossLabel": "Kurs for tapsbegrensning",
-    "takeProfitLabel": "Kurs for gevinstsikring",
-    "stopLoss": "Tapsbegrensning",
-    "takeProfit": "Gevinstsikring",
+    "stopLossLabel": "Kurs for stop loss",
+    "takeProfitLabel": "Kurs for take profit",
+    "stopLoss": "Stop loss",
+    "takeProfit": "Take profit",
     "placeholders": {
       "slLong": "Under {{price}}",
       "slShort": "Over {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Minst én av SL- eller TP-pris er påkrevd",
-    "invalidSlPrice": "Ugyldig kurs for tapsbegrensning",
-    "slPricePositive": "Kursen for tapsbegrensning må være positiv",
-    "invalidTpPrice": "Ugyldig kurs for gevinstsikring",
-    "tpPricePositive": "Kursen for gevinstsikring må være positiv",
+    "invalidSlPrice": "Ugyldig kurs for stop loss",
+    "slPricePositive": "Kursen for stop loss må være positiv",
+    "invalidTpPrice": "Ugyldig kurs for take profit",
+    "tpPricePositive": "Kursen for take profit må være positiv",
     "slLongBelowEntry": "SL-pris må være under inngangspris ({{price}})",
     "tpLongAboveEntry": "TP-pris må være over inngangspris ({{price}})",
     "slShortAboveEntry": "SL-pris må være over inngangspris ({{price}})",

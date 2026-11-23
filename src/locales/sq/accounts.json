@@ -27,10 +27,10 @@
   },
   "statusTooltip": {
     "observed": "Të dhëna të besueshme të bursës në kohë reale, të regjistruara brenda periudhës së vlefshmërisë.",
-    "simulated": "Të dhëna të tregtimit në letër — jo gjendje reale.",
-    "stale": "Pamja e fundit e njohur; periudha e vlefshmërisë ka skaduar ose marrja e të dhënave është ndalur.",
+    "simulated": "Të dhëna të tregtimit demo — jo gjendje reale.",
+    "stale": "Pamja e çastit e fundit e njohur; periudha e vlefshmërisë ka skaduar ose marrja e të dhënave është ndalur.",
     "clockError": "Vula kohore është në mospërputhje me serverin.",
-    "corrupt": "Fotografia e ruajtur dështoi në vërtetim.",
+    "corrupt": "Pamja e çastit e ruajtur dështoi në vërtetim.",
     "unsupported": "Kjo bursë nuk raporton gjendjen e llogarisë.",
     "notApplicable": "Ky komponent nuk vlen për bursën.",
     "unknown": "Statusi nuk mund të klasifikohej."

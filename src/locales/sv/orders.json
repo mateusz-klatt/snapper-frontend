@@ -14,9 +14,9 @@
       "all": "Alla ordrar",
       "new": "Ny",
       "open": "Öppen",
-      "partiallyFilled": "Delvis fylld",
-      "partially_filled": "Delvis fylld",
-      "filled": "Fylld",
+      "partiallyFilled": "Delvis utförd",
+      "partially_filled": "Delvis utförd",
+      "filled": "Utförd",
       "cancelled": "Makulerad",
       "rejected": "Avvisad"
     }
@@ -38,7 +38,7 @@
   },
   "executionCard": {
     "orderNumber": "Order nr {{orderId}}",
-    "filled": "FYLLD",
+    "filled": "UTFÖRD",
     "orderLabel": "Order {{orderId}}",
     "size": "Storlek",
     "price": "Pris",
@@ -98,7 +98,7 @@
       "sell": "Sälj"
     },
     "orderTypeOptions": {
-      "market": "Marknad",
+      "market": "Marknadsorder",
       "limit": "Limitorder",
       "stop": "Stopp",
       "stopLimit": "Stop-limit",
@@ -109,7 +109,7 @@
       "paper": "Simulerat"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — endast marknadsdata",
-    "walletPaperSuffix": "{{label}} (demo)",
+    "walletPaperSuffix": "{{label}} (simulerat)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

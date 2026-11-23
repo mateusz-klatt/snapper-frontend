@@ -109,7 +109,7 @@
     "equity": {
       "title": "Սեփական կապիտալի վերադիր",
       "seriesLabel": "Սեփական կապիտալ",
-      "seriesLabelSpotOnly": "Սեփական կապիտալ (սպոտ հարթակ)",
+      "seriesLabelSpotOnly": "Սեփական կապիտալ (սփոթ բորսա)",
       "latest": "Վերջինը՝ {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Ինչպես մեկնաբանել",
-        "spotOnly": "Միայն սպոտ հարթակը. այլ հարթակներում պահվող մնացորդները ներառված չեն։",
+        "spotOnly": "Միայն սփոթ բորսան. այլ բորսաներում պահվող մնացորդները ներառված չեն։",
         "flowsUnadjusted": "Արտաքին մուտքերն ու ելքերը հանված չեն։",
         "restatedFrom": "Այս ցուցանիշները վերահաշվարկված են {{from}}-ից՝ յուրաքանչյուր րոպեի փակման փոխարժեքով, և ուղղակիորեն այս արժույթով չեն նմուշառվել։",
         "pricedOn": "Գնանշված է {{plane}}-ով։",
@@ -189,7 +189,7 @@
       "title": "Վերջին ներդրումներն ըստ գործիքների",
       "instrument": "Գործիք",
       "realized": "Իրացված P&L",
-      "fees": "Վճարներ",
+      "fees": "Միջնորդավճարներ",
       "accrual": "Կուտակված ֆանդինգ",
       "unrealized": "Չիրացված P&L",
       "net": "Զուտ P&L",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Կցել Trailing Stop — {{instrument}}",
-    "confirmTitle": "Հաստատել Trailing Stop",
+    "title": "Կցել հետևող ստոպ — {{instrument}}",
+    "confirmTitle": "Հաստատել հետևող ստոպ",
     "position": "Դիրք",
     "entryPrice": "Մուտքի գին",
     "trailingDistanceLabel": "Trailing հեռավորություն (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "օր.՝ 5.0",
       "minLockPct": "0 = սկսել անմիջապես"
     },
-    "minLockWarning": "Trailing Stop-ը չի ակտիվանա, մինչև գինը {{minLockPct}}% շարժվի ձեր օգտին։",
+    "minLockWarning": "Հետևող ստոպը չի ակտիվանա, մինչև գինը {{minLockPct}}% շարժվի ձեր օգտին։",
     "buttons": {
       "cancel": "Չեղարկել",
       "review": "Վերանայել",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Պահանջվում է SL կամ TP գներից առնվազն մեկը",
-    "invalidSlPrice": "Անվավեր Stop-Loss գին",
-    "slPricePositive": "Stop-Loss գինը պետք է դրական լինի",
-    "invalidTpPrice": "Անվավեր Take-Profit գին",
-    "tpPricePositive": "Take-Profit գինը պետք է դրական լինի",
+    "invalidSlPrice": "Կորստի սահմանափակման անվավեր գին",
+    "slPricePositive": "Կորստի սահմանափակման գինը պետք է դրական լինի",
+    "invalidTpPrice": "Շահույթի ամրագրման անվավեր գին",
+    "tpPricePositive": "Շահույթի ամրագրման գինը պետք է դրական լինի",
     "slLongBelowEntry": "SL գինը պետք է լինի մուտքի գնից ցածր ({{price}})",
     "tpLongAboveEntry": "TP գինը պետք է լինի մուտքի գնից բարձր ({{price}})",
     "slShortAboveEntry": "SL գինը պետք է լինի մուտքի գնից բարձր ({{price}})",

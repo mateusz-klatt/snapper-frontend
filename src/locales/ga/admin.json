@@ -7,11 +7,11 @@
     "title": "Ceadanna Ról",
     "viewer": {
       "label": "Amharcóir",
-      "description": "Infheictheacht iomlán oibreora inléite amháin ar chuntais, sparán agus punanna, comharthaí, cinntí AI, brabús agus caillteanas, cúltástálacha, straitéisí, próisis agus sláinte an chórais. Ní féidir gníomhartha oibríochtúla a dhéanamh."
+      "description": "Infheictheacht iomlán oibreora inléite amháin ar chuntais, sparán agus punanna, comharthaí, cinntí AI, brabús agus caillteanas, tástálacha stairiúla, straitéisí, próisis agus sláinte an chórais. Ní féidir gníomhartha oibríochtúla a dhéanamh."
     },
     "operator": {
       "label": "Oibreoir",
-      "description": "Infheictheacht uile an Amharcóra, chomh maith le rialuithe trádála, suíomhanna, straitéisí, próisis, cúltástálacha agus comhtháthú AI."
+      "description": "Infheictheacht uile an Amharcóra, chomh maith le rialuithe trádála, suíomhanna, straitéisí, próisis, tástálacha stairiúla agus comhtháthú AI."
     },
     "admin": {
       "label": "Riarthóir",
@@ -29,7 +29,7 @@
       "market": "Sonraí Margaidh",
       "processes": "Próisis",
       "strategies": "Straitéisí",
-      "orders": "Orduithe agus Líonta",
+      "orders": "Orduithe agus Forghníomhuithe orduithe",
       "positions": "Suímh",
       "signals": "Comharthaí",
       "health": "Sláinte",
@@ -104,7 +104,7 @@
     "chooseWalletPlaceholder": "Roghnaigh sparán...",
     "selectWalletPlaceholder": "Roghnaigh sparán...",
     "walletLabel": "Sparán",
-    "paperAnnotation": " (páipéir)",
+    "paperAnnotation": " (ionsamhlaithe)",
     "unknownError": "Earráid anaithnid",
     "dash": "-",
     "readOnly": "Rochtain inléite amháin — tá athruithe díchumasaithe."
@@ -352,7 +352,7 @@
         "api_key_secret": "Eochair API + Rún",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Páipéar"
+        "paper": "Ionsamhlaithe"
       },
       "validation": {
         "walletRequired": "Tá sparán riachtanach",

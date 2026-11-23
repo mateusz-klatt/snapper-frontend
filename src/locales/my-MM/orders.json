@@ -55,7 +55,7 @@
   },
   "csv": {
     "orders": {
-      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
+      "instrument": "ကုန်သွယ်ပစ္စည်း",
       "side": "ဘက်",
       "type": "အမျိုးအစား",
       "status": "အခြေအနေ",
@@ -67,7 +67,7 @@
     },
     "executions": {
       "orderId": "အော်ဒါ ID",
-      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
+      "instrument": "ကုန်သွယ်ပစ္စည်း",
       "side": "ဘက်",
       "size": "အရွယ်အစား",
       "price": "စျေးနှုန်း",
@@ -82,7 +82,7 @@
     "titleConfirm": "အော်ဒါ အတည်ပြုပါ",
     "fields": {
       "exchange": "အိတ်ချိန်း",
-      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
+      "instrument": "ကုန်သွယ်ပစ္စည်း",
       "side": "ဘက်",
       "orderType": "အော်ဒါ အမျိုးအစား",
       "quantity": "အရေအတွက်",
@@ -132,8 +132,8 @@
       "createFailed": "အော်ဒါ ဖန်တီးမှု မအောင်မြင်ပါ"
     },
     "errorCodes": {
-      "instrumentMarketDataOnly": "ဤ instrument သည် observation-only ဖြစ်သည် — order တင်နိုင်သော execution-capable instrument ပေါ်တွင် order တင်ပါ။",
-      "unknownInstrument": "ဤ instrument ကို မသိပါ။ စာရင်းကို ပြန်တင်ပြီး ထပ်စမ်းပါ။",
+      "instrumentMarketDataOnly": "ဤ ကုန်သွယ်ပစ္စည်း သည် observation-only ဖြစ်သည် — အော်ဒါ တင်နိုင်သော execution-capable ကုန်သွယ်ပစ္စည်း ပေါ်တွင် အော်ဒါ တင်ပါ။",
+      "unknownInstrument": "ဤ ကုန်သွယ်ပစ္စည်း ကို မသိပါ။ စာရင်းကို ပြန်တင်ပြီး ထပ်စမ်းပါ။",
       "capsViolation": "ဤအော်ဒါသည် သင့်အကောင့် safety cap များကို ကျော်လွန်မည်။ Risk ဆက်တင်များကို ပြန်စစ်ပြီး ထပ်စမ်းပါ။"
     }
   }

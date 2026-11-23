@@ -1,6 +1,6 @@
 {
   "page": {
-    "title": "Mga Position"
+    "title": "Mga posisyon"
   },
   "view": {
     "current": "Kasalukuyan",
@@ -41,8 +41,8 @@
       "message": "Walang available na punto ng P&L para sa saklaw na ito."
     },
     "noWallet": {
-      "title": "Pumili ng wallet",
-      "message": "Pumili ng wallet para makita ang timeline ng P&L nito."
+      "title": "Pumili ng pitaka",
+      "message": "Pumili ng pitaka para makita ang timeline ng P&L nito."
     },
     "incompleteBadge": "Mga hindi kumpletong punto: {{count}}",
     "incompleteness": {
@@ -94,8 +94,8 @@
       "targetExecutionId": "Pinawalang-bisang pagpapatupad ng kalakalan",
       "correctionId": "Talaan ng pagwawasto",
       "reasons": {
-        "unwitnessed_phantom": "Walang naitalang pagtupad sa order sa palitan na nagpapatunay sa transaksyong ito.",
-        "unwitnessed_legacy_lineage": "Tala mula sa lumang sistema na walang naitalang pagtupad sa order sa palitan bilang patunay."
+        "unwitnessed_phantom": "Walang naitalang execution sa palitan na nagpapatunay sa talang ito ng transaksyon.",
+        "unwitnessed_legacy_lineage": "Tala mula sa lumang sistema na walang naitalang execution sa palitan bilang patunay."
       }
     },
     "timeTravelNotice": "Historikal na view: ipinapakita ang P&L ayon sa nalalaman noong {{asOf}}.",
@@ -107,22 +107,22 @@
       "valuationCurrency": "Currency ng valuation: {{currency}}"
     },
     "equity": {
-      "title": "Overlay ng equity",
+      "title": "Overlay ng kapital",
       "seriesLabel": "Kapital",
-      "seriesLabelSpotOnly": "Equity (spot na venue)",
+      "seriesLabelSpotOnly": "Kapital (spot na palitan)",
       "latest": "Pinakabago: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
         "title": "Pagbaba mula sa peak",
         "current": "Kasalukuyang drawdown",
         "max": "Pinakamalaking drawdown",
-        "definition": "Bahagi ng pinakamataas na equity hanggang sa kasalukuyan.",
+        "definition": "Bahagi ng pinakamataas na kapital hanggang sa kasalukuyan.",
         "flowsCaveat": "Hindi ito drawdown sa trading na inayos para sa mga daloy.",
         "noValue": "—"
       },
       "honesty": {
         "title": "Paano ito basahin",
-        "spotOnly": "Spot venue lamang — hindi kasama ang mga balanseng nasa ibang venue.",
+        "spotOnly": "Spot palitan lamang — hindi kasama ang mga balanseng nasa ibang palitan.",
         "flowsUnadjusted": "Hindi ibinawas ang mga panlabas na deposito at withdrawal.",
         "restatedFrom": "Ang mga numerong ito ay muling kinuwenta mula sa {{from}} gamit ang presyo sa pagsasara ng bawat minuto, at hindi direktang sinukat sa currency na ito.",
         "pricedOn": "Nakabatay ang presyo sa {{plane}}.",
@@ -175,7 +175,7 @@
         "noValue": "—",
         "types": {
           "fill": "Execution",
-          "signal": "Senyas",
+          "signal": "Signal",
           "ai_decision": "Desisyon ng AI"
         },
         "outcomes": {
@@ -231,18 +231,18 @@
     "noValue": "Hindi available"
   },
   "empty": {
-    "title": "Walang open positions",
-    "message": "Lalabas dito ang long, short, at flat positions kapag na-execute na ang trades."
+    "title": "Walang open posisyon",
+    "message": "Lalabas dito ang long, short, at flat posisyon kapag na-execute na ang trades."
   },
   "bracketModal": {
     "title": "Mag-attach ng SL/TP — {{instrument}}",
     "confirmTitle": "Kumpirmahin ang Bracket",
     "position": "Posisyon",
     "entryPrice": "Presyo ng pagpasok",
-    "stopLossLabel": "Presyo ng limitasyon sa pagkalugi",
-    "takeProfitLabel": "Presyo ng pagkuha ng tubo",
-    "stopLoss": "Limitasyon sa pagkalugi",
-    "takeProfit": "Pagkuha ng tubo",
+    "stopLossLabel": "Presyo ng stop-loss",
+    "takeProfitLabel": "Presyo ng take-profit",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Mas mababa sa {{price}}",
       "slShort": "Mas mataas sa {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Kailangan ng kahit isang SL o TP price",
-    "invalidSlPrice": "Hindi wasto ang presyo ng limitasyon sa pagkalugi",
-    "slPricePositive": "Dapat positibo ang presyo ng limitasyon sa pagkalugi",
-    "invalidTpPrice": "Hindi wasto ang presyo ng pagkuha ng tubo",
-    "tpPricePositive": "Dapat positibo ang presyo ng pagkuha ng tubo",
+    "invalidSlPrice": "Hindi wasto ang presyo ng stop-loss",
+    "slPricePositive": "Dapat positibo ang presyo ng stop-loss",
+    "invalidTpPrice": "Hindi wasto ang presyo ng take-profit",
+    "tpPricePositive": "Dapat positibo ang presyo ng take-profit",
     "slLongBelowEntry": "Dapat mas mababa ang SL price kaysa entry price ({{price}})",
     "tpLongAboveEntry": "Dapat mas mataas ang TP price kaysa entry price ({{price}})",
     "slShortAboveEntry": "Dapat mas mataas ang SL price kaysa entry price ({{price}})",

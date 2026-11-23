@@ -104,7 +104,7 @@
     "chooseWalletPlaceholder": "Pasirinkite piniginę...",
     "selectWalletPlaceholder": "Pasirinkti piniginę...",
     "walletLabel": "Piniginė",
-    "paperAnnotation": " (popierinė)",
+    "paperAnnotation": " (demonstracinė)",
     "unknownError": "Nežinoma klaida",
     "dash": "-",
     "readOnly": "Prieiga tik skaityti — pakeitimai išjungti."
@@ -346,7 +346,7 @@
         "client_id": "Kliento ID",
         "client_secret": "Kliento paslaptis",
         "refresh_token": "Atnaujinimo prieigos raktas",
-        "initial_balance": "Pradinis balansas"
+        "initial_balance": "Pradinis likutis"
       },
       "credentialTypes": {
         "api_key_secret": "API raktas + paslaptis",

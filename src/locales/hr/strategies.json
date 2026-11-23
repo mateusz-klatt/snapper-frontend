@@ -90,7 +90,7 @@
       "warning": "UPOZORENJE",
       "error": "POGREŠKA"
     },
-    "backtest": "Test na povijesnim podacima",
+    "backtest": "Backtest",
     "backtestAriaLabel": "Backtestiraj strategiju {{name}}",
     "managedRemotely": "Upravlja {{coordinator}}",
     "remoteCoordinatorUnknown": "drugi kontejner",
@@ -124,7 +124,7 @@
     "noteLabel": "Napomena (opcijski)",
     "notePlaceholder": "Opišite svrhu ili parametre ove instance strategije.",
     "noteHelp": "Sprema se uz konfiguraciju radi lakšeg prepoznavanja ovog procesa.",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "submit": "Registriraj strategiju",
     "submitting": "Registracija…",
     "scopeSectionLabel": "Opseg",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Odaberite operatera",
     "walletLabel": "Novčanik",
     "walletPlaceholder": "Odaberite novčanik",
-    "paperAnnotation": " (papirni)",
+    "paperAnnotation": " (demo)",
     "refUserLabel": "Vlasnik strategije (korisnik)",
     "refOperatorLabel": "Referenca operatora",
     "refWalletLabel": "Referenca novčanika",
@@ -148,7 +148,7 @@
     "saveError": "Spremanje opsega nije uspjelo: {{message}}",
     "save": "Spremi opseg",
     "saving": "Spremanje…",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "close": "Zatvori"
   }
 }

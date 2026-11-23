@@ -90,7 +90,7 @@
       "warning": "ADVARSEL",
       "error": "FEIL"
     },
-    "backtest": "Historisk test",
+    "backtest": "Backtest",
     "backtestAriaLabel": "Backtest {{name}}-strategi",
     "managedRemotely": "Administrert av {{coordinator}}",
     "remoteCoordinatorUnknown": "en annen container",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Velg en operatør",
     "walletLabel": "Lommebok",
     "walletPlaceholder": "Velg en lommebok",
-    "paperAnnotation": " (papir)",
+    "paperAnnotation": " (demo)",
     "refUserLabel": "Strategieier (bruker)",
     "refOperatorLabel": "Operatørreferanse",
     "refWalletLabel": "Lommebokreferanse",

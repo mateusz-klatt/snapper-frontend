@@ -38,7 +38,7 @@
     },
     "auditor": {
       "label": "Revisor",
-      "description": "Administratoradgang med læserettigheder til alle tegnebøger, brugere og indstillinger. Kan ikke ændre data eller handle."
+      "description": "Administratoradgang med læserettigheder til alle wallets, brugere og indstillinger. Kan ikke ændre data eller handle."
     }
   },
   "deskMemberships": {
@@ -50,7 +50,7 @@
     "subtitle": "Føj aktive læsere til en desk, eller fjern deres nuværende deskadgang.",
     "memberCount": "Medlemmer: {{count}}",
     "desk": {
-      "label": "Handelsgruppe",
+      "label": "Desk",
       "placeholder": "Vælg en desk..."
     },
     "add": {
@@ -103,7 +103,7 @@
     "selectAWallet": "Vælg en wallet",
     "chooseWalletPlaceholder": "Vælg en wallet...",
     "selectWalletPlaceholder": "Vælg wallet...",
-    "walletLabel": "Tegnebog",
+    "walletLabel": "Wallet",
     "paperAnnotation": " (demo)",
     "unknownError": "Ukendt fejl",
     "dash": "-",
@@ -226,7 +226,7 @@
       "fields": {
         "operator": "Operatør",
         "operatorPlaceholder": "Vælg operatør...",
-        "wallet": "Tegnebog",
+        "wallet": "Wallet",
         "scopeKind": "Omfangstype",
         "underlyingPublicId": "Underliggende Public ID",
         "instrumentPublicId": "Instrumentets Public ID",
@@ -262,7 +262,7 @@
       "fields": {
         "currentHolder": "Nuværende indehaver",
         "scope": "Omfang",
-        "wallet": "Tegnebog",
+        "wallet": "Wallet",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "Overdrag til operatør",
         "transferToPlaceholder": "Vælg destinationsoperatør...",
@@ -331,7 +331,7 @@
     "form": {
       "title": "Tilføj legitimationsoplysninger",
       "fields": {
-        "wallet": "Tegnebog",
+        "wallet": "Wallet",
         "exchange": "Børs",
         "exchangePlaceholder": "f.eks. kraken",
         "credentialType": "Type af legitimationsoplysninger",

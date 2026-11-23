@@ -28,9 +28,9 @@
   "statusTooltip": {
     "observed": "Verbindliche Börsendaten in Echtzeit, innerhalb des Gültigkeitszeitraums erfasst.",
     "simulated": "Zahlen aus dem simulierten Handel — keine echten Börsensalden.",
-    "stale": "Letzter bekannter Snapshot; das Autoritätsfenster ist abgelaufen oder das Abfragen ist blockiert.",
+    "stale": "Letzte bekannte Momentaufnahme; das Autoritätsfenster ist abgelaufen oder das Abfragen ist blockiert.",
     "clockError": "Beobachtungszeitstempel inkonsistent mit Serveruhr.",
-    "corrupt": "Der gespeicherte Snapshot konnte nicht validiert werden.",
+    "corrupt": "Die gespeicherte Momentaufnahme konnte nicht validiert werden.",
     "unsupported": "Diese Börse meldet keinen Kontostatus.",
     "notApplicable": "Diese Komponente gilt nicht für die Börse.",
     "unknown": "Status konnte nicht klassifiziert werden."
@@ -64,7 +64,7 @@
   },
   "mode": {
     "live": "Real",
-    "paper": "Demo"
+    "paper": "Simulation"
   },
   "meta": {
     "balancesObserved": "Salden beobachtet {{timestamp}}",

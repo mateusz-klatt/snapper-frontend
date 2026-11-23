@@ -81,7 +81,7 @@
     "titleEdit": "Nouvel ordre manuel",
     "titleConfirm": "Confirmer l'ordre",
     "fields": {
-      "exchange": "Plateforme",
+      "exchange": "Plateforme d’échange",
       "instrument": "Instrument",
       "side": "Sens",
       "orderType": "Type d'ordre",

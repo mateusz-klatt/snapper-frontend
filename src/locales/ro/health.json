@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} h {{minutes}} min",
     "uptimeDays": "{{days}} z {{hours}} h",
-    "backtestName": "Test pe date istorice {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Indisponibil",
     "uptimeLabel": "Timp de funcționare",
     "exitCode": "Cod ieșire: {{code}}",
     "service": "serviciu",
-    "backtest": "test pe date istorice"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Statistici bază de date",

@@ -90,7 +90,7 @@
       "warning": "AVERTISMENT",
       "error": "EROARE"
     },
-    "backtest": "Test pe date istorice",
+    "backtest": "Backtest",
     "backtestAriaLabel": "Backtest pentru strategia {{name}}",
     "managedRemotely": "Gestionat de {{coordinator}}",
     "remoteCoordinatorUnknown": "alt container",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Selectați un operator",
     "walletLabel": "Portofel",
     "walletPlaceholder": "Selectați un portofel",
-    "paperAnnotation": " (hârtie)",
+    "paperAnnotation": " (demo)",
     "refUserLabel": "Proprietarul strategiei (utilizator)",
     "refOperatorLabel": "Referință operator",
     "refWalletLabel": "Referință portofel",

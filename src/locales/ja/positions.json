@@ -107,16 +107,16 @@
       "valuationCurrency": "評価通貨：{{currency}}"
     },
     "equity": {
-      "title": "エクイティのオーバーレイ",
-      "seriesLabel": "エクイティ",
-      "seriesLabelSpotOnly": "エクイティ（現物取引所）",
+      "title": "純資産のオーバーレイ",
+      "seriesLabel": "純資産",
+      "seriesLabelSpotOnly": "純資産（現物取引所）",
       "latest": "最新：{{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
         "title": "ドローダウン",
         "current": "現在のドローダウン",
         "max": "最大ドローダウン",
-        "definition": "それまでのエクイティ最高値に対する割合です。",
+        "definition": "それまでの純資産最高値に対する割合です。",
         "flowsCaveat": "資金フロー調整後の取引ドローダウンではありません。",
         "noValue": "—"
       },

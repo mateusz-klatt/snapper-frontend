@@ -41,8 +41,8 @@
       "message": "Nessun punto P&L disponibile per questo intervallo."
     },
     "noWallet": {
-      "title": "Seleziona un portafoglio",
-      "message": "Scegli un portafoglio per visualizzarne la cronologia P&L."
+      "title": "Seleziona un wallet",
+      "message": "Scegli un wallet per visualizzarne la cronologia P&L."
     },
     "incompleteBadge": "Punti incompleti: {{count}}",
     "incompleteness": {
@@ -94,7 +94,7 @@
       "targetExecutionId": "Esecuzione dell'operazione annullata",
       "correctionId": "Registro di correzione",
       "reasons": {
-        "unwitnessed_phantom": "Nessuna esecuzione sulla piattaforma di scambio conferma questa registrazione.",
+        "unwitnessed_phantom": "Nessuna esecuzione sull’exchange conferma questa registrazione.",
         "unwitnessed_legacy_lineage": "Registrazione derivata da dati preesistenti senza un’esecuzione che la confermi."
       }
     },
@@ -109,7 +109,7 @@
     "equity": {
       "title": "Sovrapposizione del patrimonio",
       "seriesLabel": "Patrimonio",
-      "seriesLabelSpotOnly": "Patrimonio (sede spot)",
+      "seriesLabelSpotOnly": "Patrimonio (piattaforma spot)",
       "latest": "Ultimo: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Come interpretare questi dati",
-        "spotOnly": "Solo sede spot — sono esclusi i saldi detenuti su altre sedi.",
+        "spotOnly": "Solo piattaforma spot — sono esclusi i saldi detenuti su altre piattaforme.",
         "flowsUnadjusted": "I depositi e i prelievi esterni non sono esclusi.",
         "restatedFrom": "Questi valori sono convertiti a partire da {{from}} al tasso di chiusura di ogni minuto e non sono rilevati nativamente in questa valuta.",
         "pricedOn": "Valutato su {{plane}}.",
@@ -227,7 +227,7 @@
     "unrealizedPnl": "P&L non realizzato",
     "realizedPnl": "P&L realizzato",
     "updated": "Aggiornato {{timestamp}}",
-    "mark": "Prezzo mark",
+    "mark": "Prezzo di riferimento",
     "noValue": "N/D"
   },
   "empty": {
@@ -239,10 +239,10 @@
     "confirmTitle": "Conferma bracket",
     "position": "Posizione",
     "entryPrice": "Prezzo di ingresso",
-    "stopLossLabel": "Prezzo limite di perdita",
-    "takeProfitLabel": "Prezzo di presa di profitto",
-    "stopLoss": "Limite di perdita",
-    "takeProfit": "Presa di profitto",
+    "stopLossLabel": "Prezzo di stop loss",
+    "takeProfitLabel": "Prezzo di take profit",
+    "stopLoss": "Stop loss",
+    "takeProfit": "Take profit",
     "placeholders": {
       "slLong": "Sotto {{price}}",
       "slShort": "Sopra {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "È richiesto almeno un prezzo di SL o TP",
-    "invalidSlPrice": "Prezzo limite di perdita non valido",
-    "slPricePositive": "Il prezzo limite di perdita deve essere positivo",
-    "invalidTpPrice": "Prezzo di presa di profitto non valido",
-    "tpPricePositive": "Il prezzo di presa di profitto deve essere positivo",
+    "invalidSlPrice": "Prezzo di stop loss non valido",
+    "slPricePositive": "Il prezzo di stop loss deve essere positivo",
+    "invalidTpPrice": "Prezzo di take profit non valido",
+    "tpPricePositive": "Il prezzo di take profit deve essere positivo",
     "slLongBelowEntry": "Il prezzo SL deve essere sotto il prezzo di ingresso ({{price}})",
     "tpLongAboveEntry": "Il prezzo TP deve essere sopra il prezzo di ingresso ({{price}})",
     "slShortAboveEntry": "Il prezzo SL deve essere sopra il prezzo di ingresso ({{price}})",

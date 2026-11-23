@@ -29,7 +29,7 @@
       "market": "Marktdaten",
       "processes": "Prozesse",
       "strategies": "Strategien",
-      "orders": "Aufträge & Ausführungen",
+      "orders": "Orders & Ausführungen",
       "positions": "Positionen",
       "signals": "Signale",
       "health": "Systemzustand",
@@ -50,7 +50,7 @@
     "subtitle": "Fügen Sie einem Desk aktive Betrachter hinzu oder entfernen Sie deren aktuellen Desk-Zugriff.",
     "memberCount": "Mitglieder: {{count}}",
     "desk": {
-      "label": "Handelsteam",
+      "label": "Desk",
       "placeholder": "Desk auswählen..."
     },
     "add": {
@@ -103,8 +103,8 @@
     "selectAWallet": "Ein Wallet auswählen",
     "chooseWalletPlaceholder": "Wallet wählen...",
     "selectWalletPlaceholder": "Wallet auswählen...",
-    "walletLabel": "Geldbörse",
-    "paperAnnotation": " (Paper)",
+    "walletLabel": "Wallet",
+    "paperAnnotation": " (Simulation)",
     "unknownError": "Unbekannter Fehler",
     "dash": "-",
     "readOnly": "Nur Lesezugriff — Änderungen sind deaktiviert."
@@ -226,7 +226,7 @@
       "fields": {
         "operator": "Operator",
         "operatorPlaceholder": "Operator auswählen...",
-        "wallet": "Geldbörse",
+        "wallet": "Wallet",
         "scopeKind": "Scope-Art",
         "underlyingPublicId": "Public ID des Basiswerts",
         "instrumentPublicId": "Public ID des Instruments",
@@ -262,7 +262,7 @@
       "fields": {
         "currentHolder": "Aktueller Inhaber",
         "scope": "Geltungsbereich",
-        "wallet": "Geldbörse",
+        "wallet": "Wallet",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "An Operator übertragen",
         "transferToPlaceholder": "Ziel-Operator auswählen...",
@@ -331,7 +331,7 @@
     "form": {
       "title": "Anmeldedaten hinzufügen",
       "fields": {
-        "wallet": "Geldbörse",
+        "wallet": "Wallet",
         "exchange": "Börse",
         "exchangePlaceholder": "z. B. kraken",
         "credentialType": "Anmeldedaten-Typ",

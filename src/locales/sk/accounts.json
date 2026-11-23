@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Aktuálny stav burzy.",
-    "simulated": "Údaje z papierového obchodovania — nie skutočné zostatky.",
+    "simulated": "Údaje z demo obchodovania — nie skutočné zostatky.",
     "stale": "Posledná známa snímka; okno platnosti vypršalo.",
     "clockError": "Čas nie je konzistentný so serverom.",
     "corrupt": "Snímka neprešla validáciou.",

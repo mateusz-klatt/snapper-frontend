@@ -3,7 +3,7 @@
     "title": "Estado del sistema",
     "healthMetricsHeading": "Métricas de estado",
     "processStatusHeading": "Estado de procesos",
-    "activeBacktestsHeading": "Pruebas retrospectivas activas",
+    "activeBacktestsHeading": "Backtests activos",
     "quickActionsHeading": "Acciones rápidas",
     "featureNotImplemented": "Funcionalidad aún no implementada",
     "restartServices": "Reiniciar servicios",
@@ -23,8 +23,8 @@
   "metrics": {
     "tradingEngine": "Motor de trading",
     "tradingEngineDescription": "Motor de ejecución de estrategias",
-    "activeBacktests": "Pruebas retrospectivas activas",
-    "activeBacktestsDescription": "Procesos de prueba retrospectiva en ejecución",
+    "activeBacktests": "Backtests activos",
+    "activeBacktestsDescription": "Procesos de backtest en ejecución",
     "active": "Activo",
     "inactive": "Inactivo"
   },
@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} h {{minutes}} min",
     "uptimeDays": "{{days}} d {{hours}} h",
-    "backtestName": "Prueba retrospectiva {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Tiempo activo",
     "exitCode": "Código de salida: {{code}}",
     "service": "servicio",
-    "backtest": "prueba retrospectiva"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Estadísticas de base de datos",
@@ -171,7 +171,7 @@
       "exitIp": "IP de salida",
       "provider": "Proveedor",
       "priority": "Prioridad",
-      "allowedExchanges": "Exchanges permitidos",
+      "allowedExchanges": "Plataformas de intercambio permitidas",
       "status": "Estado",
       "inUse": "En uso",
       "traffic": "Tráfico",

@@ -64,7 +64,7 @@
   },
   "mode": {
     "live": "本番",
-    "paper": "デモ"
+    "paper": "ペーパー"
   },
   "meta": {
     "balancesObserved": "残高確認 {{timestamp}}",

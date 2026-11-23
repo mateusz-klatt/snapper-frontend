@@ -98,13 +98,13 @@
     }
   },
   "common": {
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "selectWallet": "Odaberi novčanik",
     "selectAWallet": "Odaberite novčanik",
     "chooseWalletPlaceholder": "Odaberite novčanik...",
     "selectWalletPlaceholder": "Odaberi novčanik...",
     "walletLabel": "Novčanik",
-    "paperAnnotation": " (simulirano)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Nepoznata pogreška",
     "dash": "-",
     "readOnly": "Pristup samo za čitanje — izmjene su onemogućene."
@@ -352,7 +352,7 @@
         "api_key_secret": "API ključ + tajna",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Simulirano"
+        "paper": "Demo"
       },
       "validation": {
         "walletRequired": "Novčanik je obvezan",

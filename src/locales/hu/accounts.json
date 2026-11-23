@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Valós idejű tőzsdei adat, a hitelességi ablakon belül.",
-    "simulated": "Papírkereskedési adatok — nem valódi egyenlegek.",
+    "simulated": "Demókereskedési adatok — nem valódi egyenlegek.",
     "stale": "Utolsó ismert pillanatkép; a hitelességi ablak lejárt.",
     "clockError": "Az észlelés időbélyege nem egyezik a szerver órájával.",
     "corrupt": "A tárolt pillanatkép érvényesítése sikertelen.",

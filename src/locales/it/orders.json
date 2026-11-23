@@ -81,7 +81,7 @@
     "titleEdit": "Nuovo ordine manuale",
     "titleConfirm": "Conferma ordine",
     "fields": {
-      "exchange": "Piattaforma di scambio",
+      "exchange": "Exchange",
       "instrument": "Strumento",
       "side": "Lato",
       "orderType": "Tipo di ordine",
@@ -89,7 +89,7 @@
       "price": "Prezzo",
       "stopPrice": "Prezzo stop",
       "mode": "Modalità",
-      "wallet": "Portafoglio",
+      "wallet": "Wallet",
       "type": "Tipo",
       "postOnly": "Solo maker"
     },

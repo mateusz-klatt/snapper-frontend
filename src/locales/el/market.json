@@ -3,10 +3,10 @@
     "title": "Δεδομένα αγοράς"
   },
   "controls": {
-    "exchange": "Αγορά:",
+    "exchange": "Ανταλλακτήριο:",
     "instrument": "Μέσο:",
     "timeframe": "Χρονικό πλαίσιο:",
-    "selectExchange": "Επιλέξτε αγορά",
+    "selectExchange": "Επιλέξτε ανταλλακτήριο",
     "searchInstrument": "Αναζήτηση μέσου..."
   },
   "timeframes": {
@@ -37,7 +37,7 @@
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Δεν έχουν διαμορφωθεί σχετικά μέσα για {{instrument}} στην αγορά {{exchange}}.",
+    "empty": "Δεν έχουν διαμορφωθεί σχετικά μέσα για {{instrument}} στο ανταλλακτήριο {{exchange}}.",
     "relationshipType": {
       "exact": "Ίδιο υποκείμενο",
       "derivative": "Παράγωγα",
@@ -78,7 +78,7 @@
   "pairStats": {
     "label": "Συνολοκλήρωση:",
     "metric": "ρ {{pearson}} · p {{pvalue}}",
-    "chipAriaLabel": "Στατιστικά ζεύγους με {{symbol}} στην αγορά {{exchange}}: Pearson {{pearson}}, τιμή p {{pvalue}}"
+    "chipAriaLabel": "Στατιστικά ζεύγους με {{symbol}} στο ανταλλακτήριο {{exchange}}: Pearson {{pearson}}, τιμή p {{pvalue}}"
   },
   "scrubber": {
     "label": "Χρόνος:",

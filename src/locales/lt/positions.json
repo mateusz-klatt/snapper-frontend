@@ -239,10 +239,10 @@
     "confirmTitle": "Patvirtinti Bracket",
     "position": "Pozicija",
     "entryPrice": "Įėjimo kaina",
-    "stopLossLabel": "Nuostolio ribojimo kaina",
-    "takeProfitLabel": "Pelno fiksavimo kaina",
-    "stopLoss": "Nuostolio ribojimas",
-    "takeProfit": "Pelno fiksavimas",
+    "stopLossLabel": "Stop-loss kaina",
+    "takeProfitLabel": "Take-profit kaina",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Žemiau {{price}}",
       "slShort": "Aukščiau {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Pridėti Trailing Stop — {{instrument}}",
-    "confirmTitle": "Patvirtinti Trailing Stop",
+    "title": "Pridėti slenkantį stopą — {{instrument}}",
+    "confirmTitle": "Patvirtinti slenkantį stopą",
     "position": "Pozicija",
     "entryPrice": "Įėjimo kaina",
     "trailingDistanceLabel": "Trailing atstumas (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "pvz., 5.0",
       "minLockPct": "0 = pradėti iš karto"
     },
-    "minLockWarning": "Trailing Stop nebus aktyvuotas, kol kaina pajudės {{minLockPct}} % jums palankia kryptimi.",
+    "minLockWarning": "Slenkantis stopas nebus aktyvuotas, kol kaina pajudės {{minLockPct}} % jums palankia kryptimi.",
     "buttons": {
       "cancel": "Atšaukti",
       "review": "Peržiūrėti",

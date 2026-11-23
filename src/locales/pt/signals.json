@@ -17,7 +17,7 @@
   "card": {
     "strength": "Força",
     "price": "Preço",
-    "exchange": "Corretora",
+    "exchange": "Exchange",
     "reason": "Motivo:",
     "noPrice": "N/D"
   },

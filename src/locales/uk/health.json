@@ -39,7 +39,7 @@
     "uptimeLabel": "Час роботи",
     "exitCode": "Код виходу: {{code}}",
     "service": "сервіс",
-    "backtest": "Backtest"
+    "backtest": "Бектест"
   },
   "dbStats": {
     "title": "Статистика бази даних",

@@ -21,7 +21,7 @@
     "delete": "Izbriši",
     "save": "Spremi",
     "saving": "Spremanje...",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "yesDelete": "Da, izbriši",
     "deleting": "Brisanje...",
     "deleteConfirm": "Izbrisati ovu postavku?",
@@ -51,7 +51,7 @@
     "categorySelectPlaceholder": "Odaberite postojeću ili stvorite novu",
     "newCategoryPlaceholder": "Ili unesite naziv nove kategorije",
     "descriptionPlaceholder": "Opcionalni opis",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "create": "Stvori postavku",
     "creating": "Stvaranje...",
     "validation": {

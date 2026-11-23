@@ -30,7 +30,7 @@
     "simulated": "Dati di negoziazione simulata — non sono saldi reali della piattaforma.",
     "stale": "Ultima istantanea nota; il periodo di validità è scaduto o l'acquisizione si è bloccata.",
     "clockError": "Il timestamp non è coerente con il server.",
-    "corrupt": "Lo snapshot archiviato ha fallito la convalida.",
+    "corrupt": "L'istantanea archiviata ha fallito la convalida.",
     "unsupported": "Questa piattaforma non comunica lo stato del conto.",
     "notApplicable": "Questo componente non si applica alla piattaforma.",
     "unknown": "Impossibile classificare lo stato."

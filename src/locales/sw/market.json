@@ -4,10 +4,10 @@
   },
   "controls": {
     "exchange": "Soko:",
-    "instrument": "Instrumenti:",
+    "instrument": "Chombo cha kifedha:",
     "timeframe": "Muda:",
     "selectExchange": "Chagua exchange",
-    "searchInstrument": "Tafuta instrumenti..."
+    "searchInstrument": "Tafuta chombo cha kifedha..."
   },
   "timeframes": {
     "1m": "Dakika 1",
@@ -30,14 +30,14 @@
     "errorPrefix": "Hitilafu kupakia data ya chati:",
     "unknownError": "Hitilafu isiyojulikana",
     "noDataTitle": "Hakuna data inayopatikana kwa {{instrument}}",
-    "noDataHint": "Instrumenti inaweza isiwepo au haina data ya {{timeframe}}",
+    "noDataHint": "Chombo cha kifedha kinaweza kisiwepo au hakina data ya {{timeframe}}",
     "updatesUnconfirmed": "Baadhi ya masasisho ya chati bado hayajathibitishwa.",
     "reloadRecent": "Pakia upya data za hivi karibuni"
   },
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "Hakuna instrumenti zinazohusiana zilizosanidiwa kwa {{instrument}} kwenye {{exchange}}.",
+    "empty": "Hakuna vyombo vya kifedha vinavyohusiana vilivyosanidiwa kwa {{instrument}} kwenye {{exchange}}.",
     "relationshipType": {
       "exact": "Mali msingi sawa",
       "derivative": "Derivativi",
@@ -45,7 +45,7 @@
     }
   },
   "description": {
-    "label": "Maelezo ya chombo",
+    "label": "Maelezo ya chombo cha kifedha",
     "fallback": "{{name}} · {{assetClass}}"
   },
   "assetClass": {

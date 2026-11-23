@@ -41,8 +41,8 @@
       "message": "Aucun point de P&L n'est disponible pour cette période."
     },
     "noWallet": {
-      "title": "Sélectionner un wallet",
-      "message": "Choisissez un wallet pour afficher la chronologie de son P&L."
+      "title": "Sélectionner un portefeuille",
+      "message": "Choisissez un portefeuille pour afficher la chronologie de son P&L."
     },
     "incompleteBadge": "Points incomplets : {{count}}",
     "incompleteness": {
@@ -239,10 +239,10 @@
     "confirmTitle": "Confirmer le bracket",
     "position": "Position",
     "entryPrice": "Prix d'entrée",
-    "stopLossLabel": "Prix de limitation des pertes",
-    "takeProfitLabel": "Prix de prise de bénéfices",
-    "stopLoss": "Limitation des pertes",
-    "takeProfit": "Prise de bénéfices",
+    "stopLossLabel": "Prix de stop loss",
+    "takeProfitLabel": "Prix de take profit",
+    "stopLoss": "Stop loss",
+    "takeProfit": "Take profit",
     "placeholders": {
       "slLong": "Sous {{price}}",
       "slShort": "Au-dessus de {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Attacher un Trailing Stop — {{instrument}}",
-    "confirmTitle": "Confirmer le Trailing Stop",
+    "title": "Attacher un Stop suiveur — {{instrument}}",
+    "confirmTitle": "Confirmer le Stop suiveur",
     "position": "Position",
     "entryPrice": "Prix d'entrée",
     "trailingDistanceLabel": "Distance de trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "p. ex. 5.0",
       "minLockPct": "0 = démarrer immédiatement"
     },
-    "minLockWarning": "Le trailing stop ne s'activera pas tant que le prix n'aura pas évolué de {{minLockPct}} % en votre faveur.",
+    "minLockWarning": "Le stop suiveur ne s'activera pas tant que le prix n'aura pas évolué de {{minLockPct}} % en votre faveur.",
     "buttons": {
       "cancel": "Annuler",
       "review": "Vérifier",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Au moins un prix SL ou TP est requis",
-    "invalidSlPrice": "Prix de limitation des pertes invalide",
-    "slPricePositive": "Le prix de limitation des pertes doit être positif",
-    "invalidTpPrice": "Prix de prise de bénéfices invalide",
-    "tpPricePositive": "Le prix de prise de bénéfices doit être positif",
+    "invalidSlPrice": "Prix de stop loss invalide",
+    "slPricePositive": "Le prix de stop loss doit être positif",
+    "invalidTpPrice": "Prix de take profit invalide",
+    "tpPricePositive": "Le prix de take profit doit être positif",
     "slLongBelowEntry": "Le prix SL doit être inférieur au prix d'entrée ({{price}})",
     "tpLongAboveEntry": "Le prix TP doit être supérieur au prix d'entrée ({{price}})",
     "slShortAboveEntry": "Le prix SL doit être supérieur au prix d'entrée ({{price}})",

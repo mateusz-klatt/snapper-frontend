@@ -71,7 +71,7 @@
       "defaultValue": "(zadano)"
     },
     "buttons": {
-      "cancel": "Odustani",
+      "cancel": "Otkaži",
       "next": "Dalje",
       "back": "Natrag",
       "createDelegate": "Stvori delegata",
@@ -90,7 +90,7 @@
     "updateCaps": "Ažuriraj limite",
     "revoke": "Opozovi",
     "save": "Spremi",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "tradingCaps": "Trgovinski limiti",
     "status": "Status",
     "active": "Aktivan",
@@ -114,7 +114,7 @@
     "title": "Opozvati delegata \"{{label}}\"?",
     "message": "Ovo opoziva tokene delegata i zaustavlja njegove MCP pretplate. Radnja se ne može poništiti.",
     "confirm": "Opozovi",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "toast": {
       "delegateRevoked": "Delegat je opozvan",
       "failedToRevoke": "Opoziv delegata nije uspio"

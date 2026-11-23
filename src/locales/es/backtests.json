@@ -11,7 +11,7 @@
     "cancelled": "Cancelado"
   },
   "list": {
-    "title": "Pruebas retrospectivas",
+    "title": "Backtests",
     "actions": {
       "cancel": "Cancelar",
       "rerun": "Reejecutar",
@@ -159,8 +159,8 @@
       "instrumentLabel": "Instrumento",
       "instrumentPlaceholder": "p. ej. BTC-USD",
       "instrumentHelp": "ID público del instrumento que se va a probar",
-      "exchangeLabel": "Exchange (fuente del feed)",
-      "exchangePlaceholder": "— Seleccione un exchange —",
+      "exchangeLabel": "Plataforma de intercambio (fuente del feed)",
+      "exchangePlaceholder": "— Seleccione una plataforma de intercambio —",
       "timeframeLabel": "Marco temporal",
       "startDateLabel": "Fecha de inicio",
       "endDateLabel": "Fecha de fin",
@@ -170,9 +170,9 @@
       "executionModeLabel": "Modo de ejecución",
       "executionModeDirectDb": "DB directa",
       "executionModeZmqReplay": "Repetición ZMQ",
-      "targetExchangeLabel": "Exchange de ejecución objetivo",
-      "targetExchangeNone": "Ninguno (un solo exchange)",
-      "targetExchangeHelp": "Opcional — para ejecuciones entre activos; déjelo sin definir para un solo exchange"
+      "targetExchangeLabel": "Plataforma de intercambio de ejecución objetivo",
+      "targetExchangeNone": "Ninguna (una sola plataforma de intercambio)",
+      "targetExchangeHelp": "Opcional — para ejecuciones entre activos; déjelo sin definir para una sola plataforma de intercambio"
     }
   }
 }

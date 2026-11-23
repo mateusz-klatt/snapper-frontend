@@ -28,9 +28,9 @@
   "statusTooltip": {
     "observed": "Reaaliaikainen pörssin tila, havaittu vahvistusikkunan sisällä.",
     "simulated": "Simuloidun kaupankäynnin luvut — eivät pörssin todellisia saldoja.",
-    "stale": "Viimeisin tunnettu tilanne; vahvistusikkuna umpeutui.",
+    "stale": "Viimeisin tunnettu tilannekuva; vahvistusikkuna umpeutui.",
     "clockError": "Havainnon aikaleima on ristiriidassa palvelimen kellon kanssa.",
-    "corrupt": "Tallennetun tilanteen vahvistus epäonnistui.",
+    "corrupt": "Tallennetun tilannekuvan vahvistus epäonnistui.",
     "unsupported": "Tämä pörssi ei ilmoita tilin tilaa.",
     "notApplicable": "Tämä komponentti ei koske tätä pörssiä.",
     "unknown": "Tilaa ei voitu luokitella."

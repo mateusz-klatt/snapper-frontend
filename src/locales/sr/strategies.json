@@ -90,7 +90,7 @@
       "warning": "UPOZORENJE",
       "error": "GREŠKA"
     },
-    "backtest": "Test na istorijskim podacima",
+    "backtest": "Backtest",
     "backtestAriaLabel": "Backtestuj strategiju {{name}}",
     "managedRemotely": "Upravlja {{coordinator}}",
     "remoteCoordinatorUnknown": "drugi kontejner",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Izaberite operatora",
     "walletLabel": "Novčanik",
     "walletPlaceholder": "Izaberite novčanik",
-    "paperAnnotation": " (papirni)",
+    "paperAnnotation": " (demo)",
     "refUserLabel": "Vlasnik strategije (korisnik)",
     "refOperatorLabel": "Referenca operatora",
     "refWalletLabel": "Referenca novčanika",

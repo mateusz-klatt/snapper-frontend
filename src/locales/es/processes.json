@@ -6,7 +6,7 @@
   "sections": {
     "longRunning": "Procesos de larga duración",
     "executorTemplates": "Plantillas de ejecutor",
-    "executorTemplatesHint": "Editar la configuración de la plantilla afecta a todas las carteras de este exchange tras reiniciar. Las plantillas son solo de configuración — inicie la instancia por cartera abajo para ejecutar un ejecutor.",
+    "executorTemplatesHint": "Editar la configuración de la plantilla afecta a todas las carteras de esta plataforma de intercambio tras reiniciar. Las plantillas son solo de configuración — inicie la instancia por cartera abajo para ejecutar un ejecutor.",
     "walletInstances": "Instancias por cartera",
     "taskProcesses": "Procesos de tareas"
   },

@@ -57,7 +57,7 @@
         "instrument": "Instrument"
       },
       "tier": {
-        "mark_incomplete": "OFULLSTÄNDIGT REFERENSPRIS",
+        "mark_incomplete": "OFULLSTÄNDIGT MARKPRIS",
         "untrusted": "OTILLFÖRLITLIG"
       },
       "reasons": {
@@ -71,7 +71,7 @@
         "execution_size_invalid": "Ogiltig utförandestorlek",
         "execution_price_invalid": "Ogiltigt utförandepris",
         "fx_conversion_unproven": "FX-konverteringen kan inte styrkas",
-        "mark_unavailable": "Referenspriset är inte tillgängligt",
+        "mark_unavailable": "Markpriset är inte tillgängligt",
         "cumulative_non_finite": "Det ackumulerade värdet är inte ändligt",
         "unrealized_non_finite": "Orealiserad P&L är inte ändlig",
         "net_non_finite": "P&L netto är inte ändlig",
@@ -109,7 +109,7 @@
     "equity": {
       "title": "Överlagring av eget kapital",
       "seriesLabel": "Eget kapital",
-      "seriesLabelSpotOnly": "Eget kapital (spotmarknadsplats)",
+      "seriesLabelSpotOnly": "Eget kapital (spotbörs)",
       "latest": "Senaste: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Så tolkar du detta",
-        "spotOnly": "Endast spotmarknadsplatsen — saldon på andra marknadsplatser ingår inte.",
+        "spotOnly": "Endast spotbörsen — saldon på andra börser ingår inte.",
         "flowsUnadjusted": "Externa insättningar och uttag har inte räknats bort.",
         "restatedFrom": "Dessa siffror är konverterade från {{from}} vid varje minuts stängningskurs och mäts inte ursprungligen i denna valuta.",
         "pricedOn": "Prissatt på {{plane}}.",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bekräfta Bracket",
     "position": "Position",
     "entryPrice": "Inträdespris",
-    "stopLossLabel": "Kurs för förlustbegränsning",
-    "takeProfitLabel": "Kurs för vinsthemtagning",
-    "stopLoss": "Förlustbegränsning",
-    "takeProfit": "Vinsthemtagning",
+    "stopLossLabel": "Kurs för stop-loss",
+    "takeProfitLabel": "Kurs för take profit",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take profit",
     "placeholders": {
       "slLong": "Under {{price}}",
       "slShort": "Över {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Minst ett SL- eller TP-pris krävs",
-    "invalidSlPrice": "Ogiltig kurs för förlustbegränsning",
-    "slPricePositive": "Kursen för förlustbegränsning måste vara positiv",
-    "invalidTpPrice": "Ogiltig kurs för vinsthemtagning",
-    "tpPricePositive": "Kursen för vinsthemtagning måste vara positiv",
+    "invalidSlPrice": "Ogiltig kurs för stop-loss",
+    "slPricePositive": "Kursen för stop-loss måste vara positiv",
+    "invalidTpPrice": "Ogiltig kurs för take profit",
+    "tpPricePositive": "Kursen för take profit måste vara positiv",
     "slLongBelowEntry": "SL-pris måste ligga under inträdespris ({{price}})",
     "tpLongAboveEntry": "TP-pris måste ligga över inträdespris ({{price}})",
     "slShortAboveEntry": "SL-pris måste ligga över inträdespris ({{price}})",

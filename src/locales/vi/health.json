@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} phút",
     "uptimeHours": "{{hours}} giờ {{minutes}} phút",
     "uptimeDays": "{{days}} ngày {{hours}} giờ",
-    "backtestName": "Kiểm thử trên dữ liệu quá khứ {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Không có dữ liệu",
     "uptimeLabel": "Thời gian chạy",
     "exitCode": "Mã thoát: {{code}}",
     "service": "dịch vụ",
-    "backtest": "kiểm thử trên dữ liệu quá khứ"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Thống kê cơ sở dữ liệu",

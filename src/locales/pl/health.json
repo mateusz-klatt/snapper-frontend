@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} godz. {{minutes}} min",
     "uptimeDays": "{{days}} d {{hours}} godz.",
-    "backtestName": "Test historyczny {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "brak",
     "uptimeLabel": "Czas działania",
     "exitCode": "Kod wyjścia: {{code}}",
     "service": "usługa",
-    "backtest": "test historyczny"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Statystyki bazy danych",

@@ -106,10 +106,10 @@
     },
     "modeOptions": {
       "live": "فعلي",
-      "paper": "ورقي"
+      "paper": "تجريبي"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — بيانات السوق فقط",
-    "walletPaperSuffix": "{{label}} (ورقية)",
+    "walletPaperSuffix": "{{label}} (تجريبية)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

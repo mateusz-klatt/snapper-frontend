@@ -28,7 +28,7 @@
   "statusTooltip": {
     "observed": "Mapagkakatiwalaang real-time na data ng palitan, naitala sa loob ng panahon ng bisa.",
     "simulated": "Mga bilang mula sa kunwaring pangangalakal — hindi tunay na balanse ng palitan.",
-    "stale": "Huling natanggap na tala; lumampas na ang panahon ng bisa o huminto ang pagkuha ng data.",
+    "stale": "Huling natanggap na snapshot; lumampas na ang panahon ng bisa o huminto ang pagkuha ng data.",
     "clockError": "Hindi tugma sa orasan ng server ang oras.",
     "corrupt": "Bumagsak sa pagpapatunay ang snapshot.",
     "unsupported": "Hindi nag-uulat ng estado ng account ang palitang ito.",
@@ -114,7 +114,7 @@
       "immutabilityWarning": "Permanente ang pag-uuring ito. Kapag itinakda na, hindi na ito mababago o maaalis.",
       "acknowledge": "Nauunawaan kong permanente ang pag-uuring ito at tumutugma sa paggana ng account na ito.",
       "methodDescription": {
-        "futuresPosition": "Nire-reconcile ang mga bukas na derivative position laban sa mapagkakatiwalaang futures position data ng palitan.",
+        "futuresPosition": "Nire-reconcile ang mga bukas na derivative posisyon laban sa mapagkakatiwalaang futures posisyon data ng palitan.",
         "spotExecutionReplay": "Nire-replay ang mga spot execution laban sa mga balanseng salapi. Para sa mga cash-only account na hindi kailanman nagte-trade gamit ang margin.",
         "marginLedgerReplay": "Nire-replay ang margin ledger ng palitan. Para sa mga account na nagte-trade gamit ang margin o nanghihiram laban sa collateral."
       },

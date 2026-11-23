@@ -22,9 +22,9 @@
     "startTitle": "{{name}} ကို စတင်ပါ",
     "startMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို စတင်မည်။ Live trading operation များ စတင်နိုင်သည်။",
     "stopTitle": "{{name}} ကို ရပ်ပါ",
-    "stopMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို ရပ်မည်။ Active position များကို အလိုအလျောက် ပိတ်မည်မဟုတ်ပါ။",
+    "stopMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို ရပ်မည်။ Active ပိုဇစ်ရှင် များကို အလိုအလျောက် ပိတ်မည်မဟုတ်ပါ။",
     "restartTitle": "{{name}} ကို ပြန်လည်စတင်ပါ",
-    "restartMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို ရပ်၍ ပြန်လည်စတင်မည်။ Active position များကို အလိုအလျောက် ပိတ်မည်မဟုတ်ပါ။"
+    "restartMessage": "ဤလုပ်ဆောင်ချက်သည် {{name}} ဗျူဟာကို ရပ်၍ ပြန်လည်စတင်မည်။ Active ပိုဇစ်ရှင် များကို အလိုအလျောက် ပိတ်မည်မဟုတ်ပါ။"
   },
   "toast": {
     "saved": "ဗျူဟာ {{name}} သိမ်းပြီးပါပြီ",
@@ -101,7 +101,7 @@
   },
   "launchModal": {
     "title": "ဗျူဟာလုပ်ငန်းစဉ် မှတ်ပုံတင်ပါ",
-    "emptyTemplates": "Backend တွင် strategy template register မရှိပါ။ ဗျူဟာလုပ်ငန်းစဉ် အနည်းဆုံးတစ်ခု define လုပ်ပါ။",
+    "emptyTemplates": "Backend တွင် ဗျူဟာ template register မရှိပါ။ ဗျူဟာလုပ်ငန်းစဉ် အနည်းဆုံးတစ်ခု define လုပ်ပါ။",
     "close": "ပိတ်ပါ",
     "templateLabel": "ဗျူဟာ template",
     "templatePlaceholder": "Template ရွေးပါ...",
@@ -113,7 +113,7 @@
     "processNameHelp": "ခွင့်ပြုသော character များ: lowercase letter, number, underscore",
     "instanceNameLabel": "ဗျူဟာ instance အမည်",
     "instanceNamePlaceholder": "macd_custom",
-    "instanceNameHelp": "Strategy configuration နှင့် output topic များအတွင်း အသုံးပြုသည်",
+    "instanceNameHelp": "ဗျူဟာ configuration နှင့် output topic များအတွင်း အသုံးပြုသည်",
     "executionModeLabel": "လုပ်ဆောင်မှု မုဒ်",
     "executionModeThread": "အတွင်းထည့်သွင်းထားသော thread",
     "executionModeProcess": "သီးခြား process",
@@ -131,20 +131,20 @@
     "operatorLabel": "လုပ်ဆောင်သူ",
     "operatorPlaceholder": "Operator တစ်ခုကို ရွေးပါ",
     "walletLabel": "ဝေါလက်",
-    "walletPlaceholder": "Wallet တစ်ခုကို ရွေးပါ",
+    "walletPlaceholder": "ဝေါလက် တစ်ခုကို ရွေးပါ",
     "paperAnnotation": " (စာရွက်)",
     "refUserLabel": "ဗျူဟာပိုင်ရှင် (အသုံးပြုသူ)",
     "refOperatorLabel": "လုပ်ဆောင်သူ ကိုးကားချက်",
     "refWalletLabel": "ဝေါလက် ကိုးကားချက်",
     "referencePlaceholder": "ရွေးပါ",
     "scopeHelp": "ပိုင်ရှင်ကို username ဖြင့် resolve လုပ်ပြီး ဗျူဟာကို launch လုပ်သည့်အခါ ရွေးထားသော operator နှင့် scope စစ်ဆေးသည်။",
-    "noOperatorsWarning": "Operator မရှိသေးပါ။ scoped strategy ကို launch မလုပ်မီ operator တစ်ခုနှင့် scope grant တစ်ခု ဖန်တီးပါ။"
+    "noOperatorsWarning": "Operator မရှိသေးပါ။ scoped ဗျူဟာ ကို launch မလုပ်မီ operator တစ်ခုနှင့် scope grant တစ်ခု ဖန်တီးပါ။"
   },
   "editScopeModal": {
-    "title": "မဟာဗျူဟာ Scope ကို တည်းဖြတ်ရန်",
-    "subtitle": "“{{name}}” ကို operator၊ wallet နှင့် reviewer အတွက် ပြန်လည်ချိန်ညှိပါ။ ပြောင်းလဲမှုများသည် နောက်တစ်ကြိမ် restart တွင် သက်ရောက်ပါမည်။",
-    "restartRequiredBanner": "Scope ကို သိမ်းဆည်းပြီးပါပြီ။ Scope အသစ် သက်ရောက်စေရန် မဟာဗျူဟာကို restart လုပ်ပါ။",
-    "help": "Scope ပြောင်းလဲမှုများကို မဟာဗျူဟာ restart လုပ်သည့်အခါ စစ်ဆေးသည် (operator membership၊ wallet grant၊ output coverage)။",
+    "title": "ဗျူဟာ Scope ကို တည်းဖြတ်ရန်",
+    "subtitle": "“{{name}}” ကို operator၊ ဝေါလက် နှင့် reviewer အတွက် ပြန်လည်ချိန်ညှိပါ။ ပြောင်းလဲမှုများသည် နောက်တစ်ကြိမ် restart တွင် သက်ရောက်ပါမည်။",
+    "restartRequiredBanner": "Scope ကို သိမ်းဆည်းပြီးပါပြီ။ Scope အသစ် သက်ရောက်စေရန် ဗျူဟာကို restart လုပ်ပါ။",
+    "help": "Scope ပြောင်းလဲမှုများကို ဗျူဟာ restart လုပ်သည့်အခါ စစ်ဆေးသည် (operator membership၊ ဝေါလက် grant၊ output coverage)။",
     "saveError": "Scope သိမ်းဆည်း၍ မရပါ: {{message}}",
     "save": "Scope ကို သိမ်းရန်",
     "saving": "သိမ်းဆည်းနေသည်…",

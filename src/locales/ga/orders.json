@@ -14,9 +14,9 @@
       "all": "Gach Ordú",
       "new": "Nua",
       "open": "Oscailte",
-      "partiallyFilled": "Líonta go Páirteach",
-      "partially_filled": "Líonta go Páirteach",
-      "filled": "Líonta",
+      "partiallyFilled": "Forghníomhaithe go Páirteach",
+      "partially_filled": "Forghníomhaithe go Páirteach",
+      "filled": "Forghníomhaithe",
       "cancelled": "Cealaithe",
       "rejected": "Diúltaithe"
     }
@@ -38,7 +38,7 @@
   },
   "executionCard": {
     "orderNumber": "Ordú #{{orderId}}",
-    "filled": "LÍONTA",
+    "filled": "FORGHNÍOMHAITHE",
     "orderLabel": "Ordú {{orderId}}",
     "size": "Méid",
     "price": "Praghas",
@@ -106,10 +106,10 @@
     },
     "modeOptions": {
       "live": "Beo",
-      "paper": "Páipéar"
+      "paper": "Ionsamhlaithe"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — sonraí margaidh amháin",
-    "walletPaperSuffix": "{{label}} (páipéir)",
+    "walletPaperSuffix": "{{label}} (ionsamhlaithe)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

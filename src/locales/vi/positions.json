@@ -57,7 +57,7 @@
         "instrument": "Công cụ"
       },
       "tier": {
-        "mark_incomplete": "THIẾU GIÁ THAM CHIẾU",
+        "mark_incomplete": "THIẾU GIÁ ĐÁNH DẤU",
         "untrusted": "KHÔNG ĐÁNG TIN CẬY"
       },
       "reasons": {
@@ -71,7 +71,7 @@
         "execution_size_invalid": "Khối lượng khớp lệnh không hợp lệ",
         "execution_price_invalid": "Giá khớp lệnh không hợp lệ",
         "fx_conversion_unproven": "Chưa xác minh được quy đổi FX",
-        "mark_unavailable": "Không có giá tham chiếu",
+        "mark_unavailable": "Không có giá đánh dấu",
         "cumulative_non_finite": "Giá trị lũy kế không hữu hạn",
         "unrealized_non_finite": "P&L chưa thực hiện không hữu hạn",
         "net_non_finite": "P&L ròng không hữu hạn",
@@ -227,7 +227,7 @@
     "unrealizedPnl": "P&L chưa thực hiện",
     "realizedPnl": "P&L đã thực hiện",
     "updated": "Cập nhật {{timestamp}}",
-    "mark": "Giá tham chiếu",
+    "mark": "Giá đánh dấu",
     "noValue": "Không có dữ liệu"
   },
   "empty": {
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Gắn Trailing Stop — {{instrument}}",
-    "confirmTitle": "Xác nhận Trailing Stop",
+    "title": "Gắn lệnh dừng lỗ động — {{instrument}}",
+    "confirmTitle": "Xác nhận lệnh dừng lỗ động",
     "position": "Vị thế",
     "entryPrice": "Giá vào",
     "trailingDistanceLabel": "Khoảng cách Trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "ví dụ 5.0",
       "minLockPct": "0 = bắt đầu ngay"
     },
-    "minLockWarning": "Trailing Stop sẽ không kích hoạt cho đến khi giá đi {{minLockPct}}% theo hướng có lợi cho bạn.",
+    "minLockWarning": "Lệnh dừng lỗ động sẽ không kích hoạt cho đến khi giá đi {{minLockPct}}% theo hướng có lợi cho bạn.",
     "buttons": {
       "cancel": "Hủy",
       "review": "Kiểm tra",

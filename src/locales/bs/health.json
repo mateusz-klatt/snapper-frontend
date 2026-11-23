@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} h {{minutes}} min",
     "uptimeDays": "{{days}} d {{hours}} h",
-    "backtestName": "Test na historijskim podacima {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Nije dostupno",
     "uptimeLabel": "Vrijeme rada",
     "exitCode": "Izlazni kod: {{code}}",
     "service": "servis",
-    "backtest": "test na historijskim podacima"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Statistika baze podataka",

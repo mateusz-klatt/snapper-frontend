@@ -65,7 +65,7 @@
     "runLabel": "اجرا {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "معیارها",
-      "equityOverlay": "هم‌پوشانی equity",
+      "equityOverlay": "هم‌پوشانی ارزش خالص حساب",
       "trades": "معاملات",
       "signals": "سیگنال‌ها"
     },

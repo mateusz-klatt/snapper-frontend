@@ -3,7 +3,7 @@
     "title": "Rendszerállapot",
     "healthMetricsHeading": "Állapotmetrikák",
     "processStatusHeading": "Folyamatállapot",
-    "activeBacktestsHeading": "Aktív Backtestek",
+    "activeBacktestsHeading": "Aktív Backtesztek",
     "quickActionsHeading": "Gyors műveletek",
     "featureNotImplemented": "A funkció még nincs megvalósítva",
     "restartServices": "Szolgáltatások újraindítása",
@@ -23,8 +23,8 @@
   "metrics": {
     "tradingEngine": "Kereskedési motor",
     "tradingEngineDescription": "Stratégia-végrehajtó motor",
-    "activeBacktests": "Aktív Backtestek",
-    "activeBacktestsDescription": "Futó Backtest folyamatok",
+    "activeBacktests": "Aktív Backtesztek",
+    "activeBacktestsDescription": "Futó Backteszt folyamatok",
     "active": "Aktív",
     "inactive": "Inaktív"
   },
@@ -39,7 +39,7 @@
     "uptimeLabel": "Üzemidő",
     "exitCode": "Kilépési kód: {{code}}",
     "service": "szolgáltatás",
-    "backtest": "Backtest"
+    "backtest": "Backteszt"
   },
   "dbStats": {
     "title": "Adatbázis-statisztika",
@@ -71,7 +71,7 @@
     "failedDescription": "Újrapróbálkozási keret kimerült",
     "unregistered": "Regisztrálatlan",
     "unregisteredDescription": "APNs 410 (BadDeviceToken)",
-    "cancelledScope": "Megszakítva (hatáskör)",
+    "cancelledScope": "Visszavonva (hatáskör)",
     "cancelledScopeDescription": "Hatáskör visszavonása / felhasználó deaktiválása",
     "outboxDepth": "Outbox mélysége",
     "outboxDepthDescription": "Sorban áll, újrapróbálkozásra vár"

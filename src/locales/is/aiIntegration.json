@@ -17,7 +17,7 @@
       "label": "Merki",
       "username": "Notandanafn",
       "created": "Búið til",
-      "maxOpenOrders": "Hámarks opnar pantanir",
+      "maxOpenOrders": "Hámarksfjöldi opinna fyrirmæla",
       "maxDailyUsd": "Hámarks daglegt USD",
       "status": "Staða",
       "actions": "Aðgerðir"
@@ -49,7 +49,7 @@
     },
     "caps": {
       "heading": "Viðskiptamörk (öll valfrjáls)",
-      "maxOpenOrders": "Hámarks opnar pantanir",
+      "maxOpenOrders": "Hámarksfjöldi opinna fyrirmæla",
       "maxDailyNotionalUsd": "Hámarks daglegt nafnverð USD",
       "maxCancelsPerMinute": "Hámarks afturkallanir á mínútu",
       "perInstrument": "Hámarksmagn á gerning (JSON)",
@@ -63,7 +63,7 @@
       "heading": "Yfirfara og búa til",
       "rowLabel": "Merki",
       "rowOperator": "public_id operators",
-      "rowMaxOpenOrders": "Hámarks opnar pantanir",
+      "rowMaxOpenOrders": "Hámarksfjöldi opinna fyrirmæla",
       "rowMaxDailyNotional": "Hámarks daglegt nafnverð USD",
       "rowMaxCancelsPerMinute": "Hámarks afturkallanir á mínútu",
       "rowPerInstrument": "Hámarksmagn á gerning",
@@ -98,7 +98,7 @@
     "createdAt": "Búið til",
     "createdBy": "Búið til af (public_id notanda)",
     "publicId": "Opinbert ID",
-    "maxOpenOrders": "Hámarks opnar pantanir",
+    "maxOpenOrders": "Hámarksfjöldi opinna fyrirmæla",
     "maxDailyNotionalUsd": "Hámarks daglegt nafnverð USD",
     "maxCancelsPerMinute": "Hámarks afturkallanir á mínútu",
     "perInstrument": "Hámarksmagn á gerning",
@@ -134,10 +134,10 @@
     "title": "Heimila AI-tengi",
     "loading": "Hleð heimildarbeiðni…",
     "intro": "{{client}} óskar eftir að tengjast Snapper-reikningnum þínum.",
-    "readOnlyGuarantee": "Aðeins lesaðgangur, takmarkaður við núverandi heimildir þínar. Þetta tengi getur ekki lagt inn, breytt eða afturkallað pantanir.",
+    "readOnlyGuarantee": "Aðeins lesaðgangur, takmarkaður við núverandi heimildir þínar. Þetta tengi getur ekki lagt inn, breytt eða afturkallað fyrirmæli.",
     "scopesHeading": "Umbeðinn aðgangur",
     "scopes": {
-      "snapperRead": "Lesa markaðsgögn, pantanir, stöður og merki, aðeins þar sem þínar eigin heimildir leyfa.",
+      "snapperRead": "Lesa markaðsgögn, fyrirmæli, stöður og merki, aðeins þar sem þínar eigin heimildir leyfa.",
       "offlineAccess": "Halda tengingu án þess að biðja þig um að skrá þig inn aftur."
     },
     "unrecognizedScope": "Óþekkt heimild: {{scope}}",

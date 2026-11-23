@@ -35,9 +35,9 @@
     "timeTravelBanner": "Mode voyage dans le temps — consultation de données historiques (lecture seule)",
     "lagUnknown": "Inconnue",
     "walletPicker": {
-      "ariaLabel": "Wallet actif",
+      "ariaLabel": "Portefeuille actif",
       "placeholder": "Portefeuille",
-      "allWallets": "Tous les wallets",
+      "allWallets": "Tous les portefeuilles",
       "optionPaper": "{{label}} (démo)"
     },
     "operatorPicker": {
@@ -71,7 +71,7 @@
     "aiIntegration": "Intégration IA",
     "aiReviews": "Revues IA",
     "alerts": "Alertes",
-    "backtests": "Tests historiques",
+    "backtests": "Backtests",
     "health": "État du système",
     "market": "Données de marché",
     "orders": "Ordres et exécutions",

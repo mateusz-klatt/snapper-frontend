@@ -90,7 +90,7 @@
       "warning": "VAROITUS",
       "error": "VIRHE"
     },
-    "backtest": "Historiatesti",
+    "backtest": "Backtest",
     "backtestAriaLabel": "Backtestaa strategia {{name}}",
     "managedRemotely": "Hallinnoija: {{coordinator}}",
     "remoteCoordinatorUnknown": "toinen kontti",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Valitse operaattori",
     "walletLabel": "Lompakko",
     "walletPlaceholder": "Valitse lompakko",
-    "paperAnnotation": " (paperi)",
+    "paperAnnotation": " (demo)",
     "refUserLabel": "Strategian omistaja (käyttäjä)",
     "refOperatorLabel": "Operaattorin viite",
     "refWalletLabel": "Lompakon viite",

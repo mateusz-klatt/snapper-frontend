@@ -76,9 +76,9 @@
         "unrealized_non_finite": "P&L تحقق‌نیافته متناهی نیست",
         "net_non_finite": "P&L خالص متناهی نیست",
         "attribution_value_non_finite": "مقدار انتساب متناهی نیست",
-        "attribution_reconciliation_failed": "تطبیق انتساب ناموفق بود",
+        "attribution_reconciliation_failed": "مغایرت‌گیری انتساب ناموفق بود",
         "attribution_sum_unrepresentable": "مجموع مقادیر P&L منتسب‌شده در محاسبات عددی دقیق قابل بازنمایی نیست",
-        "instrument_reconciliation_failed": "تطبیق مجموع P&L ابزارها با P&L کل ناموفق بود",
+        "instrument_reconciliation_failed": "مغایرت‌گیری مجموع P&L ابزارها با P&L کل ناموفق بود",
         "instrument_sum_unrepresentable": "مجموع مقادیر ابزارها در محاسبات عددی دقیق قابل بازنمایی نیست",
         "late_pre_activation_execution": "اجرای معاملاتی دیررس با مُهر زمانی پیش از فعال‌سازی"
       }
@@ -107,22 +107,22 @@
       "valuationCurrency": "ارز ارزش‌گذاری: {{currency}}"
     },
     "equity": {
-      "title": "هم‌پوشانی حقوق صاحبان سرمایه",
-      "seriesLabel": "حقوق صاحبان سرمایه",
-      "seriesLabelSpotOnly": "حقوق صاحبان سرمایه (بازار نقدی)",
+      "title": "هم‌پوشانی ارزش خالص حساب",
+      "seriesLabel": "ارزش خالص حساب",
+      "seriesLabelSpotOnly": "ارزش خالص حساب (صرافی نقدی)",
       "latest": "آخرین: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
         "title": "افت سرمایه",
         "current": "افت فعلی",
         "max": "بیشترین افت",
-        "definition": "نسبت به بالاترین سطح ثبت‌شده حقوق صاحبان سرمایه.",
+        "definition": "نسبت به بالاترین سطح ثبت‌شده ارزش خالص حساب.",
         "flowsCaveat": "افت معاملاتی تعدیل‌شده بر مبنای جریان‌های وجه نیست.",
         "noValue": "—"
       },
       "honesty": {
         "title": "نحوه تفسیر این داده‌ها",
-        "spotOnly": "فقط بازار نقدی — موجودی‌های نگهداری‌شده در بازارهای دیگر لحاظ نمی‌شوند.",
+        "spotOnly": "فقط صرافی نقدی — موجودی‌های نگهداری‌شده در صرافی‌های دیگر لحاظ نمی‌شوند.",
         "flowsUnadjusted": "واریزها و برداشت‌های خارجی حذف نشده‌اند.",
         "restatedFrom": "این ارقام با نرخ بسته‌شدن هر دقیقه از {{from}} بازمحاسبه شده‌اند و مستقیماً در این ارز نمونه‌برداری نشده‌اند.",
         "pricedOn": "بر پایهٔ {{plane}} قیمت‌گذاری شده است.",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "افزودن Trailing Stop — {{instrument}}",
-    "confirmTitle": "تأیید Trailing Stop",
+    "title": "افزودن حد ضرر متحرک — {{instrument}}",
+    "confirmTitle": "تأیید حد ضرر متحرک",
     "position": "موقعیت",
     "entryPrice": "قیمت ورود",
     "trailingDistanceLabel": "فاصله Trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "مثلاً 5.0",
       "minLockPct": "0 = شروع فوری"
     },
-    "minLockWarning": "Trailing Stop تا زمانی که قیمت {{minLockPct}}٪ به نفع شما حرکت نکند فعال نمی‌شود.",
+    "minLockWarning": "حد ضرر متحرک تا زمانی که قیمت {{minLockPct}}٪ به نفع شما حرکت نکند فعال نمی‌شود.",
     "buttons": {
       "cancel": "لغو",
       "review": "بازبینی",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "حداقل یکی از قیمت‌های SL یا TP الزامی است",
-    "invalidSlPrice": "قیمت Stop-Loss نامعتبر است",
-    "slPricePositive": "قیمت Stop-Loss باید مثبت باشد",
-    "invalidTpPrice": "قیمت Take-Profit نامعتبر است",
-    "tpPricePositive": "قیمت Take-Profit باید مثبت باشد",
+    "invalidSlPrice": "قیمت حد ضرر نامعتبر است",
+    "slPricePositive": "قیمت حد ضرر باید مثبت باشد",
+    "invalidTpPrice": "قیمت حد سود نامعتبر است",
+    "tpPricePositive": "قیمت حد سود باید مثبت باشد",
     "slLongBelowEntry": "قیمت SL باید زیر قیمت ورود باشد ({{price}})",
     "tpLongAboveEntry": "قیمت TP باید بالای قیمت ورود باشد ({{price}})",
     "slShortAboveEntry": "قیمت SL باید بالای قیمت ورود باشد ({{price}})",

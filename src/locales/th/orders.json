@@ -14,9 +14,9 @@
       "all": "คำสั่งทั้งหมด",
       "new": "ใหม่",
       "open": "เปิด",
-      "partiallyFilled": "ดำเนินการบางส่วน",
-      "partially_filled": "ดำเนินการบางส่วน",
-      "filled": "ดำเนินการแล้ว",
+      "partiallyFilled": "จับคู่บางส่วน",
+      "partially_filled": "จับคู่บางส่วน",
+      "filled": "จับคู่แล้ว",
       "cancelled": "ยกเลิกแล้ว",
       "rejected": "ถูกปฏิเสธ"
     }
@@ -38,7 +38,7 @@
   },
   "executionCard": {
     "orderNumber": "คำสั่ง #{{orderId}}",
-    "filled": "ดำเนินคำสั่งครบแล้ว",
+    "filled": "จับคู่แล้ว",
     "orderLabel": "คำสั่ง {{orderId}}",
     "size": "ขนาด",
     "price": "ราคา",
@@ -99,7 +99,7 @@
     },
     "orderTypeOptions": {
       "market": "คำสั่งตลาด",
-      "limit": "คำสั่ง limit",
+      "limit": "คำสั่งจำกัดราคา",
       "stop": "คำสั่ง stop",
       "stopLimit": "คำสั่ง stop-limit",
       "stop_limit": "คำสั่ง stop-limit"

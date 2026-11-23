@@ -74,7 +74,7 @@
       "manual": "handmatig"
     },
     "errors": {
-      "notFound": "Vergelijking niet gevonden in huidige portefeuille.",
+      "notFound": "Vergelijking niet gevonden in huidige wallet.",
       "loadFailed": "Laden vergelijking mislukt: {{message}}",
       "unknown": "onbekende fout",
       "emptyResponse": "Leeg vergelijkingsantwoord."

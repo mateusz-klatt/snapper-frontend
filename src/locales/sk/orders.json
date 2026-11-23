@@ -109,7 +109,7 @@
       "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — iba trhové dáta",
-    "walletPaperSuffix": "{{label}} (papierová)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

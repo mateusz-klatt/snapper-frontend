@@ -1,21 +1,21 @@
 {
   "nav": {
     "back": "← Vissza",
-    "backToList": "← Vissza a Backtestekhez"
+    "backToList": "← Vissza a Backtesztekhez"
   },
   "status": {
     "pending": "Függőben",
     "running": "Fut",
     "completed": "Befejezve",
     "failed": "Sikertelen",
-    "cancelled": "Megszakítva"
+    "cancelled": "Visszavonva"
   },
   "list": {
-    "title": "Backtestek",
+    "title": "Backtesztek",
     "actions": {
       "cancel": "Mégse",
       "rerun": "Újrafuttatás",
-      "create": "Új backtest"
+      "create": "Új backteszt"
     },
     "fields": {
       "timeframe": "Idősík",
@@ -25,23 +25,23 @@
     },
     "errorPrefix": "Hiba: {{message}}",
     "filter": {
-      "ariaLabel": "Backtestek szűrése állapot szerint",
+      "ariaLabel": "Backtesztek szűrése állapot szerint",
       "options": {
         "all": "Minden állapot",
         "pending": "Függőben",
         "running": "Fut",
         "completed": "Befejezve",
         "failed": "Sikertelen",
-        "cancelled": "Megszakítva"
+        "cancelled": "Visszavonva"
       }
     },
     "empty": {
-      "title": "Nincsenek Backtestek",
-      "message": "Futtasson Backtestet a CLI-n vagy API-n keresztül, hogy az eredmények itt megjelenjenek."
+      "title": "Nincsenek Backtesztek",
+      "message": "Futtasson Backtesztet a CLI-n vagy API-n keresztül, hogy az eredmények itt megjelenjenek."
     }
   },
   "detail": {
-    "title": "Backtest futtatás",
+    "title": "Backteszt futtatás",
     "fields": {
       "strategy": "Stratégia",
       "instrument": "Instrumentum",
@@ -59,13 +59,13 @@
   },
   "compare": {
     "title": "Összehasonlítás",
-    "headingFull": "Backtest összehasonlítás",
+    "headingFull": "Backteszt összehasonlítás",
     "loading": "Összehasonlítás betöltése…",
     "vs": "kontra",
     "runLabel": "Futtatás {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metrikák",
-      "equityOverlay": "Equity átfedés",
+      "equityOverlay": "Saját tőke átfedés",
       "trades": "Kötések",
       "signals": "Jelzések"
     },
@@ -141,9 +141,9 @@
     }
   },
   "create": {
-    "title": "Új backtest",
+    "title": "Új backteszt",
     "cancel": "Mégse",
-    "submit": "Backtest indítása",
+    "submit": "Backteszt indítása",
     "submitting": "Indítás…",
     "errors": {
       "unknown": "Ismeretlen hiba"
@@ -158,7 +158,7 @@
       "strategyError": "Nem sikerült betölteni a stratégiákat",
       "instrumentLabel": "Instrumentum",
       "instrumentPlaceholder": "pl. BTC-USD",
-      "instrumentHelp": "A backtestelendő instrumentum nyilvános azonosítója",
+      "instrumentHelp": "A backtesztelendő instrumentum nyilvános azonosítója",
       "exchangeLabel": "Tőzsde (feed forrás)",
       "exchangePlaceholder": "— Válasszon tőzsdét —",
       "timeframeLabel": "Idősík",

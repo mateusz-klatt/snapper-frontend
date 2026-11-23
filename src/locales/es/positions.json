@@ -57,7 +57,7 @@
         "instrument": "Instrumento"
       },
       "tier": {
-        "mark_incomplete": "Precio de referencia (mark) incompleto",
+        "mark_incomplete": "Precio de marca incompleto",
         "untrusted": "NO FIABLE"
       },
       "reasons": {
@@ -71,7 +71,7 @@
         "execution_size_invalid": "Tamaño de ejecución no válido",
         "execution_price_invalid": "Precio de ejecución no válido",
         "fx_conversion_unproven": "Conversión FX no verificable",
-        "mark_unavailable": "Precio de referencia (mark) no disponible",
+        "mark_unavailable": "Precio de marca no disponible",
         "cumulative_non_finite": "El valor acumulado no es finito",
         "unrealized_non_finite": "El P&L no realizado no es finito",
         "net_non_finite": "El P&L neto no es finito",
@@ -109,7 +109,7 @@
     "equity": {
       "title": "Superposición de patrimonio",
       "seriesLabel": "Patrimonio",
-      "seriesLabelSpotOnly": "Patrimonio (mercado al contado)",
+      "seriesLabelSpotOnly": "Patrimonio (plataforma al contado)",
       "latest": "Último: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Cómo interpretar estos datos",
-        "spotOnly": "Solo mercado al contado; se excluyen los saldos mantenidos en otros mercados.",
+        "spotOnly": "Solo plataforma al contado; se excluyen los saldos mantenidos en otras plataformas.",
         "flowsUnadjusted": "No se excluyen los depósitos ni los retiros externos.",
         "restatedFrom": "Estas cifras están convertidas a partir de {{from}} según el tipo de cambio de cierre de cada minuto y no se miden de forma nativa en esta moneda.",
         "pricedOn": "Valorado según {{plane}}.",
@@ -227,7 +227,7 @@
     "unrealizedPnl": "P&L no realizado",
     "realizedPnl": "P&L realizado",
     "updated": "Actualizado {{timestamp}}",
-    "mark": "Precio mark",
+    "mark": "Precio de marca",
     "noValue": "N/D"
   },
   "empty": {
@@ -239,10 +239,10 @@
     "confirmTitle": "Confirmar bracket",
     "position": "Posición",
     "entryPrice": "Precio de entrada",
-    "stopLossLabel": "Precio límite de pérdidas",
-    "takeProfitLabel": "Precio de toma de beneficios",
-    "stopLoss": "Límite de pérdidas",
-    "takeProfit": "Toma de beneficios",
+    "stopLossLabel": "Precio de stop loss",
+    "takeProfitLabel": "Precio de take profit",
+    "stopLoss": "Stop loss",
+    "takeProfit": "Take profit",
     "placeholders": {
       "slLong": "Por debajo de {{price}}",
       "slShort": "Por encima de {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Adjuntar Trailing Stop — {{instrument}}",
-    "confirmTitle": "Confirmar Trailing Stop",
+    "title": "Adjuntar Stop dinámico — {{instrument}}",
+    "confirmTitle": "Confirmar Stop dinámico",
     "position": "Posición",
     "entryPrice": "Precio de entrada",
     "trailingDistanceLabel": "Distancia de trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "p. ej. 5.0",
       "minLockPct": "0 = iniciar inmediatamente"
     },
-    "minLockWarning": "El trailing stop no se activará hasta que el precio se mueva un {{minLockPct}} % a su favor.",
+    "minLockWarning": "El stop dinámico no se activará hasta que el precio se mueva un {{minLockPct}} % a su favor.",
     "buttons": {
       "cancel": "Cancelar",
       "review": "Revisar",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Se requiere al menos un precio de SL o TP",
-    "invalidSlPrice": "Precio límite de pérdidas no válido",
-    "slPricePositive": "El precio límite de pérdidas debe ser positivo",
-    "invalidTpPrice": "Precio de toma de beneficios no válido",
-    "tpPricePositive": "El precio de toma de beneficios debe ser positivo",
+    "invalidSlPrice": "Precio de stop loss no válido",
+    "slPricePositive": "El precio de stop loss debe ser positivo",
+    "invalidTpPrice": "Precio de take profit no válido",
+    "tpPricePositive": "El precio de take profit debe ser positivo",
     "slLongBelowEntry": "El precio de SL debe ser inferior al precio de entrada ({{price}})",
     "tpLongAboveEntry": "El precio de TP debe ser superior al precio de entrada ({{price}})",
     "slShortAboveEntry": "El precio de SL debe ser superior al precio de entrada ({{price}})",

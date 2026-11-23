@@ -106,10 +106,10 @@
     },
     "modeOptions": {
       "live": "En vivo",
-      "paper": "Papel"
+      "paper": "Simulado"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — solo datos de mercado",
-    "walletPaperSuffix": "{{label}} (papel)",
+    "walletPaperSuffix": "{{label}} (simulado)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

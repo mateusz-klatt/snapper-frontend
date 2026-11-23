@@ -65,7 +65,7 @@
     "runLabel": "Beh {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metriky",
-      "equityOverlay": "Prekrytie equity kriviek",
+      "equityOverlay": "Prekrytie kriviek vlastného imania",
       "trades": "Obchody",
       "signals": "Signály"
     },
@@ -131,7 +131,7 @@
     "waiting": "Čaká sa na priebeh…",
     "candles": "{{done}} / {{total}} sviečok",
     "candlesNoTotal": "{{done}} sviečok",
-    "equity": "kapitál {{value}}",
+    "equity": "vlastné imanie {{value}}",
     "signalsTrades": "{{signals}} signálov / {{trades}} obchodov",
     "milestoneLine": "míľnik {{label}}",
     "milestone": {

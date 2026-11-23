@@ -91,7 +91,7 @@
       "error": "HIBA"
     },
     "backtest": "Backteszt",
-    "backtestAriaLabel": "{{name}} stratégia backtestelése",
+    "backtestAriaLabel": "{{name}} stratégia backtesztelése",
     "managedRemotely": "Kezeli: {{coordinator}}",
     "remoteCoordinatorUnknown": "egy másik konténer",
     "restart": "Újraindítás",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Válasszon operátort",
     "walletLabel": "Tárca",
     "walletPlaceholder": "Válasszon tárcát",
-    "paperAnnotation": " (papír)",
+    "paperAnnotation": " (demó)",
     "refUserLabel": "Stratégia tulajdonosa (felhasználó)",
     "refOperatorLabel": "Operátor hivatkozása",
     "refWalletLabel": "Tárca hivatkozása",

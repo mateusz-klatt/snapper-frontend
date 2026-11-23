@@ -57,7 +57,7 @@
         "instrument": "Instrument"
       },
       "tier": {
-        "mark_incomplete": "Niepełna wycena MARK",
+        "mark_incomplete": "Niepełna cena referencyjna",
         "untrusted": "NIEZAUFANE"
       },
       "reasons": {
@@ -71,7 +71,7 @@
         "execution_size_invalid": "Nieprawidłowa wielkość realizacji",
         "execution_price_invalid": "Nieprawidłowa cena realizacji",
         "fx_conversion_unproven": "Niepotwierdzone przeliczenie walutowe",
-        "mark_unavailable": "Niedostępna cena mark",
+        "mark_unavailable": "Niedostępna cena referencyjna",
         "cumulative_non_finite": "Nieskończona lub nieokreślona wartość skumulowana",
         "unrealized_non_finite": "Nieskończony lub nieokreślony niezrealizowany P&L",
         "net_non_finite": "Nieskończony lub nieokreślony P&L netto",
@@ -227,7 +227,7 @@
     "unrealizedPnl": "Niezrealizowany P&L",
     "realizedPnl": "Zrealizowany P&L",
     "updated": "Zaktualizowano {{timestamp}}",
-    "mark": "Cena mark",
+    "mark": "Cena referencyjna",
     "noValue": "brak"
   },
   "empty": {
@@ -239,10 +239,10 @@
     "confirmTitle": "Potwierdź SL/TP",
     "position": "Pozycja",
     "entryPrice": "Cena wejścia",
-    "stopLossLabel": "Cena ograniczenia straty",
-    "takeProfitLabel": "Cena realizacji zysku",
-    "stopLoss": "Ograniczenie straty",
-    "takeProfit": "Realizacja zysku",
+    "stopLossLabel": "Cena stop-lossa",
+    "takeProfitLabel": "Cena take-profitu",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Poniżej {{price}}",
       "slShort": "Powyżej {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Wymagana jest co najmniej jedna cena SL lub TP",
-    "invalidSlPrice": "Nieprawidłowa cena ograniczenia straty",
-    "slPricePositive": "Cena ograniczenia straty musi być dodatnia",
-    "invalidTpPrice": "Nieprawidłowa cena realizacji zysku",
-    "tpPricePositive": "Cena realizacji zysku musi być dodatnia",
+    "invalidSlPrice": "Nieprawidłowa cena stop-lossa",
+    "slPricePositive": "Cena stop-lossa musi być dodatnia",
+    "invalidTpPrice": "Nieprawidłowa cena take-profitu",
+    "tpPricePositive": "Cena take-profitu musi być dodatnia",
     "slLongBelowEntry": "Cena SL musi być poniżej ceny wejścia ({{price}})",
     "tpLongAboveEntry": "Cena TP musi być powyżej ceny wejścia ({{price}})",
     "slShortAboveEntry": "Cena SL musi być powyżej ceny wejścia ({{price}})",

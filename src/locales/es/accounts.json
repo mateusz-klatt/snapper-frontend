@@ -109,7 +109,7 @@
     "classify": {
       "action": "Clasificar",
       "title": "Clasificar el método de conciliación",
-      "intro": "Elija cómo se concilia esta cuenta de la plataforma con los datos fiables del exchange. Esta es una declaración de hecho sobre la cuenta, no una preferencia.",
+      "intro": "Elija cómo se concilia esta cuenta de la plataforma con los datos fiables de la plataforma de intercambio. Esta es una declaración de hecho sobre la cuenta, no una preferencia.",
       "guidance": "Elija el método que coincida con el funcionamiento real de la cuenta en la plataforma: las cuentas de efectivo (spot) liquidan las operaciones exclusivamente con saldos de efectivo, mientras que las cuentas de margen pueden pedir préstamos con garantías. Si no sabe con certeza cómo funciona la cuenta, déjela sin clasificar.",
       "immutabilityWarning": "Esta clasificación es permanente. Una vez establecida, no se puede cambiar ni eliminar.",
       "acknowledge": "Entiendo que esta clasificación es permanente y coincide con el funcionamiento de esta cuenta.",

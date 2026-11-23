@@ -7,11 +7,11 @@
     "title": "Kebenaran Peranan",
     "viewer": {
       "label": "Pemapar",
-      "description": "Keterlihatan penuh operator secara baca sahaja bagi akaun, dompet dan portfolio, isyarat, keputusan AI, untung rugi, ujian semula, strategi, proses dan kesihatan sistem. Tidak boleh melakukan tindakan operasi."
+      "description": "Keterlihatan penuh operator secara baca sahaja bagi akaun, dompet dan portfolio, isyarat, keputusan AI, untung rugi, backtest, strategi, proses dan kesihatan sistem. Tidak boleh melakukan tindakan operasi."
     },
     "operator": {
       "label": "Operator",
-      "description": "Semua keterlihatan Pemapar serta kawalan dagangan, posisi, strategi, proses, ujian semula dan integrasi AI."
+      "description": "Semua keterlihatan Pemapar serta kawalan dagangan, posisi, strategi, proses, backtest dan integrasi AI."
     },
     "admin": {
       "label": "Pentadbir",

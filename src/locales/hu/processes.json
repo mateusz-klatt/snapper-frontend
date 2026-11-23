@@ -40,7 +40,7 @@
       "running": "Fut",
       "succeeded": "Sikeres",
       "failed": "Sikertelen",
-      "cancelled": "Megszakítva"
+      "cancelled": "Visszavonva"
     }
   },
   "template": {

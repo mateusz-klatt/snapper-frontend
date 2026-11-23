@@ -104,7 +104,7 @@
     "chooseWalletPlaceholder": "Välj en plånbok...",
     "selectWalletPlaceholder": "Välj plånbok...",
     "walletLabel": "Plånbok",
-    "paperAnnotation": " (demo)",
+    "paperAnnotation": " (simulerat)",
     "unknownError": "Okänt fel",
     "dash": "-",
     "readOnly": "Endast läsåtkomst — ändringar är inaktiverade."
@@ -352,7 +352,7 @@
         "api_key_secret": "API-nyckel + hemlighet",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Demo"
+        "paper": "Simulerat"
       },
       "validation": {
         "walletRequired": "Plånbok krävs",

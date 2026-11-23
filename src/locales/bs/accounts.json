@@ -1,11 +1,11 @@
 {
   "page": {
     "title": "Računi na berzi",
-    "subtitle": "Gotovinski bilansi i otvorene pozicije, označeni po izvještaju berze."
+    "subtitle": "Gotovinska salda i otvorene pozicije, označeni po izvještaju berze."
   },
   "empty": {
     "title": "Nema računa",
-    "message": "Bilansi i pozicije berze će se pojaviti ovdje kada račun bude opserviran."
+    "message": "Salda i pozicije berze će se pojaviti ovdje kada račun bude opserviran."
   },
   "banner": {
     "title": "Neki podaci računa nisu u stvarnom vremenu",
@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Mjerodavni podaci berze u stvarnom vremenu, zabilježeni tokom perioda važenja.",
-    "simulated": "Podaci trgovanja na papiru — nisu stvarni bilansi.",
+    "simulated": "Podaci demo trgovanja — nisu stvarna salda.",
     "stale": "Posljednja poznata snimka; period važenja je istekao ili je preuzimanje zastalo.",
     "clockError": "Vrijeme opservacije nije usklađeno sa satom servera.",
     "corrupt": "Snimka nije prošla validaciju.",
@@ -36,11 +36,11 @@
     "unknown": "Status ne može biti klasificiran."
   },
   "section": {
-    "balances": "Bilansi",
+    "balances": "Salda",
     "positions": "Otvorene pozicije"
   },
   "sectionEmpty": {
-    "balances": "Nema prijavljenih bilansa",
+    "balances": "Nema prijavljenih salda",
     "positions": "Nema otvorenih pozicija"
   },
   "balance": {
@@ -67,7 +67,7 @@
     "paper": "Demo"
   },
   "meta": {
-    "balancesObserved": "Bilansi opservirani {{timestamp}}",
+    "balancesObserved": "Salda opservirana {{timestamp}}",
     "positionsObserved": "Pozicije opservirane {{timestamp}}",
     "authoritativeUntil": "Pouzdano do {{timestamp}}",
     "error": "Greška: {{message}}"
@@ -110,12 +110,12 @@
       "action": "Klasificiraj",
       "title": "Klasificiraj metodu usklađivanja",
       "intro": "Odaberite kako se ovaj račun na berzi usklađuje s mjerodavnim podacima berze. Ovo je činjenična izjava o računu, a ne preferencija.",
-      "guidance": "Odaberite metodu koja odgovara načinu na koji račun stvarno funkcioniše na berzi: gotovinski (spot) računi podmiruju transakcije isključivo iz gotovinskih stanja, dok računi s maržom mogu pozajmljivati uz kolateral. Ako niste sigurni kako račun funkcioniše, ostavite ga neklasificiranim.",
+      "guidance": "Odaberite metodu koja odgovara načinu na koji račun stvarno funkcioniše na berzi: gotovinski (spot) računi podmiruju transakcije isključivo iz gotovinskih salda, dok računi s maržom mogu pozajmljivati uz kolateral. Ako niste sigurni kako račun funkcioniše, ostavite ga neklasificiranim.",
       "immutabilityWarning": "Ova klasifikacija je trajna. Nakon što se postavi, ne može se promijeniti niti ukloniti.",
       "acknowledge": "Razumijem da je ova klasifikacija trajna i da odgovara načinu na koji ovaj račun funkcioniše.",
       "methodDescription": {
         "futuresPosition": "Usklađuje otvorene pozicije izvedenica s mjerodavnim podacima berze o pozicijama fjučersa.",
-        "spotExecutionReplay": "Reproducira spot izvršenja u odnosu na gotovinska stanja. Za račune koji koriste samo gotovinu i nikada ne trguju uz maržu.",
+        "spotExecutionReplay": "Reproducira spot izvršenja u odnosu na gotovinska salda. Za račune koji koriste samo gotovinu i nikada ne trguju uz maržu.",
         "marginLedgerReplay": "Reproducira glavnu knjigu marže berze. Za račune koji trguju uz maržu ili pozajmljuju uz kolateral."
       },
       "credentialLoading": "Učitavanje vjerodajnice…",

@@ -27,12 +27,12 @@
   },
   "statusTooltip": {
     "observed": "Data halisi na ya kuaminika kutoka soko la kubadilisha ndani ya muda wake wa uhalali.",
-    "simulated": "Takwimu za biashara ya karatasi.",
+    "simulated": "Takwimu za biashara ya majaribio.",
     "stale": "Picha ya mwisho inayojulikana; dirisha limekwisha.",
     "clockError": "Muda hauambatani na seva.",
     "corrupt": "Picha iliyohifadhiwa ilishindwa kuthibitishwa.",
-    "unsupported": "Ukumbi huu hauripoti hali ya akaunti.",
-    "notApplicable": "Kipengele hiki hakitumiki kwa ukumbi.",
+    "unsupported": "Soko hili haliripoti hali ya akaunti.",
+    "notApplicable": "Kipengele hiki hakitumiki kwa soko.",
     "unknown": "Hali haikuweza kuainishwa."
   },
   "section": {
@@ -55,7 +55,7 @@
     "size": "Ukubwa",
     "entryPrice": "Bei ya kuingia",
     "markPrice": "Bei elekezi",
-    "unrealizedPnl": "Faida/hasara ambayo haijafikiwa",
+    "unrealizedPnl": "Faida/hasara ambayo bado haijapatikana",
     "unrealizedFunding": "Ada ya ufadhili"
   },
   "side": {
@@ -88,8 +88,8 @@
     },
     "method": {
       "futuresPosition": "Nafasi za futures",
-      "spotExecutionReplay": "Marejeo ya utekelezaji wa spot",
-      "marginLedgerReplay": "Marejeo ya leja ya margin",
+      "spotExecutionReplay": "Marejeo ya utekelezaji wa papo hapo",
+      "marginLedgerReplay": "Marejeo ya leja ya dhamana",
       "unclassified": "Haijaainishwa",
       "notAssigned": "Njia haijatolewa",
       "unknown": "Njia isiyojulikana"
@@ -110,13 +110,13 @@
       "action": "Ainisha",
       "title": "Ainisha njia ya upatanisho",
       "intro": "Chagua jinsi akaunti hii ya soko la kubadilisha inavyopatanishwa na data rasmi za soko hilo. Hii ni kauli ya ukweli kuhusu akaunti, si chaguo la upendeleo.",
-      "guidance": "Chagua njia inayolingana na jinsi akaunti inavyofanya kazi katika soko la kubadilisha: akaunti za fedha taslimu (spot) hukamilisha miamala kwa kutumia salio la fedha taslimu pekee, ilhali akaunti za margin zinaweza kukopa kwa kuweka dhamana. Ikiwa huna uhakika jinsi akaunti inavyofanya kazi, iache bila kuainishwa.",
+      "guidance": "Chagua njia inayolingana na jinsi akaunti inavyofanya kazi katika soko la kubadilisha: akaunti za fedha taslimu (papo hapo) hukamilisha miamala kwa kutumia salio la fedha taslimu pekee, ilhali akaunti za dhamana zinaweza kukopa kwa kuweka dhamana. Ikiwa huna uhakika jinsi akaunti inavyofanya kazi, iache bila kuainishwa.",
       "immutabilityWarning": "Uainishaji huu ni wa kudumu. Hauwezi kubadilishwa wala kuondolewa baada ya kuwekwa.",
       "acknowledge": "Ninaelewa kuwa uainishaji huu ni wa kudumu na unalingana na jinsi akaunti hii inavyofanya kazi.",
       "methodDescription": {
         "futuresPosition": "Hupatanisha nafasi wazi za bidhaa zitokanazo na data rasmi za soko la kubadilisha kuhusu nafasi za futures.",
-        "spotExecutionReplay": "Hurudia utekelezaji wa spot dhidi ya salio la fedha taslimu. Kwa akaunti za fedha taslimu pekee ambazo hazifanyi biashara kwa margin kamwe.",
-        "marginLedgerReplay": "Hurudia leja ya margin ya soko la kubadilisha. Kwa akaunti zinazofanya biashara kwa margin au kukopa kwa kuweka dhamana."
+        "spotExecutionReplay": "Hurudia utekelezaji wa papo hapo dhidi ya salio la fedha taslimu. Kwa akaunti za fedha taslimu pekee ambazo hazifanyi biashara kwa dhamana kamwe.",
+        "marginLedgerReplay": "Hurudia leja ya dhamana ya soko la kubadilisha. Kwa akaunti zinazofanya biashara kwa dhamana au kukopa kwa kuweka dhamana."
       },
       "credentialLoading": "Inapakia kitambulisho…",
       "noCredential": "Hakuna kitambulisho kinachotumika kwa biashara halisi kilichopatikana kwa akaunti hii. Upatanisho hauwezi kuainishwa.",

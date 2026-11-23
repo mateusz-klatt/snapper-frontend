@@ -106,17 +106,17 @@
     },
     "modeOptions": {
       "live": "Uživo",
-      "paper": "Simulirano"
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — samo tržišni podaci",
-    "walletPaperSuffix": "{{label}} (simulirano)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
       "stopPrice": "0.00"
     },
     "buttons": {
-      "cancel": "Odustani",
+      "cancel": "Otkaži",
       "reviewOrder": "Pregledaj nalog",
       "back": "Natrag",
       "confirmOrder": "Potvrdi nalog",

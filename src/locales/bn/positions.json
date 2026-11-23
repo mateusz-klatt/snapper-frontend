@@ -64,7 +64,7 @@
         "scope_order_regression": "স্কোপের ক্রমে পশ্চাদ্গতি",
         "before_activation": "পয়েন্টটি সক্রিয়করণের আগে",
         "activation_baseline_non_finite": "সক্রিয়করণের বেসলাইন সসীম নয়",
-        "fill_evidence_gap": "ফিলের স্থায়ী প্রমাণে ঘাটতি",
+        "fill_evidence_gap": "অর্ডার নির্বাহের স্থায়ী প্রমাণে ঘাটতি",
         "seed_quantity_non_finite": "প্রারম্ভিক পরিমাণ সসীম নয়",
         "cost_basis_unavailable": "কস্ট বেসিস অনুপলভ্য",
         "execution_price_provenance_unproven": "নির্বাহ মূল্যের উৎস প্রমাণিত নয়",
@@ -142,14 +142,14 @@
       "show": "সিদ্ধান্তের মার্কার দেখান",
       "hide": "সিদ্ধান্তের মার্কার লুকান",
       "legendAriaLabel": "সিদ্ধান্তের মার্কারের লেজেন্ড",
-      "truncated": "মার্কার ফলাফল {{limit}}টি পর্যন্ত দেখানো হয়েছে। এই সময়সীমায় আরও সিদ্ধান্ত বা ফিল রয়েছে।",
+      "truncated": "মার্কার ফলাফল {{limit}}টি পর্যন্ত দেখানো হয়েছে। এই সময়সীমায় আরও সিদ্ধান্ত বা অর্ডার নির্বাহ রয়েছে।",
       "legend": {
-        "fillExecuted": "ফিল · নির্বাহিত",
+        "fillExecuted": "অর্ডার নির্বাহ · নির্বাহিত",
         "signalExecuted": "সিগন্যাল · নির্বাহিত",
-        "signalNoFill": "সিগন্যাল · কোনো ফিল নেই",
+        "signalNoFill": "সিগন্যাল · কোনো অর্ডার নির্বাহ নেই",
         "aiExecuted": "AI সিদ্ধান্ত · নির্বাহিত",
         "aiRejected": "AI সিদ্ধান্ত · প্রত্যাখ্যাত",
-        "aiNoFill": "AI সিদ্ধান্ত · কোনো ফিল নেই"
+        "aiNoFill": "AI সিদ্ধান্ত · কোনো অর্ডার নির্বাহ নেই"
       },
       "detail": {
         "title": "মার্কারের বিবরণ",
@@ -174,14 +174,14 @@
         "rationale": "যুক্তি",
         "noValue": "—",
         "types": {
-          "fill": "ফিল",
+          "fill": "অর্ডার নির্বাহ",
           "signal": "সিগন্যাল",
           "ai_decision": "AI সিদ্ধান্ত"
         },
         "outcomes": {
           "executed": "নির্বাহিত",
           "rejected": "প্রত্যাখ্যাত",
-          "no_fill": "কোনো ফিল নেই"
+          "no_fill": "কোনো অর্ডার নির্বাহ নেই"
         }
       }
     },
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Trailing Stop সংযুক্ত করুন — {{instrument}}",
-    "confirmTitle": "Trailing Stop নিশ্চিত করুন",
+    "title": "ট্রেইলিং স্টপ সংযুক্ত করুন — {{instrument}}",
+    "confirmTitle": "ট্রেইলিং স্টপ নিশ্চিত করুন",
     "position": "পজিশন",
     "entryPrice": "এন্ট্রি মূল্য",
     "trailingDistanceLabel": "ট্রেইলিং দূরত্ব (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "যেমন 5.0",
       "minLockPct": "0 = সঙ্গে সঙ্গে শুরু"
     },
-    "minLockWarning": "মূল্য আপনার পক্ষে {{minLockPct}}% না সরলে Trailing Stop সক্রিয় হবে না।",
+    "minLockWarning": "মূল্য আপনার পক্ষে {{minLockPct}}% না সরলে ট্রেইলিং স্টপ সক্রিয় হবে না।",
     "buttons": {
       "cancel": "বাতিল",
       "review": "পর্যালোচনা",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "SL বা TP মূল্যের অন্তত একটি আবশ্যক",
-    "invalidSlPrice": "Stop-Loss মূল্য সঠিক নয়",
-    "slPricePositive": "Stop-Loss মূল্য অবশ্যই ধনাত্মক হতে হবে",
-    "invalidTpPrice": "Take-Profit মূল্য সঠিক নয়",
-    "tpPricePositive": "Take-Profit মূল্য অবশ্যই ধনাত্মক হতে হবে",
+    "invalidSlPrice": "স্টপ-লস মূল্য সঠিক নয়",
+    "slPricePositive": "স্টপ-লস মূল্য অবশ্যই ধনাত্মক হতে হবে",
+    "invalidTpPrice": "টেক-প্রফিট মূল্য সঠিক নয়",
+    "tpPricePositive": "টেক-প্রফিট মূল্য অবশ্যই ধনাত্মক হতে হবে",
     "slLongBelowEntry": "SL মূল্য এন্ট্রি মূল্যের নিচে হতে হবে ({{price}})",
     "tpLongAboveEntry": "TP মূল্য এন্ট্রি মূল্যের উপরে হতে হবে ({{price}})",
     "slShortAboveEntry": "SL মূল্য এন্ট্রি মূল্যের উপরে হতে হবে ({{price}})",

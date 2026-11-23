@@ -109,7 +109,7 @@
     "equity": {
       "title": "Suprapunere capital propriu",
       "seriesLabel": "Capital propriu",
-      "seriesLabelSpotOnly": "Capital propriu (piață spot)",
+      "seriesLabelSpotOnly": "Capital propriu (bursă spot)",
       "latest": "Cel mai recent: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Cum se interpretează",
-        "spotOnly": "Doar piața spot — soldurile deținute pe alte piețe sunt excluse.",
+        "spotOnly": "Doar bursa spot — soldurile deținute pe alte burse sunt excluse.",
         "flowsUnadjusted": "Depunerile și retragerile externe nu sunt eliminate.",
         "restatedFrom": "Aceste cifre sunt recalculate din {{from}} la cursul de închidere al fiecărui minut și nu sunt măsurate inițial în această monedă.",
         "pricedOn": "Evaluat pe baza {{plane}}.",
@@ -239,10 +239,10 @@
     "confirmTitle": "Confirmare SL/TP",
     "position": "Poziție",
     "entryPrice": "Preț de intrare",
-    "stopLossLabel": "Preț de limitare a pierderii",
-    "takeProfitLabel": "Preț de marcare a profitului",
-    "stopLoss": "Limitarea pierderii",
-    "takeProfit": "Marcarea profitului",
+    "stopLossLabel": "Preț stop-loss",
+    "takeProfitLabel": "Preț take-profit",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Sub {{price}}",
       "slShort": "Peste {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Atașați un stop dinamic — {{instrument}}",
-    "confirmTitle": "Confirmare stop dinamic",
+    "title": "Atașați un trailing stop — {{instrument}}",
+    "confirmTitle": "Confirmare trailing stop",
     "position": "Poziție",
     "entryPrice": "Preț de intrare",
     "trailingDistanceLabel": "Distanța stopului dinamic (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "ex. 5.0",
       "minLockPct": "0 = pornește imediat"
     },
-    "minLockWarning": "Stopul dinamic nu se va activa până când prețul nu evoluează cu {{minLockPct}} % în favoarea dvs.",
+    "minLockWarning": "Ordinul trailing stop nu se va activa până când prețul nu evoluează cu {{minLockPct}} % în favoarea dvs.",
     "buttons": {
       "cancel": "Anulați",
       "review": "Revizuiți",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Este necesar cel puțin un preț SL sau TP",
-    "invalidSlPrice": "Preț de limitare a pierderii nevalid",
-    "slPricePositive": "Prețul de limitare a pierderii trebuie să fie pozitiv",
-    "invalidTpPrice": "Preț de marcare a profitului nevalid",
-    "tpPricePositive": "Prețul de marcare a profitului trebuie să fie pozitiv",
+    "invalidSlPrice": "Preț stop-loss nevalid",
+    "slPricePositive": "Prețul stop-loss trebuie să fie pozitiv",
+    "invalidTpPrice": "Preț take-profit nevalid",
+    "tpPricePositive": "Prețul take-profit trebuie să fie pozitiv",
     "slLongBelowEntry": "Prețul SL trebuie să fie sub prețul de intrare ({{price}})",
     "tpLongAboveEntry": "Prețul TP trebuie să fie peste prețul de intrare ({{price}})",
     "slShortAboveEntry": "Prețul SL trebuie să fie peste prețul de intrare ({{price}})",

@@ -38,7 +38,7 @@
       "ariaLabel": "Aktywny portfel",
       "placeholder": "Portfel",
       "allWallets": "Wszystkie portfele",
-      "optionPaper": "{{label}} (papierowy)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktywny operator",

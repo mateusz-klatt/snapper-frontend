@@ -29,7 +29,7 @@
     "created": "Dibuat",
     "createdUnknown": "Tidak tersedia",
     "orderId": "ID Pesanan",
-    "leverage": "Daya ungkit",
+    "leverage": "Leverage",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "HANYA MENGURANGI POSISI",
     "cancel": "Batalkan",
@@ -61,7 +61,7 @@
       "status": "Status",
       "quantity": "Kuantitas",
       "price": "Harga",
-      "leverage": "Daya ungkit",
+      "leverage": "Leverage",
       "reduceOnly": "Hanya mengurangi posisi",
       "created": "Dibuat"
     },

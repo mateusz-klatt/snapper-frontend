@@ -38,7 +38,7 @@
       "ariaLabel": "Sparán gníomhach",
       "placeholder": "Sparán",
       "allWallets": "Gach sparán",
-      "optionPaper": "{{label}} (páipéir)"
+      "optionPaper": "{{label}} (ionsamhlaithe)"
     },
     "operatorPicker": {
       "ariaLabel": "Oibreoir gníomhach",

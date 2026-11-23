@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Spolehlivá aktuální data burzy zaznamenaná během doby platnosti.",
-    "simulated": "Údaje z papírového obchodování — nejsou skutečné.",
+    "simulated": "Údaje z demo obchodování — nejsou skutečné.",
     "stale": "Poslední známý snímek; doba platnosti uplynula nebo se načítání zastavilo.",
     "clockError": "Čas pozorování je nekonzistentní se serverem.",
     "corrupt": "Uložený snímek neprošel validací.",
@@ -54,7 +54,7 @@
     "side": "Směr",
     "size": "Velikost",
     "entryPrice": "Vstup",
-    "markPrice": "Tržní cena",
+    "markPrice": "Referenční cena",
     "unrealizedPnl": "Nerealizovaný Z/Z",
     "unrealizedFunding": "Financování"
   },

@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} oras {{minutes}} min",
     "uptimeDays": "{{days}} araw {{hours}} oras",
-    "backtestName": "Pagsubok sa nakaraang datos {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Hindi available",
     "uptimeLabel": "Tagal ng pagtakbo",
     "exitCode": "Code ng pag-exit: {{code}}",
     "service": "serbisyo",
-    "backtest": "pagsubok sa nakaraang datos"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Database Stats",

@@ -65,9 +65,9 @@
     "runLabel": "הרצה {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "מדדים",
-      "equityOverlay": "שכבת equity",
+      "equityOverlay": "שכבת הון עצמי",
       "trades": "עסקאות",
-      "signals": "אותות"
+      "signals": "איתותים"
     },
     "pairingMode": {
       "auto": "אוטומטי",
@@ -132,7 +132,7 @@
     "candles": "{{done}} / {{total}} נרות",
     "candlesNoTotal": "{{done}} נרות",
     "equity": "הון עצמי {{value}}",
-    "signalsTrades": "{{signals}} אותות / {{trades}} עסקאות",
+    "signalsTrades": "{{signals}} איתותים / {{trades}} עסקאות",
     "milestoneLine": "אבן דרך {{label}}",
     "milestone": {
       "25pct": "25%",
