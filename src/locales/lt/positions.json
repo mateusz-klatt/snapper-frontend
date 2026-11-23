@@ -109,7 +109,7 @@
     "equity": {
       "title": "Nuosavo kapitalo perdanga",
       "seriesLabel": "Nuosavas kapitalas",
-      "seriesLabelSpotOnly": "Nuosavas kapitalas (neatidėliotinų sandorių birža)",
+      "seriesLabelSpotOnly": "Nuosavas kapitalas (neatidėliotinų sandorių platforma)",
       "latest": "Naujausia: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Kaip tai interpretuoti",
-        "spotOnly": "Tik neatidėliotinų sandorių birža — likučiai kitose biržose neįtraukti.",
+        "spotOnly": "Tik neatidėliotinų sandorių platforma — likučiai kitose platformose neįtraukti.",
         "flowsUnadjusted": "Išoriniai įnašai ir išėmimai nėra atimti.",
         "restatedFrom": "Šie duomenys perskaičiuoti iš {{from}} pagal kiekvienos minutės uždarymo kursą, o ne tiesiogiai išmatuoti šia valiuta.",
         "pricedOn": "Įkainota pagal {{plane}}.",

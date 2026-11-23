@@ -109,7 +109,7 @@
     "equity": {
       "title": "Oman pääoman peittokuva",
       "seriesLabel": "Oma pääoma",
-      "seriesLabelSpotOnly": "Oma pääoma (spot-pörssi)",
+      "seriesLabelSpotOnly": "Oma pääoma (spot-kaupankäyntialusta)",
       "latest": "Viimeisin: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Näin tietoja tulkitaan",
-        "spotOnly": "Vain spot-pörssi — muiden pörssien saldot eivät sisälly.",
+        "spotOnly": "Vain spot-kaupankäyntialusta — muiden kaupankäyntialustojen saldot eivät sisälly.",
         "flowsUnadjusted": "Ulkoisia talletuksia ja nostoja ei ole vähennetty.",
         "restatedFrom": "Nämä luvut on muunnettu valuutasta {{from}} kunkin minuutin päätöskurssin mukaan, eikä niitä ole alun perin mitattu tässä valuutassa.",
         "pricedOn": "Hinnoiteltu {{plane}}-kurssin perusteella.",

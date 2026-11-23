@@ -109,7 +109,7 @@
     "equity": {
       "title": "Overlay van eigen vermogen",
       "seriesLabel": "Eigen vermogen",
-      "seriesLabelSpotOnly": "Eigen vermogen (spotbeurs)",
+      "seriesLabelSpotOnly": "Eigen vermogen (spotplatform)",
       "latest": "Meest recent: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Zo lees je dit",
-        "spotOnly": "Alleen de spotbeurs — saldi op andere beurzen zijn uitgesloten.",
+        "spotOnly": "Alleen het spotplatform — saldi op andere handelsplatformen zijn uitgesloten.",
         "flowsUnadjusted": "Externe stortingen en opnames zijn niet uitgefilterd.",
         "restatedFrom": "Deze cijfers zijn omgerekend vanuit {{from}} op basis van de slotkoers van elke minuut en worden niet rechtstreeks in deze valuta gemeten.",
         "pricedOn": "Geprijsd op {{plane}}.",

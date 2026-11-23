@@ -109,7 +109,7 @@
     "equity": {
       "title": "Pašu kapitāla pārklājums",
       "seriesLabel": "Pašu kapitāls",
-      "seriesLabelSpotOnly": "Pašu kapitāls (tūlītējo darījumu birža)",
+      "seriesLabelSpotOnly": "Pašu kapitāls (tūlītējo darījumu platforma)",
       "latest": "Jaunākais: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Kā interpretēt šos datus",
-        "spotOnly": "Tikai tūlītējo darījumu birža — citās biržās turētie atlikumi nav iekļauti.",
+        "spotOnly": "Tikai tūlītējo darījumu platforma — citās platformās turētie atlikumi nav iekļauti.",
         "flowsUnadjusted": "Ārējās iemaksas un izmaksas nav atskaitītas.",
         "restatedFrom": "Šie dati ir pārrēķināti no {{from}} pēc katras minūtes slēgšanas kursa, nevis tieši mērīti šajā valūtā.",
         "pricedOn": "Cena noteikta pēc {{plane}}.",

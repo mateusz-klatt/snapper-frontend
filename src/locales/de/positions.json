@@ -109,7 +109,7 @@
     "equity": {
       "title": "Eigenkapital-Overlay",
       "seriesLabel": "Eigenkapital",
-      "seriesLabelSpotOnly": "Eigenkapital (Spot-Börse)",
+      "seriesLabelSpotOnly": "Eigenkapital (Spot-Handelsplattform)",
       "latest": "Aktuell: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Hinweise zur Interpretation",
-        "spotOnly": "Nur Spot-Börse — Guthaben an anderen Börsen sind ausgeschlossen.",
+        "spotOnly": "Nur Spot-Handelsplattform — Guthaben auf anderen Handelsplattformen sind ausgeschlossen.",
         "flowsUnadjusted": "Externe Ein- und Auszahlungen sind nicht herausgerechnet.",
         "restatedFrom": "Diese Zahlen sind zum Schlusskurs jeder Minute aus {{from}} umgerechnet und werden nicht nativ in dieser Währung erfasst.",
         "pricedOn": "Bewertet anhand von {{plane}}.",

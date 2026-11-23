@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Børskontoer",
-    "subtitle": "Kontantbeholdninger og åpne posisjoner, merket etter børsens rapportering."
+    "title": "Plattformkontoer",
+    "subtitle": "Kontantbeholdninger og åpne posisjoner, merket etter handelsplattformens rapportering."
   },
   "empty": {
-    "title": "Ingen børskontoer",
+    "title": "Ingen plattformkontoer",
     "message": "Saldi og posisjoner vises her når en konto er observert."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Pålitelige kontodata er ikke tilgjengelige",
-    "message": "Tilstanden til børskontoen kunne ikke lastes inn. Kontoen er ikke tom; dataene er bare utilgjengelige akkurat nå."
+    "message": "Tilstanden til plattformkontoen kunne ikke lastes inn. Kontoen er ikke tom; dataene er bare utilgjengelige akkurat nå."
   },
   "status": {
     "observed": "Sanntid",
@@ -26,13 +26,13 @@
     "unknown": "Ukjent"
   },
   "statusTooltip": {
-    "observed": "Autoritative børsdata i sanntid, registrert innenfor gyldighetsperioden.",
-    "simulated": "Demohandelstall — ikke ekte børssaldi.",
+    "observed": "Autoritative data fra handelsplattformen i sanntid, registrert innenfor gyldighetsperioden.",
+    "simulated": "Demohandelstall — ikke ekte saldi på handelsplattformen.",
     "stale": "Sist kjente øyeblikksbilde; gyldighetsperioden er utløpt eller innhentingen har stoppet.",
     "clockError": "Observasjonstidsstempel stemmer ikke med serverklokken.",
     "corrupt": "Lagret øyeblikksbilde besto ikke valideringen.",
-    "unsupported": "Denne børsen rapporterer ikke kontostatus.",
-    "notApplicable": "Denne komponenten gjelder ikke børsen.",
+    "unsupported": "Denne handelsplattformen rapporterer ikke kontostatus.",
+    "notApplicable": "Denne komponenten gjelder ikke handelsplattformen.",
     "unknown": "Status kunne ikke klassifiseres."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klassifiser",
       "title": "Klassifiser avstemmingsmetode",
-      "intro": "Velg hvordan denne børskontoen avstemmes mot børsens autoritative data. Dette angir et faktisk forhold ved kontoen, ikke en preferanse.",
-      "guidance": "Velg metoden som samsvarer med hvordan kontoen faktisk fungerer på børsen: kontantkontoer (spot) gjør opp handler kun fra kontantbeholdninger, mens marginkontoer kan låne mot sikkerhet. Hvis du ikke er sikker på hvordan kontoen fungerer, lar du den være uklassifisert.",
+      "intro": "Velg hvordan denne plattformkontoen avstemmes mot børsens autoritative data. Dette angir et faktisk forhold ved kontoen, ikke en preferanse.",
+      "guidance": "Velg metoden som samsvarer med hvordan kontoen faktisk fungerer på handelsplattformen: kontantkontoer (spot) gjør opp handler kun fra kontantbeholdninger, mens marginkontoer kan låne mot sikkerhet. Hvis du ikke er sikker på hvordan kontoen fungerer, lar du den være uklassifisert.",
       "immutabilityWarning": "Denne klassifiseringen er permanent. Den kan ikke endres eller fjernes etter at den er angitt.",
       "acknowledge": "Jeg forstår at denne klassifiseringen er permanent og samsvarer med hvordan denne kontoen fungerer.",
       "methodDescription": {
-        "futuresPosition": "Avstemmer åpne derivatposisjoner mot børsens autoritative data for futures-posisjoner.",
+        "futuresPosition": "Avstemmer åpne derivatposisjoner mot handelsplattformens autoritative data for futures-posisjoner.",
         "spotExecutionReplay": "Gjentar spot-utførelser mot kontantbeholdninger. For kontoer som kun bruker kontanter og aldri handler med margin.",
-        "marginLedgerReplay": "Gjentar børsens margin-hovedbok. For kontoer som handler med margin eller låner mot sikkerhet."
+        "marginLedgerReplay": "Gjentar handelsplattformens margin-hovedbok. For kontoer som handler med margin eller låner mot sikkerhet."
       },
       "credentialLoading": "Laster legitimasjon…",
       "noCredential": "Ingen aktiv legitimasjon for reell handel ble funnet for denne kontoen. Avstemmingen kan ikke klassifiseres.",

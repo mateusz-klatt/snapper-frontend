@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Pörssitilit",
-    "subtitle": "Käteissaldot ja avoimet positiot, merkittynä pörssin ilmoituksen mukaan."
+    "title": "Alustan tilit",
+    "subtitle": "Käteissaldot ja avoimet positiot, merkittynä kaupankäyntialustan ilmoituksen mukaan."
   },
   "empty": {
-    "title": "Ei pörssitilejä",
+    "title": "Ei alustan tilejä",
     "message": "Saldot ja positiot näkyvät tässä, kun tili on havaittu."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Luotettavia tilitietoja ei ole saatavilla",
-    "message": "Pörssitilin tilaa ei voitu ladata. Tili ei ole tyhjä, vaan tiedot eivät juuri nyt ole saatavilla."
+    "message": "Alustan tilin tilaa ei voitu ladata. Tili ei ole tyhjä, vaan tiedot eivät juuri nyt ole saatavilla."
   },
   "status": {
     "observed": "Reaaliaikainen",
@@ -26,13 +26,13 @@
     "unknown": "Tuntematon"
   },
   "statusTooltip": {
-    "observed": "Reaaliaikainen pörssin tila, havaittu vahvistusikkunan sisällä.",
-    "simulated": "Simuloidun kaupankäynnin luvut — eivät pörssin todellisia saldoja.",
+    "observed": "Reaaliaikainen kaupankäyntialustan tila, havaittu vahvistusikkunan sisällä.",
+    "simulated": "Simuloidun kaupankäynnin luvut — eivät kaupankäyntialustan todellisia saldoja.",
     "stale": "Viimeisin tunnettu tilannekuva; vahvistusikkuna umpeutui.",
     "clockError": "Havainnon aikaleima on ristiriidassa palvelimen kellon kanssa.",
     "corrupt": "Tallennetun tilannekuvan vahvistus epäonnistui.",
-    "unsupported": "Tämä pörssi ei ilmoita tilin tilaa.",
-    "notApplicable": "Tämä komponentti ei koske tätä pörssiä.",
+    "unsupported": "Tämä kaupankäyntialusta ei ilmoita tilin tilaa.",
+    "notApplicable": "Tämä komponentti ei koske tätä kaupankäyntialustaa.",
     "unknown": "Tilaa ei voitu luokitella."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Luokittele",
       "title": "Luokittele täsmäytysmenetelmä",
-      "intro": "Valitse, miten tämä pörssitili täsmäytetään pörssin luotettaviin tietoihin. Kyse on tiliä koskevasta tosiasiasta, ei mieltymyksestä.",
-      "guidance": "Valitse menetelmä, joka vastaa tilin todellista toimintatapaa pörssissä: käteistilit (spot) selvittävät kaupat vain käteissaldoista, kun taas marginaalitilit voivat ottaa lainaa vakuuksia vastaan. Jos et ole varma tilin toimintatavasta, jätä se luokittelematta.",
+      "intro": "Valitse, miten tämä alustan tili täsmäytetään pörssin luotettaviin tietoihin. Kyse on tiliä koskevasta tosiasiasta, ei mieltymyksestä.",
+      "guidance": "Valitse menetelmä, joka vastaa tilin todellista toimintatapaa kaupankäyntialustalla: käteistilit (spot) selvittävät kaupat vain käteissaldoista, kun taas marginaalitilit voivat ottaa lainaa vakuuksia vastaan. Jos et ole varma tilin toimintatavasta, jätä se luokittelematta.",
       "immutabilityWarning": "Tämä luokittelu on pysyvä. Kun se on asetettu, sitä ei voi muuttaa eikä poistaa.",
       "acknowledge": "Ymmärrän, että tämä luokittelu on pysyvä ja vastaa tämän tilin toimintatapaa.",
       "methodDescription": {
-        "futuresPosition": "Täsmäyttää avoimet johdannaispositiot pörssin luotettaviin futuuripositiotietoihin.",
+        "futuresPosition": "Täsmäyttää avoimet johdannaispositiot kaupankäyntialustan luotettaviin futuuripositiotietoihin.",
         "spotExecutionReplay": "Toistaa spot-toteutukset käteissaldoja vasten. Vain käteistä käyttäville tileille, joilla ei koskaan käydä kauppaa marginaalilla.",
-        "marginLedgerReplay": "Toistaa pörssin marginaalipääkirjan. Tileille, joilla käydään kauppaa marginaalilla tai otetaan lainaa vakuuksia vastaan."
+        "marginLedgerReplay": "Toistaa kaupankäyntialustan marginaalipääkirjan. Tileille, joilla käydään kauppaa marginaalilla tai otetaan lainaa vakuuksia vastaan."
       },
       "credentialLoading": "Ladataan tunnistetietoja…",
       "noCredential": "Tälle tilille ei löytynyt aktiivisia live-tunnistetietoja. Täsmäytysmenetelmää ei voi luokitella.",

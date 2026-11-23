@@ -109,7 +109,7 @@
     "equity": {
       "title": "Özkaynak yer paylaşımı",
       "seriesLabel": "Özkaynak",
-      "seriesLabelSpotOnly": "Özkaynak (spot borsa)",
+      "seriesLabelSpotOnly": "Özkaynak (spot platform)",
       "latest": "En son: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Nasıl yorumlanır",
-        "spotOnly": "Yalnızca spot borsa — diğer borsalardaki bakiyeler dahil değildir.",
+        "spotOnly": "Yalnızca spot platform — diğer platformlardaki bakiyeler dahil değildir.",
         "flowsUnadjusted": "Harici para yatırma ve çekme işlemleri hariç tutulmamıştır.",
         "restatedFrom": "Bu rakamlar her dakikanın kapanış kuruyla {{from}} biriminden yeniden hesaplanır; bu para biriminde doğrudan ölçülmez.",
         "pricedOn": "{{plane}} üzerinden fiyatlandırıldı.",

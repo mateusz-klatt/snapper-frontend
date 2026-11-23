@@ -109,7 +109,7 @@
     "equity": {
       "title": "Overlegg for egenkapital",
       "seriesLabel": "Egenkapital",
-      "seriesLabelSpotOnly": "Egenkapital (spotbørs)",
+      "seriesLabelSpotOnly": "Egenkapital (spotplattform)",
       "latest": "Siste: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Slik leser du dette",
-        "spotOnly": "Kun spotbørsen — saldoer på andre børser er utelatt.",
+        "spotOnly": "Kun spotplattformen — saldoer på andre handelsplattformer er utelatt.",
         "flowsUnadjusted": "Eksterne innskudd og uttak er ikke trukket fra.",
         "restatedFrom": "Disse tallene er konvertert fra {{from}} ved hvert minutts stengekurs og måles ikke opprinnelig i denne valutaen.",
         "pricedOn": "Priset på {{plane}}.",

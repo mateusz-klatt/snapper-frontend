@@ -109,7 +109,7 @@
     "equity": {
       "title": "Lớp phủ vốn chủ sở hữu",
       "seriesLabel": "Vốn chủ sở hữu",
-      "seriesLabelSpotOnly": "Vốn chủ sở hữu (sàn giao ngay)",
+      "seriesLabelSpotOnly": "Vốn chủ sở hữu (nền tảng giao ngay)",
       "latest": "Mới nhất: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Cách đọc dữ liệu này",
-        "spotOnly": "Chỉ sàn giao ngay — không bao gồm số dư được giữ tại các sàn khác.",
+        "spotOnly": "Chỉ nền tảng giao ngay — không bao gồm số dư được giữ tại các nền tảng khác.",
         "flowsUnadjusted": "Các khoản nạp và rút bên ngoài chưa được loại trừ.",
         "restatedFrom": "Các số liệu này được quy đổi từ {{from}} theo tỷ giá đóng cửa của từng phút, chứ không được đo trực tiếp bằng loại tiền tệ này.",
         "pricedOn": "Được định giá theo {{plane}}.",

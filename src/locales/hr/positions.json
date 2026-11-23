@@ -109,7 +109,7 @@
     "equity": {
       "title": "Preklapanje kapitala",
       "seriesLabel": "Kapital",
-      "seriesLabelSpotOnly": "Kapital (spot burza)",
+      "seriesLabelSpotOnly": "Kapital (spot platforma)",
       "latest": "Najnovije: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Kako ovo tumačiti",
-        "spotOnly": "Samo spot burza — salda na drugim burzama nisu uključena.",
+        "spotOnly": "Samo spot platforma — salda na drugim platformama nisu uključena.",
         "flowsUnadjusted": "Vanjske uplate i isplate nisu isključene.",
         "restatedFrom": "Ovi podaci preračunati su iz {{from}} po zaključnom tečaju svake minute te nisu izvorno mjereni u ovoj valuti.",
         "pricedOn": "Vrednovano prema {{plane}}.",

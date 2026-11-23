@@ -109,7 +109,7 @@
     "equity": {
       "title": "Suprapunere capital propriu",
       "seriesLabel": "Capital propriu",
-      "seriesLabelSpotOnly": "Capital propriu (bursă spot)",
+      "seriesLabelSpotOnly": "Capital propriu (platformă spot)",
       "latest": "Cel mai recent: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Cum se interpretează",
-        "spotOnly": "Doar bursa spot — soldurile deținute pe alte burse sunt excluse.",
+        "spotOnly": "Doar platforma spot — soldurile deținute pe alte platforme sunt excluse.",
         "flowsUnadjusted": "Depunerile și retragerile externe nu sunt eliminate.",
         "restatedFrom": "Aceste cifre sunt recalculate din {{from}} la cursul de închidere al fiecărui minut și nu sunt măsurate inițial în această monedă.",
         "pricedOn": "Evaluat pe baza {{plane}}.",

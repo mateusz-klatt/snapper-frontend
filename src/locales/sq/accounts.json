@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Llogaritë e Bursës",
-    "subtitle": "Gjendjet e parave të gatshme dhe pozicionet e hapura, të etiketuara sipas raportimeve të bursës."
+    "title": "Llogaritë e Platformës",
+    "subtitle": "Gjendjet e parave të gatshme dhe pozicionet e hapura, të etiketuara sipas raportimeve të platformës."
   },
   "empty": {
     "title": "Asnjë llogari",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Të dhënat e besueshme të llogarisë nuk disponohen",
-    "message": "Gjendja e llogarisë së bursës nuk mund të ngarkohej. Llogaria nuk është bosh; të dhënat thjesht nuk disponohen për momentin."
+    "message": "Gjendja e llogarisë së platformës nuk mund të ngarkohej. Llogaria nuk është bosh; të dhënat thjesht nuk disponohen për momentin."
   },
   "status": {
     "observed": "Në kohë reale",
@@ -26,13 +26,13 @@
     "unknown": "E panjohur"
   },
   "statusTooltip": {
-    "observed": "Të dhëna të besueshme të bursës në kohë reale, të regjistruara brenda periudhës së vlefshmërisë.",
+    "observed": "Të dhëna të besueshme të platformës në kohë reale, të regjistruara brenda periudhës së vlefshmërisë.",
     "simulated": "Të dhëna të tregtimit demo — jo gjendje reale.",
     "stale": "Pamja e çastit e fundit e njohur; periudha e vlefshmërisë ka skaduar ose marrja e të dhënave është ndalur.",
     "clockError": "Vula kohore është në mospërputhje me serverin.",
     "corrupt": "Pamja e çastit e ruajtur dështoi në vërtetim.",
-    "unsupported": "Kjo bursë nuk raporton gjendjen e llogarisë.",
-    "notApplicable": "Ky komponent nuk vlen për bursën.",
+    "unsupported": "Kjo platformë nuk raporton gjendjen e llogarisë.",
+    "notApplicable": "Ky komponent nuk vlen për platformën.",
     "unknown": "Statusi nuk mund të klasifikohej."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klasifiko",
       "title": "Klasifiko metodën e rakordimit",
-      "intro": "Zgjidhni se si rakordohet kjo llogari e bursës me të dhënat autoritative të bursës. Ky është një konstatim fakti për llogarinë, jo një preferencë.",
-      "guidance": "Zgjidhni metodën që përputhet me mënyrën se si funksionon realisht llogaria në bursë: llogaritë me para të gatshme (spot) shlyejnë tregtitë vetëm nga gjendjet e parave të gatshme, ndërsa llogaritë me marzh mund të marrin hua kundrejt kolateralit. Nëse nuk jeni të sigurt se si funksionon llogaria, lëreni të paklasifikuar.",
+      "intro": "Zgjidhni se si rakordohet kjo llogari e platformës me të dhënat autoritative të bursës. Ky është një konstatim fakti për llogarinë, jo një preferencë.",
+      "guidance": "Zgjidhni metodën që përputhet me mënyrën se si funksionon realisht llogaria në platformë: llogaritë me para të gatshme (spot) shlyejnë tregtitë vetëm nga gjendjet e parave të gatshme, ndërsa llogaritë me marzh mund të marrin hua kundrejt kolateralit. Nëse nuk jeni të sigurt se si funksionon llogaria, lëreni të paklasifikuar.",
       "immutabilityWarning": "Ky klasifikim është i përhershëm. Pasi të vendoset, nuk mund të ndryshohet ose hiqet.",
       "acknowledge": "E kuptoj se ky klasifikim është i përhershëm dhe përputhet me mënyrën se si funksionon kjo llogari.",
       "methodDescription": {
-        "futuresPosition": "Rakordon pozicionet e hapura të derivateve me të dhënat autoritative të bursës për pozicionet e të ardhmes.",
+        "futuresPosition": "Rakordon pozicionet e hapura të derivateve me të dhënat autoritative të platformës për pozicionet e të ardhmes.",
         "spotExecutionReplay": "Përsërit ekzekutimet spot kundrejt gjendjeve të parave të gatshme. Për llogaritë vetëm me para të gatshme që nuk tregtojnë kurrë me marzh.",
-        "marginLedgerReplay": "Përsërit librin e marzhit të bursës. Për llogaritë që tregtojnë me marzh ose marrin hua kundrejt kolateralit."
+        "marginLedgerReplay": "Përsërit librin e marzhit të platformës. Për llogaritë që tregtojnë me marzh ose marrin hua kundrejt kolateralit."
       },
       "credentialLoading": "Duke ngarkuar kredencialin…",
       "noCredential": "Nuk u gjet asnjë kredencial aktiv për tregtim real për këtë llogari. Rakordimi nuk mund të klasifikohet.",

@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Beursaccounts",
-    "subtitle": "Kassaldi en open posities, gelabeld volgens rapportage van de beurs."
+    "title": "Platformaccounts",
+    "subtitle": "Kassaldi en open posities, gelabeld volgens rapportage van het handelsplatform."
   },
   "empty": {
-    "title": "Geen beursaccounts",
+    "title": "Geen platformaccounts",
     "message": "Saldi en posities verschijnen hier zodra een account is waargenomen."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Betrouwbare accountgegevens niet beschikbaar",
-    "message": "De status van het beursaccount kon niet worden geladen. Het account is niet leeg; de gegevens zijn momenteel gewoon niet beschikbaar."
+    "message": "De status van het platformaccount kon niet worden geladen. Het account is niet leeg; de gegevens zijn momenteel gewoon niet beschikbaar."
   },
   "status": {
     "observed": "Realtime",
@@ -26,13 +26,13 @@
     "unknown": "Onbekend"
   },
   "statusTooltip": {
-    "observed": "Bindende realtime beursgegevens, waargenomen binnen de geldigheidsperiode.",
-    "simulated": "Cijfers uit gesimuleerde handel — geen echte beurssaldi.",
+    "observed": "Bindende realtime gegevens van het handelsplatform, waargenomen binnen de geldigheidsperiode.",
+    "simulated": "Cijfers uit gesimuleerde handel — geen echte saldi op het handelsplatform.",
     "stale": "Laatst bekende momentopname; de geldigheidsperiode is verstreken of het ophalen is vastgelopen.",
     "clockError": "Waarnemingstijdstempel is inconsistent met de serverklok.",
     "corrupt": "De opgeslagen momentopname is niet gevalideerd.",
-    "unsupported": "Deze beurs rapporteert de accountstatus niet.",
-    "notApplicable": "Deze component is niet van toepassing op de beurs.",
+    "unsupported": "Dit handelsplatform rapporteert de accountstatus niet.",
+    "notApplicable": "Deze component is niet van toepassing op het handelsplatform.",
     "unknown": "Status kon niet worden geclassificeerd."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Classificeren",
       "title": "Afstemmingsmethode classificeren",
-      "intro": "Kies hoe dit beursaccount wordt afgestemd met de gezaghebbende gegevens van de beurs. Dit is een feitelijke vaststelling over het account, geen voorkeur.",
-      "guidance": "Kies de methode die overeenkomt met hoe het account werkelijk functioneert bij de beurs: cashaccounts (spot) wikkelen transacties uitsluitend af vanuit cashsaldi, terwijl marginaccounts tegen onderpand kunnen lenen. Laat het account ongeclassificeerd als u niet zeker weet hoe het functioneert.",
+      "intro": "Kies hoe dit platformaccount wordt afgestemd met de gezaghebbende gegevens van de beurs. Dit is een feitelijke vaststelling over het account, geen voorkeur.",
+      "guidance": "Kies de methode die overeenkomt met hoe het account werkelijk functioneert bij het handelsplatform: cashaccounts (spot) wikkelen transacties uitsluitend af vanuit cashsaldi, terwijl marginaccounts tegen onderpand kunnen lenen. Laat het account ongeclassificeerd als u niet zeker weet hoe het functioneert.",
       "immutabilityWarning": "Deze classificatie is permanent. Na instelling kan deze niet worden gewijzigd of verwijderd.",
       "acknowledge": "Ik begrijp dat deze classificatie permanent is en overeenkomt met hoe dit account functioneert.",
       "methodDescription": {
-        "futuresPosition": "Stemt open derivatenposities af met de gezaghebbende futures-positiegegevens van de beurs.",
+        "futuresPosition": "Stemt open derivatenposities af met de gezaghebbende futures-positiegegevens van het handelsplatform.",
         "spotExecutionReplay": "Speelt spot-uitvoeringen opnieuw af tegen cashsaldi. Voor uitsluitend cashaccounts die nooit op margin handelen.",
-        "marginLedgerReplay": "Speelt het margin-grootboek van de beurs opnieuw af. Voor accounts die op margin handelen of tegen onderpand lenen."
+        "marginLedgerReplay": "Speelt het margin-grootboek van het handelsplatform opnieuw af. Voor accounts die op margin handelen of tegen onderpand lenen."
       },
       "credentialLoading": "Credential laden…",
       "noCredential": "Geen actieve live-credential gevonden voor dit account. Afstemming kan niet worden geclassificeerd.",

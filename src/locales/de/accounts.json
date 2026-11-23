@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Börsenkonten",
-    "subtitle": "Barguthaben und offene Positionen, gekennzeichnet nach Meldung der Börse."
+    "title": "Plattformkonten",
+    "subtitle": "Barguthaben und offene Positionen, gekennzeichnet nach Meldung der Handelsplattform."
   },
   "empty": {
-    "title": "Keine Börsenkonten",
+    "title": "Keine Plattformkonten",
     "message": "Salden und Positionen erscheinen hier, sobald ein Konto für eine verbundene Wallet beobachtet wurde."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Verlässliche Kontodaten nicht verfügbar",
-    "message": "Der Zustand des Börsenkontos konnte nicht geladen werden. Das Konto ist nicht leer; die Daten sind derzeit lediglich nicht verfügbar."
+    "message": "Der Zustand des Plattformkontos konnte nicht geladen werden. Das Konto ist nicht leer; die Daten sind derzeit lediglich nicht verfügbar."
   },
   "status": {
     "observed": "Echtzeit",
@@ -26,13 +26,13 @@
     "unknown": "Unbekannt"
   },
   "statusTooltip": {
-    "observed": "Verbindliche Börsendaten in Echtzeit, innerhalb des Gültigkeitszeitraums erfasst.",
-    "simulated": "Zahlen aus dem simulierten Handel — keine echten Börsensalden.",
+    "observed": "Verbindliche Daten der Handelsplattform in Echtzeit, innerhalb des Gültigkeitszeitraums erfasst.",
+    "simulated": "Zahlen aus dem simulierten Handel — keine echten Salden auf der Handelsplattform.",
     "stale": "Letzte bekannte Momentaufnahme; das Autoritätsfenster ist abgelaufen oder das Abfragen ist blockiert.",
     "clockError": "Beobachtungszeitstempel inkonsistent mit Serveruhr.",
     "corrupt": "Die gespeicherte Momentaufnahme konnte nicht validiert werden.",
-    "unsupported": "Diese Börse meldet keinen Kontostatus.",
-    "notApplicable": "Diese Komponente gilt nicht für die Börse.",
+    "unsupported": "Diese Handelsplattform meldet keinen Kontostatus.",
+    "notApplicable": "Diese Komponente gilt nicht für die Handelsplattform.",
     "unknown": "Status konnte nicht klassifiziert werden."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klassifizieren",
       "title": "Abgleichsmethode klassifizieren",
-      "intro": "Wählen Sie aus, wie dieses Börsenkonto mit den verbindlichen Daten der Börse abgeglichen wird. Dies ist eine Tatsachenfeststellung zum Konto, keine Präferenz.",
-      "guidance": "Wählen Sie die Methode, die der tatsächlichen Funktionsweise des Kontos an der Börse entspricht: Cash-Konten (Spot) wickeln Geschäfte ausschließlich über Barguthaben ab, während Margin-Konten Kredite gegen Sicherheiten aufnehmen können. Wenn Sie nicht sicher sind, wie das Konto funktioniert, lassen Sie es ohne Klassifizierung.",
+      "intro": "Wählen Sie aus, wie dieses Plattformkonto mit den verbindlichen Daten der Börse abgeglichen wird. Dies ist eine Tatsachenfeststellung zum Konto, keine Präferenz.",
+      "guidance": "Wählen Sie die Methode, die der tatsächlichen Funktionsweise des Kontos auf der Handelsplattform entspricht: Cash-Konten (Spot) wickeln Geschäfte ausschließlich über Barguthaben ab, während Margin-Konten Kredite gegen Sicherheiten aufnehmen können. Wenn Sie nicht sicher sind, wie das Konto funktioniert, lassen Sie es ohne Klassifizierung.",
       "immutabilityWarning": "Diese Klassifizierung ist dauerhaft. Nach dem Festlegen kann sie weder geändert noch entfernt werden.",
       "acknowledge": "Ich verstehe, dass diese Klassifizierung dauerhaft ist und der Funktionsweise dieses Kontos entspricht.",
       "methodDescription": {
-        "futuresPosition": "Gleicht offene Derivatepositionen mit den verbindlichen Futures-Positionsdaten der Börse ab.",
+        "futuresPosition": "Gleicht offene Derivatepositionen mit den verbindlichen Futures-Positionsdaten der Handelsplattform ab.",
         "spotExecutionReplay": "Führt ein Spot-Ausführungs-Replay gegen die Barguthaben durch. Für reine Cash-Konten, die niemals auf Margin handeln.",
-        "marginLedgerReplay": "Führt ein Margin-Ledger-Replay der Börse durch. Für Konten, die auf Margin handeln oder Kredite gegen Sicherheiten aufnehmen."
+        "marginLedgerReplay": "Führt ein Margin-Ledger-Replay der Handelsplattform durch. Für Konten, die auf Margin handeln oder Kredite gegen Sicherheiten aufnehmen."
       },
       "credentialLoading": "Anmeldedaten werden geladen…",
       "noCredential": "Für dieses Konto wurden keine aktiven Live-Anmeldedaten gefunden. Die Abgleichsmethode kann nicht klassifiziert werden.",

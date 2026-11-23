@@ -109,7 +109,7 @@
     "equity": {
       "title": "Prekrytie vlastného imania",
       "seriesLabel": "Vlastné imanie",
-      "seriesLabelSpotOnly": "Vlastné imanie (spotová burza)",
+      "seriesLabelSpotOnly": "Vlastné imanie (spotová platforma)",
       "latest": "Najnovšie: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Ako údaje čítať",
-        "spotOnly": "Len spotová burza — zostatky na iných burzách nie sú zahrnuté.",
+        "spotOnly": "Len spotová platforma — zostatky na iných platformách nie sú zahrnuté.",
         "flowsUnadjusted": "Externé vklady a výbery nie sú odpočítané.",
         "restatedFrom": "Tieto údaje sú prepočítané z {{from}} podľa záverečného kurzu každej minúty a nie sú pôvodne merané v tejto mene.",
         "pricedOn": "Ocenené podľa {{plane}}.",

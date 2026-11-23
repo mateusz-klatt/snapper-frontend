@@ -109,7 +109,7 @@
     "equity": {
       "title": "權益疊加層",
       "seriesLabel": "權益",
-      "seriesLabelSpotOnly": "權益（現貨交易所）",
+      "seriesLabelSpotOnly": "權益（現貨交易平台）",
       "latest": "最新：{{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "資料解讀說明",
-        "spotOnly": "僅限現貨交易所——不包括其他交易所持有的餘額。",
+        "spotOnly": "僅限現貨交易平台——不包括其他交易平台持有的餘額。",
         "flowsUnadjusted": "未剔除外部存款和提款。",
         "restatedFrom": "這些資料按每分鐘的收盤匯率由{{from}}折算而來，並非以該貨幣直接採樣。",
         "pricedOn": "定價基準：{{plane}}。",

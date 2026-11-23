@@ -109,7 +109,7 @@
     "equity": {
       "title": "Overlay ng kapital",
       "seriesLabel": "Kapital",
-      "seriesLabelSpotOnly": "Kapital (spot na palitan)",
+      "seriesLabelSpotOnly": "Kapital (spot na plataporma)",
       "latest": "Pinakabago: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Paano ito basahin",
-        "spotOnly": "Spot palitan lamang — hindi kasama ang mga balanseng nasa ibang palitan.",
+        "spotOnly": "Spot plataporma lamang — hindi kasama ang mga balanseng nasa ibang plataporma.",
         "flowsUnadjusted": "Hindi ibinawas ang mga panlabas na deposito at withdrawal.",
         "restatedFrom": "Ang mga numerong ito ay muling kinuwenta mula sa {{from}} gamit ang presyo sa pagsasara ng bawat minuto, at hindi direktang sinukat sa currency na ito.",
         "pricedOn": "Nakabatay ang presyo sa {{plane}}.",

@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Konta Giełdowe",
-    "subtitle": "Salda gotówkowe i otwarte pozycje, oznaczone według raportów giełdy."
+    "title": "Konta na platformie",
+    "subtitle": "Salda gotówkowe i otwarte pozycje, oznaczone według raportów platformy."
   },
   "empty": {
     "title": "Brak kont",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Wiarygodne dane konta są niedostępne",
-    "message": "Nie udało się wczytać stanu konta giełdowego. Konto nie jest puste; dane są obecnie po prostu niedostępne."
+    "message": "Nie udało się wczytać stanu konta na platformie. Konto nie jest puste; dane są obecnie po prostu niedostępne."
   },
   "status": {
     "observed": "Czas rzeczywisty",
@@ -27,12 +27,12 @@
   },
   "statusTooltip": {
     "observed": "Prawda na żywo, zaobserwowana w oknie autorytetu.",
-    "simulated": "Dane z handlu symulowanego — nie są to rzeczywiste salda giełdy.",
+    "simulated": "Dane z handlu symulowanego — nie są to rzeczywiste salda platformy.",
     "stale": "Ostatnia znana migawka; okno autorytetu wygasło.",
     "clockError": "Znacznik czasu niezgodny z serwerem.",
     "corrupt": "Zapisana migawka nie przeszła weryfikacji.",
-    "unsupported": "Ta giełda nie raportuje stanu konta.",
-    "notApplicable": "Ten komponent nie ma zastosowania do giełdy.",
+    "unsupported": "Ta platforma nie raportuje stanu konta.",
+    "notApplicable": "Ten komponent nie ma zastosowania do platformy.",
     "unknown": "Nie można było sklasyfikować statusu."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klasyfikuj",
       "title": "Klasyfikuj metodę uzgadniania",
-      "intro": "Wybierz sposób uzgadniania tego konta giełdowego z miarodajnymi danymi giełdy. Jest to stwierdzenie faktu dotyczącego konta, a nie preferencja.",
-      "guidance": "Wybierz metodę odpowiadającą rzeczywistemu sposobowi działania konta na giełdzie: na kontach gotówkowych (spot) transakcje są rozliczane wyłącznie z sald gotówkowych, natomiast konta z depozytem zabezpieczającym umożliwiają zaciąganie pożyczek pod zastaw. Jeśli nie masz pewności, jak działa konto, pozostaw je niesklasyfikowane.",
+      "intro": "Wybierz sposób uzgadniania tego konta na platformie z miarodajnymi danymi giełdy. Jest to stwierdzenie faktu dotyczącego konta, a nie preferencja.",
+      "guidance": "Wybierz metodę odpowiadającą rzeczywistemu sposobowi działania konta na platformie: na kontach gotówkowych (spot) transakcje są rozliczane wyłącznie z sald gotówkowych, natomiast konta z depozytem zabezpieczającym umożliwiają zaciąganie pożyczek pod zastaw. Jeśli nie masz pewności, jak działa konto, pozostaw je niesklasyfikowane.",
       "immutabilityWarning": "Ta klasyfikacja jest trwała. Po jej ustawieniu nie można jej zmienić ani usunąć.",
       "acknowledge": "Rozumiem, że ta klasyfikacja jest trwała i odpowiada sposobowi działania tego konta.",
       "methodDescription": {
-        "futuresPosition": "Uzgadnia otwarte pozycje w instrumentach pochodnych z miarodajnymi danymi giełdy o pozycjach futures.",
+        "futuresPosition": "Uzgadnia otwarte pozycje w instrumentach pochodnych z miarodajnymi danymi platformy o pozycjach futures.",
         "spotExecutionReplay": "Powtarza egzekucje spot względem sald gotówkowych. Dla kont wyłącznie gotówkowych, na których nigdy nie prowadzi się handlu z depozytem zabezpieczającym.",
-        "marginLedgerReplay": "Powtarza księgę depozytową giełdy. Dla kont, na których prowadzi się handel z depozytem zabezpieczającym lub zaciąga pożyczki pod zastaw."
+        "marginLedgerReplay": "Powtarza księgę depozytową platformy. Dla kont, na których prowadzi się handel z depozytem zabezpieczającym lub zaciąga pożyczki pod zastaw."
       },
       "credentialLoading": "Ładowanie poświadczenia…",
       "noCredential": "Nie znaleziono aktywnego poświadczenia do handlu rzeczywistego dla tego konta. Nie można sklasyfikować uzgadniania.",

@@ -109,7 +109,7 @@
     "equity": {
       "title": "Forleagan cothromais",
       "seriesLabel": "Cothromas",
-      "seriesLabelSpotOnly": "Cothromas (malartán spot)",
+      "seriesLabelSpotOnly": "Cothromas (ardán spot)",
       "latest": "Is déanaí: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Conas é seo a léamh",
-        "spotOnly": "An malartán spot amháin — ní áirítear iarmhéideanna ar mhalartáin eile.",
+        "spotOnly": "An t-ardán spot amháin — ní áirítear iarmhéideanna ar ardáin eile.",
         "flowsUnadjusted": "Níor baineadh taiscí ná aistarraingtí seachtracha as.",
         "restatedFrom": "Athráitear na figiúirí seo ó {{from}} ag clabhsúr gach nóiméid, ní samplaithe go dúchasach san airgeadra seo iad.",
         "pricedOn": "Praghsáilte ar {{plane}}.",
