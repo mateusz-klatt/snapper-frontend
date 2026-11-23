@@ -1729,7 +1729,7 @@
         "zh": "交易平台",
         "zh-Hant": "交易平台"
       },
-      "notes": "The external source of trading and account records. Where the locale convention uses the same noun as exchange, keep that noun; do not replace distinct exchange wording with a different venue term."
+      "notes": "The platform where the user's account lives: an exchange or a broker. Always use a term distinct from exchange; keep exchange wording where the English source says exchange."
     },
     "wallet": {
       "definition": "A Snapper trading scope that groups funds, positions and associated activity.",
