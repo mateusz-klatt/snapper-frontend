@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import {
   currencyFractionDigits,
   formatMoney,
@@ -25,6 +25,20 @@ describe('intlLocaleFromLanguage', () => {
 })
 
 describe('currencyFractionDigits', () => {
+  it('reads the ISO currency set once, on first use', () => {
+    const spy = vi.spyOn(Intl, 'supportedValuesOf')
+
+    try {
+      expect(currencyFractionDigits('EUR')).toBe(2)
+      expect(spy).toHaveBeenCalledTimes(1)
+      expect(spy).toHaveBeenCalledWith('currency')
+      expect(currencyFractionDigits('USD')).toBe(2)
+      expect(spy).toHaveBeenCalledTimes(1)
+    } finally {
+      spy.mockRestore()
+    }
+  })
+
   it('uses minor units for EUR, USD and PLN and zero for JPY', () => {
     expect(currencyFractionDigits('EUR')).toBe(2)
     expect(currencyFractionDigits('eur')).toBe(2)
@@ -66,6 +80,48 @@ describe('currencyFractionDigits', () => {
       expect(currencyFractionDigits('AUD')).toBe(2)
     } finally {
       Intl.NumberFormat = RealNumberFormat
+    }
+  })
+
+  it('probes NumberFormat when supportedValuesOf is missing', () => {
+    const descriptor = Object.getOwnPropertyDescriptor(Intl, 'supportedValuesOf')
+    const RealNumberFormat = Intl.NumberFormat
+    const probed: string[] = []
+
+    function NumberFormat(locales?: Intl.LocalesArgument, options?: Intl.NumberFormatOptions) {
+      const currency = options && 'currency' in options ? options.currency : undefined
+
+      if (locales === 'en' && typeof currency === 'string') {
+        probed.push(currency)
+
+        if (currency === 'ZZZ') throw new RangeError('invalid currency')
+      }
+
+      return new RealNumberFormat(locales, options)
+    }
+
+    NumberFormat.prototype = RealNumberFormat.prototype
+
+    try {
+      Intl.NumberFormat = NumberFormat as typeof Intl.NumberFormat
+      Object.defineProperty(Intl, 'supportedValuesOf', {
+        configurable: true,
+        writable: true,
+        value: undefined,
+      })
+
+      expect(currencyFractionDigits('NZD')).toBe(2)
+      expect(currencyFractionDigits('nzd')).toBe(2)
+      expect(probed).toEqual(['NZD'])
+      expect(currencyFractionDigits('ZZZ')).toBe(8)
+      expect(currencyFractionDigits('ZZZ')).toBe(8)
+      expect(probed).toEqual(['NZD', 'ZZZ'])
+      expect(currencyFractionDigits('ABCD')).toBe(8)
+      expect(probed).toEqual(['NZD', 'ZZZ'])
+    } finally {
+      Intl.NumberFormat = RealNumberFormat
+
+      if (descriptor) Object.defineProperty(Intl, 'supportedValuesOf', descriptor)
     }
   })
 })

@@ -15,8 +15,11 @@ const MAX_QUANTITY_DECIMALS = 8
 const MAX_FRACTION_DIGITS = 20
 const NON_FINITE_TEXT = '—'
 const NEAR_ZERO_PREFIX = '≈ '
+const ISO_CODE = /^[A-Z]{3}$/
 const CURRENCY_DIGITS = new Map<string, number>()
-const ISO_CURRENCIES = new Set(Intl.supportedValuesOf('currency').map(code => code.toUpperCase()))
+const ISO_BY_CODE = new Map<string, boolean>()
+
+let isoCatalog: ReadonlySet<string> | undefined
 
 export type SignDisplay = 'auto' | 'never' | 'always' | 'exceptZero'
 
@@ -65,8 +68,47 @@ const roundHalfAwayFromZero = (value: number, fractionDigits: number): number =>
   return parsed
 }
 
-const isIsoCurrency = (currency: string): boolean =>
-  ISO_CURRENCIES.has(currency.trim().toUpperCase())
+/**
+ * ISO-4217 membership, read on first use.
+ *
+ * Runtimes without `Intl.supportedValuesOf` probe `Intl.NumberFormat` instead.
+ * A 3-letter code that the constructor accepts counts as ISO.
+ */
+const readIsoCatalog = (): ReadonlySet<string> | null => {
+  if (typeof Intl.supportedValuesOf !== 'function') return null
+
+  if (isoCatalog === undefined) {
+    isoCatalog = new Set(Intl.supportedValuesOf('currency').map(code => code.toUpperCase()))
+  }
+
+  return isoCatalog
+}
+
+const probeIsoCurrency = (code: string): boolean => {
+  if (!ISO_CODE.test(code)) return false
+
+  try {
+    void new Intl.NumberFormat('en', { style: 'currency', currency: code })
+
+    return true
+  } catch {
+    return false
+  }
+}
+
+const isIsoCurrency = (currency: string): boolean => {
+  const code = currency.trim().toUpperCase()
+  const cached = ISO_BY_CODE.get(code)
+
+  if (cached !== undefined) return cached
+
+  const catalog = readIsoCatalog()
+  const iso = catalog === null ? probeIsoCurrency(code) : catalog.has(code)
+
+  ISO_BY_CODE.set(code, iso)
+
+  return iso
+}
 
 /**
  * Minor units for an ISO-4217 currency. Any other asset uses eight decimals.
