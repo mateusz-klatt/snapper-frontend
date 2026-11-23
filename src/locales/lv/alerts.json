@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} izpildīts biržā {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} izpildīts biržā {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} noraidīts: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} statuss nav zināms: {{3}} — platformas pārbaude vēl nav pabeigta; nepieņemiet, ka pozīcija ir slēgta",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} statuss nav zināms: {{3}} — platformas pārbaude vēl nav pabeigta; nepieņemiet, ka pozīcija ir slēgta",
+    "order_unknown": "{{0}} {{1}} {{2}} statuss nav zināms: {{3}} — biržas pārbaude vēl nav pabeigta; nepieņemiet, ka pozīcija ir slēgta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} statuss nav zināms: {{3}} — biržas pārbaude vēl nav pabeigta; nepieņemiet, ka pozīcija ir slēgta",
     "position_stop_loss_fired": "Stop-loss aktivizēts {{0}} ({{1}})"
   },
   "detail": {

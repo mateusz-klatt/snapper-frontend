@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} exécuté sur {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} exécuté sur {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rejeté : {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} état inconnu : {{3}} — la vérification auprès de la plateforme est en attente ; ne supposez pas que la position est clôturée",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} état inconnu : {{3}} — la vérification auprès de la plateforme est en attente ; ne supposez pas que la position est clôturée",
+    "order_unknown": "{{0}} {{1}} {{2}} état inconnu : {{3}} — la vérification auprès de la plateforme d’échange est en attente ; ne supposez pas que la position est clôturée",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} état inconnu : {{3}} — la vérification auprès de la plateforme d’échange est en attente ; ne supposez pas que la position est clôturée",
     "position_stop_loss_fired": "Stop loss déclenché sur {{0}} ({{1}})"
   },
   "detail": {

@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} zrealizowane na {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} zrealizowane na {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} odrzucono: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} — stan nieznany: {{3}} — oczekiwanie na weryfikację na platformie; nie zakładaj, że pozycja jest zamknięta",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stan nieznany: {{3}} — oczekiwanie na weryfikację na platformie; nie zakładaj, że pozycja jest zamknięta",
+    "order_unknown": "{{0}} {{1}} {{2}} — stan nieznany: {{3}} — oczekiwanie na weryfikację giełdy; nie zakładaj, że pozycja jest zamknięta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stan nieznany: {{3}} — oczekiwanie na weryfikację giełdy; nie zakładaj, że pozycja jest zamknięta",
     "position_stop_loss_fired": "Stop loss aktywowany dla {{0}} ({{1}})"
   },
   "detail": {

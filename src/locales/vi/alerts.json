@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} đã khớp trên {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} đã khớp trên {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} bị từ chối: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} không xác định được trạng thái: {{3}} — đang chờ nền tảng xác minh; không được cho rằng vị thế đã đóng",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} không xác định được trạng thái: {{3}} — đang chờ nền tảng xác minh; không được cho rằng vị thế đã đóng",
+    "order_unknown": "{{0}} {{1}} {{2}} không xác định được trạng thái: {{3}} — đang chờ sàn xác minh; không được cho rằng vị thế đã đóng",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} không xác định được trạng thái: {{3}} — đang chờ sàn xác minh; không được cho rằng vị thế đã đóng",
     "position_stop_loss_fired": "Cắt lỗ đã kích hoạt cho {{0}} ({{1}})"
   },
   "detail": {

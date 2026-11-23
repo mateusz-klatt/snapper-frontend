@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} teljesült a(z) {{4}} tőzsdén",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} teljesült a(z) {{4}} tőzsdén",
     "order_rejected": "{{0}} {{1}} {{2}} elutasítva: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} állapota ismeretlen: {{3}} — az ellenőrzés a kereskedési platformon függőben van; ne feltételezze, hogy a pozíció le van zárva",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} állapota ismeretlen: {{3}} — az ellenőrzés a kereskedési platformon függőben van; ne feltételezze, hogy a pozíció le van zárva",
+    "order_unknown": "{{0}} {{1}} {{2}} állapota ismeretlen: {{3}} — a tőzsdei ellenőrzés függőben van; ne feltételezze, hogy a pozíció le van zárva",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} állapota ismeretlen: {{3}} — a tőzsdei ellenőrzés függőben van; ne feltételezze, hogy a pozíció le van zárva",
     "position_stop_loss_fired": "Stop-loss aktiválódott ehhez: {{0}} ({{1}})"
   },
   "detail": {

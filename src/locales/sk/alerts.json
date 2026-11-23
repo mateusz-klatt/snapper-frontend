@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} vykonané na {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} vykonané na {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} zamietnuté: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} — stav neznámy: {{3}} — čaká sa na overenie platformou; nepredpokladajte, že pozícia je zatvorená",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stav neznámy: {{3}} — čaká sa na overenie platformou; nepredpokladajte, že pozícia je zatvorená",
+    "order_unknown": "{{0}} {{1}} {{2}} — stav neznámy: {{3}} — čaká sa na overenie burzou; nepredpokladajte, že pozícia je zatvorená",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} — stav neznámy: {{3}} — čaká sa na overenie burzou; nepredpokladajte, že pozícia je zatvorená",
     "position_stop_loss_fired": "Stop-loss spustený pre {{0}} ({{1}})"
   },
   "detail": {
