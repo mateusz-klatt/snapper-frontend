@@ -18,7 +18,13 @@
       "partially_filled": "منفذ جزئياً",
       "filled": "منفذ",
       "cancelled": "ملغى",
-      "rejected": "مرفوض"
+      "rejected": "مرفوض",
+      "canceled": "ملغى",
+      "submitted": "مُرسل",
+      "pending": "قيد الانتظار",
+      "pending_new": "بانتظار القبول",
+      "closed": "مغلق",
+      "expired": "منتهي الصلاحية"
     }
   },
   "orderCard": {

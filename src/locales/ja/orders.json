@@ -18,7 +18,13 @@
       "partially_filled": "一部約定",
       "filled": "約定済み",
       "cancelled": "キャンセル済み",
-      "rejected": "拒否"
+      "rejected": "拒否",
+      "canceled": "キャンセル済み",
+      "submitted": "送信済み",
+      "pending": "保留中",
+      "pending_new": "受付待ち",
+      "closed": "終了",
+      "expired": "期限切れ"
     }
   },
   "orderCard": {

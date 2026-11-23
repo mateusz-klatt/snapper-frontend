@@ -18,7 +18,13 @@
       "partially_filled": "Μερικώς εκτελεσμένη",
       "filled": "Εκτελεσμένη",
       "cancelled": "Ακυρωμένη",
-      "rejected": "Απορριφθείσα"
+      "rejected": "Απορριφθείσα",
+      "canceled": "Ακυρωμένη",
+      "submitted": "Υποβληθείσα",
+      "pending": "Σε αναμονή",
+      "pending_new": "Σε αναμονή αποδοχής",
+      "closed": "Κλειστή",
+      "expired": "Ληγμένη"
     }
   },
   "orderCard": {

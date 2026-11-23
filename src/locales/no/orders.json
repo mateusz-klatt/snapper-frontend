@@ -18,7 +18,13 @@
       "partially_filled": "Delvis utført",
       "filled": "Utført",
       "cancelled": "Kansellert",
-      "rejected": "Avvist"
+      "rejected": "Avvist",
+      "canceled": "Kansellert",
+      "submitted": "Innsendt",
+      "pending": "Venter",
+      "pending_new": "Venter på aksept",
+      "closed": "Lukket",
+      "expired": "Utløpt"
     }
   },
   "orderCard": {

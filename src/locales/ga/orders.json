@@ -18,7 +18,13 @@
       "partially_filled": "Forghníomhaithe go Páirteach",
       "filled": "Forghníomhaithe",
       "cancelled": "Cealaithe",
-      "rejected": "Diúltaithe"
+      "rejected": "Diúltaithe",
+      "canceled": "Cealaithe",
+      "submitted": "Curtha Isteach",
+      "pending": "Ar Feitheamh",
+      "pending_new": "Ag Feitheamh le Glacadh",
+      "closed": "Dúnta",
+      "expired": "Éagtha"
     }
   },
   "orderCard": {

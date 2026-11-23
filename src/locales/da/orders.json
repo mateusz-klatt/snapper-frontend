@@ -18,7 +18,13 @@
       "partially_filled": "Delvist udført",
       "filled": "Udført",
       "cancelled": "Annulleret",
-      "rejected": "Afvist"
+      "rejected": "Afvist",
+      "canceled": "Annulleret",
+      "submitted": "Indsendt",
+      "pending": "Afventer",
+      "pending_new": "Afventer accept",
+      "closed": "Lukket",
+      "expired": "Udløbet"
     }
   },
   "orderCard": {

@@ -18,7 +18,13 @@
       "partially_filled": "Framkvæmd að hluta",
       "filled": "Framkvæmd",
       "cancelled": "Hætt við",
-      "rejected": "Hafnað"
+      "rejected": "Hafnað",
+      "canceled": "Hætt við",
+      "submitted": "Send",
+      "pending": "Í bið",
+      "pending_new": "Bíða samþykkis",
+      "closed": "Lokuð",
+      "expired": "Útrunnin"
     }
   },
   "orderCard": {

@@ -18,7 +18,13 @@
       "partially_filled": "Részben teljesült",
       "filled": "Teljesült",
       "cancelled": "Visszavonva",
-      "rejected": "Elutasítva"
+      "rejected": "Elutasítva",
+      "canceled": "Visszavonva",
+      "submitted": "Elküldve",
+      "pending": "Függőben",
+      "pending_new": "Befogadásra vár",
+      "closed": "Lezárt",
+      "expired": "Lejárt"
     }
   },
   "orderCard": {

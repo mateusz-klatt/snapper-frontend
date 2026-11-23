@@ -18,7 +18,13 @@
       "partially_filled": "আংশিক নির্বাহিত",
       "filled": "নির্বাহিত",
       "cancelled": "বাতিল",
-      "rejected": "প্রত্যাখ্যাত"
+      "rejected": "প্রত্যাখ্যাত",
+      "canceled": "বাতিল",
+      "submitted": "জমা দেওয়া হয়েছে",
+      "pending": "অপেক্ষমাণ",
+      "pending_new": "গ্রহণের অপেক্ষায়",
+      "closed": "বন্ধ",
+      "expired": "মেয়াদোত্তীর্ণ"
     }
   },
   "orderCard": {

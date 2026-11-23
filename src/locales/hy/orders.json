@@ -18,7 +18,13 @@
       "partially_filled": "Մասամբ կատարված",
       "filled": "Կատարված",
       "cancelled": "Չեղարկված",
-      "rejected": "Մերժված"
+      "rejected": "Մերժված",
+      "canceled": "Չեղարկված",
+      "submitted": "Ուղարկված",
+      "pending": "Սպասման մեջ",
+      "pending_new": "Ընդունման սպասող",
+      "closed": "Փակված",
+      "expired": "Ժամկետանց"
     }
   },
   "orderCard": {

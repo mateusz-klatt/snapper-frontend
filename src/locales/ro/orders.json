@@ -18,7 +18,13 @@
       "partially_filled": "Executat parțial",
       "filled": "Executat",
       "cancelled": "Anulat",
-      "rejected": "Respins"
+      "rejected": "Respins",
+      "canceled": "Anulat",
+      "submitted": "Trimis",
+      "pending": "În așteptare",
+      "pending_new": "În așteptarea acceptării",
+      "closed": "Închis",
+      "expired": "Expirat"
     }
   },
   "orderCard": {

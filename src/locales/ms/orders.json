@@ -18,7 +18,13 @@
       "partially_filled": "Dilaksanakan Sebahagiannya",
       "filled": "Dilaksanakan Sepenuhnya",
       "cancelled": "Dibatalkan",
-      "rejected": "Ditolak"
+      "rejected": "Ditolak",
+      "canceled": "Dibatalkan",
+      "submitted": "Dihantar",
+      "pending": "Menunggu",
+      "pending_new": "Menunggu Penerimaan",
+      "closed": "Ditutup",
+      "expired": "Tamat Tempoh"
     }
   },
   "orderCard": {

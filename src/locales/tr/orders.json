@@ -18,7 +18,13 @@
       "partially_filled": "Kısmen Gerçekleşti",
       "filled": "Gerçekleşti",
       "cancelled": "İptal Edildi",
-      "rejected": "Reddedildi"
+      "rejected": "Reddedildi",
+      "canceled": "İptal Edildi",
+      "submitted": "Gönderildi",
+      "pending": "Beklemede",
+      "pending_new": "Kabul Bekliyor",
+      "closed": "Kapandı",
+      "expired": "Süresi Doldu"
     }
   },
   "orderCard": {

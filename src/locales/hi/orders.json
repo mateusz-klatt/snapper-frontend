@@ -18,7 +18,13 @@
       "partially_filled": "आंशिक रूप से निष्पादित",
       "filled": "निष्पादित",
       "cancelled": "रद्द",
-      "rejected": "अस्वीकृत"
+      "rejected": "अस्वीकृत",
+      "canceled": "रद्द",
+      "submitted": "भेजा गया",
+      "pending": "लंबित",
+      "pending_new": "स्वीकृति की प्रतीक्षा में",
+      "closed": "बंद",
+      "expired": "समय सीमा समाप्त"
     }
   },
   "orderCard": {

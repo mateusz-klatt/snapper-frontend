@@ -18,7 +18,13 @@
       "partially_filled": "Iš dalies įvykdytas",
       "filled": "Įvykdytas",
       "cancelled": "Atšauktas",
-      "rejected": "Atmestas"
+      "rejected": "Atmestas",
+      "canceled": "Atšauktas",
+      "submitted": "Pateiktas",
+      "pending": "Laukiantis",
+      "pending_new": "Laukiantis priėmimo",
+      "closed": "Uždarytas",
+      "expired": "Pasibaigusio galiojimo"
     }
   },
   "orderCard": {

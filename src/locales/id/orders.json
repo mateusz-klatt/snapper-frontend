@@ -18,7 +18,13 @@
       "partially_filled": "Terisi Sebagian",
       "filled": "Terisi",
       "cancelled": "Dibatalkan",
-      "rejected": "Ditolak"
+      "rejected": "Ditolak",
+      "canceled": "Dibatalkan",
+      "submitted": "Dikirim",
+      "pending": "Menunggu",
+      "pending_new": "Menunggu Penerimaan",
+      "closed": "Ditutup",
+      "expired": "Kedaluwarsa"
     }
   },
   "orderCard": {
