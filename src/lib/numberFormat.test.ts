@@ -83,45 +83,43 @@ describe('currencyFractionDigits', () => {
     }
   })
 
-  it('probes NumberFormat when supportedValuesOf is missing', () => {
+  it('uses and memoises the fiat allowlist when supportedValuesOf is missing', async () => {
     const descriptor = Object.getOwnPropertyDescriptor(Intl, 'supportedValuesOf')
-    const RealNumberFormat = Intl.NumberFormat
-    const probed: string[] = []
 
-    function NumberFormat(locales?: Intl.LocalesArgument, options?: Intl.NumberFormatOptions) {
-      const currency = options && 'currency' in options ? options.currency : undefined
-
-      if (locales === 'en' && typeof currency === 'string') {
-        probed.push(currency)
-
-        if (currency === 'ZZZ') throw new RangeError('invalid currency')
-      }
-
-      return new RealNumberFormat(locales, options)
-    }
-
-    NumberFormat.prototype = RealNumberFormat.prototype
+    Object.defineProperty(Intl, 'supportedValuesOf', {
+      configurable: true,
+      writable: true,
+      value: undefined,
+    })
+    vi.resetModules()
 
     try {
-      Intl.NumberFormat = NumberFormat as typeof Intl.NumberFormat
-      Object.defineProperty(Intl, 'supportedValuesOf', {
-        configurable: true,
-        writable: true,
-        value: undefined,
-      })
+      const fallback = await import('./numberFormat')
+      const has = vi.spyOn(fallback.FALLBACK_ISO_CURRENCIES, 'has')
 
-      expect(currencyFractionDigits('NZD')).toBe(2)
-      expect(currencyFractionDigits('nzd')).toBe(2)
-      expect(probed).toEqual(['NZD'])
-      expect(currencyFractionDigits('ZZZ')).toBe(8)
-      expect(currencyFractionDigits('ZZZ')).toBe(8)
-      expect(probed).toEqual(['NZD', 'ZZZ'])
-      expect(currencyFractionDigits('ABCD')).toBe(8)
-      expect(probed).toEqual(['NZD', 'ZZZ'])
+      try {
+        expect(fallback.formatMoney(0.004, { locale: 'en-US', currency: 'BTC' }).text).toBe('0.004')
+        expect(fallback.formatMoney(0.004, { locale: 'pl-PL', currency: 'BTC' }).text).toBe('0,004')
+        expect(fallback.formatMoney(1e-8, { locale: 'pl-PL', currency: 'XRP' }).text).toBe(
+          '0,00000001'
+        )
+        expect(fallback.formatMoney(1.2, { locale: 'en-US', currency: 'EUR' }).text).toBe('1.20')
+        expect(fallback.formatMoney(1.2, { locale: 'en-US', currency: 'JPY' }).text).toBe('1')
+        expect(fallback.currencyFractionDigits('ETH')).toBe(8)
+        expect(fallback.currencyFractionDigits('eth')).toBe(8)
+        expect(fallback.currencyFractionDigits('NZD')).toBe(2)
+        expect(fallback.currencyFractionDigits('nzd')).toBe(2)
+
+        for (const code of ['BTC', 'ETH', 'NZD']) {
+          expect(has.mock.calls.filter(([candidate]) => candidate === code)).toHaveLength(1)
+        }
+      } finally {
+        has.mockRestore()
+      }
     } finally {
-      Intl.NumberFormat = RealNumberFormat
-
       if (descriptor) Object.defineProperty(Intl, 'supportedValuesOf', descriptor)
+      else Reflect.deleteProperty(Intl, 'supportedValuesOf')
+      vi.resetModules()
     }
   })
 })
