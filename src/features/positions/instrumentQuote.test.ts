@@ -34,6 +34,10 @@ describe('quoteCurrency', () => {
     expect(quoteCurrency('BTC-USD')).toBe('USD')
   })
 
+  it('returns the quote segment of a slash-separated venue symbol', () => {
+    expect(quoteCurrency('BTC/USD')).toBe('USD')
+  })
+
   it('uses the final hyphen so a multiplier-prefixed base still yields the quote', () => {
     expect(quoteCurrency('1000-SHIB-USD')).toBe('USD')
   })

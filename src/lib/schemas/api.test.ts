@@ -41,4 +41,44 @@ describe('validateResponse', () => {
 
     vi.restoreAllMocks()
   })
+
+  it('keeps valid display fields and drops invalid ones', () => {
+    const schema = z.object({ id: z.number() }).strict()
+    const data = { id: 1, quantity_decimals: 4, is_dust: true, price_decimals: 'nope' }
+    const result = validateResponse(data, schema, '/api/test')
+
+    expect(result).toMatchObject({ id: 1, quantity_decimals: 4, is_dust: true })
+    expect(result).not.toHaveProperty('price_decimals')
+    expect(data).toMatchObject({ id: 1, quantity_decimals: 4, is_dust: true })
+    expect(data).not.toHaveProperty('price_decimals')
+  })
+
+  it('restores display fields when validation fails', () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {})
+    const schema = z.object({ id: z.number() }).strict()
+    const data = { id: 'bad', quantity_decimals: 3 }
+
+    expect(() => validateResponse(data, schema, '/api/test')).toThrow()
+    expect(data).toMatchObject({ id: 'bad', quantity_decimals: 3 })
+    vi.restoreAllMocks()
+  })
+
+  it('still rejects an unrelated unknown key on a strict schema', () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {})
+    const schema = z.object({ id: z.number() }).strict()
+
+    expect(() => validateResponse({ id: 1, extra: true }, schema, '/api/test')).toThrow()
+    vi.restoreAllMocks()
+  })
+
+  it('reattaches nested display fields', () => {
+    const schema = z.object({ payload: z.array(z.object({ id: z.number() }).strict()) }).strict()
+    const data = { payload: [{ id: 2, is_dust: false, quantity_decimals: 1.5 }] }
+    const result = validateResponse(data, schema, '/api/test')
+
+    expect(result.payload[0]).toMatchObject({ id: 2, is_dust: false })
+    expect(result.payload[0]).not.toHaveProperty('quantity_decimals')
+    expect(data.payload[0]).not.toHaveProperty('quantity_decimals')
+    expect(data.payload[0]).toMatchObject({ is_dust: false })
+  })
 })

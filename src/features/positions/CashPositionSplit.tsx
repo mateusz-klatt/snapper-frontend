@@ -1,6 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { NumericValue } from '../../components/NumericValue'
 import type { PnlEquityCoverageData, PnlTimelinePointData } from '../../types/api'
+import { formatMoney, intlLocaleFromLanguage } from '../../lib/numberFormat'
 import { latestSampledPoint } from './equityOverlay'
 
 interface Props {
@@ -9,13 +11,8 @@ interface Props {
   valuationCcy: string
 }
 
-const formatAmount = (value: number | null, noValue: string, locale: string): string =>
-  value === null
-    ? noValue
-    : new Intl.NumberFormat(locale, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 8,
-      }).format(value)
+const formatAmount = (value: number | null, locale: string, currency: string) =>
+  value === null ? null : formatMoney(value, { locale: intlLocaleFromLanguage(locale), currency })
 
 export const CashPositionSplit: React.FC<Readonly<Props>> = ({
   coverage,
@@ -28,8 +25,8 @@ export const CashPositionSplit: React.FC<Readonly<Props>> = ({
 
   const noValue = t('timeline.equity.cashPosition.noValue')
   const latest = latestSampledPoint(points)
-  const positionValue = latest?.position_value ?? null
-  const cash = latest?.cash ?? null
+  const positionValue = formatAmount(latest?.position_value ?? null, i18n.language, valuationCcy)
+  const cash = formatAmount(latest?.cash ?? null, i18n.language, valuationCcy)
 
   return (
     <section
@@ -46,7 +43,7 @@ export const CashPositionSplit: React.FC<Readonly<Props>> = ({
         <div className='rounded-xl border border-dark-600 bg-alpine-100 px-4 py-3'>
           <div className='text-xs text-muted-500'>{t('timeline.equity.cashPosition.position')}</div>
           <div className='font-mono text-alpine-900' data-testid='pnl-position-value'>
-            {formatAmount(positionValue, noValue, i18n.language)}
+            {positionValue === null ? noValue : <NumericValue formatted={positionValue} />}
           </div>
           <div className='mt-1 text-xs text-muted-500'>
             {t('timeline.equity.cashPosition.positionHint')}
@@ -55,7 +52,7 @@ export const CashPositionSplit: React.FC<Readonly<Props>> = ({
         <div className='rounded-xl border border-dark-600 bg-alpine-100 px-4 py-3'>
           <div className='text-xs text-muted-500'>{t('timeline.equity.cashPosition.cash')}</div>
           <div className='font-mono text-alpine-900' data-testid='pnl-cash-value'>
-            {formatAmount(cash, noValue, i18n.language)}
+            {cash === null ? noValue : <NumericValue formatted={cash} />}
           </div>
           <div className='mt-1 text-xs text-muted-500'>
             {t('timeline.equity.cashPosition.cashHint')}

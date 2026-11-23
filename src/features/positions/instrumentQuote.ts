@@ -4,14 +4,14 @@ import { formatNumber } from '../../lib/utils'
  * Resolve the quote-currency code from a canonical native instrument symbol.
  *
  * Snapper native symbols are `BASE-QUOTE` (for example `EUR-PLN` or
- * `BTC-USD`), so the quote is the segment after the final hyphen. The last
- * hyphen is used so a multiplier-prefixed base (a hypothetical `1000-SHIB-USD`)
- * still yields the quote. A symbol without a usable trailing segment resolves
- * to an empty string, letting callers render the bare number rather than a
- * misleading hardcoded currency.
+ * `BTC-USD`). Venue rows may use a slash (`BTC/USD`). The quote is the segment
+ * after the final hyphen or slash, so a multiplier-prefixed base (a hypothetical
+ * `1000-SHIB-USD`) still yields the quote. A symbol without a usable trailing
+ * segment resolves to an empty string, letting callers render the bare number
+ * rather than a misleading hardcoded currency.
  */
 export const quoteCurrency = (instrument: string): string => {
-  const separatorIndex = instrument.lastIndexOf('-')
+  const separatorIndex = Math.max(instrument.lastIndexOf('-'), instrument.lastIndexOf('/'))
 
   if (separatorIndex <= 0 || separatorIndex === instrument.length - 1) return ''
 

@@ -1,10 +1,11 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { ReactNode } from 'react'
 import { Positions } from './Positions'
 import type { Position } from '../../types/entities'
 import { formatQuoted } from './instrumentQuote'
+import i18n from '../../i18n/config'
 
 const mockHasPermission = vi.fn(() => true)
 
@@ -76,6 +77,10 @@ describe('Positions', () => {
     mockHasPermission.mockReturnValue(true)
   })
 
+  afterEach(async () => {
+    await i18n.changeLanguage('en')
+  })
+
   it('renders honest N/A for null valuation and shows the mark with its timestamp', async () => {
     const { usePositions } = await import('../../hooks/queries/positions')
 
@@ -84,6 +89,7 @@ describe('Positions', () => {
         makePosition({
           averagePrice: null,
           unrealizedPnl: null,
+          realizedPnl: Number.NaN,
           markPrice: null,
           markedAt: null,
         }),
@@ -98,9 +104,12 @@ describe('Positions', () => {
     } as never)
     renderWithProviders(<Positions />)
     expect(screen.getByTestId('position-unrealized-BTC-USD-kraken-live')).toHaveTextContent('N/A')
+    expect(screen.getByTestId('position-realized-BTC-USD-kraken-live')).toHaveTextContent('N/A')
     expect(screen.getByTestId('position-mark-BTC-USD-kraken-live')).toHaveTextContent('N/A')
     expect(screen.queryByTestId('position-marked-at-BTC-USD-kraken-live')).not.toBeInTheDocument()
-    expect(screen.getByTestId('position-mark-ETH-USD-kraken-live')).toHaveTextContent('2050.00 USD')
+    expect(screen.getByTestId('position-mark-ETH-USD-kraken-live')).toHaveTextContent(
+      '2,050.00 USD'
+    )
     expect(screen.getByTestId('position-marked-at-ETH-USD-kraken-live')).toHaveTextContent(/2026/)
   })
 
@@ -192,9 +201,9 @@ describe('Positions', () => {
     } as never)
     renderWithProviders(<Positions />)
     expect(screen.getByTestId('position-side-BTC-USD-kraken-live')).toHaveTextContent('LONG')
-    expect(screen.getByText('2.5000')).toBeInTheDocument()
+    expect(screen.getByText('2.5')).toBeInTheDocument()
     expect(screen.getByTestId('position-unrealized-BTC-USD-kraken-live')).toHaveTextContent(
-      '+1000.00 USD'
+      '+1,000.00 USD'
     )
   })
 
@@ -217,7 +226,7 @@ describe('Positions', () => {
 
     expect(sideBadge).toHaveTextContent('SHORT')
     expect(sideBadge.className).toContain('text-falling-400')
-    expect(screen.getByText('3.0000')).toBeInTheDocument()
+    expect(screen.getByText('3')).toBeInTheDocument()
     expect(screen.getByTestId('position-unrealized-ETH-USD-kraken-live')).toHaveTextContent(
       '-150.00 USD'
     )
@@ -241,6 +250,7 @@ describe('Positions', () => {
       isLoading: false,
     } as never)
     renderWithProviders(<Positions />)
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
     const sideBadge = screen.getByTestId('position-side-SOL-USD-kraken-live')
 
     expect(sideBadge).toHaveTextContent('FLAT')
@@ -267,7 +277,7 @@ describe('Positions', () => {
     } as never)
     renderWithProviders(<Positions />)
 
-    expect(screen.getByTestId('position-mark-EUR-PLN-kraken-live')).toHaveTextContent('4.33 PLN')
+    expect(screen.getByTestId('position-mark-EUR-PLN-kraken-live')).toHaveTextContent('4.3300 PLN')
     expect(screen.getByTestId('position-unrealized-EUR-PLN-kraken-live')).toHaveTextContent(
       '-1.00 PLN'
     )
@@ -287,13 +297,16 @@ describe('Positions', () => {
     vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
     renderWithProviders(<Positions />)
 
-    expect(screen.getByText('7.123 PLN')).toBeInTheDocument()
-    expect(screen.getByTestId('position-mark-EUR-PLN-kraken-live')).toHaveTextContent('7.12945 PLN')
+    expect(screen.getByText('7.1230').parentElement).toHaveTextContent('7.1230 PLN')
+    expect(screen.getByTestId('position-mark-EUR-PLN-kraken-live')).toHaveTextContent('7.1295 PLN')
     expect(screen.getByTestId('position-unrealized-EUR-PLN-kraken-live')).toHaveTextContent(
-      '+0.0645 PLN'
+      '+0.06 PLN'
     )
+    expect(
+      screen.getByTestId('position-unrealized-EUR-PLN-kraken-live').querySelector('[title]')
+    ).toHaveAttribute('title', expect.stringContaining('0.0645'))
     expect(screen.getByTestId('position-realized-EUR-PLN-kraken-live')).toHaveTextContent(
-      '-0.0645 PLN'
+      '-0.06 PLN'
     )
     expect(formatQuoted(Number('7.129450000000001'), 'PLN')).toBe('7.129450000000001 PLN')
   })
@@ -311,12 +324,16 @@ describe('Positions', () => {
     vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
     renderWithProviders(<Positions />)
 
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
     expect(screen.getByTestId('position-mark-TINY-BTC-kraken-live')).toHaveTextContent(
-      '0.000000000000012345 BTC'
+      '≈ 0.00000000 BTC'
     )
     expect(screen.getByTestId('position-unrealized-TINY-BTC-kraken-live')).toHaveTextContent(
-      '+0.000000000000012345 BTC'
+      '≈ 0.00000000 BTC'
     )
+    expect(
+      screen.getByTestId('position-mark-TINY-BTC-kraken-live').querySelector('[title]')
+    ).toHaveAttribute('title', expect.stringContaining('0.000000000000012345'))
   })
 
   it.each([1, -1])(
@@ -375,9 +392,9 @@ describe('Positions', () => {
 
     const mark = screen.getByTestId('position-mark-BTCUSD-kraken-live')
 
-    expect(mark).toHaveTextContent('66000.00')
+    expect(mark).toHaveTextContent('66,000.00')
     expect(mark.textContent).not.toContain('$')
-    expect(screen.getByTestId('position-unrealized-BTCUSD-kraken-live')).toHaveTextContent('+12.00')
+    expect(screen.getByTestId('position-unrealized-BTCUSD-kraken-live')).toHaveTextContent('+12')
   })
 
   it('renders multiple positions side by side', async () => {
@@ -471,7 +488,8 @@ describe('Positions', () => {
       isLoading: false,
     } as never)
     renderWithProviders(<Positions />)
-    expect(screen.queryByTestId('attach-bracket-SOL-USD-kraken-live')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('attach-bracket-BTC-USD-kraken-live')).not.toBeInTheDocument()
   })
 
   it('opens bracket modal when SL/TP button is clicked', async () => {
@@ -618,6 +636,29 @@ describe('Positions', () => {
     ) => selector({ isTimeTraveling: false })) as never)
   })
 
+  it('omits the currency on a trailing stop when the symbol has no quote', async () => {
+    const { usePositions, useTrailingStopForCycle } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({
+      data: [
+        makePosition({
+          instrument: 'BTCUSD',
+          quantity: 1,
+          positionCyclePublicId: 'cycle-bare',
+        }),
+      ],
+      isLoading: false,
+    } as never)
+    vi.mocked(useTrailingStopForCycle).mockReturnValue({
+      data: { type: 'trailing_stop_state', payload: { current_stop: 95000 } },
+    } as never)
+    renderWithProviders(<Positions />)
+    const badge = screen.getByTestId('trailing-stop-badge')
+
+    expect(badge).toHaveTextContent('TS: 95,000.00')
+    expect(badge.textContent).not.toContain('USD')
+  })
+
   it('shows trailing stop badge when active stop exists', async () => {
     const pos = makePosition({
       quantity: 1.5,
@@ -635,7 +676,7 @@ describe('Positions', () => {
     renderWithProviders(<Positions />)
     const badge = screen.getByTestId('trailing-stop-badge')
 
-    expect(badge).toHaveTextContent('TS: 95000.00 USD')
+    expect(badge).toHaveTextContent('TS: 95,000.00 USD')
   })
 
   it('preserves the quote currency and precision of a small active trailing stop', async () => {
@@ -649,7 +690,7 @@ describe('Positions', () => {
       data: { type: 'trailing_stop_state', payload: { current_stop: 0.000012345 } },
     } as never)
     renderWithProviders(<Positions />)
-    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: 0.000012345 BTC')
+    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: 0.00001234 BTC')
   })
 
   it('keeps protective-order state visible but hides attach controls without create:orders', async () => {
@@ -666,7 +707,7 @@ describe('Positions', () => {
     } as never)
     renderWithProviders(<Positions />)
 
-    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: 95000.00 USD')
+    expect(screen.getByTestId('trailing-stop-badge')).toHaveTextContent('TS: 95,000.00 USD')
     expect(screen.queryByTestId('attach-bracket-BTC-USD-kraken-live')).not.toBeInTheDocument()
     expect(screen.queryByTestId('attach-trailing-stop-BTC-USD-kraken-live')).not.toBeInTheDocument()
   })
@@ -728,5 +769,124 @@ describe('Positions', () => {
     renderWithProviders(<Positions />)
 
     expect(screen.queryByTestId('trailing-stop-badge')).not.toBeInTheDocument()
+  })
+
+  it('keeps dust collapsed until the operator expands it', async () => {
+    const active = makePosition({ quantity: 2, unrealizedPnl: 10 })
+    const dust = Object.assign(
+      makePosition({
+        publicId: 'pos-dust',
+        instrument: 'XRP-EUR',
+        quantity: 9.99999993923e-9,
+        averagePrice: 0.5,
+        markPrice: 0.5,
+        unrealizedPnl: -1.2830999922e-9,
+        realizedPnl: 0,
+      }),
+      { quantityDecimals: 8, isDust: true }
+    )
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({
+      data: [active, dust],
+      isLoading: false,
+    } as never)
+    renderWithProviders(<Positions />)
+    const toggle = screen.getByTestId('dust-toggle')
+
+    expect(toggle).toHaveTextContent('Dust (1)')
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    expect(toggle).toHaveAttribute('title', 'Show dust positions')
+    expect(screen.getByTestId('position-side-BTC-USD-kraken-live')).toBeInTheDocument()
+    expect(screen.queryByText('0.00000001')).not.toBeInTheDocument()
+    fireEvent.click(toggle)
+    expect(toggle).toHaveAttribute('aria-expanded', 'true')
+    expect(toggle).toHaveAttribute('title', 'Hide dust positions')
+    expect(screen.getByText('0.00000001')).toBeInTheDocument()
+    expect(screen.getByTestId('position-unrealized-XRP-EUR-kraken-live')).toHaveTextContent(
+      '≈ 0.00 EUR'
+    )
+    expect(
+      screen.getByTestId('position-unrealized-XRP-EUR-kraken-live').querySelector('[title]')
+    ).toHaveAttribute('title', expect.stringContaining('0.0000000012830999922'))
+    fireEvent.click(toggle)
+    expect(screen.queryByText('0.00000001')).not.toBeInTheDocument()
+  })
+
+  it('keeps a 0.3 BTC position in the main list when the API omits is_dust', async () => {
+    const position = makePosition({
+      instrument: 'ETH-BTC',
+      quantity: 0.3,
+      markPrice: 1,
+      averagePrice: 1,
+      unrealizedPnl: 0.01,
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
+    expect(screen.getByTestId('position-side-ETH-BTC-kraken-live')).toBeInTheDocument()
+  })
+
+  it('keeps a position in the main list when the API says it is not dust', async () => {
+    const kept = Object.assign(
+      makePosition({ quantity: 1e-8, markPrice: 1, averagePrice: 1, unrealizedPnl: 0 }),
+      { isDust: false }
+    )
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [kept], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
+    expect(screen.getByText('0.00000001')).toBeInTheDocument()
+  })
+
+  it('parks a large position in dust when the API marks it as dust', async () => {
+    const parked = Object.assign(makePosition({ quantity: 2, unrealizedPnl: 10 }), { isDust: true })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [parked], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+    expect(screen.queryByTestId('position-side-BTC-USD-kraken-live')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByTestId('dust-toggle'))
+    expect(screen.getByTestId('position-side-BTC-USD-kraken-live')).toHaveTextContent('LONG')
+  })
+
+  it('colors a displayed zero as flat for USD, EUR and PLN', async () => {
+    await i18n.changeLanguage('pl')
+    const raw = -1.5e-9
+    const rows = [
+      makePosition({ instrument: 'BTC-USD', quantity: 1, unrealizedPnl: raw, publicId: 'usd' }),
+      makePosition({ instrument: 'BTC-EUR', quantity: 1, unrealizedPnl: raw, publicId: 'eur' }),
+      makePosition({ instrument: 'EUR-PLN', quantity: 1, unrealizedPnl: raw, publicId: 'pln' }),
+    ]
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: rows, isLoading: false } as never)
+    renderWithProviders(<Positions />)
+
+    for (const instrument of ['BTC-USD', 'BTC-EUR', 'EUR-PLN']) {
+      const pnl = screen.getByTestId(`position-unrealized-${instrument}-kraken-live`)
+
+      expect(pnl).toHaveTextContent('≈ 0,00')
+      expect(pnl.textContent).not.toContain('-0,00000001')
+      expect(pnl.className).toContain('text-muted-400')
+      expect(pnl.className).not.toContain('text-falling-400')
+      expect(pnl.className).not.toContain('text-rising-400')
+    }
+  })
+
+  it('labels the dust section in Polish', async () => {
+    await i18n.changeLanguage('pl')
+    const dust = Object.assign(makePosition({ quantity: 4e-9, unrealizedPnl: 0, realizedPnl: 0 }), {
+      quantityDecimals: 8,
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [dust], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+    expect(screen.getByTestId('dust-toggle')).toHaveTextContent('Pył (1)')
+    expect(screen.getByTestId('dust-toggle')).toHaveAttribute('title', 'Pokaż pozycje pyłu')
   })
 })

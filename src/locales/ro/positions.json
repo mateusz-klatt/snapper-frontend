@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Praf ({{count}})",
+    "show": "Afișează pozițiile de praf",
+    "hide": "Ascunde pozițiile de praf"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: în așteptare",

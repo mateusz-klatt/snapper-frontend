@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Bụi ({{count}})",
+    "show": "Hiện vị thế bụi",
+    "hide": "Ẩn vị thế bụi"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: đang chờ",

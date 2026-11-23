@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "گرد ({{count}})",
+    "show": "نمایش موقعیت‌های گرد",
+    "hide": "پنهان کردن موقعیت‌های گرد"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: در انتظار",

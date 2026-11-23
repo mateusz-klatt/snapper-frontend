@@ -191,4 +191,40 @@ describe('parseWsMessage', () => {
     expect(result).toBeNull()
     expect(console.warn).toHaveBeenCalledWith(expect.stringContaining('ai_review_decision'))
   })
+
+  it('keeps display fields on a position frame', () => {
+    const message = {
+      type: 'position',
+      sequence_id: 1,
+      public_id: 'pos',
+      timestamp: '2026-01-01T00:00:00.000Z',
+      session_id: 'sess',
+      instrument: 'XRP-EUR',
+      instrument_public_id: 'inst',
+      exchange: 'kraken',
+      mode: 'live',
+      quantity: 1e-8,
+      realized_pnl: 0,
+      wallet_public_id: 'wallet',
+      quantity_decimals: 8,
+      price_decimals: 5,
+      is_dust: true,
+    }
+    const result = parseWsMessage(message)
+
+    expect(result).toMatchObject({
+      type: 'position',
+      quantity_decimals: 8,
+      price_decimals: 5,
+      is_dust: true,
+    })
+    expect(message).toMatchObject({ quantity_decimals: 8, price_decimals: 5, is_dust: true })
+  })
+
+  it('restores display fields when a known frame fails validation', () => {
+    const message = { type: 'position', quantity_decimals: 4, invalid: true }
+
+    expect(parseWsMessage(message)).toBeNull()
+    expect(message.quantity_decimals).toBe(4)
+  })
 })

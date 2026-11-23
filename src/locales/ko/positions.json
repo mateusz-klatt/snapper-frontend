@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "더스트 ({{count}})",
+    "show": "더스트 포지션 표시",
+    "hide": "더스트 포지션 숨기기"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: 대기 중",

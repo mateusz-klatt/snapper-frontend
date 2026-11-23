@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "Staub ({{count}})",
+    "show": "Staubpositionen anzeigen",
+    "hide": "Staubpositionen ausblenden"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: ausstehend",

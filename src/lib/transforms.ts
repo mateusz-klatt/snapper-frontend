@@ -1,3 +1,4 @@
+import { applyDisplayFields } from './displayFields'
 import type { PositionData } from '../types/api'
 import type {
   OrderData as WsOrderData,
@@ -101,30 +102,33 @@ function normalizeSide(side: string): TradeSide {
 export function orderFromAPI(api: OrderApiInput): Order {
   const ts = requireTimestamp(api.timestamp, 'OrderData')
 
-  return {
-    sequenceId: api.sequence_id,
-    publicId: api.public_id,
-    timestamp: new Date(ts),
-    sessionId: api.session_id,
-    clientOrderId: api.client_order_id,
-    exchangeOrderId: api.exchange_order_id ?? null,
-    instrument: api.instrument,
-    exchange: api.exchange,
-    side: normalizeSide(api.side),
-    orderType: normalizeOrderType(api.order_type),
-    size: api.size,
-    filledSize: api.filled_size,
-    price: api.price ?? null,
-    averagePrice: api.average_price ?? null,
-    status: api.status,
-    reason: api.reason ?? null,
-    timeInForce: api.time_in_force ?? null,
-    error: api.error ?? null,
-    leverage: api.leverage ?? null,
-    reduceOnly: api.reduce_only ?? false,
-    createdAt: api.created_at ? new Date(api.created_at) : new Date(),
-    updatedAt: api.updated_at ? new Date(api.updated_at) : null,
-  }
+  return applyDisplayFields(
+    {
+      sequenceId: api.sequence_id,
+      publicId: api.public_id,
+      timestamp: new Date(ts),
+      sessionId: api.session_id,
+      clientOrderId: api.client_order_id,
+      exchangeOrderId: api.exchange_order_id ?? null,
+      instrument: api.instrument,
+      exchange: api.exchange,
+      side: normalizeSide(api.side),
+      orderType: normalizeOrderType(api.order_type),
+      size: api.size,
+      filledSize: api.filled_size,
+      price: api.price ?? null,
+      averagePrice: api.average_price ?? null,
+      status: api.status,
+      reason: api.reason ?? null,
+      timeInForce: api.time_in_force ?? null,
+      error: api.error ?? null,
+      leverage: api.leverage ?? null,
+      reduceOnly: api.reduce_only ?? false,
+      createdAt: api.created_at ? new Date(api.created_at) : new Date(),
+      updatedAt: api.updated_at ? new Date(api.updated_at) : null,
+    },
+    api
+  )
 }
 
 export function orderFromWS(ws: WsOrderData): Order {
@@ -134,28 +138,31 @@ export function orderFromWS(ws: WsOrderData): Order {
     throw new Error('OrderData missing required field: created_at')
   }
 
-  return {
-    sequenceId: ws.sequence_id,
-    publicId: ws.public_id,
-    timestamp: new Date(ts),
-    sessionId: ws.session_id,
-    clientOrderId: ws.client_order_id,
-    exchangeOrderId: ws.exchange_order_id ?? null,
-    instrument: ws.instrument,
-    exchange: ws.exchange,
-    side: ws.side,
-    orderType: ws.order_type,
-    size: ws.size,
-    filledSize: ws.filled_size,
-    price: ws.price ?? null,
-    averagePrice: ws.average_price ?? null,
-    status: ws.status,
-    reason: ws.reason ?? null,
-    leverage: ws.leverage ?? null,
-    reduceOnly: ws.reduce_only ?? false,
-    createdAt: new Date(ws.created_at),
-    updatedAt: ws.updated_at ? new Date(ws.updated_at) : null,
-  }
+  return applyDisplayFields(
+    {
+      sequenceId: ws.sequence_id,
+      publicId: ws.public_id,
+      timestamp: new Date(ts),
+      sessionId: ws.session_id,
+      clientOrderId: ws.client_order_id,
+      exchangeOrderId: ws.exchange_order_id ?? null,
+      instrument: ws.instrument,
+      exchange: ws.exchange,
+      side: ws.side,
+      orderType: ws.order_type,
+      size: ws.size,
+      filledSize: ws.filled_size,
+      price: ws.price ?? null,
+      averagePrice: ws.average_price ?? null,
+      status: ws.status,
+      reason: ws.reason ?? null,
+      leverage: ws.leverage ?? null,
+      reduceOnly: ws.reduce_only ?? false,
+      createdAt: new Date(ws.created_at),
+      updatedAt: ws.updated_at ? new Date(ws.updated_at) : null,
+    },
+    ws
+  )
 }
 
 function normalizeOrderType(type: string): OrderType {
@@ -178,26 +185,29 @@ function normalizeOrderType(type: string): OrderType {
 export function executionFromAPI(api: ExecutionApiInput): Execution {
   const ts = requireTimestamp(api.timestamp, 'ExecutionData')
 
-  return {
-    sequenceId: api.sequence_id,
-    publicId: api.public_id,
-    timestamp: new Date(ts),
-    sessionId: api.session_id,
-    clientOrderId: api.client_order_id,
-    tradeId: api.trade_id ?? null,
-    exchangeOrderId: api.exchange_order_id ?? null,
-    exchange: api.exchange,
-    instrument: api.instrument,
-    side: normalizeSide(api.side),
-    size: api.size,
-    price: api.price,
-    lastSize: api.last_size,
-    lastPrice: api.last_price,
-    fee: api.fee,
-    feeAsset: api.fee_asset,
-    status: api.status,
-    executedAt: api.executed_at ? new Date(api.executed_at) : new Date(),
-  }
+  return applyDisplayFields(
+    {
+      sequenceId: api.sequence_id,
+      publicId: api.public_id,
+      timestamp: new Date(ts),
+      sessionId: api.session_id,
+      clientOrderId: api.client_order_id,
+      tradeId: api.trade_id ?? null,
+      exchangeOrderId: api.exchange_order_id ?? null,
+      exchange: api.exchange,
+      instrument: api.instrument,
+      side: normalizeSide(api.side),
+      size: api.size,
+      price: api.price,
+      lastSize: api.last_size,
+      lastPrice: api.last_price,
+      fee: api.fee,
+      feeAsset: api.fee_asset,
+      status: api.status,
+      executedAt: api.executed_at ? new Date(api.executed_at) : new Date(),
+    },
+    api
+  )
 }
 
 export function executionFromWS(ws: WsExecutionData): Execution {
@@ -207,26 +217,29 @@ export function executionFromWS(ws: WsExecutionData): Execution {
     throw new Error('ExecutionData missing required field: executed_at')
   }
 
-  return {
-    sequenceId: ws.sequence_id,
-    publicId: ws.public_id,
-    timestamp: new Date(ts),
-    sessionId: ws.session_id,
-    clientOrderId: ws.client_order_id,
-    tradeId: ws.trade_id ?? null,
-    exchangeOrderId: ws.exchange_order_id ?? null,
-    exchange: ws.exchange,
-    instrument: ws.instrument,
-    side: ws.side,
-    size: ws.size,
-    price: ws.price,
-    lastSize: ws.last_size,
-    lastPrice: ws.last_price,
-    fee: ws.fee,
-    feeAsset: ws.fee_asset,
-    status: ws.status,
-    executedAt: new Date(ws.executed_at),
-  }
+  return applyDisplayFields(
+    {
+      sequenceId: ws.sequence_id,
+      publicId: ws.public_id,
+      timestamp: new Date(ts),
+      sessionId: ws.session_id,
+      clientOrderId: ws.client_order_id,
+      tradeId: ws.trade_id ?? null,
+      exchangeOrderId: ws.exchange_order_id ?? null,
+      exchange: ws.exchange,
+      instrument: ws.instrument,
+      side: ws.side,
+      size: ws.size,
+      price: ws.price,
+      lastSize: ws.last_size,
+      lastPrice: ws.last_price,
+      fee: ws.fee,
+      feeAsset: ws.fee_asset,
+      status: ws.status,
+      executedAt: new Date(ws.executed_at),
+    },
+    ws
+  )
 }
 
 export function signalFromAPI(api: SignalApiInput): Signal {
@@ -271,23 +284,26 @@ export function signalFromWS(ws: WsSignalData): Signal {
 export function positionFromAPI(api: PositionData): Position {
   const ts = requireTimestamp(api.timestamp, 'PositionData')
 
-  return {
-    sequenceId: api.sequence_id,
-    publicId: api.public_id,
-    timestamp: new Date(ts),
-    sessionId: api.session_id,
-    instrument: api.instrument,
-    exchange: api.exchange,
-    mode: api.mode,
-    quantity: api.quantity,
-    averagePrice: api.average_price ?? null,
-    unrealizedPnl: api.unrealized_pnl ?? null,
-    realizedPnl: api.realized_pnl,
-    markPrice: api.mark_price ?? null,
-    markedAt: api.marked_at ? new Date(api.marked_at) : null,
-    sourceVenueEventId: api.source_venue_event_id ?? null,
-    positionCyclePublicId: api.position_cycle_public_id ?? null,
-  }
+  return applyDisplayFields(
+    {
+      sequenceId: api.sequence_id,
+      publicId: api.public_id,
+      timestamp: new Date(ts),
+      sessionId: api.session_id,
+      instrument: api.instrument,
+      exchange: api.exchange,
+      mode: api.mode,
+      quantity: api.quantity,
+      averagePrice: api.average_price ?? null,
+      unrealizedPnl: api.unrealized_pnl ?? null,
+      realizedPnl: api.realized_pnl,
+      markPrice: api.mark_price ?? null,
+      markedAt: api.marked_at ? new Date(api.marked_at) : null,
+      sourceVenueEventId: api.source_venue_event_id ?? null,
+      positionCyclePublicId: api.position_cycle_public_id ?? null,
+    },
+    api
+  )
 }
 
 export function candleFromAPI(api: CandleData): Candle {

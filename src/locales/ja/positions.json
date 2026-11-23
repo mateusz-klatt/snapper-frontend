@@ -212,6 +212,11 @@
       }
     }
   },
+  "dust": {
+    "title": "ダスト ({{count}})",
+    "show": "ダストポジションを表示",
+    "hide": "ダストポジションを隠す"
+  },
   "row": {
     "trailingStopBadge": "TS: {{stop}}",
     "trailingStopPending": "TS: 保留中",
