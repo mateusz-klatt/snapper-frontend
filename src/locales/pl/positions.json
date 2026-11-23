@@ -214,8 +214,8 @@
   },
   "dust": {
     "title": "Pył ({{count}})",
-    "show": "Pokaż pozycje o śladowej wartości",
-    "hide": "Ukryj pozycje o śladowej wartości"
+    "show": "Pokaż pozycje pyłu",
+    "hide": "Ukryj pozycje pyłu"
   },
   "row": {
     "trailingStopBadge": "Stop kroczący: {{stop}}",

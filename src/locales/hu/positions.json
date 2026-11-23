@@ -214,8 +214,8 @@
   },
   "dust": {
     "title": "Apró maradványok ({{count}})",
-    "show": "Elhanyagolható értékű pozíciók megjelenítése",
-    "hide": "Elhanyagolható értékű pozíciók elrejtése"
+    "show": "Apró maradványok megjelenítése",
+    "hide": "Apró maradványok elrejtése"
   },
   "row": {
     "trailingStopBadge": "Követő stop: {{stop}}",

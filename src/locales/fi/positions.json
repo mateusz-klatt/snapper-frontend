@@ -214,8 +214,8 @@
   },
   "dust": {
     "title": "Pienet jäännökset ({{count}})",
-    "show": "Näytä arvoltaan vähäiset positiot",
-    "hide": "Piilota arvoltaan vähäiset positiot"
+    "show": "Näytä pienet jäännökset",
+    "hide": "Piilota pienet jäännökset"
   },
   "row": {
     "trailingStopBadge": "Liukuva stop: {{stop}}",

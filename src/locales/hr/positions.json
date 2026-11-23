@@ -214,8 +214,8 @@
   },
   "dust": {
     "title": "Sitni ostaci ({{count}})",
-    "show": "Prikaži pozicije zanemarive vrijednosti",
-    "hide": "Sakrij pozicije zanemarive vrijednosti"
+    "show": "Prikaži pozicije sa sitnim ostacima",
+    "hide": "Sakrij pozicije sa sitnim ostacima"
   },
   "row": {
     "trailingStopBadge": "Prateći stop: {{stop}}",

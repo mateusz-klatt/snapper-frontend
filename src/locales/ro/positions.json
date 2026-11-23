@@ -214,8 +214,8 @@
   },
   "dust": {
     "title": "Solduri reziduale ({{count}})",
-    "show": "Afișează pozițiile cu valoare neglijabilă",
-    "hide": "Ascunde pozițiile cu valoare neglijabilă"
+    "show": "Afișează pozițiile cu solduri reziduale",
+    "hide": "Ascunde pozițiile cu solduri reziduale"
   },
   "row": {
     "trailingStopBadge": "Stop dinamic: {{stop}}",

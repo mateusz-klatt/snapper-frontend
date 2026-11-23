@@ -214,8 +214,8 @@
   },
   "dust": {
     "title": "Drobné zůstatky ({{count}})",
-    "show": "Zobrazit pozice se zanedbatelnou hodnotou",
-    "hide": "Skrýt pozice se zanedbatelnou hodnotou"
+    "show": "Zobrazit pozice s drobnými zůstatky",
+    "hide": "Skrýt pozice s drobnými zůstatky"
   },
   "row": {
     "trailingStopBadge": "Posuvný stop: {{stop}}",

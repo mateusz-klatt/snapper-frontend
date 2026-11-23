@@ -214,8 +214,8 @@
   },
   "dust": {
     "title": "Drobné zostatky ({{count}})",
-    "show": "Zobraziť pozície so zanedbateľnou hodnotou",
-    "hide": "Skryť pozície so zanedbateľnou hodnotou"
+    "show": "Zobraziť pozície s drobnými zostatkami",
+    "hide": "Skryť pozície s drobnými zostatkami"
   },
   "row": {
     "trailingStopBadge": "Posuvný stop: {{stop}}",
