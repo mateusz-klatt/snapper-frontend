@@ -20,10 +20,10 @@
   },
   "processStatus": {
     "title": "Processtatus",
-    "feeds": "Feeds",
+    "feeds": "Gegevensstromen",
     "strategies": "Strategieën",
-    "executors": "Executors",
-    "brokers": "Brokers"
+    "executors": "Uitvoeringsprocessen",
+    "brokers": "Brokerprocessen"
   },
   "portfolio": {
     "title": "Portfolio-overzicht",
@@ -32,7 +32,7 @@
     "shortExposure": "Short-exposure",
     "netDelta": "Netto delta",
     "unrealizedPnl": "Niet-gerealiseerde P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Winst/verlies %",
     "positions": "Posities",
     "instrumentsCount": "Instrumenten: {{count}}",
     "empty": "Geen positiedata beschikbaar",
@@ -55,7 +55,7 @@
     "colName": "Naam",
     "colStatus": "Status",
     "colRole": "Rol",
-    "colMemory": "MEM",
+    "colMemory": "Geheugen",
     "colCpu": "CPU",
     "statusRunning": "Actief",
     "statusStopped": "Gestopt",

@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "I/T",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}t {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}t",
-    "backtestName": "Backtest {{id}}",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} t {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} t",
+    "backtestName": "Historisk test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "I/T",
     "uptimeLabel": "Oppetid",
     "exitCode": "Exitkode: {{code}}",
     "service": "tjeneste",
-    "backtest": "backtest"
+    "backtest": "historisk test"
   },
   "dbStats": {
     "title": "Databasestatistikk",
@@ -47,7 +47,7 @@
     "unavailable": "Databasestatistikk utilgjengelig: {{message}}",
     "fallbackError": "Kunne ikke laste databasestatistikk.",
     "sampled": "målt {{age}}",
-    "samplerSummary": "Samplerintervall: {{seconds}}s · Antall tabeller: {{count}}",
+    "samplerSummary": "Samplerintervall: {{seconds}} s · Antall tabeller: {{count}}",
     "columns": {
       "table": "Tabell",
       "kind": "Type",
@@ -92,13 +92,13 @@
       "files": "Filer",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} d",
+    "ok": "I orden",
     "error": "feil"
   },
   "systemMetrics": {
     "disk": "Ledig disk",
-    "diskUsage": "{{percent}}% brukt · {{mount}}",
+    "diskUsage": "{{percent}} % brukt · {{mount}}",
     "title": "Prosesshelse",
     "loading": "Laster prosessmetrikker…",
     "unavailable": "Prosessmetrikker utilgjengelige: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Tråder",
     "openFds": "Åpne FDer",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Strupet {{count}}×",
     "memory": "Minne",
     "saturation": "Metning {{percent}}",
@@ -119,7 +119,7 @@
     "asyncioPending": "Ventende: {{count}}",
     "dbPool": "DB-pool",
     "liveConns": "Live-tilk.: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC-generasjoner 0/1/2",
     "gcObjects": "Objekter: {{value}}",
     "threadsPercent": "Tråder %",
     "networkConns": "Nettverkstilk.",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Forbindelsesgruppe",
       "policy": "Karantenepolicy",
       "fallbackRoute": "Privat reserverute",
       "routes": "Ruter"
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "håndtrykk {{age}}"
     },
     "kind": {
       "direct": "direkte",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktiv",
       "quarantined": "I karantene",
-      "quarantinedSeconds": "I karantene ({{seconds}}s)",
+      "quarantinedSeconds": "I karantene ({{seconds}} s)",
       "disabled": "Deaktivert"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "akkurat nå",
-    "seconds": "{{seconds}}s siden",
-    "minutes": "{{minutes}} min siden",
-    "hours": "{{hours}}t siden",
-    "days": "{{days}}d siden"
+    "seconds": "{{seconds}} s siden",
+    "minutes": "{{minutes}} min siden",
+    "hours": "{{hours}} t siden",
+    "days": "{{days}} d siden"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}} min",
-    "hours": "{{hours}}t",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} t",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

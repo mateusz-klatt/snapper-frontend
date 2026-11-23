@@ -32,7 +32,7 @@
     "shortExposure": "短倉敞口",
     "netDelta": "淨 Delta",
     "unrealizedPnl": "未實現 P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "盈虧 %",
     "positions": "倉位",
     "instrumentsCount": "品種：{{count}}",
     "empty": "沒有可用倉位數據",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "最近信號",
     "empty": "沒有最近信號",
-    "noTime": "N/A"
+    "noTime": "未知"
   },
   "executions": {
     "title": "最近成交",
     "empty": "沒有最近成交",
-    "noTime": "N/A"
+    "noTime": "未知"
   },
   "processResources": {
     "title": "進程資源",
@@ -55,7 +55,7 @@
     "colName": "名稱",
     "colStatus": "狀態",
     "colRole": "角色",
-    "colMemory": "MEM",
+    "colMemory": "記憶體",
     "colCpu": "CPU",
     "statusRunning": "運行中",
     "statusStopped": "已停止",

@@ -81,15 +81,15 @@
     "chipAriaLabel": "{{exchange}}の{{symbol}}とのペア統計: Pearson {{pearson}}、p値 {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "時刻:",
+    "live": "リアルタイム",
     "sliderAriaLabel": "市場履歴の時間スライダーを移動",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "リアルタイム",
+      "h1": "-1時間",
+      "d1": "-1日",
+      "w1": "-1週",
+      "mo1": "-1か月"
     }
   }
 }

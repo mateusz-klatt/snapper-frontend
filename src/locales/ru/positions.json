@@ -14,10 +14,10 @@
       "granularity": "Детализация",
       "granularityAriaLabel": "Выбрать детализацию",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 мин",
+        "fiveMinutes": "5 мин",
+        "oneHour": "1 ч",
+        "oneDay": "1 д"
       },
       "valuationCurrency": "Валюта оценки",
       "valuationCurrencyAriaLabel": "Выбрать валюту оценки",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Аннулированное исполнение сделки",
       "correctionId": "Корректирующая запись",
       "reasons": {
-        "unwitnessed_phantom": "Нет никакой биржевой сделки, которая служила бы подтверждением этого резервирования.",
-        "unwitnessed_legacy_lineage": "Унаследованная запись, подтверждением которой не является заполнение биржевых сделок."
+        "unwitnessed_phantom": "Ни одно исполнение заявки на бирже не подтверждает эту запись об операции.",
+        "unwitnessed_legacy_lineage": "Запись из устаревших данных без подтверждающего исполнения заявки."
       }
     },
     "timeTravelNotice": "Исторический режим: P&L показан по данным на {{asOf}}.",
@@ -218,9 +218,9 @@
     "hide": "Скрыть пылевые позиции"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: ожидает",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Трейлинг-стоп: {{stop}}",
+    "trailingStopPending": "Трейлинг-стоп: ожидает",
+    "slTpButton": "Стоп-лосс / Тейк-профит",
     "trailButton": "Трейлинг-стоп",
     "quantity": "Количество",
     "averageEntry": "Средняя цена входа",
@@ -270,7 +270,7 @@
       "trailingPct": "например, 5.0",
       "minLockPct": "0 = начать сразу"
     },
-    "minLockWarning": "Трейлинг-стоп не активируется, пока цена не пройдёт {{minLockPct}}% в благоприятном направлении.",
+    "minLockWarning": "Трейлинг-стоп не активируется, пока цена не пройдёт {{minLockPct}} % в благоприятном направлении.",
     "buttons": {
       "cancel": "Отменить",
       "review": "Проверить",

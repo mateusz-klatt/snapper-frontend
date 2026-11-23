@@ -32,7 +32,7 @@
     "shortExposure": "Ekspozim short",
     "netDelta": "Delta neto",
     "unrealizedPnl": "P&L i parealizuar",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Fitim/humbje %",
     "positions": "Pozicione",
     "instrumentsCount": "Instrumente: {{count}}",
     "empty": "Nuk ka të dhëna pozicionesh të disponueshme",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Sinjalet e fundit",
     "empty": "Nuk ka sinjale të fundit",
-    "noTime": "N/A"
+    "noTime": "Nuk ka të dhëna"
   },
   "executions": {
     "title": "Ekzekutimet e fundit",
     "empty": "Nuk ka ekzekutime të fundit",
-    "noTime": "N/A"
+    "noTime": "Nuk ka të dhëna"
   },
   "processResources": {
     "title": "Burimet e proceseve",
@@ -55,7 +55,7 @@
     "colName": "Emri",
     "colStatus": "Statusi",
     "colRole": "Roli",
-    "colMemory": "MEM",
+    "colMemory": "Memorie",
     "colCpu": "CPU",
     "statusRunning": "Në ekzekutim",
     "statusStopped": "I ndalur",

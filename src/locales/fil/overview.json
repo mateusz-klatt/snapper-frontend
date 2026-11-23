@@ -32,7 +32,7 @@
     "shortExposure": "Short na exposure",
     "netDelta": "Netong delta",
     "unrealizedPnl": "Hindi pa na-realize na P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Tubo/lugi %",
     "positions": "Mga position",
     "instrumentsCount": "Mga instrumento: {{count}}",
     "empty": "Walang positions data available",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Kamakailang signals",
     "empty": "Walang kamakailang signals",
-    "noTime": "N/A"
+    "noTime": "Hindi available"
   },
   "executions": {
     "title": "Kamakailang executions",
     "empty": "Walang kamakailang executions",
-    "noTime": "N/A"
+    "noTime": "Hindi available"
   },
   "processResources": {
     "title": "Mga Resource ng Proseso",
@@ -55,7 +55,7 @@
     "colName": "Pangalan",
     "colStatus": "Katayuan",
     "colRole": "Tungkulin",
-    "colMemory": "MEM",
+    "colMemory": "Memorya",
     "colCpu": "CPU",
     "statusRunning": "Tumatakbo",
     "statusStopped": "Nakahinto",

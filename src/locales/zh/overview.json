@@ -32,7 +32,7 @@
     "shortExposure": "空头敞口",
     "netDelta": "净 Delta",
     "unrealizedPnl": "未实现 P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "盈亏 %",
     "positions": "持仓",
     "instrumentsCount": "品种：{{count}}",
     "empty": "没有可用持仓数据",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "最近信号",
     "empty": "没有最近信号",
-    "noTime": "N/A"
+    "noTime": "未知"
   },
   "executions": {
     "title": "最近成交",
     "empty": "没有最近成交",
-    "noTime": "N/A"
+    "noTime": "未知"
   },
   "processResources": {
     "title": "进程资源",
@@ -55,7 +55,7 @@
     "colName": "名称",
     "colStatus": "状态",
     "colRole": "角色",
-    "colMemory": "MEM",
+    "colMemory": "内存",
     "colCpu": "CPU",
     "statusRunning": "运行中",
     "statusStopped": "已停止",

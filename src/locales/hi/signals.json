@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "अभी",
-    "minutesAgo": "{{count}}मि पहले",
-    "hoursAgo": "{{count}}घं पहले"
+    "minutesAgo": "{{count}} मि पहले",
+    "hoursAgo": "{{count}} घं पहले"
   },
   "empty": {
     "title": "कोई सिग्नल नहीं मिला",

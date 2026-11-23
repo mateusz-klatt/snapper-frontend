@@ -32,7 +32,7 @@
     "shortExposure": "Īsā ekspozīcija",
     "netDelta": "Neto delta",
     "unrealizedPnl": "Nerealizētais P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Peļņa/zaudējumi %",
     "positions": "Pozīcijas",
     "instrumentsCount": "Instrumentu skaits: {{count}}",
     "empty": "Pozīciju dati nav pieejami",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Nesenie signāli",
     "empty": "Nesenu signālu nav",
-    "noTime": "N/A"
+    "noTime": "Nav datu"
   },
   "executions": {
     "title": "Nesenās izpildes",
     "empty": "Nesenu izpilžu nav",
-    "noTime": "N/A"
+    "noTime": "Nav datu"
   },
   "processResources": {
     "title": "Procesu resursi",
@@ -55,13 +55,13 @@
     "colName": "Nosaukums",
     "colStatus": "Statuss",
     "colRole": "Loma",
-    "colMemory": "MEM",
+    "colMemory": "Atmiņa",
     "colCpu": "CPU",
     "statusRunning": "Darbojas",
     "statusStopped": "Apturēts",
     "statusDisabled": "Atspējots",
     "containerTotal": "Kopā MEM {{value}}",
-    "cpuTooltip": "CPU lietojums vairākos kodolos var pārsniegt 100 %",
+    "cpuTooltip": "CPU lietojums vairākos kodolos var pārsniegt 100%",
     "metricsNa": "Nav atsevišķu CPU/atmiņas datu katram procesam; tas darbojas procesa ietvaros (pavedienu režīmā) vai nedarbojas",
     "managedOnly": "Tikai šī konteinera procesi",
     "managedOnlyHint": "Katrs konteiners pārvalda procesu apakškopu (savu autostart profilu); citi procesi šeit tiek rādīti tikai kā darbojošies citur. Noņemiet atzīmi, lai redzētu katru procesu, par kuru ziņo katrs konteiners.",

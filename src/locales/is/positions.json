@@ -14,10 +14,10 @@
       "granularity": "Upplausn",
       "granularityAriaLabel": "Veldu upplausn tímalínunnar",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 mín.",
+        "fiveMinutes": "5 mín.",
+        "oneHour": "1 klst.",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Verðmatsgjaldmiðill",
       "valuationCurrencyAriaLabel": "Veldu verðmatsgjaldmiðil",
@@ -91,11 +91,11 @@
       "hideDetails": "Fela leiðréttingar",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Leiðrétt kl. {{time}}",
-      "targetExecutionId": "Ógilda framkvæmd viðskipta",
+      "targetExecutionId": "Ógild framkvæmd viðskipta",
       "correctionId": "Leiðréttingarskrá",
       "reasons": {
-        "unwitnessed_phantom": "Það er engin skiptiviðskiptafylling sem þjónar sem sönnun fyrir þessari bókun.",
-        "unwitnessed_legacy_lineage": "Arfleifð skrá sem engin skiptiviðskipti fylla þjónar sem sönnunargögn."
+        "unwitnessed_phantom": "Engin framkvæmd fyrirmæla í kauphöll staðfestir þessa bókun.",
+        "unwitnessed_legacy_lineage": "Færsla úr eldri gögnum án framkvæmdar fyrirmæla sem staðfestir hana."
       }
     },
     "timeTravelNotice": "Söguleg sýn: P&L miðast við það sem vitað var {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Ryk ({{count}})",
-    "show": "Sýna rykstöður",
-    "hide": "Fela rykstöður"
+    "title": "Smáafgangar ({{count}})",
+    "show": "Sýna stöður með smáafgöngum",
+    "hide": "Fela stöður með smáafgöngum"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: í bið",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Hreyfanleg stöðvun: {{stop}}",
+    "trailingStopPending": "Hreyfanleg stöðvun: í bið",
+    "slTpButton": "Tapmörkun / Hagnaðartaka",
     "trailButton": "Eltistopp",
     "quantity": "Magn",
     "averageEntry": "Meðalinnkoma",
@@ -228,7 +228,7 @@
     "realizedPnl": "Innleyst P&L",
     "updated": "Uppfært {{timestamp}}",
     "mark": "Viðmiðunarverð",
-    "noValue": "N/A"
+    "noValue": "Ekki tiltækt"
   },
   "empty": {
     "title": "Engar opnar stöður",
@@ -239,10 +239,10 @@
     "confirmTitle": "Staðfesta Bracket",
     "position": "Staða",
     "entryPrice": "Inngangsverð",
-    "stopLossLabel": "Stop-Loss verð",
-    "takeProfitLabel": "Take-Profit verð",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Tapmörkunarverð",
+    "takeProfitLabel": "Hagnaðartökuverð",
+    "stopLoss": "Tapmörkun",
+    "takeProfit": "Hagnaðartaka",
     "placeholders": {
       "slLong": "Undir {{price}}",
       "slShort": "Yfir {{price}}",

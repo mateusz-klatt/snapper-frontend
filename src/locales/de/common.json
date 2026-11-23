@@ -36,7 +36,7 @@
     "lagUnknown": "Unbekannt",
     "walletPicker": {
       "ariaLabel": "Aktives Wallet",
-      "placeholder": "Wallet",
+      "placeholder": "Geldbörse",
       "allWallets": "Alle Wallets",
       "optionPaper": "{{label}} (Paper)"
     },

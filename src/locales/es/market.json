@@ -10,20 +10,20 @@
     "searchInstrument": "Buscar instrumento..."
   },
   "timeframes": {
-    "1m": "1 minuto",
-    "5m": "5 minutos",
-    "15m": "15 minutos",
-    "30m": "30 minutos",
-    "1h": "1 hora",
-    "4h": "4 horas",
-    "1d": "1 día"
+    "1m": "1 minuto",
+    "5m": "5 minutos",
+    "15m": "15 minutos",
+    "30m": "30 minutos",
+    "1h": "1 hora",
+    "4h": "4 horas",
+    "1d": "1 día"
   },
   "stats": {
     "currentPrice": "Último precio de cierre",
-    "change24h": "Cambio 24h",
-    "high24h": "Máximo 24h",
-    "low24h": "Mínimo 24h",
-    "incomplete": "Historial completo de 24 horas no disponible"
+    "change24h": "Cambio 24 h",
+    "high24h": "Máximo 24 h",
+    "low24h": "Mínimo 24 h",
+    "incomplete": "Historial completo de 24 horas no disponible"
   },
   "chart": {
     "title": "Gráfico de precios",
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Criptomoneda",
     "commodity": "Materia prima",
-    "forex": "Forex",
+    "forex": "Divisas",
     "index": "Índice",
     "yield": "Rendimiento",
     "unknown": "Otro"
@@ -71,7 +71,7 @@
     "message": "Calentando la caché: {{sampleCount}} / {{expected}} velas disponibles {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(derivadas de 1m)",
+      "derived": "(derivadas de 1 min)",
       "db": "(desde la BD)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Estadísticas del par con {{symbol}} en {{exchange}}: Pearson {{pearson}}, valor p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Hora:",
+    "live": "En tiempo real",
     "sliderAriaLabel": "Desplazarse por el historial temporal del mercado con el control deslizante",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "En tiempo real",
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 sem.",
+      "mo1": "-1 mes"
     }
   }
 }

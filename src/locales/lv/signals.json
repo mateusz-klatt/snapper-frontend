@@ -19,7 +19,7 @@
     "price": "Cena",
     "exchange": "Birža",
     "reason": "Iemesls:",
-    "noPrice": "N/A"
+    "noPrice": "Nav datu"
   },
   "strength": {
     "strong": "Spēcīgs",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Tikko",
-    "minutesAgo": "pirms {{count}} min",
-    "hoursAgo": "pirms {{count}} st."
+    "minutesAgo": "pirms {{count}} min",
+    "hoursAgo": "pirms {{count}} st."
   },
   "empty": {
     "title": "Signāli nav atrasti",

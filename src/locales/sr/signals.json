@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Upravo sada",
-    "minutesAgo": "pre {{count}} min",
-    "hoursAgo": "pre {{count}} h"
+    "minutesAgo": "pre {{count}} min",
+    "hoursAgo": "pre {{count}} h"
   },
   "empty": {
     "title": "Nisu pronađeni signali",

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Н/Д",
-    "uptimeMinutes": "{{minutes}} хв",
-    "uptimeHours": "{{hours}} год {{minutes}} хв",
-    "uptimeDays": "{{days}} д {{hours}} год",
+    "uptimeMinutes": "{{minutes}} хв",
+    "uptimeHours": "{{hours}} год {{minutes}} хв",
+    "uptimeDays": "{{days}} д {{hours}} год",
     "backtestName": "Бектест {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Н/Д",
@@ -47,7 +47,7 @@
     "unavailable": "Статистика бази даних недоступна: {{message}}",
     "fallbackError": "Не вдалося завантажити статистику бази даних.",
     "sampled": "вибірка {{age}}",
-    "samplerSummary": "Інтервал семплера: {{seconds}} с · кількість таблиць: {{count}}",
+    "samplerSummary": "Інтервал семплера: {{seconds}} с · кількість таблиць: {{count}}",
     "columns": {
       "table": "Таблиця",
       "kind": "Тип",
@@ -92,8 +92,8 @@
       "files": "Файли",
       "status": "Статус"
     },
-    "retainDays": "{{days}} д",
-    "ok": "OK",
+    "retainDays": "{{days}} д",
+    "ok": "У нормі",
     "error": "помилка"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Очікують: {{count}}",
     "dbPool": "Пул БД",
     "liveConns": "Активні з'єднання: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Покоління GC 0/1/2",
     "gcObjects": "Об'єкти: {{value}}",
     "threadsPercent": "Потоки %",
     "networkConns": "Мережеві з'єднання",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Узгодження з’єднання {{age}}"
     },
     "kind": {
       "direct": "прямий",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Активний",
       "quarantined": "На карантині",
-      "quarantinedSeconds": "На карантині ({{seconds}}s)",
+      "quarantinedSeconds": "На карантині ({{seconds}} с)",
       "disabled": "Вимкнений"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "щойно",
-    "seconds": "{{seconds}}с тому",
-    "minutes": "{{minutes}}хв тому",
-    "hours": "{{hours}}год тому",
-    "days": "{{days}}д тому"
+    "seconds": "{{seconds}} с тому",
+    "minutes": "{{minutes}} хв тому",
+    "hours": "{{hours}} год тому",
+    "days": "{{days}} д тому"
   },
   "duration": {
-    "seconds": "{{seconds}}с",
-    "minutes": "{{minutes}}хв",
-    "hours": "{{hours}}год",
-    "days": "{{days}}д"
+    "seconds": "{{seconds}} с",
+    "minutes": "{{minutes}} хв",
+    "hours": "{{hours}} год",
+    "days": "{{days}} д"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

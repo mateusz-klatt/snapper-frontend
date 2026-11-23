@@ -10,20 +10,20 @@
     "searchInstrument": "Ieškoti instrumento..."
   },
   "timeframes": {
-    "1m": "1 minutė",
-    "5m": "5 minutės",
-    "15m": "15 minučių",
-    "30m": "30 minučių",
-    "1h": "1 valanda",
-    "4h": "4 valandos",
-    "1d": "1 diena"
+    "1m": "1 minutė",
+    "5m": "5 minutės",
+    "15m": "15 minučių",
+    "30m": "30 minučių",
+    "1h": "1 valanda",
+    "4h": "4 valandos",
+    "1d": "1 diena"
   },
   "stats": {
     "currentPrice": "Paskutinė uždarymo kaina",
-    "change24h": "24 val. pokytis",
-    "high24h": "24 val. maksimumas",
-    "low24h": "24 val. minimumas",
-    "incomplete": "Visa 24 valandų istorija neprieinama"
+    "change24h": "24 val. pokytis",
+    "high24h": "24 val. maksimumas",
+    "low24h": "24 val. minimumas",
+    "incomplete": "Visa 24 valandų istorija neprieinama"
   },
   "chart": {
     "title": "Kainos grafikas",
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptovaliuta",
     "commodity": "Žaliava",
-    "forex": "Forex",
+    "forex": "Užsienio valiutos",
     "index": "Indeksas",
     "yield": "Pajamingumas",
     "unknown": "Kita"
@@ -71,7 +71,7 @@
     "message": "Talpykla šildoma: pasiekiama {{sampleCount}} / {{expected}} žvakių {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(išvesta iš 1m)",
+      "derived": "(išvesta iš 1 min)",
       "db": "(iš DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Poros statistika su {{symbol}} biržoje {{exchange}}: Pearson {{pearson}}, p reikšmė {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Laikas:",
+    "live": "Tiesiogiai",
     "sliderAriaLabel": "Slinkti per rinkos istorijos laiką",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Tiesiogiai",
+      "h1": "-1 val.",
+      "d1": "-1 d.",
+      "w1": "-1 sav.",
+      "mo1": "-1 mėn."
     }
   }
 }

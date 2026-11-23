@@ -32,7 +32,7 @@
     "shortExposure": "Mức phơi nhiễm Short",
     "netDelta": "Delta ròng",
     "unrealizedPnl": "P&L chưa thực hiện",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Lãi/lỗ %",
     "positions": "Vị thế",
     "instrumentsCount": "Công cụ: {{count}}",
     "empty": "Không có dữ liệu vị thế",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Tín hiệu gần đây",
     "empty": "Không có tín hiệu gần đây",
-    "noTime": "N/A"
+    "noTime": "Không có dữ liệu"
   },
   "executions": {
     "title": "Khớp lệnh gần đây",
     "empty": "Không có khớp lệnh gần đây",
-    "noTime": "N/A"
+    "noTime": "Không có dữ liệu"
   },
   "processResources": {
     "title": "Tài nguyên tiến trình",
@@ -55,7 +55,7 @@
     "colName": "Tên",
     "colStatus": "Trạng thái",
     "colRole": "Vai trò",
-    "colMemory": "MEM",
+    "colMemory": "Bộ nhớ",
     "colCpu": "CPU",
     "statusRunning": "Đang chạy",
     "statusStopped": "Đã dừng",

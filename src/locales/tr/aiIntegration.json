@@ -97,7 +97,7 @@
     "revoked": "İptal edildi",
     "createdAt": "Oluşturulma zamanı",
     "createdBy": "Oluşturan (user public_id)",
-    "publicId": "Public ID",
+    "publicId": "Herkese açık kimlik",
     "maxOpenOrders": "Maks. açık emir",
     "maxDailyNotionalUsd": "Maks. günlük nominal USD",
     "maxCancelsPerMinute": "Dakika başına maks. iptal",

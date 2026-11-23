@@ -70,7 +70,7 @@
       "signals": "Segnali"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatico",
       "manual": "manuale"
     },
     "errors": {
@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}}%"
     },
     "equity": {
       "legend": {
@@ -131,13 +131,13 @@
     "waiting": "In attesa di progresso…",
     "candles": "{{done}} / {{total}} candele",
     "candlesNoTotal": "{{done}} candele",
-    "equity": "equity {{value}}",
+    "equity": "patrimonio {{value}}",
     "signalsTrades": "{{signals}} sgn / {{trades}} operazioni",
     "milestoneLine": "tappa {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25%",
+      "50pct": "50%",
+      "75pct": "75%"
     }
   },
   "create": {
@@ -165,7 +165,7 @@
       "startDateLabel": "Data di inizio",
       "endDateLabel": "Data di fine",
       "initialCashLabel": "Capitale iniziale",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Scostamento di prezzo (punti base)",
       "commissionBpsLabel": "Commissione (bps)",
       "executionModeLabel": "Modalità di esecuzione",
       "executionModeDirectDb": "DB diretto",

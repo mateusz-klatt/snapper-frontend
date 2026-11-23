@@ -43,7 +43,7 @@
       "labelHelpSuffix": "."
     },
     "scope": {
-      "heading": "Scope",
+      "heading": "Geltungsbereich",
       "operatorLabel": "public_id des Operators (optional)",
       "operatorPlaceholder": "Leer lassen, um den primären Operator des Aufrufers zu erben"
     },
@@ -97,7 +97,7 @@
     "revoked": "Widerrufen",
     "createdAt": "Erstellt am",
     "createdBy": "Erstellt von (public_id des Benutzers)",
-    "publicId": "Public ID",
+    "publicId": "Öffentliche ID",
     "maxOpenOrders": "Max. offene Aufträge",
     "maxDailyNotionalUsd": "Max. tägliches Nominal in USD",
     "maxCancelsPerMinute": "Max. Stornierungen pro Minute",

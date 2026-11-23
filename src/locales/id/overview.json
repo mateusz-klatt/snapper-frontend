@@ -32,7 +32,7 @@
     "shortExposure": "Eksposur short",
     "netDelta": "Delta bersih",
     "unrealizedPnl": "P&L Belum Terealisasi",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Untung-rugi %",
     "positions": "Posisi",
     "instrumentsCount": "Instrumen: {{count}}",
     "empty": "Data posisi tidak tersedia",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Sinyal Terbaru",
     "empty": "Tidak ada sinyal terbaru",
-    "noTime": "N/A"
+    "noTime": "Tidak tersedia"
   },
   "executions": {
     "title": "Eksekusi Terbaru",
     "empty": "Tidak ada eksekusi terbaru",
-    "noTime": "N/A"
+    "noTime": "Tidak tersedia"
   },
   "processResources": {
     "title": "Sumber Daya Proses",
@@ -55,12 +55,12 @@
     "colName": "Nama",
     "colStatus": "Status",
     "colRole": "Peran",
-    "colMemory": "MEM",
+    "colMemory": "Memori",
     "colCpu": "CPU",
     "statusRunning": "Berjalan",
     "statusStopped": "Berhenti",
     "statusDisabled": "Dinonaktifkan",
-    "containerTotal": "Total MEM {{value}}",
+    "containerTotal": "Total memori {{value}}",
     "cpuTooltip": "Penggunaan CPU dapat melebihi 100% di beberapa core",
     "metricsNa": "Tidak ada CPU/memori terpisah per proses; ini berjalan di dalam proses (mode thread) atau tidak berjalan",
     "managedOnly": "Hanya proses container ini",

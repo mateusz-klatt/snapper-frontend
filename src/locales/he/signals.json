@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "כרגע",
-    "minutesAgo": "לפני {{count}}ד׳",
-    "hoursAgo": "לפני {{count}}ש׳"
+    "minutesAgo": "לפני {{count}} דק׳",
+    "hoursAgo": "לפני {{count}} שע׳"
   },
   "empty": {
     "title": "לא נמצאו אותות",

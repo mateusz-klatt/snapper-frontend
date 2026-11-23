@@ -50,7 +50,7 @@
     "subtitle": "Føj aktive læsere til en desk, eller fjern deres nuværende deskadgang.",
     "memberCount": "Medlemmer: {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Handelsgruppe",
       "placeholder": "Vælg en desk..."
     },
     "add": {
@@ -103,7 +103,7 @@
     "selectAWallet": "Vælg en wallet",
     "chooseWalletPlaceholder": "Vælg en wallet...",
     "selectWalletPlaceholder": "Vælg wallet...",
-    "walletLabel": "Wallet",
+    "walletLabel": "Tegnebog",
     "paperAnnotation": " (demo)",
     "unknownError": "Ukendt fejl",
     "dash": "-",
@@ -226,7 +226,7 @@
       "fields": {
         "operator": "Operatør",
         "operatorPlaceholder": "Vælg operatør...",
-        "wallet": "Wallet",
+        "wallet": "Tegnebog",
         "scopeKind": "Omfangstype",
         "underlyingPublicId": "Underliggende Public ID",
         "instrumentPublicId": "Instrumentets Public ID",
@@ -262,7 +262,7 @@
       "fields": {
         "currentHolder": "Nuværende indehaver",
         "scope": "Omfang",
-        "wallet": "Wallet",
+        "wallet": "Tegnebog",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "Overdrag til operatør",
         "transferToPlaceholder": "Vælg destinationsoperatør...",
@@ -286,7 +286,7 @@
     "form": {
       "title": "Opret operatør",
       "fields": {
-        "label": "Label",
+        "label": "Etiket",
         "labelPlaceholder": "f.eks. desk-alpha",
         "description": "Beskrivelse (valgfri)",
         "descriptionPlaceholder": "Fri beskrivelse"
@@ -317,7 +317,7 @@
       "columns": {
         "exchange": "Børs",
         "type": "Type",
-        "label": "Label",
+        "label": "Etiket",
         "createdAt": "Oprettet",
         "actions": "Handlinger"
       },
@@ -331,7 +331,7 @@
     "form": {
       "title": "Tilføj legitimationsoplysninger",
       "fields": {
-        "wallet": "Wallet",
+        "wallet": "Tegnebog",
         "exchange": "Børs",
         "exchangePlaceholder": "f.eks. kraken",
         "credentialType": "Type af legitimationsoplysninger",
@@ -373,7 +373,7 @@
       "fields": {
         "exchange": "Børs",
         "type": "Type",
-        "label": "Label",
+        "label": "Etiket",
         "newLabel": "Ny label (valgfri)",
         "newLabelPlaceholder": "f.eks. Udskiftet nøgle 2026-04",
         "pemPlaceholder": "Indsæt PEM-formateret privat nøgle her"

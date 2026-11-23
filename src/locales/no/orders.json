@@ -105,7 +105,7 @@
       "stop_limit": "Stop-limitordre"
     },
     "modeOptions": {
-      "live": "Live",
+      "live": "Ekte handel",
       "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — kun markedsdata",

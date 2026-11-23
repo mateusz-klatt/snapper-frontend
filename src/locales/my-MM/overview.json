@@ -32,7 +32,7 @@
     "shortExposure": "Short ထိတွေ့ပမာဏ",
     "netDelta": "အသားတင် delta",
     "unrealizedPnl": "အကောင်အထည်မပေါ်သေးသော P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "အမြတ်/အရှုံး %",
     "positions": "ပိုဇစ်ရှင်များ",
     "instrumentsCount": "ငွေကြေးတူရိယာများ: {{count}}",
     "empty": "Position ဒေတာ မရှိပါ",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "လတ်တလော အချက်ပြမှုများ",
     "empty": "လတ်တလော အချက်ပြမှု မရှိပါ",
-    "noTime": "N/A"
+    "noTime": "မရရှိနိုင်ပါ"
   },
   "executions": {
     "title": "လတ်တလော အကောင်အထည်ဖော်မှုများ",
     "empty": "လတ်တလော အကောင်အထည်ဖော်မှု မရှိပါ",
-    "noTime": "N/A"
+    "noTime": "မရရှိနိုင်ပါ"
   },
   "processResources": {
     "title": "လုပ်ငန်းစဉ် ရင်းမြစ်များ",
@@ -55,7 +55,7 @@
     "colName": "အမည်",
     "colStatus": "အခြေအနေ",
     "colRole": "အခန်းကဏ္ဍ",
-    "colMemory": "MEM",
+    "colMemory": "မမ်မိုရီ",
     "colCpu": "CPU",
     "statusRunning": "လည်ပတ်နေသည်",
     "statusStopped": "ရပ်ထားသည်",

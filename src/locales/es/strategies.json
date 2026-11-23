@@ -49,14 +49,14 @@
     "autostartDisabled": "Inicio automático: deshabilitado",
     "statusAriaLabel": "Estado: {{status}}",
     "dataLagAriaLabel": "Retraso de datos: {{seconds}} segundos",
-    "lagBadge": "retraso: {{seconds}}s",
-    "feedLag": "Retraso del feed: {{ms}}ms",
-    "heartbeatAge": "Edad HB: {{seconds}}s",
+    "lagBadge": "retraso: {{seconds}} s",
+    "feedLag": "Retraso del feed: {{ms}} ms",
+    "heartbeatAge": "Edad HB: {{seconds}} s",
     "metrics": {
       "status": "Estado",
       "dataLag": "Retraso de datos",
-      "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "dataLagValue": "{{ms}} ms",
+      "heartbeat": "Señal de vida",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "ADVERTENCIA",
       "error": "ERROR"
     },
-    "backtest": "Backtest",
+    "backtest": "Prueba retrospectiva",
     "backtestAriaLabel": "Hacer backtest de la estrategia {{name}}",
     "managedRemotely": "Gestionado por {{coordinator}}",
     "remoteCoordinatorUnknown": "otro contenedor",

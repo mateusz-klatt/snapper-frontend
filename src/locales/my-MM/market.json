@@ -4,26 +4,26 @@
   },
   "controls": {
     "exchange": "စတော့အိတ်ချိန်း:",
-    "instrument": "Instrument:",
+    "instrument": "ကုန်သွယ်ရေးတူရိယာ:",
     "timeframe": "အချိန်ဘောင်:",
     "selectExchange": "Exchange ရွေးပါ",
     "searchInstrument": "Instrument ရှာပါ..."
   },
   "timeframes": {
-    "1m": "1 မိနစ်",
-    "5m": "5 မိနစ်",
-    "15m": "15 မိနစ်",
-    "30m": "30 မိနစ်",
-    "1h": "1 နာရီ",
-    "4h": "4 နာရီ",
-    "1d": "1 ရက်"
+    "1m": "1 မိနစ်",
+    "5m": "5 မိနစ်",
+    "15m": "15 မိနစ်",
+    "30m": "30 မိနစ်",
+    "1h": "1 နာရီ",
+    "4h": "4 နာရီ",
+    "1d": "1 ရက်"
   },
   "stats": {
     "currentPrice": "နောက်ဆုံးအပိတ်ဈေး",
-    "change24h": "24h ပြောင်းလဲမှု",
-    "high24h": "24h အမြင့်ဆုံး",
-    "low24h": "24h အနိမ့်ဆုံး",
-    "incomplete": "၂၄ နာရီမှတ်တမ်းအပြည့်အစုံ မရနိုင်ပါ"
+    "change24h": "24 h ပြောင်းလဲမှု",
+    "high24h": "24 h အမြင့်ဆုံး",
+    "low24h": "24 h အနိမ့်ဆုံး",
+    "incomplete": "၂၄ နာရီမှတ်တမ်းအပြည့်အစုံ မရနိုင်ပါ"
   },
   "chart": {
     "title": "စျေးနှုန်း Chart",
@@ -71,7 +71,7 @@
     "message": "Cache warm up လုပ်နေသည်: candle {{sampleCount}} / {{expected}} ရနိုင်သည် {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(1m မှ derive လုပ်ထားသည်)",
+      "derived": "(1 မိနစ် မှ derive လုပ်ထားသည်)",
       "db": "(DB မှ)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "{{exchange}} ပေါ်ရှိ {{symbol}} နှင့် တွဲဖက်စာရင်းအင်း: Pearson {{pearson}}, p-value {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "အချိန်:",
+    "live": "တိုက်ရိုက်",
     "sliderAriaLabel": "ဈေးကွက်သမိုင်းကြောင်းတစ်လျှောက် အချိန်ကို ရွှေ့ပါ",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "တိုက်ရိုက်",
+      "h1": "-1 နာရီ",
+      "d1": "-1 ရက်",
+      "w1": "-1 ပတ်",
+      "mo1": "-1 လ"
     }
   }
 }

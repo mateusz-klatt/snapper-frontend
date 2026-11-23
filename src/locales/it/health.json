@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}g {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} g {{hours}} h",
+    "backtestName": "Test storico {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Tempo di attività",
     "exitCode": "Codice di uscita: {{code}}",
     "service": "servizio",
-    "backtest": "backtest"
+    "backtest": "test storico"
   },
   "dbStats": {
     "title": "Statistiche del database",
@@ -47,7 +47,7 @@
     "unavailable": "Statistiche del database non disponibili: {{message}}",
     "fallbackError": "Caricamento delle statistiche del database non riuscito.",
     "sampled": "campionato {{age}}",
-    "samplerSummary": "Intervallo del sampler: {{seconds}} s · numero di tabelle: {{count}}",
+    "samplerSummary": "Intervallo del sampler: {{seconds}} s · numero di tabelle: {{count}}",
     "columns": {
       "table": "Tabella",
       "kind": "Tipo",
@@ -92,8 +92,8 @@
       "files": "File",
       "status": "Stato"
     },
-    "retainDays": "{{days}}g",
-    "ok": "OK",
+    "retainDays": "{{days}} g",
+    "ok": "Regolare",
     "error": "errore"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "In attesa: {{count}}",
     "dbPool": "Pool DB",
     "liveConns": "Connessioni attive: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generazioni GC 0/1/2",
     "gcObjects": "Oggetti: {{value}}",
     "threadsPercent": "Thread %",
     "networkConns": "Connessioni di rete",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Gruppo di connessioni",
       "policy": "Criterio di quarantena",
       "fallbackRoute": "Fallback privato",
       "routes": "Rotte"
@@ -169,7 +169,7 @@
       "kind": "Tipo",
       "region": "Regione",
       "exitIp": "IP di uscita",
-      "provider": "Provider",
+      "provider": "Fornitore",
       "priority": "Priorità",
       "allowedExchanges": "Exchange consentiti",
       "status": "Stato",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "negoziazione {{age}}"
     },
     "kind": {
       "direct": "diretto",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Attivo",
       "quarantined": "In quarantena",
-      "quarantinedSeconds": "In quarantena ({{seconds}}s)",
+      "quarantinedSeconds": "In quarantena ({{seconds}} s)",
       "disabled": "Disabilitato"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "adesso",
-    "seconds": "{{seconds}}s fa",
-    "minutes": "{{minutes}}min fa",
-    "hours": "{{hours}}h fa",
-    "days": "{{days}}g fa"
+    "seconds": "{{seconds}} s fa",
+    "minutes": "{{minutes}} min fa",
+    "hours": "{{hours}} h fa",
+    "days": "{{days}} g fa"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}g"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} g"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

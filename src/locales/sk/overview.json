@@ -32,7 +32,7 @@
     "shortExposure": "Short expozícia",
     "netDelta": "Čistá delta",
     "unrealizedPnl": "Nerealizovaný P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Zisk/strata %",
     "positions": "Pozície",
     "instrumentsCount": "Inštrumenty: {{count}}",
     "empty": "Nie sú dostupné žiadne dáta o pozíciách",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Nedávne signály",
     "empty": "Žiadne nedávne signály",
-    "noTime": "N/A"
+    "noTime": "Nie je k dispozícii"
   },
   "executions": {
     "title": "Nedávne plnenia",
     "empty": "Žiadne nedávne plnenia",
-    "noTime": "N/A"
+    "noTime": "Nie je k dispozícii"
   },
   "processResources": {
     "title": "Prostriedky procesov",
@@ -55,13 +55,13 @@
     "colName": "Názov",
     "colStatus": "Stav",
     "colRole": "Rola",
-    "colMemory": "MEM",
+    "colMemory": "Pamäť",
     "colCpu": "CPU",
     "statusRunning": "Beží",
     "statusStopped": "Zastavené",
     "statusDisabled": "Zakázané",
     "containerTotal": "Spolu MEM {{value}}",
-    "cpuTooltip": "Využitie CPU môže na viacerých jadrách prekročiť 100 %",
+    "cpuTooltip": "Využitie CPU môže na viacerých jadrách prekročiť 100 %",
     "metricsNa": "Nie sú samostatné údaje CPU/pamäte pre proces; beží v rámci procesu (režim vlákien) alebo nebeží",
     "managedOnly": "Iba procesy tohto kontajnera",
     "managedOnlyHint": "Každý kontajner spravuje podmnožinu procesov (svoj profil autostart); ostatné procesy sa tu uvádzajú iba ako bežiace inde. Zrušte začiarknutie, ak chcete zobraziť každý proces hlásený jednotlivými kontajnermi.",

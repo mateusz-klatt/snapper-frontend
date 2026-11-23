@@ -81,7 +81,7 @@
     "titleEdit": "Nova ordem manual",
     "titleConfirm": "Confirmar ordem",
     "fields": {
-      "exchange": "Exchange",
+      "exchange": "Corretora",
       "instrument": "Instrumento",
       "side": "Lado",
       "orderType": "Tipo de ordem",

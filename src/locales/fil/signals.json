@@ -19,7 +19,7 @@
     "price": "Presyo",
     "exchange": "Palitan",
     "reason": "Dahilan:",
-    "noPrice": "N/A"
+    "noPrice": "Hindi available"
   },
   "strength": {
     "strong": "Malakas",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Ngayon lang",
-    "minutesAgo": "{{count}}m ang nakalipas",
-    "hoursAgo": "{{count}}h ang nakalipas"
+    "minutesAgo": "{{count}} min ang nakalipas",
+    "hoursAgo": "{{count}} oras ang nakalipas"
   },
   "empty": {
     "title": "Walang signals na nakita",

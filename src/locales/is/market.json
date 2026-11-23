@@ -10,20 +10,20 @@
     "searchInstrument": "Leita að gerningi..."
   },
   "timeframes": {
-    "1m": "1 mínúta",
-    "5m": "5 mínútur",
-    "15m": "15 mínútur",
-    "30m": "30 mínútur",
-    "1h": "1 klukkustund",
-    "4h": "4 klukkustundir",
-    "1d": "1 dagur"
+    "1m": "1 mínúta",
+    "5m": "5 mínútur",
+    "15m": "15 mínútur",
+    "30m": "30 mínútur",
+    "1h": "1 klukkustund",
+    "4h": "4 klukkustundir",
+    "1d": "1 dagur"
   },
   "stats": {
     "currentPrice": "Síðasta lokaverð",
-    "change24h": "24 klst breyting",
-    "high24h": "24 klst hæsta",
-    "low24h": "24 klst lægsta",
-    "incomplete": "Heildarsaga síðustu 24 klukkustunda er ekki tiltæk"
+    "change24h": "24 klst. breyting",
+    "high24h": "24 klst. hæsta",
+    "low24h": "24 klst. lægsta",
+    "incomplete": "Heildarsaga síðustu 24 klukkustunda er ekki tiltæk"
   },
   "chart": {
     "title": "Verðrit",
@@ -71,7 +71,7 @@
     "message": "Skyndiminni að hitna: {{sampleCount}} / {{expected}} kerti tiltæk {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(leitt af 1m)",
+      "derived": "(leitt af 1 mín.)",
       "db": "(úr DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Paratölfræði með {{symbol}} á {{exchange}}: Pearson {{pearson}}, p-gildi {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Tími:",
+    "live": "Í rauntíma",
     "sliderAriaLabel": "Færa tímastikuna um markaðssöguna",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Í rauntíma",
+      "h1": "-1 klst.",
+      "d1": "-1 d",
+      "w1": "-1 vik.",
+      "mo1": "-1 mán."
     }
   }
 }

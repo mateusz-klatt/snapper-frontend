@@ -19,7 +19,7 @@
     "price": "Verð",
     "exchange": "Kauphöll",
     "reason": "Ástæða:",
-    "noPrice": "N/A"
+    "noPrice": "Ekki tiltækt"
   },
   "strength": {
     "strong": "Sterkt",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Rétt í þessu",
-    "minutesAgo": "fyrir {{count}} mín",
-    "hoursAgo": "fyrir {{count}} klst"
+    "minutesAgo": "fyrir {{count}} mín.",
+    "hoursAgo": "fyrir {{count}} klst."
   },
   "empty": {
     "title": "Engin merki fundust",

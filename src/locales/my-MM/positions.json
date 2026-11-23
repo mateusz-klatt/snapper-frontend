@@ -14,10 +14,10 @@
       "granularity": "အသေးစိတ်အဆင့်",
       "granularityAriaLabel": "အချိန်လိုင်း အသေးစိတ်အဆင့်ကို ရွေးပါ",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 မိနစ်",
+        "fiveMinutes": "5 မိနစ်",
+        "oneHour": "1 နာရီ",
+        "oneDay": "1 ရက်"
       },
       "valuationCurrency": "တန်ဖိုးဖြတ် ငွေကြေး",
       "valuationCurrencyAriaLabel": "တန်ဖိုးဖြတ် ငွေကြေးကို ရွေးပါ",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "ပြီးခဲ့သော 24 နာရီ",
-      "last7Days": "ပြီးခဲ့သော 7 ရက်",
-      "last30Days": "ပြီးခဲ့သော 30 ရက်",
-      "last90Days": "ပြီးခဲ့သော 90 ရက်"
+      "last24Hours": "ပြီးခဲ့သော 24 နာရီ",
+      "last7Days": "ပြီးခဲ့သော 7 ရက်",
+      "last30Days": "ပြီးခဲ့သော 30 ရက်",
+      "last90Days": "ပြီးခဲ့သော 90 ရက်"
     },
     "loading": "P&L အချိန်လိုင်း တင်နေသည်…",
     "error": {
@@ -91,11 +91,11 @@
       "hideDetails": "အမှားပြင်ဆင်မှုများကို ဖျောက်ပါ။",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "{{time}} တွင် ပြင်ဆင်ခဲ့သည်",
-      "targetExecutionId": "ကုန်သွယ်မှုကို ပျက်ပြယ်စေတယ်။",
-      "correctionId": "အမှားမှတ်တမ်း",
+      "targetExecutionId": "ပယ်ဖျက်ထားသော အရောင်းအဝယ်ဆောင်ရွက်မှု",
+      "correctionId": "ပြင်ဆင်ချက်မှတ်တမ်း",
       "reasons": {
-        "unwitnessed_phantom": "ဤကြိုတင်စာရင်းသွင်းမှုအတွက် အထောက်အထားအဖြစ် လဲလှယ်ရောင်းဝယ်ရေးဖြည့်စွက်မှု မရှိပါ။",
-        "unwitnessed_legacy_lineage": "လဲလှယ်ရောင်းဝယ်မှု ဖြည့်စွက်ခြင်းမရှိသည့် အမွေအနှစ်မှရရှိသည့် မှတ်တမ်းသည် အထောက်အထားအဖြစ် ဆောင်ရွက်သည်။"
+        "unwitnessed_phantom": "ဤအရောင်းအဝယ်မှတ်တမ်းကို အတည်ပြုနိုင်သည့် အိတ်ချိန်းရှိ အော်ဒါအကောင်အထည်ဖော်မှု အထောက်အထား မရှိပါ။",
+        "unwitnessed_legacy_lineage": "စနစ်ဟောင်းမှ ဆင်းသက်လာသော မှတ်တမ်းဖြစ်ပြီး ၎င်းကို အတည်ပြုနိုင်သည့် အိတ်ချိန်းရှိ အော်ဒါအကောင်အထည်ဖော်မှု အထောက်အထား မရှိပါ။"
       }
     },
     "timeTravelNotice": "သမိုင်းမှတ်တမ်း မြင်ကွင်း: {{asOf}} အချိန်တွင် သိရှိထားသည့် P&L ကို ပြထားသည်။",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "ဖုန် ({{count}})",
-    "show": "ဖုန်ရာထူးများ ပြရန်",
-    "hide": "ဖုန်ရာထူးများ ဖျောက်ရန်"
+    "title": "တန်ဖိုးနည်း လက်ကျန်ပိုဇစ်ရှင်များ ({{count}})",
+    "show": "တန်ဖိုးနည်း လက်ကျန်ပိုဇစ်ရှင်များ ပြရန်",
+    "hide": "တန်ဖိုးနည်း လက်ကျန်ပိုဇစ်ရှင်များ ဖျောက်ရန်"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: စောင့်ဆိုင်းနေသည်",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "ဈေးနောက်လိုက် အရှုံးဖြတ်: {{stop}}",
+    "trailingStopPending": "ဈေးနောက်လိုက် အရှုံးဖြတ်: စောင့်ဆိုင်းနေသည်",
+    "slTpButton": "အရှုံးဖြတ်/အမြတ်သိမ်း",
     "trailButton": "ဈေးနောက်လိုက် အရှုံးဖြတ်",
     "quantity": "အရေအတွက်",
     "averageEntry": "ပျမ်းမျှ ဝင်စျေး",
@@ -228,7 +228,7 @@
     "realizedPnl": "အကောင်အထည်ပေါ်ပြီးသော P&L",
     "updated": "ပြင်ဆင်ချိန် {{timestamp}}",
     "mark": "ရည်ညွှန်းဈေး",
-    "noValue": "N/A"
+    "noValue": "မရရှိနိုင်ပါ"
   },
   "empty": {
     "title": "ဖွင့်ထားသော position မရှိပါ",
@@ -239,8 +239,8 @@
     "confirmTitle": "Bracket အတည်ပြုပါ",
     "position": "ပိုဇစ်ရှင်",
     "entryPrice": "ဝင်စျေး",
-    "stopLossLabel": "Stop-Loss စျေးနှုန်း",
-    "takeProfitLabel": "Take-Profit စျေးနှုန်း",
+    "stopLossLabel": "အရှုံးဖြတ် စျေးနှုန်း",
+    "takeProfitLabel": "အမြတ်သိမ်း စျေးနှုန်း",
     "stopLoss": "အရှုံးဖြတ်",
     "takeProfit": "အမြတ်သိမ်း",
     "placeholders": {

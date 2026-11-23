@@ -153,7 +153,7 @@
       "title": "Ungependa kubadilisha muunganisho uliopo?",
       "message": "{{client}} tayari ina muunganisho wenye ufikiaji tofauti. Kuruhusu ombi hili kunabatilisha muunganisho uliopo na kuweka mwingine badala yake.",
       "confirm": "Badilisha muunganisho",
-      "cancel": "Weka muunganisho uliopo"
+      "cancel": "Hifadhi muunganisho uliopo"
     },
     "errors": {
       "invalidRequest": {

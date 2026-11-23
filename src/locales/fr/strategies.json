@@ -49,14 +49,14 @@
     "autostartDisabled": "Démarrage auto : désactivé",
     "statusAriaLabel": "Statut : {{status}}",
     "dataLagAriaLabel": "Latence des données : {{seconds}} secondes",
-    "lagBadge": "latence : {{seconds}}s",
-    "feedLag": "Latence du flux : {{ms}}ms",
-    "heartbeatAge": "Âge HB : {{seconds}}s",
+    "lagBadge": "latence : {{seconds}} s",
+    "feedLag": "Latence du flux : {{ms}} ms",
+    "heartbeatAge": "Âge HB : {{seconds}} s",
     "metrics": {
       "status": "Statut",
       "dataLag": "Latence des données",
-      "dataLagValue": "{{ms}}ms",
-      "heartbeat": "Heartbeat",
+      "dataLagValue": "{{ms}} ms",
+      "heartbeat": "Signal de vie",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"
     },
@@ -90,7 +90,7 @@
       "warning": "AVERTISSEMENT",
       "error": "ERREUR"
     },
-    "backtest": "Backtest",
+    "backtest": "Test historique",
     "backtestAriaLabel": "Backtester la stratégie {{name}}",
     "managedRemotely": "Géré par {{coordinator}}",
     "remoteCoordinatorUnknown": "un autre conteneur",

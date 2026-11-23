@@ -14,10 +14,10 @@
       "granularity": "Granulariteit",
       "granularityAriaLabel": "Selecteer de tijdlijngranulariteit",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 u",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Waarderingsvaluta",
       "valuationCurrencyAriaLabel": "Selecteer de waarderingsvaluta",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Nietig verklaarde handelsuitvoering",
       "correctionId": "Correctierecord",
       "reasons": {
-        "unwitnessed_phantom": "Er is geen ruiltransactieformulier dat als bewijs voor deze boeking dient.",
-        "unwitnessed_legacy_lineage": "Uit het verleden afkomstige record waarvoor geen enkele ruiltransactie als bewijs dient."
+        "unwitnessed_phantom": "Geen handelsuitvoering op de beurs onderbouwt deze boeking.",
+        "unwitnessed_legacy_lineage": "Record afkomstig uit oude gegevens zonder onderbouwende handelsuitvoering."
       }
     },
     "timeTravelNotice": "Historische weergave: toont P&L zoals bekend op {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Stof ({{count}})",
-    "show": "Stofposities tonen",
-    "hide": "Stofposities verbergen"
+    "title": "Kleine restposities ({{count}})",
+    "show": "Kleine restposities tonen",
+    "hide": "Kleine restposities verbergen"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: in afwachting",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Volgstop: {{stop}}",
+    "trailingStopPending": "Volgstop: in afwachting",
+    "slTpButton": "Verlies/winst",
     "trailButton": "Trailing stop",
     "quantity": "Aantal",
     "averageEntry": "Gem. instap",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bracket bevestigen",
     "position": "Positie",
     "entryPrice": "Instapprijs",
-    "stopLossLabel": "Stop-Loss-prijs",
-    "takeProfitLabel": "Take-Profit-prijs",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Koers voor verliesbeperking",
+    "takeProfitLabel": "Koers voor winstneming",
+    "stopLoss": "Verliesbeperking",
+    "takeProfit": "Winstneming",
     "placeholders": {
       "slLong": "Onder {{price}}",
       "slShort": "Boven {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Minstens één SL- of TP-prijs is verplicht",
-    "invalidSlPrice": "Ongeldige stop-loss-prijs",
-    "slPricePositive": "Stop-loss-prijs moet positief zijn",
-    "invalidTpPrice": "Ongeldige take-profit-prijs",
-    "tpPricePositive": "Take-profit-prijs moet positief zijn",
+    "invalidSlPrice": "Ongeldige koers voor verliesbeperking",
+    "slPricePositive": "De koers voor verliesbeperking moet positief zijn",
+    "invalidTpPrice": "Ongeldige koers voor winstneming",
+    "tpPricePositive": "De koers voor winstneming moet positief zijn",
     "slLongBelowEntry": "SL-prijs moet onder de instapprijs liggen ({{price}})",
     "tpLongAboveEntry": "TP-prijs moet boven de instapprijs liggen ({{price}})",
     "slShortAboveEntry": "SL-prijs moet boven de instapprijs liggen ({{price}})",

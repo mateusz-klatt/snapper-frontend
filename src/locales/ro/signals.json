@@ -19,7 +19,7 @@
     "price": "Preț",
     "exchange": "Bursă",
     "reason": "Motiv:",
-    "noPrice": "N/A"
+    "noPrice": "Indisponibil"
   },
   "strength": {
     "strong": "Puternic",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Chiar acum",
-    "minutesAgo": "{{count}}m în urmă",
-    "hoursAgo": "{{count}}h în urmă"
+    "minutesAgo": "{{count}} min în urmă",
+    "hoursAgo": "{{count}} h în urmă"
   },
   "empty": {
     "title": "Nu s-au găsit semnale",

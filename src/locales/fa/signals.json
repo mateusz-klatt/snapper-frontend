@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "همین حالا",
-    "minutesAgo": "{{count}}د قبل",
-    "hoursAgo": "{{count}}س قبل"
+    "minutesAgo": "{{count}} د قبل",
+    "hoursAgo": "{{count}} س قبل"
   },
   "empty": {
     "title": "سیگنالی یافت نشد",

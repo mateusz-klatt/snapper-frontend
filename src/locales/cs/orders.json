@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Není k dispozici",
     "priceMarket": "Tržní",
     "quantity": "Množství",
     "price": "Cena",
     "created": "Vytvořeno",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Není k dispozici",
     "orderId": "ID pokynu",
     "leverage": "Páka",
     "leverageValue": "{{leverage}}x",

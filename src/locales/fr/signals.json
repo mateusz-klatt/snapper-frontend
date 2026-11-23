@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "À l'instant",
-    "minutesAgo": "il y a {{count}} min",
-    "hoursAgo": "il y a {{count}} h"
+    "minutesAgo": "il y a {{count}} min",
+    "hoursAgo": "il y a {{count}} h"
   },
   "empty": {
     "title": "Aucun signal trouvé",

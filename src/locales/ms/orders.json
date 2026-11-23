@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Tidak tersedia",
     "priceMarket": "Pasaran",
     "quantity": "Kuantiti",
     "price": "Harga",
     "created": "Dicipta",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Tidak tersedia",
     "orderId": "ID Pesanan",
     "leverage": "Leveraj",
     "leverageValue": "{{leverage}}x",

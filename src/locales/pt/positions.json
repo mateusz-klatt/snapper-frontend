@@ -14,10 +14,10 @@
       "granularity": "Granularidade",
       "granularityAriaLabel": "Selecionar a granularidade da linha do tempo",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Moeda de avaliação",
       "valuationCurrencyAriaLabel": "Selecionar a moeda de avaliação",
@@ -49,7 +49,7 @@
       "title": "Por que os pontos estão incompletos",
       "displayedPoints": "{{incomplete}} de {{total}} pontos apresentados estão incompletos.",
       "description": "Os motivos abrangem toda a janela carregada. As contagens podem se sobrepor quando um ponto tem mais de uma causa.",
-      "cumulativeNote": "Os valores de P&L são cumulativos desde a ativação, pelo que os cálculos podem depender de atividade anterior.",
+      "cumulativeNote": "Os valores de P&L são cumulativos desde a ativação, por isso os cálculos podem depender de atividades anteriores.",
       "affectedPoints": "Pontos afetados: {{count}}",
       "triggerInstrument": "Instrumento acionador: {{instrument}}",
       "scope": {
@@ -85,8 +85,8 @@
     },
     "executionHistory": {
       "title": "Histórico de cálculo",
-      "summary": "As correções de execução registadas podem ser anteriores ao período selecionado. Este histórico é separado dos avisos relativos aos pontos P&L apresentados.",
-      "correctionCount": "Correções registadas: {{count}}",
+      "summary": "As correções de execução registradas podem ser anteriores ao período selecionado. Este histórico é separado dos avisos sobre os pontos de P&L exibidos.",
+      "correctionCount": "Correções registradas: {{count}}",
       "showDetails": "Mostrar correções",
       "hideDetails": "Ocultar correções",
       "scopeSequence": "{{exchange}} #{{sequence}}",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Execução comercial anulada",
       "correctionId": "Registro de correção",
       "reasons": {
-        "unwitnessed_phantom": "Não há preenchimento de negociação cambial que sirva de prova para esta reserva.",
-        "unwitnessed_legacy_lineage": "Registro derivado de legado para o qual nenhum preenchimento de negociação em bolsa serve como evidência."
+        "unwitnessed_phantom": "Nenhuma execução na corretora comprova este lançamento.",
+        "unwitnessed_legacy_lineage": "Registro derivado de dados antigos sem uma execução que o comprove."
       }
     },
     "timeTravelNotice": "Visualização histórica: P&L com base nos dados conhecidos em {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Poeira ({{count}})",
-    "show": "Mostrar posições de poeira",
-    "hide": "Ocultar posições de poeira"
+    "title": "Posições residuais ({{count}})",
+    "show": "Mostrar posições residuais",
+    "hide": "Ocultar posições residuais"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: pendente",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Stop móvel: {{stop}}",
+    "trailingStopPending": "Stop móvel: pendente",
+    "slTpButton": "Perda/lucro",
     "trailButton": "Stop móvel",
     "quantity": "Quantidade",
     "averageEntry": "Entrada média",
@@ -239,10 +239,10 @@
     "confirmTitle": "Confirmar Bracket",
     "position": "Posição",
     "entryPrice": "Preço de entrada",
-    "stopLossLabel": "Preço de Stop-Loss",
-    "takeProfitLabel": "Preço de Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Preço limite de perda",
+    "takeProfitLabel": "Preço de realização de lucro",
+    "stopLoss": "Limite de perda",
+    "takeProfit": "Realização de lucro",
     "placeholders": {
       "slLong": "Abaixo de {{price}}",
       "slShort": "Acima de {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "É obrigatório informar pelo menos um preço de SL ou TP",
-    "invalidSlPrice": "Preço de Stop-Loss inválido",
-    "slPricePositive": "Preço de Stop-Loss deve ser positivo",
-    "invalidTpPrice": "Preço de Take-Profit inválido",
-    "tpPricePositive": "Preço de Take-Profit deve ser positivo",
+    "invalidSlPrice": "Preço limite de perda inválido",
+    "slPricePositive": "O preço limite de perda deve ser positivo",
+    "invalidTpPrice": "Preço de realização de lucro inválido",
+    "tpPricePositive": "O preço de realização de lucro deve ser positivo",
     "slLongBelowEntry": "Preço de SL deve ficar abaixo do preço de entrada ({{price}})",
     "tpLongAboveEntry": "Preço de TP deve ficar acima do preço de entrada ({{price}})",
     "slShortAboveEntry": "Preço de SL deve ficar acima do preço de entrada ({{price}})",

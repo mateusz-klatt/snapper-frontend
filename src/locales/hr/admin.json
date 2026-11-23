@@ -50,7 +50,7 @@
     "subtitle": "Dodajte aktivne promatrače u desk ili uklonite njihov trenutačni pristup desku.",
     "memberCount": "Članovi: {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Trgovački desk",
       "placeholder": "Odaberite desk..."
     },
     "add": {

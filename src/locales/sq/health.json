@@ -29,13 +29,13 @@
     "inactive": "Joaktiv"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeNotAvailable": "Nuk ka të dhëna",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} orë {{minutes}} min",
+    "uptimeDays": "{{days}} ditë {{hours}} orë",
     "backtestName": "Test historik {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Nuk ka të dhëna",
     "uptimeLabel": "Kohë pune",
     "exitCode": "Kodi i daljes: {{code}}",
     "service": "shërbim",
@@ -47,7 +47,7 @@
     "unavailable": "Statistikat e bazës së të dhënave nuk janë të disponueshme: {{message}}",
     "fallbackError": "Ngarkimi i statistikave të bazës së të dhënave dështoi.",
     "sampled": "mostruar {{age}}",
-    "samplerSummary": "Intervali i kampionimit: {{seconds}}s · Numri i tabelave: {{count}}",
+    "samplerSummary": "Intervali i kampionimit: {{seconds}} s · Numri i tabelave: {{count}}",
     "columns": {
       "table": "Tabelë",
       "kind": "Lloj",
@@ -92,8 +92,8 @@
       "files": "Skedarë",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} ditë",
+    "ok": "Në rregull",
     "error": "gabim"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Në pritje: {{count}}",
     "dbPool": "Pool DB",
     "liveConns": "Lidhje live: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Gjeneratat GC 0/1/2",
     "gcObjects": "Objekte: {{value}}",
     "threadsPercent": "Fije %",
     "networkConns": "Lidhje rrjeti",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Negocimi i lidhjes {{age}}"
     },
     "kind": {
       "direct": "drejtpërdrejt",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktiv",
       "quarantined": "Në karantinë",
-      "quarantinedSeconds": "Në karantinë ({{seconds}}s)",
+      "quarantinedSeconds": "Në karantinë ({{seconds}} s)",
       "disabled": "Çaktivizuar"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "tani sapo",
-    "seconds": "{{seconds}}s më parë",
-    "minutes": "{{minutes}}min më parë",
-    "hours": "{{hours}}h më parë",
-    "days": "{{days}}d më parë"
+    "seconds": "{{seconds}} s më parë",
+    "minutes": "{{minutes}} min më parë",
+    "hours": "{{hours}} orë më parë",
+    "days": "{{days}} ditë më parë"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} orë",
+    "days": "{{days}} ditë"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

@@ -29,17 +29,17 @@
     "inactive": "Neaktyvu"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}} min",
-    "uptimeHours": "{{hours}} val. {{minutes}} min",
-    "uptimeDays": "{{days}} d. {{hours}} val.",
+    "uptimeNotAvailable": "Nėra duomenų",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} val. {{minutes}} min",
+    "uptimeDays": "{{days}} d. {{hours}} val.",
     "backtestName": "Backtestas {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Nėra duomenų",
     "uptimeLabel": "Veikimo laikas",
     "exitCode": "Išėjimo kodas: {{code}}",
     "service": "paslauga",
-    "backtest": "Backtest"
+    "backtest": "backtestas"
   },
   "dbStats": {
     "title": "Duomenų bazės statistika",
@@ -47,7 +47,7 @@
     "unavailable": "Duomenų bazės statistika nepasiekiama: {{message}}",
     "fallbackError": "Nepavyko įkelti duomenų bazės statistikos.",
     "sampled": "imta imtis {{age}}",
-    "samplerSummary": "Imčių ėmimo intervalas: {{seconds}} s · lentelių skaičius: {{count}}",
+    "samplerSummary": "Imčių ėmimo intervalas: {{seconds}} s · lentelių skaičius: {{count}}",
     "columns": {
       "table": "Lentelė",
       "kind": "Tipas",
@@ -92,13 +92,13 @@
       "files": "Failai",
       "status": "Būsena"
     },
-    "retainDays": "{{days}} d.",
-    "ok": "OK",
+    "retainDays": "{{days}} d.",
+    "ok": "Gerai",
     "error": "klaida"
   },
   "systemMetrics": {
     "disk": "Laisva disko vieta",
-    "diskUsage": "{{percent}}% naudojama · {{mount}}",
+    "diskUsage": "{{percent}} % naudojama · {{mount}}",
     "title": "Procesų būklė",
     "loading": "Įkeliamos procesų metrikos…",
     "unavailable": "Procesų metrikos nepasiekiamos: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Gijos",
     "openFds": "Atviri FD",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Ribota {{count}}×",
     "memory": "Atmintis",
     "saturation": "Prisotinimas {{percent}}",
@@ -119,7 +119,7 @@
     "asyncioPending": "Laukiančių skaičius: {{count}}",
     "dbPool": "DB telkinys",
     "liveConns": "Aktyvūs ryšiai: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC kartos 0/1/2",
     "gcObjects": "Objektai: {{value}}",
     "threadsPercent": "Gijos %",
     "networkConns": "Tinklo ryšiai",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Ryšio suderinimas {{age}}"
     },
     "kind": {
       "direct": "tiesioginis",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktyvus",
       "quarantined": "Karantine",
-      "quarantinedSeconds": "Karantine ({{seconds}} s)",
+      "quarantinedSeconds": "Karantine ({{seconds}} s)",
       "disabled": "Išjungtas"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "ką tik",
-    "seconds": "prieš {{seconds}} s",
-    "minutes": "prieš {{minutes}} min",
-    "hours": "prieš {{hours}} val.",
-    "days": "prieš {{days}} d."
+    "seconds": "prieš {{seconds}} s",
+    "minutes": "prieš {{minutes}} min",
+    "hours": "prieš {{hours}} val.",
+    "days": "prieš {{days}} d."
   },
   "duration": {
-    "seconds": "{{seconds}} s",
-    "minutes": "{{minutes}} min",
-    "hours": "{{hours}} val.",
-    "days": "{{days}} d."
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} val.",
+    "days": "{{days}} d."
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

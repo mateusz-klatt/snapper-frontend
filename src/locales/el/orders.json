@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Μη διαθέσιμο",
     "priceMarket": "Αγορά",
     "quantity": "Ποσότητα",
     "price": "Τιμή",
     "created": "Δημιουργήθηκε",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Μη διαθέσιμο",
     "orderId": "ID εντολής",
     "leverage": "Μόχλευση",
     "leverageValue": "{{leverage}}x",

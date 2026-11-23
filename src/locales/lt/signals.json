@@ -19,7 +19,7 @@
     "price": "Kaina",
     "exchange": "Birža",
     "reason": "Priežastis:",
-    "noPrice": "N/A"
+    "noPrice": "Nėra duomenų"
   },
   "strength": {
     "strong": "Stiprus",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Ką tik",
-    "minutesAgo": "prieš {{count}} min",
-    "hoursAgo": "prieš {{count}} val."
+    "minutesAgo": "prieš {{count}} min",
+    "hoursAgo": "prieš {{count}} val."
   },
   "empty": {
     "title": "Signalų nerasta",

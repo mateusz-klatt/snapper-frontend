@@ -31,8 +31,8 @@
       "healthy": "sund"
     },
     "detail": {
-      "wallet": "Wallet",
-      "template": "Template",
+      "wallet": "Tegnebog",
+      "template": "Skabelon",
       "last_run": "Seneste kørsel",
       "unknownWallet": "ukendt"
     },
@@ -44,7 +44,7 @@
     }
   },
   "template": {
-    "badge": "template",
+    "badge": "skabelon",
     "mode": "Tilstand:",
     "parameters": "Parametre:",
     "paramCount": "{{count}}",

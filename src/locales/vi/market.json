@@ -10,20 +10,20 @@
     "searchInstrument": "Tìm công cụ..."
   },
   "timeframes": {
-    "1m": "1 phút",
-    "5m": "5 phút",
-    "15m": "15 phút",
-    "30m": "30 phút",
-    "1h": "1 giờ",
-    "4h": "4 giờ",
-    "1d": "1 ngày"
+    "1m": "1 phút",
+    "5m": "5 phút",
+    "15m": "15 phút",
+    "30m": "30 phút",
+    "1h": "1 giờ",
+    "4h": "4 giờ",
+    "1d": "1 ngày"
   },
   "stats": {
     "currentPrice": "Giá đóng cửa gần nhất",
-    "change24h": "Biến động 24h",
-    "high24h": "Cao nhất 24h",
-    "low24h": "Thấp nhất 24h",
-    "incomplete": "Không có lịch sử đầy đủ trong 24 giờ"
+    "change24h": "Biến động 24 h",
+    "high24h": "Cao nhất 24 h",
+    "low24h": "Thấp nhất 24 h",
+    "incomplete": "Không có lịch sử đầy đủ trong 24 giờ"
   },
   "chart": {
     "title": "Biểu đồ giá",
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Tiền mã hóa",
     "commodity": "Hàng hóa",
-    "forex": "Forex",
+    "forex": "Ngoại hối",
     "index": "Chỉ số",
     "yield": "Lợi suất",
     "unknown": "Khác"
@@ -71,7 +71,7 @@
     "message": "Đang làm nóng cache: đã có {{sampleCount}} / {{expected}} nến {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(suy ra từ 1m)",
+      "derived": "(suy ra từ 1 phút)",
       "db": "(từ DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Thống kê cặp với {{symbol}} trên {{exchange}}: Pearson {{pearson}}, giá trị p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Thời gian:",
+    "live": "Trực tiếp",
     "sliderAriaLabel": "Di chuyển thanh trượt thời gian qua lịch sử thị trường",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Trực tiếp",
+      "h1": "-1 giờ",
+      "d1": "-1 ngày",
+      "w1": "-1 tuần",
+      "mo1": "-1 tháng"
     }
   }
 }

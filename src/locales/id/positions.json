@@ -14,10 +14,10 @@
       "granularity": "Tingkat detail",
       "granularityAriaLabel": "Pilih tingkat detail linimasa",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 mnt",
+        "fiveMinutes": "5 mnt",
+        "oneHour": "1 j",
+        "oneDay": "1 hr"
       },
       "valuationCurrency": "Mata uang valuasi",
       "valuationCurrencyAriaLabel": "Pilih mata uang valuasi",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "24 jam terakhir",
-      "last7Days": "7 hari terakhir",
-      "last30Days": "30 hari terakhir",
-      "last90Days": "90 hari terakhir"
+      "last24Hours": "24 jam terakhir",
+      "last7Days": "7 hari terakhir",
+      "last30Days": "30 hari terakhir",
+      "last90Days": "90 hari terakhir"
     },
     "loading": "Memuat linimasa P&L…",
     "error": {
@@ -91,11 +91,11 @@
       "hideDetails": "Sembunyikan koreksi",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Dikoreksi pada {{time}}",
-      "targetExecutionId": "Eksekusi perdagangan dibatalkan",
+      "targetExecutionId": "Eksekusi transaksi yang dibatalkan",
       "correctionId": "Catatan koreksi",
       "reasons": {
-        "unwitnessed_phantom": "Tidak ada isi perdagangan pertukaran yang menjadi bukti pemesanan ini.",
-        "unwitnessed_legacy_lineage": "Catatan turunan lama yang tidak ada bukti perdagangan bursa yang berfungsi sebagai bukti."
+        "unwitnessed_phantom": "Tidak ada eksekusi pesanan di bursa yang menjadi bukti untuk pencatatan transaksi ini.",
+        "unwitnessed_legacy_lineage": "Catatan yang berasal dari sistem lama tanpa eksekusi pesanan di bursa sebagai bukti."
       }
     },
     "timeTravelNotice": "Tampilan historis: menampilkan P&L sebagaimana diketahui pada {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Debu ({{count}})",
-    "show": "Tampilkan posisi debu",
-    "hide": "Sembunyikan posisi debu"
+    "title": "Posisi sisa bernilai kecil ({{count}})",
+    "show": "Tampilkan posisi sisa bernilai kecil",
+    "hide": "Sembunyikan posisi sisa bernilai kecil"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: tertunda",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Stop mengikuti harga: {{stop}}",
+    "trailingStopPending": "Stop mengikuti harga: tertunda",
+    "slTpButton": "Batas kerugian/Ambil untung",
     "trailButton": "Trailing",
     "quantity": "Kuantitas",
     "averageEntry": "Entry Rata-rata",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L Terealisasi",
     "updated": "Diperbarui {{timestamp}}",
     "mark": "Harga mark",
-    "noValue": "N/A"
+    "noValue": "Tidak tersedia"
   },
   "empty": {
     "title": "Tidak ada posisi terbuka",
@@ -239,10 +239,10 @@
     "confirmTitle": "Konfirmasi Bracket",
     "position": "Posisi",
     "entryPrice": "Harga Entry",
-    "stopLossLabel": "Harga Stop-Loss",
-    "takeProfitLabel": "Harga Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Harga batas kerugian",
+    "takeProfitLabel": "Harga ambil untung",
+    "stopLoss": "Batas kerugian",
+    "takeProfit": "Ambil untung",
     "placeholders": {
       "slLong": "Di bawah {{price}}",
       "slShort": "Di atas {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Minimal salah satu harga SL atau TP wajib diisi",
-    "invalidSlPrice": "Harga stop-loss tidak valid",
-    "slPricePositive": "Harga stop-loss harus positif",
-    "invalidTpPrice": "Harga take-profit tidak valid",
-    "tpPricePositive": "Harga take-profit harus positif",
+    "invalidSlPrice": "Harga batas kerugian tidak valid",
+    "slPricePositive": "Harga batas kerugian harus positif",
+    "invalidTpPrice": "Harga ambil untung tidak valid",
+    "tpPricePositive": "Harga ambil untung harus positif",
     "slLongBelowEntry": "Harga SL harus di bawah harga entry ({{price}})",
     "tpLongAboveEntry": "Harga TP harus di atas harga entry ({{price}})",
     "slShortAboveEntry": "Harga SL harus di atas harga entry ({{price}})",

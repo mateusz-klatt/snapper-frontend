@@ -32,7 +32,7 @@
     "shortExposure": "Expunere short",
     "netDelta": "Delta netă",
     "unrealizedPnl": "P&L nerealizat",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Profit/pierdere %",
     "positions": "Poziții",
     "instrumentsCount": "Instrumente: {{count}}",
     "empty": "Nu există date disponibile despre poziții",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Semnale recente",
     "empty": "Nu există semnale recente",
-    "noTime": "N/A"
+    "noTime": "Indisponibil"
   },
   "executions": {
     "title": "Execuții recente",
     "empty": "Nu există execuții recente",
-    "noTime": "N/A"
+    "noTime": "Indisponibil"
   },
   "processResources": {
     "title": "Resurse procese",
@@ -55,13 +55,13 @@
     "colName": "Nume",
     "colStatus": "Stare",
     "colRole": "Rol",
-    "colMemory": "MEM",
+    "colMemory": "Memorie",
     "colCpu": "CPU",
     "statusRunning": "Rulează",
     "statusStopped": "Oprit",
     "statusDisabled": "Dezactivat",
     "containerTotal": "Memorie totală {{value}}",
-    "cpuTooltip": "Utilizarea CPU poate depăși 100% pe mai multe nuclee",
+    "cpuTooltip": "Utilizarea CPU poate depăși 100 % pe mai multe nuclee",
     "metricsNa": "Nu există CPU/memorie separată pe proces; rulează în cadrul procesului (mod thread) sau nu rulează",
     "managedOnly": "Doar procesele acestui container",
     "managedOnlyHint": "Fiecare container gestionează un subset de procese (profilul său autostart); celelalte procese sunt raportate aici doar ca rulând în altă parte. Debifați pentru a vedea fiecare proces raportat de fiecare container.",

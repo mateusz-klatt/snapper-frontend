@@ -19,7 +19,7 @@
     "price": "價格",
     "exchange": "交易所",
     "reason": "原因：",
-    "noPrice": "N/A"
+    "noPrice": "無資料"
   },
   "strength": {
     "strong": "強",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "剛剛",
-    "minutesAgo": "{{count}}m 前",
-    "hoursAgo": "{{count}}h 前"
+    "minutesAgo": "{{count}}分鐘前",
+    "hoursAgo": "{{count}}小時前"
   },
   "empty": {
     "title": "未找到信號",

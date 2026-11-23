@@ -5,25 +5,25 @@
   "controls": {
     "exchange": "Bolsa:",
     "instrument": "Instrumento:",
-    "timeframe": "Timeframe:",
+    "timeframe": "Intervalo:",
     "selectExchange": "Selecionar exchange",
     "searchInstrument": "Buscar instrumento..."
   },
   "timeframes": {
-    "1m": "1 minuto",
-    "5m": "5 minutos",
-    "15m": "15 minutos",
-    "30m": "30 minutos",
-    "1h": "1 hora",
-    "4h": "4 horas",
-    "1d": "1 dia"
+    "1m": "1 minuto",
+    "5m": "5 minutos",
+    "15m": "15 minutos",
+    "30m": "30 minutos",
+    "1h": "1 hora",
+    "4h": "4 horas",
+    "1d": "1 dia"
   },
   "stats": {
     "currentPrice": "Último preço de fechamento",
-    "change24h": "Variação 24h",
-    "high24h": "Máxima 24h",
-    "low24h": "Mínima 24h",
-    "incomplete": "Histórico completo de 24 horas indisponível"
+    "change24h": "Variação 24 h",
+    "high24h": "Máxima 24 h",
+    "low24h": "Mínima 24 h",
+    "incomplete": "Histórico completo de 24 horas indisponível"
   },
   "chart": {
     "title": "Gráfico de preço",
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Criptomoeda",
     "commodity": "Matéria-prima",
-    "forex": "Forex",
+    "forex": "Câmbio",
     "index": "Índice",
     "yield": "Rendimento",
     "unknown": "Outro"
@@ -71,7 +71,7 @@
     "message": "Aquecendo cache: {{sampleCount}} / {{expected}} candles disponíveis {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(derivado de 1m)",
+      "derived": "(derivado de 1 min)",
       "db": "(do DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Estatísticas do par com {{symbol}} em {{exchange}}: Pearson {{pearson}}, valor p {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Hora:",
+    "live": "Em tempo real",
     "sliderAriaLabel": "Navegar pelo histórico do mercado",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Em tempo real",
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 sem.",
+      "mo1": "-1 mês"
     }
   }
 }

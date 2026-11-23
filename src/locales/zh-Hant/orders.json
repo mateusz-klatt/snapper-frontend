@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "未知",
     "priceMarket": "市價",
     "quantity": "數量",
     "price": "價格",
     "created": "建立時間",
-    "createdUnknown": "N/A",
+    "createdUnknown": "未知",
     "orderId": "訂單 ID",
     "leverage": "槓桿",
     "leverageValue": "{{leverage}}x",

@@ -61,7 +61,7 @@
     "title": "Vertaa",
     "headingFull": "Backtest-vertailu",
     "loading": "Ladataan vertailua…",
-    "vs": "vs",
+    "vs": "vastaan",
     "runLabel": "Ajo {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metriikat",
@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}} %"
     },
     "equity": {
       "legend": {
@@ -135,9 +135,9 @@
     "signalsTrades": "Signaalit: {{signals}} / treidit: {{trades}}",
     "milestoneLine": "välitavoite {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
     }
   },
   "create": {

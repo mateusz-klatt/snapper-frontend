@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Ikke tilgængelig",
     "priceMarket": "Marked",
     "quantity": "Mængde",
     "price": "Pris",
     "created": "Oprettet",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Ikke tilgængelig",
     "orderId": "Ordre-ID",
     "leverage": "Gearing",
     "leverageValue": "{{leverage}}x",
@@ -89,7 +89,7 @@
       "price": "Pris",
       "stopPrice": "Stoppris",
       "mode": "Tilstand",
-      "wallet": "Wallet",
+      "wallet": "Tegnebog",
       "type": "Type",
       "postOnly": "Kun maker"
     },
@@ -105,7 +105,7 @@
       "stop_limit": "Stop-limit"
     },
     "modeOptions": {
-      "live": "Live",
+      "live": "Rigtig handel",
       "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — kun markedsdata",

@@ -14,7 +14,7 @@
     "emptyTitle": "Ingen AI-delegater endnu",
     "emptyMessage": "Klik på “Opret delegat” for at oprette en og generere dens MCP-konfigurationsudsnit.",
     "columns": {
-      "label": "Label",
+      "label": "Etiket",
       "username": "Brugernavn",
       "created": "Oprettet",
       "maxOpenOrders": "Maks. åbne ordrer",
@@ -37,7 +37,7 @@
     "step3": "3. Gennemse",
     "stepDone": "✓ Færdig",
     "identity": {
-      "labelField": "Label",
+      "labelField": "Etiket",
       "labelPlaceholder": "f.eks. Alpha prop desk",
       "labelHelpPrefix": "Delegatens brugernavn udledes server-side som ",
       "labelHelpSuffix": "."
@@ -61,7 +61,7 @@
     },
     "review": {
       "heading": "Gennemse og opret",
-      "rowLabel": "Label",
+      "rowLabel": "Etiket",
       "rowOperator": "Operatør public_id",
       "rowMaxOpenOrders": "Maks. åbne ordrer",
       "rowMaxDailyNotional": "Maks. daglig nominel USD",
@@ -97,7 +97,7 @@
     "revoked": "Tilbagekaldt",
     "createdAt": "Oprettet",
     "createdBy": "Oprettet af (bruger public_id)",
-    "publicId": "Public ID",
+    "publicId": "Offentligt id",
     "maxOpenOrders": "Maks. åbne ordrer",
     "maxDailyNotionalUsd": "Maks. daglig nominel USD",
     "maxCancelsPerMinute": "Maks. annulleringer pr. minut",

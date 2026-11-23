@@ -29,17 +29,17 @@
     "inactive": "Neaktivní"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "uptimeNotAvailable": "Není k dispozici",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} h",
+    "backtestName": "Test na historických datech {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Není k dispozici",
     "uptimeLabel": "Doba běhu",
     "exitCode": "Kód ukončení: {{code}}",
     "service": "služba",
-    "backtest": "backtest"
+    "backtest": "test na historických datech"
   },
   "dbStats": {
     "title": "Statistiky databáze",
@@ -47,7 +47,7 @@
     "unavailable": "Statistiky databáze nejsou dostupné: {{message}}",
     "fallbackError": "Statistiky databáze se nepodařilo načíst.",
     "sampled": "vzorek před {{age}}",
-    "samplerSummary": "Interval vzorkování: {{seconds}} s · Počet tabulek: {{count}}",
+    "samplerSummary": "Interval vzorkování: {{seconds}} s · Počet tabulek: {{count}}",
     "columns": {
       "table": "Tabulka",
       "kind": "Typ",
@@ -92,13 +92,13 @@
       "files": "Soubory",
       "status": "Stav"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} d",
+    "ok": "V pořádku",
     "error": "chyba"
   },
   "systemMetrics": {
     "disk": "Volné místo na disku",
-    "diskUsage": "{{percent}}% využito · {{mount}}",
+    "diskUsage": "{{percent}} % využito · {{mount}}",
     "title": "Stav procesu",
     "loading": "Načítání metrik procesu…",
     "unavailable": "Metriky procesu nejsou dostupné: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Vlákna",
     "openFds": "Otevřené FD",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Omezeno {{count}}×",
     "memory": "Paměť",
     "saturation": "Saturace {{percent}}",
@@ -119,7 +119,7 @@
     "asyncioPending": "Čekající: {{count}}",
     "dbPool": "DB pool",
     "liveConns": "Aktivní spojení: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generace GC 0/1/2",
     "gcObjects": "Objekty: {{value}}",
     "threadsPercent": "Vlákna %",
     "networkConns": "Síťová spojení",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Navázání spojení {{age}}"
     },
     "kind": {
       "direct": "přímé",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktivní",
       "quarantined": "V karanténě",
-      "quarantinedSeconds": "V karanténě ({{seconds}}s)",
+      "quarantinedSeconds": "V karanténě ({{seconds}} s)",
       "disabled": "Zakázáno"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "právě teď",
-    "seconds": "před {{seconds}}s",
-    "minutes": "před {{minutes}}min",
-    "hours": "před {{hours}}h",
-    "days": "před {{days}}d"
+    "seconds": "před {{seconds}} s",
+    "minutes": "před {{minutes}} min",
+    "hours": "před {{hours}} h",
+    "days": "před {{days}} d"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

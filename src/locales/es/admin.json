@@ -315,7 +315,7 @@
       "addCredential": "Añadir credencial",
       "selectWalletPrompt": "Elija una cartera arriba para ver sus credenciales.",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "Plataforma de intercambio",
         "type": "Tipo",
         "label": "Etiqueta",
         "createdAt": "Creada el",
@@ -332,7 +332,7 @@
       "title": "Añadir credencial",
       "fields": {
         "wallet": "Cartera",
-        "exchange": "Exchange",
+        "exchange": "Plataforma de intercambio",
         "exchangePlaceholder": "p. ej. kraken",
         "credentialType": "Tipo de credencial",
         "label": "Etiqueta (opcional)",
@@ -371,7 +371,7 @@
     "rotate": {
       "title": "Rotar credencial",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "Plataforma de intercambio",
         "type": "Tipo",
         "label": "Etiqueta",
         "newLabel": "Nueva etiqueta (opcional)",

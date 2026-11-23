@@ -19,7 +19,7 @@
     "price": "Τιμή",
     "exchange": "Αγορά",
     "reason": "Αιτία:",
-    "noPrice": "N/A"
+    "noPrice": "Μη διαθέσιμο"
   },
   "strength": {
     "strong": "Ισχυρό",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Μόλις τώρα",
-    "minutesAgo": "πριν από {{count}} λεπ.",
-    "hoursAgo": "πριν από {{count}} ώ."
+    "minutesAgo": "πριν από {{count}} λεπ.",
+    "hoursAgo": "πριν από {{count}} ώ."
   },
   "empty": {
     "title": "Δεν βρέθηκαν σήματα",

@@ -32,7 +32,7 @@
     "shortExposure": "Short izloženost",
     "netDelta": "Neto delta",
     "unrealizedPnl": "Nerealizovani P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Dobit/gubitak %",
     "positions": "Pozicije",
     "instrumentsCount": "Instrumenti: {{count}}",
     "empty": "Nema dostupnih podataka o pozicijama",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Nedavni signali",
     "empty": "Nema nedavnih signala",
-    "noTime": "N/A"
+    "noTime": "Nije dostupno"
   },
   "executions": {
     "title": "Nedavna izvršenja",
     "empty": "Nema nedavnih izvršenja",
-    "noTime": "N/A"
+    "noTime": "Nije dostupno"
   },
   "processResources": {
     "title": "Resursi procesa",
@@ -55,7 +55,7 @@
     "colName": "Naziv",
     "colStatus": "Status",
     "colRole": "Uloga",
-    "colMemory": "MEM",
+    "colMemory": "Memorija",
     "colCpu": "CPU",
     "statusRunning": "Pokrenuto",
     "statusStopped": "Zaustavljeno",

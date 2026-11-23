@@ -10,20 +10,20 @@
     "searchInstrument": "Cuardaigh ionstraim..."
   },
   "timeframes": {
-    "1m": "1 nóiméad",
-    "5m": "5 nóiméad",
-    "15m": "15 nóiméad",
-    "30m": "30 nóiméad",
-    "1h": "1 uair",
-    "4h": "4 uair",
-    "1d": "1 lá"
+    "1m": "1 nóiméad",
+    "5m": "5 nóiméad",
+    "15m": "15 nóiméad",
+    "30m": "30 nóiméad",
+    "1h": "1 uair",
+    "4h": "4 uair",
+    "1d": "1 lá"
   },
   "stats": {
     "currentPrice": "An praghas dúnta is déanaí",
-    "change24h": "Athrú 24h",
-    "high24h": "Ard 24h",
-    "low24h": "Íseal 24h",
-    "incomplete": "Níl stair iomlán 24 uair ar fáil"
+    "change24h": "Athrú 24 u",
+    "high24h": "Ard 24 u",
+    "low24h": "Íseal 24 u",
+    "incomplete": "Níl stair iomlán 24 uair ar fáil"
   },
   "chart": {
     "title": "Cairt Phraghais",
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Criptea-airgeadra",
     "commodity": "Tráchtearra",
-    "forex": "Forex",
+    "forex": "Malairt eachtrach",
     "index": "Innéacs",
     "yield": "Toradh",
     "unknown": "Eile"
@@ -71,7 +71,7 @@
     "message": "Cache á théamh: {{sampleCount}} / {{expected}} coinneal ar fáil {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(díorthaithe ó 1m)",
+      "derived": "(díorthaithe ó 1 nóim)",
       "db": "(ón DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Staitisticí péire le {{symbol}} ar {{exchange}}: Pearson {{pearson}}, p-luach {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Am:",
+    "live": "Beo",
     "sliderAriaLabel": "Bog trí stair an mhargaidh",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Beo",
+      "h1": "-1 u",
+      "d1": "-1 lá",
+      "w1": "-1 scht",
+      "mo1": "-1 mhí"
     }
   }
 }

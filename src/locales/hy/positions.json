@@ -14,10 +14,10 @@
       "granularity": "Ժամանակային քայլ",
       "granularityAriaLabel": "Ընտրել ժամանակագծի ժամանակային քայլը",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 ր",
+        "fiveMinutes": "5 ր",
+        "oneHour": "1 ժ",
+        "oneDay": "1 օր"
       },
       "valuationCurrency": "Գնահատման արժույթ",
       "valuationCurrencyAriaLabel": "Ընտրել գնահատման արժույթը",
@@ -91,11 +91,11 @@
       "hideDetails": "Թաքցնել ուղղումները",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Ուղղվել է {{time}}-ին",
-      "targetExecutionId": "Չեղյալ հայտարարված առևտրի կատարումը",
+      "targetExecutionId": "Անվավեր ճանաչված կատարում",
       "correctionId": "Ուղղման արձանագրություն",
       "reasons": {
-        "unwitnessed_phantom": "Չկա փոխանակման առևտրի լրացում, որը վկայում է այս ամրագրման համար:",
-        "unwitnessed_legacy_lineage": "Ժառանգությունից ստացված գրառումը, որի համար բորսայական առևտրի ոչ մի լրացում չի ծառայում որպես ապացույց:"
+        "unwitnessed_phantom": "Բորսայում չկա հանձնարարականի կատարում, որը կհաստատեր այս գրանցումը։",
+        "unwitnessed_legacy_lineage": "Հին տվյալներից ստացված գրառում՝ առանց այն հաստատող հանձնարարականի կատարման։"
       }
     },
     "timeTravelNotice": "Պատմական դիտում․ ցուցադրվում է {{asOf}}-ի դրությամբ հայտնի P&L-ը։",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Փոշի ({{count}})",
-    "show": "Ցույց տալ փոշու դիրքերը",
-    "hide": "Թաքցնել փոշու դիրքերը"
+    "title": "Չնչին մնացորդներ ({{count}})",
+    "show": "Ցույց տալ չնչին մնացորդով դիրքերը",
+    "hide": "Թաքցնել չնչին մնացորդով դիրքերը"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: սպասում է",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Հետևող կանգառ՝ {{stop}}",
+    "trailingStopPending": "Հետևող կանգառ՝ սպասում է",
+    "slTpButton": "Կորուստների սահմանափակում / Շահույթի ամրագրում",
     "trailButton": "Հետևող ստոպ",
     "quantity": "Քանակ",
     "averageEntry": "Միջ. մուտք",
@@ -228,7 +228,7 @@
     "realizedPnl": "Իրացված P&L",
     "updated": "Թարմացվել է {{timestamp}}",
     "mark": "Հաշվարկային գին",
-    "noValue": "N/A"
+    "noValue": "Հասանելի չէ"
   },
   "empty": {
     "title": "Բաց դիրքեր չկան",
@@ -239,10 +239,10 @@
     "confirmTitle": "Հաստատել Bracket",
     "position": "Դիրք",
     "entryPrice": "Մուտքի գին",
-    "stopLossLabel": "Stop-Loss գին",
-    "takeProfitLabel": "Take-Profit գին",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Կորուստների սահմանափակման գին",
+    "takeProfitLabel": "Շահույթի ամրագրման գին",
+    "stopLoss": "Կորուստների սահմանափակում",
+    "takeProfit": "Շահույթի ամրագրում",
     "placeholders": {
       "slLong": "{{price}}-ից ցածր",
       "slShort": "{{price}}-ից բարձր",

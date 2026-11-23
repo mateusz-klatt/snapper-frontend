@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "উপলভ্য নয়",
     "priceMarket": "মার্কেট",
     "quantity": "পরিমাণ",
     "price": "মূল্য",
     "created": "তৈরি হয়েছে",
-    "createdUnknown": "N/A",
+    "createdUnknown": "উপলভ্য নয়",
     "orderId": "অর্ডার ID",
     "leverage": "লিভারেজ",
     "leverageValue": "{{leverage}}x",

@@ -66,7 +66,7 @@
     "sections": {
       "metrics": "Metriken",
       "equityOverlay": "Equity-Overlay",
-      "trades": "Trades",
+      "trades": "Geschäfte",
       "signals": "Signale"
     },
     "pairingMode": {
@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}} %"
     },
     "equity": {
       "legend": {
@@ -135,9 +135,9 @@
     "signalsTrades": "{{signals}} Sig. / {{trades}} Trades",
     "milestoneLine": "Meilenstein {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
     }
   },
   "create": {
@@ -165,7 +165,7 @@
       "startDateLabel": "Startdatum",
       "endDateLabel": "Enddatum",
       "initialCashLabel": "Anfangskapital",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Kursabweichung (Basispunkte)",
       "commissionBpsLabel": "Gebühren (bps)",
       "executionModeLabel": "Ausführungsmodus",
       "executionModeDirectDb": "Direkte DB",

@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}min",
-    "uptimeHours": "{{hours}}h {{minutes}}min",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} h",
     "backtestName": "Teste retrospectivo {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
@@ -47,7 +47,7 @@
     "unavailable": "Estatísticas do banco indisponíveis: {{message}}",
     "fallbackError": "Falha ao carregar estatísticas do banco de dados.",
     "sampled": "amostrado {{age}}",
-    "samplerSummary": "Intervalo de amostragem: {{seconds}}s · Quantidade de tabelas: {{count}}",
+    "samplerSummary": "Intervalo de amostragem: {{seconds}} s · Quantidade de tabelas: {{count}}",
     "columns": {
       "table": "Tabela",
       "kind": "Tipo",
@@ -92,8 +92,8 @@
       "files": "Arquivos",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} d",
+    "ok": "Normal",
     "error": "erro"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Pendentes: {{count}}",
     "dbPool": "Pool DB",
     "liveConns": "Conexões ativas: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Gerações do GC 0/1/2",
     "gcObjects": "Objetos: {{value}}",
     "threadsPercent": "Uso de threads",
     "networkConns": "Conexões de rede",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "negociação {{age}}"
     },
     "kind": {
       "direct": "direta",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Ativo",
       "quarantined": "Em quarentena",
-      "quarantinedSeconds": "Em quarentena ({{seconds}}s)",
+      "quarantinedSeconds": "Em quarentena ({{seconds}} s)",
       "disabled": "Desativado"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "agora mesmo",
-    "seconds": "{{seconds}}s atrás",
-    "minutes": "{{minutes}}min atrás",
-    "hours": "{{hours}}h atrás",
-    "days": "{{days}}d atrás"
+    "seconds": "{{seconds}} s atrás",
+    "minutes": "{{minutes}} min atrás",
+    "hours": "{{hours}} h atrás",
+    "days": "{{days}} d atrás"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

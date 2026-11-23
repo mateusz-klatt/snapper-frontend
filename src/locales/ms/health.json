@@ -29,17 +29,17 @@
     "inactive": "Tidak aktif"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "uptimeNotAvailable": "Tidak tersedia",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} j {{minutes}} min",
+    "uptimeDays": "{{days}} hari {{hours}} j",
+    "backtestName": "Ujian semula {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "Tidak tersedia",
     "uptimeLabel": "Masa operasi",
     "exitCode": "Kod keluar: {{code}}",
     "service": "perkhidmatan",
-    "backtest": "Backtest"
+    "backtest": "Ujian semula"
   },
   "dbStats": {
     "title": "Statistik Pangkalan Data",
@@ -47,7 +47,7 @@
     "unavailable": "Statistik pangkalan data tidak tersedia: {{message}}",
     "fallbackError": "Gagal memuatkan statistik pangkalan data.",
     "sampled": "disampel {{age}}",
-    "samplerSummary": "Selang pensampel: {{seconds}}s · bilangan jadual: {{count}}",
+    "samplerSummary": "Selang pensampel: {{seconds}} s · bilangan jadual: {{count}}",
     "columns": {
       "table": "Jadual",
       "kind": "Jenis",
@@ -92,8 +92,8 @@
       "files": "Fail",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} hari",
+    "ok": "Baik",
     "error": "ralat"
   },
   "systemMetrics": {
@@ -119,7 +119,7 @@
     "asyncioPending": "Tertunda: {{count}}",
     "dbPool": "Kumpulan DB",
     "liveConns": "Sambungan aktif: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Generasi GC 0/1/2",
     "gcObjects": "Objek: {{value}}",
     "threadsPercent": "Utas %",
     "networkConns": "Sambungan rangkaian",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Rundingan sambungan {{age}}"
     },
     "kind": {
       "direct": "langsung",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktif",
       "quarantined": "Dikuarantin",
-      "quarantinedSeconds": "Dikuarantin ({{seconds}}s)",
+      "quarantinedSeconds": "Dikuarantin ({{seconds}} s)",
       "disabled": "Dinyahdayakan"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "baru sahaja",
-    "seconds": "{{seconds}}s lalu",
-    "minutes": "{{minutes}}min lalu",
-    "hours": "{{hours}}j lalu",
-    "days": "{{days}}h lalu"
+    "seconds": "{{seconds}} s lalu",
+    "minutes": "{{minutes}} min lalu",
+    "hours": "{{hours}} j lalu",
+    "days": "{{days}} hari lalu"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}j",
-    "days": "{{days}}h"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} j",
+    "days": "{{days}} hari"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

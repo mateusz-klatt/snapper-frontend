@@ -30,10 +30,10 @@
   },
   "process": {
     "uptimeNotAvailable": "n. v.",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}T {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} T {{hours}} h",
+    "backtestName": "Historischer Test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "n. v.",
     "uptimeLabel": "Laufzeit",
@@ -47,7 +47,7 @@
     "unavailable": "Datenbank-Statistiken nicht verfügbar: {{message}}",
     "fallbackError": "Datenbank-Statistiken konnten nicht geladen werden.",
     "sampled": "abgetastet {{age}}",
-    "samplerSummary": "Abtastintervall: {{seconds}} s · Anzahl der Tabellen: {{count}}",
+    "samplerSummary": "Abtastintervall: {{seconds}} s · Anzahl der Tabellen: {{count}}",
     "columns": {
       "table": "Tabelle",
       "kind": "Art",
@@ -92,13 +92,13 @@
       "files": "Dateien",
       "status": "Status"
     },
-    "retainDays": "{{days}}T",
-    "ok": "OK",
+    "retainDays": "{{days}} T",
+    "ok": "In Ordnung",
     "error": "Fehler"
   },
   "systemMetrics": {
     "disk": "Freier Speicherplatz",
-    "diskUsage": "{{percent}}% belegt · {{mount}}",
+    "diskUsage": "{{percent}} % belegt · {{mount}}",
     "title": "Prozessgesundheit",
     "loading": "Prozessmetriken werden geladen…",
     "unavailable": "Prozessmetriken nicht verfügbar: {{message}}",
@@ -107,10 +107,10 @@
     "pid": "PID",
     "statusValue": "Status: {{status}}",
     "uptime": "Laufzeit",
-    "threads": "Threads",
+    "threads": "Ausführungsthreads",
     "openFds": "Offene FDs",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Gedrosselt {{count}}×",
     "memory": "Speicher",
     "saturation": "Auslastung {{percent}}",
@@ -119,9 +119,9 @@
     "asyncioPending": "Ausstehend: {{count}}",
     "dbPool": "DB-Pool",
     "liveConns": "Aktive Verbindungen: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC-Generationen 0/1/2",
     "gcObjects": "Objekte: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Ausführungsthreads %",
     "networkConns": "Netzwerkverbindungen",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Aktiv",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Verbindungspool",
       "policy": "Quarantäne-Richtlinie",
       "fallbackRoute": "Privates Fallback",
       "routes": "Routen"
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Verbindungsaufbau {{age}}"
     },
     "kind": {
       "direct": "direkt",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Aktiv",
       "quarantined": "Unter Quarantäne",
-      "quarantinedSeconds": "Unter Quarantäne ({{seconds}}s)",
+      "quarantinedSeconds": "Unter Quarantäne ({{seconds}} s)",
       "disabled": "Deaktiviert"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "gerade eben",
-    "seconds": "vor {{seconds}}s",
-    "minutes": "vor {{minutes}}min",
-    "hours": "vor {{hours}}h",
-    "days": "vor {{days}}T"
+    "seconds": "vor {{seconds}} s",
+    "minutes": "vor {{minutes}} min",
+    "hours": "vor {{hours}} h",
+    "days": "vor {{days}} T"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}T"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} T"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

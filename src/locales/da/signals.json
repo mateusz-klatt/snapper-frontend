@@ -19,7 +19,7 @@
     "price": "Pris",
     "exchange": "Børs",
     "reason": "Årsag:",
-    "noPrice": "N/A"
+    "noPrice": "Ikke tilgængelig"
   },
   "strength": {
     "strong": "Stærk",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Lige nu",
-    "minutesAgo": "{{count}} min siden",
-    "hoursAgo": "{{count}}t siden"
+    "minutesAgo": "{{count}} min siden",
+    "hoursAgo": "{{count}} t siden"
   },
   "empty": {
     "title": "Ingen signaler fundet",

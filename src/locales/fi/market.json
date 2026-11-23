@@ -10,19 +10,19 @@
     "searchInstrument": "Hae instrumenttia..."
   },
   "timeframes": {
-    "1m": "1 minuutti",
-    "5m": "5 minuuttia",
-    "15m": "15 minuuttia",
-    "30m": "30 minuuttia",
-    "1h": "1 tunti",
-    "4h": "4 tuntia",
-    "1d": "1 päivä"
+    "1m": "1 minuutti",
+    "5m": "5 minuuttia",
+    "15m": "15 minuuttia",
+    "30m": "30 minuuttia",
+    "1h": "1 tunti",
+    "4h": "4 tuntia",
+    "1d": "1 päivä"
   },
   "stats": {
     "currentPrice": "Viimeisin päätöskurssi",
-    "change24h": "24h muutos",
-    "high24h": "24h ylin",
-    "low24h": "24h alin",
+    "change24h": "24 t muutos",
+    "high24h": "24 t ylin",
+    "low24h": "24 t alin",
     "incomplete": "Täydellistä 24 tunnin historiaa ei ole saatavilla"
   },
   "chart": {
@@ -71,7 +71,7 @@
     "message": "Cache lämpenee: kynttilät {{sampleCount}} / {{expected}} saatavilla {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(johdettu 1m-datasta)",
+      "derived": "(johdettu 1 min-datasta)",
       "db": "(DB:stä)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Paritilastot instrumentin {{symbol}} kanssa pörssissä {{exchange}}: Pearson {{pearson}}, p-arvo {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Aika:",
+    "live": "Reaaliaikainen",
     "sliderAriaLabel": "Selaa markkinahistoriaa",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Reaaliaikainen",
+      "h1": "-1 t",
+      "d1": "-1 pv",
+      "w1": "-1 vk",
+      "mo1": "-1 kk"
     }
   }
 }

@@ -22,14 +22,14 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Tidak tersedia",
     "priceMarket": "Pasar",
     "quantity": "Kuantitas",
     "price": "Harga",
     "created": "Dibuat",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Tidak tersedia",
     "orderId": "ID Pesanan",
-    "leverage": "Leverage",
+    "leverage": "Daya ungkit",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "HANYA MENGURANGI POSISI",
     "cancel": "Batalkan",
@@ -61,7 +61,7 @@
       "status": "Status",
       "quantity": "Kuantitas",
       "price": "Harga",
-      "leverage": "Leverage",
+      "leverage": "Daya ungkit",
       "reduceOnly": "Hanya mengurangi posisi",
       "created": "Dibuat"
     },
@@ -105,7 +105,7 @@
       "stop_limit": "Stop Limit"
     },
     "modeOptions": {
-      "live": "Live",
+      "live": "Langsung",
       "paper": "Simulasi"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — khusus data pasar",

@@ -20,7 +20,7 @@
   },
   "processStatus": {
     "title": "Processtatus",
-    "feeds": "Feeds",
+    "feeds": "Datafeeds",
     "strategies": "Strategier",
     "executors": "Eksekveringsprocesser",
     "brokers": "Brokere"
@@ -32,7 +32,7 @@
     "shortExposure": "Short-eksponering",
     "netDelta": "Netto delta",
     "unrealizedPnl": "Urealiseret P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Gevinst/tab %",
     "positions": "Positioner",
     "instrumentsCount": "Instrumenter: {{count}}",
     "empty": "Ingen positionsdata tilgængelige",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Seneste signaler",
     "empty": "Ingen seneste signaler",
-    "noTime": "N/A"
+    "noTime": "Ikke tilgængelig"
   },
   "executions": {
     "title": "Seneste udførsler",
     "empty": "Ingen seneste udførsler",
-    "noTime": "N/A"
+    "noTime": "Ikke tilgængelig"
   },
   "processResources": {
     "title": "Procesressourcer",
@@ -55,13 +55,13 @@
     "colName": "Navn",
     "colStatus": "Status",
     "colRole": "Rolle",
-    "colMemory": "MEM",
+    "colMemory": "Hukommelse",
     "colCpu": "CPU",
     "statusRunning": "Kører",
     "statusStopped": "Stoppet",
     "statusDisabled": "Deaktiveret",
     "containerTotal": "Samlet MEM {{value}}",
-    "cpuTooltip": "CPU-forbrug kan overstige 100 % på tværs af flere kerner",
+    "cpuTooltip": "CPU-forbrug kan overstige 100 % på tværs af flere kerner",
     "metricsNa": "Ingen separate CPU-/hukommelsesdata pr. proces; den kører i samme proces (trådtilstand) eller kører ikke",
     "managedOnly": "Kun denne containers processer",
     "managedOnlyHint": "Hver container administrerer et udsnit af processer (dens autostartprofil); andre processer vises her kun som kørende et andet sted. Fjern markeringen for at se alle processer, som hver container rapporterer.",

@@ -14,10 +14,10 @@
       "granularity": "সময়ের ব্যবধান",
       "granularityAriaLabel": "টাইমলাইনের সময়ের ব্যবধান নির্বাচন করুন",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 মিঃ",
+        "fiveMinutes": "5 মিঃ",
+        "oneHour": "1 ঘঃ",
+        "oneDay": "1 দিন"
       },
       "valuationCurrency": "মূল্যায়ন মুদ্রা",
       "valuationCurrencyAriaLabel": "মূল্যায়ন মুদ্রা নির্বাচন করুন",
@@ -26,10 +26,10 @@
         "pln": "PLN",
         "eur": "EUR"
       },
-      "last24Hours": "গত 24 ঘণ্টা",
-      "last7Days": "গত 7 দিন",
-      "last30Days": "গত 30 দিন",
-      "last90Days": "গত 90 দিন"
+      "last24Hours": "গত 24 ঘণ্টা",
+      "last7Days": "গত 7 দিন",
+      "last30Days": "গত 30 দিন",
+      "last90Days": "গত 90 দিন"
     },
     "loading": "P&L টাইমলাইন লোড হচ্ছে…",
     "error": {
@@ -85,17 +85,17 @@
     },
     "executionHistory": {
       "title": "গণনার ইতিহাস",
-      "summary": "নথিভুক্ত সম্পাদন সংশোধনগুলি নির্বাচিত সময়কালের আগের হতে পারে। এই ইতিহাস প্রদর্শিত P&L পয়েন্টের সতর্কতা থেকে আলাদা।",
+      "summary": "নথিভুক্ত ট্রেড নির্বাহের সংশোধনগুলি নির্বাচিত সময়কালের আগের হতে পারে। এই ইতিহাস প্রদর্শিত P&L পয়েন্টের সতর্কতা থেকে আলাদা।",
       "correctionCount": "নথিভুক্ত সংশোধন: {{count}}",
       "showDetails": "সংশোধন দেখান",
       "hideDetails": "সংশোধন লুকান",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "{{time}} এ সংশোধন করা হয়েছে",
-      "targetExecutionId": "বাতিল বাণিজ্য নির্বাহ",
-      "correctionId": "সংশোধন রেকর্ড",
+      "targetExecutionId": "বাতিল করা ট্রেড নির্বাহ",
+      "correctionId": "সংশোধনের রেকর্ড",
       "reasons": {
-        "unwitnessed_phantom": "এই বুকিং এর প্রমাণ হিসাবে কাজ করে এমন কোন বিনিময় ট্রেড ফিল নেই।",
-        "unwitnessed_legacy_lineage": "উত্তরাধিকার থেকে প্রাপ্ত রেকর্ড যার জন্য কোন বিনিময় বাণিজ্য পূরণ প্রমাণ হিসাবে কাজ করে না।"
+        "unwitnessed_phantom": "এই নথিভুক্ত লেনদেনের পক্ষে এক্সচেঞ্জে অর্ডার নির্বাহের কোনো প্রমাণ নেই।",
+        "unwitnessed_legacy_lineage": "পুরোনো তথ্য থেকে তৈরি এই রেকর্ডের পক্ষে এক্সচেঞ্জে অর্ডার নির্বাহের কোনো প্রমাণ নেই।"
       }
     },
     "timeTravelNotice": "ঐতিহাসিক ভিউ: {{asOf}}-এ জানা তথ্য অনুযায়ী P&L দেখানো হচ্ছে।",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "ধুলা ({{count}})",
-    "show": "ধুলোর পজিশন দেখান",
-    "hide": "ধুলোর পজিশন লুকান"
+    "title": "ক্ষুদ্র অবশিষ্ট পজিশন ({{count}})",
+    "show": "ক্ষুদ্র অবশিষ্ট পজিশন দেখান",
+    "hide": "ক্ষুদ্র অবশিষ্ট পজিশন লুকান"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: অপেক্ষমাণ",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "ট্রেইলিং স্টপ: {{stop}}",
+    "trailingStopPending": "ট্রেইলিং স্টপ: অপেক্ষমাণ",
+    "slTpButton": "স্টপ-লস/টেক-প্রফিট",
     "trailButton": "ট্রেইল",
     "quantity": "পরিমাণ",
     "averageEntry": "গড় এন্ট্রি",
@@ -228,7 +228,7 @@
     "realizedPnl": "বাস্তবায়িত P&L",
     "updated": "{{timestamp}} আপডেট হয়েছে",
     "mark": "মার্ক মূল্য",
-    "noValue": "N/A"
+    "noValue": "উপলভ্য নয়"
   },
   "empty": {
     "title": "কোনো খোলা পজিশন নেই",
@@ -239,8 +239,8 @@
     "confirmTitle": "Bracket নিশ্চিত করুন",
     "position": "পজিশন",
     "entryPrice": "এন্ট্রি মূল্য",
-    "stopLossLabel": "Stop-Loss মূল্য",
-    "takeProfitLabel": "Take-Profit মূল্য",
+    "stopLossLabel": "স্টপ-লস মূল্য",
+    "takeProfitLabel": "টেক-প্রফিট মূল্য",
     "stopLoss": "স্টপ-লস",
     "takeProfit": "টেক-প্রফিট",
     "placeholders": {

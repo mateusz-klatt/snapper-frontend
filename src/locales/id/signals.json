@@ -19,7 +19,7 @@
     "price": "Harga",
     "exchange": "Bursa",
     "reason": "Alasan:",
-    "noPrice": "N/A"
+    "noPrice": "Tidak tersedia"
   },
   "strength": {
     "strong": "Kuat",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Baru saja",
-    "minutesAgo": "{{count}} mnt lalu",
-    "hoursAgo": "{{count}} jam lalu"
+    "minutesAgo": "{{count}} mnt lalu",
+    "hoursAgo": "{{count}} jam lalu"
   },
   "empty": {
     "title": "Tidak ada sinyal ditemukan",

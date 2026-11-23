@@ -10,19 +10,19 @@
     "searchInstrument": "搜尋品種..."
   },
   "timeframes": {
-    "1m": "1 分鐘",
-    "5m": "5 分鐘",
-    "15m": "15 分鐘",
-    "30m": "30 分鐘",
-    "1h": "1 小時",
-    "4h": "4 小時",
-    "1d": "1 天"
+    "1m": "1分鐘",
+    "5m": "5分鐘",
+    "15m": "15分鐘",
+    "30m": "30分鐘",
+    "1h": "1小時",
+    "4h": "4小時",
+    "1d": "1天"
   },
   "stats": {
     "currentPrice": "最新收盤價",
-    "change24h": "24h 升跌",
-    "high24h": "24h 高位",
-    "low24h": "24h 低位",
+    "change24h": "24小時升跌",
+    "high24h": "24小時高位",
+    "low24h": "24小時低位",
     "incomplete": "暫無完整的24小時歷史資料"
   },
   "chart": {
@@ -71,7 +71,7 @@
     "message": "緩存預熱中: {{sampleCount}} / {{expected}} 根 K 線可用 {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(由 1m 衍生)",
+      "derived": "(由 1分鐘 衍生)",
       "db": "(來自 DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "與 {{exchange}} 上 {{symbol}} 的配對統計: Pearson {{pearson}}, p 值 {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "時間：",
+    "live": "即時",
     "sliderAriaLabel": "沿市場歷史拖動時間滑桿",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "即時",
+      "h1": "-1小時",
+      "d1": "-1天",
+      "w1": "-1週",
+      "mo1": "-1個月"
     }
   }
 }

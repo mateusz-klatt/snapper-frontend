@@ -14,10 +14,10 @@
       "granularity": "Granularita",
       "granularityAriaLabel": "Vybrať granularitu časovej osi",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Mena ocenenia",
       "valuationCurrencyAriaLabel": "Vybrať menu ocenenia",
@@ -85,7 +85,7 @@
     },
     "executionHistory": {
       "title": "História výpočtu",
-      "summary": "Zaznamenané opravy realizácií môžu predchádzať vybranému obdobiu. Táto história je oddelená od upozornení pre zobrazené body P&L.",
+      "summary": "Zaznamenané opravy plnení pokynov môžu predchádzať vybranému obdobiu. Táto história je oddelená od upozornení pre zobrazené body P&L.",
       "correctionCount": "Zaznamenané opravy: {{count}}",
       "showDetails": "Zobraziť opravy",
       "hideDetails": "Skryť opravy",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Zrušená exekúcia obchodu",
       "correctionId": "Opravný záznam",
       "reasons": {
-        "unwitnessed_phantom": "Neexistuje žiadny výmenný obchod, ktorý by slúžil ako dôkaz pre túto rezerváciu.",
-        "unwitnessed_legacy_lineage": "Záznam odvodený z odkazu, pre ktorý ako dôkaz neslúži žiadna výmena."
+        "unwitnessed_phantom": "Tento záznam nepotvrdzuje žiadne plnenie pokynu na burze.",
+        "unwitnessed_legacy_lineage": "Záznam prevzatý zo starších dát bez potvrdzujúceho plnenia pokynu."
       }
     },
     "timeTravelNotice": "Historické zobrazenie: P&L podľa stavu známeho k {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Prach ({{count}})",
-    "show": "Zobraziť prachové pozície",
-    "hide": "Skryť prachové pozície"
+    "title": "Drobné zostatky ({{count}})",
+    "show": "Zobraziť pozície s drobnými zostatkami",
+    "hide": "Skryť pozície s drobnými zostatkami"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: čaká",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Posuvný stop: {{stop}}",
+    "trailingStopPending": "Posuvný stop: čaká",
+    "slTpButton": "Obmedzenie straty / Realizácia zisku",
     "trailButton": "Posuvný stop",
     "quantity": "Množstvo",
     "averageEntry": "Priemerný vstup",
@@ -228,7 +228,7 @@
     "realizedPnl": "Realizovaný P&L",
     "updated": "Aktualizované {{timestamp}}",
     "mark": "Referenčná cena",
-    "noValue": "N/A"
+    "noValue": "Nie je k dispozícii"
   },
   "empty": {
     "title": "Žiadne otvorené pozície",
@@ -239,10 +239,10 @@
     "confirmTitle": "Potvrdiť SL/TP",
     "position": "Pozícia",
     "entryPrice": "Vstupná cena",
-    "stopLossLabel": "Cena Stop-Loss",
-    "takeProfitLabel": "Cena Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Cena obmedzenia straty",
+    "takeProfitLabel": "Cena realizácie zisku",
+    "stopLoss": "Obmedzenie straty",
+    "takeProfit": "Realizácia zisku",
     "placeholders": {
       "slLong": "Pod {{price}}",
       "slShort": "Nad {{price}}",
@@ -270,7 +270,7 @@
       "trailingPct": "napr. 5.0",
       "minLockPct": "0 = spustiť okamžite"
     },
-    "minLockWarning": "Posuvný stop sa neaktivuje, kým sa cena neposunie o {{minLockPct}}% vo váš prospech.",
+    "minLockWarning": "Posuvný stop sa neaktivuje, kým sa cena neposunie o {{minLockPct}} % vo váš prospech.",
     "buttons": {
       "cancel": "Zrušiť",
       "review": "Skontrolovať",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Vyžaduje sa aspoň jedna cena SL alebo TP",
-    "invalidSlPrice": "Neplatná cena Stop-Loss",
-    "slPricePositive": "Cena Stop-Loss musí byť kladná",
-    "invalidTpPrice": "Neplatná cena Take-Profit",
-    "tpPricePositive": "Cena Take-Profit musí byť kladná",
+    "invalidSlPrice": "Neplatná cena obmedzenia straty",
+    "slPricePositive": "Cena obmedzenia straty musí byť kladná",
+    "invalidTpPrice": "Neplatná cena realizácie zisku",
+    "tpPricePositive": "Cena realizácie zisku musí byť kladná",
     "slLongBelowEntry": "Cena SL musí byť pod vstupnou cenou ({{price}})",
     "tpLongAboveEntry": "Cena TP musí byť nad vstupnou cenou ({{price}})",
     "slShortAboveEntry": "Cena SL musí byť nad vstupnou cenou ({{price}})",

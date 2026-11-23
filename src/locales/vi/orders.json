@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Không có dữ liệu",
     "priceMarket": "Thị trường",
     "quantity": "Số lượng",
     "price": "Giá",
     "created": "Đã tạo",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Không có dữ liệu",
     "orderId": "ID lệnh",
     "leverage": "Đòn bẩy",
     "leverageValue": "{{leverage}}x",

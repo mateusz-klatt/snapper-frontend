@@ -10,20 +10,20 @@
     "searchInstrument": "Sök instrument..."
   },
   "timeframes": {
-    "1m": "1 minut",
-    "5m": "5 minuter",
-    "15m": "15 minuter",
-    "30m": "30 minuter",
-    "1h": "1 timme",
-    "4h": "4 timmar",
-    "1d": "1 dag"
+    "1m": "1 minut",
+    "5m": "5 minuter",
+    "15m": "15 minuter",
+    "30m": "30 minuter",
+    "1h": "1 timme",
+    "4h": "4 timmar",
+    "1d": "1 dag"
   },
   "stats": {
     "currentPrice": "Senaste stängningskurs",
-    "change24h": "24 h-förändring",
-    "high24h": "24 h-högsta",
-    "low24h": "24 h-lägsta",
-    "incomplete": "Fullständig historik för 24 timmar är inte tillgänglig"
+    "change24h": "24 h-förändring",
+    "high24h": "24 h-högsta",
+    "low24h": "24 h-lägsta",
+    "incomplete": "Fullständig historik för 24 timmar är inte tillgänglig"
   },
   "chart": {
     "title": "Prisdiagram",
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kryptovaluta",
     "commodity": "Råvara",
-    "forex": "Forex",
+    "forex": "Valuta",
     "index": "Index",
     "yield": "Avkastning",
     "unknown": "Annat"
@@ -71,7 +71,7 @@
     "message": "Cache värms upp: {{sampleCount}} / {{expected}} candles tillgängliga {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(härlett från 1m)",
+      "derived": "(härlett från 1 min)",
       "db": "(från DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Parstatistik med {{symbol}} på {{exchange}}: Pearson {{pearson}}, p-värde {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Tid:",
+    "live": "Realtid",
     "sliderAriaLabel": "Flytta tidsreglaget genom marknadshistoriken",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Realtid",
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 v",
+      "mo1": "-1 mån."
     }
   }
 }

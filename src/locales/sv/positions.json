@@ -14,10 +14,10 @@
       "granularity": "Tidsupplösning",
       "granularityAriaLabel": "Välj tidslinjens upplösning",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Värderingsvaluta",
       "valuationCurrencyAriaLabel": "Välj värderingsvaluta",
@@ -91,11 +91,11 @@
       "hideDetails": "Dölj korrigeringar",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Rättad kl. {{time}}",
-      "targetExecutionId": "Ogiltigförklarad handelsutförande",
+      "targetExecutionId": "Ogiltigförklarat handelsutförande",
       "correctionId": "Rättelsepost",
       "reasons": {
-        "unwitnessed_phantom": "Det finns ingen byteshandel som fungerar som bevis för denna bokning.",
-        "unwitnessed_legacy_lineage": "Legacy-härledd post för vilken ingen börshandel fyller fungerar som bevis."
+        "unwitnessed_phantom": "Inget handelsutförande på börsen styrker denna bokföringspost.",
+        "unwitnessed_legacy_lineage": "Post med ursprung i äldre data utan styrkande handelsutförande."
       }
     },
     "timeTravelNotice": "Historisk vy: visar P&L enligt informationen vid {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Damm ({{count}})",
-    "show": "Visa dammpositioner",
-    "hide": "Dölj dammpositioner"
+    "title": "Små restpositioner ({{count}})",
+    "show": "Visa små restpositioner",
+    "hide": "Dölj små restpositioner"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: väntar",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Glidande stopp: {{stop}}",
+    "trailingStopPending": "Glidande stopp: väntar",
+    "slTpButton": "Förlust/vinst",
     "trailButton": "Trailing",
     "quantity": "Kvantitet",
     "averageEntry": "Snittinträde",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bekräfta Bracket",
     "position": "Position",
     "entryPrice": "Inträdespris",
-    "stopLossLabel": "Stop-Loss-pris",
-    "takeProfitLabel": "Take-Profit-pris",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Kurs för förlustbegränsning",
+    "takeProfitLabel": "Kurs för vinsthemtagning",
+    "stopLoss": "Förlustbegränsning",
+    "takeProfit": "Vinsthemtagning",
     "placeholders": {
       "slLong": "Under {{price}}",
       "slShort": "Över {{price}}",
@@ -270,7 +270,7 @@
       "trailingPct": "t.ex. 5.0",
       "minLockPct": "0 = starta direkt"
     },
-    "minLockWarning": "Trailing Stop aktiveras först när priset rör sig {{minLockPct}}% i gynnsam riktning.",
+    "minLockWarning": "Trailing Stop aktiveras först när priset rör sig {{minLockPct}} % i gynnsam riktning.",
     "buttons": {
       "cancel": "Avbryt",
       "review": "Granska",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Minst ett SL- eller TP-pris krävs",
-    "invalidSlPrice": "Ogiltigt Stop-Loss-pris",
-    "slPricePositive": "Stop-Loss-pris måste vara positivt",
-    "invalidTpPrice": "Ogiltigt Take-Profit-pris",
-    "tpPricePositive": "Take-Profit-pris måste vara positivt",
+    "invalidSlPrice": "Ogiltig kurs för förlustbegränsning",
+    "slPricePositive": "Kursen för förlustbegränsning måste vara positiv",
+    "invalidTpPrice": "Ogiltig kurs för vinsthemtagning",
+    "tpPricePositive": "Kursen för vinsthemtagning måste vara positiv",
     "slLongBelowEntry": "SL-pris måste ligga under inträdespris ({{price}})",
     "tpLongAboveEntry": "TP-pris måste ligga över inträdespris ({{price}})",
     "slShortAboveEntry": "SL-pris måste ligga över inträdespris ({{price}})",

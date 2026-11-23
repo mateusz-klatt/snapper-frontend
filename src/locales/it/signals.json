@@ -17,7 +17,7 @@
   "card": {
     "strength": "Forza",
     "price": "Prezzo",
-    "exchange": "Exchange",
+    "exchange": "Piattaforma di scambio",
     "reason": "Motivo:",
     "noPrice": "N/D"
   },
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Adesso",
-    "minutesAgo": "{{count}} min fa",
-    "hoursAgo": "{{count}} h fa"
+    "minutesAgo": "{{count}} min fa",
+    "hoursAgo": "{{count}} h fa"
   },
   "empty": {
     "title": "Nessun segnale trovato",

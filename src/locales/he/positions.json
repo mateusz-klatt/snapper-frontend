@@ -14,10 +14,10 @@
       "granularity": "רזולוציה",
       "granularityAriaLabel": "בחר רזולוציה לציר הזמן",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 דק׳",
+        "fiveMinutes": "5 דק׳",
+        "oneHour": "1 שע׳",
+        "oneDay": "1 י׳"
       },
       "valuationCurrency": "מטבע הערכת שווי",
       "valuationCurrencyAriaLabel": "בחר מטבע הערכת שווי",
@@ -91,11 +91,11 @@
       "hideDetails": "הסתר תיקונים",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "תוקן בשעה {{time}}",
-      "targetExecutionId": "ביטול ביצוע סחר",
+      "targetExecutionId": "ביצוע שבוטל",
       "correctionId": "רישום תיקון",
       "reasons": {
-        "unwitnessed_phantom": "אין מילוי סחר חליפין המשמש כהוכחה להזמנה זו.",
-        "unwitnessed_legacy_lineage": "רשומה מדור קודם ששום מילוי סחר חליפין עבורו אינו משמש כראיה."
+        "unwitnessed_phantom": "אין ביצוע פקודה בבורסה המאמת את הרישום הזה.",
+        "unwitnessed_legacy_lineage": "רשומה שמקורה בנתונים ישנים, ללא ביצוע פקודה המאמת אותה."
       }
     },
     "timeTravelNotice": "תצוגה היסטורית: מוצג ה-P&L כפי שהיה ידוע נכון ל-{{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "אבק ({{count}})",
-    "show": "הצג פוזיציות אבק",
-    "hide": "הסתר פוזיציות אבק"
+    "title": "יתרות זעירות ({{count}})",
+    "show": "הצג פוזיציות עם יתרות זעירות",
+    "hide": "הסתר פוזיציות עם יתרות זעירות"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: ממתין",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "סטופ נגרר: {{stop}}",
+    "trailingStopPending": "סטופ נגרר: ממתין",
+    "slTpButton": "סטופ-לוס / טייק-פרופיט",
     "trailButton": "סטופ נגרר",
     "quantity": "כמות",
     "averageEntry": "כניסה ממוצעת",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L ממומש",
     "updated": "עודכן {{timestamp}}",
     "mark": "מחיר ייחוס",
-    "noValue": "N/A"
+    "noValue": "לא זמין"
   },
   "empty": {
     "title": "אין פוזיציות פתוחות",
@@ -239,8 +239,8 @@
     "confirmTitle": "אשר Bracket",
     "position": "פוזיציה",
     "entryPrice": "מחיר כניסה",
-    "stopLossLabel": "מחיר Stop-Loss",
-    "takeProfitLabel": "מחיר Take-Profit",
+    "stopLossLabel": "מחיר סטופ-לוס",
+    "takeProfitLabel": "מחיר טייק-פרופיט",
     "stopLoss": "סטופ-לוס",
     "takeProfit": "טייק-פרופיט",
     "placeholders": {

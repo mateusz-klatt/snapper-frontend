@@ -49,13 +49,13 @@
     "autostartDisabled": "自動起動: 無効",
     "statusAriaLabel": "ステータス: {{status}}",
     "dataLagAriaLabel": "データ遅延: {{seconds}}秒",
-    "lagBadge": "遅延: {{seconds}}s",
-    "feedLag": "フィード遅延: {{ms}}ms",
-    "heartbeatAge": "HB経過: {{seconds}}s",
+    "lagBadge": "遅延: {{seconds}}秒",
+    "feedLag": "フィード遅延: {{ms}} ms",
+    "heartbeatAge": "HB経過: {{seconds}}秒",
     "metrics": {
       "status": "ステータス",
       "dataLag": "データ遅延",
-      "dataLagValue": "{{ms}}ms",
+      "dataLagValue": "{{ms}} ms",
       "heartbeat": "ハートビート",
       "heartbeatValue": "#{{seq}}",
       "heartbeatUnknown": "#?"

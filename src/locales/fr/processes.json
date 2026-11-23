@@ -31,7 +31,7 @@
       "healthy": "sain"
     },
     "detail": {
-      "wallet": "Wallet",
+      "wallet": "Portefeuille",
       "template": "Modèle",
       "last_run": "Dernière exécution",
       "unknownWallet": "inconnu"

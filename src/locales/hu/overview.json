@@ -32,7 +32,7 @@
     "shortExposure": "Short kitettség",
     "netDelta": "Nettó delta",
     "unrealizedPnl": "Nem realizált P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Nyereség/veszteség %",
     "positions": "Pozíciók",
     "instrumentsCount": "Instrumentumok: {{count}}",
     "empty": "Nem érhetők el pozícióadatok",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Legutóbbi jelzések",
     "empty": "Nincsenek legutóbbi jelzések",
-    "noTime": "N/A"
+    "noTime": "Nem érhető el"
   },
   "executions": {
     "title": "Legutóbbi teljesítések",
     "empty": "Nincsenek legutóbbi teljesítések",
-    "noTime": "N/A"
+    "noTime": "Nem érhető el"
   },
   "processResources": {
     "title": "Folyamaterőforrások",
@@ -55,7 +55,7 @@
     "colName": "Név",
     "colStatus": "Állapot",
     "colRole": "Szerep",
-    "colMemory": "MEM",
+    "colMemory": "Memória",
     "colCpu": "CPU",
     "statusRunning": "Fut",
     "statusStopped": "Leállítva",

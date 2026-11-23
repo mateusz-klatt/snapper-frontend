@@ -32,7 +32,7 @@
     "shortExposure": "Mfiduo wa short",
     "netDelta": "Delta halisi",
     "unrealizedPnl": "P&L Isiyotekelezwa",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Faida/hasara %",
     "positions": "Nafasi",
     "instrumentsCount": "Instrumenti: {{count}}",
     "empty": "Hakuna data ya nafasi inayopatikana",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Ishara za Karibuni",
     "empty": "Hakuna ishara za karibuni",
-    "noTime": "N/A"
+    "noTime": "Haipatikani"
   },
   "executions": {
     "title": "Utekelezaji wa Karibuni",
     "empty": "Hakuna utekelezaji wa karibuni",
-    "noTime": "N/A"
+    "noTime": "Haipatikani"
   },
   "processResources": {
     "title": "Rasilimali za michakato",
@@ -55,7 +55,7 @@
     "colName": "Jina",
     "colStatus": "Hali",
     "colRole": "Jukumu",
-    "colMemory": "MEM",
+    "colMemory": "Kumbukumbu",
     "colCpu": "CPU",
     "statusRunning": "Inaendeshwa",
     "statusStopped": "Imesimamishwa",

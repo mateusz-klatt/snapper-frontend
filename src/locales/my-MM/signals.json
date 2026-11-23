@@ -19,7 +19,7 @@
     "price": "စျေးနှုန်း",
     "exchange": "အိတ်ချိန်း",
     "reason": "အကြောင်းရင်း:",
-    "noPrice": "N/A"
+    "noPrice": "မရရှိနိုင်ပါ"
   },
   "strength": {
     "strong": "အားကောင်း",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "ယခုလေးတင်",
-    "minutesAgo": "{{count}}m အကြာက",
-    "hoursAgo": "{{count}}h အကြာက"
+    "minutesAgo": "{{count}} မိနစ် အကြာက",
+    "hoursAgo": "{{count}} နာရီ အကြာက"
   },
   "empty": {
     "title": "အချက်ပြမှု မတွေ့ပါ",

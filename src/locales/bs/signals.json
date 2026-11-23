@@ -19,7 +19,7 @@
     "price": "Cijena",
     "exchange": "Berza",
     "reason": "Razlog:",
-    "noPrice": "N/A"
+    "noPrice": "Nije dostupno"
   },
   "strength": {
     "strong": "Jak",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Upravo sada",
-    "minutesAgo": "{{count}}m prije",
-    "hoursAgo": "{{count}}h prije"
+    "minutesAgo": "{{count}} min prije",
+    "hoursAgo": "{{count}} h prije"
   },
   "empty": {
     "title": "Nema pronađenih signala",

@@ -10,19 +10,19 @@
     "searchInstrument": "Instrument suchen..."
   },
   "timeframes": {
-    "1m": "1 Minute",
-    "5m": "5 Minuten",
-    "15m": "15 Minuten",
-    "30m": "30 Minuten",
-    "1h": "1 Stunde",
-    "4h": "4 Stunden",
-    "1d": "1 Tag"
+    "1m": "1 Minute",
+    "5m": "5 Minuten",
+    "15m": "15 Minuten",
+    "30m": "30 Minuten",
+    "1h": "1 Stunde",
+    "4h": "4 Stunden",
+    "1d": "1 Tag"
   },
   "stats": {
     "currentPrice": "Letzter Schlusskurs",
-    "change24h": "Veränderung 24h",
-    "high24h": "Hoch 24h",
-    "low24h": "Tief 24h",
+    "change24h": "Veränderung 24 h",
+    "high24h": "Hoch 24 h",
+    "low24h": "Tief 24 h",
     "incomplete": "Vollständiger 24-Stunden-Verlauf nicht verfügbar"
   },
   "chart": {
@@ -71,7 +71,7 @@
     "message": "Cache wird aufgewärmt: {{sampleCount}} / {{expected}} Kerzen verfügbar {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(abgeleitet aus 1m)",
+      "derived": "(abgeleitet aus 1 min)",
       "db": "(aus DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Paarstatistik mit {{symbol}} auf {{exchange}}: Pearson {{pearson}}, p-Wert {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Zeit:",
+    "live": "Echtzeit",
     "sliderAriaLabel": "Mit dem Zeitregler durch den Marktverlauf navigieren",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Echtzeit",
+      "h1": "-1 h",
+      "d1": "-1 T",
+      "w1": "-1 W",
+      "mo1": "-1 Mon."
     }
   }
 }

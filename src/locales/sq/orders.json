@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Nuk ka të dhëna",
     "priceMarket": "Me çmim tregu",
     "quantity": "Sasi",
     "price": "Çmim",
     "created": "Krijuar",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Nuk ka të dhëna",
     "orderId": "ID e urdhrit",
     "leverage": "Levë",
     "leverageValue": "{{leverage}}x",

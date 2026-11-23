@@ -138,7 +138,7 @@
     "scopesHeading": "Pyydetyt käyttöoikeudet",
     "scopes": {
       "snapperRead": "Lue markkinatietoja, toimeksiantoja, positioita ja signaaleja vain omien käyttöoikeuksiesi sallimissa rajoissa.",
-      "offlineAccess": "Säilytä yhteys pyytämättä sinua kirjautumaan uudelleen sisään."
+      "offlineAccess": "Yhteyden säilyttäminen ilman uutta kirjautumista."
     },
     "unrecognizedScope": "Tuntematon käyttöoikeus: {{scope}}",
     "notApprovable": "Tässä pyynnössä pyydetään käyttöoikeuksia, joita Snapper ei voi myöntää. Hylkää pyyntö ja tarkista liittimen asetukset.",

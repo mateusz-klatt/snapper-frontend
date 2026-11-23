@@ -19,7 +19,7 @@
     "price": "Bei",
     "exchange": "Soko",
     "reason": "Sababu:",
-    "noPrice": "N/A"
+    "noPrice": "Haipatikani"
   },
   "strength": {
     "strong": "Imara",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Sasa hivi",
-    "minutesAgo": "{{count}}m zilizopita",
-    "hoursAgo": "{{count}}h zilizopita"
+    "minutesAgo": "dak {{count}} zilizopita",
+    "hoursAgo": "saa {{count}} zilizopita"
   },
   "empty": {
     "title": "Hakuna ishara zilizopatikana",

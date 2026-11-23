@@ -32,7 +32,7 @@
     "shortExposure": "Kort exponering",
     "netDelta": "Nettodelta",
     "unrealizedPnl": "Orealiserad P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Vinst/förlust %",
     "positions": "Positioner",
     "instrumentsCount": "Instrument: {{count}}",
     "empty": "Inga positionsdata tillgängliga",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Senaste signaler",
     "empty": "Inga nya signaler",
-    "noTime": "N/A"
+    "noTime": "Ej tillgängligt"
   },
   "executions": {
     "title": "Senaste utföranden",
     "empty": "Inga nya utföranden",
-    "noTime": "N/A"
+    "noTime": "Ej tillgängligt"
   },
   "processResources": {
     "title": "Processresurser",
@@ -55,13 +55,13 @@
     "colName": "Namn",
     "colStatus": "Status",
     "colRole": "Roll",
-    "colMemory": "MEM",
+    "colMemory": "Minne",
     "colCpu": "CPU",
     "statusRunning": "Körs",
     "statusStopped": "Stoppad",
     "statusDisabled": "Inaktiverad",
     "containerTotal": "Totalt MEM {{value}}",
-    "cpuTooltip": "CPU-användning kan överstiga 100 % över flera kärnor",
+    "cpuTooltip": "CPU-användning kan överstiga 100 % över flera kärnor",
     "metricsNa": "Ingen separat CPU/minne per process; detta körs i processen (trådläge) eller körs inte",
     "managedOnly": "Endast denna containers processer",
     "managedOnlyHint": "Varje container hanterar en delmängd av processerna (sin autostartprofil); andra processer rapporteras här endast som körande någon annanstans. Avmarkera för att se varje process som varje container rapporterar.",

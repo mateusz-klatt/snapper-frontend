@@ -30,9 +30,9 @@
   },
   "process": {
     "uptimeNotAvailable": "Н/Д",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeMinutes": "{{minutes}} мин",
+    "uptimeHours": "{{hours}} ч {{minutes}} мин",
+    "uptimeDays": "{{days}} д {{hours}} ч",
     "backtestName": "Бэктест {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Н/Д",
@@ -47,7 +47,7 @@
     "unavailable": "Статистика базы данных недоступна: {{message}}",
     "fallbackError": "Не удалось загрузить статистику базы данных.",
     "sampled": "выборка {{age}} назад",
-    "samplerSummary": "Интервал выборки: {{seconds}} с · Количество таблиц: {{count}}",
+    "samplerSummary": "Интервал выборки: {{seconds}} с · Количество таблиц: {{count}}",
     "columns": {
       "table": "Таблица",
       "kind": "Тип",
@@ -92,13 +92,13 @@
       "files": "Файлы",
       "status": "Статус"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} д",
+    "ok": "В норме",
     "error": "ошибка"
   },
   "systemMetrics": {
     "disk": "Свободно на диске",
-    "diskUsage": "{{percent}}% занято · {{mount}}",
+    "diskUsage": "{{percent}} % занято · {{mount}}",
     "title": "Состояние процесса",
     "loading": "Загрузка метрик процесса…",
     "unavailable": "Метрики процесса недоступны: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Потоки",
     "openFds": "Открытые FD",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Ограничено {{count}}×",
     "memory": "Память",
     "saturation": "Насыщение {{percent}}",
@@ -119,7 +119,7 @@
     "asyncioPending": "Ожидающие: {{count}}",
     "dbPool": "Пул БД",
     "liveConns": "Активные подключения: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Поколения GC 0/1/2",
     "gcObjects": "Объекты: {{value}}",
     "threadsPercent": "Потоки %",
     "networkConns": "Сетевые подключения",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "Согласование соединения {{age}}"
     },
     "kind": {
       "direct": "прямой",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Активен",
       "quarantined": "В карантине",
-      "quarantinedSeconds": "В карантине ({{seconds}}s)",
+      "quarantinedSeconds": "В карантине ({{seconds}} с)",
       "disabled": "Отключён"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "только что",
-    "seconds": "{{seconds}}s назад",
-    "minutes": "{{minutes}}min назад",
-    "hours": "{{hours}}h назад",
-    "days": "{{days}}d назад"
+    "seconds": "{{seconds}} с назад",
+    "minutes": "{{minutes}} мин назад",
+    "hours": "{{hours}} ч назад",
+    "days": "{{days}} д назад"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} с",
+    "minutes": "{{minutes}} мин",
+    "hours": "{{hours}} ч",
+    "days": "{{days}} д"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

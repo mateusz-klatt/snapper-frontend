@@ -137,7 +137,7 @@
     "readOnlyGuarantee": "Akses baca sahaja yang terhad kepada kebenaran sedia ada anda. Penyambung ini tidak boleh membuat, mengubah atau membatalkan pesanan.",
     "scopesHeading": "Akses yang diminta",
     "scopes": {
-      "snapperRead": "Membaca data pasaran, pesanan, kedudukan dan isyarat, hanya dalam skop yang dibenarkan oleh kebenaran anda sendiri.",
+      "snapperRead": "Membaca data pasaran, pesanan, posisi dan isyarat, hanya dalam skop yang dibenarkan oleh kebenaran anda sendiri.",
       "offlineAccess": "Kekal bersambung tanpa meminta anda log masuk semula."
     },
     "unrecognizedScope": "Kebenaran tidak dikenali: {{scope}}",

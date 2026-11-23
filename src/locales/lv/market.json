@@ -10,20 +10,20 @@
     "searchInstrument": "Meklēt instrumentu..."
   },
   "timeframes": {
-    "1m": "1 minūte",
-    "5m": "5 minūtes",
-    "15m": "15 minūtes",
-    "30m": "30 minūtes",
-    "1h": "1 stunda",
-    "4h": "4 stundas",
-    "1d": "1 diena"
+    "1m": "1 minūte",
+    "5m": "5 minūtes",
+    "15m": "15 minūtes",
+    "30m": "30 minūtes",
+    "1h": "1 stunda",
+    "4h": "4 stundas",
+    "1d": "1 diena"
   },
   "stats": {
     "currentPrice": "Pēdējā slēgšanas cena",
-    "change24h": "24 st. izmaiņa",
-    "high24h": "24 st. maksimums",
-    "low24h": "24 st. minimums",
-    "incomplete": "Pilna 24 stundu vēsture nav pieejama"
+    "change24h": "24 st. izmaiņa",
+    "high24h": "24 st. maksimums",
+    "low24h": "24 st. minimums",
+    "incomplete": "Pilna 24 stundu vēsture nav pieejama"
   },
   "chart": {
     "title": "Cenas grafiks",
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptovalūta",
     "commodity": "Prece",
-    "forex": "Forex",
+    "forex": "Ārvalstu valūtas",
     "index": "Indekss",
     "yield": "Ienesīgums",
     "unknown": "Cits"
@@ -71,7 +71,7 @@
     "message": "Kešatmiņa iesilst: pieejamas {{sampleCount}} / {{expected}} sveces {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(atvasināts no 1m)",
+      "derived": "(atvasināts no 1 min)",
       "db": "(no DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Pāra statistika ar {{symbol}} biržā {{exchange}}: Pearson {{pearson}}, p vērtība {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Laiks:",
+    "live": "Reāllaikā",
     "sliderAriaLabel": "Pārvietot laika slīdni pa tirgus vēsturi",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Reāllaikā",
+      "h1": "-1 st.",
+      "d1": "-1 d.",
+      "w1": "-1 ned.",
+      "mo1": "-1 mēn."
     }
   }
 }

@@ -14,10 +14,10 @@
       "granularity": "Opløsning",
       "granularityAriaLabel": "Vælg tidslinjens opløsning",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 t",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Værdiansættelsesvaluta",
       "valuationCurrencyAriaLabel": "Vælg værdiansættelsesvaluta",
@@ -92,10 +92,10 @@
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Rettet kl. {{time}}",
       "targetExecutionId": "Annulleret handelsudførelse",
-      "correctionId": "Rettelse rekord",
+      "correctionId": "Rettelsespost",
       "reasons": {
-        "unwitnessed_phantom": "Der er ingen byttehandel, der tjener som bevis for denne reservation.",
-        "unwitnessed_legacy_lineage": "Legacy-afledt post, for hvilken ingen børshandel fylder tjener som bevis."
+        "unwitnessed_phantom": "Ingen handelsudførelse på børsen dokumenterer denne bogføring.",
+        "unwitnessed_legacy_lineage": "Post med oprindelse i ældre data uden en dokumenterende handelsudførelse."
       }
     },
     "timeTravelNotice": "Historisk visning: viser P&L som kendt pr. {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Støv ({{count}})",
-    "show": "Vis støvpositioner",
-    "hide": "Skjul støvpositioner"
+    "title": "Små restpositioner ({{count}})",
+    "show": "Vis små restpositioner",
+    "hide": "Skjul små restpositioner"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: afventer",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Efterfølgende stop: {{stop}}",
+    "trailingStopPending": "Efterfølgende stop: afventer",
+    "slTpButton": "Tab/gevinst",
     "trailButton": "Trailing",
     "quantity": "Mængde",
     "averageEntry": "Gns. indgang",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bekræft Bracket",
     "position": "Position",
     "entryPrice": "Indgangspris",
-    "stopLossLabel": "Stop-Loss-pris",
-    "takeProfitLabel": "Take-Profit-pris",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Pris for tabsbegrænsning",
+    "takeProfitLabel": "Pris for gevinsthjemtagning",
+    "stopLoss": "Tabsbegrænsning",
+    "takeProfit": "Gevinsthjemtagning",
     "placeholders": {
       "slLong": "Under {{price}}",
       "slShort": "Over {{price}}",
@@ -270,7 +270,7 @@
       "trailingPct": "f.eks. 5.0",
       "minLockPct": "0 = start straks"
     },
-    "minLockWarning": "Trailing Stop aktiveres først, når prisen bevæger sig {{minLockPct}}% i favør.",
+    "minLockWarning": "Trailing Stop aktiveres først, når prisen bevæger sig {{minLockPct}} % i favør.",
     "buttons": {
       "cancel": "Annuller",
       "review": "Gennemse",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Mindst én SL- eller TP-pris er påkrævet",
-    "invalidSlPrice": "Ugyldig Stop-Loss-pris",
-    "slPricePositive": "Stop-Loss-pris skal være positiv",
-    "invalidTpPrice": "Ugyldig Take-Profit-pris",
-    "tpPricePositive": "Take-Profit-pris skal være positiv",
+    "invalidSlPrice": "Ugyldig pris for tabsbegrænsning",
+    "slPricePositive": "Prisen for tabsbegrænsning skal være positiv",
+    "invalidTpPrice": "Ugyldig pris for gevinsthjemtagning",
+    "tpPricePositive": "Prisen for gevinsthjemtagning skal være positiv",
     "slLongBelowEntry": "SL-pris skal være under indgangspris ({{price}})",
     "tpLongAboveEntry": "TP-pris skal være over indgangspris ({{price}})",
     "slShortAboveEntry": "SL-pris skal være over indgangspris ({{price}})",

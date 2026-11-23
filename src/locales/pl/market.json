@@ -10,19 +10,19 @@
     "searchInstrument": "Szukaj instrumentu..."
   },
   "timeframes": {
-    "1m": "1 minuta",
-    "5m": "5 minut",
-    "15m": "15 minut",
-    "30m": "30 minut",
-    "1h": "1 godzina",
-    "4h": "4 godziny",
-    "1d": "1 dzień"
+    "1m": "1 minuta",
+    "5m": "5 minut",
+    "15m": "15 minut",
+    "30m": "30 minut",
+    "1h": "1 godzina",
+    "4h": "4 godziny",
+    "1d": "1 dzień"
   },
   "stats": {
     "currentPrice": "Ostatnia cena zamknięcia",
-    "change24h": "Zmiana 24h",
-    "high24h": "Maks. 24h",
-    "low24h": "Min. 24h",
+    "change24h": "Zmiana 24 h",
+    "high24h": "Maks. 24 h",
+    "low24h": "Min. 24 h",
     "incomplete": "Pełna historia z 24 godzin jest niedostępna"
   },
   "chart": {
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kryptowaluta",
     "commodity": "Towar",
-    "forex": "Forex",
+    "forex": "Rynek walutowy",
     "index": "Indeks",
     "yield": "Rentowność",
     "unknown": "Inne"
@@ -71,7 +71,7 @@
     "message": "Wypełnianie cache’u: dostępne {{sampleCount}} / {{expected}} świec {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(zagregowane z 1m)",
+      "derived": "(zagregowane z 1 min)",
       "db": "(z bazy danych)"
     }
   },
@@ -86,10 +86,10 @@
     "sliderAriaLabel": "Przewijaj czas rynkowy",
     "presets": {
       "live": "Na żywo",
-      "h1": "-1g",
-      "d1": "-1d",
-      "w1": "-1t",
-      "mo1": "-1mc"
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 tydz.",
+      "mo1": "-1 mies."
     }
   }
 }

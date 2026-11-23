@@ -14,10 +14,10 @@
       "granularity": "Деталізація",
       "granularityAriaLabel": "Вибрати деталізацію",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 хв",
+        "fiveMinutes": "5 хв",
+        "oneHour": "1 год",
+        "oneDay": "1 д"
       },
       "valuationCurrency": "Валюта оцінки",
       "valuationCurrencyAriaLabel": "Вибрати валюту оцінки",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Виконання угоди скасовано",
       "correctionId": "Запис виправлення",
       "reasons": {
-        "unwitnessed_phantom": "Немає заповнення біржової торгівлі, яка б служила доказом цього бронювання.",
-        "unwitnessed_legacy_lineage": "Успадкований запис, доказом якого не є заповнення біржової торгівлі."
+        "unwitnessed_phantom": "Жодне виконання ордера на біржі не підтверджує цей запис про операцію.",
+        "unwitnessed_legacy_lineage": "Запис зі старих даних без виконання ордера, яке б його підтверджувало."
       }
     },
     "timeTravelNotice": "Історичний режим: P&L показано за даними станом на {{asOf}}.",
@@ -218,9 +218,9 @@
     "hide": "Сховати пилові позиції"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: очікує",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Трейлінг-стоп: {{stop}}",
+    "trailingStopPending": "Трейлінг-стоп: очікує",
+    "slTpButton": "Стоп-лос / Тейк-профіт",
     "trailButton": "Trailing",
     "quantity": "Кількість",
     "averageEntry": "Сер. вхід",
@@ -239,8 +239,8 @@
     "confirmTitle": "Підтвердити Bracket",
     "position": "Позиція",
     "entryPrice": "Ціна входу",
-    "stopLossLabel": "Ціна Stop-Loss",
-    "takeProfitLabel": "Ціна Take-Profit",
+    "stopLossLabel": "Ціна стоп-лосу",
+    "takeProfitLabel": "Ціна тейк-профіту",
     "stopLoss": "Стоп-лос",
     "takeProfit": "Тейк-профіт",
     "placeholders": {

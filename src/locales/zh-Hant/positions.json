@@ -14,10 +14,10 @@
       "granularity": "粒度",
       "granularityAriaLabel": "選擇時間線粒度",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1分鐘",
+        "fiveMinutes": "5分鐘",
+        "oneHour": "1小時",
+        "oneDay": "1天"
       },
       "valuationCurrency": "估值貨幣",
       "valuationCurrencyAriaLabel": "選擇估值貨幣",
@@ -85,17 +85,17 @@
     },
     "executionHistory": {
       "title": "計算歷史",
-      "summary": "記錄的成交更正可能早於所選時段。此歷史記錄與所顯示P&L資料點的警告分開。",
+      "summary": "已記錄的成交更正可能早於所選時段。這些歷史記錄與所顯示 P&L 數據點的警告相互獨立。",
       "correctionCount": "已記錄的更正：{{count}}",
       "showDetails": "顯示更正",
       "hideDetails": "隱藏更正",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "於 {{time}} 更正",
-      "targetExecutionId": "取消交易執行",
+      "targetExecutionId": "已作廢的成交",
       "correctionId": "更正記錄",
       "reasons": {
-        "unwitnessed_phantom": "沒有任何交易所交易記錄可以作為此預訂的證據。",
-        "unwitnessed_legacy_lineage": "沒有交易所交易填充作為證據的遺留記錄。"
+        "unwitnessed_phantom": "沒有交易所成交記錄可作為此入帳記錄的憑證。",
+        "unwitnessed_legacy_lineage": "源自舊系統的記錄，缺少交易所成交記錄作為憑證。"
       }
     },
     "timeTravelNotice": "歷史檢視：顯示截至 {{asOf}} 已知的 P&L。",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "塵埃 ({{count}})",
-    "show": "顯示塵埃持倉",
-    "hide": "隱藏塵埃持倉"
+    "title": "零星倉位 ({{count}})",
+    "show": "顯示零星倉位",
+    "hide": "隱藏零星倉位"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: 待生效",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "追蹤止損: {{stop}}",
+    "trailingStopPending": "追蹤止損: 待生效",
+    "slTpButton": "止損/止賺",
     "trailButton": "追蹤",
     "quantity": "數量",
     "averageEntry": "平均開倉價",

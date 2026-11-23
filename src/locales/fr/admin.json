@@ -50,7 +50,7 @@
     "subtitle": "Ajoutez des observateurs actifs à un desk ou supprimez leur accès actuel.",
     "memberCount": "Membres : {{count}}",
     "desk": {
-      "label": "Desk",
+      "label": "Bureau de négociation",
       "placeholder": "Sélectionnez un desk..."
     },
     "add": {
@@ -103,7 +103,7 @@
     "selectAWallet": "Sélectionnez un wallet",
     "chooseWalletPlaceholder": "Choisir un wallet...",
     "selectWalletPlaceholder": "Sélectionner un wallet...",
-    "walletLabel": "Wallet",
+    "walletLabel": "Portefeuille",
     "paperAnnotation": " (démo)",
     "unknownError": "Erreur inconnue",
     "dash": "-",
@@ -208,7 +208,7 @@
       "selectWalletPrompt": "Choisissez un wallet ci-dessus pour afficher ses attributions de scope.",
       "columns": {
         "operator": "Opérateur",
-        "scope": "Scope",
+        "scope": "Périmètre",
         "target": "Cible",
         "grantedAt": "Attribué le",
         "actions": "Actions"
@@ -226,7 +226,7 @@
       "fields": {
         "operator": "Opérateur",
         "operatorPlaceholder": "Sélectionner un opérateur...",
-        "wallet": "Wallet",
+        "wallet": "Portefeuille",
         "scopeKind": "Type de scope",
         "underlyingPublicId": "Public ID du sous-jacent",
         "instrumentPublicId": "Public ID de l'instrument",
@@ -261,8 +261,8 @@
       "title": "Transférer l'attribution de scope",
       "fields": {
         "currentHolder": "Titulaire actuel",
-        "scope": "Scope",
-        "wallet": "Wallet",
+        "scope": "Périmètre",
+        "wallet": "Portefeuille",
         "scopeValue": "{{kind}} : {{target}}",
         "transferTo": "Transférer à l'opérateur",
         "transferToPlaceholder": "Sélectionner l'opérateur destinataire...",
@@ -331,7 +331,7 @@
     "form": {
       "title": "Ajouter un identifiant",
       "fields": {
-        "wallet": "Wallet",
+        "wallet": "Portefeuille",
         "exchange": "Plateforme",
         "exchangePlaceholder": "p. ex. kraken",
         "credentialType": "Type d'identifiant",

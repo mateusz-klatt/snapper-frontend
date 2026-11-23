@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}} %"
     },
     "equity": {
       "legend": {
@@ -135,9 +135,9 @@
     "signalsTrades": "{{signals}} signaux / {{trades}} transactions",
     "milestoneLine": "jalon {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
     }
   },
   "create": {
@@ -166,7 +166,7 @@
       "endDateLabel": "Date de fin",
       "initialCashLabel": "Capital initial",
       "slippageBpsLabel": "Glissement (bps)",
-      "commissionBpsLabel": "Commission (bps)",
+      "commissionBpsLabel": "Commission (points de base)",
       "executionModeLabel": "Mode d'exécution",
       "executionModeDirectDb": "DB directe",
       "executionModeZmqReplay": "Relecture ZMQ",

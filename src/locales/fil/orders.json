@@ -22,16 +22,16 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Hindi available",
     "priceMarket": "Market order",
     "quantity": "Dami",
     "price": "Presyo",
     "created": "Ginawa",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Hindi available",
     "orderId": "ID ng order",
-    "leverage": "Leverage",
+    "leverage": "Paggamit ng hiniram na puhunan",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "PAGBAWAS LAMANG",
     "cancel": "Kanselahin",
     "cancelling": "Kinakansela…",
     "cancelAriaLabel": "Kanselahin ang order {{orderId}}"
@@ -61,7 +61,7 @@
       "status": "Katayuan",
       "quantity": "Dami",
       "price": "Presyo",
-      "leverage": "Leverage",
+      "leverage": "Paggamit ng hiniram na puhunan",
       "reduceOnly": "Reduce-only",
       "created": "Ginawa"
     },
@@ -89,7 +89,7 @@
       "price": "Presyo",
       "stopPrice": "Presyo ng stop",
       "mode": "Paraan",
-      "wallet": "Wallet",
+      "wallet": "Pitaka",
       "type": "Uri",
       "postOnly": "Maker lamang"
     },

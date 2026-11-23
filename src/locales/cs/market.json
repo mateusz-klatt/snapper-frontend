@@ -10,19 +10,19 @@
     "searchInstrument": "Hledat instrument..."
   },
   "timeframes": {
-    "1m": "1 minuta",
-    "5m": "5 minut",
-    "15m": "15 minut",
-    "30m": "30 minut",
-    "1h": "1 hodina",
-    "4h": "4 hodiny",
-    "1d": "1 den"
+    "1m": "1 minuta",
+    "5m": "5 minut",
+    "15m": "15 minut",
+    "30m": "30 minut",
+    "1h": "1 hodina",
+    "4h": "4 hodiny",
+    "1d": "1 den"
   },
   "stats": {
     "currentPrice": "Poslední zavírací cena",
-    "change24h": "24h změna",
-    "high24h": "24h maximum",
-    "low24h": "24h minimum",
+    "change24h": "24 h změna",
+    "high24h": "24 h maximum",
+    "low24h": "24 h minimum",
     "incomplete": "Úplná historie za 24 hodin není dostupná"
   },
   "chart": {
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kryptoměna",
     "commodity": "Komodita",
-    "forex": "Forex",
+    "forex": "Devizový trh",
     "index": "Index",
     "yield": "Výnos",
     "unknown": "Ostatní"
@@ -71,7 +71,7 @@
     "message": "Cache se zahřívá: k dispozici {{sampleCount}} / {{expected}} svíček {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(odvozeno z 1m)",
+      "derived": "(odvozeno z 1 min)",
       "db": "(z DB)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistiky páru s {{symbol}} na burze {{exchange}}: Pearson {{pearson}}, p-hodnota {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Čas:",
+    "live": "Živě",
     "sliderAriaLabel": "Procházet historii trhu časovým posuvníkem",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Živě",
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 týd.",
+      "mo1": "-1 měs."
     }
   }
 }

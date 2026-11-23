@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "الآن",
-    "minutesAgo": "قبل {{count}}د",
-    "hoursAgo": "قبل {{count}}س"
+    "minutesAgo": "قبل {{count}} د",
+    "hoursAgo": "قبل {{count}} س"
   },
   "empty": {
     "title": "لم يتم العثور على إشارات",

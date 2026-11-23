@@ -29,13 +29,13 @@
     "inactive": "ไม่ใช้งาน"
   },
   "process": {
-    "uptimeNotAvailable": "N/A",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}h",
+    "uptimeNotAvailable": "ไม่มีข้อมูล",
+    "uptimeMinutes": "{{minutes}} นาที",
+    "uptimeHours": "{{hours}} ชม. {{minutes}} นาที",
+    "uptimeDays": "{{days}} วัน {{hours}} ชม.",
     "backtestName": "แบ็คเทสต์ {{id}}",
     "pidLabel": "PID",
-    "pidNotAvailable": "N/A",
+    "pidNotAvailable": "ไม่มีข้อมูล",
     "uptimeLabel": "เวลาทำงาน",
     "exitCode": "รหัสออก: {{code}}",
     "service": "บริการ",
@@ -47,7 +47,7 @@
     "unavailable": "สถิติฐานข้อมูลไม่พร้อมใช้งาน: {{message}}",
     "fallbackError": "โหลดสถิติฐานข้อมูลไม่สำเร็จ",
     "sampled": "สุ่มตัวอย่างเมื่อ {{age}}",
-    "samplerSummary": "ช่วงการสุ่มตัวอย่าง: {{seconds}} วินาที · จำนวนตาราง: {{count}}",
+    "samplerSummary": "ช่วงการสุ่มตัวอย่าง: {{seconds}} วินาที · จำนวนตาราง: {{count}}",
     "columns": {
       "table": "ตาราง",
       "kind": "ชนิด",
@@ -92,8 +92,8 @@
       "files": "ไฟล์",
       "status": "สถานะ"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} วัน",
+    "ok": "ปกติ",
     "error": "ข้อผิดพลาด"
   },
   "systemMetrics": {
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "การเจรจาเชื่อมต่อ {{age}}"
     },
     "kind": {
       "direct": "โดยตรง",
@@ -192,7 +192,7 @@
     "status": {
       "active": "ใช้งานอยู่",
       "quarantined": "ถูกกักกัน",
-      "quarantinedSeconds": "ถูกกักกัน ({{seconds}}s)",
+      "quarantinedSeconds": "ถูกกักกัน ({{seconds}} วินาที)",
       "disabled": "ปิดใช้งาน"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "เมื่อครู่นี้",
-    "seconds": "{{seconds}}s ที่แล้ว",
-    "minutes": "{{minutes}}min ที่แล้ว",
-    "hours": "{{hours}}h ที่แล้ว",
-    "days": "{{days}}d ที่แล้ว"
+    "seconds": "{{seconds}} วินาที ที่แล้ว",
+    "minutes": "{{minutes}} นาที ที่แล้ว",
+    "hours": "{{hours}} ชม. ที่แล้ว",
+    "days": "{{days}} วัน ที่แล้ว"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} วินาที",
+    "minutes": "{{minutes}} นาที",
+    "hours": "{{hours}} ชม.",
+    "days": "{{days}} วัน"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

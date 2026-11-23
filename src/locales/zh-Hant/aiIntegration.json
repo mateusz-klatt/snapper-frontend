@@ -137,7 +137,7 @@
     "readOnlyGuarantee": "僅提供唯讀存取，且存取範圍僅限於您現有的權限。此連接器無法下單、修改訂單或撤單。",
     "scopesHeading": "請求的存取權限",
     "scopes": {
-      "snapperRead": "僅在您自身權限允許的範圍內讀取市場資料、訂單、持倉和訊號。",
+      "snapperRead": "僅在您自身權限允許的範圍內讀取市場資料、訂單、倉位和訊號。",
       "offlineAccess": "保持連線，無需您再次登入。"
     },
     "unrecognizedScope": "無法識別的權限：{{scope}}",

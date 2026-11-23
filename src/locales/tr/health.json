@@ -3,7 +3,7 @@
     "title": "Sistem Sağlığı",
     "healthMetricsHeading": "Sağlık Metrikleri",
     "processStatusHeading": "Süreç Durumu",
-    "activeBacktestsHeading": "Aktif backtestler",
+    "activeBacktestsHeading": "Aktif geriye dönük testler",
     "quickActionsHeading": "Hızlı Eylemler",
     "featureNotImplemented": "Özellik henüz uygulanmadı",
     "restartServices": "Servisleri yeniden başlat",
@@ -23,23 +23,23 @@
   "metrics": {
     "tradingEngine": "Trading Motoru",
     "tradingEngineDescription": "Strateji yürütme motoru",
-    "activeBacktests": "Aktif backtestler",
-    "activeBacktestsDescription": "Çalışan backtest süreçleri",
+    "activeBacktests": "Aktif geriye dönük testler",
+    "activeBacktestsDescription": "Çalışan geriye dönük test süreçleri",
     "active": "Aktif",
     "inactive": "Pasif"
   },
   "process": {
     "uptimeNotAvailable": "Yok",
-    "uptimeMinutes": "{{minutes}}dk",
-    "uptimeHours": "{{hours}}s {{minutes}}dk",
-    "uptimeDays": "{{days}}g {{hours}}s",
-    "backtestName": "Backtest {{id}}",
+    "uptimeMinutes": "{{minutes}} dk.",
+    "uptimeHours": "{{hours}} sa. {{minutes}} dk.",
+    "uptimeDays": "{{days}} gün {{hours}} sa.",
+    "backtestName": "Geriye dönük test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Yok",
     "uptimeLabel": "Çalışma süresi",
     "exitCode": "Çıkış kodu: {{code}}",
     "service": "servis",
-    "backtest": "backtest"
+    "backtest": "geriye dönük test"
   },
   "dbStats": {
     "title": "Veritabanı İstatistikleri",
@@ -47,7 +47,7 @@
     "unavailable": "Veritabanı istatistikleri kullanılamıyor: {{message}}",
     "fallbackError": "Veritabanı istatistikleri yüklenemedi.",
     "sampled": "örneklendi {{age}}",
-    "samplerSummary": "Örnekleme aralığı: {{seconds}} sn · tablo sayısı: {{count}}",
+    "samplerSummary": "Örnekleme aralığı: {{seconds}} sn · tablo sayısı: {{count}}",
     "columns": {
       "table": "Tablo",
       "kind": "Tür",
@@ -92,13 +92,13 @@
       "files": "Dosyalar",
       "status": "Durum"
     },
-    "retainDays": "{{days}}g",
-    "ok": "OK",
+    "retainDays": "{{days}} gün",
+    "ok": "Normal",
     "error": "hata"
   },
   "systemMetrics": {
     "disk": "Boş disk alanı",
-    "diskUsage": "{{percent}}% kullanıldı · {{mount}}",
+    "diskUsage": "%{{percent}} kullanıldı · {{mount}}",
     "title": "Süreç Sağlığı",
     "loading": "Süreç metrikleri yükleniyor…",
     "unavailable": "Süreç metrikleri kullanılamıyor: {{message}}",
@@ -110,7 +110,7 @@
     "threads": "Thread'ler",
     "openFds": "Açık FD'ler",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "%{{percent}}",
     "throttled": "{{count}}× kısıtlandı",
     "memory": "Bellek",
     "saturation": "Doygunluk {{percent}}",
@@ -119,7 +119,7 @@
     "asyncioPending": "Bekleyen: {{count}}",
     "dbPool": "DB Havuzu",
     "liveConns": "Canlı bağlantılar: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC nesilleri 0/1/2",
     "gcObjects": "Nesneler: {{value}}",
     "threadsPercent": "Thread %",
     "networkConns": "Ağ bağlantıları",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "El sıkışması {{age}}"
     },
     "kind": {
       "direct": "doğrudan",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Etkin",
       "quarantined": "Karantinada",
-      "quarantinedSeconds": "Karantinada ({{seconds}}s)",
+      "quarantinedSeconds": "Karantinada ({{seconds}} sn)",
       "disabled": "Devre dışı"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "az önce",
-    "seconds": "{{seconds}}s önce",
-    "minutes": "{{minutes}}dk önce",
-    "hours": "{{hours}}s önce",
-    "days": "{{days}}g önce"
+    "seconds": "{{seconds}} sn önce",
+    "minutes": "{{minutes}} dk. önce",
+    "hours": "{{hours}} sa. önce",
+    "days": "{{days}} gün önce"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}dk",
-    "hours": "{{hours}}s",
-    "days": "{{days}}g"
+    "seconds": "{{seconds}} sn",
+    "minutes": "{{minutes}} dk.",
+    "hours": "{{hours}} sa.",
+    "days": "{{days}} gün"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

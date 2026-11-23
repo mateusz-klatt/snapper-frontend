@@ -19,7 +19,7 @@
     "price": "ราคา",
     "exchange": "ตลาดซื้อขาย",
     "reason": "เหตุผล:",
-    "noPrice": "N/A"
+    "noPrice": "ไม่มีข้อมูล"
   },
   "strength": {
     "strong": "แรง",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "เมื่อครู่นี้",
-    "minutesAgo": "{{count}}m ที่แล้ว",
-    "hoursAgo": "{{count}}h ที่แล้ว"
+    "minutesAgo": "{{count}} นาที ที่แล้ว",
+    "hoursAgo": "{{count}} ชม. ที่แล้ว"
   },
   "empty": {
     "title": "ไม่พบสัญญาณ",

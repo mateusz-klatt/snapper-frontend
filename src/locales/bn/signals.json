@@ -19,7 +19,7 @@
     "price": "মূল্য",
     "exchange": "এক্সচেঞ্জ",
     "reason": "কারণ:",
-    "noPrice": "N/A"
+    "noPrice": "উপলভ্য নয়"
   },
   "strength": {
     "strong": "শক্তিশালী",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "এইমাত্র",
-    "minutesAgo": "{{count}}m আগে",
-    "hoursAgo": "{{count}}h আগে"
+    "minutesAgo": "{{count}} মিনিট আগে",
+    "hoursAgo": "{{count}} ঘণ্টা আগে"
   },
   "empty": {
     "title": "কোনো সিগন্যাল পাওয়া যায়নি",

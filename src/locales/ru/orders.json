@@ -31,7 +31,7 @@
     "orderId": "ID заявки",
     "leverage": "Плечо",
     "leverageValue": "{{leverage}}x",
-    "reduceOnly": "REDUCE-ONLY",
+    "reduceOnly": "ТОЛЬКО СОКРАЩЕНИЕ",
     "cancel": "Отменить",
     "cancelling": "Отмена…",
     "cancelAriaLabel": "Отменить заявку {{orderId}}"

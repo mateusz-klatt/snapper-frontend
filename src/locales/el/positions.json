@@ -14,10 +14,10 @@
       "granularity": "Χρονική ανάλυση",
       "granularityAriaLabel": "Επιλογή χρονικής ανάλυσης χρονογραμμής",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 λεπ.",
+        "fiveMinutes": "5 λεπ.",
+        "oneHour": "1 ώ.",
+        "oneDay": "1 ημ."
       },
       "valuationCurrency": "Νόμισμα αποτίμησης",
       "valuationCurrencyAriaLabel": "Επιλογή νομίσματος αποτίμησης",
@@ -91,11 +91,11 @@
       "hideDetails": "Απόκρυψη διορθώσεων",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "Διορθώθηκε στις {{time}}",
-      "targetExecutionId": "Ακυρώθηκε η εκτέλεση συναλλαγών",
-      "correctionId": "Ρεκόρ διόρθωσης",
+      "targetExecutionId": "Ακυρωμένη εκτέλεση",
+      "correctionId": "Εγγραφή διόρθωσης",
       "reasons": {
-        "unwitnessed_phantom": "Δεν υπάρχει πλήρωση συναλλαγών που να χρησιμεύει ως απόδειξη για αυτήν την κράτηση.",
-        "unwitnessed_legacy_lineage": "Εγγραφή που προέρχεται από κληρονομιά για την οποία δεν υπάρχει πλήρωση συναλλαγών σε χρηματιστήριο χρησιμεύει ως απόδειξη."
+        "unwitnessed_phantom": "Δεν υπάρχει εκτέλεση εντολής στο χρηματιστήριο που να τεκμηριώνει αυτή την καταχώριση.",
+        "unwitnessed_legacy_lineage": "Εγγραφή προερχόμενη από παλαιά δεδομένα, χωρίς εκτέλεση εντολής που να την τεκμηριώνει."
       }
     },
     "timeTravelNotice": "Ιστορική προβολή: εμφανίζεται το P&L όπως ήταν γνωστό τη χρονική στιγμή {{asOf}}.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Σκόνη ({{count}})",
-    "show": "Εμφάνιση θέσεων σκόνης",
-    "hide": "Απόκρυψη θέσεων σκόνης"
+    "title": "Μικροϋπόλοιπα ({{count}})",
+    "show": "Εμφάνιση θέσεων με μικροϋπόλοιπα",
+    "hide": "Απόκρυψη θέσεων με μικροϋπόλοιπα"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: σε εκκρεμότητα",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Κυλιόμενη διακοπή: {{stop}}",
+    "trailingStopPending": "Κυλιόμενη διακοπή: σε εκκρεμότητα",
+    "slTpButton": "Περιορισμός ζημίας / Κατοχύρωση κέρδους",
     "trailButton": "Trailing Stop",
     "quantity": "Ποσότητα",
     "averageEntry": "Μέση είσοδος",
@@ -228,7 +228,7 @@
     "realizedPnl": "Πραγματοποιημένο P&L",
     "updated": "Ενημερώθηκε {{timestamp}}",
     "mark": "Τιμή αναφοράς",
-    "noValue": "N/A"
+    "noValue": "Μη διαθέσιμο"
   },
   "empty": {
     "title": "Δεν υπάρχουν ανοικτές θέσεις",
@@ -239,10 +239,10 @@
     "confirmTitle": "Επιβεβαίωση Bracket",
     "position": "Θέση",
     "entryPrice": "Τιμή εισόδου",
-    "stopLossLabel": "Τιμή Stop-Loss",
-    "takeProfitLabel": "Τιμή Take-Profit",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Τιμή περιορισμού ζημίας",
+    "takeProfitLabel": "Τιμή κατοχύρωσης κέρδους",
+    "stopLoss": "Περιορισμός ζημίας",
+    "takeProfit": "Κατοχύρωση κέρδους",
     "placeholders": {
       "slLong": "Κάτω από {{price}}",
       "slShort": "Πάνω από {{price}}",

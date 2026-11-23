@@ -11,7 +11,7 @@
     "cancelled": "Đã hủy"
   },
   "list": {
-    "title": "Backtest",
+    "title": "Kiểm thử trên dữ liệu quá khứ",
     "actions": {
       "cancel": "Hủy",
       "rerun": "Chạy lại",
@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}}%"
     },
     "equity": {
       "legend": {
@@ -135,9 +135,9 @@
     "signalsTrades": "{{signals}} tín hiệu / {{trades}} giao dịch",
     "milestoneLine": "mốc {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25%",
+      "50pct": "50%",
+      "75pct": "75%"
     }
   },
   "create": {

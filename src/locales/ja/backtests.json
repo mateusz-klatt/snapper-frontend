@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}}%"
     },
     "equity": {
       "legend": {
@@ -135,9 +135,9 @@
     "signalsTrades": "{{signals}}シグナル / {{trades}}取引",
     "milestoneLine": "マイルストーン {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25%",
+      "50pct": "50%",
+      "75pct": "75%"
     }
   },
   "create": {

@@ -14,10 +14,10 @@
       "granularity": "تفکیک زمانی",
       "granularityAriaLabel": "انتخاب تفکیک زمانی خط زمانی",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 د",
+        "fiveMinutes": "5 د",
+        "oneHour": "1 س",
+        "oneDay": "1 ر"
       },
       "valuationCurrency": "ارز ارزش‌گذاری",
       "valuationCurrencyAriaLabel": "انتخاب ارز ارزش‌گذاری",
@@ -53,7 +53,7 @@
       "affectedPoints": "نقاط تحت تأثیر: {{count}}",
       "triggerInstrument": "ابزار محرک: {{instrument}}",
       "scope": {
-        "global": "کل سبد",
+        "global": "کل پرتفوی",
         "instrument": "ابزار"
       },
       "tier": {
@@ -91,11 +91,11 @@
       "hideDetails": "اصلاحات را پنهان کنید",
       "scopeSequence": "{{exchange}} #{{sequence}}",
       "correctionTime": "در {{time}} تصحیح شد",
-      "targetExecutionId": "اجرای تجارت باطل شد",
+      "targetExecutionId": "اجرای ابطال‌شده",
       "correctionId": "ثبت تصحیح",
       "reasons": {
-        "unwitnessed_phantom": "هیچ مبادله ای مبادله ای وجود ندارد که به عنوان مدرکی برای این رزرو عمل کند.",
-        "unwitnessed_legacy_lineage": "سوابق برگرفته از میراث که هیچ گونه مبادله ای مبادله ای برای آن به عنوان مدرک استفاده نمی شود."
+        "unwitnessed_phantom": "هیچ اجرای سفارشی در صرافی این ثبت را تأیید نمی‌کند.",
+        "unwitnessed_legacy_lineage": "رکورد برگرفته از داده‌های قدیمی، بدون اجرای سفارشی که آن را تأیید کند."
       }
     },
     "timeTravelNotice": "نمای تاریخی: P&L مطابق اطلاعات موجود در {{asOf}} نمایش داده می‌شود.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "گرد ({{count}})",
-    "show": "نمایش موقعیت‌های گرد",
-    "hide": "پنهان کردن موقعیت‌های گرد"
+    "title": "مانده‌های ناچیز ({{count}})",
+    "show": "نمایش موقعیت‌های با مانده ناچیز",
+    "hide": "پنهان کردن موقعیت‌های با مانده ناچیز"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: در انتظار",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "حد ضرر متحرک: {{stop}}",
+    "trailingStopPending": "حد ضرر متحرک: در انتظار",
+    "slTpButton": "حد ضرر / حد سود",
     "trailButton": "تریل",
     "quantity": "مقدار",
     "averageEntry": "میانگین ورود",
@@ -228,7 +228,7 @@
     "realizedPnl": "P&L تحقق‌یافته",
     "updated": "به‌روزرسانی شد {{timestamp}}",
     "mark": "قیمت مبنا",
-    "noValue": "N/A"
+    "noValue": "ناموجود"
   },
   "empty": {
     "title": "موقعیت باز وجود ندارد",
@@ -239,8 +239,8 @@
     "confirmTitle": "تأیید Bracket",
     "position": "موقعیت",
     "entryPrice": "قیمت ورود",
-    "stopLossLabel": "قیمت Stop-Loss",
-    "takeProfitLabel": "قیمت Take-Profit",
+    "stopLossLabel": "قیمت حد ضرر",
+    "takeProfitLabel": "قیمت حد سود",
     "stopLoss": "حد ضرر",
     "takeProfit": "حد سود",
     "placeholders": {
@@ -270,7 +270,7 @@
       "trailingPct": "مثلاً 5.0",
       "minLockPct": "0 = شروع فوری"
     },
-    "minLockWarning": "Trailing Stop تا زمانی که قیمت {{minLockPct}}% به نفع شما حرکت نکند فعال نمی‌شود.",
+    "minLockWarning": "Trailing Stop تا زمانی که قیمت {{minLockPct}}٪ به نفع شما حرکت نکند فعال نمی‌شود.",
     "buttons": {
       "cancel": "لغو",
       "review": "بازبینی",

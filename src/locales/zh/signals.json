@@ -19,7 +19,7 @@
     "price": "价格",
     "exchange": "交易所",
     "reason": "原因：",
-    "noPrice": "N/A"
+    "noPrice": "暂无数据"
   },
   "strength": {
     "strong": "强",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "刚刚",
-    "minutesAgo": "{{count}}m 前",
-    "hoursAgo": "{{count}}h 前"
+    "minutesAgo": "{{count}}分钟前",
+    "hoursAgo": "{{count}}小时前"
   },
   "empty": {
     "title": "未找到信号",

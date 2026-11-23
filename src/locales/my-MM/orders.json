@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "မရရှိနိုင်ပါ",
     "priceMarket": "စျေးကွက်",
     "quantity": "အရေအတွက်",
     "price": "စျေးနှုန်း",
     "created": "ဖန်တီးချိန်",
-    "createdUnknown": "N/A",
+    "createdUnknown": "မရရှိနိုင်ပါ",
     "orderId": "အော်ဒါ ID",
     "leverage": "လီဗာရေ့ချ်",
     "leverageValue": "{{leverage}}x",

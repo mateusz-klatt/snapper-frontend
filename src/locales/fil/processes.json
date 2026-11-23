@@ -31,8 +31,8 @@
       "healthy": "malusog"
     },
     "detail": {
-      "wallet": "Wallet",
-      "template": "Template",
+      "wallet": "Pitaka",
+      "template": "Padron",
       "last_run": "Huling run",
       "unknownWallet": "hindi kilala"
     },
@@ -44,7 +44,7 @@
     }
   },
   "template": {
-    "badge": "template",
+    "badge": "padron",
     "mode": "Paraan:",
     "parameters": "Mga parameter:",
     "paramCount": "{{count}}",

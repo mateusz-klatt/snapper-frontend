@@ -10,19 +10,19 @@
     "searchInstrument": "Pretraži instrument..."
   },
   "timeframes": {
-    "1m": "1 minut",
-    "5m": "5 minuta",
-    "15m": "15 minuta",
-    "30m": "30 minuta",
-    "1h": "1 sat",
-    "4h": "4 sata",
-    "1d": "1 dan"
+    "1m": "1 minut",
+    "5m": "5 minuta",
+    "15m": "15 minuta",
+    "30m": "30 minuta",
+    "1h": "1 sat",
+    "4h": "4 sata",
+    "1d": "1 dan"
   },
   "stats": {
     "currentPrice": "Poslednja zaključna cena",
-    "change24h": "Promena 24 h",
-    "high24h": "Najviša 24 h",
-    "low24h": "Najniža 24 h",
+    "change24h": "Promena 24 h",
+    "high24h": "Najviša 24 h",
+    "low24h": "Najniža 24 h",
     "incomplete": "Potpuna istorija za 24 sata nije dostupna"
   },
   "chart": {
@@ -51,7 +51,7 @@
   "assetClass": {
     "crypto": "Kriptovaluta",
     "commodity": "Roba",
-    "forex": "Forex",
+    "forex": "Devizno tržište",
     "index": "Indeks",
     "yield": "Prinos",
     "unknown": "Ostalo"
@@ -71,7 +71,7 @@
     "message": "Cache se zagreva: dostupno {{sampleCount}} / {{expected}} sveća {{sourceLabel}}",
     "sources": {
       "cache": "",
-      "derived": "(izvedeno iz 1m)",
+      "derived": "(izvedeno iz 1 min)",
       "db": "(iz DB-a)"
     }
   },
@@ -81,15 +81,15 @@
     "chipAriaLabel": "Statistika para sa {{symbol}} na {{exchange}}: Pearson {{pearson}}, p-vrednost {{pvalue}}"
   },
   "scrubber": {
-    "label": "Time:",
-    "live": "Live",
+    "label": "Vreme:",
+    "live": "Uživo",
     "sliderAriaLabel": "Pomerajte klizač kroz istoriju tržišta",
     "presets": {
-      "live": "Live",
-      "h1": "-1h",
-      "d1": "-1d",
-      "w1": "-1w",
-      "mo1": "-1mo"
+      "live": "Uživo",
+      "h1": "-1 h",
+      "d1": "-1 d",
+      "w1": "-1 ned.",
+      "mo1": "-1 mes."
     }
   }
 }

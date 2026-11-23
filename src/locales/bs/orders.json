@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Nije dostupno",
     "priceMarket": "Tržišni",
     "quantity": "Količina",
     "price": "Cijena",
     "created": "Kreirano",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Nije dostupno",
     "orderId": "ID naloga",
     "leverage": "Poluga",
     "leverageValue": "{{leverage}}x",

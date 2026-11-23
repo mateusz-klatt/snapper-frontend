@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Zojuist",
-    "minutesAgo": "{{count}}m geleden",
-    "hoursAgo": "{{count}}u geleden"
+    "minutesAgo": "{{count}} min geleden",
+    "hoursAgo": "{{count}} u geleden"
   },
   "empty": {
     "title": "Geen signalen gevonden",

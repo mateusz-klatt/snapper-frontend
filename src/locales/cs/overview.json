@@ -32,7 +32,7 @@
     "shortExposure": "Short expozice",
     "netDelta": "Čistá delta",
     "unrealizedPnl": "Nerealizovaný P&L",
-    "pnlPercent": "P&L %",
+    "pnlPercent": "Zisk/ztráta %",
     "positions": "Pozice",
     "instrumentsCount": "Instrumenty: {{count}}",
     "empty": "Nejsou dostupná data o pozicích",
@@ -42,12 +42,12 @@
   "signals": {
     "title": "Nedávné signály",
     "empty": "Žádné nedávné signály",
-    "noTime": "N/A"
+    "noTime": "Není k dispozici"
   },
   "executions": {
     "title": "Nedávná provedení",
     "empty": "Žádná nedávná provedení",
-    "noTime": "N/A"
+    "noTime": "Není k dispozici"
   },
   "processResources": {
     "title": "Prostředky procesů",
@@ -55,13 +55,13 @@
     "colName": "Název",
     "colStatus": "Stav",
     "colRole": "Role",
-    "colMemory": "MEM",
+    "colMemory": "Paměť",
     "colCpu": "CPU",
     "statusRunning": "Běží",
     "statusStopped": "Zastaveno",
     "statusDisabled": "Zakázáno",
     "containerTotal": "Celkem MEM {{value}}",
-    "cpuTooltip": "Využití CPU může na více jádrech překročit 100 %",
+    "cpuTooltip": "Využití CPU může na více jádrech překročit 100 %",
     "metricsNa": "Nejsou samostatné metriky CPU/paměti pro proces; běží v rámci procesu (režim vláken) nebo neběží",
     "managedOnly": "Pouze procesy tohoto kontejneru",
     "managedOnlyHint": "Každý kontejner spravuje podmnožinu procesů (svůj profil automatického spuštění); ostatní procesy se zde uvádějí jen jako běžící jinde. Zrušte zaškrtnutí, chcete-li zobrazit každý proces hlášený jednotlivými kontejnery.",

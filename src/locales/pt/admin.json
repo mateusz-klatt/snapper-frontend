@@ -315,7 +315,7 @@
       "addCredential": "Adicionar credencial",
       "selectWalletPrompt": "Escolha uma carteira acima para ver suas credenciais.",
       "columns": {
-        "exchange": "Exchange",
+        "exchange": "Corretora",
         "type": "Tipo",
         "label": "Rótulo",
         "createdAt": "Criada em",
@@ -332,7 +332,7 @@
       "title": "Adicionar credencial",
       "fields": {
         "wallet": "Carteira",
-        "exchange": "Exchange",
+        "exchange": "Corretora",
         "exchangePlaceholder": "ex. kraken",
         "credentialType": "Tipo de credencial",
         "label": "Rótulo (opcional)",
@@ -371,7 +371,7 @@
     "rotate": {
       "title": "Substituir credencial",
       "fields": {
-        "exchange": "Exchange",
+        "exchange": "Corretora",
         "type": "Tipo",
         "label": "Rótulo",
         "newLabel": "Novo rótulo (opcional)",

@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N/D",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}h {{minutes}}m",
-    "uptimeDays": "{{days}}j {{hours}}h",
-    "backtestName": "Backtest {{id}}",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} h {{minutes}} min",
+    "uptimeDays": "{{days}} j {{hours}} h",
+    "backtestName": "Test historique {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N/D",
     "uptimeLabel": "Temps de fonctionnement",
     "exitCode": "Code de sortie : {{code}}",
     "service": "service",
-    "backtest": "backtest"
+    "backtest": "test historique"
   },
   "dbStats": {
     "title": "Statistiques de la base de données",
@@ -47,7 +47,7 @@
     "unavailable": "Statistiques de la base indisponibles : {{message}}",
     "fallbackError": "Échec du chargement des statistiques de la base de données.",
     "sampled": "échantillonné {{age}}",
-    "samplerSummary": "Intervalle d’échantillonnage : {{seconds}} s · nombre de tables : {{count}}",
+    "samplerSummary": "Intervalle d’échantillonnage : {{seconds}} s · nombre de tables : {{count}}",
     "columns": {
       "table": "Table",
       "kind": "Type",
@@ -92,13 +92,13 @@
       "files": "Fichiers",
       "status": "Statut"
     },
-    "retainDays": "{{days}}j",
-    "ok": "OK",
+    "retainDays": "{{days}} j",
+    "ok": "Correct",
     "error": "erreur"
   },
   "systemMetrics": {
     "disk": "Disque libre",
-    "diskUsage": "{{percent}}% utilisé · {{mount}}",
+    "diskUsage": "{{percent}} % utilisé · {{mount}}",
     "title": "Santé du processus",
     "loading": "Chargement des métriques du processus…",
     "unavailable": "Métriques du processus indisponibles : {{message}}",
@@ -107,10 +107,10 @@
     "pid": "PID",
     "statusValue": "Statut : {{status}}",
     "uptime": "Temps de fonctionnement",
-    "threads": "Threads",
+    "threads": "Fils d’exécution",
     "openFds": "FD ouverts",
     "cpu": "CPU",
-    "cpuValue": "{{percent}}%",
+    "cpuValue": "{{percent}} %",
     "throttled": "Throttlé {{count}}×",
     "memory": "Mémoire",
     "saturation": "Saturation {{percent}}",
@@ -119,9 +119,9 @@
     "asyncioPending": "En attente : {{count}}",
     "dbPool": "Pool DB",
     "liveConns": "Connexions actives : {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "Générations du GC 0/1/2",
     "gcObjects": "Objets : {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Fils d’exécution %",
     "networkConns": "Connexions réseau",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Actif",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Groupe de connexions",
       "policy": "Politique de quarantaine",
       "fallbackRoute": "Route privée de secours",
       "routes": "Routes"
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "négociation {{age}}"
     },
     "kind": {
       "direct": "direct",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Actif",
       "quarantined": "En quarantaine",
-      "quarantinedSeconds": "En quarantaine ({{seconds}}s)",
+      "quarantinedSeconds": "En quarantaine ({{seconds}} s)",
       "disabled": "Désactivé"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "à l'instant",
-    "seconds": "il y a {{seconds}}s",
-    "minutes": "il y a {{minutes}}min",
-    "hours": "il y a {{hours}}h",
-    "days": "il y a {{days}}j"
+    "seconds": "il y a {{seconds}} s",
+    "minutes": "il y a {{minutes}} min",
+    "hours": "il y a {{hours}} h",
+    "days": "il y a {{days}} j"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}h",
-    "days": "{{days}}j"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "days": "{{days}} j"
   },
   "memory": {
-    "mb": "{{value}} Mo",
-    "gb": "{{value}} Go"
+    "mb": "{{value}} Mo",
+    "gb": "{{value}} Go"
   }
 }

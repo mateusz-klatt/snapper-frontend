@@ -100,12 +100,12 @@
     "orderTypeOptions": {
       "market": "Markt",
       "limit": "Limiet",
-      "stop": "Stop",
+      "stop": "Stoporder",
       "stopLimit": "Stoplimiet",
       "stop_limit": "Stoplimiet"
     },
     "modeOptions": {
-      "live": "Live",
+      "live": "Echte handel",
       "paper": "Simulatie"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — alleen marktdata",

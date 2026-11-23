@@ -19,7 +19,7 @@
     "price": "Cena",
     "exchange": "Burza",
     "reason": "Dôvod:",
-    "noPrice": "N/A"
+    "noPrice": "Nie je k dispozícii"
   },
   "strength": {
     "strong": "Silný",
@@ -29,8 +29,8 @@
   },
   "time": {
     "justNow": "Práve teraz",
-    "minutesAgo": "pred {{count}}m",
-    "hoursAgo": "pred {{count}}h"
+    "minutesAgo": "pred {{count}} min",
+    "hoursAgo": "pred {{count}} h"
   },
   "empty": {
     "title": "Nenašli sa žiadne signály",

@@ -14,10 +14,10 @@
       "granularity": "Tarkkuus",
       "granularityAriaLabel": "Valitse aikajanan tarkkuus",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 t",
+        "oneDay": "1 pv"
       },
       "valuationCurrency": "Arvostusvaluutta",
       "valuationCurrencyAriaLabel": "Valitse arvostusvaluutta",
@@ -94,8 +94,8 @@
       "targetExecutionId": "Kaupan täytäntöönpano kumottu",
       "correctionId": "Korjauskirja",
       "reasons": {
-        "unwitnessed_phantom": "Ei pörssikaupan täyttöä, joka toimii todisteena tälle varaukselle.",
-        "unwitnessed_legacy_lineage": "Perinnöstä johdettu tietue, jolle mikään pörssikauppatäyttö ei ole todisteena."
+        "unwitnessed_phantom": "Mikään pörssin toimeksiantototeutus ei vahvista tätä kirjausta.",
+        "unwitnessed_legacy_lineage": "Vanhoista tiedoista periytyvä kirjaus, jota mikään toimeksiantototeutus ei vahvista."
       }
     },
     "timeTravelNotice": "Historiallinen näkymä: P&L näytetään ajankohtana {{asOf}} tiedettyjen tietojen mukaisesti.",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Pöly ({{count}})",
-    "show": "Näytä pölypositiot",
-    "hide": "Piilota pölypositiot"
+    "title": "Pienet jäännökset ({{count}})",
+    "show": "Näytä pienet jäännökset",
+    "hide": "Piilota pienet jäännökset"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: odottaa",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Liukuva stop: {{stop}}",
+    "trailingStopPending": "Liukuva stop: odottaa",
+    "slTpButton": "Tappionrajaus / Voiton kotiutus",
     "trailButton": "Liukuva stop",
     "quantity": "Määrä",
     "averageEntry": "Keskim. avaushinta",
@@ -239,10 +239,10 @@
     "confirmTitle": "Vahvista Bracket",
     "position": "Positio",
     "entryPrice": "Avaushinta",
-    "stopLossLabel": "Stop-Loss-hinta",
-    "takeProfitLabel": "Take-Profit-hinta",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Tappionrajaushinta",
+    "takeProfitLabel": "Voiton kotiutushinta",
+    "stopLoss": "Tappionrajaus",
+    "takeProfit": "Voiton kotiutus",
     "placeholders": {
       "slLong": "Alle {{price}}",
       "slShort": "Yli {{price}}",
@@ -270,7 +270,7 @@
       "trailingPct": "esim. 5.0",
       "minLockPct": "0 = aloita heti"
     },
-    "minLockWarning": "Trailing Stop aktivoituu vasta, kun hinta liikkuu {{minLockPct}}% eduksesi.",
+    "minLockWarning": "Trailing Stop aktivoituu vasta, kun hinta liikkuu {{minLockPct}} % eduksesi.",
     "buttons": {
       "cancel": "Peruuta",
       "review": "Tarkista",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Vähintään SL- tai TP-hinta vaaditaan",
-    "invalidSlPrice": "Virheellinen stop-loss-hinta",
-    "slPricePositive": "Stop-loss-hinnan on oltava positiivinen",
-    "invalidTpPrice": "Virheellinen take-profit-hinta",
-    "tpPricePositive": "Take-profit-hinnan on oltava positiivinen",
+    "invalidSlPrice": "Virheellinen tappionrajaushinta",
+    "slPricePositive": "Tappionrajaushinnan on oltava positiivinen",
+    "invalidTpPrice": "Virheellinen voiton kotiutushinta",
+    "tpPricePositive": "Voiton kotiutushinnan on oltava positiivinen",
     "slLongBelowEntry": "SL-hinnan on oltava alle avaushinnan ({{price}})",
     "tpLongAboveEntry": "TP-hinnan on oltava yli avaushinnan ({{price}})",
     "slShortAboveEntry": "SL-hinnan on oltava yli avaushinnan ({{price}})",

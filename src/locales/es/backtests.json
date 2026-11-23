@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}} %"
     },
     "equity": {
       "legend": {
@@ -131,13 +131,13 @@
     "waiting": "Esperando progreso…",
     "candles": "{{done}} / {{total}} velas",
     "candlesNoTotal": "{{done}} velas",
-    "equity": "equity {{value}}",
+    "equity": "patrimonio {{value}}",
     "signalsTrades": "{{signals}} señ. / {{trades}} operaciones",
     "milestoneLine": "hito {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
     }
   },
   "create": {

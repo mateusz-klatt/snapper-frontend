@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Հասանելի չէ",
     "priceMarket": "Շուկայական",
     "quantity": "Քանակ",
     "price": "Գին",
     "created": "Ստեղծվել է",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Հասանելի չէ",
     "orderId": "Հանձնարարականի ID",
     "leverage": "Լծակ",
     "leverageValue": "{{leverage}}x",

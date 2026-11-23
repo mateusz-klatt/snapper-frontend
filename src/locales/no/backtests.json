@@ -70,7 +70,7 @@
       "signals": "Signaler"
     },
     "pairingMode": {
-      "auto": "auto",
+      "auto": "automatisk",
       "manual": "manuell"
     },
     "errors": {
@@ -118,7 +118,7 @@
         "delta": "Δ",
         "deltaPct": "Δ %"
       },
-      "percent": "{{value}} %"
+      "percent": "{{value}} %"
     },
     "equity": {
       "legend": {
@@ -135,15 +135,15 @@
     "signalsTrades": "{{signals}} signaler / {{trades}} handler",
     "milestoneLine": "milepæl {{label}}",
     "milestone": {
-      "25pct": "25 %",
-      "50pct": "50 %",
-      "75pct": "75 %"
+      "25pct": "25 %",
+      "50pct": "50 %",
+      "75pct": "75 %"
     }
   },
   "create": {
     "title": "Ny backtest",
     "cancel": "Avbryt",
-    "submit": "Start backtest",
+    "submit": "Start historisk test",
     "submitting": "Starter…",
     "errors": {
       "unknown": "Ukjent feil"
@@ -165,7 +165,7 @@
       "startDateLabel": "Startdato",
       "endDateLabel": "Sluttdato",
       "initialCashLabel": "Startkapital",
-      "slippageBpsLabel": "Slippage (bps)",
+      "slippageBpsLabel": "Kursavvik (basispunkter)",
       "commissionBpsLabel": "Kurtasje (bps)",
       "executionModeLabel": "Utførelsesmodus",
       "executionModeDirectDb": "Direkte DB",

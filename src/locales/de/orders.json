@@ -23,7 +23,7 @@
   },
   "orderCard": {
     "sideUnknown": "n. v.",
-    "priceMarket": "Market",
+    "priceMarket": "Markt",
     "quantity": "Menge",
     "price": "Preis",
     "created": "Erstellt",
@@ -89,7 +89,7 @@
       "price": "Preis",
       "stopPrice": "Stop-Preis",
       "mode": "Modus",
-      "wallet": "Wallet",
+      "wallet": "Geldbörse",
       "type": "Typ",
       "postOnly": "Nur Maker"
     },
@@ -98,15 +98,15 @@
       "sell": "Verkauf"
     },
     "orderTypeOptions": {
-      "market": "Market",
+      "market": "Markt",
       "limit": "Limit",
       "stop": "Stop",
       "stopLimit": "Stop-Limit",
       "stop_limit": "Stop-Limit"
     },
     "modeOptions": {
-      "live": "Live",
-      "paper": "Paper"
+      "live": "Echthandel",
+      "paper": "Simulation"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — nur Marktdaten",
     "walletPaperSuffix": "{{label}} (Paper)",

@@ -30,16 +30,16 @@
   },
   "process": {
     "uptimeNotAvailable": "N.v.t.",
-    "uptimeMinutes": "{{minutes}}m",
-    "uptimeHours": "{{hours}}u {{minutes}}m",
-    "uptimeDays": "{{days}}d {{hours}}u",
-    "backtestName": "Backtest {{id}}",
+    "uptimeMinutes": "{{minutes}} min",
+    "uptimeHours": "{{hours}} u {{minutes}} min",
+    "uptimeDays": "{{days}} d {{hours}} u",
+    "backtestName": "Historische test {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "N.v.t.",
-    "uptimeLabel": "Uptime",
+    "uptimeLabel": "Bedrijfstijd",
     "exitCode": "Exitcode: {{code}}",
-    "service": "service",
-    "backtest": "backtest"
+    "service": "dienst",
+    "backtest": "historische test"
   },
   "dbStats": {
     "title": "Databasestatistieken",
@@ -47,7 +47,7 @@
     "unavailable": "Databasestatistieken niet beschikbaar: {{message}}",
     "fallbackError": "Laden databasestatistieken mislukt.",
     "sampled": "bemonsterd {{age}}",
-    "samplerSummary": "Samplerinterval: {{seconds}}s · Aantal tabellen: {{count}}",
+    "samplerSummary": "Samplerinterval: {{seconds}} s · Aantal tabellen: {{count}}",
     "columns": {
       "table": "Tabel",
       "kind": "Soort",
@@ -92,8 +92,8 @@
       "files": "Bestanden",
       "status": "Status"
     },
-    "retainDays": "{{days}}d",
-    "ok": "OK",
+    "retainDays": "{{days}} d",
+    "ok": "In orde",
     "error": "fout"
   },
   "systemMetrics": {
@@ -106,8 +106,8 @@
     "rawJson": "Ruwe JSON",
     "pid": "PID",
     "statusValue": "Status: {{status}}",
-    "uptime": "Uptime",
-    "threads": "Threads",
+    "uptime": "Bedrijfstijd",
+    "threads": "Uitvoeringsthreads",
     "openFds": "Open FD's",
     "cpu": "CPU",
     "cpuValue": "{{percent}}%",
@@ -119,9 +119,9 @@
     "asyncioPending": "In afwachting: {{count}}",
     "dbPool": "DB-pool",
     "liveConns": "Live verbindingen: {{count}}",
-    "gcGenerations": "GC Gen0/1/2",
+    "gcGenerations": "GC-generaties 0/1/2",
     "gcObjects": "Objecten: {{value}}",
-    "threadsPercent": "Threads %",
+    "threadsPercent": "Uitvoeringsthreads %",
     "networkConns": "Netwerkverbindingen",
     "tracemalloc": "Tracemalloc",
     "tracemallocActive": "Actief",
@@ -155,7 +155,7 @@
       }
     },
     "summary": {
-      "pool": "Pool",
+      "pool": "Verbindingsgroep",
       "policy": "Quarantainebeleid",
       "fallbackRoute": "Fallback voor privéverkeer",
       "routes": "Routes"
@@ -169,7 +169,7 @@
       "kind": "Soort",
       "region": "Regio",
       "exitIp": "Uitgaand IP-adres",
-      "provider": "Provider",
+      "provider": "Aanbieder",
       "priority": "Prioriteit",
       "allowedExchanges": "Toegestane beurzen",
       "status": "Status",
@@ -183,7 +183,7 @@
       "rxRate": "↓ {{bytes}} · {{rate}}/s",
       "txBytes": "↑ {{bytes}}",
       "txRate": "↑ {{bytes}} · {{rate}}/s",
-      "handshake": "hs {{age}}"
+      "handshake": "verbindingsonderhandeling {{age}}"
     },
     "kind": {
       "direct": "direct",
@@ -192,7 +192,7 @@
     "status": {
       "active": "Actief",
       "quarantined": "In quarantaine",
-      "quarantinedSeconds": "In quarantaine ({{seconds}}s)",
+      "quarantinedSeconds": "In quarantaine ({{seconds}} s)",
       "disabled": "Uitgeschakeld"
     },
     "trafficClass": {
@@ -202,19 +202,19 @@
   },
   "relativeAge": {
     "justNow": "zojuist",
-    "seconds": "{{seconds}}s geleden",
-    "minutes": "{{minutes}}min geleden",
-    "hours": "{{hours}}u geleden",
-    "days": "{{days}}d geleden"
+    "seconds": "{{seconds}} s geleden",
+    "minutes": "{{minutes}} min geleden",
+    "hours": "{{hours}} u geleden",
+    "days": "{{days}} d geleden"
   },
   "duration": {
-    "seconds": "{{seconds}}s",
-    "minutes": "{{minutes}}min",
-    "hours": "{{hours}}u",
-    "days": "{{days}}d"
+    "seconds": "{{seconds}} s",
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} u",
+    "days": "{{days}} d"
   },
   "memory": {
-    "mb": "{{value}} MB",
-    "gb": "{{value}} GB"
+    "mb": "{{value}} MB",
+    "gb": "{{value}} GB"
   }
 }

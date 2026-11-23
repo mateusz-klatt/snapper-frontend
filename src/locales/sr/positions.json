@@ -14,10 +14,10 @@
       "granularity": "Granularnost",
       "granularityAriaLabel": "Izaberite granularnost vremenske linije",
       "granularityOptions": {
-        "oneMinute": "1m",
-        "fiveMinutes": "5m",
-        "oneHour": "1h",
-        "oneDay": "1d"
+        "oneMinute": "1 min",
+        "fiveMinutes": "5 min",
+        "oneHour": "1 h",
+        "oneDay": "1 d"
       },
       "valuationCurrency": "Valuta vrednovanja",
       "valuationCurrencyAriaLabel": "Izaberite valutu vrednovanja",
@@ -213,14 +213,14 @@
     }
   },
   "dust": {
-    "title": "Prašina ({{count}})",
-    "show": "Prikaži pozicije prašine",
-    "hide": "Sakrij pozicije prašine"
+    "title": "Sitni ostaci ({{count}})",
+    "show": "Prikaži pozicije sa sitnim ostacima",
+    "hide": "Sakrij pozicije sa sitnim ostacima"
   },
   "row": {
-    "trailingStopBadge": "TS: {{stop}}",
-    "trailingStopPending": "TS: na čekanju",
-    "slTpButton": "SL/TP",
+    "trailingStopBadge": "Prateći stop: {{stop}}",
+    "trailingStopPending": "Prateći stop: na čekanju",
+    "slTpButton": "Ograničenje gubitka / Realizacija dobiti",
     "trailButton": "Trailing",
     "quantity": "Količina",
     "averageEntry": "Prosečan ulaz",
@@ -228,7 +228,7 @@
     "realizedPnl": "Realizovani P&L",
     "updated": "Ažurirano {{timestamp}}",
     "mark": "Referentna cena",
-    "noValue": "N/A"
+    "noValue": "Nije dostupno"
   },
   "empty": {
     "title": "Nema otvorenih pozicija",
@@ -239,10 +239,10 @@
     "confirmTitle": "Potvrdi Bracket",
     "position": "Pozicija",
     "entryPrice": "Ulazna cena",
-    "stopLossLabel": "Stop-Loss cena",
-    "takeProfitLabel": "Take-Profit cena",
-    "stopLoss": "Stop-Loss",
-    "takeProfit": "Take-Profit",
+    "stopLossLabel": "Cena ograničenja gubitka",
+    "takeProfitLabel": "Cena realizacije dobiti",
+    "stopLoss": "Ograničenje gubitka",
+    "takeProfit": "Realizacija dobiti",
     "placeholders": {
       "slLong": "Ispod {{price}}",
       "slShort": "Iznad {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Potrebna je barem jedna SL ili TP cena",
-    "invalidSlPrice": "Neispravna Stop-Loss cena",
-    "slPricePositive": "Stop-Loss cena mora biti pozitivna",
-    "invalidTpPrice": "Neispravna Take-Profit cena",
-    "tpPricePositive": "Take-Profit cena mora biti pozitivna",
+    "invalidSlPrice": "Nevažeća cena ograničenja gubitka",
+    "slPricePositive": "Cena ograničenja gubitka mora biti pozitivna",
+    "invalidTpPrice": "Nevažeća cena realizacije dobiti",
+    "tpPricePositive": "Cena realizacije dobiti mora biti pozitivna",
     "slLongBelowEntry": "SL cena mora biti ispod ulazne cene ({{price}})",
     "tpLongAboveEntry": "TP cena mora biti iznad ulazne cene ({{price}})",
     "slShortAboveEntry": "SL cena mora biti iznad ulazne cene ({{price}})",

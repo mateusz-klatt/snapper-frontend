@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Indisponibil",
     "priceMarket": "La piață",
     "quantity": "Cantitate",
     "price": "Preț",
     "created": "Creat",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Indisponibil",
     "orderId": "ID ordin",
     "leverage": "Levier",
     "leverageValue": "{{leverage}}x",

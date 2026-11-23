@@ -22,12 +22,12 @@
     }
   },
   "orderCard": {
-    "sideUnknown": "N/A",
+    "sideUnknown": "Ej tillgängligt",
     "priceMarket": "Marknad",
     "quantity": "Kvantitet",
     "price": "Pris",
     "created": "Skapad",
-    "createdUnknown": "N/A",
+    "createdUnknown": "Ej tillgängligt",
     "orderId": "Order-ID",
     "leverage": "Hävstång",
     "leverageValue": "{{leverage}}x",
@@ -99,7 +99,7 @@
     },
     "orderTypeOptions": {
       "market": "Marknad",
-      "limit": "Limit",
+      "limit": "Limitorder",
       "stop": "Stopp",
       "stopLimit": "Stop-limit",
       "stop_limit": "Stop-limit"
