@@ -4,7 +4,8 @@
       "row": "Double-tap to open alert details"
     },
     "label": {
-      "dismissButton": "Dismiss alert"
+      "dismissButton": "Dismiss alert",
+      "row": "{{0}}. {{1}}. {{2}} priority."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Alert detail",
+    "priority": "Priority",
+    "safetyCritical": "Safety-critical",
     "sourceTopic": "Source topic",
     "thread": "Thread",
-    "timestamp": "Timestamp"
+    "timestamp": "Timestamp",
+    "type": "Type"
   },
   "empty": {
     "message": "New alerts will appear here when they fire.",

@@ -4,7 +4,8 @@
       "row": "Uyarı ayrıntılarını açmak için çift dokunun"
     },
     "label": {
-      "dismissButton": "Uyarıyı kapat"
+      "dismissButton": "Uyarıyı kapat",
+      "row": "{{0}}. {{1}}. Öncelik: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Uyarı ayrıntısı",
+    "priority": "Öncelik",
+    "safetyCritical": "Güvenlik açısından kritik",
     "sourceTopic": "Kaynak konu",
     "thread": "Konu dizisi",
-    "timestamp": "Zaman damgası"
+    "timestamp": "Zaman damgası",
+    "type": "Tür"
   },
   "empty": {
     "message": "Yeni uyarılar tetiklendiğinde burada görünecek.",

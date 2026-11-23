@@ -4,7 +4,8 @@
       "row": "Dubbeltik om alertdetails te openen"
     },
     "label": {
-      "dismissButton": "Alert sluiten"
+      "dismissButton": "Alert sluiten",
+      "row": "{{0}}. {{1}}. Prioriteit: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Alertdetails",
+    "priority": "Prioriteit",
+    "safetyCritical": "Veiligheidskritiek",
     "sourceTopic": "Brononderwerp",
     "thread": "Discussie",
-    "timestamp": "Tijdstempel"
+    "timestamp": "Tijdstempel",
+    "type": "Type"
   },
   "empty": {
     "message": "Nieuwe alerts verschijnen hier zodra ze worden geactiveerd.",
@@ -53,7 +57,7 @@
     "loadFailed": "Kan alerts niet laden"
   },
   "loading": "Alerts laden…",
-  "navTitle": "Meldingen",
+  "navTitle": "Alerts",
   "page": {
     "subtitle": "Recente waarschuwingsgeschiedenis voor uw account."
   },

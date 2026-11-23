@@ -4,14 +4,15 @@
       "row": "Gusa mara mbili ili kufungua maelezo ya arifa"
     },
     "label": {
-      "dismissButton": "Ondoa arifa"
+      "dismissButton": "Ondoa arifa",
+      "row": "{{0}}. {{1}}. Kipaumbele: {{2}}."
     }
   },
   "alertType": {
     "critical_system_error": "Hitilafu ya mfumo",
     "margin_warning": "Onyo la dhamana",
-    "order_fill_full": "Oda imetekelezwa",
-    "order_rejected": "Oda imekataliwa",
+    "order_fill_full": "Agizo limetekelezwa",
+    "order_rejected": "Agizo limekataliwa",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
   },
   "argument": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Maelezo ya arifa",
+    "priority": "Kipaumbele",
+    "safetyCritical": "Muhimu kwa usalama",
     "sourceTopic": "Mada ya chanzo",
     "thread": "Mfululizo",
-    "timestamp": "Muda"
+    "timestamp": "Muda",
+    "type": "Aina"
   },
   "empty": {
     "message": "Arifa mpya zitaonekana hapa zitakapowashwa.",
@@ -68,9 +72,9 @@
   "title": {
     "critical_system_error": "Mfumo umezorota: {{0}}",
     "margin_warning": "Onyo la dhamana",
-    "order_fill_full": "Oda imetekelezwa",
-    "order_rejected": "Oda imekataliwa",
-    "order_unknown": "Hali ya oda haijulikani",
+    "order_fill_full": "Agizo limetekelezwa",
+    "order_rejected": "Agizo limekataliwa",
+    "order_unknown": "Hali ya agizo haijulikani",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
   }
 }

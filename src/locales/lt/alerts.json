@@ -4,7 +4,8 @@
       "row": "Bakstelėkite du kartus, kad atvertumėte įspėjimo informaciją"
     },
     "label": {
-      "dismissButton": "Atmesti įspėjimą"
+      "dismissButton": "Atmesti įspėjimą",
+      "row": "{{0}}. {{1}}. Prioritetas: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Įspėjimo informacija",
+    "priority": "Prioritetas",
+    "safetyCritical": "Svarbu saugai",
     "sourceTopic": "Šaltinio tema",
     "thread": "Gija",
-    "timestamp": "Laiko žyma"
+    "timestamp": "Laiko žyma",
+    "type": "Tipas"
   },
   "empty": {
     "message": "Nauji įspėjimai bus rodomi čia, kai jie suveiks.",

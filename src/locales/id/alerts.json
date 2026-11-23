@@ -4,7 +4,8 @@
       "row": "Ketuk dua kali untuk membuka detail peringatan"
     },
     "label": {
-      "dismissButton": "Tutup peringatan"
+      "dismissButton": "Tutup peringatan",
+      "row": "{{0}}. {{1}}. Prioritas: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Detail peringatan",
+    "priority": "Prioritas",
+    "safetyCritical": "Kritis bagi keselamatan",
     "sourceTopic": "Topik sumber",
     "thread": "Utas",
-    "timestamp": "Waktu"
+    "timestamp": "Waktu",
+    "type": "Tipe"
   },
   "empty": {
     "message": "Peringatan baru akan muncul di sini ketika terpicu.",

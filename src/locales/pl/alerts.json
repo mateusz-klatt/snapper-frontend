@@ -4,7 +4,8 @@
       "row": "Stuknij dwukrotnie, aby otworzyć szczegóły alertu"
     },
     "label": {
-      "dismissButton": "Odrzuć alert"
+      "dismissButton": "Odrzuć alert",
+      "row": "{{0}}. {{1}}. Priorytet: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Szczegóły alertu",
+    "priority": "Priorytet",
+    "safetyCritical": "Krytyczne dla bezpieczeństwa",
     "sourceTopic": "Temat źródłowy",
     "thread": "Wątek",
-    "timestamp": "Znacznik czasu"
+    "timestamp": "Znacznik czasu",
+    "type": "Typ"
   },
   "empty": {
     "message": "Nowe alerty pojawią się tutaj po uruchomieniu.",

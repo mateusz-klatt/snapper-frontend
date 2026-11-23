@@ -4,7 +4,8 @@
       "row": "Touchez deux fois pour afficher les détails de l'alerte"
     },
     "label": {
-      "dismissButton": "Ignorer l'alerte"
+      "dismissButton": "Ignorer l'alerte",
+      "row": "{{0}}. {{1}}. Priorité : {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Détails de l'alerte",
+    "priority": "Priorité",
+    "safetyCritical": "Critique pour la sécurité",
     "sourceTopic": "Sujet source",
     "thread": "Fil",
-    "timestamp": "Horodatage"
+    "timestamp": "Horodatage",
+    "type": "Type"
   },
   "empty": {
     "message": "Les nouvelles alertes apparaîtront ici lorsqu'elles se déclencheront.",

@@ -4,7 +4,8 @@
       "row": "Avaa hälytyksen tiedot kaksoisnapauttamalla"
     },
     "label": {
-      "dismissButton": "Kuittaa hälytys"
+      "dismissButton": "Kuittaa hälytys",
+      "row": "{{0}}. {{1}}. Prioriteetti: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Hälytyksen tiedot",
+    "priority": "Prioriteetti",
+    "safetyCritical": "Turvallisuuden kannalta kriittinen",
     "sourceTopic": "Lähdeaihe",
     "thread": "Säie",
-    "timestamp": "Aikaleima"
+    "timestamp": "Aikaleima",
+    "type": "Tyyppi"
   },
   "empty": {
     "message": "Uudet hälytykset näkyvät täällä, kun ne laukeavat.",

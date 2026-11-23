@@ -4,7 +4,8 @@
       "row": "Dvaput dodirnite za prikaz detalja upozorenja"
     },
     "label": {
-      "dismissButton": "Odbaci upozorenje"
+      "dismissButton": "Odbaci upozorenje",
+      "row": "{{0}}. {{1}}. Prioritet: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Detalji upozorenja",
+    "priority": "Prioritet",
+    "safetyCritical": "Sigurnosno kritično",
     "sourceTopic": "Tema izvora",
     "thread": "Nit",
-    "timestamp": "Vrijeme"
+    "timestamp": "Vrijeme",
+    "type": "Vrsta"
   },
   "empty": {
     "message": "Nova upozorenja pojavit će se ovdje kad se aktiviraju.",
