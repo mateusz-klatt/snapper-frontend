@@ -116,41 +116,23 @@ describe('isDustPosition', () => {
     ).toBe(false)
   })
 
-  it('treats a rounded-zero quantity or a sub-threshold notional as dust', () => {
+  it('treats only a lot-rounded zero as dust when the API omits the flag', () => {
     expect(isDustPosition({ quantity: Number.NaN, quantityDecimals: null, isDust: null })).toBe(
       false
     )
-    expect(
-      isDustPosition({ quantity: 0.004, quantityDecimals: 2, markPrice: 1000, isDust: null })
-    ).toBe(true)
-    expect(
-      isDustPosition({ quantity: 1e-9, quantityDecimals: null, markPrice: 10, isDust: null })
-    ).toBe(true)
-    expect(
-      isDustPosition({ quantity: 1, quantityDecimals: null, markPrice: 1, isDust: null })
-    ).toBe(false)
+    expect(isDustPosition({ quantity: 0.004, quantityDecimals: 2, isDust: null })).toBe(true)
+    expect(isDustPosition({ quantity: 1e-9, quantityDecimals: null, isDust: null })).toBe(true)
+    expect(isDustPosition({ quantity: 1, quantityDecimals: null, isDust: null })).toBe(false)
+    expect(isDustPosition({ quantity: 1e-8, quantityDecimals: 8, isDust: null })).toBe(false)
     expect(
       isDustPosition({
-        quantity: 0.1,
-        quantityDecimals: null,
-        markPrice: null,
+        quantity: 0.3,
+        quantityDecimals: 8,
+        markPrice: 1,
         averagePrice: 1,
         isDust: null,
       })
-    ).toBe(true)
-    expect(
-      isDustPosition({
-        quantity: 0.1,
-        quantityDecimals: null,
-        markPrice: Number.NaN,
-        averagePrice: 10,
-        isDust: null,
-      })
     ).toBe(false)
-    expect(isDustPosition({ quantity: 1, quantityDecimals: null, isDust: null })).toBe(false)
-    expect(
-      isDustPosition({ quantity: 1e-8, quantityDecimals: 8, markPrice: 1, isDust: null })
-    ).toBe(true)
   })
 })
 

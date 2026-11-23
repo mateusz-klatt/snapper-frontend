@@ -87,6 +87,24 @@ describe('detachDisplayFields', () => {
     expect(restored).toEqual({ price_decimals: 4 })
   })
 
+  it('keeps a key that contains a slash or a tilde as one path segment', () => {
+    const payload = {
+      'XRP/EUR': { quantity_decimals: 8, id: 1 },
+      'a~b': [{ is_dust: true, name: 'tilde' }],
+    }
+    const bags = detachDisplayFields(payload)
+
+    expect(payload).toEqual({ 'XRP/EUR': { id: 1 }, 'a~b': [{ name: 'tilde' }] })
+    expect(bags.get('/XRP~1EUR')).toEqual({ quantity_decimals: 8 })
+    expect(bags.get('/a~0b/0')).toEqual({ is_dust: true })
+
+    const restored = { 'XRP/EUR': { id: 1 }, 'a~b': [{ name: 'tilde' }] }
+
+    attachDisplayFields(restored, bags)
+    expect(restored['XRP/EUR']).toEqual({ id: 1, quantity_decimals: 8 })
+    expect(restored['a~b'][0]).toEqual({ name: 'tilde', is_dust: true })
+  })
+
   it('ignores values that are not records', () => {
     expect(detachDisplayFields(null).size).toBe(0)
     expect(detachDisplayFields([{ quantity_decimals: 2 }]).get('/0')).toEqual({

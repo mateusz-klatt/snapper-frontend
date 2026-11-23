@@ -13,7 +13,6 @@ import { assetClassForExchange, priceDisplayPrecision, type PriceAssetClass } fr
 
 const MAX_QUANTITY_DECIMALS = 8
 const MAX_FRACTION_DIGITS = 20
-const DUST_NOTIONAL_THRESHOLD = 0.5
 const NON_FINITE_TEXT = '—'
 const NEAR_ZERO_PREFIX = '≈ '
 const CURRENCY_DIGITS = new Map<string, number>()
@@ -135,12 +134,12 @@ export const maxFractionDigits = (values: readonly number[]): number => {
   return max
 }
 
-const finiteOrNull = (value: number | null | undefined): number | null => {
-  if (typeof value !== 'number' || !Number.isFinite(value)) return null
-
-  return value
-}
-
+/**
+ * Dust grouping when the backend omits `is_dust`.
+ *
+ * Only a quantity that rounds to zero at lot precision is dust. A notional
+ * cutoff is currency-specific, so that rule stays on the backend flag.
+ */
 export const isDustPosition = (input: DustPositionInput): boolean => {
   if (input.isDust !== null) return input.isDust
 
@@ -148,13 +147,7 @@ export const isDustPosition = (input: DustPositionInput): boolean => {
 
   const digits = input.quantityDecimals ?? MAX_QUANTITY_DECIMALS
 
-  if (roundHalfAwayFromZero(input.quantity, digits) === 0) return true
-
-  const price = finiteOrNull(input.markPrice) ?? finiteOrNull(input.averagePrice)
-
-  if (price === null) return false
-
-  return Math.abs(input.quantity * price) < DUST_NOTIONAL_THRESHOLD
+  return roundHalfAwayFromZero(input.quantity, digits) === 0
 }
 
 const formatFixed = (

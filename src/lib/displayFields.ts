@@ -135,14 +135,30 @@ const bagFromRecord = (record: Record<string, unknown>): DisplayFieldBag | null 
   return keep ? bag : null
 }
 
+/** RFC 6901 segment encoding so a key that contains '/' or '~' stays one segment. */
+const encodePointerSegment = (segment: string): string =>
+  segment.replaceAll('~', '~0').replaceAll('/', '~1')
+
+const decodePointerSegment = (segment: string): string =>
+  segment.replaceAll('~1', '/').replaceAll('~0', '~')
+
+const pointerFromSegments = (segments: readonly string[]): string =>
+  segments.length === 0 ? '' : `/${segments.map(encodePointerSegment).join('/')}`
+
+const segmentsFromPointer = (pointer: string): string[] => {
+  if (pointer === '') return []
+
+  return pointer.split('/').slice(1).map(decodePointerSegment)
+}
+
 const walkDisplayFields = (
   node: unknown,
-  path: string,
+  segments: readonly string[],
   bags: Map<string, DisplayFieldBag>
 ): void => {
   if (Array.isArray(node)) {
     node.forEach((item, index) => {
-      walkDisplayFields(item, `${path}/${index}`, bags)
+      walkDisplayFields(item, [...segments, String(index)], bags)
     })
 
     return
@@ -152,29 +168,25 @@ const walkDisplayFields = (
 
   const bag = bagFromRecord(node)
 
-  if (bag !== null) bags.set(path, bag)
+  if (bag !== null) bags.set(pointerFromSegments(segments), bag)
 
   for (const [key, value] of Object.entries(node)) {
-    walkDisplayFields(value, `${path}/${key}`, bags)
+    walkDisplayFields(value, [...segments, key], bags)
   }
 }
 
 export const detachDisplayFields = (root: unknown): Map<string, DisplayFieldBag> => {
   const bags = new Map<string, DisplayFieldBag>()
 
-  walkDisplayFields(root, '', bags)
+  walkDisplayFields(root, [], bags)
 
   return bags
 }
 
 const valueAtPath = (root: unknown, path: string): unknown => {
-  if (path === '') return root
-
   let cursor: unknown = root
 
-  for (const part of path.split('/')) {
-    if (part === '') continue
-
+  for (const part of segmentsFromPointer(path)) {
     if (Array.isArray(cursor)) {
       cursor = cursor[Number(part)]
       continue

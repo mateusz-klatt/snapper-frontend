@@ -323,8 +323,8 @@ describe('Positions', () => {
 
     vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
     renderWithProviders(<Positions />)
-    fireEvent.click(screen.getByTestId('dust-toggle'))
 
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
     expect(screen.getByTestId('position-mark-TINY-BTC-kraken-live')).toHaveTextContent(
       '≈ 0.00000000 BTC'
     )
@@ -782,7 +782,7 @@ describe('Positions', () => {
         unrealizedPnl: -1.2830999922e-9,
         realizedPnl: 0,
       }),
-      { quantityDecimals: 8 }
+      { quantityDecimals: 8, isDust: true }
     )
     const { usePositions } = await import('../../hooks/queries/positions')
 
@@ -810,6 +810,22 @@ describe('Positions', () => {
     ).toHaveAttribute('title', expect.stringContaining('0.0000000012830999922'))
     fireEvent.click(toggle)
     expect(screen.queryByText('0.00000001')).not.toBeInTheDocument()
+  })
+
+  it('keeps a 0.3 BTC position in the main list when the API omits is_dust', async () => {
+    const position = makePosition({
+      instrument: 'ETH-BTC',
+      quantity: 0.3,
+      markPrice: 1,
+      averagePrice: 1,
+      unrealizedPnl: 0.01,
+    })
+    const { usePositions } = await import('../../hooks/queries/positions')
+
+    vi.mocked(usePositions).mockReturnValue({ data: [position], isLoading: false } as never)
+    renderWithProviders(<Positions />)
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
+    expect(screen.getByTestId('position-side-ETH-BTC-kraken-live')).toBeInTheDocument()
   })
 
   it('keeps a position in the main list when the API says it is not dust', async () => {

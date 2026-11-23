@@ -406,8 +406,6 @@ export const Positions: React.FC = () => {
     const dust = isDustPosition({
       quantity: position.quantity,
       quantityDecimals: display.quantityDecimals,
-      markPrice: position.markPrice,
-      averagePrice: position.averagePrice,
       isDust: display.isDust,
     })
 
