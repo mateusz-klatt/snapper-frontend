@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Tài khoản Sàn",
-    "subtitle": "Số dư tiền mặt và các vị thế mở, được đánh dấu theo báo cáo của sàn."
+    "title": "Tài khoản nền tảng",
+    "subtitle": "Số dư tiền mặt và các vị thế mở, được đánh dấu theo báo cáo của nền tảng."
   },
   "empty": {
-    "title": "Không có tài khoản sàn",
+    "title": "Không có tài khoản nền tảng",
     "message": "Số dư và các vị thế sẽ xuất hiện ở đây khi một tài khoản được ghi nhận."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Không có dữ liệu tài khoản đáng tin cậy",
-    "message": "Không thể tải trạng thái tài khoản sàn giao dịch. Tài khoản không trống; dữ liệu chỉ đang tạm thời không khả dụng."
+    "message": "Không thể tải trạng thái tài khoản nền tảng giao dịch. Tài khoản không trống; dữ liệu chỉ đang tạm thời không khả dụng."
   },
   "status": {
     "observed": "Thời gian thực",
@@ -26,13 +26,13 @@
     "unknown": "Không rõ"
   },
   "statusTooltip": {
-    "observed": "Sự thật trực tiếp của sàn, được ghi nhận trong khung thời gian hợp lệ.",
-    "simulated": "Số liệu giao dịch mô phỏng — không phải số dư thực của sàn.",
+    "observed": "Sự thật trực tiếp của nền tảng, được ghi nhận trong khung thời gian hợp lệ.",
+    "simulated": "Số liệu giao dịch mô phỏng — không phải số dư thực của nền tảng.",
     "stale": "Ảnh chụp nhanh cuối cùng; khung thời gian hợp lệ đã hết.",
     "clockError": "Dấu thời gian không nhất quán với máy chủ.",
     "corrupt": "Ảnh chụp nhanh được lưu trữ không xác thực được.",
-    "unsupported": "Sàn này không báo cáo trạng thái tài khoản.",
-    "notApplicable": "Thành phần này không áp dụng cho sàn.",
+    "unsupported": "Nền tảng này không báo cáo trạng thái tài khoản.",
+    "notApplicable": "Thành phần này không áp dụng cho nền tảng.",
     "unknown": "Không thể phân loại trạng thái."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Phân loại",
       "title": "Phân loại phương pháp đối soát",
-      "intro": "Chọn cách đối soát tài khoản sàn này với dữ liệu chuẩn của sàn. Đây là tuyên bố về thực tế của tài khoản, không phải một lựa chọn theo ý thích.",
-      "guidance": "Chọn phương pháp phù hợp với cách tài khoản thực sự hoạt động tại sàn: tài khoản tiền mặt (giao ngay) chỉ thanh toán giao dịch từ số dư tiền mặt, trong khi tài khoản ký quỹ có thể vay dựa trên tài sản thế chấp. Nếu không chắc chắn về cách tài khoản hoạt động, hãy để tài khoản ở trạng thái chưa phân loại.",
+      "intro": "Chọn cách đối soát tài khoản nền tảng này với dữ liệu chuẩn của sàn. Đây là tuyên bố về thực tế của tài khoản, không phải một lựa chọn theo ý thích.",
+      "guidance": "Chọn phương pháp phù hợp với cách tài khoản thực sự hoạt động tại nền tảng: tài khoản tiền mặt (giao ngay) chỉ thanh toán giao dịch từ số dư tiền mặt, trong khi tài khoản ký quỹ có thể vay dựa trên tài sản thế chấp. Nếu không chắc chắn về cách tài khoản hoạt động, hãy để tài khoản ở trạng thái chưa phân loại.",
       "immutabilityWarning": "Phân loại này là vĩnh viễn. Sau khi thiết lập, không thể thay đổi hoặc xóa.",
       "acknowledge": "Tôi hiểu rằng phân loại này là vĩnh viễn và phù hợp với cách tài khoản này hoạt động.",
       "methodDescription": {
-        "futuresPosition": "Đối soát các vị thế phái sinh đang mở với dữ liệu chuẩn của sàn về vị thế hợp đồng tương lai.",
+        "futuresPosition": "Đối soát các vị thế phái sinh đang mở với dữ liệu chuẩn của nền tảng về vị thế hợp đồng tương lai.",
         "spotExecutionReplay": "Phát lại các lần khớp lệnh giao ngay dựa trên số dư tiền mặt. Dành cho các tài khoản chỉ dùng tiền mặt và không bao giờ giao dịch ký quỹ.",
-        "marginLedgerReplay": "Phát lại sổ cái margin của sàn. Dành cho các tài khoản giao dịch ký quỹ hoặc vay dựa trên tài sản thế chấp."
+        "marginLedgerReplay": "Phát lại sổ cái margin của nền tảng. Dành cho các tài khoản giao dịch ký quỹ hoặc vay dựa trên tài sản thế chấp."
       },
       "credentialLoading": "Đang tải thông tin xác thực…",
       "noCredential": "Không tìm thấy thông tin xác thực đang hoạt động cho giao dịch thực trên tài khoản này. Không thể phân loại phương pháp đối soát.",

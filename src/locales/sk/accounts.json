@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Účty na burze",
-    "subtitle": "Peňažné zostatky a otvorené pozície označené podľa toho, ako ich burza nahlásila."
+    "title": "Účty na platforme",
+    "subtitle": "Peňažné zostatky a otvorené pozície označené podľa toho, ako ich platforma nahlásila."
   },
   "empty": {
     "title": "Žiadne účty",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Spoľahlivé údaje účtu nie sú k dispozícii",
-    "message": "Stav účtu na burze sa nepodarilo načítať. Účet nie je prázdny; údaje momentálne iba nie sú k dispozícii."
+    "message": "Stav účtu na platforme sa nepodarilo načítať. Účet nie je prázdny; údaje momentálne iba nie sú k dispozícii."
   },
   "status": {
     "observed": "Aktuálne",
@@ -26,13 +26,13 @@
     "unknown": "Neznáme"
   },
   "statusTooltip": {
-    "observed": "Aktuálny stav burzy.",
+    "observed": "Aktuálny stav platformy.",
     "simulated": "Údaje z demo obchodovania — nie skutočné zostatky.",
     "stale": "Posledná známa snímka; okno platnosti vypršalo.",
     "clockError": "Čas nie je konzistentný so serverom.",
     "corrupt": "Snímka neprešla validáciou.",
-    "unsupported": "Táto burza nehlási stav účtu.",
-    "notApplicable": "Tento komponent sa nevzťahuje na burzu.",
+    "unsupported": "Táto platforma nehlási stav účtu.",
+    "notApplicable": "Tento komponent sa nevzťahuje na platformu.",
     "unknown": "Stav nebolo možné klasifikovať."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klasifikovať",
       "title": "Klasifikovať metódu odsúhlasenia",
-      "intro": "Vyberte, ako sa tento účet na burze odsúhlasuje so smerodajnými údajmi burzy. Ide o konštatovanie skutočnosti o účte, nie o preferenciu.",
-      "guidance": "Vyberte metódu, ktorá zodpovedá skutočnému fungovaniu účtu na burze: hotovostné (spotové) účty vyrovnávajú obchody výlučne z peňažných zostatkov, zatiaľ čo maržové účty si môžu požičiavať proti kolaterálu. Ak si nie ste istí, ako účet funguje, ponechajte ho neklasifikovaný.",
+      "intro": "Vyberte, ako sa tento účet na platforme odsúhlasuje so smerodajnými údajmi burzy. Ide o konštatovanie skutočnosti o účte, nie o preferenciu.",
+      "guidance": "Vyberte metódu, ktorá zodpovedá skutočnému fungovaniu účtu na platforme: hotovostné (spotové) účty vyrovnávajú obchody výlučne z peňažných zostatkov, zatiaľ čo maržové účty si môžu požičiavať proti kolaterálu. Ak si nie ste istí, ako účet funguje, ponechajte ho neklasifikovaný.",
       "immutabilityWarning": "Táto klasifikácia je trvalá. Po nastavení ju nemožno zmeniť ani odstrániť.",
       "acknowledge": "Rozumiem, že táto klasifikácia je trvalá a zodpovedá tomu, ako tento účet funguje.",
       "methodDescription": {
-        "futuresPosition": "Odsúhlasuje otvorené derivátové pozície so smerodajnými údajmi burzy o futures pozíciách.",
+        "futuresPosition": "Odsúhlasuje otvorené derivátové pozície so smerodajnými údajmi platformy o futures pozíciách.",
         "spotExecutionReplay": "Prehráva spotové exekúcie voči peňažným zostatkom. Pre účty vedené výlučne v hotovosti, ktoré nikdy neobchodujú na maržu.",
-        "marginLedgerReplay": "Prehráva maržovú účtovnú knihu burzy. Pre účty, ktoré obchodujú na maržu alebo si požičiavajú proti kolaterálu."
+        "marginLedgerReplay": "Prehráva maržovú účtovnú knihu platformy. Pre účty, ktoré obchodujú na maržu alebo si požičiavajú proti kolaterálu."
       },
       "credentialLoading": "Načítava sa poverenie…",
       "noCredential": "Pre tento účet sa nenašlo žiadne aktívne poverenie pre skutočné obchodovanie. Odsúhlasenie nemožno klasifikovať.",

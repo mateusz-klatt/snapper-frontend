@@ -1,11 +1,11 @@
 {
   "page": {
-    "title": "Akun Bursa",
-    "subtitle": "Saldo kas dan posisi terbuka, diberi label berdasarkan laporan bursa."
+    "title": "Akun Platform",
+    "subtitle": "Saldo kas dan posisi terbuka, diberi label berdasarkan laporan platform."
   },
   "empty": {
     "title": "Tidak ada akun",
-    "message": "Saldo dan posisi bursa akan muncul di sini setelah akun terdeteksi."
+    "message": "Saldo dan posisi platform akan muncul di sini setelah akun terdeteksi."
   },
   "banner": {
     "title": "Beberapa data akun tidak real-time",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Data akun tepercaya tidak tersedia",
-    "message": "Status akun bursa tidak dapat dimuat. Akun ini bukan kosong; datanya hanya sedang tidak tersedia."
+    "message": "Status akun platform tidak dapat dimuat. Akun ini bukan kosong; datanya hanya sedang tidak tersedia."
   },
   "status": {
     "observed": "Real-time",
@@ -26,13 +26,13 @@
     "unknown": "Tidak diketahui"
   },
   "statusTooltip": {
-    "observed": "Data bursa langsung, diamati dalam jendela otoritas.",
-    "simulated": "Angka perdagangan simulasi — bukan saldo bursa yang sebenarnya.",
+    "observed": "Data platform langsung, diamati dalam jendela otoritas.",
+    "simulated": "Angka perdagangan simulasi — bukan saldo platform yang sebenarnya.",
     "stale": "Snapshot terakhir yang diketahui; jendela otoritas telah berlalu.",
     "clockError": "Tanda waktu pengamatan tidak konsisten dengan server.",
     "corrupt": "Snapshot yang disimpan gagal divalidasi.",
-    "unsupported": "Bursa ini tidak melaporkan status akun.",
-    "notApplicable": "Komponen ini tidak berlaku untuk bursa.",
+    "unsupported": "Platform ini tidak melaporkan status akun.",
+    "notApplicable": "Komponen ini tidak berlaku untuk platform.",
     "unknown": "Status tidak dapat diklasifikasikan."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klasifikasikan",
       "title": "Klasifikasikan metode rekonsiliasi",
-      "intro": "Pilih cara akun bursa ini direkonsiliasi dengan data otoritatif bursa. Ini adalah pernyataan fakta tentang akun, bukan preferensi.",
-      "guidance": "Pilih metode yang sesuai dengan cara akun tersebut benar-benar beroperasi di bursa: akun kas (spot) menyelesaikan transaksi hanya dari saldo kas, sedangkan akun margin dapat meminjam dengan agunan. Jika Anda tidak yakin bagaimana akun tersebut beroperasi, biarkan akun tetap belum diklasifikasi.",
+      "intro": "Pilih cara akun platform ini direkonsiliasi dengan data otoritatif bursa. Ini adalah pernyataan fakta tentang akun, bukan preferensi.",
+      "guidance": "Pilih metode yang sesuai dengan cara akun tersebut benar-benar beroperasi di platform: akun kas (spot) menyelesaikan transaksi hanya dari saldo kas, sedangkan akun margin dapat meminjam dengan agunan. Jika Anda tidak yakin bagaimana akun tersebut beroperasi, biarkan akun tetap belum diklasifikasi.",
       "immutabilityWarning": "Klasifikasi ini bersifat permanen. Setelah ditetapkan, klasifikasi ini tidak dapat diubah atau dihapus.",
       "acknowledge": "Saya memahami bahwa klasifikasi ini bersifat permanen dan sesuai dengan cara akun ini beroperasi.",
       "methodDescription": {
-        "futuresPosition": "Merekonsiliasi posisi derivatif terbuka dengan data otoritatif posisi berjangka bursa.",
+        "futuresPosition": "Merekonsiliasi posisi derivatif terbuka dengan data otoritatif posisi berjangka platform.",
         "spotExecutionReplay": "Memutar ulang eksekusi spot terhadap saldo kas. Untuk akun khusus kas yang tidak pernah berdagang dengan margin.",
-        "marginLedgerReplay": "Memutar ulang buku besar margin bursa. Untuk akun yang berdagang dengan margin atau meminjam dengan agunan."
+        "marginLedgerReplay": "Memutar ulang buku besar margin platform. Untuk akun yang berdagang dengan margin atau meminjam dengan agunan."
       },
       "credentialLoading": "Memuat kredensial…",
       "noCredential": "Tidak ditemukan kredensial aktif real-time untuk akun ini. Rekonsiliasi tidak dapat diklasifikasikan.",

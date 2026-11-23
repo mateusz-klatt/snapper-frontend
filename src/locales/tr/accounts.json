@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Borsa Hesapları",
-    "subtitle": "Borsanın bildirdiğine göre etiketlenmiş nakit bakiyeleri ve açık pozisyonlar."
+    "title": "Platform Hesapları",
+    "subtitle": "Platformun bildirdiğine göre etiketlenmiş nakit bakiyeleri ve açık pozisyonlar."
   },
   "empty": {
-    "title": "Borsa hesabı yok",
+    "title": "Platform hesabı yok",
     "message": "Bağlı bir cüzdan için bir hesap tespit edildiğinde bakiyeler ve pozisyonlar burada görünür."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Güvenilir hesap verileri kullanılamıyor",
-    "message": "Borsa hesabının durumu yüklenemedi. Hesap boş değil; veriler şu anda kullanılamıyor."
+    "message": "Platform hesabının durumu yüklenemedi. Hesap boş değil; veriler şu anda kullanılamıyor."
   },
   "status": {
     "observed": "Gerçek zamanlı",
@@ -26,13 +26,13 @@
     "unknown": "Bilinmiyor"
   },
   "statusTooltip": {
-    "observed": "Geçerlilik süresi içinde alınmış güvenilir ve gerçek zamanlı borsa verileri.",
-    "simulated": "Demo işlem rakamları — gerçek borsa bakiyeleri değil.",
+    "observed": "Geçerlilik süresi içinde alınmış güvenilir ve gerçek zamanlı platform verileri.",
+    "simulated": "Demo işlem rakamları — gerçek platform bakiyeleri değil.",
     "stale": "Bilinen son anlık görüntü; geçerlilik süresi doldu veya veri alımı durdu.",
     "clockError": "Gözlem zaman damgası sunucu saatiyle tutarsız.",
     "corrupt": "Depolanan anlık görüntü doğrulanamadı.",
-    "unsupported": "Bu borsa hesap durumunu bildirmiyor.",
-    "notApplicable": "Bu bileşen borsaya uygulanamaz.",
+    "unsupported": "Bu platform hesap durumunu bildirmiyor.",
+    "notApplicable": "Bu bileşen platforma uygulanamaz.",
     "unknown": "Durum sınıflandırılamadı."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Sınıflandır",
       "title": "Mutabakat yöntemini sınıflandır",
-      "intro": "Bu borsa hesabının borsadaki gerçek kayıtlarla nasıl mutabakat sağlayacağını seçin. Bu, hesapla ilgili bir olgu beyanıdır; tercih değildir.",
-      "guidance": "Hesabın borsada gerçekte nasıl çalıştığına uyan yöntemi seçin: nakit (spot) hesaplar işlemlerin takasını yalnızca nakit bakiyelerinden gerçekleştirirken marjin hesapları teminat karşılığında borçlanabilir. Hesabın nasıl çalıştığından emin değilseniz hesabı sınıflandırılmamış olarak bırakın.",
+      "intro": "Bu platform hesabının borsadaki gerçek kayıtlarla nasıl mutabakat sağlayacağını seçin. Bu, hesapla ilgili bir olgu beyanıdır; tercih değildir.",
+      "guidance": "Hesabın platformda gerçekte nasıl çalıştığına uyan yöntemi seçin: nakit (spot) hesaplar işlemlerin takasını yalnızca nakit bakiyelerinden gerçekleştirirken marjin hesapları teminat karşılığında borçlanabilir. Hesabın nasıl çalıştığından emin değilseniz hesabı sınıflandırılmamış olarak bırakın.",
       "immutabilityWarning": "Bu sınıflandırma kalıcıdır. Ayarlandıktan sonra değiştirilemez veya kaldırılamaz.",
       "acknowledge": "Bu sınıflandırmanın kalıcı olduğunu ve bu hesabın çalışma şekliyle eşleştiğini anlıyorum.",
       "methodDescription": {
-        "futuresPosition": "Açık türev pozisyonlarını borsanın vadeli işlem pozisyonlarına ilişkin gerçek kayıtlarıyla mutabakata tabi tutar.",
+        "futuresPosition": "Açık türev pozisyonlarını platformun vadeli işlem pozisyonlarına ilişkin gerçek kayıtlarıyla mutabakata tabi tutar.",
         "spotExecutionReplay": "Spot emir yürütmelerini nakit bakiyeleri üzerinden tekrarlar. Yalnızca nakitle işlem yapan ve hiçbir zaman marjinle işlem yapmayan hesaplar içindir.",
-        "marginLedgerReplay": "Borsanın marjin defterini tekrarlar. Marjinle işlem yapan veya teminat karşılığında borçlanan hesaplar içindir."
+        "marginLedgerReplay": "Platformun marjin defterini tekrarlar. Marjinle işlem yapan veya teminat karşılığında borçlanan hesaplar içindir."
       },
       "credentialLoading": "Kimlik bilgisi yükleniyor…",
       "noCredential": "Bu hesap için aktif bir gerçek işlem kimlik bilgisi bulunamadı. Mutabakat sınıflandırılamaz.",

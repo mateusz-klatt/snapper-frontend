@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Börskonton",
-    "subtitle": "Kontantsaldon och öppna positioner, märkta enligt börsens rapportering."
+    "title": "Plattformskonton",
+    "subtitle": "Kontantsaldon och öppna positioner, märkta enligt handelsplattformens rapportering."
   },
   "empty": {
-    "title": "Inga börskonton",
+    "title": "Inga plattformskonton",
     "message": "Saldon och positioner visas här när ett konto har observerats."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Tillförlitliga kontodata är inte tillgängliga",
-    "message": "Börskontots status kunde inte läsas in. Kontot är inte tomt; uppgifterna är bara otillgängliga just nu."
+    "message": "Plattformskontots status kunde inte läsas in. Kontot är inte tomt; uppgifterna är bara otillgängliga just nu."
   },
   "status": {
     "observed": "Realtid",
@@ -26,13 +26,13 @@
     "unknown": "Okänd"
   },
   "statusTooltip": {
-    "observed": "Tillförlitliga börsdata i realtid, registrerade inom giltighetsperioden.",
-    "simulated": "Siffror från simulerad handel — inte verkliga börssaldon.",
+    "observed": "Tillförlitliga data från handelsplattformen i realtid, registrerade inom giltighetsperioden.",
+    "simulated": "Siffror från simulerad handel — inte verkliga saldon på handelsplattformen.",
     "stale": "Senast kända ögonblicksbild; auktoritetsfönstret har löpt ut.",
     "clockError": "Observationstidsstämpel stämmer inte med serverns klocka.",
     "corrupt": "Sparad ögonblicksbild klarade inte valideringen.",
-    "unsupported": "Denna börs rapporterar inte kontostatus.",
-    "notApplicable": "Denna komponent gäller inte för börsen.",
+    "unsupported": "Denna handelsplattform rapporterar inte kontostatus.",
+    "notApplicable": "Denna komponent gäller inte för handelsplattformen.",
     "unknown": "Status kunde inte klassificeras."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klassificera",
       "title": "Klassificera avstämningsmetod",
-      "intro": "Välj hur detta börskonto stäms av mot börsens auktoritativa uppgifter. Detta är ett konstaterande om kontot, inte en preferens.",
-      "guidance": "Välj den metod som motsvarar hur kontot faktiskt fungerar på börsen: kontantkonton (spot) avvecklar affärer enbart från kontantsaldon, medan marginalkonton kan låna mot säkerhet. Om du inte är säker på hur kontot fungerar ska du lämna det oklassificerat.",
+      "intro": "Välj hur detta plattformskonto stäms av mot börsens auktoritativa uppgifter. Detta är ett konstaterande om kontot, inte en preferens.",
+      "guidance": "Välj den metod som motsvarar hur kontot faktiskt fungerar på handelsplattformen: kontantkonton (spot) avvecklar affärer enbart från kontantsaldon, medan marginalkonton kan låna mot säkerhet. Om du inte är säker på hur kontot fungerar ska du lämna det oklassificerat.",
       "immutabilityWarning": "Den här klassificeringen är permanent. Den kan inte ändras eller tas bort när den väl har angetts.",
       "acknowledge": "Jag förstår att den här klassificeringen är permanent och motsvarar hur kontot fungerar.",
       "methodDescription": {
-        "futuresPosition": "Stämmer av öppna derivatpositioner mot börsens auktoritativa uppgifter om terminspositioner.",
+        "futuresPosition": "Stämmer av öppna derivatpositioner mot handelsplattformens auktoritativa uppgifter om terminspositioner.",
         "spotExecutionReplay": "Spelar upp spot-exekveringar mot kontantsaldon. För konton som enbart använder kontanter och aldrig handlar med marginal.",
-        "marginLedgerReplay": "Spelar upp börsens marginalhuvudbok. För konton som handlar med marginal eller lånar mot säkerhet."
+        "marginLedgerReplay": "Spelar upp handelsplattformens marginalhuvudbok. För konton som handlar med marginal eller lånar mot säkerhet."
       },
       "credentialLoading": "Laddar referens…",
       "noCredential": "Ingen aktiv referens för verklig handel hittades för det här kontot. Avstämningen kan inte klassificeras.",

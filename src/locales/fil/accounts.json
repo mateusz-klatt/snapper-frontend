@@ -1,10 +1,10 @@
 {
   "page": {
-    "title": "Mga Account sa Palitan",
-    "subtitle": "Mga balanseng salapi at bukas na posisyon, na may tatak ayon sa pagiging mapagkakatiwalaan ng ulat ng palitan."
+    "title": "Mga Account sa Plataporma",
+    "subtitle": "Mga balanseng salapi at bukas na posisyon, na may tatak ayon sa pagiging mapagkakatiwalaan ng ulat ng plataporma."
   },
   "empty": {
-    "title": "Walang account sa palitan",
+    "title": "Walang account sa plataporma",
     "message": "Lilitaw ang mga balanse dito kapag na-obserbahan ang isang account."
   },
   "banner": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Hindi magagamit ang mapagkakatiwalaang data ng account",
-    "message": "Hindi ma-load ang estado ng account sa palitan. Hindi walang laman ang account; hindi lamang magagamit ang data sa ngayon."
+    "message": "Hindi ma-load ang estado ng account sa plataporma. Hindi walang laman ang account; hindi lamang magagamit ang data sa ngayon."
   },
   "status": {
     "observed": "Real-time",
@@ -26,12 +26,12 @@
     "unknown": "Hindi alam"
   },
   "statusTooltip": {
-    "observed": "Mapagkakatiwalaang real-time na data ng palitan, naitala sa loob ng panahon ng bisa.",
-    "simulated": "Mga bilang mula sa kunwaring pangangalakal — hindi tunay na balanse ng palitan.",
+    "observed": "Mapagkakatiwalaang real-time na data ng plataporma, naitala sa loob ng panahon ng bisa.",
+    "simulated": "Mga bilang mula sa kunwaring pangangalakal — hindi tunay na balanse ng plataporma.",
     "stale": "Huling natanggap na snapshot; lumampas na ang panahon ng bisa o huminto ang pagkuha ng data.",
     "clockError": "Hindi tugma sa orasan ng server ang oras.",
     "corrupt": "Bumagsak sa pagpapatunay ang snapshot.",
-    "unsupported": "Hindi nag-uulat ng estado ng account ang palitang ito.",
+    "unsupported": "Hindi nag-uulat ng estado ng account ang platapormang ito.",
     "notApplicable": "Hindi angkop ang bahaging ito.",
     "unknown": "Hindi mauri ang katayuan."
   },
@@ -110,13 +110,13 @@
       "action": "Iuri",
       "title": "Iuri ang paraan ng reconciliation",
       "intro": "Piliin kung paano nire-reconcile ang account na ito sa mapagkakatiwalaang data ng palitan. Pahayag ito ng katotohanan tungkol sa account, hindi isang kagustuhan.",
-      "guidance": "Piliin ang paraang tumutugma sa aktuwal na paggana ng account sa palitan: ang mga cash (spot) account ay nagse-settle ng mga trade gamit lamang ang balanseng salapi, habang maaaring manghiram ang mga margin account laban sa collateral. Kung hindi ka sigurado kung paano gumagana ang account, hayaan itong hindi pa naiuri.",
+      "guidance": "Piliin ang paraang tumutugma sa aktuwal na paggana ng account sa plataporma: ang mga cash (spot) account ay nagse-settle ng mga trade gamit lamang ang balanseng salapi, habang maaaring manghiram ang mga margin account laban sa collateral. Kung hindi ka sigurado kung paano gumagana ang account, hayaan itong hindi pa naiuri.",
       "immutabilityWarning": "Permanente ang pag-uuring ito. Kapag itinakda na, hindi na ito mababago o maaalis.",
       "acknowledge": "Nauunawaan kong permanente ang pag-uuring ito at tumutugma sa paggana ng account na ito.",
       "methodDescription": {
-        "futuresPosition": "Nire-reconcile ang mga bukas na derivative posisyon laban sa mapagkakatiwalaang futures posisyon data ng palitan.",
+        "futuresPosition": "Nire-reconcile ang mga bukas na derivative posisyon laban sa mapagkakatiwalaang futures posisyon data ng plataporma.",
         "spotExecutionReplay": "Nire-replay ang mga spot execution laban sa mga balanseng salapi. Para sa mga cash-only account na hindi kailanman nagte-trade gamit ang margin.",
-        "marginLedgerReplay": "Nire-replay ang margin ledger ng palitan. Para sa mga account na nagte-trade gamit ang margin o nanghihiram laban sa collateral."
+        "marginLedgerReplay": "Nire-replay ang margin ledger ng plataporma. Para sa mga account na nagte-trade gamit ang margin o nanghihiram laban sa collateral."
       },
       "credentialLoading": "Nilo-load ang credential…",
       "noCredential": "Walang nakitang active live credential para sa account na ito. Hindi maaaring iuri ang paraan ng reconciliation.",

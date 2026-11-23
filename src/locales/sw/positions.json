@@ -109,7 +109,7 @@
     "equity": {
       "title": "Safu ya juu ya mtaji",
       "seriesLabel": "Mtaji",
-      "seriesLabelSpotOnly": "Mtaji (soko la papo hapo)",
+      "seriesLabelSpotOnly": "Mtaji (jukwaa la biashara ya papo hapo)",
       "latest": "Ya hivi karibuni: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Jinsi ya kusoma data hii",
-        "spotOnly": "Soko la papo hapo pekee — salio kwenye masoko mengine hayajajumuishwa.",
+        "spotOnly": "Jukwaa la biashara ya papo hapo pekee — salio kwenye majukwaa mengine hayajajumuishwa.",
         "flowsUnadjusted": "Amana na utoaji wa nje haujaondolewa.",
         "restatedFrom": "Takwimu hizi zimehesabiwa upya kutoka {{from}} kwa kiwango cha kufunga cha kila dakika, na hazikupimwa moja kwa moja katika sarafu hii.",
         "pricedOn": "Imethaminiwa kwa {{plane}}.",

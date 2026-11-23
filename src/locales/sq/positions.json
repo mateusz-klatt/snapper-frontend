@@ -109,7 +109,7 @@
     "equity": {
       "title": "Mbivendosja e kapitalit",
       "seriesLabel": "Kapitali",
-      "seriesLabelSpotOnly": "Kapitali (bursa spot)",
+      "seriesLabelSpotOnly": "Kapitali (platforma spot)",
       "latest": "Më e fundit: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Si të interpretohet",
-        "spotOnly": "Vetëm bursa spot — përjashtohen gjendjet e mbajtura në bursa të tjera.",
+        "spotOnly": "Vetëm platforma spot — përjashtohen gjendjet e mbajtura në platforma të tjera.",
         "flowsUnadjusted": "Depozitat dhe tërheqjet e jashtme nuk janë hequr.",
         "restatedFrom": "Këto shifra janë rikonvertuar nga {{from}} sipas çmimit të mbylljes së çdo minute dhe nuk janë matur fillimisht në këtë monedhë.",
         "pricedOn": "Vlerësuar sipas {{plane}}.",

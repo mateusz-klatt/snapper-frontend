@@ -109,7 +109,7 @@
     "equity": {
       "title": "Saját tőke-átfedés",
       "seriesLabel": "Saját tőke",
-      "seriesLabelSpotOnly": "Saját tőke (azonnali tőzsde)",
+      "seriesLabelSpotOnly": "Saját tőke (azonnali kereskedési platform)",
       "latest": "Legutóbbi: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Az adatok értelmezése",
-        "spotOnly": "Csak az azonnali tőzsde — a más tőzsdéken tartott egyenlegek nincsenek benne.",
+        "spotOnly": "Csak az azonnali kereskedési platform — a más platformokon tartott egyenlegek nincsenek benne.",
         "flowsUnadjusted": "A külső befizetések és kifizetések nincsenek kiszűrve.",
         "restatedFrom": "Ezek az adatok {{from}} pénznemből vannak újraszámítva minden perc záró árfolyamán, nem pedig eredetileg ebben a pénznemben mintavételezve.",
         "pricedOn": "Árazás {{plane}} alapján.",

@@ -109,7 +109,7 @@
     "equity": {
       "title": "Overlay ekuitas",
       "seriesLabel": "Ekuitas",
-      "seriesLabelSpotOnly": "Ekuitas (bursa spot)",
+      "seriesLabelSpotOnly": "Ekuitas (platform spot)",
       "latest": "Terbaru: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Cara membaca data ini",
-        "spotOnly": "Hanya bursa spot — saldo yang disimpan di bursa lain tidak disertakan.",
+        "spotOnly": "Hanya platform spot — saldo yang disimpan di platform lain tidak disertakan.",
         "flowsUnadjusted": "Setoran dan penarikan eksternal tidak dikeluarkan.",
         "restatedFrom": "Angka-angka ini dihitung ulang dari {{from}} berdasarkan kurs penutupan setiap menit, bukan diukur langsung dalam mata uang ini.",
         "pricedOn": "Dinilai berdasarkan {{plane}}.",

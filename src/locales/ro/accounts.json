@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Conturi de Bursă",
-    "subtitle": "Solduri de numerar și poziții deschise, etichetate conform raportărilor bursei."
+    "title": "Conturi pe platformă",
+    "subtitle": "Solduri de numerar și poziții deschise, etichetate conform raportărilor platformei."
   },
   "empty": {
     "title": "Fără conturi",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Datele de încredere ale contului nu sunt disponibile",
-    "message": "Starea contului de bursă nu a putut fi încărcată. Contul nu este gol; datele sunt pur și simplu indisponibile momentan."
+    "message": "Starea contului pe platformă nu a putut fi încărcată. Contul nu este gol; datele sunt pur și simplu indisponibile momentan."
   },
   "status": {
     "observed": "Timp real",
@@ -26,13 +26,13 @@
     "unknown": "Necunoscut"
   },
   "statusTooltip": {
-    "observed": "Adevăr bursier în timp real.",
-    "simulated": "Valori din tranzacționare simulată — nu sunt solduri reale ale bursei.",
+    "observed": "Adevăr al platformei în timp real.",
+    "simulated": "Valori din tranzacționare simulată — nu sunt solduri reale ale platformei.",
     "stale": "Ultimul instantaneu cunoscut; perioada de valabilitate a expirat sau interogarea s-a oprit.",
     "clockError": "Marcajul de timp este inconsecvent cu serverul.",
     "corrupt": "Instantaneul stocat a eșuat la validare.",
-    "unsupported": "Această bursă nu raportează starea contului.",
-    "notApplicable": "Acest component nu se aplică bursei.",
+    "unsupported": "Această platformă nu raportează starea contului.",
+    "notApplicable": "Acest component nu se aplică platformei.",
     "unknown": "Starea nu a putut fi clasificată."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Clasificați",
       "title": "Clasificați metoda de reconciliere",
-      "intro": "Alegeți modul în care acest cont de bursă este reconciliat cu datele de referință ale bursei. Aceasta este o constatare factuală despre cont, nu o preferință.",
-      "guidance": "Alegeți metoda care corespunde modului în care contul operează efectiv la bursă: conturile cu numerar (spot) decontează tranzacțiile exclusiv din soldurile de numerar, în timp ce conturile în marjă se pot împrumuta garantând cu active. Dacă nu cunoașteți cu certitudine modul în care operează contul, lăsați-l neclasificat.",
+      "intro": "Alegeți modul în care acest cont pe platformă este reconciliat cu datele de referință ale bursei. Aceasta este o constatare factuală despre cont, nu o preferință.",
+      "guidance": "Alegeți metoda care corespunde modului în care contul operează efectiv pe platformă: conturile cu numerar (spot) decontează tranzacțiile exclusiv din soldurile de numerar, în timp ce conturile în marjă se pot împrumuta garantând cu active. Dacă nu cunoașteți cu certitudine modul în care operează contul, lăsați-l neclasificat.",
       "immutabilityWarning": "Această clasificare este permanentă. Odată stabilită, nu poate fi schimbată sau eliminată.",
       "acknowledge": "Înțeleg că această clasificare este permanentă și corespunde modului în care operează acest cont.",
       "methodDescription": {
-        "futuresPosition": "Reconciliază pozițiile deschise pe instrumente derivate cu datele de referință ale bursei privind pozițiile futures.",
+        "futuresPosition": "Reconciliază pozițiile deschise pe instrumente derivate cu datele de referință ale platformei privind pozițiile futures.",
         "spotExecutionReplay": "Reia execuțiile spot în raport cu soldurile de numerar. Pentru conturile exclusiv cu numerar, care nu tranzacționează niciodată în marjă.",
-        "marginLedgerReplay": "Reia registrul de marjă al bursei. Pentru conturile care tranzacționează în marjă sau se împrumută garantând cu active."
+        "marginLedgerReplay": "Reia registrul de marjă al platformei. Pentru conturile care tranzacționează în marjă sau se împrumută garantând cu active."
       },
       "credentialLoading": "Se încarcă credențiala…",
       "noCredential": "Nu s-a găsit nicio credențială activă de tranzacționare reală pentru acest cont. Reconcilierea nu poate fi clasificată.",

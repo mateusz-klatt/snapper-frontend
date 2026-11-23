@@ -109,7 +109,7 @@
     "equity": {
       "title": "Overlejring af egenkapital",
       "seriesLabel": "Egenkapital",
-      "seriesLabelSpotOnly": "Egenkapital (spotbørs)",
+      "seriesLabelSpotOnly": "Egenkapital (spotplatform)",
       "latest": "Seneste: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Sådan læses dette",
-        "spotOnly": "Kun spotbørsen — saldi på andre børser er ikke medtaget.",
+        "spotOnly": "Kun spotplatformen — saldi på andre handelsplatforme er ikke medtaget.",
         "flowsUnadjusted": "Eksterne ind- og udbetalinger er ikke fratrukket.",
         "restatedFrom": "Disse tal er omregnet fra {{from}} ved hvert minuts lukningskurs og er ikke oprindeligt målt i denne valuta.",
         "pricedOn": "Prissat på {{plane}}.",

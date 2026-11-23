@@ -109,7 +109,7 @@
     "equity": {
       "title": "Překryv vlastního kapitálu",
       "seriesLabel": "Vlastní kapitál",
-      "seriesLabelSpotOnly": "Vlastní kapitál (spotová burza)",
+      "seriesLabelSpotOnly": "Vlastní kapitál (spotová platforma)",
       "latest": "Nejnovější: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Jak údaje číst",
-        "spotOnly": "Pouze spotová burza — zůstatky na jiných burzách nejsou zahrnuty.",
+        "spotOnly": "Pouze spotová platforma — zůstatky na jiných platformách nejsou zahrnuty.",
         "flowsUnadjusted": "Externí vklady a výběry nejsou odečteny.",
         "restatedFrom": "Tyto údaje jsou přepočteny z {{from}} podle závěrečného kurzu každé minuty a nejsou původně měřeny v této měně.",
         "pricedOn": "Oceněno podle {{plane}}.",

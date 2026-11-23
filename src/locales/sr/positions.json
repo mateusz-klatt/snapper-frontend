@@ -109,7 +109,7 @@
     "equity": {
       "title": "Sloj kapitala",
       "seriesLabel": "Kapital",
-      "seriesLabelSpotOnly": "Kapital (samo spot berza)",
+      "seriesLabelSpotOnly": "Kapital (samo spot platforma)",
       "latest": "Najnovija vrednost: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Kako ovo tumačiti",
-        "spotOnly": "Samo spot berza — salda na drugim berzama nisu uključena.",
+        "spotOnly": "Samo spot platforma — salda na drugim platformama nisu uključena.",
         "flowsUnadjusted": "Spoljne uplate i isplate nisu uklonjene iz izračuna.",
         "restatedFrom": "Ovi podaci su preračunati iz {{from}} po kursu zatvaranja za svaki minut; nisu izvorno mereni u ovoj valuti.",
         "pricedOn": "Vrednovano prema {{plane}}.",

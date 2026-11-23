@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Akaun Bursa",
-    "subtitle": "Baki tunai bursa dan posisi terbuka, dilabel mengikut laporan bursa."
+    "title": "Akaun Platform",
+    "subtitle": "Baki tunai bursa dan posisi terbuka, dilabel mengikut laporan platform."
   },
   "empty": {
     "title": "Tiada akaun",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Data akaun yang boleh dipercayai tidak tersedia",
-    "message": "Status akaun bursa tidak dapat dimuatkan. Akaun ini bukan kosong; datanya hanya tidak tersedia buat masa ini."
+    "message": "Status akaun platform tidak dapat dimuatkan. Akaun ini bukan kosong; datanya hanya tidak tersedia buat masa ini."
   },
   "status": {
     "observed": "Masa nyata",
@@ -26,13 +26,13 @@
     "unknown": "Tidak diketahui"
   },
   "statusTooltip": {
-    "observed": "Data bursa masa nyata yang boleh dipercayai, direkodkan dalam tempoh sah.",
-    "simulated": "Angka dagangan simulasi — bukan baki bursa sebenar.",
+    "observed": "Data platform masa nyata yang boleh dipercayai, direkodkan dalam tempoh sah.",
+    "simulated": "Angka dagangan simulasi — bukan baki platform sebenar.",
     "stale": "Snapshot terakhir yang diketahui; tempoh sah telah tamat atau pengambilan data terhenti.",
     "clockError": "Cap masa pemerhatian tidak konsisten dengan pelayan.",
     "corrupt": "Snapshot yang disimpan gagal disahkan.",
-    "unsupported": "Bursa ini tidak melaporkan keadaan akaun.",
-    "notApplicable": "Komponen ini tidak terpakai kepada bursa.",
+    "unsupported": "Platform ini tidak melaporkan keadaan akaun.",
+    "notApplicable": "Komponen ini tidak terpakai kepada platform.",
     "unknown": "Status tidak dapat diklasifikasikan."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Kelaskan",
       "title": "Kelaskan kaedah penyelarasan",
-      "intro": "Pilih cara akaun bursa ini diselaraskan dengan data bursa yang boleh dipercayai. Ini ialah pernyataan fakta tentang akaun, bukan keutamaan.",
-      "guidance": "Pilih kaedah yang sepadan dengan cara sebenar akaun beroperasi di bursa: akaun tunai (lani) menyelesaikan dagangan menggunakan baki tunai sahaja, manakala akaun margin boleh meminjam dengan cagaran. Jika anda tidak pasti cara akaun beroperasi, biarkannya tidak dikelaskan.",
+      "intro": "Pilih cara akaun platform ini diselaraskan dengan data bursa yang boleh dipercayai. Ini ialah pernyataan fakta tentang akaun, bukan keutamaan.",
+      "guidance": "Pilih kaedah yang sepadan dengan cara sebenar akaun beroperasi di platform: akaun tunai (lani) menyelesaikan dagangan menggunakan baki tunai sahaja, manakala akaun margin boleh meminjam dengan cagaran. Jika anda tidak pasti cara akaun beroperasi, biarkannya tidak dikelaskan.",
       "immutabilityWarning": "Pengelasan ini kekal. Ia tidak boleh diubah atau dialih keluar setelah ditetapkan.",
       "acknowledge": "Saya faham bahawa pengelasan ini kekal dan sepadan dengan cara akaun ini beroperasi.",
       "methodDescription": {
-        "futuresPosition": "Menyelaraskan posisi derivatif terbuka dengan data posisi niaga hadapan bursa yang boleh dipercayai.",
+        "futuresPosition": "Menyelaraskan posisi derivatif terbuka dengan data posisi niaga hadapan platform yang boleh dipercayai.",
         "spotExecutionReplay": "Memainkan semula pelaksanaan lani terhadap baki tunai. Untuk akaun tunai sahaja yang tidak pernah berdagang secara margin.",
-        "marginLedgerReplay": "Memainkan semula lejar margin bursa. Untuk akaun yang berdagang secara margin atau meminjam dengan cagaran."
+        "marginLedgerReplay": "Memainkan semula lejar margin platform. Untuk akaun yang berdagang secara margin atau meminjam dengan cagaran."
       },
       "credentialLoading": "Memuatkan kelayakan…",
       "noCredential": "Tiada kelayakan aktif untuk dagangan sebenar ditemui bagi akaun ini. Penyelarasan tidak dapat dikelaskan.",

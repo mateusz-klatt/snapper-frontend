@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Računi na burzi",
-    "subtitle": "Gotovinska salda i otvorene pozicije, označene prema izvješću burze."
+    "title": "Računi na platformi",
+    "subtitle": "Gotovinska salda i otvorene pozicije, označene prema izvješću platforme."
   },
   "empty": {
     "title": "Nema računa",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Pouzdani podaci računa nisu dostupni",
-    "message": "Stanje računa na burzi nije moguće učitati. Račun nije prazan; podaci su trenutačno nedostupni."
+    "message": "Stanje računa na platformi nije moguće učitati. Račun nije prazan; podaci su trenutačno nedostupni."
   },
   "status": {
     "observed": "U stvarnom vremenu",
@@ -26,13 +26,13 @@
     "unknown": "Nepoznato"
   },
   "statusTooltip": {
-    "observed": "Pouzdani podaci burze u stvarnom vremenu, zabilježeni tijekom razdoblja valjanosti.",
-    "simulated": "Podaci demo trgovanja — nisu stvarna salda burze.",
+    "observed": "Pouzdani podaci platforme u stvarnom vremenu, zabilježeni tijekom razdoblja valjanosti.",
+    "simulated": "Podaci demo trgovanja — nisu stvarna salda platforme.",
     "stale": "Posljednja poznata snimka; razdoblje valjanosti je isteklo ili je dohvat zastao.",
     "clockError": "Vrijeme opservacije nije usklađeno sa satom poslužitelja.",
     "corrupt": "Snimka nije prošla provjeru.",
-    "unsupported": "Ova burza ne prijavljuje stanje računa.",
-    "notApplicable": "Ova se komponenta ne odnosi na burzu.",
+    "unsupported": "Ova platforma ne prijavljuje stanje računa.",
+    "notApplicable": "Ova se komponenta ne odnosi na platformu.",
     "unknown": "Status se ne može klasificirati."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klasificiraj",
       "title": "Klasificiraj metodu usklađivanja",
-      "intro": "Odaberite kako se ovaj račun na burzi usklađuje s autoritativnim podacima burze. To je činjenična tvrdnja o računu, a ne preferencija.",
-      "guidance": "Odaberite metodu koja odgovara načinu na koji račun stvarno posluje na burzi: gotovinski (spot) računi namiruju trgovanja samo iz gotovinskih salda, dok računi s maržom mogu posuđivati uz kolateral. Ako niste sigurni kako račun posluje, ostavite ga neklasificiranim.",
+      "intro": "Odaberite kako se ovaj račun na platformi usklađuje s autoritativnim podacima burze. To je činjenična tvrdnja o računu, a ne preferencija.",
+      "guidance": "Odaberite metodu koja odgovara načinu na koji račun stvarno posluje na platformi: gotovinski (spot) računi namiruju trgovanja samo iz gotovinskih salda, dok računi s maržom mogu posuđivati uz kolateral. Ako niste sigurni kako račun posluje, ostavite ga neklasificiranim.",
       "immutabilityWarning": "Ova je klasifikacija trajna. Nakon što se postavi, ne može se promijeniti ni ukloniti.",
       "acknowledge": "Razumijem da je ova klasifikacija trajna i da odgovara načinu na koji ovaj račun posluje.",
       "methodDescription": {
-        "futuresPosition": "Usklađuje otvorene pozicije izvedenica s autoritativnim podacima burze o pozicijama ročnica.",
+        "futuresPosition": "Usklađuje otvorene pozicije izvedenica s autoritativnim podacima platforme o pozicijama ročnica.",
         "spotExecutionReplay": "Reproducira spot izvršenja prema gotovinskim saldima. Za račune koji posluju isključivo s gotovinom i nikada ne trguju uz maržu.",
-        "marginLedgerReplay": "Reproducira glavnu knjigu marže burze. Za račune koji trguju uz maržu ili posuđuju uz kolateral."
+        "marginLedgerReplay": "Reproducira glavnu knjigu marže platforme. Za račune koji trguju uz maržu ili posuđuju uz kolateral."
       },
       "credentialLoading": "Učitavanje vjerodajnice…",
       "noCredential": "Za ovaj račun nije pronađena aktivna vjerodajnica za trgovanje u stvarnom vremenu. Usklađivanje se ne može klasificirati.",

@@ -109,7 +109,7 @@
     "equity": {
       "title": "Nakładka kapitału",
       "seriesLabel": "Kapitał",
-      "seriesLabelSpotOnly": "Kapitał (giełda spot)",
+      "seriesLabelSpotOnly": "Kapitał (platforma spot)",
       "latest": "Ostatnio: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Jak to czytać",
-        "spotOnly": "Tylko giełda spot — salda na innych giełdach są wykluczone.",
+        "spotOnly": "Tylko platforma spot — salda na innych platformach są wykluczone.",
         "flowsUnadjusted": "Zewnętrzne wpłaty i wypłaty nie są odejmowane.",
         "restatedFrom": "Te dane są przeliczone z {{from}} po kursie zamknięcia z każdej minuty i nie są pierwotnie mierzone w tej walucie.",
         "pricedOn": "Wycena według {{plane}}.",

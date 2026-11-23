@@ -1,7 +1,7 @@
 {
   "page": {
-    "title": "Biržas konti",
-    "subtitle": "Naudas atlikumi un atvērtās pozīcijas, atzīmētas pēc biržas ziņojumiem."
+    "title": "Platformas konti",
+    "subtitle": "Naudas atlikumi un atvērtās pozīcijas, atzīmētas pēc platformas ziņojumiem."
   },
   "empty": {
     "title": "Nav kontu",
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Uzticami konta dati nav pieejami",
-    "message": "Neizdevās ielādēt biržas konta stāvokli. Konts nav tukšs; dati šobrīd vienkārši nav pieejami."
+    "message": "Neizdevās ielādēt platformas konta stāvokli. Konts nav tukšs; dati šobrīd vienkārši nav pieejami."
   },
   "status": {
     "observed": "Reāllaikā",
@@ -26,13 +26,13 @@
     "unknown": "Nezināms"
   },
   "statusTooltip": {
-    "observed": "Tiešsaistes biržas patiesība.",
+    "observed": "Tiešsaistes platformas patiesība.",
     "simulated": "Demo tirdzniecības dati — ne īsti atlikumi.",
     "stale": "Pēdējais zināmais momentuzņēmums; logs beidzies.",
     "clockError": "Laika zīmogs neatbilst serverim.",
     "corrupt": "Momentuzņēmuma apstiprināšana neizdevās.",
-    "unsupported": "Šī birža neziņo konta stāvokli.",
-    "notApplicable": "Šis komponents neattiecas uz biržu.",
+    "unsupported": "Šī platforma neziņo konta stāvokli.",
+    "notApplicable": "Šis komponents neattiecas uz platformu.",
     "unknown": "Statusu nevarēja klasificēt."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Klasificēt",
       "title": "Klasificēt saskaņošanas metodi",
-      "intro": "Izvēlieties, kā šis biržas konts tiek saskaņots ar autoritatīvajiem biržas datiem. Tas ir fakta konstatējums par kontu, nevis priekšroka.",
-      "guidance": "Izvēlieties metodi, kas atbilst tam, kā konts faktiski darbojas biržā: naudas (tūlītējo darījumu) kontos darījumu norēķini tiek veikti tikai no naudas līdzekļu atlikumiem, savukārt maržas kontos var aizņemties pret nodrošinājumu. Ja neesat pārliecināts, kā konts darbojas, atstājiet to neklasificētu.",
+      "intro": "Izvēlieties, kā šis platformas konts tiek saskaņots ar autoritatīvajiem biržas datiem. Tas ir fakta konstatējums par kontu, nevis priekšroka.",
+      "guidance": "Izvēlieties metodi, kas atbilst tam, kā konts faktiski darbojas platformā: naudas (tūlītējo darījumu) kontos darījumu norēķini tiek veikti tikai no naudas līdzekļu atlikumiem, savukārt maržas kontos var aizņemties pret nodrošinājumu. Ja neesat pārliecināts, kā konts darbojas, atstājiet to neklasificētu.",
       "immutabilityWarning": "Šī klasifikācija ir pastāvīga. Pēc iestatīšanas to nevar mainīt vai noņemt.",
       "acknowledge": "Es saprotu, ka šī klasifikācija ir pastāvīga un atbilst tam, kā šis konts darbojas.",
       "methodDescription": {
-        "futuresPosition": "Saskaņo atvērtās atvasināto instrumentu pozīcijas ar autoritatīvajiem biržas nākotnes līgumu pozīciju datiem.",
+        "futuresPosition": "Saskaņo atvērtās atvasināto instrumentu pozīcijas ar autoritatīvajiem platformas nākotnes līgumu pozīciju datiem.",
         "spotExecutionReplay": "Atkārto tūlītējo darījumu izpildes, salīdzinot tās ar naudas līdzekļu atlikumiem. Tikai naudas kontiem, kuros nekad netiek tirgots ar maržu.",
-        "marginLedgerReplay": "Atkārto biržas maržas virsgrāmatu. Kontiem, kuros tirgo ar maržu vai aizņemas pret nodrošinājumu."
+        "marginLedgerReplay": "Atkārto platformas maržas virsgrāmatu. Kontiem, kuros tirgo ar maržu vai aizņemas pret nodrošinājumu."
       },
       "credentialLoading": "Notiek akreditācijas datu ielāde…",
       "noCredential": "Šim kontam nav atrasta neviena aktīva reālas tirdzniecības akreditācijas datu kopa. Saskaņošanas metodi nevar klasificēt.",

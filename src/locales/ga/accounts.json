@@ -1,6 +1,6 @@
 {
   "page": {
-    "title": "Cuntais Malartáin",
+    "title": "Cuntais Ardáin",
     "subtitle": "Iarmhéideanna airgid thirim agus suíomhanna oscailte na malartaithe."
   },
   "empty": {
@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Níl sonraí iontaofa an chuntais ar fáil",
-    "message": "Níorbh fhéidir staid an chuntais malartáin a lódáil. Níl an cuntas folamh; níl na sonraí ar fáil faoi láthair."
+    "message": "Níorbh fhéidir staid an chuntais ardáin a lódáil. Níl an cuntas folamh; níl na sonraí ar fáil faoi láthair."
   },
   "status": {
     "observed": "Fíor-am",
@@ -26,13 +26,13 @@
     "unknown": "Anaithnid"
   },
   "statusTooltip": {
-    "observed": "Sonraí malartáin iontaofa fíor-ama, taifeadta laistigh den tréimhse bailíochta.",
-    "simulated": "Figiúirí trádála ionsamhlaithe — ní fíoriarmhéideanna malartáin iad.",
+    "observed": "Sonraí ardáin iontaofa fíor-ama, taifeadta laistigh den tréimhse bailíochta.",
+    "simulated": "Figiúirí trádála ionsamhlaithe — ní fíoriarmhéideanna ardáin iad.",
     "stale": "An léargas sealadach is déanaí; tá an fhuinneog údaráis imithe in éag.",
     "clockError": "Níl an stampa ama cothrom le clog an fhreastalaí.",
     "corrupt": "Theip ar bhailíochtú an léargais shealadaigh stóráilte.",
-    "unsupported": "Ní dhéanann an t-ionad seo tuairisciú ar stádas cuntais.",
-    "notApplicable": "Ní bhaineann an chomhpháirt seo leis an ionad.",
+    "unsupported": "Ní dhéanann an t-ardán seo tuairisciú ar stádas cuntais.",
+    "notApplicable": "Ní bhaineann an chomhpháirt seo leis an ardán.",
     "unknown": "Ní fhéadfaí an stádas a rangú."
   },
   "section": {
@@ -109,14 +109,14 @@
     "classify": {
       "action": "Aicmigh",
       "title": "Aicmigh an modh réitigh",
-      "intro": "Roghnaigh conas a dhéantar réiteach idir an cuntas malartáin seo agus sonraí údarásacha an mhalartáin. Is ráiteas fíorais é seo faoin gcuntas, seachas rogha.",
-      "guidance": "Roghnaigh an modh a mheaitseálann an chaoi a bhfeidhmíonn an cuntas i ndáiríre ag an malartán: socraíonn cuntais airgid thirim (spot) trádálacha ó iarmhéideanna airgid thirim amháin, agus is féidir le cuntais chorrlaigh iasacht a fháil in aghaidh comhthaobhachta. Mura bhfuil tú cinnte conas a fheidhmíonn an cuntas, fág neamhaicmithe é.",
+      "intro": "Roghnaigh conas a dhéantar réiteach idir an cuntas ardáin seo agus sonraí údarásacha an mhalartáin. Is ráiteas fíorais é seo faoin gcuntas, seachas rogha.",
+      "guidance": "Roghnaigh an modh a mheaitseálann an chaoi a bhfeidhmíonn an cuntas i ndáiríre ar an ardán: socraíonn cuntais airgid thirim (spot) trádálacha ó iarmhéideanna airgid thirim amháin, agus is féidir le cuntais chorrlaigh iasacht a fháil in aghaidh comhthaobhachta. Mura bhfuil tú cinnte conas a fheidhmíonn an cuntas, fág neamhaicmithe é.",
       "immutabilityWarning": "Tá an t-aicmiú seo buan. Ní féidir é a athrú ná a bhaint a luaithe a shocraítear é.",
       "acknowledge": "Tuigim go bhfuil an t-aicmiú seo buan agus go dtagann sé leis an gcaoi a bhfeidhmíonn an cuntas seo.",
       "methodDescription": {
-        "futuresPosition": "Déanann sé réiteach idir suíomhanna díorthach oscailte agus sonraí údarásacha an mhalartáin faoi shuímh todhchaíochtaí.",
+        "futuresPosition": "Déanann sé réiteach idir suíomhanna díorthach oscailte agus sonraí údarásacha an ardáin faoi shuímh todhchaíochtaí.",
         "spotExecutionReplay": "Athsheinneann sé forghníomhuithe spot i gcoinne iarmhéideanna airgid thirim. Do chuntais airgid thirim amháin nach dtrádálann ar chorrlach riamh.",
-        "marginLedgerReplay": "Athsheinneann sé mórleabhar corrlaigh an mhalartáin. Do chuntais a thrádálann ar chorrlach nó a fhaigheann iasacht in aghaidh comhthaobhachta."
+        "marginLedgerReplay": "Athsheinneann sé mórleabhar corrlaigh an ardáin. Do chuntais a thrádálann ar chorrlach nó a fhaigheann iasacht in aghaidh comhthaobhachta."
       },
       "credentialLoading": "Dintiúr á lódáil…",
       "noCredential": "Níor aimsíodh aon dintiúr gníomhach fíor-ama don chuntas seo. Ní féidir an modh réitigh a aicmiú.",
