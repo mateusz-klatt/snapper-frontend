@@ -3,7 +3,7 @@
     "title": "Données de marché"
   },
   "controls": {
-    "exchange": "Plateforme :",
+    "exchange": "Plateforme d’échange :",
     "instrument": "Instrument :",
     "timeframe": "Intervalle :",
     "selectExchange": "Sélectionner une plateforme",

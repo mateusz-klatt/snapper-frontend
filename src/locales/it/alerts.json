@@ -35,8 +35,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} eseguito su {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} eseguito su {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rifiutato: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} stato sconosciuto: {{3}} — verifica presso l'exchange ancora in sospeso, non presumere che la posizione sia chiusa",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} stato sconosciuto: {{3}} — verifica presso l'exchange ancora in sospeso, non presumere che la posizione sia chiusa",
+    "order_unknown": "{{0}} {{1}} {{2}} stato sconosciuto: {{3}} — verifica presso la piattaforma ancora in sospeso, non presumere che la posizione sia chiusa",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} stato sconosciuto: {{3}} — verifica presso la piattaforma ancora in sospeso, non presumere che la posizione sia chiusa",
     "position_stop_loss_fired": "Stop-loss attivato su {{0}} ({{1}})"
   },
   "detail": {

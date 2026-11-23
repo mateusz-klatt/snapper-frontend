@@ -7,11 +7,11 @@
     "title": "Permissions ng Role",
     "viewer": {
       "label": "Tagatingin",
-      "description": "Kumpletong read-only na visibility ng operator sa mga account, wallet at portfolio, signal, desisyon ng AI, P&L, backtest, strategy, process, at kalagayan ng system. Hindi makakagawa ng mga operasyonal na aksyon."
+      "description": "Kumpletong read-only na visibility ng operator sa mga account, pitaka at portfolio, signal, desisyon ng AI, P&L, backtest, strategy, process, at kalagayan ng system. Hindi makakagawa ng mga operasyonal na aksyon."
     },
     "operator": {
       "label": "Tagapagpatakbo",
-      "description": "Lahat ng visibility ng Viewer, kasama ang mga kontrol sa trading, position, strategy, process, backtest, at AI integration."
+      "description": "Lahat ng visibility ng Viewer, kasama ang mga kontrol sa trading, posisyon, strategy, process, backtest, at AI integration."
     },
     "admin": {
       "label": "Tagapangasiwa",
@@ -29,7 +29,7 @@
       "market": "Data ng Merkado",
       "processes": "Mga Proseso",
       "strategies": "Mga Strategy",
-      "orders": "Orders at Fills",
+      "orders": "Orders at Executions",
       "positions": "Mga Posisyon",
       "signals": "Mga Signal",
       "health": "Kalusugan",
@@ -38,7 +38,7 @@
     },
     "auditor": {
       "label": "Tagasuri",
-      "description": "Read-only na access ng administrator sa lahat ng wallet, user at setting. Hindi maaaring magbago ng data o mag-trade."
+      "description": "Read-only na access ng administrator sa lahat ng pitaka, user at setting. Hindi maaaring magbago ng data o mag-trade."
     }
   },
   "deskMemberships": {
@@ -50,7 +50,7 @@
     "subtitle": "Magdagdag ng mga aktibong viewer sa desk o alisin ang kasalukuyan nilang access dito.",
     "memberCount": "Mga miyembro: {{count}}",
     "desk": {
-      "label": "Pangkat sa pangangalakal",
+      "label": "Desk",
       "placeholder": "Pumili ng desk..."
     },
     "add": {
@@ -99,10 +99,10 @@
   },
   "common": {
     "cancel": "Kanselahin",
-    "selectWallet": "Pumili ng wallet",
-    "selectAWallet": "Pumili ng wallet",
-    "chooseWalletPlaceholder": "Pumili ng wallet...",
-    "selectWalletPlaceholder": "Pumili ng wallet...",
+    "selectWallet": "Pumili ng pitaka",
+    "selectAWallet": "Pumili ng pitaka",
+    "chooseWalletPlaceholder": "Pumili ng pitaka...",
+    "selectWalletPlaceholder": "Pumili ng pitaka...",
     "walletLabel": "Pitaka",
     "paperAnnotation": " (demo)",
     "unknownError": "Hindi kilalang error",
@@ -205,7 +205,7 @@
       "title": "Mga Scope Grant",
       "countLabel": "Mga pahintulot sa pag-access: {{count}}",
       "createGrant": "Gumawa ng Grant",
-      "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang scope grants nito.",
+      "selectWalletPrompt": "Pumili ng pitaka sa itaas para makita ang scope grants nito.",
       "columns": {
         "operator": "Tagapagpatakbo",
         "scope": "Saklaw",
@@ -215,11 +215,11 @@
       },
       "empty": {
         "noGrants": "Walang grants na nakita",
-        "noGrantsHint": "Walang active scope grants ang wallet na ito."
+        "noGrantsHint": "Walang active scope grants ang pitakang ito."
       },
       "errorLoading": "Error sa pag-load ng grants: {{message}}",
       "handover": "I-handover",
-      "allWallets": "Lahat ng wallet"
+      "allWallets": "Lahat ng pitaka"
     },
     "form": {
       "title": "Gumawa ng Scope Grant",
@@ -245,7 +245,7 @@
       },
       "validation": {
         "operatorRequired": "Kailangan ang operator",
-        "walletRequired": "Kailangan ang wallet",
+        "walletRequired": "Kailangan ang pitaka",
         "targetRequired": "Kailangan ang Target ID"
       },
       "actions": {
@@ -307,13 +307,13 @@
   "credentials": {
     "accessDenied": {
       "title": "Walang Access",
-      "message": "Wala kang permission para mag-manage ng wallet credentials. Makipag-ugnayan sa system administrator mo."
+      "message": "Wala kang permission para mag-manage ng credentials ng pitaka. Makipag-ugnayan sa system administrator mo."
     },
     "list": {
-      "title": "Mga Kredensyal ng Wallet",
+      "title": "Mga Kredensyal ng Pitaka",
       "countLabel": "Mga kredensyal: {{count}}",
       "addCredential": "Mag-add ng Credential",
-      "selectWalletPrompt": "Pumili ng wallet sa itaas para makita ang credentials nito.",
+      "selectWalletPrompt": "Pumili ng pitaka sa itaas para makita ang credentials nito.",
       "columns": {
         "exchange": "Palitan",
         "type": "Uri",
@@ -323,7 +323,7 @@
       },
       "empty": {
         "noCredentials": "Walang credentials na nakita",
-        "noCredentialsHint": "Walang active credentials ang wallet na ito."
+        "noCredentialsHint": "Walang active credentials ang pitakang ito."
       },
       "errorLoading": "Error sa pag-load ng credentials: {{message}}",
       "rotate": "I-rotate"
@@ -355,7 +355,7 @@
         "paper": "Demo"
       },
       "validation": {
-        "walletRequired": "Kailangan ang wallet",
+        "walletRequired": "Kailangan ang pitaka",
         "exchangeRequired": "Kailangan ang exchange",
         "fieldRequired": "Kailangan ang {{field}}"
       },
@@ -364,7 +364,7 @@
       },
       "toast": {
         "created": "Nagawa ang credential",
-        "conflictError": "Conflict: may active credential na ang wallet na ito para sa exchange na ito",
+        "conflictError": "Conflict: may active credential na ang pitakang ito para sa exchange na ito",
         "createError": "Error sa paggawa ng credential"
       }
     },

@@ -35,9 +35,9 @@
     "timeTravelBanner": "Modalità viaggio nel tempo — visualizzazione di dati storici (sola lettura)",
     "lagUnknown": "Sconosciuto",
     "walletPicker": {
-      "ariaLabel": "Portafoglio attivo",
-      "placeholder": "Portafoglio",
-      "allWallets": "Tutti i portafogli",
+      "ariaLabel": "Wallet attivo",
+      "placeholder": "Wallet",
+      "allWallets": "Tutti i wallet",
       "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {

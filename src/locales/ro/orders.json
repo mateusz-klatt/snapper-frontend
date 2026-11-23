@@ -98,7 +98,7 @@
       "sell": "Vânzare"
     },
     "orderTypeOptions": {
-      "market": "Ordin market",
+      "market": "Ordin la piață",
       "limit": "Ordin limită",
       "stop": "Ordin stop",
       "stopLimit": "Ordin stop-limit",

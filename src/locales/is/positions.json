@@ -64,7 +64,7 @@
         "scope_order_regression": "Afturför í röðun umfangs",
         "before_activation": "Punkturinn er á undan virkjun",
         "activation_baseline_non_finite": "Grunngildi við virkjun er ekki endanleg tala",
-        "fill_evidence_gap": "Varanleg gögn sem staðfesta pöntunarframkvæmd vantar",
+        "fill_evidence_gap": "Varanleg gögn sem staðfesta framkvæmd fyrirmæla vantar",
         "seed_quantity_non_finite": "Upphafsmagn er ekki endanleg tala",
         "cost_basis_unavailable": "Kostnaðargrunnur er ekki tiltækur",
         "execution_price_provenance_unproven": "Ekki tókst að staðfesta uppruna framkvæmdarverðs",
@@ -109,7 +109,7 @@
     "equity": {
       "title": "Yfirlag eigin fjár",
       "seriesLabel": "Eigið fé",
-      "seriesLabelSpotOnly": "Eigið fé (stundarmarkaður)",
+      "seriesLabelSpotOnly": "Eigið fé (staðgreiðsluvettvangur)",
       "latest": "Nýjast: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Hvernig á að lesa þetta",
-        "spotOnly": "Aðeins stundarmarkaður — innistæður á öðrum mörkuðum eru undanskildar.",
+        "spotOnly": "Aðeins staðgreiðsluvettvangur — innistæður á öðrum vettvöngum eru undanskildar.",
         "flowsUnadjusted": "Ytri inn- og útborganir eru ekki dregnar frá.",
         "restatedFrom": "Þessar tölur eru umreiknaðar úr {{from}} miðað við lokagengi hverrar mínútu og eru ekki mældar upprunalega í þessum gjaldmiðli.",
         "pricedOn": "Verðlagt á {{plane}}.",
@@ -142,14 +142,14 @@
       "show": "Sýna ákvörðunarmerki",
       "hide": "Fela ákvörðunarmerki",
       "legendAriaLabel": "Skýringar ákvörðunarmerkja",
-      "truncated": "Aðeins {{limit}} merki eru sýnd. Fleiri ákvarðanir eða pöntunarframkvæmdir eru á þessu tímabili.",
+      "truncated": "Aðeins {{limit}} merki eru sýnd. Fleiri ákvarðanir eða framkvæmdir fyrirmæla eru á þessu tímabili.",
       "legend": {
-        "fillExecuted": "Pöntunarframkvæmd · lokin",
+        "fillExecuted": "Framkvæmd fyrirmæla · lokin",
         "signalExecuted": "Merki · framkvæmt",
-        "signalNoFill": "Merki · engin pöntunarframkvæmd",
+        "signalNoFill": "Merki · engin framkvæmd fyrirmæla",
         "aiExecuted": "AI-ákvörðun · framkvæmd",
         "aiRejected": "AI-ákvörðun · hafnað",
-        "aiNoFill": "AI-ákvörðun · engin pöntunarframkvæmd"
+        "aiNoFill": "AI-ákvörðun · engin framkvæmd fyrirmæla"
       },
       "detail": {
         "title": "Upplýsingar um merki",
@@ -162,7 +162,7 @@
         "size": "Stærð",
         "price": "Verð",
         "executionId": "Framkvæmdar-ID",
-        "orderId": "Pöntunar-ID",
+        "orderId": "Auðkenni fyrirmæla",
         "strategyName": "Heiti stefnu",
         "strength": "Styrkur",
         "reason": "Ástæða",
@@ -174,14 +174,14 @@
         "rationale": "Rökstuðningur",
         "noValue": "—",
         "types": {
-          "fill": "Pöntunarframkvæmd",
+          "fill": "Framkvæmd fyrirmæla",
           "signal": "Merki",
           "ai_decision": "AI-ákvörðun"
         },
         "outcomes": {
           "executed": "Framkvæmt",
           "rejected": "Hafnað",
-          "no_fill": "Engin pöntunarframkvæmd"
+          "no_fill": "Engin framkvæmd fyrirmæla"
         }
       }
     },
@@ -239,10 +239,10 @@
     "confirmTitle": "Staðfesta Bracket",
     "position": "Staða",
     "entryPrice": "Inngangsverð",
-    "stopLossLabel": "Tapmörkunarverð",
-    "takeProfitLabel": "Hagnaðartökuverð",
-    "stopLoss": "Tapmörkun",
-    "takeProfit": "Hagnaðartaka",
+    "stopLossLabel": "Stop-loss verð",
+    "takeProfitLabel": "Take-profit verð",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Undir {{price}}",
       "slShort": "Yfir {{price}}",

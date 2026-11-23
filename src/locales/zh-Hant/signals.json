@@ -1,6 +1,6 @@
 {
   "page": {
-    "title": "信號"
+    "title": "訊號"
   },
   "filters": {
     "allStrategies": "所有策略"
@@ -33,7 +33,7 @@
     "hoursAgo": "{{count}}小時前"
   },
   "empty": {
-    "title": "未找到信號",
-    "message": "沒有交易信號符合目前篩選條件。"
+    "title": "未找到訊號",
+    "message": "沒有交易訊號符合目前篩選條件。"
   }
 }

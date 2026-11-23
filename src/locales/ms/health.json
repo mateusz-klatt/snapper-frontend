@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} j {{minutes}} min",
     "uptimeDays": "{{days}} hari {{hours}} j",
-    "backtestName": "Ujian semula {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Tidak tersedia",
     "uptimeLabel": "Masa operasi",
     "exitCode": "Kod keluar: {{code}}",
     "service": "perkhidmatan",
-    "backtest": "Ujian semula"
+    "backtest": "Backtest"
   },
   "dbStats": {
     "title": "Statistik Pangkalan Data",

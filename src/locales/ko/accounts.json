@@ -1,7 +1,7 @@
 {
   "page": {
     "title": "거래소 계정",
-    "subtitle": "거래소가 보고한 현금 잔고 및 미결제 약정입니다."
+    "subtitle": "거래소가 보고한 현금 잔고 및 미결제 포지션입니다."
   },
   "empty": {
     "title": "계정 없음",
@@ -37,11 +37,11 @@
   },
   "section": {
     "balances": "잔고",
-    "positions": "미결제 약정"
+    "positions": "미결제 포지션"
   },
   "sectionEmpty": {
     "balances": "보고된 잔고 없음",
-    "positions": "미결제 약정 없음"
+    "positions": "미결제 포지션 없음"
   },
   "balance": {
     "currency": "통화",
@@ -54,7 +54,7 @@
     "side": "방향",
     "size": "규모",
     "entryPrice": "진입가",
-    "markPrice": "기준가",
+    "markPrice": "마크 가격",
     "unrealizedPnl": "미실현 손익",
     "unrealizedFunding": "펀딩"
   },

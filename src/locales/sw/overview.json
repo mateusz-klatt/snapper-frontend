@@ -31,10 +31,10 @@
     "longExposure": "Mfiduo wa long",
     "shortExposure": "Mfiduo wa short",
     "netDelta": "Delta halisi",
-    "unrealizedPnl": "P&L Isiyotekelezwa",
+    "unrealizedPnl": "P&L ambayo bado haijapatikana",
     "pnlPercent": "Faida/hasara %",
     "positions": "Nafasi",
-    "instrumentsCount": "Instrumenti: {{count}}",
+    "instrumentsCount": "Vyombo vya kifedha: {{count}}",
     "empty": "Hakuna data ya nafasi inayopatikana",
     "incompleteValuation": "Baadhi ya nafasi zilizo wazi zina data ya uthamini inayokosekana au isiyo sahihi.",
     "aggregationUnavailable": "Jumla za jalada zinahitaji sarafu na msingi wa uthamini wa mikataba uliothibitishwa. Fungua Nafasi, kisha chagua {{tab}}."

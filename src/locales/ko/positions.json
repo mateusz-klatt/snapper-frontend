@@ -107,16 +107,16 @@
       "valuationCurrency": "평가 통화: {{currency}}"
     },
     "equity": {
-      "title": "자기자본 오버레이",
-      "seriesLabel": "자기자본",
-      "seriesLabelSpotOnly": "자기자본(현물 거래소)",
+      "title": "계좌 순자산 오버레이",
+      "seriesLabel": "계좌 순자산",
+      "seriesLabelSpotOnly": "계좌 순자산(현물 거래소)",
       "latest": "최신: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
         "title": "낙폭",
         "current": "현재 낙폭",
         "max": "최대 낙폭",
-        "definition": "현재까지의 자기자본 최고점 대비 비율입니다.",
+        "definition": "현재까지의 계좌 순자산 최고점 대비 비율입니다.",
         "flowsCaveat": "자금 흐름을 조정한 거래 낙폭이 아닙니다.",
         "noValue": "—"
       },
@@ -240,9 +240,9 @@
     "position": "포지션",
     "entryPrice": "진입가",
     "stopLossLabel": "스탑로스 가격",
-    "takeProfitLabel": "테이크프로핏 가격",
+    "takeProfitLabel": "익절 가격",
     "stopLoss": "스탑로스",
-    "takeProfit": "테이크프로핏",
+    "takeProfit": "익절",
     "placeholders": {
       "slLong": "{{price}} 아래",
       "slShort": "{{price}} 위",
@@ -283,8 +283,8 @@
     "bracketRequired": "SL 또는 TP 가격 중 하나 이상이 필요합니다",
     "invalidSlPrice": "유효하지 않은 스탑로스 가격",
     "slPricePositive": "스탑로스 가격은 양수여야 합니다",
-    "invalidTpPrice": "유효하지 않은 테이크프로핏 가격",
-    "tpPricePositive": "테이크프로핏 가격은 양수여야 합니다",
+    "invalidTpPrice": "유효하지 않은 익절 가격",
+    "tpPricePositive": "익절 가격은 양수여야 합니다",
     "slLongBelowEntry": "SL 가격은 진입가({{price}})보다 낮아야 합니다",
     "tpLongAboveEntry": "TP 가격은 진입가({{price}})보다 높아야 합니다",
     "slShortAboveEntry": "SL 가격은 진입가({{price}})보다 높아야 합니다",

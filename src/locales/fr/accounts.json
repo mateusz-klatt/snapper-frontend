@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Vérité de la plateforme en direct.",
-    "simulated": "Chiffres du trading papier.",
+    "simulated": "Chiffres du trading simulé.",
     "stale": "Dernier instantané connu ; la période de validité est écoulée ou la collecte est bloquée.",
     "clockError": "L'horodatage d'observation est incohérent.",
     "corrupt": "L'instantané stocké n'a pas pu être validé.",
@@ -87,7 +87,7 @@
       "unverified": "Non vérifié"
     },
     "method": {
-      "futuresPosition": "Positions futures",
+      "futuresPosition": "Positions à terme",
       "spotExecutionReplay": "Rejeu d'exécution au comptant",
       "marginLedgerReplay": "Rejeu du grand livre de marge",
       "unclassified": "Non classifié",
@@ -114,7 +114,7 @@
       "immutabilityWarning": "Cette classification est définitive. Une fois définie, elle ne peut être ni modifiée ni supprimée.",
       "acknowledge": "Je comprends que cette classification est définitive et correspond au fonctionnement de ce compte.",
       "methodDescription": {
-        "futuresPosition": "Rapproche les positions ouvertes sur produits dérivés des données faisant autorité de la plateforme sur les positions futures.",
+        "futuresPosition": "Rapproche les positions ouvertes sur produits dérivés des données faisant autorité de la plateforme sur les positions à terme.",
         "spotExecutionReplay": "Rejoue les exécutions au comptant par rapport aux soldes en espèces. Pour les comptes exclusivement au comptant qui ne négocient jamais sur marge.",
         "marginLedgerReplay": "Rejoue le grand livre de marge de la plateforme. Pour les comptes qui négocient sur marge ou empruntent en utilisant des garanties."
       },

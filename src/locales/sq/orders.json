@@ -106,10 +106,10 @@
     },
     "modeOptions": {
       "live": "Real",
-      "paper": "Në letër"
+      "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — vetëm të dhëna tregu",
-    "walletPaperSuffix": "{{label}} (letër)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

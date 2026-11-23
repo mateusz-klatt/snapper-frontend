@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Autoritative børsdata i sanntid, registrert innenfor gyldighetsperioden.",
-    "simulated": "Papirhandelstall — ikke ekte børssaldi.",
+    "simulated": "Demohandelstall — ikke ekte børssaldi.",
     "stale": "Sist kjente øyeblikksbilde; gyldighetsperioden er utløpt eller innhentingen har stoppet.",
     "clockError": "Observasjonstidsstempel stemmer ikke med serverklokken.",
     "corrupt": "Lagret øyeblikksbilde besto ikke valideringen.",
@@ -54,7 +54,7 @@
     "side": "Retning",
     "size": "Størrelse",
     "entryPrice": "Inngangspris",
-    "markPrice": "Referansepris",
+    "markPrice": "Markpris",
     "unrealizedPnl": "Urealisert P&L",
     "unrealizedFunding": "Finansiering"
   },

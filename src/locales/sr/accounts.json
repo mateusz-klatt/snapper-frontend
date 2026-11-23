@@ -1,11 +1,11 @@
 {
   "page": {
     "title": "Računi na berzi",
-    "subtitle": "Gotovinski bilansi i otvorene pozicije, označeni po izveštaju berze."
+    "subtitle": "Gotovinska salda i otvorene pozicije, označeni po izveštaju berze."
   },
   "empty": {
     "title": "Nema računa",
-    "message": "Bilansi i pozicije će se pojaviti ovde kada račun bude primećen."
+    "message": "Salda i pozicije će se pojaviti ovde kada račun bude primećen."
   },
   "banner": {
     "title": "Neki podaci računa nisu u realnom vremenu",
@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Pouzdani podaci berze u realnom vremenu, zabeleženi tokom perioda važenja.",
-    "simulated": "Podaci trgovanja na papiru — nisu stvarni bilansi.",
+    "simulated": "Podaci demo trgovanja — nisu stvarna salda.",
     "stale": "Poslednji poznati snimak; period važenja je istekao ili je preuzimanje zastalo.",
     "clockError": "Vreme primećivanja nije usklađeno sa serverom.",
     "corrupt": "Sačuvani snimak nije prošao validaciju.",
@@ -36,11 +36,11 @@
     "unknown": "Status ne može biti klasifikovan."
   },
   "section": {
-    "balances": "Bilansi",
+    "balances": "Salda",
     "positions": "Otvorene pozicije"
   },
   "sectionEmpty": {
-    "balances": "Nema prijavljenih bilansa",
+    "balances": "Nema prijavljenih salda",
     "positions": "Nema otvorenih pozicija"
   },
   "balance": {
@@ -67,7 +67,7 @@
     "paper": "Demo"
   },
   "meta": {
-    "balancesObserved": "Bilansi primećeni {{timestamp}}",
+    "balancesObserved": "Salda primećena {{timestamp}}",
     "positionsObserved": "Pozicije primećene {{timestamp}}",
     "authoritativeUntil": "Pouzdano do {{timestamp}}",
     "error": "Greška: {{message}}"
@@ -89,7 +89,7 @@
     "method": {
       "futuresPosition": "Fjučers pozicije",
       "spotExecutionReplay": "Ponovno puštanje spot izvršenja",
-      "marginLedgerReplay": "Ponovno puštanje knjige marže",
+      "marginLedgerReplay": "Ponovno puštanje knjige margine",
       "unclassified": "Neklasifikovano",
       "notAssigned": "Metod nije dodeljen",
       "unknown": "Nepoznat metod"
@@ -110,13 +110,13 @@
       "action": "Klasifikuj",
       "title": "Klasifikuj metod usklađivanja",
       "intro": "Izaberite kako se ovaj račun na berzi usklađuje sa merodavnim podacima berze. Ovo je konstatacija činjenice o računu, a ne stvar izbora.",
-      "guidance": "Izaberite metod koji odgovara načinu na koji račun zaista funkcioniše na berzi: gotovinski (spot) računi poravnavaju trgovanja isključivo iz gotovinskih bilansa, dok računi sa marginom mogu da pozajmljuju uz kolateral. Ako niste sigurni kako račun funkcioniše, ostavite ga neklasifikovanim.",
+      "guidance": "Izaberite metod koji odgovara načinu na koji račun zaista funkcioniše na berzi: gotovinski (spot) računi poravnavaju trgovanja isključivo iz gotovinskih salda, dok računi sa marginom mogu da pozajmljuju uz kolateral. Ako niste sigurni kako račun funkcioniše, ostavite ga neklasifikovanim.",
       "immutabilityWarning": "Ova klasifikacija je trajna. Nakon postavljanja ne može se promeniti niti ukloniti.",
       "acknowledge": "Razumem da je ova klasifikacija trajna i da odgovara načinu na koji ovaj račun funkcioniše.",
       "methodDescription": {
         "futuresPosition": "Usklađuje otvorene pozicije derivata sa merodavnim podacima berze o fjučers pozicijama.",
-        "spotExecutionReplay": "Ponovo pušta spot izvršenja u odnosu na gotovinske bilanse. Za isključivo gotovinske račune koji nikada ne trguju uz marginu.",
-        "marginLedgerReplay": "Ponovo pušta knjigu marže berze. Za račune koji trguju uz marginu ili pozajmljuju uz kolateral."
+        "spotExecutionReplay": "Ponovo pušta spot izvršenja u odnosu na gotovinska salda. Za isključivo gotovinske račune koji nikada ne trguju uz marginu.",
+        "marginLedgerReplay": "Ponovo pušta knjigu margine berze. Za račune koji trguju uz marginu ili pozajmljuju uz kolateral."
       },
       "credentialLoading": "Učitavanje akreditiva…",
       "noCredential": "Za ovaj račun nije pronađen nijedan aktivni akreditiv za stvarno trgovanje. Usklađivanje se ne može klasifikovati.",

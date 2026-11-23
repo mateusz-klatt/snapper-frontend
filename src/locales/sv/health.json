@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} h {{minutes}} min",
     "uptimeDays": "{{days}} d {{hours}} h",
-    "backtestName": "Historiskt test {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Ej tillgängligt",
     "uptimeLabel": "Drifttid",
     "exitCode": "Exitkod: {{code}}",
     "service": "tjänst",
-    "backtest": "historiskt test"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Databasstatistik",

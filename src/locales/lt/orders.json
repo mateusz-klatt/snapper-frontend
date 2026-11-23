@@ -109,7 +109,7 @@
       "paper": "Demonstracinis"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — tik rinkos duomenys",
-    "walletPaperSuffix": "{{label}} (popierinė)",
+    "walletPaperSuffix": "{{label}} (demonstracinė)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

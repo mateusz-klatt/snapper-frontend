@@ -11,7 +11,7 @@
     "cancelled": "Cancelado"
   },
   "list": {
-    "title": "Testes retrospectivos",
+    "title": "Backtests",
     "actions": {
       "cancel": "Cancelar",
       "rerun": "Executar novamente",
@@ -65,7 +65,7 @@
     "runLabel": "Execução {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Métricas",
-      "equityOverlay": "Sobreposição de equity",
+      "equityOverlay": "Sobreposição do patrimônio líquido",
       "trades": "Operações",
       "signals": "Sinais"
     },

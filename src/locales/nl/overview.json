@@ -31,7 +31,7 @@
     "longExposure": "Long-exposure",
     "shortExposure": "Short-exposure",
     "netDelta": "Netto delta",
-    "unrealizedPnl": "Niet-gerealiseerde P&L",
+    "unrealizedPnl": "Ongerealiseerde P&L",
     "pnlPercent": "Winst/verlies %",
     "positions": "Posities",
     "instrumentsCount": "Instrumenten: {{count}}",

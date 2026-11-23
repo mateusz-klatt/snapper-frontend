@@ -346,7 +346,7 @@
         "client_id": "Klienta ID",
         "client_secret": "Klienta noslēpums",
         "refresh_token": "Atsvaidzināšanas tokens",
-        "initial_balance": "Sākuma bilance"
+        "initial_balance": "Sākuma atlikums"
       },
       "credentialTypes": {
         "api_key_secret": "API atslēga + noslēpums",

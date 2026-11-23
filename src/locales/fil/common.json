@@ -35,9 +35,9 @@
     "timeTravelBanner": "Time Travel Mode — tumitingin ng historical data (read-only)",
     "lagUnknown": "Hindi alam",
     "walletPicker": {
-      "ariaLabel": "Aktibong wallet",
-      "placeholder": "Pumili ng wallet",
-      "allWallets": "Lahat ng wallet",
+      "ariaLabel": "Aktibong pitaka",
+      "placeholder": "Pumili ng pitaka",
+      "allWallets": "Lahat ng pitaka",
       "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
@@ -76,7 +76,7 @@
     "market": "Data ng Merkado",
     "orders": "Mga Order at Execution",
     "overview": "Pangkalahatang-tingin",
-    "positions": "Mga Position",
+    "positions": "Mga posisyon",
     "processes": "Mga Proseso",
     "settings": "Mga Setting",
     "signals": "Mga Signal",

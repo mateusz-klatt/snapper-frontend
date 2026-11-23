@@ -1,7 +1,7 @@
 {
   "nav": {
     "back": "← Rudi",
-    "backToList": "← Rudi kwenye backtests"
+    "backToList": "← Rudi kwenye majaribio ya nyuma"
   },
   "status": {
     "pending": "Inasubiri",
@@ -15,7 +15,7 @@
     "actions": {
       "cancel": "Ghairi",
       "rerun": "Endesha tena",
-      "create": "Backtest mpya"
+      "create": "Jaribio jipya la nyuma"
     },
     "fields": {
       "timeframe": "Muda",
@@ -25,7 +25,7 @@
     },
     "errorPrefix": "Hitilafu: {{message}}",
     "filter": {
-      "ariaLabel": "Chuja backtests kwa hali",
+      "ariaLabel": "Chuja majaribio ya nyuma kwa hali",
       "options": {
         "all": "Hali zote",
         "pending": "Inasubiri",
@@ -36,21 +36,21 @@
       }
     },
     "empty": {
-      "title": "Hakuna backtests",
-      "message": "Endesha backtest kupitia CLI au API ili kuona matokeo hapa."
+      "title": "Hakuna majaribio ya nyuma",
+      "message": "Endesha jaribio la nyuma kupitia CLI au API ili kuona matokeo hapa."
     }
   },
   "detail": {
-    "title": "Run ya backtest",
+    "title": "Run ya jaribio la nyuma",
     "fields": {
       "strategy": "Mkakati",
-      "instrument": "Instrumenti",
+      "instrument": "Chombo cha kifedha",
       "status": "Hali",
       "period": "Kipindi",
       "crossAsset": "Attribution ya cross-asset",
       "configHash": "Hash ya usanidi"
     },
-    "crossAssetFlow": "feed ya {{source}} → fills za {{target}}",
+    "crossAssetFlow": "feed ya {{source}} → utekelezaji wa oda za {{target}}",
     "errors": {
       "invalidRunId": "ID ya run si sahihi — lazima iwe UUID7 (imepokelewa \"{{id}}\").",
       "loadFailed": "Imeshindwa kupakia run: {{message}}",
@@ -59,13 +59,13 @@
   },
   "compare": {
     "title": "Linganisha",
-    "headingFull": "Ulinganisho wa backtest",
+    "headingFull": "Ulinganisho wa jaribio la nyuma",
     "loading": "Inapakia ulinganisho…",
     "vs": "dhidi ya",
     "runLabel": "Uendeshaji {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Vipimo",
-      "equityOverlay": "Overlay ya equity",
+      "equityOverlay": "Overlay ya mtaji",
       "trades": "Miamala",
       "signals": "Ishara"
     },
@@ -141,9 +141,9 @@
     }
   },
   "create": {
-    "title": "Backtest mpya",
+    "title": "Jaribio jipya la nyuma",
     "cancel": "Ghairi",
-    "submit": "Anzisha backtest",
+    "submit": "Anzisha jaribio la nyuma",
     "submitting": "Inaanzisha…",
     "errors": {
       "unknown": "Hitilafu isiyojulikana"
@@ -156,9 +156,9 @@
       "strategyPlaceholder": "— Chagua mkakati —",
       "strategyLoading": "Inapakia mikakati…",
       "strategyError": "Imeshindwa kupakia mikakati",
-      "instrumentLabel": "Instrumenti",
+      "instrumentLabel": "Chombo cha kifedha",
       "instrumentPlaceholder": "k.m. BTC-USD",
-      "instrumentHelp": "ID ya umma ya instrumenti ya kufanyia backtest",
+      "instrumentHelp": "ID ya umma ya chombo cha kifedha cha kufanyia jaribio la nyuma",
       "exchangeLabel": "Exchange (chanzo cha feed)",
       "exchangePlaceholder": "— Chagua exchange —",
       "timeframeLabel": "Muda",

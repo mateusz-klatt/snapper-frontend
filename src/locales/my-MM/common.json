@@ -51,8 +51,8 @@
       "exitTitle": "Live မုဒ်သို့ ပြန်သွားပါ"
     },
     "marketDataOnly": {
-      "defaultTooltip": "စောင့်ကြည့်ရန်သာဖြစ်သော instrument။ Snapper သည် market data ရရှိသော်လည်း ဤ (symbol, exchange) pair အတွက် order မတင်နိုင်ပါ။",
-      "ariaLabel": "စျေးကွက်ဒေတာသာရသော instrument",
+      "defaultTooltip": "စောင့်ကြည့်ရန်သာဖြစ်သော ကုန်သွယ်ပစ္စည်း။ Snapper သည် market data ရရှိသော်လည်း ဤ (symbol, exchange) pair အတွက် အော်ဒါ မတင်နိုင်ပါ။",
+      "ariaLabel": "စျေးကွက်ဒေတာသာရသော ကုန်သွယ်ပစ္စည်း",
       "badge": "စျေးကွက်ဒေတာသာ"
     },
     "liveOnly": {
@@ -66,7 +66,7 @@
     "tryAgain": "ထပ်စမ်းပါ"
   },
   "nav": {
-    "accounts": "ငွေလဲလှယ်ရေးပလက်ဖောင်း အကောင့်များ",
+    "accounts": "ကုန်သွယ်ရေးပလက်ဖောင်း အကောင့်များ",
     "admin": "စီမံခန့်ခွဲရေး",
     "aiIntegration": "AI ပေါင်းစည်းမှု",
     "aiReviews": "AI ပြန်လည်သုံးသပ်မှုများ",

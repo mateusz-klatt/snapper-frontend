@@ -6,8 +6,8 @@
   "sections": {
     "longRunning": "Langlopende processen",
     "executorTemplates": "Executor-templates",
-    "executorTemplatesHint": "Wijzigingen aan de templateconfiguratie zijn na een herstart van toepassing op alle portefeuilles op deze beurs. Templates zijn alleen configuratie — start hieronder de portefeuille-specifieke instantie om een executor te draaien.",
-    "walletInstances": "Portefeuille-instanties",
+    "executorTemplatesHint": "Wijzigingen aan de templateconfiguratie zijn na een herstart van toepassing op alle wallets op deze beurs. Templates zijn alleen configuratie — start hieronder de wallet-specifieke instantie om een executor te draaien.",
+    "walletInstances": "Wallet-instanties",
     "taskProcesses": "Taakprocessen"
   },
   "card": {
@@ -31,7 +31,7 @@
       "healthy": "in orde"
     },
     "detail": {
-      "wallet": "Portefeuille",
+      "wallet": "Wallet",
       "template": "Sjabloon",
       "last_run": "Laatste run",
       "unknownWallet": "onbekend"

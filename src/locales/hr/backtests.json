@@ -13,7 +13,7 @@
   "list": {
     "title": "Backtestovi",
     "actions": {
-      "cancel": "Odustani",
+      "cancel": "Otkaži",
       "rerun": "Ponovno pokreni",
       "create": "Novi backtest"
     },
@@ -142,7 +142,7 @@
   },
   "create": {
     "title": "Novi backtest",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "submit": "Pokreni backtest",
     "submitting": "Pokretanje…",
     "errors": {

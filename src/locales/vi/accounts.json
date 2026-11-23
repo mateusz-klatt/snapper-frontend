@@ -27,10 +27,10 @@
   },
   "statusTooltip": {
     "observed": "Sự thật trực tiếp của sàn, được ghi nhận trong khung thời gian hợp lệ.",
-    "simulated": "Số liệu giao dịch giấy — không phải số dư thực của sàn.",
-    "stale": "Bản ghi nhanh cuối cùng; khung thời gian hợp lệ đã hết.",
+    "simulated": "Số liệu giao dịch mô phỏng — không phải số dư thực của sàn.",
+    "stale": "Ảnh chụp nhanh cuối cùng; khung thời gian hợp lệ đã hết.",
     "clockError": "Dấu thời gian không nhất quán với máy chủ.",
-    "corrupt": "Bản ghi nhanh được lưu trữ không xác thực được.",
+    "corrupt": "Ảnh chụp nhanh được lưu trữ không xác thực được.",
     "unsupported": "Sàn này không báo cáo trạng thái tài khoản.",
     "notApplicable": "Thành phần này không áp dụng cho sàn.",
     "unknown": "Không thể phân loại trạng thái."
@@ -54,7 +54,7 @@
     "side": "Bên",
     "size": "Kích thước",
     "entryPrice": "Giá vào lệnh",
-    "markPrice": "Giá tham chiếu",
+    "markPrice": "Giá đánh dấu",
     "unrealizedPnl": "Lãi/lỗ chưa thực hiện",
     "unrealizedFunding": "Phí cấp vốn"
   },
@@ -87,8 +87,8 @@
       "unverified": "Chưa xác minh"
     },
     "method": {
-      "futuresPosition": "Vị thế futures",
-      "spotExecutionReplay": "Phát lại khớp lệnh spot",
+      "futuresPosition": "Vị thế hợp đồng tương lai",
+      "spotExecutionReplay": "Phát lại khớp lệnh giao ngay",
       "marginLedgerReplay": "Phát lại sổ cái margin",
       "unclassified": "Chưa phân loại",
       "notAssigned": "Chưa chỉ định phương pháp",
@@ -110,12 +110,12 @@
       "action": "Phân loại",
       "title": "Phân loại phương pháp đối soát",
       "intro": "Chọn cách đối soát tài khoản sàn này với dữ liệu chuẩn của sàn. Đây là tuyên bố về thực tế của tài khoản, không phải một lựa chọn theo ý thích.",
-      "guidance": "Chọn phương pháp phù hợp với cách tài khoản thực sự hoạt động tại sàn: tài khoản tiền mặt (spot) chỉ thanh toán giao dịch từ số dư tiền mặt, trong khi tài khoản ký quỹ có thể vay dựa trên tài sản thế chấp. Nếu không chắc chắn về cách tài khoản hoạt động, hãy để tài khoản ở trạng thái chưa phân loại.",
+      "guidance": "Chọn phương pháp phù hợp với cách tài khoản thực sự hoạt động tại sàn: tài khoản tiền mặt (giao ngay) chỉ thanh toán giao dịch từ số dư tiền mặt, trong khi tài khoản ký quỹ có thể vay dựa trên tài sản thế chấp. Nếu không chắc chắn về cách tài khoản hoạt động, hãy để tài khoản ở trạng thái chưa phân loại.",
       "immutabilityWarning": "Phân loại này là vĩnh viễn. Sau khi thiết lập, không thể thay đổi hoặc xóa.",
       "acknowledge": "Tôi hiểu rằng phân loại này là vĩnh viễn và phù hợp với cách tài khoản này hoạt động.",
       "methodDescription": {
-        "futuresPosition": "Đối soát các vị thế phái sinh đang mở với dữ liệu chuẩn của sàn về vị thế futures.",
-        "spotExecutionReplay": "Phát lại các lần khớp lệnh spot dựa trên số dư tiền mặt. Dành cho các tài khoản chỉ dùng tiền mặt và không bao giờ giao dịch ký quỹ.",
+        "futuresPosition": "Đối soát các vị thế phái sinh đang mở với dữ liệu chuẩn của sàn về vị thế hợp đồng tương lai.",
+        "spotExecutionReplay": "Phát lại các lần khớp lệnh giao ngay dựa trên số dư tiền mặt. Dành cho các tài khoản chỉ dùng tiền mặt và không bao giờ giao dịch ký quỹ.",
         "marginLedgerReplay": "Phát lại sổ cái margin của sàn. Dành cho các tài khoản giao dịch ký quỹ hoặc vay dựa trên tài sản thế chấp."
       },
       "credentialLoading": "Đang tải thông tin xác thực…",

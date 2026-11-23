@@ -38,7 +38,7 @@
       "ariaLabel": "Aktívna peňaženka",
       "placeholder": "Peňaženka",
       "allWallets": "Všetky peňaženky",
-      "optionPaper": "{{label}} (papierová)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktívny operátor",

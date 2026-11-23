@@ -90,7 +90,7 @@
       "warning": "VAROVANIE",
       "error": "CHYBA"
     },
-    "backtest": "Test na historických dátach",
+    "backtest": "Backtest",
     "backtestAriaLabel": "Backtest stratégie {{name}}",
     "managedRemotely": "Spravované uzlom {{coordinator}}",
     "remoteCoordinatorUnknown": "iný kontajner",
@@ -132,7 +132,7 @@
     "operatorPlaceholder": "Vyberte operátora",
     "walletLabel": "Peňaženka",
     "walletPlaceholder": "Vyberte peňaženku",
-    "paperAnnotation": " (papierová)",
+    "paperAnnotation": " (demo)",
     "refUserLabel": "Vlastník stratégie (používateľ)",
     "refOperatorLabel": "Referencia operátora",
     "refWalletLabel": "Referencia peňaženky",

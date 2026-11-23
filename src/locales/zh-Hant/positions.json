@@ -109,7 +109,7 @@
     "equity": {
       "title": "權益疊加層",
       "seriesLabel": "權益",
-      "seriesLabelSpotOnly": "權益（現貨交易場所）",
+      "seriesLabelSpotOnly": "權益（現貨交易所）",
       "latest": "最新：{{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "資料解讀說明",
-        "spotOnly": "僅限現貨交易場所——不包括其他交易場所持有的餘額。",
+        "spotOnly": "僅限現貨交易所——不包括其他交易所持有的餘額。",
         "flowsUnadjusted": "未剔除外部存款和提款。",
         "restatedFrom": "這些資料按每分鐘的收盤匯率由{{from}}折算而來，並非以該貨幣直接採樣。",
         "pricedOn": "定價基準：{{plane}}。",
@@ -130,9 +130,9 @@
         "drawdownConverted": "換算後的回撤資料不予顯示，因為截至當時的峰值是以採樣貨幣追蹤的。"
       },
       "cashPosition": {
-        "title": "現金與持倉構成",
-        "position": "持倉價值",
-        "positionHint": "未平倉部位按市價計算的價值。",
+        "title": "現金與倉位構成",
+        "position": "倉位價值",
+        "positionHint": "未平倉的倉位按市價計算的價值。",
         "cash": "現金",
         "cashHint": "剩餘已結算現金餘額。",
         "noValue": "—"
@@ -145,8 +145,8 @@
       "truncated": "標記結果已截斷至{{limit}}筆。此時間範圍內尚有其他決策或成交記錄。",
       "legend": {
         "fillExecuted": "成交·已執行",
-        "signalExecuted": "信號·已執行",
-        "signalNoFill": "信號·未成交",
+        "signalExecuted": "訊號·已執行",
+        "signalNoFill": "訊號·未成交",
         "aiExecuted": "AI 決策·已執行",
         "aiRejected": "AI 決策·已拒絕",
         "aiNoFill": "AI 決策·未成交"
@@ -166,7 +166,7 @@
         "strategyName": "策略名稱",
         "strength": "強度",
         "reason": "原因",
-        "signalId": "信號 ID",
+        "signalId": "訊號 ID",
         "strategyId": "策略 ID",
         "reviewId": "審核 ID",
         "eventId": "事件 ID",
@@ -175,7 +175,7 @@
         "noValue": "—",
         "types": {
           "fill": "成交",
-          "signal": "信號",
+          "signal": "訊號",
           "ai_decision": "AI 決策"
         },
         "outcomes": {

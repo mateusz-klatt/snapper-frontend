@@ -6,7 +6,7 @@
   "sections": {
     "longRunning": "ကြာရှည်လည်ပတ်သော လုပ်ငန်းစဉ်များ",
     "executorTemplates": "အကောင်အထည်ဖော်သူ ပုံစံများ",
-    "executorTemplatesHint": "ပုံစံ config ကို ပြင်ဆင်ခြင်းသည် ပြန်စတင်ပြီးနောက် ဤ exchange ပေါ်ရှိ ဝေါလက်အားလုံးကို သက်ရောက်စေသည်။ ပုံစံများသည် config-only ဖြစ်သည် — executor run ရန် အောက်တွင် ဝေါလက်တစ်ခုစီ instance ကို စတင်ပါ။",
+    "executorTemplatesHint": "ပုံစံ config ကို ပြင်ဆင်ခြင်းသည် ပြန်စတင်ပြီးနောက် ဤ အိတ်ချိန်း ပေါ်ရှိ ဝေါလက်အားလုံးကို သက်ရောက်စေသည်။ ပုံစံများသည် config-only ဖြစ်သည် — executor run ရန် အောက်တွင် ဝေါလက်တစ်ခုစီ instance ကို စတင်ပါ။",
     "walletInstances": "ဝေါလက် instance များ",
     "taskProcesses": "တာဝန် လုပ်ငန်းစဉ်များ"
   },

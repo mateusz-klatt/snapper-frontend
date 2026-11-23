@@ -109,7 +109,7 @@
     "equity": {
       "title": "Tindihan ekuiti",
       "seriesLabel": "Ekuiti",
-      "seriesLabelSpotOnly": "Ekuiti (bursa spot)",
+      "seriesLabelSpotOnly": "Ekuiti (bursa lani)",
       "latest": "Terkini: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Cara membaca data ini",
-        "spotOnly": "Bursa spot sahaja — baki yang disimpan di bursa lain tidak disertakan.",
+        "spotOnly": "Bursa lani sahaja — baki yang disimpan di bursa lain tidak disertakan.",
         "flowsUnadjusted": "Deposit dan pengeluaran luaran tidak ditolak.",
         "restatedFrom": "Angka-angka ini dikira semula daripada {{from}} berdasarkan kadar penutupan setiap minit, bukan diukur secara langsung dalam mata wang ini.",
         "pricedOn": "Dinilai berdasarkan {{plane}}.",

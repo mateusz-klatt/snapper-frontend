@@ -91,7 +91,7 @@
       "error": "HITILAFU"
     },
     "backtest": "Jaribio la nyuma",
-    "backtestAriaLabel": "Fanya backtest mkakati wa {{name}}",
+    "backtestAriaLabel": "Fanya jaribio la nyuma kwa mkakati wa {{name}}",
     "managedRemotely": "Inadhibitiwa na {{coordinator}}",
     "remoteCoordinatorUnknown": "kontena nyingine",
     "restart": "Anzisha upya",

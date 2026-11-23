@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Bashkëngjit Trailing Stop — {{instrument}}",
-    "confirmTitle": "Konfirmo Trailing Stop",
+    "title": "Bashkëngjit stop ndjekës — {{instrument}}",
+    "confirmTitle": "Konfirmo stopin ndjekës",
     "position": "Pozicion",
     "entryPrice": "Çmimi i hyrjes",
     "trailingDistanceLabel": "Distanca e ndjekjes (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "p.sh. 5.0",
       "minLockPct": "0 = nis menjëherë"
     },
-    "minLockWarning": "Trailing Stop nuk do të aktivizohet derisa çmimi të lëvizë {{minLockPct}}% në favorin tuaj.",
+    "minLockWarning": "Stopi ndjekës nuk do të aktivizohet derisa çmimi të lëvizë {{minLockPct}}% në favorin tuaj.",
     "buttons": {
       "cancel": "Anulo",
       "review": "Rishiko",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Kërkohet të paktën një çmim SL ose TP",
-    "invalidSlPrice": "Çmim Stop-Loss i pavlefshëm",
-    "slPricePositive": "Çmimi Stop-Loss duhet të jetë pozitiv",
-    "invalidTpPrice": "Çmim Take-Profit i pavlefshëm",
-    "tpPricePositive": "Çmimi Take-Profit duhet të jetë pozitiv",
+    "invalidSlPrice": "Çmim i pavlefshëm i ndalimit të humbjes",
+    "slPricePositive": "Çmimi i ndalimit të humbjes duhet të jetë pozitiv",
+    "invalidTpPrice": "Çmim i pavlefshëm i realizimit të fitimit",
+    "tpPricePositive": "Çmimi i realizimit të fitimit duhet të jetë pozitiv",
     "slLongBelowEntry": "Çmimi SL duhet të jetë nën çmimin e hyrjes ({{price}})",
     "tpLongAboveEntry": "Çmimi TP duhet të jetë mbi çmimin e hyrjes ({{price}})",
     "slShortAboveEntry": "Çmimi SL duhet të jetë mbi çmimin e hyrjes ({{price}})",

@@ -33,7 +33,7 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} h {{minutes}} min",
     "uptimeDays": "{{days}} T {{hours}} h",
-    "backtestName": "Historischer Test {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "n. v.",
     "uptimeLabel": "Laufzeit",

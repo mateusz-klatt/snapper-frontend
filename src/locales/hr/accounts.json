@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Pouzdani podaci burze u stvarnom vremenu, zabilježeni tijekom razdoblja valjanosti.",
-    "simulated": "Podaci trgovanja na papiru — nisu stvarna salda burze.",
+    "simulated": "Podaci demo trgovanja — nisu stvarna salda burze.",
     "stale": "Posljednja poznata snimka; razdoblje valjanosti je isteklo ili je dohvat zastao.",
     "clockError": "Vrijeme opservacije nije usklađeno sa satom poslužitelja.",
     "corrupt": "Snimka nije prošla provjeru.",
@@ -122,7 +122,7 @@
       "noCredential": "Za ovaj račun nije pronađena aktivna vjerodajnica za trgovanje u stvarnom vremenu. Usklađivanje se ne može klasificirati.",
       "ambiguousCredential": "Više vjerodajnica za trgovanje u stvarnom vremenu odgovara ovom računu. Za klasifikaciju je potrebna točno jedna.",
       "confirm": "Klasificiraj račun",
-      "cancel": "Odustani",
+      "cancel": "Otkaži",
       "success": "Račun klasificiran: {{method}}",
       "error": "Klasifikacija nije uspjela: {{message}}"
     }

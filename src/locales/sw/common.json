@@ -51,8 +51,8 @@
       "exitTitle": "Rudi kwenye hali ya live"
     },
     "marketDataOnly": {
-      "defaultTooltip": "Instrumenti ya kuangalia pekee. Snapper hupokea data ya soko lakini haiwezi kuweka oda kwa jozi hii ya (alama, exchange).",
-      "ariaLabel": "Instrumenti ya data ya soko pekee",
+      "defaultTooltip": "Chombo cha kifedha cha kuangalia pekee. Snapper hupokea data ya soko lakini haiwezi kuweka oda kwa jozi hii ya (alama, exchange).",
+      "ariaLabel": "Chombo cha kifedha cha data ya soko pekee",
       "badge": "Data ya soko pekee"
     },
     "liveOnly": {

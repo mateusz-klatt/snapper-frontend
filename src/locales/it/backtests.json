@@ -74,7 +74,7 @@
       "manual": "manuale"
     },
     "errors": {
-      "notFound": "Confronto non trovato nel portafoglio corrente.",
+      "notFound": "Confronto non trovato nel wallet corrente.",
       "loadFailed": "Caricamento del confronto non riuscito: {{message}}",
       "unknown": "errore sconosciuto",
       "emptyResponse": "Risposta di confronto vuota."

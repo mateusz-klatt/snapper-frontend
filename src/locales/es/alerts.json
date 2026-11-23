@@ -35,8 +35,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} ejecutada en {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} ejecutada en {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} rechazada: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} tiene un estado desconocido: {{3}} — la verificación por parte del centro de negociación está pendiente; no dé por cerrada la posición",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} tiene un estado desconocido: {{3}} — la verificación por parte del centro de negociación está pendiente; no dé por cerrada la posición",
+    "order_unknown": "{{0}} {{1}} {{2}} tiene un estado desconocido: {{3}} — la verificación por parte de la plataforma está pendiente; no dé por cerrada la posición",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} tiene un estado desconocido: {{3}} — la verificación por parte de la plataforma está pendiente; no dé por cerrada la posición",
     "position_stop_loss_fired": "Stop loss activado en {{0}} ({{1}})"
   },
   "detail": {

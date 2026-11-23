@@ -106,10 +106,10 @@
     },
     "modeOptions": {
       "live": "라이브",
-      "paper": "페이퍼"
+      "paper": "모의"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — 시장 데이터 전용",
-    "walletPaperSuffix": "{{label}} (페이퍼)",
+    "walletPaperSuffix": "{{label}} (모의)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

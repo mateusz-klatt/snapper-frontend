@@ -14,9 +14,9 @@
       "all": "Lahat ng order",
       "new": "Bago",
       "open": "Bukas",
-      "partiallyFilled": "Bahagyang napunan",
-      "partially_filled": "Bahagyang napunan",
-      "filled": "Napunan",
+      "partiallyFilled": "Bahagyang naisagawa",
+      "partially_filled": "Bahagyang naisagawa",
+      "filled": "Naisagawa",
       "cancelled": "Kinansela",
       "rejected": "Tinanggihan"
     }
@@ -29,7 +29,7 @@
     "created": "Ginawa",
     "createdUnknown": "Hindi available",
     "orderId": "ID ng order",
-    "leverage": "Paggamit ng hiniram na puhunan",
+    "leverage": "Leverage",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "PAGBAWAS LAMANG",
     "cancel": "Kanselahin",
@@ -61,7 +61,7 @@
       "status": "Katayuan",
       "quantity": "Dami",
       "price": "Presyo",
-      "leverage": "Paggamit ng hiniram na puhunan",
+      "leverage": "Leverage",
       "reduceOnly": "Reduce-only",
       "created": "Ginawa"
     },

@@ -44,13 +44,13 @@
     "title": "နောက်ကြောင်းပြန် စမ်းသပ်မှု run",
     "fields": {
       "strategy": "ဗျူဟာ",
-      "instrument": "ကုန်သွယ်ရေးတူရိယာ",
+      "instrument": "ကုန်သွယ်ပစ္စည်း",
       "status": "အခြေအနေ",
       "period": "ကာလ",
       "crossAsset": "အက်ဆက်ဖြတ်ကျော် attribution",
       "configHash": "ပြင်ဆင်သတ်မှတ်ချက် hash တန်ဖိုး"
     },
-    "crossAssetFlow": "{{source}} feed → {{target}} fill များ",
+    "crossAssetFlow": "{{source}} feed → {{target}} အော်ဒါအကောင်အထည်ဖော်မှု များ",
     "errors": {
       "invalidRunId": "Run id မမှန်ပါ — UUID7 ဖြစ်ရမည် (ရရှိသည် \"{{id}}\").",
       "loadFailed": "Run တင်၍ မရပါ: {{message}}",
@@ -65,7 +65,7 @@
     "runLabel": "စမ်းသပ်မှု {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metric များ",
-      "equityOverlay": "အရင်းအနှီး ထပ်ဆင့်ပြကွက်",
+      "equityOverlay": "ပိုင်ဆိုင်မှုတန်ဖိုး ထပ်ဆင့်ပြကွက်",
       "trades": "ကုန်သွယ်မှုများ",
       "signals": "အချက်ပြမှုများ"
     },
@@ -74,7 +74,7 @@
       "manual": "လက်ဖြင့်"
     },
     "errors": {
-      "notFound": "လက်ရှိ wallet တွင် comparison မတွေ့ပါ။",
+      "notFound": "လက်ရှိ ဝေါလက် တွင် comparison မတွေ့ပါ။",
       "loadFailed": "Comparison တင်၍ မရပါ: {{message}}",
       "unknown": "မသိသော အမှား",
       "emptyResponse": "Comparison response ဗလာဖြစ်သည်။"
@@ -131,8 +131,8 @@
     "waiting": "Progress စောင့်နေသည်…",
     "candles": "{{done}} / {{total}} candle",
     "candlesNoTotal": "{{done}} candle",
-    "equity": "အရင်းအနှီး {{value}}",
-    "signalsTrades": "{{signals}} signal / {{trades}} trade",
+    "equity": "ပိုင်ဆိုင်မှုတန်ဖိုး {{value}}",
+    "signalsTrades": "{{signals}} အချက်ပြမှု / {{trades}} trade",
     "milestoneLine": "မှတ်တိုင် {{label}}",
     "milestone": {
       "25pct": "25%",
@@ -156,11 +156,11 @@
       "strategyPlaceholder": "— ဗျူဟာတစ်ခု ရွေးပါ —",
       "strategyLoading": "ဗျူဟာများ load လုပ်နေသည်…",
       "strategyError": "ဗျူဟာများ load လုပ်၍ မရပါ",
-      "instrumentLabel": "ကုန်သွယ်ရေးတူရိယာ",
+      "instrumentLabel": "ကုန်သွယ်ပစ္စည်း",
       "instrumentPlaceholder": "ဥပမာ BTC-USD",
-      "instrumentHelp": "နောက်ကြောင်းပြန် စမ်းသပ်ရန် instrument ၏ public id",
+      "instrumentHelp": "နောက်ကြောင်းပြန် စမ်းသပ်ရန် ကုန်သွယ်ပစ္စည်း ၏ public id",
       "exchangeLabel": "အိတ်ချိန်း (ဒေတာ feed ရင်းမြစ်)",
-      "exchangePlaceholder": "— exchange တစ်ခု ရွေးပါ —",
+      "exchangePlaceholder": "— အိတ်ချိန်း တစ်ခု ရွေးပါ —",
       "timeframeLabel": "အချိန်ဘောင်",
       "startDateLabel": "စတင်ရက်စွဲ",
       "endDateLabel": "ပြီးဆုံးရက်စွဲ",
@@ -170,7 +170,7 @@
       "executionModeLabel": "လုပ်ဆောင်မှု မုဒ်",
       "executionModeDirectDb": "DB တိုက်ရိုက်",
       "executionModeZmqReplay": "ZMQ ပြန်ဖွင့်မှု",
-      "targetExchangeLabel": "ပစ်မှတ် လုပ်ဆောင်မှု exchange",
+      "targetExchangeLabel": "ပစ်မှတ် လုပ်ဆောင်မှု အိတ်ချိန်း",
       "targetExchangeNone": "မရှိ (single-exchange)",
       "targetExchangeHelp": "Optional — cross-asset run များအတွက်; single-exchange အတွက် မသတ်မှတ်ဘဲ ထားပါ"
     }

@@ -232,10 +232,10 @@
         "instrumentPublicId": "ID público do instrumento",
         "underlyingPlaceholder": "ex. BTC",
         "instrumentPlaceholder": "ex. BTC-USD-PERP",
-        "exchange": "Bolsa",
-        "exchangePlaceholder": "Selecione a bolsa...",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "Selecione a exchange...",
         "instrumentSelectPlaceholder": "Selecione o instrumento...",
-        "selectExchangeFirst": "Selecione primeiro uma bolsa",
+        "selectExchangeFirst": "Selecione primeiro uma exchange",
         "note": "Nota (opcional)",
         "notePlaceholder": "Nota opcional"
       },
@@ -315,7 +315,7 @@
       "addCredential": "Adicionar credencial",
       "selectWalletPrompt": "Escolha uma carteira acima para ver suas credenciais.",
       "columns": {
-        "exchange": "Corretora",
+        "exchange": "Exchange",
         "type": "Tipo",
         "label": "Rótulo",
         "createdAt": "Criada em",
@@ -332,7 +332,7 @@
       "title": "Adicionar credencial",
       "fields": {
         "wallet": "Carteira",
-        "exchange": "Corretora",
+        "exchange": "Exchange",
         "exchangePlaceholder": "ex. kraken",
         "credentialType": "Tipo de credencial",
         "label": "Rótulo (opcional)",
@@ -371,7 +371,7 @@
     "rotate": {
       "title": "Substituir credencial",
       "fields": {
-        "exchange": "Corretora",
+        "exchange": "Exchange",
         "type": "Tipo",
         "label": "Rótulo",
         "newLabel": "Novo rótulo (opcional)",

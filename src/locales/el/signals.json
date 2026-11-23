@@ -17,7 +17,7 @@
   "card": {
     "strength": "Ισχύς",
     "price": "Τιμή",
-    "exchange": "Αγορά",
+    "exchange": "Ανταλλακτήριο",
     "reason": "Αιτία:",
     "noPrice": "Μη διαθέσιμο"
   },

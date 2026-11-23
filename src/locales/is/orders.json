@@ -1,17 +1,17 @@
 {
   "page": {
-    "title": "Pantanir og framkvæmdir",
-    "newOrder": "Ný pöntun",
+    "title": "Fyrirmæli og framkvæmdir",
+    "newOrder": "Ný fyrirmæli",
     "exportCsv": "Flytja út CSV"
   },
   "tabs": {
-    "orders": "Pantanir ({{total}})",
+    "orders": "Fyrirmæli ({{total}})",
     "executions": "Framkvæmdir ({{total}})"
   },
   "filters": {
     "byStatus": "Sía eftir stöðu:",
     "options": {
-      "all": "Allar pantanir",
+      "all": "Öll fyrirmæli",
       "new": "Ný",
       "open": "Opin",
       "partiallyFilled": "Framkvæmd að hluta",
@@ -28,18 +28,18 @@
     "price": "Verð",
     "created": "Búið til",
     "createdUnknown": "Ekki tiltækt",
-    "orderId": "Pöntunar-ID",
+    "orderId": "Auðkenni fyrirmæla",
     "leverage": "Vogun",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "AÐEINS MINNKA",
-    "cancel": "Hætta við",
-    "cancelling": "Hætt við…",
-    "cancelAriaLabel": "Hætta við pöntun {{orderId}}"
+    "cancel": "Afturkalla",
+    "cancelling": "Afturkalla…",
+    "cancelAriaLabel": "Afturkalla fyrirmæli {{orderId}}"
   },
   "executionCard": {
-    "orderNumber": "Pöntun #{{orderId}}",
+    "orderNumber": "Fyrirmæli #{{orderId}}",
     "filled": "FRAMKVÆMD",
-    "orderLabel": "Pöntun {{orderId}}",
+    "orderLabel": "Fyrirmæli {{orderId}}",
     "size": "Stærð",
     "price": "Verð",
     "total": "Samtals",
@@ -47,9 +47,9 @@
     "fees": "Gjöld"
   },
   "empty": {
-    "ordersTitle": "Engar pantanir fundust",
-    "ordersStartTrading": "Hefjið viðskipti til að sjá pantanir hér",
-    "ordersFilterless": "Engar {{status}} pantanir",
+    "ordersTitle": "Engin fyrirmæli fundust",
+    "ordersStartTrading": "Hefjið viðskipti til að sjá fyrirmæli hér",
+    "ordersFilterless": "Engin {{status}} fyrirmæli",
     "executionsTitle": "Engar framkvæmdir fundust",
     "executionsMessage": "Framkvæmdir viðskipta munu birtast hér"
   },
@@ -66,7 +66,7 @@
       "created": "Búið til"
     },
     "executions": {
-      "orderId": "Pöntunar-ID",
+      "orderId": "Auðkenni fyrirmæla",
       "instrument": "Gerningur",
       "side": "Hlið",
       "size": "Stærð",
@@ -78,13 +78,13 @@
     }
   },
   "newOrderModal": {
-    "titleEdit": "Ný handvirk pöntun",
-    "titleConfirm": "Staðfesta pöntun",
+    "titleEdit": "Ný handvirk fyrirmæli",
+    "titleConfirm": "Staðfesta fyrirmæli",
     "fields": {
       "exchange": "Kauphöll",
       "instrument": "Gerningur",
       "side": "Hlið",
-      "orderType": "Pöntunartegund",
+      "orderType": "Tegund fyrirmæla",
       "quantity": "Magn",
       "price": "Verð",
       "stopPrice": "Stop verð",
@@ -98,8 +98,8 @@
       "sell": "Sala"
     },
     "orderTypeOptions": {
-      "market": "Markaður",
-      "limit": "Verðtakmörk",
+      "market": "Markaðsfyrirmæli",
+      "limit": "Fyrirmæli með verðmörkum",
       "stop": "Stöðvun",
       "stopLimit": "Stöðvun með verðtakmörkum",
       "stop_limit": "Stöðvun með verðtakmörkum"
@@ -117,24 +117,24 @@
     },
     "buttons": {
       "cancel": "Hætta við",
-      "reviewOrder": "Yfirfara pöntun",
+      "reviewOrder": "Yfirfara fyrirmæli",
       "back": "Til baka",
-      "confirmOrder": "Staðfesta pöntun",
+      "confirmOrder": "Staðfesta fyrirmæli",
       "submitting": "Sendi inn..."
     },
     "errors": {
       "missingRequired": "Fylla þarf út alla áskilna reiti",
       "quantityPositive": "Magn verður að vera jákvæð tala",
-      "priceRequired": "Verð er áskilið fyrir þessa pöntunartegund",
+      "priceRequired": "Verð er áskilið fyrir þessa tegund fyrirmæla",
       "pricePositive": "Verð verður að vera jákvæð tala",
-      "stopPriceRequired": "Stop verð er áskilið fyrir þessa pöntunartegund",
+      "stopPriceRequired": "Stop verð er áskilið fyrir þessa tegund fyrirmæla",
       "stopPricePositive": "Stop verð verður að vera jákvæð tala",
-      "createFailed": "Mistókst að búa til pöntun"
+      "createFailed": "Mistókst að búa til fyrirmæli"
     },
     "errorCodes": {
-      "instrumentMarketDataOnly": "Þessi gerningur er aðeins til athugunar — leggðu pantanir inn á gerning sem styður framkvæmd.",
+      "instrumentMarketDataOnly": "Þessi gerningur er aðeins til athugunar — leggðu fyrirmæli inn á gerning sem styður framkvæmd.",
       "unknownInstrument": "Þessi gerningur er ekki þekktur. Endurhlaðið listann og reynið aftur.",
-      "capsViolation": "Þessi pöntun myndi fara yfir öryggismörk reiknings. Yfirfarið áhættustillingar og reynið aftur."
+      "capsViolation": "Þessi fyrirmæli myndu fara yfir öryggismörk reiknings. Yfirfarið áhættustillingar og reynið aftur."
     }
   }
 }

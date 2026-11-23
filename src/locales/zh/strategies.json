@@ -132,7 +132,7 @@
     "operatorPlaceholder": "选择操作员",
     "walletLabel": "钱包",
     "walletPlaceholder": "选择钱包",
-    "paperAnnotation": " (纸质)",
+    "paperAnnotation": " (模拟)",
     "refUserLabel": "策略所有者（用户）",
     "refOperatorLabel": "操作员引用",
     "refWalletLabel": "钱包引用",

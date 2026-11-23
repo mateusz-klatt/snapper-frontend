@@ -239,10 +239,10 @@
     "confirmTitle": "Potvrdi Bracket",
     "position": "Pozicija",
     "entryPrice": "Ulazna cijena",
-    "stopLossLabel": "Cijena ograničenja gubitka",
-    "takeProfitLabel": "Cijena realizacije dobiti",
-    "stopLoss": "Ograničenje gubitka",
-    "takeProfit": "Realizacija dobiti",
+    "stopLossLabel": "Cijena stop-lossa",
+    "takeProfitLabel": "Cijena take-profita",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Ispod {{price}}",
       "slShort": "Iznad {{price}}",
@@ -250,7 +250,7 @@
       "tpShort": "Ispod {{price}}"
     },
     "buttons": {
-      "cancel": "Odustani",
+      "cancel": "Otkaži",
       "review": "Pregledaj",
       "back": "Natrag",
       "confirm": "Potvrdi",
@@ -272,7 +272,7 @@
     },
     "minLockWarning": "Trailing Stop neće se aktivirati dok se cijena ne pomakne {{minLockPct}} % u povoljnom smjeru.",
     "buttons": {
-      "cancel": "Odustani",
+      "cancel": "Otkaži",
       "review": "Pregledaj",
       "back": "Natrag",
       "confirm": "Potvrdi",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Potrebna je barem jedna SL ili TP cijena",
-    "invalidSlPrice": "Nevaljana cijena ograničenja gubitka",
-    "slPricePositive": "Cijena ograničenja gubitka mora biti pozitivna",
-    "invalidTpPrice": "Nevaljana cijena realizacije dobiti",
-    "tpPricePositive": "Cijena realizacije dobiti mora biti pozitivna",
+    "invalidSlPrice": "Nevaljana cijena stop-lossa",
+    "slPricePositive": "Cijena stop-lossa mora biti pozitivna",
+    "invalidTpPrice": "Nevaljana cijena take-profita",
+    "tpPricePositive": "Cijena take-profita mora biti pozitivna",
     "slLongBelowEntry": "SL cijena mora biti ispod ulazne cijene ({{price}})",
     "tpLongAboveEntry": "TP cijena mora biti iznad ulazne cijene ({{price}})",
     "slShortAboveEntry": "SL cijena mora biti iznad ulazne cijene ({{price}})",

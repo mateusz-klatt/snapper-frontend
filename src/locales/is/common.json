@@ -51,7 +51,7 @@
       "exitTitle": "Fara aftur í lifandi ham"
     },
     "marketDataOnly": {
-      "defaultTooltip": "Gerningur aðeins til athugunar. Snapper tekur við markaðsgögnum en getur ekki lagt inn pantanir fyrir þetta (tákn, kauphöll) par.",
+      "defaultTooltip": "Gerningur aðeins til athugunar. Snapper tekur við markaðsgögnum en getur ekki lagt inn fyrirmæli fyrir þetta (tákn, kauphöll) par.",
       "ariaLabel": "Gerningur eingöngu með markaðsgögn",
       "badge": "Aðeins markaðsgögn"
     },
@@ -66,7 +66,7 @@
     "tryAgain": "Reyna aftur"
   },
   "nav": {
-    "accounts": "Kauphallarreikningar",
+    "accounts": "Vettvangsreikningar",
     "admin": "Stjórnun",
     "aiIntegration": "AI samþætting",
     "aiReviews": "AI yfirferðir",
@@ -74,7 +74,7 @@
     "backtests": "Bakprófanir",
     "health": "Heilsa",
     "market": "Markaðsgögn",
-    "orders": "Pantanir og framkvæmdir",
+    "orders": "Fyrirmæli og framkvæmdir",
     "overview": "Yfirlit",
     "positions": "Stöður",
     "processes": "Ferli",

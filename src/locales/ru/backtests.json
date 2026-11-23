@@ -65,7 +65,7 @@
     "runLabel": "Запуск {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Метрики",
-      "equityOverlay": "Наложение equity-кривых",
+      "equityOverlay": "Наложение кривых собственного капитала",
       "trades": "Сделки",
       "signals": "Сигналы"
     },

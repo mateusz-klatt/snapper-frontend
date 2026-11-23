@@ -10,9 +10,9 @@
   "alertType": {
     "critical_system_error": "Gabim sistemi",
     "margin_warning": "Paralajmërim për marzhën",
-    "order_fill_full": "Porosia u plotësua",
-    "order_rejected": "Porosia u refuzua",
-    "position_stop_loss_fired": "Stop-loss u aktivizua"
+    "order_fill_full": "Urdhri u ekzekutua",
+    "order_rejected": "Urdhri u refuzua",
+    "position_stop_loss_fired": "Ndalimi i humbjes u aktivizua"
   },
   "argument": {
     "reason": {
@@ -37,7 +37,7 @@
     "order_rejected": "{{0}} {{1}} {{2}} u refuzua: {{3}}",
     "order_unknown": "{{0}} {{1}} {{2}} — gjendje e panjohur: {{3}} — verifikimi nga bursa është në pritje; mos supozoni se pozicioni është mbyllur",
     "order_unknown_unresolved": "{{0}} {{1}} {{2}} — gjendje e panjohur: {{3}} — verifikimi nga bursa është në pritje; mos supozoni se pozicioni është mbyllur",
-    "position_stop_loss_fired": "Stop-loss u aktivizua për {{0}} ({{1}})"
+    "position_stop_loss_fired": "Ndalimi i humbjes u aktivizua për {{0}} ({{1}})"
   },
   "detail": {
     "navTitle": "Detajet e sinjalizimit",
@@ -68,9 +68,9 @@
   "title": {
     "critical_system_error": "Sistemi është degraduar: {{0}}",
     "margin_warning": "Paralajmërim për marzhën",
-    "order_fill_full": "Porosia u plotësua",
-    "order_rejected": "Porosia u refuzua",
-    "order_unknown": "Gjendja e porosisë e panjohur",
-    "position_stop_loss_fired": "Stop-loss u aktivizua"
+    "order_fill_full": "Urdhri u ekzekutua",
+    "order_rejected": "Urdhri u refuzua",
+    "order_unknown": "Gjendja e urdhrit e panjohur",
+    "position_stop_loss_fired": "Ndalimi i humbjes u aktivizua"
   }
 }

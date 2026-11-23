@@ -1,7 +1,7 @@
 {
   "page": {
     "title": "交易所帳戶",
-    "subtitle": "交易所現金餘額和未平倉合約，依據交易所報告的來源標記。"
+    "subtitle": "交易所現金餘額和未平倉的倉位，依據交易所報告的來源標記。"
   },
   "empty": {
     "title": "沒有交易所帳戶",
@@ -37,11 +37,11 @@
   },
   "section": {
     "balances": "餘額",
-    "positions": "未平倉合約"
+    "positions": "未平倉的倉位"
   },
   "sectionEmpty": {
     "balances": "未報告餘額",
-    "positions": "沒有未平倉合約"
+    "positions": "沒有未平倉的倉位"
   },
   "balance": {
     "currency": "貨幣",

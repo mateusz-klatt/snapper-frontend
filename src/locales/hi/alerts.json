@@ -10,7 +10,7 @@
   "alertType": {
     "critical_system_error": "सिस्टम त्रुटि",
     "margin_warning": "मार्जिन चेतावनी",
-    "order_fill_full": "ऑर्डर पूरा हुआ",
+    "order_fill_full": "ऑर्डर निष्पादित हुआ",
     "order_rejected": "ऑर्डर अस्वीकृत",
     "position_stop_loss_fired": "स्टॉप-लॉस ट्रिगर हुआ"
   },
@@ -68,7 +68,7 @@
   "title": {
     "critical_system_error": "सिस्टम की स्थिति अवनत: {{0}}",
     "margin_warning": "मार्जिन चेतावनी",
-    "order_fill_full": "ऑर्डर पूरा हुआ",
+    "order_fill_full": "ऑर्डर निष्पादित हुआ",
     "order_rejected": "ऑर्डर अस्वीकृत",
     "order_unknown": "ऑर्डर की स्थिति अज्ञात",
     "position_stop_loss_fired": "स्टॉप-लॉस ट्रिगर हुआ"

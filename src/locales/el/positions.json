@@ -94,7 +94,7 @@
       "targetExecutionId": "Ακυρωμένη εκτέλεση",
       "correctionId": "Εγγραφή διόρθωσης",
       "reasons": {
-        "unwitnessed_phantom": "Δεν υπάρχει εκτέλεση εντολής στο χρηματιστήριο που να τεκμηριώνει αυτή την καταχώριση.",
+        "unwitnessed_phantom": "Δεν υπάρχει εκτέλεση εντολής στο ανταλλακτήριο που να τεκμηριώνει αυτή την καταχώριση.",
         "unwitnessed_legacy_lineage": "Εγγραφή προερχόμενη από παλαιά δεδομένα, χωρίς εκτέλεση εντολής που να την τεκμηριώνει."
       }
     },
@@ -109,7 +109,7 @@
     "equity": {
       "title": "Επικάλυψη καθαρής θέσης",
       "seriesLabel": "Καθαρή θέση",
-      "seriesLabelSpotOnly": "Καθαρή θέση (αγορά spot)",
+      "seriesLabelSpotOnly": "Καθαρή θέση (ανταλλακτήριο spot)",
       "latest": "Τελευταία: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Πώς διαβάζονται τα στοιχεία",
-        "spotOnly": "Μόνο η αγορά spot — τα υπόλοιπα σε άλλες αγορές εξαιρούνται.",
+        "spotOnly": "Μόνο το ανταλλακτήριο spot — τα υπόλοιπα σε άλλα ανταλλακτήρια εξαιρούνται.",
         "flowsUnadjusted": "Οι εξωτερικές καταθέσεις και αναλήψεις δεν έχουν αφαιρεθεί.",
         "restatedFrom": "Τα στοιχεία αυτά επανυπολογίζονται από {{from}} με την τιμή κλεισίματος κάθε λεπτού και δεν καταγράφονται πρωτογενώς σε αυτό το νόμισμα.",
         "pricedOn": "Αποτίμηση σε {{plane}}.",
@@ -239,10 +239,10 @@
     "confirmTitle": "Επιβεβαίωση Bracket",
     "position": "Θέση",
     "entryPrice": "Τιμή εισόδου",
-    "stopLossLabel": "Τιμή περιορισμού ζημίας",
-    "takeProfitLabel": "Τιμή κατοχύρωσης κέρδους",
-    "stopLoss": "Περιορισμός ζημίας",
-    "takeProfit": "Κατοχύρωση κέρδους",
+    "stopLossLabel": "Τιμή ορίου ζημίας",
+    "takeProfitLabel": "Τιμή ορίου κέρδους",
+    "stopLoss": "Όριο ζημίας",
+    "takeProfit": "Όριο κέρδους",
     "placeholders": {
       "slLong": "Κάτω από {{price}}",
       "slShort": "Πάνω από {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Προσθήκη Trailing Stop — {{instrument}}",
-    "confirmTitle": "Επιβεβαίωση Trailing Stop",
+    "title": "Προσθήκη κυλιόμενου ορίου ζημίας — {{instrument}}",
+    "confirmTitle": "Επιβεβαίωση κυλιόμενου ορίου ζημίας",
     "position": "Θέση",
     "entryPrice": "Τιμή εισόδου",
     "trailingDistanceLabel": "Trailing απόσταση (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "π.χ. 5.0",
       "minLockPct": "0 = έναρξη άμεσα"
     },
-    "minLockWarning": "Το Trailing Stop δεν θα ενεργοποιηθεί μέχρι η τιμή να κινηθεί {{minLockPct}}% υπέρ σας.",
+    "minLockWarning": "Το κυλιόμενο όριο ζημίας δεν θα ενεργοποιηθεί μέχρι η τιμή να κινηθεί {{minLockPct}}% υπέρ σας.",
     "buttons": {
       "cancel": "Ακύρωση",
       "review": "Έλεγχος",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Απαιτείται τουλάχιστον μία τιμή SL ή TP",
-    "invalidSlPrice": "Μη έγκυρη τιμή Stop-Loss",
-    "slPricePositive": "Η τιμή Stop-Loss πρέπει να είναι θετική",
-    "invalidTpPrice": "Μη έγκυρη τιμή Take-Profit",
-    "tpPricePositive": "Η τιμή Take-Profit πρέπει να είναι θετική",
+    "invalidSlPrice": "Μη έγκυρη τιμή ορίου ζημίας",
+    "slPricePositive": "Η τιμή ορίου ζημίας πρέπει να είναι θετική",
+    "invalidTpPrice": "Μη έγκυρη τιμή ορίου κέρδους",
+    "tpPricePositive": "Η τιμή ορίου κέρδους πρέπει να είναι θετική",
     "slLongBelowEntry": "Η τιμή SL πρέπει να είναι κάτω από την τιμή εισόδου ({{price}})",
     "tpLongAboveEntry": "Η τιμή TP πρέπει να είναι πάνω από την τιμή εισόδου ({{price}})",
     "slShortAboveEntry": "Η τιμή SL πρέπει να είναι πάνω από την τιμή εισόδου ({{price}})",

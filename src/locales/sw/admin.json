@@ -7,11 +7,11 @@
     "title": "Ruhusa za Majukumu",
     "viewer": {
       "label": "Mtazamaji",
-      "description": "Mwonekano kamili wa opereta wa kusoma pekee kwa akaunti, pochi na portfolio, ishara, maamuzi ya AI, faida na hasara, backtest, mikakati, michakato na afya ya mfumo. Hawezi kutekeleza vitendo vya uendeshaji."
+      "description": "Mwonekano kamili wa opereta wa kusoma pekee kwa akaunti, pochi na portfolio, ishara, maamuzi ya AI, faida na hasara, jaribio la nyuma, mikakati, michakato na afya ya mfumo. Hawezi kutekeleza vitendo vya uendeshaji."
     },
     "operator": {
       "label": "Opereta",
-      "description": "Mwonekano wote wa Mtazamaji pamoja na vidhibiti vya biashara, nafasi, mikakati, michakato, backtest na ujumuishaji wa AI."
+      "description": "Mwonekano wote wa Mtazamaji pamoja na vidhibiti vya biashara, nafasi, mikakati, michakato, jaribio la nyuma na ujumuishaji wa AI."
     },
     "admin": {
       "label": "Msimamizi",
@@ -29,7 +29,7 @@
       "market": "Data ya Soko",
       "processes": "Michakato",
       "strategies": "Mikakati",
-      "orders": "Oda na Fills",
+      "orders": "Oda na Utekelezaji wa oda",
       "positions": "Nafasi",
       "signals": "Ishara",
       "health": "Afya",
@@ -229,19 +229,19 @@
         "wallet": "Pochi",
         "scopeKind": "Aina ya Upeo",
         "underlyingPublicId": "Public ID ya Mali Msingi",
-        "instrumentPublicId": "Public ID ya Instrumenti",
+        "instrumentPublicId": "Public ID ya Chombo cha kifedha",
         "underlyingPlaceholder": "mf. BTC",
         "instrumentPlaceholder": "mf. BTC-USD-PERP",
         "exchange": "Soko",
         "exchangePlaceholder": "Chagua soko...",
-        "instrumentSelectPlaceholder": "Chagua chombo...",
+        "instrumentSelectPlaceholder": "Chagua chombo cha kifedha...",
         "selectExchangeFirst": "Chagua soko kwanza",
         "note": "Dokezo (hiari)",
         "notePlaceholder": "Dokezo la hiari"
       },
       "scopeKinds": {
         "underlying": "Mali Msingi",
-        "instrument": "Instrumenti"
+        "instrument": "Chombo cha kifedha"
       },
       "validation": {
         "operatorRequired": "Opereta anahitajika",

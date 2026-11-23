@@ -51,10 +51,10 @@
       "description": "Sababu zinahusu kipindi kizima kilichopakiwa. Hesabu zinaweza kuingiliana ikiwa nukta ina sababu zaidi ya moja.",
       "cumulativeNote": "Thamani za P&L hujilimbikiza tangu uwezeshaji, hivyo hesabu zinaweza kutegemea shughuli za awali.",
       "affectedPoints": "Nukta zilizoathiriwa: {{count}}",
-      "triggerInstrument": "Instrumenti iliyochochea: {{instrument}}",
+      "triggerInstrument": "Chombo cha kifedha kilichochochea: {{instrument}}",
       "scope": {
         "global": "Portofolio nzima",
-        "instrument": "Instrumenti"
+        "instrument": "Chombo cha kifedha"
       },
       "tier": {
         "mark_incomplete": "BEI YA MAREJELEO ISIYOKAMILIKA",
@@ -78,8 +78,8 @@
         "attribution_value_non_finite": "Thamani ya uhusishaji si yenye kikomo",
         "attribution_reconciliation_failed": "Upatanisho wa uhusishaji umeshindikana",
         "attribution_sum_unrepresentable": "Jumla ya thamani za P&L zilizohusishwa haiwezi kuwakilishwa kwa usahihi",
-        "instrument_reconciliation_failed": "Jumla ya P&L za instrumenti zote hailingani na P&L ya jumla",
-        "instrument_sum_unrepresentable": "Jumla ya thamani za instrumenti haiwezi kuwakilishwa kwa usahihi",
+        "instrument_reconciliation_failed": "Jumla ya P&L za vyombo vyote vya kifedha hailingani na P&L ya jumla",
+        "instrument_sum_unrepresentable": "Jumla ya thamani za vyombo vya kifedha haiwezi kuwakilishwa kwa usahihi",
         "late_pre_activation_execution": "Utekelezaji wa agizo uliowasili kwa kuchelewa wenye muhuri wa muda wa kabla ya uanzishaji"
       }
     },
@@ -155,7 +155,7 @@
         "title": "Maelezo ya alama",
         "type": "Aina",
         "time": "Wakati",
-        "instrument": "Instrumenti",
+        "instrument": "Chombo cha kifedha",
         "outcome": "Matokeo",
         "status": "Hali",
         "side": "Upande",
@@ -186,15 +186,15 @@
       }
     },
     "contributions": {
-      "title": "Michango ya karibuni kwa kila instrumenti",
-      "instrument": "Instrumenti",
+      "title": "Michango ya karibuni kwa kila chombo cha kifedha",
+      "instrument": "Chombo cha kifedha",
       "realized": "P&L iliyopatikana",
       "fees": "Ada",
       "accrual": "Ufadhili uliolimbikizwa",
       "unrealized": "P&L ambayo bado haijapatikana",
       "net": "P&L halisi",
       "noValue": "—",
-      "empty": "Hakuna michango ya instrumenti inayopatikana."
+      "empty": "Hakuna michango ya vyombo vya kifedha inayopatikana."
     },
     "attribution": {
       "title": "Uhusishaji wa karibuni wa P&L",
@@ -224,8 +224,8 @@
     "trailButton": "Fuatilia",
     "quantity": "Kiasi",
     "averageEntry": "Entry Wastani",
-    "unrealizedPnl": "P&L Isiyotekelezwa",
-    "realizedPnl": "P&L Iliyotekelezwa",
+    "unrealizedPnl": "P&L ambayo bado haijapatikana",
+    "realizedPnl": "P&L iliyopatikana",
     "updated": "Imesasishwa {{timestamp}}",
     "mark": "Bei ya marejeleo",
     "noValue": "Haipatikani"
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Ambatisha Trailing Stop — {{instrument}}",
-    "confirmTitle": "Thibitisha Trailing Stop",
+    "title": "Ambatisha kusitisha kwa kufuata bei — {{instrument}}",
+    "confirmTitle": "Thibitisha kusitisha kwa kufuata bei",
     "position": "Nafasi",
     "entryPrice": "Bei ya Entry",
     "trailingDistanceLabel": "Umbali wa Trailing (%)",

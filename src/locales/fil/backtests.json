@@ -43,7 +43,7 @@
   "detail": {
     "title": "Pagpapatakbo ng backtest",
     "fields": {
-      "strategy": "Estratehiya",
+      "strategy": "Strategy",
       "instrument": "Instrumento",
       "status": "Katayuan",
       "period": "Panahon",
@@ -65,7 +65,7 @@
     "runLabel": "Pagpapatakbo {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Mga sukatan",
-      "equityOverlay": "Overlay ng equity",
+      "equityOverlay": "Overlay ng kapital",
       "trades": "Mga trade",
       "signals": "Mga signal"
     },
@@ -74,7 +74,7 @@
       "manual": "manwal"
     },
     "errors": {
-      "notFound": "Hindi nakita ang comparison sa kasalukuyang wallet.",
+      "notFound": "Hindi nakita ang comparison sa kasalukuyang pitaka.",
       "loadFailed": "Hindi na-load ang comparison: {{message}}",
       "unknown": "hindi alam na error",
       "emptyResponse": "Walang laman ang comparison response."
@@ -131,7 +131,7 @@
     "waiting": "Naghihintay ng progress…",
     "candles": "{{done}} / {{total}} candle",
     "candlesNoTotal": "{{done}} candle",
-    "equity": "Equity: {{value}}",
+    "equity": "Kapital: {{value}}",
     "signalsTrades": "{{signals}} signal / {{trades}} trade",
     "milestoneLine": "yugto {{label}}",
     "milestone": {
@@ -152,7 +152,7 @@
       "endDateAfterStart": "Dapat mas huli ang end date kaysa sa start date"
     },
     "form": {
-      "strategyLabel": "Estratehiya",
+      "strategyLabel": "Strategy",
       "strategyPlaceholder": "— Pumili ng strategy —",
       "strategyLoading": "Nilo-load ang mga strategy…",
       "strategyError": "Hindi na-load ang mga strategy",

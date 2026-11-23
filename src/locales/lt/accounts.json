@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Tiesioginiai biržos duomenys.",
-    "simulated": "Popierinės prekybos skaičiai — ne tikri likučiai.",
+    "simulated": "Demonstracinės prekybos skaičiai — ne tikri likučiai.",
     "stale": "Paskutinė žinoma momentinė kopija; langas baigėsi.",
     "clockError": "Laiko žyma nesutampa su serveriu.",
     "corrupt": "Momentinės kopijos nepavyko patvirtinti.",
@@ -88,7 +88,7 @@
     },
     "method": {
       "futuresPosition": "Ateities sandorių pozicijos",
-      "spotExecutionReplay": "Spot vykdymo pakartojimas",
+      "spotExecutionReplay": "Neatidėliotinų sandorių vykdymo pakartojimas",
       "marginLedgerReplay": "Maržos didžiosios knygos pakartojimas",
       "unclassified": "Neklasifikuota",
       "notAssigned": "Metodas nepriskirtas",
@@ -110,12 +110,12 @@
       "action": "Klasifikuoti",
       "title": "Klasifikuoti suderinimo metodą",
       "intro": "Pasirinkite, kaip ši biržos sąskaita suderinama su patikimais biržos duomenimis. Tai faktinis teiginys apie sąskaitą, o ne pageidavimas.",
-      "guidance": "Pasirinkite metodą, atitinkantį faktinį sąskaitos veikimą biržoje: grynųjų pinigų (spot) sąskaitose už sandorius atsiskaitoma tik iš piniginių lėšų likučių, o maržos sąskaitose galima skolintis už užstatą. Jei tiksliai nežinote, kaip veikia sąskaita, palikite ją neklasifikuotą.",
+      "guidance": "Pasirinkite metodą, atitinkantį faktinį sąskaitos veikimą biržoje: grynųjų pinigų (neatidėliotinų sandorių) sąskaitose už sandorius atsiskaitoma tik iš piniginių lėšų likučių, o maržos sąskaitose galima skolintis už užstatą. Jei tiksliai nežinote, kaip veikia sąskaita, palikite ją neklasifikuotą.",
       "immutabilityWarning": "Ši klasifikacija yra nuolatinė. Nustačius jos negalima pakeisti ar pašalinti.",
       "acknowledge": "Suprantu, kad ši klasifikacija yra nuolatinė ir atitinka faktinį šios sąskaitos veikimą.",
       "methodDescription": {
         "futuresPosition": "Suderina atviras išvestinių finansinių priemonių pozicijas su patikimais biržos ateities sandorių pozicijų duomenimis.",
-        "spotExecutionReplay": "Pakartoja spot sandorių vykdymus ir palygina juos su piniginių lėšų likučiais. Skirta tik grynųjų pinigų sąskaitoms, kuriose niekada neprekiaujama naudojant maržą.",
+        "spotExecutionReplay": "Pakartoja neatidėliotinų sandorių vykdymus ir palygina juos su piniginių lėšų likučiais. Skirta tik grynųjų pinigų sąskaitoms, kuriose niekada neprekiaujama naudojant maržą.",
         "marginLedgerReplay": "Pakartoja biržos maržos didžiąją knygą. Skirta sąskaitoms, kuriose prekiaujama naudojant maržą arba skolinamasi už užstatą."
       },
       "credentialLoading": "Įkeliamas kredencialas…",

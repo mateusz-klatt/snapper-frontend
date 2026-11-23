@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} t {{minutes}} min",
     "uptimeDays": "{{days}} pv {{hours}} t",
-    "backtestName": "Historiatesti {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Ei saatavilla",
     "uptimeLabel": "Käyntiaika",
     "exitCode": "Poistumiskoodi: {{code}}",
     "service": "palvelu",
-    "backtest": "historiatesti"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Tietokannan tilastot",

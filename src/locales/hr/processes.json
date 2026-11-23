@@ -68,7 +68,7 @@
     "threadDescription": "Pokreće se kao ugrađeni zadatak unutar web poslužitelja. Brže pokretanje, dijeljena memorija.",
     "processName": "Procesni način",
     "processDescription": "Pokreće se kao zaseban Python proces. Izolirano, otpornije na kvarove, s detaljnim nadzorom.",
-    "cancel": "Odustani",
+    "cancel": "Otkaži",
     "start": "Pokreni {{name}}",
     "threadAriaLabel": "Thread način",
     "processAriaLabel": "Procesni način"

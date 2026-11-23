@@ -104,7 +104,7 @@
     "chooseWalletPlaceholder": "Elija una cartera...",
     "selectWalletPlaceholder": "Seleccionar cartera...",
     "walletLabel": "Cartera",
-    "paperAnnotation": " (papel)",
+    "paperAnnotation": " (simulado)",
     "unknownError": "Error desconocido",
     "dash": "-",
     "readOnly": "Acceso de solo lectura — los cambios están deshabilitados."
@@ -232,10 +232,10 @@
         "instrumentPublicId": "ID público del instrumento",
         "underlyingPlaceholder": "p. ej. BTC",
         "instrumentPlaceholder": "p. ej. BTC-USD-PERP",
-        "exchange": "Bolsa",
-        "exchangePlaceholder": "Seleccionar bolsa...",
+        "exchange": "Plataforma de intercambio",
+        "exchangePlaceholder": "Seleccionar plataforma de intercambio...",
         "instrumentSelectPlaceholder": "Seleccionar instrumento...",
-        "selectExchangeFirst": "Selecciona primero una bolsa",
+        "selectExchangeFirst": "Selecciona primero una plataforma de intercambio",
         "note": "Nota (opcional)",
         "notePlaceholder": "Nota opcional"
       },
@@ -352,11 +352,11 @@
         "api_key_secret": "Clave API + Secreto",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "Papel"
+        "paper": "Simulado"
       },
       "validation": {
         "walletRequired": "La cartera es obligatoria",
-        "exchangeRequired": "El exchange es obligatorio",
+        "exchangeRequired": "La plataforma de intercambio es obligatoria",
         "fieldRequired": "{{field}} es obligatorio"
       },
       "actions": {
@@ -364,7 +364,7 @@
       },
       "toast": {
         "created": "Credencial creada",
-        "conflictError": "Conflicto: esta cartera ya tiene una credencial activa para este exchange",
+        "conflictError": "Conflicto: esta cartera ya tiene una credencial activa para esta plataforma de intercambio",
         "createError": "Error al crear la credencial"
       }
     },

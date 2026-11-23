@@ -11,7 +11,7 @@
     "cancelled": "Dibatalkan"
   },
   "list": {
-    "title": "Ujian semula",
+    "title": "Backtest",
     "actions": {
       "cancel": "Batal",
       "rerun": "Jalankan semula",

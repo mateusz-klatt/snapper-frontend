@@ -13,7 +13,7 @@
   },
   "unavailable": {
     "title": "Áreiðanleg reikningsgögn eru ekki tiltæk",
-    "message": "Ekki tókst að hlaða stöðu kauphallarreikningsins. Reikningurinn er ekki tómur; gögnin eru einfaldlega ekki tiltæk sem stendur."
+    "message": "Ekki tókst að hlaða stöðu vettvangsreikningsins. Reikningurinn er ekki tómur; gögnin eru einfaldlega ekki tiltæk sem stendur."
   },
   "status": {
     "observed": "Í rauntíma",
@@ -28,9 +28,9 @@
   "statusTooltip": {
     "observed": "Rauntímagögn vettvangsins.",
     "simulated": "Sýndarviðskiptatölur — ekki raunverulegar inneignir.",
-    "stale": "Síðasta þekkta staða; gildistími rann út.",
+    "stale": "Síðasta þekkta skyndimynd; gildistími rann út.",
     "clockError": "Tímastimpill er í ósamræmi við þjón.",
-    "corrupt": "Vistun mistókst í staðfestingu.",
+    "corrupt": "Staðfesting á vistaðri skyndimynd mistókst.",
     "unsupported": "Þessi vettvangur gefur ekki upp reikningsstöðu.",
     "notApplicable": "Þessi hluti á ekki við vettvanginn.",
     "unknown": "Ekki var hægt að flokka stöðu."
@@ -54,7 +54,7 @@
     "side": "Hlið",
     "size": "Stærð",
     "entryPrice": "Inngangsverð",
-    "markPrice": "Markaðsverð",
+    "markPrice": "Viðmiðunarverð",
     "unrealizedPnl": "Óinnleystur H/T",
     "unrealizedFunding": "Fjármögnun"
   },

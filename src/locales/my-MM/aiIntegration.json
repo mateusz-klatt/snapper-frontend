@@ -17,7 +17,7 @@
       "label": "အညွှန်း",
       "username": "အသုံးပြုသူအမည်",
       "created": "ဖန်တီးချိန်",
-      "maxOpenOrders": "အများဆုံး open order",
+      "maxOpenOrders": "အများဆုံး ဖွင့်ထားသည့် အော်ဒါ",
       "maxDailyUsd": "နေ့စဉ် USD အများဆုံး",
       "status": "အခြေအနေ",
       "actions": "လုပ်ဆောင်ချက်များ"
@@ -49,10 +49,10 @@
     },
     "caps": {
       "heading": "Trading cap များ (အားလုံး optional)",
-      "maxOpenOrders": "အများဆုံး open order",
+      "maxOpenOrders": "အများဆုံး ဖွင့်ထားသည့် အော်ဒါ",
       "maxDailyNotionalUsd": "နေ့စဉ် notional USD အများဆုံး",
       "maxCancelsPerMinute": "တစ်မိနစ် cancel အများဆုံး",
-      "perInstrument": "Instrument တစ်ခုစီအတွက် max quantity (JSON)",
+      "perInstrument": "ကုန်သွယ်ပစ္စည်း တစ်ခုစီအတွက် max quantity (JSON)",
       "perInstrumentPlaceholder": "{\"instrument_public_id\": 5}",
       "default": "မူလသတ်မှတ်ချက်",
       "errorInvalidJson": "max_order_quantity_per_instrument သည် valid JSON ဖြစ်ရမည်",
@@ -63,10 +63,10 @@
       "heading": "ပြန်လည်သုံးသပ်ပြီး ဖန်တီးပါ",
       "rowLabel": "အညွှန်း",
       "rowOperator": "လုပ်ဆောင်သူ public_id",
-      "rowMaxOpenOrders": "အများဆုံး open order",
+      "rowMaxOpenOrders": "အများဆုံး ဖွင့်ထားသည့် အော်ဒါ",
       "rowMaxDailyNotional": "နေ့စဉ် notional USD အများဆုံး",
       "rowMaxCancelsPerMinute": "တစ်မိနစ် cancel အများဆုံး",
-      "rowPerInstrument": "Instrument တစ်ခုစီအတွက် max quantity",
+      "rowPerInstrument": "ကုန်သွယ်ပစ္စည်း တစ်ခုစီအတွက် max quantity",
       "operatorDefault": "(ခေါ်ဆိုသူ၏ primary operator)",
       "defaultValue": "(မူလသတ်မှတ်ချက်)"
     },
@@ -98,10 +98,10 @@
     "createdAt": "ဖန်တီးချိန်",
     "createdBy": "ဖန်တီးသူ (user public_id)",
     "publicId": "အများသုံး ID",
-    "maxOpenOrders": "အများဆုံး open order",
+    "maxOpenOrders": "အများဆုံး ဖွင့်ထားသည့် အော်ဒါ",
     "maxDailyNotionalUsd": "နေ့စဉ် notional USD အများဆုံး",
     "maxCancelsPerMinute": "တစ်မိနစ် cancel အများဆုံး",
-    "perInstrument": "Instrument တစ်ခုစီအတွက် max quantity",
+    "perInstrument": "ကုန်သွယ်ပစ္စည်း တစ်ခုစီအတွက် max quantity",
     "defaultValue": "(မူလသတ်မှတ်ချက်)",
     "editorPlaceholder": "(မူလသတ်မှတ်ချက်)",
     "toast": {
@@ -137,7 +137,7 @@
     "readOnlyGuarantee": "သင့်လက်ရှိလုပ်ပိုင်ခွင့်များအတွင်းသာ ဖတ်ရှုခွင့်ရှိပြီး ပြင်ဆင်ခွင့်မရှိပါ။ ဤချိတ်ဆက်ကိရိယာသည် အရောင်းအဝယ်အမှာစာများကို တင်ခြင်း၊ ပြောင်းလဲခြင်း သို့မဟုတ် ပယ်ဖျက်ခြင်း မပြုလုပ်နိုင်ပါ။",
     "scopesHeading": "တောင်းဆိုထားသော ဝင်ရောက်အသုံးပြုခွင့်",
     "scopes": {
-      "snapperRead": "သင့်ကိုယ်ပိုင်လုပ်ပိုင်ခွင့်များက ခွင့်ပြုသည့်အတိုင်းအတာအတွင်းသာ ဈေးကွက်အချက်အလက်၊ အရောင်းအဝယ်အမှာစာများ၊ လက်ရှိကိုင်ထားသော အရောင်းအဝယ်အနေအထားများနှင့် အချက်ပြမှုများကို ဖတ်ရှုပါ။",
+      "snapperRead": "သင့်ကိုယ်ပိုင်လုပ်ပိုင်ခွင့်များက ခွင့်ပြုသည့်အတိုင်းအတာအတွင်းသာ ဈေးကွက်အချက်အလက်၊ အရောင်းအဝယ်အမှာစာများ၊ လက်ရှိကိုင်ထားသော ပိုဇစ်ရှင်များနှင့် အချက်ပြမှုများကို ဖတ်ရှုပါ။",
       "offlineAccess": "သင့်အား ထပ်မံဝင်ရောက်ရန် မတောင်းဆိုဘဲ ချိတ်ဆက်ထားပါ။"
     },
     "unrecognizedScope": "မသိရှိသော လုပ်ပိုင်ခွင့်: {{scope}}",

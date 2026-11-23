@@ -10,8 +10,8 @@
   "alertType": {
     "critical_system_error": "Hitilafu ya mfumo",
     "margin_warning": "Onyo la dhamana",
-    "order_fill_full": "Agizo limetekelezwa",
-    "order_rejected": "Agizo limekataliwa",
+    "order_fill_full": "Oda imetekelezwa",
+    "order_rejected": "Oda imekataliwa",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
   },
   "argument": {
@@ -68,9 +68,9 @@
   "title": {
     "critical_system_error": "Mfumo umezorota: {{0}}",
     "margin_warning": "Onyo la dhamana",
-    "order_fill_full": "Agizo limetekelezwa",
-    "order_rejected": "Agizo limekataliwa",
-    "order_unknown": "Hali ya agizo haijulikani",
+    "order_fill_full": "Oda imetekelezwa",
+    "order_rejected": "Oda imekataliwa",
+    "order_unknown": "Hali ya oda haijulikani",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
   }
 }

@@ -44,7 +44,7 @@
     "price": "Hinta",
     "total": "Yhteensä",
     "executed": "Toteutettu",
-    "fees": "Kulut"
+    "fees": "Palkkiot"
   },
   "empty": {
     "ordersTitle": "Toimeksiantoja ei löytynyt",
@@ -72,8 +72,8 @@
       "size": "Koko",
       "price": "Hinta",
       "total": "Yhteensä",
-      "fee": "Kulu",
-      "feeAsset": "Kulun valuutta",
+      "fee": "Palkkio",
+      "feeAsset": "Palkkion valuutta",
       "executed": "Toteutettu"
     }
   },
@@ -98,8 +98,8 @@
       "sell": "Myynti"
     },
     "orderTypeOptions": {
-      "market": "Markkina",
-      "limit": "Limit-toimeksianto",
+      "market": "Markkinahintainen",
+      "limit": "Rajahintainen",
       "stop": "Stop-toimeksianto",
       "stopLimit": "Stop-limit-toimeksianto",
       "stop_limit": "Stop-limit-toimeksianto"

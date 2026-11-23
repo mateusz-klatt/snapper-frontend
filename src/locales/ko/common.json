@@ -38,7 +38,7 @@
       "ariaLabel": "활성 지갑",
       "placeholder": "지갑",
       "allWallets": "모든 지갑",
-      "optionPaper": "{{label}} (페이퍼)"
+      "optionPaper": "{{label}} (모의)"
     },
     "operatorPicker": {
       "ariaLabel": "활성 운영자",

@@ -65,7 +65,7 @@
     "runLabel": "실행 {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "지표",
-      "equityOverlay": "에쿼티 오버레이",
+      "equityOverlay": "계좌 순자산 오버레이",
       "trades": "거래",
       "signals": "시그널"
     },
@@ -131,7 +131,7 @@
     "waiting": "진행 상황 대기 중…",
     "candles": "캔들 {{done}} / {{total}}",
     "candlesNoTotal": "캔들 {{done}}개",
-    "equity": "에쿼티 {{value}}",
+    "equity": "계좌 순자산 {{value}}",
     "signalsTrades": "{{signals}} 시그널 / {{trades}} 거래",
     "milestoneLine": "마일스톤 {{label}}",
     "milestone": {

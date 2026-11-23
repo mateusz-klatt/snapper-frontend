@@ -1,17 +1,17 @@
 {
   "page": {
-    "title": "Aufträge & Ausführungen",
-    "newOrder": "Neuer Auftrag",
+    "title": "Orders & Ausführungen",
+    "newOrder": "Neue Order",
     "exportCsv": "CSV exportieren"
   },
   "tabs": {
-    "orders": "Aufträge ({{total}})",
+    "orders": "Orders ({{total}})",
     "executions": "Ausführungen ({{total}})"
   },
   "filters": {
     "byStatus": "Nach Status filtern:",
     "options": {
-      "all": "Alle Aufträge",
+      "all": "Alle Orders",
       "new": "Neu",
       "open": "Offen",
       "partiallyFilled": "Teilweise ausgeführt",
@@ -28,18 +28,18 @@
     "price": "Preis",
     "created": "Erstellt",
     "createdUnknown": "n. v.",
-    "orderId": "Auftrags-ID",
+    "orderId": "Order-ID",
     "leverage": "Hebel",
     "leverageValue": "{{leverage}}x",
     "reduceOnly": "NUR-REDUKTION",
     "cancel": "Stornieren",
     "cancelling": "Storniere…",
-    "cancelAriaLabel": "Auftrag {{orderId}} stornieren"
+    "cancelAriaLabel": "Order {{orderId}} stornieren"
   },
   "executionCard": {
-    "orderNumber": "Auftrag #{{orderId}}",
+    "orderNumber": "Order #{{orderId}}",
     "filled": "AUSGEFÜHRT",
-    "orderLabel": "Auftrag {{orderId}}",
+    "orderLabel": "Order {{orderId}}",
     "size": "Größe",
     "price": "Preis",
     "total": "Gesamt",
@@ -47,9 +47,9 @@
     "fees": "Gebühren"
   },
   "empty": {
-    "ordersTitle": "Keine Aufträge gefunden",
-    "ordersStartTrading": "Starten Sie den Handel, um hier Aufträge zu sehen",
-    "ordersFilterless": "Keine {{status}}-Aufträge",
+    "ordersTitle": "Keine Orders gefunden",
+    "ordersStartTrading": "Starten Sie den Handel, um hier Orders zu sehen",
+    "ordersFilterless": "Keine {{status}}-Orders",
     "executionsTitle": "Keine Ausführungen gefunden",
     "executionsMessage": "Trade-Ausführungen erscheinen hier"
   },
@@ -66,7 +66,7 @@
       "created": "Erstellt"
     },
     "executions": {
-      "orderId": "Auftrags-ID",
+      "orderId": "Order-ID",
       "instrument": "Instrument",
       "side": "Seite",
       "size": "Größe",
@@ -78,18 +78,18 @@
     }
   },
   "newOrderModal": {
-    "titleEdit": "Neuer manueller Auftrag",
-    "titleConfirm": "Auftrag bestätigen",
+    "titleEdit": "Neue manuelle Order",
+    "titleConfirm": "Order bestätigen",
     "fields": {
       "exchange": "Börse",
       "instrument": "Instrument",
       "side": "Seite",
-      "orderType": "Auftragstyp",
+      "orderType": "Ordertyp",
       "quantity": "Menge",
       "price": "Preis",
       "stopPrice": "Stop-Preis",
       "mode": "Modus",
-      "wallet": "Geldbörse",
+      "wallet": "Wallet",
       "type": "Typ",
       "postOnly": "Nur Maker"
     },
@@ -98,7 +98,7 @@
       "sell": "Verkauf"
     },
     "orderTypeOptions": {
-      "market": "Markt",
+      "market": "Market-Order",
       "limit": "Limit",
       "stop": "Stop",
       "stopLimit": "Stop-Limit",
@@ -109,7 +109,7 @@
       "paper": "Simulation"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — nur Marktdaten",
-    "walletPaperSuffix": "{{label}} (Paper)",
+    "walletPaperSuffix": "{{label}} (Simulation)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",
@@ -117,24 +117,24 @@
     },
     "buttons": {
       "cancel": "Abbrechen",
-      "reviewOrder": "Auftrag prüfen",
+      "reviewOrder": "Order prüfen",
       "back": "Zurück",
-      "confirmOrder": "Auftrag bestätigen",
+      "confirmOrder": "Order bestätigen",
       "submitting": "Wird gesendet..."
     },
     "errors": {
       "missingRequired": "Alle Pflichtfelder müssen ausgefüllt sein",
       "quantityPositive": "Menge muss eine positive Zahl sein",
-      "priceRequired": "Preis ist für diesen Auftragstyp erforderlich",
+      "priceRequired": "Preis ist für diesen Ordertyp erforderlich",
       "pricePositive": "Preis muss eine positive Zahl sein",
-      "stopPriceRequired": "Stop-Preis ist für diesen Auftragstyp erforderlich",
+      "stopPriceRequired": "Stop-Preis ist für diesen Ordertyp erforderlich",
       "stopPricePositive": "Stop-Preis muss eine positive Zahl sein",
-      "createFailed": "Auftragserstellung fehlgeschlagen"
+      "createFailed": "Ordererstellung fehlgeschlagen"
     },
     "errorCodes": {
-      "instrumentMarketDataOnly": "Dieses Instrument dient nur zur Beobachtung — platzieren Sie Aufträge auf einem ausführungsfähigen Instrument.",
+      "instrumentMarketDataOnly": "Dieses Instrument dient nur zur Beobachtung — platzieren Sie Orders auf einem ausführungsfähigen Instrument.",
       "unknownInstrument": "Dieses Instrument wird nicht erkannt. Liste neu laden und erneut versuchen.",
-      "capsViolation": "Dieser Auftrag würde die Sicherheitslimits Ihres Kontos überschreiten. Prüfen Sie Ihre Risikoeinstellungen und versuchen Sie es erneut."
+      "capsViolation": "Diese Order würde die Sicherheitslimits Ihres Kontos überschreiten. Prüfen Sie Ihre Risikoeinstellungen und versuchen Sie es erneut."
     }
   }
 }

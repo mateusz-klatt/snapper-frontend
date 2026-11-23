@@ -6,8 +6,8 @@
   "sections": {
     "longRunning": "Processi a esecuzione prolungata",
     "executorTemplates": "Template degli executor",
-    "executorTemplatesHint": "La modifica della configurazione del template influisce su tutti i portafogli di questo exchange dopo il riavvio. I template sono solo configurazione — avvia l'istanza per portafoglio qui sotto per eseguire un executor.",
-    "walletInstances": "Istanze portafoglio",
+    "executorTemplatesHint": "La modifica della configurazione del template influisce su tutti i wallet di questo exchange dopo il riavvio. I template sono solo configurazione — avvia l'istanza per wallet qui sotto per eseguire un executor.",
+    "walletInstances": "Istanze wallet",
     "taskProcesses": "Processi task"
   },
   "card": {
@@ -31,7 +31,7 @@
       "healthy": "integro"
     },
     "detail": {
-      "wallet": "Portafoglio",
+      "wallet": "Wallet",
       "template": "Modello",
       "last_run": "Ultima esecuzione",
       "unknownWallet": "sconosciuto"

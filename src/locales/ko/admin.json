@@ -7,7 +7,7 @@
     "title": "역할 권한",
     "viewer": {
       "label": "뷰어",
-      "description": "계정, 지갑과 포트폴리오, 신호, AI 결정, 손익, 백테스트, 전략, 프로세스 및 시스템 상태에 대한 운영자 수준의 전체 읽기 전용 가시성입니다. 운영 작업은 수행할 수 없습니다."
+      "description": "계정, 지갑과 포트폴리오, 시그널, AI 결정, 손익, 백테스트, 전략, 프로세스 및 시스템 상태에 대한 운영자 수준의 전체 읽기 전용 가시성입니다. 운영 작업은 수행할 수 없습니다."
     },
     "operator": {
       "label": "운영자",
@@ -104,7 +104,7 @@
     "chooseWalletPlaceholder": "지갑 선택...",
     "selectWalletPlaceholder": "지갑 선택...",
     "walletLabel": "지갑",
-    "paperAnnotation": " (페이퍼)",
+    "paperAnnotation": " (모의)",
     "unknownError": "알 수 없는 오류",
     "dash": "-",
     "readOnly": "읽기 전용 접근 — 변경이 비활성화되어 있습니다."
@@ -352,7 +352,7 @@
         "api_key_secret": "API 키 + Secret",
         "rsa_pem": "RSA PEM",
         "oauth": "OAuth",
-        "paper": "페이퍼"
+        "paper": "모의"
       },
       "validation": {
         "walletRequired": "지갑은 필수입니다",

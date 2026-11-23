@@ -109,7 +109,7 @@
       "paper": "Demo"
     },
     "instrumentMarketDataOnlySuffix": "{{symbol}} — kun markedsdata",
-    "walletPaperSuffix": "{{label}} (papir)",
+    "walletPaperSuffix": "{{label}} (demo)",
     "placeholders": {
       "quantity": "0.00",
       "price": "0.00",

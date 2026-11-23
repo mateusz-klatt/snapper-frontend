@@ -22,9 +22,9 @@
     "startTitle": "I-start ang {{name}}",
     "startMessage": "Ista-start nito ang {{name}} strategy. Maaari itong magsimula ng live trading operations.",
     "stopTitle": "I-stop ang {{name}}",
-    "stopMessage": "Ihihinto nito ang {{name}} strategy. Hindi awtomatikong isasara ang active positions.",
+    "stopMessage": "Ihihinto nito ang {{name}} strategy. Hindi awtomatikong isasara ang active posisyon.",
     "restartTitle": "I-restart ang {{name}}",
-    "restartMessage": "Ihihinto at ire-restart nito ang {{name}} strategy. Hindi awtomatikong isasara ang active positions."
+    "restartMessage": "Ihihinto at ire-restart nito ang {{name}} strategy. Hindi awtomatikong isasara ang active posisyon."
   },
   "toast": {
     "saved": "Na-save ang strategy {{name}}",
@@ -43,7 +43,7 @@
     "restartFailed": "Hindi na-restart ang strategy: {{message}}"
   },
   "card": {
-    "ariaLabel": "Estratehiya: {{name}}",
+    "ariaLabel": "Strategy: {{name}}",
     "modeLabel": "Paraan: {{mode}}",
     "autostartEnabled": "Autostart: naka-enable",
     "autostartDisabled": "Autostart: naka-disable",
@@ -90,8 +90,8 @@
       "warning": "BABALA",
       "error": "MAY ERROR"
     },
-    "backtest": "Pagsubok sa nakaraang datos",
-    "backtestAriaLabel": "Subukan ang estratehiyang {{name}} gamit ang nakaraang datos",
+    "backtest": "Backtest",
+    "backtestAriaLabel": "I-backtest ang strategy na {{name}}",
     "managedRemotely": "Pinamamahalaan ng {{coordinator}}",
     "remoteCoordinatorUnknown": "ibang container",
     "restart": "I-restart",
@@ -131,20 +131,20 @@
     "operatorLabel": "Tagapagpatakbo",
     "operatorPlaceholder": "Pumili ng operator",
     "walletLabel": "Pitaka",
-    "walletPlaceholder": "Pumili ng wallet",
+    "walletPlaceholder": "Pumili ng pitaka",
     "paperAnnotation": " (papel)",
     "refUserLabel": "May-ari ng strategy (user)",
     "refOperatorLabel": "Reference ng operator",
-    "refWalletLabel": "Reference ng wallet",
+    "refWalletLabel": "Reference ng pitaka",
     "referencePlaceholder": "Piliin",
     "scopeHelp": "Nire-resolve ang may-ari gamit ang username at sine-scope-check laban sa napiling operator kapag inilulunsad ang strategy.",
     "noOperatorsWarning": "Wala pang operator. Gumawa ng operator at scope grant bago maglunsad ng scoped strategy."
   },
   "editScopeModal": {
     "title": "I-edit ang saklaw ng strategy",
-    "subtitle": "I-retarget ang “{{name}}” — operator, wallet, at reviewer. Ilalapat ang mga pagbabago sa susunod na restart.",
+    "subtitle": "I-retarget ang “{{name}}” — operator, pitaka, at reviewer. Ilalapat ang mga pagbabago sa susunod na restart.",
     "restartRequiredBanner": "Na-save ang saklaw. I-restart ang strategy para magkabisa ang bagong saklaw.",
-    "help": "Bina-validate ang mga pagbabago sa saklaw kapag ni-restart ang strategy (membership sa operator, wallet grant, output coverage).",
+    "help": "Bina-validate ang mga pagbabago sa saklaw kapag ni-restart ang strategy (membership sa operator, grant sa pitaka, output coverage).",
     "saveError": "Nabigong i-save ang saklaw: {{message}}",
     "save": "I-save ang saklaw",
     "saving": "Sine-save…",

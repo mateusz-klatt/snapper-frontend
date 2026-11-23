@@ -31,7 +31,7 @@
       "healthy": "gesund"
     },
     "detail": {
-      "wallet": "Geldbörse",
+      "wallet": "Wallet",
       "template": "Vorlage",
       "last_run": "Letzter Lauf",
       "unknownWallet": "unbekannt"

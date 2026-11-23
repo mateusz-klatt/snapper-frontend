@@ -99,11 +99,11 @@
   },
   "common": {
     "cancel": "Annuleren",
-    "selectWallet": "Portefeuille selecteren",
-    "selectAWallet": "Selecteer een portefeuille",
-    "chooseWalletPlaceholder": "Kies een portefeuille...",
-    "selectWalletPlaceholder": "Selecteer portefeuille...",
-    "walletLabel": "Portefeuille",
+    "selectWallet": "Wallet selecteren",
+    "selectAWallet": "Selecteer een wallet",
+    "chooseWalletPlaceholder": "Kies een wallet...",
+    "selectWalletPlaceholder": "Selecteer wallet...",
+    "walletLabel": "Wallet",
     "paperAnnotation": " (simulatie)",
     "unknownError": "Onbekende fout",
     "dash": "-",
@@ -205,7 +205,7 @@
       "title": "Scope grants",
       "countLabel": "Toegangstoekenningen: {{count}}",
       "createGrant": "Grant aanmaken",
-      "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende scope grants te bekijken.",
+      "selectWalletPrompt": "Kies hierboven een wallet om de bijbehorende scope grants te bekijken.",
       "columns": {
         "operator": "Operator",
         "scope": "Bereik",
@@ -215,18 +215,18 @@
       },
       "empty": {
         "noGrants": "Geen grants gevonden",
-        "noGrantsHint": "Deze portefeuille heeft geen actieve scope grants."
+        "noGrantsHint": "Deze wallet heeft geen actieve scope grants."
       },
       "errorLoading": "Fout bij laden grants: {{message}}",
       "handover": "Overdracht",
-      "allWallets": "Alle portefeuilles"
+      "allWallets": "Alle wallets"
     },
     "form": {
       "title": "Scope grant aanmaken",
       "fields": {
         "operator": "Operator",
         "operatorPlaceholder": "Selecteer operator...",
-        "wallet": "Portefeuille",
+        "wallet": "Wallet",
         "scopeKind": "Soort scope",
         "underlyingPublicId": "Publieke ID van de onderliggende waarde",
         "instrumentPublicId": "Publieke ID van het instrument",
@@ -245,7 +245,7 @@
       },
       "validation": {
         "operatorRequired": "Operator is verplicht",
-        "walletRequired": "Portefeuille is verplicht",
+        "walletRequired": "Wallet is verplicht",
         "targetRequired": "Doel-ID is verplicht"
       },
       "actions": {
@@ -262,7 +262,7 @@
       "fields": {
         "currentHolder": "Huidige houder",
         "scope": "Bereik",
-        "wallet": "Portefeuille",
+        "wallet": "Wallet",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "Overdragen aan operator",
         "transferToPlaceholder": "Selecteer doeloperator...",
@@ -307,13 +307,13 @@
   "credentials": {
     "accessDenied": {
       "title": "Toegang geweigerd",
-      "message": "U hebt geen rechten om portefeuillecredentials te beheren. Neem contact op met uw systeembeheerder."
+      "message": "U hebt geen rechten om walletcredentials te beheren. Neem contact op met uw systeembeheerder."
     },
     "list": {
-      "title": "Portefeuillecredentials",
+      "title": "Walletcredentials",
       "countLabel": "API-/inloggegevens: {{count}}",
       "addCredential": "Credential toevoegen",
-      "selectWalletPrompt": "Kies hierboven een portefeuille om de bijbehorende credentials te bekijken.",
+      "selectWalletPrompt": "Kies hierboven een wallet om de bijbehorende credentials te bekijken.",
       "columns": {
         "exchange": "Beurs",
         "type": "Type",
@@ -323,7 +323,7 @@
       },
       "empty": {
         "noCredentials": "Geen credentials gevonden",
-        "noCredentialsHint": "Deze portefeuille heeft geen actieve credentials."
+        "noCredentialsHint": "Deze wallet heeft geen actieve credentials."
       },
       "errorLoading": "Fout bij laden credentials: {{message}}",
       "rotate": "Roteren"
@@ -331,7 +331,7 @@
     "form": {
       "title": "Credential toevoegen",
       "fields": {
-        "wallet": "Portefeuille",
+        "wallet": "Wallet",
         "exchange": "Beurs",
         "exchangePlaceholder": "bijv. kraken",
         "credentialType": "Soort credential",
@@ -355,7 +355,7 @@
         "paper": "Simulatie"
       },
       "validation": {
-        "walletRequired": "Portefeuille is verplicht",
+        "walletRequired": "Wallet is verplicht",
         "exchangeRequired": "Beurs is verplicht",
         "fieldRequired": "{{field}} is verplicht"
       },
@@ -364,7 +364,7 @@
       },
       "toast": {
         "created": "Credential aangemaakt",
-        "conflictError": "Conflict: deze portefeuille heeft al een actieve credential voor deze beurs",
+        "conflictError": "Conflict: deze wallet heeft al een actieve credential voor deze beurs",
         "createError": "Fout bij aanmaken credential"
       }
     },

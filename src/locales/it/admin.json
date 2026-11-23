@@ -38,7 +38,7 @@
     },
     "auditor": {
       "label": "Revisore",
-      "description": "Accesso amministratore in sola lettura a tutti i portafogli, utenti e impostazioni. Non consente modifiche ai dati né operazioni di trading."
+      "description": "Accesso amministratore in sola lettura a tutti i wallet, utenti e impostazioni. Non consente modifiche ai dati né operazioni di trading."
     }
   },
   "deskMemberships": {
@@ -50,7 +50,7 @@
     "subtitle": "Aggiungi osservatori attivi a un desk o rimuovi il loro accesso corrente.",
     "memberCount": "Membri: {{count}}",
     "desk": {
-      "label": "Unità di negoziazione",
+      "label": "Desk",
       "placeholder": "Seleziona un desk..."
     },
     "add": {
@@ -99,11 +99,11 @@
   },
   "common": {
     "cancel": "Annulla",
-    "selectWallet": "Seleziona portafoglio",
-    "selectAWallet": "Seleziona un portafoglio",
-    "chooseWalletPlaceholder": "Scegli un portafoglio...",
-    "selectWalletPlaceholder": "Seleziona portafoglio...",
-    "walletLabel": "Portafoglio",
+    "selectWallet": "Seleziona wallet",
+    "selectAWallet": "Seleziona un wallet",
+    "chooseWalletPlaceholder": "Scegli un wallet...",
+    "selectWalletPlaceholder": "Seleziona wallet...",
+    "walletLabel": "Wallet",
     "paperAnnotation": " (demo)",
     "unknownError": "Errore sconosciuto",
     "dash": "-",
@@ -205,7 +205,7 @@
       "title": "Grant degli scope",
       "countLabel": "Autorizzazioni di accesso: {{count}}",
       "createGrant": "Crea grant",
-      "selectWalletPrompt": "Scegli un portafoglio sopra per visualizzare i suoi grant degli scope.",
+      "selectWalletPrompt": "Scegli un wallet sopra per visualizzare i suoi grant degli scope.",
       "columns": {
         "operator": "Operatore",
         "scope": "Ambito",
@@ -215,27 +215,27 @@
       },
       "empty": {
         "noGrants": "Nessun grant trovato",
-        "noGrantsHint": "Questo portafoglio non ha grant degli scope attivi."
+        "noGrantsHint": "Questo wallet non ha grant degli scope attivi."
       },
       "errorLoading": "Errore nel caricamento dei grant: {{message}}",
       "handover": "Trasferisci",
-      "allWallets": "Tutti i portafogli"
+      "allWallets": "Tutti i wallet"
     },
     "form": {
       "title": "Crea grant di scope",
       "fields": {
         "operator": "Operatore",
         "operatorPlaceholder": "Seleziona operatore...",
-        "wallet": "Portafoglio",
+        "wallet": "Wallet",
         "scopeKind": "Tipo di scope",
         "underlyingPublicId": "Public ID del sottostante",
         "instrumentPublicId": "Public ID dello strumento",
         "underlyingPlaceholder": "es. BTC",
         "instrumentPlaceholder": "es. BTC-USD-PERP",
-        "exchange": "Borsa",
-        "exchangePlaceholder": "Seleziona borsa...",
+        "exchange": "Exchange",
+        "exchangePlaceholder": "Seleziona exchange...",
         "instrumentSelectPlaceholder": "Seleziona strumento...",
-        "selectExchangeFirst": "Seleziona prima una borsa",
+        "selectExchangeFirst": "Seleziona prima un exchange",
         "note": "Nota (opzionale)",
         "notePlaceholder": "Nota opzionale"
       },
@@ -245,7 +245,7 @@
       },
       "validation": {
         "operatorRequired": "L'operatore è obbligatorio",
-        "walletRequired": "Il portafoglio è obbligatorio",
+        "walletRequired": "Il wallet è obbligatorio",
         "targetRequired": "L'ID del target è obbligatorio"
       },
       "actions": {
@@ -262,7 +262,7 @@
       "fields": {
         "currentHolder": "Titolare attuale",
         "scope": "Ambito",
-        "wallet": "Portafoglio",
+        "wallet": "Wallet",
         "scopeValue": "{{kind}}: {{target}}",
         "transferTo": "Trasferisci all'operatore",
         "transferToPlaceholder": "Seleziona operatore di destinazione...",
@@ -307,15 +307,15 @@
   "credentials": {
     "accessDenied": {
       "title": "Accesso negato",
-      "message": "Non hai i permessi per gestire le credenziali del portafoglio. Contatta l'amministratore di sistema."
+      "message": "Non hai i permessi per gestire le credenziali del wallet. Contatta l'amministratore di sistema."
     },
     "list": {
-      "title": "Credenziali del portafoglio",
+      "title": "Credenziali del wallet",
       "countLabel": "Credenziali: {{count}}",
       "addCredential": "Aggiungi credenziale",
-      "selectWalletPrompt": "Scegli un portafoglio sopra per visualizzare le sue credenziali.",
+      "selectWalletPrompt": "Scegli un wallet sopra per visualizzare le sue credenziali.",
       "columns": {
-        "exchange": "Piattaforma di scambio",
+        "exchange": "Exchange",
         "type": "Tipo",
         "label": "Etichetta",
         "createdAt": "Creato il",
@@ -323,7 +323,7 @@
       },
       "empty": {
         "noCredentials": "Nessuna credenziale trovata",
-        "noCredentialsHint": "Questo portafoglio non ha credenziali attive."
+        "noCredentialsHint": "Questo wallet non ha credenziali attive."
       },
       "errorLoading": "Errore nel caricamento delle credenziali: {{message}}",
       "rotate": "Ruota"
@@ -331,8 +331,8 @@
     "form": {
       "title": "Aggiungi credenziale",
       "fields": {
-        "wallet": "Portafoglio",
-        "exchange": "Piattaforma di scambio",
+        "wallet": "Wallet",
+        "exchange": "Exchange",
         "exchangePlaceholder": "es. kraken",
         "credentialType": "Tipo di credenziale",
         "label": "Etichetta (opzionale)",
@@ -355,7 +355,7 @@
         "paper": "Demo"
       },
       "validation": {
-        "walletRequired": "Il portafoglio è obbligatorio",
+        "walletRequired": "Il wallet è obbligatorio",
         "exchangeRequired": "L'exchange è obbligatorio",
         "fieldRequired": "{{field}} è obbligatorio"
       },
@@ -364,14 +364,14 @@
       },
       "toast": {
         "created": "Credenziale creata",
-        "conflictError": "Conflitto: questo portafoglio ha già una credenziale attiva per questo exchange",
+        "conflictError": "Conflitto: questo wallet ha già una credenziale attiva per questo exchange",
         "createError": "Errore nella creazione della credenziale"
       }
     },
     "rotate": {
       "title": "Ruota credenziale",
       "fields": {
-        "exchange": "Piattaforma di scambio",
+        "exchange": "Exchange",
         "type": "Tipo",
         "label": "Etichetta",
         "newLabel": "Nuova etichetta (opzionale)",

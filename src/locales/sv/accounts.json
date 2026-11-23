@@ -27,7 +27,7 @@
   },
   "statusTooltip": {
     "observed": "Tillförlitliga börsdata i realtid, registrerade inom giltighetsperioden.",
-    "simulated": "Pappershandelssiffror — inte verkliga börssaldon.",
+    "simulated": "Siffror från simulerad handel — inte verkliga börssaldon.",
     "stale": "Senast kända ögonblicksbild; auktoritetsfönstret har löpt ut.",
     "clockError": "Observationstidsstämpel stämmer inte med serverns klocka.",
     "corrupt": "Sparad ögonblicksbild klarade inte valideringen.",
@@ -54,7 +54,7 @@
     "side": "Sida",
     "size": "Storlek",
     "entryPrice": "Ingångspris",
-    "markPrice": "Referenspris",
+    "markPrice": "Markpris",
     "unrealizedPnl": "Orealiserad P&L",
     "unrealizedFunding": "Finansiering"
   },
@@ -64,7 +64,7 @@
   },
   "mode": {
     "live": "Verklig",
-    "paper": "Demo"
+    "paper": "Simulerat"
   },
   "meta": {
     "balancesObserved": "Saldon observerade {{timestamp}}",

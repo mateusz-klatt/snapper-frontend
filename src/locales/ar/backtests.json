@@ -65,7 +65,7 @@
     "runLabel": "التشغيل {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "المقاييس",
-      "equityOverlay": "تراكب equity",
+      "equityOverlay": "تراكب حقوق الملكية",
       "trades": "الصفقات",
       "signals": "الإشارات"
     },

@@ -28,7 +28,7 @@
   "statusTooltip": {
     "observed": "Adevăr bursier în timp real.",
     "simulated": "Valori din tranzacționare simulată — nu sunt solduri reale ale bursei.",
-    "stale": "Ultima captură cunoscută; perioada de valabilitate a expirat sau interogarea s-a oprit.",
+    "stale": "Ultimul instantaneu cunoscut; perioada de valabilitate a expirat sau interogarea s-a oprit.",
     "clockError": "Marcajul de timp este inconsecvent cu serverul.",
     "corrupt": "Instantaneul stocat a eșuat la validare.",
     "unsupported": "Această bursă nu raportează starea contului.",

@@ -65,7 +65,7 @@
     "runLabel": "Запуск {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Метрики",
-      "equityOverlay": "Накладання еквіті",
+      "equityOverlay": "Накладання власного капіталу",
       "trades": "Угоди",
       "signals": "Сигнали"
     },
@@ -131,7 +131,7 @@
     "waiting": "Очікування прогресу…",
     "candles": "{{done}} / {{total}} свічок",
     "candlesNoTotal": "{{done}} свічок",
-    "equity": "еквіті {{value}}",
+    "equity": "власний капітал {{value}}",
     "signalsTrades": "{{signals}} сигн. / {{trades}} угод",
     "milestoneLine": "етап {{label}}",
     "milestone": {

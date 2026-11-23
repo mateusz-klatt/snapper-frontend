@@ -33,13 +33,13 @@
     "uptimeMinutes": "{{minutes}} min",
     "uptimeHours": "{{hours}} h {{minutes}} min",
     "uptimeDays": "{{days}} d {{hours}} h",
-    "backtestName": "Test na historických datech {{id}}",
+    "backtestName": "Backtest {{id}}",
     "pidLabel": "PID",
     "pidNotAvailable": "Není k dispozici",
     "uptimeLabel": "Doba běhu",
     "exitCode": "Kód ukončení: {{code}}",
     "service": "služba",
-    "backtest": "test na historických datech"
+    "backtest": "backtest"
   },
   "dbStats": {
     "title": "Statistiky databáze",

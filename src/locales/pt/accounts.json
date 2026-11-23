@@ -64,7 +64,7 @@
   },
   "mode": {
     "live": "Real",
-    "paper": "Simulado"
+    "paper": "Simulação"
   },
   "meta": {
     "balancesObserved": "Saldos observados {{timestamp}}",
@@ -75,14 +75,14 @@
   "noValue": "Sem dados",
   "reconciliation": {
     "status": {
-      "reconciled": "Reconciliado",
+      "reconciled": "Conciliado",
       "driftDetected": "Desvio detetado",
       "openDrift": "Desvio detetado · aberto ({{count}})",
       "unclassified": "Não classificado — necessita de classificação",
-      "notReconciled": "Ainda não reconciliado",
+      "notReconciled": "Ainda não conciliado",
       "stale": "Desatualizado",
       "clockError": "Erro de relógio",
-      "reconciliationError": "Erro de reconciliação",
+      "reconciliationError": "Erro de conciliação",
       "unsupported": "Não suportado",
       "unverified": "Não verificado"
     },
@@ -95,31 +95,31 @@
       "unknown": "Método desconhecido"
     },
     "statusTooltip": {
-      "reconciled": "Método: {{method}}. As evidências oficiais de reconciliação coincidem.",
-      "driftDetected": "Método: {{method}}. As evidências oficiais de reconciliação detetaram uma discrepância.",
+      "reconciled": "Método: {{method}}. As evidências oficiais de conciliação coincidem.",
+      "driftDetected": "Método: {{method}}. As evidências oficiais de conciliação detetaram uma discrepância.",
       "openDrift": "Método: {{method}}. Ainda há um episódio de desvio em aberto. Quantidade de divergências completas consecutivas: {{count}}.",
-      "unclassified": "Método: {{method}}. A classificação do operador é necessária antes de executar a reconciliação.",
-      "notReconciled": "Método: {{method}}. As evidências de reconciliação ainda não estão completas.",
-      "stale": "Método: {{method}}. O veredito da reconciliação é demasiado antigo para ser fiável.",
-      "clockError": "Método: {{method}}. Os carimbos de data/hora de reconciliação entram em conflito com o relógio do servidor.",
-      "reconciliationError": "Método: {{method}}. A reconciliação não conseguiu produzir um veredito fiável.",
-      "unsupported": "Método: {{method}}. A reconciliação não é suportada para esta conta.",
-      "unverified": "Método: {{method}}. Este veredito não é oficial e não é considerado como reconciliado."
+      "unclassified": "Método: {{method}}. A classificação do operador é necessária antes de executar a conciliação.",
+      "notReconciled": "Método: {{method}}. As evidências de conciliação ainda não estão completas.",
+      "stale": "Método: {{method}}. O veredito da conciliação é demasiado antigo para ser fiável.",
+      "clockError": "Método: {{method}}. Os carimbos de data/hora de conciliação entram em conflito com o relógio do servidor.",
+      "reconciliationError": "Método: {{method}}. A conciliação não conseguiu produzir um veredito fiável.",
+      "unsupported": "Método: {{method}}. A conciliação não é suportada para esta conta.",
+      "unverified": "Método: {{method}}. Este veredito não é oficial e não é considerado como conciliado."
     },
     "classify": {
       "action": "Classificar",
-      "title": "Classificar método de reconciliação",
-      "intro": "Escolha como esta conta da corretora é reconciliada com os dados oficiais da corretora. Esta é uma declaração factual sobre a conta, não uma preferência.",
+      "title": "Classificar método de conciliação",
+      "intro": "Escolha como esta conta da corretora é conciliada com os dados oficiais da exchange. Esta é uma declaração factual sobre a conta, não uma preferência.",
       "guidance": "Escolha o método que corresponda à forma como a conta realmente opera na corretora: contas de caixa (spot) liquidam negociações apenas com saldos de caixa, enquanto contas de margem podem pedir empréstimos mediante garantia. Se não tiver a certeza de como a conta opera, deixe-a sem classificação.",
       "immutabilityWarning": "Esta classificação é permanente. Depois de definida, não pode ser alterada nem removida.",
       "acknowledge": "Compreendo que esta classificação é permanente e corresponde à forma como esta conta opera.",
       "methodDescription": {
-        "futuresPosition": "Reconcilia posições abertas em derivados com os dados oficiais de posições de futuros da corretora.",
+        "futuresPosition": "Concilia posições abertas em derivados com os dados oficiais de posições de futuros da corretora.",
         "spotExecutionReplay": "Repete execuções spot em relação aos saldos de caixa. Para contas exclusivamente de caixa que nunca negoceiam com margem.",
         "marginLedgerReplay": "Repete o livro-razão de margem da corretora. Para contas que negoceiam com margem ou pedem empréstimos mediante garantia."
       },
       "credentialLoading": "A carregar a credencial…",
-      "noCredential": "Não foi encontrada nenhuma credencial ativa de negociação real para esta conta. A reconciliação não pode ser classificada.",
+      "noCredential": "Não foi encontrada nenhuma credencial ativa de negociação real para esta conta. A conciliação não pode ser classificada.",
       "ambiguousCredential": "Várias credenciais de negociação real correspondem a esta conta. A classificação requer exatamente uma.",
       "confirm": "Classificar conta",
       "cancel": "Cancelar",

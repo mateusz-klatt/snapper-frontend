@@ -11,7 +11,7 @@
     "cancelled": "Annulé"
   },
   "list": {
-    "title": "Tests historiques",
+    "title": "Backtests",
     "actions": {
       "cancel": "Annuler",
       "rerun": "Relancer",
@@ -65,7 +65,7 @@
     "runLabel": "Exécution {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Métriques",
-      "equityOverlay": "Superposition d'equity",
+      "equityOverlay": "Superposition des fonds propres",
       "trades": "Transactions",
       "signals": "Signaux"
     },
@@ -74,7 +74,7 @@
       "manual": "manuel"
     },
     "errors": {
-      "notFound": "Comparaison introuvable dans le wallet courant.",
+      "notFound": "Comparaison introuvable dans le portefeuille courant.",
       "loadFailed": "Échec du chargement de la comparaison : {{message}}",
       "unknown": "erreur inconnue",
       "emptyResponse": "Réponse de comparaison vide."
@@ -131,7 +131,7 @@
     "waiting": "En attente de progression…",
     "candles": "{{done}} / {{total}} bougies",
     "candlesNoTotal": "{{done}} bougies",
-    "equity": "capital {{value}}",
+    "equity": "fonds propres {{value}}",
     "signalsTrades": "{{signals}} signaux / {{trades}} transactions",
     "milestoneLine": "jalon {{label}}",
     "milestone": {
@@ -159,8 +159,8 @@
       "instrumentLabel": "Instrument",
       "instrumentPlaceholder": "ex. BTC-USD",
       "instrumentHelp": "Identifiant public de l'instrument à backtester",
-      "exchangeLabel": "Exchange (source du flux)",
-      "exchangePlaceholder": "— Sélectionner un exchange —",
+      "exchangeLabel": "Plateforme d’échange (source du flux)",
+      "exchangePlaceholder": "— Sélectionner une plateforme d’échange —",
       "timeframeLabel": "Intervalle",
       "startDateLabel": "Date de début",
       "endDateLabel": "Date de fin",
@@ -170,9 +170,9 @@
       "executionModeLabel": "Mode d'exécution",
       "executionModeDirectDb": "DB directe",
       "executionModeZmqReplay": "Relecture ZMQ",
-      "targetExchangeLabel": "Exchange d'exécution cible",
-      "targetExchangeNone": "Aucun (exchange unique)",
-      "targetExchangeHelp": "Optionnel — pour les exécutions cross-asset ; laisser vide pour un exchange unique"
+      "targetExchangeLabel": "Plateforme d’échange d’exécution cible",
+      "targetExchangeNone": "Aucune (plateforme d’échange unique)",
+      "targetExchangeHelp": "Optionnel — pour les exécutions cross-asset ; laisser vide pour une plateforme d’échange unique"
     }
   }
 }

@@ -6,8 +6,8 @@
   "sections": {
     "longRunning": "Long-running na proseso",
     "executorTemplates": "Mga executor template",
-    "executorTemplatesHint": "Apektado ang lahat ng wallet sa exchange na ito kapag in-edit ang template config pagkatapos ng restart. Config-only ang templates — i-start ang per-wallet instance sa ibaba para patakbuhin ang executor.",
-    "walletInstances": "Mga wallet instance",
+    "executorTemplatesHint": "Apektado ang lahat ng pitaka sa exchange na ito kapag in-edit ang template config pagkatapos ng restart. Config-only ang templates — i-start ang instance para sa bawat pitaka sa ibaba para patakbuhin ang executor.",
+    "walletInstances": "Mga instance ng pitaka",
     "taskProcesses": "Mga task process"
   },
   "card": {

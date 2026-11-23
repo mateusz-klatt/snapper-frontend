@@ -3,10 +3,10 @@
     "title": "Datos de mercado"
   },
   "controls": {
-    "exchange": "Bolsa:",
+    "exchange": "Plataforma de intercambio:",
     "instrument": "Instrumento:",
     "timeframe": "Marco temporal:",
-    "selectExchange": "Seleccionar exchange",
+    "selectExchange": "Seleccionar plataforma de intercambio",
     "searchInstrument": "Buscar instrumento..."
   },
   "timeframes": {

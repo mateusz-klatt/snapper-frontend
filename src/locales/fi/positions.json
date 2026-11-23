@@ -109,7 +109,7 @@
     "equity": {
       "title": "Oman pääoman peittokuva",
       "seriesLabel": "Oma pääoma",
-      "seriesLabelSpotOnly": "Oma pääoma (spot-markkinapaikka)",
+      "seriesLabelSpotOnly": "Oma pääoma (spot-pörssi)",
       "latest": "Viimeisin: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Näin tietoja tulkitaan",
-        "spotOnly": "Vain spot-markkinapaikka — muiden markkinapaikkojen saldot eivät sisälly.",
+        "spotOnly": "Vain spot-pörssi — muiden pörssien saldot eivät sisälly.",
         "flowsUnadjusted": "Ulkoisia talletuksia ja nostoja ei ole vähennetty.",
         "restatedFrom": "Nämä luvut on muunnettu valuutasta {{from}} kunkin minuutin päätöskurssin mukaan, eikä niitä ole alun perin mitattu tässä valuutassa.",
         "pricedOn": "Hinnoiteltu {{plane}}-kurssin perusteella.",
@@ -189,7 +189,7 @@
       "title": "Viimeisimmät instrumenttikohtaiset vaikutukset",
       "instrument": "Instrumentti",
       "realized": "Realisoitunut P&L",
-      "fees": "Kulut",
+      "fees": "Palkkiot",
       "accrual": "Kertynyt rahoitus",
       "unrealized": "Realisoitumaton P&L",
       "net": "Netto-P&L",
@@ -239,10 +239,10 @@
     "confirmTitle": "Vahvista Bracket",
     "position": "Positio",
     "entryPrice": "Avaushinta",
-    "stopLossLabel": "Tappionrajaushinta",
-    "takeProfitLabel": "Voiton kotiutushinta",
-    "stopLoss": "Tappionrajaus",
-    "takeProfit": "Voiton kotiutus",
+    "stopLossLabel": "Stop-loss-hinta",
+    "takeProfitLabel": "Take-profit-hinta",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Alle {{price}}",
       "slShort": "Yli {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Liitä Trailing Stop — {{instrument}}",
-    "confirmTitle": "Vahvista Trailing Stop",
+    "title": "Liitä liukuva stop — {{instrument}}",
+    "confirmTitle": "Vahvista liukuva stop",
     "position": "Positio",
     "entryPrice": "Avaushinta",
     "trailingDistanceLabel": "Trailing-etäisyys (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "esim. 5.0",
       "minLockPct": "0 = aloita heti"
     },
-    "minLockWarning": "Trailing Stop aktivoituu vasta, kun hinta liikkuu {{minLockPct}} % eduksesi.",
+    "minLockWarning": "Liukuva stop aktivoituu vasta, kun hinta liikkuu {{minLockPct}} % eduksesi.",
     "buttons": {
       "cancel": "Peruuta",
       "review": "Tarkista",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Vähintään SL- tai TP-hinta vaaditaan",
-    "invalidSlPrice": "Virheellinen tappionrajaushinta",
-    "slPricePositive": "Tappionrajaushinnan on oltava positiivinen",
-    "invalidTpPrice": "Virheellinen voiton kotiutushinta",
-    "tpPricePositive": "Voiton kotiutushinnan on oltava positiivinen",
+    "invalidSlPrice": "Virheellinen stop-loss-hinta",
+    "slPricePositive": "Stop-loss-hinnan on oltava positiivinen",
+    "invalidTpPrice": "Virheellinen take-profit-hinta",
+    "tpPricePositive": "Take-profit-hinnan on oltava positiivinen",
     "slLongBelowEntry": "SL-hinnan on oltava alle avaushinnan ({{price}})",
     "tpLongAboveEntry": "TP-hinnan on oltava yli avaushinnan ({{price}})",
     "slShortAboveEntry": "SL-hinnan on oltava yli avaushinnan ({{price}})",

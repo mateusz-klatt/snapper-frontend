@@ -107,22 +107,22 @@
       "valuationCurrency": "Értékelési pénznem: {{currency}}"
     },
     "equity": {
-      "title": "Sajáttőke-átfedés",
-      "seriesLabel": "Sajáttőke",
-      "seriesLabelSpotOnly": "Sajáttőke (spot kereskedési hely)",
+      "title": "Saját tőke-átfedés",
+      "seriesLabel": "Saját tőke",
+      "seriesLabelSpotOnly": "Saját tőke (azonnali tőzsde)",
       "latest": "Legutóbbi: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
         "title": "Visszaesés",
         "current": "Aktuális visszaesés",
         "max": "Maximális visszaesés",
-        "definition": "A sajáttőke addigi csúcsához viszonyított arány.",
+        "definition": "A saját tőke addigi csúcsához viszonyított arány.",
         "flowsCaveat": "Nem pénzmozgásokkal korrigált kereskedési visszaesés.",
         "noValue": "—"
       },
       "honesty": {
         "title": "Az adatok értelmezése",
-        "spotOnly": "Csak a spot kereskedési hely — a más helyeken tartott egyenlegek nincsenek benne.",
+        "spotOnly": "Csak az azonnali tőzsde — a más tőzsdéken tartott egyenlegek nincsenek benne.",
         "flowsUnadjusted": "A külső befizetések és kifizetések nincsenek kiszűrve.",
         "restatedFrom": "Ezek az adatok {{from}} pénznemből vannak újraszámítva minden perc záró árfolyamán, nem pedig eredetileg ebben a pénznemben mintavételezve.",
         "pricedOn": "Árazás {{plane}} alapján.",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bracket megerősítése",
     "position": "Pozíció",
     "entryPrice": "Belépési ár",
-    "stopLossLabel": "Veszteségkorlátozó ár",
-    "takeProfitLabel": "Nyereségrealizáló ár",
-    "stopLoss": "Veszteségkorlátozás",
-    "takeProfit": "Nyereségrealizálás",
+    "stopLossLabel": "Stop-loss ár",
+    "takeProfitLabel": "Take-profit ár",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "{{price}} alatt",
       "slShort": "{{price}} felett",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Trailing Stop csatolása — {{instrument}}",
-    "confirmTitle": "Trailing Stop megerősítése",
+    "title": "Követő stop csatolása — {{instrument}}",
+    "confirmTitle": "Követő stop megerősítése",
     "position": "Pozíció",
     "entryPrice": "Belépési ár",
     "trailingDistanceLabel": "Követési távolság (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "pl. 5.0",
       "minLockPct": "0 = azonnali indítás"
     },
-    "minLockWarning": "A Trailing Stop nem aktiválódik, amíg az ár nem mozdul {{minLockPct}}%-kal kedvező irányba.",
+    "minLockWarning": "A követő stop nem aktiválódik, amíg az ár nem mozdul {{minLockPct}}%-kal kedvező irányba.",
     "buttons": {
       "cancel": "Mégse",
       "review": "Ellenőrzés",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Legalább egy SL vagy TP ár megadása kötelező",
-    "invalidSlPrice": "Érvénytelen veszteségkorlátozó ár",
-    "slPricePositive": "A veszteségkorlátozó árnak pozitívnak kell lennie",
-    "invalidTpPrice": "Érvénytelen nyereségrealizáló ár",
-    "tpPricePositive": "A nyereségrealizáló árnak pozitívnak kell lennie",
+    "invalidSlPrice": "Érvénytelen stop-loss ár",
+    "slPricePositive": "A stop-loss árnak pozitívnak kell lennie",
+    "invalidTpPrice": "Érvénytelen take-profit ár",
+    "tpPricePositive": "A take-profit árnak pozitívnak kell lennie",
     "slLongBelowEntry": "Az SL árnak a belépési ár alatt kell lennie ({{price}})",
     "tpLongAboveEntry": "A TP árnak a belépési ár felett kell lennie ({{price}})",
     "slShortAboveEntry": "Az SL árnak a belépési ár felett kell lennie ({{price}})",

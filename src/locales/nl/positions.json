@@ -41,8 +41,8 @@
       "message": "Voor dit venster zijn geen P&L-punten beschikbaar."
     },
     "noWallet": {
-      "title": "Selecteer een portefeuille",
-      "message": "Kies een portefeuille om de P&L-tijdlijn te bekijken."
+      "title": "Selecteer een wallet",
+      "message": "Kies een wallet om de P&L-tijdlijn te bekijken."
     },
     "incompleteBadge": "Onvolledige punten: {{count}}",
     "incompleteness": {
@@ -73,7 +73,7 @@
         "fx_conversion_unproven": "FX-conversie niet bewezen",
         "mark_unavailable": "Markprijs niet beschikbaar",
         "cumulative_non_finite": "Cumulatieve waarde is niet-eindig",
-        "unrealized_non_finite": "Niet-gerealiseerde P&L is niet-eindig",
+        "unrealized_non_finite": "Ongerealiseerde P&L is niet-eindig",
         "net_non_finite": "Netto P&L is niet-eindig",
         "attribution_value_non_finite": "Attributiewaarde is niet-eindig",
         "attribution_reconciliation_failed": "Afstemming van attributie mislukt",
@@ -103,13 +103,13 @@
       "title": "P&L in de tijd",
       "net": "Netto P&L",
       "realized": "Gerealiseerde P&L",
-      "unrealized": "Niet-gerealiseerde P&L",
+      "unrealized": "Ongerealiseerde P&L",
       "valuationCurrency": "Waarderingsvaluta: {{currency}}"
     },
     "equity": {
       "title": "Overlay van eigen vermogen",
       "seriesLabel": "Eigen vermogen",
-      "seriesLabelSpotOnly": "Eigen vermogen (spothandelsplatform)",
+      "seriesLabelSpotOnly": "Eigen vermogen (spotbeurs)",
       "latest": "Meest recent: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Zo lees je dit",
-        "spotOnly": "Alleen het spothandelsplatform — saldi op andere platforms zijn uitgesloten.",
+        "spotOnly": "Alleen de spotbeurs — saldi op andere beurzen zijn uitgesloten.",
         "flowsUnadjusted": "Externe stortingen en opnames zijn niet uitgefilterd.",
         "restatedFrom": "Deze cijfers zijn omgerekend vanuit {{from}} op basis van de slotkoers van elke minuut en worden niet rechtstreeks in deze valuta gemeten.",
         "pricedOn": "Geprijsd op {{plane}}.",
@@ -191,7 +191,7 @@
       "realized": "Gerealiseerde P&L",
       "fees": "Kosten",
       "accrual": "Opgebouwde funding",
-      "unrealized": "Niet-gerealiseerde P&L",
+      "unrealized": "Ongerealiseerde P&L",
       "net": "Netto P&L",
       "noValue": "—",
       "empty": "Er zijn geen bijdragen per instrument beschikbaar."
@@ -224,7 +224,7 @@
     "trailButton": "Trailing stop",
     "quantity": "Aantal",
     "averageEntry": "Gem. instap",
-    "unrealizedPnl": "Niet-gerealiseerde P&L",
+    "unrealizedPnl": "Ongerealiseerde P&L",
     "realizedPnl": "Gerealiseerde P&L",
     "updated": "Bijgewerkt {{timestamp}}",
     "mark": "Markprijs",
@@ -239,10 +239,10 @@
     "confirmTitle": "Bracket bevestigen",
     "position": "Positie",
     "entryPrice": "Instapprijs",
-    "stopLossLabel": "Koers voor verliesbeperking",
-    "takeProfitLabel": "Koers voor winstneming",
-    "stopLoss": "Verliesbeperking",
-    "takeProfit": "Winstneming",
+    "stopLossLabel": "Koers voor stop-loss",
+    "takeProfitLabel": "Koers voor take-profit",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Onder {{price}}",
       "slShort": "Boven {{price}}",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Minstens één SL- of TP-prijs is verplicht",
-    "invalidSlPrice": "Ongeldige koers voor verliesbeperking",
-    "slPricePositive": "De koers voor verliesbeperking moet positief zijn",
-    "invalidTpPrice": "Ongeldige koers voor winstneming",
-    "tpPricePositive": "De koers voor winstneming moet positief zijn",
+    "invalidSlPrice": "Ongeldige koers voor stop-loss",
+    "slPricePositive": "De koers voor stop-loss moet positief zijn",
+    "invalidTpPrice": "Ongeldige koers voor take-profit",
+    "tpPricePositive": "De koers voor take-profit moet positief zijn",
     "slLongBelowEntry": "SL-prijs moet onder de instapprijs liggen ({{price}})",
     "tpLongAboveEntry": "TP-prijs moet boven de instapprijs liggen ({{price}})",
     "slShortAboveEntry": "SL-prijs moet boven de instapprijs liggen ({{price}})",

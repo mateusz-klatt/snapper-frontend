@@ -65,7 +65,7 @@
     "runLabel": "実行 {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "メトリクス",
-      "equityOverlay": "エクイティ重ね合わせ",
+      "equityOverlay": "純資産重ね合わせ",
       "trades": "取引",
       "signals": "シグナル"
     },
@@ -131,7 +131,7 @@
     "waiting": "進捗を待機中…",
     "candles": "{{done}} / {{total}}本のローソク足",
     "candlesNoTotal": "{{done}}本のローソク足",
-    "equity": "エクイティ {{value}}",
+    "equity": "純資産 {{value}}",
     "signalsTrades": "{{signals}}シグナル / {{trades}}取引",
     "milestoneLine": "マイルストーン {{label}}",
     "milestone": {

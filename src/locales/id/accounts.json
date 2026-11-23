@@ -64,7 +64,7 @@
   },
   "mode": {
     "live": "Riil",
-    "paper": "Demo"
+    "paper": "Simulasi"
   },
   "meta": {
     "balancesObserved": "Saldo diamati {{timestamp}}",
@@ -87,7 +87,7 @@
       "unverified": "Belum diverifikasi"
     },
     "method": {
-      "futuresPosition": "Posisi futures",
+      "futuresPosition": "Posisi berjangka",
       "spotExecutionReplay": "Pemutaran ulang eksekusi spot",
       "marginLedgerReplay": "Pemutaran ulang buku besar margin",
       "unclassified": "Belum diklasifikasi",
@@ -114,7 +114,7 @@
       "immutabilityWarning": "Klasifikasi ini bersifat permanen. Setelah ditetapkan, klasifikasi ini tidak dapat diubah atau dihapus.",
       "acknowledge": "Saya memahami bahwa klasifikasi ini bersifat permanen dan sesuai dengan cara akun ini beroperasi.",
       "methodDescription": {
-        "futuresPosition": "Merekonsiliasi posisi derivatif terbuka dengan data otoritatif posisi futures bursa.",
+        "futuresPosition": "Merekonsiliasi posisi derivatif terbuka dengan data otoritatif posisi berjangka bursa.",
         "spotExecutionReplay": "Memutar ulang eksekusi spot terhadap saldo kas. Untuk akun khusus kas yang tidak pernah berdagang dengan margin.",
         "marginLedgerReplay": "Memutar ulang buku besar margin bursa. Untuk akun yang berdagang dengan margin atau meminjam dengan agunan."
       },

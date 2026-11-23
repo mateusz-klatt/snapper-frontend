@@ -3,11 +3,11 @@
     "title": "စျေးကွက်ဒေတာ"
   },
   "controls": {
-    "exchange": "စတော့အိတ်ချိန်း:",
-    "instrument": "ကုန်သွယ်ရေးတူရိယာ:",
+    "exchange": "အိတ်ချိန်း:",
+    "instrument": "ကုန်သွယ်ပစ္စည်း:",
     "timeframe": "အချိန်ဘောင်:",
-    "selectExchange": "Exchange ရွေးပါ",
-    "searchInstrument": "Instrument ရှာပါ..."
+    "selectExchange": "အိတ်ချိန်း ရွေးပါ",
+    "searchInstrument": "ကုန်သွယ်ပစ္စည်း ရှာပါ..."
   },
   "timeframes": {
     "1m": "1 မိနစ်",
@@ -30,14 +30,14 @@
     "errorPrefix": "Chart ဒေတာ တင်ရာတွင် အမှား:",
     "unknownError": "မသိသော အမှား",
     "noDataTitle": "{{instrument}} အတွက် ဒေတာ မရှိပါ",
-    "noDataHint": "Instrument မရှိနိုင်ပါ သို့မဟုတ် {{timeframe}} ဒေတာ မရှိနိုင်ပါ",
+    "noDataHint": "ကုန်သွယ်ပစ္စည်း မရှိနိုင်ပါ သို့မဟုတ် {{timeframe}} ဒေတာ မရှိနိုင်ပါ",
     "updatesUnconfirmed": "ဇယားအပ်ဒိတ်အချို့ကို အတည်မပြုရသေးပါ။",
     "reloadRecent": "လတ်တလောဒေတာကို ပြန်တင်ပါ"
   },
   "related": {
     "labelSeparator": "{{label}}:",
     "exchangeSeparator": "· {{exchange}}",
-    "empty": "{{exchange}} ပေါ်ရှိ {{instrument}} အတွက် related instrument များ configure မလုပ်ထားပါ။",
+    "empty": "{{exchange}} ပေါ်ရှိ {{instrument}} အတွက် related ကုန်သွယ်ပစ္စည်း များ configure မလုပ်ထားပါ။",
     "relationshipType": {
       "exact": "တူညီသော Underlying",
       "derivative": "Derivative များ",
@@ -45,7 +45,7 @@
     }
   },
   "description": {
-    "label": "အင်စထရူးမင့် ဖော်ပြချက်",
+    "label": "ကုန်သွယ်ပစ္စည်း ဖော်ပြချက်",
     "fallback": "{{name}} · {{assetClass}}"
   },
   "assetClass": {

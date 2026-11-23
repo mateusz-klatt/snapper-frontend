@@ -10,8 +10,8 @@
   "alertType": {
     "critical_system_error": "Системная ошибка",
     "margin_warning": "Предупреждение о марже",
-    "order_fill_full": "Ордер исполнен",
-    "order_rejected": "Ордер отклонён",
+    "order_fill_full": "Заявка исполнена",
+    "order_rejected": "Заявка отклонена",
     "position_stop_loss_fired": "Стоп-лосс сработал"
   },
   "argument": {
@@ -68,9 +68,9 @@
   "title": {
     "critical_system_error": "Система деградирована: {{0}}",
     "margin_warning": "Предупреждение о марже",
-    "order_fill_full": "Ордер исполнен",
-    "order_rejected": "Ордер отклонён",
-    "order_unknown": "Статус ордера неизвестен",
+    "order_fill_full": "Заявка исполнена",
+    "order_rejected": "Заявка отклонена",
+    "order_unknown": "Статус заявки неизвестен",
     "position_stop_loss_fired": "Стоп-лосс сработал"
   }
 }

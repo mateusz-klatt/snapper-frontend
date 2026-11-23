@@ -35,9 +35,9 @@
     "timeTravelBanner": "Tijdreismodus — historische data bekijken (alleen-lezen)",
     "lagUnknown": "Onbekend",
     "walletPicker": {
-      "ariaLabel": "Actieve portefeuille",
-      "placeholder": "Portefeuille",
-      "allWallets": "Alle portefeuilles",
+      "ariaLabel": "Actieve wallet",
+      "placeholder": "Wallet",
+      "allWallets": "Alle wallets",
       "optionPaper": "{{label}} (simulatie)"
     },
     "operatorPicker": {

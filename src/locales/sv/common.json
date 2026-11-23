@@ -38,7 +38,7 @@
       "ariaLabel": "Aktiv plånbok",
       "placeholder": "Plånbok",
       "allWallets": "Alla plånböcker",
-      "optionPaper": "{{label}} (demo)"
+      "optionPaper": "{{label}} (simulerat)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktiv operatör",

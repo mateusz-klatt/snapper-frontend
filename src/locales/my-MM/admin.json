@@ -7,11 +7,11 @@
     "title": "Role Permission များ",
     "viewer": {
       "label": "ကြည့်ရှုသူ",
-      "description": "အကောင့်များ၊ wallet နှင့် portfolio များ၊ signal များ၊ AI ဆုံးဖြတ်ချက်များ၊ အရှုံးအမြတ်၊ backtest များ၊ strategy များ၊ process များနှင့် စနစ်အခြေအနေတို့ကို operator အဆင့်ဖြင့် ဖတ်ရှုနိုင်သည်။ လုပ်ငန်းလည်ပတ်မှု action များ မလုပ်နိုင်ပါ။"
+      "description": "အကောင့်များ၊ ဝေါလက် နှင့် portfolio များ၊ အချက်ပြမှု များ၊ AI ဆုံးဖြတ်ချက်များ၊ အရှုံးအမြတ်၊ နောက်ကြောင်းပြန် စမ်းသပ်မှု များ၊ ဗျူဟာ များ၊ process များနှင့် စနစ်အခြေအနေတို့ကို operator အဆင့်ဖြင့် ဖတ်ရှုနိုင်သည်။ လုပ်ငန်းလည်ပတ်မှု action များ မလုပ်နိုင်ပါ။"
     },
     "operator": {
       "label": "လုပ်ဆောင်သူ",
-      "description": "Viewer မြင်နိုင်သမျှအားလုံးအပြင် trading၊ position၊ strategy၊ process၊ backtest နှင့် AI integration များကို ထိန်းချုပ်နိုင်သည်။"
+      "description": "Viewer မြင်နိုင်သမျှအားလုံးအပြင် trading၊ ပိုဇစ်ရှင်၊ ဗျူဟာ၊ process၊ နောက်ကြောင်းပြန် စမ်းသပ်မှု နှင့် AI integration များကို ထိန်းချုပ်နိုင်သည်။"
     },
     "admin": {
       "label": "စီမံခန့်ခွဲသူ",
@@ -28,17 +28,17 @@
       "overview": "အနှစ်ချုပ်",
       "market": "စျေးကွက်ဒေတာ",
       "processes": "Process များ",
-      "strategies": "Strategy များ",
-      "orders": "အော်ဒါများနှင့် Fill များ",
+      "strategies": "ဗျူဟာ များ",
+      "orders": "အော်ဒါများနှင့် အော်ဒါအကောင်အထည်ဖော်မှု များ",
       "positions": "ပိုဇစ်ရှင်များ",
-      "signals": "Signal များ",
+      "signals": "အချက်ပြမှု များ",
       "health": "ကျန်းမာရေး",
       "admin": "စီမံခန့်ခွဲရေး",
       "settings": "ဆက်တင်များ"
     },
     "auditor": {
       "label": "စာရင်းစစ်",
-      "description": "ပိုက်ဆံအိတ်များ၊ အသုံးပြုသူများနှင့် ဆက်တင်အားလုံးကို စီမံခန့်ခွဲသူအနေဖြင့် ဖတ်ရှုရန်သာ ဝင်ရောက်နိုင်သည်။ ဒေတာပြောင်းလဲခြင်း သို့မဟုတ် အရောင်းအဝယ်လုပ်ခြင်း မပြုနိုင်ပါ။"
+      "description": "ဝေါလက်များ၊ အသုံးပြုသူများနှင့် ဆက်တင်အားလုံးကို စီမံခန့်ခွဲသူအနေဖြင့် ဖတ်ရှုရန်သာ ဝင်ရောက်နိုင်သည်။ ဒေတာပြောင်းလဲခြင်း သို့မဟုတ် အရောင်းအဝယ်လုပ်ခြင်း မပြုနိုင်ပါ။"
     }
   },
   "deskMemberships": {
@@ -99,10 +99,10 @@
   },
   "common": {
     "cancel": "ပယ်ဖျက်",
-    "selectWallet": "Wallet ရွေးပါ",
-    "selectAWallet": "Wallet တစ်ခု ရွေးပါ",
-    "chooseWalletPlaceholder": "Wallet ရွေးပါ...",
-    "selectWalletPlaceholder": "Wallet ရွေးပါ...",
+    "selectWallet": "ဝေါလက် ရွေးပါ",
+    "selectAWallet": "ဝေါလက် တစ်ခု ရွေးပါ",
+    "chooseWalletPlaceholder": "ဝေါလက် ရွေးပါ...",
+    "selectWalletPlaceholder": "ဝေါလက် ရွေးပါ...",
     "walletLabel": "ဝေါလက်",
     "paperAnnotation": " (စမ်းသပ်)",
     "unknownError": "မသိသော error",
@@ -205,7 +205,7 @@
       "title": "Scope Grant များ",
       "countLabel": "ဝင်ရောက်ခွင့်ပြုချက်များ: {{count}}",
       "createGrant": "Grant ဖန်တီးပါ",
-      "selectWalletPrompt": "၎င်း၏ scope grant များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
+      "selectWalletPrompt": "၎င်း၏ scope grant များ ကြည့်ရန် အပေါ်မှ ဝေါလက် တစ်ခု ရွေးပါ။",
       "columns": {
         "operator": "လုပ်ဆောင်သူ",
         "scope": "လုပ်ပိုင်ခွင့်နယ်ပယ်",
@@ -215,7 +215,7 @@
       },
       "empty": {
         "noGrants": "Grant မတွေ့ပါ",
-        "noGrantsHint": "ဤ wallet တွင် active scope grant မရှိပါ။"
+        "noGrantsHint": "ဤ ဝေါလက် တွင် active scope grant မရှိပါ။"
       },
       "errorLoading": "Grant များ load လုပ်ရာတွင် error: {{message}}",
       "handover": "လွှဲပြောင်းပါ",
@@ -229,23 +229,23 @@
         "wallet": "ဝေါလက်",
         "scopeKind": "Scope အမျိုးအစား",
         "underlyingPublicId": "အခြေခံပိုင်ဆိုင်မှု အများသုံး ID",
-        "instrumentPublicId": "ကုန်သွယ်ရေးတူရိယာ အများသုံး ID",
+        "instrumentPublicId": "ကုန်သွယ်ပစ္စည်း အများသုံး ID",
         "underlyingPlaceholder": "ဥပမာ BTC",
         "instrumentPlaceholder": "ဥပမာ BTC-USD-PERP",
-        "exchange": "စတော့အိတ်ချိန်း",
-        "exchangePlaceholder": "စတော့အိတ်ချိန်း ရွေးပါ...",
-        "instrumentSelectPlaceholder": "Instrument ရွေးပါ...",
-        "selectExchangeFirst": "ဦးစွာ စတော့အိတ်ချိန်း ရွေးပါ",
+        "exchange": "အိတ်ချိန်း",
+        "exchangePlaceholder": "အိတ်ချိန်း ရွေးပါ...",
+        "instrumentSelectPlaceholder": "ကုန်သွယ်ပစ္စည်း ရွေးပါ...",
+        "selectExchangeFirst": "ဦးစွာ အိတ်ချိန်း ရွေးပါ",
         "note": "မှတ်ချက် (optional)",
         "notePlaceholder": "Optional မှတ်ချက်"
       },
       "scopeKinds": {
         "underlying": "အခြေခံပိုင်ဆိုင်မှု",
-        "instrument": "ကုန်သွယ်ရေးတူရိယာ"
+        "instrument": "ကုန်သွယ်ပစ္စည်း"
       },
       "validation": {
         "operatorRequired": "Operator လိုအပ်သည်",
-        "walletRequired": "Wallet လိုအပ်သည်",
+        "walletRequired": "ဝေါလက် လိုအပ်သည်",
         "targetRequired": "Target ID လိုအပ်သည်"
       },
       "actions": {
@@ -307,13 +307,13 @@
   "credentials": {
     "accessDenied": {
       "title": "ဝင်ခွင့်မရှိပါ",
-      "message": "Wallet credential များကို စီမံရန် permission မရှိပါ။ သင့် system administrator ကို ဆက်သွယ်ပါ။"
+      "message": "ဝေါလက် credential များကို စီမံရန် permission မရှိပါ။ သင့် system administrator ကို ဆက်သွယ်ပါ။"
     },
     "list": {
-      "title": "Wallet Credential များ",
+      "title": "ဝေါလက် Credential များ",
       "countLabel": "API/အကောင့်ဝင် အထောက်အထားများ: {{count}}",
       "addCredential": "Credential ထည့်ပါ",
-      "selectWalletPrompt": "၎င်း၏ credential များ ကြည့်ရန် အပေါ်မှ wallet တစ်ခု ရွေးပါ။",
+      "selectWalletPrompt": "၎င်း၏ credential များ ကြည့်ရန် အပေါ်မှ ဝေါလက် တစ်ခု ရွေးပါ။",
       "columns": {
         "exchange": "အိတ်ချိန်း",
         "type": "အမျိုးအစား",
@@ -323,7 +323,7 @@
       },
       "empty": {
         "noCredentials": "Credential မတွေ့ပါ",
-        "noCredentialsHint": "ဤ wallet တွင် active credential မရှိပါ။"
+        "noCredentialsHint": "ဤ ဝေါလက် တွင် active credential မရှိပါ။"
       },
       "errorLoading": "Credential များ load လုပ်ရာတွင် error: {{message}}",
       "rotate": "Rotate လုပ်ပါ"
@@ -355,8 +355,8 @@
         "paper": "စမ်းသပ်"
       },
       "validation": {
-        "walletRequired": "Wallet လိုအပ်သည်",
-        "exchangeRequired": "Exchange လိုအပ်သည်",
+        "walletRequired": "ဝေါလက် လိုအပ်သည်",
+        "exchangeRequired": "အိတ်ချိန်း လိုအပ်သည်",
         "fieldRequired": "{{field}} လိုအပ်သည်"
       },
       "actions": {
@@ -364,7 +364,7 @@
       },
       "toast": {
         "created": "Credential ဖန်တီးပြီးပါပြီ",
-        "conflictError": "Conflict: ဤ wallet တွင် ဤ exchange အတွက် active credential ရှိပြီးဖြစ်သည်",
+        "conflictError": "Conflict: ဤ ဝေါလက် တွင် ဤ အိတ်ချိန်း အတွက် active credential ရှိပြီးဖြစ်သည်",
         "createError": "Credential ဖန်တီးရာတွင် error"
       }
     },

@@ -17,7 +17,7 @@
       "label": "Bezeichnung",
       "username": "Benutzername",
       "created": "Erstellt",
-      "maxOpenOrders": "Max. offene Aufträge",
+      "maxOpenOrders": "Max. offene Orders",
       "maxDailyUsd": "Max. täglich USD",
       "status": "Status",
       "actions": "Aktionen"
@@ -49,7 +49,7 @@
     },
     "caps": {
       "heading": "Trading-Limits (alle optional)",
-      "maxOpenOrders": "Max. offene Aufträge",
+      "maxOpenOrders": "Max. offene Orders",
       "maxDailyNotionalUsd": "Max. tägliches Nominal in USD",
       "maxCancelsPerMinute": "Max. Stornierungen pro Minute",
       "perInstrument": "Max. Menge pro Instrument (JSON)",
@@ -63,7 +63,7 @@
       "heading": "Prüfen & erstellen",
       "rowLabel": "Bezeichnung",
       "rowOperator": "public_id des Operators",
-      "rowMaxOpenOrders": "Max. offene Aufträge",
+      "rowMaxOpenOrders": "Max. offene Orders",
       "rowMaxDailyNotional": "Max. tägliches Nominal in USD",
       "rowMaxCancelsPerMinute": "Max. Stornierungen pro Minute",
       "rowPerInstrument": "Max. Menge pro Instrument",
@@ -98,7 +98,7 @@
     "createdAt": "Erstellt am",
     "createdBy": "Erstellt von (public_id des Benutzers)",
     "publicId": "Öffentliche ID",
-    "maxOpenOrders": "Max. offene Aufträge",
+    "maxOpenOrders": "Max. offene Orders",
     "maxDailyNotionalUsd": "Max. tägliches Nominal in USD",
     "maxCancelsPerMinute": "Max. Stornierungen pro Minute",
     "perInstrument": "Max. Menge pro Instrument",
@@ -134,10 +134,10 @@
     "title": "KI-Konnektor autorisieren",
     "loading": "Autorisierungsanfrage wird geladen…",
     "intro": "{{client}} bittet um eine Verbindung mit Ihrem Snapper-Konto.",
-    "readOnlyGuarantee": "Nur Lesezugriff, beschränkt auf Ihre bestehenden Berechtigungen. Dieser Konnektor kann keine Aufträge erteilen, ändern oder stornieren.",
+    "readOnlyGuarantee": "Nur Lesezugriff, beschränkt auf Ihre bestehenden Berechtigungen. Dieser Konnektor kann keine Orders erteilen, ändern oder stornieren.",
     "scopesHeading": "Angeforderter Zugriff",
     "scopes": {
-      "snapperRead": "Marktdaten, Aufträge, Positionen und Signale lesen, jedoch nur, soweit Ihre eigenen Berechtigungen dies erlauben.",
+      "snapperRead": "Marktdaten, Orders, Positionen und Signale lesen, jedoch nur, soweit Ihre eigenen Berechtigungen dies erlauben.",
       "offlineAccess": "Verbunden bleiben, ohne Sie erneut zur Anmeldung aufzufordern."
     },
     "unrecognizedScope": "Unbekannte Berechtigung: {{scope}}",

@@ -5,7 +5,7 @@
   "metrics": {
     "feedsRunning": "Laufende Feeds",
     "strategiesActive": "Aktive Strategien",
-    "openOrders": "Offene Aufträge",
+    "openOrders": "Offene Orders",
     "todaysExecutions": "Heutige Ausführungen",
     "executionsOn": "Ausführungen ({{date}})"
   },

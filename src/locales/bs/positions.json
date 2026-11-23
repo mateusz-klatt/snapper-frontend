@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Kako ovo tumačiti",
-        "spotOnly": "Samo spot berza — stanja na drugim berzama nisu uključena.",
+        "spotOnly": "Samo spot berza — salda na drugim berzama nisu uključena.",
         "flowsUnadjusted": "Vanjske uplate i isplate nisu isključene.",
         "restatedFrom": "Ovi podaci su preračunati iz {{from}} po zaključnom kursu svake minute i nisu izvorno mjereni u ovoj valuti.",
         "pricedOn": "Vrednovano prema {{plane}}.",
@@ -239,10 +239,10 @@
     "confirmTitle": "Potvrdi Bracket",
     "position": "Pozicija",
     "entryPrice": "Ulazna cijena",
-    "stopLossLabel": "Cijena ograničenja gubitka",
-    "takeProfitLabel": "Cijena realizacije dobiti",
-    "stopLoss": "Ograničenje gubitka",
-    "takeProfit": "Realizacija dobiti",
+    "stopLossLabel": "Cijena stop-lossa",
+    "takeProfitLabel": "Cijena take-profita",
+    "stopLoss": "Stop-loss",
+    "takeProfit": "Take-profit",
     "placeholders": {
       "slLong": "Ispod {{price}}",
       "slShort": "Iznad {{price}}",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Dodaj Trailing Stop — {{instrument}}",
-    "confirmTitle": "Potvrdi Trailing Stop",
+    "title": "Dodaj prateći stop — {{instrument}}",
+    "confirmTitle": "Potvrdi prateći stop",
     "position": "Pozicija",
     "entryPrice": "Ulazna cijena",
     "trailingDistanceLabel": "Trailing udaljenost (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "npr. 5.0",
       "minLockPct": "0 = počni odmah"
     },
-    "minLockWarning": "Trailing Stop se neće aktivirati dok se cijena ne pomjeri {{minLockPct}}% u vašu korist.",
+    "minLockWarning": "Prateći stop se neće aktivirati dok se cijena ne pomjeri {{minLockPct}}% u vašu korist.",
     "buttons": {
       "cancel": "Otkaži",
       "review": "Pregledaj",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "Potrebna je najmanje jedna SL ili TP cijena",
-    "invalidSlPrice": "Nevažeća cijena ograničenja gubitka",
-    "slPricePositive": "Cijena ograničenja gubitka mora biti pozitivna",
-    "invalidTpPrice": "Nevažeća cijena realizacije dobiti",
-    "tpPricePositive": "Cijena realizacije dobiti mora biti pozitivna",
+    "invalidSlPrice": "Nevažeća cijena stop-lossa",
+    "slPricePositive": "Cijena stop-lossa mora biti pozitivna",
+    "invalidTpPrice": "Nevažeća cijena take-profita",
+    "tpPricePositive": "Cijena take-profita mora biti pozitivna",
     "slLongBelowEntry": "SL cijena mora biti ispod ulazne cijene ({{price}})",
     "tpLongAboveEntry": "TP cijena mora biti iznad ulazne cijene ({{price}})",
     "slShortAboveEntry": "SL cijena mora biti iznad ulazne cijene ({{price}})",

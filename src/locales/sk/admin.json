@@ -104,7 +104,7 @@
     "chooseWalletPlaceholder": "Vyberte peňaženku...",
     "selectWalletPlaceholder": "Vyberte peňaženku...",
     "walletLabel": "Peňaženka",
-    "paperAnnotation": " (papierová)",
+    "paperAnnotation": " (demo)",
     "unknownError": "Neznáma chyba",
     "dash": "-",
     "readOnly": "Prístup iba na čítanie — zmeny sú zakázané."
@@ -234,7 +234,7 @@
         "instrumentPlaceholder": "napr. BTC-USD-PERP",
         "exchange": "Burza",
         "exchangePlaceholder": "Vyberte burzu...",
-        "instrumentSelectPlaceholder": "Vyberte nástroj...",
+        "instrumentSelectPlaceholder": "Vyberte inštrument...",
         "selectExchangeFirst": "Najprv vyberte burzu",
         "note": "Poznámka (voliteľné)",
         "notePlaceholder": "Voliteľná poznámka"

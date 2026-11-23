@@ -57,7 +57,7 @@
         "instrument": "Enstrüman"
       },
       "tier": {
-        "mark_incomplete": "REFERANS FİYATI EKSİK",
+        "mark_incomplete": "MARK FİYATI EKSİK",
         "untrusted": "GÜVENİLMEZ"
       },
       "reasons": {
@@ -71,7 +71,7 @@
         "execution_size_invalid": "Gerçekleşme miktarı geçersiz",
         "execution_price_invalid": "Gerçekleşme fiyatı geçersiz",
         "fx_conversion_unproven": "FX dönüşümü kanıtlanamadı",
-        "mark_unavailable": "Referans fiyatı kullanılamıyor",
+        "mark_unavailable": "Mark fiyatı kullanılamıyor",
         "cumulative_non_finite": "Birikimli değer sonlu değil",
         "unrealized_non_finite": "Gerçekleşmemiş P&L sonlu değil",
         "net_non_finite": "Net P&L sonlu değil",
@@ -109,7 +109,7 @@
     "equity": {
       "title": "Özkaynak yer paylaşımı",
       "seriesLabel": "Özkaynak",
-      "seriesLabelSpotOnly": "Özkaynak (spot işlem yeri)",
+      "seriesLabelSpotOnly": "Özkaynak (spot borsa)",
       "latest": "En son: {{value}} {{currency}}",
       "noValue": "—",
       "drawdown": {
@@ -122,7 +122,7 @@
       },
       "honesty": {
         "title": "Nasıl yorumlanır",
-        "spotOnly": "Yalnızca spot işlem yeri — diğer işlem yerlerindeki bakiyeler dahil değildir.",
+        "spotOnly": "Yalnızca spot borsa — diğer borsalardaki bakiyeler dahil değildir.",
         "flowsUnadjusted": "Harici para yatırma ve çekme işlemleri hariç tutulmamıştır.",
         "restatedFrom": "Bu rakamlar her dakikanın kapanış kuruyla {{from}} biriminden yeniden hesaplanır; bu para biriminde doğrudan ölçülmez.",
         "pricedOn": "{{plane}} üzerinden fiyatlandırıldı.",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "Trailing Stop ekle — {{instrument}}",
-    "confirmTitle": "Trailing Stop Onayla",
+    "title": "Takip eden stop ekle — {{instrument}}",
+    "confirmTitle": "Takip eden stop onayla",
     "position": "Pozisyon",
     "entryPrice": "Giriş Fiyatı",
     "trailingDistanceLabel": "Trailing Mesafesi (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "örn. 5.0",
       "minLockPct": "0 = hemen başlat"
     },
-    "minLockWarning": "Trailing Stop, fiyat lehinize %{{minLockPct}} hareket edene kadar etkinleşmez.",
+    "minLockWarning": "Takip eden stop, fiyat lehinize %{{minLockPct}} hareket edene kadar etkinleşmez.",
     "buttons": {
       "cancel": "İptal",
       "review": "Gözden geçir",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "SL veya TP fiyatından en az biri gerekli",
-    "invalidSlPrice": "Geçersiz Stop-Loss fiyatı",
-    "slPricePositive": "Stop-Loss fiyatı pozitif olmalı",
-    "invalidTpPrice": "Geçersiz Take-Profit fiyatı",
-    "tpPricePositive": "Take-Profit fiyatı pozitif olmalı",
+    "invalidSlPrice": "Geçersiz zarar durdur fiyatı",
+    "slPricePositive": "Zarar durdur fiyatı pozitif olmalı",
+    "invalidTpPrice": "Geçersiz kâr al fiyatı",
+    "tpPricePositive": "Kâr al fiyatı pozitif olmalı",
     "slLongBelowEntry": "SL fiyatı giriş fiyatının ({{price}}) altında olmalı",
     "tpLongAboveEntry": "TP fiyatı giriş fiyatının ({{price}}) üstünde olmalı",
     "slShortAboveEntry": "SL fiyatı giriş fiyatının ({{price}}) üstünde olmalı",

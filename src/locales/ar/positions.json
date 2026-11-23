@@ -76,7 +76,7 @@
         "unrealized_non_finite": "قيمة P&L غير المحقق ليست عددًا محدودًا",
         "net_non_finite": "قيمة صافي P&L ليست عددًا محدودًا",
         "attribution_value_non_finite": "قيمة الإسناد ليست عددًا محدودًا",
-        "attribution_reconciliation_failed": "فشلت تسوية الإسناد",
+        "attribution_reconciliation_failed": "فشلت مطابقة الإسناد",
         "attribution_sum_unrepresentable": "لا يمكن تمثيل مجموع قيم P&L المُسنَدة عدديًا بدقة",
         "instrument_reconciliation_failed": "فشلت مطابقة إجماليات P&L حسب الأداة مع إجمالي P&L الكلي",
         "instrument_sum_unrepresentable": "لا يمكن تمثيل مجموع قيم الأدوات عدديًا بدقة",
@@ -258,8 +258,8 @@
     }
   },
   "trailingStopModal": {
-    "title": "إرفاق Trailing Stop — {{instrument}}",
-    "confirmTitle": "تأكيد Trailing Stop",
+    "title": "إرفاق وقف متحرك — {{instrument}}",
+    "confirmTitle": "تأكيد وقف متحرك",
     "position": "المركز",
     "entryPrice": "سعر الدخول",
     "trailingDistanceLabel": "مسافة Trailing (%)",
@@ -270,7 +270,7 @@
       "trailingPct": "مثلاً 5.0",
       "minLockPct": "0 = ابدأ فوراً"
     },
-    "minLockWarning": "لن يتم تفعيل Trailing Stop حتى يتحرك السعر {{minLockPct}}% لصالحك.",
+    "minLockWarning": "لن يتم تفعيل وقف متحرك حتى يتحرك السعر {{minLockPct}}% لصالحك.",
     "buttons": {
       "cancel": "إلغاء",
       "review": "مراجعة",
@@ -281,10 +281,10 @@
   },
   "validation": {
     "bracketRequired": "مطلوب سعر واحد على الأقل من SL أو TP",
-    "invalidSlPrice": "سعر Stop-Loss غير صالح",
-    "slPricePositive": "يجب أن يكون سعر Stop-Loss موجباً",
-    "invalidTpPrice": "سعر Take-Profit غير صالح",
-    "tpPricePositive": "يجب أن يكون سعر Take-Profit موجباً",
+    "invalidSlPrice": "سعر وقف الخسارة غير صالح",
+    "slPricePositive": "يجب أن يكون سعر وقف الخسارة موجباً",
+    "invalidTpPrice": "سعر جني الأرباح غير صالح",
+    "tpPricePositive": "يجب أن يكون سعر جني الأرباح موجباً",
     "slLongBelowEntry": "يجب أن يكون سعر SL أقل من سعر الدخول ({{price}})",
     "tpLongAboveEntry": "يجب أن يكون سعر TP أعلى من سعر الدخول ({{price}})",
     "slShortAboveEntry": "يجب أن يكون سعر SL أعلى من سعر الدخول ({{price}})",

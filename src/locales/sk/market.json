@@ -45,7 +45,7 @@
     }
   },
   "description": {
-    "label": "Popis nástroja",
+    "label": "Popis inštrumentu",
     "fallback": "{{name}} · {{assetClass}}"
   },
   "assetClass": {

@@ -14,9 +14,9 @@
       "all": "सभी ऑर्डर",
       "new": "नया",
       "open": "खुला",
-      "partiallyFilled": "आंशिक रूप से भरा",
-      "partially_filled": "आंशिक रूप से भरा",
-      "filled": "भरा",
+      "partiallyFilled": "आंशिक रूप से निष्पादित",
+      "partially_filled": "आंशिक रूप से निष्पादित",
+      "filled": "निष्पादित",
       "cancelled": "रद्द",
       "rejected": "अस्वीकृत"
     }
@@ -38,7 +38,7 @@
   },
   "executionCard": {
     "orderNumber": "ऑर्डर #{{orderId}}",
-    "filled": "भरा गया",
+    "filled": "निष्पादित",
     "orderLabel": "ऑर्डर {{orderId}}",
     "size": "आकार",
     "price": "कीमत",

@@ -65,7 +65,7 @@
     "runLabel": "Běh {{label}} · {{id}} · {{status}}",
     "sections": {
       "metrics": "Metriky",
-      "equityOverlay": "Překryv equity křivek",
+      "equityOverlay": "Překryv křivek vlastního kapitálu",
       "trades": "Obchody",
       "signals": "Signály"
     },

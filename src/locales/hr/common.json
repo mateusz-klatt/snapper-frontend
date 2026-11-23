@@ -3,7 +3,7 @@
   "error": "Pogreška",
   "retry": "Pokušaj ponovno",
   "close": "Zatvori",
-  "cancel": "Odustani",
+  "cancel": "Otkaži",
   "confirm": "Potvrdi",
   "save": "Spremi",
   "documentation": "Dokumentacija (PDF)",
@@ -38,7 +38,7 @@
       "ariaLabel": "Aktivni novčanik",
       "placeholder": "Novčanik",
       "allWallets": "Svi novčanici",
-      "optionPaper": "{{label}} (simulirano)"
+      "optionPaper": "{{label}} (demo)"
     },
     "operatorPicker": {
       "ariaLabel": "Aktivni operater",
