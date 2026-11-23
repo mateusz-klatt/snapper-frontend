@@ -18,7 +18,13 @@
       "partially_filled": "Osittain toteutunut",
       "filled": "Toteutunut",
       "cancelled": "Peruttu",
-      "rejected": "Hylätty"
+      "rejected": "Hylätty",
+      "canceled": "Peruttu",
+      "submitted": "Lähetetty",
+      "pending": "Odottaa",
+      "pending_new": "Odottaa hyväksyntää",
+      "closed": "Suljettu",
+      "expired": "Vanhentunut"
     }
   },
   "orderCard": {

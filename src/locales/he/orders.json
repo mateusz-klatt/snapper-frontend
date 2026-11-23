@@ -18,7 +18,13 @@
       "partially_filled": "בוצע חלקית",
       "filled": "בוצע",
       "cancelled": "בוטל",
-      "rejected": "נדחה"
+      "rejected": "נדחה",
+      "canceled": "בוטל",
+      "submitted": "נשלח",
+      "pending": "ממתין",
+      "pending_new": "ממתין לאישור קבלה",
+      "closed": "סגור",
+      "expired": "פג תוקף"
     }
   },
   "orderCard": {

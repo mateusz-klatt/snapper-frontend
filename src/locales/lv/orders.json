@@ -18,7 +18,13 @@
       "partially_filled": "Daļēji izpildīts",
       "filled": "Izpildīts",
       "cancelled": "Atcelts",
-      "rejected": "Noraidīts"
+      "rejected": "Noraidīts",
+      "canceled": "Atcelts",
+      "submitted": "Iesniegts",
+      "pending": "Gaida",
+      "pending_new": "Gaida pieņemšanu",
+      "closed": "Slēgts",
+      "expired": "Beidzies derīguma termiņš"
     }
   },
   "orderCard": {

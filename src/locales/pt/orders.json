@@ -18,7 +18,13 @@
       "partially_filled": "Parcialmente executada",
       "filled": "Executada",
       "cancelled": "Cancelada",
-      "rejected": "Rejeitada"
+      "rejected": "Rejeitada",
+      "canceled": "Cancelada",
+      "submitted": "Enviada",
+      "pending": "Pendente",
+      "pending_new": "Aguardando aceitação",
+      "closed": "Fechada",
+      "expired": "Expirada"
     }
   },
   "orderCard": {

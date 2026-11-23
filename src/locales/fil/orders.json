@@ -18,7 +18,13 @@
       "partially_filled": "Bahagyang naisagawa",
       "filled": "Naisagawa",
       "cancelled": "Kinansela",
-      "rejected": "Tinanggihan"
+      "rejected": "Tinanggihan",
+      "canceled": "Kinansela",
+      "submitted": "Naisumite",
+      "pending": "Naghihintay",
+      "pending_new": "Naghihintay ng pagtanggap",
+      "closed": "Sarado",
+      "expired": "Nag-expire"
     }
   },
   "orderCard": {

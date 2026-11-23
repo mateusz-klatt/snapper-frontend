@@ -488,6 +488,61 @@ describe('Orders', () => {
       })
     })
   })
+  it.each([
+    { language: 'en', labels: ['Submitted', 'Pending', 'Pending New', 'Closed', 'Expired'] },
+    {
+      language: 'pl',
+      labels: ['Wysłane', 'Oczekujące', 'Oczekujące na przyjęcie', 'Zamknięte', 'Wygasłe'],
+    },
+  ])('renders and filters additional wire statuses in $language', async ({ language, labels }) => {
+    const statuses = ['submitted', 'pending', 'pending_new', 'closed', 'expired']
+    const mockOrders: Order[] = statuses.map(status => ({
+      sequenceId: 0,
+      publicId: status,
+      timestamp: new Date('2024-01-01T00:00:00Z'),
+      sessionId: 'test-sid',
+      clientOrderId: `cid-${status}`,
+      instrument: 'BTC/USD',
+      exchange: 'kraken',
+      side: 'buy',
+      orderType: 'limit',
+      size: 1,
+      filledSize: 0,
+      price: 50000,
+      status,
+      createdAt: new Date('2024-01-01T00:00:00Z'),
+      updatedAt: null,
+    }))
+    const { useOrders } = await import('../../hooks/queries/orders')
+
+    vi.mocked(useOrders).mockReturnValue({ data: mockOrders, isLoading: false } as never)
+    await i18n.changeLanguage(language)
+
+    try {
+      renderWithProviders(<Orders />)
+
+      for (const label of labels) {
+        expect(screen.getByText(label, { selector: 'span' })).toHaveClass('text-muted-400')
+      }
+
+      for (const status of ['closed', 'expired']) {
+        expect(screen.queryByTestId(`cancel-order-cid-${status}`)).not.toBeInTheDocument()
+      }
+
+      for (const status of ['submitted', 'pending', 'pending_new']) {
+        expect(screen.getByTestId(`cancel-order-cid-${status}`)).toBeInTheDocument()
+      }
+
+      for (const status of statuses) {
+        await userEvent.selectOptions(screen.getByRole('combobox'), status)
+        expect(screen.getByText(`cid-${status}`)).toBeInTheDocument()
+        expect(screen.getAllByText(/^cid-/)).toHaveLength(1)
+      }
+    } finally {
+      await i18n.changeLanguage('en')
+    }
+  })
+
   it('switches to executions tab and displays execution card', async () => {
     const user = userEvent.setup()
     const mockExecutions: Execution[] = [
@@ -1459,7 +1514,10 @@ describe('Orders', () => {
     expect(screen.queryByTestId('cancel-order-cid-filled')).not.toBeInTheDocument()
   })
 
-  it('hides cancel button on American-spelled canceled status', async () => {
+  it.each([
+    { language: 'en', label: 'Cancelled' },
+    { language: 'pl', label: 'Anulowane' },
+  ])('localizes canceled and filters both spellings in $language', async ({ language, label }) => {
     const mockOrders: Order[] = [
       {
         sequenceId: 0,
@@ -1481,16 +1539,39 @@ describe('Orders', () => {
     ]
     const { useOrders } = await import('../../hooks/queries/orders')
 
+    const canceledOrder = mockOrders[0] as Order
+
+    mockOrders.push(
+      { ...canceledOrder, clientOrderId: 'cid-cancelled', status: 'cancelled' },
+      { ...canceledOrder, clientOrderId: 'cid-open', status: 'open' }
+    )
     vi.mocked(useOrders).mockReturnValue({
       data: mockOrders,
       isLoading: false,
       refetch: vi.fn(),
     } as never)
-    renderWithProviders(<Orders />)
-    await waitFor(() => {
-      expect(screen.getByText('canceled')).toBeInTheDocument()
-    })
-    expect(screen.queryByTestId('cancel-order-cid-canceled')).not.toBeInTheDocument()
+    await i18n.changeLanguage(language)
+
+    try {
+      renderWithProviders(<Orders />)
+      expect(screen.getAllByText(label, { selector: 'span' })).toHaveLength(2)
+      expect(screen.queryByText('canceled')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('cancel-order-cid-canceled')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('cancel-order-cid-cancelled')).not.toBeInTheDocument()
+      expect(screen.getByText('cid-open')).toBeInTheDocument()
+      expect(screen.queryByRole('option', { name: 'canceled' })).not.toBeInTheDocument()
+      expect(screen.getAllByRole('option', { name: label })).toHaveLength(1)
+
+      await userEvent.selectOptions(screen.getByRole('combobox'), 'cancelled')
+
+      expect(screen.getByText('cid-canceled')).toBeInTheDocument()
+      expect(screen.getByText('cid-cancelled')).toBeInTheDocument()
+      expect(screen.queryByText('cid-open')).not.toBeInTheDocument()
+      expect(screen.getAllByText(label, { selector: 'span' })).toHaveLength(2)
+      expect(mockOrders.map(order => order.status)).toEqual(['canceled', 'cancelled', 'open'])
+    } finally {
+      await i18n.changeLanguage('en')
+    }
   })
 
   it('hides cancel button on closed status (venue spelling)', async () => {

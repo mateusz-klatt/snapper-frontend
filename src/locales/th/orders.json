@@ -18,7 +18,13 @@
       "partially_filled": "จับคู่บางส่วน",
       "filled": "จับคู่แล้ว",
       "cancelled": "ยกเลิกแล้ว",
-      "rejected": "ถูกปฏิเสธ"
+      "rejected": "ถูกปฏิเสธ",
+      "canceled": "ยกเลิกแล้ว",
+      "submitted": "ส่งแล้ว",
+      "pending": "รอดำเนินการ",
+      "pending_new": "รอการตอบรับ",
+      "closed": "ปิดแล้ว",
+      "expired": "หมดอายุ"
     }
   },
   "orderCard": {

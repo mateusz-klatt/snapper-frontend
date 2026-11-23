@@ -18,7 +18,13 @@
       "partially_filled": "Gedeeltelijk uitgevoerd",
       "filled": "Volledig uitgevoerd",
       "cancelled": "Geannuleerd",
-      "rejected": "Afgewezen"
+      "rejected": "Afgewezen",
+      "canceled": "Geannuleerd",
+      "submitted": "Ingediend",
+      "pending": "In afwachting",
+      "pending_new": "Wacht op acceptatie",
+      "closed": "Gesloten",
+      "expired": "Verlopen"
     }
   },
   "orderCard": {

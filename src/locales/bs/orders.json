@@ -18,7 +18,13 @@
       "partially_filled": "Djelimično izvršeni",
       "filled": "Izvršeni",
       "cancelled": "Otkazani",
-      "rejected": "Odbijeni"
+      "rejected": "Odbijeni",
+      "canceled": "Otkazani",
+      "submitted": "Poslani",
+      "pending": "Na čekanju",
+      "pending_new": "Čekaju prihvatanje",
+      "closed": "Zatvoreni",
+      "expired": "Istekli"
     }
   },
   "orderCard": {

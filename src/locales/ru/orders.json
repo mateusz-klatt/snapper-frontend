@@ -18,7 +18,13 @@
       "partially_filled": "Частично исполнена",
       "filled": "Исполнена",
       "cancelled": "Отменена",
-      "rejected": "Отклонена"
+      "rejected": "Отклонена",
+      "canceled": "Отменена",
+      "submitted": "Отправлена",
+      "pending": "В ожидании",
+      "pending_new": "Ожидает принятия",
+      "closed": "Закрыта",
+      "expired": "Истекла"
     }
   },
   "orderCard": {

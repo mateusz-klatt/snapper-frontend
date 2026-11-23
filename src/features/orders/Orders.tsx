@@ -3,6 +3,7 @@ import { Download, Plus, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useOrders, useExecutions, useCancelOrder } from '../../hooks/queries/orders'
 import { NewOrderModal } from './NewOrderModal'
+import { canonicalOrderStatus } from './orderStatus'
 import type { Order, Execution } from '../../types/entities'
 import { OrderCardSkeleton } from '../../components/Skeleton'
 import { ThemeSelect } from '../../components/ThemeSelect'
@@ -28,7 +29,6 @@ import { Permission } from '../../types/permissions.generated'
 const TERMINAL_ORDER_STATUSES = new Set([
   'filled',
   'cancelled',
-  'canceled',
   'rejected',
   'error',
   'expired',
@@ -42,7 +42,7 @@ const OrderCard: React.FC<{
 }> = ({ order, canCancel, canCancelNow }) => {
   const { t, i18n } = useTranslation('orders')
   const cancelOrder = useCancelOrder()
-  const isTerminal = TERMINAL_ORDER_STATUSES.has(order.status.toLowerCase())
+  const isTerminal = TERMINAL_ORDER_STATUSES.has(canonicalOrderStatus(order.status))
 
   const handleCancel = (): void => {
     if (!canCancelNow()) return
@@ -57,14 +57,13 @@ const OrderCard: React.FC<{
      * so a CN user who picks the inverted convention doesn't see
      * "filled" rendered in red on a successful trade.
      */
-    switch (status.toLowerCase()) {
+    switch (canonicalOrderStatus(status)) {
       case 'filled':
         return 'text-gain-400 bg-gain-900/20'
       case 'new':
       case 'open':
         return 'text-info-400 bg-info-900/20'
       case 'cancelled':
-      case 'canceled':
       case 'closed':
         return 'text-muted-400 bg-muted-900/20'
       case 'rejected':
@@ -288,7 +287,7 @@ export const Orders: React.FC = () => {
   const { data: orders = [], isLoading: ordersLoading } = useOrders({ limit: 50 })
   const { data: executions = [], isLoading: executionsLoading } = useExecutions({ limit: 50 })
   const filteredOrders = orders.filter(
-    (order: Order) => statusFilter === 'all' || order.status.toLowerCase() === statusFilter
+    (order: Order) => statusFilter === 'all' || canonicalOrderStatus(order.status) === statusFilter
   )
 
   const openNewOrder = (): void => {
@@ -354,11 +353,16 @@ export const Orders: React.FC = () => {
   const statusOptions = [
     { value: 'all', label: t('filters.options.all') },
     { value: 'new', label: t('filters.options.new') },
+    { value: 'submitted', label: t('filters.options.submitted') },
+    { value: 'pending', label: t('filters.options.pending') },
+    { value: 'pending_new', label: t('filters.options.pending_new') },
     { value: 'open', label: t('filters.options.open') },
     { value: 'partially_filled', label: t('filters.options.partiallyFilled') },
     { value: 'filled', label: t('filters.options.filled') },
     { value: 'cancelled', label: t('filters.options.cancelled') },
     { value: 'rejected', label: t('filters.options.rejected') },
+    { value: 'closed', label: t('filters.options.closed') },
+    { value: 'expired', label: t('filters.options.expired') },
   ]
 
   return (

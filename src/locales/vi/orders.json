@@ -18,7 +18,13 @@
       "partially_filled": "Khớp một phần",
       "filled": "Đã khớp",
       "cancelled": "Đã hủy",
-      "rejected": "Bị từ chối"
+      "rejected": "Bị từ chối",
+      "canceled": "Đã hủy",
+      "submitted": "Đã gửi",
+      "pending": "Đang chờ",
+      "pending_new": "Chờ tiếp nhận",
+      "closed": "Đã đóng",
+      "expired": "Đã hết hạn"
     }
   },
   "orderCard": {

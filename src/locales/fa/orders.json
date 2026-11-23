@@ -18,7 +18,13 @@
       "partially_filled": "بخشی اجرا شده",
       "filled": "اجرا شده",
       "cancelled": "لغو شده",
-      "rejected": "رد شده"
+      "rejected": "رد شده",
+      "canceled": "لغو شده",
+      "submitted": "ارسال شده",
+      "pending": "در انتظار",
+      "pending_new": "در انتظار پذیرش",
+      "closed": "بسته شده",
+      "expired": "منقضی شده"
     }
   },
   "orderCard": {

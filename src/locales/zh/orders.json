@@ -18,7 +18,13 @@
       "partially_filled": "部分成交",
       "filled": "已成交",
       "cancelled": "已取消",
-      "rejected": "已拒绝"
+      "rejected": "已拒绝",
+      "canceled": "已取消",
+      "submitted": "已提交",
+      "pending": "待处理",
+      "pending_new": "待受理",
+      "closed": "已关闭",
+      "expired": "已过期"
     }
   },
   "orderCard": {

@@ -18,7 +18,13 @@
       "partially_filled": "Čiastočne splnený",
       "filled": "Splnený",
       "cancelled": "Zrušený",
-      "rejected": "Odmietnutý"
+      "rejected": "Odmietnutý",
+      "canceled": "Zrušený",
+      "submitted": "Odoslaný",
+      "pending": "Čakajúci",
+      "pending_new": "Čakajúci na prijatie",
+      "closed": "Uzavretý",
+      "expired": "Expirovaný"
     }
   },
   "orderCard": {

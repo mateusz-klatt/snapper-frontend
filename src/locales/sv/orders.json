@@ -18,7 +18,13 @@
       "partially_filled": "Delvis utförd",
       "filled": "Utförd",
       "cancelled": "Makulerad",
-      "rejected": "Avvisad"
+      "rejected": "Avvisad",
+      "canceled": "Makulerad",
+      "submitted": "Inskickad",
+      "pending": "Väntande",
+      "pending_new": "Väntar på godkännande",
+      "closed": "Stängd",
+      "expired": "Utgången"
     }
   },
   "orderCard": {

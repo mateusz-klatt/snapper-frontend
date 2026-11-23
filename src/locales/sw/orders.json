@@ -18,7 +18,13 @@
       "partially_filled": "Imetekelezwa kwa Sehemu",
       "filled": "Imetekelezwa",
       "cancelled": "Imeghairiwa",
-      "rejected": "Imekataliwa"
+      "rejected": "Imekataliwa",
+      "canceled": "Imeghairiwa",
+      "submitted": "Imewasilishwa",
+      "pending": "Inasubiri",
+      "pending_new": "Inasubiri Kukubaliwa",
+      "closed": "Imefungwa",
+      "expired": "Muda Umeisha"
     }
   },
   "orderCard": {
