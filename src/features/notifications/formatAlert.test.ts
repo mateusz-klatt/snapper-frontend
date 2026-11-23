@@ -80,7 +80,7 @@ describe.each([
     language: 'de',
     buy: 'KAUF',
     sell: 'VERKAUF',
-    ambiguous: 'Mehrdeutige Antwort des Handelsplatzes',
+    ambiguous: 'Mehrdeutige Antwort der Börse',
     warning: 'gehen Sie nicht davon aus, dass die Position geschlossen ist',
     health: 'Warnung',
   },
