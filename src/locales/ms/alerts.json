@@ -11,9 +11,9 @@
   "alertType": {
     "critical_system_error": "Ralat sistem",
     "margin_warning": "Amaran margin",
-    "order_fill_full": "Pesanan dipenuhi",
+    "order_fill_full": "Pesanan dilaksanakan sepenuhnya",
     "order_rejected": "Pesanan ditolak",
-    "position_stop_loss_fired": "Stop-loss dicetuskan"
+    "position_stop_loss_fired": "Henti rugi dicetuskan"
   },
   "argument": {
     "reason": {
@@ -36,9 +36,9 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} dilaksanakan di {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} dilaksanakan di {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} ditolak: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — pengesahan dengan bursa masih belum selesai, jangan anggap posisi telah ditutup",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — pengesahan dengan bursa masih belum selesai, jangan anggap posisi telah ditutup",
-    "position_stop_loss_fired": "Stop-loss dicetuskan pada {{0}} ({{1}})"
+    "order_unknown": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — pengesahan dengan platform masih belum selesai, jangan anggap posisi telah ditutup",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} status tidak diketahui: {{3}} — pengesahan dengan platform masih belum selesai, jangan anggap posisi telah ditutup",
+    "position_stop_loss_fired": "Henti rugi dicetuskan pada {{0}} ({{1}})"
   },
   "detail": {
     "navTitle": "Butiran amaran",
@@ -72,9 +72,9 @@
   "title": {
     "critical_system_error": "Sistem merosot: {{0}}",
     "margin_warning": "Amaran margin",
-    "order_fill_full": "Pesanan dipenuhi",
+    "order_fill_full": "Pesanan dilaksanakan sepenuhnya",
     "order_rejected": "Pesanan ditolak",
     "order_unknown": "Status pesanan tidak diketahui",
-    "position_stop_loss_fired": "Stop-loss dicetuskan"
+    "position_stop_loss_fired": "Henti rugi dicetuskan"
   }
 }

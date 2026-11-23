@@ -11,9 +11,9 @@
   "alertType": {
     "critical_system_error": "Earráid chórais",
     "margin_warning": "Rabhadh corrlaigh",
-    "order_fill_full": "Ordú comhlíonta",
+    "order_fill_full": "Ordú forghníomhaithe",
     "order_rejected": "Ordú diúltaithe",
-    "position_stop_loss_fired": "Spreagadh stopchaillteanas"
+    "position_stop_loss_fired": "Spreagadh stad caillteanais"
   },
   "argument": {
     "reason": {
@@ -33,12 +33,12 @@
   "body": {
     "critical_system_error": "{{0}}/{{1}} thuairiscigh {{2}} ar feadh {{3}} chomhartha heartbeat as a chéile",
     "margin_warning": "{{0}} {{1}} {{2}} blocáilte mar gheall ar chorrlach: {{3}}",
-    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} comhlíonta ar {{4}}",
-    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} comhlíonta ar {{4}}",
+    "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} forghníomhaithe ar {{4}}",
+    "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} forghníomhaithe ar {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} diúltaithe: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} stádas anaithnid: {{3}} — tá fíorú an mhalartáin ar feitheamh; ná glac leis go bhfuil an suíomh dúnta",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} stádas anaithnid: {{3}} — tá fíorú an mhalartáin ar feitheamh; ná glac leis go bhfuil an suíomh dúnta",
-    "position_stop_loss_fired": "Spreagadh stopchaillteanas do {{0}} ({{1}})"
+    "order_unknown": "{{0}} {{1}} {{2}} stádas anaithnid: {{3}} — tá fíorú an ardáin ar feitheamh; ná glac leis go bhfuil an suíomh dúnta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} stádas anaithnid: {{3}} — tá fíorú an ardáin ar feitheamh; ná glac leis go bhfuil an suíomh dúnta",
+    "position_stop_loss_fired": "Spreagadh stad caillteanais do {{0}} ({{1}})"
   },
   "detail": {
     "navTitle": "Sonraí an fholáirimh",
@@ -72,9 +72,9 @@
   "title": {
     "critical_system_error": "Díghrádú córais: {{0}}",
     "margin_warning": "Rabhadh corrlaigh",
-    "order_fill_full": "Ordú comhlíonta",
+    "order_fill_full": "Ordú forghníomhaithe",
     "order_rejected": "Ordú diúltaithe",
     "order_unknown": "Stádas an ordaithe anaithnid",
-    "position_stop_loss_fired": "Spreagadh stopchaillteanas"
+    "position_stop_loss_fired": "Spreagadh stad caillteanais"
   }
 }

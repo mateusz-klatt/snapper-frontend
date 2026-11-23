@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} įvykdyta biržoje {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} įvykdyta biržoje {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} atmesta: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} būsena nežinoma: {{3}} — vis dar laukiama biržos patikros; nemanykite, kad pozicija uždaryta",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} būsena nežinoma: {{3}} — vis dar laukiama biržos patikros; nemanykite, kad pozicija uždaryta",
+    "order_unknown": "{{0}} {{1}} {{2}} būsena nežinoma: {{3}} — vis dar laukiama platformos patikros; nemanykite, kad pozicija uždaryta",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} būsena nežinoma: {{3}} — vis dar laukiama platformos patikros; nemanykite, kad pozicija uždaryta",
     "position_stop_loss_fired": "Stop-loss suveikė {{0}} ({{1}})"
   },
   "detail": {

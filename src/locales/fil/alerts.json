@@ -13,11 +13,11 @@
     "margin_warning": "Babala sa margin",
     "order_fill_full": "Naisagawa ang order",
     "order_rejected": "Tinanggihan ang order",
-    "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi"
+    "position_stop_loss_fired": "Na-activate ang stop-loss"
   },
   "argument": {
     "reason": {
-      "ambiguous": "Malabong tugon ng exchange",
+      "ambiguous": "Malabong tugon ng palitan",
       "unknown": "Hindi kilalang dahilan"
     },
     "side": {
@@ -36,9 +36,9 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} naisagawa sa {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} naisagawa sa {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} tinanggihan: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} hindi alam ang status: {{3}} — nakabinbin ang beripikasyon sa exchange; huwag ipagpalagay na sarado ang posisyon",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hindi alam ang status: {{3}} — nakabinbin ang beripikasyon sa exchange; huwag ipagpalagay na sarado ang posisyon",
-    "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi sa {{0}} ({{1}})"
+    "order_unknown": "{{0}} {{1}} {{2}} hindi alam ang status: {{3}} — nakabinbin ang beripikasyon sa plataporma; huwag ipagpalagay na sarado ang posisyon",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hindi alam ang status: {{3}} — nakabinbin ang beripikasyon sa plataporma; huwag ipagpalagay na sarado ang posisyon",
+    "position_stop_loss_fired": "Na-activate ang stop-loss sa {{0}} ({{1}})"
   },
   "detail": {
     "navTitle": "Detalye ng alerto",
@@ -75,6 +75,6 @@
     "order_fill_full": "Naisagawa ang order",
     "order_rejected": "Tinanggihan ang order",
     "order_unknown": "Hindi alam ang status ng order",
-    "position_stop_loss_fired": "Na-activate ang tigil-pagkalugi"
+    "position_stop_loss_fired": "Na-activate ang stop-loss"
   }
 }

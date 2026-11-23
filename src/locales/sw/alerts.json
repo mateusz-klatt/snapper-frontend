@@ -11,13 +11,13 @@
   "alertType": {
     "critical_system_error": "Hitilafu ya mfumo",
     "margin_warning": "Onyo la dhamana",
-    "order_fill_full": "Agizo limetekelezwa",
-    "order_rejected": "Agizo limekataliwa",
+    "order_fill_full": "Oda imetekelezwa",
+    "order_rejected": "Oda imekataliwa",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
   },
   "argument": {
     "reason": {
-      "ambiguous": "Jibu lisiloeleweka kutoka soko la biashara",
+      "ambiguous": "Jibu lisiloeleweka kutoka soko la ubadilishaji",
       "unknown": "Sababu haijulikani"
     },
     "side": {
@@ -36,8 +36,8 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} limetekelezwa kwenye {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} limetekelezwa kwenye {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} limekataliwa: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} hali haijulikani: {{3}} — uthibitishaji kutoka soko la biashara unasubiriwa; usidhani kuwa nafasi imefungwa",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hali haijulikani: {{3}} — uthibitishaji kutoka soko la biashara unasubiriwa; usidhani kuwa nafasi imefungwa",
+    "order_unknown": "{{0}} {{1}} {{2}} hali haijulikani: {{3}} — uthibitishaji kutoka jukwaa la biashara unasubiriwa; usidhani kuwa nafasi imefungwa",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hali haijulikani: {{3}} — uthibitishaji kutoka jukwaa la biashara unasubiriwa; usidhani kuwa nafasi imefungwa",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa kwa {{0}} ({{1}})"
   },
   "detail": {
@@ -72,9 +72,9 @@
   "title": {
     "critical_system_error": "Mfumo umezorota: {{0}}",
     "margin_warning": "Onyo la dhamana",
-    "order_fill_full": "Agizo limetekelezwa",
-    "order_rejected": "Agizo limekataliwa",
-    "order_unknown": "Hali ya agizo haijulikani",
+    "order_fill_full": "Oda imetekelezwa",
+    "order_rejected": "Oda imekataliwa",
+    "order_unknown": "Hali ya oda haijulikani",
     "position_stop_loss_fired": "Kusitisha hasara kumetekelezwa"
   }
 }
