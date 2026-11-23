@@ -4,12 +4,13 @@
       "row": "Dvaput dodirnite za prikaz detalja upozorenja"
     },
     "label": {
-      "dismissButton": "Odbaci upozorenje"
+      "dismissButton": "Odbaci upozorenje",
+      "row": "{{0}}. {{1}}. Prioritet: {{2}}."
     }
   },
   "alertType": {
     "critical_system_error": "Greška sistema",
-    "margin_warning": "Upozorenje o margini",
+    "margin_warning": "Upozorenje o marginu",
     "order_fill_full": "Nalog izvršen",
     "order_rejected": "Nalog odbijen",
     "position_stop_loss_fired": "Stop-loss aktiviran"
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Detalji upozorenja",
+    "priority": "Prioritet",
+    "safetyCritical": "Bezbednosno kritično",
     "sourceTopic": "Izvorna tema",
     "thread": "Nit",
-    "timestamp": "Vremenska oznaka"
+    "timestamp": "Vremenska oznaka",
+    "type": "Tip"
   },
   "empty": {
     "message": "Nova upozorenja pojaviće se ovde kada se aktiviraju.",
@@ -67,7 +71,7 @@
   },
   "title": {
     "critical_system_error": "Sistem degradiran: {{0}}",
-    "margin_warning": "Upozorenje o margini",
+    "margin_warning": "Upozorenje o marginu",
     "order_fill_full": "Nalog izvršen",
     "order_rejected": "Nalog odbijen",
     "order_unknown": "Status naloga nepoznat",

@@ -4,13 +4,14 @@
       "row": "Ketik dua kali untuk membuka butiran amaran"
     },
     "label": {
-      "dismissButton": "Ketepikan amaran"
+      "dismissButton": "Ketepikan amaran",
+      "row": "{{0}}. {{1}}. Keutamaan: {{2}}."
     }
   },
   "alertType": {
     "critical_system_error": "Ralat sistem",
     "margin_warning": "Amaran margin",
-    "order_fill_full": "Pesanan dilaksanakan sepenuhnya",
+    "order_fill_full": "Pesanan dipenuhi",
     "order_rejected": "Pesanan ditolak",
     "position_stop_loss_fired": "Stop-loss dicetuskan"
   },
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Butiran amaran",
+    "priority": "Keutamaan",
+    "safetyCritical": "Kritikal untuk keselamatan",
     "sourceTopic": "Topik sumber",
     "thread": "Bebenang",
-    "timestamp": "Cap masa"
+    "timestamp": "Cap masa",
+    "type": "Jenis"
   },
   "empty": {
     "message": "Amaran baharu akan muncul di sini apabila dicetuskan.",
@@ -68,7 +72,7 @@
   "title": {
     "critical_system_error": "Sistem merosot: {{0}}",
     "margin_warning": "Amaran margin",
-    "order_fill_full": "Pesanan dilaksanakan sepenuhnya",
+    "order_fill_full": "Pesanan dipenuhi",
     "order_rejected": "Pesanan ditolak",
     "order_unknown": "Status pesanan tidak diketahui",
     "position_stop_loss_fired": "Stop-loss dicetuskan"

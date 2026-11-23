@@ -4,7 +4,8 @@
       "row": "Pieskarieties divreiz, lai atvērtu brīdinājuma detaļas"
     },
     "label": {
-      "dismissButton": "Aizvērt brīdinājumu"
+      "dismissButton": "Aizvērt brīdinājumu",
+      "row": "{{0}}. {{1}}. Prioritāte: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Brīdinājuma detaļas",
+    "priority": "Prioritāte",
+    "safetyCritical": "Drošībai kritisks",
     "sourceTopic": "Avota temats",
     "thread": "Pavediens",
-    "timestamp": "Laika zīmogs"
+    "timestamp": "Laika zīmogs",
+    "type": "Tips"
   },
   "empty": {
     "message": "Jauni brīdinājumi parādīsies šeit, kad tie tiks aktivizēti.",

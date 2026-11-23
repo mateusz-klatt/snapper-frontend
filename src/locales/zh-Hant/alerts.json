@@ -4,7 +4,8 @@
       "row": "點兩下以開啟警示詳情"
     },
     "label": {
-      "dismissButton": "關閉警示"
+      "dismissButton": "關閉警示",
+      "row": "{{0}}。{{1}}。優先級：{{2}}。"
     }
   },
   "alertType": {
@@ -35,15 +36,18 @@
     "order_fill_full": "{{0}} {{1}} {{2}} 以 {{3}} 在 {{4}} 成交",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} 以 {{3}} 在 {{4}} 成交",
     "order_rejected": "{{0}} {{1}} {{2}} 已拒絕：{{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} 狀態未知：{{3}} — 正在等待交易所核實；請勿假定倉位已平倉",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} 狀態未知：{{3}} — 正在等待交易所核實；請勿假定倉位已平倉",
+    "order_unknown": "{{0}} {{1}} {{2}} 狀態未知：{{3}} — 正在等待交易所核實；請勿假定持倉已平倉",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} 狀態未知：{{3}} — 正在等待交易所核實；請勿假定持倉已平倉",
     "position_stop_loss_fired": "{{0}}（{{1}}）觸發止損"
   },
   "detail": {
     "navTitle": "警示詳情",
+    "priority": "優先級",
+    "safetyCritical": "安全關鍵",
     "sourceTopic": "來源主題",
     "thread": "執行緒",
-    "timestamp": "時間戳記"
+    "timestamp": "時間戳記",
+    "type": "類型"
   },
   "empty": {
     "message": "新警示觸發後會顯示在此。",

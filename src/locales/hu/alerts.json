@@ -4,7 +4,8 @@
       "row": "Koppintson duplán a riasztás részleteinek megnyitásához"
     },
     "label": {
-      "dismissButton": "Riasztás elvetése"
+      "dismissButton": "Riasztás elvetése",
+      "row": "{{0}}. {{1}}. Prioritás: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Riasztás részletei",
+    "priority": "Prioritás",
+    "safetyCritical": "Biztonsági szempontból kritikus",
     "sourceTopic": "Forrástéma",
     "thread": "Szál",
-    "timestamp": "Időbélyeg"
+    "timestamp": "Időbélyeg",
+    "type": "Típus"
   },
   "empty": {
     "message": "Az új riasztások itt jelennek meg, amikor aktiválódnak.",

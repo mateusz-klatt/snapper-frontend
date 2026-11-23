@@ -4,7 +4,8 @@
       "row": "ダブルタップしてアラート詳細を開く"
     },
     "label": {
-      "dismissButton": "アラートを閉じる"
+      "dismissButton": "アラートを閉じる",
+      "row": "{{0}}。{{1}}。優先度：{{2}}。"
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "アラート詳細",
+    "priority": "優先度",
+    "safetyCritical": "安全上重要",
     "sourceTopic": "送信元トピック",
     "thread": "スレッド",
-    "timestamp": "日時"
+    "timestamp": "日時",
+    "type": "タイプ"
   },
   "empty": {
     "message": "新しいアラートが発動するとここに表示されます。",

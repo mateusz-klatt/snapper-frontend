@@ -4,7 +4,8 @@
       "row": "Nhấn đúp để mở chi tiết cảnh báo"
     },
     "label": {
-      "dismissButton": "Bỏ qua cảnh báo"
+      "dismissButton": "Bỏ qua cảnh báo",
+      "row": "{{0}}. {{1}}. Mức ưu tiên: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Chi tiết cảnh báo",
+    "priority": "Mức ưu tiên",
+    "safetyCritical": "Quan trọng đối với an toàn",
     "sourceTopic": "Chủ đề nguồn",
     "thread": "Luồng",
-    "timestamp": "Thời gian"
+    "timestamp": "Thời gian",
+    "type": "Loại"
   },
   "empty": {
     "message": "Cảnh báo mới sẽ xuất hiện ở đây khi được kích hoạt.",

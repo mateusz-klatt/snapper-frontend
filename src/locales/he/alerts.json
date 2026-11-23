@@ -4,7 +4,8 @@
       "row": "הקשה כפולה לפתיחת פרטי ההתראה"
     },
     "label": {
-      "dismissButton": "סגירת התראה"
+      "dismissButton": "סגירת התראה",
+      "row": "{{0}}. {{1}}. עדיפות: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "פרטי התראה",
+    "priority": "עדיפות",
+    "safetyCritical": "קריטי לבטיחות",
     "sourceTopic": "נושא מקור",
     "thread": "שרשור",
-    "timestamp": "חותמת זמן"
+    "timestamp": "חותמת זמן",
+    "type": "סוג"
   },
   "empty": {
     "message": "התראות חדשות יופיעו כאן כשהן יופעלו.",

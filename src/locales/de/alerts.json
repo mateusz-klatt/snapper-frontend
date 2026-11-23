@@ -4,7 +4,8 @@
       "row": "Doppeltippen, um Alarmdetails zu öffnen"
     },
     "label": {
-      "dismissButton": "Alarm verwerfen"
+      "dismissButton": "Alarm verwerfen",
+      "row": "{{0}}. {{1}}. Priorität: {{2}}."
     }
   },
   "alertType": {
@@ -35,15 +36,18 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} ausgeführt auf {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} ausgeführt auf {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} abgelehnt: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} hat einen unbekannten Status: {{3}} — die Verifizierung durch die Börse steht noch aus; gehen Sie nicht davon aus, dass die Position geschlossen ist",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hat einen unbekannten Status: {{3}} — die Verifizierung durch die Börse steht noch aus; gehen Sie nicht davon aus, dass die Position geschlossen ist",
+    "order_unknown": "{{0}} {{1}} {{2}} hat einen unbekannten Status: {{3}} — die Verifizierung durch den Handelsplatz steht noch aus; gehen Sie nicht davon aus, dass die Position geschlossen ist",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} hat einen unbekannten Status: {{3}} — die Verifizierung durch den Handelsplatz steht noch aus; gehen Sie nicht davon aus, dass die Position geschlossen ist",
     "position_stop_loss_fired": "Stop-Loss ausgelöst für {{0}} ({{1}})"
   },
   "detail": {
     "navTitle": "Alarmdetails",
+    "priority": "Priorität",
+    "safetyCritical": "Sicherheitskritisch",
     "sourceTopic": "Quellthema",
-    "thread": "Meldungsgruppe",
-    "timestamp": "Zeitstempel"
+    "thread": "Thread",
+    "timestamp": "Zeitstempel",
+    "type": "Typ"
   },
   "empty": {
     "message": "Neue Alarme erscheinen hier, sobald sie ausgelöst werden.",

@@ -4,7 +4,8 @@
       "row": "Dvojitým ťuknutím otvoríte podrobnosti upozornenia"
     },
     "label": {
-      "dismissButton": "Zavrieť upozornenie"
+      "dismissButton": "Zavrieť upozornenie",
+      "row": "{{0}}. {{1}}. Priorita: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Detail upozornenia",
+    "priority": "Priorita",
+    "safetyCritical": "Kritické pre bezpečnosť",
     "sourceTopic": "Zdrojová téma",
     "thread": "Vlákno",
-    "timestamp": "Čas"
+    "timestamp": "Čas",
+    "type": "Typ"
   },
   "empty": {
     "message": "Nové upozornenia sa zobrazia tu, keď sa spustia.",

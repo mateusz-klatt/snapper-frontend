@@ -4,13 +4,14 @@
       "row": "अलर्ट विवरण खोलने के लिए डबल-टैप करें"
     },
     "label": {
-      "dismissButton": "अलर्ट हटाएं"
+      "dismissButton": "अलर्ट हटाएं",
+      "row": "{{0}}। {{1}}। प्राथमिकता: {{2}}।"
     }
   },
   "alertType": {
     "critical_system_error": "सिस्टम त्रुटि",
     "margin_warning": "मार्जिन चेतावनी",
-    "order_fill_full": "ऑर्डर निष्पादित हुआ",
+    "order_fill_full": "ऑर्डर पूरा हुआ",
     "order_rejected": "ऑर्डर अस्वीकृत",
     "position_stop_loss_fired": "स्टॉप-लॉस ट्रिगर हुआ"
   },
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "अलर्ट विवरण",
+    "priority": "प्राथमिकता",
+    "safetyCritical": "सुरक्षा के लिए महत्वपूर्ण",
     "sourceTopic": "सोर्स टॉपिक",
     "thread": "थ्रेड",
-    "timestamp": "टाइमस्टैम्प"
+    "timestamp": "टाइमस्टैम्प",
+    "type": "टाइप"
   },
   "empty": {
     "message": "नए अलर्ट ट्रिगर होने पर यहां दिखाई देंगे।",
@@ -68,7 +72,7 @@
   "title": {
     "critical_system_error": "सिस्टम की स्थिति अवनत: {{0}}",
     "margin_warning": "मार्जिन चेतावनी",
-    "order_fill_full": "ऑर्डर निष्पादित हुआ",
+    "order_fill_full": "ऑर्डर पूरा हुआ",
     "order_rejected": "ऑर्डर अस्वीकृत",
     "order_unknown": "ऑर्डर की स्थिति अज्ञात",
     "position_stop_loss_fired": "स्टॉप-लॉस ट्रिगर हुआ"

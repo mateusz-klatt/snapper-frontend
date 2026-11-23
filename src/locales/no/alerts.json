@@ -4,7 +4,8 @@
       "row": "Dobbelttrykk for å åpne varseldetaljer"
     },
     "label": {
-      "dismissButton": "Avvis varsel"
+      "dismissButton": "Avvis varsel",
+      "row": "{{0}}. {{1}}. Prioritet: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Varseldetaljer",
+    "priority": "Prioritet",
+    "safetyCritical": "Sikkerhetskritisk",
     "sourceTopic": "Kildetema",
     "thread": "Tråd",
-    "timestamp": "Tidsstempel"
+    "timestamp": "Tidsstempel",
+    "type": "Type"
   },
   "empty": {
     "message": "Nye varsler vises her når de utløses.",

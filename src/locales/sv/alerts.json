@@ -4,7 +4,8 @@
       "row": "Dubbeltryck för att öppna larmdetaljer"
     },
     "label": {
-      "dismissButton": "Avfärda larm"
+      "dismissButton": "Avfärda larm",
+      "row": "{{0}}. {{1}}. Prioritet: {{2}}."
     }
   },
   "alertType": {
@@ -35,15 +36,18 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} utförd på {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} utförd på {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} avvisad: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} status är okänd: {{3}} — verifiering hos börsen inväntas; anta inte att positionen är stängd",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} status är okänd: {{3}} — verifiering hos börsen inväntas; anta inte att positionen är stängd",
+    "order_unknown": "{{0}} {{1}} {{2}} status är okänd: {{3}} — verifiering hos handelsplatsen inväntas; anta inte att positionen är stängd",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} status är okänd: {{3}} — verifiering hos handelsplatsen inväntas; anta inte att positionen är stängd",
     "position_stop_loss_fired": "Stop-loss utlöst för {{0}} ({{1}})"
   },
   "detail": {
     "navTitle": "Larmdetaljer",
+    "priority": "Prioritet",
+    "safetyCritical": "Säkerhetskritisk",
     "sourceTopic": "Källämne",
     "thread": "Tråd",
-    "timestamp": "Tidsstämpel"
+    "timestamp": "Tidsstämpel",
+    "type": "Typ"
   },
   "empty": {
     "message": "Nya larm visas här när de utlöses.",

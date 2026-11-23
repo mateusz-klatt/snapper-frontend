@@ -4,7 +4,8 @@
       "row": "Atinge de două ori pentru a deschide detaliile alertei"
     },
     "label": {
-      "dismissButton": "Închide alerta"
+      "dismissButton": "Închide alerta",
+      "row": "{{0}}. {{1}}. Prioritate: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Detalii alertă",
+    "priority": "Prioritate",
+    "safetyCritical": "Critic pentru siguranță",
     "sourceTopic": "Topic sursă",
     "thread": "Fir",
-    "timestamp": "Marcaj de timp"
+    "timestamp": "Marcaj de timp",
+    "type": "Tip"
   },
   "empty": {
     "message": "Alertele noi vor apărea aici când sunt declanșate.",

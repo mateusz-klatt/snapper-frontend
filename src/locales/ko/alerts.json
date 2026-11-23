@@ -4,7 +4,8 @@
       "row": "알림 세부 정보를 열려면 두 번 탭하세요"
     },
     "label": {
-      "dismissButton": "알림 닫기"
+      "dismissButton": "알림 닫기",
+      "row": "{{0}}. {{1}}. 우선순위: {{2}}."
     }
   },
   "alertType": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "알림 세부 정보",
+    "priority": "우선순위",
+    "safetyCritical": "안전상 중요",
     "sourceTopic": "소스 토픽",
     "thread": "스레드",
-    "timestamp": "타임스탬프"
+    "timestamp": "타임스탬프",
+    "type": "유형"
   },
   "empty": {
     "message": "새 알림은 발생 시 여기에 표시됩니다.",

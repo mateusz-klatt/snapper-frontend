@@ -4,14 +4,15 @@
       "row": "Tvípikkaðu til að opna upplýsingar um viðvörun"
     },
     "label": {
-      "dismissButton": "Hunsa viðvörun"
+      "dismissButton": "Hunsa viðvörun",
+      "row": "{{0}}. {{1}}. Forgangur: {{2}}."
     }
   },
   "alertType": {
     "critical_system_error": "Kerfisvilla",
     "margin_warning": "Viðvörun um tryggingarfé",
-    "order_fill_full": "Fyrirmæli framkvæmd",
-    "order_rejected": "Fyrirmælum hafnað",
+    "order_fill_full": "Pöntun framkvæmd",
+    "order_rejected": "Pöntun hafnað",
     "position_stop_loss_fired": "Stop-loss virkjað"
   },
   "argument": {
@@ -35,15 +36,18 @@
     "order_fill_full": "{{0}} {{1}} {{2}} @ {{3}} framkvæmt á {{4}}",
     "order_fill_full_quoted": "{{0}} {{1}} {{2}} @ {{3}} framkvæmt á {{4}}",
     "order_rejected": "{{0}} {{1}} {{2}} hafnað: {{3}}",
-    "order_unknown": "{{0}} {{1}} {{2}} staða óþekkt: {{3}} — staðfesting hjá vettvanginum er enn í bið, ekki gera ráð fyrir að stöðunni hafi verið lokað",
-    "order_unknown_unresolved": "{{0}} {{1}} {{2}} staða óþekkt: {{3}} — staðfesting hjá vettvanginum er enn í bið, ekki gera ráð fyrir að stöðunni hafi verið lokað",
+    "order_unknown": "{{0}} {{1}} {{2}} staða óþekkt: {{3}} — staðfesting hjá kauphöll er enn í bið, ekki gera ráð fyrir að stöðunni hafi verið lokað",
+    "order_unknown_unresolved": "{{0}} {{1}} {{2}} staða óþekkt: {{3}} — staðfesting hjá kauphöll er enn í bið, ekki gera ráð fyrir að stöðunni hafi verið lokað",
     "position_stop_loss_fired": "Stop-loss virkjað fyrir {{0}} ({{1}})"
   },
   "detail": {
     "navTitle": "Upplýsingar um viðvörun",
+    "priority": "Forgangur",
+    "safetyCritical": "Öryggislega mikilvægt",
     "sourceTopic": "Upprunarás",
     "thread": "Þráður",
-    "timestamp": "Tími"
+    "timestamp": "Tími",
+    "type": "Tegund"
   },
   "empty": {
     "message": "Nýjar viðvaranir birtast hér þegar þær virkjast.",
@@ -68,9 +72,9 @@
   "title": {
     "critical_system_error": "Kerfi í skertu ástandi: {{0}}",
     "margin_warning": "Viðvörun um tryggingarfé",
-    "order_fill_full": "Fyrirmæli framkvæmd",
-    "order_rejected": "Fyrirmælum hafnað",
-    "order_unknown": "Staða fyrirmæla óþekkt",
+    "order_fill_full": "Pöntun framkvæmd",
+    "order_rejected": "Pöntun hafnað",
+    "order_unknown": "Staða pöntunar óþekkt",
     "position_stop_loss_fired": "Stop-loss virkjað"
   }
 }

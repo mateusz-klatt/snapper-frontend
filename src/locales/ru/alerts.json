@@ -4,14 +4,15 @@
       "row": "Дважды коснитесь, чтобы открыть детали оповещения"
     },
     "label": {
-      "dismissButton": "Закрыть оповещение"
+      "dismissButton": "Закрыть оповещение",
+      "row": "{{0}}. {{1}}. Приоритет: {{2}}."
     }
   },
   "alertType": {
     "critical_system_error": "Системная ошибка",
     "margin_warning": "Предупреждение о марже",
-    "order_fill_full": "Заявка исполнена",
-    "order_rejected": "Заявка отклонена",
+    "order_fill_full": "Ордер исполнен",
+    "order_rejected": "Ордер отклонён",
     "position_stop_loss_fired": "Стоп-лосс сработал"
   },
   "argument": {
@@ -41,9 +42,12 @@
   },
   "detail": {
     "navTitle": "Детали оповещения",
+    "priority": "Приоритет",
+    "safetyCritical": "Критично для безопасности",
     "sourceTopic": "Исходный топик",
     "thread": "Поток",
-    "timestamp": "Время"
+    "timestamp": "Время",
+    "type": "Тип"
   },
   "empty": {
     "message": "Новые оповещения появятся здесь, когда они сработают.",
@@ -68,9 +72,9 @@
   "title": {
     "critical_system_error": "Система деградирована: {{0}}",
     "margin_warning": "Предупреждение о марже",
-    "order_fill_full": "Заявка исполнена",
-    "order_rejected": "Заявка отклонена",
-    "order_unknown": "Статус заявки неизвестен",
+    "order_fill_full": "Ордер исполнен",
+    "order_rejected": "Ордер отклонён",
+    "order_unknown": "Статус ордера неизвестен",
     "position_stop_loss_fired": "Стоп-лосс сработал"
   }
 }
