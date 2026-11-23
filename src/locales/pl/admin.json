@@ -44,14 +44,14 @@
   "deskMemberships": {
     "accessDenied": {
       "title": "Brak dostępu",
-      "message": "Nie masz uprawnień do zarządzania członkostwem w zespołach tradingowych."
+      "message": "Nie masz uprawnień do zarządzania członkostwem w deskach tradingowych."
     },
-    "title": "Członkowie zespołu tradingowego",
-    "subtitle": "Dodawaj aktywnych obserwatorów do zespołu tradingowego lub odbieraj im bieżący dostęp.",
+    "title": "Członkowie desku tradingowego",
+    "subtitle": "Dodawaj aktywnych obserwatorów do desku tradingowego lub odbieraj im bieżący dostęp.",
     "memberCount": "Członkowie: {{count}}",
     "desk": {
-      "label": "Zespół tradingowy",
-      "placeholder": "Wybierz zespół tradingowy..."
+      "label": "Desk tradingowy",
+      "placeholder": "Wybierz desk tradingowy..."
     },
     "add": {
       "usernameLabel": "Nazwa użytkownika obserwatora",
@@ -72,29 +72,29 @@
     "member": "Członek",
     "remove": {
       "action": "Usuń",
-      "actionFor": "Usuń użytkownika {{username}} z zespołu tradingowego",
+      "actionFor": "Usuń użytkownika {{username}} z desku tradingowego",
       "viewerOnly": "Tutaj można usuwać tylko obserwatorów",
-      "title": "Usuń członka zespołu tradingowego",
-      "message": "Usunąć użytkownika \"{{username}}\" z tego zespołu tradingowego? Jego aktywne sesje zostaną zakończone i będzie musiał zalogować się ponownie.",
+      "title": "Usuń członka desku tradingowego",
+      "message": "Usunąć użytkownika \"{{username}}\" z tego desku tradingowego? Jego aktywne sesje zostaną zakończone i będzie musiał zalogować się ponownie.",
       "confirm": "Usuń członka"
     },
     "empty": {
-      "noDesks": "Brak dostępnych zespołów tradingowych",
-      "noDesksHint": "Nie masz obecnie dostępu do zespołu tradingowego, którym możesz zarządzać.",
-      "selectDesk": "Wybierz zespół tradingowy",
-      "selectDeskHint": "Wybierz zespół tradingowy, aby wyświetlić jego członków i nimi zarządzać.",
+      "noDesks": "Brak dostępnych desków tradingowych",
+      "noDesksHint": "Nie masz obecnie dostępu do desku tradingowego, którym możesz zarządzać.",
+      "selectDesk": "Wybierz desk tradingowy",
+      "selectDeskHint": "Wybierz desk tradingowy, aby wyświetlić jego członków i nimi zarządzać.",
       "noMembers": "Brak aktywnych członków",
-      "noMembersHint": "Ten zespół tradingowy nie ma aktywnych członków będących osobami."
+      "noMembersHint": "Ten desk tradingowy nie ma aktywnych członków będących osobami."
     },
     "errors": {
-      "loadDesks": "Błąd ładowania zespołów tradingowych: {{message}}",
-      "loadMembers": "Błąd ładowania członków zespołu tradingowego: {{message}}"
+      "loadDesks": "Błąd ładowania desków tradingowych: {{message}}",
+      "loadMembers": "Błąd ładowania członków desku tradingowego: {{message}}"
     },
     "toast": {
-      "attached": "Użytkownik {{username}} został dodany do zespołu tradingowego",
-      "attachError": "Błąd dodawania obserwatora do zespołu tradingowego",
-      "detached": "Użytkownik {{username}} został usunięty z zespołu tradingowego",
-      "detachError": "Błąd usuwania obserwatora z zespołu tradingowego"
+      "attached": "Użytkownik {{username}} został dodany do desku tradingowego",
+      "attachError": "Błąd dodawania obserwatora do desku tradingowego",
+      "detached": "Użytkownik {{username}} został usunięty z desku tradingowego",
+      "detachError": "Błąd usuwania obserwatora z desku tradingowego"
     }
   },
   "common": {
