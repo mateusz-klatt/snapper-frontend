@@ -1090,19 +1090,7 @@ describe('Orders', () => {
     expect(exportToCSV).toHaveBeenCalledWith(
       'executions.csv',
       ['Order ID', 'Instrument', 'Side', 'Size', 'Price', 'Total', 'Fee', 'Fee Asset', 'Executed'],
-      [
-        [
-          'client-20',
-          'BTC/USD',
-          'sell',
-          '1',
-          '30,000.00',
-          '30,000.00',
-          '0.00',
-          '',
-          fmtDt(executedDate),
-        ],
-      ]
+      [['client-20', 'BTC/USD', 'sell', '1', '30000', '30000', '0', '', fmtDt(executedDate)]]
     )
   })
   it('renders leverage badge when order.leverage is set', async () => {
@@ -1261,8 +1249,58 @@ describe('Orders', () => {
         'Reduce Only',
         'Created',
       ],
-      [['BTC/USD', 'sell', 'limit', 'open', '1.5', '50,000.00', '4', 'true', fmtDt(created)]]
+      [['BTC/USD', 'sell', 'limit', 'open', '1.5', '50000', '4', 'true', fmtDt(created)]]
     )
+  })
+
+  it('writes raw dot-decimal order numbers in the CSV', async () => {
+    const { exportToCSV } = await import('../../lib/csvExport')
+    const user = userEvent.setup()
+    const created = new Date('2024-01-01T00:00:00Z')
+    const mockOrders: Order[] = [
+      {
+        sequenceId: 0,
+        publicId: 'test-pid',
+        timestamp: created,
+        sessionId: 'test-sid',
+        clientOrderId: 'raw-csv',
+        instrument: 'XRP/EUR',
+        exchange: 'kraken',
+        side: 'buy',
+        orderType: 'limit',
+        size: 9.99999993923e-9,
+        filledSize: 0,
+        price: 12345.67,
+        status: 'open',
+        createdAt: created,
+        updatedAt: null,
+      },
+    ]
+    const { useOrders } = await import('../../hooks/queries/orders')
+
+    await i18n.changeLanguage('pl')
+
+    try {
+      vi.mocked(useOrders).mockReturnValue({
+        data: mockOrders,
+        isLoading: false,
+        refetch: vi.fn(),
+      } as never)
+      renderWithProviders(<Orders />)
+      await waitFor(() => {
+        expect(screen.getByText('XRP/EUR')).toBeInTheDocument()
+      })
+      await user.click(screen.getByRole('button', { name: /Eksportuj CSV|Export CSV/i }))
+      const rows = vi.mocked(exportToCSV).mock.calls[0]?.[2]
+
+      expect(rows?.[0]?.[4]).toBe('0.00000000999999993923')
+      expect(rows?.[0]?.[5]).toBe('12345.67')
+      expect(rows?.[0]?.join(' ')).not.toContain('≈')
+      expect(rows?.[0]?.[4]).not.toContain(',')
+      expect(rows?.[0]?.[5]).not.toContain(',')
+    } finally {
+      await i18n.changeLanguage('en')
+    }
   })
 
   it('shows New Order button and opens modal on click', async () => {

@@ -2,9 +2,9 @@
  * Shared display rounding for quantities, prices, and money.
  *
  * Columns keep a fixed fraction length so rows line up. Float noise is rounded
- * away before formatting. Values smaller than half a minor unit render as an
- * approximate zero, never as negative zero, with the exact magnitude available
- * separately for a tooltip.
+ * away before formatting. Values smaller than half a unit at the displayed
+ * precision render as an approximate zero, never as negative zero, with the
+ * exact magnitude available separately for a tooltip.
  */
 
 import { getIntlLocale, resolveLanguageTag } from '../i18n/countryLanguages'
@@ -16,6 +16,7 @@ const MAX_FRACTION_DIGITS = 20
 const NON_FINITE_TEXT = '—'
 const NEAR_ZERO_PREFIX = '≈ '
 const CURRENCY_DIGITS = new Map<string, number>()
+const ISO_CURRENCIES = new Set(Intl.supportedValuesOf('currency').map(code => code.toUpperCase()))
 
 export type SignDisplay = 'auto' | 'never' | 'always' | 'exceptZero'
 
@@ -64,10 +65,16 @@ const roundHalfAwayFromZero = (value: number, fractionDigits: number): number =>
   return parsed
 }
 
+const isIsoCurrency = (currency: string): boolean =>
+  ISO_CURRENCIES.has(currency.trim().toUpperCase())
+
+/**
+ * Minor units for an ISO-4217 currency. Any other asset uses eight decimals.
+ */
 export const currencyFractionDigits = (currency: string): number => {
   const code = currency.trim().toUpperCase()
 
-  if (!/^[A-Z]{3}$/.test(code)) return 2
+  if (!isIsoCurrency(code)) return MAX_QUANTITY_DECIMALS
 
   const cached = CURRENCY_DIGITS.get(code)
 
@@ -279,22 +286,58 @@ export const formatPrice = (
   })
 }
 
+/**
+ * Fiat uses ISO minor units. Any other asset uses its lot size, or trims
+ * float noise to at most eight decimals.
+ */
 export const formatMoney = (
   value: number,
   options: {
     locale: string
     currency: string
-    fractionDigits?: number
-    signDisplay?: SignDisplay
+    fractionDigits?: number | undefined
+    quantityDecimals?: number | null | undefined
+    signDisplay?: SignDisplay | undefined
   }
 ): FormattedNumber => {
-  const fractionDigits = options.fractionDigits ?? currencyFractionDigits(options.currency)
+  const fractionDigits =
+    options.fractionDigits ??
+    (isIsoCurrency(options.currency)
+      ? currencyFractionDigits(options.currency)
+      : quantityFractionDigits(value, options.quantityDecimals ?? null))
 
   return formatScaled(value, {
     locale: options.locale,
     fractionDigits,
     signDisplay: options.signDisplay ?? 'auto',
   })
+}
+
+/** Dot-decimal digits for a CSV cell, without grouping or an approximate-zero mark. */
+export const formatRawDecimal = (value: number): string => {
+  if (!Number.isFinite(value)) return ''
+
+  if (value === 0) return '0'
+
+  const negative = value < 0
+  const text = Math.abs(value).toString()
+
+  if (!text.includes('e')) return negative ? `-${text}` : text
+
+  const marker = text.indexOf('e')
+  const coefficient = text.slice(0, marker)
+  const exponent = Number(text.slice(marker + 1))
+  const dot = coefficient.indexOf('.')
+  const whole = dot === -1 ? coefficient : coefficient.slice(0, dot)
+  const fraction = dot === -1 ? '' : coefficient.slice(dot + 1)
+  const digits = `${whole}${fraction}`
+  const point = whole.length + exponent
+  const body =
+    point <= 0
+      ? `0.${'0'.repeat(-point)}${digits}`
+      : `${digits}${'0'.repeat(point - digits.length)}`
+
+  return negative ? `-${body}` : body
 }
 
 /** Color follows the rounded text, so a displayed zero is never a loss or a gain. */

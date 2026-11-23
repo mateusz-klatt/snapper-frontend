@@ -90,34 +90,26 @@ const BalancesTable: React.FC<Readonly<BalancesTableProps>> = ({ balances, suffi
         </tr>
       </thead>
       <tbody className='font-mono text-alpine-900'>
-        {balances.map(entry => (
-          <tr key={entry.currency} data-testid={`account-balance-${suffix}-${entry.currency}`}>
-            <td className='py-1 pr-4'>{entry.currency}</td>
-            <td className='py-1 pr-4'>
-              <NumericValue
-                formatted={formatMoney(entry.total, { locale, currency: entry.currency })}
-              />
-            </td>
-            <td className='py-1 pr-4'>
-              {entry.free == null ? (
-                noValue
-              ) : (
-                <NumericValue
-                  formatted={formatMoney(entry.free, { locale, currency: entry.currency })}
-                />
-              )}
-            </td>
-            <td className='py-1'>
-              {entry.used == null ? (
-                noValue
-              ) : (
-                <NumericValue
-                  formatted={formatMoney(entry.used, { locale, currency: entry.currency })}
-                />
-              )}
-            </td>
-          </tr>
-        ))}
+        {balances.map(entry => {
+          const quantityDecimals = readDisplayFields(entry).quantityDecimals
+          const amount = (value: number) =>
+            formatMoney(value, { locale, currency: entry.currency, quantityDecimals })
+
+          return (
+            <tr key={entry.currency} data-testid={`account-balance-${suffix}-${entry.currency}`}>
+              <td className='py-1 pr-4'>{entry.currency}</td>
+              <td className='py-1 pr-4'>
+                <NumericValue formatted={amount(entry.total)} />
+              </td>
+              <td className='py-1 pr-4'>
+                {entry.free == null ? noValue : <NumericValue formatted={amount(entry.free)} />}
+              </td>
+              <td className='py-1'>
+                {entry.used == null ? noValue : <NumericValue formatted={amount(entry.used)} />}
+              </td>
+            </tr>
+          )
+        })}
       </tbody>
     </table>
   )

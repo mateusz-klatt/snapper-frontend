@@ -4,6 +4,7 @@ import {
   formatMoney,
   formatPrice,
   formatQuantity,
+  formatRawDecimal,
   intlLocaleFromLanguage,
   isDustPosition,
   maxFractionDigits,
@@ -32,10 +33,11 @@ describe('currencyFractionDigits', () => {
     expect(currencyFractionDigits('JPY')).toBe(0)
   })
 
-  it('uses two digits when the code is not a currency', () => {
-    expect(currencyFractionDigits('')).toBe(2)
-    expect(currencyFractionDigits('USDT')).toBe(2)
-    expect(currencyFractionDigits('USDT')).toBe(2)
+  it('uses eight decimals for an asset that is not ISO-4217', () => {
+    expect(currencyFractionDigits('')).toBe(8)
+    expect(currencyFractionDigits('BTC')).toBe(8)
+    expect(currencyFractionDigits('USDT')).toBe(8)
+    expect(currencyFractionDigits('USDT')).toBe(8)
   })
 
   it('uses two digits when Intl omits a fraction count or rejects the code', () => {
@@ -44,11 +46,11 @@ describe('currencyFractionDigits', () => {
     function NumberFormat(locales?: Intl.LocalesArgument, options?: Intl.NumberFormatOptions) {
       const currency = options && 'currency' in options ? options.currency : undefined
 
-      if (currency === 'XTS') {
+      if (currency === 'GBP') {
         return { resolvedOptions: () => ({}) } as Intl.NumberFormat
       }
 
-      if (currency === 'XXX') {
+      if (currency === 'AUD') {
         throw new RangeError('invalid currency')
       }
 
@@ -59,9 +61,9 @@ describe('currencyFractionDigits', () => {
     Intl.NumberFormat = NumberFormat as typeof Intl.NumberFormat
 
     try {
-      expect(currencyFractionDigits('XTS')).toBe(2)
-      expect(currencyFractionDigits('XXX')).toBe(2)
-      expect(currencyFractionDigits('XXX')).toBe(2)
+      expect(currencyFractionDigits('GBP')).toBe(2)
+      expect(currencyFractionDigits('AUD')).toBe(2)
+      expect(currencyFractionDigits('AUD')).toBe(2)
     } finally {
       Intl.NumberFormat = RealNumberFormat
     }
@@ -241,5 +243,38 @@ describe('formatMoney', () => {
     expect(tiny.text).toBe('≈ 0.00')
     expect(tiny.exactText).not.toBe('0')
     expect(tiny.exactText).toContain('1')
+  })
+
+  it('keeps fiat at minor units and trims other assets to their lot', () => {
+    expect(currencyFractionDigits('EUR')).toBe(2)
+    expect(formatMoney(1.2, { locale: 'en-US', currency: 'EUR' }).text).toBe('1.20')
+    expect(formatMoney(0.004, { locale: 'en-US', currency: 'EUR' }).text).toBe('≈ 0.00')
+    expect(formatMoney(1.2, { locale: 'en-US', currency: 'EUR', quantityDecimals: 8 }).text).toBe(
+      '1.20'
+    )
+    expect(formatMoney(0.004, { locale: 'en-US', currency: 'BTC' }).text).toBe('0.004')
+    expect(formatMoney(0.004, { locale: 'pl-PL', currency: 'BTC' }).text).toBe('0,004')
+    expect(formatMoney(1e-8, { locale: 'pl-PL', currency: 'XRP' }).text).toBe('0,00000001')
+    expect(formatMoney(1e-9, { locale: 'en-US', currency: 'BTC' }).text).toBe('≈ 0.00000000')
+    expect(formatMoney(0.004, { locale: 'en-US', currency: 'BTC', quantityDecimals: 4 }).text).toBe(
+      '0.0040'
+    )
+  })
+})
+
+describe('formatRawDecimal', () => {
+  it('writes a plain dot decimal without grouping or an approximate-zero mark', () => {
+    expect(formatRawDecimal(50000)).toBe('50000')
+    expect(formatRawDecimal(1.5)).toBe('1.5')
+    expect(formatRawDecimal(-1.25)).toBe('-1.25')
+    expect(formatRawDecimal(0)).toBe('0')
+    expect(formatRawDecimal(-0)).toBe('0')
+    expect(formatRawDecimal(Number.NaN)).toBe('')
+    expect(formatRawDecimal(Number.POSITIVE_INFINITY)).toBe('')
+    expect(formatRawDecimal(1e-7)).toBe('0.0000001')
+    expect(formatRawDecimal(-1.5e-7)).toBe('-0.00000015')
+    expect(formatRawDecimal(1e21)).toBe('1' + '0'.repeat(21))
+    expect(formatRawDecimal(1.23e21)).toBe('123' + '0'.repeat(19))
+    expect(formatRawDecimal(9.99999993923e-9)).toBe('0.00000000999999993923')
   })
 })

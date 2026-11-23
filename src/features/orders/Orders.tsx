@@ -14,6 +14,7 @@ import {
   formatMoney,
   formatPrice,
   formatQuantity,
+  formatRawDecimal,
   intlLocaleFromLanguage,
 } from '../../lib/numberFormat'
 import type { AppLocale } from '../../i18n/types'
@@ -23,22 +24,6 @@ import clsx from 'clsx'
 import { useAuth } from '../../stores/auth'
 import { useIsReadOnly } from '../../hooks/useIsReadOnly'
 import { Permission } from '../../types/permissions.generated'
-
-const quantityLabel = (value: number, source: object, locale: string): string =>
-  formatQuantity(value, {
-    locale,
-    quantityDecimals: readDisplayFields(source).quantityDecimals,
-  }).text
-
-const priceLabel = (value: number, source: object, locale: string, exchange: string): string =>
-  formatPrice(value, {
-    locale,
-    exchange,
-    priceDecimals: readDisplayFields(source).priceDecimals,
-  }).text
-
-const moneyLabel = (value: number, locale: string, currency: string): string =>
-  formatMoney(value, { locale, currency }).text
 
 const TERMINAL_ORDER_STATUSES = new Set([
   'filled',
@@ -313,7 +298,6 @@ export const Orders: React.FC = () => {
   }
 
   const handleExportOrders = () => {
-    const locale = intlLocaleFromLanguage(i18n.language)
     const headers = [
       t('csv.orders.instrument'),
       t('csv.orders.side'),
@@ -330,8 +314,8 @@ export const Orders: React.FC = () => {
       o.side ?? '',
       o.orderType,
       o.status,
-      quantityLabel(o.size, o, locale),
-      o.price ? priceLabel(o.price, o, locale, o.exchange) : t('orderCard.priceMarket'),
+      formatRawDecimal(o.size),
+      o.price ? formatRawDecimal(o.price) : t('orderCard.priceMarket'),
       o.leverage?.toString() ?? '',
       o.reduceOnly === true ? 'true' : 'false',
       o.createdAt ? formatDateTime(o.createdAt, i18n.language as AppLocale) : '',
@@ -341,7 +325,6 @@ export const Orders: React.FC = () => {
   }
 
   const handleExportExecutions = () => {
-    const locale = intlLocaleFromLanguage(i18n.language)
     const headers = [
       t('csv.executions.orderId'),
       t('csv.executions.instrument'),
@@ -357,10 +340,10 @@ export const Orders: React.FC = () => {
       e.clientOrderId,
       e.instrument,
       e.side,
-      quantityLabel(e.size, e, locale),
-      priceLabel(e.price, e, locale, e.exchange),
-      moneyLabel(e.price * e.size, locale, quoteCurrency(e.instrument)),
-      moneyLabel(e.fee || 0, locale, e.feeAsset || quoteCurrency(e.instrument)),
+      formatRawDecimal(e.size),
+      formatRawDecimal(e.price),
+      formatRawDecimal(e.price * e.size),
+      formatRawDecimal(e.fee || 0),
       e.feeAsset ?? '',
       formatDateTime(e.executedAt, i18n.language as AppLocale),
     ])

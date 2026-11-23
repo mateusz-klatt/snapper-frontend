@@ -329,7 +329,7 @@ describe('Positions', () => {
       '≈ 0.00000000 BTC'
     )
     expect(screen.getByTestId('position-unrealized-TINY-BTC-kraken-live')).toHaveTextContent(
-      '≈ 0.00 BTC'
+      '≈ 0.00000000 BTC'
     )
     expect(
       screen.getByTestId('position-mark-TINY-BTC-kraken-live').querySelector('[title]')
@@ -394,7 +394,7 @@ describe('Positions', () => {
 
     expect(mark).toHaveTextContent('66,000.00')
     expect(mark.textContent).not.toContain('$')
-    expect(screen.getByTestId('position-unrealized-BTCUSD-kraken-live')).toHaveTextContent('+12.00')
+    expect(screen.getByTestId('position-unrealized-BTCUSD-kraken-live')).toHaveTextContent('+12')
   })
 
   it('renders multiple positions side by side', async () => {

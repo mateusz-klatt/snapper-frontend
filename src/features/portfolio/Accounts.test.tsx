@@ -229,6 +229,39 @@ describe('Accounts', () => {
     expect(screen.getByTestId('account-positions-empty-w-2-kraken-live')).toBeInTheDocument()
   })
 
+  it('formats fiat balances in minor units and crypto balances at asset precision', () => {
+    const eth = Object.assign(
+      { currency: 'ETH', total: 1, free: null, used: null },
+      {
+        quantityDecimals: 2,
+      }
+    )
+
+    mockAccounts(
+      [
+        makeState({
+          balances: [
+            { currency: 'EUR', total: 1.2, free: 1.2, used: 0 },
+            { currency: 'BTC', total: 0.004, free: 0.004, used: 0 },
+            { currency: 'XRP', total: 1e-8, free: 1e-8, used: 0 },
+            eth,
+          ],
+        }),
+      ],
+      false,
+      FIXED_NOW
+    )
+    render(<Accounts />)
+
+    expect(screen.getByTestId('account-balance-w-1-kraken-live-EUR')).toHaveTextContent('1.20')
+    expect(screen.getByTestId('account-balance-w-1-kraken-live-BTC')).toHaveTextContent('0.004')
+    expect(screen.getByTestId('account-balance-w-1-kraken-live-BTC').textContent).not.toContain('≈')
+    expect(screen.getByTestId('account-balance-w-1-kraken-live-XRP')).toHaveTextContent(
+      '0.00000001'
+    )
+    expect(screen.getByTestId('account-balance-w-1-kraken-live-ETH')).toHaveTextContent('1.00')
+  })
+
   it('demotes authoritative account and reconciliation truth when polling stalls', () => {
     mockAccounts(
       [
