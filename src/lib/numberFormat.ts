@@ -137,13 +137,16 @@ export const maxFractionDigits = (values: readonly number[]): number => {
 /**
  * Dust grouping when the backend omits `is_dust`.
  *
- * Only a quantity that rounds to zero at lot precision is dust. A notional
- * cutoff is currency-specific, so that rule stays on the backend flag.
+ * An exact zero quantity is flat. Only a non-zero quantity that rounds to
+ * zero at lot precision is dust. A notional cutoff is currency-specific, so
+ * that rule stays on the backend flag.
  */
 export const isDustPosition = (input: DustPositionInput): boolean => {
   if (input.isDust !== null) return input.isDust
 
   if (!Number.isFinite(input.quantity)) return false
+
+  if (input.quantity === 0) return false
 
   const digits = input.quantityDecimals ?? MAX_QUANTITY_DECIMALS
 

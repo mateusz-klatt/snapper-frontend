@@ -250,7 +250,7 @@ describe('Positions', () => {
       isLoading: false,
     } as never)
     renderWithProviders(<Positions />)
-    fireEvent.click(screen.getByTestId('dust-toggle'))
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
     const sideBadge = screen.getByTestId('position-side-SOL-USD-kraken-live')
 
     expect(sideBadge).toHaveTextContent('FLAT')
@@ -488,7 +488,8 @@ describe('Positions', () => {
       isLoading: false,
     } as never)
     renderWithProviders(<Positions />)
-    expect(screen.queryByTestId('attach-bracket-SOL-USD-kraken-live')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('dust-positions')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('attach-bracket-BTC-USD-kraken-live')).not.toBeInTheDocument()
   })
 
   it('opens bracket modal when SL/TP button is clicked', async () => {
@@ -878,7 +879,9 @@ describe('Positions', () => {
 
   it('labels the dust section in Polish', async () => {
     await i18n.changeLanguage('pl')
-    const dust = makePosition({ quantity: 0, unrealizedPnl: 0, realizedPnl: 0 })
+    const dust = Object.assign(makePosition({ quantity: 4e-9, unrealizedPnl: 0, realizedPnl: 0 }), {
+      quantityDecimals: 8,
+    })
     const { usePositions } = await import('../../hooks/queries/positions')
 
     vi.mocked(usePositions).mockReturnValue({ data: [dust], isLoading: false } as never)

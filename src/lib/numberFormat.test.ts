@@ -116,10 +116,12 @@ describe('isDustPosition', () => {
     ).toBe(false)
   })
 
-  it('treats only a lot-rounded zero as dust when the API omits the flag', () => {
+  it('treats only a non-zero lot-rounded zero as dust when the API omits the flag', () => {
     expect(isDustPosition({ quantity: Number.NaN, quantityDecimals: null, isDust: null })).toBe(
       false
     )
+    expect(isDustPosition({ quantity: 0, quantityDecimals: 8, isDust: null })).toBe(false)
+    expect(isDustPosition({ quantity: 4e-9, quantityDecimals: 8, isDust: null })).toBe(true)
     expect(isDustPosition({ quantity: 0.004, quantityDecimals: 2, isDust: null })).toBe(true)
     expect(isDustPosition({ quantity: 1e-9, quantityDecimals: null, isDust: null })).toBe(true)
     expect(isDustPosition({ quantity: 1, quantityDecimals: null, isDust: null })).toBe(false)
